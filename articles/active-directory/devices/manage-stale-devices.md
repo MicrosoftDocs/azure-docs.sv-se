@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d12679e64d690614aaf788837a02af007448f83d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6774e172c4e8607bfadd95f947d650afa62a984f
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93393684"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550430"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Gör så här: hantera inaktuella enheter i Azure AD
 
@@ -101,7 +101,7 @@ Rensa Azure AD:
 - **Windows 7/8** – inaktivera eller ta bort Windows 7/8-enheter i din lokala AD först. Du kan inte använda Azure AD Connect till att inaktivera eller ta bort enheter med Windows 7/8 i Azure AD. I stället måste du inaktivera/ta bort i Azure AD när du gör ändringen lokalt.
 
 > [!NOTE]
->* Att ta bort enheter i din lokala AD eller Azure AD tar inte bort registreringen på klienten. Den förhindrar bara åtkomst till resurser som använder enhet som en identitet (t. ex. villkorlig åtkomst). Läs ytterligare information om hur du [tar bort registreringen på klienten](faq.md#hybrid-azure-ad-join-faq).
+>* Att ta bort enheter i din lokala AD eller Azure AD tar inte bort registreringen på klienten. Den förhindrar bara åtkomst till resurser som använder enhet som en identitet (t. ex. villkorlig åtkomst). Läs ytterligare information om hur du [tar bort registreringen på klienten](faq.yml).
 >* Om du bara tar bort en Windows 10-enhet i Azure AD synkroniseras enheten om från din lokala dator med hjälp av Azure AD Connect, men som ett nytt objekt i väntande tillstånd. En omregistrering krävs på enheten.
 >* Om du tar bort enheten från Sync-omfånget för enheter med Windows 10/Server 2016 tas Azure AD-enheten bort. Om du lägger tillbaka den till Sync-omfånget placeras ett nytt objekt i "väntande" läge. En omregistrering av enheten krävs.
 >* Om du inte använder Azure AD Connect för Windows 10-enheter som ska synkroniseras (t. ex. endast genom att använda AD FS för registrering) måste du hantera livs cykeln som liknar Windows 7/8-enheter.
@@ -113,7 +113,7 @@ Inaktivera eller ta bort Azure AD-anslutna enheter i Azure AD.
 
 > [!NOTE]
 >* Att ta bort en Azure AD-enhet tar inte bort registreringen på klienten. Den förhindrar bara åtkomst till resurser som använder enhet som en identitet (t. ex. villkorlig åtkomst). 
->* Läs mer om [hur du kopplar från i Azure AD](faq.md#azure-ad-join-faq) 
+>* Läs mer om [hur du kopplar från i Azure AD](faq.yml) 
 
 ### <a name="azure-ad-registered-devices"></a>Azure AD-registrerade enheter
 
@@ -121,7 +121,7 @@ Inaktivera eller ta bort Azure AD-registrerade enheter i Azure AD.
 
 > [!NOTE]
 >* Att ta bort en registrerad Azure AD-enhet i Azure AD tar inte bort registreringen på klienten. Den förhindrar bara åtkomst till resurser som använder enhet som en identitet (t. ex. villkorlig åtkomst).
->* Läs mer om [hur du tar bort en registrering på klienten](faq.md#azure-ad-register-faq)
+>* Läs mer om [hur du tar bort en registrering på klienten](faq.yml)
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Rensa inaktuella enheter i Azure-portalen  
 

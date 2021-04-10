@@ -6,10 +6,10 @@ ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
 ms.openlocfilehash: 9acc6de84c3e5bc43f482d36ade242d2315a2a4f
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105565120"
 ---
 # <a name="create-an-azure-sql-assessment"></a>Skapa en Azure SQL-utvärdering
@@ -135,27 +135,27 @@ Uppskattningen av månads kostnaden omfattar beräknings-och lagrings kostnader 
 
         **Beredskap för Azure SQL DB** | **Azure SQL MI-beredskap** | **Rekommenderad distributions typ** | **Beräknas Azure SQL-konfiguration och kostnads uppskattningar?**
          --- | --- | --- | --- |
-        Redo | Redo | Azure SQL DB eller Azure SQL MI [Läs mer](concepts-azure-sql-assessment-calculation.md#recommended-deployment-type) | Yes
-        Redo | Inte klar eller okänd | Azure SQL-databas | Yes
-        Inte klar eller okänd | Redo | Azure SQL MI | Yes
-        Inte klar | Inte klar | Potentiellt redo för Azure VM [Läs mer](concepts-azure-sql-assessment-calculation.md#potentially-ready-for-azure-vm) | No
-        Inte klar eller okänd | Inte klar eller okänd | Okänt | No
+        Redo | Redo | Azure SQL DB eller Azure SQL MI [Läs mer](concepts-azure-sql-assessment-calculation.md#recommended-deployment-type) | Ja
+        Redo | Inte klar eller okänd | Azure SQL-databas | Ja
+        Inte klar eller okänd | Redo | Azure SQL MI | Ja
+        Inte klar | Inte klar | Potentiellt redo för Azure VM [Läs mer](concepts-azure-sql-assessment-calculation.md#potentially-ready-for-azure-vm) | Inga
+        Inte klar eller okänd | Inte klar eller okänd | Okänt | Inga
     
     - **Mål distributions typ** (som valts i bedömnings egenskaper): **Azure SQL DB**
     
         **Beredskap för Azure SQL DB** | **Beräknas Azure SQL-konfiguration och kostnads uppskattningar?**
         --- | --- |
-        Redo | Yes
+        Redo | Ja
         Inte klar | Inga
-        Okänt | No
+        Okänt | Inga
     
     - **Mål distributions typ** (som valts i bedömnings egenskaper): **Azure SQL mi**
     
         **Azure SQL MI-beredskap** | **Beräknas Azure SQL-konfiguration och kostnads uppskattningar?**
          --- | --- |
-        Redo | Yes
+        Redo | Ja
         Inte klar | Inga
-        Okänt | No
+        Okänt | Inga
 
 4. Klicka på instansen för att öka detalj nivån om du vill se antalet användar databaser, instans information inklusive instans egenskaper, beräkna (begränsat till instans) och information om käll databas lagring.
 5. Klicka på antalet användar databaser för att granska listan över databaser och deras information. Som exempel (uppskattningar och kostnader endast för exempel): :::image type="content" source="./media/tutorial-assess-sql/assessment-db.png" alt-text="information om SQL-instans":::

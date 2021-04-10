@@ -5,13 +5,14 @@ author: rboucher
 ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 01/12/2020
-ms.openlocfilehash: b7e9318ee34836f8fbd2ae7a330134d8174e6a60
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/10/2021
+ms.subservice: metrics
+ms.openlocfilehash: 93d30663034c7560550160960af20f0a465d93c6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031403"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936180"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Mät värden för Azure Monitor mått och Visa förklaring
 
@@ -26,6 +27,7 @@ När du lägger till ett mått i ett diagram väljer Metric Explorer automatiskt
 Låt oss definiera några villkor tydligt först:
 
 - **Metric-värde** – ett enda Mät värde som samlas in för en viss resurs.
+- **Time-Series-databas** – en databas som är optimerad för lagring och hämtning av data punkter som innehåller ett värde och en motsvarande tidstämpel. 
 - **Tids period** – en allmän tids period.
 - **Tidsintervall – tids** perioden mellan insamlingen av två metriska värden. 
 - **Tidsintervall** – den tids period som visas i ett diagram. Normalt är standard 24 timmar. Endast vissa intervall är tillgängliga. 
@@ -33,7 +35,9 @@ Låt oss definiera några villkor tydligt först:
 - **Agg regerings typ** – en typ av statistik som beräknas från flera metriska värden.  
 - **Aggregate** – processen att ta flera indatavärden och sedan använda dem för att skapa ett enda utdata-värde via de regler som definieras av agg regerings typen. Du kan till exempel ta medelvärdet av flera värden.  
 
-Mått är en serie Mät värden som har registrerats med regelbundna tidsintervall. När du ritar ett diagram sammanställs värdena för de valda måtten separat under tids kornig het (även kallat tids kornig het). Du väljer storlek på tids kornig het med hjälp av [panelen Metrics Explorer tids väljare](../essentials/metrics-getting-started.md#select-a-time-range). Om du inte gör något explicit val väljs tids kornig het automatiskt baserat på det valda tidsintervallet. När du har valt så sammanställs Mät värdena som fångades under varje tids kornig het och placeras i diagrammet-en Datapoint per intervall.
+## <a name="summary-of-process"></a>Sammanfattning av processen
+
+Mått är en serie värden som lagras med en tidstämpel. I Azure lagras de flesta mått i Azure Metrics Time-Series-databasen. När du ritar ett diagram hämtas värdena för de valda måtten från databasen och sedan separat aggregeras baserat på vald tids kornig het (även kallat tids kornigt). Du väljer storlek på tids kornig het med hjälp av [panelen Metrics Explorer tids väljare](../essentials/metrics-getting-started.md#select-a-time-range). Om du inte gör något explicit val väljs tids kornig het automatiskt baserat på det valda tidsintervallet. När du har valt så sammanställs Mät värdena som fångades under varje tids kornig het och placeras i diagrammet-en Datapoint per intervall.
 
 ## <a name="aggregation-types"></a>Agg regerings typer 
 
@@ -82,9 +86,11 @@ Det är viktigt att fastställa vad som är "normal" för din arbets belastning 
 
 ## <a name="how-the-system-collects-metrics"></a>Hur systemet samlar in mått
 
-Data insamling varierar beroende på mått. Det finns två typer av samlings perioder.
+Data insamling varierar beroende på mått. 
 
 ### <a name="measurement-collection-frequency"></a>Frekvens för mätnings insamling 
+
+Det finns två typer av samlings perioder.
 
 - **Normalt** – måttet samlas in med ett konsekvent tidsintervall som inte varierar.
 

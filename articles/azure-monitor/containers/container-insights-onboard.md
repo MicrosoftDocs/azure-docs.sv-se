@@ -4,10 +4,10 @@ description: I den här artikeln beskrivs hur du aktiverar och konfigurerar beh�
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 01246a728f204ed9cb43eee392c637b495208aaf
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105109360"
 ---
 # <a name="enable-container-insights"></a>Aktivera container Insights
@@ -87,7 +87,7 @@ I följande tabell visas den konfigurations information för proxy och brand vä
 
 I följande tabell visas konfigurations information för proxy och brand vägg för Azure Kina 21Vianet:
 
-|Agentresurs|Port |Description | 
+|Agentresurs|Port |Beskrivning | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Datainhämtning |
 | `*.oms.opinsights.azure.cn` | 443 | OMS-onboarding |
@@ -95,7 +95,7 @@ I följande tabell visas konfigurations information för proxy och brand vägg f
 
 I följande tabell visas konfigurations information för proxy och brand vägg för Azure amerikanska myndigheter:
 
-|Agentresurs|Port |Description | 
+|Agentresurs|Port |Beskrivning | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Datainhämtning |
 | `*.oms.opinsights.azure.us` | 443 | OMS-onboarding |

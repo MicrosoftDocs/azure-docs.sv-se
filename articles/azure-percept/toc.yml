@@ -62,9 +62,9 @@
           href: how-to-view-telemetry.md
     - name: Tal lösnings utveckling med Azure percept DK
       items:
-        - name: Konfigurera din röst assistent i Azure percept Studio
-          href: how-to-configure-voice-assistant.md
         - name: Konfigurera din röst assistent i IoT Hub
+          href: how-to-configure-voice-assistant.md
+        - name: Konfigurera din röst assistent i Azure percept Studio
           href: how-to-manage-voice-assistant.md
     - name: Uppdatera dina Azure percept-enheter
       items:
@@ -82,7 +82,7 @@
           href: how-to-connect-to-percept-dk-over-serial.md
     - name: Verktyg
       items:
-        - name: Installations program för devtools Pack
+        - name: Installations program för dev tools Pack
           href: dev-tools-installer.md
     - name: Felsökning
       items:

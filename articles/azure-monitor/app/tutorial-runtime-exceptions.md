@@ -1,18 +1,17 @@
 ---
 title: Diagnostisera körningsundantag med hjälp av Azure Application Insights | Microsoft Docs
 description: Självstudie om att hitta och diagnostisera körningsundantag i dina program med hjälp av Azure Application Insights.
-ms.subservice: application-insights
 ms.topic: tutorial
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 98ccaef716ae2390dcbcfbc7c4a1916359115f93
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d8dfb3eaf3ea1ab901df4bef62210d28e02c3a4
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100628102"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383159"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Hitta och diagnostisera körningsundantag med Azure Application Insights
 
@@ -27,7 +26,7 @@ Azure Application Insights samlar in telemetri från ditt program för att ident
 > * skapa ett nytt arbetsobjekt för att åtgärda den felaktiga koden.
 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att slutföra den här kursen behöver du:
 

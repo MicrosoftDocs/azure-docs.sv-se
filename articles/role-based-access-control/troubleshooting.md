@@ -2,7 +2,6 @@
 title: Felsöka Azure RBAC
 description: Felsök problem med rollbaserad åtkomst kontroll i Azure (Azure RBAC).
 services: azure-portal
-documentationcenter: na
 author: rolyon
 manager: mtillman
 ms.assetid: df42cca2-02d6-4f3c-9d56-260e1eb7dc44
@@ -11,16 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/10/2020
+ms.date: 04/06/2021
 ms.author: rolyon
-ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: d77468619fcd67887273b2fbd452b37add1e19b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4a3f7f613f75f2f285437b7ae6f816adf56d999
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555892"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580096"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Felsöka Azure RBAC
 
@@ -68,11 +66,16 @@ $ras.Count
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
+
+- Om du skapar ett nytt huvud namn för tjänsten och sedan omedelbart försöker tilldela en roll till tjänstens huvud namn kan roll tilldelningen inte utföras i vissa fall.
+
+    För att åtgärda det här scenariot ska du ställa in `principalType` egenskapen till `ServicePrincipal` när roll tilldelningen skapas. Du måste också ange `apiVersion` roll tilldelningen till `2018-09-01-preview` eller senare. Mer information finns i [tilldela Azure-roller till ett nytt huvud namn för tjänsten med hjälp av REST API](role-assignments-rest.md#new-service-principal) eller [tilldela Azure-roller till ett nytt huvud namn för tjänsten med hjälp av Azure Resource Manager mallar](role-assignments-template.md#new-service-principal)
+
 - Om du försöker ta bort den senaste ägar tilldelningen för en prenumeration kan du se felet "det går inte att ta bort den sista rollen för RBAC-admin". Det går inte att ta bort den senaste ägarens roll tilldelning för en prenumeration för att undvika överblivna prenumerationen. Om du vill avbryta din prenumeration kan du läsa mer i [avbryta din Azure-prenumeration](../cost-management-billing/manage/cancel-azure-subscription.md).
 
 ## <a name="problems-with-custom-roles"></a>Problem med anpassade roller
 
-- Om du behöver steg för att skapa en anpassad roll kan du läsa självstudierna för den anpassade rollen med hjälp av [Azure Portal](custom-roles-portal.md) (för närvarande i för hands version), [Azure POWERSHELL](tutorial-custom-role-powershell.md)eller [Azure CLI](tutorial-custom-role-cli.md).
+- Om du behöver anvisningar för hur du skapar en anpassad roll kan du läsa självstudierna för den anpassade rollen med hjälp av [Azure Portal](custom-roles-portal.md), [Azure POWERSHELL](tutorial-custom-role-powershell.md)eller [Azure CLI](tutorial-custom-role-cli.md).
 - Om du inte kan uppdatera en befintlig anpassad roll kontrollerar du att du är inloggad med en användare som har tilldelats en roll med `Microsoft.Authorization/roleDefinition/write` behörighet som [ägare](built-in-roles.md#owner) eller administratör för [användar åtkomst](built-in-roles.md#user-access-administrator).
 - Om du inte lyckas ta bort en anpassad roll och får felmeddelandet om att det finns befintliga rolltilldelningar som refererar till rollen (kod: RoleDefinitionHasAssignments), så finns det rolltilldelningar som fortfarande använder den anpassade rollen. Ta bort dessa rolltilldelningar och försök att ta bort den anpassade rollen igen.
 - Om du får felmeddelandet ”Det högsta tillåtna antalet rolldefinitioner har överskridits. Inga fler roll definitioner kan skapas (kod: RoleDefinitionLimitExceeded) "när du försöker skapa en ny anpassad roll, tar du bort alla anpassade roller som inte används. Azure har stöd för upp till **5000** anpassade roller i en katalog. (För Azure Germany och Azure Kina är gränsen 2000 anpassade roller.)

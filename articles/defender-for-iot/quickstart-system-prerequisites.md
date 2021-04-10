@@ -1,17 +1,22 @@
 ---
-title: Systemkrav
-description: Hämta de system krav som krävs för att köra Azure Defender för IoT.
+title: 'Snabb start: system krav'
+description: I den här snabb starten får du de system krav som krävs för att köra Azure Defender för IoT.
 ms.date: 11/30/2020
 ms.topic: quickstart
-ms.openlocfilehash: 78d5948554ae531c4b2f77d67bb916d5290db943
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2aae849b6ee772c2aa29c680f3b107af3ed600b0
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780947"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382954"
 ---
-# <a name="system-prerequisites"></a>Systemkrav
+# <a name="quickstart-system-prerequisites"></a>Snabb start: system krav
+
 Den här artikeln innehåller en lista över system krav för att köra Azure Defender för IoT.
+
+## <a name="prerequisites"></a>Krav
+
+- Inget
 
 ## <a name="minimum-requirements"></a>Minimikrav
 
@@ -27,7 +32,7 @@ Defender för IoT dirigerar all trafik från alla europeiska regioner till regio
 
 Mer information finns i [IoT Hub regioner som stöds](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub).
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
-- [Identifiera apparater som krävs](how-to-identify-required-appliances.md)
-- [Om installation av Azure Defender för IoT-nätverk](how-to-set-up-your-network.md)
+> [!div class="nextstepaction"]
+> [Identifiera apparater som krävs](how-to-identify-required-appliances.md)

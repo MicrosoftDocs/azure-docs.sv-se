@@ -4,14 +4,14 @@ description: Lista över mått som är tillgängliga för varje resurs typ med A
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 02/06/2021
+ms.date: 04/01/2021
 ms.author: robb
-ms.openlocfilehash: 2437ab80a23ffc39c180bcdf72921fdf13768541
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0854d56930dbc8decfcf8f96a814f082e361de62
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033511"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167251"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Mått som stöds med Azure Monitor
 
@@ -55,7 +55,6 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 
 > [!IMPORTANT] 
 > Den här senaste uppdateringen lägger till en ny kolumn och sorterat om måtten som alfabetiska. Ytterligare information innebär att tabellerna nedan kan ha en vågrät rullnings List längst ned, beroende på webbläsarfönstrets bredd. Om du tror att du saknar information använder du rullnings listen för att visa hela tabellen.
-
 ## <a name="microsoftaadiamazureadmetrics"></a>Microsoft. aadiam/azureADMetrics
 
 |Metric|Kan exporteras via diagnostikinställningar?|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|Dimensioner|
@@ -148,7 +147,6 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |HttpIncomingRequestDuration|Ja|HttpIncomingRequestDuration|Antal|Genomsnitt|Svars tid på en http-begäran.|StatusCode, autentisering|
 |ThrottledHttpRequestCount|Ja|ThrottledHttpRequestCount|Antal|Antal|Begränsade HTTP-begäranden.|Inga dimensioner|
 
-
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/våren
 
 |Metric|Kan exporteras via diagnostikinställningar?|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|Dimensioner|
@@ -203,7 +201,6 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |tomcat. threads. Current|Ja|tomcat. threads. Current|Antal|Totalt|Antal Tomcat aktuella trådar|Distribution, AppName, Pod|
 |Totalt-begär Anden|Ja|Totalt-begär Anden|Antal|Genomsnitt|Totalt antal begär Anden under processens livs längd|Distribution, AppName, Pod|
 |arbets uppsättning|Ja|arbets uppsättning|Antal|Genomsnitt|Mängden arbets minne som används av processen (MB)|Distribution, AppName, Pod|
-
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
@@ -376,8 +373,8 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 
 |Metric|Kan exporteras via diagnostikinställningar?|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|Dimensioner|
 |---|---|---|---|---|---|---|
-|RequestLatency|Ja|Begär fördröjning|Millisekunder|Totalt|Tiden det tar för servern att bearbeta begäran|Åtgärd, autentisering, protokoll|
-|RequestsTraffic|Ja|Begär trafik|Procent|Antal|Antal begär Anden som gjorts|Åtgärd, autentisering, protokoll, StatusCode, StatusCodeClass|
+|RequestLatency|Ja|Begär fördröjning|Millisekunder|Totalt|Tiden det tar för servern att bearbeta begäran|Åtgärd, autentisering, protokoll, data Center|
+|RequestsTraffic|Ja|Begär trafik|Procent|Antal|Antal begär Anden som gjorts|Åtgärd, autentisering, protokoll, StatusCode, StatusCodeClass, data Center|
 
 
 ## <a name="microsoftcacheredis"></a>Microsoft. cache/Redis
@@ -604,7 +601,6 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |totalkeys|Ja|Totalt antal nycklar|Antal|Maximal||Inga dimensioner|
 |usedmemory|Ja|Använt minne|Byte|Maximal||Inga dimensioner|
 |usedmemorypercentage|Ja|Använt minne i procent|Procent|Maximal||InstanceId|
-|usedmemoryRss|Ja|RSS för använt minne|Byte|Maximal||InstanceId|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
@@ -619,7 +615,7 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |Metric|Kan exporteras via diagnostikinställningar?|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|Dimensioner|
 |---|---|---|---|---|---|---|
 |ByteHitRatio|Ja|Kvot för byte träff|Procent|Genomsnitt|Detta är förhållandet mellan totalt antal byte som hanteras från cachen jämfört med totalt antal svars byte|Slutpunkt|
-|OriginHealthPercentage|Ja|Ursprungligt hälso procent|Procent|Genomsnitt|Procent andelen lyckade hälso avsökningar från AFDX till Server delar.|Ursprung, OriginPool|
+|OriginHealthPercentage|Ja|Ursprungligt hälso procent|Procent|Genomsnitt|Procent andelen lyckade hälso avsökningar från AFDX till Server delar.|Ursprung, OriginGroup|
 |OriginLatency|Ja|Ursprunglig svars tid|Millisekunder|Genomsnitt|Tiden räknat från när begäran skickades av AFDX Edge till Server delen tills AFDX fick den senaste svars byten från Server delen.|Ursprung, slut punkt|
 |OriginRequestCount|Ja|Antal ursprungs begär Anden|Antal|Totalt|Antalet begär Anden som skickats från AFDX till ursprung.|HttpStatus, HttpStatusGroup, ursprung, slut punkt|
 |Percentage4XX|Ja|Procent andel 4XX|Procent|Genomsnitt|Procent andelen av alla klient begär Anden för vilka svars status koden är 4XX|Slut punkt, ClientRegion, ClientCountry|
@@ -804,8 +800,8 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 
 |Metric|Kan exporteras via diagnostikinställningar?|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|Dimensioner|
 |---|---|---|---|---|---|---|
-|Förbrukade CPU-krediter|Ja|Förbrukade CPU-krediter|Antal|Genomsnitt|Totalt antal krediter som konsumeras av den virtuella datorn|Inga dimensioner|
-|Återstående CPU-krediter|Ja|Återstående CPU-krediter|Antal|Genomsnitt|Totalt antal krediter som är tillgängliga för burst|Inga dimensioner|
+|Förbrukade CPU-krediter|Ja|Förbrukade CPU-krediter|Antal|Genomsnitt|Totalt antal krediter som förbrukas av den virtuella datorn. Endast tillgängligt i B-seriens burst-virtuella datorer|Inga dimensioner|
+|Återstående CPU-krediter|Ja|Återstående CPU-krediter|Antal|Genomsnitt|Totalt antal krediter som är tillgängliga för Burst. Endast tillgängligt i B-seriens burst-virtuella datorer|Inga dimensioner|
 |Förbrukad mängd bandbredd för data disk|Ja|Förbrukad mängd bandbredd för data disk|Procent|Genomsnitt|Procent andel data diskens förbrukade bandbredd per minut|ENHETEN|
 |Förbrukad rabatt i data disk IOPS|Ja|Förbrukad rabatt i data disk IOPS|Procent|Genomsnitt|Procent andel data disk-I/o-förbrukat per minut|ENHETEN|
 |Data disk Max burst-bandbredd|Ja|Data disk Max burst-bandbredd|Antal|Genomsnitt|Maximalt antal byte per sekund data disk data disk kan uppnås med bursting|ENHETEN|
@@ -859,8 +855,8 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 
 |Metric|Kan exporteras via diagnostikinställningar?|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|Dimensioner|
 |---|---|---|---|---|---|---|
-|Förbrukade CPU-krediter|Ja|Förbrukade CPU-krediter|Antal|Genomsnitt|Totalt antal krediter som konsumeras av den virtuella datorn|Inga dimensioner|
-|Återstående CPU-krediter|Ja|Återstående CPU-krediter|Antal|Genomsnitt|Totalt antal krediter som är tillgängliga för burst|Inga dimensioner|
+|Förbrukade CPU-krediter|Ja|Förbrukade CPU-krediter|Antal|Genomsnitt|Totalt antal krediter som förbrukas av den virtuella datorn. Endast tillgängligt i B-seriens burst-virtuella datorer|Inga dimensioner|
+|Återstående CPU-krediter|Ja|Återstående CPU-krediter|Antal|Genomsnitt|Totalt antal krediter som är tillgängliga för Burst. Endast tillgängligt i B-seriens burst-virtuella datorer|Inga dimensioner|
 |Förbrukad mängd bandbredd för data disk|Ja|Förbrukad mängd bandbredd för data disk|Procent|Genomsnitt|Procent andel data diskens förbrukade bandbredd per minut|LUN, VMName|
 |Förbrukad rabatt i data disk IOPS|Ja|Förbrukad rabatt i data disk IOPS|Procent|Genomsnitt|Procent andel data disk-I/o-förbrukat per minut|LUN, VMName|
 |Data disk Max burst-bandbredd|Ja|Data disk Max burst-bandbredd|Antal|Genomsnitt|Maximalt antal byte per sekund data disk data disk kan uppnås med bursting|LUN, VMName|
@@ -914,8 +910,8 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 
 |Metric|Kan exporteras via diagnostikinställningar?|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|Dimensioner|
 |---|---|---|---|---|---|---|
-|Förbrukade CPU-krediter|Ja|Förbrukade CPU-krediter|Antal|Genomsnitt|Totalt antal krediter som konsumeras av den virtuella datorn|Inga dimensioner|
-|Återstående CPU-krediter|Ja|Återstående CPU-krediter|Antal|Genomsnitt|Totalt antal krediter som är tillgängliga för burst|Inga dimensioner|
+|Förbrukade CPU-krediter|Ja|Förbrukade CPU-krediter|Antal|Genomsnitt|Totalt antal krediter som förbrukas av den virtuella datorn. Endast tillgängligt i B-seriens burst-virtuella datorer|Inga dimensioner|
+|Återstående CPU-krediter|Ja|Återstående CPU-krediter|Antal|Genomsnitt|Totalt antal krediter som är tillgängliga för Burst. Endast tillgängligt i B-seriens burst-virtuella datorer|Inga dimensioner|
 |Förbrukad mängd bandbredd för data disk|Ja|Förbrukad mängd bandbredd för data disk|Procent|Genomsnitt|Procent andel data diskens förbrukade bandbredd per minut|ENHETEN|
 |Förbrukad rabatt i data disk IOPS|Ja|Förbrukad rabatt i data disk IOPS|Procent|Genomsnitt|Procent andel data disk-I/o-förbrukat per minut|ENHETEN|
 |Data disk Max burst-bandbredd|Ja|Data disk Max burst-bandbredd|Antal|Genomsnitt|Maximalt antal byte per sekund data disk data disk kan uppnås med bursting|ENHETEN|
@@ -992,11 +988,25 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |Metric|Kan exporteras via diagnostikinställningar?|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|Dimensioner|
 |---|---|---|---|---|---|---|
 |apiserver_current_inflight_requests|Inga|Synlighetssekvensnummer-begäranden|Antal|Genomsnitt|Maximalt antal synlighetssekvensnummer-begäranden som används på apiserver per begär ande typ under den senaste sekunden|requestKind|
+|cluster_autoscaler_cluster_safe_to_autoscale|Inga|Klusterhälsa|Antal|Genomsnitt|Bestämmer huruvida kluster autoskalning ska vidta åtgärder i klustret||
+|cluster_autoscaler_scale_down_in_cooldown|Inga|Skala ned cooldown|Antal|Genomsnitt|Anger om skalan är i cooldown-inga noder tas bort under denna tidsram||
+|cluster_autoscaler_unneeded_nodes_count|Inga|Onödiga noder|Antal|Genomsnitt|Klustret auotscaler markerar noderna som kandidater för borttagning och tas slutligen bort||
+|cluster_autoscaler_unschedulable_pods_count|Inga|Unschedulable poddar|Antal|Genomsnitt|Antal poddar som för närvarande är unschedulable i klustret||
 |kube_node_status_allocatable_cpu_cores|Inga|Totalt antal tillgängliga processor kärnor i ett hanterat kluster|Antal|Genomsnitt|Totalt antal tillgängliga processor kärnor i ett hanterat kluster||
 |kube_node_status_allocatable_memory_bytes|Inga|Total mängd tillgängligt minne i ett hanterat kluster|Byte|Genomsnitt|Total mängd tillgängligt minne i ett hanterat kluster||
 |kube_node_status_condition|Inga|Status för olika nod villkor|Antal|Genomsnitt|Status för olika nod villkor|villkor, status, status2, nod|
 |kube_pod_status_phase|Inga|Antal poddar per fas|Antal|Genomsnitt|Antal poddar per fas|fas, namnrymd, Pod|
 |kube_pod_status_ready|Inga|Antal poddar i klart läge|Antal|Genomsnitt|Antal poddar i klart läge|namnrymd, pod, villkor|
+|node_cpu_usage_millicores|Ja|Millicores för processor användning|MilliCores|Genomsnitt|Aggregerad mätning av processor användning i millicores över klustret|Node, nodepool|
+|node_cpu_usage_percentage|Ja|Procent andel CPU-användning|Procent|Genomsnitt|Aggregerad genomsnittlig processor användning mätt i procent över klustret|Node, nodepool|
+|node_disk_usage_bytes|Ja|Använda byte på disk|Byte|Genomsnitt|Disk utrymme som används i byte efter enhet|Node, nodepool, enhet|
+|node_disk_usage_percentage|Ja|Procent andel använt disk utrymme|Procent|Genomsnitt|Disk utrymme som används i procent av enheten|Node, nodepool, enhet|
+|node_memory_rss_bytes|Ja|RSS-byte för minne|Byte|Genomsnitt|RSS-minne för behållare som används i byte|Node, nodepool|
+|node_memory_rss_percentage|Ja|RSS-procent för minne|Procent|Genomsnitt|RSS-minne för behållare som används i procent|Node, nodepool|
+|node_memory_working_set_bytes|Ja|Byte för arbets minne|Byte|Genomsnitt|Arbets minne för behållare som används i byte|Node, nodepool|
+|node_memory_working_set_percentage|Ja|Procent andel ledigt minne|Procent|Genomsnitt|Arbets minne för behållare som används i procent|Node, nodepool|
+|node_network_in_bytes|Ja|Nätverk i byte|Byte|Genomsnitt|Mottagna byte i nätverket|Node, nodepool|
+|node_network_out_bytes|Ja|Utgående byte för nätverk|Byte|Genomsnitt|Överförda byte i nätverket|Node, nodepool|
 
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
@@ -1199,6 +1209,20 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |txlogs_storage_used|Ja|Transaktions logg lagring används|Byte|Genomsnitt|Transaktions logg lagring används|Inga dimensioner|
 |write_iops|Ja|Skriv IOPS|Antal|Genomsnitt|Antal Skriv åtgärder för data diskar I/O per sekund|Inga dimensioner|
 |write_throughput|Ja|Skrivna byte/s i data flöde|Antal|Genomsnitt|Skrivna byte per sekund till data disken under övervaknings perioden|Inga dimensioner|
+
+
+## <a name="microsoftdbforpostgresqlservergroupsv2"></a>Microsoft. DBForPostgreSQL/serverGroupsv2
+
+|Metric|Kan exporteras via diagnostikinställningar?|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|Dimensioner|
+|---|---|---|---|---|---|---|
+|active_connections|Ja|Aktiva anslutningar|Antal|Genomsnitt|Aktiva anslutningar|ServerName|
+|cpu_percent|Ja|CPU-procent|Procent|Genomsnitt|CPU-procent|ServerName|
+|IOPS|Ja|IOPS|Antal|Genomsnitt|I/o-åtgärder per sekund|ServerName|
+|memory_percent|Ja|Minnes procent|Procent|Genomsnitt|Minnes procent|ServerName|
+|network_bytes_egress|Ja|Nätverk – utgående|Byte|Totalt|Nätverk ut över aktiva anslutningar|ServerName|
+|network_bytes_ingress|Ja|Nätverk – inkommande|Byte|Totalt|Nätverk i över aktiva anslutningar|ServerName|
+|storage_percent|Ja|Lagrings procent|Procent|Genomsnitt|Lagrings procent|ServerName|
+|storage_used|Ja|Använt lagrings utrymme|Byte|Genomsnitt|Använt lagrings utrymme|ServerName|
 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/servers
@@ -1444,6 +1468,7 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |CassandraTableUpdate|Inga|Cassandra-tabellen har uppdaterats|Antal|Antal|Cassandra-tabellen har uppdaterats|ResourceName, ChildResourceName, |
 |CreateAccount|Ja|Kontot har skapats|Antal|Antal|Kontot har skapats|Inga dimensioner|
 |DataUsage|Inga|Dataanvändning|Byte|Totalt|Total data användning rapporterad med 5 minuters precision|Samlings namn, DatabaseName, region|
+|DedicatedGatewayRequests|Ja|DedicatedGatewayRequests|Antal|Antal|Begär Anden på den dedikerade gatewayen|DatabaseName, samlings namn, CacheExercised, OperationName, region|
 |DeleteAccount|Ja|Kontot har tagits bort|Antal|Antal|Kontot har tagits bort|Inga dimensioner|
 |DocumentCount|Inga|Antal dokument|Antal|Totalt|Totalt antal dokument som har rapporter ATS med 5 minuters precision|Samlings namn, DatabaseName, region|
 |DocumentQuota|Inga|Dokument kvot|Byte|Totalt|Total lagrings kvot som rapporter ATS med 5 minuters precision|Samlings namn, DatabaseName, region|
@@ -1679,12 +1704,16 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |CategorizedGatewayRequests|Ja|Kategoriserade Gateway-begäranden|Antal|Totalt|Antal Gateway-begäranden per kategori (1xx/2xx/3xx/4xx/5xx)|HttpStatus|
 |GatewayRequests|Ja|Gateway-begäranden|Antal|Totalt|Antal Gateway-begäranden|HttpStatus|
 |KafkaRestProxy.ConsumerRequest.m1_delta|Ja|REST-proxy konsument RequestThroughput|CountPerSecond|Totalt|Antal konsument förfrågningar till Kafka REST proxy|Dator, ämne|
+|KafkaRestProxy.ConsumerRequestFail.m1_delta|Ja|REST-proxy-konsument med misslyckade begär Anden|CountPerSecond|Totalt|Undantag för konsument förfrågningar|Dator, ämne|
 |KafkaRestProxy.ConsumerRequestTime.p95|Ja|REST-proxy konsument RequestLatency|Millisekunder|Genomsnitt|Meddelande fördröjning i en konsument förfrågan via Kafka REST proxy|Dator, ämne|
+|KafkaRestProxy.ConsumerRequestWaitingInQueueTime.p95|Ja|REST-proxy konsument förfrågan efter släpning|Millisekunder|Genomsnitt|Längd på REST-proxy i klient|Dator, ämne|
 |KafkaRestProxy.MessagesIn.m1_delta|Ja|REST proxy-tillverkare MessageThroughput|CountPerSecond|Totalt|Antal producerande meddelanden via Kafka REST proxy|Dator, ämne|
 |KafkaRestProxy.MessagesOut.m1_delta|Ja|REST-proxy konsument MessageThroughput|CountPerSecond|Totalt|Antal konsument meddelanden via Kafka REST proxy|Dator, ämne|
 |KafkaRestProxy. Open-anslutningar|Ja|REST-proxy ConcurrentConnections|Antal|Totalt|Antal samtidiga anslutningar via Kafka REST proxy|Dator, ämne|
 |KafkaRestProxy.ProducerRequest.m1_delta|Ja|REST proxy-tillverkare RequestThroughput|CountPerSecond|Totalt|Antal producerande förfrågningar till Kafka REST proxy|Dator, ämne|
+|KafkaRestProxy.ProducerRequestFail.m1_delta|Ja|REST proxy-tillverkare misslyckade begär Anden|CountPerSecond|Totalt|Undantag för producerande begäran|Dator, ämne|
 |KafkaRestProxy.ProducerRequestTime.p95|Ja|REST proxy-tillverkare RequestLatency|Millisekunder|Genomsnitt|Meddelande fördröjning i en producerande begäran via Kafka REST proxy|Dator, ämne|
+|KafkaRestProxy.ProducerRequestWaitingInQueueTime.p95|Ja|REST proxy tillverkare begär efter släpning|Millisekunder|Genomsnitt|Kölängd för producerande REST-proxy|Dator, ämne|
 |NumActiveWorkers|Ja|Antal aktiva arbetare|Antal|Maximal|Antal aktiva arbetare|MetricName|
 
 
@@ -1790,18 +1819,6 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |Export av. meddelanden. filtrerat|Ja|Filtrerade data export meddelanden|Antal|Totalt|Antal meddelanden som har passerat genom filter i data export|exportId, exportDisplayName, destinationId, destinationDisplayName|
 |Export av. meddelanden togs emot|Ja|Mottagna data export meddelanden|Antal|Totalt|Antal meddelanden som har inkommande data export till data export, innan filtrering och anrikning av bearbetning|exportId, exportDisplayName, destinationId, destinationDisplayName|
 |Export av. meddelanden. skriven|Ja|Skrivna data export meddelanden|Antal|Totalt|Antal meddelanden som skrivits till ett mål|exportId, exportDisplayName, destinationId, destinationDisplayName|
-
-
-## <a name="microsoftiotspacesgraph"></a>Microsoft. IoTSpaces/Graph
-
-|Metric|Kan exporteras via diagnostikinställningar?|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|Dimensioner|
-|---|---|---|---|---|---|---|
-|ApiLatency|Inga|ApiLatency|6|0|Mäter svars tid för API-begäranden som gjorts till Microsoft. IoTSpaces i millisekunder|Inga dimensioner|
-|FunctionExecutionLatency|Inga|FunctionExecutionLatency|6|0|Mäter svars tid för användardefinierad funktions körning i millisekunder för Microsoft. IoTSpaces|Inga dimensioner|
-|MessageEgressFailure|Inga|MessageEgressFailure|2|3|Söker efter en lokaliserad sträng som liknar mått antal misslyckade i antal för Microsoft. IoTSpaces|Inga dimensioner|
-|MessageEgressLatency|Inga|MessageEgressLatency|6|0|Mäter svars tiden från dispatcher till andra slut punkter i millisekunder för Microsoft. IoTSpaces|Inga dimensioner|
-|MessageEgressSuccess|Inga|MessageEgressSuccess|2|3|Söker efter en lokaliserad sträng som liknar händelsen antal slutförda händelser i antal för Microsoft. IoTSpaces|Inga dimensioner|
-|ProcessingLatency|Inga|ProcessingLatency|6|0|Åtgärds svars tid från meddelande som skickats till sändnings händelse i millisekunder för Microsoft. IoTSpaces|Inga dimensioner|
 
 
 ## <a name="microsoftkeyvaultmanagedhsms"></a>Microsoft. nyckel valv/managedhsms
@@ -2021,6 +2038,8 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |ContentKeyPolicyCount|Ja|Antal nyckel principer för innehåll|Antal|Genomsnitt|Hur många innehålls nyckel principer som redan har skapats i det aktuella medie tjänst kontot|Inga dimensioner|
 |ContentKeyPolicyQuota|Ja|Kvot för innehålls nyckel princip|Antal|Genomsnitt|Hur många innehålls nyckel principer som tillåts för det aktuella Media Service-kontot|Inga dimensioner|
 |ContentKeyPolicyQuotaUsedPercentage|Ja|Procent andel av nyckel princip för innehåll|Procent|Genomsnitt|Procent andel av nyckel princip för innehåll i det aktuella medie tjänst kontot|Inga dimensioner|
+|MaxChannelsAndLiveEventsCount|Ja|Max kvot för Live-händelse|Antal|Maximal|Maximalt antal aktiva händelser som tillåts i det aktuella Media Services-kontot|Inga dimensioner|
+|MaxRunningChannelsAndLiveEventsCount|Ja|Högsta kör händelse kvot för Live-händelse|Antal|Maximal|Det maximala antalet aktiva Live-händelser som tillåts i det aktuella Media Services-kontot|Inga dimensioner|
 |RunningChannelsAndLiveEventsCount|Ja|Antal pågående Live-händelser|Antal|Genomsnitt|Det totala antalet aktiva Live-händelser i det aktuella Media Services-kontot|Inga dimensioner|
 |StreamingPolicyCount|Ja|Antal strömmande principer|Antal|Genomsnitt|Hur många strömmande principer som redan har skapats i det aktuella medie tjänst kontot|Inga dimensioner|
 |StreamingPolicyQuota|Ja|Kvot för strömmande princip|Antal|Genomsnitt|Hur många strömmande principer som tillåts för det aktuella Media Service-kontot|Inga dimensioner|
@@ -2041,9 +2060,9 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 
 |Metric|Kan exporteras via diagnostikinställningar?|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|Dimensioner|
 |---|---|---|---|---|---|---|
-|Processor|Ja|CPU-användning|Procent|Genomsnitt|CPU-användning för förstklassiga strömnings slut punkter. Dessa data är inte tillgängliga för standard slut punkter för direkt uppspelning.|VmId|
+|Processor|Ja|CPU-användning|Procent|Genomsnitt|CPU-användning för förstklassiga strömnings slut punkter. Dessa data är inte tillgängliga för standard slut punkter för direkt uppspelning.|Inga dimensioner|
 |Utgående|Ja|Utgående|Byte|Totalt|Mängden utgående data, i byte.|OutputFormat|
-|EgressBandwidth|Inga|Utgående bandbredd|BitsPerSecond|Genomsnitt|Utgående bandbredd i bitar per sekund.|VmId|
+|EgressBandwidth|Inga|Utgående bandbredd|BitsPerSecond|Genomsnitt|Utgående bandbredd i bitar per sekund.|Inga dimensioner|
 |Begäranden|Ja|Begäranden|Antal|Totalt|Begär anden till en slut punkt för direkt uppspelning.|OutputFormat, HttpStatusCode, ErrorCode|
 |SuccessE2ELatency|Ja|Slutför svars tid för slut punkt till slut punkt|Millisekunder|Genomsnitt|Genomsnittlig svars tid för lyckade begär anden i millisekunder.|OutputFormat|
 
@@ -2086,7 +2105,7 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |---|---|---|---|---|---|---|
 |AverageReadLatency|Ja|Genomsnittlig Läs fördröjning|Millisekunder|Genomsnitt|Genomsnittlig Läs fördröjning i millisekunder per åtgärd|Inga dimensioner|
 |AverageWriteLatency|Ja|Genomsnittlig Skriv fördröjning|Millisekunder|Genomsnitt|Genomsnittlig Skriv fördröjning i millisekunder per åtgärd|Inga dimensioner|
-|CbsVolumeBackupActive|Ja|Är volym säkerhets kopiering inaktive rad|Antal|Genomsnitt|Är säkerhets kopierings principen inaktive rad för volymen? 1 om ja, 0 om nej.|Inga dimensioner|
+|CbsVolumeBackupActive|Ja|Är volym säkerhets kopiering inaktive rad|Antal|Genomsnitt|Är säkerhets kopierings principen inaktive rad för volymen? 0 om ja, 1 om nej.|Inga dimensioner|
 |CbsVolumeLogicalBackupBytes|Ja|Säkerhets kopiering av volym byte|Byte|Genomsnitt|Totalt antal byte som har säkerhetskopierats för den här volymen.|Inga dimensioner|
 |CbsVolumeOperationComplete|Ja|Är volym säkerhets kopieringen klar|Antal|Genomsnitt|Har den senaste säkerhets kopierings-eller återställnings åtgärden slutförts? 1 om ja, 0 om nej.|Inga dimensioner|
 |CbsVolumeOperationTransferredBytes|Ja|Senaste överförda byte i volym säkerhets kopia|Byte|Genomsnitt|Totalt antal byte som överförts för den senaste säkerhets kopieringen eller återställningen.|Inga dimensioner|
@@ -2132,14 +2151,14 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |EstimatedBilledCapacityUnits|Inga|Uppskattade enheter för fakturerings kapacitet|Antal|Genomsnitt|Uppskattade kapacitets enheter som ska debiteras|Inga dimensioner|
 |FailedRequests|Ja|Misslyckade begäranden|Antal|Totalt|Antal misslyckade förfrågningar som Application Gateway har betjänat|BackendSettingsPool|
 |FixedBillableCapacityUnits|Inga|Fasta fakturerbara kapacitetsenheter|Antal|Genomsnitt|Lägsta kapacitets enhet som ska debiteras|Inga dimensioner|
-|HealthyHostCount|Ja|Antal felfria värdar|Antal|Genomsnitt|Antal felfria Server dels värdar|BackendSettingsPool|
+|HealthyHostCount|Ja|Antal felfria värdar|Antal|Genomsnitt|Antal felfria värdar i serverdelen|BackendSettingsPool|
 |MatchedCount|Ja|Brand vägg för total regel distribution i webb program|Antal|Totalt|Brand vägg för webb program, total regel distribution för inkommande trafik|RuleGroup, RuleId|
 |NewConnectionsPerSecond|Inga|Nya anslutningar per sekund|CountPerSecond|Genomsnitt|Nya anslutningar per sekund som upprättats med Application Gateway|Inga dimensioner|
 |ResponseStatus|Ja|Svars status|Antal|Totalt|Http-svarets status returnerades av Application Gateway|HttpStatusGroup|
 |Dataflöde|Inga|Dataflöde|BytesPerSecond|Genomsnitt|Antal byte per sekund som Application Gateway har betjänat|Inga dimensioner|
 |TlsProtocol|Ja|Klientens TLS-protokoll|Antal|Totalt|Antalet TLS-och icke-TLS-begäranden som initieras av klienten som upprättade anslutningen till Application Gateway. Om du vill visa TLS-protokollets distribution filtrerar du efter dimension TLS-protokollet.|Lyssnare, TlsProtocol|
 |TotalRequests|Ja|Totalt antal förfrågningar|Antal|Totalt|Antal lyckade förfrågningar som Application Gateway har betjänat|BackendSettingsPool|
-|UnhealthyHostCount|Ja|Antal felaktiga värdar|Antal|Genomsnitt|Antal värdar för skadade Server delar|BackendSettingsPool|
+|UnhealthyHostCount|Ja|Antal felaktiga värdar|Antal|Genomsnitt|Antal värdar i serverdelen med feltillstånd|BackendSettingsPool|
 
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
@@ -2152,6 +2171,17 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |NetworkRuleHit|Ja|Antal träffar för nätverks regler|Antal|Totalt|Antal gånger som nätverks regler träffades|Status, orsak, protokoll|
 |SNATPortUtilization|Ja|SNAT-port användning|Procent|Genomsnitt|Procent andel utgående SNAT-portar som används för närvarande|Protokoll|
 |Dataflöde|Inga|Dataflöde|BitsPerSecond|Genomsnitt|Genomflöde som bearbetas av den här brand väggen|Inga dimensioner|
+
+
+## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionHosts
+
+|Metric|Kan exporteras via diagnostikinställningar?|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|Dimensioner|
+|---|---|---|---|---|---|---|
+|pingmesh|Inga|Status för skydds-kommunikation|Antal|Genomsnitt|Kommunikations status visar 1 om all kommunikation är bra och 0 om den är felaktig.||
+|terminalserversessioner|Inga|Sessionsantal|Antal|Totalt|Antal sessioner för skydds. Visa i sum och per instans.|värd|
+|totalt|Ja|Totalt minne|Antal|Genomsnitt|Total minnes statistik.|värd|
+|usage_user|Inga|Använd processor|Antal|Genomsnitt|Statistik över processor användning.|processor, värd|
+|använt|Ja|Använt minne|Antal|Genomsnitt|Minnes användnings statistik.|värd|
 
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft. Network/Connections
@@ -2201,10 +2231,10 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |ErGatewayConnectionBitsOutPerSecond|Inga|BitsOutPerSecond|BitsPerSecond|Genomsnitt|Utgående bitar till Azure per sekund|ConnectionName|
 |ExpressRouteGatewayCountOfRoutesAdvertisedToPeer|Ja|Antal vägar som annonseras till peer (för hands version)|Antal|Maximal|Antal vägar som annonseras till peer av ExpressRouteGateway|roleInstance|
 |ExpressRouteGatewayCountOfRoutesLearnedFromPeer|Ja|Antal vägar som har lärts från peer-datorn (för hands version)|Antal|Maximal|Antal vägar som har lärts från peer-datorer av ExpressRouteGateway|roleInstance|
-|ExpressRouteGatewayCpuUtilization|Ja|PROCESSOR belastning (för hands version)|Antal|Genomsnitt|CPU-användning för ExpressRoute-gatewayen|roleInstance|
+|ExpressRouteGatewayCpuUtilization|Ja|CPU-användning|Antal|Genomsnitt|CPU-användning för ExpressRoute-gatewayen|roleInstance|
 |ExpressRouteGatewayFrequencyOfRoutesChanged|Inga|Frekvens för ändring av vägar (förhands granskning)|Antal|Totalt|Frekvens för flödes ändringar i ExpressRoute-Gateway|roleInstance|
 |ExpressRouteGatewayNumberOfVmInVnet|Inga|Antal virtuella datorer i Virtual Network (för hands version)|Antal|Maximal|Antal virtuella datorer i Virtual Network|Inga dimensioner|
-|ExpressRouteGatewayPacketsPerSecond|Inga|Paket per sekund (förhands granskning)|CountPerSecond|Genomsnitt|Paket antal för ExpressRoute-Gateway|roleInstance|
+|ExpressRouteGatewayPacketsPerSecond|Inga|Paket per sekund|CountPerSecond|Genomsnitt|Paket antal för ExpressRoute-Gateway|roleInstance|
 
 
 ## <a name="microsoftnetworkexpressrouteports"></a>Microsoft. Network/expressRoutePorts
@@ -2366,10 +2396,10 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |AverageBandwidth|Ja|Gatewayens S2S-bandbredd|BytesPerSecond|Genomsnitt|Genomsnittlig bandbredd för plats-till-plats för en gateway i byte per sekund|Inga dimensioner|
 |ExpressRouteGatewayCountOfRoutesAdvertisedToPeer|Ja|Antal vägar som annonseras till peer (för hands version)|Antal|Maximal|Antal vägar som annonseras till peer av ExpressRouteGateway|roleInstance|
 |ExpressRouteGatewayCountOfRoutesLearnedFromPeer|Ja|Antal vägar som har lärts från peer-datorn (för hands version)|Antal|Maximal|Antal vägar som har lärts från peer-datorer av ExpressRouteGateway|roleInstance|
-|ExpressRouteGatewayCpuUtilization|Ja|PROCESSOR belastning (för hands version)|Antal|Genomsnitt|CPU-användning för ExpressRoute-gatewayen|roleInstance|
+|ExpressRouteGatewayCpuUtilization|Ja|CPU-användning|Antal|Genomsnitt|CPU-användning för ExpressRoute-gatewayen|roleInstance|
 |ExpressRouteGatewayFrequencyOfRoutesChanged|Inga|Frekvens för ändring av vägar (förhands granskning)|Antal|Totalt|Frekvens för flödes ändringar i ExpressRoute-Gateway|roleInstance|
 |ExpressRouteGatewayNumberOfVmInVnet|Inga|Antal virtuella datorer i Virtual Network (för hands version)|Antal|Maximal|Antal virtuella datorer i Virtual Network|Inga dimensioner|
-|ExpressRouteGatewayPacketsPerSecond|Inga|Paket per sekund (förhands granskning)|CountPerSecond|Genomsnitt|Paket antal för ExpressRoute-Gateway|roleInstance|
+|ExpressRouteGatewayPacketsPerSecond|Inga|Paket per sekund|CountPerSecond|Genomsnitt|Paket antal för ExpressRoute-Gateway|roleInstance|
 |P2SBandwidth|Ja|Gateway P2S-bandbredd|BytesPerSecond|Genomsnitt|Genomsnittlig punkt-till-plats-bandbredd för en gateway i byte per sekund|Inga dimensioner|
 |P2SConnectionCount|Ja|Antal P2S-anslutningar|Antal|Maximal|Antal anslutningar från punkt-till-plats för en gateway|Protokoll|
 |TunnelAverageBandwidth|Ja|Tunnelbandbredd|BytesPerSecond|Genomsnitt|Genomsnittlig bandbredd för en tunnel i byte per sekund|ConnectionName, RemoteIP|
@@ -2379,6 +2409,13 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |TunnelIngressBytes|Ja|Inkommande byte för tunnel|Byte|Totalt|Inkommande byte för en tunnel|ConnectionName, RemoteIP|
 |TunnelIngressPacketDropTSMismatch|Ja|Inkommande ignorerade TS-paket med matchningsfel för tunnel|Antal|Totalt|Antal inkommande ignorerade paket från trafikväljare med matchningsfel för en tunnel|ConnectionName, RemoteIP|
 |TunnelIngressPackets|Ja|Inkommande tunnel paket|Antal|Totalt|Antal inkommande paket för en tunnel|ConnectionName, RemoteIP|
+|TunnelNatAllocations|Inga|NAT-allokeringar för tunnel|Antal|Totalt|Antal allokeringar för en NAT-regel på en tunnel|NatRule, ConnectionName, RemoteIP|
+|TunnelNatedBytes|Inga|NATed byte i tunnel|Byte|Totalt|Antal byte som har NATed på en tunnel av en NAT-regel |NatRule, ConnectionName, RemoteIP|
+|TunnelNatedPackets|Inga|Tunnel NATed-paket|Antal|Totalt|Antal paket som har NATed på en tunnel med en NAT-regel|NatRule, ConnectionName, RemoteIP|
+|TunnelNatFlowCount|Inga|Tunnel NAT-flöden|Antal|Totalt|Antal NAT-flöden på en tunnel efter flödes typ och NAT-regel|NatRule, ConnectionName, RemoteIP, FlowType|
+|TunnelNatPacketDrop|Inga|Tunnelns NAT-paket släpps|Antal|Totalt|Antal NATed-paket på en tunnel som släppts av Drop-typ och NAT-regel|NatRule, ConnectionName, RemoteIP, DropType|
+|TunnelReverseNatedBytes|Inga|NATed byte för tunnel|Byte|Totalt|Antal byte som växlades NATed på en tunnel med en NAT-regel|NatRule, ConnectionName, RemoteIP|
+|TunnelReverseNatedPackets|Inga|NATed-paket för omvänd tunnel|Antal|Totalt|Antal paket på en tunnel som har omvänd NATed av en NAT-regel|NatRule, ConnectionName, RemoteIP|
 
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
@@ -2408,6 +2445,13 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |TunnelIngressBytes|Ja|Inkommande byte för tunnel|Byte|Totalt|Inkommande byte för en tunnel|ConnectionName, RemoteIP|
 |TunnelIngressPacketDropTSMismatch|Ja|Inkommande ignorerade TS-paket med matchningsfel för tunnel|Antal|Totalt|Antal inkommande ignorerade paket från trafikväljare med matchningsfel för en tunnel|ConnectionName, RemoteIP|
 |TunnelIngressPackets|Ja|Inkommande tunnel paket|Antal|Totalt|Antal inkommande paket för en tunnel|ConnectionName, RemoteIP|
+|TunnelNatAllocations|Inga|NAT-allokeringar för tunnel|Antal|Totalt|Antal allokeringar för en NAT-regel på en tunnel|NatRule, ConnectionName, RemoteIP|
+|TunnelNatedBytes|Inga|NATed byte i tunnel|Byte|Totalt|Antal byte som har NATed på en tunnel av en NAT-regel |NatRule, ConnectionName, RemoteIP|
+|TunnelNatedPackets|Inga|Tunnel NATed-paket|Antal|Totalt|Antal paket som har NATed på en tunnel med en NAT-regel|NatRule, ConnectionName, RemoteIP|
+|TunnelNatFlowCount|Inga|Tunnel NAT-flöden|Antal|Totalt|Antal NAT-flöden på en tunnel efter flödes typ och NAT-regel|NatRule, ConnectionName, RemoteIP, FlowType|
+|TunnelNatPacketDrop|Inga|Tunnelns NAT-paket släpps|Antal|Totalt|Antal NATed-paket på en tunnel som släppts av Drop-typ och NAT-regel|NatRule, ConnectionName, RemoteIP, DropType|
+|TunnelReverseNatedBytes|Inga|NATed byte för tunnel|Byte|Totalt|Antal byte som växlades NATed på en tunnel med en NAT-regel|NatRule, ConnectionName, RemoteIP|
+|TunnelReverseNatedPackets|Inga|NATed-paket för omvänd tunnel|Antal|Totalt|Antal paket på en tunnel som har omvänd NATed av en NAT-regel|NatRule, ConnectionName, RemoteIP|
 
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft. NotificationHubs/Namespaces/NotificationHubs
@@ -2574,16 +2618,6 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |QueryPoolJobQueueLength|Ja|Kölängd för jobbkö (data uppsättningar) (gen1)|Antal|Genomsnitt|Antal jobb i kön för trådpoolen för Query. Stöds endast för Power BI Embedded generation 1-resurser.|Inga dimensioner|
 
 
-## <a name="microsoftprojectbabylonaccounts"></a>Microsoft. ProjectBabylon/konton
-
-|Metric|Kan exporteras via diagnostikinställningar?|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|Dimensioner|
-|---|---|---|---|---|---|---|
-|ScanCancelled|Ja|Skanningen avbröts|Antal|Totalt|Anger antalet avsökningar som har avbrutits.|ResourceId|
-|ScanCompleted|Ja|Sökningen är klar|Antal|Totalt|Anger hur många genomsökningar som har slutförts.|ResourceId|
-|ScanFailed|Ja|Sökningen misslyckades|Antal|Totalt|Anger antalet misslyckade genomsökningar.|ResourceId|
-|ScanTimeTaken|Ja|Tids åtgång för genomsökning|Sekunder|Totalt|Anger den totala genomsöknings tiden i sekunder.|ResourceId|
-
-
 ## <a name="microsoftpurviewaccounts"></a>Microsoft. avdelningens kontroll/konton
 
 |Metric|Kan exporteras via diagnostikinställningar?|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|Dimensioner|
@@ -2682,6 +2716,15 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |OutboundTraffic|Ja|Utgående trafik|Byte|Totalt|Utgående trafik för tjänsten|Inga dimensioner|
 |SystemErrors|Ja|Systemfel|Procent|Maximal|Procent andelen system fel|Inga dimensioner|
 |UserErrors|Ja|Användar fel|Procent|Maximal|Procent andel användar fel|Inga dimensioner|
+
+
+## <a name="microsoftsignalrservicewebpubsub"></a>Microsoft. SignalRService/WebPubSub
+
+|Metric|Kan exporteras via diagnostikinställningar?|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|Dimensioner|
+|---|---|---|---|---|---|---|
+|ConnectionCount|Ja|Antal anslutningar|Antal|Maximal|Mängden användar anslutning.|Inga dimensioner|
+|InboundTraffic|Ja|Inkommande trafik|Byte|Totalt|Inkommande trafik trafik för tjänsten|Inga dimensioner|
+|OutboundTraffic|Ja|Utgående trafik|Byte|Totalt|Utgående trafik för tjänsten|Inga dimensioner|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
@@ -2902,6 +2945,7 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |---|---|---|---|---|---|---|
 |ServerSyncSessionResult|Ja|Resultat av Sync-session|Antal|Genomsnitt|Mått som loggar värdet 1 varje gång Server slut punkten slutför en Sync-session med moln slut punkten|SyncGroupName, ServerEndpointName, SyncDirection|
 |StorageSyncBatchTransferredFileBytes|Ja|Byte som har synkroniserats|Byte|Totalt|Total fil storlek överförd för Sync-sessioner|SyncGroupName, ServerEndpointName, SyncDirection|
+|StorageSyncRecallComputedSuccessRate|Ja|Antal lyckade återställningar av moln nivå|Procent|Genomsnitt|Procent andel av alla återanrop som har lyckats|SyncGroupName, ServerName|
 |StorageSyncRecalledNetworkBytesByApplication|Ja|Återställnings storlek för moln skikt per program|Byte|Totalt|Storlek på data som återkallas av program|SyncGroupName, ServerName, ApplicationName|
 |StorageSyncRecalledTotalNetworkBytes|Ja|Återställnings storlek för moln nivå|Byte|Totalt|Storlek på data som återkallas|SyncGroupName, ServerName|
 |StorageSyncRecallIOTotalSizeBytes|Ja|Återkalla moln nivå|Byte|Totalt|Total storlek på data som återkallas av servern|ServerName|
@@ -2956,6 +3000,7 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |LateInputEvents|Ja|Sena ingångs händelser|Antal|Totalt|Sena ingångs händelser|LogicalName, PartitionId|
 |OutputEvents|Ja|Utgående händelser|Antal|Totalt|Utgående händelser|LogicalName, PartitionId|
 |OutputWatermarkDelaySeconds|Ja|Fördröjning för vattenstämpel|Sekunder|Maximal|Fördröjning för vattenstämpel|LogicalName, PartitionId|
+|ProcessCPUUsagePercentage|Ja|CPU%-användning (för hands version)|Procent|Maximal|CPU%-användning (för hands version)|LogicalName, PartitionId|
 |ResourceUtilization|Ja|SU%-användning|Procent|Maximal|SU%-användning|LogicalName, PartitionId|
 
 
@@ -3136,7 +3181,7 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |AverageResponseTime|Ja|Genomsnittlig svars tid (inaktuell)|Sekunder|Genomsnitt|Genomsnittlig tid det tar för appen att betjäna begär Anden, i sekunder.|Instans|
 |BytesReceived|Ja|Data i|Byte|Totalt|Mängden inkommande bandbredd som används av appen, i MiB.|Instans|
 |Bytes sent|Ja|Data ut|Byte|Totalt|Mängden utgående bandbredd som används av appen, i MiB.|Instans|
-|CpuTime|Ja|CPU-tid|Sekunder|Totalt|Mängden CPU som används av appen, i sekunder. För mer information om det här måttet. Se https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (processor tid jämfört med procent av processor). Inte tillämpligt för Azure Functions.|Instans|
+|CpuTime|Ja|CPU-tid|Sekunder|Totalt|Mängden CPU som används av appen, i sekunder. För mer information om det här måttet. Inte tillämpligt för Azure Functions. Se https://aka.ms/website-monitor-cpu-time-vs-cpu-percentage (processor tid jämfört med procent av processor).|Instans|
 |CurrentAssemblies|Ja|Aktuella sammansättningar|Antal|Genomsnitt|Det aktuella antalet sammansättningar som har lästs in i alla AppDomains i det här programmet.|Instans|
 |FileSystemUsage|Ja|Fil system användning|Byte|Genomsnitt|Procent andel av fil Systems kvoten som används av appen.|Inga dimensioner|
 |FunctionExecutionCount|Ja|Funktions körnings antal|Antal|Totalt|Funktions körnings antal. Endast tillgängligt för Azure Functions.|Instans|
@@ -3180,7 +3225,7 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |AverageResponseTime|Ja|Genomsnittlig svars tid (inaktuell)|Sekunder|Genomsnitt|Genomsnittlig tid det tar för appen att betjäna begär Anden, i sekunder.|Instans|
 |BytesReceived|Ja|Data i|Byte|Totalt|Mängden inkommande bandbredd som används av appen, i MiB.|Instans|
 |Bytes sent|Ja|Data ut|Byte|Totalt|Mängden utgående bandbredd som används av appen, i MiB.|Instans|
-|CpuTime|Ja|CPU-tid|Sekunder|Totalt|Mängden CPU som används av appen, i sekunder. För mer information om det här måttet. Se https://docs.microsoft.com/azure/app-service/web-sites-monitor#cpu-time-vs-cpu-percentage (processor tid jämfört med procent av processor).|Instans|
+|CpuTime|Ja|CPU-tid|Sekunder|Totalt|Mängden CPU som används av appen, i sekunder. För mer information om det här måttet. Inte tillämpligt för Azure Functions. Se https://aka.ms/website-monitor-cpu-time-vs-cpu-percentage (processor tid jämfört med procent av processor).|Instans|
 |CurrentAssemblies|Ja|Aktuella sammansättningar|Antal|Genomsnitt|Det aktuella antalet sammansättningar som har lästs in i alla AppDomains i det här programmet.|Instans|
 |FileSystemUsage|Ja|Fil system användning|Byte|Genomsnitt|Procent andel av fil Systems kvoten som används av appen.|Inga dimensioner|
 |FunctionExecutionCount|Ja|Funktions körnings antal|Antal|Totalt|Funktions körnings antal|Instans|
@@ -3224,7 +3269,6 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |FunctionHits|Ja|FunctionHits|Antal|Totalt|FunctionHits|Instans|
 |SiteErrors|Ja|SiteErrors|Antal|Totalt|SiteErrors|Instans|
 |SiteHits|Ja|SiteHits|Antal|Totalt|SiteHits|Instans|
-
 
 ## <a name="next-steps"></a>Nästa steg
 

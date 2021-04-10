@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5ed75a7f8c7915645778696282e179af3a4d4091
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0bf7213e5cfdc57194482c6914d4e25b9336832e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493602"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935882"
 ---
 # <a name="communication-services-logs"></a>Kommunikations tjänst loggar
 
@@ -97,7 +97,7 @@ Kommunikations tjänsterna erbjuder tre typer av loggar som du kan aktivera:
 | OutgoingMessageLength | Antalet tecken i det utgående meddelandet. |
 | IncomingMessageLength | Antalet tecken i det inkommande meddelandet. |
 | DeliveryAttempts | Antalet försök som har gjorts att leverera det här meddelandet. |
-| PhoneNumber | Telefonnumret som SMS-meddelandet skickas till. |
+| PhoneNumber | Telefonnumret som SMS-meddelandet skickas från. |
 | SdkType | Den SDK-typ som används i begäran. |
 | PlatformType | Den plattforms typ som används i begäran. |
 | Metod | Den metod som används i begäran. |

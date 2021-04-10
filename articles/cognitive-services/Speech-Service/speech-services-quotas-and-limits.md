@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2021
 ms.author: alexeyo
-ms.openlocfilehash: 7fe2942250e165606175392d7749becda0cff23b
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 7ef6ed5293ec9ecf49c16f8dfb0b6604942408f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105645117"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937064"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Kvoter och gränser för Speech-tjänster
 
@@ -63,19 +63,19 @@ För användning med [tal-SDK](speech-sdk.md) och/eller [tal-till-text REST API 
 ### <a name="text-to-speech-quotas-and-limits-per-speech-resource"></a>Text till tal-kvoter och gränser per tal resurs
 I tabellen nedan, utan att raden "justerbar", **inte** är justerbar för alla pris nivåer.
 
-| Kvot | Kostnads fri (F0)<sup>3</sup> | Standard (S0) |
-|--|--|--|
-| **Högsta antal transaktioner per sekund (TPS) för standard-och neurala-röster** | 200<sup>4</sup> | 200<sup>4</sup> |  |
-| **Gräns för samtidig begäran för anpassad röst** |  |  |
-| Standardvärde | 10 | 10 |
-| Justerbar | Ingen<sup>5</sup> | Ja<sup>5</sup> |
-| **HTTP-/regionsspecifika kvoter** |  |
-| Maximal ljud längd som produceras per begäran | 10 min | 10 min |
-| Maximalt antal distinkta `<voice>` taggar i SSML | 50 | 50 |
-| **WebSocket-/regionsspecifika kvoter** |  |  |
-|Maximal ljud längd som produceras per turn | 10 min | 10 min |
-|Max storlek för SSML-meddelande per turn |64 kB |64 kB |
-| **REST API gräns** | 20 förfrågningar per minut | 300 förfrågningar per minut |
+| Kvot                                                                          | Kostnads fri (F0)<sup>3</sup>  | Standard (S0)   |
+|--------------------------------------------------------------------------------|------------------------|-----------------|
+| **Högsta antal transaktioner per sekund (TPS) för standard-och neurala-röster** | 200<sup>4</sup>        | 200<sup>4</sup> |
+| **Gräns för samtidig begäran för anpassad röst**                                  |                        |                 |
+| Standardvärde                                                                  | 10                     | 10              |
+| Justerbar                                                                     | Ingen<sup>5</sup>         | Ja<sup>5</sup> |
+| **HTTP-/regionsspecifika kvoter**                                                       |                        |                 |
+| Maximal ljud längd som produceras per begäran                                          | 10 min                 | 10 min          |
+| Maximalt antal distinkta `<voice>` taggar i SSML                                  | 50                     | 50              |
+| **WebSocket-/regionsspecifika kvoter**                                                  |                        |                 |
+| Maximal ljud längd som produceras per turn                                             | 10 min                 | 10 min          |
+| Max storlek för SSML-meddelande per turn                                                 | 64 kB                  | 64 kB           |
+| **REST API gräns**                                                             | 20 förfrågningar per minut | 300 förfrågningar per minut |
 
 
 <sup>3</sup> **kostnads fri (F0)** pris nivå se även månads traktamenten på [sidan med priser](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).<br/>

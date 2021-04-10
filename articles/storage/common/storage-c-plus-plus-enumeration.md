@@ -1,19 +1,19 @@
 ---
 title: Visa Azure Storage resurser med C++-klient bibliotek
 description: 'Lär dig hur du använder API: er för registrering i Microsoft Azure Storage klient bibliotek för C++ för att räkna upp behållare, blobbar, köer, tabeller och entiteter.'
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 01/23/2017
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 8c8e2d2ddf6899e62bc95bc1e52c84eccdc3a91e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72b08a79ead90207c48c4fa682b708a0627b5df3
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92784107"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279637"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Lista över Azure Storage-resurser i C++
 
@@ -201,4 +201,4 @@ Mer information om Azure Storage och klient bibliotek för C++ finns i följande
 * [Så använder du Queue Storage från C++](../queues/storage-c-plus-plus-how-to-use-queues.md)
 * [Azure Storage klient bibliotek för C++ API-dokumentation.](https://azure.github.io/azure-storage-cpp/)
 * [Azure Storage teamets blogg](/archive/blogs/windowsazurestorage/)
-* [Azure Storage dokumentation](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure Storage-dokumentation](https://azure.microsoft.com/documentation/services/storage/)

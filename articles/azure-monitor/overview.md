@@ -5,12 +5,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: fe8714f38c6a04b311a748f3eb081be82eb86635
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: afe6e82c3cc9773fbf0c17992fd6894d199d177f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105024156"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937251"
 ---
 # <a name="azure-monitor-overview"></a>Översikt över Azure Monitor
 
@@ -60,7 +60,7 @@ Azure Monitor kan samla in data från [olika källor](monitor-reference.md). Det
 - **Övervaknings data för Azure-prenumeration**: data om drift och hantering av en Azure-prenumeration, samt data om hälso tillståndet och driften av Azure. 
 - **Azure-klient övervaknings data**: data om driften av Azure-tjänster på klient nivå, till exempel Azure Active Directory.
 
-När du skapar en Azure-prenumeration och börjar lägga till resurser, till exempel virtuella datorer och webbappar, börjar Azure Monitor samla in data.  [Aktivitets loggar](essentials/platform-logs-overview.md) poster när resurser skapas eller ändras. [Mått](data-platform.md) visar hur resursen presterar och vilka resurser den använder. 
+När du skapar en Azure-prenumeration och börjar lägga till resurser, till exempel virtuella datorer och webbappar, börjar Azure Monitor samla in data.  [Aktivitets loggar](essentials/platform-logs-overview.md) poster när resurser skapas eller ändras. [Mått](essentials/data-platform-metrics.md) visar hur resursen presterar och vilka resurser den använder. 
 
 [Aktivera diagnostik](essentials/platform-logs-overview.md) för att utöka de data som du samlar in i den interna åtgärden för resurserna.  [Lägg till en agent](agents/agents-overview.md) för att beräkna resurser för att samla in telemetri från sina gäst operativ system. 
 

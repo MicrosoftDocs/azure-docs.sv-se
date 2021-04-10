@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fb517f8c50ad2c32f23542e60069a0e0a496a2d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fb4ebbd0b1715d9de3905060952a35ad42060119
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98660672"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167557"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Gör så här: hantera inaktiva användar konton i Azure AD
 
@@ -47,10 +47,9 @@ Du identifierar inaktiva konton genom att utvärdera egenskapen **lastSignInDate
 
 - **Användare efter datum**: i det här scenariot begär du en lista med användare med en lastSignInDateTime före ett angivet datum: `https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 
-
-
-
-
+> [!NOTE]
+> Det kan finnas behov av att generera en rapport över det senaste inloggnings datumet för alla användare, om så är fallet kan du använda följande scenario.
+> **Senaste inloggnings datum och-tid för alla användare**: i det här scenariot begär du en lista över alla användare och de senaste lastSignInDateTime för varje användare: `https://graph.microsoft.com/beta/users?$select=displayName,signInActivity` 
 
 ## <a name="what-you-need-to-know"></a>Vad du behöver veta
 

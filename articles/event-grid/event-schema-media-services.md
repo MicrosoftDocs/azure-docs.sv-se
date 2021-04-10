@@ -4,10 +4,10 @@ description: Beskriver de egenskaper som har angetts för Media Services händel
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 1f2f62f0a5ceed0e000c8bb7690fff009593bf82
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104591936"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Azure Media Services som en Event Grid källa
@@ -279,7 +279,7 @@ För varje slutlig jobb tillstånds ändring (till exempel JobFinished, JobCance
 
 Data-objektet har följande egenskaper:
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
 | `outputs` | Matris | Hämtar jobbets utdata.|
 
@@ -643,7 +643,7 @@ Du hittar fel resultat koderna i [fel koder för Live-händelser](../media-servi
 
 De korrekt resultat koderna för från koppling är:
 
-| Resultatkod | Description |
+| Resultatkod | Beskrivning |
 | ----------- | ----------- |
 | S_OK | Kodaren har kopplats från. |
 | MPE_CLIENT_TERMINATED_SESSION | Kodare frånkopplad (RTMP). |

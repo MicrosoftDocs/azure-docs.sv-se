@@ -137,6 +137,8 @@
           href: how-to-setup-lab-gpu.md
         - name: Förbereda en mall för virtuell Windows-dator
           href: how-to-prepare-windows-template.md
+        - name: Använd extern fil lagring
+          href: how-to-attach-external-storage.md
         - name: Styra stängningsbeteende för Windows
           href: how-to-windows-shutdown.md
         - name: Visa supportinformation (lärare)

@@ -1258,31 +1258,31 @@
         - name: CLI
           items:
             - name: Skapa en hanterad disk från en virtuell hårddisk
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd
             - name: Skapa en hanterad disk från en ögonblicksbild
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd
             - name: Kopiera en hanterad disk till samma eller en annan prenumeration
               href: 'https://github.com/Azure-Samples/azure-cli-samples/blob/master/virtual-machine/copy-managed-disks-to-same-or-different-subscription/copy-managed-disks-to-same-or-different-subscription.sh'
             - name: Kopiera en ögonblicks bild till samma eller en annan prenumeration
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-same-or-different-subscription.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription
             - name: Exportera en ögonblicksbild som en virtuell hårddisk till ett lagringskonto
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-storage-account.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account
             - name: Exportera en hanterad disk som en virtuell hård disk till ett lagrings konto
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account
         - name: PowerShell
           items:
             - name: Skapa en hanterad disk från en virtuell hårddisk
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd
             - name: Skapa en hanterad disk från en ögonblicksbild
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot
             - name: Kopiera en ögonblicks bild till samma eller en annan prenumeration
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription
             - name: Exportera en ögonblicksbild som en virtuell hårddisk till ett lagringskonto
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-storage-account.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account
             - name: Exportera en hanterad disk som en virtuell hård disk till ett lagrings konto
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd
             - name: Skapa en ögonblicksbild från en virtuell hårddisk
-              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md'
+              href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd
 - name: Nätverk
   items:
     - name: Översikt
@@ -1720,12 +1720,10 @@
             - name: Windows
               displayName: Enable disaster recovery
               href: ./windows/tutorial-disaster-recovery.md
-        - name: Aktivera haveriberedskap för en virtuell dator
-          href: ../site-recovery/azure-to-azure-tutorial-enable-replication.md
-        - name: Köra ett programåterställningstest för en virtuell dator
-          href: ../site-recovery/azure-to-azure-tutorial-dr-drill.md
         - name: Redundansväxla en virtuell dator till en annan region
           href: ../site-recovery/azure-to-azure-tutorial-failover-failback.md
+        - name: Återställa en virtuell dator till den primära regionen
+          href: ../site-recovery/azure-to-azure-tutorial-failback.md
     - name: Flytta och migrera virtuella datorer
       items:
         - name: Ändra prenumeration eller resursgrupp

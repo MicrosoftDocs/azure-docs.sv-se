@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 9fa6a1758bc2e2a76291efc3bb239c5249a6e21e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a3a70ac5d5603cad98c199cbd8e3b98bb095d131
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149349"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167676"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Konfigurera beräknings mål för modell utbildning och distribution
 
@@ -53,7 +53,7 @@ Om du vill använda beräknings mål som hanteras av Azure Machine Learning, se:
 
 ## <a name="whats-a-compute-target"></a>Vad är ett beräknings mål?
 
-Med Azure Machine Learning kan du träna din modell på en mängd olika resurser eller miljöer, som sammankallas för [__beräknings mål__](concept-azure-machine-learning-architecture.md#compute-targets). Ett beräknings mål kan vara en lokal dator eller en moln resurs, t. ex. en Azure Machine Learning Compute, Azure HDInsight eller en virtuell dator.  Du kan också använda beräknings mål för modell distribution enligt beskrivningen i ["var och hur du distribuerar dina modeller"](how-to-deploy-and-where.md).
+Med Azure Machine Learning kan du träna din modell på olika resurser eller miljöer, tillsammans kallas för [__beräknings mål__](concept-azure-machine-learning-architecture.md#compute-targets). Ett beräknings mål kan vara en lokal dator eller en moln resurs, t. ex. en Azure Machine Learning Compute, Azure HDInsight eller en virtuell dator.  Du kan också använda beräknings mål för modell distribution enligt beskrivningen i ["var och hur du distribuerar dina modeller"](how-to-deploy-and-where.md).
 
 
 ## <a name="local-computer"></a><a id="local"></a>Lokal dator
@@ -64,9 +64,12 @@ När du använder den lokala datorn för att få en **härledning** måste du ha
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Virtuella fjärrdatorer
 
-Azure Machine Learning stöder också anslutning av en virtuell Azure-dator. Den virtuella datorn måste vara en Azure-Data Science Virtual Machine (DSVM). Den här virtuella datorn är en förkonfigurerad miljö för data vetenskap och AI-utveckling i Azure. Den virtuella datorn innehåller ett granskat val av verktyg och ramverk för hela livs cykeln för Machine Learning-utveckling. Mer information om hur du använder DSVM med Azure Machine Learning finns i [Konfigurera en utvecklings miljö](./how-to-configure-environment.md#dsvm).
+Azure Machine Learning stöder också anslutning av en virtuell Azure-dator. Den virtuella datorn måste vara en Azure-Data Science Virtual Machine (DSVM). Den virtuella datorn innehåller ett granskat val av verktyg och ramverk för hela livs cykeln för Machine Learning-utveckling. Mer information om hur du använder DSVM med Azure Machine Learning finns i [Konfigurera en utvecklings miljö](./how-to-configure-environment.md#dsvm).
 
-1. **Skapa**: skapa en DSVM innan du använder den för att träna din modell. Information om hur du skapar den här resursen finns i [etablera data science Virtual Machine för Linux (Ubuntu)](./data-science-virtual-machine/dsvm-ubuntu-intro.md).
+> [!TIP]
+> I stället för en virtuell fjärrdator rekommenderar vi att du använder [Azure Machine Learning beräknings instansen](concept-compute-instance.md). Det är en fullständigt hanterad, molnbaserad beräknings lösning som är unik för Azure Machine Learning. Mer information finns i [skapa och hantera Azure Machine Learning beräknings instans](how-to-create-manage-compute-instance.md).
+
+1. **Skapa**: Azure Machine Learning kan inte skapa en virtuell fjärrdator åt dig. I stället måste du skapa den virtuella datorn och sedan koppla den till din Azure Machine Learning-arbetsyta. Information om hur du skapar en DSVM finns i [etablera data science Virtual Machine for Linux (Ubuntu)](./data-science-virtual-machine/dsvm-ubuntu-intro.md).
 
     > [!WARNING]
     > Azure Machine Learning stöder bara virtuella datorer som kör **Ubuntu**. När du skapar en virtuell dator eller väljer en befintlig virtuell dator måste du välja en virtuell dator som använder Ubuntu.
@@ -120,11 +123,16 @@ Azure Machine Learning stöder också anslutning av en virtuell Azure-dator. Den
    src = ScriptRunConfig(source_directory=".", script="train.py", compute_target=compute, environment=myenv) 
    ```
 
+> [!TIP]
+> Om du vill __ta bort__ (frånkoppla) en virtuell dator från din arbets yta använder du metoden [RemoteCompute. Detached ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remotecompute#detach--) .
+>
+> Azure Machine Learning tar inte bort den virtuella datorn åt dig. Du måste manuellt ta bort den virtuella datorn med hjälp av Azure Portal, CLI eller SDK för virtuell Azure-dator.
+
 ## <a name="azure-hdinsight"></a><a id="hdinsight"></a>Azure HDInsight 
 
 Azure HDInsight är en populär plattform för stor data analys. Plattformen ger Apache Spark som kan användas för att träna din modell.
 
-1. **Skapa**: skapa HDInsight-klustret innan du använder det för att träna din modell. Information om hur du skapar ett spark på HDInsight-kluster finns i [skapa ett Spark-kluster i HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
+1. **Skapa**: Azure Machine Learning kan inte skapa ett HDInsight-kluster åt dig. I stället måste du skapa klustret och sedan ansluta det till din Azure Machine Learning-arbetsyta. Mer information finns i [skapa ett Spark-kluster i HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
     > [!WARNING]
     > Azure Machine Learning kräver att HDInsight-klustret har en __offentlig IP-adress__.
@@ -165,8 +173,10 @@ Azure HDInsight är en populär plattform för stor data analys. Plattformen ger
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
-
-Nu när du har kopplat beräkningen och konfigurerat din körning är nästa steg att [Skicka utbildningen](how-to-set-up-training-targets.md).
+> [!TIP]
+> Om du vill __ta bort__ (från) ett HDInsight-kluster från arbets ytan använder du metoden [HDInsightCompute. Detached ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.hdinsight.hdinsightcompute#detach--) .
+>
+> Azure Machine Learning tar inte bort HDInsight-klustret åt dig. Du måste manuellt ta bort den med hjälp av Azure Portal, CLI eller SDK för Azure HDInsight.
 
 ## <a name="azure-batch"></a><a id="azbatch"></a>Azure Batch 
 
@@ -215,7 +225,7 @@ print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 
 Azure Databricks är en Apache Spark-baserad miljö i Azure-molnet. Den kan användas som ett beräknings mål med en Azure Machine Learning pipeline.
 
-Skapa en Azure Databricks arbets yta innan du använder den. Information om hur du skapar en arbets ytas resurs finns i [köra ett Spark-jobb på Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) -dokument.
+> [! VIKTIGT} Azure Machine Learning kan inte skapa ett Azure Databricks Compute Target. I stället måste du skapa en Azure Databricks arbets yta och sedan koppla den till Azure Machine Learning-arbetsytan. Information om hur du skapar en arbets ytas resurs finns i [köra ett Spark-jobb på Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) -dokument.
 
 Om du vill bifoga Azure Databricks som ett beräknings mål anger du följande information:
 
@@ -330,7 +340,6 @@ Azure Container Instances (ACI) skapas dynamiskt när du distribuerar en modell.
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
 Med Azure Kubernetes service (AKS) kan du välja mellan olika konfigurations alternativ när de används med Azure Machine Learning. Mer information finns i [så här skapar och ansluter du Azure Kubernetes-tjänsten](how-to-create-attach-kubernetes.md).
-
 
 ## <a name="notebook-examples"></a>Exempel på bärbara datorer
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
 ms.openlocfilehash: 154b496a6c14d307c09ddcd1b42bf4ba568cb315
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104607899"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Skicka meddelanden från moln till enhet från en IoT-hubb
@@ -100,7 +100,7 @@ Texten är en JSON-serialiserad matris med poster, var och en med följande egen
 | EnqueuedTimeUtc    | En tidsstämpel som visar när resultatet av meddelandet har inträffat (till exempel när hubben fick feedback-meddelandet eller att det ursprungliga meddelandet upphör att gälla) |
 | OriginalMessageId  | *Messageid* för det meddelande från molnet till enheten som den här feedback-informationen avser |
 | StatusCode         | En obligatorisk sträng som används i feedback-meddelanden som genereras av IoT Hub: <br/> *Klart* <br/> *Upphört* <br/> *DeliveryCountExceeded* <br/> *Avslagen* <br/> *Rensas* |
-| Description        | Sträng värden för *StatusCode* |
+| Beskrivning        | Sträng värden för *StatusCode* |
 | DeviceId           | *DeviceID* för mål enheten för det meddelande från molnet till enheten som den här återkopplingen avser |
 | DeviceGenerationId | *DeviceGenerationId* för mål enheten för det moln-till-enhet-meddelande som den här återkopplingen avser |
 

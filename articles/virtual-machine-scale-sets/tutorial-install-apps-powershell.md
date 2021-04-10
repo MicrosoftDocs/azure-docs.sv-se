@@ -5,16 +5,15 @@ author: ju-shim
 ms.author: jushiman
 ms.topic: tutorial
 ms.service: virtual-machine-scale-sets
-ms.subservice: powershell
 ms.date: 11/08/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: e783f7f0a9be413679e509e4d6124d50bb811821
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c365e83c0208a5105d9396fb788966bbd4643ac
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87059291"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934592"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>Självstudie: Installera program i VM-skalningsuppsättningar med Azure PowerShell
 
@@ -154,14 +153,14 @@ Skriv den offentliga IP-adressen för lastbalanseraren i en webbläsare. Lastbal
 Lämna webbläsaren öppen så att du kan se en uppdaterad version i nästa steg.
 
 
-## <a name="update-app-deployment"></a>Uppdatera appdistributionen
+## <a name="update-app-deployment&quot;></a>Uppdatera appdistributionen
 Under livscykeln för en skalningsuppsättning, kan du behöva distribuera en uppdaterad version av ditt program. Med det anpassade skripttillägget, kan du referera till ett uppdaterat distributionsskript och sedan tillämpa tillägget till din skalningsuppsättning igen. När skalningsuppsättningen skapades i ett föregående steg, angavs `-UpgradePolicyMode` som *automatiskt*. Den här inställningen låter virtuella datorinstanser i skalningsuppsättningen att automatiskt uppdatera och tillämpa den senaste versionen av ditt program.
 
 Skapa en ny konfigurationsdefinition med namnet *customConfigv2*. Den här definitionen kör en uppdaterad *v2*-version av installationsskriptet för programmet:
 
 ```azurepowershell-interactive
 $customConfigv2 = @{
-  "fileUris" = (,"https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/automate-iis-v2.ps1");
+  &quot;fileUris&quot; = (,&quot;https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/automate-iis-v2.ps1");
   "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File automate-iis-v2.ps1"
 }
 ```
