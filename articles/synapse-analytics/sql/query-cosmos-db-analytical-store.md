@@ -10,12 +10,12 @@ ms.date: 03/02/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: 10262b168b91370956c9559ba688c72213ba7618
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 64a112fd29ee9e3fbb82d9b54322415569b3ff85
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104871001"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209544"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link"></a>Fråga Azure Cosmos DB data med en server lös SQL-pool i Azure Synapse-länk
 
@@ -33,22 +33,31 @@ Med Server lös SQL-pool kan du fråga Azure Cosmos DB analys lagring med hjälp
 
 ### <a name="openrowset-with-key"></a>[OpenRowSet med nyckel](#tab/openrowset-key)
 
-För att stödja frågor och analys av data i ett Azure Cosmos DB analys lager, använder en server lös SQL-pool följande `OPENROWSET` syntax:
+För att stödja frågor och analys av data i ett Azure Cosmos DB analys lager, används en server lös SQL-pool. SQL-syntaxen används i SQL `OPENROWSET` -poolen, så du måste först konvertera Azure Cosmos DB-anslutningssträngen till det här formatet:
 
 ```sql
 OPENROWSET( 
        'CosmosDB',
-       '<Azure Cosmos DB connection string>',
+       '<SQL connection string for Azure Cosmos DB>',
        <Container name>
     )  [ < with clause > ] AS alias
 ```
 
-Anslutnings strängen Azure Cosmos DB anger Azure Cosmos DB konto namn, databas namn, huvud nyckel för databas konto och ett valfritt region namn till `OPENROWSET` funktionen.
+SQL-anslutningssträngen för Azure Cosmos DB anger Azure Cosmos DB konto namn, databas namn, huvud nyckel för databas konto och ett valfritt region namn till `OPENROWSET` funktionen. En del av den här informationen kan hämtas från standard anslutnings strängen för Azure Cosmos DB.
 
-Anslutnings strängen har följande format:
+Konvertera från standard Azure Cosmos DB anslutnings sträng format:
+
+```
+AccountEndpoint=https://<database account name>.documents.azure.com:443/;AccountKey=<database account master key>;
+```
+
+SQL-anslutningssträngen har följande format:
+
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
+
+Regionen är valfri. Om den utelämnas används behållarens primära region.
 
 Namnet på Azure Cosmos DB containern anges utan citat tecken i `OPENROWSET` syntaxen. Om behållar namnet innehåller specialtecken, till exempel ett bindestreck (-), ska namnet omslutas inom hakparenteser ( `[]` ) i `OPENROWSET` syntaxen.
 
@@ -59,13 +68,14 @@ Du kan använda `OPENROWSET` syntax som refererar till autentiseringsuppgifter:
 ```sql
 OPENROWSET( 
        PROVIDER = 'CosmosDB',
-       CONNECTION = '<Azure Cosmos DB connection string without account key>',
+       CONNECTION = '<SQL connection string for Azure Cosmos DB without account key>',
        OBJECT = '<Container name>',
        [ CREDENTIAL | SERVER_CREDENTIAL ] = '<credential name>'
     )  [ < with clause > ] AS alias
 ```
 
-Den Azure Cosmos DB anslutnings strängen innehåller inte nyckel i det här fallet. Anslutnings strängen har följande format:
+SQL-anslutningssträngen för Azure Cosmos DB innehåller inte någon nyckel i det här fallet. Anslutnings strängen har följande format:
+
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>'
 ```
@@ -165,6 +175,7 @@ Anta att vi har importerat några data från [ECDC COVID-datauppsättningen](htt
 Dessa enkla JSON-dokument i Azure Cosmos DB kan representeras som en uppsättning rader och kolumner i Synapse SQL. Med `OPENROWSET` funktionen kan du ange en delmängd av de egenskaper som du vill läsa och de exakta kolumn typerna i- `WITH` satsen:
 
 ### <a name="openrowset-with-key"></a>[OpenRowSet med nyckel](#tab/openrowset-key)
+
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET(
@@ -173,7 +184,9 @@ FROM OPENROWSET(
        Ecdc
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
+
 ### <a name="openrowset-with-credential"></a>[OpenRowSet med autentiseringsuppgift](#tab/openrowset-credential)
+
 ```sql
 /*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
     CREATE CREDENTIAL MyCosmosDbAccountCredential
@@ -186,7 +199,9 @@ FROM OPENROWSET(
       OBJECT = 'Ecdc',
       SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+   
 ```
+
 ---
 Resultatet av den här frågan kan se ut som i följande tabell:
 
@@ -256,7 +271,7 @@ WITH (  paper_id    varchar(8000),
 Resultatet av den här frågan kan se ut som i följande tabell:
 
 | paper_id | title | metadata | författaren |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | bb11206963e831f... | Extra information ett eko-epidemi... | `{"title":"Supplementary Informati…` | `[{"first":"Julien","last":"Mélade","suffix":"","af…`| 
 | bb1206963e831f1... | Användning av convalescent serum i immun-E... | `{"title":"The Use of Convalescent…` | `[{"first":"Antonio","last":"Lavazza","suffix":"", …` |
 | bb378eca9aac649... | Tylosema esculentum (Marama) knöl och B... | `{"title":"Tylosema esculentum (Ma…` | `[{"first":"Walter","last":"Chingwaru","suffix":"",…` | 

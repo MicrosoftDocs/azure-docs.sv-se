@@ -10,10 +10,10 @@ ms.date: 03/25/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.openlocfilehash: 92324d68eabfb1885a482a7f539140f93be77596
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105605203"
 ---
 # <a name="sdks-and-rest-apis"></a>SDK: er och REST API: er
@@ -43,7 +43,7 @@ Azure Resource Manager-, identitet-och SMS-SDK: er fokuserar på service integra
 
 Publicerings platser för enskilda SDK-paket beskrivs nedan.
 
-| Område           | JavaScript | .NET | Python | Java SE | iOS | Android | Övrigt                          |
+| Område           | JavaScript | .NET | Python | Java SE | iOS | Android | Annat                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
 | Azure Resource Manager | -         | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Communication)    |   [PyPi](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [Gå via GitHub](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
 | Common         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | Ej tillämpligt      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |

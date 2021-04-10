@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/25/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 3ca4938d8666fd60ebac9e75bb2da1780e0914d3
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: 81c28a3c64c81da8f6939d821c2bd61ba8617a7b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105608008"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935251"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Vanliga frågor och svar om Azure NetApp Files
 
@@ -191,6 +191,10 @@ Den volym storlek som rapporteras av SMB-klienten är den maximala storlek som A
 ### <a name="im-having-issues-connecting-to-my-smb-share-what-should-i-do"></a>Jag har problem med att ansluta till min SMB-resurs. Vad ska jag göra?
 
 Vi rekommenderar att du anger den maximala toleransen för synkronisering av dator klockor till fem minuter. Mer information finns i [Max tolerans för synkronisering av dator klockor](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj852172(v=ws.11)). 
+
+### <a name="can-i-manage-smb-shares-sessions-and-open-files-through-computer-management-console-mmc"></a>Kan jag hantera `SMB Shares` , `Sessions` och `Open Files` via dator hanterings konsolen (MMC)?
+
+Hantering av `SMB Shares` , `Sessions` , och `Open Files` via dator hanterings konsolen (MMC) stöds inte för närvarande.
 
 ### <a name="how-can-i-obtain-the-ip-address-of-an-smb-volume-via-the-portal"></a>Hur kan jag hämta IP-adressen för en SMB-volym via portalen?
 

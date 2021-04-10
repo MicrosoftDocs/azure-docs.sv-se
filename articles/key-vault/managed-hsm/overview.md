@@ -7,15 +7,15 @@ ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: overview
 ms.custom: mvc
-ms.date: 09/15/2020
+ms.date: 04/01/2021
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: 95feeebf009cae22cf3952df80596c12e75cbe4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 605e3f0451cc2029ecc98e42741f30a2d3ef190b
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94357580"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167965"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm-preview"></a>Vad är Azure Key Vault hanterad HSM (för hands version)?
 
@@ -36,6 +36,7 @@ Azure Key Vault hanterad HSM är en fullständigt hanterad moln tjänst med hög
 - **Isolerad åtkomst kontroll**: HANTERAd HSM-åtkomst kontroll modell gör att dedicerade HSM-kluster administratörer har fullständig kontroll över HSM: er som även hanterings gruppen, prenumerationen eller resurs gruppen administratörer inte kan åsidosätta.
 - **Fips 140-2 nivå 3-verifierade HSM: er**: skydda dina data och uppfyller kraven för efterlevnad med FIPS ((Federal Information Protection standard)) 140-2 nivå 3, verifierade HSM: er. Hanterade HSM: er använder Marvell LiquidSecurity HSM-kort.
 - **Övervaka och granska**: fullständigt integrerat med Azure Monitor. Hämta fullständiga loggar för all aktivitet via Azure Monitor. Använd Azure Log Analytics för analys och aviseringar.
+- **Data placering**: hanterad HSM lagrar/bearbetar inte kund information utanför den region som kunden distribuerar HSM-instansen i.
 
 ### <a name="integrated-with-azure-and-microsoft-paassaas-services"></a>Integrerat med Azure och Microsoft PaaS/SaaS-tjänster 
 

@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
 ms.openlocfilehash: d0bb5c55d3f7ba0573dfe9b511f4d31dcc64ed85
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105567839"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>Övervaka SQL-distributioner med SQL Insights (förhands granskning)
@@ -79,46 +79,46 @@ Tabellerna nedan innehåller följande kolumner:
 ### <a name="data-for-azure-sql-database"></a>Data för Azure SQL Database 
 | Eget namn | Konfigurations namn | Namnområde | Dynamiska hanteringsvyer (DMV) | Aktive rad som standard | Standard frekvens för samling |
 |:---|:---|:---|:---|:---|:---|
-| Väntan på DB | AzureSQLDBWaitStats | sqlserver_azuredb_waitstats | sys.dm_db_wait_stats | No | NA |
-| Status för DBO-väntan | AzureSQLDBOsWaitstats | sqlserver_waitstats |sys.dm_os_wait_stats | Yes | 60 sekunder |
-| Minnesstyrningar | AzureSQLDBMemoryClerks | sqlserver_memory_clerks | sys.dm_os_memory_clerks | Yes | 60 sekunder |
-| I/O för databas | AzureSQLDBDatabaseIO | sqlserver_database_io | sys.dm_io_virtual_file_stats<br>sys.database_files<br>tempdb.sys .database_files | Yes | 60 sekunder |
-| Serveregenskaper | AzureSQLDBServerProperties | sqlserver_server_properties | sys.dm_os_job_object<br>sys.database_files<br>sys. samling<br>sys. [database_service_objectives] | Yes | 60 sekunder |
-| Prestandaräknare | AzureSQLDBPerformanceCounters | sqlserver_performance | sys.dm_os_performance_counters<br>sys.databases | Yes | 60 sekunder |
-| Resurs statistik | AzureSQLDBResourceStats | sqlserver_azure_db_resource_stats | sys.dm_db_resource_stats | Yes | 60 sekunder |
-| Resursstyrning | AzureSQLDBResourceGovernance | sqlserver_db_resource_governance | sys.dm_user_db_resource_governance | Yes | 60 sekunder |
-| Begäranden | AzureSQLDBRequests | sqlserver_requests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | No | NA |
-| Schemaläggare| AzureSQLDBSchedulers | sqlserver_schedulers | sys.dm_os_schedulers | No | NA  |
+| Väntan på DB | AzureSQLDBWaitStats | sqlserver_azuredb_waitstats | sys.dm_db_wait_stats | Inga | NA |
+| Status för DBO-väntan | AzureSQLDBOsWaitstats | sqlserver_waitstats |sys.dm_os_wait_stats | Ja | 60 sekunder |
+| Minnesstyrningar | AzureSQLDBMemoryClerks | sqlserver_memory_clerks | sys.dm_os_memory_clerks | Ja | 60 sekunder |
+| I/O för databas | AzureSQLDBDatabaseIO | sqlserver_database_io | sys.dm_io_virtual_file_stats<br>sys.database_files<br>tempdb.sys .database_files | Ja | 60 sekunder |
+| Serveregenskaper | AzureSQLDBServerProperties | sqlserver_server_properties | sys.dm_os_job_object<br>sys.database_files<br>sys. samling<br>sys. [database_service_objectives] | Ja | 60 sekunder |
+| Prestandaräknare | AzureSQLDBPerformanceCounters | sqlserver_performance | sys.dm_os_performance_counters<br>sys.databases | Ja | 60 sekunder |
+| Resurs statistik | AzureSQLDBResourceStats | sqlserver_azure_db_resource_stats | sys.dm_db_resource_stats | Ja | 60 sekunder |
+| Resursstyrning | AzureSQLDBResourceGovernance | sqlserver_db_resource_governance | sys.dm_user_db_resource_governance | Ja | 60 sekunder |
+| Begäranden | AzureSQLDBRequests | sqlserver_requests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | Inga | NA |
+| Schemaläggare| AzureSQLDBSchedulers | sqlserver_schedulers | sys.dm_os_schedulers | Inga | NA  |
 
 ### <a name="data-for-azure-sql-managed-instance"></a>Data för Azure SQL-hanterad instans 
 
 | Eget namn | Konfigurations namn | Namnområde | Dynamiska hanteringsvyer (DMV) | Aktive rad som standard | Standard frekvens för samling |
 |:---|:---|:---|:---|:---|:---|
-| Väntestatistik | AzureSQLMIOsWaitstats | sqlserver_waitstats | sys.dm_os_wait_stats | Yes | 60 sekunder |
-| Minnesstyrningar | AzureSQLMIMemoryClerks | sqlserver_memory_clerks | sys.dm_os_memory_clerks | Yes | 60 sekunder |
-| I/O för databas | AzureSQLMIDatabaseIO | sqlserver_database_io | sys.dm_io_virtual_file_stats<br>sys.master_files | Yes | 60 sekunder |
-| Serveregenskaper | AzureSQLMIServerProperties | sqlserver_server_properties | sys.server_resource_stats | Yes | 60 sekunder |
-| Prestandaräknare | AzureSQLMIPerformanceCounters | sqlserver_performance | sys.dm_os_performance_counters<br>sys.databases| Yes | 60 sekunder |
-| Resurs statistik | AzureSQLMIResourceStats | sqlserver_azure_db_resource_stats | sys.server_resource_stats | Yes | 60 sekunder |
-| Resursstyrning | AzureSQLMIResourceGovernance | sqlserver_instance_resource_governance | sys.dm_instance_resource_governance | Yes | 60 sekunder |
-| Begäranden | AzureSQLMIRequests | sqlserver_requests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | No | NA |
-| Schemaläggare | AzureSQLMISchedulers | sqlserver_schedulers | sys.dm_os_schedulers | No | NA |
+| Väntestatistik | AzureSQLMIOsWaitstats | sqlserver_waitstats | sys.dm_os_wait_stats | Ja | 60 sekunder |
+| Minnesstyrningar | AzureSQLMIMemoryClerks | sqlserver_memory_clerks | sys.dm_os_memory_clerks | Ja | 60 sekunder |
+| I/O för databas | AzureSQLMIDatabaseIO | sqlserver_database_io | sys.dm_io_virtual_file_stats<br>sys.master_files | Ja | 60 sekunder |
+| Serveregenskaper | AzureSQLMIServerProperties | sqlserver_server_properties | sys.server_resource_stats | Ja | 60 sekunder |
+| Prestandaräknare | AzureSQLMIPerformanceCounters | sqlserver_performance | sys.dm_os_performance_counters<br>sys.databases| Ja | 60 sekunder |
+| Resurs statistik | AzureSQLMIResourceStats | sqlserver_azure_db_resource_stats | sys.server_resource_stats | Ja | 60 sekunder |
+| Resursstyrning | AzureSQLMIResourceGovernance | sqlserver_instance_resource_governance | sys.dm_instance_resource_governance | Ja | 60 sekunder |
+| Begäranden | AzureSQLMIRequests | sqlserver_requests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | Inga | NA |
+| Schemaläggare | AzureSQLMISchedulers | sqlserver_schedulers | sys.dm_os_schedulers | Inga | NA |
 
 ### <a name="data-for-sql-server"></a>Data för SQL Server
 
 | Eget namn | Konfigurations namn | Namnområde | Dynamiska hanteringsvyer (DMV) | Aktive rad som standard | Standard frekvens för samling |
 |:---|:---|:---|:---|:---|:---|
-| Väntestatistik | SQLServerWaitStatsCategorized | sqlserver_waitstats | sys.dm_os_wait_stats | Yes | 60 sekunder | 
-| Minnesstyrningar | SQLServerMemoryClerks | sqlserver_memory_clerks | sys.dm_os_memory_clerks | Yes | 60 sekunder |
-| I/O för databas | SQLServerDatabaseIO | sqlserver_database_io | sys.dm_io_virtual_file_stats<br>sys.master_files | Yes | 60 sekunder |
-| Serveregenskaper | SQLServerProperties | sqlserver_server_properties | sys.dm_os_sys_info | Yes | 60 sekunder |
-| Prestandaräknare | SQLServerPerformanceCounters | sqlserver_performance | sys.dm_os_performance_counters | Yes | 60 sekunder |
-| Volym utrymme | SQLServerVolumeSpace | sqlserver_volume_space | sys.master_files | Yes | 60 sekunder |
-| SQL Server CPU | SQLServerCpu | sqlserver_cpu | sys.dm_os_ring_buffers | Yes | 60 sekunder |
-| Schemaläggare | SQLServerSchedulers | sqlserver_schedulers | sys.dm_os_schedulers | No | NA |
-| Begäranden | SQLServerRequests | sqlserver_requests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | No | NA |
-| Tillgänglighets replik tillstånd | SQLServerAvailabilityReplicaStates | sqlserver_hadr_replica_states | sys.dm_hadr_availability_replica_states<br>sys.availability_replicas<br>sys.availability_groups<br>sys.dm_hadr_availability_group_states | No | 60 sekunder |
-| Tillgänglighets databas repliker | SQLServerDatabaseReplicaStates | sqlserver_hadr_dbreplica_states | sys.dm_hadr_database_replica_states<br>sys.availability_replicas | No | 60 sekunder |
+| Väntestatistik | SQLServerWaitStatsCategorized | sqlserver_waitstats | sys.dm_os_wait_stats | Ja | 60 sekunder | 
+| Minnesstyrningar | SQLServerMemoryClerks | sqlserver_memory_clerks | sys.dm_os_memory_clerks | Ja | 60 sekunder |
+| I/O för databas | SQLServerDatabaseIO | sqlserver_database_io | sys.dm_io_virtual_file_stats<br>sys.master_files | Ja | 60 sekunder |
+| Serveregenskaper | SQLServerProperties | sqlserver_server_properties | sys.dm_os_sys_info | Ja | 60 sekunder |
+| Prestandaräknare | SQLServerPerformanceCounters | sqlserver_performance | sys.dm_os_performance_counters | Ja | 60 sekunder |
+| Volym utrymme | SQLServerVolumeSpace | sqlserver_volume_space | sys.master_files | Ja | 60 sekunder |
+| SQL Server CPU | SQLServerCpu | sqlserver_cpu | sys.dm_os_ring_buffers | Ja | 60 sekunder |
+| Schemaläggare | SQLServerSchedulers | sqlserver_schedulers | sys.dm_os_schedulers | Inga | NA |
+| Begäranden | SQLServerRequests | sqlserver_requests | sys.dm_exec_sessions<br>sys.dm_exec_requests<br>sys.dm_exec_sql_text | Inga | NA |
+| Tillgänglighets replik tillstånd | SQLServerAvailabilityReplicaStates | sqlserver_hadr_replica_states | sys.dm_hadr_availability_replica_states<br>sys.availability_replicas<br>sys.availability_groups<br>sys.dm_hadr_availability_group_states | Inga | 60 sekunder |
+| Tillgänglighets databas repliker | SQLServerDatabaseReplicaStates | sqlserver_hadr_dbreplica_states | sys.dm_hadr_database_replica_states<br>sys.availability_replicas | Inga | 60 sekunder |
 
 ## <a name="next-steps"></a>Nästa steg
 

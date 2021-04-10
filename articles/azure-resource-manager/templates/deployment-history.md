@@ -4,12 +4,12 @@ description: Beskriver hur du visar Azure Resource Manager distributions åtgär
 tags: top-support-issue
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 00e0c51244d5c191d4c9f05f689b90ece81ec5a4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 898af2365dfbb0f61b6b87e7532c9256269d799a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91284627"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732779"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Visa distributions historik med Azure Resource Manager
 
@@ -81,13 +81,13 @@ az deployment group show --resource-group ExampleGroup --name ExampleDeployment 
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-Om du vill visa en lista över distributioner för en resurs grupp använder du följande åtgärd. För det senaste API-versions numret som ska användas i begäran, se  [distributioner – lista efter resurs grupp](/rest/api/resources/deployments/listbyresourcegroup).
+Om du vill visa en lista över distributioner för en resurs grupp använder du följande åtgärd. För det senaste API-versions numret som ska användas i begäran, se  [distributioner – lista efter resurs grupp](/rest/api/resources/resources/deployments/listbyresourcegroup).
 
 ```
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/?api-version={api-version}
 ```
 
-För att få en speciell distribution. Använd följande åtgärd. Det senaste API-versions numret som ska användas i begäran finns i [distributioner-get](/rest/api/resources/deployments/get).
+För att få en speciell distribution. Använd följande åtgärd. Det senaste API-versions numret som ska användas i begäran finns i [distributioner-get](/rest/api/resources/resources/deployments/get).
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
@@ -167,7 +167,7 @@ az deployment operation group list --resource-group ExampleGroup --name ExampleD
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-Använd följande åtgärd för att hämta distributions åtgärder. Det senaste API-versions numret som ska användas i begäran finns i [distributions åtgärder-lista](/rest/api/resources/deploymentoperations/list).
+Använd följande åtgärd för att hämta distributions åtgärder. Det senaste API-versions numret som ska användas i begäran finns i [distributions åtgärder-lista](/rest/api/resources/resources/deploymentoperations/list).
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}

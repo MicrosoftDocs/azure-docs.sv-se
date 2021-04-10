@@ -1,20 +1,19 @@
 ---
 title: Förstå omfattning i Azure Policy
 description: Beskriver begreppet omfattning i Azure Resource Manager och hur det gäller Azure Policy för att kontrol lera vilka resurser Azure Policy utvärdera.
-ms.date: 09/22/2020
+ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: 83eda330a35b007abfa37046a202b14728726849
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c198d2d2961b6d9e10a3b78481183cba7f7197ca
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90984432"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167744"
 ---
 # <a name="understand-scope-in-azure-policy"></a>Förstå omfattning i Azure Policy
 
-Det finns ett antal inställningar som avgör vilka resurser som kan utvärderas och vilka resurser som utvärderas av Azure Policy. Det primära konceptet för dessa kontroller är _omfång_.
-En översikt på hög nivå finns [i området Azure Resource Manager](../../../azure-resource-manager/management/overview.md#understand-scope).
-I den här artikeln förklaras effekten av _omfattning_ i Azure policy och dess relaterade objekt och egenskaper.
+Det finns många inställningar som avgör vilka resurser som kan utvärderas och vilka resurser som utvärderas av Azure Policy. Det primära konceptet för dessa kontroller är _omfång_. Omfånget i Azure Policy baseras på hur omfånget fungerar i Azure Resource Manager. En översikt på hög nivå finns [i området Azure Resource Manager](../../../azure-resource-manager/management/overview.md#understand-scope).
+I den här artikeln förklaras betydelsen av _omfattning_ i Azure policy och dess relaterade objekt och egenskaper.
 
 ## <a name="definition-location"></a>Definitions plats
 

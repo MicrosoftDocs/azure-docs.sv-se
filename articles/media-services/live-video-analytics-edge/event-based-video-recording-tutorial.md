@@ -3,12 +3,12 @@ title: Händelsebaserade videoinspelningar till molnet och uppspelningen från m
 description: I den här självstudien får du lära dig hur du använder Azure Live Video Analytics på Azure IoT Edge för att registrera en Event-baserad videoinspelning i molnet och spela upp den från molnet igen.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: ea98b4c8981be9fffe7911e4c8402a8f522976f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de1a4d423108ddb18af4f8478c9bac60672d6062
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101702325"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279824"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Självstudie: Event-baserad videoinspelning till molnet och uppspelningen från molnet
 
@@ -426,7 +426,7 @@ Du kan granska Media Services till gången som skapades av grafen genom att logg
 1. I guiden som öppnas accepterar du standard alternativen och väljer **Lägg till**. Mer information finns i [videouppspelning](video-playback-concept.md).
 
     > [!TIP]
-    > Kontrol lera att [slut punkten för direkt uppspelning körs](../latest/streaming-endpoint-concept.md).
+    > Kontrol lera att [slut punkten för direkt uppspelning körs](../latest/stream-streaming-endpoint-concept.md).
 1. Videon ska läsas in i spelaren. Välj **spela** för att visa den.
 
 > [!NOTE]

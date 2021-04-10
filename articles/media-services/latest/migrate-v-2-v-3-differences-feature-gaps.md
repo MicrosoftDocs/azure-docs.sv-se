@@ -12,10 +12,10 @@ ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
 ms.openlocfilehash: 07e43bdb0969c26120231013cc0c0354e6968ceb
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105567958"
 ---
 # <a name="feature-gaps-between-azure-media-services-v2-and-v3"></a>Funktions luckor mellan Azure Media Services v2 och v3

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
 ms.openlocfilehash: 7f8e3df927b74cff7e4dc8bf1456600740c07088
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105567686"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>Visa och konfigurera diagnostisk loggning för DDoS-skydd
@@ -67,7 +67,7 @@ I följande tabell visas fält namn och beskrivningar:
 
 # <a name="ddosprotectionnotifications"></a>[DDoSProtectionNotifications](#tab/DDoSProtectionNotifications)
 
-| Fältnamn | Description |
+| Fältnamn | Beskrivning |
 | --- | --- |
 | **TimeGenerated** | Datum och tid i UTC när meddelandet skapades. |
 | **ResourceId** | Resurs-ID för din offentliga IP-adress. |
@@ -83,7 +83,7 @@ I följande tabell visas fält namn och beskrivningar:
 
 # <a name="ddosmitigationflowlogs"></a>[DDoSMitigationFlowLogs](#tab/DDoSMitigationFlowLogs)
 
-| Fältnamn | Description |
+| Fältnamn | Beskrivning |
 | --- | --- |
 | **TimeGenerated** | Datum och tid i UTC när flödes loggen skapades. |
 | **ResourceId** | Resurs-ID för din offentliga IP-adress. |
@@ -102,7 +102,7 @@ I följande tabell visas fält namn och beskrivningar:
 
 # <a name="ddosmitigationreports"></a>[DDoSMitigationReports](#tab/DDoSMitigationReports)
 
-| Fältnamn | Description |
+| Fältnamn | Beskrivning |
 | --- | --- |
 | **TimeGenerated** | Datum och tid i UTC när rapporten skapades. |
 | **ResourceId** | Resurs-ID för din offentliga IP-adress. |

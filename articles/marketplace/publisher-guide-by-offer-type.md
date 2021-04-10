@@ -6,19 +6,22 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 10/06/2020
-ms.openlocfilehash: 3be967b611f6b75705a60bfa14523832b0652931
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/06/2021
+ms.openlocfilehash: 381ee45bd678ef22222483675ddf001e16970628
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879232"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552061"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Publiceringsguide efter erbjudandetyp
 
 I den här artikeln beskrivs de erbjudande typer som är tillgängliga i den kommersiella marknads platsen. *Erbjudande typen* definierar erbjudande strukturen, som innehåller metadata, artefakter och annat innehåll som presenteras i den kommersiella marknads platsen.
 
 När du har [bestämt dig för ett publicerings alternativ](determine-your-listing-type.md)måste du välja en erbjudande typ innan du börjar skapa ditt erbjudande i Partner Center. Erbjudande typen motsvarar den typ av lösning, app eller tjänst erbjudande som du vill publicera, samt dess justering för Microsofts produkter och tjänster.
+
+> [!NOTE]
+> När du har valt en erbjudande typ kan du inte ändra erbjudandet till en annan typ. Om du vill skapa en annan erbjudande typ måste du skapa ett nytt erbjudande.
 
 Du kan konfigurera en enda erbjudande typ på olika sätt för att aktivera olika publicerings alternativ, list alternativ, etablering eller prissättning. Publicerings alternativet och konfigurationen av erbjudande typen överensstämmer också med kravet på erbjudanden och tekniska krav.
 

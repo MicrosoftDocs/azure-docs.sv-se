@@ -188,8 +188,6 @@
           href: rest-text-to-speech.md
     - name: Resurser
       items:
-        - name: Stöd för standardröst
-          href: language-support.md#standard-voices
         - name: Stöd för neural röst
           href: language-support.md#neural-voices
         - name: Stöd för regioner
@@ -249,7 +247,7 @@
     - name: Översikt av avsiktsigenkänning
       href: intent-recognition.md
     - name: Snabbstart för avsiktsigenkänning
-      href: quickstarts/intent-recognition.md
+      href: get-started-intent-recognition.md
     - name: Anvisningar
       items:
         - name: 'Känna igen talavsikter med LUIS, C#'
@@ -464,6 +462,8 @@
       href: how-to-track-speech-sdk-memory-usage.md
     - name: Aktivera privat slutpunkt
       href: speech-services-private-link.md
+    - name: Aktivera VNet-tjänstens slut punkt
+      href: speech-service-vnet-service-endpoint.md
     - name: Konfigurera OpenSSL för Linux
       displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
       href: how-to-configure-openssl-linux.md

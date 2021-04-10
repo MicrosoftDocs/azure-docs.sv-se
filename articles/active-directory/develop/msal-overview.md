@@ -13,12 +13,12 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 55cecc658b11b7a09665af7128df25fbbff800ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90e81e30e26846bf05032dddf1441e8428bc7158
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100559526"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550990"
 ---
 # <a name="overview-of-the-microsoft-authentication-library-msal"></a>Översikt över Microsoft Authentication Library (MSAL)
 Med Microsoft Authentication Library (MSAL) kan utvecklare Hämta [token](developer-glossary.md#security-token) från Microsoft Identity Platform för att kunna autentisera användare och komma åt säkra webb-API: er. Den kan användas för att ge säker åtkomst till Microsoft Graph, andra Microsoft API: er, webb-API: er från tredje part eller ditt eget webb-API. MSAL stöder många olika program arkitekturer och plattformar, inklusive .NET, Java Script, Java, python, Android och iOS.
@@ -53,6 +53,7 @@ MSAL kan användas i många program scenarier, inklusive följande:
 | [MSAL för Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
 | [MSAL-vinkel](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular)| Appar med en sida med vinkel-och Angular.js ramverk|
 | [MSAL för iOS och macOS](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS och macOS|
+| [MSAL Go (för hands version)](https://github.com/AzureAD/microsoft-authentication-library-for-go)|Windows, macOS, Linux|
 | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Windows, macOS, Linux|
 | [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)| JavaScript/TypeScript-ramverk som Vue.js, Ember.js eller Durandal.js|
 | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework, .NET Core, Xamarin Android, Xamarin iOS, Universell Windows-plattform|

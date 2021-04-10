@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: 19908b3cba63bc76a205097ef8d16e612d58503b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: edc1ebe53969ceac0452818bee016e35de1e9322
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91626650"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167846"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Skapa en frontend-dörr med HTTP till HTTPS-omdirigering med hjälp av Azure Portal
 
@@ -29,7 +29,7 @@ Du kan använda Azure Portal för att [skapa en frontend-dörr](quickstart-creat
 1. Välj en *prenumeration* och Använd antingen en befintlig resurs grupp eller skapa en ny. Välj **Nästa** för att ange fliken konfiguration.
 
     > [!NOTE]
-    > Den plats som visas i användar gränssnittet är endast för resurs gruppen. Konfigurationen av din front dörr kommer att distribueras över alla [pop-platser i Azures front dörr](front-door-faq.md#what-are-the-pop-locations-for-azure-front-door).
+    > Den plats som visas i användar gränssnittet är endast för resurs gruppen. Konfigurationen av din front dörr kommer att distribueras över alla [pop-platser i Azures front dörr](front-door-faq.yml#what-are-the-pop-locations-for-azure-front-door-).
 
     :::image type="content" source="./media/front-door-url-redirect/front-door-create-basics.png" alt-text="Konfigurera grunderna för ny front dörr":::
 

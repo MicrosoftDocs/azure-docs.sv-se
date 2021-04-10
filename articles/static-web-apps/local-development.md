@@ -2,207 +2,152 @@
 title: Konfigurera lokal utveckling för Azures statiska Web Apps
 description: Lär dig hur du ställer in din lokala utvecklings miljö för Azures statiska Web Apps
 services: static-web-apps
-author: burkeholland
+author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: how-to
-ms.date: 05/08/2020
-ms.author: buhollan
+ms.date: 04/02/2021
+ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 4d6dae8a4f4ed83af3103e95e711bacdb62cf522
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a45d490d060febc18d77c8487c9f562fd2a914a
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91326175"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275524"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Konfigurera lokal utveckling för för hands versionen av Azure statisk Web Apps
 
-En statisk Web Apps instans av Azure består av två olika typer av program. Den första är en webbapp för statiskt innehåll. Webbappar skapas ofta med frontend-ramverk och-bibliotek eller med statiska webbplats generatorer. Den andra aspekten är API: et, som är en Azure Functions app som ger en omfattande utvecklings miljö på Server sidan.
+När den har publicerats i molnet har Azures statiska Web Apps-plats många tjänster som fungerar tillsammans som om de är samma program. Här är några exempel på sådana tjänster:
 
-Vid körning i molnet mappar Azure static Web Apps sömlöst begär anden till `api` vägen från webbappen till Azure Functions-appen utan att kräva CORS-konfiguration. Lokalt måste du konfigurera ditt program så att det här beteendet efterliknas.
+- Den statiska webbappen
+- Azure Functions-API
+- Autentiserings-och auktoriserings tjänster
+- Tjänster för Routning och konfiguration
 
-Den här artikeln visar rekommenderade metod tips för lokal utveckling, inklusive följande begrepp:
+Dessa tjänster måste kommunicera med varandra, och Azure static Web Apps hanterar denna integrering åt dig i molnet.
 
-- Konfigurera webb programmet för statiskt innehåll
-- Konfigurera Azure Functions-appen för programmets API
-- Felsöka och köra programmet
-- Metod tips för appens fil-och mappstruktur
+Körs lokalt, men dessa tjänster är inte automatiskt kopplade till varandra.
+
+För att ge en liknande upplevelse som du får i Azure tillhandahåller [Azures statiska Web Apps CLI](https://github.com/Azure/static-web-apps-cli) följande tjänster:
+
+- En lokal statisk plats Server
+- En proxy till utvecklings servern för front-end Framework
+- En proxy till dina API-slutpunkter – tillgängligt via Azure Functions Core Tools
+- En modell för autentisering och auktorisering av en server
+- Tvingande lokala vägar och konfigurations inställningar
+
+## <a name="how-it-works"></a>Så här fungerar det
+
+Följande diagram visar hur förfrågningar hanteras lokalt.
+
+:::image type="content" source="media/local-development/cli-conceptual.png" alt-text="Azures statiska webb program CLI-begäran och svars flöde":::
+
+> [!IMPORTANT]
+> Navigera till [http://localhost:4280](http://localhost:4280) för att komma åt programmet som hanteras av cli.
+
+- **Begär Anden** som görs till porten `4280` vidarebefordras till lämplig server beroende på typ av begäran.
+
+- Begär Anden om **statiskt innehåll** , t. ex. html eller CSS, hanteras antingen av den interna CLI-servern för statiskt innehåll eller av front-end Framework-servern för fel sökning.
+
+- **Autentiserings-och auktoriserings** begär Anden hanteras av en emulator som tillhandahåller en falsk identitets profil till din app.
+
+- **Functions Core tools runtime** hanterar begär anden till webbplatsens API.
+
+- **Svar** från alla tjänster returneras till webbläsaren som om de var ett enda program.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [Azure Functions tillägg](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) för Visual Studio Code
-- [Live Server-tillägg](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) för Visual Studio Code
-  - Krävs endast om du inte använder ett front-end JavaScript-ramverk eller en statisk webbplats Generators CLI
+- **Befintlig Azure-statisk Web Apps webbplats**: om du inte har en sådan börjar du med Start programmet [vanilj-API](https://github.com/staticwebdev/vanilla-api/generate?return_to=/staticwebdev/vanilla-api/generate) .
+- **[Node.js](https://nodejs.org) med NPM**: kör [Node.js LTS](https://nodejs.org) -versionen, som innehåller åtkomst till [NPM](https://www.npmjs.com/).
+- **[Visual Studio Code](https://code.visualstudio.com/)**: används för fel sökning av API-programmet, men krävs inte för cli.
 
-## <a name="run-projects-locally"></a>Kör projekt lokalt
+## <a name="get-started"></a>Kom igång
 
-Att köra en statisk Azure-webbapp lokalt omfattar tre processer, beroende på om projektet innehåller ett API.
+Öppna en terminal till rotmappen för din befintliga Azure-statiska Web Apps webbplats.
 
-- Köra en lokal webb server
-- Köra API: et
-- Ansluta webb projektet till API: et
+1. Installera CLI.
 
-Beroende på hur en webbplats har skapats kan det hända att en lokal webb server kanske inte behöver köra programmet i webbläsaren. När du använder frontend-ramverk och statiska webbplats generatorer, är den här funktionen inbyggd i deras respektive Plat (kommando rads gränssnitt). Följande länkar pekar på CLI-referensen för ett urval av ramverk, bibliotek och generatorer.
+    `npm install -g @azure/static-web-apps-cli`
 
-### <a name="javascript-frameworks-and-libraries"></a>JavaScript-ramverk och bibliotek
+1. Bygg din app om det behövs av ditt program.
 
-- [Angular CLI](https://angular.io/cli)
-- [Vue CLI](https://cli.vuejs.org/guide/creating-a-project.html)
-- [Reakta CLI](https://create-react-app.dev/)
+    Kör `npm run build` eller motsvarande kommando för ditt projekt.
 
-### <a name="static-site-generators"></a>Statiska webbplats generatorer
+1. Ändra till utdata-katalogen för din app. Mappar med utdata kallas ofta _build_ eller något liknande.
 
-- [Gatsby CLI](https://www.gatsbyjs.org/docs/gatsby-cli/)
-- [Hugo](https://gohugo.io/getting-started/quick-start/)
-- [Jekyll](https://jekyllrb.com/docs/usage/)
+1. Starta CLI.
 
-Om du använder ett CLI-verktyg för att betjäna platsen kan du gå vidare till avsnittet om [API](#run-api-locally) .
+    `swa start`
 
-### <a name="running-a-local-web-server-with-live-server"></a>Köra en lokal webb server med Live Server
+1. Navigera till [http://localhost:4280](http://localhost:4280) om du vill visa appen i webbläsaren.
 
-Live Server-tillägget för Visual Studio Code tillhandahåller en lokal utvecklings webb server som hanterar statiskt innehåll.
+### <a name="other-ways-to-start-the-cli"></a>Andra sätt att starta CLI
 
-#### <a name="create-a-repository"></a>Klona en lagringsplats
+| Beskrivning | Kommando |
+|--- | --- |
+| Hantera en speciell mapp | `swa start ./output-folder` |
+| Använda en Ramverks utvecklings server som körs | `swa start http://localhost:3000` |
+| Starta en Functions-app i en mapp | `swa start ./output-folder --api ./api` |
+| Använda en app som körs Functions | `swa start ./output-folder --api http://localhost:7071` |
 
-1. Kontrol lera att du är inloggad på GitHub och navigera till [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) och skapa ett nytt GitHub-projekt med namnet **vanilj-API** med hjälp av den här mallen.
+## <a name="authorization-and-authentication-emulation"></a>Emulering av auktorisering och autentisering
 
-    :::image type="content" source="media/local-development/vanilla-api.png" alt-text="GitHub nytt lagrings platsen-fönster":::
+Den statiska Web Apps CLI emulerar det [säkerhets flöde](./authentication-authorization.md) som implementeras i Azure. När en användare loggar in kan du definiera en falsk identitets profil som returneras till appen.
 
-1. Öppna Visual Studio Code.
+När du till exempel försöker navigera till `/.auth/login/github` , returneras en sida som gör att du kan definiera en identitets profil.
 
-1. Tryck på **F1** för att öppna kommandopaletten.
+> [!NOTE]
+> Emulatorn fungerar med valfri säkerhetsprovider, inte bara GitHub.
 
-1. Skriv **klona** i sökrutan och välj **git: klon**.
+:::image type="content" source="media/local-development/auth-emulator.png" alt-text="Lokala autentiserings-och auktoriserings-emulator":::
 
-    :::image type="content" source="media/local-development/command-palette-git-clone.png" alt-text="git-klonings alternativ i Visual Studio Code":::
+Emulatorn tillhandahåller en sida som gör att du kan ange följande [klient huvud](./user-information.md#client-principal-data) värden:
 
-1. Ange följande värde för **lagrings platsens URL**.
+| Värde | Beskrivning |
+| --- | --- |
+| **Användarnamn** | Konto namnet som är associerat med säkerhets leverantören. Det här värdet visas som- `userDetails` egenskapen i klientens huvud namn och genereras automatiskt om du inte anger något värde. |
+| **Användar-ID** | Värdet genereras automatiskt av CLI.  |
+| **Roller** | En lista över roll namn, där varje namn finns på en ny rad.  |
 
-   ```http
-   git@github.com:<YOUR_GITHUB_ACCOUNT>/vanilla-api.git
-   ```
+När du har loggat in:
 
-1. Välj en mapplats för det nya projektet.
+- Du kan använda `/.auth/me` slut punkten eller en funktions slut punkt för att hämta användarens [klient huvud namn](./user-information.md).
 
-1. När du uppmanas att öppna den klonade lagringsplatsen väljer du **Öppna**.
+- När du navigerar för att `./auth/logout` ta bort klientens huvud namn och loggar ut den blå användaren.
 
-    :::image type="content" source="media/local-development/open-new-window.png" alt-text="Öppna i nytt fönster":::
+## <a name="debugging"></a>Felsökning
 
-Visual Studio Code öppnar det klonade projektet i redigeraren.
+Det finns två fel söknings kontexter i en statisk webbapp. Det första är för den statiska innehålls platsen och den andra är för API-funktioner. Lokal fel sökning är möjlig genom att tillåta att den statiska Web Apps CLI använder utvecklings servrar för en eller båda dessa kontexter.
 
-### <a name="run-the-website-locally-with-live-server"></a>Kör webbplatsen lokalt med Live Server
+Följande steg visar ett vanligt scenario som använder utvecklings servrar för både fel söknings kontexter.
 
-1. Tryck på **F1** för att öppna kommandopaletten.
+1. Starta den statiska plats utvecklings servern. Det här kommandot är särskilt för det front-end-ramverk som du använder, men de kommer ofta i form av kommandon som `npm run build` , `npm start` eller `npm run dev` .
 
-1. Skriv **Live Server** i sökrutan och välj **Live Server: öppna med Live Server**
+1. Öppna mappen API-app i Visual Studio Code och starta en felsökningssession.
 
-    En webbläsare-flik öppnas för att visa programmet.
+1. Skicka adresserna för den statiska servern och API-servern till `swa start` kommandot genom att lista dem i ordning.
 
-    :::image type="content" source="media/local-development/vanilla-api-site.png" alt-text="Enkel statisk plats som körs i webbläsaren":::
+    `swa start http://localhost:<DEV-SERVER-PORT-NUMBER> --api=http://localhost:7071`
 
-    Det här programmet gör en HTTP-begäran till `api/message` slut punkten. Just nu fungerar inte begäran eftersom API-delen av det här programmet måste startas.
+Följande skärm bilder visar terminaler för ett typiskt fel söknings scenario:
 
-### <a name="run-api-locally"></a>Kör API lokalt
+Den statiska innehålls platsen körs via `npm run dev` .
 
-Azures statiska Web Apps-API: er drivs av Azure Functions. Mer information om hur du lägger till ett API till ett statiskt Azure-Web Apps-projekt finns i [lägga till ett API till Azure static Web Apps med Azure Functions](add-api.md) .
+:::image type="content" source="media/local-development/run-dev-static-server.png" alt-text="Statisk plats utvecklings Server":::
 
-Som en del av processen för att skapa API skapas en start konfiguration för Visual Studio Code. Den här konfigurationen finns i mappen _. VSCode_ . Den här mappen innehåller alla inställningar som krävs för att skapa och köra API: et lokalt.
+Azure Functions API-programmet kör en felsökningssession i Visual Studio Code.
 
-1. Tryck på **F5** i Visual Studio Code för att starta API: et.
+:::image type="content" source="media/local-development/visual-studio-code-debugging.png" alt-text="Visual Studio Code API-felsökning":::
 
-1. En ny terminal-instans öppnas som visar utdata från API-build-processen.
+Den statiska Web Apps CLI startas med båda utvecklings servrarna.
 
-    :::image type="content" source="media/local-development/terminal-api-debug.png" alt-text="API som körs i Visual Studio Code Terminal":::
+:::image type="content" source="media/local-development/static-web-apps-cli-terminal.png" alt-text="Azures statiska Web Apps CLI-Terminal":::
 
-   Statusfältet i Visual Studio Code är nu orange. Den här färgen indikerar att API: et körs och fel söknings programmet är anslutet.
+Begär Anden som går via porten `4280` dirigeras till antingen den statiska innehålls utvecklings servern eller API-felsökningssessionen.
 
-1. Tryck sedan på **CTRL/cmd** och klicka på URL: en i terminalen för att öppna ett webbläsarfönster som anropar API: et.
-
-    :::image type="content" source="media/local-development/hello-from-api-endpoint.png" alt-text="Webbläsarens visnings resultat för API-anrop":::
-
-### <a name="debugging-the-api"></a>Felsöka API: et
-
-1. Öppna filen _API/GetMessage/index.js_ i Visual Studio Code.
-
-1. Ange en Bryt punkt genom att klicka i den vänstra marginalen på rad 2. En röd prick visas som anger att Bryt punkten har angetts.
-
-    :::image type="content" source="media/local-development/breakpoint-set.png" alt-text="Bryt punkt i Visual Studio Code":::
-
-1. I webbläsaren uppdaterar du sidan som körs på <http://127.0.0.1:7071/api/message> .
-
-1. Bryt punkten har nåtts i Visual Studio Code och program körningen har pausats.
-
-   :::image type="content" source="media/local-development/breakpoint-hit.png" alt-text="Bryt punkts träff i Visual Studio Code":::
-
-   En fullständig [fel söknings funktion finns i Visual Studio Code](https://code.visualstudio.com/Docs/editor/debugging) för ditt API.
-
-1. Fortsätt att köra genom att klicka på knappen **Fortsätt** i fel söknings fältet.
-
-    :::image type="content" source="media/local-development/continue-button.png" alt-text="Knappen Fortsätt i Visual Studio Code":::
-
-### <a name="calling-the-api-from-the-application"></a>Anropar API: et från programmet
-
-När Azures statiska Web Apps har distribuerats mappar automatiskt de här förfrågningarna till slut punkterna i _API_ -mappen. Den här mappningen säkerställer att förfrågningar från programmet till API: et ser ut som i följande exempel.
-
-```javascript
-let response = await fetch("/api/message");
-```
-
-Beroende på om ditt program har skapats med en JavaScript Framework CLI, finns det två sätt att konfigurera sökvägen till `api` vägen när du kör programmet lokalt.
-
-- Miljö konfigurations filer (rekommenderas för JavaScript-ramverk och bibliotek)
-- Lokal Proxy
-
-### <a name="environment-configuration-files"></a>Miljö konfigurations filer
-
-Om du skapar din app med klient dels ramverk som har en CLI bör du använda miljö konfigurationsfiler. Varje ramverk eller bibliotek har ett annat sätt att hantera de här miljö konfigurations filerna. Det är vanligt att ha en konfigurations fil för utveckling som används när ditt program körs lokalt och en för produktion som används när ditt program körs i produktion. CLI för JavaScript-ramverket eller den statiska webbplats generatorn som du använder kommer automatiskt att kunna använda utvecklings filen lokalt och produktions filen när din app har skapats av Azures statiska Web Apps.
-
-I utvecklings konfigurations filen kan du ange sökvägen till API: et, som pekar på den lokala platsen `http:127.0.0.1:7071` där API: et för platsen körs lokalt.
-
-```
-API=http:127.0.0.1:7071/api
-```
-
-I produktions konfigurations filen anger du sökvägen till API: t som `api` . På så sätt anropar programmet API: t via "yoursite.com/api" när det körs i produktion.
-
-```
-API=api
-```
-
-Dessa konfigurations värden kan refereras som Node-miljövariabler i webbappens Java Script.
-
-```js
-let response = await fetch(`${process.env.API}/message`);
-```
-
-När CLI används för att köra din webbplats i utvecklings läge eller för att skapa en plats för produktion, `process.env.API` ersätts värdet med värdet från lämplig konfigurations fil.
-
-Mer information om hur du konfigurerar miljöfiler för front-end JavaScript-ramverk och bibliotek finns i följande artiklar:
-
-- [Miljö variabler för vinkel](https://angular.io/guide/build#configuring-application-environments)
-- [Reagera – lägga till anpassade miljövariabler](https://create-react-app.dev/docs/adding-custom-environment-variables/)
-- [Vue-lägen och miljövariabler](https://cli.vuejs.org/guide/mode-and-env.html)
-
-[!INCLUDE [static-web-apps-local-proxy](../../includes/static-web-apps-local-proxy.md)]
-
-##### <a name="restart-live-server"></a>Starta om Live Server
-
-1. Tryck på **F1** för att öppna kommando-paletten i Visual Studio Code.
-
-1. Skriv **Live** Server och välj **Live Server: stoppa Live Server**.
-
-    :::image type="content" source="media/local-development/stop-live-server.png" alt-text="Stoppa Live Server-kommandot i Visual Studio Command-paletten":::
-
-1. Tryck på **F1** för att öppna kommandopaletten.
-
-1. Skriv **Live** Server och välj **Live Server: öppna med Live Server**.
-
-1. Uppdatera programmet som körs vid `http://locahost:3000` . Webbläsaren visar nu meddelandet som returnerades från API: et.
-
-    :::image type="content" source="media/local-development/hello-from-api.png" alt-text="Hej från API: t som visas i webbläsaren":::
+Mer information om olika fel söknings scenarier, med anvisningar om hur du anpassar portar och Server adresser, finns i [Azures statiska Web Apps CLI-lagringsplats](https://github.com/Azure/static-web-apps-cli).
 
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Konfigurera appinställningar](application-settings.md)
+> [Konfigurera ditt program](configuration.md)

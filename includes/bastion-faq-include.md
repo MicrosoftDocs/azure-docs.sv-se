@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9ba0e7173c41e26a698596fa18bf1fc1453f3fb3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b58040917ed3d3345a35b7acbe31b6b500f05562
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99628946"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073379"
 ---
 ### <a name="do-i-need-a-public-ip-on-my-virtual-machine-to-connect-via-azure-bastion"></a><a name="publicip"></a>Behöver jag en offentlig IP-adress på min virtuella dator för att ansluta via Azure skydds?
 
@@ -22,6 +22,10 @@ Nej. När du ansluter till en virtuell dator med hjälp av Azure skydds behöver
 ### <a name="is-ipv6-supported"></a>Stöds IPv6?
 
 För tillfället stöds inte IPv6. Azure skydds stöder endast IPv4.
+
+### <a name="can-i-use-azure-bastion-with-azure-private-dns-zones"></a>Kan jag använda Azure skydds med Azure Privat DNS zoner?
+
+Det finns inte stöd för användning av Azure-skydds med Azure Privat DNS Zones just nu. Innan du distribuerar din Azure skydds-resurs kontrollerar du att det virtuella värd nätverket inte är länkat till en privat DNS-zon.
 
 ### <a name="do-i-need-an-rdp-or-ssh-client"></a><a name="rdpssh"></a>Behöver jag en RDP-eller SSH-klient?
 

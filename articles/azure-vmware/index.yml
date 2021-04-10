@@ -9,12 +9,12 @@ metadata:
   author: shortpatti
   ms.author: v-patsho
   ms.date: 03/30/2021
-  ms.openlocfilehash: 874f0636042c592cefce5a4d3fa15b7839fbac5e
-  ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+  ms.openlocfilehash: 6e97c14acc291984a90182f322cbde3462b9daee
+  ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 04/01/2021
-  ms.locfileid: "106108072"
+  ms.lasthandoff: 04/08/2021
+  ms.locfileid: "107209815"
 landingContent:
 - title: Om Azure VMware Solution
   linkLists:
@@ -44,20 +44,24 @@ landingContent:
     links:
     - text: Allmänt
       url: /azure/azure-vmware/faq#general
-    - text: Beräkning, nätverk, lagring och säkerhets kopiering
-      url: /azure/azure-vmware/faq#compute,-network,-storage,-and-backup
-    - text: Värdar, kluster och privata moln
-      url: /azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds
-    - text: Azure VMware-lösning och VMware-programvara
-      url: /azure/azure-vmware/faq#azure-vmware-solution-and-vmware-software
-    - text: Anslutning
-      url: /azure/azure-vmware/faq#connectivity
-    - text: Konton och behörigheter
-      url: /azure/azure-vmware/faq#accounts-and-privileges
-    - text: Fakturering och support
-      url: /azure/azure-vmware/faq#billing-and-support
     - text: Kund kommunikation
       url: /azure/azure-vmware/faq#customer-communication
+    - text: Konfiguration och installation
+      url: /azure/azure-vmware/faq#configuration-and-setup
+    - text: VMware-programvara
+      url: /azure/azure-vmware/faq#vmware-software
+    - text: Beräkning, säkerhets kopiering och haveri beredskap
+      url: /azure/azure-vmware/faq#compute,-backup,-and-disaster-recovery
+    - text: Nätverk och anslutning
+      url: /azure/azure-vmware/faq#networking-and-interconnectivity
+    - text: Storage
+      url: /azure/azure-vmware/faq#storage
+    - text: Värdar, kluster och privata moln
+      url: /azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds
+    - text: Identitetshantering
+      url: /azure/azure-vmware/faq#identity-management
+    - text: Fakturering och support
+      url: /azure/azure-vmware/faq#billing-and-support
 - title: Kom igång
   linkLists:
   - linkListType: deploy
@@ -143,7 +147,7 @@ landingContent:
     - text: Distribuera VMware Horizon
       url: azure-vmware-solution-horizon.md
     - text: Distribuera virtuella datorer från innehålls biblioteket
-      url: ./deploy-vm-content-library.md
+      url: deploy-vm-content-library.md
 - title: VMware-ekosystem
   linkLists:
   - linkListType: reference
