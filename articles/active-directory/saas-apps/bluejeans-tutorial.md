@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
 ms.openlocfilehash: a920abacb0df030f7d38aed11e04a693cfa352a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101686605"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med BlueJeans för Azure AD
@@ -144,13 +144,13 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. Om du förväntar dig ett roll värde i SAML Assertion, i dialog rutan **Välj roll** , väljer du lämplig roll för användaren i listan och klickar sedan på knappen **Välj** längst ned på skärmen.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
-## <a name="configure-bluejeans-for-azure-ad-sso"></a>Konfigurera BlueJeans för Azure AD SSO
+## <a name="configure-bluejeans-for-azure-ad-sso&quot;></a>Konfigurera BlueJeans för Azure AD SSO
 
 1. Logga in på din **BlueJeans för Azure AD** -företags platsen som administratör i ett annat webbläsarfönster.
 
 2. Gå till **ADMIN \>GRUPPINSTÄLLNINGAR \> SÄKERHET**.
 
-    ![Skärm bild som visar en del av ett webbläsarfönster med fliken admin vald, med grupp inställning och säkerhet valt.](./media/bluejeans-tutorial/ic785868.png "Administratör")
+    ![Skärm bild som visar en del av ett webbläsarfönster med fliken admin vald, med grupp inställning och säkerhet valt.](./media/bluejeans-tutorial/ic785868.png &quot;Administratör")
 
 3. I avsnittet **SÄKERHET** utför du följande steg:
 

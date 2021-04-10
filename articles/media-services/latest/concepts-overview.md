@@ -13,10 +13,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
 ms.openlocfilehash: 309ef8baada22f59b1395164626dd664366cb4d9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104581141"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services terminologi och koncept
@@ -38,7 +38,7 @@ De grundläggande begreppen som beskrivs i dessa avsnitt bör granskas innan du 
 
 ## <a name="media-services-v3-concepts"></a>Media Services v3-begrepp
 
-|Begrepp|Description|Länkar|
+|Begrepp|Beskrivning|Länkar|
 |---|---|---|
 |Till gångar och överför innehåll|För att börja hantera, kryptera, koda, analysera och strömma medie innehåll i Azure måste du skapa ett Media Services konto och ladda upp dina digitala filer till **till gångar**.|[Uppladdning till och lagring i molnet](storage-account-concept.md)<br/><br/>[Till gångs koncept](assets-concept.md)|
 |Koda innehåll|När du har överfört digitala mediefiler med hög kvalitet till till gångar kan du koda dem till-format som kan spelas upp i en mängd olika webbläsare och enheter. <br/><br/>Om du vill koda med Media Services v3 måste du skapa **transformeringar** och **jobb**.|[Transformeringar och jobb](transforms-jobs-concept.md)<br/><br/>[Kodning med Media Services](encoding-concept.md)|

@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: duau
-ms.openlocfilehash: e153edd807dcb119c34f60dc34e33fed510916bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6abed66a5fbd9987e5a8a677dde7b4a77589e907
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96011531"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065054"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Självstudie: Lägga till en anpassad domän i din Front Door
+
 I den här självstudien får du lära dig hur du lägger till en anpassad domän i Front Door. När du använder Azure-frontend för program leverans krävs en anpassad domän om du vill att ditt eget domän namn ska vara synligt i slutanvändarens begäran. Att ha ett synligt domännamn kan vara praktiskt för dina kunder och användbart i profileringssyfte.
 
 När du har skapat en front dörr ingår standard klient dels värden, som är en under domän till `azurefd.net` , i URL: en för att leverera innehåll från hård dörren från Server delen som standard (till exempel https: \/ /contoso-frontend.azurefd.net/activeusers.htm). Av bekvämlighetsskäl tillhandahåller Azure Front Door möjligheten att associera en anpassad domän med standardvärden. På så sätt kan du leverera ditt innehåll med en anpassad domän i din URL i stället för ett Front Door-ägt domännamn (till exempel https:\//www.contoso.com/photo.png). 

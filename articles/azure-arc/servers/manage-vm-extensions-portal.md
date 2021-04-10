@@ -4,10 +4,10 @@ description: Den här artikeln beskriver hur du distribuerar tillägg för virtu
 ms.date: 01/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: b0e114b314179d42ccd47b7d7bd534d3a824a411
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100587667"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Aktivera Azure VM-tillägg från Azure Portal

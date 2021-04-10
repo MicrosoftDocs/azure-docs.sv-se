@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: 2e22777b747ae24c3e643cbd43bfdb0604d453a2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ed8775c6544791571746b0f3784a60ce2af0de7a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97707664"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726982"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>Så här felsöker du problem med anslutning och meddelande leverans
 
@@ -108,7 +108,7 @@ Loggning på klient sidan är exakt detsamma som när du använder en egen värd
 
 ##### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>Aktivera loggning på Server sidan för `ASP.NET Core SignalR`
 
-Loggning på Server sidan för `ASP.NET Core SignalR` integreras med den `ILogger` baserade [loggning](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1) som finns i `ASP.NET Core` ramverket. Du kan aktivera loggning på Server sidan genom att använda `ConfigureLogging` , en exempel användning på följande sätt:
+Loggning på Server sidan för `ASP.NET Core SignalR` integreras med den `ILogger` baserade [loggning](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&preserve-view=true&view=aspnetcore-2.1) som finns i `ASP.NET Core` ramverket. Du kan aktivera loggning på Server sidan genom att använda `ConfigureLogging` , en exempel användning på följande sätt:
 
 ```cs
 .ConfigureLogging((hostingContext, logging) =>

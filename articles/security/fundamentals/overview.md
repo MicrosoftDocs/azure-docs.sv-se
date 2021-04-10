@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/03/2021
 ms.author: TomSh
 ms.openlocfilehash: b5f9df4e6f682b5d1e9e3cd35affe6e4191e3d53
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105047787"
 ---
 # <a name="introduction-to-azure-security"></a>Introduktion till Azure-säkerhet
@@ -230,7 +230,7 @@ Microsoft [Azure Application Gateway](../../application-gateway/overview.md) til
 
 ![Application Gateway](./media/overview/azure-security-figure-2.png)
 
-Det gör att du kan optimera webb server gruppens produktivitet genom att avlasta CPU-intensiva TLS-avslutning till Application Gateway (kallas även "TLS-avläsning" eller "TLS bryggning"). Det ger även andra funktioner för Layer 7-routning, inklusive resursallokerings distribution av inkommande trafik, cookie-baserad sessionsgräns, URL-sökväg baserad Routning och möjligheten att vara värd för flera webbplatser bakom en enda Application Gateway. Azure Application Gateway är en Layer 7-lastbalanserare.
+Det gör att du kan optimera webb server gruppens produktivitet genom att avlasta CPU-intensiva TLS-avslutning till Application Gateway (kallas även "TLS-avläsning&quot; eller &quot;TLS bryggning"). Det ger även andra funktioner för Layer 7-routning, inklusive resursallokerings distribution av inkommande trafik, cookie-baserad sessionsgräns, URL-sökväg baserad Routning och möjligheten att vara värd för flera webbplatser bakom en enda Application Gateway. Azure Application Gateway är en Layer 7-lastbalanserare.
 
 Den tillhandahåller redundans och prestandabaserad routning av HTTP-begäranden mellan olika servrar, oavsett om de finns i molnet eller lokalt.
 

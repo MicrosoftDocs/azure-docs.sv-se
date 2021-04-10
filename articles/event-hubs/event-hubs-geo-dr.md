@@ -4,10 +4,10 @@ description: Använda geografiska regioner för att redundansväxla och utföra 
 ms.topic: article
 ms.date: 02/10/2021
 ms.openlocfilehash: f3b74b89f47582fbb3f1640f315f413ab86b26b5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104602646"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs-geo-haveri beredskap 
@@ -52,10 +52,10 @@ Följande kombinationer av primära och sekundära namn rymder stöds:
 
 | Primär namnrymd | Sekundär namnrymd | Stöds | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Yes | 
-| Standard | Dedikerad | Yes | 
-| Dedikerad | Dedikerad | Yes | 
-| Dedikerad | Standard | No | 
+| Standard | Standard | Ja | 
+| Standard | Dedikerad | Ja | 
+| Dedikerad | Dedikerad | Ja | 
+| Dedikerad | Standard | Inga | 
 
 > [!NOTE]
 > Det går inte att para ihop namn områden som finns i samma dedicerade kluster. Du kan para ihop namn områden som finns i separata kluster. 
@@ -66,7 +66,7 @@ Följande avsnitt innehåller en översikt över redundansväxlingen och förkla
 
 ![1][]
 
-### <a name="setup"></a>Installation
+### <a name="setup"></a>Konfiguration
 
 Först skapar du eller använder ett befintligt primärt namn område och ett nytt sekundärt namn område och kopplar sedan samman de två. Den här ihopparningen ger dig ett alias som du kan använda för att ansluta. Eftersom du använder ett alias behöver du inte ändra anslutnings strängarna. Det går bara att lägga till nya namn områden i ihopparningen för redundans. 
 

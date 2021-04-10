@@ -10,17 +10,14 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python-swift-android
-ms.openlocfilehash: 362c8c875ab878b23cffae45f4c653255f489c81
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 6d3f9f7fd30d2c6b1cbc3882a41546593ee1c156
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105107056"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726702"
 ---
 # <a name="quickstart-add-chat-to-your-app"></a>Snabb start: Lägg till chatt i appen
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
 
 Kom igång med Azure Communication Services genom att använda kommunikations tjänsterna Chat SDK för att lägga till real tids chatt i ditt program. I den här snabb starten använder vi chatt-SDK: n för att skapa chatt-trådar som gör det möjligt för användarna att ha konversationer med varandra. Mer information om chatt-koncept finns i [dokumentationen om chatten](../../concepts/chat/concepts.md).
 

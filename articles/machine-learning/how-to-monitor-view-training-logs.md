@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 47531da9c1e508281a57074df7aa10ffffe78810
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c258ac62617cb6ac954e0b8c59928225c7f477b1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518746"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935586"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Övervaka och Visa ML körnings loggar och mått
 
@@ -110,15 +110,16 @@ Du kan också redigera tabellen kör lista för att välja flera körningar och 
 
 ![Kör information i Azure Machine Learning Studio](media/how-to-track-experiments/experimentation-tab.gif)
 
-### <a name="view-log-files-for-a-run"></a>Visa loggfiler för en körning 
+### <a name="view-and-download-log-files-for-a-run"></a>Visa och hämta loggfiler för en körning 
 
 Loggfiler är en viktig resurs för fel sökning av Azure ML-arbetsbelastningar. Öka detalj nivån till en speciell körning för att visa dess loggar och utdata:  
 
 1. Gå till fliken **experiment** .
 1. Välj runID för en speciell körning.
 1. Välj **utdata och loggar** överst på sidan.
+2. Välj **Ladda ned alla** för att ladda ned alla loggar till en zip-mapp.
 
-:::image type="content" source="media/how-to-monitor-view-training-logs/view-logs.png" alt-text="Skärm bild av avsnittet utdata och loggar i en körning":::
+:::image type="content" source="media/how-to-monitor-view-training-logs/download-logs.png" alt-text="Skärm bild av avsnittet utdata och loggar i en körning.":::
 
 Tabellerna nedan visar innehållet i loggfilerna i de mappar som visas i det här avsnittet.
 
