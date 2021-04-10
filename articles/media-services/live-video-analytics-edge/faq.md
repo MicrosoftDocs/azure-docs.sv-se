@@ -3,12 +3,12 @@ title: Live video analys på IoT Edge vanliga frågor och svar – Azure
 description: Den här artikeln besvarar vanliga frågor om real tids analys av IoT Edge.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 661b6155ce2d95e2111a1fa338fd5df438e61e7d
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: 2e5ec6e3a303bb8d655e666a820cfe67943b4eb6
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105032810"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275965"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>Vanliga video analyser på IoT Edge vanliga frågor och svar
 
@@ -57,7 +57,7 @@ Nej, vi har inte stöd för att öppna ONVIF (Network Video Interface forum) fö
 
 **Kan jag spela upp till gångar som registrerats för Azure Media Services från gränsen med hjälp av strömmande tekniker som HLS eller tank streck?**
 
-Ja. Du kan strömma registrerade till gångar som vilken annan till gång som helst i Azure Media Services. För att strömma innehållet måste du ha en slut punkt för direkt uppspelning skapad och i körnings läge. Genom att använda standard processen för att skapa streaming-direktuppspelning får du åtkomst till en Apple-HTTP Live Streaming (HLS) eller dynamisk anpassningsbar strömning via HTTP (bindestreck, även kallat MPEG-streck) för strömning till alla kompatibla Player-ramverk. Mer information om hur du skapar och publicerar HLS-eller streck manifest finns i [dynamisk paketering](../latest/dynamic-packaging-overview.md).
+Ja. Du kan strömma registrerade till gångar som vilken annan till gång som helst i Azure Media Services. För att strömma innehållet måste du ha en slut punkt för direkt uppspelning skapad och i körnings läge. Genom att använda standard processen för att skapa streaming-direktuppspelning får du åtkomst till en Apple-HTTP Live Streaming (HLS) eller dynamisk anpassningsbar strömning via HTTP (bindestreck, även kallat MPEG-streck) för strömning till alla kompatibla Player-ramverk. Mer information om hur du skapar och publicerar HLS-eller streck manifest finns i [dynamisk paketering](../latest/encode-dynamic-packaging-concept.md).
 
 **Kan jag använda standard innehålls skyddet och DRM-funktionerna i Media Services på en arkiverad till gång?**
 
@@ -69,7 +69,7 @@ Alla standard spelare som stöder kompatibel HLS version 3 eller version 4 stöd
 
 Rekommenderade spelare för testning är:
 
-* [Azure Media Player](../latest/use-azure-media-player.md)
+* [Azure Media Player](../latest/player-use-azure-media-player-how-to.md)
 * [HLS.js](https://hls-js.netlify.app/demo/)
 * [Video.js](https://videojs.com/)
 * [Dash.js](https://github.com/Dash-Industry-Forum/dash.js/wiki)

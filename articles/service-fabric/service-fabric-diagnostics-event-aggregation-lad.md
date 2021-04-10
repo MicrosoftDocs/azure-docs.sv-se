@@ -4,10 +4,10 @@ description: Lär dig mer om agg regering och insamling av händelser med LAD f�
 ms.topic: conceptual
 ms.date: 2/25/2019
 ms.openlocfilehash: bd5efc6b661bf25ce7946cda0bcfa01be4c351a7
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105628942"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Händelse agg regering och insamling med Linux Azure-diagnostik

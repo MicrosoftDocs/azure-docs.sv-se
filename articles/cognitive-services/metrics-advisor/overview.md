@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 901d86b5569be61f89178dac460b8750bce9ea73
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: dfdd7286013bbb6462fb8e5b1bdf52e6ed738029
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605543"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384688"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>Vad är Metrics Advisor (för hands version)? 
 
@@ -27,6 +27,11 @@ Mått Advisor är en del av Azure Cognitive Services som använder AI för att u
 * Diagnostisera avvikelser och hjälp med rotor Saks analys
 
 :::image type="content" source="media/metrics-advisor-overview.png" alt-text="Översikt över Metrics Advisor":::
+
+Den här dokumentationen innehåller följande typer av artiklar:
+* [Snabb starterna](./Quickstarts/web-portal.md) är steg-för-steg-instruktioner som gör att du kan anropa tjänsten och få resultat under en kort tids period. 
+* [Instruktions guiderna](./how-tos/onboard-your-data.md) innehåller instruktioner för att använda tjänsten på mer exakta eller anpassade sätt.
+* De [konceptuella artiklarna](glossary.md) innehåller djupgående förklaringar av tjänstens funktioner och funktioner.
 
 ## <a name="connect-to-a-variety-of-data-sources"></a>Anslut till en mängd olika data källor
 

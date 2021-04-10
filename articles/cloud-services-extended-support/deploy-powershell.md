@@ -8,20 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 0c1b67e42e7988a836ec58ac022b11d736210bca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bcf6b2f6b964a056b9d90f08c0586fcbdec5b260
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104865629"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167285"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>Distribuera en moln tjänst (utökad support) med Azure PowerShell
 
 Den här artikeln visar hur du använder `Az.CloudService` PowerShell-modulen för att distribuera Cloud Services (utökad support) i Azure som har flera roller (webrole och WorkerRole) och fjärr skrivbords tillägg. 
-
-> [!IMPORTANT]
-> Cloud Services (utökad support) är för närvarande en offentlig för hands version.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -73,13 +69,14 @@ Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utö
     $virtualNetwork = New-AzVirtualNetwork -Name “ContosoVNet” -Location “East US” -ResourceGroupName “ContosOrg” -AddressPrefix "10.0.0.0/24" -Subnet $subnet 
     ```
  
-7. Skapa en offentlig IP-adress och (valfritt) ange egenskapen DNS-etikett för den offentliga IP-adressen. Om du använder en statisk IP-adress måste den refereras till som en Reserverad IP i tjänst konfigurations filen.  
+7. Skapa en offentlig IP-adress och ange egenskapen DNS-etikett för den offentliga IP-adressen. Cloud Services (utökad support) stöder bara [Basic] ( https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU offentliga IP-adresser. Standard-SKU offentliga IP-adresser fungerar inte med Cloud Services.
+Om du använder en statisk IP-adress måste du referera till den som en Reserverad IP i tjänst konfigurations filen (. cscfg) 
 
     ```powershell
     $publicIp = New-AzPublicIpAddress -Name “ContosIp” -ResourceGroupName “ContosOrg” -Location “East US” -AllocationMethod Dynamic -IpAddressVersion IPv4 -DomainNameLabel “contosoappdns” -Sku Basic 
     ```
 
-8. Skapa objektet nätverks profil och associera den offentliga IP-adressen till klient delen för den plattform som har skapat belastningsutjämnaren.  
+8. Skapa ett nätverks profil objekt och koppla den offentliga IP-adressen till belastningsutjämnarens klient del. Azure-plattformen skapar automatiskt en klassisk "SKU"-belastnings Utjämnings resurs i samma prenumeration som moln tjänst resursen. Belastnings Utjämnings resursen är en skrivskyddad resurs i ARM. Alla uppdateringar av resursen stöds endast via Cloud Service-distributionspaket (. cscfg &. csdef)
 
     ```powershell
     $publicIP = Get-AzPublicIpAddress -ResourceGroupName ContosOrg -Name ContosIp  

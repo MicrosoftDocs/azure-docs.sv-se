@@ -6,12 +6,12 @@ keywords: DSC, PowerShell, Azure, tillägg
 services: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: e51bce6e015ef7367625b010b74e5d2422b35051
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b272993cdb1b89e63190d2c8c9ef80db2327ccc1
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651810"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167523"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Arbeta med Azure Desired State Configuration Extension versions historik
 
@@ -274,7 +274,7 @@ Den här artikeln innehåller information om varje version av Azure DSC VM-till�
 - **Miljö:** Azure
 - **Anmärkningar:** Den här versionen använder DSC som ingår i Windows Server 2016 Technical Preview; för andra Windows-OSs installeras [Windows Management Framework 5,0 RTM](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-5-0-rtm-is-now-available-via-the-microsoft-update-catalog/) (installation av WMF kräver en omstart).
 - **Nya funktioner:**
-  - I tillägg version 2,14 inkluderades ändringar i installationen av WMF RTM. När du uppgraderar från tilläggets version 2.13.2.0 till 2.14.0.0, kan det hända att vissa DSC-cmdlets Miss lyckas eller att konfigurationen Miss lyckas med ett fel – "ingen instans hittades med de tilldelade egenskapsvärdena". Mer information finns i viktig information om [DSC](/powershell/scripting/wmf/known-issues/known-issues-dsc). Lösningarna för de här problemen har lagts till i 2,15-versionen. 
+  - I tillägg version 2,14 inkluderades ändringar i installationen av WMF RTM. När du uppgraderar från 2.13.2.0 till 2.14.0.0, kan det hända att vissa DSC-cmdlets Miss lyckas eller att konfigurationen Miss lyckas med ett fel-' ingen instans hittades med angivet egenskaps värden '. Mer information finns i viktig information om [DSC](/powershell/scripting/wmf/known-issues/known-issues-dsc). Lösningarna för de här problemen har lagts till i 2,15-versionen. 
   - Om du redan har installerat version 2,14 och körs på något av ovanstående två problem, måste du utföra dessa steg manuellt. Kör följande kommandon i en upphöjd PowerShell-session:
     - `Remove-Item -Path $env:SystemRoot\system32\Configuration\DSCEngineCache.mof`
     - `mofcomp $env:windir\system32\wbem\DscCoreConfProv.mof`

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67870a458138101f3b8a009f7c96c74991396284
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0dcb959184e12ffa22ae25443087684123598e47
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98675194"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382477"
 ---
 # <a name="register-a-microsoft-graph-application"></a>Registrera ett Microsoft Graph-program
 
@@ -56,31 +56,38 @@ Innan dina skript och program kan interagera med [Microsoft Graph-API][ms-graph-
 1. Välj **Register** (Registrera).
 1. Registrera **program-ID: t (Client)** som visas på program översikts sidan. Du använder det här värdet i ett senare steg.
 
-### <a name="grant-api-access"></a>Bevilja API-åtkomst
+## <a name="grant-api-access"></a>Bevilja API-åtkomst
 
-Ge sedan de registrerade program behörigheterna för att manipulera klient resurser via anrop till Microsoft Graph API.
+För att ditt program ska kunna komma åt data i Microsoft Graph ger du det registrerade programmet relevanta [program behörigheter](https://docs.microsoft.com/graph/permissions-reference). Programmets gällande behörigheter är den fullständiga behörighets nivån som anges av behörigheten. Om du till exempel vill *skapa*, *läsa*, *Uppdatera* och *ta bort* alla användare i Azure AD B2C-klienten, lägger du till **användaren. readwrite. all** behörighet. 
+
+> [!NOTE]
+> **Användaren. readwrite. all** behörighet inkluderar inte möjligheten att uppdatera användar kontots lösen ord. Om ditt program behöver uppdatera användar kontots lösen ord, [tilldelar du rollen som användar administratör](#optional-grant-user-administrator-role). När du beviljar rollen som [användar administratör](../active-directory/roles/permissions-reference.md#user-administrator) krävs inte **User. readwrite. all** . Rollen användar administratör innehåller allt som behövs för att hantera användare.
+
+Du kan ge ditt program flera program behörigheter. Om ditt program till exempel även behöver hantera grupper i Azure AD B2C-klienten, lägger du till **gruppen. readwrite. all** behörighet också. 
 
 [!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
-### <a name="create-client-secret"></a>Skapa klient hemlighet
 
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+## <a name="optional-grant-user-administrator-role"></a>Valfritt Tilldela rollen som användar administratör
 
-Nu har du ett program som har behörighet att *skapa*, *läsa*, *Uppdatera* och *ta bort* användare i din Azure AD B2C klient. Fortsätt till nästa avsnitt för att lägga till behörigheter för *lösen ords uppdatering* .
+Om programmet eller skriptet behöver uppdatera användarnas lösen ord måste du tilldela rollen som *användar administratör* till ditt program. Rollen [användar administratör](../active-directory/roles/permissions-reference.md#user-administrator) har en fast uppsättning behörigheter som du beviljar ditt program. 
 
-## <a name="enable-user-delete-and-password-update"></a>Aktivera användar borttagning och lösen ords uppdatering
-
-Behörigheten *läsa och skriva katalog data* omfattar **inte** möjligheten att ta bort användare eller uppdatera lösen ord för användar konton.
-
-Om programmet eller skriptet måste ta bort användare eller uppdatera sina lösen ord, tilldelar du rollen *användar administratör* till ditt program:
+Följ dessa steg om du vill lägga till rollen som *användar administratör* :
 
 1. Logga in på [Azure Portal](https://portal.azure.com) och använd filtret för **katalog + prenumeration** för att växla till Azure AD B2C klienten.
 1. Sök efter och välj **Azure AD B2C**.
 1. Under **Hantera** väljer du **roller och administratörer**.
-1. Välj rollen **användar administratör** .
+1. Välj rollen **användar administratör** . 
 1. Välj **Lägg till tilldelningar**.
-1. I rutan **Välj** text anger du namnet på det program som du registrerade tidigare, till exempel *managementapp1*. Välj ditt program när det visas i Sök resultatet.
+1. I rutan **Välj** text anger du namnet eller ID: t för programmet som du registrerade tidigare, till exempel *managementapp1*. När den visas i Sök resultaten väljer du ditt program.
 1. Välj **Lägg till**. Det kan ta några minuter innan behörigheterna är fullständigt spridda.
+
+## <a name="create-client-secret"></a>Skapa klient hemlighet
+
+Ditt program behöver en klient hemlighet för att bevisa sin identitet när en token begärs. Följ dessa steg om du vill lägga till klient hemligheten:
+
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+
 
 ## <a name="next-steps"></a>Nästa steg
 

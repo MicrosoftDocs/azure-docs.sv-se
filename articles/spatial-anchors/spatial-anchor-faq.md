@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 01eb0ce83efa54366e027d35d9c3c3bbf86eff7b
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: b67dcf038dbe13b8c040f317bb117f3b7a7afdde
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95487375"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384246"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Vanliga frågor om Azure Spatial Anchors
 
@@ -80,7 +80,7 @@ Azure Spatial Anchors följer [villkoren i serviceavtalet för Azure](https://go
 
 **F: har du några begränsnings gränser på plats?**
 
-**A**: Ja, vi har begränsningar för begränsning.  Vi förväntar oss inte att du uppnår dem vid typisk utveckling och testning av program. För produktionsdistributioner kan vi ge stöd till våra kunders krav för hög skala. [Kontakta oss](mailto:azuremrs@microsoft.com) om du vill diskutera det. 
+**A**: Ja, vi har begränsningar för begränsning.  Vi förväntar oss inte att du uppnår dem vid typisk utveckling och testning av program. För produktionsdistributioner kan vi ge stöd till våra kunders krav för hög skala. [Kontakta oss](mailto:azuremrscontact@microsoft.com) om du vill diskutera det.
 
 **F: i vilka regioner är tillgängliga Azure-ankare tillgängliga?**
 

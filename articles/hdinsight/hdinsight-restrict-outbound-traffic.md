@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 297c1d4afca5a1d605a046d69b086a05a9322bc7
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 06990a5bd1d6619f07952e84870a01f5cd5068df
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104872089"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384433"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurera utgående nätverks trafik för Azure HDInsight-kluster med hjälp av brand vägg
 
@@ -32,7 +32,7 @@ En sammanfattning av stegen för att låsa bort från din befintliga HDInsight m
 
 1. Skapa ett undernät.
 1. Skapa en brand vägg.
-1. Lägg till program regler i brand väggen
+1. Lägg till program regler i brand väggen.
 1. Lägg till nätverks regler i brand väggen.
 1. Skapa en routningstabell.
 
@@ -76,7 +76,7 @@ Skapa en program regel samling som gör det möjligt för klustret att skicka oc
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | Tillåt Windows inloggnings aktivitet |
     | Rule_3 | * | https:443 | login.microsoftonline.com | Tillåt Windows inloggnings aktivitet |
-    | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. Core. Windows. net | Ersätt `storage_account_name` med det faktiska lagrings konto namnet. Om du bara vill använda HTTPS-anslutningar kontrollerar du att ["säker överföring krävs"](../storage/common/storage-require-secure-transfer.md) är aktiverat på lagrings kontot. Om du använder privat slut punkt för att komma åt lagrings konton behövs inte det här steget och lagrings trafiken vidarebefordras inte till brand väggen.|
+    | Rule_4 | * | https:443 | storage_account_name. blob. Core. Windows. net | Ersätt `storage_account_name` med det faktiska lagrings konto namnet. Se till att ["säker överföring krävs"](../storage/common/storage-require-secure-transfer.md) är aktiverat på lagrings kontot. Om du använder privat slut punkt för att komma åt lagrings konton behövs inte det här steget och lagrings trafiken vidarebefordras inte till brand väggen.|
 
    :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png" alt-text="Rubrik: Ange information om program regel samling":::
 
@@ -84,7 +84,7 @@ Skapa en program regel samling som gör det möjligt för klustret att skicka oc
 
 ### <a name="configure-the-firewall-with-network-rules"></a>Konfigurera brand väggen med nätverks regler
 
-Skapa nätverks reglerna för att konfigurera HDInsight-klustret på rätt sätt.
+Skapa nätverks reglerna för att konfigurera HDInsight-klustret på rätt sätt. 
 
 1. Fortsätt från föregående steg, gå till **regel samling för nätverk**  >  **+ Lägg till nätverks regel samling**.
 
@@ -102,14 +102,14 @@ Skapa nätverks reglerna för att konfigurera HDInsight-klustret på rätt sätt
 
     | Name | Protokoll | Källadresser | Tjänsttaggar | Mål portar | Kommentarer |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_5 | TCP | * | SQL | 1433 | Om du använder standard-SQL-servrarna som tillhandahålls av HDInsight konfigurerar du en nätverks regel i avsnittet service Tags för SQL som gör att du kan logga och granska SQL-trafik. Om du inte har konfigurerat tjänst slut punkter för SQL Server i HDInsight-undernätet, vilket kringgår brand väggen. Om du använder anpassad SQL Server för Ambari, Oozie, ranger och Hive metastores behöver du bara tillåta trafiken till dina egna anpassade SQL-servrar.|
+    | Rule_5 | TCP | * | SQL | 1433, 11000-11999 | Om du använder standard-SQL-servrarna som tillhandahålls av HDInsight konfigurerar du en nätverks regel i avsnittet service Tags för SQL som gör att du kan logga och granska SQL-trafik. Om du inte har konfigurerat tjänst slut punkter för SQL Server i HDInsight-undernätet, vilket kringgår brand väggen. Om du använder anpassad SQL Server för Ambari, Oozie, ranger och Hive metastores behöver du bara tillåta trafiken till dina egna anpassade SQL-servrar. Läs mer i [Azure SQL Database-och Azure Synapse Analytics-anslutnings arkitektur](../azure-sql/database/connectivity-architecture.md) för att se varför 11000-11999-port intervall också behövs utöver 1433. |
     | Rule_6 | TCP | * | Azure Monitor | * | valfritt Kunder som planerar att använda funktionen för automatisk skalning bör lägga till den här regeln. |
     
    :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png" alt-text="Rubrik: Ange program regel samling":::
 
 1. Välj **Lägg till**.
 
-### <a name="create-and-configure-a-route-table"></a>Skapa och konfigurera en routningstabell
+### <a name="create-and-configure-a-route-table"></a>Skapa och konfigurera en routningstabell 
 
 Skapa en routningstabell med följande poster:
 

@@ -2,21 +2,20 @@
 title: Get-Metric i Azure Monitor Application Insights
 description: Lär dig hur du effektivt använder GetMetric ()-anropet för att avbilda lokalt församlade mått för .NET-och .NET Core-program med Azure Monitor Application Insights
 ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 0ce2651d5cfcb1578d78982af109a004aaac11f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22baa1ae9554601a72ffdb848b87d99281067967
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719788"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384297"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Anpassad mått samling i .NET och .NET Core
 
 Azure Monitor Application Insights .NET-och .NET Core SDK: er har två olika metoder för att samla in anpassade mått, `TrackMetric()` och `GetMetric()` . Den viktigaste skillnaden mellan dessa två metoder är lokal agg regering. `TrackMetric()` saknar föragg regering under `GetMetric()` för-aggregering. Den rekommenderade metoden är att använda agg regering och `TrackMetric()` är därför inte längre den bästa metoden för att samla in anpassade mått. Den här artikeln beskriver hur du använder metoden GetMetric () och några av grunderna bakom hur det fungerar.
 
-## <a name="trackmetric-versus-getmetric"></a>TrackMetric jämfört med GetMetric
+## <a name="pre-aggregating-vs-non-pre-aggregating-api"></a>För hands agg regering vs icke-aggregerad API
 
 `TrackMetric()` skickar RAW-telemetri som anger ett mått. Det är ineffektivt att skicka ett enda telemetri objekt för varje värde. `TrackMetric()` är också ineffektiv i förhållande till prestanda eftersom varje `TrackMetric(item)` går genom den fullständiga SDK-pipelinen för telemetri-initierare och processorer. Till skillnad från `TrackMetric()` , `GetMetric()` hanterar lokal församling för dig och skickar sedan bara ett sammanställt Summary-mått till ett fast intervall på en minut. Så om du behöver övervaka vissa anpassade mått på den andra eller till och med millisekundnivå kan du göra det samtidigt som du bara kommer att kosta lagrings-och nätverks trafiken varje minut. Detta minskar också risken för begränsning som inträffar eftersom det totala antalet telemetridata som måste skickas för ett sammanställt mått minskar avsevärt.
 
@@ -286,7 +285,7 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit` är det maximala antalet data tids serier som ett mått kan innehålla. När den här gränsen har uppnåtts `TrackValue()` spåras inte anrop till.
+* `seriesCountLimit` är det maximala antalet data tids serier som ett mått kan innehålla. När den här gränsen har uppnåtts kommer anrop till `TrackValue()` som normalt resulterar i en ny serie att returnera falskt.
 * `valuesPerDimensionLimit` begränsar antalet distinkta värden per dimension på liknande sätt.
 * `restrictToUInt32Values` Anger om endast positiva heltals värden ska spåras eller inte.
 

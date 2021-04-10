@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/02/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 24d955b0d1c53f57f5927f9e893b6ecd75fb3ca8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d7eca7d8f3cd40f4a3961f0ac478fba290be3041
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102561899"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279671"
 ---
 # <a name="storage-account-overview"></a>Översikt över lagringskonto
 
@@ -175,10 +175,6 @@ I följande tabell visas vilka åtkomst nivåer som är tillgängliga för blobb
 > [!IMPORTANT]
 > Om du ändrar åtkomst nivån för ett befintligt lagrings konto eller BLOB kan ytterligare kostnader uppstå. Mer information finns i [debitering av lagrings konto](#storage-account-billing).
 
-## <a name="encryption"></a>Kryptering
-
-Alla data i ditt lagrings konto krypteras på tjänst sidan. Mer information om kryptering finns i [Azure Storage tjänst kryptering för vilande data](storage-service-encryption.md).
-
 ## <a name="storage-account-endpoints"></a>Slutpunkter för lagringskonto
 
 På ett lagringskonto finns ett unikt namnområde i Azure för dina data. Alla objekt som du lagrar i Azure Storage har en adress som innehåller ditt unika kontonamn. Kombinationen av kontonamnet och Azure Storage-tjänstens slutpunkt bildar slutpunkterna för ditt lagringskonto.
@@ -200,22 +196,17 @@ Skapa URL: en för att komma åt ett objekt i ett lagrings konto genom att lägg
 
 Du kan också konfigurera ditt lagrings konto så att det använder en anpassad domän för blobbar. Mer information finns i [Konfigurera ett anpassat domän namn för ditt Azure Storage-konto](../blobs/storage-custom-domain-name.md).  
 
-## <a name="control-access-to-account-data"></a>Kontrol lera åtkomst till konto data
+## <a name="migrating-a-storage-account"></a>Migrera ett lagrings konto
 
-Som standard är data i ditt konto endast tillgängliga för dig, kontoägaren. Du har kontroll över vem som kan komma åt dina data och vilka behörigheter de har.
+Följande tabell sammanfattar och pekar på vägledning om hur du flyttar, uppgraderar eller migrerar ett lagrings konto:
 
-Varje begäran som görs mot ditt lagrings konto måste vara auktoriserad. På tjänst nivån måste begäran innehålla ett giltigt *Authorization* -huvud. Mer specifikt innehåller rubriken all information som behövs för att tjänsten ska verifiera begäran innan den körs.
-
-Du kan bevilja åtkomst till data i ditt lagrings konto med någon av följande metoder:
-
-- **Azure Active Directory:** Använd Azure Active Directory (Azure AD) autentiseringsuppgifter för att autentisera en användare, grupp eller annan identitet för åtkomst till blob-och Queue-data. Om autentiseringen av en identitet lyckas returnerar Azure AD en token som ska användas för att auktorisera begäran till Azure Blob Storage eller Queue Storage. Mer information finns i [autentisera åtkomst till Azure Storage med hjälp av Azure Active Directory](storage-auth-aad.md).
-- **Auktorisering av delad nyckel:** Använd din åtkomst nyckel för lagrings kontot för att skapa en anslutnings sträng som programmet använder vid körning för att få åtkomst till Azure Storage. Värdena i anslutnings strängen används för att skapa ett *Authorization* -huvud som skickas till Azure Storage. Mer information finns i [Konfigurera anslutnings strängar för Azure Storage](storage-configure-connection-string.md).
-- **Signatur för delad åtkomst:** En signatur för delad åtkomst (SAS) är en token som tillåter delegerad åtkomst till resurser i ditt lagrings konto. SAS-token kapslar in all information som krävs för att auktorisera en begäran om att Azure Storage på URL: en. När du skapar en SAS kan du ange vilka behörigheter som SAS ger till en resurs och intervallet som behörigheterna är giltiga för. En SAS-token kan signeras med antingen Azure AD-autentiseringsuppgifter eller med delad nyckel. Mer information finns i [bevilja begränsad åtkomst till Azure Storage-resurser med hjälp av signaturer för delad åtkomst (SAS)](storage-sas-overview.md).
-
-> [!NOTE]
-> Autentisering av användare eller program som använder Azure AD-autentiseringsuppgifter ger överlägsen säkerhet och lätt att använda för andra auktoriserings metoder. Även om du kan fortsätta att använda autentisering med delad nyckel med dina program kan du använda Azure AD för att kringgå behovet av att lagra din konto åtkomst nyckel med din kod. Du kan även fortsätta att använda signaturer för delad åtkomst (SAS) för att ge detaljerad åtkomst till resurser i ditt lagrings konto, men Azure AD erbjuder liknande funktioner utan att behöva hantera SAS-token eller oroa dig för att återkalla en komprometterad SAS.
->
-> Microsoft rekommenderar att du använder Azure AD-auktorisering för Azure Storage blob-och Queue-program när det är möjligt.
+| Migreringsscenario | Information |
+|--|--|
+| Flytta ett lagrings konto till en annan prenumeration | Azure Resource Manager innehåller alternativ för att flytta en resurs till en annan prenumeration. Mer information finns i [Flytta resurser till en ny resurs grupp eller prenumeration](../../azure-resource-manager/management/move-resource-group-and-subscription.md). |
+| Flytta ett lagrings konto till en annan resurs grupp | Azure Resource Manager innehåller alternativ för att flytta en resurs till en annan resurs grupp. Mer information finns i [Flytta resurser till en ny resurs grupp eller prenumeration](../../azure-resource-manager/management/move-resource-group-and-subscription.md). |
+| Flytta ett lagrings konto till en annan region | Om du vill flytta ett lagringskonto skapar du en kopia av lagringskontot i en annan region. Sedan flyttar du dina data till det kontot med hjälp av AzCopy eller ett annat verktyg som du själv väljer. Mer information finns i [Flytta ett Azure Storage konto till en annan region](storage-account-move.md). |
+| Uppgradera till ett allmänt-syfte v2-lagrings konto | Du kan uppgradera ett allmänt v1-lagrings konto eller Blob Storage-konto till ett allmänt-syfte v2-konto. Observera att den här åtgärden inte kan återställas. Mer information finns i [Uppgradera till ett allmänt-syfte v2-lagrings konto](storage-account-upgrade.md). |
+| Migrera ett klassiskt lagrings konto till Azure Resource Manager | Azure Resource Manager distributions modellen är överlägsen för den klassiska distributions modellen vad gäller funktioner, skalbarhet och säkerhet. Mer information om hur du migrerar ett klassiskt lagrings konto till Azure Resource Manager finns i [migrering av lagrings konton](../../virtual-machines/migration-classic-resource-manager-overview.md#migration-of-storage-accounts) i **plattforms stöd för migrering av IaaS-resurser från klassisk till Azure Resource Manager**. |
 
 ## <a name="copying-data-into-a-storage-account"></a>Kopiera data till ett lagrings konto
 
@@ -240,6 +231,10 @@ Mer information om Azure Storage REST API finns i [Azure Storage Services REST A
 > [!IMPORTANT]
 > Blobar som krypteras med kryptering på klientsidan lagrar krypteringsrelaterade metadata tillsammans med bloben. Om du kopierar en blob som är krypterad med kryptering på klientsidan bör du se till att kopieringen bevarar blobmetadata och framför allt krypteringsrelaterade metadata. Om du kopierar en blob utan krypteringsmetadata kan blobinnehållet inte hämtas igen. Mer information om krypteringsrelaterade metadata finns i [Azure Storage Client Side Encryption](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
+## <a name="encryption"></a>Kryptering
+
+Alla data i ditt lagrings konto krypteras på tjänst sidan. Mer information om kryptering finns i [Azure Storage tjänst kryptering för vilande data](storage-service-encryption.md).
+
 ## <a name="storage-account-billing"></a>Fakturering för lagringskonto
 
 Azure Storage räkningar baserat på lagrings kontots användning. Alla objekt i ett lagringskonto faktureras tillsammans som en grupp. Lagrings kostnaderna beräknas enligt följande faktorer:
@@ -260,5 +255,5 @@ Sidan [Pris för Azure Storage](https://azure.microsoft.com/pricing/details/stor
 
 - [Skapa ett lagringskonto](storage-account-create.md)
 - [Skapa ett blockblobslagringskonto](../blobs/storage-blob-create-account-block-blob.md)
-- [Uppgradera till ett V2-lagringskonto för generell användning](storage-account-upgrade.md)
+- [Uppgradera till ett allmänt-syfte v2-lagrings konto](storage-account-upgrade.md)
 - [Återställa ett borttaget lagringskonto](storage-account-recover.md)

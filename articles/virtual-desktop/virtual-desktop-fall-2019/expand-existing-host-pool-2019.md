@@ -3,15 +3,15 @@ title: Expandera den befintliga Windows Virtual Desktop-poolen (klassisk) med ny
 description: Hur du expanderar en befintlig adresspool med nya sessionsbaserade värdar i Windows Virtual Desktop (klassisk).
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 61cf28b0f1ebee6a0312ec3f23f22b01c6c4919e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.openlocfilehash: f82b831d887f0ebdd659167935f2134583b3bb87
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88009179"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551959"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Expandera en befintlig adresspool med nya sessionsbaserade värdar i Windows Virtual Desktop (klassisk)
 
@@ -39,7 +39,7 @@ Du behöver också följande information från första gången du skapade värdd
 Följande tre avsnitt är tre metoder som du kan använda för att expandera värddatorn. Du kan göra det med ett distributions verktyg som du är van vid.
 
 >[!NOTE]
->Under distributions fasen visas fel meddelanden för den tidigare sessionen värd för VM-resurser om de för närvarande är avstängd. Felen inträffar eftersom Azure inte kan köra PowerShell DSC-tillägget för att kontrol lera att de virtuella datorerna i sessionen är korrekt registrerade i den befintliga poolen. Du kan ignorera dessa fel eller så kan du undvika felen genom att starta alla VM-värdar i den befintliga adresspoolen innan du påbörjar distributions processen.
+>Under distributions fasen visas fel meddelanden för den tidigare sessionen värd för VM-resurser om de för närvarande är avstängd. Felen inträffar eftersom Azure inte kan köra PowerShell DSC-tillägget för att kontrol lera att de virtuella datorerna i sessionen är korrekt registrerade i den befintliga poolen. Session Host vars namn slutar med "-0" måste köras men du kan ignorera dessa fel på ett säkert sätt för andra sessioner, eller så kan du undvika felen genom att starta alla VM-värdar i den befintliga poolen innan du påbörjar distributions processen.
 
 ## <a name="redeploy-from-azure"></a>Distribuera igen från Azure
 
@@ -96,7 +96,7 @@ Alla parameter värden i det här avsnittet ska överensstämma med vad du angav
 1. Välj den virtuella dator storlek som matchar de befintliga virtuella datorerna i sessionen.
 
     >[!NOTE]
-    >Om den angivna virtuella dator storleken som du söker efter inte visas i storleks väljaren för virtuell dator, beror det på att vi inte har publicerat den på Azure Marketplace-verktyget ännu. Om du vill begära en VM-storlek skapar du en begäran eller avröstar en befintlig begäran i [Windows Virtual Desktop UserVoice-forumet](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
+    >Om den angivna virtuella dator storleken som du söker efter inte visas i storleks väljaren för virtuell dator, beror det på att vi inte har publicerat den på Azure Marketplace-verktyget ännu.
 
 2. Anpassa *användnings profilen*, det *totala antalet användare* och *antalet virtuella dator* parametrar för att välja det totala antalet Sessionsgränser som du vill ha i din värddator. Om du till exempel expanderar din värddator från fem värddatorer till åtta kan du konfigurera de här alternativen för att komma till 8 virtuella datorer.
 3. Ange ett prefix för namnen på de virtuella datorerna. Om du till exempel anger namnet "prefix" kommer de virtuella datorerna att kallas "prefix-0," prefix-1, "och så vidare.

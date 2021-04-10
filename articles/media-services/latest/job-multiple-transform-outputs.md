@@ -12,18 +12,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fc3ab64a35c24df2af9d90a5ad348f840610d188
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ada86e0ce44977789eaa5d6327c0aad2883b47d
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102635849"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108854"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>Skapa ett jobb med flera transformera utdata
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Det här avsnittet visar hur du skapar en transformering med två transformera utdata. Det första anropet för indata som ska kodas för strömning med anpassad bit hastighet med en inbyggd [AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset) för inställning. Det andra anropet för ljud signalen i indata-videon som ska bearbetas med [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets). När transformeringen har skapats kan du skicka ett jobb som bearbetar din video på motsvarande sätt. Eftersom vi i det här exemplet anger två transformera utdata måste vi ange två jobb-utdata. Du kan välja att dirigera både jobbets utdata till samma till gång (enligt nedan), eller så kan du få resultaten att skrivas till separata till gångar.
+Det här avsnittet visar hur du skapar en transformering med två transformera utdata. Det första anropet för indata som ska kodas för strömning med anpassad bit hastighet med en inbyggd [AdaptiveStreaming](encode-concept.md#builtinstandardencoderpreset) för inställning. Det andra anropet för ljud signalen i indata-videon som ska bearbetas med [AudioAnalyzerPreset](analyze-video-audio-files-concept.md#built-in-presets). När transformeringen har skapats kan du skicka ett jobb som bearbetar din video på motsvarande sätt. Eftersom vi i det här exemplet anger två transformera utdata måste vi ange två jobb-utdata. Du kan välja att dirigera både jobbets utdata till samma till gång (enligt nedan), eller så kan du få resultaten att skrivas till separata till gångar.
 
 > [!TIP]
 > Innan du börjar utveckla bör du läsa [utveckla med Media Services v3-API: er](media-services-apis-overview.md) (innehåller information om hur du kommer åt API: er, namngivnings konventioner osv.)

@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 0e2230bdcf2b2f4358db4a0d600506b711f39c45
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a0265984c4ae83b8869071017e2fb571a7ff548c
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102508239"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027660"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Ansluta till data med Azure Machine Learning Studio
 
@@ -69,7 +69,7 @@ Följande exempel visar hur formuläret ser ut när du skapar ett **Azure Blob-d
 När du har skapat ett data lager skapar du en data uppsättning för att interagera med dina data. Data uppsättningar paketerar dina data i ett Lazy utvärderat förbruknings Bart objekt för Machine Learning-uppgifter, till exempel träning. [Läs mer om datamängder](how-to-create-register-datasets.md).
 
 Det finns två typer av data uppsättningar, FileDataset och TabularDataset. 
-[FileDatasets](how-to-create-register-datasets.md#filedataset) skapar referenser till en eller flera filer eller offentliga URL: er. [TabularDatasets](how-to-create-register-datasets.md#tabulardataset) representerar dina data i tabell format. 
+[FileDatasets](how-to-create-register-datasets.md#filedataset) skapar referenser till en eller flera filer eller offentliga URL: er. [TabularDatasets](how-to-create-register-datasets.md#tabulardataset) representerar dina data i tabell format. Du kan skapa TabularDatasets från CSV-,. tsv-,. Parquet-,. JSON-filer och från SQL-frågeresultat.
 
 Följande steg och animering visar hur du skapar en data uppsättning i [Azure Machine Learning Studio](https://ml.azure.com).
 

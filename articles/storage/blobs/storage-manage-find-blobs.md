@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
 ms.openlocfilehash: 540f6ca165c80dd90f5004fb53e1577cdc35d770
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104656047"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Hantera och hitta Azure blob-data med blobb index Taggar (för hands version)
@@ -279,7 +279,7 @@ I följande tabell sammanfattas skillnaderna mellan metadata och blob-index Tagg
 | **Behörigheter**  | Läs-eller Skriv behörighet till BLOB-data utökas till metadata | Ytterligare behörigheter krävs för att läsa, filtrera eller skriva index Taggar |
 | **Namngivning** | Metadata-namn måste följa namngivnings reglerna för C#-identifierare | BLOB index-Taggar har stöd för ett bredare antal alfanumeriska tecken |
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Priser för BLOB index är i offentlig för hands version och kan komma att ändras för allmän tillgänglighet. Du debiteras det genomsnittliga månatliga antalet index etiketter i ett lagrings konto. Indexerings motorn kostar inget. Begär anden till `Set Blob Tags` , `Get Blob Tags` och `Find Blobs by Tags` debiteras enligt deras respektive åtgärds typer. Mer information finns i avsnittet [om Block-Blob-prissättning](https://azure.microsoft.com/pricing/details/storage/blobs/).
 

@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 5e45c51735e0b7ab4b263d3f3047b5848c82439d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.openlocfilehash: 224f2e773ecd42dcbdd356531d9ce94636de002f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98185775"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448278"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>Skapa PowerShell-skript för MSIX app attach (för hands version)
 
@@ -27,7 +27,7 @@ Det här avsnittet beskriver hur du konfigurerar PowerShell-skript för MSIX app
 
 ## <a name="install-certificates"></a>Installera certifikat
 
-Du måste installera certifikat på alla värddatorer i den modempool som ska vara värd för åtkomst punkterna från MSIX-appen bifoga paket.
+Du måste installera certifikat på alla värddatorer i den modempool som ska vara värd för apparna från MSIX-appen bifoga paket.
 
 Om din app använder ett certifikat som inte är offentligt betrott eller själv signerat, så gör du så här för att installera det:
 

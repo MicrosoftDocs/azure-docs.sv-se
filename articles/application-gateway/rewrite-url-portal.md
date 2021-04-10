@@ -2,24 +2,24 @@
 title: Skriv om URL och frågesträng med Azure Application Gateway – Azure Portal
 description: 'Lär dig hur du använder Azure Portal för att konfigurera en Azure Application-Gateway för att skriva om URL: en och frågesträng'
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 7/16/2020
-ms.author: surmb
-ms.openlocfilehash: ec58c6f97efdbcb91071bcea98bbbc614833246d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/05/2021
+ms.author: azhussai
+ms.openlocfilehash: b8ddc5e57b9ce56d6bce7e220bc840ba0fa43ae2
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92215781"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384765"
 ---
-# <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>Skriv om URL: en med Azure Application Gateway – Azure Portal (för hands version)
+# <a name="rewrite-url-with-azure-application-gateway---azure-portal"></a>Skriv om URL med Azure Application Gateway – Azure Portal
 
 Den här artikeln beskriver hur du använder Azure Portal för att konfigurera en instans av [Application Gateway v2-SKU](application-gateway-autoscaling-zone-redundant.md) för att skriva om URL: en.
 
 >[!NOTE]
-> Funktionen för URL-omskrivning är i för hands version och är endast tillgänglig för Standard_v2 och WAF_v2 SKU för Application Gateway. Det rekommenderas inte för användning i produktions miljöer. Läs mer om för hands versionerna i [användnings villkor här](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Funktionen för URL-omskrivning är endast tillgänglig för Standard_v2 och WAF_v2 SKU för Application Gateway. När URL-omskrivning har kon figurer ATS på en WAF-aktiverad gateway kommer WAF-utvärderingen att äga rum på de begärda rubrikerna och URL: en för begäran. [Läs mer](rewrite-http-headers-url.md#using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku).
 
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 

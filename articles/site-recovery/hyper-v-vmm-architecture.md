@@ -1,18 +1,15 @@
 ---
 title: Arkitektur – haveri beredskap för Hyper-V till en sekundär plats med Azure Site Recovery
 description: Den här artikeln innehåller en översikt över arkitekturen för haveri beredskap för lokala virtuella Hyper-V-datorer till en sekundär System Center-VMM-plats med Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.author: raynew
-ms.openlocfilehash: 703a6afdc12c8a9863ff0f480ec7a577ec31ef77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b33e60036108eb92b7b64b4b3ec3bcc47ad1ade1
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87496006"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580215"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Arkitektur – Hyper-V-replikering till en sekundär plats
 

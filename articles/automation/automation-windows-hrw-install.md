@@ -3,14 +3,14 @@ title: Distribuera en Windows-Hybrid Runbook Worker i Azure Automation
 description: Den här artikeln beskriver hur du distribuerar en Hybrid Runbook Worker som du kan använda för att köra Runbooks på Windows-baserade datorer i ditt lokala data Center eller i moln miljön.
 services: automation
 ms.subservice: process-automation
-ms.date: 11/24/2020
+ms.date: 04/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: f6858c7350e6c72a096b2f2bd5f4a4ff606bf023
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a28266210fd8b6f0b731b972f00aa3d413c0d0c
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651365"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027745"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Distribuera en Windows-Hybrid Runbook Worker
 
@@ -83,7 +83,32 @@ Om du vill installera och konfigurera en Windows-användare Hybrid Runbook Worke
 
 ## <a name="automated-deployment"></a>Automatiserad distribution
 
-Metoden för automatisk distribution använder PowerShell-skriptet **New-OnPremiseHybridWorker.ps1** för att automatisera och konfigurera Windows hybrid Runbook Worker-rollen. Den utför följande:
+Det finns två metoder för att automatiskt distribuera en Hybrid Runbook Worker. Du kan importera en Runbook från Runbook-galleriet i Azure Portal och köra den, eller så kan du manuellt hämta ett skript från PowerShell-galleriet.
+
+### <a name="importing-a-runbook-from-the-runbook-gallery"></a>Importera en Runbook från Runbook-galleriet
+
+Import proceduren beskrivs i detalj i [importera runbooks från GitHub med Azure Portal](automation-runbook-gallery.md#import-runbooks-from-github-with-the-azure-portal). Namnet på den Runbook som ska importeras är **skapa Automation Windows-HybridWorker**.
+
+Runbooken använder följande parametrar.
+
+| Parameter | Status | Beskrivning |
+| ------- | ----- | ----------- |
+| `Location` | Obligatorisk | Platsen för Log Analytics arbets ytan. |
+| `ResourceGroupName` | Obligatorisk | Resurs gruppen för ditt Automation-konto. |
+| `AccountName` | Obligatorisk | Namnet på Automation-kontot där hybrid körnings arbets tagaren ska registreras. |
+| `CreateLA` | Obligatorisk | Om värdet är true, använder värdet för `WorkspaceName` för att skapa en Log Analytics-arbetsyta. Om värdet är false måste värdet för `WorkspaceName` referera till en befintlig arbets yta. |
+| `LAlocation` | Valfritt | Den plats där Log Analytics arbets ytan kommer att skapas eller där den redan finns. |
+| `WorkspaceName` | Valfritt | Namnet på Log Analytics arbets ytan som ska användas. |
+| `CreateVM` | Obligatorisk | Om det här värdet är sant används värdet `VMName` som namn på en ny virtuell dator. Om det är falskt använder `VMName` du för att hitta och registrera en befintlig virtuell dator. |
+| `VMName` | Valfritt | Namnet på den virtuella dator som antingen har skapats eller registrerats, beroende på värdet för `CreateVM` . |
+| `VMImage` | Valfritt | Namnet på den virtuella dator avbildning som ska skapas. |
+| `VMlocation` | Valfritt | Platsen för den virtuella dator som antingen har skapats eller registrerats. Om den här platsen inte anges används värdet för `LAlocation` . |
+| `RegisterHW` | Obligatorisk | Om det här värdet är sant registrerar du den virtuella datorn som en hybrid Worker. |
+| `WorkerGroupName` | Obligatorisk | Namnet på Hybrid Worker gruppen. |
+
+### <a name="download-a-script-from-the-powershell-gallery"></a>Hämta ett skript från PowerShell-galleriet
+
+Den här automatiserade distributions metoden använder PowerShell-skriptet **New-OnPremiseHybridWorker.ps1** för att automatisera och konfigurera Windows hybrid Runbook Worker-rollen. Den utför följande:
 
 * Installerar nödvändiga moduler
 * Loggar in med ditt Azure-konto
@@ -96,7 +121,7 @@ Metoden för automatisk distribution använder PowerShell-skriptet **New-OnPremi
 
 Utför följande steg för att installera rollen på din Windows-dator med hjälp av skriptet.
 
-1. Ladda ned **New-OnPremiseHybridWorker.ps1** -skriptet från [PowerShell-galleriet](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker). När du har hämtat skriptet kopierar du eller kör det på mål datorn. **New-OnPremiseHybridWorker.ps1** skriptet använder följande parametrar under körningen.
+1. Ladda ned **New-OnPremiseHybridWorker.ps1** -skriptet från [PowerShell-galleriet](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker). När du har hämtat skriptet kopierar du eller kör det på mål datorn. Skriptet använder följande parametrar.
 
     | Parameter | Status | Beskrivning |
     | --------- | ------ | ----------- |
@@ -109,9 +134,9 @@ Utför följande steg för att installera rollen på din Windows-dator med hjäl
     | `TenantID` | Valfritt | Identifieraren för den klient organisation som är kopplad till ditt Automation-konto. |
     | `WorkspaceName` | Valfritt | Namnet på Log Analytics arbets ytan. Om du inte har en Log Analytics arbets yta, skapar skriptet och konfigurerar ett. |
 
-2. Öppna en upphöjd 64-bitars PowerShell-kommandotolk.
+1. Öppna en upphöjd 64-bitars PowerShell-kommandotolk.
 
-3. Från PowerShell-Kommandotolken bläddrar du till den mapp som innehåller skriptet som du laddade ned. Ändra värdena för parametrarna,,,, `AutomationAccountName` `AAResourceGroupName` `OMSResourceGroupName` `HybridGroupName` `SubscriptionID` och `WorkspaceName` . Kör sedan skriptet.
+1. Från PowerShell-Kommandotolken bläddrar du till den mapp som innehåller skriptet som du laddade ned. Ändra värdena för parametrarna,,,, `AutomationAccountName` `AAResourceGroupName` `OMSResourceGroupName` `HybridGroupName` `SubscriptionID` och `WorkspaceName` . Kör sedan skriptet.
 
     Du uppmanas att autentisera med Azure när du har kört skriptet. Du måste logga in med ett konto som är medlem i rollen **prenumerations administratörer** och som är medadministratör för prenumerationen.
 
@@ -127,9 +152,9 @@ Utför följande steg för att installera rollen på din Windows-dator med hjäl
     .\New-OnPremiseHybridWorker.ps1 @NewOnPremiseHybridWorkerParameters
     ```
 
-4. Du uppmanas att godkänna att installera NuGet och att autentisera med dina Azure-autentiseringsuppgifter. Om du inte har den senaste versionen av NuGet kan du ladda ned den från [tillgängliga NuGet-distributions versioner](https://www.nuget.org/downloads).
+1. Du uppmanas att godkänna att installera NuGet och att autentisera med dina Azure-autentiseringsuppgifter. Om du inte har den senaste versionen av NuGet kan du ladda ned den från [tillgängliga NuGet-distributions versioner](https://www.nuget.org/downloads).
 
-5. Verifiera distributionen när skriptet har körts. På sidan **hybrid Runbook Worker grupper** i ditt Automation-konto, på fliken **användare hybrid Runbook Worker-grupp** , visas den nya gruppen och antalet medlemmar. Om det är en befintlig grupp ökar antalet medlemmar. Du kan välja gruppen från listan på sidan genom att välja **hybrid arbetare** på menyn till vänster. På sidan **hybrid arbetare** kan du se varje medlem i gruppen i listan.
+1. Verifiera distributionen när skriptet har körts. På sidan **hybrid Runbook Worker grupper** i ditt Automation-konto, på fliken **användare hybrid Runbook Worker-grupp** , visas den nya gruppen och antalet medlemmar. Om det är en befintlig grupp ökar antalet medlemmar. Du kan välja gruppen från listan på sidan genom att välja **hybrid arbetare** på menyn till vänster. På sidan **hybrid arbetare** kan du se varje medlem i gruppen i listan.
 
 ## <a name="manual-deployment"></a>Manuell distribution
 
@@ -141,7 +166,7 @@ Utför följande steg för att installera och konfigurera en Windows-Hybrid Runb
     Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <resourceGroupName> -WorkspaceName <workspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true
     ```
 
-2. Distribuera Log Analytics-agenten till mål datorn.
+1. Distribuera Log Analytics-agenten till mål datorn.
 
     * För virtuella Azure-datorer installerar du Log Analytics agent för Windows med hjälp av [tillägget för virtuell dator för Windows](../virtual-machines/extensions/oms-windows.md). Tillägget installerar Log Analytics agent på virtuella Azure-datorer och registrerar virtuella datorer i en befintlig Log Analytics-arbetsyta. Du kan använda en Azure Resource Manager mall, PowerShell eller Azure Policy för att tilldela en inbyggd princip [för att distribuera Log Analytics agent för virtuella *Linux* -eller *Windows* -datorer](../governance/policy/samples/built-in-policies.md#monitoring) . När agenten har installerats kan datorn läggas till i en Hybrid Runbook Worker grupp i ditt Automation-konto.
     
@@ -162,7 +187,7 @@ Utför följande steg för att installera och konfigurera en Windows-Hybrid Runb
 
     Vi rekommenderar att du installerar Log Analytics agent för Windows eller Linux med Azure Policy.
 
-3. Verifiera att agenten rapporterar till arbets ytan
+1. Verifiera att agenten rapporterar till arbets ytan
 
     Log Analytics-agenten för Windows ansluter datorer till en Azure Monitor Log Analytics-arbetsyta. När du installerar agenten på datorn och ansluter den till din arbets yta laddar den automatiskt ned de komponenter som krävs för Hybrid Runbook Worker.
 
@@ -176,9 +201,9 @@ Utför följande steg för att installera och konfigurera en Windows-Hybrid Runb
 
     I Sök resultaten bör du se pulsslags poster för datorn, vilket indikerar att den är ansluten och rapporterar till tjänsten. Som standard vidarebefordrar varje agent en pulsslags post till den tilldelade arbets ytan. Använd följande steg för att slutföra Agent installationen och installationen.
 
-4. Bekräfta versionen av Hybrid Runbook Worker på den dator som är värd för Log Analytics agent, bläddra till `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` och anteckna i undermappen **version** . Den här mappen visas på datorn flera minuter efter det att lösningen har Aktiver ATS i arbets ytan.
+1. Bekräfta versionen av Hybrid Runbook Worker på den dator som är värd för Log Analytics agent, bläddra till `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` och anteckna i undermappen **version** . Den här mappen visas på datorn flera minuter efter det att lösningen har Aktiver ATS i arbets ytan.
 
-5. Installera Runbook-miljön och Anslut till Azure Automation. När du konfigurerar en agent så att den rapporterar till en Log Analytics arbets yta och importerar **Automation** -lösningen, pushas lösningen nedåt i `HybridRegistration` PowerShell-modulen. Den här modulen innehåller `Add-HybridRunbookWorker` cmdleten. Använd denna cmdlet för att installera Runbook-miljön på datorn och registrera den med Azure Automation.
+1. Installera Runbook-miljön och Anslut till Azure Automation. När du konfigurerar en agent så att den rapporterar till en Log Analytics arbets yta och importerar **Automation** -lösningen, pushas lösningen nedåt i `HybridRegistration` PowerShell-modulen. Den här modulen innehåller `Add-HybridRunbookWorker` cmdleten. Använd denna cmdlet för att installera Runbook-miljön på datorn och registrera den med Azure Automation.
 
     Öppna en PowerShell-session i administratörs läge och kör följande kommandon för att importera modulen.
 
@@ -187,7 +212,7 @@ Utför följande steg för att installera och konfigurera en Windows-Hybrid Runb
     Import-Module .\HybridRegistration.psd1
     ```
 
-6. Kör `Add-HybridRunbookWorker` cmdleten och ange värdena för parametrarna `Url` , `Key` och `GroupName` .
+1. Kör `Add-HybridRunbookWorker` cmdleten och ange värdena för parametrarna `Url` , `Key` och `GroupName` .
 
     ```powershell-interactive
     Add-HybridRunbookWorker –GroupName <String> -Url <Url> -Key <String>
@@ -205,7 +230,7 @@ Utför följande steg för att installera och konfigurera en Windows-Hybrid Runb
 
     * Om det behövs anger du `Verbose` parametern för att få information om installationen.
 
-7. Verifiera distributionen när kommandot har slutförts. På sidan **hybrid Runbook Worker grupper** i ditt Automation-konto, på fliken **användare hybrid Runbook Worker-grupp** , visas den nya eller befintliga gruppen och antalet medlemmar. Om det är en befintlig grupp ökar antalet medlemmar. Du kan välja gruppen från listan på sidan genom att välja **hybrid arbetare** på menyn till vänster. På sidan **hybrid arbetare** kan du se varje medlem i gruppen i listan.
+1. Verifiera distributionen när kommandot har slutförts. På sidan **hybrid Runbook Worker grupper** i ditt Automation-konto, på fliken **användare hybrid Runbook Worker-grupp** , visas den nya eller befintliga gruppen och antalet medlemmar. Om det är en befintlig grupp ökar antalet medlemmar. Du kan välja gruppen från listan på sidan genom att välja **hybrid arbetare** på menyn till vänster. På sidan **hybrid arbetare** kan du se varje medlem i gruppen i listan.
 
 ## <a name="install-powershell-modules"></a>Installera PowerShell-moduler
 
@@ -219,9 +244,9 @@ Moduler som är installerade måste finnas på en plats som refereras av `PSModu
 
 1. I Azure Portal går du till ditt Automation-konto.
 
-2. Under **konto inställningar** väljer du **nycklar** och noterar värdena för **URL** och **primär åtkomst nyckel**.
+1. Under **konto inställningar** väljer du **nycklar** och noterar värdena för **URL** och **primär åtkomst nyckel**.
 
-3. Öppna en PowerShell-session i administratörs läge och kör följande kommando med URL: en och primär åtkomst nyckel värden. Använd `Verbose` parametern för en detaljerad logg över borttagnings processen. Om du vill ta bort inaktuella datorer från Hybrid Worker gruppen använder du den valfria `machineName` parametern.
+1. Öppna en PowerShell-session i administratörs läge och kör följande kommando med URL: en och primär åtkomst nyckel värden. Använd `Verbose` parametern för en detaljerad logg över borttagnings processen. Om du vill ta bort inaktuella datorer från Hybrid Worker gruppen använder du den valfria `machineName` parametern.
 
 ```powershell-interactive
 Remove-HybridRunbookWorker -Url <URL> -Key <primaryAccessKey> -MachineName <computerName>
@@ -233,11 +258,11 @@ Om du vill ta bort en Hybrid Runbook Worker grupp måste du först ta bort Hybri
 
 1. Öppna Automation-kontot i Azure Portal.
 
-2. Välj **hybrid Worker-grupper** under **process automatisering**. Välj den grupp som du vill ta bort. Sidan Egenskaper för gruppen visas.
+1. Välj **hybrid Worker-grupper** under **process automatisering**. Välj den grupp som du vill ta bort. Sidan Egenskaper för gruppen visas.
 
    ![Sidan Egenskaper](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
 
-3. På egenskaps sidan för den valda gruppen väljer du **ta bort**. Ett meddelande som uppmanar dig att bekräfta åtgärden. Välj **Ja** om du är säker på att du vill fortsätta.
+1. På egenskaps sidan för den valda gruppen väljer du **ta bort**. Ett meddelande som uppmanar dig att bekräfta åtgärden. Välj **Ja** om du är säker på att du vill fortsätta.
 
    ![Bekräftelsemeddelande](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
 
