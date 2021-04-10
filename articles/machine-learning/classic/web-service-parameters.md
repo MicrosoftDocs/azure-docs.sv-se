@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/12/2017
 ms.openlocfilehash: 49814d01209b58666c011a6bbd7fe6c328d460f8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100518342"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Använd Azure Machine Learning Studio (klassiska) webb tjänst parametrar
@@ -58,11 +58,11 @@ Vi kan till exempel anta att vi har ett experiment med en modul för [export av 
    
    ![Ikon för webb tjänst parameter](./media/web-service-parameters/icon.png)
    
-   Välj "Ange som webb tjänst parameter".
+   Välj "Ange som webb tjänst parameter&quot;.
    
-   En post läggs till under **webb tjänst parametrar** längst ned i fönstret Egenskaper med namnet "path to BLOB Start with container". Det här är den webb tjänst parameter som nu är associerad med den här parametern för [export data][writer] modul.
-4. Om du vill byta namn på parametern för webb tjänsten klickar du på namnet, anger "blobb Sök väg" och trycker på **RETUR** -tangenten. 
-5. Ange ett standardvärde för webb tjänst parametern genom att klicka på ikonen till höger om namnet, välj "Ange standardvärde", ange ett värde (till exempel "container1/output1.csv") och tryck på **RETUR** -tangenten.
+   En post läggs till under **webb tjänst parametrar** längst ned i fönstret Egenskaper med namnet &quot;path to BLOB Start with container&quot;. Det här är den webb tjänst parameter som nu är associerad med den här parametern för [export data][writer] modul.
+4. Om du vill byta namn på parametern för webb tjänsten klickar du på namnet, anger &quot;blobb Sök väg&quot; och trycker på **RETUR** -tangenten. 
+5. Ange ett standardvärde för webb tjänst parametern genom att klicka på ikonen till höger om namnet, välj &quot;Ange standardvärde&quot;, ange ett värde (till exempel &quot;container1/output1.csv") och tryck på **RETUR** -tangenten.
    
    ![Webb tjänst parameter](./media/web-service-parameters/parameter.png)
 6. Klicka på **Kör**. 

@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 12/23/2020
 ms.openlocfilehash: 9b5526af03bdbefeb54633c49bbd43743555f60b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100383236"
 ---
 # <a name="how-to-create-plans-for-your-managed-service-offer"></a>Skapa planer för ditt hanterade tjänst erbjudande
@@ -79,12 +79,12 @@ Om du vill lägga till upp till 10 000 prenumerations-ID: n med en. CSV-fil:
 
 ## <a name="technical-configuration"></a>Teknisk konfiguration
 
-Det här avsnittet skapar ett manifest med auktoriseringsinformation för att hantera kund resurser. Den här informationen krävs för att aktivera [Azure-delegerad resurs hantering](../lighthouse/concepts/azure-delegated-resource-management.md).
+Det här avsnittet skapar ett manifest med auktoriseringsinformation för att hantera kund resurser. Den här informationen krävs för att aktivera [Azure-delegerad resurshantering](../lighthouse/concepts/azure-delegated-resource-management.md).
 
 Granska [klienter, roller och användare i Azure Lighthouse-scenarier](../lighthouse/concepts/tenants-users-roles.md#best-practices-for-defining-users-and-roles) för att förstå vilka roller som stöds och de bästa metoderna för att definiera dina auktoriseringar.
 
 > [!NOTE]
-> Användare och roller i dina Authorization-poster gäller alla kunder som aktiverar planen. Om du vill begränsa åtkomsten till en specifik kund måste du publicera en privat plan för deras exklusiva användning.
+> Användare och roller i dina auktoriseringsposter gäller alla kunder som aktiverar planen. Om du vill begränsa åtkomsten till en specifik kund måste du publicera en privat plan för exklusiv användning.
 
 ### <a name="manifest"></a>Manifest
 

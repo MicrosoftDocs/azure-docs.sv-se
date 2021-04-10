@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
 ms.openlocfilehash: 72f2a5eec25b9acc2aedd7b006fe3380141781c8
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105563420"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Felsöka dirigering av pipelines och utlösare i Azure Data Factory
@@ -66,7 +66,7 @@ Välj alternativet för **binär kopia** när du skapar kopierings aktiviteten. 
 
 ### <a name="a-pipeline-run-fails-when-you-reach-the-capacity-limit-of-the-integration-runtime-for-data-flow"></a>En pipeline-körning fungerar inte när du når kapacitets gränsen för integrerings körningen för data flödet
 
-**Ge**
+**Problem**
 
 Felmeddelande:
 
@@ -135,7 +135,7 @@ Kända *fakta om* Förkunskap
  **Lösning**
  
 * Samtidiga gränser: om din pipeline har en concurrency-princip kontrollerar du att det inte finns några gamla pipelines-körningar. Den maximala pipeline-samtidigheten som tillåts i Azure Data Factory är 10 pipelines. 
-* Övervaknings gränser: gå till arbets ytan för ADF-redigering, välj din pipeline och ta reda på om den har tilldelats en concurrency-egenskap. Om det gör det går du till vyn övervakning och kontrollerar att det inte finns några under de senaste 45 dagarna som pågår. Om något pågår kan du avbryta det och den nya pipeline-körningen ska starta.
+* Övervaknings gränser: gå till arbets ytan för ADF-redigering, välj din pipeline och ta reda på om den har tilldelats en concurrency-egenskap. I så fall går du till övervakningsvyn och kontrollerar att ingenting pågår från de senaste 45 dagarna. Om något pågår kan du avbryta det och den nya pipeline-körningen ska starta.
 * Tillfälliga problem: det är möjligt att din körning påverkades av ett tillfälligt nätverks problem, auktoriseringsfel, drifts avbrott och tjänster.  I så fall har Azure Data Factory en intern återställnings process som övervakar alla körningar och startar dem när ett meddelande om att något har gått fel. Den här processen sker var 1: a timme, så om din körning har fastnat i mer än en timme skapar du ett support ärende.
  
 ### <a name="longer-start-up-times-for-activities-in-adf-copy-and-data-flow"></a>Längre start tider för aktiviteter i ADF-kopiering och data flöde

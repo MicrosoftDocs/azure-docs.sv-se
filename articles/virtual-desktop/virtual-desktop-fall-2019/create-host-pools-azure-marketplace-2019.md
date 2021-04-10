@@ -3,15 +3,15 @@ title: Windows Virtual Desktop (klassisk) Host pool Azure Marketplace – Azure
 description: Så här skapar du en Windows Virtual Desktop (klassisk)-värd pool med hjälp av Azure Marketplace.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/31/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7e0862bd7519f59602f1e769301614895bd6e09
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88008601"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121888"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Självstudie: skapa en värdbaserad pool i Windows Virtual Desktop (klassisk)
 
@@ -80,10 +80,10 @@ För fliken **Konfigurera virtuella datorer** :
 1. Acceptera standardvärdena eller anpassa antalet och storleken på de virtuella datorerna.
 
     >[!NOTE]
-    >Om den angivna storleken på den virtuella datorn som du söker efter inte visas i storleks väljaren, beror det på att vi inte har publicerat den på Azure Marketplace-verktyget ännu. Om du vill begära en storlek skapar du en begäran eller avröstar en befintlig begäran i [Windows Virtual Desktop UserVoice-forumet](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
+    >Om den angivna storleken på den virtuella datorn som du söker efter inte visas i storleks väljaren, beror det på att vi inte har publicerat den på Azure Marketplace-verktyget ännu.
 
-1. Ange ett prefix för namnen på de virtuella datorerna. Om du till exempel anger *prefix* kommer de virtuella datorerna att kallas **prefix-0**, **prefix-1** och så vidare.
-1. Välj **Nästa: inställningar för virtuella datorer**.
+2. Ange ett prefix för namnen på de virtuella datorerna. Om du till exempel anger *prefix* kommer de virtuella datorerna att kallas **prefix-0**, **prefix-1** och så vidare.
+3. Välj **Nästa: inställningar för virtuella datorer**.
 
 ### <a name="virtual-machine-settings"></a>Inställningar för virtuella datorer
 

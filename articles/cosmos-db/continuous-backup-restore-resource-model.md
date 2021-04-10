@@ -8,10 +8,10 @@ ms.date: 02/22/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 065127fbeaabc415dd9a5fbe74f90d5060909d5d
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105641034"
 ---
 # <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Resurs modell för Azure Cosmos DB funktionen för återställning av tidpunkt (för hands version)
@@ -43,7 +43,7 @@ Den här egenskapen anger hur kontot skapades. De möjliga värdena är *standar
 
 `RestoreParameters`Resursen innehåller information om återställnings åtgärden, inklusive konto-ID, tid att återställa och vilka resurser som behöver återställas.
 
-|Egenskapens namn |Description  |
+|Egenskapens namn |Beskrivning  |
 |---------|---------|
 |restoreMode  | Återställnings läget ska vara *PointInTime* |
 |restoreSource   |  InstanceId för det käll konto som återställningen ska initieras från.       |
@@ -52,7 +52,7 @@ Den här egenskapen anger hur kontot skapades. De möjliga värdena är *standar
 
 **DatabaseRestoreResource** – varje resurs representerar en enskild databas och alla samlingar under den databasen.
 
-|Egenskapens namn |Description  |
+|Egenskapens namn |Beskrivning  |
 |---------|---------|
 |Databas | Namnet på databasen |
 | collectionNames| Listan över behållare under den här databasen |
@@ -134,7 +134,7 @@ Om du vill hämta en lista över alla återställas-konton, se [återställas Da
 
 Varje resurs innehåller information om en Mutations händelse, till exempel skapande och borttagning som inträffat på SQL Database. Den här informationen kan hjälpa dig i scenarier där databasen har tagits bort av misstag och om du behöver ta reda på när händelsen inträffade.
 
-|Egenskapens namn |Description  |
+|Egenskapens namn |Beskrivning  |
 |---------|---------|
 | eventTimestamp | Tiden i UTC när databasen skapas eller tas bort. |
 | ownerId | Namnet på SQL-databasen. |
@@ -148,7 +148,7 @@ Om du vill hämta en lista över alla databas mutationer, se artikeln [återstä
 
 Varje resurs innehåller information om en Mutations händelse, till exempel skapande och borttagning som inträffat på SQL-behållaren. Den här informationen kan vara till hjälp i scenarier där behållaren har ändrats eller tagits bort, och om du behöver ta reda på när händelsen inträffade.
 
-|Egenskapens namn |Description  |
+|Egenskapens namn |Beskrivning  |
 |---------|---------|
 | eventTimestamp    | Tiden i UTC när den här behållar händelsen inträffade.|
 | ownerId| SQL-behållarens namn.|
@@ -162,7 +162,7 @@ Om du vill hämta en lista över alla behållar mutationer under samma databas k
 
 Varje resurs representerar en enda databas och alla behållare under den databasen.
 
-|Egenskapens namn |Description  |
+|Egenskapens namn |Beskrivning  |
 |---------|---------|
 | Databas  | Namnet på SQL-databasen.
 | collectionNames   | Listan över SQL-behållare under den här databasen.|
@@ -173,7 +173,7 @@ Om du vill hämta en lista över SQL Database-och container-kombination som finn
 
 Varje resurs innehåller information om en Mutations händelse, till exempel skapande och borttagning som har inträffat i MongoDB-databasen. Den här informationen kan vara till hjälp i scenariot där databasen har tagits bort av misstag och användaren måste ta reda på när händelsen inträffade.
 
-|Egenskapens namn |Description  |
+|Egenskapens namn |Beskrivning  |
 |---------|---------|
 |eventTimestamp| Tiden i UTC när den här databas händelsen inträffade.|
 | ownerId| Namnet på MongoDB-databasen. |
@@ -186,7 +186,7 @@ Om du vill hämta en lista över alla databas mutationer, se artikeln [återstä
 
 Varje resurs innehåller information om en Mutations händelse, till exempel skapande och borttagning som inträffat i MongoDB-samlingen. Den här informationen kan hjälpa dig i scenarier där samlingen har ändrats eller tagits bort, och användaren måste ta reda på när händelsen inträffade.
 
-|Egenskapens namn |Description  |
+|Egenskapens namn |Beskrivning  |
 |---------|---------|
 | eventTimestamp |Tiden i UTC när den här samlings händelsen inträffade. |
 | ownerId| Namnet på MongoDB-samlingen. |
@@ -199,7 +199,7 @@ Om du vill hämta en lista över alla behållar mutationer under samma databas k
 
 Varje resurs representerar en enda databas och alla samlingar under den databasen.
 
-|Egenskapens namn |Description  |
+|Egenskapens namn |Beskrivning  |
 |---------|---------|
 | Databas  |Namnet på MongoDB-databasen. |
 | collectionNames | Listan med MongoDB-samlingar under den här databasen. |

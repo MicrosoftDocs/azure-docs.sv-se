@@ -6,123 +6,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/05/2020
+ms.date: 03/31/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 8150375eff98374e21d200d98c04158b07f1c243
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2bc71100a92d1811d69af31a7a3085af36f60a8
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92789700"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121939"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Skapa ett konto som stöder Kundhanterade nycklar för tabeller och köer
 
 Azure Storage krypterar alla data i ett lagrings konto i vila. Som standard använder Queue Storage och table Storage en nyckel som är begränsad till tjänsten och hanteras av Microsoft. Du kan också välja att använda Kundhanterade nycklar för att kryptera kö-eller tabell data. Om du vill använda Kundhanterade nycklar med köer och tabeller måste du först skapa ett lagrings konto som använder en krypterings nyckel som är begränsad till kontot, i stället för till tjänsten. När du har skapat ett konto som använder konto krypterings nyckeln för kö-och tabell data kan du konfigurera Kundhanterade nycklar för lagrings kontot.
 
 Den här artikeln beskriver hur du skapar ett lagrings konto som förlitar sig på en nyckel som är begränsad till kontot. När kontot först skapas använder Microsoft konto nyckeln för att kryptera data i kontot och Microsoft hanterar nyckeln. Du kan sedan konfigurera Kundhanterade nycklar för kontot för att dra nytta av dessa förmåner, inklusive möjligheten att tillhandahålla egna nycklar, uppdatera nyckel versionen, rotera nycklarna och återkalla åtkomst kontroller.
-
-## <a name="about-the-feature"></a>Om funktionen
-
-Om du vill skapa ett lagrings konto som förlitar sig på konto krypterings nyckeln för kö-och tabell lagring måste du först registrera dig för att använda den här funktionen med Azure. På grund av begränsad kapacitet bör du vara medveten om att det kan ta flera månader innan förfrågningar om åtkomst godkänns.
-
-Du kan skapa ett lagrings konto som förlitar sig på konto krypterings nyckeln för kö-och tabell lagring i följande regioner:
-
-- East US
-- USA, södra centrala
-- USA, västra 2  
-
-### <a name="register-to-use-the-account-encryption-key"></a>Registrera dig för att använda konto krypterings nyckeln
-
-Om du vill registrera dig för att använda kontots krypterings nyckel med kö-eller tabell lagring, använder du PowerShell eller Azure CLI.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Registrera med PowerShell genom att anropa kommandot [register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) .
-
-```powershell
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowAccountEncryptionKeyForQueues
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowAccountEncryptionKeyForTables
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Om du vill registrera dig med Azure CLI anropar du kommandot [AZ funktions register](/cli/azure/feature#az-feature-register) .
-
-```azurecli
-az feature register --namespace Microsoft.Storage \
-    --name AllowAccountEncryptionKeyForQueues
-az feature register --namespace Microsoft.Storage \
-    --name AllowAccountEncryptionKeyForTables
-```
-
-# <a name="template"></a>[Mall](#tab/template)
-
-Ej tillämpligt
-
----
-
-### <a name="check-the-status-of-your-registration"></a>Kontrol lera status för registreringen
-
-Använd PowerShell eller Azure CLI för att kontrol lera status för registreringen för kö-eller tabell lagring.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Om du vill kontrol lera status för registreringen med PowerShell anropar du kommandot [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) .
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowAccountEncryptionKeyForQueues
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowAccountEncryptionKeyForTables
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Om du vill kontrol lera statusen för registreringen med Azure CLI anropar du kommandot [AZ Feature](/cli/azure/feature#az-feature-show) .
-
-```azurecli
-az feature show --namespace Microsoft.Storage \
-    --name AllowAccountEncryptionKeyForQueues
-az feature show --namespace Microsoft.Storage \
-    --name AllowAccountEncryptionKeyForTables
-```
-
-# <a name="template"></a>[Mall](#tab/template)
-
-Ej tillämpligt
-
----
-
-### <a name="re-register-the-azure-storage-resource-provider"></a>Registrera Azure Storage Resource providern igen
-
-När registreringen har godkänts måste du registrera Azure Storage resurs leverantören igen. Använd PowerShell eller Azure CLI för att omregistrera resurs leverantören.
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-Anropa kommandot [register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) för att omregistrera resurs leverantören med PowerShell.
-
-```powershell
-Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Om du vill registrera om resurs leverantören med Azure CLI anropar du kommandot [AZ Provider register](/cli/azure/provider#az-provider-register) .
-
-```azurecli
-az provider register --namespace 'Microsoft.Storage'
-```
-
-# <a name="template"></a>[Mall](#tab/template)
-
-Ej tillämpligt
-
----
 
 ## <a name="create-an-account-that-uses-the-account-encryption-key"></a>Skapa ett konto som använder krypterings nyckeln för kontot
 
@@ -247,6 +147,10 @@ az storage account show /
 Ej tillämpligt
 
 ---
+
+## <a name="pricing-and-billing"></a>Priser och fakturering
+
+Ett lagrings konto som har skapats för att använda en krypterings nyckel som är begränsad till kontot debiteras för tabell lagrings kapacitet och transaktioner med en annan taxa än ett konto som använder standard tjänst omfattnings nyckeln. Mer information finns i [priser för Azure Table Storage](https://azure.microsoft.com/pricing/details/storage/tables/).
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: alkohli
 ms.openlocfilehash: 057f80049b13a265925f2d6f24a008d1e1e04c96
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102639015"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Hantera beräkning på Azure Stack Edge Pro GPU
@@ -51,7 +51,7 @@ Utför följande steg i Azure Portal för att skapa en utlösare.
 
     - **Schemalagd utlösare** – ange start datum/-tid och upprepnings intervall i timmar, minuter eller sekunder. Ange också namnet på ett ämne. I ett avsnitt får du flexibiliteten att dirigera utlösaren till en modul som distribuerats på enheten.
 
-        Ett exempel på en väg sträng är: `"route3": "FROM /* WHERE topic = 'topicname' INTO BrokeredEndpoint("modules/modulename/inputs/input1")"` .
+        Ett exempel på en väg sträng är: `"route3&quot;: &quot;FROM /* WHERE topic = 'topicname' INTO BrokeredEndpoint(&quot;modules/modulename/inputs/input1")"` .
 
         ![Lägga till NFS-resurs](media/azure-stack-edge-gpu-manage-compute/add-scheduled-trigger.png)
 

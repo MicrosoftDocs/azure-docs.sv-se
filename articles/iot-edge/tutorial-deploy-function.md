@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: 85bc54402237ff8e9c82c43ab9cdbe2dc6658af1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103464113"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Självstudie: Distribuera Azure Functions som IoT Edge moduler
@@ -77,7 +77,7 @@ Skapa en C#-funktions lösnings mall som du kan anpassa med din egen kod.
 
    ![Ange lagringsplatsen för Docker-avbildningen](./media/tutorial-deploy-function/repository.png)
 
-### <a name="add-your-registry-credentials"></a>Lägg till autentiseringsuppgifter för registret
+### <a name="add-your-registry-credentials&quot;></a>Lägg till autentiseringsuppgifter för registret
 
 Miljöfilen lagrar autentiseringsuppgifterna för containerregistret och delar dem med körningsmiljön för IoT Edge. Körningen behöver dessa autentiseringsuppgifter för att hämta dina privata avbildningar till IoT Edge-enheten.
 
@@ -87,7 +87,7 @@ IoT Edge-tillägget försöker hämta dina autentiseringsuppgifter för behålla
 2. Uppdatera fälten med det **användarnamn** och **lösenord** som du kopierade från Azure Container-registret.
 3. Spara den här filen.
 
-### <a name="select-your-target-architecture"></a>Välj din mål arkitektur
+### <a name=&quot;select-your-target-architecture&quot;></a>Välj din mål arkitektur
 
 För närvarande kan Visual Studio Code utveckla C-moduler för Linux AMD64-och Linux ARM32v7-enheter. Du måste välja vilken arkitektur du vill använda för varje lösning, eftersom behållaren har skapats och körs på olika sätt för varje arkitektur typ. Standardvärdet är Linux AMD64.
 
@@ -95,7 +95,7 @@ För närvarande kan Visual Studio Code utveckla C-moduler för Linux AMD64-och 
 
 2. I paletten kommando väljer du mål arkitekturen i listan med alternativ. I den här självstudien använder vi en virtuell Ubuntu-dator som IoT Edge enhet, så behåller standard- **amd64**.
 
-### <a name="update-the-module-with-custom-code"></a>Uppdatera modulen med anpassad kod
+### <a name=&quot;update-the-module-with-custom-code&quot;></a>Uppdatera modulen med anpassad kod
 
 Nu ska vi lägga till ytterligare kod så att modulen bearbetar meddelandena på gränsen innan de vidarebefordrar dem till IoT Hub.
 
@@ -120,7 +120,7 @@ Nu ska vi lägga till ytterligare kod så att modulen bearbetar meddelandena på
    {
        public static class CSharpFunction
        {
-           [FunctionName("CSharpFunction")]
+           [FunctionName(&quot;CSharpFunction")]
            public static async Task FilterMessageAndSendMessage(
                [EdgeHubTrigger("input1")] Message messageReceived,
                [EdgeHub(OutputName = "output1")] IAsyncCollector<Message> output,
