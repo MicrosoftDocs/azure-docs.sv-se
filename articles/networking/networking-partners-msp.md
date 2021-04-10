@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: 2d799cb85bfa6cbfa233410eaf0825bb42bb3fa9
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 09712396286ed0236f798aa9d9ce7e899255f480
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799317"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935506"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Om Azure Network MSP-partner
 
@@ -63,7 +63,7 @@ Använd länkarna i det här avsnittet för mer information om hanterade moln n�
 |[Vigilant IT](https://vigilant.it/manage-cloud-service/)|[Azure Health-kontroll: 5 dagars utvärdering](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5 dagars implementering](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)|[Hanterade NAC med Aruba ClearPass Policy Manager](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_aruba_clearpass?tab=Overview)|[Vandis-hanterad ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Vandis hanterade VWAN som drivs av Fortinet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Vandis-hanterad VWAN som drivs av Palo--nätverk](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview); [Hanterad VWAN drivs av Barracuda CLOUDGEN WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_barracuda_vwan?tab=Overview)|
 
-Azure Marketplace-erbjudanden för hanterade ExpressRoute-, virtuella WAN-, säkerhets tjänster och tjänster för privata Edge-zoner från följande Azure-nätverk MSP-partner finns i vår plan: [Amdocs](https://www.amdocs.com/); [Cirrus Core-nätverk](https://cirruscorenetworks.com/); [Cognizant](https://www.cognizant.com/cognizant-digital-systems-technology/cloud-enablement-services); [Tyska telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);   Mellan   [moln](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [OmniClouds](https://omniclouds.com/); [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [Zertia](https://zertia.es/)
+Azure Marketplace-erbjudanden för hanterade ExpressRoute-, virtuella WAN-, säkerhets tjänster och tjänster för privata Edge-zoner från följande Azure-nätverk MSP-partner finns i vår plan: [Amdocs](https://www.amdocs.com/); [Cirrus Core-nätverk](https://cirruscorenetworks.com/); [Cognizant](https://www.cognizant.com/cognizant-digital-systems-technology/cloud-enablement-services); [Tyska telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);   Mellan   [moln](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [OmniClouds](https://omniclouds.com/); [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [Ses](https://www.ses.com/networks/cloud/ses-and-azure-expressroute); [Zertia](https://zertia.es/)
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>ExpressRoute-partner
 

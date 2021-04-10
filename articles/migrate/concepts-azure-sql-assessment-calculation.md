@@ -6,10 +6,10 @@ ms.author: rajosh
 ms.topic: conceptual
 ms.date: 02/07/2021
 ms.openlocfilehash: c2e739a45c7915c957ca89e5b01b98afa945d03e
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105557198"
 ---
 # <a name="assessment-overview-migrate-to-azure-sql"></a>Översikt över utvärdering (migrera till Azure SQL)
@@ -110,11 +110,11 @@ Om du väljer mål distributions typen som **rekommenderas** i Azure SQL Assessm
 
  **Beredskap för Azure SQL DB** | **Azure SQL MI-beredskap** | **Rekommenderad distributions typ** | **Beräknas Azure SQL-konfiguration och kostnads uppskattningar?**
  --- | --- | --- | --- |
- Redo | Redo | Azure SQL DB eller <br/>Azure SQL MI | Yes
- Redo | Inte klar eller<br/> Okänt | Azure SQL-databas | Yes
- Inte klar eller<br/>Okänt | Redo | Azure SQL MI | Yes
- Inte klar | Inte klar | Potentiellt redo för virtuell Azure-dator | No
- Inte klar eller<br/>Okänt | Inte klar eller<br/>Okänt | Okänt | No
+ Redo | Redo | Azure SQL DB eller <br/>Azure SQL MI | Ja
+ Redo | Inte klar eller<br/> Okänt | Azure SQL-databas | Ja
+ Inte klar eller<br/>Okänt | Redo | Azure SQL MI | Ja
+ Inte klar | Inte klar | Potentiellt redo för virtuell Azure-dator | Inga
+ Inte klar eller<br/>Okänt | Inte klar eller<br/>Okänt | Okänt | Inga
 
 > [!NOTE]
 > Om den rekommenderade distributions typen väljs som **rekommenderat** i bedömnings egenskaper, och om käll SQL Server passar bra för både Azure SQL DB-databasen och den hanterade Azure SQL-instansen, rekommenderar utvärderingen ett särskilt alternativ som optimerar kostnaden och passar i storlek och prestanda gränser.

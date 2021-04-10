@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 052d11fe0125de7970fb7d02931edfc7f3c2e4d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46796573e14dfc33d02d4faddd5504f3e8b7ee7b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743125"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935728"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Använd Microsoft Teams på Windows Virtual Desktop
 
@@ -120,7 +120,7 @@ När du har installerat WebSocket-tjänsten och Teams Desktop-appen följer du d
 
 3. Välj **version**.
 
-      Om medie optimeringar läses in visar banderollen att **WVD-mediet är optimerat**. Om banderollen visar att du **WVD media inte är ansluten** avslutar du team-appen och försöker igen.
+      Om medie optimeringar läses in visas **Windows Virtual Desktop Media optimerad** i annonsen. Om banderollen visar att **Windows Virtual Desktop media inte är anslutet**, avslutar du team-appen och försöker igen.
 
 4. Välj användar profil avbildningen och välj sedan **Inställningar**.
 

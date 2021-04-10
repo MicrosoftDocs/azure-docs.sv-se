@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 09/09/2020
+ms.date: 03/29/2021
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 9c3132985866a4c245984ef632107c05ca1b3350
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f636b8ec04d151c855112102421dd2df0ccb6ff8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96348390"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932887"
 ---
 # <a name="saml-token-claims-reference"></a>Referens för SAML-token anspråk
 
@@ -34,7 +34,7 @@ Microsoft Identity Platform genererar flera typer av säkerhetstoken vid bearbet
 > |Autentiseringsmetod | `amr` |Anger hur ämnet för token autentiserades. | `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` |
 > |Förnamn | `given_name` |Anger det första eller "tilldelat" namnet på användaren, som anges på objektet Azure AD-användare. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">`<br>`<AttributeValue>Frank<AttributeValue>`  |
 > |Grupper | `groups` |Tillhandahåller objekt-ID: n som representerar ämnets grupp medlemskap. Dessa värden är unika (se objekt-ID) och kan användas på ett säkert sätt för att hantera åtkomst, t. ex. för att tvinga behörighet att få åtkomst till en resurs. Grupperna som ingår i gruppen grupper har kon figurer ATS per program, via egenskapen "groupMembershipClaims" för applikations manifestet. Värdet null utesluter alla grupper, värdet "SecurityGroup" kommer bara att innehålla Active Directory medlemskap i säkerhets grupper och värdet "alla" omfattar både säkerhets grupper och Microsoft 365 distributions listor. <br><br> **Anteckningar**: <br> Om antalet grupper som användaren betjänar över en gräns (150 för SAML, 200 för JWT) läggs anspråks källorna till anspråks källorna som pekar på diagrammets slut punkt med listan över grupper för användaren. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
-> | Indikator för överutnyttjade grupper | `groups:src1` | För Tokenbegäran som inte är length-begränsade men fortfarande för stora för token kommer en länk till listan över fullständiga grupper för användaren att inkluderas. För SAML läggs det till som ett nytt anspråk i stället för `groups` anspråket. | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
+> | Indikator för överutnyttjade grupper | `groups:src1` | För Tokenbegäran som inte är length-begränsade men fortfarande för stora för token kommer en länk till listan över fullständiga grupper för användaren att inkluderas. För SAML läggs det till som ett nytt anspråk i stället för `groups` anspråket. <br><br> **Anteckningar**: <br> Azure AD-Graph API ersätts av Microsoft Graph-API: et. Mer information om motsvarande slut punkt finns i [User: getMemberObjects](https://docs.microsoft.com/graph/api/user-getmemberobjects). | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
 > |Identitetsprovider | `idp` |Registrerar den identitetsprovider som har autentiserat subjektet för token. Värdet är identiskt med värdet för utfärdarens anspråk om inte användar kontot finns i en annan klient organisation än utfärdaren. | `<Attribute Name=" http://schemas.microsoft.com/identity/claims/identityprovider">`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` |
 > |IssuedAt | `iat` |Lagrar tiden då token utfärdades. Den används ofta för att mäta aktualitet för token. | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |Utfärdare | `iss` |Identifierar säkerhetstokentjänst som konstruerar och returnerar token. I de tokens som Azure AD returnerar, är utfärdaren sts.windows.net. GUID i utfärdarens anspråks värde är klient-ID för Azure AD-katalogen. Klient-ID: t är en oföränderlig och tillförlitlig identifierare för katalogen. | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |

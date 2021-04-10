@@ -7,10 +7,10 @@ ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
 ms.openlocfilehash: 45f3a7152add8d64d961feb055413760df01eb94
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105025619"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analys av användar kvarhållning för webb program med Application Insights
@@ -36,7 +36,7 @@ Om du ännu inte ser data i kvarhållning verktyget i Application Insights Porta
 
 Användare kan hovra över celler på kvarhållningsintervallet för att få åtkomst till analys knappen och verktygs tips som förklarar vad cellen innebär. Analytics-knappen tar användare till analys verktyget med en i förväg ifylld fråga för att generera användare från cellen. 
 
-## <a name="use-business-events-to-track-retention"></a>Använd affärs händelser för att spåra kvarhållning
+## <a name="use-business-events-to-track-retention&quot;></a>Använd affärs händelser för att spåra kvarhållning
 
 För att få den mest användbara bevarande analysen kan du mäta händelser som representerar betydande affärs aktiviteter. 
 
@@ -45,7 +45,7 @@ Många användare kan till exempel öppna en sida i din app utan att spela upp s
 Det är en bra idé att koda anpassade händelser som representerar viktiga affärs åtgärder och använda dem för din bevarande analys. Om du vill avbilda spel resultatet måste du skriva en kodrad för att skicka en anpassad händelse till Application Insights. Om du skriver det i webb side koden eller i Node.JS, ser det ut så här:
 
 ```JavaScript
-    appinsights.trackEvent("won game");
+    appinsights.trackEvent(&quot;won game");
 ```
 
 Eller i ASP.NET-Server kod:
