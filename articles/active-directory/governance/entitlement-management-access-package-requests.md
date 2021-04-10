@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b484b19282c8ad42890f6e04f03563c29baa49dd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97746005"
 ---
 # <a name="view-requests-for-an-access-package-in-azure-ad-entitlement-management"></a>Visa begär Anden för ett Access-paket i hantering av Azure AD-rättigheter

@@ -13,10 +13,10 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 62bfc528886767bc09159ca2a2696c8c9264b307
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96349947"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurera behörigheter för AD DS Connector 
@@ -92,34 +92,34 @@ Du kan också ange behörigheter för ett enskilt OU-eller AD DS-objekt med hjä
 
 Undantag till dessa vanliga parametrar är den `Set-ADSyncRestrictedPermissions` cmdlet som används för att ange behörigheterna för själva AD DS-anslutningsprogrammet och `Set-ADSyncPasswordHashSyncPermissions` cmdleten, eftersom de behörigheter som krävs för Lösenordssynkronisering bara ställs in i domän roten, och denna cmdlet inkluderar därför inte `-ObjectDN` `-SkipAdminSdHolders` parametrarna eller.
 
-### <a name="determine-your-ad-ds-connector-account"></a>Bestäm ditt AD DS Connector-konto 
+### <a name="determine-your-ad-ds-connector-account&quot;></a>Bestäm ditt AD DS Connector-konto 
 Om Azure AD Connect redan är installerat och du vill kontrol lera vad är AD DS-anslutningsprogrammet som används av Azure AD Connect, kan du köra cmdleten: 
 
 ``` powershell
 Get-ADSyncADConnectorAccount 
 ```
-### <a name="locate-ad-ds-objects-with-permission-inheritance-disabled"></a>Hitta AD DS-objekt med behörighets arv inaktiverade 
+### <a name=&quot;locate-ad-ds-objects-with-permission-inheritance-disabled&quot;></a>Hitta AD DS-objekt med behörighets arv inaktiverade 
 Om du vill kontrol lera om det finns något AD DS-objekt med behörighets arv inaktiverat kan du köra: 
 
 ``` powershell
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' 
 ```
-Som standard söker denna cmdlet bara efter organisationsenheter med inaktiverat arv, men du kan ange andra AD DS-objekt klasser i `-ObjectClass` parametern eller använda "*" för alla objekt klasser, enligt följande: 
+Som standard söker denna cmdlet bara efter organisationsenheter med inaktiverat arv, men du kan ange andra AD DS-objekt klasser i `-ObjectClass` parametern eller använda &quot;*&quot; för alla objekt klasser, enligt följande: 
 
 ``` powershell
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' -ObjectClass * 
 ```
  
-### <a name="view-ad-ds-permissions-of-an-object"></a>Visa AD DS-behörigheter för ett objekt 
+### <a name=&quot;view-ad-ds-permissions-of-an-object&quot;></a>Visa AD DS-behörigheter för ett objekt 
 Du kan använda cmdleten nedan om du vill visa en lista över behörigheter som för närvarande är inställda på ett Active Directory-objekt genom att ange dess DistinguishedName: 
 
 ``` powershell
 Show-ADSyncADObjectPermissions -ADobjectDN '<DistinguishedName>' 
 ```
 
-## <a name="configure-ad-ds-connector-account-permissions"></a>Konfigurera behörigheter för AD DS Connector 
+## <a name=&quot;configure-ad-ds-connector-account-permissions&quot;></a>Konfigurera behörigheter för AD DS Connector 
  
-### <a name="configure-basic-read-only-permissions"></a>Konfigurera grundläggande Read-Only behörigheter 
+### <a name=&quot;configure-basic-read-only-permissions&quot;></a>Konfigurera grundläggande Read-Only behörigheter 
 Om du vill ange grundläggande Läs behörighet för AD DS Connector-kontot när du inte använder någon Azure AD Connect funktion kör du: 
 
 ``` powershell
@@ -148,8 +148,8 @@ Denna cmdlet kommer att ange följande behörigheter:
 |Tillåt |AD DS-anslutnings konto |Läsa alla egenskaper |Underordnade kontakt objekt| 
 
  
-### <a name="configure-ms-ds-consistency-guid-permissions"></a>Konfigurera MS-DS-konsekvens-GUID-behörigheter 
-Om du vill ange behörigheter för AD DS-anslutningsprogrammet när du använder attributet ms-DS-konsekvens-GUID som käll ankare (kallas även "Låt Azure hantera käll fäst punkten för mig") kör du: 
+### <a name=&quot;configure-ms-ds-consistency-guid-permissions&quot;></a>Konfigurera MS-DS-konsekvens-GUID-behörigheter 
+Om du vill ange behörigheter för AD DS-anslutningsprogrammet när du använder attributet ms-DS-konsekvens-GUID som käll ankare (kallas även &quot;Låt Azure hantera käll fäst punkten för mig") kör du: 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
