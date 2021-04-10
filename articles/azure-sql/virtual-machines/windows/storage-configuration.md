@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
 ms.openlocfilehash: 982bd9239c5e95c9b7af09b5f54c5a09067ca7c6
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105565434"
 ---
 # <a name="configure-storage-for-sql-server-vms"></a>Konfigurera lagring för SQL Server virtuella datorer
@@ -142,7 +142,7 @@ Azure använder följande inställningar för att skapa lagringspoolen på SQL S
 
 I följande tabell beskrivs de tre tillgängliga alternativen för arbets belastnings typer och deras motsvarande optimeringar:
 
-| Arbets belastnings typ | Description | Optimeringar |
+| Arbets belastnings typ | Beskrivning | Optimeringar |
 | --- | --- | --- |
 | **Allmänt** |Standardinställning som stöder de flesta arbets belastningar |Inget |
 | **Transaktionell bearbetning** |Optimerar lagringen för traditionella databas OLTP-arbetsbelastningar |Spårnings flagga 1117<br/>Spårnings flagga 1118 |
