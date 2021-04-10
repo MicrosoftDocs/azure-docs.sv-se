@@ -7,10 +7,10 @@ ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
 ms.openlocfilehash: 780e6defe4f7d09e2d136c080525447ffd29bbb4
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105612389"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Kom igång med dokument översättning (för hands version)
@@ -187,7 +187,7 @@ En begäran om översättning av batch-dokument skickas till Translator-tjänste
 
 Följande rubriker ingår i varje Document Translator API-begäran:
 
-|HTTP-huvud|Description|
+|HTTP-huvud|Beskrivning|
 |---|--|
 |Ocp-Apim-Subscription-Key|**Obligatoriskt**: värdet är Azures prenumerations nyckel för din översättare eller Cognitive Services resurs.|
 |Content-Type|**Krävs**: anger nytto lastens innehålls typ. Godkända värden är Application/JSON eller charset = UTF-8.|

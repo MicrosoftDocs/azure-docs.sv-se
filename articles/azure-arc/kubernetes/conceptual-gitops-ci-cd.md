@@ -9,10 +9,10 @@ ms.author: tcare
 description: Den här artikeln innehåller en konceptuell översikt över ett CI/CD-arbetsflöde med GitOps
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes service, behållare, CI, CD, Azure DevOps
 ms.openlocfilehash: 47633ed5bec1a07c878983d0e93e03149d8967ba
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105025874"
 ---
 # <a name="cicd-workflow-using-gitops---azure-arc-enabled-kubernetes"></a>CI/CD-arbetsflöde med GitOps-Azure Arc-aktiverad Kubernetes

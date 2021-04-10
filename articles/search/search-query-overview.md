@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.openlocfilehash: 21012848ba3624df6110eaea182beccc4646d234
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105609283"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Fråga i Azure Kognitiv sökning
@@ -85,7 +85,7 @@ Filter används ofta i appar som innehåller Kognitiv sökning. På program sido
 
 Du kan också behöva filter för att anropa ett specialiserat fråge formulär, enligt beskrivningen i följande tabell. Du kan använda ett filter med en ospecificerad sökning ( **`search=*`** ) eller med en frågesträng som innehåller termer, fraser, operatorer och mönster.
 
-| Filter scenario | Description |
+| Filter scenario | Beskrivning |
 |-----------------|-------------|
 | Intervall filter | I Azure Kognitiv sökning skapas intervall frågor med hjälp av filter parametern. Mer information och exempel finns i [exempel på Range filter](search-query-simple-examples.md#example-5-range-filters). |
 | Sökning på Geo-platser | Om ett sökbart fält är av [typen EDM. GeographyPoint](/rest/api/searchservice/supported-data-types)kan du skapa ett filter uttryck för "hitta nära mig" eller mappnings-baserade Sök kontroller. Fält som driver geo-search innehåller koordinater. Mer information och ett exempel finns i [exempel på Geo-sökning](search-query-simple-examples.md#example-6-geo-search). |
