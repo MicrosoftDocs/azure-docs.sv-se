@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
-ms.openlocfilehash: bc1978f6ed0aa3e38f25fa03fc54ddc7d4efb9c3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6acab9618566766b12b4b236c75aa58386100513
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033341"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961072"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Felsöka måttdiagram
 
@@ -43,7 +43,7 @@ Vissa resurser genererar inte mått regelbundet. Exempelvis samlar inte Azure in
 
 [De flesta mått i Azure lagras i 93 dagar](../essentials/data-platform-metrics.md#retention-of-metrics). Dock kan du högst fråga efter data för 30 dagar i ett enskilt diagram. Den här begränsningen gäller inte för [loggbaserade mått](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
 
-**Lösning:** Om du ser ett tomt diagram eller om diagrammet bara visar en del av mått data, kontrollerar du att skillnaden mellan start-och slutdatumen i tids väljaren inte överskrider intervallet med 30 dagar.
+**Lösning:** Om du ser ett tomt diagram eller om diagrammet bara visar en del av mått data, kontrollerar du att skillnaden mellan start-och slutdatumen i tids väljaren inte överskrider intervallet med 30 dagar. När du har valt ett intervall på 30 dagar kan du [panorera](metrics-charts.md#pan) diagrammet för att visa hela kvarhållningsperioden.
 
 ### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>Alla mått låg utanför det låsta y-axelintervallet
 

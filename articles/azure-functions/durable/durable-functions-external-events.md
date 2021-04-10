@@ -4,12 +4,12 @@ description: Lär dig hur du hanterar externa händelser i Durable Functions-til
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: c08306edcea02a9207ab5a15eb62b7fffc2ecb44
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a7625a6fcd1000595c2c582935c839ba6d26b20d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99576337"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728495"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Hantera externa händelser i Durable Functions (Azure Functions)
 
@@ -20,7 +20,7 @@ Orchestrator-funktioner kan vänta och lyssna efter externa händelser. Den här
 
 ## <a name="wait-for-events"></a>Vänta på händelser
 
-Metoderna [WaitForExternalEvent](/dotnet/api/microsoft.azure.webjobs.durableorchestrationcontextbase.waitforexternalevent?view=azure-dotnet-legacy) (.net), `waitForExternalEvent` (Java Script) och `wait_for_external_event` (python) i [Dirigerings utlösaren](durable-functions-bindings.md#orchestration-trigger) tillåter att en Orchestrator-funktion asynkront väntar och lyssnar efter en extern händelse. Den lyssnande Orchestrator-funktionen deklarerar *namnet* på händelsen och *formen på de data* som det förväntar sig att ta emot.
+Metoderna [WaitForExternalEvent](/dotnet/api/microsoft.azure.webjobs.durableorchestrationcontextbase.waitforexternalevent?view=azure-dotnet-legacy&preserve-view=true) (.net), `waitForExternalEvent` (Java Script) och `wait_for_external_event` (python) i [Dirigerings utlösaren](durable-functions-bindings.md#orchestration-trigger) tillåter att en Orchestrator-funktion asynkront väntar och lyssnar efter en extern händelse. Den lyssnande Orchestrator-funktionen deklarerar *namnet* på händelsen och *formen på de data* som det förväntar sig att ta emot.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -230,7 +230,7 @@ main = df.Orchestrator.create(orchestrator_function)
 
 ## <a name="send-events"></a>Skicka händelser
 
-Du kan använda metoderna [RaiseEventAsync](/dotnet/api/microsoft.azure.webjobs.durableorchestrationclientbase.raiseeventasync?view=azure-dotnet-legacy) (.net) eller `raiseEventAsync` (Java Script) för att skicka en extern händelse till ett Orchestration. Dessa metoder exponeras av [Dirigerings klientens](durable-functions-bindings.md#orchestration-client) bindning. Du kan också använda den inbyggda funktionen för att skapa en extern händelse i [HTTP-API: et](durable-functions-http-api.md#raise-event) för att skicka en extern händelse till ett Orchestration.
+Du kan använda metoderna [RaiseEventAsync](/dotnet/api/microsoft.azure.webjobs.durableorchestrationclientbase.raiseeventasync?view=azure-dotnet-legacy&preserve-view=true) (.net) eller `raiseEventAsync` (Java Script) för att skicka en extern händelse till ett Orchestration. Dessa metoder exponeras av [Dirigerings klientens](durable-functions-bindings.md#orchestration-client) bindning. Du kan också använda den inbyggda funktionen för att skapa en extern händelse i [HTTP-API: et](durable-functions-http-api.md#raise-event) för att skicka en extern händelse till ett Orchestration.
 
 En utlöst händelse innehåller ett *instans-ID*, en *EventName* och *eventData* som parametrar. Orchestrator Functions hanterar dessa händelser med `WaitForExternalEvent` API: erna (.net) eller `waitForExternalEvent` (Java Script). *EventName* måste matcha både sändnings-och mottagnings slut för att händelsen ska kunna bearbetas. Händelse data måste också vara JSON-serialiserbar.
 

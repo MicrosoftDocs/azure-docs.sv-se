@@ -13,10 +13,10 @@ ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
 ms.openlocfilehash: 9e7b337d4358f9685d683c308d6df9110607207a
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105643427"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurera och hantera Azure AD-autentisering med Azure SQL
@@ -190,7 +190,7 @@ Om du vill etablera en Azure AD-administratör kör du följande Azure PowerShel
 
 De cmdletar som används för att etablera och hantera Azure AD-administratör för din SQL-hanterade instans visas i följande tabell:
 
-| Cmdlet-namn | Description |
+| Cmdlet-namn | Beskrivning |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Etablerar en Azure AD-administratör för SQL-hanterad instans i den aktuella prenumerationen. (Måste vara från den aktuella prenumerationen)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Tar bort en Azure AD-administratör för SQL-hanterad instans i den aktuella prenumerationen. |
@@ -279,7 +279,7 @@ Om du vill köra PowerShell-cmdlets måste Azure PowerShell vara installerad och
 
 Cmdletar som används för att etablera och hantera Azure AD-administratör för SQL Database och Azure-Synapse:
 
-| Cmdlet-namn | Description |
+| Cmdlet-namn | Beskrivning |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Etablerar en Azure Active Directory administratör för servern som är värd för SQL Database eller Azure-Synapse. (Måste vara från den aktuella prenumerationen) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Tar bort en Azure Active Directory administratör för servern som är värd för SQL Database eller Azure-Synapse.|

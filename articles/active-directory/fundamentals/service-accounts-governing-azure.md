@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f540ab40a14af09aa8667860286021f572eb6f1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104587907"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Styrande Azure AD-tjänstekonton
@@ -32,7 +32,7 @@ Det finns tre typer av tjänst konton i Azure Active Directory (Azure AD): [hant
 
 Innan du skapar ett tjänst konto, eller registrerar ett program, dokumenterar du tjänst kontots viktig information. Med information som dokumenteras gör det lättare att effektivt övervaka och styra kontot. Vi rekommenderar att du samlar in följande data och spårar dem i din centraliserade konfigurations hanterings databas (CMDB).
 
-| Data| Description| Information |
+| Data| Beskrivning| Information |
 | - | - | - |
 | Ägare| Användare eller grupp som är konto för att hantera och övervaka tjänst kontot.| Etablera ägaren med nödvändiga behörigheter för att övervaka kontot och implementera ett sätt att åtgärda problem. Ärende minskning kan göras av ägaren eller via en begäran till den. |
 | Syfte| Hur kontot ska användas.| Mappa tjänst kontot till en specifik tjänst, ett program eller ett skript. Undvik att skapa tjänst konton för flera användare. |

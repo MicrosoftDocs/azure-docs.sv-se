@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 9c699cd865746bf430193eba38ec6fa79575692e
-ms.sourcegitcommit: 44edde1ae2ff6c157432eee85829e28740c6950d
+ms.openlocfilehash: ad9e5665204dbd3f99f83af3578b1996814d6fa0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105543456"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728851"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurera, optimera och felsöka AzCopy
 
@@ -67,7 +67,7 @@ Du kan köra ett prestandatest på vissa BLOB-behållare eller fil resurser för
 
 Använd följande kommando för att köra ett prestandatest.
 
-|    |     |
+| Syntax/exempel  |  Kod |
 |--------|-----------|
 | **Syntax** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **Exempel** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |

@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 20da05399eed4cb9c5a4b69a82b0b1e799997751
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa9a415e7bf33409e804fb5503d7b608430098fb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98880126"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728920"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>Ladda ned blobbar från Azure Blob Storage med hjälp av AzCopy v10
 
@@ -37,7 +37,7 @@ Hämta en blob med hjälp av kommandot [AzCopy Copy](storage-ref-azcopy-copy.md)
 > [!TIP]
 > I det här exemplet omges Sök vägs argument med enkla citat tecken (' '). Använd enkla citat tecken i alla kommando gränssnitt utom Windows Command Shell (cmd.exe). Om du använder ett Windows Command Shell (cmd.exe), omger Sök vägs argument med dubbla citat tecken ("") i stället för enkla citat tecken ().
 
-|    |     |
+| Syntax/exempel  |  Kod |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'` |
 | **Exempel** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt'` |
@@ -53,7 +53,7 @@ Ladda ned en katalog med hjälp av kommandot [AzCopy Copy](storage-ref-azcopy-co
 > [!TIP]
 > I det här exemplet omges Sök vägs argument med enkla citat tecken (' '). Använd enkla citat tecken i alla kommando gränssnitt utom Windows Command Shell (cmd.exe). Om du använder ett Windows Command Shell (cmd.exe), omger Sök vägs argument med dubbla citat tecken ("") i stället för enkla citat tecken ().
 
-|    |     |
+| Syntax/exempel  |  Kod |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>' '<local-directory-path>' --recursive` |
 | **Exempel** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
@@ -71,7 +71,7 @@ Du kan ladda ned innehållet i en katalog utan att kopiera själva katalogen med
 > [!NOTE]
 > För närvarande stöds det här scenariot endast för konton som inte har ett hierarkiskt namn område.
 
-|    |     |
+| Syntax/exempel  |  Kod |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<storage-account-name>.blob.core.windows.net/<container-name>/*' '<local-directory-path>/'` |
 | **Exempel** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory/*' 'C:\myDirectory'` |
@@ -89,7 +89,7 @@ Du kan hämta vissa blobbar genom att använda fullständiga fil namn, partiella
 
 Använd [AzCopy Copy](storage-ref-azcopy-copy.md) -kommandot med `--include-path` alternativet. Separera enskilda BLOB-namn med hjälp av en semicolin ( `;` ).
 
-|    |     |
+| Syntax/exempel  |  Kod |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
 | **Exempel** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
@@ -103,7 +103,7 @@ Du kan också utesluta blobbar med hjälp av `--exclude-path` alternativet. Mer 
 
 Använd [AzCopy Copy](storage-ref-azcopy-copy.md) -kommandot med `--include-pattern` alternativet. Ange partiella namn som innehåller jokertecken. Separera namn med hjälp av en semicolin ( `;` ).
 
-|    |     |
+| Syntax/exempel  |  Kod |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
 | **Exempel** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
@@ -119,7 +119,7 @@ Använd [AzCopy Copy](storage-ref-azcopy-copy.md) -kommandot med `--include-befo
 
 I följande exempel hämtas filer som ändrades på eller efter det angivna datumet.
 
-|    |     |
+| Syntax/exempel  |  Kod |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>/*' '<local-directory-path>' --include-after <Date-Time-in-ISO-8601-format>` |
 | **Exempel** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
@@ -145,7 +145,7 @@ Använd sedan kommandot [AzCopy Copy](storage-ref-azcopy-copy.md) med `--list-of
 
 Du kan ladda ned en [BLOB-ögonblicksbild](../blobs/snapshots-overview.md) genom att referera till **datetime** -värdet för en BLOB-ögonblicksbild. 
 
-|    |     |
+| Syntax/exempel  |  Kod |
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>?sharesnapshot=<DateTime-of-snapshot>' '<local-file-path>'` |
 | **Exempel** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |

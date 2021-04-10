@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: cd69e89954fab2256ffc7c23e22d3b8d44ab2a11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 191722d02b493cfe0197c3e45771543fd8c5926a
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102455881"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961055"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Blob Storage-indata-bindning för Azure Functions
 
@@ -264,9 +264,10 @@ I [konfigurations](#configuration) avsnittet förklaras dessa egenskaper.
 
 | Bindnings värde | Standardvärde | Beskrivning | Exempel |
 | --- | --- | --- | --- |
-| `undefined` | Y | Använder omfattande bindning | `def main(input: func.InputStream)` |
 | `string` | N | Använder generisk bindning och anger indatatypen som en `string` | `def main(input: str)` |
 | `binary` | N | Använder generisk bindning och skickar bloben för indataport som `bytes` python-objekt | `def main(input: bytes)` |
+
+Om `dataType` egenskapen inte är definierad i function.jspå, är standardvärdet `string` .
 
 Här är python-koden:
 
@@ -275,8 +276,11 @@ import logging
 import azure.functions as func
 
 
-def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.InputStream:
-    logging.info('Python Queue trigger function processed %s', inputblob.name)
+# The type func.InputStream is not supported for blob input binding.
+# The input binding field inputblob can either be 'bytes' or 'str' depends
+# on dataType in function.json, 'binary' or 'string'.
+def main(queuemsg: func.QueueMessage, inputblob: bytes) -> bytes:
+    logging.info(f'Python Queue trigger function processed {len(inputblob)} bytes')
     return inputblob
 ```
 
