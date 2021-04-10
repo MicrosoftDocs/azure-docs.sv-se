@@ -64,8 +64,8 @@ Självstudierna visar scenariobaserade procedurer för några av de främsta Med
 * [Koda fjärrfiler och strömma video – REST](stream-files-tutorial-with-rest.md)
 * [Koda uppladdade filer och strömma video – NET](stream-files-tutorial-with-api.md)
 * [Strömma live – .NET](stream-live-tutorial-with-api.md)
-* [Analysera din video – .NET](analyze-videos-tutorial-with-api.md)
-* [AES-128, dynamisk kryptering – .NET](protect-with-aes128.md)
+* [Analysera din video – .NET](analyze-videos-tutorial.md)
+* [AES-128, dynamisk kryptering – .NET](drm-playready-license-template-concept.md)
 
 ### <a name="samples"></a>Exempel
 
@@ -75,12 +75,12 @@ Använd [den här exempel webbläsaren](/samples/browse/?products=azure-media-se
 
 Instruktions guider innehåller kod exempel som visar hur du utför en uppgift. I det här avsnittet hittar du många exempel. Här är några av dem:
 
-* [Skapa ett konto – CLI](./create-account-howto.md)
+* [Skapa ett konto – CLI](./account-create-how-to.md)
 * [Använd API:er – CLI](./access-api-howto.md)
 * [Koda med HTTPS som Job-inkommande – .NET](job-input-from-http-how-to.md)  
 * [Övervaka händelser – portalen](monitoring/monitor-events-portal-how-to.md)
-* [Kryptera dynamiskt med multi-DRM-.NET](protect-with-drm.md) 
-* [Koda med en anpassad Transform-CLI](custom-preset-cli-howto.md)
+* [Kryptera dynamiskt med multi-DRM-.NET](drm-protect-with-drm-tutorial.md) 
+* [Koda med en anpassad Transform-CLI](encode-custom-preset-cli-how-to.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Ställ frågor, ge feedback, hämta uppdateringar
 

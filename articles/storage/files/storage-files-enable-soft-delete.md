@@ -8,12 +8,12 @@ ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 13e6668337b82ea4be86eadcbc6f7797a72771c6
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 428ef41340cd565bef0fa3c1e6519fb8862b091a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105023491"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727577"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Aktivera mjuk borttagning på Azure-filresurser
 
@@ -35,7 +35,7 @@ I följande avsnitt visas hur du aktiverar och använder mjuk borttagning för A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Cmdlets för mjuk borttagning är tillgängliga i version 2.1.3 och senare av [Azure CLI-modulen](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Cmdlets för mjuk borttagning är tillgängliga i version 2.1.3 och senare av [Azure CLI-modulen](/cli/azure/install-azure-cli).
 
 ## <a name="getting-started-with-cli"></a>Komma igång med CLI
 

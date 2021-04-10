@@ -1,14 +1,14 @@
 ---
 title: Registrera en kund i Azure Lighthouse
 description: Lär dig hur du kan publicera en kund i Azure Lighthouse, så att deras resurser kan nås och hanteras via din egen klient med Azure-delegerad resurs hantering.
-ms.date: 02/16/2021
+ms.date: 03/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 4487dd82b30e14f9db2001dc10f7437a53e745f3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c02bbb789ffac262521c2f76c62081a21cd6602c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100556105"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934316"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Registrera en kund i Azure Lighthouse
 
@@ -143,7 +143,7 @@ Vilken mall du väljer beror på om du registrerar en hel prenumeration, en resu
 |Prenumeration (när du använder ett erbjudande som publicerats på Azure Marketplace)   |[marketplaceDelegatedResourceManagement.jspå](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.jspå](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!TIP]
-> Även om du inte kan publicera en hel hanterings grupp i en distribution kan du [distribuera en princip på hanterings grupps nivå](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups). Principen kontrollerar om varje prenumeration i hanterings gruppen har delegerats till den angivna hanterings klienten, och om den inte skapas skapas tilldelningen utifrån de värden du anger.
+> Även om du inte kan publicera en hel hanterings grupp i en distribution kan du [distribuera en princip på hanterings grupps nivå](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups). Principen använder [deployIfNotExists](../../governance/policy/concepts/effects.md#deployifnotexists) -kontrollen för att kontrol lera om varje prenumeration i hanterings gruppen har delegerats till den angivna hanterings klienten, och om den inte skapas skapas tilldelningen utifrån de värden du anger. Du kommer sedan att ha åtkomst till alla prenumerationer i hanterings gruppen, men du måste arbeta med dem som enskilda prenumerationer (i stället för att vidta åtgärder i hanterings gruppen som helhet).
 
 I följande exempel visas en ändrad **delegatedResourceManagement.parameters.jspå** en fil som kan användas för att publicera en prenumeration. Resurs gruppens parameter-filer (som finns i mappen [RG-delegerad-resurs hantering](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) ) liknar varandra, men innehåller även en **rgName** -parameter för att identifiera de enskilda resurs grupper som ska publiceras.
 

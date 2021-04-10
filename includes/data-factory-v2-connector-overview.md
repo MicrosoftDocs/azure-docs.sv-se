@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/10/2021
 ms.author: jingwang
 ms.openlocfilehash: e5c1d72dd0b1be2d439260c2d32280911733de1b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103015941"
 ---
 | Kategori              | Datalager                                                   | [Kopierings aktivitet](../articles/data-factory/copy-activity-overview.md)  (källa/mottagare) | [Mappa data flöde](../articles/data-factory/concepts-data-flow-overview.md) (källa/mottagare) | [Sökningsaktivitet](../articles/data-factory/control-flow-lookup-activity.md) | [Hämta metadata-aktivitet](../articles/data-factory/control-flow-get-metadata-activity.md) / [Validerings aktivitet](../articles/data-factory/control-flow-validation-activity.md) | [Ta bort aktivitet](../articles/data-factory/delete-activity.md) |

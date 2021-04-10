@@ -11,10 +11,10 @@ ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
 ms.openlocfilehash: 44bcc27f877f6b2a547c51ecd3848214719cb085
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105643656"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Vad är automatisk maskin inlärning (AutoML)?
@@ -116,7 +116,7 @@ För automatiserade maskin inlärnings experiment används funktionalisering aut
 
 I varje automatiserad maskin inlärnings experiment skalas dina data automatiskt eller normaliseras för att hjälpa algoritmerna att fungera bra. I modell utbildningen används en av följande skalnings-eller normaliserings tekniker för varje modell. Lär dig hur AutoML bidrar till [att förhindra överanpassning och obalanserade data](concept-manage-ml-pitfalls.md) i dina modeller.
 
-|Skalnings &nbsp; & &nbsp; bearbetning| Description |
+|Skalnings &nbsp; & &nbsp; bearbetning| Beskrivning |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Standardisera funktioner genom att ta bort medelvärdet och skalan till enhets avvikelse  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformerar funktioner genom att skala varje funktion efter minsta och högsta värde för kolumnen  |

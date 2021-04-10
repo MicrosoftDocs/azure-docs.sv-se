@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another region.
-ms.openlocfilehash: 54a1894c88d12cfac1a2d8062425de9549c4292e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1961d86e55f59233b1dc168e2de48b6b42b0cff0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93285203"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728121"
 ---
 # <a name="move-an-azure-key-vault-across-regions"></a>Flytta ett Azure Key Vault över regioner
 
@@ -35,7 +35,7 @@ Kom ihåg följande koncept innan du börjar:
 
 ## <a name="option-1-use-the-key-vault-backup-and-restore-commands"></a>Alternativ 1: Använd säkerhets kopierings-och återställnings kommandona i Key Vault
 
-Du kan säkerhetskopiera varje enskild hemlighet, nyckel och certifikat i valvet genom att använda säkerhets kopierings kommandot. Dina hemligheter laddas ned som en krypterad blob. Du kan sedan återställa blobben till det nya nyckel valvet. En lista över kommandon finns i [Azure Key Vault-kommandon](/powershell/module/azurerm.keyvault/?view=azurermps-6.13.0#key_vault).
+Du kan säkerhetskopiera varje enskild hemlighet, nyckel och certifikat i valvet genom att använda säkerhets kopierings kommandot. Dina hemligheter laddas ned som en krypterad blob. Du kan sedan återställa blobben till det nya nyckel valvet. En lista över kommandon finns i [Azure Key Vault-kommandon](/powershell/module/azurerm.keyvault#key_vault).
 
 Att använda säkerhets kopierings-och återställnings kommandon har två begränsningar:
 

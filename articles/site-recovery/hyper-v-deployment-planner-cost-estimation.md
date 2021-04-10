@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8e5a1f727f32fda7740b958cb3f03a3a4a3ae03f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95999220"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727560"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Rapporten Kostnadsuppskattning från Distributionshanteraren för Azure Site Recovery 
 
@@ -168,13 +168,13 @@ usaöstra, usaöstra2, usavästra, usacentrala, usanorracentrala, usasödracentr
 Distributionshanteraren för Site Recovery kan generera kostnadsrapporten i någon av följande valutor.
 
 |Valuta|Name|Valuta|Name|Valuta|Name|
-|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|
 |ARS|Argentinska pesos ($)|AUD|Australiensiska dollar ($)|BRL|Brasilianska real (R$)|
 |CAD|Kanadensiska dollar ($)|CHF|Schweiziska franc (chf)|DKK|Danska kronor (kr)|
-|EUR|Euro (€)|GBP|Brittiska pund (£)|HKD|Hongkongdollar (HK$)|
+|EUR|Euro ( &euro; )|GBP|Brittiska pund (£)|HKD|Hongkongdollar (HK$)|
 |IDR|Indonesiska rupier (Rp)|INR|Indiska rupier (₹)|JPY|Japanska yen (¥)|
 |KRW|Koreanska won (₩)|MXN|Mexikanska Peso (MX$)|MYR|Malaysiska Ringgit (RM$)|
-|NOK|Norska kronor (kr)||NZD|Nya zeeländska dollar ($)||RUB|Rysk rubel (руб)|
+|NOK|Norska kronor (kr)|NZD|Nya zeeländska dollar ($)|RUB|Rysk rubel (руб)|
 |SAR|Saudiarabiska riyal (SR)|SEK|Svenska kronor (kr)|TWD|Taiwanesiska dollar (NT$)|
 |TRY|Turkiska lira (TL)|USD| Amerikanska dollar ($)|ZAR|Sydafrikanska rand (R)|
 

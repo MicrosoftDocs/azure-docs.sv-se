@@ -14,10 +14,10 @@ ms.custom:
 - fasttrack-edit
 - iot
 ms.openlocfilehash: fca5c1a0aee6e62890d734e3233177549d932672
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105643669"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Spåra Azure IoT-meddelanden från enhet till moln med distribuerad spårning (för hands version)
@@ -252,7 +252,7 @@ Om du vill uppdatera den distribuerade spårnings samplings konfigurationen för
 | Elementnamn | Krävs | Typ | Beskrivning |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | Ja | Integer | Två läges värden stöds för närvarande för att aktivera och inaktivera sampling. `1` är på och `2` är avstängd. |
-| `sampling_rate` | Yes | Integer | Det här värdet är en procent andel. Endast värden från `0` till `100` (inklusive) tillåts.  |
+| `sampling_rate` | Ja | Integer | Det här värdet är en procent andel. Endast värden från `0` till `100` (inklusive) tillåts.  |
 
 ## <a name="query-and-visualize"></a>Fråga och visualisera
 
