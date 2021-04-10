@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/09/2020
 ms.openlocfilehash: 8bd1e312463cf89ae30d54bc4a32a497fc7a9a78
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98249660"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database ord lista med villkor
@@ -29,7 +29,7 @@ ms.locfileid: "98249660"
 |Azure-tjänst|Azure SQL Database eller SQL Database|[Azure SQL Database](database/sql-database-paas-overview.md)|
 |Köpmodell|DTU-baserad inköps modell|[DTU-baserad inköps modell](database/service-tiers-dtu.md)|
 ||Köpmodell baserad på virtuell kärna|[Köpmodell baserad på virtuell kärna](database/service-tiers-vcore.md)|
-|Distributions alternativ |Enskild databas|[Enkla databaser](database/single-database-overview.md)|
+|Distributionsalternativ |Enskild databas|[Enkla databaser](database/single-database-overview.md)|
 ||Elastisk pool|[Elastisk pool](database/elastic-pool-overview.md)|
 |Tjänstenivå|Basic, standard, Premium, Generell användning, storskalig Affärskritisk|För tjänst nivåer i vCore-modellen, se [SQL Database tjänst nivåer](database/service-tiers-vcore.md#service-tiers). För tjänst nivåer i DTU-modellen, se [DTU-modellen](database/service-tiers-dtu.md#compare-the-dtu-based-service-tiers).|
 |Beräkningsnivå|Serverlös databearbetning|[Serverlös databearbetning](database/service-tiers-vcore.md#compute-tiers)
@@ -45,7 +45,7 @@ ms.locfileid: "98249660"
 |:---|:---|:---|
 |Azure-tjänst|Azure SQL Managed Instance|[SQL-hanterad instans](managed-instance/sql-managed-instance-paas-overview.md)|
 |Köpmodell|Köpmodell baserad på virtuell kärna|[Köpmodell baserad på virtuell kärna](database/service-tiers-vcore.md)|
-|Distributions alternativ |Enskild instans|[Enskild instans](managed-instance/sql-managed-instance-paas-overview.md)|
+|Distributionsalternativ |Enskild instans|[Enskild instans](managed-instance/sql-managed-instance-paas-overview.md)|
 ||Instans-pool (för hands version)|[Instanspooler](managed-instance/instance-pools-overview.md)|
 |Tjänstenivå|Generell användning Affärskritisk|[SQL-hanterad instans tjänst nivåer](managed-instance/sql-managed-instance-paas-overview.md#service-tiers)|
 |Beräkningsnivå|Allokerad beräkning|[Allokerad beräkning](database/service-tiers-vcore.md#compute-tiers)|
