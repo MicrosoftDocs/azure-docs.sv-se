@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 4bea0f6091c02f80e381217ab7894ec4ad90d0ed
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 32f98eb9b98168bdab270ecff07446c31f8d706d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105105709"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729838"
 ---
 Använd funktions utlösaren för att svara på en händelse som skickas till händelse strömmen i Event Hub. Du måste ha Läs behörighet till den underliggande händelsehubben för att konfigurera utlösaren. När funktionen utlöses skrivs meddelandet som skickas till funktionen som en sträng.
 
@@ -375,12 +375,12 @@ Du kan använda följande parameter typer för att utlösa händelsehubben:
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` -Standard egenskaperna för EventData anges i [namn området för Microsoft. Azure. EventHubs](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet).
+* `EventData` -Standard egenskaperna för EventData anges i [namn området för Microsoft. Azure. EventHubs](/dotnet/api/microsoft.azure.eventhubs.eventdata).
 
 ### <a name="additional-types"></a>Ytterligare typer 
-Appar som använder 5.0.0 eller senare versioner av Event Hub-tillägget använder `EventData` typen i [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) i stället för det som är i [namn rymden Microsoft. Azure. EventHubs](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet). Den här versionen har stöd för den äldre `Body` typen som prioriteras av följande typer:
+Appar som använder 5.0.0 eller senare versioner av Event Hub-tillägget använder `EventData` typen i [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata) i stället för det som är i [namn rymden Microsoft. Azure. EventHubs](/dotnet/api/microsoft.azure.eventhubs.eventdata). Den här versionen har stöd för den äldre `Body` typen som prioriteras av följande typer:
 
-- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody)
 
 # <a name="c-script"></a>[C#-skript](#tab/csharp-script)
 
@@ -391,12 +391,12 @@ Du kan använda följande parameter typer för att utlösa händelsehubben:
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` -Standard egenskaperna för EventData anges i [namn området för Microsoft. Azure. EventHubs](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet).
+* `EventData` -Standard egenskaperna för EventData anges i [namn området för Microsoft. Azure. EventHubs](/dotnet/api/microsoft.azure.eventhubs.eventdata).
 
 ### <a name="additional-types"></a>Ytterligare typer 
-Appar som använder 5.0.0 eller senare versioner av Event Hub-tillägget använder `EventData` typen i [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) i stället för det som är i [namn rymden Microsoft. Azure. EventHubs](/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet). Den här versionen har stöd för den äldre `Body` typen som prioriteras av följande typer:
+Appar som använder 5.0.0 eller senare versioner av Event Hub-tillägget använder `EventData` typen i [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata) i stället för det som är i [namn rymden Microsoft. Azure. EventHubs](/dotnet/api/microsoft.azure.eventhubs.eventdata). Den här versionen har stöd för den äldre `Body` typen som prioriteras av följande typer:
 
-- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody)
 
 # <a name="java"></a>[Java](#tab/java)
 

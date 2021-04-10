@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: fd92eed127ec50a3d3a86f667d9aa764b79c190a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87f52bef07644370c268168c984a452d5ae3f9bd
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100585403"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279467"
 ---
 # <a name="trusted-storage-for-media-services"></a>Betrodd lagring för Media Services
 
@@ -29,7 +29,7 @@ Men om du vill använda en brand vägg för att skydda ditt lagrings konto och a
 
 ## <a name="tutorial"></a>Självstudie
 
-Du kan läsa mer om hur du aktiverar betrodd lagring med självstudierna [Media Services Trusted Storage](tutorial-trusted-storage-rest.md) .
+Du kan läsa mer om hur du aktiverar betrodd lagring med självstudierna [Media Services Trusted Storage](security-trusted-storage-rest-tutorial.md) .
 
 > [!NOTE]
 > Du måste bevilja åtkomst till AMS Managed Identity Storage BLOB data Contributor för att Media Services ska kunna läsa och skriva till lagrings kontot.  Att bevilja rollen som allmän deltagare fungerar inte eftersom den inte aktiverar rätt behörigheter för data planet.

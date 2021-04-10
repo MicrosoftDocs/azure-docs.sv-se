@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: cc6d7491d9c38f1ddf4aba2adecad4aaee3c344b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d36a51865f3ed4a093998b16aaa174432c5308a
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489588"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275659"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Vanliga problem och lösningar för Azure IoT Edge
 
@@ -87,6 +87,8 @@ Ange DNS-servern för din miljö i inställningar för container motor som ska g
 
 Exemplet ovan anger DNS-servern till en offentligt tillgänglig DNS-tjänst. Om gräns enheten inte kan komma åt den här IP-adressen från dess miljö ersätter du den med den DNS-serveradress som är tillgänglig.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Placera `daemon.json` på rätt plats för din plattform:
 
 | Plattform | Location |
@@ -102,6 +104,24 @@ Starta om behållar motorn för att uppdateringarna ska börja gälla.
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
 | Windows (admin PowerShell) | `Restart-Service iotedge-moby -Force` |
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Placera `daemon.json` i `/etc/docker` katalogen på enheten.
+
+Om platsen redan innehåller en `daemon.json` fil lägger du till **DNS-** nyckeln till den och sparar filen.
+
+Starta om behållar motorn för att uppdateringarna ska börja gälla.
+
+```bash
+sudo systemctl restart docker
+```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 **Alternativ 2: Ange DNS-server i IoT Edge distribution per modul**
 
@@ -275,6 +295,9 @@ När du ser det här felet kan du lösa det genom att konfigurera den virtuella 
 :::moniker-end
 <!-- end 1.2 -->
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 ## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Det går inte att hämta IoT Edge daemon-loggar i Windows
 
 **Observerat beteende:**
@@ -297,6 +320,9 @@ Windows Registry Editor Version 5.00
 "EventMessageFile"="C:\\ProgramData\\iotedge\\iotedged.exe"
 "TypesSupported"=dword:00000007
 ```
+
+:::moniker-end
+<!-- end 1.1 -->
 
 ## <a name="stability-issues-on-smaller-devices"></a>Stabilitets problem på mindre enheter
 
@@ -388,6 +414,7 @@ IoT Edge enheter bakom en gateway får sina modulblad från den överordnade IoT
 Kontrol lera att den överordnade IoT Edges enheten kan ta emot inkommande begär Anden från den underordnade IoT Edge enheten. Öppna Nätverks trafik på portarna 443 och 6617 för begär Anden som kommer från den underordnade enheten.
 
 :::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="next-steps"></a>Nästa steg
 

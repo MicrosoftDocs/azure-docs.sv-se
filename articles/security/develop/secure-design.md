@@ -10,15 +10,12 @@ ms.service: security
 ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.openlocfilehash: 743412b7602e5781911cdf190e41a5ee15bfddd4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9e5246edd2d6490e823bacbdfff0f60ef553878b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96487685"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729141"
 ---
 # <a name="design-secure-applications-on-azure"></a>Utforma säkra program på Azure
 I den här artikeln presenterar vi säkerhets aktiviteter och kontroller som du bör tänka på när du utformar program för molnet. Utbildnings resurser tillsammans med säkerhets frågor och koncept som du bör tänka på under krav och design faser i Microsoft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) omfattas. Målet är att hjälpa dig att definiera aktiviteter och Azure-tjänster som du kan använda för att utforma ett säkrare program.
@@ -153,7 +150,7 @@ Att modellera program designen och räkna upp [kliv](https://docs.google.com/vie
 
 | Hot | Säkerhets egenskap | Potentiell Azure-plattforms minskning |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Förfalskning               | Autentisering        | [KRÄV HTTPS-anslutningar](/aspnet/core/security/enforcing-ssl?tabs=visual-studio&view=aspnetcore-2.1). |
+| Förfalskning               | Autentisering        | [KRÄV HTTPS-anslutningar](/aspnet/core/security/enforcing-ssl?tabs=visual-studio). |
 | Manipulering              | Integritet             | Verifiera SSL/TLS-certifikat. Program som använder SSL/TLS måste fullständigt verifiera X. 509-certifikaten för de entiteter som de ansluter till. Använd Azure Key Vault certifikat för att [Hantera dina x509-certifikat](../../key-vault/general/about-keys-secrets-certificates.md). |
 | Avvislighet            | Oavvislighet       | Aktivera [övervakning och diagnostik](/azure/architecture/best-practices/monitoring)i Azure.|
 | Avslöjande av information | Konfidentialitet       | Kryptera känsliga data i [vila](../fundamentals/encryption-atrest.md) och [under överföring](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
@@ -233,7 +230,7 @@ Implementera JIT-åtkomst ( *just-in-Time* ) för att ytterligare minska exponer
 
 ### <a name="require-re-authentication-for-important-transactions"></a>Kräv ny autentisering för viktiga transaktioner
 
-[Förfalskning av begäran mellan webbplatser](/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (även kallat *XSRF* eller *CSRF*) är en attack mot webb värdbaserade appar där en skadlig webbapp påverkar interaktionen mellan en klient webbläsare och en webbapp som litar på webbläsaren. Förfalsknings angrepp mellan webbplatser är möjligt eftersom webbläsare skickar vissa typer av autentiseringstoken automatiskt till varje begäran till en webbplats.
+[Förfalskning av begäran mellan webbplatser](/aspnet/core/security/anti-request-forgery) (även kallat *XSRF* eller *CSRF*) är en attack mot webb värdbaserade appar där en skadlig webbapp påverkar interaktionen mellan en klient webbläsare och en webbapp som litar på webbläsaren. Förfalsknings angrepp mellan webbplatser är möjligt eftersom webbläsare skickar vissa typer av autentiseringstoken automatiskt till varje begäran till en webbplats.
 Den här typen av exploatering kallas även för ett *angrepp* eller en *session* som kan utföras på grund av att angreppet utnyttjar användarens tidigare autentiserade session.
 
 Det bästa sättet att skydda mot den här typen av angrepp är att fråga användaren om något som bara användaren kan ange före varje viktig transaktion, till exempel ett köp, konto inaktive ring eller en lösen ords ändring. Du kan be användaren att ange sitt lösen ord på nytt, slutföra en captcha eller skicka en hemlig token som bara användaren skulle ha. Den vanligaste metoden är den hemliga token.
@@ -303,7 +300,7 @@ Se till att:
 
 ### <a name="use-logging-and-alerting"></a>Använd loggning och aviseringar
 
-[Logga](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1) dina säkerhets problem för säkerhets undersökningar och Utlös aviseringar om problem för att se till att människor vet om problem inom rimlig tid. Aktivera granskning och loggning på alla komponenter. Gransknings loggar ska avbilda användar kontext och identifiera alla viktiga händelser.
+[Logga](/aspnet/core/fundamentals/logging/) dina säkerhets problem för säkerhets undersökningar och Utlös aviseringar om problem för att se till att människor vet om problem inom rimlig tid. Aktivera granskning och loggning på alla komponenter. Gransknings loggar ska avbilda användar kontext och identifiera alla viktiga händelser.
 
 Kontrol lera att du inte loggar känsliga data som en användare skickar till din webbplats. Exempel på känsliga data är:
 

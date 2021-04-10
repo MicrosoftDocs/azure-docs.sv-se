@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.openlocfilehash: f82e0c3f76dba05c3404b11e07c7130119ce0b9d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103015666"
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard-schema
@@ -199,7 +199,7 @@ Om Indataporten har hämtats med en rotation som inte är noll (t. ex. en smartp
 
 ![MESRoation2](./media/media-services-shemas/media-services-mes-roation2.png) 
 
-Du kan också använda flaggan **PreserveResolutionAfterRotation** och ange den som "true" (Standardvärdet är "false"). Så om din för inställning har bredd = "100%", height = "100%" och PreserveResolutionAfterRotation inställt på "true", en indata-video, som är 1280 bild punkter bred och 720 bild punkter högt med en rotation i 90 grader genererar utdata med noll GRADS rotation, men 720 bild punkter bred och 1280 bild punkter högt. Se följande bild:  
+Du kan också använda flaggan **PreserveResolutionAfterRotation** och ange den som "true&quot; (Standardvärdet är &quot;false"). Så om din för inställning har bredd = "100%", height = "100%" och PreserveResolutionAfterRotation inställt på "true", en indata-video, som är 1280 bild punkter bred och 720 bild punkter högt med en rotation i 90 grader genererar utdata med noll GRADS rotation, men 720 bild punkter bred och 1280 bild punkter högt. Se följande bild:  
 
 ![MESRoation3](./media/media-services-shemas/media-services-mes-roation3.png) 
 

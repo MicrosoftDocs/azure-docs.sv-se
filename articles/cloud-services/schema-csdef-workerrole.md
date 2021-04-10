@@ -3,17 +3,18 @@ title: Azure Cloud Services (klassisk) Def. WorkerRole-schema | Microsoft Docs
 description: Azure Worker-rollen används för allmän utveckling och kan utföra bakgrunds bearbetning för en webbroll. Lär dig mer om Azure Worker Role-schemat.
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 0871527187a3d678cb2b94bd8dc342cf2abde1ba
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f8ba321d95cc030d75ff9286c92c57335695790b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98743142"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934078"
 ---
 # <a name="azure-cloud-services-classic-definition-workerrole-schema"></a>Azure Cloud Services (klassisk) definition WorkerRole-schema
 

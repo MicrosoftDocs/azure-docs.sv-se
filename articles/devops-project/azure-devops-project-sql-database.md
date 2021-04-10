@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: 7e85b698e1b3c3a1c3e8730ab85e8b72b7b0d9f6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102548486"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>Självstudie: Distribuera ASP.NET-appen och Azure SQL Database kod med hjälp av Azure DevOps starter
@@ -192,6 +192,6 @@ Mer information om CI/CD-pipelinen finns i:
 > [!div class="nextstepaction"]
 > [Definiera din CD-pipeline med flera steg](/azure/devops/pipelines/release/define-multistage-release-process)
 
-## <a name="videos"></a>Videoklipp
+## <a name="videos"></a>Video
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK3308/player]

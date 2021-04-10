@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: b2f91f0036a86151588c8c138dac5421ad54e18e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: db9ad08f9a939a22e1e0e1cfba0537e6356394ed
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586428"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731543"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>Installera Azure Monitor Agent (förhands granskning)
 Den här artikeln innehåller de olika alternativ som för närvarande är tillgängliga för att installera [Azure Monitor Agent](azure-monitor-agent-overview.md) på både virtuella Azure-datorer och Azure Arc-aktiverade servrar, samt alternativen för att skapa [associationer med data insamlings regler](data-collection-rule-azure-monitor-agent.md) som definierar vilka data som agenten ska samla in.
@@ -20,6 +20,9 @@ Följande förutsättningar måste vara uppfyllda innan du installerar Azure Mon
 
 - [Hanterad system identitet](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) måste vara aktiverat på virtuella Azure-datorer. Detta krävs inte för Azure Arc-aktiverade servrar. System identiteten aktive ras automatiskt om agenten installeras som en del av processen för att [skapa och tilldela en data insamlings regel med hjälp av Azure Portal](#install-with-azure-portal).
 - [AzureResourceManager-tjänst tag gen](../../virtual-network/service-tags-overview.md) måste vara aktive rad på det virtuella nätverket för den virtuella datorn.
+
+> [!IMPORTANT]
+> Den Azure Monitor-agenten stöder för närvarande inte nätverks-proxyservrar.
 
 ## <a name="virtual-machine-extension-details"></a>Tilläggs information för virtuell dator
 Azure Monitor agenten implementeras som ett [Azure VM-tillägg](../../virtual-machines/extensions/overview.md) med informationen i följande tabell. Den kan installeras med någon av metoderna för att installera tillägg för virtuella datorer, inklusive de som beskrivs i den här artikeln.

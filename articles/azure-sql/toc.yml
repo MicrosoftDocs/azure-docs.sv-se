@@ -211,6 +211,8 @@
               href: database/monitoring-with-dmvs.md
             - name: Förstå och lösa blockering
               href: database/understand-resolve-blocking.md
+            - name: Konfigurera Max graden av parallellitet (MAXDOP)
+              href: database/configure-max-degree-of-parallelism.md
             - name: Logga diagnostiktelemetri
               href: database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md
             - name: Minnesintern OLTP

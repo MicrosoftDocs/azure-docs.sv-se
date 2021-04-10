@@ -2,13 +2,13 @@
 title: Kvoter och gränser – Azure Event Hubs | Microsoft Docs
 description: Den här artikeln innehåller gränser och kvoter för Azure Event Hubs. Till exempel antal namn områden per prenumeration, antal Event Hub per namn område.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: f07176d01dd2444f3def93d4295ef898cca61561
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/31/2021
+ms.openlocfilehash: 9e32b8e7e43e8396c1606c80dd27c68563cdbf03
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86512392"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107084"
 ---
 # <a name="azure-event-hubs-quotas-and-limits"></a>Azure Event Hubs-kvoter och begränsningar
 

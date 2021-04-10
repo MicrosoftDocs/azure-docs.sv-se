@@ -4,10 +4,10 @@ description: Lär dig mer om lokala hanterings konsol alternativ som säkerhets 
 ms.date: 1/12/2021
 ms.topic: article
 ms.openlocfilehash: 871c74eee4b74538a8a09188953916ff7376bc8d
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104781729"
 ---
 # <a name="manage-the-on-premises-management-console"></a>Hantera den lokala hanteringskonsolen

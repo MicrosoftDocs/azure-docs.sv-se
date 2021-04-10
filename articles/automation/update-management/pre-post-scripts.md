@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: ce60c773626d951062de3cc830b898e3b875f3cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 676e5f03c8d0085a4d041662a80c63d385071919
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102485545"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166725"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Hantera förskript och efterskript
 
@@ -147,7 +147,7 @@ Aktiviteter och aktiviteter körs som Runbooks och körs inte internt på dina v
 * Ett Kör som-konto
 * En Runbook som du vill köra
 
-Om du vill interagera med Azure-datorer ska du använda cmdleten [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) för att interagera med dina virtuella Azure-datorer. Ett exempel på hur du gör detta finns i Runbook-exemplet [uppdateringshantering – kör skript med kommandot kör](https://github.com/azureautomation/update-management-run-script-with-run-command).
+Om du vill interagera med Azure-datorer ska du använda cmdleten [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) för att interagera med dina virtuella Azure-datorer. Ett exempel på hur du gör detta finns i Runbook [-exemplet uppdateringshantering-kör skript med kommandot kör](https://github.com/azureautomation/update-management-run-script-with-run-command).
 
 ### <a name="interact-with-non-azure-machines"></a>Interagera med datorer som inte är Azure-datorer
 
@@ -158,7 +158,7 @@ Aktiviteter och aktiviteter som körs i Azure-kontexten och som inte har åtkoms
 * En Runbook som du vill köra lokalt
 * En överordnad Runbook
 
-För att interagera med datorer som inte är Azure-datorer körs en överordnad Runbook i Azure-kontexten. Denna Runbook anropar en underordnad Runbook med cmdleten [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) . Du måste ange `RunOn` parametern och ange namnet på Hybrid Runbook Worker som skriptet ska köras på. Se Runbook-exemplet [uppdateringshantering – kör skriptet lokalt](https://github.com/azureautomation/update-management-run-script-locally).
+För att interagera med datorer som inte är Azure-datorer körs en överordnad Runbook i Azure-kontexten. Denna Runbook anropar en underordnad Runbook med cmdleten [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) . Du måste ange `RunOn` parametern och ange namnet på Hybrid Runbook Worker som skriptet ska köras på. Se Runbook-exemplet [uppdateringshantering-kör skript lokalt](https://github.com/azureautomation/update-management-run-script-locally).
 
 ## <a name="abort-patch-deployment"></a>Avbryt korrigerings distribution
 
@@ -238,9 +238,9 @@ Write-Output $context
 #Example: How to create and write to a variable using the pre-script:
 <#
 #Create variable named after this run so it can be retrieved
-New-AzAutomationVariable -ResourceGroupName $ResourceGroup –AutomationAccountName $AutomationAccount –Name $runId -Value "" –Encrypted $false
+New-AzAutomationVariable -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccount -Name $runId -Value "" -Encrypted $false
 #Set value of variable
-Set-AutomationVariable –Name $runId -Value $vmIds
+Set-AutomationVariable -Name $runId -Value $vmIds
 #>
 
 #Example: How to retrieve information from a variable set during the pre-script

@@ -37,17 +37,17 @@ I de flesta fall är det en bra idé att skapa dina data flöden i fel söknings
 > [!NOTE]
 > Varje felsökningssession som en användare startar från sitt användar gränssnitt för ADF-webbläsare är en ny session med ett eget Spark-kluster. Du kan använda vyn övervakning för att felsöka sessioner ovan för att visa och hantera fel söknings sessioner per fabrik. Du debiteras för varje timme som varje felsökningssession körs, inklusive TTL-tiden.
 
-## <a name="cluster-status"></a>Klusterstatus
+## <a name="cluster-status&quot;></a>Klusterstatus
 
 Kluster status indikatorn överst i design ytan blir grön när klustret är klart för fel sökning. Om klustret redan är varmt kommer den gröna indikatorn att visas nästan omedelbart. Om klustret inte redan kördes när du angav fel söknings läge, kommer Spark-klustret att utföra en kall omstart. Indikatorn kommer att snurra tills miljön är klar för interaktiv fel sökning.
 
 När du är färdig med fel sökningen aktiverar du fel söknings knappen så att ditt Spark-kluster kan avslutas och du kommer inte längre att faktureras för fel söknings aktivitet.
 
-## <a name="debug-settings"></a>Fel söknings inställningar
+## <a name=&quot;debug-settings&quot;></a>Fel söknings inställningar
 
-När du har aktiverat fel söknings läge kan du redigera hur ett data flöde för hands Grans kar data. Du kan redigera fel söknings inställningar genom att klicka på "Felsök inställningar" i verktygsfältet data flödes arbets yta. Du kan välja den rad gräns eller fil källa som ska användas för varje käll omvandling här. Rad begränsningarna i den här inställningen gäller bara för den aktuella felsökningssessionen. Du kan också välja den mellanlagrade länkade tjänst som ska användas för en Azure Synapse Analytics-källa. 
+När du har aktiverat fel söknings läge kan du redigera hur ett data flöde för hands Grans kar data. Du kan redigera fel söknings inställningar genom att klicka på &quot;Felsök inställningar&quot; i verktygsfältet data flödes arbets yta. Du kan välja den rad gräns eller fil källa som ska användas för varje käll omvandling här. Rad begränsningarna i den här inställningen gäller bara för den aktuella felsökningssessionen. Du kan också välja den mellanlagrade länkade tjänst som ska användas för en Azure Synapse Analytics-källa. 
 
-![Fel söknings inställningar](media/data-flow/debug-settings.png "Fel söknings inställningar")
+![Fel söknings inställningar](media/data-flow/debug-settings.png &quot;Fel söknings inställningar")
 
 Om du har parametrar i ditt data flöde eller någon av dess refererade data uppsättningar, kan du ange vilka värden som ska användas vid fel sökning genom att välja fliken **parametrar** .
 
