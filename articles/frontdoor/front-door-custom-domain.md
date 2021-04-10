@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: duau
-ms.openlocfilehash: 6abed66a5fbd9987e5a8a677dde7b4a77589e907
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: e1540602bae0779d69c0cb4bb59e93b810b52904
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065054"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550769"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Självstudie: Lägga till en anpassad domän i din Front Door
 
@@ -70,7 +70,7 @@ Så här skapar du en CNAME-post med underdomänen afdverify:
     |---------------------------|-------|---------------------------------|
     | afdverify.www.contoso.com | CNAME | afdverify.contoso-frontend.azurefd.net |
 
-    - Källa: Ange ditt anpassade domän namn, inklusive under domänen afdverify i följande format: afdverify. _&lt; eget domän namn &gt;_. Till exempel: afdverify.www.contoso.com.
+    - Källa: Ange ditt anpassade domän namn, inklusive under domänen afdverify i följande format: afdverify. _&lt; eget domän namn &gt;_. Till exempel: afdverify.www.contoso.com. Om du mappar en domän med jokertecken, t \* . ex. contoso.com, är source-värdet detsamma som det skulle vara utan jokertecknet: afdverify.contoso.com.
 
     - Typ: Ange *CNAME*.
 

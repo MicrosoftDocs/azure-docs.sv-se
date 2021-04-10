@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 03/24/2021
 tags: connectors
-ms.openlocfilehash: c81e40f769ab9eefdd919f3336591dc065d6cfc9
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: b2f7ae79cf43e257c3e13d2da7fec5c83dd3fab0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105564121"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937285"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Ansluta till SAP-system från Azure Logic Apps
 
@@ -33,6 +33,8 @@ I den här artikeln förklaras hur du kan komma åt dina SAP-resurser från Logi
     * Om du kör din Logic-app i en Premium- [miljö (Premium service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)på Premium-nivå, se [kraven för ISE](#ise-prerequisites).
 
 * En [SAP-Programserver](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) eller en [SAP-MSMQ-server](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm) som du vill komma åt från Logic Apps. Information om vilka SAP-servrar och SAP-åtgärder som du kan använda med anslutnings tjänsten finns i [SAP-kompatibilitet](#sap-compatibility).
+
+    * Du måste konfigurera SAP-servern så att du kan använda RFC. Mer information finns i följande SAP-anteckning: [460089 – lägsta behörighets profiler för externa RFC-program](https://launchpad.support.sap.com/#/notes/460089). 
 
 * Meddelande innehåll som ska skickas till din SAP-server, till exempel en IDoc-fil. Innehållet måste vara i XML-format och innehålla namn området för den SAP-åtgärd som du vill använda. Du kan [Skicka idocs med ett Flat File-schema genom att omsluta dem i ett XML-kuvert](#send-flat-file-idocs).
 

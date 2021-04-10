@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a12cc3299fbb5916afba48d2608024f28999634
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d792c1eb0a85f2a898d1dc5c63047a4553f13b0
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724635"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106780"
 ---
 # <a name="build-resilience-by-using-continuous-access-evaluation"></a>Bygg återhämtning med hjälp av utvärdering av kontinuerlig åtkomst
 
@@ -47,6 +47,8 @@ För att kunna använda CAE måste både tjänsten och klienten vara CAE-kompati
 Microsoft arbetar med branschen för att bygga [standarder](https://openid.net/wg/sse/) som gör det möjligt för program från tredje part att använda den här funktionen. Du kan också utveckla program som är CAE-kompatibla. Mer information finns i så här skapar du återhämtning i ditt program.
 
 ## <a name="how-do-i-implement-cae"></a>Hur gör jag för att implementera CAE?
+
+* [Uppdatera din kod för att använda CAE-aktiverade API: er](../develop/app-resilience-continuous-access-evaluation.md).
 
 * [Aktivera CAE](../conditional-access/concept-continuous-access-evaluation.md) i säkerhets konfigurationen för Azure AD.
 

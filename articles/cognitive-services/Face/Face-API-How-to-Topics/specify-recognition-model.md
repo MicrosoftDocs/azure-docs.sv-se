@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd4ed992557a3c333919b63cc36757beb2f70454
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3d22f2fb0bb550d966cbc5e181882552514513b2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433564"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936588"
 ---
 # <a name="specify-a-face-recognition-model"></a>Ange en ansiktsigenkänningsmodell
 
@@ -87,7 +87,7 @@ Det finns ingen ändring i API för [ansikts identifiering] . du behöver bara a
 
 ## <a name="find-similar-faces-with-specified-model"></a>Hitta liknande ansikten med angiven modell
 
-Du kan också ange en igenkännings modell för sökning efter likheter. Du kan tilldela modell versionen med `recognitionModel` när du skapar ansikts listan med [FaceList-Create] API eller [LargeFaceList-Create]. Om du inte anger den här parametern `recognition_01` används modellen som standard. En ansikts lista använder alltid den igenkännings modell som den skapades med och nya ytor blir kopplade till den här modellen när de läggs till i listan. Du kan inte ändra det när du har skapat. Om du vill se vilken modell en ansikts lista har kon figurer ATS med använder du [FaceList-get-] API med parametern _returnRecognitionModel_ inställd som **Sant**.
+Du kan också ange en igenkännings modell för sökning efter likheter. Du kan tilldela modell versionen med `recognitionModel` när du skapar **FaceList** med [FaceList-Create] API eller [LargeFaceList-Create]. Om du inte anger den här parametern `recognition_01` används modellen som standard. En **FaceList** använder alltid den igenkännings modell som den skapades med och nya ytor blir kopplade till den här modellen när de läggs till i listan. Du kan inte ändra det när du har skapat. Om du vill se vilken modell en **FaceList** har kon figurer ATS med använder du [FaceList-get-] API med parametern _returnRecognitionModel_ inställd på **True**.
 
 Se följande kod exempel för .NET-klient biblioteket.
 
@@ -95,7 +95,7 @@ Se följande kod exempel för .NET-klient biblioteket.
 await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_04");
 ```
 
-Den här koden skapar en ansikts lista `My face collection` med namnet med hjälp av _recognition_04s_ modellen för funktions extrahering. När du söker i den här ansikts listan efter liknande ansikten till en ny identifierad ansikte, måste det ansikte ha identifierats ([upptäcka]) med _recognition_04_ modellen. Som i föregående avsnitt måste modellen vara konsekvent.
+Den här koden skapar  en FaceList `My face collection` som kallas med _recognition_04s_ modellen för funktions extrahering. När du söker i den här **FaceList** efter liknande ansikten till en ny identifierad ansikte måste det ansikte ha identifierats ([upptäcka]) med hjälp av _recognition_04_ modellen. Som i föregående avsnitt måste modellen vara konsekvent.
 
 Det finns ingen ändring i [FACET-identifiera liknande] API; du anger bara modell versionen som ska identifieras.
 

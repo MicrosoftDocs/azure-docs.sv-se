@@ -7,14 +7,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 03/02/2021
+ms.date: 04/06/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6b4d5c1372a8351f1fe5a6608aff38bf232aabd8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2f41034331ed21e194fc2b86c2902c5957333313
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121957"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010606"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Viktig information – Azure Arc-aktiverade data tjänster (för hands version)
 
@@ -22,11 +22,48 @@ I den här artikeln beskrivs funktioner, funktioner och förbättringar som nyli
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
+## <a name="march-2021"></a>Mars 2021
+
+Den 6 mars 2021-versionen lanseras den 6 april 2021.
+
+Se begränsningar för den här versionen i [kända problem – Azure Arc-aktiverade data tjänster (för hands version)](known-issues.md).
+
+Versions nummer för Azure Data CLI ( `azdata` ): 20.3.2. Du kan installera `azdata` från [Installera Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
+
+### <a name="data-controller"></a>Datakontrollant
+
+- Distribuera Azure Arc-aktiverade data Services-datakontrollanten i direkt anslutnings läge från portalen. Börja [använda distribuera datakontrollant – Direct Connect-läge-krav](deploy-data-controller-direct-mode-prerequisites.md).
+
+### <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc Enabled PostgreSQL-skalning
+
+Både anpassade resurs definitioner (CRD) för PostgreSQL har konsoliderats till en enda CRD. Se följande tabell.
+
+|Frisläpp |CRD |
+|-----|-----|
+|Februari 2021 och tidigare| postgresql-11s.arcdata.microsoft.com<br/>postgresql-12s.arcdata.microsoft.com |
+|Från och med 2021 mars | postgresqls.arcdata.microsoft.com
+
+Du tar bort den tidigare CRDs när du rensar tidigare installationer. Se [Rensa från tidigare installationer](create-data-controller-using-kubernetes-native-tools.md#cleanup-from-past-installations).
+
+### <a name="azure-arc-enabled-managed-instance"></a>Azure Arc-aktiverad hanterad instans
+
+- Nu kan du återställa en databas till SQL-hanterad instans med tre repliker och den läggs automatiskt till i tillgänglighets gruppen. 
+
+- Nu kan du ansluta till en sekundär skrivskyddad slut punkt på SQL-hanterade instanser som distribueras med tre repliker. Används `azdata arc sql endpoint list` för att visa den sekundära skrivskyddade anslutnings slut punkten.
+
+### <a name="known-issues"></a>Kända problem
+
+- I direkt anslutet läge blockeras överföring av användning, mått och loggar med hjälp av `azdata arc dc upload` för tillfället. Användningen laddas upp automatiskt. Överföring för datakontrollant som skapats i läget för indirekt anslutning bör fortsätta att fungera.
+- Distribution av datakontrollant i direkt läge kan bara göras från Azure Portal och inte tillgängligt från klient verktyg som azdata, Azure Data Studio eller kubectl.
+- Distribution av Azure Arc-aktiverade SQL-hanterade instanser i direkt läge kan bara göras från Azure Portal och inte tillgängligt från verktyg som azdata, Azure Data Studio eller kubectl.
+- Distribution av Azure Arc Enabled PostgeSQL-skalning i direkt läge är inte tillgängligt för tillfället.
+- Automatisk uppladdning av användnings data i läget för direkt anslutning kommer inte att lyckas om du använder proxy via `–proxy-cert <path-t-cert-file>` .
+
 ## <a name="february-2021"></a>Februari 2021
 
 ### <a name="new-capabilities-and-features"></a>Nya funktioner och funktioner
 
-Versions nummer för Azure Data CLI ( `azdata` ): 20.3.1. Ladda ned på [https://aka.ms/azdata](https://aka.ms/azdata) . Du kan installera `azdata` från [Installera Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
+Versions nummer för Azure Data CLI ( `azdata` ): 20.3.1. Du kan installera `azdata` från [Installera Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
 
 Ytterligare uppdateringar är:
 
@@ -44,7 +81,7 @@ Problem som är associerade med den här versionen finns i [kända problem – A
 
 ### <a name="new-capabilities-and-features"></a>Nya funktioner och funktioner
 
-Versions nummer för Azure Data CLI ( `azdata` ): 20.3.0. Ladda ned på [https://aka.ms/azdata](https://aka.ms/azdata) . Du kan installera `azdata` från [Installera Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
+Versions nummer för Azure Data CLI ( `azdata` ): 20.3.0. Du kan installera `azdata` från [Installera Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
 
 Ytterligare uppdateringar är:
 - Lokaliserad portal tillgänglig för 17 nya språk
@@ -70,7 +107,7 @@ Ytterligare uppdateringar är:
 
 ### <a name="new-capabilities--features"></a>Nya funktioner & funktioner
 
-Versions nummer för Azure Data CLI ( `azdata` ): 20.2.5. Ladda ned på [https://aka.ms/azdata](https://aka.ms/azdata) .
+Versions nummer för Azure Data CLI ( `azdata` ): 20.2.5. Du kan installera `azdata` från [Installera Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
 
 Visa slut punkter för SQL-hanterad instans och PostgreSQL-skalning med hjälp av kommandona Azure Data CLI ( `azdata` ) med `azdata arc sql endpoint list` och `azdata arc postgres endpoint list` .
 
@@ -127,16 +164,9 @@ azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc
 
    :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Avmarkera kryss rutorna för varje zon för att ange ingen.":::
 
-#### <a name="postgresql"></a>PostgreSQL
-
-- Azure Arc Enabled PostgreSQL-skalning returnerar ett felaktigt fel meddelande när det inte går att återställa till den relativa tidpunkt som du anger. Om du till exempel har angett en tidpunkt för återställning som är äldre än vad dina säkerhets kopior innehåller, Miss lyckas återställningen med ett fel meddelande som: fel: (404). Orsak: hittades inte. HTTP-svars text: {"Code": 404, "internalStatus": "NOT_FOUND", "orsak": "Det gick inte att återställa säkerhets kopian för servern...}
-När detta händer startar du om kommandot efter att ha angett en tidpunkt som ligger inom det datum intervall som du har säkerhets kopior för. Du fastställer intervallet genom att ange dina säkerhets kopior och titta på de datum då de vidtogs.
-- Återställning av tidpunkt stöds bara i Server grupper. Mål servern för en återställnings punkt för en tidpunkt kan inte vara den server som du använde för säkerhets kopieringen. Den måste vara en annan server grupp. Fullständig återställning stöds dock i samma server grupp.
-- Ett säkerhets kopierings-ID krävs vid fullständig återställning. Om du inte anger ett säkerhets kopierings-ID kommer den senaste säkerhets kopian att användas som standard. Detta fungerar inte i den här versionen.
-
 ## <a name="october-2020"></a>Oktober 2020 
 
-Versions nummer för Azure Data CLI ( `azdata` ): 20.2.3. Ladda ned på [https://aka.ms/azdata](https://aka.ms/azdata) .
+Versions nummer för Azure Data CLI ( `azdata` ): 20.2.3. Du kan installera `azdata` från [Installera Azure Data CLI ( `azdata` )](/sql/azdata/install/deploy-install-azdata).
 
 ### <a name="breaking-changes"></a>Icke-bakåtkompatibla ändringar
 

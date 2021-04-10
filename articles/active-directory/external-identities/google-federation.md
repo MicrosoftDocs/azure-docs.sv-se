@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 04/06/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2e9acda136654a0dd654eded7b4c17e560fc0aa
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0cb3b3fd2010bf4ad1288b767d62d3d76f7b37e3
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709709"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550973"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Lägg till Google som en identitets leverantör för B2B-gäst användare
 
@@ -150,7 +150,7 @@ Du kommer nu att ange Google-klient-ID och klient hemlighet. Du kan använda Azu
    > Använd klient-ID och klient hemlighet från den app som du skapade i "steg 1: Konfigurera ett Google Developer-projekt". Mer information finns i [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview&preserve-view=true). 
  
 ## <a name="how-do-i-remove-google-federation"></a>Hur gör jag för att ta bort Google Federation?
-Du kan ta bort din Google Federation-installation. Om du gör det kommer Google gäst användare som redan har löst sin inbjudan att kunna logga in. Men du kan ge dem åtkomst till dina resurser igen genom att ta bort dem från katalogen och bjuda in dem igen. 
+Du kan ta bort din Google Federation-installation. Om du gör det kommer Google gäst användare som redan har löst sin inbjudan att kunna logga in. Men du kan ge dem åtkomst till dina resurser igen genom att [återställa deras inlösnings status](reset-redemption-status.md).
  
 **Ta bort Google Federation i Azure AD-portalen**
 1. Gå till [Azure-portalen](https://portal.azure.com). I den vänstra rutan väljer du **Azure Active Directory**. 

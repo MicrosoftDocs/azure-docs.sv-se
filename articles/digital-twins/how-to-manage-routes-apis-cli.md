@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 97fad1b984ad34722a952a31d8245eb68417a2ab
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: e6b35031d976a11bdac6f38d74f9e02a0fc83302
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104779978"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936316"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Hantera slut punkter och vägar i Azure Digitals dubbla (API: er och CLI)
 
@@ -158,7 +158,7 @@ När slut punkten med obeställbara meddelanden har kon figurer ATS lagras medde
 
 Meddelanden med obeställbara meddelanden matchar schemat för den ursprungliga händelsen som var avsedd att levereras till den ursprungliga slut punkten.
 
-Här är ett exempel på ett meddelande om obeställbara meddelanden för ett [dubbelt skapande meddelande](how-to-interpret-event-data.md#digital-twin-life-cycle-notifications):
+Här är ett exempel på ett meddelande om obeställbara meddelanden för ett [dubbelt skapande meddelande](how-to-interpret-event-data.md#digital-twin-lifecycle-notifications):
 
 ```json
 {
@@ -234,12 +234,14 @@ Mer information om hur du använder CLI och vilka kommandon som är tillgänglig
 Utan filtrering tar slut punkter emot flera olika händelser från Azures digitala dubbla:
 * Telemetri som har utlösts av [digitala sammanflätade](concepts-twins-graph.md) tjänster med Azure Digitals dubbla tjänst-API
 * Dubbla egenskaps ändrings meddelanden, utlöses vid egenskaps ändringar för alla dubbla i Azure Digitals-instansen
-* Livs cykel händelser, utlöses när de är uppdelade eller relationer skapade eller raderas
+* Livs cykel händelser, som utlöses när en eller ett relationer skapas eller tas bort
 
 Du kan begränsa vilka händelser som ska skickas genom att lägga till ett **filter** för en slut punkt till händelse vägen.
 
 >[!NOTE]
-> Filter är **SKIFT** läges känsliga och måste matchas i nytto Last fallet (vilket kanske inte nödvändigt vis matchar modell fallet).
+> Filter är **SKIFT** läges känsliga och måste matcha nytto Last ärendet. 
+>
+> För telemetri filter innebär det att höljet måste matcha höljet i den telemetri som skickas av enheten, inte nödvändigt vis det Skift läge som definieras i den dubbla modellen. 
 
 Om du vill lägga till ett filter, kan du använda en skicka-begäran till *https://{Your-Azure-Digital-posters-hostname}/eventRoutes/{Event Route-Name}? API-version = 2020-10-31* med följande text:
 

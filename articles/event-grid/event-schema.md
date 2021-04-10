@@ -3,12 +3,12 @@ title: Azure Event Grid händelse schema
 description: Beskriver de egenskaper och schema som finns för alla händelser. Händelser består av en uppsättning av fem obligatoriska sträng egenskaper och ett obligatoriskt data objekt.
 ms.topic: reference
 ms.date: 07/07/2020
-ms.openlocfilehash: 7ddc7c78c5a9e5ba2a57b21c45fb9fab65056ee9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5ff7b41a45cf467074e18a50be398b2a3c9866a4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86105888"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732167"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid händelse schema
 
@@ -88,6 +88,7 @@ Alla händelser har samma följande toppnivå data:
 
 Information om egenskaperna i data-objektet finns i händelse källan:
 
+* [Azure Policy](./event-schema-policy.md)
 * [Azure-prenumerationer (hanterings åtgärder)](event-schema-subscriptions.md)
 * [Container Registry](event-schema-container-registry.md)
 * [Blob Storage](event-schema-blob-storage.md)

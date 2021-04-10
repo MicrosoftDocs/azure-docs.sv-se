@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/25/2021
 ms.author: aahi
 keywords: lokal, Docker, container, sentiment analys, naturlig språk bearbetning
-ms.openlocfilehash: ac82781ed4a05fbbca7f5b16edb0b5349dfc400a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc5406cec54defd118ba350ba59b8d7311cff563
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102432085"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106089736"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Installera och kör Textanalys-containrar
 
@@ -49,6 +49,8 @@ Du måste uppfylla följande krav innan du använder Textanalys behållare:
 |Textanalys resurs |För att du ska kunna använda behållaren måste du ha:<br><br>En Azure [textanalys-resurs](../../cognitive-services-apis-create-account.md) med den kostnads fria (F0) eller standard [pris nivån](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/). Du måste hämta den associerade API-nyckeln och slut punkts-URI: n genom att gå till resursens **nyckel-och slut punkts** sida i Azure Portal. <br><br>**{Api_key}**: en av de två tillgängliga resurs nycklarna. <br><br>**{ENDPOINT_URI}**: slut punkten för din resurs. |
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
+
+Om du använder Textanalys för Health-container måste den [ansvariga AI](https://docs.microsoft.com/legal/cognitive-services/text-analytics/transparency-note-health)  -bekräftelsen (Rai) också finnas med värdet `accept` .
 
 ## <a name="the-host-computer"></a>Värddatorn
 

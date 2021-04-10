@@ -8,34 +8,33 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 6cb4abd536cc0d4177df424ac6a774e4e2e328d7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9849648c8a0a76ff89a6f95e64eeade791e7135c
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564763"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106381782"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Distribuera en moln tjänst (utökad support) med ARM-mallar
 
 I den här självstudien beskrivs hur du skapar en moln tjänst (utökad support) distribution med [arm-mallar](../azure-resource-manager/templates/overview.md). 
-
-> [!IMPORTANT]
-> Cloud Services (utökad support) är för närvarande en offentlig för hands version.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
-> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
 1. Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utökad support) och skapa de associerade resurserna.
 
 2. Skapa en ny resurs grupp med hjälp av [Azure Portal](../azure-resource-manager/management/manage-resource-groups-portal.md) eller [PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md). Det här steget är valfritt om du använder en befintlig resurs grupp.
+
+3. Skapa en offentlig IP-adress och ange egenskapen DNS-etikett för den offentliga IP-adressen. Cloud Services (utökad support) stöder bara [Basic] ( https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU offentliga IP-adresser. Standard-SKU offentliga IP-adresser fungerar inte med Cloud Services.
+Om du använder en statisk IP-adress måste den refereras som en Reserverad IP i tjänst konfigurations filen (. cscfg). Om du använder en befintlig IP-adress hoppar du över det här steget och lägger till information om IP-adressen direkt i konfigurations inställningarna för belastningsutjämnaren i ARM-mallen.
+
+4. Skapa ett nätverks profil objekt och koppla den offentliga IP-adressen till belastningsutjämnarens klient del. Azure-plattformen skapar automatiskt en klassisk "SKU"-belastnings Utjämnings resurs i samma prenumeration som moln tjänst resursen. Belastnings Utjämnings resursen är en skrivskyddad resurs i ARM. Alla uppdateringar av resursen stöds endast via Cloud Service-distributionspaket (. cscfg &. csdef)
  
-3. Skapa ett nytt lagrings konto med hjälp av [Azure Portal](../storage/common/storage-account-create.md?tabs=azure-portal) eller [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell). Det här steget är valfritt om du använder ett befintligt lagrings konto.
+5. Skapa ett nytt lagrings konto med hjälp av [Azure Portal](../storage/common/storage-account-create.md?tabs=azure-portal) eller [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell). Det här steget är valfritt om du använder ett befintligt lagrings konto.
 
-4. Överför dina tjänst definitions-(. csdef) och tjänst konfigurations filer (. cscfg) till lagrings kontot med hjälp av [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) eller [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container). Hämta SAS-URI: er för båda filerna som ska läggas till i ARM-mallen senare i den här självstudien.
+6. Överför dina tjänst definitions-(. csdef) och tjänst konfigurations filer (. cscfg) till lagrings kontot med hjälp av [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) eller [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container). Hämta SAS-URI: er för båda filerna som ska läggas till i ARM-mallen senare i den här självstudien.
 
-5. Valfritt Skapa ett nyckel valv och ladda upp certifikaten.
+6. Valfritt Skapa ett nyckel valv och ladda upp certifikaten.
 
     -  Certifikat kan anslutas till moln tjänster för att möjliggöra säker kommunikation till och från tjänsten. För att kunna använda certifikat måste deras tumavtrycken anges i tjänst konfigurations filen (. cscfg) och överföras till ett nyckel valv. Ett nyckel valv kan skapas via [Azure Portal](../key-vault/general/quick-create-portal.md) eller [PowerShell](../key-vault/general/quick-create-powershell.md).
     - Det associerade nyckel valvet måste finnas i samma region och prenumeration som moln tjänsten.
@@ -351,7 +350,7 @@ I den här självstudien beskrivs hur du skapar en moln tjänst (utökad support
           }
         },
         {
-          "apiVersion": "2020-10-01-preview",
+          "apiVersion": "2021-03-01",
           "type": "Microsoft.Compute/cloudServices",
           "name": "[variables('cloudServiceName')]",
           "location": "[parameters('location')]",

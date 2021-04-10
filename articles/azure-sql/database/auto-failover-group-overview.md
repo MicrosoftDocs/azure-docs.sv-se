@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 12/26/2020
-ms.openlocfilehash: e0b9eea7be97b9b67e75c314c4a1d9e69322e5b5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/26/2021
+ms.openlocfilehash: 4d497adf5229819527608157a7a840d514f4292c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594265"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732354"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Använd grupper för automatisk redundans för att aktivera transparent och samordnad redundansväxling av flera databaser
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -178,6 +178,12 @@ När du utför OLTP-åtgärder ska du använda `<fog-name>.database.windows.net`
 
 Om du har en logiskt isolerad skrivskyddad arbets belastning som är tolerant till viss föråldrade data kan du använda den sekundära databasen i programmet. För skrivskyddade sessioner använder du `<fog-name>.secondary.database.windows.net` som server-URL och anslutningen dirigeras automatiskt till den sekundära. Vi rekommenderar också att du anger Läs avsikt i anslutnings strängen med hjälp av `ApplicationIntent=ReadOnly` .
 
+> [!NOTE]
+> I Premium-, Affärskritisk-och storskaliga tjänste nivåer kan SQL Database använda [skrivskyddade repliker](read-scale-out.md) för att avlasta skrivskyddade arbets belastningar med hjälp av `ApplicationIntent=ReadOnly` parametern i anslutnings strängen. När du har konfigurerat en geo-replikerad sekundär instans kan du använda den här funktionen till att ansluta till antingen en skrivskyddad replik på den primära platsen eller på den geo-replikerade platsen.
+>
+> - Om du vill ansluta till en skrivskyddad replik på den primära platsen använder du `ApplicationIntent=ReadOnly` och `<fog-name>.database.windows.net` .
+> - Använd och för att ansluta till en skrivskyddad replik på den sekundära platsen `ApplicationIntent=ReadOnly` `<fog-name>.secondary.database.windows.net` .
+
 ### <a name="preparing-for-performance-degradation"></a>Prestanda försämring förbereds
 
 Ett typiskt Azure-program använder flera Azure-tjänster och består av flera komponenter. Den automatiserade redundansväxlingen av gruppen redundans utlöses baserat på tillstånd för enbart Azure SQL-komponenter. Andra Azure-tjänster i den primära regionen kanske inte påverkas av avbrottet och komponenterna kan fortfarande vara tillgängliga i den regionen. När de primära databaserna växlar till DR-regionen kan fördröjningen mellan beroende komponenter öka. För att undvika påverkan på högre latens för programmets prestanda, se till att alla programmets komponenter är i DR-regionen och följ dessa [rikt linjer för nätverks säkerhet](#failover-groups-and-network-security).
@@ -267,7 +273,7 @@ När du utför OLTP-åtgärder ska du använda `<fog-name>.zone_id.database.wind
 Om du har en logiskt isolerad skrivskyddad arbets belastning som är tolerant till viss föråldrade data kan du använda den sekundära databasen i programmet. Om du vill ansluta direkt till den geo-replikerade sekundära använder du `<fog-name>.secondary.<zone_id>.database.windows.net` som server-URL och anslutningen görs direkt till den geo-replikerade sekundära.
 
 > [!NOTE]
-> På Premium-, Affärskritisk-och storskaliga tjänste nivåer kan SQL Database använda [skrivskyddade repliker](read-scale-out.md) för att köra skrivskyddade arbets belastningar med hjälp av kapaciteten hos en eller flera skrivskyddade repliker med hjälp av `ApplicationIntent=ReadOnly` parametern i anslutnings strängen. När du har konfigurerat en geo-replikerad sekundär instans kan du använda den här funktionen till att ansluta till antingen en skrivskyddad replik på den primära platsen eller på den geo-replikerade platsen.
+> I Affärskritisk nivån stöder SQL-hanterad instans användning av [skrivskyddade repliker](read-scale-out.md) för att avlasta skrivskyddade arbets belastningar med hjälp av `ApplicationIntent=ReadOnly` parametern i anslutnings strängen. När du har konfigurerat en geo-replikerad sekundär instans kan du använda den här funktionen till att ansluta till antingen en skrivskyddad replik på den primära platsen eller på den geo-replikerade platsen.
 >
 > - Om du vill ansluta till en skrivskyddad replik på den primära platsen använder du `ApplicationIntent=ReadOnly` och `<fog-name>.<zone_id>.database.windows.net` .
 > - Använd och för att ansluta till en skrivskyddad replik på den sekundära platsen `ApplicationIntent=ReadOnly` `<fog-name>.secondary.<zone_id>.database.windows.net` .

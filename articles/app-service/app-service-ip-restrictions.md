@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4b85397eeda651678fe66c6e78199dd25630dcc4
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 420dade645d1a4ee32bb888aecb76b033d5756e1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889900"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731312"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Konfigurera Azure App Service åtkomst begränsningar
 
@@ -178,7 +178,7 @@ Förutom att kunna kontrol lera åtkomsten till din app kan du begränsa åtkoms
 ### <a name="restrict-access-to-a-specific-azure-front-door-instance"></a>Begränsa åtkomsten till en speciell instans av Azures frontend-dörr
 Trafik från Azures front dörr till ditt program kommer från en välkänd uppsättning IP-intervall som definierats i taggen AzureFrontDoor. Server del. Genom att använda en begränsnings regel för service tag kan du begränsa trafiken till enbart från Azures front dörr. För att säkerställa att trafiken endast härstammar från din specifika instans, behöver du ytterligare filtrera inkommande begär Anden baserat på det unika http-huvud som Azures frontend-dörr skickar.
 
-:::image type="content" source="media/app-service-ip-restrictions/access-restrictions-frontdoor.png" alt-text="Skärm bild av sidan åtkomst begränsningar i Azure Portal, som visar hur du lägger till Azures frontend-begränsning.":::
+:::image type="content" source="media/app-service-ip-restrictions/access-restrictions-frontdoor.png?v2" alt-text="Skärm bild av sidan åtkomst begränsningar i Azure Portal, som visar hur du lägger till Azures frontend-begränsning.":::
 
 PowerShell-exempel:
 

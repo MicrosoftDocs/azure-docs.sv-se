@@ -22,6 +22,8 @@
       href: groups-concept.md
     - name: Administrativa enheter
       href: administrative-units.md
+    - name: Bästa praxis
+      href: best-practices.md
     - name: Säkerhet
       items:
         - name: Planering av rollsäkerhet
