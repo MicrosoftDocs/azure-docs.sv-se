@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5189df623325578bb3b579f5c4c3456067986ff
-ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105709488"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD PowerShell-exempel för Azure AD-programproxy
@@ -26,7 +26,7 @@ Följande tabell innehåller länkar till exempel på PowerShell-skript för Azu
 
 Mer information om de cmdlets som används i de här exemplen finns i [Application Management](/powershell/module/azuread/#application_proxy_application_management) och Application [proxy Connector Management](/powershell/module/azuread/#application_proxy_connector_management).
 
-| Länk | Description |
+| Länk | Beskrivning |
 |---|---|
 |**Application Proxy-appar**||
 | [Visa en lista med grundläggande information om alla Application Proxy-appar](scripts/powershell-get-all-app-proxy-apps-basic.md) | Visar grundläggande information (AppId, DisplayName, ObjId) om alla Application Proxy-appar i din katalog. |
