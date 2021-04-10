@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 15aab28b7dfbaf305412f1080346b54cc6827437
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 870b567d5917c405a3eef70a27b1a19c021d7a80
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103009648"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055152"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Skydda ditt HLS-innehåll med Apple FairPlay eller Microsoft PlayReady
 
@@ -33,7 +33,7 @@ Med Azure Media Services kan du dynamiskt Kryptera ditt HTTP Live Streaming-inne
 
 * **Klar text nyckel för AES-128-kuvert**
 
-    Hela segmentet krypteras med **AES-128 CBC** -läget. Dekrypteringen av data strömmen stöds av iOS och OS X Player internt. Mer information finns i [använda AES-128 dynamisk kryptering och nyckel leverans tjänst](media-services-protect-with-aes128.md).
+    Hela segmentet krypteras med **AES-128 CBC** -läget. Dekrypteringen av data strömmen stöds av iOS och OS X Player internt. Mer information finns i [använda AES-128 dynamisk kryptering och nyckel leverans tjänst](media-services-playready-license-template-overview.md).
 * **Apple-FairPlay**
 
     De enskilda video-och ljud exemplen krypteras med **AES-128 CBC** -läget. **Fairplay Streaming** (FPS) är integrerat i enhetens operativ system, med inbyggt stöd för iOS och Apple TV. Safari på OS X aktiverar FPS med hjälp av EME-gränssnittet (Encrypted Media Extensions).

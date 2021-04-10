@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
 ms.openlocfilehash: a32b06163f446fe0df7f1f1581d741d889cf8e9f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104583521"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Använda Kubernetes-nätverk med dina egna IP-adressintervall i Azure Kubernetes service (AKS)
@@ -135,7 +135,7 @@ Följande exempel på utdata visar programmets ID och lösen ord för tjänstens
   "displayName": "azure-cli-2019-01-09-22-29-24",
   "name": "http://azure-cli-2019-01-09-22-29-24",
   "password": "a1024cd7-af7b-469f-8fd7-b293ecbb174e",
-  "tenant": "72f998bf-85f1-41cf-92ab-2e7cd014db46"
+  "tenant&quot;: &quot;72f998bf-85f1-41cf-92ab-2e7cd014db46"
 }
 ```
 

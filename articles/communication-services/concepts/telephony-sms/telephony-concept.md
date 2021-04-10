@@ -8,19 +8,20 @@ ms.author: bobazile
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d5e4920dcc422e848266f35c8a59175b5149b924
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7aebb10fb3855936d930685f1a8eef2588140ad1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492752"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105930463"
 ---
 # <a name="telephony-concepts"></a>Telefoni koncept
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-phone-numbers.md)]
+
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Azure Communication Services som anropar klient bibliotek kan användas för att lägga till telefoni och PSTN till dina program. På den här sidan sammanfattas viktiga begrepp och funktioner för telefoni. Se det [anropande biblioteket](../../quickstarts/voice-video-calling/calling-client-samples.md) om du vill veta mer om olika språk och funktioner för klient bibliotek.
+Azure Communication Services som anropar SDK: er kan användas för att lägga till telefoni och PSTN till dina program. På den här sidan sammanfattas viktiga begrepp och funktioner för telefoni. Se det [anropande biblioteket](../../quickstarts/voice-video-calling/calling-client-samples.md) för att lära dig mer om de olika SDK-språken och-funktionerna.
 
 ## <a name="overview-of-telephony"></a>Översikt över telefoni
 När dina användare interagerar med ett traditionellt telefonnummer, under lättas samtal av ett PSTN-röst samtal (Public Switched Phone Network). Om du vill göra och ta emot PSTN-samtal måste du lägga till telefoni funktioner i Azure Communication Services-resursen. I detta fall använder signalering och media en kombination av IP-baserade och PSTN-baserade tekniker för att ansluta dina användare. Kommunikations tjänsterna tillhandahåller två diskreta sätt att komma åt PSTN-nätverket: Azure Cloud Call och SIP-gränssnittet.

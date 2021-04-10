@@ -10,10 +10,10 @@ ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 4471fed7b423fe05147db30afe57f6c845fe640e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101670703"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Använd utökad Apache Spark historik Server för att felsöka och diagnostisera Apache Spark program
@@ -42,11 +42,11 @@ Apache Spark historik Server är webb användar gränssnittet för slutförd och
 
     ![Öppna Spark historik Server.](./media/apache-spark-history-server/open-spark-history-server.png)
 
-### <a name="open-the-spark-history-server-web-ui-from-data-node"></a>Öppna webb gränssnittet för Spark-historiken från datanoden
+### <a name="open-the-spark-history-server-web-ui-from-data-node&quot;></a>Öppna webb gränssnittet för Spark-historiken från datanoden
 
 1. Från din Azure Synapse Studio-anteckningsbok väljer du **Spark historik Server** från cellen för att köra utdata för jobb eller från panelen status längst ned i Anteckningsbok-dokumentet. Välj **Sessionsinformation**.
 
-   ![Starta Spark-historik Server 1](./media/apache-spark-history-server/launch-history-server2.png "Starta Spark-historik Server")
+   ![Starta Spark-historik Server 1](./media/apache-spark-history-server/launch-history-server2.png &quot;Starta Spark-historik Server")
 
 2. Välj **Spark historik Server** på panelen bild ut.
 

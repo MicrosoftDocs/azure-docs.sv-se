@@ -3,22 +3,22 @@ title: Importera containeravbildningar
 description: 'Importera behållar avbildningar till ett Azure Container Registry med hjälp av Azure API: er, utan att behöva köra Docker-kommandon.'
 ms.topic: article
 ms.date: 01/15/2021
-ms.openlocfilehash: e6976f854b449f68faedd51878c2f3a7fe75cb0f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b481a2b4f0a08f0ccbfd33f7059e5d8e0c04f5f0
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99988242"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221508"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Importera behållar avbildningar till ett behållar register
 
 Du kan enkelt importera (kopiera) behållar avbildningar till ett Azure Container Registry utan att använda Docker-kommandon. Du kan till exempel importera bilder från ett utvecklings register till ett produktions register eller kopiera bas avbildningar från ett offentligt register.
 
-Azure Container Registry hanterar ett antal vanliga scenarier för att kopiera avbildningar från ett befintligt register:
+Azure Container Registry hanterar ett antal vanliga scenarier för att kopiera avbildningar och andra artefakter från ett befintligt register:
 
-* Importera från ett offentligt register
+* Importera avbildningar från ett offentligt register
 
-* Importera från ett annat Azure Container Registry, i samma eller en annan Azure-prenumeration eller klient organisation
+* Importera bilder eller OCI-artefakter, inklusive Helm 3-diagram från ett annat Azure Container Registry, i samma eller en annan Azure-prenumeration eller klient organisation
 
 * Importera från ett icke-Azure privat behållar register
 

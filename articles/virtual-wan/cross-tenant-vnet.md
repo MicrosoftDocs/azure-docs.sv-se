@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
 ms.openlocfilehash: 82a5e90221a77b891df78984c7fddfd63b6532aa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104585425"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>Anslut virtuella nätverk för flera innehavare till en virtuell WAN-hubb
@@ -98,7 +98,7 @@ I följande steg växlar du mellan kontexten för de två prenumerationerna när
    * **PowerShell:** Metadata från den nyligen utformade anslutningen visas i PowerShell-konsolen om anslutningen har skapats.
    * **Azure Portal:** Navigera till den virtuella hubben, **anslutnings > Virtual Network anslutningar**. Du kan visa pekaren för anslutningen. Om du vill se den faktiska resursen behöver du rätt behörighet.
    
-## <a name="troubleshooting"></a><a name="troubleshoot"></a>Telefonbaserad
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>Felsökning
 
 * Kontrol lera att metadata i $remote (från föregående [avsnitt](#connect)) matchar informationen från Azure Portal.
 * Du kan kontrol lera behörigheter med hjälp av IAM-inställningarna i resurs gruppen för fjärran sluten klient eller använda Azure PowerShell kommandon (Get-AzSubscription).
