@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 3286b464051b8fea88d2797d4f82b20fe432b4b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d106021d90304a06ea7c08494d626511bb903df0
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90019537"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553047"
 ---
 # <a name="upload-files-with-iot-hub"></a>Ladda upp filer med IoT Hub
 
@@ -44,7 +44,13 @@ Om du vill använda fil uppladdnings funktionen måste du först länka ett Azur
 [Ladda upp filer från enheten till molnet med IoT Hub](iot-hub-csharp-csharp-file-upload.md) instruktions guider ger en fullständig genom gång av fil överförings processen. De här instruktions guiderna visar hur du använder Azure Portal för att koppla ett lagrings konto till en IoT-hubb.
 
 > [!NOTE]
-> [Azure IoT SDK](iot-hub-devguide-sdks.md) : er hanterar automatiskt SAS-URI: n, laddar upp filen och meddelar IoT Hub om en slutförd uppladdning.
+> [Azure IoT SDK](iot-hub-devguide-sdks.md) : er hanterar automatiskt signatur-URI för delad åtkomst, laddar upp filen och meddelar IoT Hub om en slutförd uppladdning. Om en brand vägg blockerar åtkomsten till Blob Storage-slutpunkten men tillåter åtkomst till IoT Hub slut punkten, Miss lyckas fil överförings processen och följande fel meddelande visas för IoT C#-enhetens SDK:
+>
+> `---> System.Net.Http.HttpRequestException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond`
+>
+> För att fil uppladdnings funktionen ska fungera måste åtkomst till både IoT Hub-slutpunkten och Blob Storage-slutpunkten vara tillgänglig för enheten.
+> 
+
 
 ## <a name="initialize-a-file-upload"></a>Initiera en fil uppladdning
 IoT Hub har en slut punkt för enheter för att begära en SAS-URI för lagring för att ladda upp en fil. För att starta fil överförings processen skickar enheten en POST-begäran till `{iot hub}.azure-devices.net/devices/{deviceId}/files` med följande JSON-text:

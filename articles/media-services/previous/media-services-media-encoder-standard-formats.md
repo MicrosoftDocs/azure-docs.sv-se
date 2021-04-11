@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: 7aada042254a2794602002614df51646be90c7cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9055c4c1af14c9ecc8fbdeb621c30ac6ebe5afc4
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103013150"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108813"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Standardformat för Media Encoder och codec-rutiner
 
@@ -27,7 +27,7 @@ ms.locfileid: "103013150"
 
 > [!div class="op_single_selector" title1="Välj den version av Media Services som du använder:"]
 > * [Version 2](media-services-media-encoder-standard-formats.md)
-> * [Version 3](../latest/media-encoder-standard-formats.md)
+> * [Version 3](../latest/encode-media-encoder-standard-formats-reference.md)
 
 Det här dokumentet innehåller en lista över de vanligaste import-och export fil formaten som du kan använda med Media Encoder Standard.
 

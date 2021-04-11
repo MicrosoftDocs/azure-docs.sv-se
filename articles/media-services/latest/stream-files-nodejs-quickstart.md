@@ -11,12 +11,12 @@ ms.workload: media
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: a431060be380952940bdb99c65abc7a9740091de
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5bb061af37f6f6d7e6e27cf25f0faa63bca7353c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105038166"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109194"
 ---
 # <a name="how-to-encode-and-stream-video-files-with-nodejs"></a>Koda och strömma videofiler med Node.JS
 
@@ -58,7 +58,7 @@ Exemplet finns i mappen [StreamFilesSample](https://github.com/Azure-Samples/med
 
 Exemplet utför följande åtgärder:
 
-1. Skapar en **transformering** med en [Content medveten encoding-förinställning](./content-aware-encoding.md). Först kontrol leras om den angivna transformeringen finns.
+1. Skapar en **transformering** med en [Content medveten encoding-förinställning](./encode-content-aware-concept.md). Först kontrol leras om den angivna transformeringen finns.
 1. Skapar en utgående **till gång** som används av kodnings **jobbet** för att innehålla utdata
 1. Överför valfritt en lokal fil med hjälp av Storage BLOB SDK
 1. Skapar **jobb** indata som baseras på en HTTPS-URL eller en uppladdad fil

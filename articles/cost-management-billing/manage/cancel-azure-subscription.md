@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 03/31/2021
 ms.author: banders
-ms.openlocfilehash: 0d0dd5342cfc57da776e38ddef3df3b9c2199ac2
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b20134cbfb85c2dcaef1227e6390c8c6047ad5be
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735783"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109398"
 ---
 # <a name="cancel-your-azure-subscription"></a>Avbryta din Azure-prenumeration
 
@@ -77,6 +77,10 @@ Om du har en kostnadsfri utvärderingsprenumeration behöver du inte vänta 30 d
 1. Välj den prenumeration som du vill ta bort.
 1. Välj **Översikt** och välj sedan **Ta bort prenumeration**.
 
+## <a name="delete-other-subscriptions"></a>Ta bort andra prenumerationer
+
+Den enda prenumerations typ som du kan ta bort manuellt är en kostnads fri utvärderings prenumeration. Alla andra prenumerations typer, inklusive prenumerationer enligt principen betala per användning, tas bara bort via [avbrotts processen för prenumerationen](#cancel-subscription-in-the-azure-portal) . Med andra ord kan du inte ta bort en prenumeration direkt, såvida det inte är en kostnads fri utvärderings prenumeration. Men när du har avbrutit en prenumeration kan du skapa en [support förfrågan för Azure](https://go.microsoft.com/fwlink/?linkid=2083458) för att be att prenumerationen tas bort omedelbart.
+
 ## <a name="reactivate-a-subscription"></a>Återaktivera en prenumeration
 
 Om du avbryter prenumerationen med priser enligt principen betala per användning kan du [återaktivera den i Azure Portal](subscription-disabled.md).
@@ -89,7 +93,7 @@ Du kanske inte har behörigheterna som krävs för att avsluta en prenumeration.
 
 ## <a name="how-do-i-delete-my-azure-account"></a>Hur gör jag för att ta bort mitt Azure-konto?
 
-*Jag behöver ta bort mitt konto, inklusive all personlig information. Jag har redan avslutat mina aktiva prenumerationer (kostnadsfria utvärderingar). Jag har inga aktiva prenumerationer och vill ta bort mitt konto fullständigt*.
+*Jag måste ta bort mitt konto inklusive all personlig information. Jag har redan avbrutit Mina aktiva prenumerationer (kostnads fri utvärdering). Jag har inga aktiva prenumerationer och vill ta bort mitt konto helt*.
 
 * Om du har ett Azure Active Directory-konto via din organisation kan Azure AD-administratören ta bort ditt konto. Efter detta inaktiveras dina tjänster. Det innebär att dina virtuella datorer avallokeras, temporära IP-adresser frigörs och lagringen skrivskyddas. Sammanfattningsvis: när du har avslutat prenumerationen stoppas faktureringen omedelbart.
 

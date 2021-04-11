@@ -1,6 +1,6 @@
 ---
 title: Tilldela en Azure Key Vault åtkomst princip (CLI)
-description: Hur du använder Azure CLI för att tilldela en Key Vault åtkomst princip till tjänstens huvud namn eller program identitet.
+description: Hur du använder Azure CLI för att tilldela en Key Vault åtkomst princip till ett säkerhets objekt eller en program identitet.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0c7910ac149c8de43eeac92913a0d314fcc1854e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9dc03f776ac430072e456332955cbfc75d73bf2
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934585"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968857"
 ---
 # <a name="assign-a-key-vault-access-policy"></a>Tilldela en princip för Key Vault åtkomst
 
-En Key Vault åtkomst princip bestämmer om ett specifikt tjänstens huvud namn, nämligen ett program eller en användar grupp, kan utföra olika åtgärder på Key Vault [hemligheter](../secrets/index.yml), [nycklar](../keys/index.yml)och [certifikat](../certificates/index.yml). Du kan tilldela åtkomst principer med hjälp av [Azure Portal](assign-access-policy-portal.md), Azure CLI (den här artikeln) eller [Azure PowerShell](assign-access-policy-powershell.md).
+En Key Vault åtkomst princip bestämmer om ett specifikt säkerhets objekt, nämligen en användare, ett program eller en användar grupp, kan utföra olika åtgärder på Key Vault [hemligheter](../secrets/index.yml), [nycklar](../keys/index.yml)och [certifikat](../certificates/index.yml). Du kan tilldela åtkomst principer med hjälp av [Azure Portal](assign-access-policy-portal.md), Azure CLI (den här artikeln) eller [Azure PowerShell](assign-access-policy-powershell.md).
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
@@ -69,7 +69,7 @@ Använd kommandot [AZ-nyckel valv set-princip](/cli/azure/keyvault#az-keyvault-s
 az keyvault set-policy --name myKeyVault --object-id <object-id> --secret-permissions <secret-permissions> --key-permissions <key-permissions> --certificate-permissions <certificate-permissions>
 ```
 
-Ersätt `<object-id>` med objekt-ID: t för tjänstens huvud namn.
+Ersätt `<object-id>` med objekt-ID: t för ditt säkerhets objekt.
 
 Du behöver bara inkludera `--secret-permissions` , `--key-permissions` och `--certificate-permissions` när du tilldelar behörigheter till dessa specifika typer. De tillåtna värdena för `<secret-permissions>` , `<key-permissions>` och `<certificate-permissions>` anges i dokumentationen för [AZ-nyckel valv uppsättnings principer](/cli/azure/keyvault#az-keyvault-set-policy) .
 

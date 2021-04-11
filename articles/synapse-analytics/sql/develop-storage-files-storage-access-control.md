@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 254f424694df72a290a07369fe910587fadf58d4
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 726395e9f004130699dab061cfa752a2e516c834
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385555"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552962"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Kontrol lera åtkomsten till lagrings kontot för SQL-poolen utan server i Azure Synapse Analytics
 
@@ -104,6 +104,15 @@ När du använder lagring som skyddas med brand väggen kan du använda **använ
 #### <a name="user-identity"></a>Användar identitet
 
 För åtkomst till lagring som skyddas med brand väggen via användar identitet kan du använda PowerShell-modulen AZ. Storage.
+#### <a name="configuration-via-azure-portal"></a>Konfiguration via Azure Portal
+
+1. Sök efter ditt lagrings konto i Azure Portal.
+1. Gå till nätverk under Inställningar för avsnitt.
+1. I avsnittet "resurs instanser" lägger du till ett undantag för din Synapse-arbetsyta.
+1. Välj Microsoft. Synapse/arbets ytor som en resurs typ.
+1. Välj namn på arbets ytan som ett instans namn.
+1. Klicka på Spara.
+
 #### <a name="configuration-via-powershell"></a>Konfiguration via PowerShell
 
 Följ dessa steg om du vill konfigurera din brand vägg för lagrings kontot och lägga till ett undantag för Synapse-arbetsytan.

@@ -7,12 +7,12 @@ ms.author: weetok
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/26/2021
-ms.openlocfilehash: 7691c285bcc1c490878f5055468b0a57b6248679
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e5cb9090025fe541ad3f70cdac876aca0552f154
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719411"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553166"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Käll kontroll i Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -26,7 +26,7 @@ Som standard redigerar Azure Data Factory användar gränssnitts upplevelsen (UX
 För att ge en bättre redigerings upplevelse kan Azure Data Factory konfigurera en git-lagringsplats med antingen Azure-databaser eller GitHub. Git är ett versionskontrollsystem som möjliggör enklare spårning och samarbete. Den här artikeln beskriver hur du konfigurerar och arbetar i en git-lagringsplats tillsammans med att markera bästa praxis och en fel söknings guide.
 
 > [!NOTE]
-> För Azure Government Cloud är endast GitHub Enterprise tillgängligt.
+> För Azure Government Cloud är endast *GitHub Enterprise Server* tillgängligt.
 
 Om du vill veta mer om hur Azure Data Factory integreras med git kan du läsa 15-minuters självstudie video nedan:
 

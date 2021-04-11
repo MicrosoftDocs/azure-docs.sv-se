@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: aba9b71ec2fbfedecf08577c7bd2eae7a28a5588
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2b96d62fb2be27de03964212557446d2e792beb8
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644299"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106113100"
 ---
 Kom igång med Azure Communication Services med hjälp av kommunikations tjänsterna python SMS SDK för att skicka SMS-meddelanden.
 
@@ -23,11 +23,11 @@ Att slutföra den här snabb starten innebär en låg kostnad av några USD cent
 
 <!--**TODO: update all these reference links as the resources go live**
 
-[API reference documentation](../../../references/overview.md) | [Library source code](#todo-sdk-repo) | [Package (PiPy)](#todo-nuget) | [Samples](#todo-samples)--> 
+[API reference documentation](../../../references/overview.md) | [Library source code](#todo-sdk-repo) | [Package (PiPy)](#todo-nuget) | [Samples](#todo-samples)-->
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python](https://www.python.org/downloads/) 2,7 eller 3.6 +.
 - En aktiv kommunikations tjänst resurs och anslutnings sträng. [Skapa en kommunikations tjänst resurs](../../create-communication-resource.md).
 - Ett SMS-aktiverat telefonnummer. [Hämta ett telefonnummer](../get-phone-number.md).
@@ -65,7 +65,7 @@ except Exception as ex:
 När du fortfarande är i program katalogen installerar du Azure Communication Services SMS SDK för python-paketet med hjälp av `pip install` kommandot.
 
 ```console
-pip install azure-communication-sms --pre
+pip install azure-communication-sms
 ```
 
 ## <a name="object-model"></a>Objekt modell
@@ -104,7 +104,7 @@ sms_responses = sms_client.send(
 
 ```
 
-Ersätt `<from-phone-number>` med ett SMS-aktiverat telefonnummer som är associerat med kommunikations tjänsten och `<to-phone-number>` med telefonnumret som du vill skicka ett meddelande till. 
+Ersätt `<from-phone-number>` med ett SMS-aktiverat telefonnummer som är associerat med kommunikations tjänsten och `<to-phone-number>` med telefonnumret som du vill skicka ett meddelande till.
 
 > [!WARNING]
 > Observera att telefonnummer måste anges i formatet E. 164 internationellt standard. (t. ex.: + 14255550123).
@@ -125,7 +125,7 @@ sms_responses = sms_client.send(
 
 ```
 
-Du bör ersätta `<from-phone-number>` med ett SMS-aktiverat telefonnummer som är associerat med kommunikations tjänsten och `<to-phone-number-1>` `<to-phone-number-2>` med telefonnummer (er) som du vill skicka ett meddelande till. 
+Du bör ersätta `<from-phone-number>` med ett SMS-aktiverat telefonnummer som är associerat med kommunikations tjänsten och `<to-phone-number-1>` `<to-phone-number-2>` med telefonnummer (er) som du vill skicka ett meddelande till.
 
 > [!WARNING]
 > Observera att telefonnummer måste anges i formatet E. 164 internationellt standard. (t. ex.: + 14255550123).

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30348d7ca12ded2d1f4b0522a7cabeadf0553a07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37ff3300935e90304754b5f2b375df0adecdaefa
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94953363"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256250"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Översikt över princip nycklar i Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C) lagrar hemligheter och certifikat i fo
  I den här artikeln beskrivs vad du behöver veta om de princip nycklar som används av Azure AD B2C.
 
 > [!NOTE]
-> För närvarande är konfiguration av princip nycklar begränsad till [anpassade principer](./custom-policy-get-started.md) .
+> För närvarande är konfiguration av princip nycklar begränsad till [anpassade principer](./user-flow-overview.md) .
 
 Du kan konfigurera hemligheter och certifikat för att upprätta förtroende mellan tjänster i Azure Portal under menyn **princip nycklar** . Nycklar kan vara symmetriska eller asymmetriska. *Symmetrisk* kryptering eller kryptering med privat nyckel är den plats där en delad hemlighet används för att både kryptera och dekryptera data. *Asymmetrisk* kryptering eller kryptering med offentliga nycklar är ett kryptografiskt system som använder par nycklar, som består av offentliga nycklar som delas med det förlitande part programmet och privata nycklar som är kända för Azure AD B2C.
 

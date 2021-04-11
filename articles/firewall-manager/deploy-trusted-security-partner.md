@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 03/31/2021
 ms.author: victorh
-ms.openlocfilehash: 906687e08c9f31890a9ecec9154079e704512832
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8e10eef89df12807cabd96d64d9c7d659f91d6c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96485730"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109517"
 ---
 # <a name="deploy-a-security-partner-provider"></a>Distribuera en säkerhetspartnerprovider
 
@@ -90,28 +90,25 @@ Om du vill konfigurera tunnlar till den virtuella hubbens VPN Gateway behöver t
    
 2. Du kan titta på statusen för att skapa tunnel på Azures virtuella WAN-portal i Azure. När tunnlarna visar **anslutna** i både Azure och partner portalen fortsätter du med nästa steg för att ställa in vägar för att välja vilka grenar och virtuella nätverk som ska skicka Internet trafik till partnern.
 
-## <a name="configure-route-settings"></a>Konfigurera flödes inställningar
+## <a name="configure-security-with-firewall-manager"></a>Konfigurera säkerhet med brand Väggs hanteraren
 
 1. Bläddra till Azure Firewall Manager-> skyddade hubbar. 
 2. Välj en hubb. Nu bör Hub- **statusen visas i** stället för en **väntande säkerhets anslutning**.
 
    Se till att leverantören av tredje part kan ansluta till hubben. Tunnlarna på VPN-gatewayen ska vara i **anslutet** tillstånd. Det här tillståndet är en mer reflekterande av anslutnings hälsan mellan hubben och partnern från tredje part, jämfört med tidigare status.
-3. Välj hubben och navigera till **flödes inställningar**.
+3. Välj hubben och navigera till **säkerhetskonfigurationer**.
 
    När du distribuerar en tredjeparts-Provider i hubben konverteras hubben till en *säker virtuell hubb*. Detta säkerställer att leverantören av tredje part annonserar en router med 0.0.0.0/0 (standard) till hubben. VNet-anslutningar och platser som är anslutna till navet får dock inte den här vägen om du inte väljer vilka anslutningar som ska hämta den här standard vägen.
-4. Under **Internet trafik** väljer du **VNet-till-Internet** eller **Branch-till-Internet** eller båda så att vägar konfigureras via den tredje parten.
+4. Konfigurera Virtual WAN-säkerhet genom att ställa in **Internet trafik** via Azure-brandväggen och **privat trafik** via en betrodd säkerhets partner. Detta säkrar automatiskt enskilda anslutningar i det virtuella WAN-nätverket.
 
-   Detta anger bara vilken typ av trafik som ska dirigeras till hubben, men den påverkar inte vägarna på virtuella nätverk eller grenar än. Dessa vägar sprids inte till alla virtuella nätverk/grenar som är kopplade till hubben som standard.
-5. Du måste välja **säkra anslutningar** och välja de anslutningar som vägarna ska ställas in på. Detta anger vilka virtuella nätverk/grenar som kan börja skicka Internet trafik till tredje parts-providern.
-6. Från **väg inställningar** väljer du **säkra anslutningar** under Internet trafik och väljer sedan det VNet eller de grenar (*platser* i virtuella WAN-nätverk) som ska skyddas. Välj **säker Internet trafik**.
-   ![Säker Internet trafik](media/deploy-trusted-security-partner/secure-internet-traffic.png)
-7. Gå tillbaka till sidan hubbar. Hubbens **providerns säkerhets partner** status bör nu  **skyddas**.
+   :::image type="content" source="media/deploy-trusted-security-partner/security-configuration.png" alt-text="Säkerhetskonfiguration":::
+5. Om din organisation använder offentliga IP-intervall i virtuella nätverk och avdelnings kontor måste du dessutom ange de IP-prefix som uttryckligen använder sig av **prefix för privata trafik**. Prefixen för offentliga IP-adresser kan anges individuellt eller som mängder.
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>Internet trafik för gren eller VNet via tjänst från tredje part
 
 Sedan kan du kontrol lera om virtuella VNet-datorer eller filial platsen kan komma åt Internet och kontrol lera att trafiken flödar till tjänsten från tredje part.
 
-När du har slutfört stegen för flödes inställningen skickas virtuella nätverk för virtuella datorer och avdelnings platserna en 0/0 till en tjänst väg från tredje part. Det går inte att RDP eller SSH till dessa virtuella datorer. Om du vill logga in kan du distribuera tjänsten [Azure skydds](../bastion/bastion-overview.md) i ett peer-kopplat VNet.
+När du har slutfört stegen för flödes inställningen skickas virtuella nätverk för virtuella datorer och avdelnings platserna en 0/0 till tjänst vägen från tredje part. Det går inte att RDP eller SSH till dessa virtuella datorer. Om du vill logga in kan du distribuera tjänsten [Azure skydds](../bastion/bastion-overview.md) i ett peer-kopplat VNet.
 
 ## <a name="next-steps"></a>Nästa steg
 

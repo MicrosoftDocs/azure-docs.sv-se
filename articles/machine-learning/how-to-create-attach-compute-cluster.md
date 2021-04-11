@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: c11176f0c7760e76b755406bda96b72b302f8857
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1e3549a6f5f4f9d7f6a6da574378c90c20e42dcf
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506947"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169580"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Skapa ett Azure Machine Learning beräknings kluster
 
@@ -44,11 +44,9 @@ Compute-kluster kan köra jobb säkert i en [virtuell nätverks miljö](how-to-s
 
 ## <a name="limitations"></a>Begränsningar
 
-* **Skapa inte flera, samtidiga bilagor till samma beräkning** från din arbets yta. Du kan till exempel koppla ett beräknings kluster till en arbets yta med två olika namn. Varje ny bilaga kommer att dela upp de tidigare befintliga bifogade filerna.
-
-    Om du vill koppla ett beräknings mål på nytt, till exempel för att ändra kluster konfigurations inställningar, måste du först ta bort den befintliga bilagan.
-
 * Några av de scenarier som anges i det här dokumentet är markerade som för __hands version__. För hands versions funktionerna tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+* Vi stöder för närvarande endast att skapa (och inte uppdatera) kluster med ARM-mallar [ https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/workspaces/computes?tabs=json ]. Vid uppdatering av beräkning rekommenderar vi att du använder SDK, CLI eller UX för tillfället.
 
 * Azure Machine Learning Compute har standard gränser, till exempel antalet kärnor som kan allokeras. Mer information finns i [Hantera och begära kvoter för Azure-resurser](how-to-manage-quotas.md).
 

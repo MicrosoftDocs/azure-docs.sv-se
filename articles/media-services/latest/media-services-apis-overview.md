@@ -128,7 +128,7 @@ AMSE är ett projekt med öppen källkod och får support från communityn (prob
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filtrering, sortering, sid indelning för Media Services entiteter
 
-Se [filtrering, sortering, sid indelning för Azure Media Services entiteter](entities-overview.md).
+Se [filtrering, sortering, sid indelning för Azure Media Services entiteter](filter-order-page-entitites-how-to.md).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Ställ frågor, ge feedback, hämta uppdateringar
 

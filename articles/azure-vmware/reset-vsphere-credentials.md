@@ -2,17 +2,19 @@
 title: Återställ vSphere-autentiseringsuppgifter för Azure VMware-lösning
 description: Lär dig hur du återställer vSphere-autentiseringsuppgifter för ditt privata moln i Azure VMware-lösningen och se till att HCX-anslutningen har de senaste vSphere-autentiseringsuppgifterna.
 ms.topic: how-to
-ms.date: 03/16/2021
-ms.openlocfilehash: 1376b6322250da506d32b8ced0a62ddbf60ba9f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/31/2021
+ms.openlocfilehash: 793b79e42a0adbca54804d1b66102736aff22d7a
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104587635"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109109"
 ---
 # <a name="reset-vsphere-credentials-for-azure-vmware-solution"></a>Återställ vSphere-autentiseringsuppgifter för Azure VMware-lösning
 
 I den här artikeln går vi igenom stegen för att återställa vCenter Server-och NSX-autentiseringsuppgifter för ditt privata moln i Azure VMware-lösningen. Detta gör att du kan se till att HCX-anslutningen har de senaste vCenter Server autentiseringsuppgifterna.
+
+Förutom den här instruktionen kan du också visa videon för att [återställa vCenter-CloudAdmin & NSX-T admin-lösenord](https://youtu.be/cK1qY3knj88).
 
 ## <a name="reset-your-azure-vmware-solution-credentials"></a>Återställa dina autentiseringsuppgifter för Azure VMware-lösningen
 

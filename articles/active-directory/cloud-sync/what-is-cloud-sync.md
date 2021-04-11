@@ -11,12 +11,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3b880d70baf7c160f8235bd01a5000f83825c36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc81e0b5a2b7e9e2e5ab12094950f71ad51c6871
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98614864"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107225979"
 ---
 # <a name="what-is-azure-ad-connect-cloud-sync"></a>Vad är Azure AD Connect Cloud Sync?
 Azure AD Connect Cloud Sync är ett nytt erbjudande från Microsoft som utformats för att möta och uppnå dina hybrid identitets mål för synkronisering av användare, grupper och kontakter till Azure AD.  Det åstadkommer detta genom att använda Azure AD Cloud Provisioning-agenten i stället för Azure AD Connect-programmet.  Det kan dock användas tillsammans med Azure AD Connect-synkronisering och ger följande fördelar:
@@ -63,7 +63,7 @@ Följande tabell innehåller en jämförelse mellan Azure AD Connect och Azure A
 | Stöd för Federation |●|●|
 | Smidig enkel inloggning|● |●|
 | Stöder installation på en domänkontrollant |● |● |
-| Stöd för Windows Server 2012 och Windows Server 2012 R2 |● |● |
+| Stöd för Windows Server 2016|● |● |
 | Filtrera på domäner/organisationsenheter/grupper |● |● |
 | Filtrera utifrån objekts attributvärden |● | |
 | Tillåt att en minimal uppsättning attribut synkroniseras (MinSync) |● |● |

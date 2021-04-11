@@ -7,12 +7,12 @@ ms.author: v-mibufo
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: 3d1a1135db0421d89d4c6c9f278c86e02cb5cb32
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2ed889bea715ff5a26bf8e918789429e57fa31b2
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558966"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109670"
 ---
 # <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>Felsöka LocationNotFoundForRoleSize när du distribuerar en moln tjänst (klassisk) till Azure
 
@@ -47,7 +47,8 @@ I det här scenariot bör du välja en annan region eller SKU för att distribue
 
 ### <a name="list-skus-in-region-using-azure-cli"></a>Lista SKU: er i region med Azure CLI
 
-Du kan använda kommandot [AZ VM List-SKU: er](/cli/azure/vm.html#az_vm_list_skus) .
+Du kan använda [AZ VM List-SKU: er] (/CLI/Azure/VM? View = Azure-CLI-senaste
+#<a name="az_vm_list_skus-command"></a>az_vm_list_skus) kommando.
 
 - Använd `--location` parametern för att filtrera utdata till den plats som du använder.
 - Använd `--size` parametern för att söka efter ett namn för en partiell storlek.

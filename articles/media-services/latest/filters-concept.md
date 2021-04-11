@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: bb5561ced93c3f5a899c6e48fdab0f14e52914bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ba9a4d5ac427533c2ce005a74fe43b0ce80de79
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89291559"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109449"
 ---
 # <a name="filters"></a>Filter
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-När du levererar ditt innehåll till kunder (direkt uppspelnings händelser eller video på begäran) kan din klient behöva större flexibilitet än vad som beskrivs i standard till gångens manifest fil. Azure Media Services erbjuder [dynamiska manifest](filters-dynamic-manifest-overview.md) baserat på fördefinierade filter. 
+När du levererar ditt innehåll till kunder (direkt uppspelnings händelser eller video på begäran) kan din klient behöva större flexibilitet än vad som beskrivs i standard till gångens manifest fil. Azure Media Services erbjuder [dynamiska manifest](filters-dynamic-manifest-concept.md) baserat på fördefinierade filter. 
 
 Filter är regler på Server sidan som gör det möjligt för dina kunder att göra saker som: 
 
@@ -141,12 +141,12 @@ I följande exempel definieras ett filter för direkt uppspelning:
 
 ## <a name="associating-filters-with-streaming-locator"></a>Associera filter med streaming Locator
 
-Du kan ange en lista över [till gångs-eller konto filter](filters-concept.md) på din [Utströmnings positionerare](/rest/api/media/streaminglocators/create#request-body). Den [dynamiska Paketeraren](dynamic-packaging-overview.md) använder den här listan med filter tillsammans med de som klienten anger i URL: en. Den här kombinationen genererar ett [dynamiskt manifest](filters-dynamic-manifest-overview.md), som baseras på filter i URL + filter som du anger på den strömmande lokaliseraren. 
+Du kan ange en lista över [till gångs-eller konto filter](filters-concept.md) på din [Utströmnings positionerare](/rest/api/media/streaminglocators/create#request-body). Den [dynamiska Paketeraren](encode-dynamic-packaging-concept.md) använder den här listan med filter tillsammans med de som klienten anger i URL: en. Den här kombinationen genererar ett [dynamiskt manifest](filters-dynamic-manifest-concept.md), som baseras på filter i URL + filter som du anger på den strömmande lokaliseraren. 
 
 Se följande exempel:
 
-* [Associera filter med strömmande lokalisering – .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
-* [Associera filter med strömmande lokalisering – CLI](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
+* [Associera filter med strömmande lokalisering – .NET](filters-dynamic-manifest-dotnet-how-to.md#associate-filters-with-streaming-locator)
+* [Associera filter med strömmande lokalisering – CLI](filters-dynamic-manifest-cli-how-to.md#associate-filters-with-streaming-locator)
 
 ## <a name="updating-filters"></a>Uppdaterar filter
  
@@ -161,5 +161,5 @@ Om filter definitionen behöver ändras bör du skapa ett nytt filter och lägga
 Följande artiklar visar hur du skapar filter program mässigt.  
 
 - [Skapa filter med REST API: er](filters-dynamic-manifest-rest-howto.md)
-- [Skapa filter med .NET](filters-dynamic-manifest-dotnet-howto.md)
-- [Skapa filter med CLI](filters-dynamic-manifest-cli-howto.md)
+- [Skapa filter med .NET](filters-dynamic-manifest-dotnet-how-to.md)
+- [Skapa filter med CLI](filters-dynamic-manifest-cli-how-to.md)

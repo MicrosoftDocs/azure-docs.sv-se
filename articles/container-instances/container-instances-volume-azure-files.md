@@ -2,23 +2,27 @@
 title: Montera Azure Files volym till behållar grupp
 description: Lär dig hur du monterar en Azure Files volym för att spara tillstånd med Azure Container Instances
 ms.topic: article
-ms.date: 07/02/2020
+ms.date: 03/24/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d52ad8ad02735c98b29a83d8ca69cdea8c6af7d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09a4d9922a4f9ba4296fc194d72c621fecb8342d
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97954982"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968908"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Montera en Azure-filresurs i Azure Container Instances
 
 Som standard är Azure Container Instances tillståndslösa. Om behållaren startas om, kraschar eller stoppas försvinner hela sitt tillstånd. Om du vill bevara tillståndet längre än containerns livslängd måste du montera en volym från en extern lagring. Som du ser i den här artikeln kan Azure Container Instances montera en Azure-filresurs som skapats med [Azure Files](../storage/files/storage-files-introduction.md). Azure Files erbjuder fullständigt hanterade fil resurser som finns i Azure Storage som är tillgängliga via SMB-protokollet (Server Message Block) som är bransch standard. Med hjälp av en Azure-filresurs med Azure Container Instances får du fildelnings funktioner som liknar att använda en Azure-filresurs med Azure Virtual Machines.
 
+## <a name="limitations"></a>Begränsningar
+
+* Du kan bara montera Azure Files resurser till Linux-behållare. Läs mer om skillnaderna i funktions stöd för Linux-och Windows-behållarobjekt i [översikten](container-instances-overview.md#linux-and-windows-containers).
+* För volym montering av Azure-filresurs krävs att Linux-behållaren körs som *rot* .
+* Volym monteringar för Azure-filresurs är begränsade till CIFS-stöd.
+
 > [!NOTE]
-> Montering av en Azure Files-resurs är för närvarande begränsad till Linux-behållare. Hitta aktuella plattforms skillnader i [översikten](container-instances-overview.md#linux-and-windows-containers).
->
-> Montering av en Azure Files resurs till en behållar instans liknar en Docker [BIND-montering](https://docs.docker.com/storage/bind-mounts/). Tänk på att om du monterar en resurs i en behållar katalog där det finns filer eller kataloger döljs dessa filer eller kataloger av monteringen och är inte tillgängliga när behållaren körs.
+> Montering av en Azure Files resurs till en behållar instans liknar en Docker [BIND-montering](https://docs.docker.com/storage/bind-mounts/). Om du monterar en resurs i en behållar katalog där det finns filer eller kataloger, skymmer monteringen filer eller kataloger, vilket gör dem otillgängliga när behållaren körs.
 >
 
 > [!IMPORTANT]

@@ -4,20 +4,19 @@ description: Den här snabb starten visar hur du använder Azures standard-/prem
 services: frontdoor
 author: duongau
 manager: KumudD
-Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2021
+ms.date: 04/16/2021
 ms.author: duau
-ms.openlocfilehash: 175fb82a5fdf300915f89c3d8cdc238638a742e1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8c6fe355621b4f096814268dea8fd2fc8e1166a7
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565137"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552877"
 ---
 # <a name="quickstart-create-an-azure-front-door-standardpremium-profile---azure-portal"></a>Snabb start: skapa en Azure frontend-dörr standard/Premium-profil – Azure Portal
 
@@ -148,7 +147,7 @@ Konfigurera Azure front dörr standard/Premium (för hands version) för att dir
     
     :::image type="content" source="../media/create-front-door-portal/front-door-custom-create-add-endpoint.png" alt-text="Skärm bild av Lägg till en slut punkt.":::
 
-1. Lägg sedan till en ursprungs grupp som innehåller dina två webbappar. Välj **+ Lägg** till   för att öppna sidan **Lägg till en start grupp** . Som namn anger du *myOrignGroup* och väljer sedan **+ Lägg till ett ursprung**.
+1. Lägg sedan till en ursprungs grupp som innehåller dina två webbappar. Välj **+ Lägg** till   för att öppna sidan **Lägg till en start grupp** . Som namn anger du *myOriginGroup* och väljer sedan **+ Lägg till ett ursprung**.
  
      :::image type="content" source="../media/create-front-door-portal/front-door-custom-create-add-origin-group.png" alt-text="Skärm bild av Lägg till en ursprungs grupp.":::
 

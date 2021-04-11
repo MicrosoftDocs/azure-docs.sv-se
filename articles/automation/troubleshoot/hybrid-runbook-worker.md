@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 15a18cbfc3a80bbfea0b92e5b616104dc0f593af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 565d801fb569f818613fd31b7492c0847eef9a7a
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100580996"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169359"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Felsöka problem med Hybrid Runbook Worker
 
@@ -128,7 +128,7 @@ Följande problem är möjliga orsaker:
 #### <a name="resolution"></a>Lösning
 
 ##### <a name="mistyped-workspace-id-or-key"></a>Felangett arbetsyte-ID eller nyckel
-För att kontrol lera att agentens arbetsyte-ID eller arbets ytans nyckel skrevs in, se [lägga till eller ta bort en arbets yta – Windows-agent](../../azure-monitor/agents/agent-manage.md#windows-agent) för Windows-agenten eller [lägga till eller ta bort en arbets yta – Linux-Agent](../../azure-monitor/agents/agent-manage.md#linux-agent) för Linux-agenten Se till att välja hela strängen från Azure Portal och kopiera och klistra in den noggrant.
+För att kontrol lera att agentens arbetsyte-ID eller arbets ytans nyckel skrevs in, se [lägga till eller ta bort en arbets yta-Windows-agent](../../azure-monitor/platform/agent-manage.md#windows-agent) för Windows-agenten eller [lägga till eller ta bort en arbets yta – Linux-Agent](../../azure-monitor/platform/agent-manage.md#linux-agent) för Linux-agenten Se till att välja hela strängen från Azure Portal och kopiera och klistra in den noggrant.
 
 ##### <a name="configuration-not-downloaded"></a>Konfigurationen laddas inte ned
 

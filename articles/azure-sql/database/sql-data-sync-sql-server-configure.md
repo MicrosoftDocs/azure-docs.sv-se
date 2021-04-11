@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: d6b5bab1c1b6c8db4821fdf84728eb66eb55b899
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b7ead2e54889327bfbea188ad464012c3861556
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98882237"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968619"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Självstudie: Konfigurera SQL Data Sync mellan databaser i Azure SQL Database och SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,7 +64,7 @@ PowerShell-exempel på hur du konfigurerar SQL Data Sync finns i [så här synkr
    | **Använd privat länk** | Välj en tjänst hanterad privat slut punkt för att upprätta en säker anslutning mellan synkroniseringstjänsten och Hub-databasen. |
 
    > [!NOTE]
-   > Microsoft rekommenderar att du skapar en ny, tom databas för användning som **databasen för synkronisering av metadata**. Datasynkronisering skapar tabeller i den här databasen och kör en frekvent arbets belastning. Den här databasen delas som **databasen för synkronisering av metadata** för alla Sync-grupper i en vald region och prenumeration. Du kan inte ändra databasen eller dess namn utan att ta bort alla synkroniserade grupper och synkronisera agenter i regionen.
+   > Microsoft rekommenderar att du skapar en ny, tom databas för användning som **databasen för synkronisering av metadata**. Datasynkronisering skapar tabeller i den här databasen och kör en frekvent arbets belastning. Den här databasen delas som **databasen för synkronisering av metadata** för alla Sync-grupper i en vald region och prenumeration. Du kan inte ändra databasen eller dess namn utan att ta bort alla synkroniserade grupper och synkronisera agenter i regionen. Dessutom går det inte att använda en databas med elastiska jobb som SQL Data Sync metadata-databas och vice versa.  
 
    Välj **OK** och vänta tills Sync-gruppen har skapats och distribuerats.
    

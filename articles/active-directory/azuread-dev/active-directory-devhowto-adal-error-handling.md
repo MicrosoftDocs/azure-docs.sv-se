@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: ad5595f7eebc8feca2f00a6f95e10c547ded9529
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da47893839322f06cebfbee40902414040bb87d8
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85383742"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075210"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Fel hantering av metod tips för ADAL-klienter (Azure Active Directory Authentication Library)
 
@@ -197,7 +197,7 @@ I händelse av fel kan ett program Visa ett användar gränssnitt som gör att s
 
 Fel hantering i interna program kan definieras i två fall:
 
-|  |  |
+| Ärende | Beskrivning  |
 |------|-------------|
 | **Fall 1**:<br>Fel som inte går att försöka igen (de flesta fall) | 1. Försök inte att köra omedelbara försök igen. Presentera användar gränssnittet för slutanvändaren baserat på det specifika fel som anropar ett återförsök (till exempel "försök att logga in igen" eller "Ladda ned Azure AD Broker-program"). |
 | **Fall 2**:<br>Återförsöks fel | 1. utför ett enda försök eftersom slutanvändaren kan ha angett ett tillstånd som resulterar i ett lyckat resultat.<br><br>2. om det inte går att försöka igen visar du slutanvändarens användar gränssnitt baserat på det särskilda felet som anropar ett återförsök ("försök att logga in igen", "Ladda ned Azure AD Broker-app" osv.). |
@@ -371,7 +371,7 @@ Om du skapar ett program med en enda sida med hjälp av adal.js med AcquireToken
 
 En misslyckad AcquireToken har följande fall:
 
-|  |  |
+| Ärende | Beskrivning  |
 |------|-------------|
 | **Fall 1**:<br>Går att matcha med en interaktiv begäran | 1. Om inloggningen () Miss lyckas ska du inte utföra omedelbara försök. Försök igen efter att användaren har angett ett nytt försök.|
 | **Fall 2**:<br>Går inte att matcha med en interaktiv begäran. Felet kan ha ett nytt försök. | 1. utför ett enda försök eftersom slutanvändaren är större och har angett ett tillstånd som leder till att det lyckas.<br><br>2. om det inte går att försöka igen visas slutanvändaren med en åtgärd baserat på det särskilda fel meddelandet som kan anropa ett nytt försök ("försök att logga in igen"). |

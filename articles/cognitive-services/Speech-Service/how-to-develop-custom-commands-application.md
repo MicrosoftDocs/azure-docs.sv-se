@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
-ms.openlocfilehash: 1a002b6efbe2603ae254c19f9e3cc7377198cea2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddf36530e52703ab1033b8e2e787b42b6dc60332
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97935826"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553285"
 ---
 # <a name="develop-custom-commands-applications"></a>Utveckla anpassade kommandon program
 
@@ -212,7 +212,7 @@ Börja med att redigera det befintliga `TurnOn` kommandot för att aktivera och 
     | **Är global**          | Omarkerade             |
     | **Obligatoriskt**           | Markerat               |
     | **Svar för obligatorisk parameter**     | **Enkelt redigerings program** > `Which device do you want to control?`    | 
-    | **Typ**               | **Sträng**                |          |
+    | **Typ**               | **Sträng**                |     
     | **Konfiguration**      | **Acceptera fördefinierade indatavärden från en intern katalog** | 
     | **Fördefinierade indatavärden** | `tv`, `fan`               |
     | **Alias** ( `tv` )      | `television`, `telly`     |
@@ -633,7 +633,7 @@ Ett annat sätt att anpassa anpassade kommando svar är att välja en röst för
 > ![Skärm bild som visar exempel meningar och parametrar.](media/custom-commands/select-custom-voice.png)
 
 > [!NOTE]
-> För offentliga röster är neurala-typer bara tillgängliga för vissa regioner. Mer information finns i [regioner som stöds av Speech service](./regions.md#standard-and-neural-voices).
+> För offentliga röster är neurala-typer bara tillgängliga för vissa regioner. Mer information finns i [regioner som stöds av Speech service](./regions.md#neural-and-standard-voices).
 >
 > Du kan skapa anpassade röster på sidan **anpassat röst** projekt. Mer information finns i [Kom igång med anpassad röst](./how-to-custom-voice.md).
 

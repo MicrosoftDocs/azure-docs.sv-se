@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: dbeb3cd4fccf80f434e6c7ac08c658632f64b135
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9cd193eb6ff2858440f1cd9a62bdd53d58d6047d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102096861"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256301"
 ---
 # <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>Självstudie: Konfigurera Zscaler privat åtkomst med Azure Active Directory B2C
 
@@ -96,7 +96,7 @@ När du har konfigurerat Azure AD B2C återupptas resten av IdP-konfigurationen.
 >[!Note]
 >Det här steget krävs bara om du inte redan har konfigurerat anpassade principer. Om du redan har en eller flera anpassade principer kan du hoppa över det här steget.
 
-Information om hur du konfigurerar anpassade principer på Azure AD B2C klient organisationen finns i [komma igång med anpassade principer i Azure Active Directory B2C](./custom-policy-get-started.md).
+Information om hur du konfigurerar anpassade principer på Azure AD B2C klient organisationen finns i [komma igång med anpassade principer i Azure Active Directory B2C](./tutorial-create-user-flows.md?pivots=b2c-custom-policy).
 
 ### <a name="step-3-register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>Steg 3: registrera ZPA som ett SAML-program i Azure AD B2C
 
@@ -149,7 +149,7 @@ Gå till en användar Portal för ZPA eller ett program för webb läsar åtkoms
 
 Mer information finns i följande artiklar:
 
-- [Kom igång med anpassade principer i Azure AD B2C](./custom-policy-get-started.md)
+- [Kom igång med anpassade principer i Azure AD B2C](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 - [Registrera ett SAML-program i Azure AD B2C](./saml-service-provider.md)
 - [Steg-för-steg-konfigurations guide för ZPA](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)
 - [Konfigurera en IdP för enkel inloggning](https://help.zscaler.com/zpa/configuring-idp-single-sign)
