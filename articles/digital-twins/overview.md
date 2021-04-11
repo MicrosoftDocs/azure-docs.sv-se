@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: c0bc245a4be1ab7c326fa27cc1422878aca6331d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 315519472baa672e802855b5ab21b8bae8f51935
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071689"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109857"
 ---
 # <a name="what-is-azure-digital-twins"></a>Vad är Azure Digital Twins?
 
@@ -94,7 +94,11 @@ Följande diagram visar var Azure Digitals dubbla är i sammanhanget för en st�
 
 ## <a name="service-limits"></a>Tjänstbegränsningar
 
-En lista över gränserna för Azure Digitals dubbla gränser finns i [*gränser för Azure Digitals dubbla tjänster*](reference-service-limits.md).
+Du kan läsa om **tjänst begränsningarna** för Azure Digitals dubbla finns här: [Azure Digitals dubbla tjänst gränser](reference-service-limits.md). Detta kan vara användbart när du arbetar med tjänsten för att förstå tjänstens funktionella och hastighets begränsningar, samt vilka gränser som kan justeras vid behov.
+
+## <a name="terminology"></a>Terminologi
+
+Du kan visa en lista över **vanliga IoT-termer** och deras användning i Azure IoT-tjänster, inklusive Azure Digitals, här: [Azure IoT-ordlista](../iot-fundamentals/iot-glossary.md?toc=/azure/digital-twins/toc.json&bc=/azure/digital-twins/breadcrumb/toc.json). Detta kan vara en användbar referens medan du kommer igång med Azure Digitals dubbla och skapar en IoT-lösning.
 
 ## <a name="next-steps"></a>Nästa steg
 

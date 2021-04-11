@@ -1,19 +1,16 @@
 ---
 title: Planera kapacitet för haveri beredskap för Hyper-V med Azure Site Recovery
 description: Använd den här artikeln för att uppskatta kapaciteten när du konfigurerar haveri beredskap med Azure Site Recoverys tjänsten.
-author: rayne-wiselman
-manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.author: raynew
-ms.openlocfilehash: aa96845a2bd2f4659da1155c4f75281268dce76d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0bdc66b46e83a1592d1ea74c1080d6f8080f4635
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737723"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580656"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Planera kapacitet för haveriberedskap för virtuella Hyper-V-datorer 
 

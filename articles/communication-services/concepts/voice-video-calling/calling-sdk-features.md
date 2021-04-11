@@ -9,20 +9,29 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8b9de4ffe3011bbb8345a6a8c4a92ef5bd1d4559
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ac9cef77569dffe461f7711195c5638e831aa218
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728427"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110112"
 ---
 # <a name="calling-sdk-overview"></a>Översikt över samtals-SDK
 
-Det finns två olika familjer av att anropa SDK: er för *klienter* och *tjänster.* För närvarande är tillgängliga SDK: er avsedda för slut användar upplevelser: webbplatser och inbyggda appar.
+Med hjälp av den anropande SDK: n kan slutanvändare köra upplevelsen av röst-och video kommunikation. Den här sidan innehåller detaljerade beskrivningar av hur du anropar funktioner, inklusive information om plattform och webb läsar stöd. Kom igång direkt genom att titta på [anropa snabb starter](../../quickstarts/voice-video-calling/getting-started-with-calling.md) eller [anropa ett hjälte exempel](../../samples/calling-hero-sample.md). 
 
-Tjänst-SDK: er är inte tillgängliga än och ger till gång till data planerna rå röst och video som passar för integrering med robotar och andra tjänster.
+När du har börjat utveckla tittar du på [sidan kända problem](../known-issues.md) för att hitta de buggar vi arbetar med.
 
-## <a name="calling-sdk-capabilities"></a>Anropa SDK-funktioner
+Viktiga funktioner i samtals-SDK:
+
+- **Addressing** – Azure Communication Services tillhandahåller allmänna [identiteter](../identity-model.md) som används för att adressera kommunikations slut punkter. Klienterna använder dessa identiteter för att autentisera till tjänsten och kommunicera med varandra. Dessa identiteter används för att anropa API: er som ger klienter insyn i som är anslutna till ett samtal (listan).
+- **Kryptering** – den anropande SDK: n krypterar trafiken och förhindrar manipulering av kabeln. 
+- **Enhets hantering och media** – det anropande SDK: n tillhandahåller funktioner för bindning till ljud-och video enheter, kodar innehåll för effektiv överföring via dataplanen och återger innehåll för att få ut enheter och vyer som du anger. API: er tillhandahålls också för skärm-och program delning.
+- **PSTN** – samtals-SDK kan ta emot och initiera röst samtal med det traditionella offentliga telefoni systemet, [med hjälp av telefonnummer som du hämtar i Azure Portal](../../quickstarts/telephony-sms/get-phone-number.md) eller program mässigt.
+- **Team möten** – samtals-SDK kan [delta i team möten](../../quickstarts/voice-video-calling/get-started-teams-interop.md) och interagera med team röst-och video dataplanen. 
+- **Meddelanden** – API: t för anrop innehåller API: er som gör det möjligt för klienter att meddelas om inkommande samtal. I situationer där appen inte körs i förgrunden är mönster tillgängliga för att [utlösa popup-meddelanden](../notifications.md) ("popups") för att informera slutanvändarna om ett inkommande samtal. 
+
+## <a name="detailed-capabilities"></a>Detaljerade funktioner 
 
 I följande lista presenteras de funktioner som för närvarande är tillgängliga i Azure Communication Services som anropar SDK: er.
 
@@ -33,30 +42,30 @@ I följande lista presenteras de funktioner som för närvarande är tillgängli
 |                   | Marknadsför ett ett-till-ett-samtal med två användare i ett grupp samtal med fler än två användare                                 | ✔️   | ✔️            | ✔️
 |                   | Delta i ett grupp anrop efter att det har startat                                                                              | ✔️   | ✔️            | ✔️
 |                   | Bjud in en annan VoIP-deltagare för att ansluta till ett pågående grupp anrop                                                       | ✔️   | ✔️            | ✔️
-|  Kontroll av Mid-anrop | Aktivera/inaktivera din video                                                                                              | ✔️   | ✔️            | ✔️ 
-|                   | Tyst/avljud av MIC                                                                                                     | ✔️   | ✔️            | ✔️         
-|                   | Växla mellan kameror                                                                                              | ✔️   | ✔️            | ✔️           
-|                   | Lokalt undantag/ej Behåll                                                                                                  | ✔️   | ✔️            | ✔️           
-|                   | Aktiv talare                                                                                                      | ✔️   | ✔️            | ✔️           
-|                   | Välj högtalare för samtal                                                                                            | ✔️   | ✔️            | ✔️           
-|                   | Välj mikrofon för samtal                                                                                         | ✔️   | ✔️            | ✔️           
-|                   | Visa status för en deltagare<br/>*Inaktiv, tidig media, anslutning, ansluten, stoppad, i lobbyn, frånkopplat*         | ✔️   | ✔️            | ✔️           
-|                   | Visa status för ett samtal<br/>*Tidig media, inkommande, anslutning, ringa, ansluten, stoppa, koppla från, frånkopplad* | ✔️   | ✔️            | ✔️           
-|                   | Visa om en deltagare är avstängd                                                                                      | ✔️   | ✔️            | ✔️           
-|                   | Visa orsaken till att en deltagare lämnat ett samtal                                                                       | ✔️   | ✔️            | ✔️     
-| Skärm delning    | Dela hela skärmen inifrån programmet                                                                 | ✔️   | ❌            | ❌           
-|                   | Dela ett enskilt program (från listan över program som körs)                                                | ✔️   | ❌            | ❌           
-|                   | Dela en webbläsare-flik från listan med öppna flikar                                                                  | ✔️   | ❌            | ❌           
-|                   | Deltagare kan visa fjärrskärms resurs                                                                            | ✔️   | ✔️            | ✔️         
-| Tjänstgöring            | Lista deltagare                                                                                                   | ✔️   | ✔️            | ✔️           
-|                   | Ta bort en deltagare                                                                                                | ✔️   | ✔️            | ✔️         
-| PSTN              | Placera ett ett-till-ett-samtal med en PSTN-deltagare                                                                     | ✔️   | ✔️            | ✔️   
+|  Kontroll av Mid-anrop | Aktivera/inaktivera din video                                                                                              | ✔️   | ✔️            | ✔️
+|                   | Tyst/avljud av MIC                                                                                                     | ✔️   | ✔️            | ✔️
+|                   | Växla mellan kameror                                                                                              | ✔️   | ✔️            | ✔️
+|                   | Lokalt undantag/ej Behåll                                                                                                  | ✔️   | ✔️            | ✔️
+|                   | Aktiv talare                                                                                                      | ✔️   | ✔️            | ✔️
+|                   | Välj högtalare för samtal                                                                                            | ✔️   | ✔️            | ✔️
+|                   | Välj mikrofon för samtal                                                                                         | ✔️   | ✔️            | ✔️
+|                   | Visa status för en deltagare<br/>*Inaktiv, tidig media, anslutning, ansluten, stoppad, i lobbyn, frånkopplat*         | ✔️   | ✔️            | ✔️
+|                   | Visa status för ett samtal<br/>*Tidig media, inkommande, anslutning, ringa, ansluten, stoppa, koppla från, frånkopplad* | ✔️   | ✔️            | ✔️
+|                   | Visa om en deltagare är avstängd                                                                                      | ✔️   | ✔️            | ✔️
+|                   | Visa orsaken till att en deltagare lämnat ett samtal                                                                       | ✔️   | ✔️            | ✔️
+| Skärm delning    | Dela hela skärmen inifrån programmet                                                                 | ✔️   | ❌            | ❌
+|                   | Dela ett enskilt program (från listan över program som körs)                                                | ✔️   | ❌            | ❌
+|                   | Dela en webbläsare-flik från listan med öppna flikar                                                                  | ✔️   | ❌            | ❌
+|                   | Deltagare kan visa fjärrskärms resurs                                                                            | ✔️   | ✔️            | ✔️
+| Tjänstgöring            | Lista deltagare                                                                                                   | ✔️   | ✔️            | ✔️
+|                   | Ta bort en deltagare                                                                                                | ✔️   | ✔️            | ✔️
+| PSTN              | Placera ett ett-till-ett-samtal med en PSTN-deltagare                                                                     | ✔️   | ✔️            | ✔️
 |                   | Placera ett grupp samtal med PSTN-deltagare                                                                           | ✔️   | ✔️            | ✔️
 |                   | Marknadsför ett ett-till-ett-samtal med en PSTN-deltagare i ett grupp anrop                                                 | ✔️   | ✔️            | ✔️
-|                   | Ringa ut från ett grupp anrop som en PSTN-deltagare                                                                    | ✔️   | ✔️            | ✔️   
-| Allmänt           | Testa din mikrofon, talare och kamera med en ljud test tjänst (tillgänglig genom att anropa 8: echo123)                   | ✔️   | ✔️            | ✔️ 
+|                   | Ringa ut från ett grupp anrop som en PSTN-deltagare                                                                    | ✔️   | ✔️            | ✔️
+| Allmänt           | Testa din mikrofon, talare och kamera med en ljud test tjänst (tillgänglig genom att anropa 8: echo123)                   | ✔️   | ✔️            | ✔️
 | Enhetshantering | Be om tillåtelse att använda ljud och/eller video                                                                       | ✔️   | ✔️            | ✔️
-|                   | Hämta kamera lista                                                                                                     | ✔️   | ✔️            | ✔️ 
+|                   | Hämta kamera lista                                                                                                     | ✔️   | ✔️            | ✔️
 |                   | Ange kamera                                                                                                          | ✔️   | ✔️            | ✔️
 |                   | Hämta vald kamera                                                                                                 | ✔️   | ✔️            | ✔️
 |                   | Hämta mikrofon lista                                                                                                 | ✔️   | ✔️            | ✔️
@@ -66,7 +75,7 @@ I följande lista presenteras de funktioner som för närvarande är tillgängli
 |                   | Ange högtalare                                                                                                         | ✔️   | ✔️            | ✔️
 |                   | Hämta vald talare                                                                                                | ✔️   | ✔️            | ✔️
 | Video åter givning   | Rendera en enkel video på många platser (lokal kamera eller fjärrström)                                                  | ✔️   | ✔️            | ✔️
-|                   | Ange/uppdatera skalnings läge                                                                                           | ✔️   | ✔️            | ✔️ 
+|                   | Ange/uppdatera skalnings läge                                                                                           | ✔️   | ✔️            | ✔️
 |                   | Rendera fjärran sluten video ström                                                                                          | ✔️   | ✔️            | ✔️
 
 ## <a name="calling-sdk-streaming-support"></a>Stöd för att anropa SDK-direktuppspelning
@@ -95,7 +104,7 @@ Följande tids gränser gäller för kommunikations tjänsterna som anropar SDK:
 
 Följande tabell visar en uppsättning webbläsare som stöds och som är tillgängliga för tillfället. Vi stöder de senaste tre versionerna av webbläsaren om inget annat anges.
 
-| Plattform                         | Chrome | Safari  | Edge (krom) | 
+| Plattform                         | Chrome | Safari  | Edge (krom) |
 | -------------------------------- | -------| ------  | --------------  |
 | Android                          |  ✔️    | ❌     | ❌             |
 | iOS                              |  ❌    | ✔️**** | ❌             |
@@ -103,9 +112,9 @@ Följande tabell visar en uppsättning webbläsare som stöds och som är tillg�
 | Windows * * *                       |  ✔️    | ❌     | ✔️             |
 | Ubuntu/Linux                     |  ✔️    | ❌     | ❌             |
 
-* Safari-versionerna 13.1 + stöds, 1:1-anrop stöds inte i Safari. 
+* Safari-versionerna 13.1 + stöds, 1:1-anrop stöds inte i Safari.
 
-* * Safari 14 +/macOS 11 + krävs för stöd för utgående video. 
+* * Safari 14 +/macOS 11 + krävs för stöd för utgående video.
 
 Utgående skärm delning stöds endast på Skriv bords plattformar (Windows, macOS och Linux), oavsett webbläsarens version, och stöds inte på någon mobil plattform (Android, iOS, iPad och surfplattor).
 

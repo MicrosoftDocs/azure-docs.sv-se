@@ -3,15 +3,15 @@ title: Använd övervaka Windows Virtual Desktop Monitor – Azure
 description: Använda Azure Monitor för virtuella Windows-datorer.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 03/31/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 1b93e0c0d61eaa390eda66da2a583a4f429ddd79
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+manager: femila
+ms.openlocfilehash: 7da35f77dd232e5f523e2bdc3f125c68015ab871
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709556"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448193"
 ---
 # <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment"></a>Använd Azure Monitor för virtuella Windows-datorer för att övervaka distributionen
 
@@ -43,7 +43,7 @@ Alla som övervakar Azure Monitor för virtuella Windows-datorer för din miljö
 
 Du kan öppna Azure Monitor för virtuella Windows-datorer med någon av följande metoder:
 
-- Gå till [aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks).
+- Gå till [aka.MS/azmonwvdi](https://aka.ms/azmonwvdi).
 - Sök efter och välj **Windows Virtual Desktop** från Azure Portal och välj **insikter**.
 - Sök efter och välj **Azure Monitor** från Azure Portal. Välj **Insights-hubb** under **insikter** och välj sedan **Windows Virtual Desktop**.
 När du har öppnat sidan, anger du **prenumerationen**, **resurs gruppen**, **poolen** och **tidsintervallet** för den miljö som du vill övervaka.
@@ -62,7 +62,7 @@ Om du vill börja använda Azure Monitor för virtuella Windows-datorer måste d
 
 Om det är första gången du öppnar Azure Monitor för virtuella Windows-datorer måste du konfigurera Azure Monitor för din Windows-miljö för virtuella datorer. Så här konfigurerar du dina resurser:
 
-1. Öppna Azure Monitor för virtuellt Windows-skrivbord i Azure Portal på [aka.MS/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)och välj sedan **konfigurations arbets bok**.
+1. Öppna Azure Monitor för virtuellt Windows-skrivbord i Azure Portal på [aka.MS/azmonwvdi](https://aka.ms/azmonwvdi)och välj sedan **konfigurations arbets bok**.
 2. Välj en miljö som ska konfigureras under **prenumeration**, **resurs grupp** och **värdbaserad pool**.
 
 Konfigurations arbets boken konfigurerar din övervaknings miljö och gör att du kan kontrol lera konfigurationen när du har slutfört installationen. Det är viktigt att kontrol lera konfigurationen om objekt på instrument panelen inte visas korrekt eller när produkt gruppen publicerar uppdateringar som kräver nya inställningar.
@@ -193,4 +193,5 @@ Mer information om insamling och användning av data finns i [sekretess policy f
 Nu när du har konfigurerat Azure Monitor för din Windows Virtual Desktop-miljö är här några resurser som kan hjälpa dig att börja övervaka din miljö:
 
 - Ta en titt på vårt [ord](azure-monitor-glossary.md) för att lära dig mer om termer och begrepp som rör Azure Monitor för virtuella Windows-datorer.
+- Information om hur du uppskattar, mäter och hanterar dina kostnader för data lagring finns i [beräkna Azure Monitor kostnader](azure-monitor-costs.md).
 - Om det uppstår ett problem kan du läsa vår [fel söknings guide](troubleshoot-azure-monitor.md) för hjälp och kända problem.

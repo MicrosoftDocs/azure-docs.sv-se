@@ -3,14 +3,14 @@ title: Lägg till hanterad identitet till en roll på Azure Event Grid destinati
 description: Den här artikeln beskriver hur du lägger till hanterad identitet till Azure-roller på mål som Azure Service Bus och Azure Event Hubs.
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 1bcef878c982122d80980dd7194fae2de6fc8762
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 1578e4c24201614ce89351b3c3cee52a09cadc30
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105630575"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280487"
 ---
-# <a name="add-an-identity-to-azure-roles-on-azure-event-grid-destinations"></a>Lägg till en identitet till Azure-roller på Azure Event Grid destinationer
+# <a name="grant-managed-identity-the-access-to-event-grid-destination"></a>Bevilja hanterad identitet åtkomst till Event Grid destination
 I det här avsnittet beskrivs hur du lägger till identiteten för ditt system ämne, anpassade ämne eller domän till en Azure-roll. 
 
 ## <a name="prerequisites"></a>Förutsättningar
@@ -89,6 +89,6 @@ az role assignment create --role "$role" --assignee "$topic_pid" --scope "$sbust
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har tilldelat en tilldelad identitet till ditt system ämne, anpassat ämne eller domän och lagt till identiteten för lämpliga roller på destinationer, se [Devlier-händelser med hjälp av identitet](managed-service-identity.md) för att leverera händelser till mål med hjälp av identiteten.
+Nu när du har tilldelat en tilldelad identitet till ditt system ämne, anpassat ämne eller domän och lagt till identiteten för lämpliga roller på destinationer, se [leverera händelser med den hanterade identiteten](managed-service-identity.md) för att leverera händelser till mål med hjälp av identiteten.
 
 

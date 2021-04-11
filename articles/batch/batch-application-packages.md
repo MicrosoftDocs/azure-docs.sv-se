@@ -7,12 +7,12 @@ ms.custom:
 - H1Hack27Feb2017
 - devx-track-csharp
 - contperf-fy21q1
-ms.openlocfilehash: d0ed5cc47694d6576e6aea46b62dfab8ecb73459
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 17729b2b6a2c4faba0554339a382cad559e9894a
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045798"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210507"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Distribuera program till Compute-noder med batch-programpaket
 
@@ -61,7 +61,7 @@ Med programpaket behöver inte poolens start uppgift ange en lång lista med ens
 Du kan använda [Azure Portal](https://portal.azure.com) eller API: er för batch Management för att hantera programpaketen i batch-kontot. I följande avsnitt beskrivs hur du länkar ett lagrings konto och hur du lägger till och hanterar program och programpaket i Azure Portal.
 
 > [!NOTE]
-> Även om du kan definiera program värden i resursen [Microsoft.BatCH/batchAccounts](/templates/microsoft.batch/batchaccounts) i en [arm-mall](quick-create-template.md), är det för närvarande inte möjligt att använda en arm-mall för att ladda upp programpaket som ska användas i batch-kontot. Du måste överföra dem till det länkade lagrings kontot enligt beskrivningen [nedan](#add-a-new-application).
+> Även om du kan definiera program värden i resursen [Microsoft.BatCH/batchAccounts](/azure/templates/microsoft.batch/batchaccounts) i en [arm-mall](quick-create-template.md), är det för närvarande inte möjligt att använda en arm-mall för att ladda upp programpaket som ska användas i batch-kontot. Du måste överföra dem till det länkade lagrings kontot enligt beskrivningen [nedan](#add-a-new-application).
 
 ### <a name="link-a-storage-account"></a>Länka ett lagrings konto
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: mbullwin
 ms.openlocfilehash: 4fd01256d94fbcb18fe8437be00c84e49d98f7d0
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105606155"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Lägg till datafeeds från olika data källor i mått Advisor
@@ -23,7 +23,7 @@ Använd den här artikeln för att hitta inställningar och krav för att anslut
 
 ## <a name="supported-authentication-types"></a>Autentiseringstyper som stöds
 
-| Autentiseringstyper | Description |
+| Autentiseringstyper | Beskrivning |
 | ---------------------|-------------|
 |**Basic** | Du måste kunna tillhandahålla grundläggande parametrar för åtkomst till data källor. Till exempel en anslutnings sträng eller nyckel. Data flödes administratörer kan visa dessa autentiseringsuppgifter. |
 | **AzureManagedIdentity** | [Hanterade identiteter](../../active-directory/managed-identities-azure-resources/overview.md) för Azure-resurser är en funktion i Azure Active Directory. Den tillhandahåller Azure-tjänster med en automatiskt hanterad identitet i Azure AD. Du kan använda identiteten för att autentisera till en tjänst som stöder Azure AD-autentisering.|

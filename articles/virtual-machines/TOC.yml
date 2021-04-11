@@ -234,6 +234,8 @@
               href: sizes-field-programmable-gate-arrays.md?context=/azure/virtual-machines/context/context
             - name: NP-serien
               href: np-series.md
+            - name: FPGA attesterings tjänst
+              href: field-programmable-gate-arrays-attestation.md
         - name: Databehandling med höga prestanda
           items:
             - name: Översikt
@@ -1303,6 +1305,8 @@
           href: ./windows/nsg-quickstart-portal.md
     - name: Tilldela offentlig IP-adress
       href: ../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?context=/azure/virtual-machines/context/context
+    - name: Använd ett anpassat domän namn
+      href: custom-domain.md
     - name: Använda flera nätverkskort
       items:
         - name: Linux med CLI

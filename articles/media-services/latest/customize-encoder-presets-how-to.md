@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: eb72c34489755dad17700a16a5109824ad892e83
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d6b147d4dc71e345022f9f9e8dc2776ca564183
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553280"
+ms.locfileid: "105962415"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Koda med en anpassad transformering – .NET
 
@@ -34,7 +34,7 @@ När du skapar anpassade för inställningar gäller följande aspekter:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-[Skapa ett Media Services-konto](./create-account-howto.md)
+[Skapa ett Media Services-konto](./account-create-how-to.md)
 
 ## <a name="download-the-sample"></a>Ladda ned exemplet
 

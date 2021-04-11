@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 07e43bdb0969c26120231013cc0c0354e6968ceb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 564f3127fc6901695890daa520152a7aa1a2337f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567958"
+ms.locfileid: "105962976"
 ---
 # <a name="feature-gaps-between-azure-media-services-v2-and-v3"></a>Funktions luckor mellan Azure Media Services v2 och v3
 
@@ -42,7 +42,7 @@ V3-API: et har följande funktions luckor med v2-API: et. Några av de avancerad
     - Vi har lagt till stöd för ljud kanal mappning till Standard-kodaren.  Se [ljud i Media Services Encoding Swagger-dokumentationen](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json).
     - Om du använder avancerade funktioner eller utdataformat för en licensierad produkt från tredje part, till exempel MXF eller ProRes, använder du Azure-partner lösningen från multistream, som kommer att vara transaktionell vid tiden för den 2: a tiden. Du kan också använda föreställd kommunikation eller [Bitmovin](http://bitmovin.com).
 
-- Egenskapen "tillgänglighets uppsättning" i slut punkten för direkt uppspelning i v2 stöds inte längre. Se exempelprojektet och vägledning för VOD-leverans med [hög tillgänglighet](./media-services-high-availability-encoding.md) i v3-API: et.
+- Egenskapen "tillgänglighets uppsättning" i slut punkten för direkt uppspelning i v2 stöds inte längre. Se exempelprojektet och vägledning för VOD-leverans med [hög tillgänglighet](./architecture-high-availability-encoding-concept.md) i v3-API: et.
 
 - Det går inte att ange FairPlay IV i Media Services v3. Även om det inte påverkar kunder som använder Media Services för både paketering och licens leverans, kan det vara ett problem när du använder ett DRM-system från tredje part för att leverera FairPlay-licenser (hybrid läge).
 

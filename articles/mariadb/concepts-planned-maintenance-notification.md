@@ -1,17 +1,17 @@
 ---
 title: Avisering om planerat underhåll – Azure Database for MariaDB
 description: I den här artikeln beskrivs aviserings funktionen för planerat underhåll i Azure Database for MariaDB
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: c290236dfe7e88999847f8cb0d66b2d3c868c1ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f6667980d35db611cfba293839ebf06535ee6a3
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664273"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107225860"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mariadb"></a>Meddelande om planerat underhåll i Azure Database for MariaDB
 

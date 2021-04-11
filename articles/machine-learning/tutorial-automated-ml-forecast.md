@@ -1,7 +1,7 @@
 ---
 title: 'Självstudie: prognoser för efter frågan & AutoML'
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du tränar och distribuerar en prognos modell för efter frågan med automatiserad maskin inlärning i Azure Machine Learning Studio.
+description: Träna och distribuera en beräknings modell för efter frågan utan att skriva kod med hjälp av Azure Machine Learning s automatiserade maskin inlärnings gränssnitt (automatiserad ML).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,21 +11,18 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 2653161b5828d89858234a9ca98fe432e0eacb5c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a5f7c0cf95d62df2d06c91abd99a1827524d5d6b
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879367"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210558"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Självstudie: prognostisera efter frågan med automatiserad maskin inlärning
 
+Lär dig hur du skapar en [prognos modell för tids serier](concept-automated-ml.md#time-series-forecasting) utan att skriva en enda rad med kod med hjälp av automatisk maskin inlärning i Azure Machine Learning Studio. Den här modellen förutsäger hyres behovet för en cykel delnings tjänst.  
 
-I den här självstudien använder du Automatisk maskin inlärning eller automatiserad ML i Azure Machine Learning Studio för att skapa en prognos modell för tids serier som förutsäger efter frågan för en cykel delnings tjänst.
-
-Exempel på en klassificerings modell finns i [Självstudier: skapa en klassificerings modell med automatiserad ml i Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
-
-I den här självstudien får du lära dig hur du utför följande uppgifter:
+Du kommer inte att skriva någon kod i den här självstudien. du använder Studio-gränssnittet för att utföra utbildning.  Du får lära dig hur du utför följande uppgifter:
 
 > [!div class="checklist"]
 > * Skapa och läsa in en data uppsättning.
@@ -34,13 +31,18 @@ I den här självstudien får du lära dig hur du utför följande uppgifter:
 > * Utforska experiment resultatet.
 > * Distribuera den bästa modellen.
 
+Prova också automatisk maskin inlärning för dessa andra modell typer:
+
+* Ett icke-kod exempel på en klassificerings modell finns i [Självstudier: skapa en klassificerings modell med automatiserad ml i Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
+* En kod som är ett första exempel på en Regressions modell finns i [självstudien: Använd automatisk maskin inlärning för att förutse taxi-priser](tutorial-auto-train-models.md).
+
 ## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure Machine Learning-arbetsyta. Se [skapa en Azure Machine Learning-arbetsyta](how-to-manage-workspace.md). 
 
 * Hämta [bike-no.csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) data filen
 
-## <a name="get-started-in-azure-machine-learning-studio"></a>Kom igång i Azure Machine Learning Studio
+## <a name="sign-in-to-the-studio"></a>Logga in på Studio
 
 I den här självstudien får du skapa ett automatiserat ML experiment i Azure Machine Learning Studio, ett konsoliderat webb gränssnitt som innehåller maskin inlärnings verktyg för att utföra data vetenskaps scenarier för de olika kunskaps nivåerna för data vetenskap. Studio stöds inte i Internet Explorer-webbläsare.
 
@@ -148,7 +150,7 @@ Slutför installationen av ditt automatiserade ML-experiment genom att ange akti
 
 1. Välj **Visa ytterligare konfigurations inställningar** och fyll i fälten enligt följande. De här inställningarna är för att bättre styra utbildnings jobbet och ange inställningar för din prognos. Annars tillämpas standardvärdena utifrån experiment val och data.
 
-    Ytterligare &nbsp; konfigurationer|Description|Värde &nbsp; för &nbsp; självstudier
+    Ytterligare &nbsp; konfigurationer|Beskrivning|Värde &nbsp; för &nbsp; självstudier
     ------|---------|---
     Primärt mått| Bedömnings mått som ska mätas av Machine Learning-algoritmen.|Normaliserat rot genomsnitts fel
     Förklara bästa modell| Visar automatiskt förklaringar för den bästa modellen som skapats av automatisk ML.| Aktivera

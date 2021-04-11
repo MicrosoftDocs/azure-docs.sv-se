@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2f2184507e17e3ecae40bb33be4202c183d32b77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b55fe0bf404ecb8a81e3fe1975dfa9f5ba5dfb06
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91274241"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103359"
 ---
 # <a name="point-to-site-vpn-session-management"></a>Hantering av VPN-sessioner med punkt-till-plats
 
@@ -32,6 +32,8 @@ Visa och koppla från en session i portalen:
    :::image type="content" source="./media/p2s-session-management/portal.png" alt-text="Portal exempel":::
 1. Du kan visa alla aktuella sessioner i Windowpane.
 1. Välj **"..."** för den session som du vill koppla från och välj sedan **Koppla från**.
+
+För närvarande kan du inte använda den här funktionen i portalen för VpnGw4-och VpnGw5-SKU: er. Om du har någon av dessa gateways använder du PowerShell-metoden som beskrivs i nästa avsnitt.
 
 ## <a name="powershell"></a>PowerShell
 

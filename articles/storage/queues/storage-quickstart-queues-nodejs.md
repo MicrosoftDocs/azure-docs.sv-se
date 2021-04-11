@@ -1,19 +1,19 @@
 ---
 title: 'Snabb start: Azure Queue Storage klient bibliotek V12 – Java Script'
 description: Lär dig hur du använder Azure-Queue Storage klient bibliotek V12 för Java Script för att skapa en kö och lägga till meddelanden till den. Lär dig sedan att läsa och ta bort meddelanden från kön. Du lär dig också hur du tar bort en kö.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 12/13/2019
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-js
-ms.openlocfilehash: 23c58526ba481a56b371bd077661d8d0bc7d45c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 628ce97b9f14290caf3f41b16cda93f4f47566f7
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97586541"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276169"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>Snabb start: Azure Queue Storage klient biblioteks V12 för Java Script
 

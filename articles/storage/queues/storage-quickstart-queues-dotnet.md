@@ -1,19 +1,19 @@
 ---
 title: 'Snabb start: Azure Queue Storage klient bibliotek V12-.NET'
 description: Lär dig hur du använder Azure Queue Storage-V12 för klient bibliotek för .NET för att skapa en kö och lägga till meddelanden i kön. Härnäst får du lära dig hur du läser och tar bort meddelanden från kön. Du lär dig också hur du tar bort en kö.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 22038e4145acabc067083177fcf297464972ad58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c4af7afd96f6c503f35cdb4896c3b49d4ef6ed3
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97589533"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276237"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Snabb start: Azure Queue Storage V12 för klient bibliotek för .NET
 

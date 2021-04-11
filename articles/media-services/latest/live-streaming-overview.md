@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: c82c646e4befef9d409bb8e59a442642913ada22
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f207cefaf333fc21eb56dc15b1e4d191bf8e5fae
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641522"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108310"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Direktsänd strömning med Azure Media Services v3
 
@@ -36,18 +36,18 @@ Den här artikeln ger en översikt och vägledning för Live streaming med Media
 
 ## <a name="dynamic-packaging-and-delivery"></a>Dynamisk paketering och leverans
 
-Med Media Services kan du dra nytta av [dynamisk paketering](dynamic-packaging-overview.md)som gör att du kan förhandsgranska och skicka in dina Live-strömmar i [MPEG-streck, HLS och Smooth Streaming Format](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) från den bidrags feed som skickas till tjänsten. Dina användare kan spela upp direktsänd ström med alla HLS-, tank-eller Smooth Streaming-kompatibla spelare. Du kan använda [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) i dina webb-eller mobil program för att leverera data strömmen i något av dessa protokoll.
+Med Media Services kan du dra nytta av [dynamisk paketering](encode-dynamic-packaging-concept.md)som gör att du kan förhandsgranska och skicka in dina Live-strömmar i [MPEG-streck, HLS och Smooth Streaming Format](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) från den bidrags feed som skickas till tjänsten. Dina användare kan spela upp direktsänd ström med alla HLS-, tank-eller Smooth Streaming-kompatibla spelare. Du kan använda [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) i dina webb-eller mobil program för att leverera data strömmen i något av dessa protokoll.
 
 ## <a name="dynamic-encryption"></a>Dynamisk kryptering
 
-Med dynamisk kryptering kan du dynamiskt kryptera din direktsända eller på begäran-innehåll med AES-128 eller någon av de tre större Digital Rights Management-systemen (DRM): Microsoft PlayReady, Google Widevine och Apple FairPlay. Media Services tillhandahåller också en tjänst för att leverera AES-nycklar och DRM-licenser (PlayReady, Widevine och FairPlay) till auktoriserade klienter. Mer information finns i [dynamisk kryptering](content-protection-overview.md).
+Med dynamisk kryptering kan du dynamiskt kryptera din direktsända eller på begäran-innehåll med AES-128 eller någon av de tre större Digital Rights Management-systemen (DRM): Microsoft PlayReady, Google Widevine och Apple FairPlay. Media Services tillhandahåller också en tjänst för att leverera AES-nycklar och DRM-licenser (PlayReady, Widevine och FairPlay) till auktoriserade klienter. Mer information finns i [dynamisk kryptering](drm-content-protection-concept.md).
 
 > [!NOTE]
 > Widevine är en tjänst som tillhandahålls av Google Inc. och omfattas av villkoren i tjänste-och sekretess policyn för Google, Inc.
 
 ## <a name="dynamic-filtering"></a>Dynamisk filtrering
 
-Dynamisk filtrering används för att styra antalet spår, format, bit hastigheter och presentations tids fönster som skickas ut till spelarna. Mer information finns i [filter och dynamiska manifest](filters-dynamic-manifest-overview.md).
+Dynamisk filtrering används för att styra antalet spår, format, bit hastigheter och presentations tids fönster som skickas ut till spelarna. Mer information finns i [filter och dynamiska manifest](filters-dynamic-manifest-concept.md).
 
 ## <a name="live-event-types"></a>Direktsända händelse typer
 

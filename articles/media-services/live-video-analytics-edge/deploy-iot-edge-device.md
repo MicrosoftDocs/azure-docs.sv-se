@@ -3,12 +3,12 @@ title: Distribuera video analys i real tid på en IoT Edge enhet – Azure
 description: Den här artikeln innehåller de steg som hjälper dig att distribuera video analys på din IoT Edge-enhet. Du skulle göra detta, till exempel om du har åtkomst till en lokal Linux-dator och/eller om du tidigare har skapat ett Azure Media Services-konto.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 01b98c7a1f4073adcd8dea7cbfbfc57abc3787c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2fdf95be0966702f58afbb9df8e09a1688f9b204
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101718938"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961565"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Distribuera video analys i real tid på en IoT Edge enhet
 
@@ -25,7 +25,7 @@ Den här artikeln innehåller de steg som hjälper dig att distribuera video ana
 * [Skapa och konfigurera IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
 * [Registrera IoT Edge enhet](../../iot-edge/how-to-register-device.md)
 * [Installera Azure IoT Edge-körningen på Debian-baserade Linux-system](../../iot-edge/how-to-install-iot-edge.md)
-* [Skapa ett Azure Media Services-konto](../latest/create-account-howto.md)
+* [Skapa ett Azure Media Services-konto](../latest/account-create-how-to.md)
 
     * Använd något av följande regioner: östra USA 2, östra USA, centrala USA, norra centrala USA, Östra Japan, västra USA, västra USA 2, västra centrala USA, Östra Kanada, Storbritannien, södra, Frankrike, centrala, Frankrike, Schweiz, norra, Schweiz, västra och Japan, västra.
     * Vi rekommenderar att du använder GPv2-lagrings konton (General-Purpose v2)

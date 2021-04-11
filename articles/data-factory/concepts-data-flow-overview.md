@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 12/10/2020
 ms.openlocfilehash: 1529d2d546227880fee71d1823482e040d2e57c1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103564328"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Mappa data flöden i Azure Data Factory
@@ -33,11 +33,11 @@ Data flöden skapas från fönstret fabriks resurser som pipelines och data upps
 
 Den här åtgärden tar dig till data flödets arbets yta där du kan skapa din omvandlings logik. Välj **Lägg till källa** för att börja konfigurera din käll omvandling. Mer information finns i [käll omvandling](data-flow-source.md).
 
-## <a name="authoring-data-flows"></a>Redigera data flöden
+## <a name="authoring-data-flows&quot;></a>Redigera data flöden
 
 Kart data flödet har en unik redigerings yta som är utformad för att skapa omvandlings logik enkelt. Data flödes arbets ytan är uppdelad i tre delar: det översta fältet, grafen och konfigurations panelen. 
 
-![Skärm bild som visar data flödets arbets yta med översta stapel-, graf-och konfigurations panelen märkt.](media/data-flow/canvas-1.png "Arbetsyta")
+![Skärm bild som visar data flödets arbets yta med översta stapel-, graf-och konfigurations panelen märkt.](media/data-flow/canvas-1.png &quot;Arbetsyta")
 
 ### <a name="graph"></a>Graph
 
@@ -63,11 +63,11 @@ Fliken **Optimize** innehåller inställningar för att konfigurera partitioneri
 
 ![Skärm bild som visar fliken optimering, som innehåller partitionsalternativ, partitionstyper och antalet partitioner.](media/data-flow/optimize.png)
 
-#### <a name="inspect"></a>Allmänt
+#### <a name="inspect&quot;></a>Allmänt
 
 Fliken **Granska** visar metadata för den data ström som du transformerar. Du kan se kolumn antal, kolumnerna har ändrats, kolumnerna tillagda, data typer, kolumn ordning och kolumn referenser. **Granska** är en skrivskyddad vy av dina metadata. Du behöver inte ha aktiverat fel söknings läge för att se metadata i rutan **Granska** .
 
-![Allmänt](media/data-flow/inspect1.png "Allmänt")
+![Allmänt](media/data-flow/inspect1.png &quot;Allmänt")
 
 När du ändrar formen på dina data med omvandlingar visas flödet ändringar i metadata i rutan **Granska** . Om det inte finns ett definierat schema i din käll omvandling visas inte metadata i rutan **Granska** . Brist på metadata är vanligt i schema avvikelse scenarier.
 

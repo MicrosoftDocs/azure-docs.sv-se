@@ -3,17 +3,16 @@ title: 'Självstudie: dirigera trafik till viktade slut punkter – Azure Traffi
 description: Den här artikeln beskriver hur du dirigerar trafik till viktade slutpunkter med Traffic Manager.
 services: traffic-manager
 author: duongau
-Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/19/2020
 ms.author: duau
-ms.openlocfilehash: 55c316a370b9e44e906e48b4716201384567c9c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20864d46ac93d5fcefec20028dd2a78ded142ba3
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96003794"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067188"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Självstudie: Styr trafikroutning med viktade slutpunkter med hjälp av Traffic Manager
 

@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 03/30/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 7420ffbe5b365c635c1eac2620cfd54ceb649ebf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0d5749894fd277ff6a2f77e3db9721e6989d72ac
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211812"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109245"
 ---
 # <a name="managed-hsm-logging"></a>Hanterad HSM-loggning 
 
@@ -74,9 +74,10 @@ az monitor diagnostic-settings create --name ContosoMHSM-Diagnostics --resource 
 Vad loggas:
 
 * Alla autentiserade REST API begär Anden, inklusive misslyckade förfrågningar till följd av åtkomst behörigheter, systemfel eller felaktiga begär Anden.
-* Åtgärder på den hanterade HSM: t. ex. att skapa, ta bort och uppdatera attribut, t. ex. taggar.
+* Hanterade plan åtgärder på den hanterade HSM-resursen, inklusive att skapa, ta bort och uppdatera attribut som taggar.
 * Säkerhets domän relaterade åtgärder som att initiera & Ladda ned, initiera återställning, ladda upp
 * Fullständig HSM-säkerhetskopiering, återställning och selektiva återställnings åtgärder
+* Roll hanterings åtgärder som att skapa/Visa/ta bort roll tilldelningar och skapa/Visa/ta bort anpassade roll definitioner
 * Åtgärder på nycklar, inklusive:
   * Skapa, ändra eller ta bort nycklar.
   * Signering, verifiering, kryptering, dekryptering, wrapping och unwrap-nycklar, list nycklar.
@@ -121,30 +122,13 @@ Enskilda blobbar lagras som text, formaterade som JSON. Nu ska vi titta på en e
 ]
 ```
 
-I följande tabell visas fält namn och beskrivningar:
 
-| Fältnamn | Beskrivning |
-| --- | --- |
-| **TenantId** | Azure Active Directory klient-ID för prenumeration där hanterad HSM skapas |
-| **tid** |Datum och tid i UTC. |
-| **resourceId** |Azure Resource Manager resurs-ID. För hanterade HSM-loggar är detta alltid det hanterade HSM-resurs-ID: t. |
-| **operationName** |Namnet på åtgärden, som beskrivs i nästa tabell. |
-| **operationVersion** |REST API version som begärs av klienten. |
-| **kategori** |Typ av resultat. **AuditEvent** är det enda tillgängliga värdet för hanterade HSM-loggar. |
-| **resultType** |Resultat av den REST API begäran. |
-| **egenskaperna** |Information som varierar beroende på åtgärd (**operationName**)|
-| **resultSignature** |HTTP-status. |
-| **resultDescription** |En ytterligare beskrivning av resultatet, om en sådan är tillgänglig. |
-| **. Durationms** |Hur lång tid i millisekunder som det tog att utföra REST-API-begäran. Detta omfattar inte nätverksfördröjningen, så den tid du mäter på klientsidan kanske inte stämmer med den här tiden. |
-| **callerIpAddress** |IP-adressen för den klient som gjorde begäran. |
-| **correlationId** |Ett valfritt GUID som klienten kan skicka för att korrelera loggar på klient sidan med loggar på tjänst sidan. |
-| **Autentiseringsidentitet** |Identitet från den token som angavs i REST API begäran. Detta är vanligt vis "användare", "tjänstens huvud namn". |
-| **requestUri** | URI för REST API begäran |
-| **clientInfo** | 
 
 ## <a name="use-azure-monitor-logs"></a>Använda Azure Monitor-loggar
 
-Du kan använda Key Vault-lösningen i Azure Monitor loggar för att granska hanterade HSM **AuditEvent** -loggar. I Azure Monitor loggar använder du logg frågor för att analysera data och få den information du behöver. 
+Du kan använda Key Vault-lösningen i Azure Monitor loggar för att granska hanterade HSM **AuditEvent** -loggar. I Azure Monitor loggar använder du logg frågor för att analysera data och få den information du behöver.
+
+Mer information, inklusive hur du konfigurerar detta finns i [Azure Key Vault i Azure Monitor](../../azure-monitor/insights/key-vault-insights-overview.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

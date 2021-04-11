@@ -9,10 +9,10 @@ ms.date: 03/19/2021
 ms.author: thweiss
 ms.custom: devx-track-js
 ms.openlocfilehash: 6b2944c1d29849ea44b5afd878d5b0e030358cc5
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104801833"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-api-for-mongodb"></a>Sök efter begär ande enhets avgiften för åtgärder som körs i Azure Cosmos DB API för MongoDB

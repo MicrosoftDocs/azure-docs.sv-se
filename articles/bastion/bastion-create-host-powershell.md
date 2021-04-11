@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: ba2716613a0e950cbae5c65add410ac8a8b38955
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8abd4c417181b46fbf4d5c139c157044b329ea2a
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92077735"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580151"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Skapa en Azure Bastion-värd med hjälp av Azure PowerShell
 
@@ -25,6 +25,10 @@ Du kan också skapa en Azure skydds-värd med hjälp av [Azure Portal](./tutoria
 Kontrollera att du har en Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du aktivera dina [MSDN-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) eller registrera dig för ett [kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial).
 
 [!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+
+ >[!NOTE]
+ >Det finns inte stöd för användning av Azure-skydds med Azure Privat DNS Zones just nu. Innan du börjar bör du kontrol lera att det virtuella nätverket där du planerar att distribuera skydds-resursen inte är länkat till en privat DNS-zon.
+ >
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Skapa en skydds-värd
 

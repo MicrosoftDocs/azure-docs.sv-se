@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 496a8dba9b9ea7fb82ad9016479154d6a61cb767
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c2d4181a80f48f5f6dd5775e6eb3bd172a65df8
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98703283"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209637"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Så här fungerar det: Självbetjäning av lösenordsåterställning i Azure AD
 
@@ -72,7 +72,7 @@ Kom igång med SSPR genom att följa de här självstudierna:
 
 ## <a name="require-users-to-register-when-they-sign-in"></a>Kräv att användare registrerar sig när de loggar in
 
-Du kan aktivera alternativet för att kräva att en användare slutför SSPR-registreringen om de loggar in på alla program som använder Azure AD. Det här arbets flödet innehåller följande program:
+Du kan aktivera alternativet för att kräva att en användare slutför SSPR-registreringen om de använder modern autentisering eller webbläsare för att logga in på alla program som använder Azure AD. Det här arbets flödet innehåller följande program:
 
 * Microsoft 365
 * Azure Portal

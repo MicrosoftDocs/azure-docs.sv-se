@@ -79,13 +79,12 @@
           href: tokens-overview.md
         - name: Begära åtkomsttoken
           href: access-tokens.md
-    - name: Principnycklar
-      href: policy-keys-overview.md
-    - name: Användareflöde och -princip
+    - name: Användarupplevelse
+      expanded: true
       items:
-        - name: Användarflöden
+        - name: Användar flöden och anpassade principer
           href: user-flow-overview.md
-        - name: Anpassade principer
+        - name: Översikt över anpassad princip
           href: custom-policy-overview.md
     - name: Användarkonton
       href: user-overview.md
@@ -93,6 +92,8 @@
       href: user-profile-attributes.md
     - name: Identitetsskydd och villkorsstyrd åtkomst
       href: conditional-access-identity-protection-overview.md
+    - name: Principnycklar
+      href: policy-keys-overview.md
 - name: Anvisningar
   items:
     - name: Appintegrering
@@ -268,8 +269,6 @@
           href: add-api-connector.md
     - name: Anpassad princip
       items:
-        - name: Översikt över anpassad princip
-          href: custom-policy-trust-frameworks.md
         - name: Kom igång med anpassade principer
           href: custom-policy-get-started.md
         - name: Anpassa e-postverifiering
@@ -298,9 +297,8 @@
             - name: Samla in loggar med Application Insights
               href: troubleshoot-with-application-insights.md
               displayName: 'troubleshooting, app insights'
-            - name: Principverifiering
+            - name: Felsöka anpassade principer
               href: troubleshoot-custom-policies.md
-              displayName: troubleshooting
         - name: Referens
           items:
             - name: TrustFrameworkPolicy

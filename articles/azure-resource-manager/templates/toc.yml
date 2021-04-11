@@ -566,6 +566,16 @@
           href: template-functions-resource.md
         - name: Strängfunktioner
           href: template-functions-string.md
+    - name: Bicep-operatörer
+      items:
+        - name: Alla operatörer
+          href: bicep-operators.md
+        - name: Jämförelseoperatorer
+          href: bicep-operators-comparison.md
+        - name: Logiska operatorer
+          href: bicep-operators-logical.md
+        - name: Numeriska operatorer
+          href: bicep-operators-numeric.md
     - name: REST
       href: /rest/api/resources/
     - name: Azure PowerShell

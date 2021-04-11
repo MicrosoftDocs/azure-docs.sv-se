@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: de113e3c005e11bd2bcd13ec6c1554664ba8fbaf
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 52b3d902b2cbfdacfe92117dcf0057dab1fe9a83
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104878252"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012217"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Konfigurera en våren Cloud config Server-instans för din tjänst
 
@@ -242,9 +242,9 @@ Azure Spring Cloud kan komma åt Git-lagringsplatser som är offentliga, som sky
 
    ![Spring Cloud-konfigurationsserver](media/spring-cloud-tutorial-config-server/config-server-azure-repos.png)
 
-## <a name="delete-your-app-configuration"></a>Ta bort din app-konfiguration
+## <a name="delete-your-configuration"></a>Ta bort konfigurationen
 
-När du har sparat en konfigurations fil visas knappen **ta bort app-konfiguration** på fliken **konfiguration** . Om du väljer den här knappen raderas dina befintliga inställningar helt. Du bör välja den om du vill ansluta din konfigurations Server instans till en annan källa, till exempel flytta från GitHub till Azure DevOps.
+Du kan välja knappen **Återställ** som visas på fliken **konfigurations Server** för att radera dina befintliga inställningar helt. Ta bort konfigurations Server inställningarna om du vill ansluta din konfigurations Server instans till en annan källa, till exempel flytta från GitHub till Azure DevOps.
 
 
 
