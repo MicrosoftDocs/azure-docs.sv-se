@@ -10,10 +10,10 @@ ms.subservice: spark
 ms.topic: quickstart
 ms.date: 10/16/2020
 ms.openlocfilehash: 060c78621b82f4698d4596383cd155d85d483d8e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101669486"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Snabb start: skapa en server lös Apache Spark pool i Azure Synapse Analytics med hjälp av webb verktyg
@@ -82,9 +82,9 @@ En antecknings bok är en interaktiv miljö som har stöd för olika programmeri
 
     Om du använder Storage Explorer är det möjligt att se effekten av de två olika sätten att skriva en fil som används ovan. När inget fil system anges används standardvärdet i det här fallet `default>user>trusted-service-user>demo_df` . Data sparas på platsen för det angivna fil systemet.
 
-    Observera i formaten "CSV" och "Parquet" och skriv åtgärder som en katalog skapas med många partitionerade filer.
+    Observera i formaten "CSV&quot; och &quot;Parquet&quot; och skriv åtgärder som en katalog skapas med många partitionerade filer.
 
-    ![Vyn Storage Explorer för utdata](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage.png "Vyn Storage Explorer för utdata")
+    ![Vyn Storage Explorer för utdata](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage.png &quot;Vyn Storage Explorer för utdata")
 
     ![Skärm bild som visar standard > demodata > demo_df Sök väg.](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage2.png "Vyn Storage Explorer för utdata")
 

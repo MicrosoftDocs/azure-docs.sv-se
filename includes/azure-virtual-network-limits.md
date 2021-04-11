@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 44245bc3cd9fd1afcfe9a74d60e2f51135a247ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2262290486047c225cec8e8f6bb73242df7258fa
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101734095"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106271511"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Nätverks gränser – Azure Resource Manager
 Följande begränsningar gäller endast för nätverks resurser som hanteras via **Azure Resource Manager** per region per prenumeration. Lär dig hur du [visar din aktuella resursanvändning mot dina prenumerations gränser](../articles/networking/check-usage-against-limits.md).
@@ -73,12 +73,12 @@ Följande begränsningar gäller endast för nätverksresurser som hanteras via 
 | Regler per nätverkskort (över alla IP-adresser på ett nätverkskort) | 300                           |
 | IP-konfigurationer för klient del              | 600                           |
 | Storlek på serverdelspool                       | 1 000 IP-konfigurationer, enskilt virtuellt nätverk |
-| Server dels resurser per Load Balancer <sup> 1<sup> | 250                   |
+| Server dels resurser per Load Balancer <sup> 1<sup> | 1 200                   |
 | Portar med hög tillgänglighet                 | 1 per intern klient del       |
 | Utgående regler per Load Balancer        | 600                           |
 | Belastnings utjämning per virtuell dator                   | 2 (1 offentlig och 1 intern)   |
 
-<sup>1</sup> gränsen är upp till 150 resurser, i valfri kombination av fristående virtuella dator resurser, tillgänglighets uppsättnings resurser och placerings grupper för virtuella datorers skal uppsättning.
+<sup>1</sup> gränsen är upp till 1 200 resurser, i valfri kombination av fristående virtuella dator resurser, tillgänglighets uppsättnings resurser och placerings grupper för virtuella datorers skal uppsättning.
 
 **Grundläggande Load Balancer**
 
