@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: jingwang
 ms.openlocfilehash: 247bec30e9933dfd75b7c31cbce15ff043959243
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104588893"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopiera data från en HTTP-slutpunkt med hjälp av Azure Data Factory
@@ -63,12 +63,12 @@ Följande egenskaper stöds för den länkade HTTP-tjänsten:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen **Type** måste anges till **HttpServer**. | Yes |
-| url | Bas-URL: en till webb servern. | Yes |
-| enableServerCertificateValidation | Ange om du vill aktivera verifiering av Server-TLS/SSL-certifikat när du ansluter till en HTTP-slutpunkt. Om HTTPS-servern använder ett självsignerat certifikat ställer du in den här egenskapen på **falskt**. | No<br /> (Standardvärdet är **Sant**) |
-| authenticationType | Anger autentiseringstypen. Tillåtna värden är **Anonym**, **Basic**, **Digest**, **Windows** och **ClientCertificate**. User-based OAuth stöds inte. Du kan också konfigurera autentiseringsscheman i `authHeader` egenskapen. Se de avsnitt som följer den här tabellen för fler egenskaper och JSON-exempel för de här typerna av autentisering. | Yes |
-| authHeaders | Ytterligare HTTP-begärandehuvuden för autentisering.<br/> Om du till exempel vill använda API-autentiseringsnyckel kan du välja autentiseringstyp som "Anonym" och ange API-nyckel i rubriken. | No |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Läs mer från avsnittet [krav](#prerequisites) . Om inget värde anges används standard Azure Integration Runtime. |No |
+| typ | Egenskapen **Type** måste anges till **HttpServer**. | Ja |
+| url | Bas-URL: en till webb servern. | Ja |
+| enableServerCertificateValidation | Ange om du vill aktivera verifiering av Server-TLS/SSL-certifikat när du ansluter till en HTTP-slutpunkt. Om HTTPS-servern använder ett självsignerat certifikat ställer du in den här egenskapen på **falskt**. | Inga<br /> (Standardvärdet är **Sant**) |
+| authenticationType | Anger autentiseringstypen. Tillåtna värden är **Anonym**, **Basic**, **Digest**, **Windows** och **ClientCertificate**. User-based OAuth stöds inte. Du kan också konfigurera autentiseringsscheman i `authHeader` egenskapen. Se de avsnitt som följer den här tabellen för fler egenskaper och JSON-exempel för de här typerna av autentisering. | Ja |
+| authHeaders | Ytterligare HTTP-begärandehuvuden för autentisering.<br/> Om du till exempel vill använda API-autentiseringsnyckel kan du välja autentiseringstyp som "Anonym" och ange API-nyckel i rubriken. | Inga |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Läs mer från avsnittet [krav](#prerequisites) . Om inget värde anges används standard Azure Integration Runtime. |Inga |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>Använda Basic-, Digest-eller Windows-autentisering
 
@@ -76,8 +76,8 @@ Ange egenskapen **authenticationType** som **Basic**, **Digest** eller **Windows
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| userName | Användar namnet som används för att få åtkomst till HTTP-slutpunkten. | Yes |
-| password | Användarens lösen ord (värdet **username** ). Markera det här fältet som en **SecureString** -typ för att lagra det på ett säkert sätt i Data Factory. Du kan också [referera till en hemlighet som lagrats i Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| userName | Användar namnet som används för att få åtkomst till HTTP-slutpunkten. | Ja |
+| password | Användarens lösen ord (värdet **username** ). Markera det här fältet som en **SecureString** -typ för att lagra det på ett säkert sätt i Data Factory. Du kan också [referera till en hemlighet som lagrats i Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 
 **Exempel**
 
@@ -111,7 +111,7 @@ Om du vill använda ClientCertificate-autentisering ställer du in egenskapen **
 |:--- |:--- |:--- |
 | embeddedCertData | Base64-kodade certifikat data. | Ange antingen **embeddedCertData** eller **certThumbprint**. |
 | certThumbprint | Tumavtrycket för det certifikat som är installerat på din egen värd Integration Runtime datorns certifikat arkiv. Gäller endast när den egen värdbaserade typen av Integration Runtime anges i egenskapen **connectVia** . | Ange antingen **embeddedCertData** eller **certThumbprint**. |
-| password | Lösen ordet som är associerat med certifikatet. Markera det här fältet som en **SecureString** -typ för att lagra det på ett säkert sätt i Data Factory. Du kan också [referera till en hemlighet som lagrats i Azure Key Vault](store-credentials-in-key-vault.md). | No |
+| password | Lösen ordet som är associerat med certifikatet. Markera det här fältet som en **SecureString** -typ för att lagra det på ett säkert sätt i Data Factory. Du kan också [referera till en hemlighet som lagrats i Azure Key Vault](store-credentials-in-key-vault.md). | Inga |
 
 Om du använder **certThumbprint** för autentisering och certifikatet är installerat i det personliga arkivet på den lokala datorn ger du Läs behörighet till den lokala datorn integration Runtime:
 
@@ -203,8 +203,8 @@ Följande egenskaper stöds för HTTP under `location` Inställningar i format-b
 
 | Egenskap    | Beskrivning                                                  | Krävs |
 | ----------- | ------------------------------------------------------------ | -------- |
-| typ        | Typ egenskapen under `location` i data mängden måste anges till **HttpServerLocation**. | Yes      |
-| relativeUrl | En relativ URL till den resurs som innehåller data. HTTP-anslutningen kopierar data från den kombinerade URL: en: `[URL specified in linked service][relative URL specified in dataset]` .   | No       |
+| typ        | Typ egenskapen under `location` i data mängden måste anges till **HttpServerLocation**. | Ja      |
+| relativeUrl | En relativ URL till den resurs som innehåller data. HTTP-anslutningen kopierar data från den kombinerade URL: en: `[URL specified in linked service][relative URL specified in dataset]` .   | Inga       |
 
 > [!NOTE]
 > Den begärda nytto Last storleken för HTTP-begäran är cirka 500 KB. Om den nytto Last storlek som du vill skicka till webb slut punkten är större än 500 KB bör du överväga att lägga till nytto lasten i mindre segment.
@@ -249,12 +249,12 @@ Följande egenskaper stöds för HTTP under `storeSettings` Inställningar i for
 
 | Egenskap                 | Beskrivning                                                  | Krävs |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| typ                     | Typ egenskapen under `storeSettings` måste anges till **HttpReadSettings**. | Yes      |
-| requestMethod            | HTTP-metoden. <br>Tillåtna värden är **Get** (standard) och **post**. | No       |
-| additionalHeaders         | Ytterligare rubriker för HTTP-begäran.                             | No       |
-| requestBody              | Bröd texten för HTTP-begäran.                               | No       |
-| httpRequestTimeout           | Timeout ( **TimeSpan** -värdet) för http-begäran för att få ett svar. Det här värdet är tids gränsen för att få ett svar, inte tids gränsen för att läsa svars data. Standardvärdet är **00:01:40**. | No       |
-| maxConcurrentConnections |Den övre gränsen för samtidiga anslutningar som upprättats till data lagret under aktivitets körningen. Ange bara ett värde om du vill begränsa samtidiga anslutningar.| No       |
+| typ                     | Typ egenskapen under `storeSettings` måste anges till **HttpReadSettings**. | Ja      |
+| requestMethod            | HTTP-metoden. <br>Tillåtna värden är **Get** (standard) och **post**. | Inga       |
+| additionalHeaders         | Ytterligare rubriker för HTTP-begäran.                             | Inga       |
+| requestBody              | Bröd texten för HTTP-begäran.                               | Inga       |
+| httpRequestTimeout           | Timeout ( **TimeSpan** -värdet) för http-begäran för att få ett svar. Det här värdet är tids gränsen för att få ett svar, inte tids gränsen för att läsa svars data. Standardvärdet är **00:01:40**. | Inga       |
+| maxConcurrentConnections |Den övre gränsen för samtidiga anslutningar som upprättats till data lagret under aktivitets körningen. Ange bara ett värde om du vill begränsa samtidiga anslutningar.| Inga       |
 
 **Exempel:**
 
@@ -310,13 +310,13 @@ Om du vill veta mer om egenskaperna kontrollerar du [söknings aktiviteten](cont
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Data uppsättningens **typ** -egenskap måste anges till **HttpFile**. | Yes |
-| relativeUrl | En relativ URL till den resurs som innehåller data. När den här egenskapen inte anges används endast den URL som anges i den länkade tjänst definitionen. | No |
-| requestMethod | HTTP-metoden. Tillåtna värden är **Get** (standard) och **post**. | No |
-| additionalHeaders | Ytterligare rubriker för HTTP-begäran. | No |
-| requestBody | Bröd texten för HTTP-begäran. | No |
-| format | Om du vill hämta data från HTTP-slutpunkten i befintligt skick utan att parsa den, och sedan kopiera data till en filbaserad lagring, hoppar du över avsnittet **format** i både indata och utdata-datauppsättnings definitioner.<br/><br/>Om du vill parsa innehållet i HTTP-svar under kopieringen stöds följande fil format **typer: text** format, **JsonFormat**, **AvroFormat**, **OrcFormat** och **ParquetFormat**. Under **format** anger du egenskapen **Type** till något av dessa värden. Mer information finns i [JSON-format](supported-file-formats-and-compression-codecs-legacy.md#json-format), [text format](supported-file-formats-and-compression-codecs-legacy.md#text-format), [Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format)-format, Orc- [format](supported-file-formats-and-compression-codecs-legacy.md#orc-format)och [Parquet-format](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |No |
-| komprimering | Ange typ och nivå för komprimeringen för data. Mer information finns i [fil format och komprimerings-codecar som stöds](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/><br/>Typer som stöds: **gzip**, **DEFLATE**, **BZip2** och **ZipDeflate**.<br/>Nivåer som stöds:  **optimal** och **snabbast**. |No |
+| typ | Data uppsättningens **typ** -egenskap måste anges till **HttpFile**. | Ja |
+| relativeUrl | En relativ URL till den resurs som innehåller data. När den här egenskapen inte anges används endast den URL som anges i den länkade tjänst definitionen. | Inga |
+| requestMethod | HTTP-metoden. Tillåtna värden är **Get** (standard) och **post**. | Inga |
+| additionalHeaders | Ytterligare rubriker för HTTP-begäran. | Inga |
+| requestBody | Bröd texten för HTTP-begäran. | Inga |
+| format | Om du vill hämta data från HTTP-slutpunkten i befintligt skick utan att parsa den, och sedan kopiera data till en filbaserad lagring, hoppar du över avsnittet **format** i både indata och utdata-datauppsättnings definitioner.<br/><br/>Om du vill parsa innehållet i HTTP-svar under kopieringen stöds följande fil format **typer: text** format, **JsonFormat**, **AvroFormat**, **OrcFormat** och **ParquetFormat**. Under **format** anger du egenskapen **Type** till något av dessa värden. Mer information finns i [JSON-format](supported-file-formats-and-compression-codecs-legacy.md#json-format), [text format](supported-file-formats-and-compression-codecs-legacy.md#text-format), [Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format)-format, Orc- [format](supported-file-formats-and-compression-codecs-legacy.md#orc-format)och [Parquet-format](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |Inga |
+| komprimering | Ange typ och nivå för komprimeringen för data. Mer information finns i [fil format och komprimerings-codecar som stöds](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/><br/>Typer som stöds: **gzip**, **DEFLATE**, **BZip2** och **ZipDeflate**.<br/>Nivåer som stöds:  **optimal** och **snabbast**. |Inga |
 
 > [!NOTE]
 > Den begärda nytto Last storleken för HTTP-begäran är cirka 500 KB. Om den nytto Last storlek som du vill skicka till webb slut punkten är större än 500 KB bör du överväga att lägga till nytto lasten i mindre segment.
@@ -364,8 +364,8 @@ Om du vill veta mer om egenskaperna kontrollerar du [söknings aktiviteten](cont
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | **Typ** egenskapen för kopierings aktivitets källan måste anges till **HttpSource**. | Yes |
-| httpRequestTimeout | Timeout ( **TimeSpan** -värdet) för http-begäran för att få ett svar. Det här värdet är tids gränsen för att få ett svar, inte tids gränsen för att läsa svars data. Standardvärdet är **00:01:40**.  | No |
+| typ | **Typ** egenskapen för kopierings aktivitets källan måste anges till **HttpSource**. | Ja |
+| httpRequestTimeout | Timeout ( **TimeSpan** -värdet) för http-begäran för att få ett svar. Det här värdet är tids gränsen för att få ett svar, inte tids gränsen för att läsa svars data. Standardvärdet är **00:01:40**.  | Inga |
 
 **Exempel**
 

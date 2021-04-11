@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 3c665795325ed3863583eb0f21f3e0d3f534154a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103201522"
 ---
 # <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>Självstudie: integrera Syncplicity med Azure Active Directory
@@ -95,13 +95,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
    ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
 
-### <a name="configure-syncplicity-sso"></a>Konfigurera Syncplicity SSO
+### <a name="configure-syncplicity-sso&quot;></a>Konfigurera Syncplicity SSO
 
 1. Logga in på din **Syncplicity** -klient.
 
 1. Klicka på **administratör** på menyn högst upp, Välj **Inställningar** och klicka sedan på **anpassad domän och enkel inloggning**.
 
-    ![Syncplicity](./media/syncplicity-tutorial/ic769545.png "Syncplicity")
+    ![Syncplicity](./media/syncplicity-tutorial/ic769545.png &quot;Syncplicity")
 
 1. Utför följande steg på dialog sidan **enkel Sign-On (SSO)** :
 

@@ -5,18 +5,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: bae48dc78eb6973e5bce4d535091bc330c4c897f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c26a7f53609193bf373c3f7f9b1037405d4e518
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102509038"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122143"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Ansluta datorer utan Internet åtkomst med hjälp av Log Analytics gateway i Azure Monitor
-
->[!NOTE]
->Som Microsoft Operations Management Suite (OMS) över gångar till Microsoft Azure övervakaren ändras terminologin. Den här artikeln avser OMS-gateway som Azure Log Analytics Gateway. 
->
 
 Den här artikeln beskriver hur du konfigurerar kommunikation med Azure Automation och Azure Monitor med hjälp av Log Analytics gateway när datorer som är direktanslutna eller som övervakas av Operations Manager inte har någon Internet åtkomst. 
 
@@ -89,6 +85,9 @@ Log Analytics Gateway finns på följande språk:
 Log Analytics Gateway stöder bara Transport Layer Security (TLS) 1,0, 1,1 och 1,2.  Den stöder inte Secure Sockets Layer (SSL).  Konfigurera gatewayen så att den använder minst TLS 1,2 för att säkerställa säkerheten för data som överförs till Log Analytics. Äldre versioner av TLS eller SSL är sårbara. Även om de för närvarande tillåter bakåtkompatibilitet, Undvik att använda dem.  
 
 Mer information finns i [skicka data på ett säkert sätt med TLS 1,2](../logs/data-security.md#sending-data-securely-using-tls-12). 
+
+>[!NOTE]
+>Gatewayen är en vidarebefordrande proxy som inte lagrar några data. När agenten upprättar en anslutning med Azure Monitor, följer det samma krypterings flöde med eller utan gatewayen. Data krypteras mellan klienten och slut punkten. Eftersom gatewayen bara är en tunnel har den inte möjlighet att kontrol lera vad som skickas.
 
 ### <a name="supported-number-of-agent-connections"></a>Antal agent anslutningar som stöds
 

@@ -3,19 +3,19 @@ title: Windows Virtual Desktop tunn klient support – Azure
 description: En kort översikt över tunn klient stöd för virtuella Windows-datorer.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 03/31/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 90459c3eb171e03b1c28c91e766d3a6b765565b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 905451b4ce9c7a2a7c7aa2331ce3d433a9952223
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491477"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122041"
 ---
 # <a name="linux-support"></a>Linux-support
 
-Du kan komma åt Windows virtuella Skriv bords resurser från dina Linux [-enheter med webb klienten](connect-web.md) eller följande klienter som stöds, som tillhandahålls av våra Linux-tunna klient partner. Vi arbetar med ett antal partner för att aktivera Windows virtuella Skriv bords klienter som stöds på fler Linux-baserade operativ system och enheter. Om du behöver stöd för virtuella Windows-datorer på en Linux-plattform som inte visas här kan du berätta för oss på vår [UserVoice-sida](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux).
+Du kan komma åt Windows virtuella Skriv bords resurser från dina Linux [-enheter med webb klienten](connect-web.md) eller följande klienter som stöds, som tillhandahålls av våra Linux-tunna klient partner. Vi arbetar med ett antal partner för att aktivera Windows virtuella Skriv bords klienter som stöds på fler Linux-baserade operativ system och enheter.
 
 ## <a name="connect-with-your-linux-device"></a>Anslut till din Linux-enhet
 

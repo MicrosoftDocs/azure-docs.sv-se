@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 3a09e3f2bf29c09066e9414f9aa02a7879375425
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c0108cf07f1c734ccf4b6e42c013f7237eb7daf2
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563539"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122075"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>Vägledning om paketering och leverans scenario-baserad migrering
 
@@ -30,10 +30,10 @@ Större ändringar av hur innehållet publiceras i v3-API. Den nya publicerings 
 
 ## <a name="packaging-and-delivery-in-v3"></a>Paketering och leverans i v3
 
-1. Skapa [nyckel principer för innehåll](content-key-policy-concept.md).
+1. Skapa [nyckel principer för innehåll](drm-content-key-policy-concept.md).
 1. Skapa [strömmande positionerare](streaming-locators-concept.md).
 1. Hämta de [strömmande Sök vägarna](create-streaming-locator-build-url.md) 
-    1. Konfigurera det för en [tank](dynamic-packaging-overview.md#mpeg-dash-protocol) eller [HLS](dynamic-packaging-overview.md#hls-protocol) spelare.
+    1. Konfigurera det för en [tank](encode-dynamic-packaging-concept.md#mpeg-dash-protocol) eller [HLS](encode-dynamic-packaging-concept.md#hls-protocol) spelare.
 
 Mer information finns i publicera koncept, självstudier och rikt linjer nedan för olika steg.
 
@@ -41,9 +41,9 @@ Mer information finns i publicera koncept, självstudier och rikt linjer nedan f
 
 ### <a name="concepts"></a>Begrepp
 
-- [Dynamisk paketering i Media Services v3](dynamic-packaging-overview.md)
+- [Dynamisk paketering i Media Services v3](encode-dynamic-packaging-concept.md)
 - [Filter](filters-concept.md)
-- [Filtrera dina manifest med hjälp av dynamisk Paketeraren](filters-dynamic-manifest-overview.md)
+- [Filtrera dina manifest med hjälp av dynamisk Paketeraren](filters-dynamic-manifest-concept.md)
 - [Slut punkter för direkt uppspelning (ursprung) i Azure Media Services](streaming-endpoint-concept.md)
 - [Strömma innehåll med CDN-integrering](scale-streaming-cdn.md)
 - [Strömmande positionerare](streaming-locators-concept.md)
@@ -53,7 +53,7 @@ Mer information finns i publicera koncept, självstudier och rikt linjer nedan f
 - [Hantera slut punkter för direkt uppspelning med Media Services v3](manage-streaming-endpoints-howto.md)
 - [CLI-exempel: Publicera en tillgång](cli-publish-asset.md)
 - [Skapa en positionerare för direktuppspelning och skapa URL:er](create-streaming-locator-build-url.md)
-- [Hämta resultatet av ett jobb](download-results-howto.md)
+- [Hämta resultatet av ett jobb](job-download-results-how-to.md)
 - [Signals beskrivande ljud spår](signal-descriptive-audio-howto.md)
 - [Fullständig installation av Azure Media Player](../azure-media-player/azure-media-player-full-setup.md)
 - [Använda Video.js Player med Azure Media Services](how-to-video-js-player.md)

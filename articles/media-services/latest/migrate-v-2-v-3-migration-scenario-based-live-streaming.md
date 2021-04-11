@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 322a599d5ad02ddcf19c61261d968d098b6c9871
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 273a1b5986a72acc1d6725fbb3101c9c1df17e45
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563135"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122058"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>Vägledning för Live streaming-scenario-baserad migrering
 
@@ -35,12 +35,12 @@ Azure Portal har nu stöd för installation och hantering av Live-händelser.  D
 
 Testa det nya sättet att leverera Live-händelser med Media Services innan du flyttar innehållet från v2 till v3. Här är v3-funktionerna för att arbeta med och fundera på migrering.
 
-- Skapa en ny v3 [Live-händelse](live-events-outputs-concept.md#live-events) för kodning. Du kan aktivera [för inställningar för 1080p-och 720p-kodning](live-event-types-comparison.md#system-presets).
-- Använd entiteten [Live output](live-events-outputs-concept.md#live-outputs) i stället för program
+- Skapa en ny v3 [Live-händelse](live-event-outputs-concept.md#live-events) för kodning. Du kan aktivera [för inställningar för 1080p-och 720p-kodning](live-event-types-comparison-reference.md#system-presets).
+- Använd entiteten [Live output](live-event-outputs-concept.md#live-outputs) i stället för program
 - Skapa [strömmande positionerare](streaming-locators-concept.md).
-- Överväg ditt behov av [HLS och tank streck](dynamic-packaging-overview.md) direkt uppspelning.
-- Om du behöver snabb start av Live-händelser går du igenom de nya funktionerna i [vänte läge](live-events-outputs-concept.md#standby-mode) .
-- Om du vill skriva över din Live-händelse medan den inträffar kan du utforska den nya funktionen för [direkt avskriftning](live-transcription.md) .
+- Överväg ditt behov av [HLS och tank streck](encode-dynamic-packaging-concept.md) direkt uppspelning.
+- Om du behöver snabb start av Live-händelser går du igenom de nya funktionerna i [vänte läge](live-event-outputs-concept.md#standby-mode) .
+- Om du vill skriva över din Live-händelse medan den inträffar kan du utforska den nya funktionen för [direkt avskriftning](live-event-live-transcription-how-to.md) .
 - Skapa 24x7x365 Live-händelser i v3 om du behöver en längre strömnings tid.
 - Använd [Event Grid](monitoring/monitor-events-portal-how-to.md) för att övervaka dina Live-händelser.
 
@@ -50,22 +50,22 @@ Se begrepp för Live-händelser, självstudier och hur du vägleder dig nedan f�
 
 ### <a name="concepts"></a>Begrepp
 
-- [Direktsänd strömning med Azure Media Services v3](live-streaming-overview.md)
-- [Live-händelser och Live-utdata i Media Services](live-events-outputs-concept.md)
+- [Direktsänd strömning med Azure Media Services v3](stream-live-streaming-concept.md)
+- [Live-händelser och Live-utdata i Media Services](live-event-outputs-concept.md)
 - [Verifierade lokala direkt uppspelnings kodare](recommended-on-premises-live-encoders.md)
-- [Använd tids växling och Live-utdata för att skapa video uppspelning på begäran](live-event-cloud-dvr.md)
-- [Live-avskrift (för hands version)](live-transcription.md)
-- [Jämförelse av händelse typer i real tid](live-event-types-comparison.md)
-- [Live händelse tillstånd och fakturering](live-event-states-billing.md)
-- [Inställningar för låg latens för live event](live-event-latency.md)
-- [Fel koder för Media Services Live-händelse](live-event-error-codes.md)
+- [Använd tids växling och Live-utdata för att skapa video uppspelning på begäran](live-event-cloud-dvr-time-how-to.md)
+- [Live-Event-Live-avskrift – How-to (för hands version)](live-event-live-transcription-how-to.md)
+- [Jämförelse av händelse typer i real tid](live-event-types-comparison-reference.md)
+- [Live händelse tillstånd och fakturering](live-event-states-billing-concept.md)
+- [Inställningar för låg latens för live event](live-event-latency-reference.md)
+- [Fel koder för Media Services Live-händelse](live-event-error-codes-reference.md)
 
 ### <a name="tutorials-and-quickstarts"></a>Självstudier och snabb starter
 
 - [Självstudie: strömma live med Media Services](stream-live-tutorial-with-api.md)
-- [Skapa en Azure Media Services Live Stream med ONLINEBANKSYSTEM](live-events-obs-quickstart.md)
-- [Snabb start: Ladda upp, koda och strömma innehåll med portalen](manage-assets-quickstart.md)
-- [Snabb start: skapa en Azure Media Services Live Stream med Wirecast](live-events-wirecast-quickstart.md)
+- [Skapa en Azure Media Services Live Stream med ONLINEBANKSYSTEM](live-event-obs-quickstart.md)
+- [Snabb start: Ladda upp, koda och strömma innehåll med portalen](asset-create-asset-upload-portal-quickstart.md)
+- [Snabb start: skapa en Azure Media Services Live Stream med Wirecast](live-event-wirecast-quickstart.md)
 
 ## <a name="samples"></a>Exempel
 

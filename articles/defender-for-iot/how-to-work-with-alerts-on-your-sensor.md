@@ -1,14 +1,14 @@
 ---
-title: Om sensor aviseringar
+title: Förstå sensor aviseringar
 description: Arbeta med aviseringar så att du kan förbättra säkerheten och driften i nätverket.
-ms.date: 11/30/2020
+ms.date: 3/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 178d3aedb44c29f53aab481894defeb4b9355d39
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: a34871342e9a868ba593ae894fdd91b5e99c5a44
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781355"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729430"
 ---
 # <a name="about-sensor-alerts"></a>Om sensor aviseringar
 
@@ -64,9 +64,10 @@ Exempel:
 
   - Händelser för skadlig kod som identifierats på nätverks enheter rapporteras i riskbedömnings rapporter. När aviseringar om händelser för skadlig kod är *avstängda*, kommer berörda enheter inte att beräknas i rapporten om riskbedömning.
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
-- [Lägen för inlärning och smart IT-utbildning](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes)
-- [Visa informationen som tillhandahålls i aviseringar](how-to-view-information-provided-in-alerts.md)
-- [Hantera aviseringshändelsen](how-to-manage-the-alert-event.md)
-- [Påskynda aviserings arbets flöden](how-to-accelerate-alert-incident-response.md)
+Lägen för inlärning [och smart IT-utbildning](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes) 
+ [Visa information som finns i aviseringar](how-to-view-information-provided-in-alerts.md) 
+ [Hantera aviserings händelsen](how-to-manage-the-alert-event.md) 
+ [Påskynda aviserings arbets flöden](how-to-accelerate-alert-incident-response.md) 
+ [Aviserings typer och beskrivningar](alert-engine-messages.md)

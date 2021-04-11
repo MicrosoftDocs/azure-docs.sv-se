@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: mbaldwin
-ms.openlocfilehash: c7635fdc2012ab404709733d8f5849465c2ee82f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc054d1294b55ddd3937ebc7b91643aa349cd8ea
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071581"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122194"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault-säkerhet
 
@@ -46,7 +46,7 @@ När du skapar ett nyckel valv i en Azure-prenumeration associeras det automatis
 
 - **Endast program**: programmet representerar ett huvud namn för tjänsten eller en hanterad identitet. Den här identiteten är det vanligaste scenariot för program som regelbundet behöver komma åt certifikat, nycklar eller hemligheter från nyckel valvet. För att det här scenariot ska fungera `objectId` måste programmet anges i åtkomst principen och `applicationId` får _inte_ anges eller måste vara `null` .
 - **Endast användare**: användaren får åtkomst till nyckel valvet från alla program som är registrerade i klienten. Exempel på den här typen av åtkomst är Azure PowerShell och Azure Portal. För att det här scenariot ska fungera `objectId` måste användaren anges i åtkomst principen och `applicationId` får _inte_ anges eller måste vara `null` .
-- **Program-Plus-användare** (kallas ibland _sammansatt identitet_): användaren krävs åtkomst till nyckel valvet från ett särskilt program _och_ programmet måste använda OBO-flödet för att personifiera användaren. För att det här scenariot ska `applicationId` fungera `objectId` måste både och anges i åtkomst principen. `applicationId`Identifierar det program som krävs och `objectId` identifierar användaren. Det här alternativet är för närvarande inte tillgängligt för data planet Azure RBAC (för hands version).
+- **Program-Plus-användare** (kallas ibland _sammansatt identitet_): användaren krävs åtkomst till nyckel valvet från ett särskilt program _och_ programmet måste använda OBO-flödet för att personifiera användaren. För att det här scenariot ska `applicationId` fungera `objectId` måste både och anges i åtkomst principen. `applicationId`Identifierar det program som krävs och `objectId` identifierar användaren. Det här alternativet är för närvarande inte tillgängligt för data planet Azure RBAC.
 
 I alla typer av åtkomst autentiserar programmet med Azure AD. Programmet använder en [autentiseringsmetod som stöds](../../active-directory/develop/authentication-vs-authorization.md) baserat på program typen. Programmet hämtar en token för en resurs i planet för att ge åtkomst. Resursen är en slut punkt i hanterings-eller data planet, baserat på Azure-miljön. Programmet använder token och skickar en REST API begäran till Key Vault. Läs mer i [hela autentiserings flödet](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
 
@@ -61,14 +61,14 @@ Auktorisering avgör vilka åtgärder som anroparen kan utföra. Auktorisering i
 - *Hanterings planet* är den plats där du hanterar Key Vault och är det gränssnitt som används för att skapa och ta bort valv. Du kan också läsa Key Vault-egenskaper och hantera åtkomst principer.
 - Med *data planet* kan du arbeta med data som lagras i ett nyckel valv. Du kan lägga till, ta bort och ändra nycklar, hemligheter och certifikat.
 
-Program får åtkomst till planen via slut punkter. Åtkomst kontrollerna för de två planerna fungerar oberoende av varandra. För att ge en program åtkomst till att använda nycklar i ett nyckel valv beviljar du data Plans åtkomst med hjälp av en Key Vault åtkomst princip eller Azure RBAC (för hands version). För att ge en användare Läs behörighet till Key Vault egenskaper och taggar, men inte åtkomst till data (nycklar, hemligheter eller certifikat) ger du åtkomst till hanterings planet med Azure RBAC.
+Program får åtkomst till planen via slut punkter. Åtkomst kontrollerna för de två planerna fungerar oberoende av varandra. För att ge en program åtkomst till att använda nycklar i ett nyckel valv beviljar du data Plans åtkomst med hjälp av en Key Vault åtkomst princip eller Azure RBAC. För att ge en användare Läs behörighet till Key Vault egenskaper och taggar, men inte åtkomst till data (nycklar, hemligheter eller certifikat) ger du åtkomst till hanterings planet med Azure RBAC.
 
 I följande tabell visas slut punkterna för hanterings-och data planen.
 
 | Åtkomst &nbsp; plan | Slutpunkter för åtkomst | Operations | Mekanism för åtkomst &nbsp; kontroll |
 | --- | --- | --- | --- |
 | Hanteringsplanet | **EAN**<br> management.azure.com:443<br><br> **Azure Kina 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure amerikanska myndigheter:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 | Skapa, läsa, uppdatera och ta bort nyckel valv<br><br>Ange Key Vault åtkomst principer<br><br>Ange Key Vault Taggar | Azure RBAC |
-| Dataplanet | **EAN**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure Kina 21Vianet:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure amerikanska myndigheter:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | Nycklar: kryptera, dekryptera, wrapKey, unwrapKey, signera, verifiera, Hämta, lista, skapa, uppdatera, importera, ta bort, återställa, säkerhetskopiera, återställa, rensa<br><br> Certifikat: managecontacts, getissuers, listissuers, setissuers, deleteissuers, manageissuers, Hämta, lista, skapa, importera, uppdatera, ta bort, återställa, säkerhetskopiera, återställa, rensa<br><br>  Hemligheter: Hämta, lista, ange, ta bort, återställa, säkerhetskopiera, Återställ, rensa | Key Vault åtkomst princip eller Azure RBAC (för hands version)|
+| Dataplanet | **EAN**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure Kina 21Vianet:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure amerikanska myndigheter:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | Nycklar: kryptera, dekryptera, wrapKey, unwrapKey, signera, verifiera, Hämta, lista, skapa, uppdatera, importera, ta bort, återställa, säkerhetskopiera, återställa, rensa<br><br> Certifikat: managecontacts, getissuers, listissuers, setissuers, deleteissuers, manageissuers, Hämta, lista, skapa, importera, uppdatera, ta bort, återställa, säkerhetskopiera, återställa, rensa<br><br>  Hemligheter: Hämta, lista, ange, ta bort, återställa, säkerhetskopiera, Återställ, rensa | Key Vault åtkomst princip eller Azure RBAC |
 
 ### <a name="managing-administrative-access-to-key-vault"></a>Hantera administrativ åtkomst till Key Vault
 

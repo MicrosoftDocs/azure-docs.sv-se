@@ -51,14 +51,26 @@
           href: schema-cscfg-role.md
         - name: NetworkConfiguration-schema
           href: schema-cscfg-networkconfiguration.md
-    - name: Vanliga frågor och svar
-      href: faq.md
 - name: Gör så här för att
   items:
-    - name: Använd fjärr skrivbords tillägg
-      href: enable-rdp.md
-    - name: Använd WAD-tillägg
-      href: enable-wad.md
+    - name: Migrera till Cloud Services (utökad support)
+      items:
+        - name: Översikt över migrering
+          href: in-place-migration-overview.md
+        - name: Teknisk information om migrering
+          href: in-place-migration-technical-details.md
+        - name: Migrera med hjälp av Azure Portal
+          href: in-place-migration-portal.md
+        - name: Migrera med hjälp av PowerShell
+          href: in-place-migration-powershell.md
+        - name: Vanliga fel och kända problem
+          href: in-place-migration-common-errors.md
+    - name: Använd tillägg
+      items:
+        - name: Använd fjärr skrivbords tillägg
+          href: enable-rdp.md
+        - name: Använd WAD-tillägg
+          href: enable-wad.md
     - name: Aktivera aviseringar
       href: enable-alerts.md
     - name: Konfigurera skalning
@@ -67,6 +79,16 @@
       href: certificates-and-key-vault.md
     - name: Skapa ARM-mall med hjälp av portalen
       href: generate-template-portal.md
+    - name: Växla två moln tjänster
+      href: swap-cloud-service.md
+    - name: Åsidosätt SKU-information
+      href: override-sku.md
+    - name: Felsöka
+      items:
+        - name: Det gick inte att starta rollen
+          href: role-startup-failure.md
+        - name: Vanliga frågor och svar
+          href: faq.md
 - name: Exempel
   items:
     - name: Exempel på mallar

@@ -3,17 +3,18 @@ title: Roll schema för Azure Cloud Services (klassisk) | Microsoft Docs
 description: Roll elementet i en tjänst konfigurations fil anger hur många roll instanser som ska distribueras för varje roll, konfigurations värden och certifikat tumavtrycken.
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 2dc8e14a4e4d8855abb615632bb7d43b9034d360
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd46a37ada1fb96797faee6c8491359561e065d7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743448"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934163"
 ---
 # <a name="azure-cloud-services-classic-config-role-schema"></a>Schema för konfigurations roll för Azure Cloud Services (klassisk)
 

@@ -10,58 +10,57 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: b7bf924ba8514aa8da1d466ea4852f3f9caaf646
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5bf4bbe2c8dc863f67dffb50609f7775a4499e3a
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726699"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073469"
 ---
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
+
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
 
 - Skapa ett Azure-konto med en aktiv prenumeration. Mer information finns i [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- Installera [Xcode](https://developer.apple.com/xcode/) och [Cocoapods](https://cocoapods.org/)kommer vi att använda Xcode för att skapa ett iOS-program för snabb start och Cocoapods för att installera beroenden.
-- Skapa en Azure Communication Services-resurs. Mer information finns i [skapa en Azure Communication-resurs](../../create-communication-resource.md). Du måste **Registrera resurs slut punkten** för den här snabb starten.
-- Skapa **två** ACS-användare och utfärda dem till användar åtkomst [token](../../access-tokens.md)för användar åtkomst. Var noga med att ange omfånget till **chatten** och **notera token-strängen och userId-strängen**. I den här snabb starten kommer vi att skapa en tråd med en första deltagare och sedan lägga till en andra deltagare i tråden.
+- Installera [Xcode](https://developer.apple.com/xcode/) och [CocoaPods](https://cocoapods.org/). Du kan använda Xcode för att skapa ett iOS-program för snabb starten och CocoaPods för att installera beroenden.
+- Skapa en Azure Communication Services-resurs. Mer information finns i [snabb start: skapa och hantera resurser för kommunikations tjänster](../../create-communication-resource.md). I den här snabb starten måste du registrera resurs slut punkten.
+- Skapa två användare i Azure Communication Services och utfärda dem till en [åtkomsttoken för användare](../../access-tokens.md). Se till att ange omfånget till `chat` och anteckna `token` strängen samt `userId` strängen. I den här snabb starten skapar du en tråd med en första deltagare och lägger sedan till en andra deltagare i tråden.
 
 ## <a name="setting-up"></a>Konfigurera
 
 ### <a name="create-a-new-ios-application"></a>Skapa ett nytt iOS-program
 
-Öppna Xcode och välj `Create a new Xcode project` .
+Öppna Xcode och välj **skapa ett nytt Xcode-projekt**. Välj sedan **iOS** som plattform och **app** för mallen.
 
-I nästa fönster väljer `iOS` du som plattform och `App` för mallen.
+Ange **ChatQuickstart** som projekt namn. Välj sedan **storyboard** som gränssnitt, **UIKit-appen delegeras** som livs cykel och **Swift** som språk.
 
-När du väljer alternativ anger `ChatQuickstart` du som projekt namn. Välj `Storyboard` som gränssnitt, `UIKit App Delegate` som livs cykel och `Swift` som språk.
-
-Klicka på Nästa och välj den katalog där du vill att projektet ska skapas.
+Välj **Nästa** och välj den katalog där du vill att projektet ska skapas.
 
 ### <a name="install-the-libraries"></a>Installera biblioteken
 
-Vi använder Cocoapods för att installera de nödvändiga kommunikations tjänst beroendena.
+Använd CocoaPods för att installera de nödvändiga beroendena för kommunikations tjänster.
 
-Från kommando raden navigerar du i `ChatQuickstart` iOS-projektets rot Katalog.
-
-Skapa en Podfile: `pod init`
+På kommando raden går du in i rot katalogen för iOS- `ChatQuickstart` projektet. Skapa en Podfile med följande kommando: `pod init` .
 
 Öppna Podfile och Lägg till följande beroenden till `ChatQuickstart` målet:
+
 ```
 pod 'AzureCommunication', '~> 1.0.0-beta.9'
 pod 'AzureCommunicationChat', '~> 1.0.0-beta.9'
 ```
 
-Installera beroendena skapas även en arbets yta för Xcode: `pod install`
+Installera beroenden med följande kommando: `pod install` . Observera att det också skapar en Xcode-arbetsyta.
 
-**När du har kört Pod installerat öppnar du projektet på nytt i Xcode genom att välja det nya `.xcworkspace` .**
+När du `pod install` har kört öppnar du projektet på nytt i Xcode genom att välja det nyss skapade `.xcworkspace` .
 
-### <a name="setup-the-placeholders"></a>Konfigurera plats hållarna
+### <a name="set-up-the-placeholders"></a>Konfigurera plats hållarna
 
 Öppna arbets ytan `ChatQuickstart.xcworkspace` i Xcode och öppna sedan `ViewController.swift` .
 
-I den här snabb starten kommer vi att lägga till vår kod i `viewController` och visa utdata i Xcode-konsolen. Den här snabb starten tar inte itu med att skapa ett användar gränssnitt i iOS. 
+I den här snabb starten lägger du till din kod till `viewController` och visar utdata i Xcode-konsolen. Den här snabb starten tar inte itu med att skapa ett användar gränssnitt i iOS. 
 
-Överst i Importera- `viewController.swift` och- `AzureCommunication` `AzureCommunicatonChat` biblioteken:
+`viewController.swift`Importera `AzureCommunication` och- `AzureCommunicatonChat` biblioteken överst i:
 
 ```
 import AzureCommunication
@@ -98,7 +97,7 @@ override func viewDidLoad() {
     }
 ```
 
-Vi använder en semafor för att synkronisera vår kod i demonstrations syfte. I följande steg ska vi ersätta plats hållarna med exempel kod med hjälp av Azure Communication Services chat-biblioteket.
+I demonstrations syfte använder vi en semafor för att synkronisera koden. I följande steg ersätter du plats hållarna med exempel kod med hjälp av Azure Communication Services chat-biblioteket.
 
 
 ### <a name="create-a-chat-client"></a>Skapa en Chat-klient
@@ -120,24 +119,24 @@ let endpoint = "<ACS_RESOURCE_ENDPOINT>"
     )
 ```
 
-Ersätt `<ACS_RESOURCE_ENDPOINT>` med slut punkten för ACS-resursen.
-Ersätt `<ACCESS_TOKEN>` med en giltig ACS-åtkomsttoken.
+Ersätt `<ACS_RESOURCE_ENDPOINT>` med slut punkten för Azure Communication Services-resursen. Ersätt `<ACCESS_TOKEN>` med en giltig åtkomsttoken för kommunikations tjänster.
 
-Den här snabb starten omfattar inte att skapa en tjänst nivå för att hantera token för chatt-programmet, men det rekommenderas. Se följande dokumentation för mer information om [Chat-arkitekturen](../../../concepts/chat/concepts.md)
+Den här snabb starten behandlar inte att skapa en tjänst nivå för att hantera token för chatt-programmet, men det rekommenderas. Mer information finns i avsnittet "chatt-arkitektur" i [chatt-koncept](../../../concepts/chat/concepts.md).
 
-Läs mer om [åtkomsttoken för användare](../../access-tokens.md).
+Mer information om token för användar åtkomst finns i [snabb start: skapa och hantera åtkomsttoken](../../access-tokens.md).
 
 ## <a name="object-model"></a>Objekt modell 
+
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services Chat SDK för Java Script.
 
 | Name                                   | Beskrivning                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ChatClient | Den här klassen krävs för chatt-funktionen. Du instansierar den med din prenumerations information och använder den för att skapa, hämta och ta bort trådar. |
-| ChatThreadClient | Den här klassen krävs för chatt-trådens funktion. Du får en instans via ChatClient och använder den för att skicka/ta emot/uppdatera/ta bort meddelanden, lägga till/ta bort/hämta användare, skicka meddelanden och läsa kvitton, prenumerera på chatt-händelser. |
+| `ChatClient` | Den här klassen krävs för chatt-funktionen. Du instansierar den med din prenumerations information och använder den för att skapa, hämta och ta bort trådar. |
+| `ChatThreadClient` | Den här klassen krävs för chatt-trådens funktion. Du får en instans via `ChatClient` , och använder den för att skicka, ta emot, uppdatera och ta bort meddelanden. Du kan också använda den för att lägga till, ta bort och hämta användare, skicka meddelanden till Skriv meddelanden och läsa kvitton och prenumerera på chatt-händelser. |
 
 ## <a name="start-a-chat-thread"></a>Starta en chatt-tråd
 
-Nu ska vi använda vår `ChatClient` för att skapa en ny tråd med en första användare.
+Nu använder du `ChatClient` för att skapa en ny tråd med en första användare.
 
 Ersätt kommentaren `<CREATE A CHAT THREAD>` med följande kod:
 
@@ -168,11 +167,11 @@ semaphore.wait()
 
 Ersätt `<USER_ID>` med ett giltigt användar-ID för kommunikations tjänster.
 
-Vi använder en semafor här för att vänta på slut för ande hanteraren innan du fortsätter. Vi kommer att använda `threadId` från svaret som returnerades till slut för ande hanteraren i senare steg.
+Du använder en semafor här för att vänta på slut för ande hanteraren innan du fortsätter. I senare steg använder du `threadId` från svaret som returnerades till slut för ande hanteraren.
 
 ## <a name="get-a-chat-thread-client"></a>Hämta en klient för chatt-tråd
 
-Nu när vi har skapat en chatt-tråd får vi en `ChatThreadClient` för att utföra åtgärder i tråden.
+Nu när du har skapat en chatt-tråd kan du hämta en `ChatThreadClient` för att utföra åtgärder i tråden.
 
 Ersätt kommentaren `<CREATE A CHAT THREAD CLIENT>` med följande kod:
 
@@ -202,7 +201,7 @@ chatThreadClient.send(message: message) { result, _ in
 semaphore.wait()
 ```
 
-Först utformar vi den `SendChatMessageRequest` som innehåller innehållet och avsändarernas visnings namn (Alternativt kan även innehålla resurs historik tiden). Svaret som returnerades till slut för ande hanteraren innehåller ID: t för meddelandet som skickades.
+Först skapar du `SendChatMessageRequest` , som innehåller innehållet och avsändarens visnings namn. Den här begäran kan också innehålla resurs historik tiden, om du vill ta med den. Svaret som returnerades till slut för ande hanteraren innehåller ID: t för meddelandet som skickades.
 
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Lägg till en användare som deltagare i chatt-tråden
 
@@ -226,9 +225,9 @@ chatThreadClient.add(participants: [user]) { result, _ in
 semaphore.wait()
 ```
 
-Ersätt `<USER_ID>` med ACS-användar-ID för den användare som ska läggas till.
+Ersätt `<USER_ID>` med kommunikations tjänsternas användar-ID för den användare som ska läggas till.
 
-När du lägger till en deltagare i en tråd kan svaret som returnerades slutföras fel. Felen representerar fel vid tillägg av vissa deltagare.
+När du lägger till en deltagare i en tråd kan svaret som returneras innehålla fel. Felen representerar fel vid tillägg av vissa deltagare.
 
 ## <a name="list-users-in-a-thread"></a>Lista användare i en tråd
 
@@ -270,9 +269,9 @@ chatThreadClient
     }
 ```
 
-Ersätt `<USER ID>` med användar-ID för kommunikations tjänster för den deltagare som tas bort.
+Ersätt `<USER ID>` med kommunikations tjänsternas användar-ID för den deltagare som tas bort.
 
 ## <a name="run-the-code"></a>Kör koden
 
-I Xcode trycker du på Kör-knappen för att skapa och köra projektet. I-konsolen kan du visa utdata från koden och logga utdata från ChatClient.
+I Xcode väljer du **Kör** för att skapa och köra projektet. I-konsolen kan du visa utdata från koden och logga utdata från Chat-klienten.
 

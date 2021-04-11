@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 12/18/2020
-ms.openlocfilehash: 315de18539bf083515658b40fa70f3c214d7c909
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/30/2021
+ms.openlocfilehash: a56a41b704b12da08cf86b450ac1c734409c8032
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97739747"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219322"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Ansluta till virtuella Azure-nätverk från Azure Logic Apps med hjälp av en integrerings tjänst miljö (ISE)
 
@@ -80,10 +80,10 @@ När du använder en ISE med ett virtuellt Azure-nätverk har ett vanligt instal
 
 För att se till att din ISE är tillgänglig och att Logi Kap par i som ISE kan kommunicera via varje undernät i det virtuella nätverket, [öppnar du portarna som beskrivs i den här tabellen för varje undernät](#network-ports-for-ise). Om några av de portar som krävs inte är tillgängliga fungerar inte din ISE som den ska.
 
-* Om du har flera ISE-instanser som behöver åtkomst till andra slut punkter som har IP-begränsningar distribuerar du en [Azure-brandvägg](../firewall/overview.md) eller en [virtuell nätverks](../virtual-network/virtual-networks-overview.md#filter-network-traffic) installation till det virtuella nätverket och dirigerar utgående trafik via brand väggen eller den virtuella nätverks installationen. Du kan sedan [Konfigurera en enskild, utgående, offentlig, statisk och förutsägbar IP-adress](connect-virtual-network-vnet-set-up-single-ip-address.md) som alla instanser av ISE i det virtuella nätverket kan använda för att kommunicera med mål systemen. På så sätt behöver du inte konfigurera ytterligare brand Väggs öppningar på dessa mål system för varje ISE.
+* Om du har flera ISE-instanser som behöver åtkomst till andra slut punkter som har IP-begränsningar distribuerar du en [Azure-brandvägg](../firewall/overview.md) eller en [virtuell nätverks](../virtual-network/virtual-networks-overview.md#filter-network-traffic) installation till det virtuella nätverket och dirigerar utgående trafik via brand väggen eller den virtuella nätverks installationen. Du kan sedan [Konfigurera en enskild, utgående, offentlig, statisk och förutsägbar IP-adress](connect-virtual-network-vnet-set-up-single-ip-address.md) som alla instanser av ISE i det virtuella nätverket kan använda för att kommunicera med mål systemen. På så sätt behöver du inte konfigurera extra brand Väggs öppningar på dessa mål system för varje ISE.
 
    > [!NOTE]
-   > Du kan använda den här metoden för en enskild ISE när ditt scenario kräver att du begränsar antalet IP-adresser som behöver åtkomst. Överväg om ytterligare kostnader för brand väggen eller den virtuella nätverks enheten passar ditt scenario. Läs mer om [priser för Azure-brandvägg](https://azure.microsoft.com/pricing/details/azure-firewall/).
+   > Du kan använda den här metoden för en enskild ISE när ditt scenario kräver att du begränsar antalet IP-adresser som behöver åtkomst. Överväg om de extra kostnaderna för brand väggen eller den virtuella nätverks enheten passar ditt scenario. Läs mer om [priser för Azure-brandvägg](https://azure.microsoft.com/pricing/details/azure-firewall/).
 
 * Om du har skapat ett nytt virtuellt Azure-nätverk och undernät utan några begränsningar behöver du inte konfigurera [nätverks säkerhets grupper (NSG: er)](../virtual-network/network-security-groups-overview.md#network-security-groups) i det virtuella nätverket för att styra trafiken mellan undernät.
 
@@ -91,7 +91,7 @@ För att se till att din ISE är tillgänglig och att Logi Kap par i som ISE kan
 
   När du ställer in [säkerhets regler för NSG](../virtual-network/network-security-groups-overview.md#security-rules)måste du använda *både* **TCP** -och **UDP** -protokollen, eller så kan du välja **en** i stället så att du inte behöver skapa separata regler för varje protokoll. NSG säkerhets regler beskriver de portar som du måste öppna för IP-adresserna som behöver åtkomst till dessa portar. Kontrol lera att alla brand väggar, routrar eller andra objekt som finns mellan dessa slut punkter också behåller de portarna som är tillgängliga för dessa IP-adresser.
 
-* Om du konfigurerar Tvingad tunnel trafik genom brand väggen för att omdirigera Internet-bundit trafik, granskar du [ytterligare krav för Tvingad tunnel](#forced-tunneling)trafik.
+* Om du konfigurerar Tvingad tunnel trafik genom brand väggen för att omdirigera Internet-bundit trafik, kontrollerar du [kraven för Tvingad tunnel](#forced-tunneling)trafik.
 
 <a name="network-ports-for-ise"></a>
 
@@ -108,9 +108,9 @@ I den här tabellen beskrivs de portar som din ISE måste ha åtkomst till och s
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | Kommunikation mellan undernät i det virtuella nätverket | Adress utrymme för det virtuella nätverket med ISE-undernät | * | Adress utrymme för det virtuella nätverket med ISE-undernät | * | Krävs för att trafik ska flöda *mellan* under näten i det virtuella nätverket. <p><p>**Viktigt**: för att trafik ska flöda mellan *komponenterna* i varje undernät, se till att du öppnar alla portar i varje undernät. |
 | Båda: <p>Kommunikation till din Logic app <p><p>Kör historik för Logic app| Intern ISE: <br>**VirtualNetwork** <p><p>Extern ISE: **Internet** eller se **kommentarer** | * | **VirtualNetwork** | 443 | I stället för att använda taggen **Internet** service kan du ange käll-IP-adressen för följande objekt: <p><p>– Datorn eller tjänsten som anropar alla begär ande utlösare eller Webhooks i din Logic app <p>– Datorn eller tjänsten som du vill få åtkomst till kör historik för Logic app <p><p>**Viktigt**: om du stänger eller blockerar den här porten förhindras anrop till Logic Apps som har begär ande utlösare eller Webhooks. Du hindras också från att komma åt indata och utdata för varje steg i körnings historiken. Du kommer dock inte hindras från att komma åt körnings historiken för Logic app.|
-| Logic Apps designer – dynamiska egenskaper | **LogicAppsManagement** | * | **VirtualNetwork** | 454 | Förfrågningar kommer från den Logic Apps åtkomst slut punktens [inkommande IP-adresser](../logic-apps/logic-apps-limits-and-config.md#inbound) för den regionen. |
-| Kopplings distribution | **AzureConnectors** | * | **VirtualNetwork** | 454 | Krävs för att distribuera och uppdatera anslutningar. Om du stänger eller blockerar den här porten kan ISE-distributioner Miss Missing och förhindrar anslutnings uppdateringar och korrigeringar. |
-| Nätverks hälso kontroll | **LogicApps** | * | **VirtualNetwork** | 454 | Förfrågningar kommer från Logic Apps åtkomst slut punktens [inkommande IP-adresser](../logic-apps/logic-apps-limits-and-config.md#inbound) och [utgående IP-adresser](../logic-apps/logic-apps-limits-and-config.md#outbound) för den regionen. |
+| Logic Apps designer – dynamiska egenskaper | **LogicAppsManagement** | * | **VirtualNetwork** | 454 | Förfrågningar kommer från den Logic Apps åtkomst slut punktens [inkommande IP-adresser](../logic-apps/logic-apps-limits-and-config.md#inbound) för den regionen. <p><p>**Viktigt**: om du arbetar med Azure Government molnet fungerar inte **LogicAppsManagement** -tjänst tag gen. I stället måste du ange Logic Apps [inkommande IP-adresser](../logic-apps/logic-apps-limits-and-config.md#azure-government-inbound) för Azure Government. |
+| Nätverks hälso kontroll | **LogicApps** | * | **VirtualNetwork** | 454 | Förfrågningar kommer från Logic Apps åtkomst slut punktens [inkommande IP-adresser](../logic-apps/logic-apps-limits-and-config.md#inbound) och [utgående IP-adresser](../logic-apps/logic-apps-limits-and-config.md#outbound) för den regionen. <p><p>**Viktigt**: om du arbetar med Azure Government molnet fungerar inte **LogicApps** -tjänst tag gen. I stället måste du ange både Logic Apps [inkommande IP-adresser](../logic-apps/logic-apps-limits-and-config.md#azure-government-inbound) och [utgående IP-adresser](../logic-apps/logic-apps-limits-and-config.md#azure-government-outbound) för Azure Government. |
+| Kopplings distribution | **AzureConnectors** | * | **VirtualNetwork** | 454 | Krävs för att distribuera och uppdatera anslutningar. Om du stänger eller blockerar den här porten kan ISE-distributioner Miss Missing och förhindrar anslutnings uppdateringar och korrigeringar. <p><p>**Viktigt**: om du arbetar med Azure Government molnet fungerar inte **AzureConnectors** -tjänst tag gen. I stället måste du ange [utgående IP-adresser för Managed Connector](../logic-apps/logic-apps-limits-and-config.md#azure-government-outbound) för Azure Government. |
 | Beroende för App Service hantering | **AppServiceManagement** | * | **VirtualNetwork** | 454, 455 ||
 | Kommunikation från Azure Traffic Manager | **AzureTrafficManager** | * | **VirtualNetwork** | Intern ISE: 454 <p><p>Extern ISE: 443 ||
 | Båda: <p>Distribution av kopplings princip <p>API Management hanterings slut punkt | **API Management** | * | **VirtualNetwork** | 3443 | För distribution av anslutnings principer krävs port åtkomst för att distribuera och uppdatera anslutningar. Om du stänger eller blockerar den här porten kan ISE-distributioner Miss Missing och förhindrar anslutnings uppdateringar och korrigeringar. |
@@ -144,7 +144,7 @@ Dessutom måste du lägga till utgående regler för [App Service-miljön (ASE)]
 
 #### <a name="forced-tunneling-requirements"></a>Krav för Tvingad tunnel trafik
 
-Om du ställer in eller använder [Tvingad tunnel trafik](../firewall/forced-tunneling.md) genom brand väggen måste du tillåta ytterligare externa beroenden för din ISE. Med Tvingad tunnel trafik kan du omdirigera Internet-bundit trafik till ett utsedd nästa hopp, till exempel ditt virtuella privata nätverk (VPN) eller till en virtuell installation, i stället för till Internet så att du kan inspektera och granska utgående nätverks trafik.
+Om du ställer in eller använder [Tvingad tunnel trafik](../firewall/forced-tunneling.md) genom brand väggen måste du tillåta extra externa beroenden för din ISE. Med Tvingad tunnel trafik kan du omdirigera Internet-bundit trafik till ett utsedd nästa hopp, till exempel ditt virtuella privata nätverk (VPN) eller till en virtuell installation, i stället för till Internet så att du kan inspektera och granska utgående nätverks trafik.
 
 Om du inte tillåter åtkomst för dessa beroenden Miss lyckas din ISE-distribution och din distribuerade ISE slutar fungera.
 
@@ -193,7 +193,7 @@ Om du inte tillåter åtkomst för dessa beroenden Miss lyckas din ISE-distribut
    | **Namn på integrerings tjänst miljö** | Ja | <*miljö namn*> | Ditt ISE-namn, som endast får innehålla bokstäver, siffror, bindestreck ( `-` ), under streck ( `_` ) och punkter ( `.` ). |
    | **Plats** | Ja | <*Azure-datacenter-region*> | Azure Data Center-regionen där du distribuerar din miljö |
    | **SKU** | Ja | **Premium** eller **Developer (service avtal)** | ISE-SKU: n för att skapa och använda. För skillnader mellan dessa SKU: er, se [ISE SKU: er](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level). <p><p>**Viktigt**: det här alternativet är endast tillgängligt vid skapande av ISE och kan inte ändras senare. |
-   | **Ytterligare kapacitet** | Premium: <br>Ja <p><p>Utvecklarläget <br>Inte tillämpligt | Premium: <br>0 till 10 <p><p>Utvecklarläget <br>Inte tillämpligt | Antalet ytterligare bearbetnings enheter som ska användas för denna ISE-resurs. Information om hur du lägger till kapacitet när du har skapat finns i [lägga till ISE-kapacitet](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) |
+   | **Ytterligare kapacitet** | Premium: <br>Ja <p><p>Utvecklarläget <br>Inte tillämpligt | Premium: <br>0 till 10 <p><p>Utvecklarläget <br>Inte tillämpligt | Antalet extra bearbetnings enheter som ska användas för denna ISE-resurs. Information om hur du lägger till kapacitet när du har skapat finns i [lägga till ISE-kapacitet](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) |
    | **Åtkomst slut punkt** | Ja | **Intern** eller **extern** | Den typ av åtkomst slut punkter som ska användas för din ISE. Dessa slut punkter avgör om begäran eller webhook-utlösare på Logic Apps i din ISE kan ta emot samtal utanför det virtuella nätverket. <p><p>Om du till exempel vill använda följande webhook-baserade utlösare, se till att du väljer **externt**: <p><p>– Azure-DevOps <br>-Azure Event Grid <br>-Common Data Service <br>– Office 365 <br>– SAP (ISE-version) <p><p>Valet påverkar också hur du kan visa och komma åt indata och utdata i din Logic app kör historik. Mer information finns i [åtkomst till ISE-slutpunkt](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). <p><p>**Viktigt**: du kan bara välja åtkomst slut punkten under skapande av ISE och inte ändra det här alternativet senare. |
    | **Virtuellt nätverk** | Ja | <*Azure-Virtual-Network-Name*> | Det virtuella Azure-nätverket där du vill mata in din miljö så att Logic Apps i den miljön kan komma åt ditt virtuella nätverk. Om du inte har ett nätverk [skapar du först ett virtuellt Azure-nätverk](../virtual-network/quick-create-portal.md). <p><p>**Viktigt**: du kan *bara* utföra den här inmatningen när du skapar din ISE. |
    | **Undernät** | Ja | <*undernät-resurs lista*> | En ISE kräver fyra *tomma* undernät, vilket krävs för att skapa och distribuera resurser i din ISE och används av interna Logic Apps-komponenter, till exempel anslutningar och cachelagring för prestanda. <p>**Viktigt**: se till att du [granskar kraven för undernät innan du fortsätter med de här stegen för att skapa dina undernät](#create-subnet). |
@@ -221,7 +221,7 @@ Om du inte tillåter åtkomst för dessa beroenden Miss lyckas din ISE-distribut
      > * 168.63.129.16/32
      > * 169.254.169.254/32
 
-   * Använder en `/27` i adress utrymmet eftersom varje undernät kräver 32 adresser. Har till exempel `10.0.0.0/27` 32 adresser eftersom 2<sup>(32-27)</sup> är 2<sup>5</sup> eller 32. Fler adresser ger inga ytterligare förmåner. Mer information om hur du beräknar adresser finns i [IPv4 CIDR-block](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
+   * Använder en `/27` i adress utrymmet eftersom varje undernät kräver 32 adresser. Har till exempel `10.0.0.0/27` 32 adresser eftersom 2<sup>(32-27)</sup> är 2<sup>5</sup> eller 32. Fler adresser ger inte extra fördelar. Mer information om hur du beräknar adresser finns i [IPv4 CIDR-block](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 
    * Om du använder [ExpressRoute](../expressroute/expressroute-introduction.md)måste du [skapa en](../virtual-network/manage-route-table.md) routningstabell med följande väg och länka tabellen till varje undernät som används av din ISE:
 

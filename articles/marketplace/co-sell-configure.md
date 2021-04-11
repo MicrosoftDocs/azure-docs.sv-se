@@ -8,12 +8,12 @@ author: palanis-MSFT
 ms.author: palanis
 ms.reviewer: stmummer
 ms.date: 3/17/2021
-ms.openlocfilehash: ab7a0c3fa947fdf62672013b5a557d0447eb67c5
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: db502f4652a6ae541a504249475898e3e771f90d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106861"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563403"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>Konfigurera samförsäljning för ett erbjudande för handels platser
 
@@ -38,7 +38,7 @@ Alternativet Co-Sälj är tillgängligt för följande typer av erbjudanden.
 1. Logga in på [partner Center](https://partner.microsoft.com/dashboard/home).
 1. På den vänstra navigerings menyn väljer du **kommersiell Marketplace**-  >  **Översikt**.
     > [!TIP]
-    > Om du inte ser **kommersiell marknads** plats i det vänstra navigerings fönstret, [skapar du ett kommersiellt marknads plats konto i Partner Center](create-account.md) och kontrollerar att ditt konto har registrerats i det kommersiella Marketplace-programmet.
+    > Om du inte ser **kommersiell marknads** plats i det vänstra navigerings fönstret, [skapar du ett kommersiellt marknads plats konto i Partner Center](./partner-center-portal/create-account.md) och kontrollerar att ditt konto har registrerats i det kommersiella Marketplace-programmet.
 1. På fliken **Översikt** väljer du det erbjudande du vill samsälja.
     > [!NOTE]
     > Du kan konfigurera samförsäljning för ett nytt erbjudande som ännu inte har publicerats eller med ett erbjudande som redan har publicerats.
