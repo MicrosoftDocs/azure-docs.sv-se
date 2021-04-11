@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 03/10/2021
+ms.date: 04/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 435a0b85d205328d10f8762498c7a981d7ee45f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 074bffb8614be1f71ba1956fd5a238bc19354c58
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102611835"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028751"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Samla in Azure Active Directory B2C loggar med Application Insights
 
@@ -31,6 +31,18 @@ De detaljerade aktivitets loggarna som beskrivs här ska **bara** aktive ras und
 ## <a name="set-up-application-insights"></a>Konfigurera Application Insights
 
 Om du inte redan har en, skapar du en instans av Application Insights i din prenumeration.
+
+> [!TIP]
+> En enda instans av Application Insights kan användas för flera Azure AD B2C klienter. Sedan kan du filtrera efter klienten eller princip namnet i din fråga. Mer information finns i [loggarna i Application Insights](#see-the-logs-in-application-insights) exempel.
+
+Följ dessa steg om du vill använda en avslutande instans av Application Insights i din prenumeration:
+
+1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Välj filtret **katalog + prenumeration** på den översta menyn och välj sedan den katalog som innehåller din Azure-prenumeration (inte din Azure AD B2C-katalog).
+1. Öppna Application Insights resurs som du skapade tidigare.
+1. På sidan **Översikt** och registrera **Instrumentation-nyckeln**
+
+Följ dessa steg om du vill skapa en instans av Application Insights i din prenumeration:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Välj filtret **katalog + prenumeration** på den översta menyn och välj sedan den katalog som innehåller din Azure-prenumeration (inte din Azure AD B2C-katalog).
@@ -96,12 +108,59 @@ Här är en lista över frågor som du kan använda för att visa loggarna:
 
 | Fråga | Beskrivning |
 |---------------------|--------------------|
-`traces` | Se alla loggar som genererats av Azure AD B2C |
-`traces | where timestamp > ago(1d)` | Se alla loggar som genererats av Azure AD B2C den senaste dagen
+| `traces` | Hämta alla loggar som genereras av Azure AD B2C |
+| `traces | where timestamp > ago(1d)` | Hämta alla loggar som genererats av Azure AD B2C den senaste dagen.|
+| `traces | where message contains "exception" | where timestamp > ago(2h)`|  Hämta alla loggar med fel från de senaste två timmarna.|
+| `traces | where customDimensions.Tenant == "contoso.onmicrosoft.com" and customDimensions.UserJourney  == "b2c_1a_signinandup"` | Hämta alla loggar som genereras av Azure AD B2C *contoso.onmicrosoft.com* -klient och användar resa är *b2c_1a_signinandup*. |
+| `traces | where customDimensions.CorrelationId == "00000000-0000-0000-0000-000000000000"`| Hämta alla loggar som genereras av Azure AD B2C för ett korrelations-ID. Ersätt korrelations-ID: t med ditt korrelations-ID. | 
 
 Posterna kan vara långa. Exportera till CSV för en närmare titt.
 
 Mer information om frågor finns i [Översikt över logg frågor i Azure Monitor](../azure-monitor/logs/log-query-overview.md).
+
+## <a name="see-the-logs-in-vs-code-extension"></a>Se loggarna i VS Code-tillägget
+
+Vi rekommenderar att du installerar [Azure AD B2C-tillägget](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) för [vs Code](https://code.visualstudio.com/). Med Azure AD B2C-tillägget ordnas loggarna efter princip namn, korrelations-ID (Application Insights visar den första siffran i korrelations-ID: t) och loggens tidsstämpel. Den här funktionen hjälper dig att hitta relevant logg baserat på den lokala tids stämplingen och se användar resan som utförd av Azure AD B2C.
+
+> [!NOTE]
+> Communityn har utvecklat vs Code-tillägget för Azure AD B2C för att hjälpa identitets utvecklare. Tillägget stöds inte av Microsoft och görs tillgängligt helt och hållet.
+
+### <a name="set-application-insights-api-access"></a>Ange Application Insights-API-åtkomst
+
+När du har konfigurerat Application Insights och konfigurerat den anpassade principen måste du hämta ditt Application Insights **API-ID** och skapa **API-nyckel**. Både API-ID och API-nyckeln används av Azure AD B2C-tillägget för att läsa Application Insights Events (telemetrivärden). Dina API-nycklar bör hanteras som lösen ord. Behåll IT-hemligheten.
+
+> [!NOTE]
+> Application Insights Instrumentation-nyckeln som du skapar tidigare används av Azure AD B2C för att skicka telemetrivärden till Application Insights. Du använder bara Instrumentation-nyckeln i din Azure AD B2C-princip, inte i vs Code-tillägget.
+
+Så här hämtar du Application Insights-ID och nyckel:
+
+1. I Azure Portal öppnar du Application Insights resursen för ditt program.
+1. Välj **Inställningar** och välj sedan **API-åtkomst**.
+1. Kopiera **program-ID**
+1. Välj **skapa API-nyckel**
+1. Markera rutan **Läs telemetri** .
+1. Kopiera **nyckeln** innan du stänger bladet skapa API-nyckel och spara den på ett säkert sätt. Om du tappar bort nyckeln måste du skapa en ny.
+
+    ![Skärm bild som visar hur du skapar API-åtkomst nyckel.](./media/troubleshoot-with-application-insights/application-insights-api-access.png)
+
+### <a name="set-up-azure-ad-b2c-vs-code-extension"></a>Konfigurera Azure AD B2C VS Code-tillägg
+
+Nu har du Azure Application Insights API-ID och nyckel, kan du konfigurera vs Code-tillägget för att läsa loggarna. Azure AD B2C VS Code-tillägg innehåller två omfång för inställningar:
+
+- **Globala inställningar för användare** – inställningar som tillämpas globalt på valfri instans av vs Code som du öppnar.
+- **Inställningar för arbets yta** – inställningar som lagras i din arbets yta och gäller endast när arbets ytan öppnas (använder vs Code **Open-mapp**).
+
+1. Klicka på ikonen **Inställningar** i **Azure AD B2C spårnings** Utforskaren.
+
+    ![Skärm bild som visar Välj Application Insights-inställningar.](./media/troubleshoot-with-application-insights/app-insights-settings.png)
+
+1. Ange Azure Application Insights **-ID** och **nyckel**.
+1. Klicka på **Spara**
+
+När du har sparat inställningarna visas Application Insights-loggarna i fönstret **Azure AD B2C trace (App Insights)** .
+
+![Skärm bild av Azure AD B2C-tillägget för VSCode, som presenterar Azure Application Insights-spårningen.](./media/troubleshoot-with-application-insights/vscode-extension-application-insights-trace.png)
+
 
 ## <a name="configure-application-insights-in-production"></a>Konfigurera Application Insights i produktion
 
@@ -128,12 +187,8 @@ För att förbättra produktions miljöns prestanda och förbättra användar up
    
 1. Ladda upp och testa din princip.
 
+
+
 ## <a name="next-steps"></a>Nästa steg
 
-Communityn har utvecklat ett visningsverktyg för användarresan som är till hjälp för identitetsutvecklare. Det läser från din Application Insights-instans och visar en välstrukturerad vy över händelserna längs användarresan. Du laddar ned källkoden och distribuerar den i din egen lösning.
-
-Användarens körnings spelare stöds inte av Microsoft och görs tillgänglig enbart i befintligt skick.
-
-Du hittar den version av visnings programmet som läser händelser från Application Insights på GitHub, här:
-
-[Azure-samples/Active-Directory-B2C-Advanced-policys](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)
+- Lär dig hur du [felsöker Azure AD B2C anpassade principer](troubleshoot-custom-policies.md)

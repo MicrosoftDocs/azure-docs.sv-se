@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 138a23b610ab96194424bb0f88cf94f516c2d223
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: f4648c216a0b6d06309c0166aba501d4f3f02a10
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105626460"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027524"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>Migration guide: SAP ASE till Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-I den här guiden får du lära dig hur du migrerar dina SAP adapter Server Enterprise-databaser (ASE) till en Azure SQL-databas med hjälp av SQL Server Migration Assistant för SAP adapter Server Enterprise.
+I den här guiden får du lära dig [hur du migrerar](https://azure.microsoft.com/migration/migration-journey) dina SAP adapter Server Enterprise-databaser (ASE) till en Azure SQL-databas med hjälp av [SQL Server Migration](https://azure.microsoft.com/migration/migration-journey) Assistant för SAP adapter Server Enterprise.
 
 Andra guider för migrering finns i [Guide för Azure Database migration](https://docs.microsoft.com/data-migration). 
 
@@ -34,7 +34,7 @@ Innan du börjar migrera SAP SE-databasen till SQL-databasen gör du följande:
 
 ## <a name="pre-migration"></a>Före migrering
 
-När du har uppfyllt kraven är du redo att upptäcka miljön och bedöma möjligheten för migreringen.
+När du har uppfyllt kraven är du redo att upptäcka miljön och bedöma möjligheten för din [Azure Cloud-migrering](https://azure.microsoft.com/migration).
 
 ### <a name="assess"></a>Utvärdera
 
@@ -123,6 +123,7 @@ Mer information om de här problemen och stegen för att minimera dem finns i gu
 - Mer information om ramverket och implementerings cykeln för migrering av moln finns i:
    -  [Cloud Adoption Framework för Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Metod tips för att kostnads fritt och ändra storlek på arbets belastningar för migrering till Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Molnmigrering resurser](https://azure.microsoft.com/migration/resources)
 
 - Information om hur du bedömer program åtkomst lagret finns i [Data Access Migration Toolkit (för hands version)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
 - Mer information om hur du utför data åtkomst Layer A/B-testning finns [Database experimentation Assistant](/sql/dea/database-experimentation-assistant-overview).

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 04/06/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3699743c5d1b3330715984d2b6116cfebafe74f1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 97a8134e858112d7e1deff6744b5555c172692f2
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579849"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028187"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Twitter-konto med hjälp av Azure Active Directory B2C
 
@@ -179,7 +179,7 @@ Du kan definiera ett Twitter-konto som en anspråks leverantör genom att lägga
 ## <a name="test-your-custom-policy"></a>Testa din anpassade princip
 
 1. Välj en princip för förlitande part, till exempel `B2C_1A_signup_signin` .
-1. För **program** väljer du ett webb program som du [har registrerat tidigare](troubleshoot-custom-policies.md#troubleshoot-the-runtime). **Svars-URL: en** ska visas `https://jwt.ms` .
+1. För **program** väljer du ett webb program som du [har registrerat tidigare](tutorial-register-applications.md). **Svars-URL: en** ska visas `https://jwt.ms` .
 1. Välj knappen **Kör nu** .
 1. På sidan registrering eller inloggning väljer du **Twitter** för att logga in med Twitter-konto.
 

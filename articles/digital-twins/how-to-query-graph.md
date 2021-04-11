@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 3fd504ec36abae3f00cd2a7eb4e1f7b639be0cea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d15e2b8bfcddfd1f554ab2a27083fe5256e9e2b
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462685"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226336"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Skicka frågor till Azure Digitals dubbla grafer
 
@@ -94,19 +94,14 @@ Här är ett exempel på en fråga som anger ett värde för alla tre parametrar
 
 När du frågar baserat på digitala dubbla **relationer**, har Azures digitala dubbla frågespråket frågespråk en speciell syntax.
 
-Relationer hämtas in i frågeomfånget i `FROM`-satsen. En viktig skillnad från "klassiska" SQL-typ språk är att varje uttryck i den här `FROM` satsen inte är en tabell. i stället `FROM` uttrycker satsen en relation mellan olika enheter och är skriven med en digital Azure-version av `JOIN` .
+Relationer hämtas in i frågeomfånget i `FROM`-satsen. Till skillnad från "klassiska" SQL-typ språk, är varje uttryck i denna `FROM` sats inte en tabell. i stället `FROM` uttrycker satsen en över gång av relationen mellan enheter. För att förflytta dig mellan relationer, använder Azure Digitals dubbla, en anpassad version av `JOIN` .
 
-Kom ihåg att med Azure Digitals dubbla [modell](concepts-models.md) funktioner, finns det inga relationer oberoende av varandra. Det innebär att `JOIN` i Azure Digital Twins-frågespråket skiljer sig lite från den allmänna SQL-versionen av `JOIN`eftersom relationer här inte kan frågas separat och måste vara knutna till en tvilling.
-För att ta med den här skillnaden används nyckelordet `RELATED` i `JOIN`-satsen för att referera till en tvillings uppsättning av relationer.
+Kom ihåg att med Azure Digitals dubbla [modell](concepts-models.md) funktioner, finns det inga relationer oberoende av varandra. Det innebär att relationer här inte kan frågas oberoende och måste vara knutna till en dubbel.
+För att hantera detta används nyckelordet `RELATED` i- `JOIN` satsen för att hämta i en uppsättning av en viss typ av relation som kommer från den dubbla samlingen. Frågan måste sedan filtrera i den sats som anges av de `WHERE` dubbla (n) som ska användas i Relations frågan (med hjälp av `$dtId` värdena för dubbla värden).
 
-Följande avsnitt innehåller flera exempel på hur det ser ut.
+I följande avsnitt får du exempel på vad det ser ut.
 
-> [!TIP]
-> Den här funktionen imiterar den här funktionen de dokumentbaserade funktionerna i CosmosDB, där `JOIN` kan utföras på underordnade objekt i ett dokument. CosmosDB använder `IN` nyckelordet för att ange att `JOIN` är avsett att iterera över mat ris element i det aktuella Sammanhangs dokumentet.
-
-### <a name="relationship-based-query-examples"></a>Exempel på Relations hip-baserade frågor
-
-Om du vill hämta en data uppsättning som inkluderar relationer använder `FROM` du ett enda uttryck följt av N `JOIN` -instruktioner, där `JOIN` uttrycken uttrycker relationer för resultatet av en tidigare `FROM` or- `JOIN` instruktion.
+### <a name="basic-relationship-query"></a>Grundläggande Relations fråga
 
 Här är en exempel Relations hip-baserad fråga. Det här kodfragmentet väljer alla digitala, dubbla med *ID-* egenskapen för "ABC", och alla digitala garn som är relaterade till dessa Digitala flätar via en *contains* -relation.
 
@@ -114,6 +109,18 @@ Här är en exempel Relations hip-baserad fråga. Det här kodfragmentet väljer
 
 > [!NOTE]
 > Utvecklaren behöver inte korrelera detta `JOIN` med ett nyckel värde i `WHERE` -satsen (eller ange ett nyckel värde infogat med `JOIN` definitionen). Den här korrelationen beräknas automatiskt av systemet, eftersom relationsegenskaperna själva identifierar målentiteten.
+
+### <a name="query-by-the-source-or-target-of-a-relationship"></a>Fråga efter en Relations källa eller mål
+
+Du kan använda Relations frågans struktur för att identifiera en digital, som är källan eller målet för en relation.
+
+Du kan till exempel börja med en källa som är dubbel och följa dess relationer för att hitta målets sammanflätade relationer. Här är ett exempel på en fråga som hittar målets dubbla för de *flödes* relationer som kommer från den sammanflätade *källan*.
+
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationshipSource":::
+
+Du kan också börja med målet för relationen och spåra relationen för att hitta källan till varandra. Här är ett exempel på en fråga som hittar källan till en *feeds* -relation till det dubbla *målet – dubbla*.
+
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationshipTarget":::
 
 ### <a name="query-the-properties-of-a-relationship"></a>Ställ frågor till en relations egenskaper
 
@@ -128,7 +135,9 @@ I exemplet ovan noterar du hur *reportedCondition* är en egenskap hos *serviced
 
 ### <a name="query-with-multiple-joins"></a>Fråga med flera kopplingar
 
-Upp till fem `JOIN` s stöds i en enda fråga. På så sätt kan du förflytta flera nivåer av relationer samtidigt.
+Upp till fem `JOIN` s stöds i en enda fråga. På så sätt kan du förflytta flera nivåer av relationer samtidigt. 
+
+Om du vill fråga på flera nivåer av relationer använder du ett enda `FROM` uttryck följt av N `JOIN` -instruktioner, där `JOIN` uttrycken uttrycker relationer för resultatet av en tidigare `FROM` or- `JOIN` instruktion.
 
 Här är ett exempel på en fråga med flera kopplingar, som hämtar alla lampor som finns på ljus panelerna i rum 1 och 2.
 

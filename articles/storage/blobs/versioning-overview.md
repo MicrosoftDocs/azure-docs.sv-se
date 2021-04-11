@@ -1,60 +1,64 @@
 ---
 title: BLOB-versioner
 titleSuffix: Azure Storage
-description: Blob Storage-versioner hanterar automatiskt tidigare versioner av ett objekt och identifierar dem med tidsstämplar. Du kan återställa tidigare versioner av en BLOB för att återställa dina data om de felaktigt ändras eller tas bort.
+description: Versioner av Blob Storage hanterar automatiskt tidigare versioner av ett objekt och identifierar dem med tidsstämplar. Du kan återställa en tidigare version av en BLOB för att återställa dina data om de felaktigt ändras eller tas bort.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/09/2021
+ms.date: 04/07/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 692a820bea69071485a973a988ae91bd70b74f35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82216abd13b6128be68e22a4ce2a0f6de9a6ce2f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100380822"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227559"
 ---
 # <a name="blob-versioning"></a>BLOB-versioner
 
 Du kan aktivera Blob Storage-versioner för att automatiskt underhålla tidigare versioner av ett objekt.  När BLOB-versioner har Aktiver ATS kan du återställa en tidigare version av en BLOB för att återställa dina data om de felaktigt ändras eller tas bort.
 
-BLOB-versioner aktive ras på lagrings kontot och gäller för alla blobar i lagrings kontot. När du har aktiverat BLOB-versioner för ett lagrings konto behåller Azure Storage automatiskt versioner för varje BLOB i lagrings kontot.
-
-Microsoft rekommenderar att du använder BLOB-versioner för att underhålla tidigare versioner av en BLOB för överlägsen data skydd. Använd om möjligt BLOB-versioner i stället för BLOB-ögonblicksbilder för att underhålla tidigare versioner. BLOB-ögonblicksbilder ger liknande funktionalitet i att de behåller tidigare versioner av en BLOB, men ögonblicks bilder måste behållas manuellt av ditt program.
-
-Information om hur du aktiverar BLOB-versioner finns i [Aktivera och hantera BLOB-versioner](versioning-enable.md).
-
-> [!IMPORTANT]
-> BLOB-versioner kan inte hjälpa dig att återställa från oavsiktlig borttagning av ett lagrings konto eller behållare. Förhindra oavsiktlig borttagning av lagrings kontot genom att konfigurera ett lås på lagrings konto resursen. Mer information om hur du låser Azure-resurser finns i [låsa resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md). Om du vill skydda behållare från oavsiktlig borttagning konfigurerar du behållaren mjuk borttagning för lagrings kontot. Mer information finns i [Soft Delete for containers (för hands version)](soft-delete-container-overview.md).
-
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
+
+## <a name="recommended-data-protection-configuration"></a>Rekommenderad data skydds konfiguration
+
+BLOB-versioner är en del av en omfattande data skydds strategi för BLOB-data. För optimalt skydd för dina BLOB-data rekommenderar Microsoft att du aktiverar alla följande data skydds funktioner:
+
+- BLOB-versioner för att automatiskt underhålla tidigare versioner av en blob. När BLOB-versioner har Aktiver ATS kan du återställa en tidigare version av en BLOB för att återställa dina data om de felaktigt ändras eller tas bort. Information om hur du aktiverar BLOB-versioner finns i [Aktivera och hantera BLOB-versioner](versioning-enable.md).
+- Behållare för mjuk borttagning, för att återställa en behållare som har tagits bort. Information om hur du aktiverar mjuk borttagning av behållare finns i [Aktivera och hantera mjuk borttagning för behållare](soft-delete-container-enable.md).
+- BLOB-mjuk borttagning, för att återställa en BLOB, ögonblicks bild eller version som har tagits bort. Information om hur du aktiverar mjuk borttagning av BLOB finns i [Aktivera och hantera mjuk borttagning för blobbar](soft-delete-blob-enable.md).
+
+Mer information om Microsofts rekommendationer för data skydd finns i [Översikt över data skydd](data-protection-overview.md).
 
 ## <a name="how-blob-versioning-works"></a>Så här fungerar BLOB-versioner
 
-En version fångar in statusen för en BLOB vid en viss tidpunkt. När BLOB-versioner har Aktiver ATS för ett lagrings konto skapar Azure Storage automatiskt en ny version av en BLOB varje gång bloben ändras eller tas bort.
+En version fångar in statusen för en BLOB vid en viss tidpunkt. När BLOB-versioner har Aktiver ATS för ett lagrings konto skapar Azure Storage automatiskt en ny version av en BLOB varje gång som bloben ändras.
 
 När du skapar en blob med versions hantering aktive rad är den nya blobben den aktuella versionen av blobben (eller bas-BLOB). Om du senare ändrar denna BLOB skapar Azure Storage en version som fångar upp status för blobben innan den ändrades. Den ändrade blobben blir den nya aktuella versionen. En ny version skapas varje gången du ändrar blobben.
 
-Följande diagram visar hur versioner skapas vid Skriv-och borttagnings åtgärder och hur en tidigare version kan uppgraderas till den aktuella versionen:
+Följande diagram visar hur versioner skapas vid Skriv åtgärder och hur en tidigare version kan uppgraderas till den aktuella versionen:
 
 :::image type="content" source="media/versioning-overview/blob-versioning-diagram.png" alt-text="Diagram över hur BLOB-versioner fungerar":::
 
-Att ha ett stort antal versioner per BLOB kan öka svars tiden för BLOB List-åtgärder. Microsoft rekommenderar att du behåller färre än 1000 versioner per blob. Du kan använda livs cykel hantering för att automatiskt ta bort gamla versioner. Mer information om livs cykel hantering finns i [optimera kostnader genom att automatisera Azure-Blob Storage åtkomst nivåer](storage-lifecycle-management-concepts.md).
-
-När du tar bort en blob med versions hantering aktive rad skapar Azure Storage en version som fångar upp status för blobben innan den tas bort. Den aktuella versionen av blobben tas sedan bort, men blobens versioner kvarstår, så att den kan skapas på nytt om det behövs. 
+När du tar bort en blob med versions hantering aktive rad tas den aktuella versionen av blobben bort. Alla tidigare versioner av bloben är kvar.
 
 BLOB-versioner är oföränderliga. Du kan inte ändra innehållet eller metadata för en befintlig blob-version.
+
+Att ha ett stort antal versioner per BLOB kan öka svars tiden för BLOB List-åtgärder. Microsoft rekommenderar att du behåller färre än 1000 versioner per blob. Du kan använda livs cykel hantering för att automatiskt ta bort gamla versioner. Mer information om livs cykel hantering finns i [optimera kostnader genom att automatisera Azure-Blob Storage åtkomst nivåer](storage-lifecycle-management-concepts.md).
 
 BLOB-versioner är tillgängligt för General-Purpose v2-, Block Blob-och Blob Storage-konton. Lagrings konton med hierarkiskt namn område som är aktiverade för användning med Azure Data Lake Storage Gen2 stöds inte för närvarande.
 
 Version 2019-10-10 och senare av Azure Storage REST API stöder BLOB-versioner.
 
+> [!IMPORTANT]
+> BLOB-versioner kan inte hjälpa dig att återställa från oavsiktlig borttagning av ett lagrings konto eller behållare. Förhindra oavsiktlig borttagning av lagrings kontot genom att konfigurera ett lås på lagrings konto resursen. Mer information om hur du låser ett lagrings konto finns i [tillämpa ett Azure Resource Manager lås till ett lagrings konto](../common/lock-account-resource.md).
+
 ### <a name="version-id"></a>Versions-ID
 
-Varje blob-version identifieras med ett versions-ID. Värdet för versions-ID är tidsstämpeln då blobben skrevs eller uppdaterades. Versions-ID: t tilldelas vid den tidpunkt då versionen skapades.
+Varje blob-version identifieras med ett versions-ID. Värdet för versions-ID är tidsstämpeln då blobben uppdaterades. Versions-ID: t tilldelas vid den tidpunkt då versionen skapades.
 
 Du kan utföra Läs-eller borttagnings åtgärder för en angiven version av en BLOB genom att ange dess versions-ID. Om du utelämnar versions-ID: t fungerar åtgärden mot den aktuella versionen (bas-blobben).
 
@@ -77,29 +81,12 @@ Följande diagram visar hur Skriv åtgärder påverkar BLOB-versioner. När en B
 > [!NOTE]
 > En blob som skapades innan versions hantering som Aktiver ATS för lagrings kontot har inget versions-ID. När denna BLOB ändras blir den ändrade blobben den aktuella versionen och en version skapas för att spara blobens tillstånd innan uppdateringen. Versionen har tilldelats ett versions-ID som är skapande tillfället.
 
-### <a name="versioning-on-delete-operations"></a>Versions hantering för borttagnings åtgärder
+När BLOB-versioner har Aktiver ATS för ett lagrings konto utlöser alla Skriv åtgärder på block-blobar skapandet av en ny version, med undantag för åtgärden [parkera block](/rest/api/storageservices/put-block) .
 
-När du tar bort en BLOB blir den aktuella versionen av blobben en tidigare version och bas-bloben tas bort. Alla befintliga tidigare versioner av blobben bevaras när blobben tas bort.
-
-Om du anropar åtgärden [ta bort BLOB](/rest/api/storageservices/delete-blob) utan ett versions-ID tas bas-bloben bort. Om du vill ta bort en version anger du ID: t för den versionen för borttagnings åtgärden.
-
-Följande diagram visar effekterna av en borttagnings åtgärd i en versions-BLOB:
-
-:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="Diagram över borttagning av versions-blob.":::
-
-När nya data skrivs till bloben skapas en ny version av blobben. Eventuella befintliga versioner påverkas inte, vilket visas i följande diagram.
-
-:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="Diagram som visar åter skapandet av versions-BLOB efter borttagning.":::
-
-### <a name="blob-types"></a>Blobbtyper
-
-När BLOB-versioner har Aktiver ATS för ett lagrings konto utlöser alla Skriv-och borttagnings åtgärder på block-blobar skapandet av en ny version, med undantag för åtgärden [parkera block](/rest/api/storageservices/put-block) .
-
-För Page blobbar och tillägg av blobar utlöser bara en del av Skriv-och borttagnings åtgärder att en version skapas. Dessa åtgärder omfattar:
+För sid-blobar och tillägg av blobar utlöser bara en del av Skriv åtgärder skapandet av en version. Dessa åtgärder omfattar:
 
 - [Placera blob](/rest/api/storageservices/put-blob)
 - [Lista över blockerade](/rest/api/storageservices/put-block-list)
-- [Ta bort blob](/rest/api/storageservices/delete-blob)
 - [Ange BLOB-metadata](/rest/api/storageservices/set-blob-metadata)
 - [Kopiera blob](/rest/api/storageservices/copy-blob)
 
@@ -109,6 +96,20 @@ Följande åtgärder utlöser inte skapandet av en ny version. Ta en manuell ög
 - [Lägg till block](/rest/api/storageservices/append-block) (bifoga BLOB)
 
 Alla versioner av en BLOB måste vara av samma Blob-typ. Om en BLOB har tidigare versioner kan du inte skriva över en blob av en typ med en annan typ om du inte först tar bort blobben och alla dess versioner.
+
+### <a name="versioning-on-delete-operations"></a>Versions hantering för borttagnings åtgärder
+
+När du anropar åtgärden [ta bort BLOB](/rest/api/storageservices/delete-blob) utan att ange ett VERSIONS-ID, blir den aktuella versionen en tidigare version och det finns inte längre en aktuell version. Alla befintliga tidigare versioner av blobben bevaras.
+
+Följande diagram visar effekterna av en borttagnings åtgärd i en versions-BLOB:
+
+:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="Diagram över borttagning av versions-blob.":::
+
+Om du vill ta bort en angiven version av en BLOB anger du ID för den versionen på borttagnings åtgärden. Om den mjuka borttagningen av BLOB också är aktive rad för lagrings kontot, underhålls versionen i systemet tills den mjuka borttagnings perioden förflutit.
+
+När nya data skrivs till bloben skapas en ny aktuell version av blobben. Eventuella befintliga versioner påverkas inte, vilket visas i följande diagram.
+
+:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="Diagram som visar åter skapandet av versions-BLOB efter borttagning.":::
 
 ### <a name="access-tiers"></a>Åtkomstnivåer
 
@@ -132,27 +133,29 @@ Följande diagram visar hur ändring av en BLOB efter versions hantering är ina
 
 ## <a name="blob-versioning-and-soft-delete"></a>BLOB-versioner och mjuk borttagning
 
-BLOB-versioner och blob-mjuk borttagning fungerar tillsammans för att ge dig optimalt data skydd. När du aktiverar mjuk borttagning anger du hur länge Azure Storage ska behålla en mjuk, borttagen blob. Eventuell mjuk, borttagen blob-version finns kvar i systemet och kan tas bort från kvarhållningsperioden för mjuk borttagning. Mer information om mjuk borttagning av BLOB finns i [mjuk borttagning för Azure Storage blobbar](./soft-delete-blob-overview.md).
+Microsoft rekommenderar att du aktiverar både versions-och blob-mjuk borttagning för dina lagrings konton för optimalt data skydd. Mjuk borttagning skyddar blobbar, versioner och ögonblicks bilder från oavsiktlig borttagning. Mer information om mjuk borttagning av BLOB finns i [mjuk borttagning för Azure Storage blobbar](./soft-delete-blob-overview.md).
+
+### <a name="overwriting-a-blob"></a>Skriva över en BLOB
+
+Om BLOB-versioner och mjuk borttagning av BLOB båda är aktiverade för ett lagrings konto skapas en ny version av en BLOB automatiskt. Den nya versionen är inte mjuk och tas inte bort när kvarhållningsperioden för mjuk borttagning upphör att gälla. Inga borttagnings bara ögonblicks bilder har skapats.
 
 ### <a name="deleting-a-blob-or-version"></a>Ta bort en BLOB eller version
 
-Mjuk borttagning ger ytterligare skydd för att ta bort BLOB-versioner. Om både versions hantering och mjuk borttagning är aktiverade på lagrings kontot, och om du tar bort en BLOB, skapar Azure Storage en ny version för att spara status för blobben omedelbart före borttagning och tar bort den aktuella versionen. Den nya versionen är inte mjuk och tas inte bort när kvarhållningsperioden för mjuk borttagning upphör att gälla.
+Om både versions hantering och mjuk borttagning är aktiverade på lagrings kontot, blir den aktuella versionen av blobben en tidigare version när du tar bort en BLOB, och den aktuella versionen tas bort. Ingen ny version skapas och inga ögonblicks bilder av mjuka rader skapas. Bevarande perioden för mjuk borttagning gäller inte för den borttagna blobben.
 
-När du tar bort en tidigare version av bloben är versionen mjuk borttagning. Den Soft-borttagna versionen behålls under hela kvarhållningsperioden som anges i inställningarna för mjuk borttagning för lagrings kontot och tas bort permanent när kvarhållningsperioden för mjuk borttagning upphör att gälla.
+Mjuk borttagning ger ytterligare skydd för att ta bort BLOB-versioner. När du tar bort en tidigare version av blobben tas den versionen bort. Den Soft-borttagna versionen bevaras tills den mjuka borttagnings perioden går ut. då tas den bort permanent.
 
-Ta bort en tidigare version av en BLOB genom att uttryckligen ta bort den genom att ange versions-ID.
+Om du vill ta bort en tidigare version av en BLOB anropar du åtgärden **ta bort BLOB** och anger VERSIONS-ID.
 
 Följande diagram visar vad som händer när du tar bort en BLOB eller en blob-version.
 
 :::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="Diagram som visar borttagning av en version med mjuk borttagning aktive rad.":::
 
-Om både versions hantering och mjuk borttagning är aktiverade på ett lagrings konto skapas ingen mjuk, borttagen ögonblicks bild när en BLOB-eller blob-version ändras eller tas bort.
-
 ### <a name="restoring-a-soft-deleted-version"></a>Återställa en mjuk borttagnings version
 
-Du kan återställa en mjuk borttagen blob-version genom att anropa åtgärden [ångra borttagning av BLOB](/rest/api/storageservices/undelete-blob) i versionen medan kvarhållningsperioden för mjuk borttagning tillämpas. **Undelete BLOB** -åtgärden återställer alla avsoft-borttagna versioner av blobben.
+Du kan använda åtgärden [ta bort BLOB](/rest/api/storageservices/undelete-blob) för att återställa mjuka borttagna versioner under perioden för kvarhållning av mjuk borttagning. Undelete- **BLOB** -åtgärden återställer alltid alla avsoft-borttagna versioner av blobben. Det går inte att återställa en enda mjuk borttagnings version.
 
-Att återställa avläsnings bara versioner med **Undelete-BLOB** -åtgärden befordrar inte någon version som den aktuella versionen. Om du vill återställa den aktuella versionen återställer du först alla Soft-borttagna versioner och använder sedan åtgärden [Kopiera BLOB](/rest/api/storageservices/copy-blob) för att kopiera en tidigare version för att återställa blobben.
+Att återställa avläsnings bara versioner med **Undelete-BLOB** -åtgärden befordrar inte någon version som den aktuella versionen. Om du vill återställa den aktuella versionen måste du först återställa alla Soft-borttagna versioner och sedan använda åtgärden [Kopiera BLOB](/rest/api/storageservices/copy-blob) för att kopiera en tidigare version till en ny aktuell version.
 
 Följande diagram visar hur du återställer avsoft-borttagna BLOB-versioner med åtgärden **ta bort BLOB** och hur du återställer den aktuella versionen av blobben med åtgärden **Kopiera BLOB** .
 
@@ -193,8 +196,8 @@ I följande tabell visas vilka Azure RBAC-åtgärder som stöder borttagning av 
 
 | Beskrivning | Blob Service åtgärd | Azure RBAC-dataåtgärd krävs | Stöd för inbyggd Azure-roll |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| Tar bort den aktuella versionen av blobben | Ta bort blob | **Microsoft. Storage/storageAccounts/blobServices/containers/blobbar/Delete** | Storage Blob Data-deltagare |
-| Tar bort en version | Ta bort blob | **Microsoft. Storage/storageAccounts/blobServices/containers/blobbar/deleteBlobVersion/åtgärd** | Storage Blob Data-ägare |
+| Tar bort den aktuella versionen | Ta bort blob | **Microsoft. Storage/storageAccounts/blobServices/containers/blobbar/Delete** | Storage Blob Data-deltagare |
+| Ta bort en tidigare version | Ta bort blob | **Microsoft. Storage/storageAccounts/blobServices/containers/blobbar/deleteBlobVersion/åtgärd** | Storage Blob Data-ägare |
 
 ### <a name="shared-access-signature-sas-parameters"></a>Parametrar för signatur för delad åtkomst (SAS)
 

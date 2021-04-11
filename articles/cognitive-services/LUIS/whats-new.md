@@ -4,19 +4,23 @@ description: Den här artikeln uppdateras regelbundet med nyheter om Azure Cogni
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 02/16/2021
-ms.openlocfilehash: bd70bb1a031b61e77fa84ff5567d95dc6d1e8788
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 04/07/2021
+ms.openlocfilehash: f6c6f2ba20a67cd39d4142ffadddc803927c936c
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706749"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227066"
 ---
 # <a name="whats-new-in-language-understanding"></a>Vad är nytt i Language Understanding
 
 Läs om vad som är nytt i tjänsten. Dessa objekt innehåller viktig information, videor, blogg inlägg och andra typer av information. Skapa ett bok märke för den här sidan för att hålla dig uppdaterad med tjänsten.
 
 ## <a name="release-notes"></a>Viktig information
+
+### <a name="april-2021"></a>April 2021
+
+* Schweiz, norra [redigerings region](luis-reference-regions.md#publishing-to-europe).
 
 ### <a name="january-2021"></a>Januari 2021
 

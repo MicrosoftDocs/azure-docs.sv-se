@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 6faec27bf368b3eb45e05a91307df6027bda93b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb5203629915914ab9af22d89e5f2865078a8e44
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100094006"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012615"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Vanliga frågor och svar om Azure App Service on Linux
 
@@ -144,6 +144,20 @@ Vi har automatisk port identifiering. Du kan också ange en app-inställning som
 
 Nej, plattformen hanterar HTTPS-avslutning på delade klient delar.
 
+**Måste jag använda PORT variabel i kod för inbyggda behållare?**
+
+Nej, PORT variabel är inte nödvändig på grund av automatisk port identifiering. Om ingen port identifieras är den som standard 80.
+Om du vill konfigurera en anpassad port manuellt använder du instruktionen Visa i Dockerfile och appens inställning WEBSITES_PORT, med ett port värde som ska bindas i behållaren.
+
+**Behöver jag använda WEBSITES_PORT för anpassade behållare?**
+
+Ja, detta krävs för anpassade behållare. Om du vill konfigurera en anpassad port manuellt använder du instruktionen Visa i Dockerfile och appens inställning WEBSITES_PORT, med ett port värde som ska bindas i behållaren.
+
+**Kan jag använda ASPNETCORE_URLS i Docker-avbildningen?**
+
+Ja, Skriv över miljö variabeln innan .NET Core-appen startas.
+T.ex. I init.sh-skriptet: exportera ASPNETCORE_URLS = {ditt värde}
+
 ## <a name="multi-container-with-docker-compose"></a>Multi-container med Docker Compose
 
 **Hur gör jag för att konfigurera Azure Container Registry (ACR) för användning med flera behållare?**
@@ -206,3 +220,4 @@ Du kan skicka in din idé i [forumen Web Apps feedback](https://aka.ms/webapps-u
 - [Vad är Azure App Service på Linux?](overview.md#app-service-on-linux)
 - [Konfigurera mellanlagringsmiljöer i Azure App Service](deploy-staging-slots.md)
 - [Kontinuerlig distribution med Web App for Containers](./deploy-ci-cd-custom-container.md)
+- [Saker du bör känna till: Web Apps och Linux](https://techcommunity.microsoft.com/t5/apps-on-azure/things-you-should-know-web-apps-and-linux/ba-p/392472)

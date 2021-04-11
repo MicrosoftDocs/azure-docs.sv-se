@@ -7,27 +7,28 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 02/19/2021
-ms.openlocfilehash: 0146e4fcaf70d37975dc587a266c47bf4b3f4601
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: 80d1e4f39d69f761b801ccec834c0228057e4847
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461682"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448533"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Customer Lockbox för Microsoft Azure
 
 > [!NOTE]
 > Din organisation måste ha ett support avtal för [Azure](https://azure.microsoft.com/support/plans/) med en minimal **utvecklings** nivå för att använda den här funktionen.
 
-Customer Lockbox för Microsoft Azure tillhandahåller ett gränssnitt med vilket kunderna kan granska och godkänna eller avvisa begäranden om kunddataåtkomst. Den används i fall där en Microsoft-tekniker behöver åtkomst till kundinformation under en supportförfrågan.
+De flesta åtgärder, support och fel sökning som utförs av Microsofts personal och under processorer behöver inte åtkomst till kund information. I sällsynta fall där sådan åtkomst krävs är Customer Lockbox för Microsoft Azure ett gränssnitt för kunder som ska granska och godkänna eller avvisa förfrågningar om kund data åtkomst. Den används i fall där en Microsoft-tekniker behöver åtkomst till kund information, oavsett om det är ett svar till ett support ärende som initieras av kunden eller ett problem som har identifierats av Microsoft.
 
 Den här artikeln beskriver hur du aktiverar Customer Lockbox och hur begär Anden om låsning initieras, spåras och lagras för senare granskningar och granskningar.
 
 <a name='supported-services-and-scenarios-in-general-availability'></a><a name='supported-services-and-scenarios-in-preview'></a>
-## <a name="supported-services-and-scenarios-general-availability"></a>Tjänster och scenarier som stöds (allmän tillgänglighet)
+## <a name="supported-services-and-scenarios"></a>Tjänster och scenarier som stöds
 
-Följande tjänster är nu allmänt tillgängliga för Customer Lockbox:
+### <a name="general-availability"></a>Allmän tillgänglighet
+Följande tjänster är allmänt tillgängliga för Customer Lockbox:
 
 - Azure API Management
 - Azure App Service
@@ -49,6 +50,12 @@ Följande tjänster är nu allmänt tillgängliga för Customer Lockbox:
 - Azure Synapse Analytics
 - Virtuella datorer i Azure (som täcker fjärr skrivbords åtkomst, åtkomst till minnes dum par och Managed Disks)
 
+### <a name="public-preview"></a>Offentlig för hands version
+Följande tjänster är för närvarande i för hands version för Customer Lockbox:
+
+- Azure Machine Learning
+- Azure Batch
+
 ## <a name="enable-customer-lockbox"></a>Aktivera Customer Lockbox
 
 Nu kan du aktivera Customer Lockbox från [modulen Administration](https://aka.ms/customerlockbox/administration) på bladet Customer lockbox.  
@@ -66,7 +73,7 @@ Följande steg beskriver ett typiskt arbets flöde för en Customer Lockbox beg�
 
 3. En support tekniker för Azure granskar tjänstbegäran och bestämmer nästa steg för att lösa problemet.
 
-4. Om support teknikern inte kan felsöka problemet med hjälp av standard verktyg och telemetri, är nästa steg att begära utökade behörigheter genom att använda en just-in-Time (JIT)-åtkomst tjänst. Den här begäran kan ske från den ursprungliga support teknikern eller från en annan tekniker eftersom problemet eskaleras till Azure DevOps-teamet.
+4. Om support teknikern inte kan felsöka problemet med hjälp av standard verktyg och tjänst genererade data, är nästa steg att begära utökade behörigheter genom att använda en just-in-Time (JIT)-åtkomst tjänst. Den här begäran kan ske från den ursprungliga support teknikern eller från en annan tekniker eftersom problemet eskaleras till Azure DevOps-teamet.
 
 5. När åtkomstbegäran har skickats av Azure-teknikern utvärderar just-in-Time-tjänsten begäran med hänsyn till faktorer som:
     - Resursens omfattning
@@ -129,8 +136,10 @@ Vi har lanserat en ny bas linje kontroll ([3,13](../benchmarks/security-control-
 
 Customer Lockbox begär Anden utlöses inte i följande tekniska support scenarier:
 
-- En Microsoft-tekniker måste utföra en aktivitet som ligger utanför standardprocedurerna för åtgärder. Till exempel att återställa tjänster i oväntade eller oförutsägbara scenarier.
-- En Microsoft-tekniker får åtkomst till Azure-plattformen som en del av felsökning och får oavsiktligt åtkomst till kunddata. Till exempel kan Azures nätverksteam utföra felsökning som resulterar i en paketavbildning på en nätverksenhet. I det här scenariot, om kunden krypterar data medan den är i transit, kan inte teknikern läsa data.
+- Nöd situationer som ligger utanför standard drifts procedurer. Ett större tjänst avbrott kräver till exempel omedelbara åtgärder för att återställa eller återställa tjänster i ett oväntat eller oförutsägbart scenario. De här "Break glas"-händelserna är ovanliga och, i de flesta fall, behöver inte åtkomst till kunddata för att lösa problemet.
+- En Microsoft-tekniker får åtkomst till Azure-plattformen som en del av fel sökningen och exponeras oavsiktligt för kund information. Till exempel kan Azures nätverksteam utföra felsökning som resulterar i en paketavbildning på en nätverksenhet. Det är ovanligt att sådana scenarier ger till gång till meningsfulla kvantiteter av kunddata. Kunder kan skydda sina data ytterligare genom att använda under överföring och i rest-kryptering.
+
+Customer Lockbox begär Anden utlöses inte heller av externa juridiska krav för data. Mer information finns i avsnittet om [myndighets begär Anden om data](https://www.microsoft.com/trust-center/) i Microsoft Trust Center.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7d5786c4188db63efc3012e565071f8fd410b92f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4dee196d3ff0796802d2552f073446ad6912663
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579968"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028272"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Google-konto med hjälp av Azure Active Directory B2C
 
@@ -181,7 +181,7 @@ Du kan definiera ett Google-konto som en anspråks leverantör genom att lägga 
 ## <a name="test-your-custom-policy"></a>Testa din anpassade princip
 
 1. Välj en princip för förlitande part, till exempel `B2C_1A_signup_signin` .
-1. För **program** väljer du ett webb program som du [har registrerat tidigare](troubleshoot-custom-policies.md#troubleshoot-the-runtime). **Svars-URL: en** ska visas `https://jwt.ms` .
+1. För **program** väljer du ett webb program som du [har registrerat tidigare](tutorial-register-applications.md). **Svars-URL: en** ska visas `https://jwt.ms` .
 1. Välj knappen **Kör nu** .
 1. Från registrerings-eller inloggnings sidan väljer du **Google** för att logga in med Google-konto.
 

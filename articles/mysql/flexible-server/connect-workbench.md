@@ -1,18 +1,18 @@
 ---
 title: 'Snabb start: Anslut – MySQL Workbench – Azure Database for MySQL – flexibel Server'
 description: Den här snabb starten visar hur du använder MySQL Workbench för att ansluta och fråga efter data från Azure Database for MySQL-flexibel Server.
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: d604ca8c8979ec98b990f8002ce29d0df92ac2af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95ecb64165075a7effe0c6eaf568ee172ad67b9b
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90948518"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226302"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server-preview"></a>Snabb start: Använd MySQL Workbench för att ansluta och fråga efter data i Azure Database for MySQL-flexibel Server (för hands version)
 

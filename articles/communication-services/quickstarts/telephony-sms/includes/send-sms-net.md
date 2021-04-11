@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: peiliu
-ms.openlocfilehash: ff9d63459d0b645f14c62006a8f76f7dd4f986be
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 5fd209c612f90e3912e244daf60d20edf30a08c6
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644352"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106112931"
 ---
 Kom igång med Azure Communication Services med hjälp av kommunikations tjänsterna C# SMS SDK för att skicka SMS-meddelanden.
 
@@ -59,7 +59,7 @@ dotnet build
 När du fortfarande är i program katalogen installerar du Azure Communication Services SMS SDK för .NET-paketet med hjälp av `dotnet add package` kommandot.
 
 ```console
-dotnet add package Azure.Communication.Sms --version 1.0.0-beta.4
+dotnet add package Azure.Communication.Sms --version 1.0.0
 ```
 
 Lägg till ett `using` direktiv överst i **programmet. cs** för att inkludera `Azure.Communication` namn området.
@@ -120,7 +120,7 @@ Ersätt `<from-phone-number>` med ett SMS-aktiverat telefonnummer som är associ
 Om du vill skicka ett SMS-meddelande till en lista över mottagare anropar du `Send` eller- `SendAsync` funktionen från SmsClient med en lista över mottagarens telefonnummer. Du kan också skicka valfria parametrar för att ange om leverans rapporten ska vara aktive rad och för att ange anpassade taggar.
 
 ```csharp
-Response<IEnumerable<SmsSendResult>> response = smsClient.Send(
+Response<IReadOnlyList<SmsSendResult>> response = smsClient.Send(
     from: "<from-phone-number>",
     to: new string[] { "<to-phone-number-1>", "<to-phone-number-2>" },
     message: "Weekly Promotion!",

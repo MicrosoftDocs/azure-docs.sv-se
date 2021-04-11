@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 15df9b38abe35fe3eefad2fa160e1c1f16fe7aa7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 593ccac7326a0a04884fe433cac85cb8eaf79319
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439467"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228239"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Felsökningsguide för Azure Storage Explorer
 
@@ -289,20 +289,20 @@ Om du vill bevara de anslutningar som inte är skadade kan du använda följande
 
 När du har gått igenom alla dina anslutningar, för alla anslutnings namn som inte läggs tillbaka, måste du rensa deras skadade data (om det finns några) och lägga till dem igen med hjälp av standard stegen i Storage Explorer:
 
-# <a name="windows"></a>[Windows](#tab/Windows)
+### <a name="windows"></a>[Windows](#tab/Windows)
 
 1. På **Start** -menyn söker du efter **Autentiseringshanteraren** och öppnar den.
 2. Gå till **Windows-autentiseringsuppgifter**.
 3. Under **allmänna autentiseringsuppgifter** söker du efter poster som har `<connection_type_key>/<corrupted_connection_name>` nyckeln (till exempel `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 4. Ta bort dessa poster och Lägg till anslutningarna på nytt.
 
-# <a name="macos"></a>[macOS](#tab/macOS)
+### <a name="macos"></a>[macOS](#tab/macOS)
 
 1. Öppna Spotlight (kommando + blank steg) och Sök efter **nyckel rings åtkomst**.
 2. Leta efter poster som har `<connection_type_key>/<corrupted_connection_name>` nyckeln (till exempel `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 3. Ta bort dessa poster och Lägg till anslutningarna på nytt.
 
-# <a name="linux"></a>[Linux](#tab/Linux)
+### <a name="linux"></a>[Linux](#tab/Linux)
 
 Hantering av lokala autentiseringsuppgifter varierar beroende på Linux-distributionen. Om din Linux-distribution inte tillhandahåller ett inbyggt GUI-verktyg för lokal hantering av autentiseringsuppgifter, kan du installera ett verktyg från tredje part för att hantera dina lokala autentiseringsuppgifter. Du kan till exempel använda [Seahorse](https://wiki.gnome.org/Apps/Seahorse/), ett gui-verktyg med öppen källkod för att hantera lokala autentiseringsuppgifter för Linux.
 
@@ -356,7 +356,7 @@ Storage Explorer kräver att .NET Core installeras i systemet. Vi rekommenderar 
 > [!NOTE]
 > Storage Explorer version 1.7.0 och tidigare kräver .NET Core 2,0. Om du har en nyare version av .NET Core installerad måste du [uppdatera Storage Explorer](#patching-storage-explorer-for-newer-versions-of-net-core). Om du kör Storage Explorer 1.8.0 eller senare behöver du minst .NET Core 2,1.
 
-# <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
+### <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
 1. Hämta filen Storage Explorer. tar. gz.
 2. Installera [.net Core runtime](/dotnet/core/install/linux):
@@ -369,7 +369,7 @@ Storage Explorer kräver att .NET Core installeras i systemet. Vi rekommenderar 
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
+### <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. Hämta filen Storage Explorer. tar. gz.
 2. Installera [.net Core runtime](/dotnet/core/install/linux):
@@ -382,7 +382,7 @@ Storage Explorer kräver att .NET Core installeras i systemet. Vi rekommenderar 
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
+### <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Hämta filen Storage Explorer. tar. gz.
 2. Installera [.net Core runtime](/dotnet/core/install/linux):
@@ -431,6 +431,98 @@ Om knappen **Öppna i Explorer** på Azure Portal inte fungerar kontrollerar du 
 * Mozilla Firefox
 * Google Chrome
 * Microsoft Internet Explorer
+
+## <a name="gathering-logs"></a>Samlar in loggar
+
+När du rapporterar ett problem till GitHub kan du bli ombedd att samla in vissa loggar för att hjälpa till att diagnostisera problemet.
+
+### <a name="storage-explorer-logs"></a>Storage Explorer loggar
+
+Från och med version 1.16.0 loggar Storage Explorer olika saker till sina egna program loggar. Du kan enkelt komma åt dessa loggar genom att klicka på hjälp > öppna loggar katalog. Storage Explorer loggar som standard en låg nivå av utförlighet. Om du vill ändra detalj nivån lägger du till en miljö variabel med namnet `STG_EX_LOG_LEVEL` och något av följande värden:
+- `silent`
+- `critical`
+- `error`
+- `warning`
+- `info` (standard nivå)
+- `verbose`
+- `debug`
+
+Loggarna delas upp i mappar för varje session av Storage Explorer som du kör. För de loggfiler som du behöver dela rekommenderar vi att du placerar dem i ett zip-arkiv med filer från olika sessioner i olika mappar.
+
+### <a name="authentication-logs"></a>Loggar
+
+För problem som rör inloggning eller Storage Explorers autentiseringspaket, behöver du förmodligen samla in loggar. Loggar för autentisering lagras på:
+- Windows: `C:\Users\<your username>\AppData\Local\Temp\servicehub\logs`
+- macOS och Linux `~/.ServiceHub/logs`
+
+I allmänhet kan du samla in loggarna genom att följa dessa steg:
+
+1. Gå till inställningar > inloggning > kontrol lera utförlig autentisering. Om Storage Explorer inte startar på grund av ett problem med dess autentiseringspaket görs detta åt dig.
+2. Stäng Storage Explorer.
+1. Valfritt/rekommenderat: ta bort befintliga loggar från `logs` mappen. Detta minskar mängden information som du måste skicka till oss.
+4. Öppna Storage Explorer och återskapa problemet
+5. Stäng Storage Explorer
+6. Zip-innehållet i `log` mappen.
+
+### <a name="azcopy-logs"></a>AzCopy-loggar
+
+Om du har problem med att överföra data kan du behöva hämta AzCopy-loggarna. AzCopy-loggar kan enkelt hittas via två olika metoder:
+- För misslyckade överföringar fortfarande i aktivitets loggen klickar du på "gå till AzCopy-loggfil"
+- För överföringar som misslyckades tidigare går du till mappen AzCopy-loggar. Du hittar den här mappen på:
+  - Windows: `C:\Users\<your username>\.azcopy`
+  - macOS och Linux ~/.AzCopy
+
+### <a name="network-logs"></a>Nätverks loggar
+
+För vissa problem måste du ange loggar för de nätverks anrop som görs av Storage Explorer. I Windows kan du göra detta med hjälp av Fiddler.
+
+> [!NOTE]
+> Fiddler-spår kan innehålla lösen ord som du angav eller skickat i webbläsaren under insamlingen av spårningen. Se till att läsa anvisningarna om hur du kan rensa en Fiddler-spårning. Ladda inte upp Fiddler-spår till GitHub. Du får ett meddelande där du kan skicka din Fiddler-spårning på ett säkert sätt.
+
+Del 1: installera och konfigurera Fiddler
+
+1. Installera Fiddler
+2. Starta Fiddler
+3. Gå till verktyg > alternativ
+4. Klicka på HTTPS-fliken
+5. Kontrol lera att avbildningen ansluter och dekryptera HTTPS-trafik har marker ATS
+6. Klicka på knappen åtgärder
+7. Välj "förtroende rot certifikat" och sedan "Ja" i nästa dialog ruta
+8. Klicka på knappen åtgärder igen
+9. Välj "Exportera rot certifikat till Skriv bordet"
+10. Gå till Skriv bordet
+11. Hitta filen FiddlerRoot. cer
+12. Öppna genom att dubbelklicka
+13. Gå till fliken "information"
+14. Klicka på Kopiera till fil...
+15. I guiden Exportera väljer du följande alternativ
+    - Base – 64-kodad X. 509
+    - Bläddra i fil namn... till C:\Users \<your user dir> \AppData\Roaming\StorageExplorer\certs och du kan spara den som valfritt fil namn
+16. Stäng fönstret certifikat
+17. Starta Storage Explorer
+18. Gå till redigera > konfigurera proxy
+19. I dialog rutan väljer du Använd inställningar för App-proxy och anger sedan URL: en till http://localhost och porten till 8888
+20. Klicka på OK
+21. Starta om Storage Explorer
+22. Du bör börja se nätverks anrop från en `storageexplorer:` process som visas i Fiddler
+
+Del 2: återskapa problemet
+1. Stäng alla andra appar än Fiddler
+2. Rensa Fiddler-loggen (X-ikonen längst upp till vänster, nära Visa-menyn)
+3. Valfritt/rekommenderat: låt Fiddler vara inställt på några minuter, om du ser att nätverks samtal visas högerklickar du på dem och väljer filtrera nu > <process name> Dölj
+4. Starta Storage Explorer
+5. Återskapa problemet
+6. Klicka på Arkiv > Spara > alla sessioner..., spara någonstans du inte glömmer bort
+7. Stäng Fiddler och Storage Explorer
+
+Del 3: sanera Fiddler-spårningen
+1. Dubbelklicka på Fiddler-spåret (. saz-filen)
+2. Håll `ctrl`+`f`
+3. Kontrol lera att följande alternativ är inställda i dialog rutan som visas: search = requests och Response, granska = rubriker och organ
+4. Sök efter eventuella lösen ord som du använde när du samlade in Fiddler-spårningen, alla poster som är markerade, högerklicka och välj Ta bort > valda sessioner
+5. Om du har angett lösen ord i din webbläsare när du samlar in spårningen men inte hittar några poster när du använder CTRL + f och du inte vill ändra dina lösen ord, används de lösen ord som du använde för andra konton, men du kan inte välja att bara skicka filen SAZ. Bättre för att vara säker än vad som är säkert. :)
+6. Spara spårningen igen med ett nytt namn
+7. Valfritt: ta bort den ursprungliga spårningen
 
 ## <a name="next-steps"></a>Nästa steg
 

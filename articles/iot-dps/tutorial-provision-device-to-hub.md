@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 876fd8260b64fba4d3d34a766b4259323c660b76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94568eb5d64f07133ebb9992cdae59400830dd5e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94968085"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226896"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Självstudie: etablera enheten till en IoT-hubb med Azure-IoT Hub Device Provisioning Service
 
@@ -98,7 +98,7 @@ I den här självstudiekursen lärde du dig att:
 > * Starta enheten
 > * Kontrollera att enheten är registrerad
 
-Gå vidare till nästa självstudiekurs för att lära dig att etablera flera enheter över belastningsutjämnade hubbar. 
+Gå vidare till nästa självstudie för att lära dig hur du etablerar flera enheter över belastningsutjämnade hubbar
 
 > [!div class="nextstepaction"]
 > [Etablera enheter till flera belastningsutjämnade IoT-hubbar](./tutorial-provision-multiple-hubs.md)

@@ -14,18 +14,18 @@ ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cedadf6b6026c74e25e9c81feb7f8291058b6f69
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 7f8aa7e8cd38de37f5d3757804f7836612ad64cb
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961667"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227763"
 ---
 # <a name="monitor-media-services-metrics"></a>Övervaka Media Services-mått
 
 [!INCLUDE [media services api v3 logo](../includes/v3-hr.md)]
 
-Med [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview.md) kan du övervaka mått och diagnostikloggar som hjälper dig att förstå hur dina program presterar. En detaljerad beskrivning av den här funktionen och för att förstå varför du bör använda Azure Media Services mått och diagnostikloggar finns i [övervaka Media Services mått och diagnostikloggar](monitor-media-services-data-reference.md).
+Med [Azure Monitor](/azure/azure-monitor/overview) kan du övervaka mått och diagnostikloggar som hjälper dig att förstå hur dina program presterar. En detaljerad beskrivning av den här funktionen och för att förstå varför du bör använda Azure Media Services mått och diagnostikloggar finns i [övervaka Media Services mått och diagnostikloggar](monitor-media-services-data-reference.md).
 
 Azure Monitor tillhandahåller flera olika sätt att interagera med mått, inklusive att lägga till dem i portalen, komma åt dem via REST API eller genom att fråga dem med hjälp av Azure CLI. Den här artikeln visar hur du övervakar mått med Azure Portal-diagram och Azure CLI.
 
@@ -69,8 +69,8 @@ Om du vill ha andra mått ersätter du "utgående" för det mått namn som du ä
 
 ## <a name="see-also"></a>Se även
 
-- [Azure Monitor-statistik](https://docs.microsoft.com/azure/azure-monitor/data-platform.md)
-- [Skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-metric.md).
+- [Azure Monitor-statistik](/azure/azure-monitor/data-platform)
+- [Skapa, Visa och hantera mått aviseringar med hjälp av Azure Monitor](/azure/azure-monitor/alerts/alerts-metric).
 
 ## <a name="next-steps"></a>Nästa steg
 

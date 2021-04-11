@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 3d26c585593161ccf4f8ec33f913cc7163531f89
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105606665"
 ---
 # <a name="monitor-metrics-on-azure-database-for-postgresql---flexible-server"></a>Övervaka mått på Azure Database for PostgreSQL-flexibel Server
@@ -27,7 +27,7 @@ Azure Database for PostgreSQL tillhandahåller olika mått som ger inblick i fun
 Följande mått är tillgängliga för PostgreSQL-flexibla Server:
 
 
-|Metric|Mått visnings namn|Enhet|Description|
+|Metric|Mått visnings namn|Enhet|Beskrivning|
 |---|---|---|---|
 | active_connections | Aktiva anslutningar | Antal | Antalet anslutningar till servern. | 
 | backup_storage_used | Lagring av säkerhets kopior som används | Byte | Mängden lagring av säkerhets kopior som används. Det här måttet representerar summan av lagrings utrymme som förbrukas av alla fullständiga säkerhets kopior av databasen, differentiella säkerhets kopior och logg säkerhets kopior som bevaras baserat på den kvarhållna säkerhets kopie perioden som angetts för servern. Säkerhets kopierings frekvensen är hanterad av tjänsten. För Geo-redundant lagring är lagrings utrymmet för säkerhets kopiering två gånger för det lokalt redundanta lagrings utrymmet. |

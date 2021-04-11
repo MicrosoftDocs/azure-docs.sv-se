@@ -9,16 +9,18 @@ ms.topic: conceptual
 ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 29d9dd7757319e59fc12b42d89c2ce16dec71b8b
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: c0cc29e6cbc9be1e7683b1b4412fa47f71c0538d
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551075"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227032"
 ---
 # <a name="soft-delete-for-blobs"></a>Mjuk borttagning för blobar
 
 BLOB-mjuk borttagning skyddar en enskild BLOB, ögonblicks bild eller version från oavsiktliga borttagningar eller överskrivning genom att underhålla borttagna data i systemet under en angiven tids period. Under kvarhållningsperioden kan du återställa ett mjukt borttaget objekt till dess tillstånd vid den tidpunkt då det togs bort. När kvarhållningsperioden har gått ut tas objektet bort permanent.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="recommended-data-protection-configuration"></a>Rekommenderad data skydds konfiguration
 
@@ -29,8 +31,6 @@ BLOB-mjuk borttagning är en del av en omfattande data skydds strategi för BLOB
 - BLOB-mjuk borttagning, för att återställa en BLOB, ögonblicks bild eller version som har tagits bort. Information om hur du aktiverar mjuk borttagning av BLOB finns i [Aktivera och hantera mjuk borttagning för blobbar](soft-delete-blob-enable.md).
 
 Mer information om Microsofts rekommendationer för data skydd finns i [Översikt över data skydd](data-protection-overview.md).
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="how-blob-soft-delete-works"></a>Så här fungerar BLOB-mjuk borttagning
 

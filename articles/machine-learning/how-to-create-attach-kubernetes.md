@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/11/2021
-ms.openlocfilehash: bc8f7aa6827ce251799acd0673d43344c0833c3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28a647949fdb3ff4d8527268919dbd7e49b27ea4
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149332"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276662"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Skapa och ansluta ett Azure Kubernetes service-kluster
 
@@ -48,12 +48,8 @@ Azure Machine Learning kan distribuera utbildade maskin inlärnings modeller til
 
 - Om du vill använda ett privat AKS-kluster (med Azures privata länk) måste du först skapa klustret och sedan **koppla** det till arbets ytan. Mer information finns i [skapa ett privat Azure Kubernetes service-kluster](../aks/private-clusters.md).
 
-- Compute-namnet för AKS-klustret måste vara unikt i din Azure ML-arbetsyta.
-    - Namnet måste vara mellan 3 och 24 tecken långt.
-    - Giltiga tecken är versaler, gemener, siffror och tecknet-Character.
-    - Namnet måste börja med en bokstav.
-    - Namnet måste vara unikt för alla befintliga beräkningar i en Azure-region. En avisering visas om det namn du väljer inte är unikt.
-   
+- Compute-namnet för AKS-klustret måste vara unikt i din Azure ML-arbetsyta. Den kan innehålla bokstäver, siffror och bindestreck. Det måste börja med en bokstav, sluta med en bokstav eller en siffra och vara mellan 3 och 24 tecken långt.
+ 
  - Om du vill distribuera modeller till **GPU** -noder eller **FPGA** -noder (eller vissa SKU: er) måste du skapa ett kluster med den angivna SKU: n. Det finns inget stöd för att skapa en sekundär Node-pool i ett befintligt kluster och distribuera modeller i den sekundära noden.
  
 - När du skapar eller ansluter ett kluster kan du välja om du vill skapa klustret för __utveckling och testning__ eller __produktion__. Om du vill skapa ett AKS-kluster för __utveckling__, __verifiering__ och __testning__ i stället för produktion, ställer du in __kluster syftet__ med __utveckling och testning__. Om du inte anger klustrets syfte skapas ett __produktions__ kluster. 

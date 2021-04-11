@@ -2,18 +2,15 @@
 title: Jämför Azure Migrate och Site Recovery för migrering till Azure
 description: Sammanfattar fördelarna med att använda Azure Migrate för migrering i stället för Site Recovery.
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.author: raynew
-ms.openlocfilehash: 358efaa1493aa08fb76c9bb83e0e4289950e0969
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4d30b8b21bf3a0ea27467d2120b04a107f5a73f
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87844328"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581405"
 ---
 # <a name="migrating-to-azure"></a>Migrera till Azure
 

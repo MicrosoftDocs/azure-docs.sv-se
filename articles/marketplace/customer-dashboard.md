@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: c5c50787ef3e287d164e051ece26da4e83199d47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a26f7c63b639f9aeb6a8f526e77dacb37fb4d87
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555643"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068072"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>Kund instrument panel på kommersiell Marketplace-analys
 
@@ -163,6 +163,7 @@ _**Tabell 1: ord lista med data termer**_
 | CommerceRootCustomer | Commerces rot kund | Ett fakturerings konto-ID kan associeras med flera kund-ID: n.<br>En kombination av ett fakturerings konto-ID och ett kund-ID kan associeras med flera prenumerationer på kommersiella marknads platser.<br>Commerces rot kund anger namnet på prenumerationens kund. | CommerceRootCustomer |
 | Kund-ID | Kund-ID | Den unika identifierare som tilldelats till en kund. En kund kan ha noll eller flera prenumerationer på Azure Marketplace. | CustomerId |
 | ID för fakturerings konto | ID för fakturerings konto | Identifierare för det konto som faktureringen skapas på. Mappa **fakturerings konto-ID: t** till **CustomerID** för att ansluta din rapport över utbetalnings transaktion till kund-, order-och användnings rapporterna. | BillingAccountId |
+| Typ av kund | Typ av kund | Värdet för det här fältet anger typen av kund. Möjliga värden är:<ul><li>fristående</li> <li>organisation</li></ul> | CustomerType |
 |||||
 
 ### <a name="customers-page-filters"></a>Kunders sid filter

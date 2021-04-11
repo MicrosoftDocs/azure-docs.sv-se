@@ -6,12 +6,12 @@ ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: bb5f7b5e8214bd3b04bd7b9544ab4bc589f6c4bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 955e6b22c22d9cbe5891bcd0109806cb9270a456
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896333"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168662"
 ---
 # <a name="set-up-continuous-deployment-with-chocolatey"></a>Konfigurera kontinuerlig distribution med Chocolatey
 
@@ -47,7 +47,7 @@ En viktig funktion i en Resource Manager-mall är möjligheten att installera et
 
 ## <a name="quick-trip-around-the-diagram"></a>Snabb resa runt diagrammet
 
-Börja överst, Skriv koden, skapa den, testa den och skapa sedan ett installations paket. Choklad kan hantera olika typer av installations paket, till exempel MSI, MSU, ZIP. Och du har full kraften hos PowerShell för att utföra den faktiska installationen om det inte finns några inbyggda funktioner för choklad. Placera paketet på en plats som kan uppnås – en paket lagrings plats. I det här användnings exemplet används en offentlig mapp i ett Azure Blob Storage-konto, men det kan vara var som helst. Choklad fungerar internt med NuGet-servrar och några andra för hantering av paketets metadata. I [den här artikeln](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) beskrivs alternativen. I användnings exemplet används NuGet. En nuspec är metadata om dina paket. Nuspec-informationen kompileras till en NuPkg som lagras på en NuGet-Server. När din konfiguration begär ett paket efter namn och refererar till en NuGet-Server, tar den choklad DSC-resursen på den virtuella datorn paketet och installerar det. Du kan också begära en speciell version av ett paket.
+Börja överst, Skriv koden, skapa den, testa den och skapa sedan ett installations paket. Choklad kan hantera olika typer av installations paket, till exempel MSI, MSU, ZIP. Och du har full kraften hos PowerShell för att utföra den faktiska installationen om det inte finns några inbyggda funktioner för choklad. Placera paketet på en plats som kan kommas åt – en paket lagrings plats. I det här användnings exemplet används en offentlig mapp i ett Azure Blob Storage-konto, men det kan vara var som helst. Choklad fungerar internt med NuGet-servrar och några andra för hantering av paketets metadata. I [den här artikeln](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) beskrivs alternativen. I användnings exemplet används NuGet. En nuspec är metadata om dina paket. Nuspec-informationen kompileras till en NuPkg som lagras på en NuGet-Server. När din konfiguration begär ett paket efter namn och refererar till en NuGet-Server, tar den choklad DSC-resursen på den virtuella datorn paketet och installerar det. Du kan också begära en speciell version av ett paket.
 
 I det nedre vänstra hörnet av bilden finns en Azure Resource Manager-mall. I det här användnings exemplet registrerar VM-tillägget den virtuella datorn med hämtnings servern för Azure Automation tillstånds konfiguration som en nod. Konfigurationen lagras två gånger i pull-servern: en gång som oformaterad text och kompileras som en MOF-fil. I Azure Portal representerar MOF en Node-konfiguration, i stället för en enkel konfiguration. Det är den artefakt som är associerad med en nod så att noden känner till konfigurationen. Information nedan visar hur du tilldelar nodens konfiguration till noden.
 
@@ -73,8 +73,8 @@ Fullständig källa för det här användnings exemplet är i [det här Visual S
 På en autentiserad ( `Connect-AzAccount` ) PowerShell-kommando rad: (kan ta några minuter medan hämtnings servern har kon figurer ATS)
 
 ```azurepowershell-interactive
-New-AzResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
-New-AzAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT
+New-AzResourceGroup -Name MY-AUTOMATION-RG -Location MY-RG-LOCATION-IN-QUOTES
+New-AzAutomationAccount -ResourceGroupName MY-AUTOMATION-RG -Location MY-RG-LOCATION-IN-QUOTES -Name MY-AUTOMATION-ACCOUNT
 ```
 
 Du kan flytta ditt Automation-konto till någon av följande regioner (kallas även platser): östra USA 2, södra centrala USA, US Gov, Virginia, Västeuropa, Sydostasien, Östra Japan, centrala Indien och Australien, sydöstra, centrala Kanada, norra Europa.
@@ -103,7 +103,7 @@ Det finns också en manuell metod som bara används en gång per resurs, om du i
 2. Installera integrations modulen.
 
     ```azurepowershell-interactive
-    Install-Module –Name MODULE-NAME`    <—grabs the module from the PowerShell Gallery
+    Install-Module -Name MODULE-NAME`    <—grabs the module from the PowerShell Gallery
     ```
 
 3. Kopiera mappen module från **C:\Program Files\WindowsPowerShell\Modules\MODULE-Name** till en tillfällig mapp.
@@ -119,7 +119,7 @@ Det finns också en manuell metod som bara används en gång per resurs, om du i
     ```azurepowershell-interactive
     New-AzAutomationModule `
       -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
-      -Name MODULE-NAME –ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
+      -Name MODULE-NAME -ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
     ```
 
 Det inkluderade exemplet implementerar de här stegen för cChoco och xNetworking. 
@@ -175,18 +175,18 @@ Här är **New-ConfigurationScript.ps1** skriptet (ändrat för att använda mod
 
 ```powershell
 Import-AzAutomationDscConfiguration `
-    -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT `
+    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
     -SourcePath C:\temp\AzureAutomationDsc\ISVBoxConfig.ps1 `
-    -Published –Force
+    -Published -Force
 
 $jobData = Start-AzAutomationDscCompilationJob `
-    -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT `
+    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
     -ConfigurationName ISVBoxConfig
 
 $compilationJobId = $jobData.Id
 
 Get-AzAutomationDscCompilationJob `
-    -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT `
+    -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
     -Id $compilationJobId
 ```
 

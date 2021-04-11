@@ -8,15 +8,15 @@ ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.date: 11/16/2020
+ms.date: 03/22/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 7e493404e7a36b60e8f9e62cd4ac2f2b32845bb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 686274bc90f516f597a397a6b0270fb638e30c95
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102501625"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027718"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Konfigurera en python-utvecklings miljö för Azure Machine Learning
 
@@ -134,7 +134,12 @@ Så här använder du Visual Studio Code för utveckling:
 1. Installera [Visual Studio Code](https://code.visualstudio.com/Download).
 1. Installera [Azure Machine Learning Visual Studio Code Extension](tutorial-setup-vscode-extension.md) (för hands version).
 
-När du har installerat Visual Studio Code-tillägget kan du hantera dina [Azure Machine Learning-resurser](how-to-manage-resources-vscode.md), [köra och felsöka experiment](how-to-debug-visual-studio-code.md)och [distribuera utbildade modeller](tutorial-train-deploy-image-classification-model-vscode.md).
+När du har installerat Visual Studio Code-tillägget använder du det för att:
+
+* [Hantera dina Azure Machine Learning resurser](how-to-manage-resources-vscode.md)
+* [Ansluta till en Azure Machine Learning beräknings instans](how-to-set-up-vs-code-remote.md)
+* [Köra och Felsök experiment](how-to-debug-visual-studio-code.md)
+* [Distribuera utbildade modeller](tutorial-train-deploy-image-classification-model-vscode.md).
 
 ## <a name="azure-machine-learning-compute-instance"></a><a id="compute-instance"></a>Azure Machine Learning-beräkningsinstans
 
@@ -151,7 +156,7 @@ Mer information om beräknings instanser, inklusive hur du installerar paket fin
 
 Förutom en Jupyter Notebook Server-och JupyterLab kan du använda beräknings instanser i den [integrerade Notebook-funktionen i Azure Machine Learning Studio](how-to-run-jupyter-notebooks.md).
 
-Du kan också använda tillägget Azure Machine Learning Visual Studio Code för att [Konfigurera en Azure Machine Learning beräknings instans som en fjärran sluten Jupyter Notebook Server](how-to-set-up-vs-code-remote.md#configure-compute-instance-as-remote-notebook-server).
+Du kan också använda tillägget Azure Machine Learning Visual Studio Code för att [ansluta till en fjärran sluten beräknings instans med vs Code](how-to-set-up-vs-code-remote.md).
 
 ## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Virtuell dator för datavetenskap
 

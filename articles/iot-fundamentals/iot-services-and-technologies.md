@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: 0cd98705d2d6947ff766f528e4e92f1e51bcc42d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 311f8164803dd12664aa193f08c8a1095ee07e31
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96852820"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168713"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>Vilka Azure-tekniker och tjänster kan du använda för att skapa IoT-lösningar?
 
@@ -29,7 +29,7 @@ Azure IoT-teknik och-tjänster ger dig alternativ för att skapa ett brett utbud
 
 Azure IoT Central är en helt hanterad program plattform som du kan använda för att skapa anpassade IoT-lösningar. IoT Central använder programmallar för att skapa lösningar. Det finns mallar för allmänna lösningar och för vissa branscher, till exempel energi, sjukvård, myndigheter och åter försäljning. Med IoT Central programmallar kan du distribuera ett IoT Central-program på några minuter som sedan kan anpassas med teman, instrument paneler och vyer.
 
-Välj enheter från [Azure-certifierad för IoT-katalogen](https://catalog.azureiotsolutions.com) för att snabbt ansluta till din lösning. Använd IoT Central webb gränssnitt för att övervaka och hantera dina enheter för att hålla dem felfria och anslutna. Använd anslutningar och API: er för att integrera ditt IoT Central program med andra affärs program.
+Välj enheter från [Azure-certifierad för IoT-katalogen](https://devicecatalog.azure.com) för att snabbt ansluta till din lösning. Använd IoT Central webb gränssnitt för att övervaka och hantera dina enheter för att hålla dem felfria och anslutna. Använd anslutningar och API: er för att integrera ditt IoT Central program med andra affärs program.
 
 Som en helt hanterad program plattform är IoT Central en enkel, förutsägbar pris modell.
 
@@ -52,7 +52,7 @@ Om du vill skapa en IoT-lösning från grunden eller utöka en lösning som skap
 
 ### <a name="devices"></a>Enheter
 
-Utveckla dina IoT-enheter med hjälp av ett av [Azure IoT-Startpaketen](https://catalog.azureiotsolutions.com/kits) eller Välj en enhet som du vill använda från [Azure-certifierad för IoT-katalogen](https://catalog.azureiotsolutions.com). Implementera din inbäddade kod med hjälp av [enhets-SDK](../iot-hub/iot-hub-devguide-sdks.md): er med öppen källkod. Enhets-SDK: er har stöd för flera operativ system, till exempel Linux, Windows och real tids operativ system. Det finns SDK: er för flera programmeringsspråk, till exempel [C](https://github.com/Azure/azure-iot-sdk-c), [Node.js](https://github.com/Azure/azure-iot-sdk-node), [Java](https://github.com/Azure/azure-iot-sdk-java), [.net](https://github.com/Azure/azure-iot-sdk-csharp)och [python](https://github.com/Azure/azure-iot-sdk-python).
+Utveckla dina IoT-enheter med hjälp av ett av [Azure IoT-Startpaketen](https://devicecatalog.azure.com/kits) eller Välj en enhet som du vill använda från [Azure-certifierad för IoT-katalogen](https://devicecatalog.azure.com). Implementera din inbäddade kod med hjälp av [enhets-SDK](../iot-hub/iot-hub-devguide-sdks.md): er med öppen källkod. Enhets-SDK: er har stöd för flera operativ system, till exempel Linux, Windows och real tids operativ system. Det finns SDK: er för flera programmeringsspråk, till exempel [C](https://github.com/Azure/azure-iot-sdk-c), [Node.js](https://github.com/Azure/azure-iot-sdk-node), [Java](https://github.com/Azure/azure-iot-sdk-java), [.net](https://github.com/Azure/azure-iot-sdk-csharp)och [python](https://github.com/Azure/azure-iot-sdk-python).
 
 Du kan förenkla hur du skapar den inbäddade koden för dina enheter genom att använda [IoT plug and Play](../iot-pnp/overview-iot-plug-and-play.md) -tjänsten. IoT Plug and Play gör att lösnings utvecklare kan integrera enheter med sina lösningar utan att skriva någon inbäddad kod. I IoT-Plug and Play är det ett modell schema för _enhets kapacitet_ som beskriver enhets funktioner. Använd enhetens kapacitets modell för att generera din inbäddade enhets kod och konfigurera en molnbaserad lösning, till exempel ett IoT Central program.
 

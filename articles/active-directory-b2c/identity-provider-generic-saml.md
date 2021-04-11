@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a66486d791968f5752b96ed00374f8662b9c30fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 944eff6e76f4e5759f70105fe9d09aa61093917f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580053"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028306"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med SAML Identity Provider med hjälp av Azure Active Directory B2C
 
@@ -227,7 +227,7 @@ Ersätt följande värden:
 1. I Azure Portal söker du efter och väljer **Azure AD B2C**.
 1. Under **principer** väljer du **Identity Experience Framework**
 1. Välj en princip för förlitande part, till exempel `B2C_1A_signup_signin` .
-1. För **program** väljer du ett webb program som du [har registrerat tidigare](troubleshoot-custom-policies.md#troubleshoot-the-runtime). **Svars-URL: en** ska visas `https://jwt.ms` .
+1. För **program** väljer du ett webb program som du [har registrerat tidigare](tutorial-register-applications.md). **Svars-URL: en** ska visas `https://jwt.ms` .
 1. Välj knappen **Kör nu** .
 1. Från registrerings-eller inloggnings sidan väljer du **contoso** för att logga in med Contoso-konto.
 

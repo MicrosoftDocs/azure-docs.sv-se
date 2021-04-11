@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: jordane
 author: jpe316
-ms.date: 11/16/2020
-ms.openlocfilehash: cc844cbd2518bb131f6902d1da3e7653951224b5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.date: 04/08/2021
+ms.openlocfilehash: 2dc50702113f591075b790878347c4ca47beec4e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102547857"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027813"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integrering för Azure Machine Learning
 
@@ -25,6 +25,11 @@ Azure Machine Learning har fullt stöd för git-lagringsplatser för att spåra 
 Om källfiler lagras i en lokal git-lagringsplats när ett jobb skickas till Azure Machine Learning spåras information om lagrings platsen som en del av inlärnings processen.
 
 Eftersom Azure Machine Learning spårar information från en lokal git-lagrings platsen är den inte kopplad till någon speciell Central lagrings plats. Din lagrings plats kan klonas från GitHub, GitLab, BitBucket, Azure DevOps eller någon annan git-kompatibel tjänst.
+
+> [!TIP]
+> Använd Visual Studio Code för att interagera med git via ett grafiskt användar gränssnitt. Om du vill ansluta till en Azure Machine Learning fjärran sluten beräknings instans med hjälp av Visual Studio Code, se [ansluta till en Azure Machine Learning beräknings instans i Visual Studio Code (för hands version)](how-to-set-up-vs-code-remote.md)
+>
+> Mer information om funktioner för versions kontroll i Visual Studio Code finns i [använda versions kontroll i vs Code](https://code.visualstudio.com/docs/editor/versioncontrol) och [arbeta med GitHub i vs Code](https://code.visualstudio.com/docs/editor/github).
 
 ## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Klona Git-databaser till arbetsytans filsystem
 Azure Machine Learning tillhandahåller ett delat fil system för alla användare på arbets ytan.

@@ -11,12 +11,12 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
 ms.custom: data4ml
-ms.openlocfilehash: 238801171d19191bcac505f0c95395320f96d75c
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 3a86f0eb88ba0a56f0887d71f649cf9b9d5ec7a3
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882474"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227270"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Självstudie: skapa ett etikett projekt för bild klassificering med flera klasser 
 
@@ -116,7 +116,7 @@ Nu när du har åtkomst till de data som du vill ha med etikett, skapar du ett e
 
 Om du planerar att lägga till nya avbildningar i din data uppsättning kommer den stegvisa uppdateringen att hitta dessa nya avbildningar och lägga till dem i projektet.  När du aktiverar den här funktionen kommer projektet att regelbundet söka efter nya avbildningar.  Du kommer inte att lägga till nya avbildningar i data lagret för den här själv studie kursen, så lämna den här funktionen omarkerad.
 
-Välj **Nästa** för att fortsätta.
+Fortsätt genom att välja **Nästa**.
 
 ### <a name="label-classes"></a>Etikett klasser
 
@@ -209,7 +209,5 @@ Bild etiketter kan exporteras i [Coco-format](http://cocodataset.org/#format-dat
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien får du etiketterade bilder.  Använd nu dina märkta data:
-
 > [!div class="nextstepaction"]
-> [Träna en modell för maskin inlärnings avbildnings igenkänning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/labeled-datasets/labeled-datasets.ipynb).
+> [Skapa ett data etiketts projekt och exportera etiketter](how-to-create-labeling-projects.md).

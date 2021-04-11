@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 0eb91754c3c70a7b477d456158454f707a874207
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5e2827a4f87398f0a37ef04f797d2c7276d1a66d
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105630776"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384178"
 ---
 # <a name="tutorial-proving-possession-of-a-ca-certificate"></a>Självstudie: bevisa innehav av ett CA-certifikat
 
@@ -46,9 +46,11 @@ När du har överfört certifikat utfärdare för rot certifikat utfärdare elle
 
     * Om du använder bash-skriptet som tillhandahålls av Microsoft kör `./certGen.sh create_verification_certificate "75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3"` du för att skapa ett certifikat med namnet `verification-code.cert.pem` . Mer information finns i [använda skript som tillhandahålls av Microsoft](tutorial-x509-scripts.md).
 
-    * Om du använder OpenSSL för att generera certifikat måste du först skapa en privat nyckel och en certifikat signerings förfrågan (CSR):
+    * Om du använder OpenSSL för att generera certifikat måste du först skapa en privat nyckel och sedan en certifikat signerings förfrågan (CSR):
 
       ```bash
+      $ openssl genpkey -out pop.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048
+
       $ openssl req -new -key pop.key -out pop.csr
 
       -----

@@ -7,13 +7,13 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
-ms.date: 2/25/2020
-ms.openlocfilehash: 386a0e27c0f73f5bcd42397ed515f7561d5097fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: b4b67a6bf4eea72b3a81bd01398cc60cc33c0d0a
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955065"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227049"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Använda hanterade identiteter för att få åtkomst till App Configuration
 
@@ -145,7 +145,7 @@ Om du vill konfigurera en hanterad identitet i portalen skapar du först ett pro
     >config.AddAzureAppConfiguration(options =>
     >   options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential(<your_clientId>)));
     >```
-    >Som förklaras i [vanliga frågor och svar om hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/known-issues.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request), finns det ett standard sätt att matcha vilken hanterad identitet som används. I det här fallet tvingar Azure Identity Library dig att ange den önskade identiteten för att undvika möjliga körnings problem i framtiden (till exempel om en ny användardefinierad hanterad identitet läggs till eller om den systemtilldelade hanterade identiteten har Aktiver ATS). Så du måste ange clientId även om endast en användardefinierad hanterad identitet definieras och det inte finns någon systemtilldelad hanterad identitet.
+    >Som förklaras i [vanliga frågor och svar om hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/managed-identities-faq.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request), finns det ett standard sätt att matcha vilken hanterad identitet som används. I det här fallet tvingar Azure Identity Library dig att ange den önskade identiteten för att undvika möjliga körnings problem i framtiden (till exempel om en ny användardefinierad hanterad identitet läggs till eller om den systemtilldelade hanterade identiteten har Aktiver ATS). Så du måste ange clientId även om endast en användardefinierad hanterad identitet definieras och det inte finns någon systemtilldelad hanterad identitet.
 
 
 1. Om du vill använda både konfigurations värden för appen och Key Vault referenser uppdaterar du *programmet. cs* enligt nedan. Den här koden anropas `SetCredential` som en del av `ConfigureKeyVault` för att tala om för konfigurations leverantören vilka autentiseringsuppgifter som ska användas vid autentisering till Key Vault.

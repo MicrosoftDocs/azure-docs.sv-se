@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 42098786bb92e98b89b1dbfba01a2e071398f460
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f19f43b89cd2527a67827d7434f2e054ee40001e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258548"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227389"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>Självstudie: Använd principer för anpassad allokering med enhets etablerings tjänsten (DPS)
 
@@ -483,6 +483,17 @@ Så här tar du bort resurs gruppen efter namn:
 
 ## <a name="next-steps"></a>Nästa steg
 
-* En mer ingående princip för anpassad fördelnings princip finns i [så här använder du anpassade principer för allokering](how-to-use-custom-allocation-policies.md).
-* Mer information om hur du etablerar finns i [IoT Hub reetablering av enheter](concepts-device-reprovision.md).
-* Mer information om hur du avetablerar [enheter finns i så här avetablerar du enheter som tidigare har etablerats](how-to-unprovision-devices.md).
+Ett mer ingående princip exempel för anpassad fördelning finns i 
+
+> [!div class="nextstepaction"]
+> [Så här använder du anpassade allokeringsprinciper](how-to-use-custom-allocation-policies.md)
+
+* Mer information finns i
+
+> [!div class="nextstepaction"]
+> [Metoder för att etablera IoT Hub enhet](concepts-device-reprovision.md)
+
+* Mer information om hur du avetablerar finns i
+
+> [!div class="nextstepaction"]
+> [Så här avetablerar du enheter som tidigare har etablerats](how-to-unprovision-devices.md)

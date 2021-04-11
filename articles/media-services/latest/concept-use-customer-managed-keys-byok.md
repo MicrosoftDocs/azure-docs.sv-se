@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 4564e28f76aebe7f708c2b6f68903fe67bcefe26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2ea960d28bcdcbf586570933ac00dccae18e46a
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101698866"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068004"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Ta med din egen nyckel (Kundhanterade nycklar) med Media Services
 
@@ -51,4 +51,4 @@ Media Services stöder automatiskt Double Encryption. För data i vila använder
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Skydda ditt innehåll med Media Services dynamisk kryptering](content-protection-overview.md)
+[Skydda ditt innehåll med Media Services dynamisk kryptering](drm-content-protection-concept.md)

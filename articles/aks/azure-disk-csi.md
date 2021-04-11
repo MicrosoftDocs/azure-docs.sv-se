@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 2b4079b6d4eb39b65a7a60cd4d149c7748ab39ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5f9e28ac568f70801b2bd955c201712cfcb80084
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178889"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963347"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Använd driv rutinerna för Azure disk container Storage-gränssnittet (CSI) i Azure Kubernetes service (AKS) (för hands version)
 Driv rutinen för Azure disk container Storage-gränssnittet (CSI) är en [CSI Specification](https://github.com/container-storage-interface/spec/blob/master/spec.md)-kompatibel driv rutin som används av Azure Kubernetes service (AKS) för att hantera livs cykeln för Azure-diskar.
@@ -71,9 +71,9 @@ test.txt
 
 Standard lagrings klasserna passar de vanligaste scenarierna, men inte alla. I vissa fall kanske du vill ha en egen lagrings klass anpassad med dina egna parametrar. Vi har till exempel ett scenario där du kanske vill ändra `volumeBindingMode` klassen.
 
-Standard lagrings klasserna använder en `volumeBindingMode: Immediate` klass som garanterar att det sker omedelbart när PVC: n skapas. I de fall där Node-poolerna är topologi begränsade, till exempel med hjälp av tillgänglighets zoner, skulle PVs vara bundna eller etablerade utan kännedom om Pod schema krav (i det här fallet vara i en speciell zon).
+Du kan använda en `volumeBindingMode: Immediate` klass som garanterar att det sker omedelbart när PVC: n har skapats. I de fall där Node-poolerna är topologi begränsade, till exempel med hjälp av tillgänglighets zoner, skulle PVs vara bundna eller etablerade utan kännedom om Pod schema krav (i det här fallet vara i en speciell zon).
 
-För att åtgärda det här scenariot kan du använda `volumeBindingMode: WaitForFirstConsumer` , vilket förskjuter bindningen och etableringen av ett PV tills en pod som använder PVC: n skapas. På så sätt uppfyller PV och tillhandahålls i tillgänglighets zonen (eller någon annan topologi) som anges av Pod schemaläggnings begränsningar.
+För att åtgärda det här scenariot kan du använda `volumeBindingMode: WaitForFirstConsumer` , vilket förskjuter bindningen och etableringen av ett PV tills en pod som använder PVC: n skapas. På så sätt uppfyller PV och tillhandahålls i tillgänglighets zonen (eller någon annan topologi) som anges av Pod schemaläggnings begränsningar. Standard lagrings klasser använder `volumeBindingMode: WaitForFirstConsumer` klass.
 
 Skapa en fil med namnet `sc-azuredisk-csi-waitforfirstconsumer.yaml` och klistra in följande manifest.
 Lagrings klassen är samma som vår `managed-csi` lagrings klass men med en annan `volumeBindingMode` klass.

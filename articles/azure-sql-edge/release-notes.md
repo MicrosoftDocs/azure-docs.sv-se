@@ -10,17 +10,27 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 11/24/2020
-ms.openlocfilehash: e078fb91b3279b6f4321cd51dfb094f82bbe5f14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6218715878ec40fecee79f1c93bf2ca1820af007
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98696387"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277019"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Viktig information om Azure SQL Edge 
 
 I den här artikeln beskrivs vad som är nytt och vad som har ändrats med varje ny version av Azure SQL Edge.
 
+## <a name="azure-sql-edge-103"></a>Azure SQL Edge-1.0.3
+
+SQL-motor build-15.0.2000.1554
+
+### <a name="fixes"></a>Korrigeringar
+
+- Uppgradera ONNX runtime till 1.5.3
+- Uppdatera till Microsoft. SqlServer. DACFx-version 150.5084.2
+- Diverse fel korrigeringar  
+   
 ## <a name="azure-sql-edge-102"></a>Azure SQL Edge-1.0.2
 
 SQL-motor build-15.0.2000.1554

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
 ms.openlocfilehash: 660e87e0c09d1bf052b20f60276a30e572ab825b
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105110482"
 ---
 # <a name="monitor-azure-database-for-mysql-flexible-servers-with-built-in-metrics"></a>Övervaka Azure Database for MySQL flexibla servrar med inbyggda mått
@@ -31,7 +31,7 @@ Alla Azure-mått har en frekvens på en minut och varje mått ger 30 dagars hist
 ### <a name="list-of-metrics"></a>Lista över mått
 De här måtten är tillgängliga för Azure Database for MySQL:
 
-|Mått visnings namn|Metric|Enhet|Description|
+|Mått visnings namn|Metric|Enhet|Beskrivning|
 |---|---|---|---|
 |Värd processor procent|cpu_percent|Procent|Procent andelen av processor användningen på servern, inklusive processor användning från både kund arbets belastning och Azure MySQL-processer|
 |Värd nätverk i |network_bytes_ingress|Byte|Inkommande nätverks trafik på servern, inklusive trafik från både kund databas och Azure MySQL-funktioner som replikering, övervakning, loggar osv.|
