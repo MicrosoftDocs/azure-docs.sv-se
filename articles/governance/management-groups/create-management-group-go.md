@@ -1,15 +1,15 @@
 ---
 title: 'Snabb start: skapa en hanterings grupp med go'
 description: I den här snabb starten använder du Go för att skapa en hanterings grupp för att organisera resurserna i en resurspool.
-ms.date: 09/30/2020
+ms.date: 03/31/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7b6ca4d10f2a86ecb55fec2afe72b4aabfbb94f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf2d2c556cfd6ada6d31fc6ee797888ed0899573
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100101784"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091454"
 ---
 # <a name="quickstart-create-a-management-group-with-go"></a>Snabb start: skapa en hanterings grupp med go
 
@@ -57,7 +57,7 @@ Om du vill aktivera gå till hantera hanterings grupper måste paketet läggas t
 
 ## <a name="application-setup"></a>Programkonfiguration
 
-Med go-paket som har lagts till i din miljö väljer du det är dags att konfigurera Go-programmet som kan skapa en hanterings grupp.
+Med go-paket som har lagts till i din miljö kan du konfigurera Go-programmet som kan skapa en hanterings grupp.
 
 1. Skapa Go-programmet och spara följande källa som `mgCreate.go` :
 

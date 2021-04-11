@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: quickstart
-ms.date: 01/27/2021
+ms.date: 04/07/2021
 ms.author: alkohli
-ms.openlocfilehash: b6389152116a47bedbc9c2dc44231f3e1732fdc6
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 43477f11effaafb0bcd6158be6843c79d19092ac
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055118"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210818"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Snabb start: kom igång med Azure Stack Edge Pro med GPU 
 
@@ -36,7 +36,7 @@ Kontrol lera att följande krav är uppfyllda innan du distribuerar:
 
 ## <a name="deployment-steps"></a>Distributionssteg
 
-1. **Installera**: Anslut port 1 till en klient dator via en korskopplad kabel eller USB-Ethernet-kort. Anslut minst en annan enhets port för data, helst 25 GbE (från PORT 3 till PORT 6) till Internet via minst 1 GbE-växel och SFP + koppar kablar. Anslut de tillhandahållna ström sladdarna till strömförsörjnings enheterna och separera distributions möjligheter. Tryck på ström knappen på Front panelen för att aktivera enheten.  
+1. **Installera**: Anslut port 1 till en klient dator via en korskopplad kabel eller USB-Ethernet-kort. Anslut minst en annan enhets port för data, helst 25 GbE (från PORT 3 till PORT 6) till Internet via SFP + koppar kablar eller Använd PORT 2 med RJ45-korrigerings kabel. Anslut de tillhandahållna ström sladdarna till strömförsörjnings enheterna och separera distributions möjligheter. Tryck på ström knappen på Front panelen för att aktivera enheten.  
 
     Se [Interoperabilitets mat ris för Cavium FastlinQ 41000-serien](https://www.marvell.com/documents/xalflardzafh32cfvi0z/) och [Mellanox dual port 25G ConnectX-4 Channel-kompatibla produkter](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products) för att få kompatibla nätverks kablar och växlar.
 

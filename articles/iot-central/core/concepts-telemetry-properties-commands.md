@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: f027b2d41f63b5aa7ea3df87e06224abd629799b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 995f4670b17d55fe04d5c30a834ea4be576a8348
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100535322"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106489986"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetri, egenskaper och kommandonyttolaster
 
@@ -51,6 +51,10 @@ Med IoT Central kan du Visa rå data som en enhet skickar till ett program. Den 
     I den här vyn kan du välja vilka kolumner som ska visas och ange ett tidsintervall som ska visas. I kolumnen för staplade **data** visas data från enheten som inte matchar några definitioner för egenskaper eller telemetri i enhets mal len.
 
 ## <a name="telemetry"></a>Telemetri
+
+### <a name="telemetry-in-components"></a>Telemetri i komponenter
+
+Om Telemetrin har definierats i en komponent kan du lägga till en anpassad meddelande egenskap `$.sub` som heter med namnet på komponenten enligt definitionen i enhets modellen. Mer information finns i [Självstudier: skapa och ansluta ett klient program till ditt Azure IoT Central-program](tutorial-connect-device.md).
 
 ### <a name="primitive-types"></a>Primitiva typer
 
@@ -437,6 +441,21 @@ En enhets klient ska skicka tillstånd som JSON som ser ut som i följande exemp
 > [!NOTE]
 > Nytto Last formaten för egenskaper gäller för program som skapats på eller efter 07/14/2020.
 
+### <a name="properties-in-components"></a>Egenskaper i komponenter
+
+Om egenskapen har definierats i en komponent radbryts egenskapen i komponent namnet. I följande exempel anges `maxTempSinceLastReboot` i- `thermostat2` komponenten. Markören `__t` anger att den här komponenten:
+
+```json
+{
+  "thermostat2" : {  
+    "__t" : "c",  
+    "maxTempSinceLastReboot" : 38.7
+    } 
+}
+```
+
+Mer information finns i [Självstudier: skapa och ansluta ett klient program till ditt Azure IoT Central-program](tutorial-connect-device.md).
+
 ### <a name="primitive-types"></a>Primitiva typer
 
 Det här avsnittet innehåller exempel på primitiva egenskaps typer som en enhet skickar till ett IoT Central-program.
@@ -715,9 +734,25 @@ En enhets klient ska skicka en JSON-nyttolast som ser ut som i följande exempel
 }
 ```
 
-### <a name="writeable-property-types"></a>Skrivbara egenskaps typer
+### <a name="writable-property-types"></a>Skrivbara egenskaps typer
 
-Det här avsnittet innehåller exempel på skrivbara egenskaps typer som en enhet tar emot från ett IoT Central-program.
+I det här avsnittet visas exempel på skrivbara egenskaps typer som en enhet tar emot från ett IoT Central-program.
+
+Om den skrivbara egenskapen definieras i en komponent, innehåller det önskade egenskaps meddelandet komponent namnet. I följande exempel visas meddelandet som begär att enheten ska uppdatera `targetTemperature` i- `thermostat2` komponenten. Markören `__t` anger att den här komponenten:
+
+```json
+{
+  "thermostat2": {
+    "targetTemperature": {
+      "value": 57
+    },
+    "__t": "c"
+  },
+  "$version": 3
+}
+```
+
+Mer information finns i [Självstudier: skapa och ansluta ett klient program till ditt Azure IoT Central-program](tutorial-connect-device.md).
 
 IoT Central förväntar sig ett svar från enheten till skrivbara egenskaps uppdateringar. Svars meddelandet ska innehålla `ac` fälten och `av` . Fältet `ad` är valfritt. Se följande kodfragment för exempel.
 
@@ -834,6 +869,8 @@ Enheten ska skicka följande JSON-nyttolast till IoT Central när uppdateringen 
 ```
 
 ## <a name="commands"></a>Kommandon
+
+Om kommandot har definierats i en komponent, innehåller namnet på kommandot som enheten tar emot komponent namnet. Om kommandot till exempel anropas `getMaxMinReport` och komponenten anropas `thermostat2` , tar enheten emot en begäran om att köra ett kommando som kallas `thermostat2*getMaxMinReport` .
 
 Följande kodfragment från en enhets modell visar definitionen av ett kommando som inte har några parametrar och som inte förväntar sig att enheten ska returnera något:
 

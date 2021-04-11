@@ -1,7 +1,7 @@
 ---
 title: 'Självstudie: kom igång med Machine Learning – python'
 titleSuffix: Azure Machine Learning
-description: I den här självstudien kommer du igång med Azure Machine Learning SDK för python som körs i din personliga utvecklings miljö.
+description: Kom igång med Azure Machine Learning SDK för python som körs i din personliga utvecklings miljö.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: devx-track-python, contperf-fy21q3
 adobe-target: true
-ms.openlocfilehash: 81b9b5d53e1b61322d25d5dead85429474c1272c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 69340245cdebda570b526afd4f11ac8314384b43
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935557"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210626"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Självstudie: kom igång med Azure Machine Learning i utvecklings miljön (del 1 av 4)
 
@@ -30,16 +30,18 @@ I del 1 av den här själv studie serien kommer du att:
 > * Konfigurera katalog strukturen för kod.
 > * Skapa en Azure Machine Learning-arbetsyta.
 > * Konfigurera din lokala utvecklings miljö.
-> * Konfigurera ett beräknings kluster.
+> * Konfigurera ett beräknings kluster, en molnbaserad resurs för att träna dina modeller.
 
-> [!NOTE]
-> Den här själv studie serien fokuserar på Azure Machine Learning begrepp som krävs för att skicka **batch-jobb** – det är här som koden skickas till molnet för att köras i bakgrunden utan någon användar interaktion. Detta är användbart för färdiga skript eller kod som du vill köra upprepade gånger, eller för beräknings intensiva Machine Learning-uppgifter. Om du är mer intresse rad av ett exempel arbets flöde kan du i stället använda [Jupyter eller RStudio på en Azure Machine Learning beräknings instans](tutorial-1st-experiment-sdk-setup.md).
+Den här själv studie serien fokuserar på Azure Machine Learning begrepp som krävs för att skicka **batch-jobb** – det är här som koden skickas till molnet för att köras i bakgrunden utan någon användar interaktion. Detta är användbart för färdiga skript eller kod som du vill köra upprepade gånger, eller för beräknings intensiva Machine Learning-uppgifter.
+
+Ett annat bra sätt att börja använda Azure Machine Learning är med en Jupyter Notebooks.  Se [självstudie: kom igång med Azure Machine Learning i Jupyter Notebooks](tutorial-1st-experiment-sdk-setup.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 - En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Försök [Azure Machine Learning](https://aka.ms/AMLFree).
 - [Anaconda](https://www.anaconda.com/download/) eller [Miniconda](https://www.anaconda.com/download/) för att hantera virtuella python-miljöer och installera paket.  
 - Om du inte är bekant med att använda Conda, se [komma igång med Conda](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html).
+- En IDE-eller text redigerare för att skapa Python-skript.
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>Installera Azure Machine Learning SDK
 

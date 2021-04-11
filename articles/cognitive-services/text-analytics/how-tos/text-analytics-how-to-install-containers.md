@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/25/2021
+ms.date: 03/29/2021
 ms.author: aahi
 keywords: lokal, Docker, container, sentiment analys, naturlig språk bearbetning
-ms.openlocfilehash: cc5406cec54defd118ba350ba59b8d7311cff563
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 012e725e31097af5af634a1aba7693048c4c6b3e
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106089736"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277478"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Installera och kör Textanalys-containrar
 
@@ -32,7 +32,7 @@ Med containrar kan du köra API:er för textanalys i din egen miljö och de är 
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
 
 > [!IMPORTANT]
-> Det kostnads fria kontot är begränsat till 5 000 transaktioner per månad och bara <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">pris nivåerna</a> **kostnads fri** och **standard** är giltiga för behållare. Mer information om avgifter för transaktions begär Anden finns i [data begränsningar](../overview.md#data-limits).
+> Det kostnads fria kontot är begränsat till 5 000 transaktioner per månad och bara <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">pris nivåerna</a> **kostnads fri** och **standard** är giltiga för behållare. Mer information om avgifter för transaktions begär Anden finns i [data begränsningar](../concepts/data-limits.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 

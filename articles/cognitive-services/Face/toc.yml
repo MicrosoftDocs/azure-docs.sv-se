@@ -3,38 +3,28 @@
 - name: Översikt
   expanded: true
   items:
-    - name: Vad är tjänsten Ansiktsigenkänning?
+    - name: Översikt över ansikts tjänster
       href: Overview.md
+    - name: Priser
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: Nyheter
       href: releasenotes.md
-- name: Snabbstarter
-  items:
-    - name: Använda klientbiblioteket eller REST-API
-      href: Quickstarts/client-libraries.md
-- name: Självstudier
-  items:
-    - name: Använda klient-SDK
-      items:
-        - name: C#
-          href: Tutorials/FaceAPIinCSharpTutorial.md
-- name: Begrepp
-  items:
-    - name: Ansiktsspårning
-      href: concepts/face-detection.md
-    - name: Ansiktsigenkänning
-      href: concepts/face-recognition.md
+- name: Snabb start för ansikts
+  href: Quickstarts/client-libraries.md
+- name: Exempel
+  href: /samples/browse/?products=azure&term=face
 - name: Anvisningar
   items:
-    - name: Identifiera ansikten
+    - name: Identifiera och analysera ansikten
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
+    - name: Ange en modell version för ansikts igenkänning
+      href: Face-API-How-to-Topics/specify-recognition-model.md
+    - name: Ange en modell version för ansikts igenkänning
+      href: Face-API-How-to-Topics/specify-detection-model.md
     - name: Lägg till ansikten till en grupp
       href: Face-API-How-to-Topics/how-to-add-faces.md
     - name: Använda attributet HeadPose
       href: Face-API-How-to-Topics/how-to-use-headpose.md
-    - name: Ange en ansiktsigenkänningsmodell
-      href: Face-API-How-to-Topics/specify-recognition-model.md
-    - name: Ange en ansiktsavkänningsmodell
-      href: Face-API-How-to-Topics/specify-detection-model.md
     - name: Minska svarstiden när du använder tjänsten Ansiktsigenkänning
       href: Face-API-How-to-Topics/how-to-mitigate-latency.md
     - name: Använda den storskaliga funktionen
@@ -43,8 +33,12 @@
       href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
     - name: Migrera ansiktsdata
       href: Face-API-How-to-Topics/how-to-migrate-face-data.md
-    - name: Använda containrar
+    - name: Använda ansikts behållaren
       items:
+        - name: Dokumentation om containrar för Cognitive Services
+          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
+        - name: Översikt över container
+          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/computer-vision/context/context
         - name: Installera och köra containrar
           href: face-how-to-install-containers.md
         - name: Konfigurera containrar
@@ -52,49 +46,47 @@
         - name: Använda containerinstanser
           maintainContext: true
           href: ../containers/azure-container-instance-recipe.md
-        - name: Dokumentation om containrar för Cognitive Services
-          href: ../containers/index.yml
-- name: Djupdykningsscenarier
+- name: Begrepp
   items:
-    - name: Registrering till Ansiktsigenkänning
+    - name: Ansiktsspårning
+      href: concepts/face-detection.md
+    - name: Ansiktsigenkänning
+      href: concepts/face-recognition.md
+- name: Självstudier
+  items:
+    - name: Skapa en ansikts detektor-app
+      href: Tutorials/FaceAPIinCSharpTutorial.md
+    - name: Lägg till användare till en ansikts tjänst
       items:
-        - name: Översikt
+        - name: Metod tips för att lägga till användare
           href: enrollment-overview.md
-        - name: Anvisningar
-          items:
-            - name: Bygga en registreringsapp med React
-              href: build-enrollment-app.md
+        - name: Skapa en reagerar-app för att lägga till användare
+          href: build-enrollment-app.md
 - name: Referens
   items:
-    - name: Ansikts-API
+    - name: Ansikts REST API
       href: APIReference.md
-    - name: 'SDK:er'
-      items:
-        - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/faceapi
-        - name: Python
-          href: /python/api/azure-cognitiveservices-vision-face/
-        - name: Java
-          href: /java/api/overview/azure/cognitiveservices/client/faceapi
-        - name: Node.js
-          href: /javascript/api/@azure/cognitiveservices-face
-        - name: Go
-          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
+    - name: .NET
+      href: /dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/@azure/cognitiveservices-face
+    - name: Python
+      href: /python/api/azure-cognitiveservices-vision-face/?view=azure-python
+    - name: Go
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
 - name: Resurser
   items:
+    - name: Stöd för regioner
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Lär dig moduler
+      href: 'https://docs.microsoft.com/learn/modules/detect-analyze-faces/'
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context
-    - name: Exempel
-      items:
-        - name: Exempel på Ansiktsigenkänning
-          href: /samples/browse/?products=azure&term=face
-    - name: Priser och begränsningar
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
-    - name: Azure-översikt
-      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Regional tillgänglighet
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Efterlevnad
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Kryptering
       href: encrypt-data-at-rest.md
+    - name: Azure-uppdateringar
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

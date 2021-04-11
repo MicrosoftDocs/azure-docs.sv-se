@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 03/15/2021
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 6a85bfe7b3390b32fc220000b0c710b5a4e35067
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19a4c6697c161a78bfb1425009bd0b142dece876
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103496498"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106057243"
 ---
 # <a name="what-is-azure-private-link"></a>Vad är Azure Privat Link? 
 Med Azures privata länk kan du få åtkomst till Azure PaaS-tjänster (till exempel Azure Storage och SQL Database) och Azure-värdbaserade/partner tjänster som ägs av en [privat slut punkt](private-endpoint-overview.md) i det virtuella nätverket.
@@ -36,6 +36,9 @@ Azure Private-länken ger följande fördelar:
 - **Global räckvidd**: Anslut privat till tjänster som körs i andra regioner. Användarens virtuella nätverk kan vara i region A och det kan ansluta till tjänster bakom privat länk i region B.  
  
 - **Utöka till dina egna tjänster**: Aktivera samma upplevelse och funktionalitet för att återge din tjänst privat för konsumenter i Azure. Genom att placera tjänsten bakom en standard Azure Load Balancer kan du aktivera den för privat länk. Konsumenten kan sedan ansluta direkt till tjänsten med hjälp av en privat slut punkt i ett eget virtuellt nätverk. Du kan hantera anslutnings begär Anden med ett samtals flöde för godkännande. En privat Azure-länk fungerar för konsumenter och tjänster som tillhör olika Azure Active Directory klienter. 
+
+> [!NOTE]
+> Azures privata länk, tillsammans med Azure Virtual Network, sträcker sig över [Azure-tillgänglighetszoner](../availability-zones/az-overview.md) och är därför flexibelt. För att tillhandahålla hög tillgänglighet för Azure-resursen med en privat slut punkt, se till att resursen är i zon elastisk.
 
 ## <a name="availability"></a>Tillgänglighet 
 

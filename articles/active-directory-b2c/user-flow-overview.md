@@ -1,94 +1,110 @@
 ---
-title: Användar flöden i Azure Active Directory B2C | Microsoft Docs
+title: Användar flöden och anpassade principer i Azure Active Directory B2C | Microsoft Docs
 titleSuffix: Azure AD B2C
-description: Lär dig mer om den utöknings bara princip ramverket för Azure Active Directory B2C och hur du skapar olika användar flöden.
+description: Lär dig mer om inbyggda användar flöden och den anpassade principen utöknings Bart princip ramverk för Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 04/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 06253b571fd71623501c27fd5b0d9d4013727fc2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e4dbc5178bec3a5b1f0931267465879f604f36f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94840207"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226016"
 ---
-# <a name="user-flows-in-azure-active-directory-b2c"></a>Användarflöden i Azure Active Directory B2C
+# <a name="user-flows-and-custom-policies-overview"></a>Översikt över användar flöden och anpassade principer
 
-För att hjälpa dig att konfigurera vanliga identitetsuppgifter för dina program finns det fördefinierade konfigurerbara principer, som kallas **användarflöden**, i Azure AD B2C-portalen. Med ett användar flöde kan du bestämma hur användare interagerar med ditt program när de gör saker som att logga in, registrera sig, redigera en profil eller återställa ett lösen ord. Med användar flöden kan du kontrol lera följande funktioner:
+I Azure AD B2C kan du definiera affärs logiken som användarna följer för att få åtkomst till ditt program. Du kan till exempel bestämma hur många steg användarna ska följa när de loggar in, registrera dig, redigera en profil eller återställa ett lösen ord. När du har slutfört sekvensen erhåller användaren en token och får åtkomst till ditt program. 
 
-- Konto typer som används för inloggning, till exempel sociala konton som ett Facebook-eller lokala konto
-- Attribut som ska samlas in från konsumenten, till exempel förnamn, post nummer och sko storlek
-- Azure AD-multifaktorautentisering
-- Anpassning av användar gränssnittet
-- Information som programmet tar emot som anspråk i en token
+I Azure AD B2C finns det två sätt att ge identitets användar upplevelser:
 
-Du kan skapa många användar flöden av olika typer av klienter och använda dem i dina program efter behov. Användar flöden kan återanvändas i olika program. Den här flexibiliteten gör det möjligt att definiera och ändra identitets upplevelser med minimala eller inga ändringar i koden. Ditt program utlöser ett användar flöde genom att använda en standard-HTTP-autentiseringsbegäran som innehåller en användar flödes parameter. En anpassad [token](tokens-overview.md) tas emot som ett svar.
+* **Användar flöden** är fördefinierade, inbyggda, konfigurerbara principer som vi tillhandahåller så att du kan skapa registrering, inloggning och princip redigerings upplevelser på några minuter.
 
-I följande exempel visas frågesträngparametern "p" som anger det användar flöde som ska användas:
+* Med **anpassade principer** kan du skapa egna användar resor för komplexa identitets miljö scenarier.
 
-```
-https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
-&redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
-&response_mode=form_post                            // 'query', 'form_post' or 'fragment'
-&response_type=id_token
-&scope=openid
-&nonce=dummy
-&state=12345                                        // Any value provided by your application
-&p=b2c_1_siup                                       // Your sign-up user flow
-```
+Följande skärm bild visar användar flödets inställningar, jämfört med konfigurationsfiler för anpassade principer.
 
-```
-https://contosob2c.b2clogin.com/contosob2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Application ID
-&redirect_uri=https%3A%2F%2Flocalhost%3A44321%2F    // Your registered Reply URL, url encoded
-&response_mode=form_post                            // 'query', 'form_post' or 'fragment'
-&response_type=id_token
-&scope=openid
-&nonce=dummy
-&state=12345                                        // Any value provided by your application
-&p=b2c_1_siin                                       // Your sign-in user flow
-```
+![Skärm bild som visar användar flödets inställnings gränssnitt, jämfört med konfigurationsfiler för anpassade principer.](media/user-flow-overview/user-flow-vs-custom-policy.png)
 
-## <a name="user-flow-versions"></a>Användarflödesversioner
+Den här artikeln ger en kort översikt över användar flöden och anpassade principer, och hjälper dig att bestämma vilken metod som passar bäst för dina affärs behov.
 
-Azure AD B2C innehåller flera typer av användar flöden:
+## <a name="user-flows"></a>Användarflöden
 
-- **Registrera dig och logga in** – hanterar både registrerings-och inloggnings upplevelser med en enda konfiguration. Användarna utsätts för rätt sökväg beroende på kontexten. Dessutom ingår separata användar flöden för **registrering** eller **inloggning** . Men vi rekommenderar vanligt vis det kombinerade registrerings-och inloggnings användar flödet.
-- **Profil redigering** – gör att användare kan redigera profil informationen.
-- **Lösen ords återställning** – låter dig konfigurera om och hur användarna kan återställa sina lösen ord.
+Om du vill ställa in de vanligaste identitets uppgifterna innehåller Azure Portal flera fördefinierade och konfigurerbara principer som kallas *användar flöden*.
 
-De flesta typer av användar flöden har både en **Rekommenderad** version och en **standard** version. Mer information finns i [användar flödes versioner](user-flow-versions.md).
+Du kan konfigurera inställningar för användar flöden så att de kan styra identitets upplevelsens beteenden i dina program:
 
-> [!IMPORTANT]
-> Om du har arbetat med användar flöden i Azure AD B2C tidigare, ser vi att vi har ändrat hur vi refererar till användar flödes versioner. Tidigare erbjöd vi V1-versioner (produktionsklara), V1.1 och V2 (förhandsversion). Nu har vi konsoliderat användar flöden i två versioner:
->
->- **Rekommenderade** användar flöden är de nya för hands versionerna av användar flöden. De har testats noggrant och kombinerar alla funktioner i äldre **v2** -och **v 1.1** -versioner. De nya rekommenderade användar flödena kommer att behållas och uppdateras. När du flyttar till dessa nya rekommenderade användar flöden har du till gång till nya funktioner när de släpps.
->- **Standard** användar flöden, som tidigare kallats **v1**, är allmänt tillgängliga, produktions färdiga användar flöden. Om dina användar flöden är verksamhets kritiska och är beroende av hög stabila versioner, kan du fortsätta att använda standard användar flöden, vilket innebär att dessa versioner inte upprätthålls och uppdateras.
->
->Alla äldre förhands gransknings användar flöden (V 1.1 och v2) finns på en sökväg till utfasningen den **1 augusti 2021**. När så är möjligt rekommenderar vi starkt att du [växlar till de nya **rekommenderade** användar flödena](user-flow-versions.md#how-to-switch-to-a-new-recommended-user-flow) så snart som möjligt, så att du alltid kan dra nytta av de senaste funktionerna och uppdateringarna.
+* Konto typer som används för inloggning, till exempel sociala konton som en Facebook eller lokala konton som använder en e-postadress och ett lösen ord för inloggning
+* Attribut som ska samlas in från konsumenten, till exempel förnamn, post nummer eller land/region för placering
+* Azure AD-Multi-Factor Authentication (MFA)
+* Anpassning av användar gränssnittet
+* Uppsättning anspråk i en token som programmet tar emot när användaren har slutfört användar flödet
+* Sessionshantering
+* ... och mer
 
-## <a name="linking-user-flows"></a>Länka användar flöden
+De flesta vanliga identitets scenarier för appar kan definieras och implementeras effektivt med användar flöden. Vi rekommenderar att du använder de inbyggda användar flödena, om du inte har komplexa användar resa som kräver en fullständig flexibilitet i anpassade principer.
 
-En **registrerings-eller inloggnings** användare med lokala konton innehåller ett **bortglömt lösen ord?** länk på den första sidan i upplevelsen. När du klickar på den här länken utlöses inget användar flöde för lösen ords återställning automatiskt.
+## <a name="custom-policies"></a>Anpassade principer
 
-I stället returneras felkoden `AADB2C90118` till ditt program. Programmet måste hantera denna felkod genom att köra ett speciellt användar flöde som återställer lösen ordet. Om du vill se ett exempel kan du titta på ett [enkelt ASP.net-exempel](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI) som visar hur användar flöden länkas.
+Anpassade principer är konfigurationsfiler som definierar beteendet för Azure AD B2C klientens användar upplevelse. Medan användar flöden är fördefinierade i Azure AD B2C Portal för de vanligaste identitets uppgifterna kan anpassade principer redige ras fullständigt av en identitets utvecklare för att utföra många olika uppgifter.
 
-## <a name="email-address-storage"></a>Lagring av e-postadress
+En anpassad princip är helt konfigurerbar och princip driven. Den dirigerar förtroende mellan entiteter i standard protokoll. Till exempel OpenID Connect, OAuth, SAML och några icke-standardvärden, till exempel REST API-baserade system-till-system-anspråk. Ramverket skapar användarvänliga upplevelser med vita etiketter.
 
-En e-postadress kan krävas som en del av ett användar flöde. Om användaren autentiseras med en social identitetsprovider lagras e-postadressen i egenskapen **otherMails** . Om ett lokalt konto är baserat på ett användar namn lagras e-postadressen i detalj egenskapen för stark autentisering. Om ett lokalt konto är baserat på en e-postadress lagras e-postadressen i egenskapen **signInNames** .
+Med den anpassade principen kan du skapa användar resor med valfri kombination av steg. Exempel:
 
-E-postadressen är inte garanterat verifierad i någon av dessa fall. En klient administratör kan inaktivera e-postverifiering i de grundläggande principerna för lokala konton. Även om verifiering av e-postadresser är aktive rad, kontrol leras inte adresser om de kommer från en social identitetsprovider och de inte har ändrats.
+* Federera med andra identitets leverantörer
+* Krav för MFA (Multi-Factor Authentication) för första och tredje part
+* Samla in indata från användaren
+* Integrera med externa system med hjälp av REST API kommunikation
 
-Endast egenskaperna **otherMails** och **signInNames** visas via Microsoft Graph-API: et. E-postadressen i detalj egenskapen för stark autentisering är inte tillgänglig.
+Varje användar resa definieras av en princip. Du kan skapa så många eller så få principer som du behöver för att aktivera den bästa användar upplevelsen för din organisation.
+
+![Diagram som visar ett exempel på en komplex användar resa som har Aktiver ATS av IEF](media/user-flow-overview/custom-policy-diagram.png)
+
+En anpassad princip definieras av flera XML-filer som refererar till varandra i en hierarkisk kedja. XML-elementen definierar anspråks schema, anspråks omvandlingar, innehålls definitioner, anspråks leverantörer, tekniska profiler, åtgärder för användar resans dirigering och andra aspekter av identitets upplevelsen.
+
+Den kraftfulla flexibiliteten med anpassade principer är mest lämplig för när du behöver bygga komplexa identitets scenarier. Utvecklare som konfigurerar anpassade principer måste definiera de betrodda relationerna i noggrann detalj för att inkludera slut punkter för metadata, exakta definitioner för anspråk och konfigurera hemligheter, nycklar och certifikat efter behov av varje identitets leverantör.
+
+Lär dig mer om anpassade principer i [anpassade principer i Azure Active Directory B2C](custom-policy-overview.md).
+
+## <a name="comparing-user-flows-and-custom-policies"></a>Jämföra användar flöden och anpassade principer
+
+Följande tabell innehåller en detaljerad jämförelse av de scenarier som du kan använda för att Azure AD B2C användar flöden och en anpassad princip.
+
+| Kontext | Användarflöden | Anpassade principer |
+|-|-------------------|-----------------|
+| Mål användare | Alla program utvecklare med eller utan identitets kunskaper. | Identitets tekniker, system integrerare, konsulter och interna identitets team. De är bekvämt med OpenID Connect-flöden och förstå identitets leverantörer och anspråksbaserad autentisering. |
+| Konfigurations metod | Azure Portal med ett användarvänligt användar gränssnitt (UI). | Redigera XML-filer direkt och ladda upp till Azure Portal. |
+| UI-anpassning | [Fullständig anpassning av gränssnitt](customize-ui-with-html.md) , inklusive HTML, CSS och [Java Script](javascript-and-page-layout.md).<br><br>[Stöd för flera språk](language-customization.md) med anpassade strängar. | Samma |
+| Attribut anpassning | Standard-och anpassade attribut. | Samma |
+| Hantering av token och sessioner | [Anpassa token](configure-tokens.md) och [sessioner](session-behavior.md). | Samma |
+| Identitetsprovidrar | [Fördefinierad lokal](identity-provider-local.md) eller [social Provider](add-identity-provider.md), till exempel Federation med Azure Active Directory klienter. | Standardbaserad OIDC, OAUTH och SAML.  Autentisering är också möjligt med hjälp av integrering med REST API: er. |
+| Identitets uppgifter | [Registrera dig eller logga](add-sign-up-and-sign-in-policy.md) in med lokala eller många sociala konton.<br><br>[Lösen ords återställning via självbetjäning](add-password-reset-policy.md).<br><br>[Redigera profil](add-profile-editing-policy.md).<br><br>Multi-Factor Authentication.<br><br>Flöden för åtkomsttoken. | Slutför samma uppgifter som användar flöden med anpassade identitets leverantörer eller Använd anpassade omfattningar.<br><br>Etablera ett användar konto i ett annat system vid tidpunkten för registreringen.<br><br>Skicka ett välkomst meddelande med din egen e-posttjänstprovider.<br><br>Använd ett användar Arkiv utanför Azure AD B2C.<br><br>Verifiera användarens angivna information med ett betrott system med hjälp av ett API. |
+
+## <a name="application-integration"></a>Integrering av program
+
+Du kan skapa många användar flöden eller anpassade principer för olika typer av klienter och använda dem i dina program efter behov. Både användar flöden och anpassade principer kan återanvändas i olika program. Den här flexibiliteten gör det möjligt att definiera och ändra identitets upplevelser med minimala eller inga ändringar i koden. 
+
+När en användare vill logga in i ditt program initierar programmet en auktoriseringsbegäran till en användar flöde eller en anpassad princip angiven slut punkt. Användar flödet eller den anpassade principen definierar och styr användarens upplevelse. När de slutför ett användar flöde genererar Azure AD B2C en token och omdirigerar sedan tillbaka användaren till ditt program.
+
+![Mobilapp med pilar som visar flödet mellan Azure AD B2C inloggnings sida](media/user-flow-overview/app-integration.png)
+
+Flera program kan använda samma användar flöde eller anpassad princip. Ett enda program kan använda flera användar flöden eller anpassade principer.
+
+Om du till exempel vill logga in i ett program använder programmet *inloggnings-eller inloggnings* användar flödet. När användaren har loggat in kan de vilja redigera sin profil. Om du vill redigera profilen initierar programmet en annan auktoriseringsbegäran, den här gången använder *profil redigera* användar flöde.
+
+Ditt program utlöser ett användar flöde genom att använda en standard-HTTP-autentiseringsbegäran som innehåller användar flödet eller namnet på den anpassade principen. En anpassad [token](tokens-overview.md) tas emot som ett svar.
+
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill skapa de rekommenderade användar flödena följer du anvisningarna i [Självstudier: skapa ett användar flöde](tutorial-create-user-flows.md).
+- Om du vill skapa de rekommenderade användar flödena följer du anvisningarna i [Självstudier: skapa ett användar flöde](tutorial-create-user-flows.md).
+- Lär dig mer om [användar flödes versionerna i Azure AD B2C](user-flow-versions.md).
+- Läs mer om att [Azure AD B2C anpassade principer](custom-policy-overview.md).

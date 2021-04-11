@@ -10,18 +10,29 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: 44bcc27f877f6b2a547c51ecd3848214719cb085
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cbc147cb0aabc0540e3a91c99243aa88a8cca146
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643656"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210800"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Vad är automatisk maskin inlärning (AutoML)?
 
 Automatisk maskin inlärning, som också kallas automatisk ML eller AutoML, är en process för att automatisera tids krävande, repetitiva uppgifter om utveckling av maskin inlärnings modeller. Det gör det möjligt för data experter, analytiker och utvecklare att bygga ML-modeller med hög skalbarhet, effektivitet och produktivitet samtidigt som modell kvaliteten försämras. Automatiserad ML i Azure Machine Learning baseras på en Ban brytande från vår [Microsoft Research-avdelning](https://www.microsoft.com/research/project/automl/).
 
 Traditionell miljö utveckling för maskin inlärning är resurs intensiv, vilket kräver betydande domän kunskap och tid för att producera och jämföra dussin tals modeller. Med automatisk maskin inlärning kan du påskynda den tid det tar att få produktions klara ML-modeller med mycket enkelt och effektivt.
+
+## <a name="automl-in-azure-machine-learning"></a>AutoML i Azure Machine Learning
+
+Azure Machine Learning erbjuder två upplevelser för att arbeta med automatiserade ML:
+
+* För kod erfarna kunder [Azure Machine Learning python SDK](/python/api/overview/azure/ml/intro).  Kom igång med [Självstudier: Använd automatisk maskin inlärning för att förutse taxi-priser](tutorial-auto-train-models.md).
+
+* För kunder med begränsade/inga kod upplevelser Azure Machine Learning Studio på [https://ml.azure.com](https://ml.azure.com/) .  Kom igång med de här självstudierna:
+    * [Självstudie: skapa en klassificerings modell med automatiserad ml i Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
+    *  [Självstudie: prognostisera efter frågan med automatiserad maskin inlärning](tutorial-automated-ml-forecast.md)
+
 
 ## <a name="when-to-use-automl-classify-regression--forecast"></a>När du ska använda AutoML: klassificera, regression, & prognos
 
@@ -199,14 +210,6 @@ Att till exempel skapa en modell __för varje instans eller individ__ i följand
 * Förutsäga försäljning för varje enskilt lager
 * Förutsägelse underhåll för hundratals olje brunnar
 * Skräddarsy en upplevelse för enskilda användare.
-
-## <a name="automl-in-azure-machine-learning"></a>AutoML i Azure Machine Learning
-
-Azure Machine Learning erbjuder två upplevelser för att arbeta med automatiserade ML:
-
-* För kod erfarna kunder [Azure Machine Learning python SDK](/python/api/overview/azure/ml/intro) 
-
-* För kunder med begränsade/inga kod upplevelser Azure Machine Learning Studio på [https://ml.azure.com](https://ml.azure.com/)  
 
 <a name="parity"></a>
 

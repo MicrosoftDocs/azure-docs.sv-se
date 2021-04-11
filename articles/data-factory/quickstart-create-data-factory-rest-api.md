@@ -7,12 +7,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 01/18/2021
 ms.author: jingwang
-ms.openlocfilehash: adcefc21ac4fc8a00d97d5ac4352bad1287b60de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1950fa5269460bd3daeb671a37a072dc4f5f050
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517641"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385266"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Snabbstart: Skapa en Azure -datafabrik och pipeline med REST API
 
@@ -28,7 +28,7 @@ Den här snabbstarten beskriver hur du använder REST API till att skapa en Azur
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -37,7 +37,9 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://a
 * Skapa en **blobcontainer** i Blob Storage, skapa en **indatamapp** i containern och ladda upp några filer till mappen. Du kan använda verktyg som [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) för att ansluta till Azure Blob Storage, skapa en BLOB-behållare, ladda upp indatafilen och verifiera utdatafilen.
 * Installera **Azure PowerShell**. Följ instruktionerna i [Så här installerar och konfigurerar du Azure PowerShell](/powershell/azure/install-Az-ps). I den här snabbstarten används PowerShell för att göra REST API-anrop.
 * **Skapa en app i Azure Active Directory** med hjälp av [den här instruktionen](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Anteckna följande värden som du använder i senare steg: **program-ID**, **clientSecrets** och **klient-ID**. Tilldela appen rollen **Deltagare**.
-
+>[!NOTE]
+>   För suveräna moln måste du använda lämpliga molnbaserad slut punkter för ActiveDirectoryAuthority och ResourceManagerUrl (BaseUri). Du kan använda PowerShell för att enkelt hämta slut punkts-URL: er för olika moln genom att köra "Get-AzEnvironment | Format-List ", som kommer att returnera en lista över slut punkter för varje moln miljö.  
+>    
 ## <a name="set-global-variables"></a>Ange globala variabler
 
 1. Starta **PowerShell**. Låt Azure PowerShell vara öppet tills du är klar med snabbstarten. Om du stänger och öppnar det igen måste du köra kommandona en gång till.

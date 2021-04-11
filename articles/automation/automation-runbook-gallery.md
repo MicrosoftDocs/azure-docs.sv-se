@@ -1,41 +1,64 @@
 ---
 title: Använda Azure Automation runbooks och moduler i PowerShell-galleriet
-description: Den här artikeln beskriver hur du använder Runbooks och moduler från Microsoft och communityn i PowerShell-galleriet.
+description: Den här artikeln beskriver hur du använder Runbooks och moduler från Microsoft GitHub databaser och PowerShell-galleriet.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/04/2021
+ms.date: 04/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: c38a6236fe3ad9164d11d94e5563a7dddf5b4b32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2df019888d293cd8a25a34e6f0f4e7dd215c6a41
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102452789"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030687"
 ---
-# <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Använd runbooks och moduler i PowerShell-galleriet
+# <a name="use-existing-runbooks-and-modules"></a>Använda befintliga Runbooks och moduler
 
-I stället för att skapa egna runbooks och moduler i Azure Automation kan du komma åt scenarier som redan har skapats av Microsoft och communityn. Du kan hämta PowerShell-Runbooks och [moduler](#modules-in-powershell-gallery) från PowerShell-galleriet-och [python-Runbooks](#use-python-runbooks) från Azure Automation GitHub-organisationen. Du kan också bidra till communityn genom [att dela scenarier som du utvecklar](#add-a-powershell-runbook-to-the-gallery).
+I stället för att skapa egna runbooks och moduler i Azure Automation kan du komma åt scenarier som redan har skapats av Microsoft och communityn. Du kan få Azure-relaterade PowerShell-och python-Runbooks från Runbook-galleriet i Azure Portal, och [moduler](#modules-in-the-powershell-gallery) och [Runbooks](#runbooks-in-the-powershell-gallery) (som kan vara olika för Azure) från PowerShell-galleriet. Du kan också bidra till communityn genom [att dela scenarier som du utvecklar](#contribute-to-the-community).
 
 > [!NOTE]
-> TechNets skript Center tas ur bruk. Alla Runbooks från Script Center i Runbook-galleriet har flyttats till vår [Automation GitHub-organisation](https://github.com/azureautomation) för mer information, se [här](https://techcommunity.microsoft.com/t5/azure-governance-and-management/azure-automation-runbooks-moving-to-github/ba-p/2039337).
+> TechNets skript Center tas ur bruk. Alla Runbooks från Script Center i Runbook-galleriet har flyttats till vår [Automation GitHub-organisation](https://github.com/azureautomation) för mer information, se [Azure Automation runbooks som flyttas till GitHub](https://techcommunity.microsoft.com/t5/azure-governance-and-management/azure-automation-runbooks-moving-to-github/ba-p/2039337).
 
-## <a name="runbooks-in-powershell-gallery"></a>Runbooks i PowerShell-galleriet
+## <a name="import-runbooks-from-github-with-the-azure-portal"></a>Importera runbooks från GitHub med Azure Portal
 
-[PowerShell-galleriet](https://www.powershellgallery.com/packages) tillhandahåller en mängd olika Runbooks från Microsoft och communityn som du kan importera till Azure Automation. Om du vill använda en, laddar du ned en Runbook från galleriet eller så kan du importera runbooks direkt från galleriet eller från ditt Automation-konto i Azure Portal.
+1. Öppna ditt Automation-konto på Azure Portal.
+2. Välj **Runbook-Galleri** under **process automatisering**.
+3. Välj **Källa: GitHub**.
+4. Du kan använda filtren ovanför listan för att begränsa visningen efter utgivare, typ och sortering. Leta upp det Galleri objekt som du vill använda och markera det för att visa dess information.
+
+   :::image type="content" source="./media/automation-runbook-gallery/browse-gallery-github.png" alt-text="Söker i Runbook-galleriet." lightbox="./media/automation-runbook-gallery/browse-gallery-github-expanded.png":::
+
+5. Klicka på **Importera** på informations sidan om du vill importera ett objekt.
+
+   :::image type="content" source="./media/automation-runbook-gallery/gallery-item-import.png" alt-text="Galleri objekt import.":::
+
+6. Du kan också ändra namnet på runbooken på bladet importera och sedan klicka på **OK** för att importera runbooken.
+
+   :::image type="content" source="./media/automation-runbook-gallery/gallery-item-import-blade.png" alt-text="Bladet importera Galleri objekt.":::
+
+7. Runbooken visas på fliken **Runbooks** för Automation-kontot.
+ 
+## <a name="runbooks-in-the-powershell-gallery"></a>Runbooks i PowerShell-galleriet
+
+> [!IMPORTANT]
+> Du bör verifiera innehållet i alla Runbooks som du får från PowerShell-galleriet. Använd yttersta försiktighet när du installerar och kör dem i en produktions miljö.
+
+[PowerShell-galleriet](https://www.powershellgallery.com/packages) innehåller olika Runbooks från Microsoft och communityn som du kan importera till Azure Automation. Om du vill använda en, laddar du ned en Runbook från galleriet eller så kan du importera runbooks direkt från galleriet eller från ditt Automation-konto i Azure Portal.
 
 > [!NOTE]
 > Grafiska runbooks stöds inte i PowerShell-galleriet.
 
-Du kan bara importera direkt från PowerShell-galleriet med hjälp av Azure Portal. Du kan inte utföra den här funktionen med PowerShell.
+Du kan bara importera direkt från PowerShell-galleriet med hjälp av Azure Portal. Du kan inte utföra den här funktionen med PowerShell. Proceduren är densamma som i [importera runbooks från GitHub med Azure Portal](#import-runbooks-from-github-with-the-azure-portal), förutom att **källan** kommer att **PowerShell-galleriet**.
 
-> [!NOTE]
-> Du bör kontrol lera innehållet i alla Runbooks som du får från PowerShell-galleriet och använda yttersta försiktighet i att installera och köra dem i en produktions miljö.
+:::image type="content" source="./media/automation-runbook-gallery/source-runbook-gallery-small.png" alt-text="Visar käll valet för Runbook-galleriet." lightbox="./media/automation-runbook-gallery/source-runbook-gallery-large.png":::
 
-## <a name="modules-in-powershell-gallery"></a>Moduler i PowerShell-galleriet
+## <a name="modules-in-the-powershell-gallery"></a>Moduler i PowerShell-galleriet
 
 PowerShell-moduler innehåller cmdletar som du kan använda i dina runbooks. Befintliga moduler som du kan installera i Azure Automation finns tillgängliga i [PowerShell-galleriet](https://www.powershellgallery.com). Du kan starta galleriet från Azure Portal och installera modulerna direkt i Azure Automation, eller så kan du hämta och installera dem manuellt.
 
-## <a name="common-scenarios-available-in-powershell-gallery"></a>Vanliga scenarier som är tillgängliga i PowerShell-galleriet
+Du kan också hitta moduler som ska importeras i Azure Portal. De är listade för ditt Automation-konto i **modulen moduler** under **delade resurser**.
+
+## <a name="common-scenarios-available-in-the-powershell-gallery"></a>Vanliga scenarier som är tillgängliga i PowerShell-galleriet
 
 Listan nedan innehåller några Runbooks som stöder vanliga scenarier. En fullständig lista över Runbooks som skapats av Azure Automation-teamet finns i [AzureAutomationTeam Profile](https://www.powershellgallery.com/profiles/AzureAutomationTeam).
 
@@ -44,51 +67,40 @@ Listan nedan innehåller några Runbooks som stöder vanliga scenarier. En fulls
    * [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemFromAzureVM/) – kopierar en fjärrfil från en virtuell Windows Azure-dator.
    * [Copy-ItemToAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) – kopierar en lokal fil till en virtuell Azure-dator.
 
-## <a name="import-a-powershell-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Importera en PowerShell-Runbook från Runbook-galleriet med Azure Portal
+## <a name="contribute-to-the-community"></a>Bidra till communityn
 
-1. Öppna ditt Automation-konto på Azure Portal.
-1. Välj **Runbook-Galleri** under **process automatisering**.
-1. Välj **Källa: PowerShell-galleriet**. Visar en lista över tillgängliga Runbooks som du kan bläddra i.
-1. Du kan använda sökrutan ovanför listan för att begränsa listan, eller så kan du använda filtren för att begränsa visningen efter utgivare, typ och sortering. Leta upp det Galleri objekt som du vill använda och markera det för att visa dess information.
+Vi rekommenderar starkt att du bidrar till och hjälper till att växa Azure Automation communityn. Dela de fantastiska Runbooks som du har skapat med communityn. Dina bidrag kommer att uppskattas!
 
-   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-sm.png" alt-text="Bläddra i Runbook-galleriet." lightbox="media/automation-runbook-gallery/browse-gallery-lg.png":::
+### <a name="add-a-runbook-to-the-github-runbook-gallery"></a>Lägga till en Runbook i GitHub Runbook-galleriet
 
-1. Om du vill importera ett objekt klickar du på **Importera** på bladet information.
+Du kan lägga till nya PowerShell-eller python-Runbooks i Runbook-galleriet med det här GitHub-arbetsflödet.
 
-   :::image type="content" source="media/automation-runbook-gallery/gallery-item-detail-sm.png" alt-text="Visa information om ett objekt i Runbook-galleriet." lightbox="media/automation-runbook-gallery/gallery-item-detail-lg.png":::
+1. Skapa ett offentligt lager på GitHub och Lägg till en Runbook och eventuella andra nödvändiga filer (t. ex. readme.md, beskrivning osv.).
+1. Lägg till ämnet `azureautomationrunbookgallery` för att se till att lagrings platsen identifieras av vår tjänst, så att den kan visas i Automation Runbook-galleriet.
+1. Om den Runbook som du har skapat är ett PowerShell-arbetsflöde lägger du till ämnet `PowerShellWorkflow` . Om det är en python 3-Runbook lägger du till `Python3` . Inga andra specifika ämnen krävs för Azure-Runbooks, men vi rekommenderar att du lägger till andra ämnen som kan användas för kategorisering och sökning i Runbook-galleriet.
 
-1. Du kan också ändra namnet på runbooken och sedan klicka på **OK** för att importera runbooken.
-1. Runbooken visas på fliken **Runbooks** för Automation-kontot.
+   >[!NOTE]
+   >Kolla in befintliga Runbooks i galleriet för saker som formatering, rubriker och befintliga taggar som du kan använda (t. ex. `Azure Automation` eller `Linux Azure Virtual Machines` ).
 
-## <a name="import-a--powershell-runbook-from-github-with-the-azure-portal"></a>Importera en PowerShell-Runbook från GitHub med Azure Portal
+Om du vill föreslå ändringar i en befintlig Runbook kan du skicka en pull-begäran till den. 
 
-1. Öppna ditt Automation-konto på Azure Portal.
-1. Välj **Runbook-Galleri** under **process automatisering**.
-1. Välj **Källa: GitHub**.
-1. Du kan använda filtren ovanför listan för att begränsa visningen efter utgivare, typ och sortering. Leta upp det Galleri objekt som du vill använda och markera det för att visa dess information.
+Om du bestämmer dig för att klona och redigera en befintlig Runbook, är det bäst att ge det ett annat namn. Om du använder det gamla namnet igen visas det två gånger i listan med Runbook-gallerier.
 
-   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-github-sm.png" alt-text="Bläddra i GitHub-galleriet." lightbox="media/automation-runbook-gallery/browse-gallery-github-lg.png":::
+>[!NOTE]
+>Tillåt minst 12 timmar för synkronisering mellan GitHub och Automation Runbook-galleriet för både uppdaterade och nya Runbooks.
 
-1. Om du vill importera ett objekt klickar du på **Importera** på bladet information.
-
-   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-github-sm.png" alt-text="Detaljerad vy av en Runbook från GitHub-galleriet." lightbox="media/automation-runbook-gallery/gallery-item-details-blade-github-lg.png":::
-
-1. Du kan också ändra namnet på runbooken och sedan klicka på **OK** för att importera runbooken.
-1. Runbooken visas på fliken **Runbooks** för Automation-kontot.
-
-## <a name="add-a-powershell-runbook-to-the-gallery"></a>Lägg till en PowerShell-Runbook i galleriet
+### <a name="add-a-powershell-runbook-to-the-powershell-gallery"></a>Lägga till en PowerShell-Runbook i PowerShell-galleriet
 
 Microsoft uppmuntrar dig att lägga till Runbooks i de PowerShell-galleriet som du tror kan vara användbara för andra kunder. PowerShell-galleriet accepterar PowerShell-moduler och PowerShell-skript. Du kan lägga till en Runbook genom [att ladda upp den till PowerShell-galleriet](/powershell/scripting/gallery/how-to/publishing-packages/publishing-a-package).
 
-## <a name="import-a-module-from-the-module-gallery-with-the-azure-portal"></a>Importera en modul från modul-galleriet med Azure Portal
+## <a name="import-a-module-from-the-modules-gallery-in-the-azure-portal"></a>Importera en modul från modulens galleri i Azure Portal
 
 1. Öppna ditt Automation-konto på Azure Portal.
-1. Välj **moduler** under **delade resurser** för att öppna listan över moduler.
-1. Klicka på **Bläddra i galleriet** överst på sidan.
+1. Under **delade resurser** väljer du **moduler Galleri** för att öppna listan över moduler.
 
       :::image type="content" source="media/automation-runbook-gallery/modules-blade-sm.png" alt-text="Vy över modulens Galleri." lightbox="media/automation-runbook-gallery/modules-blade-lg.png":::
 
-1. På sidan bläddra i galleriet kan du söka efter matchningar i något av följande fält med hjälp av sökrutan:
+1. På sidan bläddra i galleriet kan du söka efter följande fält:
 
    * Modulnamn
    * Taggar
@@ -110,17 +122,13 @@ Microsoft uppmuntrar dig att lägga till Runbooks i de PowerShell-galleriet som 
 > [!NOTE]
 > Moduler som bara stöder PowerShell-kärnan stöds inte i Azure Automation och kan inte importeras i Azure Portal eller distribueras direkt från PowerShell-galleriet.
 
-## <a name="use-python-runbooks"></a>Använda python-Runbooks
-
-Python-Runbooks är tillgängliga i [Azure Automation GitHub-organisationen](https://github.com/azureautomation). När du bidrar till vår GitHub-lagrings platsen lägger du till taggen **(avsnittet GitHub): python3** när du laddar upp ditt bidrag.
-
 ## <a name="request-a-runbook-or-module"></a>Begär en Runbook eller modul
 
 Du kan skicka förfrågningar till [användar rösten](https://feedback.azure.com/forums/246290-azure-automation/).  Om du behöver hjälp med att skriva en Runbook eller om du har en fråga om PowerShell, kan du skicka en fråga till vår [sida om Microsoft Q&en fråga](/answers/topics/azure-automation.html).
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Information om hur du kommer igång med en PowerShell-Runbook finns i [Självstudier: skapa en PowerShell-Runbook](learn/automation-tutorial-runbook-textual-powershell.md).
+* Information om hur du kommer igång med PowerShell-Runbooks finns i [Självstudier: skapa en PowerShell-Runbook](learn/automation-tutorial-runbook-textual-powershell.md).
 * Information om hur du arbetar med Runbooks finns [i hantera Runbooks i Azure Automation](manage-runbooks.md).
-* Mer information om PowerShell finns i [PowerShell-dokument](/powershell/scripting/overview).
+* Mer information om PowerShell-skript finns i [PowerShell-dokument](/powershell/scripting/overview).
 * En PowerShell-cmdlet-referens finns i [AZ. Automation](/powershell/module/az.automation).

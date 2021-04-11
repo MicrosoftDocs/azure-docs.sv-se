@@ -3,12 +3,12 @@ title: Definiera flera instanser av en variabel
 description: Använd kopierings åtgärden i en Azure Resource Manager mall (ARM-mall) om du vill iterera flera gånger när du skapar en variabel.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: b8acd85659b843cb482e1ccc61e28da03431db1b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e1f6dfeb7b701b09ad1a9505d5dbcfddf2cd6b0b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96905901"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385723"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>Variabel iteration i ARM-mallar
 
@@ -40,10 +40,10 @@ Antalet får inte överskrida 800.
 
 Antalet får inte vara ett negativt tal. Det kan vara noll om du distribuerar mallen med en senare version av Azure CLI, PowerShell eller REST API. Mer specifikt måste du använda:
 
-* Azure PowerShell **2,6** eller senare
-* Azure CLI- **2.0.74** eller senare
-* REST API version **2019-05-10** eller senare
-* [Länkade distributioner](linked-templates.md) måste använda API version **2019-05-10** eller senare för distributions resurs typen
+- Azure PowerShell **2,6** eller senare
+- Azure CLI- **2.0.74** eller senare
+- REST API version **2019-05-10** eller senare
+- [Länkade distributioner](linked-templates.md) måste använda API version **2019-05-10** eller senare för distributions resurs typen
 
 Tidigare versioner av PowerShell, CLI och REST API stöder inte noll för Count.
 
@@ -53,30 +53,30 @@ I följande exempel visas hur du skapar en matris med sträng värden:
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "itemCount": {
-            "type": "int",
-            "defaultValue": 5
-        }
-     },
-    "variables": {
-        "copy": [
-            {
-                "name": "stringArray",
-                "count": "[parameters('itemCount')]",
-                "input": "[concat('item', copyIndex('stringArray', 1))]"
-            }
-        ]
-    },
-    "resources": [],
-    "outputs": {
-        "arrayResult": {
-            "type": "array",
-            "value": "[variables('stringArray')]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "itemCount": {
+      "type": "int",
+      "defaultValue": 5
     }
+  },
+  "variables": {
+    "copy": [
+      {
+        "name": "stringArray",
+        "count": "[parameters('itemCount')]",
+        "input": "[concat('item', copyIndex('stringArray', 1))]"
+      }
+    ]
+  },
+  "resources": [],
+  "outputs": {
+    "arrayResult": {
+      "type": "array",
+      "value": "[variables('stringArray')]"
+    }
+  }
 }
 ```
 
@@ -84,11 +84,11 @@ Föregående mall returnerar en matris med följande värden:
 
 ```json
 [
-    "item1",
-    "item2",
-    "item3",
-    "item4",
-    "item5"
+  "item1",
+  "item2",
+  "item3",
+  "item4",
+  "item5"
 ]
 ```
 
@@ -96,34 +96,34 @@ I nästa exempel visas hur du skapar en matris med objekt med tre egenskaper: `n
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "itemCount": {
-            "type": "int",
-            "defaultValue": 5
-        }
-    },
-    "variables": {
-        "copy": [
-            {
-                "name": "objectArray",
-                "count": "[parameters('itemCount')]",
-                "input": {
-                    "name": "[concat('myDataDisk', copyIndex('objectArray', 1))]",
-                    "diskSizeGB": "1",
-                    "diskIndex": "[copyIndex('objectArray')]"
-                }
-            }
-        ]
-    },
-    "resources": [],
-    "outputs": {
-        "arrayResult": {
-            "type": "array",
-            "value": "[variables('objectArray')]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "itemCount": {
+      "type": "int",
+      "defaultValue": 5
     }
+  },
+  "variables": {
+    "copy": [
+      {
+        "name": "objectArray",
+        "count": "[parameters('itemCount')]",
+        "input": {
+          "name": "[concat('myDataDisk', copyIndex('objectArray', 1))]",
+          "diskSizeGB": "1",
+          "diskIndex": "[copyIndex('objectArray')]"
+        }
+      }
+    ]
+  },
+  "resources": [],
+  "outputs": {
+    "arrayResult": {
+      "type": "array",
+      "value": "[variables('objectArray')]"
+    }
+  }
 }
 ```
 
@@ -131,31 +131,31 @@ Föregående exempel returnerar en matris med följande värden:
 
 ```json
 [
-    {
-        "name": "myDataDisk1",
-        "diskSizeGB": "1",
-        "diskIndex": 0
-    },
-    {
-        "name": "myDataDisk2",
-        "diskSizeGB": "1",
-        "diskIndex": 1
-    },
-    {
-        "name": "myDataDisk3",
-        "diskSizeGB": "1",
-        "diskIndex": 2
-    },
-    {
-        "name": "myDataDisk4",
-        "diskSizeGB": "1",
-        "diskIndex": 3
-    },
-    {
-        "name": "myDataDisk5",
-        "diskSizeGB": "1",
-        "diskIndex": 4
-    }
+  {
+    "name": "myDataDisk1",
+    "diskSizeGB": "1",
+    "diskIndex": 0
+  },
+  {
+    "name": "myDataDisk2",
+    "diskSizeGB": "1",
+    "diskIndex": 1
+  },
+  {
+    "name": "myDataDisk3",
+    "diskSizeGB": "1",
+    "diskIndex": 2
+  },
+  {
+    "name": "myDataDisk4",
+    "diskSizeGB": "1",
+    "diskIndex": 3
+  },
+  {
+    "name": "myDataDisk5",
+    "diskSizeGB": "1",
+    "diskIndex": 4
+  }
 ]
 ```
 
@@ -167,37 +167,37 @@ Du kan också använda- `copy` elementet i en variabel. I följande exempel skap
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "itemCount": {
-            "type": "int",
-            "defaultValue": 5
-        }
-    },
-    "variables": {
-        "topLevelObject": {
-            "sampleProperty": "sampleValue",
-            "copy": [
-                {
-                    "name": "disks",
-                    "count": "[parameters('itemCount')]",
-                    "input": {
-                        "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
-                        "diskSizeGB": "1",
-                        "diskIndex": "[copyIndex('disks')]"
-                    }
-                }
-            ]
-        }
-    },
-    "resources": [],
-    "outputs": {
-        "objectResult": {
-            "type": "object",
-            "value": "[variables('topLevelObject')]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "itemCount": {
+      "type": "int",
+      "defaultValue": 5
     }
+  },
+  "variables": {
+    "topLevelObject": {
+      "sampleProperty": "sampleValue",
+      "copy": [
+        {
+          "name": "disks",
+          "count": "[parameters('itemCount')]",
+          "input": {
+            "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
+            "diskSizeGB": "1",
+            "diskIndex": "[copyIndex('disks')]"
+          }
+        }
+      ]
+    }
+  },
+  "resources": [],
+  "outputs": {
+    "objectResult": {
+      "type": "object",
+      "value": "[variables('topLevelObject')]"
+    }
+  }
 }
 ```
 
@@ -205,34 +205,34 @@ Föregående exempel returnerar ett-objekt med följande värden:
 
 ```json
 {
-    "sampleProperty": "sampleValue",
-    "disks": [
-        {
-            "name": "myDataDisk1",
-            "diskSizeGB": "1",
-            "diskIndex": 0
-        },
-        {
-            "name": "myDataDisk2",
-            "diskSizeGB": "1",
-            "diskIndex": 1
-        },
-        {
-            "name": "myDataDisk3",
-            "diskSizeGB": "1",
-            "diskIndex": 2
-        },
-        {
-            "name": "myDataDisk4",
-            "diskSizeGB": "1",
-            "diskIndex": 3
-        },
-        {
-            "name": "myDataDisk5",
-            "diskSizeGB": "1",
-            "diskIndex": 4
-        }
-    ]
+  "sampleProperty": "sampleValue",
+  "disks": [
+    {
+      "name": "myDataDisk1",
+      "diskSizeGB": "1",
+      "diskIndex": 0
+    },
+    {
+      "name": "myDataDisk2",
+      "diskSizeGB": "1",
+      "diskIndex": 1
+    },
+    {
+      "name": "myDataDisk3",
+      "diskSizeGB": "1",
+      "diskIndex": 2
+    },
+    {
+      "name": "myDataDisk4",
+      "diskSizeGB": "1",
+      "diskIndex": 3
+    },
+    {
+      "name": "myDataDisk5",
+      "diskSizeGB": "1",
+      "diskIndex": 4
+    }
+  ]
 }
 ```
 
@@ -321,10 +321,10 @@ I följande exempel visas vanliga scenarier för att skapa mer än ett värde f�
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Information om hur du går igenom självstudierna finns i [Självstudier: skapa flera resurs instanser med ARM-mallar](template-tutorial-create-multiple-instances.md).
-* För andra användnings områden av elementet Copy, se:
-  * [Resurs upprepning i ARM-mallar](copy-resources.md)
-  * [Egenskaps upprepning i ARM-mallar](copy-properties.md)
-  * [Utdata iteration i ARM-mallar](copy-outputs.md)
-* Om du vill lära dig mer om avsnitten i en mall, se [förstå strukturen och syntaxen för ARM-mallar](template-syntax.md).
-* Information om hur du distribuerar din mall finns i [distribuera resurser med ARM-mallar och Azure PowerShell](deploy-powershell.md).
+- Information om hur du går igenom självstudierna finns i [Självstudier: skapa flera resurs instanser med ARM-mallar](template-tutorial-create-multiple-instances.md).
+- För andra användnings områden av elementet Copy, se:
+  - [Resurs upprepning i ARM-mallar](copy-resources.md)
+  - [Egenskaps upprepning i ARM-mallar](copy-properties.md)
+  - [Utdata iteration i ARM-mallar](copy-outputs.md)
+- Om du vill lära dig mer om avsnitten i en mall, se [förstå strukturen och syntaxen för ARM-mallar](template-syntax.md).
+- Information om hur du distribuerar din mall finns i [distribuera resurser med ARM-mallar och Azure PowerShell](deploy-powershell.md).

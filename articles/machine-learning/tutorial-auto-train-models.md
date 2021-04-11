@@ -1,7 +1,7 @@
 ---
-title: 'Regressions självstudie: automatiserad ML'
+title: 'Självstudie: regression med automatiserad maskin inlärning'
 titleSuffix: Azure Machine Learning
-description: Skapa ett automatiserat maskin inlärnings experiment som genererar en Regressions modell för dig baserat på de tränings data och konfigurations inställningar som du anger.
+description: Skriv kod med python SDK för att skapa ett automatiserat maskin inlärnings experiment som genererar en Regressions modell åt dig.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,30 +11,34 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 7f3052905d7594d64be9455c16239ebabd219849
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 85129cf282e39b4f4932cc5e9f7cfd72d1e445b0
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105565086"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210643"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Självstudie: Använda automatiserad maskininlärning till att beräkna taxikostnader
 
-
-I den här självstudien använder du Automatisk maskin inlärning i Azure Machine Learning för att skapa en Regressions modell för att förutsäga priserna för NYC Taxi pris. Den här processen godkänner inlärnings data och konfigurations inställningar och upprepas automatiskt genom kombinationer av olika metoder, modeller och inställningar för en funktion för funktioner, modeller och kompatibilitetsinställningar för att komma till den bästa modellen.
+I den här självstudien använder du Automatisk maskin inlärning i Azure Machine Learning SDK för att skapa en [Regressions modell](concept-automated-ml.md#regression) för att förutsäga priserna för NYC Taxi pris. Den här processen godkänner inlärnings data och konfigurations inställningar och upprepas automatiskt genom kombinationer av olika metoder, modeller och inställningar för en funktion för funktioner, modeller och kompatibilitetsinställningar för att komma till den bästa modellen.
 
 ![Flödesdiagram](./media/tutorial-auto-train-models/flow2.png)
 
-I den här självstudien får du lära dig följande uppgifter:
+Du skriver kod med python SDK i den här självstudien.  Du lär dig följande uppgifter:
 
 > [!div class="checklist"]
 > * Ladda ned, transformera och rensa data med Azure Open data uppsättningar
 > * Träna en automatisk maskin inlärnings Regressions modell
 > * Beräkna modell precision
 
-Om du inte har en Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen](https://aka.ms/AMLFree) av Azure Machine Learning idag.
+Prova också automatisk maskin inlärning för dessa andra modell typer: 
+
+* [Självstudie: skapa en klassificerings modell med automatiserad ml i Azure Machine Learning](tutorial-first-experiment-automated-ml.md) – ett icke-kod exempel.
+* [Självstudie: prognostisera efter frågan med automatiserad Machine Learning](tutorial-automated-ml-forecast.md) – ett icke-kod exempel.
 
 ## <a name="prerequisites"></a>Förutsättningar
+
+Om du inte har en Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen](https://aka.ms/AMLFree) av Azure Machine Learning idag.
 
 * Slutför [installations självstudien](tutorial-1st-experiment-sdk-setup.md) om du inte redan har en Azure Machine Learning arbets yta eller en virtuell dator.
 * När du har slutfört installations guiden öppnar du *självstudierna/regression-automl-NYC-taxi-data/regression-Automated-ml. ipynb* Notebook med samma Notebook-Server.
@@ -208,7 +212,7 @@ För att träna en modell automatiskt gör du följande:
 
 Definiera experiment parametern och modell inställningarna för träning. Visa hela listan med [inställningar](how-to-configure-auto-train.md). Att skicka experimentet med dessa standardinställningar tar cirka 5-20 min, men om du vill ha en kortare körnings tid minskar du `experiment_timeout_hours` parametern.
 
-|Egenskap| Värde i den här självstudien |Description|
+|Egenskap| Värde i den här självstudien |Beskrivning|
 |----|----|---|
 |**iteration_timeout_minutes**|10|Tidsgräns i minuter för varje iteration. Öka värdet för större data uppsättningar som behöver mer tid för varje iteration.|
 |**experiment_timeout_hours**|0.3|Maximal tid i timmar som alla iterationer kombineras kan ta innan experimentet avslutas.|
