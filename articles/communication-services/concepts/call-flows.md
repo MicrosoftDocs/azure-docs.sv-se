@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8f7bfd63d858fb409286268c318c9f66474e3d53
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: 7651142d1c2b24da64d9f72dd2300dc0c3807e93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105110924"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937883"
 ---
 # <a name="call-flow-basics"></a>Grundläggande samtals flöde
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include-phone-numbers.md)]
 
 Avsnittet nedan ger en översikt över samtals flödena i Azure Communication Services. Signalering och medie flöden beror på vilka typer av anrop som användarna gör. Exempel på samtals typer är ett-till-ett-VoIP, ett-till-ett-PSTN och grupp samtal som innehåller en kombination av VoIP-och PSTN-anslutna deltagare. Granska [samtals typer](./voice-video-calling/about-call-types.md).
 

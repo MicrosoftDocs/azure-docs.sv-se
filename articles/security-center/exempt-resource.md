@@ -7,12 +7,12 @@ ms.date: 03/11/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d3627f6bcda7a18204c24fc2a1347c4a512c5369
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ab729f5aa94c7137203c25319a5b830448d00a7
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149740"
+ms.locfileid: "105968211"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Undanta resurser och rekommendationer från dina säkra Poäng 
 
@@ -33,7 +33,7 @@ I sådana fall kan du skapa ett undantag för en rekommendation att:
 | Aspekt                          | Information                                                                                                                                                                                                                                                                                                                            |
 |---------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Versions tillstånd:                  | Förhandsgranskning<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
-| Priset                        | Det här är en förstklassig Azure policy-funktion som erbjuds för Azure Defender-kunder utan extra kostnad. För andra användare kan avgifter tillkomma i framtiden.                                                                                                                                                                 |
+| Priset                        | Detta är en förstklassig Azure Policy-funktion som erbjuds för Azure Defender-kunder utan extra kostnad. För andra användare kan avgifter tillkomma i framtiden.                                                                                                                                                                 |
 | Nödvändiga roller och behörigheter: | **Prenumerations ägare** eller **princip deltagare** för att skapa ett undantag<br>Om du vill skapa en regel måste du ha behörighet att redigera principer i Azure Policy.<br>Läs mer i [Azure RBAC-behörigheter i Azure policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).                                            |
 | Begränsningar:                    | Det går endast att skapa undantag för rekommendationer som ingår i Security Centers standard initiativ, Azure-säkerhetsbenchmark eller någon av de tillhandahållna myndighets standard initiativen. Rekommendationer som genereras från anpassade initiativ kan inte undantas. Lär dig mer om relationerna mellan [principer, initiativ och rekommendationer](security-policy-concept.md). |
 | Moln                         | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Inga](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)                                                                                                                                                                                         |

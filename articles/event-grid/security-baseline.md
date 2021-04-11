@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1bc1df4582c83b093b6ed25d03cc73aef9a81483
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5423c26b15c5ba9fa84e5d823f75f3c82a8cb8b4
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563947"
+ms.locfileid: "105968126"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Azures säkerhets bas linje för Event Grid
 
@@ -48,9 +48,7 @@ Azure Event Grid stöder också offentliga IP-baserade åtkomst kontroller för 
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: övervaka och logga konfigurationen och trafiken för virtuella nätverk, undernät och nätverkskort
 
-**Vägledning**: Använd Azure Security Center och följ rekommendationer för nätverks skydd för att skydda dina event Grid resurser i Azure. Om du använder
-
-Azure virtuella datorer för att få åtkomst till dina Event Grid-resurser, aktivera flödes loggar för nätverks säkerhets grupper (NSG) och skicka loggar till ett lagrings konto för trafik granskning.
+**Vägledning**: Använd Azure Security Center och följ rekommendationer för nätverks skydd för att skydda dina event Grid resurser i Azure. Om du använder Azure Virtual Machines för att komma åt dina Event Grid-resurser ska du aktivera flödes loggar för nätverks säkerhets grupper (NSG) och skicka loggar till ett lagrings konto för trafik granskning.
 
 - [Så här aktiverar du NSG Flow-loggar](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 

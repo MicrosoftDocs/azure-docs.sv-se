@@ -1,11 +1,18 @@
 ---
-ms.openlocfilehash: f3d510c14d28dae0504ff67b450957a8339196aa
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c1d19b5b37a60914c1d7f2a2e42cd387bd030583
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105958399"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106125933"
 ---
+## <a name="prerequisites"></a>Förutsättningar
+
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- [Java Development Kit (JDK)](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install) version 8 eller senare.
+- [Apache Maven](https://maven.apache.org/download.cgi).
+- En distribuerad kommunikations tjänst resurs och anslutnings sträng. [Skapa en kommunikations tjänst resurs](../create-communication-resource.md).
+
 ## <a name="add-managed-identity-to-your-communication-services-solution-java"></a>Lägg till hanterad identitet i kommunikations tjänst lösningen (Java)
 
 ### <a name="install-the-sdk-packages"></a>Installera SDK-paketen
@@ -39,8 +46,6 @@ import com.azure.communication.identity.*;
 import com.azure.communication.identity.models.*;
 import com.azure.communication.sms.*;
 import com.azure.core.credential.*;
-import com.azure.core.http.*;
-import com.azure.core.http.netty.*;
 import com.azure.identity.*;
 
 import java.io.IOException;
@@ -61,13 +66,11 @@ Använd sedan klienten för att utfärda en token för en ny användare:
           // You can find your endpoint and access key from your resource in the Azure portal
           String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
 
-          HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
           TokenCredential credential = new DefaultAzureCredentialBuilder().build();
 
           CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
                .endpoint(endpoint)
                .credential(credential)
-               .httpClient(httpClient)
                .buildClient();
 
           CommunicationUserIdentifier user = communicationIdentityClient.createUser();
@@ -85,13 +88,11 @@ Följande kod exempel visar hur du skapar ett tjänst klient objekt med hanterad
           // You can find your endpoint and access key from your resource in the Azure portal
           String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
 
-          HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
           TokenCredential credential = new DefaultAzureCredentialBuilder().build();
 
           SmsClient smsClient = new SmsClientBuilder()
                .endpoint(endpoint)
                .credential(credential)
-               .httpClient(httpClient)
                .buildClient();
 
           // Send the message and check the response for a message id
@@ -100,7 +101,6 @@ Följande kod exempel visar hur du skapar ett tjänst klient objekt med hanterad
                "<to-phone-number>",
                "your message"
           );
-
           return response;
     }
 ```

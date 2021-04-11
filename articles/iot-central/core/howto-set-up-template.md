@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 22e948a0100f23dbddef8fc138576bb4b9372c77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ef4be54f5c6025a09314a04504cff40fc39478d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363210"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168169"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definiera en ny IoT-enhetstyp i Azure IoT Central-programmet
 
@@ -59,7 +59,7 @@ Vissa [programmallar](concepts-app-templates.md) innehåller redan enhetsspecifi
 
 ## <a name="create-a-device-template-from-the-device-catalog"></a>Skapa en enhets mall från enhets katalogen
 
-Som ett verktyg kan du snabbt börja skapa din lösning med hjälp av en certifierad enhet. Se listan i [Azure IoT-katalogen](https://catalog.azureiotsolutions.com/alldevices). IoT Central integreras med enhets katalogen så att du kan importera en enhets modell från vilken som helst av de certifierade enheterna. Så här skapar du en enhets mal len från någon av dessa enheter i IoT Central:
+Som ett verktyg kan du snabbt börja skapa din lösning med hjälp av en certifierad enhet. Se listan i [Azure IoT-katalogen](https://devicecatalog.azure.com). IoT Central integreras med enhets katalogen så att du kan importera en enhets modell från vilken som helst av de certifierade enheterna. Så här skapar du en enhets mal len från någon av dessa enheter i IoT Central:
 
 1. Gå till sidan **Device templates** i ditt IoT Central-program.
 1. Välj **+ ny** och välj sedan någon av de certifierade enheterna från katalogen. IoT Central skapar en enhets mal len baserat på den här enhets modellen.

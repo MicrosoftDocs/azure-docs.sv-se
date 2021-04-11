@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 10aa9b06af439fe701c53ef736ec691167560f95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96c67327a8272a02e677cc40b46c3177e470b684
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102109179"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106126081"
 ---
 Azure Data Factory är en tjänst för flera innehavare som har följande standard gränser på plats för att se till att kund prenumerationer skyddas från var and ras arbets belastningar. Kontakta supporten om du vill höja gränserna upp till max gränsen för din prenumeration.
 
@@ -49,6 +49,7 @@ Azure Data Factory är en tjänst för flera innehavare som har följande standa
 | Samtidiga antalet data flöden per integration runtime | 50 | [Kontakta supporten](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Samtidiga antalet fel söknings sessioner per användare per fabrik | 3 | 3 |
 | Data flöde Azure IR TTL-gräns | 4 timmar |  4 timmar |
+| Storleks gräns i en fabrik för metadata-dataenhet | 2 GB | [Kontakta supporten](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 
 <sup>1</sup> data integrerings enheten (DIU) används i en moln-till-moln-åtgärd, Läs mer från [data integrerings enheter (version 2)](../articles/data-factory/copy-activity-performance.md#data-integration-units). Information om fakturering finns i [Azure Data Factory prissättning](https://azure.microsoft.com/pricing/details/data-factory/).
 

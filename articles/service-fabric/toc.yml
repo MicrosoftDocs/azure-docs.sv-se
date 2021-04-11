@@ -502,7 +502,7 @@
                   href: service-fabric-how-to-remove-node-type.md
             - name: Uppgradera
               items:
-                - name: Uppgradera Service Fabric-versionen
+                - name: Hantera Service Fabric kluster uppgraderingar
                   href: service-fabric-cluster-upgrade-version-azure.md
                 - name: Uppgradera klusterkonfigurationen
                   href: service-fabric-cluster-config-upgrade-azure.md

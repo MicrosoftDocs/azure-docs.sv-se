@@ -4,13 +4,13 @@ description: Lär dig hur du ansluter till Apache Beeline-klienten för att kör
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.date: 05/27/2020
-ms.openlocfilehash: ab5dedf6718dad4f16fde59d905e2e59be5c495f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 5dcb6168a263be11410126ff08bd8b015da5af46
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98944461"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103444"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>Anslut till Apache Beeline på HDInsight eller installera det lokalt
 
@@ -77,7 +77,9 @@ Apache Spark tillhandahåller en egen implementering av HiveServer2, som ibland 
 
 #### <a name="through-public-or-private-endpoints"></a>Via offentliga eller privata slut punkter
 
-Den anslutnings sträng som används skiljer sig något åt. I stället för att innehålla `httpPath=/hive2` det används `httpPath/sparkhive2` . Ersätt `clustername` med namnet på HDInsight-klustret. Ersätt `admin` med kluster inloggnings kontot för klustret. För ESP-kluster använder du fullständigt UPN (till exempel user@domain.com ). Ersätt `password` med lösen ordet för klustrets inloggnings konto.
+Den anslutnings sträng som används skiljer sig något åt. I stället för att innehålla `httpPath=/hive2` det används `httpPath/sparkhive2` . Ersätt `clustername` med namnet på HDInsight-klustret. Ersätt `admin` med kluster inloggnings kontot för klustret. Ersätt `password` med lösen ordet för klustrets inloggnings konto.
+> [!NOTE]
+> För ESP-kluster ersätter du `admin` med fullständigt UPN (till exempel user@domain.com ). 
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'

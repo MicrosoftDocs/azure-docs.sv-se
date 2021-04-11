@@ -6,18 +6,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: dfbfa6c97ef23976ed791fb04482346d9f336bfe
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: HT
+ms.openlocfilehash: d2648276ead73d8951a93fe3215bee345a79dca9
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584047"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106062989"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Undvik avgifter med ditt kostnadsfria Azure-konto
 
-Med ett [kostnadsfritt Azure-konto](https://azure.microsoft.com/free/) får berättigade nya användare 200 USD i Azure-kredit som kan utnyttjas de första 30 dagarna, samt tillgång till en begränsad mängd kostnadsfria tjänster i 12 månader. Mer information om begränsningar för kostnadsfria tjänster finns i [Vanliga frågor och svar om kostnadsfria Azure-konton](https://azure.microsoft.com/free/free-account-faq/). Så länge du har krediter som inte löpt ut eller om du bara använder kostnadsfria tjänster inom användningsgränserna debiteras du inte.
+Berättigade nya användare får 200 USD till Azure kredit i din fakturerings valuta under de första 30 dagarna och en begränsad mängd kostnads fria tjänster i 12 månader med ditt [kostnads fria Azure-konto](https://azure.microsoft.com/free/). Mer information om begränsningar för kostnadsfria tjänster finns i [Vanliga frågor och svar om kostnadsfria Azure-konton](https://azure.microsoft.com/free/free-account-faq/). Så länge du har krediter som inte löpt ut eller om du bara använder kostnadsfria tjänster inom användningsgränserna debiteras du inte.
 
 Vi ska titta på några av orsakerna till att du debiteras för ditt kostnadsfria Azure-konto.
 

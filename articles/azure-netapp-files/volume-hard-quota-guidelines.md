@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 12807e83f7841bc67999ce385d0cb82bf15f4c71
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 52e855cb4ab42ed78a055ecdc31cffa886dc9bf2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175999"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731997"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Det innebär att du kan ändra volymens hård kvot för din Azure NetApp Files-tjänst
 
 Från början av tjänsten har Azure NetApp Files använt en pool för kapacitets etablering och automatisk tillväxt. Azure NetApp Files volymer är tunt etablerade på en underställd pool med kundetablerad kapacitet för en vald nivå och storlek. Volym storlekar (kvoter) används för att tillhandahålla prestanda och kapacitet, och kvoterna kan justeras direkt när som helst. Detta innebär att volym kvoten för närvarande är en prestanda inställning som används för att styra bandbredden för volymen. För närvarande växer automatiskt kapacitets pooler när kapaciteten fylls.   
 
 > [!IMPORTANT] 
-> Azure NetApp Files beteendet för volym-och kapacitets etablerings etableringen kommer att ändras till en *manuell* och *kontrollerbar* mekanism. **Från och med den 1 april 2021 (uppdaterat) kommer volym storlekar (kvot) att hantera bandbredds prestanda, samt en etablerad kapacitet, och de underliggande kapacitets pooler kommer inte längre att växa automatiskt.** 
+> Azure NetApp Files beteendet för volym-och kapacitets etablerings etableringen kommer att ändras till en *manuell* och *kontrollerbar* mekanism. **Från och med den 30 april 2021 (uppdaterat) kommer volym storlekar (kvot) att hantera bandbredds prestanda, samt en etablerad kapacitet, och de underliggande kapacitets pooler kommer inte längre att växa automatiskt.** 
 
 ## <a name="reasons-for-the-change-to-volume-hard-quota"></a>Orsaker till volymens hård kvot ändring
 

@@ -1,19 +1,19 @@
 ---
 title: 'Snabb start: Azure Queue Storage klient bibliotek V12-Java'
 description: Lär dig hur du använder Azure Queue Storage-V12 för klient bibliotek för Java för att skapa en kö och lägga till meddelanden till den. Lär dig sedan att läsa och ta bort meddelanden från kön. Du lär dig också hur du tar bort en kö.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 12/01/2020
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-java
-ms.openlocfilehash: 814531adc9dafa524797d0c2674a1e600e407bed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 79b10e8281fe8189b490fe97dfe896179c8e64fc
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97588224"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275880"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Snabb start: Azure Queue Storage V12 för klient bibliotek för Java
 

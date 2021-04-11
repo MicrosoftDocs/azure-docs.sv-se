@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: c47e67375e093ff6e9a5cf7193c76eeeb5228e29
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: ab450c6ec6ae32cafcf07e88940736f209973d8d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105045662"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168050"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Plattforms stöd för Azure IoT Device SDK: er
 
@@ -22,7 +22,7 @@ Förutom enhets-SDK: erna tillhandahåller Microsoft flera andra vägar som gör
 
 * Microsoft samarbetar med flera partner företag för att hjälpa dem att publicera utvecklings paket, baserat på Azure IoT C SDK, för sina maskinvaruplattformar.
 
-* Microsoft samarbetar med Microsoft-betrodda partners för att tillhandahålla en ständigt växande uppsättning enheter som har testats och certifierats för Azure IoT. En aktuell lista över dessa enheter finns i [katalogen Azure Certified för IoT-enheter](https://catalog.azureiotsolutions.com/).
+* Microsoft samarbetar med Microsoft-betrodda partners för att tillhandahålla en ständigt växande uppsättning enheter som har testats och certifierats för Azure IoT. En aktuell lista över dessa enheter finns i [katalogen Azure Certified för IoT-enheter](https://devicecatalog.azure.com/).
 
 * Microsoft tillhandahåller ett plattforms abstraktions lager (PAL) i Azure IoT Hub Device C SDK som hjälper utvecklare att enkelt identifiera SDK: n för plattformen. Mer information finns i [C SDK-porting-vägledningen](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md).
 
@@ -114,9 +114,9 @@ Om din enhets plattform inte omfattas av något av de föregående avsnitten kan
 
 Microsoft arbetar med ett antal partner för att kontinuerligt expandera Azure IoT-universum med Azure IoT-testade och certifierade enheter.
 
-* Information om hur du bläddrar i Azure IoT Certified-enheter finns [Microsoft Azure Certified for IoT enhets katalog](https://catalog.azureiotsolutions.com/).
+* Information om hur du bläddrar i Azure IoT Certified-enheter finns [Microsoft Azure Certified for IoT enhets katalog](https://devicecatalog.azure.com/).
 
-* Mer information om Azure-certifierad för IoT-eko system finns i [delta i det certifierade eko systemet Certified for IoT](https://catalog.azureiotsolutions.com/register).
+* Mer information om Azure-certifierad för IoT-eko system finns i [delta i det certifierade eko systemet Certified for IoT](../certification/overview.md).
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>Ansluta till IoT Hub utan SDK
 

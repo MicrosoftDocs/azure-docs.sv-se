@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: f84dc66828f2ebf13316b3348fd93933a2223b5a
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.openlocfilehash: 0d9ef13de29ac140d94e9e4c05b14f35b9e5834c
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105612287"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968177"
 ---
 # <a name="what-is-document-translation-preview"></a>Vad är dokument översättning (för hands version)?
 
@@ -43,7 +43,7 @@ I vår instruktions guide får du lära dig hur du snabbt kommer igång med Docu
 
 Följande dokument fil typer stöds av dokument översättning:
 
-| Filtyp| Filnamnstillägg|Description|
+| Filtyp| Filnamnstillägg|Beskrivning|
 |---|---|--|
 |Adobe PDF|.pdf|Adobe Acrobat Portable Document Format|
 |HTML|.html|Språk för text märkning.|
@@ -54,13 +54,12 @@ Följande dokument fil typer stöds av dokument översättning:
 |Microsoft Word|.docx| En text dokument fil.|
 |Tabbavgränsade värden/TAB|. tsv/. tab| En tabbavgränsad rå data fil som används av kalkyl blads program.|
 |Text|.txt| Ett oformaterat text dokument.|
-|Översättning av minnes utbyte|.tmx|En öppen XML-standard som används för utbyte av översättnings minne (TM)-data som skapats av Computer Aided översättning (CAT) och lokaliserings program.|
 
 ## <a name="supported-glossary-formats"></a>Ord lista som stöds
 
 Följande ord fil typer stöds av dokument översättning:
 
-| Filtyp| Filnamnstillägg|Description|
+| Filtyp| Filnamnstillägg|Beskrivning|
 |---|---|--|
 |Lokalisering av Interchange fil format|.xlf. , XLIFF| Ett parallellt dokument format, export av översättnings minnes system. De språk som används definieras i filen.|
 |Tabbavgränsade värden/TAB|. tsv/. tab| En tabbavgränsad rå data fil som används av kalkyl blads program.|

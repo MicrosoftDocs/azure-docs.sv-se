@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: inhenkel
-ms.openlocfilehash: 59ff0ba854fa609e6d29f3473f662a89ab5f3dbc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 419d8d0cd20c13bffdd192060d81975ee94b47fe
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95562135"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106126045"
 ---
 > [!NOTE]
 > För resurser som inte har åtgärd ATS öppnar du ett support ärende för att be om en ökning av kvoterna. Skapa inte ytterligare Azure Media Services konton i ett försök att få högre gränser.
@@ -66,9 +66,9 @@ Eventuella jobb poster i ditt konto som är äldre än 90 dagar tas bort automat
 | --- | --- |
 | Live-händelser <sup>(4)</sup> per Media Services konto |5|
 | Live-utdata per Live-händelse |3 <sup>(5)</sup> |
-| Maximal varaktighet för Live-utdata | [Storlek på DVR-fönstret](../articles/media-services/latest/live-event-cloud-dvr.md) |
+| Maximal varaktighet för Live-utdata | [Storlek på DVR-fönstret](../articles/media-services/latest/live-event-cloud-dvr-time-how-to.md) |
 
-<sup>4</sup> mer detaljerad information om begränsningar för Live-händelser finns i [jämförelse och begränsningar för live event types](../articles/media-services/latest/live-event-types-comparison.md).
+<sup>4</sup> mer detaljerad information om begränsningar för Live-händelser finns i [jämförelse och begränsningar för live event types](../articles/media-services/latest/live-event-types-comparison-reference.md).
 
 <sup>5</sup> Live-utdata börjar skapas och stoppas när de tas bort.
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/24/2021
+ms.date: 04/06/2021
 ms.author: b-juche
-ms.openlocfilehash: d238b566c1286b9b765fb574cd72ee68ccf4b4a7
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 27c2ab96106bbfcc05b8fa12daf9b6f7b816c5c7
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048382"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579979"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Skapa och hantera Active Directory anslutningar för Azure NetApp Files
 
@@ -215,7 +215,9 @@ Den här inställningen konfigureras i **Active Directory anslutningar** under *
         Till exempel måste användar konton som används för att installera SQL Server i vissa scenarier beviljas utökade säkerhets privilegier. Om du använder ett konto som inte är administratörs konto för att installera SQL Server och kontot inte har tilldelats säkerhets privilegiet, bör du lägga till säkerhets behörighet till kontot.  
 
         > [!IMPORTANT]
-        > Det domän konto som används för att installera SQL Server måste redan finnas innan du lägger till det i fältet **säkerhets privilegier användare** . När du lägger till kontot för SQL Server-installationsprogrammet i **säkerhets privilegiet användare** kan Azure NetApp Files-tjänsten verifiera kontot genom att kontakta domänkontrollanten. Kommandot kan Miss förfalla om det inte går att kontakta domänkontrollanten.  
+        > Om du använder funktionen **användare av säkerhets privilegier** måste du skicka en Waitlist-begäran via **[Azure NetApp Files SMB-resurser med kontinuerlig tillgänglighet som är allmänt tillgänglig för hands versions Waitlist](https://aka.ms/anfsmbcasharespreviewsignup)**. Vänta en officiell bekräftelse via e-post från Azure NetApp Files-teamet innan du använder den här funktionen.        
+        > 
+        > Användning av den här funktionen är valfri och stöds endast för SQL Server. Det domän konto som används för att installera SQL Server måste redan finnas innan du lägger till det i fältet **säkerhets privilegier användare** . När du lägger till kontot för SQL Server-installationsprogrammet i **säkerhets privilegiet användare** kan Azure NetApp Files-tjänsten verifiera kontot genom att kontakta domänkontrollanten. Kommandot kan Miss förfalla om det inte går att kontakta domänkontrollanten.  
 
         Mer information om `SeSecurityPrivilege` och SQL Server finns i [SQL Server installation Miss lyckas om installations kontot inte har särskilda användar rättigheter](/troubleshoot/sql/install/installation-fails-if-remove-user-right).
 

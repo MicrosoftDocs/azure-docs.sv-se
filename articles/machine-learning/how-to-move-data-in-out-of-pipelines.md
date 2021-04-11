@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 0c4f1fbc0ed27dbf3b7347e0e4c12f1926ac1377
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 65e93cdeb5592eef92fe8c8261231179fae6af67
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105566259"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731810"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Flytta data till och mellan olika steg i ML-pipelinen (Python)
 
@@ -28,7 +28,7 @@ Den här artikeln visar hur du kan:
 - Dela upp `Dataset` data i del mängder, till exempel inlärnings-och validerings under uppsättningar
 - Skapa `OutputFileDatasetConfig` objekt för att överföra data till nästa pipeline-steg
 - Använd `OutputFileDatasetConfig` objekt som inmatade steg i pipeline-steg
-- Skapa nya `Dataset` objekt från `OutputFileDatasetConfig` dig wisƒh till persist
+- Skapa nya `Dataset` objekt `OutputFileDatasetConfig` som du vill behålla
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -126,7 +126,7 @@ train_step = PythonScriptStep(
     name="train_data",
     script_name="train.py",
     compute_target=cluster,
-    arguments=['--training-folder', train.as_named_input('train').as_download()]
+    arguments=['--training-folder', train.as_named_input('train').as_download()],
     inputs=[test.as_named_input('test').as_download()]
 )
 

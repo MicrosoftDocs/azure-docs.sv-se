@@ -3,7 +3,7 @@ title: Azure DDoS Protection vanliga vanliga frågor och svar
 description: Vanliga frågor och svar om Azure DDoS Protection standard, vilket ger försvar mot DDoS-attacker.
 services: virtual-network
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 89685d1b8c3a57fa142bbbfd1114f9aa0ff0c400
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 584db62b20806c6864be478b2e18e2a9cab60a30
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98611125"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103308"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection vanliga vanliga frågor och svar
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: c31ffaf094801bdd49e5800bd338a15d8b8315f6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4c3484c1e65eb70be484a4a2eebda21a41dbf1ea
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946502"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936877"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Skapa rekommendationer med Apache Mahout i Azure HDInsight
 
@@ -18,7 +18,7 @@ Lär dig hur du använder [Apache Mahout](https://mahout.apache.org) Machine Lea
 
 Mahout är ett [maskin inlärnings](https://en.wikipedia.org/wiki/Machine_learning) bibliotek för Apache Hadoop. Mahout innehåller algoritmer för bearbetning av data, till exempel filtrering, klassificering och klustring. I den här artikeln använder du en rekommendations motor för att skapa film rekommendationer som baseras på filmer som dina vänner har sett.
 
-Mer information om versionen av Mahout i HDInsight finns i HDInsight- [versioner och Apache Hadoop-komponenter](../hdinsight-component-versioning.md).
+Mahout är tillgänglig i HDInsight 3,6 och är inte tillgänglig i HDInsight 4,0. Mer information om versionen av Mahout i HDInsight finns i [hdinsight 3,6-komponent versioner](../hdinsight-36-component-versioning.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 

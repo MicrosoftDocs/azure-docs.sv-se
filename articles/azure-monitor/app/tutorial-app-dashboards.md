@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/30/2020
 ms.custom: mvc, contperf-fy21q1
-ms.openlocfilehash: ebe34735a84e44526e6b96821a2a1da090884886
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 7bad0b17bb2fed9d9f54cdd44042ec88708f35fd
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383260"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103733"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Skapa anpassade KPI-instrumentpaneler med Azure Application Insights
 
@@ -26,7 +26,7 @@ Du kan skapa flera instrumentpaneler i Azure-portalen som var och en inkluderar 
 > * Lägga till ett anpassat måttdiagram i Application Insights till instrumentpanelen
 > * Lägg till resultaten av en loggfiler (analys) i instrument panelen
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här kursen behöver du:
 
@@ -59,7 +59,7 @@ En enda instrumentpanel kan innehålla resurser från flera program, resursgrupp
 5. Leta rätt på panelen **Markdown** och dra den till din instrumentpanel.  Med den här panelen kan du lägga till text som är formaterad i markdown, vilket är idealiskt för att lägga till beskrivande text på din instrument panel. Mer information finns i [använda en markdown-panel på Azure-instrumentpaneler för att visa anpassat innehåll](../../azure-portal/azure-portal-markdown-tile.md).
 6. Lägg till text i panelens egenskaper och ändra storlek på den på instrumentpanelens arbetsyta.
 
-    [![Redigera Markdown-panel](media/tutorial-app-dashboards/markdown.png)](media/tutorial-app-dashboards/dashboard-edit-mode.png#lightbox)
+    [![Redigera Markdown-panel](media/tutorial-app-dashboards/markdown.png)](media/tutorial-app-dashboards/markdown.png#lightbox)
 
 7. Välj anpassning som **gjorts** överst på skärmen för att avsluta panel anpassnings läge.
 

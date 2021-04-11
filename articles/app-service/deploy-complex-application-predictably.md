@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: aec23c28e075dd38fa65f1315f9abd9e21cdc9cb
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104951478"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Etablera och distribuera mikrotjänster förutsägbart i Azure
@@ -145,10 +145,10 @@ Anslutnings strängarna definieras också som en kapslad resurs.
 
 ![Visar hur anslutnings strängarna definieras som en kapslad resurs i JSON-koden.](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
-I `properties` `config/connectionstrings` -elementet definieras även varje anslutnings sträng som ett namn: värde-par med det speciella formatet `"<name>" : {"value": "…", "type": "…"}` . För `type` elementet är möjliga värden,, `MySql` `SQLServer` `SQLAzure` , och `Custom` .
+I `properties` `config/connectionstrings` -elementet definieras även varje anslutnings sträng som ett namn: värde-par med det speciella formatet `"<name>&quot; : {&quot;value&quot;: &quot;…&quot;, &quot;type&quot;: &quot;…&quot;}` . För `type` elementet är möjliga värden,, `MySql` `SQLServer` `SQLAzure` , och `Custom` .
 
 > [!TIP]
-> Om du vill ha en slutgiltig lista över typer av anslutnings strängar kör du följande kommando i Azure PowerShell: \[ Enum]:: GetNames ("Microsoft. windowsazure. commands. Utilities. sites. Services. webentities. DatabaseType")
+> Om du vill ha en slutgiltig lista över typer av anslutnings strängar kör du följande kommando i Azure PowerShell: \[ Enum]:: GetNames (&quot;Microsoft. windowsazure. commands. Utilities. sites. Services. webentities. DatabaseType")
 > 
 > 
 

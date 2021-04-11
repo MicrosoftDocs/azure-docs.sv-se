@@ -3,12 +3,12 @@ title: Autentisera händelse leverans till händelse hanterare (Azure Event Grid
 description: I den här artikeln beskrivs olika sätt att autentisera leverans till händelse hanterare i Azure Event Grid.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 98d7a4a0dee6c355ec340668bef7d8b306f97496
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f7a105c36b7c924e35c295edc43107353d738d5b
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98633128"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968143"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>Autentisera händelse leverans till händelse hanterare (Azure Event Grid)
 Den här artikeln innehåller information om hur du autentiserar händelse leverans till händelse hanterare. Den visar också hur du skyddar webhook-slutpunkter som används för att ta emot händelser från Event Grid med Azure Active Directory (Azure AD) eller en delad hemlighet.
@@ -40,7 +40,7 @@ Eftersom frågeparametrar kan innehålla klient hemligheter hanteras de med extr
 Mer information om att leverera händelser till Webhooks finns i avsnittet om [leverans av webhook-händelser](webhook-event-delivery.md)
 
 > [!IMPORTANT]
-Azure Event Grid stöder endast **https** webhook-slutpunkter. 
+> Azure Event Grid stöder endast **https** webhook-slutpunkter. 
 
 ## <a name="endpoint-validation-with-cloudevents-v10"></a>Slut punkts validering med CloudEvents v 1.0
 Om du redan är bekant med Event Grid kan du vara medveten om slut punkts valideringens hand skakning för att förhindra missbruk. CloudEvents v 1.0 implementerar egna [skydds](webhook-event-delivery.md) objekt för missbruk med hjälp av **http-alternativ-** metoden. Läs mer om det i [HTTP 1,1-webbhookar för Event Delivery-Version 1,0](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). När du använder CloudEvents-schemat för utdata använder Event Grid CloudEvents v 1.0-skyddet mot missbruk i stället för mekanismen för Event Grid validerings händelser. Mer information finns i [use CloudEvents v 1.0 schema med event Grid](cloudevents-schema.md). 

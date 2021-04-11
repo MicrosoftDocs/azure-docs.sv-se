@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: da7d540a4b7982c7f743a7ae968515485b45aa5a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 10812cf97f4f0dfc6f7957608eddf7acf929c3fc
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035436"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579757"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Använd Logstash för att ansluta data källor till Azure Sentinel
 
@@ -44,7 +44,9 @@ Logstash-motorn består av tre komponenter:
 - Utgående plugin-program: anpassad sändning av insamlade och bearbetade data till olika destinationer.
 
 > [!NOTE]
-> Azure Sentinel stöder endast det angivna plugin-programmet för utdata. Det stöder inte plugin-program från tredje part för Azure Sentinel eller något annat Logstash-plugin-program av valfri typ.
+> - Azure Sentinel stöder endast det angivna plugin-programmet för utdata. Den aktuella versionen av det här plugin-programmet är v 1.0.0, lanserad 2020-08-25. Det stöder inte plugin-program från tredje part för Azure Sentinel eller något annat Logstash-plugin-program av valfri typ.
+>
+> - Logstash output-plugin-programmet för Azure Sentinel stöder endast **Logstash-versioner från 7,0 till 7,9**.
 
 Plugin-programmet för Azure Sentinel-utdata för Logstash skickar JSON-formaterade data till din Log Analytics-arbetsyta med Log Analytics http-insamlaren REST API. Data matas in i anpassade loggar.
 
@@ -65,21 +67,23 @@ Plugin-programmet för Azure Sentinel-utdata är tillgängligt i Logstash-samlin
 
 Använd informationen i Logstash- [strukturen i ett konfigurations fil](https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html) dokument och Lägg till plugin-programmet för Azure Sentinel-utdata i konfigurationen med följande nycklar och värden. (Rätt syntax för config-filen visas efter tabellen.)
 
-| Fältnamn | Datatyp | Beskrivning |
+| Fältnamn | Datatyp | Description |
 |----------------|---------------|-----------------|
-| `workspace_id` | sträng | Ange arbets ytans ID-GUID. * |
-| `workspace_key` | sträng | Ange arbets ytans primära nyckel-GUID. * |
+| `workspace_id` | sträng | Ange arbets ytans ID-GUID (se tips). |
+| `workspace_key` | sträng | Ange arbets ytans primära nyckel-GUID (se tips). |
 | `custom_log_table_name` | sträng | Ange namnet på den tabell där loggarna ska matas in. Det går bara att konfigurera ett tabell namn per utdatafil-plugin-program. Tabellen logg visas i Azure Sentinel under **loggar** i **tabeller** i kategorin **anpassade loggar** med ett `_CL` suffix. |
 | `endpoint` | sträng | Valfritt fält. Som standard är detta Log Analytics slut punkten. Använd det här fältet om du vill ange en alternativ slut punkt. |
 | `time_generated_field` | sträng | Valfritt fält. Den här egenskapen åsidosätter standard fältet **TimeGenerated** i Log Analytics. Ange namnet på tidsstämpel-fältet i data källan. Data i fältet måste följa ISO 8601-formatet ( `YYYY-MM-DDThh:mm:ssZ` ) |
 | `key_names` | matris | Ange en lista med Log Analytics utmatnings schema fält. Varje List objekt ska omges av enkla citat tecken och objekten avgränsade med kommatecken, och hela listan omges av hakparenteser. Se exemplet nedan. |
 | `plugin_flush_interval` | antal | Valfritt fält. Ange för att definiera det maximala intervallet (i sekunder) mellan meddelande överföring till Log Analytics. Standardvärdet är 5. |
-    | `amount_resizing` | boolean | Sant eller falskt. Aktivera eller inaktivera funktionen för automatisk skalning, vilket justerar storleken på meddelandets buffertstorlek enligt volymen av loggdata som tagits emot. |
+| `amount_resizing` | boolean | Sant eller falskt. Aktivera eller inaktivera funktionen för automatisk skalning, vilket justerar storleken på meddelandets buffertstorlek enligt volymen av loggdata som tagits emot. |
 | `max_items` | antal | Valfritt fält. Gäller endast om `amount_resizing` värdet är "false". Används för att ange ett tak för buffertstorleken (i poster). Standardvärdet är 2 000.  |
 | `azure_resource_id` | sträng | Valfritt fält. Definierar ID: t för den Azure-resurs där data finns. <br>Värdet resurs-ID är särskilt användbart om du använder [resurs kontexten RBAC](resource-context-rbac.md) för att endast ge åtkomst till vissa data. |
 | | | |
 
-* Du kan hitta arbetsyte-ID: t och primär nyckeln i arbets ytans resurs under **agent hantering**.
+> [!TIP]
+> - Du kan hitta arbetsyte-ID: t och primär nyckeln i arbets ytans resurs under **agent hantering**.
+> - **Men** eftersom autentiseringsuppgifter och annan känslig information som lagras i klartext i konfigurationsfiler inte är i linje med rekommenderade säkerhets metoder, rekommenderar vi att du använder **Logstash-nyckel lagringen** för att på ett säkert sätt ta med **arbets ytans ID** och **primär nyckel för arbets ytan** i konfigurationen. Mer information finns i [elastisk dokumentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-started-logstash-user.html) .
 
 #### <a name="sample-configurations"></a>Exempel på konfigurationer
 
