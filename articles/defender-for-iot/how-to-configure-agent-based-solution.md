@@ -4,10 +4,10 @@ description: Lär dig hur du konfigurerar data insamling i Azure Defender för I
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.openlocfilehash: 9a21b336299438b89fae8d5a837130762a7f36e8
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104784398"
 ---
 # <a name="configure-azure-defender-for-iot-agent-based-solution"></a>Konfigurera Azure Defender för IoT agent-baserad lösning  

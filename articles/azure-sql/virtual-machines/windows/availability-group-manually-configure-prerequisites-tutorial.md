@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f5739604537ccc67e2cf57310269369909038d67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c64a4e06ed452c895c1bc2cf20adc2d9c0060c3
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508766"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219271"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Självstudie: förutsättningar för att skapa tillgänglighets grupper på SQL Server på Azure Virtual Machines
 
@@ -69,11 +69,11 @@ Du behöver ett Azure-konto. Du kan [öppna ett kostnads fritt Azure-konto](http
 
 Azure skapar resurs gruppen och fäster en genväg till resurs gruppen i portalen.
 
-## <a name="create-the-network-and-subnets"></a>Skapa nätverket och undernät
+## <a name="create-the-network-and-subnet"></a>Skapa nätverket och under nätet
 
 Nästa steg är att skapa nätverk och undernät i Azure-resurs gruppen.
 
-Lösningen använder ett virtuellt nätverk med två undernät. [Översikt över virtuella nätverk](../../../virtual-network/virtual-networks-overview.md) innehåller mer information om nätverk i Azure.
+Lösningen använder ett virtuellt nätverk och ett undernät. [Översikt över virtuella nätverk](../../../virtual-network/virtual-networks-overview.md) innehåller mer information om nätverk i Azure.
 
 Skapa det virtuella nätverket i Azure Portal:
 
@@ -100,48 +100,13 @@ Skapa det virtuella nätverket i Azure Portal:
 
    Adress utrymmet och under nätets adress intervall kan skilja sig från tabellen. Beroende på din prenumeration föreslår portalen ett tillgängligt adress utrymme och motsvarande adress intervall för under nätet. Om det inte finns tillräckligt med adress utrymme använder du en annan prenumeration.
 
-   Exemplet använder under näts namnets **administratör**. Det här under nätet är för domän kontrol Lanterna.
+   Exemplet använder under näts namnets **administratör**. Det här under nätet är för domän kontrol Lanterna och SQL Server virtuella datorer.
 
 5. Välj **Skapa**.
 
    ![Konfigurera det virtuella nätverket](./media/availability-group-manually-configure-prerequisites-tutorial-/06-configurevirtualnetwork.png)
 
 Azure återgår till portalens instrument panel och meddelar dig när det nya nätverket skapas.
-
-### <a name="create-a-second-subnet"></a>Skapa ett andra undernät
-
-Det nya virtuella nätverket har ett undernät, med namnet **admin**. Domän kontrol Lanterna använder det här under nätet. De virtuella datorerna i SQL Server använder ett andra undernät med namnet **SQL**. Konfigurera det här under nätet:
-
-1. På instrument panelen väljer du den resurs grupp som du skapade, **SQL-ha-RG**. Leta upp nätverket i resurs gruppen under **resurser**.
-
-    Om **SQL-ha-RG** inte visas söker du efter det genom att välja **resurs grupper** och filtrera efter resurs gruppens namn.
-
-2. Välj **autoHAVNET** i listan över resurser. 
-3. I **autoHAVNET** virtuella nätverk under **Inställningar** väljer du **undernät**.
-
-    Anteckna det undernät som du redan har skapat.
-
-   ![Observera det undernät som du redan har skapat](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
-
-5. Om du vill skapa ett andra undernät väljer du **+ undernät**.
-6. I **Lägg till undernät** konfigurerar du under nätet genom att skriva **sqlsubnet** under **namn**. Azure anger automatiskt ett giltigt **adress intervall**. Kontrol lera att det här adress intervallet innehåller minst 10 adresser. I en produktions miljö kan du behöva fler adresser.
-7. Välj **OK**.
-
-    ![Konfigurera undernät](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
-
-Följande tabell sammanfattar inställningarna för nätverks konfiguration:
-
-| **Fält** | Värde |
-| --- | --- |
-| **Namn** |**autoHAVNET** |
-| **Adressutrymme** |Det här värdet beror på tillgängliga adress utrymmen i din prenumeration. Ett typiskt värde är 10.0.0.0/16. |
-| **Namn på undernät** |**administratör** |
-| **Adressintervall för undernätet** |Det här värdet beror på tillgängliga adress intervall i din prenumeration. Ett typiskt värde är 10.0.0.0/24. |
-| **Namn på undernät** |**sqlsubnet** |
-| **Adressintervall för undernätet** |Det här värdet beror på tillgängliga adress intervall i din prenumeration. Ett typiskt värde är 10.0.1.0/24. |
-| **Prenumeration** |Ange den prenumeration som du vill använda. |
-| **Resursgrupp** |**SQL-HA-RG** |
-| **Plats** |Ange samma plats som du valde för resurs gruppen. |
 
 ## <a name="create-availability-sets"></a>Skapa tillgänglighetsuppsättningar
 
@@ -164,7 +129,7 @@ När du har skapat tillgänglighets uppsättningarna återgår du till resurs gr
 
 ## <a name="create-domain-controllers"></a>Skapa domänkontrollanter
 
-När du har skapat nätverket, undernät och tillgänglighets uppsättningar är du redo att skapa de virtuella datorerna för domän kontrol Lanterna.
+När du har skapat nätverket, under nätet och tillgänglighets uppsättningarna är du redo att skapa de virtuella datorerna för domän kontrol Lanterna.
 
 ### <a name="create-virtual-machines-for-the-domain-controllers"></a>Skapa virtuella datorer för domän kontrol Lanterna
 

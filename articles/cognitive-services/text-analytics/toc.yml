@@ -5,10 +5,38 @@
   items:
     - name: Vad är API för textanalys?
       href: overview.md
-    - name: Exempel på användarscenarier
-      href: text-analytics-user-scenarios.md
+    - name: Stöd för språk
+      href: language-support.md
+    - name: Prissättning
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: Nyheter
       href: whats-new.md
+    - name: Textanalys vanliga frågor och svar
+      href: text-analytics-resource-faq.md
+- name: Textanalys snabb start
+  href: quickstarts/client-libraries-rest-api.md
+- name: Exempel
+  items:
+    - name: v3.0
+      items:
+        - name: C#
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
+        - name: Python
+          href: 'https://github.com/Azure/azure-sdk-for-js/tree/%40azure/ai-text-analytics_5.0.0/sdk/textanalytics/ai-text-analytics/samples'
+        - name: Java
+          href: 'https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics'
+        - name: JavaScript
+          href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples'
+    - name: v 3.1 – för hands version
+      items:
+        - name: C#
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
+        - name: Python
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
+        - name: Java
+          href: 'https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics'
+        - name: JavaScript
+          href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples'
 - name: Ansvarsfull användning av AI
   items:
     - name: Information om transparens
@@ -28,11 +56,50 @@
     - name: Integrering och ansvarsfull användning
       href: /legal/cognitive-services/text-analytics/guidance-integration-responsible-use?context=/azure/cognitive-services/text-analytics/context/context
       displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
-- name: Snabbstarter
-  expanded: true
+- name: Anvisningar
   items:
-    - name: Använda klientbiblioteket och REST-API
-      href: quickstarts/client-libraries-rest-api.md
+    - name: 'Anropa API:t för textanalys'
+      href: How-tos/text-analytics-how-to-call-api.md
+    - name: Språkidentifiering
+      href: How-tos/text-analytics-how-to-language-detection.md
+    - name: Attitydanalys och åsiktsutvinning
+      href: How-tos/text-analytics-how-to-sentiment-analysis.md
+    - name: Extrahering av nyckelfraser
+      href: How-tos/text-analytics-how-to-keyword-extraction.md
+    - name: Igenkänning av namngivna enheter och personligt identifierbar information
+      href: How-tos/text-analytics-how-to-entity-linking.md
+      displayName: 'NER, Named entity recognition, PII, redaction'
+    - name: Textanalys för hälsa
+      href: How-tos/text-analytics-for-health.md
+    - name: Distribuera Textanalys
+      items:
+        - name: Containers
+          items:
+            - name: Installera och köra containrar
+              href: how-tos/text-analytics-how-to-install-containers.md
+            - name: Konfigurera containrar
+              href: text-analytics-resource-container-config.md
+            - name: Använda containerinstanser
+              maintainContext: true
+              href: ../containers/azure-container-instance-recipe.md
+            - name: Använda Kubernetes Service (AKS)
+              href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+            - name: Dokumentation om containrar för Cognitive Services
+              href: ../containers/index.yml
+    - name: 'Migrera till version 3 av API:et'
+      href: migration-guide.md
+- name: Begrepp
+  items:
+    - name: Exempel på användarscenarier
+      href: text-analytics-user-scenarios.md
+    - name: Namngivna entitetstyper
+      href: named-entity-types.md
+    - name: Unicode-kodningar och text förskjutningar
+      href: concepts/text-offsets.md
+    - name: Databegränsningar
+      href: concepts/data-limits.md
+    - name: Versionshantering för modell
+      href: concepts/model-versioning.md
 - name: Självstudier
   items:
     - name: Integrera Power BI för att analysera kundfeedback
@@ -47,53 +114,8 @@
       href: ../translator/tutorial-build-flask-app-translation-synthesis.md
     - name: Extrahera information i Excel med hjälp av Power Automate
       href: tutorials/extract-excel-information.md
-- name: Begrepp
-  items:
-    - name: Namngivna entitetstyper
-      href: named-entity-types.md
-    - name: Stöd för språk
-      href: language-support.md
-    - name: Offsets för text
-      href: concepts/text-offsets.md
-    - name: Databegränsningar
-      href: concepts/data-limits.md
-    - name: Versionshantering för modell
-      href: concepts/model-versioning.md
-- name: Anvisningar
-  items:
-    - name: 'Anropa API:t för textanalys'
-      href: How-tos/text-analytics-how-to-call-api.md
-    - name: Språkidentifiering
-      href: How-tos/text-analytics-how-to-language-detection.md
-    - name: Attitydanalys och åsiktsutvinning
-      href: How-tos/text-analytics-how-to-sentiment-analysis.md
-    - name: Extrahering av nyckelfraser
-      href: How-tos/text-analytics-how-to-keyword-extraction.md
-    - name: Igenkänning av namngiven enhet
-      href: How-tos/text-analytics-how-to-entity-linking.md
-    - name: Textanalys för hälsa
-      href: How-tos/text-analytics-for-health.md
-    - name: Använda containrar
-      items:
-        - name: Installera och köra containrar
-          href: how-tos/text-analytics-how-to-install-containers.md
-        - name: Konfigurera containrar
-          href: text-analytics-resource-container-config.md
-        - name: Använda containerinstanser
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
-        - name: Använda Kubernetes Service (AKS)
-          href: how-tos/text-analytics-how-to-use-kubernetes-service.md
-        - name: Dokumentation om containrar för Cognitive Services
-          href: ../containers/index.yml
-    - name: 'Migrera till version 3 av API:et'
-      href: migration-guide.md
 - name: Referens
   items:
-    - name: CLI-referens
-      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
-    - name: PowerShell-referens
-      href: /powershell/module/azurerm.cognitiveservices/
     - name: API för textanalys
       items:
         - name: v3.1.preview.3
@@ -104,6 +126,16 @@
           href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1'
     - name: 'SDK:er'
       items:
+        - name: v 3.1 – för hands version
+          items:
+            - name: .NET
+              href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview
+            - name: Python
+              href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview
+            - name: Java
+              href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview
+            - name: Node.js
+              href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview
         - name: v3.0
           items:
             - name: .NET
@@ -126,16 +158,16 @@
               href: /javascript/api/@azure/cognitiveservices-textanalytics/
             - name: Go
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
+    - name: CLI-referens
+      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
+    - name: PowerShell-referens
+      href: /powershell/module/azurerm.cognitiveservices/
 - name: Resurser
   items:
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/text-analytics/context/context
     - name: Externt innehåll och community-innehåll
       href: text-analytics-resource-external-community.md
-    - name: VANLIGA FRÅGOR OCH SVAR
-      href: text-analytics-resource-faq.md
-    - name: Prissättning
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: Regional tillgänglighet
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Efterlevnad

@@ -3,15 +3,16 @@ title: Vanliga frågor och svar om stöd för konfidentiella noder i Azure Kuber
 description: Hitta svar på några vanliga frågor om Azure Kubernetes service (AKS) & stöd för Azure konfidentiell data behandling (ACC).
 author: agowdamsft
 ms.service: container-service
+ms.subservice: confidential-computing
 ms.topic: conceptual
 ms.date: 02/09/2020
 ms.author: amgowda
-ms.openlocfilehash: 550995f0be3d634e7e9f24a8bf6826916003308e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 94b585078ce5e78a658fd8f110f09963200010b6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100653405"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933567"
 ---
 # <a name="frequently-asked-questions-about-confidential-computing-nodes-on-azure-kubernetes-service-aks"></a>Vanliga frågor och svar om konfidentiella databeräkningar i Azure Kubernetes service (AKS)
 

@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 490fa46deabc822e416705fe9bf9c5cdb58f8cd6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 079ac41f8b138bccbe4d435a79836d3acee71b7d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97936775"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728631"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions värd alternativ
 
@@ -28,7 +28,7 @@ Den här artikeln innehåller en detaljerad jämförelse mellan de olika värd p
 
 Följande är en sammanfattning av fördelarna med de tre huvudsakliga värd planerna för functions:
 
-| | |
+| Planera | Fördelar |
 | --- | --- |  
 |**[Förbrukningsplan](consumption-plan.md)**| Skala automatiskt och betala bara för beräknings resurser när funktionerna körs.<br/><br/>I förbruknings planen läggs instanser av funktions värden dynamiskt till och tas bort baserat på antalet inkommande händelser.<br/><br/> ✔ Standard värd plan.<br/>✔ Endast betala när funktionerna körs.<br/>✔ Skalas automatiskt, även vid perioder med hög belastning.|  
 |**[Premiumplan](functions-premium-plan.md)**|Skalar automatiskt utifrån efter frågan med förvärmade arbetare som kör program utan fördröjning efter att de varit inaktiva, körs på mer kraftfulla instanser och ansluter till virtuella nätverk. <br/><br/>Överväg Azure Functions Premium-planen i följande situationer: <br/><br/>✔ Dina funktions appar körs kontinuerligt eller nästan kontinuerligt.<br/>✔ Du har ett stort antal små körningar och en hög körnings faktura, men med låg GB i förbruknings planen.<br/>✔ Du behöver fler processor-eller minnes alternativ än vad som tillhandahålls av förbruknings planen.<br/>✔ Din kod behöver köra längre än den maximala körnings tiden som tillåts i förbruknings planen.<br/>✔ Du behöver funktioner som inte är tillgängliga i förbruknings planen, till exempel virtuell nätverks anslutning.|  
@@ -36,7 +36,7 @@ Följande är en sammanfattning av fördelarna med de tre huvudsakliga värd pla
 
 Jämförelse tabellerna i den här artikeln innehåller också följande värd alternativ, som ger den högsta mängden kontroll och isolering där du kan köra dina funktions program.  
 
-| | |
+| Värd alternativ | Information |
 | --- | --- |  
 |**[ASE](dedicated-plan.md)** | App Service-miljön (ASE) är en App Service funktion som ger en helt isolerad och dedikerad miljö för säker körning av App Service appar i hög skala.<br/><br/>ASE är lämpliga för program arbets belastningar som kräver: <br/><br/>✔ Mycket hög skala.<br/>✔ Fullständig beräknings isolering och säker nätverks åtkomst.<br/>✔ Hög minnes användning.|  
 | **[Kubernetes](functions-kubernetes-keda.md)** | Kubernetes tillhandahåller en helt isolerad och dedikerad miljö som körs ovanpå Kubernetes-plattformen.<br/><br/> Kubernetes är lämpligt för program arbets belastningar som kräver: <br/>✔ Anpassade maskin varu krav.<br/>✔ Isolering och säker nätverks åtkomst.<br/>✔ Möjlighet att köra i hybrid miljöer eller miljöer med flera moln.<br/>✔ Att köra tillsammans med befintliga Kubernetes-program och-tjänster.|  
@@ -65,7 +65,7 @@ I följande tabell visas stöd för operativ system och språk körnings stöd f
 
 I följande tabell jämförs skalnings beteenden för de olika värd planerna.
 
-| | Skala ut | Maximalt antal instanser |
+| Planera | Skala ut | Maximalt antal instanser |
 | --- | --- | --- |
 | **[Förbrukningsplan](consumption-plan.md)** | [Händelse driven](event-driven-scaling.md). Skala ut automatiskt, även vid perioder med hög belastning. Azure Functions-infrastrukturen skalar processor-och minnes resurser genom att lägga till ytterligare instanser av Functions-värden baserat på antalet inkommande utlösare. | 200 |
 | **[Premiumplan](functions-premium-plan.md)** | [Händelse driven](event-driven-scaling.md). Skala ut automatiskt, även vid perioder med hög belastning. Azure Functions-infrastrukturen skalar processor-och minnes resurser genom att lägga till ytterligare instanser av Functions-värden, baserat på antalet händelser som dess funktioner aktive ras på. |100|
@@ -77,7 +77,7 @@ I följande tabell jämförs skalnings beteenden för de olika värd planerna.
 
 ## <a name="cold-start-behavior"></a>Kall start beteende
 
-|    |    | 
+| Planera | Information | 
 | -- | -- |
 | **[Förbruknings &nbsp; plan](consumption-plan.md)** | Appar kan skalas till noll vid inaktivitet, vilket innebär att vissa begär Anden kan ha ytterligare svars tid vid starten.  Förbruknings planen har vissa optimeringar som hjälper till att minska kallstart tiden, inklusive att dra från förvärmade placeholder funktioner som redan har funktions värden och språk processer som körs. |
 | **[Premiumplan](functions-premium-plan.md)** | En permanent varm instans för att undvika kall start. |
@@ -95,7 +95,7 @@ I följande tabell jämförs skalnings beteenden för de olika värd planerna.
 
 ## <a name="billing"></a>Fakturering
 
-| | | 
+| Planera | Information |
 | --- | --- |
 | **[Förbrukningsplan](consumption-plan.md)** | Betala endast för den tid som dina funktioner körs. Fakturering baseras på antalet körningar, körningstid och använt minne. |
 | **[Premiumplan](functions-premium-plan.md)** | Premium-planen baseras på antalet kärn sekunder och minne som används för alla nödvändiga och förvärmade instanser. Minst en instans per plan måste alltid vara varm. Den här planen ger den mest förutsägbara prissättningen. |

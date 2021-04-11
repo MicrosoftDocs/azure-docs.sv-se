@@ -2,13 +2,13 @@
 title: Azure Monitor resurs loggar som stöds tjänster och kategorier
 description: Referens för Azure Monitor förstå tjänster och händelse scheman som stöds för Azures resurs loggar.
 ms.topic: reference
-ms.date: 01/29/2021
-ms.openlocfilehash: 9a04d0f470522dd4689d604756ffd25e70c5d456
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/30/2021
+ms.openlocfilehash: a4ab4a2e425b752198223da5efd1b07466ab83d1
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033154"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166946"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Kategorier som stöds för Azure-resurs loggar
 
@@ -33,7 +33,8 @@ Följande är en lista över de typer av loggar som är tillgängliga för varje
 Vissa kategorier kan bara användas för vissa typer av resurser. Se den Resource-/regionsspecifika dokumentationen om du anser att du saknar en resurs. Till exempel är inte kategorierna Microsoft. SQL/Server/Databass tillgängliga för alla typer av databaser. Mer information finns i [information om SQL Database diagnostisk loggning](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md). 
 
 Om du tror att något saknas kan du öppna en GitHub-kommentar längst ned i den här artikeln.
-## <a name="microsoftaaddomainservices"></a>Microsoft. AAD/domainServices
+
+## <a name="microsoftaaddomainservices"></a>Microsoft. AAD/DomainServices
 
 |Kategori|Kategori visnings namn|Kostnader för export|
 |---|---|---|
@@ -46,6 +47,13 @@ Om du tror att något saknas kan du öppna en GitHub-kommentar längst ned i den
 |PolicyChange|PolicyChange|Inga|
 |PrivilegeUse|PrivilegeUse|Inga|
 |SystemSecurity|SystemSecurity|Inga|
+
+
+## <a name="microsoftaadiamtenants"></a>Microsoft. aadiam/klient organisationer
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Inloggning|Inloggning|Ja|
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/servers
@@ -97,6 +105,14 @@ Om du tror att något saknas kan du öppna en GitHub-kommentar längst ned i den
 |JobStreams|Jobb strömmar|Inga|
 
 
+## <a name="microsoftautonomousdevelopmentplatformaccounts"></a>Microsoft. AutonomousDevelopmentPlatform/konton
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|Granska|Granska|Ja|
+|Operativ|Operativ|Ja|
+
+
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.BatCH/batchAccounts
 
 |Kategori|Kategori visnings namn|Kostnader för export|
@@ -135,7 +151,6 @@ Om du tror att något saknas kan du öppna en GitHub-kommentar längst ned i den
 |Kategori|Kategori visnings namn|Kostnader för export|
 |---|---|---|
 |BotRequest|Begär Anden från kanaler till bot|Inga|
-|DependencyRequest|Begär anden till beroenden|Inga|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
@@ -182,6 +197,7 @@ Om du tror att något saknas kan du öppna en GitHub-kommentar längst ned i den
 
 |Kategori|Kategori visnings namn|Kostnader för export|
 |---|---|---|
+|AuthOperational|Loggar med operativa autentiseringsuppgifter|Ja|
 |ChatOperational|Fungerande chatt loggar|Inga|
 |SMSOperational|Operativa SMS-loggar|Inga|
 |Användning|Användnings poster|Inga|
@@ -256,6 +272,8 @@ Om du tror att något saknas kan du öppna en GitHub-kommentar längst ned i den
 |---|---|---|
 |ActivityRuns|Pipeline-aktivitet kör logg|Inga|
 |PipelineRuns|Pipeline kör logg|Inga|
+|SandboxActivityRuns|Sandbox-aktivitet kör logg|Ja|
+|SandboxPipelineRuns|Sandbox pipeline kör logg|Ja|
 |SSISIntegrationRuntimeLogs|SSIS för integration runtime|Inga|
 |SSISPackageEventMessageContext|Händelse meddelande kontext för SSIS-paket|Inga|
 |SSISPackageEventMessages|Händelse meddelanden för SSIS-paket|Inga|
@@ -320,6 +338,13 @@ Om du tror att något saknas kan du öppna en GitHub-kommentar längst ned i den
 |Kategori|Kategori visnings namn|Kostnader för export|
 |---|---|---|
 |PostgreSQLLogs|PostgreSQL Server-loggar|Inga|
+
+
+## <a name="microsoftdbforpostgresqlservergroupsv2"></a>Microsoft. DBForPostgreSQL/serverGroupsv2
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|PostgreSQLLogs|PostgreSQL Server-loggar|Ja|
 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/servers
@@ -531,18 +556,6 @@ Om du tror att något saknas kan du öppna en GitHub-kommentar längst ned i den
 |AppTraces|Spårningar|Inga|
 
 
-## <a name="microsoftiotspacesgraph"></a>Microsoft. IoTSpaces/Graph
-
-|Kategori|Kategori visnings namn|Kostnader för export|
-|---|---|---|
-|Granska|Granska|Inga|
-|Utgående|Utgående|Inga|
-|Ingress|Ingress|Inga|
-|Operativ|Operativ|Inga|
-|Spårning|Spårning|Inga|
-|UserDefinedFunction|UserDefinedFunction|Inga|
-
-
 ## <a name="microsoftkeyvaultmanagedhsms"></a>Microsoft. nyckel valv/managedhsms
 
 |Kategori|Kategori visnings namn|Kostnader för export|
@@ -747,13 +760,6 @@ Om du tror att något saknas kan du öppna en GitHub-kommentar längst ned i den
 |Motor|Motor|Inga|
 
 
-## <a name="microsoftprojectbabylonaccounts"></a>Microsoft. ProjectBabylon/konton
-
-|Kategori|Kategori visnings namn|Kostnader för export|
-|---|---|---|
-|ScanStatusLogEvent|ScanStatus|Inga|
-
-
 ## <a name="microsoftpurviewaccounts"></a>Microsoft. avdelningens kontroll/konton
 
 |Kategori|Kategori visnings namn|Kostnader för export|
@@ -808,6 +814,13 @@ Om du tror att något saknas kan du öppna en GitHub-kommentar längst ned i den
 |Kategori|Kategori visnings namn|Kostnader för export|
 |---|---|---|
 |AllLogs|Azure SignalR service-loggar.|Inga|
+
+
+## <a name="microsoftsignalrservicewebpubsub"></a>Microsoft. SignalRService/WebPubSub
+
+|Kategori|Kategori visnings namn|Kostnader för export|
+|---|---|---|
+|AllLogs|Azure Web PubSub-tjänst loggar.|Ja|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
@@ -901,6 +914,9 @@ Om du tror att något saknas kan du öppna en GitHub-kommentar längst ned i den
 |---|---|---|
 |BuiltinSqlReqsEnded|De inbyggda SQL-pool-begärandena avslutas|Inga|
 |GatewayApiRequests|API-begäranden för Synapse Gateway|Inga|
+|IntegrationActivityRuns|Integrations aktivitets körningar|Ja|
+|IntegrationPipelineRuns|Integrations pipeline körs|Ja|
+|IntegrationTriggerRuns|Integrations Utlösare körs|Ja|
 |SQLSecurityAuditEvents|Säkerhets gransknings händelse i SQL|Inga|
 |SynapseRbacOperations|Synapse RBAC-åtgärder|Inga|
 
@@ -975,7 +991,6 @@ Om du tror att något saknas kan du öppna en GitHub-kommentar längst ned i den
 |AppServiceIPSecAuditLogs|IPSecurity gransknings loggar|Inga|
 |AppServicePlatformLogs|App Service plattforms loggar|Inga|
 |FunctionAppLogs|Funktions program loggar|Inga|
-
 
 
 ## <a name="next-steps"></a>Nästa steg

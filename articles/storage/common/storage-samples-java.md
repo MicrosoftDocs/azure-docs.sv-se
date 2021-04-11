@@ -1,19 +1,19 @@
 ---
 title: Azure Storage exempel med Java | Microsoft Docs
 description: Visa, ladda ned och kör exempel kod och program för Azure Storage. Upptäck kom igång-exempel för blobbar, köer, tabeller och filer med hjälp av klient biblioteken för Java-lagring.
-author: mhopkins-msft
+author: twooley
 ms.custom: devx-track-java
-ms.author: mhopkins
+ms.author: twooley
 ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 9e3cd6be0da7c6d9401945293283de874c7cd866
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a6a68a150bd474f40ffb1610ed7a310e4f30de9
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92359772"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276645"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>Azure Storage exempel med V12 Java-klient bibliotek
 

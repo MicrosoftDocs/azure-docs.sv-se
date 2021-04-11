@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/29/2021
+ms.date: 03/30/2021
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 590e57d587c8e6e254811892b5c5e740b511c302
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 321a5c473df30dd6f00bbcd1294d48ce8da34009
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104690661"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060388"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Bibliotek för Microsoft Identity Platform-autentisering
 
@@ -29,7 +29,7 @@ Om du väljer att manuellt koda din egen protokoll nivå implementering av [OAut
 
 ## <a name="single-page-application-spa"></a>SPA (Single-Side Application)
 
-Ett program med en enda sida körs helt och hållet på webbläsarens yta och hämtar sid data (HTML, CSS och Java Script) dynamiskt eller vid programmets inläsnings tid. Den kan anropa webb-API: er för att interagera med Server dels data källor.
+Ett program med en enda sida körs helt i webbläsaren och hämtar sid data (HTML, CSS och Java Script) dynamiskt eller vid programmets inläsnings tid. Den kan anropa webb-API: er för att interagera med Server dels data källor.
 
 Eftersom en SPA-kod körs helt i webbläsaren, betraktas den som en *offentlig klient* som inte kan lagra hemligheter på ett säkert sätt.
 
@@ -45,7 +45,7 @@ Eftersom ett webb programs kod körs på webb servern betraktas det som en *konf
 
 ## <a name="desktop-application"></a>Skriv bords program
 
-Ett Skriv bords program är vanligt vis binär (kompilerad) kod som utgör ett användar gränssnitt och är avsett att köras på en användares skriv bord.
+Ett Skriv bords program är vanligt vis binär (kompilerad) kod som visar ett användar gränssnitt och som är avsett att köras på en användares skriv bord.
 
 Eftersom ett Skriv bords program körs på användarens skriv bord, betraktas det som en *offentlig klient* som inte kan lagra hemligheter på ett säkert sätt.
 
@@ -53,7 +53,7 @@ Eftersom ett Skriv bords program körs på användarens skriv bord, betraktas de
 
 ## <a name="mobile-application"></a>Mobilprogram
 
-Ett mobil program är vanligt vis binär (kompilerad) kod som utgör ett användar gränssnitt och är avsett att köras på en användares mobila enhet.
+Ett mobil program är vanligt vis binär (kompilerad) kod som visar ett användar gränssnitt och som är avsett att köras på en användares mobila enhet.
 
 Eftersom ett mobil program körs på användarens mobila enhet anses det vara en *offentlig klient* som inte kan lagra hemligheter på ett säkert sätt.
 

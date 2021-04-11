@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 10/19/2020
-ms.openlocfilehash: c700cce5f50fda7f7a5773e07549e93da1c9f7a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/01/2021
+ms.openlocfilehash: b1111caf2eaab1114371cbfed1e929afcff20898
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956262"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219373"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Skapa planer för ett erbjudande för virtuell dator
 
@@ -154,7 +154,9 @@ Privata erbjudanden stöds inte med Azure-prenumerationer som upprättats via en
 
 Om den virtuella datorn är avsedd att användas endast indirekt när den refereras till via en annan lösnings mall eller ett hanterat program, markerar du den här kryss rutan för att publicera den virtuella datorn, men döljer den från kunder som kan söka efter eller bläddra efter den direkt.
 
-Dolda planer stöder inte för hands versions länkar.
+Alla Azure-kunder kan distribuera erbjudandet med antingen PowerShell eller CLI.  Om du vill göra det här erbjudandet tillgängligt för en begränsad uppsättning kunder, ställer du in planen på **privat**. 
+
+Dolda planer genererar inte för hands versions länkar. Du kan dock testa dig genom att [följa dessa steg](azure-vm-create-faq.md#how-do-i-test-a-hidden-preview-image). 
 
 Välj **Spara utkast** innan du fortsätter till nästa flik i menyn till vänster-navigerings plan, **teknisk konfiguration**.
 

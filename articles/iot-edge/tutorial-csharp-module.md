@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 01b30fed23b33719f08e93907075eee757343b1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7695c825dbdd2c207c87799ea801026f7506bcb
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461750"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219458"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>Självstudie: utveckla en C# IoT Edge-modul som använder Linux-behållare
 
@@ -52,7 +52,7 @@ Använd följande tabell för att förstå alternativen för att utveckla och di
 Innan du påbörjar den här självstudien bör du ha gått igenom den föregående kursen för att konfigurera din utvecklings miljö, [utveckla en IoT Edge-modul med hjälp av Linux-behållare](tutorial-develop-for-linux.md). När du har slutfört den här självstudien bör du redan ha följande krav:
 
 * En [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) på kostnadsfri nivå eller standardnivå i Azure.
-* En enhet som kör Azure IoT Edge. Du kan använda snabb starterna för att konfigurera en [Linux-enhet](quickstart-linux.md) eller [Windows-enhet](quickstart.md).
+* En enhet som kör Azure IoT Edge med Linux-behållare. Du kan använda snabb starterna för att konfigurera en [Linux-enhet](quickstart-linux.md) eller [Windows-enhet](quickstart.md).
 * Ett behållar register som [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio-kod](https://code.visualstudio.com/) som kon figurer ATS med [Azure IoT-verktyg](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) konfigurerat för att köra Linux-behållare.

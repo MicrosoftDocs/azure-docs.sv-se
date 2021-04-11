@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: rogarana
 ms.openlocfilehash: 26932d05cd3d2ef7704b48463c895e05524d87f1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103472134"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Översikt – lokal Active Directory Domain Services autentisering över SMB för Azure-filresurser
@@ -33,7 +33,7 @@ Om du är nybörjare på Azure-filresurser rekommenderar vi att du läser vår [
 
 När du aktiverar AD DS för Azure-filresurser över SMB kan AD DS-anslutna datorer montera Azure-filresurser med dina befintliga AD DS-autentiseringsuppgifter. Den här funktionen kan aktive ras med en AD DS-miljö som finns på lokal datorer eller som finns i Azure.
 
-## <a name="videos"></a>Videoklipp
+## <a name="videos"></a>Video
 
 För att hjälpa dig att konfigurera Azure Files AD-autentisering för några vanliga användnings fall publicerade vi två videor med stegvis vägledning i följande scenarier:
 

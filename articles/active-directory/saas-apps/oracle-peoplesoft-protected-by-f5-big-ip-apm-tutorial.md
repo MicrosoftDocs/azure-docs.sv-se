@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 3b7c8e024ac8361c08cc41195531a114bb12fcb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3af149f0c1db7f354be6bd968bbd0cf858493d4c
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522299"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219305"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Oracle lib-Protected av F5 BIG-IP APM
 
@@ -40,19 +40,19 @@ För att komma igång behöver du följande objekt:
     2. F5-fristående licens för BIG-IP Access Policy Manager™ (APM) 
     3. F5-tilläggsprogram för BIG-IP Access Policy Manager™ (APM) för en befintlig BIG IP F5 BIG-IP® lokala Traffic Manager™ (LTM).
     4. Förutom ovanstående licens kan F5-systemet också vara licensierat med: 
-        * En URL-filtrerings prenumeration som använder URL-kategorins databas 
-        * En F5-prenumeration för IP-information för att identifiera och blockera kända angripare och skadlig trafik 
-        * En nätverks-och maskin varu säkerhetsmodul (HSM) som skyddar och hanterar digitala nycklar för stark autentisering
-1. F5 BIG-IP-system är etablerad med APM-moduler (LTM är valfritt) 
+        * En URL-filtrerande prenumeration för att använda URL-kategorins databas. 
+        * En F5-prenumeration för IP-information för att identifiera och blockera kända angripare och skadlig trafik. 
+        * En nätverks-och maskin varu säkerhetsmodul (HSM) som skyddar och hanterar digitala nycklar för stark autentisering.
+1. F5 BIG-IP-system är etablerad med APM-moduler (LTM är valfritt).
 1. Även om det är valfritt, rekommenderar vi starkt att du distribuerar F5-systemen i en [enhets grupp för synkronisering/redundans](https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/big-ip-device-service-clustering-administration-14-1-0.html) (S/F DG), som innehåller det aktiva standby-paret med en flytande IP-adress för hög tillgänglighet (ha). Ytterligare gränssnitts redundans kan uppnås med hjälp av LACP (Link Aggregation Control Protocol). LACP hanterar de anslutna fysiska gränssnitten som ett enda virtuellt gränssnitt (samlings grupp) och identifierar eventuella gränssnitts problem i gruppen.
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
-* Oracle lib– skyddas av F5 BIG-IP APM stöder **SP-och IDP** -INITIERAd SSO
+* Oraclead-skyddad av F5 BIG-IP APM stöder **SP-och IDP** -initierad SSO.
 
-## <a name="adding-oracle-peoplesoft---protected-by-f5-big-ip-apm-from-the-gallery"></a>Lägga till Oracle-skyddade av F5 BIG-IP APM från galleriet
+## <a name="add-oracle-peoplesoft---protected-by-f5-big-ip-apm-from-the-gallery"></a>Lägg till Oracle, som skyddas av F5 BIG-IP APM från galleriet
 
 Om du vill konfigurera integreringen av Oracle-volymer med hög IP-adress i F5 i Azure AD, måste du lägga till Oracle-skyddade av F5 BIG-IP APM från galleriet till din lista över hanterade SaaS-appar.
 
@@ -83,7 +83,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. På sidan Oracle, som **skyddas av F5 av F5-** program integration i Azure Portal, letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -231,7 +231,7 @@ Gå till **lokal trafik > profiler > SSL > klient > +**, Slutför följande info
 >[!Note]
 > Förhållande https://docs.oracle.com/cd/E12530_01/oam.1014/e10356/people.htm
 
-1. Logga in på den på den andra konsolen `https://<FQDN>.peoplesoft.f5.com/:8000/psp/ps/?cmd=start` med administratörs behörighet (exempel: PS/PS)
+1. Logga in på den på den andra konsolen `https://<FQDN>.peoplesoft.f5.com/:8000/psp/ps/?cmd=start` med administratörs behörighet (exempel: PS/PS).
 
     ![Self-tjänster för chefen](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/people-soft-console.png)
 
@@ -302,7 +302,7 @@ Följ dessa steg om du vill lägga till ett enda utloggnings stöd för alla anv
 
     * Navigera till **lokal trafik > virtuella servrar > Virtual Server List > PeopleSoftApp >-resurser**. Klicka på **hantera...** Slutför   
 
-    * Ange `<Name>` som aktive rad iRule och klicka på **färdig**
+    * Ange `<Name>` som aktive rad iRule och klicka på **färdig**.
 
         ![_iRule_PeopleSoftApp ](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/irule-people-soft.png)
 
@@ -327,11 +327,10 @@ I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning
 
 #### <a name="idp-initiated"></a>IDP initierad:
 
-* Klicka på **testa det här programmet** i Azure Portal och du bör logga in automatiskt till Oracle PeopleSoft-Protected av F5 Big-IP APM för vilken du konfigurerar SSO 
+* Klicka på **testa det här programmet** i Azure Portal och du bör logga in automatiskt till Oracle PeopleSoft-Protected av F5 Big-IP APM för vilken du konfigurerar SSO. 
 
-Du kan också använda Microsoft Access-panelen för att testa programmet i vilket läge som helst. När du klickar på Oracle-PeopleSoft-Protected av en stor IP APM-panel i åtkomst panelen, om det kon figurer ATS i SP-läge, kommer du att omdirigeras till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du logga in automatiskt till Oracle PeopleSoft-Protected av F5 BIG-IP APM som du konfigurerar SSO för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
-
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på Oracle-PeopleSoft-Protected av en stor IP APM-panel i Mina appar, om det kon figurer ATS i SP-läge, kommer du att omdirigeras till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du logga in automatiskt till Oracle PeopleSoft-Protected av F5 BIG-IP APM som du konfigurerar SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat Oracle exfiltrering-Protected av F5 BIG-IP APM kan du genomdriva session Control, som skyddar och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+När du har konfigurerat Oracle PeopleSoft-Protected av F5 BIG-IP APM kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
