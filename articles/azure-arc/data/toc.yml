@@ -44,16 +44,24 @@
               href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
     - name: Skapa datakontrollant
       items:
-        - name: Azure Data Studio
-          href: create-data-controller-azure-data-studio.md
-        - name: Azure Portal
-          href: create-data-controller-resource-in-azure-portal.md
-        - name: Azure Data CLI (azdata)
-          href: create-data-controller-using-azdata.md
-        - name: Kubernetes-verktyg
-          href: create-data-controller-using-kubernetes-native-tools.md
-        - name: Använd SCC (OpenShift)
-          href: how-to-apply-security-context-constraint.md
+        - name: Läge för indirekt anslutning
+          items:
+            - name: Azure Data Studio
+              href: create-data-controller-azure-data-studio.md
+            - name: Azure Portal
+              href: create-data-controller-resource-in-azure-portal.md
+            - name: Azure Data CLI (azdata)
+              href: create-data-controller-using-azdata.md
+            - name: Kubernetes-verktyg
+              href: create-data-controller-using-kubernetes-native-tools.md
+            - name: Använd SCC (OpenShift)
+              href: how-to-apply-security-context-constraint.md
+        - name: Direkt anslutnings läge
+          items:
+            - name: Förutsättningar
+              href: deploy-data-controller-direct-mode-prerequisites.md
+            - name: Distribuera
+              href: deploy-data-controller-direct-mode.md
     - name: Vanliga upplevelser i Azure Arc-aktiverade datatjänster
       items:
         - name: Övervaka med instrumentpaneler (Azure Data Studio)

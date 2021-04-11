@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 03/30/2021
 ms.author: victorh
-ms.openlocfilehash: e955c6b760c06ce802dfae0193d34954eab99892
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 622fde49a31105b2f66a678d3e55d48fabea9487
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731096"
+ms.locfileid: "105966919"
 ---
 # <a name="what-are-security-partner-providers"></a>Vad är en säkerhetspartnerprovider?
 
@@ -44,7 +44,8 @@ Följande scenarier stöds:
    VNet/Branch-to-Internet via en provider för säkerhets partner och den andra trafiken (eker-till-eker, eker-till-gren, förgrening-till-eker) via Azure Firewall.
 - Enskild Provider i hubben
 
-   - All trafik (eker-till-ekrar, ekrar-till-gren, förgrening-till-ekrar, VNet/gren-till-Internet) som skyddas av Azure-brandväggen
+   - All trafik (eker-till-ekrar, ekrar-till-gren, förgrening-till-ekrar, VNet/gren-till-Internet) som skyddas av Azure-brandväggen<br>
+      eller
    - VNet/förgrening till Internet via providern för säkerhets partner
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Metod tips för Internet trafik filtrering i skyddade virtuella hubbar

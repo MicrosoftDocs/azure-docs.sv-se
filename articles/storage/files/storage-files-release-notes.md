@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/26/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: a794274248a12af97174dcc4e86bd4231e9d9dda
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0e1cfe0ae53d1e1b35c5ec29d6c11b0891137e6d
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727492"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074411"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Viktig information om Azure File Sync-agenten
 Med Azure File Sync kan du centralisera din organisations filresurser i Azure Files med samma flexibilitet, prestanda och kompatibilitet som du får om du använder en lokal filserver. Dina Windows Server-installationer omvandlas till ett snabbt cacheminne för Azure-filresursen. Du kan använda alla protokoll som är tillgängliga på Windows Server för att komma åt data lokalt (inklusive SMB, NFS och FTPS). Du kan ha så många cacheminnen som du behöver över hela världen.
@@ -76,8 +76,8 @@ Följande viktig information gäller version 12.0.0.0 av Azure File Sync agent (
     - Förbättrad prestanda för ändrings identifiering för att identifiera filer som har ändrats i Azure-filresursen.
     - Prestanda förbättringar för synkronisering av avstämnings-sessioner. 
     - Förbättringar av synkronisering för att minska ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED och ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED fel.
-    - Filer kan Miss lyckas på nivån på Server 2019 om datadeduplicering har Aktiver ATS på volymen.
-    - AFSDiag kan inte komprimera filer om en fil är större än 2GiB.
+    - En bugg har åtgärd ATS som kan orsaka att filer inte kan köras på nivån på Server 2019 om datadeduplicering har Aktiver ATS på volymen.
+    - En bugg har åtgärd ATS som kan orsaka att AFSDiag inte kan komprimera filer om en fil är större än 2GiB.
 
 ### <a name="evaluation-tool"></a>Utvärderings verktyg
 Innan du distribuerar Azure File Sync bör du utvärdera om den är kompatibel med systemet med hjälp av verktyget för Azure File Sync utvärdering. Det här verktyget är en Azure PowerShell-cmdlet som kontrollerar eventuella problem med fil systemet och data uppsättningen, till exempel tecken som inte stöds eller en operativ system version som inte stöds. Anvisningar för installation och användning finns i avsnittet [utvärderings verktyg](./storage-sync-files-planning.md#evaluation-cmdlet) i planerings guiden. 

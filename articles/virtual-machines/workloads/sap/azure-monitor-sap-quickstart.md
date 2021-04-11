@@ -6,12 +6,12 @@ ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.date: 08/17/2020
-ms.openlocfilehash: d9febb4efba85d47abe1cc11a3cb52dc0393c036
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 02c0801aa0425db96a1e6f71f248c795e81b5ddf
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101672006"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554067"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Distribuera Azure Monitor för SAP-lösningar med Azure Portal
 
@@ -81,12 +81,23 @@ Logga in på Azure-portalen på https://portal.azure.com
 
 1. Välj OS (Linux) i list rutan 
 
-> [!IMPORTANT]
-> Om du vill konfigurera OS-providern (Linux) kontrollerar du att Node_Exporter är installerat i varje BareMetal-instans. Mer information finns i [Node_Exporter](https://github.com/prometheus/node_exporter)
+>[!IMPORTANT]
+> Om du vill konfigurera OS-providern (Linux) kontrollerar du att den senaste versionen av Node_Exporter är installerad på varje värd (BareMetal eller virtuell dator) som du vill övervaka. Använd den här [Link] ( https://prometheus.io/download/#node_exporter) för att hitta den senaste versionen. Mer information finns i [Node_Exporter](https://github.com/prometheus/node_exporter)
 
 2. Mata in ett namn som är identifieraren för BareMetal-instansen.
 3. Mata in nodens export slut punkt i form av http://IP:9100/metrics .
-4. När du är färdig väljer du **Lägg till provider**. Fortsätt att lägga till fler leverantörer vid behov eller Välj **Granska + skapa**   för att slutföra distributionen. 
+
+>[!IMPORTANT]
+> Använd en privat IP-adress för Linux-värden. Kontrol lera att värd-och AMS-resursen finns i samma VNET. 
+
+>[!Note]
+> Brand Väggs porten "9100" ska öppnas på Linux-värden.
+>Om du använder brand Väggs-cmd: brand vägg-cmd--permanent--Add-port = 9100/TCP Firewall-cmd--load igen om du använder UFW: UFW Tillåt att 9100/TCP UFW laddas om
+
+>[!Tip]
+> Om Linux-värden är en virtuell Azure-dator ser du till att alla tillämpliga NSG: er tillåter inkommande trafik på port 9100 från "VirtualNetwork" som källa.
+ 
+5. När du är färdig väljer du **Lägg till provider**. Fortsätt att lägga till fler leverantörer vid behov eller Välj **Granska + skapa**   för att slutföra distributionen. 
 
 
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server Provider

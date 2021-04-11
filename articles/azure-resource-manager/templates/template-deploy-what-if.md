@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: 76469f8b74b119c07374232899302fe1d18fe463
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ff024ff97baa8a80ae6b1fcdafba010e482afd98
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731470"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074630"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>Åtgärden what-if för distribution av ARM-mall
 
@@ -32,7 +32,7 @@ Mer information om hur du installerar moduler finns i [installera Azure PowerShe
 
 ## <a name="install-azure-cli-module"></a>Installera Azure CLI-modul
 
-Om du vill använda what-if i Azure CLI måste du ha Azure CLI 2.5.0 eller senare. [Installera den senaste versionen av Azure CLI](/cli/azure/install-azure-cli) om det behövs.
+Om du vill använda konsekvens i Azure CLI måste du ha Azure CLI-2.14.0 eller senare. [Installera den senaste versionen av Azure CLI](/cli/azure/install-azure-cli) om det behövs.
 
 ## <a name="see-results"></a>Visa resultat
 
@@ -117,10 +117,10 @@ Om du vill returnera resultaten utan färger öppnar du [Azure CLI-konfiguration
 
 För REST API använder du:
 
-* [Distributioner – what if](/rest/api/resources/resources/deployments/whatif) för resurs grupps distributioner
-* [Distributioner – what if vid prenumerations omfånget](/rest/api/resources/resources/deployments/whatifatsubscriptionscope) för prenumerations distributioner
-* [Distributioner – what if vid hanterings gruppens omfattning](/rest/api/resources/resources/deployments/whatifatmanagementgroupscope) för distributioner av hanterings grupper
-* [Distributioner – what if vid klient omfånget](/rest/api/resources/resources/deployments/whatifattenantscope) för klient distributioner.
+* [Distributioner – what if](/rest/api/resources/deployments/whatif) för resurs grupps distributioner
+* [Distributioner – what if vid prenumerations omfånget](/rest/api/resources/deployments/whatifatsubscriptionscope) för prenumerations distributioner
+* [Distributioner – what if vid hanterings gruppens omfattning](/rest/api/resources/deployments/whatifatmanagementgroupscope) för distributioner av hanterings grupper
+* [Distributioner – what if vid klient omfånget](/rest/api/resources/deployments/whatifattenantscope) för klient distributioner.
 
 ## <a name="change-types"></a>Ändringstyper
 

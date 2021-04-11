@@ -6,14 +6,16 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 536b9a9a0d1a7b48841938eef44d181d22b87bf4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 22c9d8f8bdf3e6195bf152fa0431ad5ce9bcdfeb
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609462"
+ms.locfileid: "106073389"
 ---
 I den här snabb starten får du lära dig hur du startar ett samtal med Azure Communication Services som anropar SDK för iOS.
+
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
 
 > [!NOTE]
 > Det här dokumentet använder version 1.0.0 – beta. 8 av anrops-SDK: n.

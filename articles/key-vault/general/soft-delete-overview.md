@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 7aeca89ed09182b7947b10f24c65b0cb58ed67ea
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6d691c4c510f5ff00c34d03b7b8d7a7bcaa53c3f
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452143"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554101"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Översikt av mjuk borttagning för Azure Key Vault
 
@@ -20,7 +20,7 @@ ms.locfileid: "102452143"
 > Du måste aktivera mjuk borttagning i nyckel valven direkt. Möjligheten att välja bort mjuk borttagning är snart inaktuell. Se fullständig information [här](soft-delete-change.md)
 
 > [!IMPORTANT]
-> Mjuk borttagning av valv utlösare ta bort inställningar för integrering med Key Vault tjänster, d.v.s. Azure RBAC-roller tilldelningar, Event Grid prenumerationer, Azure Monitor diagnostikinställningar. När återställningen av mjuk borttagnings Key Vault inställningar för integrerade tjänster måste återskapas manuellt. 
+> Soft-borttagna valv utlösare ta bort inställningar för integrerad med Key Vault tjänster, d.v.s. Azure RBAC-roller tilldelningar, Event Grid prenumerationer. När återställningen av mjuk borttagnings Key Vault inställningar för integrerade tjänster måste återskapas manuellt. 
 
 Key Vault funktionen för mjuk borttagning kan återställa de borttagna valven och borttagna Key Vault-objekt (till exempel nycklar, hemligheter, certifikat), som kallas mjuk borttagning. Mer specifikt åtgärdar vi följande scenarier: det här skyddet erbjuder följande skydd:
 

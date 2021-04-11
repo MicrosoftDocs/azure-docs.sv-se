@@ -2,15 +2,15 @@
 title: Begränsningar och kvoter för Azure-prenumeration
 description: Innehåller en lista över vanliga gränser, kvoter och begränsningar för Azure-prenumerationer och tjänster. Den här artikeln innehåller information om hur du ökar gränserna tillsammans med högsta värden.
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.openlocfilehash: 4dd62c926cce765ebc2b21378308650e313716ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 3ef3e6f3b67e8c92e0137f36e19c62cba79e1c14
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471009"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030835"
 ---
-# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-prenumeration och tjänst begränsningar, kvoter och begränsningar
+# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-prenumeration och tjänstbegränsningar, kvoter och krav
 
 Det här dokumentet innehåller några av de vanligaste Microsoft Azures gränserna, som ibland kallas kvoter.
 
@@ -34,9 +34,9 @@ De [kostnads fria utvärderings prenumerationerna](https://azure.microsoft.com/o
 
 Vissa gränser hanteras på regional nivå.
 
-Vi använder vCPU-kvoter som exempel. Om du vill begära en kvot ökning med stöd för virtuella processorer, måste du bestämma hur många virtuella processorer du vill använda i vilka regioner. Sedan gör du en speciell begäran för Azures resurs grupp vCPU kvoter för de mängder och regioner som du vill ha. Om du behöver använda 30 virtuella processorer i Västeuropa för Europa för att köra ditt program där, så kan du begära 30 virtuella processorer i Västeuropa. Din vCPU-kvot ökas inte i någon annan region – endast Västeuropa har 30-vCPU-kvoten.
+Vi använder vCPU-kvoter som exempel. Om du vill begära en kvot ökning med stöd för virtuella processorer, måste du bestämma hur många virtuella processorer du vill använda i vilka regioner. Sedan begär du en ökning av vCPU kvoter för de mängder och regioner som du vill ha. Om du behöver använda 30 virtuella processorer i Västeuropa för Europa för att köra ditt program där, så kan du begära 30 virtuella processorer i Västeuropa. Din vCPU-kvot ökas inte i någon annan region – endast Västeuropa har 30-vCPU-kvoten.
 
-Därför bör du bestämma vilka Azure-resurs grupps kvoter som krävs för din arbets belastning i en region. Sedan kan du begära detta belopp i varje region som du vill distribuera till. Information om hur du fastställer dina aktuella kvoter för vissa regioner finns i [lösa fel för resurs kvoter](../templates/error-resource-quota.md).
+Därför bör du bestämma vad dina kvoter måste vara för din arbets belastning i en region. Sedan kan du begära detta belopp i varje region som du vill distribuera till. Information om hur du fastställer dina aktuella kvoter för vissa regioner finns i [lösa fel för resurs kvoter](../templates/error-resource-quota.md).
 
 ## <a name="general-limits"></a>Allmänna gränser
 

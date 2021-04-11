@@ -8,18 +8,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/01/2020
-ms.openlocfilehash: 2e8e5a127741625fde7910aaabd421836148fc35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/06/2021
+ms.openlocfilehash: 7524644b34a6fd479c08b9ce6418c547c836add5
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95018675"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554033"
 ---
 # <a name="sentiment-analysis"></a>Attitydanalys
 Om sentiment-analysen har kon figurer ATS innehåller LUIS JSON-svaret sentiment analys. Läs mer om sentiment-analys i [textanalys](../text-analytics/index.yml) -dokumentationen.
 
 LUIS använder Textanalys v2. 
+
+Attitydanalys konfigureras när du publicerar ditt program. Mer information finns i [publicera en app](./luis-how-to-publish-app.md) .
 
 ## <a name="resolution-for-sentiment"></a>Lösning för sentiment
 

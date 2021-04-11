@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: c4e70c7f74c202b7de44a259b8a680f57aeaa041
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e5a3459c0264d087759572bffc497430cdb69ac9
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645034"
+ms.locfileid: "105966953"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Förbättra syntesen med SSML (Speech syntes Markup Language)
 
@@ -213,14 +213,9 @@ För närvarande stöds anpassning av format justeringar för dessa neurala-rös
 * `zh-CN-XiaoxuanNeural` Förhandsgranskningsvyn
 * `zh-CN-XiaoruiNeural` Förhandsgranskningsvyn
 
-Du kan ändra utseendet på tal formatet så att det bättre passar ditt användnings fall. Du kan ange ett starkare eller mjukare format med `styledegree` om du vill göra talet mer lättfattliga programspecifika eller subdued.
+Du kan ändra utseendet på tal formatet så att det bättre passar ditt användnings fall. Du kan ange ett starkare eller mjukare format med `styledegree` om du vill göra talet mer lättfattliga programspecifika eller subdued. För närvarande stöds anpassning av format justeringar för neurala-röster på kinesiska (mandariner, förenklad).
 
-För närvarande stöds anpassning av format justeringar för dessa neurala-röster:
-* `zh-CN-XiaoxiaoNeural`
-
-Förutom att justera tal formaten och format graderna kan du också justera `role` parametern så att rösten imiterar en annan ålder och kön. Till exempel kan en hane-röst öka bredden och ändra intonation till imitera en hona röst.
-
-För närvarande stöds roll uppspelnings justeringar för dessa neurala-röster:
+Förutom att justera tal formaten och format graderna kan du också justera `role` parametern så att rösten imiterar en annan ålder och kön. Till exempel kan en hane-röst öka bredden och ändra intonation till imitera en kvinna röst, men röst namnet kommer inte att ändras. För närvarande stöds roll uppspelnings justeringar för dessa kinesiska (mandariner, förenklade) neurala-röster:
 * `zh-CN-XiaomoNeural`
 * `zh-CN-XiaoxuanNeural`
 
@@ -238,15 +233,15 @@ Ovanstående ändringar tillämpas på menings nivå, och format och roll-spelar
 <mstts:express-as role="string" style="string"></mstts:express-as>
 ```
 > [!NOTE]
-> För tillfället `styledegree` stöder endast zh-cn-XiaoxiaoNeural. `role` stöder endast zh-CN-XiaomoNeural och zh-CN-XiaoxuanNeural.
+> För tillfället `styledegree` stöder endast kinesiska (mandariner, förenklad) neurala-röster. `role` stöder endast zh-CN-XiaomoNeural och zh-CN-XiaoxuanNeural.
 
 **Attribut**
 
 | Attribut | Beskrivning | Obligatorisk/valfri |
 |-----------|-------------|---------------------|
 | `style` | Anger tal formatet. För närvarande är det röst alternativ att tala om format. | Krävs om du justerar tal formatet för en neurala röst. Om du använder `mstts:express-as` , måste format tillhandahållas. Om ett ogiltigt värde har angetts ignoreras det här elementet. |
-| `styledegree` | Anger intensiteten för tal format. **Godkända värden**: 0,01 till 2. Standardvärdet är 1 vilket innebär den fördefinierade stil intensiteten. Den minsta enheten är 0,01 vilket resulterar i en något tendens för mål formatet. Värdet 2 resulterar i en dubblerad standard stil.  | Valfritt (för tillfället `styledegree` stöder endast zh-cn-XiaoxiaoNeural.)|
-| `role` | Anger den talande roll som spelas upp. Rösten fungerar som en annan ålder och kön.  | Valfritt (för tillfället `role` stöder endast zh-cn-XiaomoNeural och zh-cn-XiaoxuanNeural.)|
+| `styledegree` | Anger intensiteten för tal format. **Godkända värden**: 0,01 till 2. Standardvärdet är 1 vilket innebär den fördefinierade stil intensiteten. Den minsta enheten är 0,01 vilket resulterar i en något tendens för mål formatet. Värdet 2 resulterar i en dubblerad standard stil.  | Valfritt (för tillfället `styledegree` stöder endast kinesiska (mandariner, förenklad) neurala-röster.)|
+| `role` | Anger den talande roll som spelas upp. Rösten fungerar som en annan ålder och kön, men röst namnet kommer inte att ändras.  | Valfritt (för tillfället `role` stöder endast zh-cn-XiaomoNeural och zh-cn-XiaoxuanNeural.)|
 
 Använd den här tabellen för att avgöra vilka tal format som stöds för varje neurala röst.
 
@@ -322,17 +317,19 @@ Använd den här tabellen för att avgöra vilka tal format som stöds för varj
 |                         | `style="angry"`           | Uttrycker en Angry-och uppretad-ton, med lägre färgdjup, högre intensitet och högre Vocal energi. Högtalaren är i ett tillstånd att vara Irate, avstängt och felfritt.       |
 |                         | `style="fearful"`         | Uttrycker en Scared-och nerv ton, med högre färgdjup, högre Vocal energi och snabbare hastighet. Högtalaren är i läget tenseness och uneasiness.                          |
 
-Använd den här tabellen för att avgöra vilka roller som stöds för varje neurala röst.
+Använd den här tabellen för att kontrol lera vilka roller som stöds och deras definitioner.
 
-| Röst                   | Roll                       | Beskrivning                                                 |
-|-------------------------|----------------------------|-------------------------------------------------------------|
-| `zh-CN-XiaomoNeural`    | `role="YoungAdultFemale"`  | Rösten imiterar en ung vuxen hona.                 |
-|                         | `role="OlderAdultMale"`    | Rösten imiterar en äldre vuxen hane.                   |
-|                         | `role="Girl"`              | Rösten imiterar en flicka.                               |
-|                         | `role="Boy"`               | Rösten imiterar en pojke.                                |
-| `zh-CN-XiaoxuanNeural`  | `role="YoungAdultFemale"`  | Rösten imiterar en ung vuxen hona.                 |
-|                         | `role="OlderAdultFemale"`  | Rösten imiterar en äldre vuxen hona.                 |
-|                         | `role="OlderAdultMale"`    | Rösten imiterar en äldre vuxen hane.                   |
+|Roll                     | Beskrivning                |
+|-------------------------|----------------------------|
+|`role="Girl"`            | Rösten imiterar en flicka. |
+|`role="Boy"`             | Rösten imiterar en pojke. |
+|`role="YoungAdultFemale"`| Rösten imiterar en ung vuxen hona.|
+|`role="YoungAdultMale"`  | Rösten imiterar en ung vuxen hane.|
+|`role="OlderAdultFemale"`| Rösten imiterar en äldre vuxen hona.|
+|`role="OlderAdultMale"`  | Rösten imiterar en äldre vuxen hane.|
+|`role="SeniorFemale"`    | Rösten imiterar en erfaren hona.|
+|`role="SeniorMale"`      | Rösten imiterar en senior hane.|
+
 
 **Exempel**
 

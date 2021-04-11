@@ -126,6 +126,8 @@
       items:
         - name: Efterlevnad
           href: compliance.md
+        - name: Dataplacering
+          href: data-residency.md
     - name: Automatiska rekommendationer
       href: automated-recommendations.md
 - name: SQL/Core API
@@ -755,6 +757,8 @@
                   href: troubleshoot-unauthorized.md
                 - name: Felsök förbjuden
                   href: troubleshoot-forbidden.md
+                - name: Felsök felaktig begäran
+                  href: troubleshoot-bad-request.md
                 - name: Tillgänglighetsproblem i miljöer med flera regioner
                   href: troubleshoot-sdk-availability.md
             - name: .NET
@@ -915,6 +919,8 @@
               href: sql-api-sdk-java-spark.md
             - name: Java-masskörningsbibliotek v2
               href: sql-api-sdk-bulk-executor-java.md
+        - name: Azure CLI
+          href: /cli/azure/cosmosdb
         - name: Node.js
           href: sql-api-sdk-node.md
         - name: Python
@@ -1411,6 +1417,8 @@
           href: how-to-restrict-user-data.md
         - name: Konfigurera kundhanterade nycklar
           href: how-to-setup-cmk.md
+        - name: Använda en hanterad identitet
+          href: how-to-setup-managed-identity.md
     - name: Företagsberedskap
       items:
         - name: Begära kvotökning

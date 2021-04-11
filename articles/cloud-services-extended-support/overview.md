@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: ecf115b7ce902fcd8b50f0eca32ffda6ef47e068
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc470d12377f50f9f9ae4b362bcabf3a5ce34e8f
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102618482"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169291"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Om Azure Cloud Services (utökad support)
 
@@ -48,12 +48,9 @@ De stora skillnaderna mellan Cloud Services (klassiska) och Cloud Services (utö
 - Alla resurser som distribueras via [Azure Resource Manager](../azure-resource-manager/templates/overview.md) måste finnas i ett virtuellt nätverk. Virtuella nätverk och undernät skapas i Azure Resource Manager att använda befintliga Azure Resource Manager-API: er och måste refereras till i avsnittet NetworkConfiguration i. cscfg när du distribuerar Cloud Services (utökad support).   
 
 - Varje moln tjänst (utökad support) är en enda oberoende distribution. Moln tjänster (utökad support) har inte stöd för flera platser i en enda moln tjänst.  
-    - Funktioner för VIP-växling <sup>*</sup> kan användas för att växla mellan två moln tjänster (utökad support). Testa och mellanlagra en ny version av en moln tjänst, distribuera en moln tjänst (utökad support) och tagga den som VIP-utbytbar med en annan moln tjänst (utökad support)  
+    - Funktioner för VIP-växling kan användas för att växla mellan två moln tjänster (utökad support). Testa och mellanlagra en ny version av en moln tjänst, distribuera en moln tjänst (utökad support) och tagga den som VIP-utbytbar med en annan moln tjänst (utökad support)  
 
 - Domain Name Service (DNS)-etiketten är valfri för en moln tjänst (utökad support). I Azure Resource Manager är DNS-etiketten en egenskap hos den offentliga IP-resurs som är kopplad till moln tjänsten. 
-
-
-<sup>*</sup> VIP-växling för Cloud Services (utökad support) är inte tillgänglig under offentlig för hands version.  
 
 ## <a name="migration-to-azure-resource-manager"></a>Migrering till Azure Resource Manager
 

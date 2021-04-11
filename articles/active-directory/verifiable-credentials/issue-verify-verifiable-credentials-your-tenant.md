@@ -1,5 +1,5 @@
 ---
-title: Självstudie – utfärda och verifiera verifierbara autentiseringsuppgifter med din klient (för hands version)
+title: Självstudie – utfärda och verifiera verifierbara autentiseringsuppgifter med din Azure-klient (för hands version)
 description: Ändra kod exemplet för verifierbara autentiseringsuppgifter så att det fungerar med din Azure-klient
 documentationCenter: ''
 author: barclayn
@@ -10,14 +10,14 @@ ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 95d3ab19565ed04d9bf7d59ba7262d40b4971d34
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: e4772b6701065a44416d849faa9a501bd7895f27
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106170183"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553387"
 ---
-# <a name="tutorial-issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>Självstudie: utfärda och verifiera verifierbara autentiseringsuppgifter med din klient (för hands version)
+# <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>Självstudie – utfärda och verifiera verifierbara autentiseringsuppgifter med din klient (för hands version)
 
 > [!IMPORTANT]
 > Azure Active Directory verifierbara autentiseringsuppgifter finns för närvarande i en offentlig för hands version.
@@ -66,7 +66,7 @@ Registrera ett program med namnet ' VC plån boks app ' i Azure AD och hämta et
 
    ![utfärdarens slut punkter](media/issue-verify-verifable-credentials-your-tenant/application-endpoints.png)
 
-## <a name="set-up-your-node-app-with-access-to-key-vault"></a>Konfigurera din Node-app med åtkomst till Key Vault
+## <a name="set-up-your-node-app-with-access-to-azure-key-vault"></a>Konfigurera din Node-app med åtkomst till Azure Key Vault
 
 För att autentisera en användares begäran om utfärdande av autentiseringsuppgifter använder webbplatsen för utfärdaren dina kryptografiska nycklar i Azure Key Vault. För att få åtkomst till Azure Key Vault måste webbplatsen ha ett klient-ID och en klient hemlighet som kan användas för att autentisera till Azure Key Vault.
 
@@ -183,7 +183,7 @@ Det finns några andra värden som vi behöver ta innan vi kan göra ändringarn
 
    ![nyckel-ID för inloggning](media/issue-verify-verifable-credentials-your-tenant/issuer-signing-key-ion.png)
 
-### <a name="did-document"></a>GJORDE dokumentet 
+### <a name="did-document"></a>GJORDE dokumentet
 
 1. Öppna [DIF-nätverks Utforskaren](https://identity.foundation/ion/explorer/)
 
@@ -308,7 +308,7 @@ Nu när vi har utfärdat de verifierbara autentiseringsuppgifterna från vår eg
     
    ![ny behörighets förfrågan](media/enable-your-tenant-verifiable-credentials/new-permission-request.png)
 
-8. Du har inte verifierat dina autentiseringsuppgifter och webbplatsen ska visa ditt för-och efter namn från Azure AD-användarkontot. 
+8. Du har nu verifierat dina autentiseringsuppgifter och webbplatsen ska visa ditt för-och efter namn från Azure AD-användarkontot. 
 
 Du har nu slutfört självstudien och är officiellt en verifierad Credential-expert! Din exempel app använder din gjorde för både utfärdande och verifiering, medan du skriver anspråk till en verifierbar autentiseringsuppgift från din Azure AD. 
 

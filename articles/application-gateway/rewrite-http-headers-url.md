@@ -2,17 +2,17 @@
 title: 'Skriv över HTTP-sidhuvuden och URL: en med Azure Application Gateway | Microsoft Docs'
 description: 'Den här artikeln innehåller en översikt över hur du skriver om HTTP-rubriker och URL: er i Azure Application Gateway'
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/16/2020
-ms.author: surmb
-ms.openlocfilehash: 81eaf95a4918590c6eaa2c17a45e6925a1a67992
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.author: azhussai
+ms.openlocfilehash: 7662ef5c2c3f5ed20069f64781d222ae44e52168
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726520"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384847"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Skriv om HTTP-sidhuvuden och URL: en med Application Gateway
 
@@ -38,7 +38,7 @@ Information om hur du skriver om begäran och svarshuvuden med Application Gatew
 
 Du kan skriva om alla huvuden i begär Anden och svar, förutom för anslutningen och uppgraderings rubriker. Du kan också använda Application Gateway för att skapa anpassade huvuden och lägga till dem i de begär Anden och svar som dirigeras genom den.
 
-### <a name="url-path-and-query-string-preview"></a>URL-sökväg och frågesträng (förhands granskning)
+### <a name="url-path-and-query-string"></a>URL-sökväg och frågesträng
 
 Med funktionen för URL-omskrivning i Application Gateway kan du:
 
@@ -51,9 +51,6 @@ Med funktionen för URL-omskrivning i Application Gateway kan du:
 Information om hur du skriver om URL: en med Application Gateway med Azure Portal finns [här](rewrite-url-portal.md).
 
 ![Diagram som beskriver processen för att skriva om en URL med Application Gateway.](./media/rewrite-http-headers-url/url-rewrite-overview.png)
-
->[!NOTE]
-> Funktionen för URL-omskrivning är i för hands version och är endast tillgänglig för Standard_v2 och WAF_v2 SKU för Application Gateway. Det rekommenderas inte för användning i produktions miljöer. Läs mer om för hands versionerna i [användnings villkor här](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="rewrite-actions"></a>Skriv om åtgärder
 
@@ -129,7 +126,20 @@ Application Gateway stöder följande servervariabler:
 | ssl_enabled               | "On" om anslutningen fungerar i TLS-läge. Annars är en tom sträng. |
 | uri_path                  | Identifierar den angivna resursen i värden som webb klienten vill ha åtkomst till. Detta är en del av URI: n för begäran utan argumenten. Exempel: i begäran `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` visas uri_path värde `/article.aspx` |
 
- 
+### <a name="mutual-authentication-server-variables-preview"></a>Variabler för ömsesidig autentisering av Server (för hands version)
+
+Application Gateway stöder följande servervariabler för scenarier med ömsesidig autentisering. Använd dessa servervariabler på samma sätt som ovan med de andra servervariabler. 
+
+|   Variabelnamn    |                   Beskrivning                                           |
+| ------------------------- | ------------------------------------------------------------ |
+| client_certificate        | Klient certifikatet i PEM-format för en etablerad SSL-anslutning. |
+| client_certificate_end_date| Slutdatumet för klient certifikatet. |
+| client_certificate_fingerprint| SHA1-finger avtryck för klient certifikatet för en etablerad SSL-anslutning. |
+| client_certificate_issuer | Strängen "Issuer DN" för klient certifikatet för en etablerad SSL-anslutning. |
+| client_certificate_serial | Serie numret för klient certifikatet för en etablerad SSL-anslutning.  |
+| client_certificate_start_date| Start datumet för klient certifikatet. |
+| client_certificate_subject| Strängen "subject DN" för klient certifikatet för en etablerad SSL-anslutning. |
+| client_certificate_verification| Resultatet av verifieringen av klient certifikatet: *lyckades*, *misslyckades: <reason>* eller *inget* om ett certifikat saknas. | 
 
 ## <a name="rewrite-configuration"></a>Skriv om konfigurationen
 
@@ -148,6 +158,17 @@ En regel uppsättning för omskrivning innehåller:
       * **URL-sökväg**: det värde som sökvägen ska skrivas om till. 
       * **URL-frågesträng**: värdet som frågesträngen ska skrivas om till. 
       * **Sök igenom Sök vägs kartan igen**: används för att avgöra om sökvägen till URL-sökvägen ska utvärderas igen eller inte. Om den är omarkerad kommer den ursprungliga URL-sökvägen att användas för att matcha Sök vägs mönstret i URL-sökvägen. Om värdet är true, kommer URL-sökvägen att utvärderas igen för att kontrol lera matchningen med den omskrivna sökvägen. Genom att aktivera den här växeln kan du dirigera begäran till en annan backend-pool efter omskrivning.
+
+### <a name="using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku"></a>Använd URL-omskrivning eller omskrivning av värd huvud med brand vägg för webbaserade program (WAF_v2 SKU)
+
+När du konfigurerar URL-omskrivning eller omskrivning av värd huvud sker utvärderingen av WAF efter ändringen av begär ande huvudet eller URL-parametrarna (efter omskrivning). När du tar bort konfigurationen av URL-omskrivning eller konfiguration av värd huvud på din Application Gateway, görs utvärderingen av WAF innan huvud skrivningen (förskriven). Den här ordningen säkerställer att WAF-regler tillämpas på den slutgiltiga begäran som skulle tas emot av din backend-pool.
+
+Anta till exempel att du har följande huvud regel för att skriva över rubriken `"Accept" : "text/html"` – om värdet för rubrik `"Accept"` är lika med `"text/html"` , skriver du om värdet till `"image/png"` .
+
+Här, med enbart omskrivning av huvuden, är utvärderingen av WAF slutförd `"Accept" : "text/html"` . Men när du konfigurerar URL-omskrivning eller omskrivning av värd huvud görs en utvärdering av WAF `"Accept" : "image/png"` .
+
+>[!NOTE]
+> Åtgärder för URL-omskrivning förväntas orsaka en mindre ökning av processor användningen av WAF-Application Gateway. Vi rekommenderar att du övervakar [processor användnings måttet](high-traffic-support.md) under en kort tids period när du har aktiverat reglerna för att skriva om URL: er på WAF Application Gateway.
 
 ### <a name="common-scenarios-for-header-rewrite"></a>Vanliga scenarier för header-omskrivning
 

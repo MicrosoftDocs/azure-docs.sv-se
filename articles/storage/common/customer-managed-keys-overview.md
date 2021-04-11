@@ -5,25 +5,28 @@ description: Du kan använda din egen krypterings nyckel för att skydda data i 
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/23/2021
+ms.date: 03/30/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 72f7130aad12ee2b5d463195b0b5c7847022bdfd
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 07f8faf503bdea6be8263afa6240594956b61391
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105645170"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059453"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Kundhanterade nycklar för Azure Storage kryptering
 
 Du kan använda din egen krypterings nyckel för att skydda data i ditt lagrings konto. När du anger en kundhanterad nyckel används nyckeln för att skydda och kontrollera åtkomsten till nyckeln som krypterar dina data. Kundhanterade nycklar ger större flexibilitet för att hantera åtkomstkontroller.
 
-Du måste använda antingen Azure Key Vault eller Azure Key Vault-hanterad maskin vara säkerhetsmodul (HSM) (för hands version) för att lagra dina Kundhanterade nycklar. Du kan antingen skapa egna nycklar och lagra dem i Key Vault eller hanterad HSM, eller så kan du använda Azure Key Vault API: er för att generera nycklar. Lagrings kontot och nyckel valvet eller hanterad HSM måste finnas i samma region och i samma Azure Active Directory-klient (Azure AD), men de kan finnas i olika prenumerationer.
+Du måste använda något av följande Azure-nyckel butiker för att lagra dina Kundhanterade nycklar:
 
-Mer information om Azure Key Vault finns i [Azure Key Vault?](../../key-vault/general/overview.md).
+- [Azure Key Vault](../../key-vault/general/overview.md)
+- [Azure Key Vault-hanterad maskinvarubaserad säkerhets modul (HSM) (för hands version)](../../key-vault/managed-hsm/overview.md)
+
+Du kan antingen skapa egna nycklar och lagra dem i Key Vault eller hanterad HSM, eller så kan du använda Azure Key Vault API: er för att generera nycklar. Lagrings kontot och nyckel valvet eller hanterad HSM måste finnas i samma region och i samma Azure Active Directory-klient (Azure AD), men de kan finnas i olika prenumerationer.
 
 > [!IMPORTANT]
 >

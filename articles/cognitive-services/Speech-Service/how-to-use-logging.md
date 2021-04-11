@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f044596cf084e68b6c9ca10e3da4fbdf4c8c2062
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32715ad1a01366d7d56e6fa8129151b15c315e1d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95026530"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504183"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Aktivera loggning i tal-SDK
 
-Loggning till filen är en valfri funktion för tal-SDK: n. Under utvecklings loggningen finns ytterligare information och diagnostik från tal SDK: s kärn komponenter. Den kan aktive ras genom att ange egenskapen `Speech_LogFilename` för ett tal konfigurations objekt till platsen och namnet på logg filen. Loggning aktive ras globalt när en identifierare skapas från den konfigurationen och kan inte inaktive ras efteråt. Du kan inte ändra namnet på en loggfil under en pågående inloggningssession.
+Loggning till filen är en valfri funktion för tal-SDK: n. Under utvecklings loggningen finns ytterligare information och diagnostik från tal SDK: s kärn komponenter. Den kan aktive ras genom att ange egenskapen `Speech_LogFilename` för ett tal konfigurations objekt till platsen och namnet på logg filen. Loggningen hanteras av en statisk klass i det interna biblioteket för tal-SDK. Du kan aktivera loggning för valfri Speech SDK-tolk eller synthesizers-instans. Alla instanser i samma process skriver logg poster till samma loggfil.
 
 > [!NOTE]
 > Loggning är tillgängligt eftersom tal SDK-versionen 1.4.0 i alla API: er som stöds i tal SDK, med undantag för Java Script.

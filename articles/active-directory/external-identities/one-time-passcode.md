@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 04/06/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7961997c6a6736c154b6217ee3f21682d0c4c3fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30f22282b00a7ead2e19805f32d78338126e8087
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688475"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552758"
 ---
 # <a name="email-one-time-passcode-authentication"></a>E-postautentisering med eng ång slö sen ord
 
@@ -64,7 +64,7 @@ Du kan se om en gäst användare autentiseras med eng ång slö sen ord genom at
 ![Skärm bild som visar en eng ång slö sen ord med käll värde för eng ång slö sen ord](media/one-time-passcode/guest-user-properties.png)
 
 > [!NOTE]
-> När en användare löser ett eng ång slö sen ord och senare hämtar ett MSA, ett Azure AD-konto eller ett annat federerat konto, fortsätter de att autentiseras med ett eng ång slö sen ord. Om du vill uppdatera deras autentiseringsmetod kan du ta bort deras gäst användar konto och bjuda in dem på samma sätt.
+> När en användare löser ett eng ång slö sen ord och senare hämtar ett MSA, ett Azure AD-konto eller ett annat federerat konto, fortsätter de att autentiseras med ett eng ång slö sen ord. Om du vill uppdatera användarens autentiseringsmetod kan du [återställa deras inlösnings status](reset-redemption-status.md).
 
 ### <a name="example&quot;></a>Exempel
 
@@ -76,7 +76,7 @@ Från och med 1 oktober 2021 aktive ras funktionen för eng ång slö sen ord f�
 
 > [!NOTE]
 >
-> Om e-postfunktionen för eng ång slö sen ord har Aktiver ATS i din klient och du stänger av den, kommer alla gäst användare som har löst ett eng ång slö sen ord inte att kunna logga in. Du kan ta bort gäst användaren och bjuda in dem igen så att de kan logga in igen med en annan autentiseringsmetod.
+> Om e-postfunktionen för eng ång slö sen ord har Aktiver ATS i din klient och du stänger av den, kommer alla gäst användare som har löst ett eng ång slö sen ord inte att kunna logga in. Du kan [återställa deras inlösnings status](reset-redemption-status.md) så att de kan logga in igen med en annan autentiseringsmetod.
 
 ### <a name="to-disable-the-email-one-time-passcode-feature"></a>Så här inaktiverar du e-postfunktionen för eng ång slö sen ord
 

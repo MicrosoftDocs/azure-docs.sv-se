@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 03/30/2021
 ms.author: jgao
-ms.openlocfilehash: 9f4c21a4b7e58c4eed3a62ea844eb11ccf4ecb49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb5fc0b6b673f8a754d0d6bb6ff962697cd5f38b
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889390"
+ms.locfileid: "105967344"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Använda distributions skript i ARM-mallar
 
@@ -139,8 +139,8 @@ Information om egenskaps värde:
 - `identity`: För distributions skript-API version 2020-10-01 eller senare är en användardefinierad hanterad identitet valfri om du inte behöver utföra några Azure-/regionsspecifika åtgärder i skriptet.  För API-versionen 2019-10-01 – för hands version krävs en hanterad identitet som distributions skript tjänsten använder den för att köra skripten. För närvarande stöds endast användardefinierad hanterad identitet.
 - `kind`: Ange typ av skript. För närvarande stöds Azure PowerShell-och Azure CLI-skript. Värdena är **AzurePowerShell** och **AzureCLI**.
 - `forceUpdateTag`: Om du ändrar det här värdet mellan mall distributioner tvingas distributions skriptet att köras igen. Om du använder `newGuid()` `utcNow()` funktionerna eller kan båda funktionerna bara användas i standardvärdet för en parameter. Mer information finns i [Kör skript mer än en gång](#run-script-more-than-once).
-- `containerSettings`: Ange inställningarna för att anpassa Azure Container instance.  `containerGroupName` Anger namnet på behållar gruppen. Om inget anges skapas grupp namnet automatiskt.
-- `storageAccountSettings`: Ange inställningarna för att använda ett befintligt lagrings konto. Om inget anges skapas ett lagrings konto automatiskt. Se [Använd ett befintligt lagrings konto](#use-existing-storage-account).
+- `containerSettings`: Ange inställningarna för att anpassa Azure Container instance. Distributions skriptet kräver en ny Azure Container instance. Du kan inte ange en befintlig Azure Container instance. Du kan dock anpassa behållar gruppens namn genom att använda `containerGroupName` . Om inget anges skapas grupp namnet automatiskt.
+- `storageAccountSettings`: Ange inställningarna för att använda ett befintligt lagrings konto. Om `containerGroupName` inte anges skapas ett lagrings konto automatiskt. Se [Använd ett befintligt lagrings konto](#use-existing-storage-account).
 - `azPowerShellVersion`/`azCliVersion`: Ange den version av modulen som ska användas. Se en lista över [Azure PowerShell-versioner som stöds](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Se en lista över [Azure CLI-versioner som stöds](https://mcr.microsoft.com/v2/azure-cli/tags/list).
 
   >[!IMPORTANT]

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: c766c78705a1c1e40a9385360d35ac06a3db3a5d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 675e99797a507cdcf96ad33ab13c4f386f6f372c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99252246"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169036"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Ladda upp en virtuell hård disk till Azure eller kopiera en hanterad disk till en annan region – Azure PowerShell
 
@@ -34,7 +34,7 @@ Om du vill överföra din virtuella hård disk till Azure måste du skapa en tom
 
 Den här typen av hanterade diskar har två unika tillstånd:
 
-- ReadToUpload, vilket innebär att disken är redo att ta emot en uppladdning, men [att ingen säker åtkomst-signatur](../../storage/common/storage-sas-overview.md) (SAS) har genererats.
+- ReadyToUpload, vilket innebär att disken är redo att ta emot en uppladdning, men [att ingen säker åtkomst-signatur](../../storage/common/storage-sas-overview.md) (SAS) har genererats.
 - ActiveUpload, vilket innebär att disken är redo att ta emot en uppladdning och att SAS har genererats.
 
 > [!NOTE]

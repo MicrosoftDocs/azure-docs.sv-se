@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d68011afe044535783dd8a8c56ed5d950c6d06b1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9f35a698510f8637c3fe66528e6d64e5cd87b693
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099887"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553829"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurera ExpressRoute Direct med hjälp av Azure CLI
 
@@ -226,6 +226,14 @@ När du har registrerat dig kontrollerar du att **Microsoft. Network** Resource-
    "type": "Microsoft.Network/expressRoutePorts"
    }  
    ```
+
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="resources"></a>Generera bokstaven för auktorisering (LOA)
+
+Ange det nyligen skapade ExpressRoute Direct-resurs namnet, resurs gruppens namn och ett kundnamn för att skriva LOA till och (valfritt) definiera en fil Sök väg för att lagra dokumentet. Om en fil Sök väg inte refereras till, kommer dokumentet att laddas ned till den aktuella katalogen.
+
+```azurecli
+az network express-route port generate-loa -n Contoso-Direct -g Contoso-Direct-rg --customer-name Contoso --destination C:\Users\SampleUser\Downloads\LOA.pdf
+```
 
 ## <a name="change-adminstate-for-links"></a><a name="state"></a>Ändra AdminState för länkar
 

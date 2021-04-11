@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 6861fd7a92c26fad883f14fb430a03b237c90122
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: ba730adaa1e3b111586012ba1849c6dc84d6db00
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105609266"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553999"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Använda Azure Monitor med din Azure Synapse Analytics-arbetsyta
 
@@ -103,10 +103,14 @@ Logga in på Azure Portal och välj **övervaka**  >  **aviseringar** för att s
 
 Här följer de loggar som genereras av Azure Synapse Analytics-arbetsytor:
 
-| Log Analytics tabell namn | Logg kategori namn                 | Description |
-|-------------------------------|-------------------------------------------------|-------------|
-| SynapseGatewayApiRequests     | GatewayApiRequests             | API-begäranden för Azure Synapse Gateway. |
-| SynapseRbacOperations         | SynapseRbacOperations          | Azure Synapse-rollbaserade åtkomst kontroll åtgärder (SRBAC). |
+| Log Analytics tabell namn       | Logg kategori namn              | Description          |
+|--------------------------------|--------------------------------|----------------------|
+| SynapseGatewayApiRequests      | GatewayApiRequests             | API-begäranden för Azure Synapse Gateway. |
+| SynapseRbacOperations          | SynapseRbacOperations          | Azure Synapse-rollbaserade åtkomst kontroll åtgärder (SRBAC). |
+| SynapseBuiltinSqlReqsEnded     | BuiltinSqlReqsEnded            | Den inbyggda Azure Synapse SQL-poolen avslutade begär Anden. |
+| SynapseIntegrationPipelineRuns | IntegrationPipelineRuns        | Azure Synapse integration pipeline körs. |
+| SynapseIntegrationActivityRuns | IntegrationActivityRuns        | Azure Synapse integrations aktivitet körs. |
+| SynapseIntegrationTriggerRuns  | IntegrationTriggerRuns         | Azure Synapse integration-Utlösare körs. |
 
 ### <a name="dedicated-sql-pool-logs"></a>Dedikerade SQL-pool loggar
 

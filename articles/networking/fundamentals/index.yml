@@ -10,12 +10,12 @@ metadata:
   author: KumudD
   ms.author: kumud
   ms.date: 03/30/2021
-  ms.openlocfilehash: 69017e082491b784ada194a0d0bab7ac6ed50274
-  ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+  ms.openlocfilehash: aff3552a239bb3ed2859001ae02bcabefc66ff39
+  ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 04/01/2021
-  ms.locfileid: "106166589"
+  ms.lasthandoff: 04/07/2021
+  ms.locfileid: "107030380"
 landingContent:
 - title: Om Azure-nätverk
   linkLists:
@@ -31,6 +31,8 @@ landingContent:
     links:
     - text: Bygg din nätverks infrastruktur i Azure
       url: /learn/paths/architect-network-infrastructure/
+    - text: Utforska Azures nätverkstjänster
+      url: /learn/modules/azure-networking-fundamentals/
 - title: Kom igång
   linkLists:
   - linkListType: overview
@@ -55,6 +57,10 @@ landingContent:
       url: ../../virtual-network/create-public-ip-portal.md
     - text: Skapa en NAT-gateway
       url: ../../virtual-network/tutorial-create-nat-gateway-portal.md
+  - linkListType: learn
+    links:
+    - text: Designa ett IP-adresschema för din Azure-distribution
+      url: /learn/modules/design-ip-addressing-for-azure/
 - title: Ansluta virtuella nätverk
   linkLists:
   - linkListType: overview
@@ -115,6 +121,10 @@ landingContent:
       url: ../../ddos-protection/manage-ddos-protection.md
     - text: Distribuera och konfigurera Azure Firewall
       url: ../../firewall/tutorial-firewall-deploy-portal.md
+  - linkListType: learn
+    links:
+    - text: Säker nätverksanslutning i Azure
+      url: /learn/modules/secure-network-connectivity-azure/
 - title: Ansluta lokala nätverk till virtuella nätverk
   linkLists:
   - linkListType: overview

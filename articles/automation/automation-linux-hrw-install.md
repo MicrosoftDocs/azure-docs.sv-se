@@ -3,14 +3,14 @@ title: Distribuera ett Linux-Hybrid Runbook Worker i Azure Automation
 description: Den här artikeln beskriver hur du installerar en Azure Automation Hybrid Runbook Worker för att köra Runbooks på Linux-baserade datorer i ditt lokala data Center eller i moln miljön.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/26/2021
+ms.date: 04/06/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4d9bcd16e36e76808f19f7fbd43dd0d3e7550c3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 21bb3a353874e401d86741584d102b5c217e69cc
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182340"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030057"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Distribuera ett Linux-Hybrid Runbook Worker
 
@@ -106,6 +106,31 @@ Linux hybrid Runbook Worker stöder en begränsad uppsättning Runbook-typer i A
 Nätverks krav för Hybrid Runbook Worker finns i [Konfigurera nätverket](automation-hybrid-runbook-worker.md#network-planning).
 
 ## <a name="install-a-linux-hybrid-runbook-worker"></a>Installera en Linux-Hybrid Runbook Worker
+
+Det finns två metoder för att distribuera en Hybrid Runbook Worker. Du kan importera och köra en Runbook från Runbook-galleriet i Azure Portal, eller så kan du köra en serie PowerShell-kommandon manuellt för att utföra samma uppgift.
+
+### <a name="importing-a-runbook-from-the-runbook-gallery"></a>Importera en Runbook från Runbook-galleriet
+
+Import proceduren beskrivs i detalj i [importera runbooks från GitHub med Azure Portal](automation-runbook-gallery.md#import-runbooks-from-github-with-the-azure-portal). Namnet på den Runbook som ska importeras är **skapa Automation Linux-HybridWorker**.
+
+Runbooken använder följande parametrar.
+
+| Parameter | Status | Beskrivning |
+| ------- | ----- | ----------- |
+| `Location` | Obligatorisk | Platsen för Log Analytics arbets ytan. |
+| `ResourceGroupName` | Obligatorisk | Resurs gruppen för ditt Automation-konto. |
+| `AccountName` | Obligatorisk | Namnet på Automation-kontot där hybrid körnings arbets tagaren ska registreras. |
+| `CreateLA` | Obligatorisk | Om värdet är true, använder värdet för `WorkspaceName` för att skapa en Log Analytics-arbetsyta. Om värdet är false måste värdet för `WorkspaceName` referera till en befintlig arbets yta. |
+| `LAlocation` | Valfritt | Den plats där Log Analytics arbets ytan kommer att skapas eller där den redan finns. |
+| `WorkspaceName` | Valfritt | Namnet på Log Analytics arbets ytan som ska skapas eller användas. |
+| `CreateVM` | Obligatorisk | Om det här värdet är sant används värdet `VMName` som namn på en ny virtuell dator. Om det är falskt använder `VMName` du för att hitta och registrera en befintlig virtuell dator. |
+| `VMName` | Valfritt | Namnet på den virtuella dator som antingen har skapats eller registrerats, beroende på värdet för `CreateVM` . |
+| `VMImage` | Valfritt | Namnet på den virtuella dator avbildning som ska skapas. |
+| `VMlocation` | Valfritt | Platsen för den virtuella dator som antingen har skapats eller registrerats. Om den här platsen inte anges används värdet för `LAlocation` . |
+| `RegisterHW` | Obligatorisk | Om det här värdet är sant registrerar du den virtuella datorn som en hybrid Worker. |
+| `WorkerGroupName` | Obligatorisk | Namnet på Hybrid Worker gruppen. |
+
+### <a name="manually-run-powershell-commands"></a>Kör PowerShell-kommandon manuellt
 
 Utför följande steg för att installera och konfigurera en Linux-Hybrid Runbook Worker.
 

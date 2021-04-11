@@ -14,12 +14,12 @@ ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bcfb21ab15355653780355f1b5e459bc806ec8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c00824e7fb0529cd14e3d7b757d513ee739fe283
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90600729"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504421"
 ---
 # <a name="start-using-privileged-identity-management"></a>Börja använda Privileged Identity Management
 
@@ -67,10 +67,10 @@ När Privileged Identity Management har kon figurer ATS kan du lära dig hur du 
 
 ![Navigerings fönster i Privileged Identity Management visar uppgifter och hantera alternativ](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| Aktivitet + hantera | Beskrivning |
+| Aktivitet + hantera | Description |
 | --- | --- |
 | **Mina roller**  | Visar en lista över giltiga och aktiva roller som har tilldelats dig. Här kan du aktivera tilldelade berättigade roller. |
-| **Mina förfrågningar** | Visar väntande begär Anden om att aktivera kvalificerade roll tilldelningar. |
+| **Väntande begäranden** | Visar väntande begär Anden om att aktivera kvalificerade roll tilldelningar. |
 | **Godkänn förfrågningar** | Visar en lista med begär Anden om att aktivera berättigade roller av användare i din katalog som du är behörig att godkänna. |
 | **Granska åtkomst** | Visar en lista över aktiva åtkomst granskningar som du har tilldelats, oavsett om du granskar åtkomst åt dig själv eller någon annan. |
 | **Azure AD-roller** | Visar en instrument panel och inställningar för privilegierade roll administratörer för att hantera roll tilldelningar för Azure AD. Instrumentpanelen är inaktiverad för alla som inte är en privilegierad rolladministratör. De här användarna har åtkomst till en särskild instrumentpanel som heter My view (Min vy). På instrument panelen för min vy visas endast information om användaren som har åtkomst till instrument panelen, inte hela organisationen. |

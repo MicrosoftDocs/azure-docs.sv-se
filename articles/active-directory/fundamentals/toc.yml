@@ -181,6 +181,8 @@
           href: active-directory-data-storage-eu.md
         - name: Identitetsdatalagring för Australien och Nya Zeeland
           href: active-directory-data-storage-australia-newzealand.md
+    - name: Frontline Worker Management
+      href: frontline-worker-management.md
     - name: Referens för Azure AD Operations
       items:
         - name: Introduktion

@@ -15,16 +15,16 @@ ms.custom: mvc
 ms.date: 04/05/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99db58e39377932608b1c78bac37003432aa4c04
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: c49ded056c642fa91331b7cc98d18da34d9c73a6
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106381913"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504368"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Vad är hanterade identiteter för Azure-resurser?
 
-En vanlig utmaning för utvecklare är hanteringen av hemligheter och autentiseringsuppgifter för att skydda kommunikationen mellan olika tjänster. I Azure eliminerar Managed identiteter behovet av utvecklare som behöver hantera autentiseringsuppgifter genom att tillhandahålla en identitet för Azure-resursen i Azure AD och använda den för att hämta Azure Active Directory (Azure AD)-token. Detta ger även åtkomst till [Azure Key Vault](../../key-vault/general/overview.md) där utvecklare kan lagra autentiseringsuppgifter på ett säkert sätt. Hanterade identiteter för Azure-resurser löser detta problem genom att tillhandahålla Azure-tjänster med en automatiskt hanterad identitet i Azure AD.
+En vanlig utmaning för utvecklare är hanteringen av hemligheter och autentiseringsuppgifter som används för att skydda kommunikationen mellan olika komponenter som utgör en lösning. Hanterade identiteter eliminerar behovet av utvecklare att hantera autentiseringsuppgifter. Hanterade identiteter ger en identitet för program som ska användas vid anslutning till resurser som stöder Azure Active Directory (Azure AD)-autentisering. Program kan använda den hanterade identiteten för att hämta Azure AD-token. Ett program kan till exempel använda en hanterad identitet för att få åtkomst till resurser som [Azure Key Vault](../../key-vault/general/overview.md) där utvecklare kan lagra autentiseringsuppgifter på ett säkert sätt eller komma åt lagrings konton.
 
 Vad kan en hanterad identitet användas för?
 
@@ -33,7 +33,7 @@ Vad kan en hanterad identitet användas för?
 Här följer några av fördelarna med att använda hanterade identiteter:
 
 - Du behöver inte hantera autentiseringsuppgifter. Autentiseringsuppgifterna är inte ens tillgängliga för dig.
-- Du kan använda hanterade identiteter för att autentisera till en resurs som stöder Azure Active Directory autentisering, inklusive dina egna program.
+- Du kan använda hanterade identiteter för att autentisera till en resurs som stöder [Azure Active Directory autentisering](../authentication/overview-authentication.md) , inklusive dina egna program.
 - Hanterade identiteter kan användas utan ytterligare kostnader.
 
 > [!NOTE]
@@ -62,7 +62,7 @@ Tabellen nedan visar skillnaderna mellan de två typerna av hanterade identitete
 
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>Hur använder jag hanterade identiteter för Azure-resurser?
 
-![några exempel på hur en utvecklare kan använda hanterade identiteter för att få åtkomst till resurser från sin kod utan att hantera autentiseringsinformation](media/overview/azure-managed-identities-examples.png)
+![några exempel på hur en utvecklare kan använda hanterade identiteter för att få åtkomst till resurser från sin kod utan att hantera autentiseringsinformation](media/overview/when-use-managed-identities.png)
 
 ## <a name="what-azure-services-support-the-feature"></a>Vilka Azure-tjänster stöder funktionen?<a name="which-azure-services-support-managed-identity"></a>
 

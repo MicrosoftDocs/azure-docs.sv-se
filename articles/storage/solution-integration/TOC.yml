@@ -23,6 +23,8 @@
   items:
     - name: Översikt över verifierade partner
       href: .\validated-partners\data-management\partner-overview.md
+    - name: Jämförelse av Migreringsverktyg
+      href: ./validated-partners/data-management/migration-tools-comparison.md
   expanded: false
 - name: Primära och sekundära lagrings partner
   items:

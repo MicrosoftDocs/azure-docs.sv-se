@@ -1,20 +1,20 @@
 ---
 title: Strömmande inmatnings händelse källor – Azure Time Series Insights Gen2 | Microsoft Docs
 description: Lär dig mer om strömmande data till Azure Time Series Insights Gen2.
-author: lyrana
-ms.author: lyhughes
-manager: deepakpalled
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: ec41f7503ec179cb1fa6172e94e613933f719c93
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 4e22d93d3037c190193f53b7cfdbc87cff2da6ed
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953625"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504404"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights händelse källor för Gen2
 
@@ -75,7 +75,7 @@ När du skapar en händelse källa har du möjlighet att ange vilka tidigare bef
 
 - Följ principen om minsta behörighet när du tillhandahåller anslutnings strängar för händelse källan. För Event Hubs konfigurerar du en princip för delad åtkomst med endast *Skicka* anspråk och för IoT Hub använda endast *tjänst anslutnings* behörighet.
 
-> [!CAUTION] 
+> [!CAUTION]
 > Om du tar bort din IoT Hub eller Händelsehubben och återskapar en ny resurs med samma namn måste du skapa en ny händelse källa och koppla den nya IoT Hub eller Händelsehubben. Data kommer inte att matas in förrän du har slutfört det här steget.
 
 ## <a name="production-workloads"></a>Produktionsarbetsbelastningar

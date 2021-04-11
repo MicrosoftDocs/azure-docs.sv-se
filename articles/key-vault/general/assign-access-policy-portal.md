@@ -1,6 +1,6 @@
 ---
 title: Tilldela en Azure Key Vault åtkomst princip (portal)
-description: Använda Azure Portal för att tilldela en Key Vault åtkomst princip till ett huvud namn för tjänsten eller en program identitet.
+description: Använda Azure Portal för att tilldela en Key Vault åtkomst princip till ett säkerhets objekt eller en program identitet.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 910b8dae10036cc2e396be13495fd28363dc971d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a64a91e6f41f3fba7584630380ffb878979b4389
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934568"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968772"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Tilldela en Key Vault åtkomst princip med hjälp av Azure Portal
 
-En Key Vault åtkomst princip bestämmer om ett specifikt tjänstens huvud namn, nämligen ett program eller en användar grupp, kan utföra olika åtgärder på Key Vault [hemligheter](../secrets/index.yml), [nycklar](../keys/index.yml)och [certifikat](../certificates/index.yml). Du kan tilldela åtkomst principer med hjälp av Azure Portal (den här artikeln), [Azure CLI](assign-access-policy-cli.md)eller [Azure PowerShell](assign-access-policy-powershell.md).
+En Key Vault åtkomst princip bestämmer om ett specifikt säkerhets objekt, nämligen en användare, ett program eller en användar grupp, kan utföra olika åtgärder på Key Vault [hemligheter](../secrets/index.yml), [nycklar](../keys/index.yml)och [certifikat](../certificates/index.yml). Du kan tilldela åtkomst principer med hjälp av Azure Portal (den här artikeln), [Azure CLI](assign-access-policy-cli.md)eller [Azure PowerShell](assign-access-policy-powershell.md).
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
@@ -37,15 +37,15 @@ Mer information om hur du skapar grupper i Azure Active Directory via Azure Port
 
     ![Ange åtkomst princip behörigheter](../media/authentication/assign-policy-portal-02.png)
 
-1. Under **Välj huvud konto** väljer du länken **ingen som marker ATS** för att öppna fönstret **huvud** val. Ange namnet på appen eller tjänstens huvud namn i Sök fältet, Välj lämpligt resultat och välj sedan **Välj**.
+1. Under **Välj huvud konto** väljer du länken **ingen som marker ATS** för att öppna fönstret **huvud** val. Ange namnet på användaren, appen eller tjänstens huvud namn i Sök fältet, Välj lämpligt resultat och välj sedan **Välj**.
 
-    ![Välja tjänstens huvud namn för åtkomst principen](../media/authentication/assign-policy-portal-03.png)
+    ![Välja säkerhets princip för åtkomst principen](../media/authentication/assign-policy-portal-03.png)
 
     Om du använder en hanterad identitet för appen söker du efter och väljer namnet på själva appen. (Mer information om hanterade identitets-och tjänst huvud namn finns i [Key Vault autentisering-app identitet och tjänstens huvud namn](authentication.md#app-identity-and-security-principals).)
  
 1.  Tillbaka i fönstret **Lägg till åtkomst princip** väljer du **Lägg till** för att spara åtkomst principen.
 
-    ![Lägger till åtkomst principen med den tilldelade tjänstens huvud namn](../media/authentication/assign-policy-portal-04.png)
+    ![Lägger till åtkomst principen med det tilldelade säkerhets objekt](../media/authentication/assign-policy-portal-04.png)
 
 1. Gå tillbaka till sidan **åtkomst principer** , kontrol lera att åtkomst principen visas under **aktuella åtkomst principer** och välj sedan **Spara**. Åtkomst principerna tillämpas inte förrän du sparar dem.
 

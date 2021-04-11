@@ -2,14 +2,14 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/27/2021
+ms.date: 04/01/2021
 ms.author: tamram
-ms.openlocfilehash: 93a84b26825e98d406aba1ae4bdd4a544a61c76e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 16da73fe453760e2dc84e7d683c3a16c12b8a06f
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937348"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218623"
 ---
 | Resurs | Mål |
 |-|-|
@@ -33,6 +33,6 @@ I följande tabell beskrivs de största block-och blob-storlekarna som tillåts 
 
 | Tjänst version | Maximal block storlek (via skicka block) | Maximal BLOB-storlek (via lista över blockerade block) | Maximal BLOB-storlek via enskild Skriv åtgärd (via skicka BLOB) |
 |-|-|-|-|
-| Version 2019-12-12 och senare | 4000 MiB | Cirka 190,7 TiB (4000 MiB X 50 000 Blocks) | 5000 MiB |
+| Version 2019-12-12 och senare | 4000 MiB | Cirka 190,7 TiB (4000 MiB X 50 000 Blocks) | 5000 MiB (för hands version) |
 | Version 2016-05-31 till och med version 2019-07-07 | 100 MiB | Cirka 4,75 TiB (100 MiB X 50 000 Blocks) | 256 MiB |
 | Versioner före 2016-05-31 | 4 MiB | Cirka 195 GiB (4 MiB X 50 000 block) | 64 MiB |

@@ -116,7 +116,7 @@
           href: troubleshoot/shared-resources.md
     - name: Processautomatisering
       items:
-        - name: Använd runbooks och moduler i PowerShell-galleriet
+        - name: Använda befintliga Runbooks och moduler
           href: automation-runbook-gallery.md
         - name: Lär dig mer om PowerShell-arbetsflödet
           href: automation-powershell-workflow.md

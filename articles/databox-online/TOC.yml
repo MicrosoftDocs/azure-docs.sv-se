@@ -244,12 +244,22 @@
               href: azure-stack-edge-gpu-create-virtual-machine-image.md
             - name: Använd Windows generaliserad avbildning
               href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
+            - name: Använd specialiserad Windows-avbildning
+              href: azure-stack-edge-gpu-deploy-vm-specialized-image-powershell.md
             - name: VM-storlekar och typer som stöds
               href: azure-stack-edge-gpu-virtual-machine-sizes.md
             - name: Anslut till konsolen för virtuella datorer
               href: azure-stack-edge-gpu-connect-virtual-machine-console.md
             - name: Hantera nätverks gränssnitt
               href: azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md
+            - name: Hantera diskar
+              href: azure-stack-edge-gpu-manage-virtual-machine-disks-portal.md
+            - name: Hantera VM-storlekar
+              href: azure-stack-edge-gpu-manage-virtual-machine-resize-portal.md
+            - name: Hantera VM-Taggar
+              href: azure-stack-edge-gpu-manage-virtual-machine-tags-powershell.md
+            - name: Skapa virtuell växel
+              href: azure-stack-edge-gpu-create-virtual-switch-powershell.md
         - name: Hantera certifikat
           items:
             - name: Krav

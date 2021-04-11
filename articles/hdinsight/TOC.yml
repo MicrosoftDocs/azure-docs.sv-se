@@ -268,10 +268,14 @@
               href: ./troubleshoot-resource-creation-fails.md
             - name: Felsöka Apache Oozie
               href: ./troubleshoot-oozie.md
+            - name: Felsöka Apache Sqoop
+              href: ./troubleshoot-sqoop.md
             - name: Förstå och lösa fel med WebHCat
               href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
     - name: Referens
       items:
+        - name: Azure CLI
+          href: /cli/azure/hdinsight
         - name: Azure PowerShell
           href: /powershell/module/az.hdinsight
         - name: SDK för .NET

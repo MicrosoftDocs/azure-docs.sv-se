@@ -11,16 +11,45 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 56e6d859293b91a56252372574f59c8dcc2cd80e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68136cc259e0be4a2f9449aa9ec15f4a14a63890
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687336"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074989"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity Platform-dokument: Nyheter
 
 Välkommen till nyheter i dokumentationen för Microsoft Identity Platform. Den här artikeln innehåller nya dokument som har lagts till och de som har haft betydande uppdateringar under de senaste tre månaderna.
+
+## <a name="march-2021"></a>Mars 2021
+
+### <a name="new-articles"></a>Nya artiklar
+
+- [Återställa eller ta bort ett nyligen borttaget program med Microsoft Identity Platform](quickstart-restore-app.md)
+
+### <a name="updated-articles"></a>Uppdaterade artiklar
+
+- [Administrativt medgivande på Microsoft Identity Platform](v2-admin-consent.md)
+- [Konfigurations krav och fel söknings tips för Xamarin Android med MSAL.NET](msal-net-xamarin-android-considerations.md)
+- [Daemon-app som anropar webb-API: er – hämta en token](scenario-daemon-acquire-token.md)
+- [Daemon-app som anropar webb-API: er – kod konfiguration](scenario-daemon-app-configuration.md)
+- [Daemon-app som anropar webb-API: er – anropa ett webb-API från appen](scenario-daemon-call-api.md)
+- [Daemon-app som anropar webb-API: er – flytta till produktion](scenario-daemon-production.md)
+- [Skriv bords app som anropar webb-API: er: Hämta en token](scenario-desktop-acquire-token.md)
+- [Skriv bords app som anropar webb-API: kod konfiguration](scenario-desktop-app-configuration.md)
+- [Stationär app som anropar webb-API: er: anropa ett webb-API](scenario-desktop-call-api.md)
+- [Gör så här: anpassa anspråk som skickas i token för en angiven app i en klient (för hands version)](active-directory-claims-mapping.md)
+- [Loggning i MSAL för Python](msal-logging-python.md)
+- [Microsoft Enterprise SSO-plugin-program för Apple-enheter (för hands version)](apple-sso-plugin.md)
+- [Snabb start: lägga till Microsoft Identity Platform-inloggning till en ASP.NET-webbapp](quickstart-v2-aspnet-webapp.md)
+- [Snabb start: lägga till inloggning med Microsoft i ett ASP.NET Core-webbprogram](quickstart-v2-aspnet-core-webapp.md)
+- [Snabb start: Hämta en token och anropa Microsoft Graph-API med hjälp av en konsols Apps identitet](quickstart-v2-netcore-daemon.md)
+- [Snabb start: skydda ett ASP.NET Core webb-API med Microsoft Identity Platform](quickstart-v2-aspnet-core-web-api.md)
+- [Snabb start: Logga in användare och hämta en åtkomsttoken i ett angulande Enkels Ides program](quickstart-v2-angular.md)
+- [Support- och hjälpalternativ för utvecklare](developer-support-help-options.md)
+- [Webbapp som loggar in användare: kod konfiguration](scenario-web-app-sign-user-app-configuration.md)
+- [Webbapp som loggar in användare: inloggning och utloggning](scenario-web-app-sign-user-sign-in.md)
 
 ## <a name="february-2021"></a>Februari 2021
 
@@ -65,25 +94,3 @@ Välkommen till nyheter i dokumentationen för Microsoft Identity Platform. Den 
 - [Konfigurera livs längd principer för token (förhands granskning)](configure-token-lifetimes.md)
 - [Bibliotek för Microsoft Identity Platform-autentisering](reference-v2-libraries.md)
 - [Microsoft Identity Platform och OAuth 2,0 Authorization Code Flow](v2-oauth2-auth-code-flow.md)
-
-## <a name="december-2020"></a>December 2020
-
-### <a name="new-articles"></a>Nya artiklar
-
-- [Snabb start: ASP.NET Core-webbapp som loggar in användare och anropar Microsoft Graph för deras räkning](quickstart-v2-aspnet-core-webapp-calls-graph.md)
-- [Hantera fel och undantag i MSAL.NET](msal-error-handling-dotnet.md)
-- [Hantera fel och undantag i MSAL för iOS/macOS](msal-error-handling-ios.md)
-- [Hantera fel och undantag i MSAL för Java](msal-error-handling-java.md)
-- [Hantera fel och undantag i MSAL.js](msal-error-handling-js.md)
-- [Hantera fel och undantag i MSAL för Python](msal-error-handling-python.md)
-- [Microsoft Identity Platform token Exchange-scenarier med SAML och OIDC/OAuth](scenario-token-exchange-saml-oauth.md)
-
-### <a name="updated-articles"></a>Uppdaterade artiklar
-
-- [Snabb start: lägga till inloggning med Microsoft i en Java-webbapp](quickstart-v2-java-webapp.md)
-- [Självstudie: utveckla en daemon för flera innehavare som använder Microsoft Identity Platform](tutorial-v2-aspnet-daemon-web-app.md)
-- [Webbapp som loggar in användare: app-registrering](scenario-web-app-sign-user-app-registration.md)
-- [Microsoft Identity Platform och implicit beviljande flöde](v2-oauth2-implicit-grant-flow.md)
-- [Åtkomsttoken för Microsoft Identity Platform](access-tokens.md)
-- [Ett webb-API som anropar webb-API: er: Hämta en token för appen](scenario-web-api-call-api-acquire-token.md)
-

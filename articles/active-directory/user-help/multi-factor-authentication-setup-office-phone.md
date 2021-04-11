@@ -10,19 +10,21 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 9dd9853bae324a047c673852f14d2b4c1639d914
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c77672ce895cc63a04973c4cb3e752ca319e269d
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83739217"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553421"
 ---
 # <a name="set-up-an-office-phone-as-your-two-factor-verification-method"></a>Konfigurera en arbets telefon som en metod för verifiering av två faktorer
 
 Du kan konfigurera din arbets telefon så att den fungerar som en metod för verifiering av två faktorer.
 
->[!Note]
-> Om alternativet för arbets telefon är nedtonat är det möjligt att din organisation inte tillåter att du använder ett arbets telefonnummer för att verifiera. I så fall måste du välja en annan metod eller kontakta administratören om du vill ha mer hjälp.
+> [!Note]
+> Om alternativet för **arbets telefon** inte är tillgängligt för att välja, är det möjligt att din organisation inte tillåter att du använder ett arbets telefonnummer för att verifiera. I så fall måste du välja en annan metod eller kontakta administratören om du vill ha mer hjälp. 
+> 
+> Kombinerade registrerings användare ser inget alternativ för att använda ett tillägg med alternativet för **arbets telefon** .
 
 ## <a name="set-up-your-office-phone-number-as-your-verification-method"></a>Konfigurera ditt arbets telefonnummer som din verifierings metod
 

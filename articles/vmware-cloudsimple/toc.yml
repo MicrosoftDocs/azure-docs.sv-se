@@ -178,6 +178,10 @@
               href: on-premises-connection.md
             - name: Lokal nätverksanslutning med ExpressRoute
               href: azure-expressroute-connection.md
+    - name: Referens
+      items:
+        - name: Azure CLI
+          href: /cli/azure/csvmware
     - name: Viktig information
       items:
         - name: CloudSimple-uppdatering för september 2020

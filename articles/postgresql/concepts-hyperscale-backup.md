@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90b2a39b9a5f3b4d011ff1a1ef3651dff75a1cf6
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92485383"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968313"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Säkerhets kopiering och återställning i Azure Database for PostgreSQL-storskalig (citus)
 
@@ -58,7 +58,7 @@ Brand Väggs inställningar och parametrar för PostgreSQL-servern bevaras inte 
 Efter en återställning från återställnings metoden bör du göra följande för att få dina användare och program att säkerhetskopiera och köra:
 
 * Om den nya servern är avsedd att ersätta den ursprungliga servern omdirigerar du klienter och klient program till den nya servern
-* Se till att det finns tillräckligt med brand Väggs-och VNet-regler på server nivå för att användarna ska kunna ansluta. De här reglerna kopieras inte från den ursprungliga Server gruppen.
+* Se till att det finns tillräckligt med brand vägg på server nivå för att användarna ska kunna ansluta. De här reglerna kopieras inte från den ursprungliga Server gruppen.
 * Justera PostgreSQL-Server parametrarna efter behov. Parametrarna kopieras inte från den ursprungliga Server gruppen.
 * Se till att lämpliga inloggningar och behörigheter på databas nivå är på plats
 * Konfigurera aviseringar efter behov
