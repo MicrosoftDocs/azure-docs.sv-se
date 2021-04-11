@@ -3,12 +3,12 @@ title: Använd direkta metoder i real tids video analys på IoT Edge – Azure
 description: Live video analys på IoT Edge visar flera direkta metoder. De direkta metoderna baseras på konventionerna som beskrivs i det här avsnittet.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 8b5c16dc72beed4ec757e48461a2fc194c113f8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56fbf565af45a9b3877ff8d6c48a56713ddc3da6
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97656248"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076997"
 ---
 # <a name="direct-methods"></a>Direkta metoder
 
@@ -381,7 +381,7 @@ Viktiga aspekter:
 | Diagram verifierings fel | 400 | GraphValidationError |
 | Modul validerings fel | 400 | ModuleValidationError |
 | Resurs validerings fel | 409 | ResourceValidationError |
-| Allmänna Server fel | 500 intervall |  |  |
+| Allmänna Server fel | 500 intervall |  | 
 
 ### <a name="graphinstancedelete"></a>GraphInstanceDelete
 

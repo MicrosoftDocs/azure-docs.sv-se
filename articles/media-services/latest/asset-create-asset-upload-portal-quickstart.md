@@ -6,12 +6,12 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 3f175ff8e7c809032f35cdea9dc3cffa8345b82c
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 929d8412b3be894e80a13d9a2bd07ab7401b8dda
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106831"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277869"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Snabb start: Ladda upp, koda och strömma innehåll med portalen
 
@@ -41,8 +41,8 @@ Den här snabb starten visar hur du använder Azure Portal för att ladda upp, k
     
     Beakta
 
-    * [Positionerare för direktuppspelning](streaming-locators-concept.md)
-    * [Principer för direktuppspelning](streaming-policy-concept.md)
+    * [Positionerare för direktuppspelning](stream-streaming-locators-concept.md)
+    * [Principer för direktuppspelning](stream-streaming-policy-concept.md)
     * [Paketering och leverans](encode-dynamic-packaging-concept.md)
     * [Filter](filters-concept.md)
 * Du kan skydda ditt innehåll genom att kryptera det med Advanced Encryption Standard (AES-128) eller/och något av de tre stora DRM-systemen: Microsoft PlayReady, Google Widevine och Apple FairPlay. [Kryptera innehåll med Azure Portal](drm-encrypt-content-how-to.md) snabb start visar hur du konfigurerar innehålls skydd.
@@ -94,7 +94,7 @@ Om du vill publicera en till gång måste du nu lägga till en strömmande lokal
 
     > [!NOTE]
     > Om du vill att data strömmen ska krypteras måste du skapa en princip för innehålls nyckel och ange den på den strömmande lokaliseraren. Mer information finns i [Kryptera innehåll med Azure Portal](drm-encrypt-content-how-to.md).
-1. I fönstret **Lägg till streaming Locator** väljer du en av de fördefinierade strömmande principerna. Detaljerad information finns i [strömmande principer](streaming-policy-concept.md)
+1. I fönstret **Lägg till streaming Locator** väljer du en av de fördefinierade strömmande principerna. Detaljerad information finns i [strömmande principer](stream-streaming-policy-concept.md)
 
     ![Strömmande positionerare](./media/asset-create-asset-upload-portal-quickstart/streaming-locator.png)
 
@@ -105,7 +105,7 @@ När till gången har publicerats kan du strömma den direkt i portalen.
 Du kan också kopiera strömnings-URL: en och använda den i klient spelaren.
 
 > [!NOTE]
-> Kontrol lera att [slut punkten för direkt uppspelning](streaming-endpoint-concept.md) körs. När du först skapar ett media service-konto skapas standard slut punkten för direkt uppspelning och den är i stoppat läge, så du måste starta den innan du kan strömma ditt innehåll.<br/>Du faktureras bara när slut punkten för direkt uppspelning är i körnings läge.
+> Kontrol lera att [slut punkten för direkt uppspelning](stream-streaming-endpoint-concept.md) körs. När du först skapar ett media service-konto skapas standard slut punkten för direkt uppspelning och den är i stoppat läge, så du måste starta den innan du kan strömma ditt innehåll.<br/>Du faktureras bara när slut punkten för direkt uppspelning är i körnings läge.
 
 ## <a name="cleanup-resources"></a>Rensa resurser
 

@@ -5,9 +5,8 @@ author: cynthn
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/09/2018
+ms.date: 03/30/2021
 ms.author: cynthn
 ms.custom:
 - mvc
@@ -15,18 +14,18 @@ ms.custom:
 - seo-javascript-october2019
 - seo-python-october2019
 - devx-track-azurecli
-ms.openlocfilehash: fd411255247e6a37b857ac11c1b0abbd4558d02a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e8c1a06244c46f5789506e8a77d410f5493bbf3
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549778"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058586"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Snabbstart: Skapa en virtuell Linux-dator med Azure CLI
 
 Den här snabb starten visar hur du använder Azures kommando rads gränssnitt (CLI) för att distribuera en virtuell Linux-dator (VM) i Azure. Azure CLI används för att skapa och hantera Azure-resurser från kommandoraden eller i skript.
 
-I den här självstudien installerar vi Ubuntu 16.04 LTS. För att kunna se hur den virtuella datorn fungerar i praktiken ansluter du den till SSH och installerar NGINX-webbservern.
+I den här självstudien kommer vi att installera den senaste Ubuntu LTS-avbildningen. För att kunna se hur den virtuella datorn fungerar i praktiken ansluter du den till SSH och installerar NGINX-webbservern.
 
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
@@ -88,10 +87,10 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 
 ## <a name="connect-to-virtual-machine"></a>Ansluta till den virtuella datorn
 
-SSH till den virtuella datorn som normalt. Ersätt **publicIpAddress** med offentliga IP-adressen för den virtuella datorn enligt beskrivningen i föregående utdata från den virtuella datorn:
+SSH till den virtuella datorn som normalt. Ersätt IP-adressen i exemplet med den offentliga IP-adressen för den virtuella datorn enligt vad som anges i föregående utdata:
 
 ```bash
-ssh azureuser@publicIpAddress
+ssh azureuser@40.68.254.142
 ```
 
 ## <a name="install-web-server"></a>Installera webbservern

@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 1d9918786b22faddaeb07a12f0840b36a11ffe4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b55f0562ae08a6e5a6b38bd0b6fc9f781b94ab64
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778389"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078697"
 ---
 # <a name="assessment-overview-migrate-to-azure-vmware-solution"></a>Översikt över utvärdering (migrera till Azure VMware-lösning)
 
@@ -31,6 +31,9 @@ Utvärderingar som du skapar med Azure Migrate är en tidpunkts ögonblicks bild
 **Azure VM** | Utvärderingar som migrerar dina lokala servrar till virtuella Azure-datorer. Du kan utvärdera dina lokala servrar i [VMware](how-to-set-up-appliance-vmware.md) [-och Hyper-V-](how-to-set-up-appliance-hyper-v.md) miljön och [fysiska servrar](how-to-set-up-appliance-physical.md) för migrering till virtuella Azure-datorer med den här utvärderings typen.
 **Azure SQL** | Utvärderingar för att migrera dina lokala SQL-servrar från din VMware-miljö till Azure SQL Database eller Azure SQL-hanterad instans.
 **Azure VMware Solution (AVS)** | Utvärderingar för att migrera dina lokala servrar till [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). Du kan utvärdera dina lokala [virtuella VMware-datorer](how-to-set-up-appliance-vmware.md) för migrering till Azure VMware-lösningen (AVS) med den här utvärderings typen. [Läs mer](concepts-azure-vmware-solution-assessment-calculation.md)
+
+> [!NOTE]
+> Om antalet virtuella Azure-datorer eller AVS-bedömningar är felaktiga i identifierings-och utvärderings verktyget, klickar du på det totala antalet utvärderingar för att navigera till alla utvärderingar och beräkna om de virtuella Azure-datorerna eller AVS-utvärderingarna. Verktyget för identifiering och bedömning visar sedan det korrekta antalet för den utvärderings typen. 
 
 Azure VMware Solution (AVS)-utvärdering ger två storlekar för storleks villkor:
 

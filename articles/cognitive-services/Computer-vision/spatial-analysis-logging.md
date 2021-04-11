@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: a825b9e0abc4e33eb0f9033f46bb77c38559f740
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd35062ca1a5b3218a9af1fbd28fe8e7d7073c07
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722709"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077626"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetri och fel sökning
 
@@ -103,21 +103,21 @@ När modulen teleympkvistar har distribuerats kan de rapporterade måtten nås v
 
 ### <a name="system-health-events"></a>System hälso händelser
 
-| Händelsenamn | Beskrivning|
-|------|---------|
-|archon_exit     |Skickas när en användare ändrar status för spatial Analysis-modulen från att *köras* till *stoppad*.  |
-|archon_error     |Skickas när någon av processerna i behållarens krasch. Detta är ett kritiskt fel.  |
-|InputRate     |Den hastighet med vilken grafen bearbetar video ingångar. Rapporteras var 5: e minut. | 
-|OutputRate     |Den hastighet med vilken diagrammet matar ut AI-insikter. Rapporteras var 5: e minut. |
-|archon_allGraphsStarted | Skickas när alla grafer har startats. |
-|archon_configchange     | Skickas när en diagram konfiguration har ändrats. |
-|archon_graphCreationFailed     |Skickas när grafen med det rapporterade problemet `graphId` inte startar. |
-|archon_graphCreationSuccess     |Skickas när grafen med rapporterade `graphId` Starter har slutförts. |
-|archon_graphCleanup     | Skickas när grafen med rapporterade `graphId` rensningar och avslut. |
-|archon_graphHeartbeat     |Pulsslag skickas varje minut för varje graf i en färdighet. |
-|archon_apiKeyAuthFail |Skickas när Visuellt innehåll resurs nyckeln inte kan autentisera behållaren i mer än 24 timmar på grund av följande orsaker: kvoten är ogiltig, offline. |
-|VideoIngesterHeartbeat     |Skickas varje timme för att indikera att videon strömmas från video källan, med antalet fel i den timmen. Rapporteras för varje diagram. |
-|VideoIngesterState | Rapporter har *stoppats* eller *startats* för video strömning. Rapporteras för varje diagram. |
+| Händelsenamn                  | Beskrivning    |
+|-----------------------------|-------------------------------------------------------------------------------------------|
+| archon_exit                 | Skickas när en användare ändrar status för spatial Analysis-modulen från att *köras* till *stoppad*.  |
+| archon_error                | Skickas när någon av processerna i behållarens krasch. Detta är ett kritiskt fel.      |
+| InputRate                   | Den hastighet med vilken grafen bearbetar video ingångar. Rapporteras var 5: e minut.              |
+| OutputRate                  | Den hastighet med vilken diagrammet matar ut AI-insikter. Rapporteras var 5: e minut.                |
+| archon_allGraphsStarted     | Skickas när alla grafer har startats.                                           |
+| archon_configchange         | Skickas när en diagram konfiguration har ändrats.                                              |
+| archon_graphCreationFailed  | Skickas när grafen med det rapporterade problemet `graphId` inte startar.                           |
+| archon_graphCreationSuccess | Skickas när grafen med rapporterade `graphId` Starter har slutförts.                      |
+| archon_graphCleanup         | Skickas när grafen med rapporterade `graphId` rensningar och avslut.                      |
+| archon_graphHeartbeat       | Pulsslag skickas varje minut för varje graf i en färdighet.                                   |
+| archon_apiKeyAuthFail       | Skickas när Visuellt innehåll resurs nyckeln inte kan autentisera behållaren i mer än 24 timmar på grund av följande orsaker: kvoten är ogiltig, offline. |
+| VideoIngesterHeartbeat      | Skickas varje timme för att indikera att videon strömmas från video källan, med antalet fel i den timmen. Rapporteras för varje diagram. |
+| VideoIngesterState          | Rapporter har *stoppats* eller *startats* för video strömning. Rapporteras för varje diagram.              |
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>Felsöka en IoT Edge enhet
 

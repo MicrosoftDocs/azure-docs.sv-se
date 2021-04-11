@@ -14,12 +14,12 @@ ms.date: 09/08/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 4e23c6f25145724a5300c9e5cdcb55431fb0b4f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d10c10d602dcfa8f83ee56c2755d800d76516ff1
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97028775"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058552"
 ---
 # <a name="network-security-groups"></a>Nätverkssäkerhetsgrupper
 <a name="network-security-groups"></a>
@@ -37,7 +37,7 @@ En nätverkssäkerhetsgrupp kan innehålla noll regler, eller så många regler 
 |Namn|Ett unikt namn inom nätverkssäkerhetsgruppen.|
 |Prioritet | Ett tal mellan 100 och 4096. Regler bearbetas i prioritetsordning. Låga tal bearbetas före höga tal eftersom låga tal har högre prioritet. När trafiken matchar en regel avbryts bearbetningen. Det innebär att regler som har lägre prioritet (högre tal) och samma attribut som regler med högre prioritet inte bearbetas.|
 |Källa eller mål| Valfria, eller enskilda IP-adresser, CIDR-block (Classless Inter-Domain Routing) (t.ex. 10.0.0.0/24), tjänsttaggar eller programsäkerhetsgrupper. Om du anger en adress för en Azure-resurs anger du den privata IP-adressen som tilldelats till resursen. Nätverkssäkerhetsgrupper bearbetas efter att Azure omvandlar en offentlig IP-adress till en privat IP-adress för inkommande trafik, och innan Azure omvandlar en privat IP-adress till en offentlig IP-adress för utgående trafik. . Du kan begränsa antalet säkerhetsregler du skapar genom att ange ett intervall, en tjänsttagg eller en programsäkerhetsgrupp. Möjligheten att ange flera enskilda IP-adresser och intervall (du kan inte ange flera tjänsttaggar eller programgrupper) i en regel kallas [förhöjda säkerhetsregler](#augmented-security-rules). Förhöjda säkerhetsregler kan bara skapas i nätverkssäkerhetsgrupper som skapats genom Resource Manager-distributionsmodellen. Du kan inte ange flera IP-adresser och IP-adressintervall i nätverkssäkerhetsgrupper som skapats via den klassiska distributionsmodellen.|
-|Protokoll     | TCP, UDP, ICMP eller valfritt.|
+|Protokoll     | TCP, UDP, ICMP, ESP, AH eller någon.|
 |Riktning| Om regeln gäller för inkommande eller utgående trafik.|
 |Portintervall     |Du kan ange en enskild port eller ett portintervall. Du kan till exempel ange 80 eller 10000–10005. Om du anger intervall behöver du inte skapa lika många säkerhetsregler. Förhöjda säkerhetsregler kan bara skapas i nätverkssäkerhetsgrupper som skapats genom Resource Manager-distributionsmodellen. Du kan inte ange flera portar eller portintervall i samma säkerhetsregel i nätverkssäkerhetsgrupper som skapats med den klassiska distributionsmodellen.   |
 |Action     | Tillåt eller neka        |

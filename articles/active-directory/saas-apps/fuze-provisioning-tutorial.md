@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 04/05/2021
 ms.author: zhchia
-ms.openlocfilehash: 2fcb85b2c16bc2dd418c2260420733dd8663382a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 809b32fcf6f39ba9dec2980a79e8824e282b54b7
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96179266"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450097"
 ---
 # <a name="tutorial-configure-fuze-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Fuze för automatisk användar etablering
 
@@ -144,6 +144,7 @@ När du har konfigurerat etableringen använder du följande resurser till att �
 ## <a name="connector-limitations"></a>Kopplings begränsningar
 
 * Fuze stöder anpassade SCIM-attribut som kallas **rättigheter**. Dessa attribut kan bara skapas och uppdateras inte. 
+* Fuze SCIM-API: t stöder inte filtrering av attributet userName. Det innebär att du kan se felen i loggarna när du försöker synkronisera en befintlig användare som inte har något attribut för användar namn men som finns med ett e-postmeddelande som matchar userPrincipalName i Azure AD. 
 
 ## <a name="change-log"></a>Ändringslogg
 

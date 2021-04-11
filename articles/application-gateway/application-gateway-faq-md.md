@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 83779dcd319614ae15de6b7e3e4e3abfd9599089
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc803814e493ffef6f5928dc9971f9f6f864342d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102619162"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221746"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Vanliga frågor och svar om Application Gateway
 
@@ -394,6 +394,16 @@ Om du använder v1 SKU för tjänsten Application Gateway/WAF måste du ladda up
 Mer information hittar du i dokumentationen [här](./end-to-end-ssl-portal.md#add-authenticationtrusted-root-certificates-of-back-end-servers).
 
 Om du använder v2-SKU: n för tjänsten Application Gateway/WAF behöver du inte ladda upp det nya certifikatet i HTTP-inställningarna eftersom v2 SKU använder "betrodda rot certifikat" och ingen åtgärd behöver vidtas här.
+
+## <a name="configuration---mutual-authentication"></a>Konfiguration – ömsesidig autentisering
+
+### <a name="what-is-mutual-authentication"></a>Vad är ömsesidig autentisering?
+
+Ömsesidig autentisering är tvåvägs autentisering mellan en klient och en server. Ömsesidig autentisering med Application Gateway för närvarande tillåter att gatewayen verifierar klienten som skickar begäran, som är klientautentisering. Normalt är klienten den enda som autentiserar Application Gateway. Eftersom Application Gateway nu även kan autentisera klienten, blir den ömsesidig autentisering där Application Gateway och klienten autentiserar sig ömsesidigt. 
+
+### <a name="is-mutual-authentication-available-between-application-gateway-and-its-backend-pools"></a>Är ömsesidig autentisering tillgänglig mellan Application Gateway och dess backend-pooler?
+
+Nej, ömsesidig autentisering är för närvarande bara mellan klient dels klienten och Application Gateway. Ömsesidig backend-autentisering stöds inte för närvarande.
 
 ## <a name="configuration---ingress-controller-for-aks"></a>Konfiguration – ingress-styrenhet för AKS
 

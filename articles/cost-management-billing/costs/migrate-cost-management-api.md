@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 811b2cb7fd9a4f664e7a643f5a8e192a51416888
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
-ms.translationtype: HT
+ms.openlocfilehash: 46ad81f6723d160bf1d675b68a8459dd8df32c80
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689107"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078357"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrera från Enterprise-avtal till API:er för Microsoft-kundavtal
 
@@ -55,9 +55,9 @@ I API:erna för EA används en API-nyckel autentisering och auktorisering. I API
 | Användning (CSV) | [/usagedetails/download](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)[/usagedetails/submit](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format) | [Microsoft.Consumption/usageDetails/download](/rest/api/consumption/usagedetails)<sup>1</sup> |
 | Marketplace-användning (CSV) | [/marketplacecharges](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)[/marketplacechargesbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) | [Microsoft.Consumption/usageDetails/download](/rest/api/consumption/usagedetails)<sup>1</sup> |
 | Faktureringsperioder | [/billingperiods](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) | Microsoft.Billing/billingAccounts/billingProfiles/invoices |
-| Prisdokument | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | Microsoft.Billing/billingAccounts/billingProfiles/pricesheet/default/download format=json|csv Microsoft.Billing/billingAccounts/…/billingProfiles/…/invoices/… /pricesheet/default/download format=json|csv Microsoft.Billing/billingAccounts/../billingProfiles/../providers/Microsoft.Consumption/pricesheets/download  |
+| Prisdokument | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | Microsoft. fakturering/billingAccounts/billingProfiles/pris dokument/default/Download format = JSON \| CSV Microsoft. fakturering/billingAccounts/.../billingProfiles/.../fakturor/... /pricesheet/default/Download-format = JSON \| CSV Microsoft. fakturering/billingAccounts/.. /billingProfiles/.. /providers/Microsoft.Consumption/pricesheets/download  |
 | Reservationsköp | [/reservationcharges](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) | Microsoft.Billing/billingAccounts/billingProfiles/transactions |
-| Reservationsrekommendationer | [/SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)[/](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)[SingleReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) | [Microsoft.Consumption/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) |
+| Reservationsrekommendationer | [/SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations) [/](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) [SingleReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) | [Microsoft.Consumption/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) |
 | Reservationsanvändning | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)[/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails)[Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) |
 
 <sup>1</sup> Azure-tjänster och Marketplace-användning från tredje part är tillgängliga i [API:et för användningsdetaljer](/rest/api/consumption/usagedetails).
@@ -99,7 +99,7 @@ Så här hämtar du tillgängliga saldon via API:et för tillgängligt saldo:
 
 | Metod | URI för förfrågan |
 | --- | --- |
-| HÄMTA | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/availableBalances?api-version=2018-11-01-preview` |
+| GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/availableBalances?api-version=2018-11-01-preview` |
 
 ## <a name="apis-to-get-cost-and-usage"></a>API:er för att hämta kostnader och användning
 
@@ -120,7 +120,7 @@ Så här hämtar du användningsinformation med API:et Usage Details:
 
 | Metod | URI för förfrågan |
 | --- | --- |
-| HÄMTA | `https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?api-version=2019-01-01` |
+| GET | `https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?api-version=2019-01-01` |
 
 API:et Usage Details är precis som alla Cost Management-API:er tillgängligt för flera omfång. När det gäller fakturerade kostnader som du normalt skulle debiteras på registreringsnivå ska du använda faktureringsprofilen som omfång.  Du kan läsa mer om Cost Management-omfång i [Förstå och arbeta med omfång](understand-work-scopes.md).
 
@@ -168,34 +168,34 @@ Ny brödtext i svar:
 
 Egenskapsnamnet som innehåller arrayen med användningsposter har ändrats från data till _values_. Varje post brukade ha en rak lista med detaljerade egenskaper. Nu har dock varje post all information i en kapslad egenskap med namnet _properties_, förutom taggar. Den nya strukturen är mer lik övriga Azure-API:er. En del egenskapsnamn har ändrats. I den här tabellen visas motsvarande egenskaper.
 
-| Gammal egenskap | Ny egenskap | Anteckningar |
+| Tidigare egenskap | Ny egenskap | Kommentarer |
 | --- | --- | --- |
-| AccountId | Saknas | Den som skapat prenumerationen spåras inte. Använd invoiceSectionId (samma som departmentId). |
-| AccountNameAccountOwnerId och AccountOwnerEmail | Saknas | Den som skapat prenumerationen spåras inte. Använd invoiceSectionName (samma som departmentName). |
+| AccountId | Ej tillämpligt | Den som skapat prenumerationen spåras inte. Använd invoiceSectionId (samma som departmentId). |
+| AccountNameAccountOwnerId och AccountOwnerEmail | Ej tillämpligt | Den som skapat prenumerationen spåras inte. Använd invoiceSectionName (samma som departmentName). |
 | AdditionalInfo | additionalInfo | &nbsp;  |
 | ChargesBilledSeparately | isAzureCreditEligible | Observera att de här egenskaperna är motsatser. Om isAzureCreditEnabled är sann skulle ChargesBilledSeparately vara falsk. |
 | ConsumedQuantity | quantity | &nbsp; |
 | ConsumedService | consumedService | De exakta strängvärdena kan variera. |
-| ConsumedServiceId | Ingen | &nbsp; |
+| ConsumedServiceId | Inget | &nbsp; |
 | CostCenter | costCenter | &nbsp; |
-| Date och usageStartDate | datum | &nbsp;  |
-| Dag | Ingen | Parsar dag och datum. |
+| Date och usageStartDate | date | &nbsp;  |
+| Dag | Inget | Parsar dag och datum. |
 | DepartmentId | invoiceSectionId | Exakta värden kan variera. |
 | DepartmentName | invoiceSectionName | De exakta strängvärdena kan variera. Konfigurera fakturaavsnitten så att de matchar avdelningarna om det behövs. |
 | ExtendedCost och Cost | costInBillingCurrency | &nbsp;  |
 | InstanceId | resourceId | &nbsp;  |
 | Är en återkommande avgift | Ingen | &nbsp;  |
-| plats. | location | &nbsp;  |
+| Plats | location | &nbsp;  |
 | MeterCategory | meterCategory | De exakta strängvärdena kan variera. |
 | MeterId | meterId | De exakta strängvärdena varierar. |
 | MeterName | meterName | De exakta strängvärdena kan variera. |
 | MeterRegion | meterRegion | De exakta strängvärdena kan variera. |
 | MeterSubCategory | meterSubCategory | De exakta strängvärdena kan variera. |
-| Month | Ingen | Parsar månad från datum. |
-| Erbjudandets namn | Ingen | Använd publisherName och productOrderName. |
-| OfferID | Ingen | &nbsp;  |
-| Ordernummer | Ingen | &nbsp;  |
-| PartNumber | Ingen | Använd meterId och productOrderName till att identifiera priser unikt. |
+| Månad | Inget | Parsar månad från datum. |
+| Erbjudandets namn | Inget | Använd publisherName och productOrderName. |
+| OfferID | Inget | &nbsp;  |
+| Ordernummer | Inget | &nbsp;  |
+| PartNumber | Inget | Använd meterId och productOrderName till att identifiera priser unikt. |
 | Plannamn | productOrderName | &nbsp;  |
 | Produkt | Produkt |   |
 | ProductId | productId | De exakta strängvärdena varierar. |
@@ -203,21 +203,21 @@ Egenskapsnamnet som innehåller arrayen med användningsposter har ändrats frå
 | ResourceGroup | resourceGroupName | &nbsp;  |
 | ResourceGuid | meterId | De exakta strängvärdena varierar. |
 | ResourceLocation | resourceLocation | &nbsp;  |
-| ResourceLocationId | Ingen | &nbsp;  |
+| ResourceLocationId | Inget | &nbsp;  |
 | ResourceRate | effectivePrice | &nbsp;  |
-| ServiceAdministratorId | Saknas | &nbsp;  |
+| ServiceAdministratorId | Ej tillämpligt | &nbsp;  |
 | ServiceInfo1 | serviceInfo1 | &nbsp;  |
 | ServiceInfo2 | serviceInfo2 | &nbsp;  |
 | ServiceName | meterCategory | De exakta strängvärdena kan variera. |
 | ServiceTier | meterSubCategory | De exakta strängvärdena kan variera. |
-| StoreServiceIdentifier | Saknas | &nbsp;  |
+| StoreServiceIdentifier | Ej tillämpligt | &nbsp;  |
 | SubscriptionGuid | subscriptionId | &nbsp;  |
 | SubscriptionId | subscriptionId | &nbsp;  |
 | SubscriptionName | subscriptionName | &nbsp;  |
-| Taggar | taggar | Egenskapen tags gäller för rotobjektet, inte den kapslade egenskapen properties. |
+| Taggar | tags | Egenskapen tags gäller för rotobjektet, inte den kapslade egenskapen properties. |
 | UnitOfMeasure | unitOfMeasure | De exakta strängvärdena varierar. |
-| usageEndDate | datum | &nbsp;  |
-| År | Ingen | Parsar år från datum. |
+| usageEndDate | date | &nbsp;  |
+| Year | Inget | Parsar år från datum. |
 | (nytt) | billingCurrency | Valuta som använts för avgiften. |
 | (nytt) | billingProfileId | Unikt ID för faktureringsprofilen (samma som registreringen). |
 | (nytt) | billingProfileName | Namn för faktureringsprofilen (samma som registreringen). |
@@ -236,7 +236,7 @@ Så här hämtar du fakturor med API:et Invoices:
 
 | Metod | URI för förfrågan |
 | --- | --- |
-| HÄMTA | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoices?api-version=2018-11-01-preview` |
+| GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoices?api-version=2018-11-01-preview` |
 
 ## <a name="price-sheet-apis"></a>API:er för prisdokument
 
@@ -250,8 +250,8 @@ Så här hämtar du gällande priser för den angivna Enterprise-registreringen 
 
 | Metod | URI för förfrågan |
 | --- | --- |
-| HÄMTA | `https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/pricesheet` |
-| HÄMTA | `https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/pricesheet` |
+| GET | `https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/pricesheet` |
+| GET | `https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/pricesheet` |
 
 ### <a name="price-sheet-api-for-microsoft-customer-agreements"></a>API:et Price Sheet för Microsoft-kundavtal
 
@@ -365,13 +365,13 @@ Klienten kan också göra ett GET-anrop för `Azure-AsyncOperation`. Slutpunkten
 
 I den här tabellen ser du fälten i det gamla Enterprise-API:et för att hämta prisdokument. Dessutom ser du motsvarande fält i det nya prisdokumentet för Microsoft-kundavtal:
 
-| Gammal egenskap | Ny egenskap | Anteckningar |
+| Tidigare egenskap | Ny egenskap | Kommentarer |
 | --- | --- | --- |
-| billingPeriodId  | _Inte tillämpligt_ | Inte tillämpligt. Fakturan och det tillhörande prisdokumentet har ersatt begreppet billingPeriodId för Microsoft-kundavtal. |
+| billingPeriodId  | _Ej tillämpligt_ | Inte tillämpligt. Fakturan och det tillhörande prisdokumentet har ersatt begreppet billingPeriodId för Microsoft-kundavtal. |
 | meterId  | meterId | &nbsp;  |
 | unitOfMeasure  | unitOfMeasure | De exakta strängvärdena kan variera. |
 | includedQuantity  | includedQuantity | Ej tillämpligt för tjänster under Microsoft-kundavtal. |
-| partNumber  | _Inte tillämpligt_ | Använd i stället en kombination av productOrderName (samma som offerID) och meterID. |
+| partNumber  | _Ej tillämpligt_ | Använd i stället en kombination av productOrderName (samma som offerID) och meterID. |
 | unitPrice  | unitPrice | Enhetspris gäller för tjänster som förbrukas under Microsoft-kundavtal. |
 | currencyCode  | pricingCurrency | I Microsoft-kundavtal representeras priser med hjälp av prissättningsvalutor och faktureringsvalutor. currencyCode motsvarar pricingCurrency i Microsoft-kundavtal. |
 | offerID | productOrderName | Du kan använda productOrderName i stället för OfferID, men det är inte samma sak som OfferID. productOrderName och meter fastställer dock priser i Microsoft-kundavtal som gällde meterId och OfferID i äldre registreringar. |
@@ -384,13 +384,13 @@ Så här hämtar du prisdokumentinformation för ett omfång via API:et Price Sh
 
 | Metod | URI för förfrågan |
 | --- | --- |
-| HÄMTA | `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/pricesheets/default?api-version=2018-10-01` |
+| GET | `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/pricesheets/default?api-version=2018-10-01` |
 
 Så här hämtar du prisdokumentinformation för en faktureringsperiod via API:et Price Sheet:
 
 | Metod | URI för förfrågan |
 | --- | --- |
-| HÄMTA | `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/default?api-version=2018-10-01` |
+| GET | `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/default?api-version=2018-10-01` |
 
 I stället för API-slutpunkterna ovan använder du följande för Microsoft-kundavtal:
 
@@ -398,7 +398,7 @@ I stället för API-slutpunkterna ovan använder du följande för Microsoft-kun
 
 Det här API:et gäller för Microsoft-kundavtal och har ytterligare attribut.
 
-**Prisdokument för en faktureringsprofil som omfång i ett faktureringskonto**
+**Pris dokument för en fakturerings profil omfattning i ett fakturerings konto**
 
 Detta API är det befintliga API:et. Det har uppdaterats för att tillhandahålla prisdokumentet för en faktureringsprofil i ett faktureringskonto.
 
@@ -410,7 +410,7 @@ Så här hämtar du prisdokumentet för en registrering i ett faktureringskonto:
 
 | Metod | URI för förfrågan |
 | --- | --- |
-| HÄMTA | `/providers/Microsoft.Billing/billingAccounts/65085863/providers/Microsoft.Consumption/pricesheets/download?api-version=2019-01-01` |
+| GET | `/providers/Microsoft.Billing/billingAccounts/65085863/providers/Microsoft.Consumption/pricesheets/download?api-version=2019-01-01` |
 
 Använd informationen i följande avsnitt för ett Microsoft-kundavtal. Det innehåller fältegenskaper som används för Microsoft-kundavtal.
 
@@ -420,7 +420,7 @@ Det uppdaterade API:et Price Sheet by billing account hämtar prisdokumentet i C
 
 | Metod | URI för förfrågan |
 | --- | --- |
-| HÄMTA | `/providers/Microsoft.Billing/billingAccounts/28ae4b7f-41bb-581e-9fa4-8270c857aa5f/billingProfiles/ef37facb-cd6f-437a-9261-65df15b673f9/providers/Microsoft.Consumption/pricesheets/download?api-version=2019-01-01` |
+| GET | `/providers/Microsoft.Billing/billingAccounts/28ae4b7f-41bb-581e-9fa4-8270c857aa5f/billingProfiles/ef37facb-cd6f-437a-9261-65df15b673f9/providers/Microsoft.Consumption/pricesheets/download?api-version=2019-01-01` |
 
 API-svar och egenskaper är identiska för EA-registreringen som omfång. Egenskaperna motsvarar samma MCA-egenskaper.
 
@@ -428,14 +428,14 @@ Du hittar de äldre egenskaperna för [Azure Resource Manager-API:et Price Sheet
 
 | Gammal egenskap i Azure Resource Manager-API:et Price Sheet  | Ny egenskap i MCA-API:et Price Sheet   | Beskrivning |
 | --- | --- | --- |
-| Mätar-ID | _meterId_ | Unik identifierare för mätaren. Samma som meterID. |
+| Meter ID | _meterId_ | Unik identifierare för mätaren. Samma som meterID. |
 | Mätarnamn | meterName | Namnet på mätaren. Mätaren representerar den distribuerbara resursen för en Azure-tjänst. |
-| Mätarkategori  | tjänst | Namnet på mätarens klassificeringskategori. Samma som tjänsten i prisdokumentet för ett Microsoft-kundavtal. De exakta strängvärdena varierar. |
+| Mätarkategori  | tjänst | Namn på mätarens klassificeringskategori. Samma som tjänsten i prisdokumentet för ett Microsoft-kundavtal. De exakta strängvärdena varierar. |
 | Mätarunderkategori | meterSubCategory | Namn på kategorin för mätarens underklassificering. Baserat på klassificeringen av tjänstens differentiering av högnivåfunktioner. Till exempel Basic SQL DB jämfört med Standard SQL DB. |
 | Mätarregion | meterRegion | &nbsp;  |
-| Enhet | _Inte tillämpligt_ | Kan parsas från unitOfMeasure. |
+| Enhet | _Ej tillämpligt_ | Kan parsas från unitOfMeasure. |
 | Måttenhet | unitOfMeasure | &nbsp;  |
-| Artikelnummer | _Inte tillämpligt_ | Använd productOrderName och MeterID i stället för artikelnummer när du ska identifiera priset för en faktureringsprofil unikt. De här fälten visas på MCA-fakturan i stället för artikelnummer. |
+| Artikelnummer | _Ej tillämpligt_ | Använd productOrderName och MeterID i stället för artikelnummer när du ska identifiera priset för en faktureringsprofil unikt. De här fälten visas på MCA-fakturan i stället för artikelnummer. |
 | Enhetspris | unitPrice | Enhetspris för Microsoft-kundavtal. |
 | Valutakod | pricingCurrency | I Microsoft-kundavtal representeras priser med hjälp av prissättningsvalutor och faktureringsvalutor. Valutakod motsvarar pricingCurrency i Microsoft-kundavtal. |
 | Inkluderad mängd | includedQuantity | Gäller inte tjänster i Microsoft-kundavtal. Visa med nollvärden. |
@@ -475,7 +475,7 @@ Så här hämtar du transaktioner för reservationsköp via API:et Transactions:
 
 | Metod | URI för förfrågan |
 | --- | --- |
-| HÄMTA | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/transactions?api-version=2018-11-01-preview` |
+| GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/transactions?api-version=2018-11-01-preview` |
 
 ## <a name="recommendations-apis-replaced"></a>API:erna för rekommendationer är utbytta
 
@@ -490,7 +490,7 @@ Så här hämtar du reservationsrekommendationer via API:et:
 
 | Metod | URI för förfrågan |
 | --- | --- |
-| HÄMTA | `https://management.azure.com/providers/Microsoft.Consumption/reservationRecommendations?api-version=2019-01-01` |
+| GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationRecommendations?api-version=2019-01-01` |
 
 ## <a name="reservation-usage-apis-replaced"></a>API:erna för reservationsanvändning är utbytta
 
@@ -498,7 +498,7 @@ Du kan hämta reservationsanvändning för en registrering via API:et Reserved I
 
 De omfattar:
 
-- [Reserved Instance Usage Details](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)
+- [Reserverade instanser – användning information](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)
 - [Reserved Instance Usage Summary](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)
 
 Alla förbruknings-API:er ersätts av interna Azure-API:er som använder Azure AD för autentisering och auktorisering. Du kan läsa mer om att anropa Azures REST-API:er i [Komma igång med REST](/rest/api/azure/#create-the-request). API:erna för reservationsrekommendationer ovan ersätts av API:erna [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails) och [Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries).
@@ -507,13 +507,13 @@ Så här hämtar du reservationsinformation via API:et Reservation Details:
 
 | Metod | URI för förfrågan |
 | --- | --- |
-| HÄMTA | `https://management.azure.com/providers/Microsoft.Consumption/reservationDetails?api-version=2019-01-01` |
+| GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationDetails?api-version=2019-01-01` |
 
 Så här hämtar du reservationsinformation via API:et Reservation Summaries:
 
 | Metod | URI för förfrågan |
 | --- | --- |
-| HÄMTA | `https://management.azure.com/providers/Microsoft.Consumption/reservationSummaries?api-version=2019-01-01` |
+| GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationSummaries?api-version=2019-01-01` |
 
 
 

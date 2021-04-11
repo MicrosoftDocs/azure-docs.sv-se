@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 02/23/2021
-ms.openlocfilehash: c94d6f7d4d06d7dbaa6a2ad54f94575a6cc85d33
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4db523624922d8ddcb8c1868b84927926d9ed3d5
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644654"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103818"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Dela och ta emot data från Azure Blob Storage och Azure Data Lake Storage
 
@@ -201,7 +201,7 @@ Lagrings ögonblicks bildernas prestanda påverkas av ett antal faktorer utöver
 
 * Samtidig åtkomst till käll-och mål data lager.  
 * Plats för käll-och mål data lager. 
-* För en stegvis ögonblicks bild kan antalet filer i den delade data mängden påverka tiden det tar att hitta listan med filer med senaste ändrings tid efter den senaste lyckade ögonblicks bilden. 
+* För en stegvis ögonblicks bild kan antalet filer i den delade data mängden påverka den tid det tar att hitta listan med filer med senaste ändrings tid efter den senaste lyckade ögonblicks bilden. 
 
 
 ## <a name="next-steps"></a>Nästa steg

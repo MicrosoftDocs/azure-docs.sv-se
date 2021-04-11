@@ -5,12 +5,12 @@ ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 70c9498bae9117585963e111bea4f1e127cab232
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f4b12a9b3b830fcc4f45cb5e957232fee5a756a3
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097949"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078653"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Distribuera Ethereum proof-of-Authority – Solution Template på Azure
 
@@ -169,8 +169,8 @@ Parameter | Beskrivning | Exempelvärde
 Övervakning | Alternativ för att aktivera övervakning | Aktivera
 Ansluta till befintliga Azure Monitor loggar | Alternativ för att skapa en ny Azure Monitor loggar instans eller ansluta till en befintlig instans | Skapa ny
 Location | Den region där den nya instansen distribueras | East US
-Befintligt logganalys-arbetsyte-ID (Anslut till befintliga Azure Monitor loggar = koppling befintlig)|Arbetsyte-ID för den befintliga Azure Monitor loggar instansen||NA
-Befintlig Log Analytics primär nyckel (Anslut till befintliga Azure Monitor loggar = koppling befintlig)|Den primära nyckel som används för att ansluta till den befintliga Azure Monitor loggar instansen||NA
+Befintligt logganalys-arbetsyte-ID (Anslut till befintliga Azure Monitor loggar = koppling befintlig)|Arbetsyte-ID för den befintliga Azure Monitor loggar instansen|NA
+Befintlig Log Analytics primär nyckel (Anslut till befintliga Azure Monitor loggar = koppling befintlig)|Den primära nyckel som används för att ansluta till den befintliga Azure Monitor loggar instansen|NA
 
 Välj **OK**.
 

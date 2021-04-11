@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 860f167913211ee7c511e515937f29ba5bf954cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ab93a8742d210969ef6ad10683bed92221c1a57
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491577"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256709"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom-or-a-custom-domain"></a>Migrera ett OWIN webb-API till b2clogin.com eller en anpassad domän
 
@@ -30,7 +30,7 @@ I följande avsnitt finns ett exempel på hur du aktiverar flera utfärdare i et
 
 Du behöver följande Azure AD B2C resurser på plats innan du fortsätter med stegen i den här artikeln:
 
-* [Användar flöden](tutorial-create-user-flows.md) eller [anpassade principer](custom-policy-get-started.md) som skapats i din klient organisation
+* [Användar flöden](tutorial-create-user-flows.md?pivots=b2c-user-flow) eller [anpassade principer](tutorial-create-user-flows.md?pivots=b2c-custom-policy) som skapats i din klient organisation
 
 ## <a name="get-token-issuer-endpoints"></a>Hämta token för utfärdarens slut punkter
 

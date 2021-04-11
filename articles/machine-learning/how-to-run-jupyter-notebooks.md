@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: fec4eb55f43bd17db5935ab32e5429927c74f5b9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 953b987e908736df703c354067ee27fc27d56073
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066219"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220716"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Köra Jupyter-anteckningsböcker i din arbets yta
 
@@ -46,16 +46,19 @@ Du kan också starta Jupyter eller JupyterLab från antecknings bokens verktygsf
 
 Använd fokus läge för att expandera den aktuella vyn så att du kan fokusera på dina aktiva flikar. Fokus läge döljer fil Utforskaren i antecknings boken.
 
-1. I verktygsfältet i terminalfönstret väljer du **fokus läge** för att aktivera fokus läge. Beroende på fönstrets bredd kan detta finnas under meny alternativet **...** i verktygsfältet.
+1. I verktygsfältet i terminalfönstret väljer du **fokus läge** för att aktivera fokus läge. Beroende på fönstrets bredd kan verktyget finnas under meny alternativet **...** i verktygsfältet.
 1. I fokus läge går du tillbaka till standardvyn genom att välja **standardvy**.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Växla fokus läge/standardvy":::
 
 ## <a name="code-completion-intellisense"></a>Kod komplettering (IntelliSense)
 
-[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) är ett stöd för kod komplettering som innehåller ett antal funktioner: list medlemmar, parameter information, snabb information och fullständig ord. Dessa funktioner hjälper dig att lära dig mer om den kod som du använder, håller reda på de parametrar som du skriver och lägger till anrop till egenskaper och metoder med bara några få tangenttryckningar.  
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) är ett stöd för kod komplettering som innehåller många funktioner: list medlemmar, parameter information, snabb information och fullständig ord. Med bara några tangenttryckningar kan du:
+* Läs mer om den kod som du använder
+* Håll koll på de parametrar som du skriver
+* Lägg till anrop i egenskaper och metoder 
 
-### <a name="use-code-snippets-preview"></a>Använda kodfragment (förhands granskning)
+### <a name="insert-code-snippets-preview"></a>Infoga kod avsnitt (förhands granskning)
 
 Använd **CTRL + blank steg** för att utlösa IntelliSense-kodfragment.  Bläddra genom förslagen eller börja skriva för att hitta den kod som du vill infoga.  När du infogar kod går du till TABB-och-argumenten för att anpassa koden för eget bruk.
 
@@ -284,9 +287,9 @@ Med följande kortkommandon kan du enkelt navigera och köra kod i Azure Machine
 
 ## <a name="troubleshooting"></a>Felsökning
 
-* Om du inte kan ansluta till en bärbar dator kontrollerar du att WebSocket-kommunikation **inte** är inaktiverat. För att Compute instance Jupyter-funktionen ska fungera måste WebSocket-kommunikationen vara aktive rad. Kontrol lera att nätverket tillåter WebSocket-anslutningar till *. instances.azureml.net och *. instances.azureml.ms. 
-
+* Om du inte kan ansluta till en bärbar dator kontrollerar du att WebSocket-kommunikation **inte** är inaktiverat. För att Compute instance Jupyter-funktionen ska fungera måste WebSocket-kommunikationen vara aktive rad. Se till att nätverket tillåter WebSocket-anslutningar till *. instances.azureml.net och *. instances.azureml.ms. 
 * När beräknings instansen distribueras i en privat länk arbets yta kan den bara nås [från det virtuella nätverket](./how-to-secure-training-vnet.md#compute-instance). Om du använder en anpassad DNS-eller Hosts-fil lägger du till en post för < instans-namn >. < region >. instances.azureml.ms med privat IP-adress för arbets ytans privata slut punkt. Mer information finns i den [anpassade DNS-](./how-to-custom-dns.md?tabs=azure-cli) artikeln.
+
     
 ## <a name="next-steps"></a>Nästa steg
 

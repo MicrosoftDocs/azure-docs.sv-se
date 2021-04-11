@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 909cbd6174fe7eceaa8b53b5ba44fe72990b56d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a17dcf36cd8b23bf3bc014e2d101d057221de2b8
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708058"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504901"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Vanliga frågor om Övervakare av nätverksprestanda-lösning
 
@@ -95,9 +95,6 @@ Om ett hopp är rött betyder det att det är en del av minst en felaktig sökv�
 
 ### <a name="how-does-fault-localization-in-performance-monitor-work"></a>Hur fungerar fel lokalisering i prestanda övervakaren?
 I NPM används en Probabilistic-mekanism för att tilldela fel sannolikhet till varje nätverks Sök väg, nätverks segment och komponenternas nätverks hopp baserat på antalet felaktiga sökvägar som de är en del av. När nätverks segmenten och hoppen blir en del av fler felaktiga sökvägar ökar sannolikheten för att risken för fel. Den här algoritmen fungerar bäst om du har många noder med NPM-agenten ansluten till varandra eftersom detta ökar data punkterna för att beräkna fel sannolikheten.
-
-### <a name="how-can-i-create-alerts-in-npm"></a>Hur kan jag skapa aviseringar i NPM?
-För närvarande går det inte att skapa aviseringar från NPM-gränssnittet på grund av ett känt problem. [Skapa aviseringar manuellt](../alerts/alerts-log.md).
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Vad är standard Log Analytics frågor för aviseringar
 Fråga om prestanda övervakaren

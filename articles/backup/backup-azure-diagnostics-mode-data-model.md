@@ -3,12 +3,12 @@ title: Azure Monitor loggar data modell
 description: I den här artikeln lär du dig mer om Azure Monitor Log Analytics data modell information för Azure Backup data.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 004c5a6c0c2c4dcfcf13134bd5a5143ba647048f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2682bf0483b38c50e64bf4ec5255c89f931ab0f0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500996"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078918"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics data modell för Azure Backup data
 
@@ -199,9 +199,9 @@ Den här tabellen innehåller information om principbaserad fält.
 | MonthlyRetentionDaysOfTheWeek_s |Text ||Vecko dagar som valts för månatlig kvarhållning |
 | MonthlyRetentionWeeksOfTheMonth_s |Text ||Veckor i månaden då månatlig kvarhållning konfigureras, till exempel första, senaste |
 | YearlyRetentionDuration_s |Decimaltal ||Total Retentions tid i år för konfigurerade säkerhets kopieringar |
-| YearlyRetentionTimes_s |Text ||Datum och tid när årlig kvarhållning har kon figurer ATS |
-| YearlyRetentionMonthsOfTheYear_s |Text ||Månader under året som valts för årlig kvarhållning |
-| YearlyRetentionFormat_s |Text ||Typ av konfiguration för årlig kvarhållning, till exempel varje dag för dag baserat, veckovis för vecka, baserat | |
+| YearlyRetentionTimes_s |Text | | Datum och tid när årlig kvarhållning har kon figurer ATS |
+| YearlyRetentionMonthsOfTheYear_s |Text | | Månader under året som valts för årlig kvarhållning |
+| YearlyRetentionFormat_s |Text ||Typ av konfiguration för årlig kvarhållning, till exempel varje dag för dag baserat, veckovis för vecka, baserat |
 | YearlyRetentionDaysOfTheMonth_s |Text ||Datum för den månad som valts för årlig kvarhållning |
 | SynchronisationFrequencyPerDay_s |Heltal |v2|Antal gånger under en dag som en fil säkerhets kopia synkroniseras för SC DPM och MABS |
 | DiffBackupFormat_s |Text |v2|Format för differentiella säkerhets kopieringar för SQL i VM-säkerhetskopiering i Azure |

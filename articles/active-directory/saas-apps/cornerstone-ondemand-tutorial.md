@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/09/2021
+ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: f7167df523ca6f84eacd92fc7af1011e8b3b00b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba6eb0a1b607fc05c4d0c660dd3d7016f81ef4b3
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950391"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449553"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-single-sign-on"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med ett hörn enkelt Sign-On
 
@@ -123,49 +123,11 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ## <a name="configure-cornerstone-single-sign-on-sso"></a>Konfigurera hörn enkel Sign-On SSO
 
-1. Logga in på det hörniga enkla Sign-On som administratör.
-
-1. Gå till **admin->-verktyg**.
-
-    ![screeenshot för administratörs sidan.](./media/cornerstone-ondemand-tutorial/admin.png)
-
-1. Välj **kant** panelen i **Konfigurationsverktyg**.
-
-    ![screeenshot för gräns panelen.](./media/cornerstone-ondemand-tutorial/edge-panel.png)
-
-1. Välj enkel Sign-On i avsnittet **integrera** .
-
-    ![screeenshot för alternativet Single Sign-On.](./media/cornerstone-ondemand-tutorial/single-sign-on.png)
-
-1. Klicka på **Lägg till SSO** -knapp. Välj **inkommande SAML** i det popup-fönster som visas nedan och klicka sedan på **Lägg till**.
-
-    ![screeenshot för inkommande SAML.](./media/cornerstone-ondemand-tutorial/inbound.png)
-
-1. Utför stegen nedan på följande sida:
-
-    ![screeenshot för konfigurations avsnitt för hörn.](./media/cornerstone-ondemand-tutorial/configuration.png)
-
-    a. I **allmänna egenskaper** klickar du på **överför fil** för att ladda upp **certifikat filen (base64)** som du har laddat ned från Azure Portal.
-
-    b. Markera kryss rutan **Aktivera** och i text rutan för **IDP-URL** , klistra in URL-värdet för **inloggning** som du har kopierat från Azure Portal.
-
-    c. Klicka på **Spara**.
+Om du vill konfigurera enkel inloggning på **hörn med enkel inloggning** måste du skicka det hämtade **certifikatet (base64)** och lämpliga kopierade url: er från Azure Portal till [ett enskilt Sign-On support team](mailto:moreinfo@csod.com) eller kontakta din partner. De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
 
 ### <a name="create-cornerstone-single-sign-on-test-user"></a>Skapa ett hörn enskilt Sign-On test användare
 
 Syftet med det här avsnittet är att skapa en användare som kallas B. Simon i hörn enkel inloggning. Enkel visning Sign-On stöder automatisk användar etablering, vilket är aktiverat som standard. Du hittar mer information [här](./cornerstone-ondemand-provisioning-tutorial.md) om hur du konfigurerar automatisk användaretablering.
-
-**Om du behöver skapa användare manuellt så gör du följande:**
-
-1. Logga in på det hörniga enkla Sign-On som administratör.
-
-1. Gå till **administratörs > användare** och klicka på **Lägg till användare** längst ned på sidan.
-
-    ![screeenshot för att skapa en test användare av hörn.](./media/cornerstone-ondemand-tutorial/user-1.png)
-
-1. Fyll i de obligatoriska fälten på sidan **Lägg till ny användare** och klicka på **Spara**.
-
-    ![screeenshot för att skapa test användare med de obligatoriska fälten.](./media/cornerstone-ondemand-tutorial/user-2.png)
 
 ## <a name="test-sso"></a>Testa SSO 
 

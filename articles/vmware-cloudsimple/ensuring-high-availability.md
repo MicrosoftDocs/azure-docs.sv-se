@@ -8,32 +8,32 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8bb1f8bb2aaeab88e5a9ea19534c8983af8c1626
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c80b9fd65588fe6c390f44b34509168f3bfb549
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97895758"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077694"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Se till att programmet är högt tillgängligt när du kör i VMware på Azure
 
 CloudSimple-lösningen ger hög tillgänglighet för dina program som körs på VMware i Azure-miljön. I följande tabell visas de olika felen och de associerade funktionerna för hög tillgänglighet.
 
-| Scenario för haveri | Program skyddat? | Plattform HA-funktion | VMware HA-funktion | Azure HA-funktion |
------------- | ------------- | ------------ | ------------ | ------------- |
-| Diskfel | JA | Snabb ersättning av misslyckad nod | [Om standard lagrings principen för virtuellt San](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
-| Fläkt haveri | JA | Redundanta fläktar, snabb ersättning av misslyckad nod |  |  |
-| NIC-problem | JA | Redundant NIC, snabb ersättning av misslyckad nod
-| Värd strömförsörjnings problem | JA | Redundant strömförsörjning |  |  |
-| ESXi-värd haveri | JA | snabb ersättning av misslyckad nod | [VMware vSphere hög tillgänglighet](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
-| VM-haveri | JA | [Lastbalanserare](load-balancers.md)  | [VMware vSphere hög tillgänglighet](https://www.vmware.com/products/vsphere/high-availability.html) | Azure Load Balancer för tillstånds lösa virtuella VMware-datorer |
-| Port haveri för löv växel | JA | Redundant NIC |  |  |
-| Löv växlings problem | JA | Redundanta löv växlar |  |  |
-| Rack Haveriering | JA | Placeringsgrupper |  |  |
-| Nätverks anslutning till lokal DOMÄNKONTROLLANT | JA  | Redundanta nätverks tjänster |  | Redundanta ER-kretsar |
-| Nätverks anslutning till Azure | JA | |  | Redundanta ER-kretsar |
-| Data Center haveri | JA |  |  | Tillgänglighetszoner |
-| Regionalt haveri | JA  |  |  | Azure-regioner |
+|  Scenario för haveri  |  Program skyddat?  |  Plattform HA-funktion  |  VMware HA-funktion  |  Azure HA-funktion  |
+|----------------------------------------|------------------------|-------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|
+|  Diskfel  |  JA  |  Snabb ersättning av misslyckad nod  |  [Om standard lagrings principen för virtuellt San](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html)  |  |
+|  Fläkt haveri  |  JA  |  Redundanta fläktar, snabb ersättning av misslyckad nod  |  |  |
+|  NIC-problem  |  JA  |  Redundant NIC, snabb ersättning av misslyckad nod  |  |  |
+|  Värd strömförsörjnings problem  |  JA  |  Redundant strömförsörjning  |  |  |
+|  ESXi-värd haveri  |  JA  |  snabb ersättning av misslyckad nod  |  [VMware vSphere hög tillgänglighet](https://www.vmware.com/products/vsphere/high-availability.html)  |  |
+|  VM-haveri  |  JA  |  [Belastnings utjämning](load-balancers.md)  |  [VMware vSphere hög tillgänglighet](https://www.vmware.com/products/vsphere/high-availability.html)  |  Azure Load Balancer för tillstånds lösa virtuella VMware-datorer  |
+|  Port haveri för löv växel  |  JA  |  Redundant NIC  |  |  |
+|  Löv växlings problem  |  JA  |  Redundanta löv växlar  |  |  |
+|  Rack Haveriering  |  JA  |  Placerings grupper  |  |  |
+|  Nätverks anslutning till lokal DOMÄNKONTROLLANT  |  JA  |  Redundanta nätverks tjänster  |  |  Redundanta ER-kretsar  |
+|  Nätverks anslutning till Azure  |  JA  |  |  |  Redundanta ER-kretsar  |
+|  Data Center haveri  |  JA  |  |  |  Tillgänglighets zoner  |
+|  Regionalt haveri  |  JA  |  |  |  Azure-regioner  |
 
 Azure VMware-lösningen av CloudSimple tillhandahåller följande funktioner för hög tillgänglighet.
 

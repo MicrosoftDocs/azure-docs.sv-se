@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 261dceb70a6059c76dbe3bd1d7636eee5d9d77bc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5037450d401153811899b8d769ca92af7ce4068e
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936299"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103784"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>Använda Azure Digital Twins CLI
 
@@ -25,7 +25,7 @@ Förutom att hantera Azure Digitals-instansen i Azure Portal, har Azure digitala
 * Hantera [vägar](concepts-route-events.md)
 * Konfigurera [säkerhet](concepts-security.md) via rollbaserad åtkomst kontroll i Azure (Azure RBAC)
 
-Kommando uppsättningen heter **AZ DT** och är en del av [Azure IoT-tillägget för Azure CLI](https://github.com/Azure/azure-iot-cli-extension). Du kan visa en fullständig lista över kommandon och deras användning som en del av referens dokumentationen för `az iot` kommando uppsättningen: [ *AZ DT* kommando referens](/cli/azure/ext/azure-iot/dt).
+Kommando uppsättningen heter **AZ DT** och är en del av [Azure IoT-tillägget för Azure CLI](https://github.com/Azure/azure-iot-cli-extension). Du kan visa en fullständig lista över kommandon och deras användning som en del av referens dokumentationen för `az iot` kommando uppsättningen: [ *AZ DT* kommando referens](/cli/azure/dt).
 
 ## <a name="uses-deploy-and-validate"></a>Använder (distribuera och validera)
 
@@ -61,4 +61,4 @@ az extension add --upgrade -n azure-iot
 ## <a name="next-steps"></a>Nästa steg
 
 Utforska CLI och dess fullständiga kommando uppsättningar via referens dokumenten:
-* [*AZ DT* -kommando referens](/cli/azure/ext/azure-iot/dt)
+* [*AZ DT* -kommando referens](/cli/azure/dt)

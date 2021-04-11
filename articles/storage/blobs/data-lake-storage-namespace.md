@@ -4,16 +4,16 @@ description: Beskriver konceptet ett hierarkiskt namn område för Azure Data La
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 04/01/2021
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 26062d73ae4c61af77b15dd2cac0541f2a988d11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de7f62dd4d4205e819278e6dc90d905e825580f2
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95913002"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220512"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 hierarkiskt namn område
 
@@ -44,6 +44,10 @@ I allmänhet rekommenderar vi att du aktiverar ett hierarkiskt namn område för
 Orsakerna till att aktivera ett hierarkiskt namn område bestäms av en TCO-analys. I allmänhet kan förbättringar av arbets belastnings fördröjningen på grund av lagrings acceleration kräva beräknings resurser för kortare tid. Svars tiden för många arbets belastningar kan förbättras på grund av atomisk katalog manipulation som aktive ras av ett hierarkiskt namn område. I många arbets belastningar representerar beräknings resursen > 85% av den totala kostnaden och så vidare är en liten minskning av arbets belastnings fördröjningen lika med en betydande mängd TCO-besparingar. Även i de fall där aktivering av ett hierarkiskt namn område ökar lagrings kostnaderna sänks ägande kostnaden fortfarande på grund av sänkta beräknings kostnader.
 
 Information om hur du analyserar skillnader i priser för data lagring, transaktions priser och reservation av lagrings kapacitet mellan konton som har ett hierarkiskt hierarkiskt namn område jämfört med ett hierarkiskt namn område finns [Azure Data Lake Storage Gen2 prissättning](https://azure.microsoft.com/pricing/details/storage/data-lake/).
+
+## <a name="enabling-a-hierarchical-namespace"></a>Aktivera ett hierarkiskt namn område
+
+Du kan inte aktivera ett hierarkiskt namn område för ett befintligt lagrings konto. Du kan bara aktivera ett hierarkiskt namn område när du skapar ett lagrings konto. Vägledning finns i [skapa ett lagrings konto som ska användas med Azure Data Lake Storage Gen2](create-data-lake-storage-account.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

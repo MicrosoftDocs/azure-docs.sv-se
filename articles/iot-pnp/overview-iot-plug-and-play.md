@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: dcdd19faec5e428ac26917178aa8114245c205b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb39939f4a48a549479605dcccc346094359875f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594577"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106079020"
 ---
 # <a name="what-is-iot-plug-and-play"></a>Vad är IoT Plug and Play?
 
@@ -68,7 +68,7 @@ Som enhets byggare kan du utveckla en IoT-maskinvara som stöder IoT Plug and Pl
 
 ## <a name="device-certification"></a>Enhetscertifiering
 
-[Iot plug and Play enhets certifierings programmet](howto-certify-device.md) verifierar att en enhet uppfyller IoT-plug and Play certifierings krav. Du kan lägga till en certifierad enhet i [katalogen för offentlig certifierad för Azure IoT-enheter](https://aka.ms/devicecatalog).
+[Iot plug and Play enhets certifierings programmet](../certification/program-requirements-pnp.md) verifierar att en enhet uppfyller IoT-plug and Play certifierings krav. Du kan lägga till en certifierad enhet i [katalogen för offentlig certifierad för Azure IoT-enheter](https://aka.ms/devicecatalog).
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -4,16 +4,16 @@ description: Hur du använder den nya data exporten för att exportera dina IoT-
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 01/27/2021
+ms.date: 03/24/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 7152012c7c4a342c7491e5f8b835eaede4269c4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d57f24f8cb4b59ce9b9cd5853be11fb2d104d75
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100522622"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277903"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Exportera IoT-data till moln mål med hjälp av data export
 
@@ -24,7 +24,7 @@ Den här artikeln beskriver hur du använder den nya data export funktionen i Az
 
 Du kan till exempel:
 
-- Exportera kontinuerligt data och egenskaps ändringar i JSON-format i nära real tid.
+- Exportera kontinuerligt telemetri, egenskaps ändringar, enhetens livs cykel och enhets mallens livs cykel data i JSON-format i nära real tid.
 - Filtrera data strömmar för att exportera data som matchar anpassade villkor.
 - Utöka data strömmarna med anpassade värden och egenskaps värden från enheten.
 - Skicka data till mål som Azure Event Hubs, Azure Service Bus, Azure Blob Storage och webhook-slutpunkter.
@@ -133,21 +133,19 @@ Nu när du har ett mål för att exportera data till, konfigurerar du data expor
     | :------------- | :---------- | :----------- |
     |  Telemetri | Exportera telemetri meddelanden från enheter i nära real tid. Varje exporterat meddelande innehåller det fullständiga innehållet i det ursprungliga enhets meddelandet, normaliserat.   |  [Meddelande format för telemetri](#telemetry-format)   |
     | Egenskaps ändringar | Exportera ändringar av enhets-och moln egenskaper i nära real tid. För skrivskyddade enhets egenskaper exporteras ändringar av de rapporterade värdena. För Läs-och skriv egenskaper exporteras både rapporterade och önskade värden. | [Meddelande format för egenskaps ändring](#property-changes-format) |
+    | Enhetslivscykel | Exportera registrerade och borttagna enhets händelser. | [Meddelande format för enhets livs cykel ändringar](#device-lifecycle-changes-format) |
+    | Livs cykel för enhets mal len | Exportera ändringar i mallen för publicerade enheter, inklusive skapade, uppdaterade och borttagna. | [Enhets mal len livs cykel ändringar i meddelande format](#device-template-lifecycle-changes-format) | 
 
-<a name="DataExportFilters"></a>
-1. Du kan också lägga till filter för att minska mängden exporterade data. Det finns olika typer av filter tillgängliga för varje data export typ:
-
-    Om du vill filtrera telemetri kan du:
-
-    - **Filtrera** den exporterade data strömmen så att den bara innehåller telemetri från enheter som matchar enhets namn, enhets-ID och enhets mal len filter villkor.
-    - **Filtrera** över funktioner: om du väljer ett telemetri-objekt i list rutan **namn** innehåller den exporterade strömmen endast telemetri som uppfyller filter villkoret. Om du väljer en enhet eller ett moln egenskaps objekt i list rutan **namn** , innehåller den exporterade strömmen bara telemetri från enheter med egenskaper som matchar filter villkoret.
-    - **Filter för meddelande egenskap**: enheter som använder enhets-SDK: er kan skicka *meddelande egenskaper* eller *program egenskaper* för varje telemetri. Egenskaperna är en väska med nyckel/värde-par som Taggar meddelandet med anpassade identifierare. Om du vill skapa ett filter för meddelande egenskaper anger du den meddelande egenskaps nyckel som du söker efter och anger ett villkor. Endast telemetri-meddelanden med egenskaper som matchar det angivna filter villkoret exporteras. Följande sträng jämförelse operatorer stöds: Equals, är inte lika med, innehåller inte, innehåller inte, finns inte. [Läs mer om program egenskaper från IoT Hub dokument](../../iot-hub/iot-hub-devguide-messages-construct.md).
-
-    Om du vill filtrera egenskaps ändringar använder du ett **funktions filter**. Välj ett egenskaps objekt i list rutan. Den exporterade data strömmen innehåller bara ändringar av den valda egenskapen som uppfyller filter villkoret.
-
-<a name="DataExportEnrichmnents"></a>
-1. Du kan också utöka exporterade meddelanden med ytterligare metadata för nyckel/värde-par. Följande-funktioner är tillgängliga för telemetri-och egenskaps ändringar data export typer:
-
+1. Du kan också lägga till filter för att minska mängden exporterade data. Det finns olika typer av filter tillgängliga för varje data export typ: <a name="DataExportFilters"></a>
+    
+    | Typ av data | Tillgängliga filter| 
+    |--------------|------------------|
+    |Telemetri|<ul><li>Filtrera efter enhets namn, enhets-ID och enhets mal len</li><li>Filter ström som endast innehåller telemetri som uppfyller filter villkoren</li><li>Filter ström så att den bara innehåller telemetri från enheter med egenskaper som matchar filter villkoren</li><li>Filter ström så att den bara innehåller telemetri som har *meddelande egenskaper* som uppfyller filter villkoret. *Meddelande egenskaper* (även kallade *program egenskaper*) skickas i en väska med nyckel/värde-par för varje telemetri-meddelande som skickas via enheter som använder enhets-SDK: er. Om du vill skapa ett filter för meddelande egenskaper anger du den meddelande egenskaps nyckel som du söker efter och anger ett villkor. Endast telemetri-meddelanden med egenskaper som matchar det angivna filter villkoret exporteras. [Läs mer om program egenskaper från IoT Hub dokument](../../iot-hub/iot-hub-devguide-messages-construct.md) </li></ul>|
+    |Egenskaps ändringar|<ul><li>Filtrera efter enhets namn, enhets-ID och enhets mal len</li><li>Filter ström som endast innehåller egenskaps ändringar som uppfyller filter villkoren</li></ul>|
+    |Enhetslivscykel|<ul><li>Filtrera efter enhets namn, enhets-ID och enhets mal len</li><li>Filter ström som endast innehåller ändringar från enheter med egenskaper som matchar filter villkoren</li></ul>|
+    |Livs cykel för enhets mal len|<ul><li>Filtrera efter enhets mall</li></ul>|
+    
+1. Du kan också utöka exporterade meddelanden med ytterligare metadata för nyckel/värde-par. Följande-funktioner är tillgängliga för telemetri-och egenskaps ändringar data export typer: <a name="DataExportEnrichmnents"></a>
     - **Anpassad sträng**: lägger till en anpassad statisk sträng i varje meddelande. Ange valfri nyckel och ange valfritt sträng värde.
     - **Egenskap**: lägger till den aktuella enheten rapporterade egenskapen eller moln egenskap svärdet i varje meddelande. Ange valfri nyckel och välj en enhets-eller moln egenskap. Om det exporterade meddelandet kommer från en enhet som inte har den angivna egenskapen så får inte det exporterade meddelandet berikning.
 
@@ -207,6 +205,7 @@ Varje exporterat meddelande innehåller en normaliserad form av det fullständig
 - `deviceId`: ID för enheten som skickade telemetri meddelandet.
 - `schema`: Namn och version för nytto Last schema.
 - `templateId`: ID: t för den enhets mall som är kopplad till enheten.
+- `enqueuedTime`: Tiden då meddelandet togs emot av IoT Central.
 - `enrichments`: Eventuella berikade inställningar i exporten.
 - `messageProperties`: Ytterligare egenskaper som enheten skickade med meddelandet. Dessa egenskaper kallas ibland för *program egenskaper*. [Läs mer i IoT Hub dokument](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
@@ -349,6 +348,7 @@ Varje meddelande eller post representerar en ändring i en enhets-eller moln ege
 - `messageType`: Antingen `cloudPropertyChange` , `devicePropertyDesiredChange` eller `devicePropertyReportedChange` .
 - `deviceId`: ID för enheten som skickade telemetri meddelandet.
 - `schema`: Namn och version för nytto Last schema.
+- `enqueuedTime`: Tiden då den här ändringen upptäcktes av IoT Central.
 - `templateId`: ID: t för den enhets mall som är kopplad till enheten.
 - `enrichments`: Eventuella berikade inställningar i exporten.
 
@@ -377,13 +377,78 @@ I följande exempel visas ett meddelande om att en exporterad egenskaps ändring
 }
 ```
 
+## <a name="device-lifecycle-changes-format"></a>Format för enhets livs cykel ändringar
+
+Varje meddelande eller post representerar en ändring av en enskild enhet. Informationen i det exporterade meddelandet innehåller:
+
+- `applicationId`: ID: t för det IoT Central programmet.
+- `messageSource`: Källan för meddelandet- `deviceLifecycle` .
+- `messageType`: Antingen `registered` eller `deleted` .
+- `deviceId`: ID: t för enheten som ändrades.
+- `schema`: Namn och version för nytto Last schema.
+- `templateId`: ID: t för den enhets mall som är kopplad till enheten.
+- `enqueuedTime`: Tiden då ändringen inträffade i IoT Central.
+- `enrichments`: Eventuella berikade inställningar i exporten.
+
+För Event Hubs och Service Bus exporterar IoT Central nya meddelande data till händelsehubben eller Service Bus kö eller ämne i nära real tid. I användar egenskaperna (kallas även program egenskaper) för varje meddelande, inkluderas,, `iotcentral-device-id` `iotcentral-application-id` och tas `iotcentral-message-source` automatiskt med `iotcentral-message-type` .
+
+För Blob Storage grupperas och exporteras meddelanden en gång per minut.
+
+I följande exempel visas ett exporterat enhets livs cykel meddelande som tagits emot i Azure Blob Storage.
+
+```json
+{
+  "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+  "messageSource": "deviceLifecycle",
+  "messageType": "registered",
+  "deviceId": "1vzb5ghlsg1",
+  "schema": "default@v1",
+  "templateId": "urn:qugj6vbw5:___qbj_27r",
+  "enqueuedTime": "2021-01-01T22:26:55.455Z",
+  "enrichments": {
+    "userSpecifiedKey": "sampleValue"
+  }
+}
+```
+## <a name="device-template-lifecycle-changes-format"></a>Format för livs cykel ändringar i enhets mal len
+
+Varje meddelande eller post representerar en ändring i en enda publicerad enhets mall. Informationen i det exporterade meddelandet innehåller:
+
+- `applicationId`: ID: t för det IoT Central programmet.
+- `messageSource`: Källan för meddelandet- `deviceTemplateLifecycle` .
+- `messageType`: Antingen `created` , `updated` eller `deleted` .
+- `schema`: Namn och version för nytto Last schema.
+- `templateId`: ID: t för den enhets mall som är kopplad till enheten.
+- `enqueuedTime`: Tiden då ändringen inträffade i IoT Central.
+- `enrichments`: Eventuella berikade inställningar i exporten.
+
+För Event Hubs och Service Bus exporterar IoT Central nya meddelande data till händelsehubben eller Service Bus kö eller ämne i nära real tid. I användar egenskaperna (kallas även program egenskaper) för varje meddelande, inkluderas,, `iotcentral-device-id` `iotcentral-application-id` och tas `iotcentral-message-source` automatiskt med `iotcentral-message-type` .
+
+För Blob Storage grupperas och exporteras meddelanden en gång per minut.
+
+I följande exempel visas ett exporterat enhets livs cykel meddelande som tagits emot i Azure Blob Storage.
+
+```json
+{
+  "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+  "messageSource": "deviceTemplateLifecycle",
+  "messageType": "created",
+  "schema": "default@v1",
+  "templateId": "urn:qugj6vbw5:___qbj_27r",
+  "enqueuedTime": "2021-01-01T22:26:55.455Z",
+  "enrichments": {
+    "userSpecifiedKey": "sampleValue"
+  }
+}
+```
+
 ## <a name="comparison-of-legacy-data-export-and-data-export"></a>Jämförelse av äldre data export och data export
 
 I följande tabell visas skillnaderna mellan [äldre data export](howto-export-data-legacy.md) och nya funktioner för data export:
 
 | Funktioner  | Äldre data export | Ny data export |
 | :------------- | :---------- | :----------- |
-| Tillgängliga data typer | Telemetri, enheter, enhetsspecifika mallar | Telemetri, egenskaps ändringar |
+| Tillgängliga data typer | Telemetri, enheter, enhetsspecifika mallar | Telemetri, egenskaps ändringar, enhets livs cykel ändringar, enhets mallens livs cykel ändringar |
 | Filtrering | Inget | Beror på vilken data typ som exporteras. För telemetri, filtrera efter telemetri, meddelande egenskaper, egenskaps värden |
 | Berikningar | Inget | Utöka med en anpassad sträng eller ett egenskaps värde på enheten |
 | Mål | Azure Event Hubs, Azure Service Bus köer och ämnen, Azure Blob Storage | Samma som för äldre data export plus Webhooks|

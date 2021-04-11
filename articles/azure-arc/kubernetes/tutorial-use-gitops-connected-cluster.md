@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 987fb5745b6528eb96b4237f698b3ae371d69287
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ec83d8d56ad67d8c64c6ac3151ca3819e88c0616
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731827"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449604"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Självstudie: distribuera konfigurationer med GitOps på ett Azure Arc-aktiverat Kubernetes-kluster 
 
@@ -30,6 +30,14 @@ I den här självstudien kommer du att använda konfigurationer med GitOps på e
 - Ett befintligt Azure Arc-aktiverat Kubernetes-kopplat kluster.
     - Om du inte har anslutit ett kluster ännu kan du gå igenom vår [Anslut en Azure-båge som är aktive rad Kubernetes kluster snabb start](quickstart-connect-cluster.md).
 - En förståelse för den här funktionens fördelar och arkitektur. Läs mer i [konfigurationer och GitOps-Azure Arc-aktiverad Kubernetes-artikel](conceptual-configurations.md).
+- Installera `k8s-configuration` Azure CLI-tillägget för version >= 1.0.0:
+  
+  ```azurecli
+  az extension add --name k8s-configuration
+  ```
+
+    >[!TIP]
+    > Om `k8s-configuration` tillägget redan är installerat kan du uppdatera det till den senaste versionen med hjälp av följande kommando: `az extension update --name k8s-configuration`
 
 ## <a name="create-a-configuration"></a>Skapa en konfiguration
 

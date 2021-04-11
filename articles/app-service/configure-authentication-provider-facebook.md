@@ -3,16 +3,16 @@ title: Konfigurera Facebook-autentisering
 description: Lär dig hur du konfigurerar Facebook-autentisering som identitets leverantör för din App Service-eller Azure Functions-app.
 ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 03/29/2021
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: b6aad323c0d6fa8f59c9fad203640c477b162503
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc639eaea76b3309d6ed047e73c726040da19639
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80519960"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078017"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>Konfigurera din App Service-eller Azure Functions-app för att använda Facebook-inloggning
 
@@ -52,29 +52,24 @@ För att kunna slutföra proceduren i den här artikeln behöver du ett Facebook
 
 ## <a name="add-facebook-information-to-your-application"></a><a name="secrets"> </a>Lägga till Facebook-information i ditt program
 
-1. Logga in på [Azure Portal] och navigera till din app service-app.
-1. Välj **Inställningar**  >  **autentisering/auktorisering** och se till att **App Service autentisering** är **aktiverat**.
-1. Välj **Facebook** och klistra in i app-ID och appens hemliga värden som du har fått tidigare. Aktivera alla omfattningar som krävs av ditt program.
-1. Välj **OK**.
+1. Logga in på [Azure Portal] och navigera till din app.
+1. Välj **autentisering** i menyn till vänster. Klicka på **Lägg till identitets leverantör**.
+1. Välj **Facebook** i list rutan identitets leverantör. Klistra in i app-ID och appens hemliga värden som du har fått tidigare.
 
-   ![Skärm bild av Facebook-inställningar för mobilapp][0]
+    Hemligheten kommer att lagras som en plats-trög [program inställning](./configure-common.md#configure-app-settings) med namnet `FACEBOOK_PROVIDER_AUTHENTICATION_SECRET` . Du kan uppdatera den inställningen senare om du vill använda [Key Vault referenser](./app-service-key-vault-references.md) om du vill hantera hemligheten i Azure Key Vault.
 
-    Som standard tillhandahåller App Service autentisering, men den begränsar inte tillåten åtkomst till webbplatsens innehåll och API: er. Du måste auktorisera användare i din app-kod.
-1. Valfritt Om du bara vill begränsa åtkomsten till användare som autentiserats av Facebook anger du **åtgärd som ska vidtas när begäran inte autentiseras** till **Facebook**. När du ställer in den här funktionen kräver appen att alla begär Anden ska autentiseras. Det omdirigerar också alla oautentiserade begär anden till Facebook för autentisering.
+1. Om det här är den första identitetsprovider som kon figurer ATS för programmet visas även avsnittet **App Service autentiseringsinställningar** . Annars kan du gå vidare till nästa steg.
+    
+    De här alternativen avgör hur programmet svarar på oautentiserade begär Anden och standard valet dirigerar om alla begär Anden att logga in med den nya providern. Du kan ändra det här beteendet nu eller ändra inställningarna senare från skärmen main **Authentication** genom att välja **Redigera** bredvid **autentiseringsinställningar**. Mer information om de här alternativen finns i [Authentication Flow](overview-authentication-authorization.md#authentication-flow).
 
-   > [!CAUTION]
-   > Att begränsa åtkomsten på det här sättet gäller alla anrop till appen, vilket kanske inte är önskvärt för appar som har en offentligt tillgänglig start sida, som i många program med en enda sida. För sådana program **tillåts anonyma begär Anden (ingen åtgärd)** , så att appen manuellt startar själva autentiseringen. Mer information finns i [Authentication Flow](overview-authentication-authorization.md#authentication-flow).
+1. Valfritt Klicka på **Nästa: omfattningar** och Lägg till eventuella omfattningar som programmet behöver. De kommer att begäras vid inloggnings tiden för webbläsarbaserade flöden.
+1. Klicka på **Lägg till**.
 
-1. Välj **Spara**.
-
-Du är nu redo att använda Facebook för autentisering i din app.
+Du är nu redo att använda Facebook för autentisering i din app. Providern visas på skärmen **autentisering** . Därifrån kan du redigera eller ta bort den här providerns konfiguration.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Nästa steg
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
-
-<!-- Images. -->
-[0]: ./media/app-service-mobile-how-to-configure-facebook-authentication/mobile-app-facebook-settings.png
 
 <!-- URLs. -->
 [Facebook-utvecklare]: https://go.microsoft.com/fwlink/p/?LinkId=268286

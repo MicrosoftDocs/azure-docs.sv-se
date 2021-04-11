@@ -7,12 +7,12 @@ ms.service: mysql
 ms.subservice: migration-guide
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: 049a0ad45ea82210d8fac28db0fb3d067841bba4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4d553f6c87d1044f8bde7460a0ea7bf123dd1851
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625151"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450080"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migrera MySQL-databasen med hjälp av import och export
 
@@ -35,13 +35,13 @@ Skapa en tom databas på Azure Database for MySQL server med MySQL Workbench, TO
 
 Gör så här för att ansluta:
 
-1. I Azure Portal kan du leta efter anslutnings informationen i **översikts** fönstret i Azure Database för MySQL.
+1. I Azure Portal tittar du på anslutnings informationen i **översikts** fönstret för din Azure Database for MySQL.
 
    :::image type="content" source="./media/concepts-migrate-import-export/1_server-overview-name-login.png" alt-text="Skärm bild av information om Azure Database for MySQL Server-anslutningen i Azure Portal.":::
 
 1. Lägg till anslutnings informationen till MySQL Workbench.
 
-   :::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="Anslutnings sträng för MySQL Workbench":::
+   :::image type="content" source="./media/concepts-migrate-import-export/2_setup-new-connection.png" alt-text="Skärm bild av anslutnings strängen MySQL Workbench.":::
 
 ## <a name="determine-when-to-use-import-and-export-techniques"></a>Avgöra när import-och export tekniker ska användas
 
@@ -50,12 +50,12 @@ Gör så här för att ansluta:
 
 I följande scenarier använder du MySQL-verktyg för att importera och exportera databaser till MySQL-databasen. För andra verktyg går du till avsnittet "autentiseringsmetoder" (sidan 22) i [guiden MySQL till Azure Database migration](https://github.com/Azure/azure-mysql/blob/master/MigrationGuide/MySQL%20Migration%20Guide_v1.1.pdf). 
 
-- När du behöver selektivt välja några tabeller som ska importeras från en befintlig MySQL-databas till din Azure MySQL-databas, är det bäst att använda import-och export teknik.  Genom att göra det kan du utelämna eventuella tabeller som inte behövs från migreringen för att spara tid och resurser. Använd t `--include-tables` `--exclude-tables` . ex. växeln eller med [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) och `--tables` växeln med [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
+- När du behöver selektivt välja några tabeller som ska importeras från en befintlig MySQL-databas till din Azure MySQL-databas, är det bäst att använda import-och export teknik. Genom att göra det kan du utelämna eventuella tabeller som inte behövs från migreringen för att spara tid och resurser. Använd t. ex. `--include-tables` `--exclude-tables` växeln eller med [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables)och `--tables` växeln med [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
 - När du flyttar andra databas objekt än tabeller, skapar du explicit dessa objekt. Ta med begränsningar (primär nyckel, sekundär nyckel och index), vyer, funktioner, procedurer, utlösare och andra databas objekt som du vill migrera.
 - När du migrerar data från externa data källor som inte är en MySQL-databas skapar du Flat Files och importerar dem med hjälp av [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html).
 
 > [!Important]
-> Både en server och en flexibel Server stöder *bara InnoDB-lagrings motorn*. Se till att alla tabeller i databasen använder InnoDB lagrings motor när du läser in data i Azure Database för MySQL.
+> Både en server och en flexibel Server stöder bara InnoDB-lagrings motorn. Se till att alla tabeller i databasen använder InnoDB lagrings motor när du läser in data i Azure Database för MySQL.
 >
 > Om käll databasen använder en annan lagrings motor konverterar du till InnoDB-motorn innan du migrerar databasen. Om du till exempel har en WordPress-eller webbapp som använder sig av en ISAM-motor måste du först konvertera tabellerna genom att migrera data till InnoDB-tabeller. Använd satsen för `ENGINE=INNODB` att ställa in motorn för att skapa en tabell och överför sedan data till den kompatibla tabellen innan migreringen.
 
@@ -127,7 +127,7 @@ Du kan använda fönstret **data export** för att exportera MySQL-data.
 
 1. Välj de databas objekt som ska exporteras och konfigurera de relaterade alternativen.
 1. Välj **Uppdatera** för att läsa in de aktuella objekten.
-1. Alternativt kan du välja **Avancerade alternativ** längst upp till höger för att förfina export åtgärden. Du kan till exempel lägga till tabell lås, använda Ersätt i stället för INSERT-instruktioner och citat identifierare med tecken med autoskalning.
+1. Alternativt kan du välja **Avancerade alternativ** längst upp till höger för att förfina export åtgärden. Du kan till exempel lägga till tabell lås, använda `replace` i stället för `insert` instruktioner och citat identifierare med uppslags tecken.
 1. Välj **starta export** för att starta export processen.
 
 

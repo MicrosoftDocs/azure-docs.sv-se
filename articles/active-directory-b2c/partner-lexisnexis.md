@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5f408699cae9580188a3780fc8f8654eaa97c26b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 362704368958d2600d16cd907421917b824a59cb
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97108441"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256607"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Självstudie för att konfigurera LexisNexis med Azure Active Directory B2C
 
@@ -122,7 +122,7 @@ I den angivna [TrustFrameworkExtensions-principen](https://github.com/azure-ad-b
 
 ### <a name="part-7---configure-the-azure-ad-b2c-policy"></a>Del 7 – konfigurera principen för Azure AD B2C
 
-Se det här [dokumentet](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) för att hämta [Start paket för lokala konton](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) och konfigurera [principen](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/policy) för Azure AD B2C klient.
+Se det här [dokumentet](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack) för att hämta [Start paket för lokala konton](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) och konfigurera [principen](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/policy) för Azure AD B2C klient.
 
 >[!NOTE]
 >Uppdatera de angivna principerna så att de relaterar till din angivna klient.
@@ -155,4 +155,4 @@ Mer information finns i följande artiklar:
 
 - [Anpassade principer i Azure AD B2C](./custom-policy-overview.md)
 
-- [Kom igång med anpassade principer i Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Kom igång med anpassade principer i Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

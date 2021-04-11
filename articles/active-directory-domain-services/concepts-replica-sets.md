@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/26/2021
+ms.date: 03/30/2021
 ms.author: justinha
-ms.openlocfilehash: 8eb1560887c08c3f64fa599c39e5577242d2a1e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bcd3ebef027ec72728be21b0fe1504236f553ba
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101689070"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058178"
 ---
 # <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services"></a>Repliker anger koncept och funktioner för Azure Active Directory Domain Services
 
@@ -54,7 +54,7 @@ I följande exempel visas en hanterad domän med tre replik uppsättningar för 
 
 Standard-SKU: n för en hanterad domän är *företags* -SKU: n, som stöder flera replik uppsättningar. Om du vill skapa fler replik uppsättningar om du har ändrat till *standard* -SKU: n [uppgraderar du den hanterade domänen](change-sku.md) till *Enterprise* eller *Premium*.
 
-Det högsta antalet replik uppsättningar som stöds är fyra, inklusive den första repliken som skapas när du skapade den hanterade domänen.
+Det högsta antalet replik uppsättningar som stöds är fem, inklusive den första repliken som skapas när du skapade den hanterade domänen.
 
 Faktureringen för varje replik uppsättning baseras på SKU: n för domän konfiguration. Om du till exempel har en hanterad domän som använder *Enterprise* -SKU: n och du har tre replik uppsättningar debiteras din prenumeration per timme för var och en av de tre replik uppsättningarna.
 
@@ -66,7 +66,7 @@ Nej. Replik uppsättningar måste vara i samma prenumeration som den hanterade d
 
 ### <a name="how-many-replica-sets-can-i-create"></a>Hur många replik uppsättningar kan jag skapa?
 
-Du kan skapa högst fyra replik uppsättningar – den inledande replik uppsättningen för den hanterade domänen plus tre ytterligare replik uppsättningar.
+Du kan skapa högst fem replik uppsättningar – den inledande replik uppsättningen för den hanterade domänen plus ytterligare fyra replik uppsättningar.
 
 ### <a name="how-does-user-and-group-information-get-synchronized-to-my-replica-sets"></a>Hur kommer användar-och grupp information att synkroniseras med mina replik uppsättningar?
 

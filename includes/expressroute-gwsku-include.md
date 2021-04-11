@@ -2,23 +2,25 @@
 title: ta med fil
 description: ta med fil
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: include
-ms.date: 03/22/2018
-ms.author: cherylmc
+ms.date: 04/05/2021
+ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: bf526ebeebb18e22f133383e7956d68584db2486
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 27f5755ce8b7d204cad6cdc2281d7992bf86615a
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "67187877"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504721"
 ---
 När du skapar en virtuell nätverksgateway måste du ange vilken gateway-SKU som du vill använda. När du väljer en högre gateway-SKU allokeras fler processorer och mer nätverksbandbredd till gatewayen så att gatewayen kan hantera ett större nätverksgenomflöde till det virtuella nätverket. 
 
-ExpressRoute virtuella nätverksgateway kan använda följande SKU: er: 
+ExpressRoute virtuella nätverksgateway kan använda följande SKU: er:
 
-* Standard
-* HighPerformance
-* UltraPerformance
+|     | VPN Gateway och ExpressRoute samexisterar | FastPath | Högsta antal krets anslutningar |
+| --- | --- | --- | --- |
+| **Standard** | Ja | Inga | 4 |
+| **HighPerformance** | Ja | Inga | 4 |
+| **UltraPerformance** | Ja | Ja | 16 |

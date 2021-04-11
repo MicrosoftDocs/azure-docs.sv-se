@@ -4,12 +4,12 @@ description: Lär dig hur du skapar din första Azure-funktion för serverfri k�
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 6ca187181d68d7924f97ebfac08e81dec77251e9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea5b6a9e51b6982a33dc748f72557ed539b8e2e0
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492152"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385997"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Skapa din första funktion i Azure Portal
 
@@ -60,11 +60,7 @@ Skapa sedan en funktion i appen ny funktion.
 
     ![Kopiera funktionswebbadressen från Azure Portal](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. Klistra in funktionens URL i adressfältet för din webbläsare. Lägg till frågesträngen `?name=<your_name>` i slutet av den här URL: en och tryck på RETUR för att köra begäran. 
-
-    I följande exempel visas svaret i webbläsaren:
-
-    ![Funktionssvar i webbläsaren.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
+1. Klistra in funktionens URL i adressfältet för din webbläsare. Lägg till frågesträngen `?name=<your_name>` i slutet av den här URL: en och tryck på RETUR för att köra begäran. I webbläsaren ska ett svarsmeddelande visas som visar att värdet för frågesträngen har återställts. 
 
     Om URL: en för begäran innehöll en [åtkomst nyckel](functions-bindings-http-webhook-trigger.md#authorization-keys) ( `?code=...` ), innebär det att du väljer **funktion** i stället för **Anonym** åtkomst nivå när du skapar funktionen. I så fall bör du istället lägga till `&name=<your_name>` .
 

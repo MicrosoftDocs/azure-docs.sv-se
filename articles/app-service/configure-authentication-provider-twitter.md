@@ -3,16 +3,16 @@ title: Konfigurera Twitter-autentisering
 description: Lär dig hur du konfigurerar Twitter-autentisering som identitets leverantör för din App Service eller Azure Functions app.
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
 ms.topic: article
-ms.date: 02/28/2020
+ms.date: 03/29/2021
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: 11c913b12b4dcb7d2a5ffa532064b347b82904ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ecce954991d9f3901c54a6f87fc803b32469862
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80519914"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077983"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-twitter-login"></a>Konfigurera din App Service-eller Azure Functions-app för att använda Twitter-inloggning
 
@@ -34,38 +34,28 @@ För att kunna slutföra proceduren i den här artikeln behöver du ett Twitter-
    - API-nyckel
    - Nyckel för API-hemlighet
 
-   > [!NOTE]
+   > [!IMPORTANT]
    > Nyckeln för API-hemlighet är en viktig säkerhets autentiseringsuppgift. Dela inte den här hemligheten med någon eller distribuera den med din app.
 
 ## <a name="add-twitter-information-to-your-application"></a><a name="secrets"> </a>Lägg till Twitter-information i ditt program
 
-1. Gå till ditt program i [Azure Portal].
-1. Välj **Inställningar**  >  **autentisering/auktorisering** och se till att **App Service autentisering** är **aktiverat**.
-1. Välj **Twitter**.
-1. Klistra in `API key` värdena och `API secret key` som du har fått tidigare.
-1. Välj **OK**.
+1. Logga in på [Azure Portal] och navigera till din app.
+1. Välj **autentisering** i menyn till vänster. Klicka på **Lägg till identitets leverantör**.
+1. Välj **Twitter** i list rutan identitets leverantör. Klistra in `API key` värdena och `API secret key` som du har fått tidigare.
 
-   ![Skärm bild av Twitter-inställningar för mobilapp][1]
+    Hemligheten kommer att lagras som en plats-trög [program inställning](./configure-common.md#configure-app-settings) med namnet `TWITTER_PROVIDER_AUTHENTICATION_SECRET` . Du kan uppdatera den inställningen senare om du vill använda [Key Vault referenser](./app-service-key-vault-references.md) om du vill hantera hemligheten i Azure Key Vault.
 
-   Som standard tillhandahåller App Service autentisering, men begränsar inte tillåten åtkomst till webbplatsens innehåll och API: er. Du måste auktorisera användare i din app-kod.
+1. Om det här är den första identitetsprovider som kon figurer ATS för programmet visas även avsnittet **App Service autentiseringsinställningar** . Annars kan du gå vidare till nästa steg.
+    
+    De här alternativen avgör hur programmet svarar på oautentiserade begär Anden och standard valet dirigerar om alla begär Anden att logga in med den nya providern. Du kan ändra det här beteendet nu eller ändra inställningarna senare från skärmen main **Authentication** genom att välja **Redigera** bredvid **autentiseringsinställningar**. Mer information om de här alternativen finns i [Authentication Flow](overview-authentication-authorization.md#authentication-flow).
 
-1. Valfritt Om du vill begränsa åtkomsten till din webbplats till enbart användare som autentiserats av Twitter, anger **du åtgärd som ska vidtas när förfrågan inte autentiseras** till **Twitter**. När du ställer in den här funktionen kräver appen att alla begär Anden ska autentiseras. Det omdirigerar också alla oautentiserade begär anden till Twitter för autentisering.
+1. Klicka på **Lägg till**.
 
-   > [!CAUTION]
-   > Att begränsa åtkomsten på det här sättet gäller alla anrop till appen, vilket kanske inte är önskvärt för appar som har en offentligt tillgänglig start sida, som i många program med en enda sida. För sådana program **tillåts anonyma begär Anden (ingen åtgärd)** , så att appen manuellt startar själva autentiseringen. Mer information finns i [Authentication Flow](overview-authentication-authorization.md#authentication-flow).
-
-1. Välj **Spara**.
-
-Du är nu redo att använda Twitter för autentisering i din app.
+Du är nu redo att använda Twitter för autentisering i din app. Providern visas på skärmen **autentisering** . Därifrån kan du redigera eller ta bort den här providerns konfiguration.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Nästa steg
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
-
-<!-- Images. -->
-
-[0]: ./media/app-service-mobile-how-to-configure-twitter-authentication/app-service-twitter-redirect.png
-[1]: ./media/app-service-mobile-how-to-configure-twitter-authentication/mobile-app-twitter-settings.png
 
 <!-- URLs. -->
 

@@ -44,7 +44,7 @@
     - name: Digitala tvillingenheter
       href: concepts-digital-twin.md
     - name: Enhetscertifiering
-      href: concepts-certification-program.md
+      href: ../certification/program-requirements-pnp.md
     - name: Modelldatabas
       href: concepts-model-repository.md
     - name: Använda modeller i en lösning
@@ -61,8 +61,6 @@
       href: howto-use-embedded-c.md
     - name: Hantera digitala tvillingar
       href: howto-manage-digital-twin.md
-    - name: Certifiera en enhet
-      href: howto-certify-device.md
     - name: Så här ansluter du ett IoT Plug and Play Bridge-exempel
       href: howto-use-iot-pnp-bridge.md
     - name: Skapa och distribuera IoT Plug and Play-brygga

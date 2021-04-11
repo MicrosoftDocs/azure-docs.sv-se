@@ -6,15 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/23/2021
+ms.date: 03/30/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to manage network interfaces on an Azure Stack Edge Pro device so that I can use it to run applications using Edge compute before sending it to Azure.
-ms.openlocfilehash: 84077f174fabd02afcd5171e8d365e8cbd3a52c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e709b04b4eac60e6cc0ba3e53eb77583162dfef
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027740"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078901"
 ---
 # <a name="use-the-azure-portal-to-manage-network-interfaces-on-the-vms-on-your-azure-stack-edge-pro-gpu"></a>Använd Azure Portal för att hantera nätverks gränssnitt på de virtuella datorerna på din Azure Stack Edge Pro GPU
 
@@ -40,7 +39,7 @@ Enheten stöder bara en virtuell växel men flera virtuella nätverks gränssnit
 
 Innan du börjar hantera virtuella datorer på enheten via Azure Portal måste du kontrol lera att:
 
-1. Du har aktiverat ett nätverks gränssnitt för beräkning på enheten. Den här åtgärden skapar en virtuell växel på det nätverks gränssnittet på den virtuella datorn. 
+1. Du har åtkomst till en aktive rad Azure Stack Edge Pro GPU-enhet. Du har aktiverat ett nätverks gränssnitt för beräkning på enheten. Den här åtgärden skapar en virtuell växel på det nätverks gränssnittet på den virtuella datorn. 
     1. I enhetens lokala användar gränssnitt går du till **Compute**. Välj det nätverks gränssnitt som du ska använda för att skapa en virtuell växel.
 
         > [!IMPORTANT] 

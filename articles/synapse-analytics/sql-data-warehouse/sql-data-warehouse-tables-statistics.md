@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3ade41c51cbb8065734e8957cfc8b9f0c22b2df3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42dd34f0fe4006411f413002eb7c351646e72390
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98673374"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078969"
 ---
 # <a name="table-statistics-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Tabell statistik för dedikerad SQL-pool i Azure Synapse Analytics
 
@@ -90,7 +90,7 @@ Men om din dedikerade SQL-pool endast innehåller ett land/region och du hämtar
 
 Följande är rekommendationer om uppdaterings statistik:
 
-|||
+| Statistik-attribut | Rekommendation|
 |-|-|
 | **Frekvens för statistik uppdateringar**  | Försiktigt: varje dag </br> När du har läst in eller omvandlat dina data |
 | **Sampling** |  Färre än 1 000 000 000 rader, Använd standard sampling (20 procent). </br> Med fler än 1 000 000 000 rader använder du samplingen av två procent. |

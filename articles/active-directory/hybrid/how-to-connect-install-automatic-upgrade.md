@@ -16,15 +16,16 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ec237af8cd0c79d5a7b62aad0bc6521e5cf3d7e
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91317624"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059249"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatisk uppgradering
-Den här funktionen introducerades med build- [1.1.105.0 (lanserades februari 2016)](reference-connect-version-history.md).  Funktionen uppdaterades i [build-1.1.561](reference-connect-version-history.md) och stöder nu ytterligare scenarier som tidigare inte stöds.
+Azure AD Connect automatisk uppgradering är en funktion som regelbundet söker efter nyare versioner av Azure AD Connect. Om din server är aktive rad för automatisk uppgradering och en nyare version hittas som servern är berättigad till, kommer den att utföra en automatisk uppgradering till den nyare versionen.
+Observera att för säkerhets skäl validerar agenten som utför den automatiska uppgraderingen den nya versionen av Azure AD Connect baserat på den digitala signaturen för den nedladdade versionen.
 
 ## <a name="overview"></a>Översikt
 Att se till att din Azure AD Connect installation alltid är uppdaterad har aldrig varit enklare med funktionen för **automatisk uppgradering** . Den här funktionen är aktive rad som standard för Express installationer och DirSync-uppgraderingar. När en ny version släpps, uppgraderas installationen automatiskt.

@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: f720cc196f4034d29ec1d628e28d3534b10f3e41
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a94784f2f3fc622e0232033d63bc957279a7d34c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025823"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076351"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Självstudie: implementera CI/CD med GitOps med Azure Arc-aktiverade Kubernetes-kluster
 
@@ -58,7 +58,7 @@ Den här självstudien förutsätter att Azure-DevOps, Azure-databaser och pipel
 
 ## <a name="import-application-and-gitops-repos-into-azure-repos"></a>Importera program-och GitOps-databaser till Azure databaser
 
-Importera ett [program lagrings platsen](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd#application-repo) och en [GitOps-lagrings platsen](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd#gitops-repo) till Azure databaser. I den här självstudien använder du följande exempel databaser:
+Importera ett [program lagrings platsen](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#application-repo) och en [GitOps-lagrings platsen](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#gitops-repo) till Azure databaser. I den här självstudien använder du följande exempel databaser:
 
 * **Arc-cicd-demo-src** Application lagrings platsen
    * ADRESSER https://github.com/Azure/arc-cicd-demo-src
@@ -338,4 +338,4 @@ I den här självstudien har du skapat ett fullständigt CI/CD-arbetsflöde som 
 Gå vidare till vår konceptuella artikel och lär dig mer om GitOps och konfigurationer med Azure Arc-aktiverade Kubernetes.
 
 > [!div class="nextstepaction"]
-> [CI/CD-arbetsflöde med GitOps-Azure Arc-aktiverad Kubernetes](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd)
+> [CI/CD-arbetsflöde med GitOps-Azure Arc-aktiverad Kubernetes](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd)

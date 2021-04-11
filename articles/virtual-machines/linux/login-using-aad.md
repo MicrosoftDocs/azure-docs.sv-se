@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: sandeo
-ms.openlocfilehash: 44dfd07a5b749d88552bb1dcac2ee4b4e5ce65e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e14e214a220d9dade4fac028620d23c563d86a8f
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565248"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554084"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>För hands version: Logga in på en virtuell Linux-dator i Azure med Azure Active Directory autentisering
 
@@ -140,7 +140,7 @@ Mer information om hur du använder Azure RBAC för att hantera åtkomst till di
 
 ## <a name="using-conditional-access"></a>Använda villkorlig åtkomst
 
-Du kan tillämpa principer för villkorlig åtkomst, till exempel Multi-Factor Authentication eller användar inloggnings risker innan du auktoriserar åtkomsten till virtuella Linux-datorer i Azure som är aktiverade med Azure AD-inloggning. Om du vill tillämpa principen för villkorlig åtkomst måste du välja "Azure Linux VM Sign-in"-appen från modulen molnappar eller åtgärder tilldelning och sedan använda inloggnings risker som ett villkor och/eller kräva multifaktorautentisering som en bevilja åtkomst kontroll. 
+Du kan tillämpa principer för villkorlig åtkomst, till exempel Multi-Factor Authentication eller användar inloggnings risker innan du auktoriserar åtkomsten till virtuella Linux-datorer i Azure som är aktiverade med Azure AD-inloggning. Om du vill tillämpa principen för villkorlig åtkomst måste du välja "Microsoft Azure Linux Virtual Machine Sign-in"-appen från molnbaserad Apps eller åtgärder tilldelnings alternativ och sedan använda inloggnings risker som ett villkor och/eller kräva Multi-Factor Authentication som en bevilja åtkomst kontroll. 
 
 > [!WARNING]
 > Per användare aktiverat/Tvingad Azure AD-Multi-Factor Authentication stöds inte för VM-inloggning.

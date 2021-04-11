@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9a878dc5cdbbe336e7279d0cd919bd17cd42d0e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e1b7e091fe09bc2c093cc84473bd07917347f26d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728223"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220808"
 ---
 # <a name="communication-services-notifications"></a>Meddelanden om kommunikations tjänster
 
@@ -67,13 +67,24 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 #### <a name="using-the-azure-portal-to-link-your-notification-hub"></a>Använda Azure Portal för att länka din Notification Hub
 
-I portalen navigerar du till din Azure Communication Services-resurs. I resursen kommunikations tjänster väljer du push-meddelanden på den vänstra menyn på sidan kommunikations tjänster och ansluter den meddelande hubb som du etablerade tidigare. Du måste ange anslutnings strängen och resourceId här:
+1. I portalen går du till din Azure Communication Services-resurs.
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Skärm bild som visar inställningarna för push-meddelanden inom Azure Portal.":::
+1. I resursen kommunikations tjänster väljer du **push-meddelanden** på den vänstra menyn på sidan kommunikations tjänster och ansluter den meddelande hubb som du etablerade tidigare.
+
+1. Välj **Anslut Notification Hub**. Du ser en lista över meddelande hubbar som är tillgängliga för anslutning.
+ 
+1. Välj den meddelande hubb som du vill använda för den här resursen.
+ 
+   - Om du behöver skapa en ny hubb väljer du **Skapa ny meddelande hubb** för att få ett nytt nav som har skapats för den här resursen.
+
+   :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Skärm bild som visar inställningarna för push-meddelanden inom Azure Portal.":::
+
+Nu visas den Notification Hub som du länkade med anslutet tillstånd.
+
+Om du vill använda en annan hubb för resursen väljer du **Koppla från** och upprepar sedan stegen för att länka den olika Notification Hub.
 
 > [!NOTE]
-> Om Azure Notification Hub-anslutningssträngen har uppdaterats måste kommunikations tjänst resursen också uppdateras.
-Alla ändringar på hur hubben länkas visas i data planet (d.v.s. När du skickar ett meddelande) inom en period på högst ``10`` minuter. Detta gäller även när navet är länkat för första gången **om** det fanns meddelanden som skickats tidigare.
+> Alla ändringar på hur hubben länkas visas i data planet (det vill säga när du skickar ett meddelande) inom en längsta period på 10 minuter. Samma sak gäller när hubben är länkad för första gången, **om** meddelanden skickades innan ändringen.
 
 ### <a name="device-registration"></a>Enhetsregistrering
 

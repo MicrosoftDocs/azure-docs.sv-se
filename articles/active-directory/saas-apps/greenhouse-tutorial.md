@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/25/2020
+ms.date: 03/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 77f72d6c63231f0854b58470f86c65ffc81c9775
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a14b16e34faa827228594bf6d4f0bd9ed48cf72
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98731927"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221763"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Självstudie: Azure Active Directory integrering med växthus
 
@@ -40,7 +40,7 @@ För att komma igång behöver du följande objekt:
 
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
-* Greenhouse stöder **SP**-initierad enkel inloggning
+* Växthus stöder **SP-och IDP** -initierad SSO.
 
 ## <a name="adding-greenhouse-from-the-gallery"></a>Lägga till Greenhouse från galleriet
 
@@ -73,18 +73,28 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. På sidan för hantering av **växthus** program på sidan Azure Portal letar du reda på avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
     ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
-4. I avsnittet **Grundläggande SAML-konfiguration** utför du följande steg:
+1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I textrutan **Inloggnings-URL** anger du en URL enligt följande mönster: `https://<companyname>.greenhouse.io`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<COMPANYNAME>.greenhouse.io`
 
-    b. I textrutan **Identifierare (entitets-ID)** anger du en URL enligt följande mönster: `https://<companyname>.greenhouse.io`
+    b. I text rutan **svars-URL** skriver du en URL med något av följande mönster:
+    
+    | Svars-URL|
+    | -------------- |
+    | `https://<COMPANYNAME>.greenhouse.io/users/saml/consume` |
+    | `https://app.greenhouse.io/<ENTITY ID>/users/saml/consume` |
+    |
+
+1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
+
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<COMPANYNAME>.greenhouse.io`
 
     > [!NOTE]
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med faktisk inloggnings-URL och identifierare. Kontakta [supportteamet för Greenhouse](https://www.greenhouse.io/contact) för att få dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
+    > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL: en och inloggnings-URL. Kontakta [supportteamet för Greenhouse](https://www.greenhouse.io/contact) för att få dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
 4. På sidan **Set up Single Sign-On with SAML** (Konfigurera enkel inloggning med SAML) går du till avsnittet **SAML Signing Certificate** (SAML-signeringscertifikat), klickar på **Ladda ned** för att ladda ned **Federation Metadata-XML** från de angivna alternativen enligt dina behov och spara den på datorn.
 
@@ -127,7 +137,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     ![skärm bild för SSO-Sidan](./media/greenhouse-tutorial/configure.png)
 
-1. Utför följande steg på sidan enskild Sign-On.
+1. Utför följande steg på sidan för **enkel inloggning** .
 
     ![skärm bild för konfigurations sidan för SSO](./media/greenhouse-tutorial/sso-page.png)
 
@@ -172,15 +182,22 @@ För att Azure AD-användare ska kunna logga in i Greenhouse måste de etableras
       >[!NOTE]
       >Azure Active Directory-kontoinnehavaren får ett e-postmeddelande med en länk för att bekräfta kontot innan det blir aktivt.
 
-### <a name="test-sso"></a>Testa SSO 
+## <a name="test-sso"></a>Testa SSO 
 
 I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigerar till den växthus inloggnings-URL: en där du kan starta inloggnings flödet. 
+#### <a name="sp-initiated"></a>SP initierad:
+
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till en inloggnings-URL för växthus-inloggning där du kan starta inloggnings flödet.  
 
 * Gå till inloggnings-URL: n för växthus direkt och starta inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen för växthus i Mina appar omdirigeras den till den växthus inloggnings-URL: en. Mer information om Mina appar finns i [Introduktion till Mina appar](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="idp-initiated"></a>IDP initierad:
+
+* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på det växthus som du ställer in SSO för. 
+
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på panelen växthus i Mina appar, om det kon figurer ATS i SP-läge, omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du loggas in automatiskt på den växthus som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
 
 
 ## <a name="next-steps"></a>Nästa steg

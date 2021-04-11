@@ -4,15 +4,15 @@ description: Du kan ange autentiseringsuppgifter för AzCopy-åtgärder med hjä
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 04/01/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 99e06a36c2afa66f2874c14990d50c6287623efd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: dd3aeaf133c02ef54eceaff776ead34cc2318260
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97672499"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220485"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>Auktorisera åtkomst till blobbar med AzCopy och Azure Active Directory (Azure AD)
 
@@ -261,9 +261,10 @@ Skriv följande kommando och tryck sedan på RETUR-tangenten.
 export AZCOPY_AUTO_LOGIN_TYPE=SPN
 export AZCOPY_SPA_APPLICATION_ID=<application-id>
 export AZCOPY_SPA_CLIENT_SECRET=<client-secret>
+export AZCOPY_TENANT_ID=<tenant-id>
 ```
 
-Ersätt `<application-id>` plats hållaren med program-ID: t för tjänstens huvud namn för appens registrering. Ersätt `<client-secret>` plats hållaren med klient hemligheten.
+Ersätt `<application-id>` plats hållaren med program-ID: t för tjänstens huvud namn för appens registrering. Ersätt `<client-secret>` plats hållaren med klient hemligheten. Ersätt `<tenant-id>` plats hållaren med klient-ID: t för den organisation som lagrings kontot tillhör. Om du vill hitta klient-ID: t väljer du **Azure Active Directory > egenskaper > katalog-ID** i Azure Portal. 
 
 > [!NOTE]
 > Överväg att använda en uppvarning för att samla in lösen ordet från användaren. På så sätt visas inte ditt lösen ord i kommando historiken. 
@@ -282,9 +283,10 @@ Skriv följande kommando och tryck sedan på RETUR-tangenten.
 export AZCOPY_AUTO_LOGIN_TYPE=SPN
 export AZCOPY_SPA_CERT_PATH=<path-to-certificate-file>
 export AZCOPY_SPA_CERT_PASSWORD=<certificate-password>
+export AZCOPY_TENANT_ID=<tenant-id>
 ```
 
-Ersätt `<path-to-certificate-file>` plats hållaren med den relativa eller fullständigt kvalificerade sökvägen till certifikat filen. AzCopy sparar sökvägen till det här certifikatet, men det sparar inte en kopia av certifikatet, så se till att hålla certifikatet på plats. Ersätt `<certificate-password>` plats hållaren med lösen ordet för certifikatet.
+Ersätt `<path-to-certificate-file>` plats hållaren med den relativa eller fullständigt kvalificerade sökvägen till certifikat filen. AzCopy sparar sökvägen till det här certifikatet, men det sparar inte en kopia av certifikatet, så se till att hålla certifikatet på plats. Ersätt `<certificate-password>` plats hållaren med lösen ordet för certifikatet. Ersätt `<tenant-id>` plats hållaren med klient-ID: t för den organisation som lagrings kontot tillhör. Om du vill hitta klient-ID: t väljer du **Azure Active Directory > egenskaper > katalog-ID** i Azure Portal. 
 
 > [!NOTE]
 > Överväg att använda en uppvarning för att samla in lösen ordet från användaren. På så sätt visas inte ditt lösen ord i kommando historiken. 

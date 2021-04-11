@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 79d21549e7234e4ee342776466f8d3d8ced5f08c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1302d44a4cb5b09f6dc3b1bf0cb08a12a932c87
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508817"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029411"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Vad är en privat Azure-slutpunkt?
 
@@ -39,7 +39,7 @@ Här följer några viktiga uppgifter om privata slut punkter:
 
 - När du skapar en privat slut punkt skapas även ett skrivskyddat nätverks gränssnitt för resursens livs cykel. Gränssnittet tilldelas dynamiskt privata IP-adresser från under nätet som mappar till den privata länk resursen. Värdet för den privata IP-adressen förblir oförändrat för hela livs cykeln för den privata slut punkten.
  
-- Den privata slut punkten måste distribueras i samma region som det virtuella nätverket. 
+- Den privata slut punkten måste distribueras i samma region och prenumeration som det virtuella nätverket. 
  
 - Den privata länk resursen kan distribueras i en annan region än det virtuella nätverket och den privata slut punkten.
  

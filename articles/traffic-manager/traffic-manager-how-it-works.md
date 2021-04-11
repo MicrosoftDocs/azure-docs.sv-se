@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: duau
-ms.openlocfilehash: a1e1bd107e8b3b9209f99d1abfc4d7e391c3c4a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 376aa04228113c56f0f797f737833802c9eca021
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98184347"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029496"
 ---
 # <a name="how-traffic-manager-works"></a>Så här fungerar Traffic Manager
 
@@ -30,7 +30,7 @@ Traffic Manager ger två viktiga fördelar:
 
 När en klient försöker ansluta till en tjänst måste den först matcha tjänstens DNS-namn till en IP-adress. Klienten ansluter sedan till den IP-adressen för att få åtkomst till tjänsten.
 
-**Den viktigaste punkten att förstå är att Traffic Manager fungerar på DNS-nivå.**  Traffic Manager använder DNS för att dirigera klienter till vissa tjänst slut punkter baserat på reglerna för metoden för trafik dirigering. Klienterna ansluter till den valda slut punkten **direkt**. Traffic Manager är inte en proxy eller gateway. Traffic Manager ser inte trafiken som passerar mellan klienten och tjänsten.
+**Den viktigaste punkten att förstå är att Traffic Manager fungerar på DNS-nivån som finns på program nivån (Layer-7).**  Traffic Manager använder DNS för att dirigera klienter till vissa tjänst slut punkter baserat på reglerna för metoden för trafik dirigering. Klienterna ansluter till den valda slut punkten **direkt**. Traffic Manager är inte en proxy eller gateway. Traffic Manager ser inte trafiken som passerar mellan klienten och tjänsten.
 
 ## <a name="traffic-manager-example"></a>Traffic Manager exempel
 

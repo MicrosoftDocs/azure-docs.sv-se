@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 61ed3ed274505101c65e251260bd759fe78f7b31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7951543d548696c8de403d7980e1a41b678c6cd
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936795"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078676"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell-guide för utvecklare
 
@@ -235,7 +235,7 @@ Loggning i PowerShell-funktioner fungerar som vanlig PowerShell-loggning. Du kan
 | ------------- | -------------- |
 | Fel | **`Write-Error`** |
 | Varning | **`Write-Warning`**  | 
-| Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | Skriver till loggning på _informations_ nivå. |
+| Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`** <br/> Skriver till loggning på _informations_ nivå. |
 | Felsöka | **`Write-Debug`** |
 | Spårning | **`Write-Progress`** <br /> **`Write-Verbose`** |
 

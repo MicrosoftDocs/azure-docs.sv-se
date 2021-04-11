@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: f7f8082cc9120345336610d5cb49741140d3b606
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/30/2021
+ms.openlocfilehash: 491d5f14cc8f456d228a5bc6efaa6686575979c1
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102557020"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078748"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Skapa tillstånds känsliga och tillstånds lösa arbets flöden i Visual Studio Code med tillägget Azure Logic Apps (förhands granskning)
 
@@ -101,8 +101,8 @@ Om du vill skapa och köra ditt Logic app-projekt lokalt i Visual Studio Code n�
 1. Spara anslutnings strängen någon annan stans. När du har skapat ditt Logic app-projekt i Visual Studio Code, måste du lägga till strängen i **local.settings.js** filen i ditt projekts rotmapp.
 
    > [!IMPORTANT]
-   > Om du planerar att distribuera till en Docker-behållare måste du också lägga till den här anslutnings strängen i Docker-filen som du använder för att distribuera.
-
+   > Om du planerar att distribuera till en Docker-behållare, måste du också använda den här anslutnings strängen med Docker-filen som du använder för att distribuera. För produktions scenarier ser du till att du skyddar och skyddar sådana hemligheter och känslig information, till exempel genom att använda ett nyckel valv.
+  
 ### <a name="tools"></a>Verktyg
 
 * [Visual Studio Code 1.30.1 (januari 2019) eller högre](https://code.visualstudio.com/), som är kostnads fri. Hämta och installera även dessa verktyg för Visual Studio Code om du inte redan har dem:
@@ -304,6 +304,9 @@ Innan du kan skapa din Logi Kap par skapar du ett lokalt projekt så att du kan 
          }
       }
       ```
+
+      > [!IMPORTANT]
+      > För produktions scenarier ser du till att du skyddar och skyddar sådana hemligheter och känslig information, till exempel genom att använda ett nyckel valv.
 
    1. När du är klar kontrollerar du att du sparar ändringarna.
 
@@ -1205,7 +1208,10 @@ Om du inte är bekant med Docker kan du läsa följande avsnitt:
 
 * En Docker-fil för det arbets flöde som du använder när du skapar din Docker-behållare
 
-  Exempel på Docker-filen distribuerar en Logic-app. Anger anslutnings strängen som innehåller åtkomst nyckeln för det Azure Storage konto som användes för att publicera Logic app till Azure Portal. Information om hur du hittar den här strängen finns i [Hämta lagrings kontots anslutnings sträng](#find-storage-account-connection-string).
+  Den här exempel Docker-filen distribuerar till exempel en Logic-app och anger den anslutnings sträng som innehåller åtkomst nyckeln för det Azure Storage konto som användes för att publicera Logic-appen till Azure Portal. Information om hur du hittar den här strängen finns i [Hämta lagrings kontots anslutnings sträng](#find-storage-account-connection-string). Mer information finns [i metod tips för att skriva Docker-filer](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/).
+  
+  > [!IMPORTANT]
+  > För produktions scenarier ser du till att du skyddar och skyddar sådana hemligheter och känslig information, till exempel genom att använda ett nyckel valv. För Docker-filer specifikt granskar du [Bygg avbildningar med BuildKit](https://docs.docker.com/develop/develop-images/build_enhancements/) och [hanterar känsliga data med Docker-hemligheter](https://docs.docker.com/engine/swarm/secrets/).
 
    ```text
    FROM mcr.microsoft.com/azure-functions/node:3.0
@@ -1219,8 +1225,6 @@ Om du inte är bekant med Docker kan du läsa följande avsnitt:
 
    RUN cd /home/site/wwwroot
    ```
-
-   Mer information finns i [metod tips för att skriva Docker-filer](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 
 <a name="find-storage-account-connection-string"></a>
 

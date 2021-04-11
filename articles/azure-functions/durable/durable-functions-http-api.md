@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ab9f33616547c073e8e3a2128a441238bf3a17d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84697851"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220461"
 ---
 # <a name="http-api-reference"></a>HTTP API-referens
 
@@ -128,6 +128,7 @@ GET /admin/extensions/DurableTaskExtension/instances/{instanceId}
     &showHistory=[true|false]
     &showHistoryOutput=[true|false]
     &showInput=[true|false]
+    &returnInternalServerErrorOnFailure=[true|false]
 ```
 
 I version 2. x av Functions-körningen har URL-formatet samma parametrar, men med något annorlunda prefix:
@@ -140,6 +141,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
     &showHistory=[true|false]
     &showHistoryOutput=[true|false]
     &showInput=[true|false]
+    &returnInternalServerErrorOnFailure=[true|false]
 ```
 
 Parametrarna för begäran för detta API inkluderar den standard uppsättning som nämnts tidigare samt följande unika parametrar:
@@ -153,16 +155,17 @@ Parametrarna för begäran för detta API inkluderar den standard uppsättning s
 | **`createdTimeFrom`**   | Frågesträng    | Valfri parameter. Filtrerar listan med returnerade instanser som skapades vid eller efter angiven ISO8601-tidsstämpel.|
 | **`createdTimeTo`**     | Frågesträng    | Valfri parameter. Filtrerar listan med returnerade instanser som skapades vid eller före den angivna ISO8601-tidsstämpeln.|
 | **`runtimeStatus`**     | Frågesträng    | Valfri parameter. Filtrerar listan över returnerade instanser baserat på deras körnings status. Om du vill se en lista över möjliga körnings status värden, se artikeln [frågor om instanser](durable-functions-instance-management.md) . |
+| **`returnInternalServerErrorOnFailure`**  | Frågesträng    | Valfri parameter. Om detta är inställt på `true` , returnerar detta API ett HTTP 500-svar i stället för en 200 om instansen är i ett felläge. Den här parametern är avsedd för avsöknings scenarier med automatiserad status. |
 
 ### <a name="response"></a>Svarsåtgärder
 
 Flera möjliga status kod värden kan returneras.
 
-* **HTTP 200 (OK)**: den angivna instansen är i ett slutfört tillstånd.
+* **HTTP 200 (OK)**: den angivna instansen är i ett slutfört eller felaktigt tillstånd.
 * **HTTP 202 (accepterad)**: den angivna instansen pågår.
 * **HTTP 400 (felaktig begäran)**: den angivna instansen misslyckades eller avslutades.
 * **HTTP 404 (hittades inte)**: den angivna instansen finns inte eller så har den inte startats.
-* **HTTP 500 (internt Server fel)**: den angivna instansen misslyckades med ett ohanterat undantag.
+* **HTTP 500 (internt Server fel)**: returneras bara när `returnInternalServerErrorOnFailure` har angetts till `true` och den angivna instansen misslyckades med ett ohanterat undantag.
 
 Svars nytto lasten för **http 200-** och **http 202** -fall är ett JSON-objekt med följande fält:
 
