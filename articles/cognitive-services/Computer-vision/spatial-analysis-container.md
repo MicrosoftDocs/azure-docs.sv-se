@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 87076febd4597556fd2b28245f47442308cd6e6c
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: d257a77940b460bf8be64e3f8376353a859365f7
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108372"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284727"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installera och kör behållaren för rums analys (förhands granskning)
 
@@ -533,7 +533,7 @@ Det här kommandot startar distributionen. Gå till sidan för Azure IoT Hub-ins
 
 ## <a name="validate-that-the-deployment-is-successful"></a>Verifiera att distributionen har slutförts
 
-Det finns flera sätt att verifiera att behållaren körs. Leta upp *körnings statusen* i **inställningarna för IoT Edge modulen** för modulen för spatial analys i Azure IoT Hub-instansen på Azure Portal. Kontrol lera att det **önskade värdet** och det **rapporterade värdet** för *körnings statusen* *körs*.
+Det finns flera sätt att verifiera att behållaren körs. Leta upp *körnings statusen* i **inställningarna för IoT Edge modulen** för modulen för Spatial analys i Azure IoT Hub-instansen på Azure Portal. Kontrol lera att det **önskade värdet** och det **rapporterade värdet** för *körnings statusen* *körs*.
 
 ![Exempel på distributions verifiering](./media/spatial-analysis/deployment-verification.png)
 
@@ -547,8 +547,8 @@ Du måste använda åtgärder för [spatial analys](spatial-analysis-operations.
 
 Om du vill börja använda de utdata som genereras av behållaren kan du läsa följande artiklar:
 
-*   Använd Azure Event Hub SDK för ditt valda programmeringsspråk för att ansluta till Azure IoT Hub-slutpunkten och ta emot händelserna. Mer information finns i [läsa meddelanden från enhet till moln från den inbyggda slut punkten](../../iot-hub/iot-hub-devguide-messages-read-builtin.md) . 
-*   Konfigurera meddelanderoutning på Azure-IoT Hub för att skicka händelserna till andra slut punkter eller spara händelserna till Azure Blob Storage osv. Mer information finns i [IoT Hub](../../iot-hub/iot-hub-devguide-messages-d2c.md) meddelanderoutning. 
+*    Använd Azure Event Hub SDK för ditt valda programmeringsspråk för att ansluta till Azure IoT Hub-slutpunkten och ta emot händelserna. Mer information finns i [läsa meddelanden från enhet till moln från den inbyggda slut punkten](../../iot-hub/iot-hub-devguide-messages-read-builtin.md) . 
+*    Konfigurera meddelanderoutning på Azure-IoT Hub för att skicka händelserna till andra slut punkter eller spara händelserna till Azure Blob Storage osv. Mer information finns i [IoT Hub](../../iot-hub/iot-hub-devguide-messages-d2c.md) meddelanderoutning. 
 
 ## <a name="running-spatial-analysis-with-a-recorded-video-file"></a>Köra rums analys med en inspelad videofil
 

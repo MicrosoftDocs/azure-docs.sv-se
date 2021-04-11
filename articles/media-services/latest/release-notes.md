@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9fe49f44e157708c3083e2c73757988877fbfcb5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b7d99e3de8a796dea19f3a2ad7a03b98239981e2
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563471"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121106"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Viktig information om Azure Media Services v3
 
@@ -54,7 +54,7 @@ Ytterligare språk för video avskrift och under textning är tillgängliga nu i
 * Thai, "th"
 * Turkiska, "TR-TR"
 
-Se de senaste tillgängliga språken i [artikeln analys av koncept för video och ljud.](analyzing-video-audio-files-concept.md)
+Se de senaste tillgängliga språken i [artikeln analys av koncept för video och ljud.](analyze-video-audio-files-concept.md)
 
 ## <a name="february-2021"></a>Februari 2021
 
@@ -134,7 +134,7 @@ Se de senaste exemplen i avsnittet **[Media-Services-v3-Node-självstudier](http
 
 Live-händelser stöder nu ett fakturerings läge med lägre kostnad för "fristående". Detta gör det möjligt för kunderna att förallokera Live-händelser till en lägre kostnad för att skapa "frekventa pooler". Kunderna kan sedan använda Live-händelser för att övergå till körnings tillstånd snabbare än att starta från kall vid skapande.  Detta minskar tiden för att starta kanalen avsevärt och möjliggör snabb allokering av datorer som körs i ett lägre pris läge.
 Se den senaste pris informationen [här](https://azure.microsoft.com/pricing/details/media-services).
-Mer information om StandBy-tillståndet och andra Live-händelser finns i artikeln- [Live händelse tillstånd och fakturering.](./live-event-states-billing.md)
+Mer information om StandBy-tillståndet och andra Live-händelser finns i artikeln- [Live händelse tillstånd och fakturering.](./live-event-states-billing-concept.md)
 
 ## <a name="december-2020"></a>December 2020
 
@@ -146,17 +146,17 @@ Azure Media Services är nu tillgängligt i regionen Norge, östra i Azure Porta
 
 ### <a name="basic-audio-analysis"></a>Grundläggande ljud analys
 
-För inställningen för ljud analys innehåller nu en pris nivå för Basic-läge. Det nya grundläggande ljud analys läget ger dig ett billigt alternativ för att extrahera tal avskrifter och för att formatera utdata och under texter. I det här läget utförs tal-till-text-avskrift och generering av en VTT-under text fil. Utdata från det här läget är en JSON-fil för insikter som bara innehåller nyckelord, avskrifter och tids inställnings information. Automatisk språk identifiering och talare diarization ingår inte i det här läget. Se listan över [språk som stöds.](analyzing-video-audio-files-concept.md#built-in-presets)
+För inställningen för ljud analys innehåller nu en pris nivå för Basic-läge. Det nya grundläggande ljud analys läget ger dig ett billigt alternativ för att extrahera tal avskrifter och för att formatera utdata och under texter. I det här läget utförs tal-till-text-avskrift och generering av en VTT-under text fil. Utdata från det här läget är en JSON-fil för insikter som bara innehåller nyckelord, avskrifter och tids inställnings information. Automatisk språk identifiering och talare diarization ingår inte i det här läget. Se listan över [språk som stöds.](analyze-video-audio-files-concept.md#built-in-presets)
 
 Kunder som använder Indexer v1 och Indexer v2 bör migrera till den grundläggande inställningen för ljud analys.
 
-Mer information om Basic Audio Analyzer-läget finns i [analys av video-och ljudfiler](analyzing-video-audio-files-concept.md).  Information om hur du använder Basic Audio Analyzer-läget med REST API finns i [så här skapar du en grundläggande ljud omvandling](how-to-create-basic-audio-transform.md).
+Mer information om Basic Audio Analyzer-läget finns i [analys av video-och ljudfiler](analyze-video-audio-files-concept.md).  Information om hur du använder Basic Audio Analyzer-läget med REST API finns i [så här skapar du en grundläggande ljud omvandling](how-to-create-basic-audio-transform.md).
 
 ### <a name="live-events"></a>Livehändelser
 
 Uppdateringar av de flesta egenskaper tillåts nu när Live-händelser stoppas. Dessutom kan användare ange ett prefix för det statiska värd namnet för Live Events URL: er för inaktuella indatamängds-och för hands versioner. VanityUrl anropas nu `useStaticHostName` för att bättre avspegla syftet med egenskapen.
 
-Live-händelser har nu ett vänte läge.  Se [Live-händelser och Live-utdata i Media Services](./live-events-outputs-concept.md).
+Live-händelser har nu ett vänte läge.  Se [Live-händelser och Live-utdata i Media Services](./live-event-outputs-concept.md).
 
 En Live-händelse stöder mottagning av olika proportioner för indataport. Med utsträcknings läge kan kunderna ange utsträcknings beteendet för utdata.
 
@@ -173,7 +173,7 @@ Med Live encoding kan du nu lägga till funktioner för att placera fragment i f
 
 Stöd för äldre PlayReady Protected PIFF-kryptering (1,1) är nu tillgängligt i den dynamiska Paketeraren. Detta ger stöd för äldre Smart TV-uppsättningar från Samsung och LG som implementerade de tidiga utkasten av Common Encryption Standard (CENC) som publicerats av Microsoft.  PIFF 1,1-formatet kallas även krypterings format som tidigare stöddes av Silverlight-klientcertifikatet. Idag är det enda användnings Falls scenariot för det här krypterings formatet att rikta in sig på den äldre marknaden för smart TV där det finns ett icke-trivialt antal smarta TV-apparater i vissa regioner som endast stöder Smooth Streaming med PIFF 1,1-kryptering.
 
-Om du vill använda det nya PIFF 1,1-krypterings stödet ändrar du kryptering svärdet till "Piff" i URL-sökvägen för den strömmande lokaliseraren. Mer information finns i [Översikt över Content Protection.](content-protection-overview.md)
+Om du vill använda det nya PIFF 1,1-krypterings stödet ändrar du kryptering svärdet till "Piff" i URL-sökvägen för den strömmande lokaliseraren. Mer information finns i [Översikt över Content Protection.](drm-content-protection-concept.md)
 Exempel: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
 
 > [!NOTE]
@@ -187,11 +187,11 @@ Direkt avskrifter stöder nu 19 språk och åtta regioner.
 
 ### <a name="protecting-your-content-with-media-services-and-azure-ad"></a>Skydda ditt innehåll med Media Services och Azure AD
 
-Vi har publicerat en självstudie [som kallas slut punkt till slut punkt för innehålls skydd med hjälp av Azure AD](./azure-ad-content-protection.md).
+Vi har publicerat en självstudie [som kallas slut punkt till slut punkt för innehålls skydd med hjälp av Azure AD](./architecture-azure-ad-content-protection.md).
 
 ### <a name="high-availability"></a>Hög tillgänglighet
 
-Vi har publicerat en hög tillgänglighet med Media Services-och VOD- [Översikt](./media-services-high-availability-encoding.md) och- [exempel](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming).
+Vi har publicerat en hög tillgänglighet med Media Services-och VOD- [Översikt](./architecture-high-availability-encoding-concept.md) och- [exempel](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming).
 
 ## <a name="june-2020"></a>Juni 2020
 
@@ -243,7 +243,7 @@ Du kan prova följande steg för att se en del av det att huvud utbytet i funger
 
 Direkt avskrift är nu i en offentlig för hands version och är tillgänglig för användning i regionen USA, västra 2.
 
-Direkt avskrift har utformats för att fungera tillsammans med Live-händelser som en tilläggs funktion.  Den stöds både genom direkt-och standard-eller Premium-kodning av Live-händelser.  När den här funktionen är aktive rad använder tjänsten funktionen [tal-till-text](../../cognitive-services/speech-service/speech-to-text.md) i Cognitive Services för att skriva över talade ord i inkommande ljud till text. Den här texten görs sedan tillgänglig för leverans tillsammans med video och ljud i MPEG-streck och HLS-protokoll. Faktureringen baseras på en ny indikator för tillägg som är extra kostnad för Live-händelsen när den är i läget "körs".  Mer information om direkt avskrift och fakturering finns i [direkt skriftering](live-transcription.md)
+Direkt avskrift har utformats för att fungera tillsammans med Live-händelser som en tilläggs funktion.  Den stöds både genom direkt-och standard-eller Premium-kodning av Live-händelser.  När den här funktionen är aktive rad använder tjänsten funktionen [tal-till-text](../../cognitive-services/speech-service/speech-to-text.md) i Cognitive Services för att skriva över talade ord i inkommande ljud till text. Den här texten görs sedan tillgänglig för leverans tillsammans med video och ljud i MPEG-streck och HLS-protokoll. Faktureringen baseras på en ny indikator för tillägg som är extra kostnad för Live-händelsen när den är i läget "körs".  Mer information om direkt avskrift och fakturering finns i [direkt skriftering](live-event-live-transcription-how-to.md)
 
 > [!NOTE]
 > Direkt avskrift är för närvarande endast tillgängligt som en förhands gransknings funktion i regionen USA, västra 2. Det stöder avskriftering av talade ord på engelska (en-US) endast för tillfället.
@@ -251,7 +251,7 @@ Direkt avskrift har utformats för att fungera tillsammans med Live-händelser s
 ### <a name="content-protection"></a>Innehållsskydd
 
 Funktionen för att *förhindra repetition av token* som släpps i begränsade regioner i september är nu tillgänglig i alla regioner.
-Media Services kunder kan nu ange en gräns för hur många gånger samma token kan användas för att begära en nyckel eller en licens. Mer information finns i avsnittet om att [förhindra repetition av token](content-protection-overview.md#token-replay-prevention).
+Media Services kunder kan nu ange en gräns för hur många gånger samma token kan användas för att begära en nyckel eller en licens. Mer information finns i avsnittet om att [förhindra repetition av token](drm-content-protection-concept.md#token-replay-prevention).
 
 ### <a name="new-recommended-live-encoder-partners"></a>Nya rekommenderade Live Encoder-partner
 
@@ -310,7 +310,7 @@ Mer information finns i [MIGRERA WAME till Media Encoder Standard](../previous/m
 
 ### <a name="content-protection"></a>Innehållsskydd
 
-När strömmat innehåll skyddas med begränsning av token måste slutanvändare hämta en token som skickas som en del av begäran om nyckel leverans. Funktionen för att *förhindra repetition av token* tillåter Media Services kunder att ange en gräns för hur många gånger samma token kan användas för att begära en nyckel eller en licens. Mer information finns i avsnittet om att [förhindra repetition av token](content-protection-overview.md#token-replay-prevention).
+När strömmat innehåll skyddas med begränsning av token måste slutanvändare hämta en token som skickas som en del av begäran om nyckel leverans. Funktionen för att *förhindra repetition av token* tillåter Media Services kunder att ange en gräns för hur många gånger samma token kan användas för att begära en nyckel eller en licens. Mer information finns i avsnittet om att [förhindra repetition av token](drm-content-protection-concept.md#token-replay-prevention).
 
 Från och med juli var för hands versions funktionen bara tillgänglig i USA, Central och USA, västra centrala.
 
@@ -340,7 +340,7 @@ Mer information finns i [övervaka Media Services statistik och diagnostikloggar
 
 ### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>Stöd för flera ljud spår i dynamisk paketering 
 
-När strömmande till gångar som har flera ljud spår med flera codecenheter och språk, stöder [dynamisk paketering](dynamic-packaging-overview.md) nu flera ljud spår för HLS-utdata (version 4 eller senare).
+När strömmande till gångar som har flera ljud spår med flera codecenheter och språk, stöder [dynamisk paketering](encode-dynamic-packaging-concept.md) nu flera ljud spår för HLS-utdata (version 4 eller senare).
 
 ### <a name="korea-regional-pair-is-open-for-media-services"></a>Det regionala paret i Korea är öppet för Media Services 
 
@@ -352,7 +352,7 @@ Mer information finns i [moln och regioner där Media Services v3 finns](azure-c
 
 Nya uppdateringar som omfattar Media Services prestanda förbättringar.
 
-* Den maximala fil storleken som stöds för bearbetning har uppdaterats. Se, [kvoter och begränsningar](limits-quotas-constraints.md).
+* Den maximala fil storleken som stöds för bearbetning har uppdaterats. Se, [kvoter och begränsningar](limits-quotas-constraints-reference.md).
 * [Förbättringar i kodnings hastigheten](concept-media-reserved-units.md).
 
 ## <a name="april-2019"></a>April 2019
@@ -360,11 +360,11 @@ Nya uppdateringar som omfattar Media Services prestanda förbättringar.
 ### <a name="new-presets"></a>Nya för inställningar
 
 * [FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset) har lagts till i de inbyggda för hands inställningarna i Analyzer.
-* [ContentAwareEncodingExperimental](/rest/api/media/transforms/createorupdate#encodernamedpreset) har lagts till i de inbyggda kodare-för inställningarna. Mer information finns i [Content medveten encoding](content-aware-encoding.md). 
+* [ContentAwareEncodingExperimental](/rest/api/media/transforms/createorupdate#encodernamedpreset) har lagts till i de inbyggda kodare-för inställningarna. Mer information finns i [Content medveten encoding](encode-content-aware-concept.md). 
 
 ## <a name="march-2019"></a>Mars 2019
 
-Dynamisk paketering stöder nu Dolby Atmos. Mer information finns i [codec för ljud som stöds av dynamisk paketering](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging).
+Dynamisk paketering stöder nu Dolby Atmos. Mer information finns i [codec för ljud som stöds av dynamisk paketering](encode-dynamic-packaging-concept.md#audio-codecs-supported-by-dynamic-packaging).
 
 Nu kan du ange en lista över till gångs-eller konto filter som ska gälla för din strömmande positionerare. Mer information finns i [associera filter med strömmande positionerare](filters-concept.md#associating-filters-with-streaming-locator).
 
@@ -378,7 +378,7 @@ Media Services v3 stöds nu i Azure National-moln. Alla funktioner är inte till
 
 ### <a name="media-encoder-standard-and-mpi-files"></a>Media Encoder Standard-och MPI-filer 
 
-När du kodar med Media Encoder Standard för att skapa MP4-filer skapas en ny. MPI-fil och läggs till i utmatnings till gången. Den här MPI-filen är avsedd att förbättra prestanda för dynamiska scenarier för [paketering](dynamic-packaging-overview.md) och strömning.
+När du kodar med Media Encoder Standard för att skapa MP4-filer skapas en ny. MPI-fil och läggs till i utmatnings till gången. Den här MPI-filen är avsedd att förbättra prestanda för dynamiska scenarier för [paketering](encode-dynamic-packaging-concept.md) och strömning.
 
 Du bör inte ändra eller ta bort MPI-filen, eller ta bort beroendet i din tjänst om det finns en sådan fil.
 
@@ -518,7 +518,7 @@ Om du har skapat till gångar eller konto filter mellan 09/28 och 10/12 med Medi
 
 Följande funktioner finns i .NET SDK:
 
-* **Transformeringar** och **jobb** för att koda eller analysera medie innehåll. Exempel finns i [strömma filer](stream-files-tutorial-with-api.md) och [analysera](analyze-videos-tutorial-with-api.md).
+* **Transformeringar** och **jobb** för att koda eller analysera medie innehåll. Exempel finns i [strömma filer](stream-files-tutorial-with-api.md) och [analysera](analyze-videos-tutorial.md).
 * **Strömmande positionerare** för att publicera och strömma innehåll till slut användar enheter
 * **Strömmande principer** och **innehålls nyckel principer** för att konfigurera nyckel leverans och innehålls skydd (DRM) när innehåll levereras.
 * **Live-händelser** och **Live-utdata** för att konfigurera inmatning och arkivering av Live streaming-innehåll.

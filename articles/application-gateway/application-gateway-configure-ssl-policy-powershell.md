@@ -8,18 +8,21 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: cb0f9ef64cb8032c02f2ccd4b42028103b6d3ec6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed81ca2c8f409b7f6c4a6f30f9bf75e594c6c208
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93397934"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221712"
 ---
 # <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>Konfigurera TLS-principversioner och chiffersviter för Application Gateway
 
 Lär dig hur du konfigurerar TLS/SSL-principinställningar och chiffersviter på Application Gateway. Du kan välja från en lista över fördefinierade principer som innehåller olika konfigurationer av TLS-princip versioner och aktiverade chiffersviter. Du kan också definiera en [anpassad TLS-princip](#configure-a-custom-tls-policy) baserat på dina krav.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> Vi rekommenderar att du använder TLS 1,2 som lägsta TLS-protokollversion för bättre säkerhet på din Application Gateway. 
 
 ## <a name="get-available-tls-options"></a>Hämta tillgängliga TLS-alternativ
 
@@ -217,4 +220,6 @@ $SetGW = Set-AzApplicationGateway -ApplicationGateway $AppGW
 
 ## <a name="next-steps"></a>Nästa steg
 
-Besök [Application Gateway omdirigerings översikt](./redirect-overview.md) för att lära dig hur du omdirigerar http-trafik till en HTTPS-slutpunkt.
+Besök [Application Gateway omdirigerings översikt](./redirect-overview.md) för att lära dig hur du omdirigerar http-trafik till en HTTPS-slutpunkt. 
+
+Ta en titt på Konfigurera Listener Specific SSL-principer när du [ställer in SSL-avlyssnings princip via portalen](./application-gateway-configure-listener-specific-ssl-policy.md)

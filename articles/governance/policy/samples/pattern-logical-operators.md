@@ -1,14 +1,14 @@
 ---
 title: 'Mönster: logiska operatorer i en princip definition'
 description: Det här Azure Policys mönstret innehåller exempel på hur du använder logiska operatorer i en princip definition.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: 3f644cdbfc45b06d1ad5db8e7727c0fa69742f00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: feb9e50b0c73c19027b747cf0f95fa1cb6fbd47c
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88545598"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106093358"
 ---
 # <a name="azure-policy-pattern-logical-operators"></a>Azure Policy mönster: logiska operatorer
 
@@ -16,7 +16,7 @@ En princip definition kan innehålla flera villkorliga uttryck. Du kan behöva v
 
 ## <a name="sample-1-one-logical-operator"></a>Exempel 1: en logisk operator
 
-Den här princip definitionen utvärderar CosmosDB-konton för att se om automatisk redundans och flera Skriv platser har kon figurer ATS. När de inte är det utlöses [granskningen](../concepts/effects.md#audit) och skapar en loggpost när den icke-kompatibla resursen skapas eller uppdateras.
+Den här princip definitionen utvärderar [Azure Cosmos DB](../../../cosmos-db/introduction.md) konton för att se om automatisk redundans och flera Skriv platser har kon figurer ATS. När de inte är det utlöses [granskningen](../concepts/effects.md#audit) och skapar en loggpost när den icke-kompatibla resursen skapas eller uppdateras.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-1.json":::
 
@@ -41,7 +41,7 @@ Den här **policyRule. om** blocket även innehåller en enda **allOf**, men var
 
 ## <a name="sample-3-combining-logical-operators"></a>Exempel 3: kombinera logiska operatorer
 
-Den här princip definitionen utvärderar Java våren-konton för att se om spårningen inte är aktive rad eller om spårningen inte är i ett fungerande tillstånd.
+Den här princip definitionen utvärderar [våren på Azure](/azure/developer/java/spring-framework) -konton för att se om spårningen inte är aktive rad eller om spårningen inte är i ett fungerande tillstånd.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json":::
 

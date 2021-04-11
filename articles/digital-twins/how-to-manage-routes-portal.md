@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 31f960b39e771e7bfbf67c6e52c5da8e1fc6e0ec
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8a8cc6563d8e3cae942c4dfb43afa3d05f6f2b75
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932462"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257317"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Hantera slut punkter och vägar i Azure Digitals dubbla (portal)
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-I Azure Digitals dubbla, kan du dirigera [händelse meddelanden](how-to-interpret-event-data.md) till underordnade tjänster eller anslutna beräknings resurser. Det gör du genom att först konfigurera **slutpunkter** som kan ta emot händelserna. Du kan sedan skapa [**händelse vägar**](concepts-route-events.md) som anger vilka händelser som genereras av digitala Digital-meddelanden i Azure som levereras till vilka slut punkter.
+I Azure Digitals dubbla, kan du dirigera [händelse meddelanden](concepts-event-notifications.md) till underordnade tjänster eller anslutna beräknings resurser. Det gör du genom att först konfigurera **slutpunkter** som kan ta emot händelserna. Du kan sedan skapa [**händelse vägar**](concepts-route-events.md) som anger vilka händelser som genereras av digitala Digital-meddelanden i Azure som levereras till vilka slut punkter.
 
 Den här artikeln vägleder dig genom processen att skapa slut punkter och flöden med hjälp av [Azure Portal](https://portal.azure.com).
 
@@ -202,4 +202,4 @@ Här följer de väg filter som stöds. Informationen i kolumnen *filtrera text 
 ## <a name="next-steps"></a>Nästa steg
 
 Läs om de olika typerna av händelse meddelanden som du kan ta emot:
-* [*Anvisningar: tolka händelse data*](how-to-interpret-event-data.md)
+* [*Koncept: händelse meddelanden*](concepts-event-notifications.md)

@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 03/11/2021
 ms.author: aahi
-ms.openlocfilehash: 352b81bf2dfeca1d7413e7cac131264d06c7b92e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a74c0cad971389168d643c9504f5bb809438a1ea
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599342"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106098061"
 ---
 ### <a name="financial-account-identification"></a>Identifiering av finansiella konton
 
@@ -34,7 +34,7 @@ Den här kategorin innehåller följande entitet:
     :::column span="2":::
         **Information**
 
-        ABA-flöde (American Banks Association).
+        ABA-flöde (American Banks Association). Returneras också med `domain=phi` .
 
         Lägg till i-parametern för att hämta entitets kategorin `ABARoutingNumber` `pii-categories` . `ABARoutingNumber` kommer också att returneras i API-svaret om det upptäcks.
       
@@ -62,7 +62,7 @@ Den här kategorin innehåller följande entitet:
     :::column span="2":::
         **Information**
 
-        SWIFT-koder för information om betalnings instruktioner.
+        SWIFT-koder för information om betalnings instruktioner. Returneras också med `domain=phi` .
 
         Lägg till i-parametern för att hämta entitets kategorin `SWIFTCode` `pii-categories` . `SWIFTCode` kommer att returneras i API-svaret om det upptäcks.
       
@@ -89,7 +89,7 @@ Den här kategorin innehåller följande entitet:
     :::column span="2":::
         **Information**
 
-        Kreditkorts nummer. 
+        Kreditkorts nummer. Returneras också med `domain=phi` .
 
         Lägg till i-parametern för att hämta entitets kategorin `CreditCardNumber` `pii-categories` . `CreditCardNumber` kommer att returneras i API-svaret om det upptäcks.
 
@@ -116,7 +116,7 @@ Den här kategorin innehåller följande entitet:
     :::column span="2":::
         **Information**
 
-        IBAN-koder för information om betalnings instruktioner.
+        IBAN-koder för information om betalnings instruktioner. Returneras också med `domain=phi` .
 
         Lägg till i-parametern för att hämta entitets kategorin `InternationlBankingAccountNumber` `pii-categories` . `InternationlBankingAccountNumber` kommer att returneras i API-svaret om det upptäcks.
       
@@ -144,12 +144,12 @@ Följande entiteter är grupperade och listade efter land:
     :::column span="":::
         **Entitet**
 
-        DNI-nummer (Argentina National Identity)
+        DNI-nummer (Argentina National Identity) 
 
     :::column-end:::
     :::column span="2":::
-        **Information**
-
+        **Information** Returneras också med `domain=phi` .
+        
         Lägg till i-parametern för att hämta entitets kategorin `ARNationalIdentityNumber` `pii-categories` . `ARNationalIdentityNumber` kommer att returneras i API-svaret om det upptäcks.
       
     :::column-end:::

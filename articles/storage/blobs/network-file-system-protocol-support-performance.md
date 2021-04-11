@@ -9,19 +9,19 @@ ms.date: 02/23/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 28fb5ffc0ce9c554294eaca9e460694856cb95a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de511fa30caa608c2dc87b6c0ba166ed56ff9499
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589879"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490190"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage-preview"></a>Network File System (NFS) 3,0 prestanda överväganden i Azure Blob Storage (för hands version)
 
 Blob Storage stöder nu NFS-protokollet (Network File System) 3,0. Den här artikeln innehåller rekommendationer som hjälper dig att optimera prestanda för dina lagrings begär Anden. Om du vill veta mer om NFS 3,0-stöd i Azure Blob Storage, se [Network File System (NFS) 3,0 protokoll stöd i Azure Blob Storage (för hands version)](network-file-system-protocol-support.md).
 
 > [!NOTE]
-> NFS 3,0 protokoll stöd i Azure Blob Storage finns i offentlig för hands version. Det stöder GPV2-lagrings konton med standard-nivå prestanda i följande regioner: östra Australien, Korea Central och södra centrala USA. För hands versionen stöder också Block-Blob med Premium prestanda nivå i alla offentliga regioner.
+> NFS 3,0 protokoll stöd i Azure Blob Storage finns i offentlig för hands version. Det stöder GPV2-lagrings konton med standard-nivå prestanda i följande regioner: östra Australien, Korea, centrala, USA, östra och södra centrala USA. För hands versionen stöder också Block-Blob med Premium prestanda nivå i alla offentliga regioner.
 
 ## <a name="add-clients-to-increase-throughput"></a>Lägga till klienter för att öka data flödet 
 

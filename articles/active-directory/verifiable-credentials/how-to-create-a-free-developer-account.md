@@ -9,12 +9,12 @@ ms.subservice: verifiable-credentials
 ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 1894ffb7ca75a283e3a74d17c3e73de51fc46d8d
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 1e8bb59c09622a39dad680940ff34e643ee0cc3b
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106170248"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222749"
 ---
 # <a name="how-to-create-a-free-azure-active-directory-developer-tenant"></a>Så här skapar du en kostnads fri Azure Active Directory Developer-klient
 
@@ -32,15 +32,15 @@ Det finns två enkla sätt att skapa en kostnads fri Azure Active Directory med 
 
 Om du väljer att registrera dig för det kostnads fria Microsoft 365 Developer-programmet måste du följa några enkla steg:
 
-1. Klicka på knappen Anslut nu på skärmen
+1. Klicka på knappen **Anslut nu** på skärmen.
 
 2. Logga in med ett nytt Microsoft-konto eller Använd ett befintligt (arbets) konto som du redan har.
 
-3. På sidan registrering väljer du din region, anger ett företags namn och accepterar villkoren i programmet innan du klickar på nästa
+3. På sidan registrering väljer du din region, anger ett företags namn och accepterar villkoren i programmet innan du klickar på **Nästa**.
 
-4. Klicka på Konfigurera prenumeration. Ange den region där du vill skapa din nya klient, skapa ett användar namn, en domän och ange ett lösen ord. Då skapas en ny klient organisation och den första administratören av klienten
+4. Klicka på **Konfigurera prenumeration**. Ange den region där du vill skapa din nya klient, skapa ett användar namn, en domän och ange ett lösen ord. Då skapas en ny klient organisation och den första administratören av klienten.
 
-5. Ange den säkerhets information som krävs för att skydda administratörs kontot för den nya innehavaren. Detta ställer in MFA-autentisering för kontot
+5. Ange den säkerhets information som krävs för att skydda administratörs kontot för den nya innehavaren. Detta ställer in MFA-autentisering för kontot.
 
 
 Nu har du skapat en klient med 25 E5-användar licenser. E5-licenserna omfattar Azure AD P2-licenser. Du kan också lägga till exempel data paket med användare, grupper, e-post och SharePoint för att hjälpa dig att testa i utvecklings miljön. De är inte obligatoriska för tjänsten för att utfärda verifierbara autentiseringsuppgifter.

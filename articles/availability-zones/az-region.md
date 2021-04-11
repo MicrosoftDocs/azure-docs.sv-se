@@ -4,16 +4,16 @@ description: Om du vill skapa hög tillgängliga och elastiska program i Azure k
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/06/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: a81f3a3c51ffd0e1e0937c077a07fcbde16f0513
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 782e632f8707b4cafb6d33438f6c8da7e8b08c30
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961310"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491403"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Azure-tjänster som har stöd för tillgänglighetszoner
 
@@ -45,16 +45,16 @@ För att uppnå omfattande affärs kontinuitet i Azure kan du bygga din program 
 
 
 ## <a name="azure-regions-with-availability-zones"></a>Azure-regioner med Tillgänglighetszoner
-
+ 
 
 | Nord- och Sydamerika           | Europa               | Afrika              | Asien och stillahavsområdet   |
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
 | Brasilien, södra       | Frankrike, centrala       | Södra Afrika, norra * | Australien, östra |
-| Kanada, centrala     | Tyskland, västra centrala |                     | Japan, östra     |
-| Central US         | Europa, norra         |                     | Korea, centrala * |
-| East US            | Storbritannien, södra             |                     | Sydostasien |
-| USA, östra 2          | Europa, västra          |                     |                |
+| Kanada, centrala     | Tyskland, västra centrala |                     | Centrala Indien * |
+| Central US         | Europa, norra         |                     | Japan, östra     |
+| East US            | Storbritannien, södra             |                     | Korea, centrala * |
+| USA, östra 2          | Europa, västra          |                     | Sydostasien |
 | Södra centrala USA |                      |                     |                |
 | US Gov, Virginia    |                      |                     |                |
 | USA, västra 2        |                      |                     |                |
@@ -115,89 +115,100 @@ För att uppnå omfattande affärs kontinuitet i Azure kan du bygga din program 
 
 **Vanliga tjänster**
 
-| Produkter                                        | Återhämtning |
-|-------------------------------------------------|:------------:|
-| Apptjänstmiljöer                        |      : large_blue_diamond:  |
-| Azure Active Directory Domain Services          |      : large_blue_diamond:  |
-| Azure Bastion                                   |      : large_blue_diamond:  |
-| Azure Cache for Redis                           |      : large_blue_diamond:  |
-| Azure Cognitive Services: Textanalys        |      : large_blue_diamond:  |
-| Öppna Azure-datautforskaren                             |      : large_blue_diamond:  |
-| Azure Database for MySQL – flexibel Server      |      : large_blue_diamond:  |
-| Azure Database for PostgreSQL – flexibel Server |      : large_blue_diamond:  |
-| Azure DDoS Protection                           |      : large_blue_diamond:  |
-| Azure Disk Encryption                           |      : large_blue_diamond:  |
-| Azure Firewall                                  |      : large_blue_diamond:  |
-| Azure Firewall Manager                          |      : large_blue_diamond:  |
-| Azure Kubernetes Service (AKS)                  |      : large_blue_diamond:  |
-| Azure Private Link                              |      : large_blue_diamond:  |
-| Azure Red Hat OpenShift                         |      : large_blue_diamond:  |
-| Azure Site Recovery                             |      : large_blue_diamond:  |
-| Azure SQL: virtuell dator                      |      : large_blue_diamond:  |
-| Azure Search                                    |      : large_blue_diamond:  |
-| Azure Web Application Firewall                  |      : large_blue_diamond:  |
-| Container Registry                              |      : large_blue_diamond:  |
-| Event Grid                                      |      : large_blue_diamond:  |
-| Network Watcher                                 |      : large_blue_diamond:  |
-| Network Watcher: Trafikanalys              |      : large_blue_diamond:  |
-| Power BI Embedded                               |      : large_blue_diamond:  |
-| Premium-Blob Storage                            |      : large_blue_diamond:  |
-| Lagring: Azure Premium-filer                    |      : large_blue_diamond:  |
-| Virtual Machines: Azure-dedikerad värd          |      : large_blue_diamond:  |
-| Virtual Machines: Ddsv4-Series                  |      : large_blue_diamond:  |
-| Virtual Machines: Ddv4-Series                   |      : large_blue_diamond:  |
-| Virtual Machines: Dsv4-Series                   |      : large_blue_diamond:  |
-| Virtual Machines: Dv4-Series                    |      : large_blue_diamond:  |
-| Virtual Machines: Edsv4-Series                  |      : large_blue_diamond:  |
-| Virtual Machines: Edv4-Series                   |      : large_blue_diamond:  |
-| Virtual Machines: Esv4-Series                   |      : large_blue_diamond:  |
-| Virtual Machines: Ev4-Series                    |      : large_blue_diamond:  |
-| Virtual Machines: Fsv2-Series                   |      : large_blue_diamond:  |
-| Virtual Machines: M-serien                      |      : large_blue_diamond:  |
-| Virtuellt WAN                                     |      : large_blue_diamond:  |
-| Virtuellt WAN: ExpressRoute                       |      : large_blue_diamond:  |
-| Virtuellt WAN: punkt-till-plats-VPN Gateway          |      : large_blue_diamond:  |
-| Virtuellt WAN: plats-till-plats-VPN Gateway           |      : large_blue_diamond:  |
+
+|     Produkter                                                    | Återhämtning             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     Apptjänstmiljöer                                    | : large_blue_diamond:  |
+|     Azure Active Directory Domain Services                      | : large_blue_diamond:  |
+|     Azure Bastion                                               | : large_blue_diamond:  |
+|     Azure Cache for Redis                                       | : large_blue_diamond:  |
+|     Azure Cognitive Search                                      | : large_blue_diamond:  |
+|     Azure Cognitive Services: Textanalys                    | : large_blue_diamond:  |
+|     Öppna Azure-datautforskaren                                         | : large_blue_diamond:  |
+|     Azure Database for MySQL – flexibel Server                  | : large_blue_diamond:  |
+|     Azure Database for PostgreSQL – flexibel Server             | : large_blue_diamond:  |
+|     Azure DDoS Protection                                       | : large_blue_diamond:  |
+|     Azure Disk Encryption                                       | : large_blue_diamond:  |
+|     Azure Firewall                                              | : large_blue_diamond:  |
+|     Azure Firewall Manager                                      | : large_blue_diamond:  |
+|     Azure Kubernetes Service (AKS)                              | : large_blue_diamond:  |
+|     Azure Private Link                                          | : large_blue_diamond:  |
+|     Azure Site Recovery                                         | : large_blue_diamond:  |
+|     Azure SQL: virtuell dator                                  | : large_blue_diamond:  |
+|     Azure Web Application Firewall                              | : large_blue_diamond:  |
+|     Container Registry                                          | : large_blue_diamond:  |
+|     Event Grid                                                  | : large_blue_diamond:  |
+|     Network Watcher                                             | : large_blue_diamond:  |
+|     Network Watcher: Trafikanalys                          | : large_blue_diamond:  |
+|     Power BI Embedded                                           | : large_blue_diamond:  |
+|     Premium-Blob Storage                                        | : large_blue_diamond:  |
+|     Lagring: Azure Premium-filer                                | : large_blue_diamond:  |
+|     Virtual Machines: Azure-dedikerad värd                      | : large_blue_diamond:  |
+|     Virtual Machines: Ddsv4-Series                              | : large_blue_diamond:  |
+|     Virtual Machines: Ddv4-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: Dsv4-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: Dv4-Series                                | : large_blue_diamond:  |
+|     Virtual Machines: Edsv4-Series                              | : large_blue_diamond:  |
+|     Virtual Machines: Edv4-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: Esv4-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: Ev4-Series                                | : large_blue_diamond:  |
+|     Virtual Machines: Fsv2-Series                               | : large_blue_diamond:  |
+|     Virtual Machines: M-serien                                  | : large_blue_diamond:  |
+|     Virtuellt WAN                                                 | : large_blue_diamond:  |
+|     Virtuellt WAN: ExpressRoute                                   | : large_blue_diamond:  |
+|     Virtuellt WAN: punkt-till-plats-VPN Gateway                      | : large_blue_diamond:  |
+|     Virtuellt WAN: plats-till-plats-VPN Gateway                       | : large_blue_diamond:  |
+
+
+**Specialiserade tjänster**
+
+|     Produkter                                                    | Återhämtning             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     Azure Red Hat OpenShift                                     | : large_blue_diamond:  |
+|     Cognitive Services: avvikelse detektor                        | : large_blue_diamond:  |
+|     Cognitive Services: formulär igenkänning                         | : large_blue_diamond:  |
+|     Lagring: Ultra disk                                         | : large_blue_diamond:  |
 
 
 **Icke-regional**
 
-|     Produkter                                  |     Återhämtning    |
-|-----------------------------------------------|:-------------------:|
-|     Azure DNS                                 |     : globe_with_meridians:             |
-|     Azure Active Directory                  |     : globe_with_meridians:             |
-|     Azure Advanced Threat Protection          |     : globe_with_meridians:             |
-|     Azure Advisor                             |     : globe_with_meridians:             |
-|     Azure Blueprints                          |     : globe_with_meridians:             |
-|     Azure Bot Services                        |     : globe_with_meridians:             |
-|     Azure Front Door                          |     : globe_with_meridians:             |
-|     Azure Defender för IoT                  |     : globe_with_meridians:             |
-|     Azure Front Door                           |     : globe_with_meridians:             |
-|     Azure Information Protection            |     : globe_with_meridians:             |
-|     Azure-Lighthouse                        |     : globe_with_meridians:             |
-|     Azure Managed Applications              |     : globe_with_meridians:             |
-|     Azure Maps                                |     : globe_with_meridians:             |
-|     Azure Policy                              |     : globe_with_meridians:             |
-|     Azure-resurs diagram                    |     : globe_with_meridians:             |
-|     Azure Sentinel                            |     : globe_with_meridians:             |
-|     Azure Stack                               |     : globe_with_meridians:             |
-|     Azure Stack Edge                        |     : globe_with_meridians:             |
-|     Cloud Shell                               |     : globe_with_meridians:             |
-|     Content Delivery Network                  |     : globe_with_meridians:             |
-|     Cost Management                           |     : globe_with_meridians:             |
-|     Customer Lockbox för Microsoft Azure    |     : globe_with_meridians:             |
-|     Intune                                    |     : globe_with_meridians:             |
-|     Microsoft Azure peering-tjänsten         |     : globe_with_meridians:             |
-|     Microsoft Azure-portalen                  |     : globe_with_meridians:             |
-|     Microsoft Cloud App Security              |     : globe_with_meridians:             |
-|     Microsoft Graph                           |     : globe_with_meridians:             |
-|     Security Center                         |     : globe_with_meridians:             |
-|     Traffic Manager                         |     : globe_with_meridians:             |
+|     Produkter                                                    | Återhämtning             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     Azure DNS                                                   | : globe_with_meridians: |
+|     Azure Active Directory                                    | : globe_with_meridians: |
+|     Azure Advanced Threat Protection                            | : globe_with_meridians: |
+|     Azure Advisor                                               | : globe_with_meridians: |
+|     Azure Blueprints                                            | : globe_with_meridians: |
+|     Azure Bot Services                                          | : globe_with_meridians: |
+|     Azure Front Door                                            | : globe_with_meridians: |
+|     Azure Defender för IoT                                    | : globe_with_meridians: |
+|     Azure Front Door                                            | : globe_with_meridians: |
+|     Azure Information Protection                              | : globe_with_meridians: |
+|     Azure-Lighthouse                                          | : globe_with_meridians: |
+|     Azure Managed Applications                                | : globe_with_meridians: |
+|     Azure Maps                                                  | : globe_with_meridians: |
+|     Azure-prestandadiagnostik                               | : globe_with_meridians: |
+|     Azure Policy                                                | : globe_with_meridians: |
+|     Azure-resurs diagram                                      | : globe_with_meridians: |
+|     Azure Sentinel                                              | : globe_with_meridians: |
+|     Azure Stack                                                 | : globe_with_meridians: |
+|     Azure Stack Edge                                          | : globe_with_meridians: |
+|     Cloud Shell                                                 | : globe_with_meridians: |
+|     Content Delivery Network                                    | : globe_with_meridians: |
+|     Cost Management                                             | : globe_with_meridians: |
+|     Customer Lockbox för Microsoft Azure                      | : globe_with_meridians: |
+|     Intune                                                      | : globe_with_meridians: |
+|     Microsoft Azure peering-tjänsten                           | : globe_with_meridians: |
+|     Microsoft Azure-portalen                                    | : globe_with_meridians: |
+|     Microsoft Cloud App Security                                | : globe_with_meridians: |
+|     Microsoft Graph                                             | : globe_with_meridians: |
+|     Security Center                                           | : globe_with_meridians: |
+|     Traffic Manager                                           | : globe_with_meridians: |
 
 
 ## <a name="pricing-for-vms-in-availability-zones"></a>Priser för virtuella datorer i Tillgänglighetszoner
 
-Det kostar ingen ytterligare kostnad för virtuella datorer som distribueras i en tillgänglighets zon. Mer information finns på [prissättnings sidan för bandbredd](https://azure.microsoft.com/pricing/details/bandwidth/).
+Azure-tillgänglighetszoner är tillgängliga med din Azure-prenumeration. Läs mer här om [prissättnings sidan för bandbredd](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 
 ## <a name="get-started-with-availability-zones"></a>Kom igång med Tillgänglighetszoner

@@ -37,7 +37,7 @@
   items:
     - name: Migrera SQL Server
       items:
-        - name: för att Azure SQL Database
+        - name: till Azure SQL Database
           href: tutorial-sql-server-to-azure-sql.md
         - name: till Azure SQL-hanterad instans (offline)
           href: tutorial-sql-server-to-managed-instance.md
@@ -93,6 +93,10 @@
           href: how-to-migrate-ssis-packages.md
         - name: Hanterad Azure SQL-instans
           href: how-to-migrate-ssis-packages-managed-instance.md
+- name: Referens
+  items:
+    - name: Azure CLI
+      href: /cli/azure/dms
 - name: Resurser
   items:
     - name: Vanliga frågor och svar

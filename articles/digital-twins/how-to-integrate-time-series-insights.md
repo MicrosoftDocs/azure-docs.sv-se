@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3bc821f31e0463000c9089e48818249f2c046ede
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 5ac8c5bb68430a1e886a89709d5e256beb8819c8
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103003"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257287"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Integrera Azure Digitals dubbla med Azure Time Series Insights
 
@@ -40,7 +40,7 @@ Du kommer att bifoga Time Series Insights till Azure Digitals dubbla steg genom 
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Skapa en väg och filtrera till tvillingmeddelanden om uppdateringar
 
-Azure Digitals dubbla instanser kan generera [dubbla uppdaterings händelser](how-to-interpret-event-data.md) när en dubbel status uppdateras. I det här avsnittet ska du skapa en Azure Digitals- [**händelse väg**](concepts-route-events.md) som dirigerar dessa uppdaterings händelser till Azure [Event Hubs](../event-hubs/event-hubs-about.md) för ytterligare bearbetning.
+Azure Digitals dubbla instanser kan generera [dubbla ändrings händelser](concepts-event-notifications.md#digital-twin-change-notifications) när en dubbel status uppdateras. I det här avsnittet ska du skapa en Azure Digitals- [**händelse väg**](concepts-route-events.md) som dirigerar dessa uppdaterings händelser till Azure [Event Hubs](../event-hubs/event-hubs-about.md) för ytterligare bearbetning.
 
 Självstudien om Azure Digitals sammanhållen [*: Anslut en lösning från slut punkt till slut punkt*](./tutorial-end-to-end.md) genom ett scenario där en termometer används för att uppdatera ett temperatur-attribut på en digital enhet som representerar ett rum. Det här mönstret förlitar sig på de dubbla uppdateringarna, i stället för att vidarebefordra telemetri från en IoT-enhet, vilket ger dig flexibilitet att ändra den underliggande data källan utan att behöva uppdatera Time Series Insights logiken.
 

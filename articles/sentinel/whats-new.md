@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 03/11/2021
-ms.openlocfilehash: 31ba96e0f8772877d7b4881c6bab0561cbe7956e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/31/2021
+ms.openlocfilehash: 74cd5ce5912e5a656342a43b7c2b165fdf3c32d4
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604261"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490322"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Nyheter i Azure Sentinel
 
@@ -32,13 +32,51 @@ Antecknade funktioner finns för närvarande i för hands version. I [tilläggs 
 
 ## <a name="march-2021"></a>Mars 2021
 
+- [Ange att arbets böcker ska uppdateras automatiskt i visnings läge](#set-workbooks-to-automatically-refresh-while-in-view-mode)
+- [Nya identifieringar för Azure-brandvägg](#new-detections-for-azure-firewall)
 - [Automatiserings regler och incident utlösta spel böcker](#automation-rules-and-incident-triggered-playbooks) (inklusive all ny Spelbok-dokumentation)
 - [Nya aviserings anrikninger: utökad enhets mappning och anpassad information](#new-alert-enrichments-enhanced-entity-mapping-and-custom-details)
 - [Skriv ut dina Azure Sentinel-arbetsböcker eller Spara som PDF](#print-your-azure-sentinel-workbooks-or-save-as-pdf)
 - [Incident filter och sorterings inställningar sparas nu i din session (offentlig för hands version)](#incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview)
 - [Microsoft 365 Defender incident integrering (offentlig för hands version)](#microsoft-365-defender-incident-integration-public-preview)
 - [Nya Microsoft Service Connectors med Azure Policy](#new-microsoft-service-connectors-using-azure-policy)
- 
+
+### <a name="set-workbooks-to-automatically-refresh-while-in-view-mode"></a>Ange att arbets böcker ska uppdateras automatiskt i visnings läge
+
+Azure Sentinel-användare kan nu använda den nya [Azure Monitor möjligheten](https://techcommunity.microsoft.com/t5/azure-monitor/azure-workbooks-set-it-to-auto-refresh/ba-p/2228555) att automatiskt uppdatera arbets boks data under en vy-session.
+
+I varje arbets bok eller arbets bok mall väljer :::image type="icon" source="media/whats-new/auto-refresh-workbook.png" border="false"::: du **Automatisk uppdatering** för att visa dina intervall alternativ. Välj det alternativ som du vill använda för den aktuella View-sessionen och välj **Använd**.
+
+- Intervallet för uppdaterings intervall som stöds är **5 minuter** till **1 dag**.
+- Automatisk uppdatering är inaktive rad som standard. För att optimera prestanda stängs den automatiska uppdateringen också av varje gången du stänger en arbets bok och körs inte i bakgrunden. Aktivera automatisk uppdatering igen vid behov nästa gången du öppnar arbets boken.
+- Automatisk uppdatering pausas när du redigerar en arbets bok och automatiska uppdaterings intervall startas om varje gången du växlar tillbaka till visnings läge från redigerings läge.
+
+    Intervall startas också om när du uppdaterar arbets boken manuellt genom att välja :::image type="icon" source="media/whats-new/manual-refresh-button.png" border="false"::: knappen **Uppdatera** .
+
+Mer information finns i [Självstudier: visualisera och övervaka dina data](tutorial-monitor-your-data.md) och [Azure Monitor-dokumentationen](../azure-monitor/visualize/workbooks-overview.md).
+
+### <a name="new-detections-for-azure-firewall"></a>Nya identifieringar för Azure-brandvägg
+
+Flera färdiga identifieringar för Azure-brandväggen har lagts till i [Analytics](import-threat-intelligence.md#analytics-puts-your-threat-indicators-to-work-detecting-potential-threats) -områden i Azure Sentinel. Med de här nya identifieringarna kan säkerhets grupper få aviseringar om datorer i det interna nätverket försöker fråga eller ansluta till Internet domän namn eller IP-adresser som är associerade med kända IOCs, enligt definitionen i regeln för identifierings regler.
+
+De nya identifieringarna är:
+
+- [Solorigate Network-Beacon](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/Solorigate-Network-Beacon.yaml)
+- [Kända GALLIUM-domäner och hash-värden](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/GalliumIOCs.yaml)
+- [Känd IRIDIUM-IP](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/IridiumIOCs.yaml)
+- [Kända fosfor grupps domäner/IP](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/PHOSPHORUSMarch2019IOCs.yaml)
+- [THALLIUM-domäner som ingår i DCU-Takedown](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ThalliumIOCs.yaml)
+- [Känd zink-relaterad maldoc-hash](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ZincJan272021IOCs.yaml)
+- [Kända STRONTIUM grupp domäner](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/STRONTIUMJuly2019IOCs.yaml)
+- [NOBELIUM-domän och IP-IOCs – mars 2021](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/NOBELIUM_DomainIOCsMarch2021.yaml)
+
+
+Identifieringar för Azure-brandväggar läggs kontinuerligt till i det inbyggda mallgalleriet. För att få de senaste identifieringarna för Azure-brandväggen, filtrerar du **data källorna** med hjälp av **Azure-brand väggen** under **rule templates**:
+
+:::image type="content" source="media/whats-new/new-detections-analytics-efficiency-workbook.jpg" alt-text="Nya identifieringar i arbets boken för analys effektivitet":::
+
+Mer information finns i avsnittet [nya identifieringar för Azure-brandväggen i Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-network-security/new-detections-for-azure-firewall-in-azure-sentinel/ba-p/2244958).
+
 ### <a name="automation-rules-and-incident-triggered-playbooks"></a>Automation-regler och incident utlösta spel böcker
 
 Automation-regler är ett nytt koncept i Azure Sentinel som gör att du kan hantera automatisering av incident hantering centralt. Förutom att du kan tilldela spel böcker till incidenter (inte bara aviseringar som tidigare), kan du med automatiserings regler också automatisera svar för flera analys regler samtidigt, tagga, tilldela eller stänga incidenter utan att behöva spel böcker och styra ordningen på de åtgärder som utförs. Automation-regler effektiviserar automatiserings användningen i Azure Sentinel och gör det möjligt att förenkla komplexa arbets flöden för dina incident Dirigerings processer.
@@ -47,7 +85,7 @@ Läs mer i den här [fullständiga förklaringen av Automation-regler](automate-
 
 Som nämnts ovan kan spel böcker nu aktive ras med incident utlösaren, förutom aviserings utlösaren. Incident utlösaren ger din spel böcker en större uppsättning indata att arbeta med (eftersom incidenten även omfattar all avisering och enhets data), vilket ger dig ännu mer kraft och flexibilitet i dina svars arbets flöden. Incident-utlöst spel böcker aktive ras genom att anropas från Automation-regler.
 
-Lär dig mer om [spel böcker "Enhanced funktioner](automate-responses-with-playbooks.md)och hur du kan skapa [ett svars arbets flöde](tutorial-respond-threats-playbook.md) med spel böcker tillsammans med automatiserings regler.
+Lär dig mer om [spel böcker "förbättrade funktioner](automate-responses-with-playbooks.md)och hur du kan skapa [ett svars arbets flöde](tutorial-respond-threats-playbook.md) med hjälp av spel böcker tillsammans med automatiserings regler.
 
 ### <a name="new-alert-enrichments-enhanced-entity-mapping-and-custom-details"></a>Nya aviserings anrikninger: utökad enhets mappning och anpassad information
 
@@ -294,7 +332,7 @@ Den här uppdateringen för Azure Sentinel innehåller nya jakt frågor som ger 
 - **Påverkan**
 - **Initial åtkomst**
 - **Ständig**
-- **Eskalering av privilegier**
+- **Privilegieeskalering**
 
 De extra jakt frågorna är utformade för att hjälpa dig att hitta misstänkt aktivitet i din miljö. Även om de kan returnera legitim aktivitet och potentiellt skadlig aktivitet kan de vara användbara för att ge din jakt. 
 

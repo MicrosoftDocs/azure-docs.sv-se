@@ -6,14 +6,14 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 04/08/2021
 ms.author: matjazl
-ms.openlocfilehash: fbc683c98eb0124e8d879eada276593ca9bf7042
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c10b27d375e2bfb8c64130eceb416a633241cf68
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934757"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284450"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Registrera ett konfidentiellt klient program i Azure Active Directory
 
@@ -29,7 +29,7 @@ För att registrera ett nytt konfidentiellt klient program, se stegen nedan.
 
 1. Välj **Appregistreringar**. 
 
-    ![Azure Portal. Ny app-registrering.](media/how-to-aad/portal-aad-new-app-registration.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-new-app-registration.png" alt-text="Azure Portal. Ny app-registrering.":::
 
 1. Välj **ny registrering**.
 
@@ -39,7 +39,7 @@ För att registrera ett nytt konfidentiellt klient program, se stegen nedan.
 
 1. Valfritt Ange en **omdirigerings-URI**. Den här informationen kan ändras senare, men om du känner till svars-URL: en för ditt program anger du det nu.
 
-    ![Ny konfidentiell klient program registrering.](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png" alt-text="Ny konfidentiell klient program registrering.":::
 
 1. Välj **Register** (Registrera).
 
@@ -49,7 +49,7 @@ Nu när du har registrerat ditt program måste du välja vilka API-behörigheter
 
 1. Välj **API-behörigheter**.
 
-    ![Konfidentiell klient. API-behörigheter](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-Permissions.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-Permissions.png" alt-text="Konfidentiell klient. API-behörigheter.":::
 
 1. Välj **Lägg till en behörighet**.
 
@@ -70,11 +70,11 @@ Nu när du har registrerat ditt program måste du välja vilka API-behörigheter
 
 1. Välj **certifikat & hemligheter** och välj sedan **ny klient hemlighet**. 
 
-    ![Konfidentiell klient. Program hemlighet](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png" alt-text="Konfidentiell klient. Program hemlighet.":::
 
-1. Ange en **Beskrivning** av klient hemligheten. Välj förfallo datum (om 1 år, i två år eller aldrig) och klicka sedan på **Lägg till**.
+1. Ange en **Beskrivning** av klient hemligheten. Välj den nedrullningsbara menyn **förfaller** för att välja en förfallo tids period och klicka sedan på **Lägg till**.
 
-   ![Lägg till en klient hemlighet](media/how-to-aad/add-a-client-secret.png)
+   :::image type="content" source="media/how-to-aad/add-a-client-secret.png" alt-text="Lägg till en klient hemlighet.":::
 
 1. När klientens hemliga sträng har skapats kopierar du dess **värde** och **ID** och sparar dem på en säker plats.
 

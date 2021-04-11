@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ccad323c1834894367cca0ef0d3f98eb1b1b1ec3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dc4450fb1e21211b43bc178d94cf4bdfe6da58e1
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639924"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256794"
 ---
 # <a name="embedded-sign-in-experience"></a>Inbäddad inloggnings upplevelse
 
@@ -49,7 +49,7 @@ Tänk på följande när du använder iframe:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Slutför stegen i avsnittet [komma igång med anpassade principer i Active Directory B2C](custom-policy-get-started.md).
+* Slutför stegen i avsnittet [komma igång med anpassade principer i Active Directory B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy).
 * [Aktivera anpassade domäner](custom-domain.md) för dina principer.
 
 ## <a name="configure-your-policy"></a>Konfigurera principen

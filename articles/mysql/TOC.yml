@@ -7,8 +7,6 @@
       href: overview.md
     - name: Vilket MySQL-alternativ bör jag välja?
       href: select-right-deployment-type.md
-    - name: Versioner som stöds
-      href: concepts-supported-versions.md
     - name: Versions support princip
       href: concepts-version-policy.md
       displayName: version policy
@@ -21,6 +19,8 @@
       items:
         - name: Vad är enskild server?
           href: single-server-overview.md
+        - name: Versioner som stöds
+          href: concepts-supported-versions.md
         - name: Prisnivåer
           items:
             - name: Prisnivåer
@@ -395,8 +395,6 @@
       items:
         - name: Vad är flexibel server?
           href: flexible-server/overview.md
-        - name: Versioner som stöds
-          href: concepts-supported-versions.md
         - name: Beräkning och lagring
           href: flexible-server/concepts-compute-storage.md
     - name: Snabbstarter

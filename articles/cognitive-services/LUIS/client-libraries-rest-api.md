@@ -2,7 +2,7 @@
 title: 'Snabb start: Language Understanding (LUIS) SDK-klient bibliotek och REST API'
 description: Skapa och fråga en LUIS-app med LUIS SDK-klientcertifikatet och REST API.
 ms.topic: quickstart
-ms.date: 12/09/2020
+ms.date: 03/29/2021
 ms.service: cognitive-services
 ms.author: aahi
 manager: nitinme
@@ -11,12 +11,12 @@ author: aahill
 keywords: Azure, artificiell intelligens, AI, naturlig språk bearbetning, NLP, LUIS, Azure Luis, Natural Language förståelseing, AI chattrobot, chattrobot Maker, förstå naturligt språk
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-luis
-ms.openlocfilehash: 7ff5844cf9f1bce45df438fc00e24da28c438b05
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: ca45266ce4b8ca784c3d54aafb80a66efaf2a1da
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96939219"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278923"
 ---
 # <a name="quickstart-language-understanding-luis-client-libraries-and-rest-api"></a>Snabb start: Language Understanding (LUIS) klient bibliotek och REST API
 
@@ -61,9 +61,5 @@ Andra fel – om du får ett fel som inte omfattas av föregående lista kan du 
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Vad är API: et för Language Understanding (LUIS)?](what-is-luis.md)
-* [Vad är det senaste?](whats-new.md)
-* [Avsikter](luis-concept-intent.md), [entiteter](luis-concept-entity-types.md)och [exempel yttranden](luis-concept-utterance.md)och [färdiga entiteter](luis-reference-prebuilt-entities.md)
-* Källkoden för det här exemplet finns på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code).
-* Förstå naturligt språk: [natur språks förståelse (NLU) och NLP (Natural Language Processing](artificial-intelligence.md) )
-* Robotar: [AI-chattrobotar](luis-csharp-tutorial-bf-v4.md "själv studie kurs om chattrobot Maker")
+> [!div class="nextstepaction"]
+> [Iterativ app-utveckling för LUIS](./luis-concept-app-iteration.md)

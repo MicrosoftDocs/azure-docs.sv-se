@@ -11,18 +11,18 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 8f1b5eabe235d107b48dc7b2db5b6d4b1188a3fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bbf94b6e000d5c082debd6a0d41a8d62b8b3f26e
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833974"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491108"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>Självstudie: skapa och ansluta ett klient program till ditt Azure IoT Central-program
 
 *Den här artikeln gäller lösnings byggare och enhets utvecklare.*
 
-Den här självstudien visar hur du, som enhets utvecklare, ansluter ett klient program till ditt Azure IoT Central-program. Programmet simulerar beteendet hos en termostat-enhet. När programmet ansluter till IoT Central, skickas modell-ID: t för enhets modellen termostat. IoT Central använder modell-ID: t för att hämta enhets modellen och skapa en enhets mall åt dig. Du kan lägga till anpassningar och vyer i enhets mal len så att en operatör kan interagera med en enhet.
+Den här självstudien visar hur du, som enhets utvecklare, ansluter ett klient program till ditt Azure IoT Central-program. Programmet simulerar beteendet för en temperatur styrenhets enhet. När programmet ansluter till IoT Central skickas modell-ID: t för enhets modellen för temperatur styrenheten. IoT Central använder modell-ID: t för att hämta enhets modellen och skapa en enhets mall åt dig. Du kan lägga till anpassningar och vyer i enhets mal len så att en operatör kan interagera med en enhet.
 
 I den här guiden får du lära dig att:
 
@@ -70,7 +70,7 @@ Som enhets utvecklare kan du använda vyn **rå data** för att undersöka rå d
 
 :::image type="content" source="media/tutorial-connect-device/raw-data.png" alt-text="Vyn rå data":::
 
-I den här vyn kan du välja vilka kolumner som ska visas och ange ett tidsintervall som ska visas. I kolumnen för staplade **data** visas data från enheten som inte matchar några definitioner för egenskaper eller telemetri i enhets mal len.
+I den här vyn kan du välja vilka kolumner som ska visas och ange ett tidsintervall som ska visas. I kolumnen data som inte är **modellerad** visas enhets data som inte matchar några definitioner för egenskaper eller telemetri i enhets mal len.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

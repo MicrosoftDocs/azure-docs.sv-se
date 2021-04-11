@@ -11,16 +11,16 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: dd62fb5e3c7450d50b9837ee5484ca480cab78aa
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 511ee1aa5f5036f5ca5450def0e4481c0608db33
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640839"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227355"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Länka Azure Synapse Analytics och Azure Machine Learning-arbetsytor (för hands version)
 
-I den här artikeln får du lära dig hur du skapar en länkad tjänst som länkar din [Azure Synapse Analytics](/synapse-analytics/overview-what-is.md) -arbetsyta och [Azure Machine Learning arbets ytan](concept-workspace.md).
+I den här artikeln får du lära dig hur du skapar en länkad tjänst som länkar din [Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is) -arbetsyta och [Azure Machine Learning arbets ytan](concept-workspace.md).
 
 Med din Azure Machine Learning-arbetsyta som är länkad till din Azure Synapse-arbetsyta kan du koppla en Apache Spark pool som en dedikerad beräkning för data datatransformering i skala och utföra modell träning från samma bärbara dator.
 

@@ -4,19 +4,19 @@ description: Förstå vanliga aviserings schema definitioner för Azure Monitor
 author: ofirmanor
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 02092f5a241824d2a9aef242b544f8900af7ebec
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 709ec2dee1be6930ca7c09de334aede8a76e95f4
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102045402"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491720"
 ---
 # <a name="common-alert-schema-definitions"></a>Vanliga aviseringsschemadefinitioner
 
 I den här artikeln beskrivs [vanliga aviserings schema definitioner](./alerts-common-schema.md) för Azure Monitor, inklusive de för Webhooks, Azure Logic Apps, Azure Functions och Azure Automation runbooks. 
 
 En varnings instans beskriver den resurs som påverkades och orsaken till aviseringen. Dessa instanser beskrivs i det gemensamma schemat i följande avsnitt:
-* **Essentials**: en uppsättning standardiserade fält, gemensamma för alla aviserings typer, som beskriver vilken resurs som aviseringen finns på, tillsammans med ytterligare vanliga aviserings-metadata (till exempel allvarlighets grad eller beskrivning). 
+* **Essentials**: en uppsättning standardiserade fält, gemensamma för alla aviserings typer, som beskriver vilken resurs som aviseringen finns på, tillsammans med ytterligare vanliga aviserings-metadata (till exempel allvarlighets grad eller beskrivning). Du hittar definitioner av allvarlighets grad i [Översikt över aviseringar](alerts-overview.md#overview). 
 * **Aviserings kontext**: en uppsättning fält som beskriver orsaken till aviseringen, med fält som varierar beroende på aviserings typen. Till exempel innehåller en mått varning fält som måttets namn och mått värde i aviserings kontexten, medan en aktivitets logg avisering innehåller information om händelsen som genererade aviseringen. 
 
 **Exempel på aviserings nytto Last**

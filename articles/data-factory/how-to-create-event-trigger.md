@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: d9012c2bb56b7936b627063be2e9c5b7aa33541e
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 3021d049a38f1d883518fc7c45aa8ca0a906c2f7
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962738"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221593"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Skapa en utlösare som kör en pipeline som svar på en lagrings händelse
 
@@ -76,7 +76,7 @@ I det här avsnittet visas hur du skapar en utlösare för lagrings händelser i
    I föregående exempel är utlösaren konfigurerad att utlösa när en BLOB-sökväg slutar i. csv skapas i mappen _Event-test_ i container _-data_. Egenskaperna **folderPath** och **filename** registrerar platsen för den nya blobben. Till exempel, när MoviesDB.csv läggs till i Sök vägs exemplet-data/Event-test, `@triggerBody().folderPath` har värdet `sample-data/event-testing` och `@triggerBody().fileName` har värdet `moviesDB.csv` . Dessa värden mappas i exemplet till pipeline-parametrarna `sourceFolder` och `sourceFile` , som kan användas i hela pipelinen som respektive `@pipeline().parameters.sourceFolder` `@pipeline().parameters.sourceFile` .
 
    > [!NOTE]
-   > Om du skapar en pipeline och utlösare i [Azure Synapse Analytics](/synapse-analytics)måste du använda `@trigger().outputs.body.fileName` och `@trigger().outputs.body.folderPath` som parametrar. Dessa två egenskaper fångar BLOB-information. Använd dessa egenskaper i stället för att använda `@triggerBody().fileName` och `@triggerBody().folderPath` .
+   > Om du skapar en pipeline och utlösare i [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md)måste du använda `@trigger().outputs.body.fileName` och `@trigger().outputs.body.folderPath` som parametrar. Dessa två egenskaper fångar BLOB-information. Använd dessa egenskaper i stället för att använda `@triggerBody().fileName` och `@triggerBody().folderPath` .
 
 1. Klicka på **Slutför** när du är klar.
 

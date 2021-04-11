@@ -1,14 +1,14 @@
 ---
 title: Redigera principer för mat ris egenskaper för resurser
 description: Lär dig att arbeta med mat ris parametrar och matris språk uttryck, utvärdera [*]-aliaset och lägga till element med Azure Policy definitions regler.
-ms.date: 10/22/2020
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 75f4fcfb88bd4cb1ac0c8bfeac236b452479b8c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4e059f3691554aa91dfd15cf308ef62afa58928
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721621"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106089975"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Redigera principer för mat ris egenskaper på Azure-resurser
 
@@ -99,7 +99,7 @@ Använd följande kommandon om du vill använda den här strängen med varje SDK
 
 ## <a name="using-arrays-in-conditions"></a>Använda matriser i villkor
 
-### <a name="in-and-notin"></a>`In` och `notIn`
+### <a name="in-and-notin"></a>In och notIn
 
 `in` `notIn` Villkoren fungerar bara med mat ris värden. De kontrollerar förekomsten av ett värde i en matris. Matrisen kan vara en litteral JSON-matris eller en referens till en mat ris parameter. Exempel:
 
@@ -135,7 +135,7 @@ Antalet [värde räknare](../concepts/definition-structure.md#value-count) uttry
 }
 ```
 
-För att utvärdera uttrycket utvärderar Azure Policy `where` villkoret 3 gånger, en gång för varje medlem i `[ "test*", "dev*", "prod*" ]` och räknar hur många gånger det utvärderades `true` . Vid varje iteration kopplas värdet för den aktuella mat ris medlemmen samman med `pattern` index namnet som definieras av `count.name` . Det här värdet kan sedan refereras inuti `where` villkoret genom att anropa en särskild mall-funktion: `current('pattern')` .
+För att utvärdera uttrycket kan Azure Policy utvärdera `where` villkoret tre gånger, en gång för varje medlem i, som `[ "test*", "dev*", "prod*" ]` räknar hur många gånger det utvärderades `true` . Vid varje iteration kopplas värdet för den aktuella mat ris medlemmen samman med `pattern` index namnet som definieras av `count.name` . Det här värdet kan sedan refereras inuti `where` villkoret genom att anropa en särskild mall-funktion: `current('pattern')` .
 
 | Iteration | `current('pattern')` returnerat värde |
 |:---|:---|
@@ -243,7 +243,7 @@ Egenskaper för mat ris resurser representeras vanligt vis av två olika typer a
 
 #### <a name="referencing-the-array"></a>Referera till matrisen
 
-Det första aliaset representerar ett enda värde, värdet för `stringArray` egenskapen från innehållet i begäran. Eftersom värdet för egenskapen är en matris är det inte särskilt användbart i princip villkor. Exempel:
+Det första aliaset representerar ett enda värde, värdet för `stringArray` egenskapen från innehållet i begäran. Eftersom egenskapens värde är en matris är den inte användbar i princip villkor. Exempel:
 
 ```json
 {
@@ -290,9 +290,9 @@ Om matrisen innehåller objekt kan ett `[*]` alias användas för att välja vä
 }
 ```
 
-Det här villkoret är sant om värdena för alla `property` Egenskaper i `objectArray` är lika med `"value"` . Fler exempel finns i [ \[ \* \] exempel på ytterligare alias](#appendix--additional--alias-examples).
+Det här villkoret är sant om värdena för alla `property` Egenskaper i `objectArray` är lika med `"value"` . Fler exempel finns i [ \[ \* \] exempel på ytterligare alias](#additional--alias-examples).
 
-När du använder `field()` funktionen för att referera till ett mat ris alias är det returnerade värdet en matris med alla valda värden. Detta innebär att det vanliga användnings fallet för `field()` funktionen, möjligheten att tillämpa mall-funktioner till resurs egenskaps värden, är mycket begränsad. De enda mal funktioner som kan användas i det här fallet är de som accepterar mat ris argument. Det är till exempel möjligt att hämta längden på matrisen med `[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` . Det är dock bara möjligt att använda fler komplexa scenarier som att använda funktionen mall för varje mat ris medlem och jämföra det med ett önskat värde när du använder `count` uttrycket. Mer information finns i [fält Count-uttryck](#field-count-expressions).
+När du använder `field()` funktionen för att referera till ett mat ris alias är det returnerade värdet en matris med alla valda värden. Detta innebär att det vanliga användnings fallet för `field()` funktionen, är möjligheten att tillämpa mal funktioner till resurs egenskaps värden, är begränsad. De enda mal funktioner som kan användas i det här fallet är de som accepterar mat ris argument. Det är till exempel möjligt att hämta längden på matrisen med `[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` . Det är dock bara möjligt att använda fler komplexa scenarier som att använda en mall för varje mat ris medlem och jämföra det med ett önskat värde när du använder `count` uttrycket. Mer information finns i [fält Count-uttryck](#field-count-expressions).
 
 Information om hur du sammanfattar finns i följande exempel på resurs innehåll och de valda värdena som returneras av olika alias:
 
@@ -371,7 +371,7 @@ När det används utan ett `where` villkor `count` returnerar bara längden på 
 }
 ```
 
-Det här beteendet fungerar också med kapslade matriser. Till exempel `count` utvärderas följande uttryck eftersom det finns `true` fyra mat ris medlemmar i `nestedArray` matriserna:
+Det här beteendet fungerar också med kapslade matriser. Till exempel `count` utvärderas följande uttryck till `true` eftersom det finns fyra mat ris medlemmar i `nestedArray` matriserna:
 
 ```json
 {
@@ -382,7 +382,7 @@ Det här beteendet fungerar också med kapslade matriser. Till exempel `count` u
 }
 ```
 
-Kraften hos `count` är i `where` villkoret. När den anges räknar Azure Policy upp mat ris medlemmarna och utvärdera var och en av dem mot villkoret och räknar hur många mat ris medlemmar som utvärderas till `true` . I varje iteration av `where` villkors utvärderingen väljer Azure policy en enskild mat ris medlem ***i** _ och utvärdera resurs innehållet mot `where` villkoret _* som om **_i_*_ är den enda medlemmen i array_ *. Att endast en mat ris medlem är tillgänglig i varje iteration är ett sätt att tillämpa komplexa villkor på varje enskild mat ris medlem.
+Kraften hos `count` är i `where` villkoret. När den anges räknar Azure Policy upp mat ris medlemmarna och utvärderar var och en av de olika mat ris medlemmarna `true` . I varje iteration av `where` villkors utvärderingen väljer Azure policy en enskild mat ris medlem ***i** _ och utvärdera resurs innehållet mot `where` villkoret _* som om ***i**_ är den enda medlemmen i array_ *. Att endast en mat ris medlem är tillgänglig i varje iteration är ett sätt att tillämpa komplexa villkor på varje enskild mat ris medlem.
 
 Exempel:
 
@@ -398,7 +398,9 @@ Exempel:
   "equals": 1
 }
 ```
-För att utvärdera `count` uttrycket utvärderar Azure policy `where` villkoret 3 gånger, en gång för varje medlem i `stringArray` och räknar hur många gånger det utvärderades `true` . När `where` villkoret refererar till `Microsoft.Test/resourceType/stringArray[*]` mat ris medlemmar, i stället för att välja alla medlemmar i `stringArray` , så markeras bara en enskild mat ris medlem varje gång:
+
+För att utvärdera `count` uttrycket kan Azure policy utvärdera `where` villkoret tre gånger, en gång för varje medlem i, som `stringArray` räknar hur många gånger det utvärderades `true` .
+När `where` villkoret refererar till `Microsoft.Test/resourceType/stringArray[*]` mat ris medlemmar, i stället för att välja alla medlemmar i `stringArray` , så markeras bara en enskild mat ris medlem varje gång:
 
 | Iteration | Valda `Microsoft.Test/resourceType/stringArray[*]` värden | `where` Utvärderings resultat |
 |:---|:---|:---|
@@ -406,7 +408,7 @@ För att utvärdera `count` uttrycket utvärderar Azure policy `where` villkoret
 | 2 | `"b"` | `false` |
 | 3 | `"c"` | `false` |
 
-Och kommer därför `count` att returnera `1` .
+`count`Returnerar `1` .
 
 Här är ett mer komplext uttryck:
 
@@ -436,7 +438,7 @@ Här är ett mer komplext uttryck:
 | 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1"` </br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `false` |
 | 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2"` </br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4`| `true` |
 
-Och därmed `count` returneras `1` .
+`count`Returnerar `1` .
 
 Det faktum att `where` uttrycket utvärderas mot **hela** begär ande innehållet (med ändringar enbart till den mat ris medlem som för närvarande räknas upp) innebär att `where` villkoret kan också referera till fält utanför matrisen:
 
@@ -458,7 +460,7 @@ Det faktum att `where` uttrycket utvärderas mot **hela** begär ande innehålle
 | 1 | `tags.env` => `"prod"` | `true` |
 | 2 | `tags.env` => `"prod"` | `true` |
 
-Kapslade Count-uttryck kan användas för att tillämpa villkor på kapslade mat ris fält. Följande villkor kontrollerar till exempel att `objectArray[*]` matrisen har exakt 2 medlemmar med `nestedArray[*]` som innehåller 1 eller flera medlemmar:
+Kapslade Count-uttryck kan användas för att tillämpa villkor på kapslade mat ris fält. Följande villkor kontrollerar till exempel att `objectArray[*]` matrisen har exakt två medlemmar med `nestedArray[*]` som innehåller en eller flera medlemmar:
 
 ```json
 {
@@ -480,9 +482,9 @@ Kapslade Count-uttryck kan användas för att tillämpa villkor på kapslade mat
 | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` har 2 medlemmar => `true` |
 | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` har 2 medlemmar => `true` |
 
-Eftersom båda medlemmarna i `objectArray[*]` har en underordnad matris `nestedArray[*]` med 2 medlemmar, returnerar det yttre Count-uttrycket `2` .
+Eftersom båda medlemmarna i `objectArray[*]` har en underordnad matris `nestedArray[*]` med två medlemmar, returnerar det yttre Count-uttrycket `2` .
 
-Mer komplext exempel: kontrol lera att `objectArray[*]` matrisen har exakt 2 medlemmar med `nestedArray[*]` alla medlemmar som är lika med `2` eller `3` :
+Mer komplext exempel: kontrol lera att `objectArray[*]` matrisen har exakt två medlemmar med `nestedArray[*]` medlemmar som är lika med `2` eller `3` :
 
 ```json
 {
@@ -538,13 +540,13 @@ När du använder mallar använder du `current()` funktionen för att få åtkom
 
 #### <a name="the-field-function-inside-where-conditions"></a>Fält funktionen i WHERE-villkor
 
-`field()`Funktionen kan också användas för att få åtkomst till värdet för den aktuella mat ris medlemmen så länge **Count** -uttrycket inte är i ett **existenss villkor** ( `field()` funktionen refererar alltid till resursen som utvärderas i **IF** -villkoret).
-Beteendet `field()` vid hänvisning till den utvärderade matrisen baseras på följande begrepp:
+`field()`Funktionen kan också användas för att få åtkomst till värdet för den aktuella mat ris medlemmen så länge **Count** -uttrycket inte är i ett **existenss villkor** ( `field()` funktionen refererar alltid till resursen som utvärderas i **IF** -villkoret). Beteendet `field()` vid hänvisning till den utvärderade matrisen baseras på följande begrepp:
+
 1. Mat ris Ali Aset matchas i en samling värden som valts från alla mat ris medlemmar.
 1. `field()` funktioner som refererar till mat ris Ali Aset returnerar en matris med de valda värdena.
 1. Referenser till det räknade mat ris Ali Aset i `where` villkoret returnerar en samling med ett enskilt värde markerat från den mat ris medlem som utvärderas i den aktuella iterationen.
 
-Det här beteendet innebär att när du refererar till den räknade mat ris medlemmen med en `field()` funktion inuti `where` villkoret, **returnerar den en matris med en enda medlem**. Det kanske inte är intuitivt, men det är konsekvent med idén att mat ris Ali Aset alltid returnerar en samling med valda egenskaper. Här är ett exempel:
+Det här beteendet innebär att när du refererar till den räknade mat ris medlemmen med en `field()` funktion inuti `where` villkoret, **returnerar den en matris med en enda medlem**. Även om det här beteendet kanske inte är intuitivt, är det konsekvent med idén att mat ris Ali Aset alltid returnerar en samling med valda egenskaper. Här är ett exempel:
 
 ```json
 {
@@ -565,7 +567,7 @@ Det här beteendet innebär att när du refererar till den räknade mat ris medl
 | 2 | `Microsoft.Test/resourceType/stringArray[*]` => `"b"` </br>  `[field('Microsoft.Test/resourceType/stringArray[*]')]` => `[ "b" ]` | `false` |
 | 3 | `Microsoft.Test/resourceType/stringArray[*]` => `"c"` </br>  `[field('Microsoft.Test/resourceType/stringArray[*]')]` => `[ "c" ]` | `false` |
 
-När det finns ett behov av att komma åt värdet för det räknade mat ris Ali Aset med en `field()` funktion, är det därför att omsluta det med en `first()` mall funktion:
+Det innebär att när det finns ett behov av att komma åt värdet för det räknade mat ris Ali Aset med en `field()` funktion, så är det möjligt att omsluta det med en `first()` mall funktion:
 
 ```json
 {
@@ -589,7 +591,7 @@ Användbara exempel finns i [exempel på fält antal](../concepts/definition-str
 
 ## <a name="modifying-arrays"></a>Ändra matriser
 
-Ändra egenskaper för att [lägga till](../concepts/effects.md#append) och [ändra](../concepts/effects.md#modify) på en resurs vid skapande eller uppdatering. När du arbetar med mat ris egenskaper beror beteendet för dessa effekter på om åtgärden försöker ändra  **\[\*\]** aliaset eller inte:
+Ändra egenskaper för att [lägga till](../concepts/effects.md#append) och [ändra](../concepts/effects.md#modify) på en resurs vid skapande eller uppdatering. När du arbetar med mat ris egenskaper beror beteendet för dessa effekter på om åtgärden försöker ändra **\[\*\]** aliaset eller inte:
 
 > [!NOTE]
 > Användning av `modify` effekterna med alias är för närvarande en för **hands version**.
@@ -608,9 +610,9 @@ Användbara exempel finns i [exempel på fält antal](../concepts/definition-str
 
 Mer information finns i [Lägg till exempel](../concepts/effects.md#append-examples).
 
-## <a name="appendix--additional--alias-examples"></a>Bilaga – ytterligare [*] Ali Aset-exempel
+## <a name="additional--alias-examples"></a>Ytterligare [*] alias-exempel
 
-Vi rekommenderar att du använder [fält Count-uttryck](#field-count-expressions) för att kontrol lera om alla medlemmar i en matris i innehållet i begäran uppfyller ett villkor. För vissa enkla villkor är det dock möjligt att uppnå samma resultat genom att använda en fält accessor med ett mat ris Ali Aset (som beskrivs i [referera till samlingen av mat ris medlemmar](#referencing-the-array-members-collection)). Detta kan vara användbart i princip regler som överskrider gränsen för **antal** tillåtna uttryck. Här följer några exempel på vanliga användnings fall:
+Vi rekommenderar att du använder [fält Count-uttryck](#field-count-expressions) för att kontrol lera om alla medlemmar i en matris i innehållet i begäran uppfyller ett villkor. För vissa enkla villkor är det dock möjligt att uppnå samma resultat genom att använda en fält-accessor med ett mat ris alias som beskrivs i [referensen till samlingen mat ris medlemmar](#referencing-the-array-members-collection). Det här mönstret kan vara användbart i princip regler som överskrider gränsen för **antal** tillåtna uttryck. Här följer några exempel på vanliga användnings fall:
 
 Exempel princip regeln för scenario tabellen nedan:
 

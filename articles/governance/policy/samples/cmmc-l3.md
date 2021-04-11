@@ -1,15 +1,15 @@
 ---
 title: Information om regelefterlevnad för CMMC-nivå 3
 description: Information om det inbyggda initiativet CMMC Level 3-kontroll. Varje kontroll mappas till en eller flera Azure Policy definitioner som hjälper till med utvärderingen.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: f567e195dd25fb69d57d84c76f42567e7411f634
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f6b30de446269d764d5dfa8be97245d0df577862
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034562"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106094021"
 ---
 # <a name="details-of-the-cmmc-level-3-regulatory-compliance-built-in-initiative"></a>Information om det inbyggda initiativet CMMC Level 3-regelefterlevnad
 
@@ -19,9 +19,11 @@ Mer information om den här standarden för efterlevnad finns i [CMMC Level 3](h
 Följande mappningar är till **CMMC nivå 3** -kontrollerna. Använd navigeringen till höger om du vill gå direkt till en speciell **domän för efterlevnad**. Många av kontrollerna implementeras med en [Azure policy](../overview.md) initiativ definition. Om du vill granska den fullständiga initiativ definitionen öppnar du **princip** i Azure Portal och väljer sidan **definitioner** .
 Leta sedan reda på och välj den inbyggda definitionen av **CMMC Level 3** -kontroll.
 
+Det här inbyggda initiativet distribueras som en del av [skiss exemplet CMMC Level 3](../../blueprints/samples/cmmc-l3.md).
+
 > [!IMPORTANT]
 > Varje kontroll nedan är kopplad till en eller flera [Azure policy](../overview.md) -definitioner.
-> Dessa principer kan hjälpa dig att [utvärdera efterlevnaden](../how-to/get-compliance-data.md) av kontrollen. Det finns dock ofta ingen 1:1 eller fullständig matchning mellan en kontroll och en eller flera principer. Som sådan är **kompatibel** i Azure policy endast som refererar till själva princip definitionerna. Detta garanterar inte att du är helt kompatibel med alla krav för en kontroll. Standarden för efterlevnad innehåller dessutom kontroller som inte åtgärdas av några Azure Policy definitioner för tillfället. Därför är regelefterlevnad i Azure Policy bara en partiell vy av din övergripande kompatibilitetsstatus. Kopplingarna mellan domäner, kontroller och Azure Policy definitioner för kompatibiliteten kan ändras med tiden. Om du vill visa ändrings historiken läser du [inchecknings historiken för GitHub](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CMMC_L3.json).
+> Dessa principer kan hjälpa dig att [utvärdera efterlevnaden](../how-to/get-compliance-data.md) av kontrollen. Det finns dock ofta ingen en-till-en-eller fullständig matchning mellan en kontroll och en eller flera principer. Som sådan är **kompatibel** i Azure policy endast som refererar till själva princip definitionerna. Detta garanterar inte att du är helt kompatibel med alla krav för en kontroll. Standarden för efterlevnad innehåller dessutom kontroller som inte åtgärdas av några Azure Policy definitioner för tillfället. Därför är regelefterlevnad i Azure Policy bara en partiell vy av din övergripande kompatibilitetsstatus. Kopplingarna mellan domäner, kontroller och Azure Policy definitioner för kompatibiliteten kan ändras med tiden. Om du vill visa ändrings historiken läser du [inchecknings historiken för GitHub](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CMMC_L3.json).
 
 ## <a name="access-control"></a>Åtkomstkontroll
 

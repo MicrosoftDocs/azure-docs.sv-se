@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9141fb025cb2c7976f88d894768972b10ea3a3d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 74f15fc302a8499e41a1413dd8915e6442d4bbe7
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729413"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064502"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>Vägledning för innehålls skydds scenario-baserad migrering
 
@@ -28,7 +28,7 @@ Den här artikeln innehåller information och vägledning om migrering av inneh�
 
 ## <a name="protect-content-in-v3-api"></a>Skydda innehåll i v3-API
 
-Använd support för [flera viktiga](design-multi-drm-system-with-access-control.md) funktioner i det nya v3-API: et.
+Använd support för [flera viktiga](architecture-design-multi-drm-system.md) funktioner i det nya v3-API: et.
 
 Se begrepp för innehålls skydd, självstudier och hur du går till guider nedan för olika steg.
 
@@ -44,9 +44,9 @@ Resultatet av **ListStreamingLocators** -metoden ger dig **namnet** och **Stream
 
 Om du vill hitta **ContentKeys** som används i din **StreamingLocators** för innehålls skydd kan du anropa metoden [StreamingLocator. ListContentKeysAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet&preserve-view=true) .  
 
-Alla **till gångar** som har skapats och publicerats med v2-API: et har både en [innehålls nyckel princip](https://docs.microsoft.com/azure/media-services/latest/content-key-policy-concept) och en innehålls nyckel som har definierats på dem i v3-API: n, i stället för att använda en standard princip för innehålls nycklar i [streaming-principen](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept).
+Alla **till gångar** som har skapats och publicerats med v2-API: et har både en [innehålls nyckel princip](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept) och en innehålls nyckel som har definierats på dem i v3-API: n, i stället för att använda en standard princip för innehålls nycklar i [streaming-principen](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept).
 
-Mer information om innehålls skydd i v3-API: n finns i artikeln [skydda ditt innehåll med Media Services dynamisk kryptering.](https://docs.microsoft.com/azure/media-services/latest/content-protection-overview)
+Mer information om innehålls skydd i v3-API: n finns i artikeln [skydda ditt innehåll med Media Services dynamisk kryptering.](https://docs.microsoft.com/azure/media-services/latest/drm-content-protection-concept)
 
 ## <a name="how-to-list-your-v2-assets-and-content-protection-settings-using-the-v3-api"></a>Visa en lista över v2-till gångar och inställningar för innehålls skydd med hjälp av v3-API: et
 
@@ -60,7 +60,7 @@ Om du behöver uppdatera, ändra eller ändra innehåll som lagras i v2-entitete
 
 ## <a name="how-do-i-change-the-contentkeypolicy-used-for-a-v2-asset-that-is-published-and-keep-the-same-content-key"></a>Hur gör jag för att ändra ContentKeyPolicy som används för en v2-till gång som publiceras och behåll samma innehålls nyckel?
 
-I så fall bör du först avpublicera (ta bort alla strömmande positionerare) på till gången via v2 SDK: n (ta bort lokaliseraren, ta bort länken för innehålls nyckelns auktoriseringsprincip, ta bort länk till till gångs leverans principen, ta bort länk till innehålls nyckeln, ta bort innehålls nyckeln) och skapa en ny **[StreamingLocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)** i v3 med hjälp av v3 [StreamingPolicy](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept) och [ContentKeyPolicy](https://docs.microsoft.com/azure/media-services/latest/content-key-policy-concept).
+I så fall bör du först avpublicera (ta bort alla strömmande positionerare) på till gången via v2 SDK: n (ta bort lokaliseraren, ta bort länken för innehålls nyckelns auktoriseringsprincip, ta bort länk till till gångs leverans principen, ta bort länk till innehålls nyckeln, ta bort innehålls nyckeln) och skapa en ny **[StreamingLocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)** i v3 med hjälp av v3 [StreamingPolicy](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept) och [ContentKeyPolicy](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept).
 
 Du måste ange den angivna innehålls nyckel identifieraren och det nyckel värde som krävs när du skapar **[StreamingLocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)**.
 
@@ -75,24 +75,24 @@ När du migrerar innehållet från v2 till v3 uppmanas du att installera [verkty
 
 ### <a name="concepts"></a>Begrepp
 
-- [Skydda ditt innehåll med Media Services dynamisk kryptering](content-protection-overview.md)
-- [Utforma multi-DRM-innehållsskyddssystem med åtkomstkontroll](design-multi-drm-system-with-access-control.md)
-- [Media Services v3 med PlayReady-licens mal len](playready-license-template-overview.md)
-- [Översikt över Media Services v3 med Widevine-licens mal len](widevine-license-template-overview.md)
-- [Licenskrav för och konfiguration av Apple FairPlay](fairplay-license-overview.md)
+- [Skydda ditt innehåll med Media Services dynamisk kryptering](drm-content-protection-concept.md)
+- [Utforma multi-DRM-innehållsskyddssystem med åtkomstkontroll](architecture-design-multi-drm-system.md)
+- [Media Services v3 med PlayReady-licens mal len](drm-playready-license-template-concept.md)
+- [Översikt över Media Services v3 med Widevine-licens mal len](drm-widevine-license-template-concept.md)
+- [Licenskrav för och konfiguration av Apple FairPlay](drm-fairplay-license-overview.md)
 - [Strömmande principer](streaming-policy-concept.md)
-- [Principer för innehålls nyckel](content-key-policy-concept.md)
+- [Principer för innehålls nyckel](drm-content-key-policy-concept.md)
 
 ### <a name="tutorials"></a>Självstudier
 
-[Snabb start: Använd portalen för att kryptera innehåll](encrypt-content-quickstart.md)
+[Snabb start: Använd portalen för att kryptera innehåll](drm-encrypt-content-how-to.md)
 
 ### <a name="how-to-guides"></a>Guider
 
-- [Hämta en signeringsnyckel från den befintliga principen](get-content-key-policy-dotnet-howto.md)
-- [Offline-FairPlay strömning för iOS med Media Services v3](offline-fairplay-for-ios.md)
-- [Offline-Widevine strömning för Android med Media Services v3](offline-widevine-for-android.md)
-- [Offline PlayReady streaming för Windows 10 med Media Services v3](offline-plaready-streaming-for-windows-10.md)
+- [Hämta en signeringsnyckel från den befintliga principen](drm-get-content-key-policy-dotnet-how-to.md)
+- [Offline-FairPlay strömning för iOS med Media Services v3](drm-offline-fairplay-for-ios-concept.md)
+- [Offline-Widevine strömning för Android med Media Services v3](drm-offline-widevine-for-android.md)
+- [Offline PlayReady streaming för Windows 10 med Media Services v3](drm-offline-playready-streaming-for-windows-10.md)
 
 ## <a name="samples"></a>Exempel
 

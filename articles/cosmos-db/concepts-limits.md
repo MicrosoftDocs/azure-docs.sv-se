@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: f33490e273104105502ecc8f4f255c354a2d2f3b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/07/2021
+ms.openlocfilehash: f6416a688c7f1c94d7d8a90b0531b1ccd684ee29
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104800031"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031111"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB tjänst kvoter
 
@@ -31,7 +31,7 @@ Du kan etablera data flöde på en behållar nivå eller på databas nivå avsee
 | --- | --- |
 | Maximalt antal ru: er per behållare ([dedikerat data flöde har allokerat läge](account-databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 som standard. Du kan öka det genom att [arkivera ett support ärende för Azure](create-support-request-quota-increase.md) |
 | Maximalt antal ru: er per databas ([delat data flöde har allokerat läge](account-databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 som standard. Du kan öka det genom att [arkivera ett support ärende för Azure](create-support-request-quota-increase.md) |
-| Maximal ru: er per (logisk) partition | 10 000 |
+| Maximalt antal ru: er per partition (logisk & fysisk) | 10 000 |
 | Maximalt lagrings utrymme för alla objekt per (logisk) partition | 20 GB |
 | Maximalt antal distinkta (logiska) sessionsnycklar | Obegränsat |
 | Maximalt lagrings utrymme per behållare | Obegränsat |

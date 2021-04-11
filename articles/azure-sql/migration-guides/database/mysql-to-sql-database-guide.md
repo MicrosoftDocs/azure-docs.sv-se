@@ -9,17 +9,17 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: ba332ed0e949c3c209dc3bd2d72d37187a200eea
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 32c56df5bafa9439fc559edf137c1080920cfb32
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030142"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284382"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>Guide för migrering: MySQL till Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-I den här guiden får du lära dig [hur du migrerar](https://azure.microsoft.com/migration/migration-journey) MySQL-databasen till en Azure SQL Database med hjälp av [SQL Server Migration](https://azure.microsoft.com/migration/migration-journey) Assistant för MySQL (SSMA for MySQL). 
+I den här guiden får du lära dig [hur du migrerar](https://azure.microsoft.com/migration/migration-journey) MySQL-databasen till en Azure SQL Database med hjälp av [SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant för MySQL (SSMA for MySQL). 
 
 Andra guider för migrering finns i [Guide för Azure Database migration](https://docs.microsoft.com/data-migration). 
 
