@@ -2,14 +2,14 @@
 title: Azure Backup support mat ris för SQL Server säkerhets kopiering på virtuella Azure-datorer
 description: Innehåller en översikt över support inställningar och begränsningar när du säkerhetskopierar SQL Server i virtuella Azure-datorer med tjänsten Azure Backup.
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 78436981c515b95ccda763d8ac916738b4364953
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7038b47bd4aba8f7747eef455f1e8dd3c77a695
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97734801"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257351"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Support mat ris för SQL Server säkerhets kopiering på virtuella Azure-datorer
 
@@ -30,11 +30,10 @@ Du kan använda Azure Backup för att säkerhetskopiera SQL Server databaser i v
 |Inställning  |Övre gräns |
 |---------|---------|
 |Antal databaser som kan skyddas på en server (och i ett valv)    |   2000      |
-|Databas storlek som stöds (utöver detta kan prestanda problem uppstå)   |   2 TB      |
+|Databas storlek som stöds (utöver detta kan prestanda problem uppstå)   |   6 TB *      |
 |Antal filer som stöds i en databas    |   1000      |
 
->[!NOTE]
-> [Hämta den detaljerade resurs planeraren](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) för att beräkna det ungefärliga antalet skyddade databaser som rekommenderas per server baserat på de virtuella dator resurserna, bandbredden och säkerhets kopierings principen.
+_* Databasens storleks begränsning är beroende av data överförings hastigheten som vi stöder och konfigurationen för tids gräns för säkerhets kopiering. Det är inte hård gränsen. [Läs mer](#backup-throughput-performance) om prestanda för säkerhets kopierings data._
 
 * SQL Server säkerhets kopiering kan konfigureras i Azure Portal eller **PowerShell**. CLI stöds inte.
 * Lösningen stöds på båda typerna av [distributioner](../azure-resource-manager/management/deployment-models.md) – Azure Resource Manager virtuella datorer och klassiska virtuella datorer.
@@ -93,6 +92,17 @@ Fullständig | Primär
 Differentiell | Primär
 Loggas |  Sekundär
 Copy-Only fullständig |  Sekundär
+
+## <a name="backup-throughput-performance"></a>Prestanda för säkerhets kopierings data
+
+Azure Backup stöder en konsekvent data överförings hastighet på 200 Mbit/s för fullständiga och differentiella säkerhets kopieringar av stora SQL-databaser (av 500 GB). Om du vill använda bästa prestanda kontrollerar du att:
+
+- Den underliggande virtuella datorn (som innehåller SQL Server-instansen som är värd för databasen) är konfigurerad med det nödvändiga nätverks data flödet. Om det maximala genomflödet i den virtuella datorn är mindre än 200 Mbit/s kan Azure Backup inte överföra data till den optimala hastigheten.<br></br>Dessutom måste disken som innehåller databasfilerna ha tillräckligt med data flöde. [Lär dig mer](../virtual-machines/disks-performance.md) om disk data flöde och prestanda i virtuella Azure-datorer. 
+- Processer, som körs på den virtuella datorn, förbrukar inte VM-bandbredden. 
+- Schemana för säkerhets kopiering sprids över en delmängd av databaserna. Flera säkerhets kopieringar som körs samtidigt på en virtuell dator delar nätverkets användnings takt mellan säkerhets kopieringarna. [Läs mer](faq-backup-sql-server.md#can-i-control-how-many-concurrent-backups-run-on-the-sql-server) om hur du styr antalet samtidiga säkerhets kopieringar.
+
+>[!NOTE]
+> [Hämta den detaljerade resurs planeraren](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) för att beräkna det ungefärliga antalet skyddade databaser som rekommenderas per server baserat på de virtuella dator resurserna, bandbredden och säkerhets kopierings principen.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -3,12 +3,12 @@ title: Videouppspelning – Azure
 description: Platshållare
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 17b1f93c18dfb013916c4c0d3756fb97a73e2675
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2020d64538b2fcc846ab9a146e2fc95325abd26b
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87042974"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063380"
 ---
 # <a name="video-playback"></a>Videouppspelning 
 
@@ -28,7 +28,7 @@ Du kan använda Azure Media Services för att [strömma](terminology.md#streamin
 
 ## <a name="streaming-policy"></a>Strömmande princip 
 
-Azure Media Services erbjuder olika metoder för att skydda dina video strömmar, enligt beskrivningen i [skydda ditt innehåll med Media Services dynamisk krypterings](../latest/content-protection-overview.md) artikel. På hög nivå är alternativen för innehålls skydd följande:
+Azure Media Services erbjuder olika metoder för att skydda dina video strömmar, enligt beskrivningen i [skydda ditt innehåll med Media Services dynamisk krypterings](../latest/drm-content-protection-concept.md) artikel. På hög nivå är alternativen för innehålls skydd följande:
 
 * **Direkt uppspelning** – där ingen kryptering används under strömningen.
 * **Använd Advanced Encryption Standard (AES-128)** – och implementera en metod för att endast leverera nycklar för att dekryptera videon till autentiserade användare.

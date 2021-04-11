@@ -1,16 +1,16 @@
 ---
 title: Regioner som stöder länkade Log Analytics-arbetsytor
 description: I den här artikeln beskrivs de region mappningar som stöds mellan ett Automation-konto och en Log Analytics arbets yta som relaterar till vissa funktioner i Azure Automation.
-ms.date: 02/17/2021
+ms.date: 04/01/2021
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 0599dcb57b46d1e48b4035acac8b64edbbe06912
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ac2a575c9fe551d5b1b396ab06b2735a749f9da
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101720179"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221882"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Regioner som stöder länkade Log Analytics-arbetsytor
 
@@ -38,30 +38,44 @@ Följande tabell visar de mappningar som stöds:
 |EastUS2<sup>2</sup>|Platsen eastus|
 |WestUS|WestUS|
 |WestUS2|WestUS2|
+|Usanorracentrala|Usanorracentrala|
 |Centra lus|Centra lus|
 |Usasödracentrala|Usasödracentrala|
 |WestCentralUS|WestCentralUS|
+|**Brasilien**||
+|Centrala|Centrala|
 |**Kanada**||
 |Indiensödra|Indiensödra|
+|**Kina**||
+|ChinaEast2<sup>3</sup>|ChinaEast2|
 |**Asien och stillahavsområdet**||
-|AustraliaEast|AustraliaEast|
-|AustraliaSoutheast|AustraliaSoutheast|
 |Asienöstra|Asienöstra|
 |Sydostasien|Sydostasien|
+|**Indien**||
 |Kanada|Kanada|
-|ChinaEast2<sup>3</sup>|ChinaEast2|
+|**Japan**||
 |Japanöstra|Japanöstra|
+|**Australien**||
+|AustraliaEast|AustraliaEast|
+|AustraliaSoutheast|AustraliaSoutheast|
+|**Korea**||
+|Centrala|Centrala|
+|**Norge**||
+|NorwayEast|NorwayEast|
 |**Europa**||
 |Europanorra|Europanorra|
-|FranceCentral|FranceCentral|
-|UKSouth|UKSouth|
 |Västeuropa|Västeuropa|
+|**Frankrike**||
+|FranceCentral|FranceCentral|
+|**Storbritannien**
+|UKSouth|UKSouth|
+|**Schweiz**||
 |SwitzerlandNorth|SwitzerlandNorth|
+|**Förenade Arabemiraten**||
+|UAENorth|UAENorth|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
 |USGovArizona<sup>3</sup>|USGovArizona|
-
-
 
 <sup>1</sup> -mappning av öster för Log Analytics arbets ytor till Automation-konton är inte en exakt mappning mellan regioner och regioner, men är rätt mappning.
 

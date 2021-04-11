@@ -121,6 +121,9 @@
           href: signin-appauth-ios.md
         - name: Android med App Auth
           href: signin-appauth-android.md
+        - name: Skydda API Management-API
+          href: secure-api-management.md
+          displayName: 'apim, api management, migrate, b2clogin.com'
     - name: Skapa ett flöde
       items:
         - name: Registrerings- eller inloggningsprincip
@@ -222,6 +225,15 @@
           href: password-complexity.md
         - name: Inaktivera e-postverifiering
           href: disable-email-verification.md
+        - name: Anpassa e-postverifiering
+          items:
+            - name: Mailjet
+              href: custom-email-mailjet.md
+              displayName: 'Custom email, Custom verification email, Verification email'
+            - name: SendGrid
+              href: custom-email-sendgrid.md
+              displayName: 'Custom email, Custom verification email, Verification email'
+          displayName: verification
         - name: Aktivera MFA
           items:
             - name: Multifaktorautentisering
@@ -269,17 +281,6 @@
           href: add-api-connector.md
     - name: Anpassad princip
       items:
-        - name: Kom igång med anpassade principer
-          href: custom-policy-get-started.md
-        - name: Anpassa e-postverifiering
-          items:
-            - name: Mailjet
-              href: custom-email-mailjet.md
-              displayName: 'Custom email, Custom verification email, Verification email'
-            - name: SendGrid
-              href: custom-email-sendgrid.md
-              displayName: 'Custom email, Custom verification email, Verification email'
-          displayName: verification
         - name: Lägg till din egen affärslogik
           items:
             - name: Integrera REST API
@@ -299,101 +300,6 @@
               displayName: 'troubleshooting, app insights'
             - name: Felsöka anpassade principer
               href: troubleshoot-custom-policies.md
-        - name: Referens
-          items:
-            - name: TrustFrameworkPolicy
-              href: trustframeworkpolicy.md
-            - name: BuildingBlocks
-              href: buildingblocks.md
-              items:
-                - name: ClaimsSchema
-                  href: claimsschema.md
-                - name: ClaimsTransformations
-                  href: claimstransformations.md
-                  items:
-                    - name: Boolesk
-                      href: boolean-transformations.md
-                    - name: Date
-                      href: date-transformations.md
-                    - name: Allmänt
-                      href: general-transformations.md
-                    - name: Integer
-                      href: integer-transformations.md
-                    - name: JSON
-                      href: json-transformations.md
-                    - name: Telefonnummer
-                      href: phone-number-claims-transformations.md
-                    - name: Externa konton
-                      href: social-transformations.md
-                    - name: StringCollection
-                      href: stringcollection-transformations.md
-                    - name: Sträng
-                      href: string-transformations.md
-                - name: Predikat
-                  href: predicates.md
-                - name: ContentDefinitions
-                  href: contentdefinitions.md
-                - name: Lokalisering
-                  href: localization.md
-                  items:
-                    - name: Sträng-ID för lokalisering
-                      href: localization-string-ids.md
-                - name: DisplayControls
-                  href: display-controls.md
-                  items:
-                    - name: Verifiering
-                      href: display-control-verification.md
-            - name: ClaimsProviders
-              href: claimsproviders.md
-              items:
-                - name: Tekniska profiler
-                  href: technicalprofiles.md
-                  items:
-                    - name: Om tekniska profiler för validering
-                      href: validation-technical-profile.md
-                    - name: Azure Active Directory
-                      href: active-directory-technical-profile.md
-                    - name: Azure AD-multifaktorautentisering
-                      href: multi-factor-auth-technical-profile.md
-                      displayName: mfa
-                    - name: Azure AD-SSPR
-                      href: aad-sspr-technical-profile.md
-                    - name: Anspråkstransformering
-                      href: claims-transformation-technical-profile.md
-                    - name: ID-tokentips
-                      href: id-token-hint.md
-                    - name: JWT-tokenutfärdare
-                      href: jwt-issuer-technical-profile.md
-                    - name: OAuth1
-                      href: oauth1-technical-profile.md
-                    - name: OAuth2
-                      href: oauth2-technical-profile.md
-                    - name: Engångslösenord
-                      href: one-time-password-technical-profile.md
-                      displayName: otp
-                    - name: OpenID Connect
-                      href: openid-connect-technical-profile.md
-                    - name: Telefonfaktor
-                      href: phone-factor-technical-profile.md
-                    - name: REST
-                      href: restful-technical-profile.md
-                    - name: SAML-identitetsprovider
-                      href: saml-identity-provider-technical-profile.md
-                    - name: SAML-tokenutfärdare
-                      href: saml-issuer-technical-profile.md
-                    - name: Självkontrollerad
-                      href: self-asserted-technical-profile.md
-                    - name: Session för enkel inloggning
-                      href: custom-policy-reference-sso.md
-                      displayName: single sign-on
-            - name: UserJourneys
-              href: userjourneys.md
-            - name: SubJourneys
-              href: subjourneys.md
-            - name: RelyingParty
-              href: relyingparty.md
-            - name: Anspråkslösare
-              href: claim-resolver-overview.md
     - name: UserInfo-slutpunkt
       href: userinfo-endpoint.md
     - name: Partnerintegration
@@ -458,15 +364,15 @@
         - name: Azure Portal
           href: manage-users-portal.md
           displayName: 'create users, add users, delete users'
+        - name: Migrera användare
+          href: user-migration.md
+          displayName: bulk import
         - name: Partnerintegration
           items:
             - name: N8identity
               href: partner-n8identity.md
             - name: Saviynt
               href: partner-saviynt.md
-    - name: Skydda API Management-API
-      href: secure-api-management.md
-      displayName: 'apim, api management, migrate, b2clogin.com'
     - name: Loggar och övervakning
       items:
         - name: Granskningsloggar
@@ -489,12 +395,105 @@
         - name: Användardata
           href: manage-user-data.md
           displayName: GDPR
-    - name: Migrering
-      items:
-        - name: Migrera användare
-          href: user-migration.md
 - name: Referens
   items:
+    - name: Anpassat princip schema
+      items:
+        - name: TrustFrameworkPolicy
+          href: trustframeworkpolicy.md
+        - name: BuildingBlocks
+          href: buildingblocks.md
+          items:
+            - name: ClaimsSchema
+              href: claimsschema.md
+            - name: ClaimsTransformations
+              href: claimstransformations.md
+              items:
+                - name: Boolesk
+                  href: boolean-transformations.md
+                - name: Date
+                  href: date-transformations.md
+                - name: Allmänt
+                  href: general-transformations.md
+                - name: Integer
+                  href: integer-transformations.md
+                - name: JSON
+                  href: json-transformations.md
+                - name: Telefonnummer
+                  href: phone-number-claims-transformations.md
+                - name: Externa konton
+                  href: social-transformations.md
+                - name: StringCollection
+                  href: stringcollection-transformations.md
+                - name: Sträng
+                  href: string-transformations.md
+            - name: Predikat
+              href: predicates.md
+            - name: ContentDefinitions
+              href: contentdefinitions.md
+            - name: Lokalisering
+              href: localization.md
+              items:
+                - name: Sträng-ID för lokalisering
+                  href: localization-string-ids.md
+            - name: DisplayControls
+              href: display-controls.md
+              items:
+                - name: Verifiering
+                  href: display-control-verification.md
+        - name: ClaimsProviders
+          href: claimsproviders.md
+          items:
+            - name: Tekniska profiler
+              href: technicalprofiles.md
+              items:
+                - name: Om tekniska profiler för validering
+                  href: validation-technical-profile.md
+                - name: Azure Active Directory
+                  href: active-directory-technical-profile.md
+                - name: Azure AD-multifaktorautentisering
+                  href: multi-factor-auth-technical-profile.md
+                  displayName: mfa
+                - name: Azure AD-SSPR
+                  href: aad-sspr-technical-profile.md
+                - name: Anspråkstransformering
+                  href: claims-transformation-technical-profile.md
+                - name: ID-tokentips
+                  href: id-token-hint.md
+                - name: JWT-tokenutfärdare
+                  href: jwt-issuer-technical-profile.md
+                - name: OAuth1
+                  href: oauth1-technical-profile.md
+                - name: OAuth2
+                  href: oauth2-technical-profile.md
+                - name: Engångslösenord
+                  href: one-time-password-technical-profile.md
+                  displayName: otp
+                - name: OpenID Connect
+                  href: openid-connect-technical-profile.md
+                - name: Telefonfaktor
+                  href: phone-factor-technical-profile.md
+                - name: REST
+                  href: restful-technical-profile.md
+                - name: SAML-identitetsprovider
+                  href: saml-identity-provider-technical-profile.md
+                - name: SAML-tokenutfärdare
+                  href: saml-issuer-technical-profile.md
+                - name: Självkontrollerad
+                  href: self-asserted-technical-profile.md
+                - name: Session för enkel inloggning
+                  href: custom-policy-reference-sso.md
+                  displayName: single sign-on
+        - name: UserJourneys
+          href: userjourneys.md
+        - name: SubJourneys
+          href: subjourneys.md
+        - name: RelyingParty
+          href: relyingparty.md
+        - name: Anspråkslösare
+          href: claim-resolver-overview.md
+    - name: Viktig information om anpassade principer
+      href: custom-policy-developer-notes.md
     - name: Tjänstens begränsningar
       href: service-limits.md
     - name: Appregistreringar
@@ -510,8 +509,6 @@
       href: error-codes.md
     - name: Tilläggsapp
       href: extensions-app.md
-    - name: Anpassad policy (IEF) –viktig information
-      href: custom-policy-developer-notes.md
     - name: Sidlayoutversioner
       href: page-layout.md
       displayName: Page version

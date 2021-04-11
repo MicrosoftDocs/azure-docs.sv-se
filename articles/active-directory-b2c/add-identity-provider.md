@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: dbb2aeefc22fae4a3c83956dd7681b49fc435500
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5495e84d23b6723cfc7d4fbdb99e7509e378087f
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034004"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257185"
 ---
 # <a name="add-an-identity-provider-to-your-azure-active-directory-b2c-tenant"></a>Lägg till en identitetsprovider till din Azure Active Directory B2C-klient
 
@@ -27,7 +27,7 @@ På sidan för registrering eller inloggning visar Azure AD B2C en lista över e
 
 ![Mobilt inloggnings exempel med ett socialt konto (Facebook)](media/add-identity-provider/external-idp.png)
 
-Du kan lägga till identitets leverantörer som stöds av Azure Active Directory B2C (Azure AD B2C) till dina [användar flöden](user-flow-overview.md) med hjälp av Azure Portal. Du kan också lägga till identitets leverantörer i dina [anpassade principer](custom-policy-get-started.md).
+Du kan lägga till identitets leverantörer som stöds av Azure Active Directory B2C (Azure AD B2C) till dina [användar flöden](user-flow-overview.md) med hjälp av Azure Portal. Du kan också lägga till identitets leverantörer i dina [anpassade principer](user-flow-overview.md).
 
 ## <a name="select-an-identity-provider"></a>Välj en identitets leverantör
 

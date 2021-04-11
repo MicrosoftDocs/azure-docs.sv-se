@@ -80,7 +80,7 @@ Instruktions guider innehåller kod exempel som visar hur du utför en uppgift. 
 * [Koda med HTTPS som Job-inkommande – .NET](job-input-from-http-how-to.md)  
 * [Övervaka händelser – portalen](monitoring/monitor-events-portal-how-to.md)
 * [Kryptera dynamiskt med multi-DRM-.NET](drm-protect-with-drm-tutorial.md) 
-* [Koda med en anpassad Transform-CLI](encode-custom-preset-cli-how-to.md)
+* [Koda med en anpassad Transform-CLI](transform-custom-preset-cli-how-to.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Ställ frågor, ge feedback, hämta uppdateringar
 

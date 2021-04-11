@@ -4,21 +4,19 @@ description: Azure SQL Database säkerhets bas linje ger procedur vägledning oc
 author: msmbaldwin
 ms.service: sql-database
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 03/30/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ca28c2a1943912ce6a244929e7438edd7680d131
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bf89830745207e264e3d8080ac84d1cac5ddb708
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565970"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106079122"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>Azures säkerhets bas linje för Azure SQL Database
 
-Den här säkerhets bas linjen använder vägledning från [Azures säkerhets benchmark-version 1,0](../../security/benchmarks/overview.md) till Azure SQL Database. Azure Security Benchmark ger rekommendationer om hur du kan skydda dina molnlösningar i Azure. Innehållet grupperas efter de **säkerhets kontroller** som definieras av Azures säkerhets benchmark och relaterade rikt linjer som gäller för Azure SQL Database. **Kontroller** som inte är tillämpliga på Azure SQL Database har uteslutits.
-
-Om du vill se hur Azure SQL Database helt mappar till Azures säkerhets mätning, se den [fullständiga Azure SQL Database mappnings filen för säkerhets bas linjen](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
+Den här säkerhets bas linjen använder vägledning från [Azures säkerhets benchmark version 1.0](../../security/benchmarks/overview-v1.md) till Azure SQL Database. Azure Security Benchmark ger rekommendationer om hur du kan skydda dina molnlösningar i Azure. Innehållet grupperas efter de **säkerhets kontroller** som definieras av Azures säkerhets benchmark och relaterade rikt linjer som gäller för Azure SQL Database. **Kontroller** som inte är tillämpliga på Azure SQL Database, eller för vilka ansvaret är Microsofts, har uteslutits. Om du vill se hur Azure SQL Database helt mappar till Azures säkerhets mätning, se den [fullständiga Azure Monitor mappnings filen för säkerhets bas linjen](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 ## <a name="network-security"></a>Nätverkssäkerhet
 
@@ -32,9 +30,9 @@ Om du vill tillåta att trafik når Azure SQL Database använder du SQL-tjänste
 
 Regler för virtuella nätverk gör det möjligt för Azure SQL Database att endast acceptera kommunikation som skickas från valda undernät i ett virtuellt nätverk.
 
-- [Så här konfigurerar du en privat länk för Azure SQL Database](./private-endpoint-overview.md#how-to-set-up-private-link-for-azure-sql-database)
+- [Så här konfigurerar du en privat länk för Azure SQL Database](/azure/sql-database/sql-database-private-endpoint-overview#how-to-set-up-private-link-for-azure-sql-database)
 
-- [Använda tjänst slut punkter och regler för virtuella nätverk för databas servrar](./vnet-service-endpoint-rule-overview.md)
+- [Använda tjänst slut punkter och regler för virtuella nätverk för databas servrar](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)
 
 **Ansvar**: Kund
 
@@ -68,9 +66,9 @@ Du kan också skicka NSG Flow-loggar till en Log Analytics arbets yta och använ
 
 **Vägledning**: Aktivera DDoS Protection standard på de virtuella nätverk som är kopplade till dina SQL Server instanser för skydd från distribuerade DOS-attacker (Denial-of-Service). Använd Azure Security Center integrerad Hot information för att neka kommunikation med kända skadliga eller oanvända Internet-IP-adresser.
 
-- [Så här konfigurerar du DDoS-skydd](../../ddos-protection/manage-ddos-protection.md)
+- [Så här konfigurerar du DDoS-skydd](/azure/virtual-network/manage-ddos-protection)
 
-- [Förstå Azure Security Center integrerad Hot information](../../security-center/azure-defender.md)
+- [Förstå Azure Security Center integrerad Hot information](/azure/security-center/security-center-alerts-data-services)
 
 **Ansvar**: Kund
 
@@ -92,7 +90,7 @@ Du kan också skicka NSG Flow-loggar till en Log Analytics arbets yta och använ
 
 **Vägledning**: Aktivera avancerat skydd (ATP) för Azure SQL Database.  Användare får en avisering om misstänkt databas aktiviteter, potentiella sårbarheter och SQL-injektering, samt avvikande databas åtkomst och frågor. Avancerat skydd integrerar även aviseringar med Azure Security Center. 
 
-- [Förstå och använda avancerat skydd mot Azure SQL Database](./threat-detection-overview.md)
+- [Förstå och använda avancerat skydd mot Azure SQL Database](/azure/sql-database/sql-database-threat-detection-overview)
 
 **Ansvar**: Kund
 
@@ -104,7 +102,7 @@ Du kan också skicka NSG Flow-loggar till en Log Analytics arbets yta och använ
 
 När du använder tjänst slut punkter för Azure SQL Database krävs utgående till Azure SQL Database offentliga IP-adresser: nätverks säkerhets grupper (NSG: er) måste öppnas för att det ska vara möjligt att ansluta till Azure SQL Database IP-adresser. Du kan göra detta med hjälp av NSG service-taggar för Azure SQL Database.
 
-- [Förstå service märken med tjänst slut punkter för Azure SQL Database](./vnet-service-endpoint-rule-overview.md#limitations)
+- [Förstå service märken med tjänst slut punkter för Azure SQL Database](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#limitations)
 
 - [Förstå och använda service märken](../../virtual-network/service-tags-overview.md)
 
@@ -136,7 +134,7 @@ Använd någon av de inbyggda Azure Policy definitionerna som är relaterade til
 
 Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utföra åtgärder på resurser baserat på deras taggar.
 
-- [Skapa och använda Taggar](../../azure-resource-manager/management/tag-resources.md)
+- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Ansvar**: Kund
 
@@ -146,9 +144,9 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks resurser som är relaterade till dina Azure SQL Database Server-instanser. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks resurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log-view)
 
-- [Så här skapar du aviseringar i Azure Monitor](../../azure-monitor/alerts/alerts-activity-log.md)
+- [Så här skapar du aviseringar i Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Ansvar**: Kund
 
@@ -164,11 +162,11 @@ Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utf�
 
 Dessutom kan du strömma Azure SQL Diagnostics-telemetri till Azure SQL-analys, en moln lösning som övervakar prestanda för Azure SQL-databaser och Azure SQL-hanterade instanser i skala och över flera prenumerationer. Det kan hjälpa dig att samla in och visualisera Azure SQL Database prestanda mått och har inbyggd intelligens för fel sökning av prestanda.
 
-- [Konfigurera granskning för Azure SQL Database](./auditing-overview.md)
+- [Konfigurera granskning för Azure SQL Database](/azure/sql-database/sql-database-auditing)
 
-- [Samla in plattforms loggar och mått med Azure Monitor](./metrics-diagnostic-telemetry-logging-streaming-export-configure.md)
+- [Samla in plattforms loggar och mått med Azure Monitor](/azure/sql-database/sql-database-metrics-diag-logging)
 
-- [Så här strömmar du diagnostik till Azure SQL-analys](./metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-sql-analytics)
+- [Så här strömmar du diagnostik till Azure SQL-analys](/azure/sql-database/sql-database-metrics-diag-logging#stream-into-azure-sql-analytics)
 
 **Ansvar**: Kund
 
@@ -178,7 +176,7 @@ Dessutom kan du strömma Azure SQL Diagnostics-telemetri till Azure SQL-analys, 
 
 **Vägledning**: aktivera granskning på Azure SQL Database Server-instansen och välj en lagrings plats för gransknings loggarna (Azure Storage, Log Analytics eller händelsehubben).
 
-- [Så här aktiverar du granskning för Azure SQL Server](./auditing-overview.md)
+- [Så här aktiverar du granskning för Azure SQL Server](/azure/sql-database/sql-database-auditing)
 
 **Ansvar**: Kund
 
@@ -192,7 +190,7 @@ Dessutom kan du strömma Azure SQL Diagnostics-telemetri till Azure SQL-analys, 
 
 **Vägledning**: när du lagrar Azure SQL Database loggar på en Log Analytics arbets yta anger du logg kvarhållningsperiod enligt organisationens regler för efterlevnad.
 
-- [Ange parametrar för logg bevarande](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
+- [Ange parametrar för logg bevarande](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
 **Ansvar**: Kund
 
@@ -206,7 +204,7 @@ Dessutom kan du strömma Azure SQL Diagnostics-telemetri till Azure SQL-analys, 
 
 **Vägledning**: analysera och övervaka loggar för avvikande beteenden och granska resultaten regelbundet. Använd Azure Security Centers avancerade hot skydd för att varna vid ovanlig aktivitet som är relaterad till din Azure SQL Database instans. Du kan också konfigurera aviseringar baserat på mått värden eller Azure aktivitets logg poster som är relaterade till Azure SQL Database instanser.
 
-- [Förstå Avancerat skydd och aviseringar för Azure SQL Server](./threat-detection-overview.md)
+- [Förstå Avancerat skydd och aviseringar för Azure SQL Server](/azure/sql-database/sql-database-threat-detection-overview)
 
 - [Konfigurera anpassade aviseringar för Azure SQL Database](alerts-insights-configure-portal.md)
 
@@ -218,7 +216,7 @@ Dessutom kan du strömma Azure SQL Diagnostics-telemetri till Azure SQL-analys, 
 
 **Vägledning**: Använd Azure Security Center Avancerat skydd för Azure SQL-databaser för övervakning och aviseringar om avvikande aktivitet. Aktivera Azure Defender för SQL för dina SQL-databaser. Azure Defender för SQL innehåller funktioner för att identifiera och klassificera känsliga data, Visa och minimera potentiella databas sårbarheter och upptäcka avvikande aktiviteter som kan tyda på ett hot mot databasen.
 
-- [Förstå Avancerat skydd och aviseringar för Azure SQL Database](./threat-detection-overview.md)
+- [Förstå Avancerat skydd och aviseringar för Azure SQL Database](/azure/sql-database/sql-database-threat-detection-overview)
 
 - [Så här aktiverar du Azure Defender för SQL för Azure SQL Database](azure-defender-for-sql.md)
 
@@ -240,9 +238,9 @@ Dessutom kan du strömma Azure SQL Diagnostics-telemetri till Azure SQL-analys, 
 
 **Vägledning**: Azure Active Directory (Azure AD) har inbyggda roller som måste tilldelas explicit och som kan frågas. Använd Azure AD PowerShell-modulen för att utföra ad hoc-frågor för att identifiera konton som är medlemmar i administrativa grupper.
 
-- [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
+- [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
+- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Ansvar**: Kund
 
@@ -252,7 +250,7 @@ Dessutom kan du strömma Azure SQL Diagnostics-telemetri till Azure SQL-analys, 
 
 **Vägledning**: Azure Active Directory (Azure AD) har inte begreppet standard lösen ord. När du konfigurerar en Azure SQL Database-instans rekommenderar vi att du väljer att integrera autentisering med Azure AD.
 
-- [Så här konfigurerar och hanterar du Azure AD-autentisering med Azure SQL](/azure/azure-sql/database/authentication-aad-configure)
+- [Så här konfigurerar och hanterar du Azure AD-autentisering med Azure SQL](/azure/sql-database/azure-sql/database/authentication-aad-configure)
 
 **Ansvar**: Kund
 
@@ -298,11 +296,11 @@ Dessutom kan du strömma Azure SQL Diagnostics-telemetri till Azure SQL-analys, 
 
 Använd avancerat skydd för Azure SQL Database för att identifiera avvikande aktiviteter som visar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja databaser.
 
-- [Så här identifierar du Azure AD-användare som har flaggats för riskfylld aktivitet](../../active-directory/identity-protection/overview-identity-protection.md)
+- [Så här identifierar du Azure AD-användare som har flaggats för riskfylld aktivitet](/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
 - [Övervaka användarnas identitets-och åtkomst aktiviteter i Azure Security Center](../../security-center/security-center-identity-access.md)
 
-- [Granska Avancerat skydd och potentiella aviseringar](./threat-detection-overview.md#alerts)
+- [Granska Avancerat skydd och potentiella aviseringar](https://docs.microsoft.com/azure/azure-sql/database/threat-detection-overview#alerts)
 
 **Ansvar**: Kund
 
@@ -360,7 +358,7 @@ Använd avancerat skydd för Azure SQL Database för att identifiera avvikande a
 
 **Vägledning**: Använd Azure Active Directory (Azure AD) identitets skydd och risk identifieringar för att konfigurera automatiserade svar på identifierade misstänkta åtgärder som rör användar identiteter. Dessutom kan du mata in data i Azure Sentinel för ytterligare undersökning.
 
-- [Visa inloggnings program för Azure AD-risk](../../active-directory/identity-protection/overview-identity-protection.md)
+- [Visa inloggnings program för Azure AD-risk](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
 - [Så här konfigurerar och aktiverar du risk principer för identitets skydd](../../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -386,7 +384,7 @@ Använd avancerat skydd för Azure SQL Database för att identifiera avvikande a
 
 **Vägledning**: Använd taggar för att spåra Azure-resurser som lagrar eller bearbetar känslig information.
 
-- [Skapa och använda Taggar](../../azure-resource-manager/management/tag-resources.md)
+- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Ansvar**: Kund
 
@@ -400,13 +398,13 @@ Använd avancerat skydd för Azure SQL Database för att identifiera avvikande a
 
 **Vägledning**: implementera separata prenumerationer och/eller hanterings grupper för utveckling, testning och produktion. Resurser bör åtskiljas av VNet/undernät, taggas på lämpligt sätt och skyddas inom en NSG eller Azure-brandvägg. Resurser som lagrar eller bearbetar känsliga data bör isoleras. Använd privat länk; Distribuera Azure SQL Server i ditt VNet och Anslut privat med privata slut punkter.
 
-- [Så här skapar du ytterligare Azure-prenumerationer](../../cost-management-billing/manage/create-subscription.md)
+- [Så här skapar du ytterligare Azure-prenumerationer](/azure/billing/billing-create-subscription)
 
-- [Så här skapar du Hanteringsgrupper](../../governance/management-groups/create-management-group-portal.md)
+- [Så här skapar du Hanteringsgrupper](/azure/governance/management-groups/create)
 
-- [Skapa och använda Taggar](../../azure-resource-manager/management/tag-resources.md)
+- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
 
-- [Så här konfigurerar du en privat länk för Azure SQL Database](./private-endpoint-overview.md#how-to-set-up-private-link-for-azure-sql-database)
+- [Så här konfigurerar du en privat länk för Azure SQL Database](/azure/sql-database/sql-database-private-endpoint-overview#how-to-set-up-private-link-for-azure-sql-database)
 
 **Ansvar**: Kund
 
@@ -418,7 +416,7 @@ Använd avancerat skydd för Azure SQL Database för att identifiera avvikande a
 
 För den underliggande plattform som hanteras av Microsoft behandlar Microsoft allt kund innehåll som känsligt och går till fantastiska längder för att skydda mot kund data förlust och exponering. För att säkerställa att kunddata i Azure förblir skyddade har Microsoft implementerat och underhåller en svit med robusta data skydds kontroller och-funktioner.
 
-- [Så här konfigurerar du privat länk-och NSG: er för att förhindra data exfiltrering på Azure SQL Database instanser](./private-endpoint-overview.md)
+- [Så här konfigurerar du privat länk-och NSG: er för att förhindra data exfiltrering på Azure SQL Database instanser](/azure/sql-database/sql-database-private-endpoint-overview)
 
 - [Förstå skydd av kunddata i Azure](../../security/fundamentals/protection-customer-data.md)
 
@@ -430,7 +428,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: använd funktionen Azure SQL Database data identifiering och klassificering. Data identifiering och klassificering innehåller avancerade funktioner som är inbyggda i Azure SQL Database för att upptäcka, klassificera och märka, &amp; skydda känsliga data i dina databaser.
 
-- [Så här använder du data identifiering och klassificering för Azure SQL Server](./data-discovery-and-classification-overview.md)
+- [Så här använder du data identifiering och klassificering för Azure SQL Server](/azure/sql-database/sql-database-data-discovery-and-classification)
 
 **Ansvar**: Kund
 
@@ -444,9 +442,9 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: använda Azure Active Directory (Azure AD) för att autentisera och kontrol lera åtkomst till Azure SQL Database instanser.
 
-- [Så här integrerar du Azure SQL Server med Azure AD för autentisering](./authentication-aad-overview.md)
+- [Så här integrerar du Azure SQL Server med Azure AD för autentisering](/azure/sql-database/sql-database-aad-authentication)
 
-- [Så här kontrollerar du åtkomst i Azure SQL Server](./logins-create-manage.md)
+- [Så här kontrollerar du åtkomst i Azure SQL Server](/azure/sql-database/sql-database-control-access)
 
 **Ansvar**: Kund
 
@@ -456,7 +454,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: transparent data kryptering (TDE) hjälper till att skydda Azure SQL Database, Azure SQL-hanterad instans och Azure Data Warehouse mot hot från skadlig offline-aktivitet genom att kryptera data i vila. TDE utför realtidskryptering och realtidsdekryptering av databasen, tillhörande säkerhetskopior och transaktionsloggfiler i vila, utan att några ändringar krävs i programmet. Som standard är TDE aktiverat för alla nyligen distribuerade databaser i SQL Database och SQL-hanterad instans. Krypterings nyckeln för TDE kan hanteras av antingen Microsoft eller kunden.
 
-- [Hantera transparent data kryptering och Använd dina egna krypterings nycklar](./transparent-data-encryption-tde-overview.md?tabs=azure-portal#manage-transparent-data-encryption)
+- [Hantera transparent data kryptering och Använd dina egna krypterings nycklar](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?tabs=azure-portal#manage-transparent-data-encryption)
 
 **Ansvar**: Kund
 
@@ -470,7 +468,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i produktions instanser av Azure SQL Database och andra kritiska eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../../azure-monitor/alerts/alerts-activity-log.md)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Ansvar**: Kund
 
@@ -484,11 +482,11 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: Aktivera Azure Defender för SQL för Azure SQL Database och följ rekommendationer från Azure Security Center om att utföra sårbarhets bedömningar på dina Azure SQL-servrar.
 
-- [Så här kör du sårbarhets bedömningar på Azure SQL Database](./sql-vulnerability-assessment.md)
+- [Så här kör du sårbarhets bedömningar på Azure SQL Database](/azure/sql-database/sql-vulnerability-assessment)
 
 - [Så här aktiverar du Azure Defender för SQL](azure-defender-for-sql.md)
 
-- [Så här implementerar du rekommendationer för Azure Security Center sårbarhets bedömning](../../security-center/deploy-vulnerability-assessment-vm.md)
+- [Så här implementerar du rekommendationer för Azure Security Center sårbarhets bedömning](/azure/security-center/security-center-vulnerability-assessment-recommendations)
 
 **Ansvar**: Kund
 
@@ -502,7 +500,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: Aktivera regelbundna återkommande genomsökningar för dina Azure SQL Database instanser; Detta konfigurerar en sårbarhets bedömning för att automatiskt köra en genomsökning i databasen en gång per vecka. En sammanfattning av skannings resultatet skickas till e-postadresserna som du anger. Jämför resultaten för att verifiera att sårbarheter har åtgärd ATS.
 
-- [Så här exporterar du en sårbarhets utvärderings rapport i Azure Security Center](./sql-vulnerability-assessment.md#export-an-assessment-report)
+- [Så här exporterar du en sårbarhets utvärderings rapport i Azure Security Center](/azure/sql-database/sql-vulnerability-assessment#implementing-vulnerability-assessment)
 
 **Ansvar**: Kund
 
@@ -512,7 +510,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: Använd standard risk klassificeringarna (säkra poäng) som tillhandahålls av Azure Security Center.
 
-- [Förstå Azure Security Center säkra Poäng](../../security-center/secure-score-security-controls.md)
+- [Förstå Azure Security Center säkra Poäng](/azure/security-center/security-center-secure-score)
 
 **Ansvar**: Kund
 
@@ -534,7 +532,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 - [Så här skapar du frågor med Azure Resource Graph](../../governance/resource-graph/first-query-portal.md)
 
-- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
+- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription)
 
 - [Förstå Azure RBAC](../../role-based-access-control/overview.md)
 
@@ -546,7 +544,7 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: Använd taggar till Azure-resurser som ger metadata till att logiskt organisera dem i en taxonomi.
 
-- [Skapa och använda Taggar](../../azure-resource-manager/management/tag-resources.md)
+- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Ansvar**: Kund
 
@@ -556,11 +554,11 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Vägledning**: Använd taggning, hanterings grupper och separata prenumerationer, vid behov, för att organisera och spåra till gångar. Stäm av inventering regelbundet och se till att obehöriga resurser tas bort från prenumerationen inom rimlig tid.
 
-- [Så här skapar du ytterligare Azure-prenumerationer](../../cost-management-billing/manage/create-subscription.md)
+- [Så här skapar du ytterligare Azure-prenumerationer](/azure/billing/billing-create-subscription)
 
-- [Så här skapar du Hanteringsgrupper](../../governance/management-groups/create-management-group-portal.md)
+- [Så här skapar du Hanteringsgrupper](/azure/governance/management-groups/create)
 
-- [Skapa och använda Taggar](../../azure-resource-manager/management/tag-resources.md)
+- [Skapa och använda Taggar](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Ansvar**: Kund
 
@@ -594,7 +592,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i dina prenume
 
 - [Konfigurera och hantera Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](../../governance/policy/samples/built-in-policies.md#general)
+- [Så här nekar du en speciell resurs typ med Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
 
 **Ansvar**: Kund
 
@@ -640,9 +638,9 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i dina prenume
 
 **Vägledning**: om du använder anpassade Azure policys definitioner använder du Azure DevOps eller Azure databaser för att lagra och hantera din kod på ett säkert sätt.
 
-- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-- [Dokumentation om Azure databaser](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
+- [Dokumentation om Azure databaser](/azure/devops/repos/)
 
 **Ansvar**: Kund
 
@@ -662,7 +660,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i dina prenume
 
 **Vägledning**: utnyttja Azure Security Center för att utföra bas linje genomsökningar för dina Azure SQL-servrar och-databaser.
 
-- [Så här åtgärdar du rekommendationer i Azure Security Center](../../security-center/security-center-remediate-recommendations.md)
+- [Så här åtgärdar du rekommendationer i Azure Security Center](/azure/security-center/security-center-sql-service-recommendations)
 
 **Ansvar**: Kund
 
@@ -672,7 +670,7 @@ Använd Azure Resource Graph för att fråga/identifiera resurser i dina prenume
 
 **Vägledning**: Använd Azure Key Vault för att lagra krypterings nycklar för Azure SQL Database transparent DATAKRYPTERING (TDE).
 
-- [Skydda känsliga data som lagras i Azure SQL Server och lagra krypterings nycklarna i Azure Key Vault](./always-encrypted-azure-key-vault-configure.md)
+- [Skydda känsliga data som lagras i Azure SQL Server och lagra krypterings nycklarna i Azure Key Vault](/azure/sql-database/sql-database-always-encrypted-azure-key-vault)
 
 **Ansvar**: Kund
 
@@ -726,7 +724,7 @@ Förskanna allt innehåll som laddas upp till Azure-resurser som inte är Comput
 
 För att uppfylla olika krav på efterlevnad kan du välja olika kvarhållningsperioden för säkerhets kopiering varje vecka, månatlig och/eller år. Lagrings förbrukningen beror på den valda frekvensen av säkerhets kopior och kvarhållningsperioden.
 
-- [Förstå säkerhets kopiering och affärs kontinuitet med Azure SQL Server](./business-continuity-high-availability-disaster-recover-hadr-overview.md)
+- [Förstå säkerhets kopiering och affärs kontinuitet med Azure SQL Server](/azure/sql-database/sql-database-business-continuity)
 
 **Ansvar**: Delad
 
@@ -742,9 +740,9 @@ För att uppfylla olika krav på efterlevnad kan du välja olika kvarhållningsp
 
 Om du använder Kundhanterade nycklar för transparent datakryptering, se till att dina nycklar säkerhets kopie ras.
 
-- [Förstå säkerhets kopieringar i Azure SQL Server](./automated-backups-overview.md?tabs=single-database)
+- [Förstå säkerhets kopieringar i Azure SQL Server](https://docs.microsoft.com/azure/sql-database/sql-database-automated-backups?tabs=single-database)
 
-- [Så här säkerhetskopierar du nyckel valv nycklar i Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Så här säkerhetskopierar du nyckel valv nycklar i Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
 **Ansvar**: Kund
 
@@ -758,9 +756,9 @@ Om du använder Kundhanterade nycklar för transparent datakryptering, se till a
 
 **Vägledning**: Säkerställ att du regelbundet kan utföra Data återställning av innehåll inom Azure Backup. Om det behövs kan du testa att återställa innehåll till ett isolerat VLAN. Testa återställning av säkerhetskopierade nycklar som hanteras av kunden.
 
-- [Återställa Key Vault-nycklar i Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Återställa Key Vault-nycklar i Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey)
 
-- [Återställa Azure SQL Database säkerhets kopieringar med hjälp av återställning av tidpunkt](./recovery-using-backups.md#point-in-time-restore)
+- [Återställa Azure SQL Database säkerhets kopieringar med hjälp av återställning av tidpunkt](/azure/sql-database/sql-database-recovery-using-backups#point-in-time-restore)
 
 **Ansvar**: Kund
 
@@ -770,7 +768,7 @@ Om du använder Kundhanterade nycklar för transparent datakryptering, se till a
 
 **Vägledning**: Aktivera mjuk borttagning i Azure Key Vault för att skydda nycklar mot oavsiktlig eller skadlig borttagning.
 
-- [Så här aktiverar du mjuk borttagning i Key Vault](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
+- [Så här aktiverar du mjuk borttagning i Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Ansvar**: Kund
 
@@ -860,5 +858,5 @@ Om du använder Kundhanterade nycklar för transparent datakryptering, se till a
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](../../security/benchmarks/overview.md)
-- Läs mer om [säkerhetsbaslinjer för Azure](../../security/benchmarks/security-baselines-overview.md)
+- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
+- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)

@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 58672bd68d9a2ea85f58b3761f3b89098b9f5afc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b3bc99d4391e2079d1b0ecc39011f1b2afc4440
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368667"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096044"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Introduktion till Microsoft Spark-verktyg
 
@@ -25,9 +25,9 @@ Microsoft Spark-verktyg (MSSparkUtils) är ett inbyggt paket som hjälper dig at
 
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>Konfigurera åtkomst till Azure Data Lake Storage Gen2 
 
-Synapse Notebooks använder Azure Active Directory (Azure AD) genom strömning för att få åtkomst till ADLS Gen2-konton. Du måste vara en **Blob Storage data deltagare** för att få åtkomst till ADLS Gen2-kontot (eller mappen). 
+Synapse Notebooks använder Azure Active Directory (Azure AD) genom strömning för att få åtkomst till ADLS Gen2-konton. Du måste vara en **data deltagare i Storage BLOB** för att få åtkomst till ADLS Gen2 konto (eller mapp). 
 
-Synapse pipelines använder arbets ytans identitet (MSI) för att komma åt lagrings kontona. Om du vill använda MSSparkUtils i dina pipeline-aktiviteter måste din arbets ytans identitet **Blob Storage data deltagare** för att få åtkomst till ADLS Gen2-kontot (eller mappen).
+Synapse pipelines använder arbets ytans identitet (MSI) för att komma åt lagrings kontona. Om du vill använda MSSparkUtils i dina pipeline-aktiviteter måste din arbets ytans identitet vara **Storage BLOB data-deltagare** för att få åtkomst till ADLS Gen2 konto (eller mapp).
 
 Följ dessa steg för att se till att din Azure AD-och Workspace-MSI har åtkomst till det ADLS Gen2 kontot:
 1. Öppna [Azure Portal](https://portal.azure.com/) och det lagrings konto som du vill få åtkomst till. Du kan gå till den angivna behållaren som du vill komma åt.

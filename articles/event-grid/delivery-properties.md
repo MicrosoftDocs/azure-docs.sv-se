@@ -3,14 +3,14 @@ title: Azure Event Grid-ange anpassade huvuden för levererade händelser
 description: Beskriver hur du kan ange anpassade sidhuvuden (eller leverans egenskaper) för levererade händelser.
 ms.topic: conceptual
 ms.date: 03/24/2021
-ms.openlocfilehash: 6cc6874b7aba6e0696dec21de5b431ca18df3013
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: fb6f0de7919ed7cf9072c0fa35e8f9be5cb5e7db
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967599"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278294"
 ---
-# <a name="delivery-with-custom-headers"></a>Leverans med anpassade rubriker
+# <a name="custom-delivery-properties"></a>Anpassade leverans egenskaper
 Med händelse prenumerationer kan du konfigurera HTTP-huvuden som ingår i levererade händelser. Med den här funktionen kan du ange anpassade huvuden som krävs av ett mål. Du kan ställa in upp till 10 huvuden när du skapar en händelse prenumeration. Varje rubrik värde får inte vara större än 4 096 (4K) byte.
 
 Du kan ange anpassade rubriker för de händelser som levereras till följande destinationer:

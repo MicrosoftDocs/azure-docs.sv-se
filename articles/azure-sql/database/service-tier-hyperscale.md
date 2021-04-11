@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 1/13/2021
-ms.openlocfilehash: a167fedcb42560dec55cdbce40e36180d65e0179
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e03b6fe189f11b6f8e855137438859360df686d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951805"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505407"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperskalatjänstnivå
 
@@ -184,6 +184,7 @@ Aktiverade regioner:
 - Australien, centrala
 - Brasilien, södra
 - Kanada, centrala
+- Kanada, östra
 - Central US
 - Kina, östra 2
 - Kina, norra 2

@@ -9,38 +9,37 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 7b4c8ab55a9b2afc9c1a215236fa1276a630a5cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42a6bc9bfb06f1c80b719bdda686ae111a8884ab
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97963629"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222029"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>Självstudie: Azure Active Directory integrering med Palo-nätverk – bländare
 
-I den här självstudien får du lära dig att integrera Palo-nätverk-bländare med Azure Active Directory (Azure AD).
-Integrering av Palo-nätverk – bländare med Azure AD ger följande fördelar:
+I den här självstudien får du lära dig att integrera Palo-nätverk-bländare med Azure Active Directory (Azure AD). När du integrerar Palo-nätverk – bländare med Azure AD kan du:
 
-* Du kan styra i Azure AD som har åtkomst till Palo-nätverk – bländare.
-* Du kan göra det möjligt för användarna att logga in automatiskt till Palo-bländare (enkel inloggning) med sina Azure AD-konton.
-* Du kan hantera dina konton på en central plats – Azure-portalen.
+* Kontroll i Azure AD som har åtkomst till Palo-nätverk – bländare.
+* Gör det möjligt för användarna att logga in automatiskt till Palo-nätverk – bländare med sina Azure AD-konton.
+* Hantera dina konton på en central plats – Azure Portal.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Om du vill konfigurera Azure AD-integrering med Palo-nätverk-bländare behöver du följande objekt:
+För att komma igång behöver du följande objekt:
 
-* En Azure AD-prenumeration. Om du inte har någon Azure AD-miljö kan du hämta en månads utvärderingsversion [här](https://azure.microsoft.com/pricing/free-trial/)
-* Palo-nätverk – bländare med enkel inloggning aktive rad öppnings prenumeration
+* En Azure AD-prenumeration. Om du inte har någon prenumeration kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/).
+* Palo-nätverk – bländare för enkel inloggning (SSO) med enkel inloggning aktive rad.
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
 I den här självstudien konfigurerar och testar du enkel inloggning med Azure AD i en testmiljö.
 
-* Palo-nätverk – bländare stöder **SP** -och **IDP** -initierad SSO
+* Palo-nätverk – bländare stöder **SP** -och **IDP** -initierad SSO.
 
-## <a name="adding-palo-alto-networks---aperture-from-the-gallery"></a>Lägga till Palo-nätverk – bländare från galleriet
+## <a name="add-palo-alto-networks---aperture-from-the-gallery"></a>Lägg till Palo-nätverk – bländare från galleriet
 
 Om du vill konfigurera integrationen av Palo-nätverk – bländare i Azure AD måste du lägga till Palo-nätverk – bländare från galleriet till listan över hanterade SaaS-appar.
 
@@ -59,10 +58,10 @@ För att enkel inloggning ska fungera måste en länk relation mellan en Azure A
 Utför följande steg för att konfigurera och testa enkel inloggning i Azure AD med Palo-nätverk – bländare:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
-    * **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** – för att testa enkel inloggning med Azure AD med Britta Simon.
-    * **[Tilldela Azure AD-testanvändaren](#assign-the-azure-ad-test-user)** – så att Britta Simon kan använda enkel inloggning med Azure AD.
+    1. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** – för att testa enkel inloggning med Azure AD med Britta Simon.
+    1. **[Tilldela Azure AD-testanvändaren](#assign-the-azure-ad-test-user)** – så att Britta Simon kan använda enkel inloggning med Azure AD.
 2. **[Konfigurera Palo-nätverk – bländare SSO](#configure-palo-alto-networks---aperture-sso)** – om du vill konfigurera enskilda Sign-On inställningar på program sidan.
-    * **[Skapa Palo-nätverk-bländare-test användare](#create-palo-alto-networks---aperture-test-user)** – om du vill ha en motsvarighet till Britta Simon i Paload nätverk-bländare som är länkad till Azure AD-representation av användare.
+    1. **[Skapa Palo-nätverk-bländare-test användare](#create-palo-alto-networks---aperture-test-user)** – om du vill ha en motsvarighet till Britta Simon i Paload nätverk-bländare som är länkad till Azure AD-representation av användare.
 3. **[Testa SSO](#test-sso)** – för att kontrol lera om konfigurationen fungerar.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
@@ -77,15 +76,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 4. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, utför följande steg:
 
-    ![Skärm bild som visar "Basic S A M L-konfiguration" med text rutorna "identifierare" och "svara U R L" och "Spara"-åtgärden markerat.](common/idp-intiated.png)
-
     a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata`
 
     b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/auth`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
-
-    ![Palo-nätverk-bländare-domän och URL enkel inloggning information SP](common/metadata-upload-additional-signon.png)
 
     I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/sign_in`
 
@@ -130,15 +125,15 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 2. Klicka på **Inställningar** på den översta meny raden.
 
-    ![Fliken Inställningar](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_settings.png)
+    ![Fliken Inställningar](./media/paloaltonetworks-aperture-tutorial/settings.png)
 
 3. Navigera till **program** avsnittet Klicka på **autentisering** formulär menyns vänstra sida.
 
-    ![Fliken auth](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_auth.png)
+    ![Fliken auth](./media/paloaltonetworks-aperture-tutorial/authentication.png)
     
 4. Utför följande steg på sidan **autentisering** :
     
-    ![Fliken autentisering](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_singlesignon.png)
+    ![Fliken autentisering](./media/paloaltonetworks-aperture-tutorial/tab.png)
 
     a. Markera kryss rutan **aktivera enkel inloggning (SSP-providers som stöds är okta, en inloggning)** från fältet **för enkel inloggning** .
 

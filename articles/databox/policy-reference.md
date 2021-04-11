@@ -1,18 +1,18 @@
 ---
 title: Inbyggda princip definitioner för Azure Data Box
 description: Visar Azure Policy inbyggda princip definitioner för Azure Data Box. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
 ms.service: databox
 author: alkohli
 ms.author: alkohli
-ms.openlocfilehash: 5f3af8d66293a4ed78df35ebfea9467e03a46151
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: db1f489370628d8771549f064e80f6020a8128fe
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105037401"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095194"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-box"></a>Azure Policy inbyggda definitioner för Azure Data Box
 

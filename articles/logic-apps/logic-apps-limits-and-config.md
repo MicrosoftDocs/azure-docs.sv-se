@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 03/18/2021
-ms.openlocfilehash: f4336350af92c27760369d668c6babddc4d4ea30
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/05/2021
+ms.openlocfilehash: 2debf7d350f4f1fde5e86a60ad03a6858bc02743
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103462924"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490343"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Information om begränsningar och konfiguration för Azure Logic Apps
 
@@ -120,11 +120,13 @@ Här följer gränserna för en enda Logic app-körning:
 | Tills timeout | -Standard: PT1H (1 timme) | Den längsta tid som loopen "fram" kan köras innan den avslutas och anges i [ISO 8601-format](https://en.wikipedia.org/wiki/ISO_8601). Timeout-värdet utvärderas för varje loop-cykel. Om en åtgärd i slingan tar längre tid än tids gränsen, stoppas inte den aktuella cykeln. Nästa cykel startar dock inte eftersom gräns villkoret inte är uppfyllt. <p><p>Om du vill ändra den här gränsen väljer du **ändra gränser** i formen "till" och anger värdet för egenskapen **timeout** . |
 ||||
 
+<a name="concurrency-debatching"></a>
+
 ### <a name="concurrency-and-debatching"></a>Samtidighet och debatchering
 
 | Name | Gräns | Kommentarer |
 | ---- | ----- | ----- |
-| Utlös samtidighet | Med concurrency: obegränsat <p><p>Med samtidigitet på, som du inte kan ångra när du har aktiverat: <p><p>-Standard: 25 <br>-Min: 1 <br>– Max: 50 | Den här gränsen är det maximala antalet Logic App-instanser som kan köras samtidigt eller parallellt. <p><p>**Obs!** när samtidighet har Aktiver ATS minskas SplitOn-gränsen till 100 objekt för [debatchering av matriser](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Om du vill ändra den här gränsen, se [ändra utlösarens samtidighets gräns](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) eller [Utlös instansen i tur och ordning](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
+| Utlös samtidighet | Med concurrency: obegränsat <p><p>Med samtidigitet på, som du inte kan ångra när du har aktiverat: <p><p>-Standard: 25 <br>-Min: 1 <br>– Max: 100 | Den här gränsen är det maximala antalet Logic App-instanser som kan köras samtidigt eller parallellt. <p><p>**Obs!** när samtidighet har Aktiver ATS minskas SplitOn-gränsen till 100 objekt för [debatchering av matriser](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Om du vill ändra den här gränsen, se [ändra utlösarens samtidighets gräns](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) eller [Utlös instansen i tur och ordning](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Maximalt antal väntande körningar | Med samtidigering: <p><p>-Min: 1 <br>– Max: 50 <p><p>Med samtidighet på: <p><p>-Min: 10 plus antalet samtidiga körningar (Utlös samtidighet) <br>– Max: 100 | Den här gränsen är det maximala antalet Logic App-instanser som kan vänta på att köras när din Logic app redan kör maximalt antal samtidiga instanser. <p><p>Om du vill ändra den här gränsen, se [begränsningen för ändrings väntande körning](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
 | SplitOn-objekt | Med samtidigering: 100 000 <p><p>Med samtidighet på: 100 | För utlösare som returnerar en matris kan du ange ett uttryck som använder en ' SplitOn '-egenskap som [delar upp eller avgruppera mat ris objekt i flera arbets flödes instanser](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) för bearbetning, i stället för att använda en "förgrunds"-slinga. Det här uttrycket refererar till matrisen som används för att skapa och köra en arbets flödes instans för varje mat ris objekt. <p><p>**Obs!** när samtidighet har Aktiver ATS minskas SplitOn-gränsen till 100 objekt. |
 ||||

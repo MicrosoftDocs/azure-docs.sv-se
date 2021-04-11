@@ -32,6 +32,8 @@
     - name: Versionspolicy
       href: concepts-version-policy.md
       displayName: 'version, postgresql'
+    - name: Prestandarekommendationer
+      href: concepts-azure-advisor-recommendations.md
     - name: Kända problem & begränsningar
       href: concepts-known-issues-limitations.md
       displayName: 'issues, limitations, postgresql'
@@ -93,6 +95,9 @@
             - name: Go
               href: connect-go.md
               displayName: connect with go
+            - name: Rust
+              href: connect-rust.md
+              displayName: connect with rust
     - name: Självstudier
       items:
         - name: Utforma en databas
@@ -558,11 +563,15 @@
       items:
         - name: Vad är Hyperskala (Citus)?
           href: hyperscale-overview.md
+        - name: Funktioner i förhandsgranskningen
+          href: hyperscale-preview-features.md
     - name: Snabbstart
       items:
         - name: Skapa en servergrupp
           items:
-            - name: Azure Portal
+            - name: Basic-nivå (för hands version)
+              href: quickstart-create-hyperscale-basic-tier.md
+            - name: Standard-nivå
               href: quickstart-create-hyperscale-portal.md
               displayName: 'portal, create hyperscale'
     - name: Självstudier
@@ -581,6 +590,8 @@
           displayName: 'hyperscale, tutorial, real-time'
     - name: Begrepp
       items:
+        - name: Basic-nivå
+          href: concepts-hyperscale-tiers.md
         - name: Distribuerad data
           items:
             - name: Noder och tabeller
@@ -611,26 +622,26 @@
               displayName: 'backup, restore, outage, hyperscale'
             - name: Hög tillgänglighet
               href: concepts-hyperscale-high-availability.md
+        - name: Replikering
+          href: concepts-hyperscale-read-replicas.md
         - name: Övervaka och finjustera
           items:
             - name: Övervaka och finjustera
               href: concepts-hyperscale-monitoring.md
             - name: Granskningsloggar
               href: concepts-hyperscale-audit.md
+        - name: Kolumn lagring
+          href: concepts-hyperscale-columnar.md
         - name: Konfigurationsalternativ
           href: concepts-hyperscale-configuration-options.md
+        - name: Gränser och begränsningar
+          href: concepts-hyperscale-limits.md
         - name: Förskottsbetalning för reserverad kapacitet
           href: concepts-hyperscale-reserved-pricing.md
+        - name: PostgreSQL-versioner
+          href: concepts-hyperscale-versions.md
         - name: PostgreSQL-tillägg
           href: concepts-hyperscale-extensions.md
-    - name: API-referens
-      items:
-        - name: SQL API-funktioner
-          href: reference-hyperscale-functions.md
-        - name: Serverparametrar
-          href: reference-hyperscale-parameters.md
-        - name: Systemtabeller
-          href: reference-hyperscale-metadata.md
     - name: Anvisningar
       items:
         - name: Servergruppstorlek
@@ -656,6 +667,15 @@
               href: howto-hyperscale-modify-distributed-tables.md
         - name: Hög tillgänglighet
           href: howto-hyperscale-high-availability.md
+        - name: Replikering
+          items:
+            - name: Azure Portal
+              href: howto-hyperscale-read-replicas-portal.md
+              displayName: 'replication, read replica'
+        - name: Schemalagt underhåll
+          items:
+            - name: Azure Portal
+              href: howto-hyperscale-maintenance.md
         - name: Övervaka
           items:
             - name: Skapa aviseringar för mått
@@ -664,6 +684,8 @@
             - name: Komma åt databasloggar
               href: howto-hyperscale-logging.md
               displayName: 'log, hyperscale'
+        - name: Högre versionsuppgraderingar
+          href: howto-hyperscale-upgrade.md
         - name: Felsöka
           items:
             - name: Felsöka anslutningsfel
@@ -671,6 +693,14 @@
               displayName: 'connection errors, hyperscale'
             - name: Användbara diagnostikfrågor
               href: howto-hyperscale-useful-diagnostic-queries.md
+    - name: API-referens
+      items:
+        - name: SQL API-funktioner
+          href: reference-hyperscale-functions.md
+        - name: Serverparametrar
+          href: reference-hyperscale-parameters.md
+        - name: Systemtabeller
+          href: reference-hyperscale-metadata.md
 - name: Referens
   items:
     - name: Azure CLI
