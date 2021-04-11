@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2f3d1d47bd26167253296f06af5470818760850
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a532ae9485efa9571137130d32ba0827728e8094
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99257988"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166878"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Program med jokertecken i Azure Active Directory Application Proxy
 
@@ -68,11 +68,23 @@ Av säkerhets skäl är detta ett hårt krav och vi stöder inte jokertecken fö
 
 ### <a name="dns-updates"></a>DNS-uppdateringar
 
-När du använder anpassade domäner måste du skapa en DNS-post med en CNAME-post för den externa URL: en (till exempel  `*.adventure-works.com` ) som pekar på den externa URL: en för Application Proxy-slutpunkten. För program med jokertecken måste CNAME-posten peka på relevanta externa URL: er:
+När du använder anpassade domäner måste du skapa en DNS-post med en CNAME-post för den externa URL: en (till exempel  `*.adventure-works.com` ) som pekar på den externa URL: en för Application Proxy-slutpunkten. För jokertecken måste CNAME-posten peka på relevant extern URL:
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
 För att bekräfta att du har konfigurerat din CNAME korrekt kan du använda [nslookup](/windows-server/administration/windows-commands/nslookup) på en av mål slut punkterna, till exempel `expenses.adventure-works.com` .  Ditt svar bör innehålla det alias som redan nämnts ( `<yourAADTenantId>.tenant.runtime.msappproxy.net` ).
+
+### <a name="using-connector-groups-assigned-to-an-app-proxy-cloud-service-region-other-than-the-default-region"></a>Använda kopplings grupper som är tilldelade till en app proxy-moln tjänst region förutom standard regionen
+Om du har kopplingar som är installerade i regioner som skiljer sig från din standard innehavare, kan det vara bra att ändra vilken region som anslutnings gruppen är optimerad för för att förbättra prestanda vid åtkomst till dessa program. Mer information finns i [optimera kopplings grupper så att de använder närmaste moln tjänst för tillämpningsproxy](application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview).
+ 
+Om den kopplings grupp som är tilldelad till programmet jokertecken använder en **annan region än din standard region**, måste du uppdatera CNAME-posten så att den pekar på en regional specifik extern URL. Använd följande tabell för att fastställa relevant URL:
+
+| Tilldelad region | Extern URL |
+| ---   | ---         |
+| Asien | `<yourAADTenantId>.asia.tenant.runtime.msappproxy.net`|
+| Australien  | `<yourAADTenantId>.aus.tenant.runtime.msappproxy.net` |
+| Europa  | `<yourAADTenantId>.eur.tenant.runtime.msappproxy.net`|
+| Nordamerika  | `<yourAADTenantId>.nam.tenant.runtime.msappproxy.net` |
 
 ## <a name="considerations"></a>Överväganden
 

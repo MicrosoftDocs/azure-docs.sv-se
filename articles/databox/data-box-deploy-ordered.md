@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 281b22db692087f2876b4011563fee8c56bd476e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa3614aa3c4fbaec3611806406e5129379999bc3
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102522401"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067149"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Självstudie: Beställa Azure Data Box
 
@@ -790,7 +790,7 @@ Om du vill avbryta en Azure Data Boxs ordning kör du [`az databox job cancel`](
    |resurs-grupp [obligatoriskt]| Namnet på resurs gruppen som är kopplad till den ordning som ska tas bort. En resursgrupp är en logisk container för de resurser som kan hanteras eller distribueras tillsammans. | myresourcegroup|
    |namn [obligatoriskt]| Namnet på den ordning som ska tas bort. | "mydataboxorder"|
    |Orsak [required]| Orsaken till att ordern annulleras. | "Jag har angett felaktig information och behövde avbryta beställningen." |
-   |ja| Begär inte bekräftelse. | --Ja (-y)| --Ja-y |
+   |ja| Begär inte bekräftelse. | --Ja (-y)| 
    |felsökning| Inkludera felsöknings information för utförlig loggning | --Felsök |
    |Hjälp| Visa hjälp information för det här kommandot. | --hjälp-h |
    |endast-show-Errors| Visa endast fel, ignorera varningar. | --endast-show-Errors |
@@ -827,7 +827,7 @@ Om du har avbrutit en Azure Data Box order kan du köra [`az databox job delete`
    |resurs-grupp [obligatoriskt]| Namnet på resurs gruppen som är kopplad till den ordning som ska tas bort. En resursgrupp är en logisk container för de resurser som kan hanteras eller distribueras tillsammans. | myresourcegroup|
    |namn [obligatoriskt]| Namnet på den ordning som ska tas bort. | "mydataboxorder"|
    |prenumeration| Namnet eller ID (GUID) för din Azure-prenumeration. | "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" |
-   |ja| Begär inte bekräftelse. | --Ja (-y)| --Ja-y |
+   |ja| Begär inte bekräftelse. | --Ja (-y)|
    |felsökning| Inkludera felsöknings information för utförlig loggning | --Felsök |
    |Hjälp| Visa hjälp information för det här kommandot. | --hjälp-h |
    |endast-show-Errors| Visa endast fel, ignorera varningar. | --endast-show-Errors |

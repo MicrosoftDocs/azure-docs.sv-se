@@ -6,13 +6,11 @@
       href: concepts-baremetal-infrastructure-overview.md
     - name: Förstå villkoren
       href: know-baremetal-terms.md
-    - name: Anslut BareMetal instance units i Azure
+    - name: Ansluta BareMetal-instanser i Azure
       displayName: 'Azure CLI, az baremetalinstance, az baremetalinstance restart'
       href: connect-baremetal-infrastructure.md
 - name: Arbetsbelastningar
   items:
-    - name: Typ av arbetsbelastning för BareMetal
-      href: /azure/virtual-machines/workloads/sap/get-started?context=/azure/baremetal-infrastructure/workloads/sap/context/context
     - name: SAP HANA på Azure (stora instanser)
       items:
         - name: Certifiering

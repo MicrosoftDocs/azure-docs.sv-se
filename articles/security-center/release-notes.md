@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/22/2021
+ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: f6ec14c577d1203b92085b791f89e4873a97c41a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 81f741fd9b0e3d40eb0027a5cbe0ba4b7113bbea
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786113"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027626"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
@@ -24,6 +24,93 @@ Om du vill veta mer om *planerade* ändringar som kommer snart till Security Cen
 
 > [!TIP]
 > Om du söker efter objekt som är äldre än sex månader hittar du dem i [arkivet för vad som är nytt i Azure Security Center](release-notes-archive.md).
+
+## <a name="april-2021"></a>April 2021
+
+Uppdateringar i april inkluderar:
+- [Fyra nya rekommendationer relaterade till gäst konfiguration (för hands version)](#four-new-recommendations-related-to-guest-configuration-preview)
+- [Använd Azure Defender för Kubernetes för att skydda hybrid-och multi-Cloud Kubernetes-distributioner (för hands version)](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
+- [11 Azure Defender varningar inaktuellt](#11-azure-defender-alerts-deprecated)
+- [Två rekommendationer från säkerhets kontrollen tillämpa system uppdateringar är inaktuella](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
+
+### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Fyra nya rekommendationer relaterade till gäst konfiguration (för hands version)
+
+Azures [tilläggs rapporter för gäst konfiguration](../governance/policy/concepts/guest-configuration.md) till Security Center för att se till att de virtuella datorernas gäst inställningar är skärpta. Tillägget krävs inte för Arc-aktiverade servrar eftersom de ingår i den Arc-anslutna dator agenten. Tillägget kräver en Systemhanterad identitet på datorn.
+
+Vi har lagt till fyra nya rekommendationer som Security Center för att få ut mesta möjliga av det här tillägget.
+
+- Två rekommendationer meddelar dig att installera tillägget och den nödvändiga systemhanterade identiteten:
+    - **Gäst konfigurations tillägget bör installeras på datorerna**
+    - **De virtuella datorernas gäst konfigurations tillägg bör distribueras med systemtilldelad hanterad identitet**
+
+- När tillägget är installerat och körs börjar granskningen av dina datorer och du uppmanas att göra inställningar som konfiguration av operativ systemets och miljö inställningarna. De här två rekommendationerna kommer att uppmana dig att skärp dina Windows-och Linux-datorer enligt beskrivningen:
+    - **Windows Defender sårbarhet Guard måste vara aktiverat på dina datorer**
+    - **Autentisering till Linux-datorer måste kräva SSH-nycklar**
+
+Läs mer i [förstå Azure policys gäst konfiguration](../governance/policy/concepts/guest-configuration.md).
+
+
+### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview"></a>Använd Azure Defender för Kubernetes för att skydda hybrid-och multi-Cloud Kubernetes-distributioner (för hands version)
+
+Azure Defender för Kubernetes utökar skydds funktionerna för hot och skyddar dina kluster var de än är distribuerade. Detta har Aktiver ATS genom integrering med [Azure Arc-aktiverade Kubernetes](../azure-arc/kubernetes/overview.md) och dess nya [tilläggs funktioner](../azure-arc/kubernetes/extensions.md). 
+
+När du har aktiverat Azure-bågen i dina icke-Azure Kubernetes-kluster, en ny rekommendation från Azure Security Center erbjudanden för att distribuera Azure Defender-tillägget till dem med bara några få klick.
+
+Använd rekommendationen (**Azure Arc-aktiverade Kubernetes-kluster bör ha tillägget installerat i Azure Defender**) och tillägget för att skydda Kubernetes-kluster som distribueras i andra moln leverantörer, även om de inte finns i de hanterade Kubernetes-tjänsterna.
+
+Den här integrationen mellan Azure Security Center, Azure Defender och Azure Arc Enabled Kubernetes:
+
+- Enkel etablering av Azure Defender-tillägget till oskyddade Azure Arc-Kubernetes-kluster (manuellt och i skala)
+- Övervakning av Azure Defender-tillägget och etablerings statusen från Azure båg Portal
+- Säkerhets rekommendationer från Security Center rapporteras på sidan ny säkerhet i Azure båg-portalen
+- Identifierade säkerhetshot från Azure Defender rapporteras på sidan ny säkerhet i Azure båg-portalen
+- Azure Arc-aktiverade Kubernetes-kluster är integrerade i Azure Security Center plattform och erfarenhet
+
+Läs mer i [använda Azure Defender för Kubernetes med dina lokala och Kubernetes-kluster med flera moln](defender-for-kubernetes-azure-arc.md).
+
+:::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Security Center rekommendationen för att distribuera Azure Defender-tillägget för Azure Arc-aktiverade Kubernetes-kluster." lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+
+
+### <a name="11-azure-defender-alerts-deprecated"></a>11 Azure Defender varningar inaktuellt
+
+De elva Azure Defender-aviseringarna som anges nedan är inaktuella.
+
+- Nya aviseringar ersätter dessa två aviseringar och ger bättre täckning:
+
+    | AlertType                | AlertDisplayName                                                         |
+    |--------------------------|--------------------------------------------------------------------------|
+    | ARM_MicroBurstDomainInfo | PREVIEW – mikroburst Toolkit "Get-AzureDomainInfo"-funktionen körs upptäckt |
+    | ARM_MicroBurstRunbook    | PREVIEW – mikroburst Toolkit "Get-AzurePasswords"-funktionen körs upptäckt  |
+    |                          |                                                                          |
+
+- Dessa nio aviseringar rör en Azure Active Directory Identity Protection koppling (IPC) som redan är föråldrad:
+
+    | AlertType           | AlertDisplayName              |
+    |---------------------|-------------------------------|
+    | UnfamiliarLocation  | Obekanta inloggningsegenskaper |
+    | AnonymousLogin      | Anonym IP-adress          |
+    | InfectedDeviceLogin | Länkad IP-adress för skadlig kod     |
+    | ImpossibleTravel    | Ovanlig resa               |
+    | MaliciousIP         | Skadlig IP-adress          |
+    | LeakedCredentials   | Läckta autentiseringsuppgifter            |
+    | PasswordSpray       | Lösen ords sprayning                |
+    | LeakedCredentials   | Azure AD Threat Intelligence  |
+    | AADAI               | Azure AD AI                   |
+    |                     |                               |
+ 
+    > [!TIP]
+    > Dessa nio IPC-aviseringar Security Center aldrig aviseringar. De är en del av den Azure Active Directory (AAD) Identity Protection Connector (IPC) som skickade dem till Security Center. Under de senaste två åren är de enda kunder som har sett de här aviseringarna organisationer som har konfigurerat exporten (från kopplingen till ASC) i 2019 eller tidigare. AAD IPC har fortsatt att visa dem i sina egna aviserings system och de har fortsatt att vara tillgängliga i Azure Sentinel. Den enda ändringen är att de inte längre visas i Security Center.
+
+### <a name="two-recommendations-from-apply-system-updates-security-control-were-deprecated"></a>Två rekommendationer från säkerhets kontrollen tillämpa system uppdateringar är inaktuella 
+
+Följande två rekommendationer var inaktuella och ändringarna kan resultera i en mindre inverkan på dina säkra Poäng:
+
+- **Datorerna måste startas om för att tillämpa system uppdateringar**
+- **Övervaknings agenten ska installeras på datorerna**. Den här rekommendationen gäller endast för lokala datorer och en del av dess logik överförs till en annan rekommendation, **Log Analytics agent hälso problem bör lösas på dina datorer**
+
+Vi rekommenderar att du kontrollerar dina kontinuerliga export-och arbets flödes automatiserings konfigurationer för att se om dessa rekommendationer ingår i dem. Dessutom bör alla instrument paneler och andra övervaknings verktyg som kan använda dem uppdateras i enlighet med detta.
+
+Läs mer om de här rekommendationerna på [referens sidan för säkerhets rekommendationer](recommendations-reference.md).
 
 
 ## <a name="march-2021"></a>Mars 2021
@@ -489,7 +576,7 @@ Uppdateringar i december inkluderar:
 Azure Security Center erbjuder två Azure Defender-planer för SQL-servrar:
 
 - **Azure Defender för Azure SQL Database-servrar** – skyddar dina Azure-inhemska SQL-servrar 
-- **Azure Defender för SQL-servrar på datorer** – utökar samma skydd till dina SQL-servrar i hybrid miljöer, i molnet och i lokala miljöer
+- **Azure Defender för SQL-servrar på datorer** – utökar samma skydd till dina SQL-servrar i hybrid miljöer, i flera moln och i lokala miljöer
 
 Med det här meddelandet skyddar **Azure Defender för SQL** nu dina databaser och deras data oavsett var de befinner sig.
 
@@ -753,154 +840,3 @@ Läs mer om hur du [exporterar Security Center data kontinuerligt](continuous-ex
 Nu kan du se om dina prenumerationer har tilldelats standard Security Center principen, på sidan **säkerhets princip** för Security Center i Azure Portal.
 
 :::image type="content" source="media/release-notes/policy-assignment-info-per-subscription.png" alt-text="Sidan princip hantering i Azure Security Center visar standard princip tilldelningarna":::
-
-## <a name="october-2020"></a>Oktober 2020
-
-Uppdateringar i oktober inkluderar:
-- [Sårbarhets bedömning för datorer på plats och flera moln (för hands version)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
-- [Azure Firewall-rekommendation har lagts till (för hands version)](#azure-firewall-recommendation-added-preview)
-- [Auktoriserade IP-intervall bör definieras i Kubernetes Services-rekommendationen med snabb korrigering](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)
-- [Instrument panelen för kontroll av efterlevnad innehåller nu alternativ för att ta bort standarder](#regulatory-compliance-dashboard-now-includes-option-to-remove-standards)
-- [Microsoft. Security/securityStatuses-tabellen har tagits bort från Azure Resource Graph (ARG)](#microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg)
-
-### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview"></a>Sårbarhets bedömning för datorer på plats och flera moln (för hands version)
-
-[Azure Defender for servers](defender-for-servers-introduction.md)"Integrated sårbarhet Assessment Scanner (drivs av Qualys) genomsöker nu Azure Arc-aktiverade servrar.
-
-När du har aktiverat Azure Arc på datorer som inte är Azure-datorer erbjuder Security Center att distribuera den integrerade sårbarhets skannern på dem – manuellt och i skala.
-
-Med den här uppdateringen kan du utnyttja kraften hos **Azure Defender för servrar** för att konsolidera ditt sårbarhets hanterings program över alla dina Azure-och icke-Azure-tillgångar.
-
-Huvud funktioner:
-
-- Övervaka etablerings status för VA-skannern (sårbarhets bedömning) på Azure Arc-datorer
-- Etablering av den integrerade VA-agenten för att ta bort oskyddade Windows-och Linux Azure Arc-datorer (manuellt och i skala)
-- Ta emot och analysera identifierade sårbarheter från distribuerade agenter (manuellt och i skala)
-- Enhetlig upplevelse för virtuella Azure-datorer och Azure Arc-datorer
-
-[Lär dig mer om att distribuera den integrerade sårbarhets-skannern till dina hybrid datorer](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines).
-
-[Läs mer om Azure Arc-aktiverade servrar](../azure-arc/servers/index.yml).
-
-
-### <a name="azure-firewall-recommendation-added-preview"></a>Azure Firewall-rekommendation har lagts till (för hands version)
-
-En ny rekommendation har lagts till för att skydda alla dina virtuella nätverk med Azure-brandväggen.
-
-Rekommendationen, **virtuella nätverk bör skyddas av Azure Firewall** och du får hjälp att begränsa åtkomsten till dina virtuella nätverk och förhindra potentiella hot genom att använda Azure-brandväggen.
-
-Läs mer om [Azure-brandväggen](https://azure.microsoft.com/services/azure-firewall/).
-
-
-### <a name="authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix"></a>Auktoriserade IP-intervall bör definieras i Kubernetes Services-rekommendationen med snabb korrigering
-
-Rekommendationen **för auktoriserade IP-adressintervall bör definieras på Kubernetes Services** nu med ett alternativ för snabb korrigering.
-
-Mer information om den här rekommendationen och alla andra Security Center rekommendationer finns i [säkerhets rekommendationer – en referens guide](recommendations-reference.md).
-
-:::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="De auktoriserade IP-intervallen bör definieras i Kubernetes Services-rekommendation med alternativet för snabb korrigering":::
-
-
-### <a name="regulatory-compliance-dashboard-now-includes-option-to-remove-standards"></a>Instrument panelen för kontroll av efterlevnad innehåller nu alternativ för att ta bort standarder
-
-Security Centers instrument panel för kontroll av efterlevnad ger insikter om din position utifrån hur du uppfyller särskilda efterlevnadsprinciper och krav.
-
-Instrument panelen innehåller en standard uppsättning regler. Om någon av de angivna standarderna inte är relevant för din organisation, är det nu en enkel process att ta bort dem från användar gränssnittet för en prenumeration. Standarder kan bara tas bort på *prenumerations* nivå. inte hanterings gruppens omfattning.
-
-Läs mer i [ta bort en standard från din instrument panel](update-regulatory-compliance-packages.md#remove-a-standard-from-your-dashboard).
-
-
-### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Microsoft. Security/securityStatuses-tabellen har tagits bort från Azure Resource Graph (ARG)
-
-Azure Resource Graph är en tjänst i Azure som är utformad för att tillhandahålla effektiv resurs utforskning med möjlighet att fråga i skala över en specifik uppsättning prenumerationer så att du effektivt kan styra din miljö. 
-
-För Azure Security Center kan du använda ARG och [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) för att fråga efter en mängd säkerhets position data. Exempel:
-
-- Till gångs lager använder (ARG)
-- Vi har dokumenterat en exempel-ARG-fråga för att [identifiera konton utan Multi-Factor Authentication (MFA) aktiverat](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)
-
-I ARG finns det data tabeller som du kan använda i dina frågor.
-
-:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Azure Resource Graph Explorer och de tillgängliga tabellerna":::
-
-> [!TIP]
-> I ARG-dokumentationen visas en lista över alla tillgängliga tabeller i [Azures resurs diagram tabell och referens för resurs typ](../governance/resource-graph/reference/supported-tables-resources.md).
-
-Från den här uppdateringen har **Microsoft. Security/securityStatuses-** tabellen tagits bort. SecurityStatuses-API: et är fortfarande tillgängligt.
-
-Data ersättning kan användas av Microsoft. Security/assessments-tabellen.
-
-Den största skillnaden mellan Microsoft. Security/securityStatuses och Microsoft. Security/Assessment är att när den första visar agg regering av utvärderingar, innehåller sekunderna en enda post för varje.
-
-Till exempel, Microsoft. Security/securityStatuses skulle returnera ett resultat med en matris med två policyAssessments:
-
-```
-{
-id: "/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet",
-name: "mico-rg-vnet",
-type: "Microsoft.Security/securityStatuses",
-properties:  {
-    policyAssessments: [
-        {assessmentKey: "e3deicce-f4dd-3b34-e496-8b5381bazd7e", category: "Networking", policyName: "Azure DDOS Protection Standard should be enabled",...},
-        {assessmentKey: "sefac66a-1ec5-b063-a824-eb28671dc527", category: "Compute", policyName: "",...}
-    ],
-    securitystateByCategory: [{category: "Networking", securityState: "None" }, {category: "Compute",...],
-    name: "GenericResourceHealthProperties",
-    type: "VirtualNetwork",
-    securitystate: "High"
-}
-```
-Microsoft. Security/bedömningar innehåller en post för varje sådan princip utvärdering enligt följande:
-
-```
-{
-type: "Microsoft.Security/assessments",
-id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft. Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/e3delcce-f4dd-3b34-e496-8b5381ba2d70",
-name: "e3deicce-f4dd-3b34-e496-8b5381ba2d70",
-properties:  {
-    resourceDetails: {Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet"...},
-    displayName: "Azure DDOS Protection Standard should be enabled",
-    status: (code: "NotApplicable", cause: "VnetHasNOAppGateways", description: "There are no Application Gateway resources attached to this Virtual Network"...}
-}
-
-{
-type: "Microsoft.Security/assessments",
-id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/80fac66a-1ec5-be63-a824-eb28671dc527",
-name: "8efac66a-1ec5-be63-a824-eb28671dc527",
-properties: {
-    resourceDetails: (Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet"...),
-    displayName: "Audit diagnostic setting",
-    status:  {code: "Unhealthy"}
-}
-```
-
-**Exempel på konvertering av en befintlig ARG-fråga med hjälp av securityStatuses för att nu använda bedömnings tabellen:**
-
-Fråga som refererar till SecurityStatuses:
-
-```kusto
-SecurityResources 
-| where type == 'microsoft.security/securitystatuses' and properties.type == 'virtualMachine'
-| where name in ({vmnames}) 
-| project name, resourceGroup, policyAssesments = properties.policyAssessments, resourceRegion = location, id, resourceDetails = properties.resourceDetails
-```
-
-Ersättnings fråga för bedömnings tabellen:
-
-```kusto
-securityresources
-| where type == "microsoft.security/assessments" and id contains "virtualMachine"
-| extend resourceName = extract(@"(?i)/([^/]*)/providers/Microsoft.Security/assessments", 1, id)
-| extend source = tostring(properties.resourceDetails.Source)
-| extend resourceId = trim(" ", tolower(tostring(case(source =~ "azure", properties.resourceDetails.Id,
-source =~ "aws", properties.additionalData.AzureResourceId,
-source =~ "gcp", properties.additionalData.AzureResourceId,
-extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
-| extend resourceGroup = tolower(tostring(split(resourceId, "/")[4]))
-| where resourceName in ({vmnames}) 
-| project resourceName, resourceGroup, resourceRegion = location, id, resourceDetails = properties.additionalData
-```
-
-Läs mer på följande länkar:
-- [Skapa frågor med Azure Resource Graph Explorer](../governance/resource-graph/first-query-portal.md)
-- [Kusto Query Language (KQL)](/azure/data-explorer/kusto/query/)

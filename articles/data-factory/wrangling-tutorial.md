@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: 3d43a532f57feab361c6a3de79269991f46fc55d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cf15d6f669718cca8b99d67a7912d3959d9c191f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98684030"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732514"
 ---
 # <a name="prepare-data-with-data-wrangling"></a>Förbereda data med data datatransformering
 
@@ -20,7 +20,7 @@ ms.locfileid: "98684030"
 Med data datatransformering i Data Factory kan du bygga interaktiva Power Query kombinera-UPS internt i ADF och sedan köra dem i skala inuti en ADF-pipeline.
 
 > [!NOTE]
-> Power Query aktivitet i ADF är för närvarande tillgängliga i offentlig för hands version
+> Power Query aktivitet i ADF är för närvarande tillgänglig i offentlig för hands version
 
 ## <a name="create-a-power-query-activity"></a>Skapa en Power Query-aktivitet
 

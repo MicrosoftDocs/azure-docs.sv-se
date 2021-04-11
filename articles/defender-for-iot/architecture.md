@@ -1,15 +1,15 @@
 ---
-title: Arkitektur för agent lösa lösningar
+title: Vad är agent lösningens arkitektur
 description: Lär dig mer om Azure Defender för IoT agent utan arkitektur och informations flöde.
 ms.topic: overview
 ms.date: 1/25/2021
 ms.author: shhazam
-ms.openlocfilehash: 99ccd0597fddaa86a2452160fc2cbfdadab87a1b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bd639ca2656b901bd87fccf36fb4a5d90d3bf918
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784874"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383549"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender för IoT-arkitektur
 
@@ -107,7 +107,7 @@ Defender för IoT-portalen i Azure används för att hjälpa dig att:
 
 - Uppdatera hot informations paket
 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
 [Vanliga frågor och svar om Defender för IoT](resources-frequently-asked-questions.md)
 

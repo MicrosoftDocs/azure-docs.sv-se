@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5d4ff622f69445880c0de8cb74dc1aeee422c89b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 540f0725427ace4aec76de373556cd6699a1b229
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052168"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732762"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>Aktivera gäst hälsa för VM Insights (förhands granskning)
 Med gäst hälsa för virtuella datorer kan du Visa hälso tillståndet för en virtuell dator som definieras av en uppsättning prestanda mätningar som samplas med jämna mellanrum. I den här artikeln beskrivs hur du aktiverar den här funktionen i din prenumeration och hur du aktiverar gäst övervakning för varje virtuell dator.
@@ -20,6 +20,7 @@ Med gäst hälsa för virtuella datorer kan du Visa hälso tillståndet för en 
 Gäst hälsa för VM Insights har följande begränsningar i offentlig för hands version:
 
 - Endast virtuella Azure-datorer stöds för närvarande. Azure Arc för servrar stöds inte för närvarande.
+- Nätverks-proxyservrar stöds inte för närvarande.
 
 
 ## <a name="supported-operating-systems"></a>Operativsystem som stöds

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 03/22/2021
 ms.author: duau
-ms.openlocfilehash: 3da044057784763df8d071af6c101f7baffbefc6
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: d0aa9e8bfd565eeb7599d52adc0ac5b854e750bb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105562315"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937234"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Design för haveri beredskap med ExpressRoute privat peering
 
@@ -47,7 +47,7 @@ Men om du belastningsutjämna trafik över geo-redundanta parallella sökvägar,
 
 ### <a name="different-metros"></a>Olika Metros
 
-När du använder olika Metros för redundans ska den sekundära platsen finnas i samma [geo-politisk region](expressroute-locations-providers.md#locations). Om du vill välja en plats utanför geo-politisk regionen måste du använda Premium SKU för båda kretsarna i de parallella Sök vägarna. Fördelen med den här konfigurationen är risken för en natur katastrof som orsakar ett avbrott i båda länkarna är mycket lägre men till kostnaden för att öka svars tiden från slut punkt till slut punkt.
+När du använder olika Metros för redundans bör du välja den sekundära platsen i samma [geo-politiska region](expressroute-locations-providers.md#locations). Om du vill välja en plats utanför geo-politisk regionen måste du använda Premium SKU för båda kretsarna i de parallella Sök vägarna. Fördelen med den här konfigurationen är risken för en natur katastrof som orsakar ett avbrott i båda länkarna är mycket lägre men till kostnaden för ökad latens från slut punkt till slut punkt.
 
 I den här artikeln diskuterar vi hur du kan åtgärda utmaningar som du kan stöta på när du konfigurerar geo-redundanta sökvägar.
 

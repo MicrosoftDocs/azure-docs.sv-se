@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 03/24/2021
+ms.date: 03/29/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 711d4bdf2be2ad3158c12e4690a70fb83fe7a846
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 38ddd825321a3cb7947eb76c4f5f6cdbc6cb3414
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559510"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055713"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Villkorsstyrd åtkomst: Säkra registrering av säkerhetsinformation
 
@@ -52,7 +52,7 @@ Följande princip gäller för de valda användarna, som försöker registrera s
 1. Ange **Aktivera princip** till **På**.
 1. Välj sedan **Skapa**.
 
-Administratörer måste nu utfärda autentiseringsuppgifter för tillfälliga åtkomst pass till nya användare så att de kan uppfylla kraven för Multi-Factor Authentication för registrering. Steg för att utföra den här uppgiften finns i avsnittet [skapa ett tillfälligt åtkomst pass i Azure AD-portalen](../authentication/howto-authentication-temporary-access-pass.md#create-a-temporary-access-pass-in-the-azure-ad-portal).
+Administratörer måste nu utfärda autentiseringsuppgifter för tillfälliga åtkomst pass till nya användare så att de kan uppfylla kraven för Multi-Factor Authentication för registrering. Steg för att utföra den här uppgiften finns i avsnittet [skapa ett tillfälligt åtkomst pass i Azure AD-portalen](../authentication/howto-authentication-temporary-access-pass.md#create-a-temporary-access-pass).
 
 Organisationer kan välja att kräva andra beviljande kontroller förutom för eller i stället för att **kräva Multi-Factor Authentication** i steg 6b. När du markerar flera kontroller måste du välja lämplig alternativ knapp för att kräva att **alla** eller **någon** av de valda kontrollerna ändras när du gör den här ändringen.
 

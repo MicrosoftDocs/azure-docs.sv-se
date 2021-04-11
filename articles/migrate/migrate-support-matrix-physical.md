@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: b62160861f686c6ea5a8ebfd03d904da2ad5d80a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 09110bb15f853f20b0be9d8c4c6f5088e7a55d8b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869454"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382988"
 ---
 # <a name="support-matrix-for-physical-server-discovery-and-assessment"></a>Stöd mat ris för identifiering och utvärdering av fysiska servrar 
 
@@ -39,6 +39,8 @@ Om du vill utvärdera fysiska servrar skapar du ett projekt och lägger till ver
 **Behörigheter:**
 
 - För Windows-servrar använder du ett domän konto för domänanslutna servrar och ett lokalt konto för servrar som inte är domänanslutna. Användarkontot bör läggas till i dessa grupper: Fjärrhanteringsanvändare, Användare av prestandaövervakning och Användare av prestandaloggar.
+    > [!Note]
+    > För Windows Server 2008 och 2008 R2 kontrollerar du att WMF 3,0 är installerat på servrarna och att det domän-eller lokala konto som används för att komma åt servrarna har lagts till i dessa grupper: användare av prestanda övervakaren, prestanda loggar användare och WinRMRemoteWMIUsers.
 - För Linux-servrar behöver du ett rotkonto på de Linux-servrar som du vill identifiera. Alternativt kan du ange ett icke-rot konto med de funktioner som krävs med hjälp av följande kommandon:
 
 **Kommando** | **Syfte**

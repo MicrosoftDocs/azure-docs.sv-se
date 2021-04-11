@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3acaf4929158b24ff50655aa18c05b41aeec4b53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 745cc7be37120cda27fe4d4077b9bda0fa07badf
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96435458"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550786"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gör så här: planera din Azure AD Join-implementering
 
@@ -168,13 +168,11 @@ Användare får SSO från Azure AD-anslutna enheter om enheten har åtkomst till
 
 ### <a name="on-premises-network-shares"></a>Lokala nätverks resurser
 
-Användarna har SSO från Azure AD-anslutna enheter när en enhet har åtkomst till en lokal domänkontrollant.
+Användarna har SSO från Azure AD-anslutna enheter när en enhet har åtkomst till en lokal domänkontrollant. [Lär dig hur detta fungerar](azuread-join-sso.md)
 
 ### <a name="printers"></a>Skrivare
 
-För skrivare måste du distribuera [hybrid moln utskrift](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) för att identifiera skrivare på Azure AD-anslutna enheter. 
-
-Även om skrivare inte kan identifieras automatiskt i en moln miljö kan användarna också använda skrivarens UNC-sökväg för att lägga till dem direkt. 
+Vi rekommenderar att du distribuerar [Universal Print](/universal-print/fundamentals/universal-print-whatis) för att ha en molnbaserad utskrifts hanterings lösning utan några lokala beroenden. 
 
 ### <a name="on-premises-applications-relying-on-machine-authentication"></a>Lokala program som förlitar sig på datorautentisering
 
@@ -221,7 +219,7 @@ Välj distributions metod eller-metoder genom att granska tabellen ovan och gran
 
 ## <a name="configure-your-device-settings"></a>Konfigurera enhets inställningar
 
-Med Azure Portal kan du styra distributionen av Azure AD-anslutna enheter i din organisation. Om du vill konfigurera de relaterade inställningarna väljer du på **sidan Azure Active Directory** `Devices > Device settings` .
+Med Azure Portal kan du styra distributionen av Azure AD-anslutna enheter i din organisation. Om du vill konfigurera de relaterade inställningarna väljer du på **sidan Azure Active Directory** `Devices > Device settings` . [Läs mer](device-management-azure-portal.md)
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>Användare kan ansluta enheter till Azure AD
 
@@ -235,11 +233,13 @@ Välj **markerade** och välj de användare som du vill lägga till i gruppen lo
 
 ![Ytterligare lokala administratörer på Azure AD-anslutna enheter](./media/azureadjoin-plan/02.png)
 
-### <a name="require-multi-factor-auth-to-join-devices"></a>Kräv Multi-factor auth för att ansluta enheter
+### <a name="require-multi-factor-authentication-mfa-to-join-devices"></a>Kräv Multi-Factor Authentication (MFA) för att ansluta enheter
 
 Välj **Ja** om du vill att användarna ska kunna utföra MFA när de ansluter till enheter till Azure AD. För att användarna ska kunna ansluta enheter till Azure AD med MFA blir själva enheten en andra faktor.
 
 ![Kräv Multi-factor auth för att ansluta enheter](./media/azureadjoin-plan/03.png)
+
+**Rekommendation:** Använd användar åtgärden [Registrera eller Anslut enheter](/conditional-access/concept-conditional-access-cloud-apps#user-actions) i villkorlig åtkomst för att framtvinga MFA för att ansluta enheter.
 
 ## <a name="configure-your-mobility-settings"></a>Konfigurera dina mobilitets inställningar
 

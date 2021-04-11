@@ -1,7 +1,7 @@
 ---
 title: Skapa automatiska ML-experiment
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du definierar data källor, beräknings-och konfigurations inställningar för dina automatiserade maskin inlärnings experiment.
+description: Lär dig hur du definierar data källor, beräkningar och konfigurations inställningar för dina automatiserade maskin inlärnings experiment.
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 24c0d57490ecd039039992310f93ca3e21c47b3b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 12a6761ac2cd305e6ff949ffa59ee3bbdff1934d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563495"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732898"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurera automatiserade ML-experiment i Python
 
@@ -217,7 +217,7 @@ Lär dig mer om de olika definitionerna av dessa mått i [förstå automatiserad
 
 ### <a name="primary-metrics-for-classification-scenarios"></a>Primära mått för klassificerings scenarier 
 
-Publicera tröskel mått, som,, `accuracy` `average_precision_score_weighted` `norm_macro_recall` och `precision_score_weighted` kanske inte optimerar även för data uppsättningar som är mycket små, har mycket stor klass skevning (klass obalans) eller när det förväntade mått svärdet är mycket nära 0,0 eller 1,0. I dessa fall `AUC_weighted` kan du välja ett bättre alternativ för det primära måttet. När den automatiska maskin inlärningen är klar kan du välja den vinnande modellen baserat på det mått som passar bäst för dina affärs behov.
+Publicera tröskel mått, som,, `accuracy` `average_precision_score_weighted` `norm_macro_recall` och `precision_score_weighted` kanske inte optimerar även för data uppsättningar som är små, har mycket stor klass skevning (klass obalans) eller när det förväntade mått svärdet är mycket nära 0,0 eller 1,0. I dessa fall `AUC_weighted` kan du välja ett bättre alternativ för det primära måttet. När den automatiska maskin inlärningen är klar kan du välja den vinnande modellen baserat på det mått som passar bäst för dina affärs behov.
 
 | Metric | Exempel på användnings fall |
 | ------ | ------- |
@@ -386,16 +386,113 @@ Konfigurera  `max_concurrent_iterations` i `AutoMLConfig` objektet. Om den inte 
 
 ## <a name="explore-models-and-metrics"></a>Utforska modeller och mått
 
-Du kan visa dina utbildnings resultat i en widget eller infogad om du befinner dig i en bärbar dator. Se [spåra och utvärdera modeller](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs) för mer information.
+Med automatisk ML får du alternativ för att övervaka och utvärdera dina utbildnings resultat. 
 
-Se [utvärdera automatiserade experiment resultat för maskin inlärning](how-to-understand-automated-ml.md) för definitioner och exempel på prestanda diagram och mått som tillhandahålls för varje körning. 
+* Du kan visa dina utbildnings resultat i en widget eller infogad om du befinner dig i en bärbar dator. Mer information finns i [så här övervakar du automatiska ml-körningar](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs) .
 
-För att få en funktionalisering-Sammanfattning och förstå vilka funktioner som har lagts till i en viss modell, se [funktionalisering Transparency](how-to-configure-auto-features.md#featurization-transparency). 
+* För definitioner och exempel på prestanda diagram och mått som tillhandahålls för varje körning, se [utvärdera automatiserade test resultat för maskin inlärning](how-to-understand-automated-ml.md) . 
 
+* För att få en funktionalisering-Sammanfattning och förstå vilka funktioner som har lagts till i en viss modell, se [funktionalisering Transparency](how-to-configure-auto-features.md#featurization-transparency). 
+
+Du kan visa de olika egenskaperna, skalnings-och normaliserings teknikerna och algoritmen som tillämpas på en särskilt automatiserad ML-körning med följande anpassade kod lösning. 
+
+Följande definierar den anpassade metoden, `print_model()` som skriver ut de båda stegen i varje steg i den automatiska ml-utbildningen.
+ 
+```python
+from pprint import pprint
+
+def print_model(model, prefix=""):
+    for step in model.steps:
+        print(prefix + step[0])
+        if hasattr(step[1], 'estimators') and hasattr(step[1], 'weights'):
+            pprint({'estimators': list(e[0] for e in step[1].estimators), 'weights': step[1].weights})
+            print()
+            for estimator in step[1].estimators:
+                print_model(estimator[1], estimator[0]+ ' - ')
+        elif hasattr(step[1], '_base_learners') and hasattr(step[1], '_meta_learner'):
+            print("\nMeta Learner")
+            pprint(step[1]._meta_learner)
+            print()
+            for estimator in step[1]._base_learners:
+                print_model(estimator[1], estimator[0]+ ' - ')
+        else:
+            pprint(step[1].get_params())
+            print()   
+```
+
+För en lokal eller fjärrkörning som precis har skickats och tränats in i samma experiment antecknings bok, kan du överföra den bästa modellen med hjälp av- `get_output()` metoden. 
+
+```python
+best_run, fitted_model = run.get_output()
+print(best_run)
+         
+print_model(fitted_model)
+```
+
+Följande utdata visar att:
+ 
+* StandardScalerWrapper-tekniken användes för att skala och normalisera data innan utbildning.
+
+* XGBoostClassifier-algoritmen identifierades som den bästa körningen och visar även de båda parametervärdena. 
+
+```python
+StandardScalerWrapper
+{'class_name': 'StandardScaler',
+ 'copy': True,
+ 'module_name': 'sklearn.preprocessing.data',
+ 'with_mean': False,
+ 'with_std': False}
+
+XGBoostClassifier
+{'base_score': 0.5,
+ 'booster': 'gbtree',
+ 'colsample_bylevel': 1,
+ 'colsample_bynode': 1,
+ 'colsample_bytree': 0.6,
+ 'eta': 0.4,
+ 'gamma': 0,
+ 'learning_rate': 0.1,
+ 'max_delta_step': 0,
+ 'max_depth': 8,
+ 'max_leaves': 0,
+ 'min_child_weight': 1,
+ 'missing': nan,
+ 'n_estimators': 400,
+ 'n_jobs': 1,
+ 'nthread': None,
+ 'objective': 'multi:softprob',
+ 'random_state': 0,
+ 'reg_alpha': 0,
+ 'reg_lambda': 1.6666666666666667,
+ 'scale_pos_weight': 1,
+ 'seed': None,
+ 'silent': None,
+ 'subsample': 0.8,
+ 'tree_method': 'auto',
+ 'verbose': -10,
+ 'verbosity': 1}
+```
+
+För en befintlig körning från ett annat experiment i arbets ytan hämtar du det angivna körnings-ID som du vill utforska och skickar det till- `print_model()` metoden. 
+
+```python
+from azureml.train.automl.run import AutoMLRun
+
+ws = Workspace.from_config()
+experiment = ws.experiments['automl-classification']
+automl_run = AutoMLRun(experiment, run_id = 'AutoML_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx')
+
+automl_run
+best_run, model_from_aml = automl_run.get_output()
+
+print_model(model_from_aml)
+
+```
 > [!NOTE]
 > Algoritmerna för automatisk ML-användning har potentiell slumpmässig het som kan orsaka smärre variationer i en rekommenderad modells slutliga mått poäng, som noggrannhet. Med automatisk ML utförs även åtgärder för data som träna-test-delning, träna eller kors validering när det behövs. Så om du kör ett experiment med samma konfigurations inställningar och primär mått flera gånger, kommer du troligen att se variationen i varje experiment slutliga Mät resultat på grund av dessa faktorer. 
 
 ## <a name="register-and-deploy-models"></a>Registrera och distribuera modeller
+
 Du kan registrera en modell så att du kan komma tillbaka till den för senare användning. 
 
 Om du vill registrera en modell från en automatisk ML-körning använder du- [`register_model()`](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) metoden. 

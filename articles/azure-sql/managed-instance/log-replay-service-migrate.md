@@ -8,13 +8,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: sstein
-ms.date: 03/01/2021
-ms.openlocfilehash: 1b2a3f018b16258622b817648cb00e230313bf49
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.date: 03/29/2021
+ms.openlocfilehash: 186f1e085cecdc92e345231d50d06195bba55504
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105564525"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732966"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Migrera databaser från SQL Server till SQL-hanterad instans med hjälp av tjänsten logga in Replay (för hands version)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -70,7 +70,7 @@ När LRS har stoppats, antingen automatiskt genom automatisk komplettering eller
 | **2. Starta LRS i molnet**. | Du kan starta om tjänsten med ett val av cmdlet: PowerShell ([Start-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay)) eller Azure CLI ([az_sql_midb_log_replay_start cmdlets](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start)). <br /><br /> Starta LRS separat för varje databas som pekar på en mapp för säkerhets kopiering på Blob Storage. <br /><br /> När du har startat tjänsten kommer den att ta säkerhets kopior från Blob Storage behållare och börja återställa dem på SQL-hanterad instans.<br /><br /> Om du har startat LRS i kontinuerligt läge kommer tjänsten att se om det finns nya filer som har överförts till mappen efter att alla inhämtade säkerhets kopior har återställts. Tjänsten tillämpar kontinuerligt loggar som baseras på LSN-kedjan tills den stoppas. |
 | **2,1. övervaka åtgärdens förlopp**. | Du kan övervaka förloppet för återställnings åtgärden med ett val av cmdlet: PowerShell ([Get-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay)) eller Azure CLI ([az_sql_midb_log_replay_show cmdlets](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show)). |
 | **2,2. stoppa åtgärden om det behövs**. | Om du behöver stoppa migreringsprocessen kan du välja cmdlet: PowerShell ([Stop-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay)) eller Azure CLI ([az_sql_midb_log_replay_stop](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop)). <br /><br /> Om du stoppar åtgärden tas den databas som du återställer på SQL-hanterad instans bort. När du har stoppat en åtgärd kan du inte återuppta LRS för en databas. Du måste starta om migreringsprocessen från början. |
-| **3. Klipp ut till molnet när du är redo**. | Stoppa programmet och arbets belastningen. Ta den senaste säkerhets kopieringen av logg boken och ladda upp den till Azure Blob Storage.<br /><br /> Slutför start punkt genom att initiera en LRS `complete` -åtgärd med ett val av cmdlet: PowerShell ([Complete-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay)) eller Azure CLI [az_sql_midb_log_replay_complete](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete). Den här åtgärden stoppar LRS och orsakar att databasen är online för Läs-och skriv användning på SQL-hanterad instans.<br /><br /> Peka kopplings strängen för programmet från SQL Server till SQL-hanterad instans. |
+| **3. Klipp ut till molnet när du är redo**. | Stoppa programmet och arbets belastningen. Ta den senaste säkerhets kopieringen av logg boken och ladda upp den till Azure Blob Storage.<br /><br /> Slutför start punkt genom att initiera en LRS `complete` -åtgärd med ett val av cmdlet: PowerShell ([Complete-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay)) eller Azure CLI [az_sql_midb_log_replay_complete](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete). Den här åtgärden stoppar LRS och orsakar att databasen är online för Läs-och skriv användning på SQL-hanterad instans.<br /><br /> Peka kopplings strängen för programmet från SQL Server till SQL-hanterad instans. Du måste dirigera det här steget själv, antingen via en manuell ändring av anslutnings strängen i programmet eller automatiskt (t. ex. om programmet kan läsa anslutnings strängen från en egenskap eller en databas). |
 
 ## <a name="requirements-for-getting-started"></a>Krav för att komma igång
 

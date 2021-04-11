@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: risverma
 ms.custom: include file
-ms.openlocfilehash: fc61c111291f9862f71f9a81828fa0fa828ab2ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 83a19dea56693a1caff2c982b9f772543fe1cf2e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510654"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073287"
 ---
 Azure Compute erbjuder storlekar för virtuella datorer som är isolerade till en viss maskin varu typ och som är dedikerad till en enda kund. De isolerade storlekarna är aktiva och fungerar på en speciell maskin varu generation och kommer att bli föråldrade när maskin varu genereringen dras tillbaka.
 
@@ -31,6 +31,7 @@ De aktuella isolerade virtuella dator erbjudandena är:
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
+* Standard_DC8_v2
 
 
 > [!NOTE]
@@ -48,6 +49,7 @@ Isolerade VM-storlekar har en maskinvaru begränsad livs längd. Azure utfärdar
 | Standard_GS5  | 15 februari 2022 |
 | Standard_E64i_v3  | 15 februari 2022 |
 | Standard_E64is_v3  | 15 februari 2022 |
+| Standard_DC8_v2 | 15 februari 2022 |
 
 
 ## <a name="faq"></a>Vanliga frågor
@@ -82,7 +84,7 @@ S **: vi** kommer att tillhandahålla påminnelser 12 månader före den officie
 | Datum | Action |
 |---|---|
 | Feb 15, 2021<sup>1</sup> | Meddelande om borttagning av G5/GS5/E64i_v3/E64is_v3 isolering |
-| Feb 15, 2022 | G5/GS5/E64i_v3/E64is_v3 isolerings garanti tas bort |
+| Feb 28, 2022 | G5/GS5/E64i_v3/E64is_v3 isolerings garanti tas bort |
 
 <sup>1</sup> befintlig kund som använder dessa storlekar får ett meddelande via e-post med detaljerade anvisningar om nästa steg.  
 

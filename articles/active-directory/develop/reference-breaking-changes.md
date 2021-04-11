@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 2/22/2021
+ms.date: 3/30/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c5e7f556f37a1d6d53e0a938490f1099a7be776a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb75450527fc31d6ea4a9f9d60d676718ad79bda
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101647429"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167591"
 ---
 # <a name="whats-new-for-authentication"></a>Vad är nytt för autentisering?
 
@@ -35,9 +35,21 @@ Autentiserings systemet ändrar och lägger till funktioner kontinuerligt för a
 
 ## <a name="upcoming-changes"></a>Kommande ändringar
 
+### <a name="bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice"></a>Fel korrigering: Azure AD kommer inte längre att koda status parametern två gånger.
+
+**Start datum**: maj 2021
+
+**Påverkade slut punkter**: v 1.0 och v 2.0 
+
+**Protokoll som påverkas**: alla flöden som besöker `/authorize` slut punkten (implicit flöde och kod flöde för auktoriseringskod)
+
+Ett fel upptäcktes och korrigerades i Azure AD Authorization-svaret. Under själva `/authorize` autentiseringen `state` inkluderas parametern från begäran i svaret för att bevara app-tillstånd och förhindra CSRF attacker. Azure AD-URL: en felaktigt kodade `state` parametern innan den infogas i svaret, där den kodades en gång till.  Detta resulterar i att program felaktigt avvisar svaret från Azure AD. 
+
+Azure AD kommer inte längre att koda den här parametern, så att appar kan tolka resultatet korrekt. Den här ändringen kommer att göras för alla program. 
+
 ### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>Villkorlig åtkomst utlöser endast för explicit begärda omfattningar
 
-**Effektivt datum**: mars 2021
+**Effektivt datum**: 2021 maj, med en gradvis lansering som börjar i april. 
 
 **Påverkade slut punkter**: v 2.0
 
@@ -48,6 +60,8 @@ Program som använder dynamiskt medgivande har idag fått alla behörigheter som
 För att minska antalet onödiga åtkomst-prompter, ändrar Azure AD det sätt på vilket de begärda omfången tillhandahålls till program, så att endast uttryckligen begärda omfattningar utlöser villkorlig åtkomst. Den här ändringen kan leda till att appar är beroende av Azure AD: s tidigare beteende (dvs. ger alla behörigheter även när de inte begärdes) att brytas, eftersom de token som de begär saknar behörighet.
 
 Appar får nu åtkomst-token med en blandning av behörigheter i detta, samt de som de har godkänt för och som inte kräver några begär Anden om villkorlig åtkomst.  Omfattningarna för åtkomsttoken avspeglas i token-svarets `scope` parameter. 
+
+Den här ändringen görs för alla appar förutom de med ett observerat beroende av detta beteende.  Utvecklare får en utgångs möjlighet om de undantas från den här ändringen, eftersom de kan vara beroende av de ytterligare prompterna för villkorlig åtkomst. 
 
 **Exempel**
 

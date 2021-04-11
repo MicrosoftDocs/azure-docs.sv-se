@@ -6,196 +6,140 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/09/2021
+ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a370a7f04e0e43b96e4a574313c4f24c4990ab6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29d9dd7757319e59fc12b42d89c2ce16dec71b8b
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100390366"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551075"
 ---
 # <a name="soft-delete-for-blobs"></a>Mjuk borttagning för blobar
 
-Mjuk borttagning för blobar skyddar dina data från att oavsiktligt eller med skadlig avsikt ändras eller tas bort. När mjuk borttagning för blobar är aktiverat för ett lagringskonto kan blobar, blob-versioner och ögonblicksbilder i det lagringskontot återställas efter att de har tagits bort, inom en kvarhållningsperiod som du anger.
+BLOB-mjuk borttagning skyddar en enskild BLOB, ögonblicks bild eller version från oavsiktliga borttagningar eller överskrivning genom att underhålla borttagna data i systemet under en angiven tids period. Under kvarhållningsperioden kan du återställa ett mjukt borttaget objekt till dess tillstånd vid den tidpunkt då det togs bort. När kvarhållningsperioden har gått ut tas objektet bort permanent.
 
-Om det finns en risk att dina data av misstag kan ändras eller tas bort av ett program eller en annan lagrings konto användare, rekommenderar Microsoft att du aktiverar mjuk borttagning. Mer information om hur du aktiverar mjuk borttagning finns i [Aktivera och hantera mjuk borttagning för blobbar](./soft-delete-blob-enable.md).
+## <a name="recommended-data-protection-configuration"></a>Rekommenderad data skydds konfiguration
+
+BLOB-mjuk borttagning är en del av en omfattande data skydds strategi för BLOB-data. För optimalt skydd för dina BLOB-data rekommenderar Microsoft att du aktiverar alla följande data skydds funktioner:
+
+- Behållare för mjuk borttagning, för att återställa en behållare som har tagits bort. Information om hur du aktiverar mjuk borttagning av behållare finns i [Aktivera och hantera mjuk borttagning för behållare](soft-delete-container-enable.md).
+- BLOB-versioner för att automatiskt underhålla tidigare versioner av en blob. När BLOB-versioner har Aktiver ATS kan du återställa en tidigare version av en BLOB för att återställa dina data om de felaktigt ändras eller tas bort. Information om hur du aktiverar BLOB-versioner finns i [Aktivera och hantera BLOB-versioner](versioning-enable.md).
+- BLOB-mjuk borttagning, för att återställa en BLOB, ögonblicks bild eller version som har tagits bort. Information om hur du aktiverar mjuk borttagning av BLOB finns i [Aktivera och hantera mjuk borttagning för blobbar](soft-delete-blob-enable.md).
+
+Mer information om Microsofts rekommendationer för data skydd finns i [Översikt över data skydd](data-protection-overview.md).
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
-## <a name="about-soft-delete-for-blobs"></a>Om mjuk borttagning för blobbar
+## <a name="how-blob-soft-delete-works"></a>Så här fungerar BLOB-mjuk borttagning
 
-När mjuk borttagning för blobbar är aktiverat på ett lagrings konto kan du återställa objekt när de har tagits bort, inom den angivna data lagrings perioden. Det här skyddet utökar till alla blobbar (block-blobbar, tillägg av blobbar eller sidfel) som raderas som ett resultat av en överskrivning.
+När du aktiverar BLOB-mjuk borttagning för ett lagrings konto anger du en kvarhållningsperiod för borttagna objekt på mellan 1 och 365 dagar. Kvarhållningsperioden anger hur länge data är tillgängliga när de tas bort eller skrivs över. Klockan börjar på kvarhållningsperioden så snart ett objekt tas bort eller skrivs över.
 
-Följande diagram visar hur en borttagen BLOB kan återställas när BLOB-mjuk borttagning är aktiverat:
+Även om kvarhållningsperioden är aktiv kan du återställa en borttagen BLOB, tillsammans med dess ögonblicks bilder eller en borttagen version genom att anropa åtgärden [ta bort BLOB](/rest/api/storageservices/undelete-blob) . Följande diagram visar hur ett borttaget objekt kan återställas när BLOB-mjuk borttagning är aktiverat:
 
 :::image type="content" source="media/soft-delete-blob-overview/blob-soft-delete-diagram.png" alt-text="Diagram över hur en mjuk borttagen BLOB kan återställas":::
 
-Om data i en befintlig BLOB eller ögonblicks bild tas bort när BLOB-mjuk borttagning har Aktiver ATS men BLOB-versioner inte är aktive rad genereras en mjuk borttagen ögonblicks bild för att spara statusen för de överskrivna data. När den angivna kvarhållningsperioden har upphört att gälla tas objektet bort permanent.
+Du kan när som helst ändra lagrings perioden för mjuk borttagning. En uppdaterad kvarhållningsperiod gäller endast för data som har tagits bort efter att kvarhållningsperioden ändrades. Alla data som togs bort innan kvarhållningsperioden ändrades, omfattas av den kvarhållningsperiod som gällde när den togs bort.
 
-Om BLOB-versioner och mjuk borttagning av BLOB både är aktiverade på lagrings kontot, skapar en BLOB en ny version i stället för en mjuk borttagen ögonblicks bild. Den nya versionen är inte mjuk och tas inte bort när kvarhållningsperioden för mjuk borttagning upphör att gälla. Borttagnings bara versioner av en BLOB kan återställas inom kvarhållningsperioden genom att anropa åtgärden [ta bort BLOB](/rest/api/storageservices/undelete-blob) . Blobben kan sedan återställas från en av dess versioner genom att anropa åtgärden [Kopiera BLOB](/rest/api/storageservices/copy-blob) . Mer information om hur du använder BLOB-versioner och mjuk borttagning finns i [BLOB-versioner och mjuk borttagning](versioning-overview.md#blob-versioning-and-soft-delete).
+Försök att ta bort ett mjukt borttaget objekt påverkar inte förfallo tiden.
 
-Mjuka borttagna objekt är osynliga om de inte uttryckligen anges.
+Om du inaktiverar mjuk borttagning av BLOB kan du fortsätta att komma åt och återställa mjuka borttagna objekt i ditt lagrings konto tills perioden för mjuk borttagning har förflutit.
 
-BLOB-mjuk borttagning är bakåtkompatibla, så du behöver inte göra några ändringar i dina program för att dra nytta av de skydd som den här funktionen erbjuder. Men [Data återställning](#recovery) introducerar en ny **Undelete-BLOB** -API.
+BLOB-versioner är tillgängligt för General-Purpose v2-, Block Blob-och Blob Storage-konton. Lagrings konton med hierarkiskt namn område som är aktiverade för användning med Azure Data Lake Storage Gen2 stöds inte för närvarande.
 
-BLOB-mjuk borttagning är tillgängligt för både nya och befintliga General-Purpose v2-, generella v1-och Blob Storage-konton. Det finns stöd för både standard-och Premium konto typer. BLOB-mjuk borttagning är tillgängligt för alla lagrings nivåer, inklusive frekvent, låg frekvent och Arkiv lag ring. Mjuk borttagning är tillgängligt för ohanterade diskar, vilket är Page blobbar under försättsblad, men inte tillgängligt för hanterade diskar.
+Version 2017-07-29 och högre av Azure Storage REST API stöd för BLOB-mjuk borttagning.
 
-### <a name="configuration-settings"></a>Konfigurationsinställningar
+> [!IMPORTANT]
+> Du kan bara använda BLOB-mjuk borttagning för att återställa en enskild BLOB, ögonblicks bild eller version. Om du vill återställa en behållare och dess innehåll måste behållaren mjuk borttagning också vara aktive rad för lagrings kontot. Microsoft rekommenderar att du aktiverar mjuk borttagning av behållare och blob-versioner tillsammans med BLOB-mjuk borttagning för att garantera fullständigt skydd för BLOB-data. Mer information finns i [Översikt över data skydd](data-protection-overview.md).
+>
+> BLOB-mjuk borttagning skyddar inte mot borttagning av ett lagrings konto. Om du vill skydda ett lagrings konto från borttagning konfigurerar du ett lås på lagrings konto resursen. Mer information om hur du låser ett lagrings konto finns i [tillämpa ett Azure Resource Manager lås till ett lagrings konto](../common/lock-account-resource.md).
 
-När du skapar ett nytt konto är mjuk borttagning inaktiverat som standard. Mjuk borttagning inaktive ras också som standard för befintliga lagrings konton. Du kan när som helst aktivera eller inaktivera mjuk borttagning för ett lagrings konto.
+### <a name="how-deletions-are-handled-when-soft-delete-is-enabled"></a>Hur borttagningar hanteras när mjuk borttagning är aktiverat
 
-När du aktiverar mjuk borttagning måste du konfigurera kvarhållningsperioden. Kvarhållningsperioden anger hur lång tid som Soft Deleted data lagras och är tillgänglig för återställning. För objekt som uttryckligen tas bort, startar kvarhållningsperioden när data tas bort. För mjuka borttagna versioner eller ögonblicks bilder som genereras av funktionen för mjuk borttagning när data skrivs över, startar klockan när versionen eller ögonblicks bilden genereras. Kvarhållningsperioden kan vara mellan 1 och 365 dagar.
+När BLOB Soft Delete är aktiverat tar du bort en BLOB-markering som är mjuk borttagen. Ingen ögonblicks bild skapas. När kvarhållningsperioden upphör tas den mjuk-borttagna blobben bort permanent.
 
-Du kan när som helst ändra lagrings perioden för mjuk borttagning. En uppdaterad kvarhållningsperiod gäller endast för nyligen borttagna data. Tidigare borttagna data går ut baserat på den kvarhållningsperiod som konfigurerades när dessa data togs bort. Försök att ta bort ett Soft borttaget objekt påverkar inte förfallo tiden.
+Om en BLOB har ögonblicks bilder kan inte bloben tas bort om inte ögonblicks bilderna också tas bort. När du tar bort en blob och dess ögonblicks bilder markeras både blob och ögonblicks bilder som mjuk borttagning. Inga nya ögonblicks bilder skapas.
 
-Om du inaktiverar mjuk borttagning kan du fortsätta att komma åt och återställa mjuka borttagna data i ditt lagrings konto som sparades när funktionen var aktive rad.
+Du kan också ta bort en eller flera aktiva ögonblicks bilder utan att ta bort bas-bloben. I det här fallet är ögonblicks bilden mjuk – borttagen.
 
-### <a name="saving-deleted-data"></a>Sparar borttagna data
+Mjuka, borttagna objekt är osynliga om de inte uttryckligen visas eller visas. Mer information om hur du visar mjuka borttagna objekt finns i [Hantera och återställa mjuka borttagna blobbar](soft-delete-blob-manage.md).
 
-Mjuk borttagning bevarar dina data i många fall där objekt tas bort eller skrivs över.
+### <a name="how-overwrites-are-handled-when-soft-delete-is-enabled"></a>Hur överskrivning hanteras när mjuk borttagning är aktiverat
 
-När en BLOB skrivs över med hjälp av **Lägg till BLOB**, **Ange blockeringslistan** eller **Kopiera BLOB**, genereras en version eller ögonblicks bild av blobens tillstånd innan Skriv åtgärden genereras automatiskt. Det här objektet är osynligt om inte mjuka borttagna objekt anges explicit. I [återställnings](#recovery) avsnittet finns information om hur du visar mjuka borttagna objekt.
+Att anropa en åtgärd, till exempel att använda [BLOB](/rest/api/storageservices/put-blob), [list block lista](/rest/api/storageservices/put-block-list)eller [Kopiera BLOB](/rest/api/storageservices/copy-blob) skriver över data i en blob. När BLOB Soft Delete är aktiverat skapar överskrivning av en BLOB automatiskt en permanent borttagen ögonblicks bild av blobens tillstånd före Skriv åtgärden. När kvarhållningsperioden går ut tas den mjuka borttagna ögonblicks bilden bort permanent.
 
-![Ett diagram som visar hur ögonblicks bilder av blobbar lagras när de skrivs över med hjälp av kommandot reblob, list block eller Copy blob.](media/soft-delete-blob-overview/storage-blob-soft-delete-overwrite.png)
+Mjuk borttagning av ögonblicks bilder är osynliga om inte mjuka borttagna objekt visas eller visas. Mer information om hur du visar mjuka borttagna objekt finns i [Hantera och återställa mjuka borttagna blobbar](soft-delete-blob-manage.md).
 
-*Mjuk borttagning av data är grått, medan aktiva data är blå. Mer nyligen skrivna data visas under äldre data. När B0 skrivs över med B1 genereras en mjuk borttagen ögonblicks bild av B0. När B1 skrivs över med B2 genereras en mjuk raderad ögonblicks bild av B1.*
+För att skydda en kopierings åtgärd måste BLOB-mjuk borttagning vara aktiverat för mål lagrings kontot.
 
-> [!NOTE]  
-> Mjuk borttagning ger endast överskrivning av skydd för kopierings åtgärder när den är aktive rad för mål-blobens konto.
+BLOB-mjuk borttagning skyddar inte mot åtgärder för att skriva BLOB-metadata eller egenskaper. Ingen mjuk, borttagen ögonblicks bild skapas när en blobs metadata eller egenskaper uppdateras.
 
-> [!NOTE]  
-> Mjuk borttagning ger inte överskrivning av blobar på Arkiv nivån. Om en BLOB i arkivet skrivs över med en ny BLOB på vilken nivå som helst upphör den överskrivna blobben att gälla permanent.
+BLOB-mjuk borttagning ger inte överskrivning av blobar på Arkiv nivån. Om en BLOB på Arkiv nivån skrivs över med en ny BLOB på valfri nivå tas den överskrivna blobben bort permanent.
 
-När **Delete BLOB** anropas för en ögonblicks bild markeras den ögonblicks bilden som mjuk borttagen. En ny ögonblicks bild skapas inte.
+För Premium Storage-konton räknas inte mjuka borttagna ögonblicks bilder mot per BLOB-gränsen på 100 ögonblicks bilder.
 
-![Ett diagram som visar hur ögonblicks bilder av blobbar är mjuka borttagna när du använder ta bort blob.](media/soft-delete-blob-overview/storage-blob-soft-delete-explicit-delete-snapshot.png)
+### <a name="restoring-soft-deleted-objects"></a>Återställa Soft-borttagna objekt
 
-*Mjuk borttagning av data är grått, medan aktiva data är blå. Mer nyligen skrivna data visas under äldre data. När en **ögonblicks bilds-BLOB** anropas blir B0 en ögonblicks bild och B1 är det aktiva läget för blobben. När B0-ögonblicksbilden tas bort markeras den som mjuk borttagen.*
+Du kan återställa mjuka borttagna blobbar genom att anropa åtgärden [ta bort BLOB](/rest/api/storageservices/undelete-blob) i kvarhållningsperioden. **Undelete BLOB** -åtgärden återställer en blob och eventuella borttagna ögonblicks bilder som är kopplade till den. Alla ögonblicks bilder som togs bort under kvarhållningsperioden återställs.
 
-När **Delete BLOB** anropas på en bas-BLOB (en blob som inte är en ögonblicks bild) markeras denna blob som mjuk borttagen. I överensstämmelse med föregående beteende, anropar **ta bort BLOB** på en blob som har aktiva ögonblicks bilder som returnerar ett fel. Anrop av **Delete BLOB** i en blob med mjuka borttagna ögonblicks bilder returnerar inte ett fel. Du kan fortfarande ta bort en blob och alla dess ögonblicks bilder i en enskild åtgärd när mjuk borttagning är aktiverat. Då markeras bas-blob och ögonblicks bilder som mjuk borttagning.
+Om du anropar **Undelete BLOB** i en blob som inte är mjuk borttagning, återställs eventuella borttagna ögonblicks bilder som är associerade med blobben. Om blobben inte har några ögonblicks bilder och inte är mjukare tas bort, har anropet **Undelete-BLOB** ingen påverkan.
 
-![Ett diagram som visar vad som händer när ta bort blogg anropas på en bas-blob.](media/soft-delete-blob-overview/storage-blob-soft-delete-explicit-include.png)
+Om du vill befordra en mjuk borttagen ögonblicks bild till bas-bloben ska du först anropa **Undelete BLOB** på bas-bloben för att återställa blobben och dess ögonblicks bilder. Sedan kopierar du önskad ögonblicks bild över bas-bloben. Du kan också kopiera ögonblicks bilden till en ny blob.
 
-*Mjuk borttagning av data är grått, medan aktiva data är blå. Mer nyligen skrivna data visas under äldre data. Här görs ett **Delete BLOB** -anrop för att ta bort B2 och alla associerade ögonblicks bilder. Den aktiva blobben, B2 och alla associerade ögonblicks bilder markeras som mjuk borttagen.*
+Det går inte att läsa data i en mjuk borttagen BLOB eller ögonblicks bild förrän objektet har återställts.
 
-> [!NOTE]  
-> När en mjuk borttagen BLOB skrivs över skapas en mjuk raderad ögonblicks bild av blobens tillstånd innan Skriv åtgärden genereras automatiskt. Den nya blobben ärver den överskrivna blobens nivå.
+Mer information om hur du återställer mjuka borttagna objekt finns i [Hantera och återställa mjuka borttagna blobbar](soft-delete-blob-manage.md).
 
-Med mjuk borttagning sparas inte dina data i fall då behållaren eller kontot tas bort, eller när BLOB-metadata och blob-egenskaper skrivs över. Om du vill skydda ett lagrings konto från borttagning kan du konfigurera ett lås med hjälp av Azure Resource Manager. Mer information finns i Azure Resource Manager artikel [Lås resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md).  Om du vill skydda behållare från oavsiktlig borttagning konfigurerar du behållaren mjuk borttagning för lagrings kontot. Mer information finns i [Soft Delete for containers (för hands version)](soft-delete-container-overview.md).
+## <a name="blob-soft-delete-and-versioning"></a>BLOB-mjuk borttagning och versions hantering
 
-Följande tabell information förväntas när mjuk borttagning är aktiverat:
+Om BLOB-versioner och mjuk borttagning av BLOB båda är aktiverade för ett lagrings konto skapas en ny version av en BLOB automatiskt. Den nya versionen är inte mjuk och tas inte bort när kvarhållningsperioden för mjuk borttagning upphör att gälla. Inga borttagnings bara ögonblicks bilder har skapats. När du tar bort en BLOB blir den aktuella versionen av blobben en tidigare version och den aktuella versionen tas bort. Ingen ny version skapas och inga ögonblicks bilder av mjuka rader skapas.
 
-| REST API åtgärd | Resurstyp | Beskrivning | Funktions förändring |
-|--------------------|---------------|-------------|--------------------|
-| [Ta bort](/rest/api/storagerp/StorageAccounts/Delete) | Konto | Tar bort lagrings kontot, inklusive alla behållare och blobbar som det innehåller.                           | Ingen förändring. Behållare och blobbar i det borttagna kontot går inte att återskapa. |
-| [Ta bort container](/rest/api/storageservices/delete-container) | Container | Tar bort behållaren, inklusive alla blobbar som den innehåller. | Ingen förändring. Blobbar i den borttagna behållaren går inte att återskapa. |
-| [Placera blob](/rest/api/storageservices/put-blob) | Blockera, lägga till och Page blobbar | Skapar en ny BLOB eller ersätter en befintlig BLOB i en behållare | Om den används för att ersätta en befintlig BLOB genereras en ögonblicks bild av blobens tillstånd före anropet automatiskt. Detta gäller även för en tidigare mjuk borttagen BLOB om den ersätts av en blob av samma typ (block, tillägg eller sida). Om den ersätts av en blob av en annan typ, kommer alla befintliga data för mjuk borttagning att upphöra att gälla permanent. |
-| [Ta bort blob](/rest/api/storageservices/delete-blob) | Blockera, lägga till och Page blobbar | Markerar en BLOB-eller BLOB-ögonblicksbild för borttagning. Blobben eller ögonblicks bilden raderas senare under skräp insamlingen | Om den används för att ta bort en BLOB-ögonblicksbild, markeras den ögonblicks bilden som mjuk borttagen. Om den används för att ta bort en BLOB markeras denna blob som mjuk borttagning. |
-| [Kopiera blob](/rest/api/storageservices/copy-blob) | Blockera, lägga till och Page blobbar | Kopierar en käll-blob till en mål-BLOB i samma lagrings konto eller i ett annat lagrings konto. | Om den används för att ersätta en befintlig BLOB genereras en ögonblicks bild av blobens tillstånd före anropet automatiskt. Detta gäller även för en tidigare mjuk borttagen BLOB om den ersätts av en blob av samma typ (block, tillägg eller sida). Om den ersätts av en blob av en annan typ, kommer alla befintliga data för mjuk borttagning att upphöra att gälla permanent. |
-| [Spärra block](/rest/api/storageservices/put-block) | Blockblobar | Skapar ett nytt block som ska allokeras som en del av en Block-Blob. | Om det används för att genomföra ett block till en blob som är aktiv, sker ingen ändring. Om den används för att genomföra ett block till en blob som är mjuk borttagning, skapas en ny blob och en ögonblicks bild skapas automatiskt för att avbilda statusen för den mjuka borttagna blobben. |
-| [Lista över blockerade](/rest/api/storageservices/put-block-list) | Blockblobar | Genomför en BLOB genom att ange den uppsättning block-ID: n som utgör block-bloben. | Om den används för att ersätta en befintlig BLOB genereras en ögonblicks bild av blobens tillstånd före anropet automatiskt. Detta gäller även för en tidigare mjuk borttagen BLOB om det är en Block-Blob. Om den ersätts av en blob av en annan typ, kommer alla befintliga data för mjuk borttagning att upphöra att gälla permanent. |
-| [Placerings sida](/rest/api/storageservices/put-page) | Sidblobar | Skriver ett intervall med sidor till en sid-blob. | Ingen förändring. Sid-BLOB-data som skrivs över eller rensas med den här åtgärden sparas inte och går inte att återskapa. |
-| [Lägg till block](/rest/api/storageservices/append-block) | Tilläggsblobar | Skriver ett data block till slutet av en tilläggs-BLOB | Ingen förändring. |
-| [Ange BLOB-egenskaper](/rest/api/storageservices/set-blob-properties) | Blockera, lägga till och Page blobbar | Anger värden för system egenskaper som definierats för en blob. | Ingen förändring. Det går inte att återskapa de överskrivna BLOB-egenskaperna. |
-| [Ange BLOB-metadata](/rest/api/storageservices/set-blob-metadata) | Blockera, lägga till och Page blobbar | Anger användardefinierade metadata för angiven blob som ett eller flera namn/värde-par. | Ingen förändring. Överskrivna BLOB-metadata går inte att återskapa. |
+Att aktivera mjuk borttagning och versioner tillsammans skyddar BLOB-versioner från borttagning. När mjuk borttagning är aktiverat skapar en version av en version som tar bort en mjuk borttagning. Du kan använda åtgärden **ta bort BLOB** för att återställa en mjuk, borttagen version så länge det finns en aktuell version av blobben. Om det inte finns någon aktuell version måste du kopiera en tidigare version till den aktuella versionen innan du anropar åtgärden **ta bort BLOB** .
 
-Det är viktigt att Observera att anrops **sidan** för att skriva över eller rensa intervall av en sid-BLOB inte automatiskt genererar ögonblicks bilder. Virtuella dator diskar backas upp av Page blobbar och använder **sidan sätt** för att skriva data.
+> [!NOTE]
+> Om du anropar åtgärden **ångra borttagning av BLOB** i en borttagen BLOB när versions hantering är aktive rad återställs alla borttagnings bara eller ögonblicks bilder, men inte bas-bloben. Om du vill återställa bas-bloben höjer du en tidigare version genom att kopiera den till bas-bloben.
 
-### <a name="recovery"></a>Återställning
+Microsoft rekommenderar att du aktiverar både versions-och blob-mjuk borttagning för dina lagrings konton för optimalt data skydd. Mer information om hur du använder BLOB-versioner och mjuk borttagning finns i [BLOB-versioner och mjuk borttagning](versioning-overview.md#blob-versioning-and-soft-delete).
 
-Om du anropar [Undelete-blobben](/rest/api/storageservices/undelete-blob) i en mjuk borttagen bas-BLOB återställs den och alla tillhör ande mjuka borttagna ögonblicks bilder aktive rad. Om du anropar åtgärden **ångra borttagning av BLOB** i en aktiv bas-BLOB återställs alla tillhör ande mjuka borttagna ögonblicks bilder som aktiva. När ögonblicks bilder återställs som aktiva ser de ut som användardefinierade ögonblicks bilder. de skriver inte över bas-bloben.
+## <a name="blob-soft-delete-protection-by-operation"></a>BLOB-Soft borttagnings skydd per åtgärd
 
-Om du vill återställa en blob till en angiven mjuk, borttagen ögonblicks bild kan du anropa **Undelete BLOB** på bas-bloben. Sedan kan du kopiera ögonblicks bilden över den nu aktiva blobben. Du kan också kopiera ögonblicks bilden till en ny blob.
+I följande tabell beskrivs förväntat beteende för borttagnings-och skriv åtgärder när BLOB Soft Delete är aktiverat, antingen med eller utan BLOB-versioner:
 
-![Ett diagram som visar vad som händer när Undelete-BLOB används.](media/soft-delete-blob-overview/storage-blob-soft-delete-recover.png)
-
-*Mjuk borttagning av data är grått, medan aktiva data är blå. Mer nyligen skrivna data visas under äldre data. Här kallas **Undelete BLOB** i BLOB B, vilket återställer bas-bloben, B1 och alla associerade ögonblicks bilder, precis B0, som aktiva. I det andra steget kopieras B0 över bas-bloben. Den här kopierings åtgärden genererar en mjuk borttagen ögonblicks bild av B1.*
-
-Om du vill visa mjuka borttagna blobbar och blob-ögonblicksbilder kan du välja att inkludera borttagna data i **list blobbar**. Du kan välja att bara Visa mjuka borttagna bas-blobar, eller inkludera mjuka borttagna BLOB-ögonblicksbilder. För all mjuk borttagning av data kan du Visa den tid då data togs bort samt antalet dagar innan data kommer att upphöra att gälla permanent.
-
-### <a name="example"></a>Exempel
-
-Följande är konsol resultatet av ett .NET-skript som laddar upp, skriver över, ögonblicks bilder, tar bort och återställer en blob med namnet *HelloWorld* när mjuk borttagning är aktiverat:
-
-```bash
-Upload:
-- HelloWorld (is soft deleted: False, is snapshot: False)
-
-Overwrite:
-- HelloWorld (is soft deleted: True, is snapshot: True)
-- HelloWorld (is soft deleted: False, is snapshot: False)
-
-Snapshot:
-- HelloWorld (is soft deleted: True, is snapshot: True)
-- HelloWorld (is soft deleted: False, is snapshot: True)
-- HelloWorld (is soft deleted: False, is snapshot: False)
-
-Delete (including snapshots):
-- HelloWorld (is soft deleted: True, is snapshot: True)
-- HelloWorld (is soft deleted: True, is snapshot: True)
-- HelloWorld (is soft deleted: True, is snapshot: False)
-
-Undelete:
-- HelloWorld (is soft deleted: False, is snapshot: True)
-- HelloWorld (is soft deleted: False, is snapshot: True)
-- HelloWorld (is soft deleted: False, is snapshot: False)
-
-Copy a snapshot over the base blob:
-- HelloWorld (is soft deleted: False, is snapshot: True)
-- HelloWorld (is soft deleted: False, is snapshot: True)
-- HelloWorld (is soft deleted: True, is snapshot: True)
-- HelloWorld (is soft deleted: False, is snapshot: False)
-```
-
-I avsnittet [Nästa steg](#next-steps) visas en pekare till det program som skapade utdata.
+| REST API åtgärder | Mjuk borttagning är aktiverat | Mjuk borttagning och versions hantering har Aktiver ATS |
+|--|--|--|
+| [Ta bort lagrings konto](/rest/api/storagerp/storageaccounts/delete) | Ingen förändring. Behållare och blobbar i det borttagna kontot går inte att återskapa. | Ingen förändring. Behållare och blobbar i det borttagna kontot går inte att återskapa. |
+| [Ta bort container](/rest/api/storageservices/delete-container) | Ingen förändring. Blobbar i den borttagna behållaren går inte att återskapa. | Ingen förändring. Blobbar i den borttagna behållaren går inte att återskapa. |
+| [Ta bort blob](/rest/api/storageservices/delete-blob) | Om den används för att ta bort en BLOB markeras denna blob som mjuk borttagning. <br /><br /> Om den används för att ta bort en BLOB-ögonblicksbild markeras ögonblicks bilden som mjuk borttagen. | Om du använder för att ta bort en BLOB blir den aktuella versionen en tidigare version och den aktuella versionen tas bort. Ingen ny version skapas och inga ögonblicks bilder av mjuka rader skapas.<br /><br /> Om du använder för att ta bort en blob-version markeras versionen som mjuk borttagen. |
+| [Ångra borttagning av BLOB](/rest/api/storageservices/delete-blob) | Återställer en blob och eventuella ögonblicks bilder som togs bort under kvarhållningsperioden. | Återställer en blob och eventuella versioner som togs bort under kvarhållningsperioden. |
+| [Placera blob](/rest/api/storageservices/put-blob)<br />[Lista över blockerade](/rest/api/storageservices/put-block-list)<br />[Kopiera blob](/rest/api/storageservices/copy-blob)<br />[Kopiera BLOB från URL](/rest/api/storageservices/copy-blob) | Om den anropas på en aktiv BLOB genereras en ögonblicks bild av blobens tillstånd innan åtgärden genereras automatiskt. <br /><br /> Om den anropas med en mjuk borttagen BLOB genereras en ögonblicks bild av blobens tidigare tillstånd endast om den ersätts av en blob av samma typ. Om blobben är av en annan typ tas alla befintliga Soft Deleted-data bort permanent. | En ny version som fångar upp blobens tillstånd innan åtgärden genereras automatiskt. |
+| [Spärra block](/rest/api/storageservices/put-block) | Om det används för att genomföra ett block till en aktiv BLOB sker ingen ändring.<br /><br />Om den används för att genomföra ett block till en blob som är mjuk borttagning, skapas en ny blob och en ögonblicks bild skapas automatiskt för att avbilda statusen för den mjuk-borttagna blobben. | Ingen förändring. |
+| [Placerings sida](/rest/api/storageservices/put-page)<br />[Lägg till sida från URL](/rest/api/storageservices/put-page-from-url) | Ingen förändring. Sid-BLOB-data som skrivs över eller rensas med den här åtgärden sparas inte och går inte att återskapa. | Ingen förändring. Sid-BLOB-data som skrivs över eller rensas med den här åtgärden sparas inte och går inte att återskapa. |
+| [Lägg till block](/rest/api/storageservices/append-block)<br />[Lägg till block från URL](/rest/api/storageservices/append-block-from-url) | Ingen förändring. | Ingen förändring. |
+| [Ange BLOB-egenskaper](/rest/api/storageservices/set-blob-properties) | Ingen förändring. Det går inte att återskapa de överskrivna BLOB-egenskaperna. | Ingen förändring. Det går inte att återskapa de överskrivna BLOB-egenskaperna. |
+| [Ange BLOB-metadata](/rest/api/storageservices/set-blob-metadata) | Ingen förändring. Överskrivna BLOB-metadata går inte att återskapa. | En ny version som fångar upp blobens tillstånd innan åtgärden genereras automatiskt. |
+| [Ange blobnivå](/rest/api/storageservices/set-blob-tier) | Bas-bloben flyttas till den nya nivån. Alla aktiva eller mjuka borttagna ögonblicks bilder finns kvar på den ursprungliga nivån. Ingen mjuk, borttagen ögonblicks bild skapas. | Bas-bloben flyttas till den nya nivån. Alla aktiva eller mjuka borttagna versioner finns kvar på den ursprungliga nivån. Ingen ny version har skapats. |
 
 ## <a name="pricing-and-billing"></a>Priser och fakturering
 
-Alla mjuka borttagna data debiteras enligt samma taxa som aktiva data. Du kommer inte att debiteras för data som tas bort permanent efter den konfigurerade kvarhållningsperioden. En djupare inblick i ögonblicks bilder och hur de påförs debiteras finns i [förstå hur ögonblicks bilder debiteras](./snapshots-overview.md).
+Alla mjuka borttagna data debiteras enligt samma taxa som aktiva data. Du kommer inte att debiteras för data som tas bort permanent efter att kvarhållningsperioden har gått ut.
 
-Du debiteras inte för transaktioner som rör automatisk generering av ögonblicks bilder. Du faktureras för att **ta bort BLOB** -transaktioner enligt priset för Skriv åtgärder.
-
-Mer information om priser för Azure Blob Storage i allmänhet finns på [sidan med priser för azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
-
-När du först aktiverar mjuk borttagning rekommenderar Microsoft att du använder en kort kvarhållningsperiod för att bättre förstå hur funktionen kommer att påverka din faktura.
+När du aktiverar mjuk borttagning rekommenderar Microsoft att du använder en kort kvarhållningsperiod för att bättre förstå hur funktionen kommer att påverka din faktura. Den minsta rekommenderade kvarhållningsperioden är sju dagar.
 
 Om du aktiverar mjuk borttagning för ofta överskrivna data kan det leda till ökade kapacitets kostnader för lagring och ökad fördröjning vid registrering av blobbar. Du kan minimera denna ytterligare kostnad och svars tid genom att lagra ofta skrivna data i ett separat lagrings konto där mjuk borttagning har inaktiverats.
 
-## <a name="faq"></a>Vanliga frågor
+Du debiteras inte för transaktioner relaterade till automatisk generering av ögonblicks bilder eller versioner när en BLOB skrivs över eller raderas. Du debiteras för anrop till åtgärden **ångra borttagning av BLOB** vid transaktions takten för Skriv åtgärder.
 
-### <a name="can-i-use-the-set-blob-tier-api-to-tier-blobs-with-soft-deleted-snapshots"></a>Kan jag använda API-API: et för att ta bort blobar med mjuk borttagna ögonblicks bilder?
+Mer information om priser för Blob Storage finns på sidan för [Blob Storage priser](https://azure.microsoft.com/pricing/details/storage/blobs/) .
 
-Ja. De mjuka borttagna ögonblicks bilderna blir kvar på den ursprungliga nivån, men bas-bloben flyttas till den nya nivån.
+## <a name="blob-soft-delete-and-virtual-machine-disks"></a>BLOB-mjuk borttagning och virtuella dator diskar  
 
-### <a name="premium-storage-accounts-have-a-per-blob-snapshot-limit-of-100-do-soft-deleted-snapshots-count-toward-this-limit"></a>Premium Storage-konton har en gräns per BLOB-ögonblicksbild på 100. Räknas den mjuka borttagna ögonblicks bilder mot den här gränsen?
+BLOB-mjuk borttagning är tillgängligt för både Premium-och standard ohanterade diskar, som är sid-blobar under försättsblad. Mjuk borttagning kan hjälpa dig att återställa data som tagits bort eller skrivs över av **Delete-blobben**, att endast använda **BLOB**, **list Blocks listan** och **Kopiera BLOB** -åtgärder.
 
-Nej, mjuka borttagna ögonblicks bilder räknas inte mot den här gränsen.
-
-### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>Om jag tar bort ett helt konto eller en behållare med mjuk borttagning aktiverat, kommer alla associerade blobbar att sparas?
-
-Nej, om du tar bort ett helt konto eller en behållare tas alla kopplade blobbar bort permanent. Mer information om hur du skyddar ett lagrings konto från att tas bort av misstag, se [Lås resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md).
-
-### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>Kan jag Visa kapacitets mått för borttagna data?
-
-Soft Deleted data ingår som en del av din totala kapacitet för lagrings kontot. Mer information om att spåra och övervaka lagrings kapacitet finns [Lagringsanalys](../common/storage-analytics.md).
-
-### <a name="can-i-read-and-copy-out-soft-deleted-snapshots-of-my-blob"></a>Kan jag läsa och kopiera mjuk borttagna ögonblicks bilder av min BLOB?  
-
-Ja, men du måste anropa Undelete i blobben först.
-
-### <a name="is-soft-delete-available-for-virtual-machine-disks"></a>Är mjuk borttagning tillgängligt för virtuella dator diskar?  
-
-Mjuk borttagning är tillgängligt för både Premium-och ohanterade icke-hanterade diskar, som är sid-blobar under försättsblad. Med mjuk borttagning kan du bara återställa data som tagits bort genom att **ta bort BLOB**, **Skicka BLOB**, **lagra blockeringslistan** och **Kopiera BLOB** -åtgärder. Data som skrivs över av ett anrop till en **sida** kan inte återställas.
-
-En virtuell Azure-dator skriver till en ohanterad disk med hjälp av anrop till att använda **sidan**, så Använd mjuk borttagning för att ångra skrivningar till en ohanterad disk från en virtuell Azure-dator är inte ett scenario som stöds.
-
-### <a name="do-i-need-to-change-my-existing-applications-to-use-soft-delete"></a>Måste jag ändra mina befintliga program för att använda mjuk borttagning?
-
-Det är möjligt att dra nytta av mjuk borttagning oavsett vilken API-version du använder. Men om du vill visa och återställa mjuka borttagna blobbar och blob-ögonblicksbilder måste du använda version 2017-07-29 av [Azure Storage REST API](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) eller senare. Microsoft rekommenderar att alltid använda den senaste versionen av Azure Storage API.
+Data som skrivs över av ett anrop till en **sida** går inte att återställa. En virtuell Azure-dator skriver till en ohanterad disk med hjälp av anrop till att använda **sidan**, så Använd mjuk borttagning för att ångra skrivningar till en ohanterad disk från en virtuell Azure-dator är inte ett scenario som stöds.
 
 ## <a name="next-steps"></a>Nästa steg
 
 - [Aktivera mjuk borttagning för blobar](./soft-delete-blob-enable.md)
+- [Hantera och återställa mjuka borttagna blobar](soft-delete-blob-manage.md)
 - [BLOB-versioner](versioning-overview.md)

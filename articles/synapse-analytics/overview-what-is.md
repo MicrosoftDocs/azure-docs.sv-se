@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 03/24/2021
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 78b31cb32e3df9b0d8e198d8c2122e492e609283
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bb09a25d7ea242dfafd7d853015ae8e127b13883
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625826"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383413"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Vad är Azure Synapse Analytics?
 
@@ -43,9 +43,9 @@ ms.locfileid: "105625826"
 
 Azure Synapse tar bort de traditionella teknik barriärerna mellan att använda SQL och Spark tillsammans. Du kan kombinera och matcha på ett smidigt sätt utifrån dina behov och kunskaper.
 
-* Ett delat Hive-kompatibelt metadata system gör det möjligt för tabeller som definierats på filer i data Lake att vara sömlöst förbrukade antingen av Spark eller Hive.
+* Tabeller som definieras på filer i data Lake används sömlöst av Spark eller Hive.
 * SQL och Spark kan direkt utforska och analysera Parquet-, CSV-, TSV-och JSON-filer som lagras i data Lake.
-* Snabb skalbar belastning och borttagning av data som går mellan SQL-och Spark-databaser
+* Snabb och skalbar data inläsning mellan SQL-och Spark-databaser
 
 ## <a name="built-in-data-integration"></a>Inbyggd data integrering
 
@@ -71,10 +71,10 @@ Azure Synapse erbjuder ett enda sätt för företag att hantera analys resurser,
 * Branschledande produktivitet för att skriva SQL-eller Spark-kod: redigering, fel sökning och prestanda optimering
 * Integrera med Enterprise CI/CD process
 
-## <a name="engage-with-the-synapse-engineering-team"></a>Engagera dig med Synapse Engineering-teamet
+## <a name="engage-with-the-synapse-community"></a>Delta i Synapse-communityn
 
+- [Microsoft Q&A](/answers/topics/azure-synapse-analytics.html): Ställ tekniska frågor.
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse): Ställ frågor om utveckling.
-- [Sidan Microsoft Q&en fråga](/answers/topics/azure-synapse-analytics.html): Ställ tekniska frågor.
 
 ## <a name="next-steps"></a>Nästa steg
 

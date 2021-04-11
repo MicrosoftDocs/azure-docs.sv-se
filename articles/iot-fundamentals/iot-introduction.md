@@ -10,12 +10,12 @@ ms.author: dobett
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: d2afd88500801f1e2b1e4da5a1e267bddfa69fc7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1053062302c9a00cf49cee1cd8de5ca6652b745
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96453028"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167710"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Vad är Azure Sakernas Internet (IoT)?
 
@@ -30,7 +30,7 @@ En IoT-enhet består vanligt vis av en kretskort med exponerade sensorer som anv
 * En accelerometer i en hiss.
 * Närvaro sensorer i ett rum.
 
-Det finns en mängd olika enheter som är tillgängliga från olika tillverkare för att bygga din lösning. En lista över enheter som har certifierats för att fungera med Azure IoT Hub finns i [enhets katalogen för Azure Certified för IoT](https://catalog.azureiotsolutions.com/alldevices). För prototyper kan du använda enheter som till exempel en [MXChip IoT-DevKit](https://microsoft.github.io/azure-iot-developer-kit/) eller en [Raspberry Pi](https://www.raspberrypi.org/). Devkit har inbyggda sensorer för temperatur, tryck, fuktighet och en Gyroscope, accelerometer och magnetometer. Med Raspberry Pi kan du koppla flera olika typer av sensorer. 
+Det finns en mängd olika enheter som är tillgängliga från olika tillverkare för att bygga din lösning. En lista över enheter som har certifierats för att fungera med Azure IoT Hub finns i [enhets katalogen för Azure Certified för IoT](https://devicecatalog.azure.com). För prototyper kan du använda enheter som till exempel en [MXChip IoT-DevKit](https://microsoft.github.io/azure-iot-developer-kit/) eller en [Raspberry Pi](https://www.raspberrypi.org/). Devkit har inbyggda sensorer för temperatur, tryck, fuktighet och en Gyroscope, accelerometer och magnetometer. Med Raspberry Pi kan du koppla flera olika typer av sensorer. 
 
 Microsoft tillhandahåller [enhets-SDK](../iot-hub/iot-hub-devguide-sdks.md) : er med öppen källkod som du kan använda för att skapa appar som körs på dina enheter. Dessa [SDK: er fören klar och påskyndar](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/) utvecklingen av IoT-lösningar.
 
