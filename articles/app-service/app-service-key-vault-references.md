@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/05/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 69fc0d6f3c4e18b34555a099f4e28e278ca3bdad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0bba85cc99e1751f39172ac320fe721d6f02e87
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100635395"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076793"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Använd Key Vault referenser för App Service och Azure Functions
 
@@ -30,8 +30,19 @@ För att kunna läsa hemligheter från Key Vault måste ett valv skapas och ge d
 
 1. Skapa en [åtkomst princip i Key Vault](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) för den program identitet som du skapade tidigare. Aktivera hemliga behörigheten "Get" för den här principen. Konfigurera inte det "auktoriserade programmet" eller `applicationId` Inställningar, eftersom detta inte är kompatibelt med en hanterad identitet.
 
-   > [!IMPORTANT]
-   > Key Vault referenser kan för närvarande inte lösa hemligheter som lagras i ett nyckel valv med [nätverks begränsningar](../key-vault/general/overview-vnet-service-endpoints.md) om inte appen finns i en [App Service-miljön](./environment/intro.md).
+### <a name="access-network-restricted-vaults"></a>Få åtkomst till nätverk-begränsade valv
+
+> [!NOTE]
+> Linux-baserade program kan för närvarande inte lösa hemligheter från ett nätverk med begränsat nyckel valv, om inte appen finns inom en [App Service-miljön](./environment/intro.md).
+
+Om valvet har kon figurer ATS med [nätverks begränsningar](../key-vault/general/overview-vnet-service-endpoints.md)måste du också se till att programmet har nätverks åtkomst.
+
+1. Kontrol lera att programmet har utgående nätverksfunktioner konfigurerade, enligt beskrivningen i [App Service nätverksfunktioner](./networking-features.md) och [Azure Functions nätverks alternativ](../azure-functions/functions-networking-options.md).
+
+2. Se till att valvets konfigurations konton för nätverket eller under nätet som appen kommer att komma åt.
+
+> [!IMPORTANT]
+> Åtkomst till ett valv via integrering av virtuella nätverk är för närvarande inte kompatibelt med [automatiska uppdateringar för hemligheter utan en angiven version](#rotation).
 
 ## <a name="reference-syntax"></a>Syntax för referenser
 
@@ -56,6 +67,9 @@ Du kan också:
 ```
 
 ## <a name="rotation"></a>Rotation
+
+> [!IMPORTANT]
+> [Åtkomst till ett valv via integrering av virtuella nätverk](#access-network-restricted-vaults) är för närvarande inte kompatibelt med automatiska uppdateringar för hemligheter utan en angiven version.
 
 Om en version inte anges i referensen kommer appen att använda den senaste versionen som finns i Key Vault. När nyare versioner blir tillgängliga, till exempel med en rotations händelse, uppdateras appen automatiskt och börjar använda den senaste versionen inom en dag. Alla konfigurations ändringar som görs i appen leder till en omedelbar uppdatering av de senaste versionerna av alla refererade hemligheter.
 

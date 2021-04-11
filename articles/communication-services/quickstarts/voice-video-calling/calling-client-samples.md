@@ -2,20 +2,20 @@
 title: Snabb start – Använd Azure Communication Services som anropar SDK
 titleSuffix: An Azure Communication Services quickstart
 description: Lär dig mer om kommunikations tjänsterna som anropar SDK-funktioner.
-author: mikben
-manager: jken
+author: rinarish
+manager: rinarish
 services: azure-communication-services
-ms.author: mikben
+ms.author: arturk
 ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 4f22b595fe3664ed840f147df94626d889b330d1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 87808cfd97be5fb38ee64ef57540aada255f6ca5
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729226"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110350"
 ---
 # <a name="quickstart-use-the-communication-services-calling-sdk"></a>Snabb start: Använd kommunikations tjänsterna som anropar SDK
 

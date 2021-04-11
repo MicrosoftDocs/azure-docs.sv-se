@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2021
-ms.openlocfilehash: 85a3505dd347b96036c28c85c089afa04e3e3bd5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d4a801d0cf0a2355334272053ff86dd846b6bbf
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104610110"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030312"
 ---
 # <a name="troubleshooting-sql-insights-preview"></a>Felsöka SQL Insights (för hands version)
 Om du vill felsöka problem med data insamling i SQL Insights kontrollerar du status för övervaknings datorn på fliken **Hantera profil** . Detta kommer att ha något av följande tillstånd:
@@ -171,10 +171,13 @@ InsightsMetrics
 ```
 
 ```
-Operation 
- | where OperationCategory == "WorkloadInsights" 
- | summarize Errors = countif(OperationStatus == 'Error') 
+WorkloadDiagnosticLogs
+| summarize Errors = countif(Status == 'Error')
 ```
+
+> [!NOTE]
+> Om du inte ser några data i data typen "WorkloadDiagnosticLogs" kan du behöva uppdatera din övervaknings profil för att lagra dessa data.  I SQL Insights-UX väljer du hantera profil och väljer sedan Redigera profil. Välj sedan uppdatera övervaknings profil.
+
 
 För vanliga fall ger vi fel söknings kunskap i vår loggfiler: 
 

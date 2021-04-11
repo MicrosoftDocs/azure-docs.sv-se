@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 7b50dcf63956202af5aef658c82d77592da8bbd0
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 9c0246d68de8c01b1779d5a95d405c61536f277e
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106125918"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106282968"
 ---
 <!--Feature availability in region-->
 ## <a name="germany"></a>Tyskland
@@ -21,5 +21,5 @@ ms.locfileid: "106125918"
 | [AudioAnalyzerPreset](../analyze-video-audio-files-concept.md) | | |
 | [StandardEncoderPreset](../encode-concept.md) | ![StandardEncoderPreset Tyskland, norra (offentlig) allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |![StandardEncoderPreset Tyskland, västra centrala (offentlig) allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |
 | [LiveEvents](../stream-live-streaming-concept.md) | ![LiveEvents Tyskland, norra (offentlig) allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |![LiveEvents Tyskland, västra centrala (offentlig) allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |
-| [Strömnings slut punkter](../streaming-endpoint-concept.md) | ![Strömnings slut punkter Tyskland, norra (offentlig) allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |![Strömnings slut punkter Tyskland, västra centrala (offentlig) allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |
+| [Strömnings slut punkter](../stream-streaming-endpoint-concept.md) | ![Strömnings slut punkter Tyskland, norra (offentlig) allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |![Strömnings slut punkter Tyskland, västra centrala (offentlig) allmän tillgänglighet](../media/azure-clouds-regions/ga.svg) |
 | [LiveTranscription](../live-event-live-transcription-how-to.md) |  | |

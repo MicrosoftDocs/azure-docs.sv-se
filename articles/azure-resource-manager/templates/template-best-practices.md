@@ -3,12 +3,12 @@ title: Metodtips för mallar
 description: Beskriver rekommenderade metoder för att redigera Azure Resource Manager mallar (ARM-mallar). Innehåller förslag på hur du undviker vanliga problem när du använder mallar.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 583a113df9cdb1951daf1002dd69531f050cfb54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff2b9ecf0e4004aa6689294867f5ff93006211ec
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258005"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219951"
 ---
 # <a name="arm-template-best-practices"></a>Metod tips för ARM-mall
 
@@ -160,7 +160,7 @@ När din mall fungerar som förväntat, rekommenderar vi att du fortsätter anv�
 
 Använd inte en parameter för API-versionen. Resurs egenskaper och-värden kan variera beroende på API-version. IntelliSense i en kod redigerare kan inte fastställa rätt schema när API-versionen har angetts till en parameter. Om du skickar i en API-version som inte matchar egenskaperna i mallen kommer distributionen att Miss lyckas.
 
-Använd inte variabler för API-versionen. Använd i synnerhet inte [providers-funktionen](template-functions-resource.md#providers) för att dynamiskt hämta API-versioner under distributionen. Den dynamiskt hämtade API-versionen kanske inte matchar egenskaperna i mallen.
+Använd inte variabler för API-versionen. 
 
 ## <a name="resource-dependencies"></a>Resursberoenden
 

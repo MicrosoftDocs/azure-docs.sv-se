@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: personanpassare, Azure-personanpassare, maskin inlärning
-ms.openlocfilehash: 913b4d989865a50b23d58c5493368997248f8db8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b2577502907b69e134651c93ab7a98fc51e9aaa6
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928547"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169257"
 ---
 # <a name="what-is-personalizer"></a>Vad är Personanpassning?
 
@@ -21,11 +21,14 @@ Azure-personanpassa är en molnbaserad tjänst som hjälper dina program att vä
 > [!TIP]
 > Innehåll är en informations enhet, till exempel text, bilder, URL, e-postmeddelanden eller något annat som du vill välja från och Visa för dina användare.
 
-Innan du börjar kan du prova att lära dig [med den här interaktiva demonstrationen](https://personalizationdemo.azurewebsites.net/).
+Den här dokumentationen innehåller följande artikel typer:  
 
-<!--
-![What is personalizer animation](./media/what-is-personalizer.gif)
--->
+* [**Snabb starter**](quickstart-personalizer-sdk.md) hjälper dig att komma igång med instruktioner för att göra förfrågningar till tjänsten.  
+* [**Instruktions guider**](how-to-settings.md) innehåller instruktioner för att använda tjänsten på mer exakta eller anpassade sätt.  
+* [**Begreppen**](how-personalizer-works.md) ger djupgående förklaringar av tjänst funktionerna och funktionerna.  
+* [**Självstudier**](tutorial-use-personalizer-web-app.md) är längre guider som visar hur du använder tjänsten som en komponent i bredare affärs lösningar.  
+
+Innan du börjar kan du prova att [använda personanpassare med den här interaktiva demonstrationen](https://personalizationdemo.azurewebsites.net/).
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>Hur väljer Personanpassare det bästa innehålls objektet?
 
@@ -100,18 +103,6 @@ Eftersom Personanpassaren använder samlad information i nära real tid för att
         * Direkt efter att ha visat ditt innehåll
         * Eller någon gång senare i ett offline-system
     1. [Utvärdera din loop](concepts-offline-evaluation.md) med en offline-utvärdering efter en användnings period. Med en offline-utvärdering kan du testa och utvärdera effektiviteten för tjänsten personanpassa utan att ändra din kod eller påverka användar upplevelsen.
-
-## <a name="complete-a-quickstart"></a>Slutför en snabb start
-
-Vi erbjuder snabb starter i C#, Java Script och python. Varje snabb start är utformad för att lära dig grundläggande design mönster, och du kan köra kod på mindre än 10 minuter. 
-
-* [Snabb start: så här använder du personanpassa klient biblioteket](./quickstart-personalizer-sdk.md)
-
-När du har fått en chans att komma igång med tjänsten för anpassning kan du prova våra självstudier och lära dig hur du använder personanpassa i webb program, chatta robotar eller en Azure-anteckningsbok.
-
-* [Självstudie: använda personanpassar i en .NET-webbapp](tutorial-use-personalizer-web-app.md)
-* [Självstudie: använda en Personanpassare i en .NET Chat-robot](tutorial-use-personalizer-chat-bot.md)
-* [Självstudie: använda en Personanpassare i en Azure-anteckningsbok](tutorial-use-azure-notebook-generate-loop-data.md)
 
 ## <a name="reference"></a>Referens 
 

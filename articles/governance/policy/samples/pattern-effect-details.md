@@ -1,18 +1,18 @@
 ---
 title: 'Mönster: påverkan av en princip definition'
 description: Detta Azure Policy mönster ger exempel på hur du kan använda de olika effekterna av en princip definition.
-ms.date: 10/14/2020
+ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: f1da9bd153707db35c07ed3c176542797a694d7a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9fa95fdc793e7762c39525a83f38ae952f532a60
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92073044"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092848"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Policy mönster: effekter
 
-Azure Policy har ett antal [effekter](../concepts/effects.md) som avgör hur tjänsten reagerar på icke-kompatibla resurser. Vissa effekter är enkla och kräver inga ytterligare egenskaper i princip definitionen medan andra kräver flera egenskaper.
+Azure Policy har många [effekter](../concepts/effects.md) som avgör hur tjänsten reagerar på icke-kompatibla resurser. Vissa effekter är enkla och kräver inga ytterligare egenskaper i princip definitionen medan andra kräver flera egenskaper.
 
 ## <a name="sample-1-simple-effect"></a>Exempel 1: enkel påverkan
 

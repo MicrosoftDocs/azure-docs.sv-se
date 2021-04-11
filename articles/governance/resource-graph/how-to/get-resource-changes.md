@@ -1,14 +1,14 @@
 ---
 title: Hämta resursändringar
 description: Lär dig hur du hittar när en resurs har ändrats, hämta en lista över de egenskaper som har ändrats och utvärdera differenserna.
-ms.date: 01/27/2021
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 5ad86ec2598cd7f24b8e0cd2208889bb7a088568
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 500a2d58c5fc9e1b63a544978c4b583eba60a63e
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594654"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219084"
 ---
 # <a name="get-resource-changes"></a>Hämta resursändringar
 
@@ -145,6 +145,10 @@ Varje identifierad ändrings händelse för **resourceId** har följande egenska
 - **beforeSnapshot** – innehåller **snapshotId** och **tidsstämpel** för den resurs ögonblicks bild som togs innan en ändring upptäcktes.
 - **afterSnapshot** – innehåller **snapshotId** och **tidsstämpel** för den resurs ögonblicks bild som togs efter en ändring upptäcktes.
 - **ändrings typs** – beskriver vilken typ av ändring som har identifierats för hela ändrings posten mellan **beforeSnapshot** och **afterSnapshot**. Värdena är: _skapa_, _Uppdatera_ och _ta bort_. **PropertyChanges** egenskaps mat ris ingår endast när **ändrings typs** är _Update_.
+
+  > [!IMPORTANT]
+  > _Create_ är bara tillgängligt för resurser som tidigare funnits och togs bort under de senaste 14 dagarna.
+
 - **propertyChanges** – denna egenskaps mat ris innehåller information om alla resurs egenskaper som har uppdaterats mellan **beforeSnapshot** och **afterSnapshot**:
   - **PropertyName** -namnet på den resurs egenskap som har ändrats.
   - **changeCategory** – beskriver vad som gjorde ändringen. Värdena är: _system_ och _användare_.

@@ -3,12 +3,12 @@ title: Mallfunktioner
 description: Beskriver de funktioner som används i en Azure Resource Manager mall (ARM-mall) för att hämta värden, arbeta med strängar och siffror och hämta distributions information.
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: dbda5c635a5189158424363c341b269d331a5fdc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9ea21a57404f7de832fb307bdabeb47f8cf3f58
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101707327"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220189"
 ---
 # <a name="arm-template-functions"></a>ARM-mallens funktioner
 
@@ -176,7 +176,6 @@ Resource Manager tillhandahåller följande funktioner för att hämta resurs v�
 * [listSecrets](template-functions-resource.md#list)
 * [lista](template-functions-resource.md#list)
 * [pickZones](template-functions-resource.md#pickzones)
-* [finansiär](template-functions-resource.md#providers)
 * [förhållande](template-functions-resource.md#reference)
 * [resourceGroup](template-functions-resource.md#resourcegroup) -kan bara användas i distributioner till en resurs grupp.
 * [resourceId](template-functions-resource.md#resourceid) -kan användas i valfri omfattning, men giltiga parametrar ändras beroende på omfattningen.

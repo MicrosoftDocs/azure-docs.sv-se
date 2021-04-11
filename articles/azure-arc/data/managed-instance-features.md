@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 9c42acb69e13cc1eb0fbba3fcafaec1451bc4d77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c3f973da688a20fa60f2fb649b2c8d689bc2a98
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97589227"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076657"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Funktioner i Azure Arc-aktiverad SQL-hanterad instans
 
@@ -117,19 +117,19 @@ Azure Arc-aktiverad SQL-hanterad instans delar en gemensam kodbas med den senast
 | Funktion | Azure Arc-aktiverad SQL-hanterad instans |
 |--|--|
 | JSON | Ja |
-| Query Store | Ja |  |
-| Temporal | Ja |  |
-| Inbyggt XML-stöd | Ja |  |
-| XML-indexering | Ja |  |
-| Sammanfoga & UPSERT-funktioner | Ja |  |
-| Datum-och tids data typer | Ja |  |
-| Stöd för internationalisering | Ja |  |
+| Query Store | Ja | 
+| Temporal | Ja | 
+| Inbyggt XML-stöd | Ja | 
+| XML-indexering | Ja | 
+| Sammanfoga & UPSERT-funktioner | Ja | 
+| Datum-och tids data typer | Ja | 
+| Stöd för internationalisering | Ja | 
 | Full text och semantisk sökning | Inga |
-| Specifikation av språk i fråga | Ja |  |
-| Service Broker (meddelande hantering) | Ja |  |
-| Transact-SQL-slutpunkter | Ja |  |
-| Graph | Ja |  |
-| Machine Learning Services | Inga |  |
+| Specifikation av språk i fråga | Ja | 
+| Service Broker (meddelande hantering) | Ja | 
+| Transact-SQL-slutpunkter | Ja | 
+| Graph | Ja | 
+| Machine Learning Services | Inga |
 | PolyBase | Inga |
 
 

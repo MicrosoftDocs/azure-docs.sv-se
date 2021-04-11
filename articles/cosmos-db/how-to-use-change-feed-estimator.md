@@ -5,15 +5,15 @@ author: ealsur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 08/15/2019
+ms.date: 04/01/2021
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a44557d15f437317c2b5fa659ab8d4ca3c208edf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d4e461b25a25ecdf0d4d89ee7f1c82b9d4a0737
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93339851"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220172"
 ---
 # <a name="use-the-change-feed-estimator"></a>Använd uppskattningen ändra feed
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ I den här artikeln beskrivs hur du kan övervaka förloppet för dina [byte av 
 
 ## <a name="why-is-monitoring-progress-important"></a>Varför är övervaknings förloppet viktigt?
 
-Processorn för ändrings flöden fungerar som en pekare som rör sig framåt i [ändrings flödet](./change-feed.md) och levererar ändringarna i en ombuds implementering. 
+Processorn för ändrings flöden fungerar som en pekare som rör sig framåt i [ändrings flödet](./change-feed.md) och levererar ändringarna i en ombuds implementering.
 
 Din distribution av Change feed processor kan bearbeta ändringar i en viss takt baserat på de resurser som är tillgängliga, t. ex. CPU, minne, nätverk och så vidare.
 
@@ -32,7 +32,9 @@ Att identifiera det här scenariot hjälper dig att förstå om vi behöver skal
 
 ## <a name="implement-the-change-feed-estimator"></a>Implementera uppskattningen ändra feed
 
-Precis som med [change feed-processorn](./change-feed-processor.md)fungerar föruppskattningen ändra feed som en push-modell. Uppskattningen mäter skillnaden mellan det senast bearbetade objektet (definieras av statusen för behållaren lån) och den senaste ändringen i behållaren och push-överför värdet till ett ombud. Intervallet då mätningen utförs kan också anpassas med standardvärdet 5 sekunder.
+### <a name="as-a-push-model-for-automatic-notifications"></a>Som en push-modell för automatiska meddelanden
+
+Precis som [processorn för förändrings flöden](./change-feed-processor.md)kan du arbeta som en push-modell. Uppskattningen mäter skillnaden mellan det senast bearbetade objektet (definieras av statusen för behållaren lån) och den senaste ändringen i behållaren och push-överför värdet till ett ombud. Intervallet då mätningen utförs kan också anpassas med standardvärdet 5 sekunder.
 
 Exempel: om din Change feed-processor definieras som detta:
 
@@ -52,8 +54,29 @@ Ett exempel på ett ombud som tar emot uppskattningen är:
 
 Du kan skicka denna uppskattning till din övervaknings lösning och använda den för att förstå hur din förloppet fungerar över tid.
 
+### <a name="as-an-on-demand-detailed-estimation"></a>Som en detaljerad uppskattning på begäran
+
+I motsats till push-modellen är det ett alternativ som gör att du kan få en uppskattning på begäran. Den här modellen innehåller också mer detaljerad information:
+
+* Den uppskattade fördröjningen per lån.
+* Den instans som äger och bearbetar varje lån, så att du kan identifiera om det är ett problem med en instans.
+
+Om din process för ändrings flöden definieras så här:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimatorDetailed)]
+
+Du kan skapa en uppskattning med samma låne konfiguration:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimatorDetailed)]
+
+Och när du vill, med den frekvens du behöver, kan du få en detaljerad uppskattning:
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=GetIteratorEstimatorDetailed)]
+
+Var `ChangeFeedProcessorState` och en kommer att innehålla låne-och fördröjnings information och även vem som är den aktuella instansen som äger den. 
+
 > [!NOTE]
-> Det går inte att distribuera uppskattningen för att byta feed som en del av din process för ändrings flöden, och inte heller vara en del av samma projekt. Det kan vara oberoende och köras i en helt annan instans. Du behöver bara använda samma namn och låne konfiguration.
+> Det går inte att distribuera uppskattningen för att byta feed som en del av din process för ändrings flöden, och inte heller vara en del av samma projekt. Det kan vara oberoende och köras i en helt annan instans, vilket rekommenderas. Du behöver bara använda samma namn och låne konfiguration.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 

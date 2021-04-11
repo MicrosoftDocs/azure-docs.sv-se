@@ -2,26 +2,27 @@
 title: Felsöka nätverks problem med registret
 description: Symptom, orsaker och lösningar på vanliga problem vid åtkomst till ett Azure Container Registry i ett virtuellt nätverk eller bakom en brand vägg
 ms.topic: article
-ms.date: 10/01/2020
-ms.openlocfilehash: 75c94d40663a7058dab7ed691183dd578964edcc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/30/2021
+ms.openlocfilehash: ae75959028e19ec61e6dcf41308e54df38139d59
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699614"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220121"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Felsöka nätverks problem med registret
 
-Den här artikeln hjälper dig att felsöka problem som kan uppstå vid åtkomst till ett Azure Container Registry i ett virtuellt nätverk eller bakom en brand vägg. 
+Den här artikeln hjälper dig att felsöka problem som kan uppstå vid åtkomst till ett Azure Container Registry i ett virtuellt nätverk eller bakom en brand vägg eller proxyserver. 
 
 ## <a name="symptoms"></a>Symtom
 
 Kan innehålla ett eller flera av följande:
 
 * Det går inte att push-överföra eller hämta bilder och du får ett fel meddelande `dial tcp: lookup myregistry.azurecr.io`
+* Det går inte att push-överföra eller hämta bilder och du får ett fel meddelande `Client.Timeout exceeded while awaiting headers`
 * Det går inte att push-överföra eller hämta bilder och du får Azure CLI-fel `Could not connect to the registry login server`
 * Det går inte att hämta avbildningar från registret till Azure Kubernetes service eller någon annan Azure-tjänst
-* Det går inte att komma åt ett register bakom en HTTPS-proxy och du får ett fel meddelande `Error response from daemon: login attempt failed with status: 403 Forbidden`
+* Det går inte att komma åt ett register bakom en HTTPS-proxy och du får ett fel meddelande `Error response from daemon: login attempt failed with status: 403 Forbidden` eller `Error response from daemon: Get <registry>: proxyconnect tcp: EOF Login failed`
 * Det gick inte att konfigurera inställningar för virtuellt nätverk och du får ett fel meddelande `Failed to save firewall and virtual network settings for container registry`
 * Det går inte att öppna eller Visa register inställningar i Azure Portal eller hantera registret med hjälp av Azure CLI
 * Det går inte att lägga till eller ändra inställningar för virtuellt nätverk eller offentliga åtkomst regler
@@ -41,7 +42,7 @@ Kör kommandot [AZ ACR check-Health](/cli/azure/acr#az-acr-check-health) för at
 
 Se [kontrol lera hälso tillståndet för ett Azure Container Registry](container-registry-check-health.md) för kommando exempel. Om fel rapporteras läser du [fel referensen](container-registry-health-error-reference.md) och följande avsnitt för rekommenderade lösningar.
 
-Om du har problem med att använda registret wih Azure Kubernetes-tjänsten kör du kommandot [AZ AKS check-ACR](/cli/azure/aks#az_aks_check_acr) för att kontrol lera att registret är tillgängligt från AKS-klustret.
+Om du har problem med att använda en Azure Kubernetes-tjänst med ett integrerat register kör du kommandot [AZ AKS check-ACR](/cli/azure/aks#az_aks_check_acr) för att kontrol lera att AKS-klustret kan komma åt registret.
 
 > [!NOTE]
 > Vissa nätverks anslutnings problem kan också uppstå när det finns problem med autentisering eller auktorisering av registret. Se [Felsöka register inloggning](container-registry-troubleshoot-login.md).
@@ -57,7 +58,7 @@ För att få åtkomst till ett register från bakom en klient brand vägg eller 
 
 För ett geo-replikerat register konfigurerar du åtkomst till data slut punkten för varje regional replik.
 
-Se till att både Docker-klienten och Docker daemon är konfigurerade för proxy-beteende bakom en HTTPS-proxy.
+Se till att både Docker-klienten och Docker daemon är konfigurerade för proxy-beteende bakom en HTTPS-proxy. Om du ändrar proxyinställningarna för Docker daemon måste du starta om daemonen. 
 
 Register resurs loggar i ContainerRegistryLoginEvents-tabellen kan hjälpa till att diagnostisera en försöks anslutning som är blockerad.
 

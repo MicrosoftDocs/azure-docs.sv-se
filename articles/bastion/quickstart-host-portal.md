@@ -8,12 +8,12 @@ ms.service: bastion
 ms.topic: quickstart
 ms.date: 02/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 8aeba13954283ca35c3eb0060a0e588ba6a7adbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53f09eed89f9667611ed4d5e0268c889609d560a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101707179"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553574"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>Snabb start: ansluta till en virtuell dator på ett säkert sätt via en webbläsare via privat IP-adress
 
@@ -36,6 +36,10 @@ Du kan ansluta till en virtuell dator (VM) via webbläsaren med hjälp av Azure 
   
 * Obligatoriska VM-portar:
   * Inkommande portar: RDP (3389)
+
+ >[!NOTE]
+ >Det finns inte stöd för användning av Azure-skydds med Azure Privat DNS Zones just nu. Innan du börjar bör du kontrol lera att det virtuella nätverket där du planerar att distribuera skydds-resursen inte är länkat till en privat DNS-zon.
+ >
 
 ### <a name="example-values"></a><a name="values"></a>Exempelvärden
 

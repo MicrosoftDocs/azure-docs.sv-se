@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 662a0f53a5d5e8e02ef3b29640009fd07bf4f1d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d2b1a60856877c24d61379a688ea630e506a848
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97652152"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075244"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory kod exempel (v 1.0-slut punkt)
 
@@ -63,8 +63,8 @@ I följande exempel visas webb program som signerar användare. Några av dessa 
 
 Följande exempel visar hur du implementerar rollbaserad åtkomst kontroll (RBAC). RBAC används för att begränsa behörigheterna för vissa funktioner i ett webb program till vissa användare. Användarna är auktoriserade beroende på om de tillhör en **Azure AD-grupp** eller har en specifik program **roll**.
 
-| Plattform | Exempel |
-|--|--|
+| Plattform | Exempel | Beskrivning |
+|--|--|--|
 | ![Den här bilden visar ASP.NET Framework-logotypen](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotNet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotNet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | En .NET 4,5 MVC-webbapp som använder Azure AD- **roller** för auktorisering |
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Station ära och mobila klient program som anropar Microsoft Graph eller ett webb-API

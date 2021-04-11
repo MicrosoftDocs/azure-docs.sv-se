@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 03/25/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: a2b001d34d265c8e7246b03875c32168f2c5c962
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ed3a11381285a9422380eb14ff301a2b9ea816a
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104598906"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106093562"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Vad är nytt i API:et för textanalys?
 
@@ -51,11 +51,12 @@ API för textanalys uppdateras regelbundet. Den här artikeln innehåller inform
     * En ny `Date` entitetstyp.
     * Kontroll av identifiering som ersätter negation identifiering (endast tillgängligt i API v 3.1 – för hands version. 4).
     * En ny önskad `name` egenskap för länkade entiteter som normaliseras från olika Ontologies-och kodnings system (endast tillgängligt i API v 3.1 – för hands version. 4). 
-* En ny behållar avbildning med tagg `3.0.015370001-onprem-amd64` och den nya modell versionen `2021-03-01` har frigjorts till behållar förhands gransknings databasen. 
-* Textanalys för hälso behållar avbildningen kommer att flyttas till en ny databas nästa månad.  Se efter om det finns en e-postkommunikation på platsen för dess nya hem.
+* En ny behållar avbildning med tagg `3.0.015490002-onprem-amd64` och den nya modell versionen `2021-03-01` har frigjorts till behållar förhands gransknings databasen. 
+    * Den här behållar avbildningen kommer inte längre att vara tillgänglig för nedladdning från `containerpreview.azurecr.io` och med april 26 2021.
+* En ny Textanalys för hälso behållar avbildningen med samma modell version är nu tillgänglig på `mcr.microsoft.com/azure-cognitive-services/textanalytics/healthcare` . Från och med april 26 kommer du bara att kunna hämta behållaren från den här lagrings platsen.
+
 > [!div class="nextstepaction"]
 > [Läs mer om Textanalys för hälsa](how-tos/text-analytics-for-health.md)
->
 
 ### <a name="text-analytics-resource-portal-update"></a>Uppdatera Textanalys resurs Portal
 * **Bearbetade text poster** är nu tillgängliga som ett mått i avsnittet **övervakning** för din Textanalys-resurs i Azure Portal.  

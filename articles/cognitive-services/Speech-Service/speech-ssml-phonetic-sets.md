@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: jiajzhan
-ms.openlocfilehash: 580de0112c99eef4ba22ba946f6a2b81bc326001
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e5480b7412291c427c5eaea94a63343f12c62cf
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102432051"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077524"
 ---
 # <a name="speech-service-phonetic-sets"></a>Fonetiska uppsättningar för tal tjänst
 
@@ -234,30 +234,30 @@ Tal tjänstens telefon uppsättning placerar stress efter vokalen för den beton
 
 | `sapi` | `ipa` | Exempel 1 | Exempel 2 | Exempel 3 |
 |--|--|--|--|--|
-| b | `b` | **B**-ank |  | [<sup>1</sup>](#de-c-1) PU **b** |  |
+| b | `b` | **B**-ank | | [<sup>1</sup>](#de-c-1) PU **b** | 
 | c | `ç` | **CH** EMIE | mögli **CH** St | [<sup>2</sup>](#de-c-2)i **CH** |
-| d | `d` | **d**-anken | [<sup>3</sup>](#de-c-3) Längd **d** l | [<sup>4</sup>](#de-c-4) Clau **d** e |  |
+| d | `d` | **d**-anken | [<sup>3</sup>](#de-c-3) Längd **d** l | [<sup>4</sup>](#de-c-4) Clau **d** e | 
 | jh | `ʤ` | **J** EFF | gemana **g** t | [<sup>5</sup>](#de-c-5) Kanal **g** e |
-| f | `f` | **F**-ahrtdauer | Angri **AA** slustig | abbruchrei **f** |  |
-| g | `g` | **g** ut |  | [<sup>6</sup>](#de-c-6) GRE **g** |  |
-| h | `h` | **H**-ausanbau |  |  |  |
-| y | `j` | **J** OD | Reakt **i** | HU **i** |  |
-| k | `k` | **K** OMA | Aspe **k** t | FLEC **k** |  |
-| l | `l` | **l** au | ähne **l** n | zuvie **l** |  |
-| m | `m` | **M** ut | A **m** t | Leh **m** |  |
-| n | `n` | **n** un | u **n** d | Okej **n** |  |
-| naturgas | `ŋ` | [<sup>7</sup>](#de-c-7)**ng** Uyen | Schwa **tomma** | R **ing** |  |
-| P | `p` | **P** Artner | abru **p** t | Ti **p** |  |
-| växling | `pf` | **PF**-ERD | damm-**PF** t | Till **PF** |  |
-| r | `ʀ`, `r`, `ʁ` | **R**-Eise | KNU-**resurspost** t | Haa **r** |  |
-| s | `s` | [<sup>8</sup>](#de-c-8)**S** taccato | BI **s** t | Mie **s** |  |
-| f | `ʃ` | **SCH** egel | mi **SCH** t | Lappi **SCH** |  |
-| t | `t` | **T**-Raum | S **t**-raße | MK **t** |  |
-| ts | `ts` | **Z** μg | Ar **z** t | Wit **z** |  |
-| ch | `tʃ` | **Tsch** echien | aufgepu **tsch** t | bundesdeu **tsch** |  |
-| v | `v` | **v**-Inken | Q **u** Alle | [<sup>9</sup>](#de-c-9) Gr **säkerhets** ve |  |
+| f | `f` | **F**-ahrtdauer | Angri **AA** slustig | abbruchrei **f** |  
+| g | `g` | **g** ut |  [<sup>6</sup>](#de-c-6) GRE **g** |  |
+| h | `h` | **H**-ausanbau |  |  | 
+| y | `j` | **J** OD | Reakt **i** | HU **i** | 
+| k | `k` | **K** OMA | Aspe **k** t | FLEC **k** | 
+| l | `l` | **l** au | ähne **l** n | zuvie **l** | 
+| m | `m` | **M** ut | A **m** t | Leh **m** | 
+| n | `n` | **n** un | u **n** d | Okej **n** | 
+| naturgas | `ŋ` | [<sup>7</sup>](#de-c-7)**ng** Uyen | Schwa **tomma** | R **ing** | 
+| P | `p` | **P** Artner | abru **p** t | Ti **p** | 
+| växling | `pf` | **PF**-ERD | damm-**PF** t | Till **PF** |
+| r | `ʀ`, `r`, `ʁ` | **R**-Eise | KNU-**resurspost** t | Haa **r** | 
+| s | `s` | [<sup>8</sup>](#de-c-8)**S** taccato | BI **s** t | Mie **s** | 
+| f | `ʃ` | **SCH** egel | mi **SCH** t | Lappi **SCH** | 
+| t | `t` | **T**-Raum | S **t**-raße | MK **t** | 
+| ts | `ts` | **Z** μg | Ar **z** t | Wit **z** | 
+| ch | `tʃ` | **Tsch** echien | aufgepu **tsch** t | bundesdeu **tsch** | 
+| v | `v` | **v**-Inken | Q **u** Alle | [<sup>9</sup>](#de-c-9) Gr **säkerhets** ve | 
 | x | [<sup>10</sup>](#de-c-10) `x` ,[<sup>11</sup>](#de-c-11)`ç` | [<sup>12</sup>](#de-c-12) BA **CH** erach | Ma **-** t mögli **CH** St | Schma **CH**  |
-| z | `z` | **s** uper |  |  |  |
+| z | `z` | **s** uper |  |  | 
 | zh | `ʒ` | **G** enre | B **re**-ezinski | Edvi **g** e |
 
 <a id="de-c-1"></a>

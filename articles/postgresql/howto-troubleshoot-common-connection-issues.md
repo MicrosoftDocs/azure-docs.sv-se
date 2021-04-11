@@ -2,17 +2,18 @@
 title: Felsöka anslutningar – Azure Database for PostgreSQL-enskild server
 description: Lär dig hur du felsöker anslutnings problem till Azure Database for PostgreSQL-enskild server.
 keywords: postgresql anslutning, anslutnings sträng, anslutnings problem, tillfälligt fel, anslutnings fel
-author: niklarin
-ms.author: nlarin
+author: sunilagarwal
+ms.author: sunila
+ms.reviewer: ''
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: bff930153dc8941fbfe561edf963d5b1c1e7811f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7fe8c4b751be174a91a0e2e94991bc63b4b1e5c7
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96014626"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504251"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Felsöka anslutnings problem till Azure Database for PostgreSQL-enskild server
 
@@ -47,10 +48,10 @@ Tillfälliga fel uppstår när underhåll utförs, ett fel uppstår i systemet m
 Om programmet inte kan ansluta till Azure Database for PostgreSQL, indikerar det vanligt vis ett problem med något av följande:
 
 * Konfiguration av Server brand vägg: kontrol lera att Azure Database for PostgreSQL Server-brandväggen är konfigurerad för att tillåta anslutningar från klienten, inklusive proxyservrar och gatewayer.
-* Konfiguration av klient brand väggen: brand väggen på klienten måste tillåta anslutningar till din databas server. IP-adresser och portar på den server som du inte kan tillåta måste vara tillåtna samt program namn som PostgreSQL i vissa brand väggar.
+* Konfiguration av klient brand väggen: brand väggen på klienten måste tillåta anslutningar till din databas server. IP-adresser och portar för den server som du inte kan ansluta till måste vara tillåtna och program namn som PostgreSQL i vissa brand väggar.
 * Användar fel: du kan ange anslutnings parametrar som inte har angetts, till exempel Server namnet i anslutnings strängen eller ett *\@ servername* -suffix som saknas i användar namnet.
-* Om fel _servern inte har kon figurer ATS för att tillåta IPv6-anslutningar_, Observera att den grundläggande nivån inte stöder slut punkter för VNet-tjänster. Du måste ta bort Microsoft. SQL-slutpunkten från det undernät som försöker ansluta till den grundläggande servern.
-* Om du ser fel meddelandet _sslmode "* * *" som är ogiltigt när SSL-stöd inte har kompilerats_ , innebär det att din postgresql-klient inte stöder SSL. Det vanligaste är att libpq på klient sidan inte har kompilerats med flaggan "--with-openssl". Försök att ansluta till en PostgreSQL-klient som har SSL-stöd. 
+* Om fel _servern inte har kon figurer ATS för att tillåta IPv6-anslutningar_ noterar du att Basic-nivån inte stöder slut punkter för VNet-tjänsten. Du måste ta bort Microsoft. SQL-slutpunkten från det undernät som försöker ansluta till den grundläggande servern.
+* Om du ser fel meddelandet _sslmode "* * *" som är ogiltigt när SSL-stöd inte har kompilerats_ , innebär det att din postgresql-klient inte stöder SSL. Oftast har klient sidans libpq inte kompilerats med flaggan "--with-openssl". Försök att ansluta till en PostgreSQL-klient som har SSL-stöd. 
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Steg för att lösa problem med beständiga anslutningar
 

@@ -3,16 +3,16 @@ title: Konfigurera NSX Network-komponenter i Azure VMware-lösningen
 description: Lär dig hur du konfigurerar NSX-T-nätverksanslutningar med hjälp av Azure VMware Solution-konsolen.
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: 0478582a9bc4fb77a1784c27ec4f5c302d6b89fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a4702efe8ea26234d074f421d2e6eab871eba5f5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101716996"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105733146"
 ---
 # <a name="configure-nsx-network-components-in-azure-vmware-solution"></a>Konfigurera NSX Network-komponenter i Azure VMware-lösningen
 
-Ett privat moln i Azure VMware-lösningen levereras med NSX-T som en SDDC (Software Defined Network) som standard. Det levereras i förväg med en NSX-T-nivå-0-gateway i aktivt/aktivt läge och en standard-T--nivå – 1-gateway i aktivt/vänte läge.  Med dessa gatewayer kan du ansluta segmenten (logiska växlar) och ange East-West och North-South anslutning. 
+Ett privat moln i Azure VMware-lösningen levereras med NSX-T som en SDDC (Software Defined Network) som standard. Det levereras i förväg med en NSX-T-nivå-0-gateway i **aktivt/aktivt** läge och en standard-t--nivå – 1-gateway i aktivt/vänte läge.  Med dessa gatewayer kan du ansluta segmenten (logiska växlar) och ange East-West och North-South anslutning. 
 
 När det privata molnet för Azure VMware-lösningen har distribuerats kan du konfigurera de nödvändiga NSX-T-objekten från Azure VMware Solution-konsolen under **arbets belastnings nätverk**.  Konsolen visar den förenklade vyn av NSX-T-åtgärder som en VMware-administratör behöver dagligen och riktas mot användare som inte är bekanta med NSX-T.  
 

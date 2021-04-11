@@ -3,12 +3,12 @@ title: Hantera container Insights-agenten | Microsoft Docs
 description: Den här artikeln beskriver hur du hanterar de vanligaste underhålls aktiviteterna med den container Log Analytics-agent som används av behållar insikter.
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: 2a0c32ef797a953eca794e16fe0ace5e967f339f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b485f4d49f0dd80f712d96779098c26be3f6de1
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101713804"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442583"
 ---
 # <a name="how-to-manage-the-container-insights-agent"></a>Hantera container Insights-agenten
 
@@ -79,21 +79,6 @@ curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
 export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
 bash upgrade-monitoring.sh --resource-id $ azureAroV4ClusterResourceId
 ```
-
-Information om hur du använder ett huvud namn för tjänsten med det här kommandot finns i **använda tjänstens huvud namn** i [Aktivera övervakning av Azure Arc-aktiverade Kubernetes-kluster](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script) .
-
-### <a name="upgrade-agent-on-azure-arc-enabled-kubernetes"></a>Uppgradera agenten på Azure Arc-aktiverade Kubernetes
-
-Utför följande kommando för att uppgradera agenten på ett Azure Arc-aktiverat Kubernetes-kluster.
-
-```console
-curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
-export azureArcClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
-bash upgrade-monitoring.sh --resource-id $azureArcClusterResourceId
-```
-
-Information om hur du använder ett huvud namn för tjänsten med det här kommandot finns i **använda tjänstens huvud namn** i [Aktivera övervakning av Azure Arc-aktiverade Kubernetes-kluster](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script) .
-
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Så här inaktiverar du miljö variabel samling på en behållare
 
