@@ -8,19 +8,30 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 48e823b19c1c6d30e73a7a673cbeab82a4d007a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: a40f3286b4e832f5c73e650859fa9a1d4fe4b6cb
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489227"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256964"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Anpassad e-postverifiering med MailJet
 
-Använd anpassad e-post i Azure Active Directory B2C (Azure AD B2C) för att skicka anpassat e-postmeddelande till användare som registrerar sig för att använda dina program. Genom att använda [DisplayControls](display-controls.md) (för närvarande i för hands version) och e-postprovidern från tredje part kan du använda din egen e-postmall och *från:* adress och ämne, samt stöd för lokalisering och anpassad eng ång slö sen ord.
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+Använd anpassad e-post i Azure Active Directory B2C (Azure AD B2C) för att skicka anpassat e-postmeddelande till användare som registrerar sig för att använda dina program. Genom att använda en e-MailJet från tredje part kan du använda din egen e-postmall och *från:* adress och ämne, samt stöd för lokalisering och anpassad eng ång slö sen ord.
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Anpassad e-postverifiering kräver att en e-postleverantör från tredje part används, t. ex. [MailJet](https://Mailjet.com), [SendGrid](./custom-email-sendgrid.md)eller [Spark post](https://sparkpost.com), en anpassad REST API eller någon http-baserad e-postprovider (inklusive din egen). I den här artikeln beskrivs hur du konfigurerar en lösning som använder MailJet.
 
@@ -576,3 +587,5 @@ Du hittar ett exempel på en anpassad princip för e-postverifiering på GitHub:
 
 - [Anpassad e-postverifiering – DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
 - Information om hur du använder en anpassad REST API eller en HTTP-baserad SMTP e-postprovider finns i [definiera en RESTful teknisk profil i en Azure AD B2C anpassad princip](restful-technical-profile.md).
+
+::: zone-end

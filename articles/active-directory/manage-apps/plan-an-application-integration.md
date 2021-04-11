@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/19/2021
+ms.date: 04/05/2021
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: de06bb4f97568eaa40b0b09e9bc2b50608424aa8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2873f3946b5b3c7eed5a3ba1cde702670040c41a
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775603"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443465"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Att integrera Azure Active Directory med program komma igång-guide
 
@@ -73,7 +73,7 @@ Du kan lägga till alla program som redan finns i din organisation eller program
 - Självbetjänings integrering av alla program som stöder [Security Assertion Markup Language (SAML) 2,0](https://wikipedia.org/wiki/SAML_2.0) identitets leverantörer (SP-initierad eller IDP-initierad)
 - Självbetjänings integrering av alla webb program som har en HTML-baserad inloggnings sida med [LÖSENORDSBASERAD SSO](sso-options.md#password-based-sso)
 - Anslutning via självbetjäning för program som använder [systemet för scim-protokoll (Cross-Domain Identity Management) för användar etablering](../app-provisioning/use-scim-to-provision-users-and-groups.md)
-- Möjlighet att lägga till länkar till ett program i [Office 365-appen starta](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) eller [Mina appar](sso-options.md#linked-sign-on)
+- Möjlighet att lägga till länkar till ett program i [Office 365-appen starta](https://support.microsoft.com/office/meet-the-microsoft-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) eller [Mina appar](https://myapplications.microsoft.com/)
 
 Om du vill ha råd om utvecklare om hur du integrerar anpassade appar med Azure AD, se [autentiserings scenarier för Azure AD](../develop/authentication-vs-authorization.md). När du utvecklar en app som använder ett modernt protokoll som [OpenID Connect/OAuth](../develop/active-directory-v2-protocols.md) för att autentisera användare, kan du registrera den med Microsoft Identity Platform genom att använda [Appregistreringar](../develop/quickstart-register-app.md) upplevelse i Azure Portal.
 

@@ -4,20 +4,20 @@ description: Den här informationen förklarar varför du bör uppgradera Azure 
 services: backup
 cloud: ''
 suite: ''
-author: dcurwin
+author: v-amallick
 manager: carmonm
 ms.service: backup
 ms.tgt_pltfrm: <optional>
 ms.devlang: <optional>
 ms.topic: article
 ms.date: 03/03/2020
-ms.author: dacurwin
-ms.openlocfilehash: bd298f758d6109b908db01dd2ae3b97e5e2f714a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: v-amallick
+ms.openlocfilehash: bf77103db93652e1df837f6b1032b5e53bd41e1f
+ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "78673198"
+ms.lasthandoff: 04/04/2021
+ms.locfileid: "106294140"
 ---
 ## <a name="upgrade-the-mars-agent"></a>Uppgradera MARS-agenten
 

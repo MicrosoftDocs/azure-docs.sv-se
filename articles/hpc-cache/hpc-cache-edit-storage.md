@@ -4,14 +4,14 @@ description: Redigera lagrings mål för Azure HPC cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 03/29/2021
 ms.author: v-erkel
-ms.openlocfilehash: 0c505937d4adbe2596e91ed7269676e60ada8253
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d61612b6e491fae550559e499cb360efc0f7c044
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772607"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258919"
 ---
 # <a name="edit-storage-targets"></a>Redigera lagringsmål
 
@@ -152,7 +152,10 @@ az hpc-cache nfs-storage-target update --cache-name mycache \
 
 ### <a name="change-the-usage-model"></a>Ändra användnings modellen
 
-Användnings modellen påverkar hur cachen behåller data. Läs [Välj en användnings modell](hpc-cache-add-storage.md#choose-a-usage-model) om du vill veta mer.
+Användnings modellen påverkar hur cachen behåller data. Läs mer i avsnittet om [användnings modeller för cache](cache-usage-models.md) .
+
+> [!NOTE]
+> Om du ändrar användnings modeller kan du behöva montera om klienter för att undvika NLM-fel. Läs [om hur du ommonterar klienter för att se](cache-usage-models.md#know-when-to-remount-clients-for-nlm) mer information.
 
 Använd någon av dessa metoder för att ändra användnings modellen för ett NFS-lagrings mål.
 

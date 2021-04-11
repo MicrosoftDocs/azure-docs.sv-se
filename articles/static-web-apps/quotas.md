@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 1bf9a2cf7af8b18994ef2473c11176b8aea74f6e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e3538e90a6dea69c703f56871fde86a18557a022
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042733"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095177"
 ---
 # <a name="quotas-in-azure-static-web-apps-preview"></a>Kvoter i för hands versionen av Azure statisk Web Apps
 
@@ -29,7 +29,7 @@ Följande kvoter finns för för hands versionen av Azure static Web Apps.
 | App-storlek                    | 250 MB           |
 | Förproduktionsmiljöer | 3                |
 | Anpassade domäner              | 1                |
-| Auktorisering<br><br>Med anpassade roller och regler för routning | Högst 25 slutanvändare som har bjudits in och tilldelats roller |
+| Auktorisering (med anpassade roller och regler för routning) | Högst 25 slutanvändare som kan tillhöra anpassade roller |
 | Azure Functions             | Tillgänglig        |
 | SLA                         | Inget             |
 

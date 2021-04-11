@@ -3,12 +3,12 @@ title: Så här skyddar du din resurs-hierarki – Azure-styrning
 description: Lär dig hur du skyddar din resurs-hierarki med hierarkiska inställningar som inkluderar inställning av standard hanterings gruppen.
 ms.date: 02/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0f0afb5401fc646d26598a211604790af191f156
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d13a0235152046eff2585da170d5fba0e9d3b09
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594594"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259089"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Så här skyddar du din resurs-hierarki
 
@@ -50,7 +50,7 @@ Följ dessa steg om du vill konfigurera den här inställningen i Azure Portal:
 
 ### <a name="set-default-management-group-with-rest-api"></a>Ange standard hanterings grupp med REST API
 
-Om du vill konfigurera den här inställningen med REST API, anropas slut punkten för [hierarki inställningar](/rest/api/resources/hierarchysettings) . Det gör du genom att använda följande REST API URI-och Body-format. Ersätt `{rootMgID}` med ID för din rot hanterings grupp och `{defaultGroupID}` med ID för hanterings gruppen som ska vara standard hanterings grupp:
+Om du vill konfigurera den här inställningen med REST API, anropas slut punkten för [hierarki inställningar](/rest/api/managementgroups/hierarchysettings) . Det gör du genom att använda följande REST API URI-och Body-format. Ersätt `{rootMgID}` med ID för din rot hanterings grupp och `{defaultGroupID}` med ID för hanterings gruppen som ska vara standard hanterings grupp:
 
 - REST API-URI
 
@@ -91,7 +91,7 @@ Följ dessa steg om du vill konfigurera den här inställningen i Azure Portal:
 
 ### <a name="set-require-authorization-with-rest-api"></a>Ange Kräv auktorisering med REST API
 
-Om du vill konfigurera den här inställningen med REST API, anropas slut punkten för [hierarki inställningar](/rest/api/resources/hierarchysettings) . Det gör du genom att använda följande REST API URI-och Body-format. Värdet är ett _booleskt_ värde, så ange antingen **Sant** eller **falskt** för värdet. Värdet **True** aktiverar den här metoden för att skydda din hanterings grupp hierarki:
+Om du vill konfigurera den här inställningen med REST API, anropas slut punkten för [hierarki inställningar](/rest/api/managementgroups/hierarchysettings) . Det gör du genom att använda följande REST API URI-och Body-format. Värdet är ett _booleskt_ värde, så ange antingen **Sant** eller **falskt** för värdet. Värdet **True** aktiverar den här metoden för att skydda din hanterings grupp hierarki:
 
 - REST API-URI
 

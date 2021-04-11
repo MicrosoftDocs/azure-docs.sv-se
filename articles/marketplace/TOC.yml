@@ -5,21 +5,39 @@
   href: overview.md
 - name: Kontohantering
   items:
-    - name: Skapa ett nytt Partnercenter-konto
-      href: partner-center-portal/create-account.md
-    - name: Hantera ditt konto
-      href: partner-center-portal/manage-account.md
-    - name: Hitta eller skapa ett arbetskonto för företag
-      href: partner-center-portal/company-work-accounts.md
-    - name: Kontomigrering från CPP till Partner-centrum
-      href: partner-center-portal/account-migration-from-cpp-to-pc.md
-    - name: Meddela Microsoft
-      href: submit-legal-notice.md
+    - name: Allmän kontohantering
+      items:
+        - name: Skapa ett nytt Partnercenter-konto
+          href: create-account.md
+        - name: Lägg till nya utgivare
+          href: add-publishers.md
+        - name: Hantera ditt konto
+          href: manage-account.md
+        - name: Växla konton
+          href: switch-accounts.md
+        - name: Hantera klienter
+          href: manage-tenants.md
+        - name: Hitta eller skapa ett arbetskonto för företag
+          href: company-work-accounts.md
+        - name: Kontomigrering från CPP till Partner-centrum
+          href: account-migration-from-cpp-to-pc.md
+        - name: Meddela Microsoft
+          href: submit-legal-notice.md
+    - name: Hantera användare
+      items:
+        - name: Lägga till och hantera användare
+          href: add-manage-users.md
+        - name: Tilldela användar roller
+          href: user-roles.md
+        - name: Hantera grupper
+          href: manage-groups.md
+        - name: Lägga till och hantera Azure AD-program
+          href: manage-aad-apps.md
 - name: Begrepp
   items:
     - name: Listalternativ
       href: determine-your-listing-type.md
-    - name: Göra transaktioner på den kommersiella marknadsplatsen
+    - name: Transact-funktioner
       href: marketplace-commercial-transaction-capabilities-and-considerations.md
     - name: Privata erbjudanden
       href: private-offers.md

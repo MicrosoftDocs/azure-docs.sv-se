@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: e89cb847bcd5d0137354c07fe97148bcbeca2714
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: af365ef9b94702fa6634235a95a91297d6b7ae50
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786302"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107138"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Uttryck och funktioner i Azure Data Factory
 
@@ -161,6 +161,30 @@ I följande exempel använder pipelinen **inputPath** -och **outputPath** -param
     }
 }
 ```
+
+### <a name="replacing-special-characters"></a>Ersätta specialtecken
+
+Redigeraren för dynamiskt innehåll utsätter automatiskt tecken som dubbelt citat tecken, omvänt snedstreck i innehållet när du är klar med redigeringen. Detta orsakar problem om du vill ersätta rad matningen eller tabb med hjälp av funktionen **\n**, **\t** i replace (). Du kan redigera ditt dynamiska innehåll i kodvyn för att ta bort det extra \ i uttrycket, eller så kan du följa stegen nedan för att ersätta specialtecken med uttrycks språk:
+
+1. URL-kodning mot ursprungligt sträng värde
+1. Ersätt URL-kodad sträng, till exempel rad matning (% 0A), vagn retur (% 0D), vågrät TABB (%09).
+1. URL-avkodning
+
+Exempel: variabel *företags namn* med ett rad matnings värde i sitt värde `@uriComponentToString(replace(uriComponent(variables('companyName')), '%0A', ''))` . uttrycket kan ta bort rad matnings tecknet. 
+
+```json
+Contoso-
+Corporation
+```
+
+### <a name="escaping-single-quote-character"></a>Hoppar över enkelt citat tecken
+
+Uttrycks funktioner använder enkla citat tecken för sträng värdes parametrar. Använd två enkla citat tecken för att escapea ett tecken i sträng funktioner. Uttrycket returnerar till exempel `@concat('Baba', ''' ', 'book store')` resultatet nedan.
+
+```
+Baba's book store
+```
+
 ### <a name="tutorial"></a>Självstudie
 Den här [självstudien](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf) vägleder dig genom hur du skickar parametrar mellan en pipeline och aktivitet samt mellan aktiviteterna.
 

@@ -1,14 +1,14 @@
 ---
-title: 'Snabb start: Visuellt innehåll klient bibliotek'
+title: 'Snabb start: läsa klient bibliotek eller REST API'
 titleSuffix: Azure Cognitive Services
-description: Lär dig hur du använder Azure Visuellt innehåll i ditt program via ett inbyggt klient bibliotek på valfritt språk.
+description: Lär dig hur du använder OCR (optisk tecken läsning) i ditt program via ett inbyggt klient bibliotek på valfritt språk.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/15/2020
+ms.date: 03/21/2020
 ms.author: pafarley
 ms.custom:
 - devx-track-python
@@ -17,16 +17,16 @@ ms.custom:
 - cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-computer-vision
 keywords: dator vision, dator vision
-ms.openlocfilehash: 50976de4a60e5330740bcbf387d74c505316c0cf
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 865002fbc9e492b43b9c572468f722c85c6cc4b8
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560822"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284822"
 ---
-# <a name="quickstart-use-the-computer-vision-client-library"></a>Snabb start: Använd Visuellt innehåll klient bibliotek
+# <a name="quickstart-use-the-read-client-library-or-rest-api"></a>Snabb start: Använd läsa klient bibliotek eller REST API
 
-Kom igång med Visuellt innehåll REST API-eller klient bibliotek. Visuellt innehålls tjänsten innehåller AI-algoritmer för bearbetning av bilder och för att returnera information om deras visuella funktioner. Följ de här stegen för att installera ett paket i programmet och prova exempel koden för grundläggande uppgifter.
+Kom igång med läsa REST API-eller klient bibliotek. Läs tjänsten innehåller AI-algoritmer för att extrahera synlig text från bilder och returnera den som strukturerad sträng. Följ de här stegen för att installera ett paket i programmet och prova exempel koden för grundläggande uppgifter.
 
 
 

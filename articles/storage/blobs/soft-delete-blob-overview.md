@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/27/2021
+ms.date: 04/08/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c0cc29e6cbc9be1e7683b1b4412fa47f71c0538d
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: ef1ed584a609b2e4baa27111e47343df99146f5a
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227032"
+ms.locfileid: "107257508"
 ---
 # <a name="soft-delete-for-blobs"></a>Mjuk borttagning för blobar
 
@@ -93,12 +93,14 @@ Mer information om hur du återställer mjuka borttagna objekt finns i [Hantera 
 
 ## <a name="blob-soft-delete-and-versioning"></a>BLOB-mjuk borttagning och versions hantering
 
-Om BLOB-versioner och mjuk borttagning av BLOB båda är aktiverade för ett lagrings konto skapas en ny version av en BLOB automatiskt. Den nya versionen är inte mjuk och tas inte bort när kvarhållningsperioden för mjuk borttagning upphör att gälla. Inga borttagnings bara ögonblicks bilder har skapats. När du tar bort en BLOB blir den aktuella versionen av blobben en tidigare version och den aktuella versionen tas bort. Ingen ny version skapas och inga ögonblicks bilder av mjuka rader skapas.
+Om BLOB-versioner och mjuk borttagning av BLOB båda är aktiverade för ett lagrings konto skapas en ny version av en BLOB automatiskt. Den nya versionen är inte mjuk och tas inte bort när kvarhållningsperioden för mjuk borttagning upphör att gälla. Inga borttagnings bara ögonblicks bilder har skapats. När du tar bort en BLOB blir den aktuella versionen av blobben en tidigare version och det finns inte längre en aktuell version. Ingen ny version skapas och inga ögonblicks bilder av mjuka rader skapas.
 
-Att aktivera mjuk borttagning och versioner tillsammans skyddar BLOB-versioner från borttagning. När mjuk borttagning är aktiverat skapar en version av en version som tar bort en mjuk borttagning. Du kan använda åtgärden **ta bort BLOB** för att återställa en mjuk, borttagen version så länge det finns en aktuell version av blobben. Om det inte finns någon aktuell version måste du kopiera en tidigare version till den aktuella versionen innan du anropar åtgärden **ta bort BLOB** .
+Att aktivera mjuk borttagning och versioner tillsammans skyddar BLOB-versioner från borttagning. När mjuk borttagning är aktiverat skapar en version av en version som tar bort en mjuk borttagning. Du kan använda åtgärden **ta bort BLOB** för att återställa mjuka borttagna versioner under perioden för kvarhållning av mjuk borttagning. Undelete- **BLOB** -åtgärden återställer alltid alla avsoft-borttagna versioner av blobben. Det går inte att återställa en enda mjuk borttagnings version.
+
+När tids perioden för mjuk borttagning har förflutit tas eventuella borttagna BLOB-versioner bort permanent.
 
 > [!NOTE]
-> Om du anropar åtgärden **ångra borttagning av BLOB** i en borttagen BLOB när versions hantering är aktive rad återställs alla borttagnings bara eller ögonblicks bilder, men inte bas-bloben. Om du vill återställa bas-bloben höjer du en tidigare version genom att kopiera den till bas-bloben.
+> Om du anropar åtgärden **ångra borttagning av BLOB** i en borttagen BLOB när versions hantering har Aktiver ATS återställs alla borttagnings bara eller ögonblicks bilder, men den aktuella versionen återställs inte. Om du vill återställa den aktuella versionen höjer du en tidigare version genom att kopiera den till den aktuella versionen.
 
 Microsoft rekommenderar att du aktiverar både versions-och blob-mjuk borttagning för dina lagrings konton för optimalt data skydd. Mer information om hur du använder BLOB-versioner och mjuk borttagning finns i [BLOB-versioner och mjuk borttagning](versioning-overview.md#blob-versioning-and-soft-delete).
 

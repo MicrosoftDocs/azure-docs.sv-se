@@ -12,18 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: 2cc9d3e0fb711a0662852ce4f2c5a08dc626f246
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b6104bcf68c720fa727d16e408a25adcba805aa
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96854741"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259582"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Skapa en NFS-volym för Azure NetApp Files
 
-Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB3 eller Dual Protocol (NFSv3 och SMB). En volyms kapacitetsförbrukning mäts mot dess pools etablerade kapacitet. Den här artikeln visar hur du skapar en NFS-volym. 
+Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB3 eller Dual Protocol (NFSv3 och SMB). En volyms kapacitetsförbrukning mäts mot dess pools etablerade kapacitet. 
+
+Den här artikeln visar hur du skapar en NFS-volym. För SMB-volymer, se [skapa en SMB-volym](azure-netapp-files-create-volumes-smb.md). För dubbla protokoll volymer, se [skapa en volym med dubbla protokoll](create-volumes-dual-protocol.md).
 
 ## <a name="before-you-begin"></a>Innan du börjar 
 * Du måste redan ha konfigurerat en kapacitetspool.  
@@ -112,6 +114,8 @@ Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB
 
         Ytterligare konfigurationer krävs om du använder Kerberos med NFSv 4.1. Följ anvisningarna i [Konfigurera nfsv 4.1 Kerberos-kryptering](configure-kerberos-encryption.md).
 
+    * Om du vill aktivera Active Directory LDAP-användare och utökade grupper (upp till 1024 grupper) för att få åtkomst till volymen väljer du alternativet **LDAP** . Följ anvisningarna i [Konfigurera lägger till LDAP med utökade grupper för NFS-volym åtkomst](configure-ldap-extended-groups.md) för att slutföra de konfigurationer som krävs. 
+ 
     * Du kan också [Konfigurera export princip för NFS-volymen](azure-netapp-files-configure-export-policy.md).
 
     ![Ange NFS-protokoll](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
@@ -127,6 +131,7 @@ Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB
 
 * [Konfigurera NFSv4.1-standarddomän för Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
 * [Konfigurera NFSv4.1 Kerberos-kryptering](configure-kerberos-encryption.md)
+* [Konfigurera lägger till LDAP med utökade grupper för NFS-volym åtkomst](configure-ldap-extended-groups.md)
 * [Montera eller demontera en volym för virtuella Windows- eller Linux-datorer](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Konfigurera exportprincipen för en NFS-volym](azure-netapp-files-configure-export-policy.md)
 * [Resursbegränsningar för Azure NetApp Files](azure-netapp-files-resource-limits.md)

@@ -9,12 +9,12 @@ ms.reviewer: ''
 ms.date: 03/08/2021
 author: ruixinxu
 ms.author: ruxu
-ms.openlocfilehash: 928e2ef8b373626a91a291b1798f3ebb7ef290e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5258d8f16e288e7df7e1286eb1902cc6ba6d10f7
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608841"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227729"
 ---
 # <a name="tutorial-build-machine-learning-applications-using-microsoft-machine-learning-for-apache-spark-preview"></a>Självstudie: utveckla maskin inlärnings program med Microsoft Machine Learning för Apache Spark (för hands version)
 
@@ -23,7 +23,7 @@ Synapse Spark tillhandahåller inbyggda MMLSpark-bibliotek inklusive:
 
 - [Vowpal Wabbit](https://github.com/Azure/mmlspark/blob/master/docs/vw.md) – biblioteks tjänster för maskin inlärning för att aktivera text analys som sentiment-analys i tweets.
 - [Cognitive Services i Spark](https://github.com/Azure/mmlspark/blob/master/docs/cogsvc.md) – för att kombinera funktionen i Azure Cognitive Services i SparkML-pipeliner för att kunna härleda lösnings design för kognitiva data modellerings tjänster som avvikelse identifiering.
-- [LightBGM](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) – LightGBM är ett ramverk för tonings förstärkning som använder Tree based Learning-algoritmer. Den är utformad för att distribueras och högre effektivitet.
+- [LightGBM](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) – LightGBM är ett ramverk för tonings förstärkning som använder Tree based Learning-algoritmer. Den är utformad för att distribueras och högre effektivitet.
 - Villkorsstyrd KNN – skalbara KNN-modeller med villkorliga frågor.
 - [Http på Spark](https://github.com/Azure/mmlspark/blob/master/docs/http.md) – aktiverar distribuerade mikrotjänster-dirigering i integrerande Spark-och http-protokollbaserade hjälpmedel.
 

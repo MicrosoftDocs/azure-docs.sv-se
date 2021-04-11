@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: lokal, OCR, Docker, container
-ms.openlocfilehash: 1c9e681e3c02cb65b2a54070cc778051a0e7ac53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53d59822b378a658f8b6c048de1a32db53a795d1
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102432561"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285730"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Installera Läs OCR Docker-behållare (förhands granskning) 
 
@@ -25,7 +25,7 @@ ms.locfileid: "102432561"
 
 Med containrar kan du köra API:erna för Visuellt innehåll i din egen miljö. Containrar är bra för specifika säkerhets- och datastyrningskrav. I den här artikeln får du lära dig hur du laddar ned, installerar och kör Visuellt innehåll behållare.
 
-Med *Read* OCR-behållaren kan du extrahera utskrift och handskriven text från bilder och dokument med stöd för JPEG-, PNG-, BMP-, PDF-och TIFF-filformat. Mer information finns i [Read API-dokumentationen](concept-recognizing-text.md#read-api).
+Med *Read* OCR-behållaren kan du extrahera utskrift och handskriven text från bilder och dokument med stöd för JPEG-, PNG-, BMP-, PDF-och TIFF-filformat. Mer information finns i [instruktionen Read API instruktion](Vision-API-How-to-Topics/call-read-api.md).
 
 ## <a name="read-32-preview-container"></a>Läsa 3,2 – för hands versions behållare
 
@@ -96,7 +96,7 @@ Behållar avbildningar för läsning är tillgängliga.
 
 Använd [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) kommandot för att ladda ned en behållar avbildning.
 
-### <a name="docker-pull-for-the-read-container"></a>Docker pull för Läs behållaren
+### <a name="docker-pull-for-the-read-ocr-container"></a>Docker pull för Read OCR-behållare
 
 # <a name="version-32-preview"></a>[Version 3,2 – för hands version](#tab/version-3-2)
 
@@ -139,7 +139,7 @@ ApiKey={API_KEY}
 
 Det här kommandot:
 
-* Kör Läs containern från behållar avbildningen.
+* Kör Read OCR-behållaren från behållar avbildningen.
 * Allokerar 8 processor kärnor och 18 GB minne.
 * Exponerar TCP-port 5000 och allokerar en pseudo-TTY för behållaren.
 * Tar automatiskt bort behållaren när den har avslut ATS. Behållar avbildningen är fortfarande tillgänglig på värddatorn.
@@ -156,7 +156,7 @@ ApiKey={API_KEY}
 
 Det här kommandot:
 
-* Kör Läs containern från behållar avbildningen.
+* Kör Read OCR-behållaren från behållar avbildningen.
 * Allokerar 8 processor kärnor och 16 GB minne.
 * Exponerar TCP-port 5000 och allokerar en pseudo-TTY för behållaren.
 * Tar automatiskt bort behållaren när den har avslut ATS. Behållar avbildningen är fortfarande tillgänglig på värddatorn.
@@ -392,7 +392,7 @@ När det asynkrona inlägget har körts returneras en status kod för **HTTP 202
 ---
 
 > [!IMPORTANT]
-> Om du distribuerar flera Läs behållare bakom en belastningsutjämnare, till exempel, under Docker Compose eller Kubernetes, måste du ha ett externt cacheminne. Eftersom bearbetnings behållaren och behållaren GET Request inte kan vara samma, lagrar ett externt cacheminne resultaten och delar över behållare. Mer information om cacheinställningar finns i [konfigurera visuellt innehåll Docker-behållare](./computer-vision-resource-container-config.md).
+> Om du distribuerar flera Läs OCR-behållare bakom en belastningsutjämnare, till exempel, under Docker Compose eller Kubernetes, måste du ha ett externt cacheminne. Eftersom bearbetnings behållaren och behållaren GET Request inte kan vara samma, lagrar ett externt cacheminne resultaten och delar över behållare. Mer information om cacheinställningar finns i [konfigurera visuellt innehåll Docker-behållare](./computer-vision-resource-container-config.md).
 
 ### <a name="synchronous-read"></a>Synkron läsning
 
@@ -445,7 +445,7 @@ I den här artikeln har du lärt dig begrepp och arbets flöde för att ladda ne
 * Visuellt innehåll tillhandahåller en Linux-behållare för Docker, inkapsling av läsa.
 * Behållar avbildningar laddas ned från behållar förhands gransknings registret i Azure.
 * Behållar avbildningar körs i Docker.
-* Du kan använda antingen REST API eller SDK för att anropa åtgärder i Read containers genom att ange värd-URI för behållaren.
+* Du kan använda antingen REST API eller SDK för att anropa åtgärder i Read OCR-behållare genom att ange behållarens värd-URI.
 * Du måste ange fakturerings information när du instansierar en behållare.
 
 > [!IMPORTANT]
@@ -454,7 +454,7 @@ I den här artikeln har du lärt dig begrepp och arbets flöde för att ladda ne
 ## <a name="next-steps"></a>Nästa steg
 
 * Granska [Konfigurera behållare](computer-vision-resource-container-config.md) för konfigurations inställningar
-* Läs [visuellt innehåll översikt](overview.md) och lär dig mer om att känna igen utskrift och handskriven text
-* Mer information om de metoder som stöds av behållaren finns i [API för visuellt innehåll](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) .
+* Läs [översikten över OCR](overview-ocr.md) för att lära dig mer om hur du tolkar tryckt och handskriven text
+* Mer information om de metoder som stöds av behållaren finns i [Read API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) .
 * Läs vanliga [frågor och svar (FAQ)](FAQ.md) för att lösa problem som rör visuellt innehåll-funktioner.
 * Använd fler [Cognitive Services behållare](../cognitive-services-container-support.md)

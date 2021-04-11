@@ -45,6 +45,9 @@ items:
       - name: 9 Utforska kunskapscentret
         href: get-started-knowledge-center.md
         displayName: 'get, started'
+      - name: 10 lägga till en administratör
+        href: get-started-add-admin.md
+        displayName: 'get, started'
   - name: Arbetsyta
     items:
       - name: Snabbstarter
@@ -565,6 +568,8 @@ items:
             href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
           - name: Övervaka Apache Spark mått på program nivå med Prometheus och Grafana
             href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
+          - name: Använd Azure Log Analytics för att samla in och visualisera mått och loggar (för hands version)
+            href: ./spark/apache-spark-azure-log-analytics.md
       - name: Begrepp
         items:
           - name: Apache Spark

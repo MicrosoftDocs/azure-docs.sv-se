@@ -6,15 +6,15 @@ metadata:
   description: Azure Backup tillhandahåller enkla, säkra och kostnadseffektiva lösningar för att säkerhetskopiera dina data och återställa dem från Microsoft Azure-molnet.
   ms.service: backup
   ms.topic: landing-page
-  author: dcurwin
-  ms.author: dacurwin
+  author: v-amallick
+  ms.author: v-amallick
   ms.date: 12/01/2019
-  ms.openlocfilehash: f6a601aa1b180aa10df3b1486c1e47a3c6269490
-  ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+  ms.openlocfilehash: 0ad0f1aec1ce4e0718952d82d08672df42924f51
+  ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 03/27/2021
-  ms.locfileid: "105629095"
+  ms.lasthandoff: 04/04/2021
+  ms.locfileid: "106293625"
 landingContent:
 - title: Läs mer om Azure Backup
   linkLists:

@@ -8,14 +8,17 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: c3218d8781377e76f05d10a8da2c954ac0b685a7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3059d88c9894ba50a608afaf1cb23367dfaf089c
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641990"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259463"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Använda Azure Firewall för att kontrollera trafik till en privat slutpunkt
+
+> [!NOTE]
+> Om du vill skydda trafik till privata slut punkter i Azure Virtual WAN med hjälp av säker virtuell hubb, se [säker trafik som är avsedd för privata slut punkter i Azure Virtual WAN](../firewall-manager/private-link-inspection-secure-virtual-hub.md).
 
 Den privata Azure-slutpunkten är det grundläggande Bygg blocket för Azures privata länk. Privata slut punkter gör det möjligt för Azure-resurser som distribuerats i ett virtuellt nätverk att kommunicera privat med privata länk resurser.
 

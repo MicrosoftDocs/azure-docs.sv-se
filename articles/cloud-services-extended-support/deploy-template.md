@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 9849648c8a0a76ff89a6f95e64eeade791e7135c
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 8804febe81afc79a4a7eadb56e8350e758ea38ba
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106381782"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105518"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Distribuera en moln tjänst (utökad support) med ARM-mallar
 
@@ -25,14 +25,12 @@ I den här självstudien beskrivs hur du skapar en moln tjänst (utökad support
 
 2. Skapa en ny resurs grupp med hjälp av [Azure Portal](../azure-resource-manager/management/manage-resource-groups-portal.md) eller [PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md). Det här steget är valfritt om du använder en befintlig resurs grupp.
 
-3. Skapa en offentlig IP-adress och ange egenskapen DNS-etikett för den offentliga IP-adressen. Cloud Services (utökad support) stöder bara [Basic] ( https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU offentliga IP-adresser. Standard-SKU offentliga IP-adresser fungerar inte med Cloud Services.
+3. Skapa en offentlig IP-adress och ange egenskapen DNS-etikett för den offentliga IP-adressen. Cloud Services (utökad support) stöder endast [grundläggande](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) offentliga IP-adresser för SKU. Standard-SKU offentliga IP-adresser fungerar inte med Cloud Services.
 Om du använder en statisk IP-adress måste den refereras som en Reserverad IP i tjänst konfigurations filen (. cscfg). Om du använder en befintlig IP-adress hoppar du över det här steget och lägger till information om IP-adressen direkt i konfigurations inställningarna för belastningsutjämnaren i ARM-mallen.
-
-4. Skapa ett nätverks profil objekt och koppla den offentliga IP-adressen till belastningsutjämnarens klient del. Azure-plattformen skapar automatiskt en klassisk "SKU"-belastnings Utjämnings resurs i samma prenumeration som moln tjänst resursen. Belastnings Utjämnings resursen är en skrivskyddad resurs i ARM. Alla uppdateringar av resursen stöds endast via Cloud Service-distributionspaket (. cscfg &. csdef)
  
-5. Skapa ett nytt lagrings konto med hjälp av [Azure Portal](../storage/common/storage-account-create.md?tabs=azure-portal) eller [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell). Det här steget är valfritt om du använder ett befintligt lagrings konto.
+4. Skapa ett nytt lagrings konto med hjälp av [Azure Portal](../storage/common/storage-account-create.md?tabs=azure-portal) eller [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell). Det här steget är valfritt om du använder ett befintligt lagrings konto.
 
-6. Överför dina tjänst definitions-(. csdef) och tjänst konfigurations filer (. cscfg) till lagrings kontot med hjälp av [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) eller [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container). Hämta SAS-URI: er för båda filerna som ska läggas till i ARM-mallen senare i den här självstudien.
+5. Överför dina tjänst definitions-(. csdef) och tjänst konfigurations filer (. cscfg) till lagrings kontot med hjälp av [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), [AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) eller [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container). Hämta SAS-URI: er för båda filerna som ska läggas till i ARM-mallen senare i den här självstudien.
 
 6. Valfritt Skapa ett nyckel valv och ladda upp certifikaten.
 

@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: 3e4b4fc3d4a6c9529c7c0ac0daef8a28173e0bf3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e08fe67dece02b936aa3a22e9cac58d809f19f46
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99225351"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285691"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Transaktionell replikering med Azure SQL-hanterad instans (för hands version)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -154,7 +154,7 @@ I den här konfigurationen är en databas i Azure SQL Database eller Azure SQL-h
 
 [Aktiv geo-replikering](../database/active-geo-replication-overview.md) stöds inte med en SQL-hanterad instans med transaktionell replikering. I stället för aktiv geo-replikering använder du [grupper för automatisk redundans](../database/auto-failover-group-overview.md), men Observera att publikationen måste [tas bort manuellt](transact-sql-tsql-differences-sql-server.md#replication) från den primära hanterade instansen och sedan återskapas på den sekundära SQL-hanterade instansen efter redundansväxlingen.
 
-Om geo-replikering har Aktiver ATS för en **utgivare** eller **distributör** av SQL-hanterad instans i en [grupp för växling vid fel](../database/auto-failover-group-overview.md), måste SQL-hanterad instans administratör rensa alla publikationer på den gamla primären och konfigurera om dem på den nya primära efter en redundansväxling. Följande aktiviteter behövs i det här scenariot:
+Om en **utgivare** eller **distributör** av SQL-hanterad instans finns i en [failover-grupp](../database/auto-failover-group-overview.md), måste SQL-hanterad instans administratör rensa alla publikationer på den gamla primära servern och konfigurera om dem på den nya primära efter det att en redundansväxling inträffar. Följande aktiviteter behövs i det här scenariot:
 
 1. Stoppa alla migreringsjobb som körs på databasen, om det finns några.
 1. Släpp metadata för prenumerationer från utgivare genom att köra följande skript på utgivar databasen:

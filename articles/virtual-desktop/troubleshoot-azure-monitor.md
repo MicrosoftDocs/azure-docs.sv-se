@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 03/29/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: dda58868432248fe93a9fbc83d1e538dfc9b61ba
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ef1a7f92fd31e8ae87a0ead6b5071d8240aa993e
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709454"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286410"
 ---
 # <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop"></a>Felsöka Azure Monitor för virtuella Windows-datorer
 
@@ -81,4 +81,6 @@ Följande är problem och begränsningar vi är medvetna om och arbetar med att 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du är osäker på hur du tolkar data eller vill lära dig mer om vanliga villkor kan du läsa [Azure Monitor för ord listan för virtuella Windows-datorer](azure-monitor-glossary.md). Om du vill lära dig hur du konfigurerar och använder Azure Monitor för virtuella Windows-datorer, se [använd Azure Monitor för Windows Virtual Desktop för att övervaka distributionen](azure-monitor.md).
+- För att komma igång, se [använda Azure Monitor för virtuella Windows-datorer för att övervaka distributionen](azure-monitor.md).
+- Information om hur du uppskattar, mäter och hanterar dina kostnader för data lagring finns i [beräkna Azure Monitor kostnader](azure-monitor-costs.md).
+- Ta en titt på vårt [ord](azure-monitor-glossary.md) för att lära dig mer om termer och begrepp som rör Azure Monitor för virtuella Windows-datorer.

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81c026893c3185c6c9f960cdb6acb2d0c2d49cc4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a1ea83dc62c2752e34584b89de2cdb6dbde3dfa0
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580359"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443926"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption för virtuella Linux-datorer 
 
@@ -71,7 +71,8 @@ Linux Server-distributioner som inte har godkänts av Azure stöder inte Azure D
 | Redhat | RHEL 8 – LVM | 8-LVM | RedHat: RHEL: 8-LVM: senaste | Operativ system och data disk (se OBS! nedan) |
 | Redhat | RHEL 8,2 | 8,2 | RedHat: RHEL: 8.2: senaste | Operativ system och data disk (se OBS! nedan) |
 | Redhat | RHEL 8,1 | 8.1 | RedHat: RHEL: 8.1: senaste | Operativ system och data disk (se OBS! nedan) |
-| Redhat | RHEL 7 – LVM | 7-LVM | RedHat: RHEL: 7-LVM: 7.8.2020111201 | Operativ system och data disk (se OBS! nedan) |
+| Redhat | RHEL 7 – LVM | 7-LVM | RedHat: RHEL: 7-LVM: 7.9.2020111202 | Operativ system och data disk (se OBS! nedan) |
+| Redhat | RHEL 7,9 | 7_9 | RedHat: RHEL: 7_9: senaste | Operativ system och data disk (se OBS! nedan) |
 | Redhat | RHEL 7,8 | 7,8 | RedHat: RHEL: 7,8: senaste | Operativ system och data disk (se OBS! nedan) |
 | Redhat | RHEL 7,7 | 7.7 | RedHat: RHEL: 7.7: senaste | Operativ system och data disk (se OBS! nedan) |
 | Redhat | RHEL 7,6 | 7.6 | RedHat: RHEL: 7.6: senaste | Operativ system och data disk (se OBS! nedan) |
@@ -84,8 +85,9 @@ Linux Server-distributioner som inte har godkänts av Azure stöder inte Azure D
 | OpenLogic | CentOS 8 – LVM | 8-LVM | OpenLogic: CentOS-LVM: 8-LVM: senaste | Operativ system och data disk |
 | OpenLogic | CentOS 8,2 | 8_2 | OpenLogic: CentOS: 8_2: senaste | Operativ system och data disk |
 | OpenLogic | CentOS 8,1 | 8_1 | OpenLogic: CentOS: 8_1: senaste | Operativ system och data disk |
-| OpenLogic | CentOS 7 – LVM | 7-LVM | OpenLogic: CentOS-LVM: 7-LVM: 7.8.2020111100 | Operativ system och data disk |
-| OpenLogic | CentOS 7,8 | 7,8 | OpenLogic: CentOS: 7_8: senaste | Operativ system och data disk |
+| OpenLogic | CentOS 7 – LVM | 7-LVM | OpenLogic: CentOS-LVM: 7-LVM: 7.9.2021020400 | Operativ system och data disk |
+| OpenLogic | CentOS 7,9 | 7_9 | OpenLogic: CentOS: 7_9: senaste | Operativ system och data disk |
+| OpenLogic | CentOS 7,8 | 7_8 | OpenLogic: CentOS: 7_8: senaste | Operativ system och data disk |
 | OpenLogic | CentOS 7,7 | 7.7 | OpenLogic: CentOS: 7.7: senaste | Operativ system och data disk |
 | OpenLogic | CentOS 7,6 | 7.6 | OpenLogic: CentOS: 7.6: senaste | Operativ system och data disk |
 | OpenLogic | CentOS 7.5 | 7.5 | OpenLogic: CentOS: 7.5: senaste | Operativ system och data disk |

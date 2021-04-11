@@ -8,20 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cc470d12377f50f9f9ae4b362bcabf3a5ce34e8f
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: d61314dc89d341e376de7d3904568825ad3cfb04
+ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169291"
+ms.lasthandoff: 04/04/2021
+ms.locfileid: "106293880"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Om Azure Cloud Services (utökad support)
 
-> [!IMPORTANT]
-> Cloud Services (utökad support) är för närvarande en offentlig för hands version.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Cloud Services (utökad support) är en ny [Azure Resource Manager](../azure-resource-manager/management/overview.md) baserad distributions modell för [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) -produkten och för närvarande finns i en offentlig för hands version. Cloud Services (utökad support) har den främsta fördelen med att tillhandahålla regional återhämtning tillsammans med funktions paritet med Azure Cloud Services som distribueras med Azure-Service Manager. Den erbjuder också vissa ARM-funktioner som rollbaserad åtkomst och kontroll (RBAC), taggar, principer och stöd för mallar för distribution.  
+Cloud Services (utökad support) är en ny [Azure Resource Manager](../azure-resource-manager/management/overview.md) baserad distributions modell för [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) -produkten och är nu allmänt tillgänglig. Cloud Services (utökad support) har den främsta fördelen med att tillhandahålla regional återhämtning tillsammans med funktions paritet med Azure Cloud Services som distribueras med Azure-Service Manager. Den erbjuder också vissa ARM-funktioner som rollbaserad åtkomst och kontroll (RBAC), taggar, principer och stöd för mallar för distribution.  
 
 Med den här ändringen kommer den Azure Service Manager-baserade distributions modellen för Cloud Services att byta namn till [Cloud Services (klassisk)](../cloud-services/cloud-services-choose-me.md). Du behåller möjligheten att bygga och snabbt distribuera dina webb-och moln program och-tjänster. Du kommer att kunna skala infrastrukturen för moln tjänster baserat på aktuell efter frågan och se till att programmens prestanda kan fortsätta samtidigt som kostnaderna minskar.  
 

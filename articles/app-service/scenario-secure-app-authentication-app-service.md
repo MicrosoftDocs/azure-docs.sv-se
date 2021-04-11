@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 04/02/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: a8bd2ef1348692bf57f7e5cb7b6606cfcfd324fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b17cb6906a37d2cab4383fac18400b35dc8adb2f
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96905578"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223219"
 ---
 # <a name="tutorial-add-authentication-to-your-web-app-running-on-azure-app-service"></a>Självstudie: Lägg till autentisering i din webbapp som körs på Azure App Service
 
@@ -41,7 +41,7 @@ I den här guiden får du lära dig att:
 
 I den här självstudien måste du ha en webbapp distribuerad till App Service. Du kan använda en befintlig webbapp, eller så kan du följa [ASP.net Core snabb start](quickstart-dotnetcore.md) för att skapa och publicera en ny webbapp för att app service.
 
-Oavsett om du använder en befintlig webbapp eller skapar en ny, noterar du namnet på webb programmet och namnet på den resurs grupp som webbappen distribueras till. Du behöver dessa namn i den här självstudien. I den här självstudien innehåller exempel namn i procedurer och skärm dum par *SecureWebApp*.
+Oavsett om du använder en befintlig webbapp eller skapar en ny, noterar du namnet på webb programmet och namnet på den resurs grupp som webbappen distribueras till. Du behöver dessa namn i den här självstudien. 
 
 ## <a name="configure-authentication-and-authorization"></a>Konfigurera autentisering och auktorisering
 
@@ -53,17 +53,19 @@ I **resurs grupper** söker du efter och väljer din resurs grupp. I **Översikt
 
 :::image type="content" alt-text="Skärm bild som visar hur du väljer appens hanterings sida." source="./media/scenario-secure-app-authentication-app-service/select-app-service.png":::
 
-På appens vänstra meny väljer du **autentisering/auktorisering** och aktiverar App Service autentisering genom att välja **på**.
+Välj **autentisering** på appens vänstra meny och klicka sedan på **Lägg till identitets leverantör**.
 
-För **Åtgärd att vidta när en begäran inte har autentiserats** väljer du **Logga in med Azure Active Directory**.
+På sidan **Lägg till en identitetsprovider** väljer du **Microsoft** som **identitets leverantör** för att logga in Microsoft-och Azure AD-identiteter.
 
-Under **autentiseringsproviders** väljer du **Azure Active Directory**. Välj **Express** och godkänn sedan standardinställningarna för att skapa en ny Active Directory-app. Välj **OK**.
+För registrerings typ för **app Registration**  >  väljer du **Skapa ny app-registrering**.
 
-:::image type="content" alt-text="Skärm bild som visar Express autentisering." source="./media/scenario-secure-app-authentication-app-service/configure-authentication.png":::
+Om du vill **Registrera**  >  **konto typer som stöds** av appar väljer du **aktuell klient** organisation.
 
-På sidan **autentisering/auktorisering** väljer du **Spara**.
+I avsnittet **App Service autentiseringsinställningar** lämnar du **autentisering** inställd på **Kräv autentisering** och **oautentiserade begär Anden** som angetts till **http 302 påträffad omdirigering: rekommenderas för webbplatser**.
 
-Uppdatera portal sidan när du ser meddelandet med meddelandet `Successfully saved the Auth Settings for <app-name> App` .
+Längst ned på sidan **Lägg till en identitetsprovider** klickar du på **Lägg till** för att aktivera autentisering för din webbapp.
+
+:::image type="content" alt-text="Skärm bild som visar konfiguration av autentisering." source="./media/scenario-secure-app-authentication-app-service/configure-authentication.png":::
 
 Nu har du en app som skyddas av App Service autentisering och auktorisering.
 

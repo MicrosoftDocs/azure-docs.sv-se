@@ -4,19 +4,19 @@ description: Innehåller en översikt över BareMetal-infrastrukturen i Azure.
 ms.custom: references_regions
 ms.topic: conceptual
 ms.subservice: workloads
-ms.date: 04/06/2021
-ms.openlocfilehash: bccb171ce364a5129489c437f2f18156cc563a1b
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 04/08/2021
+ms.openlocfilehash: 7a4998a096a5c5d9e793c34d5046dce59262a2ae
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579044"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257576"
 ---
 #  <a name="what-is-baremetal-infrastructure-on-azure"></a>Vad är BareMetal-infrastruktur på Azure?
 
 Microsoft Azure erbjuder en moln infrastruktur med en mängd olika integrerade moln tjänster som uppfyller dina affärs behov. I vissa fall kan du behöva köra tjänster på Bare Metal-servrar utan ett Virtualization-lager. Du kanske behöver rot åtkomst och kontroll över operativ systemet (OS). För att uppfylla ett sådant behov erbjuder Azure BareMetal-infrastruktur för flera högt värde-och verksamhets kritiska program.
 
-BareMetal-infrastrukturen består av dedikerade BareMetal-instanser (beräknings instanser), högpresterande och programlämplig lagring (NFS, dNFS, ISCSI och fiber kanal) samt en uppsättning funktions specifika virtuella LAN (VLAN) i en isolerad miljö. Lagring kan delas mellan BareMetal-instanser för att aktivera funktioner som skalbara kluster eller för att skapa hög tillgänglighets par med STONITH.
+BareMetal-infrastrukturen består av dedikerade BareMetal-instanser (beräknings instanser), högpresterande och programlämplig lagring (NFS, ISCSI och fiber kanal) samt en uppsättning funktions specifika virtuella LAN (VLAN) i en isolerad miljö. Lagring kan delas mellan BareMetal-instanser för att aktivera funktioner som skalbara kluster eller för att skapa hög tillgänglighets par med STONITH.
  
 Den här miljön har också särskilda virtuella lokala nätverk som du kan komma åt om du kör virtuella datorer i ett eller flera virtuella Azure-nätverk (virtuella nätverk) i din Azure-prenumeration. Hela miljön visas som en resurs grupp i din Azure-prenumeration.
 
@@ -40,7 +40,7 @@ BareMetal-infrastrukturen erbjuder följande förmåner:
     - Upp till 1 PB/klient 
     - IOPS upp till 1,2 miljoner/klient organisation 
     - 40/100 GB nätverks bandbredd
-    - Tillgängligt via NFS, dNFS, ISCSI och FC
+    - Tillgängligt via NFS, ISCSI och FC
 - Redundant strömförsörjning, strömförsörjning, NIC-enheter, TORs, portar, WAN, lagring och hantering
 - Snabb ersättning för ersättning vid ett haveri (utan behov av omkonfigurering)
 - Kund koordinerade underhålls fönster

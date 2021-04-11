@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.author: jingwang
-ms.openlocfilehash: daf3691b48f7bf12e9ef51de7d4253dad9dbd2b1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1cff49e4ddb7423e1e5956e1436cefd18abe6dfe
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026878"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107082"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Avgränsat text format i Azure Data Factory
 
@@ -185,8 +185,7 @@ I tabellen nedan visas de egenskaper som stöds av en avgränsad text mottagare.
 | Rensa mappen | Om målmappen rensas innan den skrivs | nej | `true` eller `false` | truncate |
 | Fil namns alternativ | Namngivnings formatet för de data som skrivits. Som standard är en fil per partition i format `part-#####-tid-<guid>` | nej | Mönster: sträng <br> Per partition: sträng [] <br> Namn fil som kolumn data: sträng <br> Utdata till en enskild fil: `['<fileName>']` <br> Namnge mapp som kolumn data: sträng | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames <br> rowFolderUrlColumn |
 | Offert alla | Omge alla värden i citat tecken | nej | `true` eller `false` | quoteAll |
-
-rowFolderUrlColumn:
+| Huvud | Lägg till kund rubriker i utdatafiler | nej | `[<string array>]` | sidhuvud |
 
 ### <a name="sink-example"></a>Sink-exempel
 

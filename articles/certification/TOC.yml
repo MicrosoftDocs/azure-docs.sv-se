@@ -1,0 +1,47 @@
+- name: Dokumentation om Azure Certified Device
+  href: index.yml
+- name: Översikt
+  items:
+    - name: Vad är Azure Certified Device-programmet?
+      href: overview.md
+- name: Självstudier
+  expanded: true
+  items:
+    - name: 1 – välja rätt certifikat
+      href: tutorial-00-selecting-your-certification.md
+    - name: 2 – Skapa ditt projekt
+      href: tutorial-01-creating-your-project.md
+    - name: 3 – lägga till enhets information
+      href: tutorial-02-adding-device-details.md
+    - name: 4 – testa din enhet
+      href: tutorial-03-testing-your-device.md
+    - name: 5 – publicera din enhet
+      href: tutorial-04-publishing-your-device.md
+- name: Programkrav
+  items:
+    - name: Azure-certifierad enhet
+      href: program-requirements-azure-certified-device.md
+    - name: Plug and Play för IoT
+      href: program-requirements-pnp.md
+    - name: Edge-hanterad
+      href: program-requirements-edge-managed.md
+    - name: Edge Secure-Core (för hands version)
+      href: program-requirements-edge-secured-core.md
+- name: Begrepp
+  items:
+    - name: Äldre enheter
+      href: concepts-legacy.md
+    - name: Marknadsförings koncept
+      href: concepts-marketing.md
+- name: Anvisningar
+  items:
+    - name: Så här redigerar du en publicerad enhet
+      href: how-to-edit-published-device.md
+    - name: Så här certifierar du en indirekt ansluten enhet
+      href: how-to-indirectly-connected-devices.md
+    - name: Använda funktionen komponenter
+      href: how-to-using-the-components-feature.md
+- name: Resurser
+  items:
+    - name: Ord lista för certifiering
+      href: resources-glossary.md

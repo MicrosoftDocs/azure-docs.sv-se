@@ -3,19 +3,24 @@ title: Metod tips för Azure Kubernetes service (AKS)
 description: Samling av kluster operatör och bästa metoder för utvecklare för att bygga och hantera program i Azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 12/07/2018
-ms.openlocfilehash: e8f9c1946567ac3c3ea1045a216d6b0486fd959a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/09/2021
+ms.openlocfilehash: f4bd109ce6827de26b1649380b6f6a2ba7c10e17
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94686267"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105909"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Kluster operatör och bästa metoder för utvecklare för att bygga och hantera program i Azure Kubernetes service (AKS)
 
-För att kunna skapa och köra program i Azure Kubernetes service (AKS) finns det några viktiga aspekter att förstå och implementera. Dessa områden omfattar funktioner för flera innehavare och Scheduler, kluster-och Pod säkerhet, eller verksamhets kontinuitet och haveri beredskap. Följande metod tips är grupperade för att hjälpa kluster operatörer och utvecklare att förstå överväganden för var och en av dessa områden och implementera lämpliga funktioner.
+Att skapa och köra program i Azure Kubernetes service (AKS) kräver förståelse och implementering av några viktiga överväganden, inklusive:
+* Funktioner för flera innehavare och Scheduler.
+* Kluster-och Pod säkerhet.
+* Verksamhets kontinuitet och haveri beredskap. 
 
-Dessa metod tips och konceptuella artiklar har skrivits tillsammans med AKS produkt grupp, teknik team och fält team, inklusive globala svarta remmar (GBBs).
+
+AKS produkt grupp, teknik team och fält team (inklusive globala svarta bälten [GBBs]) bidragit till, skrevs och grupperas följande metod tips och konceptuella artiklar. Syftet är att hjälpa kluster operatörer och utvecklare att förstå övervägandena ovan och implementera lämpliga funktioner.
+
 
 ## <a name="cluster-operator-best-practices"></a>Metod tips för kluster operator
 

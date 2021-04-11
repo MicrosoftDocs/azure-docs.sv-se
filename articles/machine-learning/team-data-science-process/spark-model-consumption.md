@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 659f61734001163ada6fd26caabe2fb007892f61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a8d46b5ff10fdaa62f7747aac654e0b1ca78c42
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774498"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259157"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Operationalisera Spark – inbyggda Machine Learning-modeller
 
@@ -374,7 +374,8 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 Tids åtgång för att köra ovanför cell: 19,22 sekunder
 
 ## <a name="score-a-linear-regression-model"></a>Score en linjär Regressions modell
-Vi använde [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) för att träna en linjär Regressions modell med Stochastic gradient BRANTASTE (SGD) för optimering för att förutsäga den mängd Tip som du betalar. 
+Vi använde [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.regression.LinearRegressionWithSGD.html
+) för att träna en linjär Regressions modell med Stochastic gradient BRANTASTE (SGD) för optimering för att förutsäga den mängd Tip som du betalar. 
 
 Koden i det här avsnittet visar hur du läser in en linjär Regressions modell från Azure Blob Storage, poängen med skalade variabler och sedan sparar tillbaka resultatet till blobben.
 

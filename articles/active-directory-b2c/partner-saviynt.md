@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: b1889a693c08ce78a8bd06b6fe348c0c67bf3812
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe5a2114a99b7867ac5e51b6bf9ec542ad47ca13
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103465682"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257899"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Självstudie för att konfigurera Saviynt med Azure Active Directory B2C
 
@@ -135,6 +135,6 @@ Mer information finns i följande artiklar:
 
 - [Anpassade principer i Azure AD B2C](./custom-policy-overview.md)
 
-- [Kom igång med anpassade principer i Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Kom igång med anpassade principer i Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 
 - [Skapa ett webb-API-program](./add-web-api-application.md)

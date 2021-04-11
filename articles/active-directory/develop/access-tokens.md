@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 2/18/2021
+ms.date: 04/02/2021
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 8630dd2fb1157fbeba99f2a06d73712ab46a63f4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f5a60f14799e872d835d651fc043edd27dfc6990
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035075"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105603"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Åtkomsttoken för Microsoft Identity Platform
 
@@ -176,6 +176,12 @@ Microsoft-identiteter kan autentiseras på olika sätt, vilket kan vara relevant
 | `ngcmfa` | Likvärdigt med `mfa` , används för etablering av vissa typer av avancerade autentiseringsuppgifter. |
 | `wiaormfa`| Användaren använde Windows eller en MFA-autentiseringsuppgift för att autentisera. |
 | `none` | Ingen autentisering har gjorts. |
+
+## <a name="access-token-lifetime"></a>Livstid för åtkomsttoken
+
+Standard livs längden för en åtkomsttoken varierar beroende på vilket klient program som begär token. Till exempel kan klienter med kontinuerlig åtkomst utvärdering (CAE) som förhandlar om CAE-medvetna sessioner se en lång livs längd för token för livs längd (upp till 28 timmar).  När åtkomsttoken upphör att gälla måste klienten använda uppdateringstoken till (normalt tyst) Hämta en ny uppdateringstoken och åtkomsttoken.
+
+Du kan justera livs längden för en åtkomsttoken för att kontrol lera hur ofta klient programmet förfaller programsessionen och hur ofta användaren måste autentiseras på nytt (tyst eller interaktivt). Mer information finns i avsnittet om [livstider för att konfigurera token](active-directory-configurable-token-lifetimes.md).
 
 ## <a name="validating-tokens"></a>Validerar token
 

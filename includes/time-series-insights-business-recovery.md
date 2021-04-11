@@ -4,13 +4,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: diviso
-ms.date: 07/09/2020
-ms.openlocfilehash: f25c335c568c112c05f81df51d69e83aeff423e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/01/2021
+ms.openlocfilehash: 6529aa49d06e64947deb5ae54db0c39ad2575569
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96028556"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106288580"
 ---
 ## <a name="business-disaster-recovery"></a>Katastrof återställning för företag
 
@@ -24,7 +24,7 @@ Ytterligare funktioner med hög tillgänglighet tillhandahålls via Azure (och �
 
 - **Redundans**: Azure tillhandahåller [geo-replikering och belastnings utjämning](/azure/architecture/resiliency/recovery-loss-azure-region).
 - **Data återställning** och **lagrings återställning**: Azure tillhandahåller [flera alternativ för att bevara och återställa data](/azure/architecture/resiliency/recovery-data-corruption).
-- **Azure Site Recovery**: Azure tillhandahåller Site Recovery-funktioner via [Azure Site Recovery](../articles/site-recovery/index.yml).
+- **Azure Site Recovery**: Azure tillhandahåller återställnings funktioner via [Azure Site Recovery](../articles/site-recovery/index.yml).
 - **Azure Backup**: [Azure Backup](../articles/backup/backup-architecture.md) stöder både lokal och molnad säkerhets kopiering av virtuella Azure-datorer.
 
 Se till att du aktiverar de relevanta Azure-funktionerna för att tillhandahålla global tillgänglighet över flera regioner för dina enheter och användare.
@@ -44,7 +44,7 @@ Att integrera Azure Time Series Insights med de andra tjänsterna ger ytterligar
 
 ### <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
-Det finns flera sätt att se till att dina Azure Time Series Insights data, appar och tjänster körs, även om de är störda. 
+Det finns flera sätt att se till att dina Azure Time Series Insights data, appar och tjänster körs, även om de är störda.
 
 Du kan dock bestämma att en fullständig säkerhets kopia av din Azure Time Series-miljö också krävs, i följande syfte:
 
@@ -63,12 +63,13 @@ Så här skapar du en duplicerad miljö:
 Om en händelse inträffar:
 
 1. Om din primära region påverkas under en katastrof incident, dirigerar du om åtgärder till säkerhets kopierings Azure Time Series Insightss miljön.
+1. Eftersom nummer för Hubbs ordning startar om från 0 efter redundansväxlingen, återskapar du händelse källan i båda regionerna/miljöerna med olika konsument grupper för att undvika att skapa vad som skulle se ut som dubbletter av händelser.
 1. Använd din andra region för att säkerhetskopiera och återställa alla Azure Time Series Insights telemetri och fråga efter data.
 
 > [!IMPORTANT]
 > Om en redundansväxling inträffar:
-> 
-> * En fördröjning kan också uppstå.
-> * En tillfällig insamling i meddelande bearbetningen kan inträffa, eftersom åtgärder dirigeras om.
-> 
+>
+> - En fördröjning kan också uppstå.
+> - En tillfällig insamling i meddelande bearbetningen kan inträffa, eftersom åtgärder dirigeras om.
+>
 > Mer information finns i avsnittet [minska svars tiden i Azure Time Series Insights](../articles/time-series-insights/time-series-insights-environment-mitigate-latency.md).

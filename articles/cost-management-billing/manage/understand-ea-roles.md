@@ -6,15 +6,15 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 04/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 1ceed171b0516e293ffe58bca0225d3d3dfdb414
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 653eacd11c4a3c7ab500abff809a6b9bf8229c1f
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094666"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492077"
 ---
 # <a name="managing-azure-enterprise-agreement-roles"></a>Hantera Azure Enterprise-avtalsroller
 
@@ -22,6 +22,7 @@ Azure-kunder med ett Enterprise-avtal kan tilldela fem olika administratörsroll
 
 - Företagsadministratör
 - Företagsadministratör (skrivskyddad)<sup>1</sup>
+- EA-inköpare
 - Avdelningsadministratör
 - Avdelningsadministratör (skrivskyddad)
 - Kontoinnehavare<sup>2</sup>
@@ -61,6 +62,7 @@ Följande diagram illustrerar enkla Azure EA-hierarkier.
 Följande administrativa användarroller ingår i din företagsregistrering:
 
 - Företagsadministratör
+- EA-inköpare
 - Avdelningsadministratör
 - Kontoägare
 - Tjänstadministratör
@@ -80,12 +82,24 @@ Användare med den här rollen har den högsta åtkomstnivån. De kan:
 - Hantera andra företagsadministratörer.
 - Hantera avdelningsadministratörer.
 - Hantera meddelandekontakter.
+- Köp Azure-tjänster, inklusive reservationer.
 - Visa användning för alla konton.
 - Visa odebiterade avgifter för alla konton.
 - Visa och hantera alla reservationsorder och reservationer som gäller för Enterprise-avtalet.
   - Företagsadministratörer (skrivskyddad) kan visa reservationsorder och reservationer. De kan inte hantera dem.
 
 Du kan ha flera företagsadministratörer i en företagsregistrering. Du kan bevilja skrivskyddad åtkomst till företagsadministratörer. De ärver alla rollen avdelningsadministratör.
+
+### <a name="ea-purchaser"></a>EA-inköpare
+
+Användare med den här rollen har behörighet att köpa Azure-tjänster, men tillåts inte hantera konton. De kan:
+
+- Köp Azure-tjänster, inklusive reservationer.
+- Visa användning för alla konton.
+- Visa odebiterade avgifter för alla konton.
+- Visa och hantera alla reservationsorder och reservationer som gäller för Enterprise-avtalet.
+
+Den EA-köpare rollen är för närvarande endast aktive rad för SPN-baserad åtkomst. Information om hur du tilldelar rollen till ett huvud namn för tjänsten finns i [tilldela roller till Azure Enterprise-avtal tjänstens huvud namn](assign-roles-azure-service-principals.md).
 
 ### <a name="department-administrator"></a>Avdelningsadministratör
 
@@ -126,6 +140,7 @@ I följande avsnitt beskrivs begränsningarna och funktionerna för varje roll.
 |---|---|
 |Företagsadministratör|Obegränsat|
 |Företagsadministratör (skrivskyddad)|Obegränsat|
+| EA-inköpare som tilldelats ett SPN | Obegränsat |
 |Avdelningsadministratör|Obegränsat|
 |Avdelningsadministratör (skrivskyddad)|Obegränsat|
 |Kontoägare|1 per konto<sup>3</sup>|
@@ -134,18 +149,19 @@ I följande avsnitt beskrivs begränsningarna och funktionerna för varje roll.
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Organisationsstruktur och behörigheter per roll
 
-|Aktiviteter| Företagsadministratör|Företagsadministratör (skrivskyddad)|Avdelningsadministratör|Avdelningsadministratör (skrivskyddad)|Kontoägare| Partner|
-|---|---|---|---|---|---|---|
-|Visa företagsadministratörer|✔|✔|✘|✘|✘|✔|
-|Lägga till eller ta bort företagsadministratörer|✔|✘|✘|✘|✘|✘|
-|Visa meddelandekontakter<sup>4</sup> |✔|✔|✘|✘|✘|✔|
-|Lägga till eller ta bort meddelandekontakter<sup>4</sup> |✔|✘|✘|✘|✘|✘|
-|Skapa och hantera avdelningar |✔|✘|✘|✘|✘|✘|
-|Visa avdelningsadministratörer|✔|✔|✔|✔|✘|✔|
-|Lägga till eller ta bort avdelningsadministratörer|✔|✘|✔|✘|✘|✘|
-|Visa konton i registreringen |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|✔|
-|Lägga till konton i registreringen och ändra kontoägare|✔|✘|✔<sup>5</sup>|✘|✘|✘|
-|Skapa och hantera prenumerationer och prenumerationsbehörigheter|✘|✘|✘|✘|✔|✘|
+|Aktiviteter| Företagsadministratör|Företagsadministratör (skrivskyddad)| EA-inköpare | Avdelningsadministratör|Avdelningsadministratör (skrivskyddad)|Kontoägare| Partner|
+|---|---|---|---|---|---|---|---|
+|Visa företagsadministratörer|✔|✔| ✔|✘|✘|✘|✔|
+|Lägga till eller ta bort företagsadministratörer|✔|✘|✘|✘|✘|✘|✘|
+|Visa meddelandekontakter<sup>4</sup> |✔|✔|✔|✘|✘|✘|✔|
+|Lägga till eller ta bort meddelandekontakter<sup>4</sup> |✔|✘|✘|✘|✘|✘|✘|
+|Skapa och hantera avdelningar |✔|✘|✘|✘|✘|✘|✘|
+|Visa avdelningsadministratörer|✔|✔|✔|✔|✔|✘|✔|
+|Lägga till eller ta bort avdelningsadministratörer|✔|✘|✘|✔|✘|✘|✘|
+|Visa konton i registreringen |✔|✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|✔|
+|Lägga till konton i registreringen och ändra kontoägare|✔|✘|✘|✔<sup>5</sup>|✘|✘|✘|
+|Köpa reservationer|✔|✘|✔|✘|✘|✘|✘|
+|Skapa och hantera prenumerationer och prenumerationsbehörigheter|✘|✘|✘|✘|✘|✔|✘|
 
 - <sup>4</sup> Meddelandekontakter får e-postmeddelanden om Azure Enterprise-avtalet.
 - <sup>5</sup> Uppgiften är begränsad till konton på din avdelning.
@@ -166,14 +182,14 @@ Du kan läsa mer om att lägga till en avdelningsadministratör under [Skapa en 
 
 ## <a name="usage-and-costs-access-by-role"></a>Åtkomst till användning och kostnader per roll
 
-|Aktiviteter| Företagsadministratör|Företagsadministratör (skrivskyddad)|Avdelningsadministratör|Avdelningsadministratör (skrivskyddad) |Kontoägare| Partner|
-|---|---|---|---|---|---|---|
-|Visa kreditsaldo inklusive Azure-förskottsbetalning|✔|✔|✘|✘|✘|✔|
-|Visa avdelningens utgiftskvot|✔|✔|✘|✘|✘|✔|
-|Ange avdelningens utgiftskvot|✔|✘|✘|✘|✘|✘|
-|Visa organisationens EA-prisdokument|✔|✔|✘|✘|✘|✔|
-|Visa information om användning och kostnader|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|✔|
-|Hantera resurser i Azure-portalen|✘|✘|✘|✘|✔|✘|
+|Aktiviteter| Företagsadministratör|Företagsadministratör (skrivskyddad)|EA-inköpare|Avdelningsadministratör|Avdelningsadministratör (skrivskyddad) |Kontoägare| Partner|
+|---|---|---|---|---|---|---|---|
+|Visa kreditsaldo inklusive Azure-förskottsbetalning|✔|✔|✔|✘|✘|✘|✔|
+|Visa avdelningens utgiftskvot|✔|✔|✔|✘|✘|✘|✔|
+|Ange avdelningens utgiftskvot|✔|✘|✘|✘|✘|✘|✘|
+|Visa organisationens EA-prisdokument|✔|✔|✔|✘|✘|✘|✔|
+|Visa information om användning och kostnader|✔|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|✔|
+|Hantera resurser i Azure-portalen|✘|✘|✘|✘|✘|✔|✘|
 
 - <sup>6</sup> Kräver att företagsadministratören aktiverar policyn **Visa avgifter för DA** på Enterprise-portalen. Avdelningsadministratören kan sedan se kostnadsinformation för avdelningen.
 - <sup>7</sup> Kräver att företagsadministratören aktiverar policyn **Visa avgifter för AO** på Enterprise-portalen. Kontoägaren kan sedan se kostnadsinformation för kontot.
@@ -198,8 +214,6 @@ I följande tabell visas relationen mellan administratörsrollerna för Enterpri
 |Ingen|Inte tillämpligt |Ägare|Återförsäljarpris|
 
 Du ställer in administratörsroller för Enterprise och visar policyer för avgifter i Enterprise-portalen. Azure-rollen kan uppdateras i Azure-portalen. Mer information finns i [tilldela Azure-roller med hjälp av Azure Portal](../../role-based-access-control/role-assignments-portal.md).
-
-
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -43,6 +43,8 @@
       href: concepts-query-units.md
     - name: Integrering med andra tjänster
       href: concepts-integration.md
+    - name: Händelseaviseringar
+      href: concepts-event-notifications.md
     - name: Händelsevägar
       href: concepts-route-events.md
     - name: Säkerhet för Azure Digital Twins-lösningar
@@ -91,8 +93,6 @@
           href: how-to-manage-twin.md
         - name: Hantera tvillingdiagram med relationer
           href: how-to-manage-graph.md
-        - name: Tolka händelsedata
-          href: how-to-interpret-event-data.md
         - name: Konfigurera en Azure-funktion för bearbetning av data
           href: how-to-create-azure-function.md
         - name: Fråga tvillingdiagrammet

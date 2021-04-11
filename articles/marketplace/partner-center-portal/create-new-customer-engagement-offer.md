@@ -7,18 +7,18 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 12/02/2020
-ms.openlocfilehash: 0c220daab0d1d9ae7d50d37d9303d6677bd52cc1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1661fd78812bff14d9efddf9ef1c31a359aa959d
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97360313"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107371"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Skapa ett erbjudande för Dynamics 365 for Customer Engagement & PowerApps
 
 Den här artikeln beskriver hur du skapar en ny Dynamics 365 för kund engagemang & PowerApps-erbjudande. Alla appar för Dynamics 365 för kund engagemang (PowerApps, Sales, service, Project service och Field Service) måste gå igenom vår certifierings process som kontrollerar din lösning för standard krav, kompatibilitet och korrekt praxis. Med utvärderings versionen kan användarna distribuera din lösning till en Live Dynamics 365-miljö.
 
-Innan du börjar [skapar du ett kommersiellt marknads plats konto i Partner Center](create-account.md) , om du inte har gjort det än. Se till att ditt konto är registrerat i programmet för kommersiella marknads platser.
+Innan du börjar [skapar du ett kommersiellt marknads plats konto i Partner Center](../create-account.md) , om du inte har gjort det än. Se till att ditt konto är registrerat i programmet för kommersiella marknads platser.
 
 >[!NOTE]
 > När ett erbjudande har publicerats uppdateras bara ändringar i erbjudandet i Partner Center och onlinebutiken när du har skickat om erbjudandet för publicering.

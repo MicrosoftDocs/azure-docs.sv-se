@@ -4,14 +4,14 @@ description: Beskriver de olika användnings modellerna för cache och hur du v�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: 3ad252520ca0cf7acdb3c84ef1da87c8076f3172
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a22f4b257476e96c51ae491b8570e3798f7b3ab7
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775722"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259735"
 ---
 # <a name="understand-cache-usage-models"></a>Förstå användnings modeller för cache
 
@@ -39,7 +39,7 @@ De användnings modeller som är inbyggda i Azure HPC cache har olika värden f�
 
 ## <a name="choose-the-right-usage-model-for-your-workflow"></a>Välj rätt användnings modell för ditt arbets flöde
 
-Du måste välja en användnings modell för varje NFS-monterat lagrings mål som du använder. Azure Blob Storage-mål har en inbyggd användnings modell som inte kan anpassas.
+Du måste välja en användnings modell för varje lagrings mål för NFS-protokollet som du använder. Azure Blob Storage-mål har en inbyggd användnings modell som inte kan anpassas.
 
 Med användnings modeller för HPC-cache kan du välja hur du ska utjämna snabba svar med risken för att få inaktuella data. Om du vill optimera hastigheten för att läsa filer kanske du inte bryr dig om filerna i cacheminnet kontrol leras mot backend-filerna. Å andra sidan, om du vill vara säker på att filerna alltid är uppdaterade med Fjärrlagring, väljer du en modell som söker ofta.
 
@@ -77,6 +77,29 @@ I den här tabellen sammanfattas skillnaderna mellan användnings modeller:
 [!INCLUDE [usage-models-table.md](includes/usage-models-table.md)]
 
 Om du har frågor om den bästa användnings modellen för ditt Azure HPC cache-arbetsflöde, pratar du med Azure-representanten eller öppnar en support förfrågan om hjälp.
+
+## <a name="know-when-to-remount-clients-for-nlm"></a>Ta reda på när du ska montera om klienter för NLM
+
+I vissa situationer kan du behöva montera om klienter om du ändrar lagrings målets användnings modell. Detta behövs på grund av hur olika användnings modeller hanterar NLM-begäranden (Network Lock Manager).
+
+HPC-cachen finns mellan klienter och Server dels lagrings system. Vanligt vis skickar cachen NLM-begäranden via till Server dels lagrings systemet, men i vissa fall bekräftar cacheminnet NLM-begäran och returnerar ett värde till klienten. I Azure HPC-cache händer detta bara när du använder användnings modellen **Läs tung, ovanliga skrivningar** (eller i ett standard-Blob Storage-mål som inte har konfigurerbara användnings modeller).
+
+Det finns en liten risk för fil konflikter om du ändrar mellan **läsnings tung, sällan** använda användnings modell och en annan användnings modell. Det finns inget sätt att överföra det aktuella NLM-läget från cachen till lagrings systemet eller vice versa. Statusen för klientens lås är felaktig.
+
+Montera om klienterna så att de har ett korrekt NLM-tillstånd med den nya lås hanteraren.
+
+Om klienterna skickar en NLM-begäran när användnings modellen eller Server dels lagringen inte stöder den, får de ett fel meddelande.
+
+### <a name="disable-nlm-at-client-mount-time"></a>Inaktivera NLM vid klient monterings tid
+
+Det är inte alltid lätt att veta om klient systemen kommer att skicka NLM-begäranden.
+
+Du kan inaktivera NLM när klienter monterar klustret med hjälp av alternativet ``-o nolock`` i ``mount`` kommandot.
+
+Det exakta beteendet för ``nolock`` alternativet beror på klientens operativ system, så kontrol lera monterings dokumentationen (man 5 NFS) för klientens operativ system. I de flesta fall flyttas låset lokalt till klienten. Använd försiktighet om ditt program låser filer över flera klienter.
+
+> [!NOTE]
+> ADLS-NFS har inte stöd för NLM. Du bör inaktivera NLM med monterings alternativet ovan när du använder ett ADLS-NFS-lagrings mål.
 
 ## <a name="next-steps"></a>Nästa steg
 

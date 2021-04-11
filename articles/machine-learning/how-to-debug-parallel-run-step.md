@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting
 ms.reviewer: larryfr, vaidyas, laobri, tracych
-ms.author: trmccorm
-author: tmccrmck
+ms.author: pansav
+author: psavdekar
 ms.date: 09/23/2020
-ms.openlocfilehash: b5511c8ecc33238e0409b5ee4c1c7a11adddeac5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 619123cc2723fcf8e4bd80410c6b098b113d61c6
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102522163"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286325"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>Felsökning av ParallelRunStep
 
@@ -96,6 +96,9 @@ file_path = os.path.join(script_dir, "<file_name>")
 - `mini_batch_size`: Den mini-batch-storlek som skickas till ett enda `run()` anrop. (valfritt; standardvärdet är `10` filer för `FileDataset` och `1MB` for `TabularDataset` .)
     - För är `FileDataset` det antalet filer med minimivärdet `1` . Du kan kombinera flera filer i en mini-batch.
     - För är `TabularDataset` det data storleken. Exempel värden är `1024` , `1024KB` , `10MB` och `1GB` . Det rekommenderade värdet är `1MB` . Mini-batch från `TabularDataset` kommer aldrig att överskrida fil gränser. Om du till exempel har CSV-filer med olika storlekar är den minsta filen 100 KB och störst är 10 MB. Om du anger `mini_batch_size = 1MB` kommer filer med en storlek som är mindre än 1 MB att behandlas som en mini-batch. Filer med en storlek som är större än 1 MB delas upp i flera mini-batchar.
+        > [!NOTE]
+        > TabularDatasets som stöds av SQL kan inte partitioneras. 
+
 - `error_threshold`: Antalet post-och fil haverier `TabularDataset` `FileDataset` som ska ignoreras under bearbetningen. Om antalet fel för hela inflödet överskrider det här värdet kommer jobbet att avbrytas. Fel tröskeln är för alla indatatyper och inte för enskilda mini-batchar som skickas till- `run()` metoden. Intervallet är `[-1, int.max]` . `-1`Delen indikerar att ignorera alla avbrott under bearbetningen.
 - `output_action`: Ett av följande värden anger hur utdata ska ordnas:
     - `summary_only`: Användar skriptet kommer att lagra utdata. `ParallelRunStep` kommer bara att använda utdata för fel tröskel beräkningen.
@@ -110,7 +113,7 @@ file_path = os.path.join(script_dir, "<file_name>")
 - `run_invocation_timeout`: `run()` Tids gränsen för metod anrop i sekunder. (valfritt; standardvärdet är `60` )
 - `run_max_try`: Maximalt antal försök `run()` för en mini-batch. A `run()` Miss lyckas om ett undantag genereras eller om inget returneras när `run_invocation_timeout` nås (valfritt `3` ). 
 
-Du kan ange `mini_batch_size` , `node_count` ,,, `process_count_per_node` `logging_level` `run_invocation_timeout` och `run_max_try` som `PipelineParameter` , så att du kan finjustera parametervärdena när du skickar om en pipeline-körning. I det här exemplet använder du `PipelineParameter` för `mini_batch_size` och `Process_count_per_node` och du kommer att ändra dessa värden när du skickar om en körning senare. 
+Du kan ange `mini_batch_size` , `node_count` ,,, `process_count_per_node` `logging_level` `run_invocation_timeout` och `run_max_try` som `PipelineParameter` , så att du kan finjustera parametervärdena när du skickar om en pipeline-körning. I det här exemplet använder du `PipelineParameter` för `mini_batch_size` och `Process_count_per_node` och du kommer att ändra dessa värden när du skickar om en annan körning. 
 
 ### <a name="parameters-for-creating-the-parallelrunstep"></a>Parametrar för att skapa ParallelRunStep
 
@@ -151,7 +154,7 @@ Loggar som genereras från ett Entry-skript med hjälp av EntryScript-och Print-
 
 - `~/logs/user/entry_script_log/<ip_address>/<process_name>.log.txt`: De här filerna är loggarna som skrivs från entry_script med hjälp av EntryScript-hjälpen.
 
-- `~/logs/user/stdout/<ip_address>/<process_name>.stdout.txt`: De här filerna är loggarna från STDOUT (t. ex. utskrifts uttryck) för entry_script.
+- `~/logs/user/stdout/<ip_address>/<process_name>.stdout.txt`: De här filerna är loggarna från STDOUT (till exempel utskrifts uttryck) för entry_script.
 
 - `~/logs/user/stderr/<ip_address>/<process_name>.stderr.txt`: De här filerna är loggarna från stderr av entry_script.
 
@@ -212,10 +215,11 @@ def run(mini_batch):
 
 Användaren kan skicka referens data till skript med hjälp av side_inputs parametern ParalleRunStep. Alla data uppsättningar som tillhandahålls som side_inputs kommer att monteras på varje arbetsnod. Användaren kan hämta platsen för montering genom att skicka argumentet.
 
-Skapa en [data uppsättning](/python/api/azureml-core/azureml.core.dataset.dataset) som innehåller referens data och registrera den med din arbets yta. Skicka den till- `side_inputs` parametern för din `ParallelRunStep` . Dessutom kan du lägga till dess sökväg i `arguments` avsnittet för att enkelt få åtkomst till dess monterade sökväg:
+Skapa en [data uppsättning](/python/api/azureml-core/azureml.core.dataset.dataset) som innehåller referens data, ange en lokal monterings Sök väg och registrera den med din arbets yta. Skicka den till- `side_inputs` parametern för din `ParallelRunStep` . Dessutom kan du lägga till dess sökväg i `arguments` avsnittet för att enkelt få åtkomst till dess monterade sökväg:
 
 ```python
-label_config = label_ds.as_named_input("labels_input")
+local_path = "/tmp/{}".format(str(uuid.uuid4()))
+label_config = label_ds.as_named_input("labels_input").as_mount(local_path)
 batch_score_step = ParallelRunStep(
     name=parallel_step_name,
     inputs=[input_images.as_named_input("input_images")],

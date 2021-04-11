@@ -1,6 +1,6 @@
 ---
-title: Väder tjänster (för hands version) begrepp i Microsoft Azure Maps
-description: Lär dig mer om de begrepp som gäller för Microsoft Azure Maps väder tjänster (för hands version).
+title: Begrepp för väder tjänster i Microsoft Azure Maps
+description: Lär dig mer om de begrepp som gäller för Microsoft Azure Maps väder tjänster.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2020
@@ -8,18 +8,14 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 657cb6a86122d267b86e82b6f02eb58e968cddd3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 76d4eb08ba9cc0394610fdd00f6faba02278e8e3
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96904745"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258018"
 ---
-# <a name="weather-services-preview-in-azure-maps"></a>Väder tjänster (för hands version) i Azure Maps
-
-> [!IMPORTANT]
-> Azure Maps väder tjänster finns för närvarande i offentlig för hands version.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="weather-services-in-azure-maps"></a>Väder tjänster i Azure Maps
 
 I den här artikeln beskrivs begrepp som gäller för Azure Maps [väder tjänster](/rest/api/maps/weather). Vi rekommenderar att du går igenom den här artikeln innan du börjar med väder-API: erna.
 

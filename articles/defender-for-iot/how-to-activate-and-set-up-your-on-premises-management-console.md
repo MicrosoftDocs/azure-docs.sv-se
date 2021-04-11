@@ -1,14 +1,14 @@
 ---
 title: Aktivera och konfigurera den lokala hanteringskonsolen
 description: Genom att aktivera hanterings konsolen ser du till att sensorer registreras med Azure och skickar information till den lokala hanterings konsolen och att den lokala hanterings konsolen utför hanterings aktiviteter på anslutna sensorer.
-ms.date: 3/18/2021
+ms.date: 4/6/2021
 ms.topic: how-to
-ms.openlocfilehash: 86bbebb54753145e087865acd8c0d4690a53aa99
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: db0d2a84feeb5bf52932842badda8c126994c05d
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383871"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492162"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Aktivera och konfigurera den lokala hanteringskonsolen 
 
@@ -217,6 +217,10 @@ Så här konfigurerar du en webbplats:
 5. [Anslut sensorerna](how-to-manage-individual-sensors.md#connect-a-sensor-to-the-management-console).
 
 6. [Tilldela sensorer till plats zoner](#assign-sensors-to-zones).
+
+### <a name="delete-a-site"></a>Ta bort en webbplats
+
+Om du inte längre behöver en plats kan du ta bort den från den lokala hanterings konsolen.
 
 Så här tar du bort en webbplats:
 

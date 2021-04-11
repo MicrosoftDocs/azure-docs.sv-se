@@ -6,12 +6,12 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: d0fd62c0173bec17c217ece5560119749d1a4fc6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2027e3555a7eb616ad024ec00bf6b0f8f452167c
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739342"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258528"
 ---
 # <a name="azure-data-factory-faq"></a>Vanliga frågor och svar om Azure Data Factory
 
@@ -226,86 +226,11 @@ Använd kopierings aktiviteten till att mellanlagra data från någon av de andr
 
 ### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>Är den egna värdbaserade integrerings körningen tillgänglig för data flöden?
 
-IR med egen värd är en ADF-baserad pipeline-konstruktion som du kan använda med kopierings aktiviteten för att hämta eller flytta data till och från lokal eller VM-baserade data källor och mottagare. Mellanlagra data först med en kopia, sedan data flöde för omvandling och sedan en senare kopia om du behöver flytta transformerade data tillbaka till lokal Store.
+IR med egen värd är en ADF-baserad pipeline-konstruktion som du kan använda med kopierings aktiviteten för att hämta eller flytta data till och från lokal eller VM-baserade data källor och mottagare. De virtuella datorer som du använder för en IR med egen värd kan också placeras inuti samma VNET som dina skyddade data lager för åtkomst till dessa data lager från ADF. Med data flöden uppnår du samma slut resultat med hjälp av Azure IR med hanterat VNET i stället.
 
 ### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>Betjänar data flödets beräknings motor flera klienter?
 
 Kluster delas aldrig. Vi garanterar isolering för varje jobb körning i produktions körningar. I händelse av ett fel söknings scenario får en person ett kluster och alla fel kommer att gå till det klustret som initieras av användaren.
-
-## <a name="wrangling-data-flows"></a>Datatransformering data flöden
-
-### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>Vilka regioner stöds för datatransformering Data Flow?
-
-Datatransformering Data Flow stöds för närvarande i data fabriker som skapats i följande regioner:
-
-* Australien, östra
-* Kanada, centrala
-* Indien, centrala
-* East US
-* USA, östra 2
-* Japan, östra
-* Norra Europa
-* Sydostasien
-* USA, södra centrala
-* Storbritannien, södra
-* USA, västra centrala
-* Europa, västra
-* USA, västra
-* USA, västra 2
-
-### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>Vad är begränsningarna och begränsningarna med datatransformering Data Flow?
-
-Data uppsättnings namn får bara innehålla alfanumeriska tecken. Följande data lager stöds:
-
-* DelimitedText data uppsättning i Azure Blob Storage att använda konto nyckel autentisering
-* DelimitedText-datauppsättning i Azure Data Lake Storage Gen2 med hjälp av konto nyckel eller tjänstens huvud namns autentisering
-* DelimitedText-datauppsättning i Azure Data Lake Storage gen1 med tjänstens huvud namns autentisering
-* Azure SQL Database och informations lager med SQL-autentisering. Se SQL-typer som stöds nedan. Det finns inget PolyBase-eller mellanlagrings stöd för informations lagret.
-
-För närvarande stöds inte den länkade tjänst Key Vaults integreringen i datatransformering data flöden.
-
-### <a name="what-is-the-difference-between-mapping-and-wrangling-data-flows"></a>Vad är skillnaden mellan mappnings-och datatransformering data flöden?
-
-Att mappa data flöden är ett sätt att transformera data i skala utan att behöva koda. Du kan utforma ett datatransformerings jobb på data flödets arbets yta genom att skapa en serie med transformeringar. Börja med ett valfritt antal käll omvandlingar följt av data omvandlings steg. Slutför ditt data flöde med en mottagare för att få dina resultat i ett mål. Kart data flöde är bra vid mappning och omvandling av data med både kända och okända scheman i mottagare och källor.
-
-Med datatransformering data flöden kan du göra smidig data förberedelse och utforskning med Power Query online mashup-redigeraren i stor skala via Spark-körning. Med Rise of data sjöar behöver du ibland bara utforska en data uppsättning eller skapa en data uppsättning i sjön. Du mappar inte till ett känt mål. Datatransformering data flöden används för mindre formella och modellbaserade analys scenarier.
-
-### <a name="what-is-the-difference-between-power-platform-dataflows-and-wrangling-data-flows"></a>Vad är skillnaden mellan Power Platform-data flöden och datatransformering data flöden?
-
-Med Power Platform-data flöden kan användare importera och transformera data från en mängd olika data källor till Common Data Service och Azure Data Lake för att bygga PowerApps-program, Power BI rapporter eller flödes automatiseringar. Power Platform-data flöden använder etablerade Power Query data förberedelse upplevelser, ungefär som Power BI och Excel. Power Platform-data flöden möjliggör också enkel åter användning inom en organisation och hanterar dirigering automatiskt (t. ex. automatisk uppdatering av data flöden som är beroende av ett annat data flöde när den tidigare uppdateringen uppdateras).
-
-Azure Data Factory (ADF) är en hanterad data integrerings tjänst som gör det möjligt för data tekniker och medborgarna att kunna skapa komplexa hybrid-och ELT-arbetsflöden. Datatransformering data flöde i ADF ger användare en kostnads fri, Server fri miljö som fören klar förberedelsen av data i molnet och skalar till vilken data storlek som helst utan att någon infrastruktur hantering krävs. Den använder teknik för Power Query data bearbetning (som också används i Power Platform data flöden, Excel Power BI) för att förbereda och forma data. Datatransformering data flöden har utformats för att hantera alla komplexa och skala utmaningar med stor data integrering och gör det möjligt för användare att snabbt förbereda data i skala via Spark-körning. Användare kan bygga elastiska datapipeliner i en tillgänglig visuell miljö med vårt webbläsarbaserat gränssnitt och låta ADF hantera de komplexa körningarna av Spark. Bygg scheman för dina pipelines och övervaka dina data flödes körningar från den automatiska övervaknings portalen. Du kan enkelt hantera data tillgänglighets service avtal med ADF: s omfattande tillgänglighets övervakning och aviseringar och utnyttja inbyggda funktioner för kontinuerlig integrering och distribution för att spara och hantera dina flöden i en hanterad miljö. Upprätta aviseringar och Visa körnings planer för att kontrol lera att din logik presterar enligt planeringen när du finjusterar dina data flöden.
-
-### <a name="supported-sql-types"></a>SQL-typer som stöds
-
-Datatransformering Data Flow stöder följande data typer i SQL. Du får ett verifierings fel för att använda en datatyp som inte stöds.
-
-* short
-* double
-* real
-* flyt
-* char
-* nchar
-* varchar
-* nvarchar
-* heltal
-* int
-* bit
-* boolean
-* smallint
-* tinyint
-* bigint
-* long
-* text
-* date
-* datetime
-* datetime2
-* smalldatetime
-* timestamp
-* uniqueidentifier
-* xml
-
-Andra data typer kommer att stödjas i framtiden.
 
 ## <a name="next-steps"></a>Nästa steg
 

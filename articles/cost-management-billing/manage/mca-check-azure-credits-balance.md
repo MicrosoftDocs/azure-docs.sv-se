@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: banders
-ms.openlocfilehash: cf5772e9cf08eaa7f34acd59a9c96da6f20cd03d
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 96c37ded2750ad3e4882b203d71c75c9f4608e9d
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131419"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285917"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Spåra Azure-kreditbalansen för Microsoft-kundavtal
 
@@ -368,7 +368,7 @@ Du ser alla transaktioner som påverkat kreditsaldot för din faktureringsprofil
 
 I ett faktureringskonto för ett Microsoft-kundavtal använder du faktureringsprofiler för att hantera fakturor och betalningsmetoder. En månadsfaktura skapas för varje faktureringsprofil, och du använder betalningsmetoderna för att betala fakturan.
 
-Du tilldelar dina krediter till en faktureringsprofil. När en faktura genereras för faktureringsprofilen räknas krediterna automatiskt av från de totala avgifterna så att du ser vilket belopp du behöver betala. Du betalar återstående belopp med vald betalningsmetod, som check/banköverföring eller kreditkort.
+Du kan tilldela krediter som du har köpt till en fakturerings profil. När en faktura genereras för faktureringsprofilen räknas krediterna automatiskt av från de totala avgifterna så att du ser vilket belopp du behöver betala. Du betalar återstående belopp med vald betalningsmetod, som check/banköverföring eller kreditkort.
 
 ## <a name="products-that-arent-covered-by-azure-credits"></a>Produkter som inte omfattas av Azure-krediter
 

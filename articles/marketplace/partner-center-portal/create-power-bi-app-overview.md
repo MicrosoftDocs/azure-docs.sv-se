@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: b02c5bbf2e6accbea9c7a33dc26c4e89e46bb697
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13c659592b7e0b45d0d58519e3620babb8cb3c6a
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97679147"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107575"
 ---
 # <a name="power-bi-app-creation-overview"></a>Översikt över skapande av Power BI app
 
@@ -72,7 +72,7 @@ När din app har skapats och testats i Power BI sparar du webb adressen för pro
 
 Affärs kraven omfattar procedur mässiga, avtals liga och juridiska skyldigheter. Du måste:
 
-- Vara en registrerad kommersiell Marketplace-utgivare. Om du inte har registrerat dig följer du stegen i [skapa ett kommersiellt marknads plats konto i Partner Center](create-account.md).
+- Vara en registrerad kommersiell Marketplace-utgivare. Om du inte har registrerat dig följer du stegen i [skapa ett kommersiellt marknads plats konto i Partner Center](../create-account.md).
 - Ange innehåll som uppfyller kriterierna för ditt erbjudande som ska listas på AppSource. Mer information finns i [ha en app för att visa en lista på AppSource? Så här gör](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how)du.
 - Godkänn och följ [Microsofts sekretess policy](https://privacy.microsoft.com/privacystatement).
 

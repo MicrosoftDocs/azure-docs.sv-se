@@ -1,17 +1,17 @@
 ---
 title: Utöka lagringen automatiskt – Azure Portal-Azure Database for PostgreSQL-enskild server
 description: Den här artikeln beskriver hur du kan konfigurera automatisk storleks ökning för lagring med hjälp av Azure Portal i Azure Database for PostgreSQL-enskild server
-author: rothja
-ms.author: jroth
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/29/2019
-ms.openlocfilehash: 20c1d598cdb8bc68a3f2348547569a8f2719858c
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: dd6effff2fa38276729e2609e115ef72c7af4066
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551398"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228086"
 ---
 # <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>Utöka lagringen automatiskt med hjälp av Azure Portal i Azure Database for PostgreSQL-enskild server
 I den här artikeln beskrivs hur du kan konfigurera en Azure Database for PostgreSQL Server lagring så att den växer utan att arbets belastningen påverkas.

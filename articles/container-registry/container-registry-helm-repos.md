@@ -3,12 +3,12 @@ title: Lagra Helm-diagram
 description: Lär dig hur du lagrar Helm-diagram för dina Kubernetes-program med hjälp av databaser i Azure Container Registry
 ms.topic: article
 ms.date: 06/12/2020
-ms.openlocfilehash: 69b16f35589586787e1c31a0e9755b9030af755d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9897ed6e43813c16314076b0322cd263cd2ed150
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86537875"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223089"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Push-och pull-Helm diagram till ett Azure Container Registry
 
@@ -31,7 +31,7 @@ Helm 3 ska användas som värd för Helm-diagram i Azure Container Registry. Med
 * Använd `helm chart` kommandon i Helm CLI för att skicka, hämta och hantera Helm-diagram i ett register
 * Använd `helm install` för att installera diagram till ett Kubernetes-kluster från en lokal cache för lagring.
 > [!NOTE]
-> Från och med Helm 3 är [AZ ACR Helm][az-acr-helm] -kommandon för användning med Helm 2-klienten inaktuella. Se [produkt översikten](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga). Om du tidigare har distribuerat Helm 2-diagram, se [migrera Helm v2 till v3](https://helm.sh/docs/topics/v2_v3_migration/).
+> Från och med Helm 3 är [AZ ACR Helm][az-acr-helm] -kommandon för användning med Helm 2-klienten inaktuella. Ett meddelande om minst 3 månader kommer att tillhandahållas i förväg av kommando borttagningen. Om du tidigare har distribuerat Helm 2-diagram, se [migrera Helm v2 till v3](https://helm.sh/docs/topics/v2_v3_migration/).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
