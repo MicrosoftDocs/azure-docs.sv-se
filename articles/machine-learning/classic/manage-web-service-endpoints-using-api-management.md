@@ -80,12 +80,12 @@ Så här skapar du API: et:
 
 Fönstret **ny åtgärd** visas och fliken **signatur** är markerad som standard.
 
-## <a name="add-rrs-operation"></a>Lägg till resurs åtgärd
+## <a name="add-rrs-operation&quot;></a>Lägg till resurs åtgärd
 Skapa först en åtgärd för AzureML RR-tjänsten:
 
 1. För **http-verbet** väljer du **post**.
-2. Skriv "" för **URL**-mallen `/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}` .
-3. Ange ett **visnings namn** (det här exemplet använder "resurs poster körs").
+2. Skriv &quot;&quot; för **URL**-mallen `/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}` .
+3. Ange ett **visnings namn** (det här exemplet använder &quot;resurs poster körs").
 
    ![Skärm bild som visar sidan signatur där du kan ange ett visnings namn.](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
 

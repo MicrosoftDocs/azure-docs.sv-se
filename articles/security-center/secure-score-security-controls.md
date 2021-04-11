@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: memildin
-ms.openlocfilehash: b19a7c156abf32e2a0f6d70717145a6ed5ab42ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2f5d98dd9bf893065f2bf9c37cbec4384d0f7c94
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099683"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727148"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Säkerhetspoäng i Azure Security Center
 
@@ -69,7 +69,7 @@ Den maximala poängen för den här kontrollen, tillämpa system uppdateringar, 
 |**Säkerhets kontrollens aktuella Poäng**|<br>![Ekvation för att beräkna en säkerhets kontrolls Poäng](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>Varje enskild säkerhets kontroll bidrar till säkerhets poängen. Varje resurs som påverkas av en rekommendation inom kontrollen bidrar till kontrollens aktuella resultat. Den aktuella poängen för varje kontroll är ett mått på statusen för resurserna *i* kontrollen.<br>![Knapp beskrivningar som visar de värden som används när du beräknar säkerhets kontrollens aktuella Poäng](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>I det här exemplet skulle max poängen på 6 divideras med 78 eftersom det är summan av de felfria och felaktiga resurserna.<br>6/78 = 0,0769<br>Om du multiplicerar det med antalet felfria resurser (4) resulterar det i den aktuella poängen:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Säkerhetspoäng**<br>Enstaka prenumeration|<br>![Ekvation för att beräkna en prenumerations säkra Poäng](media/secure-score-security-controls/secure-score-equation-single-sub.png)<br><br>![Säker Poäng för enskild prenumeration med alla kontroller aktiverade](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>I det här exemplet finns det en enda prenumeration med alla säkerhets kontroller som är tillgängliga (en potentiell högsta poäng på 60 punkter). Poängen visar 28 punkter av en möjlig 60 och de återstående 32 punkterna visas i siffrorna "potentiella Poäng ökning" i säkerhets kontrollerna.<br>![Lista över kontroller och potentiella Poäng ökningar](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
 |**Säkerhetspoäng**<br>Flera prenumerationer|<br>![Ekvation för att beräkna säkra Poäng för flera prenumerationer](media/secure-score-security-controls/secure-score-equation-multiple-subs.png)<br><br>När du beräknar de kombinerade poängen för flera prenumerationer innehåller Security Center en *vikt* för varje prenumeration. De relativa vikterna för dina prenumerationer bestäms av Security Center baserat på faktorer som antalet resurser.<br>Den aktuella poängen för varje prenumeration beräknas på samma sätt som för en enskild prenumeration, men sedan tillämpas vikten på det sätt som visas i ekvationen.<br>När du visar flera prenumerationer utvärderar säkra poäng alla resurser i alla aktiverade principer och grupperar deras kombinerade påverkan på varje säkerhets kontrolls maximala poäng.<br>![Säkra Poäng för flera prenumerationer med aktiverade kontroller](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Den kombinerade poängen är **inte** ett medelvärde. i stället är det utvärderat position av status för alla resurser i alla prenumerationer.<br>Om du går till sidan rekommendationer och lägger till tillgängliga tillgängliga punkter, kommer du att se att det är skillnaden mellan den aktuella poängen (24) och den maximala poängen som är tillgänglig (60).|
-||||
+
 
 ### <a name="which-recommendations-are-included-in-the-secure-score-calculations"></a>Vilka rekommendationer ingår i de säkra Poäng beräkningarna?
 

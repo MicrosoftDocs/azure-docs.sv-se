@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: duau
-ms.openlocfilehash: 038e018a22af3546f5d3c66f6d8ee3963483cce1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3f8cf5de012999c0f814964fd41042a0caf78b42
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102615065"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106678"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>Om ExpressRoute-gatewayer för virtuella nätverk
 
@@ -53,7 +53,7 @@ Innan du skapar en ExpressRoute-Gateway måste du skapa ett Gateway-undernät. G
 
 När du skapar gatewayundernätet anger du det antal IP-adresser som undernätet innehåller. IP-adresserna i Gateway-undernätet tilldelas till gateway-VM: ar och gateway-tjänsterna. Vissa konfigurationer kräver fler IP-adresser än andra. 
 
-När du planerar storleken på Gateway-undernätet läser du dokumentationen för den konfiguration som du planerar att skapa. Till exempel kräver ExpressRoute-och VPN Gateway-konfigurationer som är samtidigt ett större Gateway-undernät än de flesta andra konfigurationer. Dessutom kanske du vill kontrol lera att Gateway-undernätet innehåller tillräckligt med IP-adresser för att kunna hantera framtida ytterligare konfigurationer. Även om du kan skapa ett Gateway-undernät så litet som/29, rekommenderar vi att du skapar ett Gateway-undernät på/27 eller större (/27,/26 osv.) om du har det tillgängliga adress utrymmet. Om du skapar ett undernät med dubbla stack-Gateway rekommenderar vi att du även använder ett IPv6-intervall på/64 eller större. Detta kommer att hantera de flesta konfigurationer.
+När du planerar storleken på Gateway-undernätet läser du dokumentationen för den konfiguration som du planerar att skapa. Till exempel kräver ExpressRoute-och VPN Gateway-konfigurationer som är samtidigt ett större Gateway-undernät än de flesta andra konfigurationer. Dessutom kanske du vill kontrol lera att Gateway-undernätet innehåller tillräckligt med IP-adresser för att kunna hantera framtida ytterligare konfigurationer. Även om du kan skapa ett Gateway-undernät så litet som/29, rekommenderar vi att du skapar ett Gateway-undernät på/27 eller större (/27,/26 osv.) om du har det tillgängliga adress utrymmet. Om du planerar att ansluta 16 ExpressRoute-kretsar till din gateway, **måste** du skapa ett Gateway-undernät på/26 eller större. Om du skapar ett undernät med dubbla stack-Gateway rekommenderar vi att du även använder ett IPv6-intervall på/64 eller större. Detta kommer att hantera de flesta konfigurationer.
 
 Följande PowerShell-exempel i Resource Manager visar ett Gateway-undernät med namnet GatewaySubnet. Du kan se CIDR-noteringen anger en/27, vilket gör det möjligt för tillräckligt med IP-adresser för de flesta konfigurationer som för närvarande finns.
 

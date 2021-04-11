@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/3/2021
+ms.date: 3/26/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 5549fc3b63b76c6158ae7399e6d94a43d2d4f28f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a794274248a12af97174dcc4e86bd4231e9d9dda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102435196"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727492"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Viktig information om Azure File Sync-agenten
 Med Azure File Sync kan du centralisera din organisations filresurser i Azure Files med samma flexibilitet, prestanda och kompatibilitet som du får om du använder en lokal filserver. Dina Windows Server-installationer omvandlas till ett snabbt cacheminne för Azure-filresursen. Du kan använda alla protokoll som är tillgängliga på Windows Server för att komma åt data lokalt (inklusive SMB, NFS och FTPS). Du kan ha så många cacheminnen som du behöver över hela världen.
@@ -25,6 +25,7 @@ Följande Azure File Sync agent versioner stöds:
 
 | Gränser | Agentversionsnummer | Utgivningsdatum | Status |
 |----|----------------------|--------------|------------------|
+| V12-version – [KB4568585](https://support.microsoft.com/topic/b9605f04-b4af-4ad8-86b0-2c490c535cfd)| 12.0.0.0 | 26 mars 2021 | Support – flyg |
 | V 11.2-utgåva – [KB4539952](https://support.microsoft.com/topic/azure-file-sync-agent-v11-2-release-february-2021-c956eaf0-cd8e-4511-98c0-e5a1f2c84048)| 11.2.0.0 | 2 februari 2021 | Stöds |
 | V 11.1 release- [KB4539951](https://support.microsoft.com/help/4539951)| 11.1.0.0 | 4 november 2020 | Stöds |
 | V 10.1-version – [KB4522411](https://support.microsoft.com/help/4522411)| 10.1.0.0 | 5 juni 2020 | Agent versionen som stöds upphör att gälla den 7 juni 2021 |
@@ -48,13 +49,98 @@ Följande Azure File Sync agent versioner har upphört att gälla och stöds int
 ### <a name="azure-file-sync-agent-update-policy"></a>Uppdateringsprincip för Azure File Sync-agenten
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
+## <a name="agent-version-12000"></a>12.0.0.0 för agent version
+Följande viktig information gäller version 12.0.0.0 av Azure File Sync agent (lanseras 26 mars 2021).
+
+### <a name="improvements-and-issues-that-are-fixed"></a>Förbättringar och problem som åtgärdas
+- Ny portal miljö för att konfigurera nätverks åtkomst princip och anslutningar för privata slut punkter
+    - Nu kan du använda portalen för att inaktivera åtkomst till den offentliga slut punkten för Storage Sync-tjänsten och för att godkänna, avvisa och ta bort anslutningar för privata slut punkter. Om du vill konfigurera nätverks åtkomst principen och anslutningar för privata slut punkter öppnar du tjänsten Storage Sync service portal, går till avsnittet Inställningar och klickar på nätverk.
+ 
+- Stöd för moln nivåer för volym kluster storlekar som är större än 64KiB
+    - Moln nivåer stöder nu volym kluster storlekar upp till 2MiB på Server 2019. Mer information finns i [Vad är den minsta fil storleken för en fil till-nivå?](https://docs.microsoft.com/azure/storage/files/storage-sync-choose-cloud-tiering-policies#minimum-file-size-for-a-file-to-tier).
+ 
+- Mät bandbredd och svars tid till Azure File Sync tjänst-och lagrings konto
+    - Test-StorageSyncNetworkConnectivity-cmdleten kan nu användas för att mäta svars tid och bandbredd för Azure File Sync-tjänsten och lagrings kontot. Svars tiden på Azure File Sync tjänsten och lagrings kontot mäts som standard när du kör cmdleten.  Ladda upp och ladda ned bandbredd till lagrings kontot mäts när du använder parametern "-MeasureBandwidth".
+ 
+        Om du till exempel vill mäta bandbredd och svars tid för Azure File Sync tjänst och lagrings konto kör du följande PowerShell-kommandon:
+ 
+        ```powershell
+        Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+        Test-StorageSyncNetworkConnectivity -MeasureBandwidth 
+        ``` 
+ 
+- Förbättrade fel meddelanden i portalen när det inte går att skapa en server slut punkt
+    - Vi hörde din feedback och har förbättrat fel meddelandena och vägledningen när det inte gick att skapa en server slut punkt.
+ 
+- Diverse förbättringar av prestanda och tillförlitlighet
+    - Förbättrad prestanda för ändrings identifiering för att identifiera filer som har ändrats i Azure-filresursen.
+    - Prestanda förbättringar för synkronisering av avstämnings-sessioner. 
+    - Förbättringar av synkronisering för att minska ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED och ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED fel.
+    - Filer kan Miss lyckas på nivån på Server 2019 om datadeduplicering har Aktiver ATS på volymen.
+    - AFSDiag kan inte komprimera filer om en fil är större än 2GiB.
+
+### <a name="evaluation-tool"></a>Utvärderings verktyg
+Innan du distribuerar Azure File Sync bör du utvärdera om den är kompatibel med systemet med hjälp av verktyget för Azure File Sync utvärdering. Det här verktyget är en Azure PowerShell-cmdlet som kontrollerar eventuella problem med fil systemet och data uppsättningen, till exempel tecken som inte stöds eller en operativ system version som inte stöds. Anvisningar för installation och användning finns i avsnittet [utvärderings verktyg](./storage-sync-files-planning.md#evaluation-cmdlet) i planerings guiden. 
+
+### <a name="agent-installation-and-server-configuration"></a>Agentinstallation och serverkonfiguration
+Mer information om hur du installerar och konfigurerar Azure File Sync-agenten med Windows Server finns i [Planera för en Azure File Sync distribution](storage-sync-files-planning.md) och [Distribuera Azure File Sync](storage-sync-files-deployment-guide.md).
+
+- En omstart krävs för servrar som har en befintlig Azure File Sync agent installation.
+- Agent installations paketet måste installeras med utökade behörigheter (admin).
+- Agenten stöds inte för distributions alternativet Nano Server.
+- Agenten stöds endast på Windows Server 2019, Windows Server 2016 och Windows Server 2012 R2.
+- Agenten kräver minst 2 GiB minne. Om servern körs på en virtuell dator med dynamiskt minne aktiverat, ska den virtuella datorn konfigureras med minst 2048 MiB för minne. Se [rekommenderade system resurser](./storage-sync-files-planning.md#recommended-system-resources) för mer information.
+- Tjänsten Storage Sync agent (FileSyncSvc) stöder inte Server slut punkter som finns på en volym som har SVI-katalogen (System Volume information) komprimerad. Den här konfigurationen leder till oväntade resultat.
+
+### <a name="interoperability"></a>Samverkan
+- Program som antivirus, program för säkerhetskopiering och andra program som har åtkomst till nivåindelade filer kan orsaka oönskade återkallanden om de inte respekterar attributet offline och hoppar över att läsa innehållet i filerna. Mer information finns i [felsöka Azure File Sync](storage-sync-files-troubleshoot.md).
+- Fil gallren i Hanteraren för fil server resurser (FSRM) kan orsaka oändliga synkroniseringsfel när filer blockeras på grund av fil gallret.
+- Körning av Sysprep på en server där Azure File Sync-agenten är installerad stöds inte och kan leda till oväntade resultat. Azure File Sync agenten bör installeras efter att du har distribuerat Server avbildningen och slutfört Sysprep-miniinstallationsprogrammet.
+
+### <a name="sync-limitations"></a>Synkroniseringsbegränsningar
+Följande objekt synkroniseras inte, men resten av systemet fortsätter att fungera normalt:
+- Filer med tecken som inte stöds. Se [fel söknings guide](storage-sync-files-troubleshoot.md#handling-unsupported-characters) för en lista med tecken som inte stöds.
+- Filer eller kataloger som slutar med en punkt.
+- Sökvägar som är längre än 2 048 tecken.
+- SACL-delen av en säkerhetsbeskrivning som används för granskning.
+- Utökade attribut.
+- Alternativa dataströmmar.
+- Referenspunkter.
+- Hårda länkar.
+- Komprimering (om det angetts på en serverfil) bevaras inte när ändringar synkroniseras till filen från andra slutpunkter.
+- Alla filer som krypterats med EFS (eller andra typer av kryptering från användarläget) som förhindrar att tjänsten läser data.
+
+    > [!Note]  
+    > Azure File Sync krypterar alltid data under överföring. Vilande data är alltid krypterade i Azure.
+ 
+### <a name="server-endpoint"></a>Server slut punkt
+- En serverslutpunkt kan endast skapas på en NTFS-volym. ReFS, FAT, FAT32 och andra filsystem stöds inte av Azure File Sync för närvarande.
+- Molnnivåindelning stöds inte på systemvolymen. Om du vill skapa en serverslutpunkt på systemvolymen inaktiverar du molnnivåindelning när du skapar serverslutpunkten.
+- Redundansklustring stöds endast med klustrade diskar, inte med klusterdelade volymer (CSV).
+- Serverslutpunkter får inte vara kapslade. De får dock finnas på samma volym parallellt med varandra.
+- Lagra inte en operativ system-eller program växlings fil på en server slut punkts plats.
+- Server namnet i portalen uppdateras inte om servern byter namn.
+
+### <a name="cloud-endpoint"></a>Moln slut punkt
+- Azure File Sync har stöd för att göra ändringar i Azure-filresursen direkt. Alla ändringar som görs på Azure-filresursen måste dock först identifieras av ett Azure File Sync ändrings identifierings jobb. Ett ändrings identifierings jobb initieras för en moln slut punkt var 24: e timme. Om du vill synkronisera filer som har ändrats i Azure-filresursen direkt kan du använda PowerShell-cmdleten [Invoke-AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) för att manuellt initiera identifieringen av ändringar i Azure-filresursen. Ändringar som görs i en Azure-filresurs via REST-protokollet kommer dessutom inte att uppdatera tidpunkten för senaste ändring av SMB och visas inte som en ändring genom synkronisering.
+- Tjänsten Storage Sync och/eller lagrings kontot kan flyttas till en annan resurs grupp, prenumeration eller Azure AD-klient. När lagrings tjänsten för synkronisering eller lagrings kontot har flyttats måste du ge Microsoft. StorageSync-programmet åtkomst till lagrings kontot (se [Se till att Azure File Sync har åtkomst till lagrings kontot](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)).
+
+    > [!Note]  
+    > När du skapar moln slut punkten måste Storage Sync-tjänsten och lagrings kontot finnas i samma Azure AD-klient. När moln slut punkten har skapats kan tjänsten Storage Sync och lagrings kontot flyttas till olika Azure AD-klienter.
+
+### <a name="cloud-tiering"></a>Lagringsnivåer för moln
+- Om en nivåindelad fil kopieras till en annan plats med Robocopy så kommer den kopierade filen inte att vara nivåindelad. Offline-attributet kan anges eftersom Robocopy felaktigt tar med det attributet i kopieringsåtgärder.
+- När du kopierar filer med Robocopy kan du använda alternativet/MIR för att bevara tidsstämplar för filer. Detta säkerställer att äldre filer går fortare än vid nyligen öppnade filer.
+    > [!Warning]  
+    > Robocopy/B-växeln stöds inte med Azure File Sync. Om du använder Robocopy/B-växeln med en Azure File Sync Server slut punkt när källan kan leda till skadade filer.
+
 ## <a name="agent-version-11200"></a>11.2.0.0 för agent version
 Följande viktig information gäller version 11.2.0.0 av Azure File Sync agent som publicerades den 2 februari 2021. De här anteckningarna är utöver de versions anteckningar som anges för version 11.1.0.0.
 
 ### <a name="improvements-and-issues-that-are-fixed"></a>Förbättringar och problem som åtgärdas 
 - Om en synkroniseringsanslutning avbryts på grund av ett stort antal fel per objekt, kan synkroniseringen gå igenom avstämningen när en ny session startar om den Azure File Sync tjänsten fastställer en anpassad svarsomgång som krävs för att korrigera felen per objekt.
 - Att registrera en server med hjälp av Register-AzStorageSyncServer cmdlet kan Miss lyckas med fel meddelandet "ohanterat undantag".
-- Ny PowerShell-cmdlet (Add-StorageSyncAllowedServerEndpointPath) för att konfigurera tillåtna Sök vägar för Server slut punkter på en server. Denna cmdlet är användbar för scenarier där Azure File Sync-distributionen hanteras av en leverantör av moln lösningar (CSP) eller tjänst leverantör och kunden vill konfigurera tillåtna Sök vägar för Server slut punkter på en server. När du skapar en server slut punkt, och den angivna sökvägen inte finns i listan över tillåtna, kommer det inte att gå att skapa server slut punkten. OBS! detta är en valfri funktion och alla sökvägar som stöds tillåts som standard när du skapar en server slut punkt.  
+- Ny PowerShell-cmdlet (Add-StorageSyncAllowedServerEndpointPath) för att konfigurera tillåtna Sök vägar för Server slut punkter på en server. Denna cmdlet är användbar för scenarier där Azure File Sync-distributionen hanteras av en leverantör av moln lösningar (CSP) eller tjänst leverantör och kunden vill konfigurera tillåtna Sök vägar för Server slut punkter på en server. När du skapar en server slut punkt, och den angivna sökvägen inte finns i tillåten, kommer det inte att gå att skapa server slut punkten. OBS! detta är en valfri funktion och alla sökvägar som stöds tillåts som standard när du skapar en server slut punkt.  
 
     
     - Om du vill lägga till en sökväg för Server slut punkten som tillåts kör du följande PowerShell-kommandon på servern:

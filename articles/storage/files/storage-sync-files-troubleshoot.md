@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4439346a065f17f5b2136f51fd5e8b990fa1b914
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f20ebfdf9bdd1272ac1cb16e1ad88b4cbc287e5d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103491307"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727611"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Felsök Azure File Sync
 Använd Azure File Sync för att centralisera organisationens fil resurser i Azure Files, samtidigt som du behåller flexibilitet, prestanda och kompatibilitet för en lokal fil server. Windows Server omvandlas av Azure File Sync till ett snabbt cacheminne för Azure-filresursen. Du kan använda alla protokoll som är tillgängliga på Windows Server för att komma åt data lokalt, inklusive SMB, NFS och FTPS. Du kan ha så många cacheminnen som du behöver över hela världen.
@@ -373,7 +373,7 @@ Tabellen nedan innehåller alla Unicode-tecken Azure File Sync ännu inte har st
 ### <a name="common-sync-errors"></a>Vanliga synkroniseringsfel
 <a id="-2147023673"></a>**Den synkroniserade sessionen avbröts.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x800704c7 |
 | **HRESULT (decimal)** | – 2147023673 | 
@@ -384,7 +384,7 @@ Sync-sessioner kan Miss lyckas av olika orsaker, inklusive servern som startas o
 
 <a id="-2147012889"></a>**Det gick inte att upprätta en anslutning till tjänsten.**    
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80072EE7 |
 | **HRESULT (decimal)** | – 2147012889 | 
@@ -395,7 +395,7 @@ Sync-sessioner kan Miss lyckas av olika orsaker, inklusive servern som startas o
 
 <a id="-2134376372"></a>**Användarbegäran begränsades av tjänsten.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c8004c |
 | **HRESULT (decimal)** | – 2134376372 |
@@ -406,7 +406,7 @@ Ingen åtgärd krävs. servern kommer att försöka igen. Om felet kvarstår i f
 
 <a id="-2134364043"></a>**Synkroniseringen blockeras tills ändrings identifieringen har slutförts efter återställning**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c83075 |
 | **HRESULT (decimal)** | – 2134364043 |
@@ -417,7 +417,7 @@ Ingen åtgärd krävs. När en fil-eller fil resurs (moln slut punkt) återstäl
 
 <a id="-2147216747"></a>**Det gick inte att synkronisera eftersom Sync-databasen har inaktiverats.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80041295 |
 | **HRESULT (decimal)** | – 2147216747 |
@@ -428,7 +428,7 @@ Det här felet uppstår vanligtvis när ett säkerhetskopieringsprogram skapar e
 
 <a id="-2134364065"></a>**Synkroniseringen har inte åtkomst till den Azure-filresurs som anges i moln slut punkten.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c8305f |
 | **HRESULT (decimal)** | – 2134364065 |
@@ -444,7 +444,7 @@ Det här felet beror på att Azure File Sync-agenten inte kommer åt Azure-filre
 
 <a id="-2134351804"></a>**Det gick inte att synkronisera eftersom begäran inte har behörighet att utföra den här åtgärden.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c86044 |
 | **HRESULT (decimal)** | – 2134351804 |
@@ -460,7 +460,7 @@ Felet beror på att Azure File Sync agent inte har behörighet att komma åt Azu
 
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**Det gick inte att matcha det lagrings konto namn som används.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80C83060 |
 | **HRESULT (decimal)** | – 2134364064 |
@@ -477,7 +477,7 @@ Felet beror på att Azure File Sync agent inte har behörighet att komma åt Azu
 
 <a id="-2134364022"></a><a id="storage-unknown-error"></a>**Ett okänt fel uppstod vid åtkomst till lagrings kontot.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c8308a |
 | **HRESULT (decimal)** | – 2134364022 |
@@ -489,7 +489,7 @@ Felet beror på att Azure File Sync agent inte har behörighet att komma åt Azu
 
 <a id="-2134364014"></a>**Synkroniseringen misslyckades på grund av att lagrings kontot är låst.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c83092 |
 | **HRESULT (decimal)** | – 2134364014 |
@@ -500,7 +500,7 @@ Felet beror på att lagrings kontot har ett skrivskyddat [resurs lås](../../azu
 
 <a id="-1906441138"></a>**Synkroniseringen misslyckades på grund av ett problem med Sync-databasen.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x8e5e044e |
 | **HRESULT (decimal)** | – 1906441138 |
@@ -511,7 +511,7 @@ Felet uppstår när det finns ett problem med den interna databasen som används
 
 <a id="-2134364053"></a>**Den Azure File Sync agent-version som är installerad på servern stöds inte.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80C8306B |
 | **HRESULT (decimal)** | – 2134364053 |
@@ -522,7 +522,7 @@ Det här felet inträffar om den Azure File Sync-agentversion som är installera
 
 <a id="-2134351810"></a>**Du har nått lagrings gränsen för Azure-filresursen.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c8603e |
 | **HRESULT (decimal)** | – 2134351810 |
@@ -548,7 +548,7 @@ Om resursen är full och ingen kvot har angetts kan du åtgärda problemet genom
 
 <a id="-2134351824"></a>**Det går inte att hitta Azure-filresursen.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c86030 |
 | **HRESULT (decimal)** | – 2134351824 |
@@ -564,7 +564,7 @@ Om Azure-filresursen har tagits bort måste du skapa en ny fil resurs och sedan 
 
 <a id="-2134364042"></a>**Synkroniseringen pausas medan den här Azure-prenumerationen pausas.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80C83076 |
 | **HRESULT (decimal)** | – 2134364042 |
@@ -575,7 +575,7 @@ Det här felet uppstår vid uppehåll i Azure-prenumerationen. Synkroniseringen 
 
 <a id="-2134375618"></a>**Lagrings kontot har en brand vägg eller virtuella nätverk som har kon figurer ATS.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c8033e |
 | **HRESULT (decimal)** | – 2134375618 |
@@ -586,7 +586,7 @@ Felet uppstår när det inte går att nå Azure-filresursen på grund av en bran
 
 <a id="-2134375911"></a>**Synkroniseringen misslyckades på grund av ett problem med Sync-databasen.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c80219 |
 | **HRESULT (decimal)** | – 2134375911 |
@@ -602,7 +602,7 @@ Om felet kvarstår i fler timmar än några timmar kan du skapa en supportbegär
 
 <a id="-2146762487"></a>**Servern kunde inte upprätta en säker anslutning. Moln tjänsten tog emot ett oväntat certifikat.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x800b0109 |
 | **HRESULT (decimal)** | – 2146762487 |
@@ -627,7 +627,7 @@ Genom att ange det här registervärdet accepterar Azure File Sync-agenten alla 
 
 <a id="-2147012894"></a>**Det gick inte att upprätta en anslutning till tjänsten.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80072ee2 |
 | **HRESULT (decimal)** | – 2147012894 |
@@ -638,7 +638,7 @@ Genom att ange det här registervärdet accepterar Azure File Sync-agenten alla 
 
 <a id="-2134375680"></a>**Synkroniseringen misslyckades på grund av ett problem med autentiseringen.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c80300 |
 | **HRESULT (decimal)** | – 2134375680 |
@@ -649,7 +649,7 @@ Det här felet uppstår vanligtvis på grund av att servertiden är fel. Om serv
 
 <a id="-2134364040"></a>**Synkroniseringen misslyckades på grund av att certifikatet upphör att gälla.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c83078 |
 | **HRESULT (decimal)** | – 2134364040 |
@@ -673,7 +673,7 @@ Om certifikatet för klientautentisering har upphört att gälla löser du probl
 
 <a id="-2134375896"></a>**Det gick inte att synkronisera eftersom det inte gick att hitta autentiseringscertifikatet.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c80228 |
 | **HRESULT (decimal)** | – 2134375896 |
@@ -693,7 +693,7 @@ Det här felet beror på att det inte går att hitta certifikatet som används f
 
 <a id="-2134364039"></a>**Det gick inte att synkronisera eftersom det inte gick att hitta autentiserings-ID.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c83079 |
 | **HRESULT (decimal)** | – 2134364039 |
@@ -704,14 +704,14 @@ Felet beror på att borttagningen av serverslutpunkten misslyckades och att slut
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**Den volym där Server slut punkten finns har ont om disk utrymme.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x8e5e0211 |
 | **HRESULT (decimal)** | – 1906441711 |
 | **Felsträng** | JET_errLogDiskFull |
 | **Reparation krävs** | Ja |
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c8031a |
 | **HRESULT (decimal)** | – 2134375654 |
@@ -722,7 +722,7 @@ Det här felet beror på att volymen är full. Felet uppstår vanligtvis när fi
 
 <a id="-2134364145"></a><a id="replica-not-ready"></a>**Tjänsten är ännu inte klar för synkronisering med den här server slut punkten.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c8300f |
 | **HRESULT (decimal)** | – 2134364145 |
@@ -733,21 +733,21 @@ Felet beror på att moln slut punkten skapades med innehåll som redan finns på
 
 <a id="-2134375877"></a><a id="-2134375908"></a><a id="-2134375853"></a>**Synkroniseringen misslyckades på grund av problem med många enskilda filer.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c8023b |
 | **HRESULT (decimal)** | – 2134375877 |
 | **Felsträng** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
 | **Reparation krävs** | Ja |
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c8021c |
 | **HRESULT (decimal)** | – 2134375908 |
 | **Felsträng** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
 | **Reparation krävs** | Ja |
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c80253 |
 | **HRESULT (decimal)** | – 2134375853 |
@@ -761,7 +761,7 @@ Det går inte att synkronisera sessioner med ett av dessa fel när det finns må
 
 <a id="-2134376423"></a>**Synkroniseringen misslyckades på grund av ett problem med Server slut punktens sökväg.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c80019 |
 | **HRESULT (decimal)** | – 2134376423 |
@@ -772,7 +772,7 @@ Se till att sökvägen finns på en lokal NTFS-volym och inte är en referens pu
 
 <a id="-2134375817"></a>**Det gick inte att synkronisera eftersom filter driv Rutinens version inte är kompatibel med agent versionen**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80C80277 |
 | **HRESULT (decimal)** | – 2134375817 |
@@ -783,7 +783,7 @@ Det här felet beror på att den version av filterdrivrutinen för molnnivåinde
 
 <a id="-2134376373"></a>**Tjänsten är inte tillgänglig för tillfället.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c8004b |
 | **HRESULT (decimal)** | – 2134376373 |
@@ -794,7 +794,7 @@ Felet beror på att tjänsten Azure File Sync-tjänsten inte är tillgänglig. D
 
 <a id="-2146233088"></a>**Det gick inte att synkronisera på grund av ett undantag.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80131500 |
 | **HRESULT (decimal)** | – 2146233088 |
@@ -805,7 +805,7 @@ Felet beror på att synkroniseringen misslyckades på grund av ett undantag. Om 
 
 <a id="-2134364045"></a>**Synkroniseringen misslyckades eftersom lagrings kontot har redundansväxlats till en annan region.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c83073 |
 | **HRESULT (decimal)** | – 2134364045 |
@@ -816,7 +816,7 @@ Felet beror på att lagringskontot har redundansväxlat till en annan region. Az
 
 <a id="-2134375922"></a>**Synkroniseringen misslyckades på grund av ett tillfälligt problem med Sync-databasen.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c8020e |
 | **HRESULT (decimal)** | – 2134375922 |
@@ -827,7 +827,7 @@ Det här felet uppstår på grund av ett internt problem med Sync-databasen. Det
 
 <a id="-2134364024"></a>**Synkroniseringen misslyckades på grund av ändringar i Azure Active Directory klient organisationen**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c83088 |
 | **HRESULT (decimal)** | – 2134364024 | 
@@ -840,7 +840,7 @@ När du har den senaste agent versionen måste du ge programmet Microsoft. Stora
 
 <a id="-2134364010"></a>**Det gick inte att synkronisera eftersom brand väggen och inget virtuellt nätverks undantag har kon figurer ATS**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c83096 |
 | **HRESULT (decimal)** | – 2134364010 | 
@@ -851,7 +851,7 @@ Det här felet uppstår om inställningarna för brand vägg och virtuellt nätv
 
 <a id="-2147024891"></a>**Synkroniseringen misslyckades eftersom behörigheterna för mappen System Volume information är felaktiga.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80070005 |
 | **HRESULT (decimal)** | – 2147024891 |
@@ -870,7 +870,7 @@ Det här felet kan inträffa om kontot NT AUTHORITY\SYSTEM inte har behörighet 
 
 <a id="-2134375810"></a>**Synkroniseringen misslyckades eftersom Azure-filresursen togs bort och återskapades.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c8027e |
 | **HRESULT (decimal)** | – 2134375810 |
@@ -889,7 +889,7 @@ Lös problemet genom att ta bort och återskapa synkroniseringsgruppen med hjäl
 
 <a id="-2145844941"></a>**Synkroniseringen misslyckades eftersom HTTP-begäran omdirigerades**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80190133 |
 | **HRESULT (decimal)** | – 2145844941 |
@@ -900,7 +900,7 @@ Felet beror på att Azure File Sync inte stöder HTTP-omdirigering (3xx status k
 
 <a id="-2134364027"></a>**En timeout uppstod under data överföringen offline, men den pågår fortfarande.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c83085 |
 | **HRESULT (decimal)** | – 2134364027 |
@@ -911,7 +911,7 @@ Felet uppstår när en data inmatnings åtgärd överskrider tids gränsen. Det 
 
 <a id="-2134375814"></a>**Det gick inte att synkronisera eftersom det inte går att hitta sökvägen till Server slut punkten på servern.**  
 
-| | |
+| Fel | Kod |
 |-|-|
 | **HRESULT** | 0x80c8027a |
 | **HRESULT (decimal)** | – 2134375814 |

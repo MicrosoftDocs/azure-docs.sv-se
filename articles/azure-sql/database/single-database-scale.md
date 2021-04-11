@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 02/22/2021
-ms.openlocfilehash: 5852899175f9cc9f2725b875c6e1ce9fd682768d
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: c5b6509cabd743a01a085639a7b76d764555a9f8
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105625279"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106661"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skala enkla databasresurser i Azure SQL Database
 
@@ -62,9 +62,6 @@ Beräknad svars tid för att ändra tjänst nivån, skala beräknings storleken 
 >
 > Du kan ta reda på om en databas använder PFS-lagring genom att köra följande fråga i databasens kontext. Om värdet i kolumnen flervärdesattribut är `PremiumFileStorage` eller `PremiumFileStorage-ZRS` , använder databasen PFS-lagring.
 
-[!NOTE]
- Zonens redundanta egenskap förblir samma som standard när du skalar från Affärskritisk till Generell användning-nivån. Svars tiden för den här nedgraderingen när zon redundans är aktive rad samt svars tid för växling till zon-redundans för Generell användning nivån är proportionell till databasens storlek.
-
 ```sql
 SELECT s.file_id,
        s.type_desc,
@@ -73,6 +70,9 @@ SELECT s.file_id,
 FROM sys.database_files AS s
 WHERE s.type_desc IN ('ROWS', 'LOG');
 ```
+
+> [!NOTE]
+> Zonens redundanta egenskap förblir samma som standard när du skalar från Affärskritisk till Generell användning-nivån. Svars tiden för den här nedgraderingen när zon redundans är aktive rad samt svars tid för växling till zon-redundans för Generell användning nivån är proportionell till databasens storlek.
 
 > [!TIP]
 > Information om hur du övervakar pågående åtgärder finns i: [Hantera åtgärder med hjälp av SQL REST API](/rest/api/sql/operations/list), [Hantera åtgärder med CLI](/cli/azure/sql/db/op), [övervaka åtgärder med hjälp av T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) och dessa två PowerShell-kommandon: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) och [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).

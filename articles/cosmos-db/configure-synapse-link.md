@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions, synapse-cosmos-db
-ms.openlocfilehash: 60b720f3f5d91570e32ecf3d03aa7065f93990c5
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 24886ff3e01e9d9b4c01eabc917ced433599c0fa
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868213"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727152"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Konfigurera och använda Azure Synapse Link för Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -56,13 +56,13 @@ Azure Synapse-länken är tillgänglig för Azure Cosmos DB SQL API-behållare e
 
 Följande länkar visar hur du aktiverar Synapse-länken med hjälp av Azure CLI:
 
-* [Skapa ett nytt Azure Cosmos DB konto med Synapse-länk aktiverat](https://docs.microsoft.com/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create-optional-parameters&preserve-view=true)
-* [Uppdatera ett befintligt Azure Cosmos DB-konto för att aktivera Synapse-länk](https://docs.microsoft.com/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_update-optional-parameters&preserve-view=true)
+* [Skapa ett nytt Azure Cosmos DB konto med Synapse-länk aktiverat](/cli/azure/cosmosdb#az_cosmosdb_create-optional-parameters)
+* [Uppdatera ett befintligt Azure Cosmos DB-konto för att aktivera Synapse-länk](/cli/azure/cosmosdb#az_cosmosdb_update-optional-parameters)
 
 ### <a name="powershell"></a>PowerShell
 
-* [Skapa ett nytt Azure Cosmos DB konto med Synapse-länk aktiverat](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount?view=azps-5.5.0#description&preserve-view=true)
-* [Uppdatera ett befintligt Azure Cosmos DB-konto för att aktivera Synapse-länk](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccount?view=azps-5.5.0&preserve-view=true)
+* [Skapa ett nytt Azure Cosmos DB konto med Synapse-länk aktiverat](/powershell/module/az.cosmosdb/new-azcosmosdbaccount#description)
+* [Uppdatera ett befintligt Azure Cosmos DB-konto för att aktivera Synapse-länk](/powershell/module/az.cosmosdb/update-azcosmosdbaccount)
 
 
 Följande länkar visar hur du aktiverar Synapse-länken med hjälp av PowerShell:
@@ -179,15 +179,15 @@ except exceptions.CosmosResourceExistsError:
 
 Följande länkar visar hur du skapar ett analytiskt lager med aktiverade behållare med hjälp av Azure CLI:
 
-* [Azure Cosmos DB-API för mongo DB](https://docs.microsoft.com/cli/azure/cosmosdb/mongodb/collection?view=azure-cli-latest#az_cosmosdb_mongodb_collection_create-examples&preserve-view=true)
-* [Azure Cosmos DB SQL API](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_create&preserve-view=true)
+* [Azure Cosmos DB-API för mongo DB](/cli/azure/cosmosdb/mongodb/collection#az_cosmosdb_mongodb_collection_create-examples)
+* [Azure Cosmos DB SQL API](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_create)
 
 ### <a name="powershell"></a>PowerShell
 
 Följande länkar visar hur du skapar ett analytiskt lager med aktiverade behållare med hjälp av PowerShell:
 
-* [Azure Cosmos DB-API för mongo DB](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbcollection?view=azps-5.5.0#description&preserve-view=true)
-* [Azure Cosmos DB SQL API](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_create&preserve-view=true)
+* [Azure Cosmos DB-API för mongo DB](/powershell/module/az.cosmosdb/new-azcosmosdbmongodbcollection#description)
+* [Azure Cosmos DB SQL API](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_create)
 
 
 ## <a name="optional---update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a> Valfri – uppdatera tiden för analys av analys platsen till Live
@@ -245,15 +245,15 @@ Stöds inte för närvarande.
 
 Följande länkar visar hur du uppdaterar behållare analys-TTL med hjälp av Azure CLI:
 
-* [Azure Cosmos DB-API för mongo DB](https://docs.microsoft.com/cli/azure/cosmosdb/mongodb/collection?view=azure-cli-latest#az_cosmosdb_mongodb_collection_update&preserve-view=true)
-* [Azure Cosmos DB SQL API](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_update&preserve-view=true)
+* [Azure Cosmos DB-API för mongo DB](/cli/azure/cosmosdb/mongodb/collection#az_cosmosdb_mongodb_collection_update)
+* [Azure Cosmos DB SQL API](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_update)
 
 ### <a name="powershell"></a>PowerShell
 
 Följande länkar visar hur du uppdaterar behållare analytiskt TTL med hjälp av PowerShell:
 
-* [Azure Cosmos DB-API för mongo DB](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollection?view=azps-5.5.0&preserve-view=true)
-* [Azure Cosmos DB SQL API](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbsqlcontainer?view=azps-5.5.0&preserve-view=true)
+* [Azure Cosmos DB-API för mongo DB](/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollection)
+* [Azure Cosmos DB SQL API](/powershell/module/az.cosmosdb/update-azcosmosdbsqlcontainer)
 
 
 ## <a name="connect-to-a-synapse-workspace"></a><a id="connect-to-cosmos-database"></a> Ansluta till en Synapse-arbetsyta

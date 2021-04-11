@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 4b67952565ae7d5e8a05661fba2129177072007c
-ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
+ms.openlocfilehash: a6522eb54980cb28f08ce91e29a6a18943d49040
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105033652"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106089003"
 ---
 |Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Påverkan (ar) |Version<br /><sub>GitHub</sub> |
 |---|---|---|---|
@@ -36,6 +36,7 @@ ms.locfileid: "105033652"
 |[SSH-åtkomst från Internet ska blockeras](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fab) |Den här principen granskar eventuella nätverks säkerhets regler som tillåter SSH-åtkomst från Internet |Granskning, inaktive rad |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkSecurityGroup_SSHAccess_Audit.json) |
 |[Lagrings konton bör använda en tjänst slut punkt för virtuellt nätverk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F60d21c4f-21a3-4d94-85f4-b924e6aeeda4) |Den här principen granskar alla lagrings konton som inte har kon figurer ATS för att använda en tjänst slut punkt för virtuellt nätverk. |Granskning, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_StorageAccount_Audit.json) |
 |[Virtuella datorer ska anslutas till ett godkänt virtuellt nätverk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd416745a-506c-48b6-8ab1-83cb814bcaa3) |Den här principen granskar en virtuell dator som är ansluten till ett virtuellt nätverk som inte är godkänd. |Granska, neka, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ApprovedVirtualNetwork_Audit.json) |
+|[Virtuella nätverk bör skyddas med Azure DDoS Protection standard](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d) |Skydda dina virtuella nätverk mot volym-och protokoll attacker med Azure DDoS Protection standard. Mer information finns på [https://aka.ms/ddosprotectiondocs](https://aka.ms/ddosprotectiondocs) . |Ändra, granska, inaktive rad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkDdosStandard_Audit.json) |
 |[Virtuella nätverk ska använda angiven virtuell nätverksgateway](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff1776c76-f58c-4245-a8d0-2b207198dc8b) |Den här principen granskar alla virtuella nätverk om standard vägen inte pekar på den angivna virtuella Nätverksgatewayen. |AuditIfNotExists, inaktiverat |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetwork_ApprovedVirtualNetworkGateway_AuditIfNotExists.json) |
 |[Brand vägg för webbaserade program (WAF) måste vara aktive rad för Application Gateway](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F564feb30-bf6a-4854-b4bb-0d2d2d1e6c66) |Distribuera Azure Web Application Firewall (WAF) framför offentliga webb program för ytterligare inspektion av inkommande trafik. Brand vägg för webbaserade program (WAF) tillhandahåller centraliserat skydd av dina webb program från vanliga sårbarheter och sårbarheter som SQL-injektioner, skript körning över olika platser, lokal körning av filer i fjärrkörningar. Du kan också begränsa åtkomsten till dina webb program med hjälp av länder, IP-adressintervall och andra http (s)-parametrar via anpassade regler. |Granska, neka, inaktive rad |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayEnabled_Audit.json) |
 |[Brand vägg för webbaserade program (WAF) måste vara aktive rad för tjänsten Azure frontend dörr service](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F055aa869-bc98-4af8-bafc-23f1ab6ffe2c) |Distribuera Azure Web Application Firewall (WAF) framför offentliga webb program för ytterligare inspektion av inkommande trafik. Brand vägg för webbaserade program (WAF) tillhandahåller centraliserat skydd av dina webb program från vanliga sårbarheter och sårbarheter som SQL-injektioner, skript körning över olika platser, lokal körning av filer i fjärrkörningar. Du kan också begränsa åtkomsten till dina webb program med hjälp av länder, IP-adressintervall och andra http (s)-parametrar via anpassade regler. |Granska, neka, inaktive rad |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Enabled_Audit.json) |
