@@ -5,69 +5,88 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 59379dd9c3a41729466de269b52dfd3fb206eea9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.custom: template-how-to
+ms.openlocfilehash: 625662a6b67e7d30e6320fe7831e4fa7793b9c30
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97368723"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106447887"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Ansluta med Windows-skrivbordsklienten
 
-> Gäller för: Windows 10, Windows 10 IoT Enterprise och Windows 7
+Du kan komma åt Windows virtuella Skriv bords resurser på enheter med Windows 10, Windows 10 IoT Enterprise och Windows 7 med Windows-skrivbordet. 
 
->[!IMPORTANT]
->Det här innehållet gäller för virtuella Windows-datorer med Azure Resource Manager virtuella Windows Desktop-objekt. Om du använder Windows Virtual Desktop (klassisk) utan Azure Resource Manager objekt, se [den här artikeln](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md).
-
-Du kan komma åt Windows virtuella Skriv bords resurser på enheter med Windows 10, Windows 10 IoT Enterprise och Windows 7 med Windows-skrivbordet. Klienten har inte stöd för Window 8 eller Windows 8,1.
+> [!IMPORTANT]
+> Detta stöder inte Window 8 eller Windows 8,1.
+> 
+> Detta stöder endast Azure Resource Manager objekt, för att stödja objekt utan Azure Resource Manager, se [ansluta med Windows Desktop (klassisk)-klient](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md).
+> 
+> Detta stöder inte klienten för RemoteApp-och fjärr skrivbords anslutningar (RADC) eller Anslutning till fjärrskrivbord-klienten (MSTSC).
 
 ## <a name="install-the-windows-desktop-client"></a>Installera Windows Desktop-klienten
 
-Välj den klient som matchar din version av Windows:
+Ladda ned klienten baserat på din Windows-version:
 
 - [Windows 64-bitars](https://go.microsoft.com/fwlink/?linkid=2068602)
 - [Windows 32-bitars](https://go.microsoft.com/fwlink/?linkid=2098960)
 - [Windows-ARM64](https://go.microsoft.com/fwlink/?linkid=2098961)
 
-Du kan installera klienten för den aktuella användaren, som inte kräver administratörs rättigheter, eller så kan administratören installera och konfigurera klienten så att alla användare på enheten kan komma åt den.
+Under installationen för att fastställa åtkomst väljer du antingen:
 
-När du har installerat kan klienten startas från Start-menyn genom att söka efter **fjärr skrivbord**.
+- **Installera bara för dig**
+- **Installera för alla användare av den här datorn** (kräver administratörs behörighet)
 
-> [!IMPORTANT]
-> Windows Virtual Desktop stöder inte RADC-klienten (RemoteApp-och Desktop Connections) eller Anslutning till fjärrskrivbord-klienten (MSTSC).
+Starta klienten efter installationen genom att använda **Start** -menyn och söka efter **fjärr skrivbord**.
 
 ## <a name="subscribe-to-a-workspace"></a>Prenumerera på en arbets yta
 
-Du kan prenumerera på en arbets yta på två sätt. Klienten kan försöka identifiera de resurser som är tillgängliga från ditt arbets-eller skol konto eller så kan du ange webb adressen direkt där dina resurser finns i de fall där klienten inte kan hitta dem. När du prenumererar på en arbets yta kan du starta resurser med någon av följande metoder:
+Om du vill prenumerera på en arbets yta väljer du antingen:
 
-- Gå till anslutnings Center och dubbelklicka på en resurs för att starta den.
-- Du kan också gå till Start-menyn och leta efter en mapp med namnet på arbets ytan eller ange resurs namnet i Sök fältet.
+- Använd ett arbets-eller skol konto och låt klienten identifiera de resurser som är tillgängliga för dig
+- Använd den speciella URL: en för resursen
 
-### <a name="subscribe-with-a-user-account"></a>Prenumerera med ett användar konto
+Om du vill starta resursen när du prenumererar går du till **anslutnings Center** och dubbelklickar på resursen.
 
-1. Välj **Prenumerera** på klientens huvud sida.
-2. Logga in med ditt användar konto när du uppmanas till det.
-3. Resurserna kommer att visas i anslutnings Center och grupperas efter arbets yta.
+> [!TIP]
+> Om du vill starta en resurs från **Start** -menyn kan du hitta mappen med namnet på arbets ytan eller ange resurs namnet i Sök fältet.
 
->[!NOTE]
->Windows-klienten får automatiskt standard Windows Virtual Desktop (klassisk). Men om klienten upptäcker att användaren också har Azure Resource Manager resurser lägger den automatiskt till resurserna eller meddelar användaren om att de är tillgängliga.
+### <a name="use-a-user-account"></a>Använda ett användar konto
 
-### <a name="subscribe-with-a-url"></a>Prenumerera med en URL
+1. Välj **Prenumerera** på huvud sidan.
+1. Logga in med ditt användar konto när du uppmanas till det.
 
-1. Från klientens huvud sida väljer du **Prenumerera med URL**.
-2. Ange arbets ytans URL eller din e-post adress:
-   - Om du använder **URL: en för arbets ytan** använder du den som din administratör fick. Om du får åtkomst till resurser från virtuella Windows-datorer kan du använda någon av följande URL: er:
-     - Windows Virtual Desktop (klassisk): `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
-     - Virtuellt Windows-skrivbord: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
-     - Windows Virtual Desktop (US Gov): `https://rdweb.wvd.azure.us/api/arm/feeddiscovery`
-   - Om du använder **e-** postfältet i stället anger du din e-postadress. Detta instruerar klienten att söka efter en URL som är kopplad till din e-postadress om din administratör har konfigurerat [identifiering av e-post](/windows-server/remote/remote-desktop-services/rds-email-discovery).
-3. Välj **Nästa**.
-4. Logga in med ditt användar konto när du uppmanas till det.
-5. Resurserna bör visas i anslutnings centret, grupperade efter arbets yta.
+Resurserna som är grupperade efter arbets yta visas i **anslutnings centret**.
+
+   > [!NOTE]
+   > Windows-klienten får automatiskt standard Windows Virtual Desktop (klassisk). 
+   > 
+   > Men om klienten upptäcker ytterligare Azure Resource Manager resurser lägger den till dem automatiskt eller meddelar användaren att de är tillgängliga.
+
+### <a name="use-a-specific-url"></a>Använd en viss URL
+
+1. Välj **Prenumerera med URL** från huvud sidan.
+1. Ange antingen *arbets ytans URL* eller en *e-post adress*:
+   - För **arbetsyte-URL** använder du den URL som tillhandahålls av din administratör.
+
+   |Tillgängliga resurser|URL|
+   |-|-|
+   |Windows Virtual Desktop (klassisk)|`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`|
+   |Windows Virtual Desktop|`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`|
+   |Windows Virtual Desktop (US Gov)|`https://rdweb.wvd.azure.us/api/arm/feeddiscovery`|
+   
+   - Använd din e-postadress för **e-post**. 
+      
+   Klienten hittar den URL som är kopplad till din e-post, förutsatt att din administratör har aktiverat [e-postidentifiering](/windows-server/remote/remote-desktop-services/rds-email-discovery).
+
+1. Välj **Nästa**.
+1. Logga in med ditt användar konto när du uppmanas till det.
+
+Resurserna som är grupperade efter arbets yta visas i **anslutnings centret**.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill veta mer om hur du använder Windows-skrivbordet kan du läsa [komma igång med Windows Skriv bords klienten](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/).
+Om du vill veta mer om hur du använder-klienten kan du läsa [komma igång med Windows Skriv bords klienten](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/).
 
-Om du är en administratör som vill veta mer om hur du använder Windows-skrivbordet kan du läsa mer i [Windows Skriv bords klient för administratörer](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin).
+Om du är en administratör som vill lära sig mer om klientens funktioner kan du gå [till Windows Skriv bords klient för administratörer](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin).

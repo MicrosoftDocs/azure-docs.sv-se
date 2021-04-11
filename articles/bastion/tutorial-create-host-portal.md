@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: tutorial
 ms.date: 02/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: 60b49e5b6e103a85d79cf8495f2743b22e434c96
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b365e347802824e855797afb8c68e5249bf0adb
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100586815"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579631"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>Självstudie: Konfigurera skydds och ansluta till en virtuell Windows-dator via en webbläsare
 
@@ -37,6 +37,10 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](ht
 
 * Portar: för att ansluta till den virtuella Windows-datorn måste du ha följande portar öppna på din virtuella Windows-dator:
   * Inkommande portar: RDP (3389)
+
+ >[!NOTE]
+ >Det finns inte stöd för användning av Azure-skydds med Azure Privat DNS Zones just nu. Innan du börjar bör du kontrol lera att det virtuella nätverket där du planerar att distribuera skydds-resursen inte är länkat till en privat DNS-zon.
+ >
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
 

@@ -7,13 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 38f34324a0cda518645f8b9231e08bafbd75cca0
-ms.sourcegitcommit: dae6b628a8d57540263a1f2f1cdb10721ed1470d
+manager: femila
+ms.openlocfilehash: 8ed4c2cffffca79ea545358b8ad639118e87e013
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "105709539"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448210"
 ---
 # <a name="azure-monitor-for-windows-virtual-desktop-glossary"></a>Azure Monitor för ord lista för virtuella Windows-datorer
 
@@ -182,10 +182,10 @@ Mer information om Windows-händelseloggar finns i [Egenskaper för Windows Even
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill komma igång med Azure Monitor för virtuella Windows-datorer kan du läsa följande artiklar:
+- För att komma igång, se [använda Azure Monitor för virtuella Windows-datorer för att övervaka distributionen](azure-monitor.md).
+- Information om hur du uppskattar, mäter och hanterar dina kostnader för data lagring finns i [beräkna Azure Monitor kostnader](azure-monitor-costs.md).
+- Om det uppstår ett problem kan du läsa vår [fel söknings guide](troubleshoot-azure-monitor.md) för hjälp och kända problem.
 
-- [Använd Azure Monitor för virtuella Windows-datorer för att övervaka distributionen](azure-monitor.md)
-- [Azure Monitor för fel sökning av virtuella Windows-datorer](troubleshoot-azure-monitor.md)
 
 Du kan också konfigurera Azure Advisor som hjälper dig att avgöra hur du ska lösa eller förhindra vanliga problem. Läs mer i [använda Azure Advisor med det virtuella Windows-skrivbordet](azure-advisor.md).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: e51b247f8c1a5a9ed8f6ec8e24363015afb2f7de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e94b809513bda8edc7a51baf79ec05a2c9c77489
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102614419"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448562"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Korrigera operativ systemet Windows i Service Fabric-klustret
 
@@ -222,7 +222,7 @@ Du kan konfigurera POA-beteendet så att det passar dina behov. Åsidosätt stan
 | WUOperationTimeOutInMinutes | Int <br>(Standard: *90*)                   | Anger tids gränsen för alla Windows Update åtgärder (Sök eller ladda ned eller installera). Om åtgärden inte slutförs inom den angivna tids gränsen avbryts den.       |
 | WURescheduleCount     | Int <br> (Standard: *5*)                  | Det maximala antalet gånger som tjänsten omplanerar Windows Update om en åtgärd Miss lyckas beständigt.          |
 | WURescheduleTimeInMinutes | Int <br>(Standard: *30*) | Intervallet då tjänsten omplanerar Windows-uppdateringar om ett problem kvarstår. |
-| WUFrequency           | Kommaavgränsad sträng (standard: *veckovis, onsdag, 7:00:00*)     | Frekvensen för att installera Windows-uppdateringar. Formatet och möjliga värden är: <br>– Varje månad, DD, HH: MM: SS (exempel: *Monthly, 5, 12:22:32*). Tillåtna värden för fältet _DD_ (dag) är tal från 1 till 28 och _sist_. <br>– Varje vecka, dag, HH: MM: SS (exempel: *Weekly, tisdag, 12:22:32*)  <br>– Dagligen, HH: MM: SS (exempel: *Daily, 12:22:32*)  <br>– Vecka, dag, HH: MM: SS (exempel: *2, fredag, 21:00:00* anger 9:00 pm UTC på fredag i den andra veckan varje månad) <br>- *Ingen* anger att Windows-uppdateringar inte ska göras.  <br><br> Tiden är i UTC-tid.|
+| WUFrequency           | Kommaavgränsad sträng (standard: *veckovis, onsdag, 7:00:00*)     | Frekvensen för att installera Windows-uppdateringar. Formatet och möjliga värden är: <br>– Varje månad, DD, HH: MM: SS (exempel: *Monthly, 5, 12:22:32*). Tillåtna värden för fältet _DD_ (dag) är tal från 1 till 28 och _sist_. <br>– Varje vecka, dag, HH: MM: SS (exempel: *Weekly, tisdag, 12:22:32*)  <br>– Dagligen, HH: MM: SS (exempel: *Daily, 12:22:32*)  <br>-MonthlyByWeekAndDay, vecka, dag, HH: MM: SS (exempel: *MonthlyByWeekAndDay, 2, fredag, 21:00:00* visar 9:00 pm UTC på fredag i den andra veckan varje månad) <br>- *Ingen* anger att Windows-uppdateringar inte ska göras.  <br><br> Tiden är i UTC-tid.|
 | AcceptWindowsUpdateEula | Boolesk <br>(Standard: *Sant*) | Genom att ställa in den här flaggan godkänner programmet End-User licens avtal för Windows Update för ägare av datorn.              |
 
 > [!TIP]

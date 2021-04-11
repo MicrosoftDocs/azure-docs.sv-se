@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0f08ca84597b08b9a236b7bfb0fc9c849423a752
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cd90e994e620960e0d974ef7609a67f8a5eb58b
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93335899"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448567"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Köra frågor mot en Azure Cosmos-container
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,19 +26,19 @@ När du frågar efter data från behållare, om frågan har ett filter för part
 Överväg till exempel frågan nedan med ett likhets filter på `DeviceId` . Om vi kör den här frågan på en behållare som partitionerats på `DeviceId` , kommer den här frågan att filtrera till en enda fysisk partition.
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
+SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
 ```
 
 Som i det tidigare exemplet kommer den här frågan också att filtrera till en enda partition. Att lägga till ytterligare filter i `Location` ändrar inte detta:
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
+SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
 ```
 
 Här är en fråga som har ett intervall filter i partitionsnyckel och som inte kommer att begränsas till en enda fysisk partition. För att kunna vara en fråga i partitionen måste frågan ha ett likhets filter som innehåller partitionsnyckel:
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
+SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
 ```
 
 ## <a name="cross-partition-query"></a>Frågekörning mellan partitioner
@@ -46,7 +46,7 @@ Här är en fråga som har ett intervall filter i partitionsnyckel och som inte 
 Följande fråga saknar filter för partitionsnyckel ( `DeviceId` ). Därför måste den fläkta ut till alla fysiska partitioner där den körs mot varje partitions index:
 
 ```sql
-    SELECT * FROM c WHERE c.Location = 'Seattle`
+SELECT * FROM c WHERE c.Location = 'Seattle`
 ```
 
 Varje fysisk partition har sitt eget index. När du kör en fråga för flera partitioner på en behållare kör du därför en fråga *per* fysisk partition på ett effektivt sätt. Azure Cosmos DB sammanställer automatiskt resultaten mellan olika fysiska partitioner.

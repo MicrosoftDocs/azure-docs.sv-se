@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 1bf844dafe450e90213db2e447bb5392064eb245
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fac488ba1881b6b79139eaf2468237e546737177
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786778"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077338"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Metod tips för att skapa utvärderingar
 
@@ -27,6 +27,8 @@ Utvärderingar som du skapar med Azure Migrate: identifierings-och utvärderings
 **Azure SQL** | Utvärderingar för att migrera dina lokala SQL-servrar från din VMware-miljö till Azure SQL Database eller Azure SQL-hanterad instans. [Läs mer](concepts-azure-sql-assessment-calculation.md)
 **Azure VMware Solution (AVS)** | Utvärderingar för att migrera dina lokala servrar till [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). <br/><br/> Du kan utvärdera dina lokala [virtuella VMware-datorer](how-to-set-up-appliance-vmware.md) för migrering till Azure VMware-lösningen (AVS) med den här utvärderings typen. [Läs mer](concepts-azure-vmware-solution-assessment-calculation.md)
 
+> [!NOTE]
+> Om antalet virtuella Azure-datorer eller AVS-bedömningar är felaktiga i identifierings-och utvärderings verktyget, klickar du på det totala antalet utvärderingar för att navigera till alla utvärderingar och beräkna om de virtuella Azure-datorerna eller AVS-utvärderingarna. Verktyget för identifiering och bedömning visar sedan det korrekta antalet för den utvärderings typen. 
 
 ### <a name="sizing-criteria"></a>Storlekskriterier
 Storleks villkors alternativ i Azure Migrate utvärderingar:

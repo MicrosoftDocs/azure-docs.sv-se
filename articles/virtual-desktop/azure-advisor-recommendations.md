@@ -3,15 +3,15 @@ title: Azure Advisor Windows Virtual Desktop – genom gång – Azure
 description: Så här löser du Azure Advisor rekommendationer för virtuella Windows-datorer.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 760e0212d2d863e6b869c23c2e523a0e056a28ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.openlocfilehash: 666f882dec6c00b9fe5421485afded1fbd57d961
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90033038"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448312"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>Så här löser du Azure Advisor rekommendationer
 
@@ -72,10 +72,6 @@ Den här rekommendationen visas under drift kvalitet.
 Du måste avblockera vissa URL: er för att kontrol lera att den virtuella datorn (VM) fungerar korrekt. Du kan se listan i [listan över säkra URL:](safe-url-list.md)er. Om URL: erna inte är avblockerade fungerar inte den virtuella datorn som den ska.
 
 Lös den här rekommendationen genom att avblockera alla URL: er i [listan över säkra URL](safe-url-list.md): er. Du kan använda service tag eller FQDN-taggar för att avblockera URL: er.
-
-## <a name="propose-new-recommendations"></a>Föreslå nya rekommendationer
-
-Du kan hjälpa oss att förbättra Azure Advisor genom att skicka idéer till rekommendationer. Din rekommendation kan hjälpa en annan användare från en tålig plats. Om du vill skicka ett förslag går du till [vårt UserVoice-forum](https://windowsvirtualdesktop.uservoice.com/forums/930847-azure-advisor-recommendations) och fyller i formuläret för överföring. När du fyller i formuläret ser du till att ge oss så mycket information som möjligt.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -4,12 +4,12 @@ description: Använd jobb schemaläggning för att hantera dina uppgifter.
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7da3c78e00f5d7e41a5396603cf4885a50cb6e5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4661c9fc22868870af147998467c9f355f30580e
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89146359"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219710"
 ---
 # <a name="schedule-jobs-for-efficiency"></a>Schemalägg jobb för bättre effektivitet
 
@@ -77,7 +77,7 @@ Information om hur du hanterar ett jobb med hjälp av Azure CLI finns i [AZ batc
 
 
 
-[1]: ./media/batch-job-schedule/add_job_schedule-02.png
-[2]: ./media/batch-job-schedule/add_job_schedule-03.png
+[1]: ./media/batch-job-schedule/add-job-schedule-02.png
+[2]: ./media/batch-job-schedule/add-job-schedule-03.png
 
 

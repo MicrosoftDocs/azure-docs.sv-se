@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 248d5e163eb046edd130d69307a1c553d434b92d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5a73f4eba9581965470b95111e6dda1d8014e4cb
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604676"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167506"
 ---
 # <a name="selective-password-hash-synchronization-configuration-for-azure-ad-connect"></a>Konfiguration av konfiguration av selektivt lösen ord för Azure AD Connect
 
@@ -83,7 +83,7 @@ I följande avsnitt beskrivs hur du aktiverar det selektiva lösen ordets hash-s
 - Ange attributvärdet i Active Directory, som definierats som ett scope-attribut för de användare som du vill tillåta i synkronisering av lösen ords-hash. 
 
 >[!Important]
->Stegen för att konfigurera en selektiv hash-synkronisering av lösen ord påverkar endast användar objekt som har attributet **adminDescription** ifylld i Active Directory med värdet **PHSFiltered**.
+>De steg som beskrivs för att konfigurera en selektiv hash-synkronisering påverkar endast användar objekt som har attributet **adminDescription** ifyllt i Active Directory med värdet **PHSFiltered**.
 Om det här attributet inte är ifyllt eller om värdet är något annat än **PHSFiltered** , kommer dessa regler inte att tillämpas på användar objekt.
 
 
@@ -95,7 +95,7 @@ Om det här attributet inte är ifyllt eller om värdet är något annat än **P
      ![Välj regel](media/how-to-connect-selective-password-hash-synchronization/exclude-2.png)
  3. Den första regeln inaktiverar synkronisering av lösen ords-hash. Ange följande namn för den nya anpassade regeln: **i från AD-User AccountEnabled-filter användare från PHS**.
  Ändra prioritet svärdet till ett tal som är lägre än 100 (till exempel **90** eller det som är det lägsta tillgängliga värdet i din miljö).
- Kontrol lera att kryss rutorna **Aktivera synkronisering av lösen ord** och **inaktive rad** är avmarkerade och c.
+ Kontrol lera att kryss rutorna **Aktivera synkronisering av lösen ord** och **inaktive rad** är avmarkerade.
  Klicka på **Nästa**.
   ![Redigera inkommande](media/how-to-connect-selective-password-hash-synchronization/exclude-3.png)
  4. I **omfångs filter** klickar du på **Lägg till sats**.
@@ -155,7 +155,7 @@ Följande är en sammanfattning av de åtgärder som utförs i stegen nedan:
 - Ange attributvärdet i Active Directory, som definierats som ett scope-attribut för de användare som du vill tillåta i synkronisering av lösen ords-hash. 
 
 >[!Important]
->Stegen för att konfigurera en selektiv hash-synkronisering av lösen ord påverkar endast användar objekt som har attributet **adminDescription** ifylld i Active Directory med värdet **PHSIncluded**.
+>De steg som beskrivs för att konfigurera en selektiv hash-synkronisering påverkar endast användar objekt som har attributet **adminDescription** ifyllt i Active Directory med värdet **PHSIncluded**.
 Om det här attributet inte är ifyllt eller om värdet är något annat än **PHSIncluded** , kommer dessa regler inte att tillämpas på användar objekt.
 
 

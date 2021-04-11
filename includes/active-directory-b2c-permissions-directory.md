@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 04/05/2021
 ms.author: mimart
-ms.openlocfilehash: f8c972bdb9195008c2983d3993e8d9369749b284
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a2382146cd8b85b8eef54b924a206dda7107b0f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85200163"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382476"
 ---
 #### <a name="app-registrations"></a>[Appregistreringar](#tab/app-reg-ga/) 
 
@@ -19,8 +19,9 @@ ms.locfileid: "85200163"
 1. Välj fliken **Microsoft API: er** och välj sedan **Microsoft Graph**.
 1. Välj **Programbehörigheter**.
 1. Expandera rätt behörighets grupp och markera kryss rutan för behörighet att bevilja ditt hanterings program. Exempel:
+    * **Användare**  >  **User. readwrite. all**: för användar migrering eller användar hanterings scenarier.
+    * **Grupp**  >  **Group. readwrite. all**: för att skapa grupper, läsa och uppdatera grupp medlemskap och ta bort grupper.
     * **AuditLog**  >  **AuditLog. Read. all**: för att läsa katalogens gransknings loggar.
-    * **Katalog**  >  **Directory. readwrite. all**: för användar migrering eller användar hanterings scenarier.
     * **Princip**  >  **Princip. readwrite. TrustFramework**: för scenarier med kontinuerlig integrering/kontinuerlig leverans (CI/CD). Till exempel anpassad princip distribution med Azure-pipelines.
 1. Välj **Lägg till behörigheter**. Vänta några minuter innan du fortsätter till nästa steg.
 1. Välj **bevilja administrativt godkännande för (ditt klient namn)**.

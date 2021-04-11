@@ -6,17 +6,17 @@ ms.date: 03/22/2021
 author: trask
 ms.custom: devx-track-java
 ms.author: trstalna
-ms.openlocfilehash: 17979bd548ca0d7b704ebdeb4d060bf35973b319
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7602392b78f53e5b896e92058836fca60de39d64
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105024155"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448890"
 ---
 # <a name="sampling-overrides-preview---azure-monitor-application-insights-for-java"></a>Åsidosättningar av sampling (för hands version) – Azure Monitor Application Insights för Java
 
 > [!NOTE]
-> Funktionen för åsidosättning av samplingar är i för hands version, från och med 3.0.3-BETA. 2.
+> Funktionen för åsidosättning av samplingar är i för hands version och startar från 3.0.3.
 
 Med exempel på åsidosättningar kan du åsidosätta [standard samplings procenten](./java-standalone-config.md#sampling), till exempel:
  * Ange samplings procenten till 0 (eller ett litet värde) för hälso kontroller i bruset.
@@ -81,7 +81,7 @@ Om inga samplings åsidosättningar matchar:
 * Om detta är det första omfånget i spårningen används [standard samplings procenten](./java-standalone-config.md#sampling) .
 * Om detta inte är det första omfånget i spårningen används det överordnade samplings beslutet.
 
-> [!IMPORTANT]
+> [!WARNING]
 > När ett beslut har fattats om att inte samla in ett intervall kommer alla efterföljande spans inte heller att samlas in, även om det finns samplings åsidosättningar som matchar det efterföljande intervallet.
 > Detta är nödvändigt eftersom annars brutna spår skulle resultera i att efterföljande intervall samlas in men översätts till intervall som inte samlats in.
 

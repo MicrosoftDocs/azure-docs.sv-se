@@ -8,20 +8,20 @@ ms.author: cgronlun
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 11/05/2020
+ms.date: 04/02/2021
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 30e4fede72df8eaf922745e7781c9e0d11f7ddb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee767cbeafcce604ecb4a79ce0fdf21c70bbb47c
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102210826"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219645"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Konfigurera autentisering för Azure Machine Learning-resurser och -arbetsflöden
 
 
-Lär dig hur du konfigurerar autentisering till din Azure Machine Learning-arbetsyta. Autentisering till din Azure Machine Learning-arbetsyta baseras på __Azure Active Directory__ (Azure AD) för de flesta saker. I allmänhet finns tre arbets flöden för autentisering som du kan använda när du ansluter till arbets ytan:
+Lär dig hur du konfigurerar autentisering till din Azure Machine Learning-arbetsyta. Autentisering till din Azure Machine Learning-arbetsyta baseras på __Azure Active Directory__ (Azure AD) för de flesta saker. I allmänhet finns det tre arbets flöden för autentisering som du kan använda när du ansluter till arbets ytan:
 
 * __Interaktiv__: du använder ditt konto i Azure Active Directory för att antingen autentisera dig direkt eller hämta en token som används för autentisering. Interaktiv autentisering används vid _experimentering och iterativ utveckling_. Med interaktiv autentisering kan du kontrol lera åtkomsten till resurser (till exempel en webb tjänst) per användare.
 
@@ -70,12 +70,6 @@ Det enklaste sättet att skapa en SP-och bevilja åtkomst till din arbets yta ä
     Om du har flera Azure-prenumerationer kan du använda `az account set -s <subscription name or ID>` kommandot för att ställa in prenumerationen. Mer information finns i [använda flera Azure-prenumerationer](/cli/azure/manage-azure-subscriptions-azure-cli).
 
     För andra metoder för autentisering, se [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli).
-
-1. Installera Azure Machine Learning-tillägget:
-
-    ```azurecli-interactive
-    az extension add -n azure-cli-ml
-    ```
 
 1. Skapa tjänstens huvud namn. I följande exempel skapas en SP-namngiven **ml-autentisering** :
 
@@ -143,7 +137,7 @@ Det enklaste sättet att skapa en SP-och bevilja åtkomst till din arbets yta ä
 
 1. Från [Azure Portal](https://portal.azure.com)väljer du din arbets yta och väljer sedan __Access Control (IAM)__, __Lägg till roll tilldelning__ och välj __virtuell dator__ i list rutan __tilldela åtkomst till__ . Slutligen väljer du den virtuella datorns identitet.
 
-1. Välj den roll som du vill tilldela den här identiteten. Till exempel deltagare eller en anpassad roll. Mer information finns i [kontrol lera åtkomst till resurser](how-to-assign-roles.md).
+1. Välj den roll som du vill tilldela den här identiteten. Till exempel deltagare eller en anpassad roll. Mer information finns i, [kontrol lera åtkomst till resurser](how-to-assign-roles.md).
 
 ### <a name="managed-identity-with-compute-cluster"></a>Hanterad identitet med beräknings kluster
 

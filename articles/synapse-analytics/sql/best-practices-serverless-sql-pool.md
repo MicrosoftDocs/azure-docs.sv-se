@@ -10,18 +10,27 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a47982012dcaa2eabda93c93508b23f30525812d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dcd48354372a196ea903c335e5e22caf20e25996
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720397"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219662"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Metod tips för Server lös SQL-pool i Azure Synapse Analytics
 
 I den här artikeln hittar du en samling bästa metoder för att använda SQL-poolen utan server. SQL-poolen utan server är en resurs i Azure Synapse Analytics.
 
 Med Server lös SQL-pool kan du söka efter filer i dina Azure Storage-konton. Den har inte funktioner för lokal lagring eller inmatning. Alla filer som frågan riktar sig till är externa för SQL-poolen utan server. Allt som rör läsning av filer från lagring kan påverka frågans prestanda.
+
+Några allmänna rikt linjer är:
+- Kontrol lera att klient programmen är samordnad med SQL-poolen utan server.
+  - Om du använder klient program utanför Azure (till exempel Power BI Desktop, SSMS, ADS) kontrollerar du att du använder poolen utan server i en region som är nära din klient dator.
+- Kontrol lera att lagringen (Azure Data Lake, Cosmos DB) och SQL-poolen utan Server finns i samma region.
+- Försök att [optimera lagrings layouten](#prepare-files-for-querying) med partitionering och behåll dina filer i intervallet mellan 100 MB och 10 GB.
+- Om du returnerar ett stort antal resultat kontrollerar du att du använder SSMS eller ADS och inte Synapse Studio. Synapse Studio är ett webb verktyg som inte är utformat för stora resultat uppsättningar. 
+- Försök att använda viss sortering om du filtrerar resultat efter sträng kolumn `BIN2_UTF8` .
+- Försök att cachelagra resultaten på klient sidan genom att använda Power BI import läge eller Azure Analysis Services och uppdatera dem regelbundet. SQL-pooler utan server kan inte tillhandahålla interaktiv upplevelse i Power BI Direct-frågeläge om du använder komplexa frågor eller bearbetar en stor mängd data.
 
 ## <a name="client-applications-and-network-connections"></a>Klient program och nätverks anslutningar
 
@@ -66,7 +75,11 @@ Om möjligt kan du förbereda filer för bättre prestanda:
 
 ### <a name="colocate-your-cosmosdb-analytical-storage-and-serverless-sql-pool"></a>Samplacera din CosmosDB Analytical Storage och Server lös SQL-poolen
 
-Se till att din CosmosDB-analytiska lagring är placerad i samma region som Synapse-arbetsytan. Frågor över flera regioner kan orsaka enorma fördröjningar.
+Se till att din CosmosDB-analytiska lagring är placerad i samma region som Synapse-arbetsytan. Frågor över flera regioner kan orsaka enorma fördröjningar. Använd egenskapen region i anslutnings strängen för att uttryckligen ange den region där analys lagret placeras (se [query CosmosDb med Server lös SQL-pool](query-cosmos-db-analytical-store.md#overview)):
+
+```
+'account=<database account name>;database=<database name>;region=<region name>'
+```
 
 ## <a name="csv-optimizations"></a>CSV-optimeringar
 

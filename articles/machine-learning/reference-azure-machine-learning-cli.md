@@ -7,14 +7,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jordane
 author: jpe316
-ms.date: 06/22/2020
+ms.date: 04/02/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3e073310d62bfb772ea1120bd379cdc277137da0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a22700782c584015add2c83ecc96ccc610b8509
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519120"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219628"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Installera & Använd CLI-tillägget för Azure Machine Learning
 
@@ -60,22 +60,7 @@ För andra metoder för autentisering, se [Logga in med Azure CLI](/cli/azure/au
 
 ## <a name="install-the-extension"></a>Installera tillägget
 
-Om du vill installera Machine Learning CLI-tillägget använder du följande kommando:
-
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
-
-> [!TIP]
-> Exempel på filer som du kan använda med kommandona nedan hittar du [här](https://aka.ms/azml-deploy-cloud).
-
-När du uppmanas väljer `y` du att installera tillägget.
-
-Kontrol lera att tillägget har installerats genom att använda följande kommando för att visa en lista över ML-Specific-kommandon:
-
-```azurecli-interactive
-az ml -h
-```
+Tillägget installeras automatiskt första gången du försöker använda ett kommando som börjar med `az ml` .
 
 ## <a name="update-the-extension"></a>Uppdatera tillägget
 
@@ -84,7 +69,6 @@ Om du vill uppdatera Machine Learning CLI-tillägget använder du följande komm
 ```azurecli-interactive
 az extension update -n azure-cli-ml
 ```
-
 
 ## <a name="remove-the-extension"></a>Ta bort tillägget
 

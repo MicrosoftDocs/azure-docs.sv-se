@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: a177fc7e17dc91a0d57fa6dee87b80921d7fd8f5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 573f97c7f592186173b13ea592d151ee291b8249
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043588"
+ms.locfileid: "105967973"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Förbereda en VHD eller VHDX i Windows för överföring till Azure
 
@@ -113,6 +113,10 @@ När SFC-genomsökningen är klar installerar du Windows-uppdateringar och start
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name TEMP -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name TMP -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
    ```
+1. För virtuella datorer med äldre operativ system (Windows Server 2012 R2 eller Windows 8,1 och lägre) kontrollerar du att de senaste tjänsterna för integrerings komponenten för Hyper-V är installerade. Mer information finns i [uppdaterings komponenter för Hyper-V-integrering för Windows VM](https://support.microsoft.com/topic/hyper-v-integration-components-update-for-windows-virtual-machines-8a74ffad-576e-d5a0-5a2f-d6fb2594f990).
+
+> [!NOTE]
+> I ett scenario där virtuella datorer ska ställas in med en katastrof återställnings lösning mellan den lokala VMware-servern och Azure, kan inte integrerings komponent tjänsterna för Hyper-V användas. Om så är fallet kan du kontakta VMware-supporten för att migrera den virtuella datorn till Azure och göra den gemensam i VMware Server.
 
 ## <a name="check-the-windows-services"></a>Kontrollera Windows-tjänsterna
 
@@ -266,6 +270,8 @@ Kontrol lera att den virtuella datorn är felfri, säker och RDP-tillgänglig:
 1. Ange inställningarna för Boot Configuration Data (BCD).
 
    ```powershell
+   cmd
+
    bcdedit.exe /set "{bootmgr}" integrityservices enable
    bcdedit.exe /set "{default}" device partition=C:
    bcdedit.exe /set "{default}" integrityservices enable
@@ -279,6 +285,8 @@ Kontrol lera att den virtuella datorn är felfri, säker och RDP-tillgänglig:
    bcdedit.exe /set "{bootmgr}" bootems yes
    bcdedit.exe /ems "{current}" ON
    bcdedit.exe /emssettings EMSPORT:1 EMSBAUDRATE:115200
+
+   exit
    ```
 
 1. Dump-loggen kan vara till hjälp vid fel sökning av problem med Windows-krasch. Aktivera dump-logg samling:
@@ -351,6 +359,10 @@ Kontrol lera att den virtuella datorn är felfri, säker och RDP-tillgänglig:
 1. Avinstallera eventuella program från tredje part eller driv rutin som är relaterade till fysiska komponenter eller någon annan virtualiseringsteknik.
 
 ### <a name="install-windows-updates"></a>Installera Windows-uppdateringar
+
+> [!NOTE]
+> För att undvika en oavsiktlig omstart under VM-etableringen rekommenderar vi att du slutför alla Windows Update-installationer och kontrollerar att det inte finns någon väntande omstart. Ett sätt att göra detta är att installera alla Windows-uppdateringar och starta om den virtuella datorn innan du utför migreringen till Azure. </br><br>
+>Om du också behöver göra en generalisering av OS (Sysprep) måste du uppdatera Windows och starta om den virtuella datorn innan du kör kommandot Sysprep.
 
 Vi rekommenderar att du behåller datorn uppdaterad till *korrigerings nivån*, om detta inte är möjligt, se till att följande uppdateringar är installerade. För att få de senaste uppdateringarna går du till Windows updates historik sidor: [Windows 10 och Windows server 2019](https://support.microsoft.com/help/4000825), [Windows 8,1 och Windows Server 2012 R2](https://support.microsoft.com/help/4009470) och [Windows 7 SP1 och Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469).
 

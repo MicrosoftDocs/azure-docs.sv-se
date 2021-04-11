@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 09cfdd026105a34db976118f38b011e2c4578a24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fea39388b6b4387dfc4fe95d1cdfb3e523a8089c
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470776"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382444"
 ---
 # <a name="options-for-registering-a-saml-application-in-azure-ad-b2c"></a>Alternativ för att registrera ett SAML-program i Azure AD B2C
 
@@ -34,7 +34,86 @@ I den här artikeln beskrivs de konfigurations alternativ som är tillgängliga 
 
 ::: zone pivot="b2c-custom-policy"
 
-## <a name="encrypted-saml-assertions"></a>Krypterade SAML-kontroller
+
+## <a name="saml-response-signature"></a>SAML-svars-signatur
+
+Du kan ange ett certifikat som ska användas för att signera SAML-meddelanden. Meddelandet är det `<samlp:Response>` element i SAML-svaret som skickas till programmet.
+
+Om du inte redan har en princip nyckel [skapar du en](saml-service-provider.md#create-a-policy-key). Konfigurera sedan `SamlMessageSigning` metadataobjektet i den tekniska profilen för utfärdare av SAML-token. `StorageReferenceId`Måste referera till princip nyckel namnet.
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <!-- SAML Token Issuer technical profile -->
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+        ...
+      <CryptographicKeys>
+        <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlMessageCert"/>
+        ...
+      </CryptographicKeys>
+    ...
+    </TechnicalProfile>
+```
+
+### <a name="saml-response-signature-algorithm"></a>Signeringsalgoritm för SAML-svar
+
+Du kan konfigurera signeringsalgoritmen som används för att signera SAML-försäkran. Möjliga värden är `Sha256` , `Sha384` , `Sha512` eller `Sha1` . Kontrol lera att den tekniska profilen och programmet använder samma signaturalgoritm. Använd bara den algoritm som ditt certifikat stöder.
+
+Konfigurera signeringsalgoritmen med hjälp av `XmlSignatureAlgorithm` metadata-nyckeln inom den förlitande partens metadata-element.
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="XmlSignatureAlgorithm">Sha256</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+## <a name="saml-assertions-signature"></a>SAML Assertion signatur
+
+När ditt program förväntar sig att SAML Assertion-avsnittet ska signeras kontrollerar du att SAML-tjänstprovidern har angetts `WantAssertionsSigned` till `true` . Om det är inställt på `false` eller inte finns, kommer intyget inte att signeras. I följande exempel visas metadata för SAML-tjänstleverantören med `WantAssertionsSigned` värdet `true` .
+
+```xml
+<EntityDescriptor ID="id123456789" entityID="https://samltestapp2.azurewebsites.net" validUntil="2099-12-31T23:59:59Z" xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
+  <SPSSODescriptor  WantAssertionsSigned="true" AuthnRequestsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+  ...
+  </SPSSODescriptor>
+</EntityDescriptor>
+```  
+
+### <a name="saml-assertions-signature-certificate"></a>Certifikat för SAML Assertion Signature
+
+Principen måste ange ett certifikat som ska användas för att signera avsnittet SAML Assertion i SAML-svaret. Om du inte redan har en princip nyckel [skapar du en](saml-service-provider.md#create-a-policy-key). Konfigurera sedan `SamlAssertionSigning` metadataobjektet i den tekniska profilen för utfärdare av SAML-token. `StorageReferenceId`Måste referera till princip nyckel namnet.
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <!-- SAML Token Issuer technical profile -->
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+        ...
+      <CryptographicKeys>
+        <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_SamlMessageCert"/>
+        ...
+      </CryptographicKeys>
+    ...
+    </TechnicalProfile>
+```
+
+## <a name="saml-assertions-encryption"></a>Kryptering av SAML-intyg
 
 När ditt program förväntar sig att SAML-intyg ska vara i krypterat format måste du se till att kryptering är aktiverat i principen för Azure AD B2C.
 
@@ -158,26 +237,6 @@ Vi tillhandahåller en komplett exempel princip som du kan använda för testnin
 1. Uppdatera `TenantId` för att matcha ditt klient namn, till exempel *contoso.b2clogin.com*.
 1. Behåll princip namnet *B2C_1A_signup_signin_saml*.
 
-## <a name="saml-response-signature-algorithm"></a>Signeringsalgoritm för SAML-svar
-
-Du kan konfigurera signeringsalgoritmen som används för att signera SAML-försäkran. Möjliga värden är `Sha256` , `Sha384` , `Sha512` eller `Sha1` . Kontrol lera att den tekniska profilen och programmet använder samma signaturalgoritm. Använd bara den algoritm som ditt certifikat stöder.
-
-Konfigurera signeringsalgoritmen med hjälp av `XmlSignatureAlgorithm` metadata-nyckeln inom den förlitande partens metadata-element.
-
-```xml
-<RelyingParty>
-  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
-  <TechnicalProfile Id="PolicyProfile">
-    <DisplayName>PolicyProfile</DisplayName>
-    <Protocol Name="SAML2"/>
-    <Metadata>
-      <Item Key="XmlSignatureAlgorithm">Sha256</Item>
-    </Metadata>
-   ..
-  </TechnicalProfile>
-</RelyingParty>
-```
-
 ## <a name="saml-response-lifetime"></a>Svars tid för SAML-svar
 
 Du kan konfigurera hur lång tid som SAML-svaret ska vara giltigt. Ange livs längden med `TokenLifeTimeInSeconds` metadataobjektet i den tekniska profilen för utfärdare av SAML-token. Det här värdet är antalet sekunder som kan förflyta från `NotBefore` tidsstämpeln som beräknas vid tidpunkten för utfärdande av token. Standard livs längden är 300 sekunder (5 minuter).
@@ -279,9 +338,9 @@ Exempel:
 
 Du kan hantera sessionen mellan Azure AD B2C och SAML-förlitande parts program med hjälp av `UseTechnicalProfileForSessionManagement` elementet och [SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider).
 
-## <a name="force-users-to-re-authenticate"></a>Tvinga användare att autentisera igen 
+## <a name="force-users-to-reauthenticate"></a>Tvinga användare att autentisera igen 
 
-För att användarna ska kunna autentisera igen kan programmet inkludera `ForceAuthn` attributet i SAML-autentiseringsbegäran. `ForceAuthn`Attributet är ett booleskt värde. När värdet är true, kommer användarsessionen att bli ogiltig vid Azure AD B2C och användaren tvingas att autentisera igen. Följande begäran om SAML-autentisering visar hur du ställer in `ForceAuthn` attributet på True. 
+För att användare ska kunna autentisera igen kan programmet inkludera `ForceAuthn` attributet i begäran om SAML-autentisering. `ForceAuthn`Attributet är ett booleskt värde. När värdet är true, kommer användarens session att bli ogiltig vid Azure AD B2C och användaren tvingas att autentisera igen. Följande begäran om SAML-autentisering visar hur du ställer in `ForceAuthn` attributet på True. 
 
 
 ```xml
@@ -290,6 +349,28 @@ För att användarna ska kunna autentisera igen kan programmet inkludera `ForceA
        ForceAuthn="true" ...>
     ...
 </samlp:AuthnRequest>
+```
+
+## <a name="sign-the-azure-ad-b2c-idp-saml-metadata"></a>Signera Azure AD B2C SAML-metadata för IdP
+
+Du kan instruera Azure AD B2C att signera SAML IdP metadata-dokumentet, om det krävs av programmet. Om du inte redan har en princip nyckel [skapar du en](saml-service-provider.md#create-a-policy-key). Konfigurera sedan `MetadataSigning` metadataobjektet i den tekniska profilen för utfärdare av SAML-token. `StorageReferenceId`Måste referera till princip nyckel namnet.
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <!-- SAML Token Issuer technical profile -->
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+        ...
+      <CryptographicKeys>
+        <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlMetadataCert"/>
+        ...
+      </CryptographicKeys>
+    ...
+    </TechnicalProfile>
 ```
 
 ## <a name="debug-the-saml-protocol"></a>Felsöka SAML-protokollet

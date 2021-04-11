@@ -14,10 +14,10 @@ ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 88a4d0f108d4e3c27ce17aaa83aafca38063c9ae
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104589471"
 ---
 # <a name="use-the-ad-fs-application-activity-report-to-migrate-applications-to-azure-ad"></a>Använda rapporten AD FS program aktivitet för att migrera program till Azure AD
@@ -78,7 +78,7 @@ Rapporten AD FS program aktivitet är tillgänglig i Azure Portal under Azure AD
 
 I följande tabell visas alla konfigurations test som utförs på AD FS program.
 
-|Resultat  |Pass/varning/fel  |Description  |
+|Resultat  |Pass/varning/fel  |Beskrivning  |
 |---------|---------|---------|
 |Test-ADFSRPAdditionalAuthenticationRules <br> Minst en icke-går migrera regel identifierades för AdditionalAuthentication.       | Pass/varning          | Den förlitande parten har regler för att begära Multi-Factor Authentication (MFA). Om du vill flytta till Azure AD översätter du reglerna till principer för villkorlig åtkomst. Om du använder en lokal MFA-MFA rekommenderar vi att du flyttar till Azure AD MFA. [Läs mer om villkorlig åtkomst](../authentication/concept-mfa-howitworks.md).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> Förlitande part har AdditionalWSFedEndpoint inställt på sant.       | Godkänn/Underkänn          | Den förlitande parten i AD FS tillåter flera WS-Fed försäkrade slut punkter.Azure AD har för närvarande endast stöd för en.Om du har ett scenario där det här resultatet blockerar migreringen kan du berätta för [oss](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |
