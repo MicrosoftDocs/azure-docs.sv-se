@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27353e6086085aadae622e007a38f97e15cbcb7f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d657f1df14b083631227cb7c19f64b65be8801d0
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587873"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010473"
 ---
 # <a name="introduction-to-securing-azure-service-accounts"></a>Introduktion till att skydda Azure-tjänstekonton
 
@@ -26,7 +26,7 @@ Det finns tre typer av tjänst konton som är inbyggda för Azure Active Directo
 
 ## <a name="types-of-azure-active-directory-service-accounts"></a>Typer av Azure Active Directory tjänst konton
 
-För tjänster som är värd för Azure rekommenderar vi att du använder en hanterad identitet om möjligt och ett huvud namn för tjänsten. Hanterade identiteter kan inte användas för tjänster som ligger utanför Azure. I så fall rekommenderar vi ett huvud namn för tjänsten. Om du kan använda en hanterad identitet eller ett huvud namn för tjänsten gör du det. Vi rekommenderar att du inte använder ett Azure Active Directory-användarkonto som tjänstens huvud namn. I följande tabell finns en sammanfattning.
+För tjänster som är värd för Azure rekommenderar vi att du använder en hanterad identitet om möjligt och ett huvud namn för tjänsten. Hanterade identiteter kan inte användas för tjänster som ligger utanför Azure. I så fall rekommenderar vi ett huvud namn för tjänsten. Om du kan använda en hanterad identitet eller ett huvud namn för tjänsten gör du det. Vi rekommenderar att du inte använder ett Azure Active Directory användar konto som ett tjänst konto. I följande tabell finns en sammanfattning.
  
 
 | Tjänst värd| Hanterad identitet| Tjänstens huvudnamn| Azure-användarkonto |
@@ -54,7 +54,7 @@ Ett huvud namn för tjänsten är den lokala åter givningen av ett program obje
 
 Det finns två mekanismer för autentisering med tjänstens huvud namn – klient certifikat och klient hemligheter. Certifikat är säkrare: Använd klient certifikat om möjligt. Till skillnad från klient hemligheter kan klient certifikat inte oavsiktligt bäddas in i kod.
 
-Information om hur du skyddar tjänstens huvud namn finns i skydda tjänstens huvud namn.
+Information om hur du skyddar tjänstens huvud namn finns i [skydda tjänstens huvud namn](service-accounts-principal.md).
 
  
 ## <a name="next-steps"></a>Nästa steg

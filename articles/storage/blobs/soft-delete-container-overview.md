@@ -10,16 +10,16 @@ ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 54e703b096ea4e3572a6fc00aa6b7b2b99c4bcad
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: af9d520bab3ff49b30672717414fbd651c915dd4
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104800752"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552385"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Mjuk borttagning för behållare (förhands granskning)
 
-Mjuk borttagning för behållare (för hands version) skyddar dina data från att oavsiktligt eller avsiktligt tas bort. När mjuk borttagning av containrar är aktiverat för ett lagringskonto behålls borttagna containrar och deras innehåll i Azure Storage under den period som du anger. Under kvarhållningsperioden kan du återställa tidigare borttagna containrar. När du återställer en container återställs alla blobar som fanns i den containern när den togs bort.
+Mjuk borttagning för behållare (för hands version) skyddar dina data från att oavsiktligt eller avsiktligt tas bort. Om mjuk borttagning av behållare är aktiverat för ett lagrings konto behålls en borttagen behållare och dess innehåll i Azure Storage under den period som du anger. Under kvarhållningsperioden kan du återställa tidigare borttagna containrar. När du återställer en container återställs alla blobar som fanns i den containern när den togs bort.
 
 För slut punkt till slut punkts skydd för dina BLOB-data rekommenderar Microsoft att du aktiverar följande funktioner för data skydd:
 
@@ -37,7 +37,7 @@ När du aktiverar mjuk borttagning av behållare kan du ange en kvarhållningspe
 När du återställer en behållare återställs även behållarens blobbar och alla BLOB-versioner. Du kan dock endast använda mjuk borttagning av behållare för att återställa blobbar om själva behållaren har tagits bort. Om du vill återställa en borttagen BLOB när dess överordnade behållare inte har tagits bort, måste du använda blob-version med mjuk borttagning eller BLOB-versioner.
 
 > [!WARNING]
-> Behållarens mjuka borttagning kan bara återställa hela behållare och de blobbar de hade vid tidpunkten för borttagning. Det går inte att återställa en borttagen BLOB i en behållare med hjälp av mjuk borttagning av behållare.
+> Behållarens mjuka borttagning kan bara återställa hela behållare och deras innehåll vid tidpunkten för borttagningen. Det går inte att återställa en borttagen BLOB i en behållare med hjälp av mjuk borttagning av behållare. Microsoft rekommenderar också att du aktiverar BLOB-borttagning med mjuk borttagning och blob-versioner för att skydda enskilda blobbar i en behållare.
 
 Följande diagram visar hur en borttagen behållare kan återställas när mjuk borttagning av behållare är aktiverat:
 
@@ -50,7 +50,7 @@ När kvarhållningsperioden har gått ut tas behållaren bort permanent från Az
 Att inaktivera mjuk borttagning av behållare resulterar inte i permanent borttagning av behållare som tidigare varit borttagna. Alla mjuka, borttagna behållare tas bort permanent tills den kvarhållningsperiod som gällde vid den tidpunkt då behållaren togs bort.
 
 > [!IMPORTANT]
-> Mjuk borttagning av behållare skyddar inte borttagningen av ett lagrings konto, utan endast mot borttagning av behållare i det kontot. Om du vill skydda ett lagrings konto från borttagning konfigurerar du ett lås på lagrings konto resursen. Mer information om hur du låser Azure Resource Manager-resurser finns i [låsa resurser för att förhindra oväntade ändringar](../../azure-resource-manager/management/lock-resources.md).
+> Mjuk borttagning av behållare skyddar inte borttagningen av ett lagrings konto. Den skyddar endast mot borttagning av behållare i det kontot. Om du vill skydda ett lagrings konto från borttagning konfigurerar du ett lås på lagrings konto resursen. Mer information om hur du låser ett lagrings konto finns i [tillämpa ett Azure Resource Manager lås till ett lagrings konto](../common/lock-account-resource.md).
 
 ## <a name="about-the-preview"></a>Om för hands versionen
 

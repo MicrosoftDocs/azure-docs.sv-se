@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/18/2021
 ms.openlocfilehash: e72d509f71704bbf8608543df5e819a9b8783935
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105562077"
 ---
 # <a name="provide-server-credentials-to-discover-software-inventory-dependencies-and-sql-server-instances-and-databases"></a>Ange autentiseringsuppgifter för servern för att identifiera program varu inventering, beroenden och SQL Server instanser och databaser
@@ -32,7 +32,7 @@ Du kan lägga till flera autentiseringsuppgifter för servern i Configuration Ma
 
 De typer av autentiseringsuppgifter som stöds anges i tabellen nedan:
 
-Typ av autentiseringsuppgifter | Description
+Typ av autentiseringsuppgifter | Beskrivning
 --- | ---
 **Domänautentiseringsuppgifter** | Du **kan lägga till domänautentiseringsuppgifter genom** att välja alternativet i list rutan i **Lägg till spärrade autentiseringsuppgifter** . <br/><br/> Om du vill ange domänautentiseringsuppgifter måste du ange **domän namnet** som måste anges i FQDN-formatet (till exempel Prod.Corp.contoso.com). <br/><br/> Du måste också ange ett eget namn för autentiseringsuppgifter, användar namn och lösen ord. <br/><br/> De domän referenser som läggs till kommer automatiskt att verifieras för äkthet mot domänens Active Directory. Detta är för att förhindra att konto utelåsning när installationen försöker mappa domänautentiseringsuppgifter mot identifierade servrar. <br/><br/> Installations programmet kommer inte att försöka mappa domänautentiseringsuppgifter som inte kunde verifieras. Du måste ha minst en verifierad domän autentiseringsuppgift eller minst en icke-domänansluten-autentiseringsuppgift för att kunna fortsätta med program varu inventeringen.<br/><br/>Domänautentiseringsuppgifter som mappas automatiskt mot Windows-servrar kommer att användas för att utföra program varu inventering och kan även användas för att identifiera SQL Server instanser och databaser _(om du har konfigurerat Windows-autentiseringsläge på SQL-servrarna)_.<br/> [Läs mer](/dotnet/framework/data/adonet/sql/authentication-in-sql-server) om de typer av autentiseringsläge som stöds på SQL-servrar.
 **Autentiseringsuppgifter för icke-domän (Windows/Linux)** | Du kan lägga till **Windows (icke-domän)** eller **Linux (icke-domän)** genom att välja alternativet som krävs i list rutan i **Lägg till spärrade autentiseringsuppgifter** . <br/><br/> Du måste ange ett eget namn för autentiseringsuppgifter, användar namn och lösen ord.

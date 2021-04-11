@@ -17,19 +17,19 @@ ms.date: 03/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 185638d683699403c304603d968cfe84e32a55b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b17e7f34da1428eec219a393417b0a2a7b461078
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574568"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552741"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Rapporter för Azure Active Directory inloggnings aktivitet – för hands version
 
 Rapporterings arkitekturen i Azure Active Directory (Azure AD) består av följande komponenter:
 
 - **Aktivitet** 
-    - **Inloggningar** – information om när användare, program och hanterade resurser loggar in på Azure AD för att komma åt resurser.
+    - **Inloggningar** – information om när användare, program och hanterade resurser loggar in på Azure AD och få åtkomst till resurser.
     - **Gransknings loggar**  -  [Gransknings loggar](concept-audit-logs.md) innehåller information om system aktivitet för användare och grupp hantering, hanterade program och katalog aktiviteter.
 - **Säkerhet** 
     - **Riskfyllda inloggningar** – en [riskfylld inloggning](../identity-protection/overview-identity-protection.md) är en indikator för ett inloggnings försök av någon som inte är legitim ägare till ett användar konto.
@@ -210,7 +210,7 @@ För att göra det enklare att sammanställa data, grupperas icke-interaktiva in
 
 - Program
 
-- User
+- Användare
 
 - IP-adress
 

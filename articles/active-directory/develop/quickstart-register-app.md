@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: fa5ecd19863e8a37efdf533e68aeaed053c552f8
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: a5ba50b65cea573b8dbfdb17f671caee37cba459
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105625687"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731504"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Snabb start: registrera ett program med Microsoft Identity Platform
 
@@ -44,7 +44,7 @@ Följ de här stegen för att skapa appens registrering:
     Du kan när som helst ändra visnings namnet och flera registrerings program kan dela samma namn. App-registreringens automatiskt genererade program-ID (klient), inte dess visnings namn, identifierar din app unikt i identitets plattformen.
 1. Ange vem som kan använda programmet, ibland kallat *inloggnings mål gruppen*.
 
-    | Kontotyper som stöds | Description |
+    | Kontotyper som stöds | Beskrivning |
     |-------------------------|-------------|
     | **Endast konton i den här organisationskatalogen** | Välj det här alternativet om du vill skapa ett program för användning endast av användare (eller gäster) i *din* klient organisation.<br><br>Som ofta kallas LOB-program ( *line-of-Business* ) är den här appen ett program med en *enda klient organisation* i Microsoft Identity Platform. |
     | **Konton i valfri organisationskatalog** | Välj det här alternativet om du vill att användare i *någon* Azure Active Directory (Azure AD)-klient ska kunna använda ditt program. Det här alternativet är lämpligt om du till exempel skapar ett SaaS-program (program vara som en tjänst) som du vill ge till flera organisationer.<br><br>Den här typen av app kallas för ett program med flera *klienter* i Microsoft Identity Platform. |
@@ -59,7 +59,7 @@ Följ de här stegen för att skapa appens registrering:
 När registreringen är klar visar Azure Portal fönstret **Översikt** av appens registrering. Du ser **program-ID: t (klient)**. Även kallat *klient-ID*, identifierar det här värdet ditt program i Microsoft Identity Platform. 
 
 > [!IMPORTANT]
-> Nya registrerings program är dolda för användare som standard. När du är redo för användarna att se appen på [sidan Mina appar](../user-help/my-apps-portal-end-user-access.md) kan du aktivera den. Om du vill aktivera appen går du till Azure Portal navigera till **Azure Active Director**  >  **Enterprise-program** och väljer appen. Växla visningen  av sidan Egenskaper **till användare?** till Ja.
+> Nya registrerings program är dolda för användare som standard. När du är redo för användarna att se appen på [sidan Mina appar](../user-help/my-apps-portal-end-user-access.md) kan du aktivera den. Om du vill aktivera appen går du till Azure Portal navigera till **Azure Active Directory**  >  **företags program** och väljer appen. Växla visningen  av sidan Egenskaper **till användare?** till Ja.
 
 Programmets kod, eller mer vanligt vis ett autentiseringspaket som används i ditt program, använder också klient-ID: t. ID används som en del av verifieringen av säkerhetstoken som tas emot från identitets plattformen.
 

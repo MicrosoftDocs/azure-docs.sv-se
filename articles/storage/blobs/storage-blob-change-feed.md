@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 43aa86504d265927cb94e4333f86bb9cc9d2e2ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1366f24ec3bd35ec23d5bf0879fced367c9f6a45
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101095560"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552452"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Ändra stöd för feed i Azure Blob Storage
 
@@ -67,14 +67,11 @@ Här är några saker att tänka på när du aktiverar ändrings flödet.
 Aktivera ändra feed på ditt lagrings konto genom att använda Azure Portal:
 
 1. I [Azure Portal](https://portal.azure.com/)väljer du ditt lagrings konto.
+1. Navigera till alternativet för **data skydd** under **BLOB service**.
+1. Under **spårning** väljer du **Aktivera BLOB Change feed**.
+1. Välj knappen **Spara** för att bekräfta dina data skydds inställningar.
 
-2. Navigera till alternativet för **data skydd** under **BLOB service**.
-
-3. Klicka på **aktive rad** under **BLOB Change feed**.
-
-4. Välj knappen **Spara** för att bekräfta dina **data skydds** inställningar.
-
-    ![Skärm bild som visar inställningarna för data skydd.](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-configuration.png)
+    :::image type="content" source="media/storage-blob-change-feed/change-feed-enable-portal.png" alt-text="Skärm bild som visar hur du aktiverar ändra feed i Azure Portal":::
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 683367251c220abe36660d61463bce9e5a0c52f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c37c672f8784052424e058837d31bc1d22fcfc57
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100577769"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552622"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Planera en Azure Active Directory rapportering och övervakning av distribution
 
@@ -47,7 +47,7 @@ Med Azure AD-övervakning kan du dirigera loggar till:
 * en Azure-händelsehubben där du kan integrera med dina befintliga SIEM-verktyg som Splunk, SumoLogic eller QRadar.
 
 > [!NOTE]
-Vi började nyligen använda term Azure Monitors loggar i stället för Log Analytics. Loggdata lagras fortfarande i en Log Analytics arbets yta och samlas in och analyseras fortfarande av samma Log Analytics-tjänst. Vi uppdaterar terminologin för att bättre avspegla rollen för [loggar i Azure Monitor](../../azure-monitor/data-platform.md). Se [Azure Monitor terminologis ändringar](../../azure-monitor/terminology.md) för mer information.
+> Vi började nyligen använda term Azure Monitors loggar i stället för Log Analytics. Loggdata lagras fortfarande i en Log Analytics arbets yta och samlas in och analyseras fortfarande av samma Log Analytics-tjänst. Vi uppdaterar terminologin för att bättre avspegla rollen för [loggar i Azure Monitor](../../azure-monitor/data-platform.md). Se [Azure Monitor terminologis ändringar](../../azure-monitor/terminology.md) för mer information.
 
 [Läs mer om rapport bevarande principer](./reference-reports-data-retention.md).
 

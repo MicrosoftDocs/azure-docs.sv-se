@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
-ms.openlocfilehash: 788738082cbf9995fb2f7282bc3f574903275528
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dad46e21b35225855d787c367d112362fc95a463
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90527215"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010549"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>Säkerhets rutiner för Azure IoT Device-tillverkare
 Eftersom fler tillverkare släpper IoT-enheter är det bra att identifiera vägledning kring vanliga metoder. Den här artikeln sammanfattar rekommenderade säkerhets metoder för att tänka på när du tillverkar enheter för användning med Azure IoT Device Provisioning-tjänsten (DPS).  
@@ -177,7 +177,7 @@ I det här skedet installerar du DPS-klienten tillsammans med ID-omfånget och d
     > Om du använder en program vara för TPM kan du installera den nu.  Extrahera EK_pub samtidigt.
 
 #### <a name="step-4-device-is-packaged-and-sent-to-the-warehouse"></a>Steg 4: enheten paketeras och skickas till lagret
-En enhet kan sitta i ett lager i 6-12 månader innan den distribueras. 
+En enhet kan ibland sitta i ett lager i upp till ett år innan den distribueras och tillhandahålls med DPS.  Om en enhet är placerad i ett lager under en längre tid än en distribution kan kunder som distribuerar enheten behöva uppdatera den inbyggda program varan, program varan eller de inaktuella autentiseringsuppgifterna.
 
 #### <a name="step-5-device-is-installed-into-the-location"></a>Steg 5: enheten installeras på platsen
 När enheten har nått sin slutgiltiga plats går den igenom automatiserad etablering med DPS.

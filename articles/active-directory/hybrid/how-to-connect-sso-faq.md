@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dac4b461d4506015f0ef374eae37f67c445791d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 52b450ecc8aff379dbdb8d58f9b7609cf730ad27
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98107879"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731674"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory sömlös enkel inloggning: vanliga frågor och svar
 
@@ -126,7 +126,7 @@ Följ de här stegen på den lokala server där du kör Azure AD Connect:
 
    När du har slutfört guiden kommer sömlös SSO att inaktive ras på din klient. Du kommer dock att se ett meddelande på skärmen som läser på följande sätt:
 
-   "Enkel inloggning är nu inaktive rad, men det finns ytterligare manuella steg att utföra för att slutföra rensningen. Läs mer "
+   "Enkel inloggning är nu inaktive rad, men det finns ytterligare manuella steg att utföra för att slutföra rensningen. [Läs mer](tshoot-connect-sso.md#step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature)"
 
    Slutför rensnings processen genom att följa steg 2 och 3 på den lokala server där du kör Azure AD Connect.
 

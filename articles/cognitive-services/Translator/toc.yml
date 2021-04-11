@@ -132,8 +132,6 @@
           href: custom-translator/training-and-model.md
         - name: BLEU-poäng
           href: custom-translator/what-is-bleu-score.md
-        - name: Kryptering
-          href: encrypt-data-at-rest.md
 - name: Dokument Översättning
   items:
     - name: Vad är dokument Översättning?
@@ -146,8 +144,6 @@
           href: document-translation/create-sas-tokens.md
     - name: Referens
       items:
-        - name: Dokument översättnings REST API
-          href: /rest/api/cognitiveservices/translator/documenttranslation
         - name: Hämta dokument format
           href: document-translation/reference/get-document-formats.md
         - name: Hämta ord format
@@ -170,5 +166,9 @@
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
     - name: Efterlevnad
       href: 'https://azure.microsoft.com/en-us/support/legal/cognitive-services-compliance-and-privacy'
+    - name: Kryptering
+      href: encrypt-data-at-rest.md
     - name: Kodexempel på GitHub
       href: 'https://aka.ms/TranslatorGitHub'
+    - name: Sekretess och cookies
+      href: 'https://privacy.microsoft.com/en-US/privacystatement'
