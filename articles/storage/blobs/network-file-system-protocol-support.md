@@ -9,19 +9,19 @@ ms.date: 02/19/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: b00956a6fb5a79b09602ca1752cc547595f32db6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57dec4187ea42476ff1c0a993b751a7389da5639
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103224602"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490360"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>NFS (Network File System) 3,0 protokoll stöd i Azure Blob Storage (för hands version)
 
 Blob Storage stöder nu NFS-protokollet (Network File System) 3,0. Det här stödet ger kompatibilitet med Linux-filsystem vid objekt lagrings skala och priser och gör att Linux-klienter kan montera en behållare i Blob Storage från en virtuell Azure-dator (VM) eller en lokal dator. 
 
 > [!NOTE]
-> NFS 3,0 protokoll stöd i Azure Blob Storage finns i offentlig för hands version. Det stöder GPV2-lagrings konton med standard-nivå prestanda i följande regioner: östra Australien, Korea Central och södra centrala USA. För hands versionen stöder också Block-Blob med Premium prestanda nivå i alla offentliga regioner.
+> NFS 3,0 protokoll stöd i Azure Blob Storage finns i offentlig för hands version. Det stöder GPV2-lagrings konton med standard-nivå prestanda i följande regioner: östra Australien, Korea, centrala, USA, östra och södra centrala USA. För hands versionen stöder också Block-Blob med Premium prestanda nivå i alla offentliga regioner.
 
 Det är alltid en utmaning att köra storskaliga äldre arbets belastningar, till exempel HPC (data behandling med höga prestanda) i molnet. En orsak är att programmen ofta använder traditionella fil protokoll som NFS eller SMB (Server Message Block) för att få åtkomst till data. Interna moln lagrings tjänster fokuserar också på objekt lagring som har ett platt namn område och omfattande metadata i stället för fil system som tillhandahåller ett hierarkiskt namn område och effektiva metadata-åtgärder. 
 

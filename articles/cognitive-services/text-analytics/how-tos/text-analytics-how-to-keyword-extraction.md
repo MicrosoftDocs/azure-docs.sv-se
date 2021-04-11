@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 03/29/2021
 ms.author: aahi
-ms.openlocfilehash: 91e10c25d2c3bef9c1ca20e3e5737a326d45997c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fdf24fdc56d39d93fed0009e2fadbafd7f97db6c
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97654786"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280504"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Exempel: extrahera viktiga fraser med Textanalys
 
@@ -121,7 +121,7 @@ Information om definition av begäran finns i [så här anropar du API för text
 
 ## <a name="step-2-post-the-request"></a>Steg 2: Publicera begäran
 
-Analysen utförs när begäran har tagits emot. Information om storlek och antal begär Anden som du kan skicka per minut eller per sekund finns i avsnittet [data begränsningar](../overview.md#data-limits) i översikten.
+Analysen utförs när begäran har tagits emot. Information om storlek och antal begär Anden som du kan skicka per minut eller per sekund finns i artikeln [data begränsningar](../concepts/data-limits.md) .
 
 Kom ihåg att tjänsten är tillståndslös. Inga data lagras i ditt konto. Resultaten returneras omedelbart i svaret.
 

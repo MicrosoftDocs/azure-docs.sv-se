@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Den här artikeln innehåller en översikt över Azure Arc-aktiverade Kubernetes.
 keywords: Kubernetes, båge, Azure, behållare
 ms.custom: references_regions
-ms.openlocfilehash: b3296aa1c1d5d463cc7f4cb932b44ad76632e19e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 69e9886f214d0076c8e66231fd6ad15bb060828f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121600"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449656"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>Vad är Azure Arc-aktiverade Kubernetes?
 
@@ -43,9 +43,11 @@ Azure Arc-aktiverade Kubernetes har stöd för följande scenarier:
 
 * Distribuera program och tillämpa konfigurationen med GitOps konfigurations hantering. 
 
-* Visa och övervaka kluster med hjälp av Azure Monitor för behållare. 
+* Visa och övervaka kluster med hjälp av Azure Monitor för behållare.
 
-* Tillämpa principer med Azure Policy för Kubernetes. 
+* Framtvinga skydd av hot med Azure Defender för Kubernetes.
+
+* Tillämpa principer med Azure Policy för Kubernetes.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 

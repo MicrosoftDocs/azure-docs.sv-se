@@ -1,7 +1,7 @@
 ---
 title: Vad är nytt i Azure Active Directory program hantering
 description: Ny och uppdaterad dokumentation för Azure Active Directory program hantering.
-ms.date: 03/08/2021
+ms.date: 04/04/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,45 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: 5b645efe2bbaadeca31b4a0a3b957ff53f5ed3aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81898875af85becf1766f02a5b7e077cb388a173
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775518"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450046"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory program hantering: Nyheter
 
 Välkommen till nyheter i Azure Active Directory program hanterings dokumentation. Den här artikeln innehåller nya dokument som har lagts till och de som har haft betydande uppdateringar under de senaste tre månaderna. Information om vad som är nytt i program hanterings tjänsten finns i [Nyheter i Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="march-2021"></a>Mars 2021
+
+### <a name="new-articles"></a>Nya artiklar
+
+- [Vanliga frågor och svar om program hanterings certifikat för Azure Active Directory (Azure AD)](application-management-certs-faq.md)
+- [Azure Active Directory PowerShell-exempel för program hantering](app-management-powershell-samples.md)
+- [Inaktivera automatisk acceleration till en federerad IDP under användar inloggning med princip för identifiering av start sfär](prevent-domain-hints-with-home-realm-discovery.md)
+
+### <a name="updated-articles"></a>Uppdaterade artiklar
+
+- [Planera Azure Active Directory konfiguration av mina appar](my-apps-deployment-plan.md)
+- [Att integrera Azure Active Directory med program komma igång-guide](plan-an-application-integration.md)
+- [Integrera med SharePoint (SAML)](application-proxy-integrate-with-sharepoint-server-saml.md)
+- [Migrera programautentisering till Azure Active Directory](migrate-application-authentication-to-azure-active-directory.md)
+- [Använda rapporten AD FS program aktivitet för att migrera program till Azure AD](migrate-adfs-application-activity.md)
+- [Planera en distribution för enkel inloggning](plan-sso-deployment.md)
+- [Azure Active Directory PowerShell-exempel för program hantering](app-management-powershell-samples.md)
+- [Felsöka konfigurationer med Kerberos-begränsad delegering för programproxy](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+- [Snabb start: Konfigurera SAML-baserad enkel inloggning (SSO) för ett program i din Azure Active Directory (Azure AD)-klient](add-application-portal-setup-sso.md)
+- [Azure Active Directory program hantering: Nyheter](whats-new-docs.md)
+- [Vanliga frågor och svar om Active Directory (Azure AD) Application Proxy](application-proxy-faq.md)
+- [Felsöka problem med att logga in till ett program från Azure AD Mina appar](application-sign-in-other-problem-access-panel.md)
+- [Självstudie: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Optimera trafikflöde med Azure Active Directory-programproxy](application-proxy-network-topology.md)
+- [Azure AD-programproxy: versions historik](application-proxy-release-version-history.md)
+- [Konfigurera Azure Active Directory inloggnings beteende för ett program med hjälp av en princip för identifiering av start sfär](configure-authentication-for-federated-users-portal.md)
+- [Flytta programautentisering från Active Directory Federation Services (AD FS) till Azure Active Directory](migrate-adfs-apps-to-azure.md)
+
 
 ## <a name="february-2021"></a>Februari 2021
 

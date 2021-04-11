@@ -1,14 +1,14 @@
 ---
 title: Så här skapar du gästkonfigurationsprinciper för Windows
 description: Lär dig hur du skapar en princip för Azure Policy gäst konfiguration för Windows.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 72772743eba23ea7c2a93f5037ac84b671256a66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6eaefdbc28b8efc53dc7c4d46eb5d8a56d5be141
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104887707"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096605"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Så här skapar du gästkonfigurationsprinciper för Windows
 
@@ -25,8 +25,7 @@ Använd följande åtgärder för att skapa en egen konfiguration för att verif
 > [!IMPORTANT]
 > Anpassade princip definitioner med gäst konfiguration i Azure Government-och Azure Kina-miljöer är en förhands gransknings funktion.
 >
-> Gästkonfigurationstillägget krävs för att utföra granskningar på virtuella Azure-datorer.
-> Tilldela följande princip definitioner för att distribuera tillägget i skala över alla Windows-datorer: `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs`
+> Gästkonfigurationstillägget krävs för att utföra granskningar på virtuella Azure-datorer. Tilldela följande princip definitioner för att distribuera tillägget i skala över alla Windows-datorer: `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs`
 > 
 > Använd inte hemligheter eller konfidentiell information i anpassade innehålls paket.
 
@@ -138,7 +137,7 @@ class ResourceName : OMI_BaseResource
 };
 ```
 
-Om resursen har obligatoriska egenskaper måste de också returneras `Get-TargetResource` parallellt med `reasons` klassen. Om `reasons` inte ingår innehåller tjänsten ett "catch-all"-beteende som jämför värdena intill `Get-TargetResource` och värdena som returneras av `Get-TargetResource` och ger en detaljerad jämförelse som `reasons` .
+Om resursen har obligatoriska egenskaper måste dessa egenskaper också returneras av `Get-TargetResource` parallellt med `reasons` klassen. Om `reasons` inte ingår innehåller tjänsten ett "catch-all"-beteende som jämför värdena intill `Get-TargetResource` och värdena som returneras av `Get-TargetResource` och ger en detaljerad jämförelse som `reasons` .
 
 ### <a name="configuration-requirements"></a>Konfigurationskrav
 
@@ -181,9 +180,7 @@ Det slutförda paketet används av gäst konfigurationen för att skapa Azure Po
   - DscNativeResources-modul
   - Aktivitets DSC-resurspooler som krävs av MOF-modulen
 
-PowerShell-cmdletar hjälper dig att skapa paketet.
-Ingen mapp-eller versions katalog för rot nivå krävs.
-Paket formatet måste vara en. zip-fil och får inte överskrida den totala storleken 100 MB vid okomprimerat.
+PowerShell-cmdletar hjälper dig att skapa paketet. Ingen mapp-eller versions katalog för rot nivå krävs. Paket formatet måste vara en. zip-fil och får inte överskrida den totala storleken på 100 MB när den är okomprimerad.
 
 ### <a name="storing-guest-configuration-artifacts"></a>Lagring av gäst konfigurations artefakter
 
@@ -217,8 +214,7 @@ Configuration AuditBitLocker
 AuditBitLocker
 ```
 
-Kör det här skriptet i en PowerShell-terminal eller spara filen med namnet `config.ps1` i projektmappen.
-Kör den i PowerShell genom att köra `./config.ps1` i terminalen. En ny MOF-fil skapas.
+Kör det här skriptet i en PowerShell-terminal eller spara filen med namnet `config.ps1` i projektmappen. Kör den i PowerShell genom att köra `./config.ps1` i terminalen. En ny MOF-fil skapas.
 
 `Node AuditBitlocker`Kommandot är inte tekniskt obligatoriskt, utan skapar en fil med namnet `AuditBitlocker.mof` istället för standardvärdet `localhost.mof` . Med hjälp av MOF-filnamn följer du konfigurationen och gör det enkelt att ordna många filer när de körs i stor skala.
 
@@ -274,7 +270,7 @@ Parametrar för `Publish-GuestConfigurationPackage` cmdleten:
 - **Sökväg**: platsen för det paket som ska publiceras
 - **ResourceGroupName**: namnet på den resurs grupp där lagrings kontot finns
 - **StorageAccountName**: namnet på det lagrings konto där paketet ska publiceras
-- **StorageContainerName**: (standard: *guestconfiguration*) namnet på lagrings behållaren i lagrings kontot
+- **StorageContainerName**: (standard: _guestconfiguration_) namnet på lagrings behållaren i lagrings kontot
 - **Force**: Skriv över det befintliga paketet i lagrings kontot med samma namn
 
 Exemplet nedan publicerar paketet till ett lagrings behållar namn ' guestconfiguration '.
@@ -367,7 +363,7 @@ Ett exempel på en princip definition som filtrerar efter Taggar anges nedan.
 
 ### <a name="using-parameters-in-custom-guest-configuration-policy-definitions"></a>Använda parametrar i anpassade princip definitioner för gäst konfiguration
 
-Gäst konfiguration stöder åsidosättande egenskaper för en konfiguration vid körning. Den här funktionen innebär att värdena i MOF-filen i paketet inte måste betraktas som statiska. Värdena för åsidosättningar tillhandahålls via Azure Policy och påverkar inte hur konfigurationerna skapas eller kompileras.
+Gäst konfiguration stöder åsidosättande egenskaper för en konfiguration vid körning. Den här funktionen innebär att värdena i MOF-filen i paketet inte måste betraktas som statiska. Värdena för åsidosättningar tillhandahålls via Azure Policy och ändrar inte hur konfigurationerna skapas eller kompileras.
 
 Cmdletarna `New-GuestConfigurationPolicy` och `Test-GuestConfigurationPolicyPackage` innehåller en parameter med namnet **parameter**. Den här parametern tar en hash-definition inklusive all information om varje parameter och skapar de nödvändiga avsnitten för varje fil som används för Azure Policy definitionen.
 
@@ -389,7 +385,7 @@ $PolicyParameterInfo = @(
         DisplayName = 'windows service name.'                           # Policy parameter display name (mandatory)
         Description = "Name of the windows service to be audited."      # Policy parameter description (optional)
         ResourceType = "Service"                                        # DSC configuration resource type (mandatory)
-        ResourceId = 'UserSelectedNameExample'                                   # DSC configuration resource id (mandatory)
+        ResourceId = 'UserSelectedNameExample'                          # DSC configuration resource id (mandatory)
         ResourcePropertyName = "Name"                                   # DSC configuration resource property name (mandatory)
         DefaultValue = 'winrm'                                          # Policy parameter default value (optional)
         AllowedValues = @('BDESVC','TermService','wuauserv','winrm')    # Policy parameter allowed values (optional)
@@ -431,8 +427,7 @@ Om du vill släppa en uppdatering av principen gör du ändringen för både gä
 > [!NOTE]
 > `version`Egenskapen för gäst konfigurations tilldelningen påverkar bara paket som är värd för Microsoft. Den bästa metoden för att konfigurera anpassade innehålls versioner är att inkludera versionen i fil namnet.
 
-Börja med `New-GuestConfigurationPackage` att ange ett namn för paketet som gör det unikt från tidigare versioner när du kör. Du kan inkludera ett versions nummer i namnet, till exempel `PackageName_1.0.0` .
-Talet i det här exemplet används bara för att göra paketet unikt, inte för att ange att paketet ska anses vara nyare eller äldre än andra paket.
+Börja med `New-GuestConfigurationPackage` att ange ett namn för paketet som gör det unikt från tidigare versioner när du kör. Du kan inkludera ett versions nummer i namnet, till exempel `PackageName_1.0.0` . Talet i det här exemplet används bara för att göra paketet unikt, inte för att ange att paketet ska anses vara nyare eller äldre än andra paket.
 
 Sedan uppdaterar du parametrarna som används med `New-GuestConfigurationPolicy` cmdleten enligt var och en av förklaringarna nedan.
 

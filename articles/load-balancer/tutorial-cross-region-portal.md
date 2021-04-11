@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: c16123fae63b89eff57b5c91864d9a947e01b386
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65d85f51afef36aa618868e2fda1d2bbf583ea21
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104576925"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221134"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Självstudie: skapa en Azure Load Balancer över flera regioner med hjälp av Azure Portal
 
@@ -105,34 +105,6 @@ Skapa backend-adresspoolen **myBackendPool – CR** för att inkludera regionala
 8. Välj **Lägg till**.
 
     :::image type="content" source="./media/tutorial-cross-region-portal/add-to-backendpool.png" alt-text="Lägg till regionala belastningsutjämnare till backendpool" border="true":::
-
-## <a name="create-a-health-probe"></a>Skapa en hälsoavsökning
-
-I det här avsnittet ska du skapa en hälso avsökning för att skapa belastnings Utjämnings regeln:
-
-* Med namnet **myHealthProbe**.
-* Protokoll- **TCP**.
-* Intervall på **5** sekunder.
-* Tröskelvärde för antal fel på **två** fel.
-
-1. Välj **alla tjänster** i den vänstra menyn, Välj **alla resurser** och välj sedan **myLoadBalancer-CR** i listan resurser.
-
-2. Under **Inställningar** väljer du **Hälsoavsökningar**.
-
-3. Använd följande värden för att konfigurera hälso avsökningen:
-
-    | Inställning | Värde |
-    | ------- | ----- |
-    | Namn | Ange **myHealthProbe**. |
-    | Protokoll | Välj **TCP**. |
-    | Port | Ange **80**. |
-    | Intervall | Ange **5**. |
-    | Tröskelvärde för ej felfri | Ange **2**. |
-
-4. Välj **OK**.
-
-    > [!NOTE]
-    > Belastningsutjämnaren för flera regioner har en inbyggd hälso avsökning. Den här avsökningen är en plats hållare för skapande av belastnings Utjämnings regel som fungerar.  Mer information finns i **[begränsningar av belastnings utjämning i flera regioner](cross-region-overview.md#limitations)**.
 
 ## <a name="create-a-load-balancer-rule"></a>Skapa en lastbalanseringsregel
 

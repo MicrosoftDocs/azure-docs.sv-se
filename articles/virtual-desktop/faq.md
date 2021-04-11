@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: ffea2d84f1a5149670976beef3b9af847ae31a35
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 1f5e4cb0d2db30c6b07370be137506f3fe26837f
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104582144"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505305"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Vanliga frågor och svar om Windows Virtual Desktop
 
@@ -139,7 +139,7 @@ Slutligen, om du har aktiverat resurs leverantören från kontot för CSP-ägare
 
 ## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>Hur ofta ska jag aktivera mina virtuella datorer för att förhindra registrerings problem?
 
-När du registrerar en virtuell dator till en adresspool i Windows Virtual Desktop-tjänsten uppdaterar agenten regelbundet den virtuella datorns token när den virtuella datorn är aktiv. Certifikatet för registrerings-token är giltigt i 90 dagar. På grund av den här 90-dagars gränsen rekommenderar vi att du startar dina virtuella datorer var 90 dag. Om du aktiverar den virtuella datorn inom den här tids gränsen kommer dess registrerings token att upphöra att gälla eller bli ogiltig. Om du har startat den virtuella datorn efter 90 dagar och har problem med registreringen, följer du anvisningarna i [fel söknings guiden för Windows Virtual Desktop agent](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) för att ta bort den virtuella datorn från poolen, installera om agenten och registrera den på poolen igen.
+När du registrerar en virtuell dator till en adresspool i Windows Virtual Desktop-tjänsten uppdaterar agenten regelbundet den virtuella datorns token när den virtuella datorn är aktiv. Certifikatet för registrerings-token är giltigt i 90 dagar. På grund av den här 90-dagars gränsen rekommenderar vi att virtuella datorer är online i 20 minuter var 90 dag, så att datorn kan uppdatera sina tokens och uppdatera agenten och stack-vid-sida-stack-komponenter. Om du aktiverar den virtuella datorn inom den här tids gränsen kommer dess registrerings token att upphöra att gälla eller bli ogiltig. Om du har startat den virtuella datorn efter 90 dagar och har problem med registreringen, följer du anvisningarna i [fel söknings guiden för Windows Virtual Desktop agent](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) för att ta bort den virtuella datorn från poolen, installera om agenten och registrera den på poolen igen.
 
 ## <a name="can-i-set-availability-options-when-creating-host-pools"></a>Kan jag ange tillgänglighets alternativ när du skapar värdar för pooler?
 

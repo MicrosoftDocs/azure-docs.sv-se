@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: aafeb7ebd939805ae18e29670f359660db12e2e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c8f817ad06742e6f84c3cb87dda0c36866540267
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103555895"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450354"
 ---
 För närvarande har Ultra disks ytterligare begränsningar, de är följande:
 
@@ -31,6 +31,7 @@ Följande tabell beskriver regionerna Ultra disks finns i, samt motsvarande till
 |Asien, östra     |Endast enskilda virtuella datorer (tillgänglighets uppsättningar och skalnings uppsättningar för virtuella datorer stöds inte)|
 |Tyskland, västra centrala     |Endast enskilda virtuella datorer (tillgänglighets uppsättningar och skalnings uppsättningar för virtuella datorer stöds inte)|
 |Sydkorea, centrala     |Endast enskilda virtuella datorer (tillgänglighets uppsättningar och skalnings uppsättningar för virtuella datorer stöds inte)|
+|USA, norra centrala    |Endast enskilda virtuella datorer (tillgänglighets uppsättningar och skalnings uppsättningar för virtuella datorer stöds inte)|
 |USA, södra centrala    |Endast enskilda virtuella datorer (tillgänglighets uppsättningar och skalnings uppsättningar för virtuella datorer stöds inte)|
 |US Gov, Arizona     |Endast enskilda virtuella datorer (tillgänglighets uppsättningar och skalnings uppsättningar för virtuella datorer stöds inte)|
 |US Gov, Virginia     |Endast enskilda virtuella datorer (tillgänglighets uppsättningar och skalnings uppsättningar för virtuella datorer stöds inte)|

@@ -3,12 +3,12 @@ title: Självstudie – lokala peer-miljöer i ett privat moln
 description: Lär dig hur du skapar ExpressRoute Global Reach peering till ett privat moln i en Azure VMware-lösning.
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 59ddc2dd4aed850328807a4543d2fabd6f5a99f1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 798b822989127ccbb00e971de2cc4147ac234259
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564508"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449570"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Självstudie: peer-lokala miljöer till ett privat moln
 
@@ -55,7 +55,7 @@ Nu när du har skapat en auktoriseringsregel för ExpressRoute-kretsen för det 
 1. Skapa en lokal moln anslutning. Gör något av följande och välj sedan **skapa**:
 
    - Välj **ExpressRoute-kretsen** i listan eller
-   - Om du har krets-ID: t klistrar du in det i fältet och anger auktoriseringsregeln.
+   - Om du har krets-ID: t klistrar du in det i fältet och anger den auktoriseringskod som du nyss skapade.
 
    :::image type="content" source="./media/expressroute-global-reach/on-premises-cloud-connections.png" alt-text="Ange ExpressRoute-ID och verifierings nyckel och välj sedan skapa.":::   
    

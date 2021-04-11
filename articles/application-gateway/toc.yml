@@ -90,6 +90,8 @@
           href: ssl-overview.md
         - name: Översikt över SSL-princip
           href: application-gateway-ssl-policy-overview.md
+        - name: Ömsesidig autentisering
+          href: mutual-authentication-overview.md
         - name: Använda Key Vault
           href: key-vault-certs.md
     - name: Ingress för AKS
@@ -140,18 +142,28 @@
               href: end-to-end-ssl-portal.md
             - name: Slutpunkt till slutpunkt för SSL – PowerShell
               href: application-gateway-end-to-end-ssl-powershell.md
+        - name: Ömsesidig autentisering
+          items:
+            - name: Ömsesidig autentisering – Portal
+              href: mutual-authentication-portal.md
+            - name: Ömsesidig autentisering – PowerShell
+              href: mutual-authentication-powershell.md
         - name: Hantera certifikat
           items:
             - name: Certifikat för serverdelen
               href: certificates-for-backend-authentication.md
             - name: Förnya certifikat
               href: renew-certificates.md
-            - name: Skapa självsignerade certifikat
+            - name: Generera självsignerade certifikat för Server delen
               href: self-signed-certificates.md
+            - name: Betrodda klient certifikat
+              href: mutual-authentication-certificate-management.md
         - name: SSL-princip
           items:
             - name: Konfigurera SSL-princip
               href: application-gateway-configure-ssl-policy-powershell.md
+            - name: Lyssnare-Specific SSL-princip
+              href: application-gateway-configure-listener-specific-ssl-policy.md
     - name: Ingress för AKS
       items:
         - name: Inkommande för AKS via Helm (Brownfield)
@@ -254,6 +266,8 @@
           href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
         - name: Fel med felaktig gateway (502)
           href: application-gateway-troubleshooting-502.md
+        - name: Ömsesidig autentisering
+          href: mutual-authentication-troubleshooting.md
         - name: Ingress för AKS
           href: ingress-controller-troubleshoot.md
         - name: Resource Health

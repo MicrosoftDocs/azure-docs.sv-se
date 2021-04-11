@@ -12,18 +12,25 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: tal Översättning
-ms.openlocfilehash: 94ddd06068513261b5b73b313877e273c7251d62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99541d7fe9eaa867860af93bc1423d476ce8bf4a
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954969"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449944"
 ---
 # <a name="what-is-speech-translation"></a>Vad är talöversättning?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 I den här översikten får du lära dig mer om fördelarna och funktionerna i tal översättnings tjänsten, vilket möjliggör real tids [-och tal-till](language-support.md#speech-translation) -text-översättning i real tid av ljud strömmar. Med tal-SDK har dina program, verktyg och enheter åtkomst till käll avskrifter och översättnings utdata för tillhandahållen ljud. Interimistiska avskrifter och översättnings resultat returneras som tal identifieras och slutgiltiga resultat kan konverteras till syntetiskt tal.
+
+Den här dokumentationen innehåller följande artikel typer:
+
+* **Snabb starter** hjälper dig att komma igång med instruktioner för att göra förfrågningar till tjänsten.
+* **Instruktions guider** innehåller instruktioner för att använda tjänsten på mer exakta eller anpassade sätt.
+* **Begreppen** ger djupgående förklaringar av tjänst funktionerna och funktionerna.
+* **Självstudier** är längre guider som visar hur du använder tjänsten som en komponent i bredare affärs lösningar.
 
 ## <a name="core-features"></a>Kärn funktioner
 

@@ -25,6 +25,8 @@
   items:
     - name: Säkerhet
       items:
+        - name: Säkerhetsbaslinje
+          href: security-baseline.md
         - name: Skydda Microsoft 365 från lokala attacker
           href: protect-m365-from-on-premises-attacks.md
         - name: Säkert externt samarbete

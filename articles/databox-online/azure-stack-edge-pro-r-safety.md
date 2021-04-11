@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: dacc9ecc28ffa482b60d1e48735fe3620b5b7558
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b3589349feed2e20711aa756d8be8ebc433ac0b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363074"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077609"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Instruktioner för Azure Stack Edge Pro R-säkerhet
 
@@ -37,7 +37,8 @@ Följande farlighets ikoner ska observeras när du konfigurerar och kör din Azu
 | Ikon | Beskrivning |
 |:--- |:--- |
 | ![Läs alla instruktioner först](./media/azure-stack-edge-pro-r-safety/icon-safety-read-all-instructions.png) | Läs alla instruktioner först |
-| ![Meddelande Ikons ](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **meddelande:** | Anger information som anses viktig, men inte risk relaterad. || ![Varnings symbol](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Varnings symbol |
+| ![Meddelande Ikons ](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **meddelande:** | Anger information som anses viktig, men inte risk relaterad. |
+| ![Varnings symbol](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Varnings symbol |
 | ![Varnings ikon för tips](./media/azure-stack-edge-pro-r-safety/icon-safety-tip-hazard.png)  | Tips risk|
 | ![Ikon med tung vikt](./media/azure-stack-edge-pro-r-safety/icon-safety-heavy-weight.png)  | Risk med tung vikt|
 | ![Elektrisk stötande ikon](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) | Fara för elektrisk stöt |
@@ -45,7 +46,7 @@ Följande farlighets ikoner ska observeras när du konfigurerar och kör din Azu
 | ![Ikon för flera ström källor](./media/azure-stack-edge-pro-r-safety/icon-safety-disconnect-all-power.png)  | Flera ström källor. Koppla bort alla ström sladdar för att ta bort all ström från utrustningen. |
 | ![Ikon för att dra ihop punkter](./media/azure-stack-edge-pro-r-safety/icon-pinching-points.png)  | Det finns andra omdrana punkter. |
 | ![Ikoner för aktiva komponenter eller ytor](./media/azure-stack-edge-pro-r-safety/icon-hot-component-surface.png)  | Anger aktiva komponenter eller ytor. |
-|
+
 
 ## <a name="handling-precautions-and-site-selection"></a>Hantera förebyggande åtgärder och val av webbplatser
 

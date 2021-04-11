@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: 2c771509de5ac246bac0d8e006a5d0b884a410b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 412105e3262a3baf8780bd3bd1082508967ea486
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101706817"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012592"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>Gör så här: minimera svars tiden när du använder ansikts tjänsten
 
@@ -86,6 +86,7 @@ Om datorn har en långsam anslutning till ansikts tjänsten som påverkar svars 
 Åtgärder
 - När du skapar din ansikts prenumeration ska du se till att välja den region som ligger närmast där ditt program finns.
 - Om du behöver anropa flera tjänst metoder bör du överväga att anropa dem parallellt om din program design tillåter det. Se föregående avsnitt för ett exempel.
+- Om längre tids fördröjning påverkar användar upplevelsen väljer du ett timeout-värde (t. ex. maximalt 5 SEK) innan du försöker igen med API-anropet.
 
 ## <a name="next-steps"></a>Nästa steg
 

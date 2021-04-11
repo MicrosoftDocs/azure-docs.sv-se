@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: b47a205cac1717dfc66594f856fd9370a01a9ae3
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 2f321413a275676d0abb1a075ba958885ffcd821
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168220"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505033"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Felsök vanliga problem med Windows Virtual Desktop agent
 
@@ -216,7 +216,7 @@ Lös problemet så här:
 
 ## <a name="error-heartbeat-issue-where-users-keep-getting-disconnected-from-session-hosts"></a>Fel: pulsslags problem där användare håller på att bli frånkopplade från sessionens värdar
 
-Om servern inte har ett pulsslag från tjänsten Windows Virtual Desktop måste du ändra tröskelvärdet för pulsslag. Följ anvisningarna i det här avsnittet om ett eller flera av följande scenarier gäller dig:
+Om servern inte har ett pulsslag från tjänsten Windows Virtual Desktop måste du ändra tröskelvärdet för pulsslag. Detta kan tillfälligt minimera problemets symptom, men korrigera inte det underliggande nätverks problemet. Följ anvisningarna i det här avsnittet om ett eller flera av följande scenarier gäller dig:
 
 - Du får ett **CheckSessionHostDomainIsReachableAsync** -fel
 - Du får ett **ConnectionBrokenMissedHeartbeatThresholdExceeded** -fel
@@ -316,7 +316,7 @@ Lös problemet så här:
 
 Om du inte kan hitta ditt problem i den här artikeln eller om instruktionerna inte hjälper dig, rekommenderar vi att du avinstallerar, installerar om och registrerar Windows Virtual Desktop Agent igen. Anvisningarna i det här avsnittet visar hur du omregistrerar din virtuella dator i Windows Virtual Desktop-tjänsten genom att avinstallera alla agent-, start inläsnings-och stack-komponenter, ta bort sessionsnyckeln från poolen, generera en ny registrerings nyckel för den virtuella datorn och installera om agenten och start inläsaren. Om ett eller flera av följande scenarier gäller för dig, följer du dessa anvisningar:
 - Den virtuella datorn har fastnat i **uppgradering** eller är **inte tillgänglig**
-- Stack lyssnaren fungerar inte och du kör på Windows 10 1809, 1903 eller 1904
+- Stack lyssnaren fungerar inte och du kör på Windows 10 1809, 1903 eller 1909
 - Du får ett **EXPIRED_REGISTRATION_TOKEN** fel
 - Du ser inte att dina virtuella datorer visas i listan över sessions värdar
 - Du ser inte **Remote Desktop agent-inläsaren** i fönstret tjänster

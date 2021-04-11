@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 629459d22b18b326307b45bb512d16622808b533
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c10963d28e0d2ecee73150e8b5af89cee96d28b2
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562638"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077014"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Identifiering, utvärdering och beroende analys – vanliga frågor
 
@@ -85,6 +85,10 @@ Säkerhetsomdömet beräknas för ”prestandabaserade” utvärderingar baserat
 - För virtuella Azure-datorer och AVS-bedömningar skapades några servrar efter att identifieringen hade startats. Om du till exempel skapar en utvärdering för prestanda historiken för den senaste månaden, men bara några servrar har skapats i miljön för en vecka sedan. I det här fallet är prestanda data för de nya servrarna inte tillgängliga under hela varaktigheten och förtroendet är lågt. [Läs mer](./concepts-assessment-calculation.md#confidence-ratings-performance-based)
 
 - Vid Azure SQL-utvärderingar skapades några SQL-instanser eller databaser efter att identifieringen hade startats. Om du till exempel skapar en utvärdering för prestanda historiken för den senaste månaden, men bara några SQL-instanser eller databaser har skapats i miljön för en vecka sedan. I det här fallet är prestanda data för de nya servrarna inte tillgängliga under hela varaktigheten och förtroendet är lågt. [Läs mer](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
+
+## <a name="-the-number-of-azure-vm-or-avs-assessments-on-the-discovery-and-assessment-tool-are-incorrect"></a>> antalet virtuella Azure-datorer eller AVS-utvärderingar i identifierings-och utvärderings verktyget är felaktiga
+ Du kan åtgärda detta genom att klicka på det totala antalet utvärderingar för att navigera till alla utvärderingar och beräkna om den virtuella Azure-datorn eller AVS-utvärderingen. Verktyget för identifiering och bedömning visar sedan det korrekta antalet för den utvärderings typen.
+
 
 ## <a name="i-want-to-try-out-the-new-azure-sql-assessment"></a>Jag vill testa den nya Azure SQL-utvärderingen
 Identifiering och utvärdering av SQL Server instanser och databaser som körs i din VMware-miljö är nu i för hands version. Kom igång med [den här självstudien](tutorial-discover-vmware.md). Om du vill testa den här funktionen i ett befintligt projekt måste du kontrol lera att du har slutfört [kraven](how-to-discover-sql-existing-project.md) i den här artikeln.

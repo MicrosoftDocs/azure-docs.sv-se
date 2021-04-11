@@ -12,12 +12,12 @@ ms.date: 03/17/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 56ffa8c33c409e274318407a70f33edaabb5073d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75d838e8ce785a4f59b056bf0dec736b982ea716
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578506"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107283821"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Felkoder för Azure AD-autentisering och -auktorisering
 
@@ -123,7 +123,7 @@ Om du till exempel har fått felkoden "AADSTS50058" gör du en sökning i [https
 | AADSTS50055 | InvalidPasswordExpiredPassword – lösen ordet har upphört att gälla. |
 | AADSTS50056 | Ogiltigt eller null lösen ord – lösen ordet finns inte i arkivet för den här användaren. |
 | AADSTS50057 | UserDisabled – användar kontot är inaktiverat. Kontot har inaktiverats av en administratör. |
-| AADSTS50058 | UserInformationNotProvided – det innebär att en användare inte är inloggad. Detta är ett vanligt fel som förväntas när en användare är oautentiserad och ännu inte har loggat in.</br>Om det här felet uppmuntras i en SSO-kontext där användaren tidigare har loggat in, innebär det att SSO-sessionen inte hittades eller är ogiltig.</br>Det här felet kan returneras till programmet om prompt = none har angetts. |
+| AADSTS50058 | UserInformationNotProvided – det innebär att en användare inte är inloggad. Detta är ett vanligt fel som förväntas när en användare är oautentiserad och ännu inte har loggat in.</br>Om det här felet uppstår i en SSO-kontext där användaren tidigare har loggat in, innebär det att SSO-sessionen inte hittades eller är ogiltig.</br>Det här felet kan returneras till programmet om prompt = none har angetts. |
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided-klient identifierings information hittades inte i begäran eller underförstådda av de angivna autentiseringsuppgifterna. Användaren kan kontakta klient organisationens administratör för att hjälpa till att lösa problemet. |
 | AADSTS50061 | SignoutInvalidRequest-begäran om utloggning är ogiltig. |
 | AADSTS50064 | CredentialAuthenticationError-verifiering av autentiseringsuppgifter för användar namn eller lösen ord misslyckades. |

@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 432330ae06b2e1c19401456dc05f87d0dd908f2d
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 6066b5efc9bb004aab6b651f15d24b19672c3497
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574156"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220614"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Uppgradera ditt kostnadsfria Azure-konto eller ditt Azure for Students Starter-konto
 
 Du kan uppgradera ditt [kostnads fria Azure-konto](https://azure.microsoft.com/free/) till [priserna för betala per](https://azure.microsoft.com/offers/ms-azr-0003p/) användning i Azure Portal.
 
-Om du har ett [Start konto för Azure för studenter](https://azure.microsoft.com/offers/ms-azr-0144p/) och är berättigade till ett [kostnads fritt Azure-konto](https://azure.microsoft.com/free/)kan du uppgradera till ett [kostnads fritt Azure](https://azure.microsoft.com/free/)-konto. Du får 200 USD i Azure-krediter och 12 månaders kostnadsfria tjänster när du uppgraderar. Om du inte är berättigad till ett kostnads fritt konto kan du uppgradera till priser enligt principen [betala per](https://azure.microsoft.com/offers/ms-azr-0003p/) användning med en [support förfrågan](https://go.microsoft.com/fwlink/?linkid=2083458).
+Om du har ett [Start konto för Azure för studenter](https://azure.microsoft.com/offers/ms-azr-0144p/) och är berättigade till ett [kostnads fritt Azure-konto](https://azure.microsoft.com/free/)kan du uppgradera till ett [kostnads fritt Azure](https://azure.microsoft.com/free/)-konto. Du får 200 USD I Azure-kredit i din fakturerings valuta och 12 månaders kostnads fria tjänster vid uppgraderingen. Om du inte är berättigad till ett kostnads fritt konto kan du uppgradera till priser enligt principen [betala per](https://azure.microsoft.com/offers/ms-azr-0003p/) användning med en [support förfrågan](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 Om du har ett konto [för Azure för studenter](https://azure.microsoft.com/offers/ms-azr-0170p/) kan du uppgradera till [priser enligt principen betala per](https://azure.microsoft.com/offers/ms-azr-0003p/) användning med en [support förfrågan](https://go.microsoft.com/fwlink/?linkid=2083458)
 

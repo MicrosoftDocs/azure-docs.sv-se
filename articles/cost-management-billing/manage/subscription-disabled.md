@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: 1c40102f8815cf7299a99d290b7f57b386ede401
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 37093900bf49e8a7613e2e3f4311548675791ceb
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055135"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220891"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Återaktivera en inaktiverad Azure-prenumeration
 
@@ -23,7 +23,7 @@ Din Azure-prenumeration kan inaktiveras om din kredit har gått ut, om du har n�
 
 ## <a name="your-credit-is-expired"></a>Din kredit har upphört
 
-När du registrerar dig för ett kostnads fritt Azure-konto får du en kostnads fri utvärderings prenumeration, som ger dig 200 USD Azure-kredit i din fakturerings valuta i 30 dagar och 12 månaders kostnads fria tjänster. Efter 30-dagarsperioden inaktiverar Azure din prenumeration. Din prenumeration inaktiveras för att skydda dig så att du inte oavsiktligt debiteras för användning utöver krediten och de kostnadsfria tjänsterna som ingår i din prenumeration. Om du vill fortsätta att använda Azure-tjänster måste du [uppgradera din prenumeration](upgrade-azure-subscription.md). Efter uppgraderingen har prenumerationen fortfarande tillgång till kostnadsfria tjänster i 12 månader. Du debiteras bara för användning utöver de kostnads fria begränsningarna för service antalet.
+När du registrerar dig för ett kostnads fritt Azure-konto får du en kostnads fri utvärderings prenumeration, som ger dig 200 USD I Azure-kredit i din fakturerings valuta i 30 dagar och 12 månaders kostnads fria tjänster. Efter 30-dagarsperioden inaktiverar Azure din prenumeration. Din prenumeration inaktiveras för att skydda dig så att du inte oavsiktligt debiteras för användning utöver krediten och de kostnadsfria tjänsterna som ingår i din prenumeration. Om du vill fortsätta att använda Azure-tjänster måste du [uppgradera din prenumeration](upgrade-azure-subscription.md). Efter uppgraderingen har prenumerationen fortfarande tillgång till kostnadsfria tjänster i 12 månader. Du debiteras bara för användning utöver de kostnads fria begränsningarna för service antalet.
 
 ## <a name="you-reached-your-spending-limit"></a>Du har uppnått utgiftsgränsen
 

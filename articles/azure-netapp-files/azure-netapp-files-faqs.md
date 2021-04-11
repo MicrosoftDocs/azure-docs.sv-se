@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 04/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 81c28a3c64c81da8f6939d821c2bd61ba8617a7b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d63587eec1f7e6d24ae1638e8365b85fd1ec2c94
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935251"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504999"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Vanliga frågor och svar om Azure NetApp Files
 
@@ -82,7 +82,21 @@ Nej, för närvarande kan du inte använda nätverks säkerhets grupper för det
 
 ### <a name="can-i-use-azure-rbac-with-azure-netapp-files"></a>Kan jag använda Azure RBAC med Azure NetApp Files?
 
-Ja, Azure NetApp Files stöder Azure RBAC-funktioner.
+Ja, Azure NetApp Files stöder Azure RBAC-funktioner. Tillsammans med de inbyggda Azure-rollerna kan du [skapa anpassade roller](../role-based-access-control/custom-roles.md) för Azure NetApp Files. 
+
+En fullständig lista över Azure NetApp Files behörigheter finns i Azure Resource Provider-åtgärder för [`Microsoft.NetApp`](../role-based-access-control/resource-provider-operations.md#microsoftnetapp) .
+
+### <a name="are-azure-activity-logs-supported-on-azure-netapp-files"></a>Stöds Azure aktivitets loggar på Azure NetApp Files?
+
+Azure NetApp Files är en Azure Native-tjänst. Alla API: er för att lägga till, skicka och ta bort för Azure NetApp Files loggas. Loggarna visar till exempel aktiviteter som vem som skapade ögonblicks bilden, som ändrade volymen och så vidare.
+
+En fullständig lista över API-åtgärder finns i [Azure NetApp Files REST API](/rest/api/netapp/).
+
+### <a name="can-i-use-azure-policies-with-azure-netapp-files"></a>Kan jag använda Azure-principer med Azure NetApp Files?
+
+Ja, du kan skapa [anpassade Azure-principer](../governance/policy/tutorials/create-custom-policy-definition.md). 
+
+Du kan dock inte skapa Azure-principer (anpassade namngivnings principer) i Azure NetApp Files-gränssnittet. Se [rikt linjer för Azure NetApp Files nätverks planering](azure-netapp-files-network-topologies.md#considerations).
 
 ## <a name="performance-faqs"></a>Vanliga frågor och svar om prestanda
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: bf66723f878f8b277d71577c068afdad56708ad6
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: a01571f4a1f852deb84b7f20d61b8048e8000790
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105563279"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490105"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Vägledning för kodnings scenario-baserad migrering
 
@@ -91,7 +91,7 @@ I v2 skapas filer för XML-indata och utdata som genereras som ett resultat av e
 
 ## <a name="premium-encoder-to-v3-standard-encoder-or-partner-based-solutions"></a>Premium-kodare till v3 standard-kodare eller partnerbaserade lösningar
 
-V2-API: t stöder inte längre Premium-kodaren. Om du tidigare använde den arbets flödes-baserade Premium-kodaren för HEVC-kodning ska du migrera till den nya v3 [Standard-kodaren](media-encoder-standard-formats.md) med stöd för hevc-kodning.
+V2-API: t stöder inte längre Premium-kodaren. Om du tidigare använde den arbets flödes-baserade Premium-kodaren för HEVC-kodning ska du migrera till den nya v3 [Standard-kodaren](encode-media-encoder-standard-formats-reference.md) med stöd för hevc-kodning.
 
 Om du behöver de avancerade arbets flödes funktionerna i Premium-kodaren rekommenderar vi att du börjar använda en Azure Advanced encoding-partner lösning från [föreställd kommunikation](https://imaginecommunications.com), [multistream](https://www.telestream.net)eller [Bitmovin](https://bitmovin.com).
 
@@ -103,20 +103,20 @@ Om du tidigare använde arbets flöden för att kopiera filer från Azure Blob-f
 
 ## <a name="indexer-v1-audio-transcription-to-the-new-audioanalyzer-basic-mode"></a>Indexerare v1 ljud avskrift till det nya AudioAnalyzer "grundläggande läget"
 
-För kunder som använder en indexerare v1-processor i v2-API: et måste du skapa en transformering som anropar det nya `AudioAnalyzer` i [Basic-läget](how-to-create-basic-audio-transform.md) innan du skickar ett jobb.
+För kunder som använder en indexerare v1-processor i v2-API: et måste du skapa en transformering som anropar det nya `AudioAnalyzer` i [Basic-läget](transform-create-basic-audio-how-to.md) innan du skickar ett jobb.
 
 ## <a name="encoding-transforms-and-jobs-concepts-tutorials-and-how-to-guides"></a>Kodnings-, omvandlings-och jobb koncept, självstudier och hur du går till guider
 
 ### <a name="concepts"></a>Begrepp
 
-- [Koda video och ljud med Media Services](encoding-concept.md)
-- [Standardformat för kodare och codec](media-encoder-standard-formats.md)
-- [Koda med en steg för automatiskt genererad bit hastighet](autogen-bitrate-ladder.md)
-- [Använd den innehålls medveten kodnings inställningen för att hitta det optimala värdet för bit hastighet för en specifik lösning](content-aware-encoding.md)
+- [Koda video och ljud med Media Services](encode-concept.md)
+- [Standardformat för kodare och codec](encode-media-encoder-standard-formats-reference.md)
+- [Koda med en steg för automatiskt genererad bit hastighet](encode-autogen-bitrate-ladder.md)
+- [Använd den innehålls medveten kodnings inställningen för att hitta det optimala värdet för bit hastighet för en specifik lösning](encode-content-aware-concept.md)
 - [Enheter med reserverat medium](concept-media-reserved-units.md)
 - [Inkommande metadata](input-metadata-schema.md)
 - [Utgående metadata](output-metadata-schema.md)
-- [Dynamisk paketering i Media Services v3: ljud-codec](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)
+- [Dynamisk paketering i Media Services v3: ljud-codec](encode-dynamic-packaging-concept.md#audio-codecs-supported-by-dynamic-packaging)
 
 ### <a name="tutorials"></a>Självstudier
 
@@ -127,18 +127,18 @@ För kunder som använder en indexerare v1-processor i v2-API: et måste du skap
 
 - [Skapa ett jobb inmatat från en HTTPS-URL](job-input-from-http-how-to.md)
 - [Skapa ett jobb indata från en lokal fil](job-input-from-local-file-how-to.md)
-- [Skapa en grundläggande ljud omvandling](how-to-create-basic-audio-transform.md)
+- [Skapa en grundläggande ljud omvandling](transform-create-basic-audio-how-to.md)
 - Med .NET
-  - [Koda med en anpassad transformering – .NET](customize-encoder-presets-how-to.md)
-  - [Så här skapar du ett överlägg med Media Encoder Standard](how-to-create-overlay.md)
-  - [Så här genererar du miniatyrer med kodare standard med .NET](media-services-generate-thumbnails-dotnet.md)
+  - [Koda med en anpassad transformering – .NET](transform-custom-presets-how-to.md)
+  - [Så här skapar du ett överlägg med Media Encoder Standard](transform-create-overlay-how-to.md)
+  - [Så här genererar du miniatyrer med kodare standard med .NET](transform-generate-thumbnails-dotnet-how-to.md)
 - Med Azure CLI
-  - [Koda med en anpassad transformering – Azure CLI](custom-preset-cli-howto.md)
+  - [Koda med en anpassad transformering – Azure CLI](transform-custom-preset-cli-how-to.md)
 - Med REST
-  - [Koda med en anpassad transformering-REST](custom-preset-rest-howto.md)
-  - [Så här genererar du miniatyr bilder med hjälp av Encoder-standarden med REST](media-services-generate-thumbnails-rest.md)
-- [Under klipp en video vid kodning med Media Services-.NET](subclip-video-dotnet-howto.md)
-- [Under klipp en video vid kodning med Media Services REST](subclip-video-rest-howto.md)
+  - [Koda med en anpassad transformering-REST](transform-custom-preset-rest-how-to.md)
+  - [Så här genererar du miniatyr bilder med hjälp av Encoder-standarden med REST](transform-generate-thumbnails-rest-how-to.md)
+- [Under klipp en video vid kodning med Media Services-.NET](transform-subclip-video-dotnet-how-to.md)
+- [Under klipp en video vid kodning med Media Services REST](transform-subclip-video-rest-how-to.md)
 
 ## <a name="samples"></a>Exempel
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: ef1ca41f54a15554a04fa3edf608bb13f5fb3398
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94ab61a5c6335d43842ada48f17572c186af773c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96182027"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077201"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday-mobile-application"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med mobil program för arbets dagar
 
@@ -132,13 +132,11 @@ För att säkerställa att iOS-enheter bara kan logga in via arbets dagar som ha
 
 | Scenario | Nyckel värdes par |
 |----------------------------------------------------------------------------------------   |-----------|
-| Fyll i fälten för klient och webb adress automatiskt för:<br>● Arbets dag på Android när du aktiverar Android for Work-profiler.<br>● Arbets dag på iPad och iPhone.     | Använd de här värdena för att konfigurera din klient: <br>● Konfigurations nyckel = `UserGroupCode`<br>● Värde typ = sträng <br>● Konfigurations värde = ditt klient namn. Exempel: `gms`<br>Använd följande värden för att konfigurera webb adressen:<br>● Konfigurations nyckel = `AppServiceHost`<br>● Värde typ = sträng<br>● Konfigurations värde = den grundläggande URL: en för din klient. Exempel: `https://www.myworkday.com`                                |   |
+| Fyll i fälten för klient och webb adress automatiskt för:<br>● Arbets dag på Android när du aktiverar Android for Work-profiler.<br>● Arbets dag på iPad och iPhone.     | Använd de här värdena för att konfigurera din klient: <br>● Konfigurations nyckel = `UserGroupCode`<br>● Värde typ = sträng <br>● Konfigurations värde = ditt klient namn. Exempel: `gms`<br>Använd följande värden för att konfigurera webb adressen:<br>● Konfigurations nyckel = `AppServiceHost`<br>● Värde typ = sträng<br>● Konfigurations värde = den grundläggande URL: en för din klient. Exempel: `https://www.myworkday.com`                                | 
 | Inaktivera de här åtgärderna för Workday på iPad och iPhone:<br>● Klipp ut, kopiera och klistra in<br>● Utskrift                       | Ange värdet (Boolean) till `False` på dessa nycklar för att inaktivera funktionen:<br>●   `AllowCutCopyPaste`<br>●    `AllowPrint`    |
 | Inaktivera skärm bilder för arbets dagar på Android. |Ange värdet (Boolean) till `False` på `AllowScreenshots` nyckeln för att inaktivera funktionen.|
 | Inaktivera föreslagna uppdateringar för dina användare.|Ange värdet (Boolean) till `False` på `AllowSuggestedUpdates` nyckeln för att inaktivera funktionen.|
 |Anpassa App Store-URL: en för att dirigera mobila användare till valfri App Store.|Använd de här värdena för att ändra App Store-URL:<br>● Konfigurations nyckel = `AppUpdateURL`<br>● Värde typ = sträng<br> ● Konfigurations värde = App Store-URL|
-|       |
-
 
 ## <a name="ios-configuration-policies"></a>Principer för iOS-konfiguration
 
