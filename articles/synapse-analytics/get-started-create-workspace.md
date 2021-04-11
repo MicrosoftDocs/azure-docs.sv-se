@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: a4fa902268d9a19cd0003a2fdaa4c5e58989a4ff
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: f186acbe030dcbb0c2bad22586a8b2a5d1aa520d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218948"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259803"
 ---
 # <a name="creating-a-synapse-workspace"></a>Skapa en Synapse-arbetsyta
 
@@ -64,6 +64,16 @@ När din Azure Synapse-arbetsyta har skapats kan du öppna Synapse Studio på tv
 
 * Öppna din Synapse-arbetsyta [Azure Portal](https://portal.azure.com)i avsnittet **Översikt** på arbets ytan Synapse väljer du **Öppna** i rutan Öppna Synapse Studio.
 * Gå till `https://web.azuresynapse.net` och logga in på din arbets yta.
+
+## <a name="place-sample-data-into-the-primary-storage-account"></a>Placera exempel data i det primära lagrings kontot
+Vi ska använda en liten 100 000 rad exempel data uppsättning med NYX Taxi-Cab-data för många exempel i den här komma igång-guiden. Vi börjar genom att placera det i det primära lagrings kontot som du skapade för arbets ytan.
+
+* Ladda ned den här filen till datorn: https://azuresynapsestorage.blob.core.windows.net/sampledata/NYCTaxiSmall/NYCTripSmall.parquet 
+* I Synapse-Studiio navigerar du till datahubben. 
+* Klicka på **länkad**.
+* Under kategorin **Azure Data Lake Storae Gen2** ser du ett objekt med ett namn som min **arbets yta (primär-contosolake)**
+* Klicka på behållaren med namnet **användare (primär)**
+* Klicka på **Ladda upp** och välj den `NYCTripSmall.parquet` fil som du laddade ned
 
 ## <a name="next-steps"></a>Nästa steg
 

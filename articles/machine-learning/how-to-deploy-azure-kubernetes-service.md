@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: ef9c03b687bbc9b8fe736c872bbde14b8daba899
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68fc4a10f5a54af7bab82843b7a921fd84e7af40
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519392"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259276"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Distribuera en modell till ett Azure Kubernetes service-kluster
 
@@ -139,7 +139,7 @@ Vid modell distributions tiden ska en lyckad modell distributions AKS-nod kunna:
 
 När modellen har distribuerats och tjänsten startar identifierar azureml-FE automatiskt den med hjälp av AKS API och är redo att dirigera begäran till den. Den måste kunna kommunicera med modell-poddar.
 >[!Note]
->Om den distribuerade modellen kräver anslutning (t. ex. genom att fråga extern databas eller annan REST-tjänst, hämta en blogg osv.), ska både DNS-matchning och utgående kommunikation för dessa tjänster vara aktiverade.
+>Om den distribuerade modellen kräver anslutning (t. ex. genom att fråga extern databas eller annan REST-tjänst, hämta en BLOB osv.), ska både DNS-matchning och utgående kommunikation för dessa tjänster vara aktiverade.
 
 ## <a name="deploy-to-aks"></a>Distribuera till AKS
 
@@ -179,7 +179,7 @@ Mer information om klasser, metoder och parametrar som används i det här exemp
 Använd följande kommando för att distribuera med hjälp av CLI. Ersätt `myaks` med namnet på AKS Compute Target. Ersätt `mymodel:1` med namnet och versionen för den registrerade modellen. Ersätt `myservice` med namnet för att ge den här tjänsten:
 
 ```azurecli-interactive
-az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
+az ml model deploy --ct myaks -m mymodel:1 -n myservice --ic inferenceconfig.json --dc deploymentconfig.json
 ```
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]

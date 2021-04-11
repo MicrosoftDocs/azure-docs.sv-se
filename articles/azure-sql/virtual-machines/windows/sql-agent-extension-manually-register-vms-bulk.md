@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 558daede55f6563155d3f54e97d77c0a3ca4de59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebf835cad79f8c011be2fec91f6f4644ecd0941f
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97357237"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284132"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>Registrera flera virtuella SQL-datorer i Azure med SQL IaaS agent-tillägget
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -39,7 +39,7 @@ Registrerings processen har ingen risk, har ingen stillestånds tid och kommer i
 
 Du behöver följande för att kunna registrera SQL Server VM med tillägget: 
 
-- En [Azure-prenumeration](https://azure.microsoft.com/free/) som har [registrerats med **Microsoft. SqlVirtualMachine** -providern](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-rp) och innehåller oregistrerade SQL Server virtuella datorer. 
+- En [Azure-prenumeration](https://azure.microsoft.com/free/) som har [registrerats med **Microsoft. SqlVirtualMachine** -providern](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-resource-provider) och innehåller oregistrerade SQL Server virtuella datorer. 
 - De klientautentiseringsuppgifter som används för att registrera de virtuella datorerna finns i någon av följande Azure-roller: **virtuell dator**, **deltagare** eller **ägare**. 
 - Den senaste versionen av [AZ PowerShell (5,0 minimum)](/powershell/azure/new-azureps-module-az). 
 

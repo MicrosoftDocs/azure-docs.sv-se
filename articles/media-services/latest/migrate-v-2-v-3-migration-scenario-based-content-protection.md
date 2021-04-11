@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 03/26/2021
+ms.date: 04/05/2021
 ms.author: inhenkel
-ms.openlocfilehash: 74f15fc302a8499e41a1413dd8915e6442d4bbe7
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a481759da3f1e7d67accdca7b4322db53abbcb0c
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064502"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490955"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>Vägledning för innehålls skydds scenario-baserad migrering
 
@@ -30,46 +30,62 @@ Den här artikeln innehåller information och vägledning om migrering av inneh�
 
 Använd support för [flera viktiga](architecture-design-multi-drm-system.md) funktioner i det nya v3-API: et.
 
-Se begrepp för innehålls skydd, självstudier och hur du går till guider nedan för olika steg.
+Se begrepp för innehålls skydd, självstudier och rikt linjer i slutet av den här artikeln för särskilda steg.
 
-## <a name="visibility-of-v2-assets-streaminglocators-and-properties-in-the-v3-api-for-content-protection-scenarios"></a>Synlighet för v2-tillgångar, StreamingLocators och egenskaper i v3 API för innehålls skydds scenarier
+> [!NOTE]
+> Resten av den här artikeln beskriver hur du kan migrera ditt v2-innehålls skydd till v3 med .NET.  Om du behöver instruktioner eller exempel kod för ett annat språk eller en annan metod kan du skapa ett GitHub-problem för den här sidan.
 
-Under migreringen till v3-API: et kommer du att se att du behöver komma åt vissa egenskaper eller innehålls nycklar från dina v2-tillgångar. En viktig skillnad är att v2-API: et skulle använda **AssetID** som primär identifierings nyckel och det nya v3-API: et använder Azures resurs hanterings namn för entiteten som den primära identifieraren.  Egenskapen v2 **Asset.name** används vanligt vis inte som en unik identifierare, så när du migrerar till v3 kommer du att se att dina v2-assets namn nu visas i fältet **till gång. Description** .
+## <a name="v3-visibility-of-v2-assets-streaminglocators-and-properties"></a>v3 synlighet för v2-tillgångar, StreamingLocators och egenskaper
 
-Om du till exempel tidigare hade en v2-till gång med ID: t **"OBS! CID: UUID: 8cb39104-122c-496e-9ac5-7f9e2c2547b8"** kommer du att se när du registrerar de gamla v2-resurserna via v3-API: et. namnet kommer nu att vara GUID-delen i slutet (i det här fallet **"8cb39104-122c-496e-9ac5-7f9e2c2547b8"**.)
+I v2 API, `Assets` ,, `StreamingLocators` och `ContentKeys` användes för att skydda ditt strömmande innehåll. När du migrerar till v3-API: t, så exponeras v2-API: n, `Assets` `StreamingLocators` och alla `ContentKeys` data visas automatiskt i v3-API: et och alla data på dem är tillgängliga så att du kan komma åt dem.
 
-Du kan fråga de **StreamingLocators** som är kopplade till till gångarna som skapats i v2-API: et med hjälp av den nya v3-metoden [ListStreamingLocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators) på till gångs enheten.  Referera också till .NET-klientens SDK-version av [ListStreamingLocatorsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?view=azure-dotnet&preserve-view=true)
+Du kan dock inte *Uppdatera* egenskaper på v2-entiteter via v3-API: et som skapades i v2.
 
-Resultatet av **ListStreamingLocators** -metoden ger dig **namnet** och **StreamingLocatorId** för lokaliseraren tillsammans med **StreamingPolicyName**.
+Om du behöver uppdatera, ändra eller ändra innehåll som lagras i v2-entiteter uppdaterar du dem med v2-API: et eller skapar nya v3-API-entiteter för att migrera dem.
 
-Om du vill hitta **ContentKeys** som används i din **StreamingLocators** för innehålls skydd kan du anropa metoden [StreamingLocator. ListContentKeysAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet&preserve-view=true) .  
+## <a name="asset-identifier-differences"></a>Skillnader mellan till gångs identifierare
 
-Alla **till gångar** som har skapats och publicerats med v2-API: et har både en [innehålls nyckel princip](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept) och en innehålls nyckel som har definierats på dem i v3-API: n, i stället för att använda en standard princip för innehålls nycklar i [streaming-principen](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept).
+För att migrera måste du ha åtkomst till egenskaper eller innehålls nycklar från v2-till gångar.  Det är viktigt att förstå att v2-API: et använder `AssetId` som primär identifierings nyckel men det nya v3-API: et använder *Azures resurs hanterings namn* för entiteten som primär identifierare.  (Egenskapen v2 `Asset.Name` används inte som en unik identifierare.) Med v3-API: t visas ditt v2-Asset namn som `Asset.Description` .
+
+Om du till exempel tidigare hade en v2-till gång med ID: t `nb:cid:UUID:8cb39104-122c-496e-9ac5-7f9e2c2547b8` är identifieraren nu i slutet av GUID `8cb39104-122c-496e-9ac5-7f9e2c2547b8` . Du ser detta när du visar dina v2-tillgångar via v3-API: et.
+
+Alla till gångar som har skapats och publicerats med v2-API: et har både en `ContentKeyPolicy` och en `ContentKey` i v3-API: n i stället för en standard princip för innehålls nycklar på `StreamingPolicy` .
+
+Mer information finns i dokumentationen för [innehålls nyckel principer](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept) och dokumentationen för [strömnings principen](https://docs.microsoft.com/azure/media-services/latest/stream-streaming-policy-concept) .
+
+## <a name="use-azure-media-services-explorer-amse-v2-and-amse-v3-tools-side-by-side"></a>Använda Azure Media Services Explorer (AMSE) v2-och AMSE v3-verktyg sida vid sida
+
+Använd [verktyget v2 Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer/releases/tag/v4.3.15.0) tillsammans med [verktyget v3 Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) för att jämföra data sida vid sida för en till gång som skapats och publicerats via v2-API: er. Egenskaperna bör vara synliga, men på olika platser.
+
+## <a name="use-the-net-content-protection-migration-sample"></a>Använd exemplet för migrering av .NET-innehålls skydd
+
+Du kan hitta ett kod exempel för att jämföra skillnaderna i till gångs identifierare med hjälp av [v2tov3MigrationSample](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/ContentProtection/v2tov3Migration) under ContentProtection i Media Services kod exempel.
+
+## <a name="list-the-streaming-locators"></a>Visa en lista över strömmande positionerare
+
+Du kan fråga `StreamingLocators` associerat med de till gångar som har skapats i v2-API: et med den nya v3-metoden [ListStreamingLocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators) i till gångs enheten.  Referera också till .NET-klientens SDK-version av [ListStreamingLocatorsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?view=azure-dotnet&preserve-view=true)
+
+Med resultatet av `ListStreamingLocators` metoden får du `Name` och `StreamingLocatorId` lokaliseraren tillsammans med `StreamingPolicyName` .
+
+## <a name="find-the-content-keys"></a>Sök efter innehålls nycklar
+
+För att hitta det som `ContentKeys` används med kan `StreamingLocators` du anropa metoden [StreamingLocator. ListContentKeysAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet&preserve-view=true) .  
 
 Mer information om innehålls skydd i v3-API: n finns i artikeln [skydda ditt innehåll med Media Services dynamisk kryptering.](https://docs.microsoft.com/azure/media-services/latest/drm-content-protection-concept)
 
-## <a name="how-to-list-your-v2-assets-and-content-protection-settings-using-the-v3-api"></a>Visa en lista över v2-till gångar och inställningar för innehålls skydd med hjälp av v3-API: et
+## <a name="change-the-v2-contentkeypolicy-keeping-the-same-contentkey"></a>Ändra den v2-ContentKeyPolicy som behåller samma ContentKey
 
-I v2-API: t använder du vanligt vis **till gångar**, **StreamingLocators** och **ContentKeys** för att skydda ditt strömmande innehåll.
-När du migrerar till v3-API: t kommer dina v2 API-till gångar, StreamingLocators och ContentKeys att visas automatiskt i v3-API: et och alla data som finns tillgängliga för dig kan du komma åt.
+Du bör först avpublicera (ta bort alla strömmande positionerare) på till gången via v2 SDK. Gör så här:
 
-## <a name="can-i-update-v2-properties-using-the-v3-api"></a>Kan jag uppdatera v2-egenskaper med hjälp av v3-API: et?
+1. Ta bort lokaliseraren.
+1. Ta bort länken till `ContentKeyAuthorizationPolicy` .
+1. Ta bort länken till `AssetDeliveryPolicy` .
+1. Ta bort länken till `ContentKey` .
+1. Ta bort `ContentKey` .
+1. Skapa en ny `StreamingLocator` i v3 med hjälp av en v3 `StreamingPolicy` och `ContentKeyPolicy` Ange den angivna innehålls nyckel identifieraren och det nyckel värde som behövs.
 
-Nej, du kan inte uppdatera egenskaper på v2-entiteter via v3-API: et som skapades med StreamingLocators, StreamingPolicies, innehålls nyckel principer och innehålls nycklar i v2.
-Om du behöver uppdatera, ändra eller ändra innehåll som lagras i v2-entiteter måste du uppdatera det via v2-API: et eller skapa nya v3-API-entiteter för att migrera dem framåt.
-
-## <a name="how-do-i-change-the-contentkeypolicy-used-for-a-v2-asset-that-is-published-and-keep-the-same-content-key"></a>Hur gör jag för att ändra ContentKeyPolicy som används för en v2-till gång som publiceras och behåll samma innehålls nyckel?
-
-I så fall bör du först avpublicera (ta bort alla strömmande positionerare) på till gången via v2 SDK: n (ta bort lokaliseraren, ta bort länken för innehålls nyckelns auktoriseringsprincip, ta bort länk till till gångs leverans principen, ta bort länk till innehålls nyckeln, ta bort innehålls nyckeln) och skapa en ny **[StreamingLocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)** i v3 med hjälp av v3 [StreamingPolicy](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept) och [ContentKeyPolicy](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept).
-
-Du måste ange den angivna innehålls nyckel identifieraren och det nyckel värde som krävs när du skapar **[StreamingLocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)**.
-
-Observera att det är möjligt att ta bort v2-lokaliseraren med hjälp av v3-API: et, men det tar inte bort innehålls nyckeln eller innehålls nyckel principen som används om de skapades i v2-API: et.  
-
-## <a name="using-amse-v2-and-amse-v3-side-by-side"></a>Använda AMSE v2 och AMSE v3 sida vid sida
-
-När du migrerar innehållet från v2 till v3 uppmanas du att installera [verktyget v2 Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer/releases/tag/v4.3.15.0) tillsammans med v3- [Azure Media Services Explorer-verktyget](https://github.com/Azure/Azure-Media-Services-Explorer) för att jämföra de data som visas sida vid sida för en till gång som har skapats och publicerats via v2-API: er. Egenskaperna bör vara synliga, men på olika platser nu.  
-
+> [!NOTE]
+> Det går att ta bort v2-lokaliseraren med hjälp av v3-API: et, men den tar inte bort innehålls nyckeln eller innehålls nyckel principen om de skapades i v2-API: et.
 
 ## <a name="content-protection-concepts-tutorials-and-how-to-guides"></a>Koncept för innehålls skydd, självstudier och hur du går till guider
 
@@ -80,7 +96,7 @@ När du migrerar innehållet från v2 till v3 uppmanas du att installera [verkty
 - [Media Services v3 med PlayReady-licens mal len](drm-playready-license-template-concept.md)
 - [Översikt över Media Services v3 med Widevine-licens mal len](drm-widevine-license-template-concept.md)
 - [Licenskrav för och konfiguration av Apple FairPlay](drm-fairplay-license-overview.md)
-- [Strömmande principer](streaming-policy-concept.md)
+- [Strömmande principer](stream-streaming-policy-concept.md)
 - [Principer för innehålls nyckel](drm-content-key-policy-concept.md)
 
 ### <a name="tutorials"></a>Självstudier
@@ -96,7 +112,8 @@ När du migrerar innehållet från v2 till v3 uppmanas du att installera [verkty
 
 ## <a name="samples"></a>Exempel
 
-Du kan också [jämföra v2-och v3-koden i kod exemplen](migrate-v-2-v-3-migration-samples.md).
+- [v2tov3MigrationSample](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/ContentProtection/v2tov3Migration)
+- Du kan också [jämföra v2-och v3-koden i kod exemplen](migrate-v-2-v-3-migration-samples.md).
 
 ## <a name="tools"></a>Verktyg
 

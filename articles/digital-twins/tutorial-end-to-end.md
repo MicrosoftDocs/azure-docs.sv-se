@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: b7883d6c541558e26793f94e37014a20b14d761e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f1653158f7a181ad2d61bc726ba7765eab934341
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577265"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107490"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Självstudie: Bygg ut en lösning från slut punkt till slut punkt
 
@@ -426,7 +426,7 @@ När du har slutfört den här självstudien kan du välja vilka resurser du vil
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-* **Om du vill fortsätta använda Azure Digital-instansen som du har skapat i den här artikeln, men ta bort några eller alla modeller, delar och relationer**, kan du använda [AZ DT](/cli/azure/ext/azure-iot/dt) CLI-kommandona i ett [Azure Cloud Shells](https://shell.azure.com) fönster för att ta bort de element som du vill ta bort.
+* **Om du vill fortsätta använda Azure Digital-instansen som du har skapat i den här artikeln, men ta bort några eller alla modeller, delar och relationer**, kan du använda [AZ DT](/cli/azure/dt) CLI-kommandona i ett [Azure Cloud Shells](https://shell.azure.com) fönster för att ta bort de element som du vill ta bort.
 
     Det här alternativet tar inte bort några andra Azure-resurser som skapats i den här självstudien (IoT Hub, Azure Functions app osv.). Du kan ta bort dessa individuellt med de [DT-kommandon](/cli/azure/reference-index) som är lämpliga för varje resurs typ.
 

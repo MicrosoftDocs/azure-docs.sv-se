@@ -3,21 +3,21 @@ title: Vad är nytt i det virtuella Windows-skrivbordet? – Azure
 description: Nya funktioner och produkt uppdateringar för virtuella Windows-datorer.
 author: Heidilohr
 ms.topic: overview
-ms.date: 03/20/2021
+ms.date: 04/08/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
-manager: lizross
+manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: acb9b6d9d2080c63243ec4b924d07a927d6ccdfd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 710f33ada7a64248f0371a3e8c39e085d3f0834c
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774447"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107065"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Vad är nytt i det virtuella Windows-skrivbordet?
 
-Uppdateringar av virtuella Windows-datorer regelbundet. I den här artikeln får du lära dig att:
+Windows Virtual Desktop uppdateras regelbundet. I den här artikeln får du lära dig att:
 
 - De senaste uppdateringarna
 - Nya funktioner
@@ -42,12 +42,62 @@ Windows-agenten för virtuella Skriv bords uppdateringar minst en gång per mån
 
 Här är what's ändrat i Windows Virtual Desktop-agenten:
 
-- Version 1.0.2800.2800: den här uppdateringen släpptes i mars 2021 och korrigerade ett problem med omvänd anslutning.
-- Version 1.0.2800.2700: den här uppdateringen släpptes i februari 2021 och åtgärdades problem vid nekad åtkomst.
+- Version 1.0.2866.1500: den här uppdateringen släpptes 26 mars 2021 och åtgärdade ett problem med stack hälso kontrollen.
+- Version 1.0.2800.2802: den här uppdateringen lanserades 10 mars 2021 och har allmänna förbättringar och fel korrigeringar.
+- Version 1.0.2800.2800: den här uppdateringen släpptes den 2 mars 2021 och korrigerade ett problem med omvänd anslutning.
+- Version 1.0.2800.2700: den här uppdateringen släpptes 10 februari 2021 och har allmänna förbättringar och fel korrigeringar.
+- Version 1.0.2800.2700: den här uppdateringen släpptes den 4 februari 2021 och korrigerade ett problem med att dirigera till åtkomst.
 
 ## <a name="fslogix-updates"></a>FSLogix uppdateringar
 
 Undrar du över de senaste uppdateringarna för FSLogix? Kolla [vad som är nytt på FSLogix](/fslogix/whats-new).
+
+## <a name="march-2021"></a>Mars 2021
+
+Det här är vad som har ändrats i mars 2021.
+
+### <a name="updates-to-the-azure-portal-ui-for-windows-virtual-desktop"></a>Uppdateringar till Azure Portal användar gränssnitt för virtuellt Windows-skrivbord
+
+Vi har gjort följande uppdateringar av Windows Virtual Desktop för Azure Portal:
+
+- Vi har aktiverat nya tillgänglighets alternativ (tillgänglighets uppsättning och zoner) för arbets flödena för att skapa värdar för pooler och lägga till virtuella datorer.
+- Vi har åtgärdat ett problem där en värd med statusen "behöver hjälp" visades som ej tillgänglig. Nu visas en varnings ikon bredvid värden.
+- Vi har aktiverat sortering efter aktiva sessioner.
+- Nu kan du skicka meddelanden till eller logga ut vissa användare på fliken värd information.
+- Vi har ändrat fältet Max sessions gräns.
+- Vi har lagt till en OU-validerings Sök väg till arbets flödet för att skapa en adresspool.
+- Nu kan du använda den senaste versionen av Windows 10-avbildningen när du skapar en personlig värd-pool.
+
+### <a name="generation-2-images-and-trusted-launch"></a>Generation 2-avbildningar och betrodd start
+
+Azure Marketplace har nu generation 2-avbildningar för Windows 10 Enterprise och Windows 10 Enterprise multi-session. Med de här avbildningarna kan du använda betrodda virtuella datorer. Lär dig mer om virtuella datorer i generation 2 i [bör jag skapa en virtuell dator i generation 1 eller 2](../virtual-machines/generation-2.md). Information om hur du etablerar virtuella Windows-datorer med betrodda starter finns i [vårt TechCommunity-inlägg](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/windows-virtual-desktop-support-for-trusted-launch/m-p/2206170).
+
+### <a name="fslogix-is-now-preinstalled-on-windows-10-enterprise-multi-session-images"></a>FSLogix är nu förinstallerat på Windows 10 Enterprise multi-session-avbildningar
+
+Baserat på kundfeedback har vi konfigurerat en ny version av Windows 10 Enterprise multi-session-avbildningen som har en version av FSLogix som redan är installerad. Vi hoppas att detta gör distributionen av virtuella Windows-datorer enklare.
+
+### <a name="azure-monitor-for-windows-virtual-desktop-is-now-in-general-availability"></a>Azure Monitor för virtuella Windows-datorer är nu allmänt tillgänglig
+
+Azure Monitor för virtuella Windows-datorer är nu allmänt tillgänglig för allmänheten. Den här funktionen är en automatiserad tjänst som övervakar dina distributioner och låter dig visa händelser, hälso tillstånd och fel söknings förslag på en och samma plats. Mer information finns i [vår dokumentation](azure-monitor.md) eller kolla [vår TechCommunity-post](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-is-generally-available/m-p/2242861).
+
+### <a name="march-2021-updates-for-teams-on-windows-virtual-desktop"></a>Uppdateringar mars 2021 för Teams på Windows Virtual Desktop
+
+Vi har gjort följande uppdateringar för Teams på virtuella Windows-datorer:
+
+- Vi har förbättrat video kvalitets prestanda för samtal och 2x2-läge.
+- Vi har minskat processor användningen med 5-10% (beroende på CPU-generering) genom att använda maskin varu avlastning av video bearbetning (XVP).
+- Äldre datorer kan nu använda XVP-och maskin varu avkodning för att visa fler inkommande video strömmar smidigt i 2x2-läge.
+- Vi har uppdaterat WebRTC-stacken från M74 till M88 för bättre prestanda vid synkronisering och färre tillfälliga problem.
+- Vi har ersatt vår program vara H264, Encoder med OpenH264 (OSS som används i team på webben), vilket ökade video kvaliteten i den utgående kameran.
+- Vi aktiverade 2x2 läge för Team Server för allmänheten den 30 mars. 2x2-läget visar upp till fyra inkommande video strömmar på samma tid.
+
+### <a name="start-vm-on-connect-public-preview"></a>Starta virtuell dator vid anslutning offentlig för hands version
+
+Den nya inställningen för värdstat, starta virtuell dator vid anslutning, är nu tillgänglig i offentlig för hands version. Med den här inställningen kan du aktivera dina virtuella datorer när du behöver dem. Om du vill spara kostnaderna måste du frigöra dina virtuella datorer genom att konfigurera dina inställningar för Azure-beräkning. Mer information finns i [blogg inlägget](https://aka.ms/wvdstartvmonconnect) och [vår dokumentation](start-virtual-machine-connect.md).
+
+### <a name="windows-virtual-desktop-specialty-certification"></a>Special certifiering för Windows Virtual Desktop
+
+Vi har lanserat en beta version av AZ-140-examen som gör det möjligt för dig att bevisa din expertis i Windows Virtual Desktop i Azure. Läs mer i [vårt TechCommunity-inlägg](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/beta-exam-prove-your-expertise-in-windows-virtual-desktop-on/ba-p/2147107).
 
 ## <a name="february-2021"></a>Februari 2021
 

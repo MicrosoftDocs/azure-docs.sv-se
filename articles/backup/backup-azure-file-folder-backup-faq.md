@@ -2,13 +2,13 @@
 title: Microsoft Azure Recovery Services (MARS) Agent – vanliga frågor och svar
 description: Behandlar vanliga frågor om säkerhets kopiering av filer och mappar med Azure Backup.
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.openlocfilehash: 1edfaed99e60409774496c5ae75df8be99a8fe1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: 98f558c091f1680c165ee26ffb20a8022ab15520
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94917366"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107184"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Vanliga frågor och svar – Microsoft Azure Recovery Services (MARS) Agent
 
@@ -100,6 +100,10 @@ Den här varningen kan visas även om du har konfigurerat en säkerhets kopierin
 
 * När servern eller inställningarna har återställts till ett känt fungerande tillstånd kan säkerhets kopierings scheman bli osynkroniserade.
 * Om du får den här varningen [konfigurerar](backup-azure-manage-windows-server.md) du säkerhets kopierings principen igen och kör sedan en säkerhets kopiering på begäran för att synkronisera om den lokala servern med Azure.
+
+### <a name="i-see-a-few-jobs-are-stuck-in-the-in-progress-state-for-a-long-time-under-backup-jobs-in-the-azure-portal-how-can-i-resolve-these"></a>Jag ser att några jobb har fastnat i statusen pågår under en längre tid under säkerhets kopierings jobb i Azure Portal. Hur kan jag lösa dessa?
+
+Detta kan inträffa om ett jobb inte kunde slutföras på grund av orsaker, t. ex. problem med nätverks anslutningen, avstängning av datorn eller avslutning av processen. Ingen användar åtgärd krävs här. Dessa jobb markeras automatiskt som **misslyckade** efter 30 dagar. [Läs mer](backup-windows-with-mars-agent.md#run-an-on-demand-backup) om hur du kör ett säkerhets kopierings jobb på begäran med mars-agenten.
 
 ## <a name="manage-the-backup-cache-folder"></a>Hantera mappen för säkerhetskopierade cache
 

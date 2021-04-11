@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 03/18/2021
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b99c2efcb746a056adc76fdc161c8d8a8e2799e1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c0cce7717dda73a381ec977c3bf520bf8db5bbb3
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670128"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105875"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Snabb start: skapa en enhets-HoloLens-app som använder Azure spatiala ankare
 
@@ -43,6 +43,8 @@ För att slutföra den här snabbstarten behöver du:
 ## <a name="download-and-open-the-unity-sample-project"></a>Ladda ned och öppna exempel projektet Unity
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
+
+Följ anvisningarna [här](../how-tos/setup-unity-project.md#download-asa-packages) för att hämta och importera de ASA SDK-paket som krävs för HoloLens-plattformen.
 
 [!INCLUDE [Open Unity Project](../../../includes/spatial-anchors-open-unity-project.md)]
 

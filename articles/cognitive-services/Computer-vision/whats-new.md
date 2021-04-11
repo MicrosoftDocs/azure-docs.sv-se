@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 78746e7623f58af5ae9df829b48245295dc39f01
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: f102bbe45fd5eea853ba63def4f1c1a92888ca46
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487108"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285952"
 ---
 # <a name="whats-new-in-computer-vision"></a>Vad är nytt i Visuellt innehåll
 
@@ -40,7 +40,7 @@ Visuellt innehåll s Read API v 3.2 offentlig för hands version, som är tillg�
 * Extrahera endast text för markerade sidor för ett flersidigt dokument.
 * Tillgängligt som en [Distroless-behållare](./computer-vision-how-to-install-containers.md?tabs=version-3-2) för lokal distribution.
 
-[Läs mer](concept-recognizing-text.md) om Read API.
+Mer information finns i [instruktionen Läs API](Vision-API-How-to-Topics/call-read-api.md) .
 
 > [!div class="nextstepaction"]
 > [Använd Read API v 3.2 offentlig för hands version](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
@@ -83,7 +83,7 @@ I Visuellt innehåll Läs-API v 3.1, som är allmänt tillgänglig, läggs dessa
 
 * Den här för hands versionen av Read API stöder engelska, nederländska, franska, tyska, italienska, japanska, portugisiska, kinesiska (förenklad) och spanska språk.
 
-Mer information finns i [Översikt över Read API](concept-recognizing-text.md) .
+Mer information finns i [instruktionen Läs API](Vision-API-How-to-Topics/call-read-api.md) .
 
 > [!div class="nextstepaction"]
 > [Läs mer om Read API v 3.1 Public Preview 2](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)
@@ -95,18 +95,20 @@ Visuellt innehåll s Read API v 3.1 allmän för hands version lägger till stö
 
 * Den här för hands versionen av Read API stöder engelska, nederländska, franska, tyska, italienska, portugisiska, kinesiska (förenklad) och spanska språk.
 
-Mer information finns i [Översikt över Read API](concept-recognizing-text.md) .
+Mer information finns i [instruktionen Läs API](Vision-API-How-to-Topics/call-read-api.md) .
 
 > [!div class="nextstepaction"]
 > [Läs mer om Read API v 3.1 offentlig för hands version 1](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>Maj 2020
-API för visuellt innehåll v 3.0 angav allmän tillgänglighet, med uppdateringar för [Read API](concept-recognizing-text.md):
+API för visuellt innehåll v 3.0 angav allmän tillgänglighet, med uppdateringar av Read API:
 
 * Stöd för engelska, nederländska, franska, tyska, italienska, portugisiska och spanska
 * Förbättrad precision
 * Säkerhets Poäng för varje extraherat ord
 * Nytt format för utdata
+
+Mer information finns i [Översikt över OCR](overview-ocr.md) .
 
 ## <a name="march-2020"></a>Mars 2020
 

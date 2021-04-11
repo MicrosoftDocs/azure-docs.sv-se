@@ -3,20 +3,20 @@ title: Microsoft Teams på Windows Virtual Desktop – Azure
 description: Använda Microsoft Teams på Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 04/09/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 46796573e14dfc33d02d4faddd5504f3e8b7ee7b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+manager: femila
+ms.openlocfilehash: 0c528f183106472850d6b5d2a8b492ea8939eda6
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935728"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285266"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Använd Microsoft Teams på Windows Virtual Desktop
 
 >[!IMPORTANT]
->Medie optimering för team stöds för Microsoft 365 myndigheter (GCC) och GCC-High miljöer. Medie optimering för team stöds inte för GCC-High eller DoD.
+>Medie optimering för team stöds för Microsoft 365 myndigheter (GCC) och GCC-High miljöer. Medie optimering för team stöds inte för Microsoft 365 DoD.
 
 >[!NOTE]
 >Medie optimering för Microsoft Teams är bara tillgänglig för Windows Skriv bords klient på Windows 10-datorer. Medie optimeringar kräver Windows Desktop Client version 1.2.1026.0 eller senare.
@@ -148,11 +148,7 @@ Att använda team i en virtualiserad miljö skiljer sig från att använda team 
 - Team-appen stöder inte HID-knappar eller leda kontroller med andra enheter.
 - Ny Mötes upplevelse (NME) stöds inte för närvarande i VDI-miljöer.
 
-För kända team problem som inte är relaterade till virtualiserade miljöer, se [support Teams i din organisation](/microsoftteams/known-issues)
-
-## <a name="uservoice-site"></a>UserVoice-webbplats
-
-Ge feedback för Microsoft Teams på det virtuella Windows-skrivbordet på teamets [UserVoice-webbplats](https://microsoftteams.uservoice.com/).
+För kända team problem som inte är relaterade till virtualiserade miljöer, se [support Teams i din organisation](/microsoftteams/known-issues).
 
 ## <a name="collect-teams-logs"></a>Samla in team loggar
 

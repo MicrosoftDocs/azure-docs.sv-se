@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a0e8a513023c093157a3f14a64de9f87de543ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd544b9eec0c1839ad94ede65e9d4ccde6df81dc
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103009461"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063363"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>Använda PlayReady och/eller Widevine Dynamic Common Encryption
 
@@ -46,9 +46,9 @@ Mer information finns i Integrering med [Axinom](media-services-axinom-integrati
 
 Media Services stöder flera olika sätt att auktorisera användare som begär nycklar. Auktoriseringsprincipen för innehållsnyckeln kan ha en eller flera auktoriseringsbegränsningar: antingen öppen eller tokenbegränsning. Den tokenbegränsade principen måste åtföljas av en token utfärdad av en säker tokentjänst (Secure Token Service – STS). Media Services stöder token i formaten [simple web token](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2) (SWT) och [JSON Web Token](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) (JWT). 
 
-Mer information finns i [Konfigurera innehållsnyckelns auktoriseringsprincip](media-services-protect-with-aes128.md#configure_key_auth_policy).
+Mer information finns i [Konfigurera innehållsnyckelns auktoriseringsprincip](media-services-portal-configure-content-key-auth-policy.md).
 
-För att dra fördel av dynamisk kryptering behöver du en tillgång som innehåller en uppsättning MP4-filer eller Smooth Streaming-källfiler i multibithastighet. Du måste också konfigurera leveransprinciperna för tillgången (beskrivs senare i det här avsnittet). Sedan, baserat på det format som anges i strömnings-URL:en, kommer servern för strömning på begäran att säkerställa att dataströmmen levereras i det protokoll som du har valt. Sedan kan du lagra och betala för filerna i ett enda lagringsformat. Media Services skapar och hanterar lämpligt HTTP-svar baserat på varje begäran från en klient.
+Om du vill dra nytta av dynamisk kryptering skapar du en till gång som innehåller en uppsättning MP4-filer med flera bit hastigheter eller källfiler med flera Smooth Streaming bit hastigheter. Du måste också konfigurera leveransprinciperna för tillgången (beskrivs senare i det här avsnittet). Sedan, baserat på det format som anges i strömnings-URL:en, kommer servern för strömning på begäran att säkerställa att dataströmmen levereras i det protokoll som du har valt. Sedan kan du lagra och betala för filerna i ett enda lagringsformat. Media Services skapar och hanterar lämpligt HTTP-svar baserat på varje begäran från en klient.
 
 Den här artikeln kan vara användbar för utvecklare som arbetar med appar som levererar media som skyddas av flera DRM:er, som PlayReady och Widevine. Artikeln visar hur du konfigurerar PlayReadys licensleveranstjänst med auktoriseringsprinciper så att endast auktoriserade klienter kan få PlayReady- eller Widevine-licenser. Den visar även hur du använder dynamisk kryptering med PlayReady eller Widevine DRM över DASH.
 

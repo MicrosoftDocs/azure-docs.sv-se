@@ -392,6 +392,8 @@
       items:
         - name: Prestanda analys
           href: search-performance-analysis.md
+        - name: Mått
+          href: performance-benchmarks.md
         - name: Tips för bättre prestanda
           href: search-performance-tips.md
         - name: Diagnostikloggning

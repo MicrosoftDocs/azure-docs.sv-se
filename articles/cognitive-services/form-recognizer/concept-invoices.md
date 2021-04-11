@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 46cf34bd40832488985008a645f1da25eb87b9d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a47c4c5bdc90e148916900b1e72bc2a392d2e473
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467399"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285343"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Fördefinierad faktura modell för formulär tolken
 
-Azure formulär tolken kan analysera och extrahera information från försäljnings fakturor med hjälp av inbyggda faktura modeller. Med faktura-API: et kan kunder ta fakturor i olika format och returnera strukturerade data för att automatisera faktura bearbetningen. Den kombinerar vår kraftfulla [OCR-kapacitet (optisk tecken läsning)](../computer-vision/concept-recognizing-text.md) med faktura om djup inlärnings modeller för att extrahera viktig information från fakturor på engelska. Den extraherar text, tabeller och information, till exempel kund, leverantör, faktura-ID, förfallo datum för faktura, totalt, Fakturerat belopp, moms belopp, leverera till, fakturera till, rad artiklar med mera. Det inbyggda faktura-API: t är offentligt tillgängligt i för hands versionen av formulär igenkänning v 2.1.
+Azure formulär tolken kan analysera och extrahera information från försäljnings fakturor med hjälp av inbyggda faktura modeller. Med faktura-API: et kan kunder ta fakturor i olika format och returnera strukturerade data för att automatisera faktura bearbetningen. Den kombinerar vår kraftfulla [OCR-kapacitet (optisk tecken läsning)](../computer-vision/overview-ocr.md) med faktura om djup inlärnings modeller för att extrahera viktig information från fakturor på engelska. Den extraherar text, tabeller och information, till exempel kund, leverantör, faktura-ID, förfallo datum för faktura, totalt, Fakturerat belopp, moms belopp, leverera till, fakturera till, rad artiklar med mera. Det inbyggda faktura-API: t är offentligt tillgängligt i för hands versionen av formulär igenkänning v 2.1.
 
 ## <a name="what-does-the-invoice-service-do"></a>Vad gör faktura tjänsten?
 

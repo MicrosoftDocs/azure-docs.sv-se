@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 0becbbdb68f75072e10a51f5a2eae95291b9ed77
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5d08bc216157fce9ad81eaf3c0f540c7a4d8c3f2
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108340"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259837"
 ---
 # <a name="analyze-with-apache-spark"></a>Analysera med Apache Spark
 
@@ -32,7 +32,7 @@ I den här självstudien får du lära dig de grundläggande stegen för att lä
 
 ## <a name="understanding-serverless-apache-spark-pools"></a>Förstå Server lös Apache Spark pooler
 
-En server lös Spark-pool är ett sätt att ange hur en användare vill arbeta med Spark. När du börjar använda en pool skapas en spark-session vid behov. Poolen styr hur många Spark-resurser som kommer att användas av den sessionen och hur länge sessionen är bra sist innan den pausas automatiskt. Du betalar för Spark-resurser som används under den sessionen, inte för själva poolen. På så sätt kan du arbeta med Spark i en spark-pool utan att behöva oroa dig för att hantera kluster. Detta liknar hur en server lös SQL-pool fungerar.
+En server lös Spark-pool är ett sätt att ange hur en användare vill arbeta med Spark. När du börjar använda en pool skapas en spark-session vid behov. Poolen styr hur många Spark-resurser som ska användas av sessionen och hur länge sessionen ska pausas innan den pausas automatiskt. Du betalar för Spark-resurser som används under den sessionen, inte för själva poolen. På så sätt kan du arbeta med Spark i en spark-pool utan att behöva oroa dig för att hantera kluster. Detta liknar hur en server lös SQL-pool fungerar.
 
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>Analysera NYC taxi-data i Blob Storage med Spark
 
@@ -41,11 +41,7 @@ En server lös Spark-pool är ett sätt att ange hur en användare vill arbeta m
 3. Skapa en ny Code-cell och klistra in följande kod i cellen.
     ```py
     %%pyspark
-    from azureml.opendatasets import NycTlcYellow
-
-    data = NycTlcYellow()
-    df = data.to_spark_dataframe()
-    # Display 10 rows
+    df = spark.read.load('abfss://users@contosolake.dfs.core.windows.net/NYCTripSmall.parquet', format='parquet')
     display(df.limit(10))
     ```
 1. I antecknings boken, på menyn **Anslut till** , väljer du den **Spark1** -server som vi skapade tidigare.
@@ -60,7 +56,7 @@ En server lös Spark-pool är ett sätt att ange hur en användare vill arbeta m
 
 Data är tillgängliga via dataframe med namnet **data**. Läs in den i en spark-databas med namnet **nyctaxi**.
 
-1. Lägg till en ny till antecknings boken och ange sedan följande kod:
+1. Lägg till en ny kod cell i antecknings boken och ange sedan följande kod:
 
     ```py
     spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")

@@ -12,18 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: c673f7a9556193fb05e05ea372bfccd17cd3c5ed
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: eeeaf01dd20e5b309884a01f954ceca576cbcbb9
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868519"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259633"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Skapa en SMB-volym för Azure NetApp Files
 
-Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB3 eller Dual Protocol (NFSv3 och SMB). En volyms kapacitetsförbrukning mäts mot dess pools etablerade kapacitet. Den här artikeln visar hur du skapar en SMB3-volym.
+Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB3 eller Dual Protocol (NFSv3 och SMB). En volyms kapacitetsförbrukning mäts mot dess pools etablerade kapacitet. 
+
+Den här artikeln visar hur du skapar en SMB3-volym. För NFS-volymer, se [skapa en NFS-volym](azure-netapp-files-create-volumes.md). För dubbla protokoll volymer, se [skapa en volym med dubbla protokoll](create-volumes-dual-protocol.md).
 
 ## <a name="before-you-begin"></a>Innan du börjar 
 
@@ -128,10 +130,12 @@ Innan du skapar en SMB-volym måste du skapa en Active Directory anslutning. Om 
 
 ### <a name="share-permissions"></a>Resurs behörigheter  
 
-Som standard har en ny volym behörigheten **alla/fullständig behörighet** till resurs. Medlemmar i gruppen domän administratörer kan ändra resurs behörigheter genom att använda dator hantering på det dator konto som används för den Azure NetApp Files volymen.
+Som standard har en ny volym behörigheten **alla/fullständig behörighet** till resurs. Medlemmar i gruppen domän administratörer kan ändra resurs behörigheter på följande sätt:  
 
-![](../media/azure-netapp-files/smb-mount-path.png) 
-Resurs behörigheter för SMB Mount-sökväg ![](../media/azure-netapp-files/set-share-permissions.png) 
+1. Mappa resursen till en enhet.  
+2. Högerklicka på enheten, Välj **Egenskaper** och gå sedan till fliken **säkerhet** .
+
+[![Ange resurs behörigheter](../media/azure-netapp-files/set-share-permissions.png)](../media/azure-netapp-files/set-share-permissions.png#lightbox)
 
 ### <a name="ntfs-file-and-folder-permissions"></a>NTFS-fil-och mappbehörigheter  
 

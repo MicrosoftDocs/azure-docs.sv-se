@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/22/2020
-ms.openlocfilehash: 074b799a4f0e83c47aac0b2b3fca5386bd45429f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53878384f4eb056f0cb23ec9005043ac26c8fad2
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100521976"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492629"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Snabb start: Använd Azure Portal för att skapa en Azure Database for MySQL flexibel Server
 
@@ -51,11 +51,14 @@ Utför de här stegen för att skapa en flexibel Server:
     Prenumeration|Ditt prenumerationsnamn|Den Azure-prenumeration som ska användas för servern. Om du har flera prenumerationer väljer du den prenumeration som du vill fakturera för resursen.|
     Resursgrupp|**myresourcegroup**| Ett nytt resursgruppnamn eller ett befintligt namn i prenumerationen.|
     Servernamn |**mydemoserver**|Ett unikt namn som identifierar din flexibla Server. Domän namnet `mysql.database.azure.com` läggs till i det Server namn du anger. Ditt servernamn får bara innehålla gemener, siffror och bindestreck. Det måste innehålla mellan 3 och 63 tecken.|
+    Region|Den region som är närmast dina användare| Den plats som är närmast dina användare.|
+    Arbets belastnings typ| Utveckling | För produktions belastningen kan du välja liten/medels Tor storlek eller stor storlek beroende på [max_connections](concepts-server-parameters.md#max_connections) krav|
+    Tillgänglighetszon| Ingen preferens | Om ditt program i virtuella Azure-datorer, skalnings uppsättningar för virtuella datorer eller AKS-instansen tillhandahålls i en specifik tillgänglighets zon, kan du ange den flexibla servern i samma tillgänglighets zon som samordna program och databas för att förbättra prestanda genom att minska nätverks fördröjningen mellan zoner.|
+    Hög tillgänglighet| Standardvärde | För produktions servrar rekommenderar vi att du aktiverar zon redundant hög tillgänglighet (HA) för verksamhets kontinuitet och skydd mot zon haverier|
+    MySQL-version|**5.7**| En MySQL-huvud version.|
     Användarnamn för administratör |**mydemouser**| Ditt eget inloggnings konto som ska användas när du ansluter till servern. Administratörens användar namn får inte vara **azure_superuser**, **administratör**, **administratör**, **rot**, **gäst** eller **offentlig**.|
     Lösenord |Ditt lösenord| Ett nytt lösenord för serverns administratörskonto. Det måste innehålla mellan 8 och 128 tecken. Det måste också innehålla tecken från tre av följande kategorier: engelska versala bokstäver, engelska gemena bokstäver, siffror (0 till 9) och icke-alfanumeriska tecken (!, $, #,% osv.).|
-    Region|Den region som är närmast dina användare| Den plats som är närmast dina användare.|
-    Version|**5.7**| En MySQL-huvud version.|
-    Beräkning och lagring | **Burstable**, **Standard_B1ms**, **10 GIB**, **7 dagar** | Konfigurationerna för beräkning, lagring och säkerhetskopiering för den nya servern. Välj **Konfigurera Server**. **Burstable**, **Standard_B1ms**, **10 GIB** och **7 dagar** är standardvärden för **beräknings nivå**, **beräknings storlek**, **lagrings storlek** och **bevarande period** för säkerhets kopior. Du kan lämna dessa värden som de är eller justera dem. Spara beräknings-och lagrings valet genom att välja **Spara** för att fortsätta med konfigurationen. Följande skärm bild visar beräknings-och lagrings alternativen.|
+    Beräkning och lagring | **Burstable**, **Standard_B1ms**, **10 GIB**, **100 IOPS**, **7 dagar** | Konfigurationerna för beräkning, lagring, IOPS och säkerhets kopiering för den nya servern. Välj **Konfigurera Server**. **Burstable**, **Standard_B1ms**, **10 GIB**, **100 IOPS** och **7 dagar** är standardvärden för **beräknings nivå**, **beräknings storlek**, **lagrings storlek**, **IOPS** och **kvarhållningsperioden** för säkerhets kopiering. Du kan lämna dessa värden som de är eller justera dem. För snabbare data inläsningar under migreringen rekommenderar vi att du ökar IOPS till den maximala storlek som stöds av beräknings storlek och ändrar sedan tillbaka den till att spara kostnaden. Spara beräknings-och lagrings valet genom att välja **Spara** för att fortsätta med konfigurationen. Följande skärm bild visar beräknings-och lagrings alternativen.|
     
     > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Skärm bild som visar alternativ för beräkning och lagring.":::
 
@@ -89,16 +92,21 @@ Om du har skapat din flexibla server med hjälp av privat åtkomst (VNet-integre
 
 Om du har skapat din flexibla server med hjälp av offentlig åtkomst (tillåtna IP-adresser) kan du lägga till din lokala IP-adress i listan över brand Väggs regler på servern. Se [skapa eller hantera brand Väggs regler dokumentation](how-to-manage-firewall-portal.md) för steg-för-steg-anvisningar.
 
-Du kan använda antingen [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) eller [MySQL Workbench](./connect-workbench.md) för att ansluta till servern från den lokala miljön. 
+Du kan använda antingen [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) eller [MySQL Workbench](./connect-workbench.md) för att ansluta till servern från den lokala miljön. Azure Database for MySQL flexibla servern stöder anslutning av klient program till MySQL-tjänsten med hjälp av Transport Layer Security (TLS), tidigare kallat Secure Sockets Layer (SSL). TLS är ett bransch standard protokoll som garanterar krypterade nätverks anslutningar mellan din databas server och klient program, så att du kan följa kraven för efterlevnad. Om du vill ansluta till din MySQL-flexibla Server måste du ladda ned det [offentliga SSL-certifikatet](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) för verifiering av certifikat utfärdare.
+
+I följande exempel visas hur du ansluter till den flexibla servern med hjälp av kommando rads gränssnittet MySQL. Först installerar du kommando raden MySQL om den inte redan är installerad. Du kommer att hämta det DigiCertGlobalRootCA-certifikat som krävs för SSL-anslutningar. Använd inställningen--SSL-mode = krav på anslutnings sträng för att framtvinga verifiering av TLS/SSL-certifikat. Överför sökvägen till den lokala certifikat filen till parametern--SSL-ca. Ersätt värden med det faktiska Server namnet och lösen ordet.
 
 ```bash
+sudo apt-get install mysql-client
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
-mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
+mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl-mode=REQUIRED --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
 
 Om du har etablerad den flexibla servern med hjälp av **offentlig åtkomst** kan du också använda [Azure Cloud Shell](https://shell.azure.com/bash) för att ansluta till din flexibla server med den förinstallerade mysql-klienten som visas nedan:
 
-För att du ska kunna använda Azure Cloud Shell för att ansluta till din flexibla Server måste du tillåta nätverks åtkomst från Azure Cloud Shell till din flexibla Server. För att åstadkomma detta kan du gå till bladet **nätverk** på Azure Portal för din MySQL-flexibla Server och markera kryss rutan under **brand Väggs** avsnittet som säger "Tillåt offentlig åtkomst från alla Azure-tjänster i Azure till den här servern" och klicka på Spara för att bevara inställningen.
+För att du ska kunna använda Azure Cloud Shell för att ansluta till din flexibla Server måste du tillåta nätverks åtkomst från Azure Cloud Shell till din flexibla Server. För att åstadkomma detta kan du gå till bladet **nätverk** på Azure Portal för din MySQL-flexibla Server och markera kryss rutan under **brand Väggs** avsnittet som säger "Tillåt offentlig åtkomst från valfri Azure-tjänst i Azure till den här servern", som visas på skärm bilden nedan och klicka på Spara för att spara inställningen.
+
+ > :::image type="content" source="./media/quickstart-create-server-portal/allow-access-to-any-azure-service.png" alt-text="Skärm bild som visar hur du tillåter Azure Cloud Shell åtkomst till MySQL-flexibel Server för nätverks konfiguration för offentlig åtkomst.":::
 
 > [!NOTE]
 > Kontroll av alternativet **Tillåt offentlig åtkomst från alla Azure-tjänster i Azure till den här servern** bör endast användas för utveckling eller testning. Den konfigurerar brand väggen så att den tillåter anslutningar från IP-adresser som tilldelats till en Azure-tjänst eller till gång, inklusive anslutningar från andra kunders prenumerationer.
@@ -109,6 +117,9 @@ Klicka på **försök** att starta Azure Cloud Shell och Använd följande komma
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
 mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
+> [!IMPORTANT]
+> När du ansluter till en flexibel server med hjälp av Azure Cloud Shell måste du använda parametern--SSL = True och inte--SSL-mode = nödvändig.
+> Den primära orsaken är Azure Cloud Shell levereras med förinstallerad mysql.exe-klient från MariaDB-distribution som kräver parametern--SSL medan mysql-klienten från Oracle-distributionen kräver parametern--SSL-mode.
 
 Om du ser följande fel meddelande när du ansluter till den flexibla servern efter kommandot tidigare missade du inte att ange brand Väggs regeln med alternativet "Tillåt offentlig åtkomst från alla Azure-tjänster i Azure till den här servern" ovan, eller så har alternativet inte sparats. Försök att ställa in brand väggen igen och försök igen.
 

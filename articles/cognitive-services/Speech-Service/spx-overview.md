@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: trbye
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8f1e5f38e97a1b51a2d919deebbdc452e9daf993
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddba62b37c200ade87dbb51042fe0cb084a9ef9a
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98539773"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106130"
 ---
 # <a name="what-is-the-speech-cli"></a>Vad är Speech CLI?
 
@@ -36,7 +36,7 @@ Använd tal-SDK: n när:
 
 * Tal igenkänning – konvertera tal till text från ljudfiler eller direkt från en mikrofon eller genom att skriva över en inspelad konversation.
 
-* Tal syntes – konvertera text till tal med inmatade text från textfiler eller mata in direkt från kommando raden. Anpassa tal utmatnings egenskaper med [SSML-konfigurationer](speech-synthesis-markup.md)och antingen [standard-eller neurala-röster](speech-synthesis-markup.md#standard-neural-and-custom-voices).
+* Tal syntes – konvertera text till tal med inmatade text från textfiler eller mata in direkt från kommando raden. Anpassa tal utmatnings egenskaper med [SSML-konfigurationer](speech-synthesis-markup.md)och antingen [standard-eller neurala-röster](speech-synthesis-markup.md#neural-and-custom-voices).
 
 * Tal översättning – Översätt ljud på ett käll språk till text eller ljud på ett mål språk.
 

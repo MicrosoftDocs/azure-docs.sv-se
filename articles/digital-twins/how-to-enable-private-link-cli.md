@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5bd7ffda508980a9a56d86037887fc53a0fed640
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4dab08983fc1348ca49e728a65d48aa65fe19a47
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102202951"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105722"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-cli"></a>Aktivera privat åtkomst med privat länk (för hands version): Azure CLI
 
@@ -53,21 +53,21 @@ En fullständig lista över obligatoriska och valfria parametrar, samt fler exem
 
 ### <a name="manage-private-endpoint-connections-on-the-instance"></a>Hantera privata slut punkts anslutningar på instansen
 
-När en privat slut punkt har skapats för din Azure Digital-instansen kan du använda anslutnings kommandona [**AZ DT Network Private-Endpoint**](/cli/azure/ext/azure-iot/dt/network/private-endpoint/connection) för att fortsätta hantera privata slut punkts **anslutningar** med avseende på instansen. Åtgärderna omfattar:
+När en privat slut punkt har skapats för din Azure Digital-instansen kan du använda anslutnings kommandona [**AZ DT Network Private-Endpoint**](/cli/azure/dt/network/private-endpoint/connection) för att fortsätta hantera privata slut punkts **anslutningar** med avseende på instansen. Åtgärderna omfattar:
 * Visa en privat slut punkts anslutning
 * Ange tillstånd för anslutning till privat slutpunkt
 * Ta bort anslutningen till en privat slutpunkt
 * Visa en lista över alla anslutningar för privata slut punkter för en instans
 
-Mer information och exempel finns i [referens dokumentationen för **AZ DT Network-den privata slut punkten**](/cli/azure/ext/azure-iot/dt/network/private-endpoint).
+Mer information och exempel finns i [referens dokumentationen för **AZ DT Network-den privata slut punkten**](/cli/azure/dt/network/private-endpoint).
 
 ### <a name="manage-other-private-link-information-on-an-azure-digital-twins-instance"></a>Hantera annan privat länk information på en digital Azure-instans
 
-Du kan få ytterligare information om status för privata Länkar för din instans med kommandona [**AZ DT Network Private-Link**](/cli/azure/ext/azure-iot/dt/network/private-link) . Åtgärderna omfattar:
+Du kan få ytterligare information om status för privata Länkar för din instans med kommandona [**AZ DT Network Private-Link**](/cli/azure/dt/network/private-link) . Åtgärderna omfattar:
 * Lista privata länkar som är associerade med en digital Azure-instans
 * Visa en privat länk som är associerad med instansen
 
-Mer information och exempel finns i [ **AZ DT Network-Link** Reference Document](/cli/azure/ext/azure-iot/dt/network/private-link).
+Mer information och exempel finns i [ **AZ DT Network-Link** Reference Document](/cli/azure/dt/network/private-link).
 
 ## <a name="disable--enable-public-network-access-flags"></a>Inaktivera/aktivera offentliga nätverks åtkomst flaggor
 
@@ -79,7 +79,7 @@ Den här artikeln visar hur du uppdaterar värdet för nätverks flaggan med hj�
 
 ### <a name="use-the-azure-cli"></a>Använda Azure CLI
 
-I Azure CLI kan du inaktivera eller aktivera offentlig nätverks åtkomst genom att lägga till en `--public-network-access` parameter till `az dt create` kommandot. Även om det här kommandot kan användas för att skapa en ny instans kan du använda det för att redigera egenskaperna för en befintlig instans genom att ange namnet på en instans som redan finns. (Mer information om det här kommandot finns i [referens dokumentationen](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create) eller de [allmänna anvisningarna för att konfigurera en digital Azure-instans](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)).
+I Azure CLI kan du inaktivera eller aktivera offentlig nätverks åtkomst genom att lägga till en `--public-network-access` parameter till `az dt create` kommandot. Även om det här kommandot kan användas för att skapa en ny instans kan du använda det för att redigera egenskaperna för en befintlig instans genom att ange namnet på en instans som redan finns. (Mer information om det här kommandot finns i [referens dokumentationen](/cli/azure/dt#az_dt_create) eller de [allmänna anvisningarna för att konfigurera en digital Azure-instans](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)).
 
 Om du vill **inaktivera** offentlig nätverks åtkomst för en Azure Digital-instansen använder du `--public-network-access` parametern så här:
 

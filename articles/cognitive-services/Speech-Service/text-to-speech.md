@@ -12,18 +12,18 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: text till tal
-ms.openlocfilehash: 1a7ff7befc1a5e82c5518cf103a81b35ec38c7db
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 73e37fde4b3c2dd1aeb6ab171c3726f1b4353949
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449366"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106096"
 ---
 # <a name="what-is-text-to-speech"></a>Vad är text-till-tal?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-I den här översikten får du lära dig om fördelarna och funktionerna i tjänsten text till tal, som gör att dina program, verktyg eller enheter kan konvertera text till Human-liknande syntetiskt tal. Välj mellan standard-och neurala röster eller skapa en anpassad röst som är unik för din produkt eller ditt varumärke. 75 + standard röster är tillgängliga på fler än 45 språk och nationella inställningar och 5 neurala-röster är tillgängliga på ett valt antal språk och nationella inställningar. En fullständig lista över röster, språk och nationella inställningar som stöds finns i [språk som stöds](language-support.md#text-to-speech).
+I den här översikten får du lära dig om fördelarna och funktionerna i tjänsten text till tal, som gör att dina program, verktyg eller enheter kan konvertera text till Human-liknande syntetiskt tal. Använd Human-som neurala röster eller skapa en anpassad röst som är unik för din produkt eller ditt varumärke. En fullständig lista över röster, språk och nationella inställningar som stöds finns i [språk som stöds](language-support.md#text-to-speech).
 
 Den här dokumentationen innehåller följande artikel typer:
 
@@ -42,8 +42,6 @@ Den här dokumentationen innehåller följande artikel typer:
 
 * Asynkron syntes av långt ljud – Använd den [långa ljud-API: n](long-audio-api.md) för att syntetisera text till tal-filer som är längre än 10 minuter (till exempel ljud böcker eller föreläsningar). Till skillnad från sammanfattningen som utfördes med hjälp av tal-SDK eller tal-till-text-REST API, returneras inte svar i real tid. Förväntat är att förfrågningar skickas asynkront, svaren avsökers för och att det syntetiserade ljudet hämtas när det görs tillgängligt från tjänsten. Endast anpassade neurala-röster stöds.
 
-* Standard röster – skapade med statistisk parameter syntes och/eller kombinations sammanfattnings tekniker. Dessa röster är mycket anpassningsbara och har en naturlig naturlig effekt. Du kan enkelt göra det möjligt för dina program att prata på fler än 45 språk, med ett brett utbud av röst alternativ. Dessa röster ger hög uttal av precision, inklusive stöd för förkortningar, akronym-expansion, datum/tid-tolkningar, polytelefoner med mera. En fullständig lista över standard röster finns i [språk som stöds](language-support.md#text-to-speech).
-
 * Neurala-röster – djup neurala nätverk används för att undvika gränserna för traditionella tal syntes med avseende på stress och intonation i talade språk. Prosody förutsägelse och röst syntes utförs samtidigt, vilket resulterar i mer Fluida och naturliga ljud. Neurala röster kan användas för att göra interaktioner med chattrobotar och röst assistenter mer naturligt och engagerande, konvertera digitala texter som e-böcker till Audiobooks och förbättra navigerings systemen i bilen. Med den humana naturliga prosody och tydligare utsättande av ord, minskar neurala-röster avsevärt lyssnings utmattning när du interagerar med AI-system. En fullständig lista över neurala-röster finns i [språk som stöds](language-support.md#text-to-speech).
 
 * Ändra tal format med SSML-SSML (Speech syntes Markup Language) är ett XML-baserat kodspråk som används för att anpassa tal till text-utdata. Med SSML kan du justera bredden, lägga till pauser, förbättra uttal, påskynda eller sakta ned tal frekvens, öka eller minska volymen och attributa flera röster till ett enda dokument. Se [instruktionen så att du kan](speech-synthesis-markup.md) justera tal formatet.
@@ -51,7 +49,7 @@ Den här dokumentationen innehåller följande artikel typer:
 * Visemes – [Visemes](how-to-speech-synthesis-viseme.md) är nyckeln i observerat tal, inklusive positionen för Lip, Jaw och tunga när man skapar en viss fonem. Visemes har en stark korrelation med röster och fonem. Med viseme-händelser i tal-SDK kan du skapa ansikts Animations data som kan användas för att animera ansikten i Lip-läsning av kommunikation, utbildning, underhållning och kund tjänst.
 
 > [!NOTE]
-> Viseme fungerar bara för `en-US-AriaNeural` Voice för tillfället.
+> Viseme-händelser stöds för närvarande bara för `en-US-AriaNeural` rösten.
 
 ## <a name="get-started"></a>Kom igång
 
@@ -66,7 +64,7 @@ Exempel kod för text till tal finns på GitHub. De här exemplen tar upp text t
 
 ## <a name="customization"></a>Anpassning
 
-Förutom standard-och neurala-röster kan du skapa och finjustera anpassade röster som är unika för din produkt eller ditt varumärke. Allt det krävs för att komma igång är en fåtal av ljudfiler och tillhör ande avskrifter. Mer information finns i [Kom igång med anpassad röst](how-to-custom-voice.md)
+Förutom neurala-röster kan du skapa och finjustera anpassade röster som är unika för din produkt eller ditt varumärke. Allt det krävs för att komma igång är en fåtal av ljudfiler och tillhör ande avskrifter. Mer information finns i [Kom igång med anpassad röst](how-to-custom-voice.md)
 
 ## <a name="pricing-note"></a>Pris notering
 

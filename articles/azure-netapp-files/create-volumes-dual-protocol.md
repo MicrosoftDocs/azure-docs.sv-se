@@ -12,19 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/28/2020
+ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: 0079c123f908a38cc1e4923790439f18352bf3ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6a2d7ad92c209a93d740d60808c2cbd2f90c6b4
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100574634"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258426"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Skapa en NFSv3-och SMB-volym (Dual-Protocol) för Azure NetApp Files
 
-Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB3 eller två protokoll. Den här artikeln visar hur du skapar en volym som använder det dubbla protokollet i NFSv3 och SMB med stöd för mappning av LDAP-användare.  
+Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB3 eller två protokoll. Den här artikeln visar hur du skapar en volym som använder det dubbla protokollet i NFSv3 och SMB med stöd för mappning av LDAP-användare. 
 
+Information om hur du skapar NFS-volymer finns i [skapa en NFS-volym](azure-netapp-files-create-volumes.md). Information om hur du skapar SMB-volymer finns i [skapa en SMB-volym](azure-netapp-files-create-volumes-smb.md). 
 
 ## <a name="before-you-begin"></a>Innan du börjar 
 
@@ -39,7 +40,7 @@ Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB
 * Skapa en zon för omvänd sökning på DNS-servern och Lägg sedan till en pekare (PTR) av AD host-datorn i den zonen för omvänd sökning. Annars går det inte att skapa dubbla protokoll volymer.
 * Kontrollera att NFS-klienten är uppdaterad och att de senaste uppdateringarna för operativsystemet används.
 * Kontrol lera att LDAP-servern Active Directory (AD) är igång och körs på AD. Du kan göra det genom att installera och konfigurera rollen [Active Directory Lightweight Directory Services (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) på AD-datorn.
-* Dubbla protokoll volymer stöder för närvarande inte Azure Active Directory Domain Services (AADDS).  
+* Dubbla protokoll volymer stöder för närvarande inte Azure Active Directory Domain Services (AADDS). LDAP över TLS får inte vara aktiverat om du använder AADDS.
 * NFS-versionen som används av en dual-Protocol-volym är NFSv3. På så sätt gäller följande:
     * Dubbla protokoll stöder inte Windows ACL utökade attribut `set/get` från NFS-klienter.
     * NFS-klienter kan inte ändra behörigheter för säkerhets formatet NTFS och Windows-klienter kan inte ändra behörigheter för UNIX-typ med dubbla protokoll volymer.   
@@ -121,6 +122,17 @@ Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB
  
     En volym ärver prenumeration, resursgrupp och platsattribut från kapacitetspoolen. Du kan övervaka volymdistributionsstatusen via fliken Meddelanden.
 
+## <a name="allow-local-nfs-users-with-ldap-to-access-a-dual-protocol-volume"></a>Tillåt lokala NFS-användare med LDAP att komma åt en volym med dubbla protokoll 
+
+Du kan aktivera lokala NFS-klientdatorer som inte finns på Windows LDAP-servern för att få åtkomst till en dual-Protocol-volym som har LDAP med utökade grupper aktiverade. Det gör du genom att aktivera alternativet **Tillåt lokala NFS-användare med LDAP** enligt följande:
+
+1. Klicka på **Active Directory anslutningar**.  På en befintlig Active Directory-anslutning klickar du på snabb menyn (de tre punkterna `…` ) och väljer **Redigera**.  
+
+2. I fönstret **redigera Active Directory inställningar** som visas väljer du alternativet **Tillåt lokala NFS-användare med LDAP** .  
+
+    ![Skärm bild som visar alternativet Tillåt lokala NFS-användare med LDAP](../media/azure-netapp-files/allow-local-nfs-users-with-ldap.png)  
+
+
 ## <a name="manage-ldap-posix-attributes"></a>Hantera LDAP POSIX-attribut
 
 Du kan hantera POSIX-attribut som UID, Hem Katalog och andra värden med hjälp av MMC-snapin-modulen Active Directory användare och datorer.  Följande exempel visar Redigeraren för Active Directory-attribut:  
@@ -129,9 +141,9 @@ Du kan hantera POSIX-attribut som UID, Hem Katalog och andra värden med hjälp 
 
 Du måste ange följande attribut för LDAP-användare och LDAP-grupper: 
 * Obligatoriska attribut för LDAP-användare:   
-    `uid`: Alice, `uidNumber` : 139, `gidNumber` : 555, `objectClass` : posixAccount
+    `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: posixAccount`
 * Obligatoriska attribut för LDAP-grupper:   
-    `objectClass`: "posixGroup", `gidNumber` : 555
+    `objectClass: posixGroup`, `gidNumber: 555`
 
 ## <a name="configure-the-nfs-client"></a>Konfigurera NFS-klienten 
 
@@ -141,3 +153,4 @@ Följ anvisningarna i [Konfigurera en NFS-klient för att Azure NetApp Files](co
 
 * [Konfigurera en NFS-klient för Azure NetApp Files](configure-nfs-clients.md)
 * [Felsöka SMB-eller Dual-Protocol-volymer](troubleshoot-dual-protocol-volumes.md)
+* [Felsöka problem med LDAP-volymer](troubleshoot-ldap-volumes.md)

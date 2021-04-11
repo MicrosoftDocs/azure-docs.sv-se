@@ -237,6 +237,8 @@
               href: storage-files-migration-nas-hybrid.md
             - name: Migrera från en lokal NAS till en hybrid fil server med data i
               href: storage-files-migration-nas-hybrid-databox.md
+            - name: Migrera från en lokal NAS till Azure-filresurser med data
+              href: storage-files-migration-nas-cloud-databox.md
         - name: Från StorSimple
           items:
             - name: Migreringsguide för StorSimple 8100 och 8600

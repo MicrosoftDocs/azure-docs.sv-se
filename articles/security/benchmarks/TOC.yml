@@ -67,6 +67,8 @@
       href: ../../application-gateway/security-baseline.md
     - name: Säkerhetsbaslinje för automatisering
       href: ../../automation/security-baseline.md
+    - name: Azure Active Directory säkerhets bas linje
+      href: ../../active-directory/fundamentals/security-baseline.md
     - name: Säkerhetsbaslinje för Azure Advisor
       href: ../../advisor/security-baseline.md
     - name: Säkerhetsbaslinje för Azure App Configuration

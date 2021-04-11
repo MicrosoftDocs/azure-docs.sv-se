@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/16/2020
 ms.author: aahi
 keywords: lokal, Docker, behållare, Kubernetes
-ms.openlocfilehash: 3b0a39e9d84a56bac3117df9279954e3756d465a
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 007dfe6d67d504286b9546fe0139055b58dc700f
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065828"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285611"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-containrar
 
@@ -76,7 +76,7 @@ Azure Cognitive Services-behållare innehåller följande uppsättning Docker-be
 
 | Tjänst |  Container | Beskrivning | Tillgänglighet |
 |--|--|--|--|
-| [Visuellt innehåll][cv-containers] | **Läs OCR** ([bild](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Med Read OCR-behållaren kan du extrahera utskrift och handskriven text från bilder och dokument med stöd för JPEG-, PNG-, BMP-, PDF-och TIFF-filformat. Mer information finns i [Read API-dokumentationen](./computer-vision/concept-recognizing-text.md). | Gated Preview. [Begär åtkomst][request-access]. |
+| [Visuellt innehåll][cv-containers] | **Läs OCR** ([bild](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Med Read OCR-behållaren kan du extrahera utskrift och handskriven text från bilder och dokument med stöd för JPEG-, PNG-, BMP-, PDF-och TIFF-filformat. Mer information finns i [Read API-dokumentationen](./computer-vision/overview-ocr.md). | Gated Preview. [Begär åtkomst][request-access]. |
 | [Rumslig analys][spa-containers] | **Rums analys** ([bild](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-spatial-analysis)) | Analyserar direktuppspelad video i real tid för att förstå spatiala relationer mellan människor, deras rörelse och interaktioner med objekt i fysiska miljöer. | Gated Preview. [Begär åtkomst][request-access]. |
 | [Ansiktsigenkänning][fa-containers] | **Ansiktsigenkänning** | Identifierar människo ansikten i bilder och identifierar attribut, inklusive ansikts landmärken (till exempel näsaer och ögon), kön, ålder och andra maskin förväntade ansikts funktioner. Förutom identifiering kan FACET kontrol lera om två ansikten i samma bild eller olika bilder är desamma genom att använda en säkerhets poäng, eller jämföra ansikten mot en databas för att se om det redan finns ett liknande eller identiskt ansikte. Det kan också organisera liknande ansikten i grupper med hjälp av delade visuella egenskaper. | Inte tillgänglig |
 | [Formulär igenkänning][fr-containers] | **Formigenkänning** | Forms förståelse använder Machine Learning-teknik för att identifiera och extrahera nyckel/värde-par och tabeller från formulär. | Inte tillgänglig | 

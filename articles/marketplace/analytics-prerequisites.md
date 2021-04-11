@@ -7,12 +7,12 @@ ms.topic: article
 author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 1cdd3dba8203ce9e8daeaa963f1722389d89d19d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b61608c0cb53ab808c5d3d789ec5ddc318c6923d
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563828"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106810"
 ---
 # <a name="prerequisites-to-programmatically-access-analytics-data"></a>Förutsättningar för att få åtkomst till Analytics-data via programmering
 
@@ -20,7 +20,7 @@ Innan du kan komma åt data på kommersiella Marketplace-analyser måste du uppf
 
 ## <a name="commercial-marketplace-enrollment"></a>Registrering av handels-Marketplace
 
-För att få åtkomst till kommersiella Marketplace Analytics-data program mässigt måste du vara registrerad i det kommersiella Marketplace-programmet och ha ett partner Center-konto. Mer information finns i [skapa ett kommersiellt marknads plats konto i Partner Center](./partner-center-portal/create-account.md).
+För att få åtkomst till kommersiella Marketplace Analytics-data program mässigt måste du vara registrerad i det kommersiella Marketplace-programmet och ha ett partner Center-konto. Mer information finns i [skapa ett kommersiellt marknads plats konto i Partner Center](create-account.md).
 
 ## <a name="create-azure-active-directory-application"></a>Skapa Azure Active Directory program
 

@@ -2,18 +2,18 @@
 title: Tjänster och scheman som stöds av Azure-resurs loggar
 description: Förstå tjänster och händelse schema som stöds för Azures resurs loggar.
 ms.topic: reference
-ms.date: 09/01/2020
-ms.openlocfilehash: 661cba2d78dbb176bb04e6831cf8e045a285535e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/07/2020
+ms.openlocfilehash: 09415353d93313f1b3c4844202b59f577ef3838d
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033103"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105773"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Gemensamt och tjänstspecifikt schema för Azure-resurs loggar
 
 > [!NOTE]
-> Resurs loggar kallades tidigare för diagnostikloggar. Namnet ändrades i oktober 2019 när de typer av loggar som samlats in av Azure Monitor flyttas för att inkludera mer än bara Azure-resursen. Listan över resurs logg kategorier som du kan samla in används också i den här artikeln. De har flyttats till [resurs logg kategorier](resource-logs-categories.md). 
+> Resurs loggar kallades tidigare för diagnostikloggar. Namnet ändrades i oktober 2019 när de typer av loggar som samlats in av Azure Monitor flyttas för att inkludera mer än bara Azure-resursen. Listan över resurs logg kategorier som du kan samla in används också i den här artikeln. De finns nu i [resurs loggs kategorier](resource-logs-categories.md). 
 
 [Azure Monitor resurs loggar](../essentials/platform-logs-overview.md) genereras av Azure-tjänster som beskriver driften av dessa tjänster eller resurser. Alla resurs loggar som är tillgängliga via Azure Monitor dela ett gemensamt schema på högsta nivå, med flexibilitet för varje tjänst för att generera unika egenskaper för sina egna händelser.
 
@@ -65,6 +65,7 @@ Schemat för resurs loggar varierar beroende på resurs-och logg kategori. I den
 | Azure Database for MySQL | [Azure Database for MySQL diagnostikloggar](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL loggar](../../postgresql/concepts-server-logs.md#resource-logs) |
 | Azure Databricks | [Diagnostisk loggning i Azure Databricks](/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) |
+| DDoS Protection | [Loggning för Azure DDoS Protection standard](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Azure Digital Twins | [Konfigurera Azure Digitals dubblare-diagnostik](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
 | Event Hubs |[Azure Event Hubs-loggar](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | Express Route | Schemat är inte tillgängligt. |
@@ -76,13 +77,13 @@ Schemat för resurs loggar varierar beroende på resurs-och logg kategori. I den
 | Load Balancer |[Log Analytics för Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Anpassat Logic Apps B2B-spårningsschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Nätverkssäkerhetsgrupper |[Log Analytics för nätverkssäkerhetsgrupper (NSG)](../../virtual-network/virtual-network-nsg-manage-log.md) |
-| DDoS Protection | [Loggning för Azure DDoS Protection standard](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Dedikerad Power BI | [Loggning för Power BI Embedded i Azure](/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Data modell för Azure Backup](../../backup/backup-azure-reports-data-model.md)|
 | Sök |[Aktivera och använda Sök Trafikanalys](../../search/search-traffic-analytics.md) |
 | Service Bus |[Azure Service Bus loggar](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL Database | [Azure SQL Database loggning](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | Stream Analytics |[Jobbloggar](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
+| Storage | [Blobbar](/azure/storage/blobs/monitor-blob-storage-reference#resource-logs-preview), [filer](/azure/storage/files/storage-files-monitoring-reference#resource-logs-preview), [köer](/azure/storage/queues/monitor-queue-storage-reference#resource-logs-preview),  [tabeller](/azure/storage/tables/monitor-table-storage-reference#resource-logs-preview) |
 | Traffic Manager | [Traffic Manager logg schema](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Virtuella nätverk | Schemat är inte tillgängligt. |
 | Virtuella nätverksgatewayer | Schemat är inte tillgängligt. |

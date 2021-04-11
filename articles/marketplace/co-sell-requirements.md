@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 3/17/2021
-ms.openlocfilehash: e67219e0b029ce401ffc05c009a5cc4a96680a9f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28fdd8b10c7106380c296c8131ade909ee88d0f8
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104593398"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107099"
 ---
 # <a name="co-sell-requirements"></a>Krav för samförsäljning
 
@@ -35,7 +35,7 @@ För ett erbjudande om att uppnå en färdig status för medförsäljning måste
 
 **Alla partner**:
 
-- Ha ett MPN-ID och ett aktivt [kommersiellt marknads plats konto i Partner Center](./partner-center-portal/create-account.md).
+- Ha ett MPN-ID och ett aktivt [kommersiellt marknads plats konto i Partner Center](create-account.md).
 - Se till att du har en fullständig [företags profil](/partner-center/create-a-marketing-profile) i Partner Center. Som kvalificerad Microsoft-partner hjälper din företags profil dig att presentera din verksamhet för kunder som letar efter dina unika lösningar och expertis för att lösa sina affärs behov, vilket resulterar i [hänvisningar](/partner-center/referrals).
 - Slutför fliken **Co-Sälj med Microsoft** och publicera erbjudandet på den kommersiella Marketplace.
 - Ange en försäljnings kontakt för varje samsäljande geografisk region och nödvändig material struktur.
@@ -59,7 +59,7 @@ Vi tillhandahåller mallar för att hjälpa dig att skapa dessa dokument. Mer in
 
 ### <a name="publish-your-offer-live"></a>Publicera ditt erbjudande Live
 
-Om du vill kvalificera sig för medförsäljnings status måste ditt erbjudande eller din lösning publiceras Live till minst ett av de kommersiella online butikerna för Marketplace: Azure Marketplace eller Microsoft AppSource. Information om hur du publicerar erbjudanden till den kommersiella marknads platsen finns i [publicerings guide efter erbjudande typ](publisher-guide-by-offer-type.md). Om du inte har publicerat något erbjudande på den kommersiella Marketplace tidigare, se till att du har ett [kommersiellt marknads plats konto](./partner-center-portal/create-account.md).
+Om du vill kvalificera sig för medförsäljnings status måste ditt erbjudande eller din lösning publiceras Live till minst ett av de kommersiella online butikerna för Marketplace: Azure Marketplace eller Microsoft AppSource. Information om hur du publicerar erbjudanden till den kommersiella marknads platsen finns i [publicerings guide efter erbjudande typ](publisher-guide-by-offer-type.md). Om du inte har publicerat något erbjudande på den kommersiella Marketplace tidigare, se till att du har ett [kommersiellt marknads plats konto](create-account.md).
 
 ## <a name="requirements-for-azure-ip-co-sell-incentivized-status"></a>Krav för Azure IP Co-Sälj motiverade-status
 

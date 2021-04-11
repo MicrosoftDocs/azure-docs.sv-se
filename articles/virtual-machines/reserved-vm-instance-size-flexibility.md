@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: reserved-instances
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 03/01/2021
+ms.date: 04/06/2021
 ms.author: yashar
-ms.openlocfilehash: 9270b7fb135eddd78a7aeb30cf88af4d704e176e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a6ddcef1493f15442a723bcc93850e6197db84d8
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030716"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285606"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Flexibel storlek för virtuella datorer med reserverade VM-instanser
 
@@ -39,6 +39,7 @@ Du köper en reserverad VM-instans med storleken Standard_DS4_v2 där förhålla
 - Scenario 1: kör åtta Standard_DS1_v2 storlekar av virtuella datorer med förhållandet 1. Reservations rabatten gäller för alla åtta av de virtuella datorerna.
 - Scenario 2: kör två Standard_DS2_v2 stora virtuella datorer med förhållandet 2 var. Kör också en virtuell dator med Standard_DS3_v2 storlek med förhållandet 4. Det totala utrymmet är 2 + 2 + 4 = 8. Reservations rabatten gäller för alla tre virtuella datorer.
 - Scenario 3: kör ett Standard_DS5_v2 med förhållandet 16. Reservations rabatten gäller för hälften av den virtuella datorns beräknings kostnad.
+- Scenario 4: kör ett Standard_DS5_v2 med förhållandet 16 och köp ytterligare en Standard_DS4_v2 reservation med förhållandet 8. Båda reservationerna kombinerar och tillämpar rabatten på hela den virtuella datorn.
 
 I följande avsnitt visas vilka storlekar som finns i samma storleks serie grupp när du köper en reserverad VM-instans som är optimerad för storleks flexibilitet i en instans.
 

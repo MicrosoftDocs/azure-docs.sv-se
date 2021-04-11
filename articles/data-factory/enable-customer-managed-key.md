@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: c6c376e44c6135a800e6f7e281f8ea85b828329a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a18d06e3a0324889a4cb9936fb339fd9d8f9b816
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443900"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222713"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Kryptera Azure Data Factory med Kundhanterade nycklar
 
@@ -137,6 +137,23 @@ Om du vill ändra nyckeln som används för Data Factory kryptering måste du ma
 ## <a name="disable-customer-managed-keys"></a>Inaktivera Kundhanterade nycklar
 
 Efter designen kan du inte ta bort det extra säkerhets steget när funktionen kundhanterad nyckel är aktive rad. Vi förväntar alltid sig en kund som har fått nyckeln för att kryptera fabrik och data.
+
+## <a name="customer-managed-key-and-continuous-integration-and-continuous-deployment"></a>Kundhanterad nyckel och kontinuerlig integrering och kontinuerlig distribution
+
+CMK-konfigurationen ingår som standard inte i fabriks Azure Resource Managers mal len (ARM). För att inkludera kund Managed Key Encryption-inställningar i ARM-mallen för kontinuerlig integrering (CI/CD):
+
+1. Se till att fabriken är i git-läge
+1. Gå till hanterings portalen – avsnittet kund Managed Key
+1. Markera alternativet _inkludera i arm-mallen_
+
+  :::image type="content" source="media/enable-customer-managed-key/07-include-in-template.png" alt-text="Skärm bild av inklusive kund hanterad nyckel inställning i ARM-mallen.":::
+
+Följande inställningar kommer att läggas till i ARM-mallen. Dessa egenskaper kan vara parameterstyrda i kontinuerlig integrering och leverans pipeliner genom att redigera [Azure Resource Manager parameter konfiguration](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template)
+
+  :::image type="content" source="media/enable-customer-managed-key/08-template-with-customer-managed-key.png" alt-text="Skärm bild av inklusive kund hanterad nyckel inställning i Azure Resource Manager mall.":::
+
+> [!NOTE]
+> Genom att lägga till krypterings inställningen i ARM-mallarna läggs en inställning på fabriks nivå som åsidosätter andra inställningar på fabriks nivån, till exempel git-konfigurationer, i andra miljöer. Om du har dessa inställningar aktiverade i en upphöjd miljö, till exempel UAT eller PROD., kan du läsa [globala parametrar i CI/CD](author-global-parameters.md#cicd).
 
 ## <a name="next-steps"></a>Nästa steg
 

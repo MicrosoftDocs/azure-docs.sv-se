@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 7bf4ea4beabf9abcc007c101ca5acf79ec919c4e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0330ea419b92d4e2e85c01e2770ec0d92987c4d2
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732405"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107116"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-using-dms"></a>Självstudie: Migrera SQL Server till Azure SQL Database med DMS
 
@@ -68,6 +68,79 @@ För att slutföra den här kursen behöver du:
 - Skapa en regel för IP- [brandvägg](../azure-sql/database/firewall-configure.md) på server nivå för Azure SQL Database att tillåta Azure Database migration service åtkomst till mål databaserna. Ange under nätets intervall för det virtuella nätverk som används för Azure Database Migration Service.
 - Kontrollera att autentiseringsuppgifterna som används för att ansluta till SQL Server-källinstansen har [CONTROL SERVER](/sql/t-sql/statements/grant-server-permissions-transact-sql)-behörigheter.
 - Se till att de autentiseringsuppgifter som används för att ansluta till mål Azure SQL Databases instansen har [kontroll databas](/sql/t-sql/statements/grant-database-permissions-transact-sql) behörighet på mål databaserna.
+
+    > [!IMPORTANT]
+    > Att skapa en instans av Azure Database Migration Service kräver åtkomst till inställningarna för virtuella nätverk som normalt inte ingår i samma resurs grupp. Det innebär att användaren som skapar en instans av DMS kräver behörighet på prenumerations nivå. Om du vill skapa de nödvändiga rollerna, som du kan tilldela vid behov, kör du följande skript:
+    >
+    > ```
+    >
+    > $readerActions = `
+    > "Microsoft.Network/networkInterfaces/ipConfigurations/read", `
+    > "Microsoft.DataMigration/*/read", `
+    > "Microsoft.Resources/subscriptions/resourceGroups/read"
+    >
+    > $writerActions = `
+    > "Microsoft.DataMigration/services/*/write", `
+    > "Microsoft.DataMigration/services/*/delete", `
+    > "Microsoft.DataMigration/services/*/action", `
+    > "Microsoft.Network/virtualNetworks/subnets/join/action", `
+    > "Microsoft.Network/virtualNetworks/write", `
+    > "Microsoft.Network/virtualNetworks/read", `
+    > "Microsoft.Resources/deployments/validate/action", `
+    > "Microsoft.Resources/deployments/*/read", `
+    > "Microsoft.Resources/deployments/*/write"
+    >
+    > $writerActions += $readerActions
+    >
+    > # TODO: replace with actual subscription IDs
+    > $subScopes = ,"/subscriptions/00000000-0000-0000-0000-000000000000/","/subscriptions/11111111-1111-1111-1111-111111111111/"
+    >
+    > function New-DmsReaderRole() {
+    > $aRole = [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition]::new()
+    > $aRole.Name = "Azure Database Migration Reader"
+    > $aRole.Description = "Lets you perform read only actions on DMS service/project/tasks."
+    > $aRole.IsCustom = $true
+    > $aRole.Actions = $readerActions
+    > $aRole.NotActions = @()
+    >
+    > $aRole.AssignableScopes = $subScopes
+    > #Create the role
+    > New-AzRoleDefinition -Role $aRole
+    > }
+    >
+    > function New-DmsContributorRole() {
+    > $aRole = [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition]::new()
+    > $aRole.Name = "Azure Database Migration Contributor"
+    > $aRole.Description = "Lets you perform CRUD actions on DMS service/project/tasks."
+    > $aRole.IsCustom = $true
+    > $aRole.Actions = $writerActions
+    > $aRole.NotActions = @()
+    >
+    >   $aRole.AssignableScopes = $subScopes
+    > #Create the role
+    > New-AzRoleDefinition -Role $aRole
+    > }
+    > 
+    > function Update-DmsReaderRole() {
+    > $aRole = Get-AzRoleDefinition "Azure Database Migration Reader"
+    > $aRole.Actions = $readerActions
+    > $aRole.NotActions = @()
+    > Set-AzRoleDefinition -Role $aRole
+    > }
+    >
+    > function Update-DmsConributorRole() {
+    > $aRole = Get-AzRoleDefinition "Azure Database Migration Contributor"
+    > $aRole.Actions = $writerActions
+    > $aRole.NotActions = @()
+    > Set-AzRoleDefinition -Role $aRole
+    > }
+    >
+    > # Invoke above functions
+    > New-DmsReaderRole
+    > New-DmsContributorRole
+    > Update-DmsReaderRole
+    > Update-DmsConributorRole
+    > ```
 
 ## <a name="assess-your-on-premises-database"></a>Utvärdera din lokala databas
 

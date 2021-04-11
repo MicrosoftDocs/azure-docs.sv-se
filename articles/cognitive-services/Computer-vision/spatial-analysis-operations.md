@@ -10,16 +10,16 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: bdcbb38a56e46d01a5580f6d32ef733df8911b67
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 4b4ee9d1e583241f8ec9b467ae9ddfdb1360fb52
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108344"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284710"
 ---
 # <a name="spatial-analysis-operations"></a>Åtgärder för rums analys
 
-Med rumslig analys kan du analysera strömningsvideo i realtid från kameraenheter. För varje kameraenhet som du konfigurerar genererar åtgärder för rumslig analys en utdataström med JSON-meddelanden som skickas till din instans av Azure IoT Hub. 
+Med rums analys kan du analysera real tids strömnings video från kamera enheter. För varje kamera enhet som du konfigurerar genererar åtgärder för rums analys en utdataström av JSON-meddelanden som skickas till din instans av Azure IoT Hub. 
 
 Behållaren för rums analys implementerar följande åtgärder:
 
@@ -107,16 +107,16 @@ Detta är ett exempel på DETECTOR_NODE_CONFIG parametrar för alla spatiala ana
 ```json
 {
 "zones":[{
-    "name": "lobbycamera",
-    "polygon": [[0.3,0.3], [0.3,0.9], [0.6,0.9], [0.6,0.3], [0.3,0.3]],
-    "events":[{
-        "type": "count",
-        "config":{
-            "trigger": "event",
+       "name": "lobbycamera",
+       "polygon": [[0.3,0.3], [0.3,0.9], [0.6,0.9], [0.6,0.3], [0.3,0.3]],
+       "events":[{
+              "type": "count",
+              "config":{
+                     "trigger": "event",
             "threshold": 16.00,
             "focus": "footprint"
       }
-    }]
+       }]
 }
 ```
 
@@ -231,17 +231,17 @@ Detta är ett exempel på en JSON-ineffekt för SPACEANALYTICS_CONFIG-parametern
    "name": "lobbycamera",
    "polygon": [[0.3,0.3], [0.3,0.9], [0.6,0.9], [0.6,0.3], [0.3,0.3]],
    "events":[{
-    "type": "persondistance",
-    "config":{
-        "trigger": "event",
-        "output_frequency":1,
-        "minimum_distance_threshold":6.0,
-        "maximum_distance_threshold":35.0,
+       "type": "persondistance",
+       "config":{
+           "trigger": "event",
+           "output_frequency":1,
+           "minimum_distance_threshold":6.0,
+           "maximum_distance_threshold":35.0,
         "aggregation_method": "average"
            "threshold": 16.00,
            "focus": "footprint"
-            }
-    }]
+                   }
+          }]
    }]
 }
 ```
@@ -431,7 +431,7 @@ Exempel-JSON för händelse utdata i den här åtgärden.
             "face_nomask": 0.99
             }
             }
-    }
+       }
     ],
     "schemaVersion": "1.0"
 }
@@ -635,7 +635,7 @@ Exempel-JSON för identifiering av utdata för den här åtgärden med `zonedwel
                 "trackingId": "afcc2e2a32a6480288e24381f9c5d00e",
                 "status": "Exit",
                 "side": "1",
-        "durationMs": 7132.0
+              "durationMs": 7132.0
             },
             "zone": "queuecamera"
         }

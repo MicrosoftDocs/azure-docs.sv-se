@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 68605a22dd0d0b2b716b148399c8406a1ea8d89e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b46efa53bba3b845fa5837b91a3707f4a85d298e
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98659945"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258783"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Säkerhets kopiering och återställning i Azure Database for MariaDB
 
@@ -19,28 +19,42 @@ Azure Database for MariaDB skapar automatiskt Server säkerhets kopior och lagra
 
 ## <a name="backups"></a>Säkerhetskopior
 
-Azure Database for MariaDB tar fullständiga, differentiella och transaktions logg säkerhets kopior. Med dessa säkerhets kopieringar kan du återställa en server till alla tidpunkter inom den konfigurerade kvarhållningsperioden för säkerhets kopior. Standard kvarhållningsperioden för säkerhets kopiering är sju dagar. Du kan också konfigurera det upp till 35 dagar. Alla säkerhetskopior krypteras med AES 256-bitars kryptering.
+Azure Database for MariaDB säkerhetskopierar datafilerna och transaktions loggen. Med dessa säkerhets kopieringar kan du återställa en server till alla tidpunkter inom den konfigurerade kvarhållningsperioden för säkerhets kopior. Standard kvarhållningsperioden för säkerhets kopiering är sju dagar. Du kan [också konfigurera det](howto-restore-server-portal.md#set-backup-configuration) upp till 35 dagar. Alla säkerhetskopior krypteras med AES 256-bitars kryptering.
 
-De säkerhetskopierade filerna visas inte för användarna och kan inte exporteras. Dessa säkerhets kopior kan bara användas för återställnings åtgärder i Azure Database for MariaDB. Du kan använda [mysqldump](howto-migrate-dump-restore.md) för att kopiera en databas.
+De säkerhetskopierade filerna visas inte för användarna och kan inte exporteras. Dessa säkerhets kopior kan bara användas för återställnings åtgärder i Azure Database for MySQL. Du kan använda [mysqldump](howto-migrate-dump-restore.md) för att kopiera en databas.
 
-### <a name="backup-frequency"></a>Säkerhetskopieringsfrekvens
+Säkerhets kopieringens typ och frekvens beror på Server serverns lagrings utrymme.
 
-#### <a name="servers-with-up-to-4-tb-storage"></a>Servrar med upp till 4 TB lagrings utrymme
+### <a name="backup-type-and-frequency"></a>Typ av säkerhets kopiering och frekvens
 
-För servrar som har stöd för upp till 4 TB högsta lagrings utrymme sker fullständiga säkerhets kopieringar varje vecka. Differentiella säkerhets kopieringar sker två gånger om dagen. Säkerhetskopieringar av transaktionsloggar sker var femte minut.
+#### <a name="basic-storage-servers"></a>Grundläggande lagrings servrar
 
-#### <a name="servers-with-up-to-16-tb-storage"></a>Servrar med upp till 16 TB lagring
-I en delmängd av [Azure-regioner](concepts-pricing-tiers.md#storage)kan alla nyligen etablerade servrar stödja upp till 16 TB lagring. Säkerhets kopieringar på dessa stora lagrings servrar är Snapshot-baserade. Den första fullständiga säkerhetskopieringen schemaläggs omedelbart efter att en server har skapats. Den första fullständiga säkerhets kopieringen behålls som serverns grundläggande säkerhets kopiering. Efterföljande säkerhetskopieringar av ögonblicksbilder är bara differentiella säkerhetskopieringar. 
+Basic Storage är Server dels lagringen med stöd för [grundläggande nivå servrar](concepts-pricing-tiers.md). Säkerhets kopior på Basic Storage-servrar är Snapshot-baserade. En fullständig ögonblicks bild av databasen utförs dagligen. Det finns inga differentiella säkerhets kopieringar för grundläggande lagrings servrar och alla säkerhets kopior av ögonblicks bilder är bara fullständiga databas säkerhets kopieringar.
 
-Differentiella säkerhetskopieringar av ögonblicksbilder görs minst en gång per dag. Differentiella säkerhetskopieringar av ögonblicksbilder sker inte enligt ett fast schema. Differentiella ögonblicks bilds säkerhets kopieringar sker var 24: e timme om transaktions loggen (BinLog i MariaDB) överskrider 50 GB sedan den senaste differentiella säkerhets kopieringen Högst sex differentiella ögonblicksbilder tillåts under samma dag. 
+Säkerhetskopieringar av transaktionsloggar sker var femte minut.
 
-Säkerhetskopieringar av transaktionsloggar sker var femte minut. 
+#### <a name="general-purpose-storage-servers-with-up-to-4-tb-storage"></a>Generella lagrings servrar med upp till 4 TB lagring
+
+Det allmänna lagrings utrymmet är den server dels lagring som stöder [generell användning](concepts-pricing-tiers.md) och minnesoptimerade [nivå](concepts-pricing-tiers.md) Server. För servrar med generell lagring upp till 4 TB sker fullständiga säkerhets kopieringar varje vecka. Differentiella säkerhets kopieringar sker två gånger om dagen. Säkerhetskopieringar av transaktionsloggar sker var femte minut. Säkerhets kopieringarna i generell användning av lagrings utrymme på 4 TB är inte ögonblicks bilds och använder IO-bandbredd vid tidpunkten för säkerhets kopieringen. För stora databaser (> 1 TB) på 4 TB-lagring rekommenderar vi att du
+
+- Etablering av mer IOPs till konto för säkerhets kopiering av IOs eller
+- Du kan också migrera till allmän lagring som stöder upp till 16 TB lagrings utrymme om den underliggande lagrings infrastrukturen är tillgänglig i dina önskade [Azure-regioner](./concepts-pricing-tiers.md#storage). Det kostar inget extra att tillhandahålla lagring med upp till 16 TB. Om du vill ha hjälp med migrering till 16 TB-lagring öppnar du ett support ärende från Azure Portal.
+
+#### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>Generella lagrings servrar med upp till 16 TB lagring
+
+I en delmängd av [Azure-regioner](./concepts-pricing-tiers.md#storage)har alla nyligen etablerade servrar stöd för generell användning av lagrings utrymme på 16 TB. Med andra ord är lagring upp till 16 TB lagrings utrymme standard lagring för alla [regioner](concepts-pricing-tiers.md#storage) där det stöds. Säkerhets kopieringar på dessa 16-TB-lagrings servrar är ögonblicks bilds-baserade. Den första fullständiga säkerhetskopieringen schemaläggs omedelbart efter att en server har skapats. Den första fullständiga säkerhets kopieringen behålls som serverns grundläggande säkerhets kopiering. Efterföljande säkerhetskopieringar av ögonblicksbilder är bara differentiella säkerhetskopieringar.
+
+Differentiella säkerhetskopieringar av ögonblicksbilder görs minst en gång per dag. Differentiella säkerhetskopieringar av ögonblicksbilder sker inte enligt ett fast schema. Differentiella ögonblicks bilds säkerhets kopieringar sker var 24: e timme om transaktions loggen (BinLog i MariaDB) överskrider 50 GB sedan den senaste differentiella säkerhets Högst sex differentiella ögonblicksbilder tillåts under samma dag.
+
+Säkerhetskopieringar av transaktionsloggar sker var femte minut.
+ 
 
 ### <a name="backup-retention"></a>Kvarhållningsperiod för säkerhetskopior
 
 Säkerhets kopior bevaras baserat på inställningen för kvarhållning av säkerhets kopior på servern. Du kan välja en kvarhållningsperiod på 7 till 35 dagar. Standard kvarhållningsperioden är 7 dagar. Du kan ställa in kvarhållningsperioden när servern skapas eller senare genom att uppdatera säkerhets kopierings konfigurationen med [Azure Portal](howto-restore-server-portal.md#set-backup-configuration) eller [Azure CLI](howto-restore-server-cli.md#set-backup-configuration). 
 
 Kvarhållningsperioden för säkerhets kopior styr hur långt tillbaka i tiden en tidpunkts återställning kan hämtas, eftersom den baseras på tillgängliga säkerhets kopior. Kvarhållningsperioden för säkerhets kopior kan också behandlas som ett återställnings fönster från ett återställnings perspektiv. Alla säkerhets kopior som krävs för att utföra en återställning efter en viss tidpunkt inom kvarhållning av säkerhets kopior bevaras i säkerhets kopierings lagringen. Om säkerhets kopierings perioden till exempel är 7 dagar, betraktas återställnings fönstret de senaste 7 dagarna. I det här scenariot behålls alla säkerhets kopior som krävs för att återställa servern under de senaste 7 dagarna. Med ett fönster för kvarhållning av säkerhets kopior av sju dagar:
+
 - Servrar med upp till 4 TB lagrings utrymme behåller upp till 2 fullständiga säkerhets kopieringar av databaser, alla differentiella säkerhets kopieringar och säkerhets kopieringar av transaktions loggar som utförs sedan den tidigaste fullständiga säkerhets kopieringen
 -   Servrar med upp till 16 TB lagring behåller den fullständiga ögonblicks bilden av databasen, alla differentiella ögonblicks bilder och säkerhets kopieringar av transaktions loggar de senaste 8 dagarna.
 

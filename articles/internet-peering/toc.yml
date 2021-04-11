@@ -20,6 +20,8 @@
       href: walkthrough-exchange-all.md
     - name: Genomgång av Peering Service för partner
       href: walkthrough-peering-service-all.md
+    - name: Genom gång av kommunikations tjänst partner
+      href: walkthrough-communications-services-partner.md
     - name: Associera peer-ASN till en Azure-prenumeration
       items:
         - name: Portalen
