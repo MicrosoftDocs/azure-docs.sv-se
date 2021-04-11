@@ -9,10 +9,10 @@ ms.date: 03/03/2021
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f1d3223114e9f691bfb3802a65abea003a7aec6e
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105582435"
 ---
 Du kan kontrol lera länkarna i det här avsnittet om du vill ha mer information om tjänster som erbjuds av partner. Om din grenen hets partner inte visas i avsnittet nedan, måste du kontakta oss på din avdelnings enhets leverantör. De kan kontakta oss genom att skicka ett e-postmeddelande till azurevirtualwan@microsoft.com .

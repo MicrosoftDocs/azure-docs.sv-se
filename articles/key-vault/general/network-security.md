@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 13ead70f278f12866dbe00b53c487aebcc43304f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 40094c00a4b896756c5c0e51116e0ae33ae2a096
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742644"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580737"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurera Azure Key Vault brand väggar och virtuella nätverk
 
@@ -29,13 +29,14 @@ Det här avsnittet beskriver de olika sätt som Azure Key Vault brand väggen ka
 
 ### <a name="key-vault-firewall-disabled-default"></a>Key Vault brand väggen är inaktive rad (standard)
 
-När du skapar ett nytt nyckel valv är Azure Key Vault brand väggen som standard inaktive rad. Alla program och Azure-tjänster har åtkomst till nyckel valvet och skickar begär anden till nyckel valvet. OBS! den här konfigurationen innebär inte att alla användare kommer att kunna utföra åtgärder i nyckel valvet. Nyckel valvet begränsar fortfarande till hemligheter, nycklar och certifikat som lagras i Key Vault genom att kräva Azure Active Directory autentiserings-och åtkomst princip behörigheter. Om du vill veta mer om Key Vault-autentisering mer detaljerat kan du läsa grunderna i Key Vault Authentication-dokumentet [här](./authentication-fundamentals.md).
+När du skapar ett nytt nyckel valv är Azure Key Vault brand väggen som standard inaktive rad. Alla program och Azure-tjänster har åtkomst till nyckel valvet och skickar begär anden till nyckel valvet. OBS! den här konfigurationen innebär inte att alla användare kommer att kunna utföra åtgärder i nyckel valvet. Nyckel valvet begränsar fortfarande till hemligheter, nycklar och certifikat som lagras i Key Vault genom att kräva Azure Active Directory autentiserings-och åtkomst princip behörigheter. Om du vill veta mer om Key Vault-autentisering mer detaljerat kan du läsa grunderna i Key Vault Authentication-dokumentet [här](./authentication-fundamentals.md). Mer information finns i [åtkomst Azure Key Vault bakom en brand vägg](./access-behind-firewall.md).
 
 ### <a name="key-vault-firewall-enabled-trusted-services-only"></a>Key Vault brand vägg aktive rad (endast betrodda tjänster)
 
-När du aktiverar Key Vault brand vägg får du ett alternativ för att tillåta att betrodda Microsoft-tjänster kringgår den här brand väggen. Listan över betrodda tjänster omfattar inte varje enskild Azure-tjänst. Till exempel finns inte Azure-DevOps på listan över betrodda tjänster. **Detta innebär inte att tjänster som inte finns med i listan över betrodda tjänster inte är betrodda eller oskyddade.** Listan över betrodda tjänster omfattar tjänster där Microsoft kontrollerar all kod som körs på tjänsten. Eftersom användarna kan skriva anpassad kod i Azure-tjänster som Azure DevOps, ger Microsoft inte möjlighet att skapa ett RAM godkännande för tjänsten. Dessutom är det inte tillåtet att använda en tjänst i listan över betrodda tjänster, men det är inte tillåtet för alla scenarier.
+När du aktiverar Key Vault brand vägg får du ett alternativ för att tillåta att betrodda Microsoft-tjänster kringgår den här brand väggen. Listan över betrodda tjänster omfattar inte varje enskild Azure-tjänst. Till exempel finns inte Azure-DevOps på listan över betrodda tjänster. **Detta innebär inte att tjänster som inte finns med i listan över betrodda tjänster inte är betrodda eller oskyddade.** Listan över betrodda tjänster omfattar tjänster där Microsoft kontrollerar all kod som körs på tjänsten. Eftersom användarna kan skriva anpassad kod i Azure-tjänster som Azure DevOps, ger Microsoft inte möjlighet att skapa ett RAM godkännande för tjänsten. Dessutom är det inte tillåtet att använda en tjänst i listan över betrodda tjänster, men det är inte tillåtet för alla scenarier. 
 
 Om du vill ta reda på om en tjänst som du försöker använda finns i listan över betrodda tjänster kan du läsa följande dokument [här](./overview-vnet-service-endpoints.md#trusted-services).
+Följ anvisningarna här för [Portal, Azure CLI och PowerShell](https://docs.microsoft.com/azure/key-vault/general/network-security#use-the-azure-portal) för instruktioner om hur du kommer igång.
 
 ### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>Key Vault brand vägg aktive rad (IPv4-adresser och intervall – statiska IP-adresser)
 

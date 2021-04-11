@@ -5,16 +5,16 @@ author: stevelasker
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9dfd29f2265e599f3cc7c412b81c3b7b93af40db
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "75445743"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109721"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>Rekommendationer för taggning och versions behållar avbildningar
 
-När du distribuerar behållar avbildningar till ett behållar register och sedan distribuerar dem måste du ha en strategi för avbildnings taggning och versions hantering. I den här artikeln beskrivs två metoder och var de passar under livs cykel livs cykeln:
+När du överför behållar avbildningar till ett behållar register och sedan distribuerar dem måste du ha en strategi för avbildnings taggning och versions hantering. I den här artikeln beskrivs två metoder och var de passar under livs cykel livs cykeln:
 
 * **Stabila Taggar** – taggar som du återanvänder, till exempel för att ange en större eller mindre version, till exempel *mycontainerimage: 1.0*.
 * **Unika Taggar** – en annan tagg för varje bild som du skickar till ett register, till exempel *mycontainerimage: vi abc123*.

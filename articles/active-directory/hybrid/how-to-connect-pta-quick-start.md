@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3200dc6ad7756f77dc0d74df83a33c7e89d4bedb
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 1c5e71522d53bd4e528b2a5a106a4dcc344df3ab
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105044574"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732864"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory direktautentisering: snabb start
 
@@ -73,6 +73,7 @@ Se till att följande krav är uppfyllda.
      
      Om brandväggen framtvingar regler baserat på de användare som genererar den öppnar du dessa portar för trafik från Windows-tjänster som körs som en nätverkstjänst.
    - Om din brand vägg eller proxy låter dig lägga till DNS-poster i en tillåten, lägger du till anslutningar till **\* . msappproxy.net** och **\* . ServiceBus.Windows.net**. Om inte, Tillåt åtkomst till [Azure datacenter IP-intervall](https://www.microsoft.com/download/details.aspx?id=41653)som uppdateras varje vecka.
+   - Undvik alla former av inaktive rad inspektion och avslutning på utgående TLS-kommunikation mellan Azure passthrough-agenten och Azure-slutpunkt. 
    - Om du har en utgående HTTP-proxy kontrollerar du att URL: en, autologon.microsoftazuread-sso.com, finns på listan över tillåtna. Du bör ange den här URL: en explicit eftersom jokertecken kanske inte accepteras. 
    - Dina autentiserings agenter behöver åtkomst till **login.Windows.net** och **login.microsoftonline.com** för inledande registrering. Öppna brand väggen för dessa URL: er även.
     - För certifikat validering, avblockera följande URL: er: **crl3.DigiCert.com:80**, **crl4.DigiCert.com:80**, **ocsp.digicert.com:80**, **www \. d-trust.net:80**, **root-C3-CA2-2009.OCSP.d-Trust.net:80**, **CRL.Microsoft.com:80**, **oneocsp.Microsoft.com:80** och **OCSP.msocsp.com:80**. Eftersom dessa URL: er används för certifikat validering med andra Microsoft-produkter kan dessa URL: er vara avblockerade.

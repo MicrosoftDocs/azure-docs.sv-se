@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
-ms.openlocfilehash: a8a4f84db140ca442371cb71886bebf9214d3e43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 444185dc41532bfa55c271e2f0027eb8b71de42f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026546"
+ms.locfileid: "105959929"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Avancerade funktioner i Azure Metrics Explorer
 
@@ -79,11 +79,28 @@ Om du vill skapa ett annat diagram som använder ett annat mått väljer du **L�
 
 Om du vill ändra ordning på eller ta bort flera diagram väljer du knappen med tre punkter (**...**) för att öppna Diagram menyn. Välj sedan **Flytta upp**, **Flytta ned** eller **ta bort**.
 
-## <a name="aggregation"></a>Aggregering
+## <a name="time-range-controls"></a>Tids intervalls kontroller
+
+Förutom att ändra tidsintervallet med hjälp av [panelen tids väljare](metrics-getting-started.md#select-a-time-range)kan du också panorera och zooma med kontrollerna i diagram området.
+### <a name="pan"></a>Alleuropeiska
+
+För att panorera, klicka på vänster och höger pilar i kanten på diagrammet.  Detta flyttar det valda tidsintervallet bakåt och framåt med en halvtimmes tids period.  Om du t. ex. visar de senaste 24 timmarna kommer du att få tidsintervallet att växla mellan en dag och en halv till 12 timmar sedan om du klickar på vänsterpilen.
+
+De flesta mått har stöd för 93 dagars kvarhållning men tillåter bara att du visar 30 dagar i taget.  Med hjälp av Pan-kontrollerna kan du titta på de senaste 30 dagarna och sedan enkelt gå tillbaka 15 dagar i taget för att se resten av kvarhållningsperioden.
+
+![Animerad GIF som visar vänster och höger Pan-kontroller.](./media/metrics-charts/metrics-pan-controls.gif)
+
+### <a name="zoom"></a>Zoom
+
+Du kan klicka och dra i diagrammet för att zooma in i en del av diagrammet.  När du zoomar in uppdateras diagrammets tidsintervall så att ditt val markeras och en mindre tids kornig het anges till "automatisk".  Det nya tidsintervallet kommer att gälla för alla diagram i mått.
+
+![Animerad GIF som visar funktionen för zoomning av mått.](./media/metrics-charts/metrics-zoom-control.gif)
+
+## <a name="aggregation&quot;></a>Aggregering
 
 När du lägger till ett mått i ett diagram tillämpar Metric Explorer automatiskt en standard agg regering. Standardvärdet är bra i grundläggande scenarier. Men du kan använda en annan agg regering för att få mer insikter om måttet. 
 
-Innan du använder olika agg regeringar i ett diagram bör du förstå hur mått Utforskaren hanterar dem. Mått är en serie mätningar (eller "mått värden") som har hämtats under en viss tids period. När du ritar ett diagram sammanställs värdena för de valda måtten separat under *tids kornig het*. 
+Innan du använder olika agg regeringar i ett diagram bör du förstå hur mått Utforskaren hanterar dem. Mått är en serie mätningar (eller &quot;mått värden") som har hämtats under en viss tids period. När du ritar ett diagram sammanställs värdena för de valda måtten separat under *tids kornig het*. 
 
 Du väljer storlek på tids kornig het genom att använda [panelen för tids väljare](./metrics-getting-started.md#select-a-time-range)för mått Utforskaren. Om du inte uttryckligen väljer tids kornig het används det valda tidsintervallet som standard. När tids kornigheten har fastställts sammanställs Mät värdena som samlades in under varje tids kornig het i diagrammet, en data punkt per tids kornig het.
 

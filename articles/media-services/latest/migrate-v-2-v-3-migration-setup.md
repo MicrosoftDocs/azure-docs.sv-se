@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 648003c042d4c8118af566a6c985d2fd6e26b04e
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 62723f5c833ca89618a6d9e0781539a13efba4f3
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105563046"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959678"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>Steg 3 – Konfigurera för att migrera till v3-REST API eller klient-SDK
 
@@ -45,7 +45,7 @@ Kunder som tidigare använde 2015-10-01-versionen av hanterings-API: et för att
 
 Följ anvisningarna för snabb start för att konfigurera [din miljö](how-to-set-azure-subscription.md?tabs=portal) med hjälp av Azure Portal. Välj API-åtkomst och autentisering av tjänstens huvud namn för att generera ett nytt Azure AD-program-ID och hemligheter för användning med det här test kontot.
 
-[Skapa ett Media Services-konto](create-account-howto.md?tabs=portal).
+[Skapa ett Media Services-konto](account-create-how-to.md?tabs=portal).
 [Få autentiseringsuppgifter för åtkomst till Media Services API](access-api-howto.md?tabs=portal).
 
 ## <a name="download-client-sdk-of-your-choice-and-set-up-your-environment"></a>Ladda ned valfri klient-SDK och konfigurera din miljö

@@ -1,5 +1,5 @@
 ---
-title: Vägledning om prestanda och skalbarhet för kopieringsaktivitet
+title: Guide till prestanda och skalbarhet för kopieringsaktiviteter
 description: Lär dig mer om viktiga faktorer som påverkar prestanda för data förflyttning i Azure Data Factory när du använder kopierings aktiviteten.
 services: data-factory
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/15/2020
-ms.openlocfilehash: cba248d3f254c9bb97c66ff7a3d39275b4b912c4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 75f9080b43333168802a72e60751eec2a765c6d4
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102616085"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580819"
 ---
-# <a name="copy-activity-performance-and-scalability-guide"></a>Vägledning om prestanda och skalbarhet för kopieringsaktivitet
+# <a name="copy-activity-performance-and-scalability-guide"></a>Guide till prestanda och skalbarhet för kopieringsaktiviteter
 
 > [!div class="op_single_selector" title1="Välj den version av Azure Data Factory som du använder:"]
 > * [Version 1](v1/data-factory-copy-activity-performance.md)
@@ -62,7 +62,10 @@ Den här fullständiga användningen innebär att du kan beräkna det totala dat
 * Måldatalager
 * Nätverks bandbredd mellan käll-och mål data lager
 
-I tabellen nedan beräknas kopieringens varaktighet. Varaktigheten baseras på data storlek och nätverket/data lagrets bandbredds gräns för din miljö.
+I tabellen nedan visas beräkningen av varaktigheten för data förflyttningen. Varaktigheten i varje cell beräknas baserat på en specifik nätverks-och data lagrings bandbredd och en specifik storlek för data nytto lasten.
+
+> [!NOTE]
+> Den varaktighet som anges nedan är avsedd att representera prestanda som kan uppnås i en lösning från slut punkt till slut punkt som implementeras med hjälp av ADF, genom att använda en eller flera metoder för prestanda optimering som beskrivs i [Kopiera prestanda optimerings funktioner](#copy-performance-optimization-features), inklusive att använda avstängning för att partitionera och ta bort flera samtidiga kopierings aktiviteter. Vi rekommenderar att du följer stegen i [prestanda justerings stegen](#performance-tuning-steps) för att optimera kopierings prestandan för din aktuella data uppsättning och system konfiguration. Du bör använda de siffror som erhålls vid prestanda justerings test för planering av produktions distribution, kapacitets planering och fakturerings projektion.
 
 &nbsp;
 

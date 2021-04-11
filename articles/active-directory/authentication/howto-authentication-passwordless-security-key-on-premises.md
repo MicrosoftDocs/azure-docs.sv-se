@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db1b559bb4f6a1f8866116c287df5b814500210b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef56db4ef67515d14f8462db2975e68a1a86f238
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101647480"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959865"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Aktivera lösen ords lös säkerhets nyckel inloggning till lokala resurser med Azure Active Directory 
 
@@ -193,6 +193,8 @@ Om du installerar en hybrid Azure AD-ansluten dator efter domän anslutning och 
 ### <a name="im-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-fido-and-get-a-credential-prompt"></a>Jag kan inte hämta SSO till min NTLM-nätverks resurs efter att ha loggat in med FIDO och få en varning om autentiseringsuppgifter
 
 Kontrol lera att det finns tillräckligt många domänkontrollanter som ska svara i tid för att betjäna din resurs förfrågan. Om du vill kontrol lera om du kan se en domänkontrollant som kör funktionen granskar du utdata från `nltest /dsgetdc:contoso /keylist /kdc` .
+
+OBS! den här/Keylist-växeln i Nltest-kommandot kan hittas från klient Windows 10 v2004 och senare
 
 ## <a name="next-steps"></a>Nästa steg
 

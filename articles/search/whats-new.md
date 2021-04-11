@@ -6,14 +6,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/12/2021
+ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: b9ae576a2d0ab8aee00be5b755c348806b412bef
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 8db1a671904233098610a9ba55ce260e6214c38c
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108497"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028510"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Vad är nytt i Azure Kognitiv sökning
 
@@ -26,9 +26,8 @@ Läs om vad som är nytt i tjänsten. Skapa ett bok märke för den här sidan f
 | [Semantisk sökning](semantic-search-overview.md) | En samling frågor relaterade funktioner som avsevärt förbättrar relevansen hos Sök Resultat via minimala justeringar av en fråge förfrågan. </br></br>[Semantisk rangordning](semantic-ranking.md) beräknar relevanta resultat med hjälp av den semantiska innebörden bakom ord och innehåll. </br></br>[Semantiska bild texter](semantic-how-to-query-request.md) returnerar relevanta passager från det dokument som bäst sammanfattar dokumentet, med högdagrar som visar de viktigaste termerna eller fraserna. </br></br>[Semantiska svar](semantic-answers.md) returnerar nyckel passager, extraheras från ett Sök dokument, som formuleras som ett direkt svar på en fråga som ser ut som en fråga. | Offentlig för hands version ([efter begäran](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Använd [Sök dokument (rest)](/rest/api/searchservice/preview-api/search-documents) API-version = 2020-06 -30 – för hands version eller [sök Utforskaren](search-explorer.md) i Azure Portal. </br></br>Begränsningar för region och nivå gäller. |
 | [Stavnings kontrol lera sökord](speller-how-to-add.md) | Innan du kan komma åt sökmotorn kan du välja att kontrol lera stavnings fel. `speller`Alternativet fungerar med valfri typ av fråga (enkel, fullständig eller semantisk). |  Offentlig för hands version, endast REST, API-version = 2020-06 -30 – för hands version|
 | [SharePoint Online-indexerare](search-howto-index-sharepoint-online.md) | Den här indexeraren ansluter dig till en SharePoint Online-webbplats så att du kan indexera innehåll från ett dokument bibliotek. | Offentlig för hands version, endast REST, API-version = 2020-06 -30 – för hands version |
-| [Normalisering](search-normalizers.md) | Normalisering ger enkel bearbetning av text som t. ex. Skift läge, tilläggsprogram, asciifolding och så vidare utan att gå igenom hela analys kedjan.| Offentlig för hands version, endast REST, API-version = 2020-06 -30 – för hands version |
-[**Anpassad Sök kompetens för entitet**](cognitive-search-skill-custom-entity-lookup.md ) |  En kognitiv färdighet som söker efter text från en anpassad, användardefinierad lista med ord och fraser. Med den här listan etiketteras alla dokument med matchande entiteter. Kompetensen har även stöd för en viss fuzzy-matchning som kan användas för att söka efter matchningar som liknar varandra, men som inte exakt stämmer. | Allmänt tillgänglig. |
-|
+| [Normalisering](search-normalizers.md) | Normalisering ger enkel för bearbetning av text: konsekvent Skift läge, tilläggs borttagning och ASCII-vikning, utan att anropa den fullständiga text analys kedjan.| Offentlig för hands version, endast REST, API-version = 2020-06 -30 – för hands version |
+| [Anpassad Sök kompetens för entitet](cognitive-search-skill-custom-entity-lookup.md ) |  En kognitiv färdighet som söker efter text från en anpassad, användardefinierad lista med ord och fraser. Med den här listan etiketteras alla dokument med matchande entiteter. Kompetensen har även stöd för en viss fuzzy-matchning som kan användas för att söka efter matchningar som liknar varandra, men som inte exakt stämmer. | Allmänt tillgänglig. |
 
 ## <a name="february-2021"></a>Februari 2021
 

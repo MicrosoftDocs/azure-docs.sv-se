@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 04/07/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d13629b4cb05995b9652e862f769a0ffcae30a8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 268931715500631ac2d10feacebff1d5c65931bf
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256906"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028799"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Kända problem och lösningar med SCIM 2,0 protokoll kompatibilitet för Azure AD-tjänsten för användar etablering
 
@@ -51,7 +51,7 @@ Använd flaggorna nedan i klient-URL: en för ditt program för att ändra stand
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="SCIM flaggor till ett senare beteende.":::
 
 * Använd följande URL för att uppdatera KORRIGERINGs beteendet och se till att SCIM kompatibilitet (t. ex. aktiv som boolesk och korrekt borttagning av grupp medlemskap). Det här beteendet är för närvarande endast tillgängligt när du använder-flaggan, men kommer att bli standard beteendet under de kommande månaderna. OBS! den här förhands gransknings flaggan fungerar för närvarande inte med etablering på begäran. 
-  * **URL (scim-kompatibel):** AzureAdScimPatch062020
+  * **URL (scim-kompatibel):** aadOptscim062020
   * **SCIM RFC-referenser:** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2
   * **Ovänta**

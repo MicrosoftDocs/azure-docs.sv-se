@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
-ms.openlocfilehash: e61b6b9a09d759571029db4f01dd8f9d707ca518
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab5c71b787876c31aaa70fbbfb04fc86721dd168
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102244641"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958209"
 ---
 För att börja arbeta med Azure Digitals dubbla i ett öppet [Azure Cloud Shells](https://shell.azure.com) fönster, är det första att göra-loggen att logga in och ange gränssnitts kontexten till din prenumeration för den här sessionen. Kör de här kommandona i Cloud Shell:
 
@@ -27,9 +27,11 @@ Om det här är första gången du har använt den här prenumerationen med Azur
 az provider register --namespace 'Microsoft.DigitalTwins'
 ```
 
-Härnäst ska du lägga till [**Microsoft Azure IoT-tillägget för Azure CLI**](/cli/azure/ext/azure-iot/iot) till din Cloud Shell, för att aktivera kommandon för att interagera med Azure Digitals och andra IoT-tjänster. 
+Härnäst ska du lägga till [**Microsoft Azure IoT-tillägget för Azure CLI**](/cli/azure/ext/azure-iot/iot) till din Cloud Shell, för att aktivera kommandon för att interagera med Azure Digitals och andra IoT-tjänster. Kör det här kommandot för att kontrol lera att du har den senaste versionen av tillägget:
 
-[!INCLUDE [digital-twins-cloud-shell-extensions.md](digital-twins-cloud-shell-extensions.md)]
+```azurecli-interactive
+az extension add --upgrade -n azure-iot
+```
 
 Nu är du redo att arbeta med Azure Digitals dubbla i Cloud Shell.
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: 590ad577f3648ea9214ec4dcb6b6cab59dd5a3f1
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 8f968572a357bb3c98d9c3133a7ec0a0a94dbf93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105105426"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958388"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>Snabb start: ansikts klient bibliotek för Java Script
 
@@ -24,7 +24,7 @@ Använd ansikts klient bibliotek för Java Script för att:
 
 * [Identifiera ansikten i en bild](#detect-faces-in-an-image)
 * [Hitta liknande ansikten](#find-similar-faces)
-* [Skapa en person grupp](#create-a-person-group)
+* [Skapa en PersonGroup](#create-a-persongroup)
 * [Identifiera ett ansikte](#identify-a-face)
 
 [Referens dokumentation](/javascript/api/@azure/cognitiveservices-face/)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-face)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-face)  |  [Exempel](/samples/browse/?products=azure&term=face&languages=javascript)
@@ -106,7 +106,7 @@ Kodfragmenten nedan visar hur du gör följande uppgifter med ansikts klient bib
 * [Autentisera klienten](#authenticate-the-client)
 * [Identifiera ansikten i en bild](#detect-faces-in-an-image)
 * [Hitta liknande ansikten](#find-similar-faces)
-* [Skapa en person grupp](#create-a-person-group)
+* [Skapa en PersonGroup](#create-a-persongroup)
 * [Identifiera ett ansikte](#identify-a-face)
 
 > [!TIP]
@@ -163,27 +163,27 @@ Följande metod identifierar ansikten i en uppsättning mål bilder och i en end
 
 [Identifiera](/javascript/api/@azure/cognitiveservices-face/face#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____) -åtgärden tar en bild av en person (eller flera personer) och söker efter identiteten för varje ansikte i bilden (ansikts igenkännings sökning). Den jämför alla identifierade ansikte till en [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup), en databas med olika [person](/javascript/api/@azure/cognitiveservices-face/person) objekt vars ansikts funktioner är kända. Du måste först skapa och träna en [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)för att kunna identifiera åtgärden.
 
-### <a name="add-faces-to-person-group"></a>Lägg till ansikten i person gruppen
+### <a name="add-faces-to-persongroup"></a>Lägg till ansikten i PersonGroup
 
 Skapa följande funktion för att lägga till ansikten i [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup).
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="add_faces":::
 
-### <a name="wait-for-training-of-person-group"></a>Vänta på utbildning av person grupp
+### <a name="wait-for-training-of-persongroup"></a>Vänta på utbildning av PersonGroup
 
-Skapa följande hjälp funktion för att vänta på att person gruppen Slutför utbildningen.
+Skapa följande hjälp funktion för att vänta tills **PersonGroup** har slutfört utbildningen.
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="wait_for_training":::
 
-### <a name="create-a-person-group"></a>Skapa en person grupp
+### <a name="create-a-persongroup"></a>Skapa en PersonGroup
 
 Följande kod:
-- Skapar en [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)
-- Lägger till ansikten i person gruppen genom att anropa `AddFacesToPersonGroup` , som du definierade tidigare.
-- Tågen person gruppen.
-- Identifierar ansikten i person gruppen.
+- Skapar en [PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup)
+- Lägger till ansikten i **PersonGroup** genom `AddFacesToPersonGroup` att anropa, som du definierade tidigare.
+- Tågen **PersonGroup**.
+- Identifierar ansikten i **PersonGroup**.
 
-Den här **person** gruppen och dess associerade **person** objekt är nu redo att användas i åtgärderna verifiera, identifiera eller gruppera.
+Den här **PersonGroup** och dess associerade **person** objekt är nu redo att användas i åtgärderna verifiera, identifiera eller gruppera.
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="identify":::
 

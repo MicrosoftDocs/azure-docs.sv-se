@@ -295,6 +295,8 @@
           href: enable-host-encryption.md
     - name: Övervakning och loggning
       items:
+        - name: Visa klustermått
+          href: view-metrics.md
         - name: Azure Monitor för containrar
           href: ../azure-monitor/containers/container-insights-overview.md
           maintainContext: true
@@ -349,6 +351,8 @@
       items:
         - name: Om Service Meshes
           href: servicemesh-about.md
+        - name: Öppna service nät AKS-tillägg (för hands version)
+          href: servicemesh-osm-about.md
         - name: Använda Istio
           items:
             - name: Om Istio

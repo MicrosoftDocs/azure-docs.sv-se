@@ -5,13 +5,13 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 03/11/2021
-ms.openlocfilehash: efc1438fdc539af278ebff1f292c5fa0a91b7b91
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: 24298734a46b8339a2a8818692641b4c10812294
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103016108"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107104889"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Resurser som stöds för mått varningar i Azure Monitor
 
@@ -29,7 +29,7 @@ Här är en fullständig lista över Azure Monitor mått källor som stöds av d
 
 |Resurstyp  |Dimensioner som stöds |Aviseringar med flera resurser| Tillgängliga mått|
 |---------|---------|-----|----------|
-|Microsoft. Aadiam/azureADMetrics | Ja | Inga | |
+|Microsoft. Aadiam/azureADMetrics | Ja | Inga | [Azure AD](../essentials/metrics-supported.md#microsoftaadiamazureadmetrics) |
 |Microsoft.ApiManagement/service | Ja | Inga | [API Management](../essentials/metrics-supported.md#microsoftapimanagementservice) |
 |Microsoft. AppConfiguration/configurationStores |Ja | Inga | [App Configuration](../essentials/metrics-supported.md#microsoftappconfigurationconfigurationstores) |
 |Microsoft. AppPlatform/våren | Ja | Inga | [Azure Spring Cloud](../essentials/metrics-supported.md#microsoftappplatformspring) |
@@ -38,6 +38,7 @@ Här är en fullständig lista över Azure Monitor mått källor som stöds av d
 |Microsoft.BatCH/batchAccounts | Ja | Inga | [Batch-konton](../essentials/metrics-supported.md#microsoftbatchbatchaccounts) |
 |Microsoft. BotService/botServices | Ja | Inga | [Robot tjänster](../essentials/metrics-supported.md#microsoftbotservicebotservices) |
 |Microsoft. cache/Redis | Ja | Ja | [Azure Cache for Redis](../essentials/metrics-supported.md#microsoftcacheredis) |
+|Utforskaren. CDN/profiler | Ja | Inga | [CDN-profiler](../essentials/metrics-supported.md#microsoftcdnprofiles) |
 |Microsoft. ClassicCompute/domän namn/platser/roller | Inga | Inga | [Klassisk Cloud Services](../essentials/metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
 |Microsoft. ClassicCompute/virtualMachines | Inga | Inga | [Klassisk Virtual Machines](../essentials/metrics-supported.md#microsoftclassiccomputevirtualmachines) |
 |Microsoft. ClassicStorage/storageAccounts | Ja | Inga | [Lagrings konton (klassiska)](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccounts) |
@@ -49,8 +50,8 @@ Här är en fullständig lista över Azure Monitor mått källor som stöds av d
 |Microsoft. Compute/cloudServices | Ja | Inga |  [Molntjänster](../essentials/metrics-supported.md#microsoftcomputecloudservices) |
 |Microsoft. Compute/cloudServices/roles | Ja | Inga |  [Moln tjänst roller](../essentials/metrics-supported.md#microsoftcomputecloudservicesroles) |
 |Microsoft.Compute/virtualMachines | Ja | Ja<sup>1</sup> | [Virtual Machines](../essentials/metrics-supported.md#microsoftcomputevirtualmachines) |
-|Microsoft.Compute/virtualMachineScaleSets | Ja | Inga |[Skalnings uppsättningar för virtuella datorer](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
-|Microsoft. ContainerInstance/containerGroups | Ja| Inga | [Containergrupper](../essentials/metrics-supported.md#microsoftcontainerinstancecontainergroups) |
+|Microsoft.Compute/virtualMachineScaleSets | Ja | Inga |[Virtual Machine Scale Sets](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
+|Microsoft. ContainerInstance/containerGroups | Ja| Inga | [Behållar grupper](../essentials/metrics-supported.md#microsoftcontainerinstancecontainergroups) |
 |Microsoft. ContainerRegistry/register | Inga | Inga | [Behållar register](../essentials/metrics-supported.md#microsoftcontainerregistryregistries) |
 |Microsoft. container service/managedClusters | Ja | Inga | [Hanterade kluster](../essentials/metrics-supported.md#microsoftcontainerservicemanagedclusters) |
 |Microsoft. DataBoxEdge/dataBoxEdgeDevices | Ja | Ja | [Data Box](../essentials/metrics-supported.md#microsoftdataboxedgedataboxedgedevices) |
@@ -86,7 +87,7 @@ Här är en fullständig lista över Azure Monitor mått källor som stöds av d
 |Microsoft. Media/Media Services/strömnings slut punkter | Ja | Inga | [Media Services slut punkter för direkt uppspelning](../essentials/metrics-supported.md#microsoftmediamediaservicesstreamingendpoints) |
 |Microsoft. NetApp/netAppAccounts/capacityPools | Ja | Ja | [Pool för Azure NetApp-kapacitet](../essentials/metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
 |Microsoft. NetApp/netAppAccounts/capacityPools/Volumes | Ja | Ja | [Azure NetApp-volymer](../essentials/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
-|Microsoft. Network/applicationGateways | Ja | Inga | [Programgatewayer](../essentials/metrics-supported.md#microsoftnetworkapplicationgateways) |
+|Microsoft. Network/applicationGateways | Ja | Inga | [Programgateways](../essentials/metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Microsoft. Network/azurefirewalls | Ja | Inga | [Brandväggar](../essentials/metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft. Network/dnsZones | Inga | Inga | [DNS-zoner](../essentials/metrics-supported.md#microsoftnetworkdnszones) |
 |Microsoft. Network/expressRouteCircuits | Ja | Inga |[ExpressRoute-kretsar](../essentials/metrics-supported.md#microsoftnetworkexpressroutecircuits) |

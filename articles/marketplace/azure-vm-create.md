@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 03/10/2021
-ms.openlocfilehash: ffc09daa15e742ca2b5b8a2fa9323e33fe317c60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 827e4d883fd9e80ae84845d620cc4ca00816f56e
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200396"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551330"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>Så här skapar du ett erbjudande för virtuella datorer på Azure Marketplace
 
@@ -58,20 +58,7 @@ Om du vill aktivera en testen het markerar du kryss rutan **Aktivera en testenhe
 
 ## <a name="configure-customer-leads-management"></a>Konfigurera hantering av kund ledare
 
-När du publicerar ett erbjudande till den kommersiella Marketplace med partner Center ansluter du det till ditt CRM-system (Customer Relations hip Management). På så sätt kan du ta emot kund kontakt information så snart någon uttrycker intresse för eller använder produkten. Att ansluta till en CRM krävs om du vill aktivera en testen het (se föregående avsnitt). Annars är det valfritt att ansluta till en CRM.
-
-1. Under **kund ledare** väljer du länken **Anslut** .
-1. I dialog rutan **anslutnings information** väljer du ett mål för lead.
-1. Fyll i fälten som visas. Detaljerade anvisningar finns i följande artiklar:
-
-   - [Konfigurera ditt erbjudande för att skicka leads till Azure-tabellen](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md#configure-your-offer-to-send-leads-to-the-azure-table)
-   - [Konfigurera ditt erbjudande för att skicka leads till Dynamics 365 kund engagemang](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md#configure-your-offer-to-send-leads-to-dynamics-365-customer-engagement) (tidigare Dynamics CRM Online)
-   - [Konfigurera ditt erbjudande för att skicka leads till HTTPS-slutpunkt](./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md#configure-your-offer-to-send-leads-to-the-https-endpoint)
-   - [Konfigurera ditt erbjudande för att skicka leads till Marketo](./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md#configure-your-offer-to-send-leads-to-marketo)
-   - [Konfigurera ditt erbjudande för att skicka leads till Salesforce](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
-
-1. Om du vill verifiera konfigurationen som du har angett väljer du länken **Verifiera** .
-1. Välj **Anslut**.
+[!INCLUDE [Customer leads](includes/customer-leads.md)] 
 
 Välj **Spara utkast** innan du fortsätter till nästa flik på vänster-navigerings-menyn och **Egenskaper**.
 

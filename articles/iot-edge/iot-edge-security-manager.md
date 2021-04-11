@@ -9,12 +9,12 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 468f1b91d6c6157cd2af6de9599bad7f43c1ad8f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ed73c114c015ce38fefa02d2b71e27e8f85dca39
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492565"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028680"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge Security Manager
 
@@ -119,12 +119,17 @@ Säker Silicon är nödvändig för att fästa förtroende i IoT Edge enhetens m
 
 ## <a name="iot-edge-security-manager-integration-and-maintenance"></a>Integrering och underhåll av IoT Edge Security Manager
 
-IoT Edge Security Manager syftar till att identifiera och isolera de komponenter som skyddar Azure IoT Edge plattformens säkerhet och integritet för anpassad härdning. Tredje part, som enhets tillverkare, bör använda anpassade säkerhetsfunktioner som är tillgängliga med enhetens maskin vara.  I avsnittet Nästa steg finns länkar som visar hur du kan förstärka Azure IoT Security Manager med Trusted Platform Module (TPM) på Linux-och Windows-plattformar. Dessa exempel använder program vara eller virtuella TPM: er, men används direkt för att använda diskreta TPM-enheter.  
+IoT Edge Security Manager syftar till att identifiera och isolera de komponenter som skyddar Azure IoT Edge plattformens säkerhet och integritet för anpassad härdning. Tredje part, som enhets tillverkare, bör använda anpassade säkerhetsfunktioner som är tillgängliga med enhetens maskin vara.  
+
+Lär dig hur du kan skydda Azure IoT Security Manager med Trusted Platform Module (TPM) med program vara eller virtuella TPM: er:  
+
+Skapa och etablera en [IoT Edge enhet med en virtuell TPM på en virtuell Linux-dator](how-to-auto-provision-simulated-device-linux.md).
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+Skapa och etablera en [IoT Edge enhet med en simulerad TPM i Windows](how-to-auto-provision-simulated-device-windows.md).
+:::moniker-end
 
 ## <a name="next-steps"></a>Nästa steg
 
 Läs bloggen om [att skydda den intelligenta gränsen](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
-
-Skapa och etablera en [IoT Edge enhet med en virtuell TPM på en virtuell Linux-dator](how-to-auto-provision-simulated-device-linux.md).
-
-Skapa och etablera en [IoT Edge enhet med en simulerad TPM i Windows](how-to-auto-provision-simulated-device-windows.md).

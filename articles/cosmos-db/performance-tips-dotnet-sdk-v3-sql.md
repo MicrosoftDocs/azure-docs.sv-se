@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: 06fb087744ff4ecd96bee7a26e4a796e87866322
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8eafd36c82b09575514afade6b848a7f9186895f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433683"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960052"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Prestandatips för Azure Cosmos DB och .NET
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -69,7 +69,7 @@ Om du testar med höga data flödes nivåer eller priser som är större än 50 
 
 **Anslutnings princip: Använd direkt anslutnings läge**
 
-.NET v3 SDK standard anslutnings läge är direkt. Du konfigurerar anslutnings läget när du skapar `CosmosClient` instansen i `CosmosClientOptions` .  Mer information om olika anslutnings alternativ finns i artikeln [anslutnings lägen](sql-sdk-connection-modes.md) .
+.NET v3 SDK standard anslutnings läge är direkt med TCP-protokollet. Du konfigurerar anslutnings läget när du skapar `CosmosClient` instansen i `CosmosClientOptions` .  Mer information om olika anslutnings alternativ finns i artikeln [anslutnings lägen](sql-sdk-connection-modes.md) .
 
 ```csharp
 string connectionString = "<your-account-connection-string>";

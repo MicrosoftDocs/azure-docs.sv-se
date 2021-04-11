@@ -2,28 +2,28 @@
 title: ta med fil
 description: ta med fil
 services: azure-communication-services
-author: mikben
-manager: mikben
+author: ddematheu2
+manager: chpalm
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
-ms.author: mikben
-ms.openlocfilehash: f1d49aa0583f34327afff229b46d7a366202aded
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.author: dademath
+ms.openlocfilehash: 287520f2964fba7c3c3804853e9356a8c77b2d06
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105152742"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106498772"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-android-ios.md)]
 
 Azure Communication Services- **gruppen som anropar ett hjälte exempel för iOS** visar hur kommunikations tjänsterna som anropar iOS SDK kan användas för att bygga en grupp samtals upplevelse som innehåller röst och video. I den här snabb starten får du lära dig hur du konfigurerar och kör exemplet. En översikt över exemplet finns för kontext.
 
 ## <a name="download-code"></a>Ladda ned kod
 
-Hitta den färdiga koden för den här snabb starten på [GitHub](https://github.com/Azure-Samples/communication-services-ios-calling-hero).
+Hitta projektet för det här exemplet på [GitHub](https://github.com/Azure-Samples/communication-services-ios-calling-hero). En version av exemplet med [Teams interop](../../concepts/teams-interop.md) kan hittas på en separat [gren](https://github.com/Azure-Samples/communication-services-ios-calling-hero/tree/feature/teams_interop).
 
 ## <a name="overview"></a>Översikt
 
@@ -33,7 +33,7 @@ Exemplet ser ut så här:
 
 :::image type="content" source="../media/calling/landing-page-ios.png" alt-text="Skärm bild som visar landnings sidan för exempel programmet.":::
 
-När du trycker på knappen "Starta nytt samtal" skapar iOS-programmet ett nytt anrop och kopplar det. Med programmet kan du ansluta till ett befintligt Azure Communication Services-samtal genom att ange det befintliga anropets ID. Du kan också ansluta till ett team möte genom att tillhandahålla länken koppling som finns i mötets inbjudan.  (Länken koppling har följande format: `https://teams.microsoft.com/l/meetup-join/` ). Mer information om lag-interop finns i [dokumentationen för lags interop konceptuelle](../../concepts/teams-interop.md).
+När du trycker på knappen "Starta nytt samtal" skapar iOS-programmet ett nytt anrop och kopplar det. Med programmet kan du ansluta till ett befintligt Azure Communication Services-samtal genom att ange det befintliga anropets ID.
 
 När du har anslutit till ett samtal uppmanas du att ge programmet behörighet att få åtkomst till din kamera och mikrofon. Du uppmanas också att ange ett visnings namn.
 

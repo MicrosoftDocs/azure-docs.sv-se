@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 9c3fa0d8ac4540495e8580fd208507a2c1aaa7ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7bf4ea4beabf9abcc007c101ca5acf79ec919c4e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180792"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732405"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-using-dms"></a>Självstudie: Migrera SQL Server till Azure SQL Database med DMS
 
@@ -245,6 +245,9 @@ Välj antingen alla databaser eller vissa databaser som du vill migrera till Azu
 1. På skärmen **Välj mål** anger du autentiseringsinställningar för Azure SQL Database. 
 
    ![Välja mål](media/tutorial-sql-server-to-azure-sql/select-target.png)
+   
+   > [!NOTE]
+   > SQL-autentisering är för närvarande den enda typ av autentisering som stöds.
 
 1. Välj **Nästa: mappa till mål databaser** -skärmen, mappa källan och mål databasen för migrering.
 

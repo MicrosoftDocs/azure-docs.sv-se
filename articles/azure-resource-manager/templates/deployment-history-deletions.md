@@ -3,12 +3,12 @@ title: Borttagning av distributionshistorik
 description: Beskriver hur Azure Resource Manager automatiskt tar bort distributioner från distributions historiken. Distributioner tas bort när historiken är nära att överskrida gränsen på 800.
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: fc4f7f33cdd7ccce3158aa95bd002f12c8c44c00
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 83383411ec317e228dabb14273e2b566792c774c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104951971"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732473"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatisk borttagning från distributions historik
 
@@ -104,7 +104,7 @@ az feature unregister --namespace Microsoft.Resources --name DisableDeploymentGr
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-Använd [funktioner – registrera](/rest/api/resources/features/register)för REST API.
+Använd [funktioner – registrera](/rest/api/resources/features/features/register)för REST API.
 
 ```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
@@ -116,7 +116,7 @@ Om du vill se aktuell status för din prenumeration använder du:
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
 ```
 
-Aktivera automatisk borttagning igen genom att använda [funktioner-avregistrera](/rest/api/resources/features/unregister)
+Aktivera automatisk borttagning igen genom att använda [funktioner-avregistrera](/rest/api/resources/features/features/unregister)
 
 ```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/unregister?api-version=2015-12-01
