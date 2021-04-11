@@ -1,5 +1,5 @@
 ---
-title: Azure-diagnostisk övervakning – Azure-attestering
+title: Azure-diagnostisk övervakning av Azure-attestering
 description: Azure-diagnostisk övervakning av Azure-attestering
 services: attestation
 author: msmbaldwin
@@ -7,22 +7,20 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d01e7817906927295591353b710afe2899aacdf1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d2773be4bc67e125c18d5d38c951685e4f4fceaf
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726486"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168356"
 ---
-# <a name="setting-up-diagnostics-with-trusted-platform-module-tpm-endpoint-of-azure-attestation"></a>Konfigurera diagnostik med Trusted Platform Module (TPM) slut punkt för Azure-attestering
+# <a name="set-up-diagnostics-with-a-trusted-platform-module-tpm-endpoint-of-azure-attestation"></a>Konfigurera diagnostik med en Trusted Platform Module-slutpunkt (TPM) för Azure-attestering
 
-[Plattforms loggar](../azure-monitor/essentials/platform-logs-overview.md) i Azure, inklusive Azure aktivitets logg och resurs loggar, ger detaljerad diagnostik och gransknings information för Azure-resurser och Azure-plattformen som de är beroende av. [Plattforms mått](../azure-monitor/essentials/data-platform-metrics.md) samlas in som standard och lagras vanligt vis i Azure Monitor Metrics-databasen. Den här artikeln innehåller information om hur du skapar och konfigurerar diagnostikinställningar för att skicka plattforms mått och plattforms loggar till olika mål. 
+Den här artikeln hjälper dig att skapa och konfigurera diagnostikinställningar för att skicka plattforms mått och plattforms loggar till olika mål. [Plattforms loggar](/azure/azure-monitor/platform/platform-logs-overview) i Azure, inklusive Azure aktivitets logg och resurs loggar, ger detaljerad diagnostik och gransknings information för Azure-resurser och den Azure-plattform som de är beroende av. [Plattforms mått](/azure/azure-monitor/platform/data-platform-metrics) samlas in som standard och lagras i Azure Monitor Metrics-databasen.
 
-TPM-slutpunktsmapparen är aktive rad med diagnostisk inställning och kan användas för att övervaka aktiviteter. Om du vill konfigurera [Azure-övervakning](../azure-monitor/overview.md) för TPM-tjänstens slut punkt med hjälp av PowerShell följer du stegen nedan. 
+Innan du börjar ska du kontrol lera att du har [konfigurerat Azure-attestering med Azure PowerShell](quickstart-powershell.md).
 
-Konfigurera tjänsten Azure attestering. 
-
-[Konfigurera Azure-attestering med Azure PowerShell](./quickstart-powershell.md)
+Slut punkts tjänsten Trusted Platform Module (TPM) är aktive rad i diagnostikinställningar och kan användas för att övervaka aktiviteter. Konfigurera [Azure-övervakning](/azure/azure-monitor/overview) för TPM-tjänstens slut punkt med hjälp av följande kod.
 
 ```powershell
 
@@ -41,4 +39,5 @@ Konfigurera tjänsten Azure attestering.
  Set-AzDiagnosticSetting -ResourceId $ attestationProvider.Id -StorageAccountId $ storageAccount.Id -Enabled $true 
 
 ```
-Aktivitets loggarna finns i avsnittet behållare i lagrings kontot. Detaljerad information finns i [samla in resurs loggar från en Azure-resurs och analysera med Azure Monitor-Azure Monitor](../azure-monitor/essentials/tutorial-resource-logs.md)
+
+Aktivitets loggar finns i avsnittet **behållare** i lagrings kontot. Mer information finns i [samla in och analysera resurs loggar från en Azure-resurs](/azure/azure-monitor/learn/tutorial-resource-logs).

@@ -12,10 +12,10 @@ ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 9483b0a8829c042a7cf8d516c6007cbbf14a97ac
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105639750"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Självstudie: Konfigurera Microsoft Dynamics 365 bedrägeri skydd med Azure Active Directory B2C
@@ -56,7 +56,7 @@ I följande arkitektur diagram visas implementeringen.
 
 ![Bilden visar arkitektur diagrammet Microsoft dynamics365 bedrägeri skydd](./media/partner-dynamics365-fraud-protection/microsoft-dynamics-365-fraud-protection-diagram.png)
 
-|Steg | Description |
+|Steg | Beskrivning |
 |:-----| :-----------|
 | 1. | Användaren kommer till inloggnings sidan. Användare väljer registrering för att skapa ett nytt konto och ange information på sidan. Azure AD B2C samlar in användarattribut.
 | 2. | Azure AD B2C anropar API: t för mellanlager och passerar användar-attributen.

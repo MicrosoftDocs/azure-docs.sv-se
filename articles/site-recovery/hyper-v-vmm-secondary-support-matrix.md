@@ -1,18 +1,15 @@
 ---
 title: Stöd för matris – återställning av Hyper-V till en sekundär VMM-plats med Azure Site Recovery
 description: Sammanfattar stöd för replikering av virtuella Hyper-V-datorer i VMM-moln till en sekundär plats med Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
-ms.author: raynew
-ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82f34d660c4012e192a157dc836574bc1ab25233
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86131167"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579947"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Supportmatris för haveriberedskap av virtuella Hyper-V-datorer till en sekundär webbplats
 
@@ -53,14 +50,14 @@ Endast Linux-datorer med följande lagring kan replikeras:
 
 **Konfiguration** | **Stöds**  
 --- | --- 
-Värd-NIC-teamning | Ja 
-Värd-VLAN | Ja 
-Värd-IPv4 | Ja 
-Värd-IPv6 | Inga 
-Gäst-VM – NIC Teaming | Inga
-Gäst-VM – IPv4 | Ja
-Gäst-VM-IPv6 | Inga
-Gäst-VM – Windows/Linux-statisk IP-adress | Ja
+Värd-NIC-teamning | Yes 
+Värd-VLAN | Yes 
+Värd-IPv4 | Yes 
+Värd-IPv6 | No 
+Gäst-VM – NIC Teaming | No
+Gäst-VM – IPv4 | Yes
+Gäst-VM-IPv6 | No
+Gäst-VM – Windows/Linux-statisk IP-adress | Yes
 Gäst-VM-Multi-NIC | Ja
 
 
@@ -71,9 +68,9 @@ Gäst-VM-Multi-NIC | Ja
 **Lagring (värd)** | **Stöds**
 --- | --- 
 NFS | Ej tillämpligt
-SMB 3.0 |  Ja
-SAN (ISCSI) | Ja
-Multipath (MPIO) | Ja
+SMB 3.0 |  Yes
+SAN (ISCSI) | Yes
+Multipath (MPIO) | Yes
 
 ### <a name="guest-or-physical-server-storage"></a>Gäst eller fysisk server lagring
 
@@ -81,26 +78,26 @@ Multipath (MPIO) | Ja
 --- | --- | 
 VMDK |  Ej tillämpligt
 VHD/VHDX | Ja (upp till 16 diskar)
-Generation 2 VM | Ja
-Delad kluster disk | Inga
-Krypterad disk | Inga
+Generation 2 VM | Yes
+Delad kluster disk | No
+Krypterad disk | No
 UEFI| Ej tillämpligt
-NFS | Inga
-SMB 3.0 | Inga
+NFS | No
+SMB 3.0 | No
 RDM | Ej tillämpligt
-Disk > 1 TB | Ja
-Volym med Striped disk > 1 TB<br/><br/> LVM | Ja
-Lagringsutrymmen | Ja
-Snabb Lägg till/ta bort disk | Inga
-Uteslut disk | Ja
-Multipath (MPIO) | Ja
+Disk > 1 TB | Yes
+Volym med Striped disk > 1 TB<br/><br/> LVM | Yes
+Lagringsutrymmen | Yes
+Snabb Lägg till/ta bort disk | No
+Uteslut disk | Yes
+Multipath (MPIO) | Yes
 
 ## <a name="vaults"></a>Valv
 
 **Åtgärd** | **Stöds**
 --- | --- 
-Flytta valv över resurs grupper (inom eller mellan prenumerationer) |  Inga
-Flytta lagring, nätverk, virtuella Azure-datorer över resurs grupper (inom eller mellan prenumerationer) | Inga
+Flytta valv över resurs grupper (inom eller mellan prenumerationer) |  No
+Flytta lagring, nätverk, virtuella Azure-datorer över resurs grupper (inom eller mellan prenumerationer) | No
 
 ## <a name="azure-site-recovery-provider"></a>Azure Site Recovery Provider
 

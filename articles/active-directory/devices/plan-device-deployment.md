@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc631e4329c1df2cdcbfe57c2b43ccccf14afa85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: faa18b619c785ad23e1da037621597684b1c5c63
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936455"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551789"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Planera distribution av Azure Active Directory enhet
 
@@ -54,7 +54,7 @@ Viktiga fördelar med att ge dina enheter en Azure AD-identitet:
 
 Video:  [villkorlig åtkomst med enhets kontroller](https://youtu.be/NcONUf-jeS4)
 
-Vanliga frågor och svar om [Azure AD-enhets hantering, vanliga](faq.md)  frågor och [svar om inställningar och centrala data](enterprise-state-roaming-faqs.md) 
+Vanliga frågor och svar om [Azure AD-enhets hantering, vanliga](faq.yml)  frågor och [svar om inställningar och centrala data](enterprise-state-roaming-faqs.md) 
 
 ## <a name="plan-the-deployment-project"></a>Planera distributions projektet
 
@@ -239,9 +239,9 @@ Granska stödda plattformar och plattformar som inte stöds för integrerade enh
 
 | Verktyg för enhetshantering| Azure AD-registrerad| Azure Active Directory-anslutning| Hybrid Azure Active Directory-anslutning|
 | - | - | - | - |
-| [Hantering av mobila enheter (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Exempel: Microsoft Intune| ![Markering för dessa värden.](./media/plan-device-deployment/check.png)| ![Markering för dessa värden.](./media/plan-device-deployment/check.png)| ![Markering för dessa värden.](./media/plan-device-deployment/check.png)|  |
-| [Samhantering med Microsoft Intune och Microsoft Endpoint Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 och senare)| | ![Markering för dessa värden.](./media/plan-device-deployment/check.png)| ![Markering för dessa värden.](./media/plan-device-deployment/check.png)|  |
-| [Grupprincip](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Endast Windows)| | | ![Markering för dessa värden.](./media/plan-device-deployment/check.png)|  |
+| [Hantering av mobila enheter (MDM) ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>Exempel: Microsoft Intune| ![Markering för dessa värden.](./media/plan-device-deployment/check.png)| ![Markering för dessa värden.](./media/plan-device-deployment/check.png)| ![Markering för dessa värden.](./media/plan-device-deployment/check.png)| 
+| [Samhantering med Microsoft Intune och Microsoft Endpoint Configuration Manager](/mem/configmgr/comanage/overview) <br>(Windows 10 och senare)| | ![Markering för dessa värden.](./media/plan-device-deployment/check.png)| ![Markering för dessa värden.](./media/plan-device-deployment/check.png)| 
+| [Grupprincip](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Endast Windows)| | | ![Markering för dessa värden.](./media/plan-device-deployment/check.png)| 
 
 
 

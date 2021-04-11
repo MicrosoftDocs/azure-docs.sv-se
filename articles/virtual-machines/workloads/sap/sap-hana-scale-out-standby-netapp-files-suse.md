@@ -13,14 +13,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/01/2021
+ms.date: 04/06/2021
 ms.author: radeltch
-ms.openlocfilehash: d7b6f1d7ed01009af5e21006240a21442492cb07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37a3923abf32259499d876074ceda29c27e87d3c
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101673633"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551976"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Distribuera ett SAP HANA skalbart system med noden vänte läge på virtuella Azure-datorer med Azure NetApp Files på SUSE Linux Enterprise Server 
 
@@ -359,7 +359,7 @@ Konfigurera och Förbered ditt operativ system genom att utföra följande steg:
     <pre><code>
     vi /etc/sysctl.d/ms-az.conf
     # Add the following entries in the configuration file
-    ipv6.conf.all.disable_ipv6 = 1
+    net.ipv6.conf.all.disable_ipv6 = 1
     net.ipv4.tcp_max_syn_backlog = 16348
     net.ipv4.conf.all.rp_filter = 0
     sunrpc.tcp_slot_table_entries = 128

@@ -4,7 +4,7 @@ description: Lär dig metod tips för att utforma, skapa och hantera säkra moln
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: techlake
 ms.assetid: ''
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2019
+ms.date: 03/29/2021
 ms.author: terrylan
-ms.openlocfilehash: 77a2a32b9a6358c39a14cfe37eeb44f7cb90af0a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d28d55c8dff16df987f6535b0f1452b840b35c43
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94841996"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960511"
 ---
 # <a name="securing-paas-deployments"></a>Skydda PaaS-distributioner
 
@@ -127,10 +127,8 @@ Nedan följer metod tips för hur du använder App Service.
 **Bästa praxis**: övervaka säkerhets läget för dina app Services miljöer.   
 **Information**: Använd Azure Security Center för att övervaka App Service miljöer. När Security Center identifierar potentiella säkerhets problem skapas [rekommendationer](../../security-center/asset-inventory.md) som vägleder dig genom processen att konfigurera de nödvändiga kontrollerna.
 
-> [!NOTE]
-> Övervaknings App Service är i för hands version och endast tillgängligt på [Standard nivån](../../security-center/security-center-pricing.md) för Security Center.
->
->
+## <a name="azure-cloud-services"></a>Azure Cloud Services
+[Azure Cloud Services](../../cloud-services/cloud-services-choose-me.md) är ett exempel på en PaaS. Precis som Azure App Service är den här tekniken utformad för att stödja program som är skalbara, tillförlitliga och billiga att fungera. På samma sätt som App Service finns på virtuella datorer (VM: ar) så är det också för Azure Cloud Services. Men du har större kontroll över de virtuella datorerna. Du kan installera din egen program vara på virtuella datorer som använder Azure Cloud Services och du kan komma åt dem via en fjärr anslutning.
 
 ## <a name="install-a-web-application-firewall"></a>Installera en brand vägg för webbaserade program
 Webbprogram blir i allt större utsträckning föremål för attacker där kända svagheter i programmen utnyttjas. Bland annat är SQL-inmatningsattacker och skriptangrepp mellan webbplatser vanliga. Det kan vara svårt att förhindra sådana attacker i programkoden och kräver ofta omfattande underhåll, korrigeringar och övervakning av många skikt i programtopologin. Med en centraliserad brandvägg för webbaserade program blir det enklare att hantera säkerheten och programadministratörer får bättre möjligheter skydda mot intrång. En brandväggslösning för webbaserade program kan även reagera snabbare på ett säkerhetshot genom att åtgärda en känd svaghet på en central plats jämfört med om korrigeringar ska utföras i varje enskilt webbprogram. Befintliga programgatewayer kan enkelt konverteras till en Application Gateway med brandväggen för webbprogram.
@@ -149,13 +147,13 @@ Att verifiera säkerhets försvar är lika viktigt som att testa alla andra funk
 
 Fuzz-test är en metod för att hitta program fel (kod fel) genom att tillhandahålla felformaterade indata till program gränssnitt (start punkter) som tolkar och använder dessa data. [Microsofts säkerhets risk identifiering](https://www.microsoft.com/en-us/security-risk-detection/) är ett molnbaserad verktyg som du kan använda för att söka efter buggar och andra säkerhets problem i program varan innan du distribuerar det till Azure. Verktyget är utformat för att fånga sårbarheter innan du distribuerar program vara så att du inte behöver korrigera en bugg, hantera krascher eller svara på ett angrepp när program varan har släppts.
 
-
 ## <a name="next-steps"></a>Nästa steg
-I den här artikeln fokuserar vi på säkerhets fördelarna med en Azure PaaS-distribution och rekommenderade säkerhets metoder för moln program. Nu ska du läsa rekommendationer för att skydda dina PaaS webb-och mobil lösningar med hjälp av vissa Azure-tjänster. Vi börjar med Azure App Service, Azure SQL Database och Azure Synapse Analytics och Azure Storage. När artiklar om rekommenderade metoder för andra Azure-tjänster blir tillgängliga kommer länkar att tillhandahållas i följande lista:
+I den här artikeln fokuserar vi på säkerhets fördelarna med en Azure PaaS-distribution och rekommenderade säkerhets metoder för moln program. Nu ska du läsa rekommendationer för att skydda dina PaaS webb-och mobil lösningar med hjälp av vissa Azure-tjänster. Vi börjar med Azure App Service, Azure SQL Database och Azure Synapse Analytics, Azure Storage och Azure Cloud Services. När artiklar om rekommenderade metoder för andra Azure-tjänster blir tillgängliga kommer länkar att tillhandahållas i följande lista:
 
 - [Azure App Service](paas-applications-using-app-services.md)
 - [Azure SQL Database-och Azure Synapse-analys](paas-applications-using-sql.md)
 - [Azure Storage](paas-applications-using-storage.md)
+- [Azure Cloud Services](../../cloud-services/security-baseline.md)
 - Azure Cache for Redis
 - Azure Service Bus
 - Brand väggar för webb program
@@ -165,5 +163,6 @@ Se [utveckla säkra program på Azure](https://azure.microsoft.com/resources/dev
 Se [metod tips och mönster för Azure-säkerhet](best-practices-and-patterns.md) för att få bättre säkerhets metoder att använda när du utformar, distribuerar och hanterar dina moln lösningar med hjälp av Azure.
 
 Följande resurser är tillgängliga för att ge mer allmän information om Azure-säkerhet och relaterade Microsoft-tjänster:
-* [Azure Security Team-bloggen](/archive/blogs/azuresecurity/) – för uppdaterad information om det senaste i Azure-säkerhet
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – där säkerhets problem i Microsoft, inklusive problem med Azure, kan rapporteras eller via e-post till secure@microsoft.com
+
+- [Azure Security Team-bloggen](/archive/blogs/azuresecurity/) – för uppdaterad information om det senaste i Azure-säkerhet
+- [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – där säkerhets problem i Microsoft, inklusive problem med Azure, kan rapporteras eller via e-post till secure@microsoft.com

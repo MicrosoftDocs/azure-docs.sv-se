@@ -7,10 +7,10 @@ ms.author: bwren
 ms.date: 03/16/2021
 ms.custom: references_regions
 ms.openlocfilehash: f1f1ea787406d900c8035c0462ef903b848d7e81
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104608222"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Översikt över Azure Monitor Agent (för hands version)
@@ -105,7 +105,7 @@ I följande tabell visas de typer av data som du kan samla in med Azure Monitor-
 
 Azure Monitor Agent skickar data till Azure Monitor mått eller en Log Analytics arbets yta som stöder Azure Monitor loggar.
 
-| Datakälla | Mål | Description |
+| Datakälla | Mål | Beskrivning |
 |:---|:---|:---|
 | Prestanda        | Azure Monitor-statistik<br>Log Analytics-arbetsyta | Numeriska värden mäter prestanda för olika aspekter av operativ system och arbets belastningar. |
 | Händelse loggar i Windows | Log Analytics-arbetsyta | Information som skickas till händelse loggnings systemet i Windows. |

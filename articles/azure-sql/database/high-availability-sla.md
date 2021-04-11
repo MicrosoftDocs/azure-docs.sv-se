@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: a14f8e0ba3ae5cca75cf6518320023703a6d1700
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: fbf2a30d029a579026fa9c590f59bedff594f4b8
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105626392"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109217"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hög tillgänglighet för Azure SQL Database-och SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -119,7 +119,7 @@ Mer information om hög tillgänglighet i hög tillgänglighet finns i [databas 
 
 ## <a name="testing-application-fault-resiliency"></a>Testa program Fels återhämtning
 
-Hög tillgänglighet är en grundläggande del av SQL Database- och SQL Managed Instance-plattformen som fungerar transparent för ditt databasprogram. Vi förstår dock att du kan vilja testa hur de automatiska redundansväxlingar som initieras under planerade eller oplanerade händelser skulle påverka ett program innan du distribuerar det till produktion. Du kan utlösa en redundansväxling manuellt genom att anropa ett särskilt API för att starta om en databas, en elastisk pool eller en hanterad instans. I händelse av en redundant databas eller elastisk pool skulle API-anrop leda till omdirigering av klient anslutningar till den nya primära i en tillgänglighets zon som skiljer sig från tillgänglighets zonen för den gamla primära. Förutom att testa hur redundansväxlingen påverkar befintliga Databassessioner, kan du också kontrol lera om den ändrar prestandan från slut punkt till slut punkt på grund av ändringar i nätverks fördröjningen. Eftersom omstarten är påträngande och ett stort antal av dem kan stressa plattformen, är det bara ett failover-anrop som är tillåtet var 15: e minut för varje databas, elastisk pool eller hanterad instans.
+Hög tillgänglighet är en grundläggande del av SQL Database- och SQL Managed Instance-plattformen som fungerar transparent för ditt databasprogram. Vi förstår dock att du kan vilja testa hur de automatiska redundansväxlingar som initieras under planerade eller oplanerade händelser skulle påverka ett program innan du distribuerar det till produktion. Du kan utlösa en redundansväxling manuellt genom att anropa ett särskilt API för att starta om en databas, en elastisk pool eller en hanterad instans. Om en zon är redundant Server lös eller etablerade Generell användning databas eller elastisk pool, leder API-anropet till att omdirigera klient anslutningar till den nya primära i en tillgänglighets zon som skiljer sig från tillgänglighets zonen för den gamla primära. Förutom att testa hur redundansväxlingen påverkar befintliga Databassessioner, kan du också kontrol lera om den ändrar prestandan från slut punkt till slut punkt på grund av ändringar i nätverks fördröjningen. Eftersom omstarten är påträngande och ett stort antal av dem kan stressa plattformen, är det bara ett failover-anrop som är tillåtet var 15: e minut för varje databas, elastisk pool eller hanterad instans.
 
 En redundansväxling kan initieras med PowerShell, REST API eller Azure CLI:
 

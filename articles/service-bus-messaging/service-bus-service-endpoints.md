@@ -2,14 +2,14 @@
 title: Konfigurera tjänst slut punkter för virtuella nätverk för Azure Service Bus
 description: Den här artikeln innehåller information om hur du lägger till en tjänst slut punkt för Microsoft. Service Bus i ett virtuellt nätverk.
 ms.topic: article
-ms.date: 02/12/2021
+ms.date: 03/29/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2e00c9429ab3e39f95bc5ce6df072a99e4f02b86
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b5aba6c5ad4e1e6d0c90b99ebcdf441bb35cc39
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100559567"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960460"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Tillåt åtkomst till Azure Service Bus namnrymd från vissa virtuella nätverk
 Integreringen av Service Bus med [tjänst slut punkter för virtuella datorer med Virtual Network (VNet)][vnet-sep] ger säker åtkomst till meddelande funktioner från arbets belastningar som virtuella datorer som är kopplade till virtuella nätverk, med den nätverks trafik väg som skyddas i båda ändar.
@@ -18,16 +18,14 @@ När den har kon figurer ATS för att bindas till minst en tjänst slut punkt f�
 
 Resultatet är en privat och isolerad relation mellan arbets belastningarna som är kopplade till under nätet och respektive Service Bus-namnrymd, trots att den observerade nätverks adressen för meddelande tjänstens slut punkt är i ett offentligt IP-adressintervall.
 
-Genom att implementera integrering av virtuella nätverk kan du förhindra andra Azure-tjänster från att interagera med Service Bus. Som ett undantag kan du tillåta åtkomst till Service Bus resurser från vissa betrodda tjänster även när nätverks tjänstens slut punkter är aktiverade. En lista över betrodda tjänster finns i [betrodda tjänster](#trusted-microsoft-services).
+## <a name="important-points"></a>Viktiga punkter
+- Virtuella nätverk stöds endast på [Premium-nivå](service-bus-premium-messaging.md) Service Bus namn områden. När du använder VNet-tjänstens slut punkter med Service Bus bör du inte aktivera de här slut punkterna i program som blandar standard-och Premium-nivån Service Bus namn områden. Eftersom standard nivån inte stöder virtuella nätverk. Slut punkten är begränsad till endast Premium-nivåns namn område.
+- Genom att implementera integrering av virtuella nätverk kan du förhindra andra Azure-tjänster från att interagera med Service Bus. Som ett undantag kan du tillåta åtkomst till Service Bus resurser från vissa **betrodda tjänster** även när nätverks tjänstens slut punkter är aktiverade. En lista över betrodda tjänster finns i [betrodda tjänster](#trusted-microsoft-services).
 
-Följande Microsoft-tjänster måste finnas i ett virtuellt nätverk
-- Azure App Service
-- Azure Functions
-
-Virtuella nätverk stöds endast på [Premium-nivå](service-bus-premium-messaging.md) Service Bus namn områden. När du använder VNet-tjänstens slut punkter med Service Bus bör du inte aktivera de här slut punkterna i program som blandar standard-och Premium-nivån Service Bus namn områden. Eftersom standard nivån inte stöder virtuella nätverk. Slut punkten är begränsad till endast Premium-nivåns namn område.
-
-> [!IMPORTANT]
-> Ange minst en IP-regel eller en regel för virtuella nätverk för namn området för att tillåta trafik enbart från de angivna IP-adresserna eller under nätet för ett virtuellt nätverk. Om det inte finns några IP-och virtuella nätverks regler kan namn området nås via det offentliga Internet (med hjälp av åtkomst nyckeln).  
+    Följande Microsoft-tjänster måste finnas i ett virtuellt nätverk
+    - Azure App Service
+    - Azure Functions
+- Ange **minst en IP-regel eller en regel för virtuella nätverk** för namn området för att tillåta trafik enbart från de angivna IP-adresserna eller under nätet för ett virtuellt nätverk. Om det inte finns några IP-och virtuella nätverks regler kan namn området nås via det offentliga Internet (med hjälp av åtkomst nyckeln).  
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Avancerade säkerhets scenarier som aktive ras av VNet-integrering 
 

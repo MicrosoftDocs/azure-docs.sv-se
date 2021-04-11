@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 46b6ceff74dd3a296d26cc018b380c1c3f76664c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0db79728bbb963aa360743afc70aecc213bfb7bc
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552957"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011689"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>Ändra storlek på en OS-disk som har en GPT-partition
 
@@ -400,9 +400,8 @@ När den virtuella datorn har startats om utför du följande steg:
 > [!NOTE]
 > Om du vill använda samma procedur för att ändra storlek på en annan logisk volym ändrar du namnet på LV i steg 12.
 
+
 ### <a name="rhel-raw"></a>RHEL RAW
->[!NOTE] 
->Ta alltid en ögonblicks bild av den virtuella datorn innan du ökar storleken på operativ system disken.
 
 För att öka storleken på operativ system disken i en RHEL RAW-partition:
 
@@ -410,120 +409,114 @@ För att öka storleken på operativ system disken i en RHEL RAW-partition:
 1. Öka storleken på operativ system disken från portalen.
 1. Starta den virtuella datorn.
 
-Utför följande steg när den virtuella datorn har startats om:
+När den virtuella datorn har startats om utför du följande steg:
 
 1. Få åtkomst till den virtuella datorn som en **rot** användare med hjälp av följande kommando:
- 
-   ```
-   sudo su
+
+   ```bash
+   [root@dd-rhel7vm ~]# sudo -i
    ```
 
-1. Installera **gptfdisk** -paketet, vilket krävs för att öka storleken på operativ system disken.
+1. När den virtuella datorn har startats om utför du följande steg:
 
-   ```
-   yum install gdisk -y
-   ```
+   - Installera paketet **Cloud-utils-growpart** för att tillhandahålla kommandot **growpart** , vilket krävs för att öka storleken på operativ system disken och GDISK-hanteraren för GPT-diskens layouter. Det här paketet är förinstallerat på de flesta Marketplace-avbildningar.
 
-1.  Kör följande kommando för att se alla sektorer som är tillgängliga på disken:
-    ```
-    gdisk -l /dev/sda
-    ```
-
-1. Du kommer att se informationen som informerar partitionstypen. Se till att det är GPT. Identifiera rotnoden. Ändra inte eller ta bort startpartitionen (BIOS-startpartitionen) och systempartitionen (EFI system partition)
-
-1. Använd följande kommando för att starta partitionering för första gången. 
-    ```
-    gdisk /dev/sda
-    ```
-
-1. Nu ska du se ett meddelande som frågar efter nästa kommando ("kommando:? för hjälp "). 
-
-   ```
-   w
+   ```bash
+   [root@dd-rhel7vm ~]# yum install cloud-utils-growpart gdisk
    ```
 
-1. Du får en varning om att "varning! Sekundärt huvud har placerats för tidigt på disken! Vill du korrigera det här problemet? (J/N): ". Du måste trycka på "Y"
+1. Använd kommandot **lsblk-f** för att kontrol lera den partition och fil system typ som innehåller rot- **/** partitionen ():
 
-   ```
-   Y
-   ```
-
-1. Du bör se ett meddelande som talar om att de slutliga kontrollerna har slutförts och att du uppmanas att bekräfta. Tryck på "Y"
-
-   ```
-   Y
-   ```
-
-1. Kontrol lera om allt hände korrekt med kommandot partprobe
-
-   ```
-   partprobe
+   ```bash
+   [root@vm-dd-cent7 ~]# lsblk -f
+   NAME    FSTYPE LABEL UUID                                 MOUNTPOINT
+   sda
+   ├─sda1  xfs          2a7bb59d-6a71-4841-a3c6-cba23413a5d2 /boot
+   ├─sda2  xfs          148be922-e3ec-43b5-8705-69786b522b05 /
+   ├─sda14
+   └─sda15 vfat         788D-DC65                            /boot/efi
+   sdb
+   └─sdb1  ext4         923f51ff-acbd-4b91-b01b-c56140920098 /mnt/resource
    ```
 
-1. Ovanstående steg har säkerställt att det sekundära GPT-huvudet placeras i slutet. Nästa steg är att starta processen med att ändra storlek genom att använda verktyget gdisk igen. Använd följande kommando.
+1. För verifiering börjar du med att lista SDA-diskens partitionstabell med **gdisk**. I det här exemplet ser vi en 48 GB-disk med partition 2 på 29,0 GiB. Disken expanderades från 30 GB till 48 GB i Azure Portal.
 
-   ```
-   gdisk /dev/sda
-   ```
-1. I menyn kommando trycker du på "p" för att se en lista över partitioner. Identifiera rotnoden (i stegen är sda2 betraktas som rotnod) och startpartitionen (i stegen är sda3 betraktas som startpartition) 
+   ```bash
+   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
+   GPT fdisk (gdisk) version 0.8.10
 
-   ```
-   p
-   ```
-    ![Rotnod och startpartition](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+   Partition table scan:
+   MBR: protective
+   BSD: not present
+   APM: not present
+   GPT: present
 
-1. Tryck på "d&quot; för att ta bort partitionen och välj det partitionsnummer som är tilldelat till Start (i det här exemplet är det &quot;3")
-   ```
-   d
-   3
-   ```
-1. Tryck på "d" för att ta bort partitionen och välj det partitionsnummer som är tilldelat till Start (i det här exemplet är det ' 2 ')
-   ```
-   d
-   2
-   ```
-    ![Ta bort rotnod och startpartition](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+   Found valid GPT with protective MBR; using GPT.
+   Disk /dev/sda: 100663296 sectors, 48.0 GiB
+   Logical sector size: 512 bytes
+   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
+   Partition table holds up to 128 entries
+   First usable sector is 34, last usable sector is 62914526
+   Partitions will be aligned on 2048-sector boundaries
+   Total free space is 6076 sectors (3.0 MiB)
 
-1. Om du vill skapa en ny rotnod med större storlek trycker du på "n", anger det partitionsnummer som du tog bort tidigare för roten ("2" i det här exemplet) och väljer den första sektorn som standardvärde, sista sektorn som sista sektor värde – start storleks sektor (' 4096 i det här fallet motsvarar 2 MB start) och hex-kod som "8300"
-   ```
-   n
-   2
-   (Enter default)
-   (Calculateed value of Last sector value - 4096)
-   8300
-   ```
-1. Om du vill återskapa startpartitionen trycker du på "n", anger det partitionsnummer som du tog bort tidigare för start ("3" i det här exemplet) och väljer den första sektorn som standardvärdet, den sista sektorn som standardvärde och hex-kod som "EF02"
-   ```
-   n
-   3
-   (Enter default)
-   (Enter default)
-   EF02
+   Number  Start (sector)    End (sector)  Size       Code  Name
+      1         1026048         2050047   500.0 MiB   0700
+      2         2050048        62912511   29.0 GiB    0700
+   14            2048           10239   4.0 MiB     EF02
+   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
    ```
 
-1. Skriv ändringarna med kommandot "w" och tryck på "Y" för att bekräfta
-   ```
-   w
-   Y
-   ```
-1. Kör kommandot ' partprobe ' för att kontrol lera disk stabiliteten
-   ```
-   partprobe
-   ```
-1. Starta om den virtuella datorn och rot partitionens storlek skulle ha ökat
-   ```
-   reboot
+1. Expandera partitionen för roten, i det här fallet sda2 med hjälp av kommandot **growpart** . Med det här kommandot expanderar du partitionen så att hela det sammanhängande utrymmet på disken används.
+
+   ```bash
+   [root@vm-dd-cent7 ~]# growpart /dev/sda 2
+   CHANGED: partition=2 start=2050048 old: size=60862464 end=62912512 new: size=98613214 end=100663262
    ```
 
-   ![Ny rotnod och startpartition](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+1. Skriv nu ut den nya partitionstabellen med **gdisk** igen.  Observera att partition 2 har utökats till 47,0 GiB:
 
-1. Kör kommandot xfs_growfs på partitionen för att ändra storlek på det
+   ```bash
+   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
+   GPT fdisk (gdisk) version 0.8.10
+
+   Partition table scan:
+   MBR: protective
+   BSD: not present
+   APM: not present
+   GPT: present
+
+   Found valid GPT with protective MBR; using GPT.
+   Disk /dev/sda: 100663296 sectors, 48.0 GiB
+   Logical sector size: 512 bytes
+   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
+   Partition table holds up to 128 entries
+   First usable sector is 34, last usable sector is 100663262
+   Partitions will be aligned on 2048-sector boundaries
+   Total free space is 4062 sectors (2.0 MiB)
+
+   Number  Start (sector)    End (sector)  Size       Code  Name
+      1         1026048         2050047   500.0 MiB   0700
+      2         2050048       100663261   47.0 GiB    0700
+   14            2048           10239   4.0 MiB     EF02
+   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
    ```
-   xfs_growfs /dev/sda2
+
+1. Expandera fil systemet på partitionen med **xfs_growfs**, vilket är lämpligt för ett standard-RedHat system som skapats av Marketplace:
+
+   ```bash
+   [root@vm-dd-cent7 ~]# xfs_growfs /
+   meta-data=/dev/sda2              isize=512    agcount=4, agsize=1901952 blks
+            =                       sectsz=4096  attr=2, projid32bit=1
+            =                       crc=1        finobt=0 spinodes=0
+   data     =                       bsize=4096   blocks=7607808, imaxpct=25
+            =                       sunit=0      swidth=0 blks
+   naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+   log      =internal               bsize=4096   blocks=3714, version=2
+            =                       sectsz=4096  sunit=1 blks, lazy-count=1
+   realtime =none                   extsz=4096   blocks=0, rtextents=0
+   data blocks changed from 7607808 to 12326651
    ```
-
-   ![XFS-tillväxt FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
-
 
 1. Kontrol lera att den nya storleken visas med kommandot **DF** :
 

@@ -3,7 +3,6 @@ title: Om Azure VPN Gateway
 description: Lär dig mer om vad en VPN Gateway är och hur du använder en VPN Gateway för att ansluta till IPsec IKE-plats-till-plats-, VNet-till-VNet-och punkt-till-plats VPN-virtuella nätverk.
 services: vpn-gateway
 author: cherylmc
-Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 08/27/2020
@@ -11,12 +10,12 @@ ms.author: cherylmc
 ms.custom:
 - contperf-fy21q1
 - e2e-hybrid
-ms.openlocfilehash: f143ed3a8e739f4a79367694e933b28d717230dd
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: b4a2e1b80fe62c5e8f74e35a1a7f61bdddf89c53
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105640876"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066542"
 ---
 # <a name="what-is-vpn-gateway"></a>Vad är en VPN-gateway?
 
@@ -73,7 +72,7 @@ VPN-gatewayer kan distribueras i Azure-tillgänglighetszoner. Det ger flexibilit
 
 Se [Gateway-SKU:er](vpn-gateway-about-vpn-gateway-settings.md#gwsku) för information om gateway-SKU:er för VPN Gateway.
 
-## <a name="faq"></a><a name="faq"></a>Vanliga frågor
+## <a name="faq"></a><a name="faq"></a>ASSURANCE
 
 Vanliga frågor om VPN Gateway finns i [Vanliga frågor och svar om VPN Gateway](vpn-gateway-vpn-faq.md).
 

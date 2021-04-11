@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: 0fc28a1f808eeb2977b1dcca5046ed29933b8aa8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0b7f0427708eece75b5d418b68dd1c7a2e90853f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98028802"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108701"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Vanliga frågor och svar om Video Indexer
 
@@ -59,7 +59,7 @@ Nej, Video Indexer ger en integrering av flera Machine Learning-modeller i en pi
 
 ### <a name="what-media-formats-does-video-indexer-support"></a>Vilka Media format stöder Video Indexer?
 
-Video Indexer stöder de flesta vanliga medie format. Mer information finns i listan [Azure Media Encoder standardformat](../latest/media-encoder-standard-formats.md) .
+Video Indexer stöder de flesta vanliga medie format. Mer information finns i listan [Azure Media Encoder standardformat](../latest/encode-media-encoder-standard-formats-reference.md) .
 
 ### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>Hur gör jag för att ladda upp en mediefil i Video Indexer och vilka är begränsningarna?
 

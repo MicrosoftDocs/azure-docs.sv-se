@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/29/2020
 ms.author: hazeng
 ms.custom: devx-track-python
-ms.openlocfilehash: 9b9f5d389eda5d74e7e78cfcfa9a46fba7276cbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56da006dc5a0eef46d5b13984983ca680359b968
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87846045"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168101"
 ---
 # <a name="troubleshoot-python-errors-in-azure-functions"></a>Felsöka Python-fel i Azure Functions
 
@@ -19,6 +19,8 @@ Följande är en lista över fel söknings guider för vanliga problem i python-
 
 * [ModuleNotFoundError och ImportError](#troubleshoot-modulenotfounderror)
 * [Det går inte att importera ' cygrpc '](#troubleshoot-cannot-import-cygrpc)
+* [Python avslutades med koden 137](#troubleshoot-python-exited-with-code-137)
+* [Python avslutades med koden 139](#troubleshoot-python-exited-with-code-139)
 
 ## <a name="troubleshoot-modulenotfounderror"></a>Felsöka ModuleNotFoundError
 
@@ -26,22 +28,22 @@ Det här avsnittet hjälper dig att felsöka tjänstrelaterade fel i din python 
 
 > `Exception: ModuleNotFoundError: No module named 'module_name'.`
 
-Det här fel problemet uppstår när en python-Function-app inte kan läsa in en python-modul. Rotor saken till det här felet är ett av följande problem:
+Det här felet uppstår när en python-Function-app inte kan läsa in en python-modul. Rotor saken till det här felet är ett av följande problem:
 
-- [Det går inte att hitta paketet](#the-package-cant-be-found)
-- [Paketet är inte löst med rätt Linux-hjul](#the-package-isnt-resolved-with-proper-linux-wheel)
-- [Paketet är inte kompatibelt med python-tolkens version](#the-package-is-incompatible-with-the-python-interpreter-version)
-- [Paketet är i konflikt med andra paket](#the-package-conflicts-with-other-packages)
-- [Paketet stöder bara Windows-eller macOS-plattformar](#the-package-only-supports-windows-or-macos-platforms)
+* [Det går inte att hitta paketet](#the-package-cant-be-found)
+* [Paketet är inte löst med rätt Linux-hjul](#the-package-isnt-resolved-with-proper-linux-wheel)
+* [Paketet är inte kompatibelt med python-tolkens version](#the-package-is-incompatible-with-the-python-interpreter-version)
+* [Paketet är i konflikt med andra paket](#the-package-conflicts-with-other-packages)
+* [Paketet stöder bara Windows-eller macOS-plattformar](#the-package-only-supports-windows-or-macos-platforms)
 
 ### <a name="view-project-files"></a>Visa projektfiler
 
 För att identifiera den faktiska orsaken till ditt problem måste du hämta de python-projektfiler som körs i din Function-app. Om du inte har Project-filerna på den lokala datorn kan du hämta dem på något av följande sätt:
 
-- Om Function-appen har `WEBSITE_RUN_FROM_PACKAGE` en app-inställning och dess värde är en URL, laddar du ned filen genom att kopiera och klistra in URL: en i webbläsaren.
-- Om Function-appen har `WEBSITE_RUN_FROM_PACKAGE` och den är inställd på `1` , navigerar du till `https://<app-name>.scm.azurewebsites.net/api/vfs/data/SitePackages` och laddar ned filen från den senaste `href` URL: en.
-- Om appen inte har den angivna program inställningen ovan går du till `https://<app-name>.scm.azurewebsites.net/api/settings` och letar upp URL: en under `SCM_RUN_FROM_PACKAGE` . Hämta filen genom att kopiera och klistra in webb adressen i webbläsaren.
-- Om inget av dessa fungerar för dig kan du navigera till `https://<app-name>.scm.azurewebsites.net/DebugConsole` och visa innehållet under `/home/site/wwwroot` .
+* Om Function-appen har `WEBSITE_RUN_FROM_PACKAGE` en app-inställning och dess värde är en URL, laddar du ned filen genom att kopiera och klistra in URL: en i webbläsaren.
+* Om Function-appen har `WEBSITE_RUN_FROM_PACKAGE` och den är inställd på `1` , navigerar du till `https://<app-name>.scm.azurewebsites.net/api/vfs/data/SitePackages` och laddar ned filen från den senaste `href` URL: en.
+* Om appen inte har den angivna program inställningen ovan går du till `https://<app-name>.scm.azurewebsites.net/api/settings` och letar upp URL: en under `SCM_RUN_FROM_PACKAGE` . Hämta filen genom att kopiera och klistra in webb adressen i webbläsaren.
+* Om inget av dessa fungerar för dig kan du navigera till `https://<app-name>.scm.azurewebsites.net/DebugConsole` och visa innehållet under `/home/site/wwwroot` .
 
 Resten av den här artikeln hjälper dig att felsöka eventuella orsaker till det här felet genom att granska innehållet i funktions appen, identifiera rotor saken och lösa problemet.
 
@@ -177,6 +179,42 @@ Azure Functions python Worker stöder endast python 3,6, 3,7 och 3,8.
 Kontrol lera att python-tolken matchar den förväntade versionen av `py --version` i Windows eller `python3 --version` UNIX-liknande system. Se till att RETUR resultatet är python 3.6. x, python 3.7. x eller python 3.8. x.
 
 Om din python-tolk version inte uppfyller vårt förväntat resultat laddar du ned python 3,6, 3,7 eller 3,8-tolken från [python Software Foundation](https://python.org/downloads/release).
+
+---
+
+## <a name="troubleshoot-python-exited-with-code-137"></a>Felsök python som avslutas med kod 137
+
+Kod 137-fel orsakas vanligt vis av problem med slut på minne i python Function-appen. Därför visas följande Azure Functions fel meddelande:
+
+> `Microsoft.Azure.WebJobs.Script.Workers.WorkerProcessExitException : python exited with code 137`
+
+Det här felet uppstår när en python Function-app tvingas att avslutas av operativ systemet med en SIGKILL-signal. Den här signalen indikerar vanligt vis ett meddelande om slut på minne i python-processen. Azure Functionss plattformen har en [tjänst begränsning](functions-scale.md#service-limits) som avslutar alla funktions program som överskrider den här gränsen.
+
+Gå till själv studie kursen i [minnes profilering på python-funktioner](python-memory-profiler-reference.md#memory-profiling-process) för att analysera minnes Flask halsen i din Function-app.
+
+---
+
+## <a name="troubleshoot-python-exited-with-code-139"></a>Felsök python som avslutas med kod 139
+
+I det här avsnittet får du hjälp med att felsöka segment fel fel i python-Function-appen. Felen leder vanligt vis till följande Azure Functions fel meddelande:
+
+> `Microsoft.Azure.WebJobs.Script.Workers.WorkerProcessExitException : python exited with code 139`
+
+Det här felet uppstår när en python Function-app tvingas att avslutas av operativ systemet med en SIGSEGV-signal. Den här signalen indikerar en minnes segments överträdelse som kan orsakas av en läsning från eller skrivning till en begränsad minnes region. I följande avsnitt visar vi en lista över vanliga Rotors Aker.
+
+### <a name="a-regression-from-third-party-packages"></a>En regression från paket från tredje part
+
+I din Function-appens requirements.txt uppgraderas ett ej fäst paket till den senaste versionen i varje Azure Functions distribution. Leverantörer av dessa paket kan införa regressionar i den senaste versionen. Om du vill återställa från det här problemet kan du försöka kommentera ut import-instruktionerna, inaktivera paket referenserna eller fästa paketet till en tidigare version i requirements.txt.
+
+### <a name="unpickling-from-a-malformed-pkl-file"></a>Avväljer från en felaktig. PKL-fil
+
+Om din Function-app använder python Pickel-biblioteket för att läsa in python-objekt från. PKL-filen, är det möjligt att. PKL innehåller felformaterade byte-strängar eller ogiltig adress referens i den. Om du vill återställa från det här problemet kan du försöka kommentera ut funktionen Pickle. load ().
+
+### <a name="pyodbc-connection-collision"></a>Pyodbc-anslutningens kollision
+
+Om din Function-app använder den populära driv rutinen [pyodbc](https://github.com/mkleehammer/pyodbc)ODBC Database, är det möjligt att flera anslutningar öppnas i en enda Function-app. Undvik det här problemet genom att använda singleton-mönstret och se till att endast en pyodbc-anslutning används i Function-appen.
+
+---
 
 ## <a name="next-steps"></a>Nästa steg
 

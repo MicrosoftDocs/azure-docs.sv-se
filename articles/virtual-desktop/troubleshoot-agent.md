@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 86296385a0e657246e415f326261ce401e3cdeaf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b47a205cac1717dfc66594f856fd9370a01a9ae3
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604193"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168220"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Felsök vanliga problem med Windows Virtual Desktop agent
 
@@ -106,7 +106,7 @@ För att lösa det här problemet kontrollerar du att du kan komma åt BrokerURI
    > ![Skärm bild av misslyckad global åtkomst för Broker](media/unsuccessful-broker-global.png)
 
 8. Om nätverket blockerar dessa URL: er måste du avblockera de nödvändiga URL: erna. Mer information finns i [obligatorisk URL-lista](safe-url-list.md).
-9. Om detta inte löser problemet kontrollerar du att du inte har några grup principer med chiffer som blockerar agenten till Broker-anslutning. Windows Virtual Desktop använder samma TLS 1,2-chiffer som i [Azures front dörr](../frontdoor/front-door-faq.MD#what-are-the-current-cipher-suites-supported-by-azure-front-door). Mer information finns i [anslutnings säkerhet](network-connectivity.md#connection-security).
+9. Om detta inte löser problemet kontrollerar du att du inte har några grup principer med chiffer som blockerar agenten till Broker-anslutning. Windows Virtual Desktop använder samma TLS 1,2-chiffer som i [Azures front dörr](../frontdoor/front-door-faq.yml#what-are-the-current-cipher-suites-supported-by-azure-front-door-). Mer information finns i [anslutnings säkerhet](network-connectivity.md#connection-security).
 
 ## <a name="error-3703"></a>Fel: 3703
 

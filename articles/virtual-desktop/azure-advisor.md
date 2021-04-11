@@ -3,15 +3,15 @@ title: Integrera Windows Virtual Desktop med Azure Advisor – Azure
 description: Använda Azure Advisor med Windows-distributionen för virtuella datorer.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 76b7f97b6020a3a0d5571a3a105d15f7d7893485
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.openlocfilehash: b141d3829e9d98cb793d2038e93331804d2e6b8f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89147657"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448295"
 ---
 # <a name="use-azure-advisor-with-windows-virtual-desktop"></a>Använda Azure Advisor med Windows Virtual Desktop
 
@@ -61,5 +61,3 @@ När du väljer en kategori går du till sidan med aktiva rekommendationer. På 
 ## <a name="next-steps"></a>Nästa steg
 
 Information om hur du löser rekommendationer finns i [så här löser du Azure Advisor rekommendationer](azure-advisor-recommendations.md).
-
-Om du har förslag på nya rekommendationer kan du publicera dem i vårt [Azure Advisor User Voice-forum](https://windowsvirtualdesktop.uservoice.com/forums/930847-azure-advisor-recommendations).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 0cd1f6210fbdb74e3fd511150157dccca3e92dda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a765d689307b7f56e5100e75d9f7121e944cea14
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91932472"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168288"
 ---
 # <a name="benefits-of-using-azure-netapp-files-with-windows-virtual-desktop"></a>Fördelar med att använda Azure NetApp Files med Windows Virtual Desktop 
 
@@ -29,7 +29,7 @@ Azure NetApp Files är en fil lagrings tjänst med hög prestanda från Azure. D
 
 ## <a name="sample-blueprints"></a>Exempel ritningar
 
-Följande exempel ritningar visar integrationen av virtuella Windows-datorer med Azure NetApp Files. I ett sammanslaget Skriv bords scenario dirigeras användare till den bästa tillgängliga sessionen ( [Bredd-första läge](../virtual-desktop/host-pool-load-balancing.md#breadth-first-load-balancing-method)) i poolen med hjälp av [virtuella datorer med flera sessioner](../virtual-desktop/windows-10-multisession-faq.md#what-is-windows-10-enterprise-multi-session). Å andra sidan är personliga datorer reserverade för scenarier där varje användare har sin egen virtuella dator.
+Följande exempel ritningar visar integrationen av virtuella Windows-datorer med Azure NetApp Files. I ett sammanslaget Skriv bords scenario dirigeras användare till den bästa tillgängliga sessionen ( [Bredd-första läge](../virtual-desktop/host-pool-load-balancing.md#breadth-first-load-balancing-method)) i poolen med hjälp av [virtuella datorer med flera sessioner](../virtual-desktop/windows-10-multisession-faq.yml#what-is-windows-10-enterprise-multi-session). Å andra sidan är personliga datorer reserverade för scenarier där varje användare har sin egen virtuella dator.
 
 ### <a name="pooled-desktop-scenario"></a>Scenario med poolen skriv bord
 

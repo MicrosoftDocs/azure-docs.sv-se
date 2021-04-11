@@ -1,5 +1,5 @@
 ---
-title: Kvoter och gränser för Speech-tjänster
+title: Kvoter och begränsningar för tjänsten Speech
 titleSuffix: Azure Cognitive Services
 description: Snabb referens, detaljerad beskrivning och bästa praxis om kvoter och begränsningar för Azure kognitiva tal tjänster
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/27/2021
+ms.date: 04/07/2021
 ms.author: alexeyo
-ms.openlocfilehash: 7ef6ed5293ec9ecf49c16f8dfb0b6604942408f0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f851d7999b063a2b1334564902d81343e3789439
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937064"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011181"
 ---
-# <a name="speech-services-quotas-and-limits"></a>Kvoter och gränser för Speech-tjänster
+# <a name="speech-service-quotas-and-limits"></a>Kvoter och begränsningar för tjänsten Speech
 
 Den här artikeln innehåller en snabb referens och en **detaljerad beskrivning** av kvoter och begränsningar för Azure kognitiva tal tjänster för alla [pris nivåer](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/). Den innehåller också några metod tips för att undvika begränsning av förfrågningar. 
 
@@ -98,9 +98,13 @@ I nästa avsnitt beskrivs vissa fall där du justerar kvoterna.<br/>
 Hoppa till [text-till-tal. Ökande gräns för samtidig avskrifts förfrågan för anpassad röst](#text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice)
 
 ### <a name="speech-to-text-increasing-online-transcription-concurrent-request-limit"></a>Tal till text: öka gränsen för avskrift av samtidiga begär Anden
-Som standard är antalet samtidiga begär Anden begränsade till 20 per tal resurs (bas modell) eller per anpassad slut punkt (anpassad modell). För standard pris nivån kan du öka mängden. Innan du skickar in begäran bör du se till att du är bekant med materialet i [det här avsnittet](#detailed-description-quota-adjustment-and-best-practices) och känner till dessa [metod tips](#general-best-practices-to-mitigate-throttling-during-autoscaling).
+Som standard är antalet samtidiga förfrågningar begränsade till 100 per tal resurs (bas modell) och till 20 per anpassad slut punkt (anpassad modell). För standard pris nivån kan du öka mängden. Innan du skickar in begäran bör du se till att du är bekant med materialet i [det här avsnittet](#detailed-description-quota-adjustment-and-best-practices) och känner till dessa [metod tips](#general-best-practices-to-mitigate-throttling-during-autoscaling).
 
-Att öka gränsen för samtidiga förfrågningar påverkar **inte** dina kostnader direkt. Tal tjänster använder "betala endast för det du använder"-modellen. Gränsen definierar hur hög tjänsten kan skalas innan den börjar begränsa dina begär Anden.
+>[!NOTE]
+> Om du använder anpassade modeller bör du vara medveten om att en tal resurs kan associeras med många anpassade slut punkter som är värdar för många anpassade modell distributioner. Varje anpassad slut punkt har standardvärdet för gränsen för samtidiga förfrågningar (20) genom att skapa. Om du behöver justera det måste du göra en justering av varje anpassad slut punkt **separat**. Observera också att värdet för antalet gränser för samtidiga förfrågningar för bas modellen i en tal resurs **inte har någon** inverkan på de anpassade slut punkter som är associerade med resursen.
+
+
+Att öka gränsen för samtidiga förfrågningar påverkar **inte** dina kostnader direkt. Tal tjänsten använder "betala endast för det du använder"-modellen. Gränsen definierar hur hög tjänsten kan skalas innan den börjar begränsa dina begär Anden.
 
 Gränser för samtidiga förfrågningar för **bas** -och **anpassade** modeller måste justeras **separat**.
 
@@ -168,7 +172,7 @@ I allmänhet rekommenderar vi starkt att du testar arbets belastningen och arbet
 ### <a name="text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice"></a>Text till tal: öka avskrifts gränsen för samtidiga begär Anden för anpassad röst
 Som standard är antalet samtidiga förfrågningar för en anpassad röst slut punkt begränsad till 10. För standard pris nivån kan du öka mängden. Innan du skickar in begäran bör du se till att du är bekant med materialet i [det här avsnittet](#detailed-description-quota-adjustment-and-best-practices) och känner till dessa [metod tips](#general-best-practices-to-mitigate-throttling-during-autoscaling).
 
-Att öka gränsen för samtidiga förfrågningar påverkar **inte** dina kostnader direkt. Tal tjänster använder "betala endast för det du använder"-modellen. Gränsen definierar hur hög tjänsten kan skalas innan den börjar begränsa dina begär Anden.
+Att öka gränsen för samtidiga förfrågningar påverkar **inte** dina kostnader direkt. Tal tjänsten använder "betala endast för det du använder"-modellen. Gränsen definierar hur hög tjänsten kan skalas innan den börjar begränsa dina begär Anden.
 
 Det befintliga värdet för begränsnings parametern för samtidiga förfrågningar är **inte** synligt via Azure Portal, Command-Line-verktyg eller API-begäranden. Du kan kontrol lera det befintliga värdet genom att skapa en support förfrågan för Azure.
 

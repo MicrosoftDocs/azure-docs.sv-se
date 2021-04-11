@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: d0b2ccc0bf5d38e9a72bf780875d3b6f29733189
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: b38f2831136b0ccec4aa241135f2fd342c939845
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026759"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936894"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Snabb start: skapa och konfigurera Azure DDoS Protection standard
 
@@ -70,10 +70,9 @@ Du kan inte flytta ett virtuellt nätverk till en annan resurs grupp eller prenu
 ### <a name="enable-ddos-protection-for-an-existing-virtual-network"></a>Aktivera DDoS-skydd för ett befintligt virtuellt nätverk
 
 1. Skapa en DDoS skydds plan genom att slutföra stegen i [skapa en DDoS-skydds plan](#create-a-ddos-protection-plan), om du inte har en befintlig DDoS Protection-plan.
-2. Välj **skapa en resurs** i det övre vänstra hörnet av Azure Portal.
-3. Ange namnet på det virtuella nätverk som du vill aktivera DDoS Protection standard för i **rutan Sök efter resurser, tjänster och dokument** högst upp i portalen. När namnet på det virtuella nätverket visas i Sök resultatet väljer du det.
-4. Välj **DDoS-skydd** under **Inställningar**.
-5. Välj **standard**. Under **DDoS Protection Plan** väljer du en befintlig DDoS-skydds plan eller den plan som du skapade i steg 1 och väljer sedan **Spara**. Den plan du väljer kan vara i samma eller en annan prenumeration än det virtuella nätverket, men båda prenumerationerna måste vara kopplade till samma Azure Active Directory-klient.
+2. Ange namnet på det virtuella nätverk som du vill aktivera DDoS Protection standard för i **rutan Sök efter resurser, tjänster och dokument** högst upp i Azure Portal. När namnet på det virtuella nätverket visas i Sök resultatet väljer du det.
+3. Välj **DDoS-skydd** under **Inställningar**.
+4. Välj **standard**. Under **DDoS Protection Plan** väljer du en befintlig DDoS-skydds plan eller den plan som du skapade i steg 1 och väljer sedan **Spara**. Den plan du väljer kan vara i samma eller en annan prenumeration än det virtuella nätverket, men båda prenumerationerna måste vara kopplade till samma Azure Active Directory-klient.
 
 ### <a name="enable-ddos-protection-for-all-virtual-networks"></a>Aktivera DDoS-skydd för alla virtuella nätverk
 

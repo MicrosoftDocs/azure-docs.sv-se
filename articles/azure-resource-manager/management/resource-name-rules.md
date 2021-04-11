@@ -2,13 +2,13 @@
 title: Begränsningar för resurs namn
 description: Visar regler och begränsningar för namngivning av Azure-resurser.
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 20f7b6dc6c49b972b873ae3b275451829dec5c14
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/08/2021
+ms.openlocfilehash: a1dbe409eb5479c4027834cd33e095d12c31e238
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934180"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210201"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Namngivningsregler och begränsningar för Azure-resurser
 
@@ -16,7 +16,7 @@ Den här artikeln sammanfattar namngivnings regler och begränsningar för Azure
 
 Den här artikeln innehåller resurser efter namn område för resurs leverantör. En lista över hur resurs leverantörer matchar Azure-tjänster finns i [Resource providers för Azure-tjänster](azure-services-resource-providers.md).
 
-Resurs namn är inte Skift läges känsliga om de inte uttryckligen anges i kolumnen giltiga tecken.
+Resurs namn är inte Skift läges känsliga om inget annat anges i kolumnen giltiga tecken.
 
 I följande tabeller refererar termen alfanumeriskt till:
 
@@ -177,11 +177,18 @@ I följande tabeller refererar termen alfanumeriskt till:
 > | gallerier/avbildningar/versioner | image | 32-bitars heltal | Siffror och punkter. |
 > | images | Resursgrupp | 1–80 | Alfanumeriska tecken, under streck, punkter och bindestreck.<br><br>Börja med alfanumeriskt. Slutar med alfanumeriskt eller under streck. |
 > | snapshots | Resursgrupp | 1–80 | Alfanumeriska tecken, under streck, punkter och bindestreck.<br><br>Börja med alfanumeriskt. Slutar med alfanumeriskt eller under streck. |
-> | virtualMachines | Resursgrupp | 1-15 (Windows)<br>1-64 (Linux)<br><br>Se kommentaren nedan. | Det går inte att använda blank steg eller följande tecken:<br> `\/"'[]:|<>+=;,?*@&_`<br><br>Virtuella Windows-datorer får inte innehålla punkter eller avslutas med bindestreck.<br><br>Virtuella Linux-datorer kan inte sluta med punkt eller bindestreck. |
-> | virtualMachineScaleSets | Resursgrupp | 1-15 (Windows)<br>1-64 (Linux)<br><br>Se kommentaren nedan. | Det går inte att använda blank steg eller följande tecken:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Får inte börja med under streck. Kan inte sluta med punkt eller bindestreck. |
+> | virtualMachines | Resursgrupp | 1-15 (Windows)<br>1-64 (Linux)<br><br>Se kommentaren nedan. | Det går inte att använda blank steg eller följande tecken:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Virtuella Windows-datorer får inte innehålla punkter eller avslutas med bindestreck.<br><br>Virtuella Linux-datorer kan inte sluta med punkt eller bindestreck. |
+> | virtualMachineScaleSets | Resursgrupp | 1-15 (Windows)<br>1-64 (Linux)<br><br>Se kommentaren nedan. | Det går inte att använda blank steg eller följande tecken:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Får inte börja med under streck. Kan inte sluta med punkt eller bindestreck. |
 
 > [!NOTE]
 > Virtuella Azure-datorer har två distinkta namn: resurs namn och värdnamn. När du skapar en virtuell dator i portalen används samma värde för båda namnen. Begränsningarna i föregående tabell är för värd namnet. Det faktiska resursnamnet kan innehålla upp till 64 tecken.
+
+## <a name="microsoftcommunication"></a>Microsoft. Communication
+
+> [!div class="mx-tableFixed"]
+> | Entitet | Omfång | Längd | Giltiga tecken |
+> | --- | --- | --- | --- |
+> | communicationServices | EAN | 1–63 | Alfanumeriska tecken, bindestreck och under streck. |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
@@ -390,7 +397,7 @@ I följande tabeller refererar termen alfanumeriskt till:
 > | --- | --- | --- | --- |
 > | utskrifts | Resursgrupp | 2–64 | Alfanumeriska tecken och bindestreck.<br><br>Börja med en bokstav. |
 
-## <a name="microsoftinsights"></a>Microsoft. Insights
+## <a name="microsoftinsights"></a>Microsoft.Insights
 
 > [!div class="mx-tableFixed"]
 > | Entitet | Omfång | Längd | Giltiga tecken |
@@ -599,7 +606,7 @@ I följande tabeller refererar termen alfanumeriskt till:
 > | Entitet | Omfång | Längd | Giltiga tecken |
 > | --- | --- | --- | --- |
 > | distributioner | Resursgrupp | 1-64 | Alfanumeriska tecken, under streck, parenteser, bindestreck och punkter. |
-> | ResourceGroups | prenumeration | 1–90 | Alfanumeriska tecken, under streck, parenteser, bindestreck, punkter och Unicode-tecken som matchar regex- [dokumentationen](/rest/api/resources/resources/resourcegroups/createorupdate).<br><br>Kan inte sluta med punkt. |
+> | ResourceGroups | prenumeration | 1–90 | Alfanumeriska tecken, under streck, parenteser, bindestreck, punkter och Unicode-tecken som matchar regex- [dokumentationen](/rest/api/resources/resourcegroups/createorupdate).<br><br>Kan inte sluta med punkt. |
 > | tagNames | resource | 1-512 | Kan inte använda:<br>`<>%&\?/` |
 > | tagNames / tagValues | taggnamn | 1-256 | Alla tecken. |
 > | templateSpecs | Resursgrupp | 1–90 | Alfanumeriska tecken, under streck, parenteser, bindestreck och punkter. |
@@ -706,10 +713,12 @@ I följande tabeller refererar termen alfanumeriskt till:
 > | --- | --- | --- | --- |
 > | certifikat | Resursgrupp | 1-260 | Kan inte använda:<br>`/` <br><br>Kan inte sluta med blank steg eller punkt.  | 
 > | Server grupper | Resursgrupp | 1-40 | Alfanumeriska tecken och bindestreck. |
-> | webbplatser | EAN | 2-60 | Innehåller alfanumeriska tecken och bindestreck.<br><br>Får inte börja eller sluta med bindestreck. |
+> | webbplatser | global eller per domän. Se kommentaren nedan. | 2-60 | Innehåller alfanumeriska tecken och bindestreck.<br><br>Får inte börja eller sluta med bindestreck. |
 > | platser/platser | webbplats | 2-59 | Alfanumeriska tecken och bindestreck. |
 
 > [!NOTE]
+> En webbplats måste ha en globalt unik URL. När du skapar en webbplats som använder en värd plan är URL: en `http://<app-name>.azurewebsites.net` . Appens namn måste vara globalt unikt. När du skapar en webbplats som använder ett App Service-miljön måste appens namn vara unikt i [domänen för App Service-miljön](../../app-service/environment/using-an-ase.md#app-access). I båda fallen är webbplatsens URL globalt unik.
+>
 > Azure Functions har samma namngivnings regler och begränsningar som Microsoft. Web/Sites.
 
 ## <a name="next-steps"></a>Nästa steg

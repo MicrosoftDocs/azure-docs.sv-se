@@ -2,13 +2,13 @@
 title: Vad är nytt med Azure Arc-aktiverade Server agenter
 description: Den här artikeln innehåller viktig information om Azure Arc-aktiverade Server agenter. För många av de sammanfattade problemen finns det länkar till mer information.
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.openlocfilehash: acf606ed1ad0f54c983b14a0141d0dc11e2c45d9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/31/2021
+ms.openlocfilehash: ecff23225f4d482cc1e9a4f7b7724c8ffe0a1d73
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103470514"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109075"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Vad är nytt med Azure Arc-aktiverade Server agenter
 
@@ -24,9 +24,9 @@ Version 1,4
 
 ## <a name="new-feature"></a>Ny funktion
 
-- Stöd har lagts till för privata slut punkter.
+- Stöd har lagts till för privata slut punkter som för närvarande finns i begränsad för hands version.
 - Expanderad lista över avslutnings koder för azcmagent.
-- Agent konfigurations parametrar kan nu läsas från en fil med parametern--config.
+- Agent konfigurations parametrar kan nu läsas från en fil med `--config` parametern.
 
 ## <a name="fixed"></a>Fast
 

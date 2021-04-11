@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: d5a013fc4e4ef931579da4fa13f400d5f4fcff0d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3c12068c6a2c75c7be8b5572b901a714d397b2ca
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030757"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209938"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Så här konfigurerar du Azure Database for MySQL Datareplikering
 
@@ -21,19 +21,16 @@ I den här artikeln beskrivs hur du konfigurerar [datareplikering](concepts-data
 > Den här artikeln innehåller referenser till termen _slav_, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 >
 
-För att skapa en replik i Azure Database for MySQL-tjänsten synkroniserar [datareplikering](concepts-data-in-replication.md)  data från en lokal MySQL-server lokalt, i virtuella datorer (VM) eller i moln databas tjänster. Datareplikering baseras på positionsbaserad replikering med en binär loggfil (binlog) som är inbyggd i MySQL. Mer information om BinLog-replikering finns i [Översikt över MySQL BinLog-replikering](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
+För att skapa en replik i Azure Database for MySQL-tjänsten synkroniserar [datareplikering](concepts-data-in-replication.md)  data från en lokal MySQL-server lokalt, i virtuella datorer (VM) eller i moln databas tjänster. Datareplikering baseras på den binära loggen (BinLog) fil positions-eller gtid-baserad replikering som är inbyggd i MySQL. Mer information om BinLog-replikering finns i [Översikt över MySQL BinLog-replikering](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
 Granska [begränsningarna och kraven](concepts-data-in-replication.md#limitations-and-considerations) för datareplikering innan du utför stegen i den här artikeln.
 
-## <a name="create-a-mysql-server-to-be-used-as-replica"></a>Skapa en MySQL-server som ska användas som replik
+## <a name="1-create-a-azure-database-for-mysql-single-server-to-be-used-as-replica"></a>1. skapa en Azure Database for MySQL enskild server som ska användas som replik
 
-1. Skapa en ny Azure Database for MySQL Server
-
-   Skapa en ny MySQL-server (t. ex. "replica.mysql.database.azure.com"). Se [skapa en Azure Database for MySQL-server genom att använda Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) för att skapa servern. Den här servern är replik servern i Datareplikering.
+1. Skapa en ny Azure Database for MySQL enskild server (t. ex. "replica.mysql.database.azure.com"). Se [skapa en Azure Database for MySQL-server genom att använda Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) för att skapa servern. Den här servern är replik servern i Datareplikering.
 
    > [!IMPORTANT]
-   > Azure Database for MySQL-servern måste skapas i Generell användning eller minnesoptimerade pris nivåer.
-   >
+   > Azure Database for MySQL-servern måste skapas i Generell användning eller minnesoptimerade pris nivåer som datareplikering stöds bara i dessa nivåer.
 
 2. Skapa samma användar konton och motsvarande privilegier
 
@@ -42,8 +39,12 @@ Granska [begränsningarna och kraven](concepts-data-in-replication.md#limitation
 3. Lägg till käll serverns IP-adress i replikens brand Väggs regler.
 
    Uppdatera brandväggsregler med hjälp av [Azure-portalen](howto-manage-firewall-using-portal.md) eller [Azure CLI](howto-manage-firewall-using-cli.md).
+   
+4. **Valfritt** – om du vill använda [gtid-baserad replikering](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html) från käll servern till Azure Database for MySQL replik Server måste du aktivera följande Server parametrar på Azure Database for MySQL-servern som visas i Portal bilden nedan
 
-## <a name="configure-the-source-server"></a>Konfigurera käll servern
+   :::image type="content" source="./media/howto-data-in-replication/enable-gtid.png" alt-text="Aktivera gtid på Azure Database for MySQL Server":::
+
+## <a name="2-configure-the-source-mysql-server"></a>2. Konfigurera käll-MySQL-servern
 
 Följande steg förbereder och konfigurerar den MySQL-server som finns lokalt, i en virtuell dator eller databas tjänst som tillhandahålls av andra moln leverantörer för Datareplikering. Den här servern är "källa" i replikering av data.
 
@@ -110,7 +111,6 @@ Följande steg förbereder och konfigurerar den MySQL-server som finns lokalt, i
        ```bash
        log-bin=mysql-bin.log
        ```
-     
    4. Starta om MySQL-källdomänkontrollanten för att ändringarna ska börja gälla.
    5. När servern har startats om kontrollerar du att binär loggning har Aktiver ATS genom att köra samma fråga som tidigare:
    
@@ -125,6 +125,14 @@ Följande steg förbereder och konfigurerar den MySQL-server som finns lokalt, i
    ```sql
    SET GLOBAL lower_case_table_names = 1;
    ```
+   **Valfritt** – om du vill använda [gtid-baserad replikering](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html)måste du kontrol lera om gtid har Aktiver ATS på käll servern. Du kan köra följande kommando mot din käll MySQL-server för att se om gtid läge är aktiverat.
+   
+   ```sql
+   show variables like 'gtid_mode';
+   ```
+   >[!IMPORTANT]
+   > Alla servrar har gtid_mode angetts till standardvärdet. Du behöver inte aktivera gtid på käll-MySQL-servern specifikt för att konfigurera datareplikering. Om gtid redan har Aktiver ATS på käll servern kan du välja att använda gtid-baserad replikering för att konfigurera datareplikering för Azure Database for MySQL en enda server. Du kan använda filbaserad replikering för att konfigurera datareplikering för alla servrar oavsett gtid läges konfiguration på käll servern.
+
 
 5. Skapa en ny roll för replikering och konfigurera behörighet
 
@@ -182,18 +190,22 @@ Följande steg förbereder och konfigurerar den MySQL-server som finns lokalt, i
    ```sql
     show master status;
    ```
-
    Resultatet bör se ut ungefär så här. Glöm inte att anteckna det binära fil namnet, eftersom det används i senare steg.
 
    :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="Huvud status resultat":::
+   
 
-## <a name="dump-and-restore-source-server"></a>Dumpa och återställa käll servern
+## <a name="3-dump-and-restore-source-server"></a>3. dumpa och Återställ käll Server
 
 1. Bestäm vilka databaser och tabeller du vill replikera till Azure Database for MySQL och utför dumpen från käll servern.
 
     Du kan använda mysqldump för att dumpa databaser från din huvud server. Mer information finns i [dumpa & Restore](concepts-migrate-dump-restore.md). Det behövs ingen dumpning av MySQL-biblioteket och test biblioteket.
 
-2. Ange att käll servern ska läsa/skriva-läge.
+2. **Valfritt** – om du vill använda [gtid-baserad replikering](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html)måste du identifiera gtid för den senaste transaktionen som körs vid huvud servern. Du kan använda följande kommando för att notera gtid för den senaste transaktionen som kördes på huvud servern.
+   ```sql
+   show global variables like 'gtid_executed';
+   ```
+3. Ange att käll servern ska läsa/skriva-läge.
 
    När databasen har dump ATS ändrar du källans MySQL-server tillbaka till Läs-/skriv läge.
 
@@ -205,8 +217,14 @@ Följande steg förbereder och konfigurerar den MySQL-server som finns lokalt, i
 3. Återställ dumpfilen till en ny server.
 
    Återställ dumpfilen till servern som skapats i Azure Database for MySQL-tjänsten. Mer information om hur du återställer en dumpfil till en MySQL-server hittar du i [dump & Restore](concepts-migrate-dump-restore.md) . Om dumpfilen är stor laddar du upp den till en virtuell dator i Azure inom samma region som replik servern. Återställ den till Azure Database for MySQL servern från den virtuella datorn.
+   
+4. **Frivillig** – anteckna gtid på den återställda servern på Azure Database for MySQL för att säkerställa att den är samma som för huvud servern. Du kan använda följande kommando för att notera gtid för det gtid-rensade värdet på Azure Database for MySQL replik servern. Värdet för gtid_purged ska vara detsamma som gtid_executed på huvud servern som anges i steg 2 för gtid-baserad replikering.
 
-## <a name="link-source-and-replica-servers-to-start-data-in-replication"></a>Länka käll-och replik servrar för att starta Datareplikering
+   ```sql
+   show global variables like 'gtid_purged';
+   ```
+
+## <a name="4-link-source-and-replica-servers-to-start-data-in-replication"></a>4. länk käll-och replik servrar för att starta Datareplikering
 
 1. Ange käll Server.
 
@@ -215,12 +233,17 @@ Följande steg förbereder och konfigurerar den MySQL-server som finns lokalt, i
    Om du vill länka två servrar och starta replikering loggar du in på mål replik servern i Azure DB för MySQL-tjänsten och anger den externa instansen som käll Server. Detta görs med hjälp av den `mysql.az_replication_change_master` lagrade proceduren på Azure dB för MySQL-servern.
 
    ```sql
-   CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
+   CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', <master_port>, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
+   ```
+   **Valfritt** – om du vill använda [gtid-baserad replikering](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html)måste du använda följande kommando för att länka de två servrarna
+    ```sql
+   call mysql.az_replication_change_master_with_gtid('<master_host>', '<master_user>', '<master_password>', <master_port>, '<master_ssl_ca>');
    ```
 
    - master_host: värd namnet för käll servern
    - master_user: användar namn för käll servern
    - master_password: lösen ordet för käll servern
+   - master_port: port nummer som käll servern lyssnar efter anslutningar på. (3306 är standard porten som MySQL lyssnar på)
    - master_log_file: det binära logg fils namnet körs inte `show master status`
    - master_log_pos: binär logg position körs `show master status`
    - master_ssl_ca: certifikat utfärdarens kontext. Om du inte använder SSL skickar du en tom sträng.
@@ -282,7 +305,7 @@ Följande steg förbereder och konfigurerar den MySQL-server som finns lokalt, i
 
    Om statusen `Slave_IO_Running` och `Slave_SQL_Running` är "Ja" och värdet för `Seconds_Behind_Master` är "0" fungerar replikeringen bra. `Seconds_Behind_Master` anger hur sen repliken är. Om värdet inte är "0" innebär det att repliken bearbetar uppdateringar.
 
-## <a name="other-stored-procedures"></a>Andra lagrade procedurer
+## <a name="other-useful-stored-procedures-for-data-in-replication-operations"></a>Andra användbara lagrade procedurer för åtgärder för data i replikering
 
 ### <a name="stop-replication"></a>Stoppa replikering
 
@@ -307,6 +330,19 @@ Använd följande lagrade procedur om du vill hoppa över ett replikeringsfel oc
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
+ **Valfritt** – om du vill använda [gtid-baserad replikering](https://dev.mysql.com/doc/mysql-replication-excerpt/5.7/en/replication-gtids-concepts.html), använder du följande lagrade procedur för att hoppa över en transaktion
+
+```sql
+call mysql. az_replication_skip_gtid_transaction(‘<transaction_gtid>’)
+```
+Proceduren kan hoppa över transaktionen för den aktuella gtid. Om gtid-formatet inte är rätt eller om gtid-transaktionen redan har körts, kommer proceduren inte att kunna köras. Gtid för en transaktion kan bestämmas genom att parsa den binära loggen för att kontrol lera transaktions händelserna. MySQL tillhandahåller ett verktyg som [mysqlbinlog](https://dev.mysql.com/doc/refman/5.7/en/mysqlbinlog.html) för att parsa binära loggar och visa innehållet i text format som kan användas för att identifiera gtid för transaktionen.
+
+Om du vill hoppa över nästa transaktion efter den aktuella replikeringens position använder du följande kommando för att identifiera gtid för nästa transaktion enligt nedan.
+
+```sql
+SHOW BINLOG EVENTS [IN 'log_name'] [FROM pos][LIMIT [offset,] row_count]
+```
+  :::image type="content" source="./media/howto-data-in-replication/show-binary-log.png" alt-text="Visa binära logg resultat":::
 
 ## <a name="next-steps"></a>Nästa steg
 

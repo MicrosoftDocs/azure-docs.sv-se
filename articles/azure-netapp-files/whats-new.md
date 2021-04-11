@@ -12,18 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/19/2021
+ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: f2167159b03cd0387acfccf4bbd0a2e840f739df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94981cd0912f76b710b3a60040ffbffd38381bcd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955251"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552112"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Vad är nytt i Azure NetApp Files
 
 Azure NetApp Files uppdateras regelbundet. Den här artikeln innehåller en översikt över de senaste nya funktionerna och förbättringarna. 
+
+## <a name="april-2021"></a>April 2021
+
+* [Active Directory Domain Services (lägger till) LDAP-användar mappning med NFS-utökade grupper (för](configure-ldap-extended-groups.md) hands version)   
+
+    Azure NetApp Files stöder som standard upp till 16 grupp-ID: n vid hantering av autentiseringsuppgifter för NFS-användare, enligt definitionen i [RFC 5531](https://tools.ietf.org/html/rfc5531). Med den här nya funktionen kan du nu öka Max gränsen upp till 1 024 om du har användare som är medlemmar i fler än standard antalet grupper. För att stödja den här funktionen kan NFS-volymer nu också läggas till i tillägg till LDAP, vilket gör det möjligt Active Directory LDAP-användare med utökade grupp poster (med upp till 1024 grupper) för att få åtkomst till volymen. 
 
 ## <a name="march-2021"></a>Mars 2021
 

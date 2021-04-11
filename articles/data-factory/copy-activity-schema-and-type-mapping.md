@@ -6,23 +6,23 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 0aee6030e5608b5413864d6a32dc8442dd346f42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68d90fa56d5dce902a44a32b322e582a81e419d5
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392790"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011649"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Schema-och data typs mappning i kopierings aktiviteten
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 I den här artikeln beskrivs hur Azure Data Factory kopierings aktivitet utför schema mappning och data typs mappning från källdata till Sink-data.
 
-## <a name="schema-mapping"></a>Schemamappning
+## <a name="schema-mapping"></a>Schema mappning
 
 ### <a name="default-mapping"></a>Standard mappning
 
-Som standard mappar kopierings aktiviteten käll data till Sink **efter kolumn namn** i skift läges känsliga sätt. Om Sink inte finns, till exempel genom att skriva till filer, sparas käll fält namnen som mottagar namn. Sådan standard mappning stöder flexibla scheman och schema avvikelser från källa till Sink från körning till körning – alla data som returneras av käll data lagret kan kopieras till Sink.
+Som standard mappar kopierings aktiviteten käll data till Sink **efter kolumn namn** i skift läges känsliga sätt. Om Sink inte finns, till exempel genom att skriva till filer, sparas käll fält namnen som mottagar namn. Om sinken redan finns måste den innehålla alla kolumner som kopieras från källan. Sådan standard mappning stöder flexibla scheman och schema avvikelser från källa till Sink från körning till körning – alla data som returneras av käll data lagret kan kopieras till Sink.
 
 Om källan är en textfil utan rubrik rad krävs [explicit mappning](#explicit-mapping) eftersom källan inte innehåller kolumn namn.
 

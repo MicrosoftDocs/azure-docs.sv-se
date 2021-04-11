@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: v-demjoh
 keywords: avsikts igenkänning
-ms.openlocfilehash: 215b25e440b8cad76e0656e47d32b184edf4ac66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 532101c8cc307e6a5bb65022702b516c492a51fe
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95018709"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210388"
 ---
 # <a name="what-is-intent-recognition"></a>Vad är avsikts igenkänning?
 
@@ -33,7 +33,7 @@ Genom att använda avsikts igenkänning kan dina program, verktyg och enheter av
 
 ## <a name="get-started"></a>Kom igång
 
-Se [snabb start](quickstarts/intent-recognition.md) för att komma igång med avsikts igenkänning.
+Se [snabb start](get-started-intent-recognition.md) för att komma igång med avsikts igenkänning.
 
 ## <a name="sample-code"></a>Exempelkod
 
@@ -53,6 +53,6 @@ Exempel kod för avsikts igenkänning:
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Slutför [snabb](quickstarts/intent-recognition.md) starten för avsikts igenkänning
+* Slutför [snabb](get-started-intent-recognition.md) starten för avsikts igenkänning
 * [Hämta en prenumerations nyckel för Speech service kostnads fritt](overview.md#try-the-speech-service-for-free)
 * [Hämta tal-SDK](speech-sdk.md)

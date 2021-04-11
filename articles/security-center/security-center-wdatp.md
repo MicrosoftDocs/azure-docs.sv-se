@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: memildin
-ms.openlocfilehash: 085f3a5295d60b83536683a57a34b51abccd3067
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 88d0a3dcd89ea678d77bc558fc680630bc0f2309
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043027"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168186"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Skydda dina slut punkter med Security Center Integrated EDR-lösning: Microsoft Defender för slut punkt
 
@@ -38,7 +38,7 @@ Microsoft Defender för slut punkt är en holistisk, Cloud-levererad slut punkts
 | Versions tillstånd:                  | Allmänt tillgänglig (GA)                                                                                                                                                                                                                                                                                      |
 | Priset                        | Kräver [Azure Defender för servrar](defender-for-servers-introduction.md)                                                                                                                                                                                                                                             |
 | Plattformar som stöds:            |  • Azure-datorer som kör Windows<br> • Azure Arc-datorer som kör Windows|
-| Versioner av Windows som stöds:  |  • **Allmän tillgänglighet (ga) –** identifiering på Windows Server 2016, 2012 R2 och 2008 R2 SP1<br> • För **hands versions** identifiering på windows Server 2019, [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)och [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (tidigare företag för virtuella skriv bord (EVD)|
+| Versioner av Windows som stöds:  |  • **Allmän tillgänglighet (ga) –** identifiering på Windows Server 2016, 2012 R2 och 2008 R2 SP1<br> • För **hands versions** identifiering på windows Server 2019, [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)och [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.yml) (tidigare företag för virtuella skriv bord (EVD)|
 | Operativ system som inte stöds:  |  • Windows 10 (annat än EVD eller WVD)<br> • Linux|
 | Nödvändiga roller och behörigheter: | Aktivera/inaktivera integrering: **säkerhets administratör** eller **ägare**<br>Så här visar du MDATP-aviseringar i Security Center: **säkerhets läsare**, **läsare**, **resurs grupps deltagare**, **resurs grupp ägare**, **säkerhets administratör**, **prenumerations ägare** eller **prenumerations deltagare**|
 | Moln                         | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Inga](./media/icons/no-icon.png) Kina gov, andra gov                                                        |
