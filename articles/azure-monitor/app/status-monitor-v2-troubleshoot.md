@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2641218fa9ddef65c45f2f1a9c9ce807cef35048
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cf3d8fd1566f3d71541aab7648680063e85079bf
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642740"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121837"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Felsöka Application Insights agent (tidigare namngiven Statusövervakare v2)
 
@@ -152,16 +152,6 @@ Se [API-referensen](status-monitor-v2-api-reference.md) för en detaljerad beskr
 3. I en kommando konsol med administratörs behörighet kör du `iisreset /start` kommandot för att starta IIS.
 4. Försök att bläddra till din app.
 5. När din app har lästs in återgår du till PerfView och väljer **stoppa insamling**.
-
-### <a name="how-to-capture-full-sql-command-text"></a>Så här fångar du en fullständig SQL-kommando text
-
-Om du vill avbilda en fullständig SQL-kommando text måste du ändra applicationinsights.config-filen med följande:
-
-```xml
-<Add Type="Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule, Microsoft.AI.DependencyCollector">,
-<EnableSqlCommandTextInstrumentation>true</EnableSqlCommandTextInstrumentation>
-</Add>
-```
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -1,19 +1,19 @@
 ---
 title: 'Snabb start: Azure Blob Storage klient bibliotek v 2.1 för python'
 description: I den här snabbstarten skapar du ett lagringskonto och en container i objektlagring (Blob). Sedan använder du lagrings klient bibliotek v 2.1 för python och laddar upp en blob till Azure Storage, laddar ned en blob och listar blobarna i en behållare.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 34205caf03d2f2d7255f75ea6203c5572c4c429b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01ca2ee1bcd551baa471dda64d636e077f6e1a82
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95523315"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275455"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Snabb start: hantera blobbar med python v 2.1 SDK
 

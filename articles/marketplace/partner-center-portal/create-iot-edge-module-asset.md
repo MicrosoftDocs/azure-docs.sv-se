@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/03/2020
-ms.openlocfilehash: aca27b89a3b92b410fa560c8b4bd7eb3d4e0a935
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8eddd5d346003af0c2b41d65fc0aa09c86f48c7
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93346782"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167455"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>Förbered din IoT Edge module tekniska till gångar
 
@@ -39,14 +39,14 @@ Modulen måste ha stöd för alla plattformar på nivå 1 som stöds av IoT Edge
 
 - Ange en senaste tagg och en versions tagg (till exempel 1.0.1) som är manifestbaserade taggar som skapats med [GitHub manifest-Tool](https://github.com/estesp/manifest-tool).
 
-- Använd fliken erbjudande lista i [partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace) för att lägga till en länk under avsnittet **användbara länkar** i [Azure IoT Edge certifierad enhets katalog](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]}/).
+- Använd fliken erbjudande lista i [partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace) för att lägga till en länk under avsnittet **användbara länkar** i [Azure IoT Edge certifierad enhets katalog](https://devicecatalog.azure.com/devices?certificationBadgeTypes=IoTEdgeCompatible).
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>En delmängd av nivå 1-plattformar som stöds av IoT Edge
 
 Modulen måste ha stöd för en delmängd (minst en) på nivå 1-plattformar som stöds av IoT Edge (som registrerats i [Azure IoT Edge support](../../iot-edge/support.md)). En modul som använder detta plattforms alternativ måste:
 
 - Ange en senaste tagg och en versions tagg (till exempel 1.0.1) som är manifest-taggar som skapats med GitHub [-manifestet,](https://github.com/estesp/manifest-tool) om mer än en plattform stöds. Manifest taggar är valfria endast när en plattform stöds.
-- Använd fliken erbjudande lista i [partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace) för att lägga till en länk under avsnittet **användbara länkar** till minst en IoT Edge enhet från den [Azure IoT Edge certifierade enhets katalogen](https://catalog.azureiotsolutions.com/).
+- Använd fliken erbjudande lista i [partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace) för att lägga till en länk under avsnittet **användbara länkar** till minst en IoT Edge enhet från den [Azure IoT Edge certifierade enhets katalogen](https://devicecatalog.azure.com/).
 
 :::image type="content" source="media/iot-edge-module-technical-assets-offer-listing.png" alt-text="Det här är en bild av avsnittet erbjudande lista i Partner Center":::
 
@@ -54,7 +54,7 @@ Modulen måste ha stöd för en delmängd (minst en) på nivå 1-plattformar som
 
 IoT Edge modulens dimensioner (till exempel processor, RAM, lagring och GPU) på riktade IoT Edge enheter måste uppfylla följande krav:
 
-- Modulen måste fungera med minst en IoT Edge enhet från den [Azure IoT Edge certifierade enhets katalogen](https://catalog.azureiotsolutions.com/).
+- Modulen måste fungera med minst en IoT Edge enhet från den [Azure IoT Edge certifierade enhets katalogen](https://devicecatalog.azure.com/).
 
 - De minsta maskin varu kraven måste vara dokumenterade som det sista stycket i beskrivningen av erbjudandet (under fliken erbjudande lista i [partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace)). Alternativt kan du också ange de rekommenderade maskin varu kraven om de skiljer sig avsevärt. Lägg till exempel till följande avsnitt i slutet av din erbjudande Beskrivning:
 

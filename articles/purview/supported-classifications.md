@@ -6,20 +6,20 @@ ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: reference
-ms.date: 02/05/2021
-ms.openlocfilehash: 37df9a276339b80a81e6ac5d5db14872de9edff4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 4/1/2021
+ms.openlocfilehash: e1d3d495d958465e966701aa7ce91bc2706b48e0
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065862"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219594"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Klassificeringar som stöds i Azure avdelningens kontroll
 
 Den här artikeln innehåller de system klassificeringar som stöds och definieras i Azure avdelningens kontroll (för hands version).
 
 
-- **Distinkt matchnings tröskel**: det totala antalet distinkta data värden som måste hittas i en kolumn innan skannern kör data mönstret på den. Reglerna för system klassificering kräver att det finns minst 8 distinkta värden i varje kolumn för att de ska kunna klassificeras. Systemet måste ha det här värdet för att se till att kolumnen innehåller tillräckligt med data för skannern för att kunna klassificera den korrekt. En kolumn som innehåller flera rader som innehåller värdet 1 klassificeras till exempel inte. Kolumner som innehåller en rad med ett värde och resten av raderna har null-värden får inte heller klassificeras. Om du anger flera mönster gäller det här värdet för var och en av dem.
+- **Distinkt matchnings tröskel**: det totala antalet distinkta data värden som måste hittas i en kolumn innan skannern kör data mönstret på den. Tröskelvärdet för distinkt matchning har inget att göra med mönster matchning, men det är ett krav för mönster matchning. Reglerna för system klassificering kräver att det finns minst 8 distinkta värden i varje kolumn för att de ska kunna klassificeras. Systemet måste ha det här värdet för att se till att kolumnen innehåller tillräckligt med data för skannern för att kunna klassificera den korrekt. En kolumn som innehåller flera rader som innehåller värdet 1 klassificeras till exempel inte. Kolumner som innehåller en rad med ett värde och resten av raderna har null-värden får inte heller klassificeras. Om du anger flera mönster gäller det här värdet för var och en av dem.
 
 - **Minsta matchnings tröskel**: det är den minsta procent andelen data värdes matchningar i en kolumn som måste hittas av skannern för att klassificeringen ska tillämpas. System klassificering svärdet är inställt på 60%.
 

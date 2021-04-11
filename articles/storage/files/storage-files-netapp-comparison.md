@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 3/19/2021
 ms.author: jeffpatt
 ms.openlocfilehash: 652d362a11e80a488c9278dfeff38e715acee784
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105641943"
 ---
 # <a name="azure-files-and-azure-netapp-files-comparison"></a>Jämförelse av Azure Files och Azure NetApp Files
@@ -25,7 +25,7 @@ De flesta arbets belastningar som kräver moln fil lagring fungerar bra på anti
 
 | Kategori | Azure Files | Azure NetApp Files |
 |---------|-------------------------|---------|
-| Description | [Azure Files](https://azure.microsoft.com/services/storage/files/) är en fullständigt hanterad tjänst med hög tillgänglighet och är optimerad för slumpmässiga åtkomst arbets belastningar med data uppdateringar på plats.<br><br> Azure Files bygger på samma plattform för Azure Storage som andra tjänster som Azure-blobbar. | [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) är en fullständigt HANTERAd NAS-tjänst i företags klass som kan hantera de mest krävande arbets belastningarna med hög prestanda och låg latens som kräver avancerade data hanterings funktioner. Det möjliggör migrering av arbets belastningar som betraktas som "går migrera" utan.<br><br>  ANF bygger på NetApp Bare Metal med ONTAP Storage OS som körs i Azure-datacentret för en enhetlig Azure-upplevelse och en lokal som prestanda. |
+| Beskrivning | [Azure Files](https://azure.microsoft.com/services/storage/files/) är en fullständigt hanterad tjänst med hög tillgänglighet och är optimerad för slumpmässiga åtkomst arbets belastningar med data uppdateringar på plats.<br><br> Azure Files bygger på samma plattform för Azure Storage som andra tjänster som Azure-blobbar. | [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) är en fullständigt HANTERAd NAS-tjänst i företags klass som kan hantera de mest krävande arbets belastningarna med hög prestanda och låg latens som kräver avancerade data hanterings funktioner. Det möjliggör migrering av arbets belastningar som betraktas som "går migrera" utan.<br><br>  ANF bygger på NetApp Bare Metal med ONTAP Storage OS som körs i Azure-datacentret för en enhetlig Azure-upplevelse och en lokal som prestanda. |
 | Protokoll | Premium<br><ul><li>SMB 2,1, 3,0</li><li>NFS 4,1 (förhands granskning)</li><li>REST</li></ul><br>Standard<br><ul><li>SMB 2,1, 3,0</li><li>REST</li></ul><br> Läs mer i [tillgängliga fil resurs protokoll](https://docs.microsoft.com/azure/storage/files/storage-files-compare-protocols). | Alla nivåer<br><ul><li>SMB 1, 2. x, 3. x</li><li>NFS 3,0, 4,1</li><li>Åtkomst till dubbla protokoll (NFSv3/SMB)</li></ul><br> Mer information finns i så här skapar du [NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)-, [SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb)-eller [Dual-Protocol-](https://docs.microsoft.com/azure/azure-netapp-files/create-volumes-dual-protocol) volymer. |
 | Tillgänglighet för regioner | Premium<br><ul><li>30 + regioner</li></ul><br>Standard<br><ul><li>Alla regioner</li></ul><br> Mer information finns i [Produkttillgänglighet per region](https://azure.microsoft.com/global-infrastructure/services/?products=storage). | Alla nivåer<br><ul><li>25 + regioner</li></ul><br> Mer information finns i [Produkttillgänglighet per region](https://azure.microsoft.com/global-infrastructure/services/?products=storage). |
 | Redundans | Premium<br><ul><li>LRS</li><li>ZRS</li></ul><br>Standard<br><ul><li>LRS</li><li>ZRS</li><li>GRS</li><li>GZRS</li></ul><br> Mer information finns i [redundans](https://docs.microsoft.com/azure/storage/files/storage-files-planning#redundancy). | Alla nivåer<br><ul><li>Inbyggt lokalt HA</li><li>[Replikering mellan regioner](https://docs.microsoft.com/azure/azure-netapp-files/cross-region-replication-introduction)</li></ul> |
@@ -49,7 +49,7 @@ De flesta arbets belastningar som kräver moln fil lagring fungerar bra på anti
 | Maximal filstorlek | Premium<br><ul><li>4 TiB</li></ul><br>Standard<br><ul><li>1 TiB</li></ul> | Alla nivåer<br><ul><li>16 TiB</li></ul> |
 | Maximalt antal IOPS per fil | Premium<br><ul><li>Upp till 8 000</li></ul><br>Standard<br><ul><li>1 000</li></ul> | Alla nivåer<br><ul><li>Upp till volym gräns</li></ul> |
 | Maximalt data flöde per fil | Premium<br><ul><li>300 MiB/s (upp till 1 GiB/s med SMB Multichannel)</li></ul><br>Standard<br><ul><li>60 MiB/s</li></ul> | Alla nivåer<br><ul><li>Upp till volym gräns</li></ul> |
-| SMB Multichannel | Ja (för[hands version](https://docs.microsoft.com/azure/storage/files/storage-files-smb-multichannel-performance)) | Yes |
+| SMB Multichannel | Ja (för[hands version](https://docs.microsoft.com/azure/storage/files/storage-files-smb-multichannel-performance)) | Ja |
 | Svarstid | Minsta svars tid i millisekunder (2ms till 3ms för små IO-svar) | Lägsta svars tid under millisekunder (<1ms för slumpmässig IO)<br><br>Mer information finns i [prestandatest](https://docs.microsoft.com/azure/azure-netapp-files/performance-benchmarks-linux). |
 
 Mer information om skalbarhets-och prestanda mål finns i [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets) och [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits).

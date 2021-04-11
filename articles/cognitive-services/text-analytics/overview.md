@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 03/09/2021
+ms.date: 03/29/2021
 ms.author: aahi
 keywords: text utvinning, sentiment-analys, text analys
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 7fcc030e3c63c24fa255e578c2d8aaf1b466e99c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b586478b6b3943fb0154ed6c50bade6fd8b08b76
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598974"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219509"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Vad är API för textanalys?
 
@@ -26,6 +26,12 @@ API för textanalys är en molnbaserad tjänst som tillhandahåller NLP-funktion
 API:et är en del av [Azure Cognitive Services](../index.yml), en samling maskininlärnings- och AI-algoritmer i molnet för dina utvecklingsprojekt. Du kan använda dessa funktioner med REST API [version 3,0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) eller [version 3,1 – för hands](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/)version eller [klient biblioteket](quickstarts/client-libraries-rest-api.md).
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
+
+Den här dokumentationen innehåller följande typer av artiklar:
+* [Snabb starter](./quickstarts/client-libraries-rest-api.md) är steg-för-steg-instruktioner som gör att du kan ringa till tjänsten och få resultat under en kort tids period. 
+* [Instruktions guider](./how-tos/text-analytics-how-to-call-api.md) innehåller instruktioner för att använda tjänsten på mer exakta eller anpassade sätt.
+* [Begreppen](text-analytics-user-scenarios.md) ger djupgående förklaringar av tjänstens funktioner och funktioner.
+* [Självstudier](./tutorials/tutorial-power-bi-key-phrases.md) är längre guider som visar hur du använder den här tjänsten som en komponent i bredare affärs lösningar.
 
 ## <a name="sentiment-analysis"></a>Attitydanalys
 

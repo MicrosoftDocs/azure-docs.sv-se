@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: dec9c7581bbcf55196b04e0a76e9e61f81a27244
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6499e4b3404a255025f88488e73da1efb6449296
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104582076"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075959"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Distribuera en virtuell dator med Trusted Launch Enabled (för hands version)
 
@@ -32,27 +32,30 @@ ms.locfileid: "104582076"
 Skapa en virtuell dator med betrodd start aktiverat.
 
 1. Logga in på Azure- [portalen](https://aka.ms/TL_preview).
-1. Sök efter **Virtual Machines**.
-1. Under **tjänster** väljer du **virtuella datorer**.
-1. På sidan **virtuella datorer** väljer du **Lägg till** och väljer sedan **virtuell dator**.
-1. Under **projekt information** kontrollerar du att rätt prenumeration har valts.
-1. Under **resurs grupp** väljer du **Skapa nytt** och skriver ett namn för din resurs grupp eller väljer en befintlig resurs grupp i list rutan.
-1. Under **instans information** anger du ett namn för namnet på den virtuella datorn och väljer en region som stöder [betrodd start](trusted-launch.md#public-preview-limitations).
-1. Under **bild** väljer du en [avbildning som stöder betrodd start](trusted-launch.md#public-preview-limitations). Du kanske bara ser gen 1-versionen av avbildningen, som du kan gå vidare till nästa steg.
-1. Växla över till fliken **Avancerat** genom att markera den överst på sidan.
-1. Rulla ned till avsnittet **VM generation** och välj sedan **gen 2**.
-1. Medan du fortfarande är på fliken **Avancerat** rullar du ned till **betrodd start** och väljer sedan kryss rutan **betrodd start** . Detta gör att ytterligare två alternativ visas – säker start och vTPM. Välj lämpliga alternativ för distributionen.
+   > [!NOTE] 
+   > Portal länken är unik för för hands versionen av betrodd start.
+   >  
+2. Sök efter **Virtual Machines**.
+3. Under **tjänster** väljer du **virtuella datorer**.
+4. På sidan **virtuella datorer** väljer du **Lägg till** och väljer sedan **virtuell dator**.
+5. Under **projekt information** kontrollerar du att rätt prenumeration har valts.
+6. Under **resurs grupp** väljer du **Skapa nytt** och skriver ett namn för din resurs grupp eller väljer en befintlig resurs grupp i list rutan.
+7. Under **instans information** anger du ett namn för namnet på den virtuella datorn och väljer en region som stöder [betrodd start](trusted-launch.md#public-preview-limitations).
+8. Under **bild** väljer du en [avbildning som stöder betrodd start](trusted-launch.md#public-preview-limitations). Du kanske bara ser gen 1-versionen av avbildningen, som du kan gå vidare till nästa steg.
+9. Växla över till fliken **Avancerat** genom att markera den överst på sidan.
+10. Rulla ned till avsnittet **VM generation** och välj sedan **gen 2**.
+11. Medan du fortfarande är på fliken **Avancerat** rullar du ned till **betrodd start** och väljer sedan kryss rutan **betrodd start** . Detta gör att ytterligare två alternativ visas – säker start och vTPM. Välj lämpliga alternativ för distributionen.
 
     :::image type="content" source="media/trusted-launch/trusted-launch-portal.png" alt-text="Skärm bild som visar alternativen för betrodd start.":::
 
-1. Gå tillbaka till fliken **grundläggande** inställningar under **bild** och se till att du ser följande meddelande: **den här avbildningen har stöd för förhands granskning av betrodda starta. Konfigurera på fliken Avancerat**. Du bör nu välja gen 2-avbildningen.
+12. Gå tillbaka till fliken **grundläggande** inställningar under **bild** och se till att du ser följande meddelande: **den här avbildningen har stöd för förhands granskning av betrodda starta. Konfigurera på fliken Avancerat**. Du bör nu välja gen 2-avbildningen.
 
     :::image type="content" source="media/trusted-launch/gen-2-image.png" alt-text="Skärm bild som visar meddelandet som bekräftar att det här är en Gen2-avbildning som stöder betrodd start.":::
 
-1.  Välj en VM-storlek som har stöd för betrodd start. Se listan över [storlekar som stöds](trusted-launch.md#public-preview-limitations).
-1.  Fyll i **administratörens konto** information och sedan **regler för inkommande port**.
-1.  Längst ned på sidan väljer du **Granska + skapa**
-1.  På sidan **skapa en virtuell dator** kan du se information om den virtuella dator som du ska distribuera. När du är klar väljer du **Skapa**.
+13. Välj en VM-storlek som har stöd för betrodd start. Se listan över [storlekar som stöds](trusted-launch.md#public-preview-limitations).
+14. Fyll i **administratörens konto** information och sedan **regler för inkommande port**.
+15. Längst ned på sidan väljer du **Granska + skapa**
+16. På sidan **skapa en virtuell dator** kan du se information om den virtuella dator som du ska distribuera. När du är klar väljer du **Skapa**.
 
     :::image type="content" source="media/trusted-launch/validation.png" alt-text="Sceenshot på sidan verifiering, som visar de betrodda start alternativen ingår.":::
 

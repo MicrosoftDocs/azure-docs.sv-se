@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: caba864e77822ccab649f694df7e63e0ee5d6e51
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de6a80f73a97a5732f00e10107fff2330038210a
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732572"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122024"
 ---
 # <a name="networking"></a>Nätverk
 
@@ -87,7 +87,7 @@ Mer information om inkommande säkerhets regler:
 
 * **Programmet**. Program ports intervallet bör vara tillräckligt stort för att kunna användas för att fastställa slut punkts kravet för dina program. Intervallet ska vara exklusiv från det dynamiska port intervallet på datorn, det vill säga ephemeralPorts-intervallet som angetts i konfigurationen. Service Fabric använder dessa portar när nya portar krävs och tar hand om att öppna brand väggen för dessa portar på noderna.
 
-* **SMB**. SMB-protokollet används av avbildnings Arkiv-tjänsten för två scenarier. Den här porten krävs för att ladda ned paketen från avbildnings Arkiv av noderna samt för att replikera dessa mellan replikerna. 
+* **SMB**. Valfritt, runtime-versionen 7.1 + använder inte SMB som standard. SMB-protokollet används av avbildnings Arkiv-tjänsten för två scenarier. Den här porten krävs för att ladda ned paketen från avbildnings Arkiv av noderna samt för att replikera dessa mellan replikerna. 
 
 * **RDP**. Valfritt, om RDP krävs från Internet eller VirtualNetwork för scenarier med hopp. 
 

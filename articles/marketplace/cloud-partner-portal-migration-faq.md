@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: e606e21fe2b80683737970b92d57ce87b9103144
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: e071692a1c6fe423b048dab884164d9b3c98f1fd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106878"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102613620"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Vanliga frågor om över gång från Cloud Partner Portal till Partner Center
 
@@ -24,7 +24,7 @@ Du kan fortsätta att göra affärer i Partner Center:
 
 | Område | Ändringar |
 | --- | --- |
-| Konto | Du behöver inte skapa ett nytt Partner Center-konto. Du kan använda dina befintliga Cloud Partner Portal autentiseringsuppgifter för att logga in på Partner Center där du nu kommer att hantera ditt konto, användare, behörigheter och fakturering. Publicerings avtalet och företags profil informationen migreras till ditt nya partner Center-konto, tillsammans med eventuell utbetalnings profil information, användar konton och behörigheter samt aktiva erbjudanden. Läs mer i [Hantera ditt kommersiella Marketplace-konto i Partner Center](manage-account.md). |
+| Konto | Du behöver inte skapa ett nytt Partner Center-konto. Du kan använda dina befintliga Cloud Partner Portal autentiseringsuppgifter för att logga in på Partner Center där du nu kommer att hantera ditt konto, användare, behörigheter och fakturering. Publicerings avtalet och företags profil informationen migreras till ditt nya partner Center-konto, tillsammans med eventuell utbetalnings profil information, användar konton och behörigheter samt aktiva erbjudanden. Läs mer i [Hantera ditt kommersiella Marketplace-konto i Partner Center](partner-center-portal/manage-account.md). |
 | Erbjud hanterings upplevelse för publicering och erbjudande | Vi har flyttat dina erbjudande data från Cloud Partner Portal till Partner Center. Du kommer nu att få åtkomst till dina erbjudanden i Partner Center, vilket ger en bättre användar upplevelse och intuitivt gränssnitt. Lär dig hur du [uppdaterar ett befintligt erbjudande i den kommersiella marknads platsen](partner-center-portal/update-existing-offer.md). |
 | Tillgänglighet för dina erbjudanden på den kommersiella marknaden | Inga ändringar. Om ditt erbjudande är aktivt i den kommersiella marknads platsen fortsätter det att vara Live. |
 | Nya inköp och distributioner | Inga ändringar. Dina kunder kan fortsätta att köpa och distribuera erbjudanden utan avbrott. |

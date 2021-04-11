@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: 883b76929ac3310dd3089ecb088a4691adbb4ca1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103010362"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Säkerhets kopiering och återställning i Azure Database for MySQL
@@ -96,7 +96,7 @@ Den uppskattade tiden för återställning av servern beror på flera faktorer:
 ```sql
 select tab.table_schema as database_name, tab.table_name from information_schema.tables tab left join information_schema.table_constraints tco on tab.table_schema = tco.table_schema and tab.table_name = tco.table_name and tco.constraint_type = 'PRIMARY KEY' where tco.constraint_type is null and tab.table_schema not in('mysql', 'information_schema', 'performance_schema', 'sys') and tab.table_type = 'BASE TABLE' order by tab.table_schema, tab.table_name;
 ```
-För en stor eller mycket aktiv databas kan återställningen ta flera timmar. Om det finns ett långvarigt avbrott i en region, är det möjligt att ett stort antal geo-återställnings begär Anden kommer att initieras för haveri beredskap. När det finns många begär Anden kan återställnings tiden för enskilda databaser öka. De flesta databas återställningar slutförs på mindre än 12 timmar.
+För en stor eller mycket aktiv databas kan återställningen ta flera timmar. Efter ett långvarigt avbrott i en region kan ett stort antal förfrågningar om geo-återställning för haveriberedskap initieras ungefär samtidigt. Om många sådana förfrågningar körs samtidigt kan återställningstiden för enskilda databaser öka. De flesta databas återställningar slutförs på mindre än 12 timmar.
 
 > [!IMPORTANT]
 > Borttagna servrar kan bara återställas inom **fem dagar** från borttagningen efter vilken säkerhets kopian tas bort. Säkerhets kopian av databasen kan bara nås och återställas från Azure-prenumerationen som är värd för-servern. Om du vill återställa en släppt Server, se [dokumenterade steg](howto-restore-dropped-server.md). För att skydda server resurser, efter distribution, från oavsiktlig borttagning eller oväntade ändringar, kan administratörer utnyttja [hanterings lås](../azure-resource-manager/management/lock-resources.md).

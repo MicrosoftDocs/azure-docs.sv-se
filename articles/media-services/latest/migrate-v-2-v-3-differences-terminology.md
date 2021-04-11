@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5c1fbaf9be4cb128f0e4390a8c97c6f0b9330ce2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 42c4c91b6715ffec4c734632c69623206bc6dbae
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559884"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076010"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Terminologi och enhets ändringar mellan Media Services v2 och v3
 
@@ -73,7 +73,7 @@ Granska de namngivnings konventioner som tillämpas på Media Services v3-resurs
 | **Kodning** <!--new row --> |||
 | Kodnings bit hastigheter <!--new row --> | bit hastigheter mätt i kbps ex: 128 (kbit/s)| bitar per sekund ex: 128000 (bitar/sekund)|
 | Koda DRM-FairPlay <!--new row --> | I Media Services v2 kan du ange initierings vektor (IV). | Det går inte att ange FairPlay IV i Media Services v3.|
-| Premium-kodare <!--new row --> | Premium-kodare och äldre indexerare| [Premium-kodaren](../previous/media-services-encode-asset.md) och de äldre [Media Analytics-processorerna](../previous/legacy-components.md) (Azure Media Services indexerare 2 för hands version, ansikts bortredigering osv.) är inte tillgängliga via v3. Vi har lagt till stöd för ljud kanal mappning till Standard-kodaren.  Se [ljud i Media Services Encoding Swagger-dokumentationen](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json).  | Se kodnings ämnen i [scenario-baserad kodning](migrate-v-2-v-3-migration-scenario-based-encoding.md) |
+| Premium-kodare <!--new row --> | Premium-kodare och äldre indexerare| [Premium-kodaren](../previous/media-services-encode-asset.md) och de äldre [Media Analytics-processorerna](../previous/legacy-components.md) (Azure Media Services indexerare 2 för hands version, ansikts bortredigering osv.) är inte tillgängliga via v3. Vi har lagt till stöd för ljud kanal mappning till Standard-kodaren.  Se [ljud i Media Services Encoding Swagger-dokumentationen](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json).  <br/> Se kodnings ämnen i [scenario-baserad kodning](migrate-v-2-v-3-migration-scenario-based-encoding.md) |
 | **Transformeringar och jobb** <!--new row -->|||
 | Job based Processing HTTPS <!--new row --> |<!-- empty -->| För filbaserad jobb bearbetning kan du använda en HTTPS-URL som indata. Du behöver inte ha något innehåll som redan är lagrat i Azure, eller så behöver du inte skapa till gångar. |
 | ARM-mallar för jobb <!--new row --> | ARM-mallar fanns inte i v2. | En transformering kan användas för att skapa återanvändbara konfigurationer, skapa Azure Resource Manager mallar och isolera bearbetnings inställningar mellan flera kunder eller klienter. |

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: reference
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6b502690a62410f1e8d2950074e8b479f7dc7f88
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6b9d3f6973c210e7bd91c088ee7a276bfbcc48ce
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104610071"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121990"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid scheman för Media Services händelser
 
@@ -136,7 +136,7 @@ I följande exempel visas schemat för **JobStateChange** -händelsen:
 
 Data-objektet har följande egenskaper:
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
 | previousState | sträng | Jobbets tillstånd före händelsen. |
 | state | sträng | Det nya läget för jobbet som meddelas i den här händelsen. Till exempel "schemalagd: jobbet är klart att starta" eller "slutfört: jobbet har slutförts".|
@@ -206,7 +206,7 @@ För varje slutlig jobb tillstånds ändring (till exempel JobFinished, JobCance
 
 Data-objektet har följande egenskaper:
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
 | utdata | Matris | Hämtar jobbets utdata.|
 
@@ -322,7 +322,7 @@ I följande exempel visas schemat för **LiveEventConnectionRejected** -händels
 
 Data-objektet har följande egenskaper:
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
 | streamId | sträng | Identifierare för strömmen eller anslutningen. Kodare eller kund ansvarar för att lägga till detta ID i inmatnings-URL: en. |  
 | ingest | sträng | Inmatnings-URL som tillhandahålls av Live-händelsen. |  
@@ -330,7 +330,7 @@ Data-objektet har följande egenskaper:
 | encoderPort | sträng | Porten för kodaren från vilken strömmen kommer. |
 | resultCode | sträng | Anledningen till att anslutningen avvisades. Resultat koderna visas i följande tabell. |
 
-Du hittar fel resultat koderna i [fel koder för Live-händelser](../live-event-error-codes.md).
+Du hittar fel resultat koderna i [fel koder för Live-händelser](../live-event-error-codes-reference.md).
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -358,7 +358,7 @@ I följande exempel visas schemat för **LiveEventEncoderConnected** -händelsen
 
 Data-objektet har följande egenskaper:
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
 | streamId | sträng | Identifierare för strömmen eller anslutningen. Kodare eller kund ansvarar för att tillhandahålla detta ID i inmatnings-URL: en. |
 | ingest | sträng | Inmatnings-URL som tillhandahålls av Live-händelsen. |
@@ -392,7 +392,7 @@ I följande exempel visas schemat för **LiveEventEncoderDisconnected** -händel
 
 Data-objektet har följande egenskaper:
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
 | streamId | sträng | Identifierare för strömmen eller anslutningen. Kodare eller kund ansvarar för att lägga till detta ID i inmatnings-URL: en. |  
 | ingest | sträng | Inmatnings-URL som tillhandahålls av Live-händelsen. |  
@@ -400,11 +400,11 @@ Data-objektet har följande egenskaper:
 | encoderPort | sträng | Porten för kodaren från vilken strömmen kommer. |
 | resultCode | sträng | Orsaken till att kodaren kopplar från. Det kan vara en korrekt koppling eller från ett fel. Resultat koderna visas i följande tabell. |
 
-Du hittar fel resultat koderna i [fel koder för Live-händelser](../live-event-error-codes.md).
+Du hittar fel resultat koderna i [fel koder för Live-händelser](../live-event-error-codes-reference.md).
 
 De korrekt resultat koderna för från koppling är:
 
-| Resultatkod | Description |
+| Resultatkod | Beskrivning |
 | ----------- | ----------- |
 | S_OK | Kodaren har kopplats från. |
 | MPE_CLIENT_TERMINATED_SESSION | Kodare frånkopplad (RTMP). |
@@ -442,7 +442,7 @@ I följande exempel visas schemat för **LiveEventIncomingDataChunkDropped** -h�
 
 Data-objektet har följande egenskaper:
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
 | trackType | sträng | Typ av spår (ljud/video). |
 | trackName | sträng | Spårets namn. |
@@ -482,7 +482,7 @@ I följande exempel visas schemat för **LiveEventIncomingStreamReceived** -hän
 
 Data-objektet har följande egenskaper:
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
 | trackType | sträng | Typ av spår (ljud/video). |
 | trackName | sträng | Namnet på spåret (antingen från kodaren eller, om det är RTMP, servern genererar i *TrackType_Bitrate* -format). |
@@ -521,7 +521,7 @@ I följande exempel visas schemat för **LiveEventIncomingStreamsOutOfSync** -h�
 
 Data-objektet har följande egenskaper:
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
 | minLastTimestamp | sträng | Minsta antal senaste tidsstämplar bland alla spår (ljud eller video). |
 | typeOfTrackWithMinLastTimestamp | sträng | Typ av spår (ljud eller video) med minst senaste tidsstämpel. |
@@ -557,7 +557,7 @@ I följande exempel visas schemat för **LiveEventIncomingVideoStreamsOutOfSync*
 
 Data-objektet har följande egenskaper:
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
 | firstTimestamp | sträng | Tidsstämpeln togs emot för en av bildens spår/kvalitets nivåer av typen video. |
 | firstDuration | sträng | Varaktigheten för data segmentet med den första tidsstämpeln. |
@@ -599,7 +599,7 @@ I följande exempel visas schemat för **LiveEventIngestHeartbeat** -händelsen:
 
 Data-objektet har följande egenskaper:
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
 | trackType | sträng | Typ av spår (ljud/video). |
 | trackName | sträng | Namnet på spåret (antingen från kodaren eller, om det är RTMP, servern genererar i *TrackType_Bitrate* -format). |
@@ -643,7 +643,7 @@ I följande exempel visas schemat för **LiveEventTrackDiscontinuityDetected** -
 
 Data-objektet har följande egenskaper:
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
 | trackType | sträng | Typ av spår (ljud/video). |
 | trackName | sträng | Namnet på spåret (antingen från kodaren eller, om det är RTMP, servern genererar i *TrackType_Bitrate* -format). |
@@ -657,7 +657,7 @@ Data-objektet har följande egenskaper:
 
 En händelse har följande data på översta nivån:
 
-| Egenskap | Typ | Description |
+| Egenskap | Typ | Beskrivning |
 | -------- | ---- | ----------- |
 | ämne | sträng | Avsnittet EventGrid. Den här egenskapen har resurs-ID: t för det Media Services kontot. |
 | Ämne | sträng | Resurs Sök vägen för Media Servicess kanalen under Media Services kontot. Genom att sammanfoga ämnet och ämnet får du resurs-ID för jobbet. |
@@ -676,4 +676,4 @@ En händelse har följande data på översta nivån:
 
 - [EventGrid .NET SDK som innehåller media service-händelser](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definitioner av Media Services händelser](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [Fel koder för Live-händelse](../live-event-error-codes.md)
+- [Fel koder för Live-händelse](../live-event-error-codes-reference.md)

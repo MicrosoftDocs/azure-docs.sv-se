@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: dc1ab8bd1a851f7fafd5c001ac73e66973e1b64c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d1b5e490b7c8212e6103e3d169c1b5491d01dde
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102051896"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167438"
 ---
 # <a name="pronunciation-assessment"></a>Uttal av uttal
 
@@ -28,7 +28,7 @@ Lärare kan använda funktionen för att utvärdera uttal av flera högtalare i 
 I den här artikeln lär du dig att konfigurera `PronunciationAssessmentConfig` och hämta `PronunciationAssessmentResult` med hjälp av talet SDK.
 
 > [!NOTE]
-> Funktionen för ututtals bedömning stöder bara språk `en-US` för närvarande.
+> Funktionen för ututtals bedömning stöder för närvarande `en-US` språk, som är tillgänglig i alla [tal-till-text-regioner](regions.md#speech-to-text-text-to-speech-and-translation). Stöd för `en-GB` och `zh-CN` språk är under för hands version, som är tillgängligt `westus` på `eastasia` och `centralindia` regioner.
 
 ## <a name="pronunciation-assessment-with-the-speech-sdk"></a>Uttal av tal-SDK
 
@@ -194,9 +194,63 @@ I den här tabellen visas resultat parametrar för uttal-utvärdering.
 | `PronunciationScore` | Totalt antal poäng som anger uttal av det tal som anges. Detta sammanställs från `AccuracyScore` `FluencyScore` och `CompletenessScore` med vikt. |
 | `ErrorType` | Det här värdet anger om ett ord utelämnas, infogas eller blir dåligt uttalad jämfört med `ReferenceText` . Möjliga värden är `None` (vilket innebär inget fel på det här ordet), `Omission` `Insertion` och `Mispronunciation` . |
 
+### <a name="sample-responses"></a>Exempel svar
+
+En typisk uttals utvärdering resulterar i JSON:
+
+```json
+{
+  "RecognitionStatus": "Success",
+  "Offset": "400000",
+  "Duration": "11000000",
+  "NBest": [
+      {
+        "Confidence" : "0.87",
+        "Lexical" : "good morning",
+        "ITN" : "good morning",
+        "MaskedITN" : "good morning",
+        "Display" : "Good morning.",
+        "PronunciationAssessment":
+        {
+            "PronScore" : 84.4,
+            "AccuracyScore" : 100.0,
+            "FluencyScore" : 74.0,
+            "CompletenessScore" : 100.0,
+        },
+        "Words": [
+            {
+              "Word" : "Good",
+              "Offset" : 500000,
+              "Duration" : 2700000,
+              "PronunciationAssessment":
+              {
+                "AccuracyScore" : 100.0,
+                "ErrorType" : "None"
+              }
+            },
+            {
+              "Word" : "morning",
+              "Offset" : 5300000,
+              "Duration" : 900000,
+              "PronunciationAssessment":
+              {
+                "AccuracyScore" : 100.0,
+                "ErrorType" : "None"
+              }
+            }
+        ]
+      }
+  ]
+}
+```
+
 ## <a name="next-steps"></a>Nästa steg
 
 <!-- TODO: update JavaScript sample links after release -->
+
+* Titta på [video introduktionen](https://www.youtube.com/watch?v=cBE8CUHOFHQ) och [video guiden](https://www.youtube.com/watch?v=zFlwm7N4Awc) om uttal av uttal
+
+* Prova demonstration av [uttals bedömning](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment/BrowserJS)
 
 ::: zone pivot="programming-language-csharp"
 * Se [exempel koden](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L949) på GitHub for uttal-utvärdering.
@@ -219,3 +273,5 @@ I den här tabellen visas resultat parametrar för uttal-utvärdering.
 ::: zone-end
 
 * [Dokumentation om tal SDK-referens](speech-sdk.md)
+
+* [Skapa ett kostnadsfritt Azure-konto](https://azure.microsoft.com/free/cognitive-services/)

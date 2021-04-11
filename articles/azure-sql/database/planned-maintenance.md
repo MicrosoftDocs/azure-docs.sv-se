@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: sstein
 ms.date: 3/23/2021
-ms.openlocfilehash: eedbc46ee5feb0aa6f6a26c3f5b3c67ac8ca0a5e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 259a8581d16f4fd6958a0d9ec2631f667d362b19
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044268"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579467"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Planera för Azures underhålls händelser i Azure SQL Database och Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -35,7 +35,7 @@ Underhålls händelser kan skapa enstaka eller flera omkonfigurationer, beroende
 
 ## <a name="how-to-simulate-a-planned-maintenance-event"></a>Så här simulerar du ett planerat underhålls evenemang
 
-Att se till att klient programmet är elastiskt för underhålls händelser innan distribution till produktion bidrar till att minska risken för program fel och kommer att bidra till programmets tillgänglighet för slutanvändarna. Du kan testa beteendet för klient programmet under planerade underhålls händelser genom att [initiera manuell redundansväxling](https://aka.ms/mifailover-techblog) via POWERSHELL, CLI eller REST API. Den genererar samma beteende som underhålls händelse som tar den primära repliken offline.
+Att se till att klient programmet är elastiskt för underhålls händelser innan distribution till produktion bidrar till att minska risken för program fel och kommer att bidra till programmets tillgänglighet för slutanvändarna. Du kan testa beteendet för klient programmet under planerade underhålls händelser genom att [testa program Fels återhämtning](https://docs.microsoft.com/azure/azure-sql/database/high-availability-sla#testing-application-fault-resiliency) via POWERSHELL, CLI eller REST API. Se även [inledande manuell redundans](https://aka.ms/mifailover-techblog) för hanterad instans. Den genererar samma beteende som underhålls händelse som tar den primära repliken offline.
 
 ## <a name="retry-logic"></a>Logik för omprövning
 

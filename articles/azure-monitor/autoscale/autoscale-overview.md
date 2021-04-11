@@ -5,10 +5,10 @@ ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 4727d562e21b92e58c8091f1161cf53198ff0b26
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101726010"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Översikt över autoskalning i Microsoft Azure
@@ -81,8 +81,8 @@ Kod exempel finns i
 * [Avancerad automatisk skalnings konfiguration med Resource Manager-mallar för VM Scale Sets](autoscale-virtual-machine-scale-sets.md)  
 * [Skala REST API](/rest/api/monitor/autoscalesettings)
 
-## <a name="horizontal-vs-vertical-scaling"></a>Horisontell vs vertikal skalning
-Autoskalning skalas bara vågrätt, vilket är en ökning ("out") eller minskning ("i") i antalet VM-instanser.  Horisontellt är mer flexibelt i en moln situation eftersom det gör att du kan köra potentiellt tusentals virtuella datorer för att hantera belastningen.
+## <a name="horizontal-vs-vertical-scaling&quot;></a>Horisontell vs vertikal skalning
+Autoskalning skalas bara vågrätt, vilket är en ökning (&quot;out") eller minskning ("i") i antalet VM-instanser.  Horisontellt är mer flexibelt i en moln situation eftersom det gör att du kan köra potentiellt tusentals virtuella datorer för att hantera belastningen.
 
 Den lodräta skalningen är däremot annorlunda. Det behåller samma antal virtuella datorer, men gör de virtuella datorerna mer ("upp") eller mindre ("nere") kraftfulla. Kraften mäts i minnet, CPU-hastigheten, disk utrymmet osv.  Vertikal skalning har fler begränsningar. Det beror på tillgängligheten för större maskin vara, vilket snabbt når en övre gräns och kan variera beroende på region. Vertikal skalning kräver vanligt vis att en virtuell dator stoppas och startas om.
 

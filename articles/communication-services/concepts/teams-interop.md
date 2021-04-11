@@ -9,14 +9,16 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8b641ec37d134303ae6b31c092cd3c50811477a7
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.openlocfilehash: cf6553cd7c59febd19f9654e31188f127b8eb065
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
-ms.locfileid: "105108425"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276764"
 ---
 # <a name="teams-interoperability"></a>Samverkan mellan team
+
+[!INCLUDE [Public Preview](../includes/public-preview-include-document.md)]
 
 > [!IMPORTANT]
 > Fyll i [det här formuläret](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)om du vill aktivera/inaktivera [team innehavarens interoperabilitet](../concepts/teams-interop.md).
@@ -41,7 +43,7 @@ När en kommunikations tjänst användare ansluter till Teams mötet, visas det 
 
 Service Teams lag för kommunikations tjänster är för närvarande i privat för hands version. När det är allmänt tillgängligt behandlas kommunikations tjänst användare som "externa åtkomst användare". Lär dig mer om extern åtkomst i [samtal, chatta och samar beta med personer utanför organisationen i Microsoft Teams](/microsoftteams/communicate-with-users-from-other-organizations).
 
-Kommunikations tjänst användare kan ansluta till schemalagda team möten så länge anonyma kopplingar är aktiverade i [Mötes inställningarna](/microsoftteams/meeting-settings-in-teams).
+Kommunikations tjänst användare kan ansluta till schemalagda team möten så länge anonyma kopplingar är aktiverade i [Mötes inställningarna](/microsoftteams/meeting-settings-in-teams). Om mötet är schemalagt för en kanal kommer kommunikations tjänst användare inte att kunna ansluta till chatten eller skicka och ta emot meddelanden.
 
 ## <a name="teams-in-government-clouds-gcc"></a>Team i offentliga moln (GCC)
 Samverkan med Azure Communication Services är inte kompatibelt med team distributioner med hjälp av [Microsoft 365 offentliga moln (GCC)](/MicrosoftTeams/plan-for-government-gcc) för tillfället. 

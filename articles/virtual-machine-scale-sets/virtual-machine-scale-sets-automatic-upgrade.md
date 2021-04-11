@@ -9,12 +9,12 @@ ms.subservice: automatic-os-upgrade
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 9194ab70e37c0659e77cbe9c10ffca10e1a76de8
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 39649d9fc12e78f962fac25a12db796b71015db8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011876"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934554"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatiska uppgraderingar av OS-avbildningar i skalningsuppsättningar med virtuella Azure-datorer
 
@@ -79,7 +79,7 @@ Följande plattforms-SKU: er stöds för närvarande (och fler läggs till regel
 ### <a name="service-fabric-requirements"></a>Service Fabric krav
 
 Om du använder Service Fabric, se till att följande villkor är uppfyllda:
--   Service Fabric [hållbarhets nivå](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) är silver eller guld och inte brons (förutom endast tillstånds lösa nodetypes, som stöder automatiska OS-uppgraderingar).
+-   Service Fabric [hållbarhets nivå](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) är silver eller guld och inte brons.
 -   Service Fabric-tillägget i modell definitionen för skalnings uppsättningen måste ha TypeHandlerVersion 1,1 eller senare.
 -   Hållbarhets nivån ska vara samma på Service Fabric klustret och Service Fabric tillägget i modell definitionen för skalnings uppsättningen.
 - Det krävs ingen ytterligare hälso avsökning eller användning av program hälso tillägg.
@@ -163,7 +163,7 @@ Belastnings Utjämnings avsökningen kan refereras i *networkProfile* i skalning
 ```
 
 > [!NOTE]
-> När du använder automatiska OS-uppgraderingar med Service Fabric distribueras den nya operativ system avbildningen av uppdaterings domänen av en uppdaterings domän för att upprätthålla hög tillgänglighet för de tjänster som körs i Service Fabric. Om du vill använda automatiska OS-uppgraderingar i Service Fabric ditt klusters NodeType måste konfigureras för att använda silver hållbarhets nivån eller högre. För brons hållbarhets nivån stöds automatisk uppgradering av operativ system endast för tillstånds lösa nodetypes. Mer information om hållbarhets egenskaperna för Service Fabric kluster finns i [den här dokumentationen](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster).
+> När du använder automatiska OS-uppgraderingar med Service Fabric distribueras den nya operativ system avbildningen av uppdaterings domänen av en uppdaterings domän för att upprätthålla hög tillgänglighet för de tjänster som körs i Service Fabric. Om du vill använda automatiska operativ Systems uppgraderingar i Service Fabric klustret måste konfigureras för att använda silver hållbarhets nivån eller högre. Mer information om hållbarhets egenskaperna för Service Fabric kluster finns i [den här dokumentationen](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster).
 
 ### <a name="keep-credentials-up-to-date"></a>Behåll autentiseringsuppgifterna aktuella
 Om din skalnings uppsättning använder autentiseringsuppgifter för att komma åt externa resurser, till exempel ett VM-tillägg som kon figurer ATS för att använda en SAS-token för lagrings kontot, kontrollerar du att autentiseringsuppgifterna har uppdaterats. Om autentiseringsuppgifter, inklusive certifikat och token, har upphört att gälla, Miss lyckas uppgraderingen och den första batchen av virtuella datorer kommer att lämnas i ett felaktigt tillstånd.

@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2f608843e27b79d02697df8e2a7f2aba6695e10a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5287fe6df4a2f0cb728bf0e705a4ce989ca38487
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "80878433"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934044"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurera ansikts Docker-behållare
 
@@ -67,7 +67,7 @@ Konfigurations inställningarna i `CloudAI` avsnittet innehåller enhetsspecifik
 
 ### <a name="storage-scenario-settings"></a>Inställningar för lagrings scenario
 
-Behållaren ansikte lagrar BLOB-, cache-, metadata-och Queue-data, beroende på vad som lagras. Till exempel lagras utbildnings index och resultat för en stor person grupp som BLOB-data. Ansikts behållaren innehåller två olika lagrings scenarier när du interagerar med och lagrar dessa typer av data:
+Behållaren ansikte lagrar BLOB-, cache-, metadata-och Queue-data, beroende på vad som lagras. Till exempel lagras utbildnings index och resultat för en **LargePersonGroup** som BLOB-data. Ansikts behållaren innehåller två olika lagrings scenarier när du interagerar med och lagrar dessa typer av data:
 
 * Minne  
   Alla fyra typer av data lagras i minnet. De är inte distribuerade eller är inte permanenta. Om ansikts behållaren har stoppats eller tagits bort, förstörs alla data i lagrings utrymmet för den behållaren.  

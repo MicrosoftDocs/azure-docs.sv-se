@@ -3,12 +3,12 @@ title: Azure Event Grid leverans och försök igen
 description: Beskriver hur Azure Event Grid levererar händelser och hur de hanterar meddelanden som inte levererats.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: e7fa627464ddb85ebded3ae99229b7fe8dd3fde3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e24b7540ea1ac41774e2c23781265f9a61940cb1
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629282"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276747"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid meddelande leverans och försök igen
 
@@ -17,7 +17,7 @@ I den här artikeln beskrivs hur Azure Event Grid hanterar händelser när lever
 Event Grid tillhandahåller varaktig leverans. Den levererar varje meddelande **minst en gång** för varje prenumeration. Händelser skickas till den registrerade slut punkten för varje prenumeration direkt. Om en slut punkt inte bekräftar mottagandet av en händelse Event Grid försök att leverera händelsen igen.
 
 > [!NOTE]
-> Event Grid garanterar inte för händelse leverans, så prenumeranten kan ta emot dem i rätt ordning. 
+> Event Grid garanterar inte att en händelse levereras, så prenumeranterna kan ta emot dem i rätt ordning. 
 
 ## <a name="batched-event-delivery"></a>Leverans av batch-händelser
 
@@ -55,11 +55,11 @@ Mer information om hur du använder Azure CLI med Event Grid finns i [dirigera l
 
 ## <a name="retry-schedule-and-duration"></a>Schema och varaktighet för omförsök
 
-När EventGrid tar emot ett fel för ett händelse leverans försök, bestämmer EventGrid om det ska försöka igen eller ta bort den eller ta bort händelsen baserat på typen av fel. 
+När EventGrid tar emot ett fel för ett händelse leverans försök, bestämmer EventGrid om det ska försöka igen, obeställbara händelsen eller släppa händelsen baserat på typen av fel. 
 
-Om felet som returnerades av den prenumererade slut punkten är konfigurations relaterat fel som inte kan åtgärdas med återförsök (till exempel om slut punkten tas bort), kommer EventGrid antingen att utföra inaktive brevning av händelsen eller släppa händelsen om den inte har kon figurer ATS.
+Om felet som returnerades av den prenumererade slut punkten är ett konfigurations relaterat fel som inte kan åtgärdas med återförsök (till exempel om slut punkten tas bort), kommer EventGrid antingen att utföra obeställbara meddelanden vid händelsen eller släppa händelsen om ingen obeställbara meddelanden har kon figurer ATS.
 
-Nedan visas de typer av slut punkter för vilka försök inte sker:
+I följande tabell beskrivs de typer av slut punkter och fel som inte går att utföra:
 
 | Typ av slutpunkt | Felkoder |
 | --------------| -----------|
@@ -67,7 +67,7 @@ Nedan visas de typer av slut punkter för vilka försök inte sker:
 | Webhook | 400 Felaktig begäran, 413 begär ande enhet för stor, 403 förbjuden, 404 hittades inte, 401 obehörig |
  
 > [!NOTE]
-> Om Dead-Letter inte har kon figurer ATS för slut punkt försvinner händelserna när ovanstående fel inträffar. Överväg att konfigurera obeställbara meddelanden om du inte vill att dessa typer av händelser ska släppas.
+> Om Dead-Letter inte har kon figurer ATS för en slut punkt försvinner händelserna när ovanstående fel inträffar. Överväg att konfigurera Dead-Letter om du inte vill att dessa typer av händelser ska släppas.
 
 Om felet som returnerades av den prenumererade slut punkten inte finns i listan ovan, utför EventGrid det nya försöket med principer som beskrivs nedan:
 
@@ -115,7 +115,7 @@ Det senaste försöket att leverera en händelse är en fördröjning på fem mi
 
 Innan du anger platsen för obeställbara meddelanden måste du ha ett lagrings konto med en behållare. Du anger slut punkten för den här behållaren när du skapar händelse prenumerationen. Slut punkten har formatet: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
 
-Du kanske vill bli meddelad när en händelse har skickats till platsen för obeställbara meddelanden. Om du vill använda Event Grid för att svara på Ej levererade händelser [skapar du en händelse prenumeration](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) för blob-lagringen med obeställbara meddelanden. Varje gång en blob-lagring med obeställbara meddelanden tar emot en händelse som inte levererats meddelar Event Grid din hanterare. Hanteraren svarar med åtgärder som du vill vidta för att stämma av ej levererade händelser. Ett exempel på hur du konfigurerar en kö för obeställbara meddelanden och återförsöks principer finns i [principer för obeställbara brev och återförsök](manage-event-delivery.md).
+Du kanske vill bli meddelad när en händelse har skickats till platsen för obeställbara meddelanden. Om du vill använda Event Grid för att svara på Ej levererade händelser [skapar du en händelse prenumeration](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) för blob-lagringen med obeställbara meddelanden. Varje gång en blob-lagring med obeställbara meddelanden tar emot en händelse som inte levererats meddelar Event Grid din hanterare. Hanteraren svarar med åtgärder som du vill vidta för att stämma av ej levererade händelser. Ett exempel på att skapa en plats för obeställbara meddelanden och principer för återförsök finns i [principer för obeställbara brev och nya försök](manage-event-delivery.md).
 
 ## <a name="delivery-event-formats"></a>Leverans händelse format
 Det här avsnittet innehåller exempel på händelser och meddelanden om obeställbara meddelanden i olika leverans schema format (Event Grid schema, CloudEvents 1,0-schema och anpassat schema). Mer information om dessa format finns i [Event Grid schema](event-schema.md) -och [moln händelser 1,0 schema](cloud-event-schema.md) artiklar. 
@@ -288,7 +288,7 @@ Alla andra koder som inte finns i ovanstående uppsättning (200-204) betraktas 
 | 503 Tjänsten är inte tillgänglig | Försök igen om 30 sekunder eller mer |
 | Alla andra | Försök igen om 10 sekunder eller mer |
 
-## <a name="delivery-with-custom-headers"></a>Leverans med anpassade rubriker
+## <a name="custom-delivery-properties"></a>Anpassade leverans egenskaper
 Med händelse prenumerationer kan du konfigurera HTTP-huvuden som ingår i levererade händelser. Med den här funktionen kan du ange anpassade huvuden som krävs av ett mål. Du kan ställa in upp till 10 huvuden när du skapar en händelse prenumeration. Varje rubrik värde får inte vara större än 4 096 (4K) byte. Du kan ange anpassade rubriker för de händelser som levereras till följande destinationer:
 
 - Webhooks
@@ -296,7 +296,7 @@ Med händelse prenumerationer kan du konfigurera HTTP-huvuden som ingår i lever
 - Azure Event Hubs
 - Relä Hybridanslutningar
 
-Mer information finns i avsnittet [om leverans med anpassade sidhuvuden](delivery-properties.md). 
+Mer information finns i [anpassade leverans egenskaper](delivery-properties.md). 
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: bbac794263fec176e03c7148d860c479a2ed9d39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57d5627e45e79263408b9b5760c8332122ce8c91
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501236"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167404"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Redigera grafiska runbooks i Azure Automation
 
@@ -328,19 +328,19 @@ Använd [jämförelse operatorer](/powershell/module/microsoft.powershell.core/a
 Följande villkor avgör till exempel om den virtuella datorn från en aktivitet som heter `Get-AzureVM` är stoppad.
 
 ```powershell-interactive
-$ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
+$ActivityOutput["Get-AzureVM"].PowerState -eq "Stopped"
 ```
 
 Följande villkor avgör om samma virtuella dator är i något annat tillstånd än stoppad.
 
 ```powershell-interactive
-$ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
+$ActivityOutput["Get-AzureVM"].PowerState -ne "Stopped"
 ```
 
 Du kan koppla flera villkor i din Runbook med hjälp av en [logisk operator](/powershell/module/microsoft.powershell.core/about/about_logical_operators), till exempel `-and` eller `-or` . Följande villkor kontrollerar till exempel om den virtuella datorn i föregående exempel är i tillståndet Stoppad eller stoppad.
 
 ```powershell-interactive
-($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
+($ActivityOutput["Get-AzureVM"].PowerState -eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState -eq "Stopping")
 ```
 
 ### <a name="use-hashtables"></a>Använd hash

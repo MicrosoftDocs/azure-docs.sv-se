@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 03/31/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0805ac84318a4fee98c30127ac80c0dac2b96309
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8774df6a2eee15f8b5a0c37362e5b20f14b07549
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558269"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167370"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Konfigurera tillfälligt åtkomst pass i Azure AD för att registrera metoder för lösen ords lös autentisering (för hands version)
 
@@ -57,7 +57,7 @@ Så här konfigurerar du principen för temporär åtkomst pass-autentiseringsme
    | Användning i taget | Falskt | True/false | När principen är inställd på false kan pass i klienten användas antingen en gång eller mer än en gång under giltighets tiden (högsta livstid). Genom att framtvinga användning av en gång i den tillfälliga åtkomst pass-principen skapas alla pass som skapats i klient organisationen som en engångs användning. |
    | Längd | 8 | 8-48 tecken | Definierar längden på lösen ordet. |
 
-## <a name="create-a-temporary-access-pass-in-the-azure-ad-portal"></a>Skapa ett tillfälligt åtkomst pass i Azure AD-portalen
+## <a name="create-a-temporary-access-pass"></a>Skapa ett tillfälligt åtkomst pass
 
 När du har aktiverat en princip kan du skapa ett tillfälligt åtkomst pass för en användare i Azure AD. Dessa roller kan utföra följande åtgärder som rör ett tillfälligt åtkomst pass.
 
@@ -66,9 +66,7 @@ När du har aktiverat en princip kan du skapa ett tillfälligt åtkomst pass fö
 - Autentiserings administratörer kan skapa, ta bort och visa ett tillfälligt åtkomst pass på medlemmar (förutom själva)
 - Global administratör kan visa information om tillfälliga åtkomst pass för användaren (utan att läsa själva koden).
 
-Så här skapar du ett tillfälligt åtkomst pass:
-
-1. Logga in på portalen som global administratör, Privileged Authentication Administrator eller Authentication Administrator. 
+1. Logga in på Azure Portal som global administratör, privilegie rad autentisering administratör eller administratör för autentisering. 
 1. Klicka på **Azure Active Directory**, bläddra till användare, Välj en användare, till exempel *Christer grönt*, och välj **autentiseringsmetoder**.
 1. Om det behövs väljer du alternativet för att **testa den nya metoden** för användarautentisering.
 1. Välj alternativet för att **lägga till autentiseringsmetoder**.
@@ -80,6 +78,30 @@ Så här skapar du ett tillfälligt åtkomst pass:
 1. När det har lagts till visas information om det tillfälliga åtkomst passet. Anteckna det faktiska värdet för tillfälligt åtkomst pass. Du anger det här värdet för användaren. Du kan inte Visa det här värdet när du har klickat på **OK**.
    
    ![Skärm bild av information om tillfälligt åtkomst pass](./media/how-to-authentication-temporary-access-pass/details.png)
+
+Följande kommandon visar hur du skapar och får ett tillfälligt åtkomst pass med hjälp av PowerShell:
+
+```powershell
+# Create a Temporary Access Pass for a user
+$properties = @{}
+$properties.isUsableOnce = $True
+$properties.startDateTime = '2021-03-11 06:00:00'
+$propertiesJSON = $properties | ConvertTo-Json
+
+New-MgUserAuthenticationTemporaryAccessPassMethod -UserId user2@contoso.com -BodyParameter $propertiesJSON
+
+Id                                   CreatedDateTime       IsUsable IsUsableOnce LifetimeInMinutes MethodUsabilityReason StartDateTime         TemporaryAccessPass
+--                                   ---------------       -------- ------------ ----------------- --------------------- -------------         -------------------
+c5dbd20a-8b8f-4791-a23f-488fcbde3b38 9/03/2021 11:19:17 PM False    True         60                NotYetValid           11/03/2021 6:00:00 AM TAPRocks!
+
+# Get a user's Temporary Access Pass
+Get-MgUserAuthenticationTemporaryAccessPassMethod -UserId user3@contoso.com
+
+Id                                   CreatedDateTime       IsUsable IsUsableOnce LifetimeInMinutes MethodUsabilityReason StartDateTime         TemporaryAccessPass
+--                                   ---------------       -------- ------------ ----------------- --------------------- -------------         -------------------
+c5dbd20a-8b8f-4791-a23f-488fcbde3b38 9/03/2021 11:19:17 PM False    True         60                NotYetValid           11/03/2021 6:00:00 AM
+
+```
 
 ## <a name="use-a-temporary-access-pass"></a>Använd ett tillfälligt åtkomst pass
 
@@ -108,6 +130,13 @@ Det går inte att använda ett tillfälligt slutat åtkomst pass. Under **autent
 1. Bläddra till **användare** på Azure AD-portalen, Välj en användare, t. ex. *Tryck på användare* och välj **autentiseringsmetoder**.
 1. På den högra sidan av autentiseringsmetoden **temporär åtkomst pass (förhands granskning)** som visas i listan väljer du **ta bort**.
 
+Du kan också använda PowerShell:
+
+```powershell
+# Remove a user's Temporary Access Pass
+Remove-MgUserAuthenticationTemporaryAccessPassMethod -UserId user3@contoso.com -TemporaryAccessPassAuthenticationMethodId c5dbd20a-8b8f-4791-a23f-488fcbde3b38
+```
+
 ## <a name="replace-a-temporary-access-pass"></a>Ersätta ett tillfälligt åtkomst pass 
 
 - En användare kan bara ha ett tillfälligt åtkomst pass. Lösen ordet kan användas under start-och slut tiden för det tillfälliga åtkomst passet.
@@ -123,8 +152,8 @@ Tänk på följande begränsningar:
 
 - När du använder ett temporärt åtkomst pass för att registrera en lösen ords lös metod som t. ex. FIDO2 eller telefonin loggning måste användaren slutföra registreringen inom 10 minuters inloggning med ett temporärt åtkomst pass i taget. Den här begränsningen gäller inte för ett tillfälligt åtkomst pass som kan användas mer än en gång.
 - Gäst användare kan inte logga in med ett tillfälligt åtkomst pass.
-- Användare i omfång för registrerings principen för självbetjänings återställning (SSPR) krävs för att registrera en av SSPR-metoderna när de har loggat in med ett tillfälligt åtkomst pass. Om användaren bara kommer att använda FIDO2-nyckeln utesluter du dem från SSPR-principen eller inaktiverar registrerings principen för SSPR. 
-- Det går inte att använda ett tillfälligt åtkomst pass med nätverks princip Server (NPS)-tillägget och Active Directory Federation Services (AD FS) (AD FS)-kortet.
+- Användare i omfång för registrerings principen för självbetjänings återställning (SSPR) *eller* [identitets skydd Multi-Factor Authentication](../identity-protection/howto-identity-protection-configure-mfa-policy.md) måste registrera autentiseringsmetoder när de har loggat in med ett tillfälligt åtkomst pass. Användare inom omfånget för dessa principer kommer att omdirigeras till [avbrotts läget i den kombinerade registreringen](concept-registration-mfa-sspr-combined.md#combined-registration-modes). Den här upplevelsen stöder för närvarande inte registrering av FIDO2 och telefonin loggning. 
+- Det går inte att använda ett tillfälligt åtkomst pass med nätverks princip Server (NPS)-tillägget och Active Directory Federation Services (AD FS) (AD FS)-kortet, eller under Installationsprogrammet för Windows/out-of-Box-Experience (OOBE) och autopilot. 
 - När sömlös SSO är aktiverat på klient organisationen uppmanas användarna att ange ett lösen ord. Länken **Använd ditt tillfälliga åtkomst pass** är tillgänglig för användaren att logga in med ett tillfälligt åtkomst pass.
 
   ![Skärm bild av Använd ett tillfälligt åtkomst pass i stället](./media/how-to-authentication-temporary-access-pass/alternative.png)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 1b47ad27abbe59eceabd15d091f88f4659d8dad6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 592a9b89379094c88881c3c8485c7e38a1613b34
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102486394"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219492"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Global data distribution med Azure Cosmos DB – under huven
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -61,7 +61,7 @@ Med tjänsten kan du konfigurera dina Cosmos-databaser med antingen en enda Skri
 
 ## <a name="conflict-resolution"></a>Konfliktlösning
 
-Vår design för uppdaterings spridning, konflikt lösning och orsakssamband är inspirerad från föregående arbete på [algoritmer för epidemier](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) och [Bayou](https://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf) -systemet. Även om kärnan i idéerna har överleva och innehåller en lämplig referens ram för att kommunicera Cosmos DBens system design, har de också genomgått en betydande transformering som vi tillämpade dem på Cosmos DB systemet. Detta krävdes, eftersom de tidigare systemen inte har utformats än med resurs styrningen eller den skala som Cosmos DB behöver för att fungera, eller för att tillhandahålla funktioner (till exempel begränsat föråldrad konsekvens) och de stränga och omfattande service avtal som Cosmos DB levererar till sina kunder.  
+Vår design för uppdaterings spridning, konflikt lösning och orsakssamband är inspirerad från föregående arbete på [algoritmer för epidemier](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) och [Bayou](https://people.cs.umass.edu/~mcorner/courses/691M/papers/terry.pdf) -systemet. Även om kärnan i idéerna har överleva och innehåller en lämplig referens ram för att kommunicera Cosmos DBens system design, har de också genomgått en betydande transformering som vi tillämpade dem på Cosmos DB systemet. Detta krävdes, eftersom de tidigare systemen inte har utformats än med resurs styrningen eller den skala som Cosmos DB behöver för att fungera, eller för att tillhandahålla funktioner (till exempel begränsat föråldrad konsekvens) och de stränga och omfattande service avtal som Cosmos DB levererar till sina kunder.  
 
 Kom ihåg att en partitionsuppsättning är fördelad i flera regioner och följer Cosmos databaser (Multi-region skrivningar) för att replikera data mellan de fysiska partitionerna med en angiven partitions uppsättning. Varje fysisk partition (av en partitionsuppsättning) accepterar skrivningar och hanterar läsningar vanligt vis till de klienter som är lokala i den regionen. Skrivningar som godkänns av en fysisk partition inom en region är varaktigt allokerade och har hög tillgänglighet i den fysiska partitionen innan de bekräftas till klienten. Dessa är preliminära skrivningar och sprids till andra fysiska partitioner i partitionsuppsättningen med hjälp av en kanal för att skapa en-entropi. Klienter kan begära antingen preliminära eller bekräftade skrivningar genom att skicka ett begär ande huvud. Spridningen av en entropi (inklusive frekvensen för spridning) är dynamisk, baserat på topologin för partitionens uppsättning, regionala närhet av de fysiska partitionerna och den konsekvens nivå som kon figurer ATS. I en partitionsuppsättning Cosmos DB efter ett primärt genomförande schema med en dynamiskt vald Arbiter-partition. Arbiter-valet är dynamiskt och är en del av omkonfigurationen av partitionsuppsättningen baserat på överläggets topologi. Genomförda skrivningar (inklusive flera rader/batch-uppdateringar) garanteras vara beställda. 
 
