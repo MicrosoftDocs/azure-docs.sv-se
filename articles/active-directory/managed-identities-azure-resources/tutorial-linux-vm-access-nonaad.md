@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/10/2020
+ms.date: 12/16/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb31d6e25ce1c1ff5c3e4dbabb4fa53da0bd2ef3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61673210dafbdbdbc56477ed58fb0cbe9335efcf
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093927"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012698"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Självstudie: Använda en systemtilldelad hanterad identitet för en virtuell Linux-dator för åtkomst till Azure Key Vault 
 
@@ -94,7 +94,15 @@ Den hanterade identitet som används av den virtuella datorn måste beviljas åt
 ## <a name="access-data"></a>Åtkomst till data
 
 För att slutföra de här stegen behöver du en SSH-klient.  Om du använder Windows kan du använda SSH-klienten i [Windows-undersystemet för Linux](/windows/wsl/about). Om du behöver hjälp att konfigurera SSH-klientens nycklar läser du [Så här använder du SSH-nycklar med Windows i Azure](../../virtual-machines/linux/ssh-from-windows.md) eller [How to create and use an SSH public and private key pair for Linux VMs in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) (Skapa och använda SSH-nyckelpar med privata och offentliga nycklar för virtuella Linux-datorer i Azure).
- 
+
+>[!IMPORTANT]
+> Alla Azure-SDK: er har stöd för Azure. Identity-biblioteket som gör det enkelt att förvärva Azure AD-token för att få åtkomst till mål tjänsterna. Lär dig mer om [Azure-SDK](https://azure.microsoft.com/downloads/) : er och utnyttja Azure. Identity-biblioteket.
+> - [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme?view=azure-dotnet)
+> - [PROGRAMMERINGSSPRÅKET](https://docs.microsoft.com/java/api/overview/azure/identity-readme?view=azure-java-stable)
+> - [Java](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme?view=azure-node-latest)
+> - [Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python)
+
+
 1. I portalen går du till den virtuella Linux-datorn och i **översikten** klickar du på **Anslut**. 
 2. **Anslut** till den virtuella datorn med valfri SSH-klient. 
 3. Använd CURL i terminalfönstret och skicka en begäran till de lokala hanterade identiteterna för Azure-resursslutpunkter för att hämta en åtkomsttoken för Azure Key Vault.  

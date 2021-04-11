@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: fbcdef0002a227d5319fc01e625146480e4c99fc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 047b295d68e872b4dc334e53b5b9da0ec07d5826
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043758"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257083"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Konfigurera ett registrerings-och inloggnings flöde i Azure Active Directory B2C
 
@@ -91,7 +91,7 @@ Användar flödet för registrering och inloggning hanterar både registrering o
 
 ## <a name="create-a-sign-up-and-sign-in-policy"></a>Skapa en registrerings-och inloggnings princip
 
-Anpassade principer är en uppsättning XML-filer som du överför till din Azure AD B2C-klient för att definiera användar resor. Vi tillhandahåller start paket med flera fördefinierade principer, inklusive: registrering och inloggning, lösen ords återställning och profil redigerings princip. Mer information finns i [Kom igång med anpassade principer i Azure AD B2C](custom-policy-get-started.md).
+Anpassade principer är en uppsättning XML-filer som du överför till din Azure AD B2C-klient för att definiera användar resor. Vi tillhandahåller start paket med flera fördefinierade principer, inklusive: registrering och inloggning, lösen ords återställning och profil redigerings princip. Mer information finns i [Kom igång med anpassade principer i Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy).
 
 ::: zone-end
 

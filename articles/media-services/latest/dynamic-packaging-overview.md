@@ -3,22 +3,18 @@ title: Dynamisk paketering i Azure Media Services v3
 description: Den här artikeln ger en översikt över dynamisk paketering i Azure Media Services.
 author: myoungerman
 manager: femila
-editor: ''
 services: media-services
-documentationcenter: ''
 ms.service: media-services
 ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4f4f53d4a20397f38b565cb73e74b01d15cc3022
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e396841231659c27f199a7353565c5d69e02877
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102633061"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106062003"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamisk paketering i Media Services v3
 
@@ -41,7 +37,7 @@ Om du vill göra videor i kodad till gång tillgängliga för klienter för upps
 
 Detta innebär att du bara behöver lagra och betala för filerna i ett enda lagringsformat, och Media Services-tjänsten skapar och ger lämplig respons baserat på begäranden från en klient.
 
-Om du planerar att skydda ditt innehåll med hjälp av Media Services dynamisk kryptering, se [strömmande protokoll och krypterings typer](content-protection-overview.md#streaming-protocols-and-encryption-types).
+Om du planerar att skydda ditt innehåll med hjälp av Media Services dynamisk kryptering, se [strömmande protokoll och krypterings typer](drm-content-protection-concept.md#streaming-protocols-and-encryption-types).
 
 ### <a name="hls-protocol"></a>HLS-protokoll
 
@@ -49,9 +45,9 @@ Den strömmande klienten kan ange följande HLS-format:
 
 |Protokoll|Exempel|
 |---|---|
-|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
-|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
-|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
+|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
+|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
+|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
 
 > [!NOTE]
 > Tidigare rikt linjer från Apple rekommenderar att återställningen för nätverk med liten bandbredd var att tillhandahålla en ljud ström.  Vid tillfället genererar Media Services-kodaren automatiskt ett ljud spår.  Apple-rikt linjer ger nu dig tillstånd att ljud spåret *inte* ska tas med, särskilt för Apples TV-distribution.  Vi rekommenderar att du använder taggen "endast ljudonly = false" i URL: en för att förhindra uppspelning av ljudrendering i HLS eller bara använda HLS-v3. Till exempel `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)`.
@@ -62,8 +58,8 @@ Den strömmande klienten kan ange följande MPEG-streck-format:
 
 |Protokoll|Exempel|
 |---|---|
-|MPEG-STRECK – CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` ||
-|MPEG-STRECK-CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` ||
+|MPEG-STRECK – CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
+|MPEG-STRECK-CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
 
 ### <a name="smooth-streaming-protocol"></a>Smooth Streaming protokoll
 
@@ -71,7 +67,7 @@ Den strömmande klienten kan ange följande Smooth Streaming Format:
 
 |Protokoll|Anteckningar/exempel| 
 |---|---|
-|Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
+|Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 |Smooth Streaming 2,0 (bakåtkompatibelt manifest)|Som standard innehåller Smooth Streaming manifest formatet REPEAT-taggen (r-tag). Vissa spelare har dock inte stöd för `r-tag` . Klienter med dessa spelare kan använda ett format som inaktiverar r-taggen:<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
 
 > [!NOTE]
@@ -115,7 +111,7 @@ Här är ett vanligt arbets flöde för direktsänd strömning med *dynamisk pak
 1. Hämta förhands gransknings-URL och Använd den för att kontrol lera att inmatarna tas emot från kodaren.
 1. Skapa en ny till gång.
 1. Skapa en Live-utdata och Använd namnet på den till gång som du skapade.<br />Live-utdata arkiverar data strömmen till till gången.
-1. Skapa en strömmande lokaliserare med de inbyggda typer av strömmande principer.<br />Om du vill kryptera ditt innehåll granskar du [innehålls skydds översikten](content-protection-overview.md).
+1. Skapa en strömmande lokaliserare med de inbyggda typer av strömmande principer.<br />Om du vill kryptera ditt innehåll granskar du [innehålls skydds översikten](drm-content-protection-concept.md).
 1. Visa en lista över Sök vägarna för den strömmande lokaliseraren för att hämta URL: er som ska användas.
 1. Hämta värd namnet för den strömnings slut punkt som du vill strömma från.
 1. Bygg webb adresser som riktar sig mot olika format (HLS, MPEG-streck och Smooth Streaming). *Slut punkten för direkt uppspelningen* tar hand om att betjäna rätt manifest och begär Anden för de olika formaten.
@@ -312,7 +308,7 @@ Om du vill kontrol lera antalet spår, format, bit hastigheter och presentations
 
 ## <a name="dynamic-encryption"></a>Dynamisk kryptering
 
-Du kan använda *dynamisk kryptering* för att dynamiskt kryptera din direktsända eller på begäran-innehåll med AES-128 eller någon av de tre större Digital Rights Management-systemen (DRM): Microsoft PlayReady, Google Widevine och Apple Fairplay. Media Services tillhandahåller också en tjänst för att leverera AES-nycklar och DRM-licenser till auktoriserade klienter. Mer information finns i [dynamisk kryptering](content-protection-overview.md).
+Du kan använda *dynamisk kryptering* för att dynamiskt kryptera din direktsända eller på begäran-innehåll med AES-128 eller någon av de tre större Digital Rights Management-systemen (DRM): Microsoft PlayReady, Google Widevine och Apple Fairplay. Media Services tillhandahåller också en tjänst för att leverera AES-nycklar och DRM-licenser till auktoriserade klienter. Mer information finns i [dynamisk kryptering](drm-content-protection-concept.md).
 
 > [!NOTE]
 > Widevine är en tjänst som tillhandahålls av Google Inc. och omfattas av villkoren i tjänste-och sekretess policyn för Google, Inc.

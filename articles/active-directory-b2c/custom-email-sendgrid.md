@@ -8,19 +8,30 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c5381a93308b5b3c8988cb8e25df541af1043418
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: 44ba2e39de37703de66aefd1fe843d0ca5002b6b
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105031315"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256981"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Anpassad e-postverifiering med SendGrid
 
-Använd anpassad e-post i Azure Active Directory B2C (Azure AD B2C) för att skicka anpassat e-postmeddelande till användare som registrerar sig för att använda dina program. Genom att använda [DisplayControls](display-controls.md) (för närvarande i för hands version) och e-postprovidern från tredje part kan du använda din egen e-postmall och *från:* adress och ämne, samt stöd för lokalisering och anpassad eng ång slö sen ord.
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+Använd anpassad e-post i Azure Active Directory B2C (Azure AD B2C) för att skicka anpassat e-postmeddelande till användare som registrerar sig för att använda dina program. Genom att använda en e-SendGrid från tredje part kan du använda din egen e-postmall och *från:* adress och ämne, samt stöd för lokalisering och anpassad eng ång slö sen ord.
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Anpassad e-postverifiering kräver att en e-postleverantör från tredje part används, t. ex. [SendGrid](https://sendgrid.com), [MailJet](https://Mailjet.com)eller [Spark post](https://sparkpost.com), en anpassad REST API eller någon http-baserad e-postprovider (inklusive din egen). I den här artikeln beskrivs hur du konfigurerar en lösning som använder SendGrid.
 
@@ -556,3 +567,5 @@ Du hittar ett exempel på en anpassad princip för e-postverifiering på GitHub:
 
 - [Anpassad e-postverifiering – DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
 - Information om hur du använder en anpassad REST API eller en HTTP-baserad SMTP e-postprovider finns i [definiera en RESTful teknisk profil i en Azure AD B2C anpassad princip](restful-technical-profile.md).
+
+::: zone-end

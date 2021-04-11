@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: e0380cf432a1e0de2a8ac274fef7802bee13c58f
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 73ee4d4be16284880b10df4a52b422a08c04c6a0
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030363"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284195"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>Guide för migrering: åtkomst till Azure SQL Database
 
-I den här guiden får du lära dig [hur du migrerar](https://azure.microsoft.com/migration/migration-journey) din Microsoft Access-databas till en Azure SQL Database med hjälp av [SQL Server Migration](https://azure.microsoft.com/migration/migration-journey) Assistant för åtkomst (SSMA för åtkomst).
+I den här guiden får du lära dig [hur du migrerar](https://azure.microsoft.com/migration/migration-journey) din Microsoft Access-databas till en Azure SQL Database med hjälp av [SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant för åtkomst (SSMA för åtkomst).
 
 Andra guider för migrering finns i [Guide för Azure Database migration](https://docs.microsoft.com/data-migration). 
 

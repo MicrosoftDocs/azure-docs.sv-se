@@ -8,12 +8,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 23e24e562ea6fa10eee82c54c9ab2a701dd10351
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 16433d5b148d7bc441e375591c64af497cd7b8de
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106170087"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505341"
 ---
 # <a name="access-config-server-and-service-registry"></a>Åtkomst till konfigurations Server och tjänst register
 
@@ -49,6 +49,9 @@ När rollen Azure våren Cloud data Reader har tilldelats kan kunderna komma åt
 
     * *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/*
     * *https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/* 
+
+>[!NOTE]
+> Om du använder Azure Kina kan du ersätta `*.azuremicroservices.io` med `*.microservices.azure.cn` , se [mer](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure).
 
 3. Få åtkomst till den sammanslutna slut punkten med åtkomst-token. Lägg till åtkomsttoken i en rubrik för att ge auktorisering.  Endast metoden GET stöds.
 

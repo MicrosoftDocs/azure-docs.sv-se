@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a71a53cd2aff16102a54f5a24063615e02d11872
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 051963060531283b868a5a20e13e871de1919ccb
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169529"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256080"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Använd moln grupper för att hantera roll tilldelningar i Azure Active Directory (för hands version)
 
@@ -59,7 +59,6 @@ Följande scenarier stöds inte just nu:
 - *Endast Azure AD P2-licensierade kunder*: Tilldela inte en grupp som aktiv till en roll via både Azure AD och PRIVILEGED Identity Management (PIM). Tilldela särskilt en roll till en roll tilldelnings grupp när den skapas *och* tilldela en roll till gruppen med hjälp av PIM senare. Detta leder till problem där användare inte kan se sina aktiva roll tilldelningar i PIM samt möjligheten att ta bort PIM-tilldelningen. Kvalificerade tilldelningar påverkas inte i det här scenariot. Om du försöker utföra den här tilldelningen kan du se oväntad funktion, till exempel:
   - Slut tiden för roll tilldelningen kan visas felaktigt.
   - I PIM-portalen kan **Mina roller** endast visa en roll tilldelning, oavsett hur många metoder som tilldelningen beviljas med (via en eller flera grupper och direkt).
-- Funktionen **Aktivera mellanlagrad distribution för hanterad användar inloggning** stöder inte tilldelning via grupp.
 - *Endast Azure AD P2-licensierade kunder* Även om du har tagit bort gruppen visas fortfarande en berättigad medlem av rollen i PIM-ANVÄNDARGRÄNSSNITTET. Det finns inget problem. Det är bara ett cache-problem i Azure Portal.  
 - Använd det nya [administrations centret för Exchange](https://admin.exchange.microsoft.com/) för roll tilldelningar via grupp medlemskap. Det gamla administrations centret för Exchange har inte stöd för den här funktionen ännu. Exchange PowerShell-cmdletar fungerar som förväntat.
 - Azure Information Protection portal (den klassiska portalen) känner inte igen roll medlemskap via gruppen än. Du kan [migrera till en enhetlig känslighets etikett plattform](/azure/information-protection/configure-policy-migrate-labels) och sedan använda Office 365 Security & Compliance Center för att använda grupp tilldelningar för att hantera roller.

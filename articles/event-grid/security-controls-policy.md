@@ -1,15 +1,15 @@
 ---
 title: Azure Policy kontroll av efterlevnad för Azure Event Grid
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure Event Grid. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: sample
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 7a8138b3af2a9ce97c73ebcce5973c9a395d0085
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a045fa086dddb72cbaf866ad08040423492d33e3
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034629"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106094155"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-event-grid"></a>Azure Policy kontroll av efterlevnad för Azure Event Grid
 

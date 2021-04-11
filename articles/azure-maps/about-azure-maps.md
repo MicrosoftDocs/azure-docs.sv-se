@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: fc70e6370f53848e9f3672611a3dfda685bcb9fe
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 55955f883425651749809da951832484f098aeaf
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011784"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256131"
 ---
 # <a name="what-is-azure-maps"></a>Vad är Azure Maps?
 
@@ -169,7 +169,7 @@ Traffic service är en uppsättning webb tjänster som utvecklare kan använda f
 
 Mer information finns i dokumentationen för [Traffic service](/rest/api/maps/traffic).
 
-### <a name="weather-services-preview"></a>Väder tjänster (för hands version) 
+### <a name="weather-services"></a>Vädertjänster
 
 Väder tjänster erbjuder API: er som utvecklare kan använda för att hämta väder information för en viss plats. Informationen innehåller information som observations datum och tid, kort beskrivning av väder förhållanden, väder ikonen, utfällning av indikator flaggor, temperatur och information om vridnings hastigheten. Ytterligare information som RealFeel™ temperatur och UV-index returneras också.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 9be9e9b4c5153776bd78675cdc0c9da8c0506f75
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 52dd642c661aa60157876a89d41c771cabfe2f1d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106776"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256165"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Språk-och röst stöd för tal tjänsten
 
@@ -38,7 +38,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Språk                 | Locale (BCP-47) | Anpassningar  | [Språk identifiering](how-to-automatic-language-detection.md) |
 |------------------------------------|--------|---------------------------------------------------|-------------------------------|
-| Arabiska (Bahrain), modern standard  | `ar-BH` | Text                                   | Ja                           | 
+| Arabiska (Bahrain), modern standard  | `ar-BH` | Text                                   |                           | 
 | Arabiska (Egypten)                     | `ar-EG` | Text                                   | Ja                          |
 | Arabiska (Irak)                      | `ar-IQ` | Text                                   |                           |
 | Arabiska (Israel)                    | `ar-IL` | Text                                   |                           |
@@ -47,9 +47,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Arabiska (Libanon)                   | `ar-LB` | Text                                   |                           |
 | Arabiska (Oman)                      | `ar-OM` | Text                                   |                           |
 | Arabiska (Qatar)                     | `ar-QA` | Text                                   |                           |
-| Arabiska (Saudiarabien)              | `ar-SA` | Text                                   | Ja                          |
+| Arabiska (Saudiarabien)              | `ar-SA` | Text                                   |                           |
 | Arabiska (tillstånd för Palestina)        | `ar-PS` | Text                                   |                           |
-| Arabiska (Syrien)                     | `ar-SY` | Text                                   | Ja                          |
+| Arabiska (Syrien)                     | `ar-SY` | Text                                   |                           |
 | Arabiska (Förenade Arabemiraten)      | `ar-AE` | Text                                   |                           |
 | Bulgariska (Bulgarien)               | `bg-BG` | Text                                   |                           |
 | Katalanska (Spanien)                    | `ca-ES` | Text                                   | Ja                          |
@@ -64,10 +64,10 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Engelska (Kanada)                   | `en-CA` | Ljud (20201019)<br>Text                 | Ja                          |
 | Engelska (Ghana)                    | `en-GH` | Text                                   |                           |
 | Engelska (Hongkong)                | `en-HK` | Text                                   |                           |
-| Engelska (Indien)                    | `en-IN` | Ljud (20200923)<br>Text                 | Ja                          |
+| Engelska (Indien)                    | `en-IN` | Ljud (20200923)<br>Text                 |                          |
 | Engelska (Irland)                  | `en-IE` | Text                                   |                           |
 | Engelska (Kenya)                    | `en-KE` | Text                                   |                           |
-| Engelska (Nya Zeeland)              | `en-NZ` | Ljud (20201019)<br>Text                 |  Ja                         |
+| Engelska (Nya Zeeland)              | `en-NZ` | Ljud (20201019)<br>Text                 |                          |
 | Engelska (Nigeria)                  | `en-NG` | Text                                   |                           |
 | Engelska (Filippinerna)              | `en-PH` | Text                                   |                           |
 | Engelska (Singapore)                | `en-SG` | Text                                   |                           |
@@ -83,7 +83,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Franska (Schweiz)               | `fr-CH` | Text<br>Uttal                  |                           |
 | Tyska (Österrike)                   | `de-AT` | Text<br>Uttal                  |                           |
 | Tyska (Tyskland)                   | `de-DE` | Ljud (20190701, 20200619, 20201127)<br>Text<br>Uttal|  Ja                         |
-| Grekiska (Grekland)                     | `el-GR` | Text                                   |                           |
+| Grekiska (Grekland)                     | `el-GR` | Text                                   |  Ja                         |
 | Gujarati (indiska)                  | `gu-IN` | Text                                   |                           |
 | Hindi (Indien)                      | `hi-IN` | Ljud (20200701)<br>Text                 |     Ja                      |
 | Ungerska (Ungern)                | `hu-HU` | Text                                   |                           |
@@ -101,7 +101,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Polska (Polen)                    | `pl-PL` | Text                                   |       Ja                    |
 | Portugisiska (Brasilien)                | `pt-BR` | Ljud (20190620, 20201015)<br>Text<br>Uttal|          Ja                 |
 | Portugisiska (Portugal)              | `pt-PT` | Text<br>Uttal                  |             Ja              |
-| Rumänska (Rumänien)                 | `ro-RO` | Text                                   |                           |
+| Rumänska (Rumänien)                 | `ro-RO` | Text                                   |  Ja                         |
 | Ryska (Ryssland)                   | `ru-RU` | Ljud (20200907)<br>Text                 |                Ja           |
 | Slovakiska (Slovakien)                  | `sk-SK` | Text                                   |                           |
 | Slovenska (Slovenien)               | `sl-SI` | Text                                   |                           |

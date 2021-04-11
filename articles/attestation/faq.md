@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 39f628845bdc9d54b48b1c8037f4a506a9d5c00a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9b15a336e97cad1fb03a63ec34f563a4453755ff
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89236712"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504200"
 ---
 # <a name="frequently-asked-questions-for-microsoft-azure-attestation"></a>Vanliga frågor och svar om Microsoft Azure attestering
 
@@ -31,7 +31,7 @@ Azure PCK Caching Service:
 
 ## <a name="is-sgx-attestation-supported-by-azure-attestation-in-non-azure-environments"></a>Stöds SGX-attestering av Azure-attestering i andra miljöer än Azure
 
-Azure-attestering är beroende av den säkerhets bas linje som anges av tjänsten Azure PCK caching för att verifiera TEEs. Tjänsten Azure PCK caching är för närvarande utformad för att endast stödja Azures data behandlings-noder. 
+Nej. Azure-attestering är beroende av den säkerhets bas linje som anges av tjänsten Azure PCK caching för att verifiera TEEs. Tjänsten Azure PCK caching är för närvarande utformad för att endast stödja Azures data behandlings-noder. 
 
 ## <a name="what-validations-does-azure-attestation-perform-for-attesting-sgx-enclaves"></a>Vilka valideringar utför Azure-attestering för att intyga SGX-enclaves
 

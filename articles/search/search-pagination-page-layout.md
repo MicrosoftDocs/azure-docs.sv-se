@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/09/2020
-ms.openlocfilehash: a7171d656ec9f839aea4ae73763ec6ebd20c2bb3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/06/2021
+ms.openlocfilehash: 92db62622c37241a76d7847931df030162de8f00
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98209839"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504234"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Så här arbetar du med Sök resultat i Azure Kognitiv sökning
 
@@ -95,7 +95,7 @@ För fullständiga texts öknings frågor rangordnas resultaten automatiskt efte
 
 Sök Poäng förmedla allmän känsla av relevans, vilket återspeglar styrkan hos matchning i förhållande till andra dokument i samma resultat uppsättning. Men poängen är inte alltid konsekventa från en fråga till nästa, så när du arbetar med frågor kan du lägga märke till små skillnader i hur Sök dokumenten beställs. Det finns flera förklaringar till varför detta kan inträffa.
 
-| Orsak | Beskrivning |
+| Orsak | Description |
 |-----------|-------------|
 | Data flyktiga | Index innehållet varierar när du lägger till, ändrar eller tar bort dokument. Termen frekvens kommer att ändras när index uppdateringar bearbetas över tid, vilket påverkar Sök resultaten för matchande dokument. |
 | Flera repliker | För tjänster som använder flera repliker utfärdas frågor till varje replik parallellt. Index statistiken som används för att beräkna ett Sök Resultat beräknas per replik, med resultat som sammanfogas och beställs i fråge svaret. Repliker är oftast speglar varandra, men statistik kan skilja sig på grund av små skillnader i tillstånd. En replik kan till exempel ha borttagna dokument som bidrar till sin statistik, som sammanfogades från andra repliker. Normalt sett är skillnader i statistik per replik mer märkbart i mindre index. |
@@ -137,12 +137,16 @@ Tjänster som skapats efter den 15 juli 2020 får en annan markerings upplevelse
 
 Med det nya beteendet:
 
-* Endast fraser som matchar den fullständiga fras frågan kommer att returneras. Frågan "Super Bowl" kommer att returnera högdagrar som detta:
++ Endast fraser som matchar den fullständiga fras frågan kommer att returneras. Frågeuttrycket "Super Bowl" kommer att returnera högdagrar som detta:
 
-    ```html
-    '<em>super bowl</em> is super awesome with a bowl of chips'
-    ```
-  Observera att termen *Bowl av chips* inte har någon markering eftersom den inte matchar den fullständiga frasen.
+  ```json
+  "@search.highlights": {
+      "sentence": [
+          "The <em>super</em> <em>bowl</em> is super awesome with a bowl of chips"
+     ]
+  ```
+
+  Observera att andra instanser av *Super* och *Bowl* inte har några markeringar eftersom dessa instanser inte matchar hela frasen.
 
 När du skriver klient kod som implementerar träff markering, bör du vara medveten om den här ändringen. Observera att detta inte påverkar dig om du inte skapar en helt ny Sök tjänst.
 

@@ -3,12 +3,12 @@ title: Händelse filtrering för Azure Event Grid
 description: Beskriver hur du filtrerar händelser när du skapar en Azure Event Grid-prenumeration.
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: fa63296f97bfa888cb0f425d0c03a5e4a7e46525
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b5439b77b86d42d062cf9da66ce678f04f46f813
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419855"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256097"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Förstå händelse filtrering för Event Grid prenumerationer
 
@@ -454,7 +454,7 @@ FOR_EACH filter IN (a, b, c)
 ```
 
 ## <a name="stringin"></a>Strängin
-Operatorn **stringin** kontrollerar om **nyckel** värdet **exakt matchar** ett av de angivna **filter** värdena. I följande exempel kontrollerar den om värdet för `key1` attributet i `data` avsnittet är `exact` eller `string` eller `matches` . 
+Operatorn **stringin** kontrollerar om **nyckel** värdet **exakt matchar** ett av de angivna **filter** värdena. I följande exempel kontrollerar den om värdet för `key1` attributet i `data` avsnittet är `contoso` eller `fabrikam` eller `factory` . 
 
 ```json
 "advancedFilters": [{

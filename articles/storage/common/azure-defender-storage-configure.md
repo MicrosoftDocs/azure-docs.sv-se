@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/30/2021
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: cdfc54b1eca3b07202148b7099884a04f35939ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2f044ab267365885260b031638572846184bc83
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101698152"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063193"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Konfigurera Azure Defender för Storage
 
@@ -50,7 +50,7 @@ Du kan konfigurera Azure Defender för lagring på flera olika sätt, som beskri
 
 ### <a name="azure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
 
-När du prenumererar på standard nivån i Azure Security Center konfigureras Azure Defender automatiskt på alla dina lagrings konton. Du kan aktivera eller inaktivera Azure Defender för dina lagrings konton under en speciell prenumeration på följande sätt:
+Azure Defender är inbyggt i Azure Security Center. När du aktiverar Azure Defender på din prenumeration aktive ras Azure Defender för Azure Storage automatiskt för alla dina lagrings konton. Du kan aktivera eller inaktivera Azure Defender för dina lagrings konton under en speciell prenumeration på följande sätt:
 
 1. Starta **Azure Security Center** i [Azure Portal](https://portal.azure.com).
 1. Välj **pris & inställningar** under **hantering** i huvud menyn.
@@ -94,20 +94,38 @@ Använd en Azure Policy för att aktivera Azure Defender över lagrings konton u
 
     :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Tilldela en princip för att aktivera Azure Defender för lagring":::
 
-### <a name="rest-api"></a>[REST-API](#tab/rest-api)
-
-Använd REST API-kommandon för att skapa, uppdatera eller hämta Azure Defender-inställningen för ett angivet lagrings konto.
-
-- [Avancerat skydd – skapa](/rest/api/securitycenter/advancedthreatprotection/create)
-- [Avancerat skydd – Hämta](/rest/api/securitycenter/advancedthreatprotection/get)
-
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Använd följande PowerShell-cmdletar:
+Om du vill aktivera Azure Defender för ett lagrings konto med PowerShell kontrollerar du först att du har installerat modulen [AZ. Security](https://www.powershellgallery.com/packages/Az.Security) . Anropa sedan kommandot [Enable-AzSecurityAdvancedThreatProtection](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection) . Kom ihåg att ersätta värden inom vinkelparenteser med dina egna värden:
 
-- [Aktivera avancerat skydd](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-- [Hämta Avancerat skydd](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-- [Inaktivera Avancerat skydd](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+```azurepowershell
+Enable-AzSecurityAdvancedThreatProtection -ResourceId "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/"
+```
+
+Om du vill kontrol lera Azure Defender-inställningen för ett lagrings konto med PowerShell anropar du kommandot [Get-AzSecurityAdvancedThreatProtection](/powershell/module/az.security/get-azsecurityadvancedthreatprotection) . Kom ihåg att ersätta värden inom vinkelparenteser med dina egna värden:
+
+```azurepowershell
+Get-AzSecurityAdvancedThreatProtection -ResourceId "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/"
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Om du vill aktivera Azure Defender för ett lagrings konto med Azure CLI anropar du kommandot [AZ Security ATP Storage Update](/cli/azure/security/atp/storage#az_security_atp_storage_update) . Kom ihåg att ersätta värden inom vinkelparenteser med dina egna värden:
+
+```azurecli
+az security atp storage update \
+    --resource-group <resource-group> \
+    --storage-account <storage-account> \
+    --is-enabled true
+```
+
+Om du vill kontrol lera Azure Defender-inställningen för ett lagrings konto med Azure CLI anropar du kommandot [AZ Security ATP Storage show](/cli/azure/security/atp/storage#az_security_atp_storage_show) . Kom ihåg att ersätta värden inom vinkelparenteser med dina egna värden:
+
+```azurecli
+az security atp storage show \
+    --resource-group <resource-group> \
+    --storage-account <storage-account>
+```
 
 ---
 
@@ -137,5 +155,6 @@ Aviseringar genereras av ovanliga och potentiellt skadliga försök att komma å
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer om [loggar i Azure Storage-konton](/rest/api/storageservices/About-Storage-Analytics-Logging)
-- Läs mer om [Azure Security Center](../../security-center/security-center-introduction.md)
+- [Introduktion till Azure Defender för Storage](../../security-center/defender-for-storage-introduction.md)
+- [Azure Security Center](../../security-center/security-center-introduction.md)
+- [Loggar i Azure Storage konton](/rest/api/storageservices/About-Storage-Analytics-Logging)

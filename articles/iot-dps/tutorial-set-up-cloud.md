@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f45c3def84c548ba12221efa59e9ebbd4699df71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5707d873bbf67add78f9a8e29fcb9135898486d6
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91316077"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226845"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Självstudie: Konfigurera moln resurser för enhets etablering med IoT Hub Device Provisioning Service
 
@@ -120,7 +120,7 @@ I den här självstudiekursen lärde du dig att:
 > * Länka IoT-hubben till Device Provisioning-tjänsten
 > * Ange allokeringsprincip för enhetsetableringstjänsten
 
-Gå vidare till nästa självstudie för att lära dig att konfigurera din enhet för etablering.
+Gå vidare till nästa självstudie och lär dig hur du konfigurerar enheten för etablering
 
 > [!div class="nextstepaction"]
 > [Konfigurera enhet för etablering](tutorial-set-up-device.md)

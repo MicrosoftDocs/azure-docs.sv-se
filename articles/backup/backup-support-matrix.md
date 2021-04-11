@@ -4,12 +4,12 @@ description: Innehåller en sammanfattning av stödinställningar och begränsni
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2877b0085f31f39849e04678d5e0ddd65e3888e2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 349a48b6178d5e4618aa62d9f0c3a150fe561e05
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564475"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284399"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Support mat ris för Azure Backup
 
@@ -57,7 +57,7 @@ Här är what's som stöds om du vill säkerhetskopiera lokala datorer:
 
 ### <a name="azure-vm-limits"></a>Begränsningar för virtuella Azure-datorer
 
-**Gränserna** | **Information**
+**Gräns** | **Information**
 --- | ---
 **Datadiskar för virtuella Azure-datorer** | Se [support mat ris för säkerhets kopiering av virtuella Azure-datorer](./backup-support-matrix-iaas.md#vm-storage-support).
 **Datadiskstorlek för virtuella Azure-datorer** | Enskild disk storlek kan vara upp till 32 TB och högst 256 TB kombinerat för alla diskar i en virtuell dator.
@@ -151,8 +151,8 @@ Azure Backup har lagt till funktionen för återställning av kors region för a
 
 | Typ av säkerhets kopierings hantering | Stöds                                                    | Regioner som stöds |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | Stöds för virtuella Azure-datorer med både hanterade och ohanterade diskar. Stöds inte för klassiska virtuella datorer. | Tillgängligt i alla offentliga Azure-regioner och suveräna regioner utom Frankrike centrala, Australien, norra, norra, Nord Förenade Arabemiraten, norra, Schweiz, norra, Tyskland, västra centrala, östra Norge. <br>Om du vill ha information om hur du använder i dessa regioner kan du kontakta [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
-| SQL-/SAP HANA | I förhandsversion                                                      | Tillgängligt i alla offentliga Azure-regioner och suveräna regioner utom Frankrike centrala, Australien, norra, norra, Nord Förenade Arabemiraten, norra, Schweiz, norra, Tyskland, västra centrala, östra Norge. <br>Om du vill ha information om hur du använder i dessa regioner kan du kontakta [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| Azure VM               | Stöds för virtuella Azure-datorer med både hanterade och ohanterade diskar. Stöds inte för klassiska virtuella datorer. | Tillgängligt i alla offentliga Azure-regioner och suveräna regioner förutom Frankrikes centrala, Australien, norra, norra, norra, Schweiz, norra Förenade Arabemiraten, Tyskland, västra centrala, östra Norge, μg IOWA och μg Virginia. <br>Om du vill ha information om hur du använder i dessa regioner kan du kontakta [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| SQL-/SAP HANA | I förhandsversion                                                      | Tillgängligt i alla offentliga Azure-regioner och suveräna regioner förutom Frankrikes centrala, Australien, norra, norra, norra, Schweiz, norra Förenade Arabemiraten, Tyskland, västra centrala, östra Norge, μg IOWA och μg Virginia. <br>Om du vill ha information om hur du använder i dessa regioner kan du kontakta [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
 | MARS-agent/lokalt  | Inga                                                           | Ej tillämpligt               |
 | AFS (Azure-filresurser)                 | Inga                                                           | Ej tillämpligt               |
 

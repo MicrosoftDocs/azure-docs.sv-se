@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 13f5f8da0bd58cef0974e8ea8f5f3c5172daa0ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ca4464f40c0807e51adffca8e3e68c622314de6
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96928740"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256896"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Distribuera anpassade principer med Azure-pipeliner
 
@@ -34,7 +34,7 @@ Det finns tre primära steg som krävs för att aktivera Azure-pipelines för at
 ## <a name="prerequisites"></a>Förutsättningar
 
 * [Azure AD B2C klient organisation](tutorial-create-tenant.md)och autentiseringsuppgifter för en användare i katalogen med rollen [B2C IEF princip administratör](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)
-* [Anpassade principer](custom-policy-get-started.md) har laddats upp till din klient
+* [Anpassade principer](tutorial-create-user-flows.md?pivots=b2c-custom-policy) har laddats upp till din klient
 * [Hanterings appen](microsoft-graph-get-started.md) som registrerats i din klient organisation med behörighets principen Microsoft Graph-API *. readwrite. TrustFramework*
 * [Azure pipeline](https://azure.microsoft.com/services/devops/pipelines/)och åtkomst till ett [Azure DevOps Services-projekt][devops-create-project]
 
