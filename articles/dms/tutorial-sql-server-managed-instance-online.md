@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: 4ee3e9e7d2aa0247011415b43517147fd421902a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5585eb210b54dfa016d25c430256508e1b0b9f61
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101094932"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076895"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Självstudie: Migrera SQL Server till en Azure SQL-hanterad instans online med DMS
 
@@ -209,7 +209,7 @@ När en instans av tjänsten har skapats letar du reda på den i Azure Portal, �
 
 1. På sidan **Konfigurera migreringsinställningar** anger du följande information:
 
-    | | |
+    | Parameter | Beskrivning |
     |--------|---------|
     |**SMB-nätverksplatsresurs** | Den lokala SMB-nätverksanslutningen eller Azure-filresursen som innehåller fullständiga säkerhets kopior av databasen och säkerhets kopior av transaktions loggen som Azure Database Migration Service kan använda för migrering. Tjänstkontot som kör en SQL Server-källinstansen måste ha läs-/skrivbehörighet på den här nätverksresursen. Ange ett fullständigt domännamn eller IP-adresser för servern i nätverksresursen, till exempel \\\servernamn.domännamn.com\säkerhetskopieringsmapp eller \\\IP-adress\säkerhetskopieringsmapp. För bättre prestanda rekommenderar vi att du använder en separat mapp för varje databas som ska migreras. Du kan ange sökvägen till fil resursen på databas nivå genom att använda alternativet **Avancerade inställningar** . Om du har problem med att ansluta till SMB-resursen, se [SMB-resurs](known-issues-azure-sql-db-managed-instance-online.md#smb-file-share-connectivity). |
     |**Användarnamn** | Kontrollera att Windows-användaren har fullständig kontrollbehörighet på nätverksresursen du har angett ovan. Azure Database Migration Service personifierar användarens autentiseringsuppgifter för att överföra säkerhetskopieringsfilerna till Azure Storage behållare för återställnings åtgärden. Om du använder Azure-filresurs använder du pended för lagrings konto namn med AZURE \ som användar namn. |

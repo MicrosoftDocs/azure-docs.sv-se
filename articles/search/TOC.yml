@@ -13,8 +13,6 @@
   items:
     - name: Portalen
       items:
-        - name: Skapa en tjänst
-          href: search-create-service-portal.md
         - name: Skapa ett index
           href: search-get-started-portal.md
         - name: Skapa en demoapp
@@ -138,20 +136,30 @@
           href: security-baseline.md
 - name: Anvisningar
   items:
-    - name: Planering
+    - name: Hantering
       items:
         - name: Välj en nivå
           href: search-sku-tier.md
-        - name: Beräkna och hantera kapacitet
+        - name: Planera kapacitet
           href: search-capacity-planning.md
-        - name: Uppskatta kostnader
-          href: search-sku-manage-costs.md
+        - name: Skapa en tjänst
+          href: search-create-service-portal.md
         - name: Tjänstbegränsningar
           href: search-limits-quotas-capacity.md
-        - name: Skala för prestanda
+        - name: Hantera kostnader
+          href: search-sku-manage-costs.md
+        - name: Tillgänglighet och återställning
           href: search-performance-optimization.md
-        - name: Arkitektur för flera innehavare
+        - name: Flera innehavare
           href: search-modeling-multitenant-saas-applications.md
+        - name: Hantera i portalen
+          href: search-manage.md
+        - name: Hantera med PowerShell
+          href: search-manage-powershell.md
+        - name: Hantera med Azure CLI
+          href: search-manage-azure-cli.md
+        - name: Flytta en tjänst mellan regioner
+          href: search-howto-move-across-regions.md
     - name: Utveckling
       items:
         - name: API-versioner
@@ -276,6 +284,10 @@
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Virtuella Azure SQL Server-datorer
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+        - name: Felsöka indexerings problem
+          href: search-indexer-troubleshooting.md
+        - name: Felsöka indexerings fel och varningar
+          href: cognitive-search-common-errors-warnings.md
     - name: Kompetensuppsättningar
       items:
         - name: Bifoga en resurs för Cognitive Services
@@ -376,8 +388,28 @@
           href: semantic-ranking.md
         - name: Poängprofiler
           href: index-add-scoring-profiles.md
+    - name: Prestanda och övervakning
+      items:
+        - name: Prestanda analys
+          href: search-performance-analysis.md
+        - name: Tips för bättre prestanda
+          href: search-performance-tips.md
+        - name: Diagnostikloggning
+          href: search-monitor-logs.md
+        - name: Visualisera diagnostikloggar
+          href: search-monitor-logs-powerbi.md
+        - name: Övervakningsöversikt
+          href: search-monitor-usage.md
+        - name: Övervaka frågor
+          href: search-monitor-queries.md
+        - name: Övervaka indexerare-baserad indexering
+          href: search-howto-monitor-indexers.md
+        - name: Övervaka interaktion på klient Sidan
+          href: search-traffic-analytics.md
     - name: Säkerhet
       items:
+        - name: Administratörs rättigheter
+          href: search-security-rbac.md
         - name: Datakryptering
           items:
             - name: Kundhanterade nycklar
@@ -406,38 +438,6 @@
               href: search-security-trimming-for-azure-search.md
             - name: Filtrera på användaridentiteter
               href: search-security-trimming-for-azure-search-with-aad.md
-    - name: Hantera
-      items:
-        - name: Portalen
-          href: search-manage.md
-        - name: PowerShell
-          href: search-manage-powershell.md
-        - name: Azure CLI
-          href: search-manage-azure-cli.md
-        - name: Flytta en tjänst mellan regioner
-          href: search-howto-move-across-regions.md
-        - name: Rollbaserad administratörsåtkomst
-          href: search-security-rbac.md
-    - name: Övervaka
-      items:
-        - name: Översikt
-          href: search-monitor-usage.md
-        - name: Diagnostikloggning
-          href: search-monitor-logs.md
-        - name: Visualisera diagnostikloggar
-          href: search-monitor-logs-powerbi.md
-        - name: Övervaka frågeaktivitet
-          href: search-monitor-queries.md
-        - name: Övervaka indexerare
-          href: search-howto-monitor-indexers.md
-        - name: Sök efter trafikanalys
-          href: search-traffic-analytics.md
-    - name: Felsöka
-      items:
-        - name: Indexeringsproblem
-          href: search-indexer-troubleshooting.md
-        - name: Indexeringsfel och -varningar
-          href: cognitive-search-common-errors-warnings.md
 - name: Referens
   items:
     - name: Azure CLI

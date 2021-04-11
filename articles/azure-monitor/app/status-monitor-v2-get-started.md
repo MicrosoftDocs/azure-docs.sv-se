@@ -6,12 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 01/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 21184e1623fd47e8367d4c5dfbc2c85debe93124
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d24e67eac54b3ce4eadfc6a4bde47410d59fae8b
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100587388"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581100"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Kom igång med Azure Monitor Application Insights agent för lokala servrar
 
@@ -26,6 +26,8 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 ## <a name="download-and-install-via-powershell-gallery"></a>Hämta och installera via PowerShell-galleriet
 
 ### <a name="install-prerequisites"></a>Installationskrav
+
+- Om du vill aktivera övervakning måste du ha en anslutnings sträng. En anslutnings sträng visas på bladet översikt i Application Insights resursen. Mer information finns i sid [anslutnings strängar](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#finding-my-connection-string).
 
 > [!NOTE]
 > Från och med april 2020 har PowerShell-galleriet föråldrat TLS 1,1 och 1,0.
@@ -50,9 +52,10 @@ Install-Module -Name Az.ApplicationMonitor -AllowPrerelease -AcceptLicense
 ``` 
 
 ### <a name="enable-monitoring"></a>Aktivera övervakning
+
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
-Enable-ApplicationInsightsMonitoring -ConnectionString xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Enable-ApplicationInsightsMonitoring -ConnectionString 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 ```
     
         
@@ -69,9 +72,11 @@ $pathInstalledModule = "$Env:ProgramFiles\WindowsPowerShell\Modules\Az.Applicati
 Expand-Archive -LiteralPath $pathToZip -DestinationPath $pathInstalledModule
 ```
 ### <a name="enable-monitoring"></a>Aktivera övervakning
+
 ```powershell
-Enable-ApplicationInsightsMonitoring -ConnectionString xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Enable-ApplicationInsightsMonitoring -ConnectionString 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 ```
+
 
 
 

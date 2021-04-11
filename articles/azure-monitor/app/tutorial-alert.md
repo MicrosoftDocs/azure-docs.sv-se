@@ -1,18 +1,17 @@
 ---
 title: Skicka aviseringar från Azure Application Insights | Microsoft Docs
 description: Självstudie om hur du skickar aviseringar som svar på fel i ditt program med hjälp av Azure Application Insights.
-ms.subservice: application-insights
 ms.topic: tutorial
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 6b8cc951301ec315f758478eda1c0736882e66f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78a1a0c7890ff88f993e215e0af9c0749291e3ef
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100628192"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383277"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Övervaka och skicka aviseringar om programmets hälsotillstånd med Azure Application Insights
 
@@ -24,7 +23,7 @@ Lär dig att:
 > * Skapa tillgänglighetstest för att kontinuerligt kontrollera programmets respons
 > * Skicka e-post till administratörer när ett problem uppstår
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att slutföra den här kursen behöver du:
 

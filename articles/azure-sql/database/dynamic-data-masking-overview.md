@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: b10b00e724324779eb753bfefccce77a5eb2a39d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccc648f06cad46b490ac73fe777066c9de2ff2b9
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98918118"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551653"
 ---
 # <a name="dynamic-data-masking"></a>Dynamisk datamaskning 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -72,13 +72,13 @@ Du kan använda REST API för att hantera data masknings principer och regler pr
 
 ### <a name="data-masking-policies"></a>Data masknings principer
 
-- [Skapa eller uppdatera](/rest/api/sql/datamaskingpolicies/createorupdate): skapar eller uppdaterar en databas data masking-princip.
-- [Get](/rest/api/sql/datamaskingpolicies/get): hämtar en databas data masking-princip. 
+- [Skapa eller uppdatera](/rest/api/sql/2014-04-01/datamaskingpolicies/createorupdate): skapar eller uppdaterar en databas data masking-princip.
+- [Get](/rest/api/sql/2014-04-01/datamaskingpolicies/get): hämtar en databas data masking-princip. 
 
 ### <a name="data-masking-rules"></a>Regler för data maskering
 
-- [Skapa eller uppdatera](/rest/api/sql/datamaskingrules/createorupdate): skapar eller uppdaterar en databas data masking-regel.
-- [Lista efter databas](/rest/api/sql/datamaskingrules/listbydatabase): hämtar en lista över regler för databas data maskning.
+- [Skapa eller uppdatera](/rest/api/sql/2014-04-01/datamaskingrules/createorupdate): skapar eller uppdaterar en databas data masking-regel.
+- [Lista efter databas](/rest/api/sql/2014-04-01/datamaskingrules/listbydatabase): hämtar en lista över regler för databas data maskning.
 
 ## <a name="permissions"></a>Behörigheter
 
@@ -86,4 +86,4 @@ Dynamisk datamaskering kan konfigureras av rollen Azure SQL Database admin, Serv
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Dynamisk datamaskering](/sql/relational-databases/security/dynamic-data-masking)
+[Dynamisk data maskning](/sql/relational-databases/security/dynamic-data-masking)

@@ -3,12 +3,12 @@ title: Använda aktiviteter med flera instanser för att köra MPI-program
 description: Lär dig hur du kör MPI-program (Message Passing Interface) med hjälp av uppgifts typen multiinstance i Azure Batch.
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 51fc580e0bb31e0e975c53b44887a5889a784eea
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 02764f8dd8a6bb3e4224b8b44fe78ab7e15ba85d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605679"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219864"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Använda aktiviteter med flera instanser för att köra MPI-program (Message Passing Interface) i batch
 
@@ -21,7 +21,7 @@ Med aktiviteter med flera instanser kan du köra en Azure Batch aktivitet på fl
 
 I batch körs varje aktivitet vanligt vis på en enskild Compute-nod – du skickar flera aktiviteter till ett jobb, och batch-tjänsten schemalägger varje aktivitet för körning på en nod. Genom att konfigurera en aktivitets inställningar för **flera instanser** kan du dock i stället skapa en primär aktivitet och flera under aktiviteter som sedan körs på flera noder.
 
-:::image type="content" source="media/batch-mpi/batch_mpi_01.png" alt-text="Diagram som visar en översikt över inställningar för flera instanser.":::
+:::image type="content" source="media/batch-mpi/batch-mpi-01.png" alt-text="Diagram som visar en översikt över inställningar för flera instanser.":::
 
 När du skickar en aktivitet med inställningar för flera instanser till ett jobb utför batch flera steg som är unika för aktiviteter med flera instanser:
 

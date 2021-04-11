@@ -7,16 +7,16 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: b475990a6b079de5e9ff01e52c2135f3c99a4f2f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 15c97640ab1f4e862aab0aff4b3965822daafb2b
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055645"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219832"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Skapa tjänster som ingår i det kostnadsfria Azure-kontot
 
-Under de första 30 dagarna efter att du har skapat ett kostnads fritt Azure-konto har du en kredit på 200 USD i din fakturerings valuta som ska användas för alla tjänster, förutom köp från tredje parts Marketplace. Den kostnadsfria krediten ger dig möjlighet att testa Azure genom att experimentera med olika nivåer och typer av Azure-tjänster. Om du under perioden använder tjänster eller Azure-resurser som inte är kostnadsfria, dras dessa avgifter från din kredit.
+Under de första 30 dagarna efter att du har skapat ett kostnads fritt Azure-konto har du 200 USD I kredit i din fakturerings valuta som du kan använda på vilken tjänst som helst, förutom köp från tredje parts Marketplace. Den kostnadsfria krediten ger dig möjlighet att testa Azure genom att experimentera med olika nivåer och typer av Azure-tjänster. Om du under perioden använder tjänster eller Azure-resurser som inte är kostnadsfria, dras dessa avgifter från din kredit.
 
 Om du inte har utnyttjat hela krediten när 30-dagarsperioden är slut, går den återstående delen förlorad. Efter de första 30 dagarna och upp till 12 månader efter registreringen kan du bara använda en begränsad mängd av *vissa tjänster* – inte alla Azure-tjänster är kostnadsfria. Om du uppgraderar innan de 30 dagarna har löpt ut och du har kredit kvar, kan du utnyttja resten av krediten med en ”betala per användning”-prenumeration under de återstående dagarna. Om du till exempel registrerar dig för det kostnadsfria kontot den 1 november och uppgraderar den 5 november, kan du använda din kredit med den nya ”betala per användning”-prenumerationen fram till och med den 30 november. 
 

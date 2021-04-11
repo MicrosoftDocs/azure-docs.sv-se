@@ -3,16 +3,16 @@ title: Översikt över mallar
 description: Lär dig hur du använder en fördefinierad mall för att komma igång snabbt med Azure Data Factory.
 ms.service: data-factory
 ms.topic: conceptual
-ms.author: daperlov
-author: djpmsft
+ms.author: weetok
+author: dcstwh
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
-ms.openlocfilehash: 8c0e4db2bc686fff2bd718f45c63a0fc26f6cd55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 511c8851a39d283bd69215216f5ec4a4e77653d1
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375399"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219815"
 ---
 # <a name="templates"></a>Mallar
 

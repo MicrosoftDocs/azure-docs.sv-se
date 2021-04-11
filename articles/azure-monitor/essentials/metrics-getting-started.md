@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
-ms.openlocfilehash: fee71f9ebfc69c19adc026fce5cd78b6a8b5240b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df745e7612dbd5b5bb9029b89d7f74974270c2d1
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "103490317"
+ms.locfileid: "105962721"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Komma igång med Azure Metrics Explorer
 
@@ -45,7 +45,7 @@ Om du vill skapa ett mått diagram går du till vyn resurs, resurs grupp, prenum
 ## <a name="select-a-time-range"></a>Välj ett tidsintervall
 
 > [!WARNING]
-> [De flesta mått i Azure lagras i 93 dagar](../essentials/data-platform-metrics.md#retention-of-metrics). Du kan dock fråga högst 30 dagar på data i ett enskilt diagram. Den här begränsningen gäller inte för [loggbaserade mått](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
+> [De flesta mått i Azure lagras i 93 dagar](../essentials/data-platform-metrics.md#retention-of-metrics). Du kan dock fråga högst 30 dagar på data i ett enskilt diagram. Du kan [panorera](metrics-charts.md#pan) diagrammet om du vill visa hela kvarhållning. Den 30 dagars begränsningen gäller inte för [log-baserade mått](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
 
 Som standard visar diagrammet de senaste 24 timmarna med mät data. Använd panelen **tids väljare** för att ändra tidsintervallet, zooma in eller ut i diagrammet. 
 

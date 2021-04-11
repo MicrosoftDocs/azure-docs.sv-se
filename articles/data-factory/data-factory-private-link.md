@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 9e4d686f582a202dbc543620c7bf73dc4e7adb22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d572509b3b2b3a0fc69f207d005984ee07ce34a4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389186"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076827"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link för Azure Data Factory
 
@@ -54,7 +54,7 @@ Att aktivera tjänsten för privata Länkar för var och en av de föregående k
    - Kommando kommunikationen mellan den lokala integrerings körningen och tjänsten Azure Data Factory kan utföras på ett säkert sätt i en privat nätverks miljö. Trafiken mellan den lokala integrerings körningen och Azure Data Factory tjänsten går via en privat länk. 
 - **Stöds inte för närvarande**:
    - Interaktiv redigering som använder en lokal integrerings körning, till exempel testa anslutning, bläddra i Mapplista och tabell lista, Hämta schema och förhandsgranska data, går via en privat länk.
-   - Den nya versionen av den egna värdbaserade integrerings körningen kan hämtas automatiskt från Microsoft Download Center om du aktiverar automatisk uppdatering.
+   - Den nya versionen av den egna värdbaserade integrerings körningen som kan hämtas automatiskt från Microsoft Download Center om du aktiverar automatisk uppdatering, stöds inte för tillfället.
 
    > [!NOTE]
    > För funktioner som inte stöds för närvarande måste du fortfarande konfigurera den tidigare nämnda domänen och porten i det virtuella nätverket eller företagets brand vägg. 

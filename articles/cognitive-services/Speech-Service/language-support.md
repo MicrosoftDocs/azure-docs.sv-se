@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 17511778f63a2d7270178042c4bb414cdd6630c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9be9e9b4c5153776bd78675cdc0c9da8c0506f75
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955473"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106776"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Språk-och röst stöd för tal tjänsten
 
@@ -59,7 +59,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Kroatiska (Kroatien)                 | `hr-HR` | Text                                   |                           |
 | Tjeckiska (Tjeckien)             | `cs-CZ` | Text                                   |                           |
 | Danska (Danmark)                   | `da-DK` | Text                                   | Ja                          |
-| Nederländska (Nederländerna)                | `nl-NL` | Ljud (20201015)<br>Text                                   |    Ja                       |
+| Nederländska (Nederländerna)                | `nl-NL` | Ljud (20201015)<br>Text<br>Uttal|    Ja                       |
 | Engelska (Australien)                | `en-AU` | Ljud (20201019)<br>Text                 | Ja                          |
 | Engelska (Kanada)                   | `en-CA` | Ljud (20201019)<br>Text                 | Ja                          |
 | Engelska (Ghana)                    | `en-GH` | Text                                   |                           |
@@ -74,14 +74,14 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Engelska (Sydafrika)             | `en-ZA` | Text                                   |                           |
 | Engelska (Tanzania)                 | `en-TZ` | Text                                   |                           |
 | Engelska (Storbritannien)           | `en-GB` | Ljud (20201019)<br>Text<br>Uttal| Ja                          |
-| Engelska (USA)            | `en-US` | Ljud (20201019, 20210223)<br>Text<br>Uttal| Ja                          |
+| Engelska (USA)            | `en-US` | Ljud (20201019)<br>Text<br>Uttal| Ja                          |
 | Estniska (Estland)                  | `et-EE` | Text                                   |                           |
 | Filippinska (Filippinerna)             | `fil-PH`| Text                                   |                           |
 | Finska (Finland)                  | `fi-FI` | Text                                   |     Ja                      |
-| Franska (Kanada)                    | `fr-CA` | Ljud (20201015)<br>Text                 |     Ja                      |
+| Franska (Kanada)                    | `fr-CA` | Ljud (20201015)<br>Text<br>Uttal|     Ja                      |
 | Franska (Frankrike)                    | `fr-FR` | Ljud (20201015)<br>Text<br>Uttal|      Ja                     |
-| Franska (Schweiz)               | `fr-CH` | Text                                   |                           |
-| Tyska (Österrike)                   | `de-AT` | Text                                   |                           |
+| Franska (Schweiz)               | `fr-CH` | Text<br>Uttal                  |                           |
+| Tyska (Österrike)                   | `de-AT` | Text<br>Uttal                  |                           |
 | Tyska (Tyskland)                   | `de-DE` | Ljud (20190701, 20200619, 20201127)<br>Text<br>Uttal|  Ja                         |
 | Grekiska (Grekland)                     | `el-GR` | Text                                   |                           |
 | Gujarati (indiska)                  | `gu-IN` | Text                                   |                           |
@@ -94,39 +94,39 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Koreanska (Korea)                     | `ko-KR` | Ljud (20201015)<br>Text                 |      Ja                     |
 | Lettiska (Lettland)                   | `lv-LV` | Text                                   |                           |
 | Litauiska (Litauen)             | `lt-LT` | Text                                   |                           |
-| Malajiska (Malaysia)                    | `ms-MY` | Text                                   |                           |
-| Maltesiska (Malta)                     | `mt-MT` | Text                                   |                           |
+| Malajiska (Malaysia)                   | `ms-MY` | Text                                   |                           |
+| Maltesiska (Malta)                    | `mt-MT` | Text                                   |                           |
 | Marathi (Indien)                    | `mr-IN` | Text                                   |                           |
 | norska (Bokmål, Norge)         | `nb-NO` | Text                                   |     Ja                      |
 | Polska (Polen)                    | `pl-PL` | Text                                   |       Ja                    |
 | Portugisiska (Brasilien)                | `pt-BR` | Ljud (20190620, 20201015)<br>Text<br>Uttal|          Ja                 |
-| Portugisiska (Portugal)              | `pt-PT` | Text                                   |             Ja              |
+| Portugisiska (Portugal)              | `pt-PT` | Text<br>Uttal                  |             Ja              |
 | Rumänska (Rumänien)                 | `ro-RO` | Text                                   |                           |
 | Ryska (Ryssland)                   | `ru-RU` | Ljud (20200907)<br>Text                 |                Ja           |
 | Slovakiska (Slovakien)                  | `sk-SK` | Text                                   |                           |
 | Slovenska (Slovenien)               | `sl-SI` | Text                                   |                           |
-| Spanska (Argentina)                | `es-AR` | Text                                   |                           |
-| Spanska (Bolivia)                  | `es-BO` | Text                                   |                           |
-| Spanska (Chile)                    | `es-CL` | Text                                   |                           |
-| Spanska (Colombia)                 | `es-CO` | Text                                   |                           |
-| Spanska (Costa Rica)               | `es-CR` | Text                                   |                           |
-| Spanska (Kuba)                     | `es-CU` | Text                                   |                           |
-| Spanska (Dominikanska republiken)       | `es-DO` | Text                                   |                           |
-| Spanska (Ecuador)                  | `es-EC` | Text                                   |                           |
-| Spanska (El Salvador)              | `es-SV` | Text                                   |                           |
+| Spanska (Argentina)                | `es-AR` | Text<br>Uttal                  |                           |
+| Spanska (Bolivia)                  | `es-BO` | Text<br>Uttal                  |                           |
+| Spanska (Chile)                    | `es-CL` | Text<br>Uttal                  |                           |
+| Spanska (Colombia)                 | `es-CO` | Text<br>Uttal                  |                           |
+| Spanska (Costa Rica)               | `es-CR` | Text<br>Uttal                  |                           |
+| Spanska (Kuba)                     | `es-CU` | Text<br>Uttal                  |                           |
+| Spanska (Dominikanska republiken)       | `es-DO` | Text<br>Uttal                  |                           |
+| Spanska (Ecuador)                  | `es-EC` | Text<br>Uttal                  |                           |
+| Spanska (El Salvador)              | `es-SV` | Text<br>Uttal                  |                           |
 | Spanska (Ekvatorialguinea)        | `es-GQ` | Text                                   |                           |
-| Spanska (Guatemala)                | `es-GT` | Text                                   |                           |
-| Spanska (Honduras)                 | `es-HN` | Text                                   |                           |
-| Spanska (Mexiko)                   | `es-MX` | Ljud (20200907)<br>Text                 |    Ja                       |
-| Spanska (Nicaragua)                | `es-NI` | Text                                   |                           |
-| Spanska (Panama)                   | `es-PA` | Text                                   |                           |
-| Spanska (Paraguay)                 | `es-PY` | Text                                   |                           |
-| Spanska (Peru)                     | `es-PE` | Text                                   |                           |
-| Spanska (Puerto Rico)              | `es-PR` | Text                                   |                           |
-| Spanska (Spanien)                    | `es-ES` | Ljud (20201015)<br>Text                 |  Ja                         |
-| Spanska (Uruguay)                  | `es-UY` | Text                                   |                           |
-| Spanska (USA)                      | `es-US` | Text                                   |                           |
-| Spanska (Venezuela)                | `es-VE` | Text                                   |                           |
+| Spanska (Guatemala)                | `es-GT` | Text<br>Uttal                  |                           |
+| Spanska (Honduras)                 | `es-HN` | Text<br>Uttal                  |                           |
+| Spanska (Mexiko)                   | `es-MX` | Ljud (20200907)<br>Text<br>Uttal|    Ja                       |
+| Spanska (Nicaragua)                | `es-NI` | Text<br>Uttal                  |                           |
+| Spanska (Panama)                   | `es-PA` | Text<br>Uttal                  |                           |
+| Spanska (Paraguay)                 | `es-PY` | Text<br>Uttal                  |                           |
+| Spanska (Peru)                     | `es-PE` | Text<br>Uttal                  |                           |
+| Spanska (Puerto Rico)              | `es-PR` | Text<br>Uttal                  |                           |
+| Spanska (Spanien)                    | `es-ES` | Ljud (20201015)<br>Text<br>Uttal|  Ja                         |
+| Spanska (Uruguay)                  | `es-UY` | Text<br>Uttal                  |                           |
+| Spanska (USA)                      | `es-US` | Text<br>Uttal                  |                           |
+| Spanska (Venezuela)                | `es-VE` | Text<br>Uttal                  |                           |
 | Svenska (Sverige)                   | `sv-SE` | Text                                   |   Ja                        |
 | Tamiliska (Indien)                      | `ta-IN` | Text                                   |                           |
 | Telugu (Indien)                     | `te-IN` | Text                                   |                           |
@@ -155,73 +155,83 @@ Neurala röster kan användas för att göra interaktioner med chattrobotar och 
 | Språk | Nationell inställning | Kön | Röst namn | Format stöd |
 |---|---|---|---|---|
 | Arabiska (Egypten) | `ar-EG` | Kvinna | `ar-EG-SalmaNeural` | Allmänt |
-| Arabiska (Egypten) | `ar-EG` | Man | `ar-EG-ShakirNeural` <sup>Ny</sup> | Allmänt |
+| Arabiska (Egypten) | `ar-EG` | Man | `ar-EG-ShakirNeural` | Allmänt |
 | Arabiska (Saudiarabien) | `ar-SA` | Kvinna | `ar-SA-ZariyahNeural` | Allmänt |
-| Arabiska (Saudiarabien) | `ar-SA` | Man | `ar-SA-HamedNeural` <sup>Ny</sup> | Allmänt |
+| Arabiska (Saudiarabien) | `ar-SA` | Man | `ar-SA-HamedNeural` | Allmänt |
 | Bulgariska (Bulgarien) | `bg-BG` | Kvinna | `bg-BG-KalinaNeural` | Allmänt |
-| Bulgariska (Bulgarien) | `bg-BG` | Man | `bg-BG-BorislavNeural` <sup>Ny</sup> | Allmänt |
+| Bulgariska (Bulgarien) | `bg-BG` | Man | `bg-BG-BorislavNeural` | Allmänt |
 | Katalanska (Spanien) | `ca-ES` | Kvinna | `ca-ES-AlbaNeural` | Allmänt |
-| Katalanska (Spanien) | `ca-ES` | Kvinna | `ca-ES-JoanaNeural` <sup>Ny</sup> | Allmänt |
-| Katalanska (Spanien) | `ca-ES` | Man | `ca-ES-EnricNeural` <sup>Ny</sup> | Allmänt |
+| Katalanska (Spanien) | `ca-ES` | Kvinna | `ca-ES-JoanaNeural` | Allmänt |
+| Katalanska (Spanien) | `ca-ES` | Man | `ca-ES-EnricNeural` | Allmänt |
 | Kinesiska (kantonesiska, traditionell) | `zh-HK` | Kvinna | `zh-HK-HiuGaaiNeural` | Allmänt |
-| Kinesiska (kantonesiska, traditionell) | `zh-HK` | Kvinna | `zh-HK-HiuMaanNeural` <sup>Ny</sup> | Allmänt |
-| Kinesiska (kantonesiska, traditionell) | `zh-HK` | Man | `zh-HK-WanLungNeural` <sup>Ny</sup> | Allmänt |
-| Kinesiska (mandariner, förenklad) | `zh-CN` | Kvinna | `zh-CN-XiaoxiaoNeural` | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
-| Kinesiska (mandariner, förenklad) | `zh-CN` | Kvinna | `zh-CN-XiaoyouNeural` | Röst för barn, optimerad för artikel-berättarröst |
+| Kinesiska (kantonesiska, traditionell) | `zh-HK` | Kvinna | `zh-HK-HiuMaanNeural` | Allmänt |
+| Kinesiska (kantonesiska, traditionell) | `zh-HK` | Man | `zh-HK-WanLungNeural` | Allmänt |
+| Kinesiska (mandariner, förenklad) | `zh-CN` | Kvinna | `zh-CN-XiaoxiaoNeural` | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Kinesiska (mandariner, förenklad) | `zh-CN` | Kvinna | `zh-CN-XiaoyouNeural` | Underordnad röst, optimerad för artikel-berättarröst |
 | Kinesiska (mandariner, förenklad) | `zh-CN` | Man | `zh-CN-YunyangNeural` | Optimerad för läsning av nyheter,<br /> flera röst typer som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Kinesiska (mandariner, förenklad) | `zh-CN` | Man | `zh-CN-YunyeNeural` | Optimerad för artikel-berättarröst  |
-| Kinesiska (Taiwan-mandariner) | `zh-TW` | Kvinna | `zh-TW-HsiaoChenNeural` <sup>Ny</sup> | Allmänt |
+| Kinesiska (mandariner, förenklad) | `zh-CN` | Man | `zh-CN-YunyeNeural` | Optimerad för artikel-berättarröst |
+| Kinesiska (Taiwan-mandariner) | `zh-TW` | Kvinna | `zh-TW-HsiaoChenNeural` | Allmänt |
 | Kinesiska (Taiwan-mandariner) | `zh-TW` | Kvinna | `zh-TW-HsiaoYuNeural` | Allmänt |
-| Kinesiska (Taiwan-mandariner) | `zh-TW` | Man | `zh-TW-YunJheNeural` <sup>Ny</sup> | Allmänt |
+| Kinesiska (Taiwan-mandariner) | `zh-TW` | Man | `zh-TW-YunJheNeural` | Allmänt |
 | Kroatiska (Kroatien) | `hr-HR` | Kvinna | `hr-HR-GabrijelaNeural` | Allmänt |
-| Kroatiska (Kroatien) | `hr-HR` | Man | `hr-HR-SreckoNeural` <sup>Ny</sup> | Allmänt |
+| Kroatiska (Kroatien) | `hr-HR` | Man | `hr-HR-SreckoNeural` | Allmänt |
 | Tjeckiska (Tjeckien) | `cs-CZ` | Kvinna | `cs-CZ-VlastaNeural` | Allmänt |
-| Tjeckiska (Tjeckien) | `cs-CZ` | Man | `cs-CZ-AntoninNeural` <sup>Ny</sup> | Allmänt |
+| Tjeckiska (Tjeckien) | `cs-CZ` | Man | `cs-CZ-AntoninNeural` | Allmänt |
 | Danska (Danmark) | `da-DK` | Kvinna | `da-DK-ChristelNeural` | Allmänt |
-| Danska (Danmark) | `da-DK` | Man | `da-DK-JeppeNeural` <sup>Ny</sup> | Allmänt |
+| Danska (Danmark) | `da-DK` | Man | `da-DK-JeppeNeural` | Allmänt |
+| Nederländska (Belgien) | `nl-BE` | Kvinna | `nl-BE-DenaNeural` <sup>Ny</sup> | Allmänt | 
+| Nederländska (Belgien) | `nl-BE` | Man | `nl-BE-ArnaudNeural` <sup>Ny</sup> | Allmänt | 
 | Nederländska (Nederländerna) | `nl-NL` | Kvinna | `nl-NL-ColetteNeural` | Allmänt |
-| Nederländska (Nederländerna) | `nl-NL` | Kvinna | `nl-NL-FennaNeural` <sup>Ny</sup> | Allmänt |
-| Nederländska (Nederländerna) | `nl-NL` | Man | `nl-NL-MaartenNeural` <sup>Ny</sup> | Allmänt |
+| Nederländska (Nederländerna) | `nl-NL` | Kvinna | `nl-NL-FennaNeural` | Allmänt |
+| Nederländska (Nederländerna) | `nl-NL` | Man | `nl-NL-MaartenNeural` | Allmänt |
 | Engelska (Australien) | `en-AU` | Kvinna | `en-AU-NatashaNeural` | Allmänt |
 | Engelska (Australien) | `en-AU` | Man | `en-AU-WilliamNeural` | Allmänt |
 | Engelska (Kanada) | `en-CA` | Kvinna | `en-CA-ClaraNeural` | Allmänt |
-| Engelska (Kanada) | `en-CA` | Man | `en-CA-LiamNeural` <sup>Ny</sup> | Allmänt |
+| Engelska (Kanada) | `en-CA` | Man | `en-CA-LiamNeural` | Allmänt |
 | Engelska (Indien) | `en-IN` | Kvinna | `en-IN-NeerjaNeural` | Allmänt |
-| Engelska (Indien) | `en-IN` | Man | `en-IN-PrabhatNeural` <sup>Ny</sup> | Allmänt |
+| Engelska (Indien) | `en-IN` | Man | `en-IN-PrabhatNeural` | Allmänt |
 | Engelska (Irland) | `en-IE` | Kvinna | `en-IE-EmilyNeural` | Allmänt |
-| Engelska (Irland) | `en-IE` | Man | `en-IE-ConnorNeural` <sup>Ny</sup> | Allmänt |
+| Engelska (Irland) | `en-IE` | Man | `en-IE-ConnorNeural` | Allmänt |
+| Engelska (Filippinerna) | `en-PH` | Kvinna | `en-PH-RosaNeural` <sup>Ny</sup> | Allmänt | 
+| Engelska (Filippinerna) | `en-PH` | Man | `en-PH-JamesNeural` <sup>Ny</sup> | Allmänt | 
 | Engelska (Storbritannien) | `en-GB` | Kvinna | `en-GB-LibbyNeural` | Allmänt |
 | Engelska (Storbritannien) | `en-GB` | Kvinna | `en-GB-MiaNeural` | Allmänt |
 | Engelska (Storbritannien) | `en-GB` | Man | `en-GB-RyanNeural` | Allmänt |
-| Engelska (USA) | `en-US` | Kvinna | `en-US-AriaNeural` | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
-| Engelska (USA) | `en-US` | Kvinna | `en-US-JennyNeural` | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
-| Engelska (USA) | `en-US` | Man | `en-US-GuyNeural` | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
+| Engelska (USA) | `en-US` | Kvinna | `en-US-AriaNeural` | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Engelska (USA) | `en-US` | Kvinna | `en-US-JennyNeural` | Allmänt |
+| Engelska (USA) | `en-US` | Man | `en-US-GuyNeural` | Allmänt |
+| Estniska (Estland) | `et-EE` | Kvinna | `et-EE-AnuNeural` | Allmänt |
+| Estniska (Estland) | `et-EE` | Man | `et-EE-KertNeural` | Allmänt |
 | Finska (Finland) | `fi-FI` | Kvinna | `fi-FI-NooraNeural` | Allmänt |
-| Finska (Finland) | `fi-FI` | Kvinna | `fi-FI-SelmaNeural` <sup>Ny</sup> | Allmänt |
-| Finska (Finland) | `fi-FI` | Man | `fi-FI-HarriNeural` <sup>Ny</sup> | Allmänt |
+| Finska (Finland) | `fi-FI` | Kvinna | `fi-FI-SelmaNeural` | Allmänt |
+| Finska (Finland) | `fi-FI` | Man | `fi-FI-HarriNeural` | Allmänt |
+| Franska (Belgien) | `fr-BE` | Kvinna | `fr-BE-CharlineNeural` <sup>Ny</sup> | Allmänt | 
+| Franska (Belgien) | `fr-BE` | Man | `fr-BE-GerardNeural` <sup>Ny</sup> | Allmänt | 
 | Franska (Kanada) | `fr-CA` | Kvinna | `fr-CA-SylvieNeural` | Allmänt |
-| Franska (Kanada) | `fr-CA` | Man | `fr-CA-AntoineNeural` <sup>Ny</sup> | Allmänt |
+| Franska (Kanada) | `fr-CA` | Man | `fr-CA-AntoineNeural` | Allmänt |
 | Franska (Kanada) | `fr-CA` | Man | `fr-CA-JeanNeural` | Allmänt |
 | Franska (Frankrike) | `fr-FR` | Kvinna | `fr-FR-DeniseNeural` | Allmänt |
 | Franska (Frankrike) | `fr-FR` | Man | `fr-FR-HenriNeural` | Allmänt |
 | Franska (Schweiz) | `fr-CH` | Kvinna | `fr-CH-ArianeNeural` | Allmänt |
-| Franska (Schweiz) | `fr-CH` | Man | `fr-CH-FabriceNeural` <sup>Ny</sup> | Allmänt |
+| Franska (Schweiz) | `fr-CH` | Man | `fr-CH-FabriceNeural` | Allmänt |
 | Tyska (Österrike) | `de-AT` | Kvinna | `de-AT-IngridNeural` | Allmänt |
-| Tyska (Österrike) | `de-AT` | Man | `de-AT-JonasNeural` <sup>Ny</sup> | Allmänt |
+| Tyska (Österrike) | `de-AT` | Man | `de-AT-JonasNeural` | Allmänt |
 | Tyska (Tyskland) | `de-DE` | Kvinna | `de-DE-KatjaNeural` | Allmänt |
 | Tyska (Tyskland) | `de-DE` | Man | `de-DE-ConradNeural` | Allmänt |
 | Tyska (Schweiz) | `de-CH` | Kvinna | `de-CH-LeniNeural` | Allmänt |
-| Tyska (Schweiz) | `de-CH` | Man | `de-CH-JanNeural` <sup>Ny</sup> | Allmänt |
+| Tyska (Schweiz) | `de-CH` | Man | `de-CH-JanNeural` | Allmänt |
 | Grekiska (Grekland) | `el-GR` | Kvinna | `el-GR-AthinaNeural` | Allmänt |
-| Grekiska (Grekland) | `el-GR` | Man | `el-GR-NestorasNeural` <sup>Ny</sup> | Allmänt |
+| Grekiska (Grekland) | `el-GR` | Man | `el-GR-NestorasNeural` | Allmänt |
 | Hebreiska (Israel) | `he-IL` | Kvinna | `he-IL-HilaNeural` | Allmänt |
-| Hebreiska (Israel) | `he-IL` | Man | `he-IL-AvriNeural` <sup>Ny</sup> | Allmänt |
+| Hebreiska (Israel) | `he-IL` | Man | `he-IL-AvriNeural` | Allmänt |
 | Hindi (Indien) | `hi-IN` | Kvinna | `hi-IN-SwaraNeural` | Allmänt |
-| Hindi (Indien) | `hi-IN` | Man | `hi-IN-MadhurNeural` <sup>Ny</sup> | Allmänt |
+| Hindi (Indien) | `hi-IN` | Man | `hi-IN-MadhurNeural` | Allmänt |
 | Ungerska (Ungern) | `hu-HU` | Kvinna | `hu-HU-NoemiNeural` | Allmänt |
-| Ungerska (Ungern) | `hu-HU` | Man | `hu-HU-TamasNeural` <sup>Ny</sup> | Allmänt |
-| Indonesiska (Indonesien) | `id-ID` | Kvinna | `id-ID-GadisNeural` <sup>Ny</sup> | Allmänt |
+| Ungerska (Ungern) | `hu-HU` | Man | `hu-HU-TamasNeural` | Allmänt |
+| Indonesiska (Indonesien) | `id-ID` | Kvinna | `id-ID-GadisNeural` | Allmänt |
 | Indonesiska (Indonesien) | `id-ID` | Man | `id-ID-ArdiNeural` | Allmänt |
+| Irländskt (Irland) | `ga-IE` | Kvinna | `ga-IE-OrlaNeural` | Allmänt |
+| Irländskt (Irland) | `ga-IE` | Man | `ga-IE-ColmNeural` | Allmänt |
 | Italienska (Italien) | `it-IT` | Kvinna | `it-IT-ElsaNeural` | Allmänt |
 | Italienska (Italien) | `it-IT` | Kvinna | `it-IT-IsabellaNeural` | Allmänt |
 | Italienska (Italien) | `it-IT` | Man | `it-IT-DiegoNeural` | Allmänt |
@@ -229,46 +239,58 @@ Neurala röster kan användas för att göra interaktioner med chattrobotar och 
 | Japanska (Japan) | `ja-JP` | Man | `ja-JP-KeitaNeural` | Allmänt |
 | Koreanska (Korea) | `ko-KR` | Kvinna | `ko-KR-SunHiNeural` | Allmänt |
 | Koreanska (Korea) | `ko-KR` | Man | `ko-KR-InJoonNeural` | Allmänt |
+| Lettiska (Lettland) | `lv-LV` | Kvinna | `lv-LV-EveritaNeural` | Allmänt |
+| Lettiska (Lettland) | `lv-LV` | Man | `lv-LV-NilsNeural` | Allmänt |
+| Litauiska (Litauen) | `lt-LT` | Kvinna | `lt-LT-OnaNeural` | Allmänt |
+| Litauiska (Litauen) | `lt-LT` | Man | `lt-LT-LeonasNeural` | Allmänt |
 | Malajiska (Malaysia) | `ms-MY` | Kvinna | `ms-MY-YasminNeural` | Allmänt |
-| Malajiska (Malaysia) | `ms-MY` | Man | `ms-MY-OsmanNeural` <sup>Ny</sup> | Allmänt |
+| Malajiska (Malaysia) | `ms-MY` | Man | `ms-MY-OsmanNeural` | Allmänt |
+| Maltesiska (Malta) | `mt-MT` | Kvinna | `mt-MT-GraceNeural` | Allmänt |
+| Maltesiska (Malta) | `mt-MT` | Man | `mt-MT-JosephNeural` | Allmänt |
 | norska (Bokmål, Norge) | `nb-NO` | Kvinna | `nb-NO-IselinNeural` | Allmänt |
-| norska (Bokmål, Norge) | `nb-NO` | Kvinna | `nb-NO-PernilleNeural` <sup>Ny</sup> | Allmänt |
-| norska (Bokmål, Norge) | `nb-NO` | Man | `nb-NO-FinnNeural` <sup>Ny</sup> | Allmänt |
-| Polska (Polen) | `pl-PL` | Kvinna | `pl-PL-AgnieszkaNeural` <sup>Ny</sup> | Allmänt |
+| norska (Bokmål, Norge) | `nb-NO` | Kvinna | `nb-NO-PernilleNeural` | Allmänt |
+| norska (Bokmål, Norge) | `nb-NO` | Man | `nb-NO-FinnNeural` | Allmänt |
+| Polska (Polen) | `pl-PL` | Kvinna | `pl-PL-AgnieszkaNeural` | Allmänt |
 | Polska (Polen) | `pl-PL` | Kvinna | `pl-PL-ZofiaNeural` | Allmänt |
-| Polska (Polen) | `pl-PL` | Man | `pl-PL-MarekNeural` <sup>Ny</sup> | Allmänt |
-| Portugisiska (Brasilien) | `pt-BR` | Kvinna | `pt-BR-FranciscaNeural` | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
+| Polska (Polen) | `pl-PL` | Man | `pl-PL-MarekNeural` | Allmänt |
+| Portugisiska (Brasilien) | `pt-BR` | Kvinna | `pt-BR-FranciscaNeural` | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Portugisiska (Brasilien) | `pt-BR` | Man | `pt-BR-AntonioNeural` | Allmänt |
 | Portugisiska (Portugal) | `pt-PT` | Kvinna | `pt-PT-FernandaNeural` | Allmänt |
-| Portugisiska (Portugal) | `pt-PT` | Kvinna | `pt-PT-RaquelNeural` <sup>Ny</sup> | Allmänt |
-| Portugisiska (Portugal) | `pt-PT` | Man | `pt-PT-DuarteNeural` <sup>Ny</sup> | Allmänt |
+| Portugisiska (Portugal) | `pt-PT` | Kvinna | `pt-PT-RaquelNeural` | Allmänt |
+| Portugisiska (Portugal) | `pt-PT` | Man | `pt-PT-DuarteNeural` | Allmänt |
 | Rumänska (Rumänien) | `ro-RO` | Kvinna | `ro-RO-AlinaNeural` | Allmänt |
-| Rumänska (Rumänien) | `ro-RO` | Man | `ro-RO-EmilNeural` <sup>Ny</sup> | Allmänt |
+| Rumänska (Rumänien) | `ro-RO` | Man | `ro-RO-EmilNeural` | Allmänt |
 | Ryska (Ryssland) | `ru-RU` | Kvinna | `ru-RU-DariyaNeural` | Allmänt |
-| Ryska (Ryssland) | `ru-RU` | Kvinna | `ru-RU-SvetlanaNeural` <sup>Ny</sup> | Allmänt |
-| Ryska (Ryssland) | `ru-RU` | Man | `ru-RU-DmitryNeural` <sup>Ny</sup> | Allmänt |
+| Ryska (Ryssland) | `ru-RU` | Kvinna | `ru-RU-SvetlanaNeural` | Allmänt |
+| Ryska (Ryssland) | `ru-RU` | Man | `ru-RU-DmitryNeural` | Allmänt |
 | Slovakiska (Slovakien) | `sk-SK` | Kvinna | `sk-SK-ViktoriaNeural` | Allmänt |
-| Slovakiska (Slovakien) | `sk-SK` | Man | `sk-SK-LukasNeural` <sup>Ny</sup> | Allmänt |
+| Slovakiska (Slovakien) | `sk-SK` | Man | `sk-SK-LukasNeural` | Allmänt |
 | Slovenska (Slovenien) | `sl-SI` | Kvinna | `sl-SI-PetraNeural` | Allmänt |
-| Slovenska (Slovenien) | `sl-SI` | Man | `sl-SI-RokNeural` <sup>Ny</sup> | Allmänt |
+| Slovenska (Slovenien) | `sl-SI` | Man | `sl-SI-RokNeural` | Allmänt |
 | Spanska (Mexiko) | `es-MX` | Kvinna | `es-MX-DaliaNeural` | Allmänt |
 | Spanska (Mexiko) | `es-MX` | Man | `es-MX-JorgeNeural` | Allmänt |
 | Spanska (Spanien) | `es-ES` | Kvinna | `es-ES-ElviraNeural` | Allmänt |
 | Spanska (Spanien) | `es-ES` | Man | `es-ES-AlvaroNeural` | Allmänt |
 | Svenska (Sverige) | `sv-SE` | Kvinna | `sv-SE-HilleviNeural` | Allmänt |
-| Svenska (Sverige) | `sv-SE` | Kvinna | `sv-SE-SofieNeural` <sup>Ny</sup> | Allmänt |
-| Svenska (Sverige) | `sv-SE` | Man | `sv-SE-MattiasNeural` <sup>Ny</sup> | Allmänt |
+| Svenska (Sverige) | `sv-SE` | Kvinna | `sv-SE-SofieNeural` | Allmänt |
+| Svenska (Sverige) | `sv-SE` | Man | `sv-SE-MattiasNeural` | Allmänt |
 | Tamiliska (Indien) | `ta-IN` | Kvinna | `ta-IN-PallaviNeural` | Allmänt |
-| Tamiliska (Indien) | `ta-IN` | Man | `ta-IN-ValluvarNeural` <sup>Ny</sup> | Allmänt |
+| Tamiliska (Indien) | `ta-IN` | Man | `ta-IN-ValluvarNeural` | Allmänt |
 | Telugu (Indien) | `te-IN` | Kvinna | `te-IN-ShrutiNeural` | Allmänt |
-| Telugu (Indien) | `te-IN` | Man | `te-IN-MohanNeural` <sup>Ny</sup> | Allmänt |
+| Telugu (Indien) | `te-IN` | Man | `te-IN-MohanNeural` | Allmänt |
 | Thailändska (Thailand) | `th-TH` | Kvinna | `th-TH-AcharaNeural` | Allmänt |
 | Thailändska (Thailand) | `th-TH` | Kvinna | `th-TH-PremwadeeNeural` | Allmänt |
-| Thailändska (Thailand) | `th-TH` | Man | `th-TH-NiwatNeural` <sup>Ny</sup> | Allmänt |
+| Thailändska (Thailand) | `th-TH` | Man | `th-TH-NiwatNeural` | Allmänt |
 | Turkiska (Turkiet) | `tr-TR` | Kvinna | `tr-TR-EmelNeural` | Allmänt |
-| Turkiska (Turkiet) | `tr-TR` | Man | `tr-TR-AhmetNeural` <sup>Ny</sup> | Allmänt |
+| Turkiska (Turkiet) | `tr-TR` | Man | `tr-TR-AhmetNeural` | Allmänt |
+| Ukrainska (Ukraina) | `uk-UA` | Kvinna | `uk-UA-PolinaNeural` <sup>Ny</sup> | Allmänt | 
+| Ukrainska (Ukraina) | `uk-UA` | Man | `uk-UA-OstapNeural` <sup>Ny</sup> | Allmänt | 
+| Urdu (Pakistan) | `ur-PK` | Kvinna | `ur-PK-UzmaNeural` <sup>Ny</sup>  | Allmänt | 
+| Urdu (Pakistan) | `ur-PK` | Man | `ur-PK-AsadNeural` <sup>Ny</sup> | Allmänt | 
 | Vietnamesiska (Vietnam) | `vi-VN` | Kvinna | `vi-VN-HoaiMyNeural` | Allmänt |
-| Vietnamesiska (Vietnam) | `vi-VN` | Man | `vi-VN-NamMinhNeural` <sup>Ny</sup> | Allmänt |
+| Vietnamesiska (Vietnam) | `vi-VN` | Man | `vi-VN-NamMinhNeural` | Allmänt |
+| Kymriska (Storbritannien) | `cy-GB` | Kvinna | `cy-GB-NiaNeural` <sup>Ny</sup> | Allmänt | 
+| Kymriska (Storbritannien) | `cy-GB` | Man | `cy-GB-AledNeural` <sup>Ny</sup> | Allmänt | 
 
 #### <a name="neural-voices-in-preview"></a>Neurala-röster i för hands versionen
 
@@ -281,21 +303,11 @@ Nedan finns neurala-röster i offentlig för hands version.
 | Kinesiska (mandariner, förenklad) | `zh-CN` | Kvinna | `zh-CN-XiaoruiNeural` | Senior-röst, flera stilar som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Kinesiska (mandariner, förenklad) | `zh-CN` | Kvinna | `zh-CN-XiaoxuanNeural` | Allmänt, flera roll spel och format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Kinesiska (mandariner, förenklad) | `zh-CN` | Man   | `zh-CN-YunxiNeural` | Allmänt, flera format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Estniska (Estland) | `et-EE` | Kvinna | `et-EE-AnuNeural` | Allmänt |
-| Estniska (Estland) | `et-EE` | Man | `et-EE-KertNeural` <sup>Ny</sup> | Allmänt |
-| Irländskt (Irland) | `ga-IE` | Kvinna | `ga-IE-OrlaNeural` | Allmänt |
-| Irländskt (Irland) | `ga-IE` | Man | `ga-IE-ColmNeural` <sup>Ny</sup> | Allmänt |
-| Lettiska (Lettland) | `lv-LV` | Kvinna | `lv-LV-EveritaNeural` | Allmänt |
-| Lettiska (Lettland) | `lv-LV` | Man | `lv-LV-NilsNeural` <sup>Ny</sup> | Allmänt |
-| Litauiska (Litauen) | `lt-LT` | Kvinna | `lt-LT-OnaNeural` | Allmänt |
-| Litauiska (Litauen) | `lt-LT` | Man | `lt-LT-LeonasNeural` <sup>Ny</sup> | Allmänt |
-| Maltesiska (Malta) | `mt-MT` | Kvinna | `mt-MT-GraceNeural` | Allmänt |
-| Maltesiska (Malta) | `mt-MT` | Man | `mt-MT-JosephNeural` <sup>Ny</sup> | Allmänt |
 
 > [!IMPORTANT]
 > Röster i offentlig för hands version är bara tillgängliga i tre tjänste regioner: USA, västra Europa och Sydostasien.
 
-Mer information om regional tillgänglighet finns i [regioner](regions.md#standard-and-neural-voices).
+Mer information om regional tillgänglighet finns i [regioner](regions.md#neural-and-standard-voices).
 
 Information om hur du kan konfigurera och justera neurala-röster, t. ex. tal format, finns i [tal syntes Markup Language](speech-synthesis-markup.md#adjust-speaking-styles).
 
@@ -307,7 +319,7 @@ Information om hur du kan konfigurera och justera neurala-röster, t. ex. tal fo
 
 ### <a name="standard-voices"></a>Standard röster
 
-Det finns fler än 75 standard röster i över 45 språk och nationella inställningar, vilket gör att du kan konvertera text till syntetiskt tal. Mer information om regional tillgänglighet finns i [regioner](regions.md#standard-and-neural-voices).
+Det finns fler än 75 standard röster i över 45 språk och nationella inställningar, vilket gör att du kan konvertera text till syntetiskt tal. Mer information om regional tillgänglighet finns i [regioner](regions.md#neural-and-standard-voices).
 
 > [!NOTE]
 > Med två undantag skapas standard röster från exempel som använder en 16 kHz-samplings frekvens.

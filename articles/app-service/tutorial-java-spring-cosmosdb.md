@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 5a481e7ef37e36578b7f71a7afe70dcad737de89
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2cecf2038190adcf12d376715a5fbf261cf758e0
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217473"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962636"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Självstudie: bygga en Java våren Boot Web-App med Azure App Service på Linux och Azure Cosmos DB
 
@@ -185,7 +185,7 @@ Om du ser undantag i stället för meddelandet "startad TodoApplication", kontro
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.11.0</version>
+        <version>1.13.0</version>
         <configuration>
             <schemaVersion>v2</schemaVersion>
 
@@ -275,7 +275,7 @@ bash-3.2$ mvn azure-webapp:deploy
 Utdata innehåller URL till dina distribuerade program (i det här exemplet `https://spring-todo-app.azurewebsites.net` ). Du kan kopiera denna URL i webbläsaren eller köra följande kommando i terminalfönstret för att läsa in din app.
 
 ```bash
-curl https://spring-todo-app.azurewebsites.net
+explorer https://spring-todo-app.azurewebsites.net
 ```
 
 Du bör se när appen körs med fjärrwebbadressen i adressfältet:

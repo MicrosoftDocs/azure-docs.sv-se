@@ -2,14 +2,14 @@
 title: Avancerad användning av authn/AuthZ
 description: Lär dig att anpassa funktionen för autentisering och auktorisering i App Service för olika scenarier och hämta användar anspråk och olika tokens.
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 03/29/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: fc2916cbccc21262467533b0b497b14f4f4b941c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b7faf47363a5efee6a60951e67d9ad2bed8bf76f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034885"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076878"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Avancerad användning av autentisering och auktorisering i Azure App Service
 
@@ -18,10 +18,9 @@ Den här artikeln visar hur du anpassar den inbyggda [autentiseringen och auktor
 För att komma igång snabbt, se någon av följande Självstudier:
 
 * [Självstudie: Autentisera och auktorisera användare från slutpunkt till slutpunkt i Azure App Service](tutorial-auth-aad.md)
-* [Så här konfigurerar du din app för att använda Azure Active Directory-inloggning](configure-authentication-provider-aad.md)
+* [Så här konfigurerar du din app för att använda Microsoft Identity Platform-inloggning](configure-authentication-provider-aad.md)
 * [Så här konfigurerar du din app för att använda Facebook-inloggning](configure-authentication-provider-facebook.md)
 * [Så här konfigurerar du din app för att använda Google-inloggning](configure-authentication-provider-google.md)
-* [Så här konfigurerar du din app för att använda Microsoft-kontoinloggning](configure-authentication-provider-microsoft.md)
 * [Så här konfigurerar du din app för att använda Twitter-inloggning](configure-authentication-provider-twitter.md)
 * [Så här konfigurerar du din app för inloggning med hjälp av en OpenID Connect-Provider (för hands version)](configure-authentication-provider-openid-connect.md)
 * [Så här konfigurerar du din app för inloggning med hjälp av en inloggning med Apple (för hands version)](configure-authentication-provider-apple.md)
@@ -37,8 +36,7 @@ I **åtgärd som ska vidtas när begäran inte autentiseras** väljer du **Till�
 På inloggnings sidan eller i navigerings fältet eller på någon annan plats i appen lägger du till en inloggnings länk till alla providers som du har aktiverat ( `/.auth/login/<provider>` ). Exempel:
 
 ```html
-<a href="/.auth/login/aad">Log in with Azure AD</a>
-<a href="/.auth/login/microsoftaccount">Log in with Microsoft Account</a>
+<a href="/.auth/login/aad">Log in with the Microsoft Identity Platform</a>
 <a href="/.auth/login/facebook">Log in with Facebook</a>
 <a href="/.auth/login/google">Log in with Google</a>
 <a href="/.auth/login/twitter">Log in with Twitter</a>
@@ -159,7 +157,6 @@ Från din server kod matas de providerspecifika tokens in i begär ande huvudet,
 | Azure Active Directory | `X-MS-TOKEN-AAD-ID-TOKEN` <br/> `X-MS-TOKEN-AAD-ACCESS-TOKEN` <br/> `X-MS-TOKEN-AAD-EXPIRES-ON`  <br/> `X-MS-TOKEN-AAD-REFRESH-TOKEN` |
 | Facebook-token | `X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN` <br/> `X-MS-TOKEN-FACEBOOK-EXPIRES-ON` |
 | Google | `X-MS-TOKEN-GOOGLE-ID-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-ACCESS-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-EXPIRES-ON` <br/> `X-MS-TOKEN-GOOGLE-REFRESH-TOKEN` |
-| Microsoft-konto | `X-MS-TOKEN-MICROSOFTACCOUNT-ACCESS-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-EXPIRES-ON` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-AUTHENTICATION-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-REFRESH-TOKEN` |
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
@@ -175,7 +172,6 @@ När din leverantörs åtkomsttoken (inte [sessionstoken](#extend-session-token-
 - **Google**: Lägg till en `access_type=offline` frågesträngparametern till ditt `/.auth/login/google` API-anrop. Om du använder Mobile Apps SDK kan du lägga till parametern i en av `LogicAsync` överlagringarna (se [Google Refresh-token](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: tillhandahåller inte uppdaterade tokens. Token för lång livs längd upphör att gälla om 60 dagar (se [Facebook-förfallo tid och tillägg för](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)åtkomsttoken).
 - **Twitter**: åtkomsttoken upphör inte att gälla (se [vanliga frågor och svar om Twitter](https://developer.twitter.com/en/docs/authentication/faq)).
-- **Microsoft-konto**: Välj omfånget när du [konfigurerar autentiseringsinställningar för Microsoft-konton](configure-authentication-provider-microsoft.md) `wl.offline_access` .
 - **Azure Active Directory**: i [https://resources.azure.com](https://resources.azure.com) utför du följande steg:
     1. Välj **Läs/skriv** längst upp på sidan.
     2. I den vänstra webbläsaren navigerar du till **prenumerationer** > * *_\<subscription\_name_** > **resourceGroups** > * *_ \<resource\_group\_name> _* * > **providers**  >  **Microsoft. Web**  >  **Sites** > * *_ \<app\_name> _ * * > **config**  >  **authsettings**. 
@@ -280,14 +276,26 @@ Identitets leverantören kan ge viss behörighet för att aktivera nycklar. Exem
 
 Om någon av de andra nivåerna inte ger dig den auktorisering du behöver, eller om din plattform eller identitets leverantör inte stöds, måste du skriva anpassad kod för att auktorisera användare baserat på [användar anspråk](#access-user-claims).
 
-## <a name="updating-the-configuration-version-preview"></a>Uppdaterar konfigurations versionen (för hands version)
+## <a name="updating-the-configuration-version"></a>Uppdaterar konfigurations versionen
 
-Det finns två versioner av hanterings-API: et för funktionen autentisering/auktorisering. Preview v2-versionen krävs för "Authentication (Preview)"-upplevelsen i Azure Portal. En app som redan använder v1-API: n kan uppgradera till v2-versionen när några ändringar har gjorts. Mer specifikt måste den hemliga konfigurationen flyttas till inställningar för plats-tröga program. Konfigurationen av Microsoft-konto leverantören stöds inte heller i v2.
+Det finns två versioner av hanterings-API: et för funktionen autentisering/auktorisering. V2-versionen krävs för "autentisering"-upplevelsen i Azure Portal. En app som redan använder v1-API: n kan uppgradera till v2-versionen när några ändringar har gjorts. Mer specifikt måste den hemliga konfigurationen flyttas till inställningar för plats-tröga program. Detta kan göras automatiskt från "Authentication"-avsnittet i portalen för din app.
 
 > [!WARNING]
-> Vid migrering till v2-förhands granskning inaktive ras hanteringen av funktionen App Service autentisering/auktorisering för ditt program via vissa klienter, till exempel dess befintliga upplevelse i Azure Portal, Azure CLI och Azure PowerShell. Detta kan inte ångras. Under för hands versionen uppmuntras inte migrering av produktions arbets belastningar eller stöds. Du bör bara följa stegen i det här avsnittet för test program.
+> Vid migrering till v2 inaktive ras hanteringen av funktionen App Service autentisering/auktorisering för ditt program via vissa klienter, till exempel dess befintliga upplevelse i Azure Portal, Azure CLI och Azure PowerShell. Detta kan inte ångras.
 
-### <a name="moving-secrets-to-application-settings"></a>Flytta hemligheter till program inställningar
+V2-API: t stöder inte skapande eller redigering av Microsoft-konto som en distinkt provider som genomfördes i v1. I stället utnyttjar den konvergerade [Microsoft Identity Platform](../active-directory/develop/v2-overview.md) för att logga in användare med både Azure AD och personliga Microsoft-konton. När du växlar till v2 API, används v1 Azure Active Directory-konfigurationen för att konfigurera Microsoft Identity Platform-providern. V1 Microsoft-providern överförs framåt i migreringsprocessen och fortsätter att fungera som vanligt, men vi rekommenderar att du flyttar till den nyare Microsoft Identity Platform-modellen. Mer information finns i [stöd för registrering av Microsoft-dataleverantörer](#support-for-microsoft-account-provider-registrations) .
+
+Den automatiserade migreringsprocessen flyttar providerns hemligheter till program inställningar och konverterar sedan resten av konfigurationen till det nya formatet. Så här använder du automatisk migrering:
+
+1. Navigera till din app i portalen och välj meny alternativet **autentisering** .
+1. Om appen konfigureras med v1-modellen visas en **uppgraderings** knapp.
+1. Granska beskrivningen i bekräftelse meddelandet. Om du är redo att utföra migreringen klickar du på **Uppgradera** i prompten.
+
+### <a name="manually-managing-the-migration"></a>Hantera migreringen manuellt
+
+Med följande steg kan du migrera programmet manuellt till v2-API: et om du inte vill använda den automatiska versionen som anges ovan.
+
+#### <a name="moving-secrets-to-application-settings"></a>Flytta hemligheter till program inställningar
 
 1. Hämta din befintliga konfiguration med v1-API: et:
 
@@ -397,9 +405,7 @@ Det finns två versioner av hanterings-API: et för funktionen autentisering/auk
 
 Du har nu migrerat appen för att lagra identitets leverantörs hemligheter som program inställningar.
 
-### <a name="support-for-microsoft-account-registrations"></a>Stöd för Microsoft-konto registreringar
-
-V2-API: t stöder för närvarande inte Microsoft-konto som en distinkt Provider. I stället utnyttjar den konvergerade [Microsoft Identity Platform](../active-directory/develop/v2-overview.md) för inloggning av användare med personliga Microsoft-konton. När du växlar till v2 API, används v1 Azure Active Directory-konfigurationen för att konfigurera Microsoft Identity Platform-providern.
+#### <a name="support-for-microsoft-account-provider-registrations"></a>Stöd för registrering av Microsoft-konto leverantörer
 
 Om din befintliga konfiguration innehåller en Microsoft-Provider och inte innehåller en Azure Active Directory-Provider kan du växla konfigurationen till Azure Active Directory-providern och sedan utföra migreringen. Gör så här:
 
@@ -413,12 +419,10 @@ Om din befintliga konfiguration innehåller en Microsoft-Provider och inte inneh
 1. Nu har du kopierat konfigurationen till, men den befintliga konfigurationen av Microsoft-providern finns kvar. Innan du tar bort den måste du kontrol lera att alla delar av appen refererar Azure Active Directory-providern via inloggnings länkar osv. Kontrol lera att alla delar av din app fungerar som förväntat.
 1. När du har verifierat att saker fungerar mot AAD Azure Active Directory-providern kan du ta bort konfigurationen av Microsoft-providern.
 
-Vissa appar kan redan ha separata registreringar för Azure Active Directory-och Microsoft-konto. Dessa appar kan inte migreras just nu. 
-
 > [!WARNING]
 > Det är möjligt att konvergera de två registreringarna genom att ändra de [konto typer som stöds](../active-directory/develop/supported-accounts-validation.md) för AAD-appens registrering. Detta kan dock medföra ett nytt medgivande för användare av Microsoft-konto, och dessa användares identitets anspråk kan skilja sig åt i strukturen, `sub` särskilt när du ändrar värden eftersom ett nytt app-ID används. Den här metoden rekommenderas inte om den inte är grundligt förstått. Du bör istället vänta på stöd för de två registreringarna i v2 API-ytan.
 
-### <a name="switching-to-v2"></a>Växlar till v2
+#### <a name="switching-to-v2"></a>Växlar till v2
 
 När ovanstående steg har utförts navigerar du till appen i Azure Portal. Välj avsnittet "Authentication (för hands version)". 
 

@@ -3,12 +3,12 @@ title: Integrera Azure Event Hubs med Azure Private Link service
 description: Lär dig hur du integrerar Azure Event Hubs med Azure Private Link service
 ms.date: 08/22/2020
 ms.topic: article
-ms.openlocfilehash: 996779e103dae2d2d950f447d2ac72667fc9e754
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5c01788044f3c3a5d875a24172e7222ff195f81
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94427759"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960851"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Tillåt åtkomst till Azure Event Hubs-namnrymder via privata slut punkter 
 Azure Private Link service ger dig åtkomst till Azure-tjänster (till exempel Azure Event Hubs, Azure Storage och Azure Cosmos DB) och Azure-värdbaserade kund-/partner tjänster via en **privat slut punkt** i det virtuella nätverket.
@@ -17,11 +17,10 @@ En privat slut punkt är ett nätverks gränssnitt som ansluter privat och säke
 
 Mer information finns i [Vad är en privat Azure-länk?](../private-link/private-link-overview.md)
 
-> [!WARNING]
-> Att aktivera privata slut punkter kan förhindra att andra Azure-tjänster interagerar med Event Hubs.  Begär Anden som blockeras inkluderar de från andra Azure-tjänster, från Azure Portal, från loggnings-och mått tjänster och så vidare. Som ett undantag kan du tillåta åtkomst till Event Hubs resurser från vissa betrodda tjänster även när privata slut punkter är aktiverade. En lista över betrodda tjänster finns i [betrodda tjänster](#trusted-microsoft-services).
-
->[!NOTE]
-> Den här funktionen stöds för både **standard** -och **dedikerade** nivåer. Det stöds inte på **Basic** -nivån.
+## <a name="important-points"></a>Viktiga punkter
+- Den här funktionen stöds för både **standard** -och **dedikerade** nivåer. Det stöds inte på **Basic** -nivån.
+- Att aktivera privata slut punkter kan förhindra att andra Azure-tjänster interagerar med Event Hubs.  Begär Anden som blockeras inkluderar de från andra Azure-tjänster, från Azure Portal, från loggnings-och mått tjänster och så vidare. Som ett undantag kan du tillåta åtkomst till Event Hubs resurser från vissa **betrodda tjänster** även när privata slut punkter är aktiverade. En lista över betrodda tjänster finns i [betrodda tjänster](#trusted-microsoft-services).
+- Ange **minst en IP-regel eller en regel för virtuella nätverk** för namn området för att tillåta trafik enbart från de angivna IP-adresserna eller under nätet för ett virtuellt nätverk. Om det inte finns några IP-och virtuella nätverks regler kan namn området nås via det offentliga Internet (med hjälp av åtkomst nyckeln). 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Lägg till en privat slut punkt med Azure Portal
 
@@ -51,8 +50,8 @@ Om du redan har ett Event Hubs namn område kan du skapa en privat länk anslutn
 
     :::image type="content" source="./media/private-link-service/selected-networks-page.png" alt-text="Fliken nätverk – alternativet valda nätverk" lightbox="./media/private-link-service/selected-networks-page.png":::    
 
-    > [!NOTE]
-    > Som standard är alternativet **valda nätverk** markerat. Om du inte anger en IP-brandväggsregel eller lägger till ett virtuellt nätverk kan namn området nås via offentliga Internet. 
+    > [!WARNING]
+    > Som standard är alternativet **valda nätverk** markerat. Om du inte anger en IP-brandväggsregel eller lägger till ett virtuellt nätverk kan namn området nås via offentliga Internet (med hjälp av åtkomst nyckeln). 
 1. Välj fliken **anslutningar för privata slut punkter** överst på sidan. 
 1. Välj knappen **+ privat slut punkt** överst på sidan.
 

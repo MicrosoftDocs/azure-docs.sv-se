@@ -10,12 +10,12 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: 2eda67e377a3b61e696e732b916d788c00a18eae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca4fe1410c18357a1fab10cc9c971cf3a81542fd
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95908786"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963265"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>Språk referens för Query acceleration SQL
 
@@ -122,8 +122,8 @@ SQL-språket för frågespråk stöder följande SQL-standardfunktioner:
 |[UPPER](/sql/t-sql/functions/upper-transact-sql)    |Returnerar ett tecken uttryck med gemena tecken som konverterats till versaler.|
 |[UNDER sträng](/sql/t-sql/functions/substring-transact-sql)    |Returnerar en del av ett tecken-, binär-, text-eller bild uttryck i SQL Server.|
 |[TRIM](/sql/t-sql/functions/trim-transact-sql)    |Tar bort blank steg tecken (32) eller andra angivna tecken från början och slutet av en sträng.|
-|LEDANDE    |Beskrivning|
-|AVSLUTANDE    |Beskrivning|
+|LEDANDE    |Tar bort blank steg tecken (32) eller andra angivna tecken från början av en sträng.|
+|AVSLUTANDE    |Tar bort blank steg tecken (32) eller andra angivna tecken från slutet av en sträng.|
 
 Här är några exempel:
 

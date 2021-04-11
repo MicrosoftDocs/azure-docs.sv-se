@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4ba5a9211cdb89f6ac5a92a315378e58f5d08a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 34ac4a3b7f55c42711e4bc33c75bba964b49c65e
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709522"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551636"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Konfigurera förfallo principen för Microsoft 365 grupper
 
@@ -65,7 +65,7 @@ Följande är roller som kan konfigurera och använda förfallo datum för Micro
 Roll | Behörigheter
 -------- | --------
 Global administratör, grupp administratör eller användar administratör | Kan skapa, läsa, uppdatera eller ta bort princip inställningarna för utgångna Microsoft 365 grupper<br>Kan förnya alla Microsoft 365s grupper
-User | Kan förnya en Microsoft 365 grupp som de äger<br>Kan återställa en Microsoft 365 grupp som de äger<br>Kan läsa princip inställningarna för förfallo datum
+Användare | Kan förnya en Microsoft 365 grupp som de äger<br>Kan återställa en Microsoft 365 grupp som de äger<br>Kan läsa princip inställningarna för förfallo datum
 
 Mer information om behörigheter för att återställa en borttagen grupp finns [i återställa en borttagen Microsoft 365 grupp i Azure Active Directory](groups-restore-deleted.md).
 
@@ -91,6 +91,7 @@ Mer information om behörigheter för att återställa en borttagen grupp finns 
 > - När du först konfigurerar förfallo datum är alla grupper som är äldre än utgångs intervallet inställt på 35 dagar tills det upphör att gälla, om inte gruppen förnyas automatiskt eller om ägaren förnyar den.
 > - När en dynamisk grupp tas bort och återställs, visas den som en ny grupp och fylls i igen enligt regeln. Den här processen kan ta upp till 24 timmar.
 > - Meddelanden om förfallo datum för grupper som används i team visas i team ägarens feed.
+> - När du aktiverar förfallo datum för valda grupper kan du lägga till upp till 500 grupper i listan. Om du behöver lägga till fler än 500 grupper kan du aktivera förfallo datum för alla dina grupper. I det scenariot gäller inte begränsningen på 500-gruppen.
 
 ## <a name="email-notifications"></a>E-postmeddelanden
 

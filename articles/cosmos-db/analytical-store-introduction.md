@@ -1,5 +1,5 @@
 ---
-title: Vad är Azure Cosmos DB Analytical Store?
+title: Vad är Azure Cosmos DB-analysarkiv?
 description: Lär dig mer om Azure Cosmos DB transaktionell (rad-och kolumnbaserade) och analys (kolumnbaserade). Fördelar med analytisk lagring, prestanda påverkan för storskaliga arbets belastningar och automatisk synkronisering av data från transaktions lagring till analytisk lagring
 author: Rodrigossz
 ms.service: cosmos-db
@@ -8,10 +8,10 @@ ms.date: 03/16/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
 ms.openlocfilehash: 450514541a90a01ea6b70f77491f116adb404887
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105046221"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Vad är Azure Cosmos DB Analytical Store?
@@ -119,7 +119,7 @@ Följande begränsningar gäller för användnings data i Azure Cosmos DB när d
   * Spark-pooler i Azure Synapse kommer att representera dessa kolumner som `undefined` .
   * SQL Server-pooler i Azure Synapse kommer att representera dessa kolumner som `NULL` .
 
-#### <a name="schema-representation"></a>Schema representation
+#### <a name="schema-representation"></a>Schemarepresentation
 
 Det finns två lägen för schemarepresentation i analysarkivet. De här lägena utgör en kompromiss mellan enkelheten i kolumnrepresentation, hanteringen av polymorfiska scheman och enkelheten i frågeupplevelsen:
 

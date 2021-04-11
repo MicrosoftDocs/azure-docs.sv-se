@@ -3,12 +3,12 @@ title: System avsnitt i Azure Event Grid
 description: Beskriver system avsnitt i Azure Event Grid.
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: b1fbecb1e372602f9c252d43d2a1f93524ef1846
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca59dd6bb99b9b7d06f0622e8c0cb4e4234e21ff
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99052973"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105733051"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>System avsnitt i Azure Event Grid
 Ett system avsnitt i Event Grid representerar en eller flera händelser som publicerats av Azure-tjänster som Azure Storage och Azure-Event Hubs. Ett system ämne kan till exempel representera **alla BLOB-händelser** eller bara **BLOB-skapade** och **borttagna BLOB** -händelser som har publicerats för ett **särskilt lagrings konto**. I det här exemplet, när en BLOB överförs till lagrings kontot, publicerar Azure Storages tjänsten en **BLOB-skapad** händelse i avsnittet system i Event Grid, som sedan vidarebefordrar händelsen till ämnes [prenumeranter](event-handlers.md) som tar emot och bearbetar händelsen. 
@@ -30,6 +30,7 @@ Här är den aktuella listan över Azure-tjänster som har stöd för att skapa 
 - [Azure Machine Learning](event-schema-machine-learning.md)
 - [Azure Maps](event-schema-azure-maps.md)
 - [Azure Media Services](event-schema-media-services.md)
+- [Azure Policy](./event-schema-policy.md)
 - [Azure-resursgrupper](event-schema-resource-groups.md)
 - [Azure Service Bus](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)

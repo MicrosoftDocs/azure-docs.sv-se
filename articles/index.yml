@@ -1,10 +1,10 @@
 ### YamlMime:Hub
 title: Azure-dokumentation
-summary: Lär dig att skapa och hantera kraftfulla program med Microsoft Azure-molntjänster. Hämta dokumentation, exempelkod, självstudier med mera.
+summary: 'Lär dig att skapa och hantera kraftfulla program med Microsoft Azure-molntjänster. Hämta dokumentation, exempelkod, självstudier med mera.'
 brand: azure
 metadata:
   title: Azure-dokumentation
-  description: Lär dig att skapa och hantera kraftfulla program med Microsoft Azure-molntjänster. Hämta dokumentation, exempelkod, självstudier med mera.
+  description: 'Lär dig att skapa och hantera kraftfulla program med Microsoft Azure-molntjänster. Hämta dokumentation, exempelkod, självstudier med mera.'
   services: azure
   ms.service: azure
   ms.topic: hub-page
@@ -12,1383 +12,1377 @@ metadata:
   ms.author: rolyon
   ms.date: 03/03/2021
   featureFlags:
-  - clicktale
-  ms.openlocfilehash: f26db3f981de1f49ac2bc148098034dd226c891c
-  ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
-  ms.translationtype: MT
-  ms.contentlocale: sv-SE
-  ms.lasthandoff: 03/24/2021
-  ms.locfileid: "105022304"
+    - clicktale
 highlightedContent:
   items:
-  - title: Utvecklarens startguide för Azure
-    itemType: get-started
-    url: guides/developer/azure-developer-guide.md
-  - title: Utforma din app med Azure Architecture Center
-    itemType: architecture
-    url: /azure/architecture/
-  - title: Förbered din organisation med Cloud Adoption Framework
-    itemType: overview
-    url: /azure/cloud-adoption-framework/
-  - title: Utveckla dina färdigheter med Microsoft Learn
-    itemType: learn
-    url: /learn/browse/?products=azure&resource_type=learning%20path
+    - title: Utvecklarens startguide för Azure
+      itemType: get-started
+      url: guides/developer/azure-developer-guide.md
+    - title: Utforma din app med Azure Architecture Center
+      itemType: architecture
+      url: /azure/architecture/
+    - title: Förbered din organisation med Cloud Adoption Framework
+      itemType: overview
+      url: /azure/cloud-adoption-framework/
+    - title: Utveckla dina färdigheter med Microsoft Learn
+      itemType: learn
+      url: /learn/browse/?products=azure&resource_type=learning%20path
 productDirectory:
   title: Bläddra bland Azure-produkter
   items:
-  - title: Azure-percept
-    summary: Edge Intelligence från Silicon to service
-    imageSrc: ./media/index/azure-percept.svg
-    azureCategories:
-    - iot
-    url: azure-percept/index.yml
-  - title: Avvikelseidentifiering
-    summary: Lägg enkelt till funktioner för avvikelseidentifiering i dina appar
-    imageSrc: https://static.docs.com/ui/media/product/azure/anomaly-detector.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/anomaly-detector/index.yml
-  - title: Azure Bot Service
-    summary: Intelligent, serverfri bot-tjänst som kan byggas ut på begäran
-    imageSrc: https://static.docs.com/ui/media/product/azure/bot-service.svg
-    azureCategories:
-    - ai-machine-learning
-    url: /azure/bot-service/
-  - title: Azure Cognitive Search
-    summary: AI-baserad molnsökningstjänst för utveckling av mobil- och webbappar
-    imageSrc: https://static.docs.com/ui/media/product/azure/search.svg
-    azureCategories:
-    - ai-machine-learning
-    - mobile
-    - web
-    url: search/index.yml
-  - title: Azure Cognitive Services
-    summary: Lägg till smarta API-funktioner för att aktivera sammanhangsbaserad interaktion
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - featured
-    - ai-machine-learning
-    - mobile
-    url: cognitive-services/index.yml
-  - title: Azure Databricks
-    summary: En snabb, enkel och gemensam Apache Spark-baserad analysplattform
-    imageSrc: https://static.docs.com/ui/media/product/azure/databricks.svg
-    azureCategories:
-    - ai-machine-learning
-    - analytics
-    url: /azure/databricks/
-  - title: Hälso robot
-    summary: Ett hanterat tjänst syfte – byggt för utveckling av virtuella sjukvårds assistenter.
-    imageSrc: media/index/health-bot-logo.svg
-    azureCategories:
-    - ai-machine-learning
-    url: /azure/health-bot/
-  - title: Azure Machine Learning
-    summary: Låt alla ta del av AI med en skalbar, tillförlitlig plattform från slutpunkt till slutpunkt med experimentering och modellhantering
-    imageSrc: https://static.docs.com/ui/media/product/azure/machine-learning.svg
-    azureCategories:
-    - ai-machine-learning
-    - iot
-    url: machine-learning/index.yml
-  - title: Azure Open Datasets
-    summary: En molnplattform för att förvara och dela utvalda datamängder som gör att du snabbare kan utveckla maskininlärningsmodeller
-    imageSrc: https://static.docs.com/ui/media/product/azure/open-datasets.svg
-    azureCategories:
-    - ai-machine-learning
-    url: open-datasets/index.yml
-  - title: Azure-återställningstider
-    summary: Göra utveckling och anslutning för inbäddad IoT enkelt
-    imageSrc: https://static.docs.com/ui/media/product/azure/rtos.svg
-    azureCategories:
-    - iot
-    url: /azure/rtos/
-  - title: Automatiska förslag i Bing
-    summary: Ge appen smarta automatiska förslag vid sökningar
-    imageSrc: ./media/index/API_Bing_AutoSuggest.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-autosuggest/get-suggested-search-terms.md
-  - title: Anpassad sökning i Bing
-    summary: Ett lätthanterligt, annonsfritt sökverktyg av kommersiell kvalitet som ger det resultat du vill ha
-    imageSrc: ./media/index/API_Bing_Custom_Search.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-custom-search/overview.md
-  - title: Entitetssökning i Bing
-    summary: Berika upplevelsen genom att identifiera och förbättra entitetsinformation från webben
-    imageSrc: ./media/index/API_Bing_Entity_Search.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-entities-search/overview.md
-  - title: Bildsökning i Bing
-    summary: Sök efter bilder och få detaljerade resultat
-    imageSrc: ./media/index/API_Bing_Image_Search.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-image-search/overview.md
-  - title: Nyhetssökning i Bing
-    summary: Sök efter nyheter och få detaljerade resultat
-    imageSrc: ./media/index/API_Bing_News_Search.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-news-search/search-the-web.md
-  - title: Stavningskontroll i Bing
-    summary: Identifiera och rätta stavfel i appen
-    imageSrc: ./media/index/API_Bing_Spell_Check.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-spell-check/overview.md
-  - title: Videosökning i Bing
-    summary: Sök efter videor och få detaljerade resultat
-    imageSrc: ./media/index/API_Bing_Video_Search.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-video-search/overview.md
-  - title: Visuell sökning i Bing
-    summary: Få omfattande information som hjälper dig att skapa fängslande bildprogram på valfri enhet
-    imageSrc: ./media/index/API_Bing_Visual_Search.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-visual-search/overview.md
-  - title: Webbsökning i Bing
-    summary: Få förbättrade sökresultat från miljarder olika webbdokument
-    imageSrc: ./media/index/API_Bing_Web_Search.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/bing-web-search/overview.md
-  - title: Azure Communication Services (förhandsversion)
-    summary: Skapa avancerade kommunikationslösningar med samma säkra plattform som används av Microsoft Teams
-    imageSrc: ./media/index/communication-services.svg
-    azureCategories:
-    - web
-    - mobile
-    url: communication-services/overview.md
-  - title: Visuellt innehåll
-    summary: Hämta användbar information från bilder
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/computer-vision/index.yml
-  - title: Content Moderator
-    summary: Automatiserad bild-, text-och videomoderering
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/content-moderator/index.yml
-  - title: Custom Vision
-    summary: Du kan enkelt anpassa egna avancerade modeller med visuellt innehåll för ditt unika användarfall
-    imageSrc: https://static.docs.com/ui/media/product/azure/custom-vision.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/custom-vision-service/index.yml
-  - title: Virtuella datorer för datavetenskap
-    summary: Detaljerad, förkonfigurerad miljö för AI-utveckling
-    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
-    azureCategories:
-    - ai-machine-learning
-    url: machine-learning/data-science-virtual-machine/index.yml
-  - title: Ansikte
-    summary: Spåra, identifiera, analysera, sortera och tagga ansikten i foton
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/face/index.yml
-  - title: Formigenkänning
-    summary: En AI-driven dokumentextraheringstjänst som känner igen dina former
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/form-recognizer/index.yml
-  - title: Avancerad läsare
-    summary: Stärk läsningen och läsförståelsen för användare i alla åldrar och med alla förmågor
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/immersive-reader/index.yml
-  - title: Handskriftsigenkänning (förhandsversion)
-    summary: En AI-tjänst som identifierar digitala pennanteckningar, som handskrift, former och layouter
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: /previous-versions/azure/cognitive-services/Ink-Recognizer/
-  - title: Kinect DK
-    summary: Bygg modeller för visuellt innehåll och tal med hjälp av ett utvecklarkit med avancerade AI-sensorer
-    imageSrc: ./media/index/kinect-viewer.svg
-    azureCategories:
-    - ai-machine-learning
-    - iot
-    - mixed-reality
-    url: kinect-dk/index.yml
-  - title: Språkförståelse
-    summary: Lär apparna att förstå kommandon från användarna
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/luis/index.yml
-  - title: Microsoft Genomics
-    summary: Hantera genomsekvensering och forskningsinsikter
-    imageSrc: https://static.docs.com/ui/media/product/azure/genomics.svg
-    azureCategories:
-    - ai-machine-learning
-    url: genomics/index.yml
-  - title: Metrics Advisor (förhandsversion)
-    summary: En AI-tjänst som övervakar mått och diagnostiserar problem
-    imageSrc: ./media/index/metrics-advisor.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/metrics-advisor/index.yml
-  - title: Personanpassning
-    summary: En AI-tjänst som levererar en personanpassad användarupplevelse
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/personalizer/index.yml
-  - title: Project Bonsai (förhandsversion)
-    summary: En maskinundervisningstjänst för att skapa intelligenta industriella kontrollsystem med hjälp av simuleringar
-    imageSrc: https://static.docs.com/ui/media/product/azure/bonsai.svg
-    azureCategories:
-    - ai-machine-learning
-    url: /bonsai/
-  - title: QnA Maker
-    summary: Omformulera information till konversationsanpassade, navigerbara svar
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/qnamaker/index.yml
-  - title: Talarigenkänning (förhandsversion)
-    summary: Använd tal till att identifiera och verifiera individuella talare
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: ./cognitive-services/speech-service/speaker-recognition-overview.md
-  - title: Tal till text
-    summary: Konvertera talljud till text för att skapa mer naturliga interaktioner
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: ./cognitive-services/speech-service/index-speech-to-text.yml
-  - title: Talöversättning
-    summary: Integrera enkelt realtidsöversättning av tal i din app
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: ./cognitive-services/speech-service/index-speech-translation.yml
-  - title: Textanalys
-    summary: Utvärdera enkelt sentiment och ämnen och förstå vad användare vill ha
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/text-analytics/index.yml
-  - title: Text till tal
-    summary: Konvertera text till tal och skapa mer naturliga, användarvänliga gränssnitt
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: ./cognitive-services/speech-service/index-text-to-speech.yml
-  - title: Översättare
-    summary: Utför enkelt maskinöversättning i realtid med ett enkelt REST API-anrop
-    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
-    azureCategories:
-    - ai-machine-learning
-    url: cognitive-services/translator/index.yml
-  - title: Video Indexer
-    summary: Få tillgång till information i video
-    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
-    azureCategories:
-    - ai-machine-learning
-    - media
-    url: media-services/video-indexer/index.yml
-  - title: Azure Analysis Services
-    summary: Analysmotor i företagsklass som en tjänst
-    imageSrc: https://static.docs.com/ui/media/product/azure/analysis-services.svg
-    azureCategories:
-    - analytics
-    url: analysis-services/index.yml
-  - title: Azure-datautforskaren
-    summary: Snabb och mycket skalbar tjänst för datagranskning
-    imageSrc: https://static.docs.com/ui/media/product/azure/data-explorer.svg
-    azureCategories:
-    - analytics
-    url: /azure/data-explorer
-  - title: Azure Data Lake Storage
-    summary: Extremt skalbar och säker Data Lake-funktion som bygger på Azure Blob Storage
-    imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
-    azureCategories:
-    - analytics
-    - storage
-    url: storage/blobs/data-lake-storage-introduction.md
-  - title: Azure Data Share
-    summary: En enkel och säker tjänst för att dela stordata med externa organisationer
-    imageSrc: https://static.docs.com/ui/media/product/azure/data-shares.svg
-    azureCategories:
-    - analytics
-    - storage
-    url: data-share/index.yml
-  - title: Azure Stream Analytics
-    summary: Realtidsanalys för dataströmmar som rör sig snabbt från program och enheter
-    imageSrc: https://static.docs.com/ui/media/product/azure/stream-analytics.svg
-    azureCategories:
-    - analytics
-    - iot
-    url: stream-analytics/index.yml
-  - title: Azure Synapse Analytics
-    summary: Gränslös analystjänst som ger snabbare insikter
-    imageSrc: https://static.docs.com/ui/media/product/azure/synapse.svg
-    azureCategories:
-    - analytics
-    url: synapse-analytics/index.yml
-  - title: Data Catalog
-    summary: Få ut mer värde av företagets datatillgångar
-    imageSrc: https://static.docs.com/ui/media/product/azure/data-catalog.svg
-    azureCategories:
-    - analytics
-    url: data-catalog/index.yml
-  - title: Azure Purview
-    summary: Maximera affärsvärdet med enhetlig datastyrning
-    imageSrc: https://static.docs.com/ui/media/product/azure/purview.svg
-    azureCategories:
-    - analytics
-    - management-and-governance
-    url: purview/index.yml
-  - title: Data Factory
-    summary: Enkel integrering av hybriddata i företagsklass
-    imageSrc: https://static.docs.com/ui/media/product/azure/data-factory.svg
-    azureCategories:
-    - analytics
-    url: data-factory/index.yml
-  - title: Data Lake Analytics
-    summary: Distribuerad analystjänst som förenklar stordata
-    imageSrc: https://static.docs.com/ui/media/product/azure/data-lake-analytics.svg
-    azureCategories:
-    - analytics
-    url: data-lake-analytics/index.yml
-  - title: Event Hubs
-    summary: Få telemetri från miljontals enheter
-    imageSrc: https://static.docs.com/ui/media/product/azure/event-hubs.svg
-    azureCategories:
-    - analytics
-    url: event-hubs/index.yml
-  - title: HDInsight
-    summary: Tillhandahåll Hadoop, Spark, R Server, Hbase och Storm-kluster i molnet
-    imageSrc: https://static.docs.com/ui/media/product/azure/hdinsight.svg
-    azureCategories:
-    - analytics
-    url: hdinsight/index.yml
-  - title: Log Analytics
-    summary: Fullständig överskådlighet över ditt program, din infrastruktur och ditt nätverk
-    imageSrc: https://static.docs.com/ui/media/product/azure/log-analytics.svg
-    azureCategories:
-    - analytics
-    - management-and-governance
-    url: azure-monitor/index.yml
-  - title: Power BI Embedded
-    summary: Bädda in fantastiska, helt interaktiva datavisualiseringar i dina appar
-    imageSrc: https://static.docs.com/ui/media/product/azure/power-bi.svg
-    azureCategories:
-    - analytics
-    url: /power-bi/developer/azure-pbie-what-is-power-bi-embedded
-  - title: R Server för HDInsight
-    summary: Förutsägelseanalyser, maskininlärning och statistisk modellering för stordata
-    imageSrc: https://static.docs.com/ui/media/product/azure/hdinsight.svg
-    azureCategories:
-    - analytics
-    url: hdinsight/r-server/r-server-overview.md
-  - title: Azure Blockchain Service (förhandsversion)
-    summary: Skapa, styra och expandera blockkedjenätverk i konsortium
-    imageSrc: https://static.docs.com/ui/media/product/azure/blockchain-service.svg
-    azureCategories:
-    - blockchain
-    url: blockchain/service/index.yml
-  - title: Azure Blockchain Workbench (förhandsversion)
-    summary: Skapa enkelt prototyper av blockkedjeappar i molnet
-    imageSrc: https://static.docs.com/ui/media/product/azure/blockchain-workbench.svg
-    azureCategories:
-    - blockchain
-    url: blockchain/workbench/index.yml
-  - title: Azure Cosmos DB
-    summary: Snabb NoSQL-databas med öppna API:er för alla skalor
-    imageSrc: https://static.docs.com/ui/media/product/azure/cosmos-db.svg
-    azureCategories:
-    - featured
-    - blockchain
-    - databases
-    - iot
-    url: cosmos-db/index.yml
-  - title: Azure-hanterad instans för Apache Cassandra
-    summary: Automatisera distribution och skalning för hanterade Apache Cassandra-datacenter med öppen källkod
-    imageSrc: ./media/index/managed-instance-apache-cassandra.svg
-    azureCategories:
-    - databases
-    url: managed-instance-apache-cassandra/index.yml
-  - title: Logic Apps
-    summary: Automatisera åtkomsten och användningen av data mellan moln utan att skriva kod
-    imageSrc: https://static.docs.com/ui/media/product/azure/logic-apps.svg
-    azureCategories:
-    - blockchain
-    - integration
-    - iot
-    url: logic-apps/index.yml
-  - title: API Apps
-    summary: Bygg och använd enkelt API:er i molnet
-    imageSrc: https://static.docs.com/ui/media/product/azure/api-apps.svg
-    azureCategories:
-    - compute
-    - containers
-    - web
-    url: app-service/index.yml
-  - title: App Service
-    summary: Skapa snabbt kraftfulla molnappar för webben och mobilen
-    imageSrc: https://static.docs.com/ui/media/product/azure/app-service.svg
-    azureCategories:
-    - featured
-    - compute
-    - mobile
-    - web
-    url: app-service/index.yml
-  - title: Azure CycleCloud
-    summary: Skapa, hantera, använda och optimera HPC och stora beräkningskluster i valfri skala
-    imageSrc: ./media/index/logo_cyclecloud.svg
-    azureCategories:
-    - compute
-    url: /azure/cyclecloud/index
-  - title: Azure Dedicated Host
-    summary: En dedikerad fysisk server som är värd för dina virtuella Azure-datorer som kör Windows och Linux
-    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
-    azureCategories:
-    - compute
-    url: ./virtual-machines/dedicated-hosts.md
-  - title: Azure Functions
-    summary: Bearbeta händelser med serverlös kod
-    imageSrc: https://static.docs.com/ui/media/product/azure/functions.svg
-    azureCategories:
-    - featured
-    - compute
-    - containers
-    - iot
-    url: azure-functions/index.yml
-  - title: Azure Kubernetes Service (AKS)
-    summary: Förenkla distributionen, hanteringen och åtgärderna för Kubernetes
-    imageSrc: https://static.docs.com/ui/media/product/azure/kubernetes-services.svg
-    azureCategories:
-    - featured
-    - compute
-    - containers
-    url: aks/index.yml
-  - title: Azure Quantum (för hands version)
-    summary: Upplev den Quantum påverkan idag i Azure
-    imageSrc: ./media/index/quantum.svg
-    azureCategories:
-    - compute
-    - featured
-    url: /azure/quantum/
-  - title: Azure Spring Cloud
-    summary: En fullständigt hanterad Spring Cloud-tjänst som skapats och drivs med Pivotal
-    imageSrc: https://static.docs.com/ui/media/product/azure/spring-cloud.svg
-    azureCategories:
-    - compute
-    - web
-    url: spring-cloud/index.yml
-  - title: Azure VMware Solution
-    summary: Kör dina VMware-arbetsbelastningar internt på Azure
-    imageSrc: ./media/index/azure-vmware.svg
-    azureCategories:
-    - compute
-    url: azure-vmware/index.yml
-  - title: Batch
-    summary: Jobbschemaläggning och beräkningshantering i molnskala
-    imageSrc: https://static.docs.com/ui/media/product/azure/batch-accounts.svg
-    azureCategories:
-    - compute
-    url: batch/index.yml
-  - title: Cloud Services
-    summary: Skapa högtillgängliga, oändligt skalbara molnprogram och API:er
-    imageSrc: https://static.docs.com/ui/media/product/azure/cloud-services.svg
-    azureCategories:
-    - compute
-    url: cloud-services-extended-support/index.yml
-  - title: Container Instances
-    summary: Kör enkelt containrar på Azure utan att behöva hantera servrar
-    imageSrc: https://static.docs.com/ui/media/product/azure/container-instances.svg
-    azureCategories:
-    - compute
-    - containers
-    url: container-instances/index.yml
-  - title: Virtuella Linux-datorer
-    summary: Etablera virtuella datorer för Ubuntu, Red Hat med flera
-    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
-    azureCategories:
-    - featured
-    - compute
-    url: ./virtual-machines/index.yml
-  - title: Service Fabric
-    summary: Utveckla mikrotjänster och styr containrar i Windows eller Linux
-    imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
-    azureCategories:
-    - compute
-    - containers
-    url: service-fabric/index.yml
-  - title: SQL Server på Virtual Machines
-    summary: Var värd för SQL Server-företagsappar i molnet
-    imageSrc: https://static.docs.com/ui/media/product/azure/sql-server-vm.svg
-    azureCategories:
-    - compute
-    - databases
-    url: ./azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-  - title: Static Web Apps (förhandsversion)
-    summary: En modern webbapptjänst som erbjuder effektiv utveckling med en fullständig stack, från källkod till global hög tillgänglighet
-    imageSrc: ./media/index/static-apps.svg
-    azureCategories:
-    - compute
-    - web
-    url: static-web-apps/index.yml
-  - title: Virtual Machine Scale Sets
-    summary: Hantera och skala upp till tusentals virtuella Linux- och Windows-datorer
-    imageSrc: https://static.docs.com/ui/media/product/azure/vm-scale-sets.svg
-    azureCategories:
-    - compute
-    url: virtual-machine-scale-sets/index.yml
-  - title: Web Apps
-    summary: Skapa och distribuera affärskritiska webbappar snabbt och efter behov
-    imageSrc: https://static.docs.com/ui/media/product/azure/app-service.svg
-    azureCategories:
-    - compute
-    - containers
-    - web
-    url: app-service/index.yml
-  - title: Windows Virtual Desktop
-    summary: Den bästa virtuella skrivbordsupplevelsen som levereras på Azure
-    imageSrc: https://static.docs.com/ui/media/product/azure/windows-virtual-desktop.svg
-    azureCategories:
-    - featured
-    - compute
-    - windows-virtual-desktop
-    url: virtual-desktop/index.yml
-  - title: Virtuella Windows-datorer
-    summary: Etablera virtuella Windows-datorer på bara sekunder
-    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
-    azureCategories:
-    - featured
-    - compute
-    url: ./virtual-machines/index.yml
-  - title: Azure Dev Spaces
-    summary: Utveckla ditt mikrotjänstprogram genom att testa och upprepa det i Azure AKS
-    imageSrc: ./media/index/AzureDevSpaceController_50x.svg
-    azureCategories:
-    - containers
-    - developer-tools
-    url: dev-spaces/index.yml
-  - title: Azure Red Hat OpenShift
-    summary: Fullständigt hanterad OpenShift-tjänst som drivs i samarbete med Red Hat
-    imageSrc: https://static.docs.com/ui/media/product/azure/openshift.svg
-    azureCategories:
-    - containers
-    url: virtual-machines/linux/openshift-get-started.md
-  - title: Container Registry
-    summary: Lagra och hantera containeravbildningar för alla typer av Azure-distributioner
-    imageSrc: https://static.docs.com/ui/media/product/azure/container-registry.svg
-    azureCategories:
-    - containers
-    url: container-registry/index.yml
-  - title: Web App for Containers
-    summary: Distribuera och kör enkelt containerbaserade webbappar som kan skalas med företaget
-    imageSrc: https://static.docs.com/ui/media/product/azure/web-apps-containers.svg
-    azureCategories:
-    - containers
-    - web
-    url: ./app-service/index.yml
-  - title: Azure API för FHIR
-    summary: Skapa och distribuera enkelt en FHIR-tjänst för hälsodatalösningar och samverkan
-    imageSrc: https://static.docs.com/ui/media/product/azure/api-for-fhir.svg
-    azureCategories:
-    - databases
-    - integration
-    url: healthcare-apis/fhir/index.yml
-  - title: Azure Cache for Redis
-    summary: Kraftfulla program med dataåtkomst med stora dataflöden och låg fördröjning
-    imageSrc: https://static.docs.com/ui/media/product/azure/cache-redis.svg
-    azureCategories:
-    - databases
-    url: azure-cache-for-redis/index.yml
-  - title: Azure-databas för MariaDB
-    summary: Hanterad MariaDB-databastjänst för apputvecklare
-    imageSrc: https://static.docs.com/ui/media/product/azure/database-mariadb-server.svg
-    azureCategories:
-    - databases
-    url: mariadb/index.yml
-  - title: Azure Database for MySQL
-    summary: Hanterad MySQL-databastjänst för apputvecklare
-    imageSrc: https://static.docs.com/ui/media/product/azure/database-mysql-server.svg
-    azureCategories:
-    - databases
-    url: mysql/index.yml
-  - title: Azure Database for PostgreSQL
-    summary: Hanterad PostgreSQL-databastjänst för apputvecklare
-    imageSrc: https://static.docs.com/ui/media/product/azure/database-postgresql-server.svg
-    azureCategories:
-    - databases
-    - hybrid
-    url: postgresql/index.yml
-  - title: Azure Database Migration Service
-    summary: Förenkla den lokala databasmigreringen till molnet
-    imageSrc: https://static.docs.com/ui/media/product/azure/database-migration-services.svg
-    azureCategories:
-    - databases
-    - migration
-    url: dms/index.yml
-  - title: Azure SQL
-    summary: Modern SQL-familj för migrering och appmodernisering
-    imageSrc: https://static.docs.com/ui/media/product/azure/sql.svg
-    azureCategories:
-    - featured
-    - hybrid
-    - databases
-    url: azure-sql/index.yml
-  - title: Azure SQL Database
-    summary: Hanterad intelligent SQL i molnet
-    imageSrc: https://static.docs.com/ui/media/product/azure/sql-database.svg
-    azureCategories:
-    - databases
-    url: azure-sql/database/index.yml
-  - title: Hanterad Azure SQL-instans
-    summary: Hanterad, alltid uppdaterad SQL-instans i molnet
-    imageSrc: https://static.docs.com/ui/media/product/azure/sql-managed-instance.svg
-    azureCategories:
-    - databases
-    url: azure-sql/managed-instance/index.yml
-  - title: Azure SQL Edge
-    summary: Edge-optimerad datamotor med inbyggd AI och minimalt fotavtryck
-    imageSrc: https://static.docs.com/ui/media/product/azure/sql-database-edge.svg
-    azureCategories:
-    - databases
-    - iot
-    url: azure-sql-edge/index.yml
-  - title: Table Storage
-    summary: NoSQL-nyckelvärdeslagring med halvstrukturerade datauppsättningar
-    imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
-    azureCategories:
-    - databases
-    url: ./storage/tables/table-storage-overview.md
-  - title: App Configuration
-    summary: Snabb och skalbar parameterlagring för App Configuration
-    imageSrc: https://static.docs.com/ui/media/product/azure/app-configuration.svg
-    azureCategories:
-    - developer-tools
-    url: azure-app-configuration/index.yml
-  - title: Azure Data Studio
-    summary: Ett lätt redigeringsprogram som kan köra frågor på serverlösa SQL-pooler och visa/spara resultat som en text-, JSON- eller Excel-fil.
-    imageSrc: https://docs.microsoft.com/sql/tools/media/overview-sql-tools/azure-data-studio.svg
-    azureCategories:
-    - developer-tools
-    url: /sql/azure-data-studio/
-  - title: Azure DevOps
-    summary: Tjänster för team som gör att de kan dela kod, spåra arbete och leverera programvara
-    imageSrc: https://static.docs.com/ui/media/product/azure/devops.svg
-    azureCategories:
-    - developer-tools
-    - devops
-    - hybrid
-    url: /azure/devops/
-  - title: Azure DevTest Labs
-    summary: Skapa snabbt miljöer med återanvändbara mallar och artefakter
-    imageSrc: https://static.docs.com/ui/media/product/azure/devtest-labs.svg
-    azureCategories:
-    - developer-tools
-    - devops
-    url: lab-services/index.yml
-  - title: Azure Lab Services
-    summary: Konfigurera labb för klassrum, kostnadsfria utvärderingsversioner, utveckling, testning och andra scenarier
-    imageSrc: https://static.docs.com/ui/media/product/azure/lab-services.svg
-    azureCategories:
-    - developer-tools
-    url: lab-services/index.yml
-  - title: Azure Pipelines
-    summary: Skapa, testa och distribuera till alla plattformar och moln kontinuerligt
-    imageSrc: https://static.docs.com/ui/media/product/azure/pipelines.svg
-    azureCategories:
-    - developer-tools
-    - devops
-    url: /azure/devops/pipelines/
-  - title: Visual Studio
-    summary: En kraftfull och flexibel miljö för programutveckling i molnet
-    imageSrc: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
-    azureCategories:
-    - developer-tools
-    url: /visualstudio/windows
-  - title: Visual Studio-koden
-    summary: Ett kraftfullt och enkelt kodredigeringsprogram för molnutveckling
-    imageSrc: https://docs.microsoft.com/media/logos/logo_vs-code.svg
-    azureCategories:
-    - developer-tools
-    url: https://code.visualstudio.com/docs
-  - title: Visual Studio Codespaces (förhandsversion)
-    summary: Du kommer åt molndrivna utvecklingsmiljöer överallt
-    imageSrc: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
-    azureCategories:
-    - developer-tools
-    url: /visualstudio/online/overview/what-is-vsonline
-  - title: Application Insights
-    summary: Fullständig överskådlighet över ditt program, din infrastruktur och ditt nätverk
-    imageSrc: https://static.docs.com/ui/media/product/azure/application-insights.svg
-    azureCategories:
-    - devops
-    - management-and-governance
-    url: azure-monitor/index.yml
-  - title: Azure Artifacts
-    summary: Skapa, var värd för och dela paket med teamet
-    imageSrc: https://static.docs.com/ui/media/product/azure/artifacts.svg
-    azureCategories:
-    - devops
-    url: /azure/devops/artifacts/
-  - title: Azure Boards
-    summary: Planera, spåra och diskutera arbete i dina team
-    imageSrc: https://static.docs.com/ui/media/product/azure/boards.svg
-    azureCategories:
-    - devops
-    url: /azure/devops/boards/
-  - title: Azure Monitor
-    summary: Fullständig överskådlighet över ditt program, din infrastruktur och ditt nätverk
-    imageSrc: https://static.docs.com/ui/media/product/azure/monitor.svg
-    azureCategories:
-    - devops
-    - management-and-governance
-    url: azure-monitor/index.yml
-  - title: Azure-lagringsplatser
-    summary: Få obegränsade och molnbaserade privata Git-lagringsplatser för projektet
-    imageSrc: https://static.docs.com/ui/media/product/azure/repos.svg
-    azureCategories:
-    - devops
-    url: /azure/devops/repos/
-  - title: Azure-testningsplaner
-    summary: Testa och leverera säkert med ett manuellt och undersökande hjälpmedel för testning
-    imageSrc: https://static.docs.com/ui/media/product/azure/test-plans.svg
-    azureCategories:
-    - devops
-    url: /azure/devops/test/
-  - title: GitHub-åtgärder för Azure
-    summary: Bygga, testa och distribuera en app från GitHub till Azure
-    imageSrc: ./media/index/github-actions-icon.svg
-    azureCategories:
-    - devops
-    - developer-tools
-    url: /azure/developer/github/github-actions
-  - title: Azure Active Directory (AD)
-    summary: Synkronisera lokala kataloger och aktivera enkel inloggning
-    imageSrc: https://static.docs.com/ui/media/product/azure/active-directory.svg
-    azureCategories:
-    - hybrid
-    - identity
-    - security
-    url: active-directory/index.yml
-  - title: Azure Arc (förhandsversion)
-    summary: Få ut Azure-tjänster och -hantering till all infrastruktur
-    imageSrc: https://static.docs.com/ui/media/product/azure/arc.svg
-    azureCategories:
-    - hybrid
-    url: azure-arc/index.yml
-  - title: Azure ExpressRoute
-    summary: Dedikerade fiberanslutningar för privata nätverk till Azure
-    imageSrc: https://static.docs.com/ui/media/product/azure/expressroute.svg
-    azureCategories:
-    - hybrid
-    - networking
-    url: expressroute/index.yml
-  - title: Azure Sentinel
-    summary: Använd molnintegrerad SIEM och intelligent säkerhetsanalys för att skydda företaget
-    imageSrc: https://static.docs.com/ui/media/product/azure/sentinel.svg
-    azureCategories:
-    - hybrid
-    - security
-    url: sentinel/index.yml
-  - title: Azure Stack
-    summary: Skapa och kör innovativa hybridprogram över molngränser
-    imageSrc: https://static.docs.com/ui/media/product/azure/stack.svg
-    azureCategories:
-    - hybrid
-    url: /azure-stack/
-  - title: Azure Stack HCI
-    summary: Integrera hyperkonvergerad infrastruktur med Azure och hybrid-tjänster för att köra virtuella arbetsbelastningar lokalt
-    imageSrc: https://static.docs.com/ui/media/product/azure/stack-hci.svg
-    azureCategories:
-    - hybrid
-    url: /azure-stack/hci/
-  - title: Azure Stack Hub
-    summary: Azure Stack Hub säljs som ett integrerat maskinvarusystem med förinstallerad programvara på verifierad maskinvara
-    imageSrc: https://static.docs.com/ui/media/product/azure/stack-hub.svg
-    azureCategories:
-    - hybrid
-    url: /azure-stack/operator/
-  - title: Azure Stack Edge
-    summary: En Azure-hanterad apparat som tar Azures beräkning, lagring och information ut till kanten
-    imageSrc: https://static.docs.com/ui/media/product/azure/stack-edge.svg
-    azureCategories:
-    - hybrid
-    url: ./databox-online/index.yml
-  - title: Security Center
-    summary: Enhetlig säkerhetshantering och avancerat skydd mot hot i olika hybridmolnarbetsbelastningar
-    imageSrc: https://static.docs.com/ui/media/product/azure/security-center.svg
-    azureCategories:
-    - hybrid
-    - security
-    url: security-center/index.yml
-  - title: Azure IoT Edge
-    summary: Använd molnintelligens och -analys på gränsenheter
-    imageSrc: https://static.docs.com/ui/media/product/azure/iot-edge.svg
-    azureCategories:
-    - hybrid
-    - iot
-    url: iot-edge/index.yml
-  - title: Azure Active Directory for External Identities
-    summary: Kundidentitets- och åtkomsthantering i molnet
-    imageSrc: https://static.docs.com/ui/media/product/azure/active-directory-b2c.svg
-    azureCategories:
-    - identity
-    url: active-directory/external-identities/index.yml
-  - title: Azure Active Directory Domain Services
-    summary: Anslut virtuella Azure-datorer till en domän utan domänkontrollanter
-    imageSrc: https://static.docs.com/ui/media/product/azure/ad-domain-services.svg
-    azureCategories:
-    - identity
-    - security
-    url: active-directory-domain-services/index.yml
-  - title: Azure Information Protection
-    summary: Skydda din känsliga information bättre – när som helst och var som helst
-    imageSrc: https://static.docs.com/ui/media/product/azure/information-protection.svg
-    azureCategories:
-    - identity
-    - security
-    url: /azure/information-protection/
-  - title: API Management
-    summary: Publicera API:er till utvecklare, partner och anställda på ett säkert sätt och efter behov
-    imageSrc: https://static.docs.com/ui/media/product/azure/api-management.svg
-    azureCategories:
-    - integration
-    - iot
-    - mobile
-    - web
-    url: api-management/index.yml
-  - title: Event Grid
-    summary: Få tillförlitlig händelseleverans i omfattande skala
-    imageSrc: https://static.docs.com/ui/media/product/azure/event-grid-domains.svg
-    azureCategories:
-    - integration
-    - iot
-    url: event-grid/index.yml
-  - title: Service Bus
-    summary: Anslut via privata och offentliga moln
-    imageSrc: https://static.docs.com/ui/media/product/azure/service-bus.svg
-    azureCategories:
-    - integration
-    url: service-bus-messaging/index.yml
-  - title: Azure Digital Twins
-    summary: Skapa nästa generation IoT-lösningar för rumslig intelligens
-    imageSrc: https://static.docs.com/ui/media/product/azure/digital-twins.svg
-    azureCategories:
-    - iot
-    - mixed-reality
-    url: digital-twins/index.yml
-  - title: Azure IoT Central
-    summary: Påskynda skapandet av IoT-lösningar
-    imageSrc: https://static.docs.com/ui/media/product/azure/iot-central.svg
-    azureCategories:
-    - iot
-    url: iot-central/index.yml
-  - title: Azure IoT Hub
-    summary: Anslut, övervaka och hantera flera miljarder IoT-tillgångar
-    imageSrc: https://static.docs.com/ui/media/product/azure/iot-hub.svg
-    azureCategories:
-    - iot
-    url: iot-hub/index.yml
-  - title: Azure IoT-lösningsacceleratorer
-    summary: Skapa helt anpassningsbara lösningar med mallar för vanliga IoT-scenarier
-    imageSrc: ./media/index/iot-solution-accelerators.svg
-    azureCategories:
-    - iot
-    url: iot-accelerators/index.yml
-  - title: Azure Maps
-    summary: Enkla och säkra plats-API:er ger geospatial kontext till data
-    imageSrc: https://static.docs.com/ui/media/product/azure/maps.svg
-    azureCategories:
-    - iot
-    - mobile
-    - web
-    url: azure-maps/index.yml
-  - title: Azure Sphere
-    summary: Anslut MCU-enheter på ett säkert sätt från enheten direkt till molnet
-    imageSrc: https://static.docs.com/ui/media/product/azure/sphere.svg
-    azureCategories:
-    - iot
-    url: /azure-sphere/
-  - title: Azure Time Series Insights
-    summary: Utforska och analysera tidsseriedata från IoT-enheter
-    imageSrc: https://static.docs.com/ui/media/product/azure/time-series-insights-environments.svg
-    azureCategories:
-    - iot
-    url: time-series-insights/index.yml
-  - title: Notification Hubs
-    summary: Skicka push-meddelanden till valfri plattform från valfri serverdel
-    imageSrc: https://static.docs.com/ui/media/product/azure/notification-hubs.svg
-    azureCategories:
-    - iot
-    - mobile
-    - web
-    url: notification-hubs/index.yml
-  - title: Windows 10 IoT Core Services
-    summary: Långsiktigt operativsystemsstöd och tjänster för att hantera enhetsuppdateringar och utvärdera enhetshälsa
-    imageSrc: https://static.docs.com/ui/media/product/azure/iot-windows10-core-services.svg
-    azureCategories:
-    - iot
-    url: /windows/iot-core/
-  - title: Automation
-    summary: Förenkla molnhantering med processautomatisering
-    imageSrc: https://static.docs.com/ui/media/product/azure/automation.svg
-    azureCategories:
-    - management-and-governance
-    url: automation/index.yml
-  - title: Azure Advisor
-    summary: Din personligt anpassade Azure-rekommendationsmotor
-    imageSrc: https://static.docs.com/ui/media/product/azure/advisor.svg
-    azureCategories:
-    - management-and-governance
-    url: advisor/index.yml
-  - title: Azure Backup
-    summary: Förenkla datasäkerheten och skydda mot utpressningstrojaner
-    imageSrc: https://static.docs.com/ui/media/product/azure/recovery-services-vaults.svg
-    azureCategories:
-    - management-and-governance
-    - storage
-    url: backup/index.yml
-  - title: Azure Blueprints (förhandsversion)
-    summary: Möjliggör snabbt upprepningsbart skapande av reglerade miljöer
-    imageSrc: https://static.docs.com/ui/media/product/azure/blueprints.svg
-    azureCategories:
-    - management-and-governance
-    url: governance/blueprints/index.yml
-  - title: Azure Lighthouse
-    summary: Hjälper tjänstleverantörer att hantera kunder i stor skala och med precision
-    imageSrc: https://static.docs.com/ui/media/product/azure/lighthouse.svg
-    azureCategories:
-    - management-and-governance
-    url: lighthouse/index.yml
-  - title: Azure Managed Applications
-    summary: Förenkla hanteringen av molnerbjudanden
-    imageSrc: https://static.docs.com/ui/media/product/azure/managed-applications.svg
-    azureCategories:
-    - management-and-governance
-    url: azure-resource-manager/managed-applications/index.yml
-  - title: Azure Migrate
-    summary: Upptäck, utvärdera, ange storlek för och migrera dina lokala virtuella datorer till Azure
-    imageSrc: https://static.docs.com/ui/media/product/azure/migrate.svg
-    azureCategories:
-    - management-and-governance
-    - migration
-    url: migrate/index.yml
-  - title: Azure Policy
-    summary: Implementera företagsstyrning och standarder för Azure-resurser
-    imageSrc: https://static.docs.com/ui/media/product/azure/policy.svg
-    azureCategories:
-    - management-and-governance
-    url: governance/policy/index.yml
-  - title: Azure Resource Manager
-    summary: Förenkla hanteringen av appresurser
-    imageSrc: https://static.docs.com/ui/media/product/azure/resource-groups.svg
-    azureCategories:
-    - management-and-governance
-    url: azure-resource-manager/index.yml
-  - title: Azure Resource Mover (förhandsversion)
-    summary: Förenkla hur du flyttar flera resurser mellan Azure-regioner
-    imageSrc: https://static.docs.com/ui/media/product/azure/resource-mover.svg
-    azureCategories:
-    - management-and-governance
-    url: resource-mover/index.yml
-  - title: ARM-mallar
-    summary: Leverera infrastruktur som kod för alla dina Azure-resurser med hjälp av Resource Manager
-    imageSrc: https://static.docs.com/ui/media/product/azure/resource-groups.svg
-    azureCategories:
-    - management-and-governance
-    url: azure-resource-manager/templates/index.yml
-  - title: Azure Service Health
-    summary: Få personliga råd och support när du påverkas av problem i Azure-tjänster
-    imageSrc: https://static.docs.com/ui/media/product/azure/service-health.svg
-    azureCategories:
-    - management-and-governance
-    url: service-health/index.yml
-  - title: Azure Site Recovery
-    summary: Håll igång verksamheten med inbyggd tjänst för haveriberedskap
-    imageSrc: https://static.docs.com/ui/media/product/azure/recovery-services-vaults.svg
-    azureCategories:
-    - management-and-governance
-    - migration
-    url: site-recovery/index.yml
-  - title: Azure Cloud Shell
-    summary: Effektivisera Azure-administrationen med ett webbläsarbaserat skal
-    imageSrc: https://static.docs.com/ui/media/product/azure/cloud-shell.svg
-    azureCategories:
-    - management-and-governance
-    url: cloud-shell/overview.md
-  - title: Kostnadshantering + fakturering
-    summary: Optimera dina molnkostnader och maximera potentialen med molnet
-    imageSrc: https://static.docs.com/ui/media/product/azure/cost-management.svg
-    azureCategories:
-    - management-and-governance
-    - migration
-    url: cost-management-billing/index.yml
-  - title: Microsoft Azure-portalen
-    summary: Skapa, hantera och övervaka alla Azure-produkter i en enda enhetlig konsol
-    imageSrc: https://static.docs.com/ui/media/product/azure/azure.svg
-    azureCategories:
-    - management-and-governance
-    url: azure-portal/index.yml
-  - title: Network Watcher
-    summary: Övervakning av nätverksprestanda och diagnostiklösningar
-    imageSrc: https://static.docs.com/ui/media/product/azure/network-watcher.svg
-    azureCategories:
-    - management-and-governance
-    - networking
-    url: network-watcher/index.yml
-  - title: Traffic Manager
-    summary: Vidarebefordra inkommande trafik för hög prestanda och tillgänglighet
-    imageSrc: https://static.docs.com/ui/media/product/azure/traffic-manager.svg
-    azureCategories:
-    - management-and-governance
-    - networking
-    url: traffic-manager/index.yml
-  - title: Azure Media Player
-    summary: En spelare för alla uppspelningsbehov
-    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
-    azureCategories:
-    - media
-    url: media-services/latest/use-azure-media-player.md
-  - title: Content Delivery Network
-    summary: Säkerställ säker och tillförlitlig innehållsleverans med bred global räckvidd
-    imageSrc: https://static.docs.com/ui/media/product/azure/cdn-profiles.svg
-    azureCategories:
-    - media
-    - networking
-    - web
-    url: cdn/index.yml
-  - title: Content Protection
-    summary: Leverera innehåll säkert med AES, PlayReady, Widevine och Fairplay
-    imageSrc: ./media/index/media-protection.svg
-    azureCategories:
-    - media
-    url: media-services/latest/content-protection-overview.md
-  - title: Kodning
-    summary: Kodning i studioklass och i molnskala
-    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
-    azureCategories:
-    - media
-    url: media-services/latest/encoding-concept.md
-  - title: Direktuppspelning live och på begäran
-    summary: Leverera innehåll till i stort sett alla enheter med en skala som uppfyller företagets krav
-    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
-    azureCategories:
-    - media
-    url: media-services/latest/stream-live-tutorial-with-api.md
-  - title: Live Video Analytics (förhandsversion)
-    summary: Skapa intelligenta videobaserade program med en AI som du väljer själv
-    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
-    azureCategories:
-    - media
-    url: media-services/live-video-analytics-edge/overview.md
-  - title: Media Services
-    summary: Koda, lagra och strömma video och ljud i olika skalor
-    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
-    azureCategories:
-    - media
-    url: media-services/latest/index.yml
-  - title: Data Box
-    summary: Apparater och lösningar för dataöverföring till Azure
-    imageSrc: https://static.docs.com/ui/media/product/azure/data-box.svg
-    azureCategories:
-    - migration
-    - storage
-    url: databox/index.yml
-  - title: Objekt ankare (förhands granskning)
-    summary: Justera och fäst 3D-innehåll automatiskt till objekt i den fysiska världen
-    imageSrc: ./media/index/object-anchors.svg
-    azureCategories:
-    - mixed-reality
-    url: object-anchors/index.yml
-  - title: Spatial Anchors
-    summary: Skapa rumsligt medvetna Mixed Reality-upplevelser för flera användare
-    imageSrc: https://static.docs.com/ui/media/product/azure/spatial-anchor-accounts.svg
-    azureCategories:
-    - mixed-reality
-    - mobile
-    url: spatial-anchors/index.yml
-  - title: Azure Remote Rendering
-    summary: Rendera interaktivt 3D-innehåll av hög kvalitet och strömma det till dina enheter i realtid
-    imageSrc: https://static.docs.com/ui/media/product/azure/remote-rendering.svg
-    azureCategories:
-    - mixed-reality
-    url: remote-rendering/index.yml
-  - title: Visual Studio App Center
-    summary: Bygg, testa, publicera och övervaka dina mobil- och skrivbordsappar kontinuerligt
-    imageSrc: https://docs.microsoft.com/media/logos/logo_vs-mobile-center.svg
-    azureCategories:
-    - mobile
-    url: /appcenter/
-  - title: Xamarin
-    summary: Snabbare framtagning av mobilappar med molnstöd
-    imageSrc: https://docs.microsoft.com/media/logos/logo_xamarin.svg
-    azureCategories:
-    - mobile
-    url: /xamarin/
-  - title: Application Gateway
-    summary: Skapa säkra, skalbara och högtillgängliga frontwebbservrar i Azure
-    imageSrc: https://static.docs.com/ui/media/product/azure/application-gateways.svg
-    azureCategories:
-    - networking
-    - security
-    url: application-gateway/index.yml
-  - title: Azure Bastion
-    summary: Privat och fullständigt hanterad RDP- och SSH-åtkomst till dina virtuella datorer
-    imageSrc: ./media/index/web_connect.svg
-    azureCategories:
-    - networking
-    url: bastion/index.yml
-  - title: Azure Defender
-    summary: Skydda arbetsbelastningar i hybridmoln
-    imageSrc: ./media/index/defender.svg
-    azureCategories:
-    - security
-    url: security-center/azure-defender.md
-  - title: Azure Defender för IoT
-    summary: Kontinuerlig tillgångshantering och hotidentifiering för både ohanterade och hanterade IoT/OT-enheter
-    imageSrc: ./media/index/defender-iot.svg
-    azureCategories:
-    - security
-    - iot
-    url: ./defender-for-iot/index.yml
-  - title: Azure DDoS Protection
-    summary: Skydda dina program mot DDoS-attacker (Distributed Denial of Service)
-    imageSrc: https://static.docs.com/ui/media/product/azure/ddos-protection.svg
-    azureCategories:
-    - networking
-    - security
-    url: ./ddos-protection/ddos-protection-overview.md
-  - title: Azure DNS
-    summary: Använd Azure som värd för din DNS-domän
-    imageSrc: https://static.docs.com/ui/media/product/azure/dns.svg
-    azureCategories:
-    - networking
-    url: dns/index.yml
-  - title: Azure Firewall
-    summary: Inbyggda brandväggsfunktioner med inbyggd hög tillgänglighet och obegränsad skalbarhet i molnet helt utan underhåll
-    imageSrc: https://static.docs.com/ui/media/product/azure/firewall.svg
-    azureCategories:
-    - networking
-    url: firewall/index.yml
-  - title: Azure Firewall Manager
-    summary: Central säkerhetsprincip för nätverk och väghantering för globalt distribuerade, programvarudefinierade perimetrar
-    imageSrc: https://static.docs.com/ui/media/product/azure/firewall-manager.svg
-    azureCategories:
-    - networking
-    url: firewall-manager/index.yml
-  - title: Azure Front Door
-    summary: Skalbar, säkerhetsförbättrad leveranspunkt för globala, mikrotjänstbaserade webbprogram
-    imageSrc: https://static.docs.com/ui/media/product/azure/front-door.svg
-    azureCategories:
-    - networking
-    - security
-    url: frontdoor/index.yml
-  - title: Azure Internet Analyzer (förhandsversion)
-    summary: Testa hur ändringar i nätverksinfrastrukturen påverkar dina kunders prestanda
-    imageSrc: https://static.docs.com/ui/media/product/azure/internet-analyzer.svg
-    azureCategories:
-    - networking
-    url: internet-analyzer/index.yml
-  - title: Azure Private Link
-    summary: Privat åtkomst till tjänster på Azure-plattformen, och dina data stannar på Microsofts nätverk
-    imageSrc: https://static.docs.com/ui/media/product/azure/private-link.svg
-    azureCategories:
-    - networking
-    url: private-link/index.yml
-  - title: Lastbalanserare
-    summary: Leverera hög tillgänglighet och nätverksprestanda till dina program
-    imageSrc: https://static.docs.com/ui/media/product/azure/load-balancer.svg
-    azureCategories:
-    - networking
-    url: load-balancer/index.yml
-  - title: Azure Route Server (för hands version)
-    summary: Förenkla drift hanteringen av dina nätverks enheter
-    imageSrc: ./media/index/azure-route-server.svg
-    azureCategories:
-    - networking
-    url: route-server/index.yml
-  - title: Virtual Network
-    summary: Etablera privata nätverk, med möjlighet att ansluta till lokala datacenter
-    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-networks.svg
-    azureCategories:
-    - networking
-    url: virtual-network/index.yml
-  - title: Virtuellt WAN
-    summary: Microsoft-hanterad nav och eker-tjänst för anslutning och säkerhet
-    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-wans.svg
-    azureCategories:
-    - networking
-    url: virtual-wan/index.yml
-  - title: VPN Gateway
-    summary: Etablera säker anslutning mellan olika platser
-    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-network-gateways.svg
-    azureCategories:
-    - networking
-    - security
-    url: vpn-gateway/index.yml
-  - title: Brandvägg för webbaserade program
-    summary: En molnbaserad brandväggstjänst för webbaserade program som ger ett kraftfullt skydd för webbappar
-    imageSrc: https://static.docs.com/ui/media/product/azure/frontdoor-waf-policies.svg
-    azureCategories:
-    - networking
-    - security
-    url: web-application-firewall/index.yml
-  - title: Dedikerad HSM i Azure
-    summary: Hantera säkerhetsmoduler för maskinvara som du använder i molnet
-    imageSrc: ./media/index/dedicated-hsm.svg
-    azureCategories:
-    - security
-    url: dedicated-hsm/index.yml
-  - title: Key Vault
-    summary: Skydda och behåll kontrollen över nycklar och andra hemligheter
-    imageSrc: https://static.docs.com/ui/media/product/azure/key-vault.svg
-    azureCategories:
-    - security
-    url: key-vault/index.yml
-  - title: Arkivlagring
-    summary: Branschledande prispunkt för att lagra data som sällan används
-    imageSrc: https://static.docs.com/ui/media/product/azure/storage-explorer.svg
-    azureCategories:
-    - storage
-    url: storage/blobs/storage-blob-storage-tiers.md
-  - title: Avere vFXT för Azure
-    summary: Kör högpresterande och filbaserade arbetsbelastningar i molnet
-    imageSrc: ./media/index/avere.svg
-    azureCategories:
-    - storage
-    url: avere-vfxt/index.yml
-  - title: Azure FXT Edge Filer
-    summary: Optimeringslösning för hybridlagring i HPC-miljöer
-    imageSrc: https://static.docs.com/ui/media/product/azure/fxt-edge-filer.svg
-    azureCategories:
-    - storage
-    url: fxt-edge-filer/index.yml
-  - title: Azure HPC Cache
-    summary: Filcachelagring för databehandling med höga prestanda (HPC)
-    imageSrc: https://static.docs.com/ui/media/product/azure/hpc-cache.svg
-    azureCategories:
-    - storage
-    url: hpc-cache/index.yml
-  - title: Azure NetApp Files
-    summary: Azure-filresurser i företagsklass med NetApp
-    imageSrc: https://static.docs.com/ui/media/product/azure/netapp-files.svg
-    azureCategories:
-    - storage
-    url: azure-netapp-files/index.yml
-  - title: Blob Storage
-    summary: REST-baserad objektlagring för ostrukturerade data
-    imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
-    azureCategories:
-    - storage
-    url: storage/blobs/index.yml
-  - title: Disklagring
-    summary: Blocklagring med hög prestanda och hög pålitlighet för virtuella Azure-datorer
-    imageSrc: https://static.docs.com/ui/media/product/azure/disk-storage.svg
-    azureCategories:
-    - storage
-    url: virtual-machines/managed-disks-overview.md
-  - title: Azure Files
-    summary: Filresurser som använder standardprotokollet SMB 3.0
-    imageSrc: https://static.docs.com/ui/media/product/azure/storage-azure-files.svg
-    azureCategories:
-    - storage
-    url: storage/files/index.yml
-  - title: Queue Storage
-    summary: Skala appar effektivt med hänsyn till trafiken
-    imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
-    azureCategories:
-    - storage
-    url: storage/queues/index.yml
-  - title: Storage
-    summary: Hållbar, högtillgänglig och massivt skalbar molnlagring
-    imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
-    azureCategories:
-    - storage
-    url: storage/index.yml
-  - title: Storage Explorer
-    summary: Visa och interagera med Azure Storage-resurser
-    imageSrc: https://static.docs.com/ui/media/product/azure/storage-explorer.svg
-    azureCategories:
-    - storage
-    url: vs-azure-tools-storage-manage-with-storage-explorer.md
-  - title: StorSimple
-    summary: Sänk kostnaderna med en lösning för hybridmolnlagring för företag
-    imageSrc: https://static.docs.com/ui/media/product/azure/storsimple-device-managers.svg
-    azureCategories:
-    - storage
-    url: storsimple/index.yml
-  - title: Azure SignalR Service
-    summary: Lägg enkelt till webbfunktioner i realtid
-    imageSrc: https://static.docs.com/ui/media/product/azure/signalr-service.svg
-    azureCategories:
-    - web
-    url: azure-signalr/index.yml
+    - title: Azure-percept
+      summary: Edge Intelligence från Silicon to service
+      imageSrc: ./media/index/azure-percept.svg
+      azureCategories:
+        - iot
+      url: azure-percept/index.yml
+    - title: Avvikelseidentifiering
+      summary: Lägg enkelt till funktioner för avvikelseidentifiering i dina appar
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/anomaly-detector.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/anomaly-detector/index.yml
+    - title: Azure Bot Service
+      summary: 'Intelligent, serverfri bot-tjänst som kan byggas ut på begäran'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/bot-service.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: /azure/bot-service/
+    - title: Azure Cognitive Search
+      summary: AI-baserad molnsökningstjänst för utveckling av mobil- och webbappar
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/search.svg'
+      azureCategories:
+        - ai-machine-learning
+        - mobile
+        - web
+      url: search/index.yml
+    - title: Azure Cognitive Services
+      summary: Lägg till smarta API-funktioner för att aktivera sammanhangsbaserad interaktion
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - featured
+        - ai-machine-learning
+        - mobile
+      url: cognitive-services/index.yml
+    - title: Azure Databricks
+      summary: 'En snabb, enkel och gemensam Apache Spark-baserad analysplattform'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/databricks.svg'
+      azureCategories:
+        - ai-machine-learning
+        - analytics
+      url: /azure/databricks/
+    - title: Hälso robot
+      summary: Ett hanterat tjänst syfte – byggt för utveckling av virtuella sjukvårds assistenter.
+      imageSrc: media/index/health-bot-logo.svg
+      azureCategories:
+        - ai-machine-learning
+      url: /azure/health-bot/
+    - title: Azure Machine Learning
+      summary: 'Låt alla ta del av AI med en skalbar, tillförlitlig plattform från slutpunkt till slutpunkt med experimentering och modellhantering'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/machine-learning.svg'
+      azureCategories:
+        - ai-machine-learning
+        - iot
+      url: machine-learning/index.yml
+    - title: Azure Open Datasets
+      summary: En molnplattform för att förvara och dela utvalda datamängder som gör att du snabbare kan utveckla maskininlärningsmodeller
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/open-datasets.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: open-datasets/index.yml
+    - title: Azure-återställningstider
+      summary: Göra utveckling och anslutning för inbäddad IoT enkelt
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/rtos.svg'
+      azureCategories:
+        - iot
+      url: /azure/rtos/
+    - title: Automatiska förslag i Bing
+      summary: Ge appen smarta automatiska förslag vid sökningar
+      imageSrc: ./media/index/API_Bing_AutoSuggest.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-autosuggest/get-suggested-search-terms.md
+    - title: Anpassad sökning i Bing
+      summary: 'Ett lätthanterligt, annonsfritt sökverktyg av kommersiell kvalitet som ger det resultat du vill ha'
+      imageSrc: ./media/index/API_Bing_Custom_Search.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-custom-search/overview.md
+    - title: Entitetssökning i Bing
+      summary: Berika upplevelsen genom att identifiera och förbättra entitetsinformation från webben
+      imageSrc: ./media/index/API_Bing_Entity_Search.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-entities-search/overview.md
+    - title: Bildsökning i Bing
+      summary: Sök efter bilder och få detaljerade resultat
+      imageSrc: ./media/index/API_Bing_Image_Search.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-image-search/overview.md
+    - title: Nyhetssökning i Bing
+      summary: Sök efter nyheter och få detaljerade resultat
+      imageSrc: ./media/index/API_Bing_News_Search.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-news-search/search-the-web.md
+    - title: Stavningskontroll i Bing
+      summary: Identifiera och rätta stavfel i appen
+      imageSrc: ./media/index/API_Bing_Spell_Check.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-spell-check/overview.md
+    - title: Videosökning i Bing
+      summary: Sök efter videor och få detaljerade resultat
+      imageSrc: ./media/index/API_Bing_Video_Search.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-video-search/overview.md
+    - title: Visuell sökning i Bing
+      summary: Få omfattande information som hjälper dig att skapa fängslande bildprogram på valfri enhet
+      imageSrc: ./media/index/API_Bing_Visual_Search.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-visual-search/overview.md
+    - title: Webbsökning i Bing
+      summary: Få förbättrade sökresultat från miljarder olika webbdokument
+      imageSrc: ./media/index/API_Bing_Web_Search.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/bing-web-search/overview.md
+    - title: Azure Communication Services
+      summary: Skapa avancerade kommunikationslösningar med samma säkra plattform som används av Microsoft Teams
+      imageSrc: ./media/index/communication-services.svg
+      azureCategories:
+        - web
+        - mobile
+      url: communication-services/overview.md
+    - title: Visuellt innehåll
+      summary: Hämta användbar information från bilder
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/computer-vision/index.yml
+    - title: Content Moderator
+      summary: 'Automatiserad bild-, text-och videomoderering'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/content-moderator/index.yml
+    - title: Custom Vision
+      summary: Du kan enkelt anpassa egna avancerade modeller med visuellt innehåll för ditt unika användarfall
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/custom-vision.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/custom-vision-service/index.yml
+    - title: Virtuella datorer för datavetenskap
+      summary: 'Detaljerad, förkonfigurerad miljö för AI-utveckling'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-machine.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: machine-learning/data-science-virtual-machine/index.yml
+    - title: Ansikte
+      summary: 'Spåra, identifiera, analysera, sortera och tagga ansikten i foton'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/face/index.yml
+    - title: Formigenkänning
+      summary: En AI-driven dokumentextraheringstjänst som känner igen dina former
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/form-recognizer/index.yml
+    - title: Avancerad läsare
+      summary: Stärk läsningen och läsförståelsen för användare i alla åldrar och med alla förmågor
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/immersive-reader/index.yml
+    - title: Handskriftsigenkänning (förhandsversion)
+      summary: 'En AI-tjänst som identifierar digitala pennanteckningar, som handskrift, former och layouter'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: /previous-versions/azure/cognitive-services/Ink-Recognizer/
+    - title: Kinect DK
+      summary: Bygg modeller för visuellt innehåll och tal med hjälp av ett utvecklarkit med avancerade AI-sensorer
+      imageSrc: ./media/index/kinect-viewer.svg
+      azureCategories:
+        - ai-machine-learning
+        - iot
+        - mixed-reality
+      url: kinect-dk/index.yml
+    - title: Språkförståelse
+      summary: Lär apparna att förstå kommandon från användarna
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/luis/index.yml
+    - title: Microsoft Genomics
+      summary: Hantera genomsekvensering och forskningsinsikter
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/genomics.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: genomics/index.yml
+    - title: Metrics Advisor (förhandsversion)
+      summary: En AI-tjänst som övervakar mått och diagnostiserar problem
+      imageSrc: ./media/index/metrics-advisor.svg
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/metrics-advisor/index.yml
+    - title: Personanpassning
+      summary: En AI-tjänst som levererar en personanpassad användarupplevelse
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/personalizer/index.yml
+    - title: Project Bonsai (förhandsversion)
+      summary: En maskinundervisningstjänst för att skapa intelligenta industriella kontrollsystem med hjälp av simuleringar
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/bonsai.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: /bonsai/
+    - title: QnA Maker
+      summary: 'Omformulera information till konversationsanpassade, navigerbara svar'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/qnamaker/index.yml
+    - title: Talarigenkänning (förhandsversion)
+      summary: Använd tal till att identifiera och verifiera individuella talare
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: ./cognitive-services/speech-service/speaker-recognition-overview.md
+    - title: Tal till text
+      summary: Konvertera talljud till text för att skapa mer naturliga interaktioner
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: ./cognitive-services/speech-service/index-speech-to-text.yml
+    - title: Talöversättning
+      summary: Integrera enkelt realtidsöversättning av tal i din app
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: ./cognitive-services/speech-service/index-speech-translation.yml
+    - title: Textanalys
+      summary: Utvärdera enkelt sentiment och ämnen och förstå vad användare vill ha
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/text-analytics/index.yml
+    - title: Text till tal
+      summary: 'Konvertera text till tal och skapa mer naturliga, användarvänliga gränssnitt'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: ./cognitive-services/speech-service/index-text-to-speech.yml
+    - title: Översättare
+      summary: Utför enkelt maskinöversättning i realtid med ett enkelt REST API-anrop
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: cognitive-services/translator/index.yml
+    - title: Video Indexer
+      summary: Få tillgång till information i video
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/media-services.svg'
+      azureCategories:
+        - ai-machine-learning
+        - media
+      url: media-services/video-indexer/index.yml
+    - title: Azure Analysis Services
+      summary: Analysmotor i företagsklass som en tjänst
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/analysis-services.svg'
+      azureCategories:
+        - analytics
+      url: analysis-services/index.yml
+    - title: Azure-datautforskaren
+      summary: Snabb och mycket skalbar tjänst för datagranskning
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/data-explorer.svg'
+      azureCategories:
+        - analytics
+      url: /azure/data-explorer
+    - title: Azure Data Lake Storage
+      summary: Extremt skalbar och säker Data Lake-funktion som bygger på Azure Blob Storage
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-accounts.svg'
+      azureCategories:
+        - analytics
+        - storage
+      url: storage/blobs/data-lake-storage-introduction.md
+    - title: Azure Data Share
+      summary: En enkel och säker tjänst för att dela stordata med externa organisationer
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/data-shares.svg'
+      azureCategories:
+        - analytics
+        - storage
+      url: data-share/index.yml
+    - title: Azure Stream Analytics
+      summary: Realtidsanalys för dataströmmar som rör sig snabbt från program och enheter
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/stream-analytics.svg'
+      azureCategories:
+        - analytics
+        - iot
+      url: stream-analytics/index.yml
+    - title: Azure Synapse Analytics
+      summary: Gränslös analystjänst som ger snabbare insikter
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/synapse.svg'
+      azureCategories:
+        - analytics
+      url: synapse-analytics/index.yml
+    - title: Data Catalog
+      summary: Få ut mer värde av företagets datatillgångar
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/data-catalog.svg'
+      azureCategories:
+        - analytics
+      url: data-catalog/index.yml
+    - title: Azure Purview
+      summary: Maximera affärsvärdet med enhetlig datastyrning
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/purview.svg'
+      azureCategories:
+        - analytics
+        - management-and-governance
+      url: purview/index.yml
+    - title: Data Factory
+      summary: Enkel integrering av hybriddata i företagsklass
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/data-factory.svg'
+      azureCategories:
+        - analytics
+      url: data-factory/index.yml
+    - title: Data Lake Analytics
+      summary: Distribuerad analystjänst som förenklar stordata
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/data-lake-analytics.svg'
+      azureCategories:
+        - analytics
+      url: data-lake-analytics/index.yml
+    - title: Event Hubs
+      summary: Få telemetri från miljontals enheter
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/event-hubs.svg'
+      azureCategories:
+        - analytics
+      url: event-hubs/index.yml
+    - title: HDInsight
+      summary: 'Tillhandahåll Hadoop, Spark, R Server, Hbase och Storm-kluster i molnet'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/hdinsight.svg'
+      azureCategories:
+        - analytics
+      url: hdinsight/index.yml
+    - title: Log Analytics
+      summary: 'Fullständig överskådlighet över ditt program, din infrastruktur och ditt nätverk'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/log-analytics.svg'
+      azureCategories:
+        - analytics
+        - management-and-governance
+      url: azure-monitor/index.yml
+    - title: Power BI Embedded
+      summary: 'Bädda in fantastiska, helt interaktiva datavisualiseringar i dina appar'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/power-bi.svg'
+      azureCategories:
+        - analytics
+      url: /power-bi/developer/azure-pbie-what-is-power-bi-embedded
+    - title: R Server för HDInsight
+      summary: 'Förutsägelseanalyser, maskininlärning och statistisk modellering för stordata'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/hdinsight.svg'
+      azureCategories:
+        - analytics
+      url: hdinsight/r-server/r-server-overview.md
+    - title: Azure Blockchain Service (förhandsversion)
+      summary: 'Skapa, styra och expandera blockkedjenätverk i konsortium'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/blockchain-service.svg'
+      azureCategories:
+        - blockchain
+      url: blockchain/service/index.yml
+    - title: Azure Blockchain Workbench (förhandsversion)
+      summary: Skapa enkelt prototyper av blockkedjeappar i molnet
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/blockchain-workbench.svg'
+      azureCategories:
+        - blockchain
+      url: blockchain/workbench/index.yml
+    - title: Azure Cosmos DB
+      summary: 'Snabb NoSQL-databas med öppna API:er för alla skalor'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cosmos-db.svg'
+      azureCategories:
+        - featured
+        - blockchain
+        - databases
+        - iot
+      url: cosmos-db/index.yml
+    - title: Azure-hanterad instans för Apache Cassandra
+      summary: Automatisera distribution och skalning för hanterade Apache Cassandra-datacenter med öppen källkod
+      imageSrc: ./media/index/managed-instance-apache-cassandra.svg
+      azureCategories:
+        - databases
+      url: managed-instance-apache-cassandra/index.yml
+    - title: Logic Apps
+      summary: Automatisera åtkomsten och användningen av data mellan moln utan att skriva kod
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/logic-apps.svg'
+      azureCategories:
+        - blockchain
+        - integration
+        - iot
+      url: logic-apps/index.yml
+    - title: API Apps
+      summary: 'Bygg och använd enkelt API:er i molnet'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/api-apps.svg'
+      azureCategories:
+        - compute
+        - containers
+        - web
+      url: app-service/index.yml
+    - title: App Service
+      summary: Skapa snabbt kraftfulla molnappar för webben och mobilen
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/app-service.svg'
+      azureCategories:
+        - featured
+        - compute
+        - mobile
+        - web
+      url: app-service/index.yml
+    - title: Azure CycleCloud
+      summary: 'Skapa, hantera, använda och optimera HPC och stora beräkningskluster i valfri skala'
+      imageSrc: ./media/index/logo_cyclecloud.svg
+      azureCategories:
+        - compute
+      url: /azure/cyclecloud/index
+    - title: Azure Dedicated Host
+      summary: En dedikerad fysisk server som är värd för dina virtuella Azure-datorer som kör Windows och Linux
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-machine.svg'
+      azureCategories:
+        - compute
+      url: ./virtual-machines/dedicated-hosts.md
+    - title: Azure Functions
+      summary: Bearbeta händelser med serverlös kod
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/functions.svg'
+      azureCategories:
+        - featured
+        - compute
+        - containers
+        - iot
+      url: azure-functions/index.yml
+    - title: Azure Kubernetes Service (AKS)
+      summary: 'Förenkla distributionen, hanteringen och åtgärderna för Kubernetes'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/kubernetes-services.svg'
+      azureCategories:
+        - featured
+        - compute
+        - containers
+      url: aks/index.yml
+    - title: Azure Quantum (för hands version)
+      summary: Upplev den Quantum påverkan idag i Azure
+      imageSrc: ./media/index/quantum.svg
+      azureCategories:
+        - compute
+        - featured
+      url: /azure/quantum/
+    - title: Azure Spring Cloud
+      summary: En fullständigt hanterad Spring Cloud-tjänst som skapats och drivs med Pivotal
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/spring-cloud.svg'
+      azureCategories:
+        - compute
+        - web
+      url: spring-cloud/index.yml
+    - title: Azure VMware Solution
+      summary: Kör dina VMware-arbetsbelastningar internt på Azure
+      imageSrc: ./media/index/azure-vmware.svg
+      azureCategories:
+        - compute
+      url: azure-vmware/index.yml
+    - title: Batch
+      summary: Jobbschemaläggning och beräkningshantering i molnskala
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/batch-accounts.svg'
+      azureCategories:
+        - compute
+      url: batch/index.yml
+    - title: Cloud Services
+      summary: 'Skapa högtillgängliga, oändligt skalbara molnprogram och API:er'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cloud-services.svg'
+      azureCategories:
+        - compute
+      url: cloud-services-extended-support/index.yml
+    - title: Container Instances
+      summary: Kör enkelt containrar på Azure utan att behöva hantera servrar
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/container-instances.svg'
+      azureCategories:
+        - compute
+        - containers
+      url: container-instances/index.yml
+    - title: Virtuella Linux-datorer
+      summary: 'Etablera virtuella datorer för Ubuntu, Red Hat med flera'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-machine.svg'
+      azureCategories:
+        - featured
+        - compute
+      url: ./virtual-machines/index.yml
+    - title: Service Fabric
+      summary: Utveckla mikrotjänster och styr containrar i Windows eller Linux
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg'
+      azureCategories:
+        - compute
+        - containers
+      url: service-fabric/index.yml
+    - title: SQL Server på Virtual Machines
+      summary: Var värd för SQL Server-företagsappar i molnet
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/sql-server-vm.svg'
+      azureCategories:
+        - compute
+        - databases
+      url: ./azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - title: Static Web Apps (förhandsversion)
+      summary: 'En modern webbapptjänst som erbjuder effektiv utveckling med en fullständig stack, från källkod till global hög tillgänglighet'
+      imageSrc: ./media/index/static-apps.svg
+      azureCategories:
+        - compute
+        - web
+      url: static-web-apps/index.yml
+    - title: Virtual Machine Scale Sets
+      summary: Hantera och skala upp till tusentals virtuella Linux- och Windows-datorer
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/vm-scale-sets.svg'
+      azureCategories:
+        - compute
+      url: virtual-machine-scale-sets/index.yml
+    - title: Web Apps
+      summary: Skapa och distribuera affärskritiska webbappar snabbt och efter behov
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/app-service.svg'
+      azureCategories:
+        - compute
+        - containers
+        - web
+      url: app-service/index.yml
+    - title: Windows Virtual Desktop
+      summary: Den bästa virtuella skrivbordsupplevelsen som levereras på Azure
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/windows-virtual-desktop.svg'
+      azureCategories:
+        - featured
+        - compute
+        - windows-virtual-desktop
+      url: virtual-desktop/index.yml
+    - title: Virtuella Windows-datorer
+      summary: Etablera virtuella Windows-datorer på bara sekunder
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-machine.svg'
+      azureCategories:
+        - featured
+        - compute
+      url: ./virtual-machines/index.yml
+    - title: Azure Dev Spaces
+      summary: Utveckla ditt mikrotjänstprogram genom att testa och upprepa det i Azure AKS
+      imageSrc: ./media/index/AzureDevSpaceController_50x.svg
+      azureCategories:
+        - containers
+        - developer-tools
+      url: dev-spaces/index.yml
+    - title: Azure Red Hat OpenShift
+      summary: Fullständigt hanterad OpenShift-tjänst som drivs i samarbete med Red Hat
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/openshift.svg'
+      azureCategories:
+        - containers
+      url: virtual-machines/linux/openshift-get-started.md
+    - title: Container Registry
+      summary: Lagra och hantera containeravbildningar för alla typer av Azure-distributioner
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/container-registry.svg'
+      azureCategories:
+        - containers
+      url: container-registry/index.yml
+    - title: Web App for Containers
+      summary: Distribuera och kör enkelt containerbaserade webbappar som kan skalas med företaget
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/web-apps-containers.svg'
+      azureCategories:
+        - containers
+        - web
+      url: ./app-service/index.yml
+    - title: Azure API för FHIR
+      summary: Skapa och distribuera enkelt en FHIR-tjänst för hälsodatalösningar och samverkan
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/api-for-fhir.svg'
+      azureCategories:
+        - databases
+        - integration
+      url: healthcare-apis/fhir/index.yml
+    - title: Azure Cache for Redis
+      summary: Kraftfulla program med dataåtkomst med stora dataflöden och låg fördröjning
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cache-redis.svg'
+      azureCategories:
+        - databases
+      url: azure-cache-for-redis/index.yml
+    - title: Azure-databas för MariaDB
+      summary: Hanterad MariaDB-databastjänst för apputvecklare
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/database-mariadb-server.svg'
+      azureCategories:
+        - databases
+      url: mariadb/index.yml
+    - title: Azure Database for MySQL
+      summary: Hanterad MySQL-databastjänst för apputvecklare
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/database-mysql-server.svg'
+      azureCategories:
+        - databases
+      url: mysql/index.yml
+    - title: Azure Database for PostgreSQL
+      summary: Hanterad PostgreSQL-databastjänst för apputvecklare
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/database-postgresql-server.svg'
+      azureCategories:
+        - databases
+        - hybrid
+      url: postgresql/index.yml
+    - title: Azure Database Migration Service
+      summary: Förenkla den lokala databasmigreringen till molnet
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/database-migration-services.svg'
+      azureCategories:
+        - databases
+        - migration
+      url: dms/index.yml
+    - title: Azure SQL
+      summary: Modern SQL-familj för migrering och appmodernisering
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/sql.svg'
+      azureCategories:
+        - featured
+        - hybrid
+        - databases
+      url: azure-sql/index.yml
+    - title: Azure SQL Database
+      summary: Hanterad intelligent SQL i molnet
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/sql-database.svg'
+      azureCategories:
+        - databases
+      url: azure-sql/database/index.yml
+    - title: Hanterad Azure SQL-instans
+      summary: 'Hanterad, alltid uppdaterad SQL-instans i molnet'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/sql-managed-instance.svg'
+      azureCategories:
+        - databases
+      url: azure-sql/managed-instance/index.yml
+    - title: Azure SQL Edge
+      summary: Edge-optimerad datamotor med inbyggd AI och minimalt fotavtryck
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/sql-database-edge.svg'
+      azureCategories:
+        - databases
+        - iot
+      url: azure-sql-edge/index.yml
+    - title: Table Storage
+      summary: NoSQL-nyckelvärdeslagring med halvstrukturerade datauppsättningar
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-accounts.svg'
+      azureCategories:
+        - databases
+      url: ./storage/tables/table-storage-overview.md
+    - title: App Configuration
+      summary: Snabb och skalbar parameterlagring för App Configuration
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/app-configuration.svg'
+      azureCategories:
+        - developer-tools
+      url: azure-app-configuration/index.yml
+    - title: Azure Data Studio
+      summary: 'Ett lätt redigeringsprogram som kan köra frågor på serverlösa SQL-pooler och visa/spara resultat som en text-, JSON- eller Excel-fil.'
+      imageSrc: 'https://docs.microsoft.com/sql/tools/media/overview-sql-tools/azure-data-studio.svg'
+      azureCategories:
+        - developer-tools
+      url: /sql/azure-data-studio/
+    - title: Azure DevOps
+      summary: 'Tjänster för team som gör att de kan dela kod, spåra arbete och leverera programvara'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/devops.svg'
+      azureCategories:
+        - developer-tools
+        - devops
+        - hybrid
+      url: /azure/devops/
+    - title: Azure DevTest Labs
+      summary: Skapa snabbt miljöer med återanvändbara mallar och artefakter
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/devtest-labs.svg'
+      azureCategories:
+        - developer-tools
+        - devops
+      url: lab-services/index.yml
+    - title: Azure Lab Services
+      summary: 'Konfigurera labb för klassrum, kostnadsfria utvärderingsversioner, utveckling, testning och andra scenarier'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/lab-services.svg'
+      azureCategories:
+        - developer-tools
+      url: lab-services/index.yml
+    - title: Azure Pipelines
+      summary: 'Skapa, testa och distribuera till alla plattformar och moln kontinuerligt'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/pipelines.svg'
+      azureCategories:
+        - developer-tools
+        - devops
+      url: /azure/devops/pipelines/
+    - title: Visual Studio
+      summary: En kraftfull och flexibel miljö för programutveckling i molnet
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
+      azureCategories:
+        - developer-tools
+      url: /visualstudio/windows
+    - title: Visual Studio-koden
+      summary: Ett kraftfullt och enkelt kodredigeringsprogram för molnutveckling
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+      azureCategories:
+        - developer-tools
+      url: 'https://code.visualstudio.com/docs'
+    - title: Visual Studio Codespaces (förhandsversion)
+      summary: Du kommer åt molndrivna utvecklingsmiljöer överallt
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
+      azureCategories:
+        - developer-tools
+      url: /visualstudio/online/overview/what-is-vsonline
+    - title: Application Insights
+      summary: 'Fullständig överskådlighet över ditt program, din infrastruktur och ditt nätverk'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/application-insights.svg'
+      azureCategories:
+        - devops
+        - management-and-governance
+      url: azure-monitor/index.yml
+    - title: Azure Artifacts
+      summary: 'Skapa, var värd för och dela paket med teamet'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/artifacts.svg'
+      azureCategories:
+        - devops
+      url: /azure/devops/artifacts/
+    - title: Azure Boards
+      summary: 'Planera, spåra och diskutera arbete i dina team'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/boards.svg'
+      azureCategories:
+        - devops
+      url: /azure/devops/boards/
+    - title: Azure Monitor
+      summary: 'Fullständig överskådlighet över ditt program, din infrastruktur och ditt nätverk'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/monitor.svg'
+      azureCategories:
+        - devops
+        - management-and-governance
+      url: azure-monitor/index.yml
+    - title: Azure-lagringsplatser
+      summary: Få obegränsade och molnbaserade privata Git-lagringsplatser för projektet
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/repos.svg'
+      azureCategories:
+        - devops
+      url: /azure/devops/repos/
+    - title: Azure-testningsplaner
+      summary: Testa och leverera säkert med ett manuellt och undersökande hjälpmedel för testning
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/test-plans.svg'
+      azureCategories:
+        - devops
+      url: /azure/devops/test/
+    - title: GitHub-åtgärder för Azure
+      summary: 'Bygga, testa och distribuera en app från GitHub till Azure'
+      imageSrc: ./media/index/github-actions-icon.svg
+      azureCategories:
+        - devops
+        - developer-tools
+      url: /azure/developer/github/github-actions
+    - title: Azure Active Directory (AD)
+      summary: Synkronisera lokala kataloger och aktivera enkel inloggning
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/active-directory.svg'
+      azureCategories:
+        - hybrid
+        - identity
+        - security
+      url: active-directory/index.yml
+    - title: Azure Arc (förhandsversion)
+      summary: Få ut Azure-tjänster och -hantering till all infrastruktur
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/arc.svg'
+      azureCategories:
+        - hybrid
+      url: azure-arc/index.yml
+    - title: Azure ExpressRoute
+      summary: Dedikerade fiberanslutningar för privata nätverk till Azure
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/expressroute.svg'
+      azureCategories:
+        - hybrid
+        - networking
+      url: expressroute/index.yml
+    - title: Azure Sentinel
+      summary: Använd molnintegrerad SIEM och intelligent säkerhetsanalys för att skydda företaget
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/sentinel.svg'
+      azureCategories:
+        - hybrid
+        - security
+      url: sentinel/index.yml
+    - title: Azure Stack
+      summary: Skapa och kör innovativa hybridprogram över molngränser
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/stack.svg'
+      azureCategories:
+        - hybrid
+      url: /azure-stack/
+    - title: Azure Stack HCI
+      summary: Integrera hyperkonvergerad infrastruktur med Azure och hybrid-tjänster för att köra virtuella arbetsbelastningar lokalt
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/stack-hci.svg'
+      azureCategories:
+        - hybrid
+      url: /azure-stack/hci/
+    - title: Azure Stack Hub
+      summary: Azure Stack Hub säljs som ett integrerat maskinvarusystem med förinstallerad programvara på verifierad maskinvara
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/stack-hub.svg'
+      azureCategories:
+        - hybrid
+      url: /azure-stack/operator/
+    - title: Azure Stack Edge
+      summary: 'En Azure-hanterad apparat som tar Azures beräkning, lagring och information ut till kanten'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/stack-edge.svg'
+      azureCategories:
+        - hybrid
+      url: ./databox-online/index.yml
+    - title: Security Center
+      summary: Enhetlig säkerhetshantering och avancerat skydd mot hot i olika hybridmolnarbetsbelastningar
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/security-center.svg'
+      azureCategories:
+        - hybrid
+        - security
+      url: security-center/index.yml
+    - title: Azure IoT Edge
+      summary: Använd molnintelligens och -analys på gränsenheter
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/iot-edge.svg'
+      azureCategories:
+        - hybrid
+        - iot
+      url: iot-edge/index.yml
+    - title: Azure Active Directory for External Identities
+      summary: Kundidentitets- och åtkomsthantering i molnet
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/active-directory-b2c.svg'
+      azureCategories:
+        - identity
+      url: active-directory/external-identities/index.yml
+    - title: Azure Active Directory Domain Services
+      summary: Anslut virtuella Azure-datorer till en domän utan domänkontrollanter
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/ad-domain-services.svg'
+      azureCategories:
+        - identity
+        - security
+      url: active-directory-domain-services/index.yml
+    - title: Azure Information Protection
+      summary: Skydda din känsliga information bättre – när som helst och var som helst
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/information-protection.svg'
+      azureCategories:
+        - identity
+        - security
+      url: /azure/information-protection/
+    - title: API Management
+      summary: 'Publicera API:er till utvecklare, partner och anställda på ett säkert sätt och efter behov'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/api-management.svg'
+      azureCategories:
+        - integration
+        - iot
+        - mobile
+        - web
+      url: api-management/index.yml
+    - title: Event Grid
+      summary: Få tillförlitlig händelseleverans i omfattande skala
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/event-grid-domains.svg'
+      azureCategories:
+        - integration
+        - iot
+      url: event-grid/index.yml
+    - title: Service Bus
+      summary: Anslut via privata och offentliga moln
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/service-bus.svg'
+      azureCategories:
+        - integration
+      url: service-bus-messaging/index.yml
+    - title: Azure Digital Twins
+      summary: Skapa nästa generation IoT-lösningar för rumslig intelligens
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/digital-twins.svg'
+      azureCategories:
+        - iot
+        - mixed-reality
+      url: digital-twins/index.yml
+    - title: Azure IoT Central
+      summary: Påskynda skapandet av IoT-lösningar
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/iot-central.svg'
+      azureCategories:
+        - iot
+      url: iot-central/index.yml
+    - title: Azure IoT Hub
+      summary: 'Anslut, övervaka och hantera flera miljarder IoT-tillgångar'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/iot-hub.svg'
+      azureCategories:
+        - iot
+      url: iot-hub/index.yml
+    - title: Azure IoT-lösningsacceleratorer
+      summary: Skapa helt anpassningsbara lösningar med mallar för vanliga IoT-scenarier
+      imageSrc: ./media/index/iot-solution-accelerators.svg
+      azureCategories:
+        - iot
+      url: iot-accelerators/index.yml
+    - title: Azure Maps
+      summary: 'Enkla och säkra plats-API:er ger geospatial kontext till data'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/maps.svg'
+      azureCategories:
+        - iot
+        - mobile
+        - web
+      url: azure-maps/index.yml
+    - title: Azure Sphere
+      summary: Anslut MCU-enheter på ett säkert sätt från enheten direkt till molnet
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/sphere.svg'
+      azureCategories:
+        - iot
+      url: /azure-sphere/
+    - title: Azure Time Series Insights
+      summary: Utforska och analysera tidsseriedata från IoT-enheter
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/time-series-insights-environments.svg'
+      azureCategories:
+        - iot
+      url: time-series-insights/index.yml
+    - title: Notification Hubs
+      summary: Skicka push-meddelanden till valfri plattform från valfri serverdel
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/notification-hubs.svg'
+      azureCategories:
+        - iot
+        - mobile
+        - web
+      url: notification-hubs/index.yml
+    - title: Windows 10 IoT Core Services
+      summary: Långsiktigt operativsystemsstöd och tjänster för att hantera enhetsuppdateringar och utvärdera enhetshälsa
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/iot-windows10-core-services.svg'
+      azureCategories:
+        - iot
+      url: /windows/iot-core/
+    - title: Automation
+      summary: Förenkla molnhantering med processautomatisering
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/automation.svg'
+      azureCategories:
+        - management-and-governance
+      url: automation/index.yml
+    - title: Azure Advisor
+      summary: Din personligt anpassade Azure-rekommendationsmotor
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/advisor.svg'
+      azureCategories:
+        - management-and-governance
+      url: advisor/index.yml
+    - title: Azure Backup
+      summary: Förenkla datasäkerheten och skydda mot utpressningstrojaner
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/recovery-services-vaults.svg'
+      azureCategories:
+        - management-and-governance
+        - storage
+      url: backup/index.yml
+    - title: Azure Blueprints (förhandsversion)
+      summary: Möjliggör snabbt upprepningsbart skapande av reglerade miljöer
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/blueprints.svg'
+      azureCategories:
+        - management-and-governance
+      url: governance/blueprints/index.yml
+    - title: Azure Lighthouse
+      summary: Hjälper tjänstleverantörer att hantera kunder i stor skala och med precision
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/lighthouse.svg'
+      azureCategories:
+        - management-and-governance
+      url: lighthouse/index.yml
+    - title: Azure Managed Applications
+      summary: Förenkla hanteringen av molnerbjudanden
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/managed-applications.svg'
+      azureCategories:
+        - management-and-governance
+      url: azure-resource-manager/managed-applications/index.yml
+    - title: Azure Migrate
+      summary: 'Upptäck, utvärdera, ange storlek för och migrera dina lokala virtuella datorer till Azure'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/migrate.svg'
+      azureCategories:
+        - management-and-governance
+        - migration
+      url: migrate/index.yml
+    - title: Azure Policy
+      summary: Implementera företagsstyrning och standarder för Azure-resurser
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/policy.svg'
+      azureCategories:
+        - management-and-governance
+      url: governance/policy/index.yml
+    - title: Azure Resource Manager
+      summary: Förenkla hanteringen av appresurser
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/resource-groups.svg'
+      azureCategories:
+        - management-and-governance
+      url: azure-resource-manager/index.yml
+    - title: Azure Resource Mover (förhandsversion)
+      summary: Förenkla hur du flyttar flera resurser mellan Azure-regioner
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/resource-mover.svg'
+      azureCategories:
+        - management-and-governance
+      url: resource-mover/index.yml
+    - title: ARM-mallar
+      summary: Leverera infrastruktur som kod för alla dina Azure-resurser med hjälp av Resource Manager
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/resource-groups.svg'
+      azureCategories:
+        - management-and-governance
+      url: azure-resource-manager/templates/index.yml
+    - title: Azure Service Health
+      summary: Få personliga råd och support när du påverkas av problem i Azure-tjänster
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/service-health.svg'
+      azureCategories:
+        - management-and-governance
+      url: service-health/index.yml
+    - title: Azure Site Recovery
+      summary: Håll igång verksamheten med inbyggd tjänst för haveriberedskap
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/recovery-services-vaults.svg'
+      azureCategories:
+        - management-and-governance
+        - migration
+      url: site-recovery/index.yml
+    - title: Azure Cloud Shell
+      summary: Effektivisera Azure-administrationen med ett webbläsarbaserat skal
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cloud-shell.svg'
+      azureCategories:
+        - management-and-governance
+      url: cloud-shell/overview.md
+    - title: Kostnadshantering + fakturering
+      summary: Optimera dina molnkostnader och maximera potentialen med molnet
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cost-management.svg'
+      azureCategories:
+        - management-and-governance
+        - migration
+      url: cost-management-billing/index.yml
+    - title: Microsoft Azure-portalen
+      summary: 'Skapa, hantera och övervaka alla Azure-produkter i en enda enhetlig konsol'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/azure.svg'
+      azureCategories:
+        - management-and-governance
+      url: azure-portal/index.yml
+    - title: Network Watcher
+      summary: Övervakning av nätverksprestanda och diagnostiklösningar
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/network-watcher.svg'
+      azureCategories:
+        - management-and-governance
+        - networking
+      url: network-watcher/index.yml
+    - title: Traffic Manager
+      summary: Vidarebefordra inkommande trafik för hög prestanda och tillgänglighet
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/traffic-manager.svg'
+      azureCategories:
+        - management-and-governance
+        - networking
+      url: traffic-manager/index.yml
+    - title: Azure Media Player
+      summary: En spelare för alla uppspelningsbehov
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/media-services.svg'
+      azureCategories:
+        - media
+      url: media-services/latest/player-use-azure-media-player-how-to.md
+    - title: Content Delivery Network
+      summary: Säkerställ säker och tillförlitlig innehållsleverans med bred global räckvidd
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cdn-profiles.svg'
+      azureCategories:
+        - media
+        - networking
+        - web
+      url: cdn/index.yml
+    - title: Content Protection
+      summary: 'Leverera innehåll säkert med AES, PlayReady, Widevine och Fairplay'
+      imageSrc: ./media/index/media-protection.svg
+      azureCategories:
+        - media
+      url: media-services/latest/drm-content-protection-concept.md
+    - title: Kodning
+      summary: Kodning i studioklass och i molnskala
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/media-services.svg'
+      azureCategories:
+        - media
+      url: media-services/latest/encode-concept.md
+    - title: Direktuppspelning live och på begäran
+      summary: Leverera innehåll till i stort sett alla enheter med en skala som uppfyller företagets krav
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/media-services.svg'
+      azureCategories:
+        - media
+      url: media-services/latest/stream-live-tutorial-with-api.md
+    - title: Live Video Analytics (förhandsversion)
+      summary: Skapa intelligenta videobaserade program med en AI som du väljer själv
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/media-services.svg'
+      azureCategories:
+        - media
+      url: media-services/live-video-analytics-edge/overview.md
+    - title: Media Services
+      summary: 'Koda, lagra och strömma video och ljud i olika skalor'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/media-services.svg'
+      azureCategories:
+        - media
+      url: media-services/latest/index.yml
+    - title: Data Box
+      summary: Apparater och lösningar för dataöverföring till Azure
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/data-box.svg'
+      azureCategories:
+        - migration
+        - storage
+      url: databox/index.yml
+    - title: Objekt ankare (förhands granskning)
+      summary: Justera och fäst 3D-innehåll automatiskt till objekt i den fysiska världen
+      imageSrc: ./media/index/object-anchors.svg
+      azureCategories:
+        - mixed-reality
+      url: object-anchors/index.yml
+    - title: Spatial Anchors
+      summary: Skapa rumsligt medvetna Mixed Reality-upplevelser för flera användare
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/spatial-anchor-accounts.svg'
+      azureCategories:
+        - mixed-reality
+        - mobile
+      url: spatial-anchors/index.yml
+    - title: Azure Remote Rendering
+      summary: Rendera interaktivt 3D-innehåll av hög kvalitet och strömma det till dina enheter i realtid
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/remote-rendering.svg'
+      azureCategories:
+        - mixed-reality
+      url: remote-rendering/index.yml
+    - title: Visual Studio App Center
+      summary: 'Bygg, testa, publicera och övervaka dina mobil- och skrivbordsappar kontinuerligt'
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_vs-mobile-center.svg'
+      azureCategories:
+        - mobile
+      url: /appcenter/
+    - title: Xamarin
+      summary: Snabbare framtagning av mobilappar med molnstöd
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_xamarin.svg'
+      azureCategories:
+        - mobile
+      url: /xamarin/
+    - title: Application Gateway
+      summary: 'Skapa säkra, skalbara och högtillgängliga frontwebbservrar i Azure'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/application-gateways.svg'
+      azureCategories:
+        - networking
+        - security
+      url: application-gateway/index.yml
+    - title: Azure Bastion
+      summary: Privat och fullständigt hanterad RDP- och SSH-åtkomst till dina virtuella datorer
+      imageSrc: ./media/index/web_connect.svg
+      azureCategories:
+        - networking
+      url: bastion/index.yml
+    - title: Azure Defender
+      summary: Skydda arbetsbelastningar i hybridmoln
+      imageSrc: ./media/index/defender.svg
+      azureCategories:
+        - security
+      url: security-center/azure-defender.md
+    - title: Azure Defender för IoT
+      summary: Kontinuerlig tillgångshantering och hotidentifiering för både ohanterade och hanterade IoT/OT-enheter
+      imageSrc: ./media/index/defender-iot.svg
+      azureCategories:
+        - security
+        - iot
+      url: ./defender-for-iot/index.yml
+    - title: Azure DDoS Protection
+      summary: Skydda dina program mot DDoS-attacker (Distributed Denial of Service)
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/ddos-protection.svg'
+      azureCategories:
+        - networking
+        - security
+      url: ./ddos-protection/ddos-protection-overview.md
+    - title: Azure DNS
+      summary: Använd Azure som värd för din DNS-domän
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/dns.svg'
+      azureCategories:
+        - networking
+      url: dns/index.yml
+    - title: Azure Firewall
+      summary: Inbyggda brandväggsfunktioner med inbyggd hög tillgänglighet och obegränsad skalbarhet i molnet helt utan underhåll
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/firewall.svg'
+      azureCategories:
+        - networking
+      url: firewall/index.yml
+    - title: Azure Firewall Manager
+      summary: 'Central säkerhetsprincip för nätverk och väghantering för globalt distribuerade, programvarudefinierade perimetrar'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/firewall-manager.svg'
+      azureCategories:
+        - networking
+      url: firewall-manager/index.yml
+    - title: Azure Front Door
+      summary: 'Skalbar, säkerhetsförbättrad leveranspunkt för globala, mikrotjänstbaserade webbprogram'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/front-door.svg'
+      azureCategories:
+        - networking
+        - security
+      url: frontdoor/index.yml
+    - title: Azure Internet Analyzer (förhandsversion)
+      summary: Testa hur ändringar i nätverksinfrastrukturen påverkar dina kunders prestanda
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/internet-analyzer.svg'
+      azureCategories:
+        - networking
+      url: internet-analyzer/index.yml
+    - title: Azure Private Link
+      summary: 'Privat åtkomst till tjänster på Azure-plattformen, och dina data stannar på Microsofts nätverk'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/private-link.svg'
+      azureCategories:
+        - networking
+      url: private-link/index.yml
+    - title: Lastbalanserare
+      summary: Leverera hög tillgänglighet och nätverksprestanda till dina program
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/load-balancer.svg'
+      azureCategories:
+        - networking
+      url: load-balancer/index.yml
+    - title: Azure Route Server (för hands version)
+      summary: Förenkla drift hanteringen av dina nätverks enheter
+      imageSrc: ./media/index/azure-route-server.svg
+      azureCategories:
+        - networking
+      url: route-server/index.yml
+    - title: Virtual Network
+      summary: 'Etablera privata nätverk, med möjlighet att ansluta till lokala datacenter'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-networks.svg'
+      azureCategories:
+        - networking
+      url: virtual-network/index.yml
+    - title: Virtuellt WAN
+      summary: Microsoft-hanterad nav och eker-tjänst för anslutning och säkerhet
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-wans.svg'
+      azureCategories:
+        - networking
+      url: virtual-wan/index.yml
+    - title: VPN Gateway
+      summary: Etablera säker anslutning mellan olika platser
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-network-gateways.svg'
+      azureCategories:
+        - networking
+        - security
+      url: vpn-gateway/index.yml
+    - title: Brandvägg för webbaserade program
+      summary: En molnbaserad brandväggstjänst för webbaserade program som ger ett kraftfullt skydd för webbappar
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/frontdoor-waf-policies.svg'
+      azureCategories:
+        - networking
+        - security
+      url: web-application-firewall/index.yml
+    - title: Dedikerad HSM i Azure
+      summary: Hantera säkerhetsmoduler för maskinvara som du använder i molnet
+      imageSrc: ./media/index/dedicated-hsm.svg
+      azureCategories:
+        - security
+      url: dedicated-hsm/index.yml
+    - title: Key Vault
+      summary: Skydda och behåll kontrollen över nycklar och andra hemligheter
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/key-vault.svg'
+      azureCategories:
+        - security
+      url: key-vault/index.yml
+    - title: Arkivlagring
+      summary: Branschledande prispunkt för att lagra data som sällan används
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-explorer.svg'
+      azureCategories:
+        - storage
+      url: storage/blobs/storage-blob-storage-tiers.md
+    - title: Avere vFXT för Azure
+      summary: Kör högpresterande och filbaserade arbetsbelastningar i molnet
+      imageSrc: ./media/index/avere.svg
+      azureCategories:
+        - storage
+      url: avere-vfxt/index.yml
+    - title: Azure FXT Edge Filer
+      summary: Optimeringslösning för hybridlagring i HPC-miljöer
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/fxt-edge-filer.svg'
+      azureCategories:
+        - storage
+      url: fxt-edge-filer/index.yml
+    - title: Azure HPC Cache
+      summary: Filcachelagring för databehandling med höga prestanda (HPC)
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/hpc-cache.svg'
+      azureCategories:
+        - storage
+      url: hpc-cache/index.yml
+    - title: Azure NetApp Files
+      summary: Azure-filresurser i företagsklass med NetApp
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/netapp-files.svg'
+      azureCategories:
+        - storage
+      url: azure-netapp-files/index.yml
+    - title: Blob Storage
+      summary: REST-baserad objektlagring för ostrukturerade data
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-accounts.svg'
+      azureCategories:
+        - storage
+      url: storage/blobs/index.yml
+    - title: Disklagring
+      summary: Blocklagring med hög prestanda och hög pålitlighet för virtuella Azure-datorer
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/disk-storage.svg'
+      azureCategories:
+        - storage
+      url: virtual-machines/managed-disks-overview.md
+    - title: Azure Files
+      summary: Filresurser som använder standardprotokollet SMB 3.0
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-azure-files.svg'
+      azureCategories:
+        - storage
+      url: storage/files/index.yml
+    - title: Queue Storage
+      summary: Skala appar effektivt med hänsyn till trafiken
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-accounts.svg'
+      azureCategories:
+        - storage
+      url: storage/queues/index.yml
+    - title: Storage
+      summary: 'Hållbar, högtillgänglig och massivt skalbar molnlagring'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-accounts.svg'
+      azureCategories:
+        - storage
+      url: storage/index.yml
+    - title: Storage Explorer
+      summary: Visa och interagera med Azure Storage-resurser
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-explorer.svg'
+      azureCategories:
+        - storage
+      url: vs-azure-tools-storage-manage-with-storage-explorer.md
+    - title: StorSimple
+      summary: Sänk kostnaderna med en lösning för hybridmolnlagring för företag
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/storsimple-device-managers.svg'
+      azureCategories:
+        - storage
+      url: storsimple/index.yml
+    - title: Azure SignalR Service
+      summary: Lägg enkelt till webbfunktioner i realtid
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/signalr-service.svg'
+      azureCategories:
+        - web
+      url: azure-signalr/index.yml
 tools:
   title: Språk och verktyg
   items:
-  - title: Python
-    imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
-    url: /azure/developer/python/
-  - title: .NET
-    imageSrc: ./media/index/net-logo.svg
-    url: /dotnet/azure/
-  - title: JavaScript
-    imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
-    url: /azure/developer/javascript/
-  - title: Java
-    imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
-    url: /azure/developer/java/
-  - title: Go
-    imageSrc: https://docs.microsoft.com/media/logos/logo_Go-lightblue.svg
-    url: /azure/developer/go/
-  - title: REST-API
-    imageSrc: https://docs.microsoft.com/media/logos/logo_REST.svg
-    url: /rest/api/
-  - title: Azure PowerShell
-    imageSrc: https://docs.microsoft.com/media/logos/logo_powershell.svg
-    url: /powershell/azure/
-  - title: Azure CLI
-    imageSrc: https://docs.microsoft.com/media/logos/logo_CLIgeneric.svg
-    url: /cli/azure/
-  - title: ARM-mallar
-    imageSrc: https://static.docs.com/ui/media/product/azure/resource-groups.svg
-    url: azure-resource-manager/templates/index.yml
-  - title: Jenkins
-    imageSrc: https://docs.microsoft.com/media/logos/logo_jenkins.svg
-    url: /azure/developer/jenkins
-  - title: Terraform
-    imageSrc: https://docs.microsoft.com/media/logos/logo_terraform.svg
-    url: /azure/developer/terraform/
-  - title: Ansible
-    imageSrc: ./media/index/ansible.svg
-    url: /azure/developer/ansible
+    - title: Python
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_python.svg'
+      url: /azure/developer/python/
+    - title: .NET
+      imageSrc: ./media/index/net-logo.svg
+      url: /dotnet/azure/
+    - title: JavaScript
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_js.svg'
+      url: /azure/developer/javascript/
+    - title: Java
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_java.svg'
+      url: /azure/developer/java/
+    - title: Go
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_Go-lightblue.svg'
+      url: /azure/developer/go/
+    - title: REST-API
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_REST.svg'
+      url: /rest/api/
+    - title: Azure PowerShell
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
+      url: /powershell/azure/
+    - title: Azure CLI
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_CLIgeneric.svg'
+      url: /cli/azure/
+    - title: ARM-mallar
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/resource-groups.svg'
+      url: azure-resource-manager/templates/index.yml
+    - title: Jenkins
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_jenkins.svg'
+      url: /azure/developer/jenkins
+    - title: Terraform
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_terraform.svg'
+      url: /azure/developer/terraform/
+    - title: Ansible
+      imageSrc: ./media/index/ansible.svg
+      url: /azure/developer/ansible
 additionalContent:
   sections:
-  - title: Nationella moln
-    items:
-    - title: Azure Government
-      summary: Ett dedikerat moln för amerikanska myndigheter och deras partner.
-      url: azure-government/index.yml
-    - title: Azure Tyskland
-      summary: Ett dedikerat moln som följer tyska regler för datahantering.
-      url: germany/index.yml
-    - title: Azure Kina 21Vianet
-      summary: Ett dedikerat moln som finns i Kina och drivs av 21Vianet.
-      url: /azure/china/
-  - title: Partnerlösningar
-    items:
-    - title: Azure-partner lösningar
-      summary: Integrerade partner lösningar som du kan använda i Azure för att förbättra din moln infrastruktur.
-      url: ./partner-solutions/overview.md
-    - title: Kommersiell marknadsplats
-      summary: En online-marknadsplats med program och tjänster från oberoende program varu leverantörer (ISV).
-      url: ./marketplace/index.yml
+    - title: Nationella moln
+      items:
+        - title: Azure Government
+          summary: Ett dedikerat moln för amerikanska myndigheter och deras partner.
+          url: azure-government/index.yml
+        - title: Azure Tyskland
+          summary: Ett dedikerat moln som följer tyska regler för datahantering.
+          url: germany/index.yml
+        - title: Azure Kina 21Vianet
+          summary: Ett dedikerat moln som finns i Kina och drivs av 21Vianet.
+          url: /azure/china/
+    - title: Partnerlösningar
+      items:
+        - title: Azure-partner lösningar
+          summary: Integrerade partner lösningar som du kan använda i Azure för att förbättra din moln infrastruktur.
+          url: ./partner-solutions/overview.md
+        - title: Kommersiell marknadsplats
+          summary: En online-marknadsplats med program och tjänster från oberoende program varu leverantörer (ISV).
+          url: ./marketplace/index.yml

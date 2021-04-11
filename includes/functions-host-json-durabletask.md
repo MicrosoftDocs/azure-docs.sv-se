@@ -8,10 +8,10 @@ ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: d1b2cbefe64add5048d4e3c7946277b1461a5434
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105607102"
 ---
 Konfigurations inställningar för [Durable Functions](../articles/azure-functions/durable/durable-functions-overview.md).
@@ -99,7 +99,7 @@ Konfigurations inställningar för [Durable Functions](../articles/azure-functio
 
 Namn på uppgifts hubbar måste börja med en bokstav och får bara bestå av bokstäver och siffror. Om inget värde anges är standard namnet på uppgifts navet för en Function-app **DurableFunctionsHub**. Mer information finns i [aktivitets nav](../articles/azure-functions/durable/durable-functions-task-hubs.md).
 
-|Egenskap  |Standardvärde | Description |
+|Egenskap  |Standardvärde | Beskrivning |
 |---------|---------|----------|
 |hubName|DurableFunctionsHub|Alternativa [aktivitets Hubbs](../articles/azure-functions/durable/durable-functions-task-hubs.md) namn kan användas för att isolera flera Durable Functions program från varandra, även om de använder samma lagrings Server del.|
 |controlQueueBatchSize|32|Antalet meddelanden att hämta från kontroll kön i taget.|

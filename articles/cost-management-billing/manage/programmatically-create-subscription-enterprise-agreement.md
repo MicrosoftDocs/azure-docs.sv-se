@@ -9,12 +9,12 @@ ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 8857582e29da03785427c59277c605b0b4d6c6b7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3275fe0a72b70038cf834436e8290b9c55643414
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932581"
+ms.locfileid: "105963299"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>Skapa prenumerationer på Azure Enterprise-avtal via programmering med de senaste API:erna
 
@@ -31,7 +31,8 @@ När du skapar en Azure-prenumeration programmatiskt styrs prenumerationen av de
 För att kunna skapa en prenumeration måste du ha en ägarroll för ett registreringskonto. Det finns två sätt att få denna roll:
 
 * Företagsadministratören för din registrering kan [utse dig till kontoägare](https://ea.azure.com/helpdocs/addNewAccount) (inloggning krävs), vilket innebär att du blir ägare till registreringskontot.
-* En befintlig ägare till registreringskontot kan [ge dig åtkomst](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Om du vill skapa en EA-prenumeration med hjälp av ett tjänsthuvudnamn måste du på liknande sätt [bevilja tjänsthuvudnamnet behörighet att skapa prenumerationer](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). 
+* En befintlig ägare till registreringskontot kan [ge dig åtkomst](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Om du vill skapa en EA-prenumeration med hjälp av ett tjänsthuvudnamn måste du på liknande sätt [bevilja tjänsthuvudnamnet behörighet att skapa prenumerationer](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put).  
+    Om du använder ett SPN för att skapa prenumerationer använder du ObjectId för Azure AD-programregistrering som tjänstens huvud namn ObjectId med [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) eller [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list).
   > [!NOTE]
   > Se till att du använder rätt API-version för att ge registreringskontot ägarbehörighet. För den här artikeln och för de API:er som dokumenteras i den använder du API:et [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Om du migrerar till användning av de nyare API:erna måste du bevilja ägarbehörighet igen med [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Din tidigare konfiguration som skapades med [version 2015-07-01](grant-access-to-create-subscription.md) konverteras inte automatiskt för användning med nyare API:er.
 

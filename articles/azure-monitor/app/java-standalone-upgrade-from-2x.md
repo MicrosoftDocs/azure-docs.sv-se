@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6e1c7e15ff77fd75ff2fb70a6741ea2dd9a4cab8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 342c535cadb1a2d3f2d18478d8941d9ea61bdf72
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040251"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448975"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Uppgradera från Application Insights Java 2. x SDK
 
@@ -45,72 +45,12 @@ I 2. x SDK har åtgärds namnen prefixet av http-metoden ( `GET` , `POST` osv.),
 
 :::image type="content" source="media/java-ipa/upgrade-from-2x/operation-names-prefixed-by-http-method.png" alt-text="Förkorrigerat åtgärds namn med http-metod":::
 
-I kodfragmentet nedan konfigureras 3 telemetri-processorer som kombineras för att replikera det tidigare beteendet.
-Telemetri-processorerna utför följande åtgärder (i ordning):
+Från och med 3.0.3 kan du gå tillbaka till det här 2. x-beteendet med
 
-1. Den första telemetriprocessor är en intervall processor (har typ `span` ), vilket innebär att den gäller för `requests` och `dependencies` .
-
-   Det matchar alla intervall som har ett attribut med namnet `http.method` och har ett intervall namn som börjar med `/` .
-
-   Sedan extraheras detta intervall namn till ett attribut med namnet `tempName` .
-
-2. Den andra telemetri-processorn är också en intervall processor.
-
-   Den matchar alla intervall som har ett attribut med namnet `tempName` .
-
-   Sedan uppdateras intervall namnet genom att sammanfoga de två attributen `http.method` och `tempName` avgränsade med blank steg.
-
-3. Den senaste telemetri-processorn är en attribut processor (har typ `attribute` ), vilket innebär att den gäller all telemetri som har attribut (för närvarande `requests` `dependencies` och `traces` ).
-
-   Den matchar all telemetri som har ett attribut med namnet `tempName` .
-
-   Sedan tas attributet med namnet `tempName` , så att det inte rapporteras som en anpassad dimension.
-
-```
+```json
 {
   "preview": {
-    "processors": [
-      {
-        "type": "span",
-        "include": {
-          "matchType": "regexp",
-          "attributes": [
-            { "key": "http.method", "value": "" }
-          ],
-          "spanNames": [ "^/" ]
-        },
-        "name": {
-          "toAttributes": {
-            "rules": [ "^(?<tempName>.*)$" ]
-          }
-        }
-      },
-      {
-        "type": "span",
-        "include": {
-          "matchType": "strict",
-          "attributes": [
-            { "key": "tempName" }
-          ]
-        },
-        "name": {
-          "fromAttributes": [ "http.method", "tempName" ],
-          "separator": " "
-        }
-      },
-      {
-        "type": "attribute",
-        "include": {
-          "matchType": "strict",
-          "attributes": [
-            { "key": "tempName" }
-          ]
-        },
-        "actions": [
-          { "key": "tempName", "action": "delete" }
-        ]
-      }
-    ]
+    "httpMethodInOperationName": true
   }
 }
 ```

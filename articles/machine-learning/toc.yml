@@ -556,6 +556,9 @@
             - name: Omvandla data
               displayName: pipeline
               href: how-to-designer-transform-data.md
+            - name: Använd pipeline-parametrar
+              displayName: 'designer, pipeline parameters'
+              href: how-to-use-pipeline-parameter.md
             - name: Omträna med publicerade pipelines
               displayName: 'retrain, designer, published pipeline'
               href: how-to-retrain-designer.md
@@ -621,6 +624,8 @@
     - name: Organiserade miljöer
       displayName: 'environments, curated environments'
       href: resource-curated-environments.md
+    - name: Azure CLI
+      href: /cli/azure/ext/azure-cli-ml/ml
 - name: Resurser
   items:
     - name: Viktig information

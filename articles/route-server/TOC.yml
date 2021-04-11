@@ -12,6 +12,8 @@
       href: quickstart-configure-route-server-powershell.md
     - name: Konfigurera en Route Server – CLI
       href: quickstart-configure-route-server-cli.md
+    - name: Konfigurera en Route Server-ARM-mall
+      href: quickstart-configure-template.md
   expanded: true
 - name: Begrepp
   items:

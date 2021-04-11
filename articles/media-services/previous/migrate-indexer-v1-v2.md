@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: eb4f662a4b34d748da0e97da9b64a386be3f5c49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2b1960aa2d08a189e04aea8906c10e761dc1c57a
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "103016431"
+ms.locfileid: "105962653"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrera från Media Indexer och Media Indexer 2 till Video Indexer
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!IMPORTANT]
-> Vi rekommenderar att kunderna migrerar från Indexer v1 och Indexer v2 till att använda [Media Services v3 AudioAnalyzerPreset Basic-läge](../latest/analyzing-video-audio-files-concept.md). [Azure Media Indexer](media-services-index-content.md) medie processor och Azure Media Indexer 2-processorer för för [hands versions](./legacy-components.md) mediet dras tillbaka. Se det här avsnittet om [äldre komponenter](legacy-components.md) för datum för indragningen.
+> Vi rekommenderar att kunderna migrerar från Indexer v1 och Indexer v2 till att använda [Media Services v3 AudioAnalyzerPreset Basic-läge](../latest/analyze-video-audio-files-concept.md). [Azure Media Indexer](media-services-index-content.md) medie processor och Azure Media Indexer 2-processorer för för [hands versions](./legacy-components.md) mediet dras tillbaka. Se det här avsnittet om [äldre komponenter](legacy-components.md) för datum för indragningen.
 
 Azure Media Services Video Indexer bygger på Azure-medieanalys, Azure Kognitiv sökning, Cognitive Services (till exempel Ansikts-API, Microsoft Translator, API för visuellt innehåll och Custom Speech Service). Programmet gör det möjligt att extrahera insikter från dina videor med video- och ljudmodeller för Video Indexer. Om du vill se vilka scenarier Video Indexer kan användas i, vilka funktioner det erbjuder och hur du kommer igång, se [video Indexer video-och ljud modeller](../video-indexer/video-indexer-overview.md). 
 
-Du kan extrahera insikter från dina video-och ljudfiler med hjälp av [Azure Media Services v3 Analyzer-för inställningar](../latest/analyzing-video-audio-files-concept.md) eller direkt med hjälp av [video Indexer API: er](https://api-portal.videoindexer.ai/). För närvarande finns det en överlappning mellan funktioner som erbjuds av Video Indexer-API: er och Media Services v3-API: er.
+Du kan extrahera insikter från dina video-och ljudfiler med hjälp av [Azure Media Services v3 Analyzer-för inställningar](../latest/analyze-video-audio-files-concept.md) eller direkt med hjälp av [video Indexer API: er](https://api-portal.videoindexer.ai/). För närvarande finns det en överlappning mellan funktioner som erbjuds av Video Indexer-API: er och Media Services v3-API: er.
 
 > [!NOTE]
 > Om du vill förstå skillnaderna mellan Video Indexer jämfört med Media Services Analyzer-för inställningar, kan du läsa [jämförelse dokumentet](../video-indexer/compare-video-indexer-with-media-services-presets.md).
@@ -49,7 +49,7 @@ Följande avsnitt pekar på relevanta länkar: [Hur kan jag komma igång med vid
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>Komma igång med Media Services v3-API: er
 
-Med Azure Media Services v3 API kan du extrahera insikter från dina video-och ljudfiler via [Azure Media Services v3 Analyzer-för hands inställningarna](../latest/analyzing-video-audio-files-concept.md).
+Med Azure Media Services v3 API kan du extrahera insikter från dina video-och ljudfiler via [Azure Media Services v3 Analyzer-för hands inställningarna](../latest/analyze-video-audio-files-concept.md).
 
 Med **AudioAnalyzerPreset** kan du extrahera flera ljud insikter från en ljud-eller video fil. Utdata innehåller en VTT-eller TTML-fil för ljud avskriften och en JSON-fil (med alla ytterligare ljud insikter). Ljud insikter innehåller nyckelord, talare indexering och analys av tal sentiment. AudioAnalyzerPreset har även stöd för språk identifiering för specifika språk. Detaljerad information finns i [transformeringar](/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
 
@@ -57,7 +57,7 @@ Med **AudioAnalyzerPreset** kan du extrahera flera ljud insikter från en ljud-e
 
 För att komma igång, se:
 
-* [Självstudie](../latest/analyze-videos-tutorial-with-api.md)
+* [Självstudie](../latest/analyze-videos-tutorial.md)
 * AudioAnalyzerPreset-exempel: [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/AudioAnalytics/AudioAnalyzer) eller [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer)
 * VideoAnalyzerPreset-exempel: [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/VideoAnalytics/VideoAnalyzer) eller [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/VideoAnalytics/VideoAnalyzer)
 

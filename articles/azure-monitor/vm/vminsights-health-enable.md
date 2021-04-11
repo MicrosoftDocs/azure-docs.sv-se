@@ -4,14 +4,14 @@ description: Beskriver hur du aktiverar gäst hälsa för VM Insights i din pren
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/16/2020
+ms.date: 04/05/2021
 ms.custom: references_regions
-ms.openlocfilehash: 540f0725427ace4aec76de373556cd6699a1b229
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6f6c67e0e9ef1dd2a4092033a9479801cd0e8e7d
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732762"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449315"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>Aktivera gäst hälsa för VM Insights (förhands granskning)
 Med gäst hälsa för virtuella datorer kan du Visa hälso tillståndet för en virtuell dator som definieras av en uppsättning prestanda mätningar som samplas med jämna mellanrum. I den här artikeln beskrivs hur du aktiverar den här funktionen i din prenumeration och hur du aktiverar gäst övervakning för varje virtuell dator.
@@ -26,6 +26,8 @@ Gäst hälsa för VM Insights har följande begränsningar i offentlig för hand
 ## <a name="supported-operating-systems"></a>Operativsystem som stöds
 Den virtuella datorn måste köra något av följande operativ system: 
 
+  - CentOS 7,5, 7,6, 7,7, 7,8, 7,9
+  - RedHat 7,5, 7,6, 7,7, 7,8, 7,9
   - Ubuntu 16,04 LTS, Ubuntu 18,04 LTS
   - Windows Server 2012 eller senare
 

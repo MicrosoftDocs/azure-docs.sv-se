@@ -7,14 +7,14 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/15/2021
+ms.date: 04/06/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 6b15585f029f9289736d8d498b61a3e0ba40f009
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50e29262b609887d91c43ea8f012fad0c7a35ee2
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889424"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449281"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Snabbstart: Skapa en datafabrik och pipeline med Python
 
@@ -75,9 +75,12 @@ Pipelines kan mata in data från olika data lager. Pipelines bearbetar eller tra
     ```
     > [!NOTE] 
     > Paketet "Azure-Identity" kan ha konflikter med "Azure-CLI" på vissa vanliga beroenden. Om du uppfyller eventuella autentiseringsproblem tar du bort "Azure-CLI" och dess beroenden eller använder en ren dator utan att installera "Azure-CLI"-paketet så att det fungerar.
+    > För suveräna moln måste du använda lämpliga molnbaserad konstanter.  Se [ansluta till alla regioner med Azure libraries för python multi-Cloud | Microsoft Docs för instruktioner för att ansluta med python i suveräna moln.](https://docs.microsoft.com/azure/developer/python/azure-sdk-sovereign-domain)
+    
     
 ## <a name="create-a-data-factory-client"></a>Skapa en datafabriksklient
 
+  
 1. Skapa en fil med namnet **datafactory.py**. Lägg till följande instruktioner för att lägga till referenser till namnområden.
 
     ```python
@@ -122,6 +125,7 @@ Pipelines kan mata in data från olika data lager. Pipelines bearbetar eller tra
     ```
 3. Lägg till följande kod till **Main**-metoden som skapar en instans av klassen DataFactoryManagementClient. Du använde det är objektet till att skapa datafabriken, länkade tjänster, datauppsättningar och en pipeline. Du kan också använda det här objektet för att övervaka information om pipelinekörning. Ställ in variabeln **subscription_id** för ID:t för din Azure-prenumeration. Om du vill se en lista med Azure-regioner där Data Factory är tillgängligt för närvarande markerar du de regioner du är intresserad av på följande sida. Expandera sedan **Analytics** och leta rätt på **Data Factory**: [Tillgängliga produkter per region](https://azure.microsoft.com/global-infrastructure/services/). Datalagren (Azure Storage, Azure SQL Database osv.) och beräkningarna (HDInsight osv.) som används i Data Factory kan finnas i andra regioner.
 
+        
     ```python
     def main():
 
@@ -136,6 +140,11 @@ Pipelines kan mata in data från olika data lager. Pipelines bearbetar eller tra
 
         # Specify your Active Directory client ID, client secret, and tenant ID
         credentials = ClientSecretCredential(client_id='<service principal ID>', client_secret='<service principal key>', tenant_id='<tenant ID>') 
+        
+        # Specify following for Soverign Clouds, import right cloud constant and then use it to connect.
+        # from msrestazure.azure_cloud import AZURE_PUBLIC_CLOUD as CLOUD
+        # credentials = DefaultAzureCredential(authority=CLOUD.endpoints.active_directory, tenant_id=tenant_id)
+        
         resource_client = ResourceManagementClient(credentials, subscription_id)
         adf_client = DataFactoryManagementClient(credentials, subscription_id)
 

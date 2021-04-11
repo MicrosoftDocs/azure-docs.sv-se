@@ -2,15 +2,31 @@
 author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 2/3/21
+ms.date: 03/30/2021
 ms.author: parkerra
-ms.openlocfilehash: f32c4d24a2799b3f98f7e635748af378be8c560d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fca9efdf0e39157de5cdd6358477e2ce6f93ff29
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99550401"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076721"
 ---
-Öppna projektet i Unity. Följ instruktionerna <a href="https://docs.unity3d.com/Manual/upm-ui-tarball.html" target="_blank">här</a> för att importera paketen med Azures spatialdata som du laddade ned till Unity-projektet med hjälp av paket hanteraren för Union.
+# <a name="web-download"></a>[Webb hämtning](#tab/unity-package-web-ui)
 
-Du kan expandera `Packages` mappen i projektvyn för att kontrol lera att rätt paket har importer ATS.
+Följ instruktionerna <a href="https://docs.unity3d.com/Manual/upm-ui-tarball.html" target="_blank">här</a> för att importera paketen med Azures spatialdata som du laddade ned till Unity-projektet med hjälp av paket hanteraren för Unity.
+
+# <a name="npm-download"></a>[NPM nedladdning](#tab/unity-package-npm)
+
+Följ instruktionerna <a href="https://docs.unity3d.com/Manual/upm-ui-tarball.html" target="_blank">här</a> för att importera paketen med Azures spatialdata som du laddade ned till Unity-projektet med hjälp av paket hanteraren för Unity.
+
+# <a name="mixed-reality-feature-tool-beta"></a>[Funktions verktyg för Mixad verklighet (beta)](#tab/unity-package-mixed-reality-feature-tool)
+
+Det här steget kräver att <a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">funktions verktyget för Mixad verklighet</a> har laddats ned och är tillgängligt.
+
+> [!NOTE]
+> <a a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">Funktions verktyget för Mixad verklighet</a> stöder för närvarande endast Windows.
+
+1. Följ dokumentationen för <a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">funktions verktyget för Mixad verklighet</a> för att ställa in verktyget och lär dig hur du använder det.
+2. Installera Azures spatiala ankare SDK Core-paket, samt alla plattformsspecifika paket i mappen Unity Project.
+
+---

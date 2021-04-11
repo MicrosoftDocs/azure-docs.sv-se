@@ -99,6 +99,8 @@
           href: how-to-bind-redis.md
         - name: Binda en app till Azure MySQL
           href: how-to-bind-mysql.md
+        - name: Hanterad identitet för att ansluta Azure SQL Database
+          href: connect-managed-identity-to-azure-sql.md
         - name: Integrera med Azure Load Balance Solutions
           href: how-to-integrate-azure-load-balancers.md
     - name: Övervaka
@@ -133,6 +135,20 @@
           href: how-to-enable-system-assigned-managed-identity.md
         - name: Skapa roller och behörigheter
           href: how-to-permissions.md
+        - name: Aktivera slut punkt till slut punkt Transport Layer Security
+          href: how-to-enable-end-to-end-tls.md
+        - name: Åtkomst till konfigurations Server och tjänst register
+          href: how-to-access-data-plane-azure-ad-rbac.md
+    - name: Integrera
+      items:
+        - name: Binda en app till Azure CosmosDB
+          href: how-to-bind-cosmos.md
+        - name: Binda en app till Azure Cache for Redis
+          href: how-to-bind-redis.md
+        - name: Binda en app till Azure MySQL
+          href: how-to-bind-mysql.md
+        - name: Integrera med Azure Load Balance Solutions
+          href: how-to-integrate-azure-load-balancers.md
     - name: Automatisera
       items:
         - name: CI/CD med Azure DevOps

@@ -3,12 +3,12 @@ title: Testning av Azure Durable Functions-enhet
 description: Lär dig mer om att enhets test Durable Functions.
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 89b6419e95b3971b0d272490e19354f300204e1e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fe5a25e0296eb183ef2426e12f7bdee35633ec78
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491052"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076640"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions enhets testning
 
@@ -33,13 +33,13 @@ I exemplen i den här artikeln krävs kunskaper om följande begrepp och ramverk
 
 Det finns stöd för att modellera genom följande gränssnitt:
 
-* [IDurableOrchestrationClient](/dotnet/api/microsoft.azure.webjobs.IDurableOrchestrationClient), [IDurableEntityClient](/dotnet/api/microsoft.azure.webjobs.IDurableEntityClient) och [IDurableClient](/dotnet/api/microsoft.azure.webjobs.IDurableClient)
+* [IDurableOrchestrationClient](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient), [IDurableEntityClient](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableentityclient) och [IDurableClient](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableclient)
 
-* [IDurableOrchestrationContext](/dotnet/api/microsoft.azure.webjobs.IDurableOrchestrationContext)
+* [IDurableOrchestrationContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext)
 
-* [IDurableActivityContext](/dotnet/api/microsoft.azure.webjobs.IDurableActivityContext)
+* [IDurableActivityContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableactivitycontext)
   
-* [IDurableEntityContext](/dotnet/api/microsoft.azure.webjobs.IDurableEntityContext)
+* [IDurableEntityContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableentitycontext)
 
 Dessa gränssnitt kan användas med de olika utlösare och bindningar som stöds av Durable Functions. När du kör Azure Functions kör Functions-körningen funktions koden med en konkret implementering av dessa gränssnitt. För enhets testning kan du skicka in en skissad version av dessa gränssnitt för att testa affärs logiken.
 

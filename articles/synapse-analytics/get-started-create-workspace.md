@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 695ad1463bb207e9dd61d7b0147adbe15b44df37
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fb30913d71df46f4c0afedd475d40205c1429258
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108068"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122211"
 ---
 # <a name="creating-a-synapse-workspace"></a>Skapa en Synapse-arbetsyta
 
@@ -34,15 +34,19 @@ För att slutföra den här själv studie kursen måste du ha åtkomst till en r
 
 ## <a name="basics-tab--project-details"></a>Fliken grundläggande > projekt information
 Fyll i följande fält:
-    1. **Prenumeration** – Välj en prenumeration.
-    1. **Resurs grupp** – Använd valfri resurs grupp.
-    1. **Resurs grupp** – lämna det här tomt.
+
+1. **Prenumeration** – Välj en prenumeration.
+1. **Resurs grupp** – Använd valfri resurs grupp.
+1. **Resurs grupp** – lämna det här tomt.
 
 
 ## <a name="basics-tab--workspace-details"></a>Fliken grunder > information om arbets ytan
-Fyll i följande fält: 1. **Namn på arbets yta** – Välj ett globalt unikt namn. I den här självstudien använder vi min **arbets yta**.
+Fyll i följande fält:
+
+1. **Namn på arbets yta** – Välj ett globalt unikt namn. I den här självstudien använder vi min **arbets yta**.
 1. **Region** – Välj en region.
-1. **Välj Data Lake Storage gen 2** 81.1. Klicka på knappen för **från prenumerationen**.
+1. **Välj Data Lake Storage gen 2**
+1. Klicka på knappen för **från prenumerationen**.
 1. Efter **konto namn** klickar du på **Skapa nytt** och namnger det nya lagrings kontot **contosolake** eller liknar det här namnet måste vara unikt.
 1. Efter **fil system namn** klickar du på **Skapa nytt** och ge den namnet **användare**. Detta skapar en lagrings behållare som heter **Users**. Arbets ytan kommer att använda det här lagrings kontot som det primära lagrings kontot för Spark-tabeller och Spark-programloggarna.
 1. Markera rollen "tilldela själv Storage BLOB data Contributor i Data Lake Storage Gen2 konto". 
@@ -60,16 +64,6 @@ När din Azure Synapse-arbetsyta har skapats kan du öppna Synapse Studio på tv
 
 * Öppna din Synapse-arbetsyta [Azure Portal](https://portal.azure.com)i avsnittet **Översikt** på arbets ytan Synapse väljer du **Öppna** i rutan Öppna Synapse Studio.
 * Gå till `https://web.azuresynapse.net` och logga in på din arbets yta.
-
-
-
-
-
-
-
-
-
-
 
 ## <a name="next-steps"></a>Nästa steg
 
