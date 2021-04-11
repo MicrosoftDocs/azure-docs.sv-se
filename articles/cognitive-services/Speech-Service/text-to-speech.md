@@ -12,18 +12,25 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: text till tal
-ms.openlocfilehash: 45977faec9ab54fed0c1e7054c567b4d18b11f50
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1a7ff7befc1a5e82c5518cf103a81b35ec38c7db
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645024"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449366"
 ---
 # <a name="what-is-text-to-speech"></a>Vad är text-till-tal?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 I den här översikten får du lära dig om fördelarna och funktionerna i tjänsten text till tal, som gör att dina program, verktyg eller enheter kan konvertera text till Human-liknande syntetiskt tal. Välj mellan standard-och neurala röster eller skapa en anpassad röst som är unik för din produkt eller ditt varumärke. 75 + standard röster är tillgängliga på fler än 45 språk och nationella inställningar och 5 neurala-röster är tillgängliga på ett valt antal språk och nationella inställningar. En fullständig lista över röster, språk och nationella inställningar som stöds finns i [språk som stöds](language-support.md#text-to-speech).
+
+Den här dokumentationen innehåller följande artikel typer:
+
+* **Snabb starter** hjälper dig att komma igång med instruktioner för att göra förfrågningar till tjänsten.
+* **Instruktions guider** innehåller instruktioner för att använda tjänsten på mer exakta eller anpassade sätt.
+* **Begreppen** ger djupgående förklaringar av tjänst funktionerna och funktionerna.
+* **Självstudier** är längre guider som visar hur du använder tjänsten som en komponent i bredare affärs lösningar.
 
 > [!NOTE]
 > Taligenkänning i Bing togs ur bruk den 15 oktober 2019. Om dina program, verktyg eller produkter använder Taligenkänning i Bing-API: er eller Custom Speech har vi skapat guider som hjälper dig att migrera till tal tjänsten.

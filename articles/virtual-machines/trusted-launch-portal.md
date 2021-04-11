@@ -7,14 +7,14 @@ ms.reviewer: cynthn
 ms.service: virtual-machines
 ms.subservice: trusted-launch
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 04/06/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 6499e4b3404a255025f88488e73da1efb6449296
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 50ecf6e394d5d19d09033554272023bd6796851b
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075959"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581198"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Distribuera en virtuell dator med Trusted Launch Enabled (för hands version)
 
@@ -41,10 +41,13 @@ Skapa en virtuell dator med betrodd start aktiverat.
 5. Under **projekt information** kontrollerar du att rätt prenumeration har valts.
 6. Under **resurs grupp** väljer du **Skapa nytt** och skriver ett namn för din resurs grupp eller väljer en befintlig resurs grupp i list rutan.
 7. Under **instans information** anger du ett namn för namnet på den virtuella datorn och väljer en region som stöder [betrodd start](trusted-launch.md#public-preview-limitations).
-8. Under **bild** väljer du en [avbildning som stöder betrodd start](trusted-launch.md#public-preview-limitations). Du kanske bara ser gen 1-versionen av avbildningen, som du kan gå vidare till nästa steg.
-9. Växla över till fliken **Avancerat** genom att markera den överst på sidan.
-10. Rulla ned till avsnittet **VM generation** och välj sedan **gen 2**.
-11. Medan du fortfarande är på fliken **Avancerat** rullar du ned till **betrodd start** och väljer sedan kryss rutan **betrodd start** . Detta gör att ytterligare två alternativ visas – säker start och vTPM. Välj lämpliga alternativ för distributionen.
+8. Under **bild** väljer du en gen 2- [avbildning som stöder betrodd start](trusted-launch.md#public-preview-limitations). 
+   > [!TIP]
+   > Om du inte ser gen 2-versionen av avbildningen som du vill ha i list rutan väljer du **Se alla avbildningar** och ändrar sedan filtret för **generering av virtuella datorer** så att endast gen 2-avbildningar visas. Hitta avbildningen i listan och välj sedan den lägsta 2-versionen genom att använda List rutan **Välj** .
+ 
+1. Växla över till fliken **Avancerat** genom att markera den överst på sidan.
+1. Rulla ned till avsnittet **VM-generering** . Se till att **gen 2** är markerat.
+1. Medan du fortfarande är på fliken **Avancerat** rullar du ned till **betrodd start** och väljer sedan kryss rutan **betrodd start** . Detta gör att ytterligare två alternativ visas – säker start och vTPM. Välj lämpliga alternativ för distributionen.
 
     :::image type="content" source="media/trusted-launch/trusted-launch-portal.png" alt-text="Skärm bild som visar alternativen för betrodd start.":::
 
@@ -67,10 +70,10 @@ Det tar några minuter för den virtuella datorn att distribueras.
 Du kan distribuera betrodda virtuella datorer med en snabb starts mall:
 
 **Linux**:    
-[![Distribuera till Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2FcreateUiDefinition.json)
+[![Distribuera till Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2FcreateUiDefinition.json)
 
 **Windows**:    
-[![Distribuera till Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2FcreateUiDefinition.json)
+[![Distribuera till Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2FcreateUiDefinition.json)
 
 ## <a name="view-and-update"></a>Visa och uppdatera
 

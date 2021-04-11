@@ -12,12 +12,12 @@ ms.date: 03/22/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8d517aaa6121120399e09bfef8aa6dd36e745563
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8192c5c6734009f69e3f741531251dd85675b47
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022950"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449468"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Självstudie: utveckla och planera etablering för en SCIM-slutpunkt
 
@@ -168,10 +168,10 @@ Det finns flera slut punkter definierade i SCIM RFC. Du kan börja med `/User` s
 |--|--|
 |/User|Utföra CRUD-åtgärder på ett användar objekt.|
 |/Group|Utföra CRUD-åtgärder på ett grupp objekt.|
-|/ServiceProviderConfig|Innehåller information om funktionerna i SCIM-standarden som stöds, till exempel de resurser som stöds och autentiseringsmetoden.|
-|/ResourceTypes|Anger metadata för varje resurs|
 |/Schemas|De attribut som stöds av varje klient och tjänst leverantör kan variera. En tjänst leverantör kan inkludera `name` , `title` och `emails` en annan tjänst leverantör använder `name` , `title` och `phoneNumbers` . Schema slut punkten gör det möjligt att identifiera de attribut som stöds.|
 |/Bulk|Med Mass åtgärder kan du utföra åtgärder på en stor mängd resurs objekt i en enda åtgärd (t. ex. Uppdatera medlemskap för en stor grupp).|
+|/ServiceProviderConfig|Innehåller information om funktionerna i SCIM-standarden som stöds, till exempel de resurser som stöds och autentiseringsmetoden.|
+|/ResourceTypes|Anger metadata för varje resurs.|
 
 **Exempel lista över slut punkter**
 
@@ -1329,9 +1329,9 @@ Använd check listan för att publicera ditt program snabbt och kunder har en sm
 > * 3 ej utgångna testautentiseringsuppgifter för ditt program (krävs)
 > * Stöd för OAuth-auktoriseringskod eller en lång livs längd enligt beskrivningen nedan (krävs)
 > * Upprätta en teknisk kontakt punkt för att få support för kunder efter Galleri registrering (krävs)
+> * [Stöd för schema identifiering (krävs)](https://tools.ietf.org/html/rfc7643#section-6)
 > * Stöd för uppdatering av flera grupp medlemskap med en enda korrigering
 > * Dokumentera din SCIM-slutpunkt offentligt
-> * [Stöd för schema identifiering](https://tools.ietf.org/html/rfc7643#section-6)
 
 ### <a name="authorization-to-provisioning-connectors-in-the-application-gallery"></a>Auktorisering till etablering av anslutningar i program galleriet
 SCIM-specifikationen definierar inte ett SCIM schema för autentisering och auktorisering och förlitar sig på användningen av befintliga bransch standarder.

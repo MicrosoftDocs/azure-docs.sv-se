@@ -3,12 +3,12 @@ title: Händelse lista för Azure Service Fabric
 description: En omfattande lista med händelser från Azure Service Fabric som hjälper dig att övervaka kluster.
 ms.topic: reference
 ms.date: 2/25/2019
-ms.openlocfilehash: 3f65d7c3ddec8263ff6f115df9616b48814afc93
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a1ba21aaac831abb07544944420f2b77e1753955
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628891"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279790"
 ---
 # <a name="list-of-service-fabric-events"></a>Lista över Service Fabric händelser 
 
@@ -36,6 +36,12 @@ Mer information om kluster uppgraderingar hittar du [här](service-fabric-cluste
 | 29629 | ClusterUpgradeRollbackStarted | Uppgradera | En kluster uppgradering har börjat återställas  | CM | Varning | 
 | 29630 | ClusterUpgradeRollbackCompleted | Uppgradera | En kluster uppgradering har återställts | CM | Varning | 
 | 29631 | ClusterUpgradeDomainCompleted | Uppgradera | Uppgraderingen av en uppgraderings domän har avslut ATS under en kluster uppgradering | CM | Information | 
+
+**Placerings händelser**
+| EventId | Name | Kategori | Beskrivning |Källa (aktivitet) | Nivå |
+| --- | --- | ---| --- | --- | --- |
+| 17616 | Beslut |Malltypen statetransition | Placerings åtgärden schemalades för att bestämma placeringen av nya repliker. | UPPMANA | Information |
+
 
 ## <a name="node-events"></a>Node-händelser
 

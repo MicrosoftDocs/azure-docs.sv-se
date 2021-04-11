@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: ecc4a5a17186eddd4223715462b14399bdf702df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 371cc78f3ebad638008f4195f164b66a64948c65
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601898"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504557"
 ---
 # <a name="get-started-with-the-windows-virtual-desktop-agent"></a>Kom igång med Windows Virtual Desktop-agenten
 
@@ -25,7 +25,7 @@ Den här artikeln ger en kort översikt över Agent installationen och uppdateri
 
 ## <a name="initial-installation-process"></a>Inledande installations process
 
-Windows-agenten för virtuella skriv bord installeras på ett av två sätt. Om du etablerar virtuella datorer i Azure Portal och Azure Marketplace installeras agenten och agentens start program automatiskt. Om du etablerar virtuella datorer med hjälp av PowerShell måste du manuellt hämta agent-och agentens start program. msi-filer när du [skapar en Windows-pool för virtuella skriv bord med PowerShell](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool). När agenten installeras installeras även stack-och Genève Monitoring Agent på Windows Virtual Desktop samtidigt. Stack-komponenten sida vid sida krävs för att användare ska kunna upprätta omvänd server-till-klient-anslutningar på ett säkert sätt. Genèvekonventionen övervakar agentens hälso tillstånd. Alla dessa tre komponenter är nödvändiga för slut punkt till slut punkt för att användaren ska fungera korrekt.
+Windows-agenten för virtuella skriv bord installeras på ett av två sätt. Om du etablerar virtuella datorer i Azure Portal och Azure Marketplace installeras agenten och agentens start program automatiskt. Om du etablerar virtuella datorer med hjälp av PowerShell måste du manuellt hämta agent-och agentens start program. msi-filer när du [skapar en Windows-pool för virtuella skriv bord med PowerShell](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool). När agenten har installerats installeras Windows Virtual Desktop sida-vid-sida-stack och Genève Monitoring Agent. Stack-komponenten sida vid sida krävs för att användare ska kunna upprätta omvänd server-till-klient-anslutningar på ett säkert sätt. Genèvekonventionen övervakar agentens hälso tillstånd. Alla dessa tre komponenter är nödvändiga för slut punkt till slut punkt för att användaren ska fungera korrekt.
 
 >[!IMPORTANT]
 >För att kunna installera Windows Virtual Desktop-agenten, sida-vid-sida-stack och Genève Monitoring Agent, måste du avblockera alla URL: er som anges i [listan över obligatoriska URL](safe-url-list.md#virtual-machines): er. Att avblockera dessa URL: er krävs för att använda tjänsten Windows Virtual Desktop.
@@ -38,6 +38,7 @@ Nya versioner av agenten distribueras med jämna mellanrum i weeklong-perioder t
 
 
 >[!NOTE]
+>Eftersom virtuella datorer i din värd pool kan ta emot agent uppdateringar vid olika tidpunkter, måste du kunna se skillnaden mellan flyg problem och misslyckade agent uppdateringar. Om du går till händelse loggarna för din virtuella dator på **Loggboken**  >  **Windows-loggar**  >   och ser en händelse med namnet "ID 3277", vilket innebär att agent uppdateringen inte fungerade. Om du inte ser händelsen är den virtuella datorn i en annan flygning och kommer att uppdateras senare.
 >- När Genève Monitoring Agent uppdaterar till den senaste versionen, finns den gamla GenevaTask-aktiviteten och inaktive rad innan du skapar en ny uppgift för den nya övervaknings agenten. Den tidigare versionen av övervaknings agenten tas inte bort om den senaste versionen av övervaknings agenten har ett problem som kräver återställning till den tidigare versionen för att åtgärda problemet. Om den senaste versionen har ett problem kommer den gamla övervaknings agenten att aktive ras igen för att fortsätta leverera övervaknings data. Alla versioner av övervakaren som är tidigare än den sista som du installerade innan uppdateringen tas bort från den virtuella datorn.
 >- Den virtuella datorn behåller tre versioner av den sida-vid-sida-stacken i taget. Detta möjliggör snabb återställning om något går fel med uppdateringen. Den tidigaste versionen av stacken tas bort från den virtuella datorn när stacken uppdateras.
 

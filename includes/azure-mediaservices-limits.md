@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 09/16/2020
 ms.author: jroth
-ms.openlocfilehash: c315c071aeb36eea0bd1af84b1344cf2fef5f703
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4bdd5332b3c10cf375c7c04ede25137328714a2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91329675"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106073295"
 ---
 >[!NOTE]
 >För resurser som inte har åtgärd ATS öppnar du ett support ärende för att be om en ökning av kvoterna. Skapa inte ytterligare Azure Media Services konton i ett försök att få högre gränser.
@@ -41,7 +41,7 @@ Från och med den 1 april 2017 raderas alla jobb poster i ditt konto som är äl
 
 <sup>3</sup> När du gör en begäran om att lista jobb enheter returneras högst 1 000 jobb per begäran. Om du vill hålla koll på alla skickade jobb använder du de översta eller SKIP-frågorna som beskrivs i [alternativ för OData system-frågor](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7)).
 
-<sup>4</sup> Lokaliserare är inte utformade för att hantera åtkomst kontroll per användare. Använd Digital Rights Management-lösningar (DRM) om du vill ge olika åtkomst rättigheter till enskilda användare. Mer information finns i [skydda ditt innehåll med Azure Media Services](../articles/media-services/previous/media-services-content-protection-overview.md).
+<sup>4</sup> Lokaliserare är inte utformade för att hantera åtkomst kontroll per användare. Använd Digital Rights Management-lösningar (DRM) om du vill ge olika åtkomst rättigheter till enskilda användare. Mer information finns i [skydda ditt innehåll med Azure Media Services](../articles/media-services/latest/drm-content-protection-concept.md).
 
 <sup>5</sup> Lagrings kontona måste vara från samma Azure-prenumeration.
 

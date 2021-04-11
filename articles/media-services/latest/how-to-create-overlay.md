@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 08/31/2020
-ms.openlocfilehash: 69930e06e2ce7f2679feec74ca8ccbc93bdb8d30
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95a468d130d1ab1eee349f15592175301c9ddf37
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101721131"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110027"
 ---
 # <a name="how-to-create-an-overlay-with-media-encoder-standard"></a>Så här skapar du ett överlägg med Media Encoder Standard
 
@@ -41,8 +41,8 @@ Med Media Encoder Standard kan du täcka över en bild, ljudfil eller en annan v
 
 Om du inte redan är bekant med transformationer, rekommenderar vi att du utför följande aktiviteter:
 
-* Läs [kodning av video och ljud med Media Services](encoding-concept.md)
-* Läs [hur du kodar med en anpassad transformering – .net](customize-encoder-presets-how-to.md). Följ anvisningarna i artikeln för att konfigurera .NET som krävs för att arbeta med transformeringar och gå sedan tillbaka hit för att testa ett för inställnings exempel för överlägg.
+* Läs [kodning av video och ljud med Media Services](encode-concept.md)
+* Läs [hur du kodar med en anpassad transformering – .net](encode-custom-presets-how-to.md). Följ anvisningarna i artikeln för att konfigurera .NET som krävs för att arbeta med transformeringar och gå sedan tillbaka hit för att testa ett för inställnings exempel för överlägg.
 * Se [transformerings-referens dokumentet](/rest/api/media/transforms).
 
 När du är bekant med transformationer kan du hämta exempel på överlägg.

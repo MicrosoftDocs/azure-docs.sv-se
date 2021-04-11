@@ -2,17 +2,17 @@
 title: Konfigurera Always on-tillgänglighetsgrupper med DH2i DxEnterprise som körs på Linux-baserade Azure-Virtual Machines
 description: Använd DH2i DxEnterprise som kluster hanterare för att uppnå hög tillgänglighet med en tillgänglighets grupp på SQL Server på Linux Azure Virtual Machines
 ms.date: 03/04/2021
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sql
 ms.topic: tutorial
 author: amvin87
 ms.author: amitkh
 ms.reviewer: vanto
-ms.openlocfilehash: 07752eb5c7f18a8952c43e77afed78b06432aca6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 56002aaa977b94b0fabee4f17343f483706eb77d
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568546"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449434"
 ---
 # <a name="tutorial---setup-a-three-node-always-on-availability-group-with-dh2i-dxenterprise-running-on-linux-based-azure-virtual-machines"></a>Självstudie – konfigurera en tre nods Always on-tillgänglighetsgrupper med DH2i DxEnterprise som körs på Linux-baserade Azure-Virtual Machines
 

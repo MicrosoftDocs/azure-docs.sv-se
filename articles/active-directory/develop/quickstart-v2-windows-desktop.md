@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a084b8d14acc02c67b0678cd7fa9e5993b629a51
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb5bf0bc6e211d83d2de2eb8d327ee6b2d577721
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578539"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075023"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Snabbstart: Hämta en token och anropa Microsoft Graph API från en Windows-skrivbordsapp
 
@@ -99,13 +99,15 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 >
 > Plats:
 > - `Enter_the_Application_Id_here` – är **program-ID (klient)** för programmet som du har registrerat.
+>    
+>    Du hittar värdet för **program-ID (klient)** genom att gå till appens **översikts** sida i Azure Portal.
 > - `Enter_the_Tenant_Info_Here` – är inställt på något av följande alternativ:
 >   - Om ditt program stöder **Endast konton i den här organisationskatalogen** ska du ersätta värdet med **klient-ID** eller **klientnamn** (till exempel contoso.microsoft.com)
 >   - Om ditt program stöder **Konton i valfri organisationskatalog** ersätter du värdet med `organizations`
->   - Om ditt program stöder **Konton i en valfri organisationskatalog och personliga Microsoft-konton** ersätter du värdet med `common`
+>   - Om ditt program har stöd **för konton i en organisations katalog och personliga Microsoft-konton** ersätter du värdet med `common` .
 >
-> > [!TIP]
-> > För att hitta värdena för **program-ID (klient)**, **katalog-ID (klient)** och **Kontotyper som stöds** går du till appens **översiktssida** i Azure-portalen.
+>     Om du vill hitta värdena för **katalog-ID** och vilka **typer av konton som stöds**, går du till appens **översikts** sida i Azure Portal.
+>
 
 ## <a name="more-information"></a>Mer information
 
@@ -137,9 +139,9 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Plats: | Beskrivning |
-> |---------|---------|
-> | `ClientId` | Är **Program-ID (klient)** för det program som registrerats på Azure-portalen. Du hittar det här värdet på appens **översiktssida** på Azure-portalen. |
+|Plats: | Beskrivning |
+|---------|---------|
+| `ClientId` | Är **Program-ID (klient)** för det program som registrerats på Azure-portalen. Du hittar det här värdet på appens **översiktssida** på Azure-portalen. |
 
 ### <a name="requesting-tokens"></a>Begära token
 
@@ -159,9 +161,9 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Plats:| Beskrivning |
-> |---------|---------|
-> | `_scopes` | Innehåller de omfattningar som begärs, till exempel `{ "user.read" }` för Microsoft Graph eller `{ "api://<Application ID>/access_as_user" }` för anpassade webb-API: er. |
+|Plats:| Beskrivning |
+|---------|---------|
+| `_scopes` | Innehåller de omfattningar som begärs, till exempel `{ "user.read" }` för Microsoft Graph eller `{ "api://<Application ID>/access_as_user" }` för anpassade webb-API: er. |
 
 #### <a name="get-a-user-token-silently"></a>Hämta en token obevakat
 
@@ -174,10 +176,10 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Plats: | Beskrivning |
-> |---------|---------|
-> | `scopes` | Innehåller de omfattningar som begärs, till exempel `{ "user.read" }` för Microsoft Graph eller `{ "api://<Application ID>/access_as_user" }` för anpassade webb-API: er. |
-> | `firstAccount` | Anger den första användaren i cachen (MSAL stöder flera användare i en enda app). |
+|Plats: | Beskrivning |
+|---------|---------|
+| `scopes` | Innehåller de omfattningar som begärs, till exempel `{ "user.read" }` för Microsoft Graph eller `{ "api://<Application ID>/access_as_user" }` för anpassade webb-API: er. |
+| `firstAccount` | Anger den första användaren i cachen (MSAL stöder flera användare i en enda app). |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

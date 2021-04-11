@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c7474b001284286ed589f6b7995db6bc7fd50af
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94647604"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075074"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gör så här: anpassa anspråk som skickas i token för en angiven app i en klient (för hands version)
 
@@ -304,7 +304,7 @@ ID-elementet identifierar vilken egenskap på källan som innehåller värdet f�
 | User | streetaddress | Gatuadress |
 | User | post nummer | Postnummer |
 | User | preferredlanguage | Önskat språk |
-| User | onpremisesuserprincipalname | Lokalt UPN |*
+| User | onpremisesuserprincipalname | Lokalt UPN |
 | User | MailNickName | E-postsmek namn |
 | User | extensionattribute1 | Attribut 1 för tillägg |
 | User | extensionattribute2 | Attribut för tillägg 2 |
@@ -419,16 +419,6 @@ Baserat på den valda metoden förväntas en uppsättning indata och utdata. Def
 | ExtractMailPrefix | Inget |
 | Anslut | Det suffix som anslöts måste vara en verifierad domän för resurs klienten. |
 
-### <a name="custom-signing-key"></a>Anpassad signerings nyckel
-
-En anpassad signerings nyckel måste tilldelas till tjänstens huvud objekt för att en anspråks mappnings princip ska börja gälla. Detta säkerställer bekräftelse på att token har ändrats av skaparen av anspråks mappnings principen och skyddar program från principer för anspråk mappning som skapats av skadliga aktörer. Du kan lägga till en anpassad signerings nyckel genom att använda Azure PowerShell-cmdlet: [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) en för att skapa en certifikat nyckels autentiseringsuppgift för ditt program objekt.
-
-Appar som har aktiverat anspråks mappning måste verifiera sina token signerings nycklar genom `appid={client_id}` att lägga till i deras [OpenID Connect metadata-begäranden](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document). Nedan visas formatet för OpenID Connect-Metadatadokumentet som du bör använda:
-
-```
-https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
-```
-
 ### <a name="cross-tenant-scenarios"></a>Scenarier mellan klienter
 
 Principer för anspråks mappning gäller inte för gäst användare. Om en gäst användare försöker få åtkomst till ett program med en anspråks mappnings princip som är tilldelad till tjänstens huvud namn, utfärdas standardtoken (principen har ingen påverkan).
@@ -531,6 +521,33 @@ I det här exemplet skapar du en princip som ger ett anpassat anspråk "JoinedDa
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
+
+## <a name="security-considerations"></a>Säkerhetsöverväganden
+
+Program som tar emot token förlitar sig på att anspråks värden utfärdas auktoritativt av Azure AD och inte kan manipuleras. Men när du ändrar innehållet i token via principer för anspråks mappning, är dessa antaganden kanske inte längre korrekta. Program måste uttryckligen bekräfta att tokens har ändrats av skaparen av anspråks mappnings principen för att skydda sig från principer för anspråk mappning som skapats av skadliga aktörer. Detta kan göras på följande sätt:
+
+- Konfigurera en anpassad signerings nyckel
+- Uppdatera applikations manifestet för att godkänna mappade anspråk.
+ 
+Utan detta kommer Azure AD returnera en [ `AADSTS50146` Felkod](reference-aadsts-error-codes.md#aadsts-error-codes).
+
+### <a name="custom-signing-key"></a>Anpassad signerings nyckel
+
+Om du vill lägga till en anpassad signerings nyckel till tjänstens huvud namns objekt, kan du använda cmdleten Azure PowerShell för [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) att skapa en certifikat nyckel för ditt program objekt.
+
+Appar som har aktiverat anspråks mappning måste verifiera sina token signerings nycklar genom `appid={client_id}` att lägga till i deras [OpenID Connect metadata-begäranden](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document). Nedan visas formatet för OpenID Connect-Metadatadokumentet som du bör använda:
+
+```
+https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
+```
+
+### <a name="update-the-application-manifest"></a>Uppdatera applikations manifestet
+
+Alternativt kan du ange `acceptMappedClaims` egenskapen till `true` i [applikations manifestet](reference-app-manifest.md). Som dokumenteras på [resurs typen apiApplication](/graph/api/resources/apiapplication#properties), gör det möjligt för ett program att använda anspråks mappning utan att ange en anpassad signerings nyckel.
+
+Detta kräver att token för begärd token använder ett verifierat domän namn för din Azure AD-klient, vilket innebär att du bör se till att du anger `Application ID URI` (som representeras av `identifierUris` i program manifestet) till exempel `https://contoso.com/my-api` eller (du använder standard namnet på klient organisationen) `https://contoso.onmicrosoft.com/my-api` .
+
+Om du inte använder en verifierad domän returnerar Azure AD en `AADSTS501461` Felkod med meddelandet *"AcceptMappedClaims stöds bara för en token-publik som matchar programmets GUID eller en mål grupp i klientens verifierade domäner. Ändra antingen resurs identifieraren eller Använd en programspecifik signerings nyckel. "*
 
 ## <a name="see-also"></a>Se även
 

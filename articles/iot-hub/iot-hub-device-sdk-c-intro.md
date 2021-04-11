@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 17b31e365e311b97e322828927827f40733313a6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ffb7d708921c96f57a617f82fc54d7f462fb4282
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97588836"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168764"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Azure IoT-enhetens SDK för C
 
@@ -31,7 +31,7 @@ ms.locfileid: "97588836"
 
 Azure IoT-enhetens SDK för C är skriven i ANSI C (C99) för att maximera portabiliteten. Den här funktionen gör det lättare för biblioteken att fungera på flera plattformar och enheter, särskilt där det är en prioritet att minimera disk-och minnes utrymmet.
 
-Det finns ett brett utbud av plattformar där SDK har testats (se [Azure-certifierad för IoT-katalogen](https://catalog.azureiotsolutions.com/) för mer information). Även om den här artikeln innehåller en genom gång av exempel kod som körs på Windows-plattformen, är koden som beskrivs i den här artikeln identisk i intervallet med plattformar som stöds.
+Det finns ett brett utbud av plattformar där SDK har testats (se [Azure-certifierad för IoT-katalogen](https://devicecatalog.azure.com/) för mer information). Även om den här artikeln innehåller en genom gång av exempel kod som körs på Windows-plattformen, är koden som beskrivs i den här artikeln identisk i intervallet med plattformar som stöds.
 
 I följande video presenteras en översikt över Azure IoT SDK för C:
 

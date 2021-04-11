@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 3/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f0dbe7f32f14eb4da3d591811d619eb2e9bea397
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 84ab3451ef71b95db3a0f00f88a58482516b48f4
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729648"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581856"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Inställningar för Azure File Sync-proxy och brandväggar
 Azure File Sync ansluter dina lokala servrar till Azure Files, vilket möjliggör synkronisering av flera platser och moln nivåer. En lokal server måste därför vara ansluten till Internet. En IT-administratör måste bestämma den bästa sökvägen för att servern ska kunna komma åt Azure Cloud Services.
@@ -95,6 +95,10 @@ Du kan konfigurera datorövergripande proxyinställningar med hjälp av stegen n
      ```
 
 2. Ange inställningar för WinHTTP-proxy 
+
+   > [!Note]  
+   > Det finns flera metoder (WPAD, PAC-fil, Netsh osv.) för att konfigurera en Windows Server för att använda en proxyserver. Stegen nedan beskriver hur du konfigurerar proxyinställningarna med Netsh, men vilken metod som helst som anges i [konfigurera proxyserverinställningar i Windows](https://docs.microsoft.com/troubleshoot/windows-server/networking/configure-proxy-server-settings) -dokumentationen stöds.
+
 
    - Kör följande kommando från en upphöjd kommando tolk eller PowerShell för att se den befintliga inställningen för proxy:   
 

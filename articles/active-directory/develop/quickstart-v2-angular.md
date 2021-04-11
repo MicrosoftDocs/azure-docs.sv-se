@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 5ac6a19fc569d60f75f9da788629331a70b0a4c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bab92a6d7e30f5aefdd28d06b34a006d065cee3c
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225055"
+ms.locfileid: "105966851"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Snabb start: Logga in användare och hämta en åtkomsttoken i ett angulande Enkels Ides program
 
@@ -105,12 +105,28 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur et
 >
 > För att hitta värdena för **program-ID (klient)**, **katalog-ID (klient)** och **Kontotyper som stöds** går du till appens **översiktssida** i Azure-portalen.
 
-Mer information om tillgängliga konfigurerbara alternativ finns i [initiera klient program](msal-js-initializing-client-applications.md).
+> Mer information om tillgängliga konfigurerbara alternativ finns i [initiera klient program](msal-js-initializing-client-applications.md).
 
-Du hittar käll koden för MSAL.js bibliotek i [AzureAD/Microsoft-Authentication-Library-for-JS](https://github.com/AzureAD/microsoft-authentication-library-for-js) -lagringsplatsen på GitHub.
+> Du hittar käll koden för MSAL.js bibliotek i [AzureAD/Microsoft-Authentication-Library-for-JS](https://github.com/AzureAD/microsoft-authentication-library-for-js) -lagringsplatsen på GitHub.
 
->[!div class="sxs-lookup" renderon="portal"]
->#### <a name="step-3-run-the-project"></a>Steg 3: kör projektet
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Steg 3: appen har kon figurer ATS och är redo att köras
+> Vi har konfigurerat ditt projekt med värdena för appens egenskaper.
+
+> [!div renderon="docs"]
+>
+> Rulla ned i samma fil och uppdatera `graphMeEndpoint` . 
+> - Ersätt strängen `Enter_the_Graph_Endpoint_Herev1.0/me` med `https://graph.microsoft.com/v1.0/me`
+> - `Enter_the_Graph_Endpoint_Herev1.0/me` är slut punkten som API-anrop görs mot. För Main (global) Microsoft Graph API-tjänsten anger `https://graph.microsoft.com/` du (ta med avslutande snedstreck). Mer information finns i [dokumentationen](https://docs.microsoft.com/graph/deployments).
+>
+>
+> ```javascript
+>      protectedResourceMap: [
+>        ['Enter_the_Graph_Endpoint_Herev1.0/me', ['user.read']]
+>      ],
+> ```
+>
+>
 
 >[!div renderon="docs"]
 >#### <a name="step-4-run-the-project"></a>Steg 4: kör projektet

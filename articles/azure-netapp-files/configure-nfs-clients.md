@@ -14,18 +14,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: c1cdeaa41dda11f2ab520cf8d31ddb2116587082
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0b86a7014af42f2ffb067c2de797f270a5b1855
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94409577"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967480"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Konfigurera en NFS-klient för Azure NetApp Files
 
 Konfigurationen av NFS-klienten som beskrivs i den här artikeln är en del av installationen när du [konfigurerar nfsv 4.1 Kerberos-kryptering](configure-kerberos-encryption.md) eller [skapar en volym med dubbla protokoll](create-volumes-dual-protocol.md). Det finns många olika Linux-distributioner som du kan använda med Azure NetApp Files. I den här artikeln beskrivs konfigurationer för två av de ofta använda miljöerna: RHEL 8 och Ubuntu 18,04. 
 
+## <a name="requirements-and-considerations"></a>Krav och överväganden  
+
 Oavsett vilken Linux-variant du använder, krävs följande konfigurationer:
+
 * Konfigurera en NTP-klient för att undvika problem med tids skevning.
 * Konfigurera DNS-poster för Linux-klienten för namn matchning.  
     Den här konfigurationen måste innehålla posten "A" (forward) och PTR (omvänd). 

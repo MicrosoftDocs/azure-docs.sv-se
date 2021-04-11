@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 49054d9bbde67dc3670ec444e4b60c3ddf503db5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2ecbd207c4b1946a69b01f43ec2bc77d29b1a8c9
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645369"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106073423"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -21,10 +21,9 @@ ms.locfileid: "105645369"
 ## <a name="install-the-sdk"></a>Installera SDK:n
 
 > [!NOTE]
-> Det här dokumentet använder version 1.0.0 – beta. 10 av anrops-SDK: n.
+> I det här dokumentet används ACS-anropande webb-SDK.
 
 Använd `npm install` kommandot för att installera Azure Communication Services-anrop och vanliga SDK: er för Java Script.
-Det här dokumentet refererar till typer i version 1.0.0-beta. 10 för det anropande biblioteket.
 
 ```console
 npm install @azure/communication-common --save
@@ -144,6 +143,8 @@ const call = callAgent.join(context);
 ```
 
 ### <a name="join-a-teams-meeting"></a>Delta i ett team möte
+> [!NOTE]
+> Detta API tillhandahålls som en förhandsversion för utvecklare och kan komma att ändras utifrån den feedback vi får. Använd inte detta API i en produktionsmiljö. Om du vill använda detta API använder du Beta versionen av ACS Calling Web SDK
 
 Använd- `join` metoden och skicka en Mötes länk eller koordinater för att ansluta till ett team möte.
 
@@ -593,8 +594,8 @@ console.log(result.video);
 ```
 
 ## <a name="record-calls"></a>Registrera samtal
-
-[!INCLUDE [Private Preview Notice](../../../includes/private-preview-include-section.md)]
+> [!NOTE]
+> Detta API tillhandahålls som en förhandsversion för utvecklare och kan komma att ändras utifrån den feedback vi får. Använd inte detta API i en produktionsmiljö. Om du vill använda detta API använder du Beta versionen av ACS Calling Web SDK
 
 Anrops inspelning är en utökad funktion i Core `Call` API. Du måste först hämta API-objektet inspelnings funktioner:
 
@@ -620,6 +621,8 @@ callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler)
 ```
 
 ## <a name="transfer-calls"></a>Överförings anrop
+> [!NOTE]
+> Detta API tillhandahålls som en förhandsversion för utvecklare och kan komma att ändras utifrån den feedback vi får. Använd inte detta API i en produktionsmiljö. Om du vill använda detta API använder du Beta versionen av ACS Calling Web SDK
 
 Samtals överföring är en utökad funktion i Core `Call` API. Du måste först hämta API-objektet transfer Feature:
 

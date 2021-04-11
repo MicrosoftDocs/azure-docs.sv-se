@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f690f4a416e86b02de0d35fc673849c1293df577
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1f3fb07eaf7f63d15232f4c94eeee45f43c81616
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095773"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075144"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Hantering av enkel inloggning i Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Azure AD B2C har definierat ett antal SSO-användarsessioner som kan användas:
 |---------|---------|
 |[NoopSSOSessionProvider](#noopssosessionprovider)     |  Inget       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C intern sessionshanteraren.      |       
-|[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Mellan Azure AD B2C och OAuth1, OAuth2 eller OpenId Connect Identity Provider.        |         |
+|[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Mellan Azure AD B2C och OAuth1, OAuth2 eller OpenId Connect Identity Provider.        | 
 |[OAuthSSOSessionProvider](#oauthssosessionprovider)     | Mellan ett OAuth2-eller OpenId Connect-program för förlitande part och Azure AD B2C.        |        
 |[SamlSSOSessionProvider](#samlssosessionprovider)     | Mellan Azure AD B2C och SAML Identity Provider. Och mellan en SAML-tjänstprovider (förlitande parts program) och Azure AD B2C.  |        
 

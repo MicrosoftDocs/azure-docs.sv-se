@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: 7d343e07414dd1c3f9786c1684eb6f14d5f45e51
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1a4fb52a5f9622758e9ed805bf9380f5f608870
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101718190"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068297"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Push-inställningar till app-konfiguration med Azure-pipeline
 
@@ -32,7 +32,10 @@ Med en [tjänst anslutning](/azure/devops/pipelines/library/service-endpoints) k
 1. I Azure DevOps går du till projektet som innehåller din mål-pipeline och öppnar **projekt inställningarna** längst ned till vänster.
 1. Under **pipelines** väljer du **tjänst anslutningar** och sedan **ny tjänst anslutning** längst upp till höger.
 1. Välj **Azure Resource Manager**.
-1. Välj **tjänstens huvud namn (automatiskt)**.
+![Skärm bild som visar hur du väljer Azure Resource Manager från List rutan ny tjänst anslutning.](./media/new-service-connection.png)
+1. I dialog rutan **autentiseringsmetod** väljer du **tjänstens huvud namn (automatiskt)**.
+    > [!NOTE]
+    > **Hanterad identitets** autentisering stöds för närvarande inte för app Configuration-aktiviteten.
 1. Fyll i din prenumeration och resurs. Ge din tjänst anslutning ett namn.
 
 Nu när din tjänst anslutning har skapats hittar du namnet på tjänstens huvud namn som tilldelats den. Du lägger till en ny roll tilldelning till tjänstens huvud namn i nästa steg.
@@ -41,6 +44,7 @@ Nu när din tjänst anslutning har skapats hittar du namnet på tjänstens huvud
 1. Välj den tjänst anslutning som du skapade i föregående avsnitt.
 1. Välj **Hantera tjänstens huvud namn**.
 1. Observera **visnings namnet** som visas.
+![Skärm bild visar visnings namnet för tjänstens huvud namn.](./media/service-principal-display-name.png)
 
 ## <a name="add-role-assignment"></a>Lägg till rolltilldelning
 
@@ -48,19 +52,27 @@ Tilldela rätt roll tilldelningar för program konfigurationen till de autentise
 
 1. Navigera till konfigurations arkivet för mål programmet. 
 1. Välj **åtkomst kontroll (IAM)** till vänster.
-1. Längst upp väljer du **+ Lägg till** och välj **Lägg till roll tilldelning**.
+1. Klicka på knappen **Lägg till roll tilldelningar** på höger sida.
+![Skärm bild som visar knappen Lägg till roll tilldelningar.](./media/add-role-assignment-button.png)
 1. Under **roll** väljer du **konfigurations data ägare för appar**. Med den här rollen kan aktiviteten läsa från och skriva till appens konfigurations arkiv. 
 1. Välj det tjänst huvud namn som är associerat med den tjänst anslutning som du skapade i föregående avsnitt.
+![Skärm bild som visar dialog rutan Lägg till roll tilldelning.](./media/add-role-assignment.png)
+
   
 ## <a name="use-in-builds"></a>Använd i versioner
 
 Det här avsnittet beskriver hur du använder push-aktiviteten Azure App konfiguration i en pipeline för Azure DevOpss build.
 
 1. Gå till sidan för att bygga pipeline genom att klicka på pipelines **pipelines**  >  . Dokumentation för att bygga pipelines finns [här](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2).
-      - Om du skapar en ny pipeline för bygge väljer du **Visa assistenten** på höger sida av pipelinen och söker efter push-aktiviteten **Azure App konfiguration** .
-      - Om du använder en befintlig versions pipeline går du till fliken **aktiviteter** när du redigerar pipelinen och söker efter push-aktiviteten **Azure App konfiguration** .
-2. Konfigurera de nödvändiga parametrarna för uppgiften för att push-överför nyckel värden från konfigurations filen till appens konfigurations arkiv. Parametern för **konfigurations filens sökväg** börjar i roten på fil lagrings platsen.
-3. Spara och köa en version. Build-loggen visar eventuella fel som uppstod under körningen av aktiviteten.
+      - Om du skapar en ny pipeline för build går du till det sista steget i processen och väljer **Visa assistent** på höger sida av pipelinen på fliken **Granska** .
+      ![Skärm bild som visar knappen Visa assistent för en ny pipeline.](./media/new-pipeline-show-assistant.png)
+      - Om du använder en befintlig versions pipeline klickar du på knappen **Redigera** längst upp till höger.
+      ![Skärm bild som visar knappen Redigera för en befintlig pipeline.](./media/existing-pipeline-show-assistant.png)
+1. Sök efter push-uppgiften **Azure App konfiguration** .
+![Skärm bild som visar dialog rutan Lägg till uppgift med Azure App konfigurations-push i sökrutan.](./media/add-azure-app-configuration-push-task.png)
+1. Konfigurera de nödvändiga parametrarna för uppgiften för att push-överför nyckel värden från konfigurations filen till appens konfigurations arkiv. Förklaringar av parametrarna finns i avsnittet **parametrar** nedan och i knapp beskrivningar bredvid varje parameter.
+![Skärm bild som visar app Configuration-parametrarna för push-aktivitet.](./media/azure-app-configuration-push-parameters.png)
+1. Spara och köa en version. Build-loggen visar eventuella fel som uppstod under körningen av aktiviteten.
 
 ## <a name="use-in-releases"></a>Använd i versioner
 
@@ -69,8 +81,11 @@ Det här avsnittet beskriver hur du använder push-aktiviteten Azure App konfigu
 1. Gå till sidan Frisläpp pipeline genom att välja **pipelines**-  >  **versioner**. Dokumentation för lanserings pipelines finns [här](/azure/devops/pipelines/release).
 1. Välj en befintlig versions pipeline. Om du inte har någon väljer du **+ ny** för att skapa en ny.
 1. Klicka på knappen **Redigera** i det övre högra hörnet för att redigera lanserings pipelinen.
-1. Välj **scenen** för att lägga till aktiviteten. Mer information om faser hittar du [här](/azure/devops/pipelines/release/environments).
-1. Välj **+** för det jobbet och Lägg sedan till åtgärden för att lägga till **Azure App konfiguration** under fliken **distribuera** .
+1. I list rutan **aktiviteter** väljer du den **fas** som du vill lägga till aktiviteten i. Mer information om faser hittar du [här](/azure/devops/pipelines/release/environments).
+![Skärm bild som visar det valda steget i list rutan aktiviteter.](./media/pipeline-stage-tasks.png)
+1. Klicka på **+** bredvid det jobb som du vill lägga till en ny aktivitet till.
+![Skärm bild som visar plus knappen bredvid jobbet.](./media/add-task-to-job.png)
+1. I dialog rutan **Lägg till aktiviteter** skriver du **Azure App konfiguration push** i sökrutan och markerar den.
 1. Konfigurera de nödvändiga parametrarna i aktiviteten för att skicka dina nyckel värden från konfigurations filen till appens konfigurations arkiv. Förklaringar av parametrarna finns i avsnittet **parametrar** nedan och i knapp beskrivningar bredvid varje parameter.
 1. Spara och köa en version. I versions loggen visas eventuella fel som påträffas under körningen av aktiviteten.
 
@@ -80,7 +95,15 @@ Följande parametrar används av app Configurations push-aktivitet:
 
 - **Azure-prenumeration**: en listruta som innehåller dina tillgängliga Azure Service-anslutningar. Om du vill uppdatera och uppdatera din lista över tillgängliga Azure-tjänst anslutningar trycker du på knappen **Uppdatera Azure-prenumeration** till höger om text rutan.
 - **Konfigurations namn för app**: en listruta som läser in dina tillgängliga konfigurations lager under den valda prenumerationen. Om du vill uppdatera och uppdatera listan över tillgängliga konfigurations lager trycker du på knappen **Uppdatera appens konfigurations namn** till höger om text rutan.
-- **Sökväg till konfigurations fil**: sökvägen till konfigurations filen. Du kan bläddra igenom din versions artefakt för att välja en konfigurations fil. ( `...` knappen till höger om text rutan). De fil format som stöds är: yaml, JSON, Properties.
+- **Sökväg till konfigurations fil**: sökvägen till konfigurations filen. Parametern för **konfigurations filens sökväg** börjar i roten på fil lagrings platsen. Du kan bläddra igenom din versions artefakt för att välja en konfigurations fil. ( `...` knappen till höger om text rutan). De fil format som stöds är: yaml, JSON, Properties. Följande är en exempel konfigurations fil i JSON-format.
+    ```json
+    {
+        "TestApp:Settings:BackgroundColor":"#FFF",
+        "TestApp:Settings:FontColor":"#000",
+        "TestApp:Settings:FontSize":"24",
+        "TestApp:Settings:Message": "Message data"
+    }
+    ```
 - **Avgränsare**: avgränsare som används för att förenkla. JSON-och. yml-filer.
 - **Djup**: det djup som. JSON-och. yml-filerna kommer att förenkla.
 - **Prefix**: en sträng som läggs till i början av varje nyckel som skickas till appens konfigurations arkiv.
@@ -91,7 +114,7 @@ Följande parametrar används av app Configurations push-aktivitet:
   - **Markerad**: tar bort alla nyckel värden i appens konfigurations arkiv som matchar både det angivna prefixet och etiketten innan nya nyckel värden flyttas från konfigurations filen.
   - **Avmarkerad**: push-överför alla nyckel värden från konfigurations filen till appens konfigurations Arkiv och lämnar allt annat i appens konfigurations Arkiv intakt.
 
-När du har fyllt i nödvändiga parametrar kör du pipelinen. Alla nyckel värden i den angivna konfigurations filen laddas upp till app-konfigurationen.
+
 
 ## <a name="troubleshooting"></a>Felsökning
 

@@ -9,17 +9,19 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 59bfac3df1a1ba8a466b9cdc5197ede7332ed758
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5547e49cd7ea7f6c0cc97b5559564b64e0deda7c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728563"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168849"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Kom igång med hjälte-exemplet för grupp Chat
 
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include-chat.md)]
+
 > [!IMPORTANT]
-> [Det här exemplet finns på GitHub.](https://github.com/Azure-Samples/communication-services-web-chat-hero)
+> [Det här exemplet finns **på GitHub**.](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 
 Hjälte exemplet Azure Communication Services **Group Chat** visar hur kommunikations tjänsterna Chat Web SDK kan användas för att bygga en grupp som anropar.

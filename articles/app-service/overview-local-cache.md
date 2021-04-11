@@ -6,17 +6,17 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 81782f63199a9fe8f43f56aeefcd1c68951d57a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 462f37730d61a674edd463e57a98a1228c8ed611
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96852260"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967089"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Översikt över Azure App Service lokal cache
 
 > [!NOTE]
-> Local cache stöds inte i Function Apps eller i behållare App Service appar, t. ex. i [Windows-behållare](quickstart-custom-container.md?pivots=container-windows) eller på [App Service i Linux](overview.md#app-service-on-linux).
+> Local cache stöds inte i Function Apps eller i behållare App Service appar, t. ex. i [Windows-behållare](quickstart-custom-container.md?pivots=container-windows) eller i [app service på Linux](overview.md#app-service-on-linux). En version av lokalt cacheminne som är tillgänglig för dessa typer av appar är [app-cache](https://github.com/Azure-App-Service/KuduLite/wiki/App-Cache).
 
 
 Azure App Service innehåll lagras på Azure Storage och finns på ett hållbart sätt som en innehålls resurs. Den här designen är avsedd att användas med en mängd olika appar och har följande attribut:  

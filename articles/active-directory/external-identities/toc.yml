@@ -120,7 +120,7 @@
               href: use-dynamic-groups.md
             - name: Förstå B2B-användaren
               href: user-properties.md
-            - name: Återställ inlösnings status
+            - name: Återställ inlösnings status (för hands version)
               href: reset-redemption-status.md
             - name: B2B för Azure AD-integrerade appar
               href: configure-saas-apps.md

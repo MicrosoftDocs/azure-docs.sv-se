@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 04/06/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 598cbf303c8a87675833b8d87f05055771e46f55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff8ac540459ad79a8980542254cc15518959b5c0
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687251"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552299"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Direkt Federation med AD FS och tredje parts leverantörer för gäst användare (för hands version)
 
@@ -33,7 +33,7 @@ När du har konfigurerat direkt Federation med en organisation kommer alla nya g
  - Om du ställer in direkt Federation med en partner organisation och bjuder in gäst användare, och partner organisationen senare flyttar till Azure AD, fortsätter gäst användare som redan har löst inbjudningarna att använda direkt Federation, så länge den direkta Federations principen i din klient organisation finns.
  - Om du tar bort direkt Federation med en partner organisation kan alla gäst användare som för närvarande använder direkt Federation inte logga in.
 
-I något av dessa scenarier kan du uppdatera en gäst användares autentiseringsmetod genom att ta bort gäst användar kontot från din katalog och sedan bjuda in dem igen.
+I något av dessa scenarier kan du uppdatera en gäst användares autentiseringsmetod genom att [återställa deras inlösnings status](reset-redemption-status.md).
 
 Direkt federationen är knuten till domän namn rymder, till exempel contoso.com och fabrikam.com. När du etablerar en direkt Federations konfiguration med AD FS eller en IdP från tredje part, associerar organisationer en eller flera domän namn rymder till dessa IDP: er. 
 
@@ -89,7 +89,7 @@ När direkt Federation upprättas med en partner organisation har den företräd
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>Är direkta Federations adress inloggnings problem på grund av ett delvis synkroniserat innehav?
 Nej, funktionen för [eng ång slö sen ord](one-time-passcode.md) ska användas i det här scenariot. Ett "delvis synkroniserat innehav" syftar på en partner Azure AD-klient där lokala användar identiteter inte är fullständigt synkroniserade med molnet. En gäst vars identitet ännu inte finns i molnet men som försöker lösa in B2B-inbjudan kommer inte att kunna logga in. Funktionen eng ång slö sen ord gör det möjligt för den här gästen att logga in. Direkt Federations funktionen löser scenarier där gästen har sitt eget IdP-hanterat organisations konto, men organisationen inte har någon Azure AD-närvaro alls.
 ### <a name="once-direct-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>När direkt Federation har kon figurer ATS med en organisation behöver varje gäst skickas och lösa in en enskild inbjudan?
-Konfiguration av direkt Federation ändrar inte autentiseringsmetoden för gäst användare som redan har löst en inbjudan från dig. Du kan uppdatera en gäst användares autentiseringsmetod genom att ta bort gäst användar kontot från din katalog och sedan bjuda in dem igen.
+Konfiguration av direkt Federation ändrar inte autentiseringsmetoden för gäst användare som redan har löst en inbjudan från dig. Du kan uppdatera en gäst användares autentiseringsmetod genom att [återställa deras inlösnings status](reset-redemption-status.md).
 ## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>Steg 1: Konfigurera partner organisationens identitetsprovider
 Först måste partner organisationen konfigurera sin identitets leverantör med nödvändiga anspråk och förtroenden för förlitande part. 
 
@@ -212,7 +212,7 @@ Testa nu din direkt Federations installation genom att bjuda in en ny B2B-gäst 
 
 
 ## <a name="how-do-i-remove-direct-federation"></a>Hur gör jag för att ta bort direkt federationen?
-Du kan ta bort den direkt Federations konfigurationen. Om du gör det kommer direkt Federations gäst användare som redan har löst deras inbjudningar inte att kunna logga in. Men du kan ge dem åtkomst till dina resurser igen genom att ta bort dem från katalogen och bjuda in dem igen. Ta bort direkt Federation med en identitets leverantör i Azure AD-portalen:
+Du kan ta bort den direkt Federations konfigurationen. Om du gör det kommer direkt Federations gäst användare som redan har löst deras inbjudningar inte att kunna logga in. Men du kan ge dem åtkomst till dina resurser igen genom att [återställa deras inlösnings status](reset-redemption-status.md). Ta bort direkt Federation med en identitets leverantör i Azure AD-portalen:
 
 1. Gå till [Azure-portalen](https://portal.azure.com/). Välj **Azure Active Directory** i den vänstra rutan. 
 2. Välj **externa identiteter**.

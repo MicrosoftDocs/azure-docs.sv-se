@@ -6,15 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/30/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: c11a89d91693075ca54c0689223dcf2af06df521
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 139b543160b679ba063a0633f9091e7bc0ef1fc1
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568519"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074847"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Distribuera virtuella datorer på Azure Stack Edge Pro GPU-enhet via Azure Portal
 
@@ -127,9 +126,10 @@ Följ de här stegen för att skapa en virtuell dator när du har skapat en avbi
     |Parameter |Beskrivning  |
     |---------|---------|
     |Namn på virtuell dator     |         |
+    |Gräns resurs grupp     | Skapa en ny resurs grupp för alla resurser som är associerade med den virtuella datorn.        |
     |Bild     | Välj bland de VM-avbildningar som är tillgängliga på enheten.        |
     |Storlek     | Välj bland de [VM-storlekar som stöds](azure-stack-edge-gpu-virtual-machine-sizes.md).        |
-    |Användarnamn     | Använd standard användar namn *azureuser*.        |
+    |Användarnamn     | Använd standard användar namnet *azureuser* för att administratören ska logga in på den virtuella datorn.        |
     |Autentiseringstyp    | Välj från offentlig SSH-nyckel eller ett användardefinierat lösen ord.       |
     |Lösenord     | Ange ett lösen ord för att logga in på den virtuella datorn. Lösen ordet måste vara minst 12 tecken långt och uppfylla de definierade [komplexitets kraven](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).        |
     |Bekräfta lösenordet    | Ange lösen ordet igen.        |
@@ -149,11 +149,7 @@ Följ de här stegen för att skapa en virtuell dator när du har skapat en avbi
 
         ![Lägg till virtuell dator 4](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-disks-2.png)
 
-    1.  Upprepa proceduren ovan för att lägga till fler diskar. När diskarna har skapats visas de på fliken **diskar** .
-
-        ![Lägg till VM 5](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-disks-3.png)
-
-        Välj **Nästa: Nätverk**.
+    1.  Upprepa proceduren ovan för att lägga till fler diskar. När diskarna har skapats visas de på fliken **diskar** . Välj **Nästa: nätverk**.
 
 1. På fliken **nätverk** kommer du att konfigurera nätverks anslutningen för den virtuella datorn.
 
@@ -168,26 +164,32 @@ Följ de här stegen för att skapa en virtuell dator när du har skapat en avbi
 
     Välj **Nästa: granska + skapa**.
 
+1. På fliken **Avancerat** kan du ange anpassade data eller Cloud-Init för att anpassa den virtuella datorn. 
+
+    Du kan använda Cloud-Init för att anpassa en virtuell dator vid den första starten. Använd Cloud-Init för att installera paket och skriva filer, eller för att konfigurera användare och säkerhet. När Cloud-Init körs under den första start processen, krävs inga ytterligare åtgärder för att tillämpa konfigurationen. Detaljerad information om Cloud-Init finns i [Översikt över Cloud-Init](../virtual-machines/linux/tutorial-automate-vm-deployment.md#cloud-init-overview).
+
+    ![Lägg till VM 7](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-advanced-1.png)    
+
 1. På fliken **Granska + skapa** granskar du inställningarna för den virtuella datorn och väljer **skapa**.
 
-    ![Lägg till VM 7](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-review-create-1.png)
+    ![Lägg till VM 8](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-review-create-1.png)
 
 1. Den virtuella datorns skapande startar och kan ta upp till 20 minuter. Du kan gå till **distributioner** för att övervaka skapande av virtuella datorer.
 
-    ![Lägg till VM 8](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-deployments-page-1.png)
+    ![Lägg till VM 9](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-deployments-page-1.png)
 
     
 1. När den virtuella datorn har skapats uppdateras **översikts** sidan för att visa den nya virtuella datorn.
 
-    ![Lägg till VM 9](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-overview-page-1.png)
+    ![Lägg till VM 10](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-overview-page-1.png)
 
 1. Välj den nyligen skapade virtuella datorn för att gå till **virtuella datorer**.
 
-    ![Lägg till VM 10](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-page-1.png)
+    ![Lägg till VM 11](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-page-1.png)
 
     Välj den virtuella datorn för att se informationen. 
 
-    ![Lägg till VM 11](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-details-1.png)
+    ![Lägg till virtuell dator 12](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-details-1.png)
 
 ## <a name="connect-to-a-vm"></a>Anslut till en virtuell dator
 

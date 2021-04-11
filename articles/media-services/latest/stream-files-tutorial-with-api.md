@@ -12,7 +12,7 @@ MS. service: Media-Services MS. arbets belastning: MS. topic: självstudie MS. C
 > [!NOTE]
 > Även om den här självstudien använder [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent) -exempel är de allmänna stegen desamma för [REST API](/rest/api/media/liveevents), [CLI](/cli/azure/ams/live-event)eller andra [SDK](media-services-apis-overview.md#sdks): er som stöds.
 
-Med Azure Media Services kan du koda dina mediefiler till format som spelas upp på en rad olika webbläsare och enheter. Du kanske vill strömma ditt innehåll i Apples HLS- eller MPEG DASH-formaten. Innan du strömmar, bör du koda dina högkvalitativa digitala mediafiler. För hjälp med kodning, se [encoding-begrepp](encoding-concept.md). Den här självstudiekursen laddar upp en lokal videofil och kodar den överförda filen. Du kan också koda innehåll som du gör tillgängligt via en HTTPS-URL. Mer information finns i [Skapa jobbindata från en HTTP(s)-URL](job-input-from-http-how-to.md).
+Med Azure Media Services kan du koda dina mediefiler till format som spelas upp på en rad olika webbläsare och enheter. Du kanske vill strömma ditt innehåll i Apples HLS- eller MPEG DASH-formaten. Innan du strömmar, bör du koda dina högkvalitativa digitala mediafiler. För hjälp med kodning, se [encoding-begrepp](encode-concept.md). Den här självstudiekursen laddar upp en lokal videofil och kodar den överförda filen. Du kan också koda innehåll som du gör tillgängligt via en HTTPS-URL. Mer information finns i [Skapa jobbindata från en HTTP(s)-URL](job-input-from-http-how-to.md).
 
 ![Spela upp en video med Azure Media Player](./media/stream-files-tutorial-with-api/final-video.png)
 
@@ -30,7 +30,7 @@ I den här självstudiekursen lär du dig att:
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Om du inte har Visual Studio installerat kan du hämta [Visual Studio Community 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
-- [Skapa ett Media Services-konto](./create-account-howto.md).<br/>Se till att komma ihåg de värden som du använde för resursgruppens namn och namnet på Media Services-kontot.
+- [Skapa ett Media Services-konto](./account-create-how-to.md).<br/>Se till att komma ihåg de värden som du använde för resursgruppens namn och namnet på Media Services-kontot.
 - Följ stegen i [Access Azure Media Services API with the Azure CLI](./access-api-howto.md) (Få åtkomst till Azure Media Services-API med Azure CLI) och spara autentiseringsuppgifterna. Du måste använda dem för att få åtkomst till API: et.
 
 ## <a name="download-and-set-up-the-sample"></a>Hämta och konfigurera exemplet
@@ -89,13 +89,13 @@ Utmatnings [till gången](/rest/api/media/assets) lagrar resultatet av ditt kodn
 
 ### <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Skapa en transformering och ett jobb som kodar den uppladdade filen
 
-När du kodar eller bearbetar innehåll i Media Services, är det ett vanligt mönster för att ställa in kodnings inställningar som ett recept. Du skickar sedan ett **Jobb** som tillämpar receptet på en video. Genom att skicka nya jobb för varje ny video använder du det receptet på alla videor i biblioteket. Ett recept i Media Services kallas för en **transformering**. Mer information finns i [Transformeringar och jobb](./transforms-jobs-concept.md). Det exempel som beskrivs i självstudien definierar ett recept som kodar videon för att strömma den till olika iOS- och Android-enheter.
+När du kodar eller bearbetar innehåll i Media Services, är det ett vanligt mönster för att ställa in kodnings inställningar som ett recept. Du skickar sedan ett **Jobb** som tillämpar receptet på en video. Genom att skicka nya jobb för varje ny video använder du det receptet på alla videor i biblioteket. Ett recept i Media Services kallas för en **transformering**. Mer information finns i [Transformeringar och jobb](./transform-jobs-concept.md). Det exempel som beskrivs i självstudien definierar ett recept som kodar videon för att strömma den till olika iOS- och Android-enheter.
 
 #### <a name="transform"></a>Transformering
 
-När du skapar en ny instans för en [Transformering](/rest/api/media/transforms), måste du ange vilken utdata du vill att den ska skapa. Den obligatoriska parametern är objektet **TransformOutput** som visas i koden nedan. Varje **TransformOutput** innehåller en **Förinställning**. I **Förinställning** finns stegvisa anvisningar för den video- och/eller ljudbearbetning som ska användas för att generera önskad **TransformOutput**. Det exempel som beskrivs i artikeln använder en inbyggd förinställning som kallas **AdaptiveStreaming**. Förinställningen kodar indatavideon i en automatiskt genererad bithastighetsstege (par för bithastighetsupplösning) som baseras på indatans upplösning och bithastighet, samt producerar ISO MP4-filer med H.264-video och AAC-ljud som motsvarar varje par för bithastighetsupplösningen. Information om denna förinställning finns i [Automatisk generering av bithastighetsstege](autogen-bitrate-ladder.md).
+När du skapar en ny instans för en [Transformering](/rest/api/media/transforms), måste du ange vilken utdata du vill att den ska skapa. Den obligatoriska parametern är objektet **TransformOutput** som visas i koden nedan. Varje **TransformOutput** innehåller en **Förinställning**. I **Förinställning** finns stegvisa anvisningar för den video- och/eller ljudbearbetning som ska användas för att generera önskad **TransformOutput**. Det exempel som beskrivs i artikeln använder en inbyggd förinställning som kallas **AdaptiveStreaming**. Förinställningen kodar indatavideon i en automatiskt genererad bithastighetsstege (par för bithastighetsupplösning) som baseras på indatans upplösning och bithastighet, samt producerar ISO MP4-filer med H.264-video och AAC-ljud som motsvarar varje par för bithastighetsupplösningen. Information om denna förinställning finns i [Automatisk generering av bithastighetsstege](encode-autogen-bitrate-ladder.md).
 
-Du kan använda en inbyggd EncoderNamedPreset eller anpassade förinställningar. Mer information finns i [Så här anpassar du förinställningar för kodning](customize-encoder-presets-how-to.md).
+Du kan använda en inbyggd EncoderNamedPreset eller anpassade förinställningar. Mer information finns i [Så här anpassar du förinställningar för kodning](encode-custom-presets-how-to.md).
 
 När du skapar en [Transformering](/rest/api/media/transforms) bör du först kontrollera om det redan finns en. Det gör du med metoden **Get** som visas i koden nedan. I Media Services v3 returnerar **Get**-metoderna i entiteter **null** om entiteten inte finns (skiftlägesokänslig kontroll av namnet).
 
@@ -200,4 +200,4 @@ Kolla in [Azure Media Services community](media-services-community.md) -artikeln
 Nu när du vet hur du ska ladda upp, koda och strömma videon kan du läsa följande artikel: 
 
 > [!div class="nextstepaction"]
-> [Analysera videor](analyze-videos-tutorial-with-api.md)
+> [Analysera videor](analyze-videos-tutorial.md)

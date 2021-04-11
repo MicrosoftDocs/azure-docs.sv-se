@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/12/2021
+ms.date: 03/30/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 4a8efff7ef53753e15a47e87a2bb82d0124ae997
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d0e86d95205acea2ac48ce027bcd118f4e3bf20
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104590457"
+ms.locfileid: "105967038"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>För hands versions funktioner för Azure Firewall Premium
 
@@ -105,39 +105,37 @@ Du är välkommen att skicka en begäran till [https://aka.ms/azfw-webcategories
 
 För hands versionen av Azure Firewall Premium stöds i följande regioner:
 
-- Västeuropa (offentlig/Europa)
-- USA, östra (offentlig/USA)
-- Östra Australien (offentlig/Australien)
-- Sydostasien (offentlig/Asien och stillahavsområdet)
-- Storbritannien, södra (offentlig/Storbritannien)
-- Europa, norra (offentlig/Europa)
-- USA, östra 2 (offentliga/USA)
-- Södra centrala USA (offentliga/USA)
-- USA, västra 2 (offentliga/USA)
-- USA, västra (offentlig/USA)
-- USA, centrala (offentlig/USA)
-- Norra centrala USA (offentlig/USA)
-- Japan, östra (offentlig/Japan)
-- Asien, östra (offentlig/Asien och stillahavsområdet)
-- Kanada, centrala (offentliga/Kanada)
-- Centrala Frankrike (offentliga/Frankrike)
-- Södra Afrika (offentlig/Sydafrika)
-- Förenade Arabemiraten Nord (offentlig/Förenade Arabemiraten)
-- Schweiz, norra (offentlig/Schweiz)
-- Södra Brasilien (offentlig/Brasilien)
-- Östra Norge (offentliga/Norge)
 - Australien, centrala (offentlig/Australien)
 - Australien, centrala 2 (offentlig/Australien)
+- Östra Australien (offentlig/Australien)
 - Australien, sydöstra (offentlig/Australien)
+- Södra Brasilien (offentlig/Brasilien)
+- Kanada, centrala (offentliga/Kanada)
 - Kanada, östra (offentliga/Kanada)
+- USA, centrala (offentlig/USA)
 - Centrala USA-EUAP (offentlig/Kanarie (USA))
+- Asien, östra (offentlig/Asien och stillahavsområdet)
+- USA, östra (offentlig/USA)
+- USA, östra 2 (offentliga/USA)
+- Centrala Frankrike (offentliga/Frankrike)
 - Frankrike, södra (offentlig/Frankrike)
+- Japan, östra (offentlig/Japan)
 - Västra Japan (offentlig/Japan)
+- Korea, centrala (offentlig/Korea)
 - Republiken Korea (offentlig/Korea)
+- Norra centrala USA (offentlig/USA)
+- Europa, norra (offentlig/Europa)
+- Södra Afrika (offentlig/Sydafrika)
+- Södra centrala USA (offentliga/USA)
+- Sydostasien (offentlig/Asien och stillahavsområdet)
 - Förenade Arabemiraten Central (offentlig/Förenade Arabemiraten)
+- Storbritannien, södra (offentlig/Storbritannien)
 - Storbritannien, västra (offentlig/Storbritannien)
 - USA, västra centrala (offentlig/USA)
+- Västeuropa (offentlig/Europa)
 - Västra Indien (offentlig/Indien)
+- USA, västra (offentlig/USA)
+- USA, västra 2 (offentliga/USA)
 
 
 ## <a name="known-issues"></a>Kända problem

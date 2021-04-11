@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/19/2021
+ms.date: 03/30/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 412e5ac661761d5fda1d375c59511c053a6354a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce3bda82e634cd80560d7915a08fa33218173779
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101714790"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967207"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Ändra hur ett lagringskonto replikeras
 
@@ -122,25 +122,30 @@ Du måste utföra en manuell migrering om:
 - Du vill migrera data från ZRS till LRS, GRS eller RA-GRS.
 - Ditt lagrings konto innehåller data på Arkiv nivån.
 
-Du kan begära en Direktmigrering via [Azure-support portalen](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Från portalen väljer du det lagrings konto som du vill konvertera till ZRS.
+Du kan begära en Direktmigrering via [Azure-support portalen](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). 
 
-1. Välj **ny supportbegäran**.
-2. Slutför **grunderna** baserat på din konto information: 
+> [!IMPORTANT]
+> Om du behöver migrera fler än ett lagrings konto skapar du ett enda support ärende och anger namnen på de konton som ska konverteras på fliken **information** .
+
+Följ dessa steg om du vill begära en Direktmigrering:
+
+1. I Azure Portal navigerar du till ett lagrings konto som du vill migrera.
+1. Under **support + fel sökning** väljer du **ny supportbegäran**.
+1. Slutför fliken **grundläggande** baserat på din konto information:
     - **Typ av problem**: Välj **teknisk**.
-    - **Tjänst**: Välj **Mina tjänster** och **lagrings konto hantering**.
-    - **Resurs**: Välj den resurs som du vill konvertera till ZRS.
-3. Välj **Nästa**.
-4. Ange följande värden i avsnittet **problem** :
-    - **Allvarlighets grad**: låt standardvärdet vara.
+    - **Tjänst**: Välj **Mina tjänster** och sedan **lagrings konto hantering**.
+    - **Resurs**: Välj ett lagrings konto som ska migreras. Om du behöver ange flera lagrings konton kan du göra det i avsnittet **information** .
     - **Problem typ**: Välj **datamigrering**.
-    - **Kategori**: Välj **migrera till ZRS**.
-    - **Title**: Ange en beskrivande rubrik, till exempel **ZRS-kontots migrering**.
-    - **Information**: Skriv ytterligare information i **informations** rutan, till exempel om jag vill migrera till ZRS från [LRS, GRS] i \_ \_ regionen.
-5. Välj **Nästa**.
-6. Kontrol lera att kontakt informationen är korrekt på bladet med **kontakt information** .
-7. Välj **Skapa**.
+    - **Problem under typ**: Välj **migrera till ZRS, GZRS eller ra-GZRS**.
 
-En support person kommer att kontakta dig och tillhandahålla den hjälp du behöver.
+    :::image type="content" source="media/redundancy-migration/request-live-migration-basics-portal.png" alt-text="Skärm bild som visar hur du begär en Direktmigrering – fliken grunder":::
+
+1. Välj **Nästa**. På fliken **lösningar** kan du kontrol lera att dina lagrings konton är berättigade till migrering.
+1. Välj **Nästa**. Om du har fler än ett lagrings konto som ska migreras, går du till fliken **information** och anger namnet på varje konto, avgränsat med ett semikolon.
+
+    :::image type="content" source="media/redundancy-migration/request-live-migration-details-portal.png" alt-text="Skärm bild som visar hur du begär en Direktmigrering – fliken information":::
+
+1. Fyll i ytterligare nödvändig information på fliken **information** och välj sedan **Granska + skapa** för att granska och skicka in ditt support ärende. En support person kontaktar dig för att få hjälp som du kan behöva.
 
 > [!NOTE]
 > Premium fil resurser (FileStorage-konton) är bara tillgängliga för LRS och ZRS.

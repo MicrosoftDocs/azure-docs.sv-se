@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/30/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 85520032e9bc63b6296e40dd1c1055e36762dcc8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30c73849d07c1495251c17510ea71f29c674c618
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555014"
+ms.locfileid: "105967497"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Uppgradera till ett V2-lagringskonto för generell användning
 
@@ -28,7 +28,7 @@ Att uppgradera till ett allmänt-syfte v2-lagrings konto från dina generella v1
 > [!NOTE]
 > Även om Microsoft rekommenderar General-Purpose v2-konton för de flesta scenarier kommer Microsoft att fortsätta att stödja allmänna v1-konton för nya och befintliga kunder. Du kan skapa generella v1-lagrings konton i nya regioner när Azure Storage är tillgängliga i dessa regioner. Microsoft har för närvarande inte en plan för att föråldra support för allmänna v1-konton och ger minst ett års varsel innan det går att använda en Azure Storage-funktion. Microsoft fortsätter att tillhandahålla säkerhets uppdateringar för generella v1-konton, men ingen ny funktions utveckling förväntas för den här konto typen.
 >
-> Från och med den 1 oktober 2020 är prissättningen för allmänna v1-konton i nya Azure Storage regioner likvärdig med prissättningen för General-Purpose v2-konton i dessa regioner. Priser i befintliga Azure Storage-regioner har inte ändrats. Pris information för allmänna v1-konton i en speciell region finns på sidan med Azure Storage priser. **Välj din** region och välj sedan bredvid **prissättnings erbjudanden**.
+> För nya Azure-regioner som har varit online efter den 1 oktober 2020 har priser för allmänna v1-konton ändrats och motsvarar prissättningen för General-Purpose v2-konton i dessa regioner. Priser för allmänna v1-konton i Azure-regioner som fanns före den 1 oktober 2020 har inte ändrats. Pris information för allmänna v1-konton i en speciell region finns på sidan med Azure Storage priser. **Välj din** region och välj sedan bredvid **prissättnings erbjudanden**.
 
 ## <a name="upgrade-an-account"></a>Uppgradera ett konto
 

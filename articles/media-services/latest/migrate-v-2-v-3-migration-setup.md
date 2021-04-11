@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 62723f5c833ca89618a6d9e0781539a13efba4f3
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 9d61e9ff753c37268be19e95db9450e2cd923d96
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105959678"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279688"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>Steg 3 – Konfigurera för att migrera till v3-REST API eller klient-SDK
 
@@ -43,7 +43,7 @@ Kunder som tidigare använde 2015-10-01-versionen av hanterings-API: et för att
 
 ## <a name="create-a-new-media-services-account-for-testing"></a>Skapa ett nytt Media Services-konto för testning
 
-Följ anvisningarna för snabb start för att konfigurera [din miljö](how-to-set-azure-subscription.md?tabs=portal) med hjälp av Azure Portal. Välj API-åtkomst och autentisering av tjänstens huvud namn för att generera ett nytt Azure AD-program-ID och hemligheter för användning med det här test kontot.
+Följ anvisningarna för snabb start för att konfigurera [din miljö](setup-azure-subscription-how-to.md?tabs=portal) med hjälp av Azure Portal. Välj API-åtkomst och autentisering av tjänstens huvud namn för att generera ett nytt Azure AD-program-ID och hemligheter för användning med det här test kontot.
 
 [Skapa ett Media Services-konto](account-create-how-to.md?tabs=portal).
 [Få autentiseringsuppgifter för åtkomst till Media Services API](access-api-howto.md?tabs=portal).
@@ -66,7 +66,7 @@ Följ anvisningarna för snabb start för att konfigurera [din miljö](how-to-se
 
 ## <a name="rest"></a>[REST](#tab/rest)
 
-Använd [Postman](./media-rest-apis-with-postman.md) för Media Services v3 REST API-anrop.
+Använd [Postman](./setup-postman-rest-how-to.md) för Media Services v3 REST API-anrop.
 Läs [REST API referens sidor](/rest/api/media/).
 
 Du bör använda versions strängen 2020-05-01 i Postman-samlingen.

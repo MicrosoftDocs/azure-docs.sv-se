@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 139970bb043c745d63f2ef795ae1c8aef4bda0fa
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 92f89bafe1b96b575d12e8a09289a05c2379d837
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108138"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280028"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Självstudier: Koda en fjärrfil baserat på URL och strömma videon – REST
 
@@ -127,7 +127,7 @@ I det här avsnittet skickar vi begäranden som är relevanta för att koda och 
 
 ### <a name="start-a-streaming-endpoint"></a>Starta en slut punkt för direkt uppspelning
 
-Om du vill aktivera direkt uppspelning måste du först starta den [strömnings slut punkt](./streaming-endpoint-concept.md) som du vill strömma videon från.
+Om du vill aktivera direkt uppspelning måste du först starta den [strömnings slut punkt](./stream-streaming-endpoint-concept.md) som du vill strömma videon från.
 
 > [!NOTE]
 > Du faktureras bara när slut punkten för direkt uppspelning är i körnings läge.
@@ -184,7 +184,7 @@ Utmatnings [till gången](/rest/api/media/assets) lagrar resultatet av ditt kodn
 
 ### <a name="create-a-transform"></a>Skapa en transformering
 
-När kodningen eller bearbetningen av innehåll i Media Services görs, konfigureras vanligtvis kodningsinställningarna som ett recept. Du skickar sedan ett **Jobb** som tillämpar receptet på en video. Genom att skicka nya jobb för varje ny video tillämpar du receptet på alla videor i biblioteket. Ett recept i Media Services kallas för en **Transformering**. Mer information finns i [Transformeringar och jobb](./transforms-jobs-concept.md). Det exempel som beskrivs i självstudien definierar ett recept som kodar videon för att strömma den till olika iOS- och Android-enheter. 
+När kodningen eller bearbetningen av innehåll i Media Services görs, konfigureras vanligtvis kodningsinställningarna som ett recept. Du skickar sedan ett **Jobb** som tillämpar receptet på en video. Genom att skicka nya jobb för varje ny video tillämpar du receptet på alla videor i biblioteket. Ett recept i Media Services kallas för en **Transformering**. Mer information finns i [Transformeringar och jobb](./transform-jobs-concept.md). Det exempel som beskrivs i självstudien definierar ett recept som kodar videon för att strömma den till olika iOS- och Android-enheter. 
 
 När du skapar en ny instans för en [Transformering](/rest/api/media/transforms), måste du ange vilken utdata du vill att den ska skapa. Den obligatoriska parametern är ett **TransformOutput**-objekt. Varje **TransformOutput** innehåller en **Förinställning**. I **Förinställning** finns stegvisa anvisningar för den video- och/eller ljudbearbetning som ska användas för att generera önskad **TransformOutput**. Det exempel som beskrivs i artikeln använder en inbyggd förinställning som kallas **AdaptiveStreaming**. Förinställningen kodar indatavideon i en automatiskt genererad bithastighetsstege (par för bithastighetsupplösning) som baseras på indatans upplösning och bithastighet, samt producerar ISO MP4-filer med H.264-video och AAC-ljud som motsvarar varje par för bithastighetsupplösningen. Information om denna förinställning finns i [Automatisk generering av bithastighetsstege](encode-autogen-bitrate-ladder.md).
 

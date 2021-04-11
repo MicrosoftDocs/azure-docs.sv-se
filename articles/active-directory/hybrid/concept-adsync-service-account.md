@@ -15,12 +15,12 @@ ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb23d79caa6964c3f61fbb84c8b8f229f475b8ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca99a997d621bfd2455e909b36b6802775b20ac2
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722165"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074631"
 ---
 # <a name="adsync-service-account"></a>ADSync-tjänstkonto
 Azure AD Connect installerar en lokal tjänst som dirigerar synkronisering mellan Active Directory och Azure Active Directory.  Microsoft Azure AD Sync-synkroniseringstjänsten (ADSync) körs på en server i din lokala miljö.  Autentiseringsuppgifterna för tjänsten ställs in som standard i Express installationer, men kan anpassas för att uppfylla organisationens säkerhets krav.  Dessa autentiseringsuppgifter används inte för att ansluta till dina lokala skogar eller Azure Active Directory.
@@ -56,7 +56,7 @@ Förklaring:
 - sMSA- [fristående hanterat tjänst konto](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
 - gMSA- [grupphanterat tjänst konto](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) 
 
- ||**LocalDB </br> Express**|**LocalDB/LocalSQL </br> Custom**|**Fjärr-SQL </br> anpassad**|
+|Typ av dator |**LocalDB </br> Express**|**LocalDB/LocalSQL </br> Custom**|**Fjärr-SQL </br> anpassad**|
 |-----|-----|-----|-----|
 |**domänansluten dator**|**ATTRIBUTET**|**ATTRIBUTET**</br> *sMSA*</br> *gMSA*</br> Lokalt konto</br> Domänkonto| *gMSA* </br>Domänkonto|
 |Domänkontrollant| **sMSA**|**sMSA** </br>*gMSA*</br> Domänkonto|*gMSA*</br>Domänkonto| 

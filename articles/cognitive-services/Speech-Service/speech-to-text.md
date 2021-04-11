@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: tal till text, tal till text program
-ms.openlocfilehash: 5e593202a8cd68dfc4a92f991d573b4b06051b36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3450d39729096bfc3077f51e2069f8f102e571a5
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102434327"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449400"
 ---
 # <a name="what-is-speech-to-text"></a>Vad är tal-till-text?
 
@@ -26,7 +26,12 @@ Tal-till-text, även känt som tal igenkänning, aktiverar real tids avskrift av
 
 Tjänsten tal-till-text används som standard för att använda den universella språk modellen. Den här modellen tränade med Microsoft-ägda data och distribueras i molnet. Det är optimalt för konversations-och dikterings scenarier. När du använder tal-till-text för igenkänning och avskrift i en unik miljö kan du skapa och träna anpassade modeller för akustisk, språk och uttal. Anpassning är användbart för att adressera omgivande brus eller branschspecifika vokabulär.
 
-Med ytterligare referens text som indata [kan du använda funktionen tal](rest-speech-to-text.md#pronunciation-assessment-parameters) -till-text för att utvärdera tal uttal och ge talare feedback om precisionen och Fluency av talade ljud. Med uttals-utvärdering kan språklärare öva, få snabb feedback och förbättra sina uttal så att de kan tala och presentera med förtroende. Lärare kan använda funktionen för att utvärdera uttal av flera högtalare i real tid. Funktionen stöder för närvarande amerikansk engelska och korrelerar mycket med tal utvärderingar som utförs av experter.
+Den här dokumentationen innehåller följande artikel typer:
+
+* **Snabb starter** hjälper dig att komma igång med instruktioner för att göra förfrågningar till tjänsten.
+* **Instruktions guider** innehåller instruktioner för att använda tjänsten på mer exakta eller anpassade sätt.
+* **Begreppen** ger djupgående förklaringar av tjänst funktionerna och funktionerna.
+* **Självstudier** är längre guider som visar hur du använder tjänsten som en komponent i bredare affärs lösningar.
 
 > [!NOTE]
 > Taligenkänning i Bing togs ur bruk den 15 oktober 2019. Om dina program, verktyg eller produkter använder Taligenkänning i Bing API: er har vi skapat guider som hjälper dig att migrera till tal tjänsten.

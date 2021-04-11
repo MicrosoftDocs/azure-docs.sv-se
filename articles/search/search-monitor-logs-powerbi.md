@@ -1,25 +1,25 @@
 ---
-title: Visualisera Azure Kognitiv sökning-loggar och mät värden med Power BI
-description: Visualisera Azure Kognitiv sökning-loggar och mät värden med Power BI
-manager: eladz
+title: Visualisera loggar och mät värden med Power BI
+description: Visualisera Azure Kognitiv sökning-loggar och mät värden med Power BI.
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/25/2020
-ms.openlocfilehash: 4056e892855c06ce6c412ec4a592ebcd97fc11a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: fbbeb861e50abfd393b416ddc46ff147fffb7b8e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96325391"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581638"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Visualisera Azure Kognitiv sökning-loggar och mät värden med Power BI
-Med [Azure kognitiv sökning](./search-what-is-azure-search.md) kan du lagra åtgärds loggar och tjänste mått för din Sök tjänst i ett Azure Storage konto. Den här sidan innehåller instruktioner för hur du kan visualisera informationen via en Power BI Template-app. Appen innehåller detaljerade insikter om din Sök tjänst, inklusive information om Sök-, indexerings-, drift-och tjänst mått.
+
+[Azure kognitiv sökning](./search-what-is-azure-search.md) kan skicka åtgärds loggar och tjänst mått till ett Azure Storage konto, som du sedan kan visualisera i Power BI. I den här artikeln beskrivs stegen och hur du använder en Power BI Template-app för att visualisera data. Mallen kan hjälpa dig att få detaljerade insikter om din Sök tjänst, inklusive information om frågor, indexering, åtgärder och tjänste mått.
 
 Du hittar Power BI Template app Azure- **kognitiv sökning: Analysera loggar och mått** på [Power BI-appar på marknaden](https://appsource.microsoft.com/marketplace/apps).
 
-## <a name="how-to-get-started-with-the-app"></a>Komma igång med appen
+## <a name="set-up-the-app"></a>Konfigurera appen
 
 1. Aktivera mått-och resurs loggning för Sök tjänsten:
 
@@ -67,7 +67,8 @@ Du hittar Power BI Template app Azure- **kognitiv sökning: Analysera loggar och
 
     :::image type="content" source="media/search-monitor-logs-powerbi/powerbi-search.png" alt-text="Skärm bild av Azure Kognitiv sökning Power BI-rapporten.":::
 
-## <a name="how-to-change-the-app-parameters"></a>Ändra app-parametrarna
+## <a name="modify-app-parameters"></a>Ändra app-parametrar
+
 Om du vill visualisera data från ett annat lagrings konto eller ändra antalet dagar som data ska frågas, följer du stegen nedan för att ändra **dagar** och **StorageAccount** -parametrar.
 
 1. Navigera till Power BI appar, hitta din Azure Kognitiv sökning-app och välj knappen **Redigera app** för att Visa arbets ytan.
@@ -86,7 +87,8 @@ Om du vill visualisera data från ett annat lagrings konto eller ändra antalet 
 
 1. Öppna rapporten om du vill visa uppdaterade data. Du kan också behöva uppdatera rapporten för att visa den senaste informationen.
 
-## <a name="troubleshooting"></a>Felsökning
+## <a name="troubleshooting-report-issues"></a>Felsöka rapport problem
+
 Om du upptäcker att du inte kan se dina data följer du dessa fel söknings steg:
 
 1. Öppna rapporten och uppdatera sidan för att se till att du visar den senaste informationen. Det finns ett alternativ i rapporten för att uppdatera data. Välj det här alternativet för att hämta den senaste informationen.
@@ -98,8 +100,7 @@ Om du upptäcker att du inte kan se dina data följer du dessa fel söknings ste
 1. Kontrol lera om data uppsättningen fortfarande uppdateras. Indikatorn för uppdaterings status visas i steg 8 ovan. Om den fortfarande uppdateras väntar du tills uppdateringen är klar för att öppna och uppdatera rapporten.
 
 ## <a name="next-steps"></a>Nästa steg
-[Läs mer om Azure Kognitiv sökning](./index.yml)
 
-[Vad är Power BI?](/power-bi/fundamentals/power-bi-overview)
-
-[Grundläggande begrepp för designers i Power BI-tjänsten](/power-bi/service-basic-concepts)
++ [Övervaka Sök åtgärder och aktivitet](search-monitor-usage.md)
++ [Vad är Power BI?](/power-bi/fundamentals/power-bi-overview)
++ [Grundläggande begrepp för designers i Power BI-tjänsten](/power-bi/service-basic-concepts)

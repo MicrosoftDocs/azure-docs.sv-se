@@ -2,7 +2,7 @@
 title: Övervaknings Azure Time Series Insights data referens | Microsoft Docs
 description: Referens dokumentation för övervakning av Azure Time Series Insights.
 author: deepakpalled
-ms.author: lyhughes
+ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: bfd0d04313f0b519b4013a43e29d88400c73ea31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20d376ee501edf16711617847c685dfd531f2c80
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591386"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504591"
 ---
 # <a name="monitoring-azure-time-series-insights-data-reference"></a>Övervaknings Azure Time Series Insights data referens
 
@@ -23,12 +23,13 @@ Lär dig mer om data och resurser som samlats in av Azure Monitor från din Azur
 
 ## <a name="metrics"></a>Mått
 
-I det här avsnittet visas alla automatiskt insamlade plattforms mått som samlas in för Azure Time Series Insights. En lista över alla Azure Monitor support mått (inklusive Azure Time Series Insights) finns i [Azure Monitor mått som stöds](../azure-monitor/essentials/metrics-supported.md). Resurs leverantören för dessa mått är [Microsoft. TimeSeriesInsights/miljö/eventsources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) och [Microsoft. TimeSeriesInsights/miljöer](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments).
+I det här avsnittet visas alla automatiskt insamlade plattforms mått som samlas in för Azure Time Series Insights. En lista över alla Azure Monitor support mått (inklusive Azure Time Series Insights) finns i [Azure Monitor mått som stöds](../azure-monitor/essentials/metrics-supported.md).
+Resurs leverantören för dessa mått är [Microsoft. TimeSeriesInsights/miljö/eventsources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) och [Microsoft. TimeSeriesInsights/miljöer](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments).
 
 
 ### <a name="ingress"></a>Ingress
- 
-|Metric|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|
+
+|Metric|Mått visnings namn|Enhet|Sammansättningstyp|Description|
 |---|---|---|---|---|
 |IngressReceivedBytes|Inkommande mottagna byte|Byte|Totalt|Antal byte som lästs från händelse källan|
 |IngressReceivedInvalidMessages|Inkommande mottagna ogiltiga meddelanden|Antal|Totalt|Antal ogiltiga meddelanden som lästs från händelse källan|
@@ -40,7 +41,7 @@ I det här avsnittet visas alla automatiskt insamlade plattforms mått som samla
 
 ### <a name="storage"></a>Storage
 
-|Metric|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|
+|Metric|Mått visnings namn|Enhet|Sammansättningstyp|Description|
 |---|---|---|---|---|
 |WarmStorageMaxProperties|Maximalt antal egenskaper för varmt lagring|Antal|Maximal|Maximalt antal egenskaper som används av miljön för S1/S2 SKU och maximalt antal egenskaper som tillåts av varmt Arkiv för PAYG SKU|
 |WarmStorageUsedProperties|Egenskaper för varm lagring som används |Antal|Maximal|Antalet egenskaper som används av miljön för S1/S2 SKU och antalet egenskaper som används av varmt Arkiv för PAYG SKU|
