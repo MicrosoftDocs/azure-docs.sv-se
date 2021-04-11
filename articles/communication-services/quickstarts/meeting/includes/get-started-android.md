@@ -7,10 +7,10 @@ ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: 5ac4c53550468d33e9ed533303749d29e772d766
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105108491"
 ---
 I den här snabb starten får du lära dig hur du ansluter till ett team möte med hjälp av Azure Communication Services Teams Inbäddnings bibliotek för Android.

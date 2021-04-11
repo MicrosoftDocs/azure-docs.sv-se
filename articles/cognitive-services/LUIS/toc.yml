@@ -1,62 +1,152 @@
-- name: LUIS-dokumentation
+- name: Dokumentation om Language Understanding (LUIS)
   href: index.yml
 - name: Översikt
   expanded: true
   items:
-    - name: Vad är Language Understanding?
+    - name: Översikt över LUIS
       href: what-is-luis.md
+    - name: Stöd för språk
+      href: luis-language-support.md
+    - name: Prissättning
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
     - name: Nyheter
       href: whats-new.md
-- name: Snabbstarter
+    - name: Vanliga frågor och svar om LUIS
+      href: troubleshooting.md
+      displayName: 'Troubleshooting, import'
+- name: LUIS snabb starter
   items:
     - name: Bygg en fördefinierad domänapp
       href: luis-get-started-create-app.md
     - name: Använda LUIS-portalen
       items:
-        - name: 1. Skapa en app
+        - name: Skapa en app
           href: get-started-portal-build-app.md
           displayName: 'intent, entity, create app, test, example utterance'
-        - name: 2. Distribuera en app
+        - name: Distribuera en app
           href: get-started-portal-deploy-app.md
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: Använda webbläsare
       href: luis-get-started-get-intent-from-browser.md
     - name: Använda klientbiblioteken och REST-API
       href: client-libraries-rest-api.md
-- name: Självstudier
+- name: Exempel
+  href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
+- name: Anvisningar
   items:
-    - name: Bygg en app som kan delas upp
+    - name: Logga in på LUIS-portalen
+      href: sign-in-luis-portal.md
+    - name: Starta en ny app
+      href: luis-how-to-start-new-app.md
+      displayName: 'import, export, container'
+    - name: Bygg modell
       items:
-        - name: 1. Fastställ användaravsikter
-          href: tutorial-intents-only.md
-        - name: 2. Extrahera användardata
-          href: tutorial-machine-learned-entity.md
-          displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
-    - name: Förbättra appen
+        - name: Lägga till avsikt
+          href: luis-how-to-add-intents.md
+        - name: Lägga till en enhet för att extrahera data
+          href: luis-how-to-add-entities.md
+          displayName: 'roles, import'
+        - name: Använd fördefinierade modeller
+          href: howto-add-prebuilt-models.md
+        - name: Etikettentitet i uttryck
+          href: label-entity-example-utterance.md
+        - name: Lägg till funktioner
+          displayName: 'synonym, interchange, phrase list, descriptor, feature'
+          href: luis-how-to-add-features.md
+        - name: Få avsikt att använda REST API
+          href: luis-get-started-get-intent-from-rest.md
+        - name: Ändra modellen med hjälp av REST API
+          href: get-started-get-model-rest-apis.md
+    - name: Integrera din app
       items:
-        - name: Åtgärda osäkra förutsägelser
-          href: luis-tutorial-review-endpoint-utterances.md
-        - name: Lägga till mönster för att förbättra förutsägelser
-          href: luis-tutorial-pattern.md
-    - name: Använda med robot
+        - name: Med Stavningskontroll i Bing v7
+          href: luis-tutorial-bing-spellcheck.md
+        - name: Med Speech-tjänsten
+          href: ../speech-service/how-to-recognize-intents-from-speech-csharp.md?toc=/azure/cognitive-services/luis/toc.json&bc=/azure/cognitive-services/luis/breadcrumb/toc.json
+    - name: Förbättra förutsägelsefunktionen
       items:
-        - name: Med C#
-          href: luis-csharp-tutorial-bf-v4.md
-          displayName: 'bot framework, framework, sdk, abs'
-        - name: Med Node.js
-          displayName: 'bot framework, framework, sdk, abs'
-          href: luis-nodejs-tutorial-bf-v4.md
+        - name: Använd instrumentpanelen
+          displayName: 'dashboard, analytics, charts, data, unclear predictions, incorrect predictions, imbalance, endpoint hits, status, evaluation, accuracy, active version, problematic intents, nearest rival, usage'
+          href: luis-how-to-use-dashboard.md
+        - name: Granska slutpunktsyttranden
+          displayName: active learning
+          href: luis-how-to-review-endpoint-utterances.md
+        - name: Lägg till mönster
+          displayName: 'syntax, template, roles'
+          href: luis-how-to-model-intent-pattern.md
+    - name: Träna och testa din app
+      items:
+        - name: Träna appen
+          href: luis-how-to-train.md
+          displayName: 'negative sampling, nondeterministic, non-deterministic, UseAllTrainingData'
+        - name: Interaktiv testning
+          href: luis-interactive-test.md
+        - name: Batch-testning
+          href: luis-how-to-batch-test.md
+          displayName: 'import, export'
+    - name: Publicera
+      href: luis-how-to-publish-app.md
+    - name: CLR för frågeförutsägelse
+      href: luis-get-started-get-intent-from-browser.md
+    - name: Migrera
+      items:
+        - name: Översikt
+          href: migration.md
+        - name: Migrera från sammansatt entitet
+          href: migrate-from-composite-entity.md
+        - name: Migrera till redigeringsresurs
+          href: luis-migration-authoring.md
+        - name: Migrera till V3 API
+          href: luis-migration-api-v3.md
+        - name: 'Migrera till API:er för V3-redigering'
+          href: luis-migration-authoring-entities.md
+        - name: 'Migrera till API:er för V3-förutsägelse'
+          href: luis-migration-api-v3.md
+        - name: Migrera till V2 API
+          href: luis-migration-api-v1-to-v2.md
+    - name: Hantera app
+      items:
+        - name: Azure-resurser
+          displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
+          href: luis-how-to-azure-subscription.md
+        - name: Inställningar för app och version
+          href: how-to-application-settings-portal.md
+        - name: Författare och deltagare
+          displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
+          href: luis-how-to-collaborate.md
+        - name: Med versioner
+          href: luis-how-to-manage-versions.md
+          diplayName: 'import, export, container'
+        - name: Med Traffic Manager
+          href: luis-traffic-manager.md
+    - name: Distribuera LUIS
+      items:
+        - name: Använda containrar
+          items:
+            - name: Installera och köra containrar
+              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, export to container'
+              href: luis-container-howto.md
+            - name: Konfigurera containrar
+              href: luis-container-configuration.md
+            - name: Använda containerinstanser
+              href: ../containers/azure-container-instance-recipe.md
+            - name: Begränsningar för container
+              href: luis-container-limitations.md
+              displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+            - name: Dokumentation om containrar för Cognitive Services
+              href: ../containers/index.yml
 - name: Begrepp
   items:
     - name: Artificiell intelligens
       href: artificial-intelligence.md
     - name: Utvecklingscykel
       href: luis-concept-app-iteration.md
+    - name: Bästa praxis
+      href: luis-concept-best-practices.md
+      displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
     - name: Planera din app
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
-    - name: Datainsamling
-      href: data-collection.md
     - name: Appmodeller
       items:
         - name: Typer
@@ -80,9 +170,6 @@
           href: schema-change-prediction-runtime.md
     - name: Förutsägelseresultat
       href: luis-concept-prediction-score.md
-    - name: Bästa praxis
-      href: luis-concept-best-practices.md
-      displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
     - name: Förbättra apprestanda
       items:
         - name: Granska slutpunktsyttranden
@@ -93,6 +180,8 @@
           href: luis-concept-test.md
     - name: Datahantering
       items:
+        - name: Datainsamling
+          href: data-collection.md
         - name: Ändra data
           href: luis-concept-data-alteration.md
         - name: Konvertera data
@@ -105,152 +194,44 @@
     - name: Använda LUIS och QnA Maker
       href: choose-natural-language-processing-service.md
       displayName: 'nlp, qna maker'
-    - name: Enterprise
-      items:
-        - name: Utforma strategier
-          href: luis-concept-enterprise.md
-          displayName: import
+    - name: Design strategier för företag
+      href: luis-concept-enterprise.md
+      displayName: import
     - name: Använda DevOps-metoder med LUIS
       items:
+        - name: Använda DevOps
+          href: luis-how-to-devops-with-github.md
         - name: Källkontroll och förgreningsstrategier för LUIS
           href: luis-concept-devops-sourcecontrol.md
         - name: Testar för DevOps
           href: luis-concept-devops-testing.md
         - name: CI/CD-arbetsflöden
           href: luis-concept-devops-automation.md
-- name: Anvisningar
+- name: Självstudier
   items:
-    - name: Logga in på LUIS-portalen
-      href: sign-in-luis-portal.md
-    - name: Starta en ny app
-      href: luis-how-to-start-new-app.md
-      displayName: 'import, export, container'
-    - name: Skapa modell
+    - name: Bygg en app som kan delas upp
       items:
-        - name: Lägga till avsikt
-          href: luis-how-to-add-intents.md
-        - name: Lägga till en enhet för att extrahera data
-          href: luis-how-to-add-entities.md
-          displayName: 'roles, import'
-        - name: Använd fördefinierade modeller
-          href: howto-add-prebuilt-models.md
-        - name: Etikettentitet i uttryck
-          href: label-entity-example-utterance.md
-        - name: Lägg till funktion
-          displayName: 'synonym, interchange, phrase list, descriptor, feature'
-          href: luis-how-to-add-features.md
-        - name: 'Med REST API:er'
-          items:
-            - name: Skapa en app programmässigt med Node.js
-              href: luis-tutorial-node-import-utterances-csv.md
-    - name: Integrera
+        - name: 1. Fastställ användaravsikter
+          href: tutorial-intents-only.md
+        - name: 2. Extrahera användardata
+          href: tutorial-machine-learned-entity.md
+          displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
+    - name: Förbättra appen
       items:
-        - name: Med Stavningskontroll i Bing v7
-          href: luis-tutorial-bing-spellcheck.md
-        - name: Med Speech-tjänsten
-          href: ../speech-service/how-to-recognize-intents-from-speech-csharp.md?toc=/azure/cognitive-services/luis/toc.json&bc=/azure/cognitive-services/luis/breadcrumb/toc.json
-    - name: Förbättra förutsägelsefunktionen
+        - name: Åtgärda osäkra förutsägelser
+          href: luis-tutorial-review-endpoint-utterances.md
+        - name: Lägga till mönster för att förbättra förutsägelser
+          href: luis-tutorial-pattern.md
+    - name: Använda med robot
       items:
-        - name: Använd instrumentpanelen
-          displayName: 'dashboard, analytics, charts, data, unclear predictions, incorrect predictions, imbalance, endpoint hits, status, evaluation, accuracy, active version, problematic intents, nearest rival, usage'
-          href: luis-how-to-use-dashboard.md
-        - name: Granska slutpunktsyttranden
-          displayName: active learning
-          href: luis-how-to-review-endpoint-utterances.md
-        - name: Lägg till mönster
-          displayName: 'syntax, template, roles'
-          href: luis-how-to-model-intent-pattern.md
-    - name: Träna
-      href: luis-how-to-train.md
-      displayName: 'negative sampling, nondeterministic, non-deterministic, UseAllTrainingData'
-    - name: Testa
-      items:
-        - name: Interaktiv testning
-          href: luis-interactive-test.md
-        - name: Batch-testning
-          href: luis-how-to-batch-test.md
-          displayName: 'import, export'
-    - name: Publicera
-      href: luis-how-to-publish-app.md
-    - name: CLR för frågeförutsägelse
-      href: luis-get-started-get-intent-from-browser.md
-    - name: Migrera
-      items:
-        - name: Översikt
-          href: migration.md
-        - name: Migrera från sammansatt entitet
-          href: migrate-from-composite-entity.md
-        - name: Migrera till redigeringsresurs
-          href: luis-migration-authoring.md
-        - name: Migrera till V3 API
-          href: luis-migration-api-v3.md
-    - name: Hantera app
-      items:
-        - name: Azure-resurser
-          displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
-          href: luis-how-to-azure-subscription.md
-        - name: Inställningar för app och version
-          href: how-to-application-settings-portal.md
-        - name: Författare och deltagare
-          displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
-          href: luis-how-to-collaborate.md
-        - name: Med versioner
-          href: luis-how-to-manage-versions.md
-          diplayName: 'import, export, container'
-        - name: Med Traffic Manager
-          href: luis-traffic-manager.md
-    - name: 'Använd API: er'
-      items:
-        - name: För utvecklare
-          href: developer-reference-resource.md
-        - name: Appschema
-          href: app-schema-definition.md
-        - name: 'Migrera till API:er för V3-redigering'
-          href: luis-migration-authoring-entities.md
-        - name: 'Migrera till API:er för V3-förutsägelse'
-          href: luis-migration-api-v3.md
-        - name: Migrera till V2 API
-          href: luis-migration-api-v1-to-v2.md
-    - name: 'Använda REST-API:er'
-      items:
-        - name: Hämta avsikt
-          href: luis-get-started-get-intent-from-rest.md
-        - name: Ändra modell
-          href: get-started-get-model-rest-apis.md
-    - name: Använda containrar
-      items:
-        - name: Installera och köra containrar
-          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, export to container'
-          href: luis-container-howto.md
-        - name: Konfigurera containrar
-          href: luis-container-configuration.md
-        - name: Använda containerinstanser
-          href: ../containers/azure-container-instance-recipe.md
-        - name: Begränsningar för container
-          href: luis-container-limitations.md
-          displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
-        - name: Dokumentation om containrar för Cognitive Services
-          href: ../containers/index.yml
-    - name: Använda DevOps
-      href: luis-how-to-devops-with-github.md
-    - name: Relaterade tjänster
-      items:
-        - name: Azure Bot Service
-          href: 'https://dev.botframework.com/'
-        - name: Bot Builder 4.x SDK C#
-          href: 'https://github.com/Microsoft/botbuilder-dotnet'
-        - name: QnA Maker
-          href: 'https://qnamaker.ai/'
-        - name: API för Bing-taligenkänning
-          href: 'https://azure.microsoft.com/services/cognitive-services/speech/'
-        - name: Stavningskontrolls-API i Bing
-          href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
-        - name: Textanalys
-          href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
-        - name: Recognizers-Text
-          href: 'https://github.com/Microsoft/Recognizers-Text'
-        - name: Intelligent informationskiosk
-          href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
+        - name: Med C#
+          href: luis-csharp-tutorial-bf-v4.md
+          displayName: 'bot framework, framework, sdk, abs'
+        - name: Med Node.js
+          displayName: 'bot framework, framework, sdk, abs'
+          href: luis-nodejs-tutorial-bf-v4.md
+    - name: Skapa en app programmässigt med Node.js
+      href: luis-tutorial-node-import-utterances-csv.md
 - name: Referens
   items:
     - name: Utvecklarreferens
@@ -325,91 +306,86 @@
                   href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/language/luis'
     - name: Användarsekretess
       href: luis-user-privacy.md
-    - name: Regioner
+    - name: Redigera och publicera regioner
       href: luis-reference-regions.md
       displayName: 'failover, fail-over, fail over, Europe, EU, Australia, business continuity, bcdr'
     - name: Begränsningar
       href: luis-limits.md
     - name: Inställningar för app och version
       href: luis-reference-application-settings.md
-    - name: Fördefinierad entitetsreferens
+    - name: Entitetsreferens
       items:
-        - name: Entiteter per kultur
-          href: luis-reference-prebuilt-entities.md
-        - name: Entitet för ålder
-          href: luis-reference-prebuilt-age.md
-        - name: Entitet för valuta
-          href: luis-reference-prebuilt-currency.md
-        - name: DatetimeV2-entitet
-          href: luis-reference-prebuilt-datetimev2.md
-          displayName: timex
-        - name: Entitet för dimension
-          href: luis-reference-prebuilt-dimension.md
-        - name: Inaktuella entiteter
-          href: luis-reference-prebuilt-deprecated.md
-        - name: Entitet för e-post
-          href: luis-reference-prebuilt-email.md
-        - name: GeographyV2-entitet
-          href: luis-reference-prebuilt-geographyV2.md
-        - name: KeyPhrase-entitet
-          href: luis-reference-prebuilt-keyphrase.md
-        - name: Enheter för nummer
-          href: luis-reference-prebuilt-number.md
-        - name: Entitet för ordningstal
-          href: luis-reference-prebuilt-ordinal.md
-        - name: V2-entitet för ordningstal
-          href: luis-reference-prebuilt-ordinal-v2.md
-        - name: Entitet för procentandel
-          href: luis-reference-prebuilt-percentage.md
-        - name: PersonName-entitet
-          href: luis-reference-prebuilt-person.md
-        - name: Entitet för telefonnummer
-          href: luis-reference-prebuilt-phonenumber.md
-        - name: Entitet för temperatur
-          href: luis-reference-prebuilt-temperature.md
-        - name: URL-entitet
-          href: luis-reference-prebuilt-url.md
-    - name: Fördefinierad domänreferens
-      href: luis-reference-prebuilt-domains.md
-      displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
-    - name: Anpassad entitetsreferens
-      items:
-        - name: Enhet för maskininlärning
-          href: reference-entity-machine-learned-entity.md
-        - name: Sammansatt entitet
-          href: reference-entity-composite.md
-        - name: Lista entitet
-          href: reference-entity-list.md
-        - name: Entiteten Pattern.any
-          href: reference-entity-pattern-any.md
-        - name: Entitet för reguljära uttryck
-          href: reference-entity-regular-expression.md
-        - name: Enkel entitet
-          href: reference-entity-simple.md
+        - name: Fördefinierade
+          items:
+            - name: Fördefinierad domänreferens
+              href: luis-reference-prebuilt-domains.md
+            - name: Entiteter per kultur
+              href: luis-reference-prebuilt-entities.md
+            - name: Entitet för ålder
+              href: luis-reference-prebuilt-age.md
+            - name: Entitet för valuta
+              href: luis-reference-prebuilt-currency.md
+            - name: DatetimeV2-entitet
+              href: luis-reference-prebuilt-datetimev2.md
+              displayName: timex
+            - name: Entitet för dimension
+              href: luis-reference-prebuilt-dimension.md
+            - name: Inaktuella entiteter
+              href: luis-reference-prebuilt-deprecated.md
+            - name: Entitet för e-post
+              href: luis-reference-prebuilt-email.md
+            - name: GeographyV2-entitet
+              href: luis-reference-prebuilt-geographyV2.md
+            - name: KeyPhrase-entitet
+              href: luis-reference-prebuilt-keyphrase.md
+            - name: Enheter för nummer
+              href: luis-reference-prebuilt-number.md
+            - name: Entitet för ordningstal
+              href: luis-reference-prebuilt-ordinal.md
+            - name: V2-entitet för ordningstal
+              href: luis-reference-prebuilt-ordinal-v2.md
+            - name: Entitet för procentandel
+              href: luis-reference-prebuilt-percentage.md
+            - name: PersonName-entitet
+              href: luis-reference-prebuilt-person.md
+            - name: Entitet för telefonnummer
+              href: luis-reference-prebuilt-phonenumber.md
+            - name: Entitet för temperatur
+              href: luis-reference-prebuilt-temperature.md
+            - name: URL-entitet
+              href: luis-reference-prebuilt-url.md
+          displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
+        - name: Anpassad
+          items:
+            - name: Enhet för maskininlärning
+              href: reference-entity-machine-learned-entity.md
+            - name: Sammansatt entitet
+              href: reference-entity-composite.md
+            - name: Lista entitet
+              href: reference-entity-list.md
+            - name: Entiteten Pattern.any
+              href: reference-entity-pattern-any.md
+            - name: Entitet för reguljära uttryck
+              href: reference-entity-regular-expression.md
+            - name: Enkel entitet
+              href: reference-entity-simple.md
     - name: Mönstersyntax
       href: reference-pattern-syntax.md
     - name: Sentimentreferens
       href: luis-reference-prebuilt-sentiment.md
 - name: Resurser
   items:
+    - name: LUIS-portalen
+      href: 'https://www.luis.ai'
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
-    - name: Kodexempel
-      href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
     - name: Regional tillgänglighet
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Stöd för språk
-      href: luis-language-support.md
       displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
     - name: Azure-översikt
       href: 'https://go.microsoft.com/fwlink/?linkid=2092089'
     - name: Ordlista
       href: luis-glossary.md
-    - name: Felsökning
-      href: troubleshooting.md
-      displayName: 'FAQ, import'
-    - name: Priser och begränsningar
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
     - name: Efterlevnad
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Kryptering
@@ -421,5 +397,21 @@
       href: /search/index?search=LUIS
     - name: Blogg
       href: 'https://blog.botframework.com/category/luis/'
-- name: LUIS-portalen
-  href: 'https://www.luis.ai'
+    - name: Relaterade tjänster
+      items:
+        - name: Azure Bot Service
+          href: 'https://dev.botframework.com/'
+        - name: Bot Builder 4.x SDK C#
+          href: 'https://github.com/Microsoft/botbuilder-dotnet'
+        - name: QnA Maker
+          href: 'https://qnamaker.ai/'
+        - name: API för Bing-taligenkänning
+          href: 'https://azure.microsoft.com/services/cognitive-services/speech/'
+        - name: Stavningskontrolls-API i Bing
+          href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
+        - name: Textanalys
+          href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+        - name: Recognizers-Text
+          href: 'https://github.com/Microsoft/Recognizers-Text'
+        - name: Intelligent informationskiosk
+          href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'

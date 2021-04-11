@@ -11,18 +11,21 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 257fc6544061c2ef9c3fdbfb8c33bc06ed2db6e3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fec4eb55f43bd17db5935ab32e5429927c74f5b9
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566343"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066219"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Köra Jupyter-anteckningsböcker i din arbets yta
 
 Lär dig hur du kör dina Jupyter-anteckningsböcker direkt i din arbets yta i Azure Machine Learning Studio. Även om du kan starta [Jupyter](https://jupyter.org/) eller [JupyterLab](https://jupyterlab.readthedocs.io)kan du även redigera och köra dina antecknings böcker utan att lämna arbets ytan.
 
 Information om hur du skapar och hanterar filer, inklusive antecknings böcker, finns i [skapa och hantera filer i din arbets yta](how-to-manage-files.md).
+
+> [!IMPORTANT]
+> Funktioner som marker ATS som (för hands version) tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -48,17 +51,27 @@ Använd fokus läge för att expandera den aktuella vyn så att du kan fokusera 
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Växla fokus läge/standardvy":::
 
-## <a name="use-intellisense"></a>Använd IntelliSense
+## <a name="code-completion-intellisense"></a>Kod komplettering (IntelliSense)
 
 [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) är ett stöd för kod komplettering som innehåller ett antal funktioner: list medlemmar, parameter information, snabb information och fullständig ord. Dessa funktioner hjälper dig att lära dig mer om den kod som du använder, håller reda på de parametrar som du skriver och lägger till anrop till egenskaper och metoder med bara några få tangenttryckningar.  
 
-När du skriver kod använder du Ctrl + blank steg för att utlösa IntelliSense.
+### <a name="use-code-snippets-preview"></a>Använda kodfragment (förhands granskning)
+
+Använd **CTRL + blank steg** för att utlösa IntelliSense-kodfragment.  Bläddra genom förslagen eller börja skriva för att hitta den kod som du vill infoga.  När du infogar kod går du till TABB-och-argumenten för att anpassa koden för eget bruk.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/insert-snippet.gif" alt-text="Infoga ett kodfragment":::
+
+Samma kodfragment är tillgängliga när du öppnar antecknings boken i VS Code. En fullständig lista över tillgängliga kodfragment finns i [Azure Machine Learning vs](https://github.com/Azure/azureml-snippets/blob/main/snippets/snippets.md)kodfragment.
+
+Du kan bläddra och söka i listan över kodfragment med hjälp av antecknings bokens verktygsfält för att öppna kod avsnitts panelen.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/open-snippet-panel.png" alt-text="Öppna kodfragments panel verktyget i verktygsfältet för bärbara datorer":::
+
+Från fönstret kod avsnitt kan du också skicka en begäran om att lägga till nya kodfragment.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/propose-new-snippet.png" alt-text="Med kod avsnitts panelen kan du föreslå ett nytt kodfragment":::
 
 ## <a name="clean-your-notebook-preview"></a>Rensa din bärbara dator (för hands version)
-
-> [!IMPORTANT]
-> Funktionen samla in finns för närvarande i offentlig för hands version.
-> För hands versionen tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 I samband med att du skapar en antecknings bok slutar du normalt med celler som du använde för data utforskning eller fel sökning. Med funktionen *samla in* kan du skapa en ren bärbar dator utan dessa främmande celler.
 
@@ -158,7 +171,7 @@ Dessa åtgärder återställer antecknings bokens tillstånd och återställer a
 
 ## <a name="add-new-kernels"></a>Lägg till nya kärnor
 
-[Använd terminalen ](how-to-access-terminal.md#add-new-kernels) för att skapa och lägga till nya kärnor i din beräknings instans. Antecknings boken hittar automatiskt alla Jupyter-kernels som är installerade på den anslutna beräknings instansen.
+[Använd terminalen](how-to-access-terminal.md#add-new-kernels) för att skapa och lägga till nya kärnor i din beräknings instans. Antecknings boken hittar automatiskt alla Jupyter-kernels som är installerade på den anslutna beräknings instansen.
 
 Använd List rutan kernel till höger för att ändra till någon av de installerade kernelerna.  
 

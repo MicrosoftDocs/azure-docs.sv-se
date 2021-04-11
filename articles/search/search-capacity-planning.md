@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: d848c1ed1ab9d4cb24dec9423d93ec62ab45633b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/06/2021
+ms.openlocfilehash: b1f742c1de259f6c1c06d9b31a8788699f0b8426
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99537229"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580035"
 ---
 # <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>Beräkna och hantera kapaciteten för en Azure Kognitiv sökning-tjänst
 
@@ -48,9 +48,9 @@ I Kognitiv sökning är hantering av Shard en implementerings information och ka
 
 + Avvikelser vid komplettering: Autoavsluta-frågor, där matchningar görs på de första flera tecknen i en delvis angiven term, Godkänn en Fuzzy-parameter som forgives små avvikelser i stavning. För automatisk komplettering är en partiell matchning begränsad till termer inom den aktuella Shard. Om till exempel en Shard innehåller "Microsoft" och en partiell term på "micor" anges, kommer sökmotorn att matcha "Microsoft" i den Shard, men inte i andra Shards som innehåller de återstående delarna av indexet.
 
-## <a name="how-to-evaluate-capacity-requirements"></a>Utvärdera kapacitets kraven
+## <a name="approaching-estimation"></a>Bedömning av bedömning
 
-Kapacitet och kostnaderna för att köra tjänsten finns i handen. Nivåerna begränsar gränserna på två nivåer: lagring och innehåll (antalet index för en tjänst, till exempel). Det är viktigt att tänka på båda eftersom den gräns du uppnår först är den effektiva gränsen.
+Kapacitet och kostnaderna för att köra tjänsten finns i handen. Nivåerna begränsar gränserna på två nivåer: innehåll (ett antal index för en tjänst, till exempel) och lagring. Det är viktigt att tänka på båda eftersom den gräns du uppnår först är den effektiva gränsen.
 
 Antalet index och andra objekt bestäms vanligt vis av affärs-och teknik krav. Du kan till exempel ha flera versioner av samma index för aktiv utveckling, testning och produktion.
 
@@ -58,7 +58,9 @@ Lagrings behoven bestäms av storleken på de index som du förväntar dig att b
 
 För full texts ökning är den primära data strukturen en [inverterad index](https://en.wikipedia.org/wiki/Inverted_index) struktur som har andra egenskaper än källdata. För ett inverterat index bestäms storlek och komplexitet av innehåll, inte nödvändigt vis av mängden data som du matar in i det. En stor data källa med hög redundans kan resultera i ett mindre index än en mindre data mängd som innehåller mycket varierande innehåll. Det går sällan att härleda index storleken baserat på storleken på den ursprungliga data uppsättningen.
 
-> [!NOTE] 
+Attributen i indexet, till exempel aktivering av filter och sortering, påverkar lagrings kraven. Användning av förslag har också lagrings effekter. Mer information finns i [attribut och index storlek](search-what-is-an-index.md#index-size).
+
+> [!NOTE]
 > Även om det går att uppskatta framtida behov för index och lagring kan det vara värt att göra. Om en nivås kapacitet blir för låg måste du etablera en ny tjänst på en högre nivå och sedan [läsa in indexen](search-howto-reindex.md)på nytt. Det finns ingen uppgradering på plats av en tjänst från en nivå till en annan.
 >
 
@@ -87,7 +89,7 @@ Dedikerade resurser kan hantera större samplings-och bearbetnings tider för me
     + Starta hög, på S2 eller till och med S3 om testningen innehåller storskalig indexering och frågor.
     + Börja med den optimerade lagringen, vid L1 eller L2, om du har indexerat en stor mängd data och frågan är relativt låg, precis som med ett internt affärs program.
 
-1. [Bygg ett första index](search-what-is-an-index.md) för att avgöra hur källdata översätts till ett index. Detta är det enda sättet att uppskatta index storleken.
+1. [Bygg ett första index](search-what-is-an-index.md) för att avgöra hur källdata översätts till ett index. Detta är det enda sättet att uppskatta index storleken. 
 
 1. [Övervaka lagring, tjänst gränser, fråga volym och svars tid](search-monitor-usage.md) i portalen. Portalen visar frågor per sekund, begränsade frågor och Sök svars tid. Alla dessa värden kan hjälpa dig att avgöra om du har valt rätt nivå.
 
@@ -111,7 +113,7 @@ De optimerade lagrings nivåerna är användbara för stora data arbets belastni
 
 **Service nivå avtal**
 
-Den kostnads fria nivån och för hands versions funktionerna tillhandahåller inte [service nivå avtal (service avtal)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). För alla fakturerbara nivåer börjar service avtal gälla när du etablerar tillräckligt med redundans för din tjänst. Du måste ha två eller flera repliker för fråga (Läs) service avtal. Du måste ha tre eller fler repliker för fråge-och indexerings-service avtal (Läs-och Skriv behörighet). Antalet partitioner påverkar inte service avtal.
+De kostnads fria nivåerna och för hands versions funktionerna omfattas inte av [service nivå avtal (service avtal)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). För alla fakturerbara nivåer börjar service avtal gälla när du etablerar tillräckligt med redundans för din tjänst. Du måste ha två eller flera repliker för fråga (Läs) service avtal. Du måste ha tre eller fler repliker för fråge-och indexerings-service avtal (Läs-och Skriv behörighet). Antalet partitioner påverkar inte service avtal.
 
 ## <a name="tips-for-capacity-planning"></a>Tips för kapacitets planering
 
@@ -119,24 +121,30 @@ Den kostnads fria nivån och för hands versions funktionerna tillhandahåller i
 
 + Kom ihåg att den enda nack delen med etablering är att du kan behöva riva av en tjänst om de faktiska kraven är större än dina förutsägelser. För att undvika avbrott i tjänsten skapar du en ny tjänst på en högre nivå och kör den sida vid sida tills alla appar och begär Anden riktar sig mot den nya slut punkten.
 
-## <a name="when-to-add-partitions-and-replicas"></a>När du ska lägga till partitioner och repliker
+## <a name="when-to-add-capacity"></a>När du ska lägga till kapacitet
 
-En tjänst har inlednings vis tilldelats en minimal resurs nivå som består av en partition och en replik.
+En tjänst har inlednings vis tilldelats en minimal resurs nivå som består av en partition och en replik. [Nivån du väljer](search-sku-tier.md) bestämmer partitionens storlek och hastighet, och varje nivå optimeras runt en uppsättning egenskaper som passar olika scenarier. Om du väljer en högre nivå kan du behöva färre partitioner än om du går med S1. En av de frågor som du behöver svara via självdirigerad testning är om en större och dyrare partition ger bättre prestanda än två billigare partitioner på en tjänst som tillhandahålls på en lägre nivå.
 
 En enskild tjänst måste ha tillräckligt med resurser för att hantera alla arbets belastningar (indexering och frågor). Ingen arbets belastning körs i bakgrunden. Du kan schemalägga indexeringen för tider när fråge förfrågningar är mycket mindre frekventa, men tjänsten kan inte på annat sätt prioritera en aktivitet över en annan. En viss mängd redundans utjämnar dessutom frågans prestanda när tjänster eller noder uppdateras internt.
 
-Som en allmän regel kräver Sök program att du behöver fler repliker än partitioner, särskilt när tjänst åtgärderna prioriteras mot frågor till arbets belastningar. Avsnittet om [hög tillgänglighet](#HA) förklarar varför.
+Några rikt linjer för att avgöra om du ska lägga till kapacitet är:
 
-[Nivån du väljer](search-sku-tier.md) bestämmer partitionens storlek och hastighet, och varje nivå optimeras runt en uppsättning egenskaper som passar olika scenarier. Om du väljer en högre nivå kan du behöva färre partitioner än om du går med S1. En av de frågor som du behöver svara via självdirigerad testning är om en större och dyrare partition ger bättre prestanda än två billigare partitioner på en tjänst som tillhandahålls på en lägre nivå.
++ Uppfyller kriterierna för hög tillgänglighet för service nivå avtalet
++ Frekvensen för HTTP 503-fel ökar
++ Stora fråga-volymer förväntas
+
+Som en allmän regel kräver Sök program att du behöver fler repliker än partitioner, särskilt när tjänst åtgärderna prioriteras mot frågor till arbets belastningar. Varje replik är en kopia av ditt index, så att tjänsten kan belastningsutjämna begär Anden mot flera kopior. All belastnings utjämning och replikering av ett index hanteras av Azure Kognitiv sökning och du kan ändra antalet repliker som har allokerats för din tjänst när du vill. Du kan allokera upp till 12 repliker i en standard Sök tjänst och tre repliker i en grundläggande Sök tjänst. Replik tilldelning kan göras antingen från [Azure Portal](search-create-service-portal.md) eller något av programmerings alternativen.
 
 Sök efter program som kräver data uppdatering i nära real tid måste ha proportionellt sett fler partitioner än repliker. Att lägga till partitioner sprider Läs-och skriv åtgärder över ett större antal beräknings resurser. Du får också mer disk utrymme för att lagra ytterligare index och dokument.
 
-Större index tar längre tid att fråga. Därför kanske du upptäcker att varje stegvis ökning i partitioner kräver en mindre men proportionell ökning av repliker. Komplexiteten för dina frågor och frågesträngen kommer att kopplas till hur snabbt frågekörningen ska aktive ras runt.
+Slutligen tar större index längre tid att fråga. Därför kanske du upptäcker att varje stegvis ökning i partitioner kräver en mindre men proportionell ökning av repliker. Komplexiteten för dina frågor och frågesträngen kommer att kopplas till hur snabbt frågekörningen ska aktive ras runt.
 
 > [!NOTE]
 > Om du lägger till fler repliker eller partitioner ökar kostnaden för att köra tjänsten och det kan leda till små variationer i hur resultaten sorteras. Se till att kontrol lera [pris kalkylatorn](https://azure.microsoft.com/pricing/calculator/) för att förstå fakturerings konsekvenserna för att lägga till fler noder. [Diagrammet nedan](#chart) kan hjälpa dig att korsa referenser till antalet Sök enheter som krävs för en bestämd konfiguration. Mer information om hur ytterligare repliker påverkar bearbetning av frågor finns i [sortera resultat](search-pagination-page-layout.md#ordering-results).
 
-## <a name="how-to-allocate-replicas-and-partitions"></a>Så här allokerar du repliker och partitioner
+<a name="adjust-capacity"></a>
+
+## <a name="add-or-reduce-replicas-and-partitions"></a>Lägg till eller minska repliker och partitioner
 
 1. Logga in på [Azure Portal](https://portal.azure.com/) och välj Sök tjänsten.
 
@@ -158,7 +166,7 @@ Större index tar längre tid att fråga. Därför kanske du upptäcker att varj
 
    :::image type="content" source="media/search-capacity-planning/3-save-confirm.png" alt-text="Spara ändringar" border="true":::
 
-   Det kan ta upp till flera timmar att slutföra ändringarna i kapaciteten. Det går inte att avbryta när processen har startats och det inte finns någon real tids övervakning för replik-och partitions justeringar. Följande meddelande är dock fortfarande synligt när ändringarna pågår.
+   Ändringar i kapaciteten kan ta var som helst från 15 minuter upp till flera timmar att slutföra. Det går inte att avbryta när processen har startats och det inte finns någon real tids övervakning för replik-och partitions justeringar. Följande meddelande är dock fortfarande synligt när ändringarna pågår.
 
    :::image type="content" source="media/search-capacity-planning/4-updating.png" alt-text="Status meddelande i portalen" border="true":::
 
@@ -192,31 +200,7 @@ SUs, priser och kapacitet beskrivs i detalj på Azure-webbplatsen. Mer informati
 > Antalet repliker och partitioner delas upp jämnt i 12 (särskilt, 1, 2, 3, 4, 6, 12). Detta beror på att Azure Kognitiv sökning fördelar varje index i 12 Shards så att det kan spridas i lika stora delar av alla partitioner. Om din tjänst till exempel har tre partitioner och du skapar ett index, kommer varje partition att innehålla fyra Shards av indexet. Hur Azure Kognitiv sökning Shards ett index är en implementerings information som kan komma att ändras i framtida versioner. Även om talet är 12 i dag, bör du inte vänta att antalet alltid är 12 i framtiden.
 >
 
-<a id="HA"></a>
-
-## <a name="high-availability"></a>Hög tillgänglighet
-
-Eftersom det är enkelt och relativt enkelt att skala upp rekommenderar vi vanligt vis att du börjar med en partition och en eller två repliker, och sedan skalar upp som fråge volymer skapas. Fråga arbets belastningar körs främst på repliker. Om du behöver mer data flöde eller hög tillgänglighet behöver du förmodligen ytterligare repliker.
-
-Allmänna rekommendationer för hög tillgänglighet:
-
-+ Två repliker för hög tillgänglighet för skrivskyddade arbets belastningar (frågor)
-
-+ Tre eller flera repliker för hög tillgänglighet av Läs-och skriv arbets belastningar (frågor plus indexering när enskilda dokument läggs till, uppdateras eller tas bort)
-
-Service avtal (SLA) för Azure Kognitiv sökning riktas mot åtgärder och vid index uppdateringar som består av att lägga till, uppdatera eller ta bort dokument.
-
-Basic-nivån ligger utanför en partition och tre repliker. Om du vill att flexibiliteten omedelbart ska svara på fluktuationer i behov för både indexering och frågans data flöde, bör du överväga en av standard nivåerna.  Om du upptäcker att dina lagrings krav ökar mycket snabbare än din fråga genom att använda en av de optimerade lagrings nivåerna.
-
-## <a name="about-queries-per-second-qps"></a>Om frågor per sekund (frågor per sekund)
-
-På grund av det stora antalet faktorer som går in i fråga om prestanda publicerar Microsoft inte förväntade frågor per sekund-nummer. FRÅGOR per sekund-uppskattningar måste utvecklas oberoende av alla kunder som använder tjänst nivå, konfiguration, index och de fråge konstruktioner som är giltiga för ditt program. Index storlek och komplexitet, fråga om storlek och komplexitet och mängden trafik är primär Determinant av frågor per sekund. Det finns inget sätt att erbjuda meningsfulla uppskattningar när sådana faktorer är okända.
-
-Uppskattningar är mer förutsägbara när de beräknas på tjänster som körs på dedikerade resurser (Basic-och standard-nivåer). Du kan beräkna frågor per sekund mer noggrant eftersom du har kontroll över fler parametrar. Information om hur du använder uppskattning finns i [Azure kognitiv sökning prestanda och optimering](search-performance-optimization.md).
-
-För lagrings optimerade nivåer (L1 och L2) bör du förvänta dig ett lägre flöde för frågor och högre latens än standard-nivåerna.
-
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Beräkna och hantera kostnader](search-sku-manage-costs.md)
+> [Hantera kostnader](search-sku-manage-costs.md)

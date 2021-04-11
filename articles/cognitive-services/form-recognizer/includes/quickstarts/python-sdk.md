@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 03/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: f28fba451a5fbad9efe76e0d6bd39488beebb103
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e37ff8a003bc10d69fd32794f26acfa8f5326423
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104761130"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073293"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -77,7 +77,7 @@ Skapa variabler för resursens Azure-slutpunkt och nyckel.
 
 ## <a name="object-model"></a>Objekt modell
 
-Med formulär tolken kan du skapa två olika klient typer. Det första `form_recognizer_client` används för att fråga tjänsten om identifierade formulär fält och innehåll. Den andra används `form_training_client` för att skapa och hantera anpassade modeller som du kan använda för att förbättra igenkänningen. 
+Med formulär tolken kan du skapa två olika klient typer. Det första `form_recognizer_client` används för att fråga tjänsten om att identifiera formulär fält och innehåll. Den andra `form_training_client` används för att skapa och hantera anpassade modeller som du kan använda för att förbättra igenkänningen. 
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 
@@ -139,7 +139,7 @@ Du måste lägga till referenser till URL: erna för din utbildning och testa da
 * [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
   
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="Hämtning av SAS-URL":::
-* Använd exemplen från och kvitto bilder som ingår i exemplen nedan (även tillgängligt på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) eller så kan du använda ovanstående steg för att hämta SAS-URL: en för ett enskilt dokument i Blob Storage. 
+* Använd exempel formuläret och kvitto bilder som ingår i exemplen nedan (finns också på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) eller så kan du använda ovanstående steg för att hämta SAS-URL: en för ett enskilt dokument i Blob Storage. 
 
 > [!NOTE]
 > Kodfragmenten i den här guiden använder fjärrformulär som används av URL: er. Om du vill bearbeta lokala formulär dokument i stället, se de relaterade metoderna i [referens dokumentation](/python/api/azure-ai-formrecognizer) och [exempel](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
