@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1035f43642f3884e7cc0f6ab47e9c9afd1f29170
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 97718fef0aecd07dd364677ce1b72eb5bba78475
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102107771"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384280"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrera ett SAML-program i Azure AD B2C
 
@@ -45,7 +45,7 @@ Organisationer som använder Azure AD B2C som sin kund identitets-och åtkomst h
 3. Om användaren loggar in med en federerad identitets leverantör skickas ett token-svar till Azure AD B2C.
 4. Azure AD B2C genererar en SAML-kontroll och skickar den till programmet.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Slutför stegen i [Kom igång med anpassade principer i Azure AD B2C](custom-policy-get-started.md). Du behöver den anpassade principen *SocialAndLocalAccounts* från start paketet för anpassad princip som beskrivs i artikeln.
 * Grundläggande förståelse för SAML-protokollet och förtrogenhet med programmets SAML-implementering.
@@ -78,15 +78,35 @@ För att skapa en förtroende relation mellan ditt program och Azure AD B2C mås
 
 | Användning | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| Signering av SAML-svar | Ja | Ett certifikat med en privat nyckel lagrad i Azure AD B2C. Det här certifikatet används av Azure AD B2C för att signera SAML-svaret som skickas till ditt program. Programmet läser Azure AD B2C offentliga nyckel för metadata för att verifiera signaturen för SAML-svaret. |
+| Signering av SAML-svar | Ja  | Ett certifikat med en privat nyckel lagrad i Azure AD B2C. Det här certifikatet används av Azure AD B2C för att signera SAML-svaret som skickas till ditt program. Programmet läser Azure AD B2C offentliga nyckel för metadata för att verifiera signaturen för SAML-svaret. |
+| Signering av SAML-kontroll | Ja | Ett certifikat med en privat nyckel lagrad i Azure AD B2C. Det här certifikatet används av Azure AD B2C för att signera SAML-svarets kontroll. `<saml:Assertion>`Delen av SAML-svaret.  |
 
 I en produktions miljö rekommenderar vi att du använder certifikat som utfärdats av en offentlig certifikat utfärdare. Du kan dock också slutföra den här proceduren med självsignerade certifikat.
 
-### <a name="prepare-a-self-signed-certificate-for-saml-response-signing"></a>Förbereda ett självsignerat certifikat för SAML-svars signering
+### <a name="create-a-policy-key"></a>Skapa en princip nyckel
 
-Du måste skapa ett signerings certifikat för SAML-signering så att ditt program kan lita på att certifikatet är betrott från Azure AD B2C.
+Om du vill ha en förtroende relation mellan ditt program och Azure AD B2C skapar du ett signerings certifikat för SAML-svar. Azure AD B2C använder det här certifikatet för att signera SAML-svaret som skickats till ditt program. Programmet läser Azure AD B2C offentliga nyckel för metadata för att verifiera signaturen för SAML-svaret. 
+
+> [!TIP]
+> Du kan använda den princip nyckel som du skapar i det här avsnittet för andra orsaker, t. ex. inloggning i [SAML-kontrollen](saml-service-provider-options.md#saml-assertions-signature). 
+
+### <a name="obtain-a-certificate"></a>Skaffa ett certifikat
 
 [!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
+
+### <a name="upload-the-certificate"></a>Ladda upp certifikatet
+
+Du måste lagra ditt certifikat i Azure AD B2C-klienten.
+
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
+1. Kontrol lera att du använder den katalog som innehåller din Azure AD B2C-klient. Välj **katalog + prenumerations** filter på den översta menyn och välj den katalog som innehåller din klient.
+1. Välj **Alla tjänster** på menyn högst upp till vänster i Azure-portalen och sök efter och välj **Azure AD B2C**.
+1. På sidan Översikt väljer du **ID för identitets miljö**.
+1. Välj **princip nycklar** och välj sedan **Lägg till**.
+1. För **alternativ** väljer du `Upload` .
+1. Ange ett **namn** för princip nyckeln. Till exempel `SamlIdpCert`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
+1. Bläddra till och välj din Certificate. pfx-fil med den privata nyckeln.
+1. Klicka på **Skapa**.
 
 ## <a name="enable-your-policy-to-connect-with-a-saml-application"></a>Aktivera principen för att ansluta till ett SAML-program
 
@@ -111,6 +131,7 @@ Leta upp `<ClaimsProviders>` avsnittet och Lägg till följande XML-kodfragment 
       </Metadata>
       <CryptographicKeys>
         <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
+        <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
       </CryptographicKeys>
       <InputClaims/>
       <OutputClaims/>
@@ -147,51 +168,6 @@ Du kan ändra värdet för `IssuerUri` metadataobjektet i den tekniska profilen 
     </TechnicalProfile>
 ```
 
-#### <a name="sign-the-azure-ad-b2c-idp-saml-metadata-optional"></a>Signera Azure AD B2C SAML-metadata för IdP (valfritt)
-
-Du kan instruera Azure AD B2C att signera SAML IdP metadata-dokumentet, om det krävs av programmet. Det gör du genom att generera och ladda upp en SAML-IdP metadata signerings princip nyckel som visas i [förbereda ett självsignerat certifikat för SAML-svars signering](#prepare-a-self-signed-certificate-for-saml-response-signing). Konfigurera sedan `MetadataSigning` metadataobjektet i den tekniska profilen för utfärdare av SAML-token. `StorageReferenceId`Måste referera till princip nyckel namnet.
-
-```xml
-<ClaimsProvider>
-  <DisplayName>Token Issuer</DisplayName>
-  <TechnicalProfiles>
-    <!-- SAML Token Issuer technical profile -->
-    <TechnicalProfile Id="Saml2AssertionIssuer">
-      <DisplayName>Token Issuer</DisplayName>
-      <Protocol Name="SAML2"/>
-      <OutputTokenFormat>SAML2</OutputTokenFormat>
-        ...
-      <CryptographicKeys>
-        <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlMetadataCert"/>
-        ...
-      </CryptographicKeys>
-    ...
-    </TechnicalProfile>
-```
-
-#### <a name="sign-the-azure-ad-b2c-idp-saml-response-element-optional"></a>Signera Azure AD B2C IdP SAML Response element (valfritt)
-
-Du kan ange ett certifikat som ska användas för att signera SAML-meddelanden. Meddelandet är det `<samlp:Response>` element i SAML-svaret som skickas till programmet.
-
-Om du vill ange ett certifikat genererar och laddar du upp en princip nyckel som visas i [förbereda ett självsignerat certifikat för signering av SAML-svar](#prepare-a-self-signed-certificate-for-saml-response-signing). Konfigurera sedan `SamlMessageSigning` metadataobjektet i den tekniska profilen för utfärdare av SAML-token. `StorageReferenceId`Måste referera till princip nyckel namnet.
-
-```xml
-<ClaimsProvider>
-  <DisplayName>Token Issuer</DisplayName>
-  <TechnicalProfiles>
-    <!-- SAML Token Issuer technical profile -->
-    <TechnicalProfile Id="Saml2AssertionIssuer">
-      <DisplayName>Token Issuer</DisplayName>
-      <Protocol Name="SAML2"/>
-      <OutputTokenFormat>SAML2</OutputTokenFormat>
-        ...
-      <CryptographicKeys>
-        <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlMessageCert"/>
-        ...
-      </CryptographicKeys>
-    ...
-    </TechnicalProfile>
-```
 ## <a name="configure-your-policy-to-issue-a-saml-response"></a>Konfigurera principen för att utfärda ett SAML-svar
 
 Nu när principen kan skapa SAML-svar måste du konfigurera principen för att utfärda ett SAML-svar i stället för standard-JWT-svaret till ditt program.

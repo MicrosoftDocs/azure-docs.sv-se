@@ -10,17 +10,17 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 03/19/2021
-ms.openlocfilehash: e2de694a153276dcace1070d35af44dec1056e03
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9f7df4889d1d54605ab2b5cd79f3039f06fab197
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564933"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027881"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-database"></a>Guide för migrering: SQL Server till Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
-Den här guiden hjälper dig att migrera SQL Server-instansen till Azure SQL Database. 
+I den här guiden får du lära dig [hur du migrerar](https://azure.microsoft.com/migration/migration-journey) din SQL Server-instans till Azure SQL Database. 
 
 Du kan migrera SQL Server som körs lokalt eller på: 
 
@@ -36,7 +36,7 @@ Mer information om migrering finns i [Översikt över migrering](sql-server-to-s
 
 ## <a name="prerequisites"></a>Förutsättningar 
 
-Kontrol lera att du har följande förutsättningar för att migrera SQL Server till Azure SQL Database: 
+Kontrol lera att du har följande förutsättningar för att [SQL Server migreringen](https://azure.microsoft.com/migration/migration-journey) till Azure SQL Database: 
 
 - En vald [metod för migrering](sql-server-to-sql-database-overview.md#compare-migration-options) och motsvarande verktyg.
 - [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) installerat på en dator som kan ansluta till din käll SQL Server.
@@ -47,7 +47,7 @@ Kontrol lera att du har följande förutsättningar för att migrera SQL Server 
 
 ## <a name="pre-migration"></a>Före migrering
 
-När du har kontrollerat att käll miljön stöds börjar du med steget före migreringen. Identifiera alla befintliga data källor, utvärdera möjligheterna för migrering och identifiera eventuella spärrnings problem som kan förhindra migreringen. 
+När du har kontrollerat att käll miljön stöds börjar du med steget före migreringen. Identifiera alla befintliga data källor, utvärdera möjligheterna för migrering och identifiera eventuella spärrnings problem som kan förhindra din [Azure Cloud-migrering](https://azure.microsoft.com/migration).
 
 ### <a name="discover"></a>Identifiera
 
@@ -200,6 +200,10 @@ Läs mer i [hantera Azure SQL Database efter migreringen](../../database/manage-
 
 - För en matris med tjänster och verktyg från Microsoft och tredje part som är tillgängliga för att hjälpa dig med olika scenarier för databas-och data migrering samt särskilda uppgifter, se [tjänst och verktyg för datamigrering](../../../dms/dms-tools-matrix.md).
 
+
+- Mer information om [Azure Migrate](https://azure.microsoft.com/services/azure-migrate) finns i
+   - [Azure Migrate](../../../migrate/migrate-services-overview.md)
+
 - Mer information om SQL Database finns i:
     - [En översikt över Azure SQL Database](../../database/sql-database-paas-overview.md)
    - [Kostnad för total ägande kostnad för Azure](https://azure.microsoft.com/pricing/tco/calculator/) 
@@ -207,7 +211,8 @@ Läs mer i [hantera Azure SQL Database efter migreringen](../../database/manage-
 
 - Mer information om ramverket och implementerings cykeln för molnbaserad migrering finns i
    -  [Cloud Adoption Framework för Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
-   -  [Metod tips för kostnads-och storleks arbets belastningar migreras till Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Metod tips för att kostnads fritt och ändra storlek på arbets belastningar för migrering till Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Molnmigrering resurser](https://azure.microsoft.com/migration/resources)
 
 - Information om hur du bedömer program åtkomst lagret finns i [Data Access Migration Toolkit (för hands version)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)
 - Mer information om hur du utför data åtkomst Layer A/B-testning finns [Database experimentation Assistant](/sql/dea/database-experimentation-assistant-overview).

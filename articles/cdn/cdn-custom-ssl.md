@@ -5,15 +5,15 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 03/26/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 275afc504a5e7b92ae3274c02372eee6b488c782
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6f77bac93b7bb5e3319409c01e328c73cd08a9a0
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102616408"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058960"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Självstudiekurs: Konfigurera HTTPS på en anpassad Azure CDN-domän
 
@@ -172,15 +172,18 @@ Ge Azure CDN behörighet att komma åt certifikaten (hemligheterna) på ditt Azu
 
 3. Under Certifikathanteringstyp väljer du **Använd mitt eget certifikat**. 
 
-    ![Konfigurera ditt certifikat](./media/cdn-custom-ssl/cdn-configure-your-certificate.png)
+    :::image type="content" source="./media/cdn-custom-ssl/cdn-configure-your-certificate.png" alt-text="Skärm bild av hur du konfigurerar certifikat för CDN-slutpunkten.":::
 
-4. Välj nyckelvalv, certifikat (hemlighet) och certifikatversion.
+4. Välj ett nyckel valv, certifikat/hemlighet och certifikat/hemlig version.
 
     Azure CDN visar följande information: 
     - Nyckelvalvskonton för ditt prenumerations-ID. 
-    - Certifikaten (hemligheterna) i det valda nyckelvalvet. 
-    - Tillgängliga certifikatversioner. 
+    - Certifikaten/hemligheterna under det valda nyckel valvet. 
+    - Tillgängliga Certificate/Secret-versioner.
  
+    > [!NOTE]
+    > Om du vill att certifikatet automatiskt ska roteras till den senaste versionen när en nyare version av certifikatet är tillgängligt i Key Vault, ställer du in certifikat/hemlig version till "senaste". Om du väljer en viss version måste du välja den nya versionen manuellt för certifikat rotationen. Det tar upp till 24 timmar innan den nya versionen av certifikatet/hemligheten kan distribueras. 
+   
 5. Välj **På** för att aktivera HTTPS.
   
 6. När du använder ditt certifikat krävs inte domän validering. Fortsätt att [vänta på spridning](#wait-for-propagation).
@@ -234,7 +237,7 @@ DigiCert skickar ett verifierings-e-postmeddelande till följande e-postadresser
 * **hostmaster@your-domain-name.com**  
 * **postmaster@your-domain-name.com**  
 
-Du bör få ett e-postmeddelande på några minuter så att du kan godkänna begäran. Om du använder ett skräp post filter, Lägg till verification@digicert.com i listan över tillåtna. Kontakta Microsoft-supporten om du inte får ett e-postmeddelande inom 24 timmar.
+Du bör få ett e-postmeddelande på några minuter så att du kan godkänna begäran. Om du använder ett skräp post filter ska du lägga till verification@digicert.com det i dess tillåten. Kontakta Microsoft-supporten om du inte får ett e-postmeddelande inom 24 timmar.
     
 ![Domänverifieringsmeddelande](./media/cdn-custom-ssl/domain-validation-email.png)
 

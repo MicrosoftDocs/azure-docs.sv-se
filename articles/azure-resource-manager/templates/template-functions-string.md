@@ -4,10 +4,10 @@ description: Beskriver de funktioner som används i en Azure Resource Manager ma
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.openlocfilehash: cff1424562b45bc722f87fa3ec896c1c641ee758
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105108850"
 ---
 # <a name="string-functions-for-arm-templates"></a>Sträng funktioner för ARM-mallar
@@ -58,9 +58,9 @@ Returnerar den base64-representation av Indatasträngen.
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| inputString |Yes |sträng |Värdet som ska returneras som en Base64-representation. |
+| inputString |Ja |sträng |Värdet som ska returneras som en Base64-representation. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -141,9 +141,9 @@ Konverterar en Base64-representation till ett JSON-objekt.
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| base64Value |Yes |sträng |Den base64-representation som ska konverteras till ett JSON-objekt. |
+| base64Value |Ja |sträng |Den base64-representation som ska konverteras till ett JSON-objekt. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -225,9 +225,9 @@ Konverterar en Base64-representation till en sträng.
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| base64Value |Yes |sträng |Den base64-representation som ska konverteras till en sträng. |
+| base64Value |Ja |sträng |Den base64-representation som ska konverteras till en sträng. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -310,10 +310,10 @@ För att förenkla sträng sammanfogningen stöder bicep en syntax för [String-
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |sträng eller matris |Den första strängen eller matrisen för sammanfogning. |
-| ytterligare argument |No |sträng eller matris |Ytterligare strängar eller matriser i sekventiell ordning för sammanfogning. |
+| arg1 |Ja |sträng eller matris |Den första strängen eller matrisen för sammanfogning. |
+| ytterligare argument |Inga |sträng eller matris |Ytterligare strängar eller matriser i sekventiell ordning för sammanfogning. |
 
 Den här funktionen kan ta valfritt antal argument och kan acceptera antingen strängar eller matriser för parametrarna. Du kan dock inte ange både matriser och strängar för parametrar. Strängar sammanfogas bara med andra strängar.
 
@@ -441,10 +441,10 @@ Kontrollerar om en matris innehåller ett värde, ett objekt innehåller en nyck
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| container |Yes |matris, objekt eller sträng |Värdet som innehåller värdet som ska hittas. |
-| itemToFind |Yes |sträng eller heltal |Det värde som ska hittas. |
+| container |Ja |matris, objekt eller sträng |Värdet som innehåller värdet som ska hittas. |
+| itemToFind |Ja |sträng eller heltal |Det värde som ska hittas. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -553,9 +553,9 @@ Konverterar ett värde till en data-URI.
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Yes |sträng |Det värde som ska konverteras till en data-URI. |
+| stringToConvert |Ja |sträng |Det värde som ska konverteras till en data-URI. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -622,9 +622,9 @@ Konverterar ett data-URI-formaterat värde till en sträng.
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Yes |sträng |Data-URI-värdet som ska konverteras. |
+| dataUriToConvert |Ja |sträng |Data-URI-värdet som ska konverteras. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -691,9 +691,9 @@ Anger om en matris, ett objekt eller en sträng är tom.
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Yes |matris, objekt eller sträng |Värdet för att kontrol lera om det är tomt. |
+| itemToTest |Ja |matris, objekt eller sträng |Värdet för att kontrol lera om det är tomt. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -772,10 +772,10 @@ Anger om en sträng slutar med ett värde. Jämförelsen är inte Skift läges k
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |sträng |Det värde som innehåller objektet som ska hittas. |
-| stringToFind |Yes |sträng |Det värde som ska hittas. |
+| stringToSearch |Ja |sträng |Det värde som innehåller objektet som ska hittas. |
+| stringToFind |Ja |sträng |Det värde som ska hittas. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -853,9 +853,9 @@ Returnerar det första tecken strängen eller det första elementet i matrisen.
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |matris eller sträng |Värdet för att hämta det första elementet eller specialtecknet. |
+| arg1 |Ja |matris eller sträng |Värdet för att hämta det första elementet eller specialtecknet. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -922,11 +922,11 @@ Skapar en formaterad sträng från angivna värden.
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| formatString | Yes | sträng | Strängen för sammansatt format. |
-| arg1 | Yes | sträng, heltal eller boolesk | Värdet som ska tas med i den formaterade strängen. |
-| ytterligare argument | No | sträng, heltal eller boolesk | Ytterligare värden som ska tas med i den formaterade strängen. |
+| formatString | Ja | sträng | Strängen för sammansatt format. |
+| arg1 | Ja | sträng, heltal eller boolesk | Värdet som ska tas med i den formaterade strängen. |
+| ytterligare argument | Inga | sträng, heltal eller boolesk | Ytterligare värden som ska tas med i den formaterade strängen. |
 
 ### <a name="remarks"></a>Kommentarer
 
@@ -993,10 +993,10 @@ Skapar ett värde i formatet för en globalt unik identifierare baserat på de v
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| baseString |Yes |sträng |Värdet som används i hash-funktionen för att skapa GUID. |
-| ytterligare parametrar efter behov |No |sträng |Du kan lägga till så många strängar som behövs för att skapa värdet som anger nivån av unikhet. |
+| baseString |Ja |sträng |Värdet som används i hash-funktionen för att skapa GUID. |
+| ytterligare parametrar efter behov |Inga |sträng |Du kan lägga till så många strängar som behövs för att skapa värdet som anger nivån av unikhet. |
 
 ### <a name="remarks"></a>Kommentarer
 
@@ -1106,10 +1106,10 @@ Returnerar den första positionen för ett värde i en sträng. Jämförelsen ä
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |sträng |Det värde som innehåller objektet som ska hittas. |
-| stringToFind |Yes |sträng |Det värde som ska hittas. |
+| stringToSearch |Ja |sträng |Det värde som innehåller objektet som ska hittas. |
+| stringToFind |Ja |sträng |Det värde som ska hittas. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -1189,9 +1189,9 @@ Returnerar det sista tecken strängen eller det sista elementet i matrisen.
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |matris eller sträng |Värdet för att hämta det sista elementet eller specialtecknet. |
+| arg1 |Ja |matris eller sträng |Värdet för att hämta det sista elementet eller specialtecknet. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -1258,10 +1258,10 @@ Returnerar den sista positionen för ett värde i en sträng. Jämförelsen är 
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |sträng |Det värde som innehåller objektet som ska hittas. |
-| stringToFind |Yes |sträng |Det värde som ska hittas. |
+| stringToSearch |Ja |sträng |Det värde som innehåller objektet som ska hittas. |
+| stringToFind |Ja |sträng |Det värde som ska hittas. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -1333,9 +1333,9 @@ Returnerar antalet tecken i en sträng, element i en matris eller på rot nivå 
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |matris, sträng eller objekt |Den matris som ska användas för att hämta antalet element, strängen som ska användas för att hämta antalet tecken, eller objektet som ska användas för att hämta antalet rot nivå egenskaper. |
+| arg1 |Ja |matris, sträng eller objekt |Den matris som ska användas för att hämta antalet element, strängen som ska användas för att hämta antalet tecken, eller objektet som ska användas för att hämta antalet rot nivå egenskaper. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -1571,11 +1571,11 @@ Returnerar en högerjusterad sträng genom att lägga till tecken till vänster 
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| valueToPad |Yes |sträng eller heltal |Värdet till Högerjustera. |
-| totalLength |Yes |int |Det totala antalet tecken i den returnerade strängen. |
-| paddingCharacter |No |enstaka Character |Det tecken som ska användas för vänster utfyllnad tills den totala längden har uppnåtts. Standardvärdet är ett blank steg. |
+| valueToPad |Ja |sträng eller heltal |Värdet till Högerjustera. |
+| totalLength |Ja |int |Det totala antalet tecken i den returnerade strängen. |
+| paddingCharacter |Inga |enstaka Character |Det tecken som ska användas för vänster utfyllnad tills den totala längden har uppnåtts. Standardvärdet är ett blank steg. |
 
 Om den ursprungliga strängen är längre än antalet tecken som ska padas läggs inga tecken till.
 
@@ -1633,11 +1633,11 @@ Returnerar en ny sträng med alla instanser av en sträng ersatt av en annan str
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| originalString |Yes |sträng |Värdet som innehåller alla instanser av en sträng ersatt av en annan sträng. |
-| oldString |Yes |sträng |Strängen som ska tas bort från den ursprungliga strängen. |
-| newString |Yes |sträng |Strängen som ska läggas till i stället för den borttagna strängen. |
+| originalString |Ja |sträng |Värdet som innehåller alla instanser av en sträng ersatt av en annan sträng. |
+| oldString |Ja |sträng |Strängen som ska tas bort från den ursprungliga strängen. |
+| newString |Ja |sträng |Strängen som ska läggas till i stället för den borttagna strängen. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -1699,10 +1699,10 @@ Returnerar en sträng med alla tecken efter det angivna antalet tecken, eller en
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| Ursprungligt värde |Yes |matris eller sträng |Matrisen eller strängen som ska användas för att hoppa över. |
-| numberToSkip |Yes |int |Det antal element eller tecken som ska hoppas över. Om värdet är 0 eller mindre returneras alla element eller tecken i värdet. Om den är större än längden på matrisen eller strängen returneras en tom matris eller sträng. |
+| Ursprungligt värde |Ja |matris eller sträng |Matrisen eller strängen som ska användas för att hoppa över. |
+| numberToSkip |Ja |int |Det antal element eller tecken som ska hoppas över. Om värdet är 0 eller mindre returneras alla element eller tecken i värdet. Om den är större än längden på matrisen eller strängen returneras en tom matris eller sträng. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -1787,10 +1787,10 @@ Returnerar en matris med strängar som innehåller under strängarna i Indatastr
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| inputString |Yes |sträng |Strängen som ska delas. |
-| avgränsare |Yes |sträng eller matris med strängar |Avgränsaren som ska användas för att dela strängen. |
+| inputString |Ja |sträng |Strängen som ska delas. |
+| avgränsare |Ja |sträng eller matris med strängar |Avgränsaren som ska användas för att dela strängen. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -1865,10 +1865,10 @@ Anger om en sträng börjar med ett värde. Jämförelsen är inte Skift läges 
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |sträng |Det värde som innehåller objektet som ska hittas. |
-| stringToFind |Yes |sträng |Det värde som ska hittas. |
+| stringToSearch |Ja |sträng |Det värde som innehåller objektet som ska hittas. |
+| stringToFind |Ja |sträng |Det värde som ska hittas. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -1946,9 +1946,9 @@ Konverterar det angivna värdet till en sträng.
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Yes | Valfri |Värdet som ska konverteras till sträng. Alla typer av värden kan konverteras, inklusive objekt och matriser. |
+| valueToConvert |Ja | Valfri |Värdet som ska konverteras till sträng. Alla typer av värden kan konverteras, inklusive objekt och matriser. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -2040,11 +2040,11 @@ Returnerar en under sträng som börjar vid den angivna tecken positionen och so
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Yes |sträng |Den ursprungliga sträng som under strängen extraheras från. |
-| Start |No |int |Den nollbaserade start tecken positionen för under strängen. |
-| length |No |int |Antalet tecken för under strängen. Måste referera till en plats inom strängen. Måste vara noll eller större. |
+| stringToParse |Ja |sträng |Den ursprungliga sträng som under strängen extraheras från. |
+| Start |Inga |int |Den nollbaserade start tecken positionen för under strängen. |
+| length |Inga |int |Antalet tecken för under strängen. Måste referera till en plats inom strängen. Måste vara noll eller större. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -2126,10 +2126,10 @@ Returnerar en sträng med det angivna antalet tecken från början av strängen,
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| Ursprungligt värde |Yes |matris eller sträng |Matrisen eller strängen som elementen ska tas från. |
-| numberToTake |Yes |int |Det antal element eller tecken som ska vidtas. Om värdet är 0 eller mindre returneras en tom matris eller sträng. Om det är större än längden på matrisen eller strängen returneras alla element i matrisen eller strängen. |
+| Ursprungligt värde |Ja |matris eller sträng |Matrisen eller strängen som elementen ska tas från. |
+| numberToTake |Ja |int |Det antal element eller tecken som ska vidtas. Om värdet är 0 eller mindre returneras en tom matris eller sträng. Om det är större än längden på matrisen eller strängen returneras alla element i matrisen eller strängen. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -2214,9 +2214,9 @@ Konverterar den angivna strängen till gemener.
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Yes |sträng |Värdet som ska konverteras till gemener. |
+| stringToChange |Ja |sträng |Värdet som ska konverteras till gemener. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -2278,9 +2278,9 @@ Konverterar den angivna strängen till versaler.
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Yes |sträng |Värdet som ska konverteras till versaler. |
+| stringToChange |Ja |sträng |Värdet som ska konverteras till versaler. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -2342,9 +2342,9 @@ Tar bort alla inledande och avslutande blank stegs tecken från den angivna str�
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Yes |sträng |Det värde som ska trimmas. |
+| stringToTrim |Ja |sträng |Det värde som ska trimmas. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -2400,10 +2400,10 @@ Skapar en deterministisk hash-sträng baserat på de värden som anges som param
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| baseString |Yes |sträng |Värdet som används i hash-funktionen för att skapa en unik sträng. |
-| ytterligare parametrar efter behov |No |sträng |Du kan lägga till så många strängar som behövs för att skapa värdet som anger nivån av unikhet. |
+| baseString |Ja |sträng |Värdet som används i hash-funktionen för att skapa en unik sträng. |
+| ytterligare parametrar efter behov |Inga |sträng |Du kan lägga till så många strängar som behövs för att skapa värdet som anger nivån av unikhet. |
 
 ### <a name="remarks"></a>Kommentarer
 
@@ -2532,10 +2532,10 @@ Skapar en absolut URI genom att kombinera baseUri-och relativeUri-strängen.
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| baseUri |Yes |sträng |Bas-URI-sträng. Ta hand om det beteende som rör hanteringen av det avslutande snedstrecket ("/"), enligt beskrivningen i den här tabellen.  |
-| relativeUri |Yes |sträng |Den relativa URI-sträng som ska läggas till i bas-URI-strängen. |
+| baseUri |Ja |sträng |Bas-URI-sträng. Ta hand om det beteende som rör hanteringen av det avslutande snedstrecket ("/"), enligt beskrivningen i den här tabellen.  |
+| relativeUri |Ja |sträng |Den relativa URI-sträng som ska läggas till i bas-URI-strängen. |
 
 * Om **baseUri** slutar på ett avslutande snedstreck är resultatet bara **baseUri** , följt av **relativeUri**.
 
@@ -2637,9 +2637,9 @@ Kodar en URI.
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Yes |sträng |Det värde som ska kodas. |
+| stringToEncode |Ja |sträng |Det värde som ska kodas. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -2707,9 +2707,9 @@ Returnerar en sträng med ett URI-kodat värde.
 
 ### <a name="parameters"></a>Parametrar
 
-| Parameter | Krävs | Typ | Description |
+| Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Yes |sträng |Det URI-kodade värdet som ska konverteras till en sträng. |
+| uriEncodedString |Ja |sträng |Det URI-kodade värdet som ska konverteras till en sträng. |
 
 ### <a name="return-value"></a>Returvärde
 

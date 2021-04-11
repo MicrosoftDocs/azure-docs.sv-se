@@ -8,12 +8,12 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f55a82eeddc8d4515b0f1333b615244976975097
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6bcb020b14952541c673592c1040fca211ed4edf
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104878242"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011859"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Använd distribuerad spårning med Azure våren Cloud
 
@@ -82,7 +82,7 @@ Lägg till följande inställningar i konfigurations källan som ska användas n
 2. Om du vill se spårnings förrymder som skickas mellan Eureka-servern, konfigurations servern och användarens appar: ange `management.tracing.egressIgnorePattern` till "/API/v2/spans |/v2/Apps/.*/Permissions |/Eureka/.*| /oauth/.*".
 
 *appsettings.jspå* är till exempel följande egenskaper:
- 
+
 ```json
 "management": {
     "tracing": {
@@ -119,25 +119,58 @@ Om du vill följa de här procedurerna behöver du en moln tjänst för Azure v�
 
 1. Hoppa över det här steget om du följde vår [Guide för att förbereda ett Azure våren Cloud-program](how-to-prepare-app-deployment.md). Annars går du till din lokala utvecklings miljö och redigerar pom.xml-filen så att den inkluderar följande Sleuth-beroende för fjäder molnet:
 
-    ```xml
-    <dependencyManagement>
-        <dependencies>
+    * Start version för våren < 2.4. x.
+
+      ```xml
+      <dependencyManagement>
+          <dependencies>
+              <dependency>
+                  <groupId>org.springframework.cloud</groupId>
+                  <artifactId>spring-cloud-sleuth</artifactId>
+                  <version>${spring-cloud-sleuth.version}</version>
+                  <type>pom</type>
+                  <scope>import</scope>
+              </dependency>
+          </dependencies>
+      </dependencyManagement>
+      <dependencies>
+          <dependency>
+              <groupId>org.springframework.cloud</groupId>
+              <artifactId>spring-cloud-starter-sleuth</artifactId>
+          </dependency>
+          <dependency>
+              <groupId>org.springframework.cloud</groupId>
+              <artifactId>spring-cloud-starter-zipkin</artifactId>
+          </dependency>
+      </dependencies>
+      ```
+
+    * Start version för våren >= 2.4. x.
+
+      ```xml
+      <dependencyManagement>
+          <dependencies>
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-sleuth</artifactId>
-                <version>${spring-cloud-sleuth.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
-    </dependencies>
-    ```
+                  <groupId>org.springframework.cloud</groupId>
+                  <artifactId>spring-cloud-sleuth</artifactId>
+                  <version>${spring-cloud-sleuth.version}</version>
+                  <type>pom</type>
+                  <scope>import</scope>
+              </dependency>
+          </dependencies>
+      </dependencyManagement>
+      <dependencies>
+          <dependency>
+              <groupId>org.springframework.cloud</groupId>
+              <artifactId>spring-cloud-starter-sleuth</artifactId>
+          </dependency>
+          <dependency>
+              <groupId>org.springframework.cloud</groupId>
+              <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+           </dependency>
+      </dependencies>
+      ```
+
 
 1. Bygg och distribuera igen för din Azure våren Cloud-tjänst för att avspegla dessa ändringar.
 

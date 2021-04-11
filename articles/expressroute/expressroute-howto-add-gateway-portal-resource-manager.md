@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: e70b41dfba03b7439313350746724c6f8e90bc34
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f81446111ab87b280d50caceb93beefc7aedef3b
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564780"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110333"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Självstudie: Konfigurera en virtuell nätverksgateway för ExpressRoute med hjälp av Azure Portal
 > [!div class="op_single_selector"]
@@ -63,7 +63,7 @@ Du kan visa en [video](https://azure.microsoft.com/documentation/videos/azure-ex
    
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-gateway-subnet.png" alt-text="Lägg till gateway-undernätet":::
 
-1. **Namnet** på undernätet fylls automatiskt i med värdet GatewaySubnet. Det här värdet krävs för att Azure ska kunna identifiera undernätet som gateway-undernätet. Justera värdena för automatiskt ifyllt **adress intervall** så att de överensstämmer med dina konfigurations krav. Vi rekommenderar att du skapar ett Gateway-undernät med en/27 eller större (/26,/25 osv.).
+1. **Namnet** på undernätet fylls automatiskt i med värdet GatewaySubnet. Det här värdet krävs för att Azure ska kunna identifiera undernätet som gateway-undernätet. Justera värdena för automatiskt ifyllt **adress intervall** så att de överensstämmer med dina konfigurations krav. Vi rekommenderar att du skapar ett Gateway-undernät med en/27 eller större (/26,/25 osv.). Om du planerar att ansluta 16 ExpressRoute-kretsar till din gateway, **måste** du skapa ett Gateway-undernät på/26 eller större.
 
     Om du använder ett virtuellt nätverk med dubbla stackar och planerar att använda IPv6-baserad privat peering över ExpressRoute, klickar du på **Lägg till ip6-adress utrymme** och värden för **IPv6** -adressintervall.
 

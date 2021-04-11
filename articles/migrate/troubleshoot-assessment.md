@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
 ms.openlocfilehash: 78e54543c94cd6e8434023b61516242c2491f353
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104863606"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Felsöka utvärdering/beroendevisualisering
@@ -22,7 +22,7 @@ Den här artikeln hjälper dig att felsöka problem med utvärderings-och beroen
 
 Åtgärda problem med utvärderings beredskap enligt följande:
 
-**Ge** | **Åtgärda**
+**Problem** | **Åtgärda**
 --- | ---
 Start typen stöds inte | Azure har inte stöd för virtuella datorer med en EFI-starttyp. Vi rekommenderar att du konverterar start typen till BIOS innan du kör en migrering. <br/><br/>Du kan använda migrering av Azure Migrate Server för att hantera migrering av sådana virtuella datorer. Den kommer att konvertera start typen för den virtuella datorn till BIOS under migreringen.
 Villkorligt Windows-operativsystem som stöds | Operativ systemet har passerat sitt slutdatum och måste ha ett anpassat support avtal (CSA) för [support i Azure](/troubleshoot/azure/virtual-machines/server-software-support). Överväg att uppgradera innan du migrerar till Azure. Läs informationen om hur du [förbereder servrar som kör Windows Server 2003](prepare-windows-server-2003-migration.md) för migrering till Azure.

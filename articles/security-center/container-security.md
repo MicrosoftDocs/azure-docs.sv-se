@@ -1,23 +1,18 @@
 ---
-title: Behållar säkerhet i Azure Security Center | Microsoft Docs
-description: Läs mer om Azure Security Center behållar säkerhetsfunktioner.
-services: security-center
-documentationcenter: na
+title: Behållar säkerhet med Azure Security Center och Azure Defender
+description: Lär dig mer om Azure Security Center behållar säkerhetsfunktioner
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/07/2021
+ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: 3b5204f1d390388c2dc9a10ac2ca0234f6b0499b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9fddb27ee6a1139fa8b07c6c19dd4fdf1a20096e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101349"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029152"
 ---
 # <a name="container-security-in-security-center"></a>Containersäkerhet i Security Center
 
@@ -27,9 +22,9 @@ Security Center kan skydda följande behållare resurs typer:
 
 | Resurstyp | Skydd som erbjuds av Security Center |
 |:--------------------:|-----------|
-| ![Kubernetes-tjänst](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)<br>**Azure Kubernetes service-kluster (AKS)** | -Kontinuerlig utvärdering av dina AKS-klusters konfigurationer för att ge insyn i fel konfiguration och rikt linjer som hjälper dig att lösa eventuella identifierade problem.<br>[Lär dig mer om miljö härdning genom säkerhets rekommendationer](#environment-hardening).<br><br>-Hot skydd för AKS-kluster och Linux-noder. Aviseringar för misstänkta aktiviteter tillhandahålls av de valfria  [Azure Defender-Kubernetes](defender-for-kubernetes-introduction.md).<br>[Läs mer om kör tids skydd för AKS-noder och-kluster](#run-time-protection-for-aks-nodes-and-clusters).|
-| ![Container värd](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)<br>**Behållar värdar**<br>(Virtuella datorer som kör Docker) | – Kontinuerlig utvärdering av Docker-konfigurationerna för att ge insyn i fel konfiguration och rikt linjer som hjälper dig att lösa eventuella upptäckta problem med de valfria  [Azure Defender-servrarna](defender-for-servers-introduction.md).<br>[Lär dig mer om miljö härdning genom säkerhets rekommendationer](#environment-hardening).|
-| ![Container Registry](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)<br>**Azure Container Registry-register (ACR)** | – Sårbarhets bedömning och hanterings verktyg för avbildningarna i dina Azure Resource Manager-baserade ACR-register med valfria [Azure Defender för behållar register](defender-for-container-registries-introduction.md).<br>[Läs mer om att skanna behållar avbildningar för sårbarheter](#vulnerability-management---scanning-container-images). |
+| ![Kubernetes-tjänst](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)<br>**Kubernetes-kluster** | Kontinuerlig utvärdering av dina kluster för att ge insyn i fel konfiguration och rikt linjer som hjälper dig att minimera identifierade hot. Lär dig mer om [miljö härdning genom säkerhets rekommendationer](#environment-hardening).<br><br>Skydd mot hot för kluster och Linux-noder. Aviseringar för misstänkta aktiviteter tillhandahålls av [Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md). Den här Azure Defender-planen skyddar dina Kubernetes-kluster oavsett om de finns i Azure Kubernetes service (AKS), lokalt eller på andra moln leverantörer. kluster. <br>Läs mer om [Kör tids skydd för Kubernetes-noder och-kluster](#run-time-protection-for-kubernetes-nodes-and-clusters).|
+| ![Container värd](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)<br>**Behållar värdar**<br>(Virtuella datorer som kör Docker) | Kontinuerlig utvärdering av Docker-miljöer för att ge insyn i fel konfiguration och rikt linjer som hjälper dig att undvika hot som identifieras av de valfria [Azure Defender-servrarna](defender-for-servers-introduction.md).<br>Lär dig mer om [miljö härdning genom säkerhets rekommendationer](#environment-hardening).|
+| ![Container Registry](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)<br>**Azure Container Registry-register (ACR)** | Verktyg för sårbarhets bedömning och hantering för avbildningarna i dina Azure Resource Manager-baserade ACR-register med valfria [Azure Defender för behållar register](defender-for-container-registries-introduction.md).<br>Läs mer om att [Skanna behållar avbildningar för sårbarheter](#vulnerability-management---scanning-container-images). |
 |||
 
 Den här artikeln beskriver hur du kan använda Security Center, tillsammans med de valfria Azure Defender-planerna för behållar register,-servrar och Kubernetes, för att förbättra, övervaka och upprätthålla säkerheten för dina behållare och deras appar.
@@ -38,7 +33,7 @@ Du lär dig hur Security Center hjälper till med dessa kärn aspekter av behål
 
 - [Sårbarhets hantering – Skanna behållar avbildningar](#vulnerability-management---scanning-container-images)
 - [Miljö härdning](#environment-hardening)
-- [Kör tids skydd för AKS-noder och-kluster](#run-time-protection-for-aks-nodes-and-clusters)
+- [Kör tids skydd för Kubernetes-noder och-kluster](#run-time-protection-for-kubernetes-nodes-and-clusters)
 
 Följande skärm bild visar sidan till gångs inventering och de olika behållar resurs typerna som skyddas av Security Center.
 
@@ -103,7 +98,7 @@ Du kan till exempel bestämma att privilegierade behållare inte ska skapas och 
 Läs mer i [skydda dina Kubernetes-arbetsbelastningar](kubernetes-workload-protections.md).
 
 
-## <a name="run-time-protection-for-aks-nodes-and-clusters"></a>Kör tids skydd för AKS-noder och-kluster
+## <a name="run-time-protection-for-kubernetes-nodes-and-clusters"></a>Kör tids skydd för Kubernetes-noder och-kluster
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 

@@ -8,19 +8,19 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 03/12/2021
+ms.date: 04/01/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q3
-ms.openlocfilehash: c3f21471e486f88daf8d79b74633c076d27ac8e2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9021c3f70c9fc053998d1b31271a1ca3b0124b4d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557589"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169546"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Så här använder du din arbetsyta med en anpassad DNS-server
 
-När du använder en Azure Machine Learning-arbetsyta med en privat slut punkt finns det [flera sätt att hantera DNS-namnmatchning](../private-link/private-endpoint-dns.md). Som standard hanterar Azure automatiskt namn matchning för din arbets yta och privat slut punkt. Om du i stället _använder en egen anpassad DNS-Server_ _ måste du manuellt skapa DNS-poster eller använda villkorliga vidarebefordrare för arbets ytan.
+När du använder en Azure Machine Learning-arbetsyta med en privat slut punkt finns det [flera sätt att hantera DNS-namnmatchning](../private-link/private-endpoint-dns.md). Som standard hanterar Azure automatiskt namn matchning för din arbets yta och privat slut punkt. Om du i stället __använder en egen anpassad DNS-Server__ måste du manuellt skapa DNS-poster eller använda villkorliga vidarebefordrare för arbets ytan.
 
 > [!IMPORTANT]
 > Den här artikeln beskriver bara hur du hittar det fullständigt kvalificerade domän namnet (FQDN) och IP-adresser för dessa poster. det ger inte information om hur du konfigurerar DNS-poster för dessa objekt. I dokumentationen för DNS-programvaran finns information om hur du lägger till poster.
@@ -46,11 +46,12 @@ Följande lista innehåller de fullständigt kvalificerade domän namnen (FQDN) 
 * `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.azure.net`
 
     > [!NOTE]
-    > Arbets ytans namn för detta FQDN kan trunkeras. Trunkering görs för att behålla FQDN som är mindre än eller lika med 63 tecken.
+    > Arbets ytans namn för detta FQDN kan trunkeras. Trunkering görs för att behålla `ml-<workspace-name, truncated>-<region>-<workspace-guid>` 63 tecken.
 * `<instance-name>.<region>.instances.azureml.ms`
 
     > [!NOTE]
-    > Beräknings instanser kan bara nås från det virtuella nätverket.
+    > * Beräknings instanser kan bara nås från det virtuella nätverket.
+    > * IP-adressen för detta FQDN är **inte** IP-adressen för beräknings instansen. Använd i stället den privata IP-adressen för den privata slut punkten för arbets ytan (IP-adresser för `*.api.azureml.ms` posterna).
 
 ## <a name="azure-china-21vianet-regions"></a>Azure Kina 21Vianet-regioner
 
@@ -61,7 +62,7 @@ Följande FQDN är för Azure Kina 21Vianet-regioner:
 * `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.chinacloudapi.cn`
 
     > [!NOTE]
-    > Arbets ytans namn för detta FQDN kan trunkeras. Trunkering görs för att behålla FQDN som är mindre än eller lika med 63 tecken.
+    > Arbets ytans namn för detta FQDN kan trunkeras. Trunkering görs för att behålla `ml-<workspace-name, truncated>-<region>-<workspace-guid>` 63 tecken.
 * `<instance-name>.<region>.instances.ml.azure.cn`
 ## <a name="find-the-ip-addresses"></a>Hitta IP-adresserna
 
@@ -108,7 +109,7 @@ Informationen som returneras från alla metoder är densamma. en lista över FQD
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.aether.ms`
-> * Om du har en beräknings instans använder du `<instance-name>.<region>.instances.azureml.ms` , där `<instance-name>` är namnet på din beräknings instans. Använd privat IP-adress för privat slut punkt för arbets ytan. Observera att det bara går att få åtkomst till beräknings instans i det virtuella nätverket.
+> * Om du har en beräknings instans använder du `<instance-name>.<region>.instances.azureml.ms` , där `<instance-name>` är namnet på din beräknings instans. Använd den privata IP-adressen för den privata slut punkten för arbets ytan. Compute-instansen kan bara nås från det virtuella nätverket.
 >
 > För alla dessa IP-adresser använder du samma adress som de `*.api.azureml.ms` poster som returneras från föregående steg.
 

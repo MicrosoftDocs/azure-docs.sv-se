@@ -1,17 +1,17 @@
 ---
 title: Active Directory autentisering – Azure Database for PostgreSQL-enskild server
 description: Lär dig mer om begreppen för Azure Active Directory för autentisering med Azure Database for PostgreSQL-enskild server
-author: rothja
-ms.author: jroth
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: c2265e0c134f3608830088e2a6754b6d3c88d0d6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ff588a2fdc079c4b5a1cd50ddc4441a079d3feed
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935762"
+ms.locfileid: "105960928"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Använda Azure Active Directory för autentisering med PostgreSQL
 

@@ -1,18 +1,18 @@
 ---
 title: Vanliga frågor och svar om Azure ExpressRoute | Microsoft Docs
-description: Vanliga frågor och svar om ExpressRoute innehåller information om Azure-tjänster, kostnader, data och anslutningar som stöds, SLA, providers och platser, bandbredd och ytterligare teknisk information.
+description: Vanliga frågor och svar om ExpressRoute innehåller information om Azure-tjänster, kostnader, data och anslutningar som stöds, SLA, providers och platser, bandbredd och annan teknisk information.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: 579a7114a06386fe48fcc074cc1095e980837ba0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: efa5c3192ca6f51c219cc308a776e6db7212103c
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732184"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552248"
 ---
 # <a name="expressroute-faq"></a>Vanliga frågor och svar för ExpressRoute
 
@@ -22,7 +22,7 @@ ExpressRoute är en Azure-tjänst som gör det möjligt att skapa privata anslut
 
 ### <a name="what-are-the-benefits-of-using-expressroute-and-private-network-connections"></a>Vilka är fördelarna med att använda ExpressRoute och privata nätverks anslutningar?
 
-ExpressRoute-anslutningar går inte via offentligt Internet. De ger högre säkerhet, tillförlitlighet och hastigheter, med lägre och konsekvent fördröjning än vanliga anslutningar via Internet. I vissa fall kan användning av ExpressRoute-anslutningar för att överföra data mellan lokala enheter och Azure ge avsevärda kostnads besparingar.
+ExpressRoute-anslutningar går inte via det offentliga Internet. De ger högre säkerhet, tillförlitlighet och hastigheter, med lägre och konsekvent fördröjning än vanliga anslutningar via Internet. I vissa fall kan användning av ExpressRoute-anslutningar för att överföra data mellan lokala enheter och Azure ge avsevärda kostnads besparingar.
 
 ### <a name="where-is-the-service-available"></a>Var finns tjänsten?
 
@@ -46,7 +46,7 @@ Nej. Du kan köpa en privat anslutning till valfri hastighet från din tjänst l
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>Har jag möjlighet att använda mer än min upphandlade bandbredd om jag betalar för en ExpressRoute-krets för en specifik bandbredd?
 
-Ja, du kan använda upp till två gånger bandbredds gränsen som du har upprättat genom att använda den tillgängliga bandbredden på den sekundära anslutningen av ExpressRoute-kretsen. Den inbyggda redundansen av kretsen konfigureras med hjälp av primära och sekundära anslutningar, var och en av de upphandlade bandbredderna till två Microsoft Enterprise Edge-routrar (msee). Bandbredden som är tillgänglig via den sekundära anslutningen kan användas för ytterligare trafik om det behövs. Eftersom den sekundära anslutningen är avsedd för redundans, är den inte garanterad och bör inte användas för ytterligare trafik under en varaktig tids period. Om du vill veta mer om hur du använder både anslutningar för att överföra trafik, se [Använd som sökväg väntar](./expressroute-optimize-routing.md#solution-use-as-path-prepending).
+Ja, du kan använda upp till två gånger bandbredds gränsen som du har upprättat genom att använda den tillgängliga bandbredden på den sekundära anslutningen av ExpressRoute-kretsen. Den inbyggda redundansen av kretsen konfigureras med hjälp av primära och sekundära anslutningar, var och en av de upphandlade bandbredderna till två Microsoft Enterprise Edge-routrar (msee). Bandbredden som är tillgänglig via den sekundära anslutningen kan användas för ytterligare trafik om det behövs. Eftersom den sekundära anslutningen är avsedd för redundans, är den inte garanterad och bör inte användas för ytterligare trafik under en varaktig tids period. Om du vill veta mer om hur du använder båda anslutningarna för att överföra trafik, se [Använd som sökväg väntar](./expressroute-optimize-routing.md#solution-use-as-path-prepending).
 
 Om du planerar att endast använda din primära anslutning för att överföra trafik, åtgärdas bandbredden för anslutningen och ett försök görs att överprenumerera på den, vilket leder till ökade paket. Om trafiken flödar genom en ExpressRoute-Gateway, är bandbredden för gateway-SKU: n fast och inte burstbar. Bandbredden för varje gateway-SKU finns i [om ExpressRoute virtuella](expressroute-about-virtual-network-gateways.md#aggthroughput)nätverksgateway.
 
@@ -95,7 +95,7 @@ Om din ExpressRoute-krets är aktive rad för Microsoft-peering för Azure kan d
 * Azure Active Directory
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azures globala tjänster community)
 * Offentliga Azure-IP-adresser för IaaS (Virtual Machines, Virtual Network gatewayer, belastnings utjämning osv.)  
-* De flesta andra Azure-tjänster stöds också. Kontrol lera direkt med den tjänst som du vill använda för att verifiera stödet.
+* De flesta andra Azure-tjänster stöds också. Markera direkt med den tjänst som du vill använda för att verifiera stödet.
 
 **Stöds inte:**
 
@@ -108,7 +108,7 @@ Om din ExpressRoute-krets är aktive rad för Microsoft-peering för Azure kan d
 
 ### <a name="public-peering"></a>Offentlig peering
 
-Offentlig peering har inaktiverats på nya ExpressRoute-kretsar. Azure-tjänster är nu tillgängliga på Microsoft-peering. Om du har skapat en krets som har skapats innan offentlig peering är inaktuell, kan du välja att använda Microsoft peering eller offentlig peering, beroende på vilka tjänster du vill ha.
+Offentlig peering har inaktiverats på nya ExpressRoute-kretsar. Azure-tjänster är nu tillgängliga på Microsoft-peering. Om du har skapat en krets som skapades innan offentlig peering var inaktuell, kan du välja att använda Microsoft-peering eller offentlig peering, beroende på vilka tjänster du vill ha.
 
 Mer information och konfigurations steg för offentlig peering finns i [ExpressRoute offentlig peering](about-public-peering.md).
 
@@ -171,7 +171,7 @@ Se [här](./designing-for-high-availability-with-expressroute.md) för att utfor
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Hur gör jag för att garantera hög tillgänglighet på ett virtuellt nätverk som är anslutet till ExpressRoute?
 
-Du kan få hög tillgänglighet genom att ansluta upp till fyra ExpressRoute-kretsar på samma peering-plats till ditt virtuella nätverk, eller genom att ansluta ExpressRoute-kretsar på olika peering-platser (till exempel Singapore, Singapore2) till ditt virtuella nätverk. Om en ExpressRoute-krets kraschar går anslutningen över till en annan ExpressRoute-krets. Trafik som lämnar ditt virtuella nätverk dirigeras som standard baserat på likvärdig kostnad routning med flera sökvägar (ECMP). Du kan använda anslutnings vikt för att föredra en krets till en annan. Mer information finns i [optimera ExpressRoute-routning](expressroute-optimize-routing.md).
+Du kan få hög tillgänglighet genom att ansluta upp till 16 ExpressRoute-kretsar på samma peering-plats till ditt virtuella nätverk, eller genom att ansluta ExpressRoute-kretsar på olika peering-platser (till exempel Singapore, Singapore2) till ditt virtuella nätverk. Om en ExpressRoute-krets kraschar går anslutningen över till en annan ExpressRoute-krets. Trafik som lämnar ditt virtuella nätverk dirigeras som standard baserat på likvärdig kostnad routning med flera sökvägar (ECMP). Du kan använda anslutnings vikt för att föredra en krets till en annan. Mer information finns i [optimera ExpressRoute-routning](expressroute-optimize-routing.md).
 
 ### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>Hur gör jag för att se till att min trafik som är avsedd för Azures offentliga tjänster som Azure Storage och Azure SQL på Microsoft peering eller offentlig peering föredras på ExpressRoute-sökvägen?
 
@@ -351,13 +351,17 @@ Se [pris information](https://azure.microsoft.com/pricing/details/expressroute/)
 Ja. ExpressRoute Premium-avgifterna gäller för de ExpressRoute-krets avgifter och avgifter som krävs av anslutnings leverantören.
 
 ## <a name="expressroute-local"></a>ExpressRoute-lokal
+
 ### <a name="what-is-expressroute-local"></a>Vad är ExpressRoute Local?
-ExpressRoute Local är en SKU av ExpressRoute-kretsen, förutom standard-SKU: n och Premium-SKU: n. En viktig funktion i lokal är att en lokal krets på en ExpressRoute-peering-plats ger dig åtkomst endast till en eller två Azure-regioner i eller nära samma tunnelbane linje. En standard-krets ger däremot till gång till alla Azure-regioner i ett politiskt område och en Premium-krets till alla Azure-regioner globalt. 
+
+ExpressRoute Local är en SKU av ExpressRoute-kretsen, förutom standard-SKU: n och Premium-SKU: n. En viktig funktion i lokal är att en lokal krets på en ExpressRoute-peering-plats ger dig åtkomst endast till en eller två Azure-regioner i eller nära samma tunnelbane linje. En standard-krets ger däremot till gång till alla Azure-regioner i ett politiskt område och en Premium-krets till alla Azure-regioner globalt. Mer specifikt, med en lokal SKU, kan du bara annonsera vägar (via Microsoft och privat peering) från motsvarande lokala region i ExpressRoute-kretsen. Du kommer inte att kunna ta emot vägar för andra regioner än den definierade lokala regionen.
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>Vilka är fördelarna med ExpressRoute Local?
+
 Du måste betala utgående data överföring för din standard-eller Premium ExpressRoute-krets, men du betalar inte utgående data överföring separat för din ExpressRoute-lokala krets. Priset för ExpressRoute Local inkluderar med andra ord avgifter för data överföring. ExpressRoute Local är en mer ekonomisk lösning om du har en enorm mängd data som ska överföras och du kan ta med dina data över en privat anslutning till en ExpressRoute-peering-plats nära önskade Azure-regioner. 
 
 ### <a name="what-features-are-available-and-what-are-not-on-expressroute-local"></a>Vilka funktioner är tillgängliga och vilka som inte finns på ExpressRoute lokala?
+
 Jämfört med en vanlig ExpressRoute-krets har en lokal krets samma uppsättning funktioner, förutom:
 * Omfattning av åtkomst till Azure-regioner enligt beskrivningen ovan
 * ExpressRoute-Global Reach finns inte på den lokala datorn
@@ -365,6 +369,7 @@ Jämfört med en vanlig ExpressRoute-krets har en lokal krets samma uppsättning
 ExpressRoute Local har också samma begränsningar för resurser (t. ex. antalet virtuella nätverk per krets) som standard. 
 
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Var finns ExpressRoute lokalt och vilka Azure-regioner är varje peering-plats mappad till?
+
 ExpressRoute Local är tillgängligt på peering-platserna där en eller två Azure-regioner stängs av. Den är inte tillgänglig på en peering-plats där det inte finns någon Azure-region i detta tillstånd eller region eller land/region. Se exakta mappningar på [sidan platser](expressroute-locations-providers.md).  
 
 ## <a name="expressroute-for-microsoft-365"></a>ExpressRoute för Microsoft 365

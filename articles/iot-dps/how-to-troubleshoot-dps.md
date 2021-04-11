@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/14/2021
 ms.author: xujing
 ms.openlocfilehash: 73a785ee3975245ecd97f8c8aab77acc796a4e36
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105568026"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Fel sökning med Azure IoT Hub Device Provisioning Service
@@ -32,7 +32,7 @@ Följande procedur beskriver hur du visar och ställer in aviseringar för IoT H
 4. Välj önskat mått. 
    <br />För närvarande finns det tre mått för DPS:
 
-    | Måttnamn | Description |
+    | Måttnamn | Beskrivning |
     |-------|------------|
     | Attesterings försök | Antal enheter som försökte autentisera med enhets etablerings tjänsten|
     | Registrerings försök | Antal enheter som försökte registrera sig för IoT Hub efter en lyckad autentisering|
@@ -58,7 +58,7 @@ Mer information finns i [varningar i Azure Monitor](../azure-monitor/alerts/aler
 
 5. Aktivera önskade loggar som ska samlas in.
 
-    | Loggnamn | Description |
+    | Loggnamn | Beskrivning |
     |-------|------------|
     | DeviceOperations | Loggar relaterade till anslutnings händelser för enheter |
     | ServiceOperations | Händelse loggar som är relaterade till användningen av service SDK (t. ex. för att skapa eller uppdatera registrerings grupper)|
@@ -75,7 +75,7 @@ Mer information finns i [varningar i Azure Monitor](../azure-monitor/alerts/aler
 ## <a name="common-error-codes"></a>Vanliga felkoder
 Använd den här tabellen för att förstå och lösa vanliga fel.
 
-| Felkod| Description | HTTP-statuskod |
+| Felkod| Beskrivning | HTTP-statuskod |
 |-------|------------|------------|
 | 400 | Bröd texten i begäran är inte giltig. Det går till exempel inte att parsa den, eller så går det inte att verifiera objektet.| 400 felaktigt format |
 | 401 | Det går inte att verifiera autentiseringstoken. till exempel har den upphört att gälla eller gäller inte för frågans URI. Den här felkoden returneras även till enheter som en del av flödet för TPM-attestering. | 401 – Ej behörig|

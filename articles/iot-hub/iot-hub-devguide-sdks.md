@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: d35535c87ca20bfc573995bf15f79bc149619776
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a94bdfd03d4e48495601b5c494204ac1ad50378
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102611597"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168339"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Förstå och använda SDK:er för Azure IoT Hub
 
@@ -41,7 +41,7 @@ Lär dig mer om [fördelarna med att utveckla med Azure IoT SDK](https://azure.m
 
 Plattformar som stöds för SDK: er finns i [plattforms stöd för Azure IoT SDK](iot-hub-device-sdk-platform-support.md): er.
 
-Mer information om SDK-kompatibilitet med specifika maskin varu enheter finns i [enhets katalogen för Azure Certified för IoT](https://catalog.azureiotsolutions.com/) eller i den enskilda lagrings platsen.
+Mer information om SDK-kompatibilitet med specifika maskin varu enheter finns i [enhets katalogen för Azure Certified för IoT](https://devicecatalog.azure.com/) eller i den enskilda lagrings platsen.
 
 ## <a name="azure-iot-hub-device-sdks"></a>SDK: er för Azure IoT Hub-enheter
 

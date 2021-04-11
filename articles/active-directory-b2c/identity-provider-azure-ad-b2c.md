@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4b357213f4e552fd791fb575d8b7a287b924c7f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3aacc6c50024cfdca3af639e7c6d14f69ed00519
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489078"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029054"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>Konfigurera registrering och inloggning med ett Azure AD B2C konto från en annan Azure AD B2C klient
 
@@ -229,7 +229,7 @@ Du kan definiera Azure AD B2C som anspråks leverantör genom att lägga till Az
 ## <a name="test-your-custom-policy"></a>Testa din anpassade princip
 
 1. Välj en princip för förlitande part, till exempel `B2C_1A_signup_signin` .
-1. För **program** väljer du ett webb program som du [har registrerat tidigare](troubleshoot-custom-policies.md#troubleshoot-the-runtime). **Svars-URL: en** ska visas `https://jwt.ms` .
+1. För **program** väljer du ett webb program som du [har registrerat tidigare](tutorial-register-applications.md). **Svars-URL: en** ska visas `https://jwt.ms` .
 1. Välj knappen **Kör nu** .
 1. Från registrerings-eller inloggnings sidan väljer du **Fabrikam** för att logga in med den andra Azure AD B2C klienten.
 

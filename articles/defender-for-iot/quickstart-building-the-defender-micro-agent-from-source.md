@@ -1,16 +1,16 @@
 ---
-title: Bygg in Defender Micro-agenten från käll koden (för hands version)
-description: Micro Agent innehåller en infrastruktur som kan användas för att anpassa distributionen.
+title: 'Snabb start: utveckla Defender Micro-agenten från käll koden (för hands version)'
+description: I den här snabb starten får du lära dig om Micro-agenten som innehåller en infrastruktur som kan användas för att anpassa distributionen.
 ms.date: 1/18/2021
 ms.topic: quickstart
-ms.openlocfilehash: aac9bf224064dd8393acfeb2928f5ed2d1f84381
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a3a8f82989d6abbaf2657e4b45638c77b3b2f704
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781117"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384605"
 ---
-# <a name="build-the-defender-micro-agent-from-source-code-preview"></a>Bygg in Defender Micro-agenten från käll koden (för hands version)
+# <a name="quickstart-build-the-defender-micro-agent-from-source-code-preview"></a>Snabb start: utveckla Defender Micro-agenten från käll koden (för hands version)
 
 Micro-agenten innehåller en infrastruktur som kan användas för att anpassa distributionen. Om du vill visa en lista över tillgängliga konfigurations parametrar tittar du på `configs/LINUX_BASE.conf` filen.
 
@@ -32,17 +32,7 @@ För att åsidosätta värdena:
 
     `cmake -DCMAKE_BUILD_TYPE=Debug -Dlog_level=DEBUG -Dlog_level_cmdline:BOOL=ON -DIOT_SECURITY_MODULE_DIST_TARGET=UBUNTU1804 ..` 
 
-## <a name="baseline-configuration-signing"></a>Signering av bas linje konfiguration 
-
-Agenten verifierar äktheten hos konfigurationsfiler som är placerade på disken för att minimera manipulering, som standard.
-
-Du kan stoppa den här processen genom att definiera Preprocessor-flaggan `ASC_BASELINE_CONF_SIGN_CHECK_DISABLE` .
-
-Vi rekommenderar inte att du inaktiverar signatur kontrollen för produktions miljöer. 
-
-Kontakta Defender för IoT-teamet om du behöver en annan konfiguration för produktions scenarier. 
-
-## <a name="prerequisites"></a>Förutsättningar 
+## <a name="prerequisites"></a>Krav
 
 1. Kontakta din konto ansvarige för att be om åtkomst till Defender för IoT-källkod.
  
@@ -77,7 +67,17 @@ Kontakta Defender för IoT-teamet om du behöver en annan konfiguration för pro
 
 1. Valfritt Hämta och installera [VSCode](https://code.visualstudio.com/download ) 
 
-1. Valfritt Installera [C/C++-tillägget](https://code.visualstudio.com/docs/languages/cpp ) för VSCode.
+1. Valfritt Installera [C/C++-tillägget](https://code.visualstudio.com/docs/languages/cpp ) för VSCode.-None
+
+## <a name="baseline-configuration-signing"></a>Signering av bas linje konfiguration 
+
+Agenten verifierar äktheten hos konfigurationsfiler som är placerade på disken för att minimera manipulering, som standard.
+
+Du kan stoppa den här processen genom att definiera Preprocessor-flaggan `ASC_BASELINE_CONF_SIGN_CHECK_DISABLE` .
+
+Vi rekommenderar inte att du inaktiverar signatur kontrollen för produktions miljöer. 
+
+Kontakta Defender för IoT-teamet om du behöver en annan konfiguration för produktions scenarier. 
 
 ## <a name="building-the-defender-iot-micro-agent"></a>Skapa Defender IoT Micro-agenten 
 

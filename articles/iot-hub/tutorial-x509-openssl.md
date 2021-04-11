@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 0d083d856138d7895a6e03f4d290ef3c4ddebd05
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4379c8f43bbfa539179b821bf6b18a01518afad6
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105630777"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384314"
 ---
 # <a name="tutorial-using-openssl-to-create-test-certificates"></a>Självstudie: använda OpenSSL för att skapa test certifikat
 
@@ -101,6 +101,13 @@ authorityKeyIdentifier   = keyid:always
 basicConstraints         = critical,CA:true,pathlen:0
 extendedKeyUsage         = clientAuth,serverAuth
 keyUsage                 = critical,keyCertSign,cRLSign
+subjectKeyIdentifier     = hash
+
+[client_ext]
+authorityKeyIdentifier   = keyid:always
+basicConstraints         = critical,CA:false
+extendedKeyUsage         = clientAuth
+keyUsage                 = critical,digitalSignature
 subjectKeyIdentifier     = hash
 
 ```
@@ -244,13 +251,19 @@ Du har nu både ett certifikat från en rot certifikat utfärdare och ett undero
 
 1. Välj **generera verifierings kod**. Mer information finns i [bevisa innehav av ett CA-certifikat](tutorial-x509-prove-possession.md).
 
-1. Kopiera verifieringskoden till Urklipp. Du måste ange verifierings koden som certifikat ämne. Om verifierings koden till exempel är BB0C656E69AF75E3FB3C8D922C1760C58C1DA5B05AAA9D0A kan du lägga till den som ämne för ditt certifikat, som du ser i nästa steg.
+1. Kopiera verifieringskoden till Urklipp. Du måste ange verifierings koden som certifikat ämne. Om verifierings koden till exempel är BB0C656E69AF75E3FB3C8D922C1760C58C1DA5B05AAA9D0A kan du lägga till den som ämne för ditt certifikat, som du ser i steg 9.
 
 1. Skapa en privat nyckel.
 
   ```bash
-    $ openssl req -new -key pop.key -out pop.csr
+    $ openssl genpkey -out pop.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048
+  ```
 
+9. Generera en certifikat signerings förfrågan från den privata nyckeln. Lägg till verifierings koden som certifikatets ämne.
+
+  ```bash
+  openssl req -new -key pop.key -out pop.csr
+  
     -----
     Country Name (2 letter code) [XX]:.
     State or Province Name (full name) []:.
@@ -267,16 +280,16 @@ Du har nu både ett certifikat från en rot certifikat utfärdare och ett undero
  
   ```
 
-9. Skapa ett certifikat med hjälp av rot certifikat utfärdarens konfigurations fil och CSR.
+10. Skapa ett certifikat med hjälp av rot certifikat utfärdarens konfigurations fil och CSR för äkthets beviset för innehavet.
 
   ```bash
     openssl ca -config rootca.conf -in pop.csr -out pop.crt -extensions client_ext
 
   ```
 
-10. Välj det nya certifikatet i vyn **certifikat information**
+11. Välj det nya certifikatet i vyn **certifikat information** . Du hittar PEM-filen genom att navigera till mappen för certifikat.
 
-11. När du har laddat upp certifikatet väljer du **Verifiera**. Certifikat utfärdarens certifikat status bör ändras till **verifierad**.
+12. När du har laddat upp certifikatet väljer du **Verifiera**. Certifikat utfärdarens certifikat status bör ändras till **verifierad**.
 
 ## <a name="step-8---create-a-device-in-your-iot-hub"></a>Steg 8 – skapa en enhet i IoT Hub
 

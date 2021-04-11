@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/30/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f9be9272a898ad48f3553d4c5e48952e1fcdde81
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ea51c1f7fcfce5b795965eab2f9c03a820a6ab03
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218646"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059368"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>Konfigurera kryptering med Kundhanterade nycklar som lagras i Azure Key Vault hanterad HSM (förhands granskning)
 
@@ -65,7 +65,9 @@ az keyvault role assignment create \
 
 ## <a name="configure-encryption-with-a-key-in-the-managed-hsm"></a>Konfigurera kryptering med en nyckel i den hanterade HSM
 
-Konfigurera slutligen Azure Storage kryptering med Kundhanterade nycklar för att använda en nyckel som lagras i den hanterade HSM. Nyckel typer som stöds är RSA-HSM-nycklar av storlekarna 2048, 3072 och 4096. Installera Azure CLI-2.12.0 eller senare för att konfigurera kryptering för att använda en kundhanterad nyckel i en hanterad HSM. Mer information finns i [Installera Azure CLI](/cli/azure/install-azure-cli).
+Konfigurera slutligen Azure Storage kryptering med Kundhanterade nycklar för att använda en nyckel som lagras i den hanterade HSM. Nyckel typer som stöds är RSA-HSM-nycklar av storlekarna 2048, 3072 och 4096. Information om hur du skapar en nyckel i en hanterad HSM finns i [skapa en HSM-nyckel](../../key-vault/managed-hsm/key-management.md#create-an-hsm-key).
+
+Installera Azure CLI-2.12.0 eller senare för att konfigurera kryptering för att använda en kundhanterad nyckel i en hanterad HSM. Mer information finns i [Installera Azure CLI](/cli/azure/install-azure-cli).
 
 Om du vill uppdatera nyckel versionen för en kundhanterad nyckel automatiskt, utelämnar du nyckel versionen när du konfigurerar kryptering med Kundhanterade nycklar för lagrings kontot. Anropa [AZ Storage Account Update](/cli/azure/storage/account#az_storage_account_update) för att uppdatera lagrings kontots krypterings inställningar, som du ser i följande exempel. Inkludera `--encryption-key-source parameter` och Ställ in det på `Microsoft.Keyvault` för att aktivera Kundhanterade nycklar för kontot. Kom ihåg att ersätta plats hållarnas värden inom hakparenteser med dina egna värden.
 

@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: cdc5b261abe91c31d31827aeab03c9e8838b2a91
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: fada68ba395b959e557542eb8c230561aad84214
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105630817"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384331"
 ---
 # <a name="tutorial-understanding-x509-public-key-certificates"></a>Självstudie: förstå X. 509 offentliga nyckel certifikat
 
@@ -106,6 +106,13 @@ Formatet för ett privat nyckel arkiv som definieras av [RFC 5208](https://tools
 ### <a name="pkcs12-key-and-certificate"></a>PKCS # 12-nyckel och certifikat
 
 Ett komplext format som kan lagra och skydda en nyckel och hela certifikat kedjan. Den används ofta med fil namns tillägget. pfx. PKCS # 12 är synonymt med PFX-formatet.
+
+## <a name="for-more-information"></a>Mer information
+
+Mer information finns i följande avsnitt:
+
+* [Layman ' s Guide to X. 509 Certificate jargong](https://techcommunity.microsoft.com/t5/internet-of-things/the-layman-s-guide-to-x-509-certificate-jargon/ba-p/2203540)
+* [Konceptuell förståelse för X. 509 CA-certifikat i IoT-branschen](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-concept)
 
 ## <a name="next-steps"></a>Nästa steg
 

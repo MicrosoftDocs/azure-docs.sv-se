@@ -9,24 +9,23 @@ ms.topic: tutorial
 ms.date: 11/05/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: fa43f40d4849a8e773241fa17a1e1787ce86a8ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5e83f883b5e1e35842ab128e4732e993fb937a0
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564755"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383701"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-linux-virtual-machines"></a>Självstudie: Konfigurera haveri beredskap för virtuella Linux-datorer
-
 
 Den här självstudien visar hur du konfigurerar haveri beredskap för virtuella Azure-datorer som kör Linux. I den här artikeln får du lära dig att:
 
 > [!div class="checklist"]
 > * Aktivera haveri beredskap för en virtuell Linux-dator
-> * Köra ett programåterställningstest
+> * Kör en haveri beredskap för att kontrol lera att den fungerar som förväntat
 > * Stoppa replikeringen av den virtuella datorn efter detalj nivån
 
-När du aktiverar replikering för en virtuell dator installeras Site Recovery mobilitets tjänst tillägget på den virtuella datorn och registrerar det med [Azure Site Recovery](../../site-recovery/site-recovery-overview.md). Vid replikering skickas de virtuella dator diskarna till ett cache Storage-konto i käll regionen. Data skickas därifrån till mål regionen och återställnings punkterna genereras från data.  När du växlar över en virtuell dator till en annan region under haveri beredskap, används en återställnings punkt för att återställa den virtuella datorn i mål regionen.
+När du aktiverar replikering för en virtuell dator installeras Site Recovery mobilitets tjänst tillägget på den virtuella datorn och registrerar det med [Azure Site Recovery](../../site-recovery/site-recovery-overview.md). Vid replikering skickas de virtuella dator diskarna till ett cache Storage-konto i den virtuella käll datorn. Data skickas därifrån till mål regionen och återställnings punkterna genereras från data.  När du växlar över en virtuell dator till en annan region under haveri beredskap, används en återställnings punkt för att skapa en virtuell dator i mål regionen.
 
 Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/) innan du börjar.
 
@@ -60,26 +59,67 @@ Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto]
     GuestAndHybridManagement | Använd om du vill uppgradera den Site Recovery mobilitets agent som körs på virtuella datorer som är aktiverade för replikering.
 5. Se till att de virtuella datorerna har de senaste rot certifikaten. På virtuella Linux-datorer följer du rikt linjerna från Linux-distributören för att få de senaste betrodda rot certifikaten och listan över återkallade certifikat på den virtuella datorn.
 
-## <a name="enable-disaster-recovery"></a>Aktivera haveri beredskap
+## <a name="create-a-vm-and-enable-disaster-recovery"></a>Skapa en virtuell dator och aktivera haveri beredskap
+
+Du kan också aktivera haveri beredskap när du skapar en virtuell dator.
+
+1. [Skapa en virtuell Linux-dator](quick-create-portal.md).
+2. På fliken **hantering** under **Site Recovery** väljer du **Aktivera haveri beredskap**.
+3. I **sekundär region** väljer du den mål region som du vill replikera den virtuella datorn till för haveri beredskap.
+4. I **sekundär prenumeration** väljer du den mål prenumeration som den virtuella mål datorn ska skapas i. Den virtuella mål datorn skapas när du växlar över den virtuella käll datorn från käll regionen till mål regionen.
+5. I **Recovery Services valv** väljer du det valv som du vill använda för replikeringen. Om du inte har något valv väljer du **Skapa nytt**. Välj en resurs grupp där du vill placera valvet och ett valv namn.
+6. I **Site Recovery princip** lämnar du standard principen eller väljer **Skapa ny** för att ange anpassade värden.
+
+    - Återställnings punkter skapas från ögonblicks bilder av virtuella dator diskar som tas vid en viss tidpunkt. När du växlar över en virtuell dator använder du en återställnings punkt för att återställa den virtuella datorn i mål regionen. 
+    - En kraschad återställnings punkt skapas var femte minut. Den här inställningen kan inte ändras. En krasch-konsekvent ögonblicks bild fångar upp data som fanns på disken när ögonblicks bilden togs. Det innehåller inte något i minnet. 
+    - Som standard är Site Recovery krasch-konsekventa återställnings punkter i 24 timmar. Du kan ange ett anpassat värde mellan 0 och 72 timmar.
+    - En programkonsekvent ögonblicks bild tas var fjärde timme.
+    - Som standard lagrar Site Recovery återställnings punkter i 24 timmar.
+
+7. I **tillgänglighets alternativ** anger du om den virtuella datorn ska distribueras som fristående, i en tillgänglighets zon eller i en tillgänglighets uppsättning.
+
+    :::image type="content" source="./media/tutorial-disaster-recovery/create-vm.png" alt-text="Aktivera replikering på sidan Egenskaper för VM-hantering.":::
+
+8. Slutför skapandet av den virtuella datorn.
+
+## <a name="enable-disaster-recovery-for-an-existing-vm"></a>Aktivera haveri beredskap för en befintlig virtuell dator
+
+Använd den här proceduren om du vill aktivera haveri beredskap på en befintlig virtuell dator.
 
 1. Öppna sidan Egenskaper för virtuell dator i Azure Portal.
 2. I **Åtgärder** väljer du **Haveriberedskap**.
-3. I **grundläggande**  >  **mål region** väljer du den region som du vill replikera den virtuella datorn till. Käll-och mål regionerna måste vara i samma Azure Active Directory-klient.
-4. Klicka på **Granska + starta replikering**.
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/disaster-recovery.png" alt-text="Aktivera replikering på sidan för haveri beredskap för VM-egenskaper.":::
+    :::image type="content" source="./media/tutorial-disaster-recovery/existing-vm.png" alt-text="Öppna Disaster Recovery-alternativ för en befintlig virtuell dator.":::
 
-5. I **Granska + starta replikering** kontrollerar du inställningarna:
+3. I **grunderna**, om den virtuella datorn har distribuerats i en tillgänglighets zon, kan du välja haveri beredskap mellan tillgänglighets zoner.
+4. I **mål region** väljer du den region som du vill replikera den virtuella datorn till. Käll-och mål regionerna måste vara i samma Azure Active Directory-klient.
 
-    - **Mål inställningar**. Site Recovery speglar som standard käll inställningarna för att skapa mål resurser.
-    - **Lagrings inställningar – cache Storage-konto**. Återställningen använder ett lagrings konto i käll regionen. Ändringar i den virtuella käll datorn cachelagras i det här kontot innan de replikeras till mål platsen.
-    - **Lagrings inställningar – replik disk**. Som standard skapar Site Recovery replik Managed disks i mål regionen som speglade virtuella diskar med samma lagrings typ (standard eller Premium).
-    - **Replikeringsinställningar**. Visar information om valvet och anger att återställnings punkter som skapats av Site Recovery behålls i 24 timmar.
-    - **Inställningar för tillägg**. Anger att Site Recovery hanterar uppdateringar av Site Recovery Mobility Service-tillägget som är installerat på virtuella datorer som du replikerar. Det angivna Azure Automation-kontot hanterar uppdaterings processen.
+    :::image type="content" source="./media/tutorial-disaster-recovery/basics.png" alt-text="Ange grundläggande katastrof återställnings alternativ för en virtuell dator.":::
+
+5. Välj **Nästa: avancerade inställningar**.
+6. I **Avancerade inställningar** kan du granska inställningar och ändra värden till anpassade inställningar. Site Recovery speglar som standard käll inställningarna för att skapa mål resurser.
+
+    - **Mål prenumeration**. Den prenumeration som den virtuella mål datorn skapas i efter redundansväxlingen.
+    - **Mål resurs grupp för virtuell dator**. Resurs gruppen där den virtuella mål datorn skapas efter en redundansväxling.
+    - **Mål för virtuellt nätverk**. Det virtuella Azure-nätverket där den virtuella mål datorn finns när den har skapats efter redundansväxlingen.
+    - **Tillgänglighet för mål**. När den virtuella mål datorn skapas som en enskild instans, i en tillgänglighets uppsättning eller tillgänglighets zon.
+    - **Närhets placering**. Om det är tillämpligt väljer du den närhets placerings grupp där den virtuella mål datorn finns efter redundansväxlingen.
+    - **Lagrings inställningar – cache Storage-konto**. Återställningen använder ett lagrings konto i käll regionen som ett tillfälligt data lager. Ändringar i den virtuella käll datorn cachelagras i det här kontot innan de replikeras till mål platsen.
+        - Som standard skapas ett cache Storage-konto per valv och återanvänds.
+        - Du kan välja ett annat lagrings konto om du vill anpassa cache-kontot för den virtuella datorn.
+    - **Lagrings inställningar – replik hanterad disk**. Som standard skapar Site Recovery replik Managed disks i mål regionen.
+        -  Som standard hanteras den hanterade disk speglingen för den virtuella käll datorn med samma lagrings typ (standard hård disk/SSD eller Premium SSD).
+        - Du kan anpassa lagrings typen efter behov.
+    - **Replikeringsinställningar**. Visar valvet som den virtuella datorn finns i och den replikeringsprincip som används för den virtuella datorn. Som standard behålls återställnings punkter som skapats av Site Recovery för den virtuella datorn i 24 timmar.
+    - **Inställningar för tillägg**. Anger att Site Recovery hanterar uppdateringar av Site Recovery Mobility Service-tillägget som är installerat på virtuella datorer som du replikerar.
+        - Det angivna Azure Automation-kontot hanterar uppdaterings processen.
+        - Du kan anpassa Automation-kontot.
 
     :::image type="content" source="./media/tutorial-disaster-recovery/settings-summary.png" alt-text="Sida som visar en sammanfattning av inställningarna för mål och replikering.":::
 
-2. Välj **starta replikering**. Distributionen startar och Site Recovery börjar skapa mål resurser. Du kan övervaka replikeringens förlopp i meddelandena.
+6. Välj **Granska + starta replikering**.
+
+7. Välj **starta replikering**. Distributionen startar och Site Recovery börjar skapa mål resurser. Du kan övervaka replikeringens förlopp i meddelandena.
 
     :::image type="content" source="./media/tutorial-disaster-recovery/notifications.png" alt-text="Meddelande om replikeringens förlopp.":::
 
@@ -97,7 +137,6 @@ När replikeringen är klar kan du kontrol lera statusen för VM-replikeringen.
 5. I **vyn infrastruktur** får du en visuell översikt över käll-och mål datorer, hanterade diskar och cache Storage-kontot.
 
     :::image type="content" source="./media/tutorial-disaster-recovery/infrastructure.png" alt-text="infrastrukturens visuella karta för haveri beredskap för virtuella datorer.":::
-
 
 ## <a name="run-a-drill"></a>Kör en detalj granskning
 

@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.openlocfilehash: 7d421cf20aa054fb3e1e4877ee610a284eeff7c9
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 6f08fa0b2126112fa17fd61be6f44bb5cc6d5396
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105627067"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552163"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Planera ett SaaS-erbjudande för den kommersiella marknaden
 
-I den här artikeln beskrivs de olika alternativen och kraven för att publicera SaaS-erbjudanden (Software as a Service) på Microsofts kommersiella marknads platser. Med SaaS-erbjudanden kan du leverera och licensiera program varu lösningar till dina kunder via online-prenumerationer. Som SaaS-utgivare kan du hantera och betala för den infrastruktur som krävs för att stödja kundernas användning av ditt erbjudande. I den här artikeln får du hjälp att förbereda ditt erbjudande för publicering till den kommersiella Marketplace med partner Center.
+I den här artikeln beskrivs de olika alternativen och kraven för att publicera SaaS-erbjudanden (Software as a Service) på Microsofts kommersiella marknads platser. SaaS ger dig möjlighet att leverera och licensiera program varu lösningar till dina kunder via online-prenumerationer. Som SaaS-utgivare kan du hantera och betala för den infrastruktur som krävs för att stödja kundernas användning av ditt erbjudande. I den här artikeln får du hjälp att förbereda ditt erbjudande för publicering till den kommersiella Marketplace med partner Center.
 
 ## <a name="listing-options"></a>Listalternativ
 
@@ -134,6 +134,28 @@ Om du väljer att använda standard kontraktet har du möjlighet att lägga till
 > [!NOTE]
 > När du har publicerat ett erbjudande med hjälp av standard avtalet för den kommersiella marknads platsen kan du inte använda dina egna anpassade villkor. Det är ett "eller"-scenario. Du erbjuder antingen din lösning enligt standard avtalet eller dina egna villkor. Om du vill ändra villkoren i standard kontraktet kan du göra det via standard kontrakts ändringar.
 
+
+## <a name="microsoft-365-integration"></a>Microsoft 365-integrering
+
+Genom att integrera med Microsoft 365 kan SaaS-erbjudandet tillhandahålla en ansluten upplevelse över flera Microsoft 365 App-ytor genom relaterade kostnads fria tillägg som team-appar, Office-tillägg och SharePoint Framework-lösningar. Du kan hjälpa dina kunder att enkelt identifiera alla aspekter av din E2E-lösning (webb tjänst + relaterade tillägg) och distribuera dem i en enda process genom att tillhandahålla följande information. 
+  - Om ditt SaaS-erbjudande integreras med Microsoft Graph anger du app-ID Azure Active Directory (AAD) som används av ditt SaaS-erbjudande för integreringen. Administratörer kan granska åtkomst behörigheter som krävs för att ditt SaaS-erbjudande ska fungera som angivet i AAD-appens ID och bevilja åtkomst om det krävs avancerade administratörs behörigheter vid distributions tillfället. 
+    
+     Om du väljer att sälja ditt erbjudande via Microsoft är det samma AAD-app-ID som du har registrerat att använda på landnings sidan för att få grundläggande användar information som krävs för att slutföra aktiveringen av kund prenumerationen. Detaljerad information finns i avsnittet [om att bygga upp landnings sidan för ditt SaaS-erbjudande i kommersiellt marknads](azure-ad-transactable-saas-landing-page.md)plats. 
+    
+   -    Ange en lista över relaterade tillägg som fungerar med ditt SaaS-erbjudande som du vill länka. Kunderna kommer att kunna identifiera din E2E-lösning på AppSource och administratörer kan distribuera både SaaS och alla relaterade tillägg som du har länkat i samma process via Microsoft 365 administrations Center.
+    
+        Om du vill länka relaterade tillägg måste du ange AppSource-länken för tillägget. det innebär att tillägget måste först publiceras till AppSource. De tilläggs typer som stöds som du kan länka är: Team-appar, Office-tillägg och SPFx-lösningar (SharePoint Framework). Varje länkat tillägg måste vara unikt för ett SaaS-erbjudande. 
+
+För länkade produkter kommer sökningen på AppSource att returnera ett resultat som innehåller både SaaS och alla länkade tillägg. Kunden kan navigera mellan produkt informations sidorna i SaaS-erbjudandet och länkade tillägg. IT-administratörer kan granska och distribuera både SaaS och länkade tillägg i samma process genom en integrerad och ansluten upplevelse i Microsoft 365 administrations centret. Mer information finns i [testa och distribuera Microsoft 365 Apps-Microsoft 365 admin](/microsoft-365/admin/manage/test-and-deploy-microsoft-365-apps).
+
+### <a name="microsoft-365-integration-support-limitations"></a>Support begränsningar för Microsoft 365-integration
+Identifiering som en enskild E2E-lösning stöds på AppSource i alla fall, men den förenklade distributionen av E2E-lösningen enligt beskrivningen ovan via Microsoft 365 administrations centret stöds inte i följande scenarier:
+
+   - Samma tillägg är länkat till fler än ett SaaS-erbjudande.
+   - SaaS-erbjudandet är länkat till tillägg, men det integreras inte med Microsoft Graph och inget AAD app-ID har angetts.
+  - SaaS-erbjudandet är länkat till tillägg, men AAD app-ID som tillhandahölls för Microsoft Graph-integrering delas över flera SaaS-erbjudanden.
+
+ 
 ## <a name="offer-listing-details"></a>Information om erbjudande lista
 
 När du [skapar ett nytt SaaS-erbjudande](create-new-saas-offer.md) i Partner Center kan du ange text, bilder, valfria videor och annan information på sidan med **erbjudande listan** . Detta är den information som kunderna ser när de identifierar din erbjudande lista på den kommersiella marknaden, som du ser i följande exempel.

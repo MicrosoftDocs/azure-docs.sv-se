@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
 ms.openlocfilehash: ea097119111d5dbd5eba3c11aba549d201186e3f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104592191"
 ---
 # <a name="what-is-azure-sql"></a>Vad är Azure SQL? 
@@ -95,7 +95,7 @@ Den [hanterade Azure SQL-instansen](managed-instance/sql-managed-instance-paas-o
 - Bäst för nya program eller befintliga lokala program som vill använda de senaste stabila SQL Server funktionerna och som migreras till molnet med minimala ändringar. En instans av SQL-hanterad instans liknar en instans av [Microsoft SQL Server databas motor](/sql/database-engine/sql-server-database-engine-overview) som erbjuder delade resurser för databaser och ytterligare funktioner som omfattas av instanser. 
 - SQL-hanterad instans har stöd för migrering av databasen från lokala datorer med minimal till ingen databas ändring. Det här alternativet ger alla PaaS-förmåner för Azure SQL Database men lägger till funktioner som tidigare endast fanns tillgängliga i SQL Server virtuella datorer. Detta inkluderar ett internt virtuellt nätverk och nära 100%-kompatibilitet med lokala SQL Server. Instanser av SQL-hanterad instans ger fullständig SQL Server åtkomst och funktions kompatibilitet för migrering av SQL-servrar till Azure.
 
-### <a name="sql-server-on-azure-vm"></a>SQL Server på virtuella Azure-datorer
+### <a name="sql-server-on-azure-vm"></a>SQL Server på virtuell Azure-dator
 
 [SQL Server på den virtuella Azure-datorn](virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) tillhör bransch kategorin *Infrastructure-as-a-Service (IaaS)* och gör det möjligt att köra SQL Server i en fullständigt hanterad virtuell dator i Azure. 
 - Bäst för migreringar och program som kräver åtkomst till operativ system nivå. Virtuella SQL-datorer i Azure är klara och Skift klara för befintliga program som kräver snabb migrering till molnet med minimala förändringar eller inga ändringar. Virtuella SQL-datorer ger fullständig administrativ kontroll över SQL Server-instansen och underliggande operativ system för migrering till Azure. 
@@ -111,7 +111,7 @@ I allmänhet kan SQL Database och SQL-hanterad instans dramatiskt öka antalet d
 
 ### <a name="comparison-table"></a>Jämförelsetabell
 
-| Azure SQL Database | Hanterad Azure SQL-instans | SQL Server på virtuella Azure-datorer |
+| Azure SQL Database | Hanterad Azure SQL-instans | SQL Server på virtuell Azure-dator |
 | :--- | :--- | :--- |
 |Stöder de flesta lokala funktioner på databas nivå. De vanligaste SQL Server funktionerna är tillgängliga.<br/>99,995% tillgänglighet garanterad.<br/>Inbyggda säkerhets kopieringar, korrigeringar och återställning.<br/>Senaste versionen av stabil databas motor.<br/>Möjlighet att tilldela nödvändiga resurser (CPU/lagring) till enskilda databaser.<br/>Inbyggd avancerad intelligens och säkerhet.<br/>Ändring av resurser online (CPU/lagring).| Har stöd för nästan alla lokala funktioner på instans nivå och databas nivå. Hög kompatibilitet med SQL Server.<br/>99,99% tillgänglighet garanterad.<br/>Inbyggda säkerhets kopieringar, korrigeringar och återställning.<br/>Senaste versionen av stabil databas motor.<br/>Enkel migrering från SQL Server.<br/>Privat IP-adress i Azure Virtual Network.<br/>Inbyggd avancerad intelligens och säkerhet.<br/>Ändring av resurser online (CPU/lagring).| Du har fullständig kontroll över SQL Servers motorn. Stöder alla lokala funktioner.<br/>Upp till 99,99% tillgänglighet.<br/>Fullständig paritet med den matchande versionen av lokala SQL Server.<br/>Fast och välkänd databas motor version.<br/>Enkel migrering från SQL Server.<br/>Privat IP-adress i Azure Virtual Network.<br/>Du kan distribuera program eller tjänster på värden där SQL Server placeras.|
 |Det kan vara svårt att migrera från SQL Server.<br/>Vissa SQL Server funktioner är inte tillgängliga.<br/>Ingen garanterad, exakt underhålls tid (men nästan transparent).<br/>Kompatibilitet med SQL Server-versionen kan bara uppnås med hjälp av kompatibilitetsnivån för databaser.<br/>Stöd för privata IP-adresser med en [privat Azure-länk](database/private-endpoint-overview.md).|Det finns fortfarande ett minimalt antal SQL Server funktioner som inte är tillgängliga.<br/>Ingen garanterad, exakt underhålls tid (men nästan transparent).<br/>Kompatibilitet med SQL Server-versionen kan bara uppnås med hjälp av kompatibilitetsnivån för databaser.|Du måste hantera dina säkerhets kopieringar och uppdateringar.<br>Du måste implementera din egen High-Availability-lösning.<br/>Det finns ett avbrott när du ändrar resurser (CPU/lagring)|

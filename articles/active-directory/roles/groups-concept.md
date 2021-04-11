@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5df7088551e7e7f616077342b762baca179f8640
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a71a53cd2aff16102a54f5a24063615e02d11872
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102123368"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169529"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Använd moln grupper för att hantera roll tilldelningar i Azure Active Directory (för hands version)
 
@@ -63,6 +63,7 @@ Följande scenarier stöds inte just nu:
 - *Endast Azure AD P2-licensierade kunder* Även om du har tagit bort gruppen visas fortfarande en berättigad medlem av rollen i PIM-ANVÄNDARGRÄNSSNITTET. Det finns inget problem. Det är bara ett cache-problem i Azure Portal.  
 - Använd det nya [administrations centret för Exchange](https://admin.exchange.microsoft.com/) för roll tilldelningar via grupp medlemskap. Det gamla administrations centret för Exchange har inte stöd för den här funktionen ännu. Exchange PowerShell-cmdletar fungerar som förväntat.
 - Azure Information Protection portal (den klassiska portalen) känner inte igen roll medlemskap via gruppen än. Du kan [migrera till en enhetlig känslighets etikett plattform](/azure/information-protection/configure-policy-migrate-labels) och sedan använda Office 365 Security & Compliance Center för att använda grupp tilldelningar för att hantera roller.
+- [Administrations Center för appar](https://config.office.com/) stöder inte den här funktionen ännu. Tilldela användare direkt till administratörs rollen Office-appar.
 
 Vi åtgärdar problemen.
 

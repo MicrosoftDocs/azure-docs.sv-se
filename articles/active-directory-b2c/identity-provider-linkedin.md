@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: dfddc024255d90e8a89f49454e42eb5e94df083a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 51a9635d42b07eb27b05312d292ca890c7963b4f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579985"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028238"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett LinkedIn-konto med hjälp av Azure Active Directory B2C
 
@@ -221,7 +221,7 @@ Lägg till elementet **BuildingBlocks** längst upp i *TrustFrameworkExtensions.
 ## <a name="test-your-custom-policy"></a>Testa din anpassade princip
 
 1. Välj en princip för förlitande part, till exempel `B2C_1A_signup_signin` .
-1. För **program** väljer du ett webb program som du [har registrerat tidigare](troubleshoot-custom-policies.md#troubleshoot-the-runtime). **Svars-URL: en** ska visas `https://jwt.ms` .
+1. För **program** väljer du ett webb program som du [har registrerat tidigare](tutorial-register-applications.md). **Svars-URL: en** ska visas `https://jwt.ms` .
 1. Välj knappen **Kör nu** .
 1. Från registrerings-eller inloggnings sidan väljer du **LinkedIn** för att logga in med LinkedIn-konto.
 

@@ -2,14 +2,14 @@
 title: Säkerhetskopiera Azure Database for PostgreSQL
 description: Läs mer om Azure Database for PostgreSQL säkerhets kopiering med långsiktig kvarhållning (för hands version)
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 04/06/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1e2d83d4a5e21ed747ec9d4dcf2fa03d1e3935cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5eba9d78dda45197c0d1e92195980f3d731734a8
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737581"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011724"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL säkerhets kopiering med långsiktig kvarhållning (för hands version)
 
@@ -135,10 +135,9 @@ Följande instruktioner är en steg-för-steg-guide för att konfigurera säkerh
 
 1. Definiera inställningar för **kvarhållning** . Du kan lägga till en eller flera regler för kvarhållning. Varje kvarhållning regel förutsätter indata för vissa säkerhets kopieringar och data lager och Retentions tid för dessa säkerhets kopior.
 
-1. Du kan välja att lagra säkerhets kopior i ett av de två data lager (eller-nivåerna): **säkerhets kopierings data lager** (standard nivå) eller **Arkiv data lager** (i för hands version). Du kan välja mellan **två olika nivåer** för att definiera när säkerhets kopiorna ska bevaras i flera data lager:
+1. Du kan välja att lagra säkerhets kopior i ett av de två data lager (eller-nivåerna): **säkerhets kopierings data lager** (standard nivå) eller **Arkiv data lager** (i för hands version).
 
-    - Välj att kopiera **omedelbart** om du vill ha en säkerhets kopia i både säkerhets kopierings-och Arkiv data lager samtidigt.
-    - Välj att flytta **efter förfallo datum** om du föredrar att flytta säkerhets kopian för att arkivera data lagret när den upphör att gälla i säkerhets kopierings data lagret.
+   Du kan välja **förfallo datum om** du vill flytta säkerhets kopian för att arkivera data lagret när det upphör att gälla i säkerhets kopierings data lagret.
 
 1. **Standard regeln för kvarhållning** tillämpas om ingen annan bevarande regel har angetts och har ett standardvärde på tre månader.
 
@@ -197,7 +196,21 @@ Följ den här steg-för-steg-guiden för att utlösa en återställning:
 
     ![Återställ som filer](./media/backup-azure-database-postgresql/restore-as-files.png)
 
+1. Om återställnings punkten finns på Arkiv nivå måste du utföra återställnings punkten innan du återställer.
+   
+   ![ÅTERUPPVÄCKNING-inställningar](./media/backup-azure-database-postgresql/rehydration-settings.png)
+   
+   Ange följande ytterligare parametrar som krävs för ÅTERUPPVÄCKNING:
+   - **ÅTERUPPVÄCKNING prioritet:** Standardvärdet **är standard**.
+   - **ÅTERUPPVÄCKNING varaktighet:** Den maximala ÅTERUPPVÄCKNING varaktigheten är 30 dagar och den minsta ÅTERUPPVÄCKNING-varaktigheten är 10 dagar. Standardvärdet är **15**.
+   
+   Återställnings punkten lagras i **säkerhets kopierings data lagret** under den angivna ÅTERUPPVÄCKNING varaktigheten.
+
+
 1. Granska informationen och välj **Återställ**. Detta utlöser ett motsvarande återställnings jobb som kan spåras under **säkerhets kopierings jobb**.
+
+>[!NOTE]
+>Arkiv stöd för Azure Database for PostgreSQL är i begränsad offentlig för hands version.
 
 ## <a name="prerequisite-permissions-for-configure-backup-and-restore"></a>Nödvändiga behörigheter för att konfigurera säkerhets kopiering och återställning
 
@@ -220,7 +233,7 @@ Välj i listan över bevarande regler som definierades i den associerade säkerh
 
 ### <a name="stop-protection"></a>Sluta skydda
 
-Du kan stoppa skyddet av ett säkerhets kopierings objekt. Detta tar även bort tillhör ande återställnings punkter för det säkerhetskopierade objektet. Vi har ännu inte möjlighet att stoppa skyddet samtidigt som de befintliga återställnings punkterna behålls.
+Du kan stoppa skyddet av ett säkerhets kopierings objekt. Detta tar även bort tillhör ande återställnings punkter för det säkerhetskopierade objektet. Om återställnings punkterna inte finns på Arkiv nivån i minst sex månader, kommer borttagning av dessa återställnings punkter att medföra kostnad för tidig borttagning. Vi har ännu inte möjlighet att stoppa skyddet samtidigt som de befintliga återställnings punkterna behålls.
 
 ![Sluta skydda](./media/backup-azure-database-postgresql/stop-protection.png)
 
