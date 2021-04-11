@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 7abaae033d2dbdb329a1f99d8f9845e5965d806c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 24c181c17e49fe5b7c3001c1cb2839bc957ef463
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101712325"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490496"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Övervakning av nätverks anslutning med anslutnings övervakaren
 
@@ -358,6 +358,8 @@ Följande problem kan identifieras för nätverk vars källor är virtuella Azur
     * Tunneln mellan två gateways är frånkopplad eller saknas.
     * Den andra gatewayen kunde inte hittas av tunneln.
     * Ingen peering-information hittades.
+> [!NOTE]
+> Om det finns två anslutna gatewayer och en av dem inte finns i samma region som käll slut punkten, identifierar CM den som en "ingen väg förfrågad" för Topology-vyn. Anslutningen påverkas inte. Detta är ett känt problem och korrigering pågår. 
 * Vägen saknades i Microsoft Edge.
 * Trafiken stoppades på grund av system vägar eller UDR.
 * BGP är inte aktiverat på Gateway-anslutningen.

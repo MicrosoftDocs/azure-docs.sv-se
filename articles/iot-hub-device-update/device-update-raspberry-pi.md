@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: b6a9fa3ac85460a46653c171198a2dfea8580f3a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 143a7c411bea6a451645c860b7b5d12d2aa8d9f5
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644489"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121344"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Enhets uppdatering för Azure IoT Hub själv studie kurs med Raspberry Pi 3 B + referens avbildning
 
@@ -81,7 +81,7 @@ Läs licens villkoren innan du använder agenten. Din installation och användni
 
 Enheten måste nu läggas till i Azure-IoT Hub.  Inifrån Azure IoT Hub genereras en anslutnings sträng för enheten.
 
-1. Starta enhets uppdaterings IoT Hub från Azure Portal.
+1. Starta Azure-IoT Hub från Azure Portal.
 2. Skapa en ny enhet.
 3. Till vänster på sidan navigerar du till "Explorer" > IoT-enheter > väljer "nytt".
 4. Ange ett namn på enheten under enhets-ID: kontrol lera att kryss rutan AutoGenerate Keys är markerad.
@@ -103,9 +103,9 @@ Enheten måste nu läggas till i Azure-IoT Hub.  Inifrån Azure IoT Hub generera
  
 Ersätt `<device connection string>` med anslutnings strängen
  ```markdown
-    echo "connection_string=<device connection string>" > adu-conf.txt  
-    echo "aduc_manufacturer=ADUTeam" >> adu-conf.txt
-    echo "aduc_model=RefDevice" >> adu-conf.txt
+    echo "connection_string=<device connection string>" > /adu/adu-conf.txt  
+    echo "aduc_manufacturer=ADUTeam" >> /adu/adu-conf.txt
+    echo "aduc_model=RefDevice" >> /adu/adu-conf.txt
    ```
 
 ## <a name="connect-the-device-in-device-update-iot-hub"></a>Anslut enheten i enhets uppdaterings IoT Hub
@@ -127,9 +127,9 @@ Använd det versions numret i steget importera uppdatering nedan.
 
 1. Logga in på [Azure Portal](https://portal.azure.com) och navigera till IoT Hub.
 
-2. Från IoT-enheter eller IoT Edge i det vänstra navigerings fönstret hittar du din IoT-enhet och navigerar till enheten med dubbla.
+2. Från "IoT-enheter" eller "IoT Edge" i det vänstra navigerings fönstret hittar du din IoT-enhet och navigerar till enheten i enhets-eller modulens dubbla.
 
-3. Ta bort eventuella befintliga enhets uppdaterings märken i enhets numret genom att ställa in dem på null.
+3. Ta bort eventuella befintliga enhets uppdaterings tag gen i modulens dubbla i modulen enhets uppdaterings agent genom att ställa in dem på null. Om du använder enhets identitet med enhets uppdaterings agenten gör du följande ändringar på enheten.
 
 4. Lägg till ett nytt märkes värde för enhets uppdatering som visas nedan.
 

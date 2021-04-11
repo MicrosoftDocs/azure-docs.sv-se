@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 8ed63a508447104f9073c986debfae73ba7de89f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2a37d206955e3372b9ecf97be8d27142bd417192
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102428651"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490462"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Montera Blob Storage med hjälp av Network File System (NFS) 3,0-protokollet (för hands version)
 
@@ -82,7 +82,7 @@ När du konfigurerar kontot väljer du dessa värden:
 
 |Inställning | Förstklassig prestanda | Standard prestanda  
 |----|---|---|
-|Location|Alla tillgängliga regioner |En av följande regioner: östra Australien, Korea Central och södra centrala USA   
+|Location|Alla tillgängliga regioner |En av följande regioner: östra Australien, Korea, centrala, USA, östra och södra centrala USA   
 |Prestanda|Premium| Standard
 |Typ av konto|BlockBlobStorage| Allmänt-syfte v2
 |Replikering|Lokalt redundant lagring (LRS)| Lokalt redundant lagring (LRS)

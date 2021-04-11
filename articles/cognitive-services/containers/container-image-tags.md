@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 11/17/2020
+ms.date: 03/25/2020
 ms.author: aahi
-ms.openlocfilehash: 2ac8633e48c98b9e1d778ac1d07835683e00e1c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3fecb84196ba736120273955b2c88af8cb4dadea
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102424486"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095823"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Bild taggar för Azure Cognitive Services container och viktig information
 
@@ -1355,6 +1355,24 @@ Den här behållar avbildningen har följande Taggar tillgängliga. Du kan ocks�
 | `3.0-nl`   | Attitydanalys v3 (nederländska)                 |
 | `2.1`    | Attitydanalys v2      |
 
+
+## <a name="text-analytics-for-health"></a>Textanalys för hälsa
+
+[Textanalys för hälso][ta-he] behållar avbildningen finns i `mcr.microsoft.com` behållar registrets syndikering. Den finns i `azure-cognitive-services/textanalytics/` lagrings platsen och får namnet `healthcare` . Det fullständigt kvalificerade namnet på behållar avbildningen är `mcr.microsoft.com/azure-cognitive-services/textanalytics/healthcare`
+
+Den här behållar avbildningen har följande Taggar tillgängliga. Du kan också hitta en fullständig lista över [taggar i MCR](https://mcr.microsoft.com/v2/azure-cognitive-services/textanalytics/healthcare/tags/list).
+
+
+Viktig information för `3.0.015490002-onprem-amd64` :
+
+* ny modell version `2021-03-01`
+* Container frisläppt till MCR.
+
+| Bildtaggar | Kommentarer                                         |
+|------------|:----------------------------------------------|
+| `latest`   |                                               |
+| `3.0.015490002-onprem-amd64`   |               |
+
 [ad-containers]: ../anomaly-Detector/anomaly-detector-container-howto.md
 [cv-containers]: ../computer-vision/computer-vision-how-to-install-containers.md
 [fa-containers]: ../face/face-how-to-install-containers.md
@@ -1369,3 +1387,4 @@ Den här behållar avbildningen har följande Taggar tillgängliga. Du kan ocks�
 [ta-kp]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=keyphrase
 [ta-la]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
 [ta-se]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment
+[ta-he]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare

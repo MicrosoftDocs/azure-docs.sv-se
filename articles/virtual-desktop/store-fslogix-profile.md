@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2ec166c1df9727052d4980f5d5758ece8c499880
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f8a82eddfdc7a2a4899c4ee836687df26101bdc
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99526610"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221899"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Lagrings alternativ för FSLogix profil behållare i Windows Virtual Desktop
 
@@ -44,6 +44,26 @@ I följande tabeller jämförs lagrings lösningarna Azure Storage erbjudanden f
 |Azure Active Directory-integrering|[Interna Active Directory och Azure Active Directory Domain Services](../storage/files/storage-files-active-directory-overview.md)|[Azure Active Directory Domain Services och ursprunglig Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Interna Active Directory eller Azure Active Directory Domain Services endast stöd|
 
 När du har valt din lagrings metod kan du titta på [priser för virtuella Windows-datorer](https://azure.microsoft.com/pricing/details/virtual-desktop/) för information om våra prissättnings planer.
+
+## <a name="azure-files-tiers"></a>Azure Files-nivåer
+
+Azure Files erbjuder två olika lagrings nivåer: Premium och standard. Med dessa nivåer kan du skräddarsy dina fil resursers prestanda och kostnader för att uppfylla ditt scenarios krav.
+
+- Premium-filresurser backas upp av solid state-hårddiskar (SSD) och distribueras i FileStorage-lagrings konto typen. Premium-filresurser ger konsekvent höga prestanda och låg latens för krävande arbets belastningar för indata och utdata. 
+
+- Standard fil resurser backas upp av hård diskar (HDD) och distribueras i GPv2-lagrings konto typen (General Purpose version 2). Standard fil resurser ger tillförlitlig prestanda för IO-arbetsbelastningar som är mindre känsliga för prestanda variationer, till exempel generella fil resurser och utvecklings-och test miljöer. Standard fil resurser är bara tillgängliga i en fakturerings modell enligt principen betala per användning.
+
+I följande tabell visas våra rekommendationer för vilken prestanda nivå som ska användas baserat på din arbets belastning. Med de här rekommendationerna kan du välja vilken prestanda nivå som uppfyller dina prestanda mål, budget-och regional överväganden. Vi har baserat följande rekommendationer i exempel scenarierna från [arbets belastnings typer för fjärr skrivbord](/windows-server/remote/remote-desktop-services/remote-desktop-workloads). 
+
+| Arbets belastnings typ | Rekommenderad filnivå |
+|--------|-----------|
+| Ljust (färre än 200 användare) | Standard fil resurser |
+| Ljust (fler än 200 användare) | Premium fil resurser eller standard med flera fil resurser |
+|Medel|Premium fil resurser|
+|Tung|Premium fil resurser|
+|Ström|Premium fil resurser|
+
+Mer information om Azure Files prestanda finns i [fil resurs-och fil skalnings mål](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets). Mer information om priser finns i [Azure Files prissättning](https://azure.microsoft.com/pricing/details/storage/files/).
 
 ## <a name="next-steps"></a>Nästa steg
 

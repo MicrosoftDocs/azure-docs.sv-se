@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 03/08/2021
+ms.date: 03/30/2021
 ms.author: alkohli
-ms.openlocfilehash: 0ad760caedffa97599548b8dd1b59a887b5690af
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 89e648099a5ac6d905f475319cc108dd0d05a6e9
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105104050"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081028"
 ---
 Beroende på klientens operativ system är procedurerna för fjärr anslutning till enheten olika.
 
@@ -58,8 +58,15 @@ Följ de här stegen för att fjärrans luta från en Windows-klient.
 
     Om du ser ett fel som är relaterat till förtroende relationen kontrollerar du om signerings kedjan för det Node-certifikat som har överförts till enheten också installeras på klienten som har åtkomst till enheten.
 
+    Om du inte använder certifikaten (vi rekommenderar att du använder certifikaten!) kan du hoppa över den här kontrollen genom att använda session alternativen: `-SkipCACheck -SkipCNCheck -SkipRevocationCheck` .
+
+    ```powershell
+    $sessOptions = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck 
+    Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell -UseSSL -SessionOption $sessOptions    
+    ```
+
     > [!NOTE] 
-    > När du använder `-UseSSL` alternativet är du fjärr kommunikation via PowerShell över *https*. Vi rekommenderar att du alltid använder *https* för fjärr anslutning via PowerShell. Även om en *http-* session inte är den säkraste anslutnings metoden, är den acceptabel för betrodda nätverk.
+    > När du använder `-UseSSL` alternativet är du fjärr kommunikation via PowerShell över *https*. Vi rekommenderar att du alltid använder *https* för fjärr anslutning via PowerShell. 
 
 6. Ange lösen ordet när du uppmanas till det. Använd samma lösen ord som används för att logga in på det lokala webb gränssnittet. Standard lösen ordet för lokalt webb gränssnitt är *Password1*. När du ansluter till enheten via fjärr-PowerShell visas följande exempel på utdata:  
 
@@ -77,27 +84,30 @@ Följ de här stegen för att fjärrans luta från en Windows-klient.
     [10.100.10.10]: PS>
     ```
 
-### <a name="remotely-connect-from-a-linux-client"></a>Fjärrans luta från en Linux-klient
+> [!IMPORTANT]
+> I den aktuella versionen kan du bara ansluta till PowerShell-gränssnittet på enheten via en Windows-klient. `-UseSSL`Alternativet fungerar inte med Linux-klienterna.
 
-På den Linux-klient som du ska använda för att ansluta:
+<!--### Remotely connect from a Linux client-->
 
-- [Installera den senaste PowerShell Core för Linux](/powershell/scripting/install/installing-powershell-core-on-linux) från GitHub för att hämta SSH-funktionen för fjärr kommunikation. 
-- [Installera endast `gss-ntlmssp` paketet från NTLM-modulen](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). För Ubuntu-klienter använder du följande kommando:
+<!--On the Linux client that you'll use to connect:
+
+- [Install the latest PowerShell Core for Linux](/powershell/scripting/install/installing-powershell-core-on-linux) from GitHub to get the SSH remoting feature. 
+- [Install only the `gss-ntlmssp` package from the NTLM module](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). For Ubuntu clients, use the following command:
     - `sudo apt-get install gss-ntlmssp`
 
-Mer information finns i PowerShell- [fjärrkommunikation via SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core).
+For more information, go to [PowerShell remoting over SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core).
 
-Följ de här stegen för att fjärrans luta från en NFS-klient.
+Follow these steps to remotely connect from an NFS client.
 
-1. Öppna PowerShell-sessionen genom att skriva:
+1. To open PowerShell session, type:
 
     `pwsh`
  
-2. För att ansluta med fjärran sluten klient skriver du:
+2. For connecting using the remote client, type:
 
     `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser`
 
-    Ange det lösen ord som används för att logga in på enheten när du uppmanas till det.
+    When prompted, provide the password used to sign into your device.
  
 > [!NOTE]
-> Den här proceduren fungerar inte på Mac OS.
+> This procedure does not work on Mac OS.-->

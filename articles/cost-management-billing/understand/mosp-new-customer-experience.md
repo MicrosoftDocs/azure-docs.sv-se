@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 01/11/2021
+ms.date: 03/31/2021
 ms.author: banders
-ms.openlocfilehash: 887b7013eb3060020a39d2df0082768b8185bdde
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4f7179a5ad35b4d3ca9a92119fb7b492e2aff779
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575474"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122534"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Kom igång med ditt uppdaterade Azure-faktureringskonto
 
@@ -26,11 +26,11 @@ Hanteringen av kostnader och fakturor är en av de viktigaste delarna i din moln
 
 I följande diagram jämförs ditt gamla och nya faktureringskonto:
 
-![Diagram med en jämförelse av det gamla och det nya kontots faktureringshierarki](./media/mosp-new-customer-experience/comparison-old-new-account.png)
+:::image type="content" source="./media/mosp-new-customer-experience/comparison-old-new-account.png" alt-text="Diagram som visar jämförelsen mellan fakturerings-hierarkin i det gamla och det nya kontot." border="false" lightbox="./media/mosp-new-customer-experience/comparison-old-new-account.png":::
 
 Ditt nya faktureringskonto innehåller en eller flera faktureringsprofiler som du använder för att hantera dina fakturor och betalningsmetoder. Varje faktureringsprofil har ett eller flera fakturaavsnitt där du kan organisera kostnaderna på faktureringsprofilens faktura.
 
-![Diagram som visar den nya faktureringshierarkin](./media/mosp-new-customer-experience/new-billing-account-hierarchy.png)
+:::image type="content" source="./media/mosp-new-customer-experience/new-billing-account-hierarchy.png" alt-text="Diagram som visar den nya fakturerings-hierarkin." border="false" lightbox="./media/mosp-new-customer-experience/new-billing-account-hierarchy.png":::
 
 Roller för faktureringskontot har den högsta behörighetsnivån. Dessa roller bör tilldelas till användare som behöver visa fakturor och spåra kostnader för hela ditt konto, t.ex. ekonomi- eller IT-chefer i en organisation eller den person som har registrerat sig för ett konto. Mer information finns i [Roller och uppgifter för faktureringskonton](../manage/understand-mca-roles.md#billing-account-roles-and-tasks). När ditt konto har uppdaterats tilldelas användaren med rollen som kontoadministratör i det gamla faktureringskontot en ägarroll i det nya kontot.
 
@@ -60,7 +60,21 @@ Den nya miljön innehåller följande kostnadshanterings- och faktureringsfunkti
 
 **Mer förutsägbar månatlig faktureringsperiod** – Med det nya kontot börjar faktureringsperioden den första dagen i månaden och slutar den sista dagen i månaden, oavsett när du registrerar dig för Azure. En faktura skapas i början av varje månad och innehåller alla avgifter från föregående månad.
 
-**Få en enda månadsfaktura för flera prenumerationer** – Du kan välja mellan att få en månadsfaktura för varje prenumeration eller en enskild faktura för flera prenumerationer.
+**Hämta en enda månads faktura för flera prenumerationer** – i ditt befintliga konto får du en faktura för varje Azure-prenumeration. När ditt konto har uppdaterats underhålls det befintliga beteendet, men du har flexibiliteten att konsolidera prenumerationernas kostnader på en enda faktura. När du har uppdaterat kontot följer du stegen nedan för att konsolidera dina avgifter på en enda faktura:
+
+1. Logga in på [Azure-portalen](https://portal.azure.com).
+2. Sök efter **Kostnadshantering + fakturering**.  
+   ![Skärmbild som visar en sökning i Azure-portalen efter Kostnadshantering + fakturering.](./media/mosp-new-customer-experience/billing-search-cost-management-billing.png)
+3. Välj **Azure-prenumerationer** på vänster sida av skärmen. 
+4. Tabellen innehåller Azure-prenumerationer som du betalar för. I kolumnen fakturerings profil hittar du den fakturerings profil som debiteras för prenumerationen. Prenumerations avgifterna visas på fakturan för fakturerings profilen. Om du vill konsolidera avgifterna för alla prenumerationer på en enda faktura måste du koppla alla dina prenumerationer till en enda fakturerings profil.  
+    :::image type="content" source="./media/mosp-new-customer-experience/list-azure-subscriptions.png" alt-text="Skärm bild som visar listan med Azure-prenumerationer." lightbox="./media/mosp-new-customer-experience/list-azure-subscriptions.png" :::
+5. Välj en fakturerings profil som du vill använda. 
+6. Välj en prenumeration som inte är länkad till den fakturerings profil som du valde i steg 5. Klicka på tre punkter (tre punkter) för prenumerationen. Välj **Ändra fakturaavsnitt**.  
+    :::image type="content" source="./media/mosp-new-customer-experience/select-change-invoice-section.png" alt-text="Skärm bild som visar var du hittar alternativet att ändra faktura avsnittet." lightbox="./media/mosp-new-customer-experience/select-change-invoice-section-zoomed-in.png" :::
+7. Välj den fakturerings profil som du valde i steg #5.  
+    :::image type="content" source="./media/mosp-new-customer-experience/change-invoice-section.png" alt-text="Skärm bild som visar hur du ändrar faktura avsnittet." lightbox="./media/mosp-new-customer-experience/change-invoice-section-zoomed-in.png" :::
+8. Välj **ändra**.
+9. Upprepa steg 6-8 för alla andra prenumerationer. 
 
 **Få en enda månadsfaktura för Azure-prenumerationer, supportavtal och Azure Marketplace-produkter** – Du får en enda månadsfaktura för alla avgifter, inklusive användningskostnader för Azure-prenumerationer och kostnader för supportavtal och Azure Marketplace-köp.
 
@@ -98,6 +112,12 @@ Vi rekommenderar att du gör följande för att förbereda dig för den nya milj
 
 I den nya miljön genereras din faktura runt den nionde dagen i varje månad, och innehåller alla avgifter från föregående månad. Datumet kan skilja sig från det datum då din faktura genereras i det gamla kontot. Om du delar dina fakturor med andra meddelar du dem om datumändringen.
 
+
+**Fakturor under den första månaden efter migrering**
+
+Dagen då ditt konto uppdateras slutförs dina befintliga ej fakturerade kostnader och du får fakturorna för dessa avgifter på dagen när du normalt får dina fakturor. John har till exempel två Azure-prenumerationer – Azure SUB 01 med fakturerings perioden från den femte dagen i månaden till den fjärde dagen i nästa månad och Azure sub 02 med fakturerings perioden från den tionde dagen i månaden till den nionde dagen i nästa månad. John får fakturor för båda Azure-prenumerationer vanligt vis den femte i månaden. Nu om Johns konto uppdateras den 4 april, kommer avgifterna för Azure SUB 01 från och med 5 mars till 4 april och avgifter för Azure sub 02 från den 10 mars till 4 april att slutföras. John får två fakturor, en för varje under 5 april. När kontot har uppdaterats kommer John fakturerings perioden att baseras på kalender månad och kommer att täcka alla kostnader som uppstår från början av en kalender månad till slutet av kalender månaden.  Fakturan för föregående kalender månads avgifter är tillgängliga den 9: e i månaden. I exemplet ovan får John en annan faktura den 5 maj för fakturerings perioden 5 april till den 30 april. 
+
+
 **Nya API:er för fakturerings- och kostnadshantering**
 
 Om du använder API:er för kostnadshantering och fakturering för att köra frågor mot och uppdatera fakturerings- eller kostnadsdata måste du använda nya API:er. Tabellen nedan innehåller de API:er som inte fungerar med det nya faktureringskontot och de ändringar som du måste göra i ditt nya faktureringskonto.
@@ -106,6 +126,7 @@ Om du använder API:er för kostnadshantering och fakturering för att köra fr�
 |---------|---------|
 |[API:et Billing Accounts – List](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | I API:et Billing Accounts – List har ditt gamla faktureringskonto agreementType **MicrosoftOnlineServiceProgram**, och ditt nya faktureringskonto har agreementType **MicrosoftCustomerAgreement**. Om du har ett agreementType-beroende uppdaterar du det. |
 |[Invoices – List By Billing Subscription](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Detta API returnerar bara fakturor som genererades innan ditt konto uppdaterades. Du måste använda API:et [Invoices – List By Billing Account](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) för att få fakturor som genereras i det nya faktureringskontot. |
+
 
 ## <a name="cost-management-updates-after-account-update"></a>Cost Management-uppdateringar efter kontouppdatering
 
@@ -141,7 +162,7 @@ Med ditt uppdaterade konto får du en enda faktura för alla Azure-avgifter. Nu 
 
 Om faktureringsperioden exempelvis var den 24 november till den 23 december med ditt gamla konto, blir perioden efter uppgraderingen den 1 november till den 30 november, den 1 december till den 31 december och så vidare.
 
-:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="Bild som visar en jämförelse mellan gamla och nya faktureringsperioder " lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
+:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="Skärm bild som visar en jämförelse mellan gamla och nya fakturerings perioder." lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
 
 #### <a name="budgets"></a>Budgetar
 
@@ -156,7 +177,7 @@ Det nya faktureringskontot har förbättrade exportfunktioner. Du kan till exemp
 
 Exempelvis skulle den exporterade CSV-filen för faktureringsperioden från den 23 december till den 22 januari innehålla kostnads- och användningsdata för den perioden. Efter uppdateringen kommer exporten att innehålla data för kalendermånaden. Till exempel från den 1 januari till den 31 januari och så vidare.
 
-:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="Bild som visar en jämförelse mellan gammal och ny exportinformation " lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
+:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="Skärm dum par som visar en jämförelse mellan Gammal och ny export information." lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
 
 ## <a name="additional-information"></a>Ytterligare information
 

@@ -1,15 +1,15 @@
 ---
 title: 'Snabb start: ny princip tilldelning med mallar'
 description: I den här snabb starten använder du en Azure Resource Manager mall (ARM-mall) för att skapa en princip tilldelning som identifierar icke-kompatibla resurser.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: c32f833520a811d47129196ae4d67c92bad7e21f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b61198fecf0c3a6ba9aad19abc60bc042b68c29c
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89651420"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096622"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>Snabb start: skapa en princip tilldelning för att identifiera icke-kompatibla resurser med hjälp av en ARM-mall
 

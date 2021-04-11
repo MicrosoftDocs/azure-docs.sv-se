@@ -51,6 +51,8 @@
   items:
     - name: Distribuera säkerhetspartnerprovidrar
       href: deploy-trusted-security-partner.md
+    - name: Säkra privata slut punkter
+      href: private-link-inspection-secure-virtual-hub.md
     - name: Migrera till brandväggsprincip – PowerShell
       href: migrate-to-policy.md
     - name: DNS-inställningar

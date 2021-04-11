@@ -1,18 +1,18 @@
 ---
 title: Inbyggda princip definitioner för Azure Cognitive Services
 description: Visar Azure Policy inbyggda princip definitioner för Azure Cognitive Services. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 author: nitinme
 ms.author: nitinme
 ms.service: cognitive-services
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 1a26bd0c11079a504d40b933fb70033a2ff2ee8d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 82d3469a33228a0ce4dda4d4d31e649aa2969e15
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105038113"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106093611"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-cognitive-services"></a>Azure Policy inbyggda princip definitioner för Azure Cognitive Services
 

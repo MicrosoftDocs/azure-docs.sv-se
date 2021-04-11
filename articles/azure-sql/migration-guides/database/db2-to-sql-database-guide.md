@@ -10,17 +10,17 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 5dd6735b5ef17f97de1d2272bd98f6b87b0bc84b
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 8d495c04d5753c3771a0870659cc92fb1e604216
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553115"
+ms.locfileid: "107031213"
 ---
 # <a name="migration-guide-ibm-db2-to-azure-sql-database"></a>Guide för migrering: IBM DB2 till Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-I den här guiden får du lära dig att migrera dina IBM DB2-databaser till Azure SQL Database genom att använda SQL Server Migration Assistant för DB2. 
+I den här guiden får du lära dig [hur du migrerar](https://azure.microsoft.com/migration/migration-journey) dina IBM DB2-databaser till Azure SQL Database genom att använda [SQL Server Migration](https://azure.microsoft.com/migration/migration-journey) Assistant för DB2. 
 
 Andra guider för migrering finns i hand boken för [Azure Database migration](https://docs.microsoft.com/data-migration). 
 
@@ -35,7 +35,7 @@ Du behöver följande för att kunna migrera DB2-databasen till SQL Database:
 
 ## <a name="pre-migration"></a>Före migrering
 
-När du har uppfyllt kraven är du redo att upptäcka miljön och bedöma möjligheten för migreringen. 
+När du har uppfyllt kraven är du redo att upptäcka miljön och bedöma möjligheten för din [Azure Cloud-migrering](https://azure.microsoft.com/migration).
 
 ### <a name="assess-and-convert"></a>Utvärdera och konvertera
 
@@ -153,7 +153,7 @@ Vissa SQL Server funktioner är bara tillgängliga när kompatibilitetsnivån f�
 
 Mer hjälp finns i följande resurser som har utvecklats som stöd för ett verkligt migreringsjobb-projekt engagemang:
 
-|Tillgång  |Description  |
+|Tillgång  |Beskrivning  |
 |---------|---------|
 |[Modell och verktyg för data arbets belastnings bedömning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Det här verktyget ger föreslagna "bästa anpassning"-språkplattformar, moln beredskap och program/databas reparations nivåer för en specifik arbets belastning. Den erbjuder enkel, enkel beräkning och rapportgenerering som hjälper till att påskynda stora fastighets bedömningar genom att tillhandahålla och automatisera och enhetlig mål plattforms besluts process.|
 |[Paket för identifiering och utvärdering av DB2 zOS data till gångar](https://github.com/microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|När du har kört SQL-skriptet på en databas kan du exportera resultatet till en fil i fil systemet. Flera fil format stöds, inklusive *. csv, så att du kan samla in resultaten i externa verktyg som kalkyl blad. Den här metoden kan vara användbar om du enkelt vill dela resultat med team som inte har Workbench installerat.|
@@ -174,7 +174,8 @@ Data SQL Engineering-teamet utvecklade dessa resurser. Det här teamets kärn st
 
 - Mer information om ramverket och implementerings cykeln för migrering av moln finns i:
    -  [Cloud Adoption Framework för Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
-   -  [Metodtips för kostnad och storleksändring av arbetsbelastningar som migreras till Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Metodtips för kostnad och storleksändring av arbetsbelastningar som migreras till Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
+   -  [Molnmigrering resurser](https://azure.microsoft.com/migration/resources) 
 
 - Information om hur du bedömer program åtkomst lagret finns i [Data Access Migration Toolkit](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
 - Mer information om hur du utför data åtkomst Layer A/B-testning finns [Database experimentation Assistant](/sql/dea/database-experimentation-assistant-overview).

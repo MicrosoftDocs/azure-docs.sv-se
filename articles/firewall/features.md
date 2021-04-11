@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 04/02/2021
 ms.author: victorh
-ms.openlocfilehash: 21bb1856409b7fbea1eeffb8b3769dd63119da50
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8dbfb23d4314f8ceb13ad36ca9733e446e176090
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102612855"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278192"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall-funktioner
 
@@ -55,7 +55,7 @@ Azure Firewall-Tillgänglighetszoner är tillgängliga i regioner som stöder Ti
 > [!NOTE]
 > Tillgänglighetszoner kan bara konfigureras under distributionen. Du kan inte konfigurera en befintlig brand vägg att inkludera Tillgänglighetszoner.
 
-Mer information om Tillgänglighetszoner finns [i regioner och Tillgänglighetszoner i Azure](../availability-zones/az-overview.md)
+Mer information om Tillgänglighetszoner finns [i regioner och Tillgänglighetszoner i Azure](../availability-zones/az-overview.md).
 
 ## <a name="unrestricted-cloud-scalability"></a>Obegränsad molnskalbarhet
 
@@ -86,6 +86,8 @@ En [service tag](service-tags.md) -uppsättning representerar en grupp med IP-ad
 Alla IP-adresser för utgående trafik över virtuellt nätverk översätts till den offentliga Azure Firewall-IP-adressen (Source Network Address Translation). Du kan identifiera och tillåta trafik som kommer från ditt virtuella nätverk till fjärranslutna Internetmål. Azure-brandväggen är inte SNAT när målets IP-adress är ett privat IP-intervall per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). 
 
 Om din organisation använder ett offentligt IP-adressintervall för privata nätverk, kommer Azure-brandväggen att besvara trafiken till någon av de privata IP-adresserna för brand väggen i AzureFirewallSubnet. Du kan konfigurera Azure-brandväggen så att den **inte är** SNAT för ditt offentliga IP-adressintervall. Mer information finns i [Azure FIREWALL SNAT privata IP-adressintervall](snat-private-range.md).
+
+Du kan övervaka SNAT-port användning i Azure Firewall-mått. Läs mer och se vår rekommendation om SNAT-port användning i våra [brand Väggs loggar och statistik dokumentation](logs-and-metrics.md#metrics).
 
 ## <a name="inbound-dnat-support"></a>Stöd för inkommande DNAT
 

@@ -190,7 +190,7 @@
           href: delivery-and-retry.md
         - name: Leverans av webhook-händelser
           href: webhook-event-delivery.md
-        - name: Leverans egenskaper
+        - name: Anpassade leverans egenskaper
           href: delivery-properties.md
     - name: Haveriberedskap
       items:
@@ -280,9 +280,9 @@
               href: enable-identity-custom-topics-domains.md
             - name: Avsnittet Aktivera hanterad identitet för ett system
               href: enable-identity-system-topics.md
-            - name: Lägg till identitet till Azure-roller på destinationer
+            - name: Bevilja hanterad identitet åtkomst till Event Grid destination
               href: add-identity-roles.md
-            - name: Skapa händelse prenumerationer som använder en identitet
+            - name: Skapa en händelse prenumeration som använder den hanterade identiteten
               href: managed-service-identity.md
         - name: Leverera händelser på ett säkert sätt över en privat länk
           href: consume-private-endpoints.md

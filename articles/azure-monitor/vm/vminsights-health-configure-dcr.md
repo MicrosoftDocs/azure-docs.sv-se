@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 0db6ed7566c53429f8b9798ac8cdafe76ca7bd5a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 889a04d68de45a6270ae0c38615d841a526ad86a
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052151"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490700"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>Konfigurera övervakning av gäst hälsa för VM Insights med hjälp av data insamlings regler (för hands version)
 Med [gäst hälsa för virtuella datorer](vminsights-health-overview.md) kan du Visa hälso tillståndet för en virtuell dator som definieras av en uppsättning prestanda mätningar som samplas med jämna mellanrum. Den här artikeln beskriver hur du kan ändra standard övervakning över flera virtuella datorer med hjälp av data insamlings regler.
@@ -175,17 +175,17 @@ Lista över en eller flera strängar som definierar vilka övervakare i hälsohi
 I följande tabell visas de aktuella tillgängliga övervakarens namn.
 
 | Typnamn | Name | Beskrivning |
-|:---|:---|:---|
-| skogen | skogen | Övervakaren på den översta nivån representerar hälsa för den virtuella datorn. | |
-| processor användning | processor användning | Övervakaren för processor användning. | |
-| logiska diskar | logiska diskar | Sammanställd Övervakare för hälso tillstånd för alla övervakade diskar på virtuella Windows-datorer. | |
-| logiska diskar\|* | logiska diskar \| C:<br>logiska diskar \| D: | Sammanställd Övervakare för spårnings hälsa för en specifik disk på en virtuell Windows-dator. | 
-| \| * \| ledigt utrymme på logisk disk | logiska diskar \| C: \| ledigt utrymme<br>logiska diskar \| D: \| ledigt utrymme | Övervakaren ledigt disk utrymme på den virtuella Windows-datorn. |
+|:----------|:-----|:------------|
+| skogen | skogen | Övervakaren på den översta nivån representerar hälsa för den virtuella datorn. |
+| processor användning | processor användning | Övervakaren för processor användning. |
+| logiska diskar | logiska diskar | Sammanställd Övervakare för hälso tillstånd för alla övervakade diskar på virtuella Windows-datorer. |
+| logiska diskar\|\* | logiska diskar \| C:<br>logiska diskar \| D: | Sammanställd Övervakare för spårnings hälsa för en specifik disk på en virtuell Windows-dator. |
+| \| \* \| ledigt utrymme på logisk disk | logiska diskar \| C: \| ledigt utrymme<br>logiska diskar \| D: \| ledigt utrymme | Övervakaren ledigt disk utrymme på den virtuella Windows-datorn. |
 | fil system | fil system | Sammanställd Övervakare för hälso tillstånd för alla fil system på virtuella Linux-datorer. |
-| fil system\|* | fil system\|/<br>fil system \| /mnt | Sammanställd Övervakare för spårning av ett fil system med en virtuell Linux-dator. | fil system|/var/log |
-| \| * \| ledigt utrymme i fil system | \| / \| ledigt utrymme i fil system<br>fil system \| /mnt \| ledigt utrymme | Övervakning av ledigt disk utrymme på fil systemet för virtuella Linux-datorer. | 
-| minne | minne | Sammanställd Övervakare för hälso tillståndet för det virtuella dator minnet. | |
-| \|tillgängligt minne| \|tillgängligt minne | Övervaka spårning av tillgängligt minne på den virtuella datorn. | |
+| fil system\|\* | fil system\|/<br>fil system \| /mnt | Sammanställd Övervakare för spårning av ett fil system med en virtuell Linux-dator. |
+| \| \* \| ledigt utrymme i fil system | \| / \| ledigt utrymme i fil system<br>fil system \| /mnt \| ledigt utrymme | Övervakning av ledigt disk utrymme på fil systemet för virtuella Linux-datorer. |
+| minne | minne | Sammanställd Övervakare för hälso tillståndet för det virtuella dator minnet. |
+| \|tillgängligt minne | \|tillgängligt minne | Övervaka spårning av tillgängligt minne på den virtuella datorn. |
 
 
 ## <a name="alertconfiguration-element"></a>alertConfiguration-element

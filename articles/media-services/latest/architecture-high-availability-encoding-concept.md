@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a87525248273db38e4e7bc8d1b59bbd9f99bb4c6
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: c334888f5b85b0d2211225282680d5f791b50793
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107001"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277886"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Hög tillgänglighet med Media Services och video på begäran (VOD)
 
@@ -61,7 +61,7 @@ Det här diagrammet på hög nivå visar arkitekturen för det exempel som tillh
 
 * [Skapa](./account-create-how-to.md) två (eller fler) Azure Media Services-konton. De två kontona måste finnas i olika regioner. Mer information finns i [regioner där Azure Media Servicess tjänsten har distribuerats](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).
 * Ladda upp mediet till samma region som du planerar att skicka jobbet från. Mer information om hur du startar kodning finns i [skapa ett jobb indata från en HTTPS-URL](./job-input-from-http-how-to.md) eller [skapa ett jobb indata från en lokal fil](./job-input-from-local-file-how-to.md).
-* Om du sedan behöver skicka [jobbet](./transforms-jobs-concept.md) igen till en annan region kan du använda `JobInputHttp` eller använda `Copy-Blob` för att kopiera data från käll till gångs behållaren till en till gångs behållare i den alternativa regionen.
+* Om du sedan behöver skicka [jobbet](./transform-jobs-concept.md) igen till en annan region kan du använda `JobInputHttp` eller använda `Copy-Blob` för att kopiera data från käll till gångs behållaren till en till gångs behållare i den alternativa regionen.
 
 ### <a name="monitoring"></a>Övervakning
 
@@ -72,10 +72,10 @@ Det här diagrammet på hög nivå visar arkitekturen för det exempel som tillh
 
     Mer information:
 
-    * Se [ljud analys exemplet](./transforms-jobs-concept.md) som visar hur du övervakar ett jobb med Azure Event Grid, inklusive hur du lägger till en återställning om Azure Event Grid meddelanden fördröjs av någon anledning.
+    * Se [ljud analys exemplet](./transform-jobs-concept.md) som visar hur du övervakar ett jobb med Azure Event Grid, inklusive hur du lägger till en återställning om Azure Event Grid meddelanden fördröjs av någon anledning.
     * Ta en titt på [Azure Event Grid scheman för Media Services händelser](./media-services-event-schemas.md).
 
-* När du skapar ett [jobb](./transforms-jobs-concept.md):
+* När du skapar ett [jobb](./transform-jobs-concept.md):
     * Välj slumpmässigt ett konto i listan över konton som används för närvarande (den här listan innehåller vanligt vis båda kontona, men om problem upptäcks kan det bara innehålla ett konto). Om listan är tom kan du generera en avisering så att en operatör kan undersöka den.
     * Skapa en post för att hålla reda på varje synlighetssekvensnummer-jobb och regionen/kontot som används.
 * När din `JobStateChange` hanterare får ett meddelande om att ett jobb har nått det schemalagda läget, registrerar du den tid det anger det schemalagda läget och regionen/kontot som används.

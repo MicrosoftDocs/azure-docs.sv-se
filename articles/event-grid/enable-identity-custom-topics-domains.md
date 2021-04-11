@@ -3,12 +3,12 @@ title: Aktivera hanterad identitet på Azure Event Grid anpassade ämnen och dom
 description: I den här artikeln beskrivs hur du aktiverar hanterad tjänst identitet för ett Azure Event Grid anpassat ämne eller domän.
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 06fd4d6e472b33496e773596b0f3afc8e70be948
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b93fd44282d9e19e7111dd52c73d8d4c01c67a10
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105630607"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278226"
 ---
 # <a name="assign-a-system-managed-identity-to-an-event-grid-custom-topic-or-domain"></a>Tilldela en Systemhanterad identitet till ett Event Grid anpassat ämne eller domän 
 Den här artikeln visar hur du aktiverar en Systemhanterad identitet för ett Event Grid anpassat ämne eller en domän. Mer information om hanterade identiteter finns i [Vad är hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/overview.md).
@@ -59,4 +59,4 @@ Kommandot för att uppdatera en befintlig domän är liknande ( `az eventgrid do
 
 
 ## <a name="next-steps"></a>Nästa steg
-Lägg till identiteten i en lämplig roll (till exempel Service Bus data avsändare) på målet (till exempel en Service Bus kö). Detaljerade anvisningar finns i [lägga till identitet till Azure-roller på mål platser](add-identity-roles.md). 
+Lägg till identiteten i en lämplig roll (till exempel Service Bus data avsändare) på målet (till exempel en Service Bus kö). Detaljerade anvisningar finns i [bevilja hanterad identitet åtkomst till Event Grid destination](add-identity-roles.md). 

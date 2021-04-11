@@ -24,23 +24,21 @@
     - name: Utveckla anpassade kodmoduler
       items:
         - name: C
-          items:
-            - name: C-moduler för Linux-enheter
-              href: tutorial-c-module.md
-            - name: C-moduler för Windows-enheter
-              href: tutorial-c-module-windows.md
+          href: tutorial-c-module.md
         - name: C#
-          items:
-            - name: C#-moduler för Linux-enheter
-              href: tutorial-csharp-module.md
-            - name: C#-moduler för Windows-enheter
-              href: tutorial-csharp-module-windows.md
+          href: tutorial-csharp-module.md
         - name: Java
           href: tutorial-java-module.md
         - name: Node.js
           href: tutorial-node-module.md
         - name: Python
           href: tutorial-python-module.md
+        - name: Använda Windows-behållare
+          items:
+            - name: C
+              href: tutorial-c-module-windows.md
+            - name: C#
+              href: tutorial-csharp-module-windows.md
     - name: Distribuera Azure-tjänster som moduler
       items:
         - name: Filtrera data med Azure Functions

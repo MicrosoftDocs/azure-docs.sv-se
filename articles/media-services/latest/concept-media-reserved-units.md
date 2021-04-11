@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: e0cfc47b546c31e6b93d224e64de20b79baacfd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b3a06d2d441c918c4c109d9dc624ebfa1cd4c97
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98891305"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120834"
 ---
 # <a name="media-reserved-units"></a>Enheter med reserverat medium
 
@@ -52,8 +52,8 @@ Du debiteras baserat på antalet minuter som de reserverade enheterna är etable
 
 ## <a name="next-step"></a>Nästa steg
 [Skala medie reserverade enheter med CLI](media-reserved-units-cli-how-to.md) 
- [Analysera videor](analyze-videos-tutorial-with-api.md)
+ [Analysera videor](analyze-videos-tutorial.md)
 
 ## <a name="see-also"></a>Se även
 
-* [Kvoter och begränsningar](limits-quotas-constraints.md)
+* [Kvoter och begränsningar](limits-quotas-constraints-reference.md)

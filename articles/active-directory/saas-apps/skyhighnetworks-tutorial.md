@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/23/2020
+ms.date: 03/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 456348f5492af44274a37a6400fb8d95e9bd55a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eaf6b2526125b13eec67680c292ed1dbae6fcfee
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96015153"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284438"
 ---
 # <a name="tutorial-integrate-mvision-cloud-azure-ad-sso-configuration-with-azure-active-directory"></a>Självstudie: integrera MVISION Cloud Azure AD SSO-konfiguration med Azure Active Directory
 
@@ -26,39 +26,35 @@ I den här självstudien får du lära dig hur du integrerar MVISION Cloud Azure
 * Gör det möjligt för användarna att logga in automatiskt till MVISION Cloud Azure AD SSO-konfiguration med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-
 ## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
-* En Azure AD-prenumeration. Om du inte har någon prenumeration kan du få en månads kostnads fri utvärderings version [här](https://azure.microsoft.com/pricing/free-trial/).
+* En Azure AD-prenumeration. Om du inte har någon prenumeration kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/).
 * MVISION Cloud Azure AD SSO-konfiguration enkel inloggning (SSO) aktive rad prenumeration.
-
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
 I den här självstudien konfigurerar och testar du enkel inloggning med Azure AD i en testmiljö.
 
-* MVISION Cloud Azure AD SSO-konfiguration stöder **SP-och IDP** -INITIERAd SSO
-* När du har konfigurerat Dropbox kan du framtvinga kontroll över sessioner, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen utökas från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+* MVISION Cloud Azure AD SSO-konfiguration stöder **SP-och IDP** -initierad SSO.
 
-## <a name="adding-mvision-cloud-azure-ad-sso-configuration-from-the-gallery"></a>Lägga till MVISION Cloud Azure AD SSO-konfiguration från galleriet
+## <a name="add-mvision-cloud-azure-ad-sso-configuration-from-the-gallery"></a>Lägg till MVISION Cloud Azure AD SSO-konfiguration från galleriet
 
 Om du vill konfigurera integrering av MVISION Cloud Azure AD SSO-konfigurationen i Azure AD måste du lägga till MVISION Cloud Azure AD SSO-konfiguration från galleriet till din lista över hanterade SaaS-appar.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , Skriv **MVision Cloud Azure AD SSO Configuration** i sökrutan.
 1. Välj **MVision Cloud Azure AD SSO-konfiguration** från panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
+## <a name="configure-and-test-azure-ad-sso-for-mvision-cloud-azure-ad-sso-configuration"></a>Konfigurera och testa Azure AD SSO för MVISION Cloud AD SSO-konfiguration
 
 Konfigurera och testa Azure AD SSO med MVISION Cloud Azure AD SSO-konfiguration med hjälp av en test användare som kallas **Britta Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och en relaterad användare i MVISION Cloud AD SSO-konfiguration.
 
-Om du vill konfigurera och testa Azure AD SSO med MVISION Cloud Azure AD SSO-konfiguration, fyller du i följande Bygg stenar:
+Utför följande steg för att konfigurera och testa Azure AD SSO med MVISION Cloud AD SSO-konfiguration:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
     1. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** – för att testa enkel inloggning med Azure AD med Britta Simon.
@@ -73,10 +69,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I [Azure Portal](https://portal.azure.com/)går du till sidan för program integrering i **Datadog** , letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
-
 
 4. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, utför följande steg:
 
@@ -85,8 +80,6 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<ENV>.myshn.net/shndash/response/saml-postlogin`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
-
-    ![MVISION Cloud Azure AD SSO konfigurations domän och enkel inloggnings information för URL: er](common/metadata-upload-additional-signon.png)
 
     I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
 
@@ -101,82 +94,54 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
 
-
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
 
-Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
+I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory**, välj **Users** och sedan **Alla användare**.
-
-    ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
-
-2. Välj **ny användare** överst på skärmen.
-
-    ![Knappen Ny användare](common/new-user.png)
-
-3. Genomför följande steg i Användaregenskaper.
-
-    ![Dialogrutan Användare](common/user-properties.png)
-
-    a. I fältet **Namn** anger du **BrittaSimon**.
-  
-    b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
-    Till exempel BrittaSimon@contoso.com
-
-    c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
-
-    d. Klicka på **Skapa**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
+1. Välj **ny användare** överst på skärmen.
+1. I **användar** egenskaperna följer du de här stegen:
+   1. I **Namn**-fältet skriver du `B.Simon`.  
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
-I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till MVISION Cloud Azure AD SSO-konfiguration.
+I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till MVISION Cloud Azure AD SSO-konfiguration.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **MVision Cloud Azure AD SSO Configuration**.
-
-    ![Bladet Företagsprogram](common/enterprise-applications.png)
-
-2. I listan program väljer du **MVision Cloud Azure AD SSO-konfiguration**.
-
-    ![Länken MVISION Cloud Azure AD SSO Configuration i listan program](common/all-applications.png)
-
-3. På menyn till vänster väljer du **Användare och grupper**.
-
-    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
-
-    ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
-
-5. I dialogrutan **Användare och grupper** väljer du **Britta Simon** i listan med användare och klickar på knappen **Välj** längst ned på skärmen.
-
-6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
-
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
-
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
+1. I listan program väljer du **MVision Cloud Azure AD SSO-konfiguration**.
+1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
+1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
 ## <a name="configure-mvision-cloud-azure-ad-sso-configuration-sso"></a>Konfigurera MVISION Cloud Azure AD SSO SSO
 
 Om du vill konfigurera enkel inloggning på **MVision Cloud Azure AD SSO-konfigurations** sidan måste du skicka det hämtade **certifikatet (base64)** och lämpliga kopierade url: er från Azure Portal till [MVision Cloud Azure AD SSO Configuration support team](mailto:support@skyhighnetworks.com). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
 
-
 ### <a name="create-mvision-cloud-azure-ad-sso-configuration-test-user"></a>Skapa MVISION Cloud Azure AD SSO-konfiguration test användare
 
 I det här avsnittet skapar du en användare som heter B. Simon i MVISION Cloud Azure AD SSO-konfiguration. Arbeta med [MVision Cloud Azure AD SSO Configuration support team](mailto:support@skyhighnetworks.com) för att lägga till användarna i MVision-molnet konfigurations plattform för enkel inloggning i Azure AD. Användare måste skapas och aktiveras innan du använder enkel inloggning.
 
-### <a name="test-sso"></a>Testa SSO 
+## <a name="test-sso"></a>Testa SSO 
 
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-När du klickar på ikonen MVISION Cloud Azure AD SSO i åtkomst panelen, bör du loggas in automatiskt till MVISION Cloud Azure AD SSO-konfigurationen som du ställer in SSO för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP initierad:
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till MVISION Cloud Azure AD SSO Configuration inloggnings-URL där du kan starta inloggnings flödet.  
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](./tutorial-list.md)
+* Gå till MVISION Cloud Azure AD SSO-inloggning URL: en direkt och starta inloggnings flödet därifrån.
 
-- [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP initierad:
 
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
+* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt till MVision Cloud Azure AD SSO-konfigurationen som du ställer in SSO för. 
 
-- [Prova MVISION Cloud Azure AD SSO Configuration med Azure AD](https://aad.portal.azure.com/)
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på konfigurations panelen för molnet för Azure AD i MVISION i Mina appar, om den har kon figurer ATS i SP-läge omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det kon figurer ATS i IDP-läge, bör du logga in automatiskt till MVISION Cloud Azure AD SSO-konfigurationen som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Vad är session Control i Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>Nästa steg
+
+När du har konfigurerat MVISION Cloud Azure AD SSO-konfiguration kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

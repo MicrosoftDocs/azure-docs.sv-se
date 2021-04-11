@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 03/18/2021
+ms.date: 04/08/2021
 ms.author: memildin
-ms.openlocfilehash: b9a93286b6a546160b6c621d084437f671eab4d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9e1b5d19acbc9bcee86c374a3f843530b8adc61
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773580"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103767"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Viktiga kommande ändringar i Azure Security Center
 
@@ -28,59 +28,11 @@ Om du letar efter den senaste versions informationen hittar du dem i [vad som ä
 
 | Planerad ändring                                                                                                                                                        | Beräknat datum för ändring |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
-| [Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | Mars 2021                |
-| [Utfasning av 11 Azure Defender-aviseringar](#deprecation-of-11-azure-defender-alerts)                                                                                   | Mars 2021                |
 | [21 rekommendationer som flyttas mellan säkerhets kontroller](#21-recommendations-moving-between-security-controls)                                                           | April 2021                |
-| [Två ytterligare rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell](#two-further-recommendations-from-apply-system-updates-security-control-being-deprecated)                                                                                         | April 2021                |
-| [Rekommendationer från AWS kommer att lanseras för allmän tillgänglighet (GA)](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | April 2021                |
+| [Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | April 2021                |
+| [Rekommendationer från AWS kommer att lanseras för allmän tillgänglighet (GA)](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | 2021 **augusti**             |
 | [Förbättringar av SQL data klassificerings rekommendation](#enhancements-to-sql-data-classification-recommendation)                                                     | K2 2021                   |
 |                                                                                                                                                                       |                           |
-
-
-### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell 
-
-**Beräknat datum för ändring:** Mars 2021
-
-Följande två rekommendationer är schemalagda att bli föråldrade i februari 2021:
-
-- **Datorerna måste startas om för att tillämpa system uppdateringar**. Detta kan leda till en lätt inverkan på dina säkra poäng.
-- **Övervaknings agenten ska installeras på datorerna**. Den här rekommendationen gäller endast för lokala datorer och en del av dess logik överförs till en annan rekommendation, **Log Analytics agent hälso problem bör lösas på dina datorer**. Detta kan leda till en lätt inverkan på dina säkra poäng.
-
-Vi rekommenderar att du kontrollerar dina kontinuerliga export-och arbets flödes automatiserings konfigurationer för att se om dessa rekommendationer ingår i dem. Dessutom bör alla instrument paneler och andra övervaknings verktyg som kan använda dem uppdateras i enlighet med detta.
-
-Läs mer om de här rekommendationerna på [referens sidan för säkerhets rekommendationer](recommendations-reference.md).
-
-### <a name="deprecation-of-11-azure-defender-alerts"></a>Utfasning av 11 Azure Defender-aviseringar
-
-**Beräknat datum för ändring:** Mars 2021
-
-Nästa månad kommer de elva Azure Defender-aviseringarna som anges nedan att bli föråldrade.
-
-- Nya aviseringar ersätter dessa två aviseringar och ger bättre täckning:
-
-    | AlertType                | AlertDisplayName                                                         |
-    |--------------------------|--------------------------------------------------------------------------|
-    | ARM_MicroBurstDomainInfo | PREVIEW – mikroburst Toolkit "Get-AzureDomainInfo"-funktionen körs upptäckt |
-    | ARM_MicroBurstRunbook    | PREVIEW – mikroburst Toolkit "Get-AzurePasswords"-funktionen körs upptäckt  |
-    |                          |                                                                          |
-
-- Dessa nio aviseringar avser en Azure Active Directory Identity Protection koppling som redan är föråldrad:
-
-    | AlertType           | AlertDisplayName              |
-    |---------------------|-------------------------------|
-    | UnfamiliarLocation  | Obekanta inloggningsegenskaper |
-    | AnonymousLogin      | Anonym IP-adress          |
-    | InfectedDeviceLogin | Länkad IP-adress för skadlig kod     |
-    | ImpossibleTravel    | Ovanlig resa               |
-    | MaliciousIP         | Skadlig IP-adress          |
-    | LeakedCredentials   | Läckta autentiseringsuppgifter            |
-    | PasswordSpray       | Lösen ords sprayning                |
-    | LeakedCredentials   | Azure AD Threat Intelligence  |
-    | AADAI               | Azure AD AI                   |
-    |                     |                               |
- 
-
-
 
 
 ### <a name="21-recommendations-moving-between-security-controls"></a>21 rekommendationer som flyttas mellan säkerhets kontroller 
@@ -98,7 +50,7 @@ Lär dig vilka rekommendationer som finns i varje säkerhets kontroll i säkerhe
 |||
 
 
-### <a name="two-further-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Två ytterligare rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell
+### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell
 
 **Beräknat datum för ändring:** April 2021
 
@@ -110,7 +62,7 @@ Följande två rekommendationer är föråldrade:
 
 ### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>Rekommendationer från AWS kommer att lanseras för allmän tillgänglighet (GA)
 
-**Beräknat datum för ändring:** April 2021
+**Beräknat datum för ändring:** 2021 augusti
 
 Azure Security Center skyddar arbets belastningar i Azure, Amazon Web Services (AWS) och Google Cloud Platform (GCP).
 
@@ -121,7 +73,7 @@ Med den här ändringen kommer två uppsättningar med AWS-rekommendationer att 
 - [Säkerhets hubbens PCI DSS kontroller](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-pci-controls.html)
 - [Säkerhets hubbens CIS-AWS grunder benchmark-kontroller](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html)
 
-När dessa är GA och utvärderingarna körs på dina AWS-resurser påverkar resultaten dina kombinerade säkra Poäng för alla dina resurser i flera och hybrid moln. 
+När dessa är GA och utvärderingarna körs på dina AWS-resurser påverkar resultaten dina kombinerade säkra Poäng för alla dina resurser i flera och hybrid moln.
 
 
 

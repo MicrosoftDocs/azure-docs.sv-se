@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroll av efterlevnad för Azure Database for PostgreSQL
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure Database for PostgreSQL. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: sample
 author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 86117bd5528bcb0f50a9add19fda5136990a2c47
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e8c89856d7fdb3d71643d5119b850338029cc4d6
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105033779"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106093165"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-postgresql"></a>Azure Policy kontroll av efterlevnad för Azure Database for PostgreSQL
 

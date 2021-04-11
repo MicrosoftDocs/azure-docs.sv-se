@@ -3,12 +3,12 @@ title: Diagnostikloggar för Hybridanslutningar
 description: Den här artikeln innehåller en översikt över alla aktiviteter och diagnostikloggar som är tillgängliga för Azure Relay.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 9b459750ad1445da89a8e89a10a35b878bfb64e1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7ca6dc95567a4867d3c58e0efad0fc74289e586c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100590874"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106079105"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Aktivera diagnostikloggar för Azure Relay Hybridanslutningar
 När du börjar använda Azure Relay Hybridanslutningar kanske du vill övervaka hur och när dina lyssnare och avsändare öppnas och stängs och hur dina Hybridanslutningar skapas och meddelanden skickas. Den här artikeln innehåller en översikt över aktivitets-och diagnos loggar som tillhandahålls av tjänsten Azure Relay. 
@@ -80,29 +80,29 @@ Här är ett exempel på en hybrid anslutnings händelse i JSON-format.
 
 ## <a name="events-and-operations-captured-in-diagnostic-logs"></a>Händelser och åtgärder som har registrerats i diagnostikloggar
 
-| Åtgärd | Beskrivning | 
-| --------- | ----------- | 
-| AuthorizationFailed | Auktoriseringen misslyckades.|
-| InvalidSasToken | Ogiltig SAS-token. | 
-| ListenerAcceptingConnection | Lyssnaren accepterar anslutning. |
-| ListenerAcceptingConnectionTimeout | Den lyssnare som accepterar anslutningen har nått sin tids gräns. |
-| ListenerAcceptingHttpRequestFailed | Lyssnaren som accepterar HTTP-begäran misslyckades på grund av ett undantag. |
-| ListenerAcceptingRequestTimeout | Den lyssnare som accepterar begäran har nått sin tids gräns. |  
-| ListenerClosingFromExpiredToken | Lyssnaren stängs eftersom säkerhetstoken har upphört att gälla. | 
-| ListenerRejectedConnection | Lyssnaren har avvisat anslutningen. |
-| ListenerReturningHttpResponse | Lyssnaren returnerar ett HTTP-svar. |  
-| ListenerReturningHttpResponseFailed | Lyssnaren returnerar ett HTTP-svar med en felkod. | 
- ListenerSentHttpResponse | Relä tjänsten har tagit emot ett HTTP-svar från lyssnaren. | 
-| ListenerUnregistered | Lyssnaren har avregistrerats. | 
-| ListenerUnresponsive | Lyssnaren svarar inte när ett svar returneras. | 
-| MessageSendingToListener | Meddelandet skickas till lyssnaren. |
-| MessageSentToListener | Meddelandet skickas till lyssnaren. | 
-| NewListenerRegistered | En ny lyssnare har registrerats. |
-| NewSenderRegistering | Ny avsändare registreras. | 
-| ProcessingRequestFailed | Det gick inte att bearbeta en hybrid anslutnings åtgärd. | 
-| SenderConnectionClosed | Avsändarens anslutning har stängts. |
-| SenderListenerConnectionEstablished | Avsändaren och lyssnaren etablerade anslutningen har upprättats. |
-| SenderSentHttpRequest | Avsändaren skickade en HTTP-begäran. | 
+| Åtgärd                           | Beskrivning                                                     |
+|-------------------------------------|-----------------------------------------------------------------|
+| AuthorizationFailed                 | Auktoriseringen misslyckades.                                           |
+| InvalidSasToken                     | Ogiltig SAS-token.                                              |
+| ListenerAcceptingConnection         | Lyssnaren accepterar anslutning.                           |
+| ListenerAcceptingConnectionTimeout  | Den lyssnare som accepterar anslutningen har nått sin tids gräns.                |
+| ListenerAcceptingHttpRequestFailed  | Lyssnaren som accepterar HTTP-begäran misslyckades på grund av ett undantag. |
+| ListenerAcceptingRequestTimeout     | Den lyssnare som accepterar begäran har nått sin tids gräns.                   |
+| ListenerClosingFromExpiredToken     | Lyssnaren stängs eftersom säkerhetstoken har upphört att gälla. |
+| ListenerRejectedConnection          | Lyssnaren har avvisat anslutningen.                       |
+| ListenerReturningHttpResponse       | Lyssnaren returnerar ett HTTP-svar.                     |
+| ListenerReturningHttpResponseFailed | Lyssnaren returnerar ett HTTP-svar med en felkod. |
+| ListenerSentHttpResponse            | Relä tjänsten har tagit emot ett HTTP-svar från lyssnaren.  |
+| ListenerUnregistered                | Lyssnaren har avregistrerats.                                   |
+| ListenerUnresponsive                | Lyssnaren svarar inte när ett svar returneras.         |
+| MessageSendingToListener            | Meddelandet skickas till lyssnaren.                              |
+| MessageSentToListener               | Meddelandet skickas till lyssnaren.                                    |
+| NewListenerRegistered               | En ny lyssnare har registrerats.                                        |
+| NewSenderRegistering                | Ny avsändare registreras.                                      |
+| ProcessingRequestFailed             | Det gick inte att bearbeta en hybrid anslutnings åtgärd.     |
+| SenderConnectionClosed              | Avsändarens anslutning har stängts.                                |
+| SenderListenerConnectionEstablished | Avsändaren och lyssnaren etablerade anslutningen har upprättats.    |
+| SenderSentHttpRequest               | Avsändaren skickade en HTTP-begäran.                                |
 
 
 ## <a name="next-steps"></a>Nästa steg

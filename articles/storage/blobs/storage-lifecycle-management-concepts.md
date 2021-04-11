@@ -1,20 +1,20 @@
 ---
 title: Optimera kostnader genom att automatisera Azure-Blob Storage åtkomst nivåer
 description: Skapa automatiserade regler för att flytta data mellan frekventa, låg frekventa och Arkiv lag rings nivåer.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 10/29/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 1b568687ffe646a91544c1bb75d26d552a23f49c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0b9f3b5728e4604d7c51c1d49196cfcf1161aef
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96005290"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278039"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Optimera kostnader genom att automatisera Azure-Blob Storage åtkomst nivåer
 

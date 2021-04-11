@@ -6,13 +6,13 @@ ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 2/5/2021
-ms.openlocfilehash: 2966618619aa40ed60c2f3d0fb2c8e080d34a016
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 3/24/2021
+ms.openlocfilehash: 7d6baee49250509e50cdeeea8cf8ca6cec5b362d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102617054"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222180"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Anpassade klassificeringar i Azure avdelningens kontroll
 
@@ -28,7 +28,7 @@ Du kan också skapa anpassade klassificeringar om någon av standard klassificer
 
 ## <a name="steps-to-create-a-custom-classification"></a>Steg för att skapa en anpassad klassificering
 
-Gör så här om du vill skapa en anpassad klassificering:
+Följ dessa steg om du vill skapa en anpassad klassificering:
 
 1. Från din katalog väljer du **hanterings Center** på den vänstra menyn.
 
@@ -68,7 +68,7 @@ Informationen omfattar hur många instanser det finns, det formella namnet, asso
 
 ## <a name="custom-classification-rules"></a>Anpassade klassificerings regler
 
-Katalog tjänsten innehåller en uppsättning standard klassificerings regler som används av skannern för att automatiskt identifiera vissa data typer. Du kan också lägga till egna anpassade klassificerings regler för att identifiera andra typer av data som du kanske är intresse rad av att hitta i din datafastighet. Den här funktionen kan vara mycket kraftfull när du \' försöker hitta data i din datafastighet.
+Katalog tjänsten innehåller en uppsättning standard klassificerings regler som används av skannern för att automatiskt identifiera vissa data typer. Du kan också lägga till egna anpassade klassificerings regler för att identifiera andra typer av data som du kanske är intresse rad av att hitta i din datafastighet. Den här funktionen kan vara kraftfull när du försöker hitta data i din datafastighet.
 
 Anta till exempel \' att ett företag som heter Contoso har medarbetar-ID: n som är standardiserade i företaget med ordet \" medarbetare \" följt av ett GUID för att skapa anställd {GUID}. En instans av ett medarbetar-ID ser till exempel ut som `EMPLOYEE9c55c474-9996-420c-a285-0d0fc23f1f55` .
 
@@ -109,7 +109,7 @@ Så här skapar du en anpassad klassificerings regel:
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-regex-rule.png" alt-text="Skapa ny regex-regel" border="true":::
 
-1. Om du vill generera ett föreslaget regex-mönster när du har laddat upp en fil väljer du ett av de föreslagna mönstren och klickar på **Lägg till i mönster** för att använda de föreslagna data-och kolumn mönstren. Du kan justera de föreslagna mönstren eller också kan du ange egna mönster utan att ladda upp en fil.
+1. Om du vill generera ett föreslaget regex-mönster när du har laddat upp en fil väljer du ett av de föreslagna mönstren och väljer **Lägg till i mönster** för att använda de föreslagna data-och kolumn mönstren. Du kan justera de föreslagna mönstren eller också kan du ange egna mönster utan att ladda upp en fil.
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/suggested-regex.png" alt-text="Generera föreslaget regex" border="true":::
 
@@ -128,6 +128,14 @@ Så här skapar du en anpassad klassificerings regel:
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/verify-rule.png" alt-text="Verifiera regel innan du skapar" border="true":::
 
+1. Testa klassificerings regeln innan du slutför skapande processen för att kontrol lera att den kommer att använda taggar för dina till gångar. Klassificeringarna i regeln tillämpas på de exempel data som laddas upp precis som i en genomsökning. Det innebär att alla system klassificeringar och din anpassade klassificering matchas mot data i filen.
+
+   Indatafiler kan innehålla avgränsade filer (CSV, PSV, SSV, TSV), JSON eller XML-innehåll. Innehållet kommer att parsas baserat på fil namns tillägget för indatafilen. Avgränsade data kan ha ett fil namns tillägg som matchar någon av de nämnda typerna. Till exempel kan TSV-data finnas i en fil med namnet MySampleData.csv. Avgränsat innehåll måste också ha minst 3 kolumner.
+
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/test-rule-screen.png" alt-text="Testa regel innan du skapar" border="true":::
+
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/test-rule-uploaded-file-result-screen.png" alt-text="Visa tillämpade klassificeringar efter överföring av en test fil" border="true":::
+
 ### <a name="creating-a-dictionary-rule"></a>Skapa en ord lista regel
 
 1. Om du skapar en ord lista regel visas följande skärm bild. Ladda upp en fil som innehåller alla möjliga värden för den klassificering som du skapar i en enda kolumn.
@@ -136,9 +144,9 @@ Så här skapar du en anpassad klassificerings regel:
 
 1. När ord listan har genererats kan du justera de distinkta Matchnings-och minimi matchnings trösklarna och skicka regeln.
 
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="Regel för avdelningens kontroll-ordlista – justera distinkt matchnings tröskel och minsta matchnings tröskel" border="true":::
+- **Distinkt matchnings tröskel**: det totala antalet distinkta data värden som måste hittas i en kolumn innan skannern kör data mönstret på den. Tröskelvärdet för distinkt matchning har inget att göra med mönster matchning, men det är ett krav för mönster matchning. Det föreslagna värdet är 8. Det här värdet kan justeras manuellt i ett intervall från 2 till 32. Systemet måste ha det här värdet för att se till att kolumnen innehåller tillräckligt med data för skannern för att kunna klassificera den korrekt. En kolumn som innehåller flera rader som innehåller värdet 1 klassificeras till exempel inte. Kolumner som innehåller en rad med ett värde och resten av raderna har null-värden får inte heller klassificeras. Om du anger flera mönster gäller det här värdet för var och en av dem.
 
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="Skapa ord lista regel med ord listan genererad bock markering." border="true":::
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="Skapa ord lista regel med Dictionary-Generated markering." border="true":::
 
 ## <a name="next-steps"></a>Nästa steg
 

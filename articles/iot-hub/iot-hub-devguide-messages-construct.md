@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 6d6b7122963b51619f26b8d02a8be4ad39261afb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21f22f9aa31210b1690d0be562643d94901ce58a
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92147695"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106079054"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Skapa och läsa IoT Hub-meddelanden
 
@@ -71,7 +71,7 @@ Mer information om hur du kodar och avkodar meddelanden som skickas med olika pr
 | meddelande-ID |En användardefinierad identifierare för meddelandet som används för svar på begäran-svar. Format: en Skift läges känslig sträng (upp till 128 tecken) av ASCII 7-bitars alfanumeriska tecken + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` .  |Ja|
 | sekvens-nummer |Ett tal (unikt per enhets kön) som tilldelas av IoT Hub till varje moln-till-enhet-meddelande. |Inga|
 | på |Ett mål som anges i meddelanden från [moln till enhet](iot-hub-devguide-c2d-guidance.md) . |Inga|
-| absolut-förfallo tid |Datum och tid då meddelandet upphör att gälla. |Inga|   |
+| absolut-förfallo tid |Datum och tid då meddelandet upphör att gälla. |Inga| 
 | korrelations-id |En sträng egenskap i ett svarsmeddelande som vanligt vis innehåller MessageId för begäran, i mönster för begäran-svar. |Ja|
 | användar-id |Ett ID som används för att ange ursprung för meddelanden. När meddelanden genereras av IoT Hub har den angetts till `{iot hub name}` . |Ja|
 | iothub – ack |En generator för feedback-meddelande. Den här egenskapen används i meddelanden från molnet till enheten för att begära IoT Hub att generera återkopplings meddelanden som ett resultat av att meddelandet har använts av enheten. Möjliga värden: **ingen** (standard): inget feedback-meddelande har genererats, **positivt**: ta emot ett feedback-meddelande om meddelandet har slutförts, **negativt**: ta emot ett feedback-meddelande om meddelandet har upphört att gälla (eller maximalt antal leveranser nåddes) utan att ha slutförts av enheten, eller **full**: både positiva och negativa. |Ja|

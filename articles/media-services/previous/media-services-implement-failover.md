@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1636e49099851337d82494ebe168b8ec5194fa20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef4eb3eb55ec1f062efb0f8215a3619f526b1ad2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103011943"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063992"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Implementera redundans med Media Services v2
 
@@ -753,7 +753,7 @@ I det här avsnittet skapar du möjligheten att hantera redundans.
 
 Exemplet i det här avsnittet visar tydlig strömning. Om du vill göra en skyddad direkt uppspelning finns det några andra saker du behöver för att konfigurera, du måste använda samma **AssetDeliveryPolicy**, samma **ContentKeyAuthorizationPolicy** eller externa nyckel server-URL, och du måste duplicera innehålls nycklarna med samma identifierare.
 
-Mer information om innehålls skydd finns i [använda AES-128 dynamisk kryptering och Key Delivery Service](media-services-protect-with-aes128.md).
+Mer information om innehålls skydd finns i [använda AES-128 dynamisk kryptering och Key Delivery Service](media-services-playready-license-template-overview.md).
 
 ## <a name="see-also"></a>Se även
 

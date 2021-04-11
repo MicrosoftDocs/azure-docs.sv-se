@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 072377f98939d996547cb6ee9f9a535b4b32a3dc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 6303a94cec9efc01815b6dc6c697abdfe0f84227
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98597956"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220908"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Reserverade instanser av virtuella Azure EA-datorer
 
@@ -96,7 +96,7 @@ Om Azure EA-kunder redan har använt hela sina Azure-förskottsbetalningar kan r
 
 ### <a name="reserved-instance-expiration"></a>Upphörande av reserverad instans
 
-Du får e-postaviseringar 30 dagar innan reservationen och när den upphör att gälla. När reservationen går ut fortsätter de distribuerade virtuella datorerna att köras och debiteras enligt avgifterna för betalning per användning. Mer information finns i [Reserverade VM-instanser (RI) i Azure](https://azure.microsoft.com/pricing/reserved-vm-instances/).
+Du får e-postaviseringar, de första 1 30 dagarna innan reservationen upphör att gälla och en vid förfallo datum. När reservationen går ut fortsätter de distribuerade virtuella datorerna att köras och debiteras enligt avgifterna för betalning per användning. Mer information finns i [Reserverade VM-instanser (RI) i Azure](https://azure.microsoft.com/pricing/reserved-vm-instances/).
 
 ## <a name="next-steps"></a>Nästa steg
 
