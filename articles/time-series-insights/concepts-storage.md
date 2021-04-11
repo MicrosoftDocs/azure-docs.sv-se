@@ -1,21 +1,21 @@
 ---
 title: Lagrings översikt – Azure Time Series Insights Gen2 | Microsoft Docs
 description: Lär dig mer om data lagring i Azure Time Series Insights Gen2.
-author: lyrana
-ms.author: lyhughes
-manager: deepakpalled
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 748eaca93eaee5ec858ea43261995111cef8ceda
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 67ab4c8cf079adaf3b38cdcc30abeec43cd4612f
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98676859"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505203"
 ---
 # <a name="data-storage"></a>Datalagring
 
@@ -87,7 +87,7 @@ Ta inte bort dina Azure Time Series Insights Gen2-filer. Hantera endast relatera
 
 ### <a name="parquet-file-format-and-folder-structure"></a>Parquet-filformat och mappstruktur
 
-Parquet är ett kolumn fil format med öppen källkod som utformats för effektiv lagring och prestanda. Azure Time Series Insights Gen2 använder Parquet för att aktivera tids serie-ID-baserade frågeresultat i stor skala.  
+Parquet är ett kolumn fil format med öppen källkod som utformats för effektiv lagring och prestanda. Azure Time Series Insights Gen2 använder Parquet för att aktivera tids serie-ID-baserade frågeresultat i stor skala.
 
 Mer information om filtypen Parquet finns i [Parquet-dokumentationen](https://parquet.apache.org/documentation/latest/).
 

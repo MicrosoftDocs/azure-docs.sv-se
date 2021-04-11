@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: ffdd673cc8a357a7156fb3b3e932c524c831db15
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1d412774dc68cba0c24709c7fc8a7999e0aeab8
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103418070"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106094769"
 ---
 # <a name="public-ip-addresses"></a>Offentliga IP-adresser
 
@@ -165,7 +165,7 @@ Mer information om SKU:er för lastbalanserare i Azure finns i [Standard-SKU fö
 En offentlig IP-adress tilldelas till VPN Gateway för att möjliggöra kommunikation med fjärrnätverket. 
 
 * Tilldela en **dynamisk** grundläggande offentlig IP-adress till en VPNGw 1-5-SKU front-end-konfiguration.
-* Tilldela en **statisk** standard-IP-adress till en VPNGwAZ 1-5-SKU front-end-konfiguration.
+* Tilldela en **statisk** offentlig IP-adress till en VPNGwAZ 1-5-SKU frontend-konfiguration.
 
 ## <a name="application-gateways"></a>Programgatewayer
 

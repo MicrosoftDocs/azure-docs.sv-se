@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 23c64cc91378be605481eb554af2178100df3508
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 956c92c5c020f892b8148e9d43d403b1099fbdba
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629410"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106113032"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -54,7 +54,7 @@ npm install @azure/communication-phone-numbers --save
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-Importera **PhoneNumbersClient** från klient biblioteket och instansiera det med anslutnings strängen. Koden nedan hämtar anslutnings strängen för resursen från en miljö variabel med namnet `COMMUNICATION_SERVICES_CONNECTION_STRING` . Lär dig hur [du hanterar anslutnings strängen](../../create-communication-resource.md#store-your-connection-string)för din resurs.
+Importera **PhoneNumbersClient** från klient biblioteket och instansiera det med anslutnings strängen. Koden nedan hämtar anslutnings strängen för resursen från en miljö variabel med namnet `COMMUNICATION_SERVICES_CONNECTION_STRING` . Lär dig hur du [hanterar din resurs anslutnings sträng](../../create-communication-resource.md#store-your-connection-string).
 
 Lägg till följande kod överst i **phone-numbers-quickstart.js**:
 

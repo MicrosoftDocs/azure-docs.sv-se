@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: c1ad467dcd27bb48d7b1472d8cfb829dcd005f4f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0504467e387c0875a8e00bd1cf638ec437232092
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729895"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554341"
 ---
 Azure Communication Services- **gruppen som anropar ett hjältes exempel** visar hur kommunikations tjänsterna som anropar webb-SDK kan användas för att bygga en grupp som anropar.
 
@@ -23,7 +23,7 @@ I den här snabb starten ska vi lära dig hur exemplet fungerar innan vi kör ex
 
 ## <a name="download-code"></a>Ladda ned kod
 
-Hitta den färdiga koden för den här snabb starten på [GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero).
+Hitta projektet för det här exemplet på [GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero). En version av exemplet med [Teams interop](../../concepts/teams-interop.md) kan hittas på en separat [gren](https://github.com/Azure-Samples/communication-services-web-calling-hero/tree/teams-interop).
 
 ## <a name="overview"></a>Översikt
 
@@ -46,6 +46,9 @@ Komponenter för den huvudsakliga uppringnings skärmen:
 - **Medie Galleri**: huvud steget där deltagarna visas. Om en deltagare har sin kamera aktive rad visas deras video flöde här. Varje deltagare har en enskild panel som visar visnings namn och video ström (när det finns en)
 - **Rubrik**: det är här som de primära samtals kontrollerna finns för att växla mellan inställningar och deltagar fält, förvandla video och mixa på/av, dela skärmen och lämna samtalet.
 - **Sido fältet**: här visas deltagare och inställnings information när de växlas med hjälp av kontrollerna i sidhuvudet. Komponenten kan hämtas med hjälp av X i det övre högra hörnet. Deltagarnas sido fält visar en lista över deltagare och en länk som bjuder in fler användare att chatta. I sid List rutan inställningar kan du konfigurera inställningar för mikrofon och kamera.
+
+> [!NOTE]
+> Baserat på begränsningar på webb anrops-SDK: n återges bara en fjärran sluten video ström. Mer information finns i [anropa SDK Stream-stöd](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features#calling-sdk-streaming-support).
 
 Nedan hittar du mer information om förutsättningar och steg för att konfigurera exemplet.
 

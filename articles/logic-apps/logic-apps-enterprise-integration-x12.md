@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87a2bcc386ec5688fadb68aabdd2e5239e205516
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96015204"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077481"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange X12-meddelanden för B2B Enterprise-integration i Azure Logic Apps med Enterprise-integrationspaket
 
@@ -79,7 +79,6 @@ När du har angett avtals egenskaperna kan du konfigurera hur det här avtalet i
 |----------|-------------|
 | **TA1 förväntades** | Returnera en teknisk bekräftelse (TA1) till Interchange-avsändaren. |
 | **Anl. förväntas** | Returnera en funktionell bekräftelse (FA) till Interchange-avsändaren. <p>För egenskapen **Anl-version** , baserat på schema versionen, väljer du bekräftelser för 997 eller 999. <p>Om du vill aktivera generering av AK2-slingor i funktions bekräftelser för godkända transaktions uppsättningar väljer du **Inkludera AK2/IK2-loop**. |
-||||
 
 <a name="inbound-schemas"></a>
 

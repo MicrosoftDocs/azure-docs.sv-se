@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: absha
-ms.openlocfilehash: 29ca3aff7d75c7a14bf7b325719924936762d191
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b674bdf59959715b666c521c0d0631f86f71b1d3
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101711696"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106093732"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>Skriv om HTTP-begäran och svarshuvuden med Azure Application Gateway – Azure PowerShell
 
@@ -66,9 +66,9 @@ I det här exemplet ändrar vi en URL för omdirigering genom att skriva om plat
 
 ```azurepowershell
 $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Location" -HeaderValue "{http_resp_Location_1}://contoso.com{http_resp_Location_2}"
-$actionSet = New-AzApplicationGatewayRewriteRuleActionSet -RequestHeaderConfiguration $requestHeaderConfiguration -ResponseHeaderConfiguration $responseHeaderConfiguration
+$actionSet = New-AzApplicationGatewayRewriteRuleActionSet -ResponseHeaderConfiguration $responseHeaderConfiguration
 $condition = New-AzApplicationGatewayRewriteRuleCondition -Variable "http_resp_Location" -Pattern "(https?):\/\/.*azurewebsites\.net(.*)$" -IgnoreCase
-$rewriteRule = New-AzApplicationGatewayRewriteRule -Name LocationHeader -ActionSet $actionSet
+$rewriteRule = New-AzApplicationGatewayRewriteRule -Name LocationHeader -ActionSet $actionSet -Condition $condition
 $rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name LocationHeaderRewrite -RewriteRule $rewriteRule
 ```
 
@@ -86,9 +86,11 @@ $reqRoutingRule = Get-AzApplicationGatewayRequestRoutingRule -Name rule1 -Applic
 
 ## <a name="update-the-application-gateway-with-the-configuration-for-rewriting-http-headers"></a>Uppdatera programgatewayen med konfigurationen för omskrivning av HTTP-rubriker
 
+I det här exemplet associeras den omskrivnings uppsättningen direkt mot en grundläggande routningsprincip. Om det finns en sökväg baserad regel för routning, skulle associationen inte vara aktive rad som standard. Den omskrivnings uppsättningen kan aktive ras antingen genom att kontrol lera de sökvägar som den måste tillämpas via portalen eller genom att ange en URL sökväg Map config ange RewriteRuleSet gentemot varje sökvägar.  
+
 ```azurepowershell
-Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $appgw -Name LocationHeaderRewrite -RewriteRule $rewriteRuleSet.RewriteRules
-Set-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name rule1 -RuleType $reqRoutingRule.RuleType -BackendHttpSettingsId $reqRoutingRule.BackendHttpSettings.Id -HttpListenerId $reqRoutingRule.HttpListener.Id -BackendAddressPoolId $reqRoutingRule.BackendAddressPool.Id -RewriteRuleSetId $rewriteRuleSet.Id
+Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $appgw -Name $rewriteRuleSet.Name  -RewriteRule $rewriteRuleSet.RewriteRules
+Set-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name $reqRoutingRule.Name -RuleType $reqRoutingRule.RuleType -BackendHttpSettingsId $reqRoutingRule.BackendHttpSettings.Id -HttpListenerId $reqRoutingRule.HttpListener.Id -BackendAddressPoolId $reqRoutingRule.BackendAddressPool.Id -RewriteRuleSetId $rewriteRuleSet.Id
 Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 

@@ -4,12 +4,12 @@ description: I den här självstudien lär du dig att skapa en avbildning av en 
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: b218f47348d5a26297f14c4bc788a6cf6b78cc60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 384c7bebea8ed8120a1bc8134e4189e5e7bcb8db
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96030345"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060286"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Självstudier: Skapa och distribuera containeravbildningar i molnet med Azure Container Registry-uppgifter
 

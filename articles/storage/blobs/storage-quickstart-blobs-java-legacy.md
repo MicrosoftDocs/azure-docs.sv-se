@@ -1,19 +1,19 @@
 ---
 title: 'Snabb start: klient biblioteket för Azure Blob Storage-V8 för Java'
 description: Skapa ett lagringskonto och en container i objektlagring (Blob). Använd sedan Azure Storage klient bibliotek V8 för Java för att ladda upp en blob till Azure Storage, hämta en blob och lista blobarna i en behållare.
-author: mhopkins-msft
+author: twooley
 ms.custom: devx-track-java
-ms.author: mhopkins
+ms.author: twooley
 ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: b3bb8736eb7a8e24f47812fc4feecbf96628dfb6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 49c55a2b565100e370ce561537c96a96b896f355
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98599805"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280606"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Snabb start: hantera blobbar med Java V8 SDK
 

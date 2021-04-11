@@ -4,14 +4,14 @@ description: Lär dig hur du kopierar data från OData-källor till mottagar dat
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 03/30/2021
 ms.author: jingwang
-ms.openlocfilehash: 90cc4e3f9915db424cec89cfc764771b5be785e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9dd86b4982edf5d206e64431a5e1458c4b848e9e
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389730"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968543"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopiera data från en OData-källa med hjälp av Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -326,6 +326,48 @@ När du kopierar data från OData används följande mappningar mellan OData-dat
 
 > [!NOTE]
 > OData komplexa data typer (t. ex. **objekt**) stöds inte.
+
+## <a name="copy-data-from-project-online"></a>Kopiera data från Project Online
+
+Om du vill kopiera data från Project Online kan du använda OData-anslutningen och en åtkomsttoken som hämtats från verktyg som Postman.
+
+> [!CAUTION]
+> Åtkomsttoken upphör att gälla om 1 timme som standard. du måste skaffa en ny åtkomsttoken när den upphör att gälla.
+
+1. Använd **Postman** för att hämta åtkomsttoken:
+
+   1. Gå till fliken **auktorisering** på Postman-webbplatsen.
+   1. I rutan **typ** väljer du **OAuth 2,0** och i rutan **Lägg till auktoriseringsdata till väljer du** **begärandehuvuden**.
+   1. Fyll i följande information på sidan **Konfigurera ny token** för att hämta en ny åtkomsttoken: 
+      - **Typ av beviljande**: Välj **auktoriseringskod**.
+      - **Återanrops-URL**: ange `https://www.localhost.com/` . 
+      - **URL för autentisering**: ange `https://login.microsoftonline.com/common/oauth2/authorize?resource=https://<your tenant name>.sharepoint.com` . Ersätt `<your tenant name>` med ditt eget klient namn. 
+      - **URL till** åtkomsttoken: ange `https://login.microsoftonline.com/common/oauth2/token` .
+      - **Klient-ID**: Ange ditt huvud namn för AAD-tjänsten.
+      - **Klient hemlighet**: Ange din hemlighet för tjänstens huvud namn.
+      - **Klientautentisering**: Välj **Skicka som grundläggande auth-huvud**.
+     
+   1. Du uppmanas att logga in med ditt användar namn och lösen ord.
+   1. När du har skaffat din åtkomsttoken kan du kopiera och spara den för nästa steg.
+   
+    [![Använd Postman för att hämta åtkomsttoken](./media/connector-odata/odata-project-online-postman-access-token-inline.png)](./media/connector-odata/odata-project-online-postman-access-token-expanded.png#lightbox)
+
+1. Skapa den länkade OData-tjänsten:
+    - **Tjänst-URL**: ange `https://<your tenant name>.sharepoint.com/sites/pwa/_api/Projectdata` . Ersätt `<your tenant name>` med ditt eget klient namn. 
+    - **Autentiseringstyp**: Välj **Anonym**.
+    - **Auth-rubriker**:
+        - **Egenskaps namn**: Välj **auktorisering**.
+        - **Värde**: Ange den **åtkomsttoken** som kopierades från steg 1.
+    - Testa den länkade tjänsten.
+
+    ![Skapa OData-länkad tjänst](./media/connector-odata/odata-project-online-linked-service.png)
+
+1. Skapa OData-datauppsättningen:
+    1. Skapa data uppsättningen med den länkade OData-tjänsten som skapades i steg 2.
+    1. Förhandsgranska data.
+ 
+    ![Förhandsgranska data](./media/connector-odata/odata-project-online-preview-data.png)
+ 
 
 
 ## <a name="lookup-activity-properties"></a>Egenskaper för Sök aktivitet

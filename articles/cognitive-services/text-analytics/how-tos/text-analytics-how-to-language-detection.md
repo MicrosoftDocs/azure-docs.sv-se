@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/17/2020
+ms.date: 04/02/2021
 ms.author: aahi
-ms.openlocfilehash: ef40201a13412cc735a5e15bf468e2c934ec81ab
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e2148f56c216795c5022b86b6a1d90b476a4672e
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656809"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277291"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Exempel: identifiera språk med Textanalys
 
@@ -69,7 +69,7 @@ Mer information om definition av begäran finns i [anropa API för textanalys](t
 
 + Skicka en POST-begäran. Information om hur du granskar API-dokumentationen för den här begäran finns i [SPRÅKIDENTIFIERING API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages).
 
-+ Ange HTTP-slutpunkt för språkidentifiering. Använd antingen en Textanalys-resurs på Azure eller en instansierad [textanalys-behållare](text-analytics-how-to-install-containers.md). Du måste ta med `/text/analytics/v3.0/languages` i URL: en. Till exempel: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages`.
++ Ange HTTP-slutpunkt för språkidentifiering. Använd antingen en Textanalys-resurs på Azure eller en instansierad [textanalys-behållare](text-analytics-how-to-install-containers.md). Du måste ta med `/text/analytics/v3.0/languages` i URL: en. Exempel: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages`.
 
 + Ange ett rubrik för begäran för att inkludera [åtkomst nyckeln](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) för textanalys åtgärder.
 
@@ -80,7 +80,7 @@ Mer information om definition av begäran finns i [anropa API för textanalys](t
 
 ## <a name="step-2-post-the-request"></a>Steg 2: publicera begäran
 
-Analysen utförs när begäran har tagits emot. Information om storlek och antal begär Anden som du kan skicka per minut och sekund finns i avsnittet [data begränsningar](../overview.md#data-limits) i översikten.
+Analysen utförs när begäran har tagits emot. Information om storlek och antal begär Anden som du kan skicka per minut och sekund finns i artikeln [data begränsningar](../concepts/data-limits.md) .
 
 Kom ihåg att tjänsten är tillståndslös. Inga data lagras i ditt konto. Resultaten returneras omedelbart i svaret.
 

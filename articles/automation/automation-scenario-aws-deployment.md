@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 03f1f1659d120a2aa1b827063cb2bc84138f3655
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05c06d368dca03e1cb7f07c064f7899300f05cf7
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896078"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169019"
 ---
 # <a name="deploy-an-amazon-web-services-vm-with-a-runbook"></a>Distribuera en Amazon Web Services virtuell dator med en Runbook
 
-I den här artikeln får du lära dig hur du kan utnyttja Azure Automation för att etablera en virtuell dator i din AWS-prenumeration (Amazon Web Service) och ge den virtuella datorn ett särskilt namn – som AWS refererar till som "tagga" den virtuella datorn.
+I den här artikeln får du lära dig hur du kan utnyttja Azure Automation för att etablera en virtuell dator i din AWS-prenumeration (Amazon Web Service) och ge den virtuella datorn ett särskilt namn, vilken AWS refererar till som "tagga" den virtuella datorn.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

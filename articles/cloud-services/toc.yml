@@ -105,6 +105,32 @@
               href: cloud-services-role-config-xpath.md
         - name: Hantera certifikat
           items:
+            - name: Azure PowerShell
+              href: cloud-services-diagnostics-powershell.md
+            - name: .NET
+              href: cloud-services-dotnet-diagnostics.md
+            - name: Visual Studio
+              href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
+        - name: Lagra och visa diagnostikdata i Azure Storage
+          href: diagnostics-extension-to-storage.md
+        - name: Spåra en molntjänst med diagnostik
+          href: cloud-services-dotnet-diagnostics-trace-flow.md
+    - name: Migrera
+      items:
+        - name: Översikt över migrering
+          href: ../cloud-services-extended-support/in-place-migration-overview.md?toc=/azure/cloud-services/toc.json
+        - name: Teknisk information om migrering
+          href: ../cloud-services-extended-support/in-place-migration-technical-details.md?toc=/azure/cloud-services/toc.json
+        - name: Migrera med hjälp av Azure Portal
+          href: ../cloud-services-extended-support/in-place-migration-portal.md?toc=/azure/cloud-services/toc.json
+        - name: Migrera med hjälp av PowerShell
+          href: ../cloud-services-extended-support/in-place-migration-powershell.md?toc=/azure/cloud-services/toc.json
+        - name: Vanliga fel och kända problem
+          href: ../cloud-services-extended-support/in-place-migration-common-errors.md?toc=/azure/cloud-services/toc.json
+    - name: Felsöka
+      items:
+        - name: Felsökning
+          items:
             - name: Cloud Services och hanteringscertifikat
               href: cloud-services-certs-create.md
             - name: Konfigurera SSL
@@ -172,6 +198,8 @@
                   href: cloud-services-deployment-faq.md
     - name: Referens
       items:
+        - name: Azure CLI
+          href: /cli/azure/cloud
         - name: Kodexempel
           href: 'https://azure.microsoft.com/resources/samples/?service=cloud-services'
         - name: .csdef XML-schema
@@ -196,17 +224,25 @@
           href: /rest/api/compute/cloudservices/
     - name: Resurser
       items:
-        - name: Azure-översikt
-          href: 'https://azure.microsoft.com/roadmap/?category=compute'
-        - name: Utbildningsväg
-          href: /learn/paths/azure-fundamentals/
-        - name: Frågesida på Microsoft Q&A
-          href: /answers/topics/azure-cloud-services.html
-        - name: Prissättning
-          href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
-        - name: Priskalkylator
-          href: 'https://azure.microsoft.com/pricing/calculator/'
-        - name: Tjänstuppdateringar
-          href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
-        - name: Videoklipp
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'
+        - name: Role-schema
+          href: schema-cscfg-role.md
+        - name: NetworkConfiguration-schema
+          href: schema-cscfg-networkconfiguration.md
+    - name: REST
+      href: /rest/api/compute/cloudservices/
+- name: Resurser
+  items:
+    - name: Azure-översikt
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Utbildningsväg
+      href: /learn/paths/azure-fundamentals/
+    - name: Frågesida på Microsoft Q&A
+      href: /answers/topics/azure-cloud-services.html
+    - name: Prissättning
+      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+    - name: Priskalkylator
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Tjänstuppdateringar
+      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
+    - name: Videoklipp
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'

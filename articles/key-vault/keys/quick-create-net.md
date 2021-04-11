@@ -7,13 +7,13 @@ ms.date: 09/23/2020
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.custom: devx-track-csharp
-ms.openlocfilehash: cecf8330b7060a4cbc4691f64571a3c7865c575c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp, devx-track-azurepowershell
+ms.openlocfilehash: 52e33660b4076f8119ddb5d77e2dbbf7ee201913
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935265"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968466"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-net-sdk-v4"></a>Snabb start: Azure Key Vault nyckel klient bibliotek för .NET (SDK v4)
 
@@ -34,21 +34,26 @@ Mer information om Key Vault och nycklar finns i:
 * [Azure CLI](/cli/azure/install-azure-cli)
 * En Key Vault – du kan skapa en med hjälp av [Azure Portal](../general/quick-create-portal.md), [Azure CLI](../general/quick-create-cli.md)eller [Azure PowerShell](../general/quick-create-powershell.md).
 
-Den här snabb starten använder `dotnet` och Azure CLI
-
 ## <a name="setup"></a>Konfiguration
 
-Den här snabb starten använder Azure Identity Library med Azure CLI för att autentisera användare till Azure-tjänster. Utvecklare kan också använda Visual Studio eller Visual Studio Code för att autentisera sina anrop. mer information finns i [autentisera klienten med klient biblioteket för Azure Identity](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true).
+Den här snabb starten använder Azure Identity Library för att autentisera användare till Azure-tjänster. Utvecklare kan också använda Visual Studio eller Visual Studio Code för att autentisera sina anrop. mer information finns i [autentisera klienten med klient biblioteket för Azure Identity](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true).
 
 ### <a name="sign-in-to-azure"></a>Logga in på Azure
 
 1. Kör kommandot `login`.
 
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli-interactive
     az login
     ```
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+    
+    ```azurepowershell-interactive
+    Connect-AzAccount
+    ```
+    ---
 
-    Om CLI kan öppna din standard webbläsare så gör den det och läser in en Azure-inloggnings sida.
+    Om Azure CLI eller Azure PowerShell kan öppna din standard webbläsare kommer det att göra det och läsa in en Azure-inloggnings sida.
 
     Annars öppnar du en webb sida på [https://aka.ms/devicelogin](https://aka.ms/devicelogin) och anger den auktoriseringskod som visas i din terminal.
 
@@ -58,9 +63,16 @@ Den här snabb starten använder Azure Identity Library med Azure CLI för att a
 
 Skapa en åtkomst princip för nyckel valvet som beviljar nyckel behörigheter till ditt användar konto
 
-```console
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+```azurecli-interactive
 az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --key-permissions delete get list create purge
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell-interactive
+Set-AzKeyVaultAccessPolicy -VaultName <your-key-vault-name> -UserPrincipalName user@domain.com -PermissionsToSecrets delete,get,list,set,purge
+```
+---
 
 ### <a name="create-new-net-console-app"></a>Skapa ny .NET-konsol program
 
@@ -107,7 +119,7 @@ Windows
 set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
-```powershell
+```azurepowershell
 $Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 

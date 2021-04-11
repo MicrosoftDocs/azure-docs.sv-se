@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 670fbeeb006d21e29675f88895018d1a453a1c54
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fea42cb89dce717431c188deeb2ce83f9413f560
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102120308"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107283889"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiera en OpenID Connect-teknisk profil i en Azure Active Directory B2C anpassad princip
 
@@ -92,8 +92,8 @@ Den tekniska profilen returnerar även anspråk som inte returneras av identitet
 | MarkAsFailureOnStatusCode5xx | Inga | Anger om en begäran till en extern tjänst ska markeras som ett haveri om HTTP-statuskoden finns i 5xx-intervallet. Standardvärdet är `false`. |
 | DiscoverMetadataByTokenIssuer | Inga | Anger om OIDC metadata ska identifieras med hjälp av utfärdaren i JWT-token. |
 | IncludeClaimResolvingInClaimsHandling  | Inga | För indata-och utgående anspråk anges om [anspråks matchning](claim-resolver-overview.md) ingår i den tekniska profilen. Möjliga värden: `true` , eller `false` (standard). Om du vill använda en anspråks lösare i den tekniska profilen ställer du in den på `true` . |
-| token_endpoint_auth_method | Inga | Anger hur Azure AD B2C skickar Authentication-huvudet till token-slutpunkten. Möjliga värden: `client_secret_post` (standard) och `client_secret_basic` (offentlig för hands version). Mer information finns i [avsnittet OpenID Connect client Authentication](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
-| token_signing_algorithm | Inga | Signeringsalgoritmen som används för klient kontroll när **token_endpoint_auth_method** metadata har angetts till `private_key_jwt` . Möjliga värden: `RS256` (standard). |
+|token_endpoint_auth_method| Inga | Anger hur Azure AD B2C skickar Authentication-huvudet till token-slutpunkten. Möjliga värden: `client_secret_post` (standard) och `client_secret_basic` (offentlig för hands version), `private_key_jwt` (offentlig för hands version). Mer information finns i [avsnittet OpenID Connect client Authentication](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
+|token_signing_algorithm| Inga | Anger signeringsalgoritmen som ska användas när `token_endpoint_auth_method` är inställd på `private_key_jwt` . Möjliga värden: `RS256` (standard) eller `RS512` .|
 | SingleLogoutEnabled | Inga | Anger om den tekniska profilen under inloggningen försöker logga ut från federerade identitets leverantörer. Mer information finns i [Azure AD B2C-sessionen logga ut](./session-behavior.md#sign-out).  Möjliga värden: `true` (standard) eller `false` . |
 |ReadBodyClaimsOnIdpRedirect| Inga| Ställ in för `true` att läsa anspråk från svars texten i omdirigeraren för identitetsprovider. Dessa metadata används med [Apple-ID](identity-provider-apple-id.md), där anspråk returneras i svarets nytto Last.|
 

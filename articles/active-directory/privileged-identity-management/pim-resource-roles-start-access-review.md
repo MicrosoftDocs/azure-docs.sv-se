@@ -11,20 +11,27 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 03/16/2021
+ms.date: 04/05/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 110a94c78427087f4ca5555f59055ab8e3bebcee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 87c0ce72348f67c22759915a3a15c69193ad2f60
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592701"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552805"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Skapa en åtkomst granskning av Azures resurs roller i Privileged Identity Management
 
 Behovet av åtkomst till behöriga Azure-resurs roller av anställda ändras med tiden. För att minska risken för inaktuella roll tilldelningar bör du regelbundet granska åtkomst. Du kan använda Azure Active Directory (Azure AD) Privileged Identity Management (PIM) för att skapa åtkomst granskningar för privilegie rad åtkomst till Azure-resurs roller. Du kan också konfigurera återkommande åtkomst granskningar som sker automatiskt. Den här artikeln beskriver hur du skapar en eller flera åtkomst granskningar.
+
+## <a name="prerequisite-license"></a>Nödvändig licens
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]. Mer information om licenser för PIM finns i [licens krav för att använda Privileged Identity Management](subscription-requirements.md).
+
+> [!Note]
+>  För närvarande kan du begränsa åtkomst granskningen till tjänstens huvud namn med åtkomst till Azure AD och Azure Resource roles (för hands version) med en Azure Active Directory Premium P2-version som är aktiv i din klient. Licensierings modellen för tjänstens huvud namn kommer att slutföras för allmän tillgänglighet för den här funktionen och ytterligare licenser kan krävas.
 
 ## <a name="prerequisite-role"></a>Nödvändig roll
 
@@ -34,9 +41,9 @@ Behovet av åtkomst till behöriga Azure-resurs roller av anställda ändras med
 
 1. Logga in på [Azure Portal](https://portal.azure.com/) med en användare som är tilldelad en av de nödvändiga rollerna.
 
-1. Öppna **Azure AD Privileged Identity Management**.
-
-1. Välj **Azure-resurser** på den vänstra menyn.
+1. Välj **identitets styrning**
+ 
+1. I den vänstra menyn väljer du **Azure-resurser** under **Azure AD Privileged Identity Management**.
 
 1. Välj den resurs som du vill hantera, till exempel en prenumeration.
 
@@ -58,9 +65,12 @@ Behovet av åtkomst till behöriga Azure-resurs roller av anställda ändras med
 
 1. Använd **End** -inställningen för att ange hur du ska avsluta gransknings serien för återkommande åtkomst. Serien kan sluta på tre sätt: den körs kontinuerligt för att starta recensioner på obestämd tid, fram till ett visst datum eller efter att ett definierat antal förekomster har slutförts. En annan användar administratör eller en annan global administratör kan stoppa serien när den har skapats genom att ändra datumet i **Inställningar**, så att det slutar på det datumet.
 
-1. I avsnittet **användare** väljer du en eller flera roller som du vill granska medlemskap i.
+1. I avsnittet **användare** väljer du omfånget för granskningen. Om du vill granska användare väljer du **användare eller väljer (förhands granskning) tjänstens huvud namn** för att granska dator konton med åtkomst till Azure-rollen.   
 
     ![Användarens omfång att granska roll medlemskap för](./media/pim-resource-roles-start-access-review/users.png)
+
+
+1. Under **Granska roll medlemskap** väljer du de privilegierade Azure-roller som ska granskas. 
 
     > [!NOTE]
     > - Roller som väljs här inkluderar både [permanenta och berättigade roller](../privileged-identity-management/pim-how-to-add-role-to-user.md).
@@ -77,9 +87,9 @@ Behovet av åtkomst till behöriga Azure-resurs roller av anställda ändras med
 
     ![Listor över granskare av markerade användare eller medlemmar (Self)](./media/pim-resource-roles-start-access-review/reviewers.png)
 
-    - **Valda användare** – Använd det här alternativet om du inte vet vem som behöver åtkomst. Med det här alternativet kan du tilldela granskningen till en resurs ägare eller grupp hanterare för att slutföra.
-    - **Medlemmar (Self)** – Använd det här alternativet om du vill att användarna ska granska sina egna roll tilldelningar. 
-    - **Manager** – Använd det här alternativet om du vill att användarens chef ska granska roll tilldelningen. När du väljer chef kan du också välja att ange en återställnings granskare. Återställnings granskare uppmanas att granska en användare när användaren inte har angett någon chef i katalogen. 
+    - **Valda användare** – Använd det här alternativet för att ange att en viss användare ska slutföra granskningen. Det här alternativet är tillgängligt oavsett omfånget för granskningen och de valda granskarna kan granska användare och tjänstens huvud namn. 
+    - **Medlemmar (Self)** – Använd det här alternativet om du vill att användarna ska granska sina egna roll tilldelningar. Det här alternativet är bara tillgängligt om granskningen är begränsad till **användare**.
+    - **Manager** – Använd det här alternativet om du vill att användarens chef ska granska roll tilldelningen. Det här alternativet är bara tillgängligt om granskningen är begränsad till **användare**. När du väljer chef kan du också välja att ange en återställnings granskare. Återställnings granskare uppmanas att granska en användare när användaren inte har angett någon chef i katalogen. 
 
 ### <a name="upon-completion-settings"></a>Vid slut för ande inställningar
 

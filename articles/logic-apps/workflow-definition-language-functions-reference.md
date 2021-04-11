@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: reference
-ms.date: 03/12/2021
-ms.openlocfilehash: 1414a7b0f17918caa16ccf854d70ea199fb42a47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/30/2021
+ms.openlocfilehash: 53e96f4057b35fa6c849ec643ac1c9e0c7d5b402
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104870202"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076555"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referens guide för att använda funktioner i uttryck för Azure Logic Apps och energi automatisering
 
@@ -145,7 +145,7 @@ Om du vill arbeta med villkor, jämföra värden och resultat eller utvärdera o
 Om du vill ändra ett värdes typ eller format kan du använda dessa konverterings funktioner. Du kan till exempel ändra ett värde från ett booleskt värde till ett heltal. Mer information om hur Logic Apps hanterar innehålls typer under konverteringen finns i [Hantera innehålls typer](../logic-apps/logic-apps-content-type.md). Fullständig referens för varje funktion finns i [alfabetisk lista](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
 > [!NOTE]
-> Azure Logic Apps konverterar automatiskt värden mellan vissa data typer, vilket innebär att du inte behöver utföra dessa konverteringar manuellt. Men om du gör det kan det uppstå oväntade visnings beteenden som inte påverkar de faktiska konverteringarna, bara hur de visas. Mer information finns i [implicita data typs konverteringar](#implicit-data-conversions).
+> Azure Logic Apps automatiskt eller implicit utföra base64-kodning och avkodning, så du behöver inte utföra dessa konverteringar manuellt med hjälp av funktionerna för kodning och avkodning. Men om du använder dessa funktioner ändå i designern kan du uppleva oväntade åter givnings beteenden i designern. Dessa beteenden påverkar bara funktionens synlighet och inte dess effekt om du inte redigerar funktions parameter värden som tar bort funktionerna och deras effekter från koden. Mer information finns i [implicita data typs konverteringar](#implicit-data-conversions).
 
 | Konverterings funktion | Uppgift |
 | ------------------- | ---- |
@@ -177,7 +177,7 @@ Om du vill ändra ett värdes typ eller format kan du använda dessa konverterin
 
 ## <a name="implicit-data-type-conversions"></a>Implicita data typs konverteringar
 
-Azure Logic Apps automatiskt eller implicit konvertera mellan vissa data typer, så du behöver inte konvertera de här typerna manuellt. Om du till exempel använder värden som inte är strängar där strängar förväntas som indata, konverterar Logic Apps automatiskt icke-sträng värden till strängar.
+Azure Logic Apps automatiskt eller implicit konvertera mellan vissa data typer, så att du inte behöver utföra dessa konverteringar manuellt. Om du till exempel använder värden som inte är strängar där strängar förväntas som indata, konverterar Logic Apps automatiskt icke-sträng värden till strängar.
 
 Anta till exempel att en utlösare returnerar ett numeriskt värde som utdata:
 
@@ -187,9 +187,11 @@ Om du använder dessa numeriska utdata där indata förväntas, till exempel en 
 
 `@{triggerBody()?['123']}`
 
+<a name="base64-encoding-decoding"></a>
+
 ### <a name="base64-encoding-and-decoding"></a>Base64-kodning och avkodning
 
-Logic Apps automatiskt eller implicit utföra base64-kodning eller avkodning, så du behöver inte utföra dessa åtgärder manuellt genom att använda motsvarande uttryck:
+Logic Apps automatiskt eller implicit utföra base64-kodning eller avkodning, så du behöver inte utföra dessa konverteringar manuellt genom att använda motsvarande funktioner:
 
 * `base64(<value>)`
 * `base64ToBinary(<value>)`
@@ -200,7 +202,7 @@ Logic Apps automatiskt eller implicit utföra base64-kodning eller avkodning, s�
 * `decodeDataUri(<value>)`
 
 > [!NOTE]
-> Om du lägger till dessa uttryck manuellt i din Logi Kap par, till exempel genom att använda uttrycks redigeraren, navigerar du bort från Logic App Designer och återgår till designern, visar designern bara parameter värden. Uttrycken bevaras endast i kodvyn om du inte redigerar parameter värden. Annars tar Logic Apps bort uttrycken från kodvyn, så att endast parameter värden lämnas kvar. Det här beteendet påverkar inte kodning eller avkodning, bara om uttrycken visas.
+> Om du lägger till någon av dessa funktioner manuellt i ditt arbets flöde via Logic Apps designer, till exempel genom att använda uttrycks redigeraren, navigerar bort från designern och återgår till designern försvinner funktionen från designern, utan endast parameter värden. Detta inträffar även om du väljer en utlösare eller åtgärd som använder den här funktionen utan att redigera funktionens parameter värden. Det här resultatet påverkar bara funktionens synlighet och inte dess påverkan. I kodvyn påverkas inte funktionen. Men om du redigerar funktionens parameter värden, tas funktionen och dess effekter båda bort från kodvyn, och den lämnas bara bakom funktionens parameter värden.
 
 <a name="math-functions"></a>
 
@@ -944,7 +946,7 @@ Och returnerar följande resultat: `["hello"]`
 Returnera Base64-kodad version för en sträng.
 
 > [!NOTE]
-> Azure Logic Apps utför automatiskt base64-kodning och avkodning, vilket innebär att du inte behöver utföra dessa konverteringar manuellt. Men om du gör det kan det uppstå oväntade visnings beteenden som inte påverkar de faktiska konverteringarna, bara hur de visas. Mer information finns i [implicita data typs konverteringar](#implicit-data-conversions).
+> Azure Logic Apps automatiskt eller implicit utföra base64-kodning och avkodning, så du behöver inte utföra dessa konverteringar manuellt med hjälp av funktionerna för kodning och avkodning. Men om du använder dessa funktioner ändå kan det uppstå oväntade åter givnings beteenden i designern. Dessa beteenden påverkar bara funktionens synlighet och inte dess effekt om du inte redigerar funktions parameter värden som tar bort funktionerna och deras effekter från koden. Mer information finns i [base64-kodning och avkodning](#base64-encoding-decoding).
 
 ```
 base64('<value>')
@@ -977,7 +979,7 @@ Och returnerar följande resultat: `"aGVsbG8="`
 Returnera den binära versionen för en Base64-kodad sträng.
 
 > [!NOTE]
-> Azure Logic Apps utför automatiskt base64-kodning och avkodning, vilket innebär att du inte behöver utföra dessa konverteringar manuellt. Men om du gör det kan det uppstå oväntade visnings beteenden som inte påverkar de faktiska konverteringarna, bara hur de visas. Mer information finns i [implicita data typs konverteringar](#implicit-data-conversions).
+> Azure Logic Apps automatiskt eller implicit utföra base64-kodning och avkodning, så du behöver inte utföra dessa konverteringar manuellt med hjälp av funktionerna för kodning och avkodning. Men om du använder dessa funktioner ändå i designern kan du uppleva oväntade åter givnings beteenden i designern. Dessa beteenden påverkar bara funktionens synlighet och inte dess effekt om du inte redigerar funktions parameter värden som tar bort funktionerna och deras effekter från koden. Mer information finns i [base64-kodning och avkodning](#base64-encoding-decoding).
 
 ```
 base64ToBinary('<value>')
@@ -1012,7 +1014,7 @@ Och returnerar följande resultat:
 Returnera sträng versionen för en Base64-kodad sträng, och avkoda den base64-strängen på ett effektivt sätt. Använd den här funktionen i stället för [decodeBase64 ()](#decodeBase64), som är föråldrad.
 
 > [!NOTE]
-> Azure Logic Apps utför automatiskt base64-kodning och avkodning, vilket innebär att du inte behöver utföra dessa konverteringar manuellt. Men om du gör det kan det uppstå oväntade visnings beteenden som inte påverkar de faktiska konverteringarna, bara hur de visas. Mer information finns i [implicita data typs konverteringar](#implicit-data-conversions).
+> Azure Logic Apps automatiskt eller implicit utföra base64-kodning och avkodning, så du behöver inte utföra dessa konverteringar manuellt med hjälp av funktionerna för kodning och avkodning. Men om du använder dessa funktioner ändå i designern kan du uppleva oväntade åter givnings beteenden i designern. Dessa beteenden påverkar bara funktionens synlighet och inte dess effekt om du inte redigerar funktions parameter värden som tar bort funktionerna och deras effekter från koden. Mer information finns i [base64-kodning och avkodning](#base64-encoding-decoding).
 
 ```
 base64ToString('<value>')
@@ -1074,9 +1076,7 @@ Och returnerar följande resultat:
 
 ### <a name="body"></a>body
 
-Returnera en åtgärds `body` utdata vid körning.
-Snabb kort för `actions('<actionName>').outputs.body` .
-Se [actionBody ()](#actionBody) och [åtgärder ()](#actions).
+Returnera en åtgärds `body` utdata vid körning. Snabb kort för `actions('<actionName>').outputs.body` . Se [actionBody ()](#actionBody) och [åtgärder ()](#actions).
 
 ```
 body('<actionName>')
@@ -1194,6 +1194,15 @@ Och returnerar följande resultat:
 
 Kombinera två eller fler strängar och returnera den kombinerade strängen.
 
+> [!NOTE]
+> Azure Logic Apps automatiskt eller implicit utföra base64-kodning och avkodning, så du behöver inte utföra dessa konverteringar manuellt när du använder `concat()` funktionen med data som behöver kodning eller avkodning:
+> 
+> * `concat('data:;base64,',<value>)`
+> * `concat('data:,',encodeUriComponent(<value>))`
+> 
+> Men om du använder den här funktionen ändå i designern kan du uppleva oväntade åter givnings beteenden i designern. Dessa beteenden påverkar bara funktionens synlighet och inte effekten om du inte redigerar funktionens parameter värden, vilket tar bort funktionen och effekten från koden. 
+> Mer information finns i [base64-kodning och avkodning](#base64-encoding-decoding).
+
 ```
 concat('<text1>', '<text2>', ...)
 ```
@@ -1222,9 +1231,7 @@ Och returnerar följande resultat: `"HelloWorld"`
 
 ### <a name="contains"></a>innehåller
 
-Kontrol lera om en samling har ett angivet objekt.
-Returnera true när objektet hittas eller returnera falskt när det inte går att hitta.
-Den här funktionen är Skift läges känslig.
+Kontrol lera om en samling har ett angivet objekt. Returnera true när objektet hittas eller returnera falskt när det inte går att hitta. Den här funktionen är Skift läges känslig.
 
 ```
 contains('<collection>', '<value>')
@@ -1622,7 +1629,7 @@ Den här funktionen är inaktuell, så Använd [base64ToString ()](#base64ToStri
 Returnera den binära versionen för en URI (data Uniform Resource Identifier). Överväg att använda [dataUriToBinary ()](#dataUriToBinary)i stället för `decodeDataUri()` . Även om båda funktionerna fungerar på samma sätt, `dataUriToBinary()` är föredra.
 
 > [!NOTE]
-> Azure Logic Apps utför automatiskt base64-kodning och avkodning, vilket innebär att du inte behöver utföra dessa konverteringar manuellt. Men om du gör det kan det uppstå oväntade visnings beteenden som inte påverkar de faktiska konverteringarna, bara hur de visas. Mer information finns i [implicita data typs konverteringar](#implicit-data-conversions).
+> Azure Logic Apps automatiskt eller implicit utföra base64-kodning och avkodning, så du behöver inte utföra dessa konverteringar manuellt med hjälp av funktionerna för kodning och avkodning. Men om du använder dessa funktioner ändå i designern kan du uppleva oväntade åter givnings beteenden i designern. Dessa beteenden påverkar bara funktionens synlighet och inte dess effekt om du inte redigerar funktions parameter värden som tar bort funktionerna och deras effekter från koden. Mer information finns i [base64-kodning och avkodning](#base64-encoding-decoding).
 
 ```
 decodeDataUri('<value>')
@@ -1729,7 +1736,7 @@ div(11.0,5)
 Returnera en URI-kodad (Uniform Resource Identifier) version för en sträng genom att ersätta URL-osäkra tecken med escape-tecken. Överväg att använda [uriComponent ()](#uriComponent)i stället för `encodeUriComponent()` . Även om båda funktionerna fungerar på samma sätt, `uriComponent()` är föredra.
 
 > [!NOTE]
-> Azure Logic Apps utför automatiskt base64-kodning och avkodning, vilket innebär att du inte behöver utföra dessa konverteringar manuellt. Men om du gör det kan det uppstå oväntade visnings beteenden som inte påverkar de faktiska konverteringarna, bara hur de visas. Mer information finns i [implicita data typs konverteringar](#implicit-data-conversions).
+> Azure Logic Apps automatiskt eller implicit utföra base64-kodning och avkodning, så du behöver inte utföra dessa konverteringar manuellt med hjälp av funktionerna för kodning och avkodning. Men om du använder dessa funktioner ändå i designern kan du uppleva oväntade åter givnings beteenden i designern. Dessa beteenden påverkar bara funktionens synlighet och inte dess effekt om du inte redigerar funktions parameter värden som tar bort funktionerna och deras effekter från koden. Mer information finns i [base64-kodning och avkodning](#base64-encoding-decoding).
 
 ```
 encodeUriComponent('<value>')

@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: f349d260fff32427712442615cabf6d3958468ac
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 997a4e115f8632544b2f73aef498d40dceb0d459
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640033"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449978"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurations alternativ – Azure Monitor Application Insights för Java
 
@@ -39,14 +39,14 @@ Du hittar mer information och ytterligare konfigurations alternativ nedan.
 
 ## <a name="configuration-file-path"></a>Sökväg till konfigurations fil
 
-Application Insights Java 3,0 förväntar sig som standard konfigurations filen som ska namnges `applicationinsights.json` och placeras i samma katalog som `applicationinsights-agent-3.0.2.jar` .
+Application Insights Java 3,0 förväntar sig som standard konfigurations filen som ska namnges `applicationinsights.json` och placeras i samma katalog som `applicationinsights-agent-3.0.3.jar` .
 
 Du kan ange en egen sökväg för konfigurations filen med antingen
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE` miljö variabel eller
 * `applicationinsights.configuration.file` Java system egenskap
 
-Om du anger en relativ sökväg kommer den att matchas i förhållande till den katalog där `applicationinsights-agent-3.0.2.jar` finns.
+Om du anger en relativ sökväg kommer den att matchas i förhållande till den katalog där `applicationinsights-agent-3.0.3.jar` finns.
 
 ## <a name="connection-string"></a>Anslutningssträng
 
@@ -61,7 +61,7 @@ Anslutnings sträng krävs. Du kan hitta din anslutnings sträng i Application I
 }
 ```
 
-Du kan också ange anslutnings strängen med hjälp av miljövariabeln `APPLICATIONINSIGHTS_CONNECTION_STRING` (som sedan kommer att prioriteras om anslutnings strängen också anges i JSON-konfigurationen).
+Du kan också ange anslutnings strängen med hjälp av miljövariabeln `APPLICATIONINSIGHTS_CONNECTION_STRING` (som sedan prioriteras över anslutnings strängen som anges i JSON-konfigurationen).
 
 Om du inte anger anslutnings strängen inaktive ras Java-agenten.
 
@@ -81,7 +81,7 @@ Om du vill ange namnet på moln rollen:
 
 Om du inte anger namnet på moln rollen används Application Insights resursens namn för att märka komponenten på program kartan.
 
-Du kan också ange namnet på moln rollen med hjälp av miljövariabeln `APPLICATIONINSIGHTS_ROLE_NAME` (som sedan prioriteras om namnet på moln rollen också anges i JSON-konfigurationen).
+Du kan också ange namnet på moln rollen med hjälp av miljövariabeln `APPLICATIONINSIGHTS_ROLE_NAME` (som sedan prioriteras över moln roll namnet som anges i JSON-konfigurationen).
 
 ## <a name="cloud-role-instance"></a>Moln roll instans
 
@@ -98,7 +98,7 @@ Om du vill ställa in en annan moln roll instans i stället för namnet på dato
 }
 ```
 
-Du kan också ställa in moln Rolls instansen med hjälp av miljövariabeln `APPLICATIONINSIGHTS_ROLE_INSTANCE` (som sedan kommer att prioriteras om moln roll instansen också anges i JSON-konfigurationen).
+Du kan också ange moln roll instansen med hjälp av miljövariabeln `APPLICATIONINSIGHTS_ROLE_INSTANCE` (som sedan prioriteras över den moln roll instans som anges i JSON-konfigurationen).
 
 ## <a name="sampling"></a>Samling
 
@@ -117,14 +117,14 @@ Här är ett exempel på hur du ställer in samplingen för att samla in cirka *
 }
 ```
 
-Du kan också ange samplings procenten med hjälp av miljövariabeln `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` (som sedan prioriteras om samplings procenten också anges i JSON-konfigurationen).
+Du kan också ange samplings procenten med hjälp av miljövariabeln `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` (som sedan får företräde framför samplings procent som anges i JSON-konfigurationen).
 
 > [!NOTE]
 > För samplings procenten väljer du en procents ATS som ligger nära 100/N där N är ett heltal. För närvarande stöder sampling inte andra värden.
 
 ## <a name="sampling-overrides-preview"></a>Åsidosättningar för sampling (för hands version)
 
-Den här funktionen är i för hands version, från och med 3.0.3-BETA. 2.
+Den här funktionen är i för hands version och startar från 3.0.3.
 
 Med exempel på åsidosättningar kan du åsidosätta [standard samplings procenten](#sampling), till exempel:
 * Ange samplings procenten till 0 (eller ett litet värde) för hälso kontroller i bruset.
@@ -215,7 +215,7 @@ Standard nivån som kon figurer ATS för Application Insights är `INFO` . Om du
 }
 ```
 
-Du kan också ange nivån med hjälp av miljövariabeln `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` (som sedan kommer att ha företräde om nivån också anges i JSON-konfigurationen).
+Du kan också ange nivån med hjälp av miljövariabeln `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` (som sedan prioriteras över nivån som anges i JSON-konfigurationen).
 
 Dessa är giltiga `level` värden som du kan ange i `applicationinsights.json` filen och hur de motsvarar loggnings nivåer i olika loggnings ramverk:
 
@@ -256,9 +256,32 @@ Så här inaktiverar du automatisk insamling av micrometer-mått (inklusive vär
 }
 ```
 
+## <a name="auto-collected-azure-sdk-telemetry"></a>Automatiskt samlad Azure SDK-telemetri
+
+Den här funktionen är en förhandsversion.
+
+Många av de senaste Azure SDK-biblioteken genererar telemetri.
+
+Från och med version 3.0.3 kan du aktivera insamling av denna telemetri:
+
+```json
+{
+  "preview": {
+    "instrumentation": {
+      "azureSdk": {
+        "enabled": true
+      }
+    }
+  }
+}
+```
+
+Du kan också aktivera den här funktionen med hjälp av miljövariabeln `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED`
+(som sedan prioriteras över aktive rad i JSON-konfigurationen).
+
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>Förhindra automatisk insamlad telemetri
 
-Från och med version 3.0.2 kan vissa automatiskt insamlade telemetri ignoreras med följande konfigurations alternativ:
+Från och med version 3.0.3 kan vissa automatiskt insamlade telemetri ignoreras med följande konfigurations alternativ:
 
 ```json
 {
@@ -267,6 +290,9 @@ Från och med version 3.0.2 kan vissa automatiskt insamlade telemetri ignoreras 
       "enabled": false
     },
     "jdbc": {
+      "enabled": false
+    },
+    "jms": {
       "enabled": false
     },
     "kafka": {
@@ -280,13 +306,28 @@ Från och med version 3.0.2 kan vissa automatiskt insamlade telemetri ignoreras 
     },
     "redis": {
       "enabled": false
+    },
+    "springScheduling": {
+      "enabled": false
     }
   }
 }
 ```
 
-> Observera om du vill ha mer detaljerad kontroll, t. ex. för att utelämna vissa redis-anrop, men inte alla Redis-anrop, se [samplings åsidosättningar](./java-standalone-sampling-overrides.md).
+Du kan också utelämna dessa instrument med följande miljövariabler:
 
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_CASSANDRA_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_JDBC_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_JMS_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_KAFKA_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_MONGO_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_REDIS_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_SPRING_SCHEDULING_ENABLED`
+
+(som sedan prioriteras över aktive rad i JSON-konfigurationen).
+
+> Observera om du vill ha mer detaljerad kontroll, t. ex. för att utelämna vissa redis-anrop, men inte alla Redis-anrop, se [samplings åsidosättningar](./java-standalone-sampling-overrides.md).
 
 ## <a name="heartbeat"></a>Pulsslag
 
@@ -324,7 +365,7 @@ Den här funktionen är en förhandsversion.
 
 Som standard samlas måtten var 60 sekund.
 
-Från och med version 3.0.3 – BETA kan du ändra följande intervall:
+Från och med version 3.0.3 kan du ändra detta intervall:
 
 ```json
 {
@@ -384,13 +425,13 @@ Som standard loggar Application Insights Java 3,0 på nivå `INFO` till både fi
 
 `level` kan vara en av,,,, `OFF` `ERROR` `WARN` `INFO` `DEBUG` eller `TRACE` .
 
-`path` kan vara en absolut eller relativ sökväg. Relativa sökvägar matchas mot den katalog där `applicationinsights-agent-3.0.2.jar` finns.
+`path` kan vara en absolut eller relativ sökväg. Relativa sökvägar matchas mot den katalog där `applicationinsights-agent-3.0.3.jar` finns.
 
 `maxSizeMb` är logg filens Max storlek innan den slås samman.
 
 `maxHistory` är antalet upplyft över loggfiler som bevaras (utöver den aktuella logg filen).
 
-Från och med version 3.0.2 kan du också ställa in självdiagnostiken `level` med hjälp av miljövariabeln `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` (som sedan kommer att prioriteras om själv diagnostik `level` också anges i JSON-konfigurationen).
+Från och med version 3.0.2 kan du också ställa in självdiagnostiken `level` med hjälp av miljövariabeln `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` (som sedan prioriteras över nivån för självdiagnostik som anges i JSON-konfigurationen).
 
 ## <a name="an-example"></a>Ett exempel
 

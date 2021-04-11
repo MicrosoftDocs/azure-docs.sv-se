@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 03/18/2021
-ms.openlocfilehash: 1a20ffd7150ac75721b2affc2f4375301c4754c8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 931528ec415cabde8e862db17b9f8f26502f6788
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643571"
+ms.locfileid: "105968942"
 ---
 # <a name="migrate-oracle-to-azure-database-for-postgresql"></a>Migrera Oracle till Azure Database for PostgreSQL
 
@@ -27,12 +27,14 @@ Om du vill migrera Oracle-schemat till Azure Database for PostgreSQL måste du:
 
 - Kontrol lera att din käll miljö stöds. 
 - Ladda ned den senaste versionen av [ora2pg](https://ora2pg.darold.net/). 
-- Den senaste versionen av [DBD-modulen](https://www.cpan.org/modules/by-module/DBD/). 
+- Ha den senaste versionen av [DBD-modulen](https://www.cpan.org/modules/by-module/DBD/). 
 
 
 ## <a name="overview"></a>Översikt
 
-PostgreSQL är en av världens mest avancerade databaser med öppen källkod. Den här artikeln beskriver hur du använder det kostnads fria ora2pg-verktyget för att migrera en Oracle-databas till PostgreSQL. Du kan använda ora2pg, ett kostnads fritt verktyg för att migrera en Oracle-eller MySQL-databas till ett PostgreSQL-kompatibelt schema. Verktyget ansluter Oracle-databasen, skannar den automatiskt och extraherar dess struktur eller data. Därefter genererar ora2pg SQL-skript som du kan läsa in i PostgreSQL-databasen. ora2pg kan användas för att utföra åtgärder från omvänd kompilering av en Oracle-databas, utföra en stor migrering av företagets databas, eller helt enkelt replikera vissa Oracle-data till en PostgreSQL-databas. Det är enkelt att använda och kräver inte någon annan Oracle Database-kunskap än möjligheten att tillhandahålla de parametrar som krävs för att ansluta till Oracle-databasen.
+PostgreSQL är en av världens mest avancerade databaser med öppen källkod. Den här artikeln beskriver hur du använder det kostnads fria ora2pg-verktyget för att migrera en Oracle-databas till PostgreSQL. Du kan använda ora2pg för att migrera en Oracle-databas eller MySQL-databas till ett PostgreSQL-kompatibelt schema. 
+
+Verktyget ora2pg ansluter din Oracle-databas, skannar den automatiskt och extraherar dess struktur eller data. Sedan genererar ora2pg SQL-skript som du kan läsa in i PostgreSQL-databasen. Du kan använda ora2pg för uppgifter som bakåtkompilering av en Oracle-databas, migrera en stor företags databas eller helt enkelt replikera vissa Oracle-data till en PostgreSQL-databas. Verktyget är enkelt att använda och kräver ingen Oracle-databasens kunskap, förutom möjligheten att tillhandahålla de parametrar som krävs för att ansluta till Oracle-databasen.
 
 > [!NOTE]
 > Mer information om hur du använder den senaste versionen av ora2pg finns i [ora2pg-dokumentationen](https://ora2pg.darold.net/documentation.html).
@@ -41,15 +43,15 @@ PostgreSQL är en av världens mest avancerade databaser med öppen källkod. De
 
 ![Skärm bild av ora2pg-migreringens arkitektur.](media/howto-migrate-from-oracle/ora2pg-migration-architecture.png)
 
-När du har slutfört etableringen av den virtuella datorn och Azure Database for PostgreSQL behövs två konfigurationer för att aktivera anslutningar mellan dem: **Tillåt Azure-tjänster** och **Använd SSL-anslutning**, som illustreras på följande sätt:
+När du har etablerat den virtuella datorn och Azure Database for PostgreSQL behöver du två konfigurationer för att möjliggöra anslutning mellan dem: **Tillåt åtkomst till Azure-tjänster** och **Framtvinga SSL-anslutning**: 
 
-- Bladet **anslutnings säkerhet** – > **Tillåt åtkomst till Azure-tjänster** – > på
+- Bladet **anslutnings säkerhet** > **Tillåt åtkomst till Azure-tjänster**  >  **på**
 
-- Bladet **anslutnings säkerhet** – > **SSL-inställningar**  ->  **tvinga SSL-anslutning** -> inaktiverat
+- Blad för **anslutnings säkerhet** > **SSL-inställningar**  >  **tvinga SSL-anslutning**  >  **inaktive rad**
 
 ### <a name="recommendations"></a>Rekommendationer
 
-- För att förbättra prestandan för utvärderings-eller export åtgärderna i Oracle-servern samlar du in statistik enligt följande:
+- För att förbättra prestanda för utvärderingen eller export åtgärderna i Oracle-servern samlar du in statistik:
 
    ```
    BEGIN
@@ -60,63 +62,71 @@ När du har slutfört etableringen av den virtuella datorn och Azure Database fo
      END;
    ```
 
-- Exportera data med kommandot COPY i stället för infoga.
+- Exportera data med hjälp av `COPY` kommandot i stället för `INSERT` .
 
-- Undvik att exportera tabeller med sina FKs, begränsningar och index – om du gör det blir det långsammare att importera data till PostgreSQL.
+- Undvik att exportera tabeller med sina sekundär nycklar (FKs), begränsningar och index. Dessa element sakta ned processen med att importera data till PostgreSQL.
 
-- Skapa materialiserade vyer med **instruktionen ingen data** och uppdatera den senare.
+- Skapa materialiserade vyer med hjälp av *ingen data-sats*. Uppdatera sedan vyerna senare.
 
-- Om möjligt implementerar du unika index i materialiserade vyer. Detta gör att uppdateringen går snabbare med syntaxen `REFRESH MATERIALIZED VIEW CONCURRENTLY` .
+- Använd om möjligt unika index i materialiserade vyer. Dessa index kan påskynda uppdateringen när du använder syntaxen `REFRESH MATERIALIZED VIEW CONCURRENTLY` .
 
 
+## <a name="premigration"></a>För migrering 
 
-## <a name="pre-migration"></a>Före migrering 
+När du har kontrollerat att din käll miljö stöds och att du har åtgärdat alla krav, är du redo att starta fasen för migrering. Så här börjar du: 
 
-När du har verifierat att din käll miljö stöds och säkerställer att du har åtgärdat alla krav, är du redo att starta fasen före migrering. I den här delen av processen ingår att utföra en inventering av de databaser som du behöver migrera, utvärdera dessa databaser för potentiella problem med migrering eller blockerare, och sedan matcha objekt som du kanske har återställt. För heterogena-migreringar som Oracle till Azure Database for PostgreSQL, inbegriper det här steget även konvertering av schema (erna) i käll databaserna som ska vara kompatibla med mål miljön.
+1. Inventera de databaser som du behöver migrera. 
+1. Utvärdera dessa databaser för potentiella problem med migrering eller blockerare.
+1. Lös eventuella objekt som du har återställt. 
+ 
+För heterogena-migreringar som Oracle till Azure Database for PostgreSQL, inbegriper det här steget även att göra käll databasens scheman kompatibla med mål miljön.
 
 ### <a name="discover"></a>Identifiera
 
-Målet med identifierings fasen är att identifiera befintliga data källor och information om de funktioner som används för att få en bättre förståelse för och planera för migreringen. Den här processen omfattar genomsökning av nätverket för att identifiera alla organisationens Oracle-instanser tillsammans med den version och de funktioner som används.
+Målet med identifierings fasen är att identifiera befintliga data källor och information om de funktioner som används. I den här fasen får du bättre förståelse och planera för migreringen. Processen omfattar att genomsöka nätverket för att identifiera alla organisationens Oracle-instanser tillsammans med den version och de funktioner som används.
 
-Microsoft Oracle-skript för för utvärdering körs mot Oracle-databasen. Skript för för utvärdering är en uppsättning frågor som träffar Oracle-metadata och ger följande:
+Microsoft preassessment-skript för Oracle körs mot Oracle-databasen. För utvärderings skript frågar Oracle-metadata. Skripten ger:
 
-- Databas inventering, inklusive antal objekt efter schema, typ och status.
+- En databas inventering, inklusive antal objekt efter schema, typ och status.
+- En grov uppskattning av rå data i varje schema baserat på statistik.
+- Storleken på tabeller i varje schema.
+- Antalet kod rader per paket, funktion, procedur och så vidare.
 
-- En grov uppskattning av rå data i varje schema (baserat på statistik).
-
-- Storleks ändring för tabeller i varje schema.
-
-- Antalet rader med kod per paket, funktion, procedur osv.
-
-Ladda ned de relaterade skripten från [ora2pg-webbplatsen](http://ora2pg.darold.net/).
+Ladda ned de relaterade skripten från [ora2pg-webbplatsen](https://ora2pg.darold.net/).
 
 ### <a name="assess"></a>Utvärdera
 
-När du har slutfört inventeringen av Oracle-databaserna för att få en uppfattning om databasens storlek och hur utmaningarna är, är nästa steg att köra utvärderingen.
+När du har inventerat Oracle-databaserna har du en uppfattning om databasens storlek och potentiella utmaningar. Nästa steg är att köra utvärderingen.
 
-Det är inte enkelt att uppskatta kostnaden för en migreringsprocessen från Oracle till PostgreSQL. För att få en bättre bedömning av den här migreringen kommer ora2pg att inspektera alla databas objekt, alla funktioner och lagrade procedurer för att identifiera om det fortfarande finns några objekt och PL/SQL-kod som inte kan konverteras automatiskt av ora2pg.
+Det är enkelt att uppskatta kostnaden för en migrering från Oracle till PostgreSQL. För att utvärdera migrerings kostnaden kontrollerar ora2pg alla databas objekt, funktioner och lagrade procedurer för objekt och PL/SQL-kod som inte kan konverteras automatiskt.
 
-ora2pg har ett innehålls analys läge som kontrollerar Oracle-databasen för att generera en text rapport om vad Oracle-databasen innehåller och vad som inte går att exportera.
+Ora2pg-verktyget har ett innehålls analys läge som kontrollerar Oracle-databasen för att generera en text rapport. Rapporten beskriver vad Oracle-databasen innehåller och vad som inte går att exportera.
 
-Om du vill aktivera **analys-och rapport** läget använder du den exporterade typen `SHOW_REPORT` som visas i följande kommando:
+Om du vill aktivera *analys-och rapport* läget använder du den exporterade typen `SHOW_REPORT` som visas i följande kommando:
 
 ```
 ora2pg -t SHOW_REPORT
 ```
 
-När databasen har analyser ATS kan ora2pg, med möjligheten att konvertera SQL-och PL/SQL-kod från Oracle-syntax till PostgreSQL, gå vidare genom att uppskatta kod problem och den tid som krävs för att utföra en fullständig databas migrering.
+Verktyget ora2pg kan konvertera SQL-och PL/SQL-kod från Oracle-syntax till PostgreSQL. När databasen har analyser ATS kan ora2pg uppskatta kod problem och den tid som krävs för att migrera en fullständig databas.
 
-Ora2pg gör att du kan använda ett konfigurations direktiv som heter ESTIMATE_COST, som också kan aktive ras på kommando raden, för att beräkna migrerings kostnaden på man-dagar.
+Ora2pg gör det möjligt att använda ett konfigurations direktiv som kallas för att beräkna migrerings kostnaden i human-dagar `ESTIMATE_COST` . Du kan också aktivera det här direktivet i en kommando tolk:
 
 ```
 ora2pg -t SHOW_REPORT --estimate_cost
 ```
 
-Standardenheten för migrering representerar cirka fem minuter för en PostgreSQL expert. Om det här är din första migrering kan du få den högre upp med konfigurations direktivet COST_UNIT_VALUE eller kommando rads alternativet--cost_unit_value.
+Standardenheten för migrering representerar cirka fem minuter för en PostgreSQL expert. Om migreringen är din första kan du öka standardenheten för migrering genom att använda konfigurations direktivet `COST_UNIT_VALUE` eller `--cost_unit_value` kommando rads alternativet.
 
-Den sista raden i rapporten visar den totala uppskattade migreringsprocessen på man dagar efter antalet uppskattade migrations enheter för varje objekt.
+Den sista raden i rapporten visar den totala uppskattade migrations koden i människa dagar. Uppskattningen följer antalet uppskattade migrations enheter för varje objekt.
 
-Den här migrations enheten representerar cirka fem minuter för en PostgreSQL expert. Om det här är din första migrering kan du öka standardvärdet med konfigurations direktivet COST_UNIT_VALUE eller kommando rads alternativet--cost_unit_value. Nedan följer några variationer i utvärderingen a)-tabeller. b) kolumner bedömning c) schema utvärdering med standard cost_unit (5 min) d) schema utvärdering med 10 min som kostnads enhet.
+Den här migrations enheten representerar cirka fem minuter för en PostgreSQL expert. Om migreringen är din första kan du öka standardvärdet genom att använda konfigurations direktivet `COST_UNIT_VALUE` eller kommando rads alternativet `--cost_unit_value` . 
+
+I följande kod exempel visas några utvärderings variationer: 
+* Tabell utvärdering
+* Kolumn bedömning
+* Schema utvärdering som använder en standardkostnads enhet på 5 minuter
+* Schema utvärdering som använder en kostnads enhet på 10 minuter
 
 ```
 ora2pg -t SHOW_TABLE -c c:\ora2pg\ora2pg_hr.conf > c:\ts303\hr_migration\reports\tables.txt ora2pg -t SHOW_COLUMN -c c:\ora2pg\ora2pg_hr.conf > c:\ts303\hr_migration\reports\columns.txt
@@ -125,186 +135,192 @@ _migration\reports\report.html
 ora2pg -t SHOW_REPORT -c c:\ora2pg\ora2pg_hr.conf –-cost_unit_value 10 --dump_as_html --estimate_cost > c:\ts303\hr_migration\reports\report2.html
 ```
 
-Resultatet av schema utvärderingen illustreras enligt nedan:
+Här är resultatet av schema utvärderingens migrerings nivå B-5:
 
-**Migrations nivå: B-5**
+* Migrations nivåer:
 
-Migrations nivåer:
+  * En-migrering som kan köras automatiskt
+    
+  * B-migrering med omskrivning av kod och en kostnad på personalavdelningen upp till fem dagar
+    
+  * C – migrering med omskrivning av kod och en kostnad på personalavdelningen över 5 dagar
+    
+* Tekniska nivåer:
 
-En-migrering som kan köras automatiskt
+   * 1 = trivial: inga lagrade funktioner och inga utlösare
 
-B-migrering med omskrivning av kod och en kostnad på personalavdelningen upp till fem dagar
+   * 2 = enkelt: inga lagrade funktioner, men utlösare; ingen manuell omskrivning
 
-C – migrering med kod omarbetning och kostnad på en dag över 5 dagar
+   * 3 = enkel: lagrade funktioner och/eller utlösare; ingen manuell omskrivning
 
-Tekniska nivåer:
+   * 4 = manuell: inga lagrade funktioner, men utlösare eller vyer med kod skrivning
 
-1 = trivial: inga lagrade funktioner och inga utlösare
+   * 5 = svår: lagrade funktioner och/eller utlösare med kod skrivning
 
-2 = enkelt: inga lagrade funktioner, men med utlösare, ingen manuell skrivning
+Utvärderingen består av: 
+* En bokstav (A eller B) för att ange om migreringen behöver manuell omskrivning.
 
-3 = enkel: lagrade funktioner och/eller utlösare, ingen manuell skrivning
+* En siffra mellan 1 och 5 för att ange de tekniska svårigheterna. 
 
-4 = manuell: inga lagrade funktioner, men med utlösare eller vyer med kod skrivning
+Ett annat alternativ, `-human_days_limit` anger antalet mänskliga dagar. Här ställer du in migrations nivån på C för att ange att migreringen behöver en stor mängd arbete, fullständig projekt hantering och stöd för migrering. Standardvärdet är 10 dagar. Du kan använda konfigurations direktivet `HUMAN_DAYS_LIMIT` för att ändra det här standardvärdet permanent.
 
-5 = svår: lagrade funktioner och/eller utlösare med kod skrivning
-
-Utvärderingen består av en bokstav (A eller B) för att ange om migreringen behöver manuell omskrivning eller inte, och en siffra mellan 1 och 5 för att ange den tekniska svårighets nivån. Du har ytterligare ett alternativ-human_days_limit för att ange antalet mänskliga dagar där migrerings nivån ska ställas in på C för att ange att den behöver en enorm mängd arbete och en fullständig projekt hantering med stöd för migrering. Standardvärdet är 10 dagar. Du kan använda konfigurations direktivet HUMAN_DAYS_LIMIT för att ändra det här standardvärdet permanent.
-
-Den här funktionen har utvecklats för att hjälpa till att avgöra vilken databas som kunde migreras först och vad är det team som behöver anskaffas.
+Den här schema utvärderingen utvecklades för att hjälpa användarna att bestämma vilken databas som ska migreras först och vilka team som ska mobilisera.
 
 ### <a name="convert"></a>Konvertera
 
-Vid migreringen med låg stillestånds tid fortsätter källan som du migrerar att ändra, genom att gå från målet i termer av data och schema, efter migreringen vid ett tillfälle. Under fasen **data synkronisering** måste du se till att alla ändringar i källan fångas in och tillämpas på målet i nära real tid. När du har kontrollerat att alla ändringar i källan har tillämpats på målet kan du Start punkt från källan till mål miljön.
+I låg stillestånds tid ändras migreringens källa. Den riktar sig mot målet i termer av data och schema efter migreringen vid ett tillfälle. Under fasen *data synkronisering* ser du till att alla ändringar i källan fångas in och tillämpas på målet i nära real tid. När du har kontrollerat att alla ändringar har tillämpats på målet kan du *klippa över* från källan till mål miljön.
 
-I det här steget av migreringen sker konverteringen eller översättningen av Oracle-koden + DDLS till PostgreSQL. Verktyget ora2pg exporterar Oracle-objekten i ett PostgreSQL-format automatiskt. För de objekt som skapas kompileras inte vissa i PostgreSQL-databasen utan manuella ändringar.  
-Processen att förstå vilka element som behöver manuella åtgärder består i att kompilera filerna som genereras av ora2pg mot PostgreSQL-databasen, kontrol lera loggen och göra nödvändiga ändringar tills alla schema strukturen är kompatibla med PostgreSQL-syntaxen.
+I det här steget av migreringen konverteras eller översätts Oracle-koden och DDL-skripten till PostgreSQL. Verktyget ora2pg exporterar Oracle-objekten i ett PostgreSQL-format automatiskt. Det går inte att kompilera några av de genererade objekten i PostgreSQL-databasen utan manuella ändringar.  
+
+För att förstå vilka element som behöver manuella åtgärder, ska du först kompilera filerna som genereras av ora2pg mot PostgreSQL-databasen. Kontrol lera loggen och gör sedan nödvändiga ändringar tills schema strukturen är kompatibel med PostgreSQL-syntaxen.
 
 
-#### <a name="create-migration-template"></a>Skapa mall för migrering 
+#### <a name="create-a-migration-template"></a>Skapa en mall för migrering 
 
-Först rekommenderar vi att du skapar en mall för migrering som finns i rutan med ora2pg. De två alternativen--project_base och--init_project när de används anger att ora2pg ska skapa en projektmall med ett arbets träd, en konfigurations fil och ett skript för att exportera alla objekt från Oracle-databasen. Mer information finns i ora2pg- [dokumentationen](https://ora2pg.darold.net/documentation.html).
+Vi rekommenderar att du använder den mall för migrering som ora2pg tillhandahåller. När du använder alternativen `--project_base` och `--init_project` skapar ora2pg en projektmall med ett arbets träd, en konfigurations fil och ett skript för att exportera alla objekt från Oracle-databasen. Mer information finns i ora2pg- [dokumentationen](https://ora2pg.darold.net/documentation.html).
 
-   Ange följande kommando: 
+Ange följande kommando: 
 
-   ```
-   ora2pg --project_base /app/migration/ --init_project test_project
+```
+ora2pg --project_base /app/migration/ --init_project test_project
+
+ora2pg --project_base /app/migration/ --init_project test_project
+```
+
+Här är exempel på utdata: 
    
-   ora2pg --project_base /app/migration/ --init_project test_project
-   ```
+```
+Creating project test_project. /app/migration/test_project/ schema/ dblinks/ directories/ functions/ grants/ mviews/ packages/ partitions/ procedures/ sequences/ synonyms/    tables/ tablespaces/ triggers/ types/ views/ sources/ functions/ mviews/ packages/ partitions/ procedures/ triggers/ types/ views/ data/ config/ reports/
 
-Exempel på utdata: 
-   
-   ```
-   Creating project test_project. /app/migration/test_project/ schema/ dblinks/ directories/ functions/ grants/ mviews/ packages/ partitions/ procedures/ sequences/ synonyms/    tables/ tablespaces/ triggers/ types/ views/ sources/ functions/ mviews/ packages/ partitions/ procedures/ triggers/ types/ views/ data/ config/ reports/
-   
-   Generating generic configuration file
-   
-   Creating script export_schema.sh to automate all exports.
-   
-   Creating script import_all.sh to automate all imports.
-   ```
+Generating generic configuration file
 
-Källorna/katalogen innehåller Oracle-koden, schemat/katalogen innehåller koden som är portad till PostgreSQL. Rapporterna/katalogen innehåller HTML-rapporter med utvärderingen av migrerings kostnad.
+Creating script export_schema.sh to automate all exports.
+
+Creating script import_all.sh to automate all imports.
+```
+
+`sources/`Katalogen innehåller Oracle-koden. `schema/`Katalogen innehåller koden som är portad för postgresql. Och `reports/` katalogen innehåller HTML-rapporter och utvärderingen av migreringen.
 
 
-När projekt strukturen har skapats skapas en allmän konfigurations fil. Definiera Oracle Database-anslutningen och relevanta konfigurations parametrar i konfigurationen.  Se ora2pg-dokumentationen för att förstå vad som kan konfigureras i konfigurations filen och hur.
+När projekt strukturen har skapats skapas en allmän konfigurations fil. Definiera Oracle Database-anslutningen och relevanta konfigurations parametrar i konfigurations filen. Mer information om konfigurations filen finns i ora2pg- [dokumentationen](https://ora2pg.darold.net/documentation.html).
 
 
 #### <a name="export-oracle-objects"></a>Exportera Oracle-objekt
 
-Exportera sedan Oracle-objekten som PostgreSQL-objekt genom att köra filen export_schema. sh.
+Exportera sedan Oracle-objekten som PostgreSQL-objekt genom att köra filen *export_schema. sh*.
 
-   ```
-   cd /app/migration/mig_project
-   ./export_schema.sh
-   
-   Run the following command manually:
-   
-   SET namespace="/app/migration/mig_project"
-   
-   ora2pg -t DBLINK -p -o dblink.sql -b %namespace%/schema/dblinks -c
-   %namespace%/config/ora2pg.conf
-   ora2pg -t DIRECTORY -p -o directory.sql -b %namespace%/schema/directories -c
-   %namespace%/config/ora2pg.conf
-   ora2pg -p -t FUNCTION -o functions2.sql -b %namespace%/schema/functions -c
-   %namespace%/config/ora2pg.conf ora2pg -t GRANT -o grants.sql -b %namespace%/schema/grants -c %namespace%/config/ora2pg.conf ora2pg -t MVIEW -o mview.sql -b %namespace%/schema/   mviews -c %namespace%/config/ora2pg.conf
-   ora2pg -p -t PACKAGE -o packages.sql
-   %namespace%/config/ora2pg.conf -b %namespace%/schema/packages -c
-   ora2pg -p -t PARTITION -o partitions.sql %namespace%/config/ora2pg.conf -b %namespace%/schema/partitions -c
-   ora2pg -p -t PROCEDURE -o procs.sql
-   %namespace%/config/ora2pg.conf -b %namespace%/schema/procedures -c
-   ora2pg -t SEQUENCE -o sequences.sql
-   %namespace%/config/ora2pg.conf -b %namespace%/schema/sequences -c
-   ora2pg -p -t SYNONYM -o synonym.sql -b %namespace%/schema/synonyms -c
-   %namespace%/config/ora2pg.conf
-   ora2pg -t TABLE -o table.sql -b %namespace%/schema/tables -c %namespace%/config/ora2pg.conf ora2pg -t TABLESPACE -o tablespaces.sql -b %namespace%/schema/tablespaces -c
-   %namespace%/config/ora2pg.conf
-   ora2pg -p -t TRIGGER -o triggers.sql -b %namespace%/schema/triggers -c
-   %namespace%/config/ora2pg.conf ora2pg -p -t TYPE -o types.sql -b %namespace%/schema/types -c %namespace%/config/ora2pg.conf ora2pg -p -t VIEW -o views.sql -b %namespace%/   schema/views -c %namespace%/config/ora2pg.conf
-   ```
+```
+cd /app/migration/mig_project
+./export_schema.sh
+```
 
-   Om du vill extrahera data använder du följande kommando:
+Kör följande kommando manuellt.
 
-   ```
-   ora2pg -t COPY -o data.sql -b %namespace/data -c %namespace/config/ora2pg.conf
-   ```
+```
+SET namespace="/app/migration/mig_project"
+
+ora2pg -t DBLINK -p -o dblink.sql -b %namespace%/schema/dblinks -c
+%namespace%/config/ora2pg.conf
+ora2pg -t DIRECTORY -p -o directory.sql -b %namespace%/schema/directories -c
+%namespace%/config/ora2pg.conf
+ora2pg -p -t FUNCTION -o functions2.sql -b %namespace%/schema/functions -c
+%namespace%/config/ora2pg.conf ora2pg -t GRANT -o grants.sql -b %namespace%/schema/grants -c %namespace%/config/ora2pg.conf ora2pg -t MVIEW -o mview.sql -b %namespace%/schema/   mviews -c %namespace%/config/ora2pg.conf
+ora2pg -p -t PACKAGE -o packages.sql
+%namespace%/config/ora2pg.conf -b %namespace%/schema/packages -c
+ora2pg -p -t PARTITION -o partitions.sql %namespace%/config/ora2pg.conf -b %namespace%/schema/partitions -c
+ora2pg -p -t PROCEDURE -o procs.sql
+%namespace%/config/ora2pg.conf -b %namespace%/schema/procedures -c
+ora2pg -t SEQUENCE -o sequences.sql
+%namespace%/config/ora2pg.conf -b %namespace%/schema/sequences -c
+ora2pg -p -t SYNONYM -o synonym.sql -b %namespace%/schema/synonyms -c
+%namespace%/config/ora2pg.conf
+ora2pg -t TABLE -o table.sql -b %namespace%/schema/tables -c %namespace%/config/ora2pg.conf ora2pg -t TABLESPACE -o tablespaces.sql -b %namespace%/schema/tablespaces -c
+%namespace%/config/ora2pg.conf
+ora2pg -p -t TRIGGER -o triggers.sql -b %namespace%/schema/triggers -c
+%namespace%/config/ora2pg.conf ora2pg -p -t TYPE -o types.sql -b %namespace%/schema/types -c %namespace%/config/ora2pg.conf ora2pg -p -t VIEW -o views.sql -b %namespace%/   schema/views -c %namespace%/config/ora2pg.conf
+```
+
+Om du vill extrahera data använder du följande kommando.
+
+```
+ora2pg -t COPY -o data.sql -b %namespace/data -c %namespace/config/ora2pg.conf
+```
 
 #### <a name="compile-files"></a>Kompilera filer
 
-Till sist kompilerar du alla filer mot Azure Database for PostgreSQL-servern. Du kan nu välja att läsa in de DDL-filer som genererats manuellt eller använda det andra skriptet import_all. sh för att importera filerna interaktivt.
+Kompilera slutligen alla filer mot Azure Database for PostgreSQL-servern. Du kan välja att läsa in de manuellt genererade DDL-filerna eller använda det andra skriptet *IMPORT_ALL. sh* för att importera filerna interaktivt.
 
-   ```
-   psql -f %namespace%\schema\sequences\sequence.sql -h server1-
-   
-   server.postgres.database.azure.com -p 5432 -U username@server1-server -d database -l
-   
-   %namespace%\ schema\sequences\create_sequences.log
-   
-   psql -f %namespace%\schema\tables\table.sql -h server1-server.postgres.database.azure.com p 5432 -U username@server1-server -d database -l    %namespace%\schema\tables\create_table.log
-   ```
+```
+psql -f %namespace%\schema\sequences\sequence.sql -h server1-
 
-   Kommandot data import:
+server.postgres.database.azure.com -p 5432 -U username@server1-server -d database -l
 
-   ```
-   psql -f %namespace%\data\table1.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database -l %namespace%\data\table1.log
-   
-   psql -f %namespace%\data\table2.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database -l %namespace%\data\table2.log
-   ```
+%namespace%\ schema\sequences\create_sequences.log
 
-Under kompileringen av filer, kontrol lera loggarna och åtgärda de nödvändiga syntaxerna som ora2pg inte kunde konvertera ut från rutan.
+psql -f %namespace%\schema\tables\table.sql -h server1-server.postgres.database.azure.com p 5432 -U username@server1-server -d database -l    %namespace%\schema\tables\create_table.log
+```
 
-Läs om hur du kan lösa problemet genom att använda white paper [Oracle för att Azure Database for PostgreSQL migrering](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf) .
+Här är kommandot data import:
+
+```
+psql -f %namespace%\data\table1.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database -l %namespace%\data\table1.log
+
+psql -f %namespace%\data\table2.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database -l %namespace%\data\table2.log
+```
+
+När filerna kompileras, kontrol lera loggarna och korrigera alla syntaxer som ora2pg inte kunde konvertera på egen hand.
+
+Mer information finns i [Oracle to Azure Database for PostgreSQL migration-lösningar](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf).
 
 ## <a name="migrate"></a>Migrera 
 
-När du har de nödvändiga förutsättningarna och har slutfört de uppgifter som är kopplade till fasen **innan migreringen** , är du redo att utföra schemat och datamigreringen.
+När du har de nödvändiga förutsättningarna och du har slutfört stegen för migrering kan du starta schemat och migreringen av data.
 
 ### <a name="migrate-schema-and-data"></a>Migrera schema och data
 
-När korrigeringarna är på plats är en stabil version av databasen klar för distribution.
+När du har gjort de nödvändiga korrigeringarna är en stabil version av databasen klar att distribuera. Kör `psql` import kommandona och peka på de filer som innehåller den ändrade koden. Den här aktiviteten sammanställer databas objekt mot PostgreSQL-databasen och importerar data.
 
-Allt det krävs för att köra *psql* -import kommandona, peka på de filer som innehåller den ändrade koden för att kompilera databas objekt mot PostgreSQL-databasen och importera data.
+I det här steget kan du implementera en nivå av parallellitet för att importera data.
 
-I det här steget kan du implementera en viss nivå av parallellitet vid import av data.
+### <a name="sync-data-and-cut-over"></a>Synkronisera data och klipp ut
 
-### <a name="data-sync-and-cutover"></a>Data synkronisering och start punkt
+I online-migrering (minimalt drift avbrott) fortsätter migreringen att ändras. Den riktar sig mot målet i termer av data och schema efter migreringen vid ett tillfälle. 
 
-Med migrering online (minimalt drift avbrott) fortsätter källan som du migrerar att ändra, genom att gå från målet vad gäller data och schema, efter migreringen vid ett tillfälle. Under fasen **data synkronisering** måste du se till att alla ändringar i källan fångas in och tillämpas på målet i nära real tid. När du har kontrollerat att alla ändringar i källan har tillämpats på målet kan du Start punkt från källan till mål miljön.
+Under fasen *data synkronisering* ser du till att alla ändringar i källan fångas in och tillämpas på målet i nära real tid. När du har kontrollerat att alla ändringar har tillämpats kan du klippa ut från källan till mål miljön.
 
-Från och med mars 2019, om du vill utföra en online-migrering, bör du överväga att använda Attunity-replikering för Microsoft-migreringar eller Striims.
+Kontakta supporten om du vill göra en online-migrering AskAzureDBforPostgreSQL@service.microsoft.com .
 
-För *delta/stegvis* migrering med ora2pg, består tekniken i att tillämpa för varje tabell a-fråga som tillämpar ett filter (klipp) efter datum eller tid osv. efter det att migreringen har slutförts tillämpas en andra fråga som kommer att migrera resten av data (överblivna).
+I en *delta-/stegvis* migrering som använder ora2pg för varje tabell använder du en fråga som filtrerar (*klipper*) efter datum, tid eller annan parameter. Slutför sedan migreringen genom att använda en andra fråga som migrerar återstående data.
 
-I käll data tabellen, migrera alla historiska data först. Ett exempel på detta är:
+I käll data tabellen, migrera alla historiska data först. Här är ett exempel:
 
 ```
 select * from table1 where filter_data < 01/01/2019
 ```
 
-Du kan fråga de ändringar som har gjorts sedan den första migreringen genom att köra ett kommando som liknar följande:
+Du kan fråga ändringarna sedan den första migreringen genom att köra ett kommando som detta:
 
 ```
 select * from table1 where filter_data >= 01/01/2019
 ```
 
-I det här fallet rekommenderar vi att verifieringen har förbättrats genom att kontrol lera data paritet på både sidor, källa och mål.
+I det här fallet rekommenderar vi att du förbättrar valideringen genom att kontrol lera data paritet på båda sidor, källan och målet.
 
-## <a name="post-migration"></a>Efter migreringen 
+## <a name="postmigration"></a>Postmigration 
 
-När du har slutfört **migreringen** måste du gå igenom en serie uppgifter efter migreringen för att se till att allt fungerar så smidigt och effektivt som möjligt.
+Efter *migreringen* slutför du postmigration-aktiviteterna för att se till att allt fungerar så smidigt och effektivt som möjligt.
 
 ### <a name="remediate-applications"></a>Åtgärda program
 
-När data har migrerats till mål miljön måste alla program som tidigare förbrukade källan börja använda målet. Om du gör detta måste du i vissa fall göra ändringar i programmen.
+När data har migrerats till mål miljön måste alla program som tidigare förbrukade källan börja använda målet. Installations programmet kräver ibland ändringar i programmen.
 
-### <a name="perform-tests"></a>Utför tester
+### <a name="test"></a>Test
 
-När data har migrerats till målet utför du tester mot databaserna för att kontrol lera att programmen fungerar bra mot målet efter migreringen.
+När data har migrerats till målet kan du köra tester mot databaserna för att kontrol lera att programmen fungerar bra med målet. Se till att källan och målet migreras korrekt genom att köra manuella data verifierings skript mot Oracle-källan och PostgreSQL-mål databaserna.
 
-För att garantera att källan och målet är korrekt migrerade kör du de manuella data verifierings skripten mot Oracle-källan och PostgreSQL-mål databaserna.
+Vi rekommenderar att om käll-och mål databaserna har en nätverks Sök väg, ska ora2pg användas för data verifiering. Du kan använda `TEST` åtgärden för att se till att alla objekt från Oracle-databasen har skapats i postgresql. 
 
-Vi rekommenderar att om käll-och mål databaserna har en nätverks Sök väg, ska ora2pg användas för data verifiering. Med hjälp av TEST åtgärden kan du kontrol lera att alla objekt från Oracle-databasen har skapats under PostgreSQL. Kör kommandot som det visas:
+Kör följande kommando:
 
 ```
 ora2pg -t TEST -c config/ora2pg.conf > migration_diff.txt
@@ -312,34 +328,30 @@ ora2pg -t TEST -c config/ora2pg.conf > migration_diff.txt
 
 ### <a name="optimize"></a>Optimera
 
-Fasen efter migreringen är avgörande för att kunna stämma av data precisions problem och kontrol lera att de är klara, samt att lösa prestanda problem med arbets belastningen.
+Postmigration-fasen är avgörande för att stämma av data precisions problem och kontrol lera om det är klart. I den här fasen kan du också lösa prestanda problem med arbets belastningen.
 
 ## <a name="migration-assets"></a>Migrera till gångar 
 
-Mer hjälp om hur du slutför det här migreringsprocessen finns i följande resurser, som har utvecklats för att ge stöd för ett verkligt migrerings projekt.
+Mer information om det här migrerings scenariot finns i följande resurser. De har stöd för att engagera projekt engagemang i Real världen.
 
-| **Rubrik länk** | **Beskrivning**    |
+| Resurs | Beskrivning    |
 | -------------- | ------------------ |
-| [Cookbook för Oracle till Azure PostgreSQL-migrering](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf) | Detta dokument syfte är att tillhandahålla arkitekter, konsulter, databas administratörer och relaterade roller med en guide för att snabbt migrera arbets belastningar från Oracle till Azure Database for PostgreSQL med ora2pg-verktyget. |
-| [Lösningar för PostgreSQL-migrering från Oracle till Azure](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf) | Syftet med det här dokumentet är att tillhandahålla arkitekter, konsulter, databas administratörer och relaterade roller med en vägledning för snabb korrigering/hantering av problem när du migrerar arbets belastningar från Oracle till Azure Database for PostgreSQL. |
-| [Steg för att installera ora2pg i Windows eller Linux](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)                       | Det här dokumentet är avsett att användas som en snabb installations guide för att aktivera migrering av schema & data från Oracle till Azure Database for PostgreSQL med hjälp av ora2pg-verktyget i Windows eller Linux. Fullständig information om verktyget finns på http://ora2pg.darold.net/documentation.html . |
+| [Cookbook för Oracle till Azure PostgreSQL-migrering](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf) | Det här dokumentet hjälper arkitekter, konsulter, databas administratörer och relaterade roller att snabbt migrera arbets belastningar från Oracle till Azure Database for PostgreSQL med hjälp av ora2pg. |
+| [Lösningar för PostgreSQL-migrering från Oracle till Azure](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf) | Det här dokumentet hjälper arkitekter, konsulter, databas administratörer och relaterade roller att snabbt åtgärda eller undvika problem när du migrerar arbets belastningar från Oracle till Azure Database for PostgreSQL. |
+| [Steg för att installera ora2pg i Windows eller Linux](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)                       | Det här dokumentet innehåller en snabb installations guide för att migrera schema och data från Oracle till Azure Database for PostgreSQL med hjälp av ora2pg på Windows eller Linux. Mer information finns i ora2pg- [dokumentationen](http://ora2pg.darold.net/documentation.html). |
 
-Data SQL Engineering-teamet utvecklade dessa resurser. Det här teamets kärn stadgan är att avblockera och påskynda komplexa modernisering för migrering av data plattformar till Microsofts Azure-dataplattform.
+Data SQL Engineering-teamet utvecklade dessa resurser. Det här teamets kärn stadgan är att avblockera och påskynda komplexa modernisering för migrering av data plattformar till Microsoft Azure Data plattform.
 
+## <a name="more-support"></a>Mer support
 
-### <a name="contact-support"></a>Kontakta supporten
-
-Om du behöver hjälp med migreringar utöver ora2pg-verktyget kan du kontakta [ @Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com) -aliaset för information om andra flyttnings alternativ.
+Om du vill ha hjälp utanför ora2pg-verktygets omfattning kontaktar du [ @Ask Azure dB för postgresql](mailto:AskAzureDBforPostgreSQL@service.microsoft.com).
 
 ## <a name="next-steps"></a>Nästa steg
 
-- En matris med tjänster/verktyg från Microsoft och tjänster/verktyg från tredje part som är tillgängliga för att hjälpa dig med olika scenarier för databas-och data migrering (och särskilda uppgifter) finns i artikel [tjänsten och verktyg för migrering av data](https://docs.microsoft.com/azure/dms/dms-tools-matrix).
+För en matris med tjänster och verktyg för databas-och datamigrering och för specialiserade uppgifter, se [tjänster och verktyg för datamigrering](https://docs.microsoft.com/azure/dms/dms-tools-matrix).
 
-Mer information finns i: 
+Dokumentation: 
 - [Azure Database for PostgreSQL-dokumentation](https://docs.microsoft.com/azure/postgresql/)
 - [dokumentation om ora2pg](https://ora2pg.darold.net/documentation.html)
 - [PostgreSQL webbplats](https://www.postgresql.org/)
 - [Stöd för autonom transaktion i PostgreSQL](http://blog.dalibo.com/2016/08/19/Autonoumous_transactions_support_in_PostgreSQL.html) 
-
-För video innehåll: 
-- [Översikt över migrerings resan och de verktyg/tjänster som rekommenderas för utvärdering och migrering](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/).

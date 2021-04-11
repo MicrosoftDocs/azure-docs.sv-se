@@ -2,7 +2,7 @@
 title: Övervaknings Time Series Insights | Microsoft Docs
 description: Övervaka Time Series Insights för tillgänglighet, prestanda och drift.
 author: deepakpalled
-ms.author: lyhughes
+ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: a46ddeddfcefcd4d6e7f87747fe36cfc6ec82e35
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 15054cd508ce7a6de51fea86ca02302fba258757
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737570"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504931"
 ---
 # <a name="monitoring-time-series-insights"></a>Övervaknings Time Series Insights
 
@@ -44,7 +44,7 @@ Följande avsnitt bygger på den här artikeln genom att beskriva specifika data
 
 ## <a name="monitoring-data-from-azure-time-series-insights"></a>Övervaknings data från Azure Time Series Insights
 
-Azure Time Series Insights samlar in samma typer av övervaknings data som andra Azure-resurser som beskrivs i [övervaknings data från Azure-resurser](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data). 
+Azure Time Series Insights samlar in samma typer av övervaknings data som andra Azure-resurser som beskrivs i [övervaknings data från Azure-resurser](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data).
 
 Se [Azure Time Series Insights övervaknings data referens](how-to-monitor-tsi-reference.md) för en detaljerad referens för de loggar och mått som du kan samla in.
 

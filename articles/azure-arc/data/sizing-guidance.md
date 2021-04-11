@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6e7f2e445c3e4e8df7420c0587e156968f3a2c92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3bbd778eabf150b734b04e004006dfeea2254ec4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94542685"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077490"
 ---
 # <a name="sizing-guidance"></a>Vägledning för storleks kontroll
 
@@ -92,9 +92,9 @@ Varje SQL-hanterad instans Pod som skapas har tre behållare:
 
 |Containerns namn|PROCESSOR förfrågan|Minnes förfrågan|PROCESSOR gräns|Minnes gräns|Kommentarer|
 |---|---|---|---|---|---|
-|fluentbit|100 miljoner|100Mi|Inte angivet|Inte angivet|Fluentbit behållar resurs begär Anden är _utöver_ de begär Anden som anges för SQL-hanterad instans.||
-|båge – sqlmi|Användaren har angetts eller inte angetts.|Användaren har angetts eller inte angetts.|Användaren har angetts eller inte angetts.|Användaren har angetts eller inte angetts.||
-|insamlade|Inte angivet|Inte angivet|Inte angivet|Inte angivet||
+|fluentbit|100 miljoner|100Mi|Inte angivet|Inte angivet|Fluentbit behållar resurs begär Anden är _utöver_ de begär Anden som anges för SQL-hanterad instans.|
+|båge – sqlmi|Användaren har angetts eller inte angetts.|Användaren har angetts eller inte angetts.|Användaren har angetts eller inte angetts.|Användaren har angetts eller inte angetts.|
+|insamlade|Inte angivet|Inte angivet|Inte angivet|Inte angivet|
 
 Standard volym storleken för alla beständiga volymer är 5Gi.
 

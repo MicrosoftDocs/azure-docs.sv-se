@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 3f24f38db7704557894d866b789890763f9e1316
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5f931ce1aa6c06f151241b6136470d494dbcd48
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463263"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218761"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-using-linux-containers"></a>Självstudie: utveckla en Java IoT Edge-modul med hjälp av Linux-behållare
 
@@ -50,7 +50,7 @@ Använd följande tabell för att förstå alternativen för att utveckla och di
 Innan du påbörjar den här självstudien bör du ha gått igenom den föregående kursen för att konfigurera din utvecklings miljö för att utveckla Linux-behållare: [utveckla IoT Edge moduler för Linux-enheter](tutorial-develop-for-linux.md). Genom att slutföra någon av de här självstudierna bör du ha följande krav på plats:
 
 * En [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) på kostnadsfri nivå eller standardnivå i Azure.
-* En enhet som kör Azure IoT Edge. Du kan använda snabb starterna för att konfigurera en [Linux-enhet](quickstart-linux.md) eller [Windows-enhet](quickstart.md).
+* En enhet som kör Azure IoT Edge med Linux-behållare. Du kan använda snabb starterna för att konfigurera en [Linux-enhet](quickstart-linux.md) eller [Windows-enhet](quickstart.md).
 * Ett behållar register som [Azure Container Registry](../container-registry/index.yml).
 * [Visual Studio-kod](https://code.visualstudio.com/) som kon figurer ATS med [Azure IoT-verktyg](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) konfigurerat för att köra Linux-behållare.

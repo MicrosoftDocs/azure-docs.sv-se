@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: c1d7bf933b487c40d571f1912341b5ef771e4e67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2d081ded07b1d32ee7525855c1756e13dfd57aa
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90527334"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277512"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Skapa filter med Media Services REST API
 
@@ -26,7 +26,7 @@ ms.locfileid: "90527334"
 
 När du levererar ditt innehåll till kunder (strömma live-händelser eller video på begäran) kan din klient behöva större flexibilitet än vad som beskrivs i standard till gångens manifest fil. Med Azure Media Services kan du definiera konto filter och till gångs filter för ditt innehåll. 
 
-Detaljerad beskrivning av den här funktionen och scenarier där den används finns i [dynamiska manifest](filters-dynamic-manifest-overview.md) och [filter](filters-concept.md).
+Detaljerad beskrivning av den här funktionen och scenarier där den används finns i [dynamiska manifest](filters-dynamic-manifest-concept.md) och [filter](filters-concept.md).
 
 Det här avsnittet visar hur du definierar ett filter för en video på begäran till gång och använder REST-API: er för att skapa [konto filter](/rest/api/media/accountfilters) och [filter för till gångar](/rest/api/media/assetfilters). 
 
@@ -37,10 +37,10 @@ Det här avsnittet visar hur du definierar ett filter för en video på begäran
 
 För att slutföra stegen som beskrivs i det här avsnittet måste du:
 
-- Granska [filter och dynamiska manifest](filters-dynamic-manifest-overview.md).
-- [Konfigurera PostMan för Azure Media Services REST API-anrop](media-rest-apis-with-postman.md).
+- Granska [filter och dynamiska manifest](filters-dynamic-manifest-concept.md).
+- [Konfigurera PostMan för Azure Media Services REST API-anrop](setup-postman-rest-how-to.md).
 
-    Kontrol lera att du följer det sista steget i avsnittet [Hämta Azure AD-token](media-rest-apis-with-postman.md#get-azure-ad-token). 
+    Kontrol lera att du följer det sista steget i avsnittet [Hämta Azure AD-token](setup-postman-rest-how-to.md#get-azure-ad-token). 
 
 ## <a name="define-a-filter"></a>Definiera ett filter  
 
@@ -121,7 +121,7 @@ Mer information om hur du skapar eller uppdaterar till gångs filter finns i [sk
 
 ## <a name="associate-filters-with-streaming-locator"></a>Associera filter med streaming Locator
 
-Du kan ange en lista över till gångs-eller konto filter, som gäller för din strömmande positionerare. Den [dynamiska Paketeraren (slut punkt för direkt uppspelning)](dynamic-packaging-overview.md) använder den här listan med filter tillsammans med de som klienten anger i URL: en. Den här kombinationen genererar ett [dynamiskt manifest](filters-dynamic-manifest-overview.md), som baseras på filter i de URL: er som du anger på en strömmande positionerare. Vi rekommenderar att du använder den här funktionen om du vill tillämpa filter men inte vill visa filter namnen i URL: en.
+Du kan ange en lista över till gångs-eller konto filter, som gäller för din strömmande positionerare. Den [dynamiska Paketeraren (slut punkt för direkt uppspelning)](encode-dynamic-packaging-concept.md) använder den här listan med filter tillsammans med de som klienten anger i URL: en. Den här kombinationen genererar ett [dynamiskt manifest](filters-dynamic-manifest-concept.md), som baseras på filter i de URL: er som du anger på en strömmande positionerare. Vi rekommenderar att du använder den här funktionen om du vill tillämpa filter men inte vill visa filter namnen i URL: en.
 
 Om du vill skapa och associera filter med en strömmande positionerare med hjälp av REST använder du [strömmande positionerare-skapa](/rest/api/media/streaminglocators/create) API och anger `properties.filters` i [begär ande texten](/rest/api/media/streaminglocators/create#request-body).
                                 

@@ -6,12 +6,12 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: f595766d49d6c00c313990717d8fd241ddfc8f81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb5021c0125c3140ef44a1ec3304b9d0ac40c30f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104593874"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060235"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Översikt över mappning av data flödes omvandling
 
@@ -42,3 +42,4 @@ Nedan visas en lista över de omvandlingar som stöds för närvarande i mappnin
 | [Union](data-flow-union.md) | Flera indata/utdata | Kombinera flera data strömmar lodrätt |
 | [Normalisera](data-flow-unpivot.md) | Schema modifierare | Pivotera kolumner i rad värden |
 | [Fönster](data-flow-window.md) | Schema modifierare |  Definiera Window-baserade agg regeringar för kolumner i dina data strömmar. |
+| [Parse](data-flow-parse.md) | Schema modifierare |  Parsa kolumn data till JSON eller avgränsad text |

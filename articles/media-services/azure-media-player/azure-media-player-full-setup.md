@@ -5,14 +5,14 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 04/05/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: e6ec59e3cb8d285652935b42493c820a7379eeb8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7c103a7eba2e5da7ac040b50fcc0009a0b7237b
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956085"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449876"
 ---
 # <a name="azure-media-player-full-setup"></a>Fullständig installation av Azure Media Player #
 
@@ -20,7 +20,7 @@ Azure Media Player är enkelt att konfigurera. Det tar bara en liten stund att f
 
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>Steg 1: inkludera JavaScript-och CSS-filerna i sidhuvudet på din sida ##
 
-Med Azure Media Player kan du komma åt skripten från den värdbaserade CDN-versionen. Vi rekommenderar ofta att du lägger till java script före taggen end Body `<body>` i stället för `<head>` , men Azure Meia Player innehåller en HTML5-Shiv, som måste finnas i huvudet för äldre IE-versioner för att det ska gå att följa video tag gen som ett giltigt element.
+Med Azure Media Player kan du komma åt skripten från den värdbaserade CDN-versionen. Vi rekommenderar ofta att du lägger till java script före taggen end Body `<body>` i stället för `<head>` , men Azure Media Player innehåller en HTML5-Shiv, som måste finnas i huvudet för äldre IE-versioner för att det ska gå att följa video tag gen som ett giltigt element.
 
 > [!NOTE]
 > Om du redan använder en HTML5-Shiv som [Modernizr](https://modernizr.com/) kan du ta med Azure Media Player Java Script var som helst. Se dock till att din version av Modernizr innehåller Shiv för video.
@@ -33,7 +33,7 @@ Med Azure Media Player kan du komma åt skripten från den värdbaserade CDN-ver
 ```
 
 > [!IMPORTANT]
-> Du bör **inte** använda `latest` versionen i produktion eftersom det kan komma att ändras på begäran. Ersätt `latest` med en version av Azure Media Player. Ersätt till exempel `latest` med `2.1.1` . Azure Media Player versioner kan frågas [härifrån.](azure-media-player-changelog.md)
+> Du bör **inte** använda `latest` versionen i produktion eftersom det kan komma att ändras på begäran. Ersätt `latest` med en version av Azure Media Player. Ersätt till exempel `latest` med `2.1.1` . Azure Media Player versioner kan frågas [härifrån.](https://amp.azure.net/libs/amp/latest/docs/changelog.html)
 
 > [!NOTE]
 > Sedan `1.2.0` versionen är inte längre nödvändig för att inkludera platsen för reserv teknikerna (den hämtar automatiskt platsen från den relativa sökvägen till azuremediaplayer.min.js-filen). Du kan ändra platsen för reserv teknikerna genom att lägga till följande skript i `<head>` efter ovanstående skript.

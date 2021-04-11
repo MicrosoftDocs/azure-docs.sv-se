@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 01/15/2021
 ms.author: alkohli
-ms.openlocfilehash: e459ea1e9d8d7d51a62ba3ed1d2de8815a1b4222
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: f166413507afb9aff814eaddaade099d2e34ae68
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105103964"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554626"
 ---
 Innan du kan distribuera virtuella datorer på din Azure Stack Edge-enhet måste du konfigurera klienten så att den ansluter till enheten via Azure Resource Manager över Azure PowerShell. Detaljerade anvisningar finns i [Anslut till Azure Resource Manager på Azure Stack Edge-enhet](../articles/databox-online/azure-stack-edge-gpu-connect-resource-manager.md).
 
@@ -23,9 +23,9 @@ Se till att du kan använda följande steg för att komma åt enheten från klie
 
 1. Om du vill anropa de lokala enhets-API: erna för autentisering anger du: 
 
-    `login-AzureRMAccount -EnvironmentName <Environment Name>`
+    `login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d`
 
-    Om du vill ansluta via Azure Resource Manager anger du användar namnet *EdgeARMuser* och lösen ordet.
+    Om du vill ansluta via Azure Resource Manager anger du användar namnet *EdgeArmUser* och lösen ordet.
 
 1. Om du har konfigurerat Compute för Kubernetes kan du hoppa över det här steget. Annars kontrollerar du att du har aktiverat ett nätverks gränssnitt för beräkning genom att göra följande: 
 

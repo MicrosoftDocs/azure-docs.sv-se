@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 8b549d868aed443e19d639ba6f6df7db20e014b1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 98b312066294f2c4ed7f9b089e0f8ea1a68fe4be
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612132"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059708"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Installera och etablera Azure IoT Edge for Linux på en Windows-enhet (förhandsversion)
 
@@ -44,8 +44,8 @@ I den här artikeln beskrivs stegen för att ställa in IoT Edge på en Windows-
   * Professional-, Enterprise-eller Server-versioner
   * Minsta lediga minne: 2 GB
   * Minsta lediga disk utrymme: 10 GB
-  * Om du skapar en ny distribution med Windows 10 kontrollerar du att du aktiverar Hyper-V. Mer information finns i så här [installerar du Hyper-V på Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v.md).
-  * Om du skapar en ny distribution med hjälp av Windows Server måste du kontrol lera att du har installerat Hyper-V-rollen. Mer information finns i så här [installerar du Hyper-V-rollen på Windows Server](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server.md).
+  * Om du skapar en ny distribution med Windows 10 kontrollerar du att du aktiverar Hyper-V. Mer information finns i så här [installerar du Hyper-V på Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
+  * Om du skapar en ny distribution med hjälp av Windows Server måste du kontrol lera att du har installerat Hyper-V-rollen. Mer information finns i så här [installerar du Hyper-V-rollen på Windows Server](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
   * Om du skapar en ny distribution med en virtuell dator kontrollerar du att du konfigurerar kapslad virtualisering på rätt sätt. Mer information finns i den [kapslade Virtualization](nested-virtualization.md) -guiden.
 
 * Åtkomst till Windows administrations Center med Azure IoT Edge tillägget för Windows administrations Center installerat:

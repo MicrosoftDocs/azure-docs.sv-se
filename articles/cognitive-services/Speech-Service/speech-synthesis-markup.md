@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e5a3459c0264d087759572bffc497430cdb69ac9
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 2c66a7e3bf9e417b47d08e50e21c08625e9d0549
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105966953"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210218"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Förbättra syntesen med SSML (Speech syntes Markup Language)
 
@@ -27,11 +27,9 @@ Tal tjänst implementeringen av SSML baseras på World Wide Web Consortiumens [t
 > [!IMPORTANT]
 > Kinesiska, japanska och koreanska tecken räknas som två tecken för fakturering. Mer information finns i [prissättning](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
-## <a name="standard-neural-and-custom-voices"></a>Standard, neurala och anpassade röster
+## <a name="neural-and-custom-voices"></a>Neurala och anpassade röster
 
-Välj mellan standard-och neurala röster eller skapa en egen anpassad röst som är unik för din produkt eller ditt varumärke. 75 + standard röster är tillgängliga på över 45 språk och nationella inställningar, och 5 neurala-röster är tillgängliga på fyra språk och nationella inställningar. En fullständig lista över språk som stöds, nationella inställningar och röster (neurala och standard) finns i [språk stöd](language-support.md).
-
-Mer information om standard-, neurala-och anpassade röster finns i [text till tal-översikt](text-to-speech.md).
+Använd en mänsklig neurala röst eller skapa en egen anpassad röst som är unik för din produkt eller ditt varumärke. En fullständig lista över språk som stöds, nationella inställningar och röster finns i [språk stöd](language-support.md). Läs mer om neurala och anpassade röster i [text till tal-översikt](text-to-speech.md).
 
 
 > [!NOTE]
@@ -194,12 +192,9 @@ speechConfig!.setPropertyTo(
 
 ## <a name="adjust-speaking-styles"></a>Ändra tal format
 
-> [!IMPORTANT]
-> Justeringen av tal format fungerar bara med neurala-röster.
+Som standard används text-till-tal-tjänsten för att syntetisera text med ett neutralt tal format för neurala-röster. Du kan ändra tal formatet till att uttrycka olika känslor, t. ex. cheerfulness, empati och lugn, eller optimera rösten för olika scenarier, t. ex. kund tjänst, newscasting och röst assistenten med hjälp av- `mstts:express-as` elementet. Detta är ett valfritt element som är unikt för tal tjänsten.
 
-Som standard används text-till-tal-tjänsten för att syntetisera text med ett neutralt tal format för både standard-och neurala-röster. Med neurala-röster kan du ändra tal formatet till Express olika känslor som cheerfulness, empati och lugn, eller optimera rösten för olika scenarier, t. ex. kund tjänst, newscasting och röst assistent, med hjälp av- `mstts:express-as` elementet. Detta är ett valfritt element som är unikt för tal tjänsten.
-
-För närvarande stöds anpassning av format justeringar för dessa neurala-röster:
+För närvarande stöds anpassning av format justeringar för följande neurala-röster:
 * `en-US-AriaNeural`
 * `en-US-JennyNeural`
 * `en-US-GuyNeural`
@@ -215,11 +210,11 @@ För närvarande stöds anpassning av format justeringar för dessa neurala-rös
 
 Du kan ändra utseendet på tal formatet så att det bättre passar ditt användnings fall. Du kan ange ett starkare eller mjukare format med `styledegree` om du vill göra talet mer lättfattliga programspecifika eller subdued. För närvarande stöds anpassning av format justeringar för neurala-röster på kinesiska (mandariner, förenklad).
 
-Förutom att justera tal formaten och format graderna kan du också justera `role` parametern så att rösten imiterar en annan ålder och kön. Till exempel kan en hane-röst öka bredden och ändra intonation till imitera en kvinna röst, men röst namnet kommer inte att ändras. För närvarande stöds roll uppspelnings justeringar för dessa kinesiska (mandariner, förenklade) neurala-röster:
+Förutom att justera tal formaten och format graderna kan du också justera `role` parametern så att rösten imiterar en annan ålder och kön. Till exempel kan en hane-röst öka bredden och ändra intonation till imitera en kvinna röst, men röst namnet kommer inte att ändras. För närvarande stöds roll justeringar för dessa kinesiska (mandariner, förenklade) neurala-röster:
 * `zh-CN-XiaomoNeural`
 * `zh-CN-XiaoxuanNeural`
 
-Ovanstående ändringar tillämpas på menings nivå, och format och roll-spelar varierar med röst. Om en stil eller roll-uppspelning inte stöds returnerar tjänsten tal på det neutrala standard sättet. Du kan se vilka formatmallar och roll uppspelningar som stöds för varje röst via [röst listans API](rest-text-to-speech.md#get-a-list-of-voices) eller genom att använda en kod fri plattform för att [skapa ljud innehåll](https://aka.ms/audiocontentcreation) .
+Ovanstående ändringar tillämpas på menings nivå, och format och roll-spelar varierar med röst. Om en stil eller roll-uppspelning inte stöds returnerar tjänsten tal på det neutrala standard sättet. Du kan se vilka formatmallar och roller som stöds för varje röst via [röst listans API](rest-text-to-speech.md#get-a-list-of-voices) eller genom att använda en kod fri plattform för att [skapa ljud innehåll](https://aka.ms/audiocontentcreation) .
 
 **Syntax**
 
@@ -631,7 +626,7 @@ I exemplet ovan använder vi det internationella fonetiska alfabetet, även kall
 
 Med tanke på att IPA inte är lätt att komma ihåg definierar tal tjänsten en fonetisk uppsättning för sju språk ( `en-US` ,,,,, `fr-FR` `de-DE` `es-ES` `ja-JP` `zh-CN` och `zh-TW` ).
 
-Du kan använda `sapi` as-Vale för `alphabet` attributet med anpassade lexikon som visas nedan:
+Du kan använda `sapi` as-värdet för `alphabet` attributet med anpassade lexikon som visas nedan:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -717,7 +712,7 @@ Du kan ändra bredden på standard-röster på ord-eller menings nivå. Föränd
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Guy24kRUS">
+    <voice name="en-US-AriaNeural">
         Welcome to <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody>
     </voice>
 </speak>

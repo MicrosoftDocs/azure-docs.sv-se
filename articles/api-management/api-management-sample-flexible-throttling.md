@@ -1,5 +1,5 @@
 ---
-title: Avancerad begränsning av begäranden med Azure API Management
+title: Avancerad begränsning av förfrågningar med Azure API Management
 description: Lär dig hur du skapar och tillämpar flexibla kvot-och hastighets begränsnings principer med Azure API Management.
 services: api-management
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 36b21196207f65975dae950f43ec0c7094991dad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f91ed2238a7a23b967cd3e3556c8ade88af0044
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100362037"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449740"
 ---
-# <a name="advanced-request-throttling-with-azure-api-management"></a>Avancerad begränsning av begäranden med Azure API Management
+# <a name="advanced-request-throttling-with-azure-api-management"></a>Avancerad begränsning av förfrågningar med Azure API Management
 Att kunna begränsa inkommande begär Anden är en viktig roll i Azure API Management. Antingen genom att kontrol lera antalet begär Anden eller de totala begär Anden/data som överförs, tillåter API Management att API-providers skyddar sina API: er från missbruk och skapar värden för olika API-produktsortiment.
 
 ## <a name="rate-limits-and-quotas"></a>Hastighets begränsningar och kvoter
@@ -91,7 +91,7 @@ När begränsnings nyckeln definieras med ett [princip uttryck](./api-management
 Detta gör det möjligt för utvecklarens klient program att välja hur du vill skapa en hastighets begränsnings nyckel. Klient utvecklarna kan skapa sina egna pris nivåer genom att allokera uppsättningar nycklar till användare och rotera nyckel användningen.
 
 ## <a name="summary"></a>Sammanfattning
-Azure API Management ger pris-och offert begränsning till både skydda och lägga till värde i din API-tjänst. Med de nya begränsnings principerna med anpassade omfångs regler kan du få bättre kontroll över principerna så att kunderna kan skapa ännu bättre program. I exemplen i den här artikeln demonstreras användningen av dessa nya principer med hjälp av tillverknings frekvens begränsar nycklar med klientens IP-adresser, användar identitet och klienter som genererar värden. Det finns dock många andra delar av meddelandet som kan användas, till exempel användar agent, fragment för URL-sökvägar, meddelande storlek.
+Azure API Management tillhandahåller hastighets-och kvot begränsningar både för att skydda och lägga till värden i din API-tjänst. Med de nya begränsnings principerna med anpassade omfångs regler kan du få bättre kontroll över principerna så att kunderna kan skapa ännu bättre program. I exemplen i den här artikeln demonstreras användningen av dessa nya principer med hjälp av tillverknings frekvens begränsar nycklar med klientens IP-adresser, användar identitet och klienter som genererar värden. Det finns dock många andra delar av meddelandet som kan användas, till exempel användar agent, fragment för URL-sökvägar, meddelande storlek.
 
 ## <a name="next-steps"></a>Nästa steg
 Ge oss din feedback som ett GitHub-problem för det här ämnet. Det skulle vara bra att höra om andra potentiella nyckel värden som har varit ett logiskt val i dina scenarier.
