@@ -3,12 +3,12 @@ title: Versions anteckningar för Application Insights | Microsoft Docs
 description: Lägg till distribution eller skapa markörer i dina Metrics Explorer-diagram i Application Insights.
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: 776efd56aaa523d1c2621c51cba0446a42bb7411
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9132e65e4705fd9125d97a5e095fe5f0850229a2
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461920"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011058"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Anteckningar på mått diagram i Application Insights
 
@@ -96,7 +96,10 @@ Om du vill aktivera anteckningar i din arbets bok går du till **Avancerade inst
 Välj en antecknings markör för att öppna information om versionen, inklusive begär Ande, käll kontroll gren, versions pipeline och miljö.
 
 ## <a name="create-custom-annotations-from-powershell"></a>Skapa anpassade anteckningar från PowerShell
-Du kan använda CreateReleaseAnnotation PowerShell-skriptet från GitHub för att skapa anteckningar från vilken process som helst, utan att använda Azure DevOps.
+Du kan använda CreateReleaseAnnotation PowerShell-skriptet för att skapa anteckningar från vilken process som helst, utan att använda Azure DevOps.
+
+> [!IMPORTANT]
+> Om du använder PowerShell 7,1 lägger du till `-SkipHttpErrorCheck` i slutet av rad 26. Exempel: `$request = Invoke-WebRequest -Uri $fwLink -MaximumRedirection 0 -UseBasicParsing -ErrorAction Ignore -SkipHttpErrorCheck`.
 
 1. Gör en lokal kopia av CreateReleaseAnnotation.ps1:
 
@@ -256,8 +259,8 @@ Du kan använda CreateReleaseAnnotation PowerShell-skriptet från GitHub för at
 
 Du kan ändra skriptet, till exempel för att skapa kommentarer som redan har infallit.
 
+
 ## <a name="next-steps"></a>Nästa steg
 
 * [Skapa arbetsuppgifter](./diagnostic-search.md#create-work-item)
 * [Automatisering med PowerShell](./powershell.md)
-

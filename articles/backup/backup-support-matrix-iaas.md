@@ -4,12 +4,12 @@ description: Innehåller en översikt över support inställningar och begränsn
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 82de73944bd833ec5f921e07a29960ac6d175f8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a0150a4c1a8fbd756de6fc16142f0115b05098ed
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "102609795"
+ms.locfileid: "105967837"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Supportmatris för säkerhetskopiering av virtuella Azure-datorer
 
@@ -153,6 +153,7 @@ Säkerhets kopiering av virtuella Azure-datorer med lås | Stöds inte för ohan
 [Virtuella Spot-datorer](../virtual-machines/spot-vms.md) | Som inte stöds. Azure Backup återställer virtuella datorer på plats som vanliga virtuella Azure-datorer.
 [Dedikerad Azure-värd](../virtual-machines/dedicated-hosts.md) | Stöds
 Windows Storage Spaces-konfiguration för fristående virtuella Azure-datorer | Stöds
+[Azure-VM Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md#scale-sets-with-flexible-orchestration) | Stöds för både enhetliga och flexibla Orchestration-modeller för att säkerhetskopiera och återställa en enskild virtuell Azure-dator.
 
 ## <a name="vm-storage-support"></a>Stöd för VM-lagring
 

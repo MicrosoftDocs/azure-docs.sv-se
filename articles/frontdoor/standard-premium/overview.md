@@ -8,12 +8,12 @@ ms.topic: overview
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 574340825567dcd512a5da1b311c57fe12954e34
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5c3ae5c7b1c45d170548f6fa00481094117e1737
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030553"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937370"
 ---
 # <a name="what-is-azure-front-door-standardpremium-preview"></a>Vad är Azures främre dörr standard/Premium (för hands version)?
 
@@ -28,7 +28,7 @@ Med Azures front dörr standard/Premium kan du omvandla dina globala konsument-o
 
 Azures främre dörr standard/Premium fungerar på Layer 7 (HTTP/HTTPS-skiktet) med anycast-protokoll med delad TCP och Microsofts globala nätverk för att förbättra den globala anslutningen. Baserat på din anpassade routningsmetod med regel uppsättning kan du se till att Azure-frontend dirigerar klient begär anden till det snabbaste och mest tillgängliga ursprunget. Ett programs ursprung är en Internet-riktad tjänst som finns i eller utanför Azure. Azures front dörr standard/Premium tillhandahåller en mängd olika metoder för trafik hantering och alternativ för hälso övervakning av ursprung för att passa olika program behov och automatiska failover-scenarier. På samma sätt som Traffic Manager är front dörren elastisk till problem, inklusive problem med en hel Azure-region.
 
-Azures front dörr skyddar också din app på kanterna med integrerade brand Väggs skydd för webb program, bot-skydd och inbyggd att placera 3/Layer 4-DDoS-skydd (distributed denial of Service). Det skyddar också dina privata backend-ändar med tjänsten Private Link. Azures front dörr ger dig Microsofts bästa säkerhet i global skala.  
+Azures front dörr skyddar också din app på kanterna med integrerat webb programs brand Väggs skydd, bot-skydd och inbyggt skikt 3/skikt 4 distribuerat denial of service (DDoS)-skydd. Det skyddar också dina privata backend-ändar med tjänsten Private Link. Azures front dörr ger dig Microsofts bästa säkerhet i global skala.  
 
 >[!NOTE]
 > Med Azure har du tillgång till en uppsättning fullständigt hanterade belastningsutjämningslösningar för dina scenarier.

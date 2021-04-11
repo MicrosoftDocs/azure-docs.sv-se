@@ -1,18 +1,18 @@
 ---
 title: Fel sökning av Defender IoT Micro-agent (för hands version)
 description: Lär dig hur du hanterar oväntade eller oförutsedda fel.
-ms.date: 1/24/2021
+ms.date: 4/5/2021
 ms.topic: reference
-ms.openlocfilehash: 51550a4d3e5042fed7cadc4eac10a0074e954f19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d52c4093c01d7e449c68b1c8143249b51f7061a
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782460"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011427"
 ---
 # <a name="defender-iot-micro-agent-troubleshooting-preview"></a>Fel sökning av Defender IoT Micro-agent (för hands version)
 
-I händelse av oväntade eller oförutsedda fel kan du försöka lösa problemen med följande fel söknings metoder. Du kan också kontakta produkt teamet för Azure Defender för IoT om du behöver hjälp.   
+Om ett oväntat fel inträffar kan du använda de här fel söknings metoderna i ett försök att lösa problemet. Du kan också kontakta produkt teamet för Azure Defender för IoT om du behöver hjälp.   
 
 ## <a name="service-status"></a>Tjänststatus 
 
@@ -34,9 +34,9 @@ Om tjänsten är listad som `inactive` använder du följande kommando för att 
 systemctl start defender-iot-micro-agent.service 
 ```
 
-Du vet att tjänsten kraschar om process drift tiden är för kort. För att lösa det här problemet måste du granska loggarna.
+Du vet att tjänsten kraschar om process drift tiden är mindre än två minuter. För att lösa det här problemet måste du [Granska loggarna](#review-the-logs).
 
-## <a name="review-logs"></a>Granska loggar 
+## <a name="validate-micro-agent-root-privileges"></a>Verifiera rot privilegier för Micro agent
 
 Använd följande kommando för att kontrol lera att tjänsten Defender IoT Micro Agent körs med rot privilegier.
 
@@ -45,12 +45,25 @@ ps -aux | grep " defender-iot-micro-agent"
 ```
 
 :::image type="content" source="media/troubleshooting/root-privileges.png" alt-text="Kontrol lera att tjänsten Defender för IoT Micro Agent körs med rot privilegier.":::
+## <a name="review-the-logs"></a>Granska loggarna 
 
-Använd följande kommando för att visa loggarna:  
+Använd följande kommando för att granska loggarna:  
 
 ```azurecli
 sudo journalctl -u defender-iot-micro-agent | tail -n 200 
 ```
+
+### <a name="quick-log-review"></a>Snabb loggs granskning
+
+Om det uppstår ett problem när Micro-agenten körs kan du köra Micro-agenten i ett tillfälligt tillstånd, vilket gör att du kan visa loggarna med följande kommando:
+
+```azurecli
+sudo systectl stop defender-iot-micro-agent
+cd /var/defender_iot_micro_agent/
+sudo ./defender_iot_micro_agent
+```
+
+## <a name="restart-the-service"></a>Starta om tjänsten
 
 Om du vill starta om tjänsten använder du följande kommando: 
 

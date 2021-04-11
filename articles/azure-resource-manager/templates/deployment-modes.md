@@ -4,10 +4,10 @@ description: Beskriver hur du anger om du vill använda ett fullständigt eller 
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.openlocfilehash: 3f1f74c0495e0d43671712281a35a7e74fd7d821
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104888846"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Distributionslägen för Azure Resource Manager

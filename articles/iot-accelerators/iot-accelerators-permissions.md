@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 5a088cb07fa74b65e497de54be8c97bd51d31c16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3c9296a909ba23ee8a3475149911af629a01b1a
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97387844"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167472"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Använd azureiotsolutions.com-webbplatsen för att distribuera din lösnings Accelerator
 
@@ -54,7 +54,7 @@ Mer information om användare och roller i Azure AD finns i följande resurser:
 
 ## <a name="choose-your-device"></a>Välj din enhet
 
-AzureIoTSolutions.com-platsen länkar till [Azure-certifierad för IoT-katalogen](https://catalog.azureiotsolutions.com/).
+AzureIoTSolutions.com-platsen länkar till [Azure-certifierad för IoT-katalogen](https://devicecatalog.azure.com/).
 
 Katalogen innehåller hundratals certifierade enheter för IoT-maskinvara som du kan ansluta till dina lösnings acceleratorer för att börja bygga din IoT-lösning.
 

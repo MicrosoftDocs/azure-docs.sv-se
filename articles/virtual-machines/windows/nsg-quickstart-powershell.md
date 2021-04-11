@@ -10,10 +10,10 @@ ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 8390b5c779e6aa053e1af2754c436dd51e410b06
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102550424"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-using-powershell"></a>Så här öppnar du portar och slut punkter till en virtuell dator med hjälp av PowerShell

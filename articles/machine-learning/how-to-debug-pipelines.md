@@ -11,10 +11,10 @@ ms.date: 10/22/2020
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
 ms.openlocfilehash: 195942d1787cdef51ee480fa5c5595db99bc7c78
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102522095"
 ---
 # <a name="troubleshooting-machine-learning-pipelines"></a>Felsöka maskin inlärnings pipeliner
@@ -27,8 +27,8 @@ Följande tabell innehåller vanliga problem under utveckling av pipeline, med m
 
 | Problem | Möjlig lösning |
 |--|--|
-| Det gick inte att skicka data till `PipelineData` katalogen | Se till att du har skapat en katalog i skriptet som motsvarar var din pipeline förväntar dig utdata från steget. I de flesta fall definierar ett indataargument utdata-katalogen och du skapar katalogen explicit. Använd `os.makedirs(args.output_dir, exist_ok=True)` för att skapa utdatakatalogen. Se [självstudien](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) för ett bedömnings skript exempel som visar det här design mönstret. |
-| Beroende buggar | Om du ser beroende fel i din fjärrpipeline som inte uppnåddes vid en lokal testning, bekräftar du beroenden för fjärrmiljön och versioner som matchar dem i din test miljö. (Se [miljö utveckling, cachelagring och åter användning](./concept-environments.md#environment-building-caching-and-reuse)|
+| Det gick inte att skicka data till `PipelineData` katalogen | Se till att du har skapat en katalog i skriptet som motsvarar var din pipeline förväntar sig stegutdata. I de flesta fall definierar ett indataargument utdatakatalogen, och sedan skapar du katalogen explicit. Använd `os.makedirs(args.output_dir, exist_ok=True)` för att skapa utdatakatalogen. Se [självstudien](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) för ett bedömnings skript exempel som visar det här design mönstret. |
+| Beroendebuggar | Om du ser beroendefel i din fjärrpipeline som inte skedde vid en lokal testning bekräftar du att fjärrmiljöns beroenden och versioner matchar dem som finns i din testmiljö. (Se [miljö utveckling, cachelagring och åter användning](./concept-environments.md#environment-building-caching-and-reuse)|
 | Tvetydiga fel med beräknings mål | Försök att ta bort och återskapa Compute-mål. Det går snabbt och kan lösa vissa tillfälliga problem genom att återskapa beräknings mål. |
 | Pipeline återanvändar inte steg | Steg åter användning är aktiverat som standard, men se till att du inte har inaktiverat det i ett steg i pipeline. Om åter användning är inaktive rad `allow_reuse` kommer parametern i steget att ställas in på `False` . |
 | Pipelinen körs inte nödvändigt vis | Om du vill se till att stegen bara körs igen när deras underliggande data eller skript ändras, kan du koppla från dina käll kods kataloger för varje steg. Om du använder samma käll katalog för flera steg kan du få onödig omkörning. Använd `source_directory` parametern i ett pipeline-steg-objekt för att peka på den isolerade katalogen för det steget och se till att du inte använder samma `source_directory` sökväg för flera steg. |

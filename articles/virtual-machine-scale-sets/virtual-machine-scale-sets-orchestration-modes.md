@@ -5,16 +5,15 @@ author: fitzgeraldsteele
 ms.author: fisteele
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: cc862759ce28c4d23dbc2197f63311e29ba82709
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 316f97480dfe7ee6481ef88faf265051a92024da
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104607511"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937268"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>För hands version: Orchestration-lägen för skalnings uppsättningar för virtuella datorer i Azure 
 
@@ -102,11 +101,11 @@ I följande tabell jämförs det flexibla Orchestration-läget, ett enhetligt Or
 |         Typ av virtuell dator  | Standard Azure IaaS VM (Microsoft. Compute/virtualmachines)  | Skalnings uppsättning för vissa virtuella datorer (Microsoft. Compute/virtualmachinescalesets/virtualmachines)  | Standard Azure IaaS VM (Microsoft. Compute/virtualmachines)  |
 |         SKU: er som stöds  |            D-serien, E-serien, F-serien, A-serien, B-serien, Intel, AMD  |            Alla SKU: er  |            Alla SKU: er  |
 |         Tillgänglighetszoner  |            Du kan också ange alla instanser i en enda tillgänglighets zon |            Ange instanser i 1, 2 eller 3 tillgänglighets zoner  |            Stöds inte  |
-|         Fullständig kontroll över virtuell dator, nätverkskort, diskar  |            Yes  |            Begränsad kontroll med Virtual Machine Scale Sets VM-API  |            Yes  |
+|         Fullständig kontroll över virtuell dator, nätverkskort, diskar  |            Ja  |            Begränsad kontroll med Virtual Machine Scale Sets VM-API  |            Ja  |
 |         Automatisk skalning  |            Inga  |            Ja  |            Inga  |
 |         Tilldela en virtuell dator till en angiven fel domän  |            Ja  |             Inga   |            Inga  |
 |         Ta bort nätverkskort och diskar när du tar bort VM-instanser  |            Inga  |            Ja  |            Inga  |
-|         Uppgraderings princip (VM Scale set) |            No  |            Automatisk, rullande, manuell  |            Ej tillämpligt  |
+|         Uppgraderings princip (VM Scale set) |            Inga  |            Automatisk, rullande, manuell  |            Ej tillämpligt  |
 |         Automatiska OS-uppdateringar (VM Scale set) |            Inga  |            Ja  |            Ej tillämpligt  |
 |         I säkerhets korrigering av gäst  |            Ja  |            Inga  |            Ja  |
 |         Avsluta meddelanden (VM Scale set) |            Inga  |            Ja  |            Ej tillämpligt  |
@@ -115,8 +114,8 @@ I följande tabell jämförs det flexibla Orchestration-läget, ett enhetligt Or
 |         Punkt instanser och priser   |            Ja, du kan ha både plats-och prioritets instanser  |            Ja, instanserna måste antingen vara hela eller vanliga  |            Nej, endast antal instanser med normal prioritet  |
 |         Blanda operativ system  |            Ja, Linux och Windows kan finnas i samma flexibla skalnings uppsättning |            Nej, instanserna är samma operativ system  |               Ja, Linux och Windows kan finnas i samma flexibla skalnings uppsättning |
 |         Övervaka program hälsa  |            Program hälso tillägg  |            Avsökning av program hälso tillägg eller Azure Load Balancer  |            Program hälso tillägg  |
-|         UltraSSD diskar   |            Yes  |            Ja, endast för zonindelade-distributioner  |            No  |
-|         InfiniBand   |            No  |            Ja, endast en placerings grupp  |            Yes  |
+|         UltraSSD diskar   |            Ja  |            Ja, endast för zonindelade-distributioner  |            Inga  |
+|         InfiniBand   |            Inga  |            Ja, endast en placerings grupp  |            Ja  |
 |         Skrivningsaccelerator   |            Inga  |            Ja  |            Ja  |
 |         Placerings grupper för närhet   |            Ja  |            Ja  |            Ja  |
 |         Dedikerade Azure-värdar   |            Inga  |            Ja  |            Ja  |

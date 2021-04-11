@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: aabe246c343537a42c33d3eaad0bfae3989022fe
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105604523"
 ---
 # <a name="show-traffic-data-on-the-map-android-sdk"></a>Visa trafik data på kartan (Android SDK)
@@ -31,7 +31,7 @@ Det finns två typer av trafik data tillgängliga i Azure Maps:
 - Incident data – består av punkt-och linjebaserade data för sådant som konstruktion, väg stängningar och olyckor.
 - Flow-data – innehåller mått för trafik flödet på vägarna. Ofta används trafikflödes data för att färga vägarna. Färgerna baseras på hur mycket trafik som saktar ned flödet, i förhållande till hastighets gränsen eller något annat mått. Det finns fyra värden som kan överföras till `flow` kartans trafik alternativ.
 
-    |Flödes värde | Description|
+    |Flödes värde | Beskrivning|
     | :-- | :-- |
     | TrafficFlow. NONE | Visar inte trafik data på kartan |
     | TrafficFlow. relativ | Visar trafik data som är relativa till vägens fria flödes hastighet |

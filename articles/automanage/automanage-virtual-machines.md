@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 1d3b2174df5dd83852ce120ec6693ae187a3e795
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 973bd1ac121513a297574bbb37d1663b5a18c345
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643532"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276917"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage för virtuella datorer
 
@@ -70,6 +70,8 @@ Om du aktiverar automanage med ett nytt konto för autohantering:
 Om du aktiverar automanage med ett befintligt konto för autohantering:
 * **Deltagar** rollen i resurs gruppen som innehåller dina virtuella datorer
 
+Kontot för att hantera automatiskt beviljas **bidrags** deltagare och behörigheter för **resurs principer** för att utföra åtgärder på autohanterade datorer.
+
 > [!NOTE]
 > Om du vill använda automanage på en virtuell dator som är ansluten till en arbets yta i en annan prenumeration måste du ha de behörigheter som beskrivs ovan för varje prenumeration.
 
@@ -94,6 +96,19 @@ Om det är första gången du aktiverar automatisk hantering för din virtuella 
 
 Den enda tid som du kan behöva interagera med den här virtuella datorn för att hantera dessa tjänster är i händelse av att vi försökte åtgärda den virtuella datorn, men det gick inte att göra det. Om vi har åtgärdat den virtuella datorn kommer vi att se till att de är kompatibla igen utan att du varnar dig. Mer information finns i [status för virtuella datorer](#status-of-vms).
 
+## <a name="enabling-automanage-for-vms-using-azure-policy"></a>Aktivera automanage för virtuella datorer med hjälp av Azure Policy
+Du kan också aktivera autohantering på virtuella datorer i skala med hjälp av den inbyggda Azure Policy. Principen har en DeployIfNotExists-påverkan, vilket innebär att alla kvalificerade virtuella datorer som finns inom omfånget för principen registreras automatiskt för att hantera bästa metoder för virtuella datorer.
+
+En direkt länk till principen finns [här](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F270610db-8c04-438a-a739-e8e6745b22d3).
+
+### <a name="how-to-apply-the-policy"></a>Tillämpa principen
+1. Klicka på knappen **tilldela** när du visar princip definitionen
+1. Välj den omfattning som du vill tillämpa principen på (kan vara hanterings grupp, prenumeration eller resurs grupp)
+1. Under **parametrar** anger du parametrar för kontot för automatisk hantering av konton, konfigurations profil och effekter (resultatet bör vanligt vis vara DeployIfNotExists)
+    1. Om du inte har ett konto för automatiskt hantering måste du [skapa ett](#create-an-automanage-account).
+1. Under **reparation** markerar du kryss rutan "Klicka på en reparations uppgift". Detta utför onboarding för att hantera automatiskt.
+1. Klicka på **Granska + skapa** och kontrol lera att alla inställningar ser lämpliga ut.
+1. Klicka på **Skapa**.
 
 ## <a name="environment-configuration"></a>Miljökonfiguration
 
@@ -142,6 +157,43 @@ Om du aktiverar automanage med ett befintligt konto för autohantering måste du
 > [!NOTE]
 > När du inaktiverar metoder för autohantering av den här funktionen, bevaras automatiskt hantera kontots behörigheter för alla associerade prenumerationer. Ta bort behörigheterna manuellt genom att gå till prenumerationens IAM-sida eller ta bort det automatiska hanterings kontot. Det går inte att ta bort det automatiska hanterings kontot om det fortfarande hanterar datorer.
 
+### <a name="create-an-automanage-account"></a>Skapa ett konto för autohantering
+Du kan skapa ett konto för autohantering med hjälp av portalen eller med en ARM-mall.
+
+#### <a name="portal"></a>Portal
+1. Navigera till bladet **Hantera automatiska inställningar** i portalen
+1. Klicka på **Aktivera på befintlig dator**
+1. Under **Avancerat** klickar du på "skapa ett nytt konto"
+1. Fyll i de obligatoriska fälten och klicka på **skapa**
+
+#### <a name="arm-template"></a>ARM-mall
+Spara följande ARM-mall som `azuredeploy.json` och kör följande kommando: `az deployment group create --resource-group <resource group name> --template-file azuredeploy.json`
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "automanageAccountName": {
+            "type": "String"
+        },
+        "location": {
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2020-06-30-preview",
+            "type": "Microsoft.Automanage/accounts",
+            "name": "[parameters('automanageAccountName')]",
+            "location": "[parameters('location')]",
+            "identity": {
+                "type": "SystemAssigned"
+            }
+        }
+    ]
+}
+```
 
 ## <a name="status-of-vms"></a>Status för virtuella datorer
 

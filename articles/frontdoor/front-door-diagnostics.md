@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: 58db217ca173acbe0356596de916216c4ab7f241
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a972123604cafbfc4c6753c1fe3ad21147b53b2d
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715555"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550667"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Övervaka mått och loggar i Azures front dörr
 
@@ -29,7 +29,7 @@ Genom att använda Azures front dörr kan du övervaka resurser på följande s�
 
 Mått är en funktion för vissa Azure-resurser som gör att du kan visa prestanda räknare i portalen. Följande är tillgängliga mått på front dörren:
 
-| Metric | Mått visnings namn | Enhet | Dimensioner | Beskrivning |
+| Metric | Mått visnings namn | Enhet | Dimensioner | Description |
 | --- | --- | --- | --- | --- |
 | RequestCount | Antal begäranden | Antal | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Antalet klient förfrågningar som hanteras av frontend-dörren.  |
 | RequestSize | Begär ande storlek | Byte | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Antalet byte som har skickats som begär Anden från klienter till front dörren. |
@@ -71,7 +71,7 @@ Så här konfigurerar du diagnostikloggar för din frontend-dörr:
 
 3. Välj **Aktivera diagnostik**. Arkivera diagnostikloggar tillsammans med mått till ett lagrings konto, strömma dem till en händelsehubben eller skicka dem till Azure Monitor loggar.
 
-Front dörren innehåller för närvarande diagnostikloggar (batch-varje timme). Diagnostikloggar tillhandahåller enskilda API-begäranden med varje post med följande schema:
+Front dörren innehåller för närvarande diagnostikloggar. Diagnostikloggar tillhandahåller enskilda API-begäranden med varje post med följande schema:
 
 | Egenskap  | Beskrivning |
 | ------------- | ------------- |

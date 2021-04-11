@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8cae19bd07e1cc87a0aaa25e47cf5f431d566ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5134c0eeaf3ebd1467b35cf825aa64bd1b445bd5
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653821"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010587"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planera och distribuera lokala Azure Active Directory lösen ords skydd
 
@@ -88,7 +88,7 @@ Följande grundläggande krav gäller:
 * Key Distribution Service måste vara aktive rad på alla domänkontrollanter i domänen som kör Windows Server 2012 och senare versioner. Som standard är den här tjänsten aktive rad via manuell utlösare start.
 
 * Nätverks anslutningen måste finnas mellan minst en domänkontrollant i varje domän och minst en server som är värd för proxy tjänsten för lösen ords skydd i Azure AD. Den här anslutningen måste tillåta att domänkontrollanten får åtkomst till RPC Endpoint Mapper port 135 och RPC-serverport på proxyservern.
-    * Som standard är RPC-Server porten en dynamisk RPC-port, men den kan konfigureras att [använda en statisk port](#static).
+    * Som standard är RPC-Server porten en dynamisk RPC-port från intervallet (49152-65535), men den kan konfigureras för att [använda en statisk port](#static).
 * Alla datorer där Azure AD Password Protection-proxytjänsten ska installeras måste ha nätverks åtkomst till följande slut punkter:
 
     |**Slutpunkt**|**Syfte**|
