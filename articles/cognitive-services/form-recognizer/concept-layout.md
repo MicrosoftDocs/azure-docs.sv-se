@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 73bef21f430bde1c6c2c95d7c3f685cccbbd9179
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc19d5652f416657cbcd339de61379265587b4e7
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467025"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505390"
 ---
 # <a name="form-recognizer-layout-service"></a>Formulär tolkens layout-tjänst
 
-Azure formulär tolken kan extrahera text, tabeller, markerings märken och struktur information från dokument med hjälp av dess layout-tjänst. Layout-API: et gör det möjligt för kunderna att ta dokument i en rad olika format och returnera strukturerade data representationer av dokumenten. Den kombinerar vår kraftfulla [OCR-kapacitet (optisk tecken läsning)](../computer-vision/concept-recognizing-text.md) med djup inlärnings modeller för att extrahera text, tabeller, markerings märken och dokument strukturer. 
+Azure formulär tolken kan extrahera text, tabeller, markerings märken och struktur information från dokument med hjälp av dess layout-tjänst. Layout-API: et gör det möjligt för kunderna att ta dokument i en rad olika format och returnera strukturerade data representationer av dokumenten. Den kombinerar vår kraftfulla [OCR-kapacitet (optisk tecken läsning)](../computer-vision/overview-ocr.md) med djup inlärnings modeller för att extrahera text, tabeller, markerings märken och dokument strukturer. 
 
 ## <a name="what-does-the-layout-service-do"></a>Vad gör layout tjänsten?
 
@@ -32,7 +32,7 @@ Layout-API: et extraherar text, tabeller, markerings märken och struktur inform
 Om du vill testa layouten för formulär tolken går du till verktyget online-exempel UI:
 
 > [!div class="nextstepaction"]
-> [Formulär för OCR-testverktyg (FOTT)](https://fott-preview.azurewebsites.net)
+> [Testa formulär tolken](https://fott-preview.azurewebsites.net)
 
 Du behöver en Azure-prenumeration ([skapa en kostnads fri](https://azure.microsoft.com/free/cognitive-services)) och en resurs slut punkt för [formulär igenkänning](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) och en nyckel för att testa formulär tolkens layout-API. 
 
@@ -48,7 +48,7 @@ Anropa först åtgärden [analysera layout](https://westcentralus.dev.cognitive.
 
 |Svars huvud| Resultat-URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/layout/analyzeResults/44a436324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/layout/analyzeResults/44a436324-fc4b-4387-aa06-090cfbf0064f` |
 
 ### <a name="natural-reading-order-output-latin-only"></a>Naturlig Läs ordning för utdata (endast latinsk)
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2d942099d0abbdfc4ddfa0276184500166250728
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4ed0f075aad09b77a0c50682bad92522f4e5472
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103014969"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280283"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Infoga annonser på klient Sidan
 
@@ -590,7 +590,7 @@ I det här exemplet används VmapSchedulerPlugin för att schemalägga annonser 
 ```
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>Implementera en iOS-videospelare med stöd för AD
-Microsoft Media Platform: Player Framework för iOS innehåller en samling exempel program som visar hur du implementerar ett Videos pelar program med hjälp av ramverket. Du kan ladda ned Player Framework och exemplen från [Azure Media Player Framework](https://github.com/CloudMetal/azure-media-player-framework). Sidan GitHub innehåller en länk till en wiki som innehåller ytterligare information om Player-ramverket och en introduktion till Player-exemplet: [Azure Media Player wiki](https://github.com/CloudMetal/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
+Microsoft Media Platform: Player Framework för iOS innehåller en samling exempel program som visar hur du implementerar ett Videos pelar program med hjälp av ramverket. Du kan ladda ned Player Framework och exemplen från [Azure Media Player Framework](https://github.com/CloudMetal/azure-media-player-framework). Sidan GitHub innehåller en länk till en wiki som innehåller ytterligare information om Player-ramverket och en introduktion till Player-exemplet: [Azure Media Player wiki](https://github.com/CloudMetal/azure-media-player-framework/wiki/How-to-player-use-azure-media-player-how-to-framework).
 
 ### <a name="scheduling-ads-with-vmap"></a>Schemalägga annonser med VMAP
 I följande exempel visas hur du schemalägger annonser med hjälp av en VMAP-fil.

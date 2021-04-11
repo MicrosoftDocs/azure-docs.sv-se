@@ -3,16 +3,16 @@ title: Konfigurera Google-autentisering
 description: Lär dig hur du konfigurerar Google-autentisering som identitets leverantör för din App Service-eller Azure Functions-app.
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
 ms.topic: article
-ms.date: 09/02/2019
+ms.date: 03/29/2021
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: e8a9fbe6072f3628d755ad3ad5aa5a623fc3ab23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6bec32fa928e840569ed95c35a056db91ea9737
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80519946"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078000"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>Konfigurera din App Service-eller Azure Functions-app för att använda Google-inloggning
 
@@ -34,21 +34,20 @@ För att slutföra proceduren i det här avsnittet måste du ha ett Google-konto
 
 ## <a name="add-google-information-to-your-application"></a><a name="secrets"> </a>Lägga till Google information till ditt program
 
-1. Gå till din App Service-app i [Azure Portal].
-1. Välj **Inställningar**  >  **autentisering/auktorisering** och se till att **App Service autentisering** är **aktiverat**.
-1. Välj **Google** och klistra in i app-ID och appens hemliga värden som du har fått tidigare. Aktivera alla omfattningar som krävs av ditt program.
-1. Välj **OK**.
+1. Logga in på [Azure Portal] och navigera till din app.
+1. Välj **autentisering** i menyn till vänster. Klicka på **Lägg till identitets leverantör**.
+1. Välj **Google** i list rutan identitets leverantör. Klistra in i app-ID och appens hemliga värden som du har fått tidigare.
 
-   App Service tillhandahåller autentisering men begränsar inte tillåten åtkomst till webbplatsens innehåll och API: er. Mer information finns i [auktorisera eller neka användare](app-service-authentication-how-to.md#authorize-or-deny-users).
+    Hemligheten kommer att lagras som en plats-trög [program inställning](./configure-common.md#configure-app-settings) med namnet `GOOGLE_PROVIDER_AUTHENTICATION_SECRET` . Du kan uppdatera den inställningen senare om du vill använda [Key Vault referenser](./app-service-key-vault-references.md) om du vill hantera hemligheten i Azure Key Vault.
 
-1. Valfritt För att begränsa plats åtkomsten enbart till användare som autentiserats av Google, ange **åtgärd som ska vidtas när begäran inte autentiseras** till **Google**. När du ställer in den här funktionen kräver appen att alla begär Anden autentiseras. Det omdirigerar också alla oautentiserade begär anden till Google för autentisering.
+1. Om det här är den första identitetsprovider som kon figurer ATS för programmet visas även avsnittet **App Service autentiseringsinställningar** . Annars kan du gå vidare till nästa steg.
+    
+    De här alternativen avgör hur programmet svarar på oautentiserade begär Anden och standard valet dirigerar om alla begär Anden att logga in med den nya providern. Du kan ändra det här beteendet nu eller ändra inställningarna senare från skärmen main **Authentication** genom att välja **Redigera** bredvid **autentiseringsinställningar**. Mer information om de här alternativen finns i [Authentication Flow](overview-authentication-authorization.md#authentication-flow).
 
-    > [!CAUTION]
-    > Att begränsa åtkomsten på det här sättet gäller alla anrop till appen, vilket kanske inte är önskvärt för appar som har en offentligt tillgänglig start sida, som i många program med en enda sida. För sådana program **tillåts anonyma begär Anden (ingen åtgärd)** , så att appen manuellt startar själva autentiseringen. Mer information finns i [Authentication Flow](overview-authentication-authorization.md#authentication-flow).
+1. Valfritt Klicka på **Nästa: omfattningar** och Lägg till eventuella omfattningar som programmet behöver. De kommer att begäras vid inloggnings tiden för webbläsarbaserade flöden.
+1. Klicka på **Lägg till**.
 
-1. Välj **Spara**.
-
-Du är nu redo att använda Google för autentisering i din app.
+Du är nu redo att använda Google för autentisering i din app. Providern visas på skärmen **autentisering** . Därifrån kan du redigera eller ta bort den här providerns konfiguration.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Nästa steg
 

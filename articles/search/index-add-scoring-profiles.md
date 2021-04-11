@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 97797e309c32c6ea996d5ae1901b9a266a683173
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afe56bb8637c9b2a88bda23944fd5097413fce97
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91537641"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077728"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Lägga till rankningsprofiler i ett Azure Cognitive Search-index
 
@@ -161,7 +161,7 @@ Sök poängen beräknas baserat på statistiska egenskaper för data och frågan
 
  Texten i bedömnings profilen är konstruerad från viktade fält och funktioner.  
 
-|||  
+|Egenskaper |Beskrivning|  
 |-|-|  
 |**Lekar**|Ange namn/värde-par som tilldelar en relativ vikt till ett fält. I [exemplet](#bkmk_ex)är fälten albumTitle, genre och artistName förstärkta 1,5, 5 respektive 2. Varför ökar genren så mycket högre än de andra? Om sökningen utförs över data som är något homogena (vilket är fallet med "genre" i) kan `musicstoreindex` du behöva en större varians i de relativa vikterna. Till exempel `musicstoreindex` visas "Rock" som både en genre och i identiskt fraserade Genre beskrivningar. Om du vill att Genre ska uppväga Genre-Beskrivning behöver fältet Genre en mycket högre relativ vikt.|  
 |**Funktioner**|Används när ytterligare beräkningar krävs för vissa kontexter. Giltiga värden är `freshness`, `magnitude`, `distance` och `tag`. Varje funktion har parametrar som är unika för den.<br /><br /> -   `freshness` ska användas när du vill öka med hur nytt eller gammalt objekt är. Den här funktionen kan endast användas med `datetime` fält (EDM. DataTimeOffset). Observera att `boostingDuration` attributet endast används med `freshness` funktionen.<br />-   `magnitude` ska användas när du vill öka det högsta eller lägsta värdet för ett numeriskt värde. Scenarier som anropar för den här funktionen är ökningar per vinst marginal, högsta pris, lägsta pris eller antal hämtningar. Den här funktionen kan endast användas med Double-och Integer-fält.<br />     För `magnitude` -funktionen kan du ändra intervallet, högt till lågt, om du vill använda det inverterade mönstret (till exempel för att öka pris poster med lägre pris mer än den högsta pris nivån). Med ett pris intervall från $100 till $1 skulle du ställa in `boostingRangeStart` på 100 och `boostingRangeEnd` 1 för att förstärka de lägre pris artiklarna.<br />-   `distance` ska användas när du vill öka med närhet eller geografisk plats. Den här funktionen kan endast användas med `Edm.GeographyPoint` fält.<br />-   `tag` ska användas när du vill öka med taggar i vanliga mellan dokument och Sök frågor. Den här funktionen kan endast användas med `Edm.String` och- `Collection(Edm.String)` fält.<br /><br /> **Regler för att använda funktioner**<br /><br /> Funktions typ ( `freshness` , `magnitude` , `distance` ) `tag` måste vara gemener.<br /><br /> Funktioner får inte innehålla värden som är null eller tomma. Mer specifikt, om du inkluderar FieldName, måste du ange det till något.<br /><br /> Funktioner kan bara användas för filter bara fält. Mer information om filter bara fält finns i [skapa Index &#40;Azure Kognitiv sökning REST API&#41;](/rest/api/searchservice/create-index) .<br /><br /> Funktioner kan endast tillämpas på fält som har definierats i fält samlingen för ett index.|  

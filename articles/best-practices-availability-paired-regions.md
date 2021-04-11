@@ -5,15 +5,15 @@ author: martinekuan
 manager: martinekuan
 ms.service: multiple
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 03/30/2021
 ms.author: martinek
 ms.custom: references_regions
-ms.openlocfilehash: 3310d4a7d86db9dee7d5f71fc9410545817886f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9fda6f913fcb5325c811671cd6476dcbf2413766
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97511237"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058025"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Affärskontinuitet och haveriberedskap (BCDR): Länkade Azure-regioner
 
@@ -29,7 +29,7 @@ Ett regionalt par består av två regioner i samma geografi. Azure serialiserar 
 
 Vissa Azure-tjänster kan dra nytta av kopplade regioner för att säkerställa affärs kontinuiteten och skydda mot data förlust.  Azure tillhandahåller flera [lagrings lösningar](./storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) som kan dra nytta av kopplade regioner för att säkerställa data tillgänglighet. [Azure Geo-redundant lagring](./storage/common/storage-redundancy.md#geo-redundant-storage) (GRS) replikerar till exempel data till en sekundär region automatiskt, vilket säkerställer att data är varaktiga även i händelse av att det inte går att återskapa den primära regionen. 
 
-Observera att alla Azure-tjänster inte replikerar data automatiskt, eller att alla Azure-tjänster automatiskt kommer tillbaka från en felaktig region till dess par.  I sådana fall måste återställning och replikering konfigureras av kunden.
+Observera att inte alla Azure-tjänster replikerar data automatiskt, eller att alla Azure-tjänster automatiskt återgår från en felaktig region till dess par.  I sådana fall måste återställning och replikering konfigureras av kunden.
 
 ## <a name="can-i-select-my-regional-pairs"></a>Kan jag välja mina regionala par?
 
@@ -51,14 +51,15 @@ Nej. Kunder kan använda Azure-tjänster för att skapa en elastisk tjänst utan
 |:--- |:--- |:--- |
 | Asia-Pacific |Asien, östra (Hongkong) | Sydostasien (Singapore) |
 | Australien |Australien, östra |Australien, sydöstra |
-| Australien |Australien, centrala |Australien, centrala 2 |
+| Australien |Australien, centrala |Australien, centrala 2 * |
 | Brasilien |Brasilien, södra |USA, södra centrala |
+| Brasilien |Brasilien, sydöstra * |Brasilien, södra |
 | Kanada |Kanada, centrala |Kanada, östra |
 | Kina |Kina, norra |Kina, östra|
 | Kina |Kina, norra 2 |Kina, östra 2|
 | Europa |Europa, norra (Irland) |Europa, västra (Nederländerna) |
-| Frankrike |Frankrike, centrala|Frankrike, södra|
-| Tyskland |Tyskland, centrala |Tyskland, nordöstra |
+| Frankrike |Frankrike, centrala|Frankrike, södra *|
+| Tyskland |Tyskland, västra centrala |Tyskland, norra * |
 | Indien |Indien, centrala |Indien, södra |
 | Indien |Indien, västra |Indien, södra |
 | Japan |Japan, östra |Japan, västra |
@@ -67,15 +68,17 @@ Nej. Kunder kan använda Azure-tjänster för att skapa en elastisk tjänst utan
 | Nordamerika |USA, östra 2 |Central US |
 | Nordamerika |USA, norra centrala |USA, södra centrala |
 | Nordamerika |USA, västra 2 |USA, västra centrala |
-| Norge | Östra Norge | Norge, väst |
-| Sydafrika | Sydafrika, norra |Sydafrika, västra |
-| Schweiz | Schweiz, norra |Schweiz, västra |
+| Norge | Östra Norge | Norge, västra * |
+| Sydafrika | Sydafrika, norra |Södra Afrika, västra * |
+| Schweiz | Schweiz, norra |Schweiz, västra * |
 | Storbritannien |Storbritannien, västra |Storbritannien, södra |
-| Förenade Arabemiraten | Förenade Arabemiraten, norra | Förenade Arabemiraten Central
-| USA:s försvarsdepartement |USA DoD, östra |USA DoD, centrala |
-| US Government |US Gov, Arizona |US Gov, Texas |
-| US Government |USA Gov, Iowa |US Gov, Virginia |
-| US Government |US Gov, Virginia |US Gov, Texas |
+| Förenade Arabemiraten | Förenade Arabemiraten, norra | Förenade Arabemiraten Central * |
+| USA:s försvarsdepartement |US DoD, östra * |US DoD, centrala * |
+| US Government |US Gov, Arizona * |US Gov, Texas * |
+| US Government |US Gov, Iowa * |US Gov, Virginia * |
+| US Government |US Gov, Virginia * |US Gov, Texas * |
+
+(*) Vissa regioner är begränsade till att stödja specifika kund scenarier, t. ex. haveri beredskap i ett land. Dessa regioner är bara tillgängliga på begäran genom [att skapa en ny supportbegäran i Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 > [!Important]
 > - Västra Indien är bara kopplad till en riktning. Den sekundära regionen västra Indien är södra Indien, men den sekundära regionen i södra Indien är central Indien.

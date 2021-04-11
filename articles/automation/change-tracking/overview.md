@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: e2371f3de8ed73250bca6639e6c749811c5559ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed29def305bfa33a0a947a331775de89275e5f7f
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100572618"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220874"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Översikt över Ändringsspårning och inventering
 
@@ -40,6 +40,8 @@ Datorer som är anslutna till Log Analytics arbets ytan använder [Log Analytics
 
 > [!NOTE]
 > Ändringsspårning och inventeringen kräver att en Log Analytics arbets yta länkas till ditt Automation-konto. En slutgiltig lista över regioner som stöds finns i [mappningar för Azure-arbetsytor](../how-to/region-mappings.md). Region mappningarna påverkar inte möjligheten att hantera virtuella datorer i en separat region från ditt Automation-konto.
+
+Som tjänst leverantör kan du ha registrerat flera kund klienter i [Azure-Lighthouse](../../lighthouse/overview.md). Med Azure-Lighthouse kan du utföra åtgärder i skala över flera Azure Active Directory (Azure AD)-klienter samtidigt, och göra hanterings uppgifter som Ändringsspårning och inventering mer effektiva över de klienter som du är ansvarig för. Ändringsspårning och inventering kan hantera datorer i flera prenumerationer i samma klient organisation, eller mellan klienter som använder [Azure-delegerad resurs hantering](../../lighthouse/concepts/azure-delegated-resource-management.md).
 
 ## <a name="current-limitations"></a>Aktuella begränsningar
 

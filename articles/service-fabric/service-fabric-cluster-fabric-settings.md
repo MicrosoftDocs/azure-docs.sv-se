@@ -3,12 +3,12 @@ title: Ändra kluster inställningar för Azure Service Fabric
 description: I den här artikeln beskrivs de infrastruktur inställningar och de uppgraderings principer för infrastruktur resurser som du kan anpassa.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 78d83faea802862d3cd6d1b1a9cf9f1016245065
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65ae2337ac7dbe4370411a154463a6ddc37f83b2
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232060"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255979"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassa Service Fabric-klusterinställningar
 I den här artikeln beskrivs de olika infrastruktur inställningarna för ditt Service Fabric-kluster som du kan anpassa. För kluster som finns i Azure kan du anpassa inställningarna via [Azure Portal](https://portal.azure.com) eller genom att använda en Azure Resource Manager mall. Mer information finns i [Uppgradera konfigurationen av ett Azure-kluster](service-fabric-cluster-config-upgrade-azure.md). För fristående kluster anpassar du inställningarna genom att uppdatera *ClusterConfig.jspå* filen och utföra en konfigurations uppgradering i klustret. Mer information finns i [Uppgradera konfigurationen av ett fristående kluster](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -60,6 +60,12 @@ Följande är en lista över infrastruktur inställningar som du kan anpassa, or
 |SecretEncryptionCertX509StoreName|sträng, rekommenderat värde är "My" (inget standardvärde) |    Dynamisk|    Detta anger det certifikat som ska användas för kryptering och dekryptering av namn på autentiseringsuppgifter för X. 509 certifikat arkiv som används för kryptering av kryptering av autentiseringsuppgifter som används av tjänsten för säkerhets kopierings återställning |
 |TargetReplicaSetSize|int, standardvärdet är 0|Statisk| TargetReplicaSetSize för BackupRestoreService |
 
+## <a name="centralsecretservice"></a>CentralSecretService
+
+| **Parameter** | **Tillåtna värden** | **Uppgradera princip** | **Vägledning eller kort beskrivning** |
+| --- | --- | --- | --- |
+|DeployedState |wstring, standard är L "inaktive rad" |Statisk |2 – mellanlagra borttagning av CSS. |
+
 ## <a name="clustermanager"></a>ClusterManager
 
 | **Parameter** | **Tillåtna värden** | **Uppgradera princip** | **Vägledning eller kort beskrivning** |
@@ -95,6 +101,7 @@ Följande är en lista över infrastruktur inställningar som du kan anpassa, or
 
 | **Parameter** | **Tillåtna värden** | **Uppgradera princip** | **Vägledning eller kort beskrivning** |
 | --- | --- | --- | --- |
+|AllowCreateUpdateMultiInstancePerNodeServices |Bool, standard är falskt |Dynamisk|Tillåter att flera tillstånds lösa instanser av en tjänst per nod skapas. Den här funktionen finns för närvarande som en förhandsversion. |
 |PerfMonitorInterval |Tid i sekunder, standard är 1 |Dynamisk|Ange TimeSpan i sekunder. Intervall för prestanda övervakning. Om du ställer in till 0 eller negativt värde inaktive ras övervakningen. |
 
 ## <a name="defragmentationemptynodedistributionpolicy"></a>DefragmentationEmptyNodeDistributionPolicy
@@ -304,6 +311,7 @@ Följande är en lista över infrastruktur inställningar som du kan anpassa, or
 | **Parameter** | **Tillåtna värden** | **Uppgradera princip** | **Vägledning eller kort beskrivning** |
 | --- | --- | --- | --- |
 |EnableApplicationTypeHealthEvaluation |Bool, standard är falskt |Statisk|Utvärderings princip för kluster hälsa: Aktivera utvärdering av hälso tillstånd per program typ. |
+|EnableNodeTypeHealthEvaluation |Bool, standard är falskt |Statisk|Utvärderings princip för kluster hälsa: Aktivera typ av hälso utvärdering per nodtyp. |
 |MaxSuggestedNumberOfEntityHealthReports|Int, standard är 100 |Dynamisk|Det maximala antalet hälso rapporter som en entitet kan ha innan du får problem med övervaknings logiken för hälso rapporter. Varje hälsoentitet ska ha ett relativt litet antal hälso rapporter. Om antalet rapporter hamnar ovanför det här talet. Det kan finnas problem med övervaknings enhetens implementering. En entitet med för många rapporter flaggas via en varnings hälso rapport när entiteten utvärderas. |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
@@ -349,7 +357,7 @@ Följande är en lista över infrastruktur inställningar som du kan anpassa, or
 |DisableContainers|bool, standard är falskt|Statisk|Konfiguration för att inaktivera behållare – används i stället för DisableContainerServiceStartOnContainerActivatorOpen som är föråldrad config |
 |DisableDockerRequestRetry|bool, standard är falskt |Dynamisk| Som standard kommunicerar sa med DD (Docker dameon) med en tids gräns på "DockerRequestTimeout" för varje http-begäran som skickas till den. Om DD inte svarar inom den här tids perioden; SF skickar begäran på nytt om den översta nivån fortfarande har kvar tiden.  Med HyperV-behållare; DD ibland tar det mycket mer tid att ta upp behållaren eller inaktivera den. I sådana fall är det en begäran från sa-perspektivet och SF-försöket. Ibland verkar detta vara att lägga till mer belastning på DD. Med den här konfigurationen kan du inaktivera det här försöket och vänta tills DD har svarat. |
 |DnsServerListTwoIps | Bool, standard är falskt | Statisk | Med den här flaggan lägger du till den lokala DNS-servern två gånger för att hjälpa till att lösa tillfälliga problem. |
-| DockerTerminateOnLastHandleClosed | bool, standard är falskt | Statisk | Som standard om Fabrichost returnerar hanterar "dockerd" (baserat på: SkipDockerProcessManagement = = false) den här inställningen anger vad som händer när antingen Fabrichost returnerar eller dockerd kraschar. När den är inställd på `true` om någon av processerna kraschar tvingas alla behållare att avslutas av HCS uppdateringsklienten. Om värdet är inställt på `false` behållarna fortsätter att köras. Obs! föregående till 8,0 det här beteendet var avsiktligt motsvarande `false` . Standardvärdet för `true` här är vad vi förväntar sig att hända som standard när vår rensnings logik används för att starta om de här processerna. |
+| DockerTerminateOnLastHandleClosed | bool, standard är sant | Statisk | Som standard om Fabrichost returnerar hanterar "dockerd" (baserat på: SkipDockerProcessManagement = = false) den här inställningen anger vad som händer när antingen Fabrichost returnerar eller dockerd kraschar. När den är inställd på `true` om någon av processerna kraschar tvingas alla behållare att avslutas av HCS uppdateringsklienten. Om värdet är inställt på `false` behållarna fortsätter att köras. Obs! föregående till 8,0 det här beteendet var avsiktligt motsvarande `false` . Standardvärdet för `true` här är vad vi förväntar sig att hända som standard när vår rensnings logik används för att starta om de här processerna. |
 | DoNotInjectLocalDnsServer | bool, standard är falskt | Statisk | Hindrar körningen från att mata in den lokala IP-adressen som DNS-server för behållare. |
 |EnableActivateNoWindow| bool, standard är falskt|Dynamisk| Den aktiverade processen skapas i bakgrunden utan någon konsol. |
 |EnableContainerServiceDebugMode|bool, standard är sant|Statisk|Aktivera/inaktivera loggning för Docker-behållare.  Endast Windows.|
@@ -552,6 +560,8 @@ Följande är en lista över infrastruktur inställningar som du kan anpassa, or
 |MovementPerPartitionThrottleCountingInterval | Tid i sekunder, standard är 600 |Statisk| Ange TimeSpan i sekunder. Ange längden på det förflutna intervall som du vill använda för att spåra replikerings förflyttningar för varje partition (används tillsammans med MovementPerPartitionThrottleThreshold). |
 |MovementPerPartitionThrottleThreshold | Uint, standard är 50 |Dynamisk| Ingen balanserande förflyttning sker för en partition om antalet balanserade relaterade rörelser för repliker av den partitionen har nått eller överskridit MovementPerFailoverUnitThrottleThreshold i det förflutna intervall som anges av MovementPerPartitionThrottleCountingInterval. |
 |MoveParentToFixAffinityViolation | Bool, standard är falskt |Dynamisk| Inställning som avgör om överordnade repliker kan flyttas för att korrigera tillhörighets begränsningar.|
+|NodeTaggingEnabled | Bool, standard är falskt |Dynamisk| Om sant; Funktionen NodeTagging kommer att aktive ras. |
+|NodeTaggingConstraintPriority | Int, standardvärdet är 0 |Dynamisk| Konfigurerbar prioritet för Node-taggning. |
 |PartiallyPlaceServices | Bool, standard är sant |Dynamisk| Anger om alla tjänst repliker i klustret ska placeras "alla eller inga" begränsade lämpliga noder för dem.|
 |PlaceChildWithoutParent | Bool, standard är sant | Dynamisk|Inställning som anger om den underordnade tjänstens replik kan placeras om ingen överordnad replik är aktiv. |
 |PlacementConstraintPriority | Int, standardvärdet är 0 | Dynamisk|Anger prioritet för placerings begränsning: 0: hårt; 1: mjuk; negativt: ignorera. |
@@ -572,7 +582,7 @@ Följande är en lista över infrastruktur inställningar som du kan anpassa, or
 |UpgradeDomainConstraintPriority | Int, standard är 1| Dynamisk|Fastställer prioriteten för uppgraderings domän begränsning: 0: hårt; 1: mjuk; negativt: ignorera. |
 |UseMoveCostReports | Bool, standard är falskt | Dynamisk|Instruerar LB att ignorera Cost-elementet i poängsättnings funktionen. resulterar i ett potentiellt stort antal flyttningar för bättre balanserade placering. |
 |UseSeparateSecondaryLoad | Bool, standard är sant | Dynamisk|Inställning som anger om separat belastning ska användas för sekundära repliker. |
-|UseSeparateSecondaryMoveCost | Bool, standard är falskt | Dynamisk|Inställning som avgör om separat flytt kostnad ska användas för sekundära repliker. |
+|UseSeparateSecondaryMoveCost | Bool, standard är sant | Dynamisk|Inställning som anger om PLB ska använda olika flytt kostnader för sekundär på varje nod. Om UseSeparateSecondaryMoveCost är inaktive rad:-rapporterad flytt kostnad för sekundär på en nod leder till overwritting flytt kostnad för varje sekundär (på alla andra noder) om UseSeparateSecondaryMoveCost är aktive rad:-rapporterad flytt kostnad för sekundär på en nod börjar gälla endast på den sekundära (ingen påverkan på sekundära noder på andra noder) – om replik krascher uppstår – nya repliker skapas med standard flytt kostnad som anges på service nivå – om PLB flyttar befintliga replikerings-flytt kostnader. |
 |ValidatePlacementConstraint | Bool, standard är sant |Dynamisk| Anger om PlacementConstraint-uttrycket för en tjänst verifieras när en tjänsts ServiceDescription uppdateras. |
 |ValidatePrimaryPlacementConstraintOnPromote| Bool, standard är sant |Dynamisk|Anger om PlacementConstraint-uttrycket för en tjänst utvärderas för primär preferens på redundansväxling. |
 |VerboseHealthReportLimit | Int, standard är 20 | Dynamisk|Definierar antalet gånger som en replik måste placeras innan en hälso varning rapporteras för den (om utförlig hälso rapportering har Aktiver ATS). |
@@ -767,6 +777,7 @@ Följande är en lista över infrastruktur inställningar som du kan anpassa, or
 |RecoverServicePartitions |sträng, standardvärdet är "admin" |Dynamisk| Säkerhets konfiguration för återställning av tjänst partitioner. |
 |RecoverSystemPartitions |sträng, standardvärdet är "admin" |Dynamisk| Säkerhets konfiguration för återställning av system tjänst partitioner. |
 |RemoveNodeDeactivations |sträng, standardvärdet är "admin" |Dynamisk| Säkerhets konfiguration för återställning av inaktive ring på flera noder. |
+|ReportCompletion |wstring, standard är L "admin" |Dynamisk| Säkerhets konfiguration för slut för ande av rapportering. |
 |ReportFabricUpgradeHealth |sträng, standardvärdet är "admin" |Dynamisk| Säkerhets konfiguration för att återuppta kluster uppgraderingar med den aktuella uppgraderings processen. |
 |ReportFault |sträng, standardvärdet är "admin" |Dynamisk| Säkerhets konfiguration för rapporterings fel. |
 |ReportHealth |sträng, standardvärdet är "admin" |Dynamisk| Säkerhets konfiguration för rapporterings hälsa. |

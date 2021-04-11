@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e644d81c2a47ec07833010ae93f4dbb0c57474b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84790254"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077847"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Visa en lista över Azure Deny-tilldelningar med hjälp av Azure Portal
 
@@ -54,7 +54,7 @@ Följ dessa steg om du vill visa en lista över neka tilldelningar i prenumerati
 
     ![Neka tilldelningar – kolumner](./media/deny-assignments-portal/deny-assignments-columns.png)
 
-    |  |  |
+    | Kolumn | Beskrivning  |
     | --- | --- |
     | **Namn** | Namnet på neka-tilldelningen. |
     | **Typ av huvudkonto** | Användare, grupp, systemdefinierad grupp eller tjänstens huvud namn. |
@@ -79,7 +79,7 @@ Följ dessa steg om du vill visa mer information om en neka-tilldelning.
 
     Bladet **användare** innehåller följande två avsnitt.
 
-    |  |  |
+    | Neka inställning  | Beskrivning |
     | --- | --- |
     | **Neka tilldelning gäller**  | Säkerhets objekt som neka-tilldelningen gäller för. |
     | **Neka tilldelning exkluderar** | Säkerhets objekt som undantas från neka-tilldelning. |

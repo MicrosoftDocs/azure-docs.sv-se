@@ -1,18 +1,18 @@
 ---
 title: Använda objekt lagring (BLOB) från C++ – Azure | Microsoft Docs
 description: Lär dig hur du lagrar ostrukturerade data (blobbar) i molnet med Azure Blob-lagring (objekt lagring) med hjälp av C++.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 64069292ea0059216d06bfc41316c2aed7484dd0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61c7dca25e90450c695a5137dd2ee900c1282bf0
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96011106"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278056"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>Använda Blob Storage från C++
 
@@ -261,5 +261,5 @@ Nu när du har lärt dig grunderna i Blob Storage kan du följa dessa länkar om
 - [Använda Table Storage från C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 - [Visa Azure Storage resurser i C++](../common/storage-c-plus-plus-enumeration.md)
 - [Lagrings klient bibliotek för C++-referens](https://azure.github.io/azure-storage-cpp)
-- [Azure Storage dokumentation](https://azure.microsoft.com/documentation/services/storage/)
+- [Azure Storage-dokumentation](https://azure.microsoft.com/documentation/services/storage/)
 - [Överföra data med kommando rads verktyget AzCopy](../common/storage-use-azcopy-v10.md)

@@ -6,19 +6,22 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 1/12/2021
-ms.openlocfilehash: 48537483501165d4a978afdbd05560613170d187
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references_regions
+ms.date: 04/07/2021
+ms.openlocfilehash: ae416c9acd03b3ee239a858aae550fb87293465a
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98165619"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012793"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Konfigurations alternativ för Azure Database for PostgreSQL – citus-storlek
 
 ## <a name="compute-and-storage"></a>Beräkning och lagring
  
 Du kan välja beräknings-och lagrings inställningar oberoende för arbetsnoder och koordinator-noden i en citus-Server grupp.  Beräknings resurser tillhandahålls som virtuella kärnor, som representerar den underliggande maskin varans logiska processor. Lagrings storleken för etablering avser kapaciteten som är tillgänglig för koordinatorn och arbetsnoder i citus-servergruppen (). Lagrings utrymmet inkluderar databasfiler, temporära filer, transaktions loggar och postgres-Server loggarna.
+
+### <a name="standard-tier"></a>Standard-nivå
  
 | Resurs              | Arbetsnoden           | Koordinator-nod      |
 |-----------------------|-----------------------|-----------------------|
@@ -70,13 +73,46 @@ För hela superscale-klustret (citus) kan aggregerade IOPS fungera till följand
 | 19           | 29 184              | 58 368            | 116 812           |
 | 20           | 30 720              | 61 440            | 122 960           |
 
+### <a name="basic-tier-preview"></a>Basic-nivå (för hands version)
+
+> [!IMPORTANT]
+> Nivån för den storskaliga (citus) Basic-nivån är för närvarande en för hands version.  Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
+>
+> Du kan se en fullständig lista över andra nya funktioner i [för hands versions funktioner för skalning (citus)](hyperscale-preview-features.md).
+
+Den storskaliga (citus) [Basic-nivån](concepts-hyperscale-tiers.md) är en Server grupp med bara en nod.  Eftersom det inte finns någon skillnad mellan koordinator-och arbetsnoder, är det mindre komplicerat att välja beräknings-och lagrings resurser.
+
+| Resurs              | Tillgängliga alternativ     |
+|-----------------------|-----------------------|
+| Compute, virtuella kärnor       | 2, 4, 8               |
+| Minne per vCore, GiB | 4                     |
+| Lagrings storlek, GiB     | 128, 256, 512         |
+| Lagringstyp          | Generell användning (SSD) |
+| IOPS                  | Upp till 3 IOPS/GiB      |
+
+Den totala mängden RAM-minne i en citus-nod (Single-Scale) baseras på det valda antalet virtuella kärnor.
+
+| Virtuella kärnor | GiB RAM |
+|--------|---------|
+| 2      | 8       |
+| 4      | 16      |
+| 8      | 32      |
+
+Den totala mängden lagrings utrymme som du tillhandahåller definierar också den I/O-kapacitet som är tillgänglig för noden för Basic-nivån.
+
+| Lagrings storlek, GiB | Högsta IOPS |
+|-------------------|--------------|
+| 128               | 384          |
+| 256               | 768          |
+| 512               | 1,536        |
+
 ## <a name="regions"></a>Regioner
 Citus-Server grupper är tillgängliga i följande Azure-regioner:
 
 * Amerika
     * Kanada, centrala
     * Central US
-    * East US
+    * USA, östra *
     * USA, östra 2
     * USA, norra centrala
     * USA, västra 2
@@ -90,38 +126,9 @@ Citus-Server grupper är tillgängliga i följande Azure-regioner:
     * Storbritannien, södra
     * Europa, västra
 
+( \* = stöder för [hands versions funktioner](hyperscale-preview-features.md))
+
 Vissa av dessa regioner kanske inte inlednings vis aktive ras på alla Azure-prenumerationer. Om du vill använda en region från listan ovan och inte ser den i din prenumeration, eller om du vill använda en region som inte finns med i listan, öppnar du en [supportbegäran](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-
-## <a name="limits-and-limitations"></a>Gränser och begränsningar
-
-I följande avsnitt beskrivs kapacitets-och funktions gränser i citus-tjänsten (storskalig).
-
-### <a name="maximum-connections"></a>Maximalt antal anslutningar
-
-Varje PostgreSQL anslutning (även inaktiv) använder minst 10 MB minne, så det är viktigt att begränsa samtidiga anslutningar. Här följer de gränser som vi valde för att hålla noderna felfria:
-
-* Koordinator-nod
-   * Högsta antal anslutningar: 300
-   * Högsta antal användar anslutningar: 297
-* Arbetsnoden
-   * Högsta antal anslutningar: 600
-   * Högsta antal användar anslutningar: 597
-
-Försök att ansluta bortom dessa gränser kommer att Miss lyckas med ett fel. Systemet reserverar tre anslutningar för övervakning av noder, vilket är anledningen till att det finns tre fler anslutningar tillgängliga för användar frågor än totalt antal anslutningar.
-
-Det tar tid att upprätta nya anslutningar. Det fungerar mot de flesta program, som begär många anslutningar för kort period. Vi rekommenderar att du använder en anslutningspool, både för att minska inaktiva transaktioner och återanvända befintliga anslutningar. Mer information finns i vårt [blogg inlägg](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717).
-
-### <a name="storage-scaling"></a>Lagrings skalning
-
-Lagring på koordinator-och arbetsnoder kan skalas upp (ökas), men kan inte skalas ned (minskat).
-
-### <a name="storage-size"></a>Lagrings storlek
-
-Upp till 2 TiB-lagring stöds för koordinator-och arbetsnoder. Se tillgängliga lagrings alternativ och IOPS-beräkning [ovan](#compute-and-storage) för nodernas och kluster storlekarna.
-
-### <a name="database-creation"></a>Skapa databas
-
-Azure Portal innehåller autentiseringsuppgifter för att ansluta till exakt en databas per storskalig (citus) Server grupp, `citus` databasen. Det går inte att skapa en annan databas för tillfället, och kommandot Skapa databas kommer inte att fungera med ett fel.
 
 ## <a name="pricing"></a>Priser
 Den senaste pris informationen finns på [sidan med pris](https://azure.microsoft.com/pricing/details/postgresql/)information för tjänsten.

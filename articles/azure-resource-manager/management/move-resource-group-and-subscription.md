@@ -4,12 +4,12 @@ description: Använd Azure Resource Manager för att flytta resurser till en ny 
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4f6ecb9ec8269ab8e06a241a395887de77691499
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 800e605571ae18b008a86b4add4b0b2adce9c140
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934231"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078391"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Flytta resurser till en ny resursgrupp eller prenumeration
 
@@ -124,7 +124,7 @@ I illustrations syfte har vi bara en beroende resurs.
 
 ## <a name="validate-move"></a>Verifiera flytt
 
-Med [åtgärden verifiera flytt](/rest/api/resources/resources/resources/moveresources) kan du testa flytt scenariot utan att faktiskt flytta resurserna. Använd den här åtgärden för att kontrol lera om flytten kommer att lyckas. Verifiering anropas automatiskt när du skickar en flyttnings förfrågan. Använd endast den här åtgärden när du måste för att fastställa resultaten. Om du vill köra den här åtgärden behöver du:
+Med [åtgärden verifiera flytt](/rest/api/resources/resources/moveresources) kan du testa flytt scenariot utan att faktiskt flytta resurserna. Använd den här åtgärden för att kontrol lera om flytten kommer att lyckas. Verifiering anropas automatiskt när du skickar en flyttnings förfrågan. Använd endast den här åtgärden när du måste för att fastställa resultaten. Om du vill köra den här åtgärden behöver du:
 
 * namnet på käll resurs gruppen
 * resurs-ID för mål resurs gruppen
@@ -241,7 +241,7 @@ Om du får ett fel meddelande kan du läsa mer i [Felsöka flytt av Azure-resurs
 
 ## <a name="use-rest-api"></a>Använda REST-API
 
-Om du vill flytta befintliga resurser till en annan resurs grupp eller prenumeration använder du åtgärden [Flytta resurser](/rest/api/resources/resources/resources/moveresources) .
+Om du vill flytta befintliga resurser till en annan resurs grupp eller prenumeration använder du åtgärden [Flytta resurser](/rest/api/resources/resources/moveresources) .
 
 ```HTTP
 POST https://management.azure.com/subscriptions/{source-subscription-id}/resourcegroups/{source-resource-group-name}/moveResources?api-version={api-version}

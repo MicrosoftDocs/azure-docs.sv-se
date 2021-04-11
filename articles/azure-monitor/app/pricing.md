@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 2/7/2021
-ms.reviewer: mbullwin
-ms.openlocfilehash: 1f19366ac8fd7aedadcca0287540262516ad060c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 3/30/2021
+ms.reviewer: lagayhar
+ms.openlocfilehash: e048e788e674e90a62b15784c590c07e5d36b816
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726194"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078408"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Hantera användning och kostnader för Application Insights
 
@@ -25,7 +25,7 @@ Om du har frågor om hur prissättningen fungerar för Application Insights kan 
 
 ## <a name="pricing-model"></a>Prismodell
 
-Prissättningen för [Azure Application insikter][start] är en modell där **du betalar per** användning baserat på data volym som matas in och eventuellt för längre data kvarhållning. Varje Application Insights resurs debiteras som en separat tjänst och bidrar till fakturan för din Azure-prenumeration. Data volymen mäts som storleken på det okomprimerade JSON-datapaketet som tas emot av Application Insights från ditt program. Det finns ingen data volym avgift för att använda [Live Metrics Stream](./live-stream.md).
+Prissättningen för [Azure Application insikter][start] är en modell där **du betalar per** användning baserat på data volym som matas in och eventuellt för längre data kvarhållning. Varje Application Insights resurs debiteras som en separat tjänst och bidrar till fakturan för din Azure-prenumeration. Data volymen mäts som storleken på det okomprimerade JSON-datapaketet som tas emot av Application Insights från ditt program. Data volymen mäts i GB (10 ^ 9 byte). Det finns ingen data volym avgift för att använda [Live Metrics Stream](./live-stream.md).
 
 [Webbtester med flera steg](./availability-multistep.md) debiteras ytterligare en kostnad. Webbtester med flera steg är webbtester som utför en sekvens med åtgärder. Det finns ingen separat avgift för *ping-test* av en enda sida. Telemetri från ping-test och multi-Step-tester debiteras på samma sätt som andra telemetri från din app.
 
@@ -43,7 +43,10 @@ Det finns två sätt att hantera detta: användning av standard övervakning och
 
 ### <a name="data-collection-when-using-sampling"></a>Data insamling när du använder sampling
 
-Med ASP.NET SDK: s [anpassningsbara sampling](sampling.md#adaptive-sampling)justeras data volymen automatiskt så att den behålls inom en angiven högsta trafik hastighet för standard Application Insights övervakning. Om programmet genererar en liten mängd telemetri, till exempel vid fel sökning eller på grund av låg användning, kommer objekten inte att släppas av samplings processorn så länge volymen är lägre än de konfigurerade händelserna per sekund. För ett program med hög volym, med standard tröskelvärdet på fem händelser per sekund, begränsar adaptiv sampling antalet dagliga händelser till 432 000. Med en typisk genomsnittlig händelse storlek på 1 KB motsvarar detta 13,4 GB telemetri per 31-dagars månad per nod som är värd för ditt program (eftersom samplingen görs lokal för varje nod.) 
+Med ASP.NET SDK: s [anpassningsbara sampling](sampling.md#adaptive-sampling)justeras data volymen automatiskt så att den behålls inom en angiven högsta trafik hastighet för standard Application Insights övervakning. Om programmet genererar en liten mängd telemetri, till exempel vid fel sökning eller på grund av låg användning, kommer objekten inte att släppas av samplings processorn så länge volymen är lägre än de konfigurerade händelserna per sekund. För ett program med hög volym, med standard tröskelvärdet på fem händelser per sekund, begränsar adaptiv sampling antalet dagliga händelser till 432 000. Med en typisk genomsnittlig händelse storlek på 1 KB motsvarar detta 13,4 GB telemetri per 31-dagars månad per nod som är värd för ditt program eftersom samplingen är lokal för varje nod.
+
+> [!NOTE]
+> Azure Monitor logg data storlek beräknas i GB (1 GB = 10 ^ 9 byte).
 
 För SDK: er som inte stöder anpassningsbar sampling kan du använda [provtagnings sampling](./sampling.md#ingestion-sampling), som exempel på hur data tas emot av Application Insights baserat på en procent andel av data som ska behållas, eller [sampling av fast pris för ASP.net, ASP.net Core och Java-webbplatser](sampling.md#fixed-rate-sampling) för att minska trafiken som skickas från webb servern och webbläsare
 

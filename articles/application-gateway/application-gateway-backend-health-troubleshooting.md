@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 95b74e5fc6c5d2c09ff04b3f14e920ae675ab6e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1373e0eeead805dcd3a439878c9737c46d75bf3b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99592763"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078510"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Felsöka problem med hälsotillstånd i serverdelen i Application Gateway
 ==================================================
@@ -176,12 +176,12 @@ Kontrol lera också om någon NSG/UDR/brand vägg blockerar åtkomsten till IP-a
 
 | **Fel** | **Åtgärder** |
 | --- | --- |
-| Fel kod för avsöknings status kod: mottaget 401 | Kontrol lera om backend-servern kräver autentisering. Application Gateway avsökningar kan inte skicka autentiseringsuppgifter för autentisering. Antingen tillåter \" HTTP 401 \" i en avsöknings status kod matchning eller avsökning till en sökväg där servern inte kräver autentisering. | |
-| Fel kod för avsöknings status kod: mottaget 403 | Åtkomst förbjuden. Kontrol lera om åtkomst till sökvägen tillåts på backend-servern. | |
-| Fel kod för avsöknings status kod: mottaget 404 | Sidan hittades inte. Kontrol lera om värd namns Sök vägen är tillgänglig på backend-servern. Ändra värd namnet eller Sök vägs parametern till ett tillgängligt värde. | |
-| Fel kod för avsöknings status kod: mottaget 405 | Avsöknings begär Anden för Application Gateway använder HTTP GET-metoden. Kontrol lera om servern tillåter den här metoden. | |
-| Fel kod för avsöknings status kod: mottaget 500 | Internt serverfel. Kontrollera serverdelens hälsotillstånd och om tjänsterna körs. | |
-| Fel kod för avsöknings status kod: mottaget 503 | Tjänsten är inte tillgänglig. Kontrollera serverdelens hälsotillstånd och om tjänsterna körs. | |
+| Fel kod för avsöknings status kod: mottaget 401 | Kontrol lera om backend-servern kräver autentisering. Application Gateway avsökningar kan inte skicka autentiseringsuppgifter för autentisering. Antingen tillåter \" HTTP 401 \" i en avsöknings status kod matchning eller avsökning till en sökväg där servern inte kräver autentisering. |
+| Fel kod för avsöknings status kod: mottaget 403 | Åtkomst förbjuden. Kontrol lera om åtkomst till sökvägen tillåts på backend-servern. |
+| Fel kod för avsöknings status kod: mottaget 404 | Sidan hittades inte. Kontrol lera om värd namns Sök vägen är tillgänglig på backend-servern. Ändra värd namnet eller Sök vägs parametern till ett tillgängligt värde. |
+| Fel kod för avsöknings status kod: mottaget 405 | Avsöknings begär Anden för Application Gateway använder HTTP GET-metoden. Kontrol lera om servern tillåter den här metoden. |
+| Fel kod för avsöknings status kod: mottaget 500 | Internt serverfel. Kontrollera serverdelens hälsotillstånd och om tjänsterna körs. |
+| Fel kod för avsöknings status kod: mottaget 503 | Tjänsten är inte tillgänglig. Kontrollera serverdelens hälsotillstånd och om tjänsterna körs. |
 
 Eller också kan du skapa en anpassad avsökning om du tror att svaret är giltigt och du vill Application Gateway acceptera andra status koder som felfria. Den här metoden är användbar i situationer där Server dels webbplatsen behöver autentisering. Eftersom avsöknings begär Anden inte har några användarautentiseringsuppgifter, kommer de inte att fungera, och en HTTP 401-status kod returneras av backend-servern.
 

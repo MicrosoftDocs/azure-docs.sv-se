@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sourabha, sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 75e6ebaea4c5ba883820d2309212b35fed128142
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d768fdc2540496769883d839cfbb4f009a2000c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93422135"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077643"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>Konfigurera IoT Edge moduler och anslutningar
 
@@ -42,12 +42,12 @@ Ange nu autentiseringsuppgifter för behållare i IoT Edge-modulen.
 
 4. Ange följande värden under **container Registry autentiseringsuppgifter**:
 
-   _Fält_|_Värde_
-   -------|-------
-   Name|Registernamn
-   Adress|Inloggningsserver
-   Användarnamn|Användarnamn
-   Lösenord|Lösenord
+   | _Fält_   | _Värde_       |
+   | -------   | -------       |
+   | Name      | Registernamn |
+   | Adress   | Inloggningsserver  | 
+   | Användarnamn | Användarnamn      | 
+   | Lösenord  | Lösenord      | 
   
 ## <a name="build-push-and-deploy-the-data-generator-module"></a>Bygg, push och distribuera data Generator-modulen
 

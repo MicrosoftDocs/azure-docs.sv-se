@@ -3,12 +3,12 @@ title: Använd privata slut punkter för att integrera Azure Functions med ett v
 description: Den här självstudien visar hur du ansluter en funktion till ett virtuellt Azure-nätverk och låser den med hjälp av privata slut punkter.
 ms.topic: article
 ms.date: 2/22/2021
-ms.openlocfilehash: e8ca853908b366b99e150f04ced404f42acc7d21
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e1ed944250f05f52860c47f6cb61130f50b08e7c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027422"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078782"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>Självstudie: integrera Azure Functions med ett virtuellt Azure-nätverk med hjälp av privata slut punkter
 
@@ -160,7 +160,7 @@ Skapa privata slut punkter för Azure Files lagring och Azure Blob Storage genom
     | Inställning      | Föreslaget värde  | Beskrivning      |
     | ------------ | ---------------- | ---------------- |
     | **Prenumeration** | Din prenumeration | Den prenumeration som dina resurser skapas under. | 
-    | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Välj den resurs grupp som du skapade med din Function-app. | |
+    | **[Resurs grupp](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Välj den resurs grupp som du skapade med din Function-app. |
     | **Namn** | fil slut punkt | Namnet på den privata slut punkten för filer från ditt lagrings konto. |
     | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Välj den region där du skapade ditt lagrings konto. |
 
