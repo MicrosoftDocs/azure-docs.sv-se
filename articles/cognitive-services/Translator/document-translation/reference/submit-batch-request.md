@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 03/25/2021
 ms.author: v-jansk
 ms.openlocfilehash: 803a0b9f4496a3d785aa6f22833fee4ae6eca6e0
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105613097"
 ---
 # <a name="document-translation-submit-batch-request"></a>Dokument översättning: skicka batch-begäran
@@ -45,13 +45,13 @@ Lär dig hur du hittar ditt [anpassade domän namn](../get-started-with-document
 
 Begärandehuvuden är:
 
-|Sidhuvuden|Description|
+|Sidhuvuden|Beskrivning|
 |--- |--- |
 |Ocp-Apim-Subscription-Key|Nödvändigt begär ande huvud|
 
 ## <a name="request-body-batch-submission-request"></a>Begär ande text: begäran om batch-sändning
 
-|Namn|Typ|Description|
+|Namn|Typ|Beskrivning|
 |--- |--- |--- |
 |tillför|BatchRequest[]|BatchRequest visas nedan. Indatalistan för dokument eller mappar som innehåller dokument. Medie typer: "Application/JSON", "text/JSON", "Application/* + JSON".|
 
@@ -217,7 +217,7 @@ Se till att du har angett mappnamnet (Skift läges känsligt) som prefix i filtr
 
 Följande är de möjliga HTTP-statuskod som en begäran returnerar.
 
-|Statuskod|Description|
+|Statuskod|Beskrivning|
 |--- |--- |
 |202|Accept. Lyckad begäran och batch-begäran skapas av tjänsten. Rubriken Operation-Location anger en status-URL med åtgärds-ID. HeadersOperation-Location: String|
 |400|Felaktig begäran. Ogiltig begäran. Kontrol lera indataparametrarna.|
@@ -229,7 +229,7 @@ Följande är de möjliga HTTP-statuskod som en begäran returnerar.
 
 ## <a name="error-response"></a>Fel svar
 
-|Namn|Typ|Description|
+|Namn|Typ|Beskrivning|
 |--- |--- |--- |
 |kod|sträng|Uppräkningar som innehåller fel koder på hög nivå. Möjliga värden:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Behörighet saknas</li></ul>|
 |meddelande|sträng|Hämtar fel meddelande på hög nivå.|

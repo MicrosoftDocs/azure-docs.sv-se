@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 87dacd28223fd88866edb90266aa76fd3cdf86cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d877f666e03bbbe2b9d4f01bc9059b95f9a1f6b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101095366"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385283"
 ---
 # <a name="traffic-analytics"></a>Trafikanalys
 
@@ -78,7 +78,8 @@ Du kan använda Traffic Analytics för NSG: er i någon av följande regioner:
       USA, östra 2  
       USA, östra 2 EUAP  
       Frankrike, centrala  
-      Tyskland, västra centrala Japan, öst  
+      Tyskland, västra centrala  
+      Japan, östra  
       Japan, västra  
       Sydkorea, centrala  
       Sydkorea, södra  
@@ -130,9 +131,7 @@ Arbets ytan Log Analytics måste finnas i följande regioner:
    :::column span="":::
       USA, östra 2  
       USA, östra 2 EUAP  
-      Frankrike, centrala  
-      Tyskland, västra centrala  
-      Japan, östra  
+      Frankrike, centrala Japan, östra  
       Sydkorea, centrala  
       USA, norra centrala  
       Europa, norra  
@@ -162,7 +161,7 @@ Arbets ytan Log Analytics måste finnas i följande regioner:
    :::column-end:::
 :::row-end:::
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 ### <a name="user-access-requirements"></a>Krav för användar åtkomst
 

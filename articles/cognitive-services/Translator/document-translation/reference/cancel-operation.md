@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 03/25/2021
 ms.author: v-jansk
 ms.openlocfilehash: 39730f118dd93a972f238f85ef890f4dc54ca91a
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105613165"
 ---
 # <a name="document-translation-cancel-operations"></a>Dokument översättning: Avbryt åtgärder
@@ -47,7 +47,7 @@ Parametrarna för begäran som skickades till frågesträngen är:
 
 Begärandehuvuden är:
 
-|Sidhuvuden|Description|
+|Sidhuvuden|Beskrivning|
 |-----|-----|
 |Ocp-Apim-Subscription-Key|Nödvändigt begär ande huvud|
 
@@ -55,7 +55,7 @@ Begärandehuvuden är:
 
 Följande är de möjliga HTTP-statuskod som en begäran returnerar.
 
-| Statuskod| Description|
+| Statuskod| Beskrivning|
 |-----|-----|
 |200|OK. Cancel-begäran har skickats|
 |401|Tillstånd. Kontrol lera dina autentiseringsuppgifter.|
@@ -69,7 +69,7 @@ Följande är de möjliga HTTP-statuskod som en begäran returnerar.
 
 Följande information returneras i ett lyckat svar.
 
-|Namn|Typ|Description|
+|Namn|Typ|Beskrivning|
 |--- |--- |--- |
 |id|sträng|Åtgärdens ID.|
 |createdDateTimeUtc|sträng|Åtgärden skapades datum och tid.|
@@ -86,7 +86,7 @@ Följande information returneras i ett lyckat svar.
 
 ### <a name="error-response"></a>Fel svar
 
-|Namn|Typ|Description|
+|Namn|Typ|Beskrivning|
 |--- |--- |--- |
 |kod|sträng|Uppräkningar som innehåller fel koder på hög nivå. Möjliga värden:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Behörighet saknas</li></ul>|
 |meddelande|sträng|Hämtar fel meddelande på hög nivå.|

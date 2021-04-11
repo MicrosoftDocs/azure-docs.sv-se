@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/10/2020
+ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 5a4be6052e72c27ad83b5af64f1acb3ad8d4e3be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5baf5f503542f31b26c4c210741f1ce986f6a549
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555897"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580117"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Överföra en Azure-prenumeration till en annan Azure AD-katalog
 
@@ -74,15 +74,15 @@ Flera Azure-resurser är beroende av en prenumeration eller en katalog. Beroende
 | Systemtilldelade hanterade identiteter | Ja | Ja | [Visa lista över hanterade identiteter](#list-role-assignments-for-managed-identities) | Du måste inaktivera och återaktivera hanterade identiteter. Du måste återskapa roll tilldelningarna. |
 | Användare som tilldelats hanterade identiteter | Ja | Ja | [Visa lista över hanterade identiteter](#list-role-assignments-for-managed-identities) | Du måste ta bort, återskapa och bifoga de hanterade identiteterna till lämplig resurs. Du måste återskapa roll tilldelningarna. |
 | Azure Key Vault | Ja | Ja | [Visa lista Key Vault åtkomst principer](#list-key-vaults) | Du måste uppdatera klient-ID: t som är associerat med nyckel valvena. Du måste ta bort och lägga till nya åtkomst principer. |
-| Azure SQL-databaser med integrering med Azure AD-autentisering aktive rad | Ja | Inga | [Kontrol lera Azure SQL-databaser med Azure AD-autentisering](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
+| Azure SQL-databaser med integrering med Azure AD-autentisering aktive rad | Ja | Inga | [Kontrol lera Azure SQL-databaser med Azure AD-autentisering](#list-azure-sql-databases-with-azure-ad-authentication) | Du kan inte överföra en Azure SQL-databas med Azure AD-autentisering aktive rad till en annan katalog. Mer information finns i [använda Azure Active Directory autentisering](../azure-sql/database/authentication-aad-overview.md). | 
 | Azure Storage och Azure Data Lake Storage Gen2 | Ja | Ja |  | Du måste återskapa alla ACL: er. |
 | Azure Data Lake Storage Gen1 | Ja | Ja |  | Du måste återskapa alla ACL: er. |
 | Azure Files | Ja | Ja |  | Du måste återskapa alla ACL: er. |
-| Azure File Sync | Ja | Ja |  |  |
+| Azure File Sync | Ja | Ja |  | Tjänsten för synkronisering av lagring och/eller lagrings kontot kan flyttas till en annan katalog. Mer information finns i [vanliga frågor och svar om Azure Files](../storage/files/storage-files-faq.md#azure-file-sync) |
 | Azure Managed Disks | Ja | Ja |  |  Om du använder disk krypterings uppsättningar för att kryptera Managed Disks med Kundhanterade nycklar, måste du inaktivera och återaktivera systemtilldelade identiteter som är kopplade till disk krypterings uppsättningar. Och du måste skapa roll tilldelningarna igen, vilket innebär att de behörigheter som krävs för disk krypterings uppsättningar i nyckel valvet beviljas igen. |
-| Azure Kubernetes Service | Ja | Ja |  |  |
+| Azure Kubernetes Service | Ja | Inga |  | Du kan inte överföra ditt AKS-kluster och dess associerade resurser till en annan katalog. Mer information finns i [vanliga frågor och svar om Azure Kubernetes service (AKS)](../aks/faq.md) |
 | Azure Policy | Ja | Inga | Alla Azure Policy objekt, inklusive anpassade definitioner, tilldelningar, undantag och efterlevnadsprinciper. | Du måste [Exportera](../governance/policy/how-to/export-resources.md), importera och tilldela om definitioner. Skapa sedan nya princip tilldelningar och eventuella [princip undantag](../governance/policy/concepts/exemption-structure.md)som behövs. |
-| Azure Active Directory Domain Services | Ja | Inga |  |  |
+| Azure Active Directory Domain Services | Ja | Inga |  | Du kan inte överföra en Azure AD Domain Services hanterad domän till en annan katalog. Mer information finns i [vanliga frågor och svar om Azure Active Directory (AD) Domain Services](../active-directory-domain-services/faqs.md) |
 | Appregistreringar | Ja | Ja |  |  |
 
 > [!WARNING]

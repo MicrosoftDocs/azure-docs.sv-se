@@ -3,16 +3,16 @@ title: Felsöka dirigering av pipelines och utlösare i Azure Data Factory
 description: Använd olika metoder för att felsöka problem med pipeline-utlösare i Azure Data Factory.
 author: ssabat
 ms.service: data-factory
-ms.date: 03/13/2021
+ms.date: 04/01/2021
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 72f2a5eec25b9acc2aedd7b006fe3380141781c8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 49205025e26f7c0eb609638e70a58c9c0c14748e
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563420"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385419"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Felsöka dirigering av pipelines och utlösare i Azure Data Factory
 
@@ -83,7 +83,26 @@ Du har nått kapacitets gränsen för integration Runtime. Du kanske kör en sto
 - Kör dina pipelines vid olika utlösnings tider.
 - Skapa en ny integrerings körning och dela dina pipeliner över flera integrerings körningar.
 
-### <a name="how-to-perform-activity-level-errors-and-failures-in-pipelines"></a>Så här utför du fel och fel på aktivitets nivå i pipelines
+### <a name="a-pipeline-run-error-while-invoking-rest-api-in-a-web-activity"></a>Ett fel i pipeline-körning när REST API anropas i en webb aktivitet
+
+**Problem**
+
+Felmeddelande:
+
+`
+Operation on target Cancel failed: {“error”:{“code”:”AuthorizationFailed”,”message”:”The client ‘<client>’ with object id ‘<object>’ does not have authorization to perform action ‘Microsoft.DataFactory/factories/pipelineruns/cancel/action’ over scope ‘/subscriptions/<subscription>/resourceGroups/<resource group>/providers/Microsoft.DataFactory/factories/<data factory name>/pipelineruns/<pipeline run id>’ or the scope is invalid. If access was recently granted, please refresh your credentials.”}}
+`
+
+**Orsak**
+
+Pipelines kan använda webb aktiviteten för att anropa ADF-REST API metoder om och bara om den Azure Data Factory medlemmen har tilldelats rollen deltagare. Du måste först konfigurera Lägg till Azure Data Factory hanterade identiteten i deltagar säkerhets rollen. 
+
+**Lösning**
+
+Innan du använder Azure Data Factory REST API på fliken Inställningar för en webb aktivitet måste du konfigurera säkerheten. Azure Data Factory pipelines kan använda webb aktiviteten för att anropa ADF REST API metoder om och endast om den Azure Data Factory hanterade identiteten har tilldelats rollen *deltagare*  . Börja med att öppna Azure Portal och klicka på länken **alla resurser** på den vänstra menyn. Välj **Azure Data Factory**  för att lägga till ADF-hanterad identitet med deltagar rollen genom att klicka på knappen **Lägg till** i rutan *Lägg till en roll tilldelning* .
+
+
+### <a name="how-to-check-and-branch-on-activity-level-success-and-failure-in-pipelines"></a>Så här kontrollerar och grenar du på aktivitets nivåns framgångar och fel i pipelines
 
 **Orsak**
 
@@ -115,7 +134,7 @@ Graden av parallellitet *är i* själva verket den högsta graden av parallellit
 
 Kända *fakta om* Förkunskap
  * I förvars egenskap kallas batch Count (n), där standardvärdet är 20 och Max värdet är 50.
- * Batch Count, n, används för att konstruera n köer. Senare kommer vi att diskutera lite information om hur dessa köer skapas.
+ * Batch Count, n, används för att konstruera n köer. 
  * Varje kö körs sekventiellt, men du kan ha flera köer som körs parallellt.
  * Köerna skapas i förväg. Det innebär att det inte finns någon ombalansering av köerna under körningen.
  * När som helst har du minst ett objekt som ska bearbetas per kö. Det innebär att de flesta n objekt bearbetas vid en bestämd tidpunkt.
@@ -124,7 +143,8 @@ Kända *fakta om* Förkunskap
 **Lösning**
 
  * Du bör inte använda *SetVariable* -aktivitet i *för varje* som körs parallellt.
- * Med hänsyn till hur köerna är konstruerade kan kunden förbättra prestanda genom att ställa in flera *foreaches* där varje förvars bedömning kommer att ha objekt med liknande bearbetnings tid. Detta säkerställer att långvariga körningar bearbetas parallellt i stället i tur och ordning.
+ * Med hänsyn till hur köerna är konstruerade kan kunden förbättra prestanda genom att ställa in multiplar av *förvars redovisning där varje* förvars *behandling ska ha* objekt med liknande bearbetnings tid. 
+ * Detta säkerställer att långvariga körningar bearbetas parallellt i stället i tur och ordning.
 
  ### <a name="pipeline-status-is-queued-or-stuck-for-a-long-time"></a>Pipeline-status är i kö eller fastnar under en längre tid
  

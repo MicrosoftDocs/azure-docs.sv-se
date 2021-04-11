@@ -9,10 +9,10 @@ ms.service: media-services
 ms.custom: subject-monitoring
 ms.date: 03/17/2021
 ms.openlocfilehash: 66fce608515d16c5418ddd18e00319a3cbf088f7
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105609096"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Övervaknings Media Services data referens
@@ -32,7 +32,7 @@ Media Services stöder övervaknings mått för följande resurser:
 
 Du kan övervaka följande konto mått.
 
-|Måttnamn|Visningsnamn|Description|
+|Måttnamn|Visningsnamn|Beskrivning|
 |---|---|---|
 |AssetCount|Antal till gångar|Till gångar i ditt konto.|
 |AssetQuota|Till gångs kvot|Till gångs kvot i ditt konto.|
@@ -50,7 +50,7 @@ Du bör också granska [konto kvoter och begränsningar](../limits-quotas-constr
 
 Följande Media Services [slut punkter för direkt uppspelnings](/rest/api/media/streamingendpoints) mått stöds:
 
-|Måttnamn|Visningsnamn|Description|
+|Måttnamn|Visningsnamn|Beskrivning|
 |---|---|---|
 |Begäranden|Begäranden|Visar det totala antalet HTTP-begäranden som hanteras av slut punkten för direkt uppspelning.|
 |Utgående|Utgående|Utgående byte totalt per minut per slut punkt för direkt uppspelning.|
