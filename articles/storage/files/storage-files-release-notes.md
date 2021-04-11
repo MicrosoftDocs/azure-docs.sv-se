@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/26/2021
+ms.date: 4/7/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 0e1cfe0ae53d1e1b35c5ec29d6c11b0891137e6d
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 4c046129293fcfbcea8ecaf98da72b9126dd540a
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074411"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030346"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Viktig information om Azure File Sync-agenten
 Med Azure File Sync kan du centralisera din organisations filresurser i Azure Files med samma flexibilitet, prestanda och kompatibilitet som du får om du använder en lokal filserver. Dina Windows Server-installationer omvandlas till ett snabbt cacheminne för Azure-filresursen. Du kan använda alla protokoll som är tillgängliga på Windows Server för att komma åt data lokalt (inklusive SMB, NFS och FTPS). Du kan ha så många cacheminnen som du behöver över hela världen.
@@ -26,6 +26,7 @@ Följande Azure File Sync agent versioner stöds:
 | Gränser | Agentversionsnummer | Utgivningsdatum | Status |
 |----|----------------------|--------------|------------------|
 | V12-version – [KB4568585](https://support.microsoft.com/topic/b9605f04-b4af-4ad8-86b0-2c490c535cfd)| 12.0.0.0 | 26 mars 2021 | Support – flyg |
+| V 11.3-utgåva – [KB4539953](https://support.microsoft.com/topic/f68974f6-bfdd-44f4-9659-bf2d8a696c26)| 11.3.0.0 | 7 april 2021 | Stöds |
 | V 11.2-utgåva – [KB4539952](https://support.microsoft.com/topic/azure-file-sync-agent-v11-2-release-february-2021-c956eaf0-cd8e-4511-98c0-e5a1f2c84048)| 11.2.0.0 | 2 februari 2021 | Stöds |
 | V 11.1 release- [KB4539951](https://support.microsoft.com/help/4539951)| 11.1.0.0 | 4 november 2020 | Stöds |
 | V 10.1-version – [KB4522411](https://support.microsoft.com/help/4522411)| 10.1.0.0 | 5 juni 2020 | Agent versionen som stöds upphör att gälla den 7 juni 2021 |
@@ -76,6 +77,7 @@ Följande viktig information gäller version 12.0.0.0 av Azure File Sync agent (
     - Förbättrad prestanda för ändrings identifiering för att identifiera filer som har ändrats i Azure-filresursen.
     - Prestanda förbättringar för synkronisering av avstämnings-sessioner. 
     - Förbättringar av synkronisering för att minska ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED och ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED fel.
+    - En bugg har åtgärd ATS som gör att data skadas om moln skiktning är aktiverat och skiktade filer kopieras med Robocopy med parametern/B.
     - En bugg har åtgärd ATS som kan orsaka att filer inte kan köras på nivån på Server 2019 om datadeduplicering har Aktiver ATS på volymen.
     - En bugg har åtgärd ATS som kan orsaka att AFSDiag inte kan komprimera filer om en fil är större än 2GiB.
 
@@ -131,8 +133,12 @@ Följande objekt synkroniseras inte, men resten av systemet fortsätter att fung
 ### <a name="cloud-tiering"></a>Lagringsnivåer för moln
 - Om en nivåindelad fil kopieras till en annan plats med Robocopy så kommer den kopierade filen inte att vara nivåindelad. Offline-attributet kan anges eftersom Robocopy felaktigt tar med det attributet i kopieringsåtgärder.
 - När du kopierar filer med Robocopy kan du använda alternativet/MIR för att bevara tidsstämplar för filer. Detta säkerställer att äldre filer går fortare än vid nyligen öppnade filer.
-    > [!Warning]  
-    > Robocopy/B-växeln stöds inte med Azure File Sync. Om du använder Robocopy/B-växeln med en Azure File Sync Server slut punkt när källan kan leda till skadade filer.
+
+## <a name="agent-version-11300"></a>11.3.0.0 för agent version
+Följande viktiga information gäller version 11.3.0.0 av Azure File Sync agent som lanserades den 7 april 2021. De här anteckningarna är utöver de versions anteckningar som anges för version 11.1.0.0.
+
+### <a name="improvements-and-issues-that-are-fixed"></a>Förbättringar och problem som åtgärdas 
+En bugg har åtgärd ATS som gör att data skadas om moln skiktning är aktiverat och skiktade filer kopieras med Robocopy med parametern/B.
 
 ## <a name="agent-version-11200"></a>11.2.0.0 för agent version
 Följande viktig information gäller version 11.2.0.0 av Azure File Sync agent som publicerades den 2 februari 2021. De här anteckningarna är utöver de versions anteckningar som anges för version 11.1.0.0.

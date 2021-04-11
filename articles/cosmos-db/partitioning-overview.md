@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/19/2021
-ms.openlocfilehash: ab1b7028ce5f1afef861e696c98f25b56e78ef36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 099c65143f29f4fdf341b52e5d80731f1bdb0808
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772475"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031009"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partitionering och horisontell skalning i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,9 +26,9 @@ Den här artikeln förklarar förhållandet mellan logiska och fysiska partition
 
 ## <a name="logical-partitions"></a>Logiska partitioner
 
-En logisk partition består av en uppsättning objekt som har samma partitionsnyckel. I en behållare som innehåller data om livsmedels foder innehåller alla objekt till exempel en `foodGroup` egenskap. Du kan använda `foodGroup` som partitionsnyckel för behållaren. Grupper av objekt som har specifika värden för `foodGroup` , till exempel `Beef Products` ,, `Baked Products` och som `Sausages and Luncheon Meats` utgör distinkta logiska partitioner. Du behöver inte oroa dig för att ta bort en logisk partition när underliggande data tas bort.
+En logisk partition består av en uppsättning objekt som har samma partitionsnyckel. I en behållare som innehåller data om livsmedels foder innehåller alla objekt till exempel en `foodGroup` egenskap. Du kan använda `foodGroup` som partitionsnyckel för behållaren. Grupper av objekt som har specifika värden för `foodGroup` , till exempel `Beef Products` ,, `Baked Products` och som `Sausages and Luncheon Meats` utgör distinkta logiska partitioner.
 
-En logisk partition definierar även omfattningen av databas transaktioner. Du kan uppdatera objekt i en logisk partition med hjälp av en [transaktion med ögonblicks bild isolering](database-transactions-optimistic-concurrency.md). När nya objekt läggs till i en behållare, skapas nya logiska partitioner transparent av systemet.
+En logisk partition definierar även omfattningen av databas transaktioner. Du kan uppdatera objekt i en logisk partition med hjälp av en [transaktion med ögonblicks bild isolering](database-transactions-optimistic-concurrency.md). När nya objekt läggs till i en behållare, skapas nya logiska partitioner transparent av systemet. Du behöver inte oroa dig för att ta bort en logisk partition när underliggande data tas bort.
 
 Det finns ingen gräns för antalet logiska partitioner i din behållare. Varje logisk partition kan lagra upp till 20 GB data. Lämpliga alternativ för partitionsalternativ har ett brett utbud av möjliga värden. I en behållare där alla objekt innehåller en `foodGroup` egenskap kan till exempel data i den `Beef Products` logiska partitionen växa upp till 20 GB. [Genom att välja en partitionsnyckel](#choose-partitionkey) med en mängd olika möjliga värden ser du till att behållaren kan skalas.
 
@@ -38,7 +38,8 @@ En behållare skalas genom att distribuera data och data flöde över fysiska pa
 
 Antalet fysiska partitioner i din behållare är beroende av följande:
 
-* Antalet allokerade data flöde (varje enskild fysisk partition kan tillhandahålla ett data flöde på upp till 10 000 enheter för programbegäran per sekund).
+* Antalet allokerade data flöde (varje enskild fysisk partition kan tillhandahålla ett data flöde på upp till 10 000 enheter för programbegäran per sekund). 10 000 RU/s-gränsen för fysiska partitioner innebär att logiska partitioner också har en 10 000 RU/s-gräns, eftersom varje logisk partition endast mappas till en fysisk partition.
+
 * Den totala data lagringen (varje enskild fysisk partition kan lagra upp till 50 GB data).
 
 > [!NOTE]

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
-ms.openlocfilehash: a226682c2580a871e1b2fc4db71f369f3bcc3abb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a4688c196551f3ab6b5713d8939f53af161d1e3
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96010171"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505016"
 ---
 # <a name="how-caching-works"></a>Så här fungerar cachelagring
 
@@ -75,6 +75,7 @@ Azure CDN stöder följande HTTP-cache – direktiv-rubriker, som definierar cac
 - När de används i en HTTP-begäran från klienten till CDN-POP, `Cache-Control` ignoreras som standard av alla Azure CDN profiler.
 - När det används i ett HTTP-svar från klienten till CDN-POP:
      - **Azure CDN Standard/Premium från Verizon** och **Azure CDN Standard från Microsoft** stöder alla `Cache-Control` direktiv.
+     - **Azure CDN Standard/Premium från Verizon** och **Azure CDN Standard från Microsoft** har funktioner för cachelagring för Cache-Control direktiv i [RFC 7234-Hypertext Transfer Protocol (http/1.1): Caching (IETF.org)](https://tools.ietf.org/html/rfc7234#section-5.2.2.8).
      - **Azure CDN Standard från Akamai** stöder endast följande `Cache-Control` direktiv. alla andra ignoreras:
          - `max-age`: Ett cacheminne kan lagra innehållet i angivet antal sekunder. Till exempel `Cache-Control: max-age=5`. Detta direktiv anger den maximala tid som innehållet anses vara färskt.
          - `no-cache`: Cachelagra innehållet, men verifiera innehållet varje gång innan det levereras från cachen. Motsvarar `Cache-Control: max-age=0` .

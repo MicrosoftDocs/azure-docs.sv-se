@@ -126,6 +126,8 @@
       items:
         - name: Skydda privata DNS-zoner och -poster
           href: dns-protect-private-zones-recordsets.md
+        - name: Importera och exportera en DNS-zonfil
+          href: private-dns-import-export.md
     - name: Felsöka
       items:
         - name: Felsökningsguide

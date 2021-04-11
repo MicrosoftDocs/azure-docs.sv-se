@@ -8,20 +8,20 @@ manager: dongli
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 04/2/2021
 ms.author: heikora
-ms.openlocfilehash: b8e02071eca139cde02a8bad1b0e0e443db6ab86
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b82a732533c3d069b519b07c3209d4b96c472900
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103555700"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385033"
 ---
 # <a name="model-and-endpoint-lifecycle"></a>Livs cykel för modell och slut punkt
 
-Custom Speech använder både *bas modeller* och *anpassade modeller*. Varje språk har en eller flera bas modeller. När en ny tal modell släpps till tjänsten vanliga tal, importeras den också till Custom Speech tjänsten som en ny bas modell. De uppdateras var 6 till 12 månader. Äldre modeller blir vanligt vis mindre användbara över tid eftersom den senaste modellen vanligt vis har högre noggrannhet.
-
-Anpassade modeller skapas däremot genom att anpassa en vald bas modell med data från ditt specifika kund scenario. Du kan fortsätta att använda en viss anpassad modell under en längre tid efter att du har en som motsvarar dina behov. Men vi rekommenderar att du regelbundet uppdaterar till den senaste bas modellen och tränar om den med tiden med ytterligare data. 
+Vårt standard tal (inte anpassat) bygger på AI-modeller som vi anropar bas modeller. I de flesta fall tränar vi en annan bas modell för varje talade språk som vi stöder.  Vi uppdaterar tal tjänsten med nya bas modeller per månad för att förbättra precisionen och kvaliteten.  
+Med Custom Speech skapas anpassade modeller genom att anpassa en vald bas modell med data från ditt specifika kund scenario. När du har skapat en anpassad modell kommer den modellen inte att uppdateras eller ändras, även om motsvarande bas modell som den anpassades från uppdateras i standard tal tjänsten.  
+Med den här principen kan du fortsätta att använda en viss anpassad modell under en längre tid efter att du har en anpassad modell som uppfyller dina behov.  Men vi rekommenderar att du regelbundet återskapar din anpassade modell så att du kan anpassa från den senaste bas modellen för att dra nytta av den förbättrade precisionen och kvaliteten.
 
 Andra viktiga villkor som rör modell livs cykeln är:
 
@@ -59,7 +59,7 @@ Här följer ett exempel på Sammanfattning av modell utbildning:
 
 Du kan också kontrol lera förfallo datumen via [`GetModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetModel) och [`GetBaseModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModel) anpassade tal-API: er under `deprecationDates` egenskapen i JSON-svaret.
 
-Här är ett exempel på förfallo data från API-anropet GetModel. "DEPRECATIONDATES" visar: 
+Här är ett exempel på förfallo data från API-anropet GetModel. **DEPRECATIONDATES** visas när modellen upphör att gälla: 
 ```json
 {
     "SELF": "HTTPS://WESTUS2.API.COGNITIVE.MICROSOFT.COM/SPEECHTOTEXT/V3.0/MODELS/{id}",
@@ -80,7 +80,7 @@ Här är ett exempel på förfallo data från API-anropet GetModel. "DEPRECATION
     },
     "PROPERTIES": {
     "DEPRECATIONDATES": {
-        "ADAPTATIONDATETIME": "2022-01-15T00:00:00Z",     // last date this model can be used for adaptation
+        "ADAPTATIONDATETIME": "2022-01-15T00:00:00Z",     // last date the base model can be used for adaptation
         "TRANSCRIPTIONDATETIME": "2023-03-01T21:27:29Z"   // last date this model can be used for decoding
     }
     },
@@ -96,6 +96,13 @@ Här är ett exempel på förfallo data från API-anropet GetModel. "DEPRECATION
 }
 ```
 Observera att du kan uppgradera modellen på en anpassad tal slut punkt utan drift stopp genom att ändra modellen som används av slut punkten i distributions avsnittet i tal Studio, eller via det anpassade tal-API: et.
+
+## <a name="what-happens-when-models-expire-and-how-to-update-them"></a>Vad händer när modeller upphör att gälla och hur de uppdateras
+Vad som händer när en modell upphör att gälla och hur du uppdaterar modellen beror på hur den används.
+### <a name="batch-transcription"></a>Batch-transkription
+Om en modell upphör att gälla som används med avskrifts begär Anden för [batch-avskrift](batch-transcription.md) Miss Miss 4xx med ett fel. För att förhindra att den här uppdateringen uppdateras `model` parametern i JSON som skickas i begäran om att **skapa avskrift** , antingen till en senare bas modell eller nyare anpassad modell. Du kan också ta bort `model` posten från JSON om du alltid vill använda den senaste bas modellen.
+### <a name="custom-speech-endpoint"></a>Anpassad tal slut punkt
+Om en modell upphör att gälla som används av en [anpassad tal slut punkt](how-to-custom-speech-train-model.md)kommer tjänsten automatiskt att återgå till att använda den senaste bas modellen för det språk som du använder. använder du du kan välja **distribution** på **Custom Speech** -menyn längst upp på sidan och sedan klicka på slut punktens namn för att se information om den. Längst upp på sidan information visas en knapp för **uppdaterings modell** som gör att du sömlöst kan uppdatera modellen som används av slut punkten utan drift avbrott. Du kan också göra den här ändringen program mässigt genom att använda [**uppdaterings modellens**](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UpdateModel) REST-API.
 
 ## <a name="next-steps"></a>Nästa steg
 

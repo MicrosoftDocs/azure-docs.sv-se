@@ -1,18 +1,19 @@
 ---
 title: Självstudie – Använd Azure Time Series Insights för att lagra och analysera Azure IoT Plug and Play Device-telemetri
 description: Självstudie – konfigurera en Time Series Insights miljö och Anslut IoT Hub för att visa och analysera telemetri från IoT Plug and Play-enheter.
-author: lyrana
-ms.author: lyhughes
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
 ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 588d680acc8c21c7f4dcf6569e23110f3c33c482
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 28cda9fb6997500f6cd7c4c4349635e7b7a36398
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057410"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504285"
 ---
 # <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Självstudie: skapa och konfigurera en Time Series Insights Gen2-miljö
 
@@ -26,7 +27,7 @@ I den här kursen har du:
 > * Använd [DTDL-exempelfilerna (Digital-definitions språket)](https://github.com/Azure/opendigitaltwins-dtdl) som du använde för temperatur styrenheten och termostat-enheter.
 
 > [!NOTE]
-> Den här integrationen mellan Time Series Insights och IoT Plug and Play är i för hands version. Det sätt som DTDL enhets modeller mappar till Time Series Insights Time Series-modellen kan ändras. 
+> Den här integrationen mellan Time Series Insights och IoT Plug and Play är i för hands version. Det sätt som DTDL enhets modeller mappar till Time Series Insights Time Series-modellen kan ändras.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -123,7 +124,7 @@ Sedan översätter du din DTDL-enhets modell till till gångs modellen i Azure T
 
 ### <a name="define-your-types"></a>Definiera dina typer
 
-Du kan börja mata in data i Azure Time Series Insights Gen2 utan att ha en fördefinierad modell. När telemetri kommer Time Series Insights försöker automatiskt lösa Time Series-instanser baserat på dina tids serie-ID-egenskaps värden. Alla instanser tilldelas *standard typen*. Du måste skapa en ny typ manuellt för att kunna kategorisera dina instanser. 
+Du kan börja mata in data i Azure Time Series Insights Gen2 utan att ha en fördefinierad modell. När telemetri kommer Time Series Insights försöker automatiskt lösa Time Series-instanser baserat på dina tids serie-ID-egenskaps värden. Alla instanser tilldelas *standard typen*. Du måste skapa en ny typ manuellt för att kunna kategorisera dina instanser.
 
 Följande information beskriver den enklaste metoden för att synkronisera enhets DTDL modeller med dina tids serie modell typer:
 
@@ -139,7 +140,7 @@ Följande information beskriver den enklaste metoden för att synkronisera enhet
 |-----------|------------------|-------------|
 | `@id` | `id` | `dtmi:com:example:TemperatureController;1` |
 | `displayName`    | `name`   |   `Temperature Controller`  |
-| `description`  |  `description`  |  `Device with two thermostats and remote reboot.` |  
+| `description`  |  `description`  |  `Device with two thermostats and remote reboot.` |
 |`contents` lagringsmatriser| `variables` jobbobjektet  | Se följande exempel.
 
 ![Skärm bild som visar D T D L till Time Series-modell typ.](./media/tutorial-configure-tsi/DTDL-to-TSM-Type.png)
@@ -161,7 +162,7 @@ Följande information beskriver den enklaste metoden för att synkronisera enhet
           "kind": "numeric",
           "value": {
             "tsx": "coalesce($event.workingSet.Long, toLong($event.workingSet.Double))"
-          }, 
+          },
           "aggregation": {
             "tsx": "avg($value)"
           }

@@ -10,16 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: Zhchia
-ms.openlocfilehash: f1600dfc5705ca97f16e8966a796b54fc556d216
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d9699c564476e116654f700c32dd47b7f6d5b81
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94359270"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504574"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Självstudie: Konfigurera GitHub för automatisk användar etablering
 
 Syftet med den här självstudien är att visa de steg du behöver utföra i GitHub och Azure AD för att automatiskt etablera och avetablera användar konton från Azure AD till GitHub.
+
+> [!NOTE]
+> Integreringen med Azure AD provisioning är beroende av [GITHUB scim-API: et](https://developer.github.com/v3/scim/), som är tillgängligt för [GitHub företags moln](https://help.github.com/articles/github-s-products/#github-enterprise) kunder på [företagets fakturerings plan för GitHub](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -33,7 +36,7 @@ Det scenario som beskrivs i självstudien förutsätter att du redan har följan
 * SCIM-etablering till en enskild organisation stöds bara när SSO är aktiverat på organisations nivå
 
 > [!NOTE]
-> Integreringen med Azure AD provisioning är beroende av [GITHUB scim-API: et](https://developer.github.com/v3/scim/), som är tillgängligt för [GitHub företags moln](https://help.github.com/articles/github-s-products/#github-enterprise) kunder på [företagets fakturerings plan för GitHub](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations).
+> Den här integreringen är också tillgänglig för användning från Azure AD amerikanska myndigheters moln miljö. Du hittar det här programmet i Cloud App-galleriet för Azure AD amerikanska myndigheter och konfigurerar det på samma sätt som du gör från det offentliga molnet.
 
 ## <a name="assigning-users-to-github"></a>Tilldela användare till GitHub
 

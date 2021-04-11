@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
-ms.openlocfilehash: b4b9cd0db2a3a99aca80f42b6d69485a542bbadb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a9d6ec6aa5f30af04bf64e238f4a25ec6aef4f5d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580965"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504761"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Använda Twilio för röst-och SMS-funktioner i python
 Den här guiden visar hur du utför vanliga programmerings åtgärder med Twilio API-tjänsten på Azure. Scenarierna som ingår är att ringa ett telefonsamtal och skicka ett SMS-meddelande (Short Message Service). Mer information om Twilio och hur du använder röst-och SMS i dina program finns i avsnittet [Nästa steg](#NextSteps) .
@@ -81,15 +81,15 @@ När du registrerar dig för ett Twilio-konto får du ett konto-SID och en auten
 ## <a name="create-a-python-application"></a><a id="create_app"></a>Skapa ett python-program
 Ett python-program som använder Twilio-tjänsten och körs i Azure skiljer sig något från andra python-program som använder Twilio-tjänsten. Även om Twilio-tjänsterna är REST-baserade och kan anropas från python på flera sätt, kommer den här artikeln att fokusera på hur du använder Twilio-tjänster med [Twilio-bibliotek för python från GitHub][twilio_python]. Mer information om hur du använder Twilio-biblioteket för python finns i [https://www.twilio.com/docs/libraries/python][twilio_lib_docs] .
 
-Börja med att konfigurera en ny virtuell Azure Linux-dator] [azure_vm_setup] att fungera som värd för ditt nya python-webbprogram. När den virtuella datorn är igång måste du exponera programmet på en offentlig port enligt beskrivningen nedan.
+Börja med att [skapa en ny virtuell Azure Linux-dator][azure_vm_setup] för att fungera som värd för ditt nya python-webbprogram. När den virtuella datorn är igång måste du exponera programmet på en offentlig port enligt beskrivningen nedan.
 
 ### <a name="add-an-incoming-rule"></a>Lägg till en inkommande regel
-  1. Gå till sidan [nätverks säkerhets grupp] [azure_nsg].
+  1. Gå till sidan [nätverks säkerhets grupp][azure_nsg] .
   2. Välj den nätverks säkerhets grupp som motsvarar den virtuella datorn.
   3. Lägg till en **utgående regel** för **port 80**. Se till att tillåta inkommande från vilken adress som helst.
 
 ### <a name="set-the-dns-name-label"></a>Ange DNS-namnets etikett
-  1. Gå till sidan [offentliga IP-adresser] [azure_ips].
+  1. Gå till sidan [offentliga IP-adresser][azure_ips] .
   2. Välj den offentliga IP-adress som motsvarar den virtuella datorn.
   3. Ange **etiketten DNS-namn** i **konfigurations** avsnittet. I det här exemplet ser det ut ungefär så här: *domän etiketten*. centralus.cloudapp.Azure.com
 
@@ -272,3 +272,6 @@ Nu när du har lärt dig grunderna om Twilio-tjänsten kan du följa dessa länk
 [twilio_on_github]: https://github.com/twilio
 [twilio_support]: https://www.twilio.com/help/contact
 [twilio_quickstarts]: https://www.twilio.com/docs/quickstart
+[azure_ips]: https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address
+[azure_vm_setup]: https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal
+[azure_nsg]: https://docs.microsoft.com/azure/virtual-network/manage-network-security-group

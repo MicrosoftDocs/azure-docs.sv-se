@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: f9fa2426e371ab9fd99e88979cbcbbb34adb00d6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e0380cf432a1e0de2a8ac274fef7802bee13c58f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643584"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030363"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>Guide för migrering: åtkomst till Azure SQL Database
 
-I den här guiden får du lära dig hur du migrerar din Microsoft Access-databas till en Azure SQL Database med hjälp av SQL Server Migration Assistant för åtkomst (SSMA för åtkomst).
+I den här guiden får du lära dig [hur du migrerar](https://azure.microsoft.com/migration/migration-journey) din Microsoft Access-databas till en Azure SQL Database med hjälp av [SQL Server Migration](https://azure.microsoft.com/migration/migration-journey) Assistant för åtkomst (SSMA för åtkomst).
 
 Andra guider för migrering finns i [Guide för Azure Database migration](https://docs.microsoft.com/data-migration). 
 
@@ -32,7 +32,7 @@ Innan du börjar migrera din Access-databas till en SQL-databas gör du följand
 
 ## <a name="pre-migration"></a>Före migrering
 
-När du har uppfyllt kraven är du redo att upptäcka miljön och bedöma möjligheten för migreringen.
+När du har uppfyllt kraven är du redo att upptäcka miljön och bedöma möjligheten för din [Azure Cloud-migrering](https://azure.microsoft.com/migration).
 
 
 ### <a name="assess"></a>Utvärdera 
@@ -185,6 +185,8 @@ Data SQL Engineering-teamet utvecklade dessa resurser. Det här teamets kärn st
 - Mer information om ramverket och implementerings cykeln för migrering av moln finns i:
    -  [Cloud Adoption Framework för Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Metod tips för att kostnads fritt och ändra storlek på arbets belastningar för migrering till Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [Molnmigrering resurser](https://azure.microsoft.com/migration/resources)
+
 
 - Information om hur du bedömer program åtkomst lagret finns i [Data Access Migration Toolkit (för hands version)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit).
 - Information om hur du utför data åtkomst Layer A/B-testning finns i [Översikt över Database experimentation Assistant](/sql/dea/database-experimentation-assistant-overview).

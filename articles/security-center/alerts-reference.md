@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 0c14b9a0c927ef9ed96853ddeed64b161df0d277
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c0ae5ae4a66ce55da40eae3959945c96013af3ea
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176713"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075652"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Säkerhetsaviseringar – en referensguide
 
@@ -510,7 +510,7 @@ Security Center som stöds av Killing-kedjeen är baserade på [version 7 av Mit
 | **Exfiltrering**        | Exfiltrering refererar till tekniker och attribut som ett resultat av eller stöd i angripare tar bort filer och information från ett mål nätverk. Den här kategorin omfattar även platser i ett system eller nätverk där angripare kan söka efter information till stjäla.                                                                                                                                                                                                                                                                                                                                  |
 | **CommandAndControl**   | Kommandot och kontrollen taktik representerar hur angripare kommunicerar med system under deras kontroll i ett mål nätverk.                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | **Påverkan**              | Påverkan på händelser i huvudsak försöker direkt minska tillgängligheten eller integriteten för ett system, en tjänst eller ett nätverk. inklusive manipulering av data för att påverka en verksamhets-eller drift process. Detta skulle ofta hänvisa till tekniker som till exempel utpressnings tro Jan, data manipulation och andra.                                                                                                                                                                                                                                                                                                     |
-|                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |  |
+|                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | 
 
 > [!NOTE]
 > För aviseringar som är i för hands version: [!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]

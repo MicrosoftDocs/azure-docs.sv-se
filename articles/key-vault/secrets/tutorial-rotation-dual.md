@@ -10,12 +10,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: e7e63ea56edc2b76383ee4c034fd39dd8b8259c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d75ba091ff634bf613722e3a194407beeeda68fb
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98786012"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967242"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>Automatisera rotationen av en hemlighet för resurser som har två uppsättningar autentiseringsuppgifter för autentisering
 
@@ -53,11 +54,17 @@ Du kan använda den här distributions länken om du inte har ett befintligt nyc
 
     ![Skärm bild som visar hur du skapar en resurs grupp.](../media/secrets/rotation-dual/dual-rotation-1.png)
 
-Nu har du ett nyckel valv och två lagrings konton. Du kan kontrol lera den här installationen i Azure CLI genom att köra det här kommandot:
-
+Nu har du ett nyckel valv och två lagrings konton. Du kan kontrol lera den här installationen i Azure CLI eller Azure PowerShell genom att köra det här kommandot:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az resource list -o table -g vaultrotation
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzResource -Name 'vaultrotation*' | Format-Table
+```
+---
 
 Resultatet ser ut ungefär så här:
 
@@ -111,49 +118,97 @@ Du kan hitta mallar och kod för rotations funktionen i [Azure-exempel](https://
 ## <a name="add-the-storage-account-access-keys-to-key-vault"></a>Lägg till lagrings kontots åtkomst nycklar i Key Vault
 
 Börja med att ange åtkomst principen för att ge behörighet att **Hantera hemligheter** till ditt användar huvud konto:
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault set-policy --upn <email-address-of-user> --name vaultrotation-kv --secret-permissions set delete get list
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Set-AzKeyVaultAccessPolicy -UserPrincipalName <email-address-of-user> --name vaultrotation-kv -PermissionsToSecrets set,delete,get,list
+```
+---
 
 Nu kan du skapa en ny hemlighet med lagrings kontots åtkomst nyckel som värde. Du behöver också lagrings kontots resurs-ID, den hemliga giltighets perioden och nyckel-ID: t som ska läggas till i hemligheten så att rotations funktionen kan återskapa nyckeln i lagrings kontot.
 
 Fastställ resurs-ID för lagrings kontot. Du kan hitta det här värdet i `id` egenskapen.
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account show -n vaultrotationstorage
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccount -Name vaultrotationstorage -ResourceGroupName vaultrotation | Select-Object -Property *
+```
+---
 
 Visa en lista med åtkomst nycklar för lagrings kontot så att du kan hämta nyckel värden:
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-az storage account keys list -n vaultrotationstorage 
+az storage account keys list -n vaultrotationstorage
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotation
+```
+---
 
 Lägg till hemlighet i Key Vault med utgångs datum inställt på imorgon, giltighets period för 60 dagar och resurs-ID för lagrings konto. Kör det här kommandot med dina hämtade värden för `key1Value` och `storageAccountResourceId` :
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 $tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
 az keyvault secret set --name storageKey --vault-name vaultrotation-kv --value <key1Value> --tags "CredentialId=key1" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+$tomorrowDate = (Get-Date).AddDays(+1).ToString('yyy-MM-ddTHH:mm:ssZ')
+$secretVaule = ConvertTo-SecureString -String '<key1Value>' -AsPlainText -Force
+$tags = @{
+    CredentialId='key1'
+    ProviderAddress='<storageAccountResourceId>'
+    ValidityPeriodDays='60'
+}
+Set-AzKeyVaultSecret -Name storageKey -VaultName vaultrotation-kv -SecretValue $secretVaule -Tag $tags -Expires $tomorrowDate
+```
+---
 
 Över hemlighet kommer att utlösa `SecretNearExpiry` händelsen inom några minuter. Den här händelsen kommer i sin tur att utlösa funktionen för att rotera hemligheten med förfallo datum inställt på 60 dagar. I den konfigurationen skulle händelsen "SecretNearExpiry" utlösas var 30: e dag (30 dagar före förfallo datum) och rotations funktionen kommer att alternera mellan KEY1 och key2.
 
 Du kan kontrol lera att åtkomst nycklarna har återskapats genom att hämta lagrings konto nyckeln och Key Vault hemligheten och jämföra dem.
 
 Använd det här kommandot för att hämta den hemliga informationen:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault secret show --vault-name vaultrotation-kv --name storageKey
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzKeyVaultSecret -VaultName vaultrotation-kv -Name storageKey -AsPlainText
+```
+---
 
 Observera att `CredentialId` har uppdaterats till alternativ `keyName` och som `value` återskapas:
 
 ![Skärm bild som visar utdata från ett z-valvs hemliga show-kommando för det första lagrings kontot.](../media/secrets/rotation-dual/dual-rotation-4.png)
 
 Hämta åtkomst nycklar för att jämföra värdena:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account keys list -n vaultrotationstorage 
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotation
+```
+---
+
 Observera att `value` nyckeln är samma som hemligheten i Key Vault:
 
 ![Skärm bild som visar utdata från kommandot a z Storage konto Keys-lista för det första lagrings kontot.](../media/secrets/rotation-dual/dual-rotation-5.png)
@@ -185,36 +240,77 @@ Om du vill lägga till lagrings konto nycklar i en befintlig funktion för rotat
 ### <a name="add-another-storage-account-access-key-to-key-vault"></a>Lägg till en annan lagrings konto åtkomst nyckel i Key Vault
 
 Fastställ resurs-ID för lagrings kontot. Du kan hitta det här värdet i `id` egenskapen.
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account show -n vaultrotationstorage2
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccount -Name vaultrotationstorage -ResourceGroupName vaultrotation | Select-Object -Property *
+```
+---
 
 Visa en lista med åtkomst nycklar för lagrings kontot så att du kan hämta key2-värdet:
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-az storage account keys list -n vaultrotationstorage2 
+az storage account keys list -n vaultrotationstorage2
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage2 -ResourceGroupName vaultrotation
+```
+---
 
 Lägg till hemlighet i Key Vault med utgångs datum inställt på imorgon, giltighets period för 60 dagar och resurs-ID för lagrings konto. Kör det här kommandot med dina hämtade värden för `key2Value` och `storageAccountResourceId` :
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
+$tomorrowDate = (Get-Date).AddDays(+1).ToString('yyy-MM-ddTHH:mm:ssZ')
 az keyvault secret set --name storageKey2 --vault-name vaultrotation-kv --value <key2Value> --tags "CredentialId=key2" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
+$secretVaule = ConvertTo-SecureString -String '<key1Value>' -AsPlainText -Force
+$tags = @{
+    CredentialId='key2';
+    ProviderAddress='<storageAccountResourceId>';
+    ValidityPeriodDays='60'
+}
+Set-AzKeyVaultSecret -Name storageKey2 -VaultName vaultrotation-kv -SecretValue $secretVaule -Tag $tags -Expires $tomorrowDate
+```
+---
 
 Använd det här kommandot för att hämta den hemliga informationen:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault secret show --vault-name vaultrotation-kv --name storageKey2
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzKeyVaultSecret -VaultName vaultrotation-kv -Name storageKey2 -AsPlainText
+```
+---
 
 Observera att `CredentialId` har uppdaterats till alternativ `keyName` och som `value` återskapas:
 
 ![Skärm bild som visar utdata från ett z-valvs hemliga show-kommando för det andra lagrings kontot.](../media/secrets/rotation-dual/dual-rotation-8.png)
 
 Hämta åtkomst nycklar för att jämföra värdena:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account keys list -n vaultrotationstorage 
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotation
+```
+---
 
 Observera att `value` nyckeln är samma som hemligheten i Key Vault:
 

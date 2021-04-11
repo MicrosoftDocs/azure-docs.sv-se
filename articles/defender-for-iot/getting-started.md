@@ -3,12 +3,12 @@ title: 'Snabb start: komma igång'
 description: I den här snabb starten får du lära dig hur du kommer igång med att förstå Basic-arbetsflödet för Defender för IoT-distribution.
 ms.topic: quickstart
 ms.date: 2/18/2021
-ms.openlocfilehash: c6136d734570714b691a4ba3c2a72305c4c85590
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: aa26ea26a3fb0a08d931657cb7ad236c68972e2f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784500"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384961"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>Snabb start: kom igång med Defender för IoT
 
@@ -18,9 +18,9 @@ Den här artikeln innehåller en översikt över de steg du ska vidta för att k
 - Installera sensor-och program varan för den lokala hanterings konsolen.
 - Utför inledande aktivering av sensor-och hanterings konsolen.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
-Inget
+- Inget
 
 ## <a name="permission-requirements"></a>Behörighets krav
 
@@ -60,11 +60,14 @@ Registreringen omfattar:
 Så här registrerar du dig:
 
 1. Gå till Azure Defender för IoT-portalen.
+
 1. Välj **onboard-prenumeration**.
+
 1. På sidan **prissättning** väljer du en prenumeration eller skapar en ny och lägger till antalet allokerade enheter.
+
 1. Välj fliken **Ladda ned den lokala hanterings konsolen** och spara den nedladdade aktiverings filen. Den här filen innehåller de aggregerade allokerade enheter som du har definierat. Filen laddas upp till hanterings konsolen efter den första inloggningen.
 
-Information om hur du avpublicera en prenumeration finns i [avpublicera a-prenumeration](how-to-manage-sensors-on-the-cloud.md#offboard-a-subscription).
+Information om hur du avpublicera en prenumeration finns i [avpublicera a-prenumeration](how-to-manage-subscriptions.md#offboard-a-subscription).
 
 ## <a name="install-and-set-up-the-on-premises-management-console"></a>Installera och konfigurera den lokala hanterings konsolen
 
@@ -87,6 +90,7 @@ Installera och konfigurera:
 Publicera en sensor genom att registrera den med Azure Defender för IoT och hämta en sensor aktiverings fil:
 
 1. Definiera ett sensor namn och associera det med en prenumeration.
+
 1. Välj ett sensor hanterings läge:
 
    - **Moln anslutna sensorer**: information som sensorer identifierar visas i sensor konsolen. Dessutom levereras aviserings information via en IoT-hubb och kan delas med andra Azure-tjänster, till exempel Azure Sentinel.
@@ -102,9 +106,13 @@ Mer information finns i [publicera och hantera sensorer i Defender för IoT-port
 Hämta ISO-paketet från Azure Defender för IoT-portalen, installera program varan och konfigurera sensorn.
 
 1. Välj **komma igång** från Defender för IoT-portalen.
+
 1. Välj **Konfigurera sensor**.
+
 1. Välj en version och välj **Hämta**.
+
 1. Installera sensorprogram varan. Mer information finns i [Defender för IoT-installation](how-to-install-software.md).
+
 1. Aktivera och konfigurera sensorn. Mer information finns i [Logga in och aktivera en sensor](how-to-activate-and-set-up-your-sensor.md).
 
 ## <a name="connect-sensors-to-an-on-premises-management-console"></a>Ansluta sensorer till en lokal hanterings konsol

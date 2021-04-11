@@ -1,7 +1,7 @@
 ---
 title: Vad är nytt i Azure Active Directory programmets etablering
 description: Ny och uppdaterad dokumentation för Azure Active Directory programmets etablering.
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,27 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: abee58607a5492548e4d64f44c15fd365876f3f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bb8dfbaf7ee1758811016dd3ddf08367a44bfae
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453690"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443516"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory applikations etablering: Nyheter
 
 Välkommen till nyheter i Azure Active Directory Application Provisioning-dokumentationen. Den här artikeln innehåller nya dokument som har lagts till och de som har haft betydande uppdateringar under de senaste tre månaderna. Information om vad som är nytt med etablerings tjänsten finns i [Nyheter i Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="march-2021"></a>Mars 2021
+
+### <a name="updated-articles"></a>Uppdaterade artiklar
+
+- [Synkroniserar tilläggs-attribut för app-etablering](user-provisioning-sync-attributes-for-mapping.md)
+- [Program etablering i karantän status](application-provisioning-quarantine-status.md)
+- [Hantera användar konto etablering för företags program i Azure Portal](configure-automatic-user-provisioning-portal.md)
+- [Referens för att skriva uttryck för mappningar av attribut i Azure AD](functions-for-customizing-application-data.md)
+- [Självstudie: utveckla en exempel SCIM-slutpunkt](use-scim-to-build-users-and-groups-endpoints.md)
+
 
 ## <a name="february-2021"></a>Februari 2021
 
