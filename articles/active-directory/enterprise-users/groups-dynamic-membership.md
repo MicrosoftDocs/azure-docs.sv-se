@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c25504e3313234ac6b6f80a6e00c77fce28b1400
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 41bdf5251881fa9307a3cd4d214081845e967900
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102174537"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209527"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regler för dynamiskt medlemskap för grupper i Azure Active Directory
 
@@ -52,19 +52,19 @@ Mer detaljerade instruktioner finns i [skapa eller uppdatera en dynamisk grupp](
 
 ![Lägg till medlemskaps regel för en dynamisk grupp](./media/groups-dynamic-membership/update-dynamic-group-rule.png)
 
-### <a name="rule-syntax-for-a-single-expression"></a>Regel-syntax för ett enskilt uttryck
+### <a name="rule-syntax-for-a-single-expression&quot;></a>Regel-syntax för ett enskilt uttryck
 
 Ett enda uttryck är den enklaste formen av en medlemskaps regel och har bara tre delar som anges ovan. En regel med ett enda uttryck ser ut ungefär så här: `Property Operator Value` , där syntaxen för egenskapen är namnet på objektet objekt. Property.
 
 Följande är ett exempel på en korrekt konstruerad medlemskaps regel med ett enda uttryck:
 
 ```
-user.department -eq "Sales"
+user.department -eq &quot;Sales&quot;
 ```
 
-Parenteser är valfria för ett enda uttryck. Den totala längden för bröd texten i medlemskaps regeln får inte överstiga 2048 tecken.
+Parenteser är valfria för ett enda uttryck. Den totala längden för bröd texten i medlemskaps regeln får inte överstiga 3072 tecken.
 
-## <a name="constructing-the-body-of-a-membership-rule"></a>Skapa bröd texten i en medlemskaps regel
+## <a name=&quot;constructing-the-body-of-a-membership-rule&quot;></a>Skapa bröd texten i en medlemskaps regel
 
 En medlemskaps regel som automatiskt fyller i en grupp med användare eller enheter är ett binärt uttryck som resulterar i ett sant eller falskt resultat. De tre delarna i en enkel regel är:
 
@@ -74,7 +74,7 @@ En medlemskaps regel som automatiskt fyller i en grupp med användare eller enhe
 
 Ordningen på delarna i ett uttryck är viktiga för att undvika syntaxfel.
 
-## <a name="supported-properties"></a>Egenskaper som stöds
+## <a name=&quot;supported-properties&quot;></a>Egenskaper som stöds
 
 Det finns tre typer av egenskaper som kan användas för att skapa en medlemskaps regel.
 
@@ -84,18 +84,18 @@ Det finns tre typer av egenskaper som kan användas för att skapa en medlemskap
 
 Följande är de användar egenskaper som du kan använda för att skapa ett enda uttryck.
 
-### <a name="properties-of-type-boolean"></a>Egenskaper av boolesk typ
+### <a name=&quot;properties-of-type-boolean&quot;></a>Egenskaper av boolesk typ
 
 | Egenskaper | Tillåtna värden | Användning |
 | --- | --- | --- |
 | accountEnabled |Sant falskt |User. accountEnabled-EQ sant |
 | dirSyncEnabled |Sant falskt |User. dirSyncEnabled-EQ sant |
 
-### <a name="properties-of-type-string"></a>Egenskaper av typen sträng
+### <a name=&quot;properties-of-type-string&quot;></a>Egenskaper av typen sträng
 
 | Egenskaper | Tillåtna värden | Användning |
 | --- | --- | --- |
-| city |Valfritt sträng värde eller *Null* |(User. City-EQ "värde") |
+| city |Valfritt sträng värde eller *Null* |(User. City-EQ &quot;värde") |
 | land |Valfritt sträng värde eller *Null* |(User. Country-EQ "värde") |
 | companyName | Valfritt sträng värde eller *Null* | (User. företags namn – EQ "värde") |
 | avdelning |Valfritt sträng värde eller *Null* |(User. Department-EQ "värde") |

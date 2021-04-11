@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 1d1751ed56f63105ce7775ceaed9ea2dcca1f8bf
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105628143"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – enskild server
@@ -36,7 +36,7 @@ I en Azure Database for PostgreSQL-Server kan du skapa en eller flera databaser.
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-postgresql-server"></a>Hur gör jag för att ansluta och autentisera till en Azure Database for PostgreSQL-Server?
 Följande element hjälper till att säkerställa säker åtkomst till databasen:
 
-|Säkerhets koncept|Description|
+|Säkerhets koncept|Beskrivning|
 |:--|:--|
 | **Autentisering och auktorisering** | Azure Database for PostgreSQL-server stöder ursprunglig PostgreSQL-autentisering. Du kan ansluta och autentisera till servern med serverns administratörsinloggning. |
 | **Protokoll** | Tjänsten stöder ett Message-baserat protokoll som används av PostgreSQL. |

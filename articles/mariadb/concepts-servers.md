@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 9a5cd55576d505114c15028cf637114f3baf7668
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105627990"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Server koncept i Azure Database for MariaDB
@@ -37,7 +37,7 @@ Du kan skapa en eller flera databaser på en Azure Database for MariaDB-server. 
 
 Följande element hjälper till att säkerställa säker åtkomst till din databas.
 
-| Säkerhets koncept | Description |
+| Säkerhets koncept | Beskrivning |
 | :-- | :-- |
 | **Autentisering och auktorisering** | Azure Database for MariaDB Server stöder inbyggd MySQL-autentisering. Du kan ansluta och autentisera till en server med serverns Administratörs inloggning. |
 | **Protokoll** | Tjänsten har stöd för ett Message-baserat protokoll som används av MySQL. |
