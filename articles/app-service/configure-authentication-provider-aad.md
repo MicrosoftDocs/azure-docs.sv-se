@@ -5,54 +5,51 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 0f028f264d02d7300bb888e2053708ef6b06ea51
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b1254e7db0e62d08ea2a3d6d30f2abd379675c55
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721570"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078323"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurera din App Service-eller Azure Functions-app för att använda Azure AD-inloggning
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Den här artikeln visar hur du konfigurerar autentisering för Azure App Service eller Azure Functions så att appen loggar in användare med Azure Active Directory (Azure AD) som autentiseringsprovider.
+Den här artikeln visar hur du konfigurerar autentisering för Azure App Service eller Azure Functions så att appen loggar in användare med [Microsoft Identity Platform](../active-directory/develop/v2-overview.md) (Azure AD) som autentiseringsprovider.
 
-## <a name="configure-with-express-settings"></a><a name="express"> </a>Konfigurera med Express inställningar
+Med funktionen App Service autentisering kan du automatiskt skapa en app-registrering med Microsoft Identity Platform. Du kan också använda en registrering som du eller en katalog administratör skapar separat.
 
-**Express** alternativet är utformat för att göra det enkelt att aktivera autentisering och kräver bara några klick.
-
-Express inställningarna skapar automatiskt en program registrering som använder Azure Active Directory v1-slutpunkten. Följ de [avancerade konfigurations anvisningarna](#advanced)om du vill använda [Azure Active Directory v 2.0](../active-directory/develop/v2-overview.md) (inklusive [MSAL](../active-directory/develop/msal-overview.md)).
+- [Skapa en ny app-registrering automatiskt](#express)
+- [Använd en befintlig registrering som skapats separat](#advanced)
 
 > [!NOTE]
-> **Express** alternativet är inte tillgängligt för offentliga moln.
+> Alternativet för att skapa en ny registrering är inte tillgängligt för offentliga moln. Definiera i stället [en registrering separat](#advanced).
 
-Följ dessa steg om du vill aktivera autentisering med alternativet **Express** :
+## <a name="create-a-new-app-registration-automatically"></a><a name="express"> </a>Skapa en ny app-registrering automatiskt
 
-1. I [Azure Portal]söker du efter och väljer **app Services** och väljer sedan din app.
-2. Välj **autentisering/auktorisering** på i det vänstra navigerings fältet  >  .
-3. Välj **Azure Active Directory**  >  **Express**.
+Det här alternativet är utformat för att göra det enkelt att aktivera autentisering och kräver bara några klick.
 
-   Om du vill välja en befintlig app-registrering i stället:
+1. Logga in på [Azure Portal] och navigera till din app.
+1. Välj **autentisering** i menyn till vänster. Klicka på **Lägg till identitets leverantör**.
+1. Välj **Microsoft** i list rutan identitets leverantör. Alternativet för att skapa en ny registrering är valt som standard. Du kan ändra namnet på registreringen eller de konto typer som stöds.
 
-   1. Välj **Välj befintlig AD-App** och klicka sedan på **Azure AD App**.
-   2. Välj en befintlig app-registrering och klicka på **OK**.
+    En klient hemlighet skapas och lagras som en inställning för en plats-trög [program](./configure-common.md#configure-app-settings) vara med namnet `MICROSOFT_PROVIDER_AUTHENTICATION_SECRET` . Du kan uppdatera den inställningen senare om du vill använda [Key Vault referenser](./app-service-key-vault-references.md) om du vill hantera hemligheten i Azure Key Vault.
 
-4. Välj **OK** för att registrera App Service-appen i Azure Active Directory. En ny app-registrering skapas.
+1. Om det här är den första identitetsprovider som kon figurer ATS för programmet visas även avsnittet **App Service autentiseringsinställningar** . Annars kan du gå vidare till nästa steg.
+    
+    De här alternativen avgör hur programmet svarar på oautentiserade begär Anden och standard valet dirigerar om alla begär Anden att logga in med den nya providern. Du kan ändra det här beteendet nu eller ändra inställningarna senare från skärmen main **Authentication** genom att välja **Redigera** bredvid **autentiseringsinställningar**. Mer information om de här alternativen finns i [Authentication Flow](overview-authentication-authorization.md#authentication-flow).
 
-    ![Express inställningar i Azure Active Directory](./media/configure-authentication-provider-aad/express-settings.png)
+1. Valfritt Klicka på **Nästa: behörigheter** och Lägg till eventuella omfattningar som programmet behöver. De läggs till i appens registrering, men du kan också ändra dem senare.
+1. Klicka på **Lägg till**.
 
-5. Valfritt Som standard tillhandahåller App Service autentisering, men begränsar inte tillåten åtkomst till webbplatsens innehåll och API: er. Du måste auktorisera användare i din app-kod. Om du vill begränsa åtkomsten till appar enbart till användare som autentiserats av Azure Active Directory anger du **åtgärd som ska vidtas när begäran inte autentiseras** att **logga in med Azure Active Directory**. När du ställer in den här funktionen kräver appen att alla begär Anden ska autentiseras. Det omdirigerar också all oautentiserad till Azure Active Directory för autentisering.
-
-    > [!CAUTION]
-    > Att begränsa åtkomsten på det här sättet gäller alla anrop till appen, vilket kanske inte är önskvärt för appar som har en offentligt tillgänglig start sida, som i många program med en enda sida. För sådana program kan du **tillåta anonyma begär Anden (ingen åtgärd)** , med appen manuellt startar inloggningen. Mer information finns i [Authentication Flow](overview-authentication-authorization.md#authentication-flow).
-6. Välj **Spara**.
+Du är nu redo att använda Microsoft Identity Platform för autentisering i din app. Providern visas på skärmen **autentisering** . Därifrån kan du redigera eller ta bort den här providerns konfiguration.
 
 Ett exempel på hur du konfigurerar Azure AD-inloggning för en webbapp som har åtkomst till Azure Storage och Microsoft Graph finns i [den här självstudien](scenario-secure-app-authentication-app-service.md).
 
-## <a name="configure-with-advanced-settings"></a><a name="advanced"> </a>Konfigurera med avancerade inställningar
+## <a name="use-an-existing-registration-created-separately"></a><a name="advanced"> </a>Använd en befintlig registrering som skapats separat
 
-För att Azure AD ska fungera som autentiseringsprovider för din app måste du registrera din app med den. Express alternativet gör detta automatiskt åt dig. Med alternativet Avancerat kan du registrera din app manuellt, anpassa registreringen och manuellt lägga tillbaka registrerings informationen till App Service. Detta är användbart, till exempel om du vill använda en app-registrering från en annan Azure AD-klient än den som din App Service finns i.
+Du kan också registrera ditt program manuellt för Microsoft Identity Platform, anpassa registreringen och konfigurera App Service autentisering med registrerings informationen. Detta är användbart, till exempel om du vill använda en app-registrering från en annan Azure AD-klient än den som ditt program finns i.
 
 ### <a name="create-an-app-registration-in-azure-ad-for-your-app-service-app"></a><a name="register"> </a>Skapa en app-registrering i Azure AD för din app service-app
 
@@ -87,22 +84,27 @@ Registrera appen genom att utföra följande steg:
 
 ### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>Aktivera Azure Active Directory i App Service-appen
 
-1. I [Azure Portal]söker du efter och väljer **app Services** och väljer sedan din app.
-1. Välj **autentisering/auktorisering** på i den vänstra rutan under **Inställningar**  >  .
-1. Valfritt Som standard tillåter App Service autentisering oautentiserad åtkomst till din app. Om du vill framtvinga användarautentisering anger du **åtgärden som ska vidtas när begäran inte autentiseras** att **logga in med Azure Active Directory**.
-1. Under **autentiseringsproviders** väljer du **Azure Active Directory**.
-1. I **hanterings läge** väljer du **avancerat** och konfigurerar app service autentisering enligt följande tabell:
+1. Logga in på [Azure Portal] och navigera till din app.
+1. Välj **autentisering** i menyn till vänster. Klicka på **Lägg till identitets leverantör**.
+1. Välj **Microsoft** i list rutan identitets leverantör.
+1. För **registrering av appar** kan du välja att välja **en befintlig app-registrering i den här katalogen** som automatiskt samlar in nödvändig information om appar. Om registreringen kommer från en annan klient organisation eller om du inte har behörighet att Visa registrerings objekt, väljer du **Ange information om en befintlig app-registrering**. För det här alternativet måste du fylla i följande konfigurations information:
 
     |Fält|Beskrivning|
     |-|-|
-    |Klient-ID| Använd **program-ID: t (klient)** för appens registrering. |
-    |Utfärdar-URL| Använd `<authentication-endpoint>/<tenant-id>/v2.0` och Ersätt *\<authentication-endpoint>* med [slut punkten för autentisering för din moln miljö](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (t. ex. " https://login.microsoftonline.com " för Global Azure), och ersätt även *\<tenant-id>* med den **katalog (klient) ID** där appens registrering skapades. Det här värdet används för att omdirigera användare till rätt Azure AD-klient, samt för att hämta lämpliga metadata för att fastställa lämpliga token för signerings nycklar och token Issuer-anspråk till exempel. För program som använder Azure AD v1 och för Azure Functions appar, utelämna `/v2.0` i URL: en.|
+    |Program-ID (klient)| Använd **program-ID: t (klient)** för appens registrering. |
     |Klient hemlighet (valfritt)| Använd den klient hemlighet som du genererade i appens registrering. Med en klient hemlighet används hybrid flöde och App Service returnerar åtkomst-och uppdateringstoken. När klient hemligheten inte anges används implicit flöde och endast en ID-token returneras. Dessa token skickas av providern och lagras i EasyAuth token Store.|
+    |Utfärdar-URL| Använd `<authentication-endpoint>/<tenant-id>/v2.0` och Ersätt *\<authentication-endpoint>* med [slut punkten för autentisering för din moln miljö](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (t. ex. " https://login.microsoftonline.com " för Global Azure), och ersätt även *\<tenant-id>* med den **katalog (klient) ID** där appens registrering skapades. Det här värdet används för att omdirigera användare till rätt Azure AD-klient, samt för att hämta lämpliga metadata för att fastställa lämpliga token för signerings nycklar och token Issuer-anspråk till exempel. För program som använder Azure AD v1 och för Azure Functions appar, utelämna `/v2.0` i URL: en.|
     |Tillåtna token-mottagare| Om det här är en moln-eller Server App och du vill tillåta autentiseringstoken från en webbapp lägger du till **program-ID-URI: n** för webbappen här. Det konfigurerade **klient-ID: t** anses *alltid* vara en tillåten mål grupp.|
 
-2. Välj **OK** och välj sedan **Spara**.
+    Klient hemligheten kommer att lagras som en plats-trög [program inställning](./configure-common.md#configure-app-settings) med namnet `MICROSOFT_PROVIDER_AUTHENTICATION_SECRET` . Du kan uppdatera den inställningen senare om du vill använda [Key Vault referenser](./app-service-key-vault-references.md) om du vill hantera hemligheten i Azure Key Vault.
 
-Du är nu redo att använda Azure Active Directory för autentisering i din App Service-app.
+1. Om det här är den första identitetsprovider som kon figurer ATS för programmet visas även avsnittet **App Service autentiseringsinställningar** . Annars kan du gå vidare till nästa steg.
+    
+    De här alternativen avgör hur programmet svarar på oautentiserade begär Anden och standard valet dirigerar om alla begär Anden att logga in med den nya providern. Du kan ändra det här beteendet nu eller ändra inställningarna senare från skärmen main **Authentication** genom att välja **Redigera** bredvid **autentiseringsinställningar**. Mer information om de här alternativen finns i [Authentication Flow](overview-authentication-authorization.md#authentication-flow).
+
+1. Klicka på **Lägg till**.
+
+Du är nu redo att använda Microsoft Identity Platform för autentisering i din app. Providern visas på skärmen **autentisering** . Därifrån kan du redigera eller ta bort den här providerns konfiguration.
 
 ## <a name="configure-client-apps-to-access-your-app-service"></a>Konfigurera klient program för att få åtkomst till din App Service
 

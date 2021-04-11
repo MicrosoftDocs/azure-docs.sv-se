@@ -5,14 +5,14 @@ services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: conceptual
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.author: yuajia
-ms.openlocfilehash: 039effb885463c1c53085535a6980601be890340
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9e8defa9e929d21f210c48ffbd3b22e44195c17d
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561511"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106061629"
 ---
 # <a name="azure-front-door-standardpremium-preview-rule-set-match-conditions"></a>Regel uppsättning matchnings villkor för Azure front dörr standard/Premium (för hands version)
 
@@ -685,7 +685,7 @@ I det här exemplet matchar vi alla förfrågningar där begäran använder `HTT
 
 ## <a name="request-url"></a><a name="RequestUrl"></a> URL för begäran
 
-Identifierar begär Anden som matchar angiven URL. Hela URL: en utvärderas. Du kan ange flera värden som ska matchas, som kombineras med eller Logic.
+Identifierar begär Anden som matchar angiven URL. Hela URL: en utvärderas, inklusive protokollet och frågesträngen, men inte i fragmentet. Du kan ange flera värden som ska matchas, som kombineras med eller Logic.
 
 > [!TIP]
 > När du använder det här regel villkoret ska du se till att ta med protokollet. Använd till exempel `https://www.contoso.com` istället för bara `www.contoso.com` .
@@ -790,10 +790,6 @@ Reguljära uttryck stöder inte följande åtgärder:
 * `\K`Början av matchnings omställnings direktivet.
 * Bild texter och inbäddad kod.
 * Atomiska grupperingar och possessive-kvantifierare.
-
-## <a name="arm-template-support"></a>Stöd för ARM-mall
-
-Regel uppsättningar kan konfigureras med hjälp av Azure Resource Manager mallar. [Se en exempel mall](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set). Du kan lägga till matchnings villkor med hjälp av JSON-eller bicep-kodfragmenten som ingår i exemplen ovan.
 
 ## <a name="next-steps"></a>Nästa steg
 

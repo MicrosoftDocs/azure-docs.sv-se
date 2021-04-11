@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: f2ea960d28bcdcbf586570933ac00dccae18e46a
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: bc7b1a0742e79c3c84bf533e75467b5def2706b4
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068004"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277733"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Ta med din egen nyckel (Kundhanterade nycklar) med Media Services
 
@@ -46,8 +46,8 @@ Media Services stöder automatiskt Double Encryption. För data i vila använder
 
 ## <a name="tutorials"></a>Självstudier
 
-- [Använd Azure Portal för att använda Kundhanterade nycklar eller BYOK med Media Services](tutorial-byok-portal.md)
-- [Använd kund hanterade nycklar eller BYOK med Media Services REST API](tutorial-byok-postman.md).
+- [Använd Azure Portal för att använda Kundhanterade nycklar eller BYOK med Media Services](security-customer-managed-keys-portal-tutorial.md)
+- [Använd kund hanterade nycklar eller BYOK med Media Services REST API](security-customer-managed-keys-rest-postman-tutorial.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

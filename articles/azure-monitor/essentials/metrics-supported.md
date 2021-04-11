@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 04/01/2021
 ms.author: robb
-ms.openlocfilehash: 0854d56930dbc8decfcf8f96a814f082e361de62
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 6f664450d5450782d9a01d75abfb5a96b3e0bba6
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167251"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221202"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Mått som stöds med Azure Monitor
 
@@ -1734,9 +1734,6 @@ Viktig ytterligare information finns i [Översikt över övervaknings agenter](.
 |IoTConnectorMeasurementIngestionLatencyMs|Ja|Genomsnittlig svars tid för grupp fas|Millisekunder|Genomsnitt|Tids perioden mellan när IoT-anslutningen tog emot enhets data och när data bearbetas av FHIR-konverterings fasen.|Åtgärd, ConnectorName|
 |IoTConnectorNormalizedEvent|Ja|Antal normaliserade meddelanden|Antal|Sum|Det totala antalet kopplade normaliserade normaliserade värden från normaliserings fasen för Azure IoT-anslutningsprogrammet för FHIR.|Åtgärd, ConnectorName|
 |IoTConnectorTotalErrors|Ja|Totalt antal fel|Antal|Sum|Det totala antalet fel som loggats av Azure IoT Connector för FHIR|Namn, åtgärd, ErrorType, ErrorSeverity, ConnectorName|
-|ServiceApiErrors|Ja|Tjänst fel|Antal|Sum|Sammanlagt antal interna Server fel som har genererats av tjänsten.|Protokoll, autentisering, åtgärd, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
-|ServiceApiLatency|Ja|Tjänst svars tid|Millisekunder|Genomsnitt|Svars fördröjning för tjänsten.|Protokoll, autentisering, åtgärd, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
-|ServiceApiRequests|Ja|Service Requests|Antal|Sum|Det totala antalet begär Anden som tagits emot av tjänsten.|Protokoll, autentisering, åtgärd, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
 |TotalErrors|Ja|Totalt antal fel|Antal|Sum|Det totala antalet interna Server fel som har påträffats av tjänsten.|Protokoll, StatusCode, StatusCodeClass, StatusCodeText|
 |TotalLatency|Ja|Total svars tid|Millisekunder|Genomsnitt|Svars fördröjning för tjänsten.|Protokoll|
 |TotalRequests|Ja|Totalt antal förfrågningar|Antal|Sum|Det totala antalet begär Anden som tagits emot av tjänsten.|Protokoll|

@@ -4,15 +4,15 @@ description: Den här artikeln innehåller Azure Security Center säkerhets reko
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/22/2021
+ms.date: 04/06/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 2d9f76bd3c6ad0060a90f52abba1c7378b310e67
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a44a5e4e715238c42e51e65dfe16d4f70dfcf54d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801476"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504828"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Säkerhetsrekommendationer – en referensguide
 
@@ -58,12 +58,15 @@ Dina säkra Poäng baseras på antalet Security Center rekommendationer som du h
 
 ## <a name="deprecated-recommendations"></a>Föråldrade rekommendationer
 
-|Rekommendation|Beskrivning & relaterad princip|Allvarlighetsgrad|Snabb korrigering aktive rad? ([Läs mer](security-center-remediate-recommendations.md#quick-fix-remediation))|Resurstyp|
-|----|----|----|----|----|
-|**Åtkomst till App Services bör vara begränsad**|Begränsa åtkomsten till din App Services genom att ändra nätverks konfigurationen för att neka inkommande trafik från intervall som är för breda.<br>(Relaterad princip: [för hands version]: åtkomst till App Services ska vara begränsad)|Högt|N|App Service|
-|**Reglerna för webb program på IaaS NSG: er bör vara härdade**|Skärp nätverks säkerhets gruppen (NSG) för dina virtuella datorer som kör webb program, med NSG-regler som kan tillåtas för webb program portar.<br>(Relaterad princip: NSG: er-reglerna för webb program på IaaS bör vara härdade)|Högt|N|Virtuell dator|
-|**Pod säkerhets principer bör definieras för att minska angrepps vektorn genom att ta bort onödiga program behörigheter (förhands granskning)**|Definiera Pod säkerhets principer för att minska angrepps vektorn genom att ta bort onödiga program privilegier. Vi rekommenderar att du konfigurerar Pod säkerhets principer så att poddar endast kan komma åt resurser som de har åtkomst till.<br>(Relaterad princip: [för hands version]: Pod säkerhets principer bör definieras på Kubernetes-tjänster)|Medel|N|Beräknings resurser (behållare)|
-|**Installera Azure Security Center för IoT-säkerhetsmodulen för att få mer insyn i IoT-enheterna**|Installera Azure Security Center för IoT-säkerhetsmodulen för att få mer insyn i IoT-enheterna.|Låg|N|IoT-enhet|
+|Rekommendation|Beskrivning & relaterad princip|Allvarlighetsgrad|
+|----|----|----|
+|Åtkomst till App Services bör vara begränsad|Begränsa åtkomsten till din App Services genom att ändra nätverks konfigurationen för att neka inkommande trafik från intervall som är för breda.<br>(Relaterad princip: [för hands version]: åtkomst till App Services ska vara begränsad)|Högt|
+|Reglerna för webb program på IaaS NSG: er bör vara härdade|Skärp nätverks säkerhets gruppen (NSG) för dina virtuella datorer som kör webb program, med NSG-regler som kan tillåtas för webb program portar.<br>(Relaterad princip: NSG: er-reglerna för webb program på IaaS bör vara härdade)|Högt|
+|Pod säkerhets principer bör definieras för att minska angrepps vektorn genom att ta bort onödiga program behörigheter (förhands granskning)|Definiera Pod säkerhets principer för att minska angrepps vektorn genom att ta bort onödiga program privilegier. Vi rekommenderar att du konfigurerar Pod säkerhets principer så att poddar endast kan komma åt resurser som de har åtkomst till.<br>(Relaterad princip: [för hands version]: Pod säkerhets principer bör definieras på Kubernetes-tjänster)|Medel|
+|Installera Azure Security Center för IoT-säkerhetsmodulen för att få mer insyn i IoT-enheterna|Installera Azure Security Center för IoT-säkerhetsmodulen för att få mer insyn i IoT-enheterna.|Låg|
+|Datorerna måste startas om för att tillämpa system uppdateringar|Starta om datorerna för att tillämpa system uppdateringar och skydda datorn från sårbarheter. (Relaterad princip: system uppdateringar bör installeras på dina datorer)|Medel|
+|Övervaknings agenten ska installeras på dina datorer|Den här åtgärden installerar en övervaknings agent på de valda virtuella datorerna. Välj en arbets yta som agenten ska rapportera till. (Ingen relaterad princip)|Högt|
+||||
 
 ## <a name="next-steps"></a>Nästa steg
 
