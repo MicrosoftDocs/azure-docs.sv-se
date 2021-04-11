@@ -2,31 +2,30 @@
 title: Konfigurera IP brand Väggs regler för Azure Service Bus
 description: Hur du använder brand Väggs regler för att tillåta anslutningar från vissa IP-adresser till Azure Service Bus.
 ms.topic: article
-ms.date: 02/12/2021
-ms.openlocfilehash: e73f566533cb2357653f7f584ec9ca77333c0a63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/29/2021
+ms.openlocfilehash: 747e15e912033c5bc6a1f64ab389f1ab03f40c0b
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100560868"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962330"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Tillåt åtkomst till Azure Service Bus namnrymd från vissa IP-adresser eller intervall
 Som standard är Service Bus-namnrymder tillgängliga från Internet så länge förfrågan levereras med giltig autentisering och auktorisering. Med IP-brandvägg kan du begränsa den ytterligare till endast en uppsättning IPv4-adresser eller IPv4-adress intervall i [CIDR-notation (classless Inter-Domain routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
 Den här funktionen är användbar i scenarier där Azure Service Bus bör endast vara tillgängliga från vissa välkända webbplatser. Med brand Väggs regler kan du konfigurera regler för att acceptera trafik som kommer från vissa IPv4-adresser. Om du till exempel använder Service Bus med [Azure Express Route][express-route], kan du skapa en **brand Väggs regel** som tillåter trafik från enbart den lokala infrastrukturens IP-adresser eller adresser för en Corporate NAT-gateway. 
 
-> [!IMPORTANT]
-> - Brand väggar och virtuella nätverk stöds endast på **Premium** -nivån för Service Bus. Om du inte väljer att uppgradera till **Premier** -nivån rekommenderar vi att du behåller signaturen för signaturen för delad åtkomst (SAS) och dela den med endast behöriga användare. Information om SAS-autentisering finns i [autentisering och auktorisering](service-bus-authentication-and-authorization.md#shared-access-signature).
-> - Ange minst en IP-regel eller en regel för virtuella nätverk för namn området för att tillåta trafik enbart från de angivna IP-adresserna eller under nätet för ett virtuellt nätverk. Om det inte finns några IP-och virtuella nätverks regler kan namn området nås via det offentliga Internet (med hjälp av åtkomst nyckeln).  
-
 ## <a name="ip-firewall-rules"></a>Regler för IP-brandvägg
 IP-brandväggens regler tillämpas på Service Bus namn områdes nivå. Reglerna gäller därför för alla anslutningar från klienter som använder ett protokoll som stöds. Eventuella anslutnings försök från en IP-adress som inte matchar en tillåten IP-regel på Service Bus namn området nekas som obehörig. Svaret innehåller ingen IP-regel. IP filter regler tillämpas i ordning och den första regeln som matchar IP-adressen avgör vilken åtgärd som godkänns eller nekas.
 
-Implementering av brand Väggs regler kan förhindra att andra Azure-tjänster interagerar med Service Bus. Som ett undantag kan du tillåta åtkomst till Service Bus resurser från vissa betrodda tjänster även när IP-filtrering är aktive rad. En lista över betrodda tjänster finns i [betrodda tjänster](#trusted-microsoft-services). 
+## <a name="important-points"></a>Viktiga punkter
+- Brand väggar och virtuella nätverk stöds endast på **Premium** -nivån för Service Bus. Om du inte väljer att uppgradera till **Premier** -nivån rekommenderar vi att du behåller signaturen för signaturen för delad åtkomst (SAS) och dela den med endast behöriga användare. Information om SAS-autentisering finns i [autentisering och auktorisering](service-bus-authentication-and-authorization.md#shared-access-signature).
+- Ange **minst en regel för IP-brandvägg eller en regel för virtuella nätverk** för namn området så att endast trafik från de angivna IP-adresserna eller under nätet för ett virtuellt nätverk tillåts. Om det inte finns några IP-och virtuella nätverks regler kan namn området nås via det offentliga Internet (med hjälp av åtkomst nyckeln).  
+- Implementering av brand Väggs regler kan förhindra att andra Azure-tjänster interagerar med Service Bus. Som ett undantag kan du tillåta åtkomst till Service Bus resurser från vissa **betrodda tjänster** även när IP-filtrering är aktive rad. En lista över betrodda tjänster finns i [betrodda tjänster](#trusted-microsoft-services). 
 
-Följande Microsoft-tjänster måste finnas i ett virtuellt nätverk
-- Azure App Service
-- Azure Functions
+    Följande Microsoft-tjänster måste finnas i ett virtuellt nätverk
+    - Azure App Service
+    - Azure Functions
 
 ## <a name="use-azure-portal"></a>Använda Azure-portalen
 Det här avsnittet visar hur du använder Azure Portal för att skapa IP-brandvägg för ett Service Bus namn område. 

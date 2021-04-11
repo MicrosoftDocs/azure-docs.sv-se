@@ -8,12 +8,12 @@ ms.date: 02/23/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: dad8661de55fc90c9f3d3782c402deb519d16536
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44ff938d0990a1a7794140a82c0e9222bb69a5d7
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596016"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384263"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Regioner och Tillgänglighetszoner i Azure
 
@@ -87,8 +87,8 @@ Om ett tjänst erbjudande inte är tillgängligt i en speciell region kan du del
 Som tidigare nämnts klassificerar Azure tjänster i tre kategorier: grundläggande, traditionell och specialiserad. Tjänste kategorier tilldelas allmänt tillgängliga. Ofta startar tjänster deras livs cykel som en specialiserad tjänst och när efter frågan och användnings ökningar kan befordras till vanlig eller grundläggande. I följande tabell visas kategorin för tjänster som grundläggande, traditionell. Tänk på följande om tabellen:
 
 - Vissa tjänster är icke-regionala. Information och en lista över icke-regionala tjänster finns i [produkt tillgänglighet per region](https://azure.microsoft.com/global-infrastructure/services/).
-- Äldre generation tjänster eller virtuella datorer visas inte. Mer information finns i dokumentationen [för tidigare generationer av virtuella dator storlekar](../virtual-machines/sizes-previous-gen.md)
-- . Tjänster har inte tilldelats någon kategori förrän allmän tillgänglighet (GA). Information och en lista över förhands gransknings tjänster finns i [produkt tillgänglighet per region](https://azure.microsoft.com/global-infrastructure/services/). 
+- Äldre generation tjänster eller virtuella datorer visas inte. Mer information finns i dokumentationen [för tidigare generationer av virtuella dator storlekar](../virtual-machines/sizes-previous-gen.md).
+- Tjänster har inte tilldelats någon kategori förrän allmän tillgänglighet (GA). Information och en lista över förhands gransknings tjänster finns i [produkt tillgänglighet per region](https://azure.microsoft.com/global-infrastructure/services/). 
 
 > [!div class="mx-tableFixed"]
 > | Grundläggande                           | Konventionell                                        | 

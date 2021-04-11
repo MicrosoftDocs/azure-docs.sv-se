@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/18/2020
 ms.author: inhenkel
-ms.openlocfilehash: 80edac3106a79a706ee1ef18c48d41d1ad6c3eaf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce0ed303790ad27c99864cc44ea85c96ac3ec468
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101724599"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962245"
 ---
 # <a name="create-a-basic-audio-transform"></a>Skapa en grundläggande ljud omvandling
 
@@ -29,7 +29,7 @@ Den här artikeln visar hur du skapar en grundläggande ljud omvandling.  Basic-
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Följ stegen i [skapa ett Media Services konto](./create-account-howto.md) för att skapa ett Media Services konto och en resurs grupp som krävs för att skapa en till gång.
+Följ stegen i [skapa ett Media Services konto](./account-create-how-to.md) för att skapa ett Media Services konto och en resurs grupp som krävs för att skapa en till gång.
 
 ## <a name="methods"></a>Metoder
 

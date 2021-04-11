@@ -7,16 +7,16 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 2d7a2dcbbd0b6e9a10ca8af93798bfddbee94ee3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 335f78bba24947b1b6c3d6132bc38f237b3298b9
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182663"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449212"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>Snabb start: skapa din första statiska plats med Azures statiska Web Apps
 
-Azures statiska Web Apps publicerar en webbplats i en produktions miljö genom att bygga appar från en GitHub-lagringsplats. I den här snabb starten distribuerar du ett webb program till Azures statiska webbappar med Visual Studio Code-tillägget.
+Azure static Web Apps publicerar en webbplats genom att skapa appar från en kod lagrings plats. I den här snabb starten distribuerar du ett program till Azures statiska webbappar med Visual Studio Code-tillägget.
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt utvärderings konto](https://azure.microsoft.com/free).
 
@@ -32,7 +32,7 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt utvärder
 
 [!INCLUDE [clone the repository](../../includes/static-web-apps-get-started-clone-repo.md)]
 
-Öppna sedan Visual Studio Code och gå till **fil > Öppna mapp** för att öppna den lagrings plats som du precis har klonat till din dator i redigeraren.
+Öppna sedan Visual Studio Code och gå till **fil > Öppna mapp** för att öppna den lagrings plats som du har klonat till din dator i redigeraren.
 
 ## <a name="create-a-static-web-app"></a>Skapa en statisk webbapp
 
@@ -43,7 +43,7 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt utvärder
     > [!NOTE]
     > Azure- och GitHub-inloggning krävs. Om du inte redan har loggat in på Azure och GitHub från Visual Studio Code, uppmanas du att logga in till båda under skapandeprocessen.
 
-1. Placera musen över etiketten _Static Web Apps_ och välj **plustecknet**.
+1. Under etiketten _statisk Web Apps_ väljer du **plus tecknet**.
 
     :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="Programnamn":::
 
@@ -53,45 +53,34 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt utvärder
 
     :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="Skapa en statisk webbapp":::
 
-1. Välj **huvudgenen** och tryck på **Retur**.
+1. Välj de för inställningar som matchar din program typ.
 
-    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="Namn på gren":::
+    # <a name="no-framework"></a>[Inget ramverk](#tab/vanilla-javascript)
+    :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="Program för inställningar: inget ramverk":::
 
-1. Välj **/** som plats för program koden och tryck på **RETUR**.
+    Ange **./** som platsen för programfilerna
 
-    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Plats för programkod":::
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Plats för programfiler":::
 
-1. Tillägget söker efter API-platsen i ditt program. Den här artikeln implementerar inte ett API.
-
-    Välj **Hoppa över för tillfället** och tryck på **Retur**.
+    Välj **hoppa över för tillfället** som plats för Azure Functions-API: et
 
     :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API-plats":::
 
-1. Välj den plats där filer skapas för produktion i din app.
+    Ange **./** som bygg utmatnings plats
 
-    # <a name="no-framework"></a>[Inget ramverk](#tab/vanilla-javascript)
-
-    Avmarkera rutan och tryck på **RETUR**.
-
-    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="Sökväg till app-filer":::
+    :::image type="content" source="media/getting-started/extension-build-location.png" alt-text="Utmatnings plats för program version":::
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    Skriv **förd/vinkel-Basic** och tryck på **RETUR**.
-
-    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="Sökväg för Angular-appfiler":::
+    :::image type="content" source="media/getting-started/extension-presets-angular.png" alt-text="Program för inställningar: vinkel":::
 
     # <a name="react"></a>[React](#tab/react)
 
-    Skriv **build** och tryck på **Retur**.
-
-    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="Sökväg för React-appfiler":::
+    :::image type="content" source="media/getting-started/extension-presets-react.png" alt-text="Program för inställningar: reagera":::
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
-    Skriv **dist** och tryck på **Retur**.
-
-    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Sökväg för Vue-appfiler":::
+    :::image type="content" source="media/getting-started/extension-presets-vue.png" alt-text="Program för inställningar: Vue":::
 
     ---
 
@@ -103,11 +92,13 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt utvärder
 
     :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="Skapad bekräftelse":::
 
-1. I fönstret Visual Studio Code Explorer navigerar du till den nod som har ditt prenumerations namn och expanderar den. Observera att det kan ta några minuter innan distributionen har slutförts. Gå sedan tillbaka till avsnittet med den statiska Web Apps och välj namnet på din app och högerklicka sedan på min-första statiska webb-app och välj Öppna i portalen för att Visa appen i Azure Portal.
+    Klicka sedan på knappen **Öppna åtgärder i GitHub**. På den här sidan visas programmets versions status.
 
-    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="Öppna Portal":::
+    När GitHub-åtgärden har slutförts kan du gå till den publicerade webbplatsen.
 
-[!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
+1. Om du vill visa webbplatsen i webbläsaren högerklickar du på projektet i tillägget för statisk Web Apps och väljer **Bläddra webbplats**.
+
+    :::image type="content" source="media/getting-started/extension-browse-site.png" alt-text="Bläddra på webbplats":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

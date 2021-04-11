@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: ec72431d927fd59677075e7adfdf7df171574882
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44131ecf6fd3d8d2f07f0fe567fb924ac8621682
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772951"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110010"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Översikt: Automatisera distribution av Azure Logic Apps med hjälp av Azure Resource Manager mallar
 
@@ -67,7 +67,7 @@ För en Logic app-mall arbetar du främst med följande mall-objekt:
 |-----------|-------------|
 | `parameters` | Deklarerar [mallparametrar för att](../azure-resource-manager/templates/template-syntax.md#parameters) acceptera värdena som ska användas när du skapar och anpassar resurser för distribution i Azure. Dessa parametrar accepterar till exempel värdena för din Logic Apps namn och plats, anslutningar och andra resurser som krävs för distribution. Du kan lagra dessa parameter värden i en [parameter fil](#template-parameter-files), som beskrivs senare i det här avsnittet. Allmän information finns i [parametrar-Resource Manager-mallens struktur och syntax](../azure-resource-manager/templates/template-syntax.md#parameters). |
 | `resources` | Definierar de [resurser](../azure-resource-manager/templates/template-syntax.md#resources) som ska skapas eller uppdateras och distribueras till en Azure-resurs grupp, till exempel din Logi Kap par, anslutningar, Azure Storage-konton och så vidare. Allmän information finns i [resurser – Resource Manager-mallens struktur och syntax](../azure-resource-manager/templates/template-syntax.md#resources). |
-||||
+|||
 
 Din Logic app-mall använder detta fil namns format:
 

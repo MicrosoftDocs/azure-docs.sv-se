@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 22f4c5bba3ea6836a8c9b016315f3cfae36cb52d
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 225f1d311739bdafbe39971a2b4ac74917e770e9
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106112165"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279501"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Koda video och ljud med Media Services
 
@@ -31,7 +31,7 @@ Videor levereras vanligt vis till enheter och appar genom [progressiv nedladdnin
 > Media Services debiteras inte för annullerade eller felaktiga jobb. Ett jobb som har nått 50% Progress och annulleras faktureras exempelvis inte vid 50% av jobb minuterna. Du debiteras bara för färdiga jobb.
 
 * Om du vill leverera med progressiv nedladdning kan du använda Azure Media Services för att konvertera en digital mediafil (mezzaninfil) till en [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) -fil som innehåller video som har kodats med [H. 264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) -kodeken och ljud som har kodats med [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) -kodeken. Den här MP4-filen skrivs till en till gång i ditt lagrings konto. Du kan använda Azure Storage-API: er eller SDK: er (till exempel [lagrings REST API](../../storage/common/storage-rest-api-auth.md) eller [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) för att hämta filen direkt. Om du skapade utmatnings till gången med ett angivet behållar namn i lager, använder du den platsen. Annars kan du använda Media Services för att [Visa URL: erna till till gångs containern](/rest/api/media/assets/listcontainersas). 
-* För att förbereda innehåll för leverans av direkt uppspelning med anpassningsbar bit hastighet måste mezzaninfil-filen kodas vid flera bit hastigheter (högt till lågt). För att säkerställa en korrekt över gång av kvalitet sänks videons upplösning när bit hastigheten sänks. Detta resulterar i en så kallad kodnings steg – en tabell över lösningar och bit hastigheter (se [autogenererad steg-för anpassad bit hastighet](encode-autogen-bitrate-ladder.md)). Du kan använda Media Services för att koda dina mezzaninfil-filer på flera bit hastigheter. När du gör det får du en uppsättning MP4-filer och tillhör ande konfigurationsfiler för direkt uppspelning som skrivs till en till gång i ditt lagrings konto. Du kan sedan använda funktionen för [dynamisk paketering](encode-dynamic-packaging-concept.md) i Media Services för att leverera videon via strömmande protokoll som [MPEG-streck](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) och [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming). Detta kräver att du skapar en [strömmande lokaliserare](streaming-locators-concept.md) och skapar strömmande URL: er som motsvarar de protokoll som stöds, som sedan kan skickas vidare till enheter/appar baserat på deras funktioner.
+* För att förbereda innehåll för leverans av direkt uppspelning med anpassningsbar bit hastighet måste mezzaninfil-filen kodas vid flera bit hastigheter (högt till lågt). För att säkerställa en korrekt över gång av kvalitet sänks videons upplösning när bit hastigheten sänks. Detta resulterar i en så kallad kodnings steg – en tabell över lösningar och bit hastigheter (se [autogenererad steg-för anpassad bit hastighet](encode-autogen-bitrate-ladder.md)). Du kan använda Media Services för att koda dina mezzaninfil-filer på flera bit hastigheter. När du gör det får du en uppsättning MP4-filer och tillhör ande konfigurationsfiler för direkt uppspelning som skrivs till en till gång i ditt lagrings konto. Du kan sedan använda funktionen för [dynamisk paketering](encode-dynamic-packaging-concept.md) i Media Services för att leverera videon via strömmande protokoll som [MPEG-streck](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) och [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming). Detta kräver att du skapar en [strömmande lokaliserare](stream-streaming-locators-concept.md) och skapar strömmande URL: er som motsvarar de protokoll som stöds, som sedan kan skickas vidare till enheter/appar baserat på deras funktioner.
 
 Följande diagram visar arbets flödet för kodning på begäran med dynamisk paketering.
 
@@ -41,7 +41,7 @@ Det här avsnittet ger vägledning om hur du kodar ditt innehåll med Media Serv
 
 ## <a name="transforms-and-jobs"></a>Transformeringar och jobb
 
-Om du vill koda med Media Services v3 måste du skapa en [transformering](/rest/api/media/transforms) och ett [jobb](/rest/api/media/jobs). Transformeringen definierar ett recept för kodnings inställningar och utdata. jobbet är en instans av receptet. Mer information finns i [Transformeringar och jobb](transforms-jobs-concept.md).
+Om du vill koda med Media Services v3 måste du skapa en [transformering](/rest/api/media/transforms) och ett [jobb](/rest/api/media/jobs). Transformeringen definierar ett recept för kodnings inställningar och utdata. jobbet är en instans av receptet. Mer information finns i [Transformeringar och jobb](transform-jobs-concept.md).
 
 När du kodar med Media Services använder du för inställningar för att berätta för kodaren hur indatafilerna ska bearbetas. I Media Services v3 använder du standard kodare för att koda dina filer. Du kan till exempel ange video upplösning och/eller antalet ljud kanaler som du vill ha i det kodade innehållet.
 
@@ -84,8 +84,8 @@ Du kan ange att du vill skapa ett [jobb](/rest/api/media/jobs/create) med ett en
 
 Se exempel:
 
-* [Klipp en video med .NET](subclip-video-dotnet-howto.md)
-* [Klipp en video med REST](subclip-video-rest-howto.md)
+* [Klipp en video med .NET](transform-subclip-video-dotnet-how-to.md)
+* [Klipp en video med REST](transform-subclip-video-rest-how-to.md)
 
 ## <a name="built-in-presets"></a>Inbyggda för hands inställningar
 

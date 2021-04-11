@@ -1,18 +1,15 @@
 ---
 title: Övervaka Azure Site Recovery | Microsoft Docs
 description: Övervaka och felsöka problem med Azure Site Recovery replikering och åtgärder med hjälp av portalen
-author: raynew
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.author: raynew
-ms.openlocfilehash: d441284b265ab11dd5ece42ec3737e455d662435
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a80f68c230bfed5caad4fd5ce474d8d06fd3d093
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023575"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579326"
 ---
 # <a name="monitor-site-recovery"></a>Övervaka Site Recovery
 
@@ -109,12 +106,12 @@ I **vyn infrastruktur** övervakar du de infrastruktur komponenter som ingår i 
 
     **Scenario** | **Tillstånd**  | **Vyn är tillgänglig?**
     --- |--- | ---
-    **Replikering mellan lokala platser** | Alla delstater | Inga 
-    **Azure VM-replikering mellan Azure-regioner**  | Replikering har Aktiver ATS/inledande replikering pågår | Ja
-    **Azure VM-replikering mellan Azure-regioner** | Misslyckad/misslyckad återställning | Inga   
-    **Replikering av VMware till Azure** | Replikering har Aktiver ATS/inledande replikering pågår | Ja     
-    **Replikering av VMware till Azure** | Misslyckad/misslyckad återställning | Inga      
-    **Hyper-V-replikering till Azure** | Misslyckad/misslyckad återställning | Inga
+    **Replikering mellan lokala platser** | Alla delstater | No 
+    **Azure VM-replikering mellan Azure-regioner**  | Replikering har Aktiver ATS/inledande replikering pågår | Yes
+    **Azure VM-replikering mellan Azure-regioner** | Misslyckad/misslyckad återställning | No   
+    **Replikering av VMware till Azure** | Replikering har Aktiver ATS/inledande replikering pågår | Yes     
+    **Replikering av VMware till Azure** | Misslyckad/misslyckad återställning | No      
+    **Hyper-V-replikering till Azure** | Misslyckad/misslyckad återställning | No
 
 - Om du vill se vyn infrastruktur för en enskild replikerande dator klickar du på **replikerade objekt** i menyn valv och väljer en server.  
 
@@ -152,7 +149,7 @@ I **replikerade objekt** hämtar du en lista över replikerade datorer.
 3. Klicka på **kolumner** om du vill visa ytterligare kolumner, till exempel för att visa problem med konfiguration av återställnings mål, mål konfiguration och replikering.
 4. Klicka på **filter** om du vill visa information som baseras på specifika parametrar, till exempel replikeringsstatus eller en viss replikeringsprincip.
 5. Högerklicka på en dator om du vill initiera åtgärder som redundanstest för den, eller om du vill visa detaljerad fel information som är kopplad till den.
-6. Klicka på en dator om du vill gå vidare till mer information om den. Informationen omfattar:
+6. Klicka på en dator om du vill gå vidare till mer information om den. Information som ingår:
    - **Replikeringsinformation**: aktuell status och hälsa för datorn.
    -  Återställnings punkt mål: aktuell återställnings punkt för den virtuella datorn och tiden då återställningen senast beräknades.
    - **Återställnings punkter**: senaste tillgängliga återställnings punkter för datorn.

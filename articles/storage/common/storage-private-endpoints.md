@@ -11,10 +11,10 @@ ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
 ms.openlocfilehash: 3fcc58f626622bcc728265e782906226859e1bf9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104600470"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Använd privata slut punkter för Azure Storage
@@ -132,7 +132,7 @@ Mer information om hur du konfigurerar en egen DNS-server för att stödja priva
 - [Namnmatchning för resurser i virtuella nätverk i Azure](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
 - [DNS-konfiguration för privata slut punkter](../../private-link/private-endpoint-overview.md#dns-configuration)
 
-## <a name="pricing"></a>Prissättning
+## <a name="pricing"></a>Priser
 
 Pris information finns i [priser för privata Azure-länkar](https://azure.microsoft.com/pricing/details/private-link).
 

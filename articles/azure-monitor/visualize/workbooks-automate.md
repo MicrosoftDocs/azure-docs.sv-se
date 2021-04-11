@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 77190b85da08d09cf05a02dcc5787f0c24229948
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9d4aac17ca823f4eaa0f52ab260b1daca3f52f94
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100624640"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109755"
 ---
 # <a name="programmatically-manage-workbooks"></a>Hantera arbets böcker program mässigt
 
@@ -99,19 +99,19 @@ Det finns två typer av arbets boks resurser som kan hanteras program mässigt:
 
 ### <a name="galleries"></a>Gallerier
 
-| Galleri                                        | Resurstyp                                      | Arbets boks typ |
-| :--------------------------------------------- |:---------------------------------------------------|:--------------|
-| Arbets böcker i Azure Monitor                     | `Azure Monitor`                                    | `workbook`    |
-| VM Insights i Azure Monitor                   | `Azure Monitor`                                    | `vm-insights` |
-| Arbets böcker i Log Analytics-arbetsyta           | `microsoft.operationalinsights/workspaces`         | `workbook`    |
-| Arbets böcker i Application Insights              | `microsoft.insights/component`                     | `workbook`    |
-| Fel söknings guider i Application Insights | `microsoft.insights/component`                     | `tsg`         |
-| Användning i Application Insights                  | `microsoft.insights/component`                     | `usage`       |
-| Arbets böcker i Kubernetes-tjänsten                | `Microsoft.ContainerService/managedClusters`       | `workbook`    |
-| Arbets böcker i resurs grupper                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
-| Arbets böcker i Azure Active Directory            | `microsoft.aadiam/tenant`                          | `workbook`    |
-| VM-insikter på virtuella datorer                | `microsoft.compute/virtualmachines`                | `insights`    |
-| VM Insights i skalnings uppsättningar för virtuella datorer      | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+| Galleri                                        | Resurstyp                                       | Arbets boks typ |
+|:-----------------------------------------------|:----------------------------------------------------|:--------------|
+| Arbets böcker i Azure Monitor                     | `Azure Monitor`                                     | `workbook`    |
+| VM Insights i Azure Monitor                   | `Azure Monitor`                                     | `vm-insights` |
+| Arbets böcker i Log Analytics-arbetsyta           | `microsoft.operationalinsights/workspaces`          | `workbook`    |
+| Arbets böcker i Application Insights              | `microsoft.insights/components`                     | `workbook`    |
+| Fel söknings guider i Application Insights | `microsoft.insights/components`                     | `tsg`         |
+| Användning i Application Insights                  | `microsoft.insights/components`                     | `usage`       |
+| Arbets böcker i Kubernetes-tjänsten                | `Microsoft.ContainerService/managedClusters`        | `workbook`    |
+| Arbets böcker i resurs grupper                   | `microsoft.resources/subscriptions/resourcegroups`  | `workbook`    |
+| Arbets böcker i Azure Active Directory            | `microsoft.aadiam/tenant`                           | `workbook`    |
+| VM-insikter på virtuella datorer                | `microsoft.compute/virtualmachines`                 | `insights`    |
+| VM Insights i skalnings uppsättningar för virtuella datorer      | `microsoft.compute/virtualmachinescalesets`         | `insights`    |
 
 ## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>Azure Resource Manager mall för att distribuera en arbets boks instans
 

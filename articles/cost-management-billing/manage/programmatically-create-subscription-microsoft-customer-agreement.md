@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/12/2021
+ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 779a1410641f945dc8dbf38aecf65b97d64971b1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5409c30020db2c8d7acf3c23df5a7d709d872341
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593988"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963282"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-customer-agreement-with-the-latest-apis"></a>Skapa Azure-prenumerationer via programmering för ett Microsoft-kundavtal med de senaste API:erna
 
@@ -28,7 +28,9 @@ När du skapar en Azure-prenumeration programmatiskt styrs prenumerationen av de
 
 ## <a name="prerequisites"></a>Krav
 
-För att kunna skapa prenumerationer måste du ha rollen ägare, deltagare eller skapare av Azure-prenumerationen i ett fakturaavsnitt eller rollen ägare eller deltagare i en faktureringsprofil eller ett faktureringskonto. Mer information finns i [Roller och uppgifter för prenumerationsfakturering](understand-mca-roles.md#subscription-billing-roles-and-tasks).
+För att kunna skapa prenumerationer måste du ha rollen ägare, deltagare eller skapare av Azure-prenumerationen i ett fakturaavsnitt eller rollen ägare eller deltagare i en faktureringsprofil eller ett faktureringskonto. Du kan också ge samma roll till ett SPN (Service Principal Name). Mer information om roller och tilldelning av behörigheter finns i [prenumerations fakturerings roller och uppgifter](understand-mca-roles.md#subscription-billing-roles-and-tasks).
+
+Om du använder ett SPN för att skapa prenumerationer använder du ObjectId för Azure AD-programregistrering som tjänstens huvud namn ObjectId med [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) eller [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list). 
 
 Om du inte vet om du har åtkomst till ett konto för ett Microsoft-kundavtal kan du läsa mer i [Kontrollera åtkomsten till ett Microsoft-kundavtal](../understand/mca-overview.md#check-access-to-a-microsoft-customer-agreement).
 

@@ -3,12 +3,12 @@ title: Koncept – identitet och åtkomst
 description: Lär dig mer om identitets-och åtkomst koncepten i Azure VMware-lösningen
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: 7b1880ccdee1d4c3ce25e264c004b1a949134a96
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1d49ce27ee74621874281a555651c09a73048928
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026912"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109823"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Identitets koncept för Azure VMware-lösning
 
@@ -93,6 +93,9 @@ För att förhindra skapandet av roller som inte kan tilldelas eller tas bort re
    Den tillagda behörigheten visas i avsnittet **behörigheter** för objektet.
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX-T-hanterarens åtkomst och identitet
+
+>[!NOTE]
+>NSX-T 2,5 stöds för närvarande.
 
 Använd *Administratörs* kontot för att komma åt NSX-T-hanteraren. Den har fullständig behörighet och låter dig skapa och hantera nivåer-1 (T1) Gateway, segment (logiska växlar) och alla tjänster. Behörigheten ger dig åtkomst till NSX-T-nivå-0-gatewayen (t0). En ändring i t0-gatewayen kan resultera i försämrade nätverks prestanda eller ingen åtkomst till privata moln. Öppna en supportbegäran i Azure Portal för att begära ändringar i din NSX-T t0-Gateway.
 

@@ -1,18 +1,22 @@
 ---
-title: Skapa en Defender IoT Micro agent-modul, delad (för hands version)
-description: Lär dig hur du skapar en enskild DefenderIotMicroAgent-modul för nya enheter.
+title: 'Snabb start: skapa en Defender IoT Micro agent-modul, delad (för hands version)'
+description: I den här snabb starten lär du dig att skapa en enskild DefenderIotMicroAgent-modul för nya enheter.
 ms.date: 1/20/2021
 ms.topic: quickstart
-ms.openlocfilehash: 5036eefbd77a22d492f6ce7d3c7d15f50a081490
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1bcaa76e9bfbe417bfd0d4b539b8e0c7ff95c7b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781066"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384519"
 ---
-# <a name="create-a-defender-iot-micro-agent-module-twin-preview"></a>Skapa en Defender IoT Micro agent-modul, delad (för hands version)
+# <a name="quickstart-create-a-defender-iot-micro-agent-module-twin-preview"></a>Snabb start: skapa en Defender IoT Micro agent-modul, delad (för hands version)
 
 Du kan skapa en enskild **DefenderIotMicroAgent** -modul för nya enheter. Du kan också skapa en modul med dubbla för alla enheter i en IoT Hub. 
+
+## <a name="prerequisites"></a>Krav
+
+- Inget
 
 ## <a name="device-twins"></a>Enhets dubbla 
 
@@ -70,4 +74,5 @@ Så här kontrollerar du om det finns en Defender-IoT-Micro-agent för en specie
 
 ## <a name="next-steps"></a>Nästa steg 
 
-Gå vidare till nästa artikel och lär dig hur du [undersöker säkerhets rekommendationer](quickstart-investigate-security-recommendations.md).
+> [!div class="nextstepaction"]
+> [Undersök säkerhets rekommendationer](quickstart-investigate-security-recommendations.md)

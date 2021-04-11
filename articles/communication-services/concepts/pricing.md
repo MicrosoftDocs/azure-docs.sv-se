@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: cf4f427c76709022feed37c7a21f1ab4d594acd0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5f7b1e6d600f5d3652ce6a66a72cbfbf33b336c4
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728172"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091879"
 ---
 # <a name="pricing-scenarios"></a>Prissättnings scenarier
 
@@ -44,6 +44,41 @@ Alice gjorde ett grupp samtal med kollegor, Bob och Kalle. Alice och Bob använd
 - 1 deltagare x 43 minuter x $0,004 per deltagare per minut = $0,172 [både video och ljud debiteras enligt samma pris]
 
 **Total kostnad för grupp anropet**: $0,48 + $0,172 = $0,652
+
+
+### <a name="pricing-example-outbound-call-from-app-using-js-sdk-to-a-pstn-number"></a>Prissättnings exempel: utgående samtal från appen med hjälp av JS SDK till ett PSTN-nummer
+
+Alice gör ett PSTN-anrop från en app till Bob på det amerikanska telefonnumret som börjar med `+1-425` .
+
+- Alice använde JS SDK för att bygga appen.
+- Anropet varar totalt 5 minuter.
+
+**Kostnads beräkningar**
+
+- 1 deltagare i VoIP-benet (Alice) från app till kommunikations tjänster-servrar x 10 minuter x $0,004 per deltagar steg per minut = $0,04
+- 1 deltagare på den avgående PSTN-delen (Kalle) från kommunikations tjänst servrar till ett AMERIKANSKt telefonnummer x 10 minuter x $0,013 per deltagar benet per minut = $0,13.
+
+Obs! amerikanska blandade priser till `+1-425` är $0,013. Mer information finns på följande länk: https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv)
+
+**Total kostnad för grupp anropet**: $0,04 + $0,13 = $0,17
+
+
+### <a name="pricing-example-group-audio-call-using-js-sdk-and-1-pstn-leg"></a>Prissättnings exempel: gruppera ljud samtal med hjälp av JS SDK och 1 PSTN-ben
+
+Alice och Robert finns på ett VOIP-samtal. Bob eskalerade anropet till Kalle på Kalles PSTN-nummer, ett AMERIKANSKt telefonnummer som börjar med `+1-425` .
+
+- Alice använde JS SDK för att bygga appen. De har ekrar i 10 minuter innan de anropar Kalle på PSTN-numret.
+- När Bob eskalerade anropet till Kalle på sitt PSTN-nummer, är de tre ekrarna i en annan 10 minuter.
+
+**Kostnads beräkningar**
+
+- 2 deltagare i VoIP-benet (Alice och Bob) från app till kommunikations tjänster servrar x 20 minuter x $0,004 per deltagar benet per minut = $0,16
+- 1 deltagare i den avgående PSTN-delen (Kalle) från kommunikations tjänst servrar till US-telefonnummer x 10 minuter x $0,013 per deltagar steg per minut = $0,13
+
+Obs! amerikanska blandade priser till `+1-425` är $0,013. Mer information finns på följande länk: https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv)
+
+**Total kostnad för VoIP +-anropet**: $0,16 + $0,13 = $. 29
+
 
 ### <a name="pricing-example-a-user-of-the-communication-services-javascript-sdk-joins-a-scheduled-microsoft-teams-meeting"></a>Prissättnings exempel: en användare av JavaScript SDK för kommunikations tjänsterna ansluter till ett schemalagt Microsoft Teams-möte
 

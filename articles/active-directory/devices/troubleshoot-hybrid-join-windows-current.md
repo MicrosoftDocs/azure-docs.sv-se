@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1eb4194354a07d5b580f07cfe5962785a4e100bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 63415037b9f91936e04fa715405bfb86bf022cdd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578030"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551772"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Felsöka Azure Active Directory-hybridanslutna enheter
 
@@ -371,6 +371,12 @@ Använd Loggboken loggar för att hitta fasen och ErrorCode för kopplings felen
    - Orsak: anslutningen till servern avslutades onormalt.
    - Lösning: försök igen om en stund eller försök att ansluta från en alternativ stabil nätverks plats.
 
+##### <a name="other-errors"></a>Andra fel
+
+- **DSREG_AUTOJOIN_ADCONFIG_READ_FAILED** (0x801c001d/-2145648611)
+   - Orsak: EventID 220 finns i händelse loggar för användar enhets registrering. Det går inte att komma åt datorobjektet i Active Directory. En Windows-felkod kan ingå i händelsen. För felkoder ERROR_NO_SUCH_LOGON_SESSION (1312) och ERROR_NO_SUCH_USER (1317) är dessa relaterade till problem med replikeringen i den lokala AD-miljön.
+   - Lösning: Felsök problem med replikeringen i AD. Replikeringsfel kan vara tillfälliga och kan sättas efter en viss tids period.
+
 ##### <a name="federated-join-server-errors"></a>Federerat kopplings Server fel
 
 | Server fel kod | Server fel meddelande | Möjliga orsaker | Lösning |
@@ -417,4 +423,4 @@ Om värdena är **Nej** kan det bero på att:
 
 Fortsätt [Felsöka enheter med kommandot dsregcmd](troubleshoot-device-dsregcmd.md)
 
-Frågor finns i [vanliga frågor och svar om enhets hantering](faq.md)
+Frågor finns i [vanliga frågor och svar om enhets hantering](faq.yml)

@@ -4,32 +4,31 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 66a98d6c17deda00f2e90035d5c0bacc430470d1
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 479aa522462d14f295177e6b2d2fcc4707657760
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "106073591"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106498825"
 ---
 [!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- En distribuerad kommunikations tjänst resurs. [Skapa en kommunikations tjänst resurs](../../create-communication-resource.md).
-- A `User Access Token` för att aktivera anrops klienten. Mer information om [hur du hämtar en `User Access Token` ](../../access-tokens.md)
-- Valfritt: Slutför snabb starten för att [komma igång med att lägga till samtal till ditt program](../getting-started-with-calling.md)
+- En distribuerad Azure Communication Services-resurs. [Skapa en kommunikations tjänst resurs](../../create-communication-resource.md).
+- En token för användar åtkomst för att aktivera anrops klienten. [Hämta en token för användar åtkomst](../../access-tokens.md).
+- Valfritt: Slutför snabb starten [för att lägga till röst samtal till appen](../getting-started-with-calling.md) .
 
-## <a name="setting-up"></a>Konfigurera
+## <a name="set-up-your-system"></a>Konfigurera systemet
 
-### <a name="creating-the-xcode-project"></a>Skapa Xcode-projektet
+### <a name="create-the-xcode-project"></a>Skapa Xcode-projektet
 
-> [!NOTE]
-> Det här dokumentet använder version 1.0.0 – beta. 8 av anrops-SDK: n.
+I Xcode skapar du ett nytt iOS-projekt och väljer app-mallen för **enskild vy** . I den här snabb starten används [SwiftUI-ramverket](https://developer.apple.com/xcode/swiftui/), så du bör ange **språket** till **Swift** och **användar gränssnitt** till **SwiftUI**. 
 
-I Xcode skapar du ett nytt iOS-projekt och väljer app-mallen för **enskild vy** . I den här snabb starten används [SwiftUI-ramverket](https://developer.apple.com/xcode/swiftui/), så du bör ange **språket** till **Swift** och **användar gränssnittet** för **SwiftUI**. Du kommer inte att skapa enhets test eller UI-tester under den här snabb starten. Avmarkera **ta med enhets test** och avmarkera **Inkludera UI-tester**.
+Du kommer inte att skapa enhets test eller UI-tester under den här snabb starten. Ta bort text rutorna **Inkludera enhets tester** och **Inkludera användar gränssnitts test** .
 
-:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Skärm bild som visar fönstret Skapa nytt nytt projekt i Xcode.":::
+:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Skärm bild som visar fönstret för att skapa ett projekt i Xcode.":::
 
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>Installera paketet och beroenden med CocoaPods
 
@@ -50,7 +49,7 @@ I Xcode skapar du ett nytt iOS-projekt och väljer app-mallen för **enskild vy*
 
 ### <a name="request-access-to-the-microphone"></a>Begär åtkomst till mikrofonen
 
-För att få åtkomst till enhetens mikrofon måste du uppdatera appens informations egenskaps lista med en `NSMicrophoneUsageDescription` . Du anger det associerade värdet till en `string` som ska ingå i dialog rutan som systemet använder för att begära åtkomstbegäran från användaren.
+För att få åtkomst till enhetens mikrofon måste du uppdatera appens informations egenskaps lista med `NSMicrophoneUsageDescription` . Du anger det associerade värdet till en `string` som ska ingå i dialog rutan som systemet använder för att begära åtkomst från användaren.
 
 Högerklicka på `Info.plist` posten för projekt trädet och välj **öppna som**  >  **källkod**. Lägg till följande rader i avsnittet på den översta nivån `<dict>` och spara sedan filen.
 
@@ -61,33 +60,36 @@ Högerklicka på `Info.plist` posten för projekt trädet och välj **öppna som
 
 ### <a name="set-up-the-app-framework"></a>Konfigurera app Framework
 
-Öppna projektets **ContentView. SWIFT** -fil och Lägg till en `import` deklaration överst i filen för att importera `AzureCommunicationCalling library` . Dessutom `AVFoundation` behöver vi detta för att få en begäran om ljud behörighet i koden.
+Öppna projektets *ContentView. SWIFT* -fil och Lägg till en `import` deklaration överst i filen för att importera `AzureCommunicationCalling` biblioteket. Importera dessutom `AVFoundation` . Du behöver den för att få en begäran om ljud behörighet i koden.
 
 ```swift
 import AzureCommunicationCalling
 import AVFoundation
 ```
 
-## <a name="object-model"></a>Objekt modell
+## <a name="learn-the-object-model"></a>Lär dig objekt modellen
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar SDK för iOS.
+
+> [!NOTE]
+> I den här snabb starten används version 1.0.0 – beta. 8 av anrops-SDK: n.
 
 
 | Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient | CallClient är den huvudsakliga start punkten för den anropande SDK: n.|
-| CallAgent | CallAgent används för att starta och hantera samtal. |
-| CommunicationTokenCredential | CommunicationTokenCredential används som token-autentiseringsuppgifter för att instansiera CallAgent.| 
-| CommunicationIdentifier | CommunicationIdentifier används för att representera identiteten för användaren som kan vara något av följande: CommunicationUserIdentifier/PhoneNumberIdentifier/CallingApplication. |
+| `CallClient` | `CallClient` är den huvudsakliga start punkten för det anropande SDK: t.|
+| `CallAgent` | `CallAgent` används för att starta och hantera samtal. |
+| `CommunicationTokenCredential` | `CommunicationTokenCredential` används som token-autentiseringsuppgifter för att instansiera `CallAgent` .| 
+| `CommunicationIdentifier` | `CommunicationIdentifier` används för att representera användarens identitet. Identiteten kan vara `CommunicationUserIdentifier` , `PhoneNumberIdentifier` eller `CallingApplication` . |
 
 > [!NOTE]
-> När du implementerar händelse ombud måste programmet innehålla en stark referens till de objekt som kräver händelse prenumerationer. Till exempel, när ett `RemoteParticipant` objekt returneras när du anropar `call.addParticipant` -metoden och programmet anger att ombudet ska lyssna på `RemoteParticipantDelegate` , måste programmet ha en stark referens till `RemoteParticipant` objektet. Annars, om det här objektet samlas in, genererar delegaten ett allvarligt undantag när anrops-SDK: n försöker anropa objektet.
+> När programmet implementerar händelse ombud måste det innehålla en stark referens till de objekt som kräver händelse prenumerationer. Till exempel, när ett `RemoteParticipant` objekt returneras när du anropar `call.addParticipant` -metoden och programmet anger att ombudet ska lyssna på `RemoteParticipantDelegate` , måste programmet ha en stark referens till `RemoteParticipant` objektet. Annars, om det här objektet samlas in, genererar delegaten ett allvarligt undantag när anrops-SDK: n försöker anropa objektet.
 
-## <a name="initialize-the-callagent"></a>Initiera CallAgent
+## <a name="initialize-callagent"></a>Initiera CallAgent
 
-Om du vill skapa en `CallAgent` instans från `CallClient` måste du använda `callClient.createCallAgent` metoden som asynkront returnerar ett `CallAgent` objekt när den har initierats
+Om du vill skapa en `CallAgent` instans från måste `CallClient` du använda en `callClient.createCallAgent` metod som asynkront returnerar ett `CallAgent` objekt när den har initierats.
 
-För att skapa en samtals klient måste du skicka ett `CommunicationTokenCredential` objekt.
+Om du vill skapa en samtals klient måste du skicka ett `CommunicationTokenCredential` objekt.
 
 ```swift
 
@@ -104,14 +106,14 @@ var userCredential: CommunicationTokenCredential?
        return
 }
 
-// tokenProvider needs to be implemented by contoso which fetches new token
+// tokenProvider needs to be implemented by Contoso, which fetches a new token
 public func fetchTokenSync(then onCompletion: TokenRefreshOnCompletion) {
     let newToken = self.tokenProvider!.fetchNewToken()
     onCompletion(newToken, nil)
 }
 ```
 
-Skicka `CommunicationTokenCredential` objekt som skapats ovan till `CallClient` och ange visnings namnet.
+Skicka `CommunicationTokenCredential` objektet som du skapade till `CallClient` och ange visnings namnet.
 
 ```swift
 
@@ -133,9 +135,9 @@ callClient?.createCallAgent(userCredential: userCredential!,
 
 ## <a name="place-an-outgoing-call"></a>Placera ett utgående samtal
 
-Om du vill skapa och starta ett anrop måste du anropa ett av API: erna på `CallAgent` och tillhandahålla kommunikations tjänst identiteten för en användare som du har etablerad med hjälp av kommunikations tjänst hantering SDK.
+Om du vill skapa och starta ett samtal måste du anropa ett av API: erna på `CallAgent` och tillhandahålla kommunikations tjänst identiteten för en användare som du har etablerad med hjälp av hanterings-SDK för kommunikations tjänster.
 
-Skapande av anrop och start är synkront. Du får en samtals instans som gör att du kan prenumerera på alla händelser på samtalet.
+Skapande av anrop och start är synkront. Du får en samtals instans som gör att du kan prenumerera på alla händelser på anropet.
 
 ### <a name="place-a-11-call-to-a-user-or-a-1n-call-with-users-and-pstn"></a>Placera ett 1:1-anrop till en användare eller 1: n Anrop till användare och PSTN
 
@@ -147,7 +149,8 @@ let oneToOneCall = self.callAgent.call(participants: callees, options: StartCall
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>Placera ett 1: n-anrop med användare och PSTN
-För att kunna ringa till PSTN måste du ange telefonnummer som har hämtats med kommunikations tjänster
+Om du vill placera anropet till PSTN måste du ange ett telefonnummer som har hämtats till kommunikations tjänsterna.
+
 ```swift
 
 let pstnCallee = PhoneNumberIdentifier(phoneNumber: '+1999999999')
@@ -156,8 +159,8 @@ let groupCall = self.callAgent.call(participants: [pstnCallee, callee], options:
 
 ```
 
-### <a name="place-a-11-call-with-with-video"></a>Placera ett 1:1-samtal med video
-Om du vill hämta en instans av enhets hanteraren kan du läsa [här](#device-management)
+### <a name="place-a-11-call-with-video"></a>Placera ett 1:1-samtal med video
+Information om hur du hämtar en instans av en Device Manager finns i avsnittet om att [Hantera enheter](#manage-devices).
 
 ```swift
 
@@ -174,7 +177,7 @@ let call = self.callAgent?.call(participants: [callee], options: startCallOption
 ```
 
 ### <a name="join-a-group-call"></a>Anslut till ett grupp anrop
-För att kunna ansluta till ett samtal måste du anropa ett av API: erna på *CallAgent*
+Du måste anropa ett av API: erna för att kunna ansluta till ett samtal `CallAgent` .
 
 ```swift
 
@@ -183,8 +186,8 @@ let call = self.callAgent?.join(with: groupCallLocator, joinCallOptions: JoinCal
 
 ```
 
-### <a name="subscribe-for-incoming-call"></a>Prenumerera på inkommande samtal
-Prenumerera på inkommande samtals händelse
+### <a name="subscribe-to-an-incoming-call"></a>Prenumerera på ett inkommande samtal
+Prenumerera på en inkommande samtals händelse.
 
 ```
 final class IncomingCallHandler: NSObject, CallAgentDelegate, IncomingCallDelegate
@@ -204,8 +207,8 @@ final class IncomingCallHandler: NSObject, CallAgentDelegate, IncomingCallDelega
 ```
 
 ### <a name="accept-an-incoming-call"></a>Acceptera ett inkommande samtal
-Om du vill acceptera ett anrop anropar du metoden accept på ett Call-objekt.
-Ange ett ombud för CallAgent 
+Om du vill acceptera ett anrop anropar du `accept` metoden på ett anrops objekt. Ange ett ombud för `CallAgent` .
+
 ```swift
 final class CallHandler: NSObject, CallAgentDelegate
 {
@@ -235,23 +238,23 @@ if let incomingCall = CallHandler().incomingCall {
 }
 ```
 
-## <a name="push-notification"></a>Push-meddelande
+## <a name="set-up-push-notifications"></a>Konfigurera push-meddelanden
 
-Mobilt push-meddelande är det popup-meddelande du får i den mobila enheten. För att anropa, kommer vi att fokusera på VoIP (Voice-of-Internet Protocol) push-meddelanden. Vi kommer att erbjuda dig de funktioner som du kan registrera för push-meddelanden, för att hantera push-meddelanden och avregistrera push-meddelanden.
+Ett mobilt push-meddelande är popup-meddelandet som du får på den mobila enheten. För att du ska kunna ringa fokuserar vi på VoIP (Voice över Internet Protocol) push-meddelanden. 
 
-### <a name="prerequisite"></a>Förutsättning
+I följande avsnitt beskrivs hur du registrerar för, hanterar och avregistrerar push-meddelanden. Innan du startar dessa uppgifter måste du slutföra följande krav:
 
-- Steg 1: Xcode-> signering & funktioner – > Lägg till kapacitet-> "push-meddelanden"
-- Steg 2: Xcode-> signering & funktioner – > Lägg till kapacitet-> bakgrunds lägen
-- Steg 3: "bakgrunds lägen" – > väljer "Voice över IP" och "fjärraviseringar"
+1. I Xcode går du till **signering &-funktioner**. Lägg till en funktion genom att välja **+ kapacitet** och välj sedan **push-meddelanden**.
+2. Lägg till en annan funktion genom att välja **+ kapacitet** och välj sedan **bakgrunds lägen**.
+3. Under **bakgrunds lägen** väljer du kryss rutorna **röst över IP** och **fjärraviseringar** .
 
 :::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Skärm bild som visar hur du lägger till funktioner i Xcode." lightbox="../media/ios/xcode-push-notification.png":::
 
-#### <a name="register-for-push-notifications"></a>Registrera dig för push-meddelanden
+### <a name="register-for-push-notifications"></a>Registrera dig för push-meddelanden
 
-För att registrera för push-meddelanden anropar du registerPushNotification () på en *CallAgent* -instans med en token för enhets registrering.
+Registrera dig för push-meddelanden genom att anropa `registerPushNotification()` en `CallAgent` instans med en token för enhets registrering.
 
-Registrera dig för push-meddelanden måste anropas efter lyckad initiering. När `callAgent` objektet förstörs, `logout` anropas då automatiskt avregistrera push-meddelanden.
+Registrering för push-meddelanden måste utföras efter en lyckad initiering. När `callAgent` objektet förstörs, `logout` kommer att anropas, vilket automatiskt avregistrerar push-meddelanden.
 
 
 ```swift
@@ -267,8 +270,8 @@ callAgent.registerPushNotifications(deviceToken: deviceToken) { (error) in
 
 ```
 
-#### <a name="push-notification-handling"></a>Hantering av push-meddelanden
-För att ta emot push-meddelanden för inkommande samtal anropar du *handlePushNotification ()* på en *CallAgent* -instans med en ord lista.
+### <a name="handle-push-notifications"></a>Hantera push-meddelanden
+Om du vill ta emot push-meddelanden för inkommande samtal, anropa `handlePushNotification()` en `CallAgent` instans med en ord lista.
 
 ```swift
 
@@ -283,9 +286,10 @@ callAgent.handlePush(notification: callNotification) { (error) in
 }
 
 ```
-#### <a name="unregister-push-notification"></a>Avregistrera push-meddelanden
+### <a name="unregister-push-notifications"></a>Avregistrera push-meddelanden
 
-Program kan avregistrera push-meddelanden när som helst. Anropa bara `unregisterPushNotification` metoden på *CallAgent*.
+Program kan avregistrera push-meddelanden när som helst. Anropa bara- `unregisterPushNotification` metoden på `CallAgent` .
+
 > [!NOTE]
 > Program avregistreras inte automatiskt från push-meddelanden vid utloggning.
 
@@ -301,13 +305,13 @@ callAgent.unregisterPushNotifications { (error) in
 
 ```
 
-## <a name="mid-call-operations"></a>Medel anrops åtgärder
+## <a name="perform-mid-call-operations"></a>Utför åtgärder mellan anrop
 
 Du kan utföra olika åtgärder under ett anrop för att hantera inställningar som rör video och ljud.
 
 ### <a name="mute-and-unmute"></a>Ljud av och på
 
-Om du vill stänga av eller stänga av den lokala slut punkten kan du använda de `mute` `unmute` asynkrona API: erna:
+Du kan använda `mute` asynkrona API: er för att stänga av eller stänga av den lokala slut punkten `unmute` .
 
 ```swift
 call!.mute { (error) in
@@ -320,7 +324,7 @@ call!.mute { (error) in
 
 ```
 
-Asynkron Lokal avljud
+Använd följande kod för att stänga av den lokala slut punkten asynkront.
 
 ```swift
 call!.unmute { (error) in
@@ -334,7 +338,7 @@ call!.unmute { (error) in
 
 ### <a name="start-and-stop-sending-local-video"></a>Starta och stoppa sändning av lokal video
 
-Om du vill börja skicka en lokal video till andra deltagare i samtalet använder du `startVideo` API och pass `localVideoStream` med `camera`
+Om du vill börja skicka en lokal video till andra deltagare i ett samtal använder du `startVideo` API: et och skickar `localVideoStream` med `camera` .
 
 ```swift
 
@@ -351,7 +355,7 @@ call!.startVideo(stream: localVideoStream) { (error) in
 
 ```
 
-När du börjar skicka video `LocalVideoStream` läggs instansen till i `localVideoStreams` samlingen på en anrops instans:
+När du har startat sändningen `LocalVideoStream` läggs instansen till i `localVideoStreams` samlingen på en anrops instans.
 
 ```swift
 
@@ -359,7 +363,7 @@ call.localVideoStreams[0]
 
 ```
 
-Asynkron Om du vill stoppa den lokala videon skickar du `localVideoStream` tillbaka den från anropet av `call.startVideo` :
+Om du vill stoppa den lokala videon måste du skicka den `localVideoStream` instans som returneras från anropet av `call.startVideo` . Detta är en asynkron åtgärd.
 
 ```swift
 
@@ -373,9 +377,9 @@ call!.stopVideo(stream: localVideoStream) { (error) in
 
 ```
 
-## <a name="remote-participants-management"></a>Hantering av fjärranslutna deltagare
+## <a name="manage-remote-participants"></a>Hantera fjärranslutna deltagare
 
-Alla fjärranslutna deltagare representeras av `RemoteParticipant` typen och är tillgängliga via `remoteParticipants` samlingen på en anrops instans:
+Alla fjärranslutna deltagare representeras av `RemoteParticipant` typen och är tillgängliga via `remoteParticipants` samlingen på en samtals instans.
 
 ### <a name="list-participants-in-a-call"></a>Lista deltagare i ett samtal
 
@@ -385,14 +389,14 @@ call.remoteParticipants
 
 ```
 
-### <a name="remote-participant-properties"></a>Egenskaper för fjärran sluten part
+### <a name="get-remote-participant-properties"></a>Hämta egenskaper för fjärran sluten part
 
 ```swift
 
 // [RemoteParticipantDelegate] delegate - an object you provide to receive events from this RemoteParticipant instance
 var remoteParticipantDelegate = remoteParticipant.delegate
 
-// [CommunicationIdentifier] identity - same as the one used to provision token for another user
+// [CommunicationIdentifier] identity - same as the one used to provision a token for another user
 var identity = remoteParticipant.identity
 
 // ParticipantStateIdle = 0, ParticipantStateEarlyMedia = 1, ParticipantStateConnecting = 2, ParticipantStateConnected = 3, ParticipantStateOnHold = 4, ParticipantStateInLobby = 5, ParticipantStateDisconnected = 6
@@ -414,7 +418,7 @@ var videoStreams = remoteParticipant.videoStreams // [RemoteVideoStream, RemoteV
 
 ### <a name="add-a-participant-to-a-call"></a>Lägg till en deltagare i ett samtal
 
-Om du vill lägga till en deltagare till ett samtal (antingen en användare eller ett telefonnummer) kan du anropa `addParticipant` . En fjärran sluten instans kan returneras synkront.
+Om du vill lägga till en deltagare till ett samtal (antingen en användare eller ett telefonnummer) kan du anropa `addParticipant` . Det här kommandot returnerar en fjärran sluten instans.
 
 ```swift
 
@@ -423,7 +427,7 @@ let remoteParticipantAdded: RemoteParticipant = call.add(participant: Communicat
 ```
 
 ### <a name="remove-a-participant-from-a-call"></a>Ta bort en deltagare från ett samtal
-Om du vill ta bort en deltagare från ett samtal (antingen en användare eller ett telefonnummer) kan du anropa  `removeParticipant` API: et. Detta kommer att lösa asynkront.
+Om du vill ta bort en deltagare från ett samtal (antingen en användare eller ett telefonnummer) kan du anropa `removeParticipant` API: et. Detta kommer att lösa asynkront.
 
 ```swift
 
@@ -441,9 +445,9 @@ call!.remove(participant: remoteParticipantAdded) { (error) in
 
 Fjärranslutna deltagare kan starta video-eller skärm delning under ett samtal.
 
-### <a name="handle-remote-participant-videoscreen-sharing-streams"></a>Hantera data strömmar för fjärran sluten video/skärm delning
+### <a name="handle-video-sharing-or-screen-sharing-streams-of-remote-participants"></a>Hantera film delnings-eller skärm delnings strömmar av fjärranslutna deltagare
 
-För att visa en lista över strömmar av fjärranslutna deltagare, inspektera `videoStreams` samlingarna:
+För att visa en lista över strömmar av fjärranslutna deltagare, inspektera `videoStreams` samlingarna.
 
 ```swift
 
@@ -451,7 +455,7 @@ var remoteParticipantVideoStream = call.remoteParticipants[0].videoStreams[0]
 
 ```
 
-### <a name="remote-video-stream-properties"></a>Egenskaper för fjärran sluten video ström
+### <a name="get-remote-video-stream-properties"></a>Hämta egenskaper för fjärran sluten video ström
 
 ```swift
 
@@ -463,9 +467,9 @@ var id: Int = remoteParticipantVideoStream.id // id of remoteParticipantStream
 
 ```
 
-### <a name="render-remote-participant-stream"></a>Rendera fjärran sluten deltagare
+### <a name="render-remote-participant-streams"></a>Rendera fjärranslutna deltagares strömmar
 
-Starta åter givning av fjärranslutna deltagare:
+Använd följande kod för att starta åter givning av fjärranslutna deltagar strömmar.
 
 ```swift
 
@@ -476,16 +480,16 @@ targetRemoteParticipantView.update(scalingMode: ScalingMode.fit)
 
 ```
 
-### <a name="remote-video-renderer-methods-and-properties"></a>Metoder och egenskaper för video åter givning
+### <a name="get-remote-video-renderer-methods-and-properties"></a>Hämta metoder och egenskaper för video åter givning
 
 ```swift
 // [Synchronous] dispose() - dispose renderer and all `RendererView` associated with this renderer. To be called when you have removed all associated views from the UI.
 remoteVideoRenderer.dispose()
 ```
 
-## <a name="device-management"></a>Enhetshantering
+## <a name="manage-devices"></a>Hantera enheter
 
-`DeviceManager` gör att du kan räkna upp lokala enheter som kan användas i ett anrop för att överföra ljud-och video strömmar. Du kan också begära behörighet från en användare för att få åtkomst till mikrofonen/kameran. Du har åtkomst till `deviceManager` `callClient` objektet:
+`DeviceManager` gör att du kan räkna upp lokala enheter som kan användas i ett anrop för att överföra ljud-eller video strömmar. Du kan också begära behörighet från en användare för att få åtkomst till en mikrofon eller kamera. Du har åtkomst till `deviceManager` `callClient` objektet.
 
 ```swift
 
@@ -501,7 +505,7 @@ self.callClient!.getDeviceManager { (deviceManager, error) in
 
 ### <a name="enumerate-local-devices"></a>Räkna upp lokala enheter
 
-Du kan använda uppräknings metoder på Enhetshanteraren för att komma åt lokala enheter. Uppräkning är en synkron åtgärd.
+Du kan använda uppräknings metoder i enhets hanteraren för att komma åt lokala enheter. Uppräkning är en synkron åtgärd.
 
 ```swift
 // enumerate local cameras
@@ -512,9 +516,9 @@ var localMicrophones = deviceManager.microphones! // [AudioDeviceInfo, AudioDevi
 var localSpeakers = deviceManager.speakers! // [AudioDeviceInfo, AudioDeviceInfo...]
 ``` 
 
-### <a name="set-default-microphonespeaker"></a>Ange standard mikrofon/talare
+### <a name="set-the-default-microphone-or-speaker"></a>Ange standard mikrofon eller högtalare
 
-Med enhets hanteraren kan du ange en standardenhet som ska användas när ett samtal startas. Om inga stack-standardvärden har angetts, kommer kommunikations tjänsterna att återgå till standardinställningarna för operativ systemet.
+Du kan använda enhets hanteraren för att ange en standard enhet som ska användas när ett samtal startas. Om stack-standardvärden inte har angetts, kommer kommunikations tjänsterna att återgå till standardinställningarna för operativ systemet.
 
 ```swift
 // get first microphone
@@ -527,7 +531,7 @@ var firstSpeaker = self.deviceManager!.speakers!
 deviceManager.setSpeaker(speakerDevice: firstSpeaker)
 ```
 
-### <a name="local-camera-preview"></a>Lokal kamera för hands version
+### <a name="get-a-local-camera-preview"></a>Hämta en för hands version av lokal kamera
 
 Du kan använda `Renderer` för att börja rendera en ström från den lokala kameran. Den här data strömmen skickas inte till andra deltagare. Det är en lokal förhands gransknings matning. Detta är en asynkron åtgärd.
 
@@ -540,9 +544,9 @@ self.view = try renderer!.createView()
 
 ```
 
-### <a name="local-camera-preview-properties"></a>Egenskaper för för hands version av lokal kamera
+### <a name="get-local-camera-preview-properties"></a>Hämta egenskaper för förhands granskning av lokal kamera
 
-Åter givningen har en uppsättning egenskaper och metoder som gör att du kan styra åter givningen:
+Åter givningen har en uppsättning egenskaper och metoder som gör att du kan styra åter givningen.
 
 ```swift
 
@@ -567,16 +571,16 @@ localRenderer.dispose()
 
 ```
 
-## <a name="eventing-model"></a>Händelse modell
+## <a name="subscribe-to-notifications"></a>Prenumerera på aviseringar
 
 Du kan prenumerera på de flesta egenskaper och samlingar för att få ett meddelande när värdena ändras.
 
 ### <a name="properties"></a>Egenskaper
-Så här prenumererar du på `property changed` händelser:
+Använd följande kod för att prenumerera på `property changed` händelser.
 
 ```swift
 call.delegate = self
-// Get the property of the call state by doing get on the call's state member
+// Get the property of the call state by getting on the call's state member
 public func onCallStateChanged(_ call: Call!,
                                args: PropertyChangedEventArgs!)
 {
@@ -589,7 +593,7 @@ public func onCallStateChanged(_ call: Call!,
 ```
 
 ### <a name="collections"></a>Samlingar
-Så här prenumererar du på `collection updated` händelser:
+Använd följande kod för att prenumerera på `collection updated` händelser.
 
 ```swift
 call.delegate = self
