@@ -9,18 +9,92 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: ea7eda7e50e7d8733fd24a63d533272e5bca6bab
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 13ef91af5f7ed8398e3d23400fa5e9df467ce6bc
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166691"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210902"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
 I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  Information om fullständiga SDK-referenser finns på Azure Machine Learning huvud sidan [**för SDK för python**](/python/api/overview/azure/ml/intro) -referens.
 
 __RSS-feed__: Håll dig informerad när den här sidan uppdateras genom att kopiera och klistra in följande webbadress i feed-läsaren: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+
+## <a name="2021-04-05"></a>2021-04-05
+
+### <a name="azure-machine-learning-sdk-for-python-v1260"></a>Azure Machine Learning SDK för python v-1.26.0
++ **Fel korrigeringar och förbättringar**
+  + **azureml-automl-core**
+    + Ett problem har åtgärd ATS där Naive-modeller rekommenderas i AutoMLStep-körningar och fungerar inte med fördröjnings-eller rullande fönster funktioner. Dessa modeller rekommenderas inte när du har angett en mål storlek för lags eller målets rullande fönster.
+    +  Ändrade konsol utdata när du skickar en AutoML-körning för att visa en Portal länk till körningen.
+  + **azureml-core**
+    + HDFS-läge har lagts till i dokumentationen.
+    + Stöd har lagts till för att förstå fil data uppsättning partitioner baserat på BLOB-struktur.
+    + Stöd har lagts till för uppdatering av container register som är kopplat till AzureML-arbetsytan.
+    + Föråldrade miljöattribut under DockerSection-"Enabled", "shared_volume" och "argument" är en del av DockerConfiguration i RunConfiguration nu.
+    + Dokumentation om uppdatering av pipeline CLI-klon
+    + Uppdaterade Portal-URI: er som innehåller klient för autentisering
+    + Experiment namnet har tagits bort från körnings-URI: er för att undvika omdirigeringar 
+    + Ett experiment-URO har uppdaterats för användning av experiment-ID.
+    + Fel korrigeringar för att bifoga fjärrberäkning med AzureML CLI.
+    + Uppdaterade Portal-URI: er för autentisering av klienter.
+    + Uppdaterad experiment-URI för att använda experiment-ID.
+  + **azureml-interpret**
+    + azureml – tolka uppdaterad för att använda 0.17.0 för tolkning – community
+  + **azureml-opendatasets**
+    + Start datum och slutdatum typ verifiering och fel indikation om det inte är en datetime-typ.
+  + **azureml – parallell-körning**
+    + [Experimentell funktion] Lägg till `partition_keys` parametern till ParallelRunConfig, om den anges, partitioneras indata-dataset i mini-batchar med de nycklar som anges av den. Det kräver att alla indata-datauppsättningar är partitionerade data uppsättningar.
+  + **azureml-pipeline-steps**
+    + Bugfix-stöd path_on_compute när du skickar data uppsättnings konfigurationen som nedladdning.
+    + Föråldrade RScriptStep i stället för att använda CommandStep för att köra R-skript i pipeliner. 
+    + Föråldrade EstimatorStep till förmån för att använda CommandStep för att köra ML-utbildning (inklusive distribuerad utbildning) i pipelines.
+  + **azureml – SDK**
+    + Uppdatera python_requires till < 3,9 för azureml-SDK
+  + **azureml-train-automl-client**
+    +  Ändrade konsol utdata när du skickar en AutoML-körning för att visa en Portal länk till körningen.
+  + **azureml-train-core**
+    + Föråldrade DockerSection ' Enabled ', ' shared_volume ' och ' argument ' i stället för att använda DockerConfiguration med ScriptRunConfig.
+    +  Använd Azures öppna data uppsättningar för MNIST-datauppsättning
+    + HyperDrive-fel meddelanden har uppdaterats.
+
+
+## <a name="2021-03-22"></a>2021-03-22
+
+### <a name="azure-machine-learning-sdk-for-python-v1250"></a>Azure Machine Learning SDK för python v-1.25.0
++ **Fel korrigeringar och förbättringar**
+  + **azureml-automl-core**
+    +  Ändrade konsol utdata när du skickar en AutoML-körning för att visa en Portal länk till körningen.
+  + **azureml-core**
+    + Börjar stödja uppdatering av container Registry för arbets ytan i SDK och CLI
+    + Föråldrade DockerSection ' Enabled ', ' shared_volume ' och ' argument ' i stället för att använda DockerConfiguration med ScriptRunConfig.
+    + Dokumentation om uppdatering av pipeline CLI-klon
+    + Uppdaterade Portal-URI: er som innehåller klient för autentisering
+    + Experiment namnet har tagits bort från körnings-URI: er för att undvika omdirigeringar
+    + Ett experiment-URO har uppdaterats för användning av experiment-ID.
+    + Fel korrigeringar för att ansluta fjärrberäkning med AZ cli
+    + Uppdaterade Portal-URI: er för autentisering av klienter.
+    + Stöd har lagts till för att förstå fil data uppsättning partitioner baserat på BLOB-struktur.
+  + **azureml-interpret**
+    + azureml – tolka uppdaterad för att använda 0.17.0 för tolkning – community
+  + **azureml-opendatasets**
+    + Start datum och slutdatum typ verifiering och fel indikation om det inte är en datetime-typ.
+  + **azureml-pipeline-core**
+    + Bugfix-stöd path_on_compute när du skickar data uppsättnings konfigurationen som nedladdning.
+  + **azureml-pipeline-steps**
+    + Bugfix-stöd path_on_compute när du skickar data uppsättnings konfigurationen som nedladdning.
+    + Föråldrade RScriptStep i stället för att använda CommandStep för att köra R-skript i pipeliner. 
+    + Föråldrade EstimatorStep till förmån för att använda CommandStep för att köra ML-utbildning (inklusive distribuerad utbildning) i pipelines.
+  + **azureml-train-automl-runtime**
+    +  Ändrade konsol utdata när du skickar en AutoML-körning för att visa en Portal länk till körningen.
+  + **azureml-train-core**
+    + Föråldrade DockerSection ' Enabled ', ' shared_volume ' och ' argument ' i stället för att använda DockerConfiguration med ScriptRunConfig.
+    + Använd Azures öppna data uppsättningar för MNIST-datauppsättning
+    + HyperDrive-fel meddelanden har uppdaterats.
+
 
 ## <a name="2021-03-31"></a>2021-03-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-march-update"></a>Azure Machine Learning Studio Notebooks Experience (mars Update)
@@ -38,6 +112,7 @@ __RSS-feed__: Håll dig informerad när den här sidan uppdateras genom att kopi
   + Länkar kan nu klickas bara i Terminal
   + Förbättrade IntelliSense-prestanda
 
+
 ## <a name="2021-03-08"></a>2021-03-08
 
 ### <a name="azure-machine-learning-sdk-for-python-v1240"></a>Azure Machine Learning SDK för python v-1.24.0
@@ -50,8 +125,6 @@ __RSS-feed__: Håll dig informerad när den här sidan uppdateras genom att kopi
     + Tillagda funktioner för att filtrera tabell data uppsättningar efter kolumn värden och fil data uppsättningar efter metadata.
   + **azureml-contrib-fairness**
     + Ta med JSON-schema i hjul för `azureml-contrib-fairness`
-  + **azureml-contrib-K8s**
-    + Måste nu tillhandahålla resource_id för att bifoga i stället för resurs grupp och kluster namn.
   + **azureml-contrib-Mir**
     + Om du anger show_output till sant när du distribuerar modeller, kommer konfiguration av konfiguration och distribution att spelas upp innan begäran skickas till servern.
   + **azureml-core**
@@ -94,7 +167,7 @@ __RSS-feed__: Håll dig informerad när den här sidan uppdateras genom att kopi
   + **azureml-core**
     + [Experimentell funktion] Lägg till stöd för att länka Synapse-arbetsytan till AML som en länkad tjänst
     + [Experimentell funktion] Lägg till stöd för att koppla Synapse Spark-poolen till AML som en beräkning
-    + [Experimentell funktion] Lägg till stöd för identitets baserad data åtkomst. Användare kan registrera data lager eller data uppsättningar utan att ange autentiseringsuppgifter. I sådana fall används användarens AAD-token eller hanterad identitet för Compute Target för autentisering. Läs mer [här](./how-to-identity-based-data-access.md).
+    + [Experimentell funktion] Lägg till stöd för identitets baserad data åtkomst. Användare kan registrera data lager eller data uppsättningar utan att ange autentiseringsuppgifter. I sådana fall används användarens AAD-token eller hanterad identitet för Compute Target för autentisering. Lär dig mer [här](./how-to-identity-based-data-access.md).
   + **azureml-pipeline-steps**
     + [Experimentell funktion] Lägg till stöd för [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep)
   + **azureml-synapse**

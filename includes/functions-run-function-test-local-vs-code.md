@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/28/2021
 ms.author: glenga
-ms.openlocfilehash: 5bc1d2ddb5b9ddb185a8349fb42d5f5db79c1498
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eae828d03431dd339c5399d8db8c6e46141ab11b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201358"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075361"
 ---
 ## <a name="run-the-function-locally"></a>Köra funktionen lokalt
 
@@ -27,7 +27,7 @@ Visual Studio Code integreras med [Azure Functions Core tools](../articles/azure
     
 1. I **Ange brödtext för begäran** visas bröd texten för begär ande meddelandet `{ "name": "Azure" }` . Skicka meddelandet till din funktion genom att trycka på RETUR. 
 
-   Du kan i stället skicka en HTTP GET-begäran till <http://localhost:7071/api/HttpExample> adressen i en webbläsare.
+   Du kan i stället skicka en HTTP GET-begäran till `http://localhost:7071/api/HttpExample` adressen i en webbläsare.
 
 1. När funktionen körs lokalt och returnerar ett svar, aktive ras ett meddelande i Visual Studio Code. Information om funktions körningen visas på panelen **Terminal** .
 

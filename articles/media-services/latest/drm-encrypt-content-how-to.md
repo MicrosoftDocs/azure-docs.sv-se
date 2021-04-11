@@ -3,12 +3,12 @@ title: Kryptera innehåll med Azure Portal
 description: Den här snabb starten visar hur du konfigurerar kryptering för ditt innehåll med hjälp av Azure Media Services i Azure Portal.
 ms.topic: quickstart
 ms.date: 08/31/2020
-ms.openlocfilehash: a97e1a3c51d44b7c530de0c6eeca569f898d07c1
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 5ce942447f6d143116350940bda0e01a8b532d24
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106069340"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277691"
 ---
 # <a name="quickstart-use-portal-to-encrypt-content"></a>Snabb start: Använd portalen för att kryptera innehåll
 
@@ -28,8 +28,8 @@ Den här snabb starten visar hur du skapar en princip för innehålls nycklar d�
 ### <a name="suggested-pre-reading"></a>Föreslagen för läsning
 
 * [Dynamisk kryptering och nyckelleverans](drm-content-protection-concept.md)
-* [Positionerare för direktuppspelning](streaming-locators-concept.md)
-* [Principer för direktuppspelning](streaming-policy-concept.md)
+* [Positionerare för direktuppspelning](stream-streaming-locators-concept.md)
+* [Principer för direktuppspelning](stream-streaming-policy-concept.md)
 * [Principer för innehållsnycklar](drm-content-key-policy-concept.md)
 
 ## <a name="prerequisites"></a>Förutsättningar
@@ -80,7 +80,7 @@ Du kan också lägga till en AES-128-kryptering med klar text kryptering till di
 1. I avsnittet **streaming Locator** för den valda till gången trycker du på **+ Lägg till en strömmande positionerare**. 
 1. Välj en **strömmande princip** som är lämplig för den **innehålls nyckel princip** som du har konfigurerat.
 
-    Avsnittet [strömmande principer](streaming-policy-concept.md) innehåller information om vilken strömmande princip som matchar vilken innehålls nyckel princip.
+    Avsnittet [strömmande principer](stream-streaming-policy-concept.md) innehåller information om vilken strömmande princip som matchar vilken innehålls nyckel princip.
 1. När du har valt lämplig strömmande princip kan du välja princip för innehålls nyckel från List rutan.
 1. Tryck på **Lägg** till för att lägga till streaming Locator till din till gång.
 

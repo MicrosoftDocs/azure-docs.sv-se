@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 84a65e9ce7360a38f552c0dea61a33ff8a94b9cc
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: cdbba1618815dbc8b52195169b7de2bcec2986d8
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055526"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255587"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Använda MSAL.NET för att logga in användare med sociala identiteter
 
@@ -178,7 +178,7 @@ Ett symtom på ett sådant scenario är att MSAL.NET returnerar `Missing from th
 
 Den föreslagna lösningen är att använda [cachelagring enligt princip](#acquire-a-token-to-apply-a-policy) som beskrivs ovan.
 
-Du kan också använda `tid` anspråket om du använder [anpassade principer](../../active-directory-b2c/custom-policy-get-started.md) i Azure AD B2C. Anpassade principer kan returnera ytterligare anspråk till ditt program genom att använda [anspråks omvandling](../../active-directory-b2c/claims-transformation-technical-profile.md).
+Du kan också använda `tid` anspråket om du använder [anpassade principer](../../active-directory-b2c/user-flow-overview.md) i Azure AD B2C. Anpassade principer kan returnera ytterligare anspråk till ditt program genom att använda [anspråks omvandling](../../active-directory-b2c/claims-transformation-technical-profile.md).
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>Minskning av "saknas från" token Response "
 

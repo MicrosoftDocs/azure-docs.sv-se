@@ -3,12 +3,12 @@ title: Azure Media Services som Event Grid källa
 description: Beskriver de egenskaper som har angetts för Media Services händelser med Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1f2f62f0a5ceed0e000c8bb7690fff009593bf82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5772a2332e1864d0b8df0d4e102006b29b6a61e
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104591936"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120120"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Azure Media Services som en Event Grid källa
 
@@ -514,7 +514,7 @@ Data-objektet har följande egenskaper:
 | `encoderPort` | sträng | Porten för kodaren från vilken strömmen kommer. |
 | `resultCode` | sträng | Anledningen till att anslutningen avvisades. Resultat koderna visas i följande tabell. |
 
-Du hittar fel resultat koderna i [fel koder för Live-händelser](../media-services/latest/live-event-error-codes.md).
+Du hittar fel resultat koderna i [fel koder för Live-händelser](../media-services/latest/live-event-error-codes-reference.md).
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -639,7 +639,7 @@ Data-objektet har följande egenskaper:
 | `encoderPort` | sträng | Porten för kodaren från vilken strömmen kommer. |
 | `resultCode` | sträng | Orsaken till att kodaren kopplar från. Det kan vara en korrekt koppling eller från ett fel. Resultat koderna visas i följande tabell. |
 
-Du hittar fel resultat koderna i [fel koder för Live-händelser](../media-services/latest/live-event-error-codes.md).
+Du hittar fel resultat koderna i [fel koder för Live-händelser](../media-services/latest/live-event-error-codes-reference.md).
 
 De korrekt resultat koderna för från koppling är:
 
@@ -1118,4 +1118,4 @@ En händelse har följande data på översta nivån:
 
 - [EventGrid .NET SDK som innehåller media service-händelser](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definitioner av Media Services händelser](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [Fel koder för Live-händelse](../media-services/latest/live-event-error-codes.md)
+- [Fel koder för Live-händelse](../media-services/latest/live-event-error-codes-reference.md)

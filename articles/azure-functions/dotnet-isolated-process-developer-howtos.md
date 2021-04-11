@@ -4,12 +4,12 @@ description: Lär dig hur du skapar och felsöker C#-funktioner med hjälp av .N
 ms.date: 03/03/2021
 ms.topic: how-to
 zone_pivot_groups: development-environment-functions
-ms.openlocfilehash: 9751d5d354d738a64d6b02e8153464491d78ec14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6403e5d898b76d459a9712f7847e81e5442deeda
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201372"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075362"
 ---
 # <a name="develop-and-publish-net-5-functions-using-azure-functions"></a>Utveckla och publicera .NET 5-funktioner med hjälp av Azure Functions 
 
@@ -160,7 +160,7 @@ Nu kan du köra `func start` kommandot från roten i projektmappen för att komp
 
 1. I adress fältet i webbläsaren skriver du din lokala funktions webb adress, som ser ut ungefär så här och kör begäran. 
 
-    <http://localhost:7071/api/HttpExample>
+    `http://localhost:7071/api/HttpExample`
 
     Du bör se spåra utdata från begäran som skrivits till den aktiva terminalen. Kod körningen stoppas vid eventuella Bryt punkter som du anger i funktions koden.
 

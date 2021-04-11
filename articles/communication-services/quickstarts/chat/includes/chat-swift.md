@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 5bf4bbe2c8dc863f67dffb50609f7775a4499e3a
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 24a5c92164e0eace41224edfd2153c6142f7ea49
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073469"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107251454"
 ---
 [!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
 
@@ -46,8 +46,8 @@ På kommando raden går du in i rot katalogen för iOS- `ChatQuickstart` projekt
 Öppna Podfile och Lägg till följande beroenden till `ChatQuickstart` målet:
 
 ```
-pod 'AzureCommunication', '~> 1.0.0-beta.9'
-pod 'AzureCommunicationChat', '~> 1.0.0-beta.9'
+pod 'AzureCommunication', '~> 1.0.0-beta.11'
+pod 'AzureCommunicationChat', '~> 1.0.0-beta.11'
 ```
 
 Installera beroenden med följande kommando: `pod install` . Observera att det också skapar en Xcode-arbetsyta.
@@ -80,16 +80,20 @@ override func viewDidLoad() {
                 // <CREATE A CHAT CLIENT>
                 
                 // <CREATE A CHAT THREAD>
-                
-                // <CREATE A CHAT THREAD CLIENT>
-                
+
+                // <LIST ALL CHAT THREADS>
+
+                // <GET A CHAT THREAD CLIENT>
+
                 // <SEND A MESSAGE>
-                
+
+                // <SEND A READ RECEIPT >
+
+                // <RECEIVE MESSAGES>
+
                 // <ADD A USER>
                 
                 // <LIST USERS>
-                
-                // <REMOVE A USER>
             } catch {
                 print("Quickstart failed: \(error.localizedDescription)")
             }
@@ -106,17 +110,17 @@ Ersätt kommentaren `<CREATE A CHAT CLIENT>` med följande kod:
 
 ```
 let endpoint = "<ACS_RESOURCE_ENDPOINT>"
-    let credential =
-    try CommunicationTokenCredential(
-        token: "<ACCESS_TOKEN>"
-    )
-    let options = AzureCommunicationChatClientOptions()
+let credential =
+try CommunicationTokenCredential(
+    token: "<ACCESS_TOKEN>"
+)
+let options = AzureCommunicationChatClientOptions()
 
-    let chatClient = try ChatClient(
-        endpoint: endpoint,
-        credential: credential,
-        withOptions: options
-    )
+let chatClient = try ChatClient(
+    endpoint: endpoint,
+    credential: credential,
+    withOptions: options
+)
 ```
 
 Ersätt `<ACS_RESOURCE_ENDPOINT>` med slut punkten för Azure Communication Services-resursen. Ersätt `<ACCESS_TOKEN>` med en giltig åtkomsttoken för kommunikations tjänster.
@@ -141,10 +145,10 @@ Nu använder du `ChatClient` för att skapa en ny tråd med en första användar
 Ersätt kommentaren `<CREATE A CHAT THREAD>` med följande kod:
 
 ```
-let request = CreateThreadRequest(
+let request = CreateChatThreadRequest(
     topic: "Quickstart",
     participants: [
-        Participant(
+        ChatParticipant(
             id: CommunicationUserIdentifier("<USER_ID>"),
             displayName: "Jack"
         )
@@ -155,7 +159,7 @@ var threadId: String?
 chatClient.create(thread: request) { result, _ in
     switch result {
     case let .success(result):
-        threadId = result.thread?.id
+        threadId = result.chatThread?.id
 
     case .failure:
         fatalError("Failed to create thread.")
@@ -169,11 +173,31 @@ Ersätt `<USER_ID>` med ett giltigt användar-ID för kommunikations tjänster.
 
 Du använder en semafor här för att vänta på slut för ande hanteraren innan du fortsätter. I senare steg använder du `threadId` från svaret som returnerades till slut för ande hanteraren.
 
+## <a name="list-all-chat-threads"></a>Lista alla chatt trådar
+
+När du har skapat en chatt-tråd kan vi Visa alla chatt-trådar genom att anropa- `listChatThreads` metoden `ChatClient` . Ersätt kommentaren `<LIST ALL CHAT THREADS>` med följande kod:
+
+```
+chatClient.listThreads { result, _ in
+    switch result {
+    case let .success(chatThreadItems):
+        var iterator = chatThreadItems.syncIterator
+            while let chatThreadItem = iterator.next() {
+                print("Thread id: \(chatThreadItem.id)")
+            }
+    case .failure:
+        print("Failed to list threads")
+    }
+    semaphore.signal()
+}
+semaphore.wait()
+```
+
 ## <a name="get-a-chat-thread-client"></a>Hämta en klient för chatt-tråd
 
 Nu när du har skapat en chatt-tråd kan du hämta en `ChatThreadClient` för att utföra åtgärder i tråden.
 
-Ersätt kommentaren `<CREATE A CHAT THREAD CLIENT>` med följande kod:
+Ersätt kommentaren `<GET A CHAT THREAD CLIENT>` med följande kod:
 
 ```
 let chatThreadClient = try chatClient.createClient(forThread: threadId!)
@@ -189,10 +213,13 @@ let message = SendChatMessageRequest(
     senderDisplayName: "Jack"
 )
 
+var messageId: String?
+
 chatThreadClient.send(message: message) { result, _ in
     switch result {
     case let .success(result):
         print("Message sent, message id: \(result.id)")
+        messageId = result.id
     case .failure:
         print("Failed to send message")
     }
@@ -203,12 +230,57 @@ semaphore.wait()
 
 Först skapar du `SendChatMessageRequest` , som innehåller innehållet och avsändarens visnings namn. Den här begäran kan också innehålla resurs historik tiden, om du vill ta med den. Svaret som returnerades till slut för ande hanteraren innehåller ID: t för meddelandet som skickades.
 
+
+## <a name="send-a-read-receipt"></a>Skicka ett Läs kvitto
+
+Du kan skicka ett Läs kvitto för ett visst meddelande genom att anropa `ChatThreadClients` `sendReadReceipt` metoden. Ersätt kommentaren `<SEND A READ RECEIPT>` med följande kod:
+
+```
+if let id = messageId {
+    chatThreadClient.sendReadReceipt(forMessage: id) { result, _ in
+        switch result {
+        case .success:
+            print("Read receipt sent")
+        case .failure:
+            print("Failed to send read receipt")
+        }
+        semaphore.signal()
+    }
+    semaphore.wait()
+} else {
+    print("Cannot send read receipt without a message id")
+}
+```
+
+## <a name="receive-chat-messages-from-a-chat-thread"></a>Ta emot Chat-meddelanden från en chatt-tråd
+
+Du kan ta emot meddelanden från en chatt-tråd genom att anropa- `listMessages()` metoden från `ChatThreadClient` . List meddelanden innehåller både system meddelanden och meddelanden som skickats av användaren. Mer information om vilka typer av meddelanden som du kan ta emot finns i [meddelande typer](https://docs.microsoft.com/azure/communication-services/concepts/chat/concepts#message-types)
+
+Ersätt kommentaren `<RECEIVE MESSAGES>` med följande kod:
+
+```
+chatThreadClient.listMessages { result, _ in
+    switch result {
+    case let .success(messages):
+        var iterator = messages.syncIterator
+        while let message = iterator.next() {
+            print("Received message of type \(message.type)")
+        }
+
+    case .failure:
+        print("Failed to receive messages")
+    }
+    semaphore.signal()
+}
+semaphore.wait()
+```
+
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Lägg till en användare som deltagare i chatt-tråden
 
 Ersätt kommentaren `<ADD A USER>` med följande kod:
 
 ```
-let user = Participant(
+let user = ChatParticipant(
     id: CommunicationUserIdentifier("<USER_ID>"),
     displayName: "Jane"
 )
@@ -216,9 +288,9 @@ let user = Participant(
 chatThreadClient.add(participants: [user]) { result, _ in
     switch result {
     case let .success(result):
-        (result.errors != nil) ? print("Added participant") : print("Error adding participant")
+        (result.invalidParticipants != nil) ? print("Added participant") : print("Error adding participant")
     case .failure:
-        print("Failed to list participants")
+        print("Failed to add the participant")
     }
     semaphore.signal()
 }
@@ -240,7 +312,7 @@ chatThreadClient.listParticipants { result, _ in
         var iterator = participants.syncIterator
         while let participant = iterator.next() {
             let user = participant.id as! CommunicationUserIdentifier
-            print(user.identifier)
+            print("User with id: \(user.identifier)")
         }
     case .failure:
         print("Failed to list participants")
@@ -250,28 +322,7 @@ chatThreadClient.listParticipants { result, _ in
 semaphore.wait()
 ```
 
-
-## <a name="remove-user-from-a-chat-thread"></a>Ta bort användare från en chatt-tråd
-
-Ersätt kommentaren `<REMOVE A USER>` med följande kod:
-
-```
-chatThreadClient
-    .remove(
-        participant: CommunicationUserIdentifier("<USER_ID>")
-    ) { result, _ in
-        switch result {
-        case .success:
-            print("Removed user from the thread.")
-        case .failure:
-            print("Failed to remove user from the thread.")
-        }
-    }
-```
-
-Ersätt `<USER ID>` med kommunikations tjänsternas användar-ID för den deltagare som tas bort.
-
 ## <a name="run-the-code"></a>Kör koden
 
-I Xcode väljer du **Kör** för att skapa och köra projektet. I-konsolen kan du visa utdata från koden och logga utdata från Chat-klienten.
+I Xcode trycker du på Kör-knappen för att skapa och köra projektet. I-konsolen kan du visa utdata från koden och logga utdata från ChatClient.
 

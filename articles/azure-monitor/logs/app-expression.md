@@ -5,19 +5,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
-ms.openlocfilehash: 235a6bf4a0dd9afcac8751067b2eac3ddb37c0cd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9d60857503402554381068fc36121fa3f7b61622
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031250"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107283566"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>app ()-uttryck i Azure Monitor fråga
 
 `app`Uttrycket används i en Azure Monitor-fråga för att hämta data från en speciell Application Insights-app i samma resurs grupp, en annan resurs grupp eller en annan prenumeration. Detta är användbart om du vill inkludera program data i en Azure Monitor logg fråga och fråga efter data över flera program i en Application Insights fråga.
 
 > [!IMPORTANT]
-> App ()-uttrycket används inte om du använder en [arbets yta-baserad Application Insights resurs](../app/create-workspace-resource.md) sedan loggdata lagras i en Log Analytics arbets yta. Använd log ()-uttrycket för att skriva en fråga som inkluderar program i flera arbets ytor. För flera program i samma arbets yta behöver du inte en fråga om flera arbets ytor.
+> App ()-uttrycket används inte om du använder en [arbets yta-baserad Application Insights resurs](../app/create-workspace-resource.md) sedan loggdata lagras i en Log Analytics arbets yta. Använd uttrycket arbets yta () för att skriva en fråga som inkluderar program i flera arbets ytor. För flera program i samma arbets yta behöver du inte en fråga om flera arbets ytor.
 
 ## <a name="syntax"></a>Syntax
 
@@ -33,7 +33,7 @@ ms.locfileid: "102031250"
 | Resursnamn | Appens läsliga namn (även kallat komponent namn) | app ("fabrikamapp") |
 | Kvalificerat namn | Appens fullständiga namn i formatet: "subscriptionName/resourceGroup/componentName" | app (' AI-Prototype/Fabrikam/fabrikamapp ') |
 | ID | Appens GUID | app ("988ba129-363e-4415-8fe7-8cbab5447518") |
-| Resurs-ID för Azure | Identifierare för Azure-resursen |app ("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
+| Azure Resource ID | Identifierare för Azure-resursen |app ("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
 ## <a name="notes"></a>Kommentarer

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: b53af0fda8bb24bf03d0e02f61ce7d195ae69503
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc70e6370f53848e9f3672611a3dfda685bcb9fe
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97680818"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011784"
 ---
 # <a name="what-is-azure-maps"></a>Vad är Azure Maps?
 
@@ -173,7 +173,7 @@ Mer information finns i dokumentationen för [Traffic service](/rest/api/maps/tr
 
 Väder tjänster erbjuder API: er som utvecklare kan använda för att hämta väder information för en viss plats. Informationen innehåller information som observations datum och tid, kort beskrivning av väder förhållanden, väder ikonen, utfällning av indikator flaggor, temperatur och information om vridnings hastigheten. Ytterligare information som RealFeel™ temperatur och UV-index returneras också.
 
-Utvecklare kan använda [API: t get väder utmed väg](/rest/api/maps/weather/getweatheralongroutepreview) för att hämta väder information tillsammans med en viss väg. Tjänsten har också stöd för att skapa väder meddelanden för waypoints som påverkas av väder risker, till exempel översvämning eller tung regn.
+Utvecklare kan använda [API: t get väder utmed väg](/rest/api/maps/weather/getweatheralongroute) för att hämta väder information tillsammans med en viss väg. Tjänsten har också stöd för att skapa väder meddelanden för waypoints som påverkas av väder risker, till exempel översvämning eller tung regn.
 
 Med [hjälp av API: et för kart panel v2](/rest/api/maps/renderv2/getmaptilepreview) kan du begära tidigare, aktuella och framtida radar-och satellit paneler.
 

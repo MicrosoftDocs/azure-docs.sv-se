@@ -3,12 +3,12 @@ title: Stöd för Arkiv nivå (för hands version)
 description: Lär dig mer om Arkiv nivå stöd för Azure Backup
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 322bc9d7e2160cc9156c793859b9fda833b3df09
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7a42b8702cfdda14a18aa3cdd4e084ed78767b0a
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563981"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012156"
 ---
 # <a name="archive-tier-support-preview"></a>Stöd för Arkiv nivå (för hands version)
 
@@ -40,6 +40,8 @@ Klienter som stöds:
 
 ## <a name="get-started-with-powershell"></a>Kom igång med PowerShell
 
+1. Ladda ned den [senaste](https://github.com/PowerShell/PowerShell/releases) versionen av PowerShell från GitHub.
+
 1. Kör följande kommando i PowerShell:
   
     ```azurepowershell
@@ -57,7 +59,13 @@ Klienter som stöds:
 
 1. Hämta listan med säkerhets kopierings objekt:
 
-    `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureVM/AzureWorkload" -WorkloadType "AzureVM/MSSQL"`
+    - För virtuella Azure-datorer:
+
+        `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureVM" -WorkloadType "AzureVM"`
+
+    - För SQL Server på virtuella Azure-datorer:
+
+        `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureWorkload" -WorkloadType "MSSQL"`
 
 1. Hämta säkerhets kopierings objekt.
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 03/19/2021
-ms.openlocfilehash: f652858f22e26eb7167a0cc7a2cfb8ef4b600ace
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 74d30b7c42002c8f134520e0198774eba1519bcd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047308"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553846"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>Så här skapar du ett SaaS-erbjudande på den kommersiella Marketplace
 
@@ -56,7 +56,7 @@ På fliken **erbjudande konfiguration** , under **installations information**, v
    + Om du vill tillhandahålla en 30-dagars kostnads fri utvärderings version väljer du den **kostnads fria utvärderings** versionen. i rutan **utvärderings-URL** som visas anger du URL (från och med *http* eller *https*) där kunder kan komma åt din kostnads fria utvärderings version genom att [använda Azure Active Directory (Azure AD)](azure-ad-saas.md). Till exempel `https://contoso.com/trial/saas-app`.
    + Om du vill få potentiella kunder att kontakta dig för att köpa ditt erbjudande väljer du **kontakta mig**.
 
-### <a name="enable-a-test-drive-optional"></a>Aktivera en testen het (valfritt)
+## <a name="enable-a-test-drive-optional"></a>Aktivera en testen het (valfritt)
 
 En testen het är ett bra sätt att presentera ditt erbjudande för potentiella kunder genom att ge dem till gång till en förkonfigurerad miljö för ett fast antal timmar. Att erbjuda en testen het resulterar i en ökad konverterings takt och genererar hög kvalificerade leads. Mer information om test enheter finns i [Vad är en test enhet?](./what-is-test-drive.md).
 
@@ -67,14 +67,14 @@ En testen het är ett bra sätt att presentera ditt erbjudande för potentiella 
 1.  Under **test enhet** markerar du kryss rutan **Aktivera en testenhet** .
 1.  Välj typen av test enhet i listan som visas.
 
-### <a name="configure-lead-management"></a>Konfigurera hantering av leads
+## <a name="configure-lead-management"></a>Konfigurera hantering av leads
 
 Anslut ditt CRM-system (Customer Relations hip Management) till ditt kommersiella Marketplace-erbjudande så att du kan ta emot kund kontakt information när en kund uttrycker intresse eller distribuerar din produkt. Du kan när som helst ändra den här anslutningen under eller efter att du har skapat erbjudandet.
 
 > [!NOTE]
 > Du måste konfigurera hantering av lead om du säljer ditt erbjudande via Microsoft eller har valt alternativet **kontakta mig** List. Mer detaljerad information finns i [kund leads från ditt kommersiella Marketplace-erbjudande](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
-#### <a name="to-configure-the-connection-details-in-partner-center"></a>Så här konfigurerar du anslutnings informationen i Partner Center
+### <a name="configure-the-connection-details-in-partner-center"></a>Konfigurera anslutnings information i Partner Center
 
 1.  Under **kund ledare** väljer du länken **Anslut** .
 1. I dialog rutan **anslutnings information** väljer du ett lead-mål i listan.
@@ -88,6 +88,36 @@ Anslut ditt CRM-system (Customer Relations hip Management) till ditt kommersiell
 
 1. Om du vill verifiera konfigurationen som du har angett väljer du länken **Verifiera** .
 1. Stäng dialog rutan genom att välja **OK**.
+
+## <a name="configure-microsoft-365-app-integration"></a>Konfigurera Microsoft 365 App-integrering
+
+Du kan lätt få fram [enhetlig identifiering och leverans](./plan-SaaS-offer.md) av ditt SaaS-erbjudande och relaterade Microsoft 365-användning av appar genom att länka dem.
+
+### <a name="integrate-with-microsoft-api"></a>Integrera med Microsoft API
+
+1. Om ditt SaaS-erbjudande inte integreras med Microsoft Graph API väljer du **Nej**. Fortsätt att länka publicerade Microsoft 365-klienter för program användning.  
+
+1. Om ditt SaaS-erbjudande integreras med Microsoft Graph API väljer du **Ja** och anger sedan Azure Active Directory-app-ID som du har skapat och registrerat för att integrera med Microsoft Graph API. 
+
+### <a name="link-published-microsoft-365-app-consumption-clients"></a>Länka publicerade Microsoft 365 program förbruknings klienter
+
+1. Om du inte har publicerat Office-tillägg, team-appar eller SharePoint Framework-lösningar som fungerar med ditt SaaS-erbjudande väljer du **Nej**.
+
+1. Om du har publicerat Office-tillägg, team-appar eller SharePoint Framework-lösningar som fungerar med ditt SaaS-erbjudande väljer du **Ja** och väljer sedan **+ Lägg till ytterligare en AppSource-länk** för att lägga till nya länkar.  
+
+1. Ange en giltig AppSource-länk.
+
+1. Fortsätt att lägga till alla länkar genom att välja **+ Lägg till ytterligare en AppSource-länk** och ange giltiga AppSource-länkar.  
+
+1. Ordningen som de länkade produkterna visas på registrerings sidan för SaaS-erbjudandet anges med värdet rang, du kan ändra det genom att välja, hålla och flytta =-ikonen uppåt och nedåt i listan. 
+
+1. Du kan ta bort en länkad produkt genom att välja **ta bort** på raden produkt.  
+
+
+> [!IMPORTANT]
+> Om du avslutar-säljer en länkad produkt tas den inte bort automatiskt i SaaS-erbjudandet. du måste ta bort det från listan över länkade produkter och skicka om erbjudandet för SaaS.  
+
+ 
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: ad3b6fa581bfc36579ef4b6937b50f8c1789a7f5
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 1fb8724edc32477bb1c399db0493833e9df984bb
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106112093"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277580"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Filtrera dina manifest med hjälp av dynamisk Paketeraren
 
@@ -26,7 +26,7 @@ ms.locfileid: "106112093"
 
 När du levererar strömnings innehåll med anpassningsbar bit hastighet till enheter måste du ibland publicera flera versioner av ett manifest för att rikta in dig på specifika enhets funktioner eller tillgänglig nätverks bandbredd. Med den [dynamiska Paketeraren](encode-dynamic-packaging-concept.md) kan du ange filter som kan filtrera ut vissa codecenheter, lösningar, bit hastigheter och kombinationer av ljud spår direkt. Den här filtreringen tar bort behovet av att skapa flera kopior. Du behöver bara publicera en ny URL med en viss uppsättning filter som kon figurer ATS för mål enheterna (iOS, Android, SmartTV eller webbläsare) och nätverksfunktioner (scenarier med hög bandbredd, mobil eller låg bandbredd). I det här fallet kan klienterna ändra strömningen för ditt innehåll genom frågesträngen (genom att ange tillgängliga [till gångs filter eller konto filter](filters-concept.md)) och använda filter för att strömma vissa delar av en ström.
 
-Vissa leverans scenarier kräver att du ser till att en kund inte kan komma åt specifika spår. Till exempel kanske du inte vill publicera ett manifest som innehåller HD-spår till en viss prenumerations nivå. Eller så kanske du vill ta bort vissa ABR-spår (adaptiv bit hastighet) för att minska leverans kostnaderna till en speciell enhet som inte drar nytta av de ytterligare spåren. I det här fallet kan du associera en lista med i förväg skapade filter med din [strömmande lokalisering](streaming-locators-concept.md) när du skapade den. Klienter kan sedan inte ändra hur innehållet strömmas eftersom det definieras av **streaming Locator**.
+Vissa leverans scenarier kräver att du ser till att en kund inte kan komma åt specifika spår. Till exempel kanske du inte vill publicera ett manifest som innehåller HD-spår till en viss prenumerations nivå. Eller så kanske du vill ta bort vissa ABR-spår (adaptiv bit hastighet) för att minska leverans kostnaderna till en speciell enhet som inte drar nytta av de ytterligare spåren. I det här fallet kan du associera en lista med i förväg skapade filter med din [strömmande lokalisering](stream-streaming-locators-concept.md) när du skapade den. Klienter kan sedan inte ändra hur innehållet strömmas eftersom det definieras av **streaming Locator**.
 
 Du kan kombinera filtrering genom att ange [filter på strömmande lokalisering](filters-concept.md#associating-filters-with-streaming-locator) + ytterligare enhetsspecifika filter som klienten anger i URL: en. Den här kombinationen är användbar för att begränsa ytterligare spår som metadata eller händelse strömmar, ljud språk eller beskrivande ljud spår.
 

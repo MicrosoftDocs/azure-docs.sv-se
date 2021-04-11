@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: ce250b19478c70109fe28d199ac771a77c42c7dc
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: a3771a21914831f249696fc3d733c5ea935c2c7e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106113146"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107251456"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-js"></a>Lägg till hanterad identitet i din kommunikations tjänst lösning (JS)
 
@@ -29,7 +29,9 @@ import { SmsClient, SmsSendRequest } from "@azure/communication-sms";
 
 Exemplen nedan använder [DefaultAzureCredential](/javascript/api/@azure/identity/defaultazurecredential). Den här autentiseringsuppgiften är lämplig för produktions-och utvecklings miljöer.
 
-Information om hur du registrerar program i utvecklings miljön och konfigurerar miljövariabler finns i [bevilja åtkomst med hanterad identitet](../managed-identity-from-cli.md)
+Ett enkelt sätt att hoppa till med hjälp av hanterad identitets autentisering finns i [ge åtkomst med hanterad identitet](../managed-identity-from-cli.md)
+
+För en mer djupgående titt på hur DefaultAzureCredential-objektet fungerar och hur du kan använda det på sätt som inte anges i den här snabb starten, se [klient bibliotek för Azure Identity för Java Script](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)
 
 ### <a name="create-an-identity-and-issue-a-token-with-managed-identity"></a>Skapa en identitet och utfärda en token med hanterad identitet
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: c0c7a6b25c15be2e521e0985c315baf819650aa5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48f8445e30bd186681d1a4384d16f228a3382473
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99491764"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012445"
 ---
 # <a name="api-management-transformation-policies"></a>Omvandlingsprinciper för API Management
 Det här avsnittet innehåller en referens för följande API Managements principer. Information om hur du lägger till och konfigurerar principer finns [i principer i API Management](./api-management-policies.md).
@@ -366,7 +366,7 @@ I det här exemplet dirigerar principen begäran till en Service Fabric-Server d
 > [!IMPORTANT]
 > Implementeringen av vätska som används i `set-body` principen konfigureras i C#-läge. Detta är särskilt viktigt när du gör saker som filtrering. Som exempel kräver ett datum filter användning av Pascal-hölje och C#-datum format, t. ex.:
 >
-> {{Body. foo. startDateTime | Date: "yyyyMMddTHH: mm: ddZ"}}
+> {{Body. foo. startDateTime | Date: "yyyyMMddTHH: mm: ssZ"}}
 
 > [!IMPORTANT]
 > För att korrekt binda till en XML-text med hjälp av vätske mal len använder du en `set-header` princip för att ange innehålls typ till antingen Application/XML, text/XML (eller någon typ som slutar med + XML). för en JSON-text måste den vara Application/JSON, text/JSON (eller någon typ som slutar med + JSON).

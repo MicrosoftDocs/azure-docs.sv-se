@@ -1,5 +1,5 @@
 ---
-title: Kommunikations exempel för Issuer service (för hands version)
+title: Kommunikations exempel för Issuer service (för hands version) – Azure Active Directory verifierbara autentiseringsuppgifter
 description: Information om kommunikation mellan identitets leverantör och Issuer-tjänsten
 author: barclayn
 manager: davba
@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: bd1b7560967ff0c458639a5737a02fca27ffc9f5
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 8771c61f96b244e0cc0bca1c61ceb8042b4a5b4c
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106170175"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220206"
 ---
 # <a name="issuer-service-communication-examples-preview"></a>Kommunikations exempel för Issuer service (för hands version)
 
@@ -141,3 +141,7 @@ ID-token måste använda formatet för JWT Compact-serialisering och får inte v
 | `iat` | Måste innehålla den tid då ID-token utfärdades. |
 | `nonce` | Värdet som ingår i auktoriseringsbegäran. |
 | Ytterligare anspråk | ID-token ska innehålla eventuella ytterligare anspråk vars värden ska inkluderas i de verifierbara autentiseringsuppgifter som ska utfärdas. I det här avsnittet ska du ta med alla attribut för användaren, till exempel deras namn. |
+
+## <a name="next-steps"></a>Nästa steg
+
+- [Anpassa dina Azure Active Directory verifierbara autentiseringsuppgifter](credential-design.md)

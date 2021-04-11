@@ -4,16 +4,16 @@ description: Använd den här artikeln för att lära dig om diagnostiska färdi
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/12/2020
+ms.date: 04/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7b3b8078a03ef0e891306f056c604545cde71459
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b82ad29b02e501d41653fd466e58218e35c3b93c
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489465"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012177"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Felsöka IoT Edge-enheten
 
@@ -30,6 +30,8 @@ Ditt första steg när du felsöker IoT Edge bör vara att använda `check` komm
 
 Du kan köra `check` kommandot på följande sätt, eller inkludera `--help` flaggan om du vill se en fullständig lista med alternativ:
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 I Linux:
 
 ```bash
@@ -41,6 +43,19 @@ I Windows:
 ```powershell
 iotedge check
 ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.1 -->
+:::moniker range=">=iotedge-2020-11"
+
+```bash
+sudo iotedge check
+```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 Fel söknings verktyget kör många kontroller som är sorterade i följande tre kategorier:
 
@@ -58,6 +73,9 @@ När du behöver samla in loggar från en IoT Edge enhet är det enklaste sätte
 
 Kör `support-bundle` kommandot med `--since` flaggan för att ange hur lång tid från det förflutna du vill hämta loggar. Till exempel `6h` får loggar sedan de senaste sex timmarna, `6d` sedan de senaste sex dagarna, sedan de senaste sex `6m` minuterna och så vidare. Ta med `--help` flaggan om du vill se en fullständig lista med alternativ.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 I Linux:
 
 ```bash
@@ -69,6 +87,19 @@ I Windows:
 ```powershell
 iotedge support-bundle --since 6h
 ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+```bash
+sudo iotedge support-bundle --since 6h
+```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 Du kan också använda ett [direkt metod](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics) anrop till enheten för att överföra utdata från kommandot support-Bundle till Azure Blob Storage.
 
@@ -102,10 +133,9 @@ Det här kommandot kommer att mata ut alla edgeAgent- [rapporterade egenskaper](
 
 [IoT Edge Security Manager](iot-edge-security-manager.md) ansvarar för åtgärder som att initiera IoT Edge systemet vid start och etablering av enheter. Om IoT Edge inte startar kan säkerhets hanterarens loggar ge värdefull information.
 
-I Linux:
-
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"
+I Linux:
 
 * Visa status för IoT Edge Security Manager:
 
@@ -131,7 +161,7 @@ I Linux:
 
      ```bash
      [Service]
-     Environment=IOTEDGE_LOG=edgelet=debug
+     Environment=IOTEDGE_LOG=debug
      ```
 
   3. Starta om IoT Edge Security daemon:
@@ -141,42 +171,6 @@ I Linux:
      sudo systemctl daemon-reload
      sudo systemctl restart iotedge
      ```
-<!--end 1.1 -->
-:::moniker-end
-
-<!-- 1.2 -->
-:::moniker range=">=iotedge-2020-11"
-
-* Visa status för IoT Edge system tjänster:
-
-   ```bash
-   sudo iotedge system status
-   ```
-
-* Visa loggarna för IoT Edge system tjänster:
-
-   ```bash
-   sudo iotedge system logs -- -f
-   ```
-
-* Aktivera fel söknings nivå loggar om du vill visa mer detaljerade loggar av IoT Edge system tjänster:
-
-  1. Aktivera fel söknings nivå loggar.
-
-     ```bash
-     sudo iotedge system set-log-level debug
-     sudo iotedge system restart
-     ```
-
-  1. Växla tillbaka till standard informations nivå loggarna efter fel sökning.
-
-     ```bash
-     sudo iotedge system set-log-level info
-     sudo iotedge system restart
-     ```
-
-<!-- end 1.2 -->
-:::moniker-end
 
 I Windows:
 
@@ -211,6 +205,43 @@ I Windows:
      ```powershell
      Restart-Service iotedge
      ```
+
+:::moniker-end
+<!--end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+* Visa status för IoT Edge system tjänster:
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+* Visa loggarna för IoT Edge system tjänster:
+
+   ```bash
+   sudo iotedge system logs -- -f
+   ```
+
+* Aktivera fel söknings nivå loggar om du vill visa mer detaljerade loggar av IoT Edge system tjänster:
+
+  1. Aktivera fel söknings nivå loggar.
+
+     ```bash
+     sudo iotedge system set-log-level debug
+     sudo iotedge system restart
+     ```
+
+  1. Växla tillbaka till standard informations nivå loggarna efter fel sökning.
+
+     ```bash
+     sudo iotedge system set-log-level info
+     sudo iotedge system restart
+     ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="check-container-logs-for-issues"></a>Kontrol lera behållar loggar för problem
 

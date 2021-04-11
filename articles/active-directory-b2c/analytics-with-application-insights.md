@@ -12,12 +12,12 @@ ms.date: 01/29/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 92da0b12a3119b048866eef5b18f658916595294
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cde44ddb49ede8002b8a25ab47ae92ccd602a9d
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101645933"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226378"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-by-using-application-insights"></a>Spåra användar beteende i Azure AD B2C med Application Insights
 
@@ -252,7 +252,7 @@ Du kanske vill registrera fler anspråk för att passa dina affärs behov. Om du
 
 ### <a name="manipulate-claims"></a>Manipulera anspråk
 
-Du kan använda [omvandlingar av inmatade anspråk](custom-policy-trust-frameworks.md#manipulating-your-claims) för att ändra inskickade anspråk eller generera nya innan du skickar dem till Application Insights. I följande exempel innehåller den tekniska profilen omvandlingen av inloggade `CheckIsAdmin` anspråk.
+Du kan använda [omvandlingar av inmatade anspråk](custom-policy-overview.md#manipulating-your-claims) för att ändra inskickade anspråk eller generera nya innan du skickar dem till Application Insights. I följande exempel innehåller den tekniska profilen omvandlingen av inloggade `CheckIsAdmin` anspråk.
 
 ```xml
 <TechnicalProfile Id="AppInsights-SignInComplete">
@@ -269,7 +269,7 @@ Du kan använda [omvandlingar av inmatade anspråk](custom-policy-trust-framewor
 
 ### <a name="add-events"></a>Lägg till händelser
 
-Om du vill lägga till en händelse skapar du en ny teknisk profil som innehåller den `AppInsights-Common` tekniska profilen. Lägg sedan till den nya tekniska profilen som ett Orchestration-steg i [användar resan](custom-policy-trust-frameworks.md#orchestration-steps). Använd [villkors](userjourneys.md#preconditions) elementet för att utlösa händelsen när du är klar. Rapportera till exempel händelsen endast när användare kör via multifaktorautentisering.
+Om du vill lägga till en händelse skapar du en ny teknisk profil som innehåller den `AppInsights-Common` tekniska profilen. Lägg sedan till den nya tekniska profilen som ett Orchestration-steg i [användar resan](custom-policy-overview.md#orchestration-steps). Använd [villkors](userjourneys.md#preconditions) elementet för att utlösa händelsen när du är klar. Rapportera till exempel händelsen endast när användare kör via multifaktorautentisering.
 
 ```xml
 <TechnicalProfile Id="AppInsights-MFA-Completed">

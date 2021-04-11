@@ -4,35 +4,38 @@ description: Lär dig mer om säkerhets härdningen i AKS VM Host OS
 services: container-service
 author: mlearned
 ms.topic: article
-ms.date: 09/11/2019
+ms.date: 03/29/2021
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 84b826ce33b5395db5bd38e883b3a0fb3425725b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0866905d0228d2304ebf5c8ef930a629979d2da
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86244046"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012100"
 ---
 # <a name="security-hardening-for-aks-agent-node-host-os"></a>Säkerhets härdning för AKS-nodens värd operativ system
 
-Azure Kubernetes service (AKS) är en säker tjänst som är kompatibel med SOC-, ISO-, PCI DSS-och HIPAA-standarder. Den här artikeln beskriver säkerhets härdningen som tillämpas på AKS virtuella dator värdar. Mer information om AKS-säkerhet finns i [säkerhets begrepp för program och kluster i Azure Kubernetes service (AKS)](./concepts-security.md).
+Som en säker tjänst följer Azure Kubernetes service (AKS) med SOC-, ISO-, PCI DSS-och HIPAA-standarder. Den här artikeln beskriver säkerhets härdningen som tillämpas på AKS-värdar (virtuella datorer). Mer information om AKS-säkerhet finns i [säkerhets begrepp för program och kluster i Azure Kubernetes service (AKS)](./concepts-security.md).
 
 > [!Note]
 > Det här dokumentet är begränsat till Linux-agenter i AKS.
 
-AKS-kluster distribueras på virtuella värd datorer, som kör ett säkerhetsoptimerat operativ system som används för behållare som körs på AKS. Det här värd operativ systemet baseras på en **Ubuntu 16.04. LTS** -avbildning med ytterligare säkerhets härdning och optimeringar som tillämpas (se säkerhets härdnings information).
+AKS-kluster distribueras på virtuella värddatorer, som kör ett säkerhetsoptimerat operativ system som används för behållare som körs på AKS. Det här värd operativ systemet baseras på en **Ubuntu 16.04. LTS** -avbildning med mer [säkerhets härdning](#security-hardening-features) och optimeringar som tillämpas.
 
 Målet för den säkerhetsbegränsade värd operativ systemet är att minska Angreppets yta och optimera för distribution av behållare på ett säkert sätt.
 
 > [!Important]
-> Det säkerhetshärdade operativ systemet är inte CIS-benchmark. Även om det finns överlappande av CIS-benchmarks, är målet inte att vara CIS-kompatibelt. Målet för att hantera OS-härdning är att konvergera på en säkerhets nivå som är konsekvent med Microsofts egna interna värd säkerhets standarder.
+> Det säkerhetshärdade operativ systemet är **inte** CIS-benchmark. När den överlappar CIS-benchmarks, är målet inte att vara CIS-kompatibelt. Målet för att hantera OS-härdning är att konvergera på en säkerhets nivå som är konsekvent med Microsofts egna interna värd säkerhets standarder.
 
 ## <a name="security-hardening-features"></a>Säkerhets härdnings funktioner
 
-* AKS tillhandahåller ett säkerhetsoptimerat värd-OS som standard. Det finns inget alternativ för att välja ett alternativt operativ system.
+* AKS tillhandahåller ett säkerhetsoptimerat värd-OS som standard, men inget alternativ för att välja ett alternativt operativ system.
 
-* Azure använder dagliga korrigeringar (inklusive säkerhets korrigeringar) för att AKS virtuella dator värdar. Vissa av de här korrigeringarna kräver en omstart, medan andra inte kommer. Du ansvarar för schemaläggning av AKS VM Host-omstarter efter behov. Vägledning om hur du automatiserar AKS korrigering finns i [korrigera AKS-noder](./node-updates-kured.md).
+* Azure använder dagliga korrigeringar (inklusive säkerhets korrigeringar) för att AKS virtuella dator värdar. 
+    * Vissa av de här korrigeringarna kräver en omstart, medan andra inte kommer. 
+    * Du ansvarar för schemaläggning av AKS VM Host-omstarter efter behov. 
+    * Vägledning om hur du automatiserar AKS korrigering finns i [korrigera AKS-noder](./node-updates-kured.md).
 
 ## <a name="what-is-configured"></a>Vad är konfigurerat
 
@@ -79,14 +82,12 @@ Målet för den säkerhetsbegränsade värd operativ systemet är att minska Ang
  
 * Vissa onödiga driv rutiner för kernel-moduler har inaktiverats i operativ systemet för att ytterligare minska risken för attack ytan.
 
-* Det säkerhetshärdade operativ systemet är byggt och underhålls specifikt för AKS och stöds inte utanför AKS-plattformen.
+* Det säkerhetshärdade operativ systemet är byggt och underhålls specifikt för AKS och stöds **inte** utanför AKS-plattformen.
 
 ## <a name="next-steps"></a>Nästa steg  
 
-I följande artiklar finns mer information om AKS-säkerhet: 
+Mer information om AKS-säkerhet finns i följande artiklar: 
 
-[Azure Kubernetes Service (AKS)](./intro-kubernetes.md)
-
-[AKS säkerhets aspekter ](./concepts-security.md)
-
-[Metod tips för AKS ](./best-practices.md)
+* [Azure Kubernetes Service (AKS)](./intro-kubernetes.md)
+* [AKS säkerhets aspekter](./concepts-security.md)
+* [Metod tips för AKS](./best-practices.md)

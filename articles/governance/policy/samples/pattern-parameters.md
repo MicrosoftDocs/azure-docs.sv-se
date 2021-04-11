@@ -1,14 +1,14 @@
 ---
 title: 'Mönster: parametrar i en princip definition'
-description: Detta Azure Policy mönster innehåller ett exempel på hur du använder sträng-och mat ris parametrar i en princip definition, samt hur du Parameterisera-resultatet.
-ms.date: 08/17/2020
+description: Detta Azure Policy mönster innehåller ett exempel på hur du använder sträng-och mat ris parametrar i en princip definition och hur du Parameterisera.
+ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: 7bb991c43a1deee39dd047aa7d814c124712fe69
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b742aaaf950e2b5670edbaa1f0134da144e675b6
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89649953"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092780"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy mönster: parametrar
 
@@ -16,7 +16,7 @@ En princip definition kan göras dynamisk för att minska antalet princip defini
 
 ## <a name="sample-1-string-parameters"></a>Exempel 1: sträng parametrar
 
-Den här princip definitionen använder två parametrar, **TagName** och **tagValue** för att ange vad princip tilldelningen söker efter på resurser. Med det här formatet kan du använda princip definitionen för valfritt antal kombinationer av taggnamn och kombinationer av taggar, men endast underhålla en enda princip definition.
+Den här princip definitionen använder två parametrar, **TagName** och **tagValue**, för att ange vad princip tilldelningen söker efter på resurser. Med det här formatet kan du använda princip definitionen för valfritt antal kombinationer av taggnamn och kombinationer av taggar, men endast underhålla en enda princip definition.
 
 > [!NOTE]
 > Ett tag-exempel som använder **läge** _alla_ och fungerar med en resurs grupp finns i [mönster: Taggar-exempel #1](./pattern-tags.md#sample-1-parameterize-tags).

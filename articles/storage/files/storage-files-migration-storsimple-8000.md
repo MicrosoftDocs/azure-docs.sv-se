@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 814a2f7e32f173111e45fff02f00c3e4d2a9a670
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d2de439e661ef5b1d1669187355621f25400bc4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601091"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075632"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 och 8600-migrering till Azure File Sync
 
@@ -65,11 +65,11 @@ När du först konfigurerar StorSimple-installationen skapade den en "tjänst da
 
 Krypterings nyckeln för tjänst data krävs för en lyckad migrering. Nu är det dags att hämta den här nyckeln från dina poster, en för var och en av de olika enheterna i inventeringen.
 
-Om du inte hittar nycklarna i dina poster kan du hämta nyckeln från enheten. Varje apparat har en unik krypterings nyckel. Hämta nyckeln:
+Om du inte hittar nycklarna i dina poster kan du generera en ny nyckel från enheten. Varje apparat har en unik krypterings nyckel.
 
-* Skicka en support förfrågan med Microsoft Azure via Azure Portal. Begäran bör innehålla StorSimple enhetens serie nummer och en begäran att hämta krypterings nyckeln för tjänst data.
-* En StorSimple support tekniker kontaktar dig för att få en begäran om ett virtuellt möte.
-* Se till att innan mötet börjar ansluter du till din StorSimple-apparat [via en serie konsol](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) eller via en [fjärran sluten PowerShell-session](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-remotely-to-storsimple-using-windows-powershell-for-storsimple).
+#### <a name="change-the-service-data-encryption-key"></a>Ändra krypterings nyckeln för tjänst data
+
+[!INCLUDE [storage-files-migration-generate-key](../../../includes/storage-files-migration-generate-key.md)]
 
 > [!CAUTION]
 > Tänk på följande när du bestämmer hur du ska ansluta till StorSimple-enheten:

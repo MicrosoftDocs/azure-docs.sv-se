@@ -4,12 +4,12 @@ description: Lär dig hur du konfigurerar en värdbaserad kryptering i ett Azure
 services: container-service
 ms.topic: article
 ms.date: 03/03/2021
-ms.openlocfilehash: f4e599ae7aa81c15f86d0e8b1c934824010ea45b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6942a3d445892faf0ea0570561eb06019e841e23
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102430164"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443209"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Värdbaserad kryptering på Azure Kubernetes service (AKS) (för hands version)
 
@@ -28,11 +28,18 @@ Den här funktionen kan bara ställas in när klustret skapas eller när en nod 
 - Se till att du har `aks-preview` CLI-tillägget v 0.4.73 eller en senare version installerad.
 - Se till att du har `EnableEncryptionAtHostPreview` funktions flaggan under `Microsoft.ContainerService` aktive rad.
 
-För att kunna använda kryptering på värden för dina virtuella datorer eller skalnings uppsättningar för virtuella datorer måste du få funktionen aktive rad i din prenumeration. Skicka e-post **encryptionAtHost@microsoft.com** med dina prenumerations-ID för att få funktionen aktive rad för dina prenumerationer. 
+Du måste aktivera funktionen för din prenumeration innan du använder egenskapen EncryptionAtHost för ditt Azure Kubernetes service-kluster. Följ stegen nedan för att aktivera funktionen för din prenumeration:
 
-> [!IMPORTANT]
-> Du måste ha ett e-postmeddelande **encryptionAtHost@microsoft.com** med dina prenumerations-ID för att få funktionen aktive rad för beräknings resurser. Du kan inte aktivera det själv för beräknings resurser.
+1. Kör följande kommando för att registrera funktionen för din prenumeration
 
+```azurecli-interactive
+Register-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"
+```
+2. Kontrol lera att registrerings statusen är registrerad (tar några minuter) med kommandot nedan innan du testar funktionen.
+
+```azurecli-interactive
+Get-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"
+```
 
 ### <a name="install-aks-preview-cli-extension"></a>Installera CLI-tillägget aks-preview
 

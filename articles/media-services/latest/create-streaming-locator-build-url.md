@@ -12,18 +12,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 480b8ef401387863693bc88c3d508ce296636c93
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 8a192c3c3accf115b1a1db8e32a56d6d936078be
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107613"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277667"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>Skapa en positionerare för direktuppspelning och skapa URL:er
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-För att skapa en strömmande URL i Azure Media Services måste du först skapa en [strömmande Locator](streaming-locators-concept.md). Sedan sammanfogas värd namnet för [direkt uppspelnings slut punkten](/rest/api/media/streamingendpoints) och sökvägen för **streaming Locator** . I det här exemplet används *standardvärdet* **Slutpunkt för direktuppspelning**. När du först skapar ett medie tjänst konto kommer den här *standard* **slut punkten för direkt uppspelning** att vara i ett stoppat tillstånd, så du måste anropa **Start** för att starta direkt uppspelning.
+För att skapa en strömmande URL i Azure Media Services måste du först skapa en [strömmande Locator](stream-streaming-locators-concept.md). Sedan sammanfogas värd namnet för [direkt uppspelnings slut punkten](/rest/api/media/streamingendpoints) och sökvägen för **streaming Locator** . I det här exemplet används *standardvärdet* **Slutpunkt för direktuppspelning**. När du först skapar ett medie tjänst konto kommer den här *standard* **slut punkten för direkt uppspelning** att vara i ett stoppat tillstånd, så du måste anropa **Start** för att starta direkt uppspelning.
 
 Den här artikeln visar hur du skapar en strömmande lokaliserare och skapar en strömmande URL med Java-och .NET-SDK: er.
 

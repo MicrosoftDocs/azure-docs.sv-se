@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: a49fd6f97a9130fa0369d2a36cdc38e59613afc1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bcf96a222dd40909401b70d8f1812b7d29b6088b
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105544391"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012470"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Distribuera ett Azure Service Fabric-kluster över Tillgänglighetszoner
 Tillgänglighetszoner i Azure är ett erbjudande med hög tillgänglighet som skyddar dina program och data från data Center problem. En tillgänglighets zon är en unik fysisk plats utrustad med oberoende strömförsörjning, kylning och nätverk inom en Azure-region.
@@ -33,7 +33,7 @@ Den rekommenderade topologin för den primära nodtypen kräver de resurser som 
 * En NSG som refereras till av under nätet som du distribuerar dina skalnings uppsättningar för virtuella datorer i.
 
 >[!NOTE]
-> Den virtuella datorns skal uppsättnings grupp egenskap för enskild placering måste anges till true, eftersom Service Fabric inte stöder en enskild skalnings uppsättning för virtuella datorer som omfattar zoner.
+> Den virtuella datorns skal uppsättnings grupp egenskap för enskild placering måste anges till true.
 
 Diagram som visar arkitektur diagrammet för Azure Service Fabric tillgänglighets zon ![ som visar Azure-Service Fabric tillgänglighets zon arkitekturen.][sf-architecture]
 

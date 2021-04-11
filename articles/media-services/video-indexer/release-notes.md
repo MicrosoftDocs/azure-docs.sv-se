@@ -10,14 +10,15 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 02/16/2021
+ms.custom: references_regions
+ms.date: 03/30/2021
 ms.author: juliako
-ms.openlocfilehash: 618617d3602e45ebb15314c7cc5f6898a73bb71f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c2465d845da9dd9c2c1690c39a8f1d1c7e86899f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203733"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075720"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Viktig information om Azure Media Services Video Indexer
 
@@ -32,9 +33,31 @@ För att hålla dig uppdaterad med den senaste utvecklingen ger den här artikel
 
 ## <a name="march-2021"></a>Mars 2021
 
+### <a name="audio-analysis"></a>Ljud analys 
+
 Ljud analys är tillgängligt nu i ytterligare nya paket med ljud funktioner i olika pris punkter. Den nya **grundläggande ljud** analys inställningen ger en låg kostnads möjlighet att bara extrahera tal avskrifter, översättning och formatering av utdata och under texter. Den **grundläggande ljud** för inställningen kommer att producera två separata mätare på din faktura, inklusive en linje för avskrift och en separat rad för bildtext och under text format. Mer information om prissättningen finns på sidan [Media Services prissättning](https://azure.microsoft.com/pricing/details/media-services/) .
 
 Det nya paketet är tillgängligt vid indexering eller Omindexering av filen genom att välja alternativet **Avancerad alternativ för avancerad**  ->  **ljud** (under List rutan **video + ljud indexering** ).
+
+### <a name="new-developer-portal"></a>Ny utvecklings Portal 
+
+Video Indexer har en ny [utvecklings Portal](https://api-portal.videoindexer.ai/), kan du prova de nya video Indexer-API: erna och hitta alla relevanta resurser på en plats: [GitHub-lagringsplats](https://github.com/Azure-Samples/media-services-video-indexer), [Stack Overflow](https://stackoverflow.com/questions/tagged/video-indexer), [video Indexer teknisk community](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer) med relevanta blogg inlägg, [video Indexer vanliga frågor och svar](faq.md), [användar röst](https://feedback.azure.com/forums/932041-cognitive-services?category_id=399016) för att ge feedback och föreslå funktioner och  ["CodePen"-länken](https://codepen.io/videoindexer) med kod exempel för widgetar. 
+ 
+### <a name="advanced-customization-capabilities-for-insight-widget"></a>Avancerade anpassnings funktioner för Insight-widget 
+
+SDK är nu tillgängligt för att bädda in Video Indexer Insights-widgeten i din egen tjänst och anpassa dess stil och data. SDK stöder standard Video Indexer Insights-widgeten och en helt anpassningsbar widget för insikter. Kod exemplet är tillgängligt i [video Indexer GitHub-lagringsplatsen](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets/widget-customization). Med den här avancerade anpassnings funktionen kan Solution Developer tillämpa anpassad formatering och ta med kunderna egna AI-data och presentera dem i Insight-widgeten (med eller utan Video Indexer insikter). 
+
+### <a name="video-indexer-deployed-in-the-us-north-central--us-west-and-canada-central"></a>Video Indexer distribueras i USA, norra centrala USA, västra USA och Kanada, centrala 
+
+Nu kan du skapa ett Video Indexer betalt konto i regionerna USA, norra centrala, västra USA och Kanada, centrala
+ 
+### <a name="new-source-languages-support-for-speech-to-text-stt-translation-and-search"></a>Nya käll språk stöd för tal till text (STT), översättning och sökning 
+
+Video Indexer har nu stöd för STT, översättning och sökning i danska ("da-DK"), norska (' NB-NO '), svenska ("sa-SE"), finska ("fi-FI"), kanadensisk franska (fr-CA), thailändska (th-TH), arabiska (' ar-BH ', ' ar-tex ', ' ar-SWEETIQ ', ' ar-JO ', ' ar-KW ', ' ar-LB ', ' ar-OM ', ' ar-s', ' ar-s' och ' ar-SY ') och turkiska ("TR-TR"). Dessa språk är tillgängliga i både API-och Video Indexer webbplats. 
+ 
+### <a name="search-by-topic-in-video-indexer-website"></a>Sök efter avsnitt på Video Indexer webbplats 
+
+Nu kan du använda Sök funktionen, överst på sidan [video Indexer webbplats](https://www.videoindexer.ai/account/login) , för att söka efter videor med specifika ämnen. 
 
 ## <a name="february-2021"></a>Februari 2021
 

@@ -1,7 +1,7 @@
 ---
 title: Skapa automatiserade ML-klassificerings modeller
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du tränar & att distribuera klassificerings modeller med Azure Machine Learning s automatiserade maskin inlärnings gränssnitt (automatiserad ML).
+description: Träna & att distribuera klassificerings modeller utan att skriva kod med hjälp av Azure Machine Learning s automatiserade maskin inlärnings gränssnitt (automatiserad ML).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,29 +11,31 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: ad8a9f7af9ddabe969d090f80378ba5ff891d7f1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d0e236891e48a20adf1901d2f95a90ae25969c49
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691951"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210854"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Självstudie: skapa en klassificerings modell med automatiserad ML i Azure Machine Learning
 
-
-I den här självstudien får du lära dig hur du skapar en enkel klassificerings modell utan att skriva en enda rad kod med hjälp av automatisk maskin inlärning i Azure Machine Learning Studio. Den här klassificerings modellen förutsäger om en klient kommer att prenumerera på en fast term insättning med ett finansiellt institut.
+Lär dig hur du skapar en [enkel klassificerings modell](concept-automated-ml.md#classification) utan att skriva en enda rad med kod med hjälp av automatisk maskin inlärning i Azure Machine Learning Studio. Den här klassificerings modellen förutsäger om en klient kommer att prenumerera på en fast term insättning med ett finansiellt institut.
 
 Med automatisk maskin inlärning kan du automatisera tids krävande uppgifter. Automatisk maskin inlärning itererar snabbt över många kombinationer av algoritmer och egenskaper för att hjälpa dig att hitta den bästa modellen utifrån ett lyckat mått på hur du väljer.
 
-Ett exempel på en uppskattning av tids serier finns i [Självstudier: prognoser för efter frågan & AutoML](tutorial-automated-ml-forecast.md).
-
-I den här självstudien får du lära dig hur du utför följande uppgifter:
+Du kommer inte att skriva någon kod i den här självstudien. du använder Studio-gränssnittet för att utföra utbildning.  Du får lära dig hur du utför följande uppgifter:
 
 > [!div class="checklist"]
 > * Skapa en Azure Machine Learning-arbetsyta.
 > * Köra ett automatiserat maskininlärningsexperiment.
 > * Visa experiment information.
 > * Distribuera modellen.
+
+Prova också automatisk maskin inlärning för dessa andra modell typer:
+
+* Ett icke-kod exempel på Prognosticering finns i [Självstudier: prognoser för efter frågan & AutoML](tutorial-automated-ml-forecast.md).
+* En kod som är ett första exempel på en Regressions modell finns i [självstudien: Använd automatisk maskin inlärning för att förutse taxi-priser](tutorial-auto-train-models.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -52,7 +54,7 @@ Det finns många [sätt att skapa en arbets yta](how-to-manage-workspace.md). I 
 >[!IMPORTANT] 
 > Anteckna din **arbets yta** och din **prenumeration**. Du behöver dessa för att se till att du skapar experimentet på rätt plats. 
 
-## <a name="get-started-in-azure-machine-learning-studio"></a>Kom igång i Azure Machine Learning Studio
+## <a name="sign-in-to-the-studio"></a>Logga in på Studio
 
 Du har slutfört följande experiment med att ställa in och köra steg via Azure Machine Learning Studio på https://ml.azure.com , ett konsoliderat webb gränssnitt som innehåller maskin inlärnings verktyg för att utföra data vetenskaps scenarier för utbildning av data vetenskap för alla färdighets nivåer. Studio stöds inte i Internet Explorer-webbläsare.
 
