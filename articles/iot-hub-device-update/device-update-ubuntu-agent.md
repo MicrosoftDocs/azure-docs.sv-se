@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ee09928cab6419d799d06de9cf2f69987e42d157
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 751e9337d74210d238be079e8fcd1bb973937846
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644435"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936860"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Uppdatering av enhets uppdateringar för Azure IoT Hub med paket agenten på Ubuntu Server 18,04 x64
 
@@ -19,7 +19,7 @@ Enhets uppdatering för IoT Hub stöder två typer av uppdateringar – bildbase
 
 Paketbaserade uppdateringar är riktade uppdateringar som bara ändrar en specifik komponent eller ett program på enheten. Detta leder till lägre konsumtion av bandbredd och hjälper till att minska tiden för att ladda ned och installera uppdateringen. Paket uppdateringar tillåter normalt mindre stillestånd av enheter när en uppdatering tillämpas och du slipper att skapa avbildningar.
 
-Den här självstudien vägleder dig genom stegen för att slutföra en paket-baserad uppdatering från början till slut genom enhets uppdatering för IoT Hub. I den här självstudien använder vi en Ubuntu Server 18,04 x64 som kör Azure IoT Edge och uppdaterings paket agenten för enheten. I självstudien visas hur du uppdaterar ett exempel paket, men med liknande steg kan du uppdatera andra paket som Azure IoT Edge eller den behållar motor som används.
+Den här självstudien vägleder dig genom uppdatering Azure IoT Edge på Ubuntu Server 18,04 x64 med hjälp av enhets uppdaterings paketets agent. Även om självstudien visar hur du uppdaterar IoT Edge med liknande steg kan du uppdatera andra paket, till exempel den behållar motor som används.
 
 Verktygen och begreppen i den här självstudien gäller fortfarande även om du planerar att använda en annan konfiguration av operativ system plattformen. Slutför den här introduktionen till en uppdaterings process från slut punkt till slut punkt och välj sedan önskad typ av uppdatering och operativ system plattform för att få information.
 

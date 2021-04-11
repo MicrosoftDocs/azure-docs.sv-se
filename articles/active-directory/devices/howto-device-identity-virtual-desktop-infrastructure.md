@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfea22c10d98adf3b8c89491c248bf7a934ba1ed
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e5a4cc2b964bcf4fa49d90c8b6d5aa546b7148a1
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798892"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107953"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Enhets identitet och skriv bords virtualisering
 
@@ -94,6 +94,23 @@ När du distribuerar icke-permanent VDI rekommenderar Microsoft att IT-administr
 - Definiera och implementera process för att [Hantera inaktuella enheter](manage-stale-devices.md).
    - När du har en strategi för att identifiera dina icke-beständiga Azure AD-anslutna enheter (t. ex. genom att använda prefixet för datorns visnings namn) bör du vara mer aggressiv vid rensning av dessa enheter för att se till att din katalog inte används med massor av inaktuella enheter.
    - För icke-beständiga VDI-distributioner på aktuella och äldre Windows-nivåer, bör du ta bort enheter som har **ApproximateLastLogonTimestamp** äldre än 15 dagar.
+
+> [!NOTE]
+> Om du använder icke-permanent VDI, om du vill förhindra enhets anslutnings tillstånd, kontrollerar du att följande register nyckel har angetts:  
+> `HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin: "BlockAADWorkplaceJoin"=dword:00000001`    
+>
+> Se till att du kör Windows 10, version 1803 eller senare.  
+>
+> Det finns inte stöd för att roama data i sökvägen `%localappdata%` . Om du väljer att flytta innehållet under `%localappdata%` kontrollerar du att innehållet i följande mappar och register nycklar **aldrig** lämnar enheten under något villkor. Exempel: Migreringsverktyg för profil måste hoppa över följande mappar och nycklar:
+>
+> * `%localappdata%\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy`
+> * `%localappdata%\Packages\Microsoft.Windows.CloudExperienceHost_cw5n1h2txyewy`
+> * `%localappdata%\Packages\<any app package>\AC\TokenBroker`
+> * `%localappdata%\Microsoft\TokenBroker`
+> * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\IdentityCRL`
+> * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AAD`
+>
+
 
 ### <a name="persistent-vdi"></a>Beständig VDI
 

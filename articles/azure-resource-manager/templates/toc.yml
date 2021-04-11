@@ -366,9 +366,12 @@
   items:
     - name: Skapa mallar
       items:
-        - name: Filstruktur för mallar
+        - name: JSON-struktur
           displayName: 'parameters,variables,resources,outputs,condition'
           href: template-syntax.md
+        - name: Bicep-struktur
+          displayName: 'parameters,variables,resources,outputs,condition'
+          href: bicep-file.md
         - name: Skriva malluttryck
           href: template-expressions.md
         - name: Parametrar

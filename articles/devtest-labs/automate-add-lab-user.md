@@ -3,12 +3,12 @@ title: Automatisera tillägg av en labb användare i Azure DevTest Labs | Micros
 description: Den här artikeln visar hur du automatiserar hur du lägger till en användare i ett labb i Azure DevTest Labs att använda Azure Resource Manager mallar, PowerShell och CLI.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: dc5522cfe694f193b9bbeeb3145808a367a62c12
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1168e00960c35e2ac1e4a660efba63d30c63a575
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102519409"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727713"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatisera tillägg av en labb användare i ett labb i Azure DevTest Labs
 Azure DevTest Labs gör att du snabbt kan skapa självbetjänings utvecklings-och test miljöer med hjälp av Azure Portal. Men om du har flera team och flera DevTest Labs-instanser kan du spara tid genom att automatisera skapandet av processen. Med [Azure Resource Manager mallar](https://github.com/Azure/azure-devtestlab/tree/master/Environments) kan du skapa labb, virtuella labb datorer, anpassade bilder, formler och lägga till användare på ett automatiserat sätt. Den här artikeln fokuserar särskilt på att lägga till användare till en DevTest Labs-instans.
@@ -115,13 +115,13 @@ Roll-ID: t definieras i avsnittet Variables och namnges `devTestLabUserRoleId` .
 ### <a name="principal-id"></a>Ägar-ID
 Huvud-ID är objekt-ID: t för den Active Directory användare, grupp eller tjänstens huvud namn som du vill lägga till som labb användare i labbet. Mallen använder `ObjectId` som en parameter.
 
-Du kan hämta ObjectId med hjälp av cmdletarna [Get-AzureRMADUser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0), [Get-AzureRMADGroup eller [Get-AzureRMADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0) PowerShell. Dessa cmdletar returnerar en eller flera listor med Active Directory objekt som har en ID-egenskap, vilket är det objekt-ID som du behöver. I följande exempel visas hur du hämtar objekt-ID för en enskild användare i ett företag.
+Du kan hämta ObjectId med hjälp av cmdletarna [Get-AzureRMADUser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0&preserve-view=true), [Get-AzureRMADGroup eller [Get-AzureRMADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0&preserve-view=true) PowerShell. Dessa cmdletar returnerar en eller flera listor med Active Directory objekt som har en ID-egenskap, vilket är det objekt-ID som du behöver. I följande exempel visas hur du hämtar objekt-ID för en enskild användare i ett företag.
 
 ```powershell
-$userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
+$userObjectId = (Get-AzureRmADUser -UserPrincipalName 'email@company.com').Id
 ```
 
-Du kan också använda de Azure Active Directory PowerShell-cmdlets som innehåller [Get-MsolUser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0), [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)och [Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0).
+Du kan också använda de Azure Active Directory PowerShell-cmdlets som innehåller [Get-MsolUser](/powershell/module/msonline/get-msoluser?preserve-view=true&view=azureadps-1.0), [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?preserve-view=true&view=azureadps-1.0)och [Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?preserve-view=true&view=azureadps-1.0).
 
 ### <a name="scope"></a>Omfång
 Omfattning anger den resurs eller resurs grupp som roll tilldelningen ska gälla för. För resurser är omfånget i formatet: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}` . Mallen använder `subscription().subscriptionId` funktionen för att fylla i `subscription-id` delen och `resourceGroup().name` funktionen mall för att fylla i `resource-group-name` delen. Med hjälp av dessa funktioner kan du använda de labb som du tilldelar en roll i den aktuella prenumerationen och samma resurs grupp som mall distributionen görs till. Den sista delen, `resource-name` är namnet på labbet. Det här värdet tas emot via mallparameter i det här exemplet. 
@@ -153,7 +153,7 @@ Börja med att skapa en parameter fil (till exempel: azuredeploy.parameters.jsp�
 }
 ```
 
-Använd sedan PowerShell-cmdleten [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment?view=azurermps-6.13.0) för att distribuera Resource Manager-mallen. I följande exempel kommando tilldelas en person, grupp eller ett huvud namn för tjänsten till användar rollen DevTest Labs för ett labb.
+Använd sedan PowerShell-cmdleten [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) för att distribuera Resource Manager-mallen. I följande exempel kommando tilldelas en person, grupp eller ett huvud namn för tjänsten till användar rollen DevTest Labs för ett labb.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateParameterFile .\azuredeploy.parameters.json -TemplateFile .\azuredeploy.json
@@ -168,7 +168,7 @@ New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -Resou
 ```
 
 ## <a name="use-azure-powershell"></a>Använda Azure PowerShell
-Som beskrivs i introduktionen skapar du en ny roll tilldelning i Azure för att lägga till en användare i **användar rollen DevTest Labs** för labbet. I PowerShell gör du det med hjälp av cmdleten [New-AzureRMRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) . Denna cmdlet har många valfria parametrar som gör det möjligt för flexibiliteten. `ObjectId`, `SigninName` Eller `ServicePrincipalName` kan anges som det objekt som beviljats behörigheter.  
+Som beskrivs i introduktionen skapar du en ny roll tilldelning i Azure för att lägga till en användare i **användar rollen DevTest Labs** för labbet. I PowerShell gör du det med hjälp av cmdleten [New-AzureRMRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) . Denna cmdlet har många valfria parametrar som gör det möjligt för flexibiliteten. `ObjectId`, `SigninName` Eller `ServicePrincipalName` kan anges som det objekt som beviljats behörigheter.  
 
 Här är ett exempel på Azure PowerShell kommandot som lägger till en användare i användar rollen DevTest Labs i det angivna labbet.
 
@@ -186,7 +186,7 @@ Objektet som beviljas åtkomst kan anges av `objectId` `signInName` parametrarna
 Följande Azure CLI-exempel visar hur du lägger till en person i användar rollen DevTest Labs för det angivna labbet.  
 
 ```azurecli
-az role assignment create --roleName "DevTest Labs User" --signInName <email@company.com> -–resource-name "<Lab Name>" --resource-type “Microsoft.DevTestLab/labs" --resource-group "<Resource Group Name>"
+az role assignment create --roleName "DevTest Labs User" --signInName <email@company.com> -–resource-name "<Lab Name>" --resource-type "Microsoft.DevTestLab/labs" --resource-group "<Resource Group Name>"
 ```
 
 ## <a name="next-steps"></a>Nästa steg

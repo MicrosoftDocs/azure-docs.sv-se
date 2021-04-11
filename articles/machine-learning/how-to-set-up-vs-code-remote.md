@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 11/16/2020
-ms.openlocfilehash: 3f3794ed4748eda44e863ff4627dedc0a34691af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccd56afc8c4ea7e236946fc6afa54e471203fe31
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98070107"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065988"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Ansluta till en Azure Machine Learning beräknings instans i Visual Studio Code (för hands version)
 

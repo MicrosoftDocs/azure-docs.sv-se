@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: 37ac292acc76c681ea38b2ae881ff8cd2ae5ec3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f6e2474a533f5619d5544b674a87b6412323cc3
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102502454"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166742"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Etikettera data automatiskt i Azure avdelningens kontroll
 
@@ -96,7 +96,7 @@ Om du vill använda MIP-känslighets etiketter på Azure-resurser i Azure avdeln
 Genom att utöka MIPs känslighets etiketter med Azure avdelningens kontroll kan organisationer nu upptäcka, klassificera och få inblick i känsligheten i ett bredare utbud av data källor, vilket minimerar kompatibiliteten.
 
 > [!NOTE]
-> Eftersom Microsoft 365 och Azure avdelningens kontroll är separata tjänster, finns det en risk att de distribueras i olika regioner. Etikett namn och namn på anpassade känsliga informations typer anses vara kund information och bevaras inom samma geografiska plats som standard för att skydda känsligheten hos dina data och för att undvika GDPR lagar.
+> Eftersom Microsoft 365 och Azure avdelningens kontroll är separata tjänster, finns det en risk att de distribueras i olika regioner. Etikett namn och namn på anpassade känsliga informations typer anses vara kund information och bevaras inom samma geografiska plats som standard för att skydda känsligheten hos dina data och följa sekretess bestämmelser.
 >
 > Därför delas etiketter och anpassade känsliga informations typer inte till Azure-avdelningens kontroll som standard och kräver att ditt medgivande används i Azure avdelningens kontroll.
 

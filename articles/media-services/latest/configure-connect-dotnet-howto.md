@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 8946f6e94dd26db45622bc7609fb2375d59bb57e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 677c5998d25205f8de9792888af2554674944798
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102455390"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107602"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Ansluta till Media Services v3 API-.NET
 
@@ -29,7 +29,7 @@ Den här artikeln visar hur du ansluter till Azure Media Services v3 .NET SDK me
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- [Skapa ett Media Services-konto](./create-account-howto.md). Kom ihåg att spara resurs gruppens namn och Media Services konto namnet
+- [Skapa ett Media Services-konto](./account-create-how-to.md). Kom ihåg att spara resurs gruppens namn och Media Services konto namnet
 - Installera ett verktyg som du vill använda för .NET-utveckling. Stegen i den här artikeln visar hur du använder [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Du kan använda Visual Studio Code, se [arbeta med C#](https://code.visualstudio.com/docs/languages/csharp). Eller så kan du använda en annan kod redigerare.
 
 > [!IMPORTANT]
@@ -237,14 +237,14 @@ namespace ConsoleApp1
 
 - [Självstudie: Ladda upp, koda och strömma videor – .NET](stream-files-tutorial-with-api.md) 
 - [Självstudie: strömma live med Media Services v3-.NET](stream-live-tutorial-with-api.md)
-- [Självstudie: analysera videor med Media Services v3-.NET](analyze-videos-tutorial-with-api.md)
+- [Självstudie: analysera videor med Media Services v3-.NET](analyze-videos-tutorial.md)
 - [Skapa jobbindata från en lokal fil – .NET](job-input-from-local-file-how-to.md)
 - [Skapa jobbindata från en HTTPS-URL – .NET](job-input-from-http-how-to.md)
-- [Koda med en anpassad transformering – .NET](customize-encoder-presets-how-to.md)
-- [Använda dynamisk AES-128-kryptering och tjänsten för nyckelleverans – .NET](protect-with-aes128.md)
-- [Använda dynamisk DRM-kryptering och tjänsten för licensleverans – .NET](protect-with-drm.md)
-- [Hämta en signeringsnyckel från den befintliga principen – .NET](get-content-key-policy-dotnet-howto.md)
-- [Skapa filter med Media Services – .NET](filters-dynamic-manifest-dotnet-howto.md)
+- [Koda med en anpassad transformering – .NET](encode-custom-presets-how-to.md)
+- [Använda dynamisk AES-128-kryptering och tjänsten för nyckelleverans – .NET](drm-playready-license-template-concept.md)
+- [Använda dynamisk DRM-kryptering och tjänsten för licensleverans – .NET](drm-protect-with-drm-tutorial.md)
+- [Hämta en signeringsnyckel från den befintliga principen – .NET](drm-get-content-key-policy-dotnet-how-to.md)
+- [Skapa filter med Media Services – .NET](filters-dynamic-manifest-dotnet-how-to.md)
 - [Avancerad exempel på video på begäran för Azure Functions v2 med Media Services v3](https://aka.ms/ams3functions)
 
 ## <a name="see-also"></a>Se även

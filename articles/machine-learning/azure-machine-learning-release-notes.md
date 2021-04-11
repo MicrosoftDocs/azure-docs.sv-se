@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: a21411e4d1ee30e4f79687bfc07a53575497ca1f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea7eda7e50e7d8733fd24a63d533272e5bca6bab
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562230"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166691"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
@@ -22,6 +22,21 @@ I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  
 
 __RSS-feed__: Håll dig informerad när den här sidan uppdateras genom att kopiera och klistra in följande webbadress i feed-läsaren: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
 
+## <a name="2021-03-31"></a>2021-03-31
+### <a name="azure-machine-learning-studio-notebooks-experience-march-update"></a>Azure Machine Learning Studio Notebooks Experience (mars Update)
++ **Nya funktioner**
+  + Rendera CSV/TSV. Användarna kommer att kunna återge och TSV/CSV-filen i ett rutnäts format för enklare data analys. 
+  + SSO-autentisering för beräknings instans. Användare kan nu enkelt autentisera alla nya beräknings instanser direkt i anteckningsbok-gränssnittet, vilket gör det enklare att autentisera och använda Azure SDK: er direkt i AzureML. 
+  + Beräknings instans mått. Användarna kan visa beräknings mått som processor användning och minne via Terminal.
+  + Fil information. Användarna kan nu se fil information, inklusive senast ändrad tid och fil storlek genom att klicka på de tre punkterna bredvid en fil.
+
++ **Fel korrigeringar och förbättringar**
+  + Förbättrad sid inläsnings tid.
+  + Förbättrad prestanda.
+  + Förbättrad hastighet och kernel-tillförlitlighet.
+  + Få vertikal fast egendom genom att permanent flytta anteckningsbok-filfönstret uppåt
+  + Länkar kan nu klickas bara i Terminal
+  + Förbättrade IntelliSense-prestanda
 
 ## <a name="2021-03-08"></a>2021-03-08
 

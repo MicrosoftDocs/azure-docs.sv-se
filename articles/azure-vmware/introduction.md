@@ -3,12 +3,12 @@ title: Introduktion
 description: Lär dig om funktionerna och fördelarna med Azure VMware-lösningen för att distribuera och hantera VMware-baserade arbets belastningar i Azure.
 ms.topic: overview
 ms.date: 03/24/2021
-ms.openlocfilehash: a75c04cf6b51068ef9867e3f9438b2820da703fe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 32dd73108dc12d7d7acc605f43a0fbf6d2cf1cd7
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048824"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107998"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Vad är Azure VMware Solution?
 
@@ -19,11 +19,6 @@ Azure VMware-lösningen är en VMware-verifierad lösning med pågående verifie
 Diagrammet visar sammanlänkning mellan privata moln och virtuella nätverk i Azure, Azure-tjänster och lokala miljöer. Nätverks åtkomst från privata moln till Azure-tjänster eller virtuella nätverk tillhandahåller SLA-driven integrering av Azures tjänst slut punkter. ExpressRoute Global Reach ansluter din lokala miljö till ditt privata moln i Azure VMware-lösningen. 
 
 ![Bild av Azure VMware-lösning för privat moln sammanlänkning till Azure och lokalt](./media/adjacency-overview-drawing-final.png)
-
-## <a name="customer-communication"></a>Kund kommunikation
-Tjänst problem, planerat underhåll, hälso-och sjukvårds meddelanden, säkerhets rådgivare publiceras via **service Health** i Azure Portal. Du kan vidta åtgärder när du ställer in aktivitets logg aviseringar för dessa aviseringar. Mer information finns i [Skapa service Health-aviseringar med hjälp av Azure Portal](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
-
-:::image type="content" source="media/service-health.png" alt-text="Skärm bild av Service Health meddelanden":::
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Värdar, kluster och privata moln
 
@@ -60,6 +55,9 @@ I ditt privata moln kan du:
 
 Övervaknings mönster i Azure VMware-lösningen liknar virtuella Azure-datorer i IaaS-plattformen. Mer information och instruktioner finns i [övervaka virtuella Azure-datorer med Azure Monitor](../azure-monitor/vm/monitor-vm-azure.md).
 
+## <a name="customer-communication"></a>Kund kommunikation
+[!INCLUDE [customer-communications](includes/customer-communications.md)]
+
 ## <a name="next-steps"></a>Nästa steg
 
 Nästa steg är att lära dig viktiga [koncept för privata moln och kluster](concepts-private-clouds-clusters.md).
@@ -68,3 +66,5 @@ Nästa steg är att lära dig viktiga [koncept för privata moln och kluster](co
 
 <!-- LINKS - internal -->
 [concepts-private-clouds-clusters]: ./concepts-private-clouds-clusters.md
+
+

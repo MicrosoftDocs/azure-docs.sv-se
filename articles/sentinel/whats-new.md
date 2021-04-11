@@ -9,10 +9,10 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 03/11/2021
 ms.openlocfilehash: 31ba96e0f8772877d7b4881c6bab0561cbe7956e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104604261"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Nyheter i Azure Sentinel
@@ -167,7 +167,7 @@ Informations sidorna för Azure Sentinel-entiteten innehåller ett [insikts fön
 
 Om du har [aktiverat UEBA](ueba-enrichments.md)och har valt en tidsram på minst fyra dagar, kommer nu fönstret insikter även att innehålla följande nya avsnitt för UEBA Insights:
 
-|Avsnitt  |Description  |
+|Avsnitt  |Beskrivning  |
 |---------|---------|
 |**UEBA Insights**     | Sammanfattar avvikande användar aktiviteter: <br>– Över geografiska platser, enheter och miljöer<br>– Över tid-och frekvens horisonter jämfört med användarens egna historik <br>– Jämfört med peer-beteende <br>– Jämfört med organisationens beteende     |
 |**Användar-peer-datorer baserade på säkerhets grupp medlemskap**     |   Visar en lista över användarens peer-datorer baserat på medlemskap i Azure AD-säkerhetsgrupper, som tillhandahåller säkerhets arbets grupper med en lista över andra användare som delar liknande behörigheter.  |
