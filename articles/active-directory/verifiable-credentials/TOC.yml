@@ -1,0 +1,50 @@
+- name: Dokumentation om Azure AD verifierbara autentiseringsuppgifter
+  href: index.yml
+- name: Översikt
+  expanded: true
+  items:
+    - name: Introduktion till Azure Active Directory verifierbara autentiseringsuppgifter
+      href: decentralized-identifier-overview.md
+- name: Självstudier
+  expanded: true
+  items:
+    - name: Kom igång med verifierbara autentiseringsuppgifter
+      href: get-started-verifiable-credentials.md
+    - name: Konfigurera verifierbara autentiseringsuppgifter i din klient organisation
+      items:
+        - name: 1 – Konfigurera utfärdare för verifierbara autentiseringsuppgifter i din egen Azure AD
+          href: enable-your-tenant-verifiable-credentials.md
+        - name: 2 – Anslut din verifierade autentiseringsuppgifter till din egen Azure AD
+          href: issue-verify-verifiable-credentials-your-tenant.md
+- name: Begrepp
+  expanded: true
+  items:
+    - name: Information om OpenID Connect-protokoll
+      href: issuer-openid.md
+- name: Anvisningar
+  expanded: true
+  items:
+    - name: Så här anpassar du dina autentiseringsuppgifter
+      href: credential-design.md
+    - name: Hantera återkallande av autentiseringsuppgifter
+      href: how-to-issuer-revoke.md
+    - name: Länka din domän till din
+      href: how-to-dnsbind.md
+    - name: Välj bort autentiseringsuppgifter för verifierbar
+      href: how-to-opt-out.md
+- name: Exempel
+  expanded: true
+  items:
+    - name: Exempel på Node-app
+      href: 'https://github.com/Azure-Samples/active-directory-verifiable-credentials'
+    - name: Exempel utfärdare
+      href: 'https://didvc-issuer-sample.azurewebsites.net/'
+    - name: Exempel verifiering
+      href: 'https://didvc-verifier-sample.azurewebsites.net/'
+- name: Resurser
+  expanded: true
+  items:
+    - name: VANLIGA FRÅGOR OCH SVAR
+      href: verifiable-credentials-faq.md
+    - name: Så här skapar du ett Developer-konto
+      href: how-to-create-a-free-developer-account.md

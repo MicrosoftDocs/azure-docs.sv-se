@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/24/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2ed1b8162c49ccc26cb98dd02897a9c40f809d14
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 01bf9ac6a3bfcb30fb6e6a6f9d56de3f9f516f03
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204475"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059283"
 ---
 # <a name="choose-cloud-tiering-policies"></a>Välj principer för moln nivåer
 
@@ -34,8 +34,13 @@ För agent versioner 9 och senare baseras den minsta fil storleken för en fil p
 |16 KB (16384)               | 32 KB   |
 |32 KB (32768)               | 64 kB   |
 |64 KB (65536)    | 128 kB  |
+|128 KB (131072) | 256 kB |
+|256 KB (262144) | 512 kB |
+|512 KB (524288) | 1 MB |
+|1 MB (1048576) | 2 MB |
+|2 MB (2097152) | 4 MB |
 
-Kluster storlekar på upp till 64 KB stöds för närvarande, men för större storlekar fungerar inte moln nivåer.
+Kluster storlekar på upp till 2 MB stöds med Azure File Sync agent version 12, men för större storlekar fungerar inte moln nivåer.
 
 Alla fil system som används av Windows, organisera din hård disk baserat på kluster storlek (även kallat storlek på allokeringsenhet). Kluster storleken representerar den minsta mängd disk utrymme som kan användas för att lagra en fil. Om fil storlekar inte kommer ut till en till följd av kluster storleken, måste ytterligare utrymme användas för att lagra filen till nästa multipel av kluster storleken.
 

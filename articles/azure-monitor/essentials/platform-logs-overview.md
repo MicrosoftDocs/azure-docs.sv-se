@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
-ms.openlocfilehash: 3300b0587cbb6c2193b56c9152af0cb11ea51936
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f2b22746b7a78349580220f4aa7579876fd21c33
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033307"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074598"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Översikt över Azure-plattformsloggar
 Plattforms loggar ger detaljerad diagnostik och gransknings information för Azure-resurser och Azure-plattformen som de är beroende av. De genereras automatiskt även om du behöver konfigurera vissa plattforms loggar som ska vidarebefordras till en eller flera mål som ska behållas. Den här artikeln innehåller en översikt över plattforms loggar, inklusive vilken information de ger och hur du kan konfigurera dem för insamling och analys.
@@ -45,8 +45,8 @@ Du kan skicka plattforms loggar till en eller flera av målen i följande tabell
 
 | Mål | Beskrivning |
 |:---|:---|
-| Log Analytics-arbetsyta | Analysera loggarna för alla dina Azure-resurser och dra nytta av alla funktioner som finns tillgängliga för att [Azure Monitor loggar](../logs/data-platform-logs.md) , inklusive [logg frågor](../logs/log-query-overview.md) och [logg aviseringar](../alerts/alerts-log.md). Fäst resultatet av en logg fråga på en Azure-instrumentpanel eller ta med den i en arbets bok som en del av en interaktiv rapport. |  |
-| Händelsehubb | Skicka plattforms logg data utanför Azure, till exempel en SIEM-plattform från tredje part eller en anpassad telemetri-plattform.
+| Log Analytics-arbetsyta | Analysera loggarna för alla dina Azure-resurser och dra nytta av alla funktioner som finns tillgängliga för att [Azure Monitor loggar](../logs/data-platform-logs.md) , inklusive [logg frågor](../logs/log-query-overview.md) och [logg aviseringar](../alerts/alerts-log.md). Fäst resultatet av en logg fråga på en Azure-instrumentpanel eller ta med den i en arbets bok som en del av en interaktiv rapport. | 
+| Händelsehubb | Skicka plattforms logg data utanför Azure, till exempel en SIEM-plattform från tredje part eller en anpassad telemetri-plattform. |
 | Azure-lagring | Arkivera loggarna för granskning eller säkerhets kopiering. |
 
 - Mer information om hur du skapar en diagnostisk inställning för aktivitets logg eller resurs loggar finns i [skapa diagnostikinställningar för att skicka plattforms loggar och mått till olika mål](../essentials/diagnostic-settings.md). 

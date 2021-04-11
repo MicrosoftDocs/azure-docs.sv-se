@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: dc740acb366212640015ca0fb527d34fade1097d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a19ca14a37bd24e499fdf0681b3510e9a4a8ea3f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103010770"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075040"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Kod exempel för Microsoft Identity Platform (v 2.0-slut punkt)
 
@@ -61,7 +61,7 @@ Följande exempel illustrerar webb program som loggar in användare. Några exem
 | -------- | ------------------- | --------------------------------- |
 | ![Den här bilden visar ASP.NET Core logo typ](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [Själv studie kurs om ASP.NET Core WebApp-loggar – användare](https://aka.ms/aspnetcore-webapp-sign-in) | Samma exempel i [ASP.net Core webbappens anrop Microsoft Graph-](https://aka.ms/aspnetcore-webapp-call-msgraph) fasen</p>Avancerat exempel [som använder den inloggade användarens token-cache från huvudappar, API: er och tjänster](https://github.com/Azure-Samples/ms-identity-dotnet-advanced-token-cache) |
 | ![Den här bilden visar ASP.NET Framework-logotypen](media/sample-v2-code/logo_NETframework.png)</p>ASP.NET Core | [AD FS till Spelbok för Azure AD-programmigrering för utvecklare](https://github.com/Azure-Samples/ms-identity-dotnet-adfs-to-aad) för att lära sig att säkert och säkert migrera dina program som är integrerade med Active Directory Federation Services (AD FS) (AD FS) till Azure Active Directory (Azure AD) | |
-| ![Den här bilden visar ASP.NET Framework-logotypen](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [Snabb start för ASP.NET](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotNet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotNet-admin-restricted-scope – v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph – utbildning – aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
+| ![Den här bilden visar ASP.NET Framework-logotypen](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [Snabb start för ASP.NET](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotNet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotNet-admin-restricted-scope – v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> [msgraph – utbildning – aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp) |
 | ![Den här bilden visar Java-logotypen](media/sample-v2-code/logo_java.png)  |[Själv studie kurs om Java-servlet – kapitel 1,1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Logga in med AAD| |
 | ![Den här bilden visar Java-logotypen](media/sample-v2-code/logo_java.png)  |[Själv studie kurs om Java-servlet – kapitel 1,2](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Logga in med B2C |
 | ![Den här bilden visar Java-logotypen](media/sample-v2-code/logo_java.png)  | | [Själv studie kurs om Java-servlet – kapitel 2,1](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Logga in med AAD och ring diagram|

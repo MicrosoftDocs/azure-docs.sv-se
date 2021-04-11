@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 01854e7636f53ec1faab157b51cc84f3539582b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00a3fa397bf88520fa4923b6fbe7495c0aa0b8a2
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596730"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277410"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Signals beskrivande ljud spår
 
@@ -29,9 +29,9 @@ Den här artikeln visar hur du kodar en video, laddar upp en ljudfil med enbart 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- [Skapa ett Media Services-konto](./create-account-howto.md).
+- [Skapa ett Media Services-konto](./account-create-how-to.md).
 - Följ stegen i [Access Azure Media Services API with the Azure CLI](./access-api-howto.md) (Få åtkomst till Azure Media Services-API med Azure CLI) och spara autentiseringsuppgifterna. Du behöver använda dem för att få åtkomst till API.
-- Granska [dynamisk paketering](dynamic-packaging-overview.md).
+- Granska [dynamisk paketering](encode-dynamic-packaging-concept.md).
 - Läs själv studie kursen [Ladda upp, koda och strömma videor](stream-files-tutorial-with-api.md) .
 
 ## <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Skapa en indatatillgång och ladda upp en lokal fil till den 
@@ -64,7 +64,7 @@ När det gäller den här artikeln skickar du `outputAsset.Name` värdet till- `
 
 ## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Skapa en transformering och ett jobb som kodar den överförda filen
 
-När kodningen eller bearbetningen av innehåll i Media Services görs, konfigureras vanligtvis kodningsinställningarna som ett recept. Du skickar sedan ett **Jobb** som tillämpar receptet på en video. Genom att skicka nya jobb för varje ny video tillämpar du receptet på alla videor i biblioteket. Ett recept i Media Services kallas för en **Transformering**. Mer information finns i [Transformeringar och jobb](./transforms-jobs-concept.md). Det exempel som beskrivs i självstudien definierar ett recept som kodar videon för att strömma den till olika iOS- och Android-enheter. 
+När kodningen eller bearbetningen av innehåll i Media Services görs, konfigureras vanligtvis kodningsinställningarna som ett recept. Du skickar sedan ett **Jobb** som tillämpar receptet på en video. Genom att skicka nya jobb för varje ny video tillämpar du receptet på alla videor i biblioteket. Ett recept i Media Services kallas för en **Transformering**. Mer information finns i [Transformeringar och jobb](./transform-jobs-concept.md). Det exempel som beskrivs i självstudien definierar ett recept som kodar videon för att strömma den till olika iOS- och Android-enheter. 
 
 I följande exempel skapas en transformering (om det inte finns någon).
 
@@ -245,4 +245,4 @@ Azure Media Player kan användas vid testning, men bör inte användas i en prod
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Analysera videor](analyze-videos-tutorial-with-api.md)
+[Analysera videor](analyze-videos-tutorial.md)

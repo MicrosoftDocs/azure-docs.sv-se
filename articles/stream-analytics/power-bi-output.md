@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: a94389a075fd62d80345a21e32f1bc977dfdee87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/7/2021
+ms.openlocfilehash: 07b7715935756293467f2a3004109df9bf679661
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98020068"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030020"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Power BI utdata från Azure Stream Analytics
 
@@ -73,9 +73,10 @@ Double | Double | Sträng | Sträng | Double
 Sträng | Sträng | Sträng | Sträng | Sträng 
 Datumtid | Sträng | Sträng |  Datumtid | Sträng
 
-## <a name="output-batch-size"></a>Batchstorlek för utdata
+## <a name="limitations-and-best-practices"></a>Begränsningar och bästa praxis
+För närvarande kan Power BI anropas ungefär en gång per sekund. Stöd paket för direkt uppspelning av visualiseringar på 15 KB. Utöver det fungerar strömmande visuella objekt (men push fortsätter att fungera). På grund av de här begränsningarna är Power BI bäst i de fall där Azure Stream Analytics gör en betydande data inläsnings minskning. Vi rekommenderar att du använder ett rullande-fönster eller ett hoppande-fönster för att säkerställa att data-push är högst en push per sekund och att frågan omfattas av data flödes kraven.
 
-För batch-storlek för utdata, se [Power BI REST API-gränser](/power-bi/developer/automation/api-rest-api-limitations).
+Mer information om batch-storlek för utdata finns i [Power BI REST API-gränser](/power-bi/developer/automation/api-rest-api-limitations).
 
 ## <a name="next-steps"></a>Nästa steg
 

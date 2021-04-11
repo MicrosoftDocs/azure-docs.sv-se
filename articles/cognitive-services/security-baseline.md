@@ -4,22 +4,20 @@ description: Cognitive Services säkerhets bas linje ger procedur vägledning oc
 author: msmbaldwin
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 03/30/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 218810183f547d4e90043364a318615a204df9d8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a7f9570a68102eb20c84942ddf9ac73de033f01c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044863"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076606"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Azures säkerhets bas linje för Cognitive Services
 
-Den här säkerhets bas linjen använder vägledning från [Azures säkerhets benchmark-version 1,0](../security/benchmarks/overview-v1.md) till Cognitive Services. Azure Security Benchmark ger rekommendationer om hur du kan skydda dina molnlösningar i Azure.
-Innehållet grupperas efter de **säkerhets kontroller** som definieras av Azures säkerhets benchmark och relaterade rikt linjer som gäller för Cognitive Services. **Kontroller** som inte är tillämpliga på Cognitive Services har uteslutits.
+Den här säkerhets bas linjen använder vägledning från [Azures säkerhets benchmark version 1.0](../security/benchmarks/overview-v1.md) till Cognitive Services. Azure Security Benchmark ger rekommendationer om hur du kan skydda dina molnlösningar i Azure. Innehållet grupperas efter de **säkerhets kontroller** som definieras av Azures säkerhets benchmark och relaterade rikt linjer som gäller för Cognitive Services. **Kontroller** som inte är tillämpliga på Cognitive Services, eller för vilka ansvaret är Microsofts, har uteslutits.
 
- 
 Om du vill se hur Cognitive Services helt mappar till Azures säkerhets mätning, se den [fullständiga Cognitive Services mappnings filen för säkerhets bas linjen](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 ## <a name="network-security"></a>Nätverkssäkerhet
@@ -32,7 +30,7 @@ Om du vill se hur Cognitive Services helt mappar till Azures säkerhets mätning
 
 Stöd för virtuella nätverk och tjänst slut punkter för Cognitive Services är begränsat till en viss uppsättning regioner.
 
-- [Så här konfigurerar du virtuella Azure Cognitive Services-nätverk](./cognitive-services-virtual-networks.md?tabs=portal)
+- [Så här konfigurerar du virtuella Azure Cognitive Services-nätverk](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)
 
 - [Översikt över virtuella Azure-nätverk](../virtual-network/virtual-networks-overview.md)
 
@@ -63,7 +61,7 @@ Tänk på att Cognitive Services behållare krävs för att skicka in avläsning
 
 Observera också att du måste inaktivera djup paket inspektion för brand Väggs lösningen på de säkra kanaler som Cognitive Services behållare skapar till Microsoft-servrar. Om du inte gör det kommer behållaren inte att fungera korrekt.
 
-- [Förstå Azure Cognitive Services container Security](./cognitive-services-container-support.md#azure-cognitive-services-container-security)
+- [Förstå Azure Cognitive Services container Security](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support#azure-cognitive-services-container-security)
 
 **Ansvar**: Kund
 
@@ -83,7 +81,7 @@ Om du använder Cognitive Services i en behållare kan du utöka behållar distr
 
 - [Så här skapar du en Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
-- [Förstå Azure Cognitive Services container Security](./cognitive-services-container-support.md#azure-cognitive-services-container-security)
+- [Förstå Azure Cognitive Services container Security](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support#azure-cognitive-services-container-security)
 
 **Ansvar**: Kund
 
@@ -112,7 +110,7 @@ Tänk på att Cognitive Services behållare krävs för att skicka in avläsning
 
 Observera också att du måste inaktivera djup paket inspektion för brand Väggs lösningen på de säkra kanaler som Cognitive Services behållare skapar till Microsoft-servrar. Om du inte gör det kommer behållaren inte att fungera korrekt.
 
-- [Förstå Azure Cognitive Services container Security](./cognitive-services-container-support.md#azure-cognitive-services-container-security)
+- [Förstå Azure Cognitive Services container Security](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support#azure-cognitive-services-container-security)
 
 - [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
@@ -131,7 +129,7 @@ Tänk på att Cognitive Services behållare krävs för att skicka in avläsning
 
 Observera också att du måste inaktivera djup paket inspektion för brand Väggs lösningen på de säkra kanaler som Cognitive Services behållare skapar till Microsoft-servrar. Om du inte gör det kommer behållaren inte att fungera korrekt.
 
-- [Förstå Azure Cognitive Services container Security](./cognitive-services-container-support.md#azure-cognitive-services-container-security)
+- [Förstå Azure Cognitive Services container Security](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support#azure-cognitive-services-container-security)
 
 **Ansvar**: Kund
 
@@ -145,7 +143,7 @@ Du kan också använda program säkerhets grupper för att förenkla komplex sä
 
 - [Tjänst taggar för virtuellt nätverk](../virtual-network/service-tags-overview.md)
 
-- [Program säkerhets grupper](../virtual-network/network-security-groups-overview.md#application-security-groups)
+- [Program säkerhets grupper](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview#application-security-groups)
 
 **Ansvar**: Kund
 
@@ -179,9 +177,9 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 **Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks resurser som är relaterade till din Cognitive Services-behållare. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks resurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
+- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
 
-- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
+- [Så här skapar du aviseringar i Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Ansvar**: Kund
 
@@ -195,7 +193,7 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 **Vägledning**: Aktivera diagnostiska inställningar i Azure aktivitets logg och skicka loggarna till en Log Analytics-arbetsyta, Azure Event Hub eller Azure Storage-konto för arkivering. Aktivitets loggar ger insikt i de åtgärder som utfördes på din Cognitive Services-behållare på kontroll planet nivå. Med hjälp av Azures aktivitets logg data kan du fastställa "vad, vem och när" för alla Skriv åtgärder (skicka, skicka och ta bort) på kontroll Plans nivån för Azure cache för Redis-instanser.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
 
 **Ansvar**: Kund
 
@@ -207,7 +205,7 @@ Du kan också använda Azure-ritningar för att förenkla storskaliga Azure-dist
 
 Dessutom skickar Cognitive Services diagnostiska händelser som kan samlas in och användas i syfte att analysera, Avisera och rapportera. Du kan konfigurera diagnostikinställningar för en Cognitive Services behållare via Azure Portal. Du kan skicka en eller flera diagnostiska händelser till ett lagrings konto, en Event Hub-eller en Log Analytics-arbetsyta.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/diagnostic-settings-legacy)
 
 - [Använda diagnostikinställningar till för Azure Cognitive Services](diagnostic-logging.md)
 
@@ -219,7 +217,7 @@ Dessutom skickar Cognitive Services diagnostiska händelser som kan samlas in oc
 
 **Vägledning**: i Azure Monitor ställer du in Log Analytics arbets ytans kvarhållningsperiod enligt organisationens regler för efterlevnad. Använd Azure Storage konton för långsiktig/Arkiv lagring.
 
-- [Ange logg lagrings parametrar för Log Analytics arbets ytor](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
+- [Ange logg lagrings parametrar för Log Analytics arbets ytor](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
 **Ansvar**: Kund
 
@@ -229,9 +227,9 @@ Dessutom skickar Cognitive Services diagnostiska händelser som kan samlas in oc
 
 **Vägledning**: Aktivera diagnostiska inställningar i Azure aktivitets logg och skicka loggarna till en Log Analytics-arbetsyta. Dessa loggar ger omfattande, frekventa data om driften av en resurs som används för problem identifiering och fel sökning. Utför frågor i Log Analytics till att söka efter termer, identifiera trender, analysera mönster och tillhandahålla många andra insikter baserat på de aktivitets logg data som kan ha samlats in för Azure Cognitive Services.
 
-- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../azure-monitor/essentials/activity-log.md)
+- [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](/azure/azure-monitor/platform/activity-log)
 
-- [Samla in och analysera Azure-aktivitets loggar i Log Analytics arbets yta i Azure Monitor](../azure-monitor/essentials/activity-log.md)
+- [Samla in och analysera Azure-aktivitets loggar i Log Analytics arbets yta i Azure Monitor](/azure/azure-monitor/platform/activity-log)
 
 **Ansvar**: Kund
 
@@ -245,7 +243,7 @@ Konfigurera diagnostikinställningar för Cognitive Services container och skick
 
 - [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Skapa, Visa och hantera logg aviseringar med Azure Monitor](../azure-monitor/alerts/alerts-log.md)
+- [Skapa, Visa och hantera logg aviseringar med Azure Monitor](/azure/azure-monitor/platform/alerts-log)
 
 **Ansvar**: Kund
 
@@ -259,9 +257,9 @@ Konfigurera diagnostikinställningar för Cognitive Services container och skick
 
 **Vägledning**: Azure Active Directory (Azure AD) har inbyggda roller som måste tilldelas explicit och som kan frågas. Använd Azure AD PowerShell-modulen för att utföra ad hoc-frågor för att identifiera konton som är medlemmar i administrativa grupper.
 
-- [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
+- [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
+- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Ansvar**: Kund
 
@@ -275,7 +273,7 @@ Data Plans åtkomst till Cognitive Services styrs via åtkomst nycklar. Dessa ny
 
 Vi rekommenderar inte att du skapar standard lösen ord i ditt program. I stället kan du lagra dina lösen ord i Azure Key Vault och sedan använda Azure AD för att hämta dem.
 
-- [Återskapa Azure cache för Redis-åtkomst nycklar](../azure-cache-for-redis/cache-configure.md#settings)
+- [Återskapa Azure cache för Redis-åtkomst nycklar](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings)
 
 **Ansvar**: Kund
 
@@ -365,7 +363,7 @@ Dessutom kan du använda Azure AD-farlighets identifiering för att visa aviseri
 
 För närvarande är det bara API för visuellt innehåll, Ansikts-API, API för textanalys, avancerad läsare, formulär igenkänning, avvikelse detektor och alla Bing-tjänster utom Anpassad Bing-sökning stöd för autentisering med Azure AD.
 
-- [Autentisera begär anden till Cognitive Services](./authentication.md#authenticate-with-azure-active-directory)
+- [Autentisera begär anden till Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/authentication#authenticate-with-azure-active-directory)
 
 **Ansvar**: Kund
 
@@ -379,7 +377,7 @@ Kunden ska underhålla inventeringen av API Management användar konton, stämma
 
 - [Hantera användarkonton i Azure API Management](../api-management/api-management-howto-create-or-invite-developers.md)
 
-- [Hämta en lista över API Management användare](/powershell/module/az.apimanagement/get-azapimanagementuser?amp;preserve-view=true&view=azps-4.8.0)
+- [Hämta en lista över API Management användare](/powershell/module/az.apimanagement/get-azapimanagementuser)
 
 - [Så här använder du granskningar av Azure Identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -419,7 +417,7 @@ Du kan effektivisera den här processen genom att skapa diagnostikinställningar
 
 **Vägledning**: inte tillgänglig för Cognitive Services. Customer Lockbox stöds ännu inte för Cognitive Services.
 
-- [Lista över Customer Lockbox tjänster som stöds](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
+- [Lista över Customer Lockbox tjänster som stöds](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
 
 **Ansvar**: Kund
 
@@ -514,7 +512,7 @@ Microsoft hanterar den underliggande plattformen och hanterar allt kund innehål
 
 Du kan också använda Azure Key Vault för att lagra dina Kundhanterade nycklar. Du kan antingen skapa egna nycklar och lagra dem i ett nyckel valv, eller så kan du använda Azure Key Vault API: er för att generera nycklar.
 
-- [Lista över tjänster som krypterar information i vila](./encryption/cognitive-services-encryption-keys-portal.md)
+- [Lista över tjänster som krypterar information i vila](/azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal)
 
 **Ansvar**: Kund
 
@@ -524,7 +522,7 @@ Du kan också använda Azure Key Vault för att lagra dina Kundhanterade nycklar
 
 **Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i produktions instanser av Cognitive Services och andra kritiska eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
+- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Ansvar**: Kund
 
@@ -542,7 +540,7 @@ Du kan också använda Azure Key Vault för att lagra dina Kundhanterade nycklar
 
 - [Så här skapar du frågor med Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
+- [Så här visar du dina Azure-prenumerationer](/powershell/module/az.accounts/get-azsubscription)
 
 - [Förstå Azure RBAC](../role-based-access-control/overview.md)
 
@@ -604,7 +602,7 @@ Använd dessutom Azure Resource Graph för att fråga eller identifiera resurser
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/built-in-policies.md#general)
+- [Så här nekar du en speciell resurs typ med Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
 
 **Ansvar**: Kund
 
@@ -628,7 +626,7 @@ Använd dessutom Azure Resource Graph för att fråga eller identifiera resurser
 
 **Vägledning**: definiera och implementera standardkonfigurationer för en Cognitive Services behållare med Azure policy. Använd Azure Policy alias i namn området "Microsoft. CognitiveServices" om du vill skapa anpassade principer för att granska eller framtvinga konfigurationen av Azure-cachen för Redis-instanser.
 
-- [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
+- [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias)
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -652,9 +650,9 @@ Använd dessutom Azure Resource Graph för att fråga eller identifiera resurser
 
 **Vägledning**: om du använder anpassade Azure policys definitioner eller Azure Resource Manager mallar för dina Cognitive Services behållare och relaterade resurser använder du Azure-databaser för att lagra och hantera din kod på ett säkert sätt.
 
-- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-- [Dokumentation om Azure databaser](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
+- [Dokumentation om Azure databaser](/azure/devops/repos/)
 
 **Ansvar**: Kund
 
@@ -686,7 +684,7 @@ Använd dessutom Azure Resource Graph för att fråga eller identifiera resurser
 
 - [Integrera med Azure Managed Identities](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [Så här skapar du en Key Vault](../key-vault/secrets/quick-create-portal.md)
+- [Så här skapar du en Key Vault](/azure/key-vault/quick-create-portal)
 
 - [Så här autentiserar du till Key Vault](../key-vault/general/authentication.md)
 
@@ -760,7 +758,7 @@ Du kan också använda funktionen för livs cykel hantering för att säkerhetsk
 
 - [Översikt över Azure Resource Manager](../azure-resource-manager/management/overview.md)
 
-- [Så här skapar du en Cognitive Services resurs med hjälp av en Azure Resource Manager-mall](./create-account-resource-manager-template.md?tabs=portal)
+- [Så här skapar du en Cognitive Services resurs med hjälp av en Azure Resource Manager-mall](https://docs.microsoft.com/azure/cognitive-services/resource-manager-template?tabs=portal)
 
 - [Exportera en och flera resurser till en mall i Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -768,7 +766,7 @@ Du kan också använda funktionen för livs cykel hantering för att säkerhetsk
 
 - [Introduktion till Azure Automation](../automation/automation-intro.md)
 
-- [Så här säkerhetskopierar du nyckel valv nycklar i Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Så här säkerhetskopierar du nyckel valv nycklar i Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
 **Ansvar**: Kund
 
@@ -780,7 +778,7 @@ Du kan också använda funktionen för livs cykel hantering för att säkerhetsk
 
 - [Distribuera resurser med ARM-mallar och Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 
-- [Återställa Key Vault-nycklar i Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Återställa Key Vault-nycklar i Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey)
 
 **Ansvar**: Kund
 
@@ -792,7 +790,7 @@ Du kan också använda funktionen för livs cykel hantering för att säkerhetsk
 
 Använd rollbaserad åtkomst kontroll i Azure för att skydda Kundhanterade nycklar. Aktivera Soft-Delete och rensa skydd i Key Vault för att skydda nycklar mot oavsiktlig eller skadlig borttagning. 
 
-- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
 - [Om behörigheter och grupper i Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -890,5 +888,5 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer i [Översikten över Azure Security Benchmark V2](../security/benchmarks/overview.md)
-- Läs mer om [säkerhetsbaslinjer för Azure](../security/benchmarks/security-baselines-overview.md)
+- Läs mer i [Översikten över Azure Security Benchmark V2](/azure/security/benchmarks/overview)
+- Läs mer om [säkerhetsbaslinjer för Azure](/azure/security/benchmarks/security-baselines-overview)

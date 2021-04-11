@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 4f333c4bb66195e6c99bd45dcc7c29a0b9a2eaa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6431328a0969ced0d98cbc7ff047cc0673ecb91
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591418"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074564"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Dedikerad SQL-pool (tidigare SQL DW) i versions information för Azure Synapse Analytics
 
@@ -90,7 +90,9 @@ För verktygs förbättringar kontrollerar du att rätt version är installerad 
 | Förbättringar av tjänsten | Information |
 | --- | --- |
 |**Kompatibilitetsnivå för databas (för hands version)**| I den här versionen kan användarna nu ange en databas kompatibilitetsnivå för att hämta Transact-SQL-språket och fråga efter bearbetnings beteenden för en specifik version av Synapse SQL-motorn. Mer information finns i [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) och [ändra databas omfattnings konfiguration](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).|
-|**Sp_describe_undeclared_parameters**| Tillåt användare att se metadata om odeklarerade parametrar i en Transact-SQL-batch. Mer information finns i [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).| <br/><br/><br/>
+|**Sp_describe_undeclared_parameters**| Tillåt användare att se metadata om odeklarerade parametrar i en Transact-SQL-batch. Mer information finns i [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).| 
+
+<br/><br/><br/>
 
 | Förbättringar i verktyg                                         | Information                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

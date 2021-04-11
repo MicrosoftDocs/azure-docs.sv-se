@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Den här artikeln innehåller en arkitektur översikt över Azure Arc-aktiverade Kubernetes-agenter
 keywords: Kubernetes, båge, Azure, behållare
-ms.openlocfilehash: ec95efdfef871777e7f53617b057529e301739dd
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: f59a897e4868d7b16d0a50c28ce2142320992f71
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953076"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442549"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Azure Arc Enabled Kubernetes-agent arkitektur
 
@@ -49,7 +49,10 @@ De flesta lokal data Center tillämpar strikta nätverks regler som förhindrar 
         | `deployment.apps/cluster-metadata-operator` | Samlar in metadata om kluster, däribland klusterversion, antal noder och version av Azure Arc-agenten. |
         | `deployment.apps/resource-sync-agent` | Synkroniserar ovan nämnda klustrade metadata till Azure. |
         | `deployment.apps/flux-logs-agent` | Samlar in loggar från flödes operatörer som distribueras som en del av käll kontroll konfigurationen. |
-    
+        | `deployment.apps/extension-manager` | Installerar och hanterar livs cykeln för tillägg Helm-diagram |  
+        | `deployment.apps/clusterconnect-agent` | Reverse proxy agent som aktiverar funktionen kluster anslutning för att ge åtkomst till `apiserver` klustret. Det här är en valfri komponent som bara distribueras om `cluster-connect` funktionen är aktive rad i klustret   |
+        | `deployment.apps/guard` | Autentiserings-och auktoriserings-webhook-server som används för AAD RBAC-funktion. Det här är en valfri komponent som bara distribueras om `azure-rbac` funktionen är aktive rad i klustret   |
+
 1. När alla Azure-Arc-aktiverade Kubernetes-poddar har `Running` statusen kontrollerar du att klustret är anslutet till Azure-bågen. Du bör se:
     * En Azure Arc-aktiverad Kubernetes-resurs i [Azure Resource Manager](../../azure-resource-manager/management/overview.md). Azure spårar den här resursen som en projektion av det Kundhanterade Kubernetes-klustret, inte själva själva Kubernetes-klustret.
     * Kluster-metadata (t. ex. Kubernetes-version, agent version och antal noder) visas på den Azure Arc-aktiverade Kubernetes-resursen som metadata.

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a9545c040809331a5556b11f6cc7536931e2d421
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f06f2de1f373f72aa5e55da17c249ff119a36950
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93289573"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581838"
 ---
 # <a name="certificate-creation-methods"></a>Metoder för att skapa certifikat
 
@@ -93,4 +93,5 @@ Observera att när en beställning placeras hos utfärdaren kan den ta eller ås
 
 ## <a name="see-also"></a>Se även
 
+ - Instruktions guide för att skapa certifikat i Key Vault med hjälp av [portalen](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal), [Azure CLI](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-cli), [Azure PowerShell](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-powershell)
  - [Övervaka och hantera processen för att skapa certifikat](create-certificate-scenarios.md)

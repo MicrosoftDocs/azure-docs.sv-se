@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 9169d691b58ad4a59796123c64f856128a0f8c83
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b5d0a8b12ad07c5be3a4cfc0840acc81aa0c395
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879334"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060741"
 ---
-# <a name="how-to-plan-a-virtual-machine-offer"></a>Planera ett erbjudande för virtuell dator
+# <a name="plan-a-virtual-machine-offer"></a>Planera ett erbjudande om virtuell dator
 
 I den här artikeln beskrivs de olika alternativen och kraven för att publicera ett erbjudande för virtuell dator (VM) på den kommersiella marknads platsen. VM-erbjudanden är Transact-bara erbjudanden som distribueras och debiteras via Azure Marketplace.
 
@@ -102,7 +102,7 @@ Du kan begränsa identifieringen och distributionen av den virtuella datorn till
 
 Mer information finns i avsnittet [om prenumerationer och priser för erbjudanden för kommersiella Marketplace](plans-pricing.md) och [privata erbjudanden på Microsofts kommersiella marknads platser](private-offers.md).
 
-## <a name="test-drives"></a>Provkörningar
+## <a name="test-drive"></a>Test enhet
 
 Du kan välja att aktivera en testen het för den virtuella datorn. Test enheter ger kunderna till gång till en förkonfigurerad miljö för ett fast antal timmar. Du kan aktivera test enheter för alla publicerings alternativ, men den här funktionen har ytterligare krav. Mer information om test enheter finns i [Vad är en test enhet?](what-is-test-drive.md). Information om hur du konfigurerar olika typer av test enheter finns i [teknisk konfiguration för test enhet](test-drive-technical-configuration.md).
 

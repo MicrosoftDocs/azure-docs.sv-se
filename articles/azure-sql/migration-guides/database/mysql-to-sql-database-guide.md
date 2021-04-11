@@ -9,17 +9,17 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 8952e6e1bda8763d403c02dcd5815f1e1c0941e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ba332ed0e949c3c209dc3bd2d72d37187a200eea
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641870"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030142"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>Guide för migrering: MySQL till Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-I den här guiden får du lära dig hur du migrerar MySQL-databasen till en Azure SQL Database med hjälp av SQL Server Migration Assistant för MySQL (SSMA for MySQL). 
+I den här guiden får du lära dig [hur du migrerar](https://azure.microsoft.com/migration/migration-journey) MySQL-databasen till en Azure SQL Database med hjälp av [SQL Server Migration](https://azure.microsoft.com/migration/migration-journey) Assistant för MySQL (SSMA for MySQL). 
 
 Andra guider för migrering finns i [Guide för Azure Database migration](https://docs.microsoft.com/data-migration). 
 
@@ -33,7 +33,7 @@ Innan du börjar migrera MySQL-databasen till en SQL-databas gör du följande:
 
 ## <a name="pre-migration"></a>Före migrering 
 
-När du har uppfyllt kraven är du redo att upptäcka miljön och bedöma möjligheten för migreringen.
+När du har uppfyllt kraven är du redo att upptäcka miljön och bedöma möjligheten för din [Azure Cloud-migrering](https://azure.microsoft.com/migration).
 
 ### <a name="assess"></a>Utvärdera 
 
@@ -178,3 +178,6 @@ Data SQL Engineering-teamet utvecklade dessa resurser. Det här teamets kärn st
 - Andra guider för migrering finns i [Guide för Azure Database migration](https://datamigration.microsoft.com/). 
 
 - För migrerings-videor, se [Översikt över migrerings resan och rekommenderade verktyg och tjänster för migrering och bedömning](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/).
+
+- Mer information om [resurser för molnbaserad migrering](https://azure.microsoft.com/migration/resources/)finns i [lösningar för molnbaserad migrering](https://azure.microsoft.com/migration).
+

@@ -1,15 +1,15 @@
 ---
 title: 'Snabb start: ny princip tilldelning med .NET Core'
 description: I den här snabb starten använder du .NET Core för att skapa en Azure Policy tilldelning för att identifiera icke-kompatibla resurser.
-ms.date: 09/30/2020
+ms.date: 03/31/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c4c8f8e9df544b6fc00b5b7701435f5a606f9764
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b89a0db419b1e7213e9742e4a39d073445d05189
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91604693"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091794"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-net-core"></a>Snabb start: skapa en princip tilldelning för att identifiera icke-kompatibla resurser med .NET Core
 

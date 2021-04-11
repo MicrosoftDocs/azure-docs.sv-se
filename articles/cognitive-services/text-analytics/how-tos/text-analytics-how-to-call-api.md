@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 3c6fb1ca23bcc9c57e73bcaf960e0387611fcff3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00f9c6510a87770367472c0da6774b94034c6d72
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599222"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029785"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Så här anropar du Textanalys REST API
 
@@ -34,6 +34,14 @@ Innan du använder API för textanalys måste du skapa en Azure-resurs med en ny
 2.  Välj den region som du vill använda för slut punkten.  Observera att `/analyze` och `/health` slut punkterna endast är tillgängliga i följande regioner: västra USA 2, östra USA 2, centrala USA, norra Europa och Västeuropa.
 
 3.  Skapa Textanalys resursen och gå till bladet "nycklar och slut punkt" till vänster på sidan. Kopiera nyckeln som ska användas senare när du anropar API: erna. Du lägger till detta senare som ett värde för `Ocp-Apim-Subscription-Key` sidhuvudet.
+
+4. Så här kontrollerar du antalet text poster som har skickats med din Textanalys-resurs:
+
+    1. Navigera till din Textanalys-resurs i Azure Portal. 
+    2. Klicka på **mått**, som finns under **övervakning** i den vänstra navigerings menyn. 
+    3. Välj *bearbetade text poster* i list rutan för **mått**.
+    
+En text post är 1000 tecken.
 
 ## <a name="change-your-pricing-tier"></a>Ändra din pris nivå 
 

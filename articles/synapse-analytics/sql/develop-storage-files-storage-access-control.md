@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 545331fdea56aef3d7b9dac8062d4fc2d6891254
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 254f424694df72a290a07369fe910587fadf58d4
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501580"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385555"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Kontrol lera åtkomsten till lagrings kontot för SQL-poolen utan server i Azure Synapse Analytics
 
@@ -36,11 +36,11 @@ En användare som har loggat in på en server lös SQL-pool måste ha behörighe
 **Användar identitet**, som även kallas "Azure AD-vidarekoppling", är en typ av auktorisering där identiteten för den Azure AD-användare som har loggat in på en server utan SQL-pool används för att ge åtkomst till data. Innan du får åtkomst till data måste Azure Storages administratören bevilja behörighet till Azure AD-användaren. Som anges i tabellen nedan, stöds den inte för SQL-användargruppen.
 
 > [!IMPORTANT]
-> Du måste ha rollen som ägare/deltagare/läsare för Storage BLOB-rollen för att kunna använda din identitet för att komma åt data.
-> Även om du är ägare till ett lagrings konto behöver du fortfarande lägga till dig själv i en av lagrings BLOB-datarollerna.
->
-> Läs mer om åtkomst kontroll i Azure Data Lake Store Gen2 genom att granska [åtkomst kontrollen i Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-access-control.md) artikeln.
->
+> AAD-autentiseringstoken kan cachelagras av klient programmen. Till exempel PowerBI cachelagrar AAD-token och återanvänder samma token i en timme. De långa kör-frågorna kanske inte fungerar om token upphör att gälla i mitten av frågekörningen. Om du har frågor som orsakas av AAD-åtkomsttoken som förfaller mitt i frågan, bör du överväga att växla till [hanterad identitet](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) eller [signatur för delad åtkomst](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#supported-storage-authorization-types).
+
+Du måste ha rollen som ägare/deltagare/läsare för Storage BLOB-rollen för att kunna använda din identitet för att komma åt data. Alternativt kan du ange detaljerade ACL-regler för åtkomst till filer och mappar. Även om du är ägare till ett lagrings konto behöver du fortfarande lägga till dig själv i en av lagrings BLOB-datarollerna.
+Läs mer om åtkomst kontroll i Azure Data Lake Store Gen2 genom att granska [åtkomst kontrollen i Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-access-control.md) artikeln.
+
 
 ### <a name="shared-access-signature"></a>[Signatur för delad åtkomst](#tab/shared-access-signature)
 
@@ -54,6 +54,10 @@ Du kan få en SAS-token genom att gå till **Azure Portal-> lagrings konto-> sig
 > SAS-token:? sa = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&sig = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
 Om du vill aktivera åtkomst med hjälp av en SAS-token måste du skapa en databas-eller Server begränsad autentiseringsuppgift 
+
+
+> [!IMPORTANT]
+> Du har inte åtkomst till privata lagrings konton med SAS-token. Överväg att växla till [hanterad identitet](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) eller [Azure AD-direktautentisering](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) för att få åtkomst till skyddad lagring.
 
 ### <a name="managed-identity"></a>[Hanterad identitet](#tab/managed-identity)
 

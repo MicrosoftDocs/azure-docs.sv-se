@@ -24,3 +24,7 @@
           href: ./datadog/manage.md
         - name: Felsöka
           href: ./datadog/troubleshoot.md
+- name: Referens
+  items:
+    - name: Azure CLI
+      href: /cli/azure/confluent

@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: Dokumentation om Azure Active Directory verifierbara autentiseringsuppgifter
+summary: Med verifierbara autentiseringsuppgifter kan du bygga lösningar som gör det möjligt för kunderna att hantera sina egna data.
+metadata:
+  author: barclayn
+  description: Lär dig hur du införlivar verifierbara autentiseringsuppgifter i dina lösningar som gör det möjligt för kunderna att kontrol lera information om sig själva
+  manager: daveba
+  ms.author: barclayn
+  ms.collection: na
+  ms.date: 03/30/2021
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 13eb88e8e8613c913f66185eba751a1fe3c36e1e
+  ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 04/01/2021
+  ms.locfileid: "106175715"
+landingContent:
+- title: Om verifierbara autentiseringsuppgifter
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Introduktion till Azure Active Directory verifierbara autentiseringsuppgifter
+      url: decentralized-identifier-overview.md
+  - linkListType: video
+    links:
+    - text: Styr åtkomsten till dina resurser
+      url: https://www.youtube.com/watch?v=r20hCF9NbTo
+- title: Verifierbara autentiseringsuppgifter sätter personer med kontroll över sin personliga information
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Kom igång med verifierbara autentiseringsuppgifter
+      url: get-started-verifiable-credentials.md
+  - linkListType: concept
+    links:
+    - text: Kommunikations exempel för Issuer service
+      url: issuer-openid.md
+- title: Så här länkar du din
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Länka din domän till din distribuerade identifierare
+      url: how-to-dnsbind.md

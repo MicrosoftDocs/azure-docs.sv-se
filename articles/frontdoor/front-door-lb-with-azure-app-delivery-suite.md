@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 04/06/2021
 ms.author: duau
-ms.openlocfilehash: 50e047325ad17710794b1640715ab1938373fe85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a7e81c57552fdc24262522343a08fdabba71bfd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96019471"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552588"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Belastningsutjämning med Azures paket för programleverans
 
@@ -40,8 +40,8 @@ När du kombinerar dessa globala och regionala tjänster drar programmet nytta a
 
 ## <a name="global-load-balancing"></a>Global belastnings utjämning
 **Traffic Manager** tillhandahåller global belastnings utjämning för DNS. Den söker efter inkommande DNS-begäranden och svarar med en felfri Server del, efter den routningsprincip som kunden har valt. Alternativen för routningsmetoder är:
-- * * Prestanda dirigering skickar begär anden till närmaste Server del med minsta latens.
-- **Prioritera routning** dirigera all trafik till en server del med andra server delar som säkerhets kopiering.
+- Med **prestanda routning** skickas begär anden till närmaste Server del med minsta latens.
+- **Prioriterad routning** dirigerar all trafik till en server del, med andra server delar som säkerhets kopiering.
 - **Viktad** resursallokering distribuerar trafik baserat på den viktning som tilldelas varje server del.
 - **Geografisk routning** garanterar att begär Anden som kommer från specifika geografiska regioner hanteras av Server delar som har mappats för dessa regioner. (Till exempel måste alla förfrågningar från Spanien dirigeras till den franska centrala Azure-regionen)
 - Med hjälp av **under näts dirigering** kan du mappa IP-adressintervall till Server delar så att inkommande begär Anden för dessa IP-adresser skickas till den angivna Server delen. (Till exempel kan alla användare som ansluter från företagets HQ IP-adressintervall Hämta annat webb innehåll än allmänna användare)

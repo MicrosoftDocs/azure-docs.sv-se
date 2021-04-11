@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 03/02/2021
+ms.date: 04/07/2021
 ms.topic: how-to
-ms.openlocfilehash: facb7db73bf7a709b9ed07e460d8653d79f1ed2f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7bc90f2748d230ad50868cff5d7a8f7b69d850a
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687605"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029547"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Skapa en Azure Arc-dataenhet med hjälp av [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
@@ -57,131 +57,6 @@ kubectl get namespace
 kubectl config current-context
 ```
 
-### <a name="connectivity-modes"></a>Anslutningslägen
-
-Som det beskrivs i [anslutnings lägen och-krav](./connectivity.md)kan Azure Arc-datakontrollanten distribueras antingen med antingen `direct` eller `indirect` anslutnings läget. Med `direct` anslutnings läge skickas användnings data automatiskt och skickas kontinuerligt till Azure. I den här artikeln anger exemplen `direct` anslutnings läget enligt följande:
-
-   ```console
-   --connectivity-mode direct
-   ```
-
-   Om du vill skapa styrenheten med `indirect` anslutnings läget uppdaterar du skripten i exemplet enligt nedan:
-
-   ```console
-   --connectivity-mode indirect
-   ```
-
-#### <a name="create-service-principal"></a>Skapa tjänstens huvudnamn
-
-Om du distribuerar Azure Arc-dataenheten med `direct` anslutnings läge krävs autentiseringsuppgifter för tjänstens huvud namn för Azure-anslutningen. Tjänstens huvud namn används för att överföra användnings-och mät data. 
-
-Följ dessa kommandon för att skapa mått för att ladda upp tjänstens huvud namn:
-
-> [!NOTE]
-> Att skapa ett huvud namn [för tjänsten kräver vissa behörigheter i Azure](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
-
-Uppdatera följande exempel om du vill skapa ett huvud namn för tjänsten. Ersätt `<ServicePrincipalName>` med namnet på tjänstens huvud namn och kör kommandot:
-
-```azurecli
-az ad sp create-for-rbac --name <ServicePrincipalName>
-``` 
-
-Om du skapade tjänstens huvud namn tidigare och behöver bara hämta de aktuella autentiseringsuppgifterna, kör du följande kommando för att återställa autentiseringsuppgifterna.
-
-```azurecli
-az ad sp credential reset --name <ServicePrincipalName>
-```
-
-Om du till exempel vill skapa ett huvud namn för tjänsten `azure-arc-metrics` kör du följande kommando
-
-```console
-az ad sp create-for-rbac --name azure-arc-metrics
-```
-
-Exempel på utdata:
-
-```output
-"appId": "2e72adbf-de57-4c25-b90d-2f73f126e123",
-"displayName": "azure-arc-metrics",
-"name": "http://azure-arc-metrics",
-"password": "5039d676-23f9-416c-9534-3bd6afc78123",
-"tenant": "72f988bf-85f1-41af-91ab-2d7cd01ad1234"
-```
-
-Spara `appId` värdena, `password` och `tenant` i en miljö variabel för senare användning. 
-
-#### <a name="save-environment-variables-in-windows"></a>Spara miljövariabler i Windows
-
-```console
-SET SPN_CLIENT_ID=<appId>
-SET SPN_CLIENT_SECRET=<password>
-SET SPN_TENANT_ID=<tenant>
-SET SPN_AUTHORITY=https://login.microsoftonline.com
-```
-
-#### <a name="save-environment-variables-in-linux-or-macos"></a>Spara miljövariabler i Linux eller macOS
-
-```console
-export SPN_CLIENT_ID='<appId>'
-export SPN_CLIENT_SECRET='<password>'
-export SPN_TENANT_ID='<tenant>'
-export SPN_AUTHORITY='https://login.microsoftonline.com'
-```
-
-#### <a name="save-environment-variables-in-powershell"></a>Spara miljövariabler i PowerShell
-
-```console
-$Env:SPN_CLIENT_ID="<appId>"
-$Env:SPN_CLIENT_SECRET="<password>"
-$Env:SPN_TENANT_ID="<tenant>"
-$Env:SPN_AUTHORITY="https://login.microsoftonline.com"
-```
-
-När du har skapat tjänstens huvud namn tilldelar du tjänstens huvud namn till rätt roll. 
-
-### <a name="assign-roles-to-the-service-principal"></a>Tilldela roller till tjänstens huvud namn
-
-Kör det här kommandot för att tilldela tjänstens huvud namn till `Monitoring Metrics Publisher` rollen i prenumerationen där dina databas instans resurser finns:
-
-#### <a name="run-the-command-on-windows"></a>Kör kommandot i Windows
-
-> [!NOTE]
-> Du måste använda dubbla citat tecken för roll namn när du kör från en Windows-miljö.
-
-```azurecli
-az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role "Contributor" --scope subscriptions/<Subscription ID>
-```
-
-#### <a name="run-the-command-on-linux-or-macos"></a>Kör kommandot på Linux eller macOS
-
-```azurecli
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
-```
-
-#### <a name="run-the-command-in-powershell"></a>Kör kommandot i PowerShell
-
-```powershell
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<Subscription ID>
-az role assignment create --assignee <appId> --role 'Contributor' --scope subscriptions/<Subscription ID>
-```
-
-```output
-{
-  "canDelegate": null,
-  "id": "/subscriptions/<Subscription ID>/providers/Microsoft.Authorization/roleAssignments/f82b7dc6-17bd-4e78-93a1-3fb733b912d",
-  "name": "f82b7dc6-17bd-4e78-93a1-3fb733b9d123",
-  "principalId": "5901025f-0353-4e33-aeb1-d814dbc5d123",
-  "principalType": "ServicePrincipal",
-  "roleDefinitionId": "/subscriptions/<Subscription ID>/providers/Microsoft.Authorization/roleDefinitions/3913510d-42f4-4e42-8a64-420c39005123",
-  "scope": "/subscriptions/<Subscription ID>",
-  "type": "Microsoft.Authorization/roleAssignments"
-}
-```
-
-Med tjänstens huvud namn tilldelat till en lämplig roll, och miljövariablerna har angetts, kan du fortsätta att skapa data kontrollen 
-
 ## <a name="create-the-azure-arc-data-controller"></a>Skapa data styrenheten för Azure-bågen
 
 > [!NOTE]
@@ -203,10 +78,10 @@ Som standard använder AKS-distributions profilen `managed-premium` lagrings kla
 Om du ska använda `managed-premium` som lagrings klass kan du köra följande kommando för att skapa data kontrollen. Ersätt plats hållarna i kommandot med resurs gruppens namn, prenumerations-ID och Azure-plats.
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 Om du inte är säker på vilken lagrings klass som ska användas bör du använda `default` lagrings klassen som stöds oavsett vilken VM-typ som du använder. Det ger bara den snabbaste prestandan.
@@ -214,10 +89,10 @@ Om du inte är säker på vilken lagrings klass som ska användas bör du använ
 Om du vill använda `default` lagrings klassen kan du köra det här kommandot:
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 När du har kört kommandot fortsätter du med att [övervaka skapande status](#monitoring-the-creation-status).
@@ -229,10 +104,10 @@ Som standard använder distributions profilen `managed-premium` lagrings klassen
 Du kan köra följande kommando för att skapa datakontrollanten med hjälp av lagrings klassen Managed-Premium:
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 Om du inte är säker på vilken lagrings klass som ska användas bör du använda `default` lagrings klassen som stöds oavsett vilken VM-typ som du använder. I Azure Stack hubb backas Premium disks och standard diskar av samma lagrings infrastruktur. Därför förväntas de ge samma allmänna prestanda, men med olika IOPS-gränser.
@@ -240,10 +115,10 @@ Om du inte är säker på vilken lagrings klass som ska användas bör du använ
 Om du vill använda `default` lagrings klassen kan du köra det här kommandot.
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-premium-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --profile-name azure-arc-aks-default-storage --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 När du har kört kommandot fortsätter du med att [övervaka skapande status](#monitoring-the-creation-status).
@@ -255,10 +130,10 @@ Som standard använder distributions profilen en lagrings klass med namnet `defa
 Du kan köra följande kommando för att skapa data styrenheten med hjälp av `default` lagrings klassen och tjänst typen `LoadBalancer` .
 
 ```console
-azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 När du har kört kommandot fortsätter du med att [övervaka skapande status](#monitoring-the-creation-status).
@@ -290,10 +165,10 @@ Du kan köra följande kommando för att skapa data styrenheten:
 > Använd samma namnrymd här och i `oc adm policy add-scc-to-user` kommandona ovan. Exempel är `arc` .
 
 ```console
-azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example
-#azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 När du har kört kommandot fortsätter du med att [övervaka skapande status](#monitoring-the-creation-status).
@@ -381,10 +256,10 @@ Nu är du redo att skapa datakontrollanten med hjälp av följande kommando.
 
 
 ```console
-azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 När du har kört kommandot fortsätter du med att [övervaka skapande status](#monitoring-the-creation-status).
@@ -425,10 +300,10 @@ azdata arc dc config replace --path ./custom/control.json --json-values "$.spec.
 Nu är du redo att skapa datakontrollanten med hjälp av följande kommando.
 
 ```console
-azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --path ./custom --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --path ./custom --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 När du har kört kommandot fortsätter du med att [övervaka skapande status](#monitoring-the-creation-status).
@@ -440,10 +315,10 @@ Som standard är lagrings klassen EKS `gp2` och tjänst typen `LoadBalancer` .
 Kör följande kommando för att skapa datakontrollanten med den angivna EKS-distributions profilen.
 
 ```console
-azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --profile-name azure-arc-eks --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 När du har kört kommandot fortsätter du med att [övervaka skapande status](#monitoring-the-creation-status).
@@ -455,10 +330,10 @@ Som standard är lagrings klassen GKE `standard` och tjänst typen `LoadBalancer
 Kör följande kommando för att skapa datakontrollanten med den angivna GKE-distributions profilen.
 
 ```console
-azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode direct
+azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription <subscription id> --resource-group <resource group name> --location <location> --connectivity-mode indirect
 
 #Example:
-#azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode direct
+#azdata arc dc create --profile-name azure-arc-gke --namespace arc --name arc --subscription 1e5ff510-76cf-44cc-9820-82f2d9b51951 --resource-group my-resource-group --location eastus --connectivity-mode indirect
 ```
 
 När du har kört kommandot fortsätter du med att [övervaka skapande status](#monitoring-the-creation-status).

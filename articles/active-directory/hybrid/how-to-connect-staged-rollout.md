@@ -10,14 +10,14 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c7f3de20ea3e86e3b56dc71d698354f7eaf782d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 67018a2ec6b9239661a7022ad7fb9eeb6c9a5f64
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709726"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385589"
 ---
-# <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrera till molnbaserad autentisering med stegvis distribution (för hands version)
+# <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>Migrera till molnautentisering med mellanlagrad distribution
 
 Med mellanlagrad distribution kan du selektivt testa grupper av användare med funktioner för molnbaserad autentisering, t. ex. Azure AD Multi-Factor Authentication (MFA), villkorlig åtkomst, identitets skydd för läckta autentiseringsuppgifter, identitets styrning och andra, innan du klipper över dina domäner.  Den här artikeln beskriver hur du gör-växeln. Innan du påbörjar den mellanlagrade distributionen bör du ta hänsyn till konsekvenserna om ett eller flera av följande villkor är uppfyllda:
     
@@ -33,7 +33,7 @@ En översikt över funktionen finns i "Azure Active Directory: Vad är mellanlag
 
 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 -   Du har en Azure Active Directory-klient (Azure AD) med federerade domäner.
 
@@ -79,7 +79,7 @@ Följande scenarier stöds inte för stegvis distribution:
 - Administratörer kan distribuera molnbaserad autentisering med hjälp av säkerhets grupper. Vi rekommenderar att du använder moln säkerhets grupper för att undvika synkronisering av svars tider när du använder lokala Active Directory säkerhets grupper. Följande villkor gäller:
 
     - Du kan använda max 10 grupper per funktion. Det innebär att du kan använda 10 grupper var och en för *lösen ords-hash-synkronisering*, *DIREKTAUTENTISERING* och *sömlös SSO*.
-    - Kapslade grupper *stöds inte*. Denna omfattning gäller även för den offentliga för hands versionen.
+    - Kapslade grupper *stöds inte*. 
     - Dynamiska grupper *stöds inte* för mellanlagrad distribution.
     - Kontakt objekt inuti gruppen kommer att blockera gruppen från att läggas till.
 
@@ -168,19 +168,19 @@ Du kan distribuera ett av följande alternativ:
 
 Gör följande:
 
-1. För att få åtkomst till för hands versions UX loggar du in på [Azure AD-portalen](https://aka.ms/stagedrolloutux).
+1. Logga in på [Azure AD-portalen](https://aka.ms/stagedrolloutux)för att få åtkomst till UX.
 
-2. Välj länken **Aktivera mellanlagrad distribution för hanterad användare inloggning (för hands version)** .
+2. Välj **inloggnings länken Aktivera mellanlagrad installation för hanterad användare** .
 
    Om du t. ex. vill aktivera *alternativ A*, drar du skjutreglaget för **hash-synkronisering av lösen ord** och **sömlöst enkel inloggning** till **på**, som du ser i följande avbildningar.
 
-   ![Sidan Azure AD Connect](./media/how-to-connect-staged-rollout/sr4.png)
+   
 
-   ![Sidan "aktivera funktioner för stegvis distribution (förhands granskning)"](./media/how-to-connect-staged-rollout/sr5.png)
+  
 
 3. Lägg till grupperna i funktionen för att aktivera *direktautentisering* och *sömlös SSO*. För att undvika en UX-timeout kontrollerar du att säkerhets grupperna inte innehåller fler än 200 medlemmar från början.
 
-   ![Sidan "hantera grupper med lösen ords-hash Sync (förhands granskning)"](./media/how-to-connect-staged-rollout/sr6.png)
+   
 
    >[!NOTE]
    >Medlemmarna i en grupp aktive ras automatiskt för mellanlagrad distribution. Kapslade och dynamiska grupper stöds inte för mellanlagrad distribution.

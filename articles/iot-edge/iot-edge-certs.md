@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: ffe2f2b7f94d546cdfe393170da2fd2ca6ac0149
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c54f935ed05451df5922ff1a3d564c775703700
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491001"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029360"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Förstå hur Azure IoT Edge använder certifikat
 
@@ -25,7 +25,7 @@ IoT Edge certifikat används av modulerna och underordnade IoT-enheter för att 
 >[!NOTE]
 >Den här artikeln pratar om de certifikat som används för att skydda anslutningar mellan olika komponenter på en IoT Edge enhet eller mellan en IoT Edge-enhet och eventuella löv enheter. Du kan också använda certifikat för att autentisera IoT Edge-enheten för att IoT Hub. Dessa certifikat för autentisering är olika och beskrivs inte i den här artikeln. Mer information om hur du autentiserar enheten med certifikat finns i [skapa och etablera en IoT Edge enhet med X. 509-certifikat](how-to-auto-provision-x509-certs.md).
 
-I den här artikeln förklaras hur IoT Edge certifikat kan fungera i produktions-, utvecklings-och test scenarier. Medan skripten skiljer sig (PowerShell vs. bash), är begreppen samma mellan Linux och Windows.
+I den här artikeln förklaras hur IoT Edge certifikat kan fungera i produktions-, utvecklings-och test scenarier.
 
 ## <a name="iot-edge-certificates"></a>IoT Edge-certifikat
 

@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: ebe61e5956dc0f35794211a336eb7d884ee18d76
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105608909"
 ---
 # <a name="interact-with-the-map-android-sdk"></a>Interagera med kartan (Android SDK)
@@ -24,7 +24,7 @@ Den här artikeln visar hur du använder Maps Events Manager.
 
 Kartan hanterar alla händelser via dess `events` egenskap. I följande tabell visas alla mappnings händelser som stöds.
 
-| Händelse                  | Händelse hanterarens format | Description |
+| Händelse                  | Händelse hanterarens format | Beskrivning |
 |------------------------|----------------------|-------------|
 | `OnCameraIdle`         | `()`                 | <p>Utlöses efter att den sista bild rutan renderades innan kartan övergår i tillståndet "inaktive":<ul><li>Ingen kamera över gång pågår.</li><li>Alla begärda paneler har lästs in.</li><li>Alla animeringar av tona/över gångar har slutförts.</li></ul></p> |
 | `OnCameraMove`         | `()`                 | Utlöses upprepade gånger under en animerad över gång från en vy till en annan, som ett resultat av en användar interaktion eller metoder. |
