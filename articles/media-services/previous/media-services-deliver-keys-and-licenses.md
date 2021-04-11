@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10ff568ede601c57369f8c942ed61cb7a39ba703
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2d965ec17fb605362c1e8cd8ef781a6bd2029d0
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103465716"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067392"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Använda Media Services för att leverera DRM-licenser eller AES-nycklar
 
@@ -54,7 +54,7 @@ Följande diagram visar de viktigaste stegen som du måste vidta för att kunna 
     ```
  
 ## <a name="net-code-example"></a>Exempel på .NET-kod
-I följande kod exempel visas hur du skapar en gemensam innehålls nyckel och hämtar PlayReady-och Widevine licens hämtnings-URL: er. Om du vill konfigurera den lokala servern behöver du en innehålls nyckel, nyckel-ID och URL för licens hämtning. När du har konfigurerat den lokala servern kan du strömma från din egen strömnings Server. Eftersom den krypterade data strömmen pekar på en Media Services licens server begär spelaren en licens från Media Services. Om du väljer token-autentisering, verifierar Media Services licens servern den token som du skickade via HTTPS. Om token är giltig levererar licens servern licensen tillbaka till spelaren. I följande kod exempel visas bara hur du skapar en gemensam innehålls nyckel och hämtar PlayReady-och Widevine-URL: er för licens hämtning. Om du vill leverera AES-128-nycklar måste du skapa en kuvert innehålls nyckel och hämta en URL för nyckel hämtning. Mer information finns i [använda AES-128 dynamisk kryptering och nyckel leverans tjänst](media-services-protect-with-aes128.md).
+I följande kod exempel visas hur du skapar en gemensam innehålls nyckel och hämtar PlayReady-och Widevine licens hämtnings-URL: er. Om du vill konfigurera den lokala servern behöver du en innehålls nyckel, nyckel-ID och URL för licens hämtning. När du har konfigurerat den lokala servern kan du strömma från din egen strömnings Server. Eftersom den krypterade data strömmen pekar på en Media Services licens server begär spelaren en licens från Media Services. Om du väljer token-autentisering, verifierar Media Services licens servern den token som du skickade via HTTPS. Om token är giltig levererar licens servern licensen tillbaka till spelaren. I följande kod exempel visas bara hur du skapar en gemensam innehålls nyckel och hämtar PlayReady-och Widevine-URL: er för licens hämtning. Om du vill leverera AES-128-nycklar måste du skapa en kuvert innehålls nyckel och hämta en URL för nyckel hämtning. Mer information finns i [använda AES-128 dynamisk kryptering och nyckel leverans tjänst](media-services-playready-license-template-overview.md).
 
 ```csharp
 using System;
@@ -357,4 +357,4 @@ namespace DeliverDRMLicenses
 
 ## <a name="see-also"></a>Se även
 * [Använda PlayReady och/eller Widevine Dynamic Common Encryption](media-services-protect-with-playready-widevine.md)
-* [Använd AES-128 dynamisk kryptering och Key Delivery Service](media-services-protect-with-aes128.md)
+* [Använd AES-128 dynamisk kryptering och Key Delivery Service](media-services-playready-license-template-overview.md)

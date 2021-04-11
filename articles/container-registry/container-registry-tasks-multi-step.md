@@ -3,12 +3,12 @@ title: Aktivitet med flera steg för att bygga, testa & korrigerings avbildning
 description: Introduktion till aktiviteter med flera steg, en funktion i ACR-aktiviteter i Azure Container Registry som innehåller uppgiftsbaserade arbets flöden för att skapa, testa och korrigera behållar avbildningar i molnet.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 0dcd38559d3f50715f982de4c9c80bfe9c6c8433
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc671006beb1934b32fcd6ccf967a5bf9ff817fb
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "78399697"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169206"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Kör åtgärder för att skapa, testa och korrigera flera steg i ACR-aktiviteter
 
@@ -65,7 +65,7 @@ steps:
     build: -t $Registry/hello-world:$ID .
     when: ["-"]
   - id: build-tests
-    build -t $Registry/hello-world-tests ./funcTests
+    build: -t $Registry/hello-world-tests ./funcTests
     when: ["-"]
   - id: push
     push: ["$Registry/helloworld:$ID"]

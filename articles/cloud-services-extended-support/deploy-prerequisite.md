@@ -8,36 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 21433e1a0441ef458dd5f8ea4b968211ef82cd46
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bce09fad6ffa169a019628498a686226eff266c7
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104865612"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384991"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Krav för att distribuera Azure Cloud Services (utökad support)
 
-> [!IMPORTANT]
-> Cloud Services (utökad support) är för närvarande en offentlig för hands version.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 För att säkerställa en lyckad Cloud Services-distribution (utökad support) granskar du stegen nedan och Slutför varje objekt innan du försöker utföra några distributioner. 
-
-## <a name="register-the-cloudservices-feature"></a>Registrera funktionen CloudServices
-Registrera funktionen för din prenumeration. Registreringen kan ta flera minuter att slutföra. 
-
-```powershell
-Register-AzProviderFeature -FeatureName CloudServices -ProviderNamespace Microsoft.Compute
-```
-
-Kontrol lera status för registreringen med följande:  
-```powershell
-Get-AzProviderFeature 
-
-#Sample output
-FeatureName               ProviderName      RegistrationState
-CloudServices           Microsoft.Compute    Registered
-```
 
 ## <a name="required-service-configuration-cscfg-file-updates"></a>Fil uppdateringar för tjänst konfiguration (. cscfg) som krävs
 

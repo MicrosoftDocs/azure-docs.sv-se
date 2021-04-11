@@ -3,25 +3,35 @@
 - name: Översikt
   expanded: true
   items:
-    - name: Vad är Personanpassning?
+    - name: Översikt över personanpassa
       href: what-is-personalizer.md
+    - name: Priser
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
       displayName: 'loop, context, feature, action, rank, reward, developer, use case'
     - name: Nyheter
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
-- name: Snabbstarter
+- name: Snabb start för personanpassa
+  href: ./quickstart-personalizer-sdk.md
+- name: Exempel
+  href: 'https://github.com/Azure-Samples/cognitive-services-personalizer-samples'
+- name: Ansvarsfull användning av AI
   items:
-    - name: Använda SDK
-      href: ./quickstart-personalizer-sdk.md
-- name: Självstudier
+    - name: Etik och ansvarig användning
+      href: ethics-responsible-use.md
+- name: Anvisningar
   items:
-    - name: Använda webbapp
-      href: tutorial-use-personalizer-web-app.md
-    - name: Använda en chattrobot
-      href: tutorial-use-personalizer-chat-bot.md
-    - name: Använda Azure Notebook
-      href: tutorial-use-azure-notebook-generate-loop-data.md
-      displayName: 'jupyter, notebook, python, cell, graph, chart, aggregate, model update frequency'
+    - name: Skapa resurs för Personanpassning
+      href: how-to-create-resource.md
+    - name: Konfigurera Personanpassning
+      href: how-to-settings.md
+      displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
+    - name: Använda lärlingsläge
+      href: how-to-learning-behavior.md
+    - name: Hantera inställningar för modell och inlärning
+      href: how-to-manage-model.md
+    - name: Analysera med en offlineutvärdering
+      href: how-to-offline-evaluation.md
 - name: Begrepp
   items:
     - name: Så här fungerar Personanpassning
@@ -32,10 +42,8 @@
       displayName: 'checklist, considerations, effectiveness, recommendation engine'
     - name: Terminologi
       href: terminology.md
-    - name: Etik och ansvarig användning
-      href: ethics-responsible-use.md
       displayName: 'best practice, design'
-    - name: Grundläggande koncept
+    - name: Personanpassa fundament ALS
       items:
         - name: Funktionerna Åtgärd och Kontext
           href: concepts-features.md
@@ -55,71 +63,61 @@
           displayName: 'RL, contextual bandits, Vowpal Wabbit'
         - name: Utforskning
           href: concepts-exploration.md
-    - name: Analys
-      items:
-        - name: Offlineutvärdering
-          href: concepts-offline-evaluation.md
-          displayName: 'learning policy, Counterfactual, features'
-        - name: Funktionsutvärdering
-          href: concept-feature-evaluation.md
+    - name: Offlineutvärdering
+      href: concepts-offline-evaluation.md
+      displayName: 'learning policy, Counterfactual, features'
+    - name: Funktionsutvärdering
+      href: concept-feature-evaluation.md
     - name: Skalbarhet och prestanda
       href: concepts-scalability-performance.md
-- name: Anvisningar
+- name: Självstudier
   items:
-    - name: Skapa resurs för Personanpassning
-      href: how-to-create-resource.md
-    - name: Konfigurera Personanpassning
-      href: how-to-settings.md
-      displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
-    - name: Använda lärlingsläge
-      href: how-to-learning-behavior.md
-    - name: Hantera inställningar för modell och inlärning
-      href: how-to-manage-model.md
-    - name: Analysera med en offlineutvärdering
-      href: how-to-offline-evaluation.md
+    - name: Använda webbapp
+      href: tutorial-use-personalizer-web-app.md
+    - name: Använda en chattrobot
+      href: tutorial-use-personalizer-chat-bot.md
+    - name: Använda Azure Notebook
+      href: tutorial-use-azure-notebook-generate-loop-data.md
+      displayName: 'jupyter, notebook, python, cell, graph, chart, aggregate, model update frequency'
 - name: Referens
   items:
-    - name: Exempel
-      href: 'https://go.microsoft.com/fwlink/?linkid=2092083'
-    - name: Referens för REST API
+    - name: Personanpassa REST API
       href: 'https://go.microsoft.com/fwlink/?linkid=2092082'
-    - name: 'SDK:er'
+    - name: .NET
       items:
-        - name: .NET
-          items:
-            - name: Referens
-              href: /dotnet/api/overview/azure/cognitiveservices/client/personalizer
-            - name: NuGet-paket
-              href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
-        - name: Go
-          items:
-            - name: SDK
-              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview'
-        - name: Node.js
-          items:
-            - name: Referens
-              href: /javascript/api/@azure/cognitiveservices-personalizer/
-            - name: NPM
-              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0'
-        - name: Python
-          items:
-            - name: Referens
-              href: /python/api/overview/azure/cognitiveservices/personalizer
-            - name: Pypi-paket
-              href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
+        - name: Referens
+          href: /dotnet/api/overview/azure/cognitiveservices/client/personalizer
+        - name: NuGet-paket
+          href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
+    - name: Go
+      items:
+        - name: Referens
+          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview'
+    - name: Node.js
+      items:
+        - name: Referens
+          href: /javascript/api/@azure/cognitiveservices-personalizer/
+        - name: NPM-paket
+          href: 'https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0'
+    - name: Python
+      items:
+        - name: Referens
+          href: /python/api/overview/azure/cognitiveservices/personalizer
+        - name: Pypi-paket
+          href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: Resurser
   items:
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/personalizer/context/context
     - name: Felsökning
       href: troubleshooting.md
-    - name: Regional tillgänglighet
+    - name: Lär dig moduler
+      href: 'https://docs.microsoft.com/learn/browse/?terms=personalizer'
+    - name: Stöd för regioner
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Efterlevnad
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Kryptering
       href: encrypt-data-at-rest.md
-    - name: Azure-översikt
+    - name: Azure-uppdateringar
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
-    - name: Prissättning
-      href: 'https://go.microsoft.com/fwlink/?linkid=2092154'

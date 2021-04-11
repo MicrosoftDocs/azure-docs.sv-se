@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Kontroll av agent uppgraderingar för Azure Arc-aktiverade Kubernetes
 keywords: Kubernetes, båge, Azure, K8s, behållare, agent, uppgradering
-ms.openlocfilehash: d81a00ed4f30f446aeed96d59a455935c652b7d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29df9973ead167e7774924cc3a0c685606092d28
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954555"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442532"
 ---
 # <a name="upgrading-azure-arc-enabled-kubernetes-agents"></a>Uppgradera Azure Arc-aktiverade Kubernetes-agenter
 
@@ -53,7 +53,7 @@ az connectedk8s update --name AzureArcTest1 --resource-group AzureArcTest --auto
 Om du har inaktiverat automatisk uppgradering för agenter kan du manuellt starta uppgraderingar av de här agenterna med hjälp av `az connectedk8s upgrade` kommandot som visas nedan:
 
 ```console
-az connectedk8s upgrade -g AzureArcTest1 -n AzureArcTest --agent-version 1.0.1
+az connectedk8s upgrade -g AzureArcTest1 -n AzureArcTest --agent-version 1.1.0
 ```
 
 Azure Arc Enabled Kubernetes följer det standardiserade [semantiska versions schemat](https://semver.org/) `MAJOR.MINOR.PATCH` för för versions hantering av agenterna. 

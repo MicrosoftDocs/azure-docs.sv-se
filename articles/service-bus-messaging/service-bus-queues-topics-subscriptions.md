@@ -2,13 +2,13 @@
 title: Azure Service Bus Messaging – köer, ämnen och prenumerationer
 description: Den här artikeln innehåller en översikt över Azure Service Bus meddelande enheter (kö, ämnen och prenumerationer).
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: b8fb68509ad920fc6911290377f49b89ec610b58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: ccd91d5091dbbba072cf222e5a73c3db1d48c321
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101096327"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209832"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus-köer, -ämnen och -prenumerationer
 Azure Service Bus har stöd för en uppsättning molnbaserade, objektorienterade mellanprogram teknologier, inklusive Reliable Message Queuing och varaktiga meddelanden för publicering/prenumeration. Dessa Brokered Messaging-funktioner kan ses som fristående meddelande funktioner som stöder publicerings prenumeration, temporala kopplingar och belastnings Utjämnings scenarier med hjälp av Service Bus meddelande arbets belastning. Frikopplad kommunikation har många fördelar. Till exempel kan klienter och servrar ansluta efter behov och utföra sina åtgärder på ett asynkront sätt.
@@ -53,7 +53,7 @@ I många fall måste meddelanden med särskilda egenskaper bearbetas på olika s
 
 Ett fullständigt arbets exempel finns i TopicSubscriptionWithRuleOperationsSample- [exemplet](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample) på GitHub.
 
-Mer information om möjliga filter värden finns i dokumentationen för klassen [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) och [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) .
+Mer information om filter finns i [avsnittet filter och åtgärder](topic-filters.md).
 
 ## <a name="java-message-service-jms-20-entities"></a>JMS-enheter (Java Message Service) 2,0
 Följande entiteter är tillgängliga via JMS (Java Message Service) 2,0 API.

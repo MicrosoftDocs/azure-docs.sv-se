@@ -6,14 +6,14 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 03/10/2021
+ms.date: 04/05/2021
 ms.author: victorh
-ms.openlocfilehash: 6855eb50519afacdf971ffcb8b70aa289b7cfe26
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: bb89b6acbc76a4020ee721e87272b154bab6d0a4
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066338"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385181"
 ---
 # <a name="what-is-azure-firewall"></a>Vad är Azure Firewall?
 
@@ -54,7 +54,6 @@ Azure Firewall har följande kända problem:
 
 |Problem  |Beskrivning  |Åtgärd  |
 |---------|---------|---------|
-|Om du uppdaterar en regel från IP-adress till IP-grupp eller vice versa med portalen, sparas båda typerna, men bara en visas på portalen.|Det här problemet uppstår med klassiska regler.<br><br>När du använder portalen för att uppdatera en NAT-regels käll typ från IP-adress till IP-grupp eller vice versa sparar den båda typerna i Server delen men visar bara den nyligen uppdaterade typen.<br><br>Samma problem uppstår när du uppdaterar en nätverks-eller program regels mål typ från IP-adress till IP-grupptyp eller vice versa.|En portal korrigering är avsedd för mars 2021.<br><br>Under tiden använder du Azure PowerShell, Azure CLI eller API för att ändra en regel från IP-adress till IP-grupp eller vice versa.|
 |Nätverksfiltreringsregler för icke-TCP-/UDP-protokoll (till exempel ICMP) fungerar inte för Internetbunden trafik|Nätverks filtrerings regler för icke-TCP/UDP-protokoll fungerar inte med SNAT till din offentliga IP-adress. Icke-TCP-/UDP-protokoll stöds mellan ekerundernät och virtuella nätverk.|Azure Firewall använder Standard Load Balancer, [som för närvarande inte stöder SNAT för IP-protokoll](../load-balancer/load-balancer-overview.md). Vi ska utforska alternativ för att stödja det här scenariot i en framtida version.|
 |Saknat PowerShell- och CLI-stöd för ICMP|Azure PowerShell och CLI stöder inte ICMP som ett giltigt protokoll i nätverks regler.|Det går fortfarande att använda ICMP som protokoll via portalen och REST API. Vi arbetar snart med att lägga till ICMP i PowerShell och CLI.|
 |FQDN-taggar kräver att protokoll: port anges|Program regler med FQDN-Taggar kräver port: protokoll definition.|Du kan använda **https** som port: protokoll-värde. Vi arbetar för att göra det här fältet valfritt när FQDN-Taggar används.|
@@ -78,6 +77,7 @@ Azure Firewall har följande kända problem:
 |Starta/stoppa fungerar inte med en brand vägg som kon figurer ATS i Tvingad tunnel läge|Starta/stoppa fungerar inte med Azure-brandväggen konfigurerad i Tvingad tunnel läge. Försök att starta Azure-brandväggen med Tvingad tunnel trafik har kon figurer ATS i följande fel:<br><br>*Set-AzFirewall: AzureFirewall VB-XX Management IP-konfiguration kan inte läggas till i en befintlig brand vägg. Distribuera om med en hanterings-IP-konfiguration om du vill använda Tvingad tunnel trafik. <br> StatusCode: 400 <br> ReasonPhrase: felaktig begäran*|Under undersökning.<br><br>Som en lösning kan du ta bort den befintliga brand väggen och skapa en ny med samma parametrar.|
 |Det går inte att lägga till brand Väggs princip Taggar med portalen|Azure Firewall-principen har en begränsning för korrigerings stöd som förhindrar att du lägger till en tagg med hjälp av Azure Portal. Följande fel genereras: *Det gick inte att spara taggarna för resursen*.|En korrigering undersökas. Du kan också använda Azure PowerShell-cmdlet: en `Set-AzFirewallPolicy` för att uppdatera taggar.|
 |IPv6 stöds ännu inte|Om du lägger till en IPv6-adress i en regel, Miss lyckas brand väggen.|Använd endast IPv4-adresser. IPv6-stöd är under undersökning.|
+|Det går inte att uppdatera flera IP-grupper med ett konflikt fel.|När du uppdaterar två eller flera IPGroups som är kopplade till samma brand vägg hamnar en av resurserna i ett felaktigt tillstånd.|Detta är ett känt problem/begränsning. <br><br>När du uppdaterar en IPGroup utlöses en uppdatering på alla brand väggar som IPGroup är kopplad till. Om en uppdatering av en andra IPGroup startas medan brand väggen fortfarande är i *uppdaterings* läget, Miss lyckas uppdateringen av IPGroup.<br><br>För att undvika det här problemet måste IPGroups som är kopplade till samma brand vägg uppdateras en i taget. Tillåt tillräckligt med tid mellan uppdateringar för att tillåta brand väggen att ta sig ur *uppdaterings* läget.| 
 
 
 ## <a name="next-steps"></a>Nästa steg

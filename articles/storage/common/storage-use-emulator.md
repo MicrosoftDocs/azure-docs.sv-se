@@ -1,18 +1,18 @@
 ---
 title: Använd Azure Storage emulatorn för utveckling och testning
 description: Azure Storage-emulatorn tillhandahåller en kostnads fri lokal utvecklings miljö för att utveckla och testa dina Azure Storage-program.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: 6d9e0e63a3586be139620c154616acfcba2ab10f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 909de4b6782a0cd03b7c7d7c72bfa50e5541b6d7
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96498225"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277138"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Använd Azure Storage emulatorn för utveckling och testning
 

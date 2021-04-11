@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7dacc01b37fb91f02fe67f76fe79c0bfa9375ea7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4375e7b68f0b279a971e92775ca454f06dcbd45
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103009546"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067341"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Använda dynamisk AES-128-kryptering och tjänsten för nyckelleverans
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector"]
-> * [.NET](media-services-protect-with-aes128.md)
+> * [.NET](media-services-playready-license-template-overview.md)
 > * [Java](https://github.com/rnrneverdies/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 >  
@@ -55,7 +55,7 @@ Utför följande allmänna steg när du krypterar dina till gångar med AES med 
 
 2. [Koda den till gång som innehåller filen till MP4-uppsättningen med anpassad bit hastighet](media-services-protect-with-aes128.md#encode_asset).
 
-3. [Skapa en innehålls nyckel och associera den med den kodade till gången](media-services-protect-with-aes128.md#create_contentkey). I Media Services innehåller innehållsnyckeln tillgångens krypteringsnyckel.
+3. [Skapa en innehålls nyckel och associera den med den kodade till gången] Media-Services-Protect-with-AES128. MD # create_contentkey). I Media Services innehåller innehållsnyckeln tillgångens krypteringsnyckel.
 
 4. [Konfigurera en auktoriseringsprincip för innehålls nyckeln](media-services-protect-with-aes128.md#configure_key_auth_policy). Du måste konfigurera en auktoriseringsprincip för innehållsnyckeln. Klienten måste uppfylla principen innan innehållsnyckeln kan levereras till klienten.
 

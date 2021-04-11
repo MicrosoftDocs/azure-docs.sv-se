@@ -1,342 +1,336 @@
-### YamlMime:Hub
+### YamlMime:Hub 
 title: Dokumentation om Azure-nätverkstjänster
-summary: Läs mer om de olika Azure-nätverkstjänsterna som tillhandahåller en anslutning till dina resurser i Azure, levererar och skyddar program samt hjälper till att skydda ditt nätverk.
+summary: 'Läs mer om de olika Azure-nätverkstjänsterna som tillhandahåller en anslutning till dina resurser i Azure, levererar och skyddar program samt hjälper till att skydda ditt nätverk.'
 brand: azure
 metadata:
   title: Dokumentation om Azure-nätverkstjänster
-  description: Azure-nätverkstjänster ger anslutning till dina resurser i Azure, levererar och skyddar program samt hjälper till att skydda ditt nätverk.
+  description: 'Azure-nätverkstjänster ger anslutning till dina resurser i Azure, levererar och skyddar program samt hjälper till att skydda ditt nätverk.'
   ms.service: virtual-network
   ms.topic: hub-page
-  ms.collection: 
+  ms.collection: null
   author: KumudD
   ms.author: kumud
   manager: mtillman
-  ms.date: 09/28/2020
-  ms.openlocfilehash: c701f1f54955257fd60fe8d58fb703a1d26d1169
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
-  ms.translationtype: MT
-  ms.contentlocale: sv-SE
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102503405"
+  ms.date: 03/30/2021
 highlightedContent:
   items:
-  - title: Vad är Azure-nätverkstjänster?
-    itemType: overview
-    url: networking-overview.md
-  - title: Vad är nytt i Azure-nätverkstjänster?
-    itemType: whats-new
-    url: https://azure.microsoft.com/updates/?category=networking
-  - title: Alternativ för belastningsutjämning i Azure
-    itemType: architecture
-    url: /azure/architecture/guide/technology-choices/load-balancing-overview
-  - title: Nätverkstopologi av typen hub-spoke i Azure
-    itemType: architecture
-    url: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
-  - title: Vad är Azure Orbital?
-    itemType: concept
-    url: azure-orbital-overview.md
-  - title: Arbeta på distans med hjälp av Azure-tjänster
-    itemType: concept
-    url: working-remotely-support.md
+    - title: Vad är Azure-nätverkstjänster?
+      itemType: overview
+      url: fundamentals/networking-overview.md
+    - title: Vad är nytt i Azure-nätverkstjänster?
+      itemType: whats-new
+      url: 'https://azure.microsoft.com/updates/?category=networking'
+    - title: Alternativ för belastningsutjämning i Azure
+      itemType: architecture
+      url: /azure/architecture/guide/technology-choices/load-balancing-overview
+    - title: Nätverkstopologi av typen hub-spoke i Azure
+      itemType: architecture
+      url: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+    - title: Vad är Azure Orbital?
+      itemType: concept
+      url: azure-orbital-overview.md
+    - title: Arbeta på distans med hjälp av Azure-tjänster
+      itemType: concept
+      url: working-remotely-support.md
 conceptualContent:
   items:
-  - title: Virtuellt nätverk
-    links:
-    - url: ../virtual-network/virtual-networks-overview.md
-      itemType: concept
-      text: Vad är ett virtuellt Azure-nätverk?
-    - url: ../virtual-network/tutorial-restrict-network-access-to-resources.md
-      itemType: tutorial
-      text: Begränsa nätverksåtkomst till resurser
-    - url: ../virtual-network/tutorial-connect-virtual-networks-portal.md
-      itemType: tutorial
-      text: Ansluta virtuella Azure-nätverk
-    - url: ../virtual-network/diagnose-network-traffic-filter-problem.md
-      itemType: how-to-guide
-      text: Felsöka problem med nätverkstrafikfilter
-    footerLink:
-      url: ../virtual-network/index.yml
-      text: Mer information
-  - title: Ansluta lokalt till Azure – VPN-kryptering
-    links:
-    - url: ../vpn-gateway/vpn-gateway-about-vpngateways.md
-      itemType: overview
-      text: Vad är Azure VPN Gateway?
-    - url: ../vpn-gateway/tutorial-site-to-site-portal.md
-      itemType: tutorial
-      text: Plats-till-plats-anslutningar
-    - url: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
-      itemType: how-to-guide
-      text: Punkt-till-plats-anslutningar
-    - url: ../vpn-gateway/vpn-gateway-troubleshoot.md
-      itemType: how-to-guide
-      text: Felsöka VPN-gatewayer
-    footerLink:
-      url: ../vpn-gateway/index.yml
-      text: Mer information
-  - title: Utöka lokalt till Azure – privat anslutning
-    links:
-    - url: ../expressroute/expressroute-introduction.md
-      itemType: concept
-      text: Vad är Azure ExpressRoute?
-    - url: ../expressroute/expressroute-howto-circuit-portal-resource-manager.md
-      itemType: tutorial
-      text: Skapa och ändra en ExpressRoute-krets
-    - url: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md
-      itemType: tutorial
-      text: Länka ett virtuellt nätverk till en ExpressRoute-krets
-    - url: ../expressroute/expressroute-troubleshooting-network-performance.md
-      itemType: how-to-guide
-      text: Felsöka nätverksprestanda
-    footerLink:
-      url: ../expressroute/index.yml
-      text: Mer information
-  - title: DNS
-    links:
-    - url: ../dns/dns-overview.md
-      itemType: overview
-      text: Vad är Azure DNS?
-    - url: ../private-link/private-endpoint-overview.md
-      itemType: overview
-      text: Vad är Azure Privat DNS?
-    - url: ../dns/dns-delegate-domain-azure-dns.md
-      itemType: tutorial
-      text: Värdhantera din domän och underdomän
-    - url: ../dns/dns-getstarted-portal.md
-      itemType: tutorial
-      text: Felsöka Azure DNS
-    footerLink:
-      url: ../dns/index.yml
-      text: Mer information
-  - title: Lastbalanserare för nätverk
-    links:
-    - url: ../load-balancer/load-balancer-overview.md
-      itemType: overview
-      text: Vad är Azure Load Balancer?
-    - url: https://azure.microsoft.com/updates/?category=networking&query=load%20balancer
-      itemType: whats-new
-      text: Nyheter
-    - url: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
-      itemType: quickstart
-      text: Belastningsutjämna Internettrafik till virtuella datorer
-    - url: ../load-balancer/load-balancer-troubleshoot.md
-      itemType: how-to-guide
-      text: Felsök Azure Load Balancer
-    footerLink:
-      url: ../load-balancer/index.yml
-      text: Mer information
-  - title: DNS-baserad lastbalanserare
-    links:
-    - url: ../traffic-manager/traffic-manager-overview.md
-      itemType: overview
-      text: Vad är Azure Traffic Manager?
-    - url: ../traffic-manager/tutorial-traffic-manager-improve-website-response.md
-      itemType: tutorial
-      text: Dirigera trafik för låg latens
-    - url: ../traffic-manager/traffic-manager-routing-methods.md
-      itemType: concept
-      text: Metoder för trafikroutning
-    - url: ../traffic-manager/traffic-manager-troubleshooting-degraded.md
-      itemType: how-to-guide
-      text: Felsöka degraderat tillstånd för Traffic Manager
-    footerLink:
-      url: ../traffic-manager/index.yml
-      text: Mer information
-  - title: Lastbalanserare för webbapp
-    links:
-    - url: ../application-gateway/overview.md
-      itemType: overview
-      text: Vad är Azure Application Gateway?
-    - url: ../application-gateway/quick-create-portal.md
-      itemType: quickstart
-      text: Dirigera webbtrafik med hjälp av portalen
-    - url: ../application-gateway/application-gateway-faq.yml
-      itemType: concept
-      text: Vanliga frågor och svar
-    - url: ../application-gateway/application-gateway-troubleshooting-502.md
-      itemType: how-to-guide
-      text: Felsöka fel med felaktig gateway
-    footerLink:
-      url: ../application-gateway/index.yml
-      text: Mer information
-  - title: Skydda moln-CDN och global belastningsutjämnare
-    links:
-    - url: ../frontdoor/front-door-overview.md
-      itemType: overview
-      text: Vad är Azure Front Door Service?
-    - url: ../frontdoor/standard-premium/overview.md
-      itemType: overview
-      text: Vad är Azures främre dörr standard/Premium (för hands version)?
-    - url: ../frontdoor/front-door-custom-domain.md
-      itemType: how-to-guide
-      text: Lägga till en anpassad domän i din Azure Front Door Service
-    - url: ../frontdoor/front-door-how-to-redirect-https.md
-      itemType: how-to-guide
-      text: Omdirigering från HTTP till HTTPS
-    footerLink:
-      url: ../frontdoor/index.yml
-      text: Mer information
-  - title: Övervaka nätverkshälsa
-    links:
-    - url: ../network-watcher/network-watcher-monitoring-overview.md
-      itemType: overview
-      text: Vad är Azure Network Watcher?
-    - url: ../network-watcher/traffic-analytics.md
-      itemType: concept
-      text: Trafikanalys i Azure
-    - url: ../network-watcher/network-watcher-nsg-flow-logging-portal.md
-      itemType: tutorial
-      text: Logga nätverkstrafikflöde till och från en virtuell dator
-    footerLink:
-      url: ../network-watcher/index.yml
-      text: Mer information
-  - title: Nätverksbrandvägg
-    links:
-    - url: ../firewall/overview.md
-      itemType: overview
-      text: Vad är Azure Firewall?
-    - url: ../firewall/tutorial-firewall-deploy-portal.md
-      itemType: tutorial
-      text: Distribuera och konfigurera Azure Firewall
-    - url: ../firewall/tutorial-firewall-dnat.md
-      itemType: tutorial
-      text: Filtrera inkommande Internettrafik med hjälp av Azure Firewall
-    footerLink:
-      url: ../firewall/index.yml
-      text: Mer information
-  - title: Skydda åtkomst till virtuella Azure-datorer
-    links:
-    - url: ../bastion/bastion-overview.md
-      itemType: overview
-      text: Vad är Azure Bastion?
-    - url: ../bastion/tutorial-create-host-portal.md
-      itemType: how-to-guide
-      text: Skapa en Azure Bastion-värd
-    - url: ../bastion/troubleshoot.md
-      itemType: how-to-guide
-      text: Felsöka Azure Bastion
-    footerLink:
-      url: ../bastion/index.yml
-      text: Mer information
-  - title: Hantering av nätverkssäkerhet
-    links:
-    - url: ../firewall-manager/overview.md
-      itemType: overview
-      text: Vad är Azure Firewall Manager?
-    - url: ../firewall-manager/secured-virtual-hub.md
-      itemType: concept
-      text: Vad är en skyddad virtuell hubb?
-    - url: ../firewall-manager/secure-cloud-network.md
-      itemType: tutorial
-      text: Skydda ditt virtuella WAN med hjälp av Azure Firewall Manager
-    footerLink:
-      url: ../firewall-manager/index.yml
-      text: Mer information
-  - title: Brandvägg för webbaserade program
-    links:
-    - url: ../web-application-firewall/overview.md
-      itemType: overview
-      text: Vad är Azure-brandväggen för webbaserade program?
-    - url: ../web-application-firewall/ag/ag-overview.md
-      itemType: concept
-      text: WAF i Application Gateway
-    - url: ../web-application-firewall/afds/afds-overview.md
-      itemType: concept
-      text: WAF i Azure Front Door Service
-    - url: ../web-application-firewall/cdn/cdn-overview.md
-      itemType: concept
-      text: WAF i Azure CDN
-    - url: ../web-application-firewall/ag/web-application-firewall-troubleshoot.md
-      itemType: how-to-guide
-      text: Felsöka WAF för Application Gateway
-    footerLink:
-      url: ../web-application-firewall/index.yml
-      text: Mer information
-  - title: Privat åtkomst till en tjänst
-    links:
-    - url: ../private-link/private-link-overview.md
-      itemType: overview
-      text: Vad är Azure Privat Link?
-    - url: ../private-link/private-endpoint-overview.md
-      itemType: concept
-      text: Vad är privat slutpunkt i Azure?
-    - url: ../private-link/troubleshoot-private-link-connectivity.md
-      itemType: how-to-guide
-      text: Felsöka Azure Private Link
-    footerLink:
-      url: ../private-link/index.yml
-      text: Mer information
-  - title: DDoS Protection
-    links:
-    - url: ../ddos-protection/ddos-protection-overview.md
-      itemType: overview
-      text: Vad är Azure DDoS Protection Standard?
-    - url: ../ddos-protection/manage-ddos-protection.md
-      itemType: how-to-guide
-      text: Hantera DDOS-skydd
-    - url: ../ddos-protection/ddos-protection-partner-onboarding.md
-      itemType: concept
-      text: Introducera partner
-    footerLink:
-      url: ../ddos-protection/index.yml
-      text: Mer information
-  - title: Nätverk för innehållsleverans
-    links:
-    - url: ../cdn/cdn-overview.md
-      itemType: overview
-      text: Vad är Azure Content Delivery Network?
-    - url: ../cdn/cdn-create-new-endpoint.md
-      itemType: quickstart
-      text: Skapa en CDN-profil och en slutpunkt
-    - url: ../cdn/cdn-standard-rules-engine-reference.md
-      itemType: concept
-      text: Referens för standardregelmotor för Azure CDN
-    - url: ../cdn/cdn-troubleshoot-endpoint.md
-      itemType: how-to-guide
-      text: Felsöka Azure CDN-slutpunkter
-    footerLink:
-      url: ../cdn/index.yml
-      text: Mer information
-  - title: Enhetligt ”nav och eker”-nätverk
-    links:
-    - url: ../virtual-wan/virtual-wan-about.md
-      itemType: overview
-      text: Vad är Azure Virtual WAN?
-    - url: ../virtual-wan/virtual-wan-global-transit-network-architecture.md
-      itemType: concept
-      text: Arkitektur för globalt transitnätverk – Azure Virtual WAN
-    - url: ../virtual-wan/virtual-wan-locations-partners.md
-      itemType: concept
-      text: Partner och platser för Azure Virtual WAN
-    - url: ../virtual-wan/migrate-from-hub-spoke-topology.md
-      itemType: how-to-guide
-      text: Migrera från topologi av typen hub-spoke
-    footerLink:
-      url: ../virtual-wan/index.yml
-      text: Mer information
-  - title: Peering-tjänster
-    links:
-    - url: ../peering-service/about.md
-      itemType: overview
-      text: Vad är Azure Peering Service?
-    - url: ../internet-peering/overview.md
-      itemType: overview
-      text: Vad är Internet-peering?
-    - url: ../internet-peering/overview-peering-service.md
-      itemType: concept
-      text: Internet-peering jämfört med Peering Service i Azure
-    footerLink:
-      url: ../peering-service/index.yml
-      text: Mer information
+    - title: Förstå grunderna i nätverk i Azure
+      links:
+        - url: fundamentals/networking-overview.md
+          itemType: overview
+          text: Vad är Azure-nätverkstjänster?
+        - url: ../virtual-network/quick-create-portal.md
+          itemType: get-started
+          text: Skapa ett virtuellt nätverk
+        - url: microsoft-global-network.md
+          itemType: concept
+          text: Microsofts globala nätverk
+      footerLink:
+        url: ../networking/fundamentals/index.yml
+        text: Mer information
+    - title: Virtuellt nätverk
+      links:
+        - url: ../virtual-network/virtual-networks-overview.md
+          itemType: concept
+          text: Vad är ett virtuellt Azure-nätverk?
+        - url: ../virtual-network/tutorial-restrict-network-access-to-resources.md
+          itemType: tutorial
+          text: Begränsa nätverksåtkomst till resurser
+        - url: ../virtual-network/tutorial-connect-virtual-networks-portal.md
+          itemType: tutorial
+          text: Ansluta virtuella Azure-nätverk
+        - url: ../virtual-network/diagnose-network-traffic-filter-problem.md
+          itemType: how-to-guide
+          text: Felsöka problem med nätverkstrafikfilter
+      footerLink:
+        url: ../virtual-network/index.yml
+        text: Mer information
+    - title: Ansluta lokalt till Azure – VPN-kryptering
+      links:
+        - url: ../vpn-gateway/vpn-gateway-about-vpngateways.md
+          itemType: overview
+          text: Vad är Azure VPN Gateway?
+        - url: ../vpn-gateway/tutorial-site-to-site-portal.md
+          itemType: tutorial
+          text: Plats-till-plats-anslutningar
+        - url: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
+          itemType: how-to-guide
+          text: Punkt-till-plats-anslutningar
+        - url: ../vpn-gateway/vpn-gateway-troubleshoot.md
+          itemType: how-to-guide
+          text: Felsöka VPN-gatewayer
+      footerLink:
+        url: ../vpn-gateway/index.yml
+        text: Mer information
+    - title: Utöka lokalt till Azure – privat anslutning
+      links:
+        - url: ../expressroute/expressroute-introduction.md
+          itemType: concept
+          text: Vad är Azure ExpressRoute?
+        - url: ../expressroute/expressroute-howto-circuit-portal-resource-manager.md
+          itemType: tutorial
+          text: Skapa och ändra en ExpressRoute-krets
+        - url: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md
+          itemType: tutorial
+          text: Länka ett virtuellt nätverk till en ExpressRoute-krets
+        - url: ../expressroute/expressroute-troubleshooting-network-performance.md
+          itemType: how-to-guide
+          text: Felsöka nätverksprestanda
+      footerLink:
+        url: ../expressroute/index.yml
+        text: Mer information
+    - title: DNS
+      links:
+        - url: ../dns/dns-overview.md
+          itemType: overview
+          text: Vad är Azure DNS?
+        - url: ../private-link/private-endpoint-overview.md
+          itemType: overview
+          text: Vad är Azure Privat DNS?
+        - url: ../dns/dns-delegate-domain-azure-dns.md
+          itemType: tutorial
+          text: Värdhantera din domän och underdomän
+        - url: ../dns/dns-getstarted-portal.md
+          itemType: tutorial
+          text: Felsöka Azure DNS
+      footerLink:
+        url: ../dns/index.yml
+        text: Mer information
+    - title: Lastbalanserare för nätverk
+      links:
+        - url: ../load-balancer/load-balancer-overview.md
+          itemType: overview
+          text: Vad är Azure Load Balancer?
+        - url: 'https://azure.microsoft.com/updates/?category=networking&query=load%20balancer'
+          itemType: whats-new
+          text: Nyheter
+        - url: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
+          itemType: quickstart
+          text: Belastningsutjämna Internettrafik till virtuella datorer
+        - url: ../load-balancer/load-balancer-troubleshoot.md
+          itemType: how-to-guide
+          text: Felsök Azure Load Balancer
+      footerLink:
+        url: ../load-balancer/index.yml
+        text: Mer information
+    - title: DNS-baserad lastbalanserare
+      links:
+        - url: ../traffic-manager/traffic-manager-overview.md
+          itemType: overview
+          text: Vad är Azure Traffic Manager?
+        - url: ../traffic-manager/tutorial-traffic-manager-improve-website-response.md
+          itemType: tutorial
+          text: Dirigera trafik för låg latens
+        - url: ../traffic-manager/traffic-manager-routing-methods.md
+          itemType: concept
+          text: Metoder för trafikroutning
+        - url: ../traffic-manager/traffic-manager-troubleshooting-degraded.md
+          itemType: how-to-guide
+          text: Felsöka degraderat tillstånd för Traffic Manager
+      footerLink:
+        url: ../traffic-manager/index.yml
+        text: Mer information
+    - title: Lastbalanserare för webbapp
+      links:
+        - url: ../application-gateway/overview.md
+          itemType: overview
+          text: Vad är Azure Application Gateway?
+        - url: ../application-gateway/quick-create-portal.md
+          itemType: quickstart
+          text: Dirigera webbtrafik med hjälp av portalen
+        - url: ../application-gateway/application-gateway-faq.yml
+          itemType: concept
+          text: Vanliga frågor och svar
+        - url: ../application-gateway/application-gateway-troubleshooting-502.md
+          itemType: how-to-guide
+          text: Felsöka fel med felaktig gateway
+      footerLink:
+        url: ../application-gateway/index.yml
+        text: Mer information
+    - title: Skydda moln-CDN och global belastningsutjämnare
+      links:
+        - url: ../frontdoor/front-door-overview.md
+          itemType: overview
+          text: Vad är Azure Front Door Service?
+        - url: ../frontdoor/standard-premium/overview.md
+          itemType: overview
+          text: Vad är Azures främre dörr standard/Premium (för hands version)?
+        - url: ../frontdoor/front-door-custom-domain.md
+          itemType: how-to-guide
+          text: Lägga till en anpassad domän i din Azure Front Door Service
+        - url: ../frontdoor/front-door-how-to-redirect-https.md
+          itemType: how-to-guide
+          text: Omdirigering från HTTP till HTTPS
+      footerLink:
+        url: ../frontdoor/index.yml
+        text: Mer information
+    - title: Övervaka nätverkshälsa
+      links:
+        - url: ../network-watcher/network-watcher-monitoring-overview.md
+          itemType: overview
+          text: Vad är Azure Network Watcher?
+        - url: ../network-watcher/traffic-analytics.md
+          itemType: concept
+          text: Trafikanalys i Azure
+        - url: ../network-watcher/network-watcher-nsg-flow-logging-portal.md
+          itemType: tutorial
+          text: Logga nätverkstrafikflöde till och från en virtuell dator
+      footerLink:
+        url: ../network-watcher/index.yml
+        text: Mer information
+    - title: Nätverksbrandvägg
+      links:
+        - url: ../firewall/overview.md
+          itemType: overview
+          text: Vad är Azure Firewall?
+        - url: ../firewall/tutorial-firewall-deploy-portal.md
+          itemType: tutorial
+          text: Distribuera och konfigurera Azure Firewall
+        - url: ../firewall/tutorial-firewall-dnat.md
+          itemType: tutorial
+          text: Filtrera inkommande Internettrafik med hjälp av Azure Firewall
+      footerLink:
+        url: ../firewall/index.yml
+        text: Mer information
+    - title: Skydda åtkomst till virtuella Azure-datorer
+      links:
+        - url: ../bastion/bastion-overview.md
+          itemType: overview
+          text: Vad är Azure Bastion?
+        - url: ../bastion/tutorial-create-host-portal.md
+          itemType: how-to-guide
+          text: Skapa en Azure Bastion-värd
+        - url: ../bastion/troubleshoot.md
+          itemType: how-to-guide
+          text: Felsöka Azure Bastion
+      footerLink:
+        url: ../bastion/index.yml
+        text: Mer information
+    - title: Hantering av nätverkssäkerhet
+      links:
+        - url: ../firewall-manager/overview.md
+          itemType: overview
+          text: Vad är Azure Firewall Manager?
+        - url: ../firewall-manager/secured-virtual-hub.md
+          itemType: concept
+          text: Vad är en skyddad virtuell hubb?
+        - url: ../firewall-manager/secure-cloud-network.md
+          itemType: tutorial
+          text: Skydda ditt virtuella WAN med hjälp av Azure Firewall Manager
+      footerLink:
+        url: ../firewall-manager/index.yml
+        text: Mer information
+    - title: Brandvägg för webbaserade program
+      links:
+        - url: ../web-application-firewall/overview.md
+          itemType: overview
+          text: Vad är Azure-brandväggen för webbaserade program?
+        - url: ../web-application-firewall/ag/ag-overview.md
+          itemType: concept
+          text: WAF i Application Gateway
+        - url: ../web-application-firewall/afds/afds-overview.md
+          itemType: concept
+          text: WAF i Azure Front Door Service
+        - url: ../web-application-firewall/cdn/cdn-overview.md
+          itemType: concept
+          text: WAF i Azure CDN
+        - url: ../web-application-firewall/ag/web-application-firewall-troubleshoot.md
+          itemType: how-to-guide
+          text: Felsöka WAF för Application Gateway
+      footerLink:
+        url: ../web-application-firewall/index.yml
+        text: Mer information
+    - title: Privat åtkomst till en tjänst
+      links:
+        - url: ../private-link/private-link-overview.md
+          itemType: overview
+          text: Vad är Azure Privat Link?
+        - url: ../private-link/private-endpoint-overview.md
+          itemType: concept
+          text: Vad är privat slutpunkt i Azure?
+        - url: ../private-link/troubleshoot-private-link-connectivity.md
+          itemType: how-to-guide
+          text: Felsöka Azure Private Link
+      footerLink:
+        url: ../private-link/index.yml
+        text: Mer information
+    - title: DDoS Protection
+      links:
+        - url: ../ddos-protection/ddos-protection-overview.md
+          itemType: overview
+          text: Vad är Azure DDoS Protection Standard?
+        - url: ../ddos-protection/manage-ddos-protection.md
+          itemType: how-to-guide
+          text: Hantera DDOS-skydd
+        - url: ../ddos-protection/ddos-protection-partner-onboarding.md
+          itemType: concept
+          text: Introducera partner
+      footerLink:
+        url: ../ddos-protection/index.yml
+        text: Mer information
+    - title: Nätverk för innehållsleverans
+      links:
+        - url: ../cdn/cdn-overview.md
+          itemType: overview
+          text: Vad är Azure Content Delivery Network?
+        - url: ../cdn/cdn-create-new-endpoint.md
+          itemType: quickstart
+          text: Skapa en CDN-profil och en slutpunkt
+        - url: ../cdn/cdn-standard-rules-engine-reference.md
+          itemType: concept
+          text: Referens för standardregelmotor för Azure CDN
+        - url: ../cdn/cdn-troubleshoot-endpoint.md
+          itemType: how-to-guide
+          text: Felsöka Azure CDN-slutpunkter
+      footerLink:
+        url: ../cdn/index.yml
+        text: Mer information
+    - title: Enhetligt ”nav och eker”-nätverk
+      links:
+        - url: ../virtual-wan/virtual-wan-about.md
+          itemType: overview
+          text: Vad är Azure Virtual WAN?
+        - url: ../virtual-wan/virtual-wan-global-transit-network-architecture.md
+          itemType: concept
+          text: Arkitektur för globalt transitnätverk – Azure Virtual WAN
+        - url: ../virtual-wan/virtual-wan-locations-partners.md
+          itemType: concept
+          text: Partner och platser för Azure Virtual WAN
+        - url: ../virtual-wan/migrate-from-hub-spoke-topology.md
+          itemType: how-to-guide
+          text: Migrera från topologi av typen hub-spoke
+      footerLink:
+        url: ../virtual-wan/index.yml
+        text: Mer information
 additionalContent:
   sections:
-  - items:
-    - title: Azure PowerShell-kommandon för Azure-nätverkstjänster
-      summary: Lär dig mer om cmdletar för Azure-nätverk.
-      url: /powershell/module/az.network/#networking
-    - title: Azure CLI-kommandon för Azure-nätverkstjänster
-      summary: Information om Azure-nätverkskommandon finns i CLI-referensen.
-      url: /cli/azure/network
-    - title: Bloggar om Azure-nätverkstjänster
-      summary: Visa de senaste bloggarna om Azure-nätverkstjänster.
-      url: https://azure.microsoft.com/blog/topics/networking/
+    - items:
+        - title: Azure PowerShell-kommandon för Azure-nätverkstjänster
+          summary: Lär dig mer om cmdletar för Azure-nätverk.
+          url: /powershell/module/az.network/#networking
+        - title: Azure CLI-kommandon för Azure-nätverkstjänster
+          summary: Information om Azure-nätverkskommandon finns i CLI-referensen.
+          url: /cli/azure/network
+        - title: Bloggar om Azure-nätverkstjänster
+          summary: Visa de senaste bloggarna om Azure-nätverkstjänster.
+          url: 'https://azure.microsoft.com/blog/topics/networking/'

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/04/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a3c2812a4ecfa1a80539804122042bc2dc2f3a2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3cc9051190bd314ac93e3de2689a6aa0ec2b6235
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199194"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108089"
 ---
 # <a name="upload-and-index-your-videos"></a>Ladda upp och indexera dina videor  
 
@@ -35,7 +35,7 @@ Artikeln visar hur du överför och indexerar dina videor med följande alternat
 
 ## <a name="supported-file-formats-for-video-indexer"></a>Fil format som stöds för Video Indexer
 
-I artikeln om [inmatade behållare/fil format](../latest/media-encoder-standard-formats.md#input-containerfile-formats) finns en lista över fil format som du kan använda med video Indexer.
+I artikeln om [inmatade behållare/fil format](../latest/encode-media-encoder-standard-formats-reference.md) finns en lista över fil format som du kan använda med video Indexer.
 
 ## <a name="video-files-storage"></a>Video fil lagring
 
@@ -113,7 +113,7 @@ När videon har laddats upp kan Video Indexer koda videon. Sedan fortsätter den
 När du använder API:t [Ladda upp video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) eller [Indexera om video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) är en av de valfria parametrarna `streamingPreset`. Om du ställer in `streamingPreset` på `Default`, `SingleBitrate` eller `AdaptiveBitrate` utlöses kodningsprocessen. När indexerings- och kodningsjobben är klara publiceras videon så att du även kan strömma videon. Slutpunkten för direktuppspelning som du vill strömma videon från måste ha tillståndet **Körs**.
 
 För SingleBitrate kommer standard-Encoder-kostnaden att gälla per utdata. Om video höjden är större än eller lika med 720 kodas Video Indexer som 1280x720. Annars, som 640x468.
-Standardvärdet är [kodning av innehålls medveten information](../latest/content-aware-encoding.md).
+Standardvärdet är [kodning av innehålls medveten information](../latest/encode-content-aware-concept.md).
 
 För att kunna köra indexerings- och kodningsjobben kräver [Azure Media Services-kontot som är anslutet till ditt Video Indexer-konto](connect-to-azure.md) reserverade enheter. Mer information finns i [Skala mediebearbetning](../previous/media-services-scale-media-processing-overview.md). Eftersom det är beräkningsintensiva jobb rekommenderas enhetstypen S3 starkt. Antalet RU:er definierar det maximala antalet jobb som kan köras parallellt. Baslinjerekommendationen är 10 S3-RU:er. 
 

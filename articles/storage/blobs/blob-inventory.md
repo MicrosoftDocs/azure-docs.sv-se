@@ -2,20 +2,20 @@
 title: Använd Azure Storage inventering för att hantera BLOB-data (för hands version)
 description: Azure Storage Inventory är ett verktyg som hjälper dig att få en översikt över alla dina BLOB-data i ett lagrings konto.
 services: storage
-author: mhopkins-msft
+author: twooley
 ms.service: storage
-ms.date: 03/05/2021
+ms.date: 04/01/2021
 ms.topic: conceptual
-ms.author: mhopkins
-ms.reviewer: yzheng
+ms.author: twooley
+ms.reviewer: klaasl
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 8310de465a6416102a7ce4e614ead7029e6be87a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 33d50d1a6b5e84d178b522851795bcc42f5fc169
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950934"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277274"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Använd Azure Storage BLOB Inventory för att hantera BLOB-data (för hands version)
 
@@ -37,6 +37,7 @@ För hands versionen av BLOB Inventory är tillgänglig på lagrings konton i f�
 - Kanada, östra
 - East US
 - USA, östra 2
+- Europa, västra
 
 ### <a name="pricing-and-billing"></a>Priser och fakturering
 
@@ -202,6 +203,14 @@ Exempel händelse:
   "eventTime": "2020-10-13T15:47:54Z"
 }
 ```
+
+## <a name="known-issues"></a>Kända problem
+
+I det här avsnittet beskrivs begränsningar och kända problem med funktionen Azure Storage BLOB Inventory.
+
+### <a name="inventory-job-fails-to-complete"></a>Inventerings jobbet kunde inte slutföras
+
+Inventerings jobbet får inte slutföras inom 24 timmar för ett konto med miljon tals blobbar och hierarkiska namn områden aktiverade. Om detta händer skapas ingen inventerings fil.
 
 ## <a name="next-steps"></a>Nästa steg
 

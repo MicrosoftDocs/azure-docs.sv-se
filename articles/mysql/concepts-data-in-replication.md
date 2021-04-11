@@ -6,16 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
-ms.openlocfilehash: 99beddba470f73d6eadb448dfe1b77453ce6426d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab2433bfa4df3d75f10bc9128dc736ff6d12be76
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95996227"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210524"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replikera data till Azure Database for MySQL
 
-Med Datareplikering kan du synkronisera data från en extern MySQL-server till tjänsten Azure Database for MySQL. Den externa servern kan vara lokalt, i virtuella datorer eller i en databas tjänst som är värd för andra moln leverantörer. Datareplikering baseras på positionsbaserad replikering med en binär loggfil (binlog) som är inbyggd i MySQL. Mer information om BinLog-replikering finns i [Översikt över MySQL BinLog-replikering](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
+Med Datareplikering kan du synkronisera data från en extern MySQL-server till tjänsten Azure Database for MySQL. Den externa servern kan vara lokalt, i virtuella datorer eller i en databas tjänst som är värd för andra moln leverantörer. Datareplikering baseras på den binära loggen (BinLog) fil positions-eller gtid-baserad replikering internt till MySQL. Mer information om BinLog-replikering finns i [Översikt över MySQL BinLog-replikering](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
 
 ## <a name="when-to-use-data-in-replication"></a>När du ska använda Datareplikering
 Huvud scenarierna för att överväga att använda Datareplikering är:
@@ -35,20 +35,20 @@ För att hoppa över replikering av tabeller från käll servern (som finns loka
 
 Läs mer om den här parametern i [MySQL-dokumentationen](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) .
 
+## <a name="supported-in-general-purpose-or-memory-optimized-tier-only"></a>Stöds endast i Generell användning eller Minnesoptimerade nivån
+Datareplikering stöds bara i Generell användning och minnesoptimerade pris nivåer.
+
 ### <a name="requirements"></a>Krav
 - Käll Server versionen måste vara minst MySQL version 5,6. 
 - Käll-och replik Server versionerna måste vara desamma. Till exempel måste båda vara MySQL version 5,6 eller båda måste vara MySQL version 5,7.
 - Varje tabell måste ha en primär nyckel.
 - Käll servern bör använda MySQL InnoDB-motorn.
 - Användaren måste ha behörighet att konfigurera binär loggning och skapa nya användare på käll servern.
-- Om käll servern har SSL aktiverat kontrollerar du att det SSL-CA-certifikat som har angetts för domänen har inkluderats i den `mysql.az_replication_change_master` lagrade proceduren. Se följande [exempel](./howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication) och `master_ssl_ca` parametern.
+- Om käll servern har SSL aktiverat kontrollerar du att det SSL-CA-certifikat som har angetts för domänen har inkluderats i den `mysql.az_replication_change_master` eller `mysql.az_replication_change_master_with_gtid` lagrade proceduren. Se följande [exempel](./howto-data-in-replication.md#4-link-source-and-replica-servers-to-start-data-in-replication) och `master_ssl_ca` parametern.
 - Se till att käll serverns IP-adress har lagts till Azure Database for MySQL replik serverns brand Väggs regler. Uppdatera brandväggsregler med hjälp av [Azure-portalen](./howto-manage-firewall-using-portal.md) eller [Azure CLI](./howto-manage-firewall-using-cli.md).
 - Se till att den dator som är värd för käll servern tillåter både inkommande och utgående trafik på port 3306.
 - Kontrol lera att käll servern har en **offentlig IP-adress**, att DNS är offentligt tillgängligt eller har ett fullständigt kvalificerat domän namn (FQDN).
 
-### <a name="other"></a>Annat
-- Datareplikering stöds bara i Generell användning och minnesoptimerade pris nivåer.
-- Globala transaktions-ID: n (GTID) stöds inte.
 
 ## <a name="next-steps"></a>Nästa steg
 - Lär dig hur du [konfigurerar replikering av data](howto-data-in-replication.md)

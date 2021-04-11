@@ -2,14 +2,14 @@
 title: Lås resurser för att förhindra ändringar
 description: Förhindra att användare uppdaterar eller tar bort Azure-resurser genom att använda ett lås för alla användare och roller.
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/07/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6d989f2077618ce80382b38acc651553cb331d5a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1cc96a855c2bfe79bbf5876f0476c016d36ca9a4
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932768"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030074"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Låsa resurser för att förhindra oväntade ändringar
 
@@ -34,11 +34,13 @@ Att använda Lås kan leda till oväntade resultat eftersom vissa åtgärder som
 
 * Ett skrivskyddat lås på ett **lagrings konto** förhindrar att användare visar konto nycklarna. Åtgärden Azure Storage [list nycklar](/rest/api/storagerp/storageaccounts/listkeys) hanteras via en post-begäran för att skydda åtkomsten till konto nycklarna, som ger fullständig åtkomst till data i lagrings kontot. När ett skrivskyddat lås har kon figurer ATS för ett lagrings konto måste användare som inte har konto nycklar använda Azure AD-autentiseringsuppgifter för att få åtkomst till BLOB-eller Queue-data. Ett skrivskyddat lås förhindrar också tilldelningen av Azure RBAC-roller som är begränsade till lagrings kontot eller till en data behållare (BLOB container eller queue).
 
-* Ett borttagnings lås på ett **lagrings konto** förhindrar inte att data i det kontot tas bort eller ändras. Den här typen av lås skyddar bara själva lagrings kontot från att tas bort och skyddar inte BLOB-, Queue-, Table-eller File-data inom det lagrings kontot. 
+* Ett borttagnings lås för ett **lagrings konto** förhindrar inte att data i det kontot tas bort eller ändras. Den här typen av lås skyddar bara själva lagrings kontot från att tas bort och skyddar inte BLOB-, Queue-, Table-eller File-data inom det lagrings kontot. 
 
 * Ett skrivskyddat lås på ett **lagrings konto** förhindrar inte att data i det kontot tas bort eller ändras. Den här typen av lås skyddar bara själva lagrings kontot från att tas bort eller ändras och skyddar inte BLOB-, Queue-, tabell-, tabell-eller fildata i det lagrings kontot. 
 
 * Ett skrivskyddat lås på en **App Service** resurs förhindrar att Visual Studio-Server Explorer visar filer för resursen, eftersom denna interaktion kräver skriv åtkomst.
+
+* Ett skrivskyddat lås på en **resurs grupp** som innehåller en **App Service plan** hindrar dig från att [skala upp eller ut planen](../../app-service/manage-scale-up.md).
 
 * Ett skrivskyddat lås på en **resurs grupp** som innehåller en **virtuell dator** hindrar alla användare från att starta eller starta om den virtuella datorn. De här åtgärderna kräver en POST-begäran.
 
@@ -324,7 +326,7 @@ az lock delete --ids $lockid
 
 ### <a name="rest-api"></a>REST-API
 
-Du kan låsa distribuerade resurser med [REST API för hanterings lås](/rest/api/resources/managementlocks/managementlocks). Med REST API kan du skapa och ta bort lås och hämta information om befintliga lås.
+Du kan låsa distribuerade resurser med [REST API för hanterings lås](/rest/api/resources/managementlocks). Med REST API kan du skapa och ta bort lås och hämta information om befintliga lås.
 
 Skapa ett lås genom att köra:
 

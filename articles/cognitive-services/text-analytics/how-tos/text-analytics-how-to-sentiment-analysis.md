@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 03/09/2021
+ms.date: 03/29/2021
 ms.author: aahi
-ms.openlocfilehash: e9d8e7b514dca7d4930ad33bf08d4ceb07fb860d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7cd2b0a6b943ceb32420ef119a7fc5eddefa2e19
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599140"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277002"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Gör så här: sentiment analys och avyttrande
 
-API för textanalysens Attitydanalys-funktion erbjuder två sätt att identifiera positiva och negativa sentiment. Om du skickar en Attitydanalys-begäran kommer API: et att returnera sentiment-etiketter (till exempel "negativa", "neutral" och "positiv") och säkerhets resultat på meningen och dokument nivå. Du kan också skicka åsikts utvinnings begär Anden med Attitydanalys slut punkten, som ger detaljerad information om de åsikter som rör ord (till exempel attributen för produkter eller tjänster) i texten. 
+API för textanalysens Attitydanalys-funktion erbjuder två sätt att identifiera positiva och negativa sentiment. Om du skickar en Attitydanalys-begäran kommer API: et att returnera sentiment-etiketter (till exempel "negativa", "neutral" och "positiv") och säkerhets resultat på meningen och dokument nivå. Du kan också skicka åsikts utvinnings begär Anden med Attitydanalys slut punkten, som ger detaljerad information om de åsikter som rör ord (till exempel attributen för produkter eller tjänster) i texten.
 
 AI-modellerna som används av API: et tillhandahålls av tjänsten. du behöver bara skicka innehåll för analys.
 
@@ -151,7 +151,7 @@ Utdata returneras direkt. Du kan strömma resultaten till ett program som accept
 
 Attitydanalys v 3.1 kan returnera svars objekt för både Attitydanalys och avyttrande av utvinning.
   
-Sentiment-analys returnerar en sentiment-etikett och förtroende poäng för hela dokumentet och varje mening i det. Resultat närmare 1 anger en högre exakthet i etikettens klassificering, medan lägre poäng visar lägre exakthet. Ett dokument kan ha flera meningar och konfidens intervallet i varje dokument eller mening lägger upp till 1. utvärderingar 
+Sentiment-analys returnerar en sentiment-etikett och förtroende poäng för hela dokumentet och varje mening i det. Resultat närmare 1 anger en högre exakthet i etikettens klassificering, medan lägre poäng visar lägre exakthet. Ett dokument kan ha flera meningar och konfidens intervallet i varje dokument eller mening lägger upp till 1.
 
 Utåsikts utvinning kommer att hitta mål (Substantiv eller verb) i texten och deras associerade bedömning (adjektiv). Under svaret nedan har den mening *som restaurangen haft fantastisk mat och vår vänte* tid hade två mål: *mat* och *Waiter*. Varje måls `relations` egenskap innehåller ett `ref` värde med URI-referensen till associerade `documents` , `sentences` -och- `assessments` objekt.
 

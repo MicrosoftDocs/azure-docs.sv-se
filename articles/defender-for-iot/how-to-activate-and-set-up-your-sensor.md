@@ -3,12 +3,12 @@ title: Aktivera och konfigurera sensor
 description: Den här artikeln beskriver hur du loggar in och aktiverar en sensor konsol.
 ms.date: 1/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 2fdfa0dd7048bf39ae5b53a729aef578054b30ac
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b040a87c2eae36e6049b4e1d0cf51ecb2cfde108
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779196"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385126"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Aktivera och konfigurera sensor
 
@@ -45,7 +45,7 @@ Din sensor har publicerats till Azure Defender för IoT i ett särskilt hanterin
 | **Läge för moln anslutning** | Information som sensorn känner av visas i sensor konsolen. Aviserings information levereras också via IoT Hub och kan delas med andra Azure-tjänster, till exempel Azure Sentinel. |
 | **Lokalt ansluten läge** | Information som sensorn känner av visas i sensor konsolen. Identifierings information delas också med den lokala hanterings konsolen, om sensorn är ansluten till den. |
 
-En lokalt ansluten eller molnbaserad aktiverings fil genererades och hämtades för den här sensorn under onboarding. Aktiverings filen innehåller instruktioner för sensorns hanterings läge. *En unik aktiverings fil ska överföras till varje sensor som du distribuerar.*  Första gången du loggar in måste du ladda upp relevant aktiverings fil för den här sensorn.
+En lokalt ansluten eller en molnbaserad aktiverings fil genererades och hämtades för den här sensorn under onboarding. Aktiverings filen innehåller instruktioner för sensorns hanterings läge. *En unik aktiverings fil ska överföras till varje sensor som du distribuerar.*  Första gången du loggar in måste du ladda upp relevant aktiverings fil för den här sensorn.
 
 :::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-activation-file-download-button.png" alt-text="Azure Defender för IoT-portalen, onboard-sensor.":::
 

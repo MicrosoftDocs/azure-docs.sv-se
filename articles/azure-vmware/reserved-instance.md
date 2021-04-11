@@ -1,14 +1,14 @@
 ---
-title: Spara kostnader med den reserverade instansen av Azure VMware-lösningen
-description: Lär dig hur du köper en reserverad instans för Azure VMware-lösningen.
+title: Reserverade instanser av Azure VMware-lösning
+description: Lär dig hur du köper en reserverad instans för Azure VMware-lösningen. Den reserverade instansen täcker bara beräknings delen av din användning och innehåller kostnader för program varu licenser.
 ms.topic: how-to
-ms.date: 02/03/2021
-ms.openlocfilehash: 227ea9274f70cc58468e7e0b3ddcf8239f5b7f5b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/09/2021
+ms.openlocfilehash: 6f181d4b6ee7e2098130633fef0eb8558add0308
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99550983"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210032"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Spara kostnader med Azure VMware-lösningen
 
@@ -135,7 +135,7 @@ CSP: er kan avbryta, byta ut eller återbetala reservationer, med vissa begräns
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har köpt en reserverad instans av Azure VMware-lösningen kanske du vill lära dig mer om:
+Nu när du har täckt en reserverad instans av Azure VMware-lösningen kanske du vill lära dig mer om:
 
 - [Skapa en Azure VMware-lösning](../migrate/how-to-create-azure-vmware-solution-assessment.md)för att utvärdera.
 - [Hantera DHCP för Azure VMware-lösningen](manage-dhcp.md).

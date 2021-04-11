@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 1a107f812ceb46649126bdbefcf3b828e1938ff3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87076febd4597556fd2b28245f47442308cd6e6c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102612906"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108372"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installera och kör behållaren för rums analys (förhands granskning)
 
@@ -311,7 +311,7 @@ Registrera sedan värddatorn som en IoT Edge enhet i IoT Hub-instansen med hjäl
 Du måste ansluta IoT Edge-enheten till Azure-IoT Hub. Du måste kopiera anslutnings strängen från den IoT Edge enhet som du skapade tidigare. Du kan också köra kommandot nedan i Azure CLI.
 
 ```bash
-sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity connection-string show --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 På värddatorn är öppen  `/etc/iotedge/config.yaml` för redigering. Ersätt `ADD DEVICE CONNECTION STRING HERE` med anslutnings strängen. Spara och stäng filen. Kör det här kommandot för att starta om IoT Edge tjänsten på värddatorn.
@@ -334,7 +334,7 @@ En virtuell Azure-dator med en GPU kan också användas för att köra spatial a
 
 Ge den virtuella datorn ett namn och välj den region som ska vara (USA) västra USA 2. Se till att du anger `Availability Options` "ingen infrastruktur redundans krävs". Se bilden nedan för den fullständiga konfigurationen och nästa steg för att hitta rätt VM-storlek. 
 
-:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.png" alt-text="Konfigurations information för den virtuella datorn." lightbox="media/spatial-analysis/virtual-machine-instance-details.png":::
+:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.jpg" alt-text="Konfigurations information för den virtuella datorn." lightbox="media/spatial-analysis/virtual-machine-instance-details.jpg":::
 
 Om du vill hitta storleken på den virtuella datorn väljer du "Se alla storlekar" och visar sedan listan för "icke-Premium Storage VM-storlekar", som visas nedan.
 
@@ -473,7 +473,7 @@ Registrera sedan den virtuella datorn som en IoT Edge enhet i IoT Hub-instansen 
 Du måste ansluta IoT Edge-enheten till Azure-IoT Hub. Du måste kopiera anslutnings strängen från den IoT Edge enhet som du skapade tidigare. Du kan också köra kommandot nedan i Azure CLI.
 
 ```bash
-sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity connection-string show --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 Öppna den virtuella datorn  `/etc/iotedge/config.yaml` för redigering. Ersätt `ADD DEVICE CONNECTION STRING HERE` med anslutnings strängen. Spara och stäng filen. Kör det här kommandot för att starta om IoT Edge tjänsten på den virtuella datorn.
@@ -542,10 +542,6 @@ När distributionen är klar och behållaren körs börjar **värddatorn** att s
 ## <a name="configure-the-operations-performed-by-spatial-analysis"></a>Konfigurera de åtgärder som utförs av rums analys
 
 Du måste använda åtgärder för [spatial analys](spatial-analysis-operations.md) för att konfigurera behållaren för att använda anslutna kameror, konfigurera åtgärder med mera. För varje kamera enhet som du konfigurerar genererar åtgärder för rums analys en utdataström av JSON-meddelanden som skickas till din instans av Azure-IoT Hub.
-
-## <a name="redeploy-or-delete-the-deployment"></a>Distribuera om eller ta bort distributionen
-
-Om du behöver uppdatera distributionen måste du kontrol lera att dina tidigare distributioner har distribuerats, eller så måste du ta bort IoT Edge enhets distributioner som inte har slutförts. Annars fortsätter de distributionerna att lämna systemet i ett felaktigt tillstånd. Du kan använda Azure Portal eller [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows).
 
 ## <a name="use-the-output-generated-by-the-container"></a>Använd de utdata som genereras av behållaren
 
