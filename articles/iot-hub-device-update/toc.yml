@@ -68,10 +68,24 @@
       items:
         - name: Felsöka enhets uppdateringar
           href: troubleshoot-device-update.md
+        - name: Fel koder för enhets uppdaterings klient
+      href: device-update-error-codes.md
 - name: Referens
   items:
-    - name: Fel koder för enhets uppdaterings klient
-      href: device-update-error-codes.md
+    - name: REST-API
+      href: 'https://docs.microsoft.com/en-us/rest/api/deviceupdate/'
+    - name: Control plan SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/en-us/dotnet/api/overview/azure/iot/management?view=azure-dotnet'
+    - name: Data plan SDK
+      items:
+        - name: JavaScript
+          href: 'https://docs.microsoft.com/en-us/javascript/api/@azure/iot-device-update/?view=azure-node-preview'
+        - name: Java
+          href: 'https://docs.microsoft.com/en-us/java/api/com.azure.iot.deviceupdate?view=azure-java-preview'
+        - name: Python
+          href: 'https://docs.microsoft.com/en-us/python/api/azure-mgmt-deviceupdate/azure.mgmt.deviceupdate?view=azure-python-preview'
 - name: Resurser
   items:
     - name: Alternativ för support och hjälp

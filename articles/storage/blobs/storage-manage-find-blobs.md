@@ -1,20 +1,20 @@
 ---
 title: Hantera och hitta Azure blob-data med blobb index Taggar (för hands version)
 description: Lär dig hur du använder BLOB-taggar för att kategorisera, hantera och fråga efter BLOB-objekt.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 03/18/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 540f6ca165c80dd90f5004fb53e1577cdc35d770
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2188aaea0cf5a4616291d3fdad839aefb2dbc413
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104656047"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280708"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Hantera och hitta Azure blob-data med blobb index Taggar (för hands version)
 

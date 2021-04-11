@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: 99a7f08b6d366f2f928b99caba2424c2fae0d625
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b9ae576a2d0ab8aee00be5b755c348806b412bef
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559527"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108497"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Vad är nytt i Azure Kognitiv sökning
 
@@ -27,6 +27,8 @@ Läs om vad som är nytt i tjänsten. Skapa ett bok märke för den här sidan f
 | [Stavnings kontrol lera sökord](speller-how-to-add.md) | Innan du kan komma åt sökmotorn kan du välja att kontrol lera stavnings fel. `speller`Alternativet fungerar med valfri typ av fråga (enkel, fullständig eller semantisk). |  Offentlig för hands version, endast REST, API-version = 2020-06 -30 – för hands version|
 | [SharePoint Online-indexerare](search-howto-index-sharepoint-online.md) | Den här indexeraren ansluter dig till en SharePoint Online-webbplats så att du kan indexera innehåll från ett dokument bibliotek. | Offentlig för hands version, endast REST, API-version = 2020-06 -30 – för hands version |
 | [Normalisering](search-normalizers.md) | Normalisering ger enkel bearbetning av text som t. ex. Skift läge, tilläggsprogram, asciifolding och så vidare utan att gå igenom hela analys kedjan.| Offentlig för hands version, endast REST, API-version = 2020-06 -30 – för hands version |
+[**Anpassad Sök kompetens för entitet**](cognitive-search-skill-custom-entity-lookup.md ) |  En kognitiv färdighet som söker efter text från en anpassad, användardefinierad lista med ord och fraser. Med den här listan etiketteras alla dokument med matchande entiteter. Kompetensen har även stöd för en viss fuzzy-matchning som kan användas för att söka efter matchningar som liknar varandra, men som inte exakt stämmer. | Allmänt tillgänglig. |
+|
 
 ## <a name="february-2021"></a>Februari 2021
 

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
-ms.openlocfilehash: 4d0f5404a64eae99ced0dd797954ba042b50060f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 039332a8728e5d7e5b605f51f4bb53e6dcbb6381
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98217234"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109177"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Identifierbara typer av flaskhalsar för frågeprestanda i Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -139,7 +139,7 @@ En RECOMPILE (eller ny kompilering efter cache-avtagningen) kan fortfarande resu
 
 - **Ändrad fysisk design**: till exempel kan nyligen skapade index effektivt hantera kraven för en fråga. Nya index kan användas i en ny kompilering om Query Optimering bestämmer att det nya indexet är mer optimalt än att använda den data struktur som ursprungligen valdes för den första versionen av frågekörningen. Eventuella fysiska ändringar av de refererade objekten kan leda till ett nytt schema val vid kompileringen.
 
-- **Server resurs skillnader**: när en plan i ett system skiljer sig från planen i ett annat system kan resurs tillgängligheten, till exempel antalet tillgängliga processorer, påverka vilken plan som genereras. Om ett system till exempel har fler processorer kan du välja en parallell plan.
+- **Server resurs skillnader**: när en plan i ett system skiljer sig från planen i ett annat system kan resurs tillgängligheten, till exempel antalet tillgängliga processorer, påverka vilken plan som genereras. Om ett system till exempel har fler processorer kan du välja en parallell plan. Mer information om parallellitet i Azure SQL Database finns [i Konfigurera Max graden av parallellitet (MAXDOP) i Azure SQL Database](database/configure-max-degree-of-parallelism.md).
 
 - **Annan statistik**: statistiken som är kopplad till de refererade objekten kan ha ändrats eller vara väsentlig annorlunda än det ursprungliga systemets statistik. Om statistiken ändras och en omkompilering sker, använder Query Optimering statistiken som börjar från när de ändrades. Den reviderade statistikens data distributioner och frekvenser kan skilja sig från de ursprungliga kompileringarna. Dessa ändringar används för att skapa beräkningar av kardinalitet. (*Beräkning av kardinalitet* är antalet rader som förväntas flöda genom det logiska frågeuttrycket.) Ändringar av beräkningar av kardinalitet kan leda till att du väljer olika fysiska operatörer och tillhör ande åtgärder. Även smärre ändringar i statistiken kan resultera i en ändrad frågeplan för frågekörningen.
 
@@ -181,6 +181,8 @@ Det är inte alltid lätt att identifiera en ändring av arbets belastnings voly
 
 Använd Intelligent Insights för att upptäcka [arbets belastningen ökar](database/intelligent-insights-troubleshoot-performance.md#workload-increase) och [planerar regressioner](database/intelligent-insights-troubleshoot-performance.md#plan-regression).
 
+- **Parallelitet**: överdriven parallellitet kan göra att andra samtidigt kan orsaka andra arbets belastnings prestanda genom att svälter andra frågor om processor-och arbets tråds resurser. Mer information om parallellitet i Azure SQL Database finns [i Konfigurera Max graden av parallellitet (MAXDOP) i Azure SQL Database](database/configure-max-degree-of-parallelism.md).
+
 ## <a name="waiting-related-problems"></a>Väntande-relaterade problem
 
 När du har eliminerat ett underoptimalt schema och *väntande relaterade* problem som är relaterade till körnings problem, är prestanda problemet vanligt vis att frågorna väntar på viss resurs. Väntande-relaterade problem kan orsakas av:
@@ -220,6 +222,11 @@ DMV: er som spårar Frågearkivet och väntande statistik visar resultat för en
 > - [TigerToolbox vänte tid och lås](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
 > - [TigerToolbox usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
+## <a name="see-also"></a>Se även
+
+* [Konfigurera Max graden av parallellitet (MAXDOP) i Azure SQL Database](database/configure-max-degree-of-parallelism.md)
+* [Förstå och lösa Azure SQL Database spärrnings problem i Azure SQL Database](database/understand-resolve-blocking.md)
+
 ## <a name="next-steps"></a>Nästa steg
 
-[Översikt över SQL Database övervakning och justering](database/monitor-tune-overview.md)
+* [Översikt över SQL Database övervakning och justering](database/monitor-tune-overview.md)

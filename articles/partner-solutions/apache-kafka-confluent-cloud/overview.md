@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.service: partner-services
 ms.date: 01/15/2021
 ms.author: tomfitz
-ms.openlocfilehash: b4aa00b7a2cc7ca6bc968be70957c127a8e00738
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fefbc21c385e3beacbf570c31ffbf97238c780fc
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98253611"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109092"
 ---
 # <a name="what-is-apache-kafka-for-confluent-cloud"></a>Vad är Apache Kafka för ett samfluent-moln?
 
@@ -56,6 +56,12 @@ Det finns två fakturerings alternativ: betala per användning – månads plan 
 - Med en **åtagande plan** registrerar du dig för en minimal spenderad mängd och får rabatt på din allokerade användning av ett fritt moln.
 
 Du bestämmer vilket fakturerings alternativ som ska användas när du skapar tjänsten.
+
+## <a name="connector-to-azure-cosmos-db"></a>Koppling till Azure Cosmos DB
+
+I klienten för nätverks anslutning installerar du Cosmos DB Connector enligt rekommendationerna i listan [över återtalarens hubb](https://www.confluent.io/hub/microsoftcorporation/kafka-connect-cosmos). 
+
+Om du vill installera anslutningen manuellt laddar du först ned en Uber-JAR från [sidan Cosmos DB-versioner](https://github.com/microsoft/kafka-connect-cosmosdb/releases). Du kan också [bygga din egen Uber-jar direkt från käll koden](https://github.com/microsoft/kafka-connect-cosmosdb/blob/dev/doc/README_Sink.md#install-sink-connector). Slutför installationen genom att följa anvisningarna i dokumentationen för att [Installera anslutningar manuellt](https://docs.confluent.io/home/connect/install.html#install-connector-manually).  
 
 ## <a name="confluent-links"></a>Sambands länkar
 

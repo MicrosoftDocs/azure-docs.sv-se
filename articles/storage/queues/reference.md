@@ -1,19 +1,19 @@
 ---
 title: Referens för Azure-Queue Storage
 description: Hitta Azure Queue Storage API-referens, README-filer och klient biblioteks paket.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.reviewer: ripohane
 ms.date: 09/10/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 609649c533b184b2ccc3d3a5fee79d75d1b66f5b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 92b822da14b75dc27c71b3d9400409cb37554cf6
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506692"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276730"
 ---
 # <a name="azure-queue-storage-reference"></a>Referens för Azure-Queue Storage
 

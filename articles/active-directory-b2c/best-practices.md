@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: d8c0a5ce6f3befd41c0e1399363fd73726693837
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c8a9121d0e36eb51cd02c2c884ddcaa0dd79a79
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96750228"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226217"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Rekommendationer och metod tips för Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ Följande metod tips och rekommendationer beskriver några av de viktigaste aspe
 
 | Bästa praxis | Beskrivning |
 |--|--|
-| Välj användar flöden för de flesta scenarier | Azure AD B2C av identitets erfarenhets ramverket för är tjänstens kärn styrka. Principer beskriver fullständigt identitets upplevelser som registrering, inloggning eller profil redigering. För att hjälpa dig att skapa de vanligaste identitets uppgifterna innehåller Azure AD B2C portalen fördefinierade, konfigurerbara principer som kallas användar flöden. Med användar flöden kan du skapa fantastiska användar upplevelser på några minuter, med bara några få klick. [Lär dig när du ska använda användar flöden jämfört med anpassade principer](custom-policy-overview.md#comparing-user-flows-and-custom-policies).|
+| Välj användar flöden för de flesta scenarier | Azure AD B2C av identitets erfarenhets ramverket för är tjänstens kärn styrka. Principer beskriver fullständigt identitets upplevelser som registrering, inloggning eller profil redigering. För att hjälpa dig att skapa de vanligaste identitets uppgifterna innehåller Azure AD B2C portalen fördefinierade, konfigurerbara principer som kallas användar flöden. Med användar flöden kan du skapa fantastiska användar upplevelser på några minuter, med bara några få klick. [Lär dig när du ska använda användar flöden jämfört med anpassade principer](user-flow-overview.md#comparing-user-flows-and-custom-policies).|
 | Appregistreringar | Varje program (webb, ursprunglig) och API som skyddas måste registreras i Azure AD B2C. Om en app har både en webb-och en ursprunglig version av iOS och Android kan du registrera dem som ett program i Azure AD B2C med samma klient-ID. Lär dig hur du [registrerar OIDC-, SAML-, webb-och interna appar](./tutorial-register-applications.md?tabs=applications). Läs mer om [program typer som kan användas i Azure AD B2C](./application-types.md). |
 | Flytta till månatliga aktiva användare fakturering | Azure AD B2C har flyttat från månatlig aktiv autentisering till månatliga aktiva användare (MAU) fakturering. De flesta kunder kommer att hitta den här modellen kostnads effektivt. [Lär dig mer om fakturering av månatliga aktiva användare](https://azure.microsoft.com/updates/mau-billing/). |
 

@@ -6,12 +6,12 @@ ms.author: mingshen
 ms.service: marketplace
 ms.topic: overview
 ms.date: 10/15/2020
-ms.openlocfilehash: 099515eb1160b131f2d56fd02f300999d5ddfd16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de8e9060f8e7ccdcf38b9f0908dfb05063811817
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96780322"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103412"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>Vad är Microsofts kommersiella marknadsplats?
 
@@ -82,5 +82,5 @@ Om du vill veta mer om de här fördelarna kan du se [dina kommersiella marknads
 ## <a name="next-steps"></a>Nästa steg
 
 - Få en [Introduktion till Microsofts kommersiella marknads](/learn/modules/intro-commercial-marketplace/) plats på Microsoft Learn.
-- För nya Microsoft-partner som är intresserade av att publicera på den kommersiella marknads platsen, se [skapa ett kommersiellt marknads plats konto i Partner Center](partner-center-portal/create-account.md).
+- För nya Microsoft-partner som är intresserade av att publicera på den kommersiella marknads platsen, se [skapa ett kommersiellt marknads plats konto i Partner Center](create-account.md).
 - Om du vill veta mer om de senaste och framtida versionerna kan du delta i konversationen i [Microsoft partner community](https://www.microsoftpartnercommunity.com/).

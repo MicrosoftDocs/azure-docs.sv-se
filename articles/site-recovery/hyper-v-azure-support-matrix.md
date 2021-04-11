@@ -1,18 +1,15 @@
 ---
 title: Stöd för haveri beredskap för virtuella Hyper-V-datorer till Azure med Azure Site Recovery
 description: Sammanfattar de komponenter och krav som stöds för haveri beredskap för virtuella Hyper-V-datorer till Azure med Azure Site Recovery
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
-ms.author: raynew
-ms.openlocfilehash: 8d748f93337a770e0d565bab79fdfb3625bda70d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 936950ef5dd2c1c7343e30536ab8836fcd198bd0
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735530"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580827"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Stöd mat ris för haveri beredskap för lokala virtuella Hyper-V-datorer till Azure
 
@@ -142,7 +139,7 @@ Premium Storage | Ja | Ja
 Standard Storage | Ja | Ja
 Import/export-tjänst | Inga | Inga
 Azure Storage konton med aktive rad brand vägg | Ja. För mål lagring och cache. | Ja. För mål lagring och cache.
-Ändra lagrings konto | Nej. Mål Azure Storages kontot kan inte ändras efter att replikeringen har Aktiver ATS. Ändra genom att inaktivera och sedan aktivera haveri beredskap igen. | Inga
+Ändra lagrings konto | Nej. Mål Azure Storages kontot kan inte ändras efter att replikeringen har Aktiver ATS. Ändra genom att inaktivera och sedan aktivera haveri beredskap igen. | No
 Alternativ för säker överföring | Ja | Ja
 
 

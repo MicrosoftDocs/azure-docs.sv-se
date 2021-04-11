@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 04/06/2020
+ms.date: 03/06/2021
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed5f59fc1d751f92a7c016aa3586497659f778fd
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "97708474"
+ms.locfileid: "105962959"
 ---
 # <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>Använd pipeline-parametrar för att omträna modeller i designern
 
@@ -120,3 +120,5 @@ Om du vill göra ett REST-anrop behöver du ett OAuth 2,0-värde för autentiser
 I den här artikeln har du lärt dig hur du skapar en slut punkt för en parametriserad utbildning med hjälp av designern.
 
 En fullständig genom gång av hur du kan distribuera en modell för att göra förutsägelser finns i [hand boken för designern](tutorial-designer-automobile-price-train-score.md) för att träna och distribuera en Regressions modell.
+
+Information om hur du publicerar och skickar en körnings-till-pipeline-slutpunkt med SDK finns i [den här artikeln](how-to-deploy-pipelines.md).

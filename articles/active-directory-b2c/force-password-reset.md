@@ -12,12 +12,12 @@ ms.date: 03/03/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0477153b466702bec0fa2d5221fee1e054d06314
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b6aae76b0b35f8195fb52b7fb11de43d8fa511ba
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033779"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028442"
 ---
 # <a name="set-up-a-force-password-reset-flow-in-azure-active-directory-b2c"></a>Konfigurera ett lösen ord för tvångs återställning av lösen ord i Azure Active Directory B2C
 
@@ -92,7 +92,7 @@ Så här aktiverar du inställningen för **Tvingad återställning av lösen or
 1. I Azure Portal söker du efter och väljer **Azure AD B2C**.
 1. Under **principer** väljer du **Identity Experience Framework**.
 1. Välj den `B2C_1A_signup_signin_Custom_ForcePasswordReset` princip som du vill öppna. 
-1. För **program** väljer du ett webb program som du [har registrerat tidigare](troubleshoot-custom-policies.md#troubleshoot-the-runtime). **Svars-URL: en** ska visas `https://jwt.ms` .
+1. För **program** väljer du ett webb program som du [har registrerat tidigare](tutorial-register-applications.md). **Svars-URL: en** ska visas `https://jwt.ms` .
 1. Välj knappen **Kör nu** .
 1. Logga in med det användar konto som du vill återställa lösen ordet för.
 1. Du måste nu ändra lösen ordet för användaren. Ändra lösen ordet och välj **Fortsätt**. Token returneras till `https://jwt.ms` och ska visas för dig.

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 76b4a749bff94cbf218d3cd3c7d132eef119b7ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c041d64b3dbd0c38979f4d8d0fa563a72f6a4b1
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104606913"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168203"
 ---
 # <a name="speech-to-text-rest-api"></a>REST API för tal-till-text
 
@@ -153,7 +153,7 @@ var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 Vi rekommenderar starkt strömning (segmenterad) uppladdning när du skickar ljuddata, vilket kan minska svars tiden avsevärt. Se [exempel kod i olika programmeringsspråk](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment) för att aktivera strömning.
 
 >[!NOTE]
->Funktionen för ututtals bedömning är för närvarande bara tillgänglig på `en-US` språket.
+> Funktionen för ututtals bedömning stöder för närvarande `en-US` språk, som är tillgänglig i alla [tal-till-text-regioner](regions.md#speech-to-text). Stöd för `en-GB` och `zh-CN` språk är under för hands version, som är tillgängligt `westus` på `eastasia` och `centralindia` regioner.
 
 ### <a name="sample-request"></a>Exempel förfrågan
 

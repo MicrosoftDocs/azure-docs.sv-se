@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
-ms.date: 04/20/2020
-ms.openlocfilehash: 0d0fa88fdf182ae2214da40ee3fe8b20ced025e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: a6fd603318a25e15d1d4dcc1e3eaf75f96fc5ade
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104956068"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448635"
 ---
 # <a name="azure-media-player-quickstart"></a>Snabbstart för Azure Media Player
 Azure Media Player är enkelt att konfigurera. Det tar bara några minuter att få en grundläggande uppspelning av medie innehåll från ditt Azure Media Services-konto. I det här avsnittet visas de grundläggande stegen utan mer detaljerad information. I avsnitten som följer får du information om hur du konfigurerar och konfigurerar Azure Media Player.  Lägg bara till följande inkluderingar i dokumentets `<head>`:
@@ -22,7 +22,7 @@ Azure Media Player är enkelt att konfigurera. Det tar bara några minuter att f
 ```
 
 > [!IMPORTANT]
-> Du bör **inte** använda `latest` versionen i produktion eftersom det kan komma att ändras på begäran. Ersätt `latest` med en version av Azure Media Player, till exempel Ersätt `latest` med `1.0.0` . Azure Media Player versioner kan frågas [härifrån.](azure-media-player-changelog.md)
+> Du bör **inte** använda `latest` versionen i produktion eftersom det kan komma att ändras på begäran. Ersätt `latest` med en version av Azure Media Player, till exempel Ersätt `latest` med `1.0.0` . Azure Media Player versioner kan frågas [härifrån.](https://amp.azure.net/libs/amp/latest/docs/changelog.html)
 
 ## <a name="use-the-video-element"></a>Använd video elementet
 

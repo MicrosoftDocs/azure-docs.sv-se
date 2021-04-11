@@ -3,12 +3,12 @@ title: Självstudie – distribuera och konfigurera VMware HCX
 description: Lär dig hur du distribuerar och konfigurerar en VMware HCX-lösning för ditt privata moln i Azure VMware-lösningen.
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: ab59b4a29f8ba372c1892613d5e0461bf3fdc512
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ee451ce4be59c51299d66e4042ed344026100cf
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869097"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011008"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Distribuera och konfigurera VMware HCX
 
@@ -20,7 +20,7 @@ VMware HCX Advanced Connector förinstalleras i Azure VMware-lösningen. Det har
 >Även om verktyget för maximala VMware-konfiguration beskriver plats par maximalt 25 mellan den lokala anslutningen och moln hanteraren, begränsar licensen detta till tre för HCX Advanced och 10 för HCX Enterprise Edition.
 
 >[!NOTE]
->VMware HCX Enterprise är tillgängligt med Azure VMware-lösningen som en för hands versions tjänst. Det är kostnads fritt och omfattas av villkor för en för hands versions tjänst. När VMware HCX Enterprise-tjänsten är allmänt tillgänglig får du ett meddelande om 30 dagar på att faktureringen ska växlas över. Du kan också välja att stänga av eller avanmäla tjänsten. Det finns ingen enkel degradering-sökväg från VMware HCX Enterprise till VMware HCX Advanced. Om du bestämmer dig för att nedgradera måste du distribuera om, vilket uppstår drift stopp.
+>VMware HCX Enterprise är tillgängligt med Azure VMware-lösningen som en för hands versions tjänst. Det är kostnads fritt och omfattas av villkor för en för hands versions tjänst. När VMware HCX Enterprise-tjänsten är allmänt tillgänglig får du ett meddelande om 30 dagar på att faktureringen ska växlas över. Du kan också välja att stänga av eller avanmäla tjänsten. Nedgradering från HCx Enterprise till HCX Advanced är möjlig utan att omdistribueras, men du måste logga ett support ärende för att åtgärden ska äga rum. Om du planerar en nedgradering bör du se till att inga migreringar är schemalagda och eller funktioner som RAV, mån inte används.
 
 Börja med att granska [innan du börjar](#before-you-begin), [program varu versions krav och kraven](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html) [.](#prerequisites) 
 

@@ -2,18 +2,15 @@
 title: Konfigurera redundans/återställning efter fel till en sekundär Hyper-V-plats med Azure Site Recovery
 description: Lär dig hur du växlar över virtuella Hyper-V-datorer till den sekundära lokala platsen och växlar tillbaka till den primära platsen under haveri beredskap med Azure Site Recovery.
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72b23e37a365287cc8a850f960137fdb7ec08497
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "74082589"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581115"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Redundansväxla och återställa virtuella Hyper-V-datorer som replikeras till den sekundära lokala platsen
 

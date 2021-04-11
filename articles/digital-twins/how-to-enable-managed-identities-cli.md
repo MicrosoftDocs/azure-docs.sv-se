@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c9ce87584373bd87a8f89ecb4ea692b44d3fab4d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e9eb5950b5cf7d4e7d0270deed72866ee28e3962
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202968"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106912"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-cli"></a>Aktivera en hanterad identitet för routning av Azure Digitals sammanflätade händelser (för hands version): Azure CLI
 
@@ -40,7 +40,7 @@ Någon av dessa metoder för att skapa kommer att ge samma konfigurations altern
 
 I det här avsnittet får du lära dig hur du aktiverar en Systemhanterad identitet på en digital Azure-instans som håller på att skapas. 
 
-Detta görs genom att lägga till en `--assign-identity` parameter till `az dt create` kommandot som används för att skapa instansen. (Mer information om det här kommandot finns i [referens dokumentationen](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create) eller de [allmänna anvisningarna för att konfigurera en digital Azure-instans](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)).
+Detta görs genom att lägga till en `--assign-identity` parameter till `az dt create` kommandot som används för att skapa instansen. (Mer information om det här kommandot finns i [referens dokumentationen](/cli/azure/dt#az_dt_create) eller de [allmänna anvisningarna för att konfigurera en digital Azure-instans](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)).
 
 Om du vill skapa en instans med en Systemhanterad identitet lägger du till  `--assign-identity` parametern så här:
 
@@ -97,7 +97,7 @@ Här är ett exempel som skapar en instans med en Systemhanterad identitet och t
 az dt create -n {instance_name} -g {resource_group} --assign-identity --scopes "/subscriptions/<subscription ID>/resourceGroups/<resource_group>/providers/Microsoft.EventHub/namespaces/<Event_Hubs_namespace>/eventhubs/<event_hub_name>" --role MyCustomRole
 ```
 
-Fler exempel på roll tilldelningar med det här kommandot finns i [ **AZ DT Create** Reference documentation](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create).
+Fler exempel på roll tilldelningar med det här kommandot finns i [ **AZ DT Create** Reference documentation](/cli/azure/dt#az_dt_create).
 
 Du kan också använda kommando gruppen [**AZ roll tilldelning**](/cli/azure/role/assignment) för att skapa och hantera roller. Detta kan användas för att stödja ytterligare scenarier där du inte vill gruppera roll tilldelning med kommandot CREATE.
 
@@ -108,7 +108,7 @@ När du har konfigurerat en Systemhanterad identitet för din Azure Digital-inst
 >[!NOTE]
 > Du kan inte redigera en slut punkt som redan har skapats med nyckelbaserad identitet för att ändra till Identity-baserad autentisering. Du måste välja autentiseringstypen när slut punkten skapas först.
 
-Detta görs genom att lägga till en `--auth-type` parameter till `az dt endpoint create` kommandot som används för att skapa slut punkten. (Mer information om det här kommandot finns i [referens dokumentationen](/cli/azure/ext/azure-iot/dt/endpoint/create) eller de [allmänna anvisningarna för att konfigurera en Azure Digitals-slutpunkt](how-to-manage-routes-apis-cli.md#create-the-endpoint)).
+Detta görs genom att lägga till en `--auth-type` parameter till `az dt endpoint create` kommandot som används för att skapa slut punkten. (Mer information om det här kommandot finns i [referens dokumentationen](/cli/azure/dt/endpoint/create) eller de [allmänna anvisningarna för att konfigurera en Azure Digitals-slutpunkt](how-to-manage-routes-apis-cli.md#create-the-endpoint)).
 
 Om du vill skapa en slut punkt som använder Identity-baserad autentisering anger du `IdentityBased` autentiseringstypen med  `--auth-type` parametern. Exemplet nedan illustrerar detta för en Event Hubs slut punkt.
 

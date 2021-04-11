@@ -4,12 +4,12 @@ description: Lär dig hur du skapar och hanterar flera Node-pooler för ett klus
 services: container-service
 ms.topic: article
 ms.date: 02/11/2021
-ms.openlocfilehash: bb10e2023187c74a9e8b9a2e4c72115841e89a84
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 8f18e19eca8895549f17c9f0f6822ecb4da2914b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552605"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104773512"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Skapa och hantera flera nodpooler för ett kluster i Azure Kubernetes Service (AKS)
 
@@ -738,34 +738,6 @@ För befintliga AKS-kluster kan du också lägga till en ny Node-pool och koppla
 az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
 ```
 
-### <a name="use-a-public-ip-prefix"></a>Använd ett offentligt IP-prefix
-
-Det finns ett antal [fördelar med att använda ett offentligt IP-prefix][public-ip-prefix-benefits]. AKS stöder användning av adresser från ett befintligt offentligt IP-prefix för dina noder genom att skicka resurs-ID: t med flaggan `node-public-ip-prefix` när du skapar ett nytt kluster eller lägger till en adresspool.
-
-Börja med att skapa ett offentligt IP-prefix med [AZ Network Public-IP prefix Create][az-public-ip-prefix-create]:
-
-```azurecli-interactive
-az network public-ip prefix create --length 28 --location eastus --name MyPublicIPPrefix --resource-group MyResourceGroup3
-```
-
-Visa utdata och anteckna `id` för prefixet:
-
-```output
-{
-  ...
-  "id": "/subscriptions/<subscription-id>/resourceGroups/myResourceGroup3/providers/Microsoft.Network/publicIPPrefixes/MyPublicIPPrefix",
-  ...
-}
-```
-
-När du skapar ett nytt kluster eller lägger till en ny Node-pool använder du slutligen `node-public-ip-prefix` -flaggan och skickar i prefixets resurs-ID:
-
-```azurecli-interactive
-az aks create -g MyResourceGroup3 -n MyManagedCluster -l eastus --enable-node-public-ip --node-public-ip-prefix /subscriptions/<subscription-id>/resourcegroups/MyResourceGroup3/providers/Microsoft.Network/publicIPPrefixes/MyPublicIPPrefix
-```
-
-### <a name="locate-public-ips-for-nodes"></a>Hitta offentliga IP-adresser för noder
-
 Du kan hitta de offentliga IP-adresserna för dina noder på olika sätt:
 
 * Använd Azure CLI-kommandot [AZ VMSS List-instance-Public-IP-adresser][az-list-ips].
@@ -849,5 +821,3 @@ Använd [närhets placerings grupper][reduce-latency-ppg] för att minska svars 
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
 [az-list-ips]: /cli/azure/vmss?view=azure-cli-latest&preserve-view=true#az_vmss_list_instance_public_ips
 [reduce-latency-ppg]: reduce-latency-ppg.md
-[public-ip-prefix-benefits]: ../virtual-network/public-ip-address-prefix.md#why-create-a-public-ip-address-prefix
-[az-public-ip-prefix-create]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest&preserve-view=true#az_network_public_ip_prefix_create

@@ -1,18 +1,15 @@
 ---
 title: Om Hyper-V (med VMM) nätverks mappning med Site Recovery
 description: Beskriver hur du konfigurerar nätverks mappning för haveri beredskap för virtuella Hyper-V-datorer (hanteras i VMM-moln) till Azure, med Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98e6f9e7cb937551e111625845ba07d09482eff5
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "74082566"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581160"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Förbereda nätverks mappning för haveri beredskap för virtuella Hyper-V-datorer till Azure
 

@@ -1,22 +1,25 @@
 ---
-title: Så här genomsöker du Azure Synapse Analytics
-description: I den här guiden beskrivs hur du skannar Azure Synapse Analytics.
+title: Så här genomsöker du dedikerade SQL-pooler
+description: I den här guiden beskrivs hur du genomsöker dedikerade SQL-pooler.
 author: viseshag
 ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: d287f5dc239339f79d2d8237e7739de7793920c4
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 7d6a0b04306c2ed6ae4887c79962cbb5528643fc
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108616"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106980"
 ---
-# <a name="register-and-scan-azure-synapse-analytics"></a>Registrera och skanna Azure Synapse Analytics
+# <a name="register-and-scan-dedicated-sql-pools-formerly-sql-dw"></a>Registrera och Genomsök dedikerade SQL-pooler (tidigare SQL DW)
 
-Den här artikeln beskriver hur du registrerar och skannar en instans av Azure Synapse Analytics (tidigare SQL DW) i avdelningens kontroll.
+> [!NOTE]
+> Om du vill registrera och skanna en särskild SQL-databas på en Synapse-arbetsyta måste du följa anvisningarna [här](register-scan-synapse-workspace.md).
+
+Den här artikeln beskriver hur du registrerar och skannar en instans av dedikerad SQL-pool (tidigare SQL DW) i avdelningens kontroll.
 
 ## <a name="supported-capabilities"></a>Funktioner som stöds
 
@@ -24,7 +27,8 @@ Azure Synapse Analytics (tidigare SQL DW) stöder fullständiga och stegvisa gen
 
 ### <a name="known-limitations"></a>Kända begränsningar
 
-Azure avdelningens kontroll stöder inte genomsökning av [vyer](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true) i Azure Synapse Analytics
+> * Azure avdelningens kontroll stöder inte genomsökning av [vyer](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true) i Azure Synapse Analytics.
+> * Azure avdelningens kontroll stöder inte över 300 kolumner på fliken schema och visar "addition-columns-Trunked". 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -114,14 +118,14 @@ När den valda autentiseringsmetoden är **SQL-autentisering** måste du hämta 
 1. Om nyckel valvet inte är anslutet till avdelningens kontroll måste du [skapa en ny nyckel valv anslutning](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)
 1. Slutligen [skapar du en ny autentiseringsuppgift](manage-credentials.md#create-a-new-credential) med nyckeln för att konfigurera din sökning
 
-## <a name="register-an-azure-synapse-analytics-instance-formerly-sql-dw"></a>Registrera en Azure Synapse Analytics-instans (tidigare SQL DW)
+## <a name="register-a-sql-dedicated-pool-formerly-sql-dw"></a>Registrera en dedikerad SQL-pool (tidigare SQL DW)
 
 Registrera en ny Azure Synapse Analytics-Server i din Data Catalog genom att göra följande:
 
 1. Navigera till ditt avdelningens kontroll-konto
 1. Välj **källor** i det vänstra navigerings fältet
 1. Välj **register**
-1. På **register källor** väljer du **Azure Synapse Analytics (tidigare SQL DW)**
+1. På **register källor** väljer du **SQL-dedikerad pool (tidigare SQL DW)**
 1. Välj **Fortsätt**
 
 På skärmen **Registrera källor (Azure Synapse Analytics)** gör du följande:

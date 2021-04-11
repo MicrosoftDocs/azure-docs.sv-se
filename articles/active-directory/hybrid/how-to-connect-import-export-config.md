@@ -11,12 +11,12 @@ ms.date: 07/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d67460c654c854c5a855560dde1d67732fa818c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e2bdaa2c7a7648124fbe0be60e5a0af2f83238f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98681963"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226569"
 ---
 # <a name="import-and-export-azure-ad-connect-configuration-settings"></a>Importera och exportera Azure AD Connect konfigurations inställningar 
 
@@ -42,7 +42,7 @@ Importera tidigare exporterade inställningar:
 1. Välj **Inställningar för att importera synkronisering**. Bläddra till filen med tidigare exporterade JSON-inställningar.
 1. Välj **installera**.
 
-   ![Skärm bild som visar skärmen installera nödvändiga komponenter](media/how-to-connect-import-export-config/import1.png)
+   ![Skärm bild som visar skärmen installera nödvändiga komponenter](media/how-to-connect-import-export-config/import-1.png)
 
 > [!NOTE]
 > Åsidosätt inställningar på den här sidan som att använda SQL Server i stället för LocalDB eller använda ett befintligt tjänst konto i stället för ett standard-VSA. De här inställningarna importeras inte från filen med konfigurations inställningar. De finns där för information och jämförelse.
@@ -57,7 +57,7 @@ Här är de enda ändringar som kan göras under installationen. Alla andra änd
 - **Autentiseringsuppgifter för lokal katalog**: för varje lokal katalog som ingår i dina synkroniseringsinställningar måste du ange autentiseringsuppgifter för att skapa ett synkroniseringsschema eller ange ett förskapat konto för anpassad synkronisering. Den här proceduren är identisk med den rena installations upplevelsen med undantaget att du inte kan lägga till eller ta bort kataloger.
 - **Konfigurations alternativ**: som en ren installation kan du välja att konfigurera de ursprungliga inställningarna för om du vill starta automatisk synkronisering eller aktivera mellanlagrings läge. Den största skillnaden är att mellanlagrings läget är avsiktligt aktiverat som standard för att tillåta jämförelse av konfigurations-och synkroniseringsresultat innan du aktivt exporterar resultaten till Azure.
 
-![Skärm bild som visar skärmen Anslut dina kataloger](media/how-to-connect-import-export-config/import2.png)
+![Skärm bild som visar skärmen Anslut dina kataloger](media/how-to-connect-import-export-config/import-2.png)
 
 > [!NOTE]
 > Endast en synkroniseringstjänst kan vara i den primära rollen och aktivt exportera konfigurations ändringar till Azure. Alla andra servrar måste placeras i mellanlagrings läge.
@@ -71,21 +71,27 @@ Vid migreringen krävs ett PowerShell-skript som extraherar de befintliga instä
 ### <a name="migration-process"></a>Migreringsprocessen 
 Så här migrerar du inställningarna:
 
-1. Starta **AzureADConnect.msi** på den nya mellanlagringsdatabasen och stoppa på **välkomst** sidan för Azure AD Connect.
+ 1. Starta **AzureADConnect.msi** på den nya mellanlagringsdatabasen och stoppa på **välkomst** sidan för Azure AD Connect.
 
-1. Kopiera **MigrateSettings.ps1** från katalogen Microsoft Azure AD Connect\Tools till en plats på den befintliga servern. Ett exempel är C:\setup, där installations programmet är en katalog som skapades på den befintliga servern.
+ 2. Kopiera **MigrateSettings.ps1** från katalogen Microsoft Azure AD Connect\Tools till en plats på den befintliga servern. Ett exempel är C:\setup, där installations programmet är en katalog som skapades på den befintliga servern.</br>
+     ![Skärm bild som visar Azure AD Connect kataloger.](media/how-to-connect-import-export-config/migrate-1.png)
 
-   ![Skärm bild som visar Azure AD Connect kataloger.](media/how-to-connect-import-export-config/migrate1.png)
+     >[!NOTE]
+     > Om du ser ett meddelande: "det går inte att hitta en positions parameter som accepterar argumentet **True**.", enligt nedan:
+     >
+     >
+     >![Skärm bild av felet ](media/how-to-connect-import-export-config/migrate-5.png) Redigera sedan MigrateSettings.ps1-filen och ta bort **$True** och kör skriptet: ![ skärm bild för att redigera konfigurationen](media/how-to-connect-import-export-config/migrate-6.png)
+ 
 
-1. Kör skriptet som det visas här och spara hela Server konfigurations katalogen på äldre nivå. Kopiera den här katalogen till den nya Staging-servern. Du måste kopiera hela den **exporterade-ServerConfiguration-*-** mappen till den nya servern.
 
-   ![Skärm bild som visar skript i Windows PowerShell. ](media/how-to-connect-import-export-config/migrate2.png)
-    ![ Skärm bild som visar hur du kopierar den exporterade-ServerConfiguration-*-mappen.](media/how-to-connect-import-export-config/migrate3.png)
 
-1. Starta **Azure AD Connect** genom att dubbelklicka på ikonen på Skriv bordet. Godkänn licens villkoren för program vara från Microsoft och välj sedan **Anpassa** på nästa sida.
-1. Markera kryss rutan **Importera synkroniseringsinställningar** . Välj **Bläddra** för att bläddra i mappen kopierad – över exporterad-ServerConfiguration-*. Välj MigratedPolicy.jspå för att importera de migrerade inställningarna.
+ 3. Kör skriptet som det visas här och spara hela Server konfigurations katalogen på äldre nivå. Kopiera den här katalogen till den nya Staging-servern. Du måste kopiera hela den **exporterade-ServerConfiguration-*-** mappen till den nya servern.
+     ![Skärm bild som visar skript i Windows PowerShell. ](media/how-to-connect-import-export-config/migrate-2.png)![ Skärm bild som visar hur du kopierar den exporterade-ServerConfiguration-*-mappen.](media/how-to-connect-import-export-config/migrate-3.png)
 
-   ![Skärm bild som visar alternativet importera synkroniseringsinställningar.](media/how-to-connect-import-export-config/migrate4.png)
+ 4. Starta **Azure AD Connect** genom att dubbelklicka på ikonen på Skriv bordet. Godkänn licens villkoren för program vara från Microsoft och välj sedan **Anpassa** på nästa sida.
+ 5. Markera kryss rutan **Importera synkroniseringsinställningar** . Välj **Bläddra** för att bläddra i mappen kopierad – över exporterad-ServerConfiguration-*. Välj MigratedPolicy.jspå för att importera de migrerade inställningarna.
+
+     ![Skärm bild som visar alternativet importera synkroniseringsinställningar.](media/how-to-connect-import-export-config/migrate-4.png)
 
 ## <a name="post-installation-verification"></a>Verifiering efter installation 
 

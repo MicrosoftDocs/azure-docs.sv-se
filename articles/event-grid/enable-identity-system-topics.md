@@ -3,12 +3,12 @@ title: Avsnittet Aktivera hanterad identitet i Azure Event Grid system
 description: I den här artikeln beskrivs hur du aktiverar hanterad tjänst identitet för ett Azure Event Grid system-ämne.
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 66b418787e5570dc5da06a5332dd834ccbfd4aef
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d8219cf9cba4ce0a4fb5ddbcf695f1ec72de36fe
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105630602"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280521"
 ---
 # <a name="assign-a-system-managed-identity-to-an-event-grid-system-topic"></a>Tilldela en Systemhanterad identitet till ett Event Grid system-ämne
 I den här artikeln får du lära dig hur du aktiverar Systemhanterad identitet för ett befintligt Event Grid system-ämne. Mer information om hanterade identiteter finns i [Vad är hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/overview.md).  
@@ -43,4 +43,4 @@ Du kan endast aktivera Systemhanterad identitet för de regionala Azure-resurser
 
 
 ## <a name="next-steps"></a>Nästa steg
-Lägg till identiteten i en lämplig roll (till exempel Service Bus data avsändare) på målet (till exempel en Service Bus kö). Detaljerade anvisningar finns i [lägga till identitet till Azure-roller på mål platser](add-identity-roles.md). 
+Lägg till identiteten i en lämplig roll (till exempel Service Bus data avsändare) på målet (till exempel en Service Bus kö). Detaljerade anvisningar finns i [bevilja hanterad identitet åtkomst till Event Grid destination](add-identity-roles.md). 

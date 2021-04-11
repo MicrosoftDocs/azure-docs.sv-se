@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: f54c22a0c2f7bf89d790dbd33f748446a871d224
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2c49fe65cf97207a495f6c0cc78585489a0db6ff
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099955"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228256"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Så här konfigurerar du ExpressRoute Direct
 
@@ -305,7 +305,12 @@ Skapa en krets på ExpressRoute Direct-resursen.
   AllowClassicOperations           : False
   GatewayManagerEtag     
   ```
-
+## <a name="delete-the-resource"></a>Ta bort resursen
+Innan du tar bort ExpressRoute Direct-resursen måste du först ta bort alla ExpressRoute-kretsar som skapats i det direkta port paret för ExpressRoute.
+Du kan ta bort ExpressRoute Direct-resursen genom att köra följande kommando:
+ ```powershell
+   Remove-azexpressrouteport -Name $Name -Resourcegroupname -$ResourceGroupName
+   ```
 ## <a name="next-steps"></a>Nästa steg
 
 Mer information om ExpressRoute Direct finns i [översikten](expressroute-erdirect-about.md).

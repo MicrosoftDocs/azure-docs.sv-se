@@ -6,14 +6,14 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 04/05/2021
 ms.author: punagpal
-ms.openlocfilehash: 581afbb5cec166f0ef5048b6ecc89f8ff95fd794
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: e43b5068544927ba4d04c86b16d3a15510c32bed
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103020687"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448480"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Azure IoT-anslutningsprogram för FHIR (förhandsversion) – mappningsmall
 Den här artikeln beskriver hur du konfigurerar Azure IoT Connector för resurser för snabb hälso samverkan (FHIR&#174;) * med hjälp av mappnings-mallar.
@@ -133,7 +133,7 @@ JsonPathContentTemplate tillåter matchning av och extrahering av värden från 
 {
     "typeName": "bloodpressure",
     "typeMatchExpression": "$..[?(@systolic && @diastolic)]",
-    "deviceIdExpression": "$.deviceid",
+    "deviceIdExpression": "$.deviceId",
     "timestampExpression": "$.endDate",
     "values": [
         {

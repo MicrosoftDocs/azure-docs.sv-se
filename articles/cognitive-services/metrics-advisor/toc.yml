@@ -5,15 +5,19 @@
   items:
     - name: Vad är Metrics Advisor?
       href: overview.md
+    - name: Priser
+      href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
     - name: Nyheter
       href: whats-new.md
-- name: Snabbstarter
+- name: Snabb starter för mått rådgivare
   items:
-    - name: Använda webbportalen
+    - name: Webbportalen
       href: quickstarts/web-portal.md
-    - name: Använda REST-API eller klientbibliotek
+    - name: REST API-och klient bibliotek
       href: quickstarts/rest-api-and-client-library.md
-- name: Instruktioner
+- name: Exempel
+  href: 'https://docs.microsoft.com/en-us/samples/browse/?products=azure&terms=metrics-advisor'
+- name: Anvisningar
   items:
     - name: Registrera dina data
       href: how-tos/onboard-your-data.md
@@ -31,13 +35,13 @@
       href: how-tos/anomaly-feedback.md
     - name: Skapa ett måttdiagram
       href: how-tos/metrics-graph.md
+- name: Begrepp
+  items:
+    - name: Mått regler för mått rådgivare
+      href: glossary.md
 - name: Referens
   items:
-    - name: Ordlista
-      href: glossary.md
-    - name: VANLIGA FRÅGOR OCH SVAR
-      href: faq.md
-    - name: Metrics Advisor API
+    - name: Mått rådgivare REST API
       href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
     - name: Azure CLI-referens
       href: /cli/azure/cognitiveservices#az_cognitiveservices_list
@@ -45,12 +49,10 @@
       href: /powershell/module/azurerm.cognitiveservices/
 - name: Resurser
   items:
+    - name: Stöd för regioner
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/metrics-advisor/context/context
-    - name: Prissättning
-      href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
-    - name: Regional tillgänglighet
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Efterlevnad
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Kryptering

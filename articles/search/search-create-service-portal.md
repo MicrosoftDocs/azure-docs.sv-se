@@ -1,21 +1,21 @@
 ---
 title: Skapa en Sök tjänst i portalen
 titleSuffix: Azure Cognitive Search
-description: I den här snabb starten av portalen lär du dig hur du konfigurerar en Azure Kognitiv sökning-resurs i Azure Portal. Välj resursgrupper, regioner, samt SKU eller prisnivå.
+description: Lär dig hur du konfigurerar en Azure Kognitiv sökning-resurs i Azure Portal. Välj resurs grupper, regioner och SKU eller pris nivå.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 02/15/2021
-ms.openlocfilehash: e183d81355d4db81e677f34b02330ddb9b631957
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83e206a5fd7b34da0b0ac8590d5271a554855d3e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651994"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580747"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Snabbstart: Skapa en Azure Cognitive Search-tjänst i portalen
+# <a name="create-an-azure-cognitive-search-service-in-the-portal"></a>Skapa en Azure Cognitive Search-tjänst i portalen
 
 [Azure kognitiv sökning](search-what-is-azure-search.md) är en Azure-resurs som används för att lägga till en fullständig texts ökning i anpassade appar. Du kan enkelt integrera det med andra Azure-tjänster som tillhandahåller data eller ytterligare bearbetning, med appar på nätverks servrar eller med program vara som körs på andra moln plattformar.
 

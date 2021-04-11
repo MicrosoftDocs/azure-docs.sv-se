@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 04/07/2021
 ms.author: alkohli
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 67de5cce3bd5a4ca2b383e2809eb237a6e753bf5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6984f27ae0ae81c3bf8d98efcce5fb23909c36d
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577110"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226098"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>System krav för Azure Stack Edge Pro med GPU 
 
@@ -108,6 +108,18 @@ Vi rekommenderar att du ställer in brand Väggs regler för utgående trafik, b
 | https:// \* . azurecr.io                     | Personliga och tredje parts behållar register (valfritt) | 
 | https:// \* . Azure-Devices.net              | IoT Hub åtkomst (krävs)                             | 
 
+### <a name="url-patterns-for-monitoring"></a>URL-mönster för övervakning
+
+Lägg till följande URL-mönster för Azure Monitor om du använder den behållar versionen av Log Analytics agent för Linux.
+
+| URL-mönster | Port | Komponent eller funktion |
+|-------------|-------------|----------------------------|
+| http:// \* ODS.OpInsights.Azure.com | 443 | Datainhämtning |
+| http:// \* . OMS.OpInsights.Azure.com | 443 | Onboarding för Operations Management Suite (OMS) |
+| http:// \* . DC.Services.VisualStudio.com | 443 | Agent telemetri som använder Azures offentliga moln Application Insights |
+
+Mer information finns i [krav på nätverks brand vägg för övervakning av container Insights](../azure-monitor/containers/container-insights-onboard.md#network-firewall-requirements).
+
 ### <a name="url-patterns-for-gateway-for-azure-government"></a>URL-mönster för gateway för Azure Government
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/azure-stack-edge-gateway-gov-url-patterns-firewall.md)]
@@ -119,6 +131,17 @@ Vi rekommenderar att du ställer in brand Väggs regler för utgående trafik, b
 | https: \/ /MCR.Microsoft.com<br></br>https:// \* . CDN.mscr.com | Microsoft container Registry (krävs)               |
 | https:// \* . Azure-Devices.us              | IoT Hub åtkomst (krävs)           |
 | https:// \* . azurecr.us                    | Personliga och tredje parts behållar register (valfritt) | 
+
+### <a name="url-patterns-for-monitoring-for-azure-government"></a>URL-mönster för övervakning av Azure Government
+
+Lägg till följande URL-mönster för Azure Monitor om du använder den behållar versionen av Log Analytics agent för Linux.
+
+| URL-mönster | Port | Komponent eller funktion |
+|-------------|-------------|----------------------------|
+| http:// \* ODS.OpInsights.Azure.us | 443 | Datainhämtning |
+| http:// \* . OMS.OpInsights.Azure.us | 443 | Onboarding för Operations Management Suite (OMS) |
+| http:// \* . DC.Services.VisualStudio.com | 443 | Agent telemetri som använder Azures offentliga moln Application Insights |
+
 
 ## <a name="internet-bandwidth"></a>Internet bandbredd
 

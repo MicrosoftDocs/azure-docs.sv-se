@@ -7,21 +7,21 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: c262ba87698c04da69728f7a370040c0679ec44e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 03b29e6ddd16731073b33fef14d5aafb54df2abe
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104878441"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227865"
 ---
-# <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Så här identifierar och löser du problem i Azure våren Cloud
+# <a name="self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Själv diagnostisera och lösa problem i Azure våren Cloud
 
 **Den här artikeln gäller för:** ✔️ Java ✔️ C #
 
 Azure våren Cloud Diagnostics är en interaktiv upplevelse för fel sökning av appen utan konfiguration. Azure våren Cloud Diagnostics identifierar problem och vägleder dig till information som hjälper dig att felsöka och lösa problem.
 
 ## <a name="prerequisites"></a>Förutsättningar
-För att slutföra den här kursen behöver du:
+För att slutföra den här exericise behöver du:
 
 * En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 * En distribuerad Azure våren Cloud Service-instans. Följ vår [snabb start för att distribuera en app via Azure CLI](spring-cloud-quickstart.md) för att komma igång.

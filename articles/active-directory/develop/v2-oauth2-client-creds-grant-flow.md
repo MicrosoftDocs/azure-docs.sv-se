@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/2/2020
+ms.date: 4/1/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 96f7d7c94ce908d953a6941bfa237fe8da1dc482
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8b3e27f266551eb7425d4801d14261a5e428e4c2
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98752658"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168118"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform och OAuth 2,0-klientens autentiseringsuppgifter flödet
 
@@ -25,7 +25,7 @@ Du kan använda [tilldelningen oauth 2,0-klientautentiseringsuppgifter](https://
 
 Den här artikeln beskriver hur du programmerar direkt mot protokollet i ditt program. När det är möjligt rekommenderar vi att du använder MSAL (Microsoft Authentication Libraries) i stället för att [Hämta tokens och anropa säkra webb-API: er](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Ta också en titt på de [exempel appar som använder MSAL](sample-v2-code.md).
 
-OAuth 2,0-klientens autentiseringsuppgifter för beviljande av autentiseringsuppgifter tillåter en webb tjänst (konfidentiell klient) att använda sina egna autentiseringsuppgifter, i stället för att personifiera en användare, för att autentisera vid anrop till en annan webb tjänst. I det här scenariot är klienten vanligt vis en webb tjänst på mellan nivå, en daemon-tjänst eller en webbplats. För en högre säkerhets nivå tillåter Microsofts identitets plattform också att anrops tjänsten använder ett certifikat (i stället för en delad hemlighet) som autentiseringsuppgift.
+OAuth 2,0-klientens autentiseringsuppgifter för beviljande av autentiseringsuppgifter tillåter en webb tjänst (konfidentiell klient) att använda sina egna autentiseringsuppgifter, i stället för att personifiera en användare, för att autentisera vid anrop till en annan webb tjänst. För en högre säkerhets nivå tillåter Microsofts identitets plattform också att anrops tjänsten använder ett certifikat (i stället för en delad hemlighet) som autentiseringsuppgift.  Eftersom programmens egna autentiseringsuppgifter används måste dessa autentiseringsuppgifter hållas säkra – publicera _inte_ den autentiseringsuppgiften i din källkod, bädda in den på webb sidor eller använda den i ett distribuerat internt program. 
 
 I flödet för klientautentiseringsuppgifter beviljas behörigheter direkt till själva programmet av en administratör. När appen presenterar en token för en resurs, tillämpar resursen att själva appen har behörighet att utföra en åtgärd eftersom det inte finns någon användare som är involverad i autentiseringen.  Den här artikeln beskriver båda de steg som krävs för att [auktorisera ett program för att anropa ett API](#application-permissions), samt [hur du hämtar de token som krävs för att anropa detta API](#get-a-token).
 

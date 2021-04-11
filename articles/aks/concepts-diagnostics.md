@@ -4,34 +4,46 @@ description: Lär dig mer om att själv diagnostisera kluster i Azure Kubernetes
 services: container-service
 author: yunjchoi
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/29/2021
 ms.author: yunjchoi
-ms.openlocfilehash: e8921152177d3e4534ca9fb48cf209aed6e1b27c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee11221e5484a796b8dbbcb10a323288d3e74756
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96183370"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011566"
 ---
 # <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Översikt över Azure Kubernetes service Diagnostics (för hands version)
 
-Fel sökning av problem med Azure Kubernetes service (AKS) är en viktig del av att underhålla klustret, särskilt om klustret kör verksamhets kritiska arbets belastningar. AKS-diagnostik är en intelligent, själv diagnos upplevelse som hjälper dig att identifiera och lösa problem i klustret. AKS-diagnostik är molnbaserad och du kan använda den utan extra konfigurations-eller fakturerings kostnader.
+Fel sökning av problem med Azure Kubernetes service (AKS) är en viktig roll i att underhålla klustret, särskilt om klustret kör verksamhets kritiska arbets belastningar. AKS-diagnostik är en intelligent och självdiagnostik som:
+* Hjälper dig att identifiera och lösa problem i klustret. 
+* Är Cloud-Native.
+* Kräver ingen extra konfigurations-eller fakturerings kostnad.
 
-Den här funktionen är nu i offentlig för hands version.
+Den här funktionen är nu i offentlig för hands version. 
 
 ## <a name="open-aks-diagnostics"></a>Öppna AKS-diagnostik
 
 Åtkomst till AKS-diagnostik:
 
-- Navigera till ditt Kubernetes-kluster i [Azure Portal](https://portal.azure.com).
-- Klicka på **diagnostisera och lös problem** i det vänstra navigerings fönstret, som öppnar AKS-diagnostik.
-- Välj en kategori som bäst beskriver problemet med klustret med hjälp av nyckelorden på Start sidan eller Skriv ett nyckelord som bäst beskriver problemet i Sök fältet, till exempel _klusternoder_.
+1. Navigera till ditt Kubernetes-kluster i [Azure Portal](https://portal.azure.com).
+1. Klicka på **diagnostisera och lös problem** i det vänstra navigerings fönstret, som öppnar AKS-diagnostik.
+1. Välj en kategori som bäst beskriver problemet med klustret, t. ex. _problem med klusternoden_, genom att:
+    * Använd nyckelorden på Start sidans sida.
+    * Ange ett nyckelord som bäst beskriver problemet i Sök fältet.
 
 ![Startsida](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
 
 ## <a name="view-a-diagnostic-report"></a>Visa en diagnostisk rapport
 
-När du har klickat på en kategori kan du Visa en diagnostisk rapport som är speciell för klustret. Diagnostiska rapporter anropar intelligentt om det finns något problem i klustret med status ikoner. Du kan öka detalj nivån för varje ämne genom att klicka på **Mer information** för att se detaljerad beskrivning av problemet, rekommenderade åtgärder, länkar till användbara dokument, relaterade mått och loggnings data. Diagnostiska rapporter skapas intelligent baserat på klustrets aktuella tillstånd när du har kört en rad olika kontroller. Diagnostiska rapporter kan vara ett användbart verktyg för att hitta problem med klustret och hitta nästa steg för att lösa problemet.
+När du har klickat på en kategori kan du Visa en diagnostisk rapport som är speciell för klustret. Diagnostiska rapporter anropar intelligenta eventuella problem i klustret med status ikoner. Du kan öka detalj nivån för varje ämne genom att klicka på **mer info** för att se en detaljerad beskrivning av:
+* Ärenden
+* Rekommenderade åtgärder
+* Länkar till användbara dokument
+* Relaterade mått
+* Logga data 
+
+Diagnostiska rapporter genereras baserat på klustrets aktuella tillstånd när du har kört olika kontroller. De kan vara användbara för att hitta problem med klustret och förstå nästa steg för att lösa problemet.
 
 ![Diagnostisk rapport](./media/concepts-diagnostics/diagnostic-report.png)
 
@@ -43,7 +55,7 @@ Följande diagnostiska kontroller är tillgängliga i **kluster insikter**.
 
 ### <a name="cluster-node-issues"></a>Problem med klusternod
 
-Problem med klusternoder söker efter tjänstrelaterade problem som kan orsaka att klustret beter sig.
+Problem med klusternoderna kontrollerar om det finns problem med noder som orsakar att klustret beter sig.
 
 - Problem med nods beredskap
 - Nodfel
@@ -55,9 +67,9 @@ Problem med klusternoder söker efter tjänstrelaterade problem som kan orsaka a
 - Autentiseringsfel för nod
 - Node Kube-proxy inaktuell
 
-### <a name="create-read-update--delete-operations"></a>Skapa, läsa, uppdatera & ta bort åtgärder
+### <a name="create-read-update--delete-crud-operations"></a>Skapa, läsa, uppdatera & ta bort (CRUD) åtgärder
 
-CRUD-åtgärder söker efter CRUD-åtgärder som kan orsaka problem i klustret.
+CRUD-åtgärder söker efter CRUD-åtgärder som orsakar problem i klustret.
 
 - Fel vid borttagning av Använd undernät
 - Åtgärds fel vid borttagning av nätverks säkerhets grupp
@@ -73,7 +85,7 @@ CRUD-åtgärder söker efter CRUD-åtgärder som kan orsaka problem i klustret.
 
 ### <a name="identity-and-security-management"></a>Identitets- och säkerhetshantering
 
-Identitets-och säkerhets hantering identifierar autentiserings-och auktoriseringsfel som kan förhindra kommunikation till klustret.
+Identitets-och säkerhets hantering identifierar autentiserings-och auktoriseringsfel som förhindrar kommunikation till klustret.
 
 - Auktoriseringsfel för nod
 - 401 fel
@@ -81,8 +93,8 @@ Identitets-och säkerhets hantering identifierar autentiserings-och auktoriserin
 
 ## <a name="next-steps"></a>Nästa steg
 
-Samla in loggar för att hjälpa dig att felsöka kluster problem genom att använda [AKS Periscope](https://aka.ms/aksperiscope).
+* Samla in loggar för att hjälpa dig att felsöka kluster problem genom att använda [AKS Periscope](https://aka.ms/aksperiscope).
 
-Läs [avsnittet prioritering Practices](/azure/architecture/operator-guides/aks/aks-triage-practices) i AKS Day-2 Operations Guide.
+* Läs [avsnittet prioritering Practices](/azure/architecture/operator-guides/aks/aks-triage-practices) i AKS Day-2 Operations Guide.
 
-Publicera dina frågor eller feedback på [UserVoice](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks) genom att lägga till [diag] i rubriken.
+* Publicera dina frågor eller feedback på [UserVoice](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks) genom att lägga till [diag] i rubriken.

@@ -1,18 +1,15 @@
 ---
 title: Konfigurera katastrof återställning av fysiska lokala servrar med Azure Site Recovery
 description: Lär dig hur du konfigurerar haveri beredskap till Azure för lokala Windows-och Linux-servrar med tjänsten Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
-ms.author: raynew
-ms.openlocfilehash: 9b05d9952628e550beae5cedc49e051936a9d633
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5775f8ed9b657502f4865f3c4f311ea0dcd269ea
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87927291"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581542"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Konfigurera katastrof återställning till Azure för lokala fysiska servrar
 

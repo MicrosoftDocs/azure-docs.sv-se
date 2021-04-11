@@ -6,17 +6,17 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
-ms.date: 08/10/2020
-ms.openlocfilehash: f324ef44d002f50bf27c08072e904c1d92b5512f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: b0aa9d5dec25d8d600ecbcde59a57e67917c6411
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95026241"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011159"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Funktioner i den storskaliga (citus) SQL API
 
-Det här avsnittet innehåller referensinformation för användardefinierade funktioner som tillhandahålls av skalning (citus). Dessa funktioner bidrar till att ge ytterligare distribuerade funktioner till citus (storskalig) förutom standard-SQL-kommandona.
+Det här avsnittet innehåller referensinformation för användardefinierade funktioner som tillhandahålls av skalning (citus). Dessa funktioner gör det lättare att tillhandahålla distribuerade funktioner till storskalig (citus).
 
 > [!NOTE]
 >
@@ -178,6 +178,48 @@ SELECT create_distributed_function(
 );
 ```
 
+### <a name="alter_columnar_table_set"></a>alter_columnar_table_set
+
+Funktionen alter_columnar_table_set () ändrar inställningarna i en [kolumn tabell](concepts-hyperscale-columnar.md). Att anropa den här funktionen i en tabell som inte är kolumner ger ett fel. Alla argument förutom tabell namnet är valfria.
+
+Om du vill visa aktuella alternativ för alla kolumn tabeller, se den här tabellen:
+
+```postgresql
+SELECT * FROM columnar.options;
+```
+
+Standardvärden för kolumn inställningar för nyligen skapade tabeller kan åsidosättas med följande GUCs:
+
+* kolumner. Compression
+* columnar.compression_level
+* columnar.stripe_row_count
+* columnar.chunk_row_count
+
+#### <a name="arguments"></a>Argument
+
+**table_name:** Namnet på kolumn tabellen.
+
+**chunk_row_count:** (valfritt) det maximala antalet rader per segment för nyligen infogade data. Befintliga data segment ändras inte och kan ha fler rader än det högsta värdet. Standardvärdet är 10000.
+
+**stripe_row_count:** (valfritt) det maximala antalet rader per rand för nyligen infogade data. Befintliga stripe-data kommer inte att ändras och kan ha fler rader än det högsta värdet. Standardvärdet är 150000.
+
+**komprimering:** (valfritt) `[none|pglz|zstd|lz4|lz4hc]` komprimerings typen för nyligen infogade data. Befintliga data kommer inte att komprimeras om eller expanderas. Standard och föreslaget värde är zstd (om stödet har kompilerats i).
+
+**compression_level:** (valfritt) giltiga inställningar är mellan 1 och 19. Om komprimerings metoden inte stöder den valda nivån väljs den närmaste nivån i stället.
+
+#### <a name="return-value"></a>Returvärde
+
+Ej tillämpligt
+
+#### <a name="example"></a>Exempel
+
+```postgresql
+SELECT alter_columnar_table_set(
+  'my_columnar_table',
+  compression => 'none',
+  stripe_row_count => 10000);
+```
+
 ## <a name="metadata--configuration-information"></a>Metadata/konfigurations information
 
 ### <a name="master_get_table_metadata"></a>huvud \_ Hämta \_ metadata för tabell \_
@@ -220,7 +262,7 @@ SELECT * from master_get_table_metadata('github_events');
 
 ### <a name="get_shard_id_for_distribution_column"></a>Hämta \_ Shard \_ -ID \_ för \_ distributions \_ kolumn
 
-Med citus) tilldelas alla rader i en distribuerad tabell till en Shard baserat på värdet för radens distributions kolumn och tabellens metod för distribution. I de flesta fall är den exakta mappningen en låg nivå information som databas administratören kan ignorera. Det kan dock vara användbart att fastställa en rads Shard, antingen för manuella databas underhålls aktiviteter eller bara för att uppfylla Curiosity. `get_shard_id_for_distribution_column`Funktionen tillhandahåller den här informationen för hash-och Range-distribuerade tabeller samt referens tabeller. Den fungerar inte för distribution av tillägg.
+Med citus) tilldelas alla rader i en distribuerad tabell till en Shard baserat på värdet för radens distributions kolumn och tabellens metod för distribution. I de flesta fall är den exakta mappningen en låg nivå information som databas administratören kan ignorera. Det kan dock vara användbart att fastställa en rads Shard, antingen för manuella databas underhålls aktiviteter eller bara för att uppfylla Curiosity. `get_shard_id_for_distribution_column`Funktionen tillhandahåller den här informationen för tabellerna hash-Distributed, Range-Distributed och reference. Den fungerar inte för distribution av tillägg.
 
 #### <a name="arguments"></a>Argument
 

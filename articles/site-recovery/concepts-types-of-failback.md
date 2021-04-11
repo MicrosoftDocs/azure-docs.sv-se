@@ -1,18 +1,15 @@
 ---
 title: Återställning efter fel vid haveri beredskap med Azure Site Recovery | Microsoft Docs
 description: Den här artikeln innehåller en översikt över olika typer av återställnings fel och varningar som ska övervägas och som inte kan återgå till lokalt under haveri beredskap med Azure Site Recovery-tjänsten.
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.author: raynew
-ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f386b34222825b60748b4ca27dcc5c0c2487316
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84691092"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580846"
 ---
 # <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>Återställning efter fel för virtuella VMware-datorer efter haveriberedskap till Azure
 

@@ -7,18 +7,18 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 12/02/2020
-ms.openlocfilehash: bcb7f2d008c54981223b4839f9a750e6ee9ac5cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc3566634948df3ce8ecb747148eb10f48bfc582
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97355161"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106895"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Skapa ett erbjudande för Dynamics 365 for Operations
 
 I den här artikeln beskrivs hur du skapar en ny Dynamics 365 för Operations-erbjudandet. [Microsoft Dynamics 365 for ekonomi och Operations](https://dynamics.microsoft.com/finance-and-operations) är en tjänst för företags resurs planering (ERP) som stöder avancerad finans-, drift-, tillverknings-och leverans kedjas hantering. Alla erbjudanden för Dynamics 365 för åtgärder måste gå igenom vår certifierings process.
 
-Innan du börjar [skapar du ett kommersiellt marknads plats konto i Partner Center](create-account.md) , om du inte har gjort det än. Se till att ditt konto är registrerat i programmet för kommersiella marknads platser.
+Innan du börjar [skapar du ett kommersiellt marknads plats konto i Partner Center](../create-account.md) , om du inte har gjort det än. Se till att ditt konto är registrerat i programmet för kommersiella marknads platser.
 
 >[!NOTE]
 > När ett erbjudande har publicerats uppdateras bara ändringar i erbjudandet i Partner Center och onlinebutiken när du har skickat om erbjudandet för publicering.

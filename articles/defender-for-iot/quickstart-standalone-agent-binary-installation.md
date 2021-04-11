@@ -1,20 +1,20 @@
 ---
-title: Installera Defender för IoT Micro agent (för hands version)
-description: Lär dig hur du installerar och autentiserar Defender Micro-agenten.
+title: 'Snabb start: installera Defender för IoT Micro agent (för hands version)'
+description: I den här snabb starten lär du dig hur du installerar och autentiserar Defender Micro-agenten.
 ms.date: 3/9/2021
 ms.topic: quickstart
-ms.openlocfilehash: ecde9f42acc5cf4a924a657f4f0cdc545c4a668e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a153b640a1d1e86f9b761817d05fda7d3e47da98
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782732"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384416"
 ---
-# <a name="install-defender-for-iot-micro-agent-preview"></a>Installera Defender för IoT Micro agent (för hands version)
+# <a name="quickstart-install-defender-for-iot-micro-agent-preview"></a>Snabb start: installera Defender för IoT Micro agent (för hands version)
 
 Den här artikeln innehåller en förklaring av hur du installerar och autentiserar Defender Micro-agenten.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Innan du installerar Defender för IoT-modulen måste du skapa en modul identitet i IoT Hub. Mer information om hur du skapar en modul identitet finns i [skapa en Defender IoT Micro agent-modul, delad (för hands version)](quickstart-create-micro-agent-module-twin.md).
 
@@ -148,4 +148,5 @@ sudo apt-get install defender-iot-micro-agent=<version>
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Skapa Defender Micro-agenten från käll koden](quickstart-building-the-defender-micro-agent-from-source.md)
+> [!div class="nextstepaction"]
+> [Skapa Defender Micro-agenten från käll koden](quickstart-building-the-defender-micro-agent-from-source.md)

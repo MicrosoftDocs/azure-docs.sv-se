@@ -14,24 +14,18 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f467fc739b3120fd43bec4e21e1e336c1cdf186f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ad8466dca6634b0e72ef4a65acb537006dba3bda
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935421"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108548"
 ---
 # <a name="azure-ad-built-in-roles"></a>Inbyggda roller i Azure AD
 
 Om en annan administratör eller icke-administratör behöver hantera Azure AD-resurser i Azure Active Directory (Azure AD) tilldelar du dem en Azure AD-roll som ger de behörigheter som de behöver. Du kan till exempel tilldela roller för att lägga till eller ändra användare, återställa användar lösen ord, hantera användar licenser eller hantera domän namn.
 
 Den här artikeln innehåller inbyggda Azure AD-roller som du kan tilldela för att tillåta hantering av Azure AD-resurser. Information om hur du tilldelar roller finns i [tilldela Azure AD-roller till användare](manage-roles-portal.md).
-
-## <a name="limit-use-of-global-administrator"></a>Begränsa användningen av global administratör
-
-Användare som har tilldelats rollen som global administratör kan läsa och ändra alla administrativa inställningar i din Azure AD-organisation. När en användare registrerar sig för en moln tjänst från Microsoft skapas en Azure AD-klient som standard och användaren blir medlem i rollen global administratör. När du lägger till en prenumeration till en befintlig klient är du inte tilldelad rollen som global administratör. Endast globala administratörer och privilegierade roll administratörer kan delegera administratörs roller. För att minska risken för verksamheten rekommenderar vi att du tilldelar den här rollen till det minsta möjliga antalet personer i din organisation.
-
-Som bästa praxis rekommenderar vi att du tilldelar rollen till färre än fem personer i din organisation. Om du har fler än fem administratörer tilldelade rollen global administratör i din organisation kan du använda följande metoder för att minska användningen.
 
 ## <a name="all-roles"></a>Alla roller
 
@@ -771,6 +765,9 @@ Den här administratören hanterar federationen mellan Azure AD-organisationer o
 ## <a name="global-administrator"></a>Global administratör
 
 Användare med den här rollen har åtkomst till alla administrativa funktioner i Azure Active Directory, samt tjänster som använder Azure Active Directory identiteter som Microsoft 365 Security Center, Microsoft 365 Compliance Center, Exchange Online, SharePoint Online och Skype för företag – online. Dessutom kan globala administratörer [öka sin åtkomst](../../role-based-access-control/elevate-access-global-admin.md) för att hantera alla Azure-prenumerationer och hanterings grupper. Detta gör det möjligt för globala administratörer att få fullständig åtkomst till alla Azure-resurser med respektive Azure AD-klient. Den person som registrerar sig för Azure AD-organisationen blir global administratör. Det kan finnas mer än en global administratör på ditt företag. Globala administratörer kan återställa lösen ordet för alla användare och alla andra administratörer.
+
+> [!NOTE]
+> Som bästa praxis rekommenderar Microsoft att du tilldelar rollen global administratör till färre än fem personer i din organisation. Mer information finns i [metod tips för Azure AD-roller](best-practices.md).
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -1841,6 +1838,23 @@ Användare med den här rollen kan skapa användare och hantera alla aspekter av
 > | Microsoft. Office365. serviceHealth/uplånar/allTasks | Läsa och konfigurera Service Health i Microsoft 365 administrations Center |
 > | Microsoft. Office365. supportTickets/uplånar/allTasks | Skapa och hantera Microsoft 365 tjänst begär Anden |
 > | Microsoft. Office365. webports/-upplånare/standard/Read | Läsa grundläggande egenskaper för alla resurser i Microsoft 365 administrations Center |
+
+## <a name="how-to-understand-role-permissions"></a>Så här förstår du roll behörigheter
+
+Schemat för behörigheter följer REST-formatet för Microsoft Graph:
+
+`<namespace>/<entity>/<propertySet>/<action>`
+
+Exempel:
+
+`microsoft.directory/applications/credentials/update`
+
+| Behörighets element | Beskrivning |
+| --- | --- |
+| namnområde | Produkt eller tjänst som exponerar uppgiften och som är anpassningsprefix med `microsoft` . Till exempel använder alla uppgifter i Azure AD `microsoft.directory` namn området. |
+| entitetsrelation | Logisk funktion eller komponent som exponeras av tjänsten i Microsoft Graph. Azure AD visar t. ex. användare och grupper, OneNote visar anteckningar och Exchange visar post lådor och kalendrar. Det finns ett särskilt `allEntities` nyckelord för att ange alla entiteter i ett namn område. Detta används ofta i roller som beviljar åtkomst till en hel produkt. |
+| propertySet | Vissa egenskaper eller aspekter av entiteten som åtkomst beviljas för. Ger till exempel `microsoft.directory/applications/authentication/read` möjlighet att läsa egenskapen svars-URL, utloggnings-URL och implicit flöde för programobjektet i Azure AD.<ul><li>`allProperties` anger alla egenskaper för entiteten, inklusive privilegierade egenskaper.</li><li>`standard` anger gemensamma egenskaper, men utesluter privilegier som är relaterade till `read` åtgärder. Innehåller till exempel `microsoft.directory/user/standard/read` möjligheten att läsa standard egenskaper som t. ex. offentligt telefonnummer och e-postadress, men inte det privata sekundära telefonnumret eller e-postadressen som används för Multi-Factor Authentication.</li><li>`basic` anger gemensamma egenskaper, men utesluter privilegier som är relaterade till `update` åtgärden. Den uppsättning egenskaper som du kan läsa kan skilja sig från vad du kan uppdatera. Därför finns det `standard` och `basic` nyckelord för att återspegla det.</li></ul> |
+| åtgärd | Åtgärden som beviljas, vanligt vis skapa, läsa, uppdatera eller ta bort (CRUD). Det finns ett särskilt `allTasks` nyckelord för att ange alla ovanstående förmågor (skapa, läsa, uppdatera och ta bort). |
 
 ## <a name="deprecated-roles"></a>Föråldrade roller
 
