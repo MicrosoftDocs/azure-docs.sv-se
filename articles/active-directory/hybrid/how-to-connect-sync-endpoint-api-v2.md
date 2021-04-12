@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0ecfd277f2cc86102d59b201e7b43fa8519bdd3a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98937611"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Slutpunkts-API för Azure AD Connect-synkronisering v2 
@@ -113,11 +113,11 @@ Följande steg kan användas för att öka medlemskaps gränsen:
 
 7. I popup-fönstret på sidan **Beskrivning** anger du prioriteten till ett tillgängligt värde mellan 1 och 99 ![ skärm bild som visar fönstret "Redigera regel för utgående synkronisering" med "prioritet" markerat.](media/how-to-connect-sync-endpoint-api-v2/endpoint4.png)
 
-8. På sidan **omvandlingar** uppdaterar du **käll** värdet för **medlems** omvandlingen, ersätter "50000" med ett värde mellan 50001 och 250000. Den här ersättningen ökar den maximala storleken för grupper som ska synkroniseras till Azure AD. Vi rekommenderar att du börjar med ett antal 100 000 för att förstå vilken effekt som synkroniserar stora grupper med dina synkroniseringsinställningar. 
+8. På sidan **omvandlingar** uppdaterar du **käll** värdet för **medlems** omvandlingen, ersätter "50000&quot; med ett värde mellan 50001 och 250000. Den här ersättningen ökar den maximala storleken för grupper som ska synkroniseras till Azure AD. Vi rekommenderar att du börjar med ett antal 100 000 för att förstå vilken effekt som synkroniserar stora grupper med dina synkroniseringsinställningar. 
  
  **Exempel** 
  
- `IIF((ValueCount("member")> 75000),Error("Maximum Group member count exceeded"),IgnoreThisFlow)` 
+ `IIF((ValueCount(&quot;member")> 75000),Error("Maximum Group member count exceeded"),IgnoreThisFlow)` 
  
  ![Redigera Synch-regel](media/how-to-connect-sync-endpoint-api-v2/endpoint5.png)
 

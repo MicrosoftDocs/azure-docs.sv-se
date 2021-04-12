@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/14/2020
+ms.date: 04/09/2021
 ms.author: alkohli
-ms.openlocfilehash: bd90a16c09dce65115cea2f097d18f2e0ced931a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f4f7e5f69e6b496395b74dbdcd58b3ada0a7f349
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632041"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285222"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Säkerhet och data skydd för Azure Stack Edge Pro R och Azure Stack Edge Mini R
 
@@ -100,17 +100,23 @@ Data på diskarna skyddas av två krypterings lager:
 > [!NOTE]
 > OS-disken har en enda Layer BitLocker XTS-AES-256-programkryptering.
 
-När enheten är aktive rad uppmanas du att spara en nyckel fil som innehåller återställnings nycklar som hjälper till att återställa data på enheten om enheten inte startar. Det finns två nycklar i filen:
+Innan du aktiverar enheten måste du konfigurera kryptering vid vila på enheten. Detta är en obligatorisk inställning och tills den har kon figurer ATS kan du inte aktivera enheten. 
 
-- En nyckel återställer enhets konfigurationen på OS-volymerna.
-<!-- - Second key is to unlock the BitLocker on the data disks. -->
-- Den andra nyckeln låser upp maskin varu krypteringen i data diskarna.
+När enheterna är avbildade på fabriken är volym nivå BitLocker-kryptering aktive rad. När du har fått enheten måste du konfigurera kryptering vid vila. Lagringspoolen och volymer återskapas och du kan ange BitLocker-nycklar för att aktivera kryptering vid vila och därmed skapa ytterligare ett krypterings lager för dina data i vila. 
+
+Kryptering vid vila-nyckeln är en 32 tecken lång bas-64-kodad nyckel som du anger och den här nyckeln används för att skydda den faktiska krypterings nyckeln. Microsoft har inte åtkomst till den här krypteringen – vila-nyckeln som skyddar dina data. Nyckeln sparas i en nyckel fil på sidan med **moln information** när enheten har Aktiver ATS.
+
+När enheten är aktive rad uppmanas du att spara nyckel filen som innehåller återställnings nycklar som hjälper till att återställa data på enheten om enheten inte startar. Vissa återställnings scenarier kommer att uppmana dig att ange nyckel filen som du har sparat. Nyckel filen innehåller följande återställnings nycklar:
+
+- En nyckel som låser upp det första krypterings lagret.
+- En nyckel som låser upp maskin varu krypteringen i data diskarna.
+- En nyckel som hjälper till att återställa enhets konfigurationen på OS-volymerna.
+- En nyckel som skyddar data som flödar genom Azure-tjänsten.
 
 > [!IMPORTANT]
 > Spara nyckel filen på en säker plats utanför själva enheten. Om enheten inte startar, och du inte har nyckeln, kan det innebära att data går förlorade.
 
-- Vissa återställnings scenarier kommer att uppmana dig att ange nyckel filen som du har sparat. 
-<!--- If a node isn't booting up, you will need to perform a node replacement. You will have the option to swap the data disks from the failed node to the new node. For a 4-node device, you won't need a key file. For a 1-node device, you will be prompted to provide a key file.-->
+
 
 #### <a name="restricted-access-to-data"></a>Begränsad åtkomst till data
 
@@ -132,7 +138,6 @@ När enheten genomgår en hård återställning utförs en säker rensning på e
 ### <a name="protect-data-in-storage-accounts"></a>Skydda data i lagrings konton
 
 [!INCLUDE [azure-stack-edge-gateway-data-rest](../../includes/azure-stack-edge-gateway-protect-data-storage-accounts.md)]
-
 - Rotera och [Synkronisera dina lagrings konto nycklar](azure-stack-edge-gpu-manage-storage-accounts.md) regelbundet för att hjälpa till att skydda ditt lagrings konto från obehöriga användare.
 
 ## <a name="manage-personal-information"></a>Hantera personlig information

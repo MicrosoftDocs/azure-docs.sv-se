@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: d0b2a854391097cc7d95c4286ba581f3660d397e
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 230934ea3d4a8a970ca1fca46160b96e3f2234e8
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284825"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073432"
 ---
 <a name="HOLTop"></a>
 
@@ -140,10 +140,10 @@ Om du vill rensa och ta bort en Cognitive Services prenumeration kan du ta bort 
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du lärt dig hur du använder OCR-biblioteket för python för att utföra grundläggande uppgifter. Sedan kan du utforska referens dokumentationen och läsa mer om biblioteket.
+I den här snabb starten har du lärt dig hur du installerar klient biblioteket för OCR och använder Read API. Läs sedan mer om API-funktionerna för läsning.
 
 > [!div class="nextstepaction"]
->[API-referens för OCR (python)](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)
+>[Anropa Read API](../../Vision-API-How-to-Topics/call-read-api.md)
 
 * [Översikt över OCR](../../overview-ocr.md)
 * Källkoden för det här exemplet finns på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py).

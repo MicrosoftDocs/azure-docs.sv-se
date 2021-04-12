@@ -10,28 +10,28 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/21/2020
+ms.date: 03/26/2021
 ms.author: duau
-ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d2c8d4179dbaa44929031ce7e14b597b145ed72a
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740791"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067613"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Självstudiekurs: Konfigurera HTTPS på en anpassad Front Door-domän
 
-Den här självstudien visar hur du aktiverar HTTPS-protokollet för en anpassad domän som är associerad med din Front Door i avsnittet om klientdelsvärdar. Med HTTPS-protokollet på din anpassade domän (till exempel https:\//www.contoso.com) ser du till att dina känsliga data levereras på ett säkert sätt via TLS-/SSL-kryptering när de skickas över Internet. När webbläsaren är ansluten till en webbplats via HTTPS valideras webbplatsens säkerhetscertifikat och verifierar att det är utfärdat av en giltig certifikatutfärdare. Den här processen ger trygghet och skyddar dina webbprogram mot attacker.
+Den här självstudien visar hur du aktiverar HTTPS-protokollet för en anpassad domän som är associerad med din Front Door i avsnittet om klientdelsvärdar. Genom att använda HTTPS-protokollet på din anpassade domän (till exempel https: \/ /www.contoso.com) ser du till att dina känsliga data levereras säkert via TLS/SSL-kryptering när det skickas via Internet. När webbläsaren är ansluten till en webbplats via HTTPS valideras webbplatsens säkerhetscertifikat och verifierar att det är utfärdat av en giltig certifikatutfärdare. Den här processen ger trygghet och skyddar dina webbprogram mot attacker.
 
-Azures frontend-dörr har stöd för HTTPS på ett standard-värdnamn för klientens dörr som standard. Om du till exempel skapar en frontend-dörr (till exempel `https://contoso.azurefd.net` ) aktive ras https automatiskt för begär Anden som görs till `https://contoso.azurefd.net` . Men när du publicerar den anpassade domänen ”www.contoso.com” behöver du dessutom aktivera HTTPS för den här klientdelsvärden.   
+Azures frontend-dörr har stöd för HTTPS på ett standard-värdnamn för klientens dörr som standard. Om du till exempel skapar en frontend-dörr (till exempel `https://contoso.azurefd.net` ) aktive ras https automatiskt för begär Anden som görs till `https://contoso.azurefd.net` . Men när du har registrerat den anpassade domänen "www.contoso.com" måste du också Aktivera HTTPS för den här klient dels värden.   
 
 Några viktiga attribut i den anpassade HTTPS-funktionen är:
 
-- Ingen extra kostnad: det kostar ingenting att förvärva eller förnya certifikat och det tillkommer ingen extra kostnad för HTTPS-trafik. 
+- Ingen extra kostnad: det kostar inga kostnader för certifikat förvärv eller-förnyelse och ingen extra kostnad för HTTPS-trafik. 
 
 - Enkel aktivering: enklicksetablering är tillgänglig från [Azure Portal](https://portal.azure.com). Du kan också aktivera funktionen med REST API eller andra utvecklingsverktyg.
 
-- Komplett certifikathantering finns tillgänglig: All anskaffning och hantering av certifikat hanteras åt dig. Certifikaten etableras automatiskt och förnyas innan de upphör att gälla, vilket tar bort risken för avbrott i tjänsten på grund av ett certifikat upphör att gälla.
+- Komplett certifikathantering finns tillgänglig: All anskaffning och hantering av certifikat hanteras åt dig. Certifikat tillhandahålls automatiskt och förnyas innan det upphör att gälla, vilket eliminerar risken för avbrott i tjänsten på grund av att ett certifikat upphör att gälla.
 
 I den här guiden får du lära dig att:
 > [!div class="checklist"]
@@ -63,19 +63,20 @@ Följ dessa steg om du vill aktivera HTTPS på en anpassad domän:
 
 2. I listan över klientdelsvärdar väljer du den anpassade domän som du vill aktivera HTTPS för som innehåller din anpassade domän.
 
-3. I avsnittet **Egen domän-HTTPS** klickar du på **Aktiverad** och väljer **Front Door-hanterade** som certifikatkälla.
+3. Under avsnittet **anpassad https för domän** väljer du **aktive rad** och väljer **front dörren som hanteras** som certifikat källa.
 
-4. Klicka på Spara.
+4. Välj Spara
 
-5. Fortsätt och [verifiera domänen](#validate-the-domain).
+5. Fortsätt att [verifiera domänen](#validate-the-domain).
 
 > [!NOTE]
 > För AFD-hanterade certifikat tillämpas DigiCert 64 tecken gräns. Verifieringen Miss fungerar om den gränsen överskrids.
 
+! Lägg Aktivering av HTTPS via Front dörrens hanterade certifikat stöds inte för spets-/rot domäner (exempel: contoso.com). Du kan använda ditt eget certifikat för det här scenariot.  Fortsätt med alternativ 2 om du vill ha mer information.
 
 ### <a name="option-2-use-your-own-certificate"></a>Alternativ 2: Använda ditt eget certifikat
 
-Du kan använda ditt eget certifikat för att aktivera HTTPS. Detta görs via en integrering med Azure Key Vault där du kan lagra certifikaten säkert. Azures front dörr använder den här säkra mekanismen för att hämta ditt certifikat och det krävs ytterligare steg. När du skapar ditt TLS/SSL-certifikat måste du skapa det med en tillåten certifikat utfärdare (CA). Om du använder en icke-tillåten certifikatutfärdare kan din begäran avvisas. En lista över tillåtna ca: er finns i [tillåtna certifikat utfärdare för att aktivera anpassad https på Azures frontend-dörr](front-door-troubleshoot-allowed-ca.md).
+Du kan använda ditt eget certifikat för att aktivera HTTPS. Detta görs via en integrering med Azure Key Vault där du kan lagra certifikaten säkert. Azures front dörr använder den här säkra mekanismen för att få ditt certifikat och det krävs några extra steg. När du skapar ditt TLS/SSL-certifikat måste du skapa det med en tillåten certifikat utfärdare (CA). Om du använder en icke-tillåten certifikatutfärdare kan din begäran avvisas. En lista över tillåtna ca: er finns i [tillåtna certifikat utfärdare för att aktivera anpassad https på Azures frontend-dörr](front-door-troubleshoot-allowed-ca.md).
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Förbered ditt Azure Key Vault-konto och certifikat
  
@@ -128,30 +129,27 @@ Ge Azures frontend-behörighet för att komma åt certifikaten i ditt Azure Key 
 
 3. Under Certifikathanteringstyp väljer du **Använd mitt eget certifikat**. 
 
-4. Azures front dörr kräver att prenumerationen på det Key Vault kontot är samma som för din frontend-dörr. Välj nyckelvalv, certifikat (hemlighet) och certifikatversion.
+4. Azures front dörr kräver att prenumerationen på det Key Vault kontot är samma som för din frontend-dörr. Välj nyckel valv, hemlighet och hemlig version.
 
     Azure-front dörren visar följande information: 
     - Nyckelvalvskonton för ditt prenumerations-ID. 
-    - Certifikaten (hemligheterna) i det valda nyckelvalvet. 
-    - Tillgängliga certifikatversioner. 
+    - Hemligheterna under det valda nyckel valvet. 
+    - Tillgängliga hemliga versioner.
 
-> [!NOTE]
-> Om du lämnar certifikat versionen som Tom leder det till:
-> - Den senaste versionen av certifikatet som har marker ATS.
-> - Automatisk rotation av certifikat till den senaste versionen när en nyare version av certifikatet är tillgänglig i din Key Vault.
+    > [!NOTE]
+    >  För att certifikatet ska roteras automatiskt till den senaste versionen när en nyare version av certifikatet är tillgänglig i din Key Vault, ange den hemliga versionen som "senaste". Om du väljer en viss version måste du välja den nya versionen manuellt för certifikat rotationen. Det tar upp till 24 timmar innan den nya versionen av certifikatet/hemligheten kan distribueras. 
  
-5. Domänverifiering krävs inte om du använder ett eget certifikat. Gå vidare till [Vänta på spridning](#wait-for-propagation).
+5. När du använder ett eget certifikat krävs inte domän validering. Fortsätt att [vänta på spridning](#wait-for-propagation).
 
 ## <a name="validate-the-domain"></a>Verifiera domänen
 
-Om du redan har och använder en anpassad domän som är mappad till din anpassade slutpunkt med en CNAME-post eller om du använder ett eget certifikat fortsätter du till  
-[Den anpassade domänen har mappats till din Front Door](#custom-domain-is-mapped-to-your-front-door-by-a-cname-record). Om CNAME-posten för domänen inte längre finns eller om den innehåller afdverify-underdomänen fortsätter du i stället till [Den anpassade domänen har inte mappats till din Front Door](#custom-domain-is-not-mapped-to-your-front-door).
+Om du redan har en anpassad domän som ska användas som mappas till din anpassade slut punkt med en CNAME-post eller om du använder ditt eget certifikat, fortsätter du till [den anpassade domänen som är mappad till din front dörr](#custom-domain-is-mapped-to-your-front-door-by-a-cname-record). Om CNAME-postposten för din domän inte längre finns eller om den innehåller afdverify-underdomänen fortsätter till den [anpassade domänen inte är mappad till din front dörr](#custom-domain-is-not-mapped-to-your-front-door).
 
 ### <a name="custom-domain-is-mapped-to-your-front-door-by-a-cname-record"></a>Den anpassade domänen har mappats till din Front Door med en CNAME-post
 
-När du lade till en anpassad domän till din Front Doors klientdelsvärdar skapade du en CNAME-post i din domänregistrators DNS-tabell för att mappa den till din Front Doors .azurefd.net-standardvärdnamn. Om CNAME-posten fortfarande finns kvar och inte innehåller afdverify-underdomänen använder DigiCert-certifikatutfärdaren den för att automatiskt verifiera ägarskapet för din anpassade domän. 
+När du lade till en anpassad domän till din Front Doors klientdelsvärdar skapade du en CNAME-post i din domänregistrators DNS-tabell för att mappa den till din Front Doors .azurefd.net-standardvärdnamn. Om CNAME-posten fortfarande finns och inte innehåller under domänen afdverify använder DigiCert-certifikat utfärdaren för att automatiskt validera ägarskapet för din anpassade domän. 
 
-Domänverifiering krävs inte om du använder ett eget certifikat.
+Om du använder ditt eget certifikat krävs inte domän validering.
 
 CNAME-posten ska ha följande format, där *Namn* är namnet på ditt anpassade domännamn och *Värde* är din Front Doors .azurefd.net-standardvärdnamn:
 
@@ -161,7 +159,7 @@ CNAME-posten ska ha följande format, där *Namn* är namnet på ditt anpassade 
 
 Mer information om CNAME-poster finns i [Skapa CNAME DNS-posten](../cdn/cdn-map-content-to-custom-domain.md).
 
-Om din CNAME-post har rätt format verifierar DigiCert automatiskt det anpassade domännamnet och skapar ett dedikerat certifikat för domännamnet. DigitCert skickar ingen bekräftelse via e-post och du behöver inte godkänna din begäran. Certifikatet är giltigt i ett år och förnyas automatiskt innan det upphör att gälla. Gå vidare till [Vänta på spridning](#wait-for-propagation). 
+Om din CNAME-post har rätt format verifierar DigiCert automatiskt det anpassade domännamnet och skapar ett dedikerat certifikat för domännamnet. DigitCert skickar ingen bekräftelse via e-post och du behöver inte godkänna din begäran. Certifikatet är giltigt i ett år och förnyas automatiskt innan det upphör att gälla. Fortsätt att [vänta på spridning](#wait-for-propagation). 
 
 Den automatiska verifieringen tar vanligtvis några minuter. Öppna ett supportärende om domänen inte har verifierats inom en timme.
 
@@ -172,11 +170,11 @@ Den automatiska verifieringen tar vanligtvis några minuter. Öppna ett support�
 
 Om CNAME-posten för slutpunkten inte finns längre eller om den innehåller afdverify-underdomänen följer du instruktionerna i det här steget.
 
-När du har aktiverat HTTPS på din anpassade domän verifierar DigiCert-certifikatutfärdaren ägarskapet för din domän genom att kontakta registranten enligt domänens [WHOIS](http://whois.domaintools.com/)-registrantinformation. Kontakten sker via e-postadressen (som standard) eller telefonnumret som står i WHOIS-registreringen. Du måste slutföra domänverifieringen för att HTTPS ska aktiveras på din anpassade domän. Du har sex arbetsdagar på dig att godkänna domänen. Begäranden som inte godkänns inom sex arbetsdagar avbryts automatiskt. 
+När du har aktiverat HTTPS på din anpassade domän verifierar DigiCert-certifikatutfärdaren ägarskapet för din domän genom att kontakta registranten enligt domänens [WHOIS](http://whois.domaintools.com/)-registrantinformation. Kontakten sker via e-postadressen (som standard) eller telefonnumret som står i WHOIS-registreringen. Du måste slutföra domänverifieringen för att HTTPS ska aktiveras på din anpassade domän. Du har sex arbetsdagar på dig att godkänna domänen. Begär Anden som inte har godkänts inom sex arbets dagar annulleras automatiskt. 
 
 ![WHOIS-post](./media/front-door-custom-domain-https/whois-record.png)
 
-DigiCert skickar också ett bekräftelsemeddelande till ytterligare e-postadresser. Om WHOIS-registrantinformationen är privat, kontrollerar du att du kan godkänna direkt från en av följande adresser:
+DigiCert skickar också ett verifierings meddelande till andra e-postadresser. Om WHOIS-registrantinformationen är privat, kontrollerar du att du kan godkänna direkt från en av följande adresser:
 
 admin@&lt;dittdomännamn.com&gt;  
 administrator@&lt;dittdomännamn.com&gt;  
@@ -184,13 +182,13 @@ webmaster@&lt;dittdomännamn.com&gt;
 hostmaster@&lt;dittdomännamn.com&gt;  
 postmaster@&lt;dittdomännamn.com&gt;  
 
-Inom ett par minuter får du ett e-postmeddelande som ser ut ungefär som i följande exempel och som ber dig godkänna begäran. Om du använder ett skräp post filter, Lägg till admin@digicert.com i listan över tillåtna. Kontakta Microsoft-supporten om du inte får ett e-postmeddelande inom 24 timmar.
+Inom ett par minuter får du ett e-postmeddelande som ser ut ungefär som i följande exempel och som ber dig godkänna begäran. Om du använder ett skräp post filter, Lägg till admin@digicert.com i dess tillåten. Kontakta Microsoft-supporten om du inte får ett e-postmeddelande inom 24 timmar.
 
-När du klickar på godkännandelänken dirigeras du till ett formulär för godkännande online. Följ instruktionerna i formuläret. Du har två verifieringsalternativ:
+När du väljer länken godkännande är du dirigerad till ett godkännande formulär online. Följ instruktionerna i formuläret. Du har två verifieringsalternativ:
 
-- Du kan godkänna alla framtida order som placerats via samma konto för samma rotdomän, till exempel contoso.com. Den här metoden rekommenderas om du tänker lägga till ytterligare anpassade domäner i samma rotdomän.
+- Du kan godkänna alla framtida order som placerats via samma konto för samma rotdomän, till exempel contoso.com. Den här metoden rekommenderas om du planerar att lägga till fler anpassade domäner för samma rot domän.
 
-- Du kan bara godkänna det specifika värdnamn som används i den här begäran. Ytterligare godkännande krävs för efterföljande begäranden.
+- Du kan bara godkänna det specifika värdnamn som används i den här begäran. Ytterligare godkännande krävs för efterföljande begär Anden.
 
 Efter godkännandet slutför DigiCert skapandet av certifikatet för det anpassade domännamnet. Certifikatet är giltigt i ett år och förnyas automatiskt innan det upphör att gälla.
 
@@ -200,17 +198,17 @@ När domännamnet har verifierats kan det ta upp till 6–8 timmar innan HTTPS-f
 
 ### <a name="operation-progress"></a>Åtgärdsförlopp
 
-I följande tabell visas åtgärdsförloppet när du aktiverar HTTPS. När du har aktiverat HTTPS visas de fyra åtgärdsstegen i dialogrutan Anpassad domän. När nästa steg i förloppet aktiveras visas ytterligare information om dess understeg. Alla understeg utförs inte. När ett steg har slutförts visas en grön bock bredvid steget. 
+I följande tabell visas åtgärdsförloppet när du aktiverar HTTPS. När du har aktiverat HTTPS visas de fyra åtgärdsstegen i dialogrutan Anpassad domän. När varje steg blir aktivt visas mer detaljerade del steg under steget när det fortskrider. Alla understeg utförs inte. När ett steg har slutförts visas en grön bock bredvid steget. 
 
 | Åtgärdssteg | Information om åtgärdsundersteg | 
 | --- | --- |
 | 1 Skicka begäran | Begäran skickas |
 | | Din HTTPS-begäran skickas. |
 | | Din HTTPS-begäran har skickats. |
-| 2 Domänverifiering | Domänen verifieras automatiskt om den är CNAME-mappad till .azurefd.net-standardklientdelsvärden för din Front Door. I annat fall skickas en verifieringsbegäran till den e-postadress som står angiven i domänens registreringspost (WHOIS-registrant). Verifiera domänen så snart som möjligt. |
+| 2 Domänverifiering | Domänen verifieras automatiskt om den är CNAME-mappad till standardvärdet. azurefd.net-frontend-värd för din front dörr. I annat fall skickas en verifieringsbegäran till den e-postadress som står angiven i domänens registreringspost (WHOIS-registrant). Verifiera domänen så snart som möjligt. |
 | | Domänägarskapet har verifierats och godkänts. |
-| | Begäran om verifiering av domänägarskap har gått ut (kunden svarade troligtvis inte inom 6 dagar). HTTPS aktiveras inte på din domän. * |
-| | Begäran om verifiering av domänägarskap avvisades av kunden. HTTPS aktiveras inte på din domän. * |
+| | Begäran om verifiering av domänägarskap har gått ut (kunden svarade troligtvis inte inom 6 dagar). HTTPS aktive ras inte på din domän. * |
+| | Begäran om verifiering av domänägarskap avvisades av kunden. HTTPS aktive ras inte på din domän. * |
 | 3 Etablering av certifikat | Certifikatutfärdaren håller på att utfärda det certifikat som krävs för att aktivera HTTPS på din domän. |
 | | Certifikatet har utfärdats och håller på att distribueras till din Front Door. Den här processen kan ta upp till 1 timme. |
 | | Certifikatet har distribuerats för din Front Door. |
@@ -236,7 +234,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 3. *Vad händer om jag inte får domänverifieringsmeddelandet från DigiCert?*
 
-    Om du har en CNAME-post för din anpassade domän som pekar direkt på slutpunktens värdnamn (och du inte använder afdverify-underdomännamnet) får du inget domänverifieringsmeddelande. Verifieringen sker i så fall automatiskt. Om du inte har en CNAME-post och inte har fått något e-postmeddelande inom 24 timmar kontaktar du Microsoft-supporten.
+    Om du har en CNAME-post för din anpassade domän som pekar direkt till slut punktens värdnamn (och du inte använder afdverify-underdomännamnet) får du inget e-postmeddelande för domän verifiering. Verifieringen sker i så fall automatiskt. Om du inte har en CNAME-post och inte har fått något e-postmeddelande inom 24 timmar kontaktar du Microsoft-supporten.
 
 4. *Är det mindre säkert att använda ett SAN-certifikat än att använda ett dedikerat certifikat?*
     
@@ -244,27 +242,27 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 5. *Behöver jag en CAA-post (Certificate Authority Authorization) med DNS-leverantören?*
 
-    Nej, en CAA-post krävs inte för närvarande. Men om du har en sådan måste den innehålla DigiCert som en giltig certifikatutfärdare.
+    Nej, ingen Authorization-post för certifikat utfärdare krävs för närvarande. Men om du har en sådan måste den innehålla DigiCert som en giltig certifikatutfärdare.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-I föregående steg aktiverade du HTTPS-protokollet på en anpassad domän. Om du inte längre vill använda HTTPS för din anpassade domän kan du inaktivera HTTPS på följande sätt:
+I föregående steg aktiverade du HTTPS-protokollet på en anpassad domän. Om du inte längre vill använda din anpassade domän med HTTPS kan du inaktivera HTTPS genom att utföra de här-steg:
 
 ### <a name="disable-the-https-feature"></a>Inaktivera HTTPS-funktionen 
 
 1. I [Azure Portal](https://portal.azure.com)bläddrar du till din Azure-konfiguration för **front dörren** .
 
-2. I listan över klientdelsvärdar klickar du på den anpassade domänen som du vill inaktivera HTTPS för.
+2. I listan över klient dels värdar väljer du den anpassade domän som du vill inaktivera HTTPS för.
 
 3. Klicka på **Inaktiverad** för att inaktivera HTTPS och klicka sedan på **Spara**.
 
 ### <a name="wait-for-propagation"></a>Vänta på spridning
 
-När HTTPS-funktionen för den anpassade domänen har inaktiverats kan det ta upp till 6–8 timmar innan ändringen börjar gälla. När processen är klar visas HTTPS-status **Inaktiverad** i Azure Portal och de tre åtgärdsstegen i dialogrutan Anpassad domän är markerade som slutförda. Den anpassade domänen använder inte längre HTTPS.
+När HTTPS-funktionen för den anpassade domänen har inaktiverats kan det ta upp till 6–8 timmar innan ändringen börjar gälla. När processen är klar ställs den anpassade HTTPS-statusen i Azure Portal in på **inaktive rad** och de tre åtgärds stegen i dialog rutan anpassad domän markeras som slutförda. Den anpassade domänen använder inte längre HTTPS.
 
 #### <a name="operation-progress"></a>Åtgärdsförlopp
 
-I följande tabell visas åtgärdsförloppet när du inaktiverar HTTPS. När du har inaktiverat HTTPS visas de tre åtgärdsstegen i dialogrutan Anpassad domän. När nästa steg i förloppet aktiveras visas ytterligare information under steget. När ett steg har slutförts visas en grön bock bredvid steget. 
+I följande tabell visas åtgärdsförloppet när du inaktiverar HTTPS. När du har inaktiverat HTTPS visas de tre åtgärdsstegen i dialogrutan Anpassad domän. När varje steg blir aktivt visas mer information under steget. När ett steg har slutförts visas en grön bock bredvid steget. 
 
 | Åtgärdsförlopp | Åtgärdsinformation | 
 | --- | --- |
@@ -280,7 +278,7 @@ I den här självstudiekursen lärde du dig att:
 * Verifiera en domän.
 * Aktivera HTTPS för din anpassade domän.
 
-Fortsätt till nästa självstudie om du vill veta hur du konfigurerar en princip för geo-filtrering för din frontend-dörr.
+Fortsätt till nästa självstudie om du vill lära dig hur du konfigurerar en princip för geo-filtrering för din frontend-dörr.
 
 > [!div class="nextstepaction"]
 > [Konfigurera en princip för geo-filtrering](front-door-geo-filtering.md)

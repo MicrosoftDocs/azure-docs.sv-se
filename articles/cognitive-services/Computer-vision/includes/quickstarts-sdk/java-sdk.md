@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 84ac8e8309d9f1d0536d0f7a16ab9cd9f3c10a2c
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: c1322eac7fd5ec1ead09a7b0197db931f96f8d48
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284813"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073403"
 ---
 <a name="HOLTop"></a>
 
@@ -209,11 +209,10 @@ Om du vill rensa och ta bort en Cognitive Services prenumeration kan du ta bort 
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du lärt dig hur du använder OCR Java-biblioteket för att utföra grundläggande uppgifter. Sedan kan du utforska referens dokumentationen och läsa mer om biblioteket.
+I den här snabb starten har du lärt dig hur du installerar klient biblioteket för OCR och använder Read API. Läs sedan mer om API-funktionerna för läsning.
 
 > [!div class="nextstepaction"]
->[OCR SDK Reference (Java)](/java/api/overview/azure/cognitiveservices/client/computervision)
-
+>[Anropa Read API](../../Vision-API-How-to-Topics/call-read-api.md)
 
 * [Översikt över OCR](../../overview-ocr.md)
 * Källkoden för det här exemplet finns på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java).

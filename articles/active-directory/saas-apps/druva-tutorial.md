@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
 ms.openlocfilehash: a7868d702ff3f1190d7f51e4ad7316508d453015
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454532"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med druva
@@ -136,13 +136,13 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. Om du förväntar dig ett roll värde i SAML Assertion, i dialog rutan **Välj roll** , väljer du lämplig roll för användaren i listan och klickar sedan på knappen **Välj** längst ned på skärmen.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
-## <a name="configure-druva-sso"></a>Konfigurera druva SSO
+## <a name="configure-druva-sso&quot;></a>Konfigurera druva SSO
 
 1. Logga in på din druva-företags webbplats som administratör i ett annat webbläsarfönster.
 
 1. Klicka på druva-logotypen i det övre vänstra hörnet och klicka sedan på **druva Cloud Settings**.
 
-    ![Inställningar](./media/druva-tutorial/ic795091.png "Inställningar")
+    ![Inställningar](./media/druva-tutorial/ic795091.png &quot;Inställningar")
 
 1. På fliken **enkel inloggning** klickar du på **Redigera**.
 
