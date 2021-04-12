@@ -1,192 +1,135 @@
-### YamlMime:Landing
+### YamlMime:Hub
 title: Dokumentation om visuellt innehåll
-summary: Det molnbaserade API:et för visuellt innehåll ger utvecklare åtkomst till avancerade algoritmer för bearbetning av bilder och returnering av information. Genom att ladda upp en bild eller ange en bilds webbadress kan Microsofts algoritmer för visuellt innehåll analysera visuellt innehåll på olika sätt beroende på indata och användarens val. Lär dig hur du analyserar visuellt innehåll på olika sätt med snabbstarter, självstudier och exempel.
+summary: 'Det molnbaserade API:et för visuellt innehåll ger utvecklare åtkomst till avancerade algoritmer för bearbetning av bilder och returnering av information. Genom att ladda upp en bild eller ange en bilds webbadress kan Microsofts algoritmer för visuellt innehåll analysera visuellt innehåll på olika sätt beroende på indata och användarens val. Lär dig hur du analyserar visuellt innehåll på olika sätt med snabbstarter, självstudier och exempel.'
 metadata:
-  title: Dokumentation om visuellt innehåll – snabbstarter, självstudier, API-referens – Azure Cognitive Services | Microsoft Docs
-  description: Det molnbaserade API:et för visuellt innehåll ger utvecklare åtkomst till avancerade algoritmer för bearbetning av bilder och returnering av information. Genom att ladda upp en bild eller ange en bilds webbadress kan Microsofts algoritmer för visuellt innehåll analysera visuellt innehåll på olika sätt beroende på indata och användarens val. Lär dig hur du analyserar visuellt innehåll på olika sätt med snabbstarter, självstudier och exempel.
+  title: 'Dokumentation om visuellt innehåll – snabbstarter, självstudier, API-referens – Azure Cognitive Services | Microsoft Docs'
+  description: 'Det molnbaserade API:et för visuellt innehåll ger utvecklare åtkomst till avancerade algoritmer för bearbetning av bilder och returnering av information. Genom att ladda upp en bild eller ange en bilds webbadress kan Microsofts algoritmer för visuellt innehåll analysera visuellt innehåll på olika sätt beroende på indata och användarens val. Lär dig hur du analyserar visuellt innehåll på olika sätt med snabbstarter, självstudier och exempel.'
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: computer-vision
-  ms.topic: landing-page
+  ms.topic: hub-page
   author: PatrickFarley
   ms.author: pafarley
-  ms.date: 09/22/2020
-  ms.openlocfilehash: 940a34cfbf4281649737f0cf3fed7b490a9938a7
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
-  ms.translationtype: MT
-  ms.contentlocale: sv-SE
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102508902"
-landingContent:
-- title: Om visuellt innehåll
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Vad är visuellt innehåll?
+  ms.date: 03/31/2021
+highlightedContent:
+  items:
+    - title: Om visuellt innehåll
+      itemType: overview
       url: overview.md
-  - linkListType: whats-new
-    links:
-    - text: Nyheter
+    - title: Vad är nytt i Visuellt innehåll?
+      itemType: whats-new
       url: whats-new.md
-  - linkListType: video
-    links:
-    - text: Integrera intelligens i dina appar med Vision-API:er
-      url: https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-put-intelligence-into-your-business-apps/
-- title: Optisk teckenläsning (OCR)
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Optisk teckenläsning (OCR)
-      url: concept-recognizing-text.md
-  - linkListType: quickstart
-    links:
-    - text: Använda .NET SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
-    - text: Använda Python SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
-    - text: Använda Java SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
-    - text: Använda Node SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
-    - text: Använda SDK för Go
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
-    - text: Använda REST API
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
-- title: Identifiera objekt i bilder
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Objektidentifiering
-      url: concept-object-detection.md
-  - linkListType: quickstart
-    links:
-    - text: Använda .NET SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
-    - text: Använda Python SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
-    - text: Använda Java SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
-    - text: Använda Node SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
-    - text: Använda SDK för Go
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
-    - text: Använda REST API
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
-- title: Applicera innehållstaggar på bilder
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Innehållstaggar
-      url: concept-tagging-images.md
-  - linkListType: quickstart
-    links:
-    - text: Använda .NET SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
-    - text: Använda Python SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
-    - text: Använda Java SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
-    - text: Använda Node SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
-    - text: Använda SDK för Go
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
-    - text: Använda REST API
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
-- title: Använda Read-containern
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: Installera och köra containern
-      url: computer-vision-how-to-install-containers.md
-  - linkListType: how-to-guide
-    links:
-    - text: Konfigurera containrar
-      url: computer-vision-resource-container-config.md
-  - linkListType: deploy
-    links:
-    - text: Använda containerinstanser
-      url: ../containers/azure-container-instance-recipe.md
-    - text: Använda med Kubernetes och Helm
-      url: deploy-computer-vision-on-premises.md
-- title: Använda container för rumslig analys
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: Översikt över rums analys
-      url: intro-to-spatial-analysis-public-preview.md
-    - text: Installera och köra containern
-      url: spatial-analysis-container.md
-    - text: Konfigurera åtgärder
-      url: spatial-analysis-operations.md
-  - linkListType: deploy
-    links:
-    - text: Distribuera en app för att räkna människor
-      url: spatial-analysis-web-app.md
-  - linkListType: concept
-    links:
-    - text: Zon- och linjeplacering
-      url: spatial-analysis-zone-line-placement.md
-    - text: Kameraplacering
-      url: spatial-analysis-camera-placement.md
-    - text: Loggning och felsökning
-      url: spatial-analysis-logging.md
-- title: Identifiera ansikten i en bild
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Ansiktsspårning
-      url: concept-detecting-faces.md
-  - linkListType: quickstart
-    links:
-    - text: Använda .NET SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
-    - text: Använda Python SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
-    - text: Använda Java SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
-    - text: Använda Node SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
-    - text: Använda SDK för Go
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
-- title: Ansvarsfull användning av AI
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Oh-anteckning för rums analys
-      url: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-  - linkListType: concept
-    links:
-    - text: Ansvarig användning för AI-distribution
-      url: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-    - text: Data, sekretess och säkerhet
-      url: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-- title: Referens
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: API för Visuellt innehåll v3.2 – förhandsversion
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b
-    - text: API för Visuellt innehåll v3.1
-      url: https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005
-    - text: API v2.1 för Visuellt innehåll
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641/operations/56f91f2e778daf14a499f21b
-    - text: .NET SDK
-      url: /dotnet/api/overview/azure/cognitiveservices/client/computervision
-    - text: Python SDK
-      url: /python/api/overview/azure/cognitiveservices/computervision
-    - text: Java SDK
-      url: /java/api/overview/azure/cognitiveservices/client/computervision
-    - text: Node.js SDK
-      url: /javascript/api/@azure/cognitiveservices-computervision/
-    - text: Go SDK
-      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision
-    - text: Azure PowerShell
-      url: /powershell/module/az.cognitiveservices/#cognitive_services
-    - text: Kommandoradsgränssnitt för Azure (CLI)
-      url: /cli/azure/cognitiveservices#az-cognitiveservices-list
-- title: Hjälp och feedback
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Alternativ för support och hjälp
-      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
+    - title: Stöd för språk
+      itemType: reference
+      url: language-support.md
+conceptualContent:
+  items:
+    - title: Optisk teckenläsning
+      links:
+        - itemType: overview
+          text: Om OCR
+          url: overview-ocr.md
+        - itemType: quickstart
+          text: Kom igång med OCR
+          url: quickstarts-sdk/client-library.md
+        - itemType: how-to-guide
+          text: Anropa Read API
+          url: Vision-API-How-to-Topics/call-read-api.md
+        - itemType: deploy
+          text: Använd Read OCR-behållare
+          url: computer-vision-how-to-install-containers.md
+        - itemType: reference
+          text: API-referens för OCR
+          url: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005'
+      footerLink:
+        text: Mer
+        url: index-ocr.yml
+    - title: Bildanalys
+      links:
+        - itemType: overview
+          text: Om bild analys
+          url: overview-image-analysis.md
+        - itemType: quickstart
+          text: Kom igång med bild analys
+          url: quickstarts-sdk/image-analysis-client-library.md
+        - itemType: concept
+          text: Innehållstaggar
+          url: concept-tagging-images.md
+        - itemType: concept
+          text: Bildbeskrivningar
+          url: concept-describing-images.md
+        - itemType: concept
+          text: Ansiktsspårning
+          url: concept-detecting-faces.md
+        - itemType: tutorial
+          text: Generera metadata för avbildningar
+          url: Tutorials/storage-lab-tutorial.md
+        - itemType: reference
+          text: API-referens för bild analys
+          url: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
+      footerLink:
+        text: Mer
+        url: index-image-analysis.yml
+    - title: Rumslig analys
+      links:
+        - itemType: overview
+          text: Om rums analys
+          url: intro-to-spatial-analysis-public-preview.md
+        - itemType: quickstart
+          text: Kom igång med Spatial analys
+          url: spatial-analysis-container.md
+        - itemType: how-to-guide
+          text: Konfigurera åtgärder för rums analys
+          url: spatial-analysis-operations.md
+        - itemType: concept
+          text: Zon- och linjeplacering
+          url: spatial-analysis-zone-line-placement.md
+        - itemType: concept
+          text: Kameraplacering
+          url: spatial-analysis-camera-placement.md
+        - itemType: concept
+          text: Loggning och felsökning
+          url: spatial-analysis-logging.md
+      footerLink:
+        text: Mer
+        url: index-spatial-analysis.yml
+tools:
+  title: 'Software Development Kits (SDK:er)'
+  summary: Kom igång med Visuellt innehåll SDK i ditt favorit programmeringsspråk.
+  items:
+    - title: C#
+      imageSrc: media/index/logo_Csharp.svg
+      url: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
+    - title: Node.js
+      imageSrc: media/index/logo_nodejs.svg
+      url: /javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
+    - title: Python
+      imageSrc: media/index/logo_python.svg
+      url: /python/api/overview/azure/cognitiveservices/computervision?view=azure-python
+    - title: Go
+      imageSrc: media/index/logo_go.svg
+      url: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision'
+    - title: Java
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_java.svg'
+      url: /java/api/com.microsoft.cognitiveservices.speech
+additionalContent:
+  sections:
+    - items:
+        - title: 'REST API:er'
+          links:
+            - text: Optisk teckenläsning (OCR)
+              url: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005'
+            - text: Bildanalys
+              url: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
+        - title: Resurser
+          links:
+            - text: Prissättning
+              url: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
+            - text: Regioner
+              url: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+            - text: Läs mer
+              url: /learn/paths/explore-computer-vision-microsoft-azure/
+        - title: Support
+          links:
+            - text: Alternativ för support och hjälp
+              url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
-ms.openlocfilehash: ec835073a1fe447490f6965fe41478319a47f503
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c83f36216e7488df94c372234d0541a4ee9f99b5
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106844"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492230"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Anslutnings-och nätverks koncept för Azure Database for MySQL-flexibel Server (för hands version)
 
@@ -118,7 +118,7 @@ Lär dig hur du aktiverar och hanterar offentlig åtkomst (tillåtna IP-adresser
 ### <a name="troubleshooting-public-access-issues"></a>Felsöka problem med offentlig åtkomst
 Tänk på följande när åtkomst till Microsoft Azure databasen för MySQL Server-tjänsten inte fungerar som förväntat:
 
-* **Ändringar i listan över tillåtna har inte börjat att fungera än:** Det kan finnas en fördröjning på fem minuter för ändringar i Azure Database for MySQL serverns brand Väggs konfiguration som börjar gälla.
+* **Ändringar i tillåten har inte börjat att fungera än:** Det kan finnas en fördröjning på fem minuter för ändringar i Azure Database for MySQL serverns brand Väggs konfiguration som börjar gälla.
 
 * **Autentiseringen misslyckades:** Om en användare inte har behörighet för Azure Database for MySQL servern eller om lösen ordet som används är felaktigt, nekas anslutningen till Azure Database for MySQL servern. När du skapar en brand Väggs inställning får klienterna en möjlighet att försöka ansluta till servern. Varje klient måste ändå ange nödvändiga säkerhets uppgifter.
 
@@ -139,9 +139,23 @@ Exempel
 
 
 ## <a name="tls-and-ssl"></a>TLS och SSL
-Azure Database for MySQL flexibel Server stöder anslutning av klient program till MySQL-tjänsten med hjälp av Transport Layer Security (TLS). TLS är ett bransch standard protokoll som garanterar krypterade nätverks anslutningar mellan databas servern och klient programmen. TLS är ett uppdaterat protokoll för Secure Sockets Layer (SSL).
+Azure Database for MySQL flexibel Server stöder anslutning av klient program till MySQL-servern med hjälp av Secure Sockets Layer (SSL) med kryptering med Transport Layer Security (TLS). TLS är ett bransch standard protokoll som garanterar krypterade nätverks anslutningar mellan din databas server och klient program, så att du kan följa kraven för efterlevnad.
 
-Azure Database for MySQL flexibla servern stöder bara krypterade anslutningar med Transport Layer Security (TLS 1,2). Alla inkommande anslutningar med TLS 1.0 och TLS 1.1 kommer att nekas. Du kan inte inaktivera eller ändra TLS-versionen för anslutning till Azure Database for MySQL flexibel Server. Läs mer i så här [ansluter du med SSL/TLS](how-to-connect-tls-ssl.md) . 
+Azure Database for MySQL flexibel Server stöder krypterade anslutningar med Transport Layer Security (TLS 1,2) som standard och alla inkommande anslutningar med TLS 1,0 och TLS 1,1 kommer att nekas som standard. Konfigurationen av den krypterade anslutningen eller TLS-versionen på din flexibla Server kan konfigureras och ändras. 
+
+Följande är de olika konfigurationerna av SSL-och TLS-inställningar som du kan använda för din flexibla Server:
+
+| Scenario   | Inställningar för Server parameter      | Beskrivning                                    |
+|------------|--------------------------------|------------------------------------------------|
+|Inaktivera SSL (krypterade anslutningar) | require_secure_transport = av |Om det äldre programmet inte har stöd för krypterade anslutningar till MySQL server kan du inaktivera tvång av krypterade anslutningar till din flexibla Server genom att ange require_secure_transport = av.|
+|Framtvinga SSL med TLS-version < 1,2 | require_secure_transport = ON och tls_version = TLSV1 eller TLSV 1.1| Om ditt äldre program stöder krypterade anslutningar men kräver TLS-version < 1,2, kan du aktivera krypterade anslutningar men konfigurera den flexibla servern så att den tillåter anslutningar med TLS-versionen (v 1.0 eller v 1.1) som stöds av ditt program|
+|Framtvinga SSL med TLS-version = 1.2 (standard konfiguration)|require_secure_transport = på och tls_version = TLSV 1.2| Detta är den rekommenderade och standard konfigurationen för flexibel Server.|
+|Framtvinga SSL med TLS-version = 1.3 (stöds med MySQL v 8.0 och senare)| require_secure_transport = på och tls_version = TLSV 1.3| Detta är användbart och rekommenderas för nya program utveckling|
+
+> [!Note]
+> Ändringar av SSL-chiffer på en flexibel Server stöds inte. FIPS cipher-paket tillämpas som standard när tls_version har angetts till TLS version 1,2. För andra TLS-versioner än version 1,2 anges SSL-chiffer till standardinställningar som medföljer MySQL-programinstallationen.
+
+Läs mer i så här [ansluter du med SSL/TLS](how-to-connect-tls-ssl.md) . 
 
 
 ## <a name="next-steps"></a>Nästa steg

@@ -1,14 +1,14 @@
 ---
 title: 'Snabb start: översikt över säkerhets agenter'
-description: I den här snabb starten får du lära dig hur du kan förstå säkerhets agent arkitekturen för de agenter som används i Azure Defender for IoT-tjänsten.
+description: I den här snabb starten lär du dig att förstå säkerhets agent arkitekturen för de agenter som används i Azure Defender for IoT-tjänsten.
 ms.topic: quickstart
-ms.date: 01/24/2021
-ms.openlocfilehash: 2e7d7d1e6770667b1ce966724611cc003116409d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/4/2021
+ms.openlocfilehash: 0937cccb0335f4eee16ca3590babe9574320b89f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778516"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384994"
 ---
 # <a name="quickstart-security-agent-reference-architecture"></a>Snabb start: referens arkitektur för säkerhets agent
 
@@ -31,9 +31,9 @@ Defender för IoT-säkerhetsagenter utvecklas som projekt med öppen källkod oc
 - [Defender för IoT C-baserad agent](https://github.com/Azure/Azure-IoT-Security-Agent-C)
 - [Defender för IoT C#-baserad agent](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
-Inget
+- Inget
 
 ## <a name="agent-supported-platforms"></a>Plattformar som stöds
 
@@ -48,8 +48,7 @@ Defender for IoT erbjuder olika installations agenter för 32-bitars och 64-bita
 ## <a name="next-steps"></a>Nästa steg
 
 I den här artikeln fick du en översikt på hög nivå om Defender för IoT Defender-IoT-Micro-agent-arkitektur och tillgängliga installations program.
-
-Använd följande artiklar om du vill fortsätta komma igång med Defender för IoT-distribution:
+För att fortsätta komma igång med Defender för IoT-distribution, 
 
 > [!div class="nextstepaction"]
 > [autentiseringsmetoder för säkerhets agent](concept-security-agent-authentication-methods.md)

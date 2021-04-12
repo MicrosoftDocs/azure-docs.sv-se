@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 666e9f01d090acf29b8013470ed0264cd83f6d47
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: a8420d23c8bda29290722975ada2acca6733f0e7
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106293642"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491700"
 ---
 # <a name="use-databox-to-migrate-from-network-attached-storage-nas-to-azure-file-shares"></a>Använd dataattribut för att migrera från nätverksansluten lagring (NAS) till Azure-filresurser
 
@@ -137,7 +137,12 @@ Följ stegen i dokumentationen för Azure Data Center:
 
 Dokumentationen för den länkade data rutan anger ett RoboCopy-kommando. Kommandot är dock inte lämpligt för att bevara den fullständiga åter givningen av filer och mappar. Använd det här kommandot i stället:
 
-[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
+```console
+Robocopy /MT:32 /NP /NFL /NDL /B /MIR /IT /COPY:DATSO /DCOPY:DAT /UNILOG:<FilePathAndName> <SourcePath> <Dest.Path> 
+```
+* Mer information om de enskilda RoboCopy-flaggorna finns i tabellen i det kommande [Robocopy-avsnittet](#robocopy).
+* Om du vill veta mer om hur du rätt storlek på antalet trådar `/MT:n` , optimerar Robocopy-hastigheten och gör Robocopy till en lämplig granne i ditt data Center kan du titta närmare på [avsnittet Robocopy fel sökning](#troubleshoot).
+
 
 ## <a name="phase-7-catch-up-robocopy-from-your-nas"></a>Fas 7: fånga upp RoboCopy från din NAS
 
@@ -197,59 +202,7 @@ Du kan försöka att köra några av dessa kopior parallellt. Vi rekommenderar a
 
 ## <a name="troubleshoot"></a>Felsöka
 
-Hastigheten och framgångs takten för en bestämd RoboCopy-körning är beroende av flera faktorer:
-
-* IOPS på käll-och mål lagrings platsen
-* den tillgängliga nätverks bandbredden mellan dem
-* möjlighet att snabbt bearbeta filer och mappar i ett namn område
-* antalet ändringar mellan RoboCopy körs
-
-
-### <a name="iops-and-bandwidth-considerations"></a>Överväganden vid IOPS och bandbredd
-
-I den här kategorin måste du ta hänsyn till **källans** kapacitet (NAS), **målet** (Azure-datarutan och senare Azure-filresurs) och **nätverket** som ansluter dem. Högsta möjliga data flöde bestäms av de långsammaste komponenterna i dessa tre komponenter. En standard data form levereras med dubbla nätverks gränssnitt på 10 Gbit/s. Beroende på din NAS kan du eventuellt matcha det. Kontrol lera att din nätverks infrastruktur har kon figurer ATS för att stödja optimal överföringshastighet för bästa möjliga möjligheter.
-
-> [!CAUTION]
-> När du kopierar så snabbt som möjligt är det ofta bäst att ta hänsyn till användningen av ditt lokala nätverk och NAS-enheten för andra, ofta affärs kritiska uppgifter.
-
-Det kanske inte är önskvärt att kopiera så snabbt som möjligt om det finns en risk att migreringen kan monopolisera tillgängliga resurser.
-
-* Tänk på att när det är bäst i din miljö att köra migreringar: under dag, på timmar eller under helger.
-* Överväg även nätverks-QoS på en Windows-Server för att reglera RoboCopy hastighet och därmed påverkan på NAS och nätverk.
-* Undvik onödigt arbete för Migreringsverktyg.
-
-RobCopy har också möjlighet att infoga fördröjningar mellan paket genom att ange `/IPG:n` växeln där `n` mäts i millisekunder mellan Robocopy-paket. Med den här växeln kan du undvika monopolization av resurser både i IO-begränsade NAS-enheter och mycket använda nätverks länkar. 
-
-`/IPG:n` kan inte användas för exakt nätverks begränsning till en viss Mbit/s. Använd Windows Server Network QoS i stället. RoboCopy är helt beroende av SMB-protokollet för alla nätverk och har därför inte möjlighet att påverka själva nätverks flödet, men det kan sakta ned sin användning. 
-
-En liknande idé gäller den IOPS som observerats i NAS. Kluster storleken på NAS-volymen, paket storlekarna och en matris med andra faktorer påverkar den observerade IOPS. Det enklaste sättet att kontrol lera belastningen på NAS är ofta det enklaste sättet att införa en fördröjning mellan paket. Testa flera värden, till exempel från cirka 20 millisekunder (n = 20) till multiplar av det för att se hur mycket fördröjning som de andra kraven kan ha för att servas samtidigt som RoboCopy-hastigheten är max för dina begränsningar.
-
-### <a name="processing-speed"></a>Bearbetnings hastighet
-
-RoboCopy kommer att passera namn området som det pekar på och utvärdera varje fil och mapp för kopiering. Varje fil kommer att utvärderas under en inledande kopia, till exempel en kopia över det lokala nätverket till en data, och även under fångst kopior över WAN-länken till en Azure-filresurs.
-
-Vi använder ofta standard bandbredd som den mest begränsande faktorn i en migrering – och kan vara sann. Men möjligheten att räkna upp ett namn område kan påverka den totala tiden för att kopiera ännu mer för större namn områden med mindre filer. Tänk på att kopiering av 1 TiB av små filer tar avsevärt längre tid än att kopiera 1 TiB av färre men större filer som har beviljats samma som alla andra variabler.
-
-Orsaken till den här skillnaden är den bearbetnings kraft som behövs för att gå igenom ett namn område. RoboCopy stöder flertrådade kopior via `/MT:n` parametern där n står för antalet processor trådar. När du konfigurerar en dator särskilt för RoboCopy bör du tänka på antalet processor kärnor och deras relation till antalet trådar som de tillhandahåller. De vanligaste är två trådar per kärna. Datorns kärn-och tråd antal är en viktig data punkt för att avgöra vilka värden för flera trådar `/MT:n` som du bör ange. Överväg också hur många RoboCopy-jobb du planerar att köra parallellt på en specifik dator.
-
-Fler trådar kommer att kopiera vårt 1Tib-exempel för små filer avsevärt snabbare än färre trådar. Samtidigt finns det en minskning av räntabiliteten på vårt 1Tib av större filer. De kommer fortfarande att kopieras snabbare ju fler trådar du tilldelar, men du får större sannolikhet för nätverks bandbredd eller i/o-begränsad.
-
-### <a name="avoid-unnecessary-work"></a>Undvik onödigt arbete
-
-Undvik stora skalnings ändringar i ditt namn område. Detta inkluderar att flytta filer mellan kataloger, ändra egenskaper i stor skala eller ändra behörigheter (NTFS ACL: er) eftersom de ofta har en sammanhängande ändrings kontroll när mapp-ACL: er närmast roten för en resurs ändras. Konsekvenser kan vara:
-
-* utökat jobb körnings tid för RoboCopy till följd av varje fil och mapp som påverkas av en ACL-ändring som behöver uppdateras
-* effektiviteten för att använda data rutan på första platsen kan minska när mappstrukturen ändras efter att filerna hade kopierats till en datarutan. Ett RoboCopy-jobb kan inte "spela upp" en namn områdes ändring och behöver därför rensa filerna som transporteras till en Azure-filresurs och ladda upp filerna i den nya mappstrukturen igen till Azure.
-
-En annan viktig aspekt är att använda RoboCopy-verktyget effektivt. Med det rekommenderade RoboCopy-skriptet kommer du att skapa och spara en loggfil för fel. Kopierings fel kan inträffa – det är normalt. De här felen gör det ofta nödvändigt att köra flera avrundning av ett kopierings verktyg som RoboCopy. En första körning, t. ex. från NAS till data, och en eller flera extra med/MIR-växeln för att hämta och försöka igen filer som inte kopierades.
-
-Du bör vara beredd på att köra flera avrundade RoboCopy mot en specifik namn område. Efterföljande körningar slutförs snabbare eftersom de har mindre att kopiera men är begränsade, allt efter hastigheten för bearbetning av namn området. När du kör flera avrundar kan du påskynda varje avrundning genom att inte låta RoboCopy prova orimligt hårt för att kopiera allt vid första försöket. Dessa RoboCopy-växlar kan göra stor skillnad:
-
-* `/R:n` n = hur ofta du försöker kopiera en misslyckad fil och 
-* `/W:n` n = hur många sekunder väntar mellan återförsök
-
-`/R:5 /W:5` är en rimlig inställning som du kan anpassa efter dina önskemål. I det här exemplet kommer en misslyckad fil att provas fem gånger, med en vänte tid på fem sekunder mellan återförsök. Om det fortfarande inte går att kopiera filen försöker nästa RoboCopy-jobb att försöka igen och ofta filer som misslyckades eftersom de används eller på grund av timeout-problem kan komma att kopieras på det här sättet.
-
+[!INCLUDE [storage-files-migration-robocopy-optimize](../../../includes/storage-files-migration-robocopy-optimize.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 

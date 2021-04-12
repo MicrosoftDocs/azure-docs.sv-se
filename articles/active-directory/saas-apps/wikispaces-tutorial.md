@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 877f589c19663503b9bb0b1627f1dffe0eba1a23
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96302749"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>Självstudie: Azure Active Directory integrering med Wikispaces
@@ -176,17 +176,17 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
-### <a name="create-wikispaces-test-user"></a>Skapa Wikispaces test användare
+### <a name="create-wikispaces-test-user&quot;></a>Skapa Wikispaces test användare
 
 För att Azure AD-användare ska kunna logga in på Wikispaces måste de tillhandahållas i Wikispaces. När det gäller Wikispaces är etableringen en manuell uppgift.
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Utför följande steg för att tillhandahålla ett användarkonto:
+### <a name=&quot;to-provision-a-user-accounts-perform-the-following-steps&quot;></a>Utför följande steg för att tillhandahålla ett användarkonto:
 
 1. Logga in på din **Wikispaces** -företags webbplats som administratör.
 
 2. Gå till **medlemmar**.
    
-    ![Medlemmar](./media/wikispaces-tutorial/ic787193.png "Medlemmar")
+    ![Medlemmar](./media/wikispaces-tutorial/ic787193.png &quot;Medlemmar")
 
 3. Klicka på **Bjud in personer**.
    

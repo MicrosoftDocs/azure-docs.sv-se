@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/04/2021
+ms.date: 03/23/2021
 ms.author: justinha
-ms.openlocfilehash: fec2695c9e196a652a4166161bf012b22b0d00e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 928b1a6dcff7ad186bf5fe9ce07d1a886d429867
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579560"
+ms.locfileid: "105933346"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Självstudie: Konfigurera säker LDAP för en Azure Active Directory Domain Services hanterad domän
 
@@ -298,6 +298,21 @@ Om du har lagt till en DNS-post i den lokala värd filen på datorn för att tes
 1. Öppna *anteckningar* som administratör på den lokala datorn
 1. Bläddra till och öppna filen *C:\Windows\System32\drivers\etc\hosts*
 1. Ta bort raden för den post som du har lagt till, till exempel `168.62.205.103    ldaps.aaddscontoso.com`
+
+## <a name="troubleshooting"></a>Felsökning
+
+Om du ser ett fel som säger att LDAP.exe inte kan ansluta kan du prova att gå igenom de olika aspekterna av att ansluta till: 
+
+1. Konfigurera domänkontrollanten
+1. Konfigurera klienten
+1. Nätverk
+1. Upprätta TLS-sessionen
+
+För certifikatets ämnes namn matchar DOMÄNKONTROLLANTen att Azure lägger till domän namnet (inte Azure AD-domännamnet) för att söka efter certifikatet i certifikat arkivet. Stavfel kan till exempel hindra DOMÄNKONTROLLANTen från att välja rätt certifikat. 
+
+Klienten försöker upprätta TLS-anslutningen med det namn som du har angett. Trafiken måste gå igenom hela vägen. DOMÄNKONTROLLANTen skickar den offentliga nyckeln till serverns auth-certifikat. Certifikatet måste ha rätt användning i certifikatet, namnet som loggats i ämnes namnet måste vara kompatibelt för att klienten ska kunna lita på att servern är det DNS-namn som du ansluter till (det vill säga att ett jokertecken fungerar, utan stavfel) och klienten måste ha förtroende för utfärdaren. Du kan kontrol lera om det finns några problem i den kedjan i system loggen i Loggboken och filtrera händelserna där källan är lika med Schannel. När dessa delar är på plats utgör de en sessionsnyckel.  
+
+Mer information finns i [TLS-handskakning](https://docs.microsoft.com/windows/win32/secauthn/tls-handshake-protocol).
 
 ## <a name="next-steps"></a>Nästa steg
 

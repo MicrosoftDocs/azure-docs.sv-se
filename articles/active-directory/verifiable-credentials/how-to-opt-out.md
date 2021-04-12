@@ -1,5 +1,5 @@
 ---
-title: Välj bort verifierbara autentiseringsuppgifter (förhands granskning)
+title: Välj bort Azure Active Directory verifierbara autentiseringsuppgifter (förhands granskning)
 description: Lär dig att välja för hands versionen av verifierbara autentiseringsuppgifter
 documentationCenter: ''
 author: barclayn
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 93c493a9b9941913da270fe763175240c8abf9f3
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: d6e72b6d6f566fcf3f52e1c48ab6824c0e9a968e
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106170215"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222800"
 ---
 # <a name="opt-out-of-the-verifiable-credentials-preview"></a>Välj bort verifierbara autentiseringsuppgifter (förhands granskning)
 
@@ -62,7 +62,7 @@ När du har slutfört väljer av tjänsten Azure Active Directory verifierbara a
 
 När en avanmälning har skett kan du inte återställa dina genomförda eller utföra åtgärder på din verksamhet. Det här steget är en enkelriktad åtgärd och du måste välja igen, vilket resulterar i att nya skapas.  
 
-## <a name="effect-on-existing-verifiable-credentials"></a>Påverka befintliga verifierbara autentiseringsuppgifter.
+## <a name="effect-on-existing-verifiable-credentials"></a>Påverka befintliga verifierbara autentiseringsuppgifter
 
 Alla verifierbara autentiseringsuppgifter som redan har utfärdats fortsätter att existera. De kommer inte att vara kryptografiskt kryptografiska eftersom du fortfarande kommer att kunna matchas via Jon.
 Men när förlitande parter anropar status-API: et, kommer de alltid att få tillbaka ett fel meddelande.

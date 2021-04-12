@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 695aa760d554946883f72692f0bed1babad933b1
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105568808"
 ---
 # <a name="create-interactive-reports-vm-insights-with-workbooks"></a>Skapa interaktiva rapporter VM Insights med arbets böcker
@@ -25,7 +25,7 @@ Arbets böcker är användbara för scenarier som:
 
 I följande tabell sammanfattas de arbets böcker som ingår i VM-insikter för att komma igång.
 
-| Arbetsbok | Description | Omfång |
+| Arbetsbok | Beskrivning | Omfång |
 |----------|-------------|-------|
 | Prestanda | Innehåller en anpassningsbar version av vår översta N-lista och diagram-vy i en enda arbets bok som utnyttjar alla Log Analytics prestanda räknare som du har aktiverat.| Flera virtuella datorer |
 | Prestandaräknare | En översta N-diagramvy över en stor uppsättning prestanda räknare. | Flera virtuella datorer |

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: dfeb99fdbd5cf2b0784982b385d46c3a16901ec8
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105567431"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>Självstudie: Azure Active Directory integrering med Mozy Enterprise
@@ -120,13 +120,13 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Mo
 
     c. Utloggnings-URL
 
-### <a name="configure-mozy-enterprise-single-sign-on"></a>Konfigurera Mozy Enterprise Single Sign-On
+### <a name="configure-mozy-enterprise-single-sign-on&quot;></a>Konfigurera Mozy Enterprise Single Sign-On
 
 1. Logga in på företagets företags webbplats som administratör i ett annat webbläsarfönster.
 
 2. Klicka på **autentiseringsprincip** i avsnittet **konfiguration** .
    
-    ![Skärm bild som visar en autentiseringsprincip som valts från konfigurationen.](./media/mozy-enterprise-tutorial/ic777314.png "Autentiseringsprincip")
+    ![Skärm bild som visar en autentiseringsprincip som valts från konfigurationen.](./media/mozy-enterprise-tutorial/ic777314.png &quot;Autentiseringsprincip")
 
 3. Utför följande steg i avsnittet **autentiseringsprincip** :
    
@@ -199,7 +199,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
-### <a name="create-mozy-enterprise-test-user"></a>Skapa Mozy Enterprise test User
+### <a name="create-mozy-enterprise-test-user&quot;></a>Skapa Mozy Enterprise test User
 
 För att Azure AD-användarna ska kunna logga in på Mozy Enterprise måste de tillhandahållas i Mozy Enterprise. När det gäller Mozy Enterprise är etableringen en manuell uppgift.
 
@@ -212,7 +212,7 @@ För att Azure AD-användarna ska kunna logga in på Mozy Enterprise måste de t
 
 2. Klicka på **användare** och sedan på **Lägg till ny användare**.
    
-    ![Användare](./media/mozy-enterprise-tutorial/ic777317.png "Användare")
+    ![Användare](./media/mozy-enterprise-tutorial/ic777317.png &quot;Användare")
    
     >[!NOTE]
     >Alternativet **Lägg till ny användare** visas bara om **Mozy** har valts som Provider under **autentiseringsprincip**. Om SAML-autentisering har kon figurer ATS läggs användarna automatiskt till första inloggningen via enkel inloggning.

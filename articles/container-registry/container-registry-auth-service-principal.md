@@ -2,17 +2,17 @@
 title: Autentisera med tjänstens huvudnamn
 description: Ge åtkomst till avbildningar i ditt privata behållar register med hjälp av ett Azure Active Directory tjänstens huvud namn.
 ms.topic: article
-ms.date: 10/04/2019
-ms.openlocfilehash: 8d49628576a1c337efaea3e5286fef00e39def17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/15/2021
+ms.openlocfilehash: a32538e5fc5354427bafc5098634becdcedd1239
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86259140"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285543"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry autentisering med tjänstens huvud namn
 
-Du kan använda ett Azure Active Directory (Azure AD) tjänstens huvud namn för att tillhandahålla behållar avbildning `docker push` och `pull` åtkomst till behållar registret. Genom att använda ett huvud namn för tjänsten kan du ge åtkomst till "konsol löst" tjänster och program.
+Du kan använda ett Azure Active Directory (Azure AD) tjänstens huvud namn för att tillhandahålla push, pull eller annan åtkomst till behållar registret. Genom att använda ett huvud namn för tjänsten kan du ge åtkomst till "konsol löst" tjänster och program.
 
 ## <a name="what-is-a-service-principal"></a>Vad är ett huvudnamn för tjänsten?
 
@@ -52,7 +52,7 @@ När du har ett huvud namn för tjänsten som du har beviljat åtkomst till beh�
 * **Användar namn** – program-ID för tjänstens huvud namn (kallas även *klient-ID*)
 * **Lösen** ord för tjänstens huvud namn (kallas även *klient hemlighet*)
 
-Varje värde är ett GUID för formuläret `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . 
+Varje värde har formatet `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . 
 
 > [!TIP]
 > Du kan återskapa lösen ordet för ett huvud namn för tjänsten genom att köra kommandot [AZ AD SP reset-credentials](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) .
@@ -66,7 +66,7 @@ Använd till exempel autentiseringsuppgifterna för att hämta en avbildning fr�
 
 ### <a name="use-with-docker-login"></a>Använd med Docker-inloggning
 
-Du kan köra `docker login` med ett huvud namn för tjänsten. I följande exempel skickas ID: t för tjänstens huvud namn i miljö variabeln `$SP_APP_ID` och lösen ordet i variabeln `$SP_PASSWD` . Metod tips för att hantera Docker-autentiseringsuppgifter finns i kommando referensen [Docker login](https://docs.docker.com/engine/reference/commandline/login/) .
+Du kan köra `docker login` med ett huvud namn för tjänsten. I följande exempel skickas ID: t för tjänstens huvud namn i miljö variabeln `$SP_APP_ID` och lösen ordet i variabeln `$SP_PASSWD` . Rekommenderade metoder för att hantera Docker-autentiseringsuppgifter finns i kommando referensen [Docker login](https://docs.docker.com/engine/reference/commandline/login/) .
 
 ```bash
 # Log in to Docker with service principal credentials

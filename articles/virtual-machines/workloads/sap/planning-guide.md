@@ -8,15 +8,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/17/2020
+ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 8bc289e90470ae9bc8b1996ac08c3144ea78de35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67ef0bf7a8c3906122468c895325a77de555c196
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504720"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258800"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planera och implementera SAP-NetWeaver
 
@@ -588,7 +588,11 @@ Det är möjligt att tilldela fasta eller reserverade IP-adresser till virtuella
 > [!NOTE]
 > Du bör tilldela statiska IP-adresser via Azure till enskilda virtuella nätverkskort. Du bör inte tilldela statiska IP-adresser i gäst operativ systemet till en vNIC. Vissa Azure-tjänster som Azure Backup-tjänsten är beroende av att minst primär vNIC är inställd på DHCP och inte statiska IP-adresser. Se även dokumentet [Felsöka säkerhets kopiering av virtuella Azure-datorer](../../../backup/backup-azure-vms-troubleshoot.md#networking).
 >
->
+
+
+##### <a name="secondary-ip-addresses-for-sap-hostname-virtualization"></a>Sekundära IP-adresser för SAP hostname-virtualisering
+Varje virtuell Azure-dators nätverkskort kan ha flera tilldelade IP-adresser, denna sekundära IP-adress kan användas för virtuella SAP-värdnamn som mappas till en DNS A/PTR-post om det behövs. De sekundära IP-adresserna måste tilldelas till Azure virtuella nätverkskort IP config enligt [den här artikeln](../../../virtual-network/virtual-network-multiple-ip-addresses-portal.md) och också konfigureras i operativ systemet eftersom sekundära IP-adresser inte har tilldelats via DHCP. Varje sekundär IP-adress måste vara från samma undernät som vNIC är kopplat till. Användning av Azure Load Balancers flytande IP-adress [stöds inte]( https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations) sekundärt för sekundära IP-konfigurationer, till exempel pacemaker-kluster, i det här fallet aktiverar IP-adresserna Load Balancer för det virtuella SAP-värdnamnet (s). Se även SAP: s antecknings [#962955](https://launchpad.support.sap.com/#/notes/962955) om allmän vägledning med virtuella värdnamn.
+
 
 ##### <a name="multiple-nics-per-vm"></a>Flera nätverkskort per virtuell dator
 
@@ -1236,7 +1240,7 @@ Azure geo-replikering fungerar lokalt på varje virtuell hård disk i en virtuel
 ---
 ### <a name="final-deployment"></a>Slutlig distribution
 
-För den slutliga distributionen och de exakta stegen, särskilt vad gäller distributionen av Azure-tillägget för SAP, se [distributions guiden][deployment-guide].
+Den slutliga distributionen och de exakta stegen, särskilt distributionen av Azure-tillägget för SAP, finns i [distributions guiden][deployment-guide].
 
 ## <a name="accessing-sap-systems-running-within-azure-vms"></a>Åtkomst till SAP-system som körs i virtuella Azure-datorer
 
@@ -1657,7 +1661,7 @@ TMS (SAP Change and transport system) måste konfigureras för att exportera och
 
 ##### <a name="configuring-the-transport-domain"></a>Konfigurera transport domänen
 
-Konfigurera transport domänen på det system som du angav som transport domän kontrol Lanterna enligt beskrivningen i [Konfigurera transport](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm)domänkontrollanten. En systemuser-TMSADM skapas och den obligatoriska RFC-destinationen skapas. Du kan kontrol lera dessa RFC-anslutningar med transaktions SM59. Hostname-matchning måste vara aktiverat i din transport domän.
+Konfigurera transport domänen på det system som du angav som transport domän kontrol Lanterna enligt beskrivningen i [Konfigurera transport](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/44b4a0b47acc11d1899e0000e829fbbd.html?q=Configuring%20the%20Transport%20Domain%20Controller)domänkontrollanten. En systemuser-TMSADM skapas och den obligatoriska RFC-destinationen skapas. Du kan kontrol lera dessa RFC-anslutningar med transaktions SM59. Hostname-matchning måste vara aktiverat i din transport domän.
 
 Anvisningar:
 
@@ -1670,12 +1674,12 @@ Anvisningar:
 
 Sekvensen inklusive ett SAP-system i en transport domän ser ut så här:
 
-* I DEV-systemet i Azure går du till transport systemet (Client 000) och anropar Transaction STMS. Välj annan konfiguration i dialog rutan och fortsätt med inkludera system i domän. Ange domänkontrollanten som mål värd ([inklusive SAP-system i transport domänen](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)). Systemet väntar nu på att tas med i transport domänen.
+* I DEV-systemet i Azure går du till transport systemet (Client 000) och anropar Transaction STMS. Välj annan konfiguration i dialog rutan och fortsätt med inkludera system i domän. Ange domänkontrollanten som mål värd ([inklusive SAP-system i transport domänen](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/44b4a0c17acc11d1899e0000e829fbbd.html?q=Including%20SAP%20Systems%20in%20the%20Transport%20Domain)). Systemet väntar nu på att tas med i transport domänen.
 * Av säkerhets skäl måste du gå tillbaka till domänkontrollanten för att bekräfta din begäran. Välj system översikt och godkänn väntar på systemet. Bekräfta sedan frågan och konfigurationen kommer att distribueras.
 
 Detta SAP-system innehåller nu nödvändig information om alla andra SAP-system i transport domänen. På samma tidpunkt skickas adress data för det nya SAP-systemet till alla andra SAP-system, och SAP-systemet anges i transport kontroll programmets transport profil. Kontrol lera om RFC: er och åtkomst till domänens transport katalog fungerar.
 
-Fortsätt med konfigurationen av ditt transport system som vanligt enligt beskrivningen i dokumentations [ändrings-och transport systemet](https://help.sap.com/saphelp_nw70ehp3/helpdata/en/48/c4300fca5d581ce10000000a42189c/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm).
+Fortsätt med konfigurationen av ditt transport system som vanligt enligt beskrivningen i dokumentations [ändrings-och transport systemet](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/3bdfba3692dc635ce10000009b38f839.html).
 
 Anvisningar:
 
@@ -1687,13 +1691,13 @@ Anvisningar:
 
 I scenarier med plats-till-plats ansluten mellan olika platser kan svars tiden mellan lokala och Azure fortfarande vara betydande. Om vi följer sekvensen för att transportera objekt via utvecklings-och test system till produktion eller om du tänker använda transporter eller support paket på olika system, inser du att, beroende på platsen för den centrala transport katalogen, kommer vissa av systemen att ha hög fördröjning vid läsning eller skrivning av data i den centrala transport katalogen. Situationen liknar konfigurationer i SAP landskap där de olika systemen sprids genom olika data Center med ett stort avstånd mellan data centren.
 
-För att undvika svars tid och låta systemet arbeta snabbt vid läsning eller skrivning till eller från transport katalogen, kan du konfigurera två STMS transport domäner (en för lokal och en med system i Azure och länka transport domänerna. Läs den här dokumentationen, som förklarar principerna bakom det här konceptet i SAP-TMS: <https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm> .
+För att undvika svars tid och låta systemet arbeta snabbt vid läsning eller skrivning till eller från transport katalogen, kan du konfigurera två STMS transport domäner (en för lokal och en med system i Azure och länka transport domänerna. Läs denna [documentation] (<https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm) , som förklarar principerna bakom det här konceptet i SAP-TMS.
+
 
 Anvisningar:
 
-* Konfigurera en transport domän på varje plats (lokalt och Azure) med transaktion STMS <https://help.sap.com/saphelp_nw70ehp3/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm>
-* Länka domänerna till en domän länk och bekräfta länken mellan de två domänerna.
-  <https://help.sap.com/saphelp_nw73ehp1/helpdata/en/a3/139838280c4f18e10000009b38f8cf/content.htm>
+* [Konfigurera en transport domän] (<https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/44b4a0b47acc11d1899e0000e829fbbd.html?q=Set%20up%20a%20transport%20domain) på varje plats (lokalt och Azure) med transaktion STMS
+* [Länka domänerna till en domän länk](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/14c795388d62e450e10000009b38f889.html?q=Link%20the%20domains%20with%20a%20domain%20link) och bekräfta länken mellan de två domänerna.
 * Distribuera konfigurationen till det länkade systemet.
 
 #### <a name="rfc-traffic-between-sap-instances-located-in-azure-and-on-premises-cross-premises"></a>RFC-trafik mellan SAP-instanser som finns i Azure och lokalt (mellan platser)

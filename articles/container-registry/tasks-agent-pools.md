@@ -4,12 +4,12 @@ description: Konfigurera en dedikerad Compute-pool (lagringspool) i registret f�
 ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: eeb9a71854f52da5c1a9f4befae93c377ad67b05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b1f077d6216443ad267f8620f87882439cb355c
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98920315"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284149"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>Köra en ACR-uppgift i en dedikerad agent
 
@@ -31,7 +31,7 @@ Den här funktionen är tillgänglig i tjänst nivån **Premium** container Regi
 ## <a name="preview-limitations"></a>Begränsningar för förhandsversion
 
 - Task agent-pooler stöder för närvarande Linux-noder. Windows-noder stöds inte för närvarande.
-- Task agent-pooler är tillgängliga i för hands versionen i följande regioner: västra USA 2, södra centrala USA, östra USA 2, östra USA, centrala USA, USGov Arizona, USGov Texas och USGov Virginia.
+- Task agent-pooler är tillgängliga i för hands versionen i följande regioner: USA, västra 2, södra centrala USA, östra USA 2, östra USA, centrala USA, Västeuropa, centrala Kanada, USGov Arizona, USGov Texas och USGov Virginia.
 - För varje register är standard kvoten för total vCPU (kärna) 16 för alla standardagent-pooler och är 0 för isolerade agenter. Öppna en [support förfrågan][open-support-ticket] om ytterligare allokering.
 - Du kan inte avbryta körningen av en aktivitet för en agent.
 

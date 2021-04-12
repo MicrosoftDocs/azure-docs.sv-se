@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 4ae7ad186e2ed8868be6205d48e9cfbef525d810
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 04b36b9b32e78016f693e61d40246776492be0e3
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106172819"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222868"
 ---
 # <a name="introduction-to-azure-active-directory-verifiable-credentials-preview"></a>Introduktion till Azure Active Directory verifierbara autentiseringsuppgifter (för hands version)
 
@@ -28,7 +28,7 @@ Våra digitala och fysiska liv är alltmer länkade till appar, tjänster och en
 
 Men identitets data har för ofta exponerats i säkerhets överträdelser. Dessa överträdelser påverkas av personers liv som påverkar vår sociala, professionella och ekonomiska liv. Microsoft anser att det finns ett bättre sätt. Varje person har rätt till en identitet som de äger och styr, en som på ett säkert sätt lagrar element i sin digitala identitet och bevarar sekretess. I den här huvud gruppen förklaras hur vi ansluter sig till händerna med en stor community för att skapa en öppen, säker, interoperabl och standardbaserad decentraliserad identitets lösning (lösning) för enskilda användare och organisationer.
 
-## <a name="why-we-need-decentralized-identity"></a>Varför vi behöver decentraliserad identitet 
+## <a name="why-we-need-decentralized-identity"></a>Varför vi behöver decentraliserad identitet
 
 Idag använder vi vår digitala identitet på arbetet, hemma och över alla appar, tjänster och enheter som vi använder. Det består av allt vi säger, gör och upplever våra livet – Köp biljetter för en händelse, att checka in till ett hotell eller till och med beställa lunch. För närvarande äger vår identitet och alla våra digitala interaktioner och styrs av andra parter, som vi inte ens känner till.
 
@@ -36,7 +36,7 @@ I allmänhet beviljar användare medgivande till flera appar och enheter. Den h�
 
 Vi tror att ett standardiserat decentraliserat identitets system kan låsa upp en ny uppsättning upplevelser som gör det möjligt för användare och organisationer att få bättre kontroll över sina data, och ge en högre grad av förtroende och säkerhet för appar, enheter och tjänst leverantörer
 
-## <a name="lead-with-open-standards"></a>Lead med öppna standarder 
+## <a name="lead-with-open-standards"></a>Lead med öppna standarder
 
 Vi strävar efter att samar beta med kunder, partners och communityn för att låsa upp nästa generations decentraliserade identitetsbaserade upplevelser och vi är glada över att vara partner med de personer och organisationer som gör fantastiska bidrag i detta utrymme. Om det ursprungliga eko systemet är att växa, standarder, tekniska komponenter och kod slut produkter måste vara öppen källkod och tillgänglig för alla.
 
@@ -50,21 +50,21 @@ Microsoft samarbetar aktivt med medlemmar i uncentraliserad Identity Foundation 
 * [DIF presentations utbyte](https://identity.foundation/presentation-exchange/)
 
 
-## <a name="what-are-dids"></a>Vad är DIDs 
+## <a name="what-are-dids"></a>Vad är DIDs?
 
 Innan vi kan förstå DIDs hjälper det att jämföra dem med aktuella identitets system. E-postadresser och sociala nätverks-ID: n är human-vänliga alias för samarbete, men är nu överbelastade för att fungera som kontroll punkter för data åtkomst i många olika scenarier utanför samarbetet. Detta skapar ett potentiellt problem, eftersom åtkomst till dessa ID: n kan tas bort när som helst av externa parter.
 
 Decentraliserade identifierare (DIDs) skiljer sig åt. DIDs är användardefinierade, egna, globalt unika identifierare som är rotade i decentraliserade system som Jon. De har unika egenskaper, t. ex. större garantier för oföränderlighets, censorship resistens och manipulering evasiveness. Dessa attribut är kritiska för alla ID-system som är avsedda att ge dig själv ägande rätt och användar kontroll. 
 
 Microsofts lösning för verifierbara autentiseringsuppgifter använder decentraliserade autentiseringsuppgifter (DIDs) för att kryptografiskt signera som bevis på att en förlitande part (Verifier) bestyrkar information som visar att de är ägare till verifierbara autentiseringsuppgifter. Därför rekommenderas en grundläggande förståelse av decentraliserade identifierare för alla som skapar en verifierbar lösning för autentiseringsuppgifter baserat på Microsoft-erbjudandet.
-## <a name="what-are-verifiable-credentials"></a>Vad är verifierbara autentiseringsuppgifter 
+## <a name="what-are-verifiable-credentials"></a>Vad är verifierbara autentiseringsuppgifter?
 
  Vi använder ID: n i vår dagliga livs längd. Vi har driv rutins licenser som vi använder som bevis på vår förmåga att driva en bil. Universitet utfärdar utbildnings bevis som visar att vi har uppnått en utbildnings nivå. Vi använder Passport för att bevisa vem vi är ansvariga för när vi kommer till andra länder. Data modellen beskriver hur vi kan hantera dessa typer av scenarier när de arbetar via Internet, men på ett säkert sätt som respekterar användarens integritet. Du kan hämta ytterligare information i [data modellen för verifierbara autentiseringsuppgifter 1,0](https://www.w3.org/TR/vc-data-model/)
 
 I korthet är verifierbara autentiseringsuppgifter data objekt som består av anspråk som utfärdats av utfärdaren och som attesterar information om ett ämne. Dessa anspråk identifieras av schemat och inkluderar utfärdaren och ämnet. Utfärdaren skapade en digital signatur som bevis på att de attesterar den här informationen.
 
 
-## <a name="how-does-decentralized-identity-work"></a>Hur fungerar decentraliserad identitet? 
+## <a name="how-does-decentralized-identity-work"></a>Hur fungerar decentraliserad identitet?
 
 Vi behöver en ny typ av identitet. Vi behöver en identitet som samlar teknik och standarder för att leverera nyckel identiteter som till exempel själv ägande rätt och censorship resistens. Dessa funktioner är svåra att uppnå med befintliga system.
 

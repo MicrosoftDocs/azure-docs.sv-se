@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 7f99c37cd9f029c7478d4102bd17c952ffd52f8c
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 36fb512181986fd04a95e72aa028b7c0253aa45f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105044285"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731232"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric versioner
 
@@ -57,7 +57,7 @@ Vi är glada över att kunna meddela att 7,2-versionen av Service Fabric Runtime
 
 På grund av den aktuella COVID-tjänstekrisen och med tanke på de utmaningar som våra kunder möter, gör vi 7,1 tillgängliga, men uppgraderar inte automatiskt kluster som är inställda på att ta emot automatiska uppgraderingar. Vi pausar automatiska uppgraderingar tills vidare se till att kunderna kan installera uppgraderingar när de är mest lämpliga för dem, för att undvika oväntade avbrott.
 
-Du kommer att kunna uppdatera till 7,1 via [Azure Portal](./service-fabric-cluster-upgrade-version-azure.md#upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal) eller via en [Azure Resource Manager distribution](./service-fabric-cluster-upgrade-version-azure.md#set-the-upgrade-mode-using-a-resource-manager-template).
+Du kommer att kunna uppdatera till 7,1 via [Azure Portal](./service-fabric-cluster-upgrade-version-azure.md#manual-upgrades-with-azure-portal) eller via en [Azure Resource Manager distribution](./service-fabric-cluster-upgrade-version-azure.md#resource-manager-template).
 
 Service Fabric kluster med aktiverade automatiska uppgraderingar börjar ta emot 7,1-uppdateringen automatiskt när vi fortsätter med standard distributions proceduren. Vi kommer att tillhandahålla ett annat meddelande innan standard distributionen börjar på den [Service Fabric tekniska Community-webbplatsen](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric).
 Vi har också publicerat uppdateringar till slutet av support datumet för större versioner från 6,5 till 7,1 [här](./service-fabric-versions.md#supported-versions). 

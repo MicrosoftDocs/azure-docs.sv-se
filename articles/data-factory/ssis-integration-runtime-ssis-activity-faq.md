@@ -4,16 +4,16 @@ description: Den här artikeln innehåller fel söknings vägledning för körni
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: wenjiefu
-author: wenjiefu
+author: RodgeFu
 ms.reviewer: sawinark
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 2bc56d39de392c9e4c20c25b554e3bdeea048bfb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6eecedbc28bcb8bc0bd46534a2c2692636f6f2c1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100361884"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934010"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Felsöka paket körning i SSIS integration runtime
 
@@ -121,7 +121,10 @@ Felet uppstår när SSIS-integrerings körningen inte kan komma åt lagrings utr
 En möjlig orsak är att användar namnet eller lösen ordet med Azure AD Multi-Factor Authentication aktiverat har kon figurer ATS för Azure Analysis Services autentisering. Den här autentiseringen stöds inte i integrerings körningen för SSIS. Försök att använda ett huvud namn för tjänsten för Azure Analysis Services autentisering:
 
 1. Förbered ett huvud namn för tjänsten enligt beskrivningen i [Automation med tjänstens huvud namn](../analysis-services/analysis-services-service-principal.md).
-2. I anslutnings hanteraren konfigurerar du **Använd ett särskilt användar namn och lösen ord**: ange **AppID** som användar namn och **clientSecret** som lösen ord.
+2. I anslutnings hanteraren konfigurerar du **Använd ett särskilt användar namn och lösen ord:** set **app:*&lt; AppID &gt;* @* &lt; TenantID &gt;*** som användar namn och clientSecret som lösen ord. Här är ett exempel på ett korrekt formaterat användar namn:
+ 
+   `app:12345678-9012-3456-789a-bcdef012345678@9abcdef0-1234-5678-9abc-def0123456789abc`
+1. I anslutnings hanteraren konfigurerar du **Använd ett särskilt användar namn och lösen ord**: ange **AppID** som användar namn och **clientSecret** som lösen ord.
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Fel meddelande: "ADONET-källan kunde inte hämta anslutningen {GUID} med följande fel meddelande: inloggningen misslyckades för användarens NT AUTHORITY\ANONYMOUS-inloggning" "när en hanterad identitet används
 

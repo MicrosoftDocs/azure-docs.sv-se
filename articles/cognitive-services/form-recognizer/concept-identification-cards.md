@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 01a73e7940f88a3eb6e040f26d255448294cab18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed8516f9a898131338fb5b4d75e25cd774c5ab43
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467904"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285367"
 ---
 # <a name="form-recognizer-prebuilt-identification-card-id-model"></a>Modell för fördefinierat identifierings kort (ID) för formulär tolken
 
-Azure formulär tolken kan analysera och extrahera information från myndighets identifierings kort (ID) med hjälp av en fördefinierad ID-modell. Den kombinerar vår kraftfulla [OCR-kapacitet (optisk tecken läsning)](../computer-vision/concept-recognizing-text.md) med ID igenkännings funktioner för att extrahera viktig information från Worldwide Passport och amerikanska driv rutins licenser (alla 50-stater och D.C.). ID-API: n extraherar viktig information från dessa identitets dokument, till exempel förnamn, efter namn, födelse datum, dokument nummer och mycket annat. Detta API är tillgängligt i för hands versionen av Forms igenkänning v 2.1 som en moln tjänst och som en lokal behållare.
+Azure formulär tolken kan analysera och extrahera information från myndighets identifierings kort (ID) med hjälp av en fördefinierad ID-modell. Den kombinerar vår kraftfulla [OCR-kapacitet (optisk tecken läsning)](../computer-vision/overview-ocr.md) med ID igenkännings funktioner för att extrahera viktig information från Worldwide Passport och amerikanska driv rutins licenser (alla 50-stater och D.C.). ID-API: n extraherar viktig information från dessa identitets dokument, till exempel förnamn, efter namn, födelse datum, dokument nummer och mycket annat. Detta API är tillgängligt i för hands versionen av Forms igenkänning v 2.1 som en moln tjänst och som en lokal behållare.
 
 ## <a name="what-does-the-id-service-do"></a>Vad gör ID-tjänsten? 
 

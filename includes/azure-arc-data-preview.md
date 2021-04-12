@@ -2,16 +2,20 @@
 author: MikeRayMSFT
 ms.service: azure-arc
 ms.topic: include
-ms.date: 09/05/2020
-ms.author: mikera
-ms.openlocfilehash: 0939bc4212e500d5bbe818f61ca7f07e7e14f205
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/02/2021
+ms.author: mikeray
+ms.openlocfilehash: 0ccfb03f2d6754a393e432be51713dfc5379fe0e
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97096466"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554528"
 ---
 > [!NOTE]
 > Som förhands gransknings funktion är tekniken som presenteras i den här artikeln underkastad [kompletterande användnings villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versioner.
 >
->För aktuella begränsningar kontrollerar du de [kända problemen](../articles/azure-arc/data/release-notes.md#known-issues) i viktig information.
+> De senaste uppdateringarna finns i [viktig information](../articles/azure-arc/data/release-notes.md).
+>
+> För den aktuella uppdateringen stöds endast distribution av Arc-datakontrollanten i direkt anslutnings läge från Azure Portal.
+>
+> Om du vill ha ytterligare begränsningar och mer information kontrollerar du de [kända problemen](../articles/azure-arc/data/known-issues.md).

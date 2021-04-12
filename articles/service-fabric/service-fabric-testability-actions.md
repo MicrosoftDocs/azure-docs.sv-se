@@ -2,14 +2,14 @@
 title: Simulera felen i Azure mikrotjänster
 description: Den här artikeln pratar om de testnings åtgärder som finns i Microsoft Azure Service Fabric.
 ms.topic: conceptual
-ms.date: 06/07/2017
+ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c57f54096a9593f5ab25a5722d3f2d2b9878b511
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9f8221d92ded33350b182cce5d28dd889beae4a5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100595021"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732881"
 ---
 # <a name="testability-actions"></a>Test åtgärder
 För att simulera en otillförlitlig infrastruktur ger Azure Service Fabric dig, utvecklaren med olika metoder för att simulera olika verkliga problem och tillstånds över gångar. De visas som testnings åtgärder. Åtgärderna är de lågnivå-API: er som orsakar en speciell fel inmatning, tillstånds över gång eller validering. Genom att kombinera dessa åtgärder kan du skriva omfattande test scenarier för dina tjänster.
@@ -34,6 +34,7 @@ För bättre kvalitets validering kör du tjänst-och affärs arbets belastninge
 | InvokeQuorumLoss |Placerar en tilldelad tillstånds känslig tjänst partition i kvorum förlust. |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |Korrekt |
 | En moveprimary |Flyttar den angivna primära repliken av en tillstånds känslig tjänst till den angivna klusternoden. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Korrekt |
 | MoveSecondary |Flyttar den aktuella sekundära repliken av en tillstånds känslig tjänst till en annan klusternod. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Korrekt |
+| MoveInstance | Flyttar den aktuella instansen av en tillstånds lös tjänst till en annan klusternod. | MoveInstanceAsync | Move-ServiceFabricInstance | Korrekt |
 | RemoveReplica |Simulerar ett replik fel genom att ta bort en replik från ett kluster. Detta stänger replikeringen och kommer att övergå till rollen "ingen", vilket tar bort alla dess status från klustret. |RemoveReplicaAsync |Remove-ServiceFabricReplica |Korrekt |
 | RestartDeployedCodePackage |Simulerar ett kod paket process fel genom att starta om ett kod paket som har distribuerats på en nod i ett kluster. Detta avbryter kod paket processen, som startar om alla användare tjänst repliker som finns i den processen. |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |Okontrollerad |
 | RestartNode |Simulerar ett fel med en Service Fabric klusternod genom att starta om en nod. |RestartNodeAsync |Restart-ServiceFabricNode |Okontrollerad |
