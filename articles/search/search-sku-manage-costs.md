@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 4ad362b983f81e2cdc10cdbccafd8dda951482d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2ab7a007a92bd2306a7a97781af5653f932d0b7
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98539546"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580608"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Beräkna och hantera kostnader för en Azure Kognitiv sökning-tjänst
 
@@ -27,7 +27,7 @@ Hur mycket resurser som används av Sök tjänsten, multiplicerat med den faktur
 
 I fakturerings syfte finns det två enkla formler att tänka på:
 
-| Formel | Beskrivning |
+| Formel | Description |
 |---------|-------------|
 | **R x P = SU** | Antalet repliker som används, multiplicerat med antalet partitioner som används, motsvarar antalet *Sök enheter* (SU) som används av en tjänst. En SU är en resurs enhet och kan vara antingen en partition eller en replik. |
 | **SU * fakturerings taxa = månads utgifter** | Antalet SUs multiplicerat med fakturerings taxan för den nivå där du etablerade tjänsten är den främsta faktorn för den totala månads fakturan. Vissa funktioner eller arbets belastningar har beroenden för andra Azure-tjänster, vilket kan öka kostnaden för din lösning på prenumerations nivå. Avsnittet fakturerbara händelser nedan identifierar funktioner som kan läggas till i din faktura. |
@@ -64,7 +64,7 @@ Den lägsta avgiften är den första Sök enheten (en partition med en enda repl
 
 Utöver det lägsta antalet kan du lägga till repliker och partitioner oberoende av varandra. Stegvisa ökningar i kapaciteten via repliker och partitioner ökar din faktura utifrån följande formel: **(repliker x partitioner x fakturerings takt)**, där den hastighet du debiteras beror på vilken pris nivå du väljer.
 
-När du uppskattar kostnaden för en Sök lösning bör du tänka på att priserna och kapaciteten inte är linjära (dubblerad kapacitet mer än att dubblera kostnaden). Ett exempel på hur formeln fungerar finns i [så här allokerar du repliker och partitioner](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
+När du uppskattar kostnaden för en Sök lösning bör du tänka på att priserna och kapaciteten inte är linjära (dubblerad kapacitet mer än att dubblera kostnaden på samma nivå). Dessutom kan du, när som helst, växla upp till en högre nivå ge dig bättre och snabbare prestanda på ungefär samma pris punkt. Mer information och ett exempel finns i [Uppgradera till en standard S2-nivå](search-performance-tips.md#tip-upgrade-to-a-standard-s2-tier).
 
 ### <a name="bandwidth-charges"></a>Bandbredds avgifter
 

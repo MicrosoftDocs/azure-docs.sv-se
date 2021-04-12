@@ -3,12 +3,12 @@ title: Vanliga frågor och svar om säkerhets kopiering av Azure-diskar
 description: Få svar på vanliga frågor om säkerhets kopiering av Azure-diskar
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 7729bc1120fc0e2f4361739a8e05f3a82ccb4268
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 41f2862541d7cb0e3276b5fd24f39668d20fc0a3
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107320"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106963"
 ---
 # <a name="frequently-asked-questions-about-azure-disk-backup"></a>Vanliga frågor och svar om säkerhets kopiering av Azure-diskar
 
@@ -73,10 +73,6 @@ Ja, du kan återställa disken till en annan prenumeration än den som den käll
 ### <a name="can-i-back-up-multiple-disks-together"></a>Kan jag säkerhetskopiera flera diskar tillsammans?
 
 Nej, ögonblicks bilder av flera diskar som är kopplade till en virtuell dator stöds inte på tidpunkt. Mer information finns i [Konfigurera säkerhets kopiering](backup-managed-disks.md#configure-backup) och mer information om begränsningar finns i [support mat ris](disk-backup-support-matrix.md).
-
-### <a name="what-are-my-options-to-back-up-disks-across-multiple-subscriptions"></a>Vilka alternativ kan jag använda för att säkerhetskopiera diskar i flera prenumerationer?
-
-För närvarande kan du använda Azure Portal för att konfigurera säkerhets kopiering av diskar till högst 20 diskar från samma prenumeration.
 
 ### <a name="what-is-a-target-resource-group"></a>Vad är en mål resurs grupp?
 

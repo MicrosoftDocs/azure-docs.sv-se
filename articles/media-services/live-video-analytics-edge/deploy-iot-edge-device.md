@@ -3,12 +3,12 @@ title: Distribuera video analys i real tid på en IoT Edge enhet – Azure
 description: Den här artikeln innehåller de steg som hjälper dig att distribuera video analys på din IoT Edge-enhet. Du skulle göra detta, till exempel om du har åtkomst till en lokal Linux-dator och/eller om du tidigare har skapat ett Azure Media Services-konto.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 2fdf95be0966702f58afbb9df8e09a1688f9b204
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 466cc236c1482b2ae6a31b40b6f3461a2c2fbfc1
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961565"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280300"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Distribuera video analys i real tid på en IoT Edge enhet
 
@@ -38,7 +38,7 @@ Se [Skapa anpassad Azure Resource Manager roll](create-custom-azure-resource-man
 
 ### <a name="set-up-a-premium-streaming-endpoint"></a>Konfigurera en Premium-slutpunkt för direkt uppspelning
 
-Om du tänker använda real tids analys för att spela in video kontinuerligt i molnet och sedan använda [fråge-API: er](playback-recordings-how-to.md#query-api) innan du spelar upp den igen, rekommenderar vi att du uppdaterar medie tjänsten för att använda en [slut punkt för Premium-direktuppspelning](../latest/streaming-endpoint-concept.md#types).  
+Om du tänker använda real tids analys för att spela in video kontinuerligt i molnet och sedan använda [fråge-API: er](playback-recordings-how-to.md#query-api) innan du spelar upp den igen, rekommenderar vi att du uppdaterar medie tjänsten för att använda en [slut punkt för Premium-direktuppspelning](../latest/stream-streaming-endpoint-concept.md#types).  
 
 Detta är ett valfritt steg. Du kan använda det här Azure CLI-kommandot för att göra det:
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 973bd1ac121513a297574bbb37d1663b5a18c345
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: e4e1d22e2e7175135e88a08ed5a6d5ae7f021d49
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276917"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491293"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage för virtuella datorer
 
@@ -77,7 +77,7 @@ Kontot för att hantera automatiskt beviljas **bidrags** deltagare och behörigh
 
 ## <a name="participating-services"></a>Deltagande tjänster
 
-:::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services.png" alt-text="Intelligenta onboard-tjänster.":::
+:::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services-1.png" alt-text="Intelligenta onboard-tjänster.":::
 
 En fullständig lista över deltagande Azure-tjänster och deras miljö som stöds finns i följande avsnitt:
 - [Autohantera för Linux](automanage-linux.md)

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.service: azure-functions
 ms.subservice: ''
 ms.date: 03/29/2021
-ms.openlocfilehash: aac50f085d3ad63fb0183c19cf7d9aaa679e3d04
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 44bfbaa8b18ebeab3b74bc696a16fc4cfb6c08ec
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106112171"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220942"
 ---
 # <a name="startstop-vms-v2-preview-overview"></a>Starta/stoppa VM v2 (för hands version) – Översikt
 
@@ -95,7 +95,7 @@ Att ange en lista över virtuella datorer kan användas när du behöver utföra
 
 - Ditt konto har beviljats [deltagar](../../role-based-access-control/built-in-roles.md#contributor) behörighet i prenumerationen.
 
-- Starta/stoppa VM v2 (för hands version) är tillgängligt i alla globala Azure-regioner som visas på sidan produkter som är [tillgängliga per region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=functions) för Azure Functions. För Azure Government molnet är det endast tillgängligt i den amerikanska regeringen i Virginia-regionen.
+- Starta/stoppa virtuella datorer v2 (förhands granskning) är tillgängligt i alla moln regioner för Azure Global och amerikanska myndigheter som visas på sidan produkter som är [tillgängliga per region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=functions) för Azure Functions.
 
 ## <a name="next-steps"></a>Nästa steg
 

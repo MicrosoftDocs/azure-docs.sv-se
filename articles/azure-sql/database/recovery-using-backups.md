@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
 ms.openlocfilehash: 0c3db3b3f22f9f2639012068924708537f9ada77
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98795320"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Återställa med hjälp av automatiska databas säkerhets kopieringar – Azure SQL Database & SQL-hanterad instans
@@ -47,13 +47,13 @@ När du använder standard-eller premium-tjänst nivån kan databas återställn
 - Nätverks bandbredden om återställningen är till en annan region.
 - Antalet samtidiga återställnings begär Anden som bearbetas i mål regionen.
 
-För en stor eller mycket aktiv databas kan återställningen ta flera timmar. Om det finns ett långvarigt avbrott i en region, är det möjligt att ett stort antal geo-återställnings begär Anden kommer att initieras för haveri beredskap. När det finns många begär Anden kan återställnings tiden för enskilda databaser öka. De flesta databas återställningar slutförs på mindre än 12 timmar.
+För en stor eller mycket aktiv databas kan återställningen ta flera timmar. Efter ett långvarigt avbrott i en region kan ett stort antal förfrågningar om geo-återställning för haveriberedskap initieras ungefär samtidigt. Om många sådana förfrågningar körs samtidigt kan återställningstiden för enskilda databaser öka. De flesta databas återställningar slutförs på mindre än 12 timmar.
 
-För en enskild prenumeration finns det begränsningar för antalet samtidiga återställnings begär Anden. Dessa begränsningar gäller för valfri kombination av återställningar av tidpunkter, geo-Restore och återställningar från säkerhets kopia med långsiktig kvarhållning.
+Det finns begränsningar för antalet samtidiga återställningsförfrågningar för enskilda prenumerationer. De här begränsningarna gäller för alla kombinationer av återställningar till en tidpunkt, geo-återställningar och återställningar från säkerhetskopior med långsiktig kvarhållning.
 
-| **Distributions alternativ** | **Max antal samtidiga begär Anden som bearbetas** | **Max antal samtidiga förfrågningar som skickas** |
+| **Distributionsalternativ** | **Max antal samtidiga förfrågningar som bearbetas** | **Max antal samtidiga förfrågningar som skickas** |
 | :--- | --: | --: |
-|**Enkel databas (per prenumeration)**|30|100|
+|**Enstaka databas (per prenumeration)**|30|100|
 |**Elastisk pool (per pool)**|4|2000|
 
 

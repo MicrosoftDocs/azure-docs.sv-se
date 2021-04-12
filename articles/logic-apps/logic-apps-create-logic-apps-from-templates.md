@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
 ms.openlocfilehash: 42c592e6aede4537dc983fd2cff043a878f81f1c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100593095"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Skapa logikappsarbetsflöden från fördefinierade mallar
@@ -97,9 +97,9 @@ Om du inte har någon Azure-prenumeration kan du [registrera ett kostnadsfritt A
    > [!NOTE] 
    > Många mallar innehåller kopplingar som redan har förifyllda nödvändiga egenskaper. Vissa mallar kan dock fortfarande kräva att du anger värden innan du kan distribuera Logic app på rätt sätt. Om du försöker distribuera utan att fylla i de saknade egenskaps fälten visas ett fel meddelande. 
 
-## <a name="update-logic-apps-with-templates"></a>Uppdatera Logic Apps med mallar
+## <a name="update-logic-apps-with-templates&quot;></a>Uppdatera Logic Apps med mallar
 
-1. I [Azure Portal](https://portal.azure.com "Azure Portal")kan du söka efter och öppna din Logic app i th Logic App Designer.
+1. I [Azure Portal](https://portal.azure.com &quot;Azure Portal")kan du söka efter och öppna din Logic app i th Logic App Designer.
 
 2. I verktygsfältet designer väljer du **mallar**. Den här åtgärden tar bort alla ändringar som inte sparats, så ett varnings meddelande visas så att du kan bekräfta att du vill fortsätta. Bekräfta genom att välja **OK**. Exempel:
 

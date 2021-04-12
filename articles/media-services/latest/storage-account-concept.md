@@ -57,4 +57,4 @@ Följande är de primära scenarier som kan leda till ett Media Services-konto s
 
 ## <a name="next-steps"></a>Nästa steg
 
-Information om hur du ansluter ett lagrings konto till ditt Media Services-konto finns i [skapa ett konto](./create-account-howto.md).
+Information om hur du ansluter ett lagrings konto till ditt Media Services-konto finns i [skapa ett konto](./account-create-how-to.md).

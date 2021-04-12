@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 05/07/2019
 ms.author: inhenkel
-ms.openlocfilehash: 994e5ae0647f350e0a64f35318bd5803f4ed79b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05ef67e3caafe2c10d02ee4ca2e3248b7ab6c188
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98894991"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120904"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>Fel med slutpunkter för direktuppspelning (ursprung)
 
@@ -143,24 +143,24 @@ Nytto Last formatet som skickas av klienten är i ett format som inte stöds.
 
 För krypterings artiklar och exempel, se:
 
-- [Koncept: innehålls skydd](content-protection-overview.md)
-- [Koncept: innehålls nyckel principer](content-key-policy-concept.md)
+- [Koncept: innehålls skydd](drm-content-protection-concept.md)
+- [Koncept: innehålls nyckel principer](drm-content-key-policy-concept.md)
 - [Koncept: strömmande principer](streaming-policy-concept.md)
-- [Exempel: skydda med AES-kryptering](protect-with-aes128.md)
-- [Exempel: skydda med DRM](protect-with-drm.md)
+- [Exempel: skydda med AES-kryptering](drm-playready-license-template-concept.md)
+- [Exempel: skydda med DRM](drm-protect-with-drm-tutorial.md)
 
 Filter vägledning finns i:
 
-- [Koncept: dynamiska manifest](filters-dynamic-manifest-overview.md)
+- [Koncept: dynamiska manifest](filters-dynamic-manifest-concept.md)
 - [Koncept: filter](filters-concept.md)
 - [Exempel: skapa filter med REST API: er](filters-dynamic-manifest-rest-howto.md)
-- [Exempel: skapa filter med .NET](filters-dynamic-manifest-dotnet-howto.md)
-- [Exempel: skapa filter med CLI](filters-dynamic-manifest-cli-howto.md)
+- [Exempel: skapa filter med .NET](filters-dynamic-manifest-dotnet-how-to.md)
+- [Exempel: skapa filter med CLI](filters-dynamic-manifest-cli-how-to.md)
 
 För direktsända artiklar och exempel, se:
 
-- [Koncept: översikt över direkt uppspelning](live-streaming-overview.md)
-- [Koncept: Live-händelser och Live-utdata](live-events-outputs-concept.md)
+- [Koncept: översikt över direkt uppspelning](stream-live-streaming-concept.md)
+- [Koncept: Live-händelser och Live-utdata](live-event-outputs-concept.md)
 - [Exempel: självstudie för Live Streaming](stream-live-tutorial-with-api.md)
 
 ## <a name="416-range-not-satisfiable"></a>416 Ogiltigt intervall
@@ -202,7 +202,7 @@ Kolla in [Azure Media Services community](media-services-community.md) -artikeln
 
 - [Felkoder vid kodning](/rest/api/media/jobs/get#joberrorcode)
 - [Azure Media Services begrepp](concepts-overview.md)
-- [Kvoter och begränsningar](limits-quotas-constraints.md)
+- [Kvoter och begränsningar](limits-quotas-constraints-reference.md)
 
 ## <a name="next-steps"></a>Nästa steg
 

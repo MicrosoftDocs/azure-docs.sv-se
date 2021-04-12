@@ -5,32 +5,40 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 03/23/2021
+ms.date: 04/05/2021
 ms.author: duau
-ms.openlocfilehash: 7033ea6a1ba6d85f9aa15e14bb9577b2439c59a8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a5e01a4fc84f852b43e5a76114bebe145da10793
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105050681"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443597"
 ---
 # <a name="azure-expressroute-insights-using-network-insights"></a>Azure ExpressRoute Insights med hjälp av nätverks insikter
 
 Den här artikeln förklarar hur du kan använda nätverks insikter för att visa dina ExpressRoute-mått och konfigurationer på ett och samma ställe. Med hjälp av nätverks insikter kan du Visa Top ologiska kartor och hälso instrument paneler som innehåller viktig ExpressRoute-information utan att behöva slutföra några extra inställningar.
 
-:::image type="content" source="./media/expressroute-network-insights/monitor-landing-page.png" alt-text="Skärm bild av landnings sidan för ExpressRoute-övervakaren." lightbox="./media/expressroute-network-insights/monitor-landing-page-expanded.png":::
+:::image type="content" source="./media/expressroute-network-insights/network-monitor-page.png" alt-text="Skärm bild som visar landnings sidan nätverk övervakaren." lightbox="./media/expressroute-network-insights/monitor-landing-page-expanded.png":::
 
 ## <a name="visualize-functional-dependencies"></a>Visualisera funktions beroenden
 
-Om du vill visa den här lösningen går du till sidan *Azure Monitor* , väljer *nätverk* och väljer sedan kortet *ExpressRoute-kretsar* . Välj sedan knappen topologi för kretsen som du vill visa.
+1. Gå till sidan *Azure Monitor* och välj *nätverk*.
 
-Vyn funktionellt beroende innehåller en tydlig bild av ExpressRoute-installationen, som visar relationen mellan olika ExpressRoute-komponenter (peering, anslutningar, gatewayer).
+    :::image type="content" source="./media/expressroute-network-insights/monitor-page.png" alt-text="Skärm bild av skärmens landnings sida.":::
 
-:::image type="content" source="./media/expressroute-network-insights/topology-view.png" alt-text="Skärm bild av Topology-vy för nätverks insikter." lightbox="./media/expressroute-network-insights/topology-view-expanded.png":::
+1. Välj kortet *ExpressRoute-kretsar* . 
 
-Hovra över valfri komponent i topologin för att Visa konfigurations information. Till exempel, Hovra över en ExpressRoute-peering-komponent för att visa information som krets bandbredd och Global Reach aktivering.
+1. Välj sedan knappen topologi för kretsen som du vill visa.
 
-:::image type="content" source="./media/expressroute-network-insights/topology-hovered.png" alt-text="Skärm bild som visar hur du hovrar över topologin." lightbox="./media/expressroute-network-insights/topology-hovered-expanded.png":::
+   :::image type="content" source="./media/expressroute-network-insights/monitor-landing-page.png" alt-text="Skärm bild av landnings sidan för ExpressRoute-övervakaren." lightbox="./media/expressroute-network-insights/monitor-landing-page-expanded.png"::: 
+
+1. Vyn funktionellt beroende innehåller en tydlig bild av ExpressRoute-installationen, som visar relationen mellan olika ExpressRoute-komponenter (peering, anslutningar, gatewayer).
+
+    :::image type="content" source="./media/expressroute-network-insights/topology-view.png" alt-text="Skärm bild av Topology-vy för nätverks insikter." lightbox="./media/expressroute-network-insights/topology-view-expanded.png":::
+
+1. Hovra över valfri komponent i topologin för att Visa konfigurations information. Till exempel, Hovra över en ExpressRoute-peering-komponent för att visa information som krets bandbredd och Global Reach aktivering.
+
+    :::image type="content" source="./media/expressroute-network-insights/topology-hovered.png" alt-text="Skärm bild som visar hur du hovrar över topologin." lightbox="./media/expressroute-network-insights/topology-hovered-expanded.png":::
 
 ## <a name="view-a-detailed-and-pre-loaded-metrics-dashboard"></a>Visa en detaljerad och förinlästa mått panel
 
