@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: eebcfb98d4e155ca965b9e4c68a862afa08a46ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04ab4ae4d3de6f33f800011b9b0802665d5fb16e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727455"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228341"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Så här etablerar du för flera klientorganisationer 
 
@@ -26,11 +26,12 @@ Det är vanligt att kombinera dessa två scenarier. En IoT-lösning med flera in
 
 I den här artikeln används ett simulerat enhets exempel från [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) som visar hur du etablerar enheter i ett scenario med flera innehavare över flera regioner. Du kommer att utföra följande steg i den här artikeln:
 
-* Använd Azure CLI för att skapa två regionala IoT-hubbar (**västra USA** och **östra USA**)
-* Skapa en registrering för flera innehavare
-* Använd Azure CLI för att skapa två regionala virtuella Linux-datorer som fungerar som enheter i samma regioner (**USA, västra** och USA, **östra**)
-* Konfigurera utvecklings miljön för Azure IoT C SDK på virtuella Linux-datorer
-* Simulera enheterna för att se att de är etablerade för samma klient organisation i den närmaste regionen.
+> [!div class="checklist"]
+> * Använd Azure CLI för att skapa två regionala IoT-hubbar (**västra USA** och **östra USA**)
+> * Skapa en registrering för flera innehavare
+> * Använd Azure CLI för att skapa två regionala virtuella Linux-datorer som fungerar som enheter i samma regioner (**USA, västra** och USA, **östra**)
+> * Konfigurera utvecklings miljön för Azure IoT C SDK på virtuella Linux-datorer
+> * Simulera enheterna för att se att de är etablerade för samma klient organisation i den närmaste regionen.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -417,8 +418,11 @@ Så här tar du bort resurs gruppen efter namn:
 
 ## <a name="next-steps"></a>Nästa steg
 
-> [!div class="nextstepaction"]
-> Mer information om hur du reetablerar finns i [IoT Hub metoder för att etablera enheter](concepts-device-reprovision.md)
+* Mer information om hur du reetablerar finns i
 
 > [!div class="nextstepaction"]
-> Läs mer om att ta reda på mer information om hur du avetablerar [enheter som tidigare har etablerats automatiskt](how-to-unprovision-devices.md)
+> [Metoder för att etablera IoT Hub enhet](concepts-device-reprovision.md)
+
+* Mer information om avetablering finns i
+> [!div class="nextstepaction"]
+> [Så här avetablerar du enheter som tidigare var automatiskt etablerade](how-to-unprovision-devices.md)

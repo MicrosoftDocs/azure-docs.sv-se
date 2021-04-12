@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 3ae3e12c11f194b3efcc149382dc952bd74d38b5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97704324"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure fel söknings guide för attestering
@@ -45,7 +45,7 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.SetAzureAttestationPolicy
   ```
 
-**Fel söknings steg**
+**Felsökningsanvisningar**
 
 För att kunna visa attesterings principer/princip undertecknare kräver en Azure AD-användare behörigheten för "åtgärder":
 - Microsoft. attestering/attestationProviders/attestering/läsning
@@ -134,7 +134,7 @@ Se [exempel på attesterings princip](./policy-examples.md)
 - Den angivna offerten var ogiltig eftersom den enhet där offerten genererades inte uppfyller kraven för Azures bas linje
 - Den angivna offerten var ogiltig eftersom den TCBInfo eller QEID som tillhandahölls av PCK Cache Service var ogiltig
 
-**Fel söknings steg**
+**Felsökningsanvisningar**
 
 Microsoft Azure attestering stöder attestering av SGX-offerter som genererats av Intel SDK och öppen enklaven SDK.
 

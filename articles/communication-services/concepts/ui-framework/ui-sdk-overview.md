@@ -7,12 +7,12 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 47a32815ded5809edfde856a38c69ec7c6fd6fdf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4ab1a157cdf3ef5017b227cd090379dcab91997e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493364"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105931564"
 ---
 # <a name="azure-communication-services-ui-framework"></a>GRÄNSSNITTs ramverk för Azure Communication Services
 
@@ -25,11 +25,11 @@ Azure Communication Services UI Framework gör det enkelt för dig att bygga mod
 - **Sammansatta komponenter** – de här komponenterna är lösningar som gör det möjligt att implementera vanliga kommunikations scenarier. Du kan snabbt lägga till video samtal eller chatta med program. Kompositer är komponenter med öppen källkod som skapats med bas komponenter.
 - **Bas komponenter** – de här komponenterna är öppna käll kods Bygg stenar som gör att du kan skapa anpassad kommunikations upplevelse. Komponenter erbjuds både för att anropa och chatta med funktioner som kan kombineras för att utveckla upplevelser. 
 
-Dessa klient bibliotek för användar gränssnittet använder [Microsofts Fluent-design språk](https://developer.microsoft.com/fluentui/) och till gångar. Fluent-ANVÄNDARGRÄNSSNITTET ger ett grundläggande lager för det användar gränssnitts ramverk som har testats av Microsoft-produkter.
+Dessa UI-SDK: [er använder Microsofts Fluent-design språk](https://developer.microsoft.com/fluentui/) och till gångar. Fluent-ANVÄNDARGRÄNSSNITTET ger ett grundläggande lager för det användar gränssnitts ramverk som har testats av Microsoft-produkter.
 
 ## <a name="differentiating-components-and-composites"></a>**Differentiering av komponenter och sammansättningar**
 
-**Bas komponenter** bygger på de viktigaste klient biblioteken för Azure Communication Services och implementerar grundläggande åtgärder som att initiera kärn klient bibliotek, återge video och tillhandahålla användar kontroller för att stänga av, video på/av osv. Du kan använda dessa **bas komponenter** för att skapa dina egna anpassade layout-upplevelser med färdiga, produktions klara kommunikations komponenter.
+**Bas komponenter** bygger på de viktigaste SDK: erna för Azure Communication Services och implementerar grundläggande åtgärder som att initiera kärn-SDK: er, återge video och tillhandahålla användar kontroller för avstängning, video på/av osv. Du kan använda dessa **bas komponenter** för att skapa dina egna anpassade layout-upplevelser med färdiga, produktions klara kommunikations komponenter.
 
 :::image type="content" source="../media/ui-framework/component-overview.png" alt-text="Översikt över komponenten för UI Framework":::
 
@@ -39,19 +39,19 @@ Dessa klient bibliotek för användar gränssnittet använder [Microsofts Fluent
 
 ## <a name="what-ui-framework-is-best-for-my-project"></a>Vilket UI-ramverk passar bäst för mitt projekt?
 
-Genom att förstå dessa krav kan du välja rätt klient bibliotek:
+Genom att förstå dessa krav kan du välja rätt SDK:
 
-- **Hur mycket anpassning vill du ha?** Klient biblioteken för Azure Communication Core har inget UX och är utformade så att du kan bygga vilket UX du vill. UI Framework-komponenter ger användar gränssnitts till gångar till kostnaden för minskad anpassning.
-- **Behöver du Mötes funktioner?** Mötes systemet har flera unika funktioner som för närvarande inte är tillgängliga i klient biblioteken för Azure Communication Services, t. ex. suddig bakgrund och upphöjd hand.
+- **Hur mycket anpassning vill du ha?** Azure Communication Core SDK: er har inget UX och har utformats så att du kan bygga det UX du vill ha. UI Framework-komponenter ger användar gränssnitts till gångar till kostnaden för minskad anpassning.
+- **Behöver du Mötes funktioner?** Mötes systemet har flera unika funktioner som för närvarande inte är tillgängliga i kärn SDK: er för Azure Communication Services, till exempel en suddig bakgrund och en upphöjd hand.
 - **Vilka plattformar har du mål?** Olika plattformar har olika funktioner.
 
 Information om funktions tillgänglighet i de varierande [SDK: erna för användar gränssnitt finns här](ui-sdk-features.md), men viktiga uppgifter sammanfattas nedan.
 
-|Klient bibliotek/SDK|Implementerings komplexitet|    Anpassnings möjlighet|  Sänder| Chatt| [Team-interop](./../teams-interop.md)
+|SDK/SDK|Implementerings komplexitet|   Anpassnings möjlighet|  Sänder| Chatt| [Team-interop](./../teams-interop.md)
 |---|---|---|---|---|---|---|
 |Sammansatta komponenter|Låg|Låg|✔|✔|✕
 |Bas komponenter|Medel|Medel|✔|✔|✕
-|Kärn klient bibliotek|Högt|Högt|✔|✔ |✔
+|Kärn SDK: er|Högt|Högt|✔|✔ |✔
 
 ## <a name="cost"></a>Cost
 
@@ -78,7 +78,7 @@ En Azure Communication Services-identitet krävs för att initiera UI-ramverket 
 
 Sammansättnings-och bas komponenter initieras med hjälp av en Azure Communication Services-åtkomsttoken. Åtkomsttoken bör delas från Azure Communication Services via en betrodd tjänst som du hanterar. Mer information finns i [snabb start: skapa åtkomsttoken](../../quickstarts/access-tokens.md) och [vägledning för betrodda tjänster](../../tutorials/trusted-service-tutorial.md) .
 
-Dessa klient bibliotek kräver också kontexten för anropet eller chatten som de kommer att ansluta till. I likhet med token för användar åtkomst bör den här kontexten spridas till klienter via din egen betrodda tjänst. I listan nedan sammanfattas de initierings-och resurs hanterings funktioner som du behöver operationalisera.
+Dessa SDK: er kräver också kontexten för anropet eller chatten som de kommer att ansluta till. I likhet med token för användar åtkomst bör den här kontexten spridas till klienter via din egen betrodda tjänst. I listan nedan sammanfattas de initierings-och resurs hanterings funktioner som du behöver operationalisera.
 
 | Contoso-ansvar                                 | UI Framework-ansvar                         |
 |----------------------------------------------------------|-----------------------------------------------------------------|

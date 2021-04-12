@@ -5,6 +5,10 @@
   items:
     - name: Vad är formigenkänning?
       href: overview.md
+    - name: Stöd för språk
+      href: language-support.md
+    - name: Priser och begränsningar
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: Nyheter
       href: whats-new.md
 - name: Snabbstarter
@@ -91,15 +95,13 @@
   items:
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
-    - name: Priser och begränsningar
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: Azure-översikt
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Regional tillgänglighet
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
-    - name: Stöd för språk
-      href: language-support.md
     - name: Efterlevnad
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Kryptering
       href: encrypt-data-at-rest.md
+    - name: Sekretess och cookies
+      href: 'https://privacy.microsoft.com/en-US/privacystatement'

@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 7d7b62d6587a568b74d142a2ee6a93587941559d
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: be6ff629a651af5cc06d7928c7972f07aa0fd6e2
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105645419"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107291375"
 ---
 I den här snabb starten får du lära dig hur du startar ett samtal med Azure Communication Services som anropar SDK för Java Script.
 
@@ -162,6 +162,6 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 
 Öppna webbläsaren och gå till http://localhost:8080/ . Du bör se följande:
 
-:::image type="content" source="../media/javascript/calling-javascript-app.png" alt-text="Skärm bild av det färdiga JavaScript-programmet.":::
+:::image type="content" source="../media/javascript/calling-javascript-app-2.png" alt-text="Skärm bild av det färdiga JavaScript-programmet.":::
 
 Du kan göra ett utgående VOIP-anrop genom att ange ett användar-ID i fältet text och klicka på knappen **starta samtal** . `8:echo123`Genom att anropa ansluter du med en eko robot är det bra för att komma igång och kontrol lera att ljud enheterna fungerar.

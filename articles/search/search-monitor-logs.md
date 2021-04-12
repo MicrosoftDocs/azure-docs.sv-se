@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 3c8dd5cd9da2fd1e741635a6471c0662066d147e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f0d85f056cfaaa58fcc72eb9c2182b3e1a78affb
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709947"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581608"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Samla in och analysera loggdata för Azure Kognitiv sökning
 
-Diagnostik-eller drift loggar ger inblick i de detaljerade åtgärderna i Azure Kognitiv sökning och är användbara för övervakning av tjänst-och arbets belastnings processer. Internt bevarar Microsoft bevarar system information på Server delen under en kort tids period (cirka 30 dagar), tillräckligt för undersökning och analys om du använder ett support ärende. Men om du vill ha ägarskap över drift data bör du konfigurera en diagnostisk inställning för att ange var loggnings information samlas in.
+Diagnostik-eller drift loggar ger inblick i de detaljerade åtgärderna i Azure Kognitiv sökning och är användbara för övervakning av tjänstens hälsa och processer. Internt bevarar Microsoft bevarar system information på Server delen under en kort tids period (cirka 30 dagar), tillräckligt för undersökning och analys om du använder ett support ärende. Men om du vill ha ägarskap över drift data bör du konfigurera en diagnostisk inställning för att ange var loggnings information samlas in.
 
 Diagnostisk loggning aktive ras genom integrering med [Azure Monitor](../azure-monitor/index.yml). 
 
@@ -120,7 +120,7 @@ AzureDiagnostics
 
 Loggade händelser som registrerats av Azure Monitor inkluderar de som är relaterade till indexering och frågor. **AzureDiagnostics** -tabellen i Log Analytics samlar in drift data som rör frågor och indexering.
 
-| OperationName | Beskrivning |
+| OperationName | Description |
 |---------------|-------------|
 | ServiceStats | Den här åtgärden är ett rutin anrop för att [Hämta tjänst statistik](/rest/api/searchservice/get-service-statistics), antingen kallat direkt eller implicit för att fylla i en portal översikts sida när den läses in eller uppdateras. |
 | Fråga. search |  Fråga begär Anden mot ett index se [övervaka frågor](search-monitor-queries.md) för information om loggade frågor.|

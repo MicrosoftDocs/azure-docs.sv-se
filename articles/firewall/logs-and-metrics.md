@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/16/2021
+ms.date: 04/02/2021
 ms.author: victorh
-ms.openlocfilehash: 8922e6e0d5137a3a900e0f57f685d449c08b3f47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4514717274cfb66fbfc0eee25b09aa9e1234ffad
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100596953"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280334"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall-loggar och mått
 
@@ -181,6 +181,8 @@ Följande mått är tillgängliga för Azure-brand väggen:
     Enhet: procent
 
    När du lägger till fler offentliga IP-adresser i brandväggen blir fler SNAT-portar tillgängliga, vilket minskar SNAT-portarnas användningsgrad. När brandväggen skalas ut av olika anledningar (som processoranvändningen eller dataflödet) blir fler SNAT-portar också tillgängliga. I praktiken kan en viss procent andel av SNAT-portarna gå nedåt utan att du behöver lägga till några offentliga IP-adresser, bara för att tjänsten ska skalas ut. Du kan styra antalet offentliga IP-adresser som är tillgängliga för att öka portarna i brand väggen direkt. Men du kan inte styra skalning av brand väggen direkt.
+
+   Om brand väggen körs i SNAT-portens belastning, bör du lägga till minst fem offentliga IP-adresser. Detta ökar antalet SNAT-portar som är tillgängliga. Mer information finns i [Azure Firewall-funktioner](features.md#multiple-public-ip-addresses).
 
 
 ## <a name="next-steps"></a>Nästa steg
