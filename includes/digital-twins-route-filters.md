@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 12/04/2020
 ms.author: baanders
-ms.openlocfilehash: d93f484e318c10489eb1db3e9c65c6e0c7479c90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 811e59e8fd2fea1d8ee90014d4a5ea11229eec63
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98859572"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257321"
 ---
 | Filternamn | Beskrivning | Filtrera text schema | Värden som stöds | 
 | --- | --- | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "98859572"
 | Data schema | DTDL modell-ID | `dataschema = '<model-dtmi-ID>'` | **För telemetri**: dataschemat är modell-ID: t för den dubbla eller komponenten som utvärderar Telemetrin. Till exempel `dtmi:example:com:floor4;2` <br>**För meddelanden (skapa/ta bort)**: data schema kan nås i meddelande texten på `$body.$metadata.$model` . <br>**För meddelanden (uppdatering)**: data schema kan nås i meddelande texten på `$body.modelId`|
 | Innehållstyp | Innehålls typ för data värde | `datacontenttype = '<contentType>'` | Innehålls typen är `application/json` |
 | Specifikations version | Den version av händelse schemat som du använder | `specversion = '<version>'` | Versionen måste vara `1.0` . Detta anger CloudEvents-schema version 1,0 |
-| Meddelande text | Referera till en egenskap i `data` fältet för ett meddelande | `$body.<property>` | Se [*anvisningar: förstå händelse data*](../articles/digital-twins/how-to-interpret-event-data.md) för exempel på meddelanden. `data`Du kan referera till en egenskap i fältet med hjälp av`$body`
+| Meddelande text | Referera till en egenskap i `data` fältet för ett meddelande | `$body.<property>` | Se [*begrepp: händelse aviseringar*](../articles/digital-twins/concepts-event-notifications.md) för exempel på aviseringar. `data`Du kan referera till en egenskap i fältet med hjälp av`$body`
 
 Följande data typer stöds som värden som returneras av referenser till data ovan:
 

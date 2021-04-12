@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: c1b30a1eafe9af92c1ef3f81773d213ccf96555c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 098c6ace2b673654d07bfa29147fda3cbbc59b76
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462039"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107558"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Självstudie: skapa en hierarki med IoT Edge enheter (förhands granskning)
 
@@ -446,7 +446,7 @@ När du är nöjd med att dina konfigurationer är korrekta på varje enhet är 
 
 ## <a name="deploy-modules-to-the-top-layer-device"></a>Distribuera moduler till enheten på den översta nivån
 
-Moduler för att slutföra distributionen och IoT Edge runtime till dina enheter och definiera en ytterligare struktur för hierarkin. Modulen IoT Edge-API-proxy säker routs HTTP-trafik över en enskild port från dina enheter med lägre lager. I Docker Registry-modulen får du en lagrings plats med Docker-avbildningar som de lägre lager enheterna kan komma åt genom att dirigera avbildningar till enheten på den översta nivån.
+Moduler för att slutföra distributionen och IoT Edge runtime till dina enheter och definiera en ytterligare struktur för hierarkin. Modulen IoT Edge-API-proxy dirigerar säkert HTTP-trafik över en enskild port från dina enheter med lägre lager. I Docker Registry-modulen får du en lagrings plats med Docker-avbildningar som de lägre lager enheterna kan komma åt genom att dirigera avbildningar till enheten på den översta nivån.
 
 Om du vill distribuera moduler till enheten på den översta nivån kan du använda Azure Portal eller Azure CLI.
 
@@ -623,7 +623,7 @@ I [Azure Portal](https://ms.portal.azure.com/):
 
 ---
 
-Om du har slutfört ovanstående steg korrekt bör **enheten i det högsta skiktet** rapportera de fyra modulerna: modulen IoT Edge-API-proxy, docker container Registry-modulen och systemmodulerna, som **anges i distributionen**. Det kan ta några minuter innan enheten tar emot sin nya distribution och startar modulerna. Uppdatera sidan tills du ser modulen temperatur sensor listad som **rapporteras av enheten**. När modulerna rapporter ATS av enheten är du redo att fortsätta.
+Om du har slutfört ovanstående steg korrekt bör **enheten i det högsta skiktet** rapportera de fyra modulerna: modulen IoT Edge-API-proxy, docker container Registry-modulen och systemmodulerna, som **anges i distributionen**. Det kan ta några minuter innan enheten tar emot sin nya distribution och startar modulerna. Uppdatera sidan tills du ser IoTEdgeAPIProxy-och registerfilerna som anges som **rapporteras av enheten**. När modulerna rapporter ATS av enheten är du redo att fortsätta.
 
 ## <a name="deploy-modules-to-the-lower-layer-device"></a>Distribuera moduler till den lägre lager enheten
 

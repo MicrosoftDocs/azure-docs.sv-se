@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2
-ms.openlocfilehash: e6971fa129c01fc4cdf64e0dc681ac0fab4f707b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f7b24c711d99b1127ee77a920b305acb114d20e
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833821"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505135"
 ---
 # <a name="what-is-azure-iot-central"></a>Vad är Azure IoT Central?
 
@@ -23,16 +23,16 @@ Med webb gränssnittet kan du övervaka enhets villkor, skapa regler och hantera
 
 Den här artikeln beskriver IoT Central:
 
-- de vanligaste profilerna som är associerade med ett projekt
+- De vanliga användar roller som är associerade med ett projekt.
 - hur du skapar ditt program
 - hur du ansluter dina enheter till ditt program
 - hur du hanterar ditt program.
 - Azure IoT Edge funktioner i IoT Central.
 - Så här ansluter du dina Azure IoT Edge runtime-baserade enheter till ditt program.
 
-## <a name="personas"></a>Profiler
+## <a name="user-roles"></a>Användarroller
 
-IoT Central-dokumentationen avser fyra personer som interagerar med ett IoT Central-program:
+IoT Central-dokumentationen refererar till fyra användar roller som interagerar med ett IoT Central-program:
 
 - En _Solution Builder_ ansvarar för att [skapa ett program](quick-deploy-iot-central.md), [Konfigurera regler och åtgärder](quick-configure-rules.md), [definiera integreringar med andra tjänster](howto-export-data.md)och ytterligare anpassa programmet för operatörer och enhets utvecklare.
 - En _operatör_ [hanterar enheterna](howto-manage-devices.md) som är anslutna till programmet.

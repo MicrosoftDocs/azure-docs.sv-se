@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b7b7f1c5fb0a7991707a26b4a7f54fb3ffaf7bab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: eff33a8670ee8eb9ee32655956ee0e913ddaa4c1
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033528"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258154"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Aktivera multifaktorautentisering i Azure Active Directory B2C
 
@@ -56,6 +56,6 @@ Ett kund konto skapas i din klient organisation innan Multi-Factor Authenticatio
 
 ::: zone pivot="b2c-custom-policy"
 
-Om du vill aktivera Multi-Factor Authentication Hämta start paketen för anpassad princip från GitHub uppdaterar du XML-filerna i **SocialAndLocalAccountsWithMFA** -startpaketet med ditt Azure AD B2C klient namn. **SocialAndLocalAccountsWithMFA** möjliggör alternativ för sociala, lokala och Multi-Factor Authentication. Mer information finns i [Kom igång med anpassade principer i Active Directory B2C](custom-policy-get-started.md). 
+Om du vill aktivera Multi-Factor Authentication Hämta start paketen för anpassad princip från GitHub uppdaterar du XML-filerna i **SocialAndLocalAccountsWithMFA** -startpaketet med ditt Azure AD B2C klient namn. **SocialAndLocalAccountsWithMFA** möjliggör alternativ för sociala, lokala och Multi-Factor Authentication. Mer information finns i [Kom igång med anpassade principer i Active Directory B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy). 
 
 ::: zone-end

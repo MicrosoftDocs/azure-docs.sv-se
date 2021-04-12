@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: dadca1fadef9d2967f20cae13e40d01de73d39e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b10d2e10f95470cadf67af762a0d7320bc09b7e0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778346"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075703"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-installation
 
@@ -500,16 +500,15 @@ Disk information | Win32_PerfFormattedData_PerfDisk_PhysicalDisk | DiskWritesPer
 
 Här är de prestanda data för Linux-servern som enheten samlar in och skickar till Azure.
 
-**Data** | **Kommandon**
---- | ---
-CPU-användning | katt/proc/stat/| grep ' CPU '-/proc/stat
-Minnesanvändning | gratis \| grep MEM- \| awk {Print $3/$ 2 * 100,0}
-Antal nätverkskort | lshw-klass nätverk \| grep ETH [0-60] \| WC-l
-Mottagna data per nätverkskort | katt/sys/Class/net/ETH $ NIC/statistik/rx_bytes
-Överförda data per nätverkskort | katt/sys/Class/net/ETH $ NIC/statistik/tx_bytes
-Antal diskar | fdisk-l \| egrep ' disk. * byte ' \| awk ' {Print $2} ' \| cut-F1-d ': '
-Disk information | katt/proc/diskstats
-
+| **Data** | **Kommandon** |
+| --- | --- |
+| CPU-användning | katt/proc/stat/ \| grep ' CPU '/proc/stat |
+| Minnesanvändning | gratis \| grep MEM- \| awk {Print $3/$ 2 * 100,0} |
+| Antal nätverkskort | lshw-klass nätverk \| grep ETH [0-60] \| WC-l |
+| Mottagna data per nätverkskort | katt/sys/Class/net/ETH $ NIC/statistik/rx_bytes |
+| Överförda data per nätverkskort | katt/sys/Class/net/ETH $ NIC/statistik/tx_bytes |
+| Antal diskar | fdisk-l \| egrep-disk. \* byte ' \| awk ' {print $2} ' \| Klipp ut – F1-d ': ' |
+| Disk information | katt/proc/diskstats |
 
 ## <a name="appliance-upgrades"></a>Installations program
 

@@ -3,15 +3,15 @@ title: Autentisering och auktorisering
 description: Lär dig mer om det inbyggda stödet för autentisering och auktorisering i Azure App Service och Azure Functions, och hur det kan hjälpa till att skydda din app mot obehörig åtkomst.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 03/29/2021
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 35513abdfb61d889abdbd4af7125b1fbb556d7b8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1b6e600fcaf32a115af14be2444144fee099d635
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612763"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075346"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Autentisering och auktorisering i Azure App Service och Azure Functions
 
@@ -33,8 +33,7 @@ App Service använder [federerade identiteter](https://en.wikipedia.org/wiki/Fed
 
 | Leverantör | Inloggnings slut punkt | How-To vägledning |
 | - | - | - |
-| [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` | [App Service Azure AD-inloggning](configure-authentication-provider-aad.md) |
-| [Microsoft-konto](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` | [App Service inloggning för Microsoft-konto](configure-authentication-provider-microsoft.md) |
+| [Microsoft Identity Platform](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` | [App Service inloggning för Microsoft Identity Platform](configure-authentication-provider-aad.md) |
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` | [App Service Facebook-inloggning](configure-authentication-provider-facebook.md) |
 | [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` | [App Service Google-inloggning](configure-authentication-provider-google.md) |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` | [App Service Twitter-inloggning](configure-authentication-provider-twitter.md) |
@@ -110,21 +109,17 @@ För klient webbläsare kan App Service automatiskt dirigera alla oautentiserade
 
 #### <a name="authorization-behavior"></a>Beteende för auktorisering
 
-I [Azure Portal](https://portal.azure.com)kan du konfigurera App Service auktorisering med ett antal beteenden när en inkommande begäran inte autentiseras.
+I [Azure Portal](https://portal.azure.com)kan du konfigurera app service med ett antal beteenden när en inkommande begäran inte autentiseras. Följande rubriker beskriver alternativen.
 
-![En skärm bild som visar List rutan "åtgärd som ska vidtas när begäran inte är autentiserad"](media/app-service-authentication-overview/authorization-flow.png)
-
-Följande rubriker beskriver alternativen.
-
-**Tillåt anonyma begär Anden (ingen åtgärd)**
+**Tillåt oautentiserade begär Anden**
 
 Med det här alternativet överlåts auktoriseringen av oautentiserad trafik till program koden. För autentiserade begär Anden skickar App Service även information om autentiseringen i HTTP-huvudena.
 
 Det här alternativet ger större flexibilitet vid hantering av anonyma begär Anden. Du kan till exempel [presentera flera inloggnings leverantörer](app-service-authentication-how-to.md#use-multiple-sign-in-providers) för dina användare. Du måste dock skriva kod.
 
-**Tillåt endast autentiserade begär Anden**
+**Kräv autentisering**
 
-Alternativet är att **Logga in med \<provider>**. App Service dirigerar om alla anonyma begär anden till `/.auth/login/<provider>` för den leverantör du väljer. Om den anonyma begäran kommer från en ursprunglig mobilapp är det returnerade svaret en `HTTP 401 Unauthorized` .
+Det här alternativet avvisar all oautentiserad trafik till ditt program. Den här avvisningen kan vara en åtgärd för att omdirigera till en av de konfigurerade identitets leverantörerna. I dessa fall omdirigeras en webb läsar klient till `/.auth/login/<provider>` för den leverantör du väljer. Om den anonyma begäran kommer från en ursprunglig mobilapp är det returnerade svaret en `HTTP 401 Unauthorized` . Du kan också konfigurera avvisningen så att den är en `HTTP 401 Unauthorized` eller `HTTP 403 Forbidden` för alla begär Anden.
 
 Med det här alternativet behöver du inte skriva någon autentiseringsmetod i din app. Bättre auktorisering, till exempel rollbaserad auktorisering, kan hanteras genom att inspektera användarens anspråk (se [användar anspråk för åtkomst](app-service-authentication-how-to.md#access-user-claims)).
 

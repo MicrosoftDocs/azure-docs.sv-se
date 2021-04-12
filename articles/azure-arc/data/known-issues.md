@@ -9,20 +9,51 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8100d9e12f107e0c4598876c46453b46c6ee4d0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ee652047a33d73ece2d7648905fa590d90b1fb2f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122008"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029513"
 ---
 # <a name="known-issues---azure-arc-enabled-data-services-preview"></a>Kända problem – Azure Arc-aktiverade data tjänster (för hands version)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
+## <a name="march-2021"></a>Mars 2021
+
+### <a name="data-controller"></a>Datakontrollant
+
+- Du kan skapa en datakontrollant i direkt anslutnings läge med Azure Portal. Distribution med andra Azure Arc-aktiverade data Services-verktyg stöds inte. Mer specifikt kan du inte distribuera en data styrenhet i Direct Connect-läge med något av följande verktyg under den här versionen.
+   - Azure Data Studio
+   - Azure Data CLI ( `azdata` )
+   - Inbyggda Kubernetes-verktyg
+
+   [Distribuera Azure Arc data Controller | Direct Connect-läget](deploy-data-controller-direct-mode.md) förklarar hur du skapar datakontrollanten i portalen. 
+
+### <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc Enabled PostgreSQL-skalning
+
+- Det finns inte stöd för att distribuera en Azure-båge som är aktive rad i postgres i en ARC-datakontrollant som är aktive rad för Direct Connect-läge.
+- Om du skickar ett ogiltigt värde till `--extensions` parametern när du redigerar konfigurationen för en Server grupp för att aktivera ytterligare tillägg återställs listan över aktiverade tillägg på ett felaktigt sätt till den som var i den tidpunkt då Server gruppen skapades, och hindrar användaren från att skapa ytterligare tillägg. Den enda lösning som är tillgänglig när det händer är att ta bort Server gruppen och distribuera om den.
+
 ## <a name="february-2021"></a>Februari 2021
 
-- Anslutet kluster läge har inaktiverats
+### <a name="data-controller"></a>Datakontrollant
+
+- Kluster läget för direkt anslutning har inaktiverats
+
+### <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc Enabled PostgreSQL-skalning
+
+- Återställning vid tidpunkt stöds inte för tillfället på NFS-lagring.
+- Det går inte att aktivera och konfigurera pg_cron-tillägget samtidigt. Du måste använda två kommandon för detta. Ett kommando för att aktivera det och ett kommando för att konfigurera det. 
+
+   Exempel:
+   ```console
+   § azdata arc postgres server edit -n myservergroup --extensions pg_cron 
+   § azdata arc postgres server edit -n myservergroup --engine-settings cron.database_name='postgres'
+   ```
+
+   Det första kommandot kräver en omstart av Server gruppen. Innan du kör det andra kommandot måste du därför kontrol lera att Server gruppens tillstånd har gått över från uppdateringen till klar. Om du kör det andra kommandot innan omstarten har slutförts kommer det att Miss klar. Om så är fallet väntar du bara på en stund och kör sedan det andra kommandot igen.
 
 ## <a name="introduced-prior-to-february-2021"></a>Infördes före februari 2021
 
@@ -43,12 +74,6 @@ ms.locfileid: "102122008"
 
    :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Avmarkera kryss rutorna för varje zon för att ange ingen.":::
 
-### <a name="postgresql"></a>PostgreSQL
-
-- Azure Arc Enabled PostgreSQL-skalning returnerar ett felaktigt fel meddelande när det inte går att återställa till den relativa tidpunkt som du anger. Om du till exempel har angett en tidpunkt för att återställa som är äldre än vad dina säkerhets kopior innehåller, kommer återställningen att Miss lyckas med ett fel meddelande som: `ERROR: (404). Reason: Not found. HTTP response body: {"code":404, "internalStatus":"NOT_FOUND", "reason":"Failed to restore backup for server...}`
-När detta händer startar du om kommandot efter att ha angett en tidpunkt som ligger inom det datum intervall som du har säkerhets kopior för. Du fastställer intervallet genom att ange dina säkerhets kopior och titta på de datum då de vidtogs.
-- Återställning av tidpunkt stöds bara i Server grupper. Mål servern för en återställnings punkt för en tidpunkt kan inte vara den server som du använde för säkerhets kopieringen. Den måste vara en annan server grupp. Fullständig återställning stöds dock i samma server grupp.
-- Ett säkerhets kopierings-ID krävs vid fullständig återställning. Om du inte anger ett säkerhets kopierings-ID kommer den senaste säkerhets kopian att användas som standard. Detta fungerar inte i den här versionen.
 
 ## <a name="next-steps"></a>Nästa steg
 

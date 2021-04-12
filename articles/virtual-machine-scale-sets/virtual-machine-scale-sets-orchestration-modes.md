@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 316f97480dfe7ee6481ef88faf265051a92024da
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3d9d9449e2a971a4247e507e0c022c8c5fb9956c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937268"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075414"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>För hands version: Orchestration-lägen för skalnings uppsättningar för virtuella datorer i Azure 
 
@@ -306,7 +306,7 @@ Du kan lägga till upp till 1000 virtuella datorer i en skalnings uppsättning i
 
 **Hur jämförs tillgänglighet med flexibelt Orchestration med tillgänglighets uppsättningar eller enhetligt dirigering?**
 
-|   | Flexibel dirigering  | Enhetlig dirigering  | Tillgänglighetsuppsättningar  |
+| Tillgänglighets attribut  | Flexibel dirigering  | Enhetlig dirigering  | Tillgänglighetsuppsättningar  |
 |-|-|-|-|
 | Distribuera över tillgänglighets zoner  | Inga  | Ja  | Inga  |
 | Tillgänglighets garantier för fel domän i en region  | Ja, upp till 1000 instanser kan spridas över upp till 3 fel domäner i regionen. Det maximala antalet fel domäner varierar beroende på region  | Ja, upp till 100 instanser  | Ja, upp till 200 instanser  |

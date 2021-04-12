@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/21/2021
+ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: f77bd69f8266d9461481cd0a12a7b70107622de5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 542b6580994a2054526f0ddbb3ad93dc27c28fcc
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773461"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107660"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Azure avdelningens kontroll-anslutning för Amazon S3
 
@@ -38,6 +38,7 @@ Mer information finns i de dokumenterade avdelningens kontroll-gränserna på:
 
 - [Hantera och öka kvoter för resurser med Azure avdelningens kontroll](how-to-manage-quotas.md)
 - [Data källor och filtyper som stöds i Azure avdelningens kontroll](sources-and-scans.md)
+- [Använd privata slut punkter för ditt avdelningens kontroll-konto](catalog-private-link.md)
 ### <a name="storage-and-scanning-regions"></a>Lagrings-och skannings regioner
 
 I följande tabell mappas de regioner där du lagrar data i den region där det skulle genomsökas av Azure-avdelningens kontroll.
@@ -77,9 +78,13 @@ I följande tabell mappas de regioner där du lagrar data i den region där det 
 
 Se till att du har utfört följande förutsättningar innan du lägger till dina Amazon S3-buckets som avdelningens kontroll-datakällor och skannar dina S3-data.
 
-- Du måste vara en Azure avdelningens kontroll data source-administratör.
-
-- När du lägger till buckets som avdelningens kontroll-resurser behöver du värdena för ditt [AWS-ARN](#retrieve-your-new-role-arn), [Bucket-namn](#retrieve-your-amazon-s3-bucket-name)och ibland ditt [AWS-konto-ID](#locate-your-aws-account-id).
+> [!div class="checklist"]
+> * Du måste vara en Azure avdelningens kontroll data source-administratör.
+> * [Skapa ett avdelningens kontroll-konto](#create-a-purview-account) om du inte redan har ett
+> * [Skapa en avdelningens kontroll-autentiseringsuppgift för din AWS-Bucket-genomsökning](#create-a-purview-credential-for-your-aws-bucket-scan)
+> * [Skapa en ny AWS-roll som ska användas med avdelningens kontroll](#create-a-new-aws-role-for-purview)
+> * [Konfigurera genomsökning för krypterade Amazon S3-buckets](#configure-scanning-for-encrypted-amazon-s3-buckets)om det är relevant
+> * När du lägger till buckets som avdelningens kontroll-resurser behöver du värdena för ditt [AWS-ARN](#retrieve-your-new-role-arn), [Bucket-namn](#retrieve-your-amazon-s3-bucket-name)och ibland ditt [AWS-konto-ID](#locate-your-aws-account-id).
 
 ### <a name="create-a-purview-account"></a>Skapa ett avdelningens kontroll-konto
 
@@ -92,7 +97,7 @@ Se till att du har utfört följande förutsättningar innan du lägger till din
 Den här proceduren beskriver hur du skapar en ny avdelningens kontroll-autentiseringsuppgift som ska användas vid genomsökning av dina AWS-buckets.
 
 > [!TIP]
-> Du kan också skapa en ny autentiseringsuppgift i mitten av processen och [Konfigurera din genomsökning](#create-a-scan-for-your-amazon-s3-bucket). I så fall väljer du **ny** i fältet **autentiseringsuppgifter** .
+> Du kan också skapa en ny autentiseringsuppgift i mitten av processen och [Konfigurera din genomsökning](#create-a-scan-for-one-or-more-amazon-s3-buckets). I så fall väljer du **ny** i fältet **autentiseringsuppgifter** .
 >
 
 1. I avdelningens kontroll navigerar du till **hanterings centret** och under **säkerhet och åtkomst** väljer du **autentiseringsuppgifter**.
@@ -138,6 +143,13 @@ Mer information om avdelningens kontroll-autentiseringsuppgifter finns i dokumen
 1. Filtrera behörigheterna som visas till **S3** i avsnittet **skapa roll > koppla behörighets principer** . Välj **AmazonS3ReadOnlyAccess** och välj sedan **Nästa: Taggar**.
 
     ![Välj ReadOnlyAccess-principen för den nya inläsnings rollen för Amazon S3.](./media/register-scan-amazon-s3/aws-permission-role-amazon-s3.png)
+
+    > [!IMPORTANT]
+    > **AmazonS3ReadOnlyAccess** -principen ger de lägsta behörigheter som krävs för att genomsöka dina S3-buckets och kan även innehålla andra behörigheter.
+    >
+    >Om du bara vill använda de lägsta behörigheter som krävs för att genomsöka dina buckets, skapar du en ny princip med de behörigheter som anges i [lägsta behörigheter för din AWS-princip](#minimum-permissions-for-your-aws-policy), beroende på om du vill genomsöka en enskild Bucket eller alla Bucket i ditt konto. 
+    >
+    >Tillämpa den nya principen på rollen i stället för **AmazonS3ReadOnlyAccess.**
 
 1. I avsnittet **Lägg till taggar (valfritt)** kan du välja att skapa en meningsfull tagg för den nya rollen. Användbara Taggar gör det möjligt att organisera, spåra och kontrol lera åtkomst för varje roll som du skapar.
 
@@ -219,7 +231,7 @@ AWS-buckets stöder flera krypterings typer. För buckets som använder **AWS-KM
 
 ### <a name="retrieve-your-new-role-arn"></a>Hämta din nya roll ARN
 
-Du måste registrera AWS-ARN och kopiera den till avdelningens kontroll när du [skapar en genomsökning för din Amazon S3-Bucket](#create-a-scan-for-your-amazon-s3-bucket).
+Du måste registrera AWS-ARN och kopiera den till avdelningens kontroll när du [skapar en genomsökning för din Amazon S3-Bucket](#create-a-scan-for-one-or-more-amazon-s3-buckets).
 
 **Så här hämtar du din roll ARN:**
 
@@ -229,11 +241,11 @@ Du måste registrera AWS-ARN och kopiera den till avdelningens kontroll när du 
 
     ![Kopiera rollens ARN-värde till Urklipp.](./media/register-scan-amazon-s3/aws-copy-role-purview.png)
 
-1. Klistra in det här värdet på en säker plats, redo att användas när [du skapar en sökning för din Amazon S3-Bucket](#create-a-scan-for-your-amazon-s3-bucket).
+1. Klistra in det här värdet på en säker plats, redo att användas när [du skapar en sökning för din Amazon S3-Bucket](#create-a-scan-for-one-or-more-amazon-s3-buckets).
 
 ### <a name="retrieve-your-amazon-s3-bucket-name"></a>Hämta ditt Amazon S3-Bucket-namn
 
-Du behöver namnet på din Amazon S3-Bucket för att kopiera det till avdelningens kontroll när du [skapar en genomsökning för din Amazon S3-Bucket](#create-a-scan-for-your-amazon-s3-bucket)
+Du behöver namnet på din Amazon S3-Bucket för att kopiera det till avdelningens kontroll när du [skapar en genomsökning för din Amazon S3-Bucket](#create-a-scan-for-one-or-more-amazon-s3-buckets)
 
 **Hämta ditt Bucket-namn:**
 
@@ -270,6 +282,8 @@ Exempel:
 
 Använd den här proceduren om du bara har en enda S3-Bucket som du vill registrera till avdelningens kontroll som en data källa, eller om du har flera buckets i ditt AWS-konto, men inte vill registrera alla till avdelningens kontroll.
 
+**Så här lägger du till din Bucket**: 
+
 1. Starta avdelningens kontroll-portalen med hjälp av den dedikerade avdelningens kontroll-anslutningen för Amazon S3 URL. Den här URL: en tillhandahölls av Amazon S3 avdelningens kontroll Connector-produkt hanterings teamet.
 
     ![Starta avdelningens kontroll-portalen.](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
@@ -293,12 +307,15 @@ Använd den här proceduren om du bara har en enda S3-Bucket som du vill registr
 
     När du är klar väljer du **Slutför** för att slutföra registreringen.
 
-Fortsätt med [skapa en sökning för din Amazon S3-Bucket.](#create-a-scan-for-your-amazon-s3-bucket).
+Fortsätt med [att skapa en sökning för en eller flera Amazon S3-buckets.](#create-a-scan-for-one-or-more-amazon-s3-buckets).
 
-## <a name="add-all-of-your-amazon-s3-buckets-as-purview-resources"></a>Lägg till alla Amazon S3-buckets som avdelningens kontroll-resurser
+## <a name="add-an-amazon-account-as-a-purview-resource"></a>Lägg till ett Amazon-konto som en avdelningens kontroll-resurs
 
 Använd den här proceduren om du har flera S3-buckets i ditt Amazon-konto och du vill registrera alla som avdelningens kontroll data källor.
 
+När du [konfigurerar din genomsökning](#create-a-scan-for-one-or-more-amazon-s3-buckets)kan du välja de angivna buckets som du vill genomsöka, om du inte vill genomsöka alla dem tillsammans.
+
+**Så här lägger du till ditt Amazon-konto**:
 1. Starta avdelningens kontroll-portalen med hjälp av den dedikerade avdelningens kontroll-anslutningen för Amazon S3 URL. Den här URL: en tillhandahölls av Amazon S3 avdelningens kontroll Connector-produkt hanterings teamet.
 
     ![Starta koppling för Amazon S3-dedikerad avdelningens kontroll-Portal](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
@@ -322,9 +339,9 @@ Använd den här proceduren om du har flera S3-buckets i ditt Amazon-konto och d
 
     När du är klar väljer du **Slutför** för att slutföra registreringen.
 
-Fortsätt med [att skapa en sökning efter din Amazon S3-Bucket](#create-a-scan-for-your-amazon-s3-bucket).
+Fortsätt med [att skapa en sökning för en eller flera Amazon S3-buckets](#create-a-scan-for-one-or-more-amazon-s3-buckets).
 
-## <a name="create-a-scan-for-your-amazon-s3-bucket"></a>Skapa en sökning för din Amazon S3-Bucket
+## <a name="create-a-scan-for-one-or-more-amazon-s3-buckets"></a>Skapa en sökning för en eller flera Amazon S3-buckets
 
 När du har lagt till Bucket som avdelningens kontroll-datakällor kan du konfigurera en sökning så att den körs med schemalagda intervall eller direkt.
 
@@ -340,9 +357,10 @@ När du har lagt till Bucket som avdelningens kontroll-datakällor kan du konfig
     |**Namn**     |  Ange ett beskrivande namn för genomsökningen eller Använd standardvärdet.       |
     |**Typ** |Visas bara om du har lagt till ditt AWS-konto, där alla buckets ingår. <br><br>De aktuella alternativen omfattar bara **alla**  >  **Amazon S3**. Håll koll på för fler alternativ för att välja avdelningens kontroll support mat ris expanderar. |
     |**Autentiseringsuppgift**     |  Välj en avdelningens kontroll-autentiseringsuppgift med din roll ARN. <br><br>**Tips**: Välj **nytt** om du vill skapa en ny autentiseringsuppgift för tillfället. Mer information finns i [skapa en avdelningens kontroll-autentiseringsuppgift för din AWS-Bucket-genomsökning](#create-a-purview-credential-for-your-aws-bucket-scan).     |
-    |     |         |
+    | **Amazon S3**    |   Visas bara om du har lagt till ditt AWS-konto, där alla buckets ingår. <br><br>Välj en eller flera buckets som ska genomsökas eller **Välj alla** om du vill söka igenom alla buckets i ditt konto.      |
+    | | |
 
-    Avdelningens kontroll kontrollerar automatiskt att rollen ARN är giltig och att Bucket och objektet i Bucket är tillgängligt och fortsätter sedan om anslutningen lyckas.
+    Avdelningens kontroll kontrollerar automatiskt att rollen ARN är giltig och att buckets och objekten i buckets är tillgängliga och fortsätter sedan om anslutningen lyckas.
 
     > [!TIP]
     > Om du vill ange olika värden och testa anslutningen själv innan du fortsätter väljer du **Testa anslutning** längst ned till höger innan du väljer **Fortsätt**.
@@ -396,6 +414,90 @@ Använd de andra områdena i avdelningens kontroll för att ta reda på mer om i
     Alla avdelningens kontroll Insight-rapporter inkluderar Amazon S3-genomsöknings resultat, tillsammans med resten av resultaten från dina Azure-datakällor. Vid behov har en ytterligare **Amazon S3** -till gångs typ lagts till i rapport filtrerings alternativen.
 
     Mer information finns i [förstå insikter i Azure avdelningens kontroll](concept-insights.md).
+
+## <a name="minimum-permissions-for-your-aws-policy"></a>Lägsta behörighet för din AWS-princip
+
+Standard proceduren för att [skapa en AWS-roll för avdelningens kontroll](#create-a-new-aws-role-for-purview) som ska användas vid genomsökning av S3-buckets använder **AmazonS3ReadOnlyAccess** -principen.
+
+**AmazonS3ReadOnlyAccess** -principen ger de lägsta behörigheter som krävs för att genomsöka dina S3-buckets och kan även innehålla andra behörigheter.
+
+Om du bara vill använda de lägsta behörigheter som krävs för att genomsöka Bucket, skapar du en ny princip med de behörigheter som anges i följande avsnitt, beroende på om du vill genomsöka en enskild Bucket eller alla Bucket i ditt konto.
+
+Tillämpa den nya principen på rollen i stället för **AmazonS3ReadOnlyAccess.**
+
+### <a name="individual-buckets"></a>Enskilda buckets
+
+När du skannar enskilda S3-buckets, inkluderar lägsta AWS-behörigheter:
+
+- `GetBucketLocation`
+- `GetBucketPublicAccessBlock`
+- `GetObject`
+- `ListBucket`
+
+Se till att definiera din resurs med det angivna Bucket-namnet. Exempel:
+
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": "arn:aws:s3:::<bucketname>"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": "arn:aws:s3::: <bucketname>/*"
+        }
+    ]
+}
+```
+
+### <a name="all-buckets-in-your-account"></a>Alla buckets i ditt konto
+
+När du skannar alla buckets i ditt AWS-konto inkluderar minsta AWS-behörighet:
+
+- `GetBucketLocation`
+- `GetBucketPublicAccessBlock`
+- `GetObject`
+- `ListAllMyBuckets`
+- `ListBucket`.
+
+Se till att definiera din resurs med ett jokertecken. Exempel:
+
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetObject",
+                "s3:ListAllMyBuckets",
+                "s3:ListBucket"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -9,12 +9,12 @@ ms.workload: media
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: a2f5e51af5e41bad4e88509d4440a8de2bc5525c
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: c2ffda7400109e16cf1110a4e14ecbc3604a7ecf
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280436"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492315"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamisk paketering i Media Services v3
 
@@ -96,7 +96,7 @@ Följande artiklar innehåller exempel på [hur du kodar en video med Media Serv
 
 * [Koda från en HTTPS-URL med hjälp av inbyggda för inställningar](job-input-from-http-how-to.md).
 * [Koda en lokal fil med hjälp av inbyggda för hands inställningar](job-input-from-local-file-how-to.md).
-* [Bygg en anpassad för inställning för att rikta in dig på specifika scenarier eller enhets krav](encode-custom-presets-how-to.md).
+* [Bygg en anpassad för inställning för att rikta in dig på specifika scenarier eller enhets krav](transform-custom-presets-how-to.md).
 
 Se listan över standardiserade kodares [format och codec](encode-media-encoder-standard-formats-reference.md)-filer.
 

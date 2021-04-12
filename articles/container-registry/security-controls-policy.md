@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroll av efterlevnad för Azure Container Registry
 description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure Container Registry. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 03/24/2021
+ms.date: 03/31/2021
 ms.topic: sample
 author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 0aca4374c3d12b179d66b1c488bc481353ff72da
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b08c2cda67719166ed9f87cba1d00735dec43163
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105033864"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092948"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-container-registry"></a>Azure Policy kontroll av efterlevnad för Azure Container Registry
 

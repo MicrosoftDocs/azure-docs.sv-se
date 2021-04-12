@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 81e8cd5cf4af8da76ae4eb09bed5a4ee0368da4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8248b3ed21561340e963c848dee4430c48829ab1
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467365"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285305"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Inbyggd fördefinierad inleverans modell för formulär tolken
 
-Azure formulär tolken kan analysera och extrahera information från försäljnings kvitton med hjälp av en fördefinierad kvitto modell. Den kombinerar vår kraftfulla [OCR-kapacitet (optisk tecken läsning)](../computer-vision/concept-recognizing-text.md) med djupgående inlärnings modeller för att extrahera viktig information från kvitton som skrivits på engelska.
+Azure formulär tolken kan analysera och extrahera information från försäljnings kvitton med hjälp av en fördefinierad kvitto modell. Den kombinerar vår kraftfulla [OCR-kapacitet (optisk tecken läsning)](../computer-vision/overview-ocr.md) med djupgående inlärnings modeller för att extrahera viktig information från kvitton som skrivits på engelska.
 
 ## <a name="understanding-receipts"></a>Förstå kvitton
 

@@ -4,18 +4,22 @@ description: Lär dig mer om säkerhet i Azure Kubernetes service (AKS), inklusi
 services: container-service
 author: mlearned
 ms.topic: conceptual
-ms.date: 07/01/2020
+ms.date: 03/11/2021
 ms.author: mlearned
-ms.openlocfilehash: 6c69e46ea3510476089cd932b1cd1bdf14254021
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3fafbe3f4b1c53f929682f4ca160fb19a5e91918
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122382"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105314"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Säkerhetsbegrepp för program och kluster i AKS (Azure Kubernetes Service)
 
-För att skydda dina kund uppgifter när du kör program arbets belastningar i Azure Kubernetes service (AKS) är säkerheten för klustret en viktig faktor. Kubernetes innehåller säkerhets komponenter som *nätverks principer* och *hemligheter*. Azure lägger sedan till i komponenter som nätverks säkerhets grupper och dirigerade kluster uppgraderingar. Dessa säkerhets komponenter kombineras för att låta ditt AKS-kluster köra de senaste säkerhets uppdateringarna för operativ systemet och Kubernetes-versioner och med säker Pod-trafik och åtkomst till känsliga autentiseringsuppgifter.
+Kluster säkerhet skyddar dina kund uppgifter när du kör program arbets belastningar i Azure Kubernetes service (AKS). 
+
+Kubernetes innehåller säkerhets komponenter, till exempel *nätverks principer* och *hemligheter*. Samtidigt innehåller Azure komponenter som nätverks säkerhets grupper och dirigerade kluster uppgraderingar. AKS kombinerar dessa säkerhets komponenter för att:
+* Behåll ditt AKS-kluster med de senaste säkerhets uppdateringarna och Kubernetes-versionerna av operativ systemet.
+* Tillhandahålla säker Pod-trafik och åtkomst till känsliga autentiseringsuppgifter.
 
 Den här artikeln beskriver de viktigaste begreppen som skyddar dina program i AKS:
 
@@ -32,7 +36,7 @@ Den här artikeln beskriver de viktigaste begreppen som skyddar dina program i A
 
 ## <a name="master-security"></a>Huvud säkerhet
 
-I AKS är Kubernetes Master-komponenterna en del av den hanterade tjänst som tillhandahålls av Microsoft. Varje AKS-kluster har sin egen, dedikerad Kubernetes-huvudhanterare för att tillhandahålla API-servern, Scheduler osv. Den här huvud servern hanteras och underhålls av Microsoft.
+I AKS är Kubernetes Master-komponenterna en del av den hanterade tjänsten som tillhandahålls, hanteras och underhålls av Microsoft. Varje AKS-kluster har sin egen, dedikerad Kubernetes-huvudhanterare för att tillhandahålla API-servern, Scheduler osv.
 
 Som standard använder Kubernetes-API-servern en offentlig IP-adress och ett fullständigt kvalificerat domän namn (FQDN). Du kan begränsa åtkomsten till API-serverns slut punkt med hjälp av [auktoriserade IP-intervall][authorized-ip-ranges]. Du kan också skapa ett helt [privat kluster][private-clusters] om du vill begränsa åtkomsten till API-servern till ditt virtuella nätverk.
 
@@ -40,62 +44,95 @@ Du kan styra åtkomsten till API-servern med hjälp av Kubernetes-rollbaserad å
 
 ## <a name="node-security"></a>Nods säkerhet
 
-AKS-noder är virtuella Azure-datorer som du hanterar och underhåller. Linux-noder kör en optimerad Ubuntu-distribution med hjälp av `containerd` eller Moby container Runtime. Windows Server-noder kör en optimerad Windows Server 2019-version och använder även `containerd` Moby container Runtime. När ett AKS-kluster skapas eller skalas, distribueras noderna automatiskt med de senaste säkerhets uppdateringarna och konfigurationerna för operativ systemet.
+AKS-noder är virtuella Azure-datorer (VM) som du hanterar och underhåller. 
+* Linux-noder kör en optimerad Ubuntu-distribution med hjälp av `containerd` eller Moby container Runtime. 
+* Windows Server-noder kör en optimerad Windows Server 2019-version med hjälp av `containerd` eller Moby container Runtime. 
+
+När ett AKS-kluster skapas eller skalas, distribueras noderna automatiskt med de senaste säkerhets uppdateringarna och konfigurationerna för operativ systemet.
 
 > [!NOTE]
-> AKS-kluster med Kubernetes version 1,19 och större användning `containerd` som behållar körning. AKS-kluster som använder Kubernetes före v 1.19 för Node-pooler använder [Moby](https://mobyproject.org/) (överordnad Docker) som dess behållar körning.
+> AKS-kluster med hjälp av:
+> * Kubernetes-version 1,19 och större användning `containerd` som container Runtime. 
+> * Kubernetes före v 1.19 Node Pools använder [Moby](https://mobyproject.org/) (överordnad Docker) som dess behållar körning.
 
-Azure-plattformen tillämpar automatiskt OS-säkerhetskorrigeringsfiler på Linux-noder på en natt basis. Om en säkerhets uppdatering för Linux-operativsystem kräver en värd omstart utförs inte den här omstarten automatiskt. Du kan starta om Linux-noderna manuellt eller en vanlig metod är att använda [Kured][kured], en daemon för omstart med öppen källkod för Kubernetes. Kured körs som en [DaemonSet][aks-daemonsets] och övervakar varje nod för att visa en fil som anger att en omstart krävs. Omstarter hanteras i klustret med samma [Cordon och tömnings processen](#cordon-and-drain) som en kluster uppgradering.
+### <a name="node-security-patches"></a>Säkerhets korrigeringar för nod
 
-För Windows Server-noder körs Windows Update inte automatiskt och tillämpar de senaste uppdateringarna. I ett regelbundet schema kring Windows Updates lanserings cykel och din egen verifierings process bör du utföra en uppgradering på Windows Server-pool (er) i ditt AKS-kluster. Den här uppgraderings processen skapar noder som kör den senaste Windows Server-avbildningen och uppdateringar och tar sedan bort de äldre noderna. Mer information om den här processen finns [i uppgradera en Node-pool i AKS][nodepool-upgrade].
+#### <a name="linux-nodes"></a>Linux-noder
+Azure-plattformen tillämpar automatiskt OS-säkerhetskorrigeringsfiler på Linux-noder på en natt basis. Om en säkerhets uppdatering för Linux-operativsystem kräver en omstart av datorn, kommer den inte att startas om automatiskt. Du kan antingen:
+* Starta om Linux-noderna manuellt.
+* Använd [Kured][kured], en daemon för omstart av öppen källkod för Kubernetes. Kured körs som en [DaemonSet][aks-daemonsets] och övervakar varje nod för en fil som anger att en omstart krävs. 
 
-Noder distribueras till ett privat virtuellt nätverk under nät, utan att några offentliga IP-adresser tilldelats. För fel sökning och hanterings syfte är SSH aktiverat som standard. Den här SSH-åtkomsten är endast tillgänglig med den interna IP-adressen.
+Omstarter hanteras i klustret med samma [Cordon och tömnings processen](#cordon-and-drain) som en kluster uppgradering.
 
-Noderna använder Azure Managed Disks för att tillhandahålla lagring. För de flesta VM-storlekar är dessa Premium diskar som backas upp av SSD med höga prestanda. Data som lagras på hanterade diskar krypteras automatiskt i vila på Azure-plattformen. För att förbättra redundans replikeras även dessa diskar på ett säkert sätt i Azure-datacentret.
+#### <a name="windows-server-nodes"></a>Windows Server-noder
 
-Kubernetes-miljöer, i AKS eller någon annan stans, är för närvarande inte helt säkra för att skydda användningen av flera klienter. Ytterligare säkerhetsfunktioner, t. ex. *Pod säkerhets principer*, eller mer detaljerad Kubernetes för rollbaserad åtkomst kontroll (Kubernetes RBAC) för noder, gör det svårare att utnyttja dem. Men för verklig säkerhet när du kör en skydds arbets belastning med flera innehavare, är en hypervisor den enda säkerhets nivå som du bör lita på. Säkerhets domänen för Kubernetes blir hela klustret, inte en enskild nod. För dessa typer av farliga arbets belastningar med flera klienter bör du använda fysiskt isolerade kluster. Mer information om hur du isolerar arbets belastningar finns i [metod tips för kluster isolering i AKS][cluster-isolation].
+För Windows Server-noder körs Windows Update inte automatiskt och använder de senaste uppdateringarna. Schemalägg Windows Server Node pool-uppgraderingar i ditt AKS-kluster runt den vanliga Windows Update lanserings cykeln och din egen verifierings process. Den här uppgraderings processen skapar noder som kör den senaste Windows Server-avbildningen och uppdateringar och tar sedan bort de äldre noderna. Mer information om den här processen finns [i uppgradera en Node-pool i AKS][nodepool-upgrade].
+
+### <a name="node-deployment"></a>Node-distribution
+Noder distribueras till ett privat virtuellt nätverk under nät, utan att några offentliga IP-adresser tilldelats. För fel sökning och hanterings syfte är SSH aktiverat som standard och endast tillgängligt med den interna IP-adressen.
+
+### <a name="node-storage"></a>Node Storage
+Noderna använder Azure Managed Disks för att tillhandahålla lagring. För de flesta VM-storlekar är Azure Managed Disks Premium diskar som backas upp av SSD med höga prestanda. Data som lagras på hanterade diskar krypteras automatiskt i vila på Azure-plattformen. För att förbättra redundans replikeras Azure Managed Disks säkert i Azure-datacentret.
+
+### <a name="hostile-multi-tenant-workloads"></a>Farliga arbets belastningar för flera klienter
+
+Kubernetes-miljöer är för närvarande inte säkra för att skydda användningen av flera klienter. Extra säkerhetsfunktioner, t. ex. *Pod säkerhets principer* eller Kubernetes RBAC för noder, kan effektivt blockera sårbarheter. För verklig säkerhet vid körning av skydds arbets belastningar med flera klienter, är det bara att lita på en hypervisor. Säkerhets domänen för Kubernetes blir hela klustret, inte en enskild nod. 
+
+För dessa typer av farliga arbets belastningar med flera klienter bör du använda fysiskt isolerade kluster. Mer information om hur du isolerar arbets belastningar finns i [metod tips för kluster isolering i AKS][cluster-isolation].
 
 ### <a name="compute-isolation"></a>Beräknings isolering
 
- Vissa arbets belastningar kan kräva en hög grad av isolering från andra kund arbets belastningar på grund av efterlevnads-eller reglerings krav. För dessa arbets belastningar tillhandahåller Azure [isolerade virtuella datorer](../virtual-machines/isolation.md)som kan användas som agent-noder i ett AKS-kluster. Dessa isolerade virtuella datorer är isolerade till en viss maskin varu typ och är dedikerad till en enda kund. 
+På grund av efterlevnads-eller reglerings krav kan vissa arbets belastningar kräva en hög grad av isolering från andra kund arbets belastningar. För dessa arbets belastningar tillhandahåller Azure [isolerade virtuella datorer](../virtual-machines/isolation.md) som ska användas som agent-noder i ett AKS-kluster. De här virtuella datorerna är isolerade till en viss maskin varu typ och är dedikerad till en enda kund. 
 
- Om du vill använda dessa isolerade virtuella datorer med ett AKS-kluster väljer du en av de isolerade storlekarna för virtuella datorer som visas [här](../virtual-machines/isolation.md) som **Node-storlek** när du skapar ett AKS-kluster eller lägger till en Node-pool.
-
+Välj [en av de isolerade VM-storlekarna](../virtual-machines/isolation.md) som **Node-storlek** när du skapar ett AKS-kluster eller lägger till en Node-pool.
 
 ## <a name="cluster-upgrades"></a>Kluster uppgraderingar
 
-För säkerhet och efterlevnad, eller för att använda de senaste funktionerna, tillhandahåller Azure verktyg för att dirigera uppgraderingen av ett AKS-kluster och-komponenter. Den här uppgraderings dirigeringen omfattar både Kubernetes huvud-och agent komponenter. Du kan visa en [lista över tillgängliga Kubernetes-versioner](supported-kubernetes-versions.md) för ditt AKS-kluster. Du startar uppgraderings processen genom att ange någon av dessa tillgängliga versioner. Azure gör sedan en säker cordons och tömmer varje AKS-nod och genomför uppgraderingen.
+Azure tillhandahåller uppgradering av Orchestration-verktyg för att uppgradera ett AKS-kluster och-komponenter, upprätthålla säkerhet och efterlevnad och få till gång till de senaste funktionerna. Den här uppgraderings dirigeringen omfattar både Kubernetes huvud-och agent komponenter. 
+
+Starta uppgraderings processen genom att ange en av de [listade tillgängliga Kubernetes-versionerna](supported-kubernetes-versions.md). Azure cordons och tömmer sedan varje AKS-nod och uppgraderingar.
 
 ### <a name="cordon-and-drain"></a>Cordon och dränering
 
-Under uppgraderings processen är AKS-noder individuellt avspärrade från klustret så att nya poddar inte är schemalagda för dem. Noderna töms sedan och uppgraderas enligt följande:
+Under uppgraderings processen är AKS-noder individuellt avspärrade från klustret för att förhindra att nya poddar schemaläggs på dem. Noderna töms sedan och uppgraderas enligt följande:
 
-- En ny nod distribueras till Node-poolen. Den här noden kör den senaste OS-avbildningen och korrigeringarna.
-- En av de befintliga noderna identifieras för uppgradering. Poddar på den här noden avslutas och schemaläggs på andra noder i Node-poolen.
-- Den här befintliga noden tas bort från AKS-klustret.
-- Nästa nod i klustret är avspärrade och töms med samma process tills alla noder har ersatts som en del av uppgraderings processen.
+1.  En ny nod distribueras till Node-poolen. 
+    * Den här noden kör den senaste OS-avbildningen och korrigeringarna.
+1. En av de befintliga noderna identifieras för uppgradering. 
+1. Poddar på den identifierade noden avslutas och schemaläggs på andra noder i Node-poolen.
+1. Den tömda noden tas bort från AKS-klustret.
+1. Steg 1-4 upprepas tills alla noder har bytts ut som en del av uppgraderings processen.
 
 Mer information finns i [uppgradera ett AKS-kluster][aks-upgrade-cluster].
 
 ## <a name="network-security"></a>Nätverkssäkerhet
 
-För anslutning och säkerhet med lokala nätverk kan du distribuera ditt AKS-kluster till befintliga Azure Virtual Network-undernät. Dessa virtuella nätverk kan ha en Azure plats-till-plats VPN-anslutning eller Express Route-anslutning tillbaka till ditt lokala nätverk. Kubernetes ingångs styrenheter kan definieras med privata, interna IP-adresser så att tjänsterna endast är tillgängliga via den här interna nätverks anslutningen.
+För anslutning och säkerhet med lokala nätverk kan du distribuera ditt AKS-kluster till befintliga Azure Virtual Network-undernät. Dessa virtuella nätverk ansluter tillbaka till ditt lokala nätverk med Azure plats-till-plats-VPN eller Express Route. Definiera Kubernetes ingress-kontrollanter med privata, interna IP-adresser för att begränsa åtkomsten till den interna nätverks anslutningen.
 
 ### <a name="azure-network-security-groups"></a>Azure-nätverkssäkerhetsgrupper
 
-Azure använder regler för nätverks säkerhets grupper för att filtrera trafik flödet i virtuella nätverk. Dessa regler definierar käll-och mål-IP-intervall, portar och protokoll som tillåts eller nekas åtkomst till resurser. Standard regler skapas för att tillåta TLS-trafik till Kubernetes-API-servern. När du skapar tjänster med belastningsutjämnare, Port mappningar eller ingångs vägar ändrar AKS automatiskt nätverks säkerhets gruppen för trafik så att den flödar korrekt.
+Azure använder regler för nätverks säkerhets grupper för att filtrera trafik flödet för det virtuella nätverket. Dessa regler definierar käll-och mål-IP-intervall, portar och protokoll som tillåts eller nekas åtkomst till resurser. Standard regler skapas för att tillåta TLS-trafik till Kubernetes-API-servern. Du skapar tjänster med belastningsutjämnare, Port mappningar eller inkommande vägar. AKS ändrar automatiskt nätverks säkerhets gruppen för trafik flöde.
 
-I de fall där du anger ditt eget undernät för ditt AKS-kluster och du vill ändra trafik flödet, ska du inte ändra nätverks säkerhets gruppen för under nätet som hanteras av AKS. Du kan skapa ytterligare nätverks säkerhets grupper på under näts nivå för att ändra trafik flödet så länge de inte stör den trafik som behövs för att hantera klustret, t. ex. åtkomst utjämning, kommunikation med kontroll planet och [utgående][aks-limit-egress-traffic].
+Om du anger ett eget undernät för ditt AKS-kluster **ska du inte** ändra nätverks säkerhets gruppen för under nätet som hanteras av AKS. Skapa i stället fler nätverks säkerhets grupper på under näts nivå för att ändra trafik flödet. Se till att de inte stör nödvändig trafik hantering av klustret, till exempel åtkomst till belastningsutjämnare, kommunikation med kontroll planet och [utgående][aks-limit-egress-traffic].
 
 ### <a name="kubernetes-network-policy"></a>Kubernetes nätverks princip
 
-För att begränsa nätverks trafiken mellan poddar i klustret, erbjuder AKS stöd för [Kubernetes nätverks principer][network-policy]. Med nätverks principer kan du välja att tillåta eller neka vissa nätverks Sök vägar i klustret baserat på namn områden och etikett väljare.
+För att begränsa nätverks trafiken mellan poddar i klustret, erbjuder AKS stöd för [Kubernetes nätverks principer][network-policy]. Med nätverks principer kan du tillåta eller neka vissa nätverks Sök vägar i klustret baserat på namn områden och etikett väljare.
 
 ## <a name="kubernetes-secrets"></a>Kubernetes-hemligheter
 
-En Kubernetes- *hemlighet* används för att mata in känsliga data i poddar, t. ex. autentiseringsuppgifter eller nycklar för åtkomst. Du skapar först en hemlighet med Kubernetes-API: et. När du definierar din POD eller distribution kan du begära en speciell hemlighet. Hemligheter anges bara för noder som har en schemalagd Pod som kräver det, och hemligheten lagras i *tmpfs*, som inte skrivs till disk. När den sista Pod på en nod som kräver en hemlighet tas bort, tas hemligheten bort från nodens tmpfs. Hemligheter lagras inom ett angivet namn område och kan endast nås av poddar inom samma namnrymd.
+Med en Kubernetes- *hemlighet* kan du mata in känsliga data i poddar, till exempel autentiseringsuppgifter eller nycklar för åtkomst. 
+1. Skapa en hemlighet med Kubernetes-API: et. 
+1. Definiera din POD eller distribution och begär en speciell hemlighet. 
+    * Hemligheter ges endast till noder med en schemalagd Pod som kräver dem.
+    * Hemligheten lagras i *tmpfs*, som inte skrivs till disk. 
+1. När du tar bort den sista Pod på en nod som kräver en hemlighet, tas hemligheten bort från nodens tmpfs. 
+   * Hemligheter lagras inom ett angivet namn område och kan endast nås av poddar inom samma namnrymd.
 
-Användningen av hemligheter minskar känslig information som definieras i manifestet POD eller service YAML. I stället begär du hemligheten som lagras i Kubernetes API-servern som en del av ditt YAML-manifest. Den här metoden ger endast den speciella Pod åtkomst till hemligheten. Obs! manifest filen för RAW Secret innehåller hemliga data i base64-format (se den [officiella dokumentationen][secret-risks] för mer information). Därför bör den här filen behandlas som känslig information och aldrig allokeras till käll kontroll.
+Att använda hemligheter minskar känslig information som definieras i manifestet POD eller service YAML. I stället begär du hemligheten som lagras i Kubernetes API-servern som en del av ditt YAML-manifest. Den här metoden ger endast den speciella Pod åtkomst till hemligheten. 
+
+> [!NOTE]
+> Manifest filen för RAW Secret innehåller hemliga data i base64-format (se den [officiella dokumentationen][secret-risks] för mer information). Behandla filerna som känslig information och genomför dem aldrig på käll kontroll.
 
 Kubernetes hemligheter lagras i etcd, ett distribuerat nyckel värdes lager. Etcd-butiken hanteras fullständigt av AKS och [data krypteras i vila på Azure-plattformen][encryption-atrest]. 
 
@@ -105,7 +142,7 @@ Information om hur du kommer igång med att skydda dina AKS-kluster finns i [upp
 
 För associerade bästa metoder, se [metod tips för kluster säkerhet och uppgraderingar i AKS][operator-best-practices-cluster-security] och [metod tips för Pod-säkerhet i AKS][developer-best-practices-pod-security].
 
-Mer information om kärn Kubernetes-och AKS-koncept finns i följande artiklar:
+Mer information om kärn Kubernetes-och AKS-koncept finns i:
 
 - [Kubernetes/AKS-kluster och arbets belastningar][aks-concepts-clusters-workloads]
 - [Kubernetes/AKS-identitet][aks-concepts-identity]

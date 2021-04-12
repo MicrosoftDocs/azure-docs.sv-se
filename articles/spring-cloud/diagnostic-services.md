@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: c354435f689f5182dd368fd53fdab28f1ab63d48
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 68b9aee49e4cf7c02c07fc7dd90e9cc6065a443c
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218799"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259429"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analysera loggar och mått med diagnostikinställningar
 
@@ -110,7 +110,7 @@ Det finns olika metoder för att visa loggar och mått enligt beskrivningen unde
 > [!NOTE]
 > `==` är Skift läges känslig, men `=~` är inte det.
 
-Om du vill veta mer om frågespråket som används i Log Analytics, se [Azure Monitor logg frågor](/azure/data-explorer/kusto/query/).
+Om du vill veta mer om frågespråket som används i Log Analytics, se [Azure Monitor logg frågor](/azure/data-explorer/kusto/query/). Om du vill fråga alla Log Analytics loggar från en centraliserad klient kan du kolla in [Azure datautforskaren](https://docs.microsoft.com/azure/data-explorer/query-monitor-data).
 
 ### <a name="use-your-storage-account"></a>Använd ditt lagrings konto
 

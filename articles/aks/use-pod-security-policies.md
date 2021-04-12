@@ -4,17 +4,17 @@ description: Lär dig hur du styr Pod-inåtkomster med PodSecurityPolicy i Azure
 services: container-service
 ms.topic: article
 ms.date: 03/25/2021
-ms.openlocfilehash: d95cdb51136511bdd8529c829c3f680d19e14ba9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4e72bd28910f471656feb27d10c123930305494e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105611777"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031230"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>För hands version – skydda klustret med Pod säkerhets principer i Azure Kubernetes service (AKS)
 
 > [!WARNING]
-> **Funktionen som beskrivs i det här dokumentet, Pod säkerhets policy (för hands version), påbörjar utfasningen med Kubernetes version 1,21, med dess borttagning i version 1,25.** I takt med att Kubernetes upprättar en mil stolpe, kommer Kubernetes community att arbeta med att dokumentera livskraftiga alternativ. Föregående meddelande om utfasning gjordes vid tidpunkten eftersom det inte fanns något lämpligt alternativ för kunder. Nu när Kubernetes-communityn arbetar på ett alternativ, är det inte längre något som behöver föråldras före Kubernetes.
+> **Funktionen som beskrivs i det här dokumentet, Pod säkerhets policy (för hands version), påbörjar [utfasningen](https://kubernetes.io/blog/2021/04/06/podsecuritypolicy-deprecation-past-present-and-future/) med Kubernetes version 1,21, med dess borttagning i version 1,25.** I takt med att Kubernetes upprättar en mil stolpe, kommer Kubernetes community att arbeta med att dokumentera livskraftiga alternativ. Föregående meddelande om utfasning gjordes vid tidpunkten eftersom det inte fanns något lämpligt alternativ för kunder. Nu när Kubernetes-communityn arbetar på ett alternativ, är det inte längre något som behöver föråldras före Kubernetes. 
 >
 > När Pod säkerhets princip (förhands granskning) är föråldrad måste du inaktivera funktionen på alla befintliga kluster med hjälp av den föråldrade funktionen för att utföra framtida kluster uppgraderingar och hålla koll på Azure-supporten.
 

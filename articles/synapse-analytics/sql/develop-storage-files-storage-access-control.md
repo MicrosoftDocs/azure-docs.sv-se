@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 726395e9f004130699dab061cfa752a2e516c834
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: acfaa780f21f5264b546f97e9a3792aa43e9c30b
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552962"
+ms.locfileid: "107029751"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Kontrol lera åtkomsten till lagrings kontot för SQL-poolen utan server i Azure Synapse Analytics
 
@@ -23,6 +23,13 @@ En server utan SQL-pool läser filer direkt från Azure Storage. Behörigheter f
 - **SQL Service nivå** – användaren ska ha beviljats behörighet att läsa data med hjälp av en [extern tabell](develop-tables-external-tables.md) eller köra `OPENROWSET` funktionen. Läs mer om [de behörigheter som krävs i det här avsnittet](develop-storage-files-overview.md#permissions).
 
 Den här artikeln beskriver de typer av autentiseringsuppgifter som du kan använda och hur sökning efter autentiseringsuppgifter registreras för SQL-och Azure AD-användare.
+
+## <a name="storage-permissions"></a>Lagrings behörigheter
+
+En server lös SQL-pool i Synapse Analytics-arbetsytan kan läsa innehållet i filer som lagras i Azure Data Lake-lagring. Du måste konfigurera behörigheter för lagring för att aktivera en användare som kör en SQL-fråga för att läsa filerna. Det finns tre metoder för att aktivera åtkomst till filerna>
+- Med **[rollbaserad åtkomst kontroll (RBAC)](../../role-based-access-control/overview.md)** kan du tilldela en roll till en Azure AD-användare i klient organisationen där ditt lagrings utrymme placeras. RBAC-roller kan tilldelas till Azure AD-användare. En läsare måste ha `Storage Blob Data Reader` , `Storage Blob Data Contributor` eller- `Storage Blob Data Owner` rollen. En användare som skriver data i Azure-lagringen måste ha `Storage Blob Data Writer` eller- `Storage Blob Data Owner` rollen. Observera att `Storage Owner` rollen inte innebär att en användare också är `Storage Data Owner` .
+- Med **Access Control listor (ACL)** kan du definiera detaljerad behörighets modell för filer och kataloger i Azure Storage. ACL kan tilldelas till Azure AD-användare. Om läsarna vill läsa en fil på en sökväg i Azure Storage måste de ha Execute (X) ACL på varje mapp i fil Sök vägen och läsa (R) ACL på filen. [Läs mer om hur du ställer in ACL-behörigheter i lagrings skikt](../../storage/blobs/data-lake-storage-access-control.md#how-to-set-acls)
+- **Signaturen för delad åtkomst (SAS)** gör det möjligt för en läsare att komma åt filerna på den Azure Data Lake lagringen med tidsbegränsad token. Läsaren behöver inte heller autentiseras som Azure AD-användare. SAS-token innehåller de behörigheter som har tilldelats läsaren samt den period då token är giltig. SAS-token är ett bra alternativ för tidsbegränsad åtkomst till en användare som inte ens behöver finnas i samma Azure AD-klient. SAS-token kan definieras på lagrings kontot eller i vissa kataloger. Lär dig mer om [att bevilja begränsad åtkomst till Azure Storage-resurser med hjälp av signaturer för delad åtkomst](../../storage/common/storage-sas-overview.md).
 
 ## <a name="supported-storage-authorization-types"></a>Lagringsauktoriseringstyper som stöds
 
@@ -103,7 +110,7 @@ När du använder lagring som skyddas med brand väggen kan du använda **använ
 
 #### <a name="user-identity"></a>Användar identitet
 
-För åtkomst till lagring som skyddas med brand väggen via användar identitet kan du använda PowerShell-modulen AZ. Storage.
+För att komma åt lagring som skyddas med brand väggen via användar identitet kan du använda Azure Portal UI eller PowerShell-modulen AZ. Storage.
 #### <a name="configuration-via-azure-portal"></a>Konfiguration via Azure Portal
 
 1. Sök efter ditt lagrings konto i Azure Portal.

@@ -7,16 +7,16 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 9f07a6376e3fdde46e9e0cb161acc97c5771d905
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 6de387605a8c127485b68773b6cd1b19c7136d17
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166759"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107507"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Skapa ett IoT Edge-modulerbjudande
 
-Den här artikeln beskriver hur du skapar och publicerar en Sakernas Internet (IoT) Edge-modul för Azure Marketplace. Innan du börjar [skapar du ett kommersiellt marknads plats konto i Partner Center](create-account.md) , om du inte har gjort det än. Se till att ditt konto är registrerat i programmet för kommersiella marknads platser.
+Den här artikeln beskriver hur du skapar och publicerar en Sakernas Internet (IoT) Edge-modul för Azure Marketplace. Innan du börjar [skapar du ett kommersiellt marknads plats konto i Partner Center](../create-account.md) , om du inte har gjort det än. Se till att ditt konto är registrerat i programmet för kommersiella marknads platser.
 
 ## <a name="create-a-new-offer"></a>Skapa ett nytt erbjudande
 

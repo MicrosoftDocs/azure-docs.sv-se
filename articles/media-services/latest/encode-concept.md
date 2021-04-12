@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 225f1d311739bdafbe39971a2b4ac74917e770e9
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: cd37175bd85e31ddc18c8267cdf01f7dc6249a0b
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279501"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491924"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Koda video och ljud med Media Services
 
@@ -45,7 +45,7 @@ Om du vill koda med Media Services v3 måste du skapa en [transformering](/rest/
 
 När du kodar med Media Services använder du för inställningar för att berätta för kodaren hur indatafilerna ska bearbetas. I Media Services v3 använder du standard kodare för att koda dina filer. Du kan till exempel ange video upplösning och/eller antalet ljud kanaler som du vill ha i det kodade innehållet.
 
-Du kan komma igång snabbt med en av de rekommenderade inbyggda för inställningarna baserat på bransch bästa praxis eller så kan du välja att skapa en anpassad för inställning för att rikta in dig på specifika scenarier eller enhets krav. Mer information finns i [koda med en anpassad transformering](encode-custom-presets-how-to.md).
+Du kan komma igång snabbt med en av de rekommenderade inbyggda för inställningarna baserat på bransch bästa praxis eller så kan du välja att skapa en anpassad för inställning för att rikta in dig på specifika scenarier eller enhets krav. Mer information finns i [koda med en anpassad transformering](transform-custom-presets-how-to.md).
 
 Från och med januari 2019 skapas en ny. MPI-fil och läggs till i utmatnings till gången, när den kodas med Standard-kodaren för att skapa MP4-filer. Den här MPI-filen är avsedd att förbättra prestanda för dynamiska scenarier för [paketering](encode-dynamic-packaging-concept.md) och strömning.
 
@@ -136,9 +136,9 @@ Media Services har fullständigt stöd för att anpassa alla värden i för inst
 
 #### <a name="examples"></a>Exempel
 
-- [Anpassa för inställningar med .NET](encode-custom-presets-how-to.md)
-- [Anpassa för inställningar med CLI](encode-custom-preset-cli-how-to.md)
-- [Anpassa för inställningar med REST](encode-custom-preset-rest-how-to.md)
+- [Anpassa för inställningar med .NET](transform-custom-presets-how-to.md)
+- [Anpassa för inställningar med CLI](transform-custom-preset-cli-how-to.md)
+- [Anpassa för inställningar med REST](transform-custom-preset-rest-how-to.md)
 
 
 ## <a name="preset-schema"></a>Förinställt schema
@@ -165,4 +165,4 @@ Kolla in [Azure Media Services community](media-services-community.md) -artikeln
 * [Ladda upp, koda och strömma med Media Services](stream-files-tutorial-with-api.md).
 * [Koda från en HTTPS-URL med hjälp av inbyggda för inställningar](job-input-from-http-how-to.md).
 * [Koda en lokal fil med inbyggda för hands inställningar](job-input-from-local-file-how-to.md).
-* [Bygg en anpassad för inställning för att rikta in dig på specifika scenarier eller enhets krav](encode-custom-presets-how-to.md).
+* [Bygg en anpassad för inställning för att rikta in dig på specifika scenarier eller enhets krav](transform-custom-presets-how-to.md).

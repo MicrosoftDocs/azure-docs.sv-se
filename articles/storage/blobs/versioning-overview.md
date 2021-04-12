@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/07/2021
+ms.date: 04/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 82216abd13b6128be68e22a4ce2a0f6de9a6ce2f
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: f104b98c870fe6eee1d32fe656c0bba416cf3700
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227559"
+ms.locfileid: "107259752"
 ---
 # <a name="blob-versioning"></a>BLOB-versioner
 
@@ -43,7 +43,7 @@ Följande diagram visar hur versioner skapas vid Skriv åtgärder och hur en tid
 
 :::image type="content" source="media/versioning-overview/blob-versioning-diagram.png" alt-text="Diagram över hur BLOB-versioner fungerar":::
 
-När du tar bort en blob med versions hantering aktive rad tas den aktuella versionen av blobben bort. Alla tidigare versioner av bloben är kvar.
+När du tar bort en blob med versions hantering aktive rad blir den aktuella versionen av blobben en tidigare version och det finns inte längre en aktuell version. Alla tidigare versioner av bloben är kvar.
 
 BLOB-versioner är oföränderliga. Du kan inte ändra innehållet eller metadata för en befintlig blob-version.
 
@@ -133,7 +133,7 @@ Följande diagram visar hur ändring av en BLOB efter versions hantering är ina
 
 ## <a name="blob-versioning-and-soft-delete"></a>BLOB-versioner och mjuk borttagning
 
-Microsoft rekommenderar att du aktiverar både versions-och blob-mjuk borttagning för dina lagrings konton för optimalt data skydd. Mjuk borttagning skyddar blobbar, versioner och ögonblicks bilder från oavsiktlig borttagning. Mer information om mjuk borttagning av BLOB finns i [mjuk borttagning för Azure Storage blobbar](./soft-delete-blob-overview.md).
+Microsoft rekommenderar att du aktiverar både versions-och blob-mjuk borttagning för dina lagrings konton för optimalt data skydd. Mer information om mjuk borttagning av BLOB finns i [mjuk borttagning för Azure Storage blobbar](./soft-delete-blob-overview.md).
 
 ### <a name="overwriting-a-blob"></a>Skriva över en BLOB
 
@@ -141,7 +141,7 @@ Om BLOB-versioner och mjuk borttagning av BLOB båda är aktiverade för ett lag
 
 ### <a name="deleting-a-blob-or-version"></a>Ta bort en BLOB eller version
 
-Om både versions hantering och mjuk borttagning är aktiverade på lagrings kontot, blir den aktuella versionen av blobben en tidigare version när du tar bort en BLOB, och den aktuella versionen tas bort. Ingen ny version skapas och inga ögonblicks bilder av mjuka rader skapas. Bevarande perioden för mjuk borttagning gäller inte för den borttagna blobben.
+Om versions hantering och mjuk borttagning både är aktiverade för ett lagrings konto, blir den aktuella versionen av blobben en tidigare version när du tar bort en blob. Ingen ny version skapas och inga ögonblicks bilder av mjuka rader skapas. Bevarande perioden för mjuk borttagning gäller inte för den borttagna blobben.
 
 Mjuk borttagning ger ytterligare skydd för att ta bort BLOB-versioner. När du tar bort en tidigare version av blobben tas den versionen bort. Den Soft-borttagna versionen bevaras tills den mjuka borttagnings perioden går ut. då tas den bort permanent.
 

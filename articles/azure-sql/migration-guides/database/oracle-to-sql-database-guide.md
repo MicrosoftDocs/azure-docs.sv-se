@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 08/25/2020
-ms.openlocfilehash: 33664c49c501071c44ac0f5b2486e687c822940d
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 9ae7e8c4544d2e8bd9dc4ff846aabb0c7f7f9358
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027609"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284348"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-database"></a>Guide för migrering: Oracle till Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-I den här guiden får du lära dig [hur du migrerar](https://azure.microsoft.com/migration/migration-journey) dina Oracle-scheman till Azure SQL Database med hjälp av [SQL Server Migration](https://azure.microsoft.com/migration/migration-journey) Assistant för Oracle (SSMA för Oracle).
+I den här guiden får du lära dig [hur du migrerar](https://azure.microsoft.com/migration/migration-journey) dina Oracle-scheman till Azure SQL Database med hjälp av [SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant för Oracle (SSMA för Oracle).
 
 Andra guider för migrering finns i hand boken för [Azure Database migration](https://docs.microsoft.com/data-migration).
 

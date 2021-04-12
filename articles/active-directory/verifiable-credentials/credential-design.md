@@ -9,12 +9,12 @@ ms.subservice: verifiable-credentials
 ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: c830f9c7edb252508824b3a92bd31b6fad31395d
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: a43e734c0a5bfa7c3698dcde5cb5b17f15575d90
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106170071"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222936"
 ---
 # <a name="how-to-customize-your-verifiable-credentials-preview"></a>Anpassa dina verifierbara autentiseringsuppgifter (förhands granskning)
 
@@ -165,7 +165,7 @@ För att säkerställa samverkan mellan dina autentiseringsuppgifter rekommender
 | `vc.type` | En sträng mat ris som visar de scheman som din verifierbara autentiseringsuppgift uppfyller. |
 
 
-## <a name="input-type-self-attested-claims"></a>Indatatyp: Self-Attested anspråk
+## <a name="input-type-self-attested-claims"></a>Indatatyp: självattesterings anspråk
 
 Under det utfärdande flödet kan användaren uppmanas att ange en viss självattesterings information. Från och med nu är den enda indatatypen en sträng. 
 ```json
@@ -263,7 +263,7 @@ Visnings filen har följande struktur.
 | `claims.{attribute}.type` | Anger attributtypen. För närvarande stöder vi endast String. |
 | `claims.{attribute}.label` | Det värde som ska användas som etikett för attributet, som visas i autentiseraren. Detta kanske skiljer sig från den etikett som användes i regel filen. Rekommenderad maxlängd på 40 tecken. |
 
->[!note]
+>[!NOTE]
   >Om ett anspråk ingår i regel filen och sedan utelämnas i visnings filen, finns det två olika typer av upplevelser. På iOS visas inte anspråket i detalj avsnittet som visas i bilden ovan, medan anspråket visas i Android.  
 
 ## <a name="next-steps"></a>Nästa steg

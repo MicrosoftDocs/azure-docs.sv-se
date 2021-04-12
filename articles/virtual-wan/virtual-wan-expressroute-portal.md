@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6b9c4bcf760387f6bbe380c9aa079df2f86a1847
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 67df1c822f34f45bb0931848f8015374a346673a
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060660"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278447"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Självstudie: skapa en ExpressRoute-Association med Azure Virtual WAN
 
@@ -104,7 +104,7 @@ I det här avsnittet skapar du peering-anslutningen mellan hubben och ett VNet. 
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>Anslut din krets till hubb-gatewayen
 
-När gatewayen har skapats kan du ansluta en [ExpressRoute-krets](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) till den. ExpressRoute standard-eller Premium-kretsar som finns på ExpressRoute Global Reach-platser som stöds kan ansluta till en virtuell WAN-ExpressRoute gateway och ta del av alla funktioner för virtuell WAN-överföring (VPN-till-VPN, VPN och ExpressRoute-överföring). ExpressRoute standard-och Premium-kretsar som finns på platser som inte Global Reach kan ansluta till Azure-resurser, men kommer inte att kunna använda funktioner för virtuell WAN-överföring. ExpressRoute Local stöds med Azure virtuella WAN-hubbar så länge eker-virtuella nätverk som är anslutna till en virtuell WAN-hubb finns i samma region som den virtuella WAN-hubben.
+När gatewayen har skapats kan du ansluta en [ExpressRoute-krets](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) till den. ExpressRoute standard-eller Premium-kretsar som finns på ExpressRoute Global Reach-platser som stöds kan ansluta till en virtuell WAN-ExpressRoute gateway och ta del av alla funktioner för virtuell WAN-överföring (VPN-till-VPN, VPN och ExpressRoute-överföring). ExpressRoute standard-och Premium-kretsar som finns på platser som inte Global Reach kan ansluta till Azure-resurser, men kommer inte att kunna använda funktioner för virtuell WAN-överföring. ExpressRoute Local stöds också med Azure Virtual WAN Hub.
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Så här ansluter du kretsen till Hub Gateway
 

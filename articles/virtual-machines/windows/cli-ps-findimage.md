@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 03/17/2021
 ms.author: cynthn
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 34fd6720b93a1462836b51856d73573a86809367
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 282eaa6e966ff458dfb1dfdd32ef6ec1f2cdc151
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022831"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443754"
 ---
 # <a name="find-and-use-azure-marketplace-vm-images-with-azure-powershell"></a>Hitta och Använd virtuella Azure Marketplace-avbildningar med Azure PowerShell
 
@@ -66,7 +66,7 @@ Du kan använda PowerShell för att begränsa en lista med bilder. Ersätt värd
     Du kan också använda `latest` om du vill använda den senaste avbildningen och inte en speciell äldre version.
 
 
-Nu kan du kombinera vald utgivare, erbjudande, SKU och version till en URN (värden avgränsade med:). Skicka denna URN med `--image` parametern när du skapar en virtuell dator med cmdleten [New-AzVM](/powershell/module/az.compute/new-azvm) . Du kan också ersätta versions numret i URN med `latest` för att hämta den senaste versionen av avbildningen.
+Nu kan du kombinera vald utgivare, erbjudande, SKU och version till en URN (värden avgränsade med:). Skicka denna URN med `-Image` parametern när du skapar en virtuell dator med cmdleten [New-AzVM](/powershell/module/az.compute/new-azvm) . Du kan också ersätta versions numret i URN med `latest` för att hämta den senaste versionen av avbildningen.
 
 Om du distribuerar en virtuell dator med en Resource Manager-mall ställer du in avbildnings parametrarna individuellt i `imageReference` egenskaperna. Se [mallreferensen](/azure/templates/microsoft.compute/virtualmachines).
 

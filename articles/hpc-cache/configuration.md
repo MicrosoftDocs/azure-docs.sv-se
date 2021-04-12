@@ -4,14 +4,14 @@ description: Förklarar hur du konfigurerar ytterligare inställningar för cach
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 04/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: 6e1e1283cb82dcb900da6473de65ef087a5cea82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b3996df3c75ff31d0825be1d332dbd055305963
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773240"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259769"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Konfigurera ytterligare inställningar för Azure HPC cache
 
@@ -47,24 +47,26 @@ Läs mer om MTU-inställningar i virtuella Azure-nätverk genom [att läsa TCP/I
 
 ## <a name="customize-ntp"></a>Anpassa NTP
 
-Din cache använder Azure-baserade Time Server-time.microsoft.com som standard. Om du vill att din cache ska använda en annan NTP-server anger du den i avsnittet **NTP-konfiguration** . Använd ett fullständigt kvalificerat domän namn eller en IP-adress.
+Din cache använder Azure-baserade Time Server-time.windows.com som standard. Om du vill att din cache ska använda en annan NTP-server anger du den i avsnittet **NTP-konfiguration** . Använd ett fullständigt kvalificerat domän namn eller en IP-adress.
 
 ## <a name="set-a-custom-dns-configuration"></a>Ange en anpassad DNS-konfiguration
 
 > [!CAUTION]
 > Ändra inte cache-DNS-konfigurationen om du inte behöver det. Konfigurations misstag kan ha ödesdigra-konsekvenser. Om konfigurationen inte kan matcha Azure-tjänst namn, blir HPC cache-instansen permanent otillgänglig.
+>
+> Kontrol lera med dina Azure-representanter innan du försöker konfigurera en anpassad DNS-konfiguration.
 
 Azure HPC cache konfigureras automatiskt för att använda det säkra och smidiga Azure DNS systemet. Några ovanliga konfigurationer kräver dock att cachen använder ett separat lokalt DNS-system i stället för Azure-systemet. Avsnittet **DNS-konfiguration** på sidan **nätverk** används för att ange den här typen av system.
 
 Kontakta Azure-representanterna eller kontakta Microsoft service och support för att avgöra om du behöver använda en anpassad cache-DNS-konfiguration.
 
-Om du konfigurerar ditt eget lokala DNS-system för att Azure HPC-cache ska använda, måste du se till att konfigurationen kan matcha namn på Azure-slutpunkter för Azure-tjänster. Du måste konfigurera din anpassade DNS-miljö så att den vidarebefordrar vissa namn matchnings begär anden till Azure DNS eller till en annan server efter behov.
+Om du konfigurerar ditt eget lokala DNS-system för att Azure HPC-cache ska använda, måste du se till att den lokala DNS-servern kan matcha namn på Azure-tjänstens slut punkter direkt. HPC cache fungerar inte om DNS-servern är begränsad från offentlig namn matchning.
 
 Kontrol lera att DNS-konfigurationen kan lösa dessa objekt innan du använder den för en Azure HPC-cache:
 
 * ``*.core.windows.net``
 * Hämtning av listor över återkallade certifikat (CRL) och kontroll tjänster online Certificate Status Protocol (OCSP). En partiell lista finns i [objektet brand Väggs regler](../security/fundamentals/tls-certificate-changes.md#will-this-change-affect-me) i slutet av den här [Azure TLS-artikeln](../security/fundamentals/tls-certificate-changes.md), men du bör kontakta en teknisk representant från Microsoft för att förstå alla krav.
-* Det fullständigt kvalificerade domän namnet för din NTP-server (time.microsoft.com eller en anpassad server)
+* Det fullständigt kvalificerade domän namnet för din NTP-server (time.windows.com eller en anpassad server)
 
 Om du behöver ange en anpassad DNS-server för cacheminnet använder du de angivna fälten:
 

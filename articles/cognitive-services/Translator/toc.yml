@@ -114,7 +114,7 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: Begrepp
       items:
-        - name: Terminologi
+        - name: Viktiga begrepp
           href: custom-translator/terminology.md
         - name: Anpassa och förbättra textöversättning
           href: customization.md

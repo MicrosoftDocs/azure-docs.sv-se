@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 653eacd11c4a3c7ab500abff809a6b9bf8229c1f
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 7331f9a894d36ee15702a8fe53804efd53049762
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492077"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284127"
 ---
 # <a name="managing-azure-enterprise-agreement-roles"></a>Hantera Azure Enterprise-avtalsroller
 
-Azure-kunder med ett Enterprise-avtal kan tilldela fem olika administratörsroller för att hantera organisationens förbrukning och utgifter:
+För att hjälpa till att hantera organisationens användning och utgifter kan Azure-kunder med en Enterprise-avtal tilldela sex distinkta administrativa roller:
 
 - Företagsadministratör
 - Företagsadministratör (skrivskyddad)<sup>1</sup>

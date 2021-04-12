@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 438ef806f6c59c6f23877a3d3110f22f08ca8713
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e239b6b00c5a5e993834a10fca30de02b9f715ff
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104863572"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065522"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Private Link för Azure Database for MySQL
 
@@ -118,7 +118,7 @@ Om du bara vill använda privata slut punkter för att komma åt sina Azure Data
 När den här inställningen är inställd på *Ja*, tillåts bara anslutningar via privata slut punkter till din Azure Database for MySQL. När den här inställningen är inställd på *Nej* kan klienter ansluta till din Azure Database for MySQL baserat på inställningarna för brand väggen eller VNet-tjänstens slut punkt. När värdet för åtkomst till privat nätverk har angetts kan kunder dessutom inte lägga till och/eller uppdatera befintliga brand Väggs regler och VNet-tjänstens slut punkts regler.
 
 > [!Note]
-> Den här funktionen är tillgänglig i alla Azure-regioner där Azure Database for PostgreSQL-enskild server stöder Generell användning och minnesoptimerade pris nivåer.
+> Den här funktionen är tillgänglig i alla Azure-regioner där Azure Database for MySQL-enskild server stöder Generell användning och minnesoptimerade pris nivåer.
 >
 > Den här inställningen påverkar inte SSL-och TLS-konfigurationer för Azure Database for MySQL.
 

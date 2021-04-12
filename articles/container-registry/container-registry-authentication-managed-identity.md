@@ -3,16 +3,16 @@ title: Autentisera med hanterad identitet
 description: Ge till gång till avbildningar i ditt privata behållar register med hjälp av en användar tilldelad eller systemtilldelad hanterad Azure-identitet.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e6c0d21f7bdefa94241655225589a52c02110f70
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2ab27e8548882b5bd296dc45e4bb74d3d6ba357b
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041475"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285492"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Använd en Azure-hanterad identitet för att autentisera till ett Azure Container Registry 
 
-Använd en [hanterad identitet för Azure-resurser](../active-directory/managed-identities-azure-resources/overview.md) för att autentisera till ett Azure Container Registry från en annan Azure-resurs, utan att behöva ange eller hantera autentiseringsuppgifter för registret. Du kan till exempel konfigurera en användardefinierad eller systemtilldelad hanterad identitet på en virtuell Linux-dator för att få åtkomst till behållar avbildningar från behållar registret, så enkelt som du använder ett offentligt register.
+Använd en [hanterad identitet för Azure-resurser](../active-directory/managed-identities-azure-resources/overview.md) för att autentisera till ett Azure Container Registry från en annan Azure-resurs, utan att behöva ange eller hantera autentiseringsuppgifter för registret. Du kan till exempel konfigurera en användardefinierad eller systemtilldelad hanterad identitet på en virtuell Linux-dator för att få åtkomst till behållar avbildningar från behållar registret, så enkelt som du använder ett offentligt register. Eller konfigurera ett Azure Kubernetes service-kluster för att använda dess [hanterade identitet](../aks/use-managed-identity.md) för att hämta behållar avbildningar från Azure Container Registry för Pod-distributioner.
 
 I den här artikeln får du lära dig mer om hanterade identiteter och hur du:
 
@@ -27,23 +27,14 @@ Om du vill konfigurera ett behållar register och skicka en behållar avbildning
 
 ## <a name="why-use-a-managed-identity"></a>Varför ska jag använda en hanterad identitet?
 
-En hanterad identitet för Azure-resurser tillhandahåller Azure-tjänster med en automatiskt hanterad identitet i Azure Active Directory (Azure AD). Du kan konfigurera [vissa Azure-resurser](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), inklusive virtuella datorer, med en hanterad identitet. Använd sedan identiteten för att få åtkomst till andra Azure-resurser utan att skicka autentiseringsuppgifter i kod eller skript.
+Om du inte känner till funktionen för hanterade identiteter för Azure-resurser kan du läsa igenom den här [översikten](../active-directory/managed-identities-azure-resources/overview.md).
 
-Hanterade identiteter är av två typer:
+När du har konfigurerat de valda Azure-resurserna med en hanterad identitet ger du identiteten åtkomst till en annan resurs, precis som alla säkerhets objekt. Du kan till exempel tilldela en hanterad identitet en roll med pull, push och pull eller andra behörigheter till ett privat register i Azure. (En fullständig lista över register roller finns i [Azure Container Registry roller och behörigheter](container-registry-roles.md).) Du kan ge en identitets åtkomst till en eller flera resurser.
 
-* *Användarspecifika identiteter*, som du kan tilldela till flera resurser och bevara så länge du vill. Användarspecifika identiteter är för närvarande en för hands version.
+Använd sedan identiteten för att autentisera till en [tjänst som stöder Azure AD-autentisering](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), utan några autentiseringsuppgifter i koden. Välj hur du vill autentisera med hjälp av den hanterade identiteten, beroende på ditt scenario. Om du vill använda identiteten för att komma åt ett Azure Container Registry från en virtuell dator autentiserar du med Azure Resource Manager. 
 
-* En *Systemhanterad identitet*, som är unik för en viss resurs, till exempel en enskild virtuell dator och varar för den aktuella resursens livs längd.
-
-När du har konfigurerat en Azure-resurs med en hanterad identitet ger du identiteten åtkomst till en annan resurs, precis som alla säkerhets objekt. Du kan till exempel tilldela en hanterad identitet en roll med pull, push och pull eller andra behörigheter till ett privat register i Azure. (En fullständig lista över register roller finns i [Azure Container Registry roller och behörigheter](container-registry-roles.md).) Du kan ge en identitets åtkomst till en eller flera resurser.
-
-Använd sedan identiteten för att autentisera till en [tjänst som stöder Azure AD-autentisering](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), utan några autentiseringsuppgifter i koden. Om du vill använda identiteten för att komma åt ett Azure Container Registry från en virtuell dator autentiserar du med Azure Resource Manager. Välj hur du vill autentisera med hjälp av den hanterade identiteten, beroende på ditt scenario:
-
-* [Skaffa en Azure AD-åtkomsttoken](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) programmatiskt med http-eller rest-anrop
-
-* Använd [Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md) : er
-
-* [Logga in på Azure CLI eller PowerShell](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) med identiteten. 
+> [!NOTE]
+> För närvarande kan tjänster som Azure Web App for Containers eller Azure Container Instances inte använda sin hanterade identitet för att autentisera med Azure Container Registry när en behållar avbildning används för att distribuera behållarens resurs. Identiteten är bara tillgänglig när behållaren har körts. Om du vill distribuera dessa resurser med hjälp av avbildningar från Azure Container Registry rekommenderas en annan autentiseringsmetod, till exempel [tjänstens huvud namn](container-registry-auth-service-principal.md) .
 
 ## <a name="create-a-container-registry"></a>Skapa ett containerregister
 
@@ -230,8 +221,6 @@ Du bör se ett `Login succeeded` meddelande. Du kan sedan köra `docker` kommand
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
-> [!NOTE]
-> Systemtilldelade hanterade tjänst identiteter kan användas för att interagera med ACR: er och App Service kan använda systemtilldelade hanterade tjänst identiteter. Men du kan inte kombinera dessa, eftersom App Service inte kan använda MSI för att kommunicera med en ACR. Det enda sättet är att aktivera admin på ACR och använda admin användar namn/lösen ord.
 
 ## <a name="next-steps"></a>Nästa steg
 

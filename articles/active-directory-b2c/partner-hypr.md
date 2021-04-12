@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: b80b1a4b3f9bcde6cf01b0e0e59425c6783bd5d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 357c8d79259986e211dd04580b1d8205c25824da
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94953771"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257984"
 ---
 # <a name="tutorial-for-configuring-hypr-with-azure-active-directory-b2c"></a>Självstudie för att konfigurera HYPR med Azure Active Directory B2C
 
@@ -62,7 +62,7 @@ I följande arkitektur diagram visas implementeringen.
 
 1. Gå till principen för [Azure AD B2C HYPR](https://github.com/HYPR-Corp-Public/Azure-AD-B2C-HYPR-Sample/tree/master/policy) i mappen princip.
 
-2. Följ det här [dokumentet](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) för att ladda ned [LocalAccounts start paket](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)
+2. Följ det här [dokumentet](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack) för att ladda ned [LocalAccounts start paket](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)
 
 3. Konfigurera principen för Azure AD B2C klient.
 
@@ -93,4 +93,4 @@ Mer information finns i följande artiklar:
 
 - [Anpassade principer i Azure AD B2C](./custom-policy-overview.md)
 
-- [Kom igång med anpassade principer i Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Kom igång med anpassade principer i Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
