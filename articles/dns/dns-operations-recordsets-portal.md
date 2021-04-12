@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/6/2018
 ms.author: rohink
 ms.openlocfilehash: 22ceba69ecf865d906021068a39a9d273b842ca2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94965739"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Hantera DNS-poster och post uppsättningar med hjälp av Azure Portal
@@ -87,13 +87,13 @@ Du kan använda Azure Portal för att ta bort poster från en post uppsättning.
 3. Kontrol lera att namnet matchar den post uppsättning som du vill ta bort och klicka sedan på **Ja**.
 4. På bladet **DNS-zon** kontrollerar du att post uppsättningen inte längre visas.
 
-## <a name="work-with-ns-and-soa-records"></a>Arbeta med NS-och SOA-poster
+## <a name="work-with-ns-and-soa-records&quot;></a>Arbeta med NS-och SOA-poster
 
 NS-och SOA-poster som skapas automatiskt hanteras annorlunda än andra post typer.
 
-### <a name="modify-soa-records"></a>Ändra SOA-poster
+### <a name=&quot;modify-soa-records&quot;></a>Ändra SOA-poster
 
-Det går inte att lägga till eller ta bort poster från den automatiskt skapade SOA-postuppsättningen vid zonens Apex (namn = " \@ "). Du kan dock ändra någon av parametrarna i SOA-posten (förutom "värd") och post uppsättningens TTL.
+Det går inte att lägga till eller ta bort poster från den automatiskt skapade SOA-postuppsättningen vid zonens Apex (namn = &quot; \@ "). Du kan dock ändra någon av parametrarna i SOA-posten (förutom "värd") och post uppsättningens TTL.
 
 ### <a name="modify-ns-records-at-the-zone-apex"></a>Ändra NS-poster vid zonens Apex
 

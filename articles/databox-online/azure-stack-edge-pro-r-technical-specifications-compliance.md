@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/24/2021
 ms.author: alkohli
 ms.openlocfilehash: aa1b861555cff65c9e432ea711af3f7c6e410625
-ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/25/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105109173"
 ---
 # <a name="azure-stack-edge-pro-r-technical-specifications"></a>Tekniska specifikationer för Azure Stack Edge Pro R
@@ -48,14 +48,14 @@ Azure Stack Edge Pro R-enheten har två 100-240 V-enheter för strömförsörjni
 | Värme avledning (max)                   | 2891 BTU/timme                |
 | Frekvens               | 50/60 Hz                   |
 | Val av spännings intervall | Automatisk mellan: 115-230 V AC |
-| Hot pluggable           | Yes                        |
+| Hot pluggable           | Ja                        |
 
 ## <a name="network-specifications"></a>Nätverks specifikationer
 
 Azure Stack Edge Pro R-enheten har fyra nätverks gränssnitt, PORT1-PORT4. 
 
 
-|Specifikation  |Description                              |
+|Specifikation  |Beskrivning                              |
 |----------------------|----------------------------------|
 |Nätverksgränssnitt    |**2 x 1 GbE RJ45** <br> PORT 1 används som hanterings gränssnitt för inledande installation och är statisk som standard. När den första installationen är klar kan du använda gränssnittet för data med valfri IP-adress. Men vid återställning återgår gränssnittet till statisk IP. <br>Den andra gränssnitts porten 2 är användaren konfigurerbar, kan användas för data överföring och är DHCP som standard.     |
 |Nätverksgränssnitt    |**2 x 25 GbE-SFP28** <br> Dessa data gränssnitt PORT 3 och PORT 4 kan konfigureras som DHCP (standard) eller statiskt.            |

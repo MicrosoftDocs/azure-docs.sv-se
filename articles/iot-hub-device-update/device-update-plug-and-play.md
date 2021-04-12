@@ -7,10 +7,10 @@ ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: 0283a84650abaadd454b4f5bca83d1473e443fb8
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105561822"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>Enhets uppdatering för IoT Hub-och IoT-Plug and Play
@@ -50,7 +50,7 @@ Det är den status som rapporteras av enhets uppdaterings agenten efter att ha t
 
 Det är en uppsättning egenskaper som innehåller tillverkare och modell.
 
-|Name|Schema|Riktning|Description|
+|Name|Schema|Riktning|Beskrivning|
 |----|------|---------|-----------|
 |manufacturer|sträng|enhet till molnet|Enhetens tillverkare, som rapporteras genom `deviceProperties` . Den här egenskapen läses från en av två platser – "AzureDeviceUpdateCore"-gränssnittet försöker först läsa värdet "aduc_manufacturer" från [konfigurations fil](device-update-configuration-file.md) filen.  Om värdet inte är ifyllt i konfigurations filen, är det standard att rapportera kompileringen av kompileringen för ADUC_DEVICEPROPERTIES_MANUFACTURER. Den här egenskapen rapporteras bara vid start.|
 |modell|sträng|enhet till molnet|Enhets modellen för enheten, som rapporteras genom `deviceProperties` . Den här egenskapen läses från en av två platser – AzureDeviceUpdateCore-gränssnittet kommer först att försöka läsa värdet "aduc_model" från [konfigurations fil](device-update-configuration-file.md) filen.  Om värdet inte är ifyllt i konfigurations filen, är det standard att rapportera kompileringen av kompileringen för ADUC_DEVICEPROPERTIES_MODEL. Den här egenskapen rapporteras bara vid start.|
@@ -61,7 +61,7 @@ Det är en uppsättning egenskaper som innehåller tillverkare och modell.
 
 Metadata för tjänsten innehåller fält som enhets uppdaterings tjänsterna använder för att kommunicera åtgärder och data till enhets uppdaterings agenten.
 
-|Name|Schema|Riktning|Description|
+|Name|Schema|Riktning|Beskrivning|
 |----|------|---------|-----------|
 |åtgärd|heltal|moln till enhet|Det är ett heltal som motsvarar en åtgärd som agenten ska utföra. Värden som anges nedan.|
 |updateManifest|sträng|moln till enhet|Används för att beskriva innehållet i en uppdatering. Genererat från [import manifestet](import-update.md#create-device-update-import-manifest)|

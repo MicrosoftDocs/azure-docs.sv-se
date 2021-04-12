@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, jämförelse, SDK, skillnader, maskin vara, program vara
-ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1791767e842043bbb0eda058cc3ea92be90a00fb
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "87031583"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078306"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Jämförelse av Azure Kinect och Kinect i Windows v2
 
@@ -46,7 +46,7 @@ I följande tabell ges jämförelse av enhets sensor för låg nivå åtkomst.
 
 | **Funktioner**| **Azure Kinect** | **Kinect för Windows** | **Kommentarer** |
 |---------|---------|------------|---------|
-| **Djuplodande** | ✔️ | ✔️ |    |   |
+| **Djuplodande** | ✔️ | ✔️ |    | 
 | **IR** | ✔️ | ✔️ |  |
 | **Färg** | ✔️ | ✔️ | Färg formatet stöder skillnader, Azure Kinect DK stöder dessa kamera kontroller: exponering, vit balans, ljus styrka, kontrast, mättnad, skärpa och öknings kontroll |
 | **Ljud** | ✔️ | ✔️ | Azure Kinect DK-MICS nås via tal-SDK eller inbyggt API för Windows |

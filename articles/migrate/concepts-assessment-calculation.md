@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 16c3b59bcfa14cc02f13dadd726e0380d934598b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c8d625095fc979151ed904fb355b5953e41309b4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023817"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078714"
 ---
 # <a name="assessment-overview-migrate-to-azure-vms"></a>Översikt över utvärdering (migrera till virtuella Azure-datorer)
 
@@ -33,6 +33,9 @@ Det finns tre typer av utvärderingar som du kan skapa med hjälp av Azure Migra
 **Azure VM** | Utvärderingar som migrerar dina lokala servrar till virtuella Azure-datorer. Du kan utvärdera dina lokala servrar i [VMware](how-to-set-up-appliance-vmware.md) [-och Hyper-V-](how-to-set-up-appliance-hyper-v.md) miljön och [fysiska servrar](how-to-set-up-appliance-physical.md) för migrering till virtuella Azure-datorer med den här utvärderings typen.
 **Azure SQL** | Utvärderingar för att migrera dina lokala SQL-servrar från din VMware-miljö till Azure SQL Database eller Azure SQL-hanterad instans.
 **Azure VMware Solution (AVS)** | Utvärderingar för att migrera dina lokala servrar till [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). Du kan utvärdera dina lokala [virtuella VMware-datorer](how-to-set-up-appliance-vmware.md) för migrering till Azure VMware-lösningen (AVS) med den här utvärderings typen. [Läs mer](concepts-azure-vmware-solution-assessment-calculation.md)
+
+> [!NOTE]
+> Om antalet virtuella Azure-datorer eller AVS-bedömningar är felaktiga i identifierings-och utvärderings verktyget, klickar du på det totala antalet utvärderingar för att navigera till alla utvärderingar och beräkna om de virtuella Azure-datorerna eller AVS-utvärderingarna. Verktyget för identifiering och bedömning visar sedan det korrekta antalet för den utvärderings typen. 
 
 Utvärderingar som du skapar med Azure Migrate är en tidpunkts ögonblicks bild av data. En utvärdering av virtuella Azure-datorer innehåller två alternativ för storleks ändring:
 
