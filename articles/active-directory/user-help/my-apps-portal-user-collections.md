@@ -1,5 +1,5 @@
 ---
-title: Samlingar (för hands version) i portalen för Mina appar – Azure AD
+title: Organisera appar i samlingar i mina apps-portalen – Azure AD
 description: Lär dig hur du skapar, redigerar, tar bort, döljer och visar program samlingar i Mina appar.
 services: active-directory
 author: curtand
@@ -8,22 +8,20 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/19/2021
+ms.date: 04/07/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 843f957ef8871f6372c1b08a5534f6e90098cc85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ac5dede27262d3ce8bc44b4b278ed623063f8e1
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100095128"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209671"
 ---
-# <a name="user-collections-preview-in-my-apps"></a>Användar samlingar (för hands version) i Mina appar
+# <a name="organize-apps-using-collections-from-my-apps"></a>Organisera appar med samlingar från Mina appar
 
 Mina appar är din enda arbets plats för att starta och hantera alla dina arbets-eller skol appar. Skapa samlingar för att organisera dina appar och gör det lättare att hitta de appar du behöver.
-
-[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 I den här artikeln får du lära dig att:
 
@@ -55,7 +53,7 @@ I den här artikeln får du lära dig att:
 
     :::image type="content" source="media/my-apps-portal-user-collections/3-add-apps.png" alt-text="Lägga till appar från listan i din samling":::
 
-1. På följande sätt kan du ändra ordning på eller ta bort appar eller välja **Lägg till appar** för att välja fler appar för samlingen. När du är nöjd med dina val väljer du **Skapa nytt**.  
+1. I fönstret **Skapa nytt** kan du ändra ordning på eller ta bort appar eller välja **Lägg till appar** för att välja fler appar för samlingen. När du är nöjd med dina val väljer du **Skapa nytt**.  
 
     :::image type="content" source="media/my-apps-portal-user-collections/4-create-button.png" alt-text="Välj knappen Skapa ny för att spara samlingen i Mina appar":::
 
@@ -87,7 +85,7 @@ Du kan bara redigera samlingar som du har skapat. Redigera en samling som du red
 
     :::image type="content" source="media/my-apps-portal-user-collections/9-manage-apps-again.png" alt-text="Använd kommandot hantera för att hantera dina appar":::
 
-1. Härifrån kan du ange i vilken ordning samlingarna visas i Mina appar. Samlingen överst i listan är standard samlingen som visas varje gång du går till myapps.microsoft.com.  
+1. Härifrån kan du ange i vilken ordning samlingarna visas i Mina appar. Samlingen överst i listan blir standard samlingen som visas varje gång du går till myapps.microsoft.com.  
 
     :::image type="content" source="media/my-apps-portal-user-collections/10-default-collection.png" alt-text="Mina appar innehåller nu din nya samling":::
 

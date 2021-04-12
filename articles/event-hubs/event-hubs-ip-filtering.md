@@ -2,28 +2,28 @@
 title: Regler för Azure Event Hubs-brandvägg | Microsoft Docs
 description: Använd brand Väggs regler för att tillåta anslutningar från vissa IP-adresser till Azure Event Hubs.
 ms.topic: article
-ms.date: 02/12/2021
-ms.openlocfilehash: ca5995c3e1b9923d925ddc4deae299c28261d18a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/29/2021
+ms.openlocfilehash: 12240135401b267fd7c60e579fdf5a12e10ffce9
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100560853"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963010"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Tillåt åtkomst till Azure Event Hubs-namnrymder från vissa IP-adresser eller intervall
 Som standard är Event Hubs-namnrymder tillgängliga från Internet så länge förfrågan levereras med giltig autentisering och auktorisering. Med IP-brandvägg kan du begränsa den ytterligare till endast en uppsättning IPv4-adresser eller IPv4-adress intervall i [CIDR-notation (classless Inter-Domain routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
 Den här funktionen är användbar i scenarier där Azure Event Hubs bör endast vara tillgängligt från vissa välkända webbplatser. Med brand Väggs regler kan du konfigurera regler för att acceptera trafik som kommer från vissa IPv4-adresser. Om du till exempel använder Event Hubs med [Azure Express Route][express-route], kan du skapa en **brand Väggs regel** som tillåter trafik från enbart lokala infrastruktur-IP-adresser. 
 
->[!WARNING]
-> Genom att aktivera brand Väggs regler för Event Hubs namn området blockeras inkommande begär Anden som standard, om inte begär Anden härstammar från en tjänst som körs från tillåtna offentliga IP-adresser. Begär Anden som blockeras inkluderar de från andra Azure-tjänster, från Azure Portal, från loggnings-och mått tjänster och så vidare. Som ett undantag kan du tillåta åtkomst till Event Hubs resurser från vissa betrodda tjänster även när IP-filtrering är aktive rad. En lista över betrodda tjänster finns i [betrodda Microsoft-tjänster](#trusted-microsoft-services).
-
-> [!IMPORTANT]
-> Ange minst en IP-regel eller en regel för virtuella nätverk för namn området för att tillåta trafik enbart från de angivna IP-adresserna eller under nätet för ett virtuellt nätverk. Om det inte finns några IP-och virtuella nätverks regler kan namn området nås via det offentliga Internet (med hjälp av åtkomst nyckeln).  
-
-
 ## <a name="ip-firewall-rules"></a>Regler för IP-brandvägg
 IP-brandväggens regler tillämpas på Event Hubs namn områdes nivå. Reglerna gäller därför för alla anslutningar från klienter som använder ett protokoll som stöds. Alla anslutnings försök från en IP-adress som inte matchar en tillåten IP-regel på Event Hubs namn området nekas som obehörig. Svaret nämns inte IP-regeln. IP filter regler tillämpas i ordning och den första regeln som matchar IP-adressen avgör vilken åtgärd som godkänns eller nekas.
+
+
+## <a name="important-points"></a>Viktiga punkter
+- Den här funktionen stöds för både **standard** -och **dedikerade** nivåer. Det stöds inte på **Basic** -nivån.
+- Genom att aktivera brand Väggs regler för Event Hubs namn området blockeras inkommande begär Anden som standard, om inte begär Anden härstammar från en tjänst som körs från tillåtna offentliga IP-adresser. Begär Anden som blockeras inkluderar de från andra Azure-tjänster, från Azure Portal, från loggnings-och mått tjänster och så vidare. Som ett undantag kan du tillåta åtkomst till Event Hubs resurser från vissa **betrodda tjänster** även när IP-filtrering är aktive rad. En lista över betrodda tjänster finns i [betrodda Microsoft-tjänster](#trusted-microsoft-services).
+- Ange **minst en regel för IP-brandvägg eller en regel för virtuella nätverk** för namn området så att endast trafik från de angivna IP-adresserna eller under nätet för ett virtuellt nätverk tillåts. Om det inte finns några IP-och virtuella nätverks regler kan namn området nås via det offentliga Internet (med hjälp av åtkomst nyckeln).  
+
 
 ## <a name="use-azure-portal"></a>Använda Azure-portalen
 Det här avsnittet visar hur du använder Azure Portal för att skapa IP-brandvägg för ett Event Hubs namn område. 

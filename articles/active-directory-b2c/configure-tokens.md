@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f22a55a65b7dc4fd4f714d880804e6fd65dbbe46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f5586b43143763ebf36adb15d96fdb2a91b5f5c
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101654382"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443482"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Konfigurera token i Azure Active Directory B2C
 
@@ -228,6 +228,10 @@ OutputClaim-elementet innehåller följande attribut:
 - **AlwaysUseDefaultValue** – Framtvinga användning av standardvärdet.
 
 ::: zone-end
+
+## <a name="authorization-code-lifetime"></a>Giltighets kod för auktoriseringskod
+
+När du använder [OAuth 2,0 Authorization Code Flow](authorization-code-flow.md)kan appen använda auktoriseringskod för att begära en åtkomsttoken för en mål resurs. Auktoriseringskod är kort som upphör att gälla efter 10 minuter. Det går inte att konfigurera tidskodens livs längd. Kontrol lera att ditt program löser in auktoriseringsregler inom 10 minuter. 
 
 ## <a name="next-steps"></a>Nästa steg
 

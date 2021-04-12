@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.custom: devx-track-js
-ms.openlocfilehash: 2886cb6433c4f8a65eb0661eded0ddd08248e137
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 152b96bee63b6d2280a807ca53842ed3a67ab67d
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102219190"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279773"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Konfigurera program inställningar för för hands versionen av Azure statisk Web Apps
 
@@ -168,4 +168,4 @@ Program inställningar är tillgängliga för visning via Azure CLI.
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Konfigurera lokal utveckling](local-development.md)
+> [Konfigurera klient dels ramverk](front-end-frameworks.md)

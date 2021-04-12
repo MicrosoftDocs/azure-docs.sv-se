@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: cshoe
-ms.openlocfilehash: b6779de0203246a60bdfa60ea110a0f0d5f26ff3
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 280c13fdee281acc4f805aba27a10277eb3988c2
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106457"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218982"
 ---
 # <a name="configure-azure-static-web-apps"></a>Konfigurera statisk Azure-Web Apps
 
@@ -39,6 +39,7 @@ Mer information finns i [exempel konfigurations](#example-configuration-file) fi
 
 Med flödes regler kan du definiera mönstret för URL: er som tillåter åtkomst till ditt program till webben. Vägar definieras som en matris med regler för routning. Se [exempel på konfigurations filen](#example-configuration-file) för användnings exempel.
 
+- Reglerna definieras i `routes` matrisen, även om du bara har en väg.
 - Regler körs i samma ordning som de visas i `routes` matrisen.
 - Regel utvärderingen stoppas vid den första matchningen-routningsregler sammanfogas inte.
 - Du har fullständig kontroll över anpassade roll namn.
@@ -50,7 +51,7 @@ Standard filen för statiskt innehåll är *index.html* -filen.
 
 ## <a name="defining-routes"></a>Definiera vägar
 
-Varje regel består av ett väg mönster, tillsammans med en eller flera av de valfria regel egenskaperna. Se [exempel på konfigurations filen](#example-configuration-file) för användnings exempel.
+Varje regel består av ett väg mönster, tillsammans med en eller flera av de valfria regel egenskaperna. Flödes regler definieras i `routes` matrisen. Se [exempel på konfigurations filen](#example-configuration-file) för användnings exempel.
 
 | Regel egenskap  | Obligatorisk | Standardvärde | Kommentar                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |

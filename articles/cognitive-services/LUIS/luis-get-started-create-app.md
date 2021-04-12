@@ -4,13 +4,13 @@ description: Den här snabb starten visar hur du skapar en LUIS-app som använde
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/13/2020
-ms.openlocfilehash: 2048079a9b1eb5234d03c6fe57073228bd892d53
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 03/29/2021
+ms.openlocfilehash: e0972998fad647c1c70be814cb7c13f14a6e1141
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019168"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277036"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Snabbstart: Använda en färdig hemautomatiseringsapp
 
@@ -33,7 +33,7 @@ I fönstret som visas anger du följande information:
 |---------|---------|
 |AName     | Ett namn för din app. Till exempel "Start automatisering".        |
 |Kultur     | Det språk som din app förstår och pratar med.   |
-|Description | En beskrivning av din app.
+|Beskrivning | En beskrivning av din app.
 |Förutsägelse resurs | Den förutsägelse resurs som tar emot frågor. |
 
 Välj **Klar**.
@@ -72,7 +72,7 @@ Välj **Klar**.
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="test-your-app"></a>Testa din app
+## <a name="test-your-app"></a>Testa appen
 När du har tränat appen kan du testa den.
 
 1. Välj **test** i det övre högra navigerings fönstret.
@@ -220,7 +220,5 @@ För att kunna ta emot en LUIS förutsägelse i en chatt-robot eller något anna
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du kan anropa slutpunkten via kod:
-
 > [!div class="nextstepaction"]
-> [Anropa en LUIS-slutpunkt med kod](./luis-get-started-get-intent-from-rest.md)
+> [Iterativ app-utveckling för LUIS](./luis-concept-app-iteration.md)

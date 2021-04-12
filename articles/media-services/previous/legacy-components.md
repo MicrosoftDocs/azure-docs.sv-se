@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 3487e735e48cb5067515762d6276429ca81e43fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 459658867a143a69850ce74b910fd5dc7e70d4b9
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 03/30/2021
-ms.locfileid: "103008747"
+ms.locfileid: "105962993"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure Media Services äldre komponenter
 
@@ -39,13 +39,13 @@ Följande Medieanalys medie processorer är antingen inaktuella eller snart inak
  
 | **Namn på mediebearbetare** | **Datum för indragning** | **Ytterligare information** |
 | --- | --- | ---|
-| Azure Media Indexer 2 | 1 januari 2020 | Medie processorn kommer att ersättas av [Media Services v3 AudioAnalyzerPreset Basic-läge](../latest/analyzing-video-audio-files-concept.md). Mer information finns i [Migrera från Azure Media Indexer 2 till Azure Media Services video Indexer](migrate-indexer-v1-v2.md). |
-| Azure Media Indexer | 1 mars 2023 | Medie processorn kommer att ersättas av [Media Services v3 AudioAnalyzerPreset Basic-läge](../latest/analyzing-video-audio-files-concept.md). Mer information finns i [Migrera från Azure Media Indexer 2 till Azure Media Services video Indexer](migrate-indexer-v1-v2.md). |
+| Azure Media Indexer 2 | 1 januari 2020 | Medie processorn kommer att ersättas av [Media Services v3 AudioAnalyzerPreset Basic-läge](../latest/analyze-video-audio-files-concept.md). Mer information finns i [Migrera från Azure Media Indexer 2 till Azure Media Services video Indexer](migrate-indexer-v1-v2.md). |
+| Azure Media Indexer | 1 mars 2023 | Medie processorn kommer att ersättas av [Media Services v3 AudioAnalyzerPreset Basic-läge](../latest/analyze-video-audio-files-concept.md). Mer information finns i [Migrera från Azure Media Indexer 2 till Azure Media Services video Indexer](migrate-indexer-v1-v2.md). |
 | Rörelse identifiering | 1 juni 2020|Inga ersättnings planer för tillfället. |
 | Video Sammanfattning |1 juni 2020|Inga ersättnings planer för tillfället.|
-| Optisk typsnitts igenkänning i video | 1 juni 2020 |Medie processorn har ersatts av [Azure Media Services video Indexer](../video-indexer/index.yml). Överväg också att använda [Azure Media Services v3 API](../latest/analyzing-video-audio-files-concept.md). <br/>Se [jämföra Azure Media Services v3 för inställningar och video Indexer](../video-indexer/compare-video-indexer-with-media-services-presets.md). |
-| Ansiktsigenkänning | 1 juni 2020 | Medie processorn har ersatts av [Azure Media Services video Indexer](../video-indexer/index.yml). Överväg också att använda [Azure Media Services v3 API](../latest/analyzing-video-audio-files-concept.md). <br/>Se [jämföra Azure Media Services v3 för inställningar och video Indexer](../video-indexer/compare-video-indexer-with-media-services-presets.md). |
-| Content Moderator | 1 juni 2020 |Medie processorn har ersatts av [Azure Media Services video Indexer](../video-indexer/index.yml). Överväg också att använda [Azure Media Services v3 API](../latest/analyzing-video-audio-files-concept.md). <br/>Se [jämföra Azure Media Services v3 för inställningar och video Indexer](../video-indexer/compare-video-indexer-with-media-services-presets.md). |
+| Optisk typsnitts igenkänning i video | 1 juni 2020 |Medie processorn har ersatts av [Azure Media Services video Indexer](../video-indexer/index.yml). Överväg också att använda [Azure Media Services v3 API](../latest/analyze-video-audio-files-concept.md). <br/>Se [jämföra Azure Media Services v3 för inställningar och video Indexer](../video-indexer/compare-video-indexer-with-media-services-presets.md). |
+| Ansiktsigenkänning | 1 juni 2020 | Medie processorn har ersatts av [Azure Media Services video Indexer](../video-indexer/index.yml). Överväg också att använda [Azure Media Services v3 API](../latest/analyze-video-audio-files-concept.md). <br/>Se [jämföra Azure Media Services v3 för inställningar och video Indexer](../video-indexer/compare-video-indexer-with-media-services-presets.md). |
+| Content Moderator | 1 juni 2020 |Medie processorn har ersatts av [Azure Media Services video Indexer](../video-indexer/index.yml). Överväg också att använda [Azure Media Services v3 API](../latest/analyze-video-audio-files-concept.md). <br/>Se [jämföra Azure Media Services v3 för inställningar och video Indexer](../video-indexer/compare-video-indexer-with-media-services-presets.md). |
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: d876a380bfc2d318cddc0964266cc3f0a870aa16
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a1abe79b4ab1caad04a088f659c0afceb2668eac
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102050995"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106929"
 ---
 # <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Skapa och konfigurera en Log Analytics arbets yta i Azure Monitor med PowerShell
 Den här artikeln innehåller två kod exempel som visar hur du skapar och konfigurerar en Log Analytics arbets yta i Azure Monitor.  
@@ -28,7 +28,7 @@ Följande exempel skript skapar en arbets yta utan konfiguration av data källor
 
 ```powershell
 $ResourceGroup = "my-resource-group"
-$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique across all Azure subscriptions - Get-Random helps with this for the example code
+$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique in resource group - Get-Random helps with this for the example code
 $Location = "westeurope"
 
 # Create the resource group if needed
@@ -63,7 +63,7 @@ Det här skriptet utför följande funktioner:
 
 ```powershell
 $ResourceGroup = "my-resource-group"
-$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique across all Azure subscriptions - Get-Random helps with this for the example code
+$WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique in resource group - Get-Random helps with this for the example code
 $Location = "westeurope"
 
 # Create the resource group if needed
@@ -213,7 +213,7 @@ I exemplet ovan har regexDelimiter definierats som " \\ n" för ny rad. Logg avg
 ## <a name="troubleshooting"></a>Felsökning
 När du skapar en arbets yta som har tagits bort under de senaste 14 dagarna och i [läget för mjuk borttagning](../logs/delete-workspace.md#soft-delete-behavior)kan åtgärden ha olika resultat beroende på konfigurationen för arbets ytan:
 1. Om du anger samma namn på arbets ytan, resurs gruppen, prenumerationen och regionen som i den borttagna arbets ytan återställs din arbets yta, inklusive dess data, konfiguration och anslutna agenter.
-2. Om du använder samma arbets ytans namn, men en annan resurs grupp, prenumeration eller region, får du ett fel meddelande om att arbets ytans namn *är inte unikt* eller *i konflikt*. Om du vill åsidosätta den mjuka borttagningen och permanent ta bort arbets ytan och skapa en ny arbets yta med samma namn, följer du dessa steg för att återställa arbets ytan och utföra permanent borttagning:
+2. Arbets ytans namn måste vara unikt per resurs grupp. Om du använder ett namn på arbets ytan som redan finns går det inte att använda mjuk borttagning i din resurs grupp. du får ett fel meddelande om att arbets ytans namn *är inte unikt* eller *står i konflikt*. Om du vill åsidosätta den mjuka borttagningen och permanent ta bort arbets ytan och skapa en ny arbets yta med samma namn, följer du dessa steg för att återställa arbets ytan och utföra permanent borttagning:
    * [Återställa](../logs/delete-workspace.md#recover-workspace) din arbetsyta
    * [Ta bort arbetsytan permanent](../logs/delete-workspace.md#permanent-workspace-delete)
    * Skapa en ny arbets yta med samma arbets ytans namn

@@ -1,20 +1,20 @@
 ---
 title: Använda Azure Queue Storage från PowerShell – Azure Storage
 description: Utföra åtgärder på Azure Queue Storage via PowerShell. Med Azure Queue Storage kan du lagra ett stort antal meddelanden som är tillgängliga via HTTP/HTTPS.
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.reviewer: dineshm
 ms.date: 05/15/2019
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fba288f76377e744b1fe21a52e03a43409c505bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1436114a070dff7120a7de10937cbfa58644d305
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97585623"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276254"
 ---
 # <a name="how-to-use-azure-queue-storage-from-powershell"></a>Använda Azure Queue Storage från PowerShell
 

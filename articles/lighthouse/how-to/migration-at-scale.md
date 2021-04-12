@@ -4,10 +4,10 @@ description: Lär dig hur du effektivt använder Azure Migrate på delegerade ku
 ms.date: 01/29/2021
 ms.topic: how-to
 ms.openlocfilehash: ed2fc8ae1a3b87a3b2501c3a390fe7a1822003e4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100393589"
 ---
 # <a name="manage-azure-migrate-projects-at-scale-with-azure-lighthouse"></a>Hantera Azure Migrate projekt i stor skala med Azure Lighthouse

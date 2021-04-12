@@ -14,18 +14,18 @@ ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 13dadd9665f2d66861e00d769086fb23a4dea115
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 290b68b90deb669f70fa708e6c3bda83cb7187c0
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961701"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227797"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Övervaka Media Services diagnostikloggar
 
 [!INCLUDE [media services api v3 logo](../includes/v3-hr.md)]
 
-Med [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview.md) kan du övervaka mått och diagnostikloggar som hjälper dig att förstå hur dina program presterar. Detaljerad beskrivning av den här funktionen och se varför du vill använda Azure Media Services mått och diagnostikloggar finns i [övervaka Media Services statistik och diagnostikloggar](monitor-media-services.md).
+Med [Azure Monitor](/azure/azure-monitor/overview) kan du övervaka mått och diagnostikloggar som hjälper dig att förstå hur dina program presterar. Detaljerad beskrivning av den här funktionen och se varför du vill använda Azure Media Services mått och diagnostikloggar finns i [övervaka Media Services statistik och diagnostikloggar](monitor-media-services.md).
 
 Den här artikeln visar hur du dirigerar data till lagrings kontot och sedan visar data.
 
@@ -183,9 +183,9 @@ Du kan behöva vänta upp till fem minuter innan händelsen visas på lagringsko
 
 ## <a name="see-also"></a>Se även
 
-* [Azure Monitor-statistik](https://docs.microsoft.com/azure/azure-monitor/data-platform.md)
-* [Azure Monitor diagnostikloggar](https://docs.microsoft.com/azure/azure-monitor/essentials/platform-logs-overview.md)
-* [Så här samlar du in och använder loggdata från dina Azure-resurser](https://docs.microsoft.com/azure/azure-monitor/essentials/platform-logs-overview.md)
+* [Azure Monitor-statistik](/azure/azure-monitor/data-platform)
+* [Azure Monitor diagnostikloggar](/azure/azure-monitor/essentials/platform-logs-overview)
+* [Så här samlar du in och använder loggdata från dina Azure-resurser](/azure/azure-monitor/essentials/platform-logs-overview)
 
 ## <a name="next-steps"></a>Nästa steg
 

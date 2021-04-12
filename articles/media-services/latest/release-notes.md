@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: b7d99e3de8a796dea19f3a2ad7a03b98239981e2
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 796abf8506a832c4053b505e903bb24ef9d09004
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121106"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279042"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Viktig information om Azure Media Services v3
 
@@ -150,7 +150,7 @@ För inställningen för ljud analys innehåller nu en pris nivå för Basic-lä
 
 Kunder som använder Indexer v1 och Indexer v2 bör migrera till den grundläggande inställningen för ljud analys.
 
-Mer information om Basic Audio Analyzer-läget finns i [analys av video-och ljudfiler](analyze-video-audio-files-concept.md).  Information om hur du använder Basic Audio Analyzer-läget med REST API finns i [så här skapar du en grundläggande ljud omvandling](how-to-create-basic-audio-transform.md).
+Mer information om Basic Audio Analyzer-läget finns i [analys av video-och ljudfiler](analyze-video-audio-files-concept.md).  Information om hur du använder Basic Audio Analyzer-läget med REST API finns i [så här skapar du en grundläggande ljud omvandling](transform-create-basic-audio-how-to.md).
 
 ### <a name="live-events"></a>Livehändelser
 
@@ -324,8 +324,8 @@ Den här funktionen fungerar med alla [transformeringar](/rest/api/media/transfo
 
 Se exempel:
 
-* [Klipp en video med .NET](subclip-video-dotnet-howto.md)
-* [Klipp en video med REST](subclip-video-rest-howto.md)
+* [Klipp en video med .NET](transform-subclip-video-dotnet-how-to.md)
+* [Klipp en video med REST](transform-subclip-video-rest-how-to.md)
 
 ## <a name="may-2019"></a>Maj 2019
 
@@ -334,7 +334,7 @@ Se exempel:
 Du kan nu använda Azure Monitor för att Visa telemetri-data som har avsänts av Media Services.
 
 * Använd Azure Monitor diagnostikloggar för att övervaka begär Anden som skickas av Media Services Key Delivery-slutpunkten. 
-* Övervaka Mät värden som genereras av Media Services [slut punkter för direkt uppspelning](streaming-endpoint-concept.md).   
+* Övervaka Mät värden som genereras av Media Services [slut punkter för direkt uppspelning](stream-streaming-endpoint-concept.md).   
 
 Mer information finns i [övervaka Media Services statistik och diagnostikloggar](monitoring/monitor-media-services-data-reference.md).
 

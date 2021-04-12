@@ -21,7 +21,7 @@ Du måste autentiseras innan du kan få åtkomst till Media Services-resurser oc
 * **Autentisering av tjänstens huvudnamn**: Används för att autentisera en tjänst (till exempel webbappar, funktionsappar, logikappar, API:er och mikrotjänster). Program som ofta använder den här autentiseringsmetoden är appar som kör daemon-tjänster, tjänster på mellan nivå eller schemalagda jobb. För Web Apps bör till exempel alltid vara en mellan nivå som ansluter till Media Services med ett huvud namn för tjänsten.
 * **Användarautentisering**: Används för att autentisera en person som använder appen för att interagera med Media Services-resurser. Den interaktiva appen bör först fråga efter användarens autentiseringsuppgifter. Ett exempel är en hanteringskonsolapp som används av behöriga användare för att övervaka kodningsjobb eller liveuppspelning.
 
-Media Services-API:et kräver att användaren eller appen skickar REST API-begäranden för att få åtkomst till Media Services-kontoresursen och att rollen **Deltagare** eller **Ägare** används. Det går att komma åt API:et med rollen **Läsare** men då är endast åtgärderna **Get** eller **List** tillgängliga.Mer information finns i [rollbaserad åtkomst kontroll i Azure (Azure RBAC) för Media Services-konton](rbac-overview.md).
+Media Services-API:et kräver att användaren eller appen skickar REST API-begäranden för att få åtkomst till Media Services-kontoresursen och att rollen **Deltagare** eller **Ägare** används. Det går att komma åt API:et med rollen **Läsare** men då är endast åtgärderna **Get** eller **List** tillgängliga.Mer information finns i [rollbaserad åtkomst kontroll i Azure (Azure RBAC) för Media Services-konton](security-rbac-concept.md).
 
 I stället för att skapa tjänstens huvudnamn kan du överväga att använda hanterade identiteter för Azure-resurser så att du kan komma åt Media Services-API:et via Azure Resource Manager. Mer information om hanterade identiteter för Azure-resurser finns i [Vad är hanterade identiteter för Azure-resurser?](../../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -52,7 +52,7 @@ I följande figur representerar talen flödet för förfrågningarna i kronologi
 
 Se följande exempel som visar hur du ansluter till Azure AD-tjänstens huvud namn:
 
-* [Anslut med REST](media-rest-apis-with-postman.md)  
+* [Anslut med REST](setup-postman-rest-how-to.md)  
 * [Ansluta med Java](configure-connect-java-howto.md)
 * [Ansluta med .NET](configure-connect-dotnet-howto.md)
 * [Ansluta med .Node.js](configure-connect-nodejs-howto.md)

@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python, contperf-fy21q3
 adobe-target: true
-ms.openlocfilehash: f00a5efb01ea59b04495747ffd93d9f15ad5f76e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ed7a95ea83cacc0eaccfa23cd87403fb9be615ee
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935540"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210677"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Självstudie: kom igång med Azure Machine Learning i Jupyter Notebooks
 
@@ -27,7 +27,13 @@ I den här kursen får du:
 > [!div class="checklist"]
 > * Skapa en [Azure Machine Learning arbets yta](concept-workspace.md) som ska användas i andra Jupyter Notebook självstudier.
 > * Klona självstudiernas antecknings böcker till din mapp i arbets ytan.
-> * Skapa en molnbaserad beräknings instans med Azure Machine Learning python SDK installerat och förkonfigurerat.
+> * Skapa en molnbaserad beräknings instans som ger dig en miljö med Azure Machine Learning python SDK redan har installerats och kon figurer ATS för dig.
+
+Den här självstudien förbereder dig för att köra Jupyter-anteckningsböcker på en beräknings resurs på arbets ytan.  
+
+Ett annat bra sätt att komma igång med Azure Machine Learning är genom att skicka batch-jobb.  Se [självstudie: kom igång med Azure Machine Learning i din utvecklings miljö](tutorial-1st-experiment-sdk-setup-local.md).
+
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du inte har en Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag.
 

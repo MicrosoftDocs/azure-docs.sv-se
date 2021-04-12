@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 273a1b5986a72acc1d6725fbb3101c9c1df17e45
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: d021267c38f0043d2361b1a6392fbacd0634a164
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106122058"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279705"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>Vägledning för Live streaming-scenario-baserad migrering
 
@@ -37,7 +37,7 @@ Testa det nya sättet att leverera Live-händelser med Media Services innan du f
 
 - Skapa en ny v3 [Live-händelse](live-event-outputs-concept.md#live-events) för kodning. Du kan aktivera [för inställningar för 1080p-och 720p-kodning](live-event-types-comparison-reference.md#system-presets).
 - Använd entiteten [Live output](live-event-outputs-concept.md#live-outputs) i stället för program
-- Skapa [strömmande positionerare](streaming-locators-concept.md).
+- Skapa [strömmande positionerare](stream-streaming-locators-concept.md).
 - Överväg ditt behov av [HLS och tank streck](encode-dynamic-packaging-concept.md) direkt uppspelning.
 - Om du behöver snabb start av Live-händelser går du igenom de nya funktionerna i [vänte läge](live-event-outputs-concept.md#standby-mode) .
 - Om du vill skriva över din Live-händelse medan den inträffar kan du utforska den nya funktionen för [direkt avskriftning](live-event-live-transcription-how-to.md) .
@@ -52,7 +52,7 @@ Se begrepp för Live-händelser, självstudier och hur du vägleder dig nedan f�
 
 - [Direktsänd strömning med Azure Media Services v3](stream-live-streaming-concept.md)
 - [Live-händelser och Live-utdata i Media Services](live-event-outputs-concept.md)
-- [Verifierade lokala direkt uppspelnings kodare](recommended-on-premises-live-encoders.md)
+- [Verifierade lokala direkt uppspelnings kodare](encode-recommended-on-premises-live-encoders.md)
 - [Använd tids växling och Live-utdata för att skapa video uppspelning på begäran](live-event-cloud-dvr-time-how-to.md)
 - [Live-Event-Live-avskrift – How-to (för hands version)](live-event-live-transcription-how-to.md)
 - [Jämförelse av händelse typer i real tid](live-event-types-comparison-reference.md)

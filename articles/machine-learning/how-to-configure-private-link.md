@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 6fd497e0bc0fd282d57779c483f1e39e8f5ab60a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 92b5283e5779cc79ce0a745190b57884a6ca0f7e
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505485"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056019"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurera en privat Azure-länk för en Azure Machine Learning-arbetsyta
 
@@ -175,7 +175,7 @@ Information om Azure Virtual Machines finns i Virtual Machines- [dokumentationen
 I vissa fall kanske du vill tillåta att någon ansluter till din säkrade arbets yta via en offentlig slut punkt, i stället för via VNet. När du har konfigurerat en arbets yta med en privat slut punkt kan du välja att aktivera offentlig åtkomst till arbets ytan. Om du gör det tas inte den privata slut punkten bort. All kommunikation mellan komponenter bakom VNet är fortfarande skyddad. Den möjliggör endast offentlig åtkomst till arbets ytan, förutom den privata åtkomsten via VNet.
 
 > [!WARNING]
-> När du ansluter över den offentliga slut punkten kommer vissa funktioner i Studio inte att kunna komma åt dina data. Det här problemet uppstår när data lagras på en tjänst som skyddas bakom VNet. Till exempel ett Azure Storage konto.
+> När du ansluter över den offentliga slut punkten kommer vissa funktioner i Studio inte att kunna komma åt dina data. Det här problemet uppstår när data lagras på en tjänst som skyddas bakom VNet. Till exempel ett Azure Storage konto. Observera också att Compute instance Jupyter/JupyterLab/RStudio-funktionerna och körning av antecknings böcker inte fungerar.
 
 Använd följande steg för att aktivera offentlig åtkomst till en privat länk aktive rad arbets yta:
 

@@ -3,24 +3,27 @@ title: Reparera AKS-noder (Azure Kubernetes service) automatiskt
 description: Lär dig mer om funktionen för automatisk reparation av noder och hur AKS åtgärdar brutna arbetsnoder.
 services: container-service
 ms.topic: conceptual
-ms.date: 08/24/2020
-ms.openlocfilehash: 781a1ffebb40b0cce9f18699d308db90633e8626
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/11/2021
+ms.openlocfilehash: 341aef394a3784edbc0acd91dad396c9794da3d0
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89490113"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105212"
 ---
 # <a name="azure-kubernetes-service-aks-node-auto-repair"></a>Automatisk reparation av Azure Kubernetes service-noden (AKS)
 
-AKS kontrollerar kontinuerligt hälso tillståndet för arbetsnoder och utför automatisk reparation av noder om de blir felaktiga. Det här dokumentet informerar operatörer om hur automatiska reparations funktioner för noder beter sig för både Windows-och Linux-noder. Förutom AKS-reparationer utför Azure VM-plattformen [underhåll av Virtual Machines][vm-updates] som upplever problem. AKS och virtuella Azure-datorer fungerar tillsammans för att minimera tjänst avbrott i kluster.
+AKS övervakar kontinuerligt hälso tillståndet för arbetsnoder och utför automatisk reparation av noden om de blir felaktiga. Azure Virtual Machine (VM)-plattformen [utför underhåll på virtuella datorer][vm-updates] som har problem. 
+
+AKS och virtuella Azure-datorer fungerar tillsammans för att minimera tjänst avbrott i kluster.
+
+I det här dokumentet får du lära dig hur automatisk reparation av noder fungerar för både Windows-och Linux-noder. 
 
 ## <a name="how-aks-checks-for-unhealthy-nodes"></a>Hur AKS söker efter felaktiga noder
 
-AKS använder regler för att avgöra om en nod är ohälsosam och behöver repare ras. AKS använder följande regler för att avgöra om automatisk reparation krävs.
-
-* Noden rapporterar status för **notrappsteg** på efterföljande kontroller inom en 10-minuters tidsram
-* Noden rapporterar ingen status inom 10 minuter
+AKS använder följande regler för att avgöra om en nod är felfri och behöver reparera: 
+* Noden rapporterar **Notrappstegs** status på efterföljande kontroller inom en tidsram på 10 minuter.
+* Noden rapporterar ingen status inom 10 minuter.
 
 Du kan kontrol lera hälso tillståndet för dina noder manuellt med kubectl.
 
@@ -33,13 +36,15 @@ kubectl get nodes
 > [!Note]
 > AKS initierar reparations åtgärder med användar kontot **AKS-remediator**.
 
-Om en nod är ohälsosam enligt reglerna ovan och fortfarande är i fel tillstånd i 10 i följd, vidtas följande åtgärder.
+Om AKS identifierar en felaktig nod som inte är felfri i 10 minuter vidtar AKS följande åtgärder:
 
-1. Starta om noden
-1. Om omstarten Miss lyckas kan du återställa avbildningen av noden
-1. Om avbildningen Miss lyckas skapar du och återskapar en ny nod
+1. Starta om noden.
+1. Om omstarten Miss lyckas kan du återställa avbildningen av noden.
+1. Om avbildningen Miss lyckas skapar du och återskapar en ny nod.
 
-Om ingen av åtgärderna lyckas, undersökas ytterligare åtgärder av AKS-tekniker. Om flera noder är i fel tillstånd under en hälso kontroll repare ras varje nod individuellt innan en ny reparation påbörjas.
+Alternativa reparationer undersökas av AKS-tekniker om automatisk reparation Miss lyckas. 
+
+Om AKS hittar flera felaktiga noder under en hälso kontroll repare ras varje nod individuellt innan en ny reparation påbörjas.
 
 ## <a name="next-steps"></a>Nästa steg
 

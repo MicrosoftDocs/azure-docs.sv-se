@@ -4,12 +4,12 @@ description: Lär dig hur du monterar ett virtuellt fil system i en batch-pool.
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 03/26/2021
-ms.openlocfilehash: dc5fbdf9ca0df8362a8999856c3f7163dd5e59b9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dcd56a12d8728b83cdcb7cea4c16c4aedd4251a7
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626035"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105756"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Montera ett virtuellt fil system i en batch-pool
 
@@ -53,7 +53,7 @@ Följande kod exempel visar hur du monterar en rad olika fil resurser i en pool 
 
 ### <a name="azure-files-share"></a>Azure Files resurs
 
-Azure Files är standard erbjudandet för Azure Cloud File System. Mer information om hur du hämtar någon av parametrarna i monterings kods exemplet finns i [använda en Azure Files-resurs](../storage/files/storage-how-to-use-files-windows.md).
+Azure Files är standard erbjudandet för Azure Cloud File System. Mer information om hur du hämtar någon av parametrarna i monterings kods exemplet finns i [använda en Azure Files dela-SMB](../storage/files/storage-how-to-use-files-windows.md) eller [använda en Azure Files-resurs med-NFS](../storage/files/storage-files-how-to-create-nfs-shares.md).
 
 ```csharp
 new PoolAddParameter

@@ -4,13 +4,13 @@ description: I den här snabb starten skapar du grundläggande delar av en app, 
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/30/2020
-ms.openlocfilehash: a5443dce9fc8bc028232f66f45b537a46858f35a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.date: 03/26/2021
+ms.openlocfilehash: c2f2bafe68dd3f3dad704ba12cdd4d01bf4f6588
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436682"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278770"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Snabb start: skapa en ny app i LUIS-portalen
 
@@ -28,7 +28,7 @@ I fönstret som visas anger du följande information:
 |---------|---------|
 |Name     | Ett namn för din app. Till exempel "Start automatisering". Krävs.        |
 |Kultur     | Det språk som din app förstår och pratar med. Krävs.   |
-|Description | En beskrivning av din app. Valfritt.
+|Beskrivning | En beskrivning av din app. Valfritt.
 |Förutsägelse resurs | Den förutsägelse resurs som tar emot frågor. Valfritt. |
 
 Välj **Klar**.
@@ -164,4 +164,4 @@ När du är klar med den här snabb starten och inte fortsätter till nästa sna
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [2. distribuera en app](get-started-portal-deploy-app.md)
+> [Distribuera en app](get-started-portal-deploy-app.md)

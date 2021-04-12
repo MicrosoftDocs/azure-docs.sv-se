@@ -1,6 +1,6 @@
 ---
 title: Tilldela en princip för Azure Key Vault åtkomst
-description: Använda Azure Portal, Azure CLI eller Azure PowerShell för att tilldela en Key Vault åtkomst princip till ett huvud namn för tjänsten eller en program identitet.
+description: Använda Azure Portal, Azure CLI eller Azure PowerShell för att tilldela en Key Vault åtkomst princip till ett säkerhets objekt eller en program identitet.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4cf0393cdb0aae1b352b81df4893f874f34970cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4637715b2ba885d58ebb4c5f3ed40a79be2f815b
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934545"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968738"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>Tilldela en Key Vault åtkomst princip med Azure PowerShell
 
-En Key Vault åtkomst princip bestämmer om ett specifikt tjänstens huvud namn, nämligen ett program eller en användar grupp, kan utföra olika åtgärder på Key Vault [hemligheter](../secrets/index.yml), [nycklar](../keys/index.yml)och [certifikat](../certificates/index.yml). Du kan tilldela åtkomst principer med hjälp av [Azure Portal](assign-access-policy-portal.md), [Azure CLI](assign-access-policy-cli.md)eller Azure PowerShell (den här artikeln).
+En Key Vault åtkomst princip bestämmer om ett specifikt säkerhets objekt, nämligen en användare, ett program eller en användar grupp, kan utföra olika åtgärder på Key Vault [hemligheter](../secrets/index.yml), [nycklar](../keys/index.yml)och [certifikat](../certificates/index.yml). Du kan tilldela åtkomst principer med hjälp av [Azure Portal](assign-access-policy-portal.md), [Azure CLI](assign-access-policy-cli.md)eller Azure PowerShell (den här artikeln).
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 

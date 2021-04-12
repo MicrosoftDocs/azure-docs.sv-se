@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 11/17/2020
-ms.openlocfilehash: 59e6e73c99569b0a35c56d65c1a7ccdfcb394c0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 905224119b9df4e4003b1736443406e9548a49e3
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95026429"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012537"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>Skala en citus-Server grupp
 
@@ -21,6 +21,11 @@ Azure Database for PostgreSQL-Scale (citus) tillhandahåller självbetjänings s
 ## <a name="add-worker-nodes"></a>Lägg till arbetsnoder
 
 Om du vill lägga till noder går du till fliken **Compute + Storage** i Server gruppen för citus-servern.  Om du drar skjutreglaget för **antal arbets noder** ändras värdet.
+
+> [!NOTE]
+>
+> En storskalig (citus)-Server grupp som skapats med [Basic-nivån (för hands version)](concepts-hyperscale-tiers.md) har inga arbetare. Om antalet arbets trådar ökar ökar server gruppen automatiskt till standard nivån.
+> När du har graderat en Server grupp till standard nivån kan du inte nedgradera tillbaka till Basic-nivån.
 
 :::image type="content" source="./media/howto-hyperscale-scaling/01-sliders-workers.png" alt-text="Resurs skjutreglage":::
 
@@ -34,7 +39,7 @@ Klicka på knappen **Spara** om du vill att det ändrade värdet ska börja gäl
 
 ## <a name="increase-or-decrease-vcores-on-nodes"></a>Öka eller minska virtuella kärnor på noder
 
-Förutom att lägga till nya noder kan du öka funktionerna i befintliga noder. Det kan vara bra att justera beräknings kapaciteten för prestanda experiment samt kortsiktiga eller långsiktiga ändringar av trafik kraven.
+Förutom att lägga till nya noder kan du öka funktionerna i befintliga noder. Det kan vara bra att justera beräknings kapaciteten för prestanda experiment, samt kortsiktiga eller långsiktiga ändringar av trafik kraven.
 
 Om du vill ändra virtuella kärnor för alla arbetsnoder justerar du skjutreglaget **virtuella kärnor** under **konfiguration (per nod)**. Koordinator nodens virtuella kärnor kan justeras oberoende av varandra. Justera **virtuella kärnor** -skjutreglaget under  **konfiguration (koordinator nod)**.
 

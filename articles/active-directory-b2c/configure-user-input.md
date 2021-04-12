@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4e709719d56aacacf61e247a5dbe215f766a891a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 257ba16cf015705b8f6da264d9c25f28cef2ebb1
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102607959"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443448"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Lägg till användarattribut och anpassa användarindata i Azure Active Directory B2C
 
@@ -60,7 +60,7 @@ Program anspråk är värden som returneras till programmet. Uppdatera ditt anv�
 1. Välj **sidlayouter**.
 1. Välj **inloggnings sida för lokalt konto**.
 1. Under **användarattribut** väljer du **ort**.
-    1. I list rutan **typ av Indatatyp** väljer du **DropdownSingleSelect**.
+    1. I list rutan **typ av Indatatyp** väljer du **DropdownSingleSelect**. Valfritt: Använd knapparna Flytta upp/ned för att ordna text ordningen på registrerings sidan.
     1. I den **valfria** List rutan väljer du **Nej**.
 1. Välj **Spara**. 
 

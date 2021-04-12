@@ -360,8 +360,6 @@
           displayName: 'keda, container, docker'
         - name: Automatisera resursdistribution
           href: functions-infrastructure-as-code.md
-        - name: Lokala funktioner
-          href: functions-runtime-install.md
         - name: Distribuera med hjälp av Jenkins-pluginprogrammet
           href: /azure/developer/jenkins/deploy-to-azure-functions
           maintainContext: true
@@ -404,8 +402,6 @@
               href: ../app-service/configure-authentication-provider-facebook.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Autentisera med Google
               href: ../app-service/configure-authentication-provider-google.md?toc=%2fazure%2fazure-functions%2ftoc.json
-            - name: Autentisera med Microsoft-konto
-              href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Autentisera med Twitter
               href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Autentisera med en OpenID Connect-provider (förhandsgranskning)
@@ -436,6 +432,18 @@
               href: functions-add-output-binding-storage-queue-vs-code.md
             - name: Lagring – Visual Studio
               href: functions-add-output-binding-storage-queue-vs.md
+        - name: Starta/stoppa virtuella datorer
+          items:
+            - name: Översikt
+              href: start-stop-vms/overview.md
+            - name: Distribuera och konfigurera
+              href: start-stop-vms/deploy.md
+            - name: Hantera och övervaka
+              href: start-stop-vms/manage.md
+            - name: Ta bort start/stoppa virtuella datorer
+              href: start-stop-vms/remove.md
+            - name: Felsöka
+              href: start-stop-vms/troubleshoot.md
         - name: Ansluta SQL Database
           href: functions-scenario-database-table-cleanup.md
         - name: Ansluta till ett virtuellt nätverk
@@ -452,10 +460,14 @@
       items:
         - name: Felsöka Storage
           href: functions-recover-storage-account.md
-        - name: Felsöka Python-funktioner
-          href: recover-python-functions.md
-        - name: Skala och prestanda för Python-funktioner
-          href: python-scale-performance-reference.md
+        - name: Python-funktioner
+          items:
+            - name: Allmän fel sökning
+              href: recover-python-functions.md
+            - name: Skalning och prestanda
+              href: python-scale-performance-reference.md
+            - name: Minnes profilering
+              href: python-memory-profiler-reference.md
 - name: Referens
   items:
     - name: API-referenser

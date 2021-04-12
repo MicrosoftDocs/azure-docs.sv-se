@@ -7,18 +7,18 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: bff20468e8185073f5c192c1e115bc405dd089eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5eb253fb24f463106866f8b0fe17f634e805cbb
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97693611"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107485"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Skapa erbjudande om Power BI-app
 
 I den här artikeln beskrivs hur du skapar och publicerar ett Power BI app-erbjudande i [Microsoft AppSource](https://appsource.microsoft.com/).
 
-Innan du börjar [skapar du ett kommersiellt marknads plats konto i Partner Center](create-account.md) , om du inte har gjort det än. Se till att ditt konto är registrerat i programmet för kommersiella marknads platser.
+Innan du börjar [skapar du ett kommersiellt marknads plats konto i Partner Center](../create-account.md) , om du inte har gjort det än. Se till att ditt konto är registrerat i programmet för kommersiella marknads platser.
 
 ## <a name="create-a-new-offer"></a>Skapa ett nytt erbjudande
 

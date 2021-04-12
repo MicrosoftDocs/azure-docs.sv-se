@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2878efd0e392479e35530220d025055eacae3b43
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: e75a141dd8dd09423f4e99a9f4860e7e5022a15f
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104399"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107108857"
 ---
 I den här snabb starten lär du dig vanliga design mönster för att skapa text till tal-Sammanfattning med hjälp av tal-SDK. Du börjar med att utföra grundläggande konfiguration och syntes och går vidare till mer avancerade exempel för anpassad program utveckling, inklusive:
 
@@ -162,9 +162,6 @@ Om du vill ändra ljud formatet använder du `SetSpeechSynthesisOutputFormat()` 
 
 Det finns olika alternativ för olika filtyper beroende på dina krav. Observera att RAW-format, t `Raw24Khz16BitMonoPcm` . ex., inte innehåller ljud rubriker enligt definitionen. Använd RAW-format endast när du vet att den underordnade implementeringen kan avkoda en RAW-Bitstream, eller om du planerar att skapa rubriker manuellt baserat på bitdjup, samplings frekvens, antal kanaler osv.
 
-> [!NOTE]
-> Rösterna **en-US-AriaRUS** och **en-US-GuyRUS** skapas från exempel som kodats i `Riff24Khz16BitMonoPcm` samplings frekvensen.
-
 I det här exemplet anger du ett RIFF-format med hög åter givning `Riff24Khz16BitMonoPcm` genom att ange `SpeechSynthesisOutputFormat` på- `SpeechConfig` objektet. Som liknar exemplet i föregående avsnitt, använder du [`AudioDataStream`](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream) för att hämta en minnes intern ström i resultatet och sedan skriva den till en fil.
 
 ```csharp
@@ -185,15 +182,15 @@ Om du kör programmet igen skrivs en `.wav` fil till den angivna sökvägen.
 
 ## <a name="use-ssml-to-customize-speech-characteristics"></a>Använda SSML för att anpassa tal egenskaper
 
-Med SSML (Speech syntes Markup Language) kan du finjustera bredden, uttal, tal igenkänning, volym och fler text till tal-utdata genom att skicka in dina begär Anden från ett XML-schema. I det här avsnittet visas några praktiska exempel på användnings exempel, men en mer detaljerad guide finns i [artikeln SSML instruktion](../../../speech-synthesis-markup.md).
+Med SSML (Speech syntes Markup Language) kan du finjustera bredden, uttal, tal igenkänning, volym och fler text till tal-utdata genom att skicka in dina begär Anden från ett XML-schema. I det här avsnittet visas ett exempel på hur du ändrar rösten, men en mer detaljerad guide finns i [artikeln SSML instruktion](../../../speech-synthesis-markup.md).
 
 Om du vill börja använda SSML för anpassning gör du en enkel ändring som byter rösten.
-Börja med att skapa en ny XML-fil för SSML-konfigurationen i rot katalogen för projektet i det här exemplet `ssml.xml` . Rot elementet är alltid `<speak>` och rad brytnings texten i ett `<voice>` element gör att du kan ändra rösten med hjälp av `name` param. Det här exemplet ändrar rösten till en amerikansk engelska (UK) röst. Observera att den här rösten är en **standard** röst, som har olika priser och tillgänglighet än **neurala** röster. Se den [fullständiga listan](../../../language-support.md#standard-voices) över **standard** röster som stöds.
+Börja med att skapa en ny XML-fil för SSML-konfigurationen i rot katalogen för projektet i det här exemplet `ssml.xml` . Rot elementet är alltid `<speak>` och rad brytnings texten i ett `<voice>` element gör att du kan ändra rösten med hjälp av `name` param. Se den [fullständiga listan](../../../language-support.md#neural-voices) över **neurala** röster som stöds.
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-  <voice name="en-GB-George-Apollo">
-    When you're on the motorway, it's a good idea to use a sat-nav.
+  <voice name="en-US-AriaNeural">
+    When you're on the freeway, it's a good idea to use a GPS.
   </voice>
 </speak>
 ```
@@ -217,36 +214,9 @@ public static async Task SynthesizeAudioAsync()
 }
 ```
 
-Utdata fungerar, men det finns några enkla ytterligare ändringar som du kan göra för att hjälpa dem att bli mer naturliga. Den övergripande tal hastigheten är lite för snabb, så vi lägger till en `<prosody>` tagg och minskar hastigheten till **90%** av standard priset. Dessutom är pausen efter det att kommatecken i meningen är lite för kort och inte naturligt. Du kan åtgärda det här problemet genom att lägga till en `<break>` tagg för att skjuta upp talet och ange tids parametern till **200ms**. Kör sammanfattningen igen för att se hur dessa anpassningar påverkar utdata.
+> [!NOTE]
+> Om du vill ändra rösten utan att använda SSML kan du ställa in egenskapen på med `SpeechConfig` hjälp av `SpeechConfig.SpeechSynthesisVoiceName = "en-US-AriaNeural";`
 
-```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-  <voice name="en-GB-George-Apollo">
-    <prosody rate="0.9">
-      When you're on the motorway,<break time="200ms"/> it's a good idea to use a sat-nav.
-    </prosody>
-  </voice>
-</speak>
-```
-
-## <a name="neural-voices"></a>Neurala-röster
-
-Neurala-röster är tal syntes-algoritmer som drivs av djup neurala nätverk. När du använder en neurala-röst är syntetiskt tal nästan lätt att skilja från de mänskliga inspelningarna. Med den humana naturliga prosody och tydligare utsättande av ord, minskar neurala-röster avsevärt lyssnings utmattning när användarna interagerar med AI-system.
-
-Om du vill växla till en neurala röst ändrar `name` du till ett av [röst alternativen för neurala](../../../language-support.md#neural-voices). Lägg sedan till ett XML-namnområde för `mstts` och Radbryt texten i `<mstts:express-as>` taggen. Använd `style` param för att anpassa tal formatet. Det här exemplet använder `cheerful` , men försök att ställa in det på `customerservice` eller `chat` för att se skillnaden i tal formatet.
-
-> [!IMPORTANT]
-> Neurala-röster stöds **bara** för tal resurser som skapats i regionerna *östra USA*, Asien, sydöstra *och Västeuropa.* 
-
-```xml
-<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
-  <voice name="en-US-AriaNeural">
-    <mstts:express-as style="cheerful">
-      This is awesome!
-    </mstts:express-as>
-  </voice>
-</speak>
-```
 ## <a name="get-facial-pose-events"></a>Hämta händelser för ansikts attityd
 
 Tal kan vara ett bra sätt att köra animeringen av ansikts uttryck.
