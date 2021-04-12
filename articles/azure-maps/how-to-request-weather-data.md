@@ -1,6 +1,6 @@
 ---
-title: Begär real tids data och prognostiserade väder data med hjälp av Azure Maps väder tjänster (för hands version)
-description: Lär dig hur du begär real tids (aktuell) och prognostiserat (minut, varje timme, dagligen) väder data med Microsoft Azure Maps väder tjänster (för hands version)
+title: Begär real tids data och prognostiserade väder data med hjälp av Azure Maps väder tjänster
+description: Lär dig hur du begär real tids (aktuell) och prognostiserat (minut, varje timme, dagligen) väder data med Microsoft Azure Maps väder tjänster
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 12/07/2020
@@ -9,28 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: fe1b337fe3e1dcf499f9a7428f66543108d0c050
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46d9847e8463d5413409ebcacc7cd62d68f13e65
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97680419"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259412"
 ---
-# <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services-preview"></a>Begär real tids data och prognostiserade väder data med hjälp av Azure Maps väder tjänster (för hands version) 
-
-> [!IMPORTANT]
-> Azure Maps väder tjänster finns för närvarande i offentlig för hands version.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>Begär real tids data och prognostiserade väder data med hjälp av Azure Maps väder tjänster
 
 Azure Maps [väder tjänster](/rest/api/maps/weather) är en uppsättning RESTful-API: er som gör att utvecklare kan integrera mycket dynamiska historiska, real tids data och prognostiserade väder data och visualiseringar i sina lösningar. I den här artikeln visar vi hur du begär både real tids data och prognostiserade väder data.
 
 I den här artikeln får du lära dig hur du:
 
-* Begär real tids data (aktuella) väder data med hjälp av [API: t hämta aktuella villkor](/rest/api/maps/weather/getcurrentconditionspreview).
-* Begär allvarliga väder aviseringar med hjälp av API: t för att [få allvarliga väder varningar](/rest/api/maps/weather/getsevereweatheralertspreview).
-* Begär dagliga prognoser med hjälp av [API: t Hämta dagliga prognoser](/rest/api/maps/weather/getdailyforecastpreview).
-* Begär Tim prognoser med hjälp av API för att [få Tim prognos](/rest/api/maps/weather/gethourlyforecastpreview).
-* Minut prognoser per minut med hjälp av API: et för att [få minuter](/rest/api/maps/weather/getminuteforecastpreview).
+* Begär real tids data (aktuella) väder data med hjälp av [API: t hämta aktuella villkor](/rest/api/maps/weather/getcurrentconditions).
+* Begär allvarliga väder aviseringar med hjälp av API: t för att [få allvarliga väder varningar](/rest/api/maps/weather/getsevereweatheralerts).
+* Begär dagliga prognoser med hjälp av [API: t Hämta dagliga prognoser](/rest/api/maps/weather/getdailyforecast).
+* Begär Tim prognoser med hjälp av API för att [få Tim prognos](/rest/api/maps/weather/gethourlyforecast).
+* Minut prognoser per minut med hjälp av API: et för att [få minuter](/rest/api/maps/weather/getminuteforecast).
 
 Den här videon innehåller exempel på hur du kan göra REST-anrop till Azure Maps väder tjänster.
 
@@ -44,15 +40,15 @@ Den här videon innehåller exempel på hur du kan göra REST-anrop till Azure M
 2. [Hämta en primär prenumerations nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account), även kallat primär nyckel eller prenumerations nyckel. Mer information om autentisering i Azure Maps finns i [hantera autentisering i Azure Maps](./how-to-manage-authentication.md).
 
     >[!IMPORTANT]
-    >[API: et för att få en minuts prognos](/rest/api/maps/weather/getminuteforecastpreview) kräver en pris nivås nyckel på S1. Alla andra API: er kräver en S0 pris nivå nyckel.
+    >[API: et för att få en minuts prognos](/rest/api/maps/weather/getminuteforecast) kräver en pris nivås nyckel på S1. Alla andra API: er kräver en S0 pris nivå nyckel.
 
 I den här självstudien används [Postman](https://www.postman.com/) -programmet, men du kan välja en annan API utvecklings miljö.
 
 ## <a name="request-real-time-weather-data"></a>Begär väder data i real tid
 
-[API: erna hämta aktuella villkor](/rest/api/maps/weather/getcurrentconditionspreview) returnerar detaljerade väder förhållanden som nederbörd, temperatur och vridning för en specifik koordinat plats. Dessutom går det att hämta observationer från de senaste 6 eller 24 timmarna för en viss plats. Svaret innehåller information som observations datum och tid, en kort beskrivning av väder förhållandena, väder ikonen, utfällning indikator flaggor och temperatur. RealFeel™ temperatur-och UV-index returneras också.
+[API: erna hämta aktuella villkor](/rest/api/maps/weather/getcurrentconditions) returnerar detaljerade väder förhållanden som nederbörd, temperatur och vridning för en specifik koordinat plats. Dessutom går det att hämta observationer från de senaste 6 eller 24 timmarna för en viss plats. Svaret innehåller information som observations datum och tid, en kort beskrivning av väder förhållandena, väder ikonen, utfällning indikator flaggor och temperatur. RealFeel™ temperatur-och UV-index returneras också.
 
-I det här exemplet ska du använda [API: t hämta aktuella villkor](/rest/api/maps/weather/getcurrentconditionspreview) för att hämta aktuella väder förhållanden vid koordinater i Seattle, WA.
+I det här exemplet ska du använda [API: t hämta aktuella villkor](/rest/api/maps/weather/getcurrentconditions) för att hämta aktuella väder förhållanden vid koordinater i Seattle, WA.
 
 1. Öppna Postman-appen. Längst upp i Postman-appen väljer du **nytt**. I fönstret **Skapa nytt** väljer du **samling**.  Namnge samlingen och välj knappen **skapa** . Du kommer att använda den här samlingen för resten av exemplen i det här dokumentet.
 
@@ -239,9 +235,9 @@ I det här exemplet ska du använda [API: t hämta aktuella villkor](/rest/api/m
 
 ## <a name="request-severe-weather-alerts"></a>Begär allvarliga väder varningar
 
-[Azure Maps få allvarliga väderleks aviserings-API: er](/rest/api/maps/weather/getsevereweatheralertspreview) returneras allvarliga väder aviseringar som är tillgängliga i hela världen från de offentliga och ledande, globala och regionala väderleks leverantörer. Tjänsten kan returnera information som aviserings typ, kategori, nivå och detaljerade beskrivningar av aktiva allvarliga aviseringar för den begärda platsen, till exempel orkaner, thunderstorms, blixt, värme vågor eller skogs bränder. Som exempel kan logistik chefer visualisera svåra väder förhållanden på en karta, tillsammans med företags platser och planerade vägar, och koordinera ytterligare med driv rutiner och lokala arbetare.
+[Azure Maps få allvarliga väderleks aviserings-API: er](/rest/api/maps/weather/getsevereweatheralerts) returneras allvarliga väder aviseringar som är tillgängliga i hela världen från de offentliga och ledande, globala och regionala väderleks leverantörer. Tjänsten kan returnera information som aviserings typ, kategori, nivå och detaljerade beskrivningar av aktiva allvarliga aviseringar för den begärda platsen, till exempel orkaner, thunderstorms, blixt, värme vågor eller skogs bränder. Som exempel kan logistik chefer visualisera svåra väder förhållanden på en karta, tillsammans med företags platser och planerade vägar, och koordinera ytterligare med driv rutiner och lokala arbetare.
 
-I det här exemplet ska du använda [API: et för att få svåra väder varningar](/rest/api/maps/weather/getsevereweatheralertspreview) för att hämta aktuella väder förhållanden vid koordinaterna i Cheyenne, WY.
+I det här exemplet ska du använda [API: et för att få svåra väder varningar](/rest/api/maps/weather/getsevereweatheralerts) för att hämta aktuella väder förhållanden vid koordinaterna i Cheyenne, WY.
 
 >[!NOTE]
 >I det här exemplet hämtas svåra väder varningar vid tidpunkten för den här skrivningen. Det är sannolikt att det inte längre finns några allvarliga väder varningar på den begärda platsen. Om du vill hämta faktiska allvarliga aviserings data när du kör det här exemplet måste du hämta data på en annan koordinat plats.
@@ -291,12 +287,12 @@ I det här exemplet ska du använda [API: et för att få svåra väder varninga
 
 ## <a name="request-daily-weather-forecast-data"></a>Begär dagliga väder prognos data
 
-[API: et för att hämta dagliga prognoser](/rest/api/maps/weather/getdailyforecastpreview) returnerar den detaljerade dagliga väder prognosen, till exempel temperatur och vridning. Begäran kan ange hur många dagar som ska returneras: 1, 5, 10, 15, 25 eller 45 dagar för en specifik koordinat plats. Svaret innehåller information som temperatur, vind, nederbörd, luft kvalitet och UV-index.  I det här exemplet begär vi fem dagar efter att du har angett `duration=5` .
+[API: et för att hämta dagliga prognoser](/rest/api/maps/weather/getdailyforecast) returnerar den detaljerade dagliga väder prognosen, till exempel temperatur och vridning. Begäran kan ange hur många dagar som ska returneras: 1, 5, 10, 15, 25 eller 45 dagar för en specifik koordinat plats. Svaret innehåller information som temperatur, vind, nederbörd, luft kvalitet och UV-index.  I det här exemplet begär vi fem dagar efter att du har angett `duration=5` .
 
 >[!IMPORTANT]
 >I pris nivån S0 kan du begära en daglig prognos för nästa 1, 5, 10 och 15 dagar. I pris nivån S1 kan du även begära dagliga prognoser för de kommande 25 dagarna och 45 dagar.
 
-I det här exemplet ska du använda [API: et Hämta dagliga prognoser](/rest/api/maps/weather/getdailyforecastpreview) för att hämta väder prognosen på fem dagar för koordinater i Seattle, WA.
+I det här exemplet ska du använda [API: et Hämta dagliga prognoser](/rest/api/maps/weather/getdailyforecast) för att hämta väder prognosen på fem dagar för koordinater i Seattle, WA.
 
 1. Öppna Postman-appen, klicka på **ny** och välj **begäran**. Ange ett **namn** för begäran. Välj den samling som du skapade i föregående avsnitt eller skapa en ny och välj sedan **Spara**.
 
@@ -539,12 +535,12 @@ I det här exemplet ska du använda [API: et Hämta dagliga prognoser](/rest/api
 
 ## <a name="request-hourly-weather-forecast-data"></a>Begär data för varje timmes väder prognos
 
-[API: et för erhållna Tim prognoser](/rest/api/maps/weather/gethourlyforecastpreview) returnerar detaljerad väder prognos per timme för nästa 1, 12, 24 (1 dag), 72 (3 dagar), 120 (5 dagar) och 240 timmar (10 dagar) för den aktuella koordinat platsen. API: t returnerar information som temperatur, fuktighet, vind, nederbörd och UV-index.
+[API: et för erhållna Tim prognoser](/rest/api/maps/weather/gethourlyforecast) returnerar detaljerad väder prognos per timme för nästa 1, 12, 24 (1 dag), 72 (3 dagar), 120 (5 dagar) och 240 timmar (10 dagar) för den aktuella koordinat platsen. API: t returnerar information som temperatur, fuktighet, vind, nederbörd och UV-index.
 
 >[!IMPORTANT]
 >I pris nivån S0 kan du begära en prognos per timme för nästa 1, 12, 24 timmar (1 dag) och 72 timmar (3 dagar). I pris nivån S1 kan du även begära Tim prognos för nästföljande 120 (5 dagar) och 240 timmar (10 dagar).
 
-I det här exemplet ska du använda [API: et](/rest/api/maps/weather/gethourlyforecastpreview) för att få Tim prognos för att hämta Tim väder prognosen för de kommande 12 timmarna vid koordinater i Seattle, WA.
+I det här exemplet ska du använda [API: et](/rest/api/maps/weather/gethourlyforecast) för att få Tim prognos för att hämta Tim väder prognosen för de kommande 12 timmarna vid koordinater i Seattle, WA.
 
 1. Öppna Postman-appen, klicka på **ny** och välj **begäran**. Ange ett **namn** för begäran. Välj den samling som du skapade i föregående avsnitt eller skapa en ny och välj sedan **Spara**.
 
@@ -649,9 +645,9 @@ I det här exemplet ska du använda [API: et](/rest/api/maps/weather/gethourlyfo
     ```
 ## <a name="request-minute-by-minute-weather-forecast-data"></a>Data för begäran om minut-till-minut – väder prognoser
 
- [API: et för Get Minute-prognos](/rest/api/maps/weather/getminuteforecastpreview) returnerar minut-till-minut-prognoser för en specifik plats under de kommande 120 minuterna. Användare kan begära väder prognoser i intervall om 1, 5 och 15 minuter. Svaret innehåller information som typ av fällning (inklusive regn, snö eller en blandning av både), start tid och fällnings värde (dBZ).
+ [API: et för Get Minute-prognos](/rest/api/maps/weather/getminuteforecast) returnerar minut-till-minut-prognoser för en specifik plats under de kommande 120 minuterna. Användare kan begära väder prognoser i intervall om 1, 5 och 15 minuter. Svaret innehåller information som typ av fällning (inklusive regn, snö eller en blandning av både), start tid och fällnings värde (dBZ).
 
-I det här exemplet ska du använda [API: et för att hämta Minute](/rest/api/maps/weather/getminuteforecastpreview) för att hämta väder prognoser per minut vid koordinater i Seattle, WA. Väder prognosen anges för kommande 120 minuter. Frågan begär att prognosen ska ges med 15 minuters intervall, men du kan ändra parametern till antingen 1 eller 5 minuter.
+I det här exemplet ska du använda [API: et för att hämta Minute](/rest/api/maps/weather/getminuteforecast) för att hämta väder prognoser per minut vid koordinater i Seattle, WA. Väder prognosen anges för kommande 120 minuter. Frågan begär att prognosen ska ges med 15 minuters intervall, men du kan ändra parametern till antingen 1 eller 5 minuter.
 
 1. Öppna Postman-appen, klicka på **ny** och välj **begäran**. Ange ett **namn** för begäran. Välj den samling som du skapade i föregående avsnitt eller skapa en ny och välj sedan **Spara**.
 
@@ -755,7 +751,7 @@ I det här exemplet ska du använda [API: et för att hämta Minute](/rest/api/m
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Koncept för Azure Maps väder tjänster (för hands version)](./weather-services-concepts.md)
+> [Koncept för Azure Maps väder tjänster](./weather-services-concepts.md)
 
 > [!div class="nextstepaction"]
-> [Azure Maps väder tjänster (för hands version) REST API](/rest/api/maps/weather)
+> [Azure Maps väder tjänster REST API](/rest/api/maps/weather)

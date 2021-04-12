@@ -7,12 +7,12 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 36329987e510372ff286a10584a115ea259afc60
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 39bab52a564439d34b8702de11edabe7f0d6dfbc
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98119092"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492264"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Använd egenskaper i en Azure IoT Central-lösning
 
@@ -219,7 +219,7 @@ Svars meddelandet ska innehålla `ac` fälten och `av` . Fältet `ad` är valfri
 
 Mer information om enheter finns i [Konfigurera dina enheter från en backend-tjänst](../../iot-hub/tutorial-device-twins.md).
 
-När operatorn ställer in en skrivbar egenskap i Azure IoT Central-programmet använder programmet en enhet med dubbla önskade egenskaper för att skicka värdet till enheten. Enheten svarar sedan med en enhets dubbla rapporterad egenskap. När Azure IoT Central tar emot det rapporterade egenskap svärdet uppdaterar det egenskaps läget med statusen **accepterad**.
+När operatorn ställer in en skrivbar egenskap i Azure IoT Central-programmet, använder programmet en enhet med dubbla önskade egenskaper för att skicka värdet till enheten. Enheten svarar sedan med en enhets dubbla rapporterad egenskap. När Azure IoT Central tar emot det rapporterade egenskap svärdet uppdaterar det egenskaps läget med statusen **accepterad**.
 
 I följande vy visas skrivbara egenskaper. När du anger värdet och väljer **Spara**, är den ursprungliga statusen **väntande**. När enheten accepterar ändringen ändras statusen till **accepterad**.
 

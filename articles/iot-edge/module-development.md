@@ -8,12 +8,12 @@ ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a30b4b056d56e096f80b9494ab80a585fff76e66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6274d0f0265220877938775ab6efd72ff22b84e4
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489943"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031140"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Utveckla dina egna IoT Edge-moduler
 
@@ -134,7 +134,7 @@ IoT Edge stöder flera operativ system, enhets arkitekturer och utvecklings spr�
 
 ### <a name="linux"></a>Linux
 
-För alla språk i följande tabell IoT Edge stöder utveckling för AMD64-och ARM32 Linux-enheter.
+För alla språk i följande tabell IoT Edge stöder utveckling för AMD64-och ARM32 Linux-behållare.
 
 | Utvecklingsspråk | Utvecklingsverktyg |
 | -------------------- | ----------------- |
@@ -145,16 +145,30 @@ För alla språk i följande tabell IoT Edge stöder utveckling för AMD64-och A
 | Python | Visuell Studio-kod |
 
 >[!NOTE]
->Att utveckla och felsöka stöd för ARM64 Linux-enheter finns i [offentlig för hands version](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Mer information finns i [utveckla och FELSÖKA ARM64 IoT Edge moduler i Visual Studio Code (för hands version)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
+>Att utveckla och felsöka stöd för ARM64 Linux-behållare finns i [offentlig för hands version](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Mer information finns i [utveckla och FELSÖKA ARM64 IoT Edge moduler i Visual Studio Code (för hands version)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
 
 ### <a name="windows"></a>Windows
 
-För alla språk i följande tabell IoT Edge stöder utveckling för AMD64 Windows-enheter.
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+För alla språk i följande tabell IoT Edge stöd för utveckling av AMD64 Windows-behållare.
 
 | Utvecklingsspråk | Utvecklingsverktyg |
 | -------------------- | ----------------- |
 | C | Visual Studio 2017/2019 |
 | C# | Visual Studio Code (inga fel söknings funktioner)<br>Visual Studio 2017/2019 |
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+IoT Edge 1,1 LTS är den sista versions kanal som stöder Windows-behållare. Från och med version 1,2 stöds inte Windows-behållare.
+
+Information om hur du utvecklar med Windows-behållare finns i [IoT Edge 1,1](?view=iotedge-2018-06&preserve-view=true) -versionen av den här artikeln.
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="next-steps"></a>Nästa steg
 

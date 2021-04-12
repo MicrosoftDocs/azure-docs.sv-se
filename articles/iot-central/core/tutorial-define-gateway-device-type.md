@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: e42e1791693342592e391a14422b1441c9cbbd31
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cdace22072e4122150c878d43b99765cd6fd59e1
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99832394"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490785"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Självstudie – definiera en ny enhets typ för IoT gateway i ditt Azure IoT Central-program
 
@@ -29,7 +29,7 @@ I den här självstudien skapar du en mall för **Smart Building** gateway-enhet
 Även om du gör det möjligt för underordnade enheter att kommunicera med ditt IoT Central-program kan en gateway-enhet också:
 
 * Skicka sin egen telemetri, till exempel temperatur.
-* Besvara skrivbara egenskaps uppdateringar gjorda av en operatör. En operatör kan exempelvis ändra sändnings intervallet för telemetri.
+* Svara på skrivbara egenskaps uppdateringar gjorda av en operatör. En operatör kan exempelvis ändra sändnings intervallet för telemetri.
 * Svara på kommandon, t. ex. omstart av enheten.
 
 > [!div class="checklist"]

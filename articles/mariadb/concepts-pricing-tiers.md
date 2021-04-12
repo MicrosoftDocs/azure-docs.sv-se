@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: b5b5a506b2f932d20a617634ace7ebf02093fbfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92803c1e3062fb9f093012db3e3637746dedf87f
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664256"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107048"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB pris nivåer
 
@@ -46,9 +46,13 @@ Lagrings utrymmet du tillhandahåller är mängden lagrings kapacitet som är ti
 | Lagringsattribut   | Grundläggande | Generell användning | Minnesoptimerad |
 |:---|:----------|:--------------------|:---------------------|
 | Lagringstyp | Basic Storage | Generell användning lagring | Generell användning lagring |
-| Lagrings storlek | 5 GB till 1 TB | 5 GB till 4 TB | 5 GB till 4 TB |
+| Lagrings storlek | 5 GB till 1 TB | 5 GB till 16 TB | 5 GB till 16 TB |
 | Öknings storlek för lagring | 1 GB | 1 GB | 1 GB |
 | IOPS | Variabel |3 IOPS/GB<br/>Min 100 IOPS<br/>Max 6000 IOPS | 3 IOPS/GB<br/>Min 100 IOPS<br/>Max 6000 IOPS |
+
+>[!IMPORTANT]
+> Det finns stöd för lagring på upp till 16TB och 20 000 IOPS i följande regioner: östra USA, östra USA 2, centrala USA, södra Brasilien, västra USA, norra centrala USA, södra centrala USA, norra Europa, västra Europa, Storbritannien, södra, Storbritannien, västra, Sydostasien, Asien, östra, Östra Japan, västra Japan, västra USA 2, västra centrala USA , Kanada, östra och Kanada, centrala.
+> Alla andra regioner stöder upp till 4 TB lagring och upp till 6000 IOPS.
 
 Du kan lägga till ytterligare lagrings kapacitet under och efter att servern har skapats och göra det möjligt för systemet att växa lagring automatiskt baserat på lagrings förbrukningen för din arbets belastning.
 
@@ -58,23 +62,6 @@ Du kan lägga till ytterligare lagrings kapacitet under och efter att servern ha
 Basic-nivån ger ingen IOPS-garanti. På den Generell användning och minnesoptimerade pris nivån, skalar IOPS med den tillhandahållna lagrings storleken i ett 3:1-förhållande.
 
 Du kan övervaka i/O-förbrukningen i Azure Portal eller genom att använda Azure CLI-kommandon. De relevanta måtten för övervakning är [lagrings gränser, lagrings utrymme, lagring och i/o procent](concepts-monitoring.md).
-
-### <a name="large-storage-preview"></a>Stor lagring (för hands version)
-
-Vi ökar lagrings gränserna i våra Generell användning-och Minnesoptimerade nivåer. Nyligen skapade servrar som ingår i för hands versionen kan etablera upp till 16 TB lagrings utrymme. IOPS-skalan vid 3:1-förhållandet upp till 20 000 IOPS. Precis som med den aktuella allmänt tillgängliga lagringen kan du lägga till ytterligare lagrings kapacitet efter att servern har skapats, och gör det möjligt för systemet att växa lagring automatiskt baserat på arbets Belastningens lagrings förbrukning.
-
-| Lagringsattribut | Generell användning | Minnesoptimerad |
-|:-------------|:--------------------|:---------------------|
-| Lagringstyp | Azure-Premium Storage | Azure-Premium Storage |
-| Lagrings storlek | 32 GB till 16 TB| 32 till 16 TB |
-| Öknings storlek för lagring | 1 GB | 1 GB |
-| IOPS | 3 IOPS/GB<br/>Min 100 IOPS<br/>Max 20 000 IOPS| 3 IOPS/GB<br/>Min 100 IOPS<br/>Max 20 000 IOPS |
-
-> [!IMPORTANT]
-> Stor lagring är för närvarande en offentlig för hands version i följande regioner: östra USA, östra USA 2, södra Brasilien, centrala USA, västra USA, norra centrala USA, södra centrala USA, norra Europa, Västeuropa, Storbritannien, södra, Storbritannien, västra, Sydostasien, Asien, östra, Östra Japan, västra Japan, centrala Korea, södra Australien, sydöstra Australien, västra USA 2, västra centrala USA, Östra Kanada och Kanada, centrala.
->
-> Alla andra regioner stöder upp till 4 TB lagring och upp till 6000 IOPS.
->
 
 ### <a name="reaching-the-storage-limit"></a>Lagringsgränsen är nådd
 

@@ -1,24 +1,24 @@
 ---
-title: Terminologi – anpassad översättare
+title: Nyckel termer – anpassad översättare
 titleSuffix: Azure Cognitive Services
-description: Lista över de termer som används i Custom Translator-artiklarna.
+description: Lista över viktiga termer som används i Custom Translator-artiklar.
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 08/17/2020
+ms.date: 04/02/2021
 ms.author: lajanuar
 ms.topic: reference
-ms.openlocfilehash: 4461f584e365a5d47e7ceee942e33bc8b101b2d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a0308f2b961ce9b1321fab3e202e038eb199674
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104657832"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286427"
 ---
-# <a name="custom-translator-terminology"></a>Terminologi för anpassad översättare
+# <a name="custom-translator-key-terms"></a>Nyckel villkor för anpassad översättare
 
-I följande tabell visas en lista över termer som du kan hitta när du arbetar med den [anpassade översättare](https://portal.customtranslator.azure.ai).
+I följande tabell visas en lista över viktiga termer som du kan hitta när du arbetar med den [anpassade](https://portal.customtranslator.azure.ai)översättaren.
 
 | Ord eller fras|Definition|
 |------------------|-----------|

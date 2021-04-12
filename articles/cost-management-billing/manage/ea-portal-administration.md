@@ -3,18 +3,18 @@ title: Administration i Azure EA-portalen
 description: I den här artikeln förklaras några vanliga uppgifter som administratörer utför i Azure EA-portalen.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/13/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 3ce13a103b605ea7b6066e8b2868fa974f4e64e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 8f643336d50f5ade145454d408599215ed6fd31e
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050574"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259446"
 ---
 # <a name="azure-ea-portal-administration"></a>Administration i Azure EA-portalen
 
@@ -36,7 +36,9 @@ Endast befintliga Azure-företagsadministratörer kan skapa andra företagsadmin
 
 ### <a name="create-another-enterprise-administrator"></a>Skapa en till företagsadministratör
 
-Så här lägger du till ytterligare en företagsadministratör:
+Använd något av följande alternativ, baserat på din situation.
+
+#### <a name="if-youre-already-an-enterprise-administrator"></a>Om du redan är företags administratör
 
 1. Logga in på [Azure Enterprise-portalen](https://ea.azure.com).
 1. Gå till **Hantera** > **Registreringsinformation**.
@@ -44,7 +46,11 @@ Så här lägger du till ytterligare en företagsadministratör:
 
 Kontrollera att du har användarens e-postadress och önskad autentiseringsmetod, till exempel arbets-, skol- eller Microsoft-konto.
 
-Om du inte är företagsadministratören kan du kontakta en företagsadministratör och be att den lägger till dig i en registrering. När du har blivit tillagd i en registrering får du ett aktiveringsmeddelande via e-post.
+#### <a name="if-youre-not-an-enterprise-administrator"></a>Om du inte är företags administratör
+
+Om du inte är företags administratör kan du kontakta en företags administratör för att begära att de lägger till dig i registreringen. Företags administratören använder föregående steg för att lägga till dig som företags administratör. När du har blivit tillagd i en registrering får du ett aktiveringsmeddelande via e-post.
+
+#### <a name="if-your-enterprise-administrator-cant-help-you"></a>Om din företags administratör inte kan hjälpa dig
 
 Om din företagsadministratör inte kan hjälpa dig skapar du en [supportbegäran i Azure Enterprise-portalen](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c). Ange följande information:
 

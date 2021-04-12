@@ -91,6 +91,8 @@
           href: azure-netapp-files-configure-nfsv41-domain.md
         - name: Konfigurera NFSv4.1 Kerberos-kryptering
           href: configure-kerberos-encryption.md
+        - name: Konfigurera lägger till LDAP med utökade grupper för NFS
+          href: configure-ldap-extended-groups.md
         - name: Konfigurera en NFS-klient för Azure NetApp Files
           href: configure-nfs-clients.md
         - name: Konfigurera exportprincipen för en NFS-volym
@@ -137,6 +139,8 @@
           href: troubleshoot-nfsv41-kerberos-volumes.md
         - name: Felsöka policyer för ögonblicksbilder
           href: troubleshoot-snapshot-policies.md
+        - name: Felsöka LDAP-volymer
+          href: troubleshoot-ldap-volumes.md
         - name: Felsöka fel i resursprovidern
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: Referens

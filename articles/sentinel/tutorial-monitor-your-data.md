@@ -12,21 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2020
+ms.date: 04/04/2021
 ms.author: yelevin
-ms.openlocfilehash: 048a089209ef7c5f20c96f77593e2cf39590147e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c26d86c98c83d9762acb8a75bba8fe464cc2a58e
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600534"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491523"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Självstudie: Visualisera och övervaka dina data
 
-
-
 När du har [anslutit dina data källor](quickstart-onboard.md) till Azure Sentinel kan du visualisera och övervaka data med hjälp av Azure Sentinel-införandet av Azure Monitor arbets böcker, vilket ger mångsidighet i att skapa anpassade instrument paneler. Även om arbets böckerna visas på olika sätt i Azure Sentinel, kan det vara praktiskt att se hur du [skapar interaktiva rapporter med Azure Monitor arbets böcker](../azure-monitor/visualize/workbooks-overview.md). Med Azure Sentinel kan du skapa anpassade arbets böcker i dina data och även med inbyggda mallar för arbets böcker så att du snabbt kan få insikter om dina data så snart du ansluter en data källa.
-
 
 Den här självstudien hjälper dig att visualisera dina data i Azure Sentinel.
 > [!div class="checklist"]
@@ -35,34 +32,44 @@ Den här självstudien hjälper dig att visualisera dina data i Azure Sentinel.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Du måste ha minst behörigheter för arbets boks läsare eller arbets bok deltagare för resurs gruppen i Azure Sentinel-arbetsytan.
+Du måste ha minst behörigheter för **arbets boks läsare** eller **arbets bok deltagare** för resurs gruppen i Azure Sentinel-arbetsytan.
 
 > [!NOTE]
 > Arbets böckerna som du kan se i Azure Sentinel sparas i resurs gruppen i Azure Sentinel-arbetsytan och märks av arbets ytan där de skapades.
 
 ## <a name="use-built-in-workbooks"></a>Använda inbyggda arbets böcker
 
-1. Gå till **arbets böcker** och välj sedan **mallar** för att se en fullständig lista över inbyggda Azure Sentinel-arbetsböcker. För att se vilka som är relevanta för de data typer som du har anslutit, visar fältet **obligatoriska data typer** i varje arbets bok data typen bredvid en grön bock markering om du redan strömmar relevanta data till Azure Sentinel.
-  ![Gå till arbets böcker](./media/tutorial-monitor-data/access-workbooks.png)
-1. Klicka på **Visa mall** för att se mallen som är ifylld med dina data.
-  
-1. Om du vill redigera arbets boken väljer du **Spara** och väljer sedan den plats där du vill spara JSON-filen för mallen. 
+1. Gå till **arbets böcker** och välj sedan **mallar** för att se en fullständig lista över inbyggda Azure Sentinel-arbetsböcker. 
+
+    För att se vilka som är relevanta för de data typer som du har anslutit, visar fältet **obligatoriska data typer** i varje arbets bok data typen bredvid en grön bock markering om du redan strömmar relevanta data till Azure Sentinel.
+
+    [![Gå till arbets böcker. ](media/tutorial-monitor-data/access-workbooks.png)](media/tutorial-monitor-data/access-workbooks.png#lightbox)
+
+1. Välj **Visa mall** för att se mallen som är ifylld med dina data.
+
+1. Om du vill redigera arbets boken väljer du **Spara** och väljer sedan den plats där du vill spara JSON-filen för mallen.
 
    > [!NOTE]
    > Detta skapar en Azure-resurs som baseras på den relevanta mallen och sparar JSON-filen för arbets boken och inte data.
 
 
-1. Välj **Visa Sparad arbets bok**. Klicka sedan på knappen **Redigera** högst upp. Nu kan du redigera arbetsboken och anpassa den efter dina behov. Mer information om hur du anpassar arbets boken finns i så här [skapar du interaktiva rapporter med Azure Monitor arbets böcker](../azure-monitor/visualize/workbooks-overview.md).
-![Visa arbets böcker](./media/tutorial-monitor-data/workbook-graph.png)
-1. När du har gjort ändringarna kan du spara arbets boken. 
+1. Välj **Visa Sparad arbets bok**. 
 
-1. Du kan också klona arbets boken: Välj **redigera** och **Spara som**, och se till att spara den med ett annat namn, under samma prenumeration och resurs grupp. Dessa klonade arbets böcker visas under fliken **Mina arbets böcker** .
+    [![Visa arbets böcker. ](media/tutorial-monitor-data/workbook-graph.png)](media/tutorial-monitor-data/workbook-graph.png#lightbox)
 
+    Välj knappen **Redigera** i arbets bokens verktygsfält för att anpassa arbets boken efter dina behov. När du är klar väljer du **Spara** för att spara ändringarna.
 
+    Mer information finns i så här [skapar du interaktiva rapporter med Azure Monitor arbets böcker](../azure-monitor/visualize/workbooks-overview.md).
+
+> [!TIP]
+> Om du vill klona arbets boken väljer du **Redigera** och sedan **Spara som**, så att du sparar den med ett annat namn, under samma prenumeration och resurs grupp.
+> Klonade arbets böcker visas under fliken **Mina arbets böcker** .
+>
 ## <a name="create-new-workbook"></a>Skapa ny arbets bok
 
 1. Gå till **arbets böcker** och välj sedan **Lägg till arbets bok** för att skapa en ny arbets bok från grunden.
-  ![Skärm bild som visar sidan ny arbets bok.](./media/tutorial-monitor-data/create-workbook.png)
+
+    [![Ny arbets bok. ](media/tutorial-monitor-data/create-workbook.png)](media/tutorial-monitor-data/create-workbook.png#lightbox)
 
 1. Om du vill redigera arbets boken väljer du **Redigera** och lägger sedan till text, frågor och parametrar vid behov. Mer information om hur du anpassar arbets boken finns i så här [skapar du interaktiva rapporter med Azure Monitor arbets böcker](../azure-monitor/visualize/workbooks-overview.md). 
 
@@ -72,10 +79,29 @@ Den här självstudien hjälper dig att visualisera dina data i Azure Sentinel.
 
 1. Om du vill låta andra i organisationen använda arbets boken går du till Välj **delade rapporter** under **Spara** . Om du vill att den här arbets boken bara ska vara tillgänglig för dig väljer du **Mina rapporter**.
 
-1. Om du vill växla mellan arbets böcker i din arbets yta kan du välja **Öppna** ![ ikon för att öppna en arbets bok. ](./media/tutorial-monitor-data/switch.png) i den övre rutan i en arbets bok. Växla mellan arbets böcker i fönstret som öppnas till höger.
+1. Om du vill växla mellan arbets böcker i din arbets yta väljer du **Öppna** ![ ikon för att öppna en arbets bok.](./media/tutorial-monitor-data/switch.png) i verktygsfältet för en arbets bok. Skärmen växlar till en lista över andra arbets böcker som du kan växla till.
 
-   ![Växla arbets böcker](./media/tutorial-monitor-data/switch-workbooks.png)
+    Välj den arbets bok som du vill öppna:
 
+    [![Växla arbets böcker. ](media/tutorial-monitor-data/switch-workbooks.png)](media/tutorial-monitor-data/switch-workbooks.png#lightbox)
+
+## <a name="refresh-your-workbook-data"></a>Uppdatera dina arbets boks data
+
+Uppdatera din arbets bok för att Visa uppdaterade data. Välj något av följande alternativ i verktygsfältet:
+
+- :::image type="icon" source="media/whats-new/manual-refresh-button.png" border="false":::**Uppdatera** för att uppdatera dina arbets boks data manuellt.
+
+- :::image type="icon" source="media/whats-new/auto-refresh-workbook.png" border="false":::**Automatisk uppdatering** för att ange att arbets boken ska uppdateras automatiskt vid ett konfigurerat intervall.
+
+    - Intervall för automatisk uppdatering som stöds är mellan **5** och **1 dag**.
+
+    - Automatisk uppdatering pausas när du redigerar en arbets bok, och intervall startas om varje gången du växlar tillbaka till visnings läge från redigerings läge.
+
+    - Intervall för automatisk uppdatering startas också om du uppdaterar dina data manuellt.
+
+    > [!TIP]
+    > Automatisk uppdatering är inaktive rad som standard. För att optimera prestanda stängs den automatiska uppdateringen också av varje gången du stänger en arbets bok och körs inte i bakgrunden. Aktivera automatisk uppdatering igen vid behov nästa gången du öppnar arbets boken.
+    >
 
 ## <a name="print-a-workbook-or-save-as-pdf"></a>Skriva ut en arbets bok eller Spara som PDF
 
@@ -86,7 +112,7 @@ Om du vill skriva ut en arbets bok eller spara den som en PDF, använder du meny
 
 Exempel:
 
-:::image type="content" source="media/whats-new/print-workbook.png" alt-text="Skriv ut din arbets bok eller Spara som PDF.":::
+[![Skriv ut din arbets bok eller Spara som PDF. ](media/whats-new/print-workbook.png)](media/whats-new/print-workbook.png#lightbox)
 
 ## <a name="how-to-delete-workbooks"></a>Ta bort arbetsböcker
 

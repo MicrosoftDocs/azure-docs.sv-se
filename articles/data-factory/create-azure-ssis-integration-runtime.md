@@ -3,15 +3,15 @@ title: Skapa en Azure-SSIS integration runtime i Azure Data Factory
 description: Lär dig hur du skapar en Azure-SSIS integration runtime i Azure Data Factory så att du kan distribuera och köra SSIS-paket i Azure.
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 04/09/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 4b26abe1d1340e4e8c5f034fad72f612f0b246a2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e4f60539e2eb524e95c76814f7527377630349e2
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739425"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285249"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Skapa en Azure-SSIS integration runtime i Azure Data Factory
 
@@ -95,7 +95,7 @@ När data fabriken har skapats öppnar du dess översikts sida i Azure Portal. V
 
 ### <a name="provision-an-azure-ssis-integration-runtime"></a>Etablering av en Azure-SSIS-integreringskörning
 
-På sidan **nu sätter vi igång** väljer du panelen **Konfigurera SSIS integration runtime** för att öppna installations fönstret för **integration runtime** .
+På sidan för att **komma igång** väljer du panelen **Konfigurera SSIS-integration** för att öppna installations fönstret för **integration runtime** .
 
    ![Ikonen Konfigurera SSIS-integreringskörning](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
 
@@ -123,7 +123,7 @@ Utför följande steg på sidan **allmänna inställningar** i installations fö
 
    7. För **Spara pengar** väljer du alternativet Azure Hybrid-förmån för integration Runtime: **Ja** eller **Nej**. Välj **Ja** om du vill ta med din egen SQL Server-licens med Software Assurance för att dra nytta av kostnads besparingar med hybrid användning.
 
-   8. Välj **Nästa**.
+   8. Välj **Fortsätt**.
 
 #### <a name="deployment-settings-page"></a>Sidan distributions inställningar
 
@@ -165,7 +165,7 @@ Om du markerar kryss rutan utför du följande steg för att ta med din egen dat
 
    1. För **tjänst nivån katalog databas** väljer du tjänst nivå för din databas server som värd för SSISDB. Välj nivån Basic, standard eller Premium eller Välj ett namn för elastisk pool.
 
-Välj **Testa anslutning** när det är tillämpligt och om det lyckas väljer du **Nästa**.
+Välj **Testa anslutning** när det är tillämpligt och om det lyckas väljer du **Fortsätt**.
 
 > [!NOTE]
    > Om du använder Azure SQL Database Server som värd för SSISDB lagras dina data i Geo-redundant lagring för säkerhets kopieringar som standard. Om du inte vill att data ska replikeras i andra regioner följer du anvisningarna för att [Konfigurera redundans för säkerhets kopiering med hjälp av PowerShell](../azure-sql/database/automated-backups-overview.md?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell).
@@ -187,7 +187,7 @@ Utför följande steg i fönstret **Lägg till paket arkiv** .
    1. För **länkad tjänst för paket arkiv** väljer du den befintliga länkade tjänsten som lagrar åtkomst informationen för fil system/Azure Files/Azure SQL-hanterad instans där dina paket distribueras eller skapar en ny genom att välja **ny**. Utför följande steg i fönstret **ny länkad tjänst** .
    
       > [!NOTE]
-      > Du kan använda antingen **Azure File Storage** -eller **fil system** länkade tjänster för att komma åt Azure Files. Om du använder **Azure File Storage** länkade tjänsten stöder Azure-SSIS IR paket lagret bara autentiseringsmetoden **Basic** (inte **konto nyckel** eller **SAS-URI**) för tillfället. Om du vill använda **grundläggande** autentisering på **Azure File Storage** länkade tjänsten kan du lägga till i `?feature.upgradeAzureFileStorage=false` URL: en för ADF-portalen i webbläsaren. Alternativt kan du använda **fil systemets** länkade tjänst för att komma åt Azure Files i stället. 
+      > Du kan använda antingen **Azure File Storage** -eller **fil system** länkade tjänster för att komma åt Azure Files. Om du använder **Azure File Storage** länkade tjänsten stöder Azure-SSIS IR paket lagret bara autentiseringsmetoden **Basic** (inte **konto nyckel** eller **SAS-URI**) för tillfället.  
 
       ![Distributions inställningar för länkade tjänster](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 
@@ -199,7 +199,7 @@ Utför följande steg i fönstret **Lägg till paket arkiv** .
 
       1. Du kan ignorera **Connect via integration runtime** eftersom vi alltid använder Azure-SSIS IR för att hämta åtkomst informationen för paket arkiv.
 
-      1. Om du väljer **Azure File Storage** slutför du följande steg. 
+      1. Om du väljer **Azure File Storage** väljer du **grundläggande** i **autentiseringsmetod** och utför sedan följande steg. 
 
          1. För **Val av konto** väljer du **från Azure-prenumeration** eller **anger manuellt**.
          
@@ -209,21 +209,21 @@ Utför följande steg i fönstret **Lägg till paket arkiv** .
 
       1. Om du väljer en **hanterad Azure SQL-instans** utför du följande steg. 
 
-         1. Välj **anslutnings sträng** för att ange den manuellt eller **Azure Key Vault** där den lagras som en hemlighet.
-         
+         1. Välj **anslutnings sträng** eller din **Azure Key Vault** där den lagras som en hemlighet.
+
          1. Om du väljer **anslutnings sträng** utför du följande steg. 
+             1. Om du väljer **från Azure-prenumeration** väljer du den aktuella **Azure-prenumerationen**, **Server namnet**, **slut punkts typen** och **databas namnet** för **Val av konto**. Om du väljer **ange manuellt** utför du följande steg. 
+                1.  För **fullständigt kvalificerat domän namn** anger `<server name>.<dns prefix>.database.windows.net` `<server name>.public.<dns prefix>.database.windows.net,3342` du eller som den privata eller offentliga slut punkten för din Azure SQL-hanterade instans. Om du anger den privata slut punkten gäller inte **test anslutningen** eftersom ADF-gränssnittet inte kan komma åt den.
 
-            1. För **fullständigt kvalificerat domän namn** anger `<server name>.<dns prefix>.database.windows.net` `<server name>.public.<dns prefix>.database.windows.net,3342` du eller som den privata eller offentliga slut punkten för din Azure SQL-hanterade instans. Om du anger den privata slut punkten gäller inte **test anslutningen** eftersom ADF-gränssnittet inte kan komma åt den.
+                1. För **databas namn** anger du `msdb` .
 
-            1. För **databas namn** anger du `msdb` .
-               
             1. För **Autentiseringstyp** väljer du **SQL-autentisering**, **hanterad identitet** eller **tjänstens huvud namn**.
 
-            1. Om du väljer **SQL-autentisering** anger du relevant **användar namn** och **lösen ord** , eller så väljer du **Azure Key Vault** där det lagras som en hemlighet.
+                - Om du väljer **SQL-autentisering** anger du relevant **användar namn** och **lösen ord** , eller så väljer du **Azure Key Vault** där det lagras som en hemlighet.
 
-            1. Om du väljer **hanterad identitet** ger du din ADF-hanterade identitets åtkomst till din Azure SQL-hanterade instans.
+                -  Om du väljer **hanterad identitet** ger du din ADF-hanterade identitets åtkomst till din Azure SQL-hanterade instans.
 
-            1. Om du väljer **tjänstens huvud namn** anger du det relevanta **tjänstens huvud namn-ID** och **tjänstens huvud** namns nyckel eller väljer din **Azure Key Vault** där den lagras som en hemlighet.
+                - Om du väljer **tjänstens huvud namn** anger du det relevanta **tjänstens huvud namn-ID** och **tjänstens huvud** namns nyckel eller väljer din **Azure Key Vault** där den lagras som en hemlighet.
 
       1. Om du väljer **fil system** anger du UNC-sökvägen till mappen där dina paket distribueras för **värden**, samt det relevanta **användar namnet** och **lösen ordet** eller väljer din **Azure Key Vault** där den lagras som en hemlighet.
 
@@ -231,7 +231,7 @@ Utför följande steg i fönstret **Lägg till paket arkiv** .
 
    1. De tillagda paket arkiven visas på sidan **distributions inställningar** . Om du vill ta bort dem markerar du kryss rutorna och väljer sedan **ta bort**.
 
-Välj **Testa anslutning** när det är tillämpligt och om det lyckas väljer du **Nästa**.
+Välj **Testa anslutning** när det är tillämpligt och om det lyckas väljer du **Fortsätt**.
 
 #### <a name="advanced-settings-page"></a>Sida för avancerade inställningar
 
@@ -314,7 +314,7 @@ I fönstret **anslutningar** i **Hantera** hubb växlar du till sidan **integrer
 
 ### <a name="azure-ssis-integration-runtimes-in-the-portal"></a>Azure SSIS-integreringskörningar i portalen
 
-1. I Azure Data Factory användar gränssnitt växlar du till fliken **Redigera** och väljer **anslutningar**. Växla sedan till fliken **integrerings körningar** för att visa befintliga integrerings körningar i din data fabrik.
+1. I Azure Data Factory användar gränssnitt växlar du till fliken **Hantera** och växlar sedan till fliken **integrerings körningar** i fönstret **anslutningar** för att visa befintliga integrerings körningar i din data fabrik.
 
    ![Visa befintliga IR](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
 
@@ -322,7 +322,7 @@ I fönstret **anslutningar** i **Hantera** hubb växlar du till sidan **integrer
 
    ![Integreringskörning via menyn](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
 
-1. I installations fönstret för **integration runtime** väljer du de **befintliga SSIS-paketen lyft och Shift som ska köras i Azure** panel och väljer sedan **Nästa**.
+1. I installations fönstret för **integration runtime** väljer du de **befintliga SSIS-paketen lyft och Shift som ska köras på Azure** -panelen och väljer sedan **Fortsätt**.
 
    ![Ange typ av integreringskörning](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
 

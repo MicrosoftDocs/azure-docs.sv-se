@@ -6,18 +6,18 @@ ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2021
 ms.author: v-erkel
-ms.openlocfilehash: 10d68ce679fe42f5deeaae364bc46adb23436a27
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 45a7169330b11e98a8618b08205217212414ca5d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104587159"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258936"
 ---
 # <a name="work-around-blob-storage-account-firewall-settings"></a>Gå runt brandväggsinställningar för bloblagringskonto
 
 En viss inställning som används i lagrings kontots brand väggar kan orsaka att det inte går att skapa Blob Storage-mål. Azure HPC cache-teamet arbetar med en program varu lösning för det här problemet, men du kan lösa det genom att följa anvisningarna i den här artikeln.
 
-Brand Väggs inställningen som tillåter åtkomst enbart från valda nätverk kan förhindra att cachen skapar eller ändrar ett Blob Storage-mål. Den här konfigurationen finns på sidan Inställningar för lagrings kontots **brand väggar och virtuella nätverk** .
+Brand Väggs inställningen som tillåter åtkomst enbart från valda nätverk kan förhindra att cachen skapar eller ändrar ett Blob Storage-mål. Den här konfigurationen finns på sidan Inställningar för lagrings kontots **brand väggar och virtuella nätverk** . (Det här problemet gäller inte för ADLS-NFS-lagrings mål.)
 
 Problemet är att cache-tjänsten använder ett dolt tjänst nätverk som är skilt från kund miljöer. Det går inte att uttryckligen ge nätverket åtkomst till ditt lagrings konto.
 

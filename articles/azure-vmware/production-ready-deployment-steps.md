@@ -3,12 +3,12 @@ title: Planera distributionen av Azure VMware-lösningen
 description: Den här artikeln beskriver ett arbets flöde för distribution av Azure VMware-lösningar.  Det slutliga resultatet är en miljö som är redo för generering och migrering av virtuella datorer (VM).
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 2ded5d706ab71b3880633cd324fb366d0a1bccbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60e0a4083c0253d322b2e10472d0df7496722c10
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104584643"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107252"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Planera distributionen av Azure VMware-lösningen
 
@@ -16,8 +16,12 @@ Den här artikeln innehåller planerings processen för att identifiera och saml
 
 De steg som beskrivs i den här snabb starten ger dig en produktions klar miljö för att skapa virtuella datorer (VM) och migrering. 
 
->[!IMPORTANT]
->Innan du skapar din Azure VMware-lösning kan du följa artikeln [så här aktiverar du Azure VMware-lösningen](enable-azure-vmware-solution.md) för att skicka in ett support ärende för att låta dina värdar tilldelas. När support teamet får din begäran tar det upp till fem arbets dagar för att bekräfta din begäran och allokera dina värdar. Om du har ett befintligt privat moln i Azure VMware-lösningen och vill att fler värdar ska tilldelas, går du igenom samma process. 
+För att spåra de data som ska samlas in, Hämta [HCX planerings check lista](https://www.virtualworkloads.com/2021/04/hcx-planning-checklist/).
+
+> [!IMPORTANT]
+> Det är viktigt att begära en värd kvot tidigt när du förbereder dig för att skapa en Azure VMware-lösnings resurs. Du kan begära en värd kvot nu, så när planerings processen är klar är du redo att distribuera det privata molnet för Azure VMware-lösningen. När support teamet har tagit emot din begäran om en värd kvot tar det upp till fem arbets dagar för att bekräfta din begäran och allokera dina värdar. Om du har ett befintligt privat moln i Azure VMware-lösningen och vill ha fler värdar allokerade, slutför du samma process. Mer information finns i följande länkar, beroende på vilken typ av prenumeration du har:
+> - [EA-kunder](enable-azure-vmware-solution.md?tabs=azure-portal#request-host-quota-for-ea-customers)
+> - [CSP-kunder](enable-azure-vmware-solution.md?tabs=azure-portal#request-host-quota-for-csp-customers)
 
 ## <a name="subscription"></a>Prenumeration
 
@@ -82,18 +86,6 @@ Det här nätverks segmentet används främst för test ändamål under den för
 
 :::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="Identifiera IP-adress segment för virtuella dator arbets belastningar" border="false":::     
 
-## <a name="optional-extend-your-networks"></a>Valfritt Utöka dina nätverk
-
-Du kan utöka nätverks segmenten från lokal till Azure VMware-lösning. om du gör det kan du identifiera dessa nätverk nu.  
-
-Tänk på följande:
-
-- Om du planerar att utöka nätverk lokalt måste dessa nätverk ansluta till en [vSphere-distribuerad växel (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) i din lokala VMware-miljö.  
-- Om de nätverk som du vill utöka Live på en [vSphere standard växel](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html), kan de inte utökas.
-
->[!NOTE]
->Dessa nätverk utökas som ett sista steg i konfigurationen, inte under distributionen.
-
 ## <a name="attach-azure-virtual-network-to-azure-vmware-solution"></a>Ansluta Azure Virtual Network till Azure VMware-lösning
 
 För att tillhandahålla anslutning till Azure VMware-lösningen skapas en ExpressRoute från Azure VMware-lösningen privat moln till en ExpressRoute virtuell nätverksgateway.
@@ -106,7 +98,7 @@ Du kan använda en *befintlig* eller *ny* ExpressRoute virtuell nätverksgateway
 
 Om du planerar att använda en *befintlig* ExpressRoute virtuell nätverksgateway upprättas Azure VMware-lösningen ExpressRoute-kretsen som ett steg efter distribution. I det här fallet lämnar du fältet **Virtual Network** tomt.
 
-Som en allmän rekommendation är det tillåtet att använda en befintlig ExpressRoute-Gateway för virtuella nätverk. I planerings syfte bör du anteckna vilken ExpressRoute virtuell nätverksgateway du ska använda och sedan fortsätta till nästa steg.
+Som en allmän rekommendation är det tillåtet att använda en befintlig ExpressRoute-Gateway för virtuella nätverk. I planerings syfte bör du anteckna vilken ExpressRoute virtuell nätverksgateway du ska använda och sedan fortsätta till [Nästa steg](#vmware-hcx-network-segments).
 
 ### <a name="create-a-new-expressroute-virtual-network-gateway"></a>Skapa en ny ExpressRoute virtuell nätverksgateway
 
@@ -116,23 +108,36 @@ När du skapar en *ny* ExpressRoute virtuell nätverksgateway kan du använda en
    1. Identifiera ett virtuellt Azure-nätverk där det inte finns några befintliga ExpressRoute-gatewayer för virtuella nätverk.
    2. Innan du distribuerar skapar du en [GatewaySubnet](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet) i Azure-Virtual Network.
 
-- För en ny Azure-Virtual Network kan du skapa den i förväg eller under distributionen. Välj länken **Skapa ny** i listan **Virtual Network** .
+- För en ny Azure-Virtual Network och virtuell nätverksgateway skapar du som under distributionen genom att välja länken **Skapa ny** i listan **Virtual Network** .  Det är viktigt att definiera adress utrymmet och undernät i förväg i distributionen, så att du är redo att ange informationen när du slutför distributions stegen.
 
-På bilden nedan visas distributions skärmen **skapa ett privat moln** med fältet **Virtual Network** markerat.
+Följande bild visar distributions skärmen **skapa ett privat moln** med fältet **Virtual Network** markerat.
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="Skärm bild av distributions skärmen för Azure VMware-lösningen med Virtual Network fältet markerat.":::
 
->[!NOTE]
->Alla virtuella nätverk som ska användas eller skapas kan ses av din lokala miljö och Azure VMware-lösning, så se till att det IP-segment som du använder i det här virtuella nätverket och undernät inte överlappar varandra.
+> [!NOTE]
+> Alla virtuella nätverk som ska användas eller skapas kan ses av din lokala miljö och Azure VMware-lösning, så se till att det IP-segment som du använder i det här virtuella nätverket och undernät inte överlappar varandra.
 
 ## <a name="vmware-hcx-network-segments"></a>Nätverks segment för VMware HCX
 
-VMware HCX är en teknik som ingår i Azure VMware-lösningen. De främsta användnings fallen för VMware HCX är migrering av arbets belastningar och haveri beredskap. Om du planerar att göra det, är det bäst att planera nätverk nu.   Annars kan du hoppa över och fortsätta till nästa steg.
+VMware HCX är en teknik som är paketerad med Azure VMware-lösningen. De främsta användnings fallen för VMware HCX är migrering av arbets belastningar och haveri beredskap. Om du planerar att göra det, är det bäst att planera nätverk nu. Annars kan du hoppa över och fortsätta till nästa steg.
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
 
+## <a name="optional-extend-your-networks"></a>Valfritt Utöka dina nätverk
+
+Du kan utöka nätverks segmenten från lokal till Azure VMware-lösning. Om du utökar nätverks segmenten ska du identifiera dessa nätverk nu.  
+
+Här följer några faktorer att tänka på:
+
+- Om du planerar att utöka nätverk lokalt måste dessa nätverk ansluta till en [vSphere-distribuerad växel (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) i din lokala VMware-miljö.  
+- Det går inte att utöka nätverk som finns på en [vSphere standard växel](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html) .
+
+>[!NOTE]
+>Dessa nätverk utökas som ett sista steg i konfigurationen, inte under distributionen.
+>
 ## <a name="next-steps"></a>Nästa steg
 Nu när du har samlat in och dokumenterat den information som krävs fortsätter du till nästa avsnitt för att skapa ditt privata moln i Azure VMware-lösningen.
 
 > [!div class="nextstepaction"]
 > [Distribuera Azure VMware Solution](deploy-azure-vmware-solution.md)
+> 

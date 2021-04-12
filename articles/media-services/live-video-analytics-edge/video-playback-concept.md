@@ -3,12 +3,12 @@ title: Videouppspelning – Azure
 description: Platshållare
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 2020d64538b2fcc846ab9a146e2fc95325abd26b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: be42b39c167798e4e288c77dbd48a8734eb71fdf
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063380"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278600"
 ---
 # <a name="video-playback"></a>Videouppspelning 
 
@@ -24,7 +24,7 @@ Du kan använda [medie diagram](media-graph-concept.md) för att spela in video 
 
 ## <a name="streaming-endpoint"></a>Slutpunkt för direktuppspelning 
 
-Du kan använda Azure Media Services för att [strömma](terminology.md#streaming) till gången till Videos pelare med branschstandardiserade http-baserade medie strömnings protokoll som http Live Streaming (HLS) och MPEG-streck. Den här konverteringen av media från inspelat innehåll till strömmande format hanteras av en [slut punkt för direkt uppspelning](../latest/streaming-endpoint-concept.md), vilket är en resurs som du måste etablera i ditt Azure Media Service-konto.
+Du kan använda Azure Media Services för att [strömma](terminology.md#streaming) till gången till Videos pelare med branschstandardiserade http-baserade medie strömnings protokoll som http Live Streaming (HLS) och MPEG-streck. Den här konverteringen av media från inspelat innehåll till strömmande format hanteras av en [slut punkt för direkt uppspelning](../latest/stream-streaming-endpoint-concept.md), vilket är en resurs som du måste etablera i ditt Azure Media Service-konto.
 
 ## <a name="streaming-policy"></a>Strömmande princip 
 
@@ -34,11 +34,11 @@ Azure Media Services erbjuder olika metoder för att skydda dina video strömmar
 * **Använd Advanced Encryption Standard (AES-128)** – och implementera en metod för att endast leverera nycklar för att dekryptera videon till autentiserade användare.
 * **Använd DRM-system (Digital Rights Management)** – om du vill kontrol lera användning, ändring och leverans av video till enheter som tillämpar dessa principer.
 
-För att uppnå innehålls skydd kan du definiera och skapa en [strömmande princip](../latest/streaming-policy-concept.md) i ditt Media Service-konto och använda den för att strömma alla till gångar (förutsatt att alla strömmar har samma krav för säkerhet). Du kan också använda någon av de fördefinierade principerna (till exempel Predefined_ClearStreamingOnly).
+För att uppnå innehålls skydd kan du definiera och skapa en [strömmande princip](../latest/stream-streaming-policy-concept.md) i ditt Media Service-konto och använda den för att strömma alla till gångar (förutsatt att alla strömmar har samma krav för säkerhet). Du kan också använda någon av de fördefinierade principerna (till exempel Predefined_ClearStreamingOnly).
 
 ## <a name="streaming-locator"></a>Strömmande positionerare  
 
-När du har en slut punkt för direkt uppspelning som har startats i ditt medie tjänst konto och en definierad strömmande princip, kan du fortsätta att strömma inspelade media från en till gång via HLS-eller tank streck. Webb-och mobilappar behöver en URL som pekar på den HLS eller streck data strömmen. Du kan bygga den här URL: en med hjälp av [streaming Locator](../latest/streaming-locators-concept.md). Som det beskrivs i artikeln, och som visas i [skapa ett exempel på en strömmande plats och skapa URL: er](../latest/create-streaming-locator-build-url.md) , sammanställs strömnings-URL: en från slut punkten för direkt uppspelning, strömnings princip och strömmande positionerare.
+När du har en slut punkt för direkt uppspelning som har startats i ditt medie tjänst konto och en definierad strömmande princip, kan du fortsätta att strömma inspelade media från en till gång via HLS-eller tank streck. Webb-och mobilappar behöver en URL som pekar på den HLS eller streck data strömmen. Du kan bygga den här URL: en med hjälp av [streaming Locator](../latest/stream-streaming-locators-concept.md). Som det beskrivs i artikeln, och som visas i [skapa ett exempel på en strömmande plats och skapa URL: er](../latest/create-streaming-locator-build-url.md) , sammanställs strömnings-URL: en från slut punkten för direkt uppspelning, strömnings princip och strömmande positionerare.
 
 ## <a name="content-recorded-using-file-sink"></a>Innehåll som registrerats med filsink  
 

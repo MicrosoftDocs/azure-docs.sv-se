@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Se hur du aktiverar loggning med diagnostikinställningar och frågar loggarna för omedelbar visning.
 author: baanders
 ms.author: baanders
-ms.date: 2/24/2021
+ms.date: 11/9/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 08db4d92da5213b1ce1b79867650da9df8c38ee4
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 797de242b4b4464c0bfb5ae18af05710ab36bce6
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385087"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285487"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Felsöka Azure Digitals sammanflätade: diagnostikloggning
 
@@ -68,7 +68,7 @@ Här är mer information om de kategorier av loggar som Azure Digitals samlar in
 | ADTModelsOperation | Logga alla API-anrop som rör modeller |
 | ADTQueryOperation | Logga alla API-anrop som rör frågor |
 | ADTEventRoutesOperation | Logga alla API-anrop som hör till händelse vägar samt utgående av händelser från Azure Digitals dubbla till en slut punkts tjänst som Event Grid, Event Hubs och Service Bus |
-| ADTDigitalTwinsOperation | Logga alla API-anrop som rör enskilda dubbla |
+| ADTDigitalTwinsOperation | Logga alla API-anrop som hör till Azure Digitals dubbla |
 
 Varje logg kategori består av åtgärder av Skriv-, Läs-, borttagnings-och åtgärds typ.  Dessa mappar till REST API samtal på följande sätt:
 
@@ -104,13 +104,11 @@ Här är en omfattande lista över åtgärderna och motsvarande [Azure Digital-m
 
 Varje logg kategori har ett schema som definierar hur händelser i den kategorin rapporteras. Varje enskild loggpost lagras som text och formateras som en JSON-blob. Fälten i loggen och exempel på JSON-kroppar anges för varje loggtyp nedan. 
 
-`ADTDigitalTwinsOperation`, `ADTModelsOperation` , och `ADTQueryOperation` Använd ett konsekvent API-logg schema. `ADTEventRoutesOperation` utökar schemat så att det innehåller ett `endpointName` fält i egenskaper.
+`ADTDigitalTwinsOperation`, `ADTModelsOperation` , och `ADTQueryOperation` använder ett konsekvent API-logg schema, `ADTEventRoutesOperation` har ett eget separat schema.
 
 ### <a name="api-log-schemas"></a>API-logg scheman
 
-Det här logg schemat är konsekvent för `ADTDigitalTwinsOperation` , `ADTModelsOperation` , `ADTQueryOperation` . Samma schema används också för `ADTEventRoutesOperation` , med **undantag** för `Microsoft.DigitalTwins/eventroutes/action` Åtgärds namnet (mer information om schemat finns i nästa avsnitt, [*utgående logg scheman*](#egress-log-schemas)).
-
-Schemat innehåller information som är relevant för API-anrop till en digital Azure-instans.
+Det här logg schemat är konsekvent för `ADTDigitalTwinsOperation` , `ADTModelsOperation` och `ADTQueryOperation` . Den innehåller information som är relevant för API-anrop till en digital Azure-instans.
 
 Här är fält-och egenskaps beskrivningarna för API-loggar.
 
@@ -127,15 +125,9 @@ Här är fält-och egenskaps beskrivningarna för API-loggar.
 | `DurationMs` | Sträng | Hur lång tid det tog att utföra händelsen i millisekunder |
 | `CallerIpAddress` | Sträng | En maskerad käll-IP-adress för händelsen |
 | `CorrelationId` | GUID | Kunden tillhandahöll en unik identifierare för händelsen |
-| `ApplicationId` | GUID | Program-ID som används i Bearer-auktorisering |
-| `Level` | Int | Händelsens allvarlighets grad |
+| `Level` | Sträng | Händelsens allvarlighets grad |
 | `Location` | Sträng | Den region där händelsen ägde rum |
 | `RequestUri` | URI | Slut punkten som används under händelsen |
-| `TraceId` | Sträng | `TraceId`, som en del av [W3C's trace context](https://www.w3.org/TR/trace-context/). ID: t för hela spårningen som används för att unikt identifiera en distribuerad spårning mellan system. |
-| `SpanId` | Sträng | `SpanId` som en del av [W3C's trace context](https://www.w3.org/TR/trace-context/). ID för den här begäran i spårningen. |
-| `ParentId` | Sträng | `ParentId` som en del av [W3C's trace context](https://www.w3.org/TR/trace-context/). En begäran utan ett överordnat ID är roten för spårningen. |
-| `TraceFlags` | Sträng | `TraceFlags` som en del av [W3C's trace context](https://www.w3.org/TR/trace-context/). Styr spårnings flaggor som sampling, spårnings nivå osv. |
-| `TraceState` | Sträng | `TraceState` som en del av [W3C's trace context](https://www.w3.org/TR/trace-context/). Ytterligare leverantörsspecifik spårnings identifierings information som ska sträckas över olika distribuerade spårnings system. |
 
 Nedan visas exempel på JSON-instanser för dessa typer av loggar.
 
@@ -151,25 +143,12 @@ Nedan visas exempel på JSON-instanser för dessa typer av loggar.
   "resultType": "Success",
   "resultSignature": "200",
   "resultDescription": "",
-  "durationMs": 8,
+  "durationMs": "314",
   "callerIpAddress": "13.68.244.*",
   "correlationId": "2f6a8e64-94aa-492a-bc31-16b9f0b16ab3",
-  "identity": {
-    "claims": {
-      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
-    }
-  },
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-10-31",
-  "properties": {},
-  "traceContext": {
-    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
-    "spanId": "b630da57026dd046",
-    "parentId": "9f0de6dadae85945",
-    "traceFlags": "01",
-    "tracestate": "k1=v1,k2=v2"
-  }
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-10-31"
 }
 ```
 
@@ -185,25 +164,12 @@ Nedan visas exempel på JSON-instanser för dessa typer av loggar.
   "resultType": "Success",
   "resultSignature": "201",
   "resultDescription": "",
-  "durationMs": "80",
+  "durationMs": "935",
   "callerIpAddress": "13.68.244.*",
   "correlationId": "9dcb71ea-bb6f-46f2-ab70-78b80db76882",
-  "identity": {
-    "claims": {
-      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
-    }
-  },
   "level": "4",
   "location": "southcentralus",
   "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-10-31",
-  "properties": {},
-  "traceContext": {
-    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
-    "spanId": "b630da57026dd046",
-    "parentId": "9f0de6dadae85945",
-    "traceFlags": "01",
-    "tracestate": "k1=v1,k2=v2"
-  }
 }
 ```
 
@@ -219,67 +185,18 @@ Nedan visas exempel på JSON-instanser för dessa typer av loggar.
   "resultType": "Success",
   "resultSignature": "200",
   "resultDescription": "",
-  "durationMs": "314",
+  "durationMs": "255",
   "callerIpAddress": "13.68.244.*",
   "correlationId": "1ee2b6e9-3af4-4873-8c7c-1a698b9ac334",
-  "identity": {
-    "claims": {
-      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
-    }
-  },
   "level": "4",
   "location": "southcentralus",
   "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-10-31",
-  "properties": {},
-  "traceContext": {
-    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
-    "spanId": "b630da57026dd046",
-    "parentId": "9f0de6dadae85945",
-    "traceFlags": "01",
-    "tracestate": "k1=v1,k2=v2"
-  }
 }
-```
-
-#### <a name="adteventroutesoperation"></a>ADTEventRoutesOperation
-
-Här är ett exempel på en JSON-brödtext för en `ADTEventRoutesOperation` som **inte** är av `Microsoft.DigitalTwins/eventroutes/action` typen (mer information om schemat finns i nästa avsnitt, [*utgående logg scheman*](#egress-log-schemas)).
-
-```json
-  {
-    "time": "2020-10-30T22:18:38.0708705Z",
-    "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
-    "operationName": "Microsoft.DigitalTwins/eventroutes/write",
-    "operationVersion": "2020-10-31",
-    "category": "EventRoutesOperation",
-    "resultType": "Success",
-    "resultSignature": "204",
-    "resultDescription": "",
-    "durationMs": 42,
-    "callerIpAddress": "212.100.32.*",
-    "correlationId": "7f73ab45-14c0-491f-a834-0827dbbf7f8e",
-    "identity": {
-      "claims": {
-        "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
-      }
-    },
-    "level": "4",
-    "location": "southcentralus",
-    "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/EventRoutes/egressRouteForEventHub?api-version=2020-10-31",
-    "properties": {},
-    "traceContext": {
-      "traceId": "95ff77cfb300b04f80d83e64d13831e7",
-      "spanId": "b630da57026dd046",
-      "parentId": "9f0de6dadae85945",
-      "traceFlags": "01",
-      "tracestate": "k1=v1,k2=v2"
-    }
-  },
 ```
 
 ### <a name="egress-log-schemas"></a>Utgående logg scheman
 
-Detta är schemat för loggar som är `ADTEventRoutesOperation` speciella för `Microsoft.DigitalTwins/eventroutes/action` Åtgärds namnet. Dessa innehåller information som rör undantag och API-åtgärder kring utgående slut punkter som är anslutna till en Azure Digitals-instans.
+Detta är schemat för `ADTEventRoutesOperation` loggar. Dessa innehåller information som rör undantag och API-åtgärder kring utgående slut punkter som är anslutna till en Azure Digitals-instans.
 
 |Fältnamn | Datatyp | Beskrivning |
 |-----|------|-------------|
@@ -288,55 +205,28 @@ Detta är schemat för loggar som är `ADTEventRoutesOperation` speciella för `
 | `OperationName` | Sträng  | Typ av åtgärd som utförs under händelsen |
 | `Category` | Sträng | Typ av resurs som genereras |
 | `ResultDescription` | Sträng | Ytterligare information om händelsen |
-| `CorrelationId` | GUID | Kunden tillhandahöll en unik identifierare för händelsen |
-| `ApplicationId` | GUID | Program-ID som används i Bearer-auktorisering |
-| `Level` | Int | Händelsens allvarlighets grad |
+| `Level` | Sträng | Händelsens allvarlighets grad |
 | `Location` | Sträng | Den region där händelsen ägde rum |
-| `TraceId` | Sträng | `TraceId`, som en del av [W3C's trace context](https://www.w3.org/TR/trace-context/). ID: t för hela spårningen som används för att unikt identifiera en distribuerad spårning mellan system. |
-| `SpanId` | Sträng | `SpanId` som en del av [W3C's trace context](https://www.w3.org/TR/trace-context/). ID för den här begäran i spårningen. |
-| `ParentId` | Sträng | `ParentId` som en del av [W3C's trace context](https://www.w3.org/TR/trace-context/). En begäran utan ett överordnat ID är roten för spårningen. |
-| `TraceFlags` | Sträng | `TraceFlags` som en del av [W3C's trace context](https://www.w3.org/TR/trace-context/). Styr spårnings flaggor som sampling, spårnings nivå osv. |
-| `TraceState` | Sträng | `TraceState` som en del av [W3C's trace context](https://www.w3.org/TR/trace-context/). Ytterligare leverantörsspecifik spårnings identifierings information som ska sträckas över olika distribuerade spårnings system. |
 | `EndpointName` | Sträng | Namnet på den utgående slut punkten som skapades i Azure Digitals dubbla |
 
 Nedan visas exempel på JSON-instanser för dessa typer av loggar.
 
-#### <a name="adteventroutesoperation-for-microsoftdigitaltwinseventroutesaction"></a>ADTEventRoutesOperation för Microsoft. DigitalTwins/eventroutes/Action
-
-Här är ett exempel på en JSON-text `ADTEventRoutesOperation` som är av `Microsoft.DigitalTwins/eventroutes/action` typen.
+#### <a name="adteventroutesoperation"></a>ADTEventRoutesOperation
 
 ```json
 {
   "time": "2020-11-05T22:18:38.0708705Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/eventroutes/action",
-  "operationVersion": "",
   "category": "EventRoutesOperation",
-  "resultType": "",
-  "resultSignature": "",
-  "resultDescription": "Unable to send EventHub message to [myPath] for event Id [f6f45831-55d0-408b-8366-058e81ca6089].",
-  "durationMs": -1,
-  "callerIpAddress": "",
+  "resultDescription": "Unable to send EventGrid message to [my-event-grid.westus-1.eventgrid.azure.net] for event Id [f6f45831-55d0-408b-8366-058e81ca6089].",
   "correlationId": "7f73ab45-14c0-491f-a834-0827dbbf7f8e",
-  "identity": {
-    "claims": {
-      "appId": "872cd9fa-d31f-45e0-9eab-6e460a02d1f1"
-    }
-  },
-  "level": "4",
+  "level": "3",
   "location": "southcentralus",
-  "uri": "",
   "properties": {
-    "endpointName": "myEventHub"
-  },
-  "traceContext": {
-    "traceId": "95ff77cfb300b04f80d83e64d13831e7",
-    "spanId": "b630da57026dd046",
-    "parentId": "9f0de6dadae85945",
-    "traceFlags": "01",
-    "tracestate": "k1=v1,k2=v2"
+    "endpointName": "endpointEventGridInvalidKey"
   }
-},
+}
 ```
 
 ## <a name="view-and-query-logs"></a>Visa och fråga efter loggar

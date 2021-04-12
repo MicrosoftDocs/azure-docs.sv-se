@@ -6,28 +6,31 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 8/24/2020
-ms.openlocfilehash: 762581ea5b3183d62913e9ea6935bf7e4c4ae67f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: likebupt
+ms.author: keli19
+ms.date: 03/24/2021
+ms.openlocfilehash: 74cf0b897529e8bb198b6f82a57e187662a4a285
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93420775"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259238"
 ---
 # <a name="graph-search-query-syntax"></a>Syntax för sökfråga i Graph
 
-I den här artikeln får du lära dig mer om syntaxen för att söka i grafen i Azure Machine Learning. Med hjälp av diagram Sök funktionen kan du söka efter en nod med hjälp av dess namn och egenskaper. 
+I den här artikeln får du lära dig mer om den grafiska Sök funktionen i Azure Machine Learning. 
 
- ![Animerad skärm bild som visar ett exempel på en diagram Sök upplevelse](media/search/graph-search.gif)
+Med Graph search kan du snabbt navigera i en nod när du felsöker eller skapar en pipeline. Du kan antingen skriva in nyckel ordet eller frågan i text rutan i verktygsfältet eller under fliken Sök i den vänstra panelen för att utlösa sökningen. Alla matchade resultat markeras i gult på arbets ytan och om du väljer ett resultat i den vänstra panelen markeras noden i arbets ytan i rött.
+
+![Skärm bild som visar ett exempel på en diagram Sök upplevelse](media/search/graph-search-0322.png)
 
 Graph search stöder nyckelords sökning med full text på nodnamn och kommentarer. Du kan också filtrera på Node-egenskapen som runStatus, duration, computeTarget. Nyckelords sökningen baseras på en Lucene-fråga. En fullständig Sök fråga ser ut så här:  
 
-**[Lucene-fråga | [filter fråga]** 
+**[[Lucene-fråga] | [filter fråga]]** 
 
 Du kan använda antingen en Lucene-fråga eller en filter fråga. Använd avgränsaren för att använda båda **|** . Filtrerings frågans syntax är mer strikt än Lucene-frågan. Så om kund indata kan analyseras som båda, kommer filter frågan att tillämpas.
 
+Till exempel `data OR model | compute in {cpucluster}` är det här för att söka efter noder med namn eller kommentarer som innehåller `data` eller `model` , och Compute är cpucluster.
  
 
 ## <a name="lucene-query"></a>Lucene-fråga
@@ -68,6 +71,8 @@ Du kan använda följande Node-egenskaper som nycklar:
 - compute
 - varaktighet
 - åter användning
+- publish
+- tags
 
 Och Använd följande operatorer:
 

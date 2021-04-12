@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 9/21/2020
-ms.openlocfilehash: bdd52ba77fd9a65ce27985ff3c86a93fc887ddf9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6fc8e08757ee067e0616cc701a3037a9dbf4c6fd
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109999"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491754"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql---flexible-server"></a>Felsöka anslutnings problem till Azure Database for MySQL-flexibel Server
 
@@ -32,7 +32,7 @@ I den här artikeln diskuterar vi hur du kan felsöka några av de vanliga felen
 
 Om programmet inte kan ansluta till Azure Database for MySQL flexibel Server, tyder det vanligt vis på ett problem med något av följande:
 
-* Krypterad anslutning med TLS/SSL: flexibel Server stöder bara krypterade anslutningar med hjälp av Transport Layer Security (TLS 1,2) och alla **inkommande anslutningar med tls 1,0 och tls 1,1 kommer att nekas**. Det går inte att inaktivera eller ändra TLS-versionen. Läs mer om [krypterad anslutning med Transport Layer Security (TLS 1,2) i Azure Database for MySQL-flexibel Server](./how-to-connect-tls-ssl.md).
+* Krypterad anslutning med TLS/SSL: flexibel Server stöder krypterade anslutningar med hjälp av Transport Layer Security (TLS 1,2) och alla **inkommande anslutningar med tls 1,0 och tls 1,1 kommer att nekas som standard**. Du kan inaktivera tvång av krypterade anslutningar eller ändra TLS-versionen. Läs mer om [krypterad anslutning med Transport Layer Security (TLS 1,2) i Azure Database for MySQL-flexibel Server](./how-to-connect-tls-ssl.md).
 - Flexibel server i *privat åtkomst (VNet-integrering)*: se till att du ansluter inifrån samma virtuella nätverk som den flexibla servern. Referera till [Virtual Network i Azure Database for MySQL flexibel server]<!--(./concepts-networking-virtual-network.md)-->
 - Flexibel server med *offentlig åtkomst (tillåtna IP-adresser)* kontrol lera att brand väggen är konfigurerad för att tillåta anslutningar från klienten. Se [skapa och hantera flexibla Server brand Väggs regler med hjälp av Azure Portal](./how-to-manage-firewall-portal.md).
 * Konfiguration av klient brand väggen: brand väggen på klienten måste tillåta anslutningar till din databas server. IP-adresser och portar på den server som du inte kan tillåta måste vara tillåtna samt program namn som MySQL i vissa brand väggar.

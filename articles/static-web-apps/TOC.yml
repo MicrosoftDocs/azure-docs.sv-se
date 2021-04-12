@@ -67,8 +67,14 @@
           href: deploy-nextjs.md
         - name: Nuxt.js
           href: deploy-nuxtjs.md
+    - name: Lägg till en databas med Mongoose.js och Cosmos DB
+      href: add-mongoose.md
     - name: Publicera med Azure DevOps
       href: publish-devops.md
+- name: Referens
+  items:
+    - name: Azure CLI
+      href: /cli/azure/staticwebapp
 - name: Resurser
   items:
     - name: Utveckla dina färdigheter med Microsoft Learn

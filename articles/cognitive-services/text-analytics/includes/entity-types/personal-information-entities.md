@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 19586c09cca9a0dc74ba9ee4ef9da459964f9b7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7484b49ed3c868a1ad3e0f97dffa346f350e127f
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599346"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106097167"
 ---
 > [!NOTE]
 > Använd `domain=phi` parametern och modell versionen eller senare för att identifiera skyddad hälso information (Phi) `2020-04-01` .
@@ -53,7 +53,7 @@ Den här kategorin innehåller följande entitet:
     :::column span="2":::
         **Information**
 
-        Namn på personer. 
+        Namn på personer. Returneras också med `domain=phi` .
 
         Lägg till i-parametern för att hämta entitets kategorin `Person` `pii-categories` . `Person` kommer att returneras i API-svaret om det upptäcks.
       
@@ -140,7 +140,7 @@ Den här kategorin innehåller följande entitet:
     :::column span="2":::
         **Information**
 
-        Företag, politiska grupper, musik band, sport klubbar, myndighets organ och offentliga organisationer. Nationella objekt och religions ingår inte i den här entitetstypen.
+        Företag, politiska grupper, musik band, sport klubbar, myndighets organ och offentliga organisationer. Nationella objekt och religions ingår inte i den här entitetstypen. Returneras också med `domain=phi` .
 
         Lägg till i-parametern för att hämta entitets kategorin `Organization` `pii-categories` . `Organization` kommer att returneras i API-svaret om det upptäcks.
       
@@ -241,7 +241,7 @@ Den här kategorin innehåller följande entitet:
     :::column span="2":::
         **Information**
 
-        Fullständig e-postadress.
+        Fullständig e-postadress. Returneras också med `domain=phi` .
 
         Lägg till i-parametern för att hämta entitets kategorin `Address` `pii-categories` . `Address` kommer att returneras i API-svaret om det upptäcks.
       
@@ -270,7 +270,7 @@ Den här kategorin innehåller följande entitet:
     :::column span="2":::
         **Information**
 
-        E-postadresser.
+        E-postadresser. Returneras också med `domain=phi` .
       
         Lägg till i-parametern för att hämta entitets kategorin `Email` `pii-categories` . `Email` kommer att returneras i API-svaret om det upptäcks.
 
@@ -298,7 +298,7 @@ Den här kategorin innehåller följande entitet:
     :::column span="2":::
         **Information**
 
-        URL: er till webbplatser. 
+        URL: er till webbplatser. Returneras också med `domain=phi` .
 
         Lägg till i-parametern för att hämta entitets kategorin `URL` `pii-categories` . `URL` kommer att returneras i API-svaret om det upptäcks.
       
@@ -327,7 +327,7 @@ Den här kategorin innehåller följande entitet:
     :::column span="2":::
         **Information**
 
-        nätverks-IP-adresser. 
+        Nätverks-IP-adresser. Returneras också med `domain=phi` .
 
         Lägg till i-parametern för att hämta entitets kategorin `IP` `pii-categories` . `IP` kommer att returneras i API-svaret om det upptäcks.
       
@@ -382,7 +382,7 @@ Entiteten i den här kategorin kan ha följande under kategorier.
     :::column span="2":::
         **Information**
 
-        Kalender datum.
+        Kalender datum. Returneras också med `domain=phi` .
 
         Lägg till i-parametern för att hämta entitets kategorin `Date` `pii-categories` . `Date` kommer att returneras i API-svaret om det upptäcks.
       
@@ -436,7 +436,7 @@ Entiteten i den här kategorin kan ha följande under kategorier.
     :::column span="2":::
         **Information**
 
-        Personer.
+        Personer. 
 
         Lägg till i-parametern för att hämta entitets kategorin `Age` `pii-categories` . `Age` kommer att returneras i API-svaret om det upptäcks.
       

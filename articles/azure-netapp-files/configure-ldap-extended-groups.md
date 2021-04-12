@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 04/08/2021
 ms.author: b-juche
-ms.openlocfilehash: 2031cbf07d700307ae1e11c516f9fc736bce5080
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 9edf8c6eca223ece8728f9868ee9fe310c517ca9
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106499018"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259718"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>Konfigurera lägger till LDAP med utökade grupper för NFS-volym åtkomst
 
@@ -69,9 +69,18 @@ I den här artikeln beskrivs överväganden och steg för att aktivera LDAP med 
 
 2. LDAP-volymer kräver en Active Directory konfiguration för inställningarna för LDAP-servern. Följ anvisningarna i [krav för Active Directory anslutningar](create-active-directory-connections.md#requirements-for-active-directory-connections) och [skapa en Active Directory anslutning](create-active-directory-connections.md#create-an-active-directory-connection) för att konfigurera Active Directory anslutningar på Azure Portal.  
 
-3. Se till att Active Directory LDAP-servern är igång och körs på Active Directory. Du kan göra det genom att installera och konfigurera rollen [Active Directory Lightweight Directory Services (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) på AD-datorn.
+3. Se till att Active Directory LDAP-servern är igång och körs på Active Directory. 
 
-4. LDAP-NFS-användare måste ha vissa POSIX-attribut på LDAP-servern. Följ [Hantera LDAP POSIX-attribut](create-volumes-dual-protocol.md#manage-ldap-posix-attributes) för att ange de attribut som krävs.  
+4. LDAP-NFS-användare måste ha vissa POSIX-attribut på LDAP-servern. Ange attribut för LDAP-användare och LDAP-grupper enligt följande: 
+
+    * Obligatoriska attribut för LDAP-användare:   
+        `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: user`
+    * Obligatoriska attribut för LDAP-grupper:   
+        `objectClass: group`, `gidNumber: 555`
+
+    Du kan hantera POSIX-attribut med hjälp av MMC-snapin-modulen Active Directory användare och datorer. Följande exempel visar Redigeraren för Active Directory-attribut:  
+
+    ![Redigeraren för Active Directory-attribut](../media/azure-netapp-files/active-directory-attribute-editor.png) 
 
 5. Om du vill konfigurera en LDAP-integrerad Linux-klient, se [Konfigurera en NFS-klient för Azure NetApp Files](configure-nfs-clients.md).
 

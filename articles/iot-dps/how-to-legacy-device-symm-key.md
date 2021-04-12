@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: lizross
-ms.openlocfilehash: a4c16347d1883e1522fda18c2382f2d67b8ace80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d193d30428d24ccf65c3f70885192acad2fdc9f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99051117"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228339"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Så här etablerar du enheter med hjälp av symmetrisk nyckel registrerings grupper
 
@@ -30,6 +30,16 @@ Den här artikeln riktar sig till en Windows-arbetsstation. Du kan dock utföra 
 > [!NOTE]
 > Exemplet som används i den här artikeln är skrivet i C. Det finns också ett [C#-enhets etablering av symmetriskt nyckel exempel](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) tillgängligt. Om du vill använda det här exemplet laddar du ned eller klona [Azure-IoT-samples-csharp-](https://github.com/Azure-Samples/azure-iot-samples-csharp) lagringsplatsen och följer de infogade anvisningarna i exempel koden. Du kan följa anvisningarna i den här artikeln för att skapa en grupp för symmetrisk nyckel registrering via portalen och för att hitta ID-omfånget och de sekundära nycklar som krävs för att köra exemplet. Du kan också skapa enskilda registreringar med hjälp av exemplet.
 
+## <a name="prerequisites"></a>Förutsättningar
+
+* [Konfigurations IoT Hub Device Provisioning service har](./quick-setup-auto-provision.md) slutförts med snabb starten för Azure Portal.
+
+Följande förutsättningar gäller för en Windows-utvecklings miljö. För Linux eller macOS, se lämpligt avsnitt i [förbereda utvecklings miljön](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) i SDK-dokumentationen.
+
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 med arbets belastningen ["Skriv bords utveckling med C++"](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) aktiverat. Visual Studio 2015 och Visual Studio 2017 stöds också.
+
+* Senaste versionen av [Git](https://git-scm.com/download/) installerad.
+
 ## <a name="overview"></a>Översikt
 
 Ett unikt registrerings-ID kommer att definieras för varje enhet baserat på information som identifierar enheten. Till exempel MAC-adressen eller ett serie nummer.
@@ -40,16 +50,6 @@ Enhets koden som visas i den här artikeln följer samma mönster som [snabb sta
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-
-## <a name="prerequisites"></a>Förutsättningar
-
-* [Konfigurations IoT Hub Device Provisioning service har](./quick-setup-auto-provision.md) slutförts med snabb starten för Azure Portal.
-
-Följande förutsättningar gäller för en Windows-utvecklings miljö. För Linux eller macOS, se lämpligt avsnitt i [förbereda utvecklings miljön](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) i SDK-dokumentationen.
-
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 med arbets belastningen ["Skriv bords utveckling med C++"](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) aktiverat. Visual Studio 2015 och Visual Studio 2017 stöds också.
-
-* Senaste versionen av [Git](https://git-scm.com/download/) installerad.
 
 ## <a name="prepare-an-azure-iot-c-sdk-development-environment"></a>Förbereda en utvecklingsmiljö för Azure IoT C SDK
 
@@ -283,6 +283,15 @@ Tänk på att detta lämnar den härledda enhets nyckeln som ingår som en del a
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Mer information om hur du reetablerar finns i [IoT Hub metoder för att etablera enheter](concepts-device-reprovision.md) 
-* [Snabbstart: Etablera en simulerad enhet med symmetriska nycklar](quick-create-simulated-device-symm-key.md)
-* Mer information om hur du avetablerar [enheter finns i så här avetablerar du enheter som tidigare var automatiskt etablerade](how-to-unprovision-devices.md)
+* Mer information om hur du reetablerar finns i
+
+> [!div class="nextstepaction"]
+> [Metoder för att etablera IoT Hub enhet](concepts-device-reprovision.md)
+
+> [!div class="nextstepaction"]
+> [Snabbstart: Etablera en simulerad enhet med symmetriska nycklar](quick-create-simulated-device-symm-key.md)
+
+* Mer information om avetablering finns i
+
+> [!div class="nextstepaction"]
+> [Så här avetablerar du enheter som tidigare var automatiskt etablerade](how-to-unprovision-devices.md)

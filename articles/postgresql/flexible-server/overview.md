@@ -6,13 +6,13 @@ ms.author: sunila
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 03/17/2021
-ms.openlocfilehash: 8e5c204709f0eadb6c1a4b6f479d4833f335b264
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/05/2021
+ms.openlocfilehash: 090d38a92da126cd4fd8423231f856d22ea9a64c
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594894"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106844"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL-flexibel Server
 
@@ -103,6 +103,7 @@ En av fördelarna med att köra din arbets belastning i Azure är den globala r�
 | Japan, östra | :heavy_check_mark: | :heavy_check_mark: | 
 | Australien, östra | :heavy_check_mark: | :heavy_check_mark: | 
 | Kanada, centrala | :heavy_check_mark: | :heavy_check_mark: | 
+| Frankrike, centrala | :heavy_check_mark: | :heavy_check_mark: | 
 
 Vi fortsätter att lägga till fler regioner för flexibel Server.
 

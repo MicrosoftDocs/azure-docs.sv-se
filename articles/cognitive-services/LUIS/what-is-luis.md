@@ -5,14 +5,14 @@ keywords: Azure, artificiell intelligens, AI, naturlig språk bearbetning, NLP, 
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 03/22/2021
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: f21a2cc8218dde8b0cf7203a1fcb1f5cfb9424a2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: f32f58bebc0a7d64443259981590e368b109b19b
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790875"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278957"
 ---
 # <a name="what-is-language-understanding-luis"></a>Vad är Language Understanding Intelligent Service (LUIS)?
 
@@ -23,6 +23,13 @@ Language Understanding (LUIS) är en molnbaserad diskussions AI-tjänst som anv�
 Ett klientprogram för LUIS är alla konversationsanpassade program som kommunicerar med en användare på naturligt språk för att utföra en uppgift. Exempel på klient program är appar för sociala medier, AI-chattrobotar och tal aktiverade Skriv bords program.
 
 ![Konceptuell bild av 3 klient program som arbetar med Cognitive Services Language Understanding (LUIS)](./media/luis-overview/luis-entry-point.png "Konceptuell bild av 3 klient program som arbetar med Cognitive Services Language Understanding (LUIS)")
+
+Den här dokumentationen innehåller följande artikel typer:  
+
+* [**Snabb starter**](luis-get-started-create-app.md) hjälper dig att komma igång med instruktioner för att göra förfrågningar till tjänsten.  
+* [**Instruktions guider**](luis-how-to-start-new-app.md) innehåller instruktioner för att använda tjänsten på mer exakta eller anpassade sätt.  
+* [**Begreppen**](artificial-intelligence.md) ger djupgående förklaringar av tjänst funktionerna och funktionerna.  
+* [**Självstudier**](tutorial-intents-only.md) är längre guider som visar hur du använder tjänsten som en komponent i bredare affärs lösningar.  
 
 ## <a name="use-luis-in-a-chat-bot"></a>Använda LUIS i en chattrobot
 
@@ -139,8 +146,6 @@ Lär dig mer om LUIS med praktiska snabb starter med hjälp av [portalen](get-st
 
 * [Vad är nytt](whats-new.md "Nyheter") med tjänsten och dokumentationen
 * [Planera din app](luis-how-plan-your-app.md "Planera din app") med [avsikter](luis-concept-intent.md "avsikter") och [entiteter](luis-concept-entity-types.md "poster").
-* [Fråga efter förutsägelse slut punkten](luis-get-started-get-intent-from-browser.md "Fråga förutsägelse slut punkten").
-* [Utvecklings resurser](developer-reference-resource.md "Resurser för utvecklare") för Luis.
 
 [bot-framework]: /bot-framework/
 [flow]: /connectors/luis/

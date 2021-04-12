@@ -7,15 +7,15 @@ ms.subservice: core
 ms.topic: overview
 ms.author: larryfr
 author: BlackMist
-ms.date: 11/04/2020
+ms.date: 04/08/2021
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: 00a3ab2954d09a7e70e81d8de3644b678b79d005
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 4f97883c157d04358322b01cab7049dcbbabdc4f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521398"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031094"
 ---
 # <a name="what-is-azure-machine-learning"></a>Vad är Azure Machine Learning?
 
@@ -40,7 +40,7 @@ Prognoser eller förutsägelser från maskininlärning kan göra appar och enhet
 ## <a name="machine-learning-tools-to-fit-each-task"></a>Maskin inlärnings verktyg för att passa varje uppgift 
 
 Azure Machine Learning innehåller alla verktyg och data forskare som behöver för sina Machine Learning-arbetsflöden, inklusive:
-+ [Azure Machine Learning designer](tutorial-designer-automobile-price-train-score.md): dra-n-släpp-moduler för att bygga experimenten och sedan distribuera pipeliner.
++ [Azure Machine Learning designer](tutorial-designer-automobile-price-train-score.md): dra-n-släpp-moduler för att bygga experimenten och sedan distribuera pipelines i en miljö med låg kod.
 
 + Jupyter Notebook: Använd våra [exempel Notebook-anteckningsböcker](https://github.com/Azure/MachineLearningNotebooks) eller skapa egna antecknings böcker för att utnyttja våra SDK: er <a href="/python/api/overview/azure/ml/intro" target="_blank">för python</a> -exempel för din maskin inlärning. 
 
@@ -48,11 +48,11 @@ Azure Machine Learning innehåller alla verktyg och data forskare som behöver f
 
 + [Många modeller Solution Accelerator](https://aka.ms/many-models) (för hands version) bygger på Azure Machine Learning och gör det möjligt att träna, hantera och hantera hundratals eller till och med tusentals maskin inlärnings modeller.
 
-+ [Machine Learning-tillägg för Visual Studio Code-användare](tutorial-setup-vscode-extension.md)
++ Med [Machine Learning-tillägget för Visual Studio Code (för hands version)](how-to-set-up-vs-code-remote.md) får du en komplett utvecklings miljö för att skapa och hantera dina Machine Learning-projekt.
 
-+ [Maskininlärning CLI](reference-azure-machine-learning-cli.md)
++ [Machine Learning CLI](reference-azure-machine-learning-cli.md) är ett Azure CLI-tillägg som innehåller kommandon för att hantera med Azure Machine Learning-resurser från kommando raden.
 
-+ Ramverk med öppen källkod, till exempel PyTorch, TensorFlow och scikit – lära och många fler
++ [Integrering med ramverk med öppen källkod](concept-open-source.md) , till exempel PyTorch, TensorFlow och scikit – lär dig mer och mycket mer för utbildning, distribution och hantering av maskin inlärnings processen från slut punkt till slut punkt.
 
 + [Förstärka inlärning](how-to-use-reinforcement-learning.md) med Ray RLlib
 
@@ -83,7 +83,7 @@ Du kan också [Automatisera modell träning och-justering](tutorial-auto-train-m
     ![Kör information i Azure Machine Learning Studio](media/how-to-track-experiments/experimentation-tab.gif)
 
 
-+ **Och mycket annat...**
++ **Och mycket mer...**
 
   Besök Azure Machine Learning Studio på [ml.Azure.com](https://studio.azureml.net). 
 
@@ -130,6 +130,8 @@ Ditt Azure Storage-konto, beräknings mål och andra resurser kan användas på 
 - + [Kom igång i din egen utvecklings miljö](tutorial-1st-experiment-sdk-setup-local.md)
   + [Använd Jupyter notebooks på en beräknings instans för att träna & distribuera ML-modeller](tutorial-1st-experiment-sdk-setup.md)
   + [Använd automatisk maskin inlärning för att träna & distribuera ML-modeller](tutorial-first-experiment-automated-ml.md) 
+  + [Hantera resurser i Visual Studio Code](how-to-manage-resources-vscode.md)
+  + [Använda Visual Studio Code för att träna och distribuera en bild klassificerings modell](tutorial-train-deploy-image-classification-model-vscode.md)
   + [Använd designerns dra & släpp-funktioner för att träna & distribuera](tutorial-designer-automobile-price-train-score.md) 
   + [Använda Machine Learning CLI för att träna och distribuera en modell](tutorial-train-deploy-model-cli.md)
 

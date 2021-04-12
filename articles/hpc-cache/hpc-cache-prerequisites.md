@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 7d40dcf80d9ec566146bbe46bc2cb3c558584fcd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a03c3987c0cada69f6a7d47d7c1aa7cbf6d5015a
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775773"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258885"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Krav för Azure HPC-cache
 
@@ -197,6 +197,8 @@ Detta är en allmän översikt över stegen. De här stegen kan ändras, så du 
    * Ge cache-programmet åtkomst till ditt Azure Storage-konto som anges i [behörigheter](#permissions)ovan. Du kan göra detta första gången du skapar ett lagrings mål. Följ proceduren i [Lägg till lagrings mål](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) för att ge cachen de nödvändiga åtkomst rollerna.
 
      Om du inte är lagrings kontots ägare kan du låta ägaren göra detta steg.
+
+Lär dig mer om att använda ADLS-NFS-lagrings mål med Azure HPC cache i [använda NFS-monterad Blob Storage med Azure HPC-cache](nfs-blob-considerations.md).
 
 ## <a name="set-up-azure-cli-access-optional"></a>Konfigurera Azure CLI-åtkomst (valfritt)
 

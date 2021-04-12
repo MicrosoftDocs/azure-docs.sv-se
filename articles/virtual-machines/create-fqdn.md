@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2021
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 42c53e72de7f6b2943086544f607042957f4b849
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: b010070b7a45c24037c6de4648574c01b017d759
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220087"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107405"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Skapa ett fullständigt kvalificerat domän namn i Azure Portal för en virtuell Linux-dator
 
@@ -27,7 +27,7 @@ Den här artikeln förutsätter att du redan har skapat en virtuell dator. Om de
 1. Välj din virtuella dator i portalen. 
 1. På den vänstra menyn väljer du **Egenskaper**
 1. Under **namn etikett för offentlig IP-address\DNS** väljer du din IP-adress.
-2. Under **DNA-namn etikett** anger du det prefix som du vill använda.
+2. Ange prefixet som du vill använda under **DNS-namn etikett**.
 3. Välj **Spara** längst upp på sidan.
 4. Välj **Översikt** på den vänstra menyn för att återgå till BLADet VM-översikt.
 5. Kontrol lera att **DNS-namnet** visas korrekt. 

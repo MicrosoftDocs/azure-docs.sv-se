@@ -14,18 +14,18 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: eb1b39f268934a71acb05d99bbeecb1b27b27a77
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 2fe8f5d0acb2ab7e2f1c64dde1bedb19b96111e9
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106112122"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492298"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Standardformat för kodare och codec
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Den här artikeln innehåller en lista över de vanligaste import-och export fil formaten som du kan använda med [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset). Information om hur du skapar anpassade för inställningar med hjälp av **StandardEncoderPreset** finns i [skapa en transformering med en anpassad för inställning](encode-custom-presets-how-to.md).
+Den här artikeln innehåller en lista över de vanligaste import-och export fil formaten som du kan använda med [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset). Information om hur du skapar anpassade för inställningar med hjälp av **StandardEncoderPreset** finns i [skapa en transformering med en anpassad för inställning](transform-custom-presets-how-to.md).
 
 ## <a name="input-containerfile-formats"></a>Indatafil/fil format
 
@@ -103,4 +103,4 @@ I följande tabell visas de codecenheter och fil format som stöds för export.
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Skapa en transformering med en anpassad för inställning](encode-custom-presets-how-to.md)
+[Skapa en transformering med en anpassad för inställning](transform-custom-presets-how-to.md)

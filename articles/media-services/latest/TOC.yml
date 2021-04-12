@@ -334,18 +334,43 @@
           href: asset-upload-media-how-to.md
         - name: Hantera flera lagrings konton
           href: storage-managing-multiple-storage-accounts-how-to.md
-    - name: Skapa transformeringar och jobb
+    - name: Skapa transformeringar
       items:
-        - name: Skapa transformeringar
+        - name: Skapa en transformering
           href: transform-create-transform-how-to.md
         - name: Skapa en grundläggande ljudomvandling med REST
           href: transform-create-basic-audio-how-to.md
         - name: Skapa miniatyr bilder
           href: transform-create-thumbnail-sprites-how-to.md
+        - name: Häfta ihop två eller fler videofiler med .NET
+          href: transform-stitch-how-to.md
+        - name: Subclip a video .NET
+          href: transform-subclip-video-dotnet-how-to.md
+          displayName: 'subclipping, clip, edit, trim, clipping'
+        - name: Under klipp en video REST
+          href: transform-subclip-video-rest-how-to.md
+          displayName: 'subclipping, clip, edit, trim, clipping'
+        - name: Anpassa förvalda kodare .NET
+          href: transform-custom-presets-how-to.md
+        - name: Skapa en överläggs transformering .NET
+          href: transform-create-overlay-how-to.md
+        - name: Generera miniatyrer .NET
+          href: transform-generate-thumbnails-dotnet-how-to.md
+        - name: Beskär videor med .NET
+          href: crop-howto.md
+        - name: Anpassa förvalda CLI för kodare
+          href: transform-custom-preset-cli-how-to.md
+        - name: Anpassa förvalda kodare
+          displayName: 'encode, encoding, custom, transform'
+          href: transform-custom-preset-rest-how-to.md
+        - name: Generera miniatyrer REST
+          href: transform-generate-thumbnails-rest-how-to.md
         - name: Skapa en copyAllBitrateNonInterleaved-transformering med REST
           href: transform-create-copyallbitratenoninterleaved-how-to.md
         - name: Kopiera videor utan kodning med REST
           href: transform-create-copy-video-audio-how-to.md
+    - name: Skapa jobb
+      items:
         - name: Skapa jobb med CLI
           href: job-create-cli-how-to.md
         - name: Skapa jobbindata med en lokal fil och .NET
@@ -353,47 +378,10 @@
           href: job-input-from-local-file-how-to.md
         - name: Jobb med flera transformeringsutdata
           href: job-multiple-transform-outputs-how-to.md
-        - name: Häfta ihop två eller fler videofiler med .NET
-          href: transform-stitch-how-to.md
-    - name: Koda innehåll
-      items:
         - name: HTTPS som jobbindata
           href: job-input-from-http-how-to.md
-        - name: Lokal fil som jobbindata
-          href: job-input-from-local-file-how-to.md
-        - name: Koda med en anpassad transformering
-          items:
-            - name: Med .NET
-              displayName: 'encode, encoding, custom, transform'
-              items:
-                - name: Anpassa förinställningar för kodare
-                  href: encode-custom-presets-how-to.md
-                - name: Skapa en överläggstransformering
-                  href: transform-create-overlay-how-to.md
-                - name: Skapa miniatyrer med .NET
-                  href: transform-generate-thumbnails-dotnet-how-to.md
-                - name: Beskär videor med .NET
-                  href: crop-howto.md
-            - name: Med CLI
-              displayName: 'encode, encoding, custom, transform'
-              href: encode-custom-preset-cli-how-to.md
-            - name: Med REST
-              displayName: 'encode, encoding, custom, transform'
-              href: encode-custom-preset-rest-how-to.md
-            - name: Skapa miniatyrer med REST
-              href: transform-generate-thumbnails-rest-how-to.md
-            - name: Skala mediereserverade enheter
-              href: media-reserved-units-cli-how-to.md
-        - name: Skapa underklipp i en video
-          items:
-            - name: Med .NET
-              href: transform-subclip-video-dotnet-how-to.md
-              displayName: 'subclipping, clip, edit, trim, clipping'
-            - name: Med REST
-              href: transform-subclip-video-rest-how-to.md
-              displayName: 'subclipping, clip, edit, trim, clipping'
-        - name: Jobbfelkoder
-          href: job-error-codes-reference.md
+    - name: Skala medium reserverade enheter CLI
+      href: media-reserved-units-cli-how-to.md
     - name: Strömma live
       items:
         - name: Livehändelse med portal och Wirecast

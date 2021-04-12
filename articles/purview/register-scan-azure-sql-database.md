@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 74a8bc4209696682c294bccab450d25ae86e3645
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9873ec2113c0c5704ccca4fa10daf6ac8d572989
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643928"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107439"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrera och skanna en Azure SQL Database
 
@@ -28,7 +28,8 @@ Den Azure SQL Database data källan har stöd för följande funktioner:
 
 ### <a name="known-limitations"></a>Kända begränsningar
 
-Azure avdelningens kontroll stöder inte genomsökning av [vyer](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true) i Azure SQL Database.
+> * Azure avdelningens kontroll stöder inte genomsökning av [vyer](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true) i Azure SQL Database.
+> * Azure avdelningens kontroll stöder inte över 300 kolumner på fliken schema och visar "addition-columns-Trunked". 
 
 ## <a name="prerequisites"></a>Förutsättningar
 

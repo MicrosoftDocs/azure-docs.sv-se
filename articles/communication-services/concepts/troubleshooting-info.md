@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 80db53a5ed8d2edc90bc847578d5df4d603cc437
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: db6aafc8c9db7a67c9ee70d524d17a642d03dfd8
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107235"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259072"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Fel sökning i Azure Communication Services
 
@@ -79,11 +79,11 @@ chat_client = ChatClient(
 
 ## <a name="access-your-call-id"></a>Åtkomst till ditt anrops-ID
 
-När du skickar en supportbegäran via Azure Portal som rör anrop till anrop kan du bli ombedd att ange ID för det anrop som du refererar till. Detta kan nås via anrops-SDK: n:
+När du felsöker röst-eller video samtal kan du bli ombedd att ange en `call ID` . Detta kan nås via `id` `call` objektets egenskap:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 ```javascript
-// `call` is an instance of a call created by `callAgent.call` or `callAgent.join` methods
+// `call` is an instance of a call created by `callAgent.startCall` or `callAgent.join` methods
 console.log(call.id)
 ```
 
@@ -97,7 +97,7 @@ print(call.callId)
 # <a name="android"></a>[Android](#tab/android)
 ```java
 // The `call id` property can be retrieved by calling the `call.getCallId()` method on a call object after a call ends
-// `call` is an instance of a call created by `callAgent.call(…)` or `callAgent.join(…)` methods
+// `call` is an instance of a call created by `callAgent.startCall(…)` or `callAgent.join(…)` methods
 Log.d(call.getCallId())
 ```
 ---
@@ -127,17 +127,23 @@ console.log(result); // your message ID will be in the result
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Följande kod kan användas för att konfigurera `AzureLogger` för att spara loggar till-konsolen med hjälp av Java Script SDK:
+Azure Communication Services som anropar SDK är beroende av internt i [@azure/logger](https://www.npmjs.com/package/@azure/logger) bibliotek för att kontrol lera loggningen.
+Använd- `setLogLevel` metoden från `@azure/logger` paketet för att konfigurera loggens utdata:
+
+```javascript
+import { setLogLevel } from '@azure/logger';
+setLogLevel('verbose');
+const callClient = new CallClient();
+```
+
+Du kan använda AzureLogger för att omdirigera loggnings resultatet från Azure SDK: er genom att åsidosätta `AzureLogger.log` metoden: Detta kan vara användbart om du vill omdirigera loggar till en annan plats än konsolen.
 
 ```javascript
 import { AzureLogger } from '@azure/logger';
-
-AzureLogger.verbose = (...args) => { console.info(...args); }
-AzureLogger.info = (...args) => { console.info(...args); }
-AzureLogger.warning = (...args) => { console.info(...args); }
-AzureLogger.error = (...args) => { console.info(...args); }
-
-callClient = new CallClient({logger: AzureLogger});
+// redirect log output
+AzureLogger.log = (...args) => {
+  console.log(...args); // to console, file, buffer, REST API..
+};
 ```
 
 # <a name="ios"></a>[iOS](#tab/ios)

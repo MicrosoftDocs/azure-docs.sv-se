@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/05/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: ea4a4a47e91e88c00ca8a4e886d0372a24482907
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95f2e47d3cf0b967f42b988b565da3643796534d
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98784316"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490768"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Schema referens guide för utlösare och åtgärds typer i Azure Logic Apps
 
@@ -2413,11 +2413,11 @@ Som standard körs Logic app-arbetsflöden på samma tidpunkt (samtidigt eller p
 
 När du aktiverar utlösarens samtidighets kontroll körs Utlös ande instanser parallellt med [standard gränsen](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Om du vill ändra den här standard begränsningen för samtidighet kan du antingen använda kodvyn eller Logic Apps designer eftersom du ändrar samtidighets inställningen via design verktyget lägger till eller uppdaterar `runtimeConfiguration.concurrency.runs` egenskapen i den underliggande utlösaren och vice versa. Den här egenskapen styr det maximala antalet nya arbets flödes instanser som kan köras parallellt.
 
-Här följer några saker att tänka på när du vill aktivera samtidighet i en utlösare:
-
-* När samtidighet har Aktiver ATS minskas [SplitOn-gränsen](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) avsevärt för [debatchering av matriser](#split-on-debatch). Om antalet objekt överskrider den här gränsen är SplitOn-funktionen inaktive rad.
+Här följer några saker att tänka på innan du aktiverar samtidighet i en utlösare:
 
 * Du kan inte inaktivera samtidighet när du har aktiverat samtidighets kontrollen.
+
+* När samtidighet har Aktiver ATS minskas [SplitOn-gränsen](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) avsevärt för [debatchering av matriser](#split-on-debatch). Om antalet objekt överskrider den här gränsen är SplitOn-funktionen inaktive rad.
 
 * När samtidighet har Aktiver ATS kan en tids krävande Logic App-instans orsaka att nya Logic App-instanser anger ett vänte läge. Detta tillstånd förhindrar Azure Logic Apps från att skapa nya instanser och inträffar även om antalet samtidiga körningar är mindre än det angivna maximala antalet samtidiga körningar.
 
@@ -2450,9 +2450,9 @@ Här följer några saker att tänka på när du vill aktivera samtidighet i en 
 
 #### <a name="edit-in-code-view"></a>Redigera i kodvyn 
 
-I den underliggande utlösnings definitionen lägger du till `runtimeConfiguration.concurrency.runs` egenskapen, som kan ha ett värde som sträcker `1` sig från till `50` .
+I den underliggande utlösnings definitionen lägger du till `runtimeConfiguration.concurrency.runs` egenskapen och anger värdet baserat på [gränserna för utlösarens samtidighet](logic-apps-limits-and-config.md#concurrency-debatching). Om du vill köra arbets flödet sekventiellt anger du egenskap svärdet till `1` .
 
-Här är ett exempel som begränsar samtidiga körningar till 10 instanser:
+Det här exemplet begränsar samtidiga körningar till 10 instanser:
 
 ```json
 "<trigger-name>": {

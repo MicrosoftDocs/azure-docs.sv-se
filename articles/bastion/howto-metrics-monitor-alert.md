@@ -8,12 +8,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 03/12/2021
 ms.author: mialdrid
-ms.openlocfilehash: 3a5beba3938b5a845a378ede155f2f64e6baac7a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c4e03318fae8d8d3a8b4d29538cad49f9ef39593
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103417951"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259123"
 ---
 # <a name="how-to-configure-monitoring-and-metrics-for-azure-bastion-using-azure-monitor"></a>Konfigurera övervakning och mått för Azure-skydds med hjälp av Azure Monitor
 
@@ -58,7 +58,7 @@ Du kan visa det totala minnet för Azure-skydds, delat över varje skydds-instan
 
 #### <a name="used-cpu"></a><a name="used-cpu"></a>Använd processor
 
-Du kan visa CPU-användningen för Azure-skydds, dela över varje skydds-instans. Övervakning av det här måttet hjälper dig att mäta tillgänglighet och kapacitet för de instanser som utgör Azure-skydds.
+Du kan visa CPU-användningen för Azure-skydds, dela över varje skydds-instans. Övervakning av det här måttet hjälper dig att mäta tillgänglighet och kapacitet för de instanser som utgör Azure-skydds
 
 :::image type="content" source="./media/metrics-monitor-alert/used-cpu.png" alt-text="Skärm bild som visar CPU som används.":::
 
@@ -73,6 +73,12 @@ Du kan visa minnes användningen för varje skydds-instans genom att dela över 
 #### <a name="session-count"></a>Antal sessioner
 
 Du kan visa antalet aktiva sessioner per skydds-instans som sammanställs över varje typ av session (RDP och SSH). Varje Azure-skydds har stöd för en mängd aktiva RDP-och SSH-sessioner. Genom att övervaka det här måttet får du hjälp att förstå om du behöver justera antalet instanser som kör skydds-tjänsten. Mer information om antalet sessioner som Azure skydds kan stödja finns i [vanliga frågor och svar om Azure skydds](bastion-faq.md).
+
+De rekommenderade värdena för den här mått konfigurationen är:
+
+* **Sammansättning:** Gmsn
+* **Kornig het:** 5 eller 15 minuter
+* Delning efter instanser rekommenderas för att få ett mer korrekt antal
 
 :::image type="content" source="./media/metrics-monitor-alert/session-count.png" alt-text="Skärm bild som visar antalet sessioner.":::
 

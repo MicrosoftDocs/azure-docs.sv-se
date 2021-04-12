@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d155d0c4a18b254f66ff5fb58ea91dbee22d2c34
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 578befe3e26ebb42fa2172976e07d0a5836e3743
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496617"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107167"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>Självstudie: skapa ett digitalt Azure-diagram med Azure CLI
 
@@ -20,7 +20,7 @@ ms.locfileid: "103496617"
 
 I den här självstudien skapar du en graf i Azure Digitals, med modeller, dubbla och relationer. Verktyget för den här självstudien är [Azure Digitals-kommandot som har angetts för **Azure CLI**](how-to-use-cli.md). 
 
-Du kan använda CLI-kommandona för att utföra viktiga Azure Digital-åtgärder, till exempel överföra modeller, skapa och ändra dubbla och skapa relationer. Du kan också titta i [referens dokumentationen för *AZ DT* -kommando](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest) för att se en fullständig uppsättning CLI-kommandon.
+Du kan använda CLI-kommandona för att utföra viktiga Azure Digital-åtgärder, till exempel överföra modeller, skapa och ändra dubbla och skapa relationer. Du kan också titta i [referens dokumentationen för *AZ DT* -kommando](/cli/azure/dt) för att se en fullständig uppsättning CLI-kommandon.
 
 I den här självstudien kommer du att...
 > [!div class="checklist"]
@@ -91,7 +91,7 @@ När du har utformat modeller måste du ladda upp dem till din Azure Digital-ins
     
     Navigera till *Room.jspå* filen på din dator och välj "öppna". Upprepa sedan det här steget för *Floor.jspå*.
 
-1. Använd sedan kommandot [**AZ DT Model Create**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_create) enligt beskrivningen nedan för att ladda upp din uppdaterade *rums* modell till din Azure Digital-instansen. Det andra kommandot laddar upp en annan modell, *våning*, som du också använder i nästa avsnitt för att skapa olika typer av skärnings punkter.
+1. Använd sedan kommandot [**AZ DT Model Create**](/cli/azure/dt/model#az_dt_model_create) enligt beskrivningen nedan för att ladda upp din uppdaterade *rums* modell till din Azure Digital-instansen. Det andra kommandot laddar upp en annan modell, *våning*, som du också använder i nästa avsnitt för att skapa olika typer av skärnings punkter.
 
     ```azurecli-interactive
     az dt model create -n <ADT_instance_name> --models Room.json
@@ -101,9 +101,9 @@ När du har utformat modeller måste du ladda upp dem till din Azure Digital-ins
     Utdata från varje kommando visar information om en modell som har laddats upp.
 
     >[!TIP]
-    >Du kan också ladda upp alla modeller i en katalog på samma tid genom att använda `--from-directory` alternativet för kommandot Skapa modell. Mer information finns i [valfria parametrar för *AZ DT Model Create*](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_create-optional-parameters).
+    >Du kan också ladda upp alla modeller i en katalog på samma tid genom att använda `--from-directory` alternativet för kommandot Skapa modell. Mer information finns i [valfria parametrar för *AZ DT Model Create*](/cli/azure/dt/model#az_dt_model_create-optional-parameters).
 
-1. Kontrol lera att modellerna har skapats med kommandot [**AZ DT Model List**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_list) som visas nedan. Då skrivs en lista över alla modeller som har överförts till den digitala Azure-instansen med fullständig information. 
+1. Kontrol lera att modellerna har skapats med kommandot [**AZ DT Model List**](/cli/azure/dt/model#az_dt_model_list) som visas nedan. Då skrivs en lista över alla modeller som har överförts till den digitala Azure-instansen med fullständig information. 
 
     ```azurecli-interactive
     az dt model list -n <ADT_instance_name> --definition
@@ -129,7 +129,7 @@ Eftersom modeller inte kan skrivas över returnerar detta nu felkoden `ModelIdAl
 
 Nu när vissa modeller har laddats upp till din Azure Digital-instansen, kan du skapa [**digitala**](concepts-twins-graph.md) delar baserade på modell definitionerna. Digitala delar representerar entiteterna i din affärs miljö – saker som sensorer i en grupp, rum i en byggnad eller lampor i en bil. 
 
-Om du vill skapa en digital-delad använder du kommandot [**AZ DT dubbla Create**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_create) . Du måste referera till modellen som den dubbla är baserad på och kan även definiera startvärden för alla egenskaper i modellen. Du behöver inte skicka någon Relations information i det här skedet.
+Om du vill skapa en digital-delad använder du kommandot [**AZ DT dubbla Create**](/cli/azure/dt/twin#az_dt_twin_create) . Du måste referera till modellen som den dubbla är baserad på och kan även definiera startvärden för alla egenskaper i modellen. Du behöver inte skicka någon Relations information i det här skedet.
 
 1. Kör den här koden i Cloud Shell för att skapa flera dubbla, baserat på den *rums* modell som du uppdaterade tidigare och en annan modell, *våning*. Kom ihåg att *rummet* har tre egenskaper, så du kan ange argument med de ursprungliga värdena för dessa. (Det är valfritt att initiera egenskaps värden i allmänhet, men de behövs för den här självstudien.)
 
@@ -151,7 +151,7 @@ Om du vill skapa en digital-delad använder du kommandot [**AZ DT dubbla Create*
     
     Utdata från varje kommando visar information om det har skapats dubbla (inklusive egenskaper för rummets dubbla som initierades med dem).
 
-1. Du kan kontrol lera att de dubblarna har skapats med kommandot [**AZ DT dubbla Query**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_query) enligt nedan. Frågan som visas hittar alla digitala dubbla i din Azure Digital-instansen.
+1. Du kan kontrol lera att de dubblarna har skapats med kommandot [**AZ DT dubbla Query**](/cli/azure/dt/twin#az_dt_twin_query) enligt nedan. Frågan som visas hittar alla digitala dubbla i din Azure Digital-instansen.
     
     ```azurecli-interactive
     az dt twin query -n <ADT_instance_name> -q "SELECT * FROM DIGITALTWINS"
@@ -165,7 +165,7 @@ Om du vill skapa en digital-delad använder du kommandot [**AZ DT dubbla Create*
 
 Du kan också ändra egenskaperna för en som du har skapat. 
 
-1. Kör det här [**AZ DT, dubbla uppdaterings**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_update) kommando för att ändra *room0*-RoomName från *room0* till *PresidentialSuite*:
+1. Kör det här [**AZ DT, dubbla uppdaterings**](/cli/azure/dt/twin#az_dt_twin_update) kommando för att ändra *room0*-RoomName från *room0* till *PresidentialSuite*:
 
     ```azurecli-interactive
     az dt twin update -n <ADT_instance_name> --twin-id room0 --json-patch '{"op":"add", "path":"/RoomName", "value": "PresidentialSuite"}'
@@ -183,7 +183,7 @@ Du kan också ändra egenskaperna för en som du har skapat.
 
     :::image type="content" source="media/tutorial-command-line/cli/output-update-twin.png" alt-text="Skärm bild av Cloud Shell visar resultatet av kommandot Update, som innehåller en RoomName av PresidentialSuite." lightbox="media/tutorial-command-line/cli/output-update-twin.png":::
 
-1. Du kan kontrol lera att uppdateringen har slutförts genom att köra kommandot [**AZ DT dubbla show**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_show) för att se *room0* information:
+1. Du kan kontrol lera att uppdateringen har slutförts genom att köra kommandot [**AZ DT dubbla show**](/cli/azure/dt/twin#az_dt_twin_show) för att se *room0* information:
 
     ```azurecli-interactive
     az dt twin show -n <ADT_instance_name> --twin-id room0
@@ -197,7 +197,7 @@ Sedan kan du skapa några **relationer** mellan dessa dubbla, för att ansluta d
 
 De typer av relationer som du kan skapa från en till en annan definieras i de [modeller](#model-a-physical-environment-with-dtdl) som du laddade upp tidigare. [Modell definitionen för *basyta*](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) anger att golv kan ha en typ av relation som kallas *innehåller*. Detta gör det möjligt att skapa en relation av typen *contains* från varje *golv* till motsvarande rum som den innehåller.
 
-Om du vill lägga till en relation använder du kommandot [**AZ DT dubbla Relations skapande**](/cli/azure/ext/azure-iot/dt/twin/relationship?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_relationship_create) . Ange den dubbla som relationen kommer från, typen av relation och den dubbla som relationen ansluter till. Till sist ska du ge relationen ett unikt ID. Om en relation har definierats för att ha egenskaper kan du även initiera Relations egenskaperna i det här kommandot.
+Om du vill lägga till en relation använder du kommandot [**AZ DT dubbla Relations skapande**](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_create) . Ange den dubbla som relationen kommer från, typen av relation och den dubbla som relationen ansluter till. Till sist ska du ge relationen ett unikt ID. Om en relation har definierats för att ha egenskaper kan du även initiera Relations egenskaperna i det här kommandot.
 
 1. Kör följande kod för att lägga till en *contains*-Type-relation från var och en av de *golv* som du skapade tidigare till motsvarande *rum* , dubbla. Relationerna heter *relationship0* och *relationship1*.
 
@@ -240,7 +240,7 @@ De dubbla och relationer som du har skapat i den här självstudien utgör följ
 
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>Fråga den dubbla grafen för att svara på frågor om miljön
 
-En huvud funktion i Azure Digitals flätas är möjligheten att [fråga](concepts-query-language.md) ditt dubbla diagram enkelt och effektivt att besvara frågor om din miljö. I Azure CLI görs detta med kommandot [**AZ DT dubbla frågor**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_query) .
+En huvud funktion i Azure Digitals flätas är möjligheten att [fråga](concepts-query-language.md) ditt dubbla diagram enkelt och effektivt att besvara frågor om din miljö. I Azure CLI görs detta med kommandot [**AZ DT dubbla frågor**](/cli/azure/dt/twin#az_dt_twin_query) .
 
 Kör följande frågor i Cloud Shell för att svara på några frågor om exempel miljön.
 
@@ -308,7 +308,7 @@ När du har slutfört den här självstudien kan du välja vilka resurser du vil
 
 * **Om du planerar att fortsätta till nästa själv studie kurs** kan du behålla de resurser som du har konfigurerat här och återanvända Azures digitala dubbla instansen utan att avmarkera något i mellan.
 
-* **Om du vill fortsätta att använda Azures digitala dubbla instansen, men ta bort alla dess modeller, delar och relationer**, kan du använda [**AZ DT dubbla relationer ta bort**](/cli/azure/ext/azure-iot/dt/twin/relationship?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_relationship_delete), [**AZ DT dubbla Delete**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_delete)och [**AZ DT modell Delete**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_delete) -kommandon för att rensa relationer, dubbla och modeller i din instans.
+* **Om du vill fortsätta att använda Azures digitala dubbla instansen, men ta bort alla dess modeller, delar och relationer**, kan du använda [**AZ DT dubbla relationer ta bort**](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_delete), [**AZ DT dubbla Delete**](/cli/azure/dt/twin#az_dt_twin_delete)och [**AZ DT modell Delete**](/cli/azure/dt/model#az_dt_model_delete) -kommandon för att rensa relationer, dubbla och modeller i din instans.
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 

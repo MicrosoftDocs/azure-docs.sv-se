@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/20/2020
+ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4eb7e64065e311dc18f33dffb169d5c27a34008d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05a0aeb43b13dc4db28ca8c56fc668756a2a4510
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101673039"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258732"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines DBMS-distribution för SAP NetWeaver
 
@@ -309,7 +309,7 @@ ms.locfileid: "101673039"
 
 
 
-Det här dokumentet omfattar flera olika områden att tänka på när du distribuerar SQL Server för SAP-arbetsbelastningar i Azure IaaS. Som ett villkor för det här dokumentet bör du läsa dokument [överväganden för Azure Virtual Machines DBMS-distribution för SAP-arbetsbelastningar](./dbms_guide_general.md) samt andra guider i [SAP-arbetsbelastningen i Azure-dokumentationen](./get-started.md). 
+Det här dokumentet omfattar flera olika områden att tänka på när du distribuerar SQL Server för SAP-arbetsbelastningar i Azure IaaS. Som ett villkor för det här dokumentet bör du läsa dokument [överväganden för Azure Virtual Machines DBMS-distribution för SAP-arbetsbelastningar](./dbms_guide_general.md) och andra guider i [SAP-arbetsbelastningen i Azure-dokumentationen](./get-started.md). 
 
 
 
@@ -329,6 +329,8 @@ Det finns vissa SQL Server i IaaS information som du bör känna till innan du f
 * **Stöd för SQL-versioner**: för SAP-kunder stöds SQL Server 2008 R2 och högre på Microsoft Azure virtuella datorn. Tidigare versioner stöds inte. Läs den här allmänna [support policyn](https://support.microsoft.com/kb/956893) för mer information. I allmänhet stöds SQL Server 2008 av Microsoft också. Men på grund av betydande funktioner för SAP, som introducerades med SQL Server 2008 R2, är SQL Server 2008 R2 den lägsta versionen för SAP. I allmänhet bör du överväga att använda de senaste SQL Server versionerna för att köra SAP-arbetsbelastningar i Azure IaaS. De senaste SQL Server-versionerna erbjuder bättre integrering i några av Azure-tjänsterna och-funktionerna. Eller har ändringar som optimerar åtgärder i en Azure IaaS-infrastruktur. Därför är papperet begränsat till SQL Server 2016 och SQL Server 2017.
 * **SQL-prestanda**: Microsoft Azure värdbaserade Virtual Machines fungerar bra jämfört med andra offentliga moln erbjudanden, men enskilda resultat kan variera. Se [metod tipsen för artikeln prestanda för SQL Server i Azure Virtual Machines](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md).
 * **Använda avbildningar från Azure Marketplace**: Det snabbaste sättet att distribuera en ny Microsoft Azure virtuell dator är att använda en avbildning från Azure Marketplace. Det finns avbildningar på Azure Marketplace, som innehåller de senaste SQL Server versionerna. Avbildningarna där SQL Server redan har installerats kan inte användas direkt för SAP NetWeaver-program. Orsaken är att standard SQL Servers sorteringen installeras i dessa avbildningar och inte sorteringen som krävs av SAP NetWeaver-system. För att kunna använda sådana bilder, se stegen som beskrivs i kapitlet [med en SQL Server avbildning från Microsoft Azure Marketplace][dbms-guide-5.6]. 
+*  **SQL Server stöd för flera instanser inom en enda virtuell Azure-dator**: den här distributions metoden stöds. Tänk dock på resurs begränsningar, särskilt kring nätverks-och lagrings bandbredden för den VM-typ som du använder. Detaljerad information finns i artikel [storlekar för virtuella datorer i Azure](https://docs.microsoft.com/azure/virtual-machines/sizes). Dessa kvot begränsningar kan förhindra att du implementerar samma arkitektur för flera instanser som du kan implementera lokalt. När det gäller konfiguration och störning av delning av resurser som är tillgängliga inom en enskild virtuell dator måste du tänka på samma saker som lokalt.
+*  **Flera SAP-databaser i en enda SQL Server instans i en enda virtuell dator**: som ovan stöds konfigurationer som dessa. Att tänka på när flera SAP-databaser delar delade resurser på en enda SQL Server instans är desamma som för lokala distributioner. Ytterligare begränsa andra gränser som antalet diskar som kan kopplas till en speciell VM-typ i åtanke. Begränsningar för nätverks-och lagrings kvoter för särskilda VM-typer som detaljerade [storlekar för virtuella datorer i Azure](https://docs.microsoft.com/azure/virtual-machines/sizes). 
 
 
 ## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>Rekommendationer för VM/VHD-struktur för SAP-relaterade SQL Server distributioner
@@ -408,7 +410,7 @@ Det finns flera möjligheter att utföra manuella säkerhets kopieringar genom a
 
 Den första metoden är känd och används i många fall även i den lokala världen. Dock lämnar den aktiviteten för att lösa säkerhets kopierings platsen för längre tid. Eftersom du inte vill behålla säkerhets kopiorna i 30 eller fler dagar i den lokalt anslutna Azure Storage måste du antingen använda Azure Backup tjänster eller ett annat säkerhets kopierings-eller återställnings verktyg från tredje part som innehåller åtkomst och bevarande hantering för dina säkerhets kopior. Eller så skapar du en stor fil server i Azure med hjälp av Windows lagrings utrymmen.
 
-Den andra metoden beskrivs närmare i artikeln [SQL Server säkerhets kopiering till URL](../../../azure-sql/virtual-machines/windows/backup-restore.md). Olika versioner av SQL Server har vissa variationer i den här funktionen. Därför bör du ta en titt på dokumentationen för din specifika SQL Server versions kontroll. Viktigt att Observera att den här artikeln innehåller en mängd olika begränsningar. Du har antingen möjlighet att utföra säkerhets kopieringen mot:
+Den andra metoden beskrivs närmare i artikeln [SQL Server säkerhets kopiering till URL](../../../azure-sql/virtual-machines/windows/backup-restore.md). Olika versioner av SQL Server har vissa variationer i den här funktionen. Därför bör du ta en titt på dokumentationen för din specifika SQL Server versions kontroll. Viktigt att notera att den här artikeln innehåller flera begränsningar. Du har antingen möjlighet att utföra säkerhets kopieringen mot:
 
 - En enda Azure Page-BLOB, som sedan begränsar säkerhets kopians storlek till 1000 GB. Den här begränsningen begränsar också det data flöde som du kan uppnå.
 - Flera (upp till 64) Azure block-blobar som möjliggör en teoretisk säkerhets kopierings storlek på 12 TB. Tester med kund databaser visar dock att maximal säkerhets kopierings storlek kan vara mindre än den teoretiska gränsen. I det här fallet ansvarar du för att hantera kvarhållning av säkerhets kopior och även komma åt o säkerhets kopieringarna.
@@ -471,7 +473,7 @@ Med hjälp av SQL Server i Azure IaaS-distributioner för SAP har du flera olika
 Med Windows Server 2016 lanserade Microsoft [Lagringsdirigering](/windows-server/storage/storage-spaces/storage-spaces-direct-overview). SQL Server FCI-klustring stöds i allmänhet baserat på Lagringsdirigering distribution. Azure erbjuder också [Azure-delade diskar](../../disks-shared-enable.md?tabs=azure-cli) som kan användas för Windows-kluster. För SAP-arbetsbelastningar har vi inte stöd för dessa HA-alternativ. 
 
 ### <a name="sql-server-log-shipping"></a>SQL Server logg överföring
-En av metoderna för hög tillgänglighet (HA) är SQL Server logg överföring. Om de virtuella datorerna som ingår i HA-konfigurationen har fungerande namn matchning, finns det inga problem och installationen i Azure skiljer sig inte från alla inställningar som görs lokalt. Vad gäller att ställa in logg överföring och principerna kring logg överföring. Information om SQL Server logg överföring finns i artikeln [om logg överföring (SQL Server)](/sql/database-engine/log-shipping/about-log-shipping-sql-server).
+En av metoderna för hög tillgänglighet (HA) är SQL Server logg överföring. Om de virtuella datorerna som ingår i HA-konfigurationen har fungerande namn matchning finns det inga problem. Installationen i Azure skiljer sig inte från alla inställningar som görs lokalt och som är relaterade till att ställa in logg överföring och principerna kring logg överföring. Information om SQL Server logg överföring finns i artikeln [om logg överföring (SQL Server)](/sql/database-engine/log-shipping/about-log-shipping-sql-server).
 
 Den SQL Server logg leverans funktionen användes i Azure för att uppnå hög tillgänglighet i en Azure-region. I följande scenarier har SAP-kunder använt logg överföring tillsammans med Azure:
 
@@ -516,10 +518,10 @@ SQL Server Always On är den vanligaste funktionen för hög tillgänglighet och
 - Använda tillgänglighets gruppens lyssnare. Med tillgänglighets gruppens lyssnare måste du distribuera en Azure Load Balancer. På det här sättet är standard metoden för distribution. SAP-program konfigureras för att ansluta mot tillgänglighets gruppens lyssnare och inte mot en enskild nod
 - Använda anslutnings parametrarna för SQL Server databas spegling. I så fall måste du konfigurera anslutningarna för SAP-programmen på ett sätt där båda namnen på noderna namnges. Exakt information om en sådan konfiguration av SAP-sidan finns dokumenterad i SAP Obs [#965908](https://launchpad.support.sap.com/#/notes/965908). Genom att använda det här alternativet behöver du inte konfigurera en lyssnare för tillgänglighets grupp. Och med att det inte finns någon Azure Load Balancer för SQL Server hög tillgänglighet. Därför är nätverks fördröjningen mellan SAP-programlagret och DBMS-skiktet lägre eftersom den inkommande trafiken till SQL Server-instansen inte dirigeras via Azure Load Balancer. Men återkallande, det här alternativet fungerar bara om du begränsar din tillgänglighets grupp så att den omfattar två instanser. 
 
-Ett fåtal kunder utnyttjar SQL Server alltid funktioner för ytterligare haveri beredskap mellan Azure-regioner. Flera kunder använder också möjligheten att utföra säkerhets kopieringar från en sekundär replik. 
+Ett fåtal kunder utnyttjar SQL Server alltid funktioner för haveri beredskap mellan Azure-regioner. Flera kunder använder också möjligheten att utföra säkerhets kopieringar från en sekundär replik. 
 
 ## <a name="sql-server-transparent-data-encryption"></a>SQL Server transparent datakryptering
-Det finns ett antal kunder som använder SQL Server [Transparent datakryptering (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) när de distribuerar SAP SQL Server-databaser i Azure. Den SQL Server TDE-funktionen stöds fullt ut av SAP (se SAP Obs! [#1380493](https://launchpad.support.sap.com/#/notes/1380493)). 
+Det finns många kunder som använder SQL Server [Transparent datakryptering (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) när de distribuerar sina SAP SQL Server-databaser i Azure. Den SQL Server TDE-funktionen stöds fullt ut av SAP (se SAP Obs! [#1380493](https://launchpad.support.sap.com/#/notes/1380493)). 
 
 ### <a name="applying-sql-server-tde"></a>Använda SQL Server TDE
 I de fall där du utför en heterogen migrering från en annan DBMS, som körs lokalt, till Windows/SQL Server som körs i Azure, bör du skapa en tom mål databas i SQL Server i förväg. Som nästa steg ska du tillämpa SQL Server TDE-funktioner. Även om du fortfarande kör ditt produktions system lokalt. Anledningen till att du vill utföra i den här sekvensen är att processen för att kryptera den tomma databasen kan ta en stund. SAP import-processerna importerar sedan data till den krypterade databasen under drift stopps fasen. Behovet av att importera till en krypterad databas har lägre tids påverkan än att kryptera databasen efter export fasen i fasen drift. Negativa upplevelser gjordes vid försök att tillämpa TDE med SAP-arbetsbelastning som körs ovanpå databasen. Därför kommer rekommendationen att behandla distributionen av TDE som en aktivitet som behöver utföras utan SAP-arbetsbelastning på den aktuella databasen.

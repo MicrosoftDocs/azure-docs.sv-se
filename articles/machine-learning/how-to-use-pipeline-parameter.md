@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 03/19/2021
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 09eabffb0e01ee6c5ea6b541378773a7d60397a3
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 30ae737a170c337fe6be51521aeb358cdcebd44b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106080455"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107350"
 ---
 # <a name="use-pipeline-parameters-in-the-designer-to-build-versatile-pipelines"></a>Använd pipeline-parametrar i designern för att bygga mångsidiga pipelines
 
@@ -95,9 +95,11 @@ Om du vill skicka in din pipeline med variabla data uppsättningar måste du bef
 
 Nu kan du ange en annan data uppsättning genom att använda pipeline-parametern nästa gång du kör pipelinen.
 
-## <a name="attach-module-parameter-to-pipeline-parameter"></a>Koppla modul-parameter till pipeline-parameter 
+## <a name="attach-and-detach-module-parameter-to-pipeline-parameter"></a>Anslut och koppla från modul-parameter till pipeline-parameter 
 
-I det här avsnittet får du lära dig hur du kopplar en modul parameter till en pipeline-parameter.
+I det här avsnittet får du lära dig hur du ansluter och kopplar från en modul parameter till en pipeline-parameter.
+
+### <a name="attach-module-parameter-to-pipeline-parameter"></a>Koppla modul-parameter till pipeline-parameter
 
 Du kan koppla samma modul parametrar för duplicerade moduler till samma pipeline-parameter om du vill ändra värdet vid en tidpunkt när du aktiverar pipelinen.
 
@@ -115,10 +117,16 @@ I följande exempel finns en dubblett av en modul som **saknar rensade data** . 
 
    ![Skärm bild som visar hur du kopplar en pipeline-parameter](media/how-to-use-pipeline-parameter/attach-replace-value-to-pipeline-parameter.png)
 
-Du har kopplat fältet **ersättnings värde** till din pipeline-parameter. **Ersättnings värdet** i modulerna är inte åtgärds bara.
+Du har kopplat fältet **ersättnings värde** till din pipeline-parameter. 
+
+
+### <a name="detach-module-parameter-to-pipeline-parameter"></a>Koppla bort modul parameter till pipeline-parameter
+
+När du har kopplat ett **ersättnings värde** till en pipeline-parameter är det inte åtgärds bara.
+
+Du kan koppla bort en modul parameter till en pipeline-parameter genom att klicka på ellipsen (**...**) bredvid modulen modul och välja **Koppla från pipeline-parameter**.
 
  ![Skärm bild som visar att det inte går att utföra åtgärder efter koppling till pipeline-parametern](media/how-to-use-pipeline-parameter/non-actionable-module-parameter.png)
-
 
 ## <a name="update-and-delete-pipeline-parameters"></a>Uppdatera och ta bort pipeline-parametrar
 
@@ -133,7 +141,7 @@ Använd följande steg för att uppdatera en modul pipeline-parameter:
 
 ### <a name="delete-a-dataset-pipeline-parameter"></a>Ta bort en pipeline-parameter för data uppsättning
 
-Använd följande steg för att koppla från en pipeline-parameter för data uppsättning:
+Använd följande steg för att ta bort en pipeline-parameter för data uppsättning:
 
 1. Välj data uppsättnings modulen.
 1. Avmarkera alternativ **uppsättningen som pipeline-parameter**.
@@ -147,22 +155,14 @@ Använd följande steg för att ta bort en modul pipeline-parameter:
 
 1. Välj ellipserna (**...**) bredvid pipeline-parametern.
 
-    I den här vyn visas vilka moduler som pipeline-parametern är kopplad till. Om du vill ta bort en pipeline-parameter måste du först koppla från den från alla modul parametrar.
+    I den här vyn visas vilka moduler som pipeline-parametern är kopplad till.
 
-    ![Skärm bild som visar aktuell pipeline-parameter som tillämpas på en modul](media/how-to-use-pipeline-parameter/current-pipeline-parameter.png)
+    ![Skärm bild som visar aktuell pipeline-parameter som tillämpas på en modul](media/how-to-use-pipeline-parameter/delete-pipeline-parameter2.png)
 
-1. På arbets ytan väljer du en modul som pipelin parametern fortfarande är kopplad till.
-1. I fönstret modul egenskaper till höger letar du reda på det fält som pipeline-parametern är kopplad till.
-1. Mouseover det bifogade fältet. Välj sedan de ellipser (**...**) som visas.
-1. Välj **Koppla från pipeline-parameter**
-
-    ![Skärm bild som visar frånkopplade från pipeline-parametrar](media/how-to-use-pipeline-parameter/detach-from-pipeline-parameter.png)
-
-1. Upprepa föregående steg tills du har kopplat bort pipeline-parametern från alla fält.
-1. Välj ellipserna (**...**) bredvid pipeline-parametern.
 1. Välj **ta bort parameter** för att ta bort pipeline-parametern.
 
-    ![Skärm bild som visar borttagning av pipeline-parametrar](media/how-to-use-pipeline-parameter/delete-pipeline-parameter.png)
+    > [!NOTE]
+    > Om du tar bort en pipeline-parameter tas alla anslutna parametrar bort och värdet för de frånkopplade modulernas parametrar behåller det aktuella värdet för pipeline-parametern.     
 
 ## <a name="trigger-a-pipeline-run-with-pipeline-parameters"></a>Utlös en pipeline-körning med pipeline-parametrar 
 

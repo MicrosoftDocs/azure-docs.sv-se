@@ -8,16 +8,16 @@ ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f59e2ca06f4ec435522cd06815b22d706a2d894c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0bd6a8af4850f3a0519bac7644100c2dcf883635
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772424"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031180"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge system som stöds
 
-[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 Den här artikeln innehåller information om vilka system och komponenter som stöds av IoT Edge, oavsett om de är officiellt eller i för hands versionen.
 
@@ -52,18 +52,39 @@ Azure IoT Edge körs på de flesta operativ system som kan köra behållare. all
   * Microsoft har utfört informella tester på plattformarna eller känner av en partner som kör Azure IoT Edge på plattformen
   * Installations paket för andra plattformar kan fungera på dessa plattformar
 
-Värd operativ systemets familj måste alltid matcha den familj av gäst operativ systemet som används i en moduls behållare. Med andra ord kan du bara använda Linux-behållare på Linux-och Windows-behållare i Windows. När du använder Windows stöds endast process isolerade behållare, inte för Hyper-V-isolerade behållare.  
+Värd operativ systemets familj måste alltid matcha den familj av gäst operativ systemet som används i en moduls behållare.
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+Med andra ord kan du bara använda Linux-behållare på Linux-och Windows-behållare i Windows. När du använder Windows-behållare stöds endast process isolerade behållare, inte för isolerade Hyper-V-behållare.  
 
 IoT Edge för Linux i Windows använder IoT Edge på en virtuell Linux-dator som körs på en Windows-värd. På så sätt kan du köra Linux-moduler på en Windows-enhet.
+:::moniker-end
+<!-- end 1.1 -->
 
 ### <a name="tier-1"></a>Nivå 1
 
 De system som anges i följande tabeller stöds av Microsoft, antingen allmänt tillgängliga eller i offentlig för hands version, och testas med varje ny version.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Azure IoT Edge stöder moduler som skapats som Linux-eller Windows-behållare. Linux-behållare kan distribueras till Linux-enheter eller distribueras till Windows-enheter med IoT Edge för Linux i Windows. Windows-behållare kan bara distribueras till Windows-enheter.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Azure IoT Edge version 1,2 stöder bara moduler som skapats som Linux-behållare.
+
+För närvarande finns det inte stöd för att köra IoT Edge version 1,2 på Windows-enheter. [IoT Edge för Linux i Windows](iot-edge-for-linux-on-windows.md) är det rekommenderade sättet att köra IoT Edge på Windows-enheter, men för närvarande körs bara IoT Edge 1,1. Mer information finns i [IoT Edge 1,1](?view=iotedge-2018-06&preserve-view=true) -versionen av den här artikeln.
+
+:::moniker-end
+<!-- end 1.2 -->
 
 #### <a name="linux-containers"></a>Linux-containrar
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Moduler som skapats som Linux-behållare kan distribueras till antingen Linux-eller Windows-enheter. För Linux-enheter installeras IoT Edge runtime direkt på värd enheten. För Windows-enheter är en virtuell Linux-dator som är fördefinierad med IoT Edge runtime körs på värd enheten.
 
 [IoT Edge för Linux på Windows](iot-edge-for-linux-on-windows.md) är för närvarande en offentlig för hands version, men är det rekommenderade sättet att köra IoT Edge på Windows-enheter.
@@ -78,12 +99,27 @@ Moduler som skapats som Linux-behållare kan distribueras till antingen Linux-el
 | Windows Server 2019 | Offentlig för hands version |  |  |
 
 Alla Windows-operativsystem måste vara version 1809 (build 17763) eller senare.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+| Operativsystem | AMD64 | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| Raspberry Pi OS-storlek |  | ![Raspberry Pi OS-utsträckning + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Offentlig för hands version |
+
+:::moniker-end
+<!-- end 1.2 -->
 
 >[!NOTE]
 >Ubuntu Server 16,04-stöd avslutades med lanseringen av IoT Edge version 1,1.
 
 #### <a name="windows-containers"></a>Windows-containrar
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 >[!IMPORTANT]
 >IoT Edge 1,1 LTS är den sista versions kanal som stöder Windows-behållare. Från och med version 1,2 kommer Windows-behållare inte att stödjas. Överväg att använda eller flytta till [IoT Edge för Linux i Windows](iot-edge-for-linux-on-windows.md) för att köra IoT Edge på Windows-enheter.
 
@@ -99,6 +135,17 @@ Alla Windows-operativsystem måste vara version 1809 (build 17763). Den specifik
 
 >[!NOTE]
 >Support för Windows 10 IoT Core slutade med lanseringen av IoT Edge version 1,1.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+IoT Edge 1,1 LTS är den sista versions kanal som stöder Windows-behållare. Från och med version 1,2 stöds inte Windows-behållare.
+
+Information om operativ system som stöds för Windows-behållare finns i [IoT Edge 1,1](?view=iotedge-2018-06&preserve-view=true) -versionen av den här artikeln.
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="tier-2"></a>Nivå 2
 
@@ -158,10 +205,28 @@ IoT Edge använder Microsoft. Azure. devices. client SDK. Mer information finns 
 Azure IoT Edge kan köras i virtuella datorer. Att använda en virtuell dator som en IoT Edge enhet är vanligt när kunder vill utöka den befintliga infrastrukturen med Edge Intelligence. Familjen för värddatorns virtuella dator operativ system måste matcha den familj av gäst operativ systemet som används i en moduls behållare. Detta krav är detsamma som när Azure IoT Edge körs direkt på en enhet. Azure IoT Edge är oberoende av den underliggande Virtualization-tekniken och fungerar i virtuella datorer som drivs av plattformar som Hyper-V och vSphere.
 
 <br>
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+<center>
+
+![Azure IoT Edge i en virtuell dator](./media/support/edge-on-vm-with-windows.png)
+
+</center>
+
+::: moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
 <center>
 
 ![Azure IoT Edge i en virtuell dator](./media/support/edge-on-vm.png)
+
 </center>
+
+:::moniker-end
 
 ## <a name="minimum-system-requirements"></a>Minsta system krav
 

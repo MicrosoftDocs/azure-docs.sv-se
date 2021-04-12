@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: fda69d582f26b0c9189898bb5c8b0004a1e47360
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 711b4f6577b17e84a5d30774fa7be4c9033d4340
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722777"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031145"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Förbered för att distribuera din IoT Edge-lösning i produktion
 
@@ -174,7 +174,7 @@ Om du vill autentisera med ett huvud namn för tjänsten anger du det ID för tj
 
 ### <a name="use-tags-to-manage-versions"></a>Använda taggar för att hantera versioner
 
-En-tagg är ett Docker-koncept som du kan använda för att skilja mellan versioner av Docker-behållare. Taggar är suffix som **1,0** som finns i slutet av en behållar lagrings plats. Till exempel **MCR.Microsoft.com/azureiotedge-agent:1.0**. Taggarna är föränderligt och kan ändras så att de pekar till en annan behållare när som helst, så att ditt team ska komma överens om en konvention att följa när du uppdaterar dina avbildningar flyttas framåt.
+En-tagg är ett Docker-koncept som du kan använda för att skilja mellan versioner av Docker-behållare. Taggar är suffix som **1,1** som finns i slutet av en behållar lagrings plats. Till exempel **MCR.Microsoft.com/azureiotedge-agent:1.1**. Taggarna är föränderligt och kan ändras så att de pekar till en annan behållare när som helst, så att ditt team ska komma överens om en konvention att följa när du uppdaterar dina avbildningar flyttas framåt.
 
 Taggar hjälper dig också att genomdriva uppdateringar på dina IoT Edge enheter. När du push-överför en uppdaterad version av en modul till behållar registret ökar du taggen. Sedan kan du skicka en ny distribution till dina enheter med taggen som ökar. Behållar motorn känner igen den stegvisa taggen som en ny version och hämtar den senaste modulens version till din enhet.
 
@@ -263,6 +263,17 @@ Om dina enheter ska distribueras i ett nätverk som använder en proxyserver må
 
 I Linux använder IoT Edge daemon journaler som standard driv rutin för loggning. Du kan använda kommando rads verktyget `journalctl` för att skicka frågor till daemon-loggarna.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+I Windows använder IoT Edge daemon PowerShell-diagnostik. Använd `Get-IoTEdgeLog` för att fråga efter loggar från daemonen. IoT Edge moduler använder JSON-drivrutinen för loggning, vilket är standardvärdet.  
+
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
+```
+
+:::moniker-end
+<!-- end 1.1 -->
+
 <!--1.2-->
 :::moniker range=">=iotedge-2020-11"
 
@@ -281,12 +292,6 @@ Från och med version 1,2 förlitar sig IoT Edge på flera bakgrunds program. Ä
   ```
 
 :::moniker-end
-
-I Windows använder IoT Edge daemon PowerShell-diagnostik. Använd `Get-IoTEdgeLog` för att fråga efter loggar från daemonen. IoT Edge moduler använder JSON-drivrutinen för loggning, vilket är standardvärdet.  
-
-```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
-```
 
 När du testar en IoT Edge-distribution kan du vanligt vis få åtkomst till dina enheter för att hämta loggar och felsöka. Du kanske inte har det alternativet i ett distributions scenario. Överväg hur du ska samla in information om dina enheter i produktionen. Ett alternativ är att använda en loggningsmodul som samlar in information från de andra modulerna och skickar den till molnet. Ett exempel på en loggningsmodul är [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics), eller så kan du skapa en egen.
 
@@ -308,12 +313,24 @@ Du kan begränsa storleken på alla behållar logg fils loggar i behållar Motor
 }
 ```
 
-Lägg till (eller Lägg till) den här informationen i en fil med namnet `daemon.json` och placera den rätt plats för din enhets plattform.
+Lägg till (eller Lägg till) den här informationen i en fil med namnet `daemon.json` och placera den på följande plats:
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 | Plattform | Location |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+* `/etc/docker/`
+
+:::moniker-end
+<!-- end 1.2 -->
 
 Behållar motorn måste startas om för att ändringarna ska börja gälla.
 

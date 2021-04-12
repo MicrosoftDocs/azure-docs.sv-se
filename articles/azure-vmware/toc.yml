@@ -64,8 +64,6 @@
       href: manage-dhcp.md
     - name: Konfigurera NSX-nätverks komponenter
       href: configure-nsx-network-components-azure-portal.md
-    - name: Distribuera haveriberedskap för virtuella datorer
-      href: disaster-recovery-for-virtual-machines.md
     - name: Konfigurera GitHub Enterprise-server
       href: github-enterprise-server.md
     - name: Användning av offentlig IP
@@ -76,6 +74,26 @@
       href: windows-server-failover-cluster.md
     - name: Återställ vSphere-autentiseringsuppgifter
       href: reset-vsphere-credentials.md
+    - name: Haveriberedskap
+      items:
+        - name: Distribuera haveriberedskap för virtuella datorer
+          href: disaster-recovery-for-virtual-machines.md
+        - name: Haveri beredskap till Azure
+          items:
+            - name: Förbereda Azure
+              href: /azure/site-recovery/avs-tutorial-prepare-azure?context=/azure/azure-vmware/context/context
+            - name: Förbereda Azure VMware Solution
+              href: /azure/site-recovery/avs-tutorial-prepare-avs?context=/azure/azure-vmware/context/context
+            - name: Konfigurera replikering
+              href: /azure/site-recovery/avs-tutorial-replication?context=/azure/azure-vmware/context/context
+            - name: Köra ett programåterställningstest
+              href: /azure/site-recovery/avs-tutorial-dr-drill-azure?context=/azure/azure-vmware/context/context
+            - name: Redundansväxla till Azure
+              href: /azure/site-recovery/avs-tutorial-failover?context=/azure/azure-vmware/context/context
+            - name: Skydda virtuella datorer på nytt
+              href: /azure/site-recovery/avs-tutorial-reprotect?context=/azure/azure-vmware/context/context
+            - name: Redundansväxla från Azure
+              href: /azure/site-recovery/avs-tutorial-failback?context=/azure/azure-vmware/context/context
     - name: Inbyggd Azure-integrering
       items:
         - name: API Management
