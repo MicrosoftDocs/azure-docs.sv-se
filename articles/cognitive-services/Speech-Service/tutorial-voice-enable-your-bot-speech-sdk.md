@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d91bfee228b946ff564f6d080976f9ce5c12caa4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa449ad3d9a0e26bd0754a67581c8d63fa025e55
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102426271"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552316"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Självstudie: röst – aktivera din robot med tal-SDK
 
@@ -83,7 +83,7 @@ Klient programmet som du skapar i den här självstudien använder en fåtal av 
 Om du vill använda en annan region för den här självstudien kan de här faktorerna begränsa dina val:
 
 * Se till att du använder en [Azure-region som stöds](regions.md#voice-assistants).
-* Den direkta linjens tal kanal använder tjänsten för text till tal, som har standard-och neurala-röster. Neurala-röster är [begränsade till särskilda Azure-regioner](regions.md#standard-and-neural-voices).
+* Den direkta linjens tal kanal använder tjänsten för text till tal, som har neurala och standard röster. Neurala-och standard-röster är tillgängliga i [Azure-regionerna](regions.md#neural-and-standard-voices).
 
 Mer information om regioner finns i [Azure-platser](https://azure.microsoft.com/global-infrastructure/locations/).
 
@@ -328,7 +328,7 @@ Om du får ett fel meddelande i huvud fönstret i appen använder du den här ta
 |Fel (AuthenticationFailure): WebSocket-uppgraderingen misslyckades med ett autentiseringsfel (401). Sök efter rätt prenumerations nyckel (eller autentiseringstoken) och region namn| På sidan Inställningar i appen kontrollerar du att du har angett tal prenumerations nyckeln och dess region korrekt.<br>Kontrol lera att din tal nyckel och nyckel region har angetts korrekt. |
 |Fel (ConnectionFailure): anslutningen stängdes av den fjärranslutna värden. Felkod: 1011. Fel information: vi kunde inte ansluta till bot innan ett meddelande skickades | Kontrol lera att du har [markerat kryss rutan "Aktivera direkt uppspelnings slut punkt"](#register-the-direct-line-speech-channel) och/eller [växlade **webb-Sockets**](#enable-web-sockets) till på.<br>Kontrol lera att din Azure App Service körs. Om det är fallet kan du försöka starta om App Service.|
 |Fel (ConnectionFailure): anslutningen stängdes av den fjärranslutna värden. Felkod: 1002. Fel information: Servern returnerade status koden 503 när status koden 101 förväntades | Kontrol lera att du har [markerat kryss rutan "Aktivera direkt uppspelnings slut punkt"](#register-the-direct-line-speech-channel) och/eller [växlade **webb-Sockets**](#enable-web-sockets) till på.<br>Kontrol lera att din Azure App Service körs. Om det är fallet kan du försöka starta om App Service.|
-|Fel (ConnectionFailure): anslutningen stängdes av den fjärranslutna värden. Felkod: 1011. Fel information: svars status koden indikerar inte lyckad: 500 (InternalServerError)| Din robot har angett en neurala röst i sitt [Speak](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) -fält för utdata-aktivitet, men den Azure-region som är associerad med din tal prenumerations nyckel stöder inte neurala-röster. Se [standard-och neurala-röster](./regions.md#standard-and-neural-voices).|
+|Fel (ConnectionFailure): anslutningen stängdes av den fjärranslutna värden. Felkod: 1011. Fel information: svars status koden indikerar inte lyckad: 500 (InternalServerError)| Din robot har angett en neurala röst i sitt [Speak](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) -fält för utdata-aktivitet, men den Azure-region som är associerad med din tal prenumerations nyckel stöder inte neurala-röster. Se [neurala-och standard-röster](./regions.md#neural-and-standard-voices).|
 
 Om problemet inte har åtgärd ATS i tabellen, se [röst assistenter: vanliga frågor och svar](faq-voice-assistants.md). Om det fortfarande inte går att lösa problemet när du har använt alla steg i den här självstudien anger du ett nytt ärende på  [GitHub-sidan för röst assistenten](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues).
 
@@ -475,7 +475,7 @@ Om du inte kommer att fortsätta använda eko-roboten som distribuerats i den h�
 ## <a name="see-also"></a>Se även
 
 * Distribuera till en [Azure-region nära dig](https://azure.microsoft.com/global-infrastructure/locations/) för att se förbättringar av robotens svars tid
-* Distribuera till en [Azure-region som stöder NEURALA TTS-röster med hög kvalitet](./regions.md#standard-and-neural-voices)
+* Distribuera till en [Azure-region som stöder NEURALA TTS-röster med hög kvalitet](./regions.md#neural-and-standard-voices)
 * Priser som är kopplade till kanal för direkt linje tal:
   * [Priser för bot service](https://azure.microsoft.com/pricing/details/bot-service/)
   * [Tal tjänst](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)

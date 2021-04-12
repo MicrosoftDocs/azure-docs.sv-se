@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: c1d19b5b37a60914c1d7f2a2e42cd387bd030583
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 1c4aab27eb72afa473f95f1c0956b5e3d66c3940
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106125933"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073651"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -54,7 +54,9 @@ import java.util.*;
 
 Exemplen nedan använder [DefaultAzureCredential](/java/api/com.azure.identity.defaultazurecredential). Den här autentiseringsuppgiften är lämplig för produktions-och utvecklings miljöer.
 
-`AZURE_CLIENT_SECRET``AZURE_CLIENT_ID`och `AZURE_TENANT_ID` miljövariabler krävs för att skapa ett `DefaultAzureCredential` objekt. Om du vill skapa ett registrerat program i utvecklings miljön och konfigurera miljövariabler, se [bevilja åtkomst med hanterad identitet](../managed-identity-from-cli.md).
+Ett enkelt sätt att hoppa till med hjälp av hanterad identitets autentisering finns i [ge åtkomst med hanterad identitet](../managed-identity-from-cli.md)
+
+För en mer djupgående titt på hur DefaultAzureCredential-objektet fungerar och hur du kan använda det på sätt som inte anges i den här snabb starten, se [klient bibliotek för Azure Identity för Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
 
 ### <a name="create-an-identity-and-issue-a-token-with-managed-identity"></a>Skapa en identitet och utfärda en token med hanterad identitet
 

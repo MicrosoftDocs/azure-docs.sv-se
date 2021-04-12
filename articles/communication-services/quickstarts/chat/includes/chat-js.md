@@ -10,18 +10,18 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 6fe1e092e1db4ad283f9d0096ea431a1e983f87c
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 322f54e4fa2e8096f68d5bbc216032a5b4e53c22
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105645410"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726709"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du börjar ska du se till att:
 
 - Skapa ett Azure-konto med en aktiv prenumeration. Mer information finns i [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Installera [Node.js](https://nodejs.org/en/download/) Active LTS och underhåll LTS-versioner (8.11.1 och 10.14.1 rekommenderas).
+- Installera [Node.js](https://nodejs.org/en/download/) Active LTS och underhåll LTS-versioner.
 - Skapa en Azure Communication Services-resurs. Mer information finns i [skapa en Azure Communication-resurs](../../create-communication-resource.md). Du måste **Registrera resurs slut punkten** för den här snabb starten.
 - Skapa *tre* ACS-användare och utfärda dem till användar åtkomst [token](../../access-tokens.md)för användar åtkomst. Var noga med att ange omfånget till **chatten** och **notera token-strängen och userId-strängen**. Den fullständiga demon skapar en tråd med två första deltagare och lägger sedan till en tredje deltagare i tråden.
 
@@ -165,35 +165,37 @@ Vid åtgärdat `createChatThread` returnerar metoden en `CreateChatThreadResult`
 
 ```JavaScript
 async function createChatThread() {
-    let createThreadRequest = {
-        topic: 'Preparation for London conference',
-        participants: [{
-                    id: { communicationUserId: '<USER_ID_FOR_JACK>' },
-                    displayName: 'Jack'
-                }, {
-                    id: { communicationUserId: '<USER_ID_FOR_GEETA>' },
-                    displayName: 'Geeta'
-                }]
-    };
-    let createChatThreadResult = await chatClient.createChatThread(createThreadRequest);
-    let threadId = createChatThreadResult.chatThread.id;
-    return threadId;
-    }
+  const createChatThreadRequest = {
+    topic: "Hello, World!"
+  };
+  const createChatThreadOptions = {
+    participants: [
+      {
+        id: '<USER_ID>',
+        displayName: '<USER_DISPLAY_NAME>'
+      }
+    ]
+  };
+  const createChatTtreadResult = await chatClient.createChatThread(
+    createChatThreadRequest,
+    createChatThreadOptions
+  );
+  const threadId = createChatThreadResult.chatThread.id;
+  return threadId;
+}
 
 createChatThread().then(async threadId => {
-    console.log(`Thread created:${threadId}`);
-    // PLACEHOLDERS
-    // <CREATE CHAT THREAD CLIENT>
-    // <RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>
-    // <SEND MESSAGE TO A CHAT THREAD>
-    // <LIST MESSAGES IN A CHAT THREAD>
-    // <ADD NEW PARTICIPANT TO THREAD>
-    // <LIST PARTICIPANTS IN A THREAD>
-    // <REMOVE PARTICIPANT FROM THREAD>
-    });
+  console.log(`Thread created:${threadId}`);
+  // PLACEHOLDERS
+  // <CREATE CHAT THREAD CLIENT>
+  // <RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>
+  // <SEND MESSAGE TO A CHAT THREAD>
+  // <LIST MESSAGES IN A CHAT THREAD>
+  // <ADD NEW PARTICIPANT TO THREAD>
+  // <LIST PARTICIPANTS IN A THREAD>
+  // <REMOVE PARTICIPANT FROM THREAD>
+  });
 ```
-
-Ersätt **USER_ID_FOR_JACK** och **USER_ID_FOR_GEETA** med de användar-ID: n som har hämtats från att skapa användare och token ([åtkomsttoken för användar åtkomst](../../access-tokens.md))
 
 När du uppdaterar din webb läsar flik bör du se följande i-konsolen:
 ```console
@@ -214,6 +216,18 @@ Lägg till den här koden i stället för `<CREATE CHAT THREAD CLIENT>` kommenta
 Chat Thread client for threadId: <threadId>
 ```
 
+## <a name="list-all-chat-threads"></a>Lista alla chatt trådar
+
+`listChatThreads`Metoden returnerar en `PagedAsyncIterableIterator` av typen `ChatThreadItem` . Den kan användas för att visa alla Chat-trådar.
+En iterator av `[ChatThreadItem]` är svaret som returneras från List trådar
+
+```JavaScript
+const threads = chatClient.listChatThreads();
+for await (const thread of threads) {
+   // your code here
+}
+```
+
 ## <a name="send-a-message-to-a-chat-thread"></a>Skicka ett meddelande till en chatt-tråd
 
 Använd `sendMessage` metoden för att skicka ett meddelande till en tråd som identifieras av threadId.
@@ -230,17 +244,17 @@ Använd `sendMessage` metoden för att skicka ett meddelande till en tråd som i
 `SendChatMessageResult` är svaret som returnerades från att skicka ett meddelande, det innehåller ett ID, som är det unika ID: t för meddelandet.
 
 ```JavaScript
-let sendMessageRequest =
+const sendMessageRequest =
 {
-    content: 'Hello Geeta! Can you share the deck for the conference?'
+  content: 'Hello Geeta! Can you share the deck for the conference?'
 };
 let sendMessageOptions =
 {
-    senderDisplayName : 'Jack',
-    type: 'text'
+  senderDisplayName : 'Jack',
+  type: 'text'
 };
-let sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
-let messageId = sendChatMessageResult.id;
+const sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
+const messageId = sendChatMessageResult.id;
 ```
 
 Lägg till den här koden i stället för `<SEND MESSAGE TO A CHAT THREAD>` kommentaren i **client.js**, uppdatera din webbläsare-flik och kontrol lera konsolen.
@@ -257,8 +271,8 @@ Med real tids signalering kan du prenumerera på att lyssna efter nya inkommande
 await chatClient.startRealtimeNotifications();
 // subscribe to new notification
 chatClient.on("chatMessageReceived", (e) => {
-    console.log("Notification chatMessageReceived!");
-    // your code here
+  console.log("Notification chatMessageReceived!");
+  // your code here
 });
 
 ```
@@ -269,23 +283,18 @@ Du kan också hämta Chat-meddelanden genom att avsöka `listMessages` metoden v
 
 ```JavaScript
 
-let pagedAsyncIterableIterator = await chatThreadClient.listMessages();
-let nextMessage = await pagedAsyncIterableIterator.next();
-    while (!nextMessage.done) {
-        let chatMessage = nextMessage.value;
-        console.log(`Message :${chatMessage.content}`);
-        // your code here
-        nextMessage = await pagedAsyncIterableIterator.next();
-    }
+const messages = chatThreadClient.listMessages();
+for await (const message of messages) {
+   // your code here
+}
 
 ```
 Lägg till den här koden i stället för `<LIST MESSAGES IN A CHAT THREAD>` kommentaren i **client.js**.
 Uppdatera fliken i-konsolen ska du hitta listan över meddelanden som skickas i den här chatt-tråden.
 
+`listMessages` returnerar olika typer av meddelanden som kan identifieras av `chatMessage.type` . 
 
-`listMessages` Returnerar den senaste versionen av meddelandet, inklusive eventuella ändringar eller borttagningar som hände i meddelandet med hjälp av `updateMessage` och `deleteMessage` .
-För borttagna meddelanden `chatMessage.deletedOn` returnerar ett datetime-värde som anger när meddelandet togs bort. För redigerade meddelanden `chatMessage.editedOn` returnerar en datetime som anger när meddelandet redigerades. Det går att få åtkomst till den ursprungliga tiden för att skapa meddelanden med `chatMessage.createdOn` som kan användas för att ordna meddelandena.
-
+Mer information finns i [meddelande typer](../../../concepts/chat/concepts.md#message-types).
 
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Lägg till en användare som deltagare i chatt-tråden
 
@@ -300,14 +309,14 @@ Innan du anropar `addParticipants` -metoden kontrollerar du att du har skaffat e
 
 ```JavaScript
 
-let addParticipantsRequest =
+const addParticipantsRequest =
 {
-    participants: [
-        {
-            id: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
-            displayName: 'Jane'
-        }
-    ]
+  participants: [
+    {
+      id: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
+      displayName: 'Jane'
+    }
+  ]
 };
 
 await chatThreadClient.addParticipants(addParticipantsRequest);
@@ -317,16 +326,10 @@ Ersätt **NEW_PARTICIPANT_USER_ID** med ett [nytt användar-ID](../../access-tok
 
 ## <a name="list-users-in-a-chat-thread"></a>Lista användare i en chatt-tråd
 ```JavaScript
-async function listParticipants() {
-   let pagedAsyncIterableIterator = await chatThreadClient.listParticipants();
-   let next = await pagedAsyncIterableIterator.next();
-   while (!next.done) {
-      let user = next.value;
-      console.log(`User :${user.displayName}`);
-      next = await pagedAsyncIterableIterator.next();
-   }
+const participants = chatThreadClient.listParticipants();
+for await (const participant of participants) {
+   // your code here
 }
-await listParticipants();
 ```
 Lägg till den här koden i stället för `<LIST PARTICIPANTS IN A THREAD>` kommentaren i **client.js**, uppdatera din webbläsare-flik och kontrol lera konsolen. du bör se information om användare i en tråd.
 

@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: overview
 ms.date: 04/07/2021
-ms.openlocfilehash: 775785e1b5130499d69b269e72f5c774e9e5f3f9
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 5f0552e09464a6b571a665cfe3895f48c3aa8c41
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107024087"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258460"
 ---
 # <a name="preview-features-for-postgresql---hyperscale-citus"></a>För hands versions funktioner för PostgreSQL-skalning (citus)
 
@@ -23,16 +23,18 @@ Azure Database for PostgreSQL-storskalig (citus) erbjuder för hands versioner a
 
 Här är de funktioner som för hands version är tillgängliga för förhands granskning:
 
-* **[Kolumn lagring](concepts-hyperscale-columnar.md)**.
-  Lagra markerade tabeller i kolumner (i stället för rader) sammanhängande på disk. Stöder komprimering på disk. Lämpligt för arbets belastningar för analys och informations lager.
+* **[Basic-nivå](concepts-hyperscale-tiers.md)**. Kör en Server grupp enbart med en koordinator-nod och inga arbetsnoder. Ett ekonomiskt sätt att utföra den första testningen och utvecklingen och hantera små produktions arbets belastningar.
 * **[Postgresql 12 och 13](concepts-hyperscale-versions.md)**.
   Använd den senaste databas versionen i Server gruppen.
-* **[Basic-nivå](concepts-hyperscale-tiers.md)**. Kör en Server grupp enbart med en koordinator-nod och inga arbetsnoder. Ett ekonomiskt sätt att utföra den första testningen och utvecklingen och hantera små produktions arbets belastningar.
+* **[Citus 10](concepts-hyperscale-versions.md#citus-and-other-extension-versions)**.
+  Installeras automatiskt på Server grupper som kör PostgreSQL 13.
+* **[Kolumn lagring](concepts-hyperscale-columnar.md)**.
+  Lagra markerade tabeller i kolumner (i stället för rader) sammanhängande på disk. Stöder komprimering på disk. Lämpligt för arbets belastningar för analys och informations lager.
 * **[Läs repliker](howto-hyperscale-read-replicas-portal.md)** (endast för närvarande samma region). Alla ändringar som görs i den primära server gruppen visas i sin replik, och frågor mot repliken orsakar ingen extra belastning på originalet.
   Repliker är ett användbart verktyg för att förbättra prestandan för skrivskyddade arbets belastningar.
 * **[Hanterade PgBouncer](concepts-hyperscale-limits.md#managed-pgbouncer-preview)**.
   En anslutningspool som gör att många klienter kan ansluta till Server gruppen samtidigt, samtidigt som antalet aktiva anslutningar begränsas. Den uppfyller anslutnings begär Anden och låter koordinator-noden köras smidigt.
-* **[PgAudit](concepts-hyperscale-audit.md)**. Innehåller detaljerad loggning för session-och objekt granskning via standard loggnings funktionen PostgreSQL. Den ger upphov till gransknings loggar som krävs för att överföra vissa myndigheters, finansiella eller ISO-certifieringar.
+* **[pgAudit](concepts-hyperscale-audit.md)**. Innehåller detaljerad loggning för session-och objekt granskning via standard loggnings funktionen PostgreSQL. Den ger upphov till gransknings loggar som krävs för att överföra vissa myndigheters, finansiella eller ISO-certifieringar.
 
 ### <a name="available-regions-for-preview-features"></a>Tillgängliga regioner för för hands versions funktioner
 

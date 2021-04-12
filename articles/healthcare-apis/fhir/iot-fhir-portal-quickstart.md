@@ -6,14 +6,14 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
-ms.date: 11/13/2020
+ms.date: 04/05/2021
 ms.author: punagpal
-ms.openlocfilehash: 3e293782e6f00852a51e0617a07eebd5d8c56261
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 0a382ad948e7fd2efc6ab59eb94da3d6cbb210d7
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644854"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443787"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>Snabb start: Distribuera Azure IoT Connector för FHIR (för hands version) med Azure Portal
 
@@ -171,6 +171,11 @@ Distribuera [program mal len för kontinuerlig övervakning av patienter](../../
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>Anslut dina IoT-data med Azure IoT Connector för FHIR (för hands version)
 
 När du har distribuerat ditt IoT Central-program börjar du skapa telemetri genom att använda dina två färdiga simulerade enheter. I den här självstudien tar vi in Telemetrin från *smarta viktigare korrigerings* Simulator i FHIR via Azure IoT-anslutningen för FHIR. Om du vill exportera dina IoT-data till Azure IoT-anslutningsprogrammet för FHIR ska vi [ställa in en kontinuerlig data export i IoT Central](../../iot-central/core/howto-export-data.md). Vi måste först skapa en anslutning till målet och sedan ska vi skapa ett data export jobb för kontinuerlig körning: 
+
+> [!NOTE]
+> Du vill välja **data export** vs. **data export (bakåtkompatibelt)** i IoT Central app-inställningarna för det här avsnittet.
+
+[![IoT Central inställningar för data export](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png)](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png#lightbox)
 
 Skapa ett nytt mål:
 - Gå till fliken **destinationer** och skapa ett nytt mål.

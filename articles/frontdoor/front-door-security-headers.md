@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 1727193faa028a1d681f2a74df950afeb9570ec9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8462b98aee1d34b6c7a2ed671667223eca45a25
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91270057"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551925"
 ---
 # <a name="tutorial-add-security-headers-with-rules-engine"></a>Självstudie: Lägg till säkerhets rubriker med regel motor
 
@@ -41,6 +41,9 @@ I den här guiden får du lära dig att:
 1. Ange att operatorn ska **läggas till för att** lägga till den här rubriken som ett svar på alla inkommande begär anden till den här vägen.
 
 1. Lägg till rubrik namnet: **Content-Security-Policy** och definiera de värden som rubriken ska acceptera. I det här scenariot väljer vi *"script-src ' Self ' https://apiphany.portal.azure-api.net ."*
+
+   > [!NOTE]
+   > Rubrik värden är begränsade till 128 tecken.
 
 1. När du har lagt till alla regler som du vill ha i konfigurationen kan du inte glömma att gå till önskad väg och koppla din regel Motors konfiguration till din väg regel. Det här steget krävs för att aktivera regeln för att fungera. 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: f6705b5f72aaa8f990aaf3b1daa33697b690d1f1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8768acc8d4720a750c4c7f7e0f40340aeeff279d
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608892"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449060"
 ---
 # <a name="frequently-asked-questions-faq"></a>Vanliga frågor och svar (FAQ)
 
@@ -309,7 +309,7 @@ Dedikerade HSM-bestämmelser Thales Luna 7 HSM: er. Här är en sammanfattning a
 
 ### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>F: hur många nycklar kan stödjas i dedikerad HSM?
 
-Det maximala antalet nycklar är en funktion i tillgängligt minne. SafeNet Luna 7-modellen A790 som används har 32 MB minne. Följande siffror gäller även för nyckel par om du använder asymmetriska nycklar.
+Det maximala antalet nycklar är en funktion i tillgängligt minne. Thales Luna 7-modellen A790 som används har 32 MB minne. Följande siffror gäller även för nyckel par om du använder asymmetriska nycklar.
 
 * RSA-2048-19 000
 * ECC-P256 – 91 000

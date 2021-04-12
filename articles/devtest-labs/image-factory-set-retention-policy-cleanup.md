@@ -3,12 +3,12 @@ title: Konfigurera bevarande princip i Azure DevTest Labs | Microsoft Docs
 description: Lär dig hur du konfigurerar en bevarande princip, rensar fabriken och drar tillbaka gamla avbildningar från DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 85384e88f8d456c7bf67302a57618d7a9703a5ee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4e642d7dc0733e55caa4ed62e3382ef4422030f9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102550033"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727543"
 ---
 # <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Konfigurera bevarande princip i Azure DevTest Labs
 Den här artikeln beskriver hur du ställer in en bevarande princip, rensar fabriken och drar tillbaka gamla bilder från alla andra DevTest labb i organisationen. 
@@ -66,5 +66,5 @@ Det är också enkelt att lägga till en ny avbildning till din fabrik. När du 
 ## <a name="next-steps"></a>Nästa steg
 1. [Schemalägg din version/version](/azure/devops/pipelines/build/triggers?tabs=designer) så att du kan köra avbildnings fabriken med jämna mellanrum. Den uppdaterar regelbundet dina fabriks genererade avbildningar.
 2. Gör fler gyllene avbildningar för din fabrik. Du kan också överväga att [skapa artefakter](devtest-lab-artifact-author.md) för att skripta ytterligare delar av konfigurations uppgifterna för virtuella datorer och inkludera artefakterna i dina fabriks avbildningar.
-4. Skapa en [separat version/version](/azure/devops/pipelines/overview?view=azure-devops-2019) för att köra **DistributeImages** -skriptet separat. Du kan köra det här skriptet när du gör ändringar i Labs.jspå och hämta bilder som har kopierats till mål labb utan att behöva återskapa alla avbildningar igen.
+4. Skapa en [separat version/version](/azure/devops/pipelines/overview) för att köra **DistributeImages** -skriptet separat. Du kan köra det här skriptet när du gör ändringar i Labs.jspå och hämta bilder som har kopierats till mål labb utan att behöva återskapa alla avbildningar igen.
 

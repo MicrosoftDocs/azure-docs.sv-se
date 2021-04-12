@@ -394,26 +394,26 @@
               href: iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md
             - name: Övervaka den magnetiska sensorn och skicka e-postaviseringar med Azure Functions
               href: iot-hub-arduino-iot-devkit-az3166-door-monitor.md
-        - name: Utökade IoT-scenarier
-          items:
-            - name: Hantera meddelanden mellan enheter och molnet med Azure IoT-verktyg för VS Code
-              href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
-            - name: Hantera meddelanden mellan moln och enheter med Cloud Explorer för Visual Studio
-              href: iot-hub-visual-studio-cloud-device-messaging.md
-            - name: Datavisualisering i Power BI
-              href: iot-hub-live-data-visualization-in-power-bi.md
-            - name: Datavisualisering i en webbapp
-              href: iot-hub-live-data-visualization-in-web-apps.md
-            - name: Väderprognoser med hjälp av Azure Machine Learning
-              href: iot-hub-weather-forecast-machine-learning.md
-            - name: Enhetshantering med Azure IoT-verktyg för VS Code
-              href: iot-hub-device-management-iot-toolkit.md
-            - name: Enhetshantering med Cloud Explorer för Visual Studio
-              href: iot-hub-device-management-visual-studio.md
-            - name: Enhetshantering med IoT-tillägg för Azure CLI
-              href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
-            - name: Fjärrövervakning och aviseringar med Logic Apps
-              href: iot-hub-monitoring-notifications-with-azure-logic-apps.md
+    - name: Utökade IoT-scenarier
+      items:
+        - name: Hantera meddelanden mellan enheter och molnet med Azure IoT-verktyg för VS Code
+          href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
+        - name: Hantera meddelanden mellan moln och enheter med Cloud Explorer för Visual Studio
+          href: iot-hub-visual-studio-cloud-device-messaging.md
+        - name: Datavisualisering i Power BI
+          href: iot-hub-live-data-visualization-in-power-bi.md
+        - name: Datavisualisering i en webbapp
+          href: iot-hub-live-data-visualization-in-web-apps.md
+        - name: Väderprognoser med hjälp av Azure Machine Learning
+          href: iot-hub-weather-forecast-machine-learning.md
+        - name: Enhetshantering med Azure IoT-verktyg för VS Code
+          href: iot-hub-device-management-iot-toolkit.md
+        - name: Enhetshantering med Cloud Explorer för Visual Studio
+          href: iot-hub-device-management-visual-studio.md
+        - name: Enhetshantering med IoT-tillägg för Azure CLI
+          href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
+        - name: Fjärrövervakning och aviseringar med Logic Apps
+          href: iot-hub-monitoring-notifications-with-azure-logic-apps.md
     - name: Felsökning och problemlösning
       items:
         - name: Enheten kopplar från
@@ -547,8 +547,8 @@
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
         - name: iOS-plattform
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
-    - name: Azure Certified for IoT-enhetskatalog
-      href: 'https://catalog.azureiotsolutions.com/'
+    - name: Azure-certifierad enhets katalog
+      href: 'https://devicecatalog.azure.com/'
     - name: Azure IoT Developer Center
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Kunddataförfrågningar

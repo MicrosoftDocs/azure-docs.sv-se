@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c63ee686ae218a696069465bb8d2d1d7413a998e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 62296acaba77017cd71227582447b9fa7c4f1934
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799096"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106090247"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Skriv bords app som anropar webb-API: er: Hämta en token
 
@@ -257,7 +257,7 @@ WithParentActivityOrWindow(IWin32Window window)
 // Mac
 WithParentActivityOrWindow(NSWindow window)
 
-// .Net Standard (this will be on all platforms at runtime, but only on NetStandard at build time)
+// .NET Standard (this will be on all platforms at runtime, but only on NetStandard at build time)
 WithParentActivityOrWindow(object parent).
 ```
 
@@ -277,15 +277,26 @@ WithParentActivityOrWindow(object parent).
 
 `WithPrompt()` används för att styra interaktivitet med användaren genom att ange en prompt.
 
-![Bild som visar fälten i prompt strukturen. Dessa konstant värden styr interaktivitet med användaren genom att definiera den typ av prompt som visas av metoden WithPrompt ().](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
+![Bild som visar fälten i prompt strukturen. Dessa konstant värden styr interaktivitet med användaren genom att definiera den typ av prompt som visas av metoden WithPrompt ().](https://user-images.githubusercontent.com/34331512/112267137-3f1c3a00-8c32-11eb-97fb-33604311329a.png)
 
 Klassen definierar följande konstanter:
 
 - ``SelectAccount`` tvingar STS att presentera dialog rutan konto val som innehåller konton som användaren har en session för. Det här alternativet är användbart när programutvecklare vill låta användarna välja mellan olika identiteter. Det här alternativet MSAL för att skicka ``prompt=select_account`` till identitets leverantören. Det här alternativet är standardinställningen. Det är ett bra jobb att tillhandahålla bästa möjliga upplevelse baserat på tillgänglig information, till exempel konto och närvaro för en session för användaren. Ändra det inte om du inte har en lämplig anledning att göra det.
 - ``Consent`` gör det möjligt för programutvecklaren att tvinga användaren att tillfrågas om medgivande, även om medgivande beviljades tidigare. I det här fallet skickar MSAL `prompt=consent` till identitets leverantören. Det här alternativet kan användas i vissa säkerhetsfokuserade program där organisationens styrning kräver att användaren visas i dialog rutan medgivande varje gången programmet används.
 - ``ForceLogin`` gör det möjligt för programutvecklaren att be användaren att ange autentiseringsuppgifter för tjänsten, även om användaren inte behöver göra något. Det här alternativet kan vara användbart för att låta användaren logga in igen om det inte går att förvärva en token. I det här fallet skickar MSAL `prompt=login` till identitets leverantören. Ibland används den i säkerhetsfokuserade program där organisationens styrning kräver att användaren loggar in på nytt varje gång de kommer åt specifika delar av ett program.
+- ``Create`` utlöser en registrerings upplevelse som används för externa identiteter genom att skicka `prompt=create` till identitets leverantören. Den här prompten ska inte skickas för Azure AD B2C appar. Mer information finns i [Lägg till ett självbetjänings registrerings användar flöde i en app](https://aka.ms/msal-net-prompt-create).
 - ``Never`` (endast för .NET 4,5 och WinRT) uppmanas inte användaren, utan försöker i stället använda den cookie som är lagrad i den dolda inbäddade vyn. Mer information finns i Web views in MSAL.NET. Det kan hända att du inte kan använda det här alternativet. I så fall, `AcquireTokenInteractive` genererar ett undantag för att meddela att en användar gränssnitts interaktion krävs. Du måste använda en annan `Prompt` parameter.
 - ``NoPrompt`` Det går inte att skicka någon prompt till identitets leverantören. Det här alternativet är användbart endast för Azure Active Directory (Azure AD) B2C Redigera profil principer. Mer information finns i [Azure AD B2C information](https://aka.ms/msal-net-b2c-specificities).
+
+#### <a name="withuseembeddedwebview"></a>WithUseEmbeddedWebView
+
+Med den här metoden kan du ange om du vill framtvinga användningen av en inbäddad webbvy eller system WebView (om tillgänglig). Mer information finns i [användningen av webbläsare](msal-net-web-browsers.md).
+
+ ```csharp
+ var result = await app.AcquireTokenInteractive(scopes)
+                   .WithUseEmbeddedWebView(true)
+                   .ExecuteAsync();
+  ```
 
 #### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 

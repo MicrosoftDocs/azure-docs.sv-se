@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Maps väder tjänster (för hands version) vanliga frågor och svar
-description: Få svar på vanliga frågor om Azure Maps väder tjänster (för hands version) data och funktioner.
+title: Microsoft Azure Maps vanliga frågor och svar om väder tjänster
+description: Få svar på vanliga frågor om Azure Maps data och funktioner för väder tjänster.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 12/07/2020
@@ -8,18 +8,14 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f21e4aa9bd46ed5524cf83d083a70b9b04f03056
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 440ff94f4d5f3514d97d3e76299b60e462cebff3
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011150"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257559"
 ---
-# <a name="azure-maps-weather-services-preview-frequently-asked-questions-faq"></a>Vanliga frågor och svar om Azure Maps väder tjänster (för hands version)
-
-> [!IMPORTANT]
-> Azure Maps väder tjänster finns för närvarande i offentlig för hands version.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="azure-maps-weather-services-frequently-asked-questions-faq"></a>Vanliga frågor och svar om Azure Maps väder tjänster
 
 Den här artikeln innehåller svar på vanliga frågor om Azure Maps data och funktioner för [väder tjänster](/rest/api/maps/weather) . Följande avsnitt beskrivs:
 
@@ -55,7 +51,7 @@ De här data uppsättningarna granskas i real tid för att uppnå precision för
 
 Många väder väglednings system används för att formulera globala prognoser. Över 150 numeriska prognos modeller används varje dag, både externa och interna data uppsättningar. Detta omfattar myndighets modeller som Europeiska centrets ECMWF och USA: s globala prognos system (GFS). Dessutom kan AccuWeather införliva patentskyddade högpresterande modeller som downscale prognoser till specifika platser och strategiska regionala domäner för att förutse väder med ytterligare noggrannhet. AccuWeather unika blandnings-och viktnings algoritmer har utvecklats under de senaste årtiondena. Dessa algoritmer försäkrar optimalt de många prognos inmatningarna för att tillhandahålla mycket exakta prognoser.
 
-## <a name="weather-services-preview-coverage-and-availability"></a>Täckning och tillgänglighet för väder tjänster (för hands version)
+## <a name="weather-services-coverage-and-availability"></a>Täckning och tillgänglighet för väder tjänster
 
 **Vilken typ av täckning kan jag förväntar mig för olika länder/regioner?**
 
@@ -77,11 +73,11 @@ API: er för Azure Mapss prognos cachelagras i upp till 30 minuter. Om du vill s
 
 ## <a name="developing-with-azure-maps-sdks"></a>Utveckla med Azure Maps SDK: er
 
-**Har Azure Maps Web SDK inbyggt stöd för väder tjänster (för hands version)?**
+**Stöder Azure Maps Web SDK inbyggd väder tjänst integrering?**
 
 Azure Maps Web SDK tillhandahåller en Services-modul. Modulen tjänster är ett hjälp bibliotek som gör det enkelt att använda Azure Maps REST-tjänsterna i webb-eller Node.js program. med hjälp av Java Script eller TypeScript. Information om hur du kommer igång finns i vår [dokumentation](./how-to-use-services-module.md).
 
-**Stöder Azure Maps Android SDK intern support för väder tjänster (för hands version)?**
+**Stöder Azure Maps Android SDK inbyggd väder tjänst integrering?**
 
 Azure Maps Android SDK: er stöder Mercator panels lager som kan ha x/y/zoomnings format, fyr nyckels notation eller EPSG 3857-avgränsnings ruta.
 
@@ -114,15 +110,15 @@ Om dessa vanliga frågor inte besvarar din fråga kan du kontakta oss genom föl
 * Microsoft Support. Om du vill skapa en ny supportbegäran går du till fliken hjälp i [Azure Portal](https://portal.azure.com/), väljer **Hjälp +** support-knappen och väljer sedan **ny supportbegäran**.
 * [Azure Maps UserVoice](https://feedback.azure.com/forums/909172-azure-maps) för att skicka funktions förfrågningar.
 
-Lär dig hur du begär real tids data och prognostiserade väder data med hjälp av Azure Maps väder tjänster (för hands version):
+Lär dig hur du begär real tids data och prognostiserade väder data med hjälp av Azure Maps väder tjänster:
 > [!div class="nextstepaction"]
 > [Begär väder data i real tid ](how-to-request-weather-data.md)
 
-Koncept artikel för Azure Maps väder tjänster (för hands version):
+Artikel om Azure Maps väder tjänst begrepp:
 > [!div class="nextstepaction"]
 > [Begrepp för vädertjänster](weather-coverage.md)
 
-Utforska API-dokumentationen för Azure Maps väder tjänster (för hands version):
+Utforska API-dokumentationen för Azure Maps väder tjänster:
 
 > [!div class="nextstepaction"]
 > [Azure Maps vädertjänster](/rest/api/maps/weather)

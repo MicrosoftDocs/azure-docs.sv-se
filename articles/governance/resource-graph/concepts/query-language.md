@@ -4,10 +4,10 @@ description: Beskriver resurs diagram tabeller och tillgängliga Kusto data type
 ms.date: 03/10/2021
 ms.topic: conceptual
 ms.openlocfilehash: 5e600439d54a89dd9bd2510b2e47b71b60ee93a7
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105557691"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Förstå frågespråket i Azure Resource Graph
@@ -26,23 +26,23 @@ Den här artikeln beskriver de språk komponenter som stöds av resurs diagram:
 
 Resurs diagram innehåller flera tabeller för de data som lagras om Azure Resource Manager resurs typer och deras egenskaper. Vissa tabeller kan användas med `join` eller- `union` operatörer för att hämta egenskaper från relaterade resurs typer. Här är listan över tabeller som är tillgängliga i resurs diagram:
 
-|Resurs diagram tabell |Kan `join` andra tabeller användas? |Description |
+|Resurs diagram tabell |Kan `join` andra tabeller användas? |Beskrivning |
 |---|---|---|
-|Resurser |Yes |Standard tabellen om ingen har definierats i frågan. De flesta resurs typer och egenskaper för Resource Manager finns här. |
-|ResourceContainers |Yes |Inkluderar prenumeration (i förhands granskning-- `Microsoft.Resources/subscriptions` ) och resurs typ och data för resurs grupp ( `Microsoft.Resources/subscriptions/resourcegroups` ). |
+|Resurser |Ja |Standard tabellen om ingen har definierats i frågan. De flesta resurs typer och egenskaper för Resource Manager finns här. |
+|ResourceContainers |Ja |Inkluderar prenumeration (i förhands granskning-- `Microsoft.Resources/subscriptions` ) och resurs typ och data för resurs grupp ( `Microsoft.Resources/subscriptions/resourcegroups` ). |
 |AdvisorResources |Ja (för hands version) |Innehåller resurser som är _relaterade_ till `Microsoft.Advisor` . |
 |AlertsManagementResources |Ja (för hands version) |Innehåller resurser som är _relaterade_ till `Microsoft.AlertsManagement` . |
-|ExtendedLocationResources |No |Innehåller resurser som är _relaterade_ till `Microsoft.ExtendedLocation` . |
-|GuestConfigurationResources |No |Innehåller resurser som är _relaterade_ till `Microsoft.GuestConfiguration` . |
-|KubernetesConfigurationResources |No |Innehåller resurser som är _relaterade_ till `Microsoft.KubernetesConfiguration` . |
+|ExtendedLocationResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.ExtendedLocation` . |
+|GuestConfigurationResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.GuestConfiguration` . |
+|KubernetesConfigurationResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.KubernetesConfiguration` . |
 |MaintenanceResources |Delvis, Anslut _till_ . (förhandsversion) |Innehåller resurser som är _relaterade_ till `Microsoft.Maintenance` . |
-|PatchAssessmentResources|No |Innehåller resurser som _rör_ utvärdering av Azure Virtual Machines-korrigering. |
-|PatchInstallationResources|No |Innehåller resurser som _rör_ installation av Azure Virtual Machines patch. |
-|PolicyResources |No |Innehåller resurser som är _relaterade_ till `Microsoft.PolicyInsights` . (För **hands version**)|
+|PatchAssessmentResources|Inga |Innehåller resurser som _rör_ utvärdering av Azure Virtual Machines-korrigering. |
+|PatchInstallationResources|Inga |Innehåller resurser som _rör_ installation av Azure Virtual Machines patch. |
+|PolicyResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.PolicyInsights` . (För **hands version**)|
 |RecoveryServicesResources |Delvis, Anslut _till_ . (förhandsversion) |Innehåller resurser _relaterade_ till `Microsoft.DataProtection` och `Microsoft.RecoveryServices` . |
 |SecurityResources |Delvis, Anslut _till_ . (förhandsversion) |Innehåller resurser som är _relaterade_ till `Microsoft.Security` . |
-|ServiceHealthResources |No |Innehåller resurser som är _relaterade_ till `Microsoft.ResourceHealth` . |
-|WorkloadMonitorResources |No |Innehåller resurser som är _relaterade_ till `Microsoft.WorkloadMonitor` . |
+|ServiceHealthResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.ResourceHealth` . |
+|WorkloadMonitorResources |Inga |Innehåller resurser som är _relaterade_ till `Microsoft.WorkloadMonitor` . |
 
 En fullständig lista, inklusive resurs typer, finns i [referens: tabeller och resurs typer som stöds](../reference/supported-tables-resources.md).
 

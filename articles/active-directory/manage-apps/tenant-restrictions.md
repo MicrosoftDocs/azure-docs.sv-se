@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 2/23/2021
+ms.date: 4/6/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa025f7e21f76b4dde547ccabf675511e9156359
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb4e876b3fc679dd275f38168b99b9a3a718be58
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589335"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552686"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Använd klient begränsningar för att hantera åtkomst till SaaS-molnprogram
 
@@ -97,6 +97,8 @@ I det här avsnittet beskrivs upplevelsen för både slutanvändare och administ
 
 Ett exempel på en användare finns i Contoso-nätverket, men försöker komma åt Fabrikam-instansen av ett delat SaaS-program som Outlook online. Om Fabrikam är en icke-tillåten klient för Contoso-instansen ser användaren ett nekat åtkomst meddelande, som säger att du försöker få åtkomst till en resurs som tillhör en organisation som inte har godkänts av IT-avdelningen.
 
+![Fel meddelande för klient begränsningar, från april 2021](./media/tenant-restrictions/error-message.png)
+
 ### <a name="admin-experience"></a>Administratörsupplevelse
 
 Medan konfigurationen av klient begränsningar görs i infrastrukturen för företags proxy kan administratörerna komma åt rapporterna för klient begränsningar i Azure Portal direkt. Så här visar du rapporterna:
@@ -113,14 +115,14 @@ Rapporten kan innehålla begränsad information, till exempel mål katalog-ID, n
 
 Precis som med andra rapporter i Azure Portal kan du använda filter för att ange omfattningen för rapporten. Du kan filtrera efter ett angivet tidsintervall, användare, program, klient eller status. Om du väljer knappen **kolumner** kan du välja att visa data med valfri kombination av följande fält:
 
-- **Användare** – det här fältet kan ha personligt identifierbar information borttagen, där den kommer att anges till `00000000-0000-0000-0000-000000000000` . 
+- **Användare** – det här fältet kan ha personliga data borttagna, där de ska anges `00000000-0000-0000-0000-000000000000` . 
 - **Program**
 - **Status**
 - **Datum**
 - **Datum (UTC)** – där UTC är UTC Universal Time
 - **IP-adress**
 - **Klient**
-- **Username** – det här fältet kan ha personligt identifierbar information borttagen, där den ställs in på `{PII Removed}@domain.com`
+- **Username** – det här fältet kan ha personliga data borttagna, där det kommer att anges till `{PII Removed}@domain.com`
 - **Plats**
 - **Mål klient-ID**
 
@@ -207,7 +209,7 @@ Vissa organisationer försöker åtgärda detta genom att blockeras för `login.
 
 ### <a name="configuration-for-consumer-apps"></a>Konfiguration för konsument program
 
-Även om `Restrict-Access-To-Tenants` rubriken fungerar som en tillåten-lista fungerar Microsoft-konto (MSA)-blocket som en neka-signal, vilket talar om för Microsoft-konto plattformen att inte tillåta användare att logga in på konsument program. För att skicka den här signalen `sec-Restrict-Tenant-Access-Policy` matas rubriken in på trafik som finns `login.live.com` med samma företags-proxy eller brand vägg som [ovan](#proxy-configuration-and-requirements). Värdet för rubriken måste vara `restrict-msa` . När rubriken finns och en konsument app försöker logga in en användare direkt, kommer inloggningen att blockeras.
+Medan- `Restrict-Access-To-Tenants` rubrik funktionerna som en tillåten, fungerar Microsoft-konto (MSA) som en neka-signal, vilket talar om för Microsoft-konto plattformen att inte tillåta användare att logga in på konsument program. För att skicka den här signalen `sec-Restrict-Tenant-Access-Policy` matas rubriken in på trafik som finns `login.live.com` med samma företags-proxy eller brand vägg som [ovan](#proxy-configuration-and-requirements). Värdet för rubriken måste vara `restrict-msa` . När rubriken finns och en konsument app försöker logga in en användare direkt, kommer inloggningen att blockeras.
 
 För närvarande visas inte autentiseringen till klient program i [Administratörs loggarna](#admin-experience), eftersom login.live.com är värdbaserad separat från Azure AD.
 
