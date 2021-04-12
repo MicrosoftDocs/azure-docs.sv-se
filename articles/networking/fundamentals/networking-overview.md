@@ -8,20 +8,20 @@ ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 10/28/2020
+ms.date: 04/07/2021
 ms.author: kumud
-ms.openlocfilehash: 3145a52a6050272c01cd7ccb64afef0b89812753
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 34e31bacbb276feb5b11d1b955096877376e989b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106170103"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107711"
 ---
 # <a name="azure-networking-services-overview"></a>Översikt över Azures nätverkstjänster
 
 Nätverks tjänsterna i Azure tillhandahåller en mängd nätverksfunktioner som kan användas tillsammans eller separat. Klicka på någon av följande viktiga funktioner för att lära dig mer om dem:
 - [**Anslutnings tjänster**](#connect): Anslut Azure-resurser och lokala resurser med valfri eller en kombination av dessa nätverks tjänster i Azure-Virtual Network (VNet), virtuellt WAN, ExpressRoute, VPN gateway, NAT-gateway för virtuella nätverk, Azure DNS, peering-tjänst och Azure skydds.
-- [**Program skydds tjänster**](#protect): skydda dina program med hjälp av en eller flera kombinationer av dessa nätverks tjänster i Azure-privata länkar, DDoS-skydd, brand vägg, nätverks säkerhets grupper, brand vägg för webbaserade program och Virtual Network slut punkter.
+- [**Program skydds tjänster**](#protect): skydda dina program med hjälp av en eller flera kombinationer av dessa nätverks tjänster i Azure-Load Balancer, privat länk, DDoS skydd, brand vägg, nätverks säkerhets grupper, brand vägg för webbaserade program och Virtual Network slut punkter.
 - [**Program leverans tjänster**](#deliver): leverera program i Azure-nätverket med valfri eller en kombination av dessa nätverks tjänster i azure-Content Delivery Network (CDN), Azure-tjänsten för front dörr, Traffic Manager, Application Gateway, Internet analys och Load Balancer.
 - [**Nätverks övervakning**](#monitor): övervaka dina nätverks resurser med valfri eller en kombination av dessa nätverks tjänster i Azure-Network Watcher, ExpressRoute-övervakare, Azure Monitor eller VNet Terminal Access Point (Knacka).
 
@@ -158,13 +158,13 @@ Följande diagram visar URL Path-baserad routning med Application Gateway.
 :::image type="content" source="./media/networking-overview/figure1-720.png" alt-text="Application Gateway exempel":::
 
 ## <a name="network-monitoring-services"></a><a name="monitor"></a>Tjänster för nätverks övervakning
-I det här avsnittet beskrivs nätverks tjänster i Azure som hjälper dig att övervaka nätverks resurser – Network Watcher, Azure Monitor för nätverk, ExpressRoute-övervakare, Azure Monitor och Virtual Network trycker.
+I det här avsnittet beskrivs nätverks tjänster i Azure som hjälper dig att övervaka dina nätverks resurser – Network Watcher, Azure Monitor nätverks insikter, Azure Monitor, ExpressRoute-övervakaren och Virtual Network trycker.
 
 ### <a name="network-watcher"></a><a name="networkwatcher"></a>Network Watcher
 I Azure Network Watcher finns verktyg för att övervaka, diagnostisera, visa mått samt aktivera eller inaktivera loggar för resurser i ett virtuellt Azure-nätverk. Mer information finns i [Vad är Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 
-### <a name="azure-monitor-for-networks-preview"></a>För hands version av Azure Monitor för nätverk
-Azure Monitor för nätverk ger en omfattande vy över hälsa och mått för alla distribuerade nätverks resurser, utan att kräva någon konfiguration. Den ger även till gång till funktioner för nätverks övervakning, t. ex. [anslutnings övervakaren](../../network-watcher/connection-monitor-overview.md), [flödes loggning för nätverks säkerhets grupper](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)och [trafikanalys](../../network-watcher/traffic-analytics.md). Mer information finns i [förhands granskning av Azure Monitor för nätverk](../../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
+### <a name="azure-monitor-network-insights"></a>Azure Monitor nätverks insikter
+Azure Monitor för nätverk ger en omfattande vy över hälsa och mått för alla distribuerade nätverks resurser, utan att kräva någon konfiguration. Den ger även till gång till funktioner för nätverks övervakning, t. ex. [anslutnings övervakaren](../../network-watcher/connection-monitor-overview.md), [flödes loggning för nätverks säkerhets grupper](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)och [trafikanalys](../../network-watcher/traffic-analytics.md). Mer information finns i [Azure Monitor Network Insights](../../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 
 ### <a name="expressroute-monitor"></a><a name="expressroutemonitor"></a>Övervakaren ExpressRoute
 Information om hur du visar ExpressRoute krets mått, resurs loggar och aviseringar finns i [ExpressRoute övervakning, mått och aviseringar](../../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json).

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: b13086e11e1181bba91a3255e68e9f8a32e78450
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56db88bff5b0e92a3819670e200177f10609aaa8
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98797775"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029734"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Bädda in Video Indexer widgetar i dina appar
 
@@ -66,16 +66,15 @@ Du kan använda Editor-widgeten för att skapa nya projekt och hantera video ins
 
 <sup>*</sup>Ägaren bör ge en `accessToken` varning.
 
-## <a name="embedding-videos"></a>Bädda in videor
+## <a name="embed-videos"></a>Bädda in videor
 
-I det här avsnittet beskrivs hur du bäddar in offentligt och privat innehåll i appar.
+I det här avsnittet beskrivs hur du bäddar in videor med [hjälp av portalen](#the-portal-experience) eller genom att [montera URL: en manuellt](#assemble-the-url-manually) i appar. 
 
 `location`Parametern måste inkluderas i de inbäddade länkarna, se [hur du hämtar namnet på din region](regions.md). Om ditt konto är i för hands version `trial` ska det användas för plats-värdet. `trial` är standardvärdet för `location` parametern. Exempel: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
-> [!IMPORTANT]
-> Om du delar en länk för **Player** -eller **Insights** -widgeten ingår åtkomsttoken och beviljar Läs behörighet till ditt konto.
+### <a name="the-portal-experience"></a>Portal upplevelsen
 
-### <a name="public-content"></a>Offentligt innehåll
+Om du vill bädda in en video använder du portalen enligt beskrivningen nedan:
 
 1. Logga in på [video Indexer](https://www.videoindexer.ai/) webbplats.
 1. Välj den video som du vill arbeta med och tryck på **Play**.
@@ -84,18 +83,27 @@ I det här avsnittet beskrivs hur du bäddar in offentligt och privat innehåll 
 5. Kopiera inbäddnings koden (visas i **Kopiera den inbäddade koden** i dialog rutan **resurs & bädda in** ).
 6. Lägg till koden i din app.
 
-### <a name="private-content"></a>Privat innehåll
+> [!NOTE]
+> Om du delar en länk för **Player** -eller **Insights** -widgeten ingår åtkomsttoken och beviljar Läs behörighet till ditt konto.
 
-Om du vill bädda in en privat video måste du skicka en åtkomsttoken i `src` attributet för iframe:
+### <a name="assemble-the-url-manually"></a>Sammanställ URL: en manuellt
+
+#### <a name="public-videos"></a>Offentliga videor
+
+Du kan bädda in offentliga videor montera webb adressen på följande sätt:
+
+`https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>`
+  
+  
+#### <a name="private-videos"></a>Privata videor
+
+Om du vill bädda in en privat video måste du skicka en åtkomsttoken (Använd [Hämta video åtkomst-token](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?) i `src` attributet för iframe:
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
-    
-Använd någon av följande metoder för att hämta innehåll för kognitiv Insights-widget:
+  
+### <a name="provide-editing-insights-capabilities"></a>Ge redigerings funktioner för insikter
 
-- API för [Get Insights-widgeten](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) .<br/>
-- [Hämta video åtkomst-token](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?). Lägg till den som en frågeparameter till URL: en. Ange den här URL: en som `src` värde för iframe, som visas ovan.
-
-Om du vill ge redigerings funktioner för insikter i din inbäddade widget måste du skicka en åtkomsttoken som innehåller redigerings behörigheter. Använd [Get Insights-widgeten](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) eller [Hämta video åtkomst-token](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) med `&allowEdit=true` .
+Om du vill ge redigerings funktioner för insikter i din inbäddade widget måste du skicka en åtkomsttoken som innehåller redigerings behörigheter. Använd [Hämta video åtkomst-token](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) med `&allowEdit=true` .
 
 ## <a name="widgets-interaction"></a>Interaktion med widgetar
 

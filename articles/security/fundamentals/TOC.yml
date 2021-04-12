@@ -4,6 +4,8 @@
   items:
     - name: Introduktion till Azure-säkerhet
       href: overview.md
+    - name: Säkerhet från slut punkt till slut punkt
+      href: end-to-end.md
     - name: Delat ansvar i molnet
       href: shared-responsibility.md
 - name: Skydda arbetsbelastningar i Azure
@@ -63,6 +65,8 @@
       href: steps-secure-identity.md
     - name: Välja lösenordsfri
       href: ../../active-directory/authentication/concept-authentication-passwordless.md
+    - name: Autentisering
+      href: /azure/architecture/framework/security/design-identity-authentication?toc=azure/security/fundamentals/toc.json&bc=azure/security/breadcrumb/toc.json
 - name: Nätverkssäkerhet
   items:
     - name: Säkerhetsöversikt

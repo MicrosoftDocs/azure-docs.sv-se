@@ -12,16 +12,16 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95d89ea0cbc7d1e0379a9cbfce40f11d4f8ac93f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e01a3b1538c6bf3030e5c8f129606adaecffda60
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643770"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105331"
 ---
-# <a name="configure-the-admin-consent-workflow-preview"></a>Konfigurera arbets flödet för administratörs medgivande (för hands version)
+# <a name="configure-the-admin-consent-workflow"></a>Konfigurera arbets flödet för administratörs medgivande
 
-Den här artikeln beskriver hur du aktiverar funktionen admin medgivande Workflow (för hands version), vilket ger slutanvändare möjlighet att begära åtkomst till program som kräver administratörs medgivande.
+I den här artikeln beskrivs hur du aktiverar arbets flödes funktionen admin som ger slutanvändare möjlighet att begära åtkomst till program som kräver administratörs medgivande.
 
 Utan ett administrativt medgivande arbets flöde kommer en användare i en klient där användar medgivande är inaktive rad att blockeras när de försöker få åtkomst till en app som kräver åtkomst till organisationens data. Användaren ser ett allmänt fel meddelande som säger att de inte har behörighet att komma åt appen och de bör be administratören om hjälp. Men ofta vet inte användaren vem som ska kontaktas, så de kan antingen ge upp eller skapa ett nytt lokalt konto i programmet. Även om en administratör meddelas är det inte alltid en strömlinjeformad process som hjälper administratören bevilja åtkomst och meddela sina användare.
  
@@ -38,7 +38,7 @@ Aktivera arbets flödet för administratörs medgivande och välj granskare:
 3. Skriv "**Azure Active Directory**" i rutan Filter sökning och välj **Azure Active Directory** objektet.
 4. I navigerings menyn klickar du på **företags program**. 
 5. Under **Hantera** väljer du **användar inställningar**.
-6. Under **administrativa medgivande begär Anden (för hands version)** **kan du ställa in användare så att de kan begära administrativt medgivande till appar som de inte** kan godkänna till **Ja**.
+6. Under **Administratörer godkänner begär Anden** **att användare kan begära administrativt medgivande till appar som de inte** kan godkänna till **Ja**.
 
    ![Konfigurera arbets flödes inställningar för administratörs medgivande](media/configure-admin-consent-workflow/admin-consent-requests-settings.png)
  
@@ -78,7 +78,7 @@ Granska de administrativa medgivande förfrågningarna och vidta åtgärder:
 2. Välj **alla tjänster** överst i den vänstra navigerings menyn. **Azure Active Directory-tillägget** öppnas.
 3. Skriv "**Azure Active Directory**" i rutan Filter sökning och välj **Azure Active Directory** objektet.
 4. I navigerings menyn klickar du på **företags program**.
-5. Under **aktivitet** väljer du **administrativa medgivande förfrågningar (för hands version)**.
+5. Under **aktivitet** väljer du **administrativa medgivande förfrågningar**.
 
    > [!NOTE]
    > Granskare ser bara admin-begäranden som skapats efter att de beskrivits som en granskare.
@@ -112,11 +112,7 @@ Begär Anden får e-postmeddelanden när:
  
 ## <a name="audit-logs"></a>Granskningsloggar 
  
-I tabellen nedan beskrivs de scenarier och gransknings värden som är tillgängliga för arbets flödet för administratörs medgivande. 
-
-> [!NOTE]
-> Gransknings aktörens användar kontext saknas i alla scenarier. Detta är en känd begränsning i för hands versionen.
-
+I tabellen nedan beskrivs de scenarier och gransknings värden som är tillgängliga för arbets flödet för administratörs medgivande.
 
 |Scenario  |Granska tjänst  |Granskningskategori  |Gransknings aktivitet  |Granska aktör  |Begränsningar i gransknings loggen  |
 |---------|---------|---------|---------|---------|---------|

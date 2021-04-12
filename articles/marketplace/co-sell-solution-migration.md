@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 3/04/2021
-ms.openlocfilehash: 7ffb5a3dfd23a1515c6d21784b82ccdbf0674f0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb954a32a4e598c45578d4b06606bc133babb50d
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104593415"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107160"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>Migrering av samförsäljnings lösningar från OCP GTM till den kommersiella marknaden
 
@@ -32,7 +32,7 @@ Som en Microsoft-partner som har registrerats på den kommersiella marknads plat
 Se till att du har ett aktivt Microsoft Partner Network medlemskap och har registrerats på den kommersiella Marketplace i Partner Center.
 
 - Delta i Microsoft Partner Network [kostnads fritt](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership). Som partner har du till gång till exklusiva resurser, program, verktyg och anslutningar för att växa din verksamhet.
-- Om du inte har ett konto på kommersiell marknads plats kan du [Registrera dig nu](partner-center-portal/create-account.md) för att fortsätta att sälja med Microsoft och få till gång till den fullständiga publicerings upplevelsen.
+- Om du inte har ett konto på kommersiell marknads plats kan du [Registrera dig nu](create-account.md) för att fortsätta att sälja med Microsoft och få till gång till den fullständiga publicerings upplevelsen.
 
 ## <a name="publishing-updates-for-attaining-co-sell-ready-status"></a>Publicera uppdateringar för att uppnå medförsäljnings klar status
 
@@ -45,7 +45,7 @@ När du har registrerat dig på den kommersiella Marketplace förbereder du att 
 
 Följ de här stegen innan du importerar dina lösningar från OCP GTM:
 
-1. Gå till företagets [Publisher-lista](https://partner.microsoft.com/dashboard/account/v3/publishers/list). Den innehåller kontots ägare, hanterare och utvecklare som har publicerings åtkomst. Lär dig mer om [användar roller i Partner Center](./partner-center-portal/manage-account.md#define-user-roles-and-permissions).
+1. Gå till företagets [Publisher-lista](https://partner.microsoft.com/dashboard/account/v3/publishers/list). Den innehåller kontots ägare, hanterare och utvecklare som har publicerings åtkomst. Lär dig mer om [användar roller i Partner Center](user-roles.md).
 2. Be en av de listade kontakterna att [lägga till användare](https://partner.microsoft.com/dashboard/account/usermanagement) till den kommersiella marknads platsen som *chefer* eller *utvecklare*, eftersom endast dessa roller kan redigera och publicera lösningar.
 3. Samar beta med dina utvecklare för att flytta dina lösningar från ditt OCP GTM-konto till den kommersiella marknads platsen.
 4. Bestäm vilket av följande som du vill göra:
@@ -97,7 +97,7 @@ Välj det här alternativet om du kan ha en OCP GTM-lösning som ännu inte har 
 
     [![Fliken åtgärd 1 i flyttnings processen.](media/co-sell-migrate/action-1-migrate.png)](media/co-sell-migrate/action-1-migrate.png#lightbox)
 
-1. På fliken **åtgärd 2** väljer du [utgivar profilen](partner-center-portal/create-account.md) i listan som tillhandahålls. Om du inte har ett utgivar konto skapar du ett i [partner Center](https://partner.microsoft.com/solutions/migration)och väljer det här.
+1. På fliken **åtgärd 2** väljer du [utgivar profilen](create-account.md) i listan som tillhandahålls. Om du inte har ett utgivar konto skapar du ett i [partner Center](https://partner.microsoft.com/solutions/migration)och väljer det här.
 
     [![Fliken åtgärd 2 i flyttnings processen.](media/co-sell-migrate/action-2-migrate.png)](media/co-sell-migrate/action-2-migrate.png#lightbox)
 

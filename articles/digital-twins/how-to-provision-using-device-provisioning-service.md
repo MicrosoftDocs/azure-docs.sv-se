@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a571d92dd9663c7d2d0a576b59e5cd2b3352cb76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad1351b7c9a649a553ce54422b99a13c286437d6
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951109"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107303"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Hantera enheter automatiskt i Azure Digitals med hjälp av enhets etablerings tjänsten (DPS)
 
@@ -302,7 +302,7 @@ När du har gått igenom det här flödet är allt inställt på att dra tillbak
 
 Om du vill utlösa processen för pensionering måste du manuellt ta bort enheten från IoT Hub.
 
-Du kan göra detta med ett [Azure CLI-kommando](/cli/azure/ext/azure-iot/iot/hub/module-identity#ext_azure_iot_az_iot_hub_module_identity_delete) eller i Azure Portal. Följ stegen nedan för att ta bort enheten i Azure Portal:
+Du kan göra detta med ett [Azure CLI-kommando](/cli/azure/iot/hub/module-identity#az_iot_hub_module_identity_delete) eller i Azure Portal. Följ stegen nedan för att ta bort enheten i Azure Portal:
 
 1. Navigera till din IoT-hubb och välj **IoT-enheter** i meny alternativen till vänster. 
 2. Du ser en enhet med det ID för enhets registrering som du valde i den [första halvan av den här artikeln](#auto-provision-device-using-device-provisioning-service). Alternativt kan du välja en annan enhet att ta bort, så länge den har en dubbel i Azure Digital-, så att du kan kontrol lera att den dubbla tas bort automatiskt när enheten har tagits bort.

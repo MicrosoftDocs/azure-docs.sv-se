@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/22/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dc52414fa0d2eeffe0381a68bd66eadafe4862ea
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 8469e05b82a651760829761ca57af3bdb1b256a9
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781287"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443414"
 ---
 # <a name="page-layout-versions"></a>Sidlayoutversioner
 
@@ -33,6 +33,13 @@ Azure AD B2C sidlayouten använder följande version av [jQuery-biblioteket](htt
 |1.1.0 | 1.10.2 |
 
 ## <a name="self-asserted-page-selfasserted"></a>Själv kontrollerad sida (selfasserted)
+
+**2.1.4**
+- Uppdaterade jQuery-versionen till 3.5.1.
+- Uppdaterade HandlebarJS-versionen till 4.7.6.
+
+**2.1.3**
+- Säkerhets korrigeringar.
 
 **2.1.2**
 - Korrigerade problem med lokaliserings kodning för språk som spanska och franska.
@@ -87,6 +94,14 @@ Azure AD B2C sidlayouten använder följande version av [jQuery-biblioteket](htt
 > [!TIP]
 > Om du lokaliserar sidan så att den stöder flera språk, eller språk i ett användar flöde. Artikeln [lokaliserings-ID:](localization-string-ids.md) n innehåller en lista över lokaliserings-ID: n som du kan använda för den version av sidan som du väljer.
 
+**2.1.4**
+- Uppdaterade jQuery-versionen till 3.5.1.
+- Uppdaterade HandlebarJS-versionen till 4.7.6.
+
+**2.1.3**
+- Säkerhets korrigeringar.
+- Mindre fel korrigeringar.
+
 **2.1.2**
 - Korrigerade problem med lokaliserings kodning för språk som spanska och franska.
 - Tillåter att länken "glömt lösen ord" används som anspråk utbyte. Mer information finns i [självbetjäning för återställning av lösen ord](add-password-reset-policy.md#self-service-password-reset-recommended).
@@ -126,6 +141,15 @@ Azure AD B2C sidlayouten använder följande version av [jQuery-biblioteket](htt
 
 ## <a name="mfa-page-multifactor"></a>MFA-sida (multifaktor)
 
+**1.2.4**
+- Uppdaterade jQuery-versionen till 3.5.1.
+- Uppdaterade HandlebarJS-versionen till 4.7.6.
+
+**1.2.3**
+- Tillåt åsidosättande av tooltip-sträng via språk lokalisering.
+- Säkerhets korrigeringar.
+- Mindre fel korrigeringar.
+
 **1.2.2**
 - Åtgärdade ett problem med att fylla verifierings koden automatiskt när du använder iOS.
 - Ett problem har åtgärd ATS vid omdirigering av en token till den förlitande parten från Android webbvy. 
@@ -162,6 +186,10 @@ Azure AD B2C sidlayouten använder följande version av [jQuery-biblioteket](htt
 
 ## <a name="exception-page-globalexception"></a>Undantags sida (globalexception)
 
+**1.2.1**
+- Uppdaterade jQuery-versionen till 3.5.1.
+- Uppdaterade HandlebarJS-versionen till 4.7.6.
+
 **1.2.0**
 
 - Hjälpmedels korrigeringar
@@ -182,6 +210,10 @@ Azure AD B2C sidlayouten använder följande version av [jQuery-biblioteket](htt
 - Första utgåvan
 
 ## <a name="other-pages-providerselection-claimsconsent-unifiedssd"></a>Andra sidor (ProviderSelection, ClaimsConsent, UnifiedSSD)
+
+**1.2.1**
+- Uppdaterade jQuery-versionen till 3.5.1.
+- Uppdaterade HandlebarJS-versionen till 4.7.6.
 
 **1.2.0**
 

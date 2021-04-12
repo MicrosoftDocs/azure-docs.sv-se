@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2f0b6feea5e586c87191b22f42e3ab86e85ba7b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0072e699107ea51764a728ce3e9987b86b2a6806
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97032532"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492332"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Hantera enheter i ditt Azure IoT Central-program
 
@@ -156,7 +156,7 @@ Ta bort en verklig eller simulerad enhet från ditt Azure IoT Central-program:
 
 ## <a name="change-a-property"></a>Ändra en egenskap
 
-Moln egenskaper är enhetens metadata som är kopplade till enheten, till exempel stad och serie nummer. Moln egenskaper finns bara i IoT Central programmet och synkroniseras inte till dina enheter. Skrivbara egenskaper styr beteendet för en enhet och gör att du kan ange en fjärrenhets tillstånd, till exempel genom att ange mål temperaturen för en termostat-enhet.  Enhets egenskaperna anges av enheten och är skrivskyddade i IoT Central. Du kan visa och uppdatera egenskaper för vyn **enhets information** för din enhet.
+Moln egenskaper är enhetens metadata som är kopplade till enheten, till exempel stad och serie nummer. Moln egenskaper finns bara i IoT Central programmet och synkroniseras inte till dina enheter. Skrivbara egenskaper styr beteendet för en enhet och gör att du kan ställa in status för en enhet via fjärr anslutning, till exempel genom att ange mål temperaturen för en termostat-enhet.  Enhets egenskaperna anges av enheten och är skrivskyddade i IoT Central. Du kan visa och uppdatera egenskaper för vyn **enhets information** för din enhet.
 
 1. Välj **enheter** i den vänstra rutan.
 
@@ -166,7 +166,7 @@ Moln egenskaper är enhetens metadata som är kopplade till enheten, till exempe
 
 1. Ändra egenskaperna till de värden du behöver. Du kan ändra flera egenskaper i taget och samtidigt uppdatera alla på samma tidpunkt.
 
-1. Välj **Spara**. Om du har sparat skrivbara egenskaper skickas värdena till din enhet. När enheten bekräftar ändringen av den skrivbara egenskapen återgår statusen tillbaka till **synkroniserad**. Om du har sparat en moln egenskap uppdateras värdet.
+1. Välj **Spara**. Om du sparar skrivbara egenskaper skickas värdena till din enhet. När enheten bekräftar ändringen av den skrivbara egenskapen återgår statusen tillbaka till **synkroniserad**. Om du har sparat en moln egenskap uppdateras värdet.
 
 ## <a name="next-steps"></a>Nästa steg
 

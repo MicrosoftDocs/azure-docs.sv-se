@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: f83f743b692ae5a625a4c881b12cbad999f1f606
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d64dc4f3c034279aee7401503bbb60883c9ed4e7
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106776"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492247"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql---flexible-server"></a>Server parametrar i Azure Database for MySQL-flexibel Server
 
@@ -39,9 +39,11 @@ Se följande avsnitt för att lära dig mer om gränserna för de många ofta up
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-I Azure Database for MySQL flexibel Server är binära loggar alltid aktiverade (det vill säga `log_bin` är inställt på på). Om du vill använda utlösare får du ett fel som liknar att *du inte har behörigheten Super och binär loggning är aktive rad (du kanske vill använda mindre säker `log_bin_trust_function_creators` variabel)*. 
+I Azure Database for MySQL flexibel Server är binära loggar alltid aktiverade (det vill säga `log_bin` är inställt på på). log_bin_trust_function_creators är inställt på som standard på flexibla servrar. 
 
-Formatet för binär loggning är alltid **rad** och alla anslutningar till servern använder **alltid** rad-baserad binär loggning. Med en diskbaserad binär loggning finns inte säkerhets problem och binär loggning kan inte brytas, så du kan säkert ange [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) **värdet sant**.
+Formatet för binär loggning är alltid **rad** och alla anslutningar till servern använder **alltid** rad-baserad binär loggning. Med en diskbaserad binär loggning finns inte säkerhets problem och binär loggning kan inte brytas, så du kan på ett säkert sätt [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) fortsätta att vara kvar.
+
+Om [ `log_bin_trust_function_creators` ] har värdet av, om du försöker skapa utlösare kan du få fel som liknar att *du inte har behörigheten Super och binär loggning är aktiverat (du kanske vill använda mindre säker `log_bin_trust_function_creators` variabel)*. 
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 

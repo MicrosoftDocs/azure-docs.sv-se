@@ -1,18 +1,18 @@
 ---
 title: Aktivera Azure Security Center s integrerade arbets belastnings skydd
-description: Lär dig hur du aktiverar Azure Defender för att utöka skyddet av Azure Security Center till dina hybrid resurser och resurser i molnet
+description: Lär dig hur du aktiverar Azure Defender för att utöka skyddet av Azure Security Center till dina hybrid resurser och flera moln resurser
 author: memildin
 ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
 ms.date: 02/24/2021
-ms.openlocfilehash: 6496b18c8c22cbbd4fd3344736a4b38b7a998890
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7124014821c79fa37aa04da8909e3b4ac3bcb4fb
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102108921"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492502"
 ---
 # <a name="quickstart-enable-azure-defender"></a>Snabb start: Aktivera Azure Defender
 

@@ -5,16 +5,16 @@ ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 451323058ad743d6e26fc8bcea27d1b44c76f543
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31e30b4853da03e28a4a2d15292050805f5bc292
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97674050"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064161"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>Standardtest-fall för test verktyg för ARM-mall
 
-I den här artikeln beskrivs de standardtester som körs med [mallens test verktyg](test-toolkit.md). Det innehåller exempel som klarar eller underlåter testet. Den innehåller namnet på varje test.
+I den här artikeln beskrivs de standardtester som körs med [mallens test verktyg](test-toolkit.md) för Azure Resource Manager mallar (arm-mallar). Det innehåller exempel som klarar eller underlåter testet. Den innehåller namnet på varje test. Om du vill köra ett speciellt test, se [test parametrar](test-toolkit.md#test-parameters).
 
 ## <a name="use-correct-schema"></a>Använd rätt schema
 
@@ -137,7 +137,7 @@ I följande exempel **överförs** det här testet.
 
 Test namn: **platsen får inte vara hårdkodad**
 
-Mallarna måste ha en parameter med namnet location. Använd den här parametern för att ange placeringen av resurser i mallen. I huvud mal len (med namnet azuredeploy.jspå eller mainTemplate.jspå) kan den här parametern användas som standard för resurs gruppens plats. I länkade eller kapslade mallar får plats parametern inte ha en standard plats.
+Mallarna måste ha en parameter med namnet location. Använd den här parametern för att ange placeringen av resurser i mallen. I huvud mal len (med namnet _azuredeploy.jspå_ eller _mainTemplate.jspå_) kan den här parametern användas som standard för resurs gruppens plats. I länkade eller kapslade mallar får plats parametern inte ha en standard plats.
 
 Användare av din mall kan ha begränsade regioner tillgängliga för dem. När du hårdkodar resurs platsen kan användarna blockeras från att skapa en resurs i den regionen. Användarna kan blockeras även om du anger resurs platsen till `"[resourceGroup().location]"` . Resurs gruppen kan ha skapats i en region som andra användare inte kan komma åt. Dessa användare blockeras från att använda mallen.
 
@@ -393,11 +393,11 @@ När du inkluderar parametrar för `_artifactsLocation` och `_artifactsLocationS
 * Om du anger en parameter måste du ange den andra
 * `_artifactsLocation` måste vara en **sträng**
 * `_artifactsLocation` måste ha ett standardvärde i huvud mal len
-* `_artifactsLocation` Det går inte att ha ett standardvärde i en kapslad mall 
+* `_artifactsLocation` Det går inte att ha ett standardvärde i en kapslad mall
 * `_artifactsLocation` måste ha antingen `"[deployment().properties.templateLink.uri]"` en eller RAW lagrings platsen-URL för sitt standardvärde
 * `_artifactsLocationSasToken` måste vara en **secureString**
 * `_artifactsLocationSasToken` Det får bara finnas en tom sträng för standardvärdet
-* `_artifactsLocationSasToken` Det går inte att ha ett standardvärde i en kapslad mall 
+* `_artifactsLocationSasToken` Det går inte att ha ett standardvärde i en kapslad mall
 
 ## <a name="declared-variables-must-be-used"></a>Deklarerade variabler måste användas
 
@@ -520,7 +520,7 @@ I nästa exempel **skickas** det här testet.
 
 Test namn: **ResourceIds får inte innehålla**
 
-Använd inte onödiga funktioner för valfria parametrar när du genererar resurs-ID: n. Som standard använder funktionen [resourceId](template-functions-resource.md#resourceid) den aktuella prenumerationen och resurs gruppen. Du behöver inte ange dessa värden.  
+Använd inte onödiga funktioner för valfria parametrar när du genererar resurs-ID: n. Som standard använder funktionen [resourceId](template-functions-resource.md#resourceid) den aktuella prenumerationen och resurs gruppen. Du behöver inte ange dessa värden.
 
 I följande exempel **Miss lyckas** det här testet eftersom du inte behöver ange det aktuella prenumerations-ID: t och resurs gruppens namn.
 
@@ -691,7 +691,40 @@ Följande exempel **Miss lyckas** eftersom den använder en [list *](template-fu
 }
 ```
 
+## <a name="use-protectedsettings-for-commandtoexecute-secrets"></a>Använd protectedSettings för commandToExecute hemligheter
+
+Test namn: **CommandToExecute måste använda ProtectedSettings för hemligheter**
+
+I ett anpassat skript tillägg använder du den krypterade egenskapen `protectedSettings` när du `commandToExecute` inkluderar hemliga data, till exempel ett lösen ord. Exempel på hemliga data typer är `secureString` , `secureObject` `list()` funktioner eller skript.
+
+Mer information om anpassat skript tillägg för virtuella datorer finns i [Windows](
+/azure/virtual-machines/extensions/custom-script-windows), [Linux](/azure/virtual-machines/extensions/custom-script-linux)och schemat [Microsoft. Compute virtualMachines/Extensions](/azure/templates/microsoft.compute/virtualmachines/extensions).
+
+I det här exemplet skickar en mall med en parameter med namnet `adminPassword` och typen `secureString`  testet eftersom den krypterade egenskapen `protectedSettings` innehåller `commandToExecute` .
+
+```json
+"properties": [
+  {
+    "protectedSettings": {
+      "commandToExecute": "[parameters('adminPassword')]"
+    }
+  }
+]
+```
+
+Testet **Miss lyckas** om den okrypterade egenskapen `settings` innehåller `commandToExecute` .
+
+```json
+"properties": [
+  {
+    "settings": {
+      "commandToExecute": "[parameters('adminPassword')]"
+    }
+  }
+]
+```
+
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer om att köra test Toolkit i [använda arm Template test Toolkit](test-toolkit.md).
-- En Microsoft Learn-modul som täcker med hjälp av test Toolkit finns i [Förhandsgranska ändringar och verifiera Azure-resurser med hjälp av vad-IF-och arm-mallens test verktyg](/learn/modules/arm-template-test/).
+* Läs mer om att köra test Toolkit i [använda arm Template test Toolkit](test-toolkit.md).
+* En Microsoft Learn-modul som täcker med hjälp av test Toolkit finns i [Förhandsgranska ändringar och verifiera Azure-resurser med hjälp av vad-IF-och arm-mallens test verktyg](/learn/modules/arm-template-test/).

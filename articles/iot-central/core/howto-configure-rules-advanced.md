@@ -7,12 +7,12 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 257855b4f7b1fae56ed8d6a063acfb0588da9b6a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af6adcf408c9790b09830e986cd1cac00774a2ec
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92123328"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491941"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Använd arbets flöden för att integrera ditt Azure IoT Central-program med andra moln tjänster
 
@@ -187,7 +187,7 @@ Använd den här åtgärden för att uppdatera skrivbara egenskaps värden för 
 | Program | Välj i listan med IoT Central-program. |
 | Enhet | Unikt ID för den enhet som ska tas bort. |
 | Enhets mall | Välj i listan med enhetsspecifika mallar i IoT Central programmet. |
-| Skrivbara egenskaper | När du har valt en enhets mall läggs ett fält till för varje skrivbar egenskap som definieras i mallen. |
+| Skrivbara egenskaper | När du har valt en enhets mall läggs ett fält till för varje skrivbar egenskap som definierats i mallen. |
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -3,12 +3,12 @@ title: Säkerhetskopiera virtuella Hyper-V-datorer med MABS
 description: Den här artikeln innehåller procedurer för att säkerhetskopiera och återställa virtuella datorer med hjälp av Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: a020559229771fff1ecc8fb512a5b2af70240cdd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c1c894df29659dce312d092f1aa3ea5d584e248a
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102509514"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107218"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Säkerhetskopiera virtuella Hyper-V-datorer med Azure Backup Server
 
@@ -63,7 +63,7 @@ Detta är kraven för att säkerhetskopiera virtuella Hyper-V-datorer med MABS:
 |Förutsättning|Information|
 |------------|-------|
 |MABS-krav|– Om du vill utföra återställning på objekt nivå för virtuella datorer (återställa filer, mappar, volymer) måste du installera Hyper-V-rollen på MABS-servern.  Om du bara vill återställa den virtuella datorn och inte på objekt nivå så krävs inte rollen.<br />-Du kan skydda upp till 800 virtuella datorer på 100 GB vardera på en MABS-Server och tillåta flera MABS-servrar som stöder större kluster.<br />-MABS utesluter växlings filen från stegvisa säkerhets kopieringar för att förbättra prestanda för säkerhets kopiering av virtuella datorer.<br />-MABS kan säkerhetskopiera en Hyper-V-server eller ett kluster i samma domän som MABS-servern eller i en underordnad eller betrodd domän. Om du vill säkerhetskopiera Hyper-V i en arbets grupp eller en ej betrodd domän måste du konfigurera autentisering. Du kan använda NTLM eller certifikatautentisering för en enskild Hyper-V-server. Du kan endast använda certifikatautentisering för ett kluster.<br />-   Du kan inte använda säkerhetskopiering på värdnivå för att säkerhetskopiera data på virtuella datorer på direktlagringsdiskar. I det här scenariot rekommenderar vi att du använder säkerhets kopiering på värdnivå för att säkerhetskopiera VHD-filer och säkerhets kopiering på gästnivå för att säkerhetskopiera andra data som inte är synliga på värden.<br />   -Du kan säkerhetskopiera virtuella datorer som lagras på deduplicerade volymer.|
-|Förutsättningar för Hyper-V VM|-Versionen av integrations komponenterna som körs på den virtuella datorn måste vara samma som Hyper-V-värdens version. <br />-   För varje säkerhetskopiering av virtuella datorer måste du frigöra utrymme på volymen där VHD-filerna finns så att Hyper-V har tillräckligt med utrymme för differentieringsdiskar (AVHD:er) under säkerhetskopieringen. Utrymmet måste minst vara lika med beräkningen **ursprunglig hårddiskstorlek\* omsättningshastighet tidslucka för \*säkerhetskopiering**. Om du använder flera säkerhetskopieringar i ett kluster behöver du tillräckligt mycket lagringskapacitet för att få plats med AVHD:erna för var och en av de virtuella datorerna baserat på den här beräkningen.<br />– Om du vill säkerhetskopiera virtuella datorer som finns på Hyper-V-värd servrar som kör Windows Server 2012 R2, måste den virtuella datorn ha en angiven SCSI-styrenhet, även om den inte är ansluten till något. (I Windows Server 2012 R2 online backup monterar Hyper-V-värden en ny virtuell hård disk i den virtuella datorn och demonterar sedan den senare. Endast SCSI-styrenheten stöder detta och krävs därför för onlinesäkerhetskopiering av den virtuella datorn.  Utan den här inställningen kommer händelse-ID 10103 att utfärdas när du försöker säkerhetskopiera den virtuella datorn.)|
+|Förutsättningar för Hyper-V VM|-Versionen av integrations komponenterna som körs på den virtuella datorn måste vara samma som Hyper-V-värdens version. <br />-   För varje säkerhetskopiering av virtuella datorer måste du frigöra utrymme på volymen där VHD-filerna finns så att Hyper-V har tillräckligt med utrymme för differentieringsdiskar (AVHD:er) under säkerhetskopieringen. Utrymmet måste minst vara lika med beräkningen **ursprunglig hårddiskstorlek\* omsättningshastighet tidslucka för \*säkerhetskopiering**. Om du använder flera säkerhetskopieringar i ett kluster behöver du tillräckligt mycket lagringskapacitet för att få plats med AVHD:erna för var och en av de virtuella datorerna baserat på den här beräkningen.<br />– Om du vill säkerhetskopiera virtuella datorer som finns på Hyper-V-värd servrar som kör Windows Server 2012 R2, måste den virtuella datorn ha en angiven SCSI-styrenhet, även om den inte är ansluten till något. (I Windows Server 2012 R2 säkerhets kopiering monterar Hyper-V-värden en ny virtuell hård disk i den virtuella datorn och demonterar sedan den senare. Endast SCSI-styrenheten stöder detta och krävs därför för onlinesäkerhetskopiering av den virtuella datorn.  Utan den här inställningen kommer händelse-ID 10103 att utfärdas när du försöker säkerhetskopiera den virtuella datorn.)|
 |Förutsättningar för Linux|– Du kan säkerhetskopiera virtuella Linux-datorer med MABS. Endast filkonsekventa ögonblicksbilder stöds.|
 |Säkerhetskopiera virtuella datorer med CSV-lagring|-   För CSV-lagring installerar du maskinvaruprovidern Volume Shadow Copy Services (VSS) på Hyper-V-servern. Kontakta din SAN-leverantör (Storage Area Network) för VSS-maskinvaruprovidern.<br />– Om en enda nod stängs av utan förvarning i ett CSV-kluster utför MABS en konsekvens kontroll mot de virtuella datorer som kördes på noden.<br />-   Om du behöver starta om en Hyper-V-server som har BitLocker-diskkryptering aktiverat för CSV-klustret måste du utföra en konsekvenskontroll för virtuella Hyper-V-datorer.|
 |Säkerhetskopiera virtuella datorer med SMB-lagring|– Aktivera automatisk montering på den server som kör Hyper-V för att aktivera skydd av virtuella datorer.<br />   -   Inaktivera TCP Chimney-avlastning.<br />-   Kontrollera att alla Hyper-V:s machine$-konton har fullständig behörighet till de aktuella SMB-filresurserna.<br />– Kontrol lera att fil Sök vägen för alla virtuella dator komponenter under återställningen till den alternativa platsen är färre än 260 tecken. Annars kan återställningen lyckas, men Hyper-V kan inte montera den virtuella datorn.<br />-Följande scenarier stöds inte:<br />     Distributioner där vissa komponenter i den virtuella datorn finns på lokala volymer och vissa komponenter finns på fjärrvolymer. en IPv4-eller IPv6-adress för lagrings platsens fil server och återställning av en virtuell dator till en dator som använder SMB-fjärrresurser.<br />-Du måste aktivera VSS-agenttjänsten för fil server på varje SMB-server – Lägg till den i **Lägg till roller och funktioner**  >  **Välj Server roller**  >  **fil-och lagrings tjänster**  >  **fil**  >  **tjänst fil tjänst**  >  **VSS-agenttjänsten**.|
@@ -76,7 +76,7 @@ Detta är kraven för att säkerhetskopiera virtuella Hyper-V-datorer med MABS:
    - Total storlek på 800 virtuella datorer – 80 TB
    - Utrymme som krävs för lagring av säkerhetskopior – 80 TB
 
-2. Konfigurera skydds agenten för MABS på Hyper-V-servern eller Hyper-V-klusternoderna. Om du utför säkerhets kopiering på gästnivå installerar du agenten på de virtuella datorer som du vill säkerhetskopiera på gästnivå.
+2. Konfigurera skydds agenten för MABS på Hyper-V-servern eller Hyper-V-klusternoderna.
 
 3. I administratörs konsolen för Mabs väljer du **skydd**  >  **skapa skydds grupp** för att öppna guiden **Skapa ny skydds grupp** .
 
@@ -88,7 +88,7 @@ Detta är kraven för att säkerhetskopiera virtuella Hyper-V-datorer med MABS:
 
     > [!NOTE]
     >
-    >Om du skyddar programarbetsbelastningarna skapas återställningspunkter i enlighet med synkroniseringsfrekvensen under förutsättning att programmet har stöd för inkrementella säkerhetskopior. Om den inte gör det kör MABS en fullständig snabb säkerhets kopiering i stället för en stegvis säkerhets kopiering och skapar återställnings punkter i enlighet med schemat för snabb säkerhets kopiering.
+    >Om du skyddar programarbetsbelastningarna skapas återställningspunkter i enlighet med synkroniseringsfrekvensen under förutsättning att programmet har stöd för inkrementella säkerhetskopior. Om den inte gör det kör MABS en fullständig snabb säkerhets kopiering i stället för en stegvis säkerhets kopiering och skapar återställnings punkter i enlighet med schemat för snabb säkerhets kopiering.<br></br>Säkerhets kopierings processen säkerhetskopierar inte kontroll punkter som är associerade med virtuella datorer.
 
 7. På sidan **Granska diskallokering** granskar du allokerat disk utrymme för lagringspoolen för skydds gruppen.
 

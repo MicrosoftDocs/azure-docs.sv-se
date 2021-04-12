@@ -9,14 +9,14 @@ MS. service: Media-Services MS. arbets belastning: MS. topic: konceptuell MS. Da
 
 I Microsoft Azure Media Services representerar en [strömmande slut punkt](/rest/api/media/streamingendpoints) en dynamisk (just-in-Time)-paketering och ursprungs tjänst som kan leverera Live och innehåll på begäran direkt till en app i klient spelaren med ett av de vanliga protokollen för strömnings mediet (HLS eller tank streck). Dessutom tillhandahåller **direkt uppspelnings slut punkten** dynamisk kryptering (just-in-Time) för att branschledande DRM: er. 
 
-När du skapar ett Media Services konto skapas en **standard** slut punkt för direkt uppspelning när du har stoppat tillstånd. Fler slut punkter för direkt uppspelning kan skapas under kontot (se [kvoter och gränser](limits-quotas-constraints.md)).
+När du skapar ett Media Services konto skapas en **standard** slut punkt för direkt uppspelning när du har stoppat tillstånd. Fler slut punkter för direkt uppspelning kan skapas under kontot (se [kvoter och gränser](limits-quotas-constraints-reference.md)).
 
 > [!NOTE]
 > Om du vill starta strömmande videor måste du starta den **strömnings slut punkt** från vilken du vill strömma videon.
 >
 > Du faktureras bara när slut punkten för direkt uppspelning är i körnings läge.
 
-Se till att du också läser avsnittet [dynamisk förpackning](dynamic-packaging-overview.md) . 
+Se till att du också läser avsnittet [dynamisk förpackning](encode-dynamic-packaging-concept.md) . 
 
 ## <a name="naming-convention"></a>Namngivnings konvention
 
@@ -201,7 +201,7 @@ Kolla in [Azure Media Services community](media-services-community.md) -artikeln
 
 ## <a name="see-also"></a>Se även
 
-[Dynamisk paketering](dynamic-packaging-overview.md)
+[Dynamisk paketering](encode-dynamic-packaging-concept.md)
 
 ## <a name="next-steps"></a>Nästa steg
 

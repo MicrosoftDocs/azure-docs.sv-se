@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, MashaMSFT
 ms.date: 07/10/2020
-ms.openlocfilehash: 2da7311e61aa39be69a6a0a29eff686baaad7ebf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd66c10bb1d6316bbe90e7ba4092d79c6a43a75d
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91323200"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285302"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Översikt över hanteringsåtgärder för Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -70,12 +70,14 @@ Följande tabeller sammanfattar åtgärder och typiska övergripande varaktighet
 |Åtgärd  |Tids krävande segment  |Uppskattad varaktighet  |
 |---------|---------|---------|
 |Ändring av instans egenskap (administratörs lösen ord, Azure AD-inloggning, Azure Hybrid-förmån flagga)|Ej tillämpligt|Upp till 1 minut.|
-|Skalning av instans lagring upp/ned (Generell användning tjänst nivå)|Bifoga databasfiler|90% av åtgärderna har slutförts på 5 minuter.|
+|Skalning av instans lagring upp/ned (Generell användning tjänst nivå)|Inget tids krävande segment<sup>1</sup>|99% av åtgärderna har slutförts på 5 minuter.|
 |Skalning av instans lagring upp/ned (Affärskritisk tjänst nivå)|-Storleks ändring av virtuellt kluster<br>-Always on-tillgänglighets grupps dirigering|90% av åtgärderna har slutförts i 2,5 timmar + tid för att dirigera alla databaser (220 GB/timme).|
 |Virtuella kärnor (Instance Compute) skalar upp och ned (Generell användning)|-Storleks ändring av virtuellt kluster<br>-Bifoga databasfiler|90% av åtgärderna har slutförts om 2,5 timmar.|
 |Virtuella kärnor (Instance Compute) skalar upp och ned (Affärskritisk)|-Storleks ändring av virtuellt kluster<br>-Always on-tillgänglighets grupps dirigering|90% av åtgärderna har slutförts i 2,5 timmar + tid för att dirigera alla databaser (220 GB/timme).|
 |Instans tjänst nivå ändring (Generell användning till Affärskritisk och vice versa)|-Storleks ändring av virtuellt kluster<br>-Always on-tillgänglighets grupps dirigering|90% av åtgärderna har slutförts i 2,5 timmar + tid för att dirigera alla databaser (220 GB/timme).|
 | | | 
+
+<sup>1</sup> skalning generell användning hanterade instans lagring orsakar ingen redundansväxling i slutet av åtgärden. I det här fallet består åtgärden av att uppdatera metadata och sprida svar för en skickad begäran.
 
 **Kategori: ta bort**
 
@@ -90,6 +92,9 @@ Följande tabeller sammanfattar åtgärder och typiska övergripande varaktighet
 ## <a name="instance-availability"></a>Tillgänglighet för instans
 
 SQL-hanterad instans **är tillgänglig under uppdaterings åtgärder**, förutom ett kort stillestånd som orsakas av redundansväxlingen som inträffar i slutet av uppdateringen. Det tar vanligt vis upp till 10 sekunder, även om tids krävande transaktioner har avbrutits, tack vare [accelererad databas återställning](../accelerated-database-recovery.md).
+
+> [!NOTE]
+> Skalning Generell användning hanterade instans lagring orsakar ingen redundansväxling i slutet av uppdateringen.
 
 SQL-hanterad instans är inte tillgänglig för klient program under distributions-och borttagnings åtgärder.
 

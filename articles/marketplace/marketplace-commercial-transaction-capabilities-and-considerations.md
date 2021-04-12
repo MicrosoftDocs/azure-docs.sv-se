@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/06/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 9797401fd96bf052fdc9de0c2c2ceaf88b3d46b6
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 0a25e1b50455cad5bdbe5b76b2a291f2a1c11940
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504217"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107014"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transact-funktioner för kommersiella Marketplace
 
@@ -42,9 +42,9 @@ Alternativet för Transact-publicering stöds för närvarande för följande er
 
 | Erbjudandetyp | Fakturerings takt | Avgiftsbelagd fakturering | Prismodell |
 | ------------ | ------------- | ------------- | ------------- |
-| Azure Application<br>(Hanterat program) | Varje månad | Yes | Användning-baserad |
-| Virtuell Azure-dator | Hyres | No | Användning-baserad, BYOL |
-| Programvara som en tjänst (SaaS) | Månatlig och årlig | Yes | Fast pris, per användare, användnings-baserade. |
+| Azure Application<br>(Hanterat program) | Varje månad | Ja | Användning-baserad |
+| Virtuell Azure-dator | Hyres | Inga | Användning-baserad, BYOL |
+| Programvara som en tjänst (SaaS) | Månatlig och årlig | Ja | Fast pris, per användare, användnings-baserade. |
 |||||
 
 `*` Virtuella Azure-datorer erbjuder support användnings fakturerings planer. Dessa planer faktureras per månad för varje timmes användning av prenumerationen baserat på per kärna, per kärn storlek eller per marknad och kärn storlek.
@@ -189,7 +189,7 @@ Det här avsnittet beskriver Transact-krav för olika erbjudande typer.
 - En Microsoft-konto och ekonomisk information krävs för alternativet för Transact-publicering, oavsett pris sättnings modell för erbjudandet.
 - Obligatorisk finansiell information inkluderar utbetalnings konto och skatte profil.
 
-Mer information om hur du konfigurerar dessa konton finns i [Hantera ditt kommersiella Marketplace-konto i Partner Center](partner-center-portal/manage-account.md).
+Mer information om hur du konfigurerar dessa konton finns i [Hantera ditt kommersiella Marketplace-konto i Partner Center](manage-account.md).
 
 ### <a name="requirements-for-specific-offer-types"></a>Krav för särskilda erbjudande typer
 

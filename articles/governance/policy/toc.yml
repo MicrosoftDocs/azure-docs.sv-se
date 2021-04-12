@@ -32,6 +32,8 @@
     - name: Tilldela en princip – ARM-mall
       displayName: 'assign, compliance, resource manager'
       href: ./assign-policy-template.md
+    - name: Tilldela en princip – bicep
+      href: ./assign-policy-bicep.md
     - name: Tilldela en princip – Terraform
       displayName: 'assign, compliance, hcl, provider'
       href: ./assign-policy-terraform.md

@@ -12,12 +12,12 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: avvikelse identifiering, maskin inlärning, algoritmer
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: ad3bd1eed6e5e7efb783c4a40958e16c3ca23691
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3bfa30cc5d3d57cfcd2677bb4b2719061541d5a9
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572079"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278872"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Vad är API:et för avvikelseidentifiering?
 
@@ -28,6 +28,12 @@ Med API: t för avvikelse identifiering kan du övervaka och identifiera avvikel
 ![Identifiera mönster ändringar i tjänst begär Anden](./media/anomaly_detection2.png)
 
 Att använda avvikelse detektorn kräver ingen tidigare erfarenhet av Machine Learning, och RESTful-API: et gör att du enkelt kan integrera tjänsten i dina program och processer.
+
+Den här dokumentationen innehåller följande typer av artiklar:
+* [Snabb starterna](./Quickstarts/client-libraries.md) är steg-för-steg-instruktioner som gör att du kan anropa tjänsten och få resultat under en kort tids period. 
+* [Instruktions guiderna](./how-to/identify-anomalies.md) innehåller instruktioner för att använda tjänsten på mer exakta eller anpassade sätt.
+* De [konceptuella artiklarna](./concepts/anomaly-detection-best-practices.md) innehåller djupgående förklaringar av tjänstens funktioner och funktioner.
+* [Självstudierna](./tutorials/batch-anomaly-detection-powerbi.md) är längre guider som visar hur du använder den här tjänsten som en komponent i bredare affärs lösningar.
 
 ## <a name="features"></a>Funktioner
 

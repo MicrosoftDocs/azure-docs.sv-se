@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 85d5d5b484163c4c65e7ec14c5d5ce5aea339669
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d3cc8f36f05def18c16db0875cb712cdf5d165f9
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104593211"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121361"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planera för distribution av Azure File Sync
 
@@ -351,7 +351,7 @@ Om moln skiktning är aktiverat ska lösningar som direkt säkerhetskopierar Ser
 Om du föredrar att använda en lokal lösning för säkerhets kopiering ska säkerhets kopieringar utföras på en server i den synkroniserade grupp där moln nivå inaktive ras. När du utför en återställning använder du alternativen på volym-eller fil nivå återställning. Filer som återställs med alternativet Återställning på filnivå synkroniseras till alla slut punkter i Sync-gruppen och befintliga filer ersätts med den version som återställs från säkerhets kopian.  Återställningar på volym nivå ersätter inte nyare fil versioner i Azure-filresursen eller andra server slut punkter.
 
 > [!WARNING]
-> Robocopy/B-växeln stöds inte med Azure File Sync. Om du använder Robocopy/B-växeln med en Azure File Sync Server slut punkt när källan kan leda till skadade filer.
+> Om du behöver använda Robocopy/B med en Azure File Sync-agent som körs på käll-eller mål servern uppgraderar du till Azure File Sync agent version v 12.0 eller senare. Om du använder Robocopy/B med agent versioner som är mindre än v 12.0 leder det till att skiktade filer skadas under kopieringen.
 
 > [!Note]  
 > Återställning utan operativ system (BMR) kan orsaka oväntade resultat och stöds inte för närvarande.

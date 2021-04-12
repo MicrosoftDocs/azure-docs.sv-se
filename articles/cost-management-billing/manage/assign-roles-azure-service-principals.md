@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/07/2021
+ms.date: 04/05/2021
 ms.author: banders
-ms.openlocfilehash: e7f5370e1e387947d196959fef31043ea8f4d3bd
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: d348eeb5cc789665d7e7004523b9feba0ea6e413
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102508528"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490564"
 ---
 # <a name="assign-roles-to-azure-enterprise-agreement-service-principal-names"></a>Tilldela roller till Azure Enterprise-avtal tjänstens huvud namn
 
@@ -62,12 +62,14 @@ I nästa steg ger du behörighet till Azure AD-appen för att utföra åtgärder
 | Roll | Tillåtna åtgärder | Roll Definitions-ID |
 | --- | --- | --- |
 | EnrollmentReader | Kan visa användning och avgifter för alla konton och prenumerationer. Kan visa Azure-förskotts betalning (tidigare kallat betalnings åtagande) som är kopplad till registreringen. | 24f8edb6-1668-4659-b5e2-40bb5f3a7d7e |
+| EA-inköpare | Köp reservations order och Visa reservations transaktioner. Kan visa användning och avgifter för alla konton och prenumerationer. Kan visa Azure-förskotts betalning (tidigare kallat betalnings åtagande) som är kopplad till registreringen. | da6647fb-7651-49ee-be91-c43c4877f0c4  |
 | DepartmentReader | Hämta användnings informationen för den avdelning som de administrerar. Kan visa användning och avgifter som är kopplade till deras avdelning. | db609904-a47f-4794-9be8-9bd86fbffd8a |
 | SubscriptionCreator | Skapa nya prenumerationer inom det aktuella konto omfånget. | a0bcee42-bf30-4d1b-926a-48d21664ef71 |
 
 - En registrerings läsare kan bara tilldelas ett tjänst huvud namn av en användare med rollen registrerings skrivare.
 - En avdelnings läsare kan bara tilldelas ett SPN av en användare som har rollen som registrerings skrivare eller rollen som avdelnings skrivare.
-- En prenumerations skapare roll kan bara tilldelas ett tjänst huvud namn av en användare som är konto ägare till registrerings kontot.
+- En prenumerations skapare roll kan bara tilldelas ett tjänst huvud namn av en användare som är konto ägare till registrerings kontot. Rollen visas inte i EA-portalen. Den skapas bara av program mässigt och används endast för program mässig användning.
+- Den EA-inköpare rollen visas inte i EA-portalen. Den skapas bara av program mässigt och används endast för program mässig användning.
 
 ## <a name="assign-enrollment-account-role-permission-to-the-spn"></a>Tilldela behörighet för registrerings konto rollen till SPN
 
@@ -120,6 +122,14 @@ Starta kommandot genom att välja **Kör** .
 Ett `200 OK` svar visar att SPN har lagts till.
 
 Nu kan du använda SPN (Azure AD App med objekt-ID) för att få åtkomst till EA-API: er på ett automatiserat sätt. SPN har rollen EnrollmentReader.
+
+## <a name="assign-ea-purchaser-role-permission-to-the-spn"></a>Tilldela SPN-behörighet för EA-huvudrollen 
+
+För den EA-inköpare rollen använder du samma steg för registrerings läsaren. Ange `roleDefinitionId` med följande exempel.
+
+`"/providers/Microsoft.Billing/billingAccounts/1111111/billingRoleDefinitions/ da6647fb-7651-49ee-be91-c43c4877f0c4"`
+
+ 
 
 ## <a name="assign-the-department-reader-role-to-the-spn"></a>Tilldela rollen som avdelnings läsare till SPN
 

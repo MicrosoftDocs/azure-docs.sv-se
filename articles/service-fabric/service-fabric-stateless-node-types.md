@@ -5,14 +5,14 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: eb19005019a6e4e878f6b0bd6a145048d4a2804c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 74680f7b56ad98851e2839b53c1f9e92b6c6c23a
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563784"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030022"
 ---
-# <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Distribuera ett Azure Service Fabric-kluster med endast tillstånds lösa Node-typer (för hands version)
+# <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types"></a>Distribuera ett Azure Service Fabric-kluster med enbart tillstånds lösa nodtyper
 Service Fabric Node-typer levereras med ett förutsättnings antagande som vid en viss tidpunkt kan tillstånds känsliga tjänster placeras på noderna. Tillstånds lösa nodtyper sänker detta antagande för en nodtyp, vilket innebär att nodtypen kan använda andra funktioner, till exempel snabbare skalnings åtgärder, stöd för automatiska operativ system uppgraderingar på brons-hållbarhet och skalbarhet till fler än 100 noder i en enda skalnings uppsättning för virtuella datorer.
 
 * Det går inte att konfigurera primära nodtyper till tillstånds lösa
@@ -23,7 +23,7 @@ Service Fabric Node-typer levereras med ett förutsättnings antagande som vid e
 Exempel på mallar är tillgängliga: [Service Fabric mall för tillstånds löst Node types](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 
 ## <a name="enabling-stateless-node-types-in-service-fabric-cluster"></a>Aktivera tillstånds lösa nodtyper i Service Fabric kluster
-Om du vill ange en eller flera nodtyper som tillstånds lösa i en kluster resurs anger du egenskapen **isStateless** till "true". När du distribuerar ett Service Fabric kluster med tillstånds lösa nodtyper måste du komma ihåg att ha minst en primär nodtyp i kluster resursen.
+Om du vill ange en eller flera nodtyper som tillstånds lösa i en kluster resurs anger du egenskapen **isStateless** till **True**. När du distribuerar ett Service Fabric kluster med tillstånds lösa nodtyper måste du komma ihåg att ha minst en primär nodtyp i kluster resursen.
 
 * Service Fabric kluster resursens API version ska vara "2020-12-01-för hands version" eller högre.
 
@@ -44,7 +44,7 @@ Om du vill ange en eller flera nodtyper som tillstånds lösa i en kluster resur
         },
         "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
         "isPrimary": true,
-        "isStateless": false,
+        "isStateless": false, // Primary Node Types cannot be stateless
         "vmInstanceCount": "[parameters('nt0InstanceCount')]"
     },
     {
@@ -72,16 +72,15 @@ Om du vill ange en eller flera nodtyper som tillstånds lösa i en kluster resur
 Om du vill aktivera tillstånds lösa nodtyper bör du konfigurera den underliggande resursen för skalnings uppsättningar för virtuella datorer på följande sätt:
 
 * Egenskapen Value  **singlePlacementGroup** , som ska anges till **false** om du behöver skala till fler än 100 virtuella datorer.
-* Skalnings uppsättningens **upgradePolicy** **läge** ska vara inställt på **rullande**.
+* Skalnings uppsättningens **upgradeMode** ska vara inställd på **rullande**.
 * Läget för löpande uppgradering kräver att ett program hälso tillägg eller hälso avsökning har kon figurer ATS. Konfigurera hälso avsökningen med standard konfiguration för tillstånds lösa nodtyper enligt rekommendationerna nedan. När program har distribuerats till nodtypen kan hälso avsökningen/hälso tilläggets portar ändras för att övervaka program hälsan.
 
 >[!NOTE]
-> Det krävs att antalet plattforms Fels domäner uppdateras till 5 när en tillstånds lös nodtyp backas upp av en skalnings uppsättning för virtuella datorer som sträcker sig över flera zoner. Mer information finns i den här [mallen](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure) .
-> 
-> **platformFaultDomainCount: 5**
+> När funktionen för automatisk skalning används med tillstånds lösa nodetypes, rensas inte nodens tillstånd automatiskt. För att rensa NodeState i noderna under autoskalning bör du använda [Service Fabric autoskalning-hjälpen](https://github.com/Azure/service-fabric-autoscale-helper) .
+
 ```json
 {
-    "apiVersion": "2018-10-01",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.Compute/virtualMachineScaleSets",
     "name": "[parameters('vmNodeType1Name')]",
     "location": "[parameters('computeLocation')]",
@@ -92,8 +91,9 @@ Om du vill aktivera tillstånds lösa nodtyper bör du konfigurera den underligg
           "automaticOSUpgradePolicy": {
             "enableAutomaticOSUpgrade": true
           }
-        }
-    }
+        },
+        "platformFaultDomainCount": 5
+    },
     "virtualMachineProfile": {
     "extensionProfile": {
     "extensions": [
@@ -136,6 +136,18 @@ Om du vill aktivera tillstånds lösa nodtyper bör du konfigurera den underligg
     ]
 }
 ```
+
+## <a name="configuring-stateless-node-types-with-multiple-availability-zones"></a>Konfigurera tillstånds lösa nodtyper med flera Tillgänglighetszoner
+Om du vill konfigurera tillstånds lös NodeType som sträcker sig över flera tillgänglighets zoner följer du dokumentationen [här](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set), tillsammans med några ändringar enligt följande:
+
+* Ange **singlePlacementGroup** :  **false**  om flera placerings grupper måste vara aktiverade.
+* Ange  **upgradeMode** : **rullande**   och lägga till tillägg för program hälso tillägg/hälso avsökningar som anges ovan.
+* Ange **platformFaultDomainCount** : **5** för skalnings uppsättning för virtuell dator.
+
+>[!NOTE]
+> Oavsett vilka VMSSZonalUpgradeMode som kon figurer ATS i klustret sker uppdateringar av skalnings uppsättningar för virtuella datorer alltid i turordning en tillgänglighets zon i taget för den tillstånds lösa NodeType som sträcker sig över flera zoner, eftersom den använder rullande uppgraderings läge.
+
+För referens tittar du på [mallen](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure) för att konfigurera tillstånds lösa nodtyper med flera Tillgänglighetszoner
 
 ## <a name="networking-requirements"></a>Nätverkskrav
 ### <a name="public-ip-and-load-balancer-resource"></a>Offentlig IP-adress och Load Balancer resurs
@@ -184,7 +196,7 @@ Om du vill aktivera skalning till fler än 100 virtuella datorer på en resurs f
 ```
 
 >[!NOTE]
-> Det går inte att göra en förändring på plats av SKU: n på den offentliga IP-adressen och belastnings Utjämnings resurserna. Om du migrerar från befintliga resurser som har en grundläggande SKU, kan du läsa avsnittet migrering i den här artikeln.
+> Det går inte att göra en förändring på plats av SKU: n på den offentliga IP-adressen och belastnings Utjämnings resurserna. 
 
 ### <a name="virtual-machine-scale-set-nat-rules"></a>NAT-regler för skalnings uppsättning för virtuell dator
 Belastnings utjämningens inkommande NAT-regler ska matcha NAT-poolerna från den virtuella datorns skal uppsättning. Varje skalnings uppsättning för virtuella datorer måste ha en unik inkommande NAT-pool.
@@ -243,7 +255,7 @@ Standard Load Balancer och standard offentlig IP introducerar nya funktioner och
 
 
 
-### <a name="migrate-to-using-stateless-node-types-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>Migrera till att använda tillstånds lösa nodtyper från ett kluster med hjälp av en Basic SKU-Load Balancer och en grundläggande SKU-IP
+## <a name="migrate-to-using-stateless-node-types-in-a-cluster"></a>Migrera till att använda tillstånds lösa nodtyper i ett kluster
 För alla migreringsåtgärder måste en ny tillstånds lös nodtyp läggas till. Det går inte att migrera den befintliga nodtypen till endast tillstånds lös läge.
 
 Om du vill migrera ett kluster som använde en Load Balancer och en IP-adress med en grundläggande SKU måste du först skapa en helt ny Load Balancer och IP-resurs med standard-SKU: n. Det går inte att uppdatera resurserna på plats.
@@ -256,9 +268,6 @@ För att börja måste du lägga till de nya resurserna i din befintliga Resourc
 * En NSG som refereras till av under nätet som du distribuerar dina skalnings uppsättningar för virtuella datorer i.
 
 När resurserna har distribuerats kan du börja inaktivera noderna i nodtypen som du vill ta bort från det ursprungliga klustret.
-
->[!NOTE]
-> När du använder autoskalning med tillstånds lösa nodetypes med brons hållbarhet, rensas inte Node State automatiskt när åtgärden har slutförts. För att rensa NodeState i noderna under autoskalning bör du använda [Service Fabric autoskalning-hjälpen](https://github.com/Azure/service-fabric-autoscale-helper) .
 
 ## <a name="next-steps"></a>Nästa steg 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)

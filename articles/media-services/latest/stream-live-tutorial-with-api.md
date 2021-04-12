@@ -28,14 +28,14 @@ Självstudien visar hur du:
 Följande krävs för att kunna genomföra vägledningen:
 
 - Installera Visual Studio Code eller Visual Studio.
-- [Skapa ett Media Services-konto](./create-account-howto.md).<br/>Se till att kopiera API-åtkomsten i JSON-format eller lagra värdena som behövs för att ansluta till Media Services-kontot i det. kuvert-filformat som används i det här exemplet.
+- [Skapa ett Media Services-konto](./account-create-how-to.md).<br/>Se till att kopiera API-åtkomsten i JSON-format eller lagra värdena som behövs för att ansluta till Media Services-kontot i det. kuvert-filformat som används i det här exemplet.
 - Följ stegen i [Access Azure Media Services API with the Azure CLI](./access-api-howto.md) (Få åtkomst till Azure Media Services-API med Azure CLI) och spara autentiseringsuppgifterna. Du måste använda dem för att få åtkomst till API: et i det här exemplet eller ange dem i fil formatet. kuvert. 
 - En kamera eller en enhet (till exempel en bärbar dator) som används för att sända en händelse.
-- En lokal program varu kodare som kodar kamera strömmen och skickar den till Media Services Live streaming service med RTMP-protokollet finns i [rekommenderade lokala Live-kodare](recommended-on-premises-live-encoders.md). Dataströmmen måste anges i **RTMP**- eller **Smooth Streaming**-format.  
+- En lokal program varu kodare som kodar kamera strömmen och skickar den till Media Services Live streaming service med RTMP-protokollet finns i [rekommenderade lokala Live-kodare](encode-recommended-on-premises-live-encoders.md). Dataströmmen måste anges i **RTMP**- eller **Smooth Streaming**-format.  
 - För det här exemplet rekommenderar vi att du börjar med en program varu kodare som det kostnads fria [Open broadcast-programmet onlinebanksystem Studio](https://obsproject.com/download) för att göra det enkelt att komma igång. 
 
 > [!TIP]
-> Var noga att du kollar igenom [Liveuppspelning med Media Services v3](live-streaming-overview.md) innan du fortsätter. 
+> Var noga att du kollar igenom [Liveuppspelning med Media Services v3](stream-live-streaming-concept.md) innan du fortsätter. 
 
 ## <a name="download-and-configure-the-sample"></a>Ladda ned och konfigurera exemplet
 
@@ -70,15 +70,15 @@ Om du vill börja använda API:er för Media Services med .NET, måste du skapa 
 
 ### <a name="create-a-live-event"></a>Skapa en livehändelse
 
-Det här avsnittet visar hur du skapar en **pass-through**-typ av livehändelse (LiveEventEncodingType inställd på None). Mer information om andra tillgängliga typer av Live-händelser finns i [Live Event types](live-events-outputs-concept.md#live-event-types). Förutom direkt sändning kan du använda en Live-kodning av Live-händelser för en inbyggd eller 1080P-kodad bit kodning. 
+Det här avsnittet visar hur du skapar en **pass-through**-typ av livehändelse (LiveEventEncodingType inställd på None). Mer information om andra tillgängliga typer av Live-händelser finns i [Live Event types](live-event-outputs-concept.md#live-event-types). Förutom direkt sändning kan du använda en Live-kodning av Live-händelser för en inbyggd eller 1080P-kodad bit kodning. 
  
 Några saker som du kanske vill ange när du skapar en Live-händelse är:
 
 * Inläsnings protokollet för live event (för närvarande, RTMP (S) och Smooth Streaming protokoll stöds).<br/>Du kan inte ändra alternativet protokoll när Live-händelsen eller dess associerade Live-utdata körs. Om du behöver olika protokoll kan du skapa separata Live-händelser för varje strömnings protokoll.  
 * IP-begränsningar på infogning och förhandsgranskning. Du kan definiera de IP-adresser som får mata in en video till den här livehändelsen. Tillåtna IP-adresser kan anges som en enskild IP-adress (till exempel 10.0.0.1), ett IP-intervall med IP-adress och en CIDR-nätmask (till exempel 10.0.0.1/22) eller ett IP-intervall med en IP-adress och en prickad decimalnätmask (till exempel 10.0.0.1(255.255.252.0)).<br/>Om inga IP-adresser har angetts och det inte finns någon regel definition kommer ingen IP-adress att tillåtas. Skapa en regel för att tillåta IP-adresser och ange 0.0.0.0/0.<br/>IP-adresserna måste vara i något av följande format: IpV4-adress med fyra nummer eller CIDR-adressintervall.
-* När du skapar händelsen kan du ange att den ska autostartas. <br/>När autostart är angett till true (sant) startas live-händelsen efter skapandet. Det innebär att faktureringen börjar så fort direkt händelsen börjar köras. Du måste explicit anropa Stop på livehändelseresursen för att stoppa ytterligare fakturering. Mer information finns i [livehändelsetillstånd och fakturering](live-event-states-billing.md).
+* När du skapar händelsen kan du ange att den ska autostartas. <br/>När autostart är angett till true (sant) startas live-händelsen efter skapandet. Det innebär att faktureringen börjar så fort direkt händelsen börjar köras. Du måste explicit anropa Stop på livehändelseresursen för att stoppa ytterligare fakturering. Mer information finns i [livehändelsetillstånd och fakturering](live-event-states-billing-concept.md).
 Det finns även vänte läges lägen som är tillgängliga för att starta direkt sändningen i en lägre kostnad "allokerat" tillstånd som gör det snabbare att flytta till ett körnings tillstånd. Detta är användbart för situationer som hotpools som behöver distribuera kanaler snabbt till strömmar.
-* För att en inmatnings-URL ska vara förutsägelse och enklare att underhålla i en maskinvarubaserad Live-kodare anger du egenskapen "useStaticHostname" till true. Mer detaljerad information finns i [Live Event](live-events-outputs-concept.md#live-event-ingest-urls)inmatnings-URL: er.
+* För att en inmatnings-URL ska vara förutsägelse och enklare att underhålla i en maskinvarubaserad Live-kodare anger du egenskapen "useStaticHostname" till true. Mer detaljerad information finns i [Live Event](live-event-outputs-concept.md#live-event-ingest-urls)inmatnings-URL: er.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateLiveEvent)]
 
@@ -128,7 +128,7 @@ Liveutdata startar när de skapas och avbryts när de tas bort. Detta ska vara "
 #### <a name="create-a-streaming-locator"></a>Skapa en positionerare för direktuppspelning
 
 > [!NOTE]
-> När ditt Media Services-konto skapas läggs en **standard** slut punkt för direkt uppspelning till på ditt konto i **stoppat** tillstånd. Om du vill börja strömma ditt innehåll och dra nytta av [dynamisk paketering](dynamic-packaging-overview.md) och dynamisk kryptering, måste den strömmande slut punkten från vilken du vill strömma innehåll vara i **Kör** tillstånd.
+> När ditt Media Services-konto skapas läggs en **standard** slut punkt för direkt uppspelning till på ditt konto i **stoppat** tillstånd. Om du vill börja strömma ditt innehåll och dra nytta av [dynamisk paketering](encode-dynamic-packaging-concept.md) och dynamisk kryptering, måste den strömmande slut punkten från vilken du vill strömma innehåll vara i **Kör** tillstånd.
 
 När du publicerar till gången med en plats för strömning, fortsätter Live-händelsen (upp till fönstret för DVR-fönster) att visas tills utgångs punkts-eller borttagnings platsens förfallo datum eller borttagning, beroende på vilket som kommer först. På så sätt kan du göra den virtuella band inspelningen tillgänglig för din visnings publik för att se live och på begäran. Samma URL kan användas för att se live event, DVR-fönstret eller till gången på begäran när inspelningen är klar (när Live-utdata tas bort.)
 

@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 092078a79124682f7ee5c7824d4f7906c6e35475
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 95cecd66f4d0164594eb4e8da9efe765b5833e5e
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558507"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120783"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>Enhets uppdatering för IoT Hub (för hands version) – Översikt
 
@@ -80,7 +80,7 @@ När ett uppdaterings kommando tas emot på en enhet körs den begärda fasen av
 
 ### <a name="importing"></a>Import
 
-Att importera är hur dina uppdateringar matas in i enhets uppdateringen så att de kan distribueras till enheter. Enhets uppdatering stöder distribution av en enskild uppdatering per enhet. Detta gör det idealiskt för fullständiga uppdateringar som uppdaterar en hel OS-partition på en gång, eller ett apt-manifest som beskriver alla paket som du vill uppdatera på enheten. Om du vill importera uppdateringar till enhets uppdatering skapar du först ett import manifest som beskriver uppdateringen och laddar sedan ned uppdaterings filen (-erna) och import manifestet till en plats som kan nås via Internet. Sedan kan du använda Azure Portal eller [enhets uppdateringens import REST API](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) för att initiera den asynkrona processen för uppdaterings import. Enhets uppdatering överför filerna, bearbetar dem och gör dem tillgängliga för distribution till IoT-enheter.
+Att importera är hur dina uppdateringar matas in i enhets uppdateringen så att de kan distribueras till enheter. Enhets uppdatering stöder distribution av en enskild uppdatering per enhet. Detta gör det idealiskt för fullständiga uppdateringar som uppdaterar en hel OS-partition på en gång, eller ett apt-manifest som beskriver alla paket som du vill uppdatera på enheten. Om du vill importera uppdateringar till enhets uppdatering skapar du först ett import manifest som beskriver uppdateringen och laddar sedan ned uppdaterings filen (-erna) och import manifestet till en plats som kan nås via Internet. Sedan kan du använda Azure Portal eller [enhets uppdaterings REST API](https://docs.microsoft.com/rest/api/deviceupdate/) för att starta den asynkrona processen för uppdaterings import. Enhets uppdatering överför filerna, bearbetar dem och gör dem tillgängliga för distribution till IoT-enheter.
 
 För känsligt innehåll skyddar du hämtningen med en signatur för delad åtkomst (SAS), till exempel ad hoc SAS för Azure Blob Storage. [Läs mer om SAS](../storage/common/storage-sas-overview.md)
 

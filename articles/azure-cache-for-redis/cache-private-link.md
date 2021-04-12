@@ -1,19 +1,19 @@
 ---
-title: Azure cache för Redis med Azure Private Link (för hands version)
+title: Azure cache för Redis med Azures privata länk
 description: Den privata Azure-slutpunkten är ett nätverks gränssnitt som ansluter privat och säkert till Azure cache för Redis som drivs av en privat Azure-länk. I den här artikeln får du lära dig hur du skapar en Azure-cache, en Azure-Virtual Network och en privat slut punkt med hjälp av Azure Portal.
 author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 22bdf93e7236ae5220a6bb7c6ead898628bb51a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 3/31/2021
+ms.openlocfilehash: 952f708d8f368b63f772e3af35f6fd441d65622d
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97007593"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121667"
 ---
-# <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure cache för Redis med Azures privata länk (offentlig för hands version)
+# <a name="azure-cache-for-redis-with-azure-private-link"></a>Azure cache för Redis med Azures privata länk
 I den här artikeln får du lära dig hur du skapar ett virtuellt nätverk och en Azure-cache för Redis-instans med en privat slut punkt med hjälp av Azure Portal. Du får också lära dig hur du lägger till en privat slut punkt i en befintlig Azure-cache för Redis-instansen.
 
 Den privata Azure-slutpunkten är ett nätverks gränssnitt som ansluter privat och säkert till Azure cache för Redis som drivs av en privat Azure-länk. 
@@ -22,8 +22,7 @@ Den privata Azure-slutpunkten är ett nätverks gränssnitt som ansluter privat 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
 
 > [!IMPORTANT]
-> Om du vill använda privata slut punkter måste Azure-cachen för Redis-instansen ha skapats efter 28 juli 2020.
-> För närvarande finns det inte stöd för geo-replikering, brand Väggs regler, stöd för Portal konsol, flera slut punkter per klustrad cache, persistence till brand väggen och VNet-inmatnings cache. 
+> För närvarande stöds inte zon redundans, stöd för Portal konsol och beständighet för brand Väggs lagrings konton. 
 >
 >
 
@@ -112,19 +111,8 @@ Det tar en stund innan cacheminnet skulle skapas. Du kan övervaka förloppet p�
 > [!IMPORTANT]
 > 
 > Det finns en `publicNetworkAccess` flagga som är som `Disabled` standard. 
-> Den här flaggan är avsedd att tillåta att både offentlig och privat slut punkt får åtkomst till cachen om den är inställd på `Enabled` . Om detta är inställt på `Disabled` , tillåter det bara åtkomst till privat slut punkt. Du kan ställa in värdet på `Disabled` eller `Enabled` med följande patch-begäran. Redigera värdet för att avspegla vilken flagga som du vill använda för cacheminnet.
-> ```http
-> PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
-> {    "properties": {
->        "publicNetworkAccess":"Disabled"
->    }
-> }
-> ```
+> Den här flaggan är avsedd att tillåta att både offentlig och privat slut punkt får åtkomst till cachen om den är inställd på `Enabled` . Om detta är inställt på `Disabled` , tillåter det bara åtkomst till privat slut punkt. Du kan ställa in värdet på `Disabled` eller `Enabled` . Mer information om hur du ändrar värdet finns i [vanliga frågor och svar](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)
 >
-
-> [!IMPORTANT]
-> 
-> För att ansluta till en klustrad cache `publicNetworkAccess` måste anges till `Disabled` och det får bara finnas en privat slut punkts anslutning. 
 >
 
 ## <a name="create-a-private-endpoint-with-an-existing-azure-cache-for-redis-instance"></a>Skapa en privat slut punkt med en befintlig Azure-cache för Redis-instans 
@@ -173,7 +161,7 @@ Följ dessa steg om du vill skapa en privat slut punkt.
 
 2. Välj den cache-instans som du vill lägga till en privat slut punkt till.
 
-3. På vänster sida av skärmen väljer du (för **hands version) privat slut punkt**.
+3. Välj **privat slut punkt** på vänster sida av skärmen.
 
 4. Klicka på knappen **privat slut punkt** för att skapa din privata slut punkt.
 
@@ -204,16 +192,36 @@ Följ dessa steg om du vill skapa en privat slut punkt.
 
 13. När meddelandet grön **verifiering har skickats** visas väljer du **skapa**.
 
+> [!IMPORTANT]
+> 
+> Det finns en `publicNetworkAccess` flagga som är som `Disabled` standard. 
+> Den här flaggan är avsedd att tillåta att både offentlig och privat slut punkt får åtkomst till cachen om den är inställd på `Enabled` . Om detta är inställt på `Disabled` , tillåter det bara åtkomst till privat slut punkt. Du kan ställa in värdet på `Disabled` eller `Enabled` . Mer information om hur du ändrar värdet finns i [vanliga frågor och svar](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)
+>
+>
+
+
 ## <a name="faq"></a>Vanliga frågor
 
 ### <a name="why-cant-i-connect-to-a-private-endpoint"></a>Varför kan jag inte ansluta till en privat slut punkt?
-Om cacheminnet redan är ett VNet-inmatat cacheminne kan inte privata slut punkter användas med din cache-instans. Om din cache-instans använder en funktion som inte stöds (visas nedan) kan du inte ansluta till din privata slut punkts instans. Dessutom måste cache-instanser skapas efter 27 juli för att använda privata slut punkter.
+Om cacheminnet redan är ett VNet-inmatat cacheminne kan inte privata slut punkter användas med din cache-instans. Om din cache-instans använder en funktion som inte stöds (visas nedan) kan du inte ansluta till din privata slut punkts instans.
 
 ### <a name="what-features-are-not-supported-with-private-endpoints"></a>Vilka funktioner stöds inte med privata slut punkter?
-Geo-replikering, brand Väggs regler, stöd för Portal konsol, flera slut punkter per klustrad cache, beständighet till brand Väggs regler och zon redundans. 
+För närvarande stöds inte zon redundans, stöd för Portal konsol och beständighet för brand Väggs lagrings konton. 
 
 ### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access"></a>Hur kan jag ändra min privata slut punkt så att den inaktive ras eller aktive ras från offentlig nätverks åtkomst?
-Det finns en `publicNetworkAccess` flagga som är som `Disabled` standard. Den här flaggan är avsedd att tillåta att både offentlig och privat slut punkt får åtkomst till cachen om den är inställd på `Enabled` . Om detta är inställt på `Disabled` , tillåter det bara åtkomst till privat slut punkt. Du kan ställa in värdet på `Disabled` eller `Enabled` med följande patch-begäran. Redigera värdet för att avspegla vilken flagga som du vill använda för cacheminnet.
+Det finns en `publicNetworkAccess` flagga som är som `Disabled` standard. Den här flaggan är avsedd att tillåta att både offentlig och privat slut punkt får åtkomst till cachen om den är inställd på `Enabled` . Om detta är inställt på `Disabled` , tillåter det bara åtkomst till privat slut punkt. Du kan ställa in värdet på `Disabled` eller `Enabled` i Azure Portal eller med en begäran om RESTful-API-patch. 
+
+Följ dessa steg om du vill ändra värdet i Azure Portal.
+
+1. I Azure Portal kan du söka efter **Azure cache för Redis** och trycka på RETUR eller välja den från Sök förslagen.
+
+2. Välj den cache-instans som du vill ändra åtkomst värde för det offentliga nätverket.
+
+3. Välj **privat slut punkt** på vänster sida av skärmen.
+
+4. Klicka på knappen **Aktivera offentlig nätverks åtkomst** .
+
+Om du vill ändra värdet via en RESTful API PATCH-begäran, se nedan och redigera värdet för att avspegla vilken flagga som du vill använda för cacheminnet.
 
 ```http
 PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
@@ -223,24 +231,23 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 }
 ```
 
+### <a name="how-can-i-have-multiple-endpoints-in-different-virtual-networks"></a>Hur kan jag ha flera slut punkter i olika virtuella nätverk?
+Om du vill ha flera privata slut punkter i olika virtuella nätverk måste den privata DNS-zonen konfigureras manuellt till flera virtuella nätverk _innan_ du skapar den privata slut punkten. Mer information finns i [DNS-konfiguration för privat slutpunkt i Azure](../private-link/private-endpoint-dns.md). 
+
+### <a name="what-happens-if-i-delete-all-the-private-endpoints-on-my-cache"></a>Vad händer om jag tar bort alla privata slut punkter i cacheminnet?
+När du har tagit bort privata slut punkter i cacheminnet kan din cachefil bli otillgänglig tills du uttryckligen aktiverar offentlig nätverks åtkomst eller så lägger du till en annan privat slut punkt. Du kan ändra `publicNetworkAccess` flaggan på antingen Azure Portal eller genom en RESTful API patch-begäran. Mer information om hur du ändrar värdet finns i [vanliga frågor och svar](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)
+
 ### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>Är nätverks säkerhets grupper (NSG) aktiverade för privata slut punkter?
 Nej, de är inaktiverade för privata slut punkter. Medan undernät som innehåller den privata slut punkten kan ha NSG kopplade till sig, gäller inte reglerna för trafik som bearbetas av den privata slut punkten. Du måste ha [aktiverat tvingande nätverks principer](../private-link/disable-private-endpoint-network-policy.md) för att distribuera privata slut punkter i ett undernät. NSG tillämpas fortfarande på andra arbets belastningar som finns i samma undernät. Vägar i alla klient under nät kommer att använda ett/32-prefix, men om du ändrar standardvärdet för routning krävs ett liknande UDR. 
 
 Styr trafiken genom att använda NSG regler för utgående trafik på käll klienter. Distribuera enskilda vägar med/32-prefix för att åsidosätta privata slut punkts vägar. NSG flödes loggar och övervaknings information för utgående anslutningar stöds fortfarande och kan användas
 
-### <a name="can-i-use-firewall-rules-with-private-endpoints"></a>Kan jag använda brand Väggs regler med privata slut punkter?
-Nej, det här är en aktuell begränsning för privata slut punkter. Den privata slut punkten kommer inte att fungera korrekt om brand Väggs regler har kon figurer ATS i cachen.
-
-### <a name="how-can-i-connect-to-a-clustered-cache"></a>Hur kan jag ansluta till en klustrad cache?
-`publicNetworkAccess` måste anges till `Disabled` och det får bara finnas en privat slut punkts anslutning.
-
 ### <a name="since-my-private-endpoint-instance-is-not-in-my-vnet-how-is-it-associated-with-my-vnet"></a>Eftersom min privata slut punkts instans inte finns i mitt VNet, hur associeras den med mitt VNet?
 Den är bara länkad till ditt VNet. Eftersom den inte finns i ditt VNet behöver NSG-regler inte ändras för beroende slut punkter.
 
 ### <a name="how-can-i-migrate-my-vnet-injected-cache-to-a-private-endpoint-cache"></a>Hur kan jag migrera mitt VNet-inmatade cacheminne till en privat slut punkt för slut punkter?
-Du måste ta bort ditt VNet-inmatade cache och skapa en ny cache-instans med en privat slut punkt.
+Du måste ta bort ditt VNet-inmatade cache och skapa en ny cache-instans med en privat slut punkt. Mer information finns i [migrera till Azure cache för Redis](cache-migration-guide.md)
 
 ## <a name="next-steps"></a>Nästa steg
-
 * Mer information om en privat Azure-länk finns i [dokumentationen till Azures privata länkar](../private-link/private-link-overview.md).
 * Information om hur du jämför olika alternativ för nätverks isolering för din cache-instans finns i [Azure cache för Redis-dokumentation om nätverks isolerings alternativ](cache-network-isolation.md).

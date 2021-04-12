@@ -5,11 +5,11 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 2/4/2021
 ms.author: baanders
-ms.openlocfilehash: 10ecd986afa5e9046058862245fa083b2c8f4145
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6cfcc4bcf5a86726f020df9962a695e019f29fff
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102245035"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107108881"
 ---
-* **Om du vill fortsätta använda Azure Digital-instansen som du har skapat i den här artikeln, men ta bort några eller alla modeller, delar och relationer**, kan du använda [AZ DT](/cli/azure/ext/azure-iot/dt) CLI-kommandona i ett [Azure Cloud Shells](https://shell.azure.com) fönster för att ta bort de element som du vill ta bort.
+* **Om du vill fortsätta använda Azure Digital-instansen som du har skapat i den här artikeln, men ta bort några eller alla modeller, delar och relationer**, kan du använda [AZ DT](/cli/azure/dt) CLI-kommandona i ett [Azure Cloud Shells](https://shell.azure.com) fönster för att ta bort de element som du vill ta bort.

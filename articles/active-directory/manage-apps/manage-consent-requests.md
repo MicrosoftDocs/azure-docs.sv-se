@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/27/2019
 ms.author: kenwith
 ms.reviewer: phsignor
-ms.openlocfilehash: 189a89276d922665dd1ad0fbacc77ba499137048
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c41543cdfff4e5ffaad614f6cb7a539d78a0bdae
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99253110"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105569"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Hantera medgivande till program och utvärdera medgivande begär Anden
 
@@ -26,7 +26,7 @@ När slut användar medgivande är inaktiverat eller begränsat finns det flera 
 
 ## <a name="process-changes-and-education"></a>Bearbeta ändringar och utbildning
 
- 1. Överväg att aktivera [arbets flödet för administratörs medgivande (för hands version)](configure-admin-consent-workflow.md) så att användarna kan begära administratörs godkännande direkt från medgivande skärmen.
+ 1. Överväg att aktivera [arbets flödet för administratörs medgivande](configure-admin-consent-workflow.md) så att användarna kan begära administratörs godkännande direkt från medgivande skärmen.
 
  2. Se till att alla administratörer förstår [behörigheterna och medgivande ramverket](../develop/consent-framework.md), hur [medgivande frågan](../develop/application-consent-experience.md) fungerar och hur du [utvärderar en begäran om administratörs medgivande för hela klienten](#evaluating-a-request-for-tenant-wide-admin-consent).
  3. Granska organisationens befintliga processer för användare för att begära administratörs godkännande för ett program och gör uppdateringar om det behövs. Om processer ändras:

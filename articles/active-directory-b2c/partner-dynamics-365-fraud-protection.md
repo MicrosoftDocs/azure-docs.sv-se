@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 9483b0a8829c042a7cf8d516c6007cbbf14a97ac
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d1f0728a9a8da264f0960be2b956516b3c93742e
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639750"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258085"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Självstudie: Konfigurera Microsoft Dynamics 365 bedrägeri skydd med Azure Active Directory B2C
 
@@ -68,7 +68,7 @@ I följande arkitektur diagram visas implementeringen.
 ## <a name="set-up-the-solution"></a>Konfigurera lösningen
 
 1. [Skapa ett Facebook-program](./identity-provider-facebook.md#create-a-facebook-application) som är konfigurerat för att tillåta federation till Azure AD B2C.
-2. [Lägg till Facebook-hemligheten](./custom-policy-get-started.md#create-the-facebook-key) som du skapade som en princip nyckel för identitets erfarenhets ramverk.
+2. [Lägg till Facebook-hemligheten](./tutorial-create-user-flows.md?pivots=b2c-custom-policy#create-the-facebook-key) som du skapade som en princip nyckel för identitets erfarenhets ramverk.
 
 ## <a name="configure-your-application-under-microsoft-dfp"></a>Konfigurera ditt program under Microsoft DFP
 
@@ -148,7 +148,7 @@ Värdet för userID måste vara samma som det i motsvarande Azure AD B2C konfigu
 
 1. Gå till [Azure AD B2C principen](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies) i mappen principer.
 
-2. Följ det här [dokumentet](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) för att ladda ned [LocalAccounts start paket](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)
+2. Följ det här [dokumentet](./tutorial-create-user-flows.md?pivots=b2c-custom-policy?tabs=applications#custom-policy-starter-pack) för att ladda ned [LocalAccounts start paket](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)
 
 3. Konfigurera principen för Azure AD B2C klient.
 
@@ -184,4 +184,4 @@ Mer information finns i följande artiklar:
 
 - [Anpassade principer i Azure AD B2C](./custom-policy-overview.md)
 
-- [Kom igång med anpassade principer i Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Kom igång med anpassade principer i Azure AD B2C](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)

@@ -10,6 +10,8 @@
       href: hpc-cache-namespace.md
     - name: Förstå användnings modeller för cache
       href: cache-usage-models.md
+    - name: Bestäm om HPC cache är rätt lösning
+      href: usage-scenarios.md
     - name: Säkerhet
       items:
         - name: Säkerhetsbaslinje
@@ -68,6 +70,8 @@
       href: hpc-cache-blob-firewall-fix.md
     - name: Felsöka skapande av NFS-lagringsmål
       href: troubleshoot-nas.md
+    - name: Använd NFS-monterad Blob Storage med Azure HPC-cache
+      href: nfs-blob-considerations.md
     - name: Återställa från ett regionalt avbrott
       href: hpc-region-recovery.md
     - name: Använda kundhanterade krypteringsnycklar

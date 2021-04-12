@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: azhussai
-ms.openlocfilehash: 7662ef5c2c3f5ed20069f64781d222ae44e52168
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 3e7bdc92dc6268c712eecbd69ff014e2229b3b84
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384847"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490972"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Skriv om HTTP-sidhuvuden och URL: en med Application Gateway
 
@@ -158,6 +158,14 @@ En regel uppsättning för omskrivning innehåller:
       * **URL-sökväg**: det värde som sökvägen ska skrivas om till. 
       * **URL-frågesträng**: värdet som frågesträngen ska skrivas om till. 
       * **Sök igenom Sök vägs kartan igen**: används för att avgöra om sökvägen till URL-sökvägen ska utvärderas igen eller inte. Om den är omarkerad kommer den ursprungliga URL-sökvägen att användas för att matcha Sök vägs mönstret i URL-sökvägen. Om värdet är true, kommer URL-sökvägen att utvärderas igen för att kontrol lera matchningen med den omskrivna sökvägen. Genom att aktivera den här växeln kan du dirigera begäran till en annan backend-pool efter omskrivning.
+
+## <a name="rewrite-configuration-common-pitfall"></a>Skriv över vanliga Pitfall för konfiguration
+
+* Det går inte att aktivera "reevaluate Path Map" för grundläggande regler för routning av förfrågningar. Detta är för att förhindra oändlig utvärderings slinga för en grundläggande routningsprincip.
+
+* Det måste finnas minst 1 regel för villkorlig Rewrite-regel eller 1-omskrivning som inte har "reevaluate Sök vägs karta" aktive rad för vägbaserade routningsregler för att förhindra oändlig utvärderings slinga för en Sök vägs baserad routningsregler.
+
+* Inkommande begär Anden avslutas med en 500-felkod i händelse av att en loop skapas dynamiskt baserat på klientens indata. Application Gateway fortsätter att betjäna andra begär Anden utan att det är någon försämring i ett sådant scenario.
 
 ### <a name="using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku"></a>Använd URL-omskrivning eller omskrivning av värd huvud med brand vägg för webbaserade program (WAF_v2 SKU)
 

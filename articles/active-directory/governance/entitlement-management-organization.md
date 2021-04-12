@@ -16,12 +16,12 @@ ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f08c25749bbd21e3624dee898d9a8c97fd74164
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b6a1ead2fe3c1ec4e2206d1ffbaea4e5ec57433
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98059389"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222529"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Lägga till en ansluten organisation i hantering av Azure AD-rättigheter
 
@@ -42,7 +42,7 @@ Anta till exempel att du arbetar på Sparbanken och vill samar beta med två ext
 - Graphic Design Institute använder Azure AD och deras användare har ett User Principal Name som slutar med *graphicdesigninstitute.com*.
 - Contoso använder inte Azure AD än. Contoso-användare har ett User Principal Name som slutar med *contoso.com*.
 
-I det här fallet kan du konfigurera två anslutna organisationer. Du skapar en ansluten organisation för Graphic Design Institute och en för contoso. Om du sedan lägger till de två anslutna organisationerna i en princip kan användare från varje organisation med en User Principal Name som matchar principen begära åtkomst paket. Användare med en User Principal Name som har en *graphicdesigninstitute.com* -domän skulle matcha grafiken design Institute-Connected och tillåtas att skicka begär Anden. Användare med en User Principal Name som har en *contoso.com* -domän skulle matcha contoso-anslutna organisationer och kan också tillåtas att begära paket. Eftersom Graphic Design Institute använder Azure AD, kan alla användare med ett huvud namn som matchar en [verifierad domän](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) som har lagts till i sin klient, t *. ex. graphicdesigninstitute*, även begära åtkomst paket med samma princip.
+I det här fallet kan du konfigurera två anslutna organisationer. Du skapar en ansluten organisation för Graphic Design Institute och en för contoso. Om du sedan lägger till de två anslutna organisationerna i en princip kan användare från varje organisation med en User Principal Name som matchar principen begära åtkomst paket. Användare med en User Principal Name som har en contoso.com-domän skulle matcha contoso-anslutna organisationer och kan också tillåtas att begära paket. Användare med en User Principal Name som har en *graphicdesigninstitute.com* -domän skulle matcha grafiken design Institute-Connected och tillåtas att skicka begär Anden. Eftersom Graphic Design Institute använder Azure AD, kan alla användare med ett huvud namn som matchar en [verifierad domän](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) som har lagts till i sin klient, t *. ex. graphicdesigninstitute*, även begära åtkomst paket med samma princip. Om du har aktiverat [eng ång slö sen ord för eng ång slö sen](../external-identities/one-time-passcode.md) ord, som innehåller användare från de domäner som ännu inte har Azure AD-konton som autentiserar med e-posteng ång slö sen åtkomst till dina resurser. 
 
 ![Exempel på ansluten organisation](./media/entitlement-management-organization/connected-organization-example.png)
 

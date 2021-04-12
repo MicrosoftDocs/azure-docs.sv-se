@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: afb896100ea60c21aaf37890d7b520bf38c6ce18
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 44b2534d7aeb12f4819a6c42cfb29d057ce26ddc
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772730"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259038"
 ---
 # <a name="add-storage-targets"></a>Lägga till lagringsmål
 
@@ -314,6 +314,8 @@ ADLS-NFS-lagrings mål har en del likheter med Blob Storage-mål och vissa med N
 
 Innan du kan skapa ett lagrings mål för ADLS-NFS måste du skapa ett NFS-aktiverat lagrings konto. Följ tipsen i [krav för Azure HPC cache](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview) och instruktionerna i [montera Blob Storage med hjälp av NFS](../storage/blobs/network-file-system-protocol-support-how-to.md). När lagrings kontot har kon figurer ATS kan du skapa en ny behållare när du skapar lagrings målet.
 
+Läs [Använd NFS-monterad Blob Storage med Azure HPC cache](nfs-blob-considerations.md) och lär dig mer om den här konfigurationen.
+
 Om du vill skapa ett ADLS-NFS-lagrings mål öppnar du sidan **Lägg till lagrings mål** i Azure Portal. (Ytterligare metoder är under utveckling.)
 
 ![Skärm bild av sidan Lägg till lagrings mål med definierat ADLS-NFS-mål](media/add-adls-target.png)
@@ -331,8 +333,6 @@ Ange den här informationen.
 * **Användnings modell** – Välj en av profilerna för Datacachen baserat på ditt arbets flöde, som beskrivs i [Välj en användnings modell](#choose-a-usage-model) ovan.
 
 När du är färdig klickar du på **OK** för att lägga till lagrings målet.
-
-<!-- **** -->
 
 ## <a name="view-storage-targets"></a>Visa lagrings mål
 

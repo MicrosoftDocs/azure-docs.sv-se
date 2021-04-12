@@ -4,15 +4,15 @@ description: Lär dig hur du identifierar återställnings punkten och konfigure
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: ee6eedbc078e1b9c07ed00922ce1c37b38410128
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 707ef9f60891c1da7c13638e233ee74e78fc20dd
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381876"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106283945"
 ---
 # <a name="configure-and-manage-continuous-backup-and-point-in-time-restore-preview---using-azure-portal"></a>Konfigurera och hantera kontinuerlig säkerhets kopiering och tidpunkts återställning (för hands version) – med Azure Portal
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -32,6 +32,10 @@ När du skapar ett nytt Azure Cosmos DB konto väljer du **kontinuerligt** läge
 
 :::image type="content" source="./media/continuous-backup-restore-portal/configure-continuous-backup-portal.png" alt-text="Etablera ett Azure Cosmos DB-konto med kontinuerlig säkerhets kopierings konfiguration." border="true":::
 
+## <a name="backup-storage-redundancy"></a>Redundans för lagring av säkerhets kopior
+
+Som standard lagrar Azure Cosmos DB kontinuerliga läge säkerhetskopierade data i lokalt redundanta lagrings blobbar. För regioner där zon-redundans har kon figurer ATS lagras säkerhets kopian i zoner-redundanta lagrings blobbar. I det här läget kan du inte uppdatera redundans för lagring av säkerhets kopior.
+
 ## <a name="restore-a-live-account-from-accidental-modification"></a><a id="restore-live-account"></a>Återställa ett Live-konto från oavsiktlig ändring
 
 Du kan använda Azure Portal för att återställa ett Live-konto eller valda databaser och behållare under det. Använd följande steg för att återställa dina data:
@@ -46,7 +50,7 @@ Du kan använda Azure Portal för att återställa ett Live-konto eller valda da
 
    * **Återställnings punkt (UTC)** – en tidstämpel under de senaste 30 dagarna. Kontot ska finnas i tidsstämpeln. Du kan ange återställnings punkten i UTC. Det kan vara så nära det andra när du vill återställa det. Välj länken **Klicka här** om du vill ha hjälp med att [identifiera återställnings punkten](#event-feed).
 
-   * **Plats** – den mål region där kontot återställs. Kontot bör finnas i den här regionen vid den aktuella tidsstämpeln (t. ex. USA, västra eller USA, östra). Ett konto kan bara återställas till de regioner där käll kontot fanns.
+   * **Plats** – den mål region där kontot återställs. Kontot bör finnas i den här regionen vid den aktuella tidsstämpeln (till exempel västra USA eller östra USA). Ett konto kan bara återställas till de regioner där käll kontot fanns.
 
    * **Återställ resurs** – du kan antingen välja **hela kontot** eller en **vald databas eller behållare** att återställa. Databaserna och behållarna bör finnas på den aktuella tidsstämpeln. Beroende på vilken återställnings punkt och plats som valts, fylls återställnings resurserna i, vilket gör att användaren kan välja vissa databaser eller behållare som behöver återställas.
 

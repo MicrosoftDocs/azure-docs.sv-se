@@ -6,16 +6,19 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: cba9615a8c76387b593109bc2174ab4718f1750a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 59f70659f25f925f8f802b0fcaa1f61d4e7f7dc0
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609317"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106946"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL-drivrutiner och hanterings verktyg som är kompatibla med Azure Database for MySQL
-[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
-I den här artikeln beskrivs de driv rutiner och hanterings verktyg som är kompatibla med Azure Database for MySQL.
+
+I den här artikeln beskrivs de driv rutiner och hanterings verktyg som är kompatibla med Azure Database for MySQL enskild server.
+
+>[!NOTE]
+>Den här artikeln gäller endast Azure Database for MySQL enskild server för att säkerställa att driv rutinerna är kompatibla med [anslutnings arkitekturen](concepts-connectivity-architecture.md) för en enskild server-tjänst. [Azure Database for MySQL flexibel Server](/../flexible-server/overview.md) är kompatibel med alla driv rutiner och verktyg som stöds och är kompatibla med MySQL Community Edition. 
 
 ## <a name="mysql-drivers"></a>MySQL-drivrutiner
 Azure Database for MySQL använder världens mest populära community-version av MySQL-databasen. Därför är den kompatibel med en mängd olika programmeringsspråk och driv rutiner. Målet är att stödja de tre senaste versionerna av MySQL-drivrutinerna och ansträngningar med författare från communityn för öppen källkod för att ständigt förbättra funktionaliteten och användbarheten hos MySQL-drivrutinerna Fortsätt. En lista med driv rutiner som har testats och visat sig vara kompatibla med Azure Database for MySQL 5,6 och 5,7 finns i följande tabell:
@@ -51,7 +54,7 @@ Fördelen med kompatibilitet är också till för databas hanterings verktyg. Di
 | **Automatisk komplettering av SQL-fråga** | X | X |  | X |
 | **Importera och exportera data** | X | X | X | X |
 | **Exportera till flera format** | X | X | X | X |
-| **Säkerhets kopiering och återställning** |  | X |  | X |
+| **Säkerhetskopiera och återställ** |  | X |  | X |
 | **Visa Server parametrar** | X | X | X | X |
 | **Visa klient anslutningar** | X | X | X | X |
 
