@@ -9,13 +9,13 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
-ms.date: 10/02/2020
-ms.openlocfilehash: f130fc0c65c49c33c838812fc2758619e0d1bca0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: de4d934144d6721db8c00d7199061842e518e44f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521347"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031077"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Övervaka data referens för Azure Machine Learning
 
@@ -28,49 +28,62 @@ I det här avsnittet visas alla automatiskt insamlade plattforms mått som samla
 **Modell**
 
 | Metric | Enhet | Beskrivning |
-| ----- | ----- | ----- |
-| Modell distributionen misslyckades | Antal | Antalet modell distributioner som misslyckades. |
-| Modell distribution har startat | Antal | Antalet modell distributioner som har startats. |
-| Modell distributionen lyckades | Antal | Antalet modell distributioner som har slutförts. |
-| Modell registreringen misslyckades | Antal | Antalet modell registreringar som misslyckades. |
-| Modell registreringen har slutförts | Antal | Antalet modell registreringar som har slutförts. |
+|--|--|--|
+| Modell registreringen har slutförts | Antal | Antal modell registreringar som har slutförts på den här arbets ytan |
+| Modell registreringen misslyckades | Antal | Antal modell registreringar som misslyckades på den här arbets ytan |
+| Modelldistribution Startad | Antal | Antal modell distributioner som startats på den här arbets ytan |
+| Modelldistribution lyckades | Antal | Antal modell distributioner som har slutförts på den här arbets ytan |
+| Modelldistribution misslyckades | Antal | Antal modell distributioner som misslyckades på den här arbets ytan |
 
 **Kvot**
 
 Kvot information gäller endast för Azure Machine Learning beräkning.
 
 | Metric | Enhet | Beskrivning |
-| ----- | ----- | ----- |
-| Aktiva kärnor | Antal | Antalet aktiva beräknings kärnor. |
-| Aktiva noder | Antal | Antalet aktiva noder. |
-| Inaktiva kärnor | Antal | Antalet inaktiva beräknings kärnor. |
-| Inaktiva noder | Antal | Antalet inaktiva Compute-noder. |
-| Lämnar kärnor | Antal | Antalet lämnar kärnor. |
-| Lämnar noder | Antal | Antalet noder som lämnar. |
-| Blockerade kärnor | Antal | Antalet blockerade kärnor. |
-| Misslyckade noder | Antal | Antalet noder som har åsidosatts. |
-| Kvot användning i procent | Procent | Procent andelen kvot som används. |
-| Totalt antal kärnor | Antal | Totalt antal kärnor. |
-| Totalt antal noder | Antal | Totalt antal noder. |
-| Oanvändbara kärnor | Antal | Antalet oanvändbara kärnor. |
-| Oanvändbara noder | Antal | Antalet oanvändbara noder. |
+|--|--|--|
+| Totalt antal noder | Antal | Totalt antal noder. Den här summan innehåller några aktiva noder, inaktiva noder, oanvändbara noder, vilande noder, lämnar noder |
+| Aktiva noder | Antal | Antal aktiva noder. De noder som aktivt kör ett jobb. |
+| Inaktiva noder | Antal | Antal inaktiva noder. Inaktiva noder är noder som inte kör några jobb, men som kan ta emot nya jobb om de är tillgängliga. |
+| Oanvändbara noder | Antal | Antal oanvändbara noder. Oanvändbara noder fungerar inte på grund av ett problem som inte kan matchas. De här noderna återanvänds av Azure. |
+| Misslyckade noder | Antal | Antal noder som har åsidosatts. De här noderna är de noder med låg prioritet som tas bort från den tillgängliga Node-poolen. |
+| Lämnar noder | Antal | Antal noder som lämnar. Att lämna noder är de noder som precis har avslutat bearbetningen av ett jobb och kommer att gå in i inaktivt läge. |
+| Totalt antal kärnor | Antal | Antal total kärnor |
+| Aktiva kärnor | Antal | Antal aktiva kärnor |
+| Inaktiva kärnor | Antal | Antal inaktiva kärnor |
+| Oanvändbara kärnor | Antal | Antal oanvändbara kärnor |
+| Blockerade kärnor | Antal | Antal blockerade kärnor |
+| Lämnar kärnor | Antal | Antal lämnar kärnor |
+| Kvot användning i procent | Antal | Procent av kvoten som används |
 
 **Resurs**
 
+| Metric| Enhet | Beskrivning |
+|--|--|--|
+| CpuUtilization | Antal | Procent andel användning på en processor nod. Användningen rapporteras med en minuters intervall. |
+| GpuUtilization | Antal | Procent andel användning på en GPU-nod. Användningen rapporteras med en minuters intervall. |
+| GpuMemoryUtilization | Antal | Procent andel minnes användning på en GPU-nod. Användningen rapporteras med en minuters intervall. |
+| GpuEnergyJoules | Antal | Intervall energi i joules på en GPU-nod. Energi rapporteras med en minuters intervall. |
+
+**Kör**
+
+Information om utbildningar körs för arbets ytan.
+
 | Metric | Enhet | Beskrivning |
-| ----- | ----- | ----- |
-| CpuUtilization | Procent | Hur mycket processor användnings procent som används för en viss nod under en körning/ett jobb. Det här måttet publiceras bara när ett jobb körs på en nod. Ett jobb kan använda en eller flera noder. Det här måttet publiceras per nod. |
-| GpuUtilization | Procent | Hur mycket GPU-minne som utnyttjades för en viss nod under en körning/ett jobb. En nod kan ha en eller flera GPU: er. Det här måttet publiceras per GPU per nod. |
-
-**Fungerar**
-
-Information om utbildning körs.
-
-| Metric | Enhet | Beskrivning |
-| ----- | ----- | ----- |
-| Slutförda körningar | Antal | Antalet slutförda körningar. |
-| Misslyckade körningar | Antal | Antalet misslyckade körningar. |
-| Startade körningar | Antal | Antalet startade körningar. |
+|--|--|--|
+| Avbrutna körningar | Antal | Antalet körningar som har avbrutits för den här arbets ytan. Antalet uppdateras när en körning har avbrutits. |
+| Avbryt begärda körningar | Antal | Antal körningar där Cancel begärdes för den här arbets ytan. Antalet uppdateras när en avbrottsbegäran tas emot för en körning. |
+| Slutförda körningar | Antal | Antalet körningar har slutförts för den här arbets ytan. Antalet uppdateras när en körning har slutförts och utdata har samlats in. |
+| Misslyckade körningar | Antal | Antalet körningar som misslyckades för den här arbets ytan. Antalet uppdateras när en körning Miss lyckas. |
+| Slutför körningar | Antal | Antal körningar som har angetts i slutfört tillstånd för den här arbets ytan. Antalet uppdateras när en körning har slutförts men insamlingen fortfarande pågår. | 
+| Svarar inte körningar | Antal | Antal körningar som inte svarar på den här arbets ytan. Antalet uppdateras när en körning inte övergår i tillstånd. |
+| Inte startade körningar | Antal | Antal körningar i inte start läge för den här arbets ytan. Antalet uppdateras när en begäran tas emot för att skapa en körning men körnings information ännu inte har fyllts i. |
+| Förbereder körningar | Antal | Antal körningar som förbereds för den här arbets ytan. Antalet uppdateras när en körning går in i förberedelse tillstånd medan körnings miljön förbereds. |
+| Etablerings körningar | Antal | Antal körningar som håller på att etablering för den här arbets ytan. Antalet uppdateras när en körning väntar på skapande eller etablering av beräknings mål. |
+| Köade körningar | Antal | Antal körningar som har placerats i kö för den här arbets ytan. Antalet uppdateras när en körning placeras i kö i beräknings mål. Kan inträffa vid väntan på att nödvändiga datornoder ska vara klara. |
+| Startade körningar | Antal | Antal körningar som körs för den här arbets ytan. Antalet uppdateras när körningen börjar köras på nödvändiga resurser. |
+| Startar körningar | Antal | Antal körningar som har startats för den här arbets ytan. Antalet uppdateras när begäran om att skapa körnings-och körnings information, till exempel körnings-ID, har fyllts i |
+| Fel | Antal | Antal körnings fel i den här arbets ytan. Antalet uppdateras när körningen påträffar ett fel. |
+| Varningar | Antal | Antal körnings varningar i den här arbets ytan. Antalet uppdateras när en körning påträffar en varning. |
 
 ## <a name="metric-dimensions"></a>Mått dimensioner
 

@@ -1,14 +1,14 @@
 ---
 title: Så här skapar du princip definitioner för gäst konfiguration från grupprincip bas linje för Windows
 description: Lär dig hur du konverterar grupprincip från säkerhets bas linjen för Windows Server 2019 till en princip definition.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 7f7e2af70efa6771d94d7ceaa14d1408175b1d12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a49c8044914c8c23b4f99cad7838652eb94c4b92
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93348652"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096588"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Så här skapar du princip definitioner för gäst konfiguration från grupprincip bas linje för Windows
 
@@ -96,13 +96,13 @@ Sedan konverterar vi den hämtade Server 2019-bas linjen till ett gäst konfigur
 1. När ett anpassat princip paket för gäst konfiguration har skapats och överförts skapar du princip definitionen för gäst konfiguration. Använd `New-GuestConfigurationPolicy` cmdleten för att skapa gäst konfigurationen.
 
    ```azurepowershell-interactive
-    $NewGuestConfigurationPolicySplat = @{
+   $NewGuestConfigurationPolicySplat = @{
         ContentUri = $Uri 
         DisplayName = 'Server 2019 Configuration Baseline' 
         Description 'Validation of using a completely custom baseline configuration for Windows VMs' 
         Path = 'C:\git\policyfiles\policy'  
         Platform = Windows 
-        }
+   }
    New-GuestConfigurationPolicy @NewGuestConfigurationPolicySplat
    ```
     

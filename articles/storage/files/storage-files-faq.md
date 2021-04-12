@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 81cabe8dea178b2988039640065cb0eabc3287af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec8104a5fd8d1c524f75c7a5173015115d85a253
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470892"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064315"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Vanliga frågor och svar om Azure Files
 [Azure Files](storage-files-introduction.md) erbjuder fullständigt hanterade fil resurser i molnet som är tillgängliga via [SMB-protokollet (Server Message Block](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) ) som är bransch standard och [NFS-protokollet (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (för hands version). Du kan montera Azure-filresurser samtidigt i molnet eller lokala distributioner av Windows, Linux och macOS. Du kan också cachelagra Azure-filresurser på Windows Server-datorer med hjälp av Azure File Sync för snabb åtkomst nära var data används.
@@ -183,6 +183,10 @@ I den här artikeln besvaras vanliga frågor om Azure Files funktioner och funkt
     Om du har aktiverat Azure Backup i hanterade fil resurser för filsynkronisering kan fil åtkomst kontrol listor fortsätta att återställas som en del av arbets flödet för säkerhets kopierings återställning. Detta fungerar antingen för hela resursen eller enskilda filer/kataloger.
 
     Om du använder ögonblicks bilder som en del av den självhanterade säkerhets kopierings lösningen för fil resurser som hanteras av filsynkroniseringen, kanske dina ACL: er inte återställs korrekt till NTFS ACL: er om ögonblicks bilderna togs före februari 24 2020. Om detta inträffar kan du kontakta Azure-supporten.
+
+* <a id="afs-lastwritetime"></a>
+  **Synkroniserar Azure File Sync LastWriteTime för kataloger?**  
+    Nej, Azure File Sync synkroniserar inte LastWriteTime för kataloger. Det här är avsiktligt.
     
 ## <a name="security-authentication-and-access-control"></a>Säkerhet, autentisering och åtkomst kontroll
 * <a id="ad-support"></a>

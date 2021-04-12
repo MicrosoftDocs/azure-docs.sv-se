@@ -3,12 +3,12 @@ title: Arbeta med hanterings grupper – Azure-styrning
 description: Lär dig att visa, underhålla, uppdatera och ta bort en hierarki för hanterings grupper.
 ms.date: 01/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 05e78d66c29e500842d14a6eeb563c4569ecf0bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09d11450ff63046ab458f930f64534d10863f451
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100596486"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258358"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Hantera dina resurser med hanterings grupper
 
@@ -388,5 +388,5 @@ Läs mer om hanteringslösningar här:
 - [Skapa hanteringsgrupper för att organisera Azure-resurser](./create-management-group-portal.md)
 - [Så här ändrar, raderar och hanterar du dina hanteringsgrupper](./manage.md)
 - [Granska hanteringsgrupper i Azure PowerShell-resursmodulen](/powershell/module/az.resources#resources)
-- [Granska hanteringsgrupper i REST API](/rest/api/resources/managementgroups)
+- [Granska hanteringsgrupper i REST API](/rest/api/managementgroups/managementgroups)
 - [Granska hanteringsgrupper i Azure CLI](/cli/azure/account/management-group)

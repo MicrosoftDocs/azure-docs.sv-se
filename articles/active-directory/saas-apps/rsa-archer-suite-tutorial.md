@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 397d59c60ed90e0e25df671baa3d46660eff1d47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d96f1e0413dac8477e2fc40bf84e88318abf3f9d
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181585"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284997"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rsa-archer-suite"></a>Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med RSA Archer Suite
 
@@ -37,13 +37,13 @@ För att komma igång behöver du följande objekt:
 
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
-* RSA Archer Suite stöder **SP** -INITIERAd SSO
-* RSA Archer Suite stöder **just-in-Time** User-etablering
+* RSA Archer Suite stöder **SP** -initierad SSO.
+* RSA Archer Suite stöder **just-in-Time** User-etablering.
 
 > [!NOTE]
 > ID för det här programmet är ett fast sträng värde så att endast en instans kan konfigureras i en klient.
 
-## <a name="adding-rsa-archer-suite-from-the-gallery"></a>Lägga till RSA Archer Suite från galleriet
+## <a name="add-rsa-archer-suite-from-the-gallery"></a>Lägg till RSA Archer Suite från galleriet
 
 Om du vill konfigurera integreringen av RSA Archer Suite i Azure AD måste du lägga till RSA Archer Suite från galleriet till listan över hanterade SaaS-appar.
 
@@ -53,7 +53,6 @@ Om du vill konfigurera integreringen av RSA Archer Suite i Azure AD måste du l�
 1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** skriver du **RSA Archer Suite** i sökrutan.
 1. Välj **RSA Archer Suite** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-rsa-archer-suite"></a>Konfigurera och testa Azure AD SSO för RSA Archer Suite
 
@@ -74,7 +73,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I Azure Portal på sidan **RSA Archer Suite** -programintegration hittar du avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på Penn ikonen för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
@@ -141,7 +140,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Utför följande steg på följande sida.
 
-    ![Konfigurera RSA Archer Suite SSO](./media/rsa-archer-suite-tutorial/configuring-saml-sso.png)
+    ![Konfigurera RSA Archer Suite SSO](./media/rsa-archer-suite-tutorial/configuration.png)
 
     a. Gå till fliken **enkel inloggning** och välj **SAML** som ett **enda Sign-On läge** i list rutan.
 

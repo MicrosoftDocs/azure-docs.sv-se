@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/07/2021
-ms.openlocfilehash: abf88619969875121d8e9e46e758680adce68566
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 5a395205662e6c9ab0bde0e227f045ca46cfed45
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107108523"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228273"
 ---
 # <a name="assign-user-roles-and-permissions"></a>Tilldela användarroller och behörigheter
 
@@ -26,12 +26,12 @@ För att få åtkomst till funktioner relaterade till Marketplace eller ditt kon
 
 | Roll | Beskrivning |
 | ------------ | ------------- |
-| Ägare | När ett utgivar konto skapas tilldelas partnern en ägarskaps roll.<br>Behörighets information:<br><ul><li>Fullständigt ägarskap för kontot.</li><li>Lägg till en typ av användare</li><li>Kan slutföra utbetalnings-och skatte information</li><li>Visa feedback-rapporter och sammanfattningar</li><li>Registrera utgivar kontot i alla andra program för utvecklare</li></ul> |
-| Ansvarig | <ul><li>Hantera utgivar konto användare, roller och behörigheter</li><li>Hantera klienter</li><li>Inställningar för åtkomst till skatt och utbetalning</li></ul> |
-| Utvecklare | <ul><li>Ladda upp paket</li><li>Skicka in appar och tillägg</li><li>Visa användnings rapporter för information om telemetri</li><li>Få åtkomst till finansiell information eller konto inställningarna</li></ul> |
-| Företags deltagare | <ul><li>Åtkomst till finansiell information</li><li>Ange pris information</li><li>Skapa eller skicka nya appar och tillägg</li></ul> |
-| Finansiell bidrags givare | <ul><li>Visa utbetalnings rapporter</li><li>Hantera utbetalnings-och skatte profiler</li><li>Gör ändringar i appar eller inställningar</li></ul> |
-| Rika marknads föraren | <ul><li>Svara på kund granskningar</li><li>Visa icke-finansiella rapporter</li><li>Gör ändringar i appar eller inställningar</li></ul> |
+| Ägare | När ett utgivar konto skapas tilldelas partnern en ägarskaps roll.<br><br>Behörighets information:<br><br>&#10004;&#160;&#160;fullständiga ägande rätten till kontot.<br>&#10004;&#160;&#160;lägga till en typ av användare<br>&#10004;&#160;&#160;kan slutföra utbetalnings-och skatte information<br>&#10004;&#160;&#160;Visa feedback-rapporter och sammanfattningar<br>&#10004;&#160;&#160;registrera utgivar kontot i alla andra program för utvecklare |
+| Ansvarig | &#10004;&#160;&#160;hantera utgivar konto användare, roller och behörigheter<br>&#10004;&#160;&#160;hantera klienter<br>Inställningar för &#x2718;&#160;&#160;åtkomst skatt och-betalning |
+| Utvecklare | &#10004;&#160;&#160;Ladda upp paket<br>&#10004;&#160;&#160;skicka appar och tillägg<br>&#10004;&#160;&#160;Visa användnings rapporter för information om telemetri<br>&#x2718;&#160;&#160;åtkomst till finansiell information eller konto inställningar |
+| Företags deltagare | &#10004;&#160;&#160;åtkomst till finansiell information<br>&#10004;&#160;&#160;ange pris information<br>&#x2718;&#160;&#160;skapa eller skicka nya appar och tillägg |
+| Finansiell bidrags givare | &#10004;&#160;&#160;Visa utbetalnings rapporter<br>&#10004;&#160;&#160;hantera utbetalnings-och skatte profiler<br>&#x2718;&#160;&#160;göra ändringar i appar eller inställningar |
+| Rika marknads föraren | &#10004;&#160;&#160;svara på kund granskningar<br>&#10004;&#160;&#160;Visa icke-finansiella rapporter<br>&#x2718;&#160;&#160;göra ändringar i appar eller inställningar |
 |||
 
 > [!NOTE]

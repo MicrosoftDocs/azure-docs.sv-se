@@ -9,20 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 276dd5b7eba33081c5131eba722df91d8685adff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ab3458003366416e10588d3f2edb29b51619ecf
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678170"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257644"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Självstudie: koppla sensor data med väder prognos data med hjälp av Azure Notebooks (python)
 
-> [!IMPORTANT]
-> Azure Maps väder tjänster finns för närvarande i offentlig för hands version.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Vind styrkan är en alternativ energi källa för fossila bränslen för att bekämpa klimat förändringar. Eftersom lindningen inte är konsekvent med natur måste du använda en motor för att bygga Machine Learning-modeller (ML) för att förutsäga energi kapaciteten. Denna förutsägelse är nödvändig för att möta El efter frågan och se till att rutnätets stabilitet är stabil. I den här självstudien går vi igenom hur Azure Maps data för väder prognoser kombineras med demonstrations data för väder läsningar. Väder prognos data begärs genom att anropa Azure Maps väder tjänster (för hands version).
+Vind styrkan är en alternativ energi källa för fossila bränslen för att bekämpa klimat förändringar. Eftersom lindningen inte är konsekvent med natur måste du använda en motor för att bygga Machine Learning-modeller (ML) för att förutsäga energi kapaciteten. Denna förutsägelse är nödvändig för att möta El efter frågan och se till att rutnätets stabilitet är stabil. I den här självstudien går vi igenom hur Azure Maps data för väder prognoser kombineras med demonstrations data för väder läsningar. Väder prognos data begärs genom att anropa Azure Maps väder tjänster.
 
 I de här självstudierna får du:
 
@@ -31,7 +27,7 @@ I de här självstudierna får du:
 > * Läs in demo data från fil.
 > * Anropa Azure Maps REST-API: er i python.
 > * Återge plats data på kartan.
-> * Förbättra demonstrations data med Azure Maps [dagliga data för dagliga prognoser](/rest/api/maps/weather/getdailyforecastpreview) .
+> * Förbättra demonstrations data med Azure Maps [dagliga data för dagliga prognoser](/rest/api/maps/weather/getdailyforecast) .
 > * Rita prognos data i grafer.
 
 
@@ -72,8 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Begär dagliga prognos data
 
-I vårt scenario skulle vi vilja begära dagliga prognoser för varje sensor plats. Följande skript anropar [API: et för dagliga prognoser](/rest/api/maps/weather/getdailyforecastpreview) för Azure Maps väder tjänster (för hands version). Detta API returnerar väder prognoser för varje lindnings turbin, under de närmaste 15 dagarna från dagens datum.
-
+I vårt scenario skulle vi vilja begära dagliga prognoser för varje sensor plats. Följande skript anropar [API: et för dagliga prognoser](/rest/api/maps/weather/getdailyforecast) för Azure Maps väder tjänster. Detta API returnerar väder prognoser för varje lindnings turbin, under de närmaste 15 dagarna från dagens datum.
 
 ```python
 subscription_key = "Your Azure Maps key"
@@ -86,7 +81,7 @@ years,months,days = [],[],[]
 dates_check=set()
 wind_speeds, wind_direction = [], []
 
-# Call azure maps Weather services (Preview) to get daily forecast data for 15 days from current date
+# Call azure maps Weather services to get daily forecast data for 15 days from current date
 session = aiohttp.ClientSession()
 j=-1
 for i in range(0, len(coords), 2):
@@ -192,7 +187,7 @@ Om du vill veta mer om hur du anropar Azure Maps REST-API: er i Azure Notebooks,
 
 Om du vill utforska de Azure Maps-API: er som används i den här självstudien, se:
 
-* [Daglig prognos](/rest/api/maps/weather/getdailyforecastpreview)
+* [Daglig prognos](/rest/api/maps/weather/getdailyforecast)
 * [Rendera-Hämta kart bild](/rest/api/maps/render/getmapimage)
 
 En fullständig lista över Azure Maps REST API: er finns i [Azure Maps REST API: er](./consumption-model.md).

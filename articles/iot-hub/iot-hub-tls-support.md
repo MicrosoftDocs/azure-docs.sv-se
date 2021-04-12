@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 03/31/2021
 ms.author: jlian
-ms.openlocfilehash: d36a7917693aef9063ade473759f2f451d3a677f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a02b97957cc0599e2960cba551b536e83d1a902
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98234026"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222563"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>Stöd för Transport Layer Security (TLS) i IoT Hub
 
@@ -23,6 +23,10 @@ TLS 1,0 och 1,1 betraktas som äldre och planeras för utfasning. Mer informatio
 ## <a name="iot-hubs-server-tls-certificate"></a>IoT Hubs serverns TLS-certifikat
 
 Under en TLS-handskakning visar IoT Hub RSA-kodade Server certifikat för att ansluta klienter. Roten är rot certifikat utfärdaren för Baltimore CyberTrust. Nyligen har vi lanserat en ändring av vårt TLS-servercertifikat så att det nu utfärdas av nya, mellanliggande certifikat utfärdare (ICA). Mer information finns i [IoT Hub TLS-certifikat uppdatering](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/).
+
+### <a name="4kb-size-limit-on-renewal"></a>storleks gräns för 4KB vid förnyelse
+
+Vid förnyelsen av IoT Hub Server sidans certifikat görs en kontroll på IoT Hub service-sidan för att förhindra att `Server Hello` 4KB storlek överskrids. En klient måste ha minst 4KB RAM-minne för inkommande TLS-buffert, så att befintliga enheter som har ställts in för 4KB-gränsen fortsätter att fungera som tidigare efter certifikat förnyelsen. För begränsade enheter har IoT Hub stöd för [maximalt TLS-förhandling i fragment i för hands versionen](#tls-maximum-fragment-length-negotiation-preview). 
 
 ### <a name="elliptic-curve-cryptography-ecc-server-tls-certificate-preview"></a>TLS-certifikat (Elliptic Curve Cryptography) för Server (för hands version)
 

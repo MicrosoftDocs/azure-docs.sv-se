@@ -8,28 +8,33 @@ ms.topic: include
 ms.date: 11/22/2019
 ms.author: mlearned
 ms.custom: include file
-ms.openlocfilehash: a42bba1b6524825aa571e4c18319b61b97829792
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c2dec106ae72ddead7bda54792fa74e38eb6660
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96584499"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081025"
 ---
-| Resurs | Gräns |
-| --- | :--- |
-| Maximalt antal kluster per prenumeration | 1000 |
-| Maximalt antal noder per kluster med tillgänglighets uppsättningar för virtuella datorer och Basic Load Balancer SKU  | 100 |
-| Maximalt antal noder per kluster med Virtual Machine Scale Sets och [standard load BALANCER SKU][standard-load-balancer] | 1000 (100 noder per [Node-pool][node-pool]) |
-| Maximalt antal poddar per nod: [grundläggande nätverk][basic-networking] med Kubernetes | 110 |
-| Maximalt antal poddar per nod: [Avancerat nätverk][advanced-networking] med Azure Container Networking Interface | Azure CLI-distribution: 30<sup>1</sup><br />Azure Resource Manager mall: 30<sup>1</sup><br />Portaldistribution: 30 |
+| Resurs                                                                                                           | Gräns                                                                                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Maximalt antal kluster per prenumeration                                                                                  | 1000                                                                                                                                                                                                        |
+| Maximalt antal noder per kluster med tillgänglighets uppsättningar för virtuella datorer och Basic Load Balancer SKU                       | 100                                                                                                                                                                                                         |
+| Maximalt antal noder per kluster med Virtual Machine Scale Sets och [standard load BALANCER SKU][standard-load-balancer] | 1000 (100 noder per [Node-pool][node-pool])                                                                                                                                                                 |
+| Maximalt antal poddar per nod: [grundläggande nätverk][basic-networking] med Kubernetes                                           | 110                                                                                                                                                                                                         |
+| Maximalt antal poddar per nod: [Avancerat nätverk][advanced-networking] med Azure Container Networking Interface        | Azure CLI-distribution: 30<sup>1</sup><br />Azure Resource Manager mall: 30<sup>1</sup><br />Portaldistribution: 30                                                                                        |
+| Open Service nät (OSM) AKS addon Preview                                                                          | Kubernetes-kluster version: 1.19 +<sup>2</sup><br />OSM kontrollanter per kluster: 1<sup>2</sup><br />Poddar per OSM-styrenhet: 500<sup>2</sup><br />Kubernetes tjänst konton som hanteras av OSM: 50<sup>2</sup> |
 
 <sup>1</sup> När du distribuerar ett Azure Kubernetes service-kluster (AKS) med Azure CLI eller en Resource Manager-mall, kan det här värdet konfigureras upp till 250 poddar per nod. Du kan inte konfigurera maximalt poddar per nod efter att du redan har distribuerat ett AKS-kluster, eller om du distribuerar ett kluster med hjälp av Azure Portal.<br />
 
+<sup>2</sup> OSM-tillägget för AKS är i förhands gransknings läge och kommer att genomgå ytterligare förbättringar före allmän tillgänglighet (GA). Under förhands gransknings fasen rekommenderar vi att du inte överskrider de gränser som visas.<br />
+
 <!-- LINKS - Internal -->
+
 [basic-networking]: ../articles/aks/concepts-network.md#kubenet-basic-networking
 [advanced-networking]: ../articles/aks/concepts-network.md#azure-cni-advanced-networking
 [standard-load-balancer]: ../articles/load-balancer/load-balancer-overview.md
 [node-pool]: ../articles/aks/use-multiple-node-pools.md
 
 <!-- LINKS - External -->
+
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

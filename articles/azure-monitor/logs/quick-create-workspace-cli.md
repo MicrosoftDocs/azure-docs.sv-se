@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 8e1fc816e32e563161e1604bdcd7a7006353e4ed
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 175473f5abd74fa208962fd94852e9ddedfaf7e3
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047393"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105824"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Skapa en Log Analytics arbets yta med Azure CLI 2,0
 
@@ -107,7 +107,7 @@ Följande parametrar anger ett standardvärde:
 
 2. Redigera mallen så att den uppfyller dina krav. Granska [mallen Microsoft. OperationalInsights/arbetsytes](/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) för att lära dig vilka egenskaper och värden som stöds.
 3. Spara den här filen som **deploylaworkspacetemplate.jspå** en lokal mapp.   
-4. Nu är det dags att distribuera den här mallen. Använd följande kommandon från mappen som innehåller mallen. När du uppmanas att ange ett namn på arbets ytan anger du ett namn som är globalt unikt för alla Azure-prenumerationer.
+4. Nu är det dags att distribuera den här mallen. Använd följande kommandon från mappen som innehåller mallen. När du uppmanas att ange ett namn på arbets ytan anger du ett namn som är unikt i resurs gruppen.
 
     ```azurecli
     az deployment group create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
@@ -120,7 +120,7 @@ Det kan ta några minuter att slutföra distributionen. När det är klart visas
 ## <a name="troubleshooting"></a>Felsökning
 När du skapar en arbets yta som har tagits bort under de senaste 14 dagarna och i [läget för mjuk borttagning](../logs/delete-workspace.md#soft-delete-behavior)kan åtgärden ha olika resultat beroende på konfigurationen för arbets ytan:
 1. Om du anger samma namn på arbets ytan, resurs gruppen, prenumerationen och regionen som i den borttagna arbets ytan återställs din arbets yta, inklusive dess data, konfiguration och anslutna agenter.
-2. Om du använder samma arbets ytans namn, men en annan resurs grupp, prenumeration eller region, får du ett fel meddelande om att arbets ytans namn *är inte unikt* eller *i konflikt*. Om du vill åsidosätta den mjuka borttagningen och permanent ta bort arbets ytan och skapa en ny arbets yta med samma namn, följer du dessa steg för att återställa arbets ytan och utföra permanent borttagning:
+2. Arbets ytans namn måste vara unikt per resurs grupp. Om du använder ett namn på arbets ytan som redan finns går det inte att använda mjuk borttagning i din resurs grupp. du får ett fel meddelande om att arbets ytans namn *är inte unikt* eller *står i konflikt*. Om du vill åsidosätta den mjuka borttagningen och permanent ta bort arbets ytan och skapa en ny arbets yta med samma namn, följer du dessa steg för att återställa arbets ytan och utföra permanent borttagning:
    * [Återställa](../logs/delete-workspace.md#recover-workspace) din arbetsyta
    * [Ta bort arbetsytan permanent](../logs/delete-workspace.md#permanent-workspace-delete)
    * Skapa en ny arbets yta med samma arbets ytans namn

@@ -10,16 +10,16 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: bd35062ca1a5b3218a9af1fbd28fe8e7d7073c07
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 1f03f99e6394c3939855c73548e8fb917f8696bc
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077626"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286036"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetri och fel sökning
 
-Rumslig analys innehåller en uppsättning funktioner som övervakar systemets hälsotillstånd och hjälper till att diagnostisera problem.
+Rums analys innehåller en uppsättning funktioner som övervakar systemets hälso tillstånd och hjälp med att diagnostisera problem.
 
 ## <a name="enable-visualizations"></a>Aktivera visualiseringar
 

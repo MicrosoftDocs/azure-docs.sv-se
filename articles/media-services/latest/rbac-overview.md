@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 7c9edce71e0d0565de80153bfd5b3d5f1edb2e8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c086fe6a47227901cd44c4684452c842df5286ae
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98955164"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064435"
 ---
 # <a name="azure-role-based-access-control-azure-rbac-for-media-services-accounts"></a>Rollbaserad åtkomst kontroll i Azure (Azure RBAC) för Media Services-konton
 
@@ -50,4 +50,4 @@ Mer information finns i följande artiklar:
 ## <a name="next-steps"></a>Nästa steg
 
 - [Utveckla med Media Services v3-API: er](media-services-apis-overview.md)
-- [Hämta princip för innehålls nyckel med Media Services .NET](get-content-key-policy-dotnet-howto.md)
+- [Hämta princip för innehålls nyckel med Media Services .NET](drm-get-content-key-policy-dotnet-how-to.md)

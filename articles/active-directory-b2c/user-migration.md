@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d2d4a61f653c5bedb31223d2eb3d37b92a076821
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e60b80a4ebeaef7d31d4c0c1d9d4bfc41ec3a56
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103010175"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256216"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrera användare till Azure AD B2C
 
@@ -43,7 +43,7 @@ Använd det sömlösa migreringsjobbet om lösen ord för klartext i den gamla i
 - Lösen ordet lagras i ett enkelriktat krypterat format, t. ex. med en hash-funktion.
 - Lösen ordet lagras av den äldre identitets leverantören på ett sätt som du inte kan komma åt. Till exempel när identitets leverantören verifierar autentiseringsuppgifter genom att anropa en webb tjänst.
 
-Det sömlösa migreringsjobbet kräver fortfarande för migrering av användar konton, men använder sedan en [anpassad princip](custom-policy-get-started.md) för att fråga en [REST API](custom-policy-rest-api-intro.md) (som du skapar) för att ange varje användares lösen ord vid första inloggningen.
+Det sömlösa migreringsjobbet kräver fortfarande för migrering av användar konton, men använder sedan en [anpassad princip](user-flow-overview.md) för att fråga en [REST API](custom-policy-rest-api-intro.md) (som du skapar) för att ange varje användares lösen ord vid första inloggningen.
 
 Det sömlösa migreringsjobbet har därför två faser: *för migrering* och *ange autentiseringsuppgifter*.
 

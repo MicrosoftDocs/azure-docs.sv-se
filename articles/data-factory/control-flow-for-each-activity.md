@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: a0c3a3cbaa71d627f54550cf92c067afbb1eb3f0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d0fd9ab8286496b9801d6c10682761f1264e040a
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786217"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120919"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Förgrunds aktiviteter i Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -79,7 +79,7 @@ Aktiviteter | De aktiviteter som ska utföras. | Lista med aktiviteter | Ja
 Om **isSequential** har angetts till false, upprepas aktiviteten parallellt med maximalt 20 samtidiga iterationer. Den här inställningen bör användas med försiktighet. Om samtidiga iterationer skrivs till samma mapp, men till olika filer, är den här metoden bra. Om samtidiga iterationer skrivs samtidigt till exakt samma fil, orsakar den här metoden förmodligen ett fel. 
 
 ## <a name="iteration-expression-language"></a>Språk för upprepnings uttryck
-I förgrunds aktiviteten anger du en matris som ska upprepas för egenskaps **objekt**. " Används `@item()` för att iterera över en enskild uppräkning i en förgrunds aktivitet. Om **objekt** till exempel är en matris: [1, 2, 3], `@item()` returnerar 1 i den första iterationen, 2 i den andra iterationen och 3 i den tredje iterationen.
+I förgrunds aktiviteten anger du en matris som ska upprepas för egenskaps **objekt**. " Används `@item()` för att iterera över en enskild uppräkning i en förgrunds aktivitet. Om **objekt** till exempel är en matris: [1, 2, 3], `@item()` returnerar 1 i den första iterationen, 2 i den andra iterationen och 3 i den tredje iterationen. Du kan också använda `@range(0,10)` like-uttryck för att iterera tio gånger från och med 0 slutar med 9.
 
 ## <a name="iterating-over-a-single-activity"></a>Iterera över en enskild aktivitet
 **Scenario:** Kopiera från samma källfil i Azure blob till flera målfiler i Azure blob.

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 337275cef0f2159cb5fac40ac0435408baf3bbef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9fee7965e7834f0e05dba91f8652a0e155087b14
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96170930"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257882"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>Självstudie för att konfigurera TheAccessHub Admin Tool med Azure Active Directory B2C
 
@@ -44,7 +44,7 @@ För att komma igång behöver du:
 
 - Valfritt Information om anslutningar och autentiseringsuppgifter för alla databaser eller LDAP-protokoll (Lightweight Directory Access Protocol) som du vill migrera kund information från.
 
-- Valfritt Konfigurerat Azure AD B2Cs miljö för att använda [anpassade principer](./custom-policy-get-started.md), om du vill integrera TheAccessHub-administrationsverktyget i ditt registrerings princip flöde.
+- Valfritt Konfigurerat Azure AD B2Cs miljö för att använda [anpassade principer](./tutorial-create-user-flows.md?pivots=b2c-custom-policy), om du vill integrera TheAccessHub-administrationsverktyget i ditt registrerings princip flöde.
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
@@ -358,7 +358,7 @@ Så här synkroniserar du data från Azure AD B2C till administrations verktyget
 
 ## <a name="configure-azure-ad-b2c-policies"></a>Konfigurera Azure AD B2C principer
 
-Ibland kan synkronisering av TheAccessHub-administrationsverktyget vara begränsad i sin förmåga att hålla sitt tillstånd uppdaterat med Azure AD B2C. Vi kan dra nytta av TheAccessHub Admin Tools API och Azure AD B2C principer för att informera TheAccessHub admin-verktyget om ändringar när de sker. Den här lösningen kräver tekniska kunskaper om [Azure AD B2C anpassade principer](./custom-policy-get-started.md). I nästa avsnitt får du ett exempel på princip steg och ett säkert certifikat för att meddela TheAccessHub administrations verktyg för nya konton i dina Sign-Up anpassade principer.
+Ibland kan synkronisering av TheAccessHub-administrationsverktyget vara begränsad i sin förmåga att hålla sitt tillstånd uppdaterat med Azure AD B2C. Vi kan dra nytta av TheAccessHub Admin Tools API och Azure AD B2C principer för att informera TheAccessHub admin-verktyget om ändringar när de sker. Den här lösningen kräver tekniska kunskaper om [Azure AD B2C anpassade principer](./user-flow-overview.md). I nästa avsnitt får du ett exempel på princip steg och ett säkert certifikat för att meddela TheAccessHub administrations verktyg för nya konton i dina Sign-Up anpassade principer.
 
 ### <a name="create-a-secure-credential-to-invoke-theaccesshub-admin-tools-api"></a>Skapa en säker autentiseringsuppgift för att anropa TheAccessHub Admin Tools API
 
@@ -386,7 +386,7 @@ Ibland kan synkronisering av TheAccessHub-administrationsverktyget vara begräns
 
 5. Välj **Hämta** för att få en zip-fil med grundläggande principer som lägger till kunder i TheAccessHub admin-verktyget när kunderna registrerar sig.
 
-6. Följ den här [självstudien](./custom-policy-get-started.md) för att komma igång med att utforma anpassade principer i Azure AD B2C.
+6. Följ den här [självstudien](./tutorial-create-user-flows.md?pivots=b2c-custom-policy) för att komma igång med att utforma anpassade principer i Azure AD B2C.
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -394,4 +394,4 @@ Mer information finns i följande artiklar:
 
 - [Anpassade principer i Azure AD B2C](./custom-policy-overview.md)
 
-- [Kom igång med anpassade principer i Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Kom igång med anpassade principer i Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

@@ -1,5 +1,5 @@
 ---
-title: Migrera till Read v3. x OCR-behållare
+title: Migrera till Read v3. x-behållare
 titleSuffix: Azure Cognitive Services
 description: Lär dig hur du migrerar till v3-läsa OCR-behållare
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/29/2021
 ms.author: aahi
-ms.openlocfilehash: baa91e21979022064aaf13aca6079f8d092d673e
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 1cc17306265e6e8ba2e7fb3f570d0017b006b84f
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221161"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284693"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migrera till Read v3. x OCR-behållare
 
@@ -24,7 +24,7 @@ Om du använder version 2 av Visuellt innehåll Read OCR-behållare använder du
 
 ## <a name="configuration-changes"></a>Konfigurations ändringar
 
-* `ReadEngineConfig:ResultExpirationPeriod` stöds inte längre. Läs containern har ett inbyggt cron-jobb som tar bort de resultat och metadata som är kopplade till en begäran efter 48 timmar.
+* `ReadEngineConfig:ResultExpirationPeriod` stöds inte längre. Read OCR-containern har ett inbyggt cron-jobb som tar bort de resultat och metadata som är kopplade till en begäran efter 48 timmar.
 * `Cache:Redis:Configuration` stöds inte längre. Cachen används inte i v3. x-behållare, så du behöver inte ange den.
 
 ## <a name="api-changes"></a>API-ändringar
@@ -39,7 +39,7 @@ Mer information om hur du uppdaterar dina program för att använda version 3 av
 
 ## <a name="memory-requirements"></a>Minneskrav
 
-Kraven och rekommendationerna baseras på benchmarks med en enda begäran per sekund, med en 8 MB-avbildning av en skannad affärs skrivelse som innehåller 29 rader och totalt 803 tecken. I följande tabell beskrivs den lägsta och rekommenderade fördelningen av resurser för varje read-behållare.
+Kraven och rekommendationerna baseras på benchmarks med en enda begäran per sekund, med en 8 MB-avbildning av en skannad affärs skrivelse som innehåller 29 rader och totalt 803 tecken. I följande tabell beskrivs den lägsta och rekommenderade fördelningen av resurser för varje read OCR-behållare.
 
 |Container  |Minimum | Rekommenderas  |
 |---------|---------|------|
@@ -81,7 +81,7 @@ Ställ in timern med `Queue:Azure:QueueVisibilityTimeoutInMilliseconds` , vilket
 ## <a name="next-steps"></a>Nästa steg
 
 * Granska [Konfigurera behållare](computer-vision-resource-container-config.md) för konfigurations inställningar
-* Läs [visuellt innehåll översikt](overview.md) och lär dig mer om att känna igen utskrift och handskriven text
-* Mer information om de metoder som stöds av behållaren finns i [API för visuellt innehåll](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .
+* Läs [Översikt över OCR](overview-ocr.md) för att lära dig mer om att känna igen utskrift och handskriven text
+* Mer information om de metoder som stöds av behållaren finns i [Read API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) .
 * Läs vanliga [frågor och svar (FAQ)](FAQ.md) för att lösa problem som rör visuellt innehåll-funktioner.
 * Använd fler [Cognitive Services behållare](../cognitive-services-container-support.md)

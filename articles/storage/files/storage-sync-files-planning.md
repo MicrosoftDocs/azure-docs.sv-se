@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: d3cc8f36f05def18c16db0875cb712cdf5d165f9
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: b106c82e3755fbd0e02f12a769d80ce4761cf026
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121361"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285866"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planera för distribution av Azure File Sync
 
@@ -358,6 +358,15 @@ Om du föredrar att använda en lokal lösning för säkerhets kopiering ska sä
 
 > [!Note]  
 > Med version 9 av Azure File Sync agent, stöds nu VSS-ögonblicksbilder (inklusive tidigare versioner) på volymer som har aktiverat moln skikt. Du måste dock aktivera tidigare versions kompatibilitet via PowerShell. [Lär dig hur](storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service).
+
+## <a name="data-classification"></a>Dataklassificering
+Om du har installerat program vara för data klassificering kan det leda till ökade kostnader på två anledningar genom att aktivera moln nivåer:
+
+1. När moln skiktning är aktiverat cachelagras de häftiga filerna lokalt och de häftigaste filerna på Azure-filresursen i molnet. Om data klassificeringen regelbundet söker igenom alla filer i fil resursen, måste filerna som skiktas till molnet återkallas när de genomsöks. 
+
+2. Om program varan för data klassificering använder metadata i data strömmen för en fil måste filen återkallas fullständigt för att program varan ska kunna se klassificeringen. 
+
+Dessa ökar både antalet återanrop och mängden data som återkallas kan öka kostnaderna.
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Uppdateringsprincip för Azure File Sync-agenten
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

@@ -1,14 +1,14 @@
 ---
 title: Distribuera exempel på skyddat av myndigheter i myndigheter
 description: Distribuera steg för det skyddade utkastet av myndigheter i myndigheters ISM, inklusive information om skiss artefakts parametrar.
-ms.date: 01/21/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 97dd983ef3188cad7d36459197e57e4e0f3c4e8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c97c8b180b621bf1e583482d67fb203460a145cb
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100577336"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106386436"
 ---
 # <a name="deploy-the-australian-government-ism-protected-blueprint-sample"></a>Distribuera det insamlade utkastet av myndigheter som är skyddat av myndigheter
 

@@ -1,20 +1,20 @@
 ---
-title: 'Självstudie: kom igång med verifierbara autentiseringsuppgifter med en exempel App (för hands version)'
+title: Självstudie – kom igång med Azure Active Directory verifierbara autentiseringsuppgifter med hjälp av en exempel App (för hands version)
 description: I den här självstudien får du lära dig hur du utfärdar verifierbara autentiseringsuppgifter med hjälp av vår exempel-App och test klient
 ms.service: identity
 ms.subservice: verifiable-credentials
 author: barclayn
 ms.author: barclayn
 ms.topic: tutorial
-ms.date: 03/31/2021
-ms.openlocfilehash: 4914df0df30ed990dd2c692f0f5b57586d2a75c6
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.date: 04/01/2021
+ms.openlocfilehash: deebaf31197d8b7335f887ae447f05add45278b2
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106171996"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222893"
 ---
-# <a name="tutorial-get-started-with-verifiable-credentials-using-a-sample-app-preview"></a>Självstudie: kom igång med verifierbara autentiseringsuppgifter med en exempel App (för hands version)
+#  <a name="tutorial---get-started-with-azure-active-directory-verifiable-credentials-using-a-sample-app-preview"></a>Självstudie – kom igång med Azure Active Directory verifierbara autentiseringsuppgifter med hjälp av en exempel App (för hands version)
 
 I den här självstudien går vi igenom de steg som krävs för att utfärda dina första verifierbara autentiseringsuppgifter: ett kontrollerat expert kort för autentiseringsuppgifter. Du kan sedan använda det här kortet för att bevisa att du är en verifierad administratörs expert, som är Master i den digitala autentiseringsuppgiften. Kom igång med Azure Active Directory verifierbara autentiseringsuppgifter genom att använda exempel appen för verifierbara autentiseringsuppgifter för att utfärda dina första verifierbara autentiseringsuppgifter.
 

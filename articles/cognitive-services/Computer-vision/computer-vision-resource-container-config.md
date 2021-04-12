@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: ee2e4fca697c086b95e83feb9d40ce8e07dc344c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b421877b2a41074bf901817c7ad8922083c3e77
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102611903"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285681"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>Konfigurera Läs OCR Docker-behållare
 
@@ -34,8 +34,8 @@ Behållaren har också följande behållar konfigurations inställningar:
 |Obligatorisk|Inställning|Syfte|
 |--|--|--|
 |Inga|ReadEngineConfig:ResultExpirationPeriod| endast v 2.0-behållare. Resultat förfallo period i timmar. Standardvärdet är 48 timmar. Inställningen anger när systemet ska rensa igenkännings resultat. Om till exempel `resultExpirationPeriod=1` systemet rensar igenkännings resultatet 1 timme efter processen. Om `resultExpirationPeriod=0` rensas igenkännings resultatet i systemet när resultatet har hämtats.|
-|Inga|Cache: Redis| endast v 2.0-behållare. Aktiverar Redis-lagring för lagring av resultat. Det *krävs* ett cacheminne om flera Läs behållare placeras bakom en belastningsutjämnare.|
-|Inga|Kö: RabbitMQ|endast v 2.0-behållare. Aktiverar RabbitMQ för att skicka uppgifter. Inställningen är användbar när flera Läs behållare placeras bakom en belastningsutjämnare.|
+|Inga|Cache: Redis| endast v 2.0-behållare. Aktiverar Redis-lagring för lagring av resultat. Det *krävs* en cache om flera Läs OCR-behållare placeras bakom en belastningsutjämnare.|
+|Inga|Kö: RabbitMQ|endast v 2.0-behållare. Aktiverar RabbitMQ för att skicka uppgifter. Inställningen är användbar när flera Läs OCR-behållare placeras bakom en belastningsutjämnare.|
 |Inga|Kö: Azure: QueueVisibilityTimeoutInMilliseconds | endast v3. x-behållare. Tiden som ett meddelande ska vara osynligt när en annan arbets process bearbetar det. |
 |Inga|Lagring::D ocumentStore:: MongoDB|endast v 2.0-behållare. Aktiverar MongoDB för lagring med permanent resultat. |
 |Inga|Lagring: ObjectStore: AzureBlob: ConnectionString| endast v3. x-behållare. Anslutnings sträng för Azure Blob Storage. |
@@ -119,7 +119,7 @@ Ersätt {_argument_name_} med dina egna värden:
 
 ## <a name="container-docker-examples"></a>Behållare Docker-exempel
 
-Följande Docker-exempel är för Read-behållaren.
+Följande Docker-exempel är för Read OCR-behållare.
 
 
 # <a name="version-32-preview"></a>[Version 3,2 – för hands version](#tab/version-3-2)

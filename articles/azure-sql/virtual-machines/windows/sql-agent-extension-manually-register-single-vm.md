@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 983cdab0c5f5b856537c661c7427a83099f30ed4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3cea15114e125951a8fbec73f965b272a4f8053d
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181439"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284166"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>Registrera SQL Server VM med SQL IaaS agent-tillägg
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +36,7 @@ När du registrerar med [SQL Server IaaS agent Extension](sql-server-iaas-agent-
 
 Genom att distribuera en SQL Server VM Azure Marketplace-avbildning via Azure Portal registreras automatiskt SQL Server VM med tillägget. Men om du väljer att själv installera SQL Server på en virtuell Azure-dator eller etablera en virtuell Azure-dator från en anpassad virtuell hård disk måste du registrera din SQL Server VM med SQL IaaS agent-tillägget för att kunna låsa upp fullständiga funktions förmåner och hanterbarhet. 
 
-Om du vill använda SQL IaaS agent-tillägget måste du först [Registrera din prenumeration med **Microsoft. SqlVirtualMachine** -providern](#register-subscription-with-rp), som ger SQL IaaS-tillägget möjlighet att skapa resurser i den aktuella prenumerationen.
+Om du vill använda SQL IaaS agent-tillägget måste du först [Registrera din prenumeration med **Microsoft. SqlVirtualMachine** -providern](#register-subscription-with-resource-provider), som ger SQL IaaS-tillägget möjlighet att skapa resurser i den aktuella prenumerationen.
 
 > [!IMPORTANT]
 > SQL IaaS agent-tillägget samlar in data i Express syfte att ge kunderna valfria förmåner när de använder SQL Server i Azure Virtual Machines. Microsoft kommer inte att använda dessa data för licens granskningar utan kundens medgivande. Se [SQL Server sekretess tillägg](/sql/sql-server/sql-server-privacy#non-personal-data) för mer information.
@@ -50,9 +50,9 @@ Om du vill registrera SQL Server VM med tillägget måste du:
 - Den senaste versionen av [Azure CLI](/cli/azure/install-azure-cli) eller [Azure PowerShell (minst 5,0)](/powershell/azure/install-az-ps). 
 
 
-## <a name="register-subscription-with-rp"></a>Registrera prenumeration med RP
+## <a name="register-subscription-with-resource-provider"></a>Registrera prenumeration med Resource Provider
 
-Om du vill registrera SQL Server VM med agent tillägget för SQL-IaaS måste du först registrera din prenumeration med **Microsoft. SqlVirtualMachine** -providern. Detta ger SQL IaaS agent-tillägget möjlighet att skapa resurser i din prenumeration.  Du kan göra detta med hjälp av Azure Portal, Azure CLI eller Azure PowerShell.
+Om du vill registrera SQL Server VM med agent tillägget för SQL-IaaS måste du först registrera din prenumeration med Resource providern **Microsoft. SqlVirtualMachine** . Detta ger SQL IaaS agent-tillägget möjlighet att skapa resurser i din prenumeration.  Du kan göra detta med hjälp av Azure Portal, Azure CLI eller Azure PowerShell.
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -127,7 +127,7 @@ Registrera en SQL Server VM i Lightweight-läge med Azure PowerShell:
 
 ### <a name="full-management-mode"></a>Fullständigt hanterings läge
 
-Om du registrerar SQL Server VM i full läge startas om SQL Servers tjänsten. Fortsätt med försiktighet. 
+Om du registrerar SQL Server VM i full läge startas om SQL Servers tjänsten. Tänk efter innan du går vidare. 
 
 Om du vill registrera din SQL Server VM direkt i fullständigt läge (och eventuellt starta om din SQL Server tjänst) använder du följande Azure PowerShell kommando: 
 

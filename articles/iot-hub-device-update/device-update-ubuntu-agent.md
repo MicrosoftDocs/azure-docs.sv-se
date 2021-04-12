@@ -6,18 +6,18 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 751e9337d74210d238be079e8fcd1bb973937846
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6464ad632251053ac481fbd1f6a3e1197aa470df
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936860"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121310"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Uppdatering av enhets uppdateringar för Azure IoT Hub med paket agenten på Ubuntu Server 18,04 x64
 
 Enhets uppdatering för IoT Hub stöder två typer av uppdateringar – bildbaserad och paket-baserad.
 
-Paketbaserade uppdateringar är riktade uppdateringar som bara ändrar en specifik komponent eller ett program på enheten. Detta leder till lägre konsumtion av bandbredd och hjälper till att minska tiden för att ladda ned och installera uppdateringen. Paket uppdateringar tillåter normalt mindre stillestånd av enheter när en uppdatering tillämpas och du slipper att skapa avbildningar.
+Paketbaserade uppdateringar är riktade uppdateringar som bara ändrar en specifik komponent eller ett program på enheten. Paketbaserade uppdateringar leder till lägre konsumtion av bandbredd och minskar tiden för att ladda ned och installera uppdateringen. Paket uppdateringar tillåter normalt mindre stillestånd av enheter när en uppdatering tillämpas och du slipper att skapa avbildningar.
 
 Den här självstudien vägleder dig genom uppdatering Azure IoT Edge på Ubuntu Server 18,04 x64 med hjälp av enhets uppdaterings paketets agent. Även om självstudien visar hur du uppdaterar IoT Edge med liknande steg kan du uppdatera andra paket, till exempel den behållar motor som används.
 
@@ -40,7 +40,7 @@ I den här självstudien får du lära dig hur man
 ## <a name="prepare-a-device"></a>Förbered en enhet
 ### <a name="using-the-automated-deploy-to-azure-button"></a>Använda knappen automatiserad distribution till Azure
 
-För enkelhetens skull använder den här självstudien en [Cloud-Init](../virtual-machines/linux/using-cloud-init.md)-baserad [Azure Resource Manager-mall](../azure-resource-manager/templates/overview.md) som hjälper dig att snabbt skapa en virtuell dator med Ubuntu 18,04 LTS. Den installerar både Azure IoT Edge Runtime och enhets uppdaterings paket agenten och konfigurerar sedan automatiskt enheten med etablerings information med hjälp av enhets anslutnings strängen för en IoT Edge enhet (krav) som du anger. Detta gör att du inte behöver starta en SSH-session för att slutföra installationen.
+För enkelhetens skull använder den här självstudien en [Cloud-Init](../virtual-machines/linux/using-cloud-init.md)-baserad [Azure Resource Manager-mall](../azure-resource-manager/templates/overview.md) som hjälper dig att snabbt skapa en virtuell dator med Ubuntu 18,04 LTS. Den installerar både Azure IoT Edge Runtime och enhets uppdaterings paket agenten och konfigurerar sedan automatiskt enheten med etablerings information med hjälp av enhets anslutnings strängen för en IoT Edge enhet (krav) som du anger. Azure Resource Manager-mallen gör också att du inte behöver starta en SSH-session för att slutföra installationen.
 
 1. Börja genom att klicka på knappen nedan:
 
@@ -75,7 +75,7 @@ För enkelhetens skull använder den här självstudien en [Cloud-Init](../virtu
 
 1. Verifiera att distributionen slutfördes korrekt. Vänta några minuter efter att distributionen har slutförts efter installationen och konfigurationen för att slutföra installationen av IoT Edge och enhets paketets uppdaterings agent.
 
-   En VR-resurs bör ha distribuerats till den valda resursgruppen.  Anteckna dator namnet. formatet bör vara i formatet `vm-0000000000000` . Notera även det associerade **DNS-namnet**, som ska ha formatet `<dnsLabelPrefix>`.`<location>`.cloudapp.azure.com.
+   En VR-resurs bör ha distribuerats till den valda resursgruppen.  Anteckna dator namnet som ska ha formatet `vm-0000000000000` . Notera även det associerade **DNS-namnet**, som ska ha formatet `<dnsLabelPrefix>`.`<location>`.cloudapp.azure.com.
 
     **DNS-namnet** kan hämtas från avsnittet **Översikt** i den nyligen distribuerade virtuella datorn i Azure-portalen.
 
@@ -86,7 +86,7 @@ För enkelhetens skull använder den här självstudien en [Cloud-Init](../virtu
    > Om du vill använda SSH till den här virtuella datorn efter installationen använder du det associerade **DNS-namnet** med kommandot: `ssh <adminUsername>@<DNS_Name>`
 
 ### <a name="optional-manually-prepare-a-device"></a>Valfritt Förbereda en enhet manuellt
-Följande manuella steg för att installera och konfigurera enheten motsvarar de som automatiserades av det här [Cloud-Init-skriptet](https://github.com/Azure/iotedge-vm-deploy/blob/1.2.0-rc4/cloud-init.txt). De kan användas för att förbereda en fysisk enhet.
+Precis som med de steg som automatiseras av [Cloud-Init-skriptet](https://github.com/Azure/iotedge-vm-deploy/blob/1.2.0-rc4/cloud-init.txt), följer du de manuella stegen för att installera och konfigurera enheten. Dessa steg kan användas för att förbereda en fysisk enhet.
 
 1. Följ anvisningarna för att [installera Azure IoT Edge runtime](../iot-edge/how-to-install-iot-edge.md?view=iotedge-2020-11&preserve-view=true).
    > [!NOTE]
@@ -110,9 +110,9 @@ Läs licens villkoren innan du använder ett paket. Din installation och använd
 
 1. Logga in på [Azure Portal](https://portal.azure.com) och navigera till IoT Hub.
 
-2. Från IoT Edge i det vänstra navigerings fönstret hittar du IoT Edge-enheten och navigerar till enheten med dubbla.
+2. Från IoT Edge i det vänstra navigerings fönstret, letar du reda på din IoT Edge-enhet och navigerar till enheten med dubbla eller moduler
 
-3. Ta bort eventuella befintliga enhets uppdaterings märken i enhets numret genom att ställa in dem på null.
+3. Ta bort eventuella befintliga enhets uppdaterings tag gen i modulens dubbla i modulen enhets uppdaterings agent genom att ställa in dem på null. Om du använder enhets identitet med enhets uppdaterings agenten gör du följande ändringar på enheten.
 
 4. Lägg till ett nytt märkes värde för enhets uppdatering som visas nedan.
 
@@ -149,7 +149,7 @@ Den här uppdateringen kommer `aziot-identity-service` `aziot-edge` att uppdater
 
 8. Välj "Skicka" för att starta import processen.
 
-9. Import processen påbörjas och skärmen ändras till avsnittet "import historik". Välj Uppdatera om du vill visa förloppet tills importen är klar. Beroende på Uppdateringens storlek kan detta slutföras på några minuter, men det kan ta längre tid.
+9. Import processen påbörjas och skärmen ändras till avsnittet "import historik". Välj Uppdatera om du vill visa förloppet tills importen är klar. Beroende på Uppdateringens storlek kan importen slutföras på några minuter, men det kan ta längre tid.
 
    :::image type="content" source="media/import-update/update-publishing-sequence-2.png" alt-text="Skärm bild som visar import ordningen för uppdateringar." lightbox="media/import-update/update-publishing-sequence-2.png":::
 
@@ -212,7 +212,7 @@ Du har nu slutfört en lyckad paket uppdatering från slut punkt till slut punkt
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När du inte längre behöver kan du rensa enhets uppdaterings kontot, instansen IoT Hub och IoT Edges enheten (om du har skapat den virtuella datorn via knappen distribuera till Azure). Du kan göra det genom att gå till varje enskild resurs och välja "ta bort". Observera att du måste rensa en enhets uppdaterings instans innan du rensar enhets uppdaterings kontot.
+När du inte längre behöver kan du rensa enhets uppdaterings kontot, instansen, IoT Hub och IoT Edge enheten (om du har skapat den virtuella datorn via knappen distribuera till Azure). Du kan göra det genom att gå till varje enskild resurs och välja "ta bort". Du måste rensa en enhets uppdaterings instans innan du rensar enhets uppdaterings kontot.
 
 ## <a name="next-steps"></a>Nästa steg
 

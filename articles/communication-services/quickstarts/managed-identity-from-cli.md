@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: jbeauregardb
 ms.reviewer: mikben
-ms.openlocfilehash: 2ef5a3b162d62fa79ed01a156345070ee12b4862
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a5ee7e8de85a1a53359f651a74e2f9f5e51edb70
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110686"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030788"
 ---
 # <a name="authorize-access-with-managed-identity-to-your-communication-resource-in-your-development-environment"></a>Bevilja åtkomst med hanterad identitet till kommunikations resursen i utvecklings miljön
 
@@ -78,6 +78,8 @@ Azure Identity SDK läser värden från tre miljövariabler vid körning för at
 
 > [!IMPORTANT]
 > När du har ställt in miljövariablerna stänger du och öppnar konsol fönstret igen. Om du använder Visual Studio eller en annan utvecklings miljö kan du behöva starta om den för att kunna registrera nya miljövariabler.
+
+När de här variablerna har angetts bör du kunna använda DefaultAzureCredential-objektet i din kod för att autentisera till den valda tjänst klienten.
 
 
 ## <a name="next-steps"></a>Nästa steg

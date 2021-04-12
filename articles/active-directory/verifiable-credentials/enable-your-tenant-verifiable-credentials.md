@@ -1,5 +1,5 @@
 ---
-title: 'Självstudie: Konfigurera Azure Active Directory att utfärda verifierbara autentiseringsuppgifter (för hands version)'
+title: Självstudie – konfigurera Azure Active Directory att utfärda verifierbara autentiseringsuppgifter (för hands version)
 description: I den här självstudien skapar du den miljö som krävs för att distribuera verifierbara autentiseringsuppgifter i din klient organisation
 documentationCenter: ''
 author: barclayn
@@ -7,17 +7,17 @@ manager: daveba
 ms.service: identity
 ms.topic: tutorial
 ms.subservice: verifiable-credentials
-ms.date: 03/31/2021
+ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 08aaa49f73ed437e041ffb93dc9ef5be41e316ec
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: cd39f6c484ebe116918611bb1d543c1919a3cb0a
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106172028"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222953"
 ---
-# <a name="tutorial-configure-your-azure-active-directory-to-issue-verifiable-credentials-preview"></a>Självstudie: Konfigurera Azure Active Directory att utfärda verifierbara autentiseringsuppgifter (för hands version)
+# <a name="tutorial---configure-your-azure-active-directory-to-issue-verifiable-credentials-preview"></a>Självstudie – konfigurera Azure Active Directory att utfärda verifierbara autentiseringsuppgifter (för hands version)
 
 I den här självstudien bygger vi på arbetet som du utför som en del av [Kom igång](get-started-verifiable-credentials.md) -artikeln och konfigurerar din Azure Active Directory (Azure AD) med sin egen [decentraliserade identifierare](https://www.microsoft.com/security/business/identity-access-management/decentralized-identity-blockchain?rtc=1#:~:text=Decentralized%20identity%20is%20a%20trust,protect%20privacy%20and%20secure%20transactions.) (DID). Vi använder den decentraliserade identifieraren för att utfärda en verifierbar autentiseringsuppgift med hjälp av exempel appen och utfärdaren. men i den här självstudien använder vi fortfarande Azure B2C-klienten för autentisering.  I nästa självstudie kommer vi att vidta ytterligare åtgärder för att få appen konfigurerad att fungera med din Azure AD.
 

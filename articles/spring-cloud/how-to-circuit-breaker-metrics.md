@@ -1,22 +1,22 @@
 ---
-title: Samla in våren Cloud Resilience4J krets separator mått
-description: Så här samlar du in mått för våren Cloud Resilience4Js krets brytare.
+title: Samla in våren Cloud Resilience4J krets brytare-mått med micrometer
+description: Samla in våren Cloud Resilience4J krets Break-mått med micrometer i Azure våren Cloud.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9fc8ccc5ba21f02885b2002d5040051baac92068
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0b24e8e07b4038d6def9945b7c347bb81ae5378b
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104878362"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258188"
 ---
-# <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-preview"></a>Samla in våren Cloud Resilience4J krets separator mått (för hands version)
+# <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-with-micrometer-preview"></a>Samla in våren Cloud Resilience4J krets brytare-mått med micrometer (för hands version)
 
-I det här dokumentet beskrivs hur du samlar in moln Resilience4js krets avbrotts mått med Application Insights Java in process-agenten.  Med den här funktionen kan du övervaka mått för resilience4j krets brytare från Application Insights.
+I det här dokumentet beskrivs hur du samlar in moln Resilience4js krets avbrotts mått med Application Insights Java in process-agenten. Med den här funktionen kan du övervaka mått för resilience4j krets brytare från Application Insights med micrometer.
 
 Vi använder lösningen [våren-Cloud-krets-Break-demo](https://github.com/spring-cloud-samples/spring-cloud-circuitbreaker-demo) för att visa hur det fungerar.
 

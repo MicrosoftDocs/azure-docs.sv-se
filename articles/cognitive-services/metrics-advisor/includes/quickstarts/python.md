@@ -9,12 +9,12 @@ ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 11/09/2020
 ms.author: mbullwin
-ms.openlocfilehash: 2ea2e24049a2ff57e284894bc13c44d617f3c661
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: b6bea3fdc47bfbb74c18161a400d59453540b14d
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445421"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081133"
 ---
 [Referens dokumentation](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/metricsadvisor/azure-ai-metricsadvisor/README.md)  |  [Paket (PiPy)](https://pypi.org/project/azure-ai-metricsadvisor/)  |  [Exempel](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/metricsadvisor/azure-ai-metricsadvisor/samples/README.md)
 
@@ -70,7 +70,7 @@ Följande klasser hanterar några av de viktigaste funktionerna i python SDK fö
 |Name|Beskrivning|
 |---|---|
 | [MetricsAdvisorClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html#azure.ai.metricsadvisor.MetricsAdvisorClient) | **Används för**: <br> – Visar incidenter <br> – Visar rotor saken till incidenter <br> -Hämtar ursprungliga tids serie data och tids serie data som har berikats av tjänsten. <br> – Visa aviseringar <br> – Lägga till feedback för att finjustera din modell |
-| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html#azure.ai.metricsadvisor.MetricsAdvisorAdministrationClient) | **Gör att du kan:** <br> – Hantera datafeeds <br> -Skapa, konfigurera, Hämta, lista och ta bort konfigurationer för avvikelse identifiering <br> -Skapa, konfigurera, Hämta, lista och ta bort avvikelser för varningar <br> -Hantera hookar  | |
+| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html#azure.ai.metricsadvisor.MetricsAdvisorAdministrationClient) | **Gör att du kan:** <br> – Hantera datafeeds <br> -Skapa, konfigurera, Hämta, lista och ta bort konfigurationer för avvikelse identifiering <br> -Skapa, konfigurera, Hämta, lista och ta bort avvikelser för varningar <br> -Hantera hookar  |
 | [DataFeed](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.models.html?highlight=datafeed#azure.ai.metricsadvisor.models.DataFeed)| **Vilka mått rådgivare inhämtar från data källan. A `DataFeed` innehåller rader med:** <br> – Tidsstämplar <br> -Noll eller flera dimensioner <br> -En eller flera mått  |
 | [DataFeedMetric](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.models.html?highlight=datafeedmetric#azure.ai.metricsadvisor.models.DataFeedMetric) | A `DataFeedMetric` är ett mätbart mått som används för att övervaka och utvärdera status för en enskild affärs process. Det kan vara en kombination av flera tids serie värden indelade i dimensioner. Till exempel kan ett webb hälso mått innehålla dimensioner för antal användare och en-US-marknad. |
 

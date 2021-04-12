@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2058e5362a65b6cd5f3e5b7cb9c20ce32d020d30
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84e6f76bcae55ed905e11c46df66478908529970
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96928706"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258035"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Självstudie för att konfigurera Experian: med Azure Active Directory B2C
 
@@ -133,7 +133,7 @@ I de angivna [anpassade principerna](https://github.com/azure-ad-b2c/partner-int
 
 ### <a name="part-6---configure-the-azure-ad-b2c-policy"></a>Del 6 – konfigurera principen för Azure AD B2C
 
-Se det här [dokumentet](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) för instruktioner om hur du konfigurerar Azure AD B2C-klienten och konfigurerar principer.
+Se det här [dokumentet](./tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack) för instruktioner om hur du konfigurerar Azure AD B2C-klienten och konfigurerar principer.
 
 >[!NOTE]
 >Den här exempel principen baseras på [lokala konton start paket](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts).
@@ -169,4 +169,4 @@ Mer information finns i följande artiklar:
 
 - [Anpassade principer i Azure AD B2C](./custom-policy-overview.md)
 
-- [Kom igång med anpassade principer i Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
+- [Kom igång med anpassade principer i Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

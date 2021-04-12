@@ -2,13 +2,13 @@
 title: Säkerhetskopiera flera SQL Server VM från valvet
 description: I den här artikeln får du lära dig hur du säkerhetskopierar SQL Server databaser på virtuella Azure-datorer med Azure Backup från Recovery Services-valvet
 ms.topic: conceptual
-ms.date: 09/11/2019
-ms.openlocfilehash: 798dc81012ad968c3ecc287717240513a08a1349
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/07/2021
+ms.openlocfilehash: c03b833be6c5e4c352125f31ad8c5ed072674b49
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "105567226"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258477"
 ---
 # <a name="back-up-multiple-sql-server-vms-from-the-recovery-services-vault"></a>Säkerhetskopiera flera virtuella SQL Server virtuella datorer från Recovery Services-valvet
 
@@ -23,10 +23,6 @@ I den här artikeln får du lära dig att:
 > * Skapa och konfigurera ett valv.
 > * Identifiera databaser och konfigurera säkerhets kopior.
 > * Konfigurera automatiskt skydd för databaser.
-
->[!NOTE]
->**Mjuk borttagning för SQL Server i Azure VM och mjuk borttagning för SAP HANA i Azure VM-arbetsbelastningar** finns nu i för hands version.<br>
->Registrera dig för för hands versionen genom att skriva till oss på AskAzureBackupTeam@microsoft.com
 
 ## <a name="prerequisites"></a>Förutsättningar
 

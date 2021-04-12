@@ -1,6 +1,6 @@
 ---
-title: 'Snabb start: Visuellt innehåll klient bibliotek för python'
-description: Kom igång med Visuellt innehåll klient biblioteket för python med den här snabb starten.
+title: 'Snabb start: klient bibliotek för optiskt teckensnitts igenkänning för python'
+description: Kom igång med det optiska teckensnitts igenkännings klient biblioteket för python med den här snabb starten.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,19 +9,16 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 1b17173c95f26c622a0021d30eb678fc27b60c2f
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: d0b2a854391097cc7d95c4286ba581f3660d397e
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103622332"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284825"
 ---
 <a name="HOLTop"></a>
 
-Använd Visuellt innehåll klient bibliotek för att:
-
-* Analysera en bild för taggar, text beskrivning, ansikten, vuxen innehåll med mera.
-* Skriv ut och handskriven text med Read API.
+Använd det optiska tecken igenkännings klient biblioteket för att läsa tryckt och handskriven text med Read API.
 
 [Referens dokumentation](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision)  |  [Paket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-computervision/)  |  [Exempel](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
@@ -74,7 +71,7 @@ Skapa variabler för din Visuellt innehåll prenumerations nyckel och slut punkt
 
 ## <a name="object-model"></a>Objekt modell
 
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Visuellt innehåll python SDK.
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i OCR python SDK.
 
 |Name|Beskrivning|
 |---|---|
@@ -84,10 +81,9 @@ Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna 
 
 ## <a name="code-examples"></a>Kodexempel
 
-De här kodfragmenten visar hur du utför följande uppgifter med Visuellt innehåll klient biblioteket för python:
+De här kodfragmenten visar hur du gör följande uppgifter med OCR-klientcertifikatet för python:
 
 * [Autentisera klienten](#authenticate-the-client)
-* [Analysera en bild](#analyze-an-image)
 * [Skriv ut och handskriven text](#read-printed-and-handwritten-text)
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
@@ -97,89 +93,11 @@ Instansiera en klient med din slut punkt och nyckel. Skapa ett [CognitiveService
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_client)]
 
 > [!div class="nextstepaction"]
-> [Jag autentiserade klienten att](?success=authenticate-client#analyze-an-image) [Jag stötte på ett problem](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=authenticate-client)
-
-## <a name="analyze-an-image"></a>Analysera en bild
-
-Använd ditt klient objekt för att analysera visuella funktioner i en fjärravbildning. Spara först en referens till URL: en för en bild som du vill analysera.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_remoteimage)]
-
-> [!TIP]
-> Du kan också analysera en lokal avbildning. Se [ComputerVisionClientOperationsMixin](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin) -metoderna, till exempel **analyze_image_in_stream**. Eller, se exempel koden på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) för scenarier som involverar lokala avbildningar.
-
-### <a name="get-image-description"></a>Beskrivning av Hämta avbildning
-
-Följande kod hämtar listan över genererade under texter för avbildningen. Se [Beskriv avbildningar](../../concept-describing-images.md) för mer information.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_describe)]
-
-### <a name="get-image-category"></a>Hämta bild kategori
-
-Följande kod hämtar den identifierade kategorin för avbildningen. Se [kategorisera bilder](../../concept-categorizing-images.md) för mer information.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_categorize)]
-
-### <a name="get-image-tags"></a>Hämta bild etiketter
-
-Följande kod hämtar en uppsättning identifierade Taggar i avbildningen. Se [innehålls etiketter](../../concept-tagging-images.md) för mer information.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_tags)]
-
-### <a name="detect-objects"></a>Upptäcka objekt
-
-Följande kod identifierar vanliga objekt i avbildningen och skriver ut dem till-konsolen. Mer information finns i [objekt identifiering](../../concept-object-detection.md) .
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_objects)]        
-
-### <a name="detect-brands"></a>Identifiera varumärken
-
-Följande kod identifierar företags märken och logo typer i bilden och skriver ut dem till-konsolen. Mer information finns i [varumärkes identifiering](../../concept-brand-detection.md) .
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_brands)]
-
-### <a name="detect-faces"></a>Identifiera ansikten
-
-Följande kod returnerar identifierade ansikten i bilden med deras Rectangle-koordinater och välj ansikts attribut. Mer information finns i [ansikts igenkänning](../../concept-detecting-faces.md) .
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_faces)]
-
-### <a name="detect-adult-racy-or-gory-content"></a>Identifiera vuxna, vågat eller fullständig innehåll
-
-Följande kod skriver ut den identifierade förekomsten av olämpligt innehåll i bilden. Mer information finns i [vuxen, vågat, fullständig-innehåll](../../concept-detecting-adult-content.md) .
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_adult)]
-
-### <a name="get-image-color-scheme"></a>Hämta färg schema för bild
-
-Följande kod skriver ut de identifierade färgattributen i bilden, till exempel dominerande färger och dekor färg. Se [färg scheman](../../concept-detecting-color-schemes.md) för mer information.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_color)]
-
-### <a name="get-domain-specific-content"></a>Hämta domänbaserat innehåll
-
-Visuellt innehåll kan använda specialiserad modell för att utföra ytterligare analyser av avbildningar. Se [domänbaserat innehåll](../../concept-detecting-domain-content.md) för mer information. 
-
-Följande kod tolkar data om identifierade kändisar i avbildningen.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_celebs)]
-
-Följande kod tolkar data om identifierade landmärken i bilden.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_landmarks)]
-
-### <a name="get-the-image-type"></a>Hämta avbildnings typen
-
-Följande kod skriver ut information om typen av bild &mdash; oavsett om den är en ClipArt-eller linje ritning.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_type)]
-
-> [!div class="nextstepaction"]
-> [Jag analyserade en bild](?success=analyze-image#read-printed-and-handwritten-text) som [Jag stötte på ett problem](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=analyze-image)
+> [Jag autentiserade klienten att](?success=authenticate-client#read-printed-and-handwritten-text) [Jag stötte på ett problem](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Python&Section=authenticate-client)
 
 ## <a name="read-printed-and-handwritten-text"></a>Skriv ut och handskriven text
 
-Visuellt innehåll kan läsa synlig text i en bild och konvertera den till en tecken ström. Du gör detta i två delar.
+OCR-tjänsten kan läsa synlig text i en bild och konvertera den till en tecken ström. Du gör detta i två delar.
 
 ### <a name="call-the-read-api"></a>Anropa Read API
 
@@ -222,10 +140,10 @@ Om du vill rensa och ta bort en Cognitive Services prenumeration kan du ta bort 
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du lärt dig hur du använder Visuellt innehåll-biblioteket för python för att utföra grundläggande uppgifter. Sedan kan du utforska referens dokumentationen och läsa mer om biblioteket.
+I den här snabb starten har du lärt dig hur du använder OCR-biblioteket för python för att utföra grundläggande uppgifter. Sedan kan du utforska referens dokumentationen och läsa mer om biblioteket.
 
 > [!div class="nextstepaction"]
->[API för visuellt innehåll referens (python)](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)
+>[API-referens för OCR (python)](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)
 
-* [Vad är visuellt innehåll?](../../overview.md)
+* [Översikt över OCR](../../overview-ocr.md)
 * Källkoden för det här exemplet finns på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py).

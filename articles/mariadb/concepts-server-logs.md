@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: 2e7e56616300566839fadef762c2165c8d989e6e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c0cb9e0da3ba5dd899cac56f393d7332bac6c597
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100570806"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258494"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Långsamma Query-loggar i Azure Database for MariaDB
 I Azure Database for MariaDB är den långsamma fråge loggen tillgänglig för användare. Åtkomst till transaktions loggen stöds inte. Den långsamma frågans logg kan användas för att identifiera Flask halsar i prestanda för fel sökning.
@@ -45,7 +45,7 @@ För lokal server lagring kan du Visa och ladda ned långsamma frågemeddelanden
 Med Azure Monitor diagnostikloggar kan du skicka en långsam loggfil till Azure Monitor loggar (Log Analytics), Azure Storage eller Event Hubs. Se [nedan](concepts-server-logs.md#diagnostic-logs) för mer information.
 
 ## <a name="local-server-storage-log-retention"></a>Kvarhållning av lagrings logg för lokal server
-När du loggar till serverns lokala lagring är loggarna tillgängliga i upp till sju dagar från skapandet. Om den totala storleken på de tillgängliga loggarna överstiger 7 GB, tas de äldsta filerna bort tills utrymmet är tillgängligt.
+När du loggar till serverns lokala lagring är loggarna tillgängliga i upp till sju dagar från skapandet. Om den totala storleken på de tillgängliga loggarna överstiger 7 GB, tas de äldsta filerna bort tills utrymmet är tillgängligt. Lagrings gränsen på 7 GB för Server loggarna är kostnads fri och kan inte utökas. 
 
 Loggarna roteras var 24: e timme eller 7 GB, beroende på vilket som kommer först.
 

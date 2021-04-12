@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Maps-täckning för väder tjänster (för hands version)
-description: Läs mer om Microsoft Azure Maps-täckning för väder tjänster (för hands version)
+title: Microsoft Azure Maps-täckning för väder tjänster
+description: Läs mer om Microsoft Azure Maps-täckning för väder tjänster
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 12/07/2020
@@ -9,19 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 ms.custom: references_regions
 manager: philmea
-ms.openlocfilehash: 6c4e9eb765a72b7a0b495f81a954b484ef6aa2b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ac209dc898c2d30f8d50a8989b188ef5a9f5046
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96905493"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257678"
 ---
-# <a name="azure-maps-weather-services-preview-coverage"></a>Täckning för Azure Maps väder tjänster (för hands version)
-
-> [!IMPORTANT]
-> Azure Maps väder tjänster finns för närvarande i offentlig för hands version.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
+# <a name="azure-maps-weather-services-coverage"></a>Täckning för Azure Maps väder tjänster
 
 Den här artikeln innehåller information om disponering för Azure Maps [väder tjänster](/rest/api/maps/weather). Azure Maps väder data tjänster returnerar information som radar paneler, aktuella väder förhållanden, väder prognoser och väder längs en väg.
 

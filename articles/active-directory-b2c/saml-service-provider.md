@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 97718fef0aecd07dd364677ce1b72eb5bba78475
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 652bc9a236a4e4b9d3f99dab640919f2be985984
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384280"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257729"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrera ett SAML-program i Azure AD B2C
 
@@ -45,9 +45,9 @@ Organisationer som använder Azure AD B2C som sin kund identitets-och åtkomst h
 3. Om användaren loggar in med en federerad identitets leverantör skickas ett token-svar till Azure AD B2C.
 4. Azure AD B2C genererar en SAML-kontroll och skickar den till programmet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-* Slutför stegen i [Kom igång med anpassade principer i Azure AD B2C](custom-policy-get-started.md). Du behöver den anpassade principen *SocialAndLocalAccounts* från start paketet för anpassad princip som beskrivs i artikeln.
+* Slutför stegen i [Kom igång med anpassade principer i Azure AD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy). Du behöver den anpassade principen *SocialAndLocalAccounts* från start paketet för anpassad princip som beskrivs i artikeln.
 * Grundläggande förståelse för SAML-protokollet och förtrogenhet med programmets SAML-implementering.
 * Ett webb program som kon figurer ATS som ett SAML-program. I den här självstudien kan du använda ett [SAML-testprogram][samltest] som vi tillhandahåller.
 

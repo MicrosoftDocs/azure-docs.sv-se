@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf49b1a2b7178800966342a3d52ed49450f3d97c
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 53cdbfb3ba531330c37f86233cbed990da4efaf4
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226692"
+ms.locfileid: "107258392"
 ---
 # <a name="resilient-end-user-experience"></a>Elastisk slut användar upplevelse
 
@@ -40,7 +40,7 @@ För att hjälpa dig att skapa de vanligaste identitets uppgifterna tillhandahå
 
 Välj inbyggda användar flöden om dina affärs behov kan uppfyllas av dem. Eftersom vi har testat av Microsoft kan du minimera den testning som krävs för att verifiera funktions-, prestanda-eller skalnings funktioner på princip nivå för dessa identitets användar flöden. Du behöver fortfarande testa dina program för funktioner, prestanda och skalning.
 
-Om du [väljer anpassade principer](../../active-directory-b2c/custom-policy-get-started.md) på grund av dina affärs behov bör du kontrol lera att du utför tester på princip nivå för att fungera, prestanda eller skala utöver program nivå testning.
+Om du [väljer anpassade principer](../../active-directory-b2c/user-flow-overview.md) på grund av dina affärs behov bör du kontrol lera att du utför tester på princip nivå för att fungera, prestanda eller skala utöver program nivå testning.
 
 Se artikeln som [Jämför användar flöden och anpassade principer](../../active-directory-b2c/user-flow-overview.md#comparing-user-flows-and-custom-policies) som hjälper dig att bestämma.
 

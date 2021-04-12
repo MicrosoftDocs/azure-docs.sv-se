@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 953653a758577ed3d48ca2d81403b4cb363ea294
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a7f22b05238fb495422a02edd6ca382b4df041a
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95994051"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257814"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Integrera Twilio verifiera appen med Azure Active Directory B2C
 
@@ -124,4 +124,4 @@ Mer information finns i följande artiklar:
 
 - [Anpassade principer i AAD B2C](custom-policy-overview.md)
 
-- [Kom igång med anpassade principer i AAD B2C](custom-policy-get-started.md?tabs=applications)
+- [Kom igång med anpassade principer i AAD B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

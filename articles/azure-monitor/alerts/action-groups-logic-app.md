@@ -1,16 +1,16 @@
 ---
-title: Så här utlöser du komplexa åtgärder med Azure Monitor aviseringar
+title: Utlös komplexa åtgärder med Azure Monitor aviseringar
 description: Lär dig hur du skapar en logisk app-åtgärd för att bearbeta Azure Monitor aviseringar.
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: a1371e00a6d4c5db609466e25c9d94aad5e73398
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f1e81dca6926ae9f57e428eb1cef761c588a78b6
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102045725"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029853"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Så här utlöser du komplexa åtgärder med Azure Monitor aviseringar
 
@@ -34,66 +34,66 @@ Processen påminner om du vill att Logic app ska utföra en annan åtgärd.
 
 ## <a name="create-an-activity-log-alert-administrative"></a>Skapa en aktivitets logg avisering: administrativ
 
-1. [Skapa en Logic app](~/articles/logic-apps/quickstart-create-first-logic-app-workflow.md)
+1. [Skapa en Logic-app](~/articles/logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-2.  Välj utlösaren: **när en HTTP-begäran tas emot**.
+1.  Välj utlösaren: **när en HTTP-begäran tas emot**.
 
 1. I dialog rutan **när en HTTP-begäran tas emot** väljer **du Använd exempel nytto last för att generera schemat**.
 
-    ![Skärm bild som visar dialog rutan när en H T T P P-begäran och den använda exempel nytto lasten för att generera schema opion har valts. ](~/articles/app-service/media/tutorial-send-email/generate-schema-with-payload.png)
+    ![Skärm bild som visar dialog rutan när en H T T P P-begäran och alternativet Använd exempel nytto last för att skapa schema har valts. ](~/articles/app-service/media/tutorial-send-email/generate-schema-with-payload.png)
 
-3.  Kopiera och klistra in följande exempel nytto Last i dialog rutan:
+1.  Kopiera och klistra in följande exempel nytto Last i dialog rutan:
 
     ```json
         {
-            "schemaId": "Microsoft.Insights/activityLogs",
-            "data": {
-                "status": "Activated",
-                "context": {
-                "activityLog": {
-                    "authorization": {
-                    "action": "microsoft.insights/activityLogAlerts/write",
-                    "scope": "/subscriptions/…"
+            "schemaId&quot;: &quot;Microsoft.Insights/activityLogs&quot;,
+            &quot;data&quot;: {
+                &quot;status&quot;: &quot;Activated&quot;,
+                &quot;context&quot;: {
+                &quot;activityLog&quot;: {
+                    &quot;authorization&quot;: {
+                    &quot;action&quot;: &quot;microsoft.insights/activityLogAlerts/write&quot;,
+                    &quot;scope&quot;: &quot;/subscriptions/…&quot;
                     },
-                    "channels": "Operation",
-                    "claims": "…",
-                    "caller": "logicappdemo@contoso.com",
-                    "correlationId": "91ad2bac-1afa-4932-a2ce-2f8efd6765a3",
-                    "description": "",
-                    "eventSource": "Administrative",
-                    "eventTimestamp": "2018-04-03T22:33:11.762469+00:00",
-                    "eventDataId": "ec74c4a2-d7ae-48c3-a4d0-2684a1611ca0",
-                    "level": "Informational",
-                    "operationName": "microsoft.insights/activityLogAlerts/write",
-                    "operationId": "61f59fc8-1442-4c74-9f5f-937392a9723c",
-                    "resourceId": "/subscriptions/…",
-                    "resourceGroupName": "LOGICAPP-DEMO",
-                    "resourceProviderName": "microsoft.insights",
-                    "status": "Succeeded",
-                    "subStatus": "",
-                    "subscriptionId": "…",
-                    "submissionTimestamp": "2018-04-03T22:33:36.1068742+00:00",
-                    "resourceType": "microsoft.insights/activityLogAlerts"
+                    &quot;channels&quot;: &quot;Operation&quot;,
+                    &quot;claims&quot;: &quot;…&quot;,
+                    &quot;caller&quot;: &quot;logicappdemo@contoso.com&quot;,
+                    &quot;correlationId&quot;: &quot;91ad2bac-1afa-4932-a2ce-2f8efd6765a3&quot;,
+                    &quot;description&quot;: &quot;&quot;,
+                    &quot;eventSource&quot;: &quot;Administrative&quot;,
+                    &quot;eventTimestamp&quot;: &quot;2018-04-03T22:33:11.762469+00:00&quot;,
+                    &quot;eventDataId&quot;: &quot;ec74c4a2-d7ae-48c3-a4d0-2684a1611ca0&quot;,
+                    &quot;level&quot;: &quot;Informational&quot;,
+                    &quot;operationName&quot;: &quot;microsoft.insights/activityLogAlerts/write&quot;,
+                    &quot;operationId&quot;: &quot;61f59fc8-1442-4c74-9f5f-937392a9723c&quot;,
+                    &quot;resourceId&quot;: &quot;/subscriptions/…&quot;,
+                    &quot;resourceGroupName&quot;: &quot;LOGICAPP-DEMO&quot;,
+                    &quot;resourceProviderName&quot;: &quot;microsoft.insights&quot;,
+                    &quot;status&quot;: &quot;Succeeded&quot;,
+                    &quot;subStatus&quot;: &quot;&quot;,
+                    &quot;subscriptionId&quot;: &quot;…&quot;,
+                    &quot;submissionTimestamp&quot;: &quot;2018-04-03T22:33:36.1068742+00:00&quot;,
+                    &quot;resourceType&quot;: &quot;microsoft.insights/activityLogAlerts&quot;
                 }
                 },
-                "properties": {}
+                &quot;properties&quot;: {}
             }
         }
     ```
 
-9. **Logic App Designer** visar ett popup-fönster för att påminna dig om att begäran som skickas till Logic-appen måste ange **Content-Type-** huvudet till **Application/JSON**. Stäng popup-fönstret. Azure Monitors aviseringen anger sidhuvudet.
+1. **Logic Apps designer** visar ett popup-fönster för att påminna dig om att begäran som skickas till Logic-appen måste ange **Content-Type-** huvudet till **Application/JSON**. Stäng popup-fönstret. Azure Monitors aviseringen anger sidhuvudet.
 
-    ![Ange rubrik för innehålls typ](media/action-groups-logic-app/content-type-header.png "Ange rubrik för innehålls typ")
+    ![Ange rubrik för innehålls typ](media/action-groups-logic-app/content-type-header.png &quot;Ange rubrik för innehålls typ")
 
-10. Välj **+** **nytt steg** och välj sedan **Lägg till en åtgärd**.
+1. Välj **+** **nytt steg** och välj sedan **Lägg till en åtgärd**.
 
     ![Lägga till en åtgärd](media/action-groups-logic-app/add-action.png "Lägga till en åtgärd")
 
-11. Sök efter och välj Microsoft Teams-anslutningsprogrammet. Välj åtgärden **Microsoft Teams-publicera meddelande** .
+1. Sök efter och välj Microsoft Teams-anslutningsprogrammet. Välj åtgärden **Microsoft Teams-publicera meddelande** .
 
     ![Microsoft Teams-åtgärder](media/action-groups-logic-app/microsoft-teams-actions.png "Microsoft Teams-åtgärder")
 
-12. Konfigurera Microsoft Teams-åtgärden. **Logic Apps designer** ber dig att autentisera till ditt arbets-eller skol konto. Välj det **Team-ID** och **kanal-ID** som meddelandet ska skickas till.
+1. Konfigurera Microsoft Teams-åtgärden. **Logic Apps designer** ber dig att autentisera till ditt arbets-eller skol konto. Välj det **Team-ID** och **kanal-ID** som meddelandet ska skickas till.
 
 13. Konfigurera meddelandet med hjälp av en kombination av statisk text och referenser till \<fields\> i det dynamiska innehållet. Kopiera och klistra in följande text i **meddelande** fältet:
 
@@ -111,9 +111,9 @@ Processen påminner om du vill att Logic app ska utföra en annan åtgärd.
 
     ![Microsoft Teams-åtgärd: publicera ett meddelande](media/action-groups-logic-app/teams-action-post-message.png "Microsoft Teams-åtgärd: publicera ett meddelande")
 
-14. Överst i **Logic Apps designer** väljer du **Spara** för att spara din Logic app.
+1. Överst i **Logic Apps designer** väljer du **Spara** för att spara din Logic app.
 
-15. Öppna den befintliga åtgärds gruppen och Lägg till en åtgärd som refererar till Logic app. Om du inte har en befintlig åtgärds grupp kan du läsa [skapa och hantera åtgärds grupper i Azure Portal](./action-groups.md) för att skapa en. Glöm inte att spara ändringarna.
+1. Öppna den befintliga åtgärds gruppen och Lägg till en åtgärd som refererar till Logic app. Om du inte har en befintlig åtgärds grupp kan du läsa [skapa och hantera åtgärds grupper i Azure Portal](./action-groups.md) för att skapa en. Glöm inte att spara ändringarna.
 
     ![Uppdatera åtgärds gruppen](media/action-groups-logic-app/update-action-group.png "Uppdatera åtgärds gruppen")
 
