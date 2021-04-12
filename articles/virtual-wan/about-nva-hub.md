@@ -7,18 +7,18 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
-ms.openlocfilehash: d5af0cc4eb72a2db850e19e47ed11cd9f6f4536e
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: e70b899ea0133704e4ecab42dd4c2a09bca41804
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061867"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226319"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Om virtuell nätverks installation i en Azure Virtual WAN Hub (för hands version)
 
 Azure Virtual WAN har arbetat med nätverks partners för att bygga automatisering som gör det enkelt att ansluta sin kund lokala utrustning (CPE) till en Azure VPN-gateway i den virtuella hubben. Azure arbetar med utvalda nätverks partners så att kunder kan distribuera en virtuell nätverks installation (NVA) från tredje part direkt i den virtuella hubben. Detta gör att kunder som vill ansluta sina grenar CPE till samma varumärke NVA i det virtuella navet, så att de kan dra nytta av patentskyddade funktioner från slut punkt till slut punkt för SD-WAN.
 
-Barracuda Networks och Cisco Systems är de första partner som tillhandahåller NVA som kan distribueras direkt till den virtuella WAN-hubben.  Se [Barracuda CLOUDGEN WAN](https://www.barracuda.com/products/cloudgenwan) och [Cisco Cloud bearbetar för flera moln](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) för respektive produkt dokumentation. Azure arbetar med fler partners för att se att andra erbjudanden följer.
+Barracuda Networks och Cisco Systems är de första partner som tillhandahåller NVA som kan distribueras direkt till den virtuella WAN-hubben.  Se [Barracuda CLOUDGEN WAN](https://www.barracuda.com/products/cloudgenwan), [Cisco Cloud bearbetar för multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) och [VMware SD-WAN](https://kb.vmware.com/s/article/82746) för respektive produkt dokumentation. Azure arbetar med fler partners för att se att andra erbjudanden följer.
 
 > [!NOTE]
 > Endast NVA-erbjudanden som är tillgängliga för distribution i den virtuella WAN-hubben kan distribueras till den virtuella WAN-hubben. De kan inte distribueras till ett godtyckligt virtuellt nätverk i Azure.

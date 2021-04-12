@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 37e2dc194eb2ebbcbe91eef6e50f3eb1e7b62e17
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 75b45067be49475ecd2e07aed9c4479b147fdd29
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106282268"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490275"
 ---
 # <a name="create-a-transform"></a>Skapa en transformering
 
@@ -35,7 +35,7 @@ Azure CLI-skriptet i den här artikeln visar hur du skapar en transformering. Tr
 ## <a name="cli"></a>[CLI](#tab/cli/)
 
 > [!NOTE]
-> Du kan bara ange en sökväg till en anpassad standardkodad JSON-fil för [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset)i [koda med ett exempel på en anpassad transformering](encode-custom-preset-cli-how-to.md) .
+> Du kan bara ange en sökväg till en anpassad standardkodad JSON-fil för [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset)i [koda med ett exempel på en anpassad transformering](transform-custom-preset-cli-how-to.md) .
 >
 > Du kan inte skicka ett fil namn när du använder [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset).
 

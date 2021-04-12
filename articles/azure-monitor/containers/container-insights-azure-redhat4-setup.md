@@ -3,12 +3,12 @@ title: Konfigurera Azure Red Hat OpenShift v4. x med container Insights | Micros
 description: Den här artikeln beskriver hur du konfigurerar övervakning för ett Kubernetes-kluster med Azure Monitor som finns i Azure Red Hat OpenShift version 4 eller senare.
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 02cb794463b965ebafef0b6861477dbf69227511
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c44a7c6eea6182316d626e3e8501f9aa63eef78
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506420"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221525"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-container-insights"></a>Konfigurera Azure Red Hat OpenShift v4. x med container Insights
 
@@ -34,6 +34,8 @@ Container Insights stöder övervakning av Azure Red Hat OpenShift v4. x enligt 
 - Azure CLI-version 2.0.72 eller senare  
 
 - [Helm 3](https://helm.sh/docs/intro/install/) CLI-verktyget
+
+- Senaste versionen av [OpenShift CLI](https://docs.openshift.com/container-platform/4.7/cli_reference/openshift_cli/getting-started-cli.html)
 
 - [Bash-version 4](https://www.gnu.org/software/bash/)
 

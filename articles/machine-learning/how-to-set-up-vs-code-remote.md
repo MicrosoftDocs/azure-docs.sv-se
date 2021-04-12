@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 11/16/2020
-ms.openlocfilehash: ccd56afc8c4ea7e236946fc6afa54e471203fe31
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 04/08/2021
+ms.openlocfilehash: 14f0d15d48193267c224f3497c24651ca3249b0b
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065988"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028598"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Ansluta till en Azure Machine Learning beräknings instans i Visual Studio Code (för hands version)
 
@@ -25,8 +25,75 @@ En [Azure Machine Learning beräknings instans](concept-compute-instance.md) är
 
 Det finns två sätt som du kan ansluta till en beräknings instans från Visual Studio Code:
 
+* Fjärran sluten beräknings instans. Med det här alternativet får du en komplett utvecklings miljö för att skapa dina Machine Learning-projekt.
 * Fjärr Jupyter Notebook Server. Med det här alternativet kan du ange en beräknings instans som en fjärr Jupyter Notebook Server.
-* [Visual Studio Code fjärr utveckling](https://code.visualstudio.com/docs/remote/remote-overview). Med Visual Studio Code Remote Development kan du använda en behållare, fjärrdator eller Windows-undersystem för Linux (WSL) som en komplett utvecklings miljö.
+
+## <a name="configure-a-remote-compute-instance"></a>Konfigurera en fjärran sluten beräknings instans
+
+Om du vill konfigurera en fjärran sluten beräknings instans för utveckling behöver du några krav.
+
+* Azure Machine Learning Visual Studio Code-tillägg. Mer information finns i [installations guiden för Azure Machine Learning Visual Studio Code Extension](tutorial-setup-vscode-extension.md).
+* Azure Machine Learning arbets yta. [Använd tillägget Azure Machine Learning Visual Studio Code för att skapa en ny arbets yta](how-to-manage-resources-vscode.md#create-a-workspace) om du inte redan har en.
+* Azure Machine Learning beräknings instans. [Använd tillägget Azure Machine Learning Visual Studio Code för att skapa en ny beräknings instans](how-to-manage-resources-vscode.md#create-compute-instance) om du inte har någon.
+
+Så här ansluter du till din fjärrinstans:
+
+# <a name="vs-code"></a>[VS-kod](#tab/extension)
+
+### <a name="azure-machine-learning-extension"></a>Azure Machine Learning tillägg
+
+1. I VS Code startar du Azure Machine Learning-tillägget.
+1. Expandera noden **Compute instances** i tillägget.
+1. Högerklicka på den beräknings instans som du vill ansluta till och välj **Anslut till beräknings instans**.
+
+:::image type="content" source="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png" alt-text="Ansluta till beräknings instans Visual Studio Code Azure ML-tillägg" lightbox="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png":::
+
+### <a name="command-palette"></a>Kommando palett
+
+1. I VS Code öppnar du paletten kommando genom att välja **visa > kommando palett**.
+1. Ange i text rutan **Azure ml: Anslut till Compute-instansen**.
+1. Välj din prenumeration.
+1. Välj din arbets yta.
+1. Välj din beräknings instans eller skapa en ny.
+
+# <a name="studio"></a>[Studio](#tab/studio)
+
+Navigera till [ml.Azure.com](https://ml.azure.com)
+
+> [!IMPORTANT]
+> För att kunna ansluta till din fjärrinstans från Visual Studio Code kontrollerar du att kontot du är inloggad i Azure Machine Learning Studio är samma som du använder i Visual Studio Code.
+
+### <a name="compute"></a>Compute
+
+1. Välj fliken **Compute**
+1. I kolumnen *program-URI* väljer du **vs-kod** för den beräknings instans som du vill ansluta till.
+
+:::image type="content" source="media/how-to-set-up-vs-code-remote/studio-compute-instance-vs-code-launch.png" alt-text="Anslut till Compute instance VS Code Azure ML Studio" lightbox="media/how-to-set-up-vs-code-remote/studio-compute-instance-vs-code-launch.png":::
+
+### <a name="notebook"></a>Notebook-fil
+
+1. Välj fliken **Notebook**
+1. På fliken *Notebook* väljer du den fil som du vill redigera.
+1. Välj **redigerare > redigera i vs Code (för hands version)**.
+
+:::image type="content" source="media/how-to-set-up-vs-code-remote/studio-notebook-compute-instance-vs-code-launch.png" alt-text="Anslut till Compute instance VS Code Azure ML Notebook" lightbox="media/how-to-set-up-vs-code-remote/studio-notebook-compute-instance-vs-code-launch.png":::
+
+---
+
+Ett nytt fönster öppnas för fjärrinstansen av beräkningen. När du försöker upprätta en anslutning till en fjärran sluten beräknings instans sker följande uppgifter:
+
+1. Auktorisering. Vissa kontroller utförs för att se till att användaren som försöker upprätta en anslutning har behörighet att använda beräknings instansen.
+1. VS Code-fjärrservern installeras på beräknings instansen.
+1. En WebSocket-anslutning upprättas för interaktion med real tid.
+
+När anslutningen har upprättats är den bestående. En token utfärdas i början av sessionen, som uppdateras automatiskt för att upprätthålla anslutningen till beräknings instansen.
+
+När du har anslutit till fjärrberäknings instansen använder du redigeraren för att:
+
+* Skapa [och hantera filer på en fjärran sluten beräknings instans eller fil resurs](https://code.visualstudio.com/docs/editor/codebasics).
+* Använd [vs Code Integrated Terminal](https://code.visualstudio.com/docs/editor/integrated-terminal) för att [köra kommandon och program på fjärrinstansen av beräkningen](how-to-access-terminal.md).
+* [Felsöka skript och program](https://code.visualstudio.com/Docs/editor/debugging)
+* [Använd VS Code för att hantera dina git-databaser](concept-train-model-git-integration.md)
 
 ## <a name="configure-compute-instance-as-remote-notebook-server"></a>Konfigurera beräknings instans som fjärran sluten Notebook Server
 
@@ -62,93 +129,6 @@ Nu kan du fortsätta att köra celler i Jupyter Notebook.
 
 > [!TIP]
 > Du kan också arbeta med python-skriptfiler (. py) som innehåller Jupyter-liknande kod celler. Mer information finns i den [interaktiva dokumentationen för Visual Studio Code python](https://code.visualstudio.com/docs/python/jupyter-support-py).
-
-## <a name="configure-compute-instance-remote-development"></a>Konfigurera fjärrutveckling av beräknings instanser
-
-För en komplett fjärran sluten utvecklings miljö behöver du några krav:
-
-* [Visual Studio Code Remote SSH-tillägg](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
-* SSH-aktiverad beräknings instans. Mer information [finns i guiden skapa en beräknings instans](how-to-create-manage-compute-instance.md).
-
-> [!NOTE]
-> På Windows-plattformar måste du [installera en OpenSSH-kompatibel SSH-klient](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) om en sådan inte redan finns. SparaTillFil stöds inte i Windows eftersom SSH-kommandot måste finnas i sökvägen.
-
-### <a name="get-the-ip-and-ssh-port-for-your-compute-instance"></a>Hämta IP-och SSH-porten för beräknings instansen
-
-1. Gå till Azure Machine Learning Studio på https://ml.azure.com/ .
-2. Välj din [arbets yta](concept-workspace.md).
-1. Klicka på fliken **beräknings instanser** .
-1. I kolumnen **program-URI** klickar du på **SSH** -länken för den beräknings instans som du vill använda som fjärrberäkning. 
-1. Anteckna IP-adressen och SSH-porten i dialog rutan. 
-1. Spara din privata nyckel i katalogen ~/.ssh/på den lokala datorn. öppna exempelvis en redigerare för en ny fil och klistra in nyckeln i: 
-
-   **Linux**:
-
-   ```sh
-   vi ~/.ssh/id_azmlcitest_rsa  
-   ```
-
-   **Windows**:
-
-   ```cmd
-   notepad C:\Users\<username>\.ssh\id_azmlcitest_rsa
-   ```
-
-   Den privata nyckeln ser ut ungefär så här:
-
-   ```text
-   -----BEGIN RSA PRIVATE KEY-----
-
-   MIIEpAIBAAKCAQEAr99EPm0P4CaTPT2KtBt+kpN3rmsNNE5dS0vmGWxIXq4vAWXD
-   ..... 
-   ewMtLnDgXWYJo0IyQ91ynOdxbFoVOuuGNdDoBykUZPQfeHDONy2Raw==
-
-   -----END RSA PRIVATE KEY-----
-   ```
-
-1. Ändra fil behörigheter för att se till att endast du kan läsa filen.  
-
-   ```sh
-   chmod 600 ~/.ssh/id_azmlcitest_rsa
-   ```
-
-### <a name="add-instance-as-a-host"></a>Lägg till instans som värd
-
-Öppna filen `~/.ssh/config` (Linux) eller `C:\Users<username>.ssh\config` (Windows) i en redigerare och Lägg till en ny post som liknar innehållet nedan:
-
-```
-Host azmlci1 
-
-    HostName 13.69.56.51 
-
-    Port 50000 
-
-    User azureuser 
-
-    IdentityFile ~/.ssh/id_azmlcitest_rsa
-```
-
-Här finns information om fälten:
-
-|Fält|Beskrivning|
-|----|---------|
-|Värd|Använd den stenografiska du gillar för beräknings instansen |
-|HostName|Detta är beräknings instansens IP-adress |
-|Port|Detta är porten som visas i dialog rutan SSH ovan |
-|User|Detta måste vara `azureuser` |
-|IdentityFile|Ska peka på filen där du sparade den privata nyckeln |
-
-Nu bör du kunna använda SSH till din beräknings instans med hjälp av den kort skrift som du använde ovan `ssh azmlci1` .
-
-### <a name="connect-vs-code-to-the-instance"></a>Ansluta VS-kod till instansen
-
-1. Klicka på ikonen för fjärr-SSH från aktivitets fältet i Visual Studio Code för att visa dina SSH-konfigurationer.
-
-1. Högerklicka på den SSH-värd konfiguration som du nyss skapade.
-
-1. Välj **Anslut till värd i aktuellt fönster**. 
-
-Härifrån är du helt igång med beräknings instansen och nu kan du redigera, felsöka, använda Git, använda tillägg osv. – precis som du kan med din lokala Visual Studio-kod.
 
 ## <a name="next-steps"></a>Nästa steg
 

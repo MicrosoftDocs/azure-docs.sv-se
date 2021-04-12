@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 03/02/2021
+ms.date: 04/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 9c928040aa2ff5a6ebfb7102c03450d3d7297b59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12d0997e677bcca423f32951e99a6202855104ad
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101686486"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030874"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>Skapa en Azure båg-datakontrollant i Azure Portal
 
@@ -26,24 +26,23 @@ Du kan använda Azure Portal för att skapa en Azure Arc-datakontrollant.
 
 Många av de olika skapande upplevelserna för Azure Arc startar i Azure Portal även om resursen som ska skapas eller hanteras ligger utanför Azure-infrastrukturen. Mönstret för användar upplevelse i dessa fall, särskilt när det inte finns någon direkt anslutning mellan Azure och din miljö, är att använda Azure Portal för att generera ett skript som sedan kan laddas ned och köras i din miljö för att upprätta en säker anslutning tillbaka till Azure. Azure Arc-aktiverade servrar följer till exempel det här mönstret för att [skapa Arc-aktiverade servrar](../servers/onboard-portal.md).
 
-För tillfället, eftersom för hands versionen endast stöder det indirekta anslutna läget i Azure Arc-aktiverade data tjänster, kan du använda Azure Portal för att skapa en antecknings bok som sedan kan laddas ned och köras i Azure Data Studio mot ditt Kubernetes-kluster. I framtiden kommer du att kunna etablera datakontrollanten direkt från Azure Portal när det direkt anslutna läget är tillgängligt. Du kan läsa mer om [anslutnings lägen](connectivity.md).
+När du använder det indirekta anslutnings läget i Azure Arc-aktiverade data tjänster kan du använda Azure Portal för att skapa en antecknings bok som sedan kan hämtas och köras i Azure Data Studio mot ditt Kubernetes-kluster. 
+
+När du använder direkt anslutnings läge kan du etablera dataenheten direkt från Azure Portal. Du kan läsa mer om [anslutnings lägen](connectivity.md).
 
 ## <a name="use-the-azure-portal-to-create-an-azure-arc-data-controller"></a>Använd Azure Portal för att skapa en Azure Arc-datakontrollant
 
 Följ stegen nedan för att skapa en Azure Arc-dataenhet med hjälp av Azure Portal och Azure Data Studio.
 
 1. Börja med att logga in på [Azure Portal Marketplace](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/azure%20arc%20data%20controller).  Sök resultaten för Marketplace kommer att filtreras för att visa dig "Azure Arc data Controller".
-2. Om det första steget inte har angett Sök villkoren. Ange i Sök resultaten och klicka på Azure Arc data Controller.
-3. Välj panelen för Azure Data Controller från Marketplace.
-4. Klicka på knappen **skapa** .
-5. Granska kraven för att skapa en Azure Arc-datakontrollant och installera eventuella nödvändiga program som saknas, till exempel Azure Data Studio och kubectl.
-6. Klicka på **informations knappen data enhet** .
-7. Välj en prenumeration, resurs grupp och Azure-plats precis som du skulle göra för alla andra resurser som du skulle skapa i Azure Portal. I det här fallet kommer den Azure-plats som du väljer att lagra metadata om resursen.  Själva resursen kommer att skapas på den infrastruktur du väljer. Den behöver inte vara med i Azure-infrastrukturen.
-8. Ange ett namn för data kontrollen.
-9. Välj anslutnings läge för data styrenheten. Läs mer om [anslutnings lägen och krav](./connectivity.md). 
-
-   > [!NOTE] 
-   > Om du väljer **direkt** anslutnings läge kontrollerar du att autentiseringsuppgifterna för tjänstens huvud namn har angetts via miljövariabler enligt beskrivningen i [skapa tjänstens huvud namn](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal). 
+1. Om det första steget inte har angett Sök villkoren. Ange i Sök resultaten och klicka på Azure Arc data Controller.
+1. Välj panelen för Azure Data Controller från Marketplace.
+1. Klicka på knappen **skapa** .
+1. Välj läget för indirekt anslutning. Läs mer om [anslutnings lägen och krav](./connectivity.md). 
+1. Granska kraven för att skapa en Azure Arc-datakontrollant och installera eventuella nödvändiga program som saknas, till exempel Azure Data Studio och kubectl.
+1. Klicka på knappen **Nästa: information om data kontrollant** .
+1. Välj en prenumeration, resurs grupp och Azure-plats precis som du skulle göra för alla andra resurser som du skulle skapa i Azure Portal. I det här fallet kommer den Azure-plats som du väljer att lagra metadata om resursen.  Själva resursen kommer att skapas på den infrastruktur du väljer. Den behöver inte vara med i Azure-infrastrukturen.
+1. Ange ett namn för data kontrollen.
 
 1. Välj en distributions konfigurations profil.
 1. Klicka på knappen **Öppna i Azure Studio** .

@@ -1,15 +1,15 @@
 ---
 title: Skapa gästkonfigurationsprinciper för Linux
 description: Lär dig hur du skapar en princip för Azure Policy gäst konfiguration för Linux.
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 352c8b1936c38c9b5f706ac88bd4fd06e008b892
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d356960987ecfe9a1e1858a28b93060dbf4aa634
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99525355"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096571"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Skapa gästkonfigurationsprinciper för Linux
 
@@ -90,9 +90,7 @@ DSC agerar som en omslutning för att standardisera hur den körs, hur parametra
 
 Namnet på den anpassade konfigurationen måste vara konsekvent överallt. Namnet på. zip-filen för innehålls paketet, konfigurations namnet i MOF-filen och gäst tilldelnings namnet i Azure Resource Manager mall (ARM-mallen) måste vara samma.
 
-PowerShell-cmdletar hjälper dig att skapa paketet.
-Ingen mapp-eller versions katalog för rot nivå krävs.
-Paket formatet måste vara en. zip-fil. och får inte överskrida en total storlek på 100 MB vid okomprimerad.
+PowerShell-cmdletar hjälper dig att skapa paketet. Ingen mapp-eller versions katalog för rot nivå krävs. Paket formatet måste vara en. zip-fil. och får inte överskrida en total storlek på 100 MB när den är okomprimerad.
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Anpassad konfiguration av gäst konfiguration på Linux
 
@@ -211,7 +209,7 @@ Parametrar för `Publish-GuestConfigurationPackage` cmdleten:
 - **Sökväg**: platsen för det paket som ska publiceras
 - **ResourceGroupName**: namnet på den resurs grupp där lagrings kontot finns
 - **StorageAccountName**: namnet på det lagrings konto där paketet ska publiceras
-- **StorageContainerName**: (standard: *guestconfiguration*) namnet på lagrings behållaren i lagrings kontot
+- **StorageContainerName**: (standard: _guestconfiguration_) namnet på lagrings behållaren i lagrings kontot
 - **Force**: Skriv över det befintliga paketet i lagrings kontot med samma namn
 
 Exemplet nedan publicerar paketet till ett lagrings behållar namn ' guestconfiguration '.
@@ -277,7 +275,7 @@ När den här principen har skapats i Azure är det sista steget att tilldela de
 
 ### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Använda parametrar i anpassade gäst konfigurations principer
 
-Gäst konfiguration stöder åsidosättande egenskaper för en konfiguration vid körning. Den här funktionen innebär att värdena i MOF-filen i paketet inte måste betraktas som statiska. Värdena för åsidosättningar tillhandahålls via Azure Policy och påverkar inte hur konfigurationerna skapas eller kompileras.
+Gäst konfiguration stöder åsidosättande egenskaper för en konfiguration vid körning. Den här funktionen innebär att värdena i MOF-filen i paketet inte måste betraktas som statiska. Värdena för åsidosättningar tillhandahålls via Azure Policy och ändrar inte hur konfigurationerna skapas eller kompileras.
 
 Med INSPEC hanteras parametrar vanligt vis som inmatade antingen vid körning eller som kod med hjälp av attribut. Obfuscates den här processen kan anges i gäst konfigurationen när principen tilldelas. En attribut fil skapas automatiskt på datorn. Du behöver inte skapa och lägga till en fil i projektet. Det finns två steg för att lägga till parametrar till ditt Linux audit-projekt.
 
@@ -350,8 +348,7 @@ Om du vill släppa en uppdatering av principen gör du ändringen för både gä
 > [!NOTE]
 > `version`Egenskapen för gäst konfigurations tilldelningen påverkar bara paket som är värd för Microsoft. Den bästa metoden för att konfigurera anpassade innehålls versioner är att inkludera versionen i fil namnet.
 
-Börja med `New-GuestConfigurationPackage` att ange ett namn för paketet som gör det unikt från tidigare versioner när du kör. Du kan inkludera ett versions nummer i namnet, till exempel `PackageName_1.0.0` .
-Talet i det här exemplet används bara för att göra paketet unikt, inte för att ange att paketet ska anses vara nyare eller äldre än andra paket.
+Börja med `New-GuestConfigurationPackage` att ange ett namn för paketet som gör det unikt från tidigare versioner när du kör. Du kan inkludera ett versions nummer i namnet, till exempel `PackageName_1.0.0` . Talet i det här exemplet används bara för att göra paketet unikt, inte för att ange att paketet ska anses vara nyare eller äldre än andra paket.
 
 Sedan uppdaterar du parametrarna som används med `New-GuestConfigurationPolicy` cmdleten enligt var och en av förklaringarna nedan.
 

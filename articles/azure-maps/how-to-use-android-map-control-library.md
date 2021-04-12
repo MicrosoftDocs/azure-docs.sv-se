@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: a60ee8faf8d19afba59e46c52aaba9395c3a5292
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105604455"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Komma igång med Azure Maps Android SDK
@@ -118,7 +118,7 @@ Här är ett exempel på Azure Maps med språket "fr-FR" och regional View inst�
 
 En fullständig lista över språk som stöds och nationella vyer beskrivs [här](supported-languages.md).
 
-## <a name="navigating-the-map"></a>Navigera i kartan
+## <a name="navigating-the-map&quot;></a>Navigera i kartan
 
 Det finns flera olika sätt på vilka kartan kan zoomas, panoreras, roteras och visas. Följande information innehåller alla olika sätt att navigera i kartan.
 
@@ -141,16 +141,16 @@ Det finns flera olika sätt på vilka kartan kan zoomas, panoreras, roteras och 
 
 * Vidrör kartan med två fingrar och dra dem uppåt eller nedåt.
 
-## <a name="azure-government-cloud-support"></a>Azure Government Cloud Support
+## <a name=&quot;azure-government-cloud-support&quot;></a>Azure Government Cloud Support
 
 Azure Maps Android SDK stöder Azure Government molnet. Azure Maps Android SDK nås från samma maven-lagringsplats. Följande uppgifter måste göras för att ansluta till Azure Government Cloud-versionen av Azure Mapss plattformen.
 
 På samma plats där Azure Maps autentiseringsinformation anges lägger du till följande kodrad för att se till att kartan använder moln domänen Azure Maps myndighet.
 
-::: zone pivot="programming-language-java-android"
+::: zone pivot=&quot;programming-language-java-android&quot;
 
 ```java
-AzureMaps.setDomain("atlas.azure.us");
+AzureMaps.setDomain(&quot;atlas.azure.us");
 ```
 
 ::: zone-end

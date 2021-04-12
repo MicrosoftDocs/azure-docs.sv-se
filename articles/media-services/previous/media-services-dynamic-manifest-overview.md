@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 002a7c61d6760decf65016870739ab62b15d5c72
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 55bf597d8df18085fc9a500a9213a6abe59fd5e3
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103013694"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108260"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filter och dynamiska manifest
 
@@ -27,7 +27,7 @@ ms.locfileid: "103013694"
 
 > [!div class="op_single_selector" title1="Välj den version av Media Services som du använder:"]
 > * [Version 2](media-services-dynamic-manifest-overview.md)
-> * [Version 3](../latest/filters-dynamic-manifest-overview.md)
+> * [Version 3](../latest/filters-dynamic-manifest-concept.md)
 
 Från och med 2,17-versionen kan du med Media Services definiera filter för dina till gångar. Dessa filter är regler på Server sidan som gör att dina kunder kan välja att göra saker som: spela bara upp en del av en video (i stället för att spela upp hela videon) eller ange endast en delmängd av ljud-och video åter givningar som kundens enhet kan hantera (i stället för alla renderingar som är associerade med till gången). Den här filtreringen av dina till gångar uppnås genom **dynamiskt manifest** s som skapas på kundens begäran att strömma en video som baseras på angivna filter.
 

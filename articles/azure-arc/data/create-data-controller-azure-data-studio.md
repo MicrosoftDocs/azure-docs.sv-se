@@ -7,20 +7,22 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 12/09/2020
+ms.date: 04/07/2021
 ms.topic: how-to
-ms.openlocfilehash: f2d44cc769e9673eeb75828126f806d2b2308a17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e61c8819e7ccd868ec92458cff69c37f9277d80
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573888"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029632"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Skapa datakontrollant i Azure Data Studio
 
 Du kan skapa en datakontrollant med Azure Data Studio via distributions guiden och antecknings böckerna.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+Vid aktuell tidpunkt kan du skapa en datakontrollant med hjälp av metoden som beskrivs i den här artikeln.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -33,13 +35,13 @@ Du kan skapa en datakontrollant med Azure Data Studio via distributions guiden o
 Följ dessa steg om du vill skapa en Azure Arc-dataenhet med hjälp av distributions guiden.
 
 1. I Azure Data Studio klickar du på fliken anslutningar i det vänstra navigerings fältet.
-2. Klicka på knappen **...** överst på panelen anslutningar och välj **ny distribution...**
-3. I guiden Ny distribution väljer du **Azure Arc data Controller** och klickar sedan på knappen **Välj** längst ned.
-4. Se till att de nödvändiga verktygen är tillgängliga och uppfyller de versioner som krävs. **Klicka på nästa**.
-5. Använd standard filen kubeconfig eller Välj en annan.  Klicka på **Nästa**.
-6. Välj en Kubernetes-kluster kontext. Klicka på **Nästa**.
-7. Välj en distributions konfigurations profil beroende på ditt mål Kubernetes-kluster. **Klicka på nästa**.
-8. Använd säkerhets kontext begränsningar om du använder en "Red Hat OpenShift"-eller Red Hat OpenShift-plattform. Följ anvisningarna i [tillämpa en säkerhets kontext begränsning för Azure Arc-aktiverade data tjänster i OpenShift](how-to-apply-security-context-constraint.md).
+1. Klicka på knappen **...** överst på panelen anslutningar och välj **ny distribution...**
+1. I guiden Ny distribution väljer du **Azure Arc data Controller** och klickar sedan på knappen **Välj** längst ned.
+1. Se till att de nödvändiga verktygen är tillgängliga och uppfyller de versioner som krävs. **Klicka på nästa**.
+1. Använd standard filen kubeconfig eller Välj en annan.  Klicka på **Nästa**.
+1. Välj en Kubernetes-kluster kontext. Klicka på **Nästa**.
+1. Välj en distributions konfigurations profil beroende på ditt mål Kubernetes-kluster. **Klicka på nästa**.
+1. Använd säkerhets kontext begränsningar om du använder en "Red Hat OpenShift"-eller Red Hat OpenShift-plattform. Följ anvisningarna i [tillämpa en säkerhets kontext begränsning för Azure Arc-aktiverade data tjänster i OpenShift](how-to-apply-security-context-constraint.md).
 
    >[!IMPORTANT]
    >På Azure Red Hat OpenShift eller Red Hat OpenShift container Platform måste du tillämpa begränsningen för säkerhets kontext innan du skapar data kontrollen.
@@ -48,23 +50,21 @@ Följ dessa steg om du vill skapa en Azure Arc-dataenhet med hjälp av distribut
 1. Välj en Azure-plats.
    
    Azure-platsen som väljs här är den plats i Azure där *metadata* om data styrenheten och databas instanserna som den hanterar kommer att lagras. Data styrenheten och databas instanserna skapas faktiskt i Kubernetes-klustret, oavsett var de är.
+   
+   När du är färdig klickar du på **Nästa**.
 
-10. Välj lämpligt anslutnings läge. Läs mer om [anslutnings lägen](./connectivity.md). **Klicka på nästa**.
-
-    Om du väljer tjänstens huvud namn måste autentiseringsuppgifter för tjänsten för direkt anslutning anges enligt beskrivningen i [skapa tjänstens huvud namn](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal).
-
-11. Ange ett namn för data styrenheten och för det namn område som data styrenheten ska skapas i.
+1. Ange ett namn för data styrenheten och för det namn område som data styrenheten ska skapas i.
 
     Data styrenheten och namn områdets namn kommer att användas för att skapa en anpassad resurs i Kubernetes-klustret så att de måste följa [namn konventionerna för Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names).
     
     Om namn området redan finns kommer det att användas om namn området inte redan innehåller andra Kubernetes-objekt – poddar osv.  Om namn området inte finns skapas ett försök att skapa namn området.  Att skapa ett namn område i ett Kubernetes-kluster kräver administratörs behörighet för Kubernetes-kluster.  Om du inte har administratörs behörighet för Kubernetes kan du be din Kubernetes-kluster administratör att utföra de första stegen i artikeln [skapa en datakontrollant med Kubernetes-Native-verktyg](./create-data-controller-using-kubernetes-native-tools.md) som måste utföras av en Kubernetes-administratör innan du slutför den här guiden.
 
 
-12. Välj den lagrings klass där data styrenheten ska distribueras. 
-13.  Ange ett användar namn och lösen ord och bekräfta lösen ordet för användar kontot för data styrenhetens administratör. Klicka på **Nästa**.
+1. Välj den lagrings klass där data styrenheten ska distribueras. 
+1.  Ange ett användar namn och lösen ord och bekräfta lösen ordet för användar kontot för data styrenhetens administratör. Klicka på **Nästa**.
 
-14. Granska distributions konfigurationen.
-15. Klicka på **distribuera** för att distribuera önskad konfiguration eller **skript till antecknings boken** för att granska distributions anvisningarna eller göra eventuella ändringar som krävs, till exempel lagrings klass namn eller tjänst typer. Klicka på **Kör allt** längst upp i antecknings boken.
+1. Granska distributions konfigurationen.
+1. Klicka på **distribuera** för att distribuera önskad konfiguration eller **skript till antecknings boken** för att granska distributions anvisningarna eller göra eventuella ändringar som krävs, till exempel lagrings klass namn eller tjänst typer. Klicka på **Kör allt** längst upp i antecknings boken.
 
 ## <a name="monitoring-the-creation-status"></a>Övervaka skapande status
 

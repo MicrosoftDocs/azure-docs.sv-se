@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: cynthn
 ms.openlocfilehash: b3435d1dabf604cf7a1394c14ee62d65b923714b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102565945"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Ladda ned en Linux-VHD från Azure

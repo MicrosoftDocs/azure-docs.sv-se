@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: 82562eae748753cd785851c5d91f5f152b4c9960
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1cef56d15838d80079decc6e1da7ad830bd1cd9
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92206959"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029768"
 ---
 # <a name="what-is-azure-expressroute"></a>Vad är Azure ExpressRoute?
 Med ExpressRoute kan du utöka ditt lokala nätverk till Microsofts moln över en privat anslutning med hjälp av en anslutningsprovider. Med ExpressRoute kan du upprätta anslutningar till Microsofts molntjänster, t.ex. Microsoft Azure och Microsoft 365.
@@ -20,6 +20,10 @@ Med ExpressRoute kan du utöka ditt lokala nätverk till Microsofts moln över e
 Anslutningen kan vara från ett ”any-to-any”-nätverk (IP VPN), en punkt-till-punkt-anslutning via Ethernet eller en virtuell korsanslutning via en anslutningsleverantör till ett samlokaliseringscenter. ExpressRoute-anslutningar går inte via det offentliga Internet. Detta gör att ExpressRoute-anslutningar ger bättre tillförlitlighet, snabbare hastigheter, konsekventa svarstider och högre säkerhet än typiska anslutningar via Internet. Information om hur du ansluter nätverket till Microsoft med ExpressRoute finns i ExpressRoute- [anslutnings modeller](expressroute-connectivity-models.md).
 
 ![Översikt över ExpressRoute-anslutning](./media/expressroute-introduction/expressroute-connection-overview.png)
+
+> [!NOTE]
+> I samband med ExpressRoute beskriver Microsoft Edge de yttre routrarna på Microsoft-sidan av ExpressRoute-kretsen. Detta är ExpressRoute-kretsens start punkt i Microsofts nätverk.
+> 
 
 ## <a name="key-benefits"></a>Viktiga fördelar
 

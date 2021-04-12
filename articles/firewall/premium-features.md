@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/07/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8d0e86d95205acea2ac48ce027bcd118f4e3bf20
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: fdf0113d73b0b2e82ec889caf2a82c77bb7a040c
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967038"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226709"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>För hands versions funktioner för Azure Firewall Premium
 
@@ -148,7 +148,6 @@ För hands versionen av Azure Firewall Premium har följande kända problem:
 |ESNI-stöd för FQDN-matchning i HTTPS|Krypterad SNI stöds inte i HTTPS-handskakning.|Idag stöder bara Firefox ESNI via anpassad konfiguration. Rekommenderad lösning är att inaktivera den här funktionen.|
 |Klient certifikat (TLS)|Klient certifikat används för att bygga ett ömsesidigt identitets förtroende mellan klienten och servern. Klient certifikat används under en TLS-förhandling. Azure-brandväggen förhandlar om en anslutning till servern och har ingen åtkomst till klient certifikatets privata nyckel.|Inget|
 |QUIC/HTTP3|QUIC är den nya huvud versionen av HTTP. Det är ett UDP-baserat protokoll över 80 (PLAN) och 443 (SSL). Kontrollen FQDN/URL/TLS stöds inte.|Konfigurera överföring av UDP 80/443 som nätverks regler.|
-|Säker hubb och Tvingad tunnel trafik stöds inte i Premium|För närvarande stöds inte SKU: n för brand Väggs Premium i Secure Hub-distributioner och Tvingad tunnel konfiguration.|Åtgärd har schemalagts för GA.|
 Ej betrodda kund signerade certifikat|Kundens signerade certifikat är inte betrodda av brand väggen när den har tagits emot från en intranät-baserad webb server.|Åtgärd har schemalagts för GA.
 |Fel käll-och mål-IP-adresser i aviseringar för IDP: er med TLS-kontroll.|När du aktiverar TLS-kontroll och IDP: er utfärdar en ny avisering, är den visade käll-och mål-IP-adressen fel (den interna IP-adressen visas i stället för den ursprungliga IP-adressen).|Åtgärd har schemalagts för GA.|
 |Fel Källans IP-adress i aviseringar med IDP: er för HTTP (utan TLS-kontroll).|När oformaterad text-HTTP-trafik används och IDP: er utfärdar en ny avisering, och målet är en offentlig IP-adress, är den visade käll-IP-adressen fel (den interna IP-adressen visas i stället för den ursprungliga IP-adressen).|Åtgärd har schemalagts för GA.|

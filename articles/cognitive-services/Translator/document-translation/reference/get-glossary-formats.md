@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 03/25/2021
 ms.author: v-jansk
 ms.openlocfilehash: fa4f89fb312e76d72447552b156d35bf3d0404bc
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105613141"
 ---
 # <a name="document-translation-get-glossary-formats"></a>Dokument översättning: Hämta ord lista
@@ -39,7 +39,7 @@ Lär dig hur du hittar ditt [anpassade domän namn](../get-started-with-document
 
 Begärandehuvuden är:
 
-|Sidhuvuden|Description|
+|Sidhuvuden|Beskrivning|
 |--- |--- |
 |Ocp-Apim-Subscription-Key|Nödvändigt begär ande huvud|
 
@@ -47,7 +47,7 @@ Begärandehuvuden är:
 
 Följande är de möjliga HTTP-statuskod som en begäran returnerar.
 
-|Statuskod|Description|
+|Statuskod|Beskrivning|
 |--- |--- |
 |200|OK. Returnerar en lista över fil format som stöds.|
 |500|Internt Server fel.|
@@ -62,7 +62,7 @@ Bastyp för List retur i API: t get ordboks format.
 
 Bastyp för List retur i API: t get ordboks format.
 
-|Statuskod|Description|
+|Statuskod|Beskrivning|
 |--- |--- |
 |200|OK. Returnerar en lista över fil format som stöds.|
 |500|Internt Server fel.|
@@ -70,7 +70,7 @@ Bastyp för List retur i API: t get ordboks format.
 
 ### <a name="error-response"></a>Fel svar
 
-|Namn|Typ|Description|
+|Namn|Typ|Beskrivning|
 |--- |--- |--- |
 |kod|sträng|Uppräkningar som innehåller fel koder på hög nivå. Möjliga värden:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Behörighet saknas</li></ul>|
 |meddelande|sträng|Hämtar fel meddelande på hög nivå.|

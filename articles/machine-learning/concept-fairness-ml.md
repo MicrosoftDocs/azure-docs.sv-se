@@ -1,33 +1,27 @@
 ---
-title: Minimera eventuell rättvishet i Machine Learning-modeller (för hands version)
+title: Machine Learning-skälighet (för hands version)
 titleSuffix: Azure Machine Learning
-description: Lär dig mer om skälighet i Machine Learning-modeller och hur Fairlearn python-paketet kan hjälpa dig att bygga bättre modeller.
+description: Lär dig mer om Machine Learning-skälighet och hur Fairlearn python-paketet kan hjälpa dig att utvärdera och minimera en rättvishet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 01/26/2021
+ms.date: 04/02/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 276c91ad7fb5b09dbe18d989741f0f54b8b0eb09
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45c63780eac021301e5b01c0ff8abea7d704a4cf
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101659689"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220529"
 ---
-# <a name="mitigate-unfairness-in-machine-learning-models-preview"></a>Minimera eventuell rättvishet i Machine Learning-modeller (för hands version)
+# <a name="machine-learning-fairness-preview"></a>Machine Learning-skälighet (för hands version)
 
-Lär dig mer om skälighet i maskin inlärning och hur python-paketet [Fairlearn](https://fairlearn.github.io/) med öppen källkod kan hjälpa dig att undvika problem med att lösa problemen i Machine Learning-modeller. Om du inte gör en satsning på att förstå skälighet problem och utvärdera skälighet när du skapar maskin inlärnings modeller kan du skapa modeller som ger oskäliga resultat.
+Lär dig mer om Machine Learning-skälighet och hur python-paketet [med öppen källkod](https://fairlearn.github.io/) kan hjälpa dig att utvärdera och åtgärda problem med en maskin inlärnings modell. 
 
-Följande översikt över [användar handboken](https://fairlearn.github.io/main/user_guide/index.html) för Fairlearn-paketet med öppen källkod beskriver hur du använder det för att utvärdera skälighet för de AI-system som du skapar.  Fairlearn-paketet med öppen källkod kan också erbjuda alternativ som hjälper dig att minimera eller hjälpa till att minska eventuella skälighet problem.  Se [hur-till-och-](how-to-machine-learning-fairness-aml.md) [exempel antecknings böckerna](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) möjliggör SKÄLIGHET-utvärdering av AI-system under utbildning på Azure Machine Learning.
-
-
-## <a name="what-is-fairness-in-machine-learning-models"></a>Vad är skälighet i Machine Learning-modeller?
-
->[!NOTE]
-> Skälighet är en socioekonomisk teknisk utmaning. Många aspekter av skälighet, till exempel rättvisa och förfallna processer, samlas inte in i kvantitativa skälighet-mått. Dessutom kan många kvantitativa skälighet-mått inte vara uppfyllda samtidigt. Målet med Fairlearn-paketet med öppen källkod är att göra det möjligt för människor att utvärdera olika effekter och strategier för minskning. Slutligen är det upp till de mänskliga användarna som skapar artificiell intelligens och maskin inlärnings modeller för att göra kompromisser som är lämpliga för deras situation.
+## <a name="what-is-machine-learning-fairness"></a>Vad är Machine Learning-skälighet?
 
 Artificiell intelligens och Machine Learning-system kan visa illojalt beteende. Ett sätt att definiera oskäligt beteende är att skada, eller påverkan på människor. Det finns många typer av skador som AI-system kan ge upphov till. Mer information finns i [NeurIPS 2017-presentationen av Kate Crawford](https://www.youtube.com/watch?v=fMym_BKWQzk) .
 
@@ -42,6 +36,9 @@ För att minska illojalt beteende i AI-system måste du utvärdera och minimera 
 ## <a name="fairness-assessment-and-mitigation-with-fairlearn"></a>Skälighet-utvärdering och-minskning med Fairlearn
 
 Fairlearn är ett python-paket med öppen källkod som gör det möjligt för datorer i Machine Learning-system att utvärdera sina Systems skälighet och minska sin rättvishet.
+
+>[!NOTE]
+> Skälighet är en socioekonomisk teknisk utmaning. Många aspekter av skälighet, till exempel rättvisa och förfallna processer, samlas inte in i kvantitativa skälighet-mått. Dessutom kan många kvantitativa skälighet-mått inte vara uppfyllda samtidigt. Målet med Fairlearn-paketet med öppen källkod är att göra det möjligt för människor att utvärdera olika effekter och strategier för minskning. Slutligen är det upp till de mänskliga användarna som skapar artificiell intelligens och maskin inlärnings modeller för att göra kompromisser som är lämpliga för deras situation.
 
 Paketet med öppen källkod för Fairlearn har två komponenter:
 
@@ -90,8 +87,6 @@ Fairlearn-paketet med öppen källkod stöder följande typer av paritets begrä
 |Lika med strider  | Diagnostisera tilldelnings-och kvalitets-och tjänst skador | Binära klassificering        |
 |Samma affärs möjlighet | Diagnostisera tilldelnings-och kvalitets-och tjänst skador | Binära klassificering        |
 |Förlust av begränsad grupp     |  Minimera kvaliteten på tjänstens skada | Regression |
-
-
 
 ### <a name="mitigation-algorithms"></a>Dämpa algoritmer
 

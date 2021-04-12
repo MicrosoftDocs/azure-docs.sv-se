@@ -3,12 +3,12 @@ title: Flytta Azure nätverks resurser till en ny prenumeration eller resurs gru
 description: Använd Azure Resource Manager för att flytta virtuella nätverk och andra nätverks resurser till en ny resurs grupp eller prenumeration.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 0cd6887d3489f2ffede0f5e3d63533a33a6ccc04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7aaf01b696b13136a0f4077f315b137c8917906
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "75485239"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120137"
 ---
 # <a name="move-guidance-for-networking-resources"></a>Flytta vägledning för nätverks resurser
 
@@ -16,7 +16,10 @@ Den här artikeln beskriver hur du flyttar virtuella nätverk och andra nätverk
 
 ## <a name="dependent-resources"></a>Beroende resurser
 
-När du flyttar ett virtuellt nätverk måste du också flytta dess beroende resurser. För VPN-gatewayer måste du flytta IP-adresser, virtuella nätverks-gatewayer och alla associerade anslutnings resurser. Lokala nätverksgateway kan finnas i en annan resurs grupp.
+> [!NOTE]
+> Observera att VPN-gatewayer som är kopplade till offentliga IP-adresser inte kan flyttas mellan resurs grupper eller prenumerationer för närvarande.
+
+När du flyttar en resurs måste du också flytta dess beroende resurser (t. ex. offentliga IP-adresser, virtuella nätverksgateway, alla associerade anslutnings resurser). Lokala nätverksgateway kan finnas i en annan resurs grupp.
 
 Om du vill flytta en virtuell dator med ett nätverkskort till en ny prenumeration måste du flytta alla beroende resurser. Flytta det virtuella nätverket för nätverks gränssnitts kortet, alla andra nätverkskort för det virtuella nätverket och VPN-gatewayerna.
 

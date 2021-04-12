@@ -11,10 +11,10 @@ ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
 ms.openlocfilehash: c5dfd442bb52a5b1d319bd0a40b656d549134e7e
-ms.sourcegitcommit: c94e282a08fcaa36c4e498771b6004f0bfe8fb70
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "105612333"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Skapa, utveckla och underhålla Synapse Studio-anteckningsböcker i Azure Synapse Analytics
@@ -101,7 +101,7 @@ Du kan ställa in det primära språket för nya tillagda celler i list rutan i 
 
 Du kan använda flera språk i en bärbar dator genom att ange rätt språk-Magic-kommando i början av en cell. I följande tabell visas Magic-kommandon för att växla mellan cell språk.
 
-|Magiskt kommando |Språk | Description |  
+|Magiskt kommando |Språk | Beskrivning |  
 |---|------|-----|
 |%% pyspark| Python | Kör en **python** -fråga mot Spark-kontext.  |
 |%% Spark| Scala | Kör en **Scala** -fråga mot Spark-kontext.  |  
@@ -112,7 +112,7 @@ Följande bild är ett exempel på hur du kan skriva en PySpark-fråga med komma
 
    ![Synapse Spark Magic-kommandon](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
-### <a name="use-temp-tables-to-reference-data-across-languages"></a>Använd temporära tabeller för att referera till data över olika språk
+### <a name="use-temp-tables-to-reference-data-across-languages&quot;></a>Använd temporära tabeller för att referera till data över olika språk
 
 Du kan inte referera till data eller variabler direkt på olika språk i en Synapse Studio-anteckningsbok. I Spark kan en tillfällig tabell refereras mellan olika språk. Här är ett exempel på hur du läser en `Scala` DataFrame i `PySpark` och `SparkSQL` använder en spark-temporär tabell som en lösning.
 
@@ -120,7 +120,7 @@ Du kan inte referera till data eller variabler direkt på olika språk i en Syna
 
    ```scala
    %%scala
-   val scalaDataFrame = spark.read.sqlanalytics("mySQLPoolDatabase.dbo.mySQLPoolTable")
+   val scalaDataFrame = spark.read.sqlanalytics(&quot;mySQLPoolDatabase.dbo.mySQLPoolTable")
    scalaDataFrame.createOrReplaceTempView( "mydataframetable" )
    ```
 
@@ -149,7 +149,7 @@ IntelliSense-funktionerna finns på olika förfallo nivåer för olika språk. A
 |PySpark (Python)|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Spark (Scala)|Ja|Ja|Ja|Ja|-|-|-|Ja|
 |SparkSQL|Ja|Ja|-|-|-|-|-|-|
-|.NET för Spark (C#)|Yes|-|-|-|-|-|-|-|
+|.NET för Spark (C#)|Ja|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Formatera en text cell med knappar i verktygsfältet
 
