@@ -3,12 +3,12 @@ title: Apache Kafka Developer Guide för Event Hubs
 description: Den här artikeln innehåller länkar till artiklar som beskriver hur du integrerar dina Kafka-program med Azure Event Hubs.
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: 757db4faf2a933e366bc818d5cf6aab04d0b08ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84fa40d7cc4b09f31d78665f901b49adacf3267f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90061741"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303091"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Apache Kafka Developer Guide för Azure Event Hubs
 Den här artikeln innehåller länkar till artiklar som beskriver hur du integrerar dina Apache Kafka-program med Azure Event Hubs. 
@@ -22,7 +22,7 @@ Du hittar snabb starter i GitHub och i den här innehålls uppsättningen som hj
 ### <a name="quickstarts-in-github"></a>Snabb starter i GitHub
 Se följande snabb starter i **Azure-Event-Hub-for-Kafka** lagrings platsen: 
 
-| Klient språk/-ramverk | Beskrivning | 
+| Klient språk/-ramverk | Description | 
 | ------------------------- | ----------- | 
 | [.NET](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/dotnet) | <p>I den här snabb starten visas hur du skapar och ansluter till en Event Hubs Kafka-slutpunkt med ett exempel på producent och konsument skriven i C# med hjälp av .NET Core 2,0.</p><p>Det här exemplet baseras på [samApache Kafka .net-klient](https://github.com/confluentinc/confluent-kafka-dotnet), som är modifierat för användning med Event Hubs för Kafka.</p> | 
 | [Java](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) | Den här snabb starten visar hur du skapar och ansluter till en Event Hubs Kafka-slutpunkt med ett exempel på en producent och konsument som är skriven i Java. |
@@ -42,7 +42,7 @@ Se snabb start: [data strömning med Event Hubs att använda Kafka-protokollet](
 ### <a name="tutorials-in-github"></a>Självstudier i GitHub
 Se följande självstudier på GitHub:
 
-| Självstudie | Beskrivning | 
+| Självstudie | Description | 
 | ------------------------- | ----------- | 
 | [Akka](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) | Den här självstudien visar hur du ansluter Akka-strömmar till Kafka-aktiverade Event Hubs utan att ändra protokoll klienter eller köra egna kluster. Det finns två separata självstudier med hjälp av **Java** -och **Scala** -programmeringsspråk. | 
 | [Anslut](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | Det här dokumentet beskriver hur du integrerar Kafka med Azure Event Hubs och distribuerar grundläggande FileStreamSource-och FileStreamSink-kopplingar. Även om dessa anslutningar inte är avsedda för användning i produktion, visar de ett Kafka-scenario från slut punkt till slut punkt där Azure Event Hubs imiteras som en Kafka-Broker.| 
@@ -63,7 +63,7 @@ Se även självstudien: [Process Apache Kafka för Event Hubs händelser som anv
 ## <a name="how-to-guides"></a>Anvisningar
 Se följande instruktions guider i vår dokumentation:
 
-| Artikel | Beskrivning | 
+| Artikel | Description | 
 | ------- | ----------- | 
 | [Spegla en Kafka-broker i en händelsehubb](event-hubs-kafka-mirror-maker-tutorial.md) | Visar hur du speglar en Kafka-Broker i en Event Hub med hjälp av Kafka MirrorMaker. |
 | [Ansluta Apache Spark till en händelsehubb](event-hubs-kafka-spark-tutorial.md) | Vägleder dig genom att ansluta Spark-programmet till Event Hubs för strömning i real tid. |
@@ -78,7 +78,7 @@ Granska exempel i mapparna GitHub lagrings platsen [Azure-Event-Hub-for-Kafka](h
 Se även följande artiklar:
 
 - [Apache Kafka fel söknings guide för Event Hubs](apache-kafka-troubleshooting-guide.md)
-- [Vanliga frågor och svar – Event Hubs för Apache Kafka](apache-kafka-frequently-asked-questions.md)
+- [Vanliga frågor och svar – Event Hubs för Apache Kafka](apache-kafka-frequently-asked-questions.yml)
 - [Apache Kafka migrations guide för Event Hubs](apache-kafka-migration-guide.md)
 
 

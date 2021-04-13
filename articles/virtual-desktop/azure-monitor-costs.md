@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5bd89a734a20c913bacca1f5531aa76d76418c80
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 26262f83e14602d6ea93f96ec47630ef870c357d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448227"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309313"
 ---
 # <a name="estimate-azure-monitor-costs"></a>Uppskatta Azure Monitor kostnader
 
@@ -35,7 +35,7 @@ De fördefinierade data uppsättningarna för Azure Monitor för virtuella Windo
 - Windows-händelseloggar från sessionens värdar
 - Diagnostik för virtuella Windows-datorer från tjänst infrastrukturen
 
-Dina data inmatnings-och lagrings kostnader beror på din miljö storlek, hälsa och användning. Exemplet som beräknar att vi kommer att använda i den här artikeln för att beräkna de kostnads intervall som du kan förväntas baseras på friska virtuella datorer som kör ljus till strömförbrukning, baserat på våra [rikt linjer för storleks ändring av virtuella](/remote/remote-desktop-services/virtual-machine-recs)datorer, för att beräkna en mängd data inmatnings-och lagrings kostnader.
+Dina data inmatnings-och lagrings kostnader beror på din miljö storlek, hälsa och användning. Exemplet som beräknar att vi kommer att använda i den här artikeln för att beräkna de kostnads intervall som du kan förväntas baseras på friska virtuella datorer som kör ljus till strömförbrukning, baserat på våra [rikt linjer för storleks ändring av virtuella](/windows-server/remote/remote-desktop-services/virtual-machine-recs)datorer, för att beräkna en mängd data inmatnings-och lagrings kostnader.
 
 Den virtuella dator för ljus användning som vi använder i vårt exempel innehåller följande komponenter:
 

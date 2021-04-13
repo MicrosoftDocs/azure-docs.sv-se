@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25320fb8cde0cc5a38f1edf4019a2f0e07cefe14
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a830c2cbbc16d5d5e93e6f2283af012e4412c0be
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461104"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310656"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Självstudie: skicka data via transparent Gateway
 
@@ -250,4 +250,4 @@ I den här artikeln använde vi vår utvecklings-VM för att simulera en löv en
 Om du vill fortsätta lära dig mer IoT Edge funktioner kan du prova den här självstudien härnäst:
 
 > [!div class="nextstepaction"]
-> [Skapa en hierarki med IoT Edge enheter (förhands granskning)](tutorial-nested-iot-edge.md?view=iotedge-2020-11&preserve-view=true)
+> [Skapa en hierarki med IoT Edge enheter](tutorial-nested-iot-edge.md?view=iotedge-2020-11&preserve-view=true)

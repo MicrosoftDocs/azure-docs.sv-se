@@ -1,21 +1,21 @@
 ---
 title: Återställa en borttagen Azure Database for MySQL Server
-description: Den här artikeln beskriver hur du återställer en borttagen server i Azure Database for MySQL att använda Azure Portal.
+description: I den här artikeln beskrivs hur du återställer en borttagen server i Azure Database for MySQL med hjälp av Azure Portal.
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
-ms.openlocfilehash: 34dddd8e5f3fb418fc7155630bf82a922e418402
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5fc1ab1b3dfbc324668873749c143846c2015cd4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97657098"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306287"
 ---
-# <a name="restore-a-dropped-azure-database-for-mysql-server"></a>Återställa en borttagen Azure Database for MySQL Server
+# <a name="restore-a-deleted-azure-database-for-mysql-server"></a>Återställa en borttagen Azure Database for MySQL Server
 
-När en server släpps kan säkerhets kopian av databas servern behållas upp till fem dagar i tjänsten. Säkerhets kopian av databasen kan nås och endast återställas från den Azure-prenumeration där servern ursprungligen befanns. Följ de rekommenderade stegen nedan om du behöver återställa en borttagen MySQL-serverresurs. Åtgärden måste utföras inom fem dagar från det datum då servern togs bort. De rekommenderade stegen fungerar bara om säkerhetskopian fortfarande är tillgänglig och inte har tagits bort från systemet. 
+När en server tas bort kan säkerhets kopian av databas servern behållas upp till fem dagar i tjänsten. Säkerhets kopian av databasen kan nås och endast återställas från den Azure-prenumeration där servern ursprungligen befanns. Följande rekommenderade steg kan följas för att återställa en borttagen MySQL server-resurs inom 5 dagar från tidpunkten för borttagning av servern. De rekommenderade stegen fungerar bara om säkerhetskopian fortfarande är tillgänglig och inte har tagits bort från systemet. 
 
 ## <a name="pre-requisites"></a>Förutsättningar
 Om du vill återställa en borttagen Azure Database for MySQL server, behöver du följande:
@@ -42,7 +42,7 @@ Om du vill återställa en borttagen Azure Database for MySQL server, behöver d
  
      [![Skapa server med REST API](./media/howto-restore-dropped-server/create-server-from-rest-api.png)](./media/howto-restore-dropped-server/create-server-from-rest-api.png#lightbox)
   
- 6. Rulla nedan och klistra in följande och ersätt den "borttagna Server platsen", "submissionTimestamp" och "resourceId". För "restorePointInTime" anger du värdet "submissionTimestamp" minus **15 minuter** för att se till att kommandot inte fel uppstår.
+ 6. Rulla nedan och klistra in följande i avsnittet om brödtext:
  
     ```json
     {
@@ -55,10 +55,14 @@ Om du vill återställa en borttagen Azure Database for MySQL server, behöver d
             }
     }
     ```
+7. Ersätt följande värden i begär ande texten ovan:
+   * "Borttagen Server plats" med den Azure-region där den borttagna servern ursprungligen skapades
+   * "submissionTimestamp" och "resourceId" med värdena som registrerades i steg 3. 
+   * För "restorePointInTime" anger du värdet "submissionTimestamp" minus **15 minuter** för att se till att kommandot inte fel uppstår.
+   
+8. Om du ser svars koden 201 eller 202 har återställnings förfrågan skickats. 
 
-7. Om du ser svars koden 201 eller 202 har återställnings förfrågan skickats. 
-
-8. Det kan ta tid att skapa servern beroende på databasens storlek och de beräknings resurser som har allokerats på den ursprungliga servern. Återställnings statusen kan övervakas från aktivitets loggen genom filtrering för 
+9. Det kan ta tid att skapa servern beroende på databasens storlek och de beräknings resurser som har allokerats på den ursprungliga servern. Återställnings statusen kan övervakas från aktivitets loggen genom filtrering för 
    - **Prenumeration** = din prenumeration
    - **Resurs typ** = Azure Database for MySQL servrar (Microsoft. DBforMySQL/servers) 
    - **Åtgärd** = uppdatering MySQL server Create

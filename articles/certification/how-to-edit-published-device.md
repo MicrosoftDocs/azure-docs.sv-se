@@ -1,18 +1,18 @@
 ---
 title: Så här redigerar du en publicerad Azure-certifierad enhet
 description: En guide för att redigera enhets informationen när du har certifierat och publicerat enheten via programmet Azure Certified Device.
-author: nikuntjo
+author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: ddd6a377b477f5895db797f6f4e4917d180e40de
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 14a29d438103f07dd35b3a3380b7cc094f215824
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969529"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304451"
 ---
 # <a name="edit-your-published-device"></a>Redigera din publicerade enhet
 

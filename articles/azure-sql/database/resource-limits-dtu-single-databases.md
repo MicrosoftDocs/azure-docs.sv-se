@@ -10,24 +10,36 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/20/2019
-ms.openlocfilehash: c530d584282cebba78c095798944e48d7efe2c66
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/09/2021
+ms.openlocfilehash: 3afc2a1e3b279e7c4fd350e96787454e01e01f79
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625661"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303227"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>Resurs gränser för enskilda databaser med hjälp av inköps modellen DTU – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Den här artikeln innehåller detaljerade resurs gränser för Azure SQL Database enskilda databaser med hjälp av inköps modellen DTU.
 
-För resurs gränser för DTU-inköp för elastiska pooler, se [resurs gränser för DTU-elastiska pooler](resource-limits-dtu-elastic-pools.md). För vCore resurs gränser, se [vCore-resurs gränser – enkla databaser](resource-limits-vcore-single-databases.md) och [vCore resurs gränser – elastiska pooler](resource-limits-vcore-elastic-pools.md). Mer information om olika inköps modeller finns i [inköps modeller och tjänst nivåer](purchasing-models.md).
+* För inköps modell gränser för DTU för enskilda databaser på en server, se [Översikt över resurs gränser på en server](resource-limits-logical-server.md).
+* För resurs gränser för DTU-inköps modeller för Azure SQL Database, se [DTU-resurs begränsar enskilda databaser](resource-limits-dtu-single-databases.md) och [DTU-resurs begränsar elastiska pooler](resource-limits-dtu-elastic-pools.md).
+* För vCore resurs gränser, se [vCore Resource Limits-Azure SQL Database](resource-limits-vcore-single-databases.md) [-och vCore-resurs gränser-elastiska pooler](resource-limits-vcore-elastic-pools.md).
+* Mer information om olika inköps modeller finns i [inköps modeller och tjänst nivåer](purchasing-models.md).
+
+Varje skrivskyddad replik har sina egna resurser, till exempel DTU: er, arbetare och sessioner. Alla skrivskyddade repliker omfattas av resurs begränsningarna som beskrivs längre fram i den här artikeln. 
+
 
 ## <a name="single-database-storage-sizes-and-compute-sizes"></a>Enkel databas: lagrings storlekar och beräknings storlekar
 
-Följande tabeller visar de resurser som är tillgängliga för en enskild databas på varje tjänst nivå och beräknings storlek. Du kan ange tjänst nivå, beräknings storlek och lagrings belopp för en enskild databas med hjälp av [Azure Portal](single-database-manage.md#the-azure-portal), [Transact-SQL](single-database-manage.md#transact-sql-t-sql), [PowerShell](single-database-manage.md#powershell), [Azure CLI](single-database-manage.md#the-azure-cli)eller [REST API](single-database-manage.md#rest-api).
+Följande tabeller visar de resurser som är tillgängliga för en enskild databas på varje tjänst nivå och beräknings storlek. Du kan ange tjänst nivå, beräknings storlek och lagrings belopp för en enskild databas med:
+
+* [Transact-SQL](single-database-manage.md#transact-sql-t-sql) via [Alter Database](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database)
+* [Azure-portalen](single-database-manage.md#the-azure-portal)
+* [PowerShell](single-database-manage.md#powershell)
+* [Azure CLI](single-database-manage.md#the-azure-cli)
+* [REST-API](single-database-manage.md#rest-api)
 
 > [!IMPORTANT]
 > Information om skalning och överväganden finns i [skala en enskild databas](single-database-scale.md)

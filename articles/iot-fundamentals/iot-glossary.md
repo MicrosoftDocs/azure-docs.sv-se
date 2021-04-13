@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: d7ae1e72dee28509c1338a1b56cf42a5293af9bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a45b8db1f17ead8e55bac2b2bf82aa44cb7f080e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104670264"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304710"
 ---
 # <a name="glossary-of-iot-terms"></a>Ord lista med IoT-termer
 
@@ -435,6 +435,12 @@ I [IoT Edge](#iot-edge)är en modul en Docker-behållare som du kan distribuera 
 [MQTT](https://mqtt.org/) är ett av de meddelande protokoll som [IoT Hub](#iot-hub) stöder för att kommunicera med enheter. Mer information om de meddelande protokoll som IoT Hub stöder finns i [skicka och ta emot meddelanden med IoT Hub](../iot-hub/iot-hub-devguide-messaging.md).
 
 ## <a name="o"></a>O
+
+### <a name="ontology"></a>Ontology
+
+En uppsättning modeller för en viss domän, t. ex. fastigheter, smarta städer, IoT-system, energi rutnät med mera. Ontologies används ofta som scheman för kunskaps diagram som i [Azure Digitals](#azure-digital-twins), eftersom de ger en start punkt baserad på bransch standarder och bästa praxis.
+
+Mer information om Ontologies finns i [Vad är en Ontology?](../digital-twins/concepts-ontologies.md)
 
 ### <a name="operations-monitoring"></a>Övervakning av åtgärder
 

@@ -5,20 +5,23 @@ author: MalcolmTyrrell
 ms.author: matyrr
 ms.date: 09/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 13c4b841fe2d0b62472628d9382b5f6ee3d1fa6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a094755dfb9381b1e4d6abdf1c0e6342d7427c1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91318083"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308447"
 ---
 # <a name="laying-out-files-for-conversion"></a>Utforma filer för konvertering
 
 För att kunna bearbeta en till gång korrekt måste konverterings tjänsten kunna hitta alla indatafiler.
 Dessa består av den huvudsakliga till gångs filen som konverteras och ofta några andra filer som sökvägar i till gångs filen refererar till.
-Begäran om att konvertera en till gång har två parametrar som avgör hur konverterings tjänsten hittar dessa filer: `input.folderPath` (som är valfritt) och `input.inputAssetPath` .
+Begäran om att konvertera en till gång har två parametrar som avgör hur konverterings tjänsten hittar dessa filer: `settings.inputLocation.blobPrefix` (som är valfritt) och `settings.inputLocation.relativeInputAssetPath` .
 De dokumenteras fullständigt på sidan [konvertering REST API](conversion-rest-api.md) .
-För att kunna utforma filer är det viktigast att notera att `folderPath` fastställer fullständig uppsättning filer som är tillgängliga för konverterings tjänsten vid bearbetning av till gången.
+För att kunna utforma filer är det viktigast att notera att `BlobPrefix` fastställer fullständig uppsättning filer som är tillgängliga för konverterings tjänsten vid bearbetning av till gången.
+
+> [!Note]
+> Tjänsten laddar ned alla filer under indatamängden. BlobPrefix. Se till att fil namn och sökvägar inte överskrider [gränsen för Windows](https://docs.microsoft.com/windows/win32/fileio/maximum-file-path-limitation) -sökvägar för att undvika problem med tjänsten. 
 
 ## <a name="placing-files-so-they-can-be-found"></a>Placera filer så att de kan hittas
 

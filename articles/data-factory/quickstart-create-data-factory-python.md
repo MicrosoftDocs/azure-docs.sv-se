@@ -7,14 +7,14 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 04/06/2021
+ms.date: 04/12/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 50e29262b609887d91c43ea8f012fad0c7a35ee2
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 879ca169604dcd61a79db4ec3ca937289dacdd9b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449281"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309874"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Snabbstart: Skapa en datafabrik och pipeline med Python
 
@@ -40,7 +40,7 @@ Pipelines kan mata in data från olika data lager. Pipelines bearbetar eller tra
 
 * [Azure Storage Explorer](https://storageexplorer.com/) (valfritt).
 
-* [Ett program i Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Anteckna följande värden som du kan använda i senare steg: **program-ID**, **autentiseringsnyckel** och **klient-ID**. Tilldela program rollen **deltagare** genom att följa anvisningarna i samma artikel.
+* [Ett program i Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Anteckna följande värden som du kan använda i senare steg: **program-ID**, **autentiseringsnyckel** och **klient-ID**. Tilldela program rollen **deltagare** genom att följa anvisningarna i samma artikel. Anteckna följande värden som visas i artikeln som du kan använda i senare steg: **program-ID (tjänstens huvud namns-ID nedan), autentiseringsnyckel (klient hemlighet nedan) och klient-ID.**
 
 ## <a name="create-and-upload-an-input-file"></a>Skapa och ladda upp en indatafil
 
@@ -225,6 +225,9 @@ Du definierar en datauppsättning som representerar källdata i Azure Blob. Denn
         rg_name, df_name, dsOut_name, dsOut_azure_blob)
     print_item(dsOut)
 ```
+ > [!NOTE] 
+ > Om du vill skicka parametrar till pipelinen lägger du till dem i JSON-strängen params_for_pipeline visas nedan i formatet **{"ParameterName1": "ParameterValue1"}** för var och en av de parametrar som behövs i pipelinen. Om du vill skicka parametrar till ett data flöde skapar du en pipeline-parameter som innehåller parameter namnet/värdet och använder sedan pipelinen i data flödes parametern i formatet **@pipeline (). Parameters. ParameterName.**
+
 
 ## <a name="create-a-pipeline"></a>Skapa en pipeline
 

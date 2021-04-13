@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: IoT Plug and Play Certification Requirements
 ms.service: certification
-ms.openlocfilehash: bbe9a3f18463285521dde0ee64b369cffcd71d75
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: b26fab6f8b92e3cb996f545f1f6201d32b1eaced
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969390"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310520"
 ---
 # <a name="iot-plug-and-play-certification-requirements"></a>Krav för IoT Plug and Play-certifiering
 
@@ -51,7 +51,7 @@ Att garantera IoT Plug and Play-certifiering är:
 | **Operativsystem**                  | Oberoende                                                     |
 | **Validerings typ**     | Automatiserad                                                    |
 | **Signaturverifiering**          | Enheten måste implementera enkel överföring av DPS-ID omfångets ägarskap utan att behöva kompilera om den inbäddade koden. Microsoft tillhandahåller ett [Portal arbets flöde](https://certify.azure.com) för att köra testerna för att kontrol lera att enheten har stöd för DPS **1.** Användaren måste välja en av attesterings metoderna (X. 509, TPM och SAS-nyckel) **2.** Beroende på attesterings metoden måste användaren vidta motsvarande åtgärd, till exempel **a)** Ladda upp X. 509-certifikat till AICS Managed DPS **b)** implementera SAS-nyckel eller bekräftelse nyckel i enheten |
-| **Resurser**           | **a)** [Översikt över enhets etablerings tjänsten](../iot-dps/about-iot-dps.md), **b)** [exempel på KONFIGURATIONS fil för överföring av DPS-ID omfånget](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples/digitaltwin_sample_ll_device/sample_config) |
+| **Resurser**           | **a)** [Översikt över enhets etablerings tjänsten](../iot-dps/about-iot-dps.md), **b)** [exempel på KONFIGURATIONS fil för överföring av DPS-ID omfånget](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/serializer/samples/devicetwin_simplesample) |
 
 **Kunna DTDL v2: Syftet med testet för att säkerställa att definierade enhets modeller och gränssnitt är kompatibla med det digitala dubbla definitions språket v2.**                                                              
 
@@ -95,7 +95,7 @@ Att garantera IoT Plug and Play-certifiering är:
 | **Gäller för**          | Valfri enhet                                                   |
 | **Operativsystem**                  | Oberoende                                                     |
 | **Validerings typ**     | Automatiserad                                                    |
-| **Signaturverifiering**          | [Portal arbets flöde](https://certify.azure.com) verifierar enhets koden implementerar [enhets informations gränssnittet](https://repo.azureiotrepository.com/Models/dtmi:azure:DeviceManagement:DeviceInformation;1?api-version=2020-05-01-previewureiot:DeviceManagement:DeviceInformation:1) **1.** Kontrollerar att värdena genereras av enhets koden till IoT Hub **2.** Kontrollerar att gränssnittet har implementerats i DCM (den här implementeringen kommer att ändras i DTDL v2) **3.** Kontroll egenskaperna är inte skrivbara (skrivskyddade) **4.** Kontrollerar schema typen är sträng och/eller lång och inte null |
+| **Signaturverifiering**          | [Portal arbets flöde](https://certify.azure.com) verifierar enhets koden implementerar enhets informations gränssnittet **1.** Kontrollerar att värdena genereras av enhets koden till IoT Hub **2.** Kontrollerar att gränssnittet har implementerats i DCM (den här implementeringen kommer att ändras i DTDL v2) **3.** Kontroll egenskaperna är inte skrivbara (skrivskyddade) **4.** Kontrollerar schema typen är sträng och/eller lång och inte null |
 | **Resurser**           | [Microsoft-definierat gränssnitt](../iot-pnp/overview-iot-plug-and-play-preview-updates.md) |
 | **Azure rekommenderas**  | Ej tillämpligt                                                          |
 

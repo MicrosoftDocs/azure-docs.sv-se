@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: de16932f1f77e569302b222fe2948de3046fabd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5e00ef81afc709a9072eedbb07983057f57eb08
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950605"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304315"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Mata in IoT Hub telemetri i Azure Digitals, dubbla
 
@@ -45,7 +45,7 @@ När en händelse för att utföra en termostat skickas av den enheten, bearbeta
 
 I det här avsnittet ska du konfigurera en [digital](concepts-twins-graph.md) enhet i Azure Digitals, som representerar termostat-enheten och som kommer att uppdateras med information från IoT Hub.
 
-Om du vill skapa en termostat-typ måste du först ladda upp termostat- [modellen](concepts-models.md) till din instans, som beskriver egenskaperna för en termostat och kommer att användas senare för att skapa den dubbla. 
+Om du vill skapa en termostat-typ måste du först ladda upp termostat- [modellen](concepts-models.md) till din instans, som beskriver egenskaperna för en termostat och kommer att användas senare för att skapa den dubbla.
 
 [!INCLUDE [digital-twins-thermostat-model-upload.md](../../includes/digital-twins-thermostat-model-upload.md)]
 

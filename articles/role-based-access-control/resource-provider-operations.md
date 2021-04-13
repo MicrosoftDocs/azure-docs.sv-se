@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 03/15/2021
+ms.date: 04/09/2021
 ms.custom: generated
-ms.openlocfilehash: 150c174842d50663779012e57f8402ec8b3d3b02
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e11e03ec7379dede6bf998f639a237201c297e72
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580937"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303635"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Resource Provider-åtgärder
 
@@ -130,7 +130,7 @@ Klicka på namnet på resurs leverantören i följande tabell om du vill se en l
 | [Microsoft. OffAzure](#microsoftoffazure) |
 | **Övervaka** |
 | [Microsoft. AlertsManagement](#microsoftalertsmanagement) |
-| [Microsoft. Insights](#microsoftinsights) |
+| [Microsoft.Insights](#microsoftinsights) |
 | [Microsoft. OperationalInsights](#microsoftoperationalinsights) |
 | [Microsoft. OperationsManagement](#microsoftoperationsmanagement) |
 | [Microsoft. WorkloadMonitor](#microsoftworkloadmonitor) |
@@ -264,6 +264,7 @@ Azure-tjänst: [Azure Service Health](../service-health/index.yml)
 > | Microsoft. ResourceHealth/metadata/läsa | Hämtar metadata |
 > | Microsoft. ResourceHealth/Notifications/Read | Tar emot Azure Resource Manager meddelanden |
 > | Microsoft. ResourceHealth/Operations/Read | Hämta de åtgärder som är tillgängliga för Microsoft-ResourceHealth |
+> | Microsoft. ResourceHealth/potentialoutages/Read |  |
 
 ### <a name="microsoftsupport"></a>Microsoft. support
 
@@ -281,8 +282,6 @@ Azure-tjänst: Core
 > | Microsoft. support/tjänster/problemClassifications/Read | Visar en lista med en eller alla problem klassificeringar för en Azure-tjänst |
 > | Microsoft.Support/supportTickets/read | Visar en lista med en eller alla support biljetter |
 > | Microsoft.Support/supportTickets/write | Tillåter att en support biljett skapas och uppdateras |
-> | Microsoft. support/supportTickets/Communications/Read | Visar en lista över en eller all support biljett kommunikation |
-> | Microsoft. support/supportTickets/kommunikation/Skriv | Lägger till en ny kommunikation till ett support ärende |
 
 ## <a name="compute"></a>Compute
 
@@ -673,6 +672,7 @@ Azure-tjänst: [Content Delivery Network](../cdn/index.yml)
 > | Åtgärd | Beskrivning |
 > | --- | --- |
 > | Microsoft. CDN/register/åtgärd | Registrerar prenumerationen för CDN-adressresursen och gör det möjligt att skapa CDN-profiler. |
+> | Microsoft. CDN/avregistrera/åtgärd | Avregistrerar prenumerationen för CDN-adressresursen. |
 > | Microsoft. CDN/CheckNameAvailability/åtgärd |  |
 > | Microsoft. CDN/ValidateProbe/åtgärd |  |
 > | Microsoft. CDN/CheckResourceUsage/åtgärd |  |
@@ -697,6 +697,8 @@ Azure-tjänst: [Content Delivery Network](../cdn/index.yml)
 > | Microsoft. CDN/operationresults/profileresults/CheckResourceUsage/Action |  |
 > | Microsoft. CDN/operationresults/profileresults/GenerateSsoUri/Action |  |
 > | Microsoft. CDN/operationresults/profileresults/GetSupportedOptimizationTypes/Action |  |
+> | Microsoft. CDN/operationresults/profileresults/CheckHostNameAvailability/Action |  |
+> | Microsoft. CDN/operationresults/profileresults/Usage/Action |  |
 > | Microsoft. CDN/operationresults/profileresults/afdendpointresults/Read |  |
 > | Microsoft. CDN/operationresults/profileresults/afdendpointresults/Write |  |
 > | Microsoft. CDN/operationresults/profileresults/afdendpointresults/Delete |  |
@@ -748,9 +750,9 @@ Azure-tjänst: [Content Delivery Network](../cdn/index.yml)
 > | Microsoft. CDN/operationresults/profileresults/secretresults/Write |  |
 > | Microsoft. CDN/operationresults/profileresults/secretresults/Delete |  |
 > | Microsoft. CDN/operationresults/profileresults/secretresults/ValidateSecret/Action |  |
-> | Microsoft. CDN/operationresults/profileresults/securitypoliciesresults/Read |  |
-> | Microsoft. CDN/operationresults/profileresults/securitypoliciesresults/Write |  |
-> | Microsoft. CDN/operationresults/profileresults/securitypoliciesresults/Delete |  |
+> | Microsoft. CDN/operationresults/profileresults/securitypolicyresults/Read |  |
+> | Microsoft. CDN/operationresults/profileresults/securitypolicyresults/Write |  |
+> | Microsoft. CDN/operationresults/profileresults/securitypolicyresults/Delete |  |
 > | Microsoft. CDN/Operations/Read |  |
 > | Microsoft. CDN/profiler/läsa |  |
 > | Microsoft. CDN/profiler/Write |  |
@@ -758,6 +760,8 @@ Azure-tjänst: [Content Delivery Network](../cdn/index.yml)
 > | Microsoft. CDN/profiler/CheckResourceUsage/åtgärd |  |
 > | Microsoft. CDN/profiler/GenerateSsoUri/åtgärd |  |
 > | Microsoft. CDN/profiler/GetSupportedOptimizationTypes/åtgärd |  |
+> | Microsoft. CDN/profiler/CheckHostNameAvailability/åtgärd |  |
+> | Microsoft. CDN/profiler/användning/åtgärd |  |
 > | Microsoft. CDN/profiler/afdendpoints/Read |  |
 > | Microsoft. CDN/profiler/afdendpoints/Write |  |
 > | Microsoft. CDN/profiler/afdendpoints/Delete |  |
@@ -791,6 +795,12 @@ Azure-tjänst: [Content Delivery Network](../cdn/index.yml)
 > | Microsoft. CDN/profiler/slut punkter/ursprung/läsa |  |
 > | Microsoft. CDN/profiler/slut punkter/ursprung/Skriv |  |
 > | Microsoft. CDN/profiler/slut punkter/ursprung/ta bort |  |
+> | Microsoft. CDN/profiler/getloganalyticslocations/Read |  |
+> | Microsoft. CDN/profiler/getloganalyticsmetrics/Read |  |
+> | Microsoft. CDN/profiler/getloganalyticsrankings/Read |  |
+> | Microsoft. CDN/profiler/getloganalyticsresources/Read |  |
+> | Microsoft. CDN/profiler/getwafloganalyticsmetrics/Read |  |
+> | Microsoft. CDN/profiler/getwafloganalyticsrankings/Read |  |
 > | Microsoft. CDN/profiler/origingroups/Read |  |
 > | Microsoft. CDN/profiler/origingroups/Write |  |
 > | Microsoft. CDN/profiler/origingroups/Delete |  |
@@ -1557,6 +1567,7 @@ Azure-tjänst: [Azure Data Box](../databox/index.yml)
 > | Microsoft. data-/avregistrera/åtgärd | Un-Register providern Microsoft. data |
 > | Microsoft. data-/jobb/Avbryt/åtgärd | Avbryter en pågående order. |
 > | Microsoft. data-/jobb/bookShipmentPickUp/åtgärd | Gör det möjligt att boka en plockning för retur leveranser. |
+> | Microsoft. data-/jobb/åtgärder/åtgärd | Den här metoden hjälper till att utföra åtgärder för att åtgärda ett jobb med en åtgärds kod |
 > | Microsoft. data-/jobb/listCredentials/åtgärd | Visar en lista med okrypterade autentiseringsuppgifter relaterade till beställningen. |
 > | Microsoft. data-/plats/validateInputs/åtgärd | Den här metoden utför alla typer av valideringar. |
 > | Microsoft. data-/plats/validateAddress/åtgärd | Verifierar leverans adressen och ger alternativa adresser om det finns några. |
@@ -1675,6 +1686,7 @@ Azure-tjänst: [Azure NetApp Files](../azure-netapp-files/index.yml)
 > | Microsoft. NetApp/netAppAccounts/capacityPools/Volumes/BackupStatus/Read |  |
 > | Microsoft. NetApp/netAppAccounts/capacityPools/Volumes/MountTargets/Read | Läser en resurs för monterings mål. |
 > | Microsoft. NetApp/netAppAccounts/capacityPools/Volumes/ReplicationStatus/Read | Läser status för volym replikeringen. |
+> | Microsoft. NetApp/netAppAccounts/capacityPools/Volumes/RestoreStatus/Read |  |
 > | Microsoft. NetApp/netAppAccounts/capacityPools/Volumes/snaps hots/Read | Läser en ögonblicks bild resurs. |
 > | Microsoft. NetApp/netAppAccounts/capacityPools/Volumes/snaps hots/Write | Skriver en ögonblicks bild resurs. |
 > | Microsoft. NetApp/netAppAccounts/capacityPools/Volumes/ögonblicks bilder/Delete | Tar bort en ögonblicks bild resurs. |
@@ -1756,6 +1768,7 @@ Azure-tjänst: [lagring](../storage/index.yml)
 > | Microsoft. Storage/storageAccounts/fileServices/Read | Hämta egenskaper för fil tjänst |
 > | Microsoft. Storage/storageAccounts/fileServices/Shares/Delete | Ta bort fil resurs |
 > | Microsoft. Storage/storageAccounts/fileServices/Shares/Read | Hämta fil resurs |
+> | Microsoft. Storage/storageAccounts/fileServices/aktier/leasing/åtgärd |  |
 > | Microsoft. Storage/storageAccounts/fileServices/Shares/Read | Lista fil resurser |
 > | Microsoft. Storage/storageAccounts/fileServices/Shares/Write | Skapa eller uppdatera fil resurs |
 > | Microsoft. Storage/storageAccounts/inventoryPolicies/Delete |  |
@@ -2227,6 +2240,7 @@ Azure-tjänst: [Media Services](../media-services/index.yml)
 > | Microsoft. Media/Media Services/Listnycklar/Action | Visa ACS-nycklar för Media Services kontot |
 > | Microsoft. Media/Media Services/syncStorageKeys/Action | Synkronisera lagrings nycklarna för ett kopplat Azure Storage-konto |
 > | Microsoft. Media/Media Services/listEdgePolicies/Action | Visa en lista med principer för en gräns enhet. |
+> | Microsoft. Media/Media Services/PrivateEndpointConnectionsApproval/Action | Godkänn anslutningar för privata slut punkter |
 > | Microsoft. Media/Media Services/accountfilters/Read | Läs valfritt konto filter |
 > | Microsoft. Media/Media Services/accountfilters/Write | Skapa eller uppdatera eventuella konto filter |
 > | Microsoft. Media/Media Services/accountfilters/Delete | Ta bort eventuella konto filter |
@@ -2256,14 +2270,6 @@ Azure-tjänst: [Media Services](../media-services/index.yml)
 > | Microsoft. Media/Media Services/liveEvents/liveOutputs/Read | Läs alla direktsända utdata |
 > | Microsoft. Media/Media Services/liveEvents/liveOutputs/Write | Skapa eller uppdatera Live-utdata |
 > | Microsoft. Media/Media Services/liveEvents/liveOutputs/Delete | Ta bort direktsänd utdata |
-> | Microsoft. Media/Media Services/liveEvents/privateEndpointConnectionProxies/Read | Läs valfri Live-händelse för privat slut punkts anslutnings-proxy |
-> | Microsoft. Media/Media Services/liveEvents/privateEndpointConnectionProxies/Write | Skapa Proxy för privat slut punkts anslutning för Live-händelse |
-> | Microsoft. Media/Media Services/liveEvents/privateEndpointConnectionProxies/Delete | Ta bort proxy för privat slut punkts anslutning för Live-händelse |
-> | Microsoft. Media/Media Services/liveEvents/privateEndpointConnectionProxies/validate/åtgärd | Verifiera proxy för privat slutpunkt för Live-händelse |
-> | Microsoft. Media/Media Services/liveEvents/privateEndpointConnections/Read | Läs eventuell privat slut punkts anslutning för Live-händelser |
-> | Microsoft. Media/Media Services/liveEvents/privateEndpointConnections/Write | Skapa privat slut punkts anslutning för Live-händelse |
-> | Microsoft. Media/Media Services/liveEvents/privateEndpointConnections/Delete | Ta bort privat slut punkts anslutning för Live-händelse |
-> | Microsoft. Media/Media Services/liveEvents/privateLinkResources/Read | Läs valfri privat länk resurs för Live-händelser |
 > | Microsoft. Media/Media Services/liveOutputOperations/Read | Läs all pågående utmatnings åtgärd |
 > | Microsoft. Media/Media Services/mediaGraphs/Read | Läs valfritt medie diagram |
 > | Microsoft. Media/Media Services/mediaGraphs/Write | Skapa eller uppdatera ett medie diagram |
@@ -2286,14 +2292,6 @@ Azure-tjänst: [Media Services](../media-services/index.yml)
 > | Microsoft. Media/Media Services/strömnings slut punkter/start/Action | Starta en slut punkts åtgärd för direkt uppspelning |
 > | Microsoft. Media/Media Services/strömnings slut punkter/stopp/åtgärd | Stoppa eventuella slut punkts åtgärder för direkt uppspelning |
 > | Microsoft. Media/Media Services/strömnings slut punkter/Scale/Action | Skala eventuella slut punkts åtgärder för direkt uppspelning |
-> | Microsoft. Media/Media Services/strömnings slut punkter/privateEndpointConnectionProxies/Read | Läs en anslutnings proxy för privat slut punkt för direkt uppspelnings slut punkt |
-> | Microsoft. Media/Media Services/strömnings slut punkter/privateEndpointConnectionProxies/Write | Skapa Proxy för anslutning till privat slutpunkt för direkt slut punkt |
-> | Microsoft. Media/Media Services/strömnings slut punkter/privateEndpointConnectionProxies/Delete | Ta bort proxy för privat slut punkt för direkt uppspelning av anslutning |
-> | Microsoft. Media/Media Services/strömnings slut punkter/privateEndpointConnectionProxies/validate/åtgärd | Verifiera proxy för anslutning till privat slut punkt för direkt uppspelning |
-> | Microsoft. Media/Media Services/strömnings slut punkter/privateEndpointConnections/Read | Läs eventuell anslutning till en privat slut punkt för direkt uppspelning |
-> | Microsoft. Media/Media Services/strömnings slut punkter/privateEndpointConnections/Write | Skapa anslutning för privat slut punkt för direkt uppspelning |
-> | Microsoft. Media/Media Services/strömnings slut punkter/privateEndpointConnections/Delete | Ta bort anslutning till privat slut punkt för direkt uppspelning |
-> | Microsoft. Media/Media Services/strömnings slut punkter/privateLinkResources/Read | Läs en länkad privat länk resurs för strömnings slut punkt |
 > | Microsoft. Media/Media Services/streamingLocators/Read | Läs alla strömmande positionerare |
 > | Microsoft. Media/Media Services/streamingLocators/Write | Skapa eller uppdatera en strömmande positionerare |
 > | Microsoft. Media/Media Services/streamingLocators/Delete | Ta bort alla strömmande positionerare |
@@ -2302,8 +2300,6 @@ Azure-tjänst: [Media Services](../media-services/index.yml)
 > | Microsoft. Media/Media Services/streamingPolicies/Read | Läs eventuell strömmande princip |
 > | Microsoft. Media/Media Services/streamingPolicies/Write | Skapa eller uppdatera en strömmande princip |
 > | Microsoft. Media/Media Services/streamingPolicies/Delete | Ta bort valfri strömmande princip |
-> | Microsoft. Media/Media Services/streamingPrivateEndpointConnectionOperations/Read | Läs eventuell anslutnings åtgärd för en strömmande privat slutpunkt |
-> | Microsoft. Media/Media Services/streamingPrivateEndpointConnectionProxyOperations/Read | Läs alla strömmande åtgärder för anslutning till privat slut punkt |
 > | Microsoft. Media/Media Services/Transforms/Read | Läs eventuell transformering |
 > | Microsoft. Media/Media Services/Transforms/Write | Skapa eller uppdatera en transformering |
 > | Microsoft. Media/Media Services/Transforms/Delete | Ta bort transformering |
@@ -2358,29 +2354,44 @@ Azure-tjänst: [Azure SignalR service](../azure-signalr/index.yml)
 > | --- | --- |
 > | Microsoft. SignalRService/register/åtgärd | Registrerar resurs leverantören "Microsoft. SignalRService" med en prenumeration |
 > | Microsoft. SignalRService/avregistrera/åtgärd | Avregistrerar resurs leverantören "Microsoft. SignalRService" med en prenumeration |
-> | Microsoft. SignalRService/locations/checknameavailability/Action | Kontrollerar om ett namn är tillgängligt för användning med en ny signal tjänst |
+> | Microsoft. SignalRService/locations/checknameavailability/Action | Kontrollerar om ett namn är tillgängligt för användning med en ny Microsoft. SignalRService-resurs. |
 > | Microsoft. SignalRService/locations/operationresults/signalerer/Read | Fråga resultatet av en plats-baserad asynkron åtgärd |
+> | Microsoft. SignalRService/locations/operationresults/webpubsub/Read | Fråga resultatet av en plats-baserad asynkron åtgärd |
 > | Microsoft. SignalRService/locations/operationStatuses/signalerer/Read | Fråga efter status för en plats-baserad asynkron åtgärd |
-> | Microsoft. SignalRService/platser/användning/läsa | Hämta kvot användningarna för Azure SignalR service |
+> | Microsoft. SignalRService/locations/operationStatuses/webpubsub/Read | Fråga efter status för en plats-baserad asynkron åtgärd |
+> | Microsoft. SignalRService/platser/användning/läsa | Hämta kvot användningarna för Microsoft. SignalRService Resource Provider. |
 > | Microsoft. SignalRService/operationresults/Read | Fråga resultatet av en asynkron åtgärd på leverantörs nivå |
-> | Microsoft. SignalRService/Operations/Read | Visa en lista över åtgärder för Azure SignalR-tjänsten. |
+> | Microsoft. SignalRService/Operations/Read | Visa en lista över åtgärderna för Microsoft. SignalRService Resource Provider. |
 > | Microsoft. SignalRService/operationstatus/Read | Fråga efter status för asynkron åtgärd på leverantörs nivå |
 > | Microsoft. SignalRService/Signalerare/läsa | Visa signalers inställningar och konfigurationer i hanterings portalen eller via API |
 > | Microsoft. SignalRService/Signalerare/Write | Ändra signal hanterarens inställningar och konfigurationer i hanterings portalen eller via API |
-> | Microsoft. SignalRService/SignalR/Delete | Ta bort hela signal tjänsten |
+> | Microsoft. SignalRService/SignalR/Delete | Ta bort signal resursen. |
 > | Microsoft. SignalRService/SignalR/listnycklar/åtgärd | Visa värdet för SignalR åtkomst nycklar i hanterings portalen eller via API |
 > | Microsoft. SignalRService/SignalR/regeneratekey/åtgärd | Ändra värdet för SignalR åtkomst nycklar i hanterings portalen eller via API |
-> | Microsoft. SignalRService/SignalR/avomstart/åtgärd | Starta om en Azure SignalR-tjänst i hanterings portalen eller via API. Det kommer att finnas vissa stillestånds tider. |
-> | Microsoft. SignalRService/SignalR/eventGridFilters/Read | Hämta egenskaperna för det angivna Event Grid-filtret eller visar alla Event Grid-filter för den angivna Signaleraren. |
-> | Microsoft. SignalRService/SignalR/eventGridFilters/Write | Skapa eller uppdatera ett event Grid-filter för en SignalR med de angivna parametrarna. |
-> | Microsoft. SignalRService/SignalR/eventGridFilters/Delete | Ta bort ett event Grid-filter från en signaler. |
+> | Microsoft. SignalRService/SignalR/avomstart/åtgärd | Starta om en signal resurs i hanterings portalen eller via API. Det kommer att finnas vissa stillestånds tider. |
+> | Microsoft. SignalRService/SignalR/eventGridFilters/Read | Hämta egenskaperna för det angivna Event Grid-filtret eller visar alla Event Grid-filter för den angivna Signals-resursen. |
+> | Microsoft. SignalRService/SignalR/eventGridFilters/Write | Skapa eller uppdatera ett event Grid-filter för en signal resurs med de angivna parametrarna. |
+> | Microsoft. SignalRService/SignalR/eventGridFilters/Delete | Ta bort ett event Grid-filter från en signal resurs. |
 > | Microsoft. SignalRService/SignalR/privateEndpointConnectionProxies/validate/åtgärd | Verifiera en proxy för anslutning till privat slutpunkt |
 > | Microsoft. SignalRService/SignalR/privateEndpointConnectionProxies/Write | Skapa en proxy för anslutning till privat slutpunkt |
 > | Microsoft. SignalRService/SignalR/privateEndpointConnectionProxies/Read | Läs en överliggande proxy för en privat slutpunkt |
 > | Microsoft. SignalRService/SignalR/privateEndpointConnectionProxies/Delete | Ta bort en proxy för anslutning till privat slutpunkt |
 > | Microsoft. SignalRService/SignalR/privateEndpointConnections/Write | Godkänna eller avvisa en anslutning till en privat slutpunkt |
 > | Microsoft. SignalRService/SignalR/privateEndpointConnections/Read | Läs en privat slut punkts anslutning |
-> | Microsoft. SignalRService/SignalR/privateLinkResources/Read | Visa en lista över alla signaler för privata Länkar för signaler |
+> | Microsoft. SignalRService/SignalR/privateLinkResources/Read | Visa en lista över alla privata länk resurser för en signal resurs. |
+> | Microsoft. SignalRService/WebPubSub/Read | Visa WebPubSub inställningar och konfigurationer i hanterings portalen eller via API |
+> | Microsoft. SignalRService/WebPubSub/Write | Ändra WebPubSub inställningar och konfigurationer i hanterings portalen eller via API |
+> | Microsoft. SignalRService/WebPubSub/Delete | Ta bort WebPubSub-resursen. |
+> | Microsoft. SignalRService/WebPubSub/listnycklar/Action | Visa värdet för WebPubSub-åtkomst nycklar i hanterings portalen eller via API |
+> | Microsoft. SignalRService/WebPubSub/regeneratekey/Action | Ändra värdet för WebPubSub-åtkomst nycklar i hanterings portalen eller via API |
+> | Microsoft. SignalRService/WebPubSub/restart/Action | Starta om en WebPubSub-resurs i hanterings portalen eller via API. Det kommer att finnas vissa stillestånds tider. |
+> | Microsoft. SignalRService/WebPubSub/privateEndpointConnectionProxies/validate/åtgärd | Verifiera en proxy för anslutning till privat slutpunkt |
+> | Microsoft. SignalRService/WebPubSub/privateEndpointConnectionProxies/Write | Skapa en proxy för anslutning till privat slutpunkt |
+> | Microsoft. SignalRService/WebPubSub/privateEndpointConnectionProxies/Read | Läs en överliggande proxy för en privat slutpunkt |
+> | Microsoft. SignalRService/WebPubSub/privateEndpointConnectionProxies/Delete | Ta bort en proxy för anslutning till privat slutpunkt |
+> | Microsoft. SignalRService/WebPubSub/privateEndpointConnections/Write | Godkänna eller avvisa en anslutning till en privat slutpunkt |
+> | Microsoft. SignalRService/WebPubSub/privateEndpointConnections/Read | Läs en privat slut punkts anslutning |
+> | Microsoft. SignalRService/WebPubSub/privateLinkResources/Read | Visa en lista över alla privata länk resurser för en WebPubSub-resurs. |
 > | **DataAction** | **Beskrivning** |
 > | Microsoft. SignalRService/SignalR/auth/accessKey/åtgärd | Generera en tillfällig AccessKey för signering av ClientTokens. |
 > | Microsoft. SignalRService/SignalR/auth/clientToken/åtgärd | Generera en ClientToken för att starta en klient anslutning. |
@@ -2394,7 +2405,16 @@ Azure-tjänst: [Azure SignalR service](../azure-signalr/index.yml)
 > | Microsoft. SignalRService/SignalR/serverConnection/Write | Starta en server anslutning. |
 > | Microsoft. SignalRService/SignalR/användare/skicka/åtgärd | Skicka meddelanden till användare, som kan bestå av flera klient anslutningar. |
 > | Microsoft. SignalRService/SignalR/användare/läsning | Kontrol lera användar förekomst. |
-> | Microsoft. SignalRService/SignalR/User/Write |  |
+> | Microsoft. SignalRService/SignalR/User/Write | Ändra en användare. |
+> | Microsoft. SignalRService/WebPubSub/clientConnection/skicka/åtgärd | Skicka meddelanden direkt till en klient anslutning. |
+> | Microsoft. SignalRService/WebPubSub/clientConnection/Read | Kontrol lera om det finns klient anslutningar. |
+> | Microsoft. SignalRService/WebPubSub/clientConnection/Write | Stäng klient anslutning. |
+> | Microsoft. SignalRService/WebPubSub/grupp/skicka/åtgärd | Broadcast-meddelande till grupp. |
+> | Microsoft. SignalRService/WebPubSub/Group/Read | Kontrol lera grupp förekomst eller användar förekomst i gruppen. |
+> | Microsoft. SignalRService/WebPubSub/Group/Write | Anslut till/lämna grupp. |
+> | Microsoft. SignalRService/WebPubSub/hubb/skicka/åtgärd | Broadcast-meddelanden till alla klient anslutningar i hubben. |
+> | Microsoft. SignalRService/WebPubSub/användare/skicka/åtgärd | Skicka meddelanden till användare, som kan bestå av flera klient anslutningar. |
+> | Microsoft. SignalRService/WebPubSub/User/Read | Kontrol lera användar förekomst. |
 
 ### <a name="microsoftweb"></a>Microsoft. Web
 
@@ -2470,6 +2490,8 @@ Azure-tjänst: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/hostingenvironments/återuppta/åtgärd | Återuppta värd miljöer. |
 > | Microsoft. Web/hostingenvironments/Suspend/åtgärd | Pausa värd miljöer. |
 > | Microsoft. webb/hostingenvironments/kapacitet/kapacitet/läsning | Få värd miljöer. |
+> | Microsoft. Web/hostingEnvironments/Configurations/Network/Read | Hämta nätverks konfiguration för en App Service-miljön |
+> | Microsoft. Web/hostingEnvironments/Configurations/Network/Write | Uppdatera nätverks konfigurationen för en App Service-miljön. |
 > | Microsoft. Web/hostingenvironments/Detections/Read | Hämta identifierare för värd miljöer. |
 > | Microsoft. Web/hostingenvironments/Diagnostics/Read | Hämta diagnostik för värd miljöer. |
 > | Microsoft. Web/hostingEnvironments/eventGridFilters/Delete | Ta bort Event Grid filter på värd miljön. |
@@ -2887,6 +2909,9 @@ Azure-tjänst: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/staticSites/builds/listappsettings/Action | Visa inställningar för appar för en statisk plats version |
 > | Microsoft. Web/staticSites/builds/zipdeploy/Action | Distribuera en statisk plats version från zippat innehåll |
 > | Microsoft. Web/staticSites/builds/config/Write | Skapa eller uppdatera appinställningar för en statisk plats version |
+> | Microsoft. Web/staticSites/builds/userProvidedFunctionApps/Delete | Koppla från en användare som tillhandahållits Funktionsapp från en statisk plats version |
+> | Microsoft. Web/staticSites/builds/userProvidedFunctionApps/Read | Hämta en statisk webbplats bygge-funktion appar |
+> | Microsoft. Web/staticSites/builds/userProvidedFunctionApps/Write | Registrera en användare som tillhandahålls Funktionsapp med en statisk plats version |
 > | Microsoft. Web/staticSites/config/Write | Skapa eller uppdatera appinställningar för en statisk plats |
 > | Microsoft. Web/staticSites/customdomains/Write | Skapa en anpassad domän för en statisk plats |
 > | Microsoft. Web/staticSites/customdomains/Delete | Ta bort en anpassad domän för en statisk plats |
@@ -2897,6 +2922,9 @@ Azure-tjänst: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/staticSites/privateEndpointConnections/Read | Hämta en privat slut punkts anslutning eller listan över privata slut punkts anslutningar för en statisk plats |
 > | Microsoft. Web/staticSites/privateEndpointConnections/Delete | Ta bort en privat slut punkts anslutning för en statisk plats |
 > | Microsoft. Web/staticSites/privateLinkResources/Read | Hämta resurser för privat länk |
+> | Microsoft. Web/staticSites/userProvidedFunctionApps/Delete | Koppla från en användare som tillhandahållits Funktionsapp från en statisk plats |
+> | Microsoft. Web/staticSites/userProvidedFunctionApps/Read | Hämta användare med tillhandahållen statisk webbplats funktion appar |
+> | Microsoft. Web/staticSites/userProvidedFunctionApps/Write | Registrera en användare som tillhandahålls Funktionsapp med en statisk plats |
 
 ## <a name="containers"></a>Containers
 
@@ -3035,6 +3063,7 @@ Azure-tjänst: [Azure Kubernetes service (AKS)](../aks/index.yml)
 > | Microsoft. container service/locations/operationresults/Read | Hämtar status för ett asynkront åtgärds resultat |
 > | Microsoft. container service/locations/Operations/Read | Hämtar status för en asynkron åtgärd |
 > | Microsoft. container service/locations/Orchestration/Read | Visar en lista över de Dirigerare som stöds |
+> | Microsoft. container service/locations/OS-Options/Read | Hämtar OS-alternativ |
 > | Microsoft. container service/managedClusters/Read | Hämta ett hanterat kluster |
 > | Microsoft. container service/managedClusters/Write | Skapar ett nytt hanterat kluster eller uppdaterar ett befintligt |
 > | Microsoft. container service/managedClusters/Delete | Tar bort ett hanterat kluster |
@@ -3580,6 +3609,10 @@ Azure-tjänst: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/factors/privateEndpointConnectionProxies/validate/Action | Verifiera en proxy för anslutning till privat slut punkt. |
 > | Microsoft. DataFactory/factors/privateEndpointConnectionProxies/operationresults/Read | Läs resultatet av att skapa en proxy för anslutning till privat slut punkt. |
 > | Microsoft. DataFactory/factors/privateEndpointConnectionProxies/operationstatuses/Read | Läs status för att skapa en proxy för anslutning till privat slut punkt. |
+> | Microsoft. DataFactory/factors/privateEndpointConnections/Read | Läs privat slut punkts anslutning. |
+> | Microsoft. DataFactory/factors/privateEndpointConnections/Write | Skapa eller uppdatera privat slut punkts anslutning. |
+> | Microsoft. DataFactory/factors/privateEndpointConnections/Delete | Ta bort privat slut punkts anslutning. |
+> | Microsoft. DataFactory/factors/privateLinkResources/Read | Läs privat länk resurs. |
 > | Microsoft. DataFactory/factors/queryFeaturesValue/Read | Läser funktions värden för exponerings kontroll för en lista med funktioner. |
 > | Microsoft. DataFactory/factors/querypipelineruns/Read | Läser resultatet av pipeline-körningar. |
 > | Microsoft. DataFactory/factors/querytriggerruns/Read | Läser resultatet av utlösare som körs. |
@@ -4162,6 +4195,7 @@ Azure-tjänst: [Azure Cosmos DB](../cosmos-db/index.yml)
 > | Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings/operationResults/Read | Läs status för den asynkrona åtgärden. |
 > | Microsoft.DocumentDB/databaseAccounts/Usage/Read | Läser databas kontots användningar. |
 > | Microsoft.DocumentDB/locations/deleteVirtualNetworkOrSubnets/Action | Meddelar Microsoft.DocumentDB att VirtualNetwork eller undernät tas bort |
+> | Microsoft.DocumentDB/locations/Read | Läs metadata för en plats eller lista alla metadata för platsen |
 > | Microsoft.DocumentDB/locations/deleteVirtualNetworkOrSubnets/operationResults/Read | Läs status för asynkron åtgärd för deleteVirtualNetworkOrSubnets |
 > | Microsoft.DocumentDB/locations/operationsStatus/Read | Läser status för asynkrona åtgärder |
 > | Microsoft.DocumentDB/locations/restorableDatabaseAccounts/Read | Läs ett återställas Database-konto eller lista alla återställas Database-konton |
@@ -4571,6 +4605,9 @@ Azure-tjänst: [Azure SQL Database](../azure-sql/database/index.yml), [Azure SQL
 > | Microsoft. SQL/Servers/Keys/Delete | Tar bort en befintlig server nyckel. |
 > | Microsoft. SQL/Servers/operationResults/Read | Hämtar pågående Server åtgärder |
 > | Microsoft. SQL/Server/Operations/Read | Returnera listan över åtgärder som utförts på servern |
+> | Microsoft. SQL/Servers/outboundFirewallRules/Read | Läs regel för utgående brand vägg |
+> | Microsoft. SQL/Servers/outboundFirewallRules/Delete | Ta bort utgående brand Väggs regel |
+> | Microsoft. SQL/Servers/outboundFirewallRules/Write | Skapa utgående brand Väggs regel |
 > | Microsoft. SQL/Servers/privateEndpointConnectionProxies/updatePrivateEndpointProperties/Action | Används av NRP till bakfyllnings egenskaper till en privat slut punkts anslutning |
 > | Microsoft. SQL/Servers/privateEndpointConnectionProxies/validate/Action | Verifierar en privat slut punkts anslutning skapa samtal från NRP sida |
 > | Microsoft. SQL/Servers/privateEndpointConnectionProxies/Read | Returnerar listan över anslutnings-proxy för privata slut punkter eller hämtar egenskaperna för den angivna anslutningen till den privata slut punkten. |
@@ -4947,6 +4984,10 @@ Azure-tjänst: [azure datautforskaren](/azure/data-explorer/)
 > | Microsoft. Kusto/kluster/PrincipalAssignments/Read | Läser en resurs för kluster huvud tilldelning. |
 > | Microsoft. Kusto/kluster/PrincipalAssignments/Write | Skriver en resurs för tilldelning av kluster objekt. |
 > | Microsoft. Kusto/kluster/PrincipalAssignments/Delete | Tar bort en resurs för kluster huvud tilldelning. |
+> | Microsoft. Kusto/kluster/PrivateEndpointConnectionProxies/Read | Läser en proxy för en privat slut punkts anslutning |
+> | Microsoft. Kusto/kluster/PrivateEndpointConnectionProxies/Write | Skriver en proxy för anslutning till privat slut punkt |
+> | Microsoft. Kusto/kluster/PrivateEndpointConnectionProxies/Delete | Tar bort en proxy för anslutning till privat slut punkt |
+> | Microsoft. Kusto/kluster/PrivateEndpointConnectionProxies/validate/åtgärd | Verifierar en anslutning till en privat slut punkt |
 > | Microsoft. Kusto/Clusters/SKU/Read | Läser en kluster-SKU-resurs. |
 > | Microsoft. Kusto/locations/CheckNameAvailability/Action | Kontrollerar tillgänglighet för resurs namn. |
 > | Microsoft. Kusto/locations/GetNetworkPolicies/Action | Hämtar principer för nätverks avsikt |
@@ -5285,6 +5326,11 @@ Azure-tjänst: [Azure bot service](/azure/bot-service/)
 > | Microsoft. BotService/checknameavailability/providers/Microsoft. Insights/diagnosticSettings/Write | Skapar eller uppdaterar den diagnostiska inställningen för resursen |
 > | Microsoft. BotService/checknameavailability/providers/Microsoft. Insights/logDefinitions/Read | Hämtar de tillgängliga loggarna för &lt; resursens namn&gt; |
 > | Microsoft. BotService/checknameavailability/providers/Microsoft. Insights/metricDefinitions/Read | Skapar eller uppdaterar den diagnostiska inställningen för resursen |
+> | Microsoft. BotService/hostsettings/Read | Hämta de inställningar som krävs för att använda bot-tjänsten |
+> | Microsoft. BotService/hostsettings/providers/Microsoft. Insights/diagnosticSettings/Read | Hämtar den diagnostiska inställningen för resursen |
+> | Microsoft. BotService/hostsettings/providers/Microsoft. Insights/diagnosticSettings/Write | Skapar eller uppdaterar den diagnostiska inställningen för resursen |
+> | Microsoft. BotService/hostsettings/providers/Microsoft. Insights/logDefinitions/Read | Hämtar de tillgängliga loggarna för &lt; resursens namn&gt; |
+> | Microsoft. BotService/hostsettings/providers/Microsoft. Insights/metricDefinitions/Read | Skapar eller uppdaterar den diagnostiska inställningen för resursen |
 > | Microsoft. BotService/listauthserviceproviders/providers/Microsoft. Insights/diagnosticSettings/Read | Hämtar den diagnostiska inställningen för resursen |
 > | Microsoft. BotService/listauthserviceproviders/providers/Microsoft. Insights/diagnosticSettings/Write | Skapar eller uppdaterar den diagnostiska inställningen för resursen |
 > | Microsoft. BotService/listauthserviceproviders/providers/Microsoft. Insights/logDefinitions/Read | Hämtar de tillgängliga loggarna för &lt; resursens namn&gt; |
@@ -5611,14 +5657,19 @@ Azure-tjänst: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. CognitiveServices/konton/ImageSearch/trending/åtgärd | Hämta bilder för utveckling. |
 > | Microsoft. CognitiveServices/Accounts/ImmersiveReader/getcontentmodelforreader/Action | Skapar en avancerad spårningssession |
 > | Microsoft. CognitiveServices/Accounts/LUIS/predict/Action | Hämtar den publicerade slut punkts förutsägelsen för den givna frågan. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/omärkt/åtgärd | Lägger till omärkta data i motsvarande program |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/Write | Skapar en ny LUIS-app. Uppdaterar namnet eller beskrivningen av programmet. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/azureaccounts/Action | Tilldelar programmet ett Azure-konto. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/Delete | Tar bort ett program. |
-> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/Read | Hämtar programinformationen. Visar en lista över alla användar program. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/Read | Hämtar programinformationen. Visar en lista över alla användar program. Returnerar listan över program * |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/import/åtgärd | Importerar ett program till LUIS, programmets JSON ska ingå i begär ande texten. Returnerar nytt app-ID. |
 > | Microsoft. CognitiveServices/konton/LUIS/Apps/publicera/åtgärd | Publicerar en specifik version av programmet. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/querylogsasync/Action | Starta en nedladdnings förfrågan för den senaste månaden för programmet. |
 > | Microsoft. CognitiveServices/konton/LUIS/Apps/flytta/åtgärd | Flyttar appen till en annan LUIS som redigerar Azure-resurs. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/Subscriptions/Action | Tilldelar prenumerations informationen till det angivna programmet. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/omärkt/åtgärd | Överför omärkta data från CSV-fil till programmet |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/testdatasets/Action | *NotDefined* |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/activeversion/Write | Uppdaterar den aktuella aktiva versionen av den angivna appen |
 > | Microsoft. CognitiveServices/konton/LUIS/Apps/assistenter/läsa | **DETTA API ÄR FÖRÅLDRAT.** |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/azureaccounts/Read | Hämtar de LUIS Azure-konton som tilldelats programmet för användaren som använder sin Azure Resource Manager token. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/azureaccounts/Delete | Hämtar LUIS Azure-konton för användaren som använder sin Azure Resource Manager-token. |
@@ -5628,6 +5679,8 @@ Azure-tjänst: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/customprebuiltdomains/Read | Hämtar alla tillgängliga anpassade, inbyggda domäner för en speciell kultur får alla tillgängliga anpassade, inbyggda domäner för alla kulturer |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/Domains/Read | Hämtar tillgängliga program domäner. |
 > | Microsoft. CognitiveServices/konton/LUIS/Apps/slut punkter/läsning | Returnerar de tillgängliga distributions regionerna och URL: erna för slut punkten |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/metadata/Read | Hämta programmets metadata |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/metadata/Write | Uppdaterar programmets metadata |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/Permissions/Write | Lägger till en användare i listan över tillåtna användare för att komma åt det här LUIS-programmet. Ersätter listan aktuella användare åtkomst med den som skickas i bröd texten. * |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/Permissions/Read | Hämtar listan över användar-e-postmeddelanden som har behörighet att komma åt ditt program.  |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/Permissions/Delete | Tog bort en användare till listan över tillåtna användare för att komma åt det här LUIS-programmet. |
@@ -5635,8 +5688,24 @@ Azure-tjänst: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/publishsettings/Write | Uppdaterar program publicerings inställningarna. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/querylogs/Read | Hämtar frågeprocessorn för den senaste månaden för programmet. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/querylogsasync/Read | Hämta status för hämtnings förfrågan för Query-loggar. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/runtimepermissions/bot/åtgärd | Lägger till en bot runtime-behörighet till programmet |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/runtimepermissions/robot/Delete | Tog bort en behörighet för bot runtime-program |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/runtimepermissions/robot/Read | Hämtar robot runtime-behörigheter för programmet. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/Settings/Read | Hämta program inställningarna |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/Settings/Write | Uppdaterar program inställningarna |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/lotss/predict/åtgärd | Hämtar publicerade förutsägelser för den angivna platsen med den givna frågan. Den aktuella maximala frågans storlek är 500 tecken. |
+> | Microsoft. CognitiveServices/konton/LUIS/Apps/platser/utvärderingar/åtgärd | *NotDefined* |
+> | Microsoft. CognitiveServices/konton/LUIS/Apps/platser/utvärderingar/resultat/läsa | *NotDefined* |
+> | Microsoft. CognitiveServices/konton/LUIS/Apps/platser/utvärderingar/status/läsa | *NotDefined* |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/lots/predict/Read | Hämtar publicerade förutsägelser för den angivna platsen med den givna frågan. Den aktuella maximala frågans storlek är 500 tecken. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/statistik/detailedendpointhitshistory/Read | Hämtar historik för slut punkts träffar för varje dag för en specifik tidsram med information om fack och region. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/Subscriptions/Read | Returnera information om tilldelade prenumerationer för programmet |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/Subscriptions/Delete | Tar bort prenumerationen med angivet ID från tilldelade prenumerationer för programmet |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/testdatasets/Delete | Tar bort en specifik data uppsättning från ett angivet program. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/testdatasets/Read | Hämtar de registrerade metadata för batch-test. Returnerar en lista med alla data uppsättningar för batch-test för ett angivet program. * |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/testdatasets/Write | Uppdaterar de senaste test resultaten för en befintlig batch-testdata uppsättning för ett angivet program. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/testdatasets/Hämta/läsa | Hämtar data uppsättningen med angivet ID. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/testdatasets/Rename/Write | Uppdaterar namnet på en befintlig Journal test data uppsättning för ett angivet program. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/usagescenarios/Read | Hämtar användnings scenarier för tillgängliga program. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/Train/Action | Skickar en tränings förfrågan för en version av ett angivet LUIS-program. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/Clone/åtgärd | Skapar en ny program version som motsvarar den aktuella ögonblicks bilden av den valda program versionen. |
@@ -5644,11 +5713,17 @@ Azure-tjänst: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/Read | Hämtar information om program versionen. Hämtar information om listan över program versioner. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/import/Action | Importerar en ny version till ett LUIS-program, versionens JSON ska ingå i begär ande texten. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/Write | Uppdaterar namnet eller beskrivningen av program versionen. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/predict/Action | Hämtar de publicerade förutsägelserna för den angivna program versionen med den givna frågan. Den aktuella maximala frågans storlek är 500 tecken. |
+> | Microsoft. CognitiveServices/konton/LUIS/Apps/versioner/utvärderingar/åtgärd | *NotDefined* |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/statistik/åtgärd | Beräkna utbildnings statistik för program version |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/releasedispatch/Action | Släpper en ny ögonblicks bild av den valda program versionen som ska användas av sändnings program |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/assignedkey/Write | **DETTA ÄR INAKTUELLT** |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/assignedkey/Read | **DETTA ÄR INAKTUELLT** |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/closedlists/Write | Lägger till en lista entitet i LUIS-appen. Lägger till en grupp med under listor till en befintlig closedlist. * uppdaterar den stängda List modellen. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/closedlists/Delete | Tar bort en stängd List-entitet från programmet. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/closedlists/Read | Hämtar information om en stängd List modell. Hämtar information om closedlist-modeller. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/closedlists/föreslå/åtgärd | föreslå nya poster för befintliga eller nyligen skapade stängda listor |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/closedlists/för förförslag/läsa | Läser in föregående förslags resultat för entiteten för stängd lista. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/closedlists/roles/Write | Lägger till en roll för en stängd lista Entity-modell uppdaterar en roll för en stängd List enhets modell. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/closedlists/roles/Delete | Tar bort rollen för en stängd List enhets modell. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/closedlists/roles/Read | Hämtar rollen för en stängd List enhets modell. Hämtar roller för en stängd List enhets modell. |
@@ -5674,7 +5749,9 @@ Azure-tjänst: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/customprebuiltentities/roles/Read | Hämtar rollen för en anpassad fördefinierad domän organisations modell. Hämtar rollerna för en anpassad fördefinierad domän organisations modell. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/customprebuiltintents/Write | Lägger till en anpassad fördefinierad modell för domän avsikt i programmet. Ta bort det här syftet med hjälp av [ta bort avsikten](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c1c) med avsikts-ID. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/customprebuiltintents/Read | Hämtar anpassad fördefinierad information om den här program versionen. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/customprebuiltintentsbatch/Write | Lägger till anpassade fördefinierade domän syften i program i batch |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/customprebuiltmodels/Read | Hämtar information om alla anpassade, inbyggda domän modeller för den här program versionen. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/detailedmodels/Read | *NotDefined* |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/entities/Write | Lägger till en enkel enhets-Extractor i program versionen. Uppdaterar namnet på en enhets extrahering. Uppdaterar enhetens Extractor. * |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/entities/Delete | Tar bort en enkel enhets-Extractor från program versionen. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/entities/Read | Hämtar information om den enkla enhets modellen. Hämtar information om de enkla enhets modellerna i program versionen. |
@@ -5686,7 +5763,10 @@ Azure-tjänst: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/entities/roles/Delete | Tar bort rollen för en enkel enhets modell. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/entities/roles/Read | Hämtar rollen för en enkel enhets modell. Hämtar roller för en enkel enhets modell. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/entities/roles/föreslå/läsa | Föreslår exempel som förbättrar noggrannheten i enhets modellen. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/entities/stats/endpointscores/Read | Hämtar antalet gånger som enhets modellen har fått det främsta avsikten |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/entities/föreslå/läsa | Föreslår exempel som förbättrar noggrannheten i enhets modellen. |
+> | Microsoft. CognitiveServices/konton/LUIS/Apps/-versioner/utvärderingar/resultat/läsa | *NotDefined* |
+> | Microsoft. CognitiveServices/konton/LUIS/Apps/-versioner/utvärderingar/status/läsa | *NotDefined* |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/exempel/Write | Lägger till ett exempel på en etikett i program versionen. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/exempel/Write | Lägger till en batch med etiketterade exempel som inte är dubbletter i det angivna programmet. Batch kan inte inkludera hierarkiska underordnade entiteter. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/exempel/Delete | Tar bort etiketten med angivet ID. |
@@ -5696,6 +5776,8 @@ Azure-tjänst: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/externalkeys/Read | **DETTA ÄR INAKTUELLT** |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/externalkeys/Write | **DETTA ÄR INAKTUELLT** |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/features/Read | Hämtar alla program versions funktioner. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/featuresuggestion/status/Read | Hämta program version funktions förslags status |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/featuresuggestion/Suggestions/Read | Hämta program version funktions förslag |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/hierarchicalentities/Write | Lägger till en hierarkisk enhets-Extractor i program versionen. Uppdaterar namn och underordnade för en enhets extraherings modell för hierarki. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/hierarchicalentities/Delete | Tar bort en ordnad enhets-Extractor från program versionen. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/hierarchicalentities/Read | Hämtar information om den hierarkiska entitets modellen. Hämtar information om de hierarkiska enhets modellerna i program versionen. |
@@ -5708,14 +5790,22 @@ Azure-tjänst: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. CognitiveServices/konton/LUIS/Apps/versioner/avsikter/Skriv åtgärder | Lägger till en klassificering av avsikt till program versionen. Uppdaterar namnet på en Intent klassificerare. |
 > | Microsoft. CognitiveServices/konton/LUIS/Apps/versioner/avsikter/borttagningar | Tar bort en klassificering av avsikt från program versionen. |
 > | Microsoft. CognitiveServices/konton/LUIS/Apps/versioner/avsikter/läsningar | Hämtar information om avsikts modellen. Hämtar information om avsikts modeller i program versionen. |
+> | Microsoft. CognitiveServices/konton/LUIS/Apps/-versioner/avsikter/entitiescount/Read | Hämtar antalet entiteter för den märkta yttranden för det aktuella syftet i den aktuella aktiviteten i den aktuella appen. |
 > | Microsoft. CognitiveServices/konton/LUIS/Apps/versioner/avsikter/funktioner/Skriv åtgärder | Lägger till en funktions relation för en avsikts modell uppdaterar listan över funktions relationer för avsikten * |
 > | Microsoft. CognitiveServices/konton/LUIS/Apps/versioner/avsikter/funktioner/ta bort | Tar bort funktions relationen för en avsikts modell. |
 > | Microsoft. CognitiveServices/konton/LUIS/Apps/versioner/avsikter/funktioner/läsa | Hämtar funktions relationer för en avsikts modell. |
 > | Microsoft. CognitiveServices/konton/LUIS/Apps/-versioner/avsikter/patternrules/Read | Hämtar mönster för ett bestämt avsikts syfte. |
+> | Microsoft. CognitiveServices/konton/LUIS/Apps/-versioner/avsikter/statistik/läsning | Hämta övnings statistik för program version statistik per avsikt |
+> | Microsoft. CognitiveServices/konton/LUIS/Apps/-versioner/avsikter/statistik/endpointscores/Read | Hämtar det antal gånger som den avsikts modell som har beräknats som översta avsikt |
 > | Microsoft. CognitiveServices/konton/LUIS/Apps/-versioner/-beställare/föreslå/läsa | Föreslår exempel som förbättrar noggrannheten i avsikts modellen. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/labeleddata/Read | Hämtar de märkta data för det angivna programmet |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/listprebuilts/Read | Hämtar alla tillgängliga förbyggda entiteter för programmet baserat på programmets kultur. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/Models/Read | Hämtar information om program versions modeller. Hämtar information om en modell. * |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/Models/endpointscoreshistory/Read | Hämtar antalet gånger som den avsikts modell som har belagts som den viktigaste konverterings historiken |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/Models/-exempel/Read | Hämtar en lista över modell exempel. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/Models/granskning/läsa | Hämtar den märkta yttranden för den aktuella modellen i den aktuella aktiviteten i den aktuella appen. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/Models/reviewlabels/Read | Hämtar den märkta yttranden för den aktuella modellen i den aktuella aktiviteten i den aktuella appen. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/Models/reviewpredictions/Read | Hämtar den märkta yttranden för den aktuella modellen i den aktuella aktiviteten i den aktuella appen. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/patternanyentities/Write | Lägger till ett mönster. valfri enhets-Extractor till program versionen. Uppdaterar mönstret. valfri enhets-Extractor. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/patternanyentities/Delete | Tar bort ett mönster. alla entitets-Extractor från program versionen. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/patternanyentities/Read | Hämtar information om mönstret. alla enhets modeller. Hämtar information om mönstret. alla enhets modeller i program versionen. |
@@ -5735,12 +5825,15 @@ Azure-tjänst: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/phraselists/Write | Skapar en ny phraselist-funktion. Uppdaterar fraser, tillstånd och namn för phraselist-funktionen. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/phraselists/Delete | Tar bort en phraselist-funktion från ett program. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/phraselists/Read | Hämtar information om phraselist-funktioner. Hämtar alla phraselist-funktioner för program versionen. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/phraselists/föreslå/åtgärd | föreslå nya poster för befintliga eller nyligen skapade fras listor |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/phraselists/för förförslag/läsa | Läser in föregående förslags resultat för funktionen phraselist. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/rekonstruerat/Write | Lägger till en lista över fördefinierade enhets utdrag i program versionen. |
 > | Microsoft. CognitiveServices/konton/LUIS/Apps/versioner/förbyggda/ta bort | Tar bort en fördefinierad enhets-Extractor från program versionen. |
 > | Microsoft. CognitiveServices/konton/LUIS/Apps/versioner/förbyggda/lästa | Hämtar information om den fördefinierade entitets modellen. Hämtar information om färdiga enhets modeller i program versionen. |
 > | Microsoft. CognitiveServices/konton/LUIS/Apps/versioner/förbyggda/roller/Skriv | Lägger till en roll för en fördefinierad Entity-modell uppdaterar en roll för en fördefinierad Entity-modell. |
 > | Microsoft. CognitiveServices/konton/LUIS/Apps/versioner/förbyggda/roller/ta bort | Tar bort rollen för en fördefinierad Entity-modell. |
 > | Microsoft. CognitiveServices/konton/LUIS/Apps/versioner/förbyggda/roller/läsa | Hämtar rollen för en fördefinierad Entity-modell. Hämtar roller för en fördefinierad Entity-modell. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/predict/Read | Hämtar de publicerade förutsägelserna för den angivna program versionen med den givna frågan. Den aktuella maximala frågans storlek är 500 tecken. Hämtar förutsägelsen (avsikter/entiteter) för den uttryck som angetts. * |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/regexentities/Write | Lägger till ett reguljärt uttryck med enhets-Extractor i program versionen. Uppdaterar enhets modellen för reguljära uttryck. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/regexentities/Delete | Tar bort en enhets modell för reguljärt uttryck från program versionen. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/regexentities/Read | Hämtar information om en enhets modell för reguljärt uttryck. Hämtar information om enhets modeller för reguljära uttryck i program versionen. |
@@ -5749,18 +5842,82 @@ Azure-tjänst: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/regexentities/roles/Read | Hämtar rollerna för en entitets modell för reguljärt uttryck. Hämtar rollen för en entitets modell för reguljärt uttryck. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/Settings/Read | Hämtar inställningarna för program versionen. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/Settings/Write | Uppdaterar inställningarna för program versionen. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/State/Read | Hämtar en flagga som anger om program versionen har tränats tidigare |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/stats/Read | Hämta utbildnings statistik för program version |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/stats/endpointhitshistory/Read | Hämtar historik för slut punkts träffar för varje dag under en specifik tidsram. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/stats/examplesperentity/Read | Hämtar antalet exempel per entitet för ett angivet program |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/stats/labelsperentity/Read | Hämtar antalet etiketter per entitet för ett angivet program |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/stats/labelsperintent/Read | Hämtar antalet etiketter per avsikt för ett angivet program |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/stats/Operations/Read | Hämta information om användning av program versions statistik information om åtgärder som inte gått ut, hämta program version utbildning för inaktuella åtgärder * |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/statsmetadata/Read | Hämta metadata för utbildnings statistik för program version |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/föreslå/ta bort | Tog bort en slut punkt uttryck. Den här uttryck finns i listan "granska slut punkts yttranden". |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/testdatasets/Run/Read | Kör batch-testet som angetts av programmets ID och data uppsättnings-ID: t för angivet |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/träna/Read | Hämtar utbildnings status för alla modeller (avsikter och entiteter) för den angivna program versionen. Du måste anropa träna-API: et för att träna LUIS-appen innan du anropar det här API: et för att få utbildnings status. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Apps/versions/trainingstatus/Read | Hämtar en flagga som anger om program versionen har tränats tidigare |
 > | Microsoft. CognitiveServices/Accounts/LUIS/azureaccounts/Read | Hämtar LUIS Azure-konton för användaren som använder sin Azure Resource Manager-token. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/compositesmigration/Apps/versions/Migrate/Action | Migrera sammansatta objekt för program version |
+> | Microsoft. CognitiveServices/Accounts/LUIS/compositesmigration/Apps/versions/Operations/Migrate/Read | Hämta sammansatta migrerings resultat |
+> | Microsoft. CognitiveServices/Accounts/LUIS/compositesmigration/Apps/versions/Operations/Migrate/status/Read | Hämta åtgärds status för sammansatt migrering |
+> | Microsoft. CognitiveServices/Accounts/LUIS/compositesmigration/needmigrationapps/Read | Hämta program som behöver sammansatta migreringar |
+> | Microsoft. CognitiveServices/Accounts/LUIS/konversations/previewfeatures/Read | Hämtar status för för hands versions funktioner för aktuell ägare. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Apps/classifierslabelscount/Read | Hämta etikett antalet för varje klassificerare |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Apps/Documents/Models/Trellis/Action | Extraherings åtgärd efter Trellis |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Apps/Documents/Models/Operations/Trellis/Read | Hämta svar på Trellis extraherings åtgärd |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Apps/Documents/Models/Operations/Trellis/status/Read | Hämta åtgärds status för Trellis-extrahering |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Apps/extractorslabelscount/Read | Hämta etikett antalet för varje Extractor |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Apps/Models/modeltracker/Action | Initiaion begäran om post modell Spårare |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Apps/Models/predict/Action | Utlös åtgärd för dokument förutsägelse |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Apps/Models/predicttext/Action | Utlös åtgärd för dokument text förutsägelse |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Apps/Models/Clone/Action | Klonar en modell i samma app-version. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Apps/Models/Operations/modeltracker/Read | Hämta åtgärds svaret för modell Spårare |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Apps/Models/Operations/modeltracker/metadata/Read | Hämta svar på modell spåraren åtgärd |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Apps/Models/Operations/modeltracker/status/Read | Åtgärds status för att hämta modell Spårare |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Apps/Models/Operations/predict/Read | Hämta svar på dokument förutsägelse åtgärd |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Apps/Models/Operations/predict/status/Read | Hämta åtgärds status för dokument förutsägelse |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Apps/Models/Operations/predicttext/Read | Hämta dokument text förutsägelse åtgärds svar |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Apps/Models/Operations/predicttext/status/Read | Hämta åtgärds status för dokument text förutsägelse |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Apps/Operations/Read | Hämta åtgärder för ett program |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Entity/exploratorysuggestions/Suggestions/Action | Få förslag på prov enheter för en bestämd modell. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Entity/exploratorysuggestions/Results/Read | Hämta de N främsta prov förslagen för en bestämd modell. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/Entity/exploratorysuggestions/status/Read | Hämta bearbetnings status för underenhets förslag för en speciell modell. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/entitysuggestions/Suggestions/Action | Hämta förslag för en speciell modell. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/entitysuggestions/Results/Read | Hämta förslag för en speciell modell. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/entitysuggestions/status/Read | Hämta förslags bearbetnings status för en speciell modell. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/featurerepositorysearch/Read | *NotDefined* |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/featurerepositorystore/features/data/Read | Åtkomst till en speciell data ström. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/featurerepositorystore/manifest/Read | Hämta manifest-objektet för det globala arkivet. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/storageaccounts/containers/Read | Hämtar information om lagrings konto behållare. Hämtar de tidigare registrerade behållarna som tillhör ett lagrings konto. * |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/storageaccounts/containers/status/Action | Hämtar förloppet för de angivna lagrings konto behållarna. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/storageaccounts/containers/prepare/åtgärd | Köa en begäran om att förbereda en lagrings konto behållare som ska användas i dokument program. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/storageaccounts/containers/Sync/Action | Köa en begäran om att uppdatera en redan för beredd lagrings konto behållare. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/storageaccounts/containers/Write | Uppdatera lagrings konto informationen. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/storageaccounts/containers/Operations/prepare/status/Read | Hämtar status för lagrings konto behållarens förberedelse åtgärd. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/storageaccounts/containers/Operations/Sync/status/Read | Hämtar status för uppdaterings åtgärden för lagrings konto behållaren. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/storageaccounts/containers/prepare/result/Read | Hämtar resultatet från den senaste förberedelse åtgärden. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Documents/storageaccounts/containers/Sync/result/Read | Hämtar resultatet från den senaste synchornization-åtgärden. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/externalkeys/Write | **DETTA API ÄR FÖRÅLDRAT.** |
 > | Microsoft. CognitiveServices/Accounts/LUIS/externalkeys/Delete | **DETTA API ÄR FÖRÅLDRAT.** |
 > | Microsoft. CognitiveServices/Accounts/LUIS/externalkeys/Read | **DETTA API ÄR FÖRÅLDRAT.** |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Package/socket/gzip/Read | Paket som publicerats LUIS-program som GZip |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Package/versions/gzip/Read | Paket som har tränat LUIS program som GZip |
+> | Microsoft. CognitiveServices/Accounts/LUIS/ping/Read | *NotDefined* |
+> | Microsoft. CognitiveServices/Accounts/LUIS/previewfeatures/Read | Hämtar status för för hands versions funktioner för aktuell ägare. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/programmatickey/Write | **DETTA API ÄR FÖRÅLDRAT.** |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Resources/Apps/Count/Read | Hämtar antalet program som ägs av användaren. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/Resources/Apps/versions/Count/Read | Hämtar antalet versioner av ett angivet program. |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Subscriptions/Write | **DETTA API ÄR FÖRÅLDRAT.** |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Subscriptions/Delete | **DETTA API ÄR FÖRÅLDRAT.** |
 > | Microsoft. CognitiveServices/Accounts/LUIS/Subscriptions/Read | **DETTA API ÄR FÖRÅLDRAT.** |
+> | Microsoft. CognitiveServices/Accounts/LUIS/User/termsofuse/Action | *NotDefined* |
+> | Microsoft. CognitiveServices/Accounts/LUIS/User/Read | *NotDefined* |
+> | Microsoft. CognitiveServices/Accounts/LUIS/User/Delete | *NotDefined* |
+> | Microsoft. CognitiveServices/Accounts/LUIS/User/Write | *NotDefined* |
+> | Microsoft. CognitiveServices/Accounts/LUIS/User/authoringazureaccount/Write | Migrerar användarens redigerings nyckel för APIM till en Azure-resurs. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/User/collaboratives/Read | Hämtar användare per app för alla appar som användaren har medarbetare på. |
+> | Microsoft. CognitiveServices/Accounts/LUIS/User/detailedinfo/Read | *NotDefined* |
+> | Microsoft. CognitiveServices/Accounts/LUIS/User/programmatickey/Read | *NotDefined* |
+> | Microsoft. CognitiveServices/Accounts/LUIS/User/programmatickeywithendpointurl/Read | *NotDefined* |
+> | Microsoft. CognitiveServices/Accounts/LUIS/User/unownedappsowners/Read | Hämtar ägare av de appar som användaren samarbetar med. |
 > | Microsoft. CognitiveServices/Accounts/MetricsAdvisor/Alert/avvikelse/konfigurationer/Skriv | Skapa eller uppdatera konfiguration av avvikelse aviseringar |
 > | Microsoft. CognitiveServices/Accounts/MetricsAdvisor/Alert/avvikelse/konfigurationer/ta bort | Ta bort konfiguration av avvikelse aviseringar |
 > | Microsoft. CognitiveServices/Accounts/MetricsAdvisor/Alert/avvikelse/konfigurationer/läsa | Fråga en enskild avvikelse aviserings konfiguration |
@@ -5847,6 +6004,43 @@ Azure-tjänst: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. CognitiveServices/Accounts/QnAMaker/kunskaps-/Create/Write | Asynkron åtgärd för att skapa en ny kunskaps databas. |
 > | Microsoft. CognitiveServices/Accounts/QnAMaker/kunskaps konton/Hämta/läsa | Hämta kunskaps databas. |
 > | Microsoft. CognitiveServices/Accounts/QnAMaker/Operations/Read | Hämtar information om en angiven tids krävande åtgärd. |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/Models/Action | Den här metoden kan användas för att kopiera en modell från en plats till en annan. Om mål prenumerationen |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/Webhooks/Action | Webhooks-åtgärder |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/data uppsättningar/Write | Skapa eller uppdatera en data uppsättning |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/data uppsättningar/Delete | Ta bort en datauppsättning |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/data uppsättningar/läser | Hämta en eller flera data uppsättningar |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/data uppsättningar/filer/läsa | Hämta en eller flera DataSet-filer |
+> | Microsoft. CognitiveServices/konton/SpeechServices/speechrest/slut punkter/skrivning | Skapa eller uppdatera en slut punkt |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/endpoints/Delete | Ta bort en slut punkt |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/endpoints/Read | Hämta en eller flera slut punkter |
+> | Microsoft. CognitiveServices/konton/SpeechServices/speechrest/slut punkter/filer/loggar/skriva | Skapa en export av slut punkts data |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/slut punkter/filer/loggar/ta bort | Ta bort några eller alla anpassade modell slut punkts loggar |
+> | Microsoft. CognitiveServices/konton/SpeechServices/speechrest/slut punkter/filer/loggar/läsa | Hämta en eller flera anpassade modell slut punkts loggar |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/utvärderings/Write | Skapa eller uppdatera en utvärdering |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/utvärderings/Delete | Ta bort en utvärdering |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/utvärderings/Read | Hämta en eller flera utvärderingar |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/utvärderingar/filer/läsa | Hämta en eller flera utvärderings filer |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/healthstatus/Read | Hämta hälso status |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/Models/Write | Skapa eller uppdatera en modell. |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/Models/Delete | Ta bort en modell |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/Models/Read | Hämta en eller flera modeller |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/Models/Base/manifest/Read | Returnerar ett manifest för den här bas modellen som kan användas i en lokal behållare. |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/Models/manifest/läsa | Returnerar ett manifest för den här modellen som kan användas i en lokal behållare. |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/Projects/Write | Skapa eller uppdatera ett projekt |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/projekt/Delete | Ta bort ett projekt |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/Projects/Read | Hämta ett eller flera projekt |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/deskrifts/Write | Skapa eller uppdatera en avskrift |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/deskrifts/Delete | Ta bort en avskrift |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/deskrifts/Read | Hämta en eller flera avskrifter |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/avskrifts/Files/Read | Hämta en eller flera avskrifts filer |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/Webhooks/Write | Skapa eller uppdatera en webb-Hook |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/Webhooks/Delete | Ta bort en webbhook |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/speechrest/Webhooks/Read | Hämta en eller flera webb-hookar |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/Unified-tal/frontend/åtgärd | Den här slut punkten hanterar tal klient delen |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/Unified-Speech/Management/Action | Den här slut punkten hanterar tal klient delen |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/Unified-tal/avsökningar/åtgärd | Den här slut punkten övervakar tal klient delens hälso tillstånd |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/Unified-Speech/language/Action | Den här slut punkten innehåller API för REST-språk. |
+> | Microsoft. CognitiveServices/Accounts/SpeechServices/Unified-tal/bakåtkompatibelt/fråga/åtgärd | Röst tjänsten äldre REST-API. |
 > | Microsoft. CognitiveServices/konton/stavning/stavning/åtgärd | Få resultatet av en stavnings kontroll fråga via GET eller POST. |
 > | Microsoft. CognitiveServices/konton/TextAnalytics/språk/åtgärd | API: et returnerar det identifierade språket och ett numeriskt resultat mellan 0 och 1. Poängen nära 1 visar 100% säkerhet som det identifierade språket är sant. Det finns stöd för totalt 120 språk. |
 > | Microsoft. CognitiveServices/konton/TextAnalytics/entiteter/åtgärd | API: t returnerar en lista över kända entiteter och allmänna namngivna entiteter ( \" person \" , \" plats \" , \" organisation \" osv.) i ett visst dokument. |
@@ -5957,7 +6151,9 @@ Azure-tjänst: [Machine Learning tjänst](../machine-learning/index.yml)
 > | Microsoft. MachineLearningServices/arbets ytor/beräkningar/start/åtgärd | Starta beräknings resurs på Machine Learning Services arbets yta |
 > | Microsoft. MachineLearningServices/arbets ytor/beräkningar/stoppa/åtgärd | Stoppa beräknings resursen i Machine Learning Services arbets ytan |
 > | Microsoft. MachineLearningServices/arbets ytor/beräkningar/omstart/åtgärd | Starta om beräknings resursen i Machine Learning Services arbets ytan |
+> | Microsoft. MachineLearningServices/arbets ytor/computes/updateDataMounts/Action | Uppdatera beräknings data monteringar i Machine Learning Services-arbetsyta |
 > | Microsoft. MachineLearningServices/arbets ytor/computes/applicationaccess/Action | Åtkomst till beräknings resurs på Machine Learning Services arbets yta |
+> | Microsoft. MachineLearningServices/arbets ytor/computes/updateSchedules/Action | Redigera beräknings start/stoppa scheman |
 > | Microsoft. MachineLearningServices/arbets ytor/anslutningar/läsa | Hämtar Machine Learning Services arbets ytans anslutningar |
 > | Microsoft. MachineLearningServices/arbets ytor/anslutningar/skriva | Skapar eller uppdaterar en Machine Learning Services-anslutning (ar) |
 > | Microsoft. MachineLearningServices/arbets ytor/anslutningar/ta bort | Tar bort Machine Learning Services-anslutning (ar) |
@@ -5994,6 +6190,7 @@ Azure-tjänst: [Machine Learning tjänst](../machine-learning/index.yml)
 > | Microsoft. MachineLearningServices/arbets ytor/experiment/kör/skicka/åtgärd | Skapar eller uppdaterar skript körningar i Machine Learning Services arbets ytor |
 > | Microsoft. MachineLearningServices/arbets ytor/experiment/kör/Läs | Körs i Machine Learning Services arbets ytor |
 > | Microsoft. MachineLearningServices/arbets ytor/experiment/kör/Skriv | Skapar eller uppdaterar körs i Machine Learning Services arbets ytor |
+> | Microsoft. MachineLearningServices/arbets ytor/experiment/kör/ta bort | Tar bort körningar i Machine Learning Services arbets ytor |
 > | Microsoft. MachineLearningServices/arbets ytor/funktioner/läsa | Hämtar alla aktiverade funktioner för en Machine Learning Services arbets yta |
 > | Microsoft. MachineLearningServices/arbets ytor/inferenceEndpoints/Read | Hämtar härlednings slut punkter i Machine Learning Services arbets ytor |
 > | Microsoft. MachineLearningServices/arbets ytor/inferenceEndpoints/Write | Skapar eller uppdaterar en slut punkt för en Härlednings härledning i Machine Learning Services arbets ytor |
@@ -6042,6 +6239,8 @@ Azure-tjänst: [Machine Learning tjänst](../machine-learning/index.yml)
 > | Microsoft. MachineLearningServices/arbets ytor/onlineEndpoints/Write | Skapar eller uppdaterar en slut punkt för en härlednings punkt i Machine Learning Services arbets ytor |
 > | Microsoft. MachineLearningServices/arbets ytor/onlineEndpoints/Delete | Tar bort en slut punkt för online-härledning i Machine Learning Services-arbetsytor |
 > | Microsoft. MachineLearningServices/arbets ytor/onlineEndpoints/score/åtgärd | Hämta auth-token eller nycklar för att score Online-slutpunkter på Machine Learning Services arbets ytor |
+> | Microsoft. MachineLearningServices/arbetsytes/onlineEndpoints/token/Action | Hämta auth-token till score Online-slutpunkter i Machine Learning Services arbets ytor |
+> | Microsoft. MachineLearningServices/arbetsytes/onlineEndpoints/listnycklar/åtgärd | Hämta auth Keys till score Online-slutpunkter i Machine Learning Services arbets ytor |
 > | Microsoft. MachineLearningServices/arbets ytor/onlineEndpoints/checkNameAvailability/Read | Kontrollerar namn för en slut punkt för en slut punkts härledning i Machine Learning Services arbets ytor |
 > | Microsoft. MachineLearningServices/arbets ytor/onlineEndpoints/distributioner/läsning | Hämtar distributioner i en slut punkt för härledning av online i Machine Learning Services arbets ytor |
 > | Microsoft. MachineLearningServices/arbets ytor/onlineEndpoints/distributioner/skrivning | Skapar eller uppdaterar distribution i en slut punkt för slut punkts slut punkt i Machine Learning Services arbets ytor (er) |
@@ -6209,6 +6408,26 @@ Azure-tjänst: [IoT Hub](../iot-hub/index.yml), [IoT Hub Device Provisioning ser
 > | Microsoft. Devices/provisioningServices/SKU/Read | Hämta giltiga IotDps SKU: er |
 > | Microsoft. Devices/usages/Read | Hämta information om prenumerations användning för den här providern. |
 > | Microsoft. Devices/usages/Read | Hämta information om prenumerations användning för den här providern. |
+> | **DataAction** | **Beskrivning** |
+> | Microsoft. Devices/IotHubs/cloudToDeviceMessages/Send/Action | Skicka meddelanden från moln till enhet till valfri enhet  |
+> | Microsoft. Devices/IotHubs/cloudToDeviceMessages/feedback/åtgärd | Ta emot, slutför eller överge aviseringar om meddelande från moln till enhet |
+> | Microsoft. Devices/IotHubs/cloudToDeviceMessages/Queue/rensning/åtgärd | Tar bort alla väntande kommandon för en enhet |
+> | Microsoft. Devices/IotHubs/Configurations/Read | Läsa konfiguration av enhets hantering |
+> | Microsoft. Devices/IotHubs/konfigurationer/Write | Skapa eller uppdatera konfigurationer för enhets hantering |
+> | Microsoft. Devices/IotHubs/Configurations/Delete | Ta bort all konfiguration av enhets hantering |
+> | Microsoft. Devices/IotHubs/Configurations/applyToEdgeDevice/Action | Tillämpar konfigurations innehållet på en Edge-enhet |
+> | Microsoft. Devices/IotHubs/Configurations/testQueries/Action | Validerar mål villkor och anpassade mått frågor för en konfiguration |
+> | Microsoft. Devices/IotHubs/Devices/Read | Läs all enhets-eller modul identitet |
+> | Microsoft. Devices/IotHubs/Devices/Write | Skapa eller uppdatera valfri enhets-eller modul identitet |
+> | Microsoft. Devices/IotHubs/Devices/Delete | Ta bort all enhets-eller modul identitet |
+> | Microsoft. Devices/IotHubs/directMethods/Invoke/åtgärd | Anropar en direkt metod på en enhet |
+> | Microsoft. Devices/IotHubs/fileUpload/Notifications/Action | Ta emot, slutför eller överge fil överförings meddelanden |
+> | Microsoft. Devices/IotHubs/Jobs/Read | Returnera en lista över jobb |
+> | Microsoft. Devices/IotHubs/Jobs/Write | Skapa eller uppdatera ett jobb |
+> | Microsoft. Devices/IotHubs/Jobs/Delete | Ta bort alla jobb |
+> | Microsoft. Devices/IotHubs/Statistics/Read | Läsa statistik över enheter och tjänster |
+> | Microsoft. Devices/IotHubs/flätat/Read | Läs valfri enhet eller modul med dubbla |
+> | Microsoft. Devices/IotHubs/flätar/Write | Skriv valfri enhet eller modul med dubbla |
 
 ### <a name="microsoftdeviceupdate"></a>Microsoft. DeviceUpdate
 
@@ -7359,12 +7578,15 @@ Azure-tjänst: [Key Vault](../key-vault/index.yml)
 > | Microsoft. nyckel valv/register/åtgärd | Registrerar en prenumeration |
 > | Microsoft. nyckel valv/avregistrering/åtgärd | Avregistrerar en prenumeration |
 > | Microsoft. nyckel valv/checkNameAvailability/läsa | Kontrollerar att nyckel valvets namn är giltigt och inte används |
+> | Microsoft. nyckel valv/deletedManagedHsms/läsa | Visa egenskaperna för en borttagen hanterad HSM |
 > | Microsoft. nyckel valv/deletedVaults/läsa | Visa egenskaperna för mjuka borttagna nyckel valv |
 > | Microsoft. nyckel valv/hsmPools/läsa | Visa egenskaperna för en HSM-pool |
 > | Microsoft. nyckel valv/hsmPools/skrivning | Skapa en ny HSM-pool med uppdatera egenskaperna för en befintlig HSM-pool |
 > | Microsoft. nyckel valv/hsmPools/ta bort | Ta bort en HSM-pool |
 > | Microsoft. nyckel valv/hsmPools/joinVault/åtgärd | Ansluta ett nyckel valv till en HSM-pool |
 > | Microsoft. nyckel-valv/platser/deleteVirtualNetworkOrSubnets/åtgärd | Meddelar Microsoft. nyckel valv att ett virtuellt nätverk eller undernät tas bort |
+> | Microsoft. nyckel-valv/platser/deletedManagedHsms/läsa | Visa egenskaperna för en borttagen hanterad HSM |
+> | Microsoft. nyckel-valv/platser/deletedManagedHsms/rensning/åtgärd | Rensa en mjuk borttagen hanterad HSM |
 > | Microsoft. nyckel-valv/platser/deletedVaults/läsa | Visa egenskaperna för ett ej permanent borttaget nyckel valv |
 > | Microsoft. nyckel-valv/platser/deletedVaults/rensning/åtgärd | Rensa ett ej permanent borttaget nyckel valv |
 > | Microsoft. nyckel-valv/platser/operationResults/läsa | Kontrol lera resultatet av en lång körnings åtgärd |
@@ -7598,6 +7820,8 @@ Azure-tjänst: [Azure Sentinel](../sentinel/index.yml)
 > | Microsoft. SecurityInsights/dataConnectors/Read | Hämtar data kopplingarna |
 > | Microsoft. SecurityInsights/dataConnectors/Write | Uppdaterar en data anslutning |
 > | Microsoft. SecurityInsights/dataConnectors/Delete | Tar bort en data koppling |
+> | Microsoft. SecurityInsights/berikning/domän/Whois/Read | Få whois-anrikning för en domän |
+> | Microsoft. SecurityInsights/anrikning/IP/data/data/läsa | Hämta grundomfattande data för en IP-adress |
 > | Microsoft. SecurityInsights/entiteter/läsa | Hämtar grafen Sentinel-entiteter |
 > | Microsoft. SecurityInsights/entiteter/gettimeline/åtgärd | Hämtar tids linje för enheten för ett angivet intervall |
 > | Microsoft. SecurityInsights/entiteter/getInsights/åtgärd | Hämtar entitets insikter för ett angivet intervall |
@@ -7608,6 +7832,7 @@ Azure-tjänst: [Azure Sentinel](../sentinel/index.yml)
 > | Microsoft. SecurityInsights/incidenter/läsa | Hämtar en incident |
 > | Microsoft. SecurityInsights/incidenter/skrivning | Uppdaterar en incident |
 > | Microsoft. SecurityInsights/incidenter/ta bort | Tar bort en incident |
+> | Microsoft. SecurityInsights/incidenter/createTeam/åtgärd | Skapar ett Microsoft-team för att undersöka incidenten genom att dela information och insikter mellan deltagare |
 > | Microsoft. SecurityInsights/incidenter/kommentarer/läsa | Hämtar incident kommentarer |
 > | Microsoft. SecurityInsights/incidenter/kommentarer/skriva | Skapar en kommentar om incidenten |
 > | Microsoft. SecurityInsights/incidenter/kommentarer/ta bort | Tar bort en kommentar om incidenten |
@@ -8354,7 +8579,7 @@ Azure-tjänst: [Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft. AlertsManagement/smartGroups/changestate/Action | Ändra status för den smarta gruppen |
 > | Microsoft. AlertsManagement/smartGroups/historik/läsa | Hämta historik för den smarta gruppen |
 
-### <a name="microsoftinsights"></a>Microsoft. Insights
+### <a name="microsoftinsights"></a>Microsoft.Insights
 
 Azure-tjänst: [Azure Monitor](../azure-monitor/index.yml)
 
@@ -9044,6 +9269,10 @@ Azure-tjänst: [Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/arbets ytor/fråga/DnsInventory/läsa | Läsa data från tabellen DnsInventory |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/DynamicEventCollection/läsa | Läsa data från tabellen DynamicEventCollection |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/Dynamics365Activity/läsa | Läsa data från tabellen Dynamics365Activity |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/EmailAttachmentInfo/läsa | Läsa data från tabellen EmailAttachmentInfo |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/EmailEvents/läsa | Läsa data från tabellen EmailEvents |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/EmailPostDeliveryEvents/läsa | Läsa data från tabellen EmailPostDeliveryEvents |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/EmailUrlInfo/läsa | Läsa data från tabellen EmailUrlInfo |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/ETWEvent/läsa | Läsa data från tabellen ETWEvent |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/händelse/läsa | Läsa data från händelse tabellen |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/ExchangeAssessmentRecommendation/läsa | Läsa data från tabellen ExchangeAssessmentRecommendation |
@@ -9059,6 +9288,8 @@ Azure-tjänst: [Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightHBaseMetrics/läsa | Läsa data från tabellen HDInsightHBaseMetrics |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightHiveAndLLAPLogs/läsa | Läsa data från tabellen HDInsightHiveAndLLAPLogs |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightHiveAndLLAPMetrics/läsa | Läsa data från tabellen HDInsightHiveAndLLAPMetrics |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightHiveQueryAppStats/läsa | Läsa data från tabellen HDInsightHiveQueryAppStats |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightHiveTezAppStats/läsa | Läsa data från tabellen HDInsightHiveTezAppStats |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightJupyterNotebookEvents/läsa | Läsa data från tabellen HDInsightJupyterNotebookEvents |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightKafkaLogs/läsa | Läsa data från tabellen HDInsightKafkaLogs |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightKafkaMetrics/läsa | Läsa data från tabellen HDInsightKafkaMetrics |
@@ -9176,6 +9407,7 @@ Azure-tjänst: [Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/arbets ytor/fråga/PowerBIDatasetsWorkspace/läsa | Läsa data från tabellen PowerBIDatasetsWorkspace |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/PowerBIDatasetsWorkspacePreview/läsa | Läsa data från tabellen PowerBIDatasetsWorkspacePreview |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/ProtectionStatus/läsa | Läsa data från tabellen ProtectionStatus |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/PurviewScanStatusLogs/läsa | Läsa data från tabellen PurviewScanStatusLogs |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/begär Anden/läsa | Läsa data från tabellen med begär Anden |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/SCCMAssessmentRecommendation/läsa | Läsa data från tabellen SCCMAssessmentRecommendation |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/SCOMAssessmentRecommendation/läsa | Läsa data från tabellen SCOMAssessmentRecommendation |
@@ -9617,6 +9849,7 @@ Azure-tjänst: [Cost Management + fakturering](../cost-management-billing/index.
 > | Microsoft. fakturering/billingAccounts/Läs |  |
 > | Microsoft. fakturering/billingAccounts/listInvoiceSectionsWithCreateSubscriptionPermission/åtgärd |  |
 > | Microsoft. fakturering/billingAccounts/skrivning |  |
+> | Microsoft. fakturering/billingAccounts/confirmTransition/åtgärd |  |
 > | Microsoft. fakturering/billingAccounts/billingProfiles/Write |  |
 > | Microsoft. fakturering/billingAccounts/billingProfiles/Read |  |
 > | Microsoft. fakturering/billingAccounts/billingProfiles/Write |  |
@@ -9849,6 +10082,12 @@ Azure-tjänst: [Azure-båge](../azure-arc/index.yml)
 > | Microsoft. HybridCompute/Machines/patchInstallationResults/Read | Läser alla Azure Arc-patchInstallationResults |
 > | Microsoft. HybridCompute/Machines/patchInstallationResults/softwarePatches/Read | Läser alla Azure Arc-patchInstallationResults/softwarePatches |
 > | Microsoft. HybridCompute/Operations/Read | Läs alla åtgärder för Azure-båge för servrar |
+> | Microsoft. HybridCompute/privateLinkScopes/Read | Läs valfri Azure Arc-privateLinkScopes |
+> | Microsoft. HybridCompute/privateLinkScopes/Write | Skriver ett Azure-båg-privateLinkScopes |
+> | Microsoft. HybridCompute/privateLinkScopes/Delete | Tar bort en Azure-båge privateLinkScopes |
+> | Microsoft. HybridCompute/privateLinkScopes/privateEndpointConnections/Read | Läs valfri Azure Arc-privateEndpointConnections |
+> | Microsoft. HybridCompute/privateLinkScopes/privateEndpointConnections/Write | Skriver ett Azure-båg-privateEndpointConnections |
+> | Microsoft. HybridCompute/privateLinkScopes/privateEndpointConnections/Delete | Tar bort en Azure-båge privateEndpointConnections |
 
 ### <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
 
@@ -10332,8 +10571,8 @@ Azure-tjänst: [Site Recovery](../site-recovery/index.yml)
 > | Microsoft. RecoveryServices/valv/backupOperationResults/läsa | Returnerar resultatet av säkerhets kopierings åtgärden för Recovery Services valvet. |
 > | Microsoft. RecoveryServices/valv/backupOperations/läsa | Returnerar säkerhets kopierings åtgärdens status för Recovery Services valv. |
 > | Microsoft. RecoveryServices/valv/backupOperationVaultGuardProxies/Delete | VaultGuard proxy-åtgärd tar bort den angivna Azure-resursen av typen ' VaultGuard proxy ' |
-> | Microsoft. RecoveryServices/valv/backupOperationVaultGuardProxies/läsa | Hämta VaultGuard proxy-åtgärd hämtar ett objekt som representerar Azure-resursen av typen ' VaultGuard proxy ' |
 > | Microsoft. RecoveryServices/valv/backupOperationVaultGuardProxies/läsa | Hämta listan över VaultGuard-proxyservrar för en resurs |
+> | Microsoft. RecoveryServices/valv/backupOperationVaultGuardProxies/läsa | Hämta VaultGuard proxy-åtgärd hämtar ett objekt som representerar Azure-resursen av typen ' VaultGuard proxy ' |
 > | Microsoft. RecoveryServices/valv/backupOperationVaultGuardProxies/unlockDelete/åtgärd | Lås upp ta bort VaultGuard proxy-åtgärd låser upp nästa borttagnings kritiska åtgärd |
 > | Microsoft. RecoveryServices/valv/backupOperationVaultGuardProxies/Write | Skapa VaultGuard proxy-åtgärd skapar en Azure-resurs av typen ' VaultGuard proxy ' |
 > | Microsoft. RecoveryServices/valv/backupPolicies/Delete | Ta bort en skydds princip |
@@ -10625,7 +10864,7 @@ Azure-tjänst: Microsoft Monitoring Insights
 > | Microsoft. Intune/diagnosticsettings/Delete | Tar bort en diagnostisk inställning |
 > | Microsoft. Intune/diagnosticsettingscategories/Read | Läser en diagnostisk inställnings kategori |
 
-## <a name="other"></a>Annat
+## <a name="other"></a>Övrigt
 
 ### <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
 

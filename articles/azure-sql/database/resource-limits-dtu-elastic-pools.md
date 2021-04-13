@@ -10,30 +10,36 @@ ms.topic: reference
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
-ms.date: 03/30/2021
-ms.openlocfilehash: f3c20774accf9e0b589b898cb903d6da4516e553
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 04/09/2021
+ms.openlocfilehash: 906d34a91736d28f0da4a5ba34b7114fbe410adb
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058926"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306644"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Resurs begränsningar för elastiska pooler med inköps modellen DTU
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Den här artikeln innehåller detaljerade resurs gränser för databaser i Azure SQL Database som finns i en elastisk pool med hjälp av inköps modellen DTU.
 
-* För Azure SQL Database, se resurs gränser för DTU-inköp [– Azure SQL Database](resource-limits-dtu-single-databases.md).
+* För inköps modell gränser för DTU för enskilda databaser på en server, se [Översikt över resurs gränser på en server](resource-limits-logical-server.md).
+* För resurs gränser för DTU-inköps modeller för Azure SQL Database, se [DTU-resurs begränsar enskilda databaser](resource-limits-dtu-single-databases.md) och [DTU-resurs begränsar elastiska pooler](resource-limits-dtu-elastic-pools.md).
 * För vCore resurs gränser, se [vCore Resource Limits-Azure SQL Database](resource-limits-vcore-single-databases.md) [-och vCore-resurs gränser-elastiska pooler](resource-limits-vcore-elastic-pools.md).
+* Mer information om olika inköps modeller finns i [inköps modeller och tjänst nivåer](purchasing-models.md).
+
+Varje skrivskyddad replik har sina egna resurser, till exempel DTU: er, arbetare och sessioner. Alla skrivskyddade repliker omfattas av resurs begränsningarna som beskrivs längre fram i den här artikeln.
 
 ## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Elastisk pool: lagrings storlekar och beräknings storlekar
 
 För Azure SQL Database elastiska pooler visar följande tabeller de resurser som är tillgängliga på varje tjänst nivå och beräknings storlek. Du kan ange tjänst nivå, beräknings storlek och lagrings belopp med:
 
+* [Transact-SQL](elastic-pool-scale.md) via [Alter Database](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database)
 * [Azure-portalen](elastic-pool-manage.md#azure-portal)
 * [PowerShell](elastic-pool-manage.md#powershell)
 * [Azure CLI](elastic-pool-manage.md#azure-cli)
-* [REST API](elastic-pool-manage.md#rest-api).
+* [REST-API](elastic-pool-manage.md#rest-api)
+
 
 > [!IMPORTANT]
 > För skalnings vägledning och överväganden, se [skala en elastisk pool](elastic-pool-scale.md)

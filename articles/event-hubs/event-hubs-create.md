@@ -3,12 +3,12 @@ title: Azure snabb start – skapa en Event Hub med hjälp av Azure Portal
 description: I den här snabb starten får du lära dig hur du skapar en Azure Event Hub med hjälp av Azure Portal.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 6bd9d247db6cd5a956ff4bce9b70f1f8a5a7499a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bf83c53792c4934f43e0039d092bb3e36954bf7b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742049"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303125"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Snabbstart: Skapa en händelsehubb med hjälp av Azure Portal
 Azure Event Hubs är en stor data strömnings plattform och händelse inmatnings tjänst som kan ta emot och bearbeta miljon tals händelser per sekund. Event Hubs kan bearbeta och lagra händelser, data eller telemetri som producerats av distribuerade program och enheter. Data som skickas till en händelsehubb kan omvandlas och lagras med valfri provider för realtidsanalys eller batchbearbetnings-/lagringsadapter. En detaljerad översikt över Event Hubs finns i [Översikt över Event Hubs](event-hubs-about.md) och [Event Hubs-funktioner](event-hubs-features.md).
@@ -54,7 +54,7 @@ Ett Event Hubs-namnområde innehåller en unik omfångs behållare där du skapa
    1. Välj den **resurs grupp** som du skapade i föregående steg.   
    1. Ange ett **namn** för namn området. Systemet kontrollerar omedelbart om namnet är tillgängligt.  
    1. Välj en **plats** för namnområdet.
-   1. Välj **pris nivå** (Basic eller standard). Mer information om skillnaderna mellan nivåerna Basic och standard finns i [Event Hubs priser](https://azure.microsoft.com/pricing/details/event-hubs/), [skillnader mellan nivåer](event-hubs-faq.md#what-is-the-difference-between-event-hubs-basic-and-standard-tiers)och [kvoter och begränsningar](event-hubs-quotas.md). 
+   1. Välj **pris nivå** (Basic eller standard). Mer information om skillnaderna mellan nivåerna Basic och standard finns i [Event Hubs priser](https://azure.microsoft.com/pricing/details/event-hubs/), [skillnader mellan nivåer](event-hubs-faq.yml#what-is-the-difference-between-event-hubs-basic-and-standard-tiers-)och [kvoter och begränsningar](event-hubs-quotas.md). 
    1. Lämna inställningarna för **data flödes enheter** som de är. Genomflödesenheter är färdiga kapacitetsenheter. Läs mer om data flödes enheter i [Event Hubs skalbarhet](event-hubs-scalability.md#throughput-units).  
    1. Välj **Granska + skapa** längst ned på sidan.
       

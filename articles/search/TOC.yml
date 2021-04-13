@@ -420,7 +420,7 @@
               href: search-security-get-encryption-keys.md
         - name: Ingående säkerhet
           items:
-            - name: API-åtkomstnycklar
+            - name: Autentisering med API-nyckel
               href: search-security-api-keys.md
             - name: Konfigurera en IP-brandvägg
               href: service-configure-firewall.md

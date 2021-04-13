@@ -3,12 +3,12 @@ title: Leverera händelser med hjälp av tjänsten Private Link
 description: Den här artikeln beskriver hur du kan undvika begränsningen av att inte leverera händelser med hjälp av tjänsten Private Link.
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: 9df78e1cc7734ba9e455ed686286658006f9445e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 75ae8ff2c341048c39156e43da3615788e9d0f0a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629299"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309439"
 ---
 # <a name="deliver-events-using-private-link-service"></a>Leverera händelser med hjälp av tjänsten Private Link
 För närvarande går det inte att leverera händelser med [privata slut punkter](../private-link/private-endpoint-overview.md). Det finns inget stöd om du har strikta krav på nätverks isolering där dina levererade händelse trafik inte får lämna det privata IP-utrymmet. 
@@ -36,7 +36,7 @@ Följ dessa steg om du vill leverera händelser till händelse nav i Event Hubs 
 Följ dessa steg om du vill leverera händelser till Service Bus köer eller ämnen i Service Bus-namnrymden med hanterad identitet:
 
 1. Aktivera systemtilldelad identitet: [system ämnen](enable-identity-system-topics.md), [anpassade ämnen och domäner](enable-identity-custom-topics-domains.md). 
-1. [Lägg till identiteten i rollen **Azure Service Bus data avsändare**](/service-bus-messaging/service-bus-managed-service-identity#azure-built-in-roles-for-azure-service-bus) i Service Bus-namnrymden
+1. [Lägg till identiteten i rollen **Azure Service Bus data avsändare**](../service-bus-messaging/service-bus-managed-service-identity.md#azure-built-in-roles-for-azure-service-bus) i Service Bus-namnrymden
 1. [Aktivera inställningen **Tillåt att betrodda Microsoft-tjänster kringgår den här brand Väggs** inställningen på din Service Bus-namnrymd](../service-bus-messaging/service-bus-service-endpoints.md#trusted-microsoft-services). 
 1. [Konfigurera händelse prenumerationen](managed-service-identity.md) som använder en Service Bus kö eller ett ämne som en slut punkt för att använda den systemtilldelade identiteten.
 

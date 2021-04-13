@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/15/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 2cb203a00bb00767126f95e1fdc2f5aff8990f01
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1dd78ba3799573e05e4ebbf55887bae3d9674b7c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601289"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310091"
 ---
 Event Hubs ordnar sekvenser av händelser som skickas till en händelsehubben till en eller flera partitioner. När nya händelser anländer läggs de till i slutet av den här sekvensen. 
 
@@ -32,7 +32,7 @@ Event Hubs är utformad för att hjälpa till med bearbetning av stora mängder 
 ### <a name="number-of-partitions"></a>Antal partitioner
 Antalet partitioner anges när det skapas och måste vara mellan 1 och 32 i Event Hubs standard. Antalet partitioner kan vara upp till 2000 partitioner per kapacitets enhet i Event Hubs Dedicated. 
 
-Vi rekommenderar att du väljer minst så många partitioner som du förväntar dig att kräva i kontinuerliga [data flödes enheter (data flödes enheter)](../articles/event-hubs/event-hubs-faq.md#what-are-event-hubs-throughput-units) under den högsta belastningen för ditt program för just den händelsehubben. Du bör beräkna med en enda partition med en data flödes kapacitet på 1 data flödes enheter (1 MB i, 2 MB ut). Du kan skala antal i namn området eller kapacitets enheterna för klustret oberoende av antalet partitioner. En Event Hub med 32 partitioner eller en Event Hub med 1 partition innebär exakt samma kostnad när namn området är inställt på 1 data flödes enheter-kapacitet. 
+Vi rekommenderar att du väljer minst så många partitioner som du förväntar dig att kräva i kontinuerliga [data flödes enheter (data flödes enheter)](../articles/event-hubs/event-hubs-faq.yml#what-are-event-hubs-throughput-units-) under den högsta belastningen för ditt program för just den händelsehubben. Du bör beräkna med en enda partition med en data flödes kapacitet på 1 data flödes enheter (1 MB i, 2 MB ut). Du kan skala antal i namn området eller kapacitets enheterna för klustret oberoende av antalet partitioner. En Event Hub med 32 partitioner eller en Event Hub med 1 partition innebär exakt samma kostnad när namn området är inställt på 1 data flödes enheter-kapacitet. 
 
 Antalet partitioner för en Event Hub i ett [dedikerat Event Hubs kluster](../articles/event-hubs/event-hubs-dedicated-overview.md) kan [ökas](../articles/event-hubs/dynamically-add-partitions.md) efter att händelsehubben har skapats, men distributionen av strömmar mellan partitioner kommer att ändras när den görs som mappning av partitionsnyckel till partitioner ändringar, så du bör försöka undvika sådana ändringar om den relativa ordningen på händelse frågor i ditt program.
 

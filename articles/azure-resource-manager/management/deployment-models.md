@@ -2,13 +2,13 @@
 title: Resource Manager och klassisk distribution
 description: Beskriver skillnaderna mellan Resource Manager-distributionsmodellen och den klassiska distributionsmodellen (eller Service Management).
 ms.topic: conceptual
-ms.date: 02/06/2020
-ms.openlocfilehash: da260db84de0cc8bd092eb95491b7cc38df93a12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: c2009034c431e53d162cb0f2c1f0d9815c8d1942
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96185852"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306950"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager jämfört med klassisk distribution: Förstå distributionsmodeller och dina resursers tillstånd
 
@@ -17,7 +17,7 @@ ms.locfileid: "96185852"
 
 Artikeln beskriver både Azure Resource Manager och de klassiska distributionsmodellerna. Resource Manager och de klassiska distributionsmodellerna är två olika sätt att distribuera och hantera dina Azure-lösningar. Du arbetar med dem via två olika API-uppsättningar och de distribuerade resurserna kan innehålla viktiga skillnader. De två modellerna är inte kompatibla med varandra. Den här artikeln beskriver dessa skillnader.
 
-Microsoft rekommenderar att du använder Resource Manager för alla nya resurser, för att förenkla distributionen och hanteringen av resurser. Om möjligt rekommenderar Microsoft att du distribuerar om befintliga resurser via Resource Manager.
+Microsoft rekommenderar att du använder Resource Manager för alla nya resurser, för att förenkla distributionen och hanteringen av resurser. Om möjligt rekommenderar Microsoft att du distribuerar om befintliga resurser via Resource Manager. Om du har använt Cloud Services kan du migrera din lösning till [Cloud Services (utökad support)](../../cloud-services-extended-support/overview.md).
 
 Om du inte har använt Resource Manager för att gå igenom den här [Azure Resource Manager översikten](overview.md)bör du först läsa igenom terminologin.
 
@@ -40,7 +40,7 @@ När Resource Manager lades till, lades alla resurser till retroaktivt i standar
 
 Det finns tre scenarier att vara medveten om:
 
-1. Cloud Services stöder inte distributions modellen Resource Manager.
+1. [Cloud Services (klassisk)](../../cloud-services/cloud-services-choose-me.md) stöder inte distributions modellen för Resource Manager. [Cloud Services (utökad support)](../../cloud-services-extended-support/overview.md) stöder distributions modellen för Resource Manager.
 2. Virtuella datorer, lagringskonton och virtuella nätverk stöder både Resource Manager och klassiska distributionsmodeller.
 3. Alla andra Azure-tjänster stöder Resource Manager.
 
@@ -95,7 +95,7 @@ Här följer komponenterna och deras relationer för klassisk distribution:
 
 Den klassiska lösningen för att vara värd för en virtuell dator innehåller:
 
-* En obligatorisk molntjänst som fungerar som en container för värden för den virtuella datorvärden (beräkning). Virtuella datorer tillhandahålls automatiskt med ett nätverkskort och en IP-adress som tilldelas av Azure. Molntjänsten innehåller dessutom en instans för extern instans för lastbalanseraren, en offentlig IP-adress och standardslutpunkter som tillåter fjärrskrivbord och PowerShell-fjärrtrafik för Windows-baserade virtuella datorer och SSH-trafik (Secure Shell) för Linux-baserade virtuella datorer.
+* Cloud Services (klassisk) fungerar som en behållare för att vara värd för virtuella datorer (Compute). Virtuella datorer tillhandahålls automatiskt med ett nätverkskort och en IP-adress som tilldelas av Azure. Molntjänsten innehåller dessutom en instans för extern instans för lastbalanseraren, en offentlig IP-adress och standardslutpunkter som tillåter fjärrskrivbord och PowerShell-fjärrtrafik för Windows-baserade virtuella datorer och SSH-trafik (Secure Shell) för Linux-baserade virtuella datorer.
 * Ett lagrings konto som krävs för att lagra virtuella hård diskar för en virtuell dator, inklusive operativ system, temporära och ytterligare data diskar (lagring).
 * Ett valfritt virtuellt nätverk som fungerar som en ytterligare behållare, där du kan skapa en under nätverks struktur och välja det undernät som den virtuella datorn finns i (nätverk).
 

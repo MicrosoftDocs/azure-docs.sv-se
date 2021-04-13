@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
-ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7596aa4cef6c4bc601c15018e8ede4265f395eb7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "76990512"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312866"
 ---
 # <a name="manage-multiple-tenants"></a>Hantera flera klientorganisationer
 
@@ -45,7 +45,7 @@ När du använder den här arkitekturen skapas ett Video Indexer-konto för varj
 * Svårare att hantera på grund av flera Video Indexer-konton (och tillhör ande Media Services) per klient.
 
 > [!TIP]
-> Skapa en administratörs användare för ditt system i [video Indexer Developer-portalen](https://api-portal.videoindexer.ai/) och Använd API: et för auktorisering för att tillhandahålla klienterna relevant [konto åtkomst-token](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token).
+> Skapa en administratörs användare för ditt system i [video Indexer Developer-portalen](https://api-portal.videoindexer.ai/) och Använd API: et för auktorisering för att tillhandahålla klienterna relevant [konto åtkomst-token](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Account-Access-Token).
 
 ## <a name="single-video-indexer-account-for-all-users"></a>Enkelt Video Indexer konto för alla användare
 
@@ -55,7 +55,7 @@ När du använder den här arkitekturen är kunden ansvarig för isolering av kl
 
 Med det här alternativet kan anpassnings modeller (person, språk och varumärken) delas eller isoleras mellan klienter genom att filtrera modeller efter klient.
 
-När du [laddar upp videor](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)kan du ange ett annat partition-attribut per klient. Detta gör det möjligt att isolera i [Sök-API: et](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?). Genom att ange attributet partition i Sök-API: t får du bara resultat från den angivna partitionen. 
+När du [laddar upp videor](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video)kan du ange ett annat partition-attribut per klient. Detta gör det möjligt att isolera i [Sök-API: et](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Search-Videos). Genom att ange attributet partition i Sök-API: t får du bara resultat från den angivna partitionen. 
 
 ### <a name="considerations"></a>Överväganden
 

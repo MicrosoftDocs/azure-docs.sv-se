@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: b6000d8ff3eb35d678a94adc021efcadf8a77f81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6730a5cfca1b6c04d3c738aac2bdf3c097d5daf5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699662"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303210"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory hanterad Virtual Network (förhands granskning)
 
@@ -105,6 +105,16 @@ Under data källor finns stöd för att ansluta via en privat länk från ADF-ha
 - Sydostasien
 - Australien, östra
 - Australien, sydöstra
+- Östra Norge
+- Japan, östra
+- Japan, västra
+- Sydkorea, centrala
+- Brasilien, södra
+- Frankrike, centrala
+- Schweiz, norra
+- Storbritannien, västra
+- Kanada, östra
+- Kanada, centrala
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Utgående kommunikation via offentlig slut punkt från ADF-hanterad Virtual Network
 - Endast port 443 är öppen för utgående kommunikation.

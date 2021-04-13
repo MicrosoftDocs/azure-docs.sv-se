@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.openlocfilehash: 33435d2367b92f312d41f0e32fdbb3a93d59a9fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1a0fb15be92e25b576cd29e671eed3c6a5b948f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95999934"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313274"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Använd funktioner för att förstärka signalen av ord listan
 
@@ -37,7 +37,7 @@ Granska [begreppen](luis-concept-feature.md) för att förstå när och varför 
 
     När du har angett tillräckligt många värden för LUIS visas förslag. Du kan **lägga till alla** föreslagna värden eller välja enskilda villkor.
 
-1. Behåll **dessa värden är utbytbara** om fraserna kan användas utbytbart.
+1. Behåll **dessa värden är utbytbara** om fraserna kan användas utbytbart. En funktions lista med utbytbara fraser fungerar som en lista över synonymer för utbildning. En lista med icke-utbytbara fraser fungerar som separata funktioner för utbildning (vilket innebär att funktionerna är likartade men avsikten med ändringar när du byter fraser).
 
 1. Fras listan kan tillämpas på hela appen med den **globala** inställningen eller till en speciell modell (avsikt eller entitet). Om du skapar fras listan, som en _funktion_ från ett avsikt eller en entitet, är växlingen inte inställd för global. I det här fallet är syftet med växlingen att funktionen bara är lokal för den modellen, vilket innebär att den _inte är global_ för programmet.
 

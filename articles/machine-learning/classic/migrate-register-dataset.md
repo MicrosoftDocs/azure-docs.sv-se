@@ -3,17 +3,17 @@ title: 'ML Studio (klassisk): migrera till Azure Machine Learning-återskapa dat
 description: Återskapa data uppsättningar för Studio (klassisk) i Azure Machine Learning designer
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 02/04/2021
-ms.openlocfilehash: 4c04dd5a2b41b3db54b20c9e514767453951cc35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9604fc9d862d94ba5e566753d2186d7d28aa37ee
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103565301"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308854"
 ---
 # <a name="migrate-a-studio-classic-dataset-to-azure-machine-learning"></a>Migrera en Studio-datauppsättning (klassisk) till Azure Machine Learning
 
@@ -101,7 +101,7 @@ När du har hämtat data filen kan du registrera data uppsättningen i Azure Mac
 
 Om dina data redan finns i en moln lagrings tjänst och du vill behålla dina data på den ursprungliga platsen. Du kan använda något av följande alternativ:
 
-|Inmatnings metod|Beskrivning|
+|Inmatnings metod|Description|
 |---| --- |
 |Registrera en Azure Machine Learning data uppsättning|Mata in data från lokala data källor och online-datakällor (BLOB, ADLS Gen1, ADLS Gen2, fil resurs, SQL DB). <br><br>Skapar en referens till data källan som Lazy utvärderas vid körning. Använd det här alternativet om du har åtkomst till den här data uppsättningen flera gånger och vill aktivera avancerade data funktioner som data version och övervakning.
 |Importera datamodul|Mata in data från data källor online (BLOB, ADLS Gen1, ADLS Gen2, fil resurs, SQL DB). <br><br> Data uppsättningen importeras bara till den aktuella designer-pipeline-körningen.

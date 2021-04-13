@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 13ef91af5f7ed8398e3d23400fa5e9df467ce6bc
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 7c22381d547029aedc5965d07033e8800fcbddc3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210902"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313155"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
@@ -145,7 +145,7 @@ __RSS-feed__: Håll dig informerad när den här sidan uppdateras genom att kopi
 ### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Azure Machine Learning Studio Notebooks Experience (februari Update)
 + **Nya funktioner**
   + [Ursprunglig Terminal (ga)](./how-to-access-terminal.md). Användarna kommer nu att ha åtkomst till en integrerad Terminal och git-åtgärd via den integrerade terminalen.
-  + [Antecknings kods tycken (för hands version)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). Vanliga utdrag för Azure ML-kod är nu tillgängliga. Navigera till panelen kodfragment, som är tillgänglig via verktygsfältet eller aktivera menyn infragmentets kod avsnitt med Ctrl + blank steg.  
+  + Antecknings kods tycken (för hands version). Vanliga utdrag för Azure ML-kod är nu tillgängliga. Navigera till panelen kodfragment, som är tillgänglig via verktygsfältet eller aktivera menyn infragmentets kod avsnitt med Ctrl + blank steg.  
   + [Kortkommandon.](./how-to-run-jupyter-notebooks.md#useful-keyboard-shortcuts) Fullständig paritet med kortkommandon som är tillgängliga i Jupyter. 
   + Ange cell parametrar. Visar de användare som har celler i en antecknings bok som är parameter celler och kan köra parameterstyrda antecknings böcker via [Papermill](https://github.com/nteract/papermill) på beräknings instansen.
   + Terminal-och kernel-sessionshanteraren: användare kommer att kunna hantera alla kärnor och Terminal-sessioner som körs på sin beräkning.
@@ -1140,7 +1140,7 @@ Nu kan du skapa, redigera och dela Machine Learning-anteckningsböcker och filer
 
 Få åtkomst till följande webbaserade redigerings verktyg från Studio:
     
-| Webbaserat verktyg  |     Beskrivning  |
+| Webbaserat verktyg  |     Description  |
 |---|---|
 | Azure ML Studio-anteckningsböcker   |     Första redigering i klass för notebook-filer och stöd för alla åtgärder som är tillgängliga i Azure ML python SDK. | 
 
@@ -1652,7 +1652,7 @@ Från Studio kan du träna, testa, distribuera och hantera Azure Machine Learnin
 
 Få åtkomst till följande webbaserade redigerings verktyg från Studio:
 
-| Webbaserat verktyg | Beskrivning | 
+| Webbaserat verktyg | Description | 
 |-|-|-|
 | Notebook VM (för hands version) | Helt hanterad molnbaserad arbets Station | 
 | [Automatisk maskin inlärning](tutorial-first-experiment-automated-ml.md) (för hands version) | Ingen kod upplevelse för automatisering av maskin inlärnings modell utveckling | 

@@ -8,12 +8,12 @@ ms.date: 04/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b82ad29b02e501d41653fd466e58218e35c3b93c
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 6fa49af946a1e5fc631eeb1ee9b9c7c99d3adff8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012177"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308276"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Felsöka IoT Edge-enheten
 
@@ -64,6 +64,18 @@ Fel söknings verktyget kör många kontroller som är sorterade i följande tre
 * I *produktions beredskaps kontrollerna* kan du söka efter rekommenderade produktions metoder, t. ex. tillstånd för certifikat från enhetens certifikat utfärdare och logg fils konfigurationen för modulen.
 
 Verktyget IoT Edge check använder en behållare för att köra dess diagnostik. Behållar avbildningen, `mcr.microsoft.com/azureiotedge-diagnostics:latest` , är tillgänglig via [Microsoft container Registry](https://github.com/microsoft/containerregistry). Om du behöver köra en kontroll på en enhet utan direkt åtkomst till Internet, behöver enheterna åtkomst till behållar avbildningen.
+
+<!-- <1.2> -->
+:::moniker range=">=iotedge-2020-11"
+
+I ett scenario med kapslade IoT Edge enheter kan du få åtkomst till diagnostik-avbildningen på underordnade enheter genom att dirigera avbildningen via de överordnade enheterna.
+
+```bash
+sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:<port_for_api_proxy_module>/azureiotedge-diagnostics:1.2
+```
+
+<!-- </1.2> -->
+:::moniker-end
 
 Information om var och en av de diagnostiska kontroller som utförs av verktyget, inklusive vad du ska göra om du får ett fel eller en varning, finns i [IoT Edge Felsök checkar](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md).
 

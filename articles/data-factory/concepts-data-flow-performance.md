@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 03/15/2021
-ms.openlocfilehash: dd5b857c274e757f70920f244786df61c2770085
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/10/2021
+ms.openlocfilehash: cee7993116e746c7b827faaf94724033501f1318
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103561693"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309058"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Prestanda-och justerings guiden för att mappa data flöden
 
@@ -132,14 +132,17 @@ Data flöden priss ätts i vCore, vilket innebär att både kluster storlek och 
 
 ### <a name="time-to-live"></a>Time to live
 
-Varje data flödes aktivitet snurrar som standard ett nytt kluster baserat på IR-konfigurationen. Kluster start tiden tar några minuter och data bearbetningen kan inte starta förrän den är klar. Om pipelinen innehåller flera **sekventiella** data flöden kan du aktivera ett TTL-värde (Time to Live). Om du anger ett TTL-värde för en viss tids period, är ett kluster aktivt under en viss tids period när körningen har slutförts. Om ett nytt jobb börjar använda IR under TTL-tiden kommer det att återanvända det befintliga klustret och start tiden minskas avsevärt. När det andra jobbet har slutförts kommer klustret återigen att vara i drift för TTL-tiden.
+Varje data flödes aktivitet snurrar som standard ett nytt Spark-kluster baserat på Azure IR konfiguration. Start tid i kall kluster tar några minuter och data bearbetningen kan inte starta förrän den är klar. Om pipelinen innehåller flera **sekventiella** data flöden kan du aktivera ett TTL-värde (Time to Live). Om du anger ett TTL-värde för en viss tids period, är ett kluster aktivt under en viss tids period när körningen har slutförts. Om ett nytt jobb börjar använda IR under TTL-tiden kommer det att återanvända det befintliga klustret och start tiden minskas avsevärt. När det andra jobbet har slutförts kommer klustret återigen att vara i drift för TTL-tiden.
 
-Endast ett jobb kan köras i ett enskilt kluster i taget. Om det finns ett tillgängligt kluster, men två data flöden startar, använder bara ett aktivt kluster. Det andra jobbet kommer att skapa ett eget isolerat kluster.
+Du kan också minimera start tiden för varma kluster genom att ange alternativet "snabb åter användning" i Azure integration runtime under data flödes egenskaper. Om det här värdet är true kommer ADF inte att Teardown det befintliga klustret efter varje jobb, och i stället använda det befintliga klustret igen, så att den beräknings miljö som du har angett i din Azure IR Alive visas under den tids period som angetts i din TTL. Det här alternativet gör det kortaste start tiden för dina data flödes aktiviteter när du kör från en pipeline.
 
-Om de flesta data flöden körs parallellt rekommenderar vi inte att du aktiverar TTL. 
+Men om de flesta av dina data flöden körs parallellt, rekommenderar vi inte att du aktiverar TTL för IR som du använder för dessa aktiviteter. Endast ett jobb kan köras i ett enskilt kluster i taget. Om det finns ett tillgängligt kluster, men två data flöden startar, använder bara ett aktivt kluster. Det andra jobbet kommer att skapa ett eget isolerat kluster.
 
 > [!NOTE]
 > Time to Live är inte tillgängligt när integrerings körningen för automatisk lösning används
+ 
+> [!NOTE]
+> Snabb åter användning av befintliga kluster är en funktion i Azure Integration Runtime som för närvarande finns i en offentlig för hands version
 
 ## <a name="optimizing-sources"></a>Optimera källor
 
@@ -304,9 +307,10 @@ Om dina data flödar parallellt, rekommenderar vi att du inte aktiverar Azure IR
 
 ### <a name="execute-data-flows-sequentially"></a>Köra data flöden sekventiellt
 
-Om du kör dina data flödes aktiviteter i följd rekommenderar vi att du anger ett TTL-värde i Azure IR-konfigurationen. ADF återanvänder beräknings resurserna som resulterar i en snabbare kluster start tid. Varje aktivitet kommer fortfarande att isoleras och ta emot en ny Spark-kontext för varje körning.
+Om du kör dina data flödes aktiviteter i följd rekommenderar vi att du anger ett TTL-värde i Azure IR-konfigurationen. ADF återanvänder beräknings resurserna som resulterar i en snabbare kluster start tid. Varje aktivitet kommer fortfarande att isoleras och ta emot en ny Spark-kontext för varje körning. Om du vill minska tiden mellan sekventiella aktiviteter, ställer du in kryss rutan "snabb åter användning" på Azure IR för att se till att ADF använder det befintliga klustret igen.
 
-Körning av jobb sekventiellt tar sannolikt den längsta tiden att köra slut punkt till slut punkt, men ger en ren separation av logiska åtgärder.
+> [!NOTE]
+> Snabb åter användning av befintliga kluster är en funktion i Azure Integration Runtime som för närvarande finns i en offentlig för hands version
 
 ### <a name="overloading-a-single-data-flow"></a>Överlagring av ett enskilt data flöde
 

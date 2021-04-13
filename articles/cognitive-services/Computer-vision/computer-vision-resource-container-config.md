@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 04/09/2021
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 7b421877b2a41074bf901817c7ad8922083c3e77
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 3e6c4b73e8aeb26c6ac4025ef3c07fb4f8d48eaf
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285681"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308650"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>Konfigurera Läs OCR Docker-behållare
 
@@ -33,14 +33,14 @@ Behållaren har också följande behållar konfigurations inställningar:
 
 |Obligatorisk|Inställning|Syfte|
 |--|--|--|
-|Inga|ReadEngineConfig:ResultExpirationPeriod| endast v 2.0-behållare. Resultat förfallo period i timmar. Standardvärdet är 48 timmar. Inställningen anger när systemet ska rensa igenkännings resultat. Om till exempel `resultExpirationPeriod=1` systemet rensar igenkännings resultatet 1 timme efter processen. Om `resultExpirationPeriod=0` rensas igenkännings resultatet i systemet när resultatet har hämtats.|
-|Inga|Cache: Redis| endast v 2.0-behållare. Aktiverar Redis-lagring för lagring av resultat. Det *krävs* en cache om flera Läs OCR-behållare placeras bakom en belastningsutjämnare.|
-|Inga|Kö: RabbitMQ|endast v 2.0-behållare. Aktiverar RabbitMQ för att skicka uppgifter. Inställningen är användbar när flera Läs OCR-behållare placeras bakom en belastningsutjämnare.|
-|Inga|Kö: Azure: QueueVisibilityTimeoutInMilliseconds | endast v3. x-behållare. Tiden som ett meddelande ska vara osynligt när en annan arbets process bearbetar det. |
-|Inga|Lagring::D ocumentStore:: MongoDB|endast v 2.0-behållare. Aktiverar MongoDB för lagring med permanent resultat. |
-|Inga|Lagring: ObjectStore: AzureBlob: ConnectionString| endast v3. x-behållare. Anslutnings sträng för Azure Blob Storage. |
-|Inga|Lagring: TimeToLiveInDays| endast v3. x-behållare. Resultatets förfallo period i dagar. Inställningen anger när systemet ska rensa igenkännings resultat. Standardvärdet är 2 dagar (48 timmar), vilket innebär att alla resultat som är aktiva under längre tid än den perioden inte har hämtats. |
-|Inga|Uppgift: MaxRunningTimeSpanInMinutes| endast v3. x-behållare. Maximal kör tid för en enskild begäran. Standardvärdet är 60 minuter. |
+|No|ReadEngineConfig:ResultExpirationPeriod| endast v 2.0-behållare. Resultat förfallo period i timmar. Standardvärdet är 48 timmar. Inställningen anger när systemet ska rensa igenkännings resultat. Om till exempel `resultExpirationPeriod=1` systemet rensar igenkännings resultatet 1 timme efter processen. Om `resultExpirationPeriod=0` rensas igenkännings resultatet i systemet när resultatet har hämtats.|
+|No|Cache: Redis| endast v 2.0-behållare. Aktiverar Redis-lagring för lagring av resultat. Det *krävs* en cache om flera Läs OCR-behållare placeras bakom en belastningsutjämnare.|
+|No|Kö: RabbitMQ|endast v 2.0-behållare. Aktiverar RabbitMQ för att skicka uppgifter. Inställningen är användbar när flera Läs OCR-behållare placeras bakom en belastningsutjämnare.|
+|No|Kö: Azure: QueueVisibilityTimeoutInMilliseconds | endast v3. x-behållare. Tiden som ett meddelande ska vara osynligt när en annan arbets process bearbetar det. |
+|No|Lagring::D ocumentStore:: MongoDB|endast v 2.0-behållare. Aktiverar MongoDB för lagring med permanent resultat. |
+|No|Lagring: ObjectStore: AzureBlob: ConnectionString| endast v3. x-behållare. Anslutnings sträng för Azure Blob Storage. |
+|No|Lagring: TimeToLiveInDays| endast v3. x-behållare. Resultatets förfallo period i dagar. Inställningen anger när systemet ska rensa igenkännings resultat. Standardvärdet är 2 dagar (48 timmar), vilket innebär att alla resultat som är aktiva under längre tid än den perioden inte har hämtats. |
+|No|Uppgift: MaxRunningTimeSpanInMinutes| endast v3. x-behållare. Maximal kör tid för en enskild begäran. Standardvärdet är 60 minuter. |
 
 ## <a name="apikey-configuration-setting"></a>Konfigurations inställning för ApiKey
 
@@ -62,11 +62,11 @@ Du hittar den här inställningen på följande plats:
 
 * Azure Portal: **Cognitive Services** översikt, etiketterad `Endpoint`
 
-Kom ihåg att lägga till `vision/v1.0` operationsföljden i slut punkts-URI: n enligt följande tabell. 
+Kom ihåg att lägga till `vision/<version>` operationsföljden i slut punkts-URI: n enligt följande tabell. 
 
 |Obligatorisk| Name | Datatyp | Beskrivning |
 |--|------|-----------|-------------|
-|Ja| `Billing` | Sträng | URI för fakturerings slut punkt<br><br>Exempel:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+|Ja| `Billing` | Sträng | URI för fakturerings slut punkt<br><br>Exempel:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v3.2` |
 
 ## <a name="eula-setting"></a>Licens avtals inställning
 
@@ -122,13 +122,13 @@ Ersätt {_argument_name_} med dina egna värden:
 Följande Docker-exempel är för Read OCR-behållare.
 
 
-# <a name="version-32-preview"></a>[Version 3,2 – för hands version](#tab/version-3-2)
+# <a name="version-32"></a>[Version 3,2](#tab/version-3-2)
 
 ### <a name="basic-example"></a>Basic-exempel
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -139,7 +139,7 @@ ApiKey={API_KEY}
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

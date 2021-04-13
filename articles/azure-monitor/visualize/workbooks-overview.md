@@ -1,21 +1,20 @@
 ---
 title: Översikt över Azure Monitor-arbetsböcker
 description: Lär dig hur arbets böcker ger en flexibel arbets yta för data analys och hur du skapar rika visuella rapporter i Azure Portal.
-manager: carmonm
 services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: e401eb4a5608db6e5767298f53046099a42679b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a02e5fced0a9e338a32d8d8beaa9e4b5fca994e8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100621497"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309491"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor arbets böcker
 
-Arbetsböcker ger en flexibel arbetsyta för dataanalys och skapandet av gedigna visuella rapporter i Azure-portalen. De gör att du kan trycka på flera data källor i Azure och kombinera dem till enhetliga interaktiva upplevelser. 
+Arbetsböcker ger en flexibel arbetsyta för dataanalys och skapandet av gedigna visuella rapporter i Azure-portalen. De gör att du kan trycka på flera data källor i Azure och kombinera dem till enhetliga interaktiva upplevelser.
 
 Här är en video genom gång av hur du skapar arbets böcker.
 
@@ -39,7 +38,7 @@ Arbetsböcker är för närvarande kompatibla med följande datakällor:
 
 ## <a name="visualizations"></a>Visualiseringar
 
-Arbets böcker ger en omfattande uppsättning funktioner för visualisering av dina data. Detaljerade exempel på varje visualiserings typ kan du se exempel länkarna nedan:
+Arbets böcker ger en omfattande uppsättning funktioner för visualisering av dina data. I detaljerade exempel på varje visualiserings typ kan du se länkarna nedan:
 
 * [Text](../visualize/workbooks-text-visualizations.md)
 * [Diagram](../visualize/workbooks-chart-visualizations.md)
@@ -49,7 +48,7 @@ Arbets böcker ger en omfattande uppsättning funktioner för visualisering av d
 * [Diagram](../visualize/workbooks-graph-visualizations.md)
 * [Sammansatt fält](../visualize/workbooks-composite-bar.md)
 
-![Exempel på arbets boks visualiseringar](./media/workbooks-overview/visualizations.png)
+:::image type="content" source="./media/workbooks-overview/visualizations.png" alt-text="Exempel på arbets boks visualiseringar" border="false" lightbox="./media/workbooks-overview/visualizations.png":::
 
 ## <a name="getting-started"></a>Komma igång
 
@@ -57,19 +56,40 @@ För att utforska arbets bokens upplevelse går du först till Azure Monitors tj
 
 Välj sedan **arbets böcker**.
 
-![Skärm bild av knappen arbets böcker markerad i en röd ruta](./media/workbooks-overview/workbooks.png)
+:::image type="content" source="./media/workbooks-overview/workbooks.png" alt-text="Skärm bild av knappen arbets böcker markerad i en röd ruta" border="false":::
 
 ### <a name="gallery"></a>Galleri
 
-Det tar dig till galleriet för arbets böcker:
+Galleriet gör det enkelt att organisera, sortera och hantera arbets böcker av alla typer.
 
-![Skärm bild av vyn Azure Monitor arbets böcker Galleri](./media/workbooks-overview/gallery.png)
+:::image type="content" source="./media/workbooks-overview/gallery-all-tab.png" alt-text="Skärm bild av galleriet på fliken alla." lightbox="media/workbooks-overview/gallery-all-tab.png":::
+
+#### <a name="gallery-tabs"></a>Galleri flikar
+
+Det finns fyra flikar i galleriet som hjälper dig att organisera arbets boks typer.
+
+| Flik              | Description                                       |
+|------------------|---------------------------------------------------|
+| Alla | Visar de fyra översta objekten för varje typ av arbets bok, offentliga mallar och Mina mallar. Arbets böcker sorteras efter ändrings datum så att du ser de senaste åtta ändrade arbets böckerna.|
+| Arbetsböcker | Visar en lista över alla tillgängliga arbets böcker som du har skapat eller som delas med dig. |
+| Offentliga mallar | Visar en lista över alla tillgängliga färdiga att använda, kom igång funktionella mallar för arbets böcker som publicerats av Microsoft. Grupperat efter kategori. |
+| Mina mallar | Visar en lista över alla tillgängliga distribuerade arbetsboksmall som du har skapat eller som delas med dig. Grupperat efter kategori. |
+
+#### <a name="features"></a>Funktioner
+
+* På varje flik finns det ett rutnät med information i arbets böckerna. Den innehåller beskrivning, senast ändrad datum, taggar, prenumeration, resurs grupp, region och delat tillstånd. Du kan också sortera arbets böckerna efter den här informationen.
+* Filtrera efter resurs grupp, prenumeration, arbets bok/Mallnamn eller mall kategori.
+* Välj flera arbets böcker som ska tas bort eller Mass borttagning.
+* Varje arbets bok har en snabb meny (tre punkter/tre punkter i slutet), och om du markerar den öppnas en lista med snabb åtgärder.
+    * Visa resurs-ID för arbets boken resurs-ID, Lägg till taggar, hantera lås osv.
+    * Ta bort eller Byt namn på arbets bok.
+    * Fäst arbets boken på instrument panelen.
 
 ### <a name="workbooks-versus-workbook-templates"></a>Arbets böcker jämfört med mallar för arbets böcker
 
-Du kan se en _arbets bok_ i grönt och ett antal _mallar för arbets böcker_ i lila. Mallar fungerar som granskade rapporter som har utformats för flexibel åter användning av flera användare och team. När du öppnar en mall skapas en tillfällig arbets bok som är ifylld med mallens innehåll. 
+Du kan se en _arbets bok_ i grönt och ett antal _mallar för arbets böcker_ i lila. Mallar fungerar som granskade rapporter som har utformats för flexibel åter användning av flera användare och team. När du öppnar en mall skapas en tillfällig arbets bok som är ifylld med mallens innehåll.
 
-Du kan justera den mallbaserade arbets bokens parametrar och utföra analyser utan att behöva bryta den framtida rapporterings upplevelsen för kollegor. Om du öppnar en mall gör du några justeringar och väljer sedan ikonen Spara som du kommer att spara mallen som en arbets bok som sedan visas i grönt, vilket gör att den ursprungliga mallen inte vidrörs. 
+Du kan justera den mallbaserade arbets bokens parametrar och utföra analyser utan att behöva bryta den framtida rapporterings upplevelsen för kollegor. Om du öppnar en mall gör du några justeringar och väljer sedan ikonen Spara som du kommer att spara mallen som en arbets bok som sedan visas i grönt, vilket gör att den ursprungliga mallen inte vidrörs.
 
 Under huven skiljer sig mallarna också från sparade arbets böcker. När du sparar en arbets bok skapas en associerad Azure Resource Manager resurs, medan den tillfälliga arbets boken som skapas när du bara öppnar en mall inte har någon unik resurs kopplad till sig. Mer information om hur åtkomst kontroll hanteras i arbets böcker finns i artikeln om [åtkomst kontroll för arbets böcker](../visualize/workbooks-access-control.md).
 
@@ -77,7 +97,7 @@ Under huven skiljer sig mallarna också från sparade arbets böcker. När du sp
 
 Välj **program haveri analys** för att se en av standard mallarna för programbegäran.
 
-![Skärm bild av mall för program haveri analys](./media/workbooks-overview/failure-analysis.png)
+:::image type="content" source="./media/workbooks-overview/failure-analysis.png" alt-text="Skärm bild av mall för program haveri analys" border="false" lightbox="./media/workbooks-overview/failure-analysis.png":::
 
 Som tidigare nämnts skapar den här mallen en tillfällig arbets bok så att du kan interagera med. Som standard öppnas arbets boken i läsläge som bara visar informationen för den avsedda analys upplevelsen som skapades av den ursprungliga mal len författare.
 
@@ -87,34 +107,35 @@ När det gäller den här arbets boken är upplevelsen interaktiv. Du kan juster
 
 Du måste växla till redigerings läge genom att välja **Redigera** för att förstå hur den här arbets boks mal len placeras tillsammans.
 
-![Skärm bild av knappen Redigera i arbets böcker.](./media/workbooks-overview/edit.png)
+:::image type="content" source="./media/workbooks-overview/edit.png" alt-text="Skärm bild av knappen Redigera i arbets böcker." border="false" :::
 
 När du har växlat till redigerings läget visas ett antal **redigerings** rutor till höger som motsvarar varje enskild aspekt av arbets boken.
 
-![Skärm bild av knappen Redigera](./media/workbooks-overview/edit-mode.png)
+:::image type="content" source="./media/workbooks-overview/edit-mode.png" alt-text="Skärm bild av knappen Redigera" border="false" lightbox="./media/workbooks-overview/edit-mode.png":::
 
 Om vi väljer knappen Redigera omedelbart under rutnätet med begär ande data kan vi se att den här delen av arbets boken består av en Kusto-fråga mot data från en Application Insights-resurs.
 
-![Skärm bild av underliggande Kusto-fråga](./media/workbooks-overview/kusto.png)
+:::image type="content" source="./media/workbooks-overview/kusto.png" alt-text="Skärm bild av underliggande Kusto-fråga" border="false" lightbox="./media/workbooks-overview/kusto.png":::
 
-Om du klickar på de andra **redigerings** knapparna till höger visas ett antal kärn komponenter som utgör arbets böcker som markdown [text rutor](../visualize/workbooks-text-visualizations.md), gränssnitts element för [parameter val](../visualize/workbooks-parameters.md) och andra [typer av diagram/visualiseringar](#visualizations). 
+
+Om du klickar på de andra **redigerings** knapparna till höger visas ett antal kärn komponenter som utgör arbets böcker som markdown [text rutor](../visualize/workbooks-text-visualizations.md), gränssnitts element för [parameter val](../visualize/workbooks-parameters.md) och andra [typer av diagram/visualiseringar](#visualizations).
 
 Utforska de färdiga mallarna i redigerings läge och ändra dem efter dina behov och spara din egen anpassade arbets bok är ett utmärkt sätt att börja med att lära dig om vad som är möjligt med Azure Monitor arbets böcker.
 
 ## <a name="pinning-visualizations"></a>Fästa visualiseringar
 
-Steg för text, frågor och mått i en arbets bok kan fästas med hjälp av knappen Fäst på dessa objekt när arbets boken är i PIN-läge, eller om arbets bokens författare har aktiverat inställningar för det elementet för att göra PIN-ikonen synlig. 
+Steg för text, frågor och mått i en arbets bok kan fästas med hjälp av knappen Fäst på dessa objekt när arbets boken är i PIN-läge, eller om arbets bokens författare har aktiverat inställningar för det elementet för att göra PIN-ikonen synlig.
 
 Om du vill komma åt PIN-läget klickar du på **Redigera** för att ange redigerings läge och väljer den blå PIN-ikonen i det översta fältet. En enskild PIN-ikon visas sedan ovanför varje motsvarande arbets boks dels *redigerings* ruta på höger sida av skärmen.
 
-![PIN-upplevelse](./media/workbooks-overview/pin-experience.png)
+:::image type="content" source="./media/workbooks-overview/pin-experience.png" alt-text="Skärm bild av PIN-upplevelsen." border="false":::
 
 > [!NOTE]
 > Arbets bokens status sparas vid tidpunkten för PIN-koden, och fästa arbets böcker på en instrument panel uppdateras inte om den underliggande arbets boken ändras. För att kunna uppdatera en fast arbets bok del måste du ta bort och fästa om den delen.
 
 ## <a name="dashboard-time-ranges"></a>Tids intervall för instrument panelen
 
-Den fästa arbets bokens fråga delar kommer att respektera instrument panelens tidsintervall om det fasta objektet har kon figurer ATS för att använda en *tids intervalls* parameter. Instrument panelens tidsintervalls värde används som tids intervall parameter värde och eventuell ändring av instrument panelens tidsintervall innebär att det fästa objektet uppdateras. Om en fast del använder instrument panelens tidsintervall visas under rubriken för den fasta del uppdateringen för att visa instrument panelens tidsintervall när tidsintervallet ändras. 
+Den fästa arbets bokens fråga delar kommer att respektera instrument panelens tidsintervall om det fasta objektet har kon figurer ATS för att använda en *tids intervalls* parameter. Instrument panelens tidsintervalls värde används som tids intervall parameter värde och eventuell ändring av instrument panelens tidsintervall innebär att det fästa objektet uppdateras. Om en fast del använder instrument panelens tidsintervall visas under rubriken för den fasta del uppdateringen för att visa instrument panelens tidsintervall när tidsintervallet ändras.
 
 Dessutom uppdateras fasta arbets boks delar med hjälp av en tidsintervalls parameter automatiskt enligt en hastighet som fastställs av instrument panelens tidsintervall. Den senaste gången då frågan kördes visas i under rubriken för den fästa delen.
 

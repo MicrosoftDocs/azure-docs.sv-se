@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/01/2021
+ms.date: 04/07/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1ed9aef66e9e1a672274b814abbc4e83600761f5
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: e5034c228a354c98b5792492d484da9eb10b8cf2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028714"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310860"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Uppdatera IoT Edge-säkerhetsdaemon och runtime
 
@@ -202,9 +202,10 @@ Några av de viktigaste skillnaderna mellan 1,2 och tidigare versioner är:
 
 * Paket namnet ändrades från **iotedge** till **aziot**.
 * **Libiothsm-STD-** paketet används inte längre. Om du använde standard paketet som ingår i IoT Edges versionen kan dina konfigurationer överföras till den nya versionen. Om du använde en annan implementering av libiothsm-STD, måste alla certifikat från användare som till exempel enhets identitets certifikat, enhets certifikat utfärdare och förtroende paket konfigureras om.
-* En ny identitets tjänst, **aziot-Identity-service** , introducerades som en del av 1,2-versionen. Den här tjänsten hanterar identitets etableringen och-hanteringen för IoT Edge och för andra enhets komponenter som måste kommunicera med IoT Hub, till exempel Azure IoT Hub enhets uppdatering. <!--TODO: add link to ADU when available -->
+* En ny identitets tjänst, **aziot-Identity-service** , introducerades som en del av 1,2-versionen. Den här tjänsten hanterar identitets etableringen och-hanteringen för IoT Edge och för andra enhets komponenter som måste kommunicera med IoT Hub, till exempel [enhets uppdatering för IoT Hub](../iot-hub-device-update/understand-device-update.md).
 * Standard konfigurations filen har ett nytt namn och en ny plats. Tidigare `/etc/iotedge/config.yaml` förväntas din enhets konfigurations information vara i `/etc/aziot/config.toml` som standard. `iotedge config import`Kommandot kan användas för att migrera konfigurations information från den gamla platsen och syntaxen till den nya.
-* Alla moduler som använder IoT Edge arbets belastnings-API för att kryptera eller dekryptera beständiga data kan inte dekrypteras efter uppdateringen. IoT Edge skapar en huvud identitets nyckel och en krypterings nyckel dynamiskt för intern användning. Den här nyckeln överförs inte till den nya tjänsten. IoT Edge v 1.2 kommer att generera en ny.
+  * Import kommandot kan inte identifiera eller ändra åtkomst regler för en enhets TPM (Trusted Platform Module). Om enheten använder TPM-attestering måste du manuellt uppdatera/etc/udev/rules.d/tpmaccess.rules-filen för att ge åtkomst till aziottpm-tjänsten. Mer information finns i [ge IoT Edge åtkomst till TPM:](how-to-auto-provision-simulated-device-linux.md?view=iotedge-2020-11&preserve-view=true#give-iot-edge-access-to-the-tpm)en.
+* Arbets belastnings-API: n i version 1,2 sparar krypterade hemligheter i ett nytt format. Om du uppgraderar från en äldre version till version 1,2 importeras den befintliga huvud krypterings nyckeln. Arbets belastnings-API: et kan läsa hemligheter som sparats i det tidigare formatet med den importerade krypterings nyckeln. Men arbets belastnings-API: et kan inte skriva krypterade hemligheter i det gamla formatet. När en hemlighet krypteras igen av en modul, sparas den i det nya formatet. Hemligheter som krypteras i version 1,2 kan inte läsas av samma modul i version 1,1. Om du behåller krypterade data till en värdbaserad mapp eller volym ska du alltid skapa en säkerhets kopia av data *innan* du uppgraderar för att ge möjlighet att nedgradera vid behov.
 
 Innan du automatiserar uppdaterings processerna kontrollerar du att den fungerar på test datorer.
 

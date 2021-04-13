@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 12/16/2020
+ms.date: 04/12/2021
 ms.author: aahi
 keywords: lokal, Docker, behållare, Kubernetes
-ms.openlocfilehash: 007dfe6d67d504286b9546fe0139055b58dc700f
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 45b1eb00b61c36e3a7a0f39bc41a9c1d053f3d8e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285611"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313750"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-containrar
 
@@ -41,13 +41,13 @@ Azure Cognitive Services-behållare innehåller följande uppsättning Docker-be
 
 ### <a name="decision-containers"></a>Besluts behållare
 
-| Tjänst |  Container | Beskrivning | Tillgänglighet |
+| Tjänst |  Container | Description | Tillgänglighet |
 |--|--|--|--|
 | [Avvikelse detektor][ad-containers] | **Avvikelse detektor** ([bild](https://hub.docker.com/_/microsoft-azure-cognitive-services-decision-anomaly-detector))  | Med API: t för avvikelse identifiering kan du övervaka och identifiera avvikelser i dina Time Series-data med Machine Learning. | Allmänt tillgänglig |
 
 ### <a name="language-containers"></a>Språkcontainrar
 
-| Tjänst |  Container | Beskrivning | Tillgänglighet |
+| Tjänst |  Container | Description | Tillgänglighet |
 |--|--|--|--|
 | [LUIS][lu-containers] |  **Luis** ([bild](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Läser in en utbildad eller publicerad Language Understanding modell, som även kallas LUIS-app, i en Docker-behållare och ger åtkomst till frågans förutsägelser från behållarens API-slutpunkter. Du kan samla in frågeuttryck från behållaren och överföra tillbaka dem till Luis- [portalen](https://www.luis.ai) för att förbättra appens förutsägelse noggrannhet. | Allmänt tillgänglig |
 | [Textanalys][ta-containers-keyphrase] | **Extrahering av diskussionsämne** ([bild](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extraherar viktiga fraser för att identifiera huvud punkterna. Exempel: För den inmatade texten ”Maten var härlig och personalen var underbar” returnerar API:et de huvudsakliga diskussionsämnena: ”mat” och ”underbar personal”. | Förhandsgranskning |
@@ -60,7 +60,7 @@ Azure Cognitive Services-behållare innehåller följande uppsättning Docker-be
 > [!NOTE]
 > Om du vill använda tal behållare måste du fylla i ett [formulär för online-begäran](https://aka.ms/csgate).
 
-| Tjänst |  Container | Beskrivning | Tillgänglighet |
+| Tjänst |  Container | Description | Tillgänglighet |
 |--|--|--|
 | [Speech Service API][sp-containers-stt] |  **Tal till text** ([bild](https://hub.docker.com/_/microsoft-azure-cognitive-services-speechservices-custom-speech-to-text)) | Transkriberar kontinuerlig realtidsöversättning av tal till text. | Allmänt tillgänglig |
 | [Speech Service API][sp-containers-cstt] | **Custom Speech-till-text** ([bild](https://hub.docker.com/_/microsoft-azure-cognitive-services-speechservices-custom-speech-to-text)) | Översätter kontinuerlig real tids tal till text med hjälp av en anpassad modell. | Allmänt tillgänglig |
@@ -74,7 +74,7 @@ Azure Cognitive Services-behållare innehåller följande uppsättning Docker-be
 > [!WARNING]
 > Den 11 juni 2020 meddelade Microsoft att de inte kommer att sälja teknik för ansiktsigenkänning till polismyndigheter i USA förrän starka föreskrifter som rör användningen av dessa tekniker och som bygger på de mänskliga rättigheterna har införts. Därför kan kunder inte använda ansikts igenkännings funktioner eller funktioner som ingår i Azure-tjänster, till exempel ansikte eller Video Indexer, om en kund är eller tillåter att sådana tjänster används av eller för en polis avdelning i USA.
 
-| Tjänst |  Container | Beskrivning | Tillgänglighet |
+| Tjänst |  Container | Description | Tillgänglighet |
 |--|--|--|--|
 | [Visuellt innehåll][cv-containers] | **Läs OCR** ([bild](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Med Read OCR-behållaren kan du extrahera utskrift och handskriven text från bilder och dokument med stöd för JPEG-, PNG-, BMP-, PDF-och TIFF-filformat. Mer information finns i [Read API-dokumentationen](./computer-vision/overview-ocr.md). | Gated Preview. [Begär åtkomst][request-access]. |
 | [Rumslig analys][spa-containers] | **Rums analys** ([bild](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-spatial-analysis)) | Analyserar direktuppspelad video i real tid för att förstå spatiala relationer mellan människor, deras rörelse och interaktioner med objekt i fysiska miljöer. | Gated Preview. [Begär åtkomst][request-access]. |
@@ -148,4 +148,4 @@ Installera och utforska de funktioner som finns i behållare i Azure Cognitive S
 [ta-containers-language]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
 [ta-containers-sentiment]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment
 [ta-containers-health]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health
-[request-access]: https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyQZ7B8Cg2FEjpibPziwPcZUNlQ4SEVORFVLTjlBSzNLRlo0UzRRVVNPVy4u
+[request-access]: https://aka.ms/csgate

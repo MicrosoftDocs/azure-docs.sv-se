@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 745cc7be37120cda27fe4d4077b9bda0fa07badf
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: dc20ca3f3cf6197f8a3ed3a7e0362046f129d369
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550786"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305879"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gör så här: planera din Azure AD Join-implementering
 
@@ -239,7 +239,7 @@ Välj **Ja** om du vill att användarna ska kunna utföra MFA när de ansluter t
 
 ![Kräv Multi-factor auth för att ansluta enheter](./media/azureadjoin-plan/03.png)
 
-**Rekommendation:** Använd användar åtgärden [Registrera eller Anslut enheter](/conditional-access/concept-conditional-access-cloud-apps#user-actions) i villkorlig åtkomst för att framtvinga MFA för att ansluta enheter.
+**Rekommendation:** Använd användar åtgärden [Registrera eller Anslut enheter](/azure/active-directory/conditional-access/concept-conditional-access-cloud-apps#user-actions) i villkorlig åtkomst för att framtvinga MFA för att ansluta enheter.
 
 ## <a name="configure-your-mobility-settings"></a>Konfigurera dina mobilitets inställningar
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7b53b0bc8c7cc3df2123d327bf87a85081f88f50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a03dab43c12b372fc52e7516821fe7aef22d2e16
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100589549"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305250"
 ---
 # <a name="sampling-in-application-insights"></a>Sampling i Application Insights
 
@@ -34,10 +34,10 @@ I följande tabell sammanfattas de samplings typer som är tillgängliga för va
 |-|-|-|-|
 | ASP.NET | [Ja (aktiverat som standard)](#configuring-adaptive-sampling-for-aspnet-applications) | [Ja](#configuring-fixed-rate-sampling-for-aspnet-applications) | Endast om ingen annan sampling gäller |
 | ASP.NET Core | [Ja (aktiverat som standard)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ja](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Endast om ingen annan sampling gäller |
-| Azure Functions | [Ja (aktiverat som standard)](#configuring-adaptive-sampling-for-azure-functions) | Inga | Endast om ingen annan sampling gäller |
-| Java | Inga | [Ja](#configuring-fixed-rate-sampling-for-java-applications) | Endast om ingen annan sampling gäller |
-| Node.JS | Inga | [Ja](./nodejs.md#sampling) | Endast om ingen annan sampling gäller
-| Python | Inga | [Ja](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Endast om ingen annan sampling gäller |
+| Azure Functions | [Ja (aktiverat som standard)](#configuring-adaptive-sampling-for-azure-functions) | No | Endast om ingen annan sampling gäller |
+| Java | No | [Ja](#configuring-fixed-rate-sampling-for-java-applications) | Endast om ingen annan sampling gäller |
+| Node.JS | No | [Ja](./nodejs.md#sampling) | Endast om ingen annan sampling gäller
+| Python | No | [Ja](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Endast om ingen annan sampling gäller |
 | Alla andra | Inga | Inga | [Ja](#ingestion-sampling) |
 
 > [!NOTE]
@@ -184,7 +184,7 @@ Koden ovan kommer att inaktivera anpassad sampling. Följ stegen nedan för att 
 Använd tilläggs metoder `TelemetryProcessorChainBuilder` som visas nedan för att anpassa samplings beteendet.
 
 > [!IMPORTANT]
-> Om du använder den här metoden för att konfigurera sampling, se till att ange `aiOptions.EnableAdaptiveSampling` egenskapen till `false` vid anrop `AddApplicationInsightsTelemetry()` .
+> Om du använder den här metoden för att konfigurera sampling, se till att ange `aiOptions.EnableAdaptiveSampling` egenskapen till `false` vid anrop `AddApplicationInsightsTelemetry()` . När du har gjort den här ändringen måste du följa instruktionerna i kod blocket nedan **exakt** för att återaktivera adaptiva samplingar med dina anpassningar på plats. Om du inte gör det kan det leda till överflödig data inmatning. Testa alltid att ändra samplings inställningar och ange en lämplig [daglig data](pricing.md#set-the-daily-cap) täckning för att kontrol lera dina kostnader.
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility

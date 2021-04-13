@@ -1,82 +1,82 @@
 ---
-title: Snabb start – Lägg till samtal till en iOS-app med Azure Communication Services
-description: I den här snabb starten får du lära dig hur du använder Azure Communication Services som anropar SDK för iOS.
+title: Snabbstart – Lägga till anrop till en iOS-app med Azure Communication Services
+description: I den här snabbstarten lär du dig hur du använder Azure Communication Services Anropa SDK för iOS.
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 22c9d8f8bdf3e6195bf152fa0431ad5ce9bcdfeb
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: e1eed3f9449843e6c2dd8c77719402e709fdeb23
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "106073389"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107327558"
 ---
-I den här snabb starten får du lära dig hur du startar ett samtal med Azure Communication Services som anropar SDK för iOS.
+I den här snabbstarten lär du dig att starta ett anrop med hjälp av Azure Communication Services Anropa SDK för iOS.
 
 [!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
 
 > [!NOTE]
-> Det här dokumentet använder version 1.0.0 – beta. 8 av anrops-SDK: n.
+> Det här dokumentet använder version 1.0.0-beta.9 av anropande SDK.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-För att slutföra den här självstudien behöver du följande förutsättningar:
+För att kunna slutföra den här självstudien behöver du följande:
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- En Mac som kör [Xcode](https://go.microsoft.com/fwLink/p/?LinkID=266532), tillsammans med ett giltigt certifikat för utvecklare som installerats i din nyckel Ring.
-- En distribuerad kommunikations tjänst resurs. [Skapa en kommunikations tjänst resurs](../../create-communication-resource.md).
-- En [token för användar åtkomst](../../access-tokens.md) för Azure Communication Service.
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 
+- En Mac som [kör Xcode](https://go.microsoft.com/fwLink/p/?LinkID=266532), tillsammans med ett giltigt utvecklarcertifikat som är installerat i din nyckelring.
+- En distribuerad Communication Services resurs. [Skapa en Communication Services resurs](../../create-communication-resource.md).
+- En [användaråtkomsttoken](../../access-tokens.md) för din Azure-kommunikationstjänst.
 
-## <a name="setting-up"></a>Konfigurera
+## <a name="setting-up"></a>Inrätta
 
 ### <a name="creating-the-xcode-project"></a>Skapa Xcode-projektet
 
-I Xcode skapar du ett nytt iOS-projekt och väljer app-mallen för **enskild vy** . I den här självstudien används [SwiftUI-ramverket](https://developer.apple.com/xcode/swiftui/), så du bör ange **språket** till **Swift** och **användar gränssnittet** för **SwiftUI**. Du kommer inte att skapa tester under den här snabb starten. Avmarkera **ta med tester**.
+I Xcode skapar du ett nytt iOS-projekt och väljer mallen **App med enkel** vy. I den här [självstudien används SwiftUI-ramverket](https://developer.apple.com/xcode/swiftui/), så du bör ange **Språket** till **Swift** **och Användargränssnitt** **till SwiftUI.** Du kommer inte att skapa tester under den här snabbstarten. Avmarkera Inkludera tester om **du vill.**
 
-:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Skärm bild som visar det nya projekt fönstret i Xcode.":::
+:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Skärmbild som visar fönstret Nytt projekt i Xcode.":::
 
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>Installera paketet och beroenden med CocoaPods
 
-1. För att skapa en Podfile för programmet öppnar du terminalen och navigerar till projektmappen och kör ```pod init```
-3. Lägg till följande kod i Podfile och spara (kontrol lera att "mål" matchar namnet på projektet):
+1. Om du vill skapa en podfile för ditt program öppnar du terminalen och navigerar till projektmappen och kör ```pod init```
+3. Lägg till följande kod i podfilen och spara (se till att "target" matchar namnet på ditt projekt):
 
    ```
    platform :ios, '13.0'
    use_frameworks!
 
    target 'AzureCommunicationCallingSample' do
-     pod 'AzureCommunicationCalling', '~> 1.0.0-beta.8'
-     pod 'AzureCommunication', '~> 1.0.0-beta.8'
-     pod 'AzureCore', '~> 1.0.0-beta.8'
+     pod 'AzureCommunicationCalling', '~> 1.0.0-beta.9'
+     pod 'AzureCommunication', '~> 1.0.0-beta.9'
+     pod 'AzureCore', '~> 1.0.0-beta.9'
    end
    ```
 
 3. Kör `pod install`.
-3. Öppna `.xcworkspace` med Xcode.
+3. Öppna med `.xcworkspace` Xcode.
 
 ### <a name="request-access-to-the-microphone"></a>Begär åtkomst till mikrofonen
 
-För att få åtkomst till enhetens mikrofon måste du uppdatera appens informations egenskaps lista med en `NSMicrophoneUsageDescription` . Du anger det associerade värdet till en `string` som ska ingå i dialog rutan som systemet använder för att begära åtkomst från användaren.
+För att få åtkomst till enhetens mikrofon måste du uppdatera appens informationsegenskapslista med en `NSMicrophoneUsageDescription` . Du anger det associerade värdet till `string` en som ska ingå i dialogrutan som systemet använder för att begära åtkomst från användaren.
 
-Högerklicka på `Info.plist` posten för projekt trädet och välj **öppna som**  >  **källkod**. Lägg till följande rader i avsnittet på den översta nivån `<dict>` och spara sedan filen.
+Högerklicka på posten `Info.plist` i projektträdet och välj **Öppna som**  >  **källkod.** Lägg till följande rader i avsnittet `<dict>` på den översta nivån och spara sedan filen.
 
 ```xml
 <key>NSMicrophoneUsageDescription</key>
 <string>Need microphone access for VOIP calling.</string>
 ```
 
-### <a name="set-up-the-app-framework"></a>Konfigurera app Framework
+### <a name="set-up-the-app-framework"></a>Konfigurera appramverket
 
-Öppna projektets **ContentView. SWIFT** -fil och Lägg till en `import` deklaration överst i filen för att importera `AzureCommunicationCalling library` . Dessutom `AVFoundation` behöver vi detta för att få en begäran om ljud behörighet i koden.
+Öppna projektets **ContentView.swift-fil** och lägg till en deklaration överst i filen `import` för att importera `AzureCommunicationCalling library` . Importera dessutom , `AVFoundation` vi behöver detta för ljudbehörighetsbegäran i koden.
 
 ```swift
 import AzureCommunicationCalling
 import AVFoundation
 ```
 
-Ersätt implementeringen av `ContentView` struct med vissa enkla UI-kontroller som gör det möjligt för en användare att initiera och avsluta ett samtal. Vi kommer att koppla affärs logik till dessa kontroller i den här snabb starten.
+Ersätt implementeringen av `ContentView` structen med några enkla UI-kontroller som gör att en användare kan initiera och avsluta ett anrop. Vi kopplar affärslogik till dessa kontroller i den här snabbstarten.
 
 ```swift
 struct ContentView: View {
@@ -119,20 +119,20 @@ struct ContentView: View {
 }
 ```
 
-## <a name="object-model"></a>Objekt modell
+## <a name="object-model"></a>Objektmodell
 
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar SDK:
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services Calling SDK:
 
 | Name                                  | Beskrivning                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient | CallClient är den huvudsakliga start punkten för den anropande SDK: n.|
-| CallAgent | CallAgent används för att starta och hantera samtal. |
+| CallClient | CallClient är den huvudsakliga startpunkten för den anropande SDK:n.|
+| CallAgent | CallAgent används för att starta och hantera anrop. |
 | CommunicationTokenCredential | CommunicationTokenCredential används som token-autentiseringsuppgifter för att instansiera CallAgent.| 
-| CommunicationUserIdentifier | CommunicationUserIdentifier används för att representera identiteten för användaren som kan vara något av följande: CommunicationUserIdentifier/PhoneNumberIdentifier/CallingApplication. |
+| CommunicationUserIdentifier | CommunicationUserIdentifier används för att representera identiteten för användaren, vilket kan vara något av följande: CommunicationUserIdentifier/PhoneNumberIdentifier/CallingApplication. |
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-Initiera en `CallAgent` instans med en åtkomsttoken för användare som gör att vi kan ringa och ta emot samtal. Lägg till följande kod i `onAppear` återanropet i **ContentView. SWIFT**:
+Initiera en instans `CallAgent` med en token för användaråtkomst som gör att vi kan göra och ta emot anrop. Lägg till följande kod i `onAppear` återanropet **i ContentView.swift:**
 
 ```swift
 var userCredential: CommunicationTokenCredential?
@@ -159,11 +159,11 @@ self.callClient?.createCallAgent(userCredential: userCredential) { (agent, error
 }
 ```
 
-Du måste ersätta `<USER ACCESS TOKEN>` med en giltig åtkomsttoken för din resurs. Se dokumentationen för [användar åtkomst-token](../../access-tokens.md) om du inte redan har en tillgänglig token.
+Du måste ersätta med `<USER ACCESS TOKEN>` en giltig användaråtkomsttoken för din resurs. Läs dokumentationen om [användaråtkomsttoken](../../access-tokens.md) om du inte redan har en tillgänglig token.
 
 ## <a name="start-a-call"></a>Starta ett anrop
 
-`startCall`Metoden anges som den åtgärd som ska utföras när knappen *starta samtal* är knackad. Uppdatera implementeringen för att starta ett samtal med `ASACallAgent` :
+Metoden `startCall` anges som den åtgärd som ska utföras när du trycker på *knappen* Starta anrop. Uppdatera implementeringen för att starta ett anrop med `ASACallAgent` :
 
 ```swift
 func startCall()
@@ -173,22 +173,22 @@ func startCall()
         if granted {
             // start call logic
             let callees:[CommunicationIdentifier] = [CommunicationUserIdentifier(identifier: self.callee)]
-            self.call = self.callAgent?.call(participants: callees, options: StartCallOptions())
+            self.call = self.callAgent?.startCall(participants: callees, options: StartCallOptions())
         }
     }
 }
 ```
 
-Du kan också använda egenskaperna i `StartCallOptions` för att ange inledande alternativ för anropet (d.v.s. det tillåter att anropet startar med mikrofonen avstängd).
+Du kan också använda egenskaperna i för att ange de första alternativen för anropet (d.v.s. det tillåter att anropet startas med mikrofonen `StartCallOptions` avstängd).
 
 ## <a name="end-a-call"></a>Avsluta ett anrop
 
-Implementera `endCall` metoden för att avsluta det aktuella anropet när knappen *Avsluta samtal* är knackad.
+Implementera metoden `endCall` för att avsluta det aktuella anropet när du trycker *på* knappen Avsluta anrop.
 
 ```swift
 func endCall()
 {    
-    self.call!.hangup(HangupOptions()) { (error) in
+    self.call!.hangUp(HangUpOptions()) { (error) in
         if (error != nil) {
             print("ERROR: It was not possible to hangup the call.")
         }
@@ -198,15 +198,15 @@ func endCall()
 
 ## <a name="run-the-code"></a>Kör koden
 
-Du kan skapa och köra din app på iOS-simulatorn genom att välja **produkt**  >  **körning** eller genom att använda kortkommandot (&#8984;-R).
+Du kan skapa och köra appen i iOS-simulatorn genom att välja **Produktkörning** eller med  >   hjälp av kortkommandot (&#8984;-R).
 
-:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Det slutliga utseendet och känslan av snabb starts appen":::
+:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Slutligt utseende på snabbstartsappen":::
 
-Du kan göra ett utgående VOIP-anrop genom att ange ett användar-ID i fältet text och sedan trycka på knappen **starta samtal** . `8:echo123`Genom att anropa ansluter du med en eko robot är det bra för att komma igång och kontrol lera att ljud enheterna fungerar. 
+Du kan göra ett utgående VOIP-anrop genom att ange ett användar-ID i textfältet och trycka på **knappen Starta anrop.** När du anropar ansluts du till en ekorobot. Det här är perfekt för att komma igång `8:echo123` och verifiera att dina ljudenheter fungerar. 
 
 > [!NOTE]
-> Första gången du gör ett samtal uppmanas du att få åtkomst till mikrofonen. I ett produktions program bör du använda `AVAudioSession` API: et för att [kontrol lera behörighets status](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources) och på ett smidigt sätt uppdatera programmets beteende när behörighet inte beviljas.
+> Första gången du gör ett anrop uppmanas du av systemet att få åtkomst till mikrofonen. I ett produktionsprogram bör du använda API:et för att kontrollera behörighetsstatusen och smidigt uppdatera programmets `AVAudioSession` beteende när behörigheten inte beviljas. [](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources)
 
 ## <a name="sample-code"></a>Exempelkod
 
-Du kan ladda ned exempel appen från [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/Add%20Voice%20Calling)
+Du kan ladda ned exempelappen från [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/Add%20Voice%20Calling)

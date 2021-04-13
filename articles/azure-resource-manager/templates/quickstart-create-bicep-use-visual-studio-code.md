@@ -2,15 +2,15 @@
 title: Skapa bicep-filer – Visual Studio Code
 description: Använd Visual Studio Code och bicep-tillägget till bicep-filer för att distribuera Azure-resurser
 author: mumian
-ms.date: 03/26/2021
+ms.date: 04/12/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 4d1064351ddfacdebfa67fd9b2f517f592de3a7c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e82f047f553290c9121d91060c347c5b242c7ec2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612901"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306474"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>Snabb start: skapa bicep-filer med Visual Studio Code
 
@@ -51,6 +51,10 @@ Resurs deklarationen har fyra komponenter:
 - **symboliskt namn** (STG): symboliskt namn är en identifierare för att referera till resursen i hela bicep-filen. Det är inte vad namnet på resursen kommer att vara när det distribueras. Namnet på resursen definieras av egenskapen **Name** .  Se den fjärde komponenten i den här listan.
 - **resurs typ** ( Microsoft.Storage/storageAccounts@2019-06-01 ): den består av resurs leverantören (Microsoft. Storage), resurs typ (StorageAccounts) och API version (2019-06-01). Varje resurs leverantör publicerar sina egna API-versioner, så det här värdet är specifika för typen. Du hittar fler typer och apiVersions för olika Azure-resurser från [referens för ARM-mallar](/azure/templates/).
 - **Egenskaper** (allt i = {...}): Ange egenskaper för resurs typen. Varje resurs har en `name` egenskap. De flesta resurser har också en `location` egenskap som anger den region där resursen distribueras. De andra egenskaperna varierar beroende på resurs typ och API-version.
+
+Mer information finns i [bicep-strukturen](./bicep-file.md).
+
+Det finns en kommentar för egenskapen Name.  Använd `//` för kommentarer på en rad eller `/* ... */` för kommentarer på flera rader
 
 ## <a name="completion-and-validation"></a>Slutför och verifiera
 

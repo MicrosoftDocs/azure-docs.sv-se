@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 4588eee721a58a7e4f3366d0d325b48de0f56ae5
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 267dc7c7d89bbecfbed127f4a46adb7cd9044bc4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259820"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309381"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analysera data med dedikerade SQL-pooler
 
@@ -99,7 +99,7 @@ En dedikerad SQL-pool förbrukar fakturerbara resurser så länge den är aktiv.
 
 1. Gå till **datahubben** i Synapse Studio.
 1. Gå till **SQLPOOL1**-  >  **tabeller**. 
-3. Högerklicka på **dbo. Rese** tabell och välj **nytt SQL-skript**  >  **Markera de 100 översta raderna**.
+3. Högerklicka på **dbo. NYCTaxiTripSmall** -tabell och välj **nytt SQL-skript**  >  **Markera de 100 översta raderna**.
 4. Vänta medan ett nytt SQL-skript skapas och körs.
 5. Observera att överst i SQL-skriptet **Connect to** anges automatiskt till SQL-poolen med namnet **SQLPOOL1**.
 6. Ersätt texten i SQL-skriptet med den här koden och kör den.
@@ -108,7 +108,7 @@ En dedikerad SQL-pool förbrukar fakturerbara resurser så länge den är aktiv.
     SELECT PassengerCount,
           SUM(TripDistanceMiles) as SumTripDistance,
           AVG(TripDistanceMiles) as AvgTripDistance
-    FROM  dbo.Trip
+    FROM  dbo.NYCTaxiTripSmall
     WHERE TripDistanceMiles > 0 AND PassengerCount > 0
     GROUP BY PassengerCount
     ORDER BY PassengerCount;

@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: d8a6fd458cdcf79cdeb693b25acf72d4ec48def7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 629b48a378dd029d9952270e3c71762a5bb7aa82
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102507525"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306729"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Använda Azure-Blob Storage för modellkonvertering
 
@@ -71,6 +71,9 @@ Om du vill börja konvertera en modell måste du ladda upp den med något av fö
 - [Använda Azure Storage REST-API: er](/rest/api/storageservices/blob-service-rest-api)
 
 Ett exempel på hur du överför data för konvertering hittar du i Conversion.ps1 av [PowerShell-exempel skripten](../../samples/powershell-example-scripts.md#script-conversionps1).
+
+> [!Note]
+> När du överför en indata modell tar du hand om att undvika långa fil namn och/eller mappstrukturer för att undvika problem med [Windows-sökvägarnas längd gränser](https://docs.mxicrosoft.com/windows/win32/fileio/maximum-file-path-limitation) för tjänsten. 
 
 ## <a name="get-a-sas-uri-for-the-converted-model"></a>Hämta en SAS-URI för den konverterade modellen
 

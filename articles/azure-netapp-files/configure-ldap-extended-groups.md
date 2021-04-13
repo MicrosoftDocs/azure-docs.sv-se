@@ -12,22 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/08/2021
+ms.date: 04/09/2021
 ms.author: b-juche
-ms.openlocfilehash: 9edf8c6eca223ece8728f9868ee9fe310c517ca9
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 2546236399853f3ed6fad9e07e031edb568fbfe9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259718"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311540"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>Konfigurera lägger till LDAP med utökade grupper för NFS-volym åtkomst
 
-När du [skapar en NFS-volym](azure-netapp-files-create-volumes.md)har du möjlighet att aktivera LDAP med utökade grupp funktioner ( **LDAP-** alternativet) för volymen. Den här funktionen aktiverar Active Directory LDAP-användare och utökade grupper (upp till 1024 grupper) för att få åtkomst till volymen.  
+När du [skapar en NFS-volym](azure-netapp-files-create-volumes.md)har du möjlighet att aktivera LDAP med utökade grupp funktioner ( **LDAP-** alternativet) för volymen. Den här funktionen aktiverar Active Directory LDAP-användare och utökade grupper (upp till 1024 grupper) för att få åtkomst till volymen. Du kan använda funktionen LDAP med utökade grupper med både NFSv 4.1-och NFSv3-volymer. 
 
 I den här artikeln beskrivs överväganden och steg för att aktivera LDAP med utökade grupper när du skapar en NFS-volym.  
 
 ## <a name="considerations"></a>Överväganden
+
+* LDAP med utökade grupper stöds endast med Active Directory Domain Services (lägger till) eller Azure Active Directory Domain Services (AADDS). OpenLDAP eller andra LDAP-katalogtjänster från tredje part stöds inte. 
 
 * LDAP över TLS får *inte* vara aktiverat om du använder Azure Active Directory Domain Services (AADDS).  
 
@@ -69,6 +71,9 @@ I den här artikeln beskrivs överväganden och steg för att aktivera LDAP med 
 
 2. LDAP-volymer kräver en Active Directory konfiguration för inställningarna för LDAP-servern. Följ anvisningarna i [krav för Active Directory anslutningar](create-active-directory-connections.md#requirements-for-active-directory-connections) och [skapa en Active Directory anslutning](create-active-directory-connections.md#create-an-active-directory-connection) för att konfigurera Active Directory anslutningar på Azure Portal.  
 
+    > [!NOTE]
+    > Kontrol lera att du har konfigurerat anslutnings inställningarna för Active Directory. Ett dator konto skapas i organisationsenheten (OU) som anges i Active Directory anslutnings inställningar. Inställningarna används av LDAP-klienten för att autentisera med din Active Directory.
+
 3. Se till att Active Directory LDAP-servern är igång och körs på Active Directory. 
 
 4. LDAP-NFS-användare måste ha vissa POSIX-attribut på LDAP-servern. Ange attribut för LDAP-användare och LDAP-grupper enligt följande: 
@@ -82,7 +87,7 @@ I den här artikeln beskrivs överväganden och steg för att aktivera LDAP med 
 
     ![Redigeraren för Active Directory-attribut](../media/azure-netapp-files/active-directory-attribute-editor.png) 
 
-5. Om du vill konfigurera en LDAP-integrerad Linux-klient, se [Konfigurera en NFS-klient för Azure NetApp Files](configure-nfs-clients.md).
+5. Om du vill konfigurera en LDAP-integrerad NFSv 4.1 Linux-klient, se [Konfigurera en NFS-klient för Azure NetApp Files](configure-nfs-clients.md).
 
 6.  Skapa en NFS-volym genom att följa stegen i [skapa en NFS-volym för Azure NetApp Files](azure-netapp-files-create-volumes.md) . När du skapar en volym aktiverar du alternativet **LDAP** under fliken **protokoll** .   
 

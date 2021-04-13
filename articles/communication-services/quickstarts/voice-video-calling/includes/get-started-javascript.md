@@ -1,30 +1,30 @@
 ---
-title: Snabb start – Lägg till VOIP-anrop till en webbapp med Azure Communication Services
-description: I den här självstudien får du lära dig hur du använder Azure Communication Services som anropar SDK för Java Script
+title: Snabbstart – Lägga till VOIP-anrop till en webbapp med hjälp av Azure Communication Services
+description: I den här självstudien lär du dig att använda Azure Communication Services Calling SDK för JavaScript
 author: ddematheu
 ms.author: nimag
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: be6ff629a651af5cc06d7928c7972f07aa0fd6e2
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: a93fe6c6203140bfed3771da8353ea7843b7694f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107291375"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107327276"
 ---
-I den här snabb starten får du lära dig hur du startar ett samtal med Azure Communication Services som anropar SDK för Java Script.
+I den här snabbstarten lär du dig hur du startar ett anrop med hjälp av Azure Communication Services Anropa SDK för JavaScript.
 
 > [!NOTE]
-> Det här dokumentet använder version 1.0.0 – beta. 10 av anrops-SDK: n.
+> Det här dokumentet använder version 1.0.0-beta.10 av anropande SDK.
 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Node.js](https://nodejs.org/) Aktiva LTS-och underhålls LTS-versioner (8.11.1 och 10.14.1 rekommenderas).
-- En Active Communication Services-resurs. [Skapa en kommunikations tjänst resurs](../../create-communication-resource.md).
-- En token för användar åtkomst för att instansiera anrops klienten. Lär dig hur du [skapar och hanterar användar åtkomst-token](../../access-tokens.md).
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- [Node.js](https://nodejs.org/) Versionerna Active LTS och Maintenance LTS (8.11.1 och 10.14.1 rekommenderas).
+- En aktiv Communication Services resurs. [Skapa en Communication Services resurs](../../create-communication-resource.md).
+- En token för användaråtkomst för att instansiera anropsklienten. Lär dig hur [du skapar och hanterar användaråtkomsttoken.](../../access-tokens.md)
 
 
 [!INCLUDE [Calling with JavaScript](./get-started-javascript-setup.md)]
@@ -70,7 +70,7 @@ Här är koden:
 </html>
 ```
 
-Skapa en fil i projektets rot Katalog som kallas **client.js** som innehåller program logiken för den här snabb starten. Lägg till följande kod för att importera den anropande klienten och få referenser till DOM-element så att vi kan koppla vår affärs logik. 
+Skapa en fil i rotkatalogen för projektet med namnet **client.js** ska innehålla programlogiken för den här snabbstarten. Lägg till följande kod för att importera den anropande klienten och hämta referenser till DOM-elementen så att vi kan koppla vår affärslogik. 
 
 ```javascript
 import { CallClient, CallAgent } from "@azure/communication-calling";
@@ -86,20 +86,20 @@ const callButton = document.getElementById("call-button");
 const hangUpButton = document.getElementById("hang-up-button");
 ```
 
-## <a name="object-model"></a>Objekt modell
+## <a name="object-model"></a>Objektmodell
 
-Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services som anropar SDK:
+Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i Azure Communication Services Anropa SDK:
 
 | Name                             | Beskrivning                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| CallClient                       | CallClient är den huvudsakliga start punkten för den anropande SDK: n.                                                                       |
-| CallAgent                        | CallAgent används för att starta och hantera samtal.                                                                                            |
-| AzureCommunicationTokenCredential | AzureCommunicationTokenCredential-klassen implementerar CommunicationTokenCredential-gränssnittet som används för att instansiera CallAgent. |
+| CallClient                       | CallClient är den huvudsakliga startpunkten för anropande SDK.                                                                       |
+| CallAgent                        | CallAgent används för att starta och hantera anrop.                                                                                            |
+| AzureCommunicationTokenCredential | Klassen AzureCommunicationTokenCredential implementerar communicationTokenCredential-gränssnittet som används för att instansiera CallAgent. |
 
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-Du måste mata in en giltig åtkomsttoken för din resurs i textfältet och klicka på Skicka. Se dokumentationen för [användar åtkomst-token](../../access-tokens.md) om du inte redan har en tillgänglig token. Med hjälp av `CallClient` initierar du en `CallAgent` instans med en som gör det `CommunicationTokenCredential` möjligt för oss att ringa och ta emot samtal. Lägg till följande kod i **client.js**:
+Du måste ange en giltig token för användaråtkomst för din resurs i textfältet och klicka på Skicka. Läs dokumentationen om [användaråtkomsttoken](../../access-tokens.md) om du inte redan har en tillgänglig token. Med `CallClient` hjälp av initierar du `CallAgent` en -instans med `CommunicationTokenCredential` en som gör att vi kan göra och ta emot anrop. Lägg till följande kod i **client.js**:
 
 ```javascript
 submitToken.addEventListener("click", async () => {
@@ -118,7 +118,7 @@ submitToken.addEventListener("click", async () => {
 
 ## <a name="start-a-call"></a>Starta ett anrop
 
-Lägga till en händelse hanterare för att initiera ett anrop när `callButton` användaren klickar på den:
+Lägg till en händelsehanterare för att initiera ett anrop `callButton` när du klickar på :
 
 ```javascript
 callButton.addEventListener("click", () => {
@@ -136,7 +136,7 @@ callButton.addEventListener("click", () => {
 
 ## <a name="end-a-call"></a>Avsluta ett anrop
 
-Lägg till en händelse lyssnare för att avsluta det aktuella anropet när `hangUpButton` användaren klickar på den:
+Lägg till en händelselyssnare för att avsluta det aktuella `hangUpButton` anropet när du klickar på :
 
 ```javascript
 hangUpButton.addEventListener("click", () => {
@@ -150,11 +150,11 @@ hangUpButton.addEventListener("click", () => {
 });
 ```
 
-`forEveryone`Egenskapen avslutar anropet för alla anrops deltagare.
+Egenskapen `forEveryone` avslutar anropet för alla samtalsdeltagare.
 
 ## <a name="run-the-code"></a>Kör koden
 
-Använd `webpack-dev-server` för att skapa och köra din app. Kör följande kommando för att paketera program värden i på en lokal webserver:
+Använd för `webpack-dev-server` att skapa och köra din app. Kör följande kommando för att paketa programvärden i på en lokal webbserver:
 
 ```console
 npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
@@ -162,6 +162,10 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 
 Öppna webbläsaren och gå till http://localhost:8080/ . Du bör se följande:
 
-:::image type="content" source="../media/javascript/calling-javascript-app-2.png" alt-text="Skärm bild av det färdiga JavaScript-programmet.":::
+:::image type="content" source="../media/javascript/calling-javascript-app-2.png" alt-text="Skärmbild av det färdiga JavaScript-programmet.":::
 
-Du kan göra ett utgående VOIP-anrop genom att ange ett användar-ID i fältet text och klicka på knappen **starta samtal** . `8:echo123`Genom att anropa ansluter du med en eko robot är det bra för att komma igång och kontrol lera att ljud enheterna fungerar.
+Du kan göra ett utgående VOIP-anrop genom att ange ett användar-ID i textfältet och klicka på **knappen Starta anrop.** När du anropar ansluts du till en ekorobot. Det här är perfekt för att komma igång `8:echo123` och verifiera att dina ljudenheter fungerar.
+
+## <a name="sample-code"></a>Exempelkod
+
+Du kan ladda ned exempelappen från [Github](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-voice-calling).
