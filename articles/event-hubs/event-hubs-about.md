@@ -3,12 +3,12 @@ title: Vad är Azure Event Hubs? – en tjänst för inmatning av stordata | Mic
 description: Lär dig mer om Azure Event Hubs, en strömningstjänst för stordata som matar in flera miljoner händelser per sekund.
 ms.topic: overview
 ms.date: 01/13/2021
-ms.openlocfilehash: 36eeb38d9ed1696c9524ae9b346065756ce49c46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35e89f60e93ec759d852641653ad138d7672cc37
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98195778"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303057"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – en stordataströmningsplattform och händelseinmatningstjänst
 Azure Event Hubs är en stordataströmningsplattform och händelseinmatningstjänst. Den kan ta emot och behandla miljoner händelser per sekund. Data som skickas till en händelsehubb kan omvandlas och lagras med hjälp av valfri provider för realtidsanalys eller batchbearbetnings-/lagringsadaptrar.
@@ -92,4 +92,4 @@ Information om hur du kommer igång med Event Hubs finns i självstudierna **ski
 Mer information om Event Hubs finns i följande artiklar:
 
 - [Översikt över Event Hubs-funktioner](event-hubs-features.md)
-- [Vanliga frågor och svar](event-hubs-faq.md).
+- [Vanliga frågor och svar](event-hubs-faq.yml).

@@ -3,12 +3,12 @@ title: Azure Relay undantag och hur du löser dem | Microsoft Docs
 description: Lista över Azure Relay undantag och föreslagna åtgärder som du kan vidta för att lösa dem.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 44eeba6eb7b8cfd4e81a923c2d9a3155f1709f2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3f9fe2e8aac826bd63d9842bd3380be10e1b87e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625156"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313954"
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay undantag
 
@@ -80,7 +80,7 @@ Det finns två vanliga orsaker till det här felet:
     I vissa fall kan relä tjänsten uppleva fördröjningar vid bearbetning av begär Anden. Detta kan inträffa, till exempel under perioder med hög trafik. Om detta inträffar kan du försöka utföra åtgärden igen efter en fördröjning tills åtgärden har slutförts. Om samma åtgärd fortfarande Miss lyckas efter flera försök kan du kontrol lera [statusen för tjänsten Azure-tjänst](https://azure.microsoft.com/status/) för att se om det finns kända tjänst avbrott.
 
 ## <a name="next-steps"></a>Nästa steg
-* [Azure Relay vanliga frågor](relay-faq.md)
+* [Azure Relay vanliga frågor](relay-faq.yml)
 * [Skapa ett relä namn område](relay-create-namespace-portal.md)
 * [Kom igång med Azure Relay och .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Kom igång med Azure Relay och nod](relay-hybrid-connections-node-get-started.md)

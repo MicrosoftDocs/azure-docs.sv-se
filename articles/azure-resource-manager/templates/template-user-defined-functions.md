@@ -2,13 +2,13 @@
 title: Användardefinierade funktioner i mallar
 description: Beskriver hur du definierar och använder användardefinierade funktioner i en Azure Resource Manager-mall (ARM-mall).
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: 9c7480958e6315c8aea1fd8d12613bcf9d606723
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 802ac6e1c70db8caa58aecde3efe814430c79682
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379632"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307783"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>Användardefinierade funktioner i ARM-mallen
 
@@ -107,6 +107,7 @@ När du definierar en användar funktion finns det vissa begränsningar:
 * Funktionen kan bara använda parametrar som har definierats i funktionen. När du använder funktionen [parametrar](template-functions-deployment.md#parameters) i en användardefinierad funktion är du begränsad till parametrarna för den funktionen.
 * Funktionen kan inte anropa andra användardefinierade funktioner.
 * Funktionen kan inte använda [referens](template-functions-resource.md#reference) funktionen eller någon av [list](template-functions-resource.md#list) funktionerna.
+* Funktionen kan inte använda funktionen [dateTimeAdd](template-functions-date.md#datetimeadd) .
 * Parametrar för funktionen kan inte ha standardvärden.
 
 ## <a name="next-steps"></a>Nästa steg

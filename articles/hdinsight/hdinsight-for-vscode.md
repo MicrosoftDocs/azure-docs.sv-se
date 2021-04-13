@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d098af394906dc120a252bdcda65fb3af31e28c8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d7e2bd2987e7eaf7798093f3918f72b7e09a3cb0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104865799"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313482"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Använda Spark & Hive-verktyg för Visual Studio Code
 
@@ -265,7 +265,7 @@ Verktyget stöder även **Spark SQL** -fr åga:
 
 > [!NOTE]
 >
-> ["MS-python >= 2020.5.78807-versionen stöds inte för det här tillägget"](#issues-changed) har lösts. Uppdatera **MS-python** till den **senaste versionen** nu.
+> [MS-toolsai. jupyter >2021.3.684299474-versionen stöds inte i det här tillägget](#known-issues) är ett känt problem. Använd Synapse-kärnan genom att gå till Microsoft Jupyter-2021.3.684299474.
 
 ## <a name="submit-pyspark-batch-job"></a>Skicka PySpark batch job
 
@@ -485,9 +485,19 @@ Skicka ett jobb till ett HDInsight-kluster med hjälp av Data Lake Storage Gen2.
 
 I meny raden går du till **Visa**  >  **kommando-palett** och anger sedan **Azure: Logga ut**.
 
-## <a name="issues-changed"></a>Problem har ändrats
+## <a name="known-issues"></a>Kända problem 
 
-För det här problemet "MS-python >= 2020.5.78807-versionen stöds inte av det här tillägget" har lösts. uppdatera **MS-python** till den **senaste versionen** nu.
+ MS-toolsai. Jupyter >2021.3.684299474-versionen stöds inte i det här tillägget, Använd Synapse-kernel genom att gå till Microsoft Jupyter 2021.3.684299474.
+
+ 1. Inaktivera tillägget för automatisk uppdatering.
+
+      ![Inaktivera tillägg för automatisk uppdatering](./media/hdinsight-for-vscode/disable-auto-updating-extension.png)
+
+2. Installera en vald version av Microsoft Jupyter.
+
+      ![vald version av Microsoft Jupyter](./media/hdinsight-for-vscode/selected-version-of-microsoft-jupyter.png)
+
+3. Installera Microsoft Jupyter version 2021.3.684299474
 
 
 ## <a name="next-steps"></a>Nästa steg

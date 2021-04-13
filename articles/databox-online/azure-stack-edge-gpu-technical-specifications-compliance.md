@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 937f0d1feb0c45c1c158b5e88daf268aeb383509
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e0eb976f655308082671afe2dc1923f082a3373b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034752"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303176"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>Tekniska specifikationer och efterlevnad för Azure Stack Edge Pro med GPU 
 
@@ -23,10 +23,14 @@ Maskin varu komponenterna i Azure Stack Edge Pro med en onboard Graphics Process
 
 Azure Stack Edge Pro-enheten har följande specifikationer för beräkning och minne:
 
-| Specifikation           | Värde                  |
-|-------------------------|----------------------------|
-| Processor                     | 2 X Intel Xeon silver 4214-processor (kaskad)<br> 24 fysiska kärnor (12 per processor)<br>48 logiska kärnor (virtuella processorer) (24 per CPU)       |
-| Minne                  | 128 GB RAM-minne (8x16 GB) <br> Dell-kompatibel 16 GB PC4 – 23400 DDR4 – 2933Mhz 2Rx8 1.2 v ECC registrerat RDIMM       |
+| Specifikation  | Värde                                                                       |
+|----------------|-----------------------------------------------------------------------------|
+| Processor typ       | Dubbla Intel Xeon silver 4214-processorer (Cascade Lake)                              |
+| CPU: RAW       | totalt 24 kärnor, 48 totalt virtuella processorer                                              |
+| PROCESSOR: användbart    | 40 virtuella processorer                                                                    |
+| Minnes typ    | Dell-kompatibel 16 GB PC4 – 23400 DDR4 – 2933Mhz 2Rx8 1.2 v ECC registrerat RDIMM |
+| Minne: RAW    | 128 GB RAM-minne (8 x 16 GB)                                                      |
+| Minne: användbart | 102 GB RAM                                                                  |
 
 
 ## <a name="compute-acceleration-specifications"></a>Specifikationer för beräknings acceleration
@@ -44,23 +48,23 @@ Azure Stack Edge Pro-enheten har två 100-240 V-enheter för strömförsörjning
 
 | Specifikation           | 750 W PSU                  |
 |-------------------------|----------------------------|
-| Maximal uteffekt    | 750 W                     |
+| Maximal uteffekt    | 750 W                      |
 | Frekvens               | 50/60 Hz                   |
 | Val av spännings intervall | Automatisk mellan: 100-240 V AC |
-| Hot pluggable           | Ja                        |
+| Hot pluggable           | Yes                        |
 
 
 ## <a name="network-interface-specifications"></a>Specifikationer för nätverks gränssnitt
 
 Din Azure Stack Edge Pro-enhet har sex nätverks gränssnitt, PORT1-PORT6.
 
-| Specifikation           | Beskrivning                 |
+| Specifikation           | Description                 |
 |-------------------------|----------------------------|
-|  Nätverksgränssnitt    | **2 X 1 GbE-gränssnitt** – 1 hanterings gränssnitt port 1 används för inledande installation och är statisk som standard. När den första installationen är klar kan du använda gränssnittet för data med valfri IP-adress. Men vid återställning återgår gränssnittet till statisk IP. <br>Den andra gränssnitts porten 2 är användaren konfigurerbar, kan användas för data överföring och är DHCP som standard. <br>**4 X 25 GbE-gränssnitt** – dessa data gränssnitt, Port 3 till port 6, kan konfigureras av användaren som DHCP (standard) eller statisk. De kan också arbeta som 10 GbE-gränssnitt.  | 
+|  Nätverksgränssnitt    | **2 X 1 GbE-gränssnitt** – 1 hanterings gränssnitt port 1 används för inledande installation och är statisk som standard. När den första installationen är klar kan du använda gränssnittet för data med valfri IP-adress. Men vid återställning återgår gränssnittet till statisk IP. <br>Den andra gränssnitts porten 2 är användaren konfigurerbar, kan användas för data överföring och är DHCP som standard. <br>**4 X 25-GbE-gränssnitt** – dessa data gränssnitt, Port 3 till port 6, kan konfigureras av användaren som DHCP (standard) eller statisk. De kan också arbeta som 10 GbE-gränssnitt.  | 
 
 Din Azure Stack Edge Pro-enhet har följande nätverks maskin vara:
 
-* **Anpassad Microsoft Qlogic Cavium 25G Norwegian Developers Conference adapter** -port 1 till Port 4.
+* **Anpassad Microsoft `Qlogic` Cavium 25G Norwegian DEVELOPERS Conference adapter** -port 1 till Port 4.
 * **Mellanox dual port 25G ConnectX – 4 kanal nätverkskort** -Port 5 och port 6.
 
 Här följer information om Mellanox-kortet:
@@ -74,7 +78,7 @@ Här följer information om Mellanox-kortet:
 
 En fullständig lista över kablar, växlar och Sänd tagare som stöds för dessa nätverkskort finns på:
 
-- [Cavium för QLogic 25G Norwegian Developers Conference adapter](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
+- [ `Qlogic` CAVIUM 25G Norwegian Developers Conference adapter](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
 - [Mellanox dual port 25G ConnectX – 4 kanals nätverkskort kompatibla produkter](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).  
 
 ## <a name="storage-specifications"></a>Storage-specifikationer

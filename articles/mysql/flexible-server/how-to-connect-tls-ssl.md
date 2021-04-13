@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 399cf8087d39f78184cfdae4b9f0e34efecaea66
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 6dbb1b46aef40986fc2d601aee152aed02591ac0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491629"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312611"
 ---
 # <a name="connect-to-azure-database-for-mysql---flexible-server-with-encrypted-connections"></a>Ansluta till Azure Database for MySQL-flexibel server med krypterade anslutningar
 
@@ -24,9 +24,9 @@ Azure Database for MySQL flexibel Server stöder krypterade anslutningar med Tra
 
 Följande är de olika konfigurationerna av SSL-och TLS-inställningar som du kan använda för din flexibla Server:
 
-| Scenario   | Inställningar för Server parameter      | Beskrivning                                    |
+| Scenario   | Inställningar för Server parameter      | Description                                    |
 |------------|--------------------------------|------------------------------------------------|
-|Inaktivera SSL (krypterade anslutningar) | require_secure_transport = av |Om det äldre programmet inte har stöd för krypterade anslutningar till MySQL server kan du inaktivera tvång av krypterade anslutningar till din flexibla Server genom att ange require_secure_transport = av.|
+|Inaktivera SSL-tvång | require_secure_transport = av |Om det äldre programmet inte har stöd för krypterade anslutningar till MySQL server kan du inaktivera tvång av krypterade anslutningar till din flexibla Server genom att ange require_secure_transport = av.|
 |Framtvinga SSL med TLS-version < 1,2 | require_secure_transport = ON och tls_version = TLSV1 eller TLSV 1.1| Om ditt äldre program stöder krypterade anslutningar men kräver TLS-version < 1,2, kan du aktivera krypterade anslutningar men konfigurera den flexibla servern så att den tillåter anslutningar med TLS-versionen (v 1.0 eller v 1.1) som stöds av ditt program|
 |Framtvinga SSL med TLS-version = 1.2 (standard konfiguration)|require_secure_transport = på och tls_version = TLSV 1.2| Detta är den rekommenderade och standard konfigurationen för flexibel Server.|
 |Framtvinga SSL med TLS-version = 1.3 (stöds med MySQL v 8.0 och senare)| require_secure_transport = på och tls_version = TLSV 1.3| Detta är användbart och rekommenderas för nya program utveckling|
@@ -44,7 +44,7 @@ I den här artikeln får du lära dig att:
 * Verifiera krypterings status för anslutningen
 * Ansluta till din flexibla server med krypterade anslutningar med olika program ramverk
 
-## <a name="disable-ssl-on-your-flexible-server"></a>Inaktivera SSL på din flexibla Server
+## <a name="disable-ssl-enforcement-on-your-flexible-server"></a>Inaktivera SSL-tvång på din flexibla Server
 Om klient programmet inte stöder krypterade anslutningar måste du inaktivera tvingande anslutningar för krypterade anslutningar på din flexibla Server. Om du vill inaktivera tvingande av krypterade anslutningar måste du ange require_secure_transport Server parameter till av som visas i skärm bilden och spara Server parameter konfigurationen för att den ska börja gälla. require_secure_transport är en **dynamisk Server-parameter** som börjar gälla omedelbart och inte kräver att servern startas om.
 
 > :::image type="content" source="./media/how-to-connect-tls-ssl/disable-ssl.png" alt-text="Skärm bild som visar hur du inaktiverar SSL med Azure Database for MySQL flexibel Server.":::

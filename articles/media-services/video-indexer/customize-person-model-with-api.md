@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
-ms.openlocfilehash: 09366dea1a0d77052b6f99e9f5ab52c270e341b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dced3cde1aae082bd64d785212b40e100013e0bf
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87047011"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312900"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>Anpassa en person modell med Video Indexer API
 
@@ -35,7 +35,7 @@ Varje konto har en gräns på 50 person modeller. Om du inte behöver stöd för
 
 ## <a name="create-a-new-person-model"></a>Skapa en ny person modell
 
-Om du vill skapa en ny person modell i det angivna kontot använder du [skapa en person modell](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?) -API.
+Om du vill skapa en ny person modell i det angivna kontot använder du [skapa en person modell](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Person-Model) -API.
 
 Svaret innehåller namnet och det genererade modell-ID: t för den person modell som du nyss skapade enligt formatet i exemplet nedan.
 
@@ -46,11 +46,11 @@ Svaret innehåller namnet och det genererade modell-ID: t för den person modell
 }
 ```
 
-Du använder sedan **ID-** värdet för parametern **personModelId** när du [laddar upp en video för att indexera](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) eller [Indexera om en video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
+Du använder sedan **ID-** värdet för parametern **personModelId** när du [laddar upp en video för att indexera](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) eller [Indexera om en video](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video).
 
 ## <a name="delete-a-person-model"></a>Ta bort en person modell
 
-Om du vill ta bort en anpassad person modell från det angivna kontot använder du [ta bort en person modell](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?) -API.
+Om du vill ta bort en anpassad person modell från det angivna kontot använder du [ta bort en person modell](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Person-Model) -API.
 
 När person modellen har tagits bort förblir indexet för dina aktuella videor som använde den borttagna modellen oförändrade tills du indexerar om dem. Vid Omindexering identifieras inte de ansikten som beskrevs i den borttagna modellen av Video Indexer i dina aktuella videor som indexerats med modellen, men ansikten kommer fortfarande att identifieras. Dina aktuella videor som indexeras med den borttagna modellen använder nu ditt kontos standard person modell. Om ansikten från den borttagna modellen också är namngivna i ditt kontos standard modell, kommer dessa ansikten att fortsätta att kännas igen i videor.
 
@@ -58,7 +58,7 @@ Det finns inget returnerat innehåll när person modellen har tagits bort.
 
 ## <a name="get-all-person-models"></a>Hämta alla person modeller
 
-Om du vill hämta alla person modeller på det angivna kontot använder du [Hämta en person modell](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?) -API.
+Om du vill hämta alla person modeller på det angivna kontot använder du [Hämta en person modell](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Person-Models) -API.
 
 Svaret innehåller en lista över alla person modeller i ditt konto (inklusive standard person modellen i det angivna kontot) och var och en av deras namn och ID: n efter formatet i exemplet nedan.
 
@@ -75,7 +75,7 @@ Svaret innehåller en lista över alla person modeller i ditt konto (inklusive s
 ]
 ```
 
-Du kan välja vilken modell du vill använda för en video genom att använda `id` värdet för person modellen för `personModelId` parametern när [du laddar upp en video för att indexera](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) eller indexera om [en video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
+Du kan välja vilken modell du vill använda för en video genom att använda `id` värdet för person modellen för `personModelId` parametern när [du laddar upp en video för att indexera](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) eller indexera om [en video](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video).
 
 ## <a name="update-a-face"></a>Uppdatera ett ansikte
 
@@ -85,7 +85,7 @@ Systemet identifierar sedan förekomsterna av samma ansikte i dina andra aktuell
 
 Du kan uppdatera en ansikte som Video Indexer identifieras som en kändis med ett nytt namn. Det nya namnet som du ger företräde framför den inbyggda kändis-igenkänningen.
 
-Om du vill uppdatera FACET använder du [Uppdatera ett video ansikts](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?) -API.
+Om du vill uppdatera FACET använder du [Uppdatera ett video ansikts](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Video-Face) -API.
 
 Namnen är unika för person modeller, så om du ger två olika ansikten i samma person modell samma `name` parameter värde video Indexer Visa ansikten som samma person och konvergerar dem när du har indexerat om videon.
 

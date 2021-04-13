@@ -2,16 +2,16 @@
 title: Självstudie – Skapa & Distribuera Azure Resource Manager bicep-filer
 description: Skapa din första bicep-fil för att distribuera Azure-resurser. I självstudien får du lära dig om bicep-filsyntaxen och hur du distribuerar ett lagrings konto.
 author: mumian
-ms.date: 03/17/2021
+ms.date: 04/12/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 8979585d7ec0fa6eac1866375fe1e80214f2d2e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ffd8a97d797144d458e7ec5836042cc6d8d8193
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594282"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306695"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>Självstudie: skapa och distribuera den första Azure Resource Manager bicep-filen
 
@@ -57,7 +57,7 @@ OK, du är redo att börja lära dig om bicep.
 
     ```bicep
     resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
-      name: '{provide-unique-name}'
+      name: '{provide-unique-name}'  // must be globally unique
       location: 'eastus'
       sku: {
         name: 'Standard_LRS'
@@ -85,6 +85,10 @@ OK, du är redo att börja lära dig om bicep.
         Om du visar en äldre API-version, till exempel [storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts), ser du att det finns en mindre uppsättning egenskaper.
 
         Om du bestämmer dig för att ändra API-versionen för en resurs, se till att du utvärderar egenskaperna för den versionen och justerar din bicep-fil på lämpligt sätt.
+
+    Mer information finns i [bicep-strukturen](./bicep-file.md).
+
+    Det finns en kommentar för egenskapen Name.  Använd `//` för kommentarer på en rad eller `/* ... */` för kommentarer på flera rader
 
 1. Ersätt `{provide-unique-name}` inklusive klammerparenteser `{}` med ett unikt lagrings konto namn.
 

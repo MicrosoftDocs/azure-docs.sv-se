@@ -4,17 +4,17 @@ description: I den här snabb starten lär du dig hur du skapar en IoT Edge-enhe
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/12/2021
+ms.date: 04/07/2021
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 37f4a63d0a901fd70e0a60bb435efdaf08868616
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10a073914a79d29ae4b1c1d90ae5be624e7d7673
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463495"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303940"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Snabb start: distribuera din första IoT Edge-modul till en virtuell Linux-enhet
 
@@ -263,32 +263,76 @@ Hantera din Azure IoT Edge-enhet från molnet för att distribuera en modul som 
 
 ![Diagram – Distribuera en modul från ett moln till en enhet](./media/quickstart-linux/deploy-module.png)
 
-[!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
+<!-- [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
+
+Include content included below to support versioned steps in Linux quickstart. Can update include file once Windows quickstart supports v1.2 -->
+
+En av de viktigaste funktionerna i Azure IoT Edge är att distribuera kod till dina IoT Edge-enheter från molnet. *IoT Edge moduler* är körbara paket som implementeras som behållare. I det här avsnittet ska du distribuera en fördefinierad modul från [avsnittet IoT Edge moduler i Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) direkt från Azure IoT Hub.
+
+Den modul som du distribuerar i det här avsnittet simulerar en sensor och skickar genererade data. Modulen är användbar kod när du kör igång med IoT Edge eftersom du kan använda simulerade data för utveckling och testning. Om du vill se exakt vad den här modulen gör kan du visa [källkoden för den simulerade temperatursensorn](https://github.com/Azure/iotedge/blob/027a509549a248647ed41ca7fe1dc508771c8123/edge-modules/SimulatedTemperatureSensor/src/Program.cs).
+
+Följ de här stegen för att starta guiden **Ange moduler** för att distribuera din första modul från Azure Marketplace.
+
+1. Logga in på [Azure Portal](https://portal.azure.com) och gå till din IoT-hubb.
+
+1. Välj **IoT Edge** under **Automatisk enhets hantering** på menyn till vänster.
+
+1. Välj enhets-ID för mål enheten i listan med enheter.
+
+1. I den övre stapeln väljer du **Ange moduler**.
+
+   ![Skärm bild som visar att du väljer Ange moduler.](./media/quickstart/select-set-modules.png)
+
+### <a name="modules"></a>Moduler
+
+Det första steget i guiden är att välja vilka moduler du vill köra på enheten.
+
+Öppna den nedrullningsbara menyn **Lägg till** under **IoT Edge moduler** och välj sedan **Marketplace-modul**.
+
+   ![Skärm bild som visar den nedrullningsbara menyn Lägg till.](./media/quickstart/add-marketplace-module.png)
+
+I **IoT Edge module Marketplace** söker du efter och väljer `Simulated Temperature Sensor` modulen. Modulen läggs till i avsnittet IoT Edge moduler med önskad **körnings** status.
 
 <!-- 1.2 -->
 :::moniker range=">=iotedge-2020-11"
 
-Eftersom IoT Edge version 1,2 finns i en offentlig för hands version finns det ett extra steg att vidta för att uppdatera runtime-modulerna till deras offentliga för hands versioner.
+Välj **körnings inställningar** för att öppna inställningarna för edgeHub-och edgeAgent-modulerna. Det här avsnittet är där du kan hantera runtime-modulerna genom att lägga till miljövariabler eller ändra alternativen för att skapa.
 
-1. På sidan enhets information väljer du **Ange moduler** igen.
+Uppdatera fältet **avbildning** för både edgeHub-och edgeAgent-modulerna så att versions tag gen 1,2 används. Exempel:
 
-1. Välj **körnings inställningar**.
+* `mcr.microsoft.com/azureiotedge-hub:1.2`
+* `mcr.microsoft.com/azureiotedge-agent:1.2`
 
-1. Uppdatera fältet **avbildning** för båda modulerna IoT Edge hub och IoT Edge agent för att använda versions tag gen 1.2.0-RC4. Exempel:
-
-   * `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`
-   * `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4`
-
-1. Modulen simulerad temperatur sensor bör fortfarande visas i avsnittet moduler. Du behöver inte göra några ändringar i modulen för den offentliga för hands versionen.
-
-1. Välj **Granska + skapa**.
-
-1. Välj **Skapa**.
-
-1. På sidan enhets information kan du välja antingen **$edgeAgent** eller **$edgeHub** för att se information om modulen återspeglar den offentliga för hands versionen av avbildningen.
+Välj **Spara** för att tillämpa ändringarna i runtime-modulerna.
 
 :::moniker-end
-<!-- end 1.2 -->
+<!--end 1.2-->
+
+Välj **Nästa: vägar** för att fortsätta till nästa steg i guiden.
+
+   ![Skärm bild som visar fortsätter till nästa steg när modulen har lagts till.](./media/quickstart/view-temperature-sensor-next-routes.png)
+
+### <a name="routes"></a>Vägar
+
+På fliken **vägar** tar du bort standard vägen, **dirigerar** och väljer sedan **Nästa: granska + skapa** för att fortsätta till nästa steg i guiden.
+
+   >[!Note]
+   >Vägar konstrueras med hjälp av namn-och värdepar. Du bör se två vägar på den här sidan. Standard vägen, **Route**, skickar alla meddelanden till IoT Hub (som kallas `$upstream` ). En andra väg, **SimulatedTemperatureSensorToIoTHub**, skapades automatiskt när du lade till modulen från Azure Marketplace. Den här vägen skickar alla meddelanden från modulen simulerad temperatur till IoT Hub. Du kan ta bort standard vägen eftersom den är redundant i det här fallet.
+
+   ![Skärm bild som visar borttagning av standard väg och flyttas sedan till nästa steg.](./media/quickstart/delete-route-next-review-create.png)
+
+### <a name="review-and-create"></a>Granska och skapa
+
+Granska JSON-filen och välj sedan **skapa**. JSON-filen definierar alla moduler som du distribuerar till din IoT Edge-enhet. Du ser **SimulatedTemperatureSensor** -modulen och de två modulerna för körning, **edgeAgent** och **edgeHub**.
+
+   >[!Note]
+   >När du skickar en ny distribution till en IoT Edge-enhet distribueras ingenting till enheten. I stället frågar enheten regelbundet IoT Hub efter nya instruktioner. Om enheten hittar ett uppdaterat distributionsmanifest använder den informationen om den nya distributionen för att hämta modulavbildningarna från molnet och börjar sedan köra modulerna lokalt. Den här processen kan ta några minuter.
+
+När du har skapat modulens distributions information återgår guiden till enhets informations sidan. Visa distributions status på fliken **moduler** .
+
+Du bör se tre moduler: **$edgeAgent**, **$edgeHub** och **SimulatedTemperatureSensor**. Om en eller flera av modulerna har värdet **Ja** under **anges i distributionen** , men inte under **rapporteras av enheten**, startar IoT Edge-enheten fortfarande. Vänta några minuter och uppdatera sedan sidan.
+
+   ![Skärm bild som visar simulerad temperatur sensor i listan över distribuerade moduler.](./media/quickstart/view-deployed-modules.png)
 
 ## <a name="view-generated-data"></a>Visa genererade data
 

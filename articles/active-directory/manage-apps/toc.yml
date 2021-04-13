@@ -321,7 +321,7 @@
 - name: Referens
   items:
     - name: Vanliga frågor om App proxy
-      href: application-proxy-faq.md
+      href: application-proxy-faq.yml
     - name: Vanliga frågor och svar om app Management-certifikat
       href: application-management-certs-faq.md
     - name: Versionshistorik för programproxy

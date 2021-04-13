@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: kumud
-ms.openlocfilehash: f373afae03357ffb65eb459f806fe441e29b21b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 890e02812fb06cf0b0ebe990b0175311d5c85ab5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87047076"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312934"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-api"></a>Anpassa en språk modell med Video Indexer API
 
@@ -27,7 +27,7 @@ Du kan använda Video Indexer API: er för att skapa och redigera anpassade spr�
 
 ## <a name="create-a-language-model"></a>Skapa en språk modell
 
-Med [skapa ett språk modells](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?) -API skapar du en ny anpassad språk modell i det angivna kontot. Du kan ladda upp filer för språk modellen i det här anropet. Du kan också skapa språk modellen här och ladda upp filer för modellen senare genom att uppdatera språk modellen.
+Med [skapa ett språk modells](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Language-Model) -API skapar du en ny anpassad språk modell i det angivna kontot. Du kan ladda upp filer för språk modellen i det här anropet. Du kan också skapa språk modellen här och ladda upp filer för modellen senare genom att uppdatera språk modellen.
 
 > [!NOTE]
 > Du måste fortfarande träna modellen med de aktiverade filerna för modellen för att lära dig innehållet i dess filer. Anvisningar för utbildning ett språk finns i nästa avsnitt.
@@ -70,7 +70,7 @@ Svaret innehåller metadata för den nyligen skapade språk modellen tillsammans
 
 ## <a name="train-a-language-model"></a>Träna en språk modell
 
-[Träna en språk modell](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train) API tågen en anpassad språk modell i det angivna kontot med innehållet i de filer som överförts till och Aktiver ATS i språk modellen.
+[Träna en språk modell](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Train-Language-Model) API tågen en anpassad språk modell i det angivna kontot med innehållet i de filer som överförts till och Aktiver ATS i språk modellen.
 
 > [!NOTE]
 > Du måste först skapa språk modellen och överföra dess filer. Du kan ladda upp filer när du skapar språk modellen eller genom att uppdatera språk modellen.
@@ -105,11 +105,11 @@ Svaret innehåller metadata för den nytränade språk modellen tillsammans med 
 }
 ```
 
-Det returnerade `id` är ett unikt ID som används för att skilja mellan språk modeller, medan `languageModelId` används både för att [Ladda upp en video för att indexera](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) och [Indexera om en video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) -api: er (även kallat `linguisticModelId` video Indexer uppladdning/index-API: er).
+Det returnerade `id` är ett unikt ID som används för att skilja mellan språk modeller, medan `languageModelId` används både för att [Ladda upp en video för att indexera](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) och [Indexera om en video](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video) -api: er (även kallat `linguisticModelId` video Indexer uppladdning/index-API: er).
 
 ## <a name="delete-a-language-model"></a>Ta bort en språk modell
 
-[Ta bort ett språk modells](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) -API tar bort en anpassad språk modell från det angivna kontot. Alla videoklipp som använder den borttagna språk modellen behåller samma index tills du omindexerat videon. Om du Omindexerar videon kan du tilldela en ny språk modell till videon. Annars kommer Video Indexer att använda sin standard modell för att Omindexera videon.
+[Ta bort ett språk modells](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Language-Model) -API tar bort en anpassad språk modell från det angivna kontot. Alla videoklipp som använder den borttagna språk modellen behåller samma index tills du omindexerat videon. Om du Omindexerar videon kan du tilldela en ny språk modell till videon. Annars kommer Video Indexer att använda sin standard modell för att Omindexera videon.
 
 ### <a name="response"></a>Svarsåtgärder
 
@@ -117,7 +117,7 @@ Det finns inget returnerat innehåll när språk modellen har tagits bort.
 
 ## <a name="update-a-language-model"></a>Uppdatera en språk modell
 
-[Uppdateringen av ett språk modell](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update) -API uppdaterar en anpassad språk modell i det angivna kontot.
+[Uppdateringen av ett språk modell](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Language-Model) -API uppdaterar en anpassad språk modell i det angivna kontot.
 
 > [!NOTE]
 > Du måste redan ha skapat språk modellen. Du kan använda det här anropet för att aktivera eller inaktivera alla filer under modellen, uppdatera namnet på språk modellen och ladda upp filer som ska läggas till i språk modellen.
@@ -161,7 +161,7 @@ Använd de `id` filer som returneras i svaret för att ladda ned innehållet i f
 
 ## <a name="update-a-file-from-a-language-model"></a>Uppdatera en fil från en språk modell
 
-Med [Uppdatera en fil](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) kan du uppdatera namn och `enable` tillstånd för en fil i en anpassad språk modell i det angivna kontot.
+Med [Uppdatera en fil](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Language-Model-file) kan du uppdatera namn och `enable` tillstånd för en fil i en anpassad språk modell i det angivna kontot.
 
 ### <a name="response"></a>Svarsåtgärder
 
@@ -181,7 +181,7 @@ Använd `id` filen som returnerades i svaret för att ladda ned innehållet i fi
 
 ## <a name="get-a-specific-language-model"></a>Hämta en specifik språk modell
 
-[Get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) -API: et returnerar information om den angivna språk modellen i det angivna kontot, till exempel språk och de filer som finns i språk modellen.
+[Get](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Language-Model) -API: et returnerar information om den angivna språk modellen i det angivna kontot, till exempel språk och de filer som finns i språk modellen.
 
 ### <a name="response"></a>Svarsåtgärder
 
@@ -217,7 +217,7 @@ Använd `id` filen som returnerades i svaret för att ladda ned innehållet i fi
 
 ## <a name="get-all-the-language-models"></a>Hämta alla språk modeller
 
-[Hämta alla](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get) API: er returnerar alla anpassade språk modeller i det angivna kontot i en lista.
+[Hämta alla](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Language-Models) API: er returnerar alla anpassade språk modeller i det angivna kontot i en lista.
 
 ### <a name="response"></a>Svarsåtgärder
 
@@ -261,7 +261,7 @@ Svaret innehåller en lista över alla språk modeller i ditt konto och var och 
 
 ## <a name="delete-a-file-from-a-language-model"></a>Ta bort en fil från en språk modell
 
-[Borttagnings](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) -API: n tar bort den angivna filen från den angivna språk modellen i det angivna kontot.
+[Borttagnings](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Language-Model-File) -API: n tar bort den angivna filen från den angivna språk modellen i det angivna kontot.
 
 ### <a name="response"></a>Svarsåtgärder
 
@@ -269,7 +269,7 @@ Det finns inget returnerat innehåll när filen tas bort från språk modellen.
 
 ## <a name="get-metadata-on-a-file-from-a-language-model"></a>Hämta metadata för en fil från en språk modell
 
-[Hämta metadata för ett fil](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model) -API returnerar innehållet i och metadata för den angivna filen från den valda språk modellen i ditt konto.
+[Hämta metadata för ett fil](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Language-Model-File-Data) -API returnerar innehållet i och metadata för den angivna filen från den valda språk modellen i ditt konto.
 
 ### <a name="response"></a>Svarsåtgärder
 
@@ -291,7 +291,7 @@ Svaret innehåller innehåll och metadata för filen i JSON-format, ungefär som
 
 ## <a name="download-a-file-from-a-language-model"></a>Ladda ned en fil från en språk modell
 
-[Hämtningen av ett fil](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?) -API laddar ned en textfil som innehåller innehållet i den angivna filen från den angivna språk modellen i det angivna kontot. Text filen måste matcha innehållet i text filen som ursprungligen överfördes.
+[Hämtningen av ett fil](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Download-Language-Model-File-Content) -API laddar ned en textfil som innehåller innehållet i den angivna filen från den angivna språk modellen i det angivna kontot. Text filen måste matcha innehållet i text filen som ursprungligen överfördes.
 
 ### <a name="response"></a>Svarsåtgärder
 

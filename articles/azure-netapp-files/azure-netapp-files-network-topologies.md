@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 04/09/2021
 ms.author: ramakk
-ms.openlocfilehash: 96d8ba058a33d408ec2ee2a1adfba9011f393da9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d002932bca51300fa6a031ce7ab0d69186afe9c3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96184492"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311693"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Riktlinjer för Azure NetApp Files-nätverksplanering
 
@@ -46,7 +46,7 @@ Funktionerna nedan stöds för närvarande inte för Azure NetApp Files:
 
 Följande nätverks begränsningar gäller för Azure NetApp Files:
 
-* Antalet IP-adresser som används i ett VNet med Azure NetApp Files (inklusive peer-virtuella nätverk) får inte överskrida 1000. Vi arbetar för att öka den här gränsen för att uppfylla behoven för kund skalning. 
+* Antalet IP-adresser som används i ett VNet med Azure NetApp Files (inklusive *direkt* peer-virtuella nätverk) får inte överskrida 1000. Vi arbetar för att öka den här gränsen för att uppfylla behoven för kund skalning. 
 * Endast ett undernät kan delegeras till Azure NetApp Files i varje Azure Virtual Network (VNet).
 
 
@@ -56,13 +56,13 @@ I följande tabell beskrivs de nätverkstopologier som stöds av Azure NetApp Fi
 
 |    Topologier    |    Stöds    |     Lösning    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    Anslutning till volym i ett lokalt virtuellt nätverk    |    Ja    |         |
-|    Anslutning till volym i ett peer-kopplat VNet (samma region)    |    Ja    |         |
-|    Anslutning till volym i ett peer-kopplat VNet (mellan regioner eller global peering)    |    Inga    |    Inget    |
-|    Anslutning till en volym över ExpressRoute-Gateway    |    Ja    |         |
-|    Anslutning från lokal plats till en volym i ett eker VNet över ExpressRoute-gateway och VNet-peering med Gateway-överföring    |    Ja    |        |
-|    Anslutning från lokal plats till en volym i en eker VNet över VPN-gateway    |    Ja    |         |
-|    Anslutning från lokal plats till en volym i ett eker VNet via VPN-gateway och VNet-peering med Gateway-överföring    |    Ja    |         |
+|    Anslutning till volym i ett lokalt virtuellt nätverk    |    Yes    |         |
+|    Anslutning till volym i ett peer-kopplat VNet (samma region)    |    Yes    |         |
+|    Anslutning till volym i ett peer-kopplat VNet (mellan regioner eller global peering)    |    No    |    Inget    |
+|    Anslutning till en volym över ExpressRoute-Gateway    |    Yes    |         |
+|    Anslutning från lokal plats till en volym i ett eker VNet över ExpressRoute-gateway och VNet-peering med Gateway-överföring    |    Yes    |        |
+|    Anslutning från lokal plats till en volym i en eker VNet över VPN-gateway    |    Yes    |         |
+|    Anslutning från lokal plats till en volym i ett eker VNet via VPN-gateway och VNet-peering med Gateway-överföring    |    Yes    |         |
 
 
 ## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Virtuellt nätverk för Azure NetApp Files volymer

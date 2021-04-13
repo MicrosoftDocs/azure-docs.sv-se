@@ -94,7 +94,7 @@
     - name: Azure-översikt
       href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
     - name: VANLIGA FRÅGOR OCH SVAR
-      href: relay-faq.md
+      href: relay-faq.yml
     - name: Blogg
       href: /archive/blogs/servicebus/
     - name: Prissättning

@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 7a0d2bdb1879e4f68b582ee56367f0238285a401
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: e6832cc835a464a2a3d17d5ed286e71b17bc980e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278090"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312288"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-c"></a>Snabb start: Azure Blob Storage klient bibliotek V12 för C++
 
@@ -40,7 +40,7 @@ Resurser:
 - [Azure Storage-konto](../common/storage-account-create.md)
 - [C++-kompilator](https://azure.github.io/azure-sdk/cpp_implementation.html#supported-platforms)
 - [CMake](https://cmake.org/)
-- [Vcpkg-C och C++ Package Manager](https://github.com/microsoft/vcpkg/blob/master/docs/index.md)
+- [Vcpkg-C och C++ Package Manager](https://github.com/microsoft/vcpkg/blob/master/docs/README.md)
 - [Lib-sväng](https://curl.haxx.se/libcurl/)
 - [LibXML2](http://www.xmlsoft.org/)
 

@@ -3,12 +3,12 @@ title: Redigera principer för mat ris egenskaper för resurser
 description: Lär dig att arbeta med mat ris parametrar och matris språk uttryck, utvärdera [*]-aliaset och lägga till element med Azure Policy definitions regler.
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: d4e059f3691554aa91dfd15cf308ef62afa58928
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 18afbee0ca8b1c488e3bd3ce50dacc726bd2ef25
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106089975"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305199"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Redigera principer för mat ris egenskaper på Azure-resurser
 
@@ -95,7 +95,7 @@ Använd följande kommandon om du vill använda den här strängen med varje SDK
 
 - Azure CLI: kommando [AZ princip tilldelning skapa](/cli/azure/policy/assignment#az_policy_assignment_create) med parameter **parametrar**
 - Azure PowerShell: cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) med parametern **PolicyParameter**
-- REST API: i åtgärden _Lägg_ till [skapa](/rest/api/resources/policyassignments/create) som en del av begär ande texten som värde för egenskapen **Properties. Parameters**
+- REST API: i åtgärden _Lägg_ till [skapa](/rest/api/policy/policyassignments/create) som en del av begär ande texten som värde för egenskapen **Properties. Parameters**
 
 ## <a name="using-arrays-in-conditions"></a>Använda matriser i villkor
 

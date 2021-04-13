@@ -3,12 +3,12 @@ title: Azure Relay Hybridanslutningar protokoll guide | Microsoft Docs
 description: I den här artikeln beskrivs interaktionen på klient sidan med Hybridanslutningar relä för att ansluta klienterna i lyssnings-och avsändarens roller.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 36321f88de173a37c9aa6615c4c0f2b29aec9f20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95eb6a66ac7580f115c85ddb258768b9eef62321
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97976970"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314226"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Hybridanslutningar protokoll
 
@@ -136,9 +136,9 @@ Parameter alternativen för frågesträng är följande.
 | Parameter        | Krävs | Beskrivning
 | ---------------- | -------- | -------------------------------------------
 | `sb-hc-action`   | Ja      | Parametern måste vara **SB-HC-Action = avlyssna** för Listener-rollen
-| `{path}`         | Ja      | Den URL-kodade namn områdets sökväg för den förkonfigurerade hybrid anslutningen för att registrera lyssnaren på. Det här uttrycket läggs till i den fasta `$hc/` Sök vägs delen.
-| `sb-hc-token`    | Ja\*    | Lyssnaren måste ange en giltig URL-kodad Service Bus-token för delad åtkomst för namn området eller hybrid anslutningen som ger **lyssnings** rättigheten.
-| `sb-hc-id`       | Inga       | Det här tillhandahållna valfria ID: t för klienten möjliggör diagnostisk spårning från slut punkt till slut punkt.
+| `{path}`         | Yes      | Den URL-kodade namn områdets sökväg för den förkonfigurerade hybrid anslutningen för att registrera lyssnaren på. Det här uttrycket läggs till i den fasta `$hc/` Sök vägs delen.
+| `sb-hc-token`    | Yes\*    | Lyssnaren måste ange en giltig URL-kodad Service Bus-token för delad åtkomst för namn området eller hybrid anslutningen som ger **lyssnings** rättigheten.
+| `sb-hc-id`       | No       | Det här tillhandahållna valfria ID: t för klienten möjliggör diagnostisk spårning från slut punkt till slut punkt.
 
 Om WebSocket-anslutningen Miss lyckas på grund av att hybrid anslutnings Sök vägen inte är registrerad, eller om en token är ogiltig eller saknas, eller om något annat fel inträffar, så anges fel återkopplings modellen med vanlig HTTP 1,1-status feedback. Status beskrivningen innehåller ett fel spårnings-ID som kan förmedlas till support personal för Azure:
 
@@ -151,7 +151,7 @@ Om WebSocket-anslutningen Miss lyckas på grund av att hybrid anslutnings Sök v
 
 Om WebSocket-anslutningen avsiktligt stängs av tjänsten efter det att den ursprungligen konfigurerades, så kommuniceras skälet för att göra detta med hjälp av en lämplig WebSocket-protokoll fel kod tillsammans med ett beskrivande fel meddelande som också innehåller ett spårnings-ID. Tjänsten stänger inte av kontroll kanalen utan att åtgärda ett fel tillstånd. En ren avstängning är klient kontrollerad.
 
-| WS-status | Beskrivning
+| WS-status | Description
 | --------- | -------------------------------------------------------------------------------
 | 1001      | Sökvägen till hybrid anslutningen har tagits bort eller inaktiverats.
 | 1008      | Säkerhetstoken har upphört att gälla, vilket innebär att auktoriseringsprincipen överskrids.
@@ -196,8 +196,8 @@ URL: en måste användas för att upprätta en socket för godkännande, men inn
 | Parameter      | Krävs | Beskrivning
 | -------------- | -------- | -------------------------------------------------------------------
 | `sb-hc-action` | Ja      | För att acceptera en socket måste parametern vara `sb-hc-action=accept`
-| `{path}`       | Ja      | (se följande stycke)
-| `sb-hc-id`     | Inga       | Se tidigare beskrivning av **ID**.
+| `{path}`       | Yes      | (se följande stycke)
+| `sb-hc-id`     | No       | Se tidigare beskrivning av **ID**.
 
 `{path}` är sökvägen till URL-kodad namnrymd för den förkonfigurerade hybrid anslutning som den här lyssnaren ska registreras på. Det här uttrycket läggs till i den fasta `$hc/` Sök vägs delen.
 
@@ -215,7 +215,7 @@ Om det uppstår ett fel kan tjänsten svara på följande sätt:
 
  När anslutningen har upprättats stänger servern websocketen när avsändarens WebSocket stängs av eller med följande status:
 
-| WS-status | Beskrivning                                                                     |
+| WS-status | Description                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1001      | Avsändarens klient stänger anslutningen.                                    |
 | 1001      | Sökvägen till hybrid anslutningen har tagits bort eller inaktiverats.                        |
@@ -232,8 +232,8 @@ Om det uppstår ett fel kan tjänsten svara på följande sätt:
 
 | Param                   | Krävs | Beskrivning                              |
 | ----------------------- | -------- | ---------------------------------------- |
-| SB-HC-statusCode        | Ja      | Numerisk HTTP-statuskod.                |
-| SB-HC-statusDescription | Ja      | Läslig anledning för avvisningen. |
+| SB-HC-statusCode        | Yes      | Numerisk HTTP-statuskod.                |
+| SB-HC-statusDescription | Yes      | Läslig anledning för avvisningen. |
 
 Den resulterande URI: n används sedan för att upprätta en WebSocket-anslutning.
 
@@ -379,7 +379,7 @@ Om det uppstår ett fel kan tjänsten svara på följande sätt:
 
  När anslutningen har upprättats stänger servern websocketen när klientens HTTP-socket stängs av eller med följande status:
 
-| WS-status | Beskrivning                                                                     |
+| WS-status | Description                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1001      | Avsändarens klient stänger anslutningen.                                    |
 | 1001      | Sökvägen till hybrid anslutningen har tagits bort eller inaktiverats.                        |
@@ -404,7 +404,7 @@ När token-token håller på att gå ut kan den ersätta den genom att skicka et
 
 Om verifieringen av token Miss lyckas nekas åtkomst och moln tjänsten stänger websocketen för kontroll kanalen med ett fel. Annars finns det inget svar.
 
-| WS-status | Beskrivning                                                                     |
+| WS-status | Description                                                                     |
 | --------- | ------------------------------------------------------------------------------- |
 | 1008      | Säkerhetstoken har upphört att gälla, vilket innebär att auktoriseringsprincipen överskrids. |
 
@@ -426,9 +426,9 @@ Parameter alternativen för frågesträngen är följande:
 | Param          | Obligatoriskt? | Beskrivning
 | -------------- | --------- | -------------------------- |
 | `sb-hc-action` | Ja       | Parametern måste vara för avsändarens roll `sb-hc-action=connect` .
-| `{path}`       | Ja       | (se följande stycke)
-| `sb-hc-token`  | Ja\*     | Lyssnaren måste ange en giltig URL-kodad Service Bus delad åtkomsttoken för namn området eller hybrid anslutningen som ger **send** -rättigheten.
-| `sb-hc-id`     | Inga        | Ett valfritt ID som möjliggör diagnostisk spårning från slut punkt till slut punkt och görs tillgängligt för lyssnaren under godkännande hand skakningen.
+| `{path}`       | Yes       | (se följande stycke)
+| `sb-hc-token`  | Yes\*     | Lyssnaren måste ange en giltig URL-kodad Service Bus delad åtkomsttoken för namn området eller hybrid anslutningen som ger **send** -rättigheten.
+| `sb-hc-id`     | No        | Ett valfritt ID som möjliggör diagnostisk spårning från slut punkt till slut punkt och görs tillgängligt för lyssnaren under godkännande hand skakningen.
 
  `{path}`Är sökvägen till URL-kodad namnrymd för den förkonfigurerade hybrid anslutning som den här lyssnaren ska registreras på. `path`Uttrycket kan utökas med ett suffix och ett frågeuttryck för att kommunicera vidare. Om hybrid anslutningen är registrerad under sökvägen `hyco` `path` kan uttrycket `hyco/suffix?param=value&...` följas av de parametrar för frågesträng som definierats här. Ett fullständigt uttryck kan sedan vara följande:
 
@@ -449,7 +449,7 @@ Om WebSocket-anslutningen Miss lyckas på grund av att hybrid anslutnings Sök v
 
 Om WebSocket-anslutningen avsiktligt stängs av tjänsten efter det att den har kon figurer ATS, så skickas orsaken till att du gör detta med hjälp av en lämplig WebSocket-protokoll fel kod tillsammans med ett beskrivande fel meddelande som också innehåller ett spårnings-ID.
 
-| WS-status | Beskrivning
+| WS-status | Description
 | --------- | ------------------------------------------------------------------------------- 
 | 1000      | Lyssnaren stänger av socketen.
 | 1001      | Sökvägen till hybrid anslutningen har tagits bort eller inaktiverats.
@@ -471,7 +471,7 @@ Begäran kan innehålla godtyckligt extra HTTP-huvuden, inklusive programdefinie
 
 Parameter alternativen för frågesträngen är följande:
 
-| Param          | Obligatoriskt? | Beskrivning
+| Param          | Obligatoriskt? | Description
 | -------------- | --------- | ---------------- |
 | `sb-hc-token`  | Ja\*     | Lyssnaren måste ange en giltig URL-kodad Service Bus delad åtkomsttoken för namn området eller hybrid anslutningen som ger **send** -rättigheten.
 
@@ -498,7 +498,7 @@ Om ett fel uppstår kan tjänsten svara på följande sätt. Huruvida svaret kom
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Vanliga frågor och svar om Relay](relay-faq.md)
+* [Vanliga frågor och svar om Relay](relay-faq.yml)
 * [Skapa ett namnområde](relay-create-namespace-portal.md)
 * [Kom igång med .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Kom igång med Node](relay-hybrid-connections-node-get-started.md)

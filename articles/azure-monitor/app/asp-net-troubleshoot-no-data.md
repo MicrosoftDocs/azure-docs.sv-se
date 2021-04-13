@@ -4,12 +4,12 @@ description: Ser du inte data i Azure Application Insights? Prova här.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: fbf53f6d4a928215d25874f4e405147c73cbf81f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 3b550e434db5b616ffedef7ebe9891b36fa431a2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056580"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311234"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Fel sökning av inga data Application Insights för .NET/.NET Core
 
@@ -28,6 +28,10 @@ ms.locfileid: "106056580"
 *Jag upplever data förlust i konsol programmet eller på en webbapp när appen håller på att stoppas.*
 
 * SDK-kanalen behåller telemetri i bufferten och skickar dem i batchar. Om programmet stängs av kan du behöva anropa [Flush ()](api-custom-events-metrics.md#flushing-data)explicit. Beteendet `Flush()` beror på den faktiska [kanal](telemetry-channels.md#built-in-telemetry-channels) som används.
+
+## <a name="request-count-collected-by-application-insights-sdk-does-not-match-the-iis-log-count-for-my-application"></a>Antalet begär Anden som samlas in av Application Insights SDK matchar inte IIS-loggen för mitt program
+
+Internet Information Services (IIS) loggar antalet begär Anden som når IIS och som kan skilja sig från den totala begäran som når ett program. På grund av detta garanterar vi inte att antalet begär Anden som samlas in av SDK: er kommer att matcha antalet IIS-loggfiler. 
 
 ## <a name="no-data-from-my-server"></a>Inga data från min server
 *Jag har installerat min app på min webb server och nu kan jag inte se någon telemetri från den. Den fungerade OK på min dev-dator.*

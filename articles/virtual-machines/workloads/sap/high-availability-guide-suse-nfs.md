@@ -12,14 +12,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/16/2020
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: 993baa521530ffa6a702f8324a1691850687c366
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a08d82103986435593cd73a0728e7426f205a90d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668698"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307545"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Hög tillgänglighet för NFS på virtuella Azure-datorer på SUSE Linux Enterprise Server
 
@@ -171,7 +171,6 @@ Du måste först skapa de virtuella datorerna för det här NFS-klustret. Däref
          1. Ange namnet på den nya belastnings Utjämnings regeln (till exempel **NW1 – lb**)
          1. Välj IP-adressen för klient delen, backend-poolen och hälso avsökningen som du skapade tidigare (till exempel **NW1-frontend**. **NW-backend** och **NW1 – HP**)
          1. Välj **ha-portar**.
-         1. Öka tids gränsen för inaktivitet till 30 minuter
          1. **Se till att aktivera flytande IP**
          1. Klicka på OK
          * Upprepa stegen ovan för att skapa belastnings Utjämnings regeln för NW2

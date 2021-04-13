@@ -1,6 +1,6 @@
 ---
-title: 'Snabb start: klient bibliotek för optiskt teckensnitts igenkänning för .NET'
-description: I den här snabb starten ska du komma igång med klient biblioteket för optiskt teckensnitts igenkänning för .NET.
+title: 'Snabbstart: Klientbibliotek för optisk teckenläsning för .NET'
+description: I den här snabbstarten kommer du igång med klientbiblioteket för optisk teckenläsning för .NET.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,54 +10,54 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 410ced99b1c5053c084921edf4d9bbde1a9443c4
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 538b3ce5a268464b9f014dd00b924875824cab3b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073524"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107327737"
 ---
 <a name="HOLTop"></a>
 
-Använd klient biblioteket för OCR för att läsa utskrift och handskriven text från en bild.
+Använd OCR-klientbiblioteket för att läsa tryckt och handskriven text från en bild.
 
-[Referens dokumentation](/dotnet/api/overview/azure/cognitiveservices/client/computervision)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/)  |  [Exempel](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Referensdokumentation](/dotnet/api/overview/azure/cognitiveservices/client/computervision)  |  [Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/)  |  [Exempel](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
-* [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) eller aktuell version av [.net Core](https://dotnet.microsoft.com/download/dotnet-core).
-* När du har en Azure-prenumeration <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" skapar du en visuellt innehåll resurs "  target="_blank"> skapa en visuellt innehåll resurs </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
-    * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till Visuellt innehåll-tjänsten. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
-    * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
+* En Azure-prenumeration [– Skapa en utan kostnad](https://azure.microsoft.com/free/cognitive-services/)
+* Den [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) eller den aktuella versionen av [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+* När du har din Azure-prenumeration skapar du en Visuellt innehåll-resurs för att skapa Visuellt innehåll resurs i Azure Portal för att <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hämta din nyckel och "  target="_blank"> </a> slutpunkt. När den har distribuerats klickar du **på Gå till resurs**.
+    * Du behöver nyckeln och slutpunkten från den resurs som du skapar för att ansluta ditt program till Visuellt innehåll tjänsten. Du klistrar in nyckeln och slutpunkten i koden nedan senare i snabbstarten.
+    * Du kan använda den kostnadsfria prisnivån ( `F0` ) för att prova tjänsten och senare uppgradera till en betald nivå för produktion.
 
-## <a name="setting-up"></a>Konfigurera
+## <a name="setting-up"></a>Inrätta
 
 ### <a name="create-a-new-c-application"></a>Skapa ett nytt C#-program
 
 #### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-Skapa ett nytt .NET Core-program med Visual Studio. 
+Med Visual Studio skapar du ett nytt .NET Core-program. 
 
-### <a name="install-the-client-library"></a>Installera klient biblioteket 
+### <a name="install-the-client-library"></a>Installera klientbiblioteket 
 
-När du har skapat ett nytt projekt installerar du klient biblioteket genom att högerklicka på projekt lösningen i **Solution Explorer** och välja **Hantera NuGet-paket**. I paket hanteraren som öppnas väljer du **Bläddra**, markerar **ta med för hands version** och söker efter `Microsoft.Azure.CognitiveServices.Vision.ComputerVision` . Välj version `6.0.0-preview.1` och **Installera** sedan. 
+När du har skapat ett nytt projekt installerar du klientbiblioteket genom att högerklicka på projektlösningen i **Solution Explorer** och välja **Hantera NuGet-paket.** I pakethanteraren som öppnas väljer du **Bläddra,** **markerar Inkludera förhandsversion** och söker efter `Microsoft.Azure.CognitiveServices.Vision.ComputerVision` . Välj version `7.0.0` och sedan **Installera**. 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `computer-vision-quickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda källfil: *program. cs*.
+I ett konsolfönster (till exempel cmd, PowerShell eller Bash) använder du kommandot för att skapa en ny `dotnet new` konsolapp med namnet `computer-vision-quickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda källfil: *Program.cs*.
 
 ```console
 dotnet new console -n computer-vision-quickstart
 ```
 
-Ändra katalogen till mappen nyligen skapade appar. Du kan bygga programmet med:
+Ändra katalogen till den nyligen skapade appmappen. Du kan skapa programmet med:
 
 ```console
 dotnet build
 ```
 
-Build-utdata får inte innehålla varningar eller fel. 
+Build-utdata får inte innehålla några varningar eller fel. 
 
 ```console
 ...
@@ -67,94 +67,94 @@ Build succeeded.
 ...
 ```
 
-### <a name="install-the-client-library"></a>Installera klient biblioteket
+### <a name="install-the-client-library"></a>Installera klientbiblioteket
 
-I program katalogen installerar du Visuellt innehåll klient biblioteket för .NET med följande kommando:
+I programkatalogen installerar du Visuellt innehåll för .NET med följande kommando:
 
 ```console
-dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 6.0.0
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 7.0.0
 ```
 
 ---
 
 > [!TIP]
-> Vill du Visa hela snabb starts kod filen samtidigt? Du kan hitta den på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs), som innehåller kod exemplen i den här snabb starten.
+> Vill du visa hela snabbstartskodfilen samtidigt? Du hittar den på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs), som innehåller kodexe exemplen i den här snabbstarten.
 
-Från projekt katalogen öppnar du filen *program. cs* i önskat redigerings program eller IDE.
+Öppna filen *Program.cs* i önskad redigerare eller IDE från projektkatalogen.
 
-### <a name="find-the-subscription-key-and-endpoint"></a>Hitta prenumerations nyckeln och slut punkten
+### <a name="find-the-subscription-key-and-endpoint"></a>Hitta prenumerationsnyckeln och slutpunkten
 
-Gå till Azure-portalen. Om Visuellt innehåll resursen som du skapade i avsnittet **krav** har distribuerats, klickar du på knappen **gå till resurs** under **Nästa steg**. Du hittar din prenumerations nyckel och slut punkt i resursens **nyckel och slut punkts** sida under **resurs hantering**. 
+Gå till Azure-portalen. Om den Visuellt innehåll som du skapade  i avsnittet Förutsättningar har distribuerats klickar du på knappen **Gå till** resurs under **Nästa steg.** Du hittar din prenumerationsnyckel och slutpunkt på resursens nyckel- **och slutpunktssida** under **resurshantering .** 
 
-I programmets **program** klass skapar du variabler för din visuellt innehåll prenumerations nyckel och slut punkt. Klistra in prenumerations nyckeln och slut punkten i följande kod där det anges. Din Visuellt innehåll-slutpunkt har formuläret `https://<your_computer_vision_resource_name>.cognitiveservices.azure.com/` .
+I programmets **Program-klass** skapar du variabler för din Visuellt innehåll prenumerationsnyckel och slutpunkt. Klistra in din prenumerationsnyckel och slutpunkt i följande kod där det anges. Slutpunkten Visuellt innehåll har formen `https://<your_computer_vision_resource_name>.cognitiveservices.azure.com/` .
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_using_and_vars)]
 
 > [!IMPORTANT]
-> Kom ihåg att ta bort prenumerations nyckeln från koden när du är klar och publicera den aldrig offentligt. För produktion bör du överväga att använda ett säkert sätt att lagra och komma åt dina autentiseringsuppgifter. Till exempel [Azure Key Vault](../../../../key-vault/general/overview.md).
+> Kom ihåg att ta bort prenumerationsnyckeln från koden när du är klar och aldrig publicera den offentligt. Överväg att använda ett säkert sätt att lagra och komma åt dina autentiseringsuppgifter för produktion. Till exempel [Azure Key Vault](../../../../key-vault/general/overview.md).
 
-I programmets `Main` metod lägger du till anrop för de metoder som används i den här snabb starten. Du kommer att skapa dessa senare.
+I programmets -metod `Main` lägger du till anrop för de metoder som används i den här snabbstarten. Du kommer att skapa dessa senare.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_client)]
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extracttextinmain)]
 
 > [!div class="nextstepaction"]
-> [Jag har konfigurerat klienten](?success=set-up-client#object-model) som [Jag stötte på ett problem](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Csharp&Section=set-up-client)
+> [Jag konfigurerade klienten som](?success=set-up-client#object-model) [jag stötte på ett problem med](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Csharp&Section=set-up-client)
 
-## <a name="object-model"></a>Objekt modell
+## <a name="object-model"></a>Objektmodell
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i OCR .NET SDK.
 
 |Name|Beskrivning|
 |---|---|
-| [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) | Den här klassen krävs för alla Visuellt innehåll-funktioner. Du instansierar det med din prenumerations information och använder den för att utföra de flesta avbildnings åtgärder.|
+| [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) | Den här klassen behövs för alla Visuellt innehåll funktioner. Du instansierar den med din prenumerationsinformation och använder den för att göra de flesta avbildningsåtgärder.|
 |[ComputerVisionClientExtensions](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclientextensions)| Den här klassen innehåller ytterligare metoder för **ComputerVisionClient**.|
 
 ## <a name="code-examples"></a>Kodexempel
 
-De här kodfragmenten visar hur du gör följande uppgifter med OCR-klientcertifikatet för .NET:
+Dessa kodfragment visar hur du utför följande uppgifter med OCR-klientbiblioteket för .NET:
 
 * [Autentisera klienten](#authenticate-the-client)
-* [Skriv ut och handskriven text](#read-printed-and-handwritten-text)
+* [Läsa tryckt och handskriven text](#read-printed-and-handwritten-text)
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-I en ny metod i **program** klassen instansierar du en klient med din slut punkt och prenumerations nyckel. Skapa ett **[ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.apikeyserviceclientcredentials)** -objekt med din prenumerations nyckel och Använd den med slut punkten för att skapa ett **[ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient)** -objekt.
+I en ny metod i **klassen Program** instansierar du en klient med din slutpunkt och prenumerationsnyckel. Skapa ett **[ApiKeyServiceClientCredentials-objekt](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.apikeyserviceclientcredentials)** med din prenumerationsnyckel och använd det med slutpunkten för att skapa ett **[ComputerVisionClient-objekt.](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient)**
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_auth)]
 
 > [!div class="nextstepaction"]
-> [Jag autentiserade klienten att](?success=authenticate-client#read-printed-and-handwritten-text) [Jag stötte på ett problem](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Csharp&Section=authenticate-client)
+> [Jag autentiserade klienten som](?success=authenticate-client#read-printed-and-handwritten-text) [jag stötte på ett problem med](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Csharp&Section=authenticate-client)
 
-## <a name="read-printed-and-handwritten-text"></a>Skriv ut och handskriven text
+## <a name="read-printed-and-handwritten-text"></a>Läsa tryckt och handskriven text
 
-OCR-tjänsten kan läsa synlig text i en bild och konvertera den till en tecken ström. Mer information om text igenkänning finns i Översikt över [OCR (optisk tecken läsning)](../../overview-ocr.md) . Koden i det här avsnittet använder den senaste [visuellt innehåll SDK-versionen för Read 3,0](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/6.0.0-preview.1) och definierar en metod, `BatchReadFileUrl` som använder klient objekt för att identifiera och extrahera text i avbildningen.
+OCR-tjänsten kan läsa synlig text i en bild och konvertera den till en teckenström. Mer information om textigenkänning finns i [översikten över optisk teckenläsning (OCR).](../../overview-ocr.md) Koden i det här avsnittet använder den senaste Visuellt innehåll SDK-versionen för [Read 3.0](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) och definierar en metod, , som använder klientobjektet för att identifiera och extrahera `BatchReadFileUrl` text i bilden.
 
 > [!TIP]
-> Du kan också Extrahera text från en lokal avbildning. Se [ComputerVisionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) -metoderna, till exempel **ReadInStreamAsync**. Eller, se exempel koden på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) för scenarier som involverar lokala avbildningar.
+> Du kan också extrahera text från en lokal bild. Se [ComputerVisionClient-metoder,](/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) till exempel **ReadInStreamAsync**. Eller så kan du se exempelkoden på [GitHub för](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) scenarier som rör lokala avbildningar.
 
-### <a name="set-up-test-image"></a>Konfigurera test avbildning
+### <a name="set-up-test-image"></a>Konfigurera testbild
 
-Spara en referens till URL: en för den avbildning som du vill extrahera text från i **program** klassen. Det här kodfragmentet innehåller exempel bilder för både utskrift och handskriven text.
+I klassen **Program** sparar du en referens till URL:en för den bild som du vill extrahera text från. Det här kodfragmentet innehåller exempelbilder för både tryckt och handskriven text.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_readtext_url)]
 
-### <a name="call-the-read-api"></a>Anropa Read API
+### <a name="call-the-read-api"></a>Anropa API:et Read
 
-Definiera den nya metoden för att läsa text. Lägg till koden nedan, som anropar **ReadAsync** -metoden för den aktuella avbildningen. Detta returnerar ett åtgärds-ID och startar en asynkron process för att läsa innehållet i avbildningen.
+Definiera den nya metoden för att läsa text. Lägg till koden nedan, som anropar **metoden ReadAsync** för den angivna bilden. Detta returnerar ett åtgärds-ID och startar en asynkron process för att läsa innehållet i bilden.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_readfileurl_1)]
 
-### <a name="get-read-results"></a>Hämta Läs resultat
+### <a name="get-read-results"></a>Hämta läsresultat
 
-Hämta sedan det åtgärds-ID som returnerades från **ReadAsync** -anropet och Använd det för att fråga tjänsten efter åtgärds resultat. Följande kod kontrollerar åtgärden tills resultatet returneras. Den skriver sedan ut de extraherade text data till-konsolen.
+Hämta sedan åtgärds-ID:t som returnerades från **ReadAsync-anropet** och använd det för att fråga tjänsten efter åtgärdsresultat. Följande kod kontrollerar åtgärden tills resultatet returneras. Den skriver sedan ut extraherade textdata till konsolen.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_readfileurl_2)]
 
-### <a name="display-read-results"></a>Visa Läs resultat
+### <a name="display-read-results"></a>Visa läsresultat
 
-Lägg till följande kod för att parsa och Visa hämtade text data och slutför metod definitionen.
+Lägg till följande kod för att parsa och visa hämtade textdata och slutför metoddefinitionen.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_readfileurl_3)]
 
@@ -162,11 +162,11 @@ Lägg till följande kod för att parsa och Visa hämtade text data och slutför
 
 #### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-Kör programmet genom att klicka på knappen **Felsök** överst i IDE-fönstret.
+Kör programmet genom att klicka **på knappen** Felsök längst upp i IDE-fönstret.
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-Kör programmet från program katalogen med `dotnet run` kommandot.
+Kör programmet från programkatalogen med `dotnet run` kommandot .
 
 ```dotnet
 dotnet run
@@ -176,17 +176,17 @@ dotnet run
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du vill rensa och ta bort en Cognitive Services prenumeration kan du ta bort resursen eller resurs gruppen. Om du tar bort resurs gruppen raderas även andra resurser som är kopplade till den.
+Om du vill rensa och ta bort en Cognitive Services prenumeration kan du ta bort resursen eller resursgruppen. När du tar bort resursgruppen tas även alla andra resurser som är associerade med den bort.
 
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du lärt dig hur du installerar klient biblioteket för OCR och använder Read API. Läs sedan mer om API-funktionerna för läsning.
+I den här snabbstarten har du lärt dig hur du installerar OCR-klientbiblioteket och använder API:et Läsa. Härnäst kan du läsa mer om funktionerna i Api:et Läsa.
 
 > [!div class="nextstepaction"]
->[Anropa Read API](../../Vision-API-How-to-Topics/call-read-api.md)
+>[Anropa Read-API:et](../../Vision-API-How-to-Topics/call-read-api.md)
 
 * [Översikt över OCR](../../overview-ocr.md)
 * Källkoden för det här exemplet finns på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs).

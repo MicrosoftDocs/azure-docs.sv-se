@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 7facb74cd407c576b2a7b119f19427dcd185f04e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e9749dfd7b28551a4fc2e7c6ba70ba9cce4e5a69
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568825"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307307"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-two-level-nested-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>Exempel på distributions scenario med Microsoft Connected cache Preview: två nivåer kapslad Azure IoT Edge Gateway med utgående oautentiserad proxy
 
@@ -70,7 +70,7 @@ Diagrammet nedan beskriver scenariot där en Azure IoT Edge gateway som direkt �
 ## <a name="child-gateway-configuration"></a>Konfiguration av underordnad Gateway
 
 >[!Note]
->Om du har replikerat behållare som används i din konfiguration i ditt eget privata register, måste du göra ändringar i inställningarna för config. toml och körnings inställningarna i modulen. Mer information finns i [självstudier – skapa en hierarki med IoT Edge enheter – Azure IoT Edge](../iot-edge/tutorial-nested-iot-edge.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11#deploy-modules-to-the-lower-layer-device) för mer information.
+>Om du har replikerat behållare som används i din konfiguration i ditt eget privata register, måste du göra ändringar i inställningarna för config. toml och körnings inställningarna i modulen. Mer information finns i [ansluta underordnade IoT Edge enheter – Azure IoT Edge](../iot-edge/how-to-connect-downstream-iot-edge-device.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11#deploy-modules-to-lower-layer-devices) för mer information.
 
 1. Ändra avbildnings Sök vägen för Edge-agenten så som visas i exemplet nedan:
 

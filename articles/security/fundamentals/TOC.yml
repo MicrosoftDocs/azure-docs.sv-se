@@ -64,9 +64,9 @@
     - name: Säkerhetskontrollista
       href: steps-secure-identity.md
     - name: Välja lösenordsfri
-      href: ../../active-directory/authentication/concept-authentication-passwordless.md
+      href: ../../active-directory/authentication/concept-authentication-passwordless.md?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: Autentisering
-      href: /azure/architecture/framework/security/design-identity-authentication?toc=azure/security/fundamentals/toc.json&bc=azure/security/breadcrumb/toc.json
+      href: /azure/architecture/framework/security/design-identity-authentication?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: Nätverkssäkerhet
   items:
     - name: Säkerhetsöversikt
@@ -80,7 +80,7 @@
     - name: Överflödig DNS och övertagande av underdomäner
       href: subdomain-takeover.md
     - name: Skydda hybridnätverksarkitektur
-      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
+      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: IaaS-säkerhet
   items:
     - name: Microsoft-programvara mot skadlig kod
@@ -120,7 +120,7 @@
         - name: Säkerhetskontrollista
           href: database-security-checklist.md
     - name: Lagringssäkerhetsguide
-      href: ../../storage/blobs/security-recommendations.md?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
+      href: ../../storage/blobs/security-recommendations.md?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: Customer Lockbox
       href: customer-lockbox-overview.md
     - name: Säkerhetsbaslinje för Customer Lockbox

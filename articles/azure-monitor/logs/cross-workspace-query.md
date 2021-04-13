@@ -4,13 +4,13 @@ description: Den här artikeln beskriver hur du kan fråga mot resurser från fl
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/22/2020
-ms.openlocfilehash: 57ed43b25c9031138a91f0870d316e1ae7a07a5b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/11/2021
+ms.openlocfilehash: e007f5af214dcfa475eb59a5981bc580b9499915
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030975"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314243"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Utföra logg frågor i Azure Monitor som sträcker sig över arbets ytor och appar
 
@@ -27,7 +27,7 @@ Det finns två metoder för att fråga data som lagras i flera arbets ytor och a
 ## <a name="cross-resource-query-limits"></a>Begränsningar för kors resurs frågor 
 
 * Antalet Application Insights-resurser och Log Analytics arbets ytor som du kan ta med i en enskild fråga är begränsade till 100.
-* Frågan över resurser stöds inte i View Designer. Du kan redigera en fråga i Log Analytics och fästa den på Azure-instrumentpanelen för att [visualisera en logg fråga](../visualize/tutorial-logs-dashboards.md). 
+* Frågan över resurser stöds inte i View Designer. Du kan redigera en fråga i Log Analytics och fästa den på Azure-instrumentpanelen för att [visualisera en logg fråga](../visualize/tutorial-logs-dashboards.md) eller ta med i [arbets böcker](../visualize/workbooks-overview.md).
 * Frågor över resurser i logg aviseringar stöds bara i det aktuella [scheduledQueryRules-API: et](/rest/api/monitor/scheduledqueryrules). Om du använder äldre API för Log Analytics-varningar måste du [Växla till det aktuella API: et](../alerts/alerts-log-api-switch.md).
 
 
@@ -41,6 +41,9 @@ Att identifiera en arbets yta kan utföras på flera sätt:
 
 * Resurs namn – är ett läsbart namn på arbets ytan, ibland kallat *komponent namn*. 
 
+    >[!Note]
+    >Eftersom app-och arbetsyte namn inte är unika kan den här identifieraren vara tvetydig. Om det finns flera instanser av resurs namnet ska referensen vara av kvalificerat namn, resurs-ID eller Azure-resurs-ID.
+
     `workspace("contosoretail-it").Update | count`
 
 * Kvalificerat namn – är det fullständiga namnet på arbets ytan, som består av prenumerations namnet, resurs gruppen och komponent namnet i följande format: *subscriptionName/resourceGroup/componentName*. 
@@ -48,8 +51,7 @@ Att identifiera en arbets yta kan utföras på flera sätt:
     `workspace('contoso/contosoretail/contosoretail-it').Update | count`
 
     >[!NOTE]
-    >Eftersom Azures prenumerations namn inte är unika kan den här identifieraren vara tvetydig. 
-    >
+    >Eftersom Azures prenumerations namn inte är unika kan den här identifieraren vara tvetydig.
 
 * Arbetsyte-ID – ett arbetsyte-ID är den unika, oföränderliga, identifierare som tilldelats varje arbets yta som representerar en globalt unik identifierare (GUID).
 

@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 0086f7f68fd05d6925d19c7ab457fbc125e36be4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b8a94409f082177192847f2c65d44a513ecdbe4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96350236"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305046"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>Självstudie: skapa en statisk webbapp med blixt i Azure static Web Apps
 
@@ -43,7 +43,7 @@ Tillsammans utgör dessa projekt de delar som krävs för att skapa ett blixt we
 
 ## <a name="fallback-route"></a>Reserv väg
 
-Programmet visar URL: er som _/Counter_ och _/fetchdata_ som mappar till specifika vägar i programmet. Eftersom den här appen implementeras som ett enda sid program, behandlas varje väg med _index.html_ -filen. För att se till att begäran om sökväg returneras _index.html_ , är en [återställnings väg](./routes.md#fallback-routes) implementerad i _routes.jsför_ filen som finns i mappen _wwwroot_ i klient projektet.
+Programmet visar URL: er som _/Counter_ och _/fetchdata_ som mappar till specifika vägar i programmet. Eftersom den här appen implementeras som ett enda sid program, behandlas varje väg med _index.html_ -filen. För att se till att begäran om sökväg returneras _index.html_ , är en [återställnings väg](./routes.md#fallback-routes) implementerad i _staticwebapp.config.jsför_ filen som finns i mappen _wwwroot_ i klient projektet.
 
 ```json
 {
@@ -64,7 +64,7 @@ Konfigurationen ovan garanterar att förfrågningar till alla vägar i appen ret
 Den här artikeln använder en lagrings plats för GitHub-mallar för att göra det enkelt för dig att komma igång. Mallen innehåller en start-app som distribueras till Azures statiska Web Apps.
 
 1. Se till att du är inloggad på GitHub och navigera till följande plats för att skapa en ny lagrings plats:
-    - [https://github.com/staticwebdev/blazor-starter/generate](https://github.com/login?return_to=/staticwebdev/blazor-starter/generate)
+   - [https://github.com/staticwebdev/blazor-starter/generate](https://github.com/login?return_to=/staticwebdev/blazor-starter/generate)
 1. Namnge din lagrings plats för **min-första statiska-blixte-app**
 
 ## <a name="create-a-static-web-app"></a>Skapa en statisk webbapp
@@ -84,7 +84,7 @@ I avsnittet _grundläggande_ börjar du med att konfigurera din nya app och län
 1. Välj din _Azure-prenumeration_
 1. Välj eller skapa en ny _resurs grupp_
 1. Namnge appens **mitt-första statiska – blixt-app**
-    - Giltiga tecken är `a-z` (skiftlägesokänsligt), `0-9` och `-`.
+   - Giltiga tecken är `a-z` (skiftlägesokänsligt), `0-9` och `-`.
 1. Välj en _region_ som är närmast dig
 1. Välj den **kostnads fria** _SKU: n_
 1. Välj knappen **Logga in med GitHub** och autentisera med GitHub
@@ -97,23 +97,23 @@ När du har loggat in med GitHub anger du lagrings plats informationen.
 1. Välj **min-första statiska-blixte-app** från List rutan _databas_
 1. Välj **huvud** från List rutan _gren_
 
-    Om du inte ser några databaser kan du behöva auktorisera Azures statiska Web Apps i GitHub. Bläddra till GitHub-lagringsplatsen och gå till **inställningar > program > auktoriserade OAuth-appar**, Välj **Azure static Web Apps** och välj sedan **bevilja**. Du måste vara ägare till organisationen för att kunna bevilja behörighet för organisations databaser.
+   Om du inte ser några databaser kan du behöva auktorisera Azures statiska Web Apps i GitHub. Bläddra till GitHub-lagringsplatsen och gå till **inställningar > program > auktoriserade OAuth-appar**, Välj **Azure static Web Apps** och välj sedan **bevilja**. Du måste vara ägare till organisationen för att kunna bevilja behörighet för organisations databaser.
 
 1. I avsnittet _versions information_ lägger du till konfigurations information med blixt information.
 
-    - Välj **blixt** i list rutan _skapa för inställningar_ och Behåll alla standardvärden.
+   - Välj **blixt** i list rutan _skapa för inställningar_ och Behåll alla standardvärden.
 
 1. Välj **Granska + skapa**.
 
-    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="Knappen granska skapande":::
+   :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="Knappen granska skapande":::
 
 1. Välj **Skapa**.
 
-    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="Knappen Skapa":::
+   :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="Knappen Skapa":::
 
 1. Välj **Gå till resurs**.
 
-    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="Knappen Gå till resurs":::
+   :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="Knappen Gå till resurs":::
 
 ## <a name="view-the-website"></a>Visa webbplatsen
 

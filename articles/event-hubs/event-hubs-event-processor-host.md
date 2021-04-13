@@ -4,12 +4,12 @@ description: I den här artikeln beskrivs händelse bearbetnings värden i Azure
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: de5d8f0f8bf9f64a473b18a50434cac83e8e38c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d97b446993d3f0a280c1f4fadb237726ac09228a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98622070"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313427"
 ---
 # <a name="event-processor-host"></a>Värd för händelsebearbetning
 > [!NOTE]
@@ -199,5 +199,5 @@ Nu när du är bekant med händelsens processor värd kan du läsa mer om Event 
     - [JavaScript](event-hubs-node-get-started-send.md)
 * [Programmerings guide för Event Hubs](event-hubs-programming-guide.md)
 * [Tillgänglighet och konsekvens i Event Hubs](event-hubs-availability-and-consistency.md)
-* [Vanliga frågor och svar om Event Hubs](event-hubs-faq.md)
+* [Vanliga frågor och svar om Event Hubs](event-hubs-faq.yml)
 * [Event Hubs exempel på GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples)

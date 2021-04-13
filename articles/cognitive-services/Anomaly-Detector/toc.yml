@@ -3,12 +3,18 @@
 - name: Översikt
   expanded: true
   items:
-    - name: Vad är avvikelse detektor?
+    - name: Vad är avvikelse detektor (multivarierad)?
+      href: overview-multivariate.md
+    - name: Vad är avvikelse detektor (univariate)?
       href: overview.md
     - name: Priser och begränsningar
       href: 'https://aka.ms/adpricing'
-- name: Snabb start för avvikelse detektor
-  href: ./quickstarts/client-libraries.md
+- name: Snabb starter för avvikelse detektor
+  items:
+    - name: Multivarierad-klient bibliotek
+      href: ./quickstarts/client-libraries-multivariate.md
+    - name: Univariate-klient bibliotek
+      href: ./quickstarts/client-libraries.md
 - name: Exempel
   items:
     - name: Interaktiv demo
@@ -39,10 +45,18 @@
               href: how-to/deploy-anomaly-detection-on-container-instances.md
 - name: Begrepp
   items:
-    - name: 'Metod tips för API: er med avvikelse detektor'
+    - name: 'Metod tips för API: er med avvikelse detektor (multivarierad)'
+      href: concepts/best-practices-multivariate.md
+    - name: 'Metod tips för API: er med avvikelse detektor (univariate)'
       href: concepts/anomaly-detection-best-practices.md
+    - name: Förutsägelse underhålls arkitektur (multivarierad)
+      href: concepts/multivariate-architecture.md
+    - name: Felsöka multivarierad
+      href: concepts/troubleshoot.md
     - name: Spectral rest (SR) och (convolutional neurala net (CNN) avvikelse identifiering
       href: 'https://arxiv.org/abs/1906.03821'
+    - name: Multivarierad Time-Series avvikelse identifiering via diagram Attention Network
+      href: 'https://arxiv.org/abs/2009.02040'
 - name: Självstudier
   items:
     - name: Visualisera avvikelser som en batch med hjälp av Power BI

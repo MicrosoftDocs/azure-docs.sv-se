@@ -6,18 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: cpercy737
 ms.author: camper
-ms.date: 03/22/2021
+ms.date: 04/12/2021
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 53edd3ec9a8d30d0c25f994db4a8b6f0199c2169
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7f09e744dfdd7be73c62c70bcfa91804f14aaa68
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558439"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313682"
 ---
 # <a name="azure-customer-usage-attribution"></a>Azures kund användnings behörighet
 
-Kund användnings tilldelningen kopplar användning från Azure-resurser i kund prenumerationer som skapas när du distribuerar din IP-adress med dig som partner. Genom att bilda dessa associationer i interna Microsoft-system får du bättre insyn i Azure som kör din program vara. För [Azure Application erbjudanden i den kommersiella marknads platsen](#commercial-marketplace-azure-apps)hjälper den här spårnings funktionen dig att anpassa sig till Microsofts försäljnings team och få kredit för Microsoft partner program.
+Kund användnings tilldelningen kopplar användning från Azure-resurser i kund prenumerationer som skapas när du distribuerar din IP-adress med dig som partner. Genom att bilda dessa associationer i interna Microsoft-system får du bättre insyn i Azure som kör din program vara. För [Azure Application erbjudanden i den kommersiella marknads platsen](#commercial-marketplace-azure-apps)hjälper den här spårnings funktionen dig att anpassa sig till Microsofts försäljnings team och få kredit för Microsoft partner program. Kund användnings behörighet gäller inte för [virtuella Azure-datorer i den kommersiella marknads platsen](./azure-vm-create.md). Det finns inget behov av en Marketplace-utgivare för virtuella dator erbjudanden för att säkerställa att deras Azure-förbrukning spåras i slut kund prenumerationer.
 
 Kund användnings behörighet stöder tre distributions alternativ:
 

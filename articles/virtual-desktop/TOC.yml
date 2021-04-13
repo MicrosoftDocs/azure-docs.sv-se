@@ -126,8 +126,6 @@
       href: disaster-recovery.md
     - name: Konfigurera KDC-proxyn
       href: key-distribution-center-proxy.md
-    - name: Konfigurera RD Gateway-rollen
-      href: rd-gateway-role.md
     - name: Starta virtuell dator vid anslutning
       items:
         - name: Konfigurera starta virtuell dator vid anslutning

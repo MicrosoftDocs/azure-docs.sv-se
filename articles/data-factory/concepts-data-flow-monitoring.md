@@ -3,17 +3,16 @@ title: Övervaka data flöden för mappning
 description: Övervaka mappning av data flöden visuellt i Azure Data Factory
 author: kromerm
 ms.author: makromer
-ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/22/2020
-ms.openlocfilehash: 9ca5ea5cdebe297af5081ae6e219935c56ba942e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/11/2021
+ms.openlocfilehash: 82aba428627cba1a3df26fc67c5da0cde52d368c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96004895"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309075"
 ---
 # <a name="monitor-data-flows"></a>Övervaka data flöden
 
@@ -77,9 +76,15 @@ Du kan också se detaljerad tids inställning för varje partitions omvandlings 
 }
 ```
 
-### <a name="post-processing-time"></a>Bearbetnings tid för inlägg
+### <a name="sink-processing-time"></a>Bearbetnings tid för mottagare
 
 När du väljer en omvandlings ikon för mottagare i kartan visas en ytterligare data punkt med namnet "efter bearbetnings tid" längst ned i den högra panelen. Detta är den mängd tid som krävs för att köra jobbet på Spark-klustret *efter* att dina data har lästs in, omvandlats och skrivits. Den här tiden kan vara att stänga anslutningspooler, stänga av driv rutin, ta bort filer, sammanföra filer osv. När du utför åtgärder i ditt flöde, t. ex. "flytta filer" och "utdata till en enskild fil", kommer du troligen att se en ökning i värdet efter bearbetnings tid.
+
+* Tids längd för skriv steg: tiden att skriva data till en mellanlagringsplats för Synapse SQL
+* Tabell åtgärd SQL-varaktighet: den tid som krävs för att flytta data från temporära tabeller till mål tabellen
+* Varaktighet för SQL-& efter SQL-varaktighet: den tid som krävs för att köra SQL-kommandon före/efter
+* Varaktighet för för-kommandon & post-kommandon varaktighet: den tid som krävs för att köra åtgärder före/efter post för filbaserade källa/mottagare. Till exempel flytta eller ta bort filer efter bearbetning.
+* Sammanslagnings varaktighet: tiden som användes för att slå samman filen används sammanfogade filer för filbaserade handfat vid skrivning till en enskild fil eller när "fil namn som kolumn data" används. Om du ägnar mycket tid åt detta mått bör du undvika att använda de här alternativen.
   
 ## <a name="error-rows"></a>Felrader
 

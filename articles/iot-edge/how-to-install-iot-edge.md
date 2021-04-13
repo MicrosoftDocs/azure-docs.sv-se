@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 03/26/2021
 ms.author: kgremban
-ms.openlocfilehash: 7b4c2cb946017fd9871e2d99dbed8f841f025008
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 39e165d862d6e174f763cd58529727fd26b8bd46
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030533"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311081"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Installera eller avinstallera Azure IoT Edge för Linux
 
@@ -146,7 +146,7 @@ IoT Identity service introducerades tillsammans med version 1,2 av IoT Edge. Den
 Stegen i det här avsnittet representerar den typiska processen för att installera den senaste versionen på en enhet som har Internet anslutning. Om du behöver installera en speciell version, t. ex. en för hands version, eller om du behöver installera offline, följer du anvisningarna för att installera [offline eller vissa versioner](#offline-or-specific-version-installation-optional) senare i den här artikeln.
 
 >[!NOTE]
->Stegen i det här avsnittet visar hur du installerar IoT Edge version 1,2, som för närvarande finns i en offentlig för hands version. Om du letar efter stegen för att installera den senaste allmänt tillgängliga versionen av IoT Edge kan du läsa 1,1-versionen [(LTS)](?view=iotedge-2018-06&preserve-view=true) av den här artikeln.
+>Stegen i det här avsnittet visar hur du installerar IoT Edge version 1,2.
 >
 >Om du redan har en IoT Edge enhet som kör en äldre version och vill uppgradera till 1,2 kan du använda stegen i [uppdatera IoT Edge Security daemon och runtime](how-to-update-iot-edge.md). Version 1,2 är tillräckligt mycket annorlunda än tidigare versioner av IoT Edge att vissa steg är nödvändiga för att uppgradera.
 
@@ -168,15 +168,11 @@ Om du vill installera den senaste versionen av IoT Edge använder du följande k
    sudo apt-get install aziot-edge
    ```
 
-<!-- commenting out for public preview. reintroduce at GA
-
-Or, if you want to install a specific version of IoT Edge and the identity service, specify the versions from the apt list output. Specify the same versions for both services.. For example, the following command installs the most recent version of the 1.2 release:
+Eller, om du vill installera en speciell version av IoT Edge och identitets tjänsten, anger du versionerna från apt lista utdata. Ange samma versioner för båda tjänsterna. Följande kommando installerar till exempel den senaste versionen av 1,2-versionen:
 
    ```bash
    sudo apt-get install aziot-edge=1.2* aziot-identity-service=1.2*
    ```
-
--->
 
 <!-- end 1.2 -->
 ::: moniker-end

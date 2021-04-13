@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e778c7ee14d2115bf6d8cf7f12ceaa61e364a4a2
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: a5f4b23196a04d88e4329cb5ebf26d0b0a477444
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120202"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307277"
 ---
 # <a name="device-update-agent-provisioning"></a>Agent etablering för enhets uppdatering
 
@@ -81,8 +81,25 @@ Följ dessa anvisningar för att etablera enhets uppdaterings agenten på [IoT E
 
 1. Följ anvisningarna för att [Installera och etablera Azure IoT Edge runtime](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge?view=iotedge-2020-11&preserve-view=true).
 
-1. Installera sedan enhets uppdaterings agenten från [artefakter](https://github.com/Azure/iot-hub-device-update/releases) och nu kan du starta enhets uppdaterings agenten på din IoT Edge enhet.
+1. Installera uppdaterings agenten för enhets uppdatering
+    - Vi tillhandahåller exempel bilder i [artefakter](https://github.com/Azure/iot-hub-device-update/releases) för att prova avbildnings uppdaterings distributioner till olika versioner med en bas avbildning (ADU-Base-image) och en uppdaterings avbildning (ADU-Update-image). Se exempel på [hur du blinkar avbildningen till din IoT Hub-enhet](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image).  
 
+1. Installera uppdaterings agenten för enhets uppdaterings paketet  
+    - För de senaste agent versionerna från packages.miscrosoft.com: uppdatera paket listor på enheten och installera enhets uppdaterings agent paketet och dess beroenden med:   
+    ```shell
+    sudo apt-get update
+    ```
+    
+    ```shell
+    sudo apt-get install deviceupdate-agent deliveryoptimization-plugin-apt
+    ```
+    
+    - För kommande versions kandidat versioner från [artefakter](https://github.com/Azure/iot-hub-device-update/releases) : Hämta DEP-filen till den dator som du vill installera enhets uppdaterings agenten på och sedan:
+     ```shell
+    Sudo apt-get install -y ./"<PATH TO FILE>"/"<.DEP FILE NAME>"
+     ```
+    
+1. Nu kan du starta enhets uppdaterings agenten på din IoT Edge enhet. 
 
 ### <a name="on-non-edge-iot-linux-devices"></a>På icke-Edge IoT Linux-enheter
 
@@ -130,14 +147,15 @@ Följ de här anvisningarna för att etablera enhets uppdaterings agenten på Io
     sudo aziotctl config apply
     ```
     
-1.  Installera slutligen enhets uppdaterings agenten från [artefakter](https://github.com/Azure/iot-hub-device-update/releases) och nu kan du starta enhets uppdaterings agenten på din IoT Edge enhet.
+1.  Installera slutligen enhets uppdaterings agenten. Vi tillhandahåller exempel bilder i [artefakter](https://github.com/Azure/iot-hub-device-update/releases) för att prova avbildnings uppdaterings distributioner till olika versioner med en bas avbildning (ADU-Base-image) och en uppdaterings avbildning (ADU-Update-image). Se exempel på [hur du blinkar avbildningen till din IoT Hub-enhet](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image).
 
+1.  Nu kan du starta enhets uppdaterings agenten på din IoT-enhet. 
 
 ### <a name="other-iot-devices"></a>Andra IoT-enheter
 
 Enhets uppdaterings agenten kan också konfigureras utan IoT Identity service för testning eller på begränsade enheter. Följ stegen nedan för att etablera enhets uppdaterings agenten med hjälp av en anslutnings sträng (från modulen eller enheten).
 
-1.  Installera agenten för enhets uppdatering från [artefakter](https://github.com/Azure/iot-hub-device-update/releases).
+1.  Vi tillhandahåller exempel bilder i [artefakter](https://github.com/Azure/iot-hub-device-update/releases) för att prova avbildnings uppdaterings distributioner till olika versioner med en bas avbildning (ADU-Base-image) och en uppdaterings avbildning (ADU-Update-image). Se exempel på [hur du blinkar avbildningen till din IoT Hub-enhet](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image).
 
 1.  Logga in på datorn eller IoT Edge enhet/IoT-enhet.
     
@@ -150,16 +168,17 @@ Enhets uppdaterings agenten kan också konfigureras utan IoT Identity service f�
        
     1. Du bör se ett fönster med lite text. Ta bort hela strängen som följer connection_String = första gången du etablerar enhets uppdaterings agenten på IoT-enheten. Den placerar bara företagarens text.
     
-    1. I terminalen ersätter du <anslutnings strängen> med anslutnings strängen för enheten för din instans av enhets uppdaterings agenten.
+    1. I terminalen ersätter du "<anslutnings strängen>" med anslutnings strängen för enheten för din instans av enhets uppdaterings agenten.
     
         > [!Important]
         > Lägg inte till citat tecken runt anslutnings strängen.
-        
-        - connection_string =<din anslutnings sträng>
+        ```shell
+        - connection_string=<ADD CONNECTION STRING HERE>
+       ```
        
     1. Ange och spara.
     
-1.  Nu är du redo att starta enhets uppdaterings agenten på din IoT Edge enhet. 
+1.  Nu är du redo att starta enhets uppdaterings agenten på din IoT-enhet. 
 
 
 ## <a name="how-to-start-the-device-update-agent"></a>Så här startar du enhets uppdaterings agenten
@@ -191,7 +210,7 @@ Du kan också bygga och ändra din egen kund enhets uppdaterings agent.
 
 Följ anvisningarna för att [bygga](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md) enhets uppdaterings agenten från källan.
 
-När agenten har skapats, är det dags att [köra](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-run-agent.md) agenten.
+När agenten har börjat skapas är det dags att [köra](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-run-agent.md) agenten.
 
 Nu ska du göra ändringarna som krävs för att införliva agenten i din avbildning.  Se hur du [ändrar](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-modify-the-agent-code.md) enhets uppdaterings agenten för vägledning.
 

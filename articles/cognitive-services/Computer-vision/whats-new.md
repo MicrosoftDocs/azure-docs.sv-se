@@ -10,16 +10,29 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: f102bbe45fd5eea853ba63def4f1c1a92888ca46
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 826bd22375fb6649bf4edbbeca88aed64cfe7245
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285952"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312135"
 ---
 # <a name="whats-new-in-computer-vision"></a>Vad är nytt i Visuellt innehåll
 
 Läs om vad som är nytt i tjänsten. Dessa objekt kan vara viktig information, videor, blogg inlägg och andra typer av information. Skapa ett bok märke för den här sidan för att hålla dig uppdaterad med tjänsten.
+
+## <a name="april-2021"></a>April 2021
+
+### <a name="computer-vision-v32-ga"></a>Visuellt innehåll v 3.2 GA
+
+API för visuellt innehåll v 3.2 är nu allmänt tillgänglig med följande uppdateringar:
+* Förbättrad modell för avbildnings märkning: analyserar visuellt innehåll och genererar relevanta Taggar baserat på objekt, åtgärder och innehåll som visas i bilden. Detta är tillgängligt via [tag image-API: et](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f200). Mer information finns i [Översikt över](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) [bild analys och](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) översikt.
+* Uppdaterad modell för innehålls kontroll: identifierar förekomst av olämpligt innehåll och ger flaggor för att filtrera bilder som innehåller vuxna, vågat och fullständig visuellt innehåll. Detta är tillgängligt via [analys-API: et](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b). Mer information finns i [Översikt över](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) [bild analys och](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) översikt.
+* [OCR (läsning) tillgängligt för 73-språk](./language-support.md#optical-character-recognition-ocr) , inklusive förenklade och traditionella kinesiska, japanska, koreanska och latinska språk.
+* [OCR (Läs)](./overview-ocr.md) är också tillgängligt som en [Distroless-behållare](./computer-vision-how-to-install-containers.md?tabs=version-3-2) för lokal distribution.
+
+> [!div class="nextstepaction"]
+> [Se Visuellt innehåll v 3.2 GA](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
 
 ## <a name="march-2021"></a>Mars 2021
 

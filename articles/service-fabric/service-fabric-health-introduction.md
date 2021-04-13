@@ -3,12 +3,12 @@ title: Hälso övervakning i Service Fabric
 description: En introduktion till övervaknings modellen för Azure Service Fabric Health som tillhandahåller övervakning av klustret och dess program och tjänster.
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.openlocfilehash: a1c545048739182e3baba3e3d94da1accca227d1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1fa000d46a6199fa23f07e5310eaca96b60a183f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627423"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311285"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Introduktion till Service Fabric-hälsoövervakning
 Azure Service Fabric introducerar en hälso modell som ger omfattande, flexibel och utöknings bar hälso utvärdering och rapportering. Modellen möjliggör real tids övervakning av klustrets tillstånd och de tjänster som körs i den. Du kan enkelt få hälso information och åtgärda eventuella problem innan de överlappar varandra och orsakar enorma avbrott. I den typiska modellen skickar tjänster rapporter baserat på deras lokala vyer och den informationen aggregeras för att ge en övergripande vy på kluster nivå.
@@ -99,7 +99,7 @@ Kluster hälso principen innehåller:
   </FabricSettings>
   ```
 
-* [NodeTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.nodetypehealthpolicymap). Typ av hälso princip för nodtyp kan användas under utvärdering av kluster hälsa för att beskriva särskilda nodtyper. Nodtypen utvärderas mot procent andelen som är kopplade till deras nodnamn i kartan. Att ange det här värdet har ingen påverkan på den globala poolen med noder som används för `MaxPercentUnhealthyNodes` . Ett kluster har till exempel hundratals noder av olika typer och några nodtyper som är värdar för viktiga arbeten. Inga noder i den typen bör vara nere. Du kan ange globala `MaxPercentUnhealthyNodes` till 20% för att tolerera vissa problem för alla noder, men för nodtypen `SpecialNodeType` anger `MaxPercentUnhealthyNodes` du till 0. På så sätt kommer klustret att utvärderas som varnings hälso tillstånd om några av de många noderna inte är felfria men lägre än den globala nivån i procent. En varnings hälso tillstånd påverkar inte kluster uppgraderingen eller också utlöses den andra övervakningen av ett fel hälso tillstånd. Men även en nod av typen `SpecialNodeType` i ett fel hälso tillstånd gör att klustret inte är felfritt och utlöser återställningen eller pausar kluster uppgraderingen, beroende på uppgraderings konfigurationen. Om du ställer in globala `MaxPercentUnhealthyNodes` till 0 och anger `SpecialNodeType` Max procent Felaktiga noder till 100 med en nod av typen `SpecialNodeType` i ett fel tillstånd, kommer klustret fortfarande att placeras i ett fel tillstånd eftersom den globala begränsningen är mer strikt i det här fallet. 
+* `NodeTypeHealthPolicyMap`. Typ av hälso princip för nodtyp kan användas under utvärdering av kluster hälsa för att beskriva särskilda nodtyper. Nodtypen utvärderas mot procent andelen som är kopplade till deras nodnamn i kartan. Att ange det här värdet har ingen påverkan på den globala poolen med noder som används för `MaxPercentUnhealthyNodes` . Ett kluster har till exempel hundratals noder av olika typer och några nodtyper som är värdar för viktiga arbeten. Inga noder i den typen bör vara nere. Du kan ange globala `MaxPercentUnhealthyNodes` till 20% för att tolerera vissa problem för alla noder, men för nodtypen `SpecialNodeType` anger `MaxPercentUnhealthyNodes` du till 0. På så sätt kommer klustret att utvärderas som varnings hälso tillstånd om några av de många noderna inte är felfria men lägre än den globala nivån i procent. En varnings hälso tillstånd påverkar inte kluster uppgraderingen eller också utlöses den andra övervakningen av ett fel hälso tillstånd. Men även en nod av typen `SpecialNodeType` i ett fel hälso tillstånd gör att klustret inte är felfritt och utlöser återställningen eller pausar kluster uppgraderingen, beroende på uppgraderings konfigurationen. Om du ställer in globala `MaxPercentUnhealthyNodes` till 0 och anger `SpecialNodeType` Max procent Felaktiga noder till 100 med en nod av typen `SpecialNodeType` i ett fel tillstånd, kommer klustret fortfarande att placeras i ett fel tillstånd eftersom den globala begränsningen är mer strikt i det här fallet. 
 
   Följande exempel är ett utdrag från ett kluster manifest. Om du vill definiera poster i mappningen av nodtypen anger du parameter namnet med "NodeTypeMaxPercentUnhealthyNodes-", följt av namnet på nodtypen.
 

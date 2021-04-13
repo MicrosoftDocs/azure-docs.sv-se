@@ -3,15 +3,15 @@ title: Starta Virtual Machine Connect – Azure
 description: Konfigurera funktionen starta virtuell dator vid anslutning.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/31/2021
+ms.date: 04/10/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d9ce9811cd660c9a9b1fcb6f9e24cadd65d3c2bc
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: d3ef8e3656051c4a99ab52a7b52a0d623fdf9ce2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445609"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303975"
 ---
 # <a name="start-virtual-machine-on-connect-preview"></a>Starta virtuell dator vid anslutning (förhands granskning)
 
@@ -35,8 +35,7 @@ Följande fjärr skrivbords klienter stöder funktionen starta virtuell dator vi
 
 Du kan söka efter meddelanden om uppdateringar och klient support i [Tech community-forumet](https://aka.ms/wvdtc).
 
->[!IMPORTANT]
->Funktionen starta virtuell dator vid anslutning stöder för närvarande endast PowerShell och REST API, inte Azure Portal. Mer information finns i [skapa eller uppdatera en adresspool](/rest/api/desktopvirtualization/hostpools/createorupdate).
+Azure Government molnet stöder för närvarande inte start av virtuell dator vid anslutning.
 
 ## <a name="create-a-custom-role-for-start-vm-on-connect"></a>Skapa en anpassad roll för starta virtuell dator vid anslutning
 
@@ -115,6 +114,24 @@ Starta virtuell dator vid anslutning är en inställning för anslutningspoolen.
 
 >[!IMPORTANT]
 > Du kan bara konfigurera den här funktionen i befintliga värdbaserade pooler. Den här funktionen är inte tillgänglig när du skapar en ny adresspool.
+
+### <a name="use-the-azure-portal"></a>Använda Azure-portalen
+
+Använd Azure Portal för att konfigurera starta virtuell dator vid anslutning:
+
+1. Öppna webbläsaren och gå till [Azure Portal](https://portal.azure.com/?feature.startVMonConnect=true#home). Vi rekommenderar att du öppnar Azure Portal i ett InPrivate-fönster.
+
+2. Gå till **Windows Virtual Desktop** i Azure Portal.
+
+3. Välj **värdar för pooler** och leta sedan upp den värd uppsättning som innehåller de personliga skriv bord som du har tilldelat rollen till.
+
+   >[!NOTE]
+   > Den värdbaserade pool som du konfigurerar den här funktionen i måste ha personliga skriv bord med direkta roll tilldelningar. Om Skriv borden i poolen inte är korrekt konfigurerade fungerar inte konfigurations processen.
+
+4. I Host-poolen väljer du **Egenskaper**. Under **Starta virtuell dator vid anslutning** väljer du **Ja** och väljer sedan **Spara** för att genast tillämpa inställningen.
+
+    > [!div class="mx-imgBorder"]
+    > ![En skärm bild av Fönstret Egenskaper. Alternativet Starta virtuell dator vid anslutning är markerat i rött.](media/properties-start-vm-on-connect.png)
 
 ### <a name="use-powershell"></a>Använd PowerShell
 

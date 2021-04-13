@@ -3,12 +3,12 @@ title: Felsök problem med Azure Event Hubs för Apache Kafka
 description: Den här artikeln visar hur du felsöker problem med Azure Event Hubs för Apache Kafka
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e32e02947b9f004755381d562fd3f3c897b70674
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9d4a93f0074f206cd4627913505c66eb6480cbd
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90061435"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314090"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Apache Kafka fel söknings guide för Event Hubs
 Den här artikeln innehåller fel söknings tips för problem som du kan köra i när du använder Event Hubs för Apache Kafka. 
@@ -67,5 +67,5 @@ Mer information om Event Hubs och Event Hubs för Kafka finns i följande artikl
 
 - [Apache Kafka Developer Guide för Event Hubs](apache-kafka-developer-guide.md)
 - [Apache Kafka migrations guide för Event Hubs](apache-kafka-migration-guide.md)
-- [Vanliga frågor och svar – Event Hubs för Apache Kafka](apache-kafka-frequently-asked-questions.md)
+- [Vanliga frågor och svar – Event Hubs för Apache Kafka](apache-kafka-frequently-asked-questions.yml)
 - [Rekommenderade konfigurationer](apache-kafka-configurations.md)

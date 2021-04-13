@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80ee161944a48135778d12942964a88455ab756e
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: d707106d66c77ad1f3a1156906add8bb85fd0ce0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055781"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305981"
 ---
 # <a name="continuous-access-evaluation"></a>Utvärdering av kontinuerlig åtkomst
 
@@ -142,7 +142,7 @@ Från den här sidan kan du välja att begränsa de användare och grupper som s
 För CAE har vi bara insikter om namngivna IP-baserade namngivna platser. Vi har inga insikter på andra plats inställningar som [MFA-betrodda IP-adresser](../authentication/howto-mfa-mfasettings.md#trusted-ips) eller landsspecifika platser. När en användare kommer från en MFA-betrodd IP-adress eller betrodda platser som innehåller MFA-betrodda IP-adresser eller land, kommer CAE inte att tillämpas när användaren flyttar till en annan plats. I dessa fall kommer vi att utfärda en CAE-token för en timme utan omedelbar kontroll av IP-tvång.
 
 > [!IMPORTANT]
-> När du konfigurerar platser för utvärdering av kontinuerlig åtkomst ska du bara använda den [IP-baserade villkorliga åtkomst platsen](../conditional-access/location-condition.md#preview-features) och konfigurera alla IP-adresser, **inklusive både IPv4 och IPv6**, som kan visas av leverantören av identitets leverantören och resurser. Använd inte villkor för land eller den betrodda IP-funktionen som är tillgänglig på sidan tjänst inställningar för Azure AD Multi-Factor Authentication.
+> När du konfigurerar platser för utvärdering av kontinuerlig åtkomst ska du bara använda den [IP-baserade villkorliga åtkomst platsen](../conditional-access/location-condition.md) och konfigurera alla IP-adresser, **inklusive både IPv4 och IPv6**, som kan visas av leverantören av identitets leverantören och resurser. Använd inte villkor för land eller den betrodda IP-funktionen som är tillgänglig på sidan tjänst inställningar för Azure AD Multi-Factor Authentication.
 
 ### <a name="ip-address-configuration"></a>Konfigurera IP-adress
 

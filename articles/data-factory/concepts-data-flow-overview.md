@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 12/10/2020
-ms.openlocfilehash: 1529d2d546227880fee71d1823482e040d2e57c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/11/2021
+ms.openlocfilehash: 53f300adb57eb17e704e7e3323b9829c485bb87a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103564328"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308990"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Mappa data flöden i Azure Data Factory
 
@@ -96,66 +96,6 @@ Fel söknings läge gör att du interaktivt kan se resultatet av varje omformnin
 Kart data flödet integreras med befintliga Azure Data Factory övervakningsfunktionerna. Information om hur du förstår utdata för data flödes övervakning finns i [övervaka mappning av data flöden](concepts-data-flow-monitoring.md).
 
 Azure Data Factorys teamet har skapat en [prestanda justerings guide](concepts-data-flow-performance.md) som hjälper dig att optimera körnings tiden för dina data flöden när du har skapat din affärs logik.
-
-## <a name="available-regions"></a>Tillgängliga regioner
-
-= = = = = = = Mappa data flöden är tillgängliga i följande regioner i ADF:
-
-| Azure-region | Data flöden i ADF |
-| ------------ | ----------------- |
-|  Australien, centrala | |
-| Australien, centrala 2 | |
-| Australien, östra | ✓ |
-| Australien, sydöstra   | ✓ |
-| Brasilien, södra  | ✓ |
-| Kanada, centrala | ✓ |
-| Indien, centrala | ✓ |
-| Central US    | ✓ |
-| Kina, östra |      |
-| Kina, östra 2  |   |
-| Kina, icke-regional | |
-| Kina, norra |     |
-| Kina, norra 2 | |
-| Asien, östra | ✓ |
-| East US   | ✓ |
-| USA, östra 2 | ✓ |
-| Frankrike, centrala | ✓ |
-| Frankrike, södra  | |
-| Tyskland, centrala (suverän) | |
-| Tyskland, regionsoberoende (suverän) | |
-| Tyskland, norra (offentlig) | |
-| Tyskland nordöstra (suverän) | |
-| Tyskland, västra centrala (offentlig) |  |
-| Japan, östra | ✓ |
-| Japan, västra |  |
-| Sydkorea, centrala | ✓ |
-| Sydkorea, södra | |
-| USA, norra centrala  | ✓ |
-| Europa, norra  | ✓ |
-| Östra Norge | |
-| Norge, väst | |
-| Sydafrika, norra    | ✓ |
-| Sydafrika, västra |  |
-| USA, södra centrala  | |
-| Indien, södra | |
-| Sydostasien    | ✓ |
-| Schweiz, norra |   |
-| Schweiz, västra | |
-| Förenade Arabemiraten Central | |
-| Förenade Arabemiraten, norra |  |
-| Storbritannien, södra  | ✓ |
-| Storbritannien, västra |     |
-| USA DoD, centrala | |
-| USA DoD, östra | |
-| US Gov, Arizona |      |
-| US Gov, regionsoberoende | |
-| US Gov, Texas | |
-| US Gov, Virginia |     |
-| USA, västra centrala |     |
-| Europa, västra   | ✓ |
-| Indien, västra | |
-| USA, västra   | ✓ |
-| USA, västra 2 | ✓ |
 
 ## <a name="next-steps"></a>Nästa steg
 

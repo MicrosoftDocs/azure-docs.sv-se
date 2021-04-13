@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4f236679d0662df852581a6a8408ed6bc0d4e3fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26363031aea37c53cce098e2b6cbc2b4d93b918f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91535697"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307086"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Förstå data kvarhållning i Azure Time Series Insights gen1
 
@@ -85,7 +85,7 @@ Vid detta tillfälle visar miljön samma data uppsättning tills ingressen åter
 När ingress återupptas:
 
 - Data flödar i den ordning som den togs emot av händelse källan
-- Händelserna indexeras baserat på deras tidsstämpel, om du inte har överskridit bevarande principerna för händelse källan. För ytterligare information om konfiguration av händelse källans kvarhållning, [Event Hubs vanliga frågor och svar](../event-hubs/event-hubs-faq.md)
+- Händelserna indexeras baserat på deras tidsstämpel, om du inte har överskridit bevarande principerna för händelse källan. För ytterligare information om konfiguration av händelse källans kvarhållning, [Event Hubs vanliga frågor och svar](../event-hubs/event-hubs-faq.yml)
 
 > [!IMPORTANT]
 > Du bör ange aviseringar för att meddela att du undviker ingångs avbrott. Data förlust är möjlig eftersom standard kvarhållning är 1 dag för Azures händelse källor. När ingångarna har pausats förlorar du förmodligen de senaste data om inte ytterligare åtgärder vidtas. Du måste öka kapacitets-eller växel beteendet för att **Rensa gamla data** för att undvika risken för data förlust.
