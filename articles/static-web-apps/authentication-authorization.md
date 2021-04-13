@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 9c8dd723c9cde5c0534d9fd5ca4084c7ed15d213
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 29821733b73717634aa8f0ab72270f058ffd3ddc
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218642"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309398"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Autentisering och auktorisering för förhandsversionen av Azure Static Web Apps
 
@@ -24,7 +24,7 @@ Azures statiska Web Apps effektiviserar autentiseringen genom att hantera autent
 - Google<sup>1</sup>
 - Twitter
 
-Providerspecifika [inbjudningar](#invitations) associera användare med roller och behöriga användare beviljas åtkomst till [vägar](routes.md) enligt regler som definierats i _routes.jsi_ filen.
+Providerspecifika [inbjudningar](#invitations) associera användare med roller och behöriga användare beviljas åtkomst till [vägar](routes.md) enligt regler som definierats i _staticwebapp.config.jsi_ filen.
 
 Alla autentiseringsproviders är aktiverade som standard. Begränsa en autentiseringsprovider genom att [blockera åtkomst](#block-an-authorization-provider) med en anpassad väg regel.
 
@@ -32,18 +32,18 @@ Avsnitten om autentisering och auktorisering är avsevärt överlappande av begr
 
 ## <a name="roles"></a>Roller
 
-Varje användare som har åtkomst till en statisk webbapp tillhör en eller flera roller.  Det finns två inbyggda roller som användarna kan tillhöra:
+Varje användare som har åtkomst till en statisk webbapp tillhör en eller flera roller. Det finns två inbyggda roller som användarna kan tillhöra:
 
 - **anonymt**: alla användare tillhöra den _anonyma_ rollen automatiskt.
 - **autentiserad**: alla användare som är inloggade tillhör den _autentiserade_ rollen.
 
-Utöver de inbyggda rollerna kan du skapa nya roller, tilldela dem till användare via inbjudningar och referera till dem i _routes.jsi_ filen.
+Utöver de inbyggda rollerna kan du skapa nya roller, tilldela dem till användare via inbjudningar och referera till dem i _staticwebapp.config.jsi_ filen.
 
 ## <a name="role-management"></a>Roll hantering
 
 ### <a name="add-a-user-to-a-role"></a>Lägga till en användare till en roll
 
-Om du vill lägga till användare till webbplatsen genererar du inbjudningar som gör att du kan koppla användare till vissa roller. Roller definieras och underhålls i _routes.js_ i filen.
+Om du vill lägga till användare till webbplatsen genererar du inbjudningar som gör att du kan koppla användare till vissa roller. Roller definieras och underhålls i _staticwebapp.config.js_ i filen.
 
 <a name="invitations" id="invitations"></a>
 
@@ -53,25 +53,25 @@ Inbjudningar är specifika för enskilda Authorization-providers, så du bör t�
 
 <a name="provider-user-details" id="provider-user-details"></a>
 
-| Authorization Provider | Exponerar en användares  |
-| ---------------------- | ----------------- |
-| Azure Active Directory | e-postadress     |
-| Facebook               | e-postadress     |
-| GitHub                 | användarnamn          |
-| Google<sup>1</sup>     | e-postadress     |
-| Twitter                | användarnamn          |
+| Authorization Provider | Exponerar en användares |
+| ---------------------- | ---------------- |
+| Azure Active Directory | e-postadress    |
+| Facebook               | e-postadress    |
+| GitHub                 | användarnamn         |
+| Google<sup>1</sup>     | e-postadress    |
+| Twitter                | användarnamn         |
 
 1. Navigera till en statisk Web Apps resurs i [Azure Portal](https://portal.azure.com).
 1. Klicka på **roll hantering** under _Inställningar_.
 1. Klicka på knappen **Bjud in** .
 1. Välj en _Authorization-Provider_ från listan med alternativ.
 1. Lägg till antingen användar namnet eller e-postadressen för mottagaren i rutan _Bjud in information_ .
-    - För GitHub och Twitter anger du användar namnet. Ange mottagarens e-postadress för alla andra.
+   - För GitHub och Twitter anger du användar namnet. Ange mottagarens e-postadress för alla andra.
 1. Välj domänen för den statiska platsen i list rutan _domän_ .
-    - Den domän du väljer är den domän som visas i inbjudan. Om du har en anpassad domän som är kopplad till din webbplats vill du förmodligen välja den anpassade domänen.
+   - Den domän du väljer är den domän som visas i inbjudan. Om du har en anpassad domän som är kopplad till din webbplats vill du förmodligen välja den anpassade domänen.
 1. Lägg till en kommaavgränsad lista över roll namn i rutan _roll_ .
 1. Ange det maximala antalet timmar som du vill att din inbjudan ska vara giltig.
-    - Den största möjliga gränsen är 168 timmar, vilket är 7 dagar.
+   - Den största möjliga gränsen är 168 timmar, vilket är 7 dagar.
 1. Klicka på knappen **Generate** (Generera).
 1. Kopiera länken från rutan _Inbjudnings länk_ .
 1. E-posta inbjudan till den person som du beviljar åtkomst till din app.

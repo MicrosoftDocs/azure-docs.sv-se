@@ -3,12 +3,12 @@ title: Geo-haveri beredskap – Azure Event Hubs | Microsoft Docs
 description: Använda geografiska regioner för att redundansväxla och utföra haveri beredskap i Azure Event Hubs
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: f3b74b89f47582fbb3f1640f315f413ab86b26b5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 091c6c61b079ceb8f96f04e62fb772d91732eb2f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104602646"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311217"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs-geo-haveri beredskap 
 
@@ -52,10 +52,10 @@ Följande kombinationer av primära och sekundära namn rymder stöds:
 
 | Primär namnrymd | Sekundär namnrymd | Stöds | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Ja | 
-| Standard | Dedikerad | Ja | 
-| Dedikerad | Dedikerad | Ja | 
-| Dedikerad | Standard | Inga | 
+| Standard | Standard | Yes | 
+| Standard | Dedikerad | Yes | 
+| Dedikerad | Dedikerad | Yes | 
+| Dedikerad | Standard | No | 
 
 > [!NOTE]
 > Det går inte att para ihop namn områden som finns i samma dedicerade kluster. Du kan para ihop namn områden som finns i separata kluster. 
@@ -205,7 +205,7 @@ Besök följande länkar för mer utförlig information om Event Hubs:
     - [Java](event-hubs-java-get-started-send.md)
     - [Python](event-hubs-python-get-started-send.md)
     - [JavaScript](event-hubs-node-get-started-send.md)
-* [Vanliga frågor och svar om Event Hubs](event-hubs-faq.md)
+* [Vanliga frågor och svar om Event Hubs](event-hubs-faq.yml)
 * [Exempelprogram som använder Event Hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 
 [1]: ./media/event-hubs-geo-dr/geo1.png

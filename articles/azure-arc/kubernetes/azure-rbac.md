@@ -7,16 +7,16 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Använda Azure RBAC för verifierings kontroller i Azure Arc-aktiverade Kubernetes-kluster
-ms.openlocfilehash: bd8029cb2772a6f6bd9821abe6acf69c9c08599d
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 0ee5f86ce12a39d86754d2e6e88263d8a03a012b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106451104"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304213"
 ---
-# <a name="azure-rbac-for-azure-arc-enabled-kubernetes-clusters"></a>Azure RBAC för Azure Arc-aktiverade Kubernetes-kluster
+# <a name="integrate-azure-active-directory-with-azure-arc-enabled-kubernetes-clusters"></a>Integrera Azure Active Directory med Azure Arc-aktiverade Kubernetes-kluster
 
-Kubernetes [ClusterRoleBinding och RoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) objekt typer hjälper till att definiera auktorisering i Kubernetes internt. Med Azure RBAC kan du använda Azure Active Directory och roll tilldelningar i Azure för att kontrol lera auktoriserings kontroller i klustret. Detta innebär att du nu kan använda Azure Role-tilldelningar för att styra vem som kan läsa, skriva och ta bort dina Kubernetes-objekt, till exempel distribution, Pod och tjänster
+Kubernetes [ClusterRoleBinding och RoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) objekt typer hjälper till att definiera auktorisering i Kubernetes internt. Med den här funktionen kan du använda Azure Active Directory-och roll tilldelningar i Azure för att kontrol lera auktoriserings kontroller i klustret. Detta innebär att du nu kan använda Azure Role-tilldelningar för att styra vem som kan läsa, skriva och ta bort dina Kubernetes-objekt, till exempel distribution, Pod och tjänster
 
 En konceptuell översikt över den här funktionen finns i artikeln [Azure RBAC – Azure Arc Enabled Kubernetes](conceptual-azure-rbac.md) .
 
@@ -274,10 +274,10 @@ Serverprogrammet måste ha `Microsoft.Authorization/*/read` behörighet för att
 
 | Roll | Beskrivning |
 |---|---|
-| Azure Arc Kubernetes Viewer | Tillåter skrivskyddad åtkomst för att se de flesta objekt i ett namn område. Med den här rollen kan du inte Visa hemligheter. Detta beror `read` på att behörigheten för hemligheter möjliggör åtkomst till `ServiceAccount` autentiseringsuppgifter i namn området, vilket i sin tur gör att API-åtkomst används i `ServiceAccount` (en form av behörighets eskalering). |
-| Azure Arc Kubernetes-skrivare | Tillåter Läs-/skriv åtkomst till de flesta objekt i ett namn område. Den här rollen tillåter inte visning eller ändring av roller eller roll bindningar. Den här rollen ger dock åtkomst till hemligheter och kör poddar som alla `ServiceAccount` i namn området, så att den kan användas för att få åtkomst nivåer för API: er i `ServiceAccount` namn området. |
-| Azure Arc Kubernetes-administratör | Tillåter administratörs åtkomst. Avsedd att beviljas inom ett namn område med hjälp av en RoleBinding. Om det används i en RoleBinding, tillåter Läs-och skriv åtkomst till de flesta resurser i ett namn område, inklusive möjligheten att skapa roller och roll bindningar i namn området. Den här rollen tillåter inte skriv åtkomst till resurs kvot eller själva namn området. |
-| Azure Arc Kubernetes-kluster administratör | Tillåter åtkomst till superanvändare för att köra alla åtgärder på alla resurser. När det används i en ClusterRoleBinding ger den fullständig kontroll över alla resurser i klustret och i alla namn områden. När det används i en RoleBinding ger den fullständig kontroll över varje resurs i roll bindningens namnrymd, inklusive själva namn området.|
+| [Azure Arc Kubernetes Viewer](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-viewer) | Tillåter skrivskyddad åtkomst för att se de flesta objekt i ett namn område. Med den här rollen kan du inte Visa hemligheter. Detta beror `read` på att behörigheten för hemligheter möjliggör åtkomst till `ServiceAccount` autentiseringsuppgifter i namn området, vilket i sin tur gör att API-åtkomst används i `ServiceAccount` (en form av behörighets eskalering). |
+| [Azure Arc Kubernetes-skrivare](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-writer) | Tillåter Läs-/skriv åtkomst till de flesta objekt i ett namn område. Den här rollen tillåter inte visning eller ändring av roller eller roll bindningar. Den här rollen ger dock åtkomst till hemligheter och kör poddar som alla `ServiceAccount` i namn området, så att den kan användas för att få åtkomst nivåer för API: er i `ServiceAccount` namn området. |
+| [Azure Arc Kubernetes-administratör](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-admin) | Tillåter administratörs åtkomst. Avsedd att beviljas inom ett namn område med hjälp av en RoleBinding. Om det används i en RoleBinding, tillåter Läs-och skriv åtkomst till de flesta resurser i ett namn område, inklusive möjligheten att skapa roller och roll bindningar i namn området. Den här rollen tillåter inte skriv åtkomst till resurs kvot eller själva namn området. |
+| [Azure Arc Kubernetes-kluster administratör](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-cluster-admin) | Tillåter åtkomst till superanvändare för att köra alla åtgärder på alla resurser. När det används i en ClusterRoleBinding ger den fullständig kontroll över alla resurser i klustret och i alla namn områden. När det används i en RoleBinding ger den fullständig kontroll över varje resurs i roll bindningens namnrymd, inklusive själva namn området.|
 
 Du kan skapa roll tilldelningar som är begränsade till Arc-aktiverat Kubernetes-kluster på `Access Control (IAM)` bladet i kluster resursen på Azure Portal. Du kan också använda Azure CLI-kommandon, som du ser nedan:
 

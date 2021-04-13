@@ -4,12 +4,12 @@ description: Lär dig mer om att hantera certifikat i ett Service Fabric kluster
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: a8a7e8954f3c9d5b54c2e1ed9caa330ef92d4512
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7976d1419aeb0dda3ec2f94a32e9b185a6c14be7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100099514"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304876"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Certifikat hantering i Service Fabric kluster
 
@@ -90,10 +90,10 @@ I det här läget finns ett certifikat i valvet som är redo för användning. V
 ### <a name="certificate-provisioning"></a>Certifikat etablering
 Vi nämnde en etablerings agent, som är den entitet som hämtar certifikatet, inklusive den privata nyckeln, från valvet och installerar den på alla värdar i klustret. (Kom ihåg att Service Fabric inte etablerar certifikat.) I vårt sammanhang kommer klustret att finnas i en samling virtuella Azure-datorer och/eller skalnings uppsättningar för virtuella datorer. I Azure kan etablering av ett certifikat från ett valv till en VM/VMSS uppnås med följande mekanismer – förutsatt att etablerings agenten tidigare har beviljats "Get"-behörighet för valvet av valv ägaren: 
   - ad hoc: en operatör hämtar certifikatet från valvet (som PFX/PKCS #12 eller pem) och installerar det på varje nod
-  - som en virtuell dators skalnings uppsättning "hemlighet" under distributionen: beräknings tjänsten hämtar, använder sin första part identitet för operatören, certifikatet från ett mall-distributions-aktiverat valv och installerar det på varje nod i den virtuella datorns skalnings uppsättning ([t. ex](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#certificates).). Observera att detta endast tillåter etablering av versions bara hemligheter
-  - använda [Key Vault VM-tillägget](../virtual-machines/extensions/key-vault-windows.md); Detta möjliggör etablering av certifikat med hjälp av versions lösa deklarationer, med regelbunden uppdatering av observerade certifikat. I detta fall förväntas VM/VMSS ha en [hanterad identitet](../virtual-machines/security-policy.md#managed-identities-for-azure-resources), en identitet som har beviljats åtkomst till de valv som innehåller observerade certifikat.
+  - som en virtuell dators skalnings uppsättning "hemlighet" under distributionen: beräknings tjänsten hämtar, använder sin första part identitet för operatören, certifikatet från ett mall-distributions-aktiverat valv och installerar det på varje nod i den virtuella datorns skalnings uppsättning ([t. ex](/virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#certificates).). Observera att detta endast tillåter etablering av versions bara hemligheter
+  - använda [Key Vault VM-tillägget](../virtual-machines/extensions/key-vault-windows.md); Detta möjliggör etablering av certifikat med hjälp av versions lösa deklarationer, med regelbunden uppdatering av observerade certifikat. I detta fall förväntas VM/VMSS ha en [hanterad identitet](/virtual-machines/security-policy.md#managed-identities-for-azure-resources), en identitet som har beviljats åtkomst till de valv som innehåller observerade certifikat.
 
-Ad hoc-mekanismen rekommenderas inte av flera orsaker, från säkerhet till tillgänglighet och beskrivs inte här längre. Mer information finns [i certifikat i skalnings uppsättningar för virtuella datorer](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#certificates).
+Ad hoc-mekanismen rekommenderas inte av flera orsaker, från säkerhet till tillgänglighet och beskrivs inte här längre. Mer information finns [i certifikat i skalnings uppsättningar för virtuella datorer](/virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#certificates).
 
 VMSS-/Compute-based-etableringen visar säkerhets-och tillgänglighets fördelarna, men det visar även begränsningar. Det kräver – genom att utforma certifikat som har en versions hemligheter som gör det lämpligt endast för kluster som skyddas med certifikat som deklareras av tumavtryck. Däremot kommer den Key Vault VM-baserade etableringen alltid att installera den senaste versionen av varje observerat certifikat, vilket gör att det bara är lämpligt för kluster som skyddas med certifikat som har deklarerats som eget namn. För att framhäva, ska du inte använda en metod för att skapa en Autouppdatering (t. ex. KVVM-tillägget) för certifikat som har deklarerats av en instans (det vill säga av tumavtrycket) – risken att förlora tillgänglighet är mycket stor.
 

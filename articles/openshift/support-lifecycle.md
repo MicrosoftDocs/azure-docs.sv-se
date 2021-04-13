@@ -5,13 +5,13 @@ author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
-ms.date: 08/11/2020
-ms.openlocfilehash: fca01c77a1ff47cbeee167eb408ed9f29a1307bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/06/2021
+ms.openlocfilehash: 35cbaf2b6d2618d116d2dd322ae5ac28f578cecc
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634336"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303550"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Supportlivscykel för Azure Red Hat OpenShift 4
 
@@ -33,7 +33,7 @@ Varje tal i versionen indikerar allmän kompatibilitet med den tidigare versione
 * **Lägre version**: lanseras ungefär var tredje månad. Lägre versions uppgraderingar kan omfatta funktioner tillägg, förbättringar, utfasningar, borttagningar, fel korrigeringar, säkerhets förbättringar och andra förbättringar.
 * **Korrigeringar**: publiceras vanligt vis varje vecka eller efter behov. Uppgraderingar av uppdaterings versioner kan omfatta fel korrigeringar, säkerhets förbättringar och andra förbättringar.
 
-Kunderna bör sträva efter att köra den senaste del versionen av den huvud version de kör. Om ditt produktions kluster till exempel är på 4,4 och 4,5 är den senaste tillgängliga lägre versionen för 4-serien, bör du uppgradera till 4,5 så snart som möjligt.
+Kunderna bör sträva efter att köra den senaste del versionen av den huvud version de kör. Om ditt produktions kluster till exempel är på 4,4 och 4,5 är den senaste tillgängliga lägre versionen för 4-serien, bör du uppgradera till 4,5 så snart som möjligt. 
 
 ### <a name="upgrade-channels"></a>Uppgradera kanaler
 
@@ -106,12 +106,16 @@ Se följande guide för den [tidigare versionen av Red Hat OpenShift container P
 
 **Vad händer när en användare uppgraderar ett OpenShift-kluster med en lägre version som inte stöds?**
 
-Om du använder N-2-versionen eller äldre, innebär det att du är utanför supporten och kommer att bli ombedd att uppgradera. När uppgraderingen från version N-2 till N-1 lyckas, är du tillbaka i våra support principer. Exempel:
+Om du använder N-2-versionen eller äldre, innebär det att du är utanför supporten och kommer att bli ombedd att uppgradera för att fortsätta få support. När uppgraderingen från version N-2 till N-1 lyckas, är du tillbaka inom supporten. Uppgradering från version N-3 eller äldre till en version som stöds kan vara utmanande och i vissa fall inte möjligt. Vi rekommenderar att du behåller klustret på den senaste OpenShift-versionen för att undvika eventuella problem med uppgraderingen. Exempel:
 * Om den äldsta Azure Red Hat OpenShift-versionen som stöds är 4.4. z och du är på 4,3. z eller äldre är du utanför supporten.
-* När uppgraderingen från 4.3. ö till 4.4. z eller senare lyckas är du tillbaka i våra support principer.
+* När uppgraderingen från 4.3. ö till 4.4. z eller senare lyckas är du tillbaka i våra support principer. 
 
 Det finns inte stöd för att återställa klustret till en tidigare version eller en återställning. Det finns bara stöd för att uppgradera till en nyare version.
 
 **Vad betyder "utanför supporten"?**
 
-"Utanför supporten" innebär att den version som du kör ligger utanför listan över versioner som stöds och du kan uppmanas att uppgradera klustret till en version som stöds när du begär support, såvida du inte är inom 30 dagar efter versionens utfasnings period. Dessutom gör inte Azure Red Hat OpenShift några körnings-eller SLA-garantier för kluster utanför listan över versioner som stöds i slutet av den 30 dagariga Grace-perioden.
+Om ditt ARO-kluster kör en OpenShift-version som inte finns i listan över versioner som stöds eller som använder en [kluster konfiguration](https://docs.microsoft.com/azure/openshift/support-policies-v4)som inte stöds, är ditt kluster "utanför supporten". Därför:
+- När du öppnar ett support ärende för klustret blir du ombedd att uppgradera klustret till en version som stöds. Innan du får support, om du inte är inom 30 dagar efter att versions stödet upphör. 
+- Alla garantier för körning eller SLA för kluster utanför supporten annulleras.
+- Kluster utanför supporten kommer endast att korrigeras på bästa möjliga villkor.
+- Kluster utanför supporten kommer inte att övervakas.

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 09/16/2020
-ms.openlocfilehash: 947d842860452425f8b30fbdaf9558c2a94a89a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/09/2021
+ms.openlocfilehash: 3d935332854816ae62dea8e30f08bee2b92a4eab
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92781217"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107302989"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Skala elastiska pool resurser i Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,14 @@ Den här artikeln beskriver hur du skalar beräknings-och lagrings resurserna so
 
 ## <a name="change-compute-resources-vcores-or-dtus"></a>Ändra beräknings resurser (virtuella kärnor eller DTU: er)
 
-När du först har valt antalet virtuella kärnor eller eDTU: er kan du skala upp eller ned en elastisk pool dynamiskt baserat på den faktiska upplevelsen med hjälp av [Azure Portal](elastic-pool-manage.md#azure-portal), [POWERSHELL](/powershell/module/az.sql/Get-AzSqlElasticPool), [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)eller [REST API](/rest/api/sql/elasticpools/update).
+När du har valt antalet virtuella kärnor eller eDTU: er kan du skala upp eller ned en elastisk pool dynamiskt baserat på den faktiska upplevelsen med hjälp av:
+
+* [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database)
+* [Azure-portalen](elastic-pool-manage.md#azure-portal)
+* [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool)
+* [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)
+* [REST-API](/rest/api/sql/elasticpools/update)
+
 
 ### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Effekt av att ändra tjänst nivå eller skala om beräknings storlek
 
@@ -99,7 +106,7 @@ Du debiteras för varje timme som det finns en databas med den högsta tjänst n
 
 ### <a name="dtu-based-purchasing-model"></a>DTU-baserad inköps modell
 
-- EDTU-priset för en elastisk pool omfattar en viss mängd lagring utan extra kostnad. Extra lagring utöver den mängd som ingår kan tillhandahållas för ytterligare kostnad upp till den maximala storleks gränsen i steg om 250 GB upp till 1 TB och sedan i steg om 256 GB utöver 1 TB. För inkluderade lagrings mängder och Max storleks gränser, se [elastisk pool: lagrings storlekar och beräknings storlekar](resource-limits-dtu-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).
+- EDTU-priset för en elastisk pool omfattar en viss mängd lagring utan extra kostnad. Extra lagring utöver den mängd som ingår kan tillhandahållas för ytterligare kostnad upp till den maximala storleks gränsen i steg om 250 GB upp till 1 TB och sedan i steg om 256 GB utöver 1 TB. För inkluderade lagrings mängder och Max storleks gränser, se [resurs begränsningar för elastiska pooler med hjälp av inköps modell för DTU](resource-limits-dtu-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes) eller [resurs gränser för elastiska pooler med vCore inköps modell](resource-limits-vcore-elastic-pools.md).
 - Extra lagrings utrymme för en elastisk pool kan tillhandahållas genom att öka den maximala storleken med hjälp av [Azure Portal](elastic-pool-manage.md#azure-portal), [POWERSHELL](/powershell/module/az.sql/Get-AzSqlElasticPool), [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)eller [REST API](/rest/api/sql/elasticpools/update).
 - Priset för extra lagring för en elastisk pool är det extra lagrings beloppet multiplicerat med det extra lagrings enhets priset för tjänst nivån. Mer information om priset för extra lagring finns [SQL Database prissättning](https://azure.microsoft.com/pricing/details/sql-database/).
 

@@ -8,13 +8,15 @@
 - name: Begrepp
   expanded: true
   items:
-    - name: Autohantera för Linux
+    - name: Automanage för Linux
       href: automanage-linux.md
-    - name: Autohantera för Windows Server
+    - name: Automanage för Windows Server
       href: automanage-windows-server.md
       items:
         - name: Hotpatch för nya virtuella datorer
           href: automanage-hotpatch.md
+    - name: Automanage-konto
+      href: automanage-account.md
 - name: Gör så här för att
   expanded: true
   items:
@@ -22,11 +24,13 @@
       href: virtual-machines-custom-preferences.md
     - name: Aktivera på virtuella datorer via Azure Policy
       href: virtual-machines-policy-enable.md
+    - name: Aktivera på virtuella datorer via en ARM-mall
+      href: arm-deploy.md
     - name: Felsöka onboarding-fel
       href: common-errors.md
     - name: Reparera ett trasigt Automanage-konto
       href: repair-automanage-account.md
-    - name: Flytta en hanterad virtuell dator över flera regioner
+    - name: Flytta en automatiskt hanterad virtuell dator mellan regioner
       href: move-automanaged-vms.md
 - name: Resurser
   expanded: true

@@ -5,7 +5,7 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 02/12/2021
+ms.date: 04/12/2021
 tags: active-directory
 ms.author: mimart
 author: msmimart
@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60cd944ecb144a30e872259f6e959a11c3ea6319
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c38bab420618b04f8153a123ce9b988215c40e8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100365437"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304502"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Felsöka Azure Active Directory B2B-samarbete
 
@@ -74,6 +74,9 @@ Externa användare kan bara läggas till i "tilldelade" eller "säkerhets" grupp
 ## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>Min externa användare fick inget e-postmeddelande för att lösa in
 
 Inbjudan bör kontrol lera med Internet leverantören eller skräp post filtret för att säkerställa att följande adress tillåts: Invites@microsoft.com
+
+> [!NOTE]
+> För Azure-tjänsten som drivs av 21Vianet i Kina är avsändar adressen Invites@oe.21vianet.com .
 
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>Jag märker att det anpassade meddelandet inte inkluderas med Inbjudnings meddelanden vid tillfällen
 

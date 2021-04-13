@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1070a4c8daecfedae513f2fd8738c27abfb33078
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f55c3a1f699f8a087eb97eaba347a3f21c124cc9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200588"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307324"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>Konfigurera API-proxy-modulen för gateway-hierarkins scenario (för hands version)
 
@@ -34,7 +34,7 @@ API-proxy-modulen kan aktivera många scenarier för gateway-hierarkier, inklusi
 
 ## <a name="deploy-the-proxy-module"></a>Distribuera Proxy-modulen
 
-Modulen API-proxy är tillgänglig från Microsoft Container Registry (MCR): `mcr.microsoft.com/azureiotedge-api-proxy:latest` .
+Modulen API-proxy är tillgänglig från Microsoft Container Registry (MCR): `mcr.microsoft.com/azureiotedge-api-proxy:1.0` .
 
 Du kan också distribuera modulen API-proxy direkt från Azure Marketplace: [IoT Edge API-proxy](https://azuremarketplace.microsoft.com/marketplace/apps/azure-iot.azureiotedge-api-proxy?tab=Overview).
 
@@ -52,7 +52,7 @@ API-proxy-modulen levereras med en standard konfiguration som stöder vanliga sc
 
 För närvarande är standard miljö variablerna:
 
-| Miljövariabel | Beskrivning |
+| Miljövariabel | Description |
 | -------------------- | ----------- |
 | `PROXY_CONFIG_ENV_VAR_LIST` | Visa en lista med alla variabler som du vill uppdatera i en kommaavgränsad lista. Det här steget förhindrar oavsiktlig ändring av felaktiga konfigurations inställningar.
 | `NGINX_DEFAULT_PORT` | Ändrar porten som nginx proxy lyssnar på. Om du uppdaterar den här miljövariabeln ser du till att porten du väljer också exponeras i modulen Dockerfile och deklareras som en port bindning i distributions manifestet.<br><br>Standardvärdet är 443.<br><br>När den distribueras från Azure Marketplace uppdateras standard porten till 8000 för att förhindra konflikter med edgeHub-modulen. Mer information finns i [minimera öppna portar](#minimize-open-ports). |

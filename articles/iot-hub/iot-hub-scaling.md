@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: 7940ac3a67a0562aa0b7a21690deec30220a48a3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cdb792198e6912fb0e68b2abec052c2b05166f17
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102434720"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310129"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Välja rätt IoT Hub-nivå för din lösning
 
@@ -48,11 +48,11 @@ Det går bara att välja en typ av [utgåva](https://azure.microsoft.com/pricing
 | [HTTP-, AMQP-och MQTT-protokoll](iot-hub-devguide-protocols.md) | Ja | Ja |
 | [Device Provisioning Service](../iot-dps/about-iot-dps.md) | Ja | Ja |
 | [Övervakning och diagnostik](monitor-iot-hub.md) | Ja | Ja |
-| [Meddelanden från moln till enhet](iot-hub-devguide-c2d-guidance.md) |   | Ja |
-| [Enhets uppflätade](iot-hub-devguide-device-twins.md), [modulens sammanflätade](iot-hub-devguide-module-twins.md)och [enhets hantering](iot-hub-device-management-overview.md) |   | Ja |
-| [Enhets strömmar (förhands granskning)](iot-hub-device-streams-overview.md) |   | Ja |
-| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Ja |
-| [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) |   | Ja |
+| [Meddelanden från moln till enhet](iot-hub-devguide-c2d-guidance.md) |   | Yes |
+| [Enhets uppflätade](iot-hub-devguide-device-twins.md), [modulens sammanflätade](iot-hub-devguide-module-twins.md)och [enhets hantering](iot-hub-device-management-overview.md) |   | Yes |
+| [Enhets strömmar (förhands granskning)](iot-hub-device-streams-overview.md) |   | Yes |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Yes |
+| [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) |   | Yes |
 
 IoT Hub erbjuder också en kostnads fri nivå som är avsedd för testning och utvärdering. Den har alla funktioner i standard-nivån, men begränsade meddelande ersättningar. Du kan inte uppgradera från den kostnads fria nivån till antingen Basic eller standard.
 
@@ -60,7 +60,7 @@ IoT Hub erbjuder också en kostnads fri nivå som är avsedd för testning och u
 
 Azure IoT-hubbar innehåller många kärn komponenter i [azure Event Hubs](../event-hubs/event-hubs-features.md), inklusive [partitioner](../event-hubs/event-hubs-features.md#partitions). Händelse strömmar för IoT Hub fylls i allmänhet med inkommande telemetridata som rapporteras av olika IoT-enheter. Partitionering av händelse strömmen används för att minska de innehåll som inträffar när den samtidigt läses och skrivs till händelse strömmar.
 
-Du kan välja partitions gräns när IoT Hub skapas och inte kan ändras. Den maximala gränsen för partition för Basic-nivå IoT Hub och standard nivån IoT Hub är 32. De flesta IoT-hubbar behöver bara 4 partitioner. Mer information om hur du fastställer partitionerna finns i Event Hubs vanliga frågor och svar [hur många partitioner behöver jag?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
+Du kan välja partitions gräns när IoT Hub skapas och inte kan ändras. Den maximala gränsen för partition för Basic-nivå IoT Hub och standard nivån IoT Hub är 32. De flesta IoT-hubbar behöver bara 4 partitioner. Mer information om hur du fastställer partitionerna finns i Event Hubs vanliga frågor och svar [hur många partitioner behöver jag?](../event-hubs/event-hubs-faq.yml#how-many-partitions-do-i-need-)
 
 ## <a name="tier-upgrade"></a>Uppgradering av nivå
 
@@ -91,23 +91,23 @@ Skillnaden mellan de funktioner som stöds mellan nivåerna Basic och standard i
 | [Skicka enhets händelse](/rest/api/iothub/device/senddeviceevent) | Ja | Ja |
 | Händelse för att skicka modul | Endast AMQP och MQTT | Endast AMQP och MQTT |
 | [Uppdatera fil överförings status](/rest/api/iothub/device/updatefileuploadstatus) | Ja | Ja |
-| [Åtgärd för Mass enhet](/javascript/api/azure-iot-digitaltwins-service/registrymanager#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | Ja, förutom IoT Edge funktioner | Ja |
+| [Åtgärd för Mass enhet](/javascript/api/azure-iot-digitaltwins-service/registrymanager#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | Ja, förutom IoT Edge funktioner | Yes |
 | [Avbryt import av export jobb](/rest/api/iothub/service/jobs/cancelimportexportjob) | Ja | Ja |
 | [Skapa import export jobb](/rest/api/iothub/service/jobs/createimportexportjob) | Ja | Ja |
 | [Hämta import export jobb](/rest/api/iothub/service/jobs/getimportexportjob) | Ja | Ja |
 | [Hämta import export jobb](/rest/api/iothub/service/jobs/getimportexportjobs) | Ja | Ja |
-| [Rensa kommando kön](/javascript/api/azure-iot-digitaltwins-service/registrymanager#purgecommandqueue-string--msrest-requestoptionsbase-) |   | Ja |
-| [Hämta enhetens dubbla](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin) |   | Ja |
-| [Hämta modul, dubbla](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) |   | Ja |
-| [Anropa enhets metod](./iot-hub-devguide-direct-methods.md) |   | Ja |
-| [Uppdatera enhet, dubbla](./iot-hub-devguide-device-twins.md) |   | Ja |
-| [Uppdatera modul, dubbla](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-updatemoduletwin) |   | Ja |
-| [Överge meddelande för enhets bindning](/rest/api/iothub/device/abandondeviceboundnotification) |   | Ja |
-| [Slutför meddelande om enhets bindning](/rest/api/iothub/device/completedeviceboundnotification) |   | Ja |
-| [Avbryt jobb](/rest/api/media/jobs/canceljob) |   | Ja |
-| [Skapa jobb](/rest/api/media/jobs/create) |   | Ja |
-| [Hämta jobb](/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob) |   | Ja |
-| [Fråga efter jobb](/javascript/api/azure-iot-digitaltwins-service/jobclient#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | Ja |
+| [Rensa kommando kön](/javascript/api/azure-iot-digitaltwins-service/registrymanager#purgecommandqueue-string--msrest-requestoptionsbase-) |   | Yes |
+| [Hämta enhetens dubbla](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin) |   | Yes |
+| [Hämta modul, dubbla](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) |   | Yes |
+| [Anropa enhets metod](./iot-hub-devguide-direct-methods.md) |   | Yes |
+| [Uppdatera enhet, dubbla](./iot-hub-devguide-device-twins.md) |   | Yes |
+| [Uppdatera modul, dubbla](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-updatemoduletwin) |   | Yes |
+| [Överge meddelande för enhets bindning](/rest/api/iothub/device/abandondeviceboundnotification) |   | Yes |
+| [Slutför meddelande om enhets bindning](/rest/api/iothub/device/completedeviceboundnotification) |   | Yes |
+| [Avbryt jobb](/rest/api/media/jobs/canceljob) |   | Yes |
+| [Skapa jobb](/rest/api/media/jobs/create) |   | Yes |
+| [Hämta jobb](/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob) |   | Yes |
+| [Fråga efter jobb](/javascript/api/azure-iot-digitaltwins-service/jobclient#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | Yes |
 
 ## <a name="message-throughput"></a>Meddelande data flöde
 

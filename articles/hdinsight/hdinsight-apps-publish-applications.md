@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 05/14/2018
-ms.openlocfilehash: 73d291fd76d9adbe2a095406b56bd879d497d3b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d432d20660cd1b7ee59c9ef72f9db04bc0009481
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98942665"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306593"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Publicera ett HDInsight-program på Azure Marketplace
 Du kan installera ett Azure HDInsight-program i ett Linux-baserat HDInsight-kluster. I den här artikeln får du lära dig hur du publicerar ett HDInsight-program på Azure Marketplace. Allmän information om hur du publicerar på Azure Marketplace finns i [publicera ett erbjudande på Azure Marketplace](../marketplace/overview.md).
@@ -83,7 +83,8 @@ Skapa en zip-fil som innehåller alla filer som krävs för att installera HDIns
 ## <a name="publish-the-application"></a>Publicera programmet
 Så här publicerar du ett HDInsight-program:
 
-1. Logga in på [Azure Publishing](https://publish.windowsazure.com/).
+1. Logga in på Azure Publishing.
+
 2. Välj **Solution templates** i den vänstra menyn.
 3. Ange en rubrik och välj sedan **skapa en ny lösnings mall**.
 4. Om du inte redan har registrerat din organisation väljer du **skapa dev Center-konto och ansluter till Azure-programmet**.  Mer information finns i [skapa ett Microsoft Developer-konto](../marketplace/overview.md).

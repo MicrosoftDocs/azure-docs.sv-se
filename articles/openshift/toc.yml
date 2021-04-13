@@ -26,15 +26,17 @@
           href: howto-create-private-cluster-4x.md
         - name: Konfigurera DNS-vidarebefordring
           href: dns-forwarding.md
+        - name: Begränsa utgående trafik
+          href: howto-restrict-egress.md
     - name: Storage
       items:
-        - name: 'Kryptera PVC: er med kundhanterad nyckel (förhands granskning)'
+        - name: 'Kryptera PVC:er med kund hanterad nyckel (förhandsversion)'
           href: howto-encrypt-data-disks.md
         - name: Skapa en Azure Files Storageclass
           href: howto-create-a-storageclass.md
         - name: Använda det inbyggda containerregistret
           href: built-in-container-registry.md
-        - name: Använd Azure Container Registry
+        - name: Använda Azure Container Registry
           href: howto-use-acr-with-aro.md
     - name: Säkerhet och autentisering
       items:

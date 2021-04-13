@@ -11,17 +11,17 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc81e0b5a2b7e9e2e5ab12094950f71ad51c6871
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: af4eaa5912cdf7463c81f501d71b69e934f8febb
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107225979"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306015"
 ---
 # <a name="what-is-azure-ad-connect-cloud-sync"></a>Vad är Azure AD Connect Cloud Sync?
 Azure AD Connect Cloud Sync är ett nytt erbjudande från Microsoft som utformats för att möta och uppnå dina hybrid identitets mål för synkronisering av användare, grupper och kontakter till Azure AD.  Det åstadkommer detta genom att använda Azure AD Cloud Provisioning-agenten i stället för Azure AD Connect-programmet.  Det kan dock användas tillsammans med Azure AD Connect-synkronisering och ger följande fördelar:
     
-- Stöd för synkronisering till en Azure AD-klient från en frånkopplad Active Directory skogs miljö: de vanliga scenarierna omfattar fusions & förvärv, där det förvärvade företagets AD-skogar är isolerade från moder bolagets AD-skogar och företag som har historiskt haft flera AD-skogar.
+- Stöd för synkronisering till en Azure AD-klient från en frånkopplad Active Directory skogs miljö: de vanliga scenarierna omfattar fusions & förvärv (där det förvärvade företagets AD-skogar är isolerade från moder bolagets AD-skogar) och företag som har historiskt haft flera AD-skogar.
 - Förenklad installation med låg vikts etablerings agenter: agenterna fungerar som en brygga från AD till Azure AD, med all synkroniserad konfiguration som hanteras i molnet. 
 - Flera etablerings agenter kan användas för att förenkla distributioner med hög tillgänglighet, särskilt viktiga för organisationer som förlitar sig på lösen ords-hash-synkronisering från AD till Azure AD.
 - Stöd för stora grupper med upp till 50 000-medlemmar. Vi rekommenderar att du bara använder det omfångs filter för OU vid synkronisering av stora grupper.
@@ -30,7 +30,7 @@ Azure AD Connect Cloud Sync är ett nytt erbjudande från Microsoft som utformat
 ![Vad är Azure AD Connect?](media/what-is-cloud-sync/architecture-1.png)
 
 ## <a name="how-is-azure-ad-connect-cloud-sync-different-from-azure-ad-connect-sync"></a>Hur skiljer Azure AD Connect Cloud Sync från Azure AD Connect Sync?
-Med Azure AD Connect Cloud Sync dirigeras etableringen från AD till Azure AD till Microsoft Online Services. En organisation behöver bara distribuera, i sin lokala och IaaS miljö, en Lightweight-agent som fungerar som en brygga mellan Azure AD och AD. Etablerings konfigurationen lagras i Azure AD och hanteras som en del av tjänsten.
+Med Azure AD Connect Cloud Sync dirigeras etableringen från AD till Azure AD till Microsoft Online Services. En organisation behöver bara distribuera, i sin lokala eller IaaS miljö, en låg vikts agent som fungerar som en brygga mellan Azure AD och AD. Etablerings konfigurationen lagras i Azure AD och hanteras som en del av tjänsten.
 
 ## <a name="azure-ad-connect-cloud-sync-video"></a>Azure AD Connect Cloud Sync-Video
 Följande korta video ger en utmärkt översikt över Azure AD Connect Cloud Sync:

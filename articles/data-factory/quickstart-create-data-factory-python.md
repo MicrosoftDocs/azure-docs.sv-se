@@ -1,6 +1,6 @@
 ---
-title: 'Snabb start: skapa en Azure Data Factory med python'
-description: Använd en data fabrik för att kopiera data från en plats i Azure Blob Storage till en annan plats.
+title: 'Snabbstart: Skapa en Azure Data Factory med Python'
+description: Använd en datafabrik för att kopiera data från en plats i Azure Blob Storage till en annan plats.
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
@@ -9,38 +9,38 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/12/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 879ca169604dcd61a79db4ec3ca937289dacdd9b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 534b5b3aca86cc2f6d7ee2d703939420f80abb8e
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309874"
+ms.locfileid: "107365101"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Snabbstart: Skapa en datafabrik och pipeline med Python
 
-> [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
+> [!div class="op_single_selector" title1="Välj den version Data Factory tjänst som du använder:"]
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuell version](quickstart-create-data-factory-python.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-I den här snabb starten skapar du en data fabrik med hjälp av python. Pipelinen i den här data fabriken kopierar data från en mapp till en annan mapp i Azure Blob Storage.
+I den här snabbstarten skapar du en datafabrik med hjälp av Python. Pipelinen i den här datafabriken kopierar data från en mapp till en annan mapp i Azure Blob Storage.
 
-Azure Data Factory är en molnbaserad data integrerings tjänst som gör att du kan skapa data drivna arbets flöden för att dirigera och automatisera data förflyttning och data omvandling. Med hjälp av Azure Data Factory kan du skapa och schemalägga data drivna arbets flöden som kallas pipeliner.
+Azure Data Factory är en molnbaserad dataintegreringstjänst som gör att du kan skapa datadrivna arbetsflöden för att samordna och automatisera dataförflyttning och datatransformering. Med Azure Data Factory kan du skapa och schemalägga datadrivna arbetsflöden, så kallade pipelines.
 
-Pipelines kan mata in data från olika data lager. Pipelines bearbetar eller transformerar data med hjälp av beräknings tjänster som Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics och Azure Machine Learning. Pipelines publicerar utdata till data lager som Azure Synapse Analytics för Business Intelligence-program (BI).
+Pipelines kan mata in data från olika datalager. Pipelines bearbetar eller transformerar data med hjälp av beräkningstjänster som Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics och Azure Machine Learning. Pipelines publicerar utdata till datalager som Azure Synapse Analytics för business intelligence (BI).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Ett Azure-konto med en aktiv prenumeration. [Skapa ett kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Ett Azure-konto med en aktiv prenumeration. [Skapa en utan kostnad.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-* [Python 3.6 +](https://www.python.org/downloads/).
+* [Python 3.6+](https://www.python.org/downloads/).
 
 * [Ett Azure Storage konto](../storage/common/storage-account-create.md).
 
 * [Azure Storage Explorer](https://storageexplorer.com/) (valfritt).
 
-* [Ett program i Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Anteckna följande värden som du kan använda i senare steg: **program-ID**, **autentiseringsnyckel** och **klient-ID**. Tilldela program rollen **deltagare** genom att följa anvisningarna i samma artikel. Anteckna följande värden som visas i artikeln som du kan använda i senare steg: **program-ID (tjänstens huvud namns-ID nedan), autentiseringsnyckel (klient hemlighet nedan) och klient-ID.**
+* [Ett program i Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Skapa programmet genom att följa stegen i den här länken och tilldela programmet rollen  **Deltagare** genom att följa anvisningarna i samma artikel. Anteckna följande värden som visas i artikeln som ska användas i senare steg: program-ID (id för tjänstens huvudnamn nedan), autentiseringsnyckel (klienthemlighet **nedan) och klientorganisations-ID.**
 
 ## <a name="create-and-upload-an-input-file"></a>Skapa och ladda upp en indatafil
 
@@ -66,16 +66,16 @@ Pipelines kan mata in data från olika data lager. Pipelines bearbetar eller tra
     pip install azure-mgmt-datafactory
     ```
 
-    [Python SDK för Data Factory](https://github.com/Azure/azure-sdk-for-python) stöder python 2,7 och 3.6 +.
+    [Python SDK för Data Factory](https://github.com/Azure/azure-sdk-for-python) stöder Python 2.7 och 3.6+.
 
-4. Kör följande kommando för att installera python-paketet för Azure Identity Authentication:
+4. Kör följande kommando för att installera Python-paketet för Azure Identity-autentisering:
 
     ```python
     pip install azure-identity
     ```
     > [!NOTE] 
-    > Paketet "Azure-Identity" kan ha konflikter med "Azure-CLI" på vissa vanliga beroenden. Om du uppfyller eventuella autentiseringsproblem tar du bort "Azure-CLI" och dess beroenden eller använder en ren dator utan att installera "Azure-CLI"-paketet så att det fungerar.
-    > För suveräna moln måste du använda lämpliga molnbaserad konstanter.  Se [ansluta till alla regioner med Azure libraries för python multi-Cloud | Microsoft Docs för instruktioner för att ansluta med python i suveräna moln.](https://docs.microsoft.com/azure/developer/python/azure-sdk-sovereign-domain)
+    > Paketet "azure-identity" kan ha konflikter med "azure-cli" på några vanliga beroenden. Om du får problem med autentiseringen tar du bort "azure-cli" och dess beroenden eller använder en ren dator utan att installera paketet "azure-cli" för att det ska fungera.
+    > För nationella moln måste du använda lämpliga molnspecifika konstanter.  Se Ansluta till [alla regioner med hjälp av Azure-bibliotek för Python-| Microsoft Docs anvisningar för att ansluta till Python i nationella moln.](https://docs.microsoft.com/azure/developer/python/azure-sdk-sovereign-domain)
     
     
 ## <a name="create-a-data-factory-client"></a>Skapa en datafabriksklient
@@ -225,8 +225,6 @@ Du definierar en datauppsättning som representerar källdata i Azure Blob. Denn
         rg_name, df_name, dsOut_name, dsOut_azure_blob)
     print_item(dsOut)
 ```
- > [!NOTE] 
- > Om du vill skicka parametrar till pipelinen lägger du till dem i JSON-strängen params_for_pipeline visas nedan i formatet **{"ParameterName1": "ParameterValue1"}** för var och en av de parametrar som behövs i pipelinen. Om du vill skicka parametrar till ett data flöde skapar du en pipeline-parameter som innehåller parameter namnet/värdet och använder sedan pipelinen i data flödes parametern i formatet **@pipeline (). Parameters. ParameterName.**
 
 
 ## <a name="create-a-pipeline"></a>Skapa en pipeline
@@ -243,6 +241,13 @@ Lägg till följande kod som skapar och **aktiverar en pipeline** till **Main**-
     copy_activity = CopyActivity(name=act_name,inputs=[dsin_ref], outputs=[dsOut_ref], source=blob_source, sink=blob_sink)
 
     #Create a pipeline with the copy activity
+    
+    #Note1: To pass parameters to the pipeline, add them to the json string params_for_pipeline shown below in the format { “ParameterName1” : “ParameterValue1” } for each of the parameters needed in the pipeline.
+    #Note2: To pass parameters to a dataflow, create a pipeline parameter to hold the parameter name/value, and then consume the pipeline parameter in the dataflow parameter in the format @pipeline().parameters.parametername.
+    
+    p_name = 'copyPipeline'
+    params_for_pipeline = {}
+
     p_name = 'copyPipeline'
     params_for_pipeline = {}
     p_obj = PipelineResource(activities=[copy_activity], parameters=params_for_pipeline)

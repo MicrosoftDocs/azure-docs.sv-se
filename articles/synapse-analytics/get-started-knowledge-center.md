@@ -10,18 +10,18 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 04/04/2021
-ms.openlocfilehash: a26f46da7b392bd3b4a49aacb360a4c6147f8d2c
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 92d1534b5dd0233ce88b81d605c6502b67a121df
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382648"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307902"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Utforska Synapse Knowledge Center
 
 I den här självstudien får du lära dig hur du använder Synapse Studio Knowledge Center.
 
-## <a name="getting-to-the-knowledge-center"></a>Komma till kunskaps centret
+## <a name="introduction-to-the-knowledge-center"></a>Introduktion till kunskaps centret
 
 Det finns två sätt att hitta kunskaps Center i Synapse Studio:
 
@@ -30,16 +30,19 @@ Det finns två sätt att hitta kunskaps Center i Synapse Studio:
 
 Välj någon av metoderna och öppna **kunskaps centret**.
 
-## <a name="overview"></a>Översikt
-
-I **kunskaps centret** kan du göra tre saker:
+När det är synligt ser du att **kunskaps centret** gör det möjligt att göra tre saker:
 * **Använd exempel omedelbart**. Välj det här alternativet om du vill ha ett snabbt exempel på hur Synapse fungerar.
 * **Bläddra i galleriet**. Med det här alternativet kan du länka exempel data uppsättningar och lägga till exempel kod i formatet SQL-skript, antecknings böcker och pipeliner.
 * **Guidad visning Synapse Studio**. Det här alternativet tar dig en kort genom gång av de grundläggande delarna av Synapse Studio. Detta är användbart om du aldrig har använt Synapse Studio tidigare.
 
-## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>Utforska Blob Storage med Server lös SQL-pool
+## <a name="exploring-use-samples-immediately"></a>Utforska: använda exempel omedelbart
 
-1. Gå till **kunskaps centret** och klicka på **Använd exempel omedelbart**.
+Det finns tre objekt i det här avsnittet:
+* Utforska exempel data med Spark
+* Fråga efter data med SQL
+* Skapa extern tabell med SQL
+
+1. I **kunskaps Center** klickar du på **Använd exempel omedelbart**.
 1. Välj **fråga data med SQL**.
 1. Klicka på **Använd exempel**.
 1. Ett nytt exempel på SQL-skript öppnas.

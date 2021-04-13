@@ -8,12 +8,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 16433d5b148d7bc441e375591c64af497cd7b8de
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 90ee39039b0734bf434e7339a973358989c08175
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505341"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311370"
 ---
 # <a name="access-config-server-and-service-registry"></a>Åtkomst till konfigurations Server och tjänst register
 
@@ -47,15 +47,15 @@ När rollen Azure våren Cloud data Reader har tilldelats kan kunderna komma åt
     ```
 2. Skapa slut punkten. Vi stöder standard slut punkter för vår moln konfigurations Server och vår moln tjänst register som hanteras av Azure våren Cloud. Mer information finns i [produktions klara slut punkter](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-endpoints). Kunder kan också få en fullständig lista över slut punkter som stöds av våren Cloud config server och våren Cloud Service Registry som hanteras av Azure våren Cloud genom att komma åt slut punkter:
 
-    * *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/*
-    * *https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/* 
+    * *'https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/'*
+    * *'https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/'* 
 
 >[!NOTE]
 > Om du använder Azure Kina kan du ersätta `*.azuremicroservices.io` med `*.microservices.azure.cn` , se [mer](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure).
 
 3. Få åtkomst till den sammanslutna slut punkten med åtkomst-token. Lägg till åtkomsttoken i en rubrik för att ge auktorisering.  Endast metoden GET stöds.
 
-    Du kan till exempel få åtkomst till en slut punkt som *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/health* visar hälso status för Eureka.
+    Du kan till exempel få åtkomst till en slut punkt som *" https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/health "* för att se hälso status för Eureka.
 
     Om svaret är *401 obehörig*, kontrollerar du om rollen har tilldelats.  Det tar flera minuter innan rollen börjar gälla eller verifierar att åtkomsttoken inte har upphört att gälla.
 

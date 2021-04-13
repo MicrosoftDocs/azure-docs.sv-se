@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a6af8f4600544007a9ecb4fcff5ac9016fd7dfbf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c37f6d89d5ebd3e18177db8add048739a62c883f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640337"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307953"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Använda OpenRowSet med Server lös SQL-pool i Azure Synapse Analytics
 
@@ -138,9 +138,9 @@ Om du anger att unstructured_data_path ska vara en mapp, kommer en server lös S
 Du kan instruera Server lös SQL-poolen att bläddra igenom mappar genom att ange/* i slutet av sökvägen som i exempel: `https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
 
 > [!NOTE]
-> Till skillnad från Hadoop och PolyBase returnerar inte Server lös SQL-poolen undermappar om du inte anger/* * i slutet av sökvägen. Till skillnad från Hadoop och PolyBase returnerar även Server fri SQL-pool de filer som fil namnet börjar med en understrykning (_) eller en punkt (.).
+> Till skillnad från Hadoop och PolyBase returnerar inte Server lös SQL-poolen undermappar om du inte anger/* * i slutet av sökvägen.
 
-I exemplet nedan, om unstructured_data_path = `https://mystorageaccount.dfs.core.windows.net/webdata/` , kommer en server lös SQL-pool fråga returnera rader från mydata.txt och _hidden.txt. Den returnerar inte mydata2.txt och mydata3.txt eftersom de finns i en undermapp.
+I exemplet nedan, om unstructured_data_path = `https://mystorageaccount.dfs.core.windows.net/webdata/` , kommer en server lös SQL-pool fråga returnera rader från mydata.txt. Den returnerar inte mydata2.txt och mydata3.txt eftersom de finns i en undermapp.
 
 ![Rekursiva data för externa tabeller](./media/develop-openrowset/folder-traversal.png)
 

@@ -8,12 +8,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 276afba62a26a53fe32f7aa9d47f42ada251d6b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 356c6043f1262d680aa22aa02a864412f1d37814
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102613059"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310367"
 ---
 # <a name="nvv3-series"></a>NVv3-serien
 
@@ -23,6 +23,7 @@ Varje GPU i NVv3-instanser levereras med en GRID-licens. Den här licensen ger d
 
 [Premium Storage](premium-storage-performance.md): stöds<br>
 [Premium Storage caching](premium-storage-performance.md): stöds<br>
+[Ultra disks](disks-types.md#ultra-disk): stöds ([Lär dig mer](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312) om tillgänglighet, användning och prestanda) <br>
 [Direktmigrering](maintenance-and-updates.md): stöds inte<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/24/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6bc45bb6eec9dbf46e039dd1e2c32197820bb09d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b260793cc3c0b5ac3ffce8fac909e2db8991c713
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626715"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307817"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Lägg till komplettera automatiskt och förslag till klient program med Azure Kognitiv sökning
 
@@ -67,7 +67,7 @@ Svaren är formade för parametrarna på begäran:
 
 + För automatisk komplettering ställer du in [autocompleteMode](/rest/api/searchservice/autocomplete#query-parameters) för att avgöra om text komplettering sker på en eller två villkor. 
 
-+ Ange [$Select](/rest/api/searchservice/suggestionse#query-parameters) för att returnera fält som innehåller unika eller särskiljande värden, t. ex. namn och beskrivning, för förslag. Undvik fält som innehåller dubblettvärden (till exempel en kategori eller stad).
++ Ange [$Select](/rest/api/searchservice/suggestions#query-parameters) för att returnera fält som innehåller unika eller särskiljande värden, t. ex. namn och beskrivning, för förslag. Undvik fält som innehåller dubblettvärden (till exempel en kategori eller stad).
 
 Följande ytterligare parametrar gäller för både Autoavsluta och förslag, men är kanske mer nödvändiga för förslag, särskilt när en förslags ställare innehåller flera fält.
 

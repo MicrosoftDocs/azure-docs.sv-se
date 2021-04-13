@@ -30,8 +30,8 @@ highlightedContent:
 productDirectory:
   title: Bläddra bland Azure-produkter
   items:
-    - title: Azure-percept
-      summary: Edge Intelligence från Silicon to service
+    - title: Azure Percept
+      summary: Edge-intelligens från silicon till tjänst
       imageSrc: ./media/index/azure-percept.svg
       azureCategories:
         - iot
@@ -71,8 +71,8 @@ productDirectory:
         - ai-machine-learning
         - analytics
       url: /azure/databricks/
-    - title: Hälso robot
-      summary: Ett hanterat tjänst syfte – byggt för utveckling av virtuella sjukvårds assistenter.
+    - title: Hälsorobot
+      summary: En hanterad tjänst som skapats för utveckling av virtuella vårdassistenter.
       imageSrc: media/index/health-bot-logo.svg
       azureCategories:
         - ai-machine-learning
@@ -408,7 +408,7 @@ productDirectory:
         - databases
         - iot
       url: cosmos-db/index.yml
-    - title: Azure-hanterad instans för Apache Cassandra
+    - title: Azure Managed Instance för Apache Cassandra
       summary: Automatisera distribution och skalning för hanterade Apache Cassandra-datacenter med öppen källkod
       imageSrc: ./media/index/managed-instance-apache-cassandra.svg
       azureCategories:
@@ -468,8 +468,8 @@ productDirectory:
         - compute
         - containers
       url: aks/index.yml
-    - title: Azure Quantum (för hands version)
-      summary: Upplev den Quantum påverkan idag i Azure
+    - title: Azure Quantum (förhandsversion)
+      summary: Uppleva kvantpåverkan i dag på Azure
       imageSrc: ./media/index/quantum.svg
       azureCategories:
         - compute
@@ -714,12 +714,6 @@ productDirectory:
       azureCategories:
         - developer-tools
       url: 'https://code.visualstudio.com/docs'
-    - title: Visual Studio Codespaces (förhandsversion)
-      summary: Du kommer åt molndrivna utvecklingsmiljöer överallt
-      imageSrc: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-      azureCategories:
-        - developer-tools
-      url: /visualstudio/online/overview/what-is-vsonline
     - title: Application Insights
       summary: 'Fullständig överskådlighet över ditt program, din infrastruktur och ditt nätverk'
       imageSrc: 'https://static.docs.com/ui/media/product/azure/application-insights.svg'
@@ -1097,7 +1091,7 @@ productDirectory:
         - migration
         - storage
       url: databox/index.yml
-    - title: Objekt ankare (förhands granskning)
+    - title: Object Anchors (förhandsversion)
       summary: Justera och fäst 3D-innehåll automatiskt till objekt i den fysiska världen
       imageSrc: ./media/index/object-anchors.svg
       azureCategories:
@@ -1204,8 +1198,8 @@ productDirectory:
       azureCategories:
         - networking
       url: load-balancer/index.yml
-    - title: Azure Route Server (för hands version)
-      summary: Förenkla drift hanteringen av dina nätverks enheter
+    - title: Azure Route Server (förhandsversion)
+      summary: Förenkla drifthanteringen av dina nätverksutrustning
       imageSrc: ./media/index/azure-route-server.svg
       azureCategories:
         - networking
@@ -1380,9 +1374,9 @@ additionalContent:
           url: /azure/china/
     - title: Partnerlösningar
       items:
-        - title: Azure-partner lösningar
-          summary: Integrerade partner lösningar som du kan använda i Azure för att förbättra din moln infrastruktur.
+        - title: Azure-partnerlösningar
+          summary: Integrerade partnerlösningar som du kan använda i Azure för att förbättra din molninfrastruktur.
           url: ./partner-solutions/overview.md
         - title: Kommersiell marknadsplats
-          summary: En online-marknadsplats med program och tjänster från oberoende program varu leverantörer (ISV).
+          summary: En marknadsplats online med program och tjänster från oberoende programvaruleverantörer (ISV).
           url: ./marketplace/index.yml

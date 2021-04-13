@@ -206,7 +206,7 @@
         - name: Ansluta Akka-dataströmmar till en händelsehubb
           href: event-hubs-kafka-akka-streams-tutorial.md
         - name: Vanliga frågor och svar – Event Hubs för Kafka
-          href: apache-kafka-frequently-asked-questions.md
+          href: apache-kafka-frequently-asked-questions.yml
     - name: Hantera och övervaka
       items:
         - name: Övervaka Event Hubs med Azure-övervakning
@@ -315,7 +315,7 @@
     - name: Utveckla dina färdigheter med Microsoft Learn
       href: /learn/browse/?products=azure-event-hubs
     - name: VANLIGA FRÅGOR OCH SVAR
-      href: event-hubs-faq.md
+      href: event-hubs-faq.yml
     - name: Azure-översikt
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Prissättning

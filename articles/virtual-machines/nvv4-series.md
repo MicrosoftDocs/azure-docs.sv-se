@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.author: vikancha
-ms.openlocfilehash: 152e25fec4ee7b6181e2da58a9a4b0562a918151
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d0f82565ec4010d03003ed902e9aba819e93bc3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102609200"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303193"
 ---
 # <a name="nvv4-series"></a>NVv4-serien 
 
@@ -23,6 +23,7 @@ De virtuella datorerna i NVv4-serien drivs av [AMD Radeon Instinct MI25](https:/
 [ACU](acu.md): 230-260<br>
 [Premium Storage](premium-storage-performance.md): stöds<br>
 [Premium Storage caching](premium-storage-performance.md): stöds<br>
+[Ultra disks](disks-types.md#ultra-disk): stöds ([Lär dig mer](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312) om tillgänglighet, användning och prestanda) <br>
 [Direktmigrering](maintenance-and-updates.md): stöds inte<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>

@@ -3,12 +3,12 @@ title: Skapa principer programmässigt
 description: Den här artikeln vägleder dig genom program mässigt skapa och hantera principer för Azure Policy med Azure CLI, Azure PowerShell och REST API.
 ms.date: 03/16/2021
 ms.topic: how-to
-ms.openlocfilehash: b4f15241799469da2e479cb758f648ec3131a149
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fb20509fe6d699050e0c98e82873ccdb6a0137b2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104598498"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313699"
 ---
 # <a name="programmatically-create-policies"></a>Skapa principer programmässigt
 
@@ -141,7 +141,7 @@ Använd följande procedur för att skapa en princip definition.
 
    Ersätt föregående {subscriptionId} med ID: t för din prenumeration eller {managementGroupId} med ID: t för din [hanterings grupp](../../management-groups/overview.md).
 
-   Mer information om frågans struktur finns i [Azure policy definitioner – skapa eller uppdatera](/rest/api/resources/policydefinitions/createorupdate) och [princip definitioner – skapa eller uppdatera i hanterings gruppen](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
+   Mer information om frågans struktur finns i [Azure policy definitioner – skapa eller uppdatera](/rest/api/policy/policydefinitions/createorupdate) och [princip definitioner – skapa eller uppdatera i hanterings gruppen](/rest/api/policy/policydefinitions/createorupdateatmanagementgroup)
 
 Använd följande procedur för att skapa en princip tilldelning och tilldela princip definitionen på resurs grupps nivå.
 

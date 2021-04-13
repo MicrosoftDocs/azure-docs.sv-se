@@ -10,25 +10,36 @@ ms.topic: reference
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 03/23/2021
-ms.openlocfilehash: fa21acc09858f4468e53788428e4928dc381a94e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/09/2021
+ms.openlocfilehash: 1d58f79d0fe8accc728c4484dd5d92159836aa88
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107864"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305148"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Resurs begränsningar för elastiska pooler med vCore inköps modell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Den här artikeln innehåller detaljerade resurs gränser för Azure SQL Database elastiska pooler och databaser i pooler med hjälp av vCore inköps modell.
 
-För inköps modell gränser för DTU, se [SQL Database gräns för DTU-resurs-elastiska pooler](resource-limits-dtu-elastic-pools.md).
+* För inköps modell gränser för DTU för enskilda databaser på en server, se [Översikt över resurs gränser på en server](resource-limits-logical-server.md).
+* För resurs gränser för DTU-inköps modeller för Azure SQL Database, se [DTU-resurs begränsar enskilda databaser](resource-limits-dtu-single-databases.md) och [DTU-resurs begränsar elastiska pooler](resource-limits-dtu-elastic-pools.md).
+* För vCore resurs gränser, se [vCore Resource Limits-Azure SQL Database](resource-limits-vcore-single-databases.md) [-och vCore-resurs gränser-elastiska pooler](resource-limits-vcore-elastic-pools.md).
+* Mer information om olika inköps modeller finns i [inköps modeller och tjänst nivåer](purchasing-models.md).
 
 > [!IMPORTANT]
 > Under vissa omständigheter kan du behöva krympa en databas för att frigöra utrymme som inte används. Mer information finns i [Hantera fil utrymme i Azure SQL Database](file-space-manage.md).
 
-Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings belopp med hjälp av [Azure Portal](elastic-pool-manage.md#azure-portal), [POWERSHELL](elastic-pool-manage.md#powershell), [Azure CLI](elastic-pool-manage.md#azure-cli)eller [REST API](elastic-pool-manage.md#rest-api).
+Varje skrivskyddad replik har sina egna resurser, till exempel virtuella kärnor, minne, data-IOPS, TempDB, arbetare och sessioner. Alla skrivskyddade repliker omfattas av resurs begränsningarna som beskrivs längre fram i den här artikeln.
+
+Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings belopp med:
+
+* [Transact-SQL](elastic-pool-scale.md) via [Alter Database](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database)
+* [Azure-portalen](elastic-pool-manage.md#azure-portal)
+* [PowerShell](elastic-pool-manage.md#powershell)
+* [Azure CLI](elastic-pool-manage.md#azure-cli)
+* [REST-API](elastic-pool-manage.md#rest-api)
 
 > [!IMPORTANT]
 > Information om skalning och överväganden finns i [skala en elastisk pool](elastic-pool-scale.md).

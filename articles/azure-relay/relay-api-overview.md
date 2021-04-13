@@ -4,12 +4,12 @@ description: 'Den här artikeln innehåller en översikt över tillgängliga Azu
 ms.topic: article
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: 98bbb1ecc7e870ff9b7687284e7087d44375d275
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 391bd74f2bce8721b6d6359f3990af494277aa45
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88935729"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313002"
 ---
 # <a name="available-relay-apis"></a>Tillgängliga relä-API: er
 
@@ -49,4 +49,4 @@ Information om dessa moduler finns i [Azure-relä-Node GitHub-](https://github.c
 
 Om du vill veta mer om Azure Relay går du till följande länkar:
 * [Vad är Azure Relay?](relay-what-is-it.md)
-* [Vanliga frågor och svar om Relay](relay-faq.md)
+* [Vanliga frågor och svar om Relay](relay-faq.yml)

@@ -2,13 +2,13 @@
 title: Skapa & distribuera resurs grupps projekt i Visual Studio
 description: Använd Visual Studio för att skapa ett Azure-resursgruppsprojekt och distribuera resurserna till Azure.
 ms.topic: conceptual
-ms.date: 10/16/2019
-ms.openlocfilehash: f1a06a3e89c5fd2ea8906ff9a438c170f135d6ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 4c0e19042506e0cf1772398b0a02b81f0245b1c7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98704422"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306984"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Skapa och distribuera Azure-resursgrupper via Visual Studio
 
@@ -41,13 +41,13 @@ I det här avsnittet skapar du ett Azure-resurs grupps projekt med en mall för 
 
     Eftersom du har valt webbappens mall visas följande filer:
 
-   | Filnamn | Beskrivning |
+   | Filnamn | Description |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |Ett PowerShell-skript som kör PowerShell-kommandon för distribution till Azure Resource Manager. Visual Studio använder PowerShell-skriptet för att distribuera mallen. |
    | WebSite.jspå |Resource Manager-mallen som definierar infrastrukturen som du vill distribuera till Azure, och de parametrar som du kan ange under distributionen. Den definierar även beroendena mellan resurserna så att resurserna distribueras i rätt ordning av Resource Manager. |
-   | WebSite.parameters.jspå |En parameterfil med värden som krävs av mallen. Du skickar in parametervärden för att anpassa varje distribution. |
+   | WebSite.parameters.jspå |En parameterfil med värden som krävs av mallen. Du skickar in parametervärden för att anpassa varje distribution. Observera att **Bygg åtgärd** har angetts till **innehåll**. Om du lägger till fler parameterstyrda filer måste du se till att build-åtgärden har angetts till **innehåll**. |
 
-    Alla distributionsprojekt för resursgrupper innehåller dessa grundläggande filer. Andra projekt kan innehålla ytterligare filer som ger stöd för andra funktioner.
+    Alla distributionsprojekt för resursgrupper innehåller dessa grundläggande filer. Andra projekt kan ha fler filer som stöd för andra funktioner.
 
 ## <a name="customize-resource-manager-template"></a>Anpassa Resource Manager-mall
 

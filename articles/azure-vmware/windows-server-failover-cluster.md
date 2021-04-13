@@ -1,18 +1,21 @@
 ---
-title: Windows Server-redundanskluster på Azure VMware-virtuellt San med interna delade diskar
-description: Konfigurera WSFC (Windows Server failover Cluster) i Azure VMware-lösningen och dra nytta av lösningar som kräver WSFC-funktioner.
+title: Konfigurera Windows Server-redundanskluster på Azure VMware-lösning virtuellt San
+description: Konfigurera WSFC (Windows Server failover Cluster) på Azure VMware-lösningen virtuellt San med interna delade diskar.
 ms.topic: how-to
-ms.date: 03/09/2021
-ms.openlocfilehash: 8162e15675d8bbde9267126c785f152d1cb860bd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/09/2021
+ms.openlocfilehash: f1bc8199eb0d3317e4b6e07a6a297b4ebfe95cc8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562247"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308697"
 ---
-# <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Windows Server-redundanskluster på Azure VMware-virtuellt San med interna delade diskar
+# <a name="configure-windows-server-failover-cluster-on-azure-vmware-solution-vsan"></a>Konfigurera Windows Server-redundanskluster på Azure VMware-lösning virtuellt San
 
-I den här artikeln går vi igenom hur du konfigurerar Windows Server-redundanskluster på Azure VMware-lösning. Implementeringen i den här artikeln är avsedd för koncept bevis och pilot syfte. Vi rekommenderar att du använder en konfiguration för kluster i en ruta (CIB) tills placerings principerna är tillgängliga.
+I den här artikeln får du lära dig hur du konfigurerar Windows Server-redundanskluster på Azure VMware-virtuellt San med interna delade diskar. 
+
+>[!IMPORTANT]
+>Implementeringen i den här artikeln är avsedd för koncept bevis och pilot syfte. Vi rekommenderar att du använder en konfiguration för kluster i en ruta (CIB) tills placerings principerna blir tillgängliga.
 
 Windows Server failover Cluster (WSFC), som tidigare kallades Microsoft Service Cluster service (MSCS), är en funktion i operativ systemet Windows Server (OS). WSFC är en verksamhets kritisk funktion och för många program krävs. Till exempel krävs WSFC för följande konfigurationer:
 
@@ -43,7 +46,7 @@ Azure VMware-lösningen ger inbyggt stöd för virtualiserad WSFC. Den har stöd
 
 Följande diagram illustrerar arkitekturen för virtuella WSFC-noder i ett privat moln i Azure VMware-lösningar. Den visar var Azure VMware-lösningen finns, inklusive virtuella WSFC-servrar (röd ruta) i förhållande till den bredare Azure-plattformen. Det här diagrammet illustrerar en typisk hubb-eker-arkitektur, men en liknande konfiguration är möjlig med användningen av Azure Virtual WAN. Båda erbjuder allt värde som andra Azure-tjänster kan ta dig av.
 
-[![Diagram som visar arkitekturen för virtuella WSFC-noder i ett privat moln i Azure VMware-lösningen.](media/windows-server-failover-cluster/windows-server-failover-architecture.png)](media/windows-server-failover-cluster/windows-server-failover-architecture.png#lightbox)
+:::image type="content" source="media/windows-server-failover-cluster/windows-server-failover-architecture.svg" alt-text="Arkitektur diagram för virtuella Windows Server-redundanskluster i ett privat moln i Azure VMware-lösningen." border="false" lightbox="media/windows-server-failover-cluster/windows-server-failover-architecture.svg":::
 
 ## <a name="supported-configurations"></a>Konfigurationer som stöds
 

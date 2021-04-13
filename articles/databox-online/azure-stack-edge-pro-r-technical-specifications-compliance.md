@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/24/2021
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: aa1b861555cff65c9e432ea711af3f7c6e410625
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3b323bf920bd884e821d03bf2def37471775e720
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109173"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312713"
 ---
 # <a name="azure-stack-edge-pro-r-technical-specifications"></a>Tekniska specifikationer för Azure Stack Edge Pro R
 
@@ -24,41 +24,44 @@ Maskin varu komponenterna i din Azure Stack Edge Pro R-enhet följer de tekniska
 
 Azure Stack Edge Pro R-enheten har följande specifikationer för beräkning och minne:
 
-| Specifikation       | Värde                  |
-|---------------------|------------------------|
-| Processor    | 2 X Intel Xeon silver 4114 CPU<br>20 phsyical kärnor (10 per CPU)<br>40 logiska kärnor (virtuella processorer) (20 per CPU)  |
-| Minne              | 256 GB RAM-minne (2666 MT/s)     |
-
+| Specifikation  | Värde                                             |
+|----------------|---------------------------------------------------|
+| Processor typ       | Dubbla Intel Xeon silver 4114-CPU                   |
+| CPU: RAW       | 20 total kärnor, 40 totalt virtuella processorer                    |
+| PROCESSOR: användbart    | 32 virtuella processorer                                          |
+| Minnes typ    | Dell-kompatibel 16 GB RDIMM, 2666 MT/s, dubbel rangordning |
+| Minne: RAW    | 256 GB RAM-minne (16 x 16 GB)                           |
+| Minne: användbart | 230 GB RAM                                        |
 
 ## <a name="compute-acceleration-specifications"></a>Specifikationer för beräknings acceleration
 
 En GPU (Graphics Processing Unit) ingår på varje enhet som möjliggör Kubernetes, djup inlärning och maskin inlärnings scenarier.
 
-| Specifikation           | Värde                  |
+| Specifikation           | Värde                      |
 |-------------------------|----------------------------|
-| GPU   | En nVidia T4-GPU <br> Mer information finns i [NVIDIA-T4](https://www.nvidia.com/en-us/data-center/tesla-t4/).| 
+| GPU   | En nVidia T4-GPU <br> Mer information finns i [NVIDIA-T4](https://www.nvidia.com/en-us/data-center/tesla-t4/). | 
 
 ## <a name="power-supply-unit-specifications"></a>Specifikationer för strömförsörjnings enhet
 
 Azure Stack Edge Pro R-enheten har två 100-240 V-enheter för strömförsörjning (PSUs) med högpresterande fläktar. De två PSUs ger en redundant energi konfiguration. Om ett PSU Miss lyckas fortsätter enheten att fungera normalt på den andra PSU tills den felaktiga modulen har ersatts. I följande tabell visas de tekniska specifikationerna för PSUs.
 
-| Specifikation           | 550 W PSU                  |
-|-------------------------|----------------------------|
-| Maximal uteffekt    | 550 W                      |
-| Värme avledning (max)                   | 2891 BTU/timme                |
-| Frekvens               | 50/60 Hz                   |
-| Val av spännings intervall | Automatisk mellan: 115-230 V AC |
-| Hot pluggable           | Ja                        |
+| Specifikation              | 550 W PSU                  |
+|----------------------------|----------------------------|
+| Maximal uteffekt       | 550 W                      |
+| Värme avledning (max) | 2891 BTU/timme                |
+| Frekvens                  | 50/60 Hz                   |
+| Val av spännings intervall    | Automatisk mellan: 115-230 V AC |
+| Hot pluggable              | Yes                        |
 
 ## <a name="network-specifications"></a>Nätverks specifikationer
 
-Azure Stack Edge Pro R-enheten har fyra nätverks gränssnitt, PORT1-PORT4. 
+Azure Stack Edge Pro R-enheten har fyra nätverks gränssnitt, PORT1-PORT4.
 
 
-|Specifikation  |Beskrivning                              |
+|Specifikation         |Description                       |
 |----------------------|----------------------------------|
-|Nätverksgränssnitt    |**2 x 1 GbE RJ45** <br> PORT 1 används som hanterings gränssnitt för inledande installation och är statisk som standard. När den första installationen är klar kan du använda gränssnittet för data med valfri IP-adress. Men vid återställning återgår gränssnittet till statisk IP. <br>Den andra gränssnitts porten 2 är användaren konfigurerbar, kan användas för data överföring och är DHCP som standard.     |
-|Nätverksgränssnitt    |**2 x 25 GbE-SFP28** <br> Dessa data gränssnitt PORT 3 och PORT 4 kan konfigureras som DHCP (standard) eller statiskt.            |
+|Nätverksgränssnitt    |**2 x 1 GbE RJ45** <br> PORT 1 används som hanterings gränssnitt för inledande installation och är statisk som standard. När den första installationen är klar kan du använda gränssnittet för data med valfri IP-adress. Men vid återställning återgår gränssnittet till statisk IP. <br>Det andra gränssnittet, PORT 2, som kan konfigureras av användaren, kan användas för data överföring och är DHCP som standard. |
+|Nätverksgränssnitt    |**2 x 25 GbE-SFP28** <br> Dessa data gränssnitt på PORT 3 och PORT 4 kan konfigureras som DHCP (standard) eller statiskt. |
 
 Din Azure Stack Edge Pro R-enhet har följande nätverks maskin vara:
 
@@ -69,27 +72,27 @@ Din Azure Stack Edge Pro R-enhet har följande nätverks maskin vara:
 | Parameter           | Description                 |
 |-------------------------|----------------------------|
 | Model    | ConnectX®-4 Lx EN network interface card                      |
-| Model Description               | 25GbE dual-port SFP28; PCIe3.0 x8; ROHS R6                    |
+| Model Description               | 25 GbE dual-port SFP28; PCIe3.0 x8; ROHS R6                    |
 | Device Part Number (XR2) | MCX4421A-ACAN  |
 | PSID (R640)           | MT_2420110034                         |-->
 <!-- confirm w/ Ravi what is this-->
 
-En fullständig lista över kablar, växlar och Sänd tagare som stöds för dessa nätverkskort finns på: [Mellanox dual port 25G ConnectX-4 Channel-kompatibla produkter](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).
+En fullständig lista över kablar, växlar och Sänd tagare som stöds för dessa nätverkskort finns i [Mellanox dual port 25G ConnectX-4 Channel-kompatibla produkter](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).
 
 ## <a name="storage-specifications"></a>Storage-specifikationer
 
-Azure Stack Edge Pro R-enheter har 8 data diskar och 2 M. 2 SATA-diskar som fungerar som operativ system diskar. Mer information finns på [M. 2 SATA-diskar](https://en.wikipedia.org/wiki/M.2).
+Azure Stack Edge Pro R-enheter har åtta data diskar och två M. 2 SATA-diskar som fungerar som operativ system diskar. Mer information finns på [M. 2 SATA-diskar](https://en.wikipedia.org/wiki/M.2).
 
 #### <a name="storage-for-1-node-device"></a>Lagring för 1-nod-enhet
 
-I följande tabell finns information om lagrings kapaciteten för 1-Node-enheten.
+Följande tabell innehåller information om lagrings kapaciteten för 1-Node-enheten.
 
 |     Specifikation                          |     Värde             |
 |--------------------------------------------|-----------------------|
 |    Antal solid state-hårddiskar (SSD)     |    8                  |
 |    Kapacitet för enskild SSD                     |    8 TB               |
 |    Total kapacitet                          |    64 TB              |
-|    Total användbar kapacitet *                  |    ~ 42 TB          |
+|    Total användbar kapacitet *                  |    ~ 42 TB            |
 
 **En del utrymme är reserverat för internt bruk.*
 
@@ -148,7 +151,7 @@ Enhetens vikt beror på konfigurationen av kabinett filen.
 
 |     Hölje                                 |     Vikt          |
 |-----------------------------------------------|---------------------|
-|    Total vikt på 1-nods enhet + robust hölje med slut punkter     |    ~ 114 kg.          |
+|    Total vikt på 1-nods enhet + robust hölje med slut punkter     |    ~ 114 kg          |
 
 <!--#### For the 4-node system
 

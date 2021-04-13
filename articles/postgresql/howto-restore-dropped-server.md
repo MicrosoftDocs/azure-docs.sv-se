@@ -1,49 +1,49 @@
 ---
-title: Återställa en borttagen Azure Database for PostgreSQL Server
-description: Den här artikeln beskriver hur du återställer en borttagen server i Azure Database for PostgreSQL att använda Azure Portal.
+title: Återställa en bort Azure Database for PostgreSQL server
+description: Den här artikeln beskriver hur du återställer en bort ignorerad server i Azure Database for PostgreSQL med hjälp av Azure Portal.
 author: Bashar-MSFT
 ms.author: bahusse
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 591f01004cfba247112f702625ab05ddc0aaede3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b5bb9fd6e3d34fc4a6b0ae90a2cd76fc84e9ce1
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97652933"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366529"
 ---
-# <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>Återställa en borttagen Azure Database for PostgreSQL Server
+# <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>Återställa en bort Azure Database for PostgreSQL server
 
-När en server släpps kan säkerhets kopian av databas servern behållas upp till fem dagar i tjänsten. Säkerhets kopian av databasen kan nås och endast återställas från den Azure-prenumeration där servern ursprungligen befanns. Följande rekommenderade steg kan följas för att återställa en släppt PostgreSQL-Server-resurs inom 5 dagar från tidpunkten för borttagning av servern. De rekommenderade stegen fungerar bara om säkerhetskopian fortfarande är tillgänglig och inte har tagits bort från systemet. 
+När en server tas bort kan säkerhetskopian av databasservern behållas i upp till fem dagar i tjänsten. Säkerhetskopian av databasen kan endast nås och återställas från den Azure-prenumeration där servern ursprungligen fanns. Följande rekommenderade steg kan följas för att återställa en borttagen PostgreSQL-serverresurs inom 5 dagar från tidpunkten för serverborttagningen. De rekommenderade stegen fungerar bara om säkerhetskopian fortfarande är tillgänglig och inte har tagits bort från systemet. 
 
 ## <a name="pre-requisites"></a>Förutsättningar
-Om du vill återställa en borttagen Azure Database for PostgreSQL Server, behöver du följande:
-- Namn på Azure-prenumeration som är värd för den ursprungliga servern
+Om du vill återställa en Azure Database for PostgreSQL server behöver du följande:
+- Azure-prenumerationsnamn som är värd för den ursprungliga servern
 - Plats där servern skapades
 
 ## <a name="steps-to-restore"></a>Steg för att återställa
 
-1. Bläddra till [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_ActivityLog/ActivityLogBlade). Välj tjänsten **Azure Monitor** och välj sedan **aktivitets logg**.
+1. Bläddra till [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_ActivityLog/ActivityLogBlade). Välj **Azure Monitor** och sedan **Aktivitetslogg.**
 
-2. I aktivitets loggen klickar du på **Lägg till filter** som visas och anger följande filter för följande
+2. I aktivitetsloggen klickar du **på Lägg till filter** så som det visas och anger följande filter för följande
 
-    - **Prenumeration** = prenumerationen som är värd för den borttagna servern
-    - **Resurs typ** = Azure Database for PostgreSQL servrar (Microsoft. DBforPostgreSQL/servers)
-    - **Åtgärd** = ta bort postgresql-server (Microsoft. DBforPostgreSQL/servers/Delete)
+    - **Prenumeration** = din prenumeration som är värd för den borttagna servern
+    - **Resurstyp** = Azure Database for PostgreSQL servrar (Microsoft.DBforPostgreSQL/servers)
+    - **Åtgärd** = Ta bort PostgreSQL-server (Microsoft.DBforPostgreSQL/servers/delete)
  
-    ![Aktivitets logg filtrerad för borttagning av PostgreSQL-server åtgärd](./media/howto-restore-dropped-server/activity-log-azure.png)
+    ![Aktivitetslogg filtrerad för att ta bort PostgreSQL-serveråtgärd](./media/howto-restore-dropped-server/activity-log-azure.png)
 
-3. Välj händelsen **ta bort postgresql-server** och välj sedan **fliken JSON**. Kopiera `resourceId` `submissionTimestamp` attributen och i JSON-utdata. ResourceId har följande format: `/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TargetResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/deletedserver` .
+3. Välj händelsen Delete PostgreSQL Server (Ta bort **PostgreSQL-server)** och välj sedan **fliken JSON**. Kopiera `resourceId` attributen `submissionTimestamp` och i JSON-utdata. resourceId har följande format: `/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TargetResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/deletedserver` .
 
 
- 4. Bläddra till sidan PostgreSQL [skapa Server REST API](/rest/api/PostgreSQL/servers/create) och välj fliken **testa den** markerad i grönt. Logga in med ditt Azure-konto.
+ 4. Bläddra till sidan Skapa server för PostgreSQL [REST API och](/rest/api/PostgreSQL/servers/create) välj **fliken Prova** markerad i grönt. Logga in med ditt Azure-konto.
 
- 5. Ange **resourceGroupName**, **servername** (borttaget Server namn), **SUBSCRIPTIONID** -egenskaper baserat på JSON-attributvärdet resourceId som samlats in i föregående steg 3. Egenskapen API-version är förifylld och kan vara kvar, som du ser i följande bild.
+ 5. Ange **resourceGroupName**, **serverName** (borttagna servernamn), **subscriptionId-egenskaper,** baserat på resourceId-attributets JSON-värde som avbildades i föregående steg 3. Api-versionsegenskapen är förifylld och kan lämnas som den är, som du ser i följande bild.
 
     ![Skapa server med REST API](./media/howto-restore-dropped-server/create-server-from-rest-api-azure.png)
   
- 6. Rulla nedan och klistra in följande och ersätt den "borttagna Server platsen", "submissionTimestamp" och "resourceId". För "restorePointInTime" anger du värdet "submissionTimestamp" minus **15 minuter** för att se till att kommandot inte fel uppstår.
+ 6. Rulla nedan i avsnittet Begärandetext och klistra in följande ersätter "Dropped server Location" (t.ex. CentralUS, EastUS osv.), "submissionTimestamp" och "resourceId". För "restorePointInTime" anger du värdet "submissionTimestamp" minus **15** minuter för att se till att kommandot inte får fel.
     
     ```json
     {
@@ -57,18 +57,18 @@ Om du vill återställa en borttagen Azure Database for PostgreSQL Server, behö
     }
     ```
 
-    Om den aktuella tiden till exempel är 2020-11-02T23:59:59.0000000 Z rekommenderar vi minst 15 minuter innan återställnings punkt i tid 2020-11-02T23:44:59.0000000 Z.
+    Om den aktuella tiden till exempel är 2020-11-02T23:59:59.0000000Z rekommenderar vi minst 15 minuter före återställningspunkten i tid 2020-11-02T23:44:59.0000000Z.
 
     > [!Important]
-    > Det finns en tids gräns på fem dagar efter att servern släpptes. Efter fem dagar förväntas ett fel eftersom det inte går att hitta säkerhets kopierings filen.
+    > Det finns en tidsgräns på fem dagar efter att servern togs bort. Efter fem dagar förväntas ett fel eftersom det inte går att hitta säkerhetskopian.
     
-7. Om du ser svars koden 201 eller 202 har återställnings förfrågan skickats. 
+7. Om svarskoden 201 eller 202 visas skickas återställningsbegäran. 
 
-    Det kan ta tid att skapa servern beroende på databasens storlek och de beräknings resurser som har allokerats på den ursprungliga servern. Återställnings statusen kan övervakas från aktivitets loggen genom filtrering för 
+    Det kan ta tid att skapa servern beroende på databasens storlek och beräkningsresurser som etablerats på den ursprungliga servern. Återställningsstatusen kan övervakas från aktivitetsloggen genom filtrering för 
    - **Prenumeration** = din prenumeration
-   - **Resurs typ** = Azure Database for PostgreSQL servrar (Microsoft. DBforPostgreSQL/servers) 
-   - **Åtgärd** = uppdatera postgresql-server skapa
+   - **Resurstyp** = Azure Database for PostgreSQL servrar (Microsoft.DBforPostgreSQL/servers) 
+   - **Åtgärd** = Uppdatera PostgreSQL Server Create
 
 ## <a name="next-steps"></a>Nästa steg
-- Om du försöker återställa en server inom fem dagar och fortfarande får ett fel efter att ha åtgärdat de steg som beskrivs ovan, öppnar du en support incident för att få hjälp. Om du försöker återställa en borttagen Server efter fem dagar förväntas ett fel eftersom det inte går att hitta säkerhets kopierings filen. Öppna inte ett support ärende i det här scenariot. Support teamet kan inte ge någon hjälp om säkerhets kopian tas bort från systemet. 
-- För att förhindra oavsiktlig borttagning av servrar rekommenderar vi starkt att du använder [resurs lås](https://techcommunity.microsoft.com/t5/azure-database-for-PostgreSQL/preventing-the-disaster-of-accidental-deletion-for-your-PostgreSQL/ba-p/825222).
+- Om du försöker återställa en server inom fem dagar och fortfarande får ett felmeddelande efter att ha följt stegen som beskrivs ovan, kan du öppna ett supportincident för att få hjälp. Om du försöker återställa en bort ignorerad server efter fem dagar förväntas ett fel eftersom det inte går att hitta säkerhetskopian. Öppna inte en supportbiljett i det här scenariot. Supportteamet kan inte ge någon hjälp om säkerhetskopian tas bort från systemet. 
+- För att förhindra oavsiktlig borttagning av servrar rekommenderar vi starkt att du använder [resurslås.](https://techcommunity.microsoft.com/t5/azure-database-for-PostgreSQL/preventing-the-disaster-of-accidental-deletion-for-your-PostgreSQL/ba-p/825222)

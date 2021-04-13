@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/02/2020
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 8b36bb34f4c9081d807998cb8287797443625a6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91bb558d47e56ebbcbdf25b0276c2a247ec81b47
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96460295"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312645"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Tekniska specifikationer för Azure Stack Edge Pro
 
@@ -23,16 +23,21 @@ Maskin varu komponenterna i din Microsoft Azure Stack Edge Pro-enhet följer de 
 
 Azure Stack Edge Pro-enheten har följande specifikationer för beräkning och minne:
 
-| Specifikation           | Värde                  |
-|-------------------------|----------------------------|
-| Processor    | 2 X 10 kärnor CPU Intel Xeon silver 4114 2,2 G                    |
-| Minne              | 128 GB RAM-minne (8x 16 GB RDIMM)                 |
+| Specifikation           | Värde                             |
+|-------------------------|-----------------------------------|
+| Processor typ                | Dubbla Intel Xeon silver 4114 2,2 G |
+| CPU: RAW                | 20 total kärnor, 40 totalt virtuella processorer    |
+| PROCESSOR: användbart             | 32 virtuella processorer                          |
+| Minnes typ             | 8 x 16 GB RDIMM                   |
+| Minne: RAW             | 128 GB RAM-minne (8 x 16 GB)           |
+| Minne: användbart          | 102 GB RAM                        |
+
 
 ## <a name="fpga-specifications"></a>FPGA-specifikationer
 
 En fält programmerbar grind mat ris (FPGA) ingår på varje Azure Stack Edge Pro-enhet som möjliggör Machine Learning-scenarier (ML).
 
-| Specifikation           | Värde                  |
+| Specifikation           | Värde                      |
 |-------------------------|----------------------------|
 | FPGA   | Intel Arria 10 <br> Tillgängliga DNN-modeller (djup neurala Network) är desamma som de som [stöds av moln FPGA instanser](../machine-learning/how-to-deploy-fpga-web-service.md#fpga-support-in-azure).|
 
@@ -42,10 +47,10 @@ Azure Stack Edge Pro-enheten har två 100-240 V-enheter för strömförsörjning
 
 | Specifikation           | 750 W PSU                  |
 |-------------------------|----------------------------|
-| Maximal uteffekt    | 750 W                     |
+| Maximal uteffekt    | 750 W                      |
 | Frekvens               | 50/60 Hz                   |
 | Val av spännings intervall | Automatisk mellan: 100-240 V AC |
-| Hot pluggable           | Ja                        |
+| Hot pluggable           | Yes                        |
 
 ### <a name="azure-stack-edge-pro-power-cord-specifications-by-region"></a>Specifikationer för Azure Stack Edge Pro-ström sladd per region
 
@@ -60,13 +65,13 @@ The following table lists the typical power consumption data (actual values may 
 
 Din Azure Stack Edge Pro-enhet har 6 nätverks gränssnitt, PORT1-PORT6.
 
-| Specifikation           | Beskrivning                 |
+| Specifikation           | Description                 |
 |-------------------------|----------------------------|
 |  Nätverksgränssnitt    | 2 x 1 GbE-gränssnitt – 1 för hantering som inte kan konfigureras av användaren används för installationen. Det andra gränssnittet kan konfigureras av användaren, kan användas för dataöverföring och är DHCP som standard. <br>2 x 25 GbE-gränssnitt – dessa kan även fungera som 10 GbE-gränssnitt. Dessa datagränssnitt kan konfigureras av användaren som DHCP (standard) eller statiska. <br> 2 x 25 GbE-gränssnitt – dessa datagränssnitt kan konfigureras av användaren som DHCP (standard) eller statiska.                  |
 
-De nätverkskort som används är: 
+De nätverkskort som används är:
 
-| Specifikation           | Beskrivning                 |
+| Specifikation           | Description                 |
 |-------------------------|----------------------------|
 |Network dotter-kort (rNDC) |QLogic FastLinQ 41264 med dubbel port 25GbE SFP +, dubbel port 1GbE, rNDC|
 |PCI-nätverkskort |QLogic FastLinQ 41262 Zwei ports 25Gbit/s SFP28 adapter|
@@ -82,7 +87,7 @@ Azure Stack Edge Pro-enheter har 9 X 2,5 "NVMe-SSD, med en kapacitet på 1,6 TB.
 |    Antal solid state-hårddiskar (SSD)     |    8                  |
 |    Kapacitet för enskild SSD                     |    1,6 TB             |
 |    Total kapacitet                          |    12,8 TB            |
-|    Total användbar kapacitet *                  |    ~ 12,5 TB            |
+|    Total användbar kapacitet *                  |    ~ 12,5 TB          |
 
 **En del utrymme är reserverat för internt bruk.*
 
@@ -94,19 +99,19 @@ I följande tabeller visas de olika specifikationerna för inne slutning för di
 
 I följande tabell visas storleken på höljet i millimeter och tum.
 
-|     Hölje     |     Millimeter     |     Mm     |
-|-------------------|---------------------|----------------|
-|    Höjd         |    44,45            |    1,75 "          |
-|    Bredd          |    434,1           |    17,09 "          |
-|    Längd          |    740,4           |    29,15 "          |
+|     Hölje     |     Millimeter    |     Mm     |
+|-------------------|--------------------|----------------|
+|    Höjd         |    44,45           |    1,75 "       |
+|    Bredd          |    434,1           |    17,09 "      |
+|    Längd         |    740,4           |    29,15 "      |
 
 I följande tabell visas måtten för leverans paketet i millimeter och tum.
 
-|     Paket     |     Millimeter     |     Mm     |
+|     Paket       |     Millimeter     |     Mm     |
 |-------------------|---------------------|----------------|
-|    Höjd         |    311,2            |    12,25 "          |
-|    Bredd          |    642,8          |    25,31 "          |
-|    Längd          |   1 051,1          |    41,38 "          |
+|    Höjd         |    311,2            |    12,25 "      |
+|    Bredd          |    642,8            |    25,31 "      |
+|    Längd         |   1 051,1           |    41,38 "      |
 
 ### <a name="enclosure-weight"></a>Kabinett vikt
 

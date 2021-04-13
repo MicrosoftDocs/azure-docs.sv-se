@@ -35,6 +35,8 @@
           href: roles.md
         - name: Hantera åtkomst efter resurs
           href: resource-context-rbac.md
+        - name: Skydda MSSP intellektuell egendom
+          href: mssp-protect-intellectual-property.md
     - name: Avancerad attackidentifiering i flera faser
       href: fusion.md
     - name: Automation (SOAR)

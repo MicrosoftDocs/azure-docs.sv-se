@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 774eb05ae43e393db3d11e8e21a427736614809b
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: a37b740333e599d19248ffa9b21be3e4d6fe78b3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285118"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306304"
 ---
 # <a name="language-support-for-computer-vision"></a>Språk stöd för Visuellt innehåll
 
@@ -25,7 +25,7 @@ Vissa funktioner i Visuellt innehåll stöd för flera språk. de funktioner som
 
 Visuellt innehålls OCR-API: er stöder flera språk. De kräver inte att du anger en språkkod. Mer information finns i [Översikt över OCR (optisk tecken läsning)](overview-ocr.md) .
 
-|Språk| Språkkod | OCR-API | Läsa 3.0/3.1 | Läs v 3.2-förhands granskning |
+|Språk| Språkkod | OCR-API | Läsa 3.0/3.1 | Läsa v 3.2 |
 |:-----|:----:|:-----:|:---:|:---:|
 |Afrikaans|`af`| | |✔ |
 |Albanska |`sq`| | |✔ |
@@ -46,7 +46,7 @@ Visuellt innehålls OCR-API: er stöder flera språk. De kräver inte att du ang
 |Danska | `da` |✔ | |✔ |
 |Nederländska | `nl` |✔ |✔ |✔ |
 |Engelska | `en` |✔ |✔ |✔ |
-|Estniska  |`crh`| | |✔ |
+|Estniska  |`et`| | |✔ |
 |Fijian |`fj`| | |✔ |
 |Filipino  |`fil`| | |✔ |
 |Finska | `fi` |✔ | |✔ |
@@ -113,7 +113,7 @@ Visuellt innehålls OCR-API: er stöder flera språk. De kräver inte att du ang
 
 Vissa åtgärder för API: et [analys-image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) kan returnera resultat på andra språk, som anges med `language` Frågeparametern. Andra åtgärder returnerar resultat på engelska oavsett vilket språk som anges, och andra genererar ett undantag för språk som inte stöds. Åtgärder anges med `visualFeatures` `details` parametrarna och, se en lista över alla [](overview-image-analysis.md) åtgärder som du kan utföra med bild analys.
 
-|Språk | Språkkod | Kategorier | Taggar | Beskrivning | Vuxen | Varumärken | Färg | Ansikten | ImageType | Objekt | Kändisar | Landmärken |
+|Språk | Språkkod | Kategorier | Taggar | Description | Vuxen | Varumärken | Färg | Ansikten | ImageType | Objekt | Kändisar | Landmärken |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Kinesiska | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Engelska | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

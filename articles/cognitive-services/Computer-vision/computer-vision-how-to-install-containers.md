@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 04/09/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: lokal, OCR, Docker, container
-ms.openlocfilehash: 53d59822b378a658f8b6c048de1a32db53a795d1
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 1b4af5dddf8878118bc5f222532cc9e2d0f9dd66
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285730"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308790"
 ---
-# <a name="install-read-ocr-docker-containers-preview"></a>Installera Läs OCR Docker-behållare (förhands granskning) 
+# <a name="install-read-ocr-docker-containers"></a>Installera Läs OCR Docker-behållare
 
 [!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
 
@@ -27,12 +27,9 @@ Med containrar kan du köra API:erna för Visuellt innehåll i din egen miljö. 
 
 Med *Read* OCR-behållaren kan du extrahera utskrift och handskriven text från bilder och dokument med stöd för JPEG-, PNG-, BMP-, PDF-och TIFF-filformat. Mer information finns i [instruktionen Read API instruktion](Vision-API-How-to-Topics/call-read-api.md).
 
-## <a name="read-32-preview-container"></a>Läsa 3,2 – för hands versions behållare
+## <a name="read-32-container"></a>Läsa 3,2-behållare
 
-> [!NOTE]
-> Behållaren Read 3,0-Preview är föråldrad. 
-
-Behållaren Read 3,2-Preview OCR innehåller:
+Behållaren Read 3,2 OCR innehåller:
 * Nya modeller för förbättrad noggrannhet.
 * Stöd för flera språk i samma dokument.
 * Stöd för totalt 73 språk. Se den fullständiga listan över [språk som stöds av OCR](./language-support.md#optical-character-recognition-ocr).
@@ -62,7 +59,7 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 
 Fyll i och skicka [formuläret för begäran](https://aka.ms/csgate) för att begära godkännande för att köra behållaren. 
 
-[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to run the container](../../../includes/cognitive-services-containers-request-access.md)]
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -92,16 +89,16 @@ Behållar avbildningar för läsning är tillgängliga.
 | Container | Container Registry/namn på lagrings plats/avbildning |
 |-----------|------------|
 | Läs 2,0 – för hands version | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Läs 3,2 – för hands version | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2` |
+| Läs 3,2 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2` |
 
 Använd [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) kommandot för att ladda ned en behållar avbildning.
 
 ### <a name="docker-pull-for-the-read-ocr-container"></a>Docker pull för Read OCR-behållare
 
-# <a name="version-32-preview"></a>[Version 3,2 – för hands version](#tab/version-3-2)
+# <a name="version-32"></a>[Version 3,2](#tab/version-3-2)
 
 ```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2
 ```
 
 # <a name="version-20-preview"></a>[Version 2,0 – för hands version](#tab/version-2)
@@ -127,11 +124,11 @@ Använd kommandot [Docker Run](https://docs.docker.com/engine/reference/commandl
 
 [Exempel](computer-vision-resource-container-config.md#example-docker-run-commands) på `docker run` kommandot är tillgängliga.
 
-# <a name="version-32-preview"></a>[Version 3,2 – för hands version](#tab/version-3-2)
+# <a name="version-32"></a>[Version 3,2](#tab/version-3-2)
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -189,9 +186,9 @@ Så här hittar du anslutnings strängen:
 
 Containern innehåller REST-baserade slutpunkts-API:er för frågeförutsägelse. 
 
-# <a name="version-32-preview"></a>[Version 3,2 – för hands version](#tab/version-3-2)
+# <a name="version-32"></a>[Version 3,2](#tab/version-3-2)
 
-Använd värden, `http://localhost:5000`, för container-API:er. Du kan visa Swagger-sökvägen på: `http://localhost:5000/swagger/vision-v3.2-preview-read/swagger.json` .
+Använd värden, `http://localhost:5000`, för container-API:er. Du kan visa Swagger-sökvägen på: `http://localhost:5000/swagger/vision-v3.2-read/swagger.json` .
 
 # <a name="version-20-preview"></a>[Version 2,0 – för hands version](#tab/version-2)
 
@@ -202,7 +199,7 @@ Använd värden, `http://localhost:5000`, för container-API:er. Du kan visa Swa
 ### <a name="asynchronous-read"></a>Asynkron läsning
 
 
-# <a name="version-32-preview"></a>[Version 3,2 – för hands version](#tab/version-3-2)
+# <a name="version-32"></a>[Version 3,2](#tab/version-3-2)
 
 Du kan använda- `POST /vision/v3.2/read/analyze` och `GET /vision/v3.2/read/operations/{operationId}` -åtgärderna i samförstånd för att läsa en avbildning asynkront, på liknande sätt som visuellt innehåll tjänsten använder motsvarande rest-åtgärder. Metoden asynkron POST returnerar en `operationId` som används som identifierare till HTTP GET-begäran.
 
@@ -398,7 +395,7 @@ När det asynkrona inlägget har körts returneras en status kod för **HTTP 202
 
 Du kan använda följande åtgärd för att synkront läsa en avbildning. 
 
-# <a name="version-32-preview"></a>[Version 3,2 – för hands version](#tab/version-3-2)
+# <a name="version-32"></a>[Version 3,2](#tab/version-3-2)
 
 `POST /vision/v3.2/read/syncAnalyze` 
 
@@ -443,7 +440,7 @@ Mer information om dessa alternativ finns i [Configure containers](./computer-vi
 I den här artikeln har du lärt dig begrepp och arbets flöde för att ladda ned, installera och köra Visuellt innehåll behållare. Sammanfattningsvis:
 
 * Visuellt innehåll tillhandahåller en Linux-behållare för Docker, inkapsling av läsa.
-* Behållar avbildningar laddas ned från behållar förhands gransknings registret i Azure.
+* Den Läs behållar avbildningen kräver att ett program körs. 
 * Behållar avbildningar körs i Docker.
 * Du kan använda antingen REST API eller SDK för att anropa åtgärder i Read OCR-behållare genom att ange behållarens värd-URI.
 * Du måste ange fakturerings information när du instansierar en behållare.

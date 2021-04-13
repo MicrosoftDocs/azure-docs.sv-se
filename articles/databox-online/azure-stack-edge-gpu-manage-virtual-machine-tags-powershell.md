@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 566ca1598857f67e25faea9f19d134c4a91bfb18
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: be4348359e6b53c3e7454e9ab7c1af8ce8a7020a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106556263"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305569"
 ---
 # <a name="manage-vm-tags-on-azure-stack-edge-via-azure-powershell"></a>Hantera VM-taggar på Azure Stack Edge via Azure PowerShell
 
@@ -36,17 +36,7 @@ Innan du kan distribuera en virtuell dator på enheten via PowerShell kontroller
 
 ## <a name="verify-connection-to-local-azure-resource-manager"></a>Verifiera anslutning till lokala Azure Resource Manager
 
-Kontrol lera att följande steg kan användas för att komma åt enheten från klienten.
-
-Kontrol lera att klienten kan ansluta till den lokala Azure Resource Manager. 
-
-1. Anropa lokala enhets-API: er för att autentisera:
-
-    ```powershell
-    login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d  
-    ```
-
-1. Ange användar namn `EdgeArmUser` och lösen ord för att ansluta via Azure Resource Manager. Om du inte återkallar lösen ordet [återställer du lösen ordet för Azure Resource Manager](azure-stack-edge-gpu-set-azure-resource-manager-password.md) och använder lösen ordet för att logga in.
+[!INCLUDE [azure-stack-edge-gateway-verify-azure-resource-manager-connection](../../includes/azure-stack-edge-gateway-verify-azure-resource-manager-connection.md)]
 
 
 ## <a name="add-a-tag-to-a-vm"></a>Lägga till en tagg till en virtuell dator

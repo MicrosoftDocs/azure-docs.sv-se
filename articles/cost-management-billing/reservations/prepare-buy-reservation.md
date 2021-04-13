@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 04/12/2021
 ms.author: banders
-ms.openlocfilehash: a70d434b06fd19071f3576f9333579e0bd2b85e7
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 13a9e3ad1dcdfa230d757230e3fdea91e4ee9d23
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574982"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310401"
 ---
 # <a name="buy-a-reservation"></a>Köpa en reservation
 
@@ -44,9 +44,9 @@ Du kan välja mellan tre reservationsomfång, beroende på dina behov:
 
 När Azure tillämpar reservationsrabatter för din användning bearbetas reservationen i följande ordning:
 
-1. Reservationer som är omfångsanpassade till en resursgrupp
-2. Reservationer med enskilt omfång
-3. Reservationer med delat omfång
+1. Reservationer med ett enda resurs grupps omfång
+2. Reservationer med ett enda prenumerations omfång
+3. Reservationer med delat omfång (flera prenumerationer), beskrivits tidigare
 
 Du kan alltid uppdatera omfånget efter att du har köpt en reservation. Det gör du genom att gå till reservationen, klicka på **Konfiguration** och omfångsanpassa reservationen på nytt. En ny omfångsanpassning av en reservation är inte en kommersiell transaktion. Reservationsperioden ändras inte. Mer information om hur du uppdaterar omfånget finns i avsnittet om att [uppdatera omfånget efter att du har köpt en reservation](manage-reserved-vm-instance.md#change-the-reservation-scope).
 

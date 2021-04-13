@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52b450ecc8aff379dbdb8d58f9b7609cf730ad27
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 87b9371bfe3b0bd8ff8b3bd509cc1431f0c2e1c6
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731674"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305777"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory sömlös enkel inloggning: vanliga frågor och svar
 
@@ -90,7 +90,7 @@ Följ de här stegen på den lokala server där du kör Azure AD Connect:
    **Steg 1. Hämta en lista över AD-skogar där sömlös enkel inloggning har Aktiver ATS**
 
    1. Börja med att ladda ned och installera [Azure AD PowerShell](/powershell/azure/active-directory/overview).
-   2. Gå till mappen `%programfiles%\Microsoft Azure Active Directory Connect`.
+   2. Gå till mappen `$env:programfiles\Microsoft Azure Active Directory Connect`.
    3. Importera den sömlös SSO PowerShell-modulen med hjälp av det här kommandot: `Import-Module .\AzureADSSO.psd1` .
    4. Kör PowerShell som administratör. I PowerShell anropar du `New-AzureADSSOAuthenticationContext` . Det här kommandot ska ge dig en popup-meny för att ange klient organisationens autentiseringsuppgifter för global administratör.
    5. Anropa `Get-AzureADSSOStatus | ConvertFrom-Json` . Med det här kommandot får du en lista över AD-skogar (se listan "domäner") där funktionen har Aktiver ATS.
@@ -135,7 +135,7 @@ Följ de här stegen på den lokala server där du kör Azure AD Connect:
    Kör följande steg på den lokala server där du kör Azure AD Connect:
 
    1. Börja med att ladda ned och installera [Azure AD PowerShell](/powershell/azure/active-directory/overview).
-   2. Gå till mappen `%programfiles%\Microsoft Azure Active Directory Connect`.
+   2. Gå till mappen `$env:ProgramFiles\Microsoft Azure Active Directory Connect`.
    3. Importera den sömlös SSO PowerShell-modulen med hjälp av det här kommandot: `Import-Module .\AzureADSSO.psd1` .
    4. Kör PowerShell som administratör. I PowerShell anropar du `New-AzureADSSOAuthenticationContext` . Det här kommandot ska ge dig en popup-meny för att ange klient organisationens autentiseringsuppgifter för global administratör.
    5. Anropa `Enable-AzureADSSO -Enable $false` .
@@ -150,7 +150,7 @@ Följ de här stegen på den lokala server där du kör Azure AD Connect:
    Följ uppgifterna 1 till 4 nedan om du har inaktiverat sömlös SSO med Azure AD Connect. Om du har inaktiverat sömlös SSO med PowerShell i stället, gå vidare till aktivitet 5 nedan.
 
    1. Börja med att ladda ned och installera [Azure AD PowerShell](/powershell/azure/active-directory/overview).
-   2. Gå till mappen `%programfiles%\Microsoft Azure Active Directory Connect`.
+   2. Gå till mappen `$env:ProgramFiles\Microsoft Azure Active Directory Connect`.
    3. Importera den sömlös SSO PowerShell-modulen med hjälp av det här kommandot: `Import-Module .\AzureADSSO.psd1` .
    4. Kör PowerShell som administratör. I PowerShell anropar du `New-AzureADSSOAuthenticationContext` . Det här kommandot ska ge dig en popup-meny för att ange klient organisationens autentiseringsuppgifter för global administratör.
    5. Anropa `Get-AzureADSSOStatus | ConvertFrom-Json` . Med det här kommandot får du en lista över AD-skogar (se listan "domäner") där funktionen har Aktiver ATS.

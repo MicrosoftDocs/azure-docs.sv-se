@@ -4,12 +4,12 @@ description: Den här artikeln innehåller en lista över exempel för Azure Eve
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2e0f8026683302f6b54924625b132e79cb194bad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b7cd4a1ca08f359a2328d7a92239516c39d7e62
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87499428"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311608"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Git-databaser med exempel för Azure Event Hubs 
 Du kan hitta Event Hubs exempel på [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples). Dessa exempel demonstrerar viktiga funktioner i [Azure Event Hubs](./index.yml). I den här artikeln kategoriseras och beskrivs de tillgängliga exemplen, med länkar till var och en.
@@ -60,4 +60,4 @@ Du kan lära dig mer om Event Hubs i följande artiklar:
 
 - [Översikt över Event Hubs](./event-hubs-about.md)
 - [Event Hubs-funktioner](event-hubs-features.md)
-- [Vanliga frågor och svar om Event Hubs](event-hubs-faq.md)
+- [Vanliga frågor och svar om Event Hubs](event-hubs-faq.yml)

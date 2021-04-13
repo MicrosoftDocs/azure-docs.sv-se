@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67018a2ec6b9239661a7022ad7fb9eeb6c9a5f64
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 756e5e96a8040fb3d93273a5521236d46879e60d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385589"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306389"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>Migrera till molnautentisering med mellanlagrad distribution
 
@@ -33,7 +33,7 @@ En översikt över funktionen finns i "Azure Active Directory: Vad är mellanlag
 
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 -   Du har en Azure Active Directory-klient (Azure AD) med federerade domäner.
 
@@ -92,7 +92,7 @@ Följande scenarier stöds inte för stegvis distribution:
 - Windows 10 hybrid anslutning eller Azure AD Join-hämtning av primär uppdateringstoken för alla versioner, när användarens lokala UPN inte är flyttbara. Det här scenariot återgår till WS-Trust slut punkten i läget för mellanlagrad distribution, men slutar att fungera när mellanlagrad migrering är slutförd och användar inloggning inte längre förlitar sig på Federations servern.
 
   >[!NOTE]
-  >Du måste fortfarande göra den slutliga start punkt från federerad till molnbaserad autentisering med hjälp av Azure AD Connect eller PowerShell. Den mellanlagrade distributionen växlar inte domäner från federerade till hanterade.  Mer information om domän-start punkt finns i [Migrera från Federation till hash-synkronisering av lösen ord](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) och [Migrera från Federation till vidarekoppling](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
+  >Du måste fortfarande göra den slutliga start punkt från federerad till molnbaserad autentisering med hjälp av Azure AD Connect eller PowerShell. Den mellanlagrade distributionen växlar inte domäner från federerade till hanterade.  Mer information om domän-start punkt finns i [Migrera från Federation till hash-synkronisering av lösen ord](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso) och [Migrera från Federation till direktautentisering](plan-migrate-adfs-pass-through-authentication.md#step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso).
   
 ## <a name="get-started-with-staged-rollout"></a>Kom igång med stegvis distribution
 

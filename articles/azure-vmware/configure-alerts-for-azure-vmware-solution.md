@@ -3,16 +3,16 @@ title: Konfigurera aviseringar och arbeta med mått i Azure VMware-lösningen
 description: Lär dig hur du använder aviseringar för att ta emot meddelanden. Lär dig också hur du arbetar med mått för att få djupare insikt i ditt privata moln i Azure VMware-lösningen.
 ms.topic: how-to
 ms.date: 04/02/2021
-ms.openlocfilehash: f021662658399111187e9963fc5caec434fabf4a
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 486f25eba017b2d4e37c0796909a0d26adee6ba8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096841"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309636"
 ---
 # <a name="configure-azure-alerts-in-azure-vmware-solution"></a>Konfigurera Azure-aviseringar i Azure VMware-lösning 
 
-I den här artikeln får du lära dig hur du konfigurerar [Azure-åtgärds grupper](/azure/azure-monitor/alerts/action-groups) i [Microsoft Azure aviseringar](/azure/azure-monitor/alerts/alerts-overvie) för att ta emot meddelanden om utlösta händelser som du definierar. Du lär dig också att använda [Azure Monitor mått](/azure/azure-monitor/essentials/data-platform-metrics) för att få djupare insikt i ditt privata moln i Azure VMware-lösningen.
+I den här artikeln får du lära dig hur du konfigurerar [Azure-åtgärds grupper](/azure/azure-monitor/alerts/action-groups) i [Microsoft Azure aviseringar](/azure/azure-monitor/alerts/alerts-overview) för att ta emot meddelanden om utlösta händelser som du definierar. Du lär dig också att använda [Azure Monitor mått](/azure/azure-monitor/essentials/data-platform-metrics) för att få djupare insikt i ditt privata moln i Azure VMware-lösningen.
 
 
 ## <a name="supported-metrics-and-activities"></a>Mått och aktiviteter som stöds

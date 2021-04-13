@@ -103,7 +103,7 @@
       href: ./linux/tutorial-elasticsearch.md
     - name: Byta värd för stordator
       href: ./workloads/mainframe-rehosting/overview.md
-    - name: Azures konfidentiella beräkning
+    - name: Konfidentiell beräkning i Azure
       href: ../confidential-computing/overview.md
     - name: SQL på Virtual Machines
       href: ../azure-sql/virtual-machines/index.yml
@@ -116,12 +116,12 @@
         - name: Översikt
           displayName: 'Sizes, sizing, resize, ACU, compute'
           href: sizes.md
-        - name: Ändra storleken på den virtuella datorn
+        - name: Ändra storlek på den virtuella datorn
           items:
             - name: CLI
               displayName: 'Change, resize, update size'
               href: ./linux/change-vm-size.md
-            - name: Portal eller PowerShell
+            - name: Portalen eller PowerShell
               displayName: 'Change, resize, update size'
               href: ./windows/resize-vm.md
         - name: 'Virtuella datorer, generation 2'
@@ -172,7 +172,7 @@
               href: ev4-esv4-series.md
             - name: M-serien
               href: m-series.md
-            - name: Msv2 och Mdsv2 medels Tor minnes serie
+            - name: Msv2- och Mdsv2 Medium Memory-serien
               href: msv2-mdsv2-series.md
             - name: Mv2-serien
               href: mv2-series.md
@@ -227,14 +227,14 @@
             - name: Konfigurera AMD GPU-drivrutiner
               displayName: 'AMD GPU drivers, AMD, GPU drivers, GPU'
               href: ./windows/n-series-amd-driver-setup.md
-        - name: FPGA-accelererad beräkning
+        - name: FPGA – accelererad beräkning
           items:
             - name: Översikt
               displayName: 'FPGA, accelerated compute, compute, accelerated, gpu'
               href: sizes-field-programmable-gate-arrays.md?context=/azure/virtual-machines/context/context
             - name: NP-serien
               href: np-series.md
-            - name: FPGA attesterings tjänst
+            - name: FPGA-attestationstjänst
               href: field-programmable-gate-arrays-attestation.md
         - name: Databehandling med höga prestanda
           items:
@@ -293,7 +293,7 @@
         - name: PowerShell
           displayName: 'Dedicated hosts, ADH'
           href: ./windows/dedicated-hosts-powershell.md
-    - name: Virtual Machines för Azure-plats
+    - name: Azure Spot Virtual Machines
       items:
         - name: Översikt
           displayName: 'pre-empt, preempt, spot, low priority, low-priority, Azure Spot Virtual Machines'
@@ -354,19 +354,19 @@
               href: ./linux/tutorial-lamp-stack.md
             - name: Kontinuerlig leverans
               items:
-                - name: Konfigurera strategi för löpande distribution
+                - name: Konfigurera strategi för rullande distribution
                   href: ./linux/tutorial-devops-azure-pipelines-classic.md
-                - name: Konfigurera strategin för Kanarie-distribution
+                - name: Konfigurera strategi för canary-distribution
                   href: ./linux/tutorial-azure-devops-canary-strategy.md
-                - name: Konfigurera strategin för Blue-Green distribution
+                - name: Konfigurera Blue-Green distributionsstrategi
                   href: ./linux/tutorial-azure-devops-blue-green-strategy.md
-                - name: CI/CD med Azure-pipeliner (YAML)
+                - name: CI/CD med Azure Pipelines (YAML)
                   href: ./linux/tutorial-build-deploy-azure-pipelines.md
-            - name: Säker webb server med TLS\SSL
+            - name: Säker webbserver med TLS\SSL
               href: ./linux/tutorial-secure-web-server.md
         - name: Windows
           items:
-            - name: Specialiserad disk – Portal
+            - name: Specialiserad disk – portalen
               displayName: 'Create VM, Create'
               href: ./windows/create-vm-specialized-portal.md
             - name: Specialiserad disk – PowerShell
@@ -375,9 +375,9 @@
             - name: ARM-mall
               displayName: 'Create VM, Create, ARM'
               href: ./windows/ps-template.md
-            - name: Säker webb server med TLS\SSL
+            - name: Säker webbserver med TLS\SSL
               href: ./windows/tutorial-secure-web-server.md
-    - name: Anslut till Virtual Machines
+    - name: Ansluta till Virtual Machines
       items:
         - name: Linux
           items:
@@ -389,11 +389,11 @@
               href: ./linux/mac-create-ssh-keys.md
             - name: SSH på Windows
               href: ./linux/ssh-from-windows.md
-            - name: Fjärr skrivbord för Linux
+            - name: Fjärrskrivbord för Linux
               href: ./linux/use-remote-desktop.md
         - name: Windows
           items:
-            - name: Fjärr skrivbord för Windows
+            - name: Fjärrskrivbord för Windows
               href: ./windows/connect-logon.md
             - name: WinRM
               href: ./windows/winrm.md
@@ -430,6 +430,10 @@
               href: ./extensions/features-windows.md
             - name: VM-agent för Windows
               href: ./extensions/agent-windows.md
+        - name: Azure Backup för SQL Server
+          items:
+            - name: Azure Backup för SQL Server
+              href: ./extensions/backup-azure-sql-server-running-azure-vm.md
         - name: Azure Disk Encryption
           items:
             - name: Linux
@@ -446,10 +450,8 @@
             - name: Windows
               displayName: 'Azure Key Vault, key vault, encryption'
               href: ./extensions/key-vault-windows.md
-        - name: Azure Backup för SQL Server
-          items:
-            - name: Azure Backup för SQL Server
-              href: ./extensions/backup-azure-sql-server-running-azure-vm.md
+        - name: Azure Policy gästkonfiguration
+          href: ./extensions/guest-configuration.md
         - name: Anpassat skript
           items:
             - name: Linux – version 2
@@ -594,7 +596,7 @@
           href: migration-classic-resource-manager-faq.md
 - name: Avbildningar
   items:
-    - name: Hitta Azure Marketplace-avbildningar
+    - name: Hitta Azure Marketplace bilder
       items:
         - name: CLI
           displayName: 'Images, imaging, marketplace, publisher, plan, offer, URN, purchase plan, terms'
@@ -602,10 +604,10 @@
         - name: PowerShell
           displayName: 'Images, imaging, marketplace, URN, purchase plan, terms'
           href: ./windows/cli-ps-findimage.md
-        - name: Windows-klient avbildningar
+        - name: Windows-klientavbildningar
           displayName: 'Images, imaging, marketplace, Windows, Client'
           href: ./windows/client-images.md
-        - name: Värd rättigheter för flera innehavare för Windows 10
+        - name: Värdrättigheter för flera Windows 10
           displayName: 'MTHR, multi-tenant, multitenant, hosting, rights'
           href: ./windows/windows-desktop-multitenant-hosting-deployment.md
     - name: Anpassade Linux-avbildningar
@@ -615,7 +617,7 @@
           href: ./linux/imaging.md
         - name: Linux-etablering
           href: ./linux/provisioning.md
-        - name: Särskilda krav för Linux-distribution
+        - name: Specifika krav för Linux-distribution
           items:
             - name: Allmänna steg
               displayName: 'Linux distribution specific requirements, generic'
@@ -675,7 +677,7 @@
             - name: Kör befintliga bash-skript
               href: ./linux/cloudinit-bash-script.md
               displayname: cloud-init
-        - name: Skapa Linux-avbildningar utan en etablerings agent
+        - name: Skapa Linux-avbildningar utan en etableringsagent
           href: ./linux/no-agent.md
         - name: Inaktivera etablering av Linux-agent
           href: ./linux/disable-provisioning.md
@@ -683,13 +685,13 @@
           href: ./linux/capture-image.md
     - name: Anpassade Windows-avbildningar
       items:
-        - name: Förbered en virtuell hård disk för uppladdning
+        - name: Förbereda en virtuell hårddisk för uppladdning
           displayName: 'Windows custom images, images, windows, upload, prepare, VHD'
           href: ./windows/prepare-for-upload-vhd-image.md
-        - name: Ladda upp en virtuell hård disk och skapa en hanterad avbildning
+        - name: Ladda upp en virtuell hårddisk och skapa en hanterad avbildning
           displayName: 'Windows custom images, images, windows, upload, prepare, VHD, managed'
           href: ./windows/upload-generalized-managed.md
-        - name: Avbilda en hanterad avbildning
+        - name: Skapa en hanterad avbildning
           displayName: 'Windows custom images, images, windows, upload, prepare, VHD, managed, capture'
           href: ./windows/capture-image-resource.md
         - name: Skapa en virtuell dator från en hanterad avbildning
@@ -803,7 +805,7 @@
           href: managed-disk-from-image-version.md
         - name: Inköpsplaninformation
           href: marketplace-images.md
-    - name: Image Builder (förhands granskning)
+    - name: Image Builder (förhandsversion)
       items:
         - name: Översikt
           displayName: 'Image builder, images, building'
@@ -899,7 +901,7 @@
         - name: PowerShell
           displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: ./windows/tutorial-availability-sets.md
-        - name: Ändra en tillgänglighets uppsättning
+        - name: Ändra en tillgänglighetsuppsättning
           displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: ./windows/change-availability-set.md
     - name: Tillgänglighetszoner
@@ -916,7 +918,7 @@
         - name: Portalen
           displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ./windows/create-portal-availability-zone.md
-    - name: Placerings grupper för närhet
+    - name: Närhetsplaceringsgrupper
       items:
         - name: Översikt
           displayName: 'proximity placement groups, ppg'
@@ -953,7 +955,7 @@
       href: managed-disks-overview.md
     - name: Välja en disktyp för virtuella IaaS-datorer
       href: disks-types.md
-    - name: Alternativ för disk redundans
+    - name: Alternativ för diskredundans
       href: disks-redundancy.md
     - name: Delade diskar
       href: disks-shared.md
@@ -963,10 +965,10 @@
       items:
         - name: Kryptering på serversidan
           items:
-            - name: Översikt över kryptering på Server Sidan
+            - name: Översikt över kryptering på serversidan
               href: disk-encryption.md
               displayname: 'Server side encryption, encryption, ADE'
-            - name: Aktivera Kundhanterade nycklar
+            - name: Aktivera kund hanterade nycklar
               items:
                 - name: Portalen
                   href: disks-enable-customer-managed-keys-portal.md
@@ -1075,7 +1077,7 @@
                       href: ./windows/disk-encryption-key-vault-aad.md
                     - name: Diskkrypteringsscenarier för Windows
                       href: ./windows/disk-encryption-windows-aad.md
-    - name: Optimering av prestanda och kostnad
+    - name: Prestanda- och kostnadsoptimering
       items:
         - name: Ultradiskar
           href: disks-enable-ultra-ssd.md
@@ -1095,21 +1097,21 @@
         - name: Diskrelaterade mått
           href: disks-metrics.md
           displayname: 'Performance, cost, perf, disks, disk'
-        - name: Disk burst-modeller
+        - name: Modeller för disk bursting
           href: disk-bursting.md
           displayname: 'Performance, cost, perf, disks, disk'
-        - name: Aktivera burst-överföring på begäran
+        - name: Aktivera bursting på begäran
           href: disks-enable-bursting.md
           displayname: 'Performance, cost, perf, disks, disk'
         - name: Prestandanivåer för disk
           href: disks-change-performance.md
           displayname: 'Performance, cost, perf, disks, disk'
-        - name: Ändra disk prestanda nivå
+        - name: Ändra diskprestandanivå
           items:
             - name: CLI och PowerShell
               href: disks-performance-tiers.md
               displayname: 'Performance, cost, perf, disks, disk, change disk performance tier'
-            - name: Portal
+            - name: Portalen
               href: disks-performance-tiers-portal.md
               displayname: 'Performance, cost, perf, disks, disk, change disk performance tier'
         - name: Aktivera Write Accelerator
@@ -1118,24 +1120,24 @@
           href: disks-benchmarks.md
     - name: Skalbarhetsmål för diskar
       href: disks-scalability-targets.md
-    - name: Säkerhets kopiering och data skydd
+    - name: Säkerhetskopiering och dataskydd
       items:
-        - name: Aktivera stegvisa ögonblicks bilder
+        - name: Aktivera inkrementella ögonblicksbilder
           href: disks-incremental-snapshots.md
         - name: Säkerhetskopiering av Azure-disk
           items:
             - name: Översikt
               displayName: 'Azure disk backup, backup'
               href: ../backup/disk-backup-overview.md?context=/azure/virtual-machines/context/context
-            - name: Konfigurera säkerhets kopiering av Azure-disk
+            - name: Konfigurera Azure Disk Backup
               href: ../backup/backup-managed-disks.md?context=/azure/virtual-machines/context/context
-            - name: Återställa diskar med Azure disk backup
+            - name: Återställa diskar med Azure Disk Backup
               href: ../backup/restore-managed-disks.md?context=/azure/virtual-machines/context/context
         - name: Lagring och haveriberedskap för diskar
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
-        - name: Ögonblicks bild a disk-CLI
+        - name: Ögonblicksbild av en disk – CLI
           href: ./linux/snapshot-copy-managed-disk.md
-        - name: Ögonblicks bild a disk – PowerShell
+        - name: Ögonblicksbild av en disk – PowerShell
           href: ./windows/snapshot-copy-managed-disk.md
         - name: Säkerhetskopiera ohanterade diskar
           href: ./linux/incremental-snapshots.md
@@ -1143,7 +1145,7 @@
       href: ephemeral-os-disks.md
     - name: Migrering och konvertering
       items:
-        - name: Konvertera disk till en annan disk typ
+        - name: Konvertera disk till en annan disktyp
           items:
             - name: CLI
               displayName: Convert disk to another disk type
@@ -1151,7 +1153,7 @@
             - name: PowerShell
               displayName: Convert disk to another disk type
               href: ./windows/convert-disk-storage.md
-        - name: Migrera till Premium-SSD med Azure Site Recovery
+        - name: 'Migrera till Premium-SSD:er med Azure Site Recovery'
           items:
             - name: Linux
               displayName: Migrate to premium SSDs with Azure Site Recovery
@@ -1169,7 +1171,7 @@
             - name: PowerShell
               displayName: Unmanaged VM to Managed Disks
               href: ./windows/convert-unmanaged-to-managed-disks.md
-    - name: Lägg till en datadisk
+    - name: Lägga till en datadisk
       items:
         - name: Linux
           items:
@@ -1187,7 +1189,7 @@
             - name: Azure Portal
               displayName: 'add a data disk, data disk'
               href: ./windows/attach-managed-disk-portal.md
-            - name: Ändra enhets beteckning för temporär enhet
+            - name: Ändra enhetsbeteckning för temporär disk
               href: ./windows/change-drive-letter.md
     - name: Koppla från en disk
       items:
@@ -1212,9 +1214,9 @@
           href: using-managed-disks-template-deployments.md
         - name: Importera/exportera en disk på ett säkert sätt
           items:
-            - name: Konfigurera privata Länkar för diskar – CLI
+            - name: Konfigurera privata länkar för diskar – CLI
               href: ./linux/disks-export-import-private-links-cli.md
-            - name: Konfigurera privata Länkar för diskar – Portal
+            - name: Konfigurera privata länkar för diskar – portalen
               href: disks-enable-private-links-for-import-export-portal.md
             - name: Ladda upp en virtuell hårddisk till en disk – PowerShell
               href: ./windows/disks-upload-vhd-to-managed-disk-powershell.md
@@ -1230,13 +1232,13 @@
                   href: ./windows/download-vhd.md
         - name: Använda Storage Explorer för att hantera diskar
           href: disks-use-storage-explorer-managed-disks.md
-        - name: Växla OS-disken – CLI
+        - name: Växla OS-disk – CLI
           href: ./linux/os-disk-swap.md
-        - name: Växla OS-disken – PowerShell
+        - name: Växla OS-disk – PowerShell
           href: ./windows/os-disk-swap.md
-        - name: Mappa hanterad disk till gäst disk – Linux
+        - name: Mappa hanterad disk till gästdisk – Linux
           href: ./linux/azure-to-guest-disk-mapping.md
-        - name: Mappa hanterad disk till gäst disk – Windows
+        - name: Mappa hanterad disk till gästdisk – Windows
           href: ./windows/azure-to-guest-disk-mapping.md
         - name: File Storage
           items:
@@ -1265,11 +1267,11 @@
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd
             - name: Kopiera en hanterad disk till samma eller en annan prenumeration
               href: 'https://github.com/Azure-Samples/azure-cli-samples/blob/master/virtual-machine/copy-managed-disks-to-same-or-different-subscription/copy-managed-disks-to-same-or-different-subscription.sh'
-            - name: Kopiera en ögonblicks bild till samma eller en annan prenumeration
+            - name: Kopiera en ögonblicksbild till samma eller en annan prenumeration
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription
             - name: Exportera en ögonblicksbild som en virtuell hårddisk till ett lagringskonto
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account
-            - name: Exportera en hanterad disk som en virtuell hård disk till ett lagrings konto
+            - name: Exportera en hanterad disk som en virtuell hårddisk till ett lagringskonto
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account
         - name: PowerShell
           items:
@@ -1277,11 +1279,11 @@
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd
             - name: Skapa en hanterad disk från en ögonblicksbild
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot
-            - name: Kopiera en ögonblicks bild till samma eller en annan prenumeration
+            - name: Kopiera en ögonblicksbild till samma eller en annan prenumeration
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription
             - name: Exportera en ögonblicksbild som en virtuell hårddisk till ett lagringskonto
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account
-            - name: Exportera en hanterad disk som en virtuell hård disk till ett lagrings konto
+            - name: Exportera en hanterad disk som en virtuell hårddisk till ett lagringskonto
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd
             - name: Skapa en ögonblicksbild från en virtuell hårddisk
               href: /previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd
@@ -1305,7 +1307,7 @@
           href: ./windows/nsg-quickstart-portal.md
     - name: Tilldela offentlig IP-adress
       href: ../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?context=/azure/virtual-machines/context/context
-    - name: Använd ett anpassat domän namn
+    - name: Använda ett anpassat domännamn
       href: custom-domain.md
     - name: Använda flera nätverkskort
       items:
@@ -1347,7 +1349,7 @@
         - name: Översikt
           href: trusted-launch.md
           DisplayName: 'Trusted Launch, shielded VM'
-        - name: Distribuera med portalen
+        - name: Distribuera med hjälp av portalen
           href: trusted-launch-portal.md
     - name: Just-in-time-åtkomst
       href: ../security-center/security-center-just-in-time.md
@@ -1403,7 +1405,7 @@
               href: ./windows/key-vault-setup.md
     - name: Minimera spekulativ körning
       href: mitigate-se.md
-    - name: Anslut en virtuell Linux-dator till Azure Active Directory
+    - name: Ansluta en virtuell Linux-dator till Azure Active Directory
       displayName: Azure AD
       items:
         - name: Red Hat Enterprise Linux
@@ -1435,19 +1437,19 @@
         - name: 'Azure-SDK:er'
           displayName: Configured managed identies
           href: ../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?context=/azure/virtual-machines/context/context
-    - name: Linux Active Directory inloggning
+    - name: Linux Active Directory-inloggning
       href: ./linux/login-using-aad.md
 - name: Uppdateringar och underhåll
   items:
     - name: Översikt
       displayName: Updates and maintenance
       href: updates-maintenance-overview.md
-    - name: Automatisk uppgradering av operativ system avbildning
+    - name: Automatisk uppgradering av os-avbildning
       items:
         - name: Översikt
           displayName: 'Automatic OS image upgrade, image, upgrade, OS'
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?context=/azure/virtual-machines/context/context
-        - name: Underhålls kontroll för uppgradering av operativ system avbildning
+        - name: Underhållskontroll för uppgradering av OS-avbildning
           items:
             - name: Översikt (förhandsversion)
               displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
@@ -1455,7 +1457,7 @@
             - name: PowerShell (förhandsversion)
               displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
               href: virtual-machine-scale-sets-maintenance-control-powershell.md
-    - name: Automatisk uppdatering av gäst dator (för hands version)
+    - name: Automatisk uppdatering av VM-gäst (förhandsversion)
       items:
         - name: Översikt
           displayName: 'Automatic VM guest patching, guest, OS, patching'
@@ -1463,7 +1465,7 @@
         - name: Hotpatch
           displayName: 'patching, patch, update'
           href: ../automanage/automanage-hotpatch.md?context=/azure/virtual-machines/context/context
-    - name: Automatisk tilläggs uppgradering (förhands granskning)
+    - name: Automatisk uppgradering av tillägg (förhandsversion)
       href: automatic-extension-upgrade.md
     - name: Uppdateringshantering i Azure Automation
       href: ../automation/update-management/overview.md?context=/azure/virtual-machines/context/context
@@ -1540,10 +1542,10 @@
               href: ../azure-monitor/agents/diagnostics-extension-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Tillägg för Linux-diagnostik
               items:
-                - name: 'Version 4,0'
+                - name: Version 4.0
                   displayName: Linux diagnostics extension
                   href: ../virtual-machines/extensions/diagnostics-linux.md?context=/azure/virtual-machines/context/context
-                - name: 'Version 3,0'
+                - name: Version 3.0
                   displayName: Linux diagnostics extension
                   href: ../virtual-machines/extensions/diagnostics-linux-v3.md?context=/azure/virtual-machines/context/context
                 - name: Samla in mått med Telegraf
@@ -1571,7 +1573,7 @@
                 - name: Anpassade JSON-data
                   displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/agents/data-sources-json.md?context=/azure/virtual-machines/context/context
-                - name: samla in prestanda data
+                - name: samla in prestandadata
                   displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/agents/data-sources-collectd.md?context=/azure/virtual-machines/context/context
                 - name: Syslog
@@ -1677,7 +1679,7 @@
     - name: Översikt
       displayName: Backup and recovery
       href: backup-recovery.md
-    - name: Tjänst avbrott
+    - name: Tjänstavbrott
       href: virtual-machines-disaster-recovery-guidance.md
     - name: Säkerhetskopiera virtuella datorer
       items:
@@ -1716,7 +1718,7 @@
         - name: Översikt
           displayName: Disaster Recovery Overview
           href: ../site-recovery/site-recovery-overview.md
-        - name: Aktivera haveri beredskap
+        - name: Aktivera haveriberedskap
           items:
             - name: Linux
               displayName: Enable disaster recovery
@@ -1726,7 +1728,7 @@
               href: ./windows/tutorial-disaster-recovery.md
         - name: Redundansväxla en virtuell dator till en annan region
           href: ../site-recovery/azure-to-azure-tutorial-failover-failback.md
-        - name: Återställa en virtuell dator till den primära regionen
+        - name: Växla tillbaka en virtuell dator till den primära regionen
           href: ../site-recovery/azure-to-azure-tutorial-failback.md
     - name: Flytta och migrera virtuella datorer
       items:
@@ -1798,15 +1800,15 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Exempel
       items:
-        - name: Azure CLI-exempel lagrings platsen
+        - name: Lagringsplatsen Azure CLI-exempel
           href: 'https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine'
-        - name: PowerShell-exempel lagrings platsen
+        - name: Lagringsplatsen För PowerShell-exempel
           href: 'https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine'
     - name: Vanliga CLI-kommandon
       href: ./linux/cli-manage.md
     - name: Vanliga PowerShell-kommandon
       href: ./windows/ps-common-ref.md
-    - name: Vanliga nätverk PowerShell-kommandon
+    - name: Vanliga PowerShell-nätverkskommandon
       href: ./windows/ps-common-network-ref.md
     - name: Beskrivning av mall för virtuell dator
       href: ./windows/template-description.md
