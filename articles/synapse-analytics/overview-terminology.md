@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 828f37030ae567cacbaad25849b7ba24c561c20c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b4b4e227a0bdfc449c73541dec5d13c1c6697bc
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98132774"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313070"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Azure Synapse Analytics-terminologi
 
@@ -34,7 +34,7 @@ En arbets yta kan innehålla valfritt antal **länkade tjänster**, i princip an
 
 **SYNAPSE SQL** är möjligheten att utföra T-SQL-baserad analys i Synapse-arbetsytan. Synapse SQL har två förbruknings modeller: dedikerade och Server lös.  För den dedikerade modellen använder du **dedikerade SQL-pooler**. En arbets yta kan ha valfritt antal pooler. Använd Server lös **SQL-pooler** om du vill använda en server lös modell. Varje arbets yta har en av dessa pooler.
 
-I Synapse Studio kan du arbeta med SQL-pooler genom att skapa och köra **SQL-skript** .
+I Synapse Studio kan du arbeta med SQL-pooler genom att köra **SQL-skript**.
 
 ## <a name="apache-spark-for-synapse"></a>Apache Spark för Synapse
 

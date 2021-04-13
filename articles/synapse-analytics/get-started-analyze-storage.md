@@ -1,6 +1,6 @@
 ---
-title: 'Självstudie: komma igång med att analysera data i lagrings konton'
-description: I den här självstudien får du lära dig hur du analyserar data som finns i ett lagrings konto.
+title: 'Självstudie: Kom igång med att analysera data i lagringskonton'
+description: I den här självstudien lär du dig att analysera data som finns i ett lagringskonto.
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,27 +10,27 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: f18977bb92b37546d5980134cba858b1f76b464c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b88a7e6a9851018fce255fac0e39a30563b9bf4
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720023"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363843"
 ---
-# <a name="analyze-data-in-a-storage-account"></a>Analysera data i ett lagrings konto
+# <a name="analyze-data-in-a-storage-account"></a>Analysera data i ett lagringskonto
 
-I den här självstudien får du lära dig hur du analyserar data som finns i ett lagrings konto.
+I den här självstudien lär du dig att analysera data som finns i ett lagringskonto.
 
 ## <a name="overview"></a>Översikt
 
-Hittills har vi täckt scenarier där data finns i databaser på arbets ytan. Nu ska vi visa hur du arbetar med filer i lagrings konton. I det här scenariot använder vi det primära lagrings kontot för arbets ytan och behållaren som vi angav när du skapade arbets ytan.
+Hittills har vi gått in på scenarier där data finns i databaser på arbetsytan. Nu ska vi visa hur du arbetar med filer i lagringskonton. I det här scenariot använder vi det primära lagringskontot för arbetsytan och containern som vi angav när vi skapade arbetsytan.
 
-* Namnet på lagrings kontot: **contosolake**
-* Namnet på behållaren i lagrings kontot: **användare**
+* Namnet på lagringskontot: **contosolake**
+* Namnet på containern i lagringskontot: **användare**
 
-### <a name="create-csv-and-parquet-files-in-your-storage-account"></a>Skapa CSV-och Parquet-filer i ditt lagrings konto
+### <a name="create-csv-and-parquet-files-in-your-storage-account"></a>Skapa CSV- och Parquet-filer i ditt lagringskonto
 
-Kör följande kod i en antecknings bok i en ny kod cell. Den skapar en CSV-fil och en Parquet-fil i lagrings kontot.
+Kör följande kod i en notebook-kod i en ny kodcell. Det skapar en CSV-fil och en parquet-fil i lagringskontot.
 
 ```py
 %%pyspark
@@ -40,15 +40,15 @@ df.write.mode("overwrite").csv("/NYCTaxi/PassengerCountStats_csvformat")
 df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 ```
 
-### <a name="analyze-data-in-a-storage-account"></a>Analysera data i ett lagrings konto
+### <a name="analyze-data-in-a-storage-account"></a>Analysera data i ett lagringskonto
 
-Du kan analysera data i arbets ytans standard ADLS Gen2 konto eller så kan du länka ett ADLS Gen2-eller Blob Storage-konto till din arbets yta via "**Hantera**" >**länkade tjänster**">"**nytt**"(stegen nedan refererar till det primära ADLS Gen2 kontot).
+Du kan analysera data i arbetsytans ADLS Gen2-standardkonto eller länka ett ADLS Gen2- eller Blob Storage-konto till din arbetsyta via "**Manage**" > "**Linked Services**" > "**New**" (Stegen nedan refererar till det primära ADLS Gen2-kontot).
 
-1. I Synapse Studio går du till **data** hubben och väljer sedan **länkad**.
-1. Gå till **Azure Data Lake Storage Gen2** min  >  **arbets yta (Primary-contosolake)**.
-1. Välj **användare (primär)**. Du bör se mappen **NYCTaxi** . Inuti bör du se två mappar som heter **PassengerCountStats_csvformat** och **PassengerCountStats_parquetformat**.
-1. Öppna mappen **PassengerCountStats_parquetformat** . Inuti ser du en Parquet-fil med ett namn som `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` .
-1. Högerklicka på **. Parquet**, välj sedan **ny antecknings bok** och välj sedan **load till DataFrame**. En ny antecknings bok skapas med en cell som den här:
+1. I Synapse Studio du till **datahubben** och väljer sedan **Länkad**.
+1. Gå till **Azure Data Lake Storage Gen2**  >  **myworkspace (Primär – contosolake).**
+1. Välj **användare (primär).** Du bör se **mappen NYCMapp.** I bör du se två mappar med **namnet PassengerCountStats_csvformat** och **PassengerCountStats_parquetformat**.
+1. Öppna **mappen PassengerCountStats_parquetformat.** Inuti visas en parquet-fil med ett namn som `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` .
+1. Högerklicka på **.parquet** och välj ny **notebook-dator** och välj sedan **Läs in till DataFrame.** En ny notebook-dator skapas med en cell så här:
 
     ```py
     %%pyspark
@@ -57,8 +57,8 @@ Du kan analysera data i arbets ytans standard ADLS Gen2 konto eller så kan du l
     display(df.limit(10))
     ```
 
-1. Koppla till Spark-poolen med namnet **Spark1**. Kör cellen.
-1. Klicka på tillbaka till mappen **användare** . Högerklicka på **. Parquet** -filen igen och välj sedan **nytt SQL-skript**  >  **Markera de översta 100 raderna**. Det skapar ett SQL-skript som detta:
+1. Anslut till Spark-poolen med namnet **Spark1.** Kör cellen.
+1. Välj tillbaka till **mappen användare.** Högerklicka på **.parquet-filen igen** och välj sedan **Nytt SQL-skript**  >  **VÄLJ DE 100 översta raderna.** Det skapar ett SQL-skript så här:
 
     ```sql
     SELECT 
@@ -69,7 +69,7 @@ Du kan analysera data i arbets ytans standard ADLS Gen2 konto eller så kan du l
     ) AS [result]
     ```
 
-    I fönstret skript kontrollerar du att fältet **Anslut till** är inställt på den **inbyggda SQL-** poolen utan server.
+    I skriptfönstret kontrollerar du att fältet **Anslut till** är inställt på den inbyggda serverlösa **SQL-poolen.**
 
 1. Kör skriptet.
 
@@ -78,4 +78,4 @@ Du kan analysera data i arbets ytans standard ADLS Gen2 konto eller så kan du l
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Dirigera aktiviteter med pipelines](get-started-pipelines.md)
+> [Orkestrera aktiviteter med pipelines](get-started-pipelines.md)

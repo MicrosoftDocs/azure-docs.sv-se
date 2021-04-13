@@ -3,19 +3,19 @@ title: 'Självstudie: lägga till en anpassad domän i din slut punkt'
 titleSuffix: Azure Content Delivery Network
 description: Använd den här självstudien för att lägga till en anpassad domän i en Azure Content Delivery Network-slutpunkt så att ditt domän namn visas i din URL.
 services: cdn
-author: asudbring
+author: jessie-jyy
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 02/04/2020
-ms.author: allensu
+ms.date: 04/12/2021
+ms.author: yuajia
 ms.custom: mvc
-ms.openlocfilehash: 9bca81e7d0eb68d43c21065f5104fc423115be25
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 63ca8cc981f7a192c35f7d1889187ae84773ba08
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065199"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308004"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>Självstudie: lägga till en anpassad domän i din slut punkt
 
@@ -245,9 +245,14 @@ När du har slutfört registreringen av din anpassade domän kontrollerar du att
 
 Om du inte längre vill koppla slut punkten till en anpassad domän tar du bort den anpassade domänen genom att utföra följande steg:
  
-1. I din CDN-profil väljer du slutpunkten med den anpassade domän som du vill ta bort.
+1. Gå till din DNS-Provider, ta bort CNAME-posten för den anpassade domänen eller uppdatera CNAME-posten för den anpassade domänen till en icke-Azure CDN slut punkt.
 
-2. På sidan **Slutpunkt** högerklickar du på den anpassade domänen som du vill ta bort under Anpassade domäner. Välj sedan **Ta bort** på snabbmenyn. Välj **Ja**.
+    > [!Important]
+    > För att förhindra att Dangling DNS-poster och de säkerhets risker som de skapar, från och med 9 april 2021, måste Azure CDN ta bort CNAME-posterna till Azure CDN slut punkter innan resurserna kan tas bort. Resurserna omfattar Azure CDN anpassade domäner, Azure CDN profiler/slut punkter eller Azure-resurs grupper som har Azure CDN anpassade domän (er) aktiverade.
+
+2. I din CDN-profil väljer du slutpunkten med den anpassade domän som du vill ta bort.
+
+3. På sidan **Slutpunkt** högerklickar du på den anpassade domänen som du vill ta bort under Anpassade domäner. Välj sedan **Ta bort** på snabbmenyn. Välj **Ja**.
 
    Den anpassade domänen kopplas bort från slutpunkten.
 
@@ -255,25 +260,29 @@ Om du inte längre vill koppla slut punkten till en anpassad domän tar du bort 
 
 Om du inte längre vill koppla slut punkten till en anpassad domän tar du bort den anpassade domänen genom att utföra följande steg:
 
-1. Använd [Remove-AzCdnCustomDomain](/powershell/module/az.cdn/remove-azcdncustomdomain) om du vill ta bort den anpassade domänen från slut punkten:
+1. Gå till din DNS-Provider, ta bort CNAME-posten för den anpassade domänen eller uppdatera CNAME-posten för den anpassade domänen till en icke-Azure CDN slut punkt.
+
+    > [!Important]
+    > För att förhindra att Dangling DNS-poster och de säkerhets risker som de skapar, från och med 9 april 2021, måste Azure CDN ta bort CNAME-posterna till Azure CDN slut punkter innan resurserna kan tas bort. Resurserna omfattar Azure CDN anpassade domäner, Azure CDN profiler/slut punkter eller Azure-resurs grupper som har Azure CDN anpassade domän (er) aktiverade.
+
+2. Använd [Remove-AzCdnCustomDomain](/powershell/module/az.cdn/remove-azcdncustomdomain) om du vill ta bort den anpassade domänen från slut punkten:
 
     * Ersätt **myendpoint8675** med namnet på CDN-slutpunkten.
     * Ersätt **www.contoso.com** med ditt anpassade domän namn.
     * Ersätt **myCDN** med ditt CDN-profilnamn.
     * Ersätt **myResourceGroupCDN** med namnet på din resurs grupp.
 
-
-```azurepowershell-interactive
-    $parameters = @{
-        CustomDomainName = 'www.contoso.com'
-        EndPointName = 'myendpoint8675'
-        ProfileName = 'myCDN'
-        ResourceGroupName = 'myResourceGroupCDN'
-    }
-    Remove-AzCdnCustomDomain @parameters
-```
-
+    ```azurepowershell-interactive
+        $parameters = @{
+            CustomDomainName = 'www.contoso.com'
+            EndPointName = 'myendpoint8675'
+            ProfileName = 'myCDN'
+            ResourceGroupName = 'myResourceGroupCDN'
+        }
+        Remove-AzCdnCustomDomain @parameters
+    ```
 ---
+
 ## <a name="next-steps"></a>Nästa steg
 
 I den här självstudiekursen lärde du dig att:

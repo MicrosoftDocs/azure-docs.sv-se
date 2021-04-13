@@ -3,17 +3,17 @@ title: 'ML Studio (klassisk): migrera till Azure Machine Learning-EXECUTE R-skri
 description: Bygg om Studio (klassisk) köra R-skript moduler som ska köras på Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: ac9ad296029451d624345d8b3bb365d881ba9a84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18d9013b1a5afcf57b54cffc01a15948382210bb
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103565288"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311047"
 ---
 # <a name="migrate-execute-r-script-modules-in-studio-classic"></a>Migrera kör R-skript moduler i Studio (klassisk)
 

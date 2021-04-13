@@ -1,114 +1,110 @@
 ---
-title: Windows Virtual Desktop konfigurera fil resurs MSIX app Attach Preview – Azure
-description: Så här konfigurerar du en fil resurs för MSIX-appen Anslut för Windows Virtual Desktop.
+title: Windows Virtual Desktop konfigurera MSIX-appen för filresurs – Azure
+description: Konfigurera en filresurs för MSIX-app attach för Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1e7a956b358d486250fbfc26da141c47c0238b56
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: d8aaa8d5013c426ac1ab6b367309c51be4929cee
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448397"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366410"
 ---
-# <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>Konfigurera en fil resurs för MSIX app attach (för hands version)
+# <a name="set-up-a-file-share-for-msix-app-attach"></a>Konfigurera en filresurs för BIFOGA MSIX-app
 
-> [!IMPORTANT]
-> MSIX app Attach är för närvarande en offentlig för hands version.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Alla MSIX-avbildningar måste lagras på en nätverksresurs som kan nås av användare i en värdpool med skrivskyddad behörighet.
 
-Alla MSIX-avbildningar måste lagras på en nätverks resurs som kan nås av användare i en adresspool med Läs behörighet.
-
-MSIX app attach (för hands version) saknar beroenden för typen av lagrings infrastruktur resurs som används av fil resursen. Överväganden för MSIX app Attach-resursen är samma som för en FSLogix-resurs. Mer information om lagrings kraven finns i [lagrings alternativ för FSLogix profil behållare i Windows Virtual Desktop](store-fslogix-profile.md).
+MSIX-apptillägget har inga beroenden för vilken typ av lagringsresurs som filresursen använder. Övervägandena för msix-appens bifogande resurs är samma som för en FSLogix-resurs. Mer information om lagringskrav finns i Lagringsalternativ [för FSLogix-profilcontainrar i Windows Virtual Desktop](store-fslogix-profile.md).
 
 ## <a name="performance-requirements"></a>Prestandakrav
 
-MSIX-appens kopplings storleks gränser för ditt system beror på vilken lagrings typ du använder för att lagra VHD-eller VHDx-filerna samt storleks begränsningarna för VHD-, VHSD-eller CIM-filer och fil systemet.
+Storleksbegränsningarna för msix-apptillägg för ditt system beror på vilken lagringstyp du använder för att lagra VHD- eller VHDx-filerna, samt storleksbegränsningarna för VHD-, VHSD- eller CIM-filer och filsystemet.
 
-Följande tabell innehåller ett exempel på hur många resurser en enda 1 GB MSIX-avbildning med en MSIX-app i den måste för varje virtuell dator:
+I följande tabell visas ett exempel på hur många resurser en enskild MSIX-avbildning på 1 GB med en MSIX-app i den kräver för varje virtuell dator:
 
 | Resurs             | Krav |
 |----------------------|--------------|
-| Stabilt läge IOPs    | 1 IOPs       |
-| Datorns start inloggning | 10 IOPs      |
-| Svarstid              | 400 MS       |
+| IOP:er för stabilt tillstånd    | 1 IOPs       |
+| Inloggning för datorstart | 10 IOPs      |
+| Svarstid              | 400 ms       |
 
 Kraven kan variera mycket beroende på hur många MSIX-paketerade program som lagras i MSIX-avbildningen. För större MSIX-avbildningar måste du allokera mer bandbredd.
 
 ### <a name="storage-recommendations"></a>Lagringsrekommendationer
 
-Azure erbjuder flera lagrings alternativ som kan användas för att ansluta MISX-appen. Vi rekommenderar att du använder Azure Files eller Azure NetApp Files eftersom de här alternativen ger det bästa värdet mellan kostnads-och hanterings kostnader. Artikel [lagrings alternativen för FSLogix profil behållare i Windows Virtual Desktop](store-fslogix-profile.md) jämför de olika hanterings lösningarna för hanterade lagrings lösningar med Azure i Windows Virtual Desktop.
+Azure erbjuder flera lagringsalternativ som kan användas för att koppla MISX-appar. Vi rekommenderar att Azure Files eller Azure NetApp Files eftersom dessa alternativ erbjuder det bästa värdet mellan kostnader och hanteringskostnader. Artikeln [Lagringsalternativ för FSLogix-profilcontainrar i Windows Virtual Desktop](store-fslogix-profile.md) jämför de olika hanterade lagringslösningarna som Azure erbjuder i kontexten för Windows Virtual Desktop.
 
-### <a name="optimize-msix-app-attach-performance"></a>Optimera MSIX-appens kopplings prestanda
+### <a name="optimize-msix-app-attach-performance"></a>Optimera prestanda vid anslutning av MSIX-appar
 
-Här följer några andra saker som vi rekommenderar att du optimerar MSIX-appens kopplings prestanda:
+Här är några andra saker som vi rekommenderar att du gör för att optimera msix-appens anslutning av prestanda:
 
-- Lagrings lösningen som du använder för MSIX-appens koppling bör finnas på samma plats i data centret som sessionens värdar.
-- Undvik Flask halsar i prestanda genom att undanta följande VHD-, VHDX-och CIM-filer från virus genomsökningar:
+- Lagringslösningen som du använder för att koppla MSIX-appen ska finnas på samma datacenterplats som sessionsvärdarna.
+- Undvik prestandaflaskhalsar genom att undanta följande VHD-, VHDX- och CIM-filer från virusgenomsökningar:
    
-    - <MSIXAppAttachFileShare \> \* . DISKEN
+    - <MSIXAppAttachFileShare \> \* . Vhd
     - <MSIXAppAttachFileShare \> \* . VHDX
-    - \\\\storageaccount.file.core.windows.net- \\ resurs \* \* . DISKEN
-    - \\\\storageaccount.file.core.windows.net- \\ resurs \* \* . VHDX
-    - <MSIXAppAttachFileShare>. OBJEKTHANTERAREN
-    - \\\\storageaccount.file.core.windows.net- \\ resurs \* \* . OBJEKTHANTERAREN
+    - \\\\storageaccount.file.core.windows.net dela \\ \* \* . Vhd
+    - \\\\storageaccount.file.core.windows.net dela \\ \* \* . VHDX
+    - <MSIXAppAttachFileShare>. Cim
+    - \\\\storageaccount.file.core.windows.net dela \\ \* \* . Cim
 
-- Separera lagrings infrastrukturen för MSIX-appen koppla från FSLogix profil behållare.
-- Alla virtuella dator system konton och användar konton måste ha Läs behörighet för att få åtkomst till fil resursen.
-- Eventuella katastrof återställnings planer för virtuella Windows-datorer måste inkludera replikering av MSIX-appen bifoga fil resurs på den sekundära platsen för redundans. Mer information om haveri beredskap finns i [Konfigurera en plan för affärs kontinuitet och katastrof återställning](disaster-recovery.md).
+- Separera lagrings fabric för MSIX-app bifoga från FSLogix-profilcontainrar.
+- Alla systemkonton och användarkonton för virtuella datorer måste ha skrivskyddade behörigheter för att komma åt filresursen.
+- Alla haveriberedskapsplaner för Windows Virtual Desktop måste inkludera replikering av MSIX-appens bifogande filresurs på din sekundära redundansplats. Mer information om haveriberedskap finns i [Konfigurera en plan för affärskontinuhet och haveriberedskap.](disaster-recovery.md)
 
-## <a name="how-to-set-up-the-file-share"></a>Så här konfigurerar du fil resursen
+## <a name="how-to-set-up-the-file-share"></a>Konfigurera filresursen
 
-Installations processen för MSIX-appen bifoga fil resurs är i stort sett densamma som [installations processen för FSLogix profil fil resurser](create-host-pools-user-profile.md). Du måste dock tilldela användare olika behörigheter. MSIX app Attach kräver skrivskyddade behörigheter för åtkomst till fil resursen.
+Konfigurationsprocessen för att bifoga filresursen i MSIX-appen är i stort sett densamma som installationsprocessen för [FSLogix-profilfilresurser.](create-host-pools-user-profile.md) Du måste dock tilldela användare olika behörigheter. Bifoga MSIX-app kräver skrivskyddade behörigheter för att få åtkomst till filresursen.
 
-Om du lagrar dina MSIX-program i Azure Files måste du, för värdarna för-sessionen, tilldela alla VM-VM: ar för rollbaserad åtkomst kontroll (RBAC) och fil resursens nya teknik fil system (NTFS) för resursen.
+Om du lagrar dina MSIX-program i Azure Files måste du för dina sessionsvärdar tilldela alla virtuella datorer för sessionsvärd både rollbaserad åtkomstkontroll (RBAC) för lagringskontot och filresursen NTFS-behörigheter (New Technology File System) på resursen.
 
-| Azure-objekt                      | Nödvändig roll                                     | Roll funktion                                  |
+| Azure-objekt                      | Obligatorisk roll                                     | Rollfunktion                                  |
 |-----------------------------------|--------------------------------------------------|-----------------------------------------------|
-| Sessions värd (VM-datornamn)| Storage-fildata för SMB-resursdeltagare          | Läsa och köra, läsa, Visa mappinnehåll  |
-| Administratörer på fil resurs              | Storage-fildata för upphöjd SMB-resursdeltagare | Fullständig behörighet                                  |
-| Användare på fil resurs               | Storage-fildata för SMB-resursdeltagare          | Läsa och köra, läsa, Visa mappinnehåll  |
+| Sessionsvärd (datorobjekt för virtuella datorer)| Storage-fildata för SMB-resursdeltagare          | Läsa och köra, läsa, lista mappinnehåll  |
+| Administratörer på filresurs              | Storage-fildata för upphöjd SMB-resursdeltagare | Fullständig behörighet                                  |
+| Användare på filresurs               | Storage-fildata för SMB-resursdeltagare          | Läsa och köra, läsa, lista mappinnehåll  |
 
-Så här tilldelar du VM-behörigheter för VM för lagrings kontot och fil resursen:
+Så här tilldelar du behörigheter för sessionsvärds-VM:ar för lagringskontot och filresursen:
 
-1. Skapa en säkerhets grupp för Active Directory Domain Services (AD DS).
+1. Skapa en Active Directory Domain Services (AD DS)-säkerhetsgrupp.
 
-2. Lägg till dator kontona för alla VM-värdar som medlemmar i gruppen.
+2. Lägg till datorkonton för alla sessionsvärd-VM:ar som medlemmar i gruppen.
 
-3. Synkronisera AD DS-gruppen med Azure Active Directory (Azure AD).
+3. Synkronisera AD DS-gruppen till Azure Active Directory (Azure AD).
 
 4. Skapa ett lagringskonto.
 
-5. Skapa en fil resurs under lagrings kontot genom att följa anvisningarna i [skapa en Azure-filresurs](../storage/files/storage-how-to-create-file-share.md#create-file-share).
+5. Skapa en filresurs under lagringskontot genom att följa anvisningarna i [Skapa en Azure-filresurs](../storage/files/storage-how-to-create-file-share.md#create-file-share).
 
-6. Anslut lagrings kontot till AD DS genom att följa anvisningarna i [del ett: Aktivera AD DS-autentisering för dina Azure-filresurser](../storage/files/storage-files-identity-ad-ds-enable.md#option-one-recommended-use-azfileshybrid-powershell-module).
+6. Anslut lagringskontot till AD DS genom att följa anvisningarna i [Del ett: Aktivera AD DS-autentisering för dina Azure-filresurser](../storage/files/storage-files-identity-ad-ds-enable.md#option-one-recommended-use-azfileshybrid-powershell-module).
 
-7. Tilldela den synkroniserade AD DS-gruppen till Azure AD och tilldela lagrings kontot lagrings filen data SMB Share Contributor roll.
+7. Tilldela den synkroniserade AD DS-gruppen till Azure AD och tilldela lagringskontot rollen Storage File Data SMB-resursdeltagare.
 
-8. Montera fil resursen på alla värdbaserade sessioner genom att följa anvisningarna i [del två: tilldela behörigheter på resurs nivå till en identitet](../storage/files/storage-files-identity-ad-ds-assign-permissions.md).
+8. Montera filresursen till valfri sessionsvärd genom att följa anvisningarna i [del två: tilldela behörigheter på resursnivå till en identitet](../storage/files/storage-files-identity-ad-ds-assign-permissions.md).
 
-9. Bevilja NTFS-behörighet för fil resursen till AD DS-gruppen.
+9. Bevilja NTFS-behörigheter på filresursen till AD DS-gruppen.
 
-10. Konfigurera NTFS-behörigheter för användar kontona. Du behöver en operativ enhet (OU) från AD DS som kontona i den virtuella datorn tillhör.
+10. Konfigurera NTFS-behörigheter för användarkontona. Du behöver en driftsenhet (OU) som kommer från den AD DS som kontona på den virtuella datorn tillhör.
 
-När du har tilldelat identiteten till lagrings utrymmet följer du anvisningarna i artiklarna i [Nästa steg](#next-steps) för att ge andra nödvändiga behörigheter till den identitet som du har tilldelat till de virtuella datorerna.
+När du har tilldelat identiteten till lagringen följer du anvisningarna i artiklarna i [Nästa](#next-steps) steg för att bevilja andra nödvändiga behörigheter till den identitet som du har tilldelat till de virtuella datorerna.
 
-Du måste också se till att de virtuella datorerna i din sessions värd har nya NTFS-behörigheter (Technology File System). Du måste ha en behållare för drift enheter som har sitt ursprung i Active Directory Domain Services (AD DS), och användarna måste vara medlemmar i den operativa enheten för att kunna använda dessa behörigheter.
+Du måste också se till att dina virtuella sessionsvärdar har NTFS-behörigheter (New Technology File System). Du måste ha en container för driftsenhet som kommer från Active Directory Domain Services (AD DS) och användarna måste vara medlemmar i den driftenheten för att kunna använda dessa behörigheter.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Här är de andra saker du behöver göra när du har konfigurerat fil resursen:
+Här är de andra saker du behöver göra när du har skapat filresursen:
 
-- Lär dig hur du konfigurerar Azure Active Directory Domain Services (AD DS) i [skapa en profil behållare med Azure Files och AD DS](create-file-share.md).
-- Lär dig hur du konfigurerar Azure Files och Azure AD DS på [skapa en profil behållare med Azure Files och Azure AD DS](create-profile-container-adds.md).
-- Lär dig hur du konfigurerar Azure NetApp Files för MSIX-appen bifoga i [skapa en profil behållare med Azure NetApp Files och AD DS](create-fslogix-profile-container.md).
-- Lär dig hur du använder en virtuell dator baserad fil resurs på [skapa en profil behållare för en adresspool med hjälp av en fil resurs](create-host-pools-user-profile.md).
+- Lär dig att konfigurera Azure Active Directory Domain Services (AD DS) i Skapa en [profilcontainer med Azure Files och AD DS](create-file-share.md).
+- Lär dig att konfigurera Azure Files och Azure AD DS skapa en [profilcontainer med Azure Files och Azure AD DS](create-profile-container-adds.md).
+- Lär dig hur du ställer Azure NetApp Files för MSIX-app bifoga i Skapa en [profilcontainer med Azure NetApp Files och AD DS](create-fslogix-profile-container.md).
+- Lär dig hur du använder en virtuell datorbaserad filresurs i [Skapa en profilcontainer för en värdpool med hjälp av en filresurs](create-host-pools-user-profile.md).
 
-När du är klar finns några andra resurser som du kan ha nytta av:
+När du är klar finns här några andra resurser som kan vara till hjälp:
 
-- Fråga våra Community-frågor om den här funktionen på [Windows-TechCommunity för virtuella datorer](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
-- Du kan också lämna feedback för virtuella Windows-datorer i [hubben Windows Virtual Desktop feedback](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app).
-- [Ord lista för MSIX-appen](app-attach-glossary.md)
-- [Vanliga frågor och svar om MSIX app](app-attach-faq.md)
+- Ställ våra communityfrågor om den här funktionen på [Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
+- Du kan också lämna feedback för Windows Virtual Desktop på Windows Virtual Desktop [feedbackhubben.](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)
+- [Bifoga MSIX-appordlistor](app-attach-glossary.md)
+- [Vanliga frågor och svar om att bifoga MSIX-appar](app-attach-faq.md)

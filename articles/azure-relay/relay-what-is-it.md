@@ -3,12 +3,12 @@ title: Vad är Azure Relay? | Microsoft Docs
 description: Den här artikeln innehåller en översikt över Azure Relay-tjänsten, där du kan utveckla molnprogram som använder lokala tjänster som körs i företagets nätverk utan att öppna en brandväggsanslutning eller göra störande ändringar i din nätverksinfrastruktur.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: fbf1b2134a4c2dce7a3e6a62668d0852dc08c18a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b222942394b8a83e6f5d4447aa9ccfb33cdec21
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97955390"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314209"
 ---
 # <a name="what-is-azure-relay"></a>Vad är Azure Relay?
 Med Azure Relay-tjänsten kan du på ett säkert sätt visa tjänster som körs i företagets nätverk för det offentliga molnet. Du kan göra det utan att behöva öppna en port i brandväggen eller göra störande ändringar i företagets nätverksinfrastruktur. 
@@ -80,5 +80,5 @@ Följande diagram visar hur inkommande reläbegäranden hanteras av Azure Relay-
 * [Komma igång med .NET HTTP-begäranden](relay-hybrid-connections-http-requests-dotnet-get-started.md)
 * [Komma igång med Node Websockets](relay-hybrid-connections-node-get-started.md)
 * [Komma igång med Node HTTP-begäranden](relay-hybrid-connections-http-requests-node-get-started.md)
-* [Vanliga frågor och svar om Relay](relay-faq.md)
+* [Vanliga frågor och svar om Relay](relay-faq.yml)
 

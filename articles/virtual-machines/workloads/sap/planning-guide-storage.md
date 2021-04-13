@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0605c8d6cb3f650a1955688d95ece62fb56d06bc
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ecd33549536323658a7116d7d5c311eaaec98487
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256047"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107302955"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-typer för SAP-arbetsbelastning
 Azure har flera olika lagrings typer som skiljer sig mycket i funktioner, data flöde, svars tid och priser. Några av lagrings typerna är inte eller av begränsad användning för SAP-scenarier. Flera typer av Azure-lagring är väl lämpade eller optimerade för vissa SAP-arbetsbelastnings scenarier. I synnerhet för SAP HANA fick vissa Azure Storage-typer certifierade för användning med SAP HANA. I det här dokumentet ska vi gå igenom de olika typerna av lagring och beskriva deras kapacitet och användbarhet med SAP-arbetsbelastningar och SAP-komponenter.
@@ -236,7 +236,7 @@ ANF Storage stöds för närvarande för flera SAP-arbets belastnings scenarier:
     - [Hög tillgänglighet för SAP NetWeaver på virtuella Azure-datorer på SUSE Linux Enterprise Server med Azure NetApp Files för SAP-program](./high-availability-guide-suse-netapp-files.md)
     - [Azure Virtual Machines hög tillgänglighet för SAP NetWeaver på Red Hat Enterprise Linux med Azure NetApp Files för SAP-program](./high-availability-guide-rhel-netapp-files.md)
 - SAP HANA distributioner med hjälp av NFS v 4.1-resurser för/Hana/data-och/Hana/log-volymer och/eller NFS v 4.1-eller NFS v3-volymer för/Hana/Shared-volymer enligt beskrivningen i artikeln [SAP HANA Azure Virtual Machine Storage Configurations](./hana-vm-operations-storage.md)
-- Oracle-distributioner i Oracle Linux gäst operativ system med [dNFS] (( https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA) dOracle data och gör om logg volymer. Mer information finns i artikeln [Azure Virtual Machines Oracle-DBMS distribution för SAP-arbetsbelastningar](./dbms_guide_oracle.md)
+- Oracle-distributioner i Oracle Linux gäst operativ system som använder [dNFS](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA) för Oracle-data och gör om logg volymer. Mer information finns i artikeln [Azure Virtual Machines Oracle-DBMS distribution för SAP-arbetsbelastningar](./dbms_guide_oracle.md)
 
 > [!NOTE]
 > Inga andra DBMS-arbetsbelastningar stöds för Azure NetApp Files baserade NFS-eller SMB-resurser. Uppdateringar och ändringar kommer att tillhandahållas om det ska ändras.

@@ -1,22 +1,22 @@
 ---
-title: Snabb start – Använd våren data Azure Cosmos DB v3 för att skapa en dokument databas med hjälp av Azure Cosmos DB
-description: I den här snabb starten presenteras ett data Azure Cosmos DB v3-kod exempel som du kan använda för att ansluta till och ställa frågor till Azure Cosmos DB SQL API
+title: Snabbstart – Använda Spring Data Azure Cosmos DB v3 för att skapa en dokumentdatabas med Azure Cosmos DB
+description: Den här snabbstarten presenterar ett Spring Data Azure Cosmos DB v3-kodexempel som du kan använda för att ansluta till och fråga Azure Cosmos DB SQL API
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 10/06/2020
+ms.date: 03/07/2021
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: f31eb0fa6dbb881f7a09b21b9dd4842fdfd291f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a094ebb6b218027c195985312b023ccb8838f703
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93090298"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365694"
 ---
-# <a name="quickstart-build-a-spring-data-azure-cosmos-db-v3-app-to-manage-azure-cosmos-db-sql-api-data"></a>Snabb start: bygga en våren data Azure Cosmos DB v3-app för att hantera Azure Cosmos DB SQL API-data
+# <a name="quickstart-build-a-spring-data-azure-cosmos-db-v3-app-to-manage-azure-cosmos-db-sql-api-data"></a>Snabbstart: Skapa en Spring Data Azure Cosmos DB v3-app för att hantera Azure Cosmos DB SQL API-data
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
@@ -24,41 +24,42 @@ ms.locfileid: "93090298"
 > * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java SDK v4](create-sql-api-java.md)
 > * [Spring-data v3](create-sql-api-spring-data.md)
+> * [Spark v3-anslutningsapp](create-sql-api-spark.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-I den här snabb starten skapar och hanterar du ett Azure Cosmos DB SQL API-konto från Azure Portal och genom att använda en våren data Azure Cosmos DB v3-app som klonas från GitHub. Först skapar du ett Azure Cosmos DB SQL-API-konto med hjälp av Azure Portal och skapar sedan en våren Boot-app med hjälp av våren-data Azure Cosmos DB v3-anslutning och lägger sedan till resurser till ditt Cosmos DB konto med hjälp av våren Boot-programmet. Azure Cosmos DB är en databas tjänst med flera modeller som gör att du snabbt kan skapa och fråga dokument-, tabell-, nyckel värdes-och Graf-databaser med globala funktioner för distribution och horisontell skalning.
+I den här snabbstarten skapar och hanterar du ett Azure Cosmos DB SQL API-konto från Azure Portal och med hjälp av en Spring Data Azure Cosmos DB v3-app som klonas från GitHub. Först skapar du ett Azure Cosmos DB SQL API-konto med hjälp av Azure Portal, skapar sedan en Spring Boot-app med Spring Data Azure Cosmos DB v3-anslutningsappen och lägger sedan till resurser till ditt Cosmos DB-konto med hjälp av Spring Boot-programmet. Azure Cosmos DB är en databastjänst med flera modeller som gör att du snabbt kan skapa och fråga databaser för dokument, tabeller, nyckelvärden och grafer med global distribution och horisontell skalning.
 
 > [!IMPORTANT]  
-> Den här viktig information gäller för version 3 av vår data Azure Cosmos DB. [Viktig information om version 2 finns här](sql-api-sdk-java-spring-v2.md). 
+> Den här versionsinformationen gäller för version 3 av Spring Data Azure Cosmos DB. Du hittar [versionsanteckningar för version 2 här.](sql-api-sdk-java-spring-v2.md) 
 >
-> Våren data Azure Cosmos DB stöder bara SQL-API: et.
+> Spring Data Azure Cosmos DB stöder endast SQL-API:et.
 >
-> I de här artiklarna finns information om våren-data på andra Azure Cosmos DB API: er:
-> * [Våren-data för Apache Cassandra med Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
-> * [Fjädra data MongoDB med Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
-> * [Fjädra data Gremlin med Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
+> I de här artiklarna finns information om Spring Data på Azure Cosmos DB API:er:
+> * [Spring Data för Apache Cassandra med Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
+> * [Spring Data MongoDB med Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
+> * [Spring Data Gremlin med Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Eller [prova Azure Cosmos DB kostnads fritt](https://azure.microsoft.com/try/cosmosdb/) utan en Azure-prenumeration. Du kan också använda [Azure Cosmos DB emulatorn](https://aka.ms/cosmosdb-emulator) med en URI `https://localhost:8081` och nyckeln `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
-- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Peka `JAVA_HOME` miljö variabeln till den mapp där JDK är installerad.
-- Ett [binärt maven-Arkiv](https://maven.apache.org/download.cgi). Kör `apt-get install maven` för att installera maven på Ubuntu.
-- [Git](https://www.git-scm.com/downloads). Kör `sudo apt-get install git` för att installera git på Ubuntu.
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett utan kostnad.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Eller [prova Azure Cosmos DB utan en](https://azure.microsoft.com/try/cosmosdb/) Azure-prenumeration. Du kan också använda [Azure Cosmos DB emulatorn](https://aka.ms/cosmosdb-emulator) med en URI `https://localhost:8081` för och nyckeln `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
+- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Peka `JAVA_HOME` miljövariabeln till den mapp där JDK är installerad.
+- Ett [Maven-binärt arkiv](https://maven.apache.org/download.cgi). I Ubuntu kör du för `apt-get install maven` att installera Maven.
+- [Git](https://www.git-scm.com/downloads). I Ubuntu kör du för `sudo apt-get install git` att installera Git.
 
-## <a name="introductory-notes"></a>Inledande anmärkningar
+## <a name="introductory-notes"></a>Introduktionsanteckningar
 
-*Strukturen för ett Cosmos DB konto.* Oavsett API eller programmeringsspråk innehåller ett Cosmos DB- *konto* noll eller flera *databaser*, en *databas* (dB) innehåller noll eller flera *behållare*, och en *behållare* innehåller noll eller flera objekt, som visas i diagrammet nedan:
+*Strukturen för ett Cosmos DB konto.* Oavsett API eller programmeringsspråk innehåller  ett Cosmos DB-konto noll eller flera databaser *,* en databas *(DB)* innehåller noll eller flera containrar *och* en *container* innehåller noll eller flera objekt, enligt diagrammet nedan:
 
-:::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos Account-entiteter" border="false":::
+:::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos-kontoentiteter" border="false":::
 
-Du kan läsa mer om databaser, behållare och objekt [här.](account-databases-containers-items.md) Några viktiga egenskaper definieras på nivån för behållaren, bland dem med det *etablerade data flödet* och *partitionsnyckel*. 
+Du kan läsa mer om databaser, containrar och objekt [här.](account-databases-containers-items.md) Några viktiga egenskaper definieras på containernivå, bland annat etablerat *dataflöde och* *partitionsnyckel*. 
 
-Det etablerade data flödet mäts i *ru: er*(Request units) som har ett penning pris och är en väsentlig avgörande faktor för kontots drift kostnad. Det etablerade data flödet kan väljas per behållar kornig het eller granularitet per databas, men data flödes specifikationen på behållare nivå är vanligt vis lämplig. Du kan läsa mer om data flödes etablering [här.](set-throughput.md)
+Det etablerade dataflödet mäts i enheter för begäran *(RU:er)* som har ett penningpris och som är en viktig faktor för kontots driftskostnader. Etablerat dataflöde kan väljas med kornighet per container eller kornighet per databas, men specifikationen för dataflöde på containernivå är normalt att föredra. Du kan läsa mer om dataflödesetablering [här.](set-throughput.md)
 
-När objekt infogas i en Cosmos DB-behållare blir databasen vågrätt genom att lägga till mer lagrings utrymme och data bearbetning för att hantera begär Anden. Lagrings-och beräknings kapaciteten läggs till i diskreta enheter som kallas *partitioner*, och du måste välja ett fält i dina dokument för att vara den partitionsnyckel som mappar varje dokument till en partition. Hur partitioner hanteras är att varje partition tilldelas en ungefär lika stor sektor från intervallet av nyckel värden. Därför bör du välja en partitionsnyckel som är relativt slumpmässig eller jämnt distribuerad. Annars kommer vissa partitioner att se betydligt fler begär Anden (*het partition*) medan andra partitioner ser betydligt färre begär Anden (*kall partition*) och detta bör undvikas. Du kan lära dig mer om partitionering [här](partitioning-overview.md).
+När objekt infogas i en Cosmos DB databas växer databasen vågrätt genom att lägga till mer lagring och beräkning för att hantera begäranden. Lagrings- och beräkningskapaciteten läggs till i diskreta enheter som kallas partitioner och du måste välja ett fält i dokumenten som *partitionsnyckel* som mappar varje dokument till en partition. Sättet som partitioner hanteras på är att varje partition tilldelas en ungefär lika stor sektor utanför intervallet med partitionsnyckelvärden. Därför rekommenderar vi att du väljer en partitionsnyckel som är relativt slumpmässig eller jämnt distribuerad. I annat fall ser vissa partitioner betydligt fler begäranden *(heta partitioner)* medan andra partitioner ser betydligt färre begäranden ( kall *partition*), och detta ska undvikas. Du kan lära dig mer om partitionering [här.](partitioning-overview.md)
 
 ## <a name="create-a-database-account"></a>Skapa ett databaskonto
 
@@ -93,9 +94,9 @@ git clone https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api
 
 Det här är valfritt. Om du vill lära dig hur databasresurserna skapas i koden kan du granska följande kodavsnitt. Annars kan du gå vidare till [Köra appen](#run-the-app). 
 
-### <a name="application-configuration-file"></a>Program konfigurations fil
+### <a name="application-configuration-file"></a>Programkonfigurationsfil
 
-Här visas en demonstration av hur vår start-och våren-data förbättrar användar upplevelsen – processen att etablera en Cosmos-klient och ansluta till Cosmos-resurser är nu config i stället för kod. Vid start av start fjädern hanterar alla dessa exempel med inställningarna i **programmet. Properties**:
+Här visar vi hur Spring Boot och Spring Data förbättrar användarupplevelsen – processen för att upprätta en Cosmos-klient och ansluta till Cosmos-resurser är nu konfiguration snarare än kod. Vid programstarten Spring Boot alla dessa exempel med hjälp av inställningarna i **application.properties**:
 
 ```xml
 cosmos.uri=${ACCOUNT_HOST}
@@ -107,25 +108,25 @@ dynamic.collection.name=spel-property-collection
 cosmos.queryMetricsEnabled=true
 ```
 
-När du skapar ett Azure Cosmos DB konto, en databas och en behållare är det bara att fylla i de tomma i konfigurations filen och våren Boot/våren data gör följande: (1) skapa en underliggande Java SDK- `CosmosClient` instans med URI och nyckel och (2) Anslut till databasen och behållaren. Allt är klart – **inga fler resurs hanterings koder!**
+När du har skapat ett Azure Cosmos DB-konto, en databas och en container fyller du bara i tomma filer i konfigurationsfilen så gör Spring Boot/Spring Data automatiskt följande: (1) skapa en underliggande Java SDK-instans med URI:n och nyckeln och (2) ansluta till databasen och `CosmosClient` containern. Allt är klart – ingen **mer resurshanteringskod!**
 
 ### <a name="java-source"></a>Java-källa
 
-Våren-datavärdet – Lägg till kommer också från det enkla, rena, standardiserade och plattforms oberoende gränssnittet för drift på data lager. Genom att bygga vidare på våren data GitHub-exemplet som är länkat ovan visas CRUD och fråge exempel för att ändra Azure Cosmos DB dokument med fjäder data Azure Cosmos DB.
+Värde add-tillägget för Spring Data kommer också från dess enkla, rena, standardiserade och plattformsoberoende gränssnitt för drift i datalager. Baserat på Det Spring Data GitHub-exempel som är länkat ovan finns CRUD och frågeexempel för att manipulera Azure Cosmos DB dokument med Spring Data Azure Cosmos DB.
 
-* Skapa och uppdatera objekt med hjälp av- `save` metoden.
+* Objektskapande och uppdateringar med hjälp av `save` metoden .
 
     [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Create)]
    
-* Punkt – läser med den härledda Frågeparametern som definierats i lagrings platsen. `findByIdAndLastName`Utför punkt-läsningar för `UserRepository` . De fält som anges i metod namnet gör att våren-data kan köra en punkt som definieras av `id` `lastName` fälten och:
+* Punktläsningar med den härledda frågemetoden som definierats i lagringsplatsen. `findByIdAndLastName`utför punktläsningar för `UserRepository` . Fälten som anges i metodnamnet gör att Spring Data kör en punktläsning som definieras av `id` fälten `lastName` och :
 
     [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Read)]
 
-* Objektet tas bort med `deleteAll` :
+* Objektet tas bort med hjälp av `deleteAll` :
 
     [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Delete)]
 
-* Härledd fråga baserat på databas metod namn. Våren-data implementerar `UserRepository` `findByFirstName` metoden som en Java SDK SQL-fråga i `firstName` fältet (den här frågan kunde inte implementeras som en punkt-läsning):
+* Härledd fråga baserat på lagringsplatsens metodnamn. Spring Data implementerar metoden `UserRepository` `findByFirstName` som en Java SDK SQL-fråga i fältet (den här frågan kunde inte `firstName` implementeras som en punktläsning):
 
     [!code-java[](~/spring-data-azure-cosmos-db-sql-tutorial/azure-spring-data-cosmos-java-getting-started/src/main/java/com/azure/spring/data/cosmostutorial/SampleApplication.java?name=Query)]
 
@@ -139,22 +140,22 @@ Gå nu tillbaka till Azure-portalen för att hämta information om din anslutnin
     cd azure-spring-data-cosmos-java-sql-api-getting-started/azure-spring-data-cosmos-java-getting-started/
     ```
 
-2. I git-terminalfönstret använder du följande kommando för att installera de nödvändiga Azure Cosmos DB-paketen för fjäder data.
+2. I git-terminalfönstret använder du följande kommando för att installera de Spring Data-Azure Cosmos DB paket.
 
     ```bash
     mvn clean package
     ```
 
-3. I git-terminalfönstret använder du följande kommando för att starta programmet våren data Azure Cosmos DB:
+3. I git-terminalfönstret använder du följande kommando för att starta Spring Data Azure Cosmos DB-programmet:
 
     ```bash
     mvn spring-boot:run
     ```
     
-4. Appen läser in **Application. Properties** och ansluter resurserna i ditt Azure Cosmos DB-konto.
-5. Appen utför punkt CRUD åtgärder som beskrivs ovan.
+4. Appen läser in **application.properties** och ansluter resurserna i ditt Azure Cosmos DB konto.
+5. Appen utför CRUD-åtgärder för punkt som beskrivs ovan.
 6. Appen utför en härledd fråga.
-7. Appen tar inte bort dina resurser. Gå tillbaka till portalen för att [Rensa resurserna](#clean-up-resources) från ditt konto om du vill undvika kostnader.
+7. Appen tar inte bort dina resurser. Växla tillbaka till portalen för [att rensa resurserna från](#clean-up-resources) ditt konto om du vill undvika kostnader.
 
 ## <a name="review-slas-in-the-azure-portal"></a>Granska serviceavtal i Azure-portalen
 
@@ -166,7 +167,7 @@ Gå nu tillbaka till Azure-portalen för att hämta information om din anslutnin
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du lärt dig hur du skapar ett Azure Cosmos DB SQL API-konto, skapar en dokument databas och behållare med hjälp av Datautforskaren och kör en våren data-app för att göra samma sak program mässigt. Nu kan du importera ytterligare data till ditt Azure Cosmos DB-konto. 
+I den här snabbstarten har du lärt dig hur du skapar ett Azure Cosmos DB SQL API-konto, skapar en dokumentdatabas och container med hjälp av Datautforskaren och kör en Spring Data-app för att göra samma sak programmässigt. Du kan nu importera ytterligare data till ditt Azure Cosmos DB konto. 
 
 > [!div class="nextstepaction"]
 > [Importera data till Azure Cosmos DB](import-data.md)

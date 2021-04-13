@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 3df78d6b53f8e8739307e9b870aa03d76bfd6771
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 936789ef292ac6d06b9fd3ac1e9a81219f39e4ef
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101718615"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307834"
 ---
 # <a name="connect-data-sources"></a>Ansluta till datakällor
 
@@ -185,7 +185,7 @@ Alternativt kan du distribuera agenten manuellt på en befintlig virtuell Azure-
 | Sysmon (händelse) | [Anslut Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Anslut Windows-händelser](../azure-monitor/agents/data-sources-windows-events.md) <br> [Hämta Sysmon-parsern](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | Sysmon-samlingen installeras inte som standard på virtuella datorer. Mer information om hur du installerar Sysmon-agenten finns i [Sysmon](/sysinternals/downloads/sysmon). |
 | ConfigurationData  | [Automatisera VM-inventering](../automation/change-tracking/overview.md)| &#10007; | |
 | ConfigurationChange  | [Automatisera spårning av virtuella datorer](../automation/change-tracking/overview.md) | &#10007; | |
-| F5 BIG-IP | [Ansluta F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10007; | |
+| F5 BIG-IP | [Ansluta F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10003; | |
 | McasShadowItReporting  |  | &#10007; | |
 | Barracuda_CL | [Ansluta till Barracuda](connect-barracuda.md) | &#10003; | |
 

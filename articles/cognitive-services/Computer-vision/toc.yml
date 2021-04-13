@@ -3,7 +3,7 @@
 - name: Översikt
   expanded: true
   items:
-    - name: Översikt över Visuellt innehåll
+    - name: Visuellt innehåll översikt
       href: overview.md
     - name: Stöd för språk
       href: language-support.md
@@ -11,19 +11,19 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
     - name: Nyheter
       href: whats-new.md
-    - name: Visuellt innehåll vanliga frågor och svar
+    - name: Vanliga Visuellt innehåll vanliga frågor och svar
       href: FAQ.md
 - name: Optisk teckenläsning (OCR)
   items:
     - name: Översikt över OCR
       href: overview-ocr.md
-    - name: Snabb start för OCR
+    - name: OCR-snabbstart
       href: quickstarts-sdk/client-library.md
     - name: Exempel
       href: /samples/browse/?products=azure&terms=computer-vision
     - name: Anvisningar
       items:
-        - name: Anropa Read API
+        - name: 'Anropa API:et Read'
           href: Vision-API-How-to-Topics/call-read-api.md
         - name: Uppgradera från Read 2.x till Read 3.x
           href: upgrade-api-versions.md
@@ -34,7 +34,7 @@
               displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
             - name: Konfigurera containrar
               href: computer-vision-resource-container-config.md
-            - name: Migrera till v3 för Read OCR-behållare
+            - name: Migrera till v3 för Read OCR-containern
               href: read-container-migration-guide.md
               displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
             - name: Använda med Kubernetes och Helm
@@ -44,18 +44,16 @@
               maintainContext: true
               href: ../containers/azure-container-instance-recipe.md
               displayName: 'container instances, container, containers, images'
-            - name: Alla Cognitive Services behållare
+            - name: Alla Cognitive Services containrar
               href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
     - name: Referens
       items:
-        - name: OCR REST API v 3.2 Preview
-          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
-        - name: OCR REST API v 3.1
+        - name: OCR REST API v3.2
+          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005'
+        - name: OCR REST API v3.1
           href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
-        - name: OCR REST API v 2.1
+        - name: OCR REST API v2.1
           href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
-        - name: OCR REST API v 1.0
-          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
         - name: .NET
           href: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
         - name: Node.js
@@ -72,9 +70,9 @@
           href: /powershell/module/azurerm.cognitiveservices/
 - name: Bildanalys
   items:
-    - name: Översikt över bild analys
+    - name: Översikt över bildanalys
       href: overview-image-analysis.md
-    - name: Snabb start för bild analys
+    - name: Snabbstart för bildanalys
       href: quickstarts-sdk/image-analysis-client-library.md
     - name: Exempel
       items:
@@ -84,7 +82,7 @@
           href: /samples/browse/?products=azure&terms=computer-vision
     - name: Anvisningar
       items:
-        - name: Anropa API för bild analys
+        - name: 'Anropa API:et för bildanalys'
           href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
         - name: Analysera videor i realtid
           href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
@@ -120,14 +118,12 @@
           href: Tutorials/storage-lab-tutorial.md
     - name: Referens
       items:
-        - name: Bild analys REST API v 3.2 för hands version
-          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
-        - name: Bild analys REST API v 3.1
+        - name: Bildanalys REST API v3.2
+          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b'
+        - name: Bildanalys REST API v3.1
           href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
-        - name: Bild analys REST API v 2.1
+        - name: Bildanalys REST API v2.1
           href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
-        - name: Bild analys REST API v 1.0
-          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
         - name: .NET
           href: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
         - name: Node.js
@@ -144,13 +140,13 @@
           href: /powershell/module/azurerm.cognitiveservices/
 - name: Rumslig analys
   items:
-    - name: Översikt över rums analys
+    - name: Översikt över rumslig analys
       href: intro-to-spatial-analysis-public-preview.md
     - name: Ansvarsfull användning av AI
       items:
         - name: Information om transparens
           items:
-            - name: Användnings fall för rums analys
+            - name: Användningsfall för rumslig analys
               href: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=/azure/cognitive-services/computer-vision/context/context
             - name: Egenskaper och begränsningar
               href: /legal/cognitive-services/computer-vision/accuracy-and-limitations?context=/azure/cognitive-services/computer-vision/context/context
@@ -166,9 +162,9 @@
           href: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/computer-vision/context/context
     - name: Anvisningar
       items:
-        - name: Använd behållaren för rums analys
+        - name: Använda containern för rumslig analys
           items:
-            - name: Konfigurera värddatorn och köra behållaren
+            - name: Konfigurera värddatorn och kör containern
               href: spatial-analysis-container.md
             - name: Konfigurera åtgärder
               href: spatial-analysis-operations.md
@@ -180,7 +176,7 @@
               href: spatial-analysis-zone-line-placement.md
             - name: Kameraplacering
               href: spatial-analysis-camera-placement.md
-            - name: Alla Cognitive Services behållare
+            - name: Alla Cognitive Services containrar
               href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
 - name: Anvisningar
   items:
@@ -188,13 +184,13 @@
       href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
     - name: Så här konfigurerar du AAD-autentisering
       href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
-    - name: Använda Kundhanterade nycklar
+    - name: Så här använder du kund hanterade nycklar
       href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
 - name: Resurser
   items:
     - name: Stöd för regioner
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Lär dig moduler
+    - name: LEARN-moduler
       href: /learn/paths/explore-computer-vision-microsoft-azure/
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context

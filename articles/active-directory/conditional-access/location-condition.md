@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 777fc60f76692734ea34ff3cdf8f6bc6e5e8316b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 07af586bac71ee9b33ef314756454cb3c52ec912
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97615719"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305930"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Använda plats villkoret i en princip för villkorlig åtkomst 
 
@@ -32,39 +32,37 @@ Organisationer kan använda den här nätverks platsen för vanliga uppgifter, t
 
 Nätverks platsen bestäms av den offentliga IP-adressen som en klient tillhandahåller för att Azure Active Directory. Principer för villkorlig åtkomst gäller som standard för alla IPv4-och IPv6-adresser. 
 
-> [!TIP]
-> IPv6-intervall stöds bara i gränssnittet för den **[namngivna platsen (för hands version)](#preview-features)** . 
-
 ## <a name="named-locations"></a>Namngivna platser
 
-Platser anges i Azure Portal under **Azure Active Directory**  >  **säkerhets**  >  **åtkomst till**  >  **namngivna platser**. Dessa namngivna nätverks platser kan innehålla platser som en organisations nätverks intervall, VPN-adressintervall eller intervall som du vill blockera. 
+Platser anges i Azure Portal under **Azure Active Directory**  >  **säkerhets**  >  **åtkomst till**  >  **namngivna platser**. Dessa namngivna nätverks platser kan innehålla platser som en organisations nätverks intervall, VPN-adressintervall eller intervall som du vill blockera. Namngivna platser kan definieras av IPv4/IPv6-adressintervall eller länder/regioner. 
 
 ![Namngivna platser i Azure Portal](./media/location-condition/new-named-location.png)
 
-Om du vill konfigurera en plats måste du ange minst ett **namn** och IP-intervallet. 
+### <a name="ip-address-ranges"></a>IP-adressintervall
 
-Antalet namngivna platser som du kan konfigurera begränsas av storleken på det relaterade objektet i Azure AD. Du kan konfigurera platser baserat på följande begränsningar:
+Om du vill definiera en namngiven plats med IPv4/IPv6-adressintervall måste du ange ett **namn** och ett IP-intervall. 
 
-- En namngiven plats med upp till 1200 IPv4-intervall.
-- Högst 90 namngivna platser med ett IP-adressintervall tilldelat var och en av dem.
-
-> [!TIP]
-> IPv6-intervall stöds bara i gränssnittet för den **[namngivna platsen (för hands version)](#preview-features)** . 
+Namngivna platser som definieras av IPv4/IPv6-adress intervall omfattas av följande begränsningar: 
+- Konfigurera upp till 195 namngivna platser
+- Konfigurera upp till 2000 IP-intervall per namngiven plats
+- Både IPv4-och IPv6-intervall stöds
+- Connot för privata IP-intervall måste konfigureras
+- Antalet IP-adresser i ett intervall är begränsat. Endast CIDR-masker som är större än/8 tillåts när du definierar ett IP-intervall. 
 
 ### <a name="trusted-locations"></a>Betrodda platser
 
-När du skapar en nätverks plats har en administratör möjlighet att markera en plats som en betrodd plats. 
+Administratörer kan ange namngivna platser som definieras av IP-adressintervall som betrodda namngivna platser. 
 
 ![Betrodda platser i Azure Portal](./media/location-condition/new-trusted-location.png)
 
-Det här alternativet kan användas för att räkna i principer för villkorlig åtkomst där du kan till exempel kräva registrering för Multi-Factor Authentication från en betrodd nätverks plats. Det kan också vara en faktor i Azure AD Identity Protections risk beräkning, vilket minskar risken för användares inloggning när den kommer från en plats som är markerad som betrodd.
+Inloggningar från betrodda namngivna platser förbättrar noggrannheten i Azure AD Identity Protections risk beräkning, vilket minskar risken för användares inloggning när de autentiseras från en plats som är markerad som betrodd. Dessutom kan betrodda namngivna platser riktas mot principer för villkorlig åtkomst. Du kan till exempel behöva begränsa registreringen av Multi-Factor Authentication till betrodda namngivna platser. 
 
 ### <a name="countries-and-regions"></a>Länder och regioner
 
-Vissa organisationer kan välja att definiera hela länder eller regioner IP-gränser som namngivna platser för principer för villkorlig åtkomst. De kan använda dessa platser när de blockerar onödig trafik när de vet att giltiga användare aldrig kommer från en plats som Nord Korea. Dessa mappningar av IP-adresser till land uppdateras regelbundet. 
+Vissa organisationer kan välja att begränsa åtkomsten till vissa länder eller regioner med villkorlig åtkomst. Förutom att definiera namngivna platser med IP-intervall kan administratörer definiera namngivna platser efter land eller region. När en användare loggar in löser Azure AD användarens IPv4-adress till ett land eller en region, och mappningen uppdateras regelbundet. Organisationer kan använda namngivna platser som definieras av länder för att blockera trafik från länder där de inte gör affärer, till exempel Nord Korea. 
 
 > [!NOTE]
-> Det går inte att mappa IPv6-adressintervall till länder. Endast IPv4-adresser mappas till länder.
+> Inloggningar från IPv6-adresser kan inte mappas till länder eller regioner och betraktas som okända områden. Endast IPv4-adresser kan mappas till länder eller regioner.
 
 ![Skapa en ny lands-eller regions-baserad plats i Azure Portal](./media/location-condition/new-named-location-country-region.png)
 
@@ -91,33 +89,6 @@ För mobil-och skriv bords program, som har länge livs längd för sessionens l
 
 Om båda stegen inte fungerar, anses en användare inte längre på en betrodd IP-adress.
 
-## <a name="preview-features"></a>Förhandsgranskningsfunktioner
-
-Förutom den allmänt tillgängliga namngivna plats funktionen finns det också en namngiven plats (för hands version). Du kan komma åt för hands versionen av den namngivna platsen genom att använda banderollen längst upp på bladet aktuell namngiven plats.
-
-![Prova för hands versionen av namngivna platser](./media/location-condition/preview-features.png)
-
-Med den namngivna platsens för hands version kan du
-
-- Konfigurera upp till 195 namngivna platser
-- Konfigurera upp till 2000 IP-intervall per namngiven plats
-- Konfigurera IPv6-adresser tillsammans med IPv4-adresser
-
-Vi har också lagt till ytterligare kontroller för att minska ändringen av felaktig konfiguration.
-
-- Privata IP-adressintervall kan inte längre konfigureras
-- Antalet IP-adresser som kan ingå i ett intervall är begränsat. Endast CIDR-masker som är större än/8 kommer att tillåtas när du konfigurerar ett IP-intervall.
-
-I för hands versionen finns det nu två alternativ för att skapa: 
-
-- **Ländernas plats**
-- **Plats för IP-intervall**
-
-> [!NOTE]
-> Det går inte att mappa IPv6-adressintervall till länder. Endast IPv4-adresser mappas till länder.
-
-![Namngivna platser för hands versions gränssnitt](./media/location-condition/named-location-preview.png)
-
 ## <a name="location-condition-in-policy"></a>Plats villkor i princip
 
 När du konfigurerar plats villkoret har du möjlighet att skilja mellan:
@@ -143,7 +114,7 @@ Med det här alternativet kan du välja en eller flera namngivna platser. För a
 
 ## <a name="ipv6-traffic"></a>IPv6-trafik
 
-Som standard gäller principer för villkorlig åtkomst för all IPv6-trafik. Med den [namngivna platsens för hands version](#preview-features)kan du undanta vissa IPv6-adressintervall från en princip för villkorlig åtkomst. Det här alternativet är användbart i fall där du inte vill att principen ska tillämpas för vissa IPv6-intervall. Till exempel, om du inte vill genomdriva en princip för användning i företags nätverket och företagets nätverk finns på offentliga IPv6-intervall.  
+Som standard gäller principer för villkorlig åtkomst för all IPv6-trafik. Du kan undanta vissa IPv6-adressintervall från en princip för villkorlig åtkomst om du inte vill att principer ska tillämpas för vissa IPv6-intervall. Till exempel, om du inte vill genomdriva en princip för användning i företags nätverket och företagets nätverk finns på offentliga IPv6-intervall.  
 
 ### <a name="when-will-my-tenant-have-ipv6-traffic"></a>När kommer min klient att ha IPv6-trafik?
 

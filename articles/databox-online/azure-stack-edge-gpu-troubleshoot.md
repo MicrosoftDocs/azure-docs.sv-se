@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: c6f7182fe058bacb1236ff10dfc1553d23a7e1f2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 87e75d771c2cc269eaae81c2433f445eb65a17a9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645262"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314158"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Felsök problem med din Azure Stack Edge Pro GPU-enhet 
 
@@ -146,7 +146,7 @@ Här är de fel som kan visas under konfigurationen av Azure Resource Manager f�
 |Add-AzureRmEnvironment: ett fel uppstod när begäran skickades.<br>På rad: 1 tecken: 1<br>+ Add-AzureRmEnvironment-Name Az3-ARMEndpoint " https://management.dbe ...|Det här felet innebär att din Azure Stack Edge Pro-enhet inte kan kontaktas eller har kon figurer ATS korrekt. Kontrol lera att gräns enheten och klienten är korrekt konfigurerade. Vägledning finns i raden **allmänna problem** i den här tabellen.|
 |Tjänsten returnerade ett fel. Check InnerException för mer information: den underliggande anslutningen stängdes: det gick inte att upprätta en förtroende relation för den säkra SSL/TLS-kanalen. |   Det här felet beror troligen på en eller flera åtgärder för att utföra egna certifikat på ett felaktigt sätt. [Här](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates)kan du hitta vägledning. |
 |Åtgärden returnerade en ogiltig status kod ' ServiceUnavailable ' <br> Svars status koden indikerar inte lyckad: 503 (tjänsten är inte tillgänglig). | Det här felet kan vara resultatet av något av dessa villkor.<li>ArmStsPool är i stoppat läge.</li><li>Någon av webbplatserna för Azure Resource Manager/säkerhetstoken-tjänster är nere.</li><li>Kluster resursen för Azure Resource Manager är nere.</li><br><strong>Obs:</strong> Det kan lösa problemet genom att starta om enheten, men du bör samla in support paketet så att du kan felsöka det ytterligare.|
-|AADSTS50126: ogiltigt användar namn eller lösen ord.<br>Spårnings-ID: 29317da9-52fc-4ba0-9778-446ae5625e5a<br>Korrelations-ID: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Tidsstämpel: 2019-11-15 09:21:57Z: fjärrservern returnerade ett fel: (400) felaktig begäran.<br>På rad: 1 tecken: 1 |Det här felet kan vara resultatet av något av dessa villkor.<li>För ett ogiltigt användar namn och lösen ord kontrollerar du att kunden har ändrat lösen ordet från Azure Portal genom att följa stegen [här](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password) och sedan använda rätt lösen ord.<li>För ett ogiltigt klient-ID är klient-ID: t ett fast GUID och ska anges till `c0257de7-538f-415c-993a-1b87a031879d`</li>|
+|AADSTS50126: ogiltigt användar namn eller lösen ord.<br>Spårnings-ID: 29317da9-52fc-4ba0-9778-446ae5625e5a<br>Korrelations-ID: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Tidsstämpel: 2019-11-15 09:21:57Z: fjärrservern returnerade ett fel: (400) felaktig begäran.<br>På rad: 1 tecken: 1 |Det här felet kan vara resultatet av något av dessa villkor.<li>För ett ogiltigt användar namn och lösen ord kontrollerar du att kunden har ändrat lösen ordet från Azure Portal genom att följa stegen [här](/azure/databox-online/azure-stack-edge-gpu-set-azure-resource-manager-password) och sedan använda rätt lösen ord.<li>För ett ogiltigt klient-ID är klient-ID: t ett fast GUID och ska anges till `c0257de7-538f-415c-993a-1b87a031879d`</li>|
 |Connect-AzureRmAccount: AADSTS90056: resursen är inaktive rad eller finns inte. Kontrol lera appens kod för att se till att du har angett den exakta resurs-URL: en för resursen som du försöker få åtkomst till.<br>Spårnings-ID: e19bdbc9-5dc8-4a74-85c3-ac6abdfda115<br>Korrelations-ID: 75c8ef5a-830e-48b5-b039-595a96488ff9 tidsstämpel: 2019-11-18 07:00:51Z: fjärrservern returnerade ett fel: (400) dåligt |Resurs slut punkterna som används i `Add-AzureRmEnvironment` kommandot är felaktiga.|
 |Det gick inte att hämta slut punkter från molnet.<br>Kontrol lera att du har en nätverks anslutning. Fel information: HTTPSConnectionPool (värd = ' Management. dbg-of4k6suvm.microsoftdatabox.com ', Port = 30005): högsta antal återförsök har överskridits med URL:/metadata/endpoints? API-version = 2015-01-01 (orsakas av SSLError (SSLError ("felaktig hand skakning: fel ([(" SSL-rutiner "," tls_process_server_certificate "," certifikats verifiering misslyckades ")],),)) |Det här felet förekommer oftast i en Mac/Linux-miljö och beror på följande:<li>Ett PEM-format certifikat har inte lagts till i python-certifikatarkivet.</li> |
 

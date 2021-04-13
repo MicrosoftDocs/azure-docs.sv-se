@@ -1,46 +1,41 @@
 ---
-title: Windows Virtual Desktop MSIX-appen koppla Portal Preview – Azure
-description: Så här konfigurerar du MSIX-appen för att ansluta till virtuella Windows-datorer med hjälp av Azure Portal.
+title: Windows Virtual Desktop msix-app–portal – Azure
+description: Konfigurera MSIX-app bifoga för Windows Virtual Desktop med hjälp av Azure Portal.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 02/11/2021
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a849b65fd25e6943925ffa245430cd8a27529fdb
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 0d7598e332539b8203d55bbcb1cf497811c32540
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448431"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366563"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Konfigurera MSIX-appbifogning med Azure Portal
 
-> [!IMPORTANT]
-> MSIX app Attach är för närvarande en offentlig för hands version.
-> Den här för hands versionen tillhandahålls utan service nivå avtal och vi rekommenderar inte att du använder den för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
-> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Den här artikeln beskriver hur du konfigurerar MSIX app attach (för hands version) i en Windows Virtual Desktop-miljö.
+Den här artikeln beskriver hur du ställer in MSIX-app bifoga i en Windows Virtual Desktop miljö.
 
 ## <a name="requirements"></a>Krav
 
 >[!IMPORTANT]
->Innan du börjar ska du fylla i och skicka [det här formuläret](https://aka.ms/enablemsixappattach) för att aktivera MSIX app Attach i din prenumeration. Om du inte har en godkänd begäran fungerar inte MSIX-appens koppling. Godkännande av förfrågningar kan ta upp till 24 timmar under arbets dagar. Du får ett e-postmeddelande när din begäran har godkänts och slutförts.
+>Innan du börjar ska du fylla i och skicka det här formuläret [för](https://aka.ms/enablemsixappattach) att aktivera att MSIX-appen bifogas i din prenumeration. Om du inte har en godkänd begäran fungerar det inte att bifoga MSIX-appen. Godkännande av begäranden kan ta upp till 24 timmar under arbetsdagar. Du får ett e-postmeddelande när din begäran har accepterats och slutförts.
 
-Det här behöver du för att konfigurera MSIX app Attach:
+Det här behöver du för att konfigurera MSIX-app bifoga:
 
-- En fungerande distribution av virtuella Windows-datorer. Information om hur du distribuerar virtuella Windows-datorer (klassisk) finns i [skapa en klient i Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Information om hur du distribuerar virtuella Windows-datorer med Azure Resource Manager-integrering finns i [skapa en adresspool med Azure Portal](./create-host-pools-azure-marketplace.md).
-- En Windows-adresspool för virtuella skriv bord med minst en aktiv session-värd.
-- Den här poolen måste vara i validerings miljön. 
-- MSIX-packnings verktyget.
-- Ett MSIX-paketerat program expanderat till en MSIX-avbildning som laddas upp till en fil resurs.
-- En fil resurs i Windows-distributionen för virtuella skriv bord där MSIX-paketet ska lagras.
-- Fil resursen där du laddade upp MSIX-avbildningen måste också vara tillgänglig för alla virtuella datorer i poolen. Användare behöver skrivskyddade behörigheter för att komma åt avbildningen.
+- En fungerande Windows Virtual Desktop distribution. Information om hur du distribuerar Windows Virtual Desktop (klassisk) finns [i Skapa en klientorganisation i Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Information om hur du distribuerar Windows Virtual Desktop med Azure Resource Manager-integrering finns i Skapa en [värdpool med Azure Portal](./create-host-pools-azure-marketplace.md).
+- En Windows Virtual Desktop värdpool med minst en aktiv sessionsvärd.
+- Den här värdpoolen måste finnas i valideringsmiljön. 
+- MSIX-paketeringsverktyget.
+- Ett MSIX-paketerat program expanderat till en MSIX-avbildning som laddas upp till en filresurs.
+- En filresurs i Windows Virtual Desktop distribution där MSIX-paketet ska lagras.
+- Filresursen där du laddade upp MSIX-avbildningen måste också vara tillgänglig för alla virtuella datorer (VM) i värdpoolen. Användarna behöver skrivskyddade behörigheter för att få åtkomst till avbildningen.
 - Om certifikatet inte är offentligt betrott följer du anvisningarna i [Installera certifikat](app-attach.md#install-certificates).
 
-## <a name="turn-off-automatic-updates-for-msix-app-attach-applications"></a>Inaktivera automatiska uppdateringar för MSIX app attaching Applications
+## <a name="turn-off-automatic-updates-for-msix-app-attach-applications"></a>Inaktivera automatiska uppdateringar för MSIX-apptillämpningar
 
-Innan du börjar måste du inaktivera automatiska uppdateringar för MSIX app attaching Applications. Om du vill inaktivera automatiska uppdateringar måste du köra följande kommandon i en upphöjd kommando tolk:
+Innan du börjar måste du inaktivera automatiska uppdateringar för msix-apptillämpningar. Om du vill inaktivera automatiska uppdateringar måste du köra följande kommandon i en upphöjd kommandotolk:
 
 ```cmd
 rem Disable Store auto update:
@@ -58,183 +53,183 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\De
 ```
 
 >[!NOTE]
->Vi rekommenderar att du startar om den virtuella datorn när du har aktiverat Hyper-V.
+>Vi rekommenderar att du startar om den virtuella datorn när du har aktivera Hyper-V.
 
-## <a name="configure-the-msix-app-attach-management-interface"></a>Konfigurera MSIX app Attach Management Interface
+## <a name="configure-the-msix-app-attach-management-interface"></a>Konfigurera hanteringsgränssnittet för att koppla MSIX-appen
 
-Därefter måste du ladda ned och konfigurera MSIX-appen för att ansluta hanterings gränssnittet för Azure Portal.
+Därefter måste du ladda ned och konfigurera MSIX-appens hanteringsgränssnitt för Azure Portal.
 
-Konfigurera hanterings gränssnittet:
+Konfigurera hanteringsgränssnittet:
 
 1. [Öppna Azure Portal](https://portal.azure.com).
-2. Om du får en uppmaning om att fråga om du vill ha det betrodda tillägget väljer du **Tillåt**.
+2. Om du får en fråga som frågar om du anser att tillägget är tillförlitligt väljer du **Tillåt**.
 
       > [!div class="mx-imgBorder"]
-      > ![En skärm bild av fönstret ej betrodda tillägg. "Tillåt" är markerat i rött.](media/untrusted-extensions.png)
+      > ![En skärmbild av fönstret ej betrodda tillägg. "Tillåt" är markerat i rött.](media/untrusted-extensions.png)
 
 
-## <a name="add-an-msix-image-to-the-host-pool"></a>Lägg till en MSIX-avbildning i poolen värd
+## <a name="add-an-msix-image-to-the-host-pool"></a>Lägga till en MSIX-avbildning i värdpoolen
 
-Härnäst måste du lägga till MSIX-avbildningen i din värdbaserade pool.
+Därefter måste du lägga till MSIX-avbildningen i värdpoolen.
 
 Så här lägger du till MSIX-avbildningen:
 
 1. Öppna Azure-portalen.
 
-2. Ange det **virtuella Windows-skrivbordet** i Sök fältet och välj sedan tjänst namnet.
+2. Ange **Windows Virtual Desktop** i sökfältet och välj sedan namnet på tjänsten.
 
       > [!div class="mx-imgBorder"]
-      > ![En skärm bild av en användare som väljer "virtuellt Windows-skrivbord" från den nedrullningsbara menyn i Sök fältet i Azure Portal. "Windows Virtual Desktop" är markerat i rött.](media/find-and-select.png)
+      > ![En skärmbild av en användare som Windows Virtual Desktop "Windows Virtual Desktop" i sökfältets nedrullningsbar meny i Azure Portal. "Windows Virtual Desktop" är markerat i rött.](media/find-and-select.png)
 
-3. Välj den värd pool där du planerar att placera MSIX-apparna.
+3. Välj den värdpool där du planerar att placera MSIX-apparna.
 
-4. Välj **MSIX-paket** för att öppna data rutnätet med alla **MSIX-paket** som för närvarande har lagts till i värd poolen.
+4. Välj **MSIX-paket** för att öppna datarutnätet med alla **MSIX-paket som** för närvarande har lagts till i värdpoolen.
 
-5. Välj **+ Lägg** till för att öppna fliken **Lägg till MSIX-paket** .
+5. Välj **+ Lägg till** för att öppna fliken Lägg till **MSIX-paket.**
 
-6. Ange följande värden på fliken **Lägg till MSIX-paket** :
+6. På fliken **Lägg till MSIX-paket** anger du följande värden:
 
-      - För **MSIX avbildnings Sök väg** anger du en giltig UNC-sökväg som pekar på MSIX-avbildningen på fil resursen. (Till exempel `\\storageaccount.file.core.windows.net\msixshare\appfolder\MSIXimage.vhd` .) När du är klar väljer du **Lägg till** för att checka in behållaren MSIX för att kontrol lera om sökvägen är giltig.
+      - För **MSIX-avbildningssökväg** anger du en giltig UNC-sökväg som pekar på MSIX-avbildningen på filresursen. (Till exempel `\\storageaccount.file.core.windows.net\msixshare\appfolder\MSIXimage.vhd` .) När du är klar väljer du Lägg **till för** att fråga MSIX-containern för att kontrollera om sökvägen är giltig.
 
-      - För **MSIX-paket** väljer du relevant MSIX-paket namn på den nedrullningsbara menyn. Den här menyn kommer bara att fyllas i om du har angett en giltig avbildnings Sök väg i **sökvägen till MSIX-avbildningen**.
+      - För **MSIX-paket** väljer du relevant MSIX-paketnamn i listrutan. Den här menyn fylls bara i om du har angett en giltig avbildningssökväg i **MSIX-avbildningssökvägen**.
 
-      - För **paket program** kontrollerar du att listan innehåller alla MSIX-program som du vill ska vara tillgängliga för användare i ditt MSIX-paket.
+      - För **Paketprogram** kontrollerar du att listan innehåller alla MSIX-program som du vill ska vara tillgängliga för användare i ditt MSIX-paket.
 
-      - Du kan också ange ett **visnings namn** om du vill att ditt paket ska ha ett mer användarvänligt användar distributioner.
+      - Du kan också ange ett **Visningsnamn** om du vill att paketet ska ha ett mer användarvänligt i dina användardistributioner.
 
-      - Kontrol lera att **versionen** har rätt versions nummer.
+      - Kontrollera att **Versionen** har rätt versionsnummer.
 
-      - Välj den **registrerings typ** som du vill använda. Vilken du använder beror på dina behov:
+      - Välj den **registreringstyp** som du vill använda. Vilken du använder beror på dina behov:
 
-    - **Registreringen på begäran** skjuter upp den fullständiga registreringen av MSIX-programmet tills användaren startar programmet. Detta är den registrerings typ som vi rekommenderar att du använder.
+    - **Registrering på begäran skjuter** upp den fullständiga registreringen av MSIX-programmet tills användaren startar programmet. Det här är den registreringstyp som vi rekommenderar att du använder.
 
-    - **Logga in blockerar** endast registreringar när användaren loggar in. Vi rekommenderar inte den här typen eftersom den kan leda till längre inloggnings tider för användare.
+    - **Inloggningen blockerar** endast registreringar när användaren loggar in. Vi rekommenderar inte den här typen eftersom den kan leda till längre inloggningstider för användarna.
 
-7.  I **tillstånd** väljer du önskat tillstånd.
-    -  Med **aktiv** status kan användare interagera med paketet.
-    -  **Inaktiv** status gör att det virtuella Windows-skrivbordet ignorerar paketet och levererar det inte till användarna.
+7.  För **Delstat** väljer du önskat tillstånd.
+    -  Med **statusen** Aktiv kan användarna interagera med paketet.
+    -  Statusen **Inaktiv** gör att Windows Virtual Desktop ignorerar paketet och inte levererar det till användarna.
 
-8. När du är klar väljer du **Lägg till**.
+8. När du är klar väljer du Lägg **till**.
 
-## <a name="publish-msix-apps-to-an-app-group"></a>Publicera MSIX-appar i en app-grupp
+## <a name="publish-msix-apps-to-an-app-group"></a>Publicera MSIX-appar till en appgrupp
 
-Sedan måste du publicera apparna i paketet. Du måste göra detta för både Station ära och fjärranslutna program grupper.
+Därefter måste du publicera apparna i paketet. Du måste göra detta för både programgrupper för stationära datorer och fjärranslutna appar.
 
-Om du redan har en MSIX-avbildning kan du gå vidare till [publicera MSIX-appar i en app-grupp](#publish-msix-apps-to-an-app-group). Om du vill testa äldre program följer du instruktionerna i [skapa ett MSIX-paket från ett Skriv bords installations program på en virtuell dator](/windows/msix/packaging-tool/create-app-package-msi-vm/) för att konvertera det äldre programmet till ett MSIX-paket.
+Om du redan har en MSIX-avbildning kan du gå vidare [till Publicera MSIX-appar till en appgrupp.](#publish-msix-apps-to-an-app-group) Om du vill testa äldre program följer du anvisningarna i Skapa ett [MSIX-paket](/windows/msix/packaging-tool/create-app-package-msi-vm/) från ett installationsprogram på en virtuell dator för att konvertera det äldre programmet till ett MSIX-paket.
 
 Så här publicerar du apparna:
 
-1. I resurs leverantören för Windows virtuella skriv bord väljer du fliken **program grupper** .
+1. I Windows Virtual Desktop resursprovidern väljer **du fliken Programgrupper.**
 
-2. Välj den program grupp som du vill publicera apparna på.
+2. Välj den programgrupp som du vill publicera apparna till.
 
    >[!NOTE]
-   >MSIX-program kan levereras med MSIX-appen bifoga till både fjärrappar och skriv bords grupps grupper
+   >MSIX-program kan levereras med MSIX-appen ansluts till både fjärrapp- och skrivbordsappgrupper
 
-3. När du är i app-gruppen väljer du fliken **program** . I **program** rutnätet visas alla befintliga appar i app-gruppen.
+3. När du är i appgruppen väljer du **fliken** Program. **Rutnätet** Program visar alla befintliga appar i appgruppen.
 
-4. Välj **+ Lägg** till för att öppna fliken **Lägg till program** .
+4. Välj **+ Lägg till** för att öppna fliken Lägg **till** program.
 
       > [!div class="mx-imgBorder"]
-      > ![En skärm bild av användaren som väljer + Lägg till för att öppna fliken Lägg till program](media/select-add.png)
+      > ![En skärmbild av användaren som väljer + Lägg till för att öppna fliken Lägg till program](media/select-add.png)
 
-5. För **program källa** väljer du källan för ditt program.
-    - Om du använder en app för Skriv bords grupp väljer du **MSIX-paket**.
+5. För **Programkälla** väljer du källa för ditt program.
+    - Om du använder en skrivbordsappgrupp väljer du **MSIX-paket**.
       
       > [!div class="mx-imgBorder"]
-      > ![En skärm bild av en kund som väljer MSIX-paket på den nedrullningsbara menyn för program källan. MSIX-paketet är markerat i rött.](media/select-source.png)
+      > ![En skärmbild av en kund som väljer MSIX-paket från den nedrullningsna menyn programkälla. MSIX-paketet är markerat i rött.](media/select-source.png)
     
-    - Välj något av följande alternativ om du använder en fjärran sluten app-grupp:
+    - Om du använder en fjärrappgrupp väljer du något av följande alternativ:
         
         - Start-menyn
-        - Sökväg till app
+        - Appsökväg
         - MSIX-paket
 
-    - För **program namn** anger du ett beskrivande namn för programmet.
+    - I **Programnamn** anger du ett beskrivande namn för programmet.
 
     Du kan också konfigurera följande valfria funktioner:
    
-    - I **visnings namn** anger du ett nytt namn för det paket som användarna ser.
+    - I **Visningsnamn** anger du ett nytt namn för det paket som användarna ser.
 
-    - I **Beskrivning** anger du en kort beskrivning av Appaketet.
+    - I **Beskrivning** anger du en kort beskrivning av appaketet.
 
-    - Om du använder en fjärran sluten app-grupp kan du också konfigurera följande alternativ:
+    - Om du använder en fjärrappgrupp kan du också konfigurera följande alternativ:
 
-        - **Sökväg till ikon**
-        - **Ikon index**
-        - **Visa i webb flöde**
+        - **Ikonsökväg**
+        - **Ikonindex**
+        - **Visa i webbflöde**
 
 6. När du är klar väljer du **Spara**.
 
 >[!NOTE]
->När en användare tilldelas till en fjärran sluten app-grupp och skriv bords grupp från samma adresspool, visas gruppen Skriv bords grupp i matningen.
+>När en användare tilldelas till en fjärrappgrupp och en skrivbordsappgrupp från samma värdpool visas skrivbordsappgruppen i flödet.
 
-## <a name="assign-a-user-to-an-app-group"></a>Tilldela en användare till en app-grupp
+## <a name="assign-a-user-to-an-app-group"></a>Tilldela en användare till en appgrupp
 
-När du har tilldelat MSIX-appar till en app-grupp måste du ge användarna åtkomst till dem. Du kan tilldela åtkomst genom att lägga till användare eller användar grupper i en app-grupp med publicerade MSIX-program. Följ anvisningarna i [Hantera app-grupper med Azure Portal](manage-app-groups.md) för att tilldela dina användare till en app-grupp.
+När du har tilldelar MSIX-appar till en appgrupp måste du ge användarna åtkomst till dem. Du kan tilldela åtkomst genom att lägga till användare eller användargrupper i en appgrupp med publicerade MSIX-program. Följ anvisningarna i [Hantera appgrupper med Azure Portal](manage-app-groups.md) för att tilldela användarna till en appgrupp.
 
 >[!NOTE]
->MSIX-appen som ansluter fjärrappar kan försvinna från flödet när du testar fjärrappar under en offentlig för hands version. Apparna visas inte eftersom den värdbaserade pool som du använder i utvärderings miljön hanteras av en RD Broker i produktions miljön. Eftersom RD Broker i produktions miljön inte registrerar närvaron av MSIX-appen bifoga fjärrappar, visas inte apparna i feeden.
+>MSIX-appens anslutning av fjärrappar kan försvinna från flödet när du testar fjärrappar under den offentliga förhandsversionen. Apparna visas inte eftersom värdpoolen som du använder i utvärderingsmiljön betjänas av en rdutjämning i produktionsmiljön. Eftersom RD Broker i produktionsmiljön inte registrerar förekomsten av ATT MSIX-appen bifogar fjärrappar visas inte apparna i flödet.
 
-## <a name="change-msix-package-state"></a>Ändra paket status för MSIX
+## <a name="change-msix-package-state"></a>Ändra MSIX-pakettillstånd
 
-Därefter måste du ändra MSIX-paketets tillstånd till antingen **aktiv** eller **inaktiv**, beroende på vad du vill göra med paketet. Aktiva paket är paket som användarna kan interagera med när de har publicerats. Inaktiva paket ignoreras av det virtuella Windows-skrivbordet, så användarna kan inte interagera med apparna i.
+Därefter måste du ändra MSIX-pakettillståndet till antingen **Aktiv** eller **Inaktiv**, beroende på vad du vill göra med paketet. Aktiva paket är paket som användarna kan interagera med när de har publicerats. Inaktiva paket ignoreras av Windows Virtual Desktop, så att användarna inte kan interagera med apparna i dem.
 
-### <a name="change-state-with-the-applications-list"></a>Ändra tillstånd med program listan
+### <a name="change-state-with-the-applications-list"></a>Ändra tillstånd med programlistan
 
-Ändra paket tillstånd med program listan:
+Så här ändrar du pakettillståndet med programlistan:
 
-1. Gå till din värd pool och välj **MSIX-paket**. Du bör se en lista över alla befintliga MSIX-paket i Host-poolen.
+1. Gå till din värdpool och välj **MSIX-paket.** Du bör se en lista över alla befintliga MSIX-paket i värdpoolen.
 
-2. Välj de MSIX-paket vars tillstånd du vill ändra och välj sedan **ändra tillstånd**.
+2. Välj de MSIX-paket vars tillstånd du behöver ändra och välj sedan **Ändra tillstånd.**
 
-### <a name="change-state-with-update-package"></a>Ändra tillstånd med uppdaterings paket
+### <a name="change-state-with-update-package"></a>Ändra tillstånd med uppdateringspaket
 
-Ändra paket tillstånd med ett uppdaterings paket:
+Så här ändrar du pakettillståndet med ett uppdateringspaket:
 
-1. Gå till din värd pool och välj **MSIX-paket**. Du bör se en lista över alla befintliga MSIX-paket i Host-poolen.
+1. Gå till värdpoolen och välj **MSIX-paket**. Du bör se en lista över alla befintliga MSIX-paket i värdpoolen.
 
-2. Välj namnet på det paket vars tillstånd du vill ändra från listan MSIX paket. Nu öppnas fliken **uppdaterings paket** .
+2. Välj namnet på det paket vars tillstånd du vill ändra från MSIX-paketlistan. Då öppnas fliken **Uppdateringspaket.**
 
-3. Växla **tillstånds** växeln till antingen **inaktiv** eller **aktiv** och välj sedan **Spara.**
+3. Växla **tillståndsväxeln** till antingen **Inaktiv** **eller Aktiv** och välj sedan **Spara.**
 
-## <a name="change-msix-package-registration-type"></a>Ändra registrerings typ för MSIX-paket
+## <a name="change-msix-package-registration-type"></a>Ändra msix-paketregistreringstyp
 
-Ändra paketets registrerings typ:
+Så här ändrar du paketets registreringstyp:
 
-1. Välj **MSIX-paket**. Du bör se en lista över alla befintliga MSIX-paket i Host-poolen.
+1. Välj **MSIX-paket**. Du bör se en lista över alla befintliga MSIX-paket i värdpoolen.
 
-2. Välj **paket namn i** **rutnätet MSIX-paket** . Då öppnas bladet där du kan uppdatera paketet.
+2. Välj **Paketnamn i** **msix-paketrutnätet.** Då öppnas bladet för att uppdatera paketet.
 
-3. Växla **registrerings typen** via knappen **på begäran/logga in på spärren** efter behov och välj **Spara.**
+3. Växla **Registreringstyp** via knappen **På begäran/Logga in blockering efter** behov och välj **Spara.**
 
 ## <a name="remove-an-msix-package"></a>Ta bort ett MSIX-paket
 
-Ta bort ett MSIX-paket från din värd pool:
+Så här tar du bort ett MSIX-paket från värdpoolen:
 
-1. Välj **MSIX-paket**.  Du bör se en lista över alla befintliga MSIX-paket i Host-poolen.
+1. Välj **MSIX-paket**.  Du bör se en lista över alla befintliga MSIX-paket i värdpoolen.
 
-2. Välj ellipsen på höger sida av namnet på det paket som du vill ta bort och välj sedan **ta bort**.
+2. Välj ellipsen på höger sida av namnet på det paket som du vill ta bort och välj sedan Ta **bort**.
 
 ## <a name="remove-msix-apps"></a>Ta bort MSIX-appar
 
-Ta bort enskilda MSIX-appar från paketet:
+Så här tar du bort enskilda MSIX-appar från paketet:
 
-1. Gå till Host-poolen och välj **program grupper**.
+1. Gå till värdpoolen och välj **Programgrupper**.
 
-2. Välj den program grupp som du vill ta bort MSIX-appar från.
+2. Välj den programgrupp som du vill ta bort MSIX-appar från.
 
-3. Öppna fliken **program** .
+3. Öppna **fliken** Program.
 
-4. Välj den app som du vill ta bort och välj sedan **ta bort**.
+4. Välj den app som du vill ta bort och välj sedan **Ta bort.**
 
 ## <a name="next-steps"></a>Nästa steg
 
-Fråga våra Community-frågor om den här funktionen på [Windows-TechCommunity för virtuella datorer](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
+Ställ våra communityfrågor om den här funktionen på [Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
 
-Du kan också lämna feedback för virtuella Windows-datorer i [hubben Windows Virtual Desktop feedback](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app).
+Du kan också lämna feedback för Windows Virtual Desktop på Windows Virtual Desktop [feedbackhubben.](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)
 
-Här följer några andra artiklar som du kan ha nytta av:
+Här är några andra artiklar som kan vara till hjälp:
 
-- [Ord lista för MSIX-appen](app-attach-glossary.md)
-- [Vanliga frågor och svar om MSIX app](app-attach-faq.md)
+- [Bifoga MSIX-appordlistor](app-attach-glossary.md)
+- [Vanliga frågor och svar om att bifoga MSIX-appar](app-attach-faq.md)

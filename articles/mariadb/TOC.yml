@@ -73,7 +73,7 @@
       href: concepts-connectivity.md
 - name: Serverhantering
   items:
-    - name: Server koncept
+    - name: Serverkoncept
       href: concepts-servers.md
     - name: Begränsningar
       href: concepts-limits.md
@@ -106,19 +106,19 @@
     - name: Introduktion till affärskontinuitet
       displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
       href: concepts-business-continuity.md
-    - name: Koncept med hög tillgänglighet
+    - name: Begrepp för hög tillgänglighet
       href: concepts-high-availability.md
 - name: Nätverk
   items:
     - name: Anslutningsarkitektur
       href: concepts-connectivity-architecture.md
-    - name: Koncept för brand Väggs regler
+    - name: Begrepp för brandväggsregler
       href: concepts-firewall-rules.md
-    - name: Konfigurera brand Väggs regler
+    - name: Konfigurera brandväggsregler
       items:
-        - name: Konfigurera brand Väggs regler med hjälp av Azure Portal
+        - name: Konfigurera brandväggsregler med Azure Portal
           href: howto-manage-firewall-portal.md
-        - name: Konfigurera brand Väggs regler med hjälp av Azure CLI
+        - name: Konfigurera brandväggsregler med Azure CLI
           href: howto-manage-firewall-cli.md
     - name: Virtual Network
       href: concepts-data-access-security-vnet.md
@@ -132,9 +132,9 @@
       href: concepts-data-access-security-private-link.md
     - name: Private Link
       items:
-        - name: Konfigurera privat länk med Azure Portal
+        - name: Konfigurera Private Link med Azure Portal
           href: howto-configure-privatelink-portal.md
-        - name: Konfigurera privat länk med Azure CLI
+        - name: Konfigurera Private Link med Azure CLI
           href: howto-configure-privatelink-cli.md
     - name: Neka åtkomst till offentligt nätverk
       items:
@@ -149,23 +149,23 @@
     - name: Säkerhetskontroller av Azure Policy
       displayName: 'regulatory, compliance, standards, domains'
       href: ./security-controls-policy.md
-    - name: Konfigurera nätverks säkerhet med SSL
+    - name: Konfigurera nätverkssäkerhet med SSL
       href: concepts-ssl-connection-security.md
     - name: Konfigurera TLS
       href: howto-tls-configurations.md
     - name: Advanced Threat Protection
       href: concepts-data-access-and-security-threat-protection.md
-    - name: Konfigurerar Avancerat skydd
+    - name: Konfigurera Advanced Threat Protection
       href: howto-database-threat-protection-portal.md
-    - name: Gransknings begrepp
+    - name: Granskningsbegrepp
       href: concepts-audit-logs.md
-    - name: Konfigurera gransknings loggar
+    - name: Konfigurera granskningsloggar
       items:
         - name: Azure Portal
           href: howto-configure-audit-logs-portal.md
         - name: Azure CLI
           href: howto-configure-audit-logs-cli.md
-- name: Underhåll av tjänst
+- name: Tjänstunderhåll
   items:
     - name: Planerat underhåll
       href: concepts-planned-maintenance-notification.md
@@ -183,13 +183,16 @@
           href: howto-restore-server-cli.md
         - name: Azure PowerShell
           href: howto-restore-server-powershell.md
+    - name: Återställa en borttagna server
+      href: howto-restore-dropped-server.md
+      displayName: 'restore server,dropped, deleted, recover'
 - name: Övervaka och finjustera
   items:
     - name: Begrepp
       href: concepts-monitoring.md
     - name: Långsamma frågeloggar
       href: concepts-server-logs.md
-    - name: Komma åt långsamma Query-loggar
+    - name: Få åtkomst till långsamma frågeloggar
       items:
         - name: Azure Portal
           href: howto-configure-server-logs-portal.md
@@ -201,6 +204,8 @@
       href: concepts-query-performance-insight.md
     - name: Prestandarekommendationer
       href: concepts-performance-recommendations.md
+    - name: Azure Advisor rekommendationer
+      href: concepts-azure-advisor-recommendations.md
 - name: Replikering
   items:
     - name: Dataintensiv replikering
@@ -209,7 +214,7 @@
       href: howto-data-in-replication.md
     - name: Skrivskyddade repliker
       href: concepts-read-replicas.md
-    - name: Skapa Läs repliker
+    - name: Skapa skrivskyddade repliker
       items:
         - name: Skapa skrivskyddade repliker på Azure-portalen
           href: howto-read-replicas-portal.md

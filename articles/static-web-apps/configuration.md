@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 280c13fdee281acc4f805aba27a10277eb3988c2
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 3ecd38b725307c7a3d75787795130c5106de85a7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218982"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312254"
 ---
 # <a name="configure-azure-static-web-apps"></a>Konfigurera statisk Azure-Web Apps
 
@@ -33,7 +33,7 @@ Den rekommenderade platsen för _staticwebapp.config.jspå_ finns i den angivna 
 Mer information finns i [exempel konfigurations](#example-configuration-file) filen.
 
 > [!IMPORTANT]
-> [ _routes.jspå_ filen](./routes.md) ignoreras om en _staticwebapp.config.js_ finns.
+> [ _staticwebapp.config.jspå_ filen](./routes.md) ignoreras om en _staticwebapp.config.js_ finns.
 
 ## <a name="routes"></a>Vägar
 
@@ -47,28 +47,28 @@ Med flödes regler kan du definiera mönstret för URL: er som tillåter åtkoms
 
 Operationsföljden avser avsevärt överlappande av autentisering (identifierar användaren) och auktoriseringen (tilldelning av användarens förmågor). Se till att läsa guiden för [autentisering och auktorisering](authentication-authorization.md) tillsammans med den här artikeln.
 
-Standard filen för statiskt innehåll är *index.html* -filen.
+Standard filen för statiskt innehåll är _index.html_ -filen.
 
 ## <a name="defining-routes"></a>Definiera vägar
 
 Varje regel består av ett väg mönster, tillsammans med en eller flera av de valfria regel egenskaperna. Flödes regler definieras i `routes` matrisen. Se [exempel på konfigurations filen](#example-configuration-file) för användnings exempel.
 
-| Regel egenskap  | Obligatorisk | Standardvärde | Kommentar                                                      |
-| -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Ja      | saknas          | Det väg mönster som anroparen begärt.<ul><li>[Jokertecken](#wildcards) stöds i slutet av väg Sök vägar.<ul><li>Route _admin/ \*_ matchar till exempel alla vägar under _admin_ -sökvägen.</ul></ul>|
-| `rewrite`        | Inga       | saknas          | Definierar filen eller sökvägen som returneras från begäran.<ul><li>Kan inte anges samtidigt till en `redirect` regel<li>Omskrivnings regler ändrar inte webbläsarens plats.<li>Värdena måste vara relativa till appens rot</ul>  |
-| `redirect`        | Inga       | saknas          | Definierar den fil eller sökväg som omdirigerar målet för en begäran.<ul><li>Är ömsesidigt uteslutande för en `rewrite` regel.<li>Omdirigera regler ändra webbläsarens plats.<li>Standard svars koden är en [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) (tillfällig omdirigering), men du kan åsidosätta med en [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) (permanent omdirigering).</ul> |
-| `allowedRoles` | Inga       | antal     | Definierar en lista över roll namn som krävs för att få åtkomst till en väg. <ul><li>Giltiga tecken är `a-z` , `A-Z` , `0-9` och `_` .<li>Den inbyggda rollen, [`anonymous`](./authentication-authorization.md) gäller för alla oautentiserade användare<li>Den inbyggda rollen [`authenticated`](./authentication-authorization.md) gäller för alla inloggade användare.<li>Användarna måste tillhöra minst en roll.<li>Roller matchas på en _eller_ -basis.<ul><li>Om en användare finns i någon av rollerna i listan beviljas åtkomst.</ul><li>Enskilda användare är kopplade till roller genom [inbjudningar](authentication-authorization.md).</ul> |
-| `headers`<a id="route-headers"></a> | Inga | saknas | Uppsättning [http-huvuden](https://developer.mozilla.org/docs/Web/HTTP/Headers) som läggs till i svaret. <ul><li>Väg-/regionsspecifika huvuden åsidosätter [`globalHeaders`](#global-headers) när det väg bara huvudet är samma som den globala rubriken är i svaret.<li>Om du vill ta bort en rubrik ställer du in värdet på en tom sträng.</ul> |
-| `statusCode`   | Inga       | `200`, `301` eller `302` för omdirigeringar | [HTTP-statuskod](https://developer.mozilla.org/docs/Web/HTTP/Status) för svaret. |
-| `methods` | Inga | Alla metoder | Lista över metoder för begäran som matchar en väg. Tillgängliga metoder är:,,,,,,, `GET` `HEAD` `POST` `PUT` `DELETE` `CONNECT` `OPTIONS` `TRACE` och `PATCH` . |
+| Regel egenskap                       | Obligatorisk | Standardvärde                        | Kommentar                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ----------------------------------- | -------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `route`                             | Yes      | saknas                                  | Det väg mönster som anroparen begärt.<ul><li>[Jokertecken](#wildcards) stöds i slutet av väg Sök vägar.<ul><li>Route _admin/ \*_ matchar till exempel alla vägar under _admin_ -sökvägen.</ul></ul>                                                                                                                                                                                                                                                                                                                                                                                                        |
+| `rewrite`                           | No       | saknas                                  | Definierar filen eller sökvägen som returneras från begäran.<ul><li>Kan inte anges samtidigt till en `redirect` regel<li>Omskrivnings regler ändrar inte webbläsarens plats.<li>Värdena måste vara relativa till appens rot</ul>                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `redirect`                          | No       | saknas                                  | Definierar den fil eller sökväg som omdirigerar målet för en begäran.<ul><li>Är ömsesidigt uteslutande för en `rewrite` regel.<li>Omdirigera regler ändra webbläsarens plats.<li>Standard svars koden är en [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) (tillfällig omdirigering), men du kan åsidosätta med en [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) (permanent omdirigering).</ul>                                                                                                                                                                                                              |
+| `allowedRoles`                      | No       | antal                            | Definierar en lista över roll namn som krävs för att få åtkomst till en väg. <ul><li>Giltiga tecken är `a-z` , `A-Z` , `0-9` och `_` .<li>Den inbyggda rollen, [`anonymous`](./authentication-authorization.md) gäller för alla oautentiserade användare<li>Den inbyggda rollen [`authenticated`](./authentication-authorization.md) gäller för alla inloggade användare.<li>Användarna måste tillhöra minst en roll.<li>Roller matchas på en _eller_ -basis.<ul><li>Om en användare finns i någon av rollerna i listan beviljas åtkomst.</ul><li>Enskilda användare är kopplade till roller genom [inbjudningar](authentication-authorization.md).</ul> |
+| `headers`<a id="route-headers"></a> | No       | saknas                                  | Uppsättning [http-huvuden](https://developer.mozilla.org/docs/Web/HTTP/Headers) som läggs till i svaret. <ul><li>Väg-/regionsspecifika huvuden åsidosätter [`globalHeaders`](#global-headers) när det väg bara huvudet är samma som den globala rubriken är i svaret.<li>Om du vill ta bort en rubrik ställer du in värdet på en tom sträng.</ul>                                                                                                                                                                                                                                                                                          |
+| `statusCode`                        | No       | `200`, `301` eller `302` för omdirigeringar | [HTTP-statuskod](https://developer.mozilla.org/docs/Web/HTTP/Status) för svaret.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `methods`                           | No       | Alla metoder                          | Lista över metoder för begäran som matchar en väg. Tillgängliga metoder är:,,,,,,, `GET` `HEAD` `POST` `PUT` `DELETE` `CONNECT` `OPTIONS` `TRACE` och `PATCH` .                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
 Varje egenskap har ett specifikt syfte i pipelinen för begäran/svar.
 
-| Syfte | Egenskaper |
-|---|---|
-| Matcha vägar | `route`, `methods` |
-| Auktorisera när en väg har matchats | `allowedRoles` |
+| Syfte                                        | Egenskaper                                                                                   |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Matcha vägar                                   | `route`, `methods`                                                                           |
+| Auktorisera när en väg har matchats             | `allowedRoles`                                                                               |
 | Process när en regel har matchats och godkänts | `rewrite` (ändrar begäran) <br><br>`redirect`, `headers` , `statusCode` (ändrar svar) |
 
 ## <a name="securing-routes-with-roles"></a>Skydda vägar med roller
@@ -118,7 +118,7 @@ Du kan filtrera jokertecken matchningar med fil namns tillägget. Om du till exe
 ```json
 {
   "route": "/articles/*.html",
-  "headers" : {
+  "headers": {
     "Cache-Control": "public, max-age=604800, immutable"
   }
 }
@@ -171,15 +171,15 @@ Exempel filens struktur nedan är följande resultat som är möjliga med den h�
 └── index.html
 ```
 
-| Begär anden till... | Returnerar... | med statusen... |
-| --- | --- | --- |
-| *tar* | Filen */index.html* | `200` |
-| */images/logo.png* | Avbildnings filen  | `200` |
-| */images/icon.svg* | */index.html* -filen – eftersom *SVG* -filtillägget inte visas i `/images/*.{png,jpg,gif}` filtret   | `200` |
-| */images/unknown.png* | Det gick inte att hitta filen  | `404` |
-| */css/unknown.css* | Det gick inte att hitta filen  | `404` |
-| */css/global.css* | Filen Stylesheet | `200` |
-| Andra filer utanför */images* -eller */CSS* -mapparna | Filen */index.html* | `200` |
+| Begär anden till...                                         | Returnerar...                                                                                                    | med statusen... |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- | ------------------ |
+| _tar_                                              | Filen _/index.html_                                                                                        | `200`              |
+| _/images/logo.png_                                     | Avbildnings filen                                                                                                | `200`              |
+| _/images/icon.svg_                                     | _/index.html_ -filen – eftersom _SVG_ -filtillägget inte visas i `/images/*.{png,jpg,gif}` filtret | `200`              |
+| _/images/unknown.png_                                  | Det gick inte att hitta filen                                                                                          | `404`              |
+| _/css/unknown.css_                                     | Det gick inte att hitta filen                                                                                          | `404`              |
+| _/css/global.css_                                      | Filen Stylesheet                                                                                           | `200`              |
+| Andra filer utanför _/images_ -eller _/CSS_ -mapparna | Filen _/index.html_                                                                                        | `200`              |
 
 ## <a name="global-headers"></a>Globala rubriker
 
@@ -201,35 +201,35 @@ Några vanliga användnings fall för globala huvuden är:
 
 Följande HTTP-koder är tillgängliga för åsidosättning:
 
-| Statuskod | Innebörd | Möjlig orsak |
-| --- | --- | --- |
-| [400](https://developer.mozilla.org/docs/Web/HTTP/Status/400) | Felaktig begäran | Ogiltig länk till inbjudan |
-| [401](https://developer.mozilla.org/docs/Web/HTTP/Status/401) | Behörighet saknas | Begäran till begränsade sidor vid oautentiserad |
-| [403](https://developer.mozilla.org/docs/Web/HTTP/Status/403) | Förbjudet |<ul><li>Användaren är inloggad men har inte de roller som krävs för att visa sidan.<li>Användaren är inloggad men körningen kan inte hämta användar information från sina identitets anspråk.<li>Det finns för många användare inloggade på platsen med anpassade roller, och därför kan inte körningen logga in användaren.</ul> |
-| [404](https://developer.mozilla.org/docs/Web/HTTP/Status/404) | Hittades inte | Filen hittades inte |
+| Statuskod                                                   | Innebörd      | Möjlig orsak                                                                                                                                                                                                                                                                                     |
+| ------------------------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [400](https://developer.mozilla.org/docs/Web/HTTP/Status/400) | Felaktig begäran  | Ogiltig länk till inbjudan                                                                                                                                                                                                                                                                            |
+| [401](https://developer.mozilla.org/docs/Web/HTTP/Status/401) | Behörighet saknas | Begäran till begränsade sidor vid oautentiserad                                                                                                                                                                                                                                                  |
+| [403](https://developer.mozilla.org/docs/Web/HTTP/Status/403) | Förbjudet    | <ul><li>Användaren är inloggad men har inte de roller som krävs för att visa sidan.<li>Användaren är inloggad men körningen kan inte hämta användar information från sina identitets anspråk.<li>Det finns för många användare inloggade på platsen med anpassade roller, och därför kan inte körningen logga in användaren.</ul> |
+| [404](https://developer.mozilla.org/docs/Web/HTTP/Status/404) | Hittades inte    | Filen hittades inte                                                                                                                                                                                                                                                                                     |
 
 Följande exempel på konfiguration visar hur du åsidosätter en felkod.
 
 ```json
 {
-    "responseOverrides": {
-        "400" : {
-            "rewrite": "/invalid-invitation-error.html",
-            "statusCode": 200
-        },
-        "401": {
-            "statusCode": 302,
-            "redirect": "/login"
-        },
-        "403": {
-            "rewrite": "/custom-forbidden-page.html",
-            "statusCode": 200
-        },
-        "404": {
-            "rewrite": "/custom-404.html",
-            "statusCode": 200
-        }
+  "responseOverrides": {
+    "400": {
+      "rewrite": "/invalid-invitation-error.html",
+      "statusCode": 200
+    },
+    "401": {
+      "statusCode": 302,
+      "redirect": "/login"
+    },
+    "403": {
+      "rewrite": "/custom-forbidden-page.html",
+      "statusCode": 200
+    },
+    "404": {
+      "rewrite": "/custom-404.html",
+      "statusCode": 200
     }
+  }
 }
 ```
 
@@ -237,106 +237,106 @@ Följande exempel på konfiguration visar hur du åsidosätter en felkod.
 
 ```json
 {
-    "routes": [
-        {
-            "route": "/profile",
-            "allowedRoles": ["authenticated"]
-        },
-        {
-            "route": "/admin/*",
-            "allowedRoles": ["administrator"]
-        },
-        {
-            "route": "/images/*",
-            "headers": {
-                "cache-control": "must-revalidate, max-age=15770000"
-            }
-        },
-        {
-            "route": "/api/*",
-            "methods": [ "GET" ],
-            "allowedRoles": ["registeredusers"]
-        },
-        {
-            "route": "/api/*",
-            "methods": [ "PUT", "POST", "PATCH", "DELETE" ],
-            "allowedRoles": ["administrator"]
-        },
-        {
-            "route": "/api/*",
-            "allowedRoles": ["authenticated"]
-        },
-        {
-            "route": "/customers/contoso",
-            "allowedRoles": ["administrator", "customers_contoso"]
-        },
-        {
-            "route": "/login",
-            "rewrite": "/.auth/login/github"
-        },
-        {
-            "route": "/.auth/login/twitter",
-            "statusCode": 404
-        },
-        {
-            "route": "/logout",
-            "redirect": "/.auth/logout"
-        },
-        {
-            "route": "/calendar/*",
-            "rewrite": "/calendar.html"
-        },
-        {
-            "route": "/specials",
-            "redirect": "/deals",
-            "statusCode": 301
-        }
-    ],
-    "navigationFallback": {
-      "rewrite": "index.html",
-      "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
+  "routes": [
+    {
+      "route": "/profile",
+      "allowedRoles": ["authenticated"]
     },
-    "responseOverrides": {
-        "400" : {
-            "rewrite": "/invalid-invitation-error.html"
-        },
-        "401": {
-            "redirect": "/login",
-            "statusCode": 302
-        },
-        "403": {
-            "rewrite": "/custom-forbidden-page.html"
-        },
-        "404": {
-            "rewrite": "/404.html"
-        }
+    {
+      "route": "/admin/*",
+      "allowedRoles": ["administrator"]
     },
-    "globalHeaders": {
-        "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+    {
+      "route": "/images/*",
+      "headers": {
+        "cache-control": "must-revalidate, max-age=15770000"
+      }
     },
-    "mimeTypes": {
-        ".json": "text/json"
+    {
+      "route": "/api/*",
+      "methods": ["GET"],
+      "allowedRoles": ["registeredusers"]
+    },
+    {
+      "route": "/api/*",
+      "methods": ["PUT", "POST", "PATCH", "DELETE"],
+      "allowedRoles": ["administrator"]
+    },
+    {
+      "route": "/api/*",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/customers/contoso",
+      "allowedRoles": ["administrator", "customers_contoso"]
+    },
+    {
+      "route": "/login",
+      "rewrite": "/.auth/login/github"
+    },
+    {
+      "route": "/.auth/login/twitter",
+      "statusCode": 404
+    },
+    {
+      "route": "/logout",
+      "redirect": "/.auth/logout"
+    },
+    {
+      "route": "/calendar/*",
+      "rewrite": "/calendar.html"
+    },
+    {
+      "route": "/specials",
+      "redirect": "/deals",
+      "statusCode": 301
     }
+  ],
+  "navigationFallback": {
+    "rewrite": "index.html",
+    "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
+  },
+  "responseOverrides": {
+    "400": {
+      "rewrite": "/invalid-invitation-error.html"
+    },
+    "401": {
+      "redirect": "/login",
+      "statusCode": 302
+    },
+    "403": {
+      "rewrite": "/custom-forbidden-page.html"
+    },
+    "404": {
+      "rewrite": "/404.html"
+    }
+  },
+  "globalHeaders": {
+    "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+  },
+  "mimeTypes": {
+    ".json": "text/json"
+  }
 }
 ```
 
 Granska följande scenarier baserat på konfigurationen ovan.
 
-| Begär anden till... | resultat i... |
-| --- | --- |
-| _/Profile_ | Autentiserade användare betjänar filen _/profile/index.html_ . Oautentiserade användare omdirigeras till _/login_. |
-| _/admin_ | Autentiserade användare i rollen _administratör_ betjänar filen _/admin/index.html_ . Autentiserade användare som inte finns i _Administratörs_ rollen behandlas som `403` fel <sup>1</sup>. Oautentiserade användare omdirigeras till _/login_. |
-| _/logo.png_ | Hanterar avbildningen med en anpassad cache-regel där maximal ålder är en aning över 182 dagar (15 770 000 sekunder). |
-| _/api/admin_ | `GET` begär Anden från autentiserade användare i _registeredusers_ -rollen skickas till API: et. Autentiserade användare som inte finns i _registeredusers_ -rollen och oautentiserade användare hanteras som ett `401` fel.<br/><br/>`POST`, `PUT` , `PATCH` och `DELETE` begär Anden från autentiserade användare i rollen _administratör_ skickas till API: et. Autentiserade användare som inte tillhör rollen _administratör_ och oautentiserade användare hanteras som ett `401` fel. |
-| _/customers/contoso_ | Autentiserade användare som tillhör antingen _Administratörs_ -eller _kund \_ contoso_ -roller betjänar _/Customers/contoso/index.html_ -filen. Autentiserade användare som inte är i _Administratörs_ -eller _kund \_ contoso_ -roller behandlas som `403` fel <sup>1</sup>. Oautentiserade användare omdirigeras till _/login_. |
-| _/login_ | Oautentiserade användare ifrågasätts att autentisera med GitHub. |
-| _/.auth/login/twitter_ | Som auktorisering med Twitter har inaktiverats av väg regeln `404` returneras ett fel som går tillbaka till att betjäna _/index.html_ med en `200` status kod. |
-| _/logout_ | Användare loggas ut från en autentiseringsprovider. |
-| _/calendar/2021/01_ | Webbläsaren betjänar filen _/calendar.html_ . |
-| _/specials_ | Webbläsaren omdirigeras permanent till _/Deals_. |
-| _/data.jspå_ | Filen som hanteras med `text/json` MIME-typen. |
-| _/About_ eller en mapp som matchar klient sidans flödes mönster | _/index.html-_ filen hanteras med en `200` status kod. |
-| En icke-befintlig fil i mappen _/images/_ | Ett `404` fel. |
+| Begär anden till...                                                    | resultat i...                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _/Profile_                                                        | Autentiserade användare betjänar filen _/profile/index.html_ . Oautentiserade användare omdirigeras till _/login_.                                                                                                                                                                                                                                                                                                                              |
+| _/admin_                                                         | Autentiserade användare i rollen _administratör_ betjänar filen _/admin/index.html_ . Autentiserade användare som inte finns i _Administratörs_ rollen behandlas som `403` fel <sup>1</sup>. Oautentiserade användare omdirigeras till _/login_.                                                                                                                                                                                                          |
+| _/logo.png_                                                       | Hanterar avbildningen med en anpassad cache-regel där maximal ålder är en aning över 182 dagar (15 770 000 sekunder).                                                                                                                                                                                                                                                                                                                                   |
+| _/api/admin_                                                      | `GET` begär Anden från autentiserade användare i _registeredusers_ -rollen skickas till API: et. Autentiserade användare som inte finns i _registeredusers_ -rollen och oautentiserade användare hanteras som ett `401` fel.<br/><br/>`POST`, `PUT` , `PATCH` och `DELETE` begär Anden från autentiserade användare i rollen _administratör_ skickas till API: et. Autentiserade användare som inte tillhör rollen _administratör_ och oautentiserade användare hanteras som ett `401` fel. |
+| _/customers/contoso_                                              | Autentiserade användare som tillhör antingen _Administratörs_ -eller _customers_contoso_ roller betjänar _/Customers/contoso/index.html_ -filen. Autentiserade användare som inte tillhör _administratören_ eller _customers_contoso_ roller betjänas som `403` fel <sup>1</sup>. Oautentiserade användare omdirigeras till _/login_.                                                                                                                            |
+| _/login_                                                          | Oautentiserade användare ifrågasätts att autentisera med GitHub.                                                                                                                                                                                                                                                                                                                                                                             |
+| _/.auth/login/twitter_                                            | Som auktorisering med Twitter har inaktiverats av väg regeln `404` returneras ett fel som går tillbaka till att betjäna _/index.html_ med en `200` status kod.                                                                                                                                                                                                                                                                                     |
+| _/logout_                                                         | Användare loggas ut från en autentiseringsprovider.                                                                                                                                                                                                                                                                                                                                                                                          |
+| _/calendar/2021/01_                                               | Webbläsaren betjänar filen _/calendar.html_ .                                                                                                                                                                                                                                                                                                                                                                                              |
+| _/specials_                                                       | Webbläsaren omdirigeras permanent till _/Deals_.                                                                                                                                                                                                                                                                                                                                                                                            |
+| _/data.jspå_                                                      | Filen som hanteras med `text/json` MIME-typen.                                                                                                                                                                                                                                                                                                                                                                                               |
+| _/About_ eller en mapp som matchar klient sidans flödes mönster | _/index.html-_ filen hanteras med en `200` status kod.                                                                                                                                                                                                                                                                                                                                                                                    |
+| En icke-befintlig fil i mappen _/images/_                     | Ett `404` fel.                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
 <sup>1</sup> du kan ange en anpassad felsida genom att använda en [regel för åsidosättning av svar](#response-overrides).
 

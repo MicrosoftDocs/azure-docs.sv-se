@@ -1,6 +1,6 @@
 ---
-title: Säkerhetskopiera VM-diskar på Azure Stack Edge Pro GPU-enhet via PowerShell
-description: Beskriver hur du säkerhetskopierar data på virtuella dator diskar som körs på din Azure Stack Edge Pro GPU-enhet.
+title: Back up VM disks on Azure Stack Edge Pro GPU device via PowerShell
+description: Beskriver hur du kan hanteraren hanteraren för GPU-Azure Stack Edge Pro data på virtuella datordiskar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,46 +8,46 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: ea860f58caba25ef3027fbf7bc4728355a7ca1bc
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 5fad2a9e1789b98ac541e8a0d95c77131905544d
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107315630"
+ms.locfileid: "107364744"
 ---
-# <a name="back-up-vm-disks-on-azure-stack-edge-pro-gpu-via-azure-powershell"></a>Säkerhetskopiera VM-diskar på Azure Stack Edge Pro GPU via Azure PowerShell
+# <a name="back-up-vm-disks-on-azure-stack-edge-pro-gpu-via-azure-powershell"></a>Back up VM disks on Azure Stack Edge Pro GPU via Azure PowerShell
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Den här artikeln beskriver hur du skapar säkerhets kopior av virtuella dator diskar på Azure Stack Edge Pro GPU-enhet med Azure PowerShell.
+Den här artikeln beskriver hur du skapar säkerhetskopior av virtuella datordiskar på en AZURE STACK EDGE PRO GPU-enhet med Azure PowerShell.
 
 > [!IMPORTANT]
-> Den här proceduren är avsedd att användas för virtuella datorer som har stoppats. Om du vill säkerhetskopiera virtuella datorer som körs rekommenderar vi att du använder ett säkerhets kopierings verktyg från tredje part.
+> Den här proceduren är avsedd att användas för virtuella datorer som har stoppats. Om du vill säkerhetskopiera virtuella datorer som körs rekommenderar vi att du använder ett säkerhetskopieringsverktyg från tredje part.
 
 ## <a name="workflow"></a>Arbetsflöde
 
-Följande steg sammanfattar arbets flödet på hög nivå för att säkerhetskopiera en virtuell dator disk på enheten:
+I följande steg sammanfattas det avancerade arbetsflödet för att hanteraren för en virtuell datordisk på din enhet ska ras upp:
 
 1. Stoppa den virtuella datorn.
-1. Ta en ögonblicks bild av den virtuella dator disken.
-1. Kopiera ögonblicks bilden till ett lokalt lagrings konto som en virtuell hård disk.
-1. Överför den virtuella hård disken till ett externt mål.
+1. Ta en ögonblicksbild av den virtuella datordisken.
+1. Kopiera ögonblicksbilden till ett lokalt lagringskonto som en virtuell hårddisk.
+1. Ladda upp den virtuella hårddisken till ett externt mål.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Innan du säkerhetskopierar virtuella datorer måste du kontrol lera att:
+Innan du hittar de virtuella datorerna ska du se till att:
 
-- Du har åtkomst till en klient som du ska använda för att ansluta till din enhet.
-    - Klienten kör ett [operativ system som stöds](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device).
-    - Din klient är konfigurerad för att ansluta till den lokala Azure Resource Manager på enheten enligt anvisningarna i [Anslut till Azure Resource Manager för enheten](azure-stack-edge-gpu-connect-resource-manager.md).
+- Du har åtkomst till en klient som du använder för att ansluta till din enhet.
+    - Klienten kör ett operativsystem [som stöds.](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)
+    - Klienten är konfigurerad för att ansluta till den lokala Azure Resource Manager på enheten enligt anvisningarna i Anslut till [Azure Resource Manager för din enhet](azure-stack-edge-gpu-connect-resource-manager.md).
 
-## <a name="verify-connection-to-local-azure-resource-manager"></a>Verifiera anslutning till lokala Azure Resource Manager
+## <a name="verify-connection-to-local-azure-resource-manager"></a>Verifiera anslutningen till lokala Azure Resource Manager
 
 [!INCLUDE [azure-stack-edge-gateway-verify-azure-resource-manager-connection](../../includes/azure-stack-edge-gateway-verify-azure-resource-manager-connection.md)]
 
-## <a name="back-up-a-vm-disk"></a>Säkerhetskopiera en virtuell dator disk
+## <a name="back-up-a-vm-disk"></a>Back up a VM Disk
 
-1. Hämta en lista med de virtuella datorer som körs på enheten. Identifiera den virtuella dator som du vill stoppa.
+1. Hämta en lista över de virtuella datorer som körs på enheten. Identifiera den virtuella dator som du vill stoppa.
 
     ```powershell
     Get-AzureRMVM
@@ -93,9 +93,9 @@ Innan du säkerhetskopierar virtuella datorer måste du kontrol lera att:
     Du kan också stoppa den virtuella datorn från Azure Portal.
  
 
-2. Ta en ögonblicks bild av den virtuella dator disken och spara ögonblicks bilden till en lokal resurs grupp. Du kan använda den här proceduren för både OS-och data diskar.
+2. Ta en ögonblicksbild av den virtuella datordisken och spara ögonblicksbilden till en lokal resursgrupp. Du kan använda den här proceduren för både operativsystem- och datadiskar.
 
-   1. Hämta listan över diskar på enheten eller i en speciell resurs grupp. Anteckna namnet på disken som ska säkerhets kopie ras.
+   1. Hämta listan över diskar på enheten eller i en specifik resursgrupp. Anteckna namnet på den disk som ska bakbacka.
 
         ```powershell
         Get-AzureRMDisk -ResourceGroupName <Resource group name>
@@ -109,7 +109,7 @@ Innan du säkerhetskopierar virtuella datorer måste du kontrol lera att:
         myasetestvm1_disk1_0ed91809927f4023b7aceb6eeca51c05
         PS C:\Users\user>
         ```
-   1. Skapa en lokal resurs grupp som ska fungera som mål för ögonblicks bilden av den virtuella datorn.
+   1. Skapa en lokal resursgrupp som ska fungera som mål för ögonblicksbilden av den virtuella datorn.
 
         ```powershell
         PS C:\Users\user> New-AzureRmResourceGroup -ResourceGroupName myaserg3 -Location dbelocal
@@ -123,7 +123,7 @@ Innan du säkerhetskopierar virtuella datorer måste du kontrol lera att:
         PS C:\Users\user>
         ```
 
-   1. Ange parametrar.
+   1. Ange några parametrar.
 
       ```powershell
       $DiskResourceGroup = <Disk resource group>
@@ -132,14 +132,14 @@ Innan du säkerhetskopierar virtuella datorer måste du kontrol lera att:
       $DestinationRG = <Snapshot destination resource group>
       ```
 
-   3. Ange ögonblicks bilds konfigurationen och ta ögonblicks bilden.
+   3. Ange konfigurationen för ögonblicksbilden och ta ögonblicksbilden.
 
         ```powershell
         $Disk = Get-AzureRmDisk -ResourceGroupName $DiskResourceGroup -DiskName $DiskName
         $SnapshotConfig = New-AzureRmSnapshotConfig -SourceUri $Disk.Id -CreateOption Copy -Location 'dbelocal'
         $Snapshot = New-AzureRmSnapshot -Snapshot $SnapshotConfig -SnapshotName $SnapshotName -ResourceGroupName $DestinationRG
         ```
-        Kontrol lera att ögonblicks bilden har skapats i mål resurs gruppen.
+        Kontrollera att ögonblicksbilden har skapats i målresursgruppen.
 
         ```powershell
         Get-AzureRMSnapshot -ResourceGroupName $DestinationRG
@@ -174,11 +174,11 @@ Innan du säkerhetskopierar virtuella datorer måste du kontrol lera att:
         PS C:\Users\user>
         ```
 
-## <a name="copy-the-snapshot-into-a-local-storage-account"></a>Kopiera ögonblicks bilden till ett lokalt lagrings konto
+## <a name="copy-the-snapshot-into-a-local-storage-account"></a>Kopiera ögonblicksbilden till ett lokalt lagringskonto
 
-   Kopiera ögonblicks bilderna till ett lokalt lagrings konto på enheten. 
+   Kopiera ögonblicksbilderna till ett lokalt lagringskonto på enheten. 
 
-1. Ange parametrar. 
+1. Ange några parametrar. 
 
     ```powershell
     $StorageAccountRG = <Local storage account resource group>
@@ -188,7 +188,7 @@ Innan du säkerhetskopierar virtuella datorer måste du kontrol lera att:
     $DestFileName = <Blob file name> 
     ```
 
-1. Skapa ett lokalt lagrings konto på enheten. 
+1. Skapa ett lokalt lagringskonto på enheten. 
 
     ```powershell
     New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Storage account resource group> -Location DBELocal -SkuName Standard_LRS
@@ -205,7 +205,7 @@ Innan du säkerhetskopierar virtuella datorer måste du kontrol lera att:
     PS C:\Users\user>
     ```
 
-1. Skapa en behållare i det lokala lagrings konto som du har skapat. 
+1. Skapa en container i det lokala lagringskonto som du skapade. 
 
     ```powershell
     $keys = Get-AzureRmStorageAccountKey -ResourceGroupName $StorageAccountRG -Name $StorageAccountName
@@ -255,11 +255,11 @@ Innan du säkerhetskopierar virtuella datorer måste du kontrol lera att:
     PS C:\Users\user>
     ```    
 
-    Du kan också använda Azure Storage Explorer för att [skapa ett lokalt lagrings konto](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#create-a-storage-account) och sedan [skapa en behållare i det lokala lagrings kontot](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#use-storage-explorer-for-upload) på enheten. 
+    Du kan också använda Azure Storage Explorer för [att skapa ett lokalt lagringskonto](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#create-a-storage-account) och sedan skapa en container i det lokala [lagringskontot](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#use-storage-explorer-for-upload) på enheten. 
 
 
 
-1. Ladda ned ögonblicks bilden till det lokala lagrings kontot.
+1. Ladda ned ögonblicksbilden till det lokala lagringskontot.
 
    ```powershell
    $sassnapshot = Grant-AzureRmSnapshotAccess -ResourceGroupName $DestinationRG -SnapshotName $SnapshotName -Access 'Read' -DurationInSecond 3600
@@ -305,17 +305,21 @@ Innan du säkerhetskopierar virtuella datorer måste du kontrol lera att:
     PS C:\Users\user>
     ```
 
-## <a name="download-vhd-to-external-target"></a>Ladda ned VHD till externt mål
+    Du kan också använda Storage Explorer för att verifiera att ögonblicksbilden kopierades korrekt till lagringskontot.
 
-Om du vill flytta dina säkerhets kopior till en extern plats kan du använda Azure Storage Explorer eller AzCopy.
+    ![Storage Explorer som visar säkerhetskopian i containern i det lokala lagringskontot](media/azure-stack-edge-gpu-back-up-virtual-machine-disks/back-up-virtual-machine-disk-1.png)
 
-- Använd följande AzCopy-kommando för att ladda ned VHD till ett externt mål.
+## <a name="download-vhd-to-external-target"></a>Ladda ned vhd till externt mål
+
+Om du vill flytta dina säkerhetskopior till en extern plats kan du använda Azure Storage Explorer eller AzCopy.
+
+- Använd följande AzCopy-kommando för att ladda ned vhd till ett externt mål.
 
     ```powershell
     azcopy copy "https://<local storage account name>.blob.<device name>.<DNS domain>/<container name>/<filename><SAS query string>" <destination target>
     ```
 
-- Om du vill konfigurera och använda Azure Storage Explorer med Azure Stack Edge, se de instruktioner som finns i [använda Storage Explorer för uppladdning](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#use-storage-explorer-for-upload).
+- Om du vill konfigurera och använda Azure Storage Explorer med Azure Stack Edge kan du läsa anvisningarna i [Använda Storage Explorer för uppladdning](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#use-storage-explorer-for-upload).
 
 ## <a name="next-steps"></a>Nästa steg
 

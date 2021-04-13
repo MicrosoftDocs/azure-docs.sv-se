@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: 81898875af85becf1766f02a5b7e077cb388a173
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f83aa7368ec5ac06f2c5a5ebe121c7ce87f93bd1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450046"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304740"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory program hantering: Nyheter
 
@@ -40,9 +40,9 @@ Välkommen till nyheter i Azure Active Directory program hanterings dokumentatio
 - [Felsöka konfigurationer med Kerberos-begränsad delegering för programproxy](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 - [Snabb start: Konfigurera SAML-baserad enkel inloggning (SSO) för ett program i din Azure Active Directory (Azure AD)-klient](add-application-portal-setup-sso.md)
 - [Azure Active Directory program hantering: Nyheter](whats-new-docs.md)
-- [Vanliga frågor och svar om Active Directory (Azure AD) Application Proxy](application-proxy-faq.md)
+- [Vanliga frågor och svar om Active Directory (Azure AD) Application Proxy](application-proxy-faq.yml)
 - [Felsöka problem med att logga in till ett program från Azure AD Mina appar](application-sign-in-other-problem-access-panel.md)
-- [Självstudie: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Självstudie: Lägga till ett lokalt program för fjärråtkomst via programproxy i Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Optimera trafikflöde med Azure Active Directory-programproxy](application-proxy-network-topology.md)
 - [Azure AD-programproxy: versions historik](application-proxy-release-version-history.md)
 - [Konfigurera Azure Active Directory inloggnings beteende för ett program med hjälp av en princip för identifiering av start sfär](configure-authentication-for-federated-users-portal.md)
@@ -61,7 +61,7 @@ Välkommen till nyheter i Azure Active Directory program hanterings dokumentatio
 - [Integrera med SharePoint (SAML)](application-proxy-integrate-with-sharepoint-server-saml.md)
 - [Bevilja administratörsmedgivande för hela klientorganisationen till ett program](grant-admin-consent.md)
 - [Flytta programautentisering från Active Directory Federation Services (AD FS) till Azure Active Directory](migrate-adfs-apps-to-azure.md)
-- [Självstudie: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Självstudie: Lägga till ett lokalt program för fjärråtkomst via programproxy i Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Använd klient begränsningar för att hantera åtkomst till SaaS-molnprogram](tenant-restrictions.md)
 
 ## <a name="january-2021"></a>Januari 2021
@@ -75,15 +75,15 @@ Välkommen till nyheter i Azure Active Directory program hanterings dokumentatio
 - [Metod tips för program hantering](application-management-fundamentals.md)
 - [Att integrera Azure Active Directory med program komma igång-guide](plan-an-application-integration.md)
 - [Vad är programhantering?](what-is-application-management.md)
-- [Vanliga frågor och svar om Active Directory (Azure AD) Application Proxy](application-proxy-faq.md)
-- [Självstudie: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Vanliga frågor och svar om Active Directory (Azure AD) Application Proxy](application-proxy-faq.yml)
+- [Självstudie: Lägga till ett lokalt program för fjärråtkomst via programproxy i Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Arbeta med befintliga lokala proxyservrar](application-proxy-configure-connectors-with-proxy-servers.md)
 - [Utveckla branschspecifika appar för Azure Active Directory](../develop/v2-overview.md)
 - [Förstå Azure AD-programproxy-kopplingar](application-proxy-connectors.md)
 - [Förstå länkad inloggning](configure-linked-sign-on.md)
 - [Förstå lösenordsbaserad enkel inloggning](configure-password-single-sign-on-non-gallery-applications.md)
 - [Förstå SAML-baserad enkel inloggning](configure-saml-single-sign-on.md)
-- [Felsök vanliga problem med att lägga till eller ta bort ett program i Azure Active Directory](troubleshoot-adding-apps.md)
+- [Felsöka vanliga problem med att lägga till eller ta bort ett program i Azure Active Directory](troubleshoot-adding-apps.md)
 - [Visa appar med hjälp av din Azure AD-klient för identitets hantering](application-types.md)
 - [Förstå hur användare tilldelas till appar i Azure Active Directory](ways-users-get-assigned-to-applications.md)
 - [Snabb start: ta bort ett program från din Azure Active Directory (Azure AD)-klient](delete-application-portal.md)
@@ -96,7 +96,7 @@ Välkommen till nyheter i Azure Active Directory program hanterings dokumentatio
 ### <a name="updated-articles"></a>Uppdaterade artiklar
 
 - [Snabb start: Konfigurera OIDC-baserad enkel inloggning (SSO) för ett program i din Azure Active Directory (Azure AD)-klient](add-application-portal-setup-oidc-sso.md)
-- [Självstudie: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Självstudie: Lägga till ett lokalt program för fjärråtkomst via programproxy i Azure Active Directory](application-proxy-add-on-premises-application.md)
 - [Förstå OIDC-baserad enkel inloggning](configure-oidc-single-sign-on.md)
 - [Flytta programautentisering från Active Directory Federation Services (AD FS) till Azure Active Directory](migrate-adfs-apps-to-azure.md)
 - [Arbeta med befintliga lokala proxyservrar](application-proxy-configure-connectors-with-proxy-servers.md)
@@ -141,7 +141,7 @@ Välkommen till nyheter i Azure Active Directory program hanterings dokumentatio
 
 ### <a name="updated-articles"></a>Uppdaterade artiklar
 - [Snabb start: lägga till ett program till din Azure Active Directory-klient (Azure AD)](add-application-portal.md)
-- [Felsök vanliga problem med att lägga till eller ta bort ett program i Azure Active Directory](troubleshoot-adding-apps.md)
+- [Felsöka vanliga problem med att lägga till eller ta bort ett program i Azure Active Directory](troubleshoot-adding-apps.md)
 - [Hantera medgivande till program och utvärdera medgivande begär Anden](manage-consent-requests.md)
 - [Visa appar med hjälp av din Azure AD-klient för identitets hantering](application-types.md)
 - [Förstå hur användare tilldelas till appar i Azure Active Directory](ways-users-get-assigned-to-applications.md)

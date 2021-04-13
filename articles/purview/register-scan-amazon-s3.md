@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 542b6580994a2054526f0ddbb3ad93dc27c28fcc
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: a0559028192b0a99aeffd45a3b2896f9c9d159be
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107660"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310210"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Azure avdelningens kontroll-anslutning för Amazon S3
 
@@ -116,9 +116,30 @@ Den här proceduren beskriver hur du skapar en ny avdelningens kontroll-autentis
 
     Välj **skapa** när du är klar för att slutföra skapandet av autentiseringsuppgifterna.
 
-Mer information om avdelningens kontroll-autentiseringsuppgifter finns i dokumentationen för den [offentliga för hands versionen av Azure avdelningens kontroll](manage-credentials.md).
+1. Om du ännu inte har gjort det kopierar du och klistrar in **Microsoft-konto-ID: t** och **externa ID-** värden som ska användas när du [skapar en ny AWS-roll för avdelningens kontroll](#create-a-new-aws-role-for-purview), vilket är nästa steg.
+
+Mer information om avdelningens kontroll-autentiseringsuppgifter finns i [autentiseringsuppgifter för Source Authentication i Azure avdelningens kontroll](manage-credentials.md).
 
 ### <a name="create-a-new-aws-role-for-purview"></a>Skapa en ny AWS-roll för avdelningens kontroll
+
+Den här proceduren kräver att du anger värdena för ditt Azure-konto-ID och externt ID när du skapar AWS-rollen.
+
+Om du inte har dessa värden letar du upp dem först i dina [avdelningens kontroll-autentiseringsuppgifter](#create-a-purview-credential-for-your-aws-bucket-scan).
+
+**Så här hittar du ditt Microsoft-konto-ID och externt ID**:
+
+1. I avdelningens kontroll navigerar du till   >  **säkerhets-och åtkomst**  >  **behörigheterna** för hanterings Center.
+
+1. Välj den autentiseringsuppgift som du [skapade för genomsökningen av AWS-Bucket](#create-a-purview-credential-for-your-aws-bucket-scan)och välj sedan **Redigera** i verktygsfältet.
+
+1. I fönstret **Redigera autentiseringsuppgifter** som visas till höger kopierar du **Microsoft-konto-ID: t** och **externa ID-** värden till en separat fil, eller så kan de vara användbara för att klistra in i det relevanta fältet i AWS.
+
+    Exempel:
+
+    [![Leta upp Microsoft-konto-ID: t och externa ID-värden. ](./media/register-scan-amazon-s3/locate-account-id-external-id.png)](./media/register-scan-amazon-s3/locate-account-id-external-id.png#lightbox)
+
+
+**Så här skapar du AWS-rollen för avdelningens kontroll**:
 
 1.  Öppna **Amazon Web Services** -konsolen och välj **IAM** under **säkerhet, identitet och efterlevnad**.
 
@@ -129,12 +150,8 @@ Mer information om avdelningens kontroll-autentiseringsuppgifter finns i dokumen
     |Fält  |Beskrivning  |
     |---------|---------|
     |**Konto-ID**     |    Ange ditt Microsoft-konto-ID. Exempelvis: `615019938638`     |
-    |**Externt ID**     |   Under alternativ väljer du **Kräv externt ID...** och anger sedan ditt externa ID i det angivna fältet. <br>Exempelvis: `e7e2b8a3-0a9f-414f-a065-afaf4ac6d994`    <br><br>Du kan hitta det här externa ID: t när du.  |
+    |**Externt ID**     |   Under alternativ väljer du **Kräv externt ID...** och anger sedan ditt externa ID i det angivna fältet. <br>Exempelvis: `e7e2b8a3-0a9f-414f-a065-afaf4ac6d994`     |
     | | |
-
-    > [!NOTE]
-    > Du hittar värdena för både **ID för Microsoft-konto** och **externt ID** i avsnittet autentiseringsuppgifter för avdelningens kontroll **Management Center**  >   där du [skapade dina avdelningens kontroll-autentiseringsuppgifter](#create-a-purview-credential-for-your-aws-bucket-scan).
-    >
 
     Exempel:
 
@@ -370,7 +387,7 @@ När du har lagt till Bucket som avdelningens kontroll-datakällor kan du konfig
 
     Om du väljer att skapa en ny anpassad skannings regel uppsättning använder du guiden för att definiera följande inställningar:
 
-    |Fönster  |Beskrivning  |
+    |Fönster  |Description  |
     |---------|---------|
     |**Ny skannings regel uppsättning** /<br>**Beskrivning av genomsöknings regel**    |   Ange ett meningsfullt namn och en valfri beskrivning av regel uppsättningen      |
     |**Välj filtyper**     | Välj alla filtyper som du vill ta med i genomsökningen och välj sedan **Fortsätt**.<br><br>Om du vill lägga till en ny filtyp väljer du **ny filtyp** och definierar följande: <br>– Det fil namns tillägg som du vill lägga till <br>– En valfri beskrivning  <br>– Om fil innehållet har en anpassad avgränsare eller är en system fil typ. Ange sedan din anpassade avgränsare eller Välj system fil typ. <br><br>Välj **skapa** för att skapa din anpassade filtyp.     |

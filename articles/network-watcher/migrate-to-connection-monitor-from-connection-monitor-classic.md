@@ -1,7 +1,7 @@
 ---
-title: Migrera till anslutnings övervakaren från anslutnings övervakaren
+title: Migrera till Anslutningsövervakare från Anslutningsövervakare
 titleSuffix: Azure Network Watcher
-description: Lär dig hur du migrerar till anslutnings övervakaren från anslutnings övervakaren.
+description: Lär dig hur du migrerar till Anslutningsövervakare från Anslutningsövervakare.
 services: network-watcher
 documentationcenter: na
 author: vinynigam
@@ -12,60 +12,63 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: d4ab5361d245ad1ee10d43184cc0a2d65fed2054
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fc5bcc7f0cd11160b33bb6501526fce9f29d710b
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730039"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366393"
 ---
-# <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Migrera till anslutnings övervakaren från anslutnings övervakaren (klassisk)
+# <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Migrera till Anslutningsövervakare från Anslutningsövervakare (klassisk)
 
 > [!IMPORTANT]
-> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya anslutnings övervakare i anslutnings övervakaren (klassisk), men du kan fortsätta att använda befintliga anslutnings Övervakare som skapats före 1 juli 2021. Om du vill minimera avbrott i tjänsten för dina aktuella arbets belastningar [migrerar du från anslutnings övervakaren (klassisk) till den nya anslutnings övervakaren](migrate-to-connection-monitor-from-connection-monitor-classic.md)  i Azure Network Watcher före den 29 februari 2024.
+> Från och med 1 juli 2021 kommer du inte att kunna lägga till nya anslutningsövervakare i Anslutningsövervakare (klassisk) men du kan fortsätta att använda befintliga anslutningsövervakare som skapats före den 1 juli 2021. För att minimera tjänstavbrott för dina aktuella arbetsbelastningar migrerar du [från Anslutningsövervakare (klassisk)](migrate-to-connection-monitor-from-connection-monitor-classic.md)  till den nya Anslutningsövervakare i Azure Network Watcher före den 29 februari 2024.
 
-Du kan migrera befintliga anslutnings övervakare till ny, förbättrad anslutnings övervakare med bara några klick och utan stillestånds tid. Läs mer om fördelarna i [anslutnings övervakaren](./connection-monitor-overview.md).
+Du kan migrera befintliga anslutningsövervakare till nya, förbättrade Anslutningsövervakare med bara några få klick och utan driftstopp. Mer information om fördelarna finns i [Anslutningsövervakare](./connection-monitor-overview.md).
 
-## <a name="key-points-to-note"></a>Viktiga punkter att Observera
+## <a name="key-points-to-note"></a>Viktiga punkter att notera
 
-Migreringen hjälper till att producera följande resultat:
+Migreringen hjälper till att skapa följande resultat:
 
-* Agenter och brand Väggs inställningar fungerar som de är. Inga ändringar krävs. 
-* Befintliga anslutnings övervakare mappas till anslutnings övervakaren > test grupp > test format. Genom att välja **Redigera** kan du Visa och ändra egenskaperna för den nya anslutnings övervakaren, hämta en mall för att göra ändringar i anslutnings övervakaren och skicka den via Azure Resource Manager. 
-* Virtuella Azure-datorer med Network Watcher-tillägget skickar data till både arbets ytan och måtten. Anslutnings övervakaren gör data tillgängliga via de nya måtten (ChecksFailedPercent och RoundTripTimeMs) i stället för de gamla måtten (ProbesFailedPercent och AverageRoundtripMs). De gamla måtten kommer att migreras till nya mått som ProbesFailedPercent-> ChecksFailedPercent-och AverageRoundtripMs-> RoundTripTimeMs.
-* Data övervakning:
-   * **Aviseringar**: migreras automatiskt till de nya måtten.
-   * **Instrument paneler och integreringar**: Kräv manuell redigering av de angivna måtten. 
+* Agenter och brandväggsinställningar fungerar som de är. Inga ändringar krävs. 
+* Befintliga anslutningsövervakare mappas till Anslutningsövervakare > Test Group > Test-format. Genom att **välja Redigera** kan du visa och ändra egenskaperna för den nya Anslutningsövervakare, ladda ned en mall för att göra ändringar i Anslutningsövervakare och skicka den via Azure Resource Manager. 
+* Virtuella Azure-datorer med Network Watcher-tillägget skickar data till både arbetsytan och måtten. Anslutningsövervakare gör data tillgängliga via de nya måtten (ChecksFailedPercent och RoundTripTimeMs) i stället för de gamla måtten (ProbesFailedPercent och AverageRoundtripMs). De gamla måtten migreras till nya mått som ProbesFailedPercent -> ChecksFailedPercent och AverageRoundtripMs -> RoundTripTimeMs.
+* Dataövervakning:
+   * **Aviseringar:** Migreras automatiskt till de nya måtten.
+   * **Instrumentpaneler och integreringar:** Kräv manuell redigering av måttuppsättningen. 
     
 ## <a name="prerequisites"></a>Förutsättningar
 
-Om du använder en anpassad arbets yta ser du till att Network Watcher är aktive rad i din prenumeration och i den region i Log Analytics arbets ytan. 
+1. Om du använder en anpassad arbetsyta ska du kontrollera Network Watcher är aktiverat i din prenumeration och i regionen för Log Analytics-arbetsytan. Om inte visas felmeddelandet "Innan du försöker migrera aktiverar du Network Watcher-tillägget i valprenumerationen och platsen för den la-arbetsyta som valts".
+1. Om virtuella datorer som används som källor i anslutningsövervakaren (klassisk) inte längre har Network Watcher-tillägget aktiverat visas ett felmeddelande om att anslutningsövervakare som har följande tester inte kan importeras eftersom en eller flera virtuella Azure-datorer inte har network watcher-tillägget installerat. Installera network watcher-tillägget och klicka på Uppdatera för att importera dem."
 
-## <a name="migrate-the-connection-monitors"></a>Migrera anslutnings övervakare
 
-1. Om du vill migrera äldre anslutnings övervakare till den nyare väljer du **anslutnings övervakare** och väljer sedan **migrera anslutnings** övervakare.
 
-    ![Skärm bild som visar migreringen av anslutnings övervakare till anslutnings övervakaren.](./media/connection-monitor-2-preview/migrate-cm-to-cm-preview.png)
+## <a name="migrate-the-connection-monitors"></a>Migrera anslutningsövervakarna
+
+1. Om du vill migrera de äldre anslutningsövervakarna till den nyare **väljer Anslutningsövervakare** och sedan **Migrera anslutningsövervakare.**
+
+    ![Skärmbild som visar migreringen av anslutningsövervakare till Anslutningsövervakare.](./media/connection-monitor-2-preview/migrate-cm-to-cm-preview.png)
     
-1. Välj din prenumeration och de anslutnings Övervakare som du vill migrera och välj sedan **Migrera markerade**. 
+1. Välj din prenumeration och anslutningsövervakare som du vill migrera och välj sedan **Migrera valt.** 
 
-Med bara några klick har du migrerat de befintliga anslutnings övervakarna till anslutnings övervakaren. När du har migrerat från CM (klassisk) till CM kan du inte se övervakaren under CM (klassisk)
+Med bara några få klickningar har du migrerat de befintliga anslutningsövervakarna till Anslutningsövervakare. När du har migrerat från CM (klassisk) till CM kan du inte se övervakaren under CM (klassisk)
 
-Nu kan du anpassa egenskaperna för anslutnings övervakaren, ändra standard arbets ytan, hämta mallar och kontrol lera migreringens status. 
+Nu kan du anpassa Anslutningsövervakare, ändra standardarbetsytan, ladda ned mallar och kontrollera migreringsstatusen. 
 
-När migreringen har påbörjats sker följande ändringar: 
-* Azure Resource Manager resursen ändras till den nyare anslutnings övervakaren.
-    * Anslutnings övervakarens namn, region och prenumeration förblir oförändrade. Resurs-ID: t påverkas inte.
-    * Om inte anslutnings övervakaren är anpassad skapas en standard arbets yta Log Analytics i prenumerationen och i regionen för anslutnings övervakaren. Den här arbets ytan är platsen där övervaknings data lagras. Test resultat data lagras också i måtten.
-    * Varje test migreras till en test grupp som kallas *defaultTestGroup*.
-    * Käll-och mål slut punkter skapas och används i den nya test gruppen. Standard namnen är *defaultSourceEndpoint* och *defaultDestinationEndpoint*.
-    * Mål porten och söknings intervallet flyttas till en test konfiguration som kallas *defaultTestConfiguration*. Protokollet anges baserat på port värden. Tröskelvärden för lyckade och andra valfria egenskaper lämnas tomma.
-* Mått aviseringar migreras till anslutnings övervakarens mått aviseringar. Måtten är olika, därför ändringen. Mer information finns i [övervakning av nätverks anslutning med anslutnings övervakaren](./connection-monitor-overview.md#metrics-in-azure-monitor).
-* De migrerade anslutnings övervakarna visas inte längre som den äldre lösningen för anslutnings övervakning. De är nu tillgängliga för användning i anslutnings övervakaren.
-* Alla externa integrationer, till exempel instrument paneler i Power BI-och Grafana, och integreringar med säkerhets informations-och händelse hanterings system (SIEM) måste migreras manuellt. Det här är det enda manuella steget du behöver utföra för att migrera installationen.
+När migreringen har påbörjas sker följande ändringar: 
+* Den Azure Resource Manager resursen ändras till den nyare anslutningsövervakaren.
+    * Namn, region och prenumeration för anslutningsövervakaren förblir oförändrade. Resurs-ID:t påverkas inte.
+    * Om anslutningsövervakaren inte är anpassad skapas en Log Analytics-standardarbetsyta i prenumerationen och i regionen för anslutningsövervakaren. Det är på den här arbetsytan som övervakningsdata lagras. Testresultatdata lagras också i måtten.
+    * Varje test migreras till en testgrupp med namnet *defaultTestGroup.*
+    * Käll- och målslutpunkter skapas och används i den nya testgruppen. Standardnamnen är *defaultSourceEndpoint* och *defaultDestinationEndpoint*.
+    * Målporten och avsökningsintervallet flyttas till en testkonfiguration som kallas *defaultTestConfiguration*. Protokollet anges baserat på portvärdena. Tröskelvärden för lyckade och andra valfria egenskaper lämnas tomma.
+* Måttaviseringar migreras till Anslutningsövervakare måttaviseringar. Måtten är olika, därav ändringen. Mer information finns i [Övervakning av nätverksanslutning med Anslutningsövervakare](./connection-monitor-overview.md#metrics-in-azure-monitor).
+* De migrerade anslutningsövervakarna visas inte längre som den äldre anslutningsövervakarlösningen. De är nu endast tillgängliga för användning i Anslutningsövervakare.
+* Alla externa integreringar, till exempel instrumentpaneler i Power BI och Grafana, och integreringar med SIEM-system (Säkerhetsinformation och händelsehantering) måste migreras manuellt. Det här är det enda manuella steg som du behöver utföra för att migrera konfigurationen.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om anslutnings övervakaren finns i:
-* [Migrera från Övervakare av nätverksprestanda till anslutnings övervakaren](./migrate-to-connection-monitor-from-network-performance-monitor.md)
-* [Skapa anslutnings övervakare med hjälp av Azure Portal](./connection-monitor-create-using-portal.md)
+Mer information om Anslutningsövervakare finns i:
+* [Migrera från Övervakare av nätverksprestanda till Anslutningsövervakare](./migrate-to-connection-monitor-from-network-performance-monitor.md)
+* [Skapa Anslutningsövervakare med hjälp av Azure Portal](./connection-monitor-create-using-portal.md)

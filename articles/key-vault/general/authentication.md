@@ -1,58 +1,58 @@
 ---
 title: Autentisera till Azure Key Vault
-description: Lär dig att autentisera till Azure Key Vault
+description: Lär dig hur du autentiserar till Azure Key Vault
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: ed83d52d19df126ef9b0e68f984f88f5dfd40c42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a8fe4ed0c24d2ccda5fb844005a33a93e85a169
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492948"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365526"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Autentisera till Azure Key Vault
 
-Med Azure Key Vault kan du lagra hemligheter och kontrol lera deras distribution i en centraliserad, säker moln lagrings plats, vilket eliminerar behovet av att lagra autentiseringsuppgifter i program. Program behöver bara autentisera med Key Vault vid körning för att få åtkomst till dessa hemligheter.
+Azure Key Vault kan du lagra hemligheter och kontrollera deras distribution i en centraliserad, säker molnlagringsplats, vilket eliminerar behovet av att lagra autentiseringsuppgifter i program. Program behöver bara autentiseras Key Vault vid körning för att få åtkomst till dessa hemligheter.
 
-## <a name="app-identity-and-security-principals"></a>App-identitet och säkerhets objekt
+## <a name="app-identity-and-security-principals"></a>Appidentitet och säkerhetsobjekt
 
-Autentisering med Key Vault fungerar tillsammans med [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md), som ansvarar för att autentisera identiteten för ett specifikt **säkerhets objekt**.
+Autentisering med Key Vault fungerar tillsammans [med Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md), som ansvarar för att autentisera identiteten för ett visst **säkerhetsobjekt**.
 
-Ett säkerhets objekt är ett objekt som representerar en användare, grupp, tjänst eller ett program som begär åtkomst till Azure-resurser. Azure tilldelar ett unikt **objekt-ID** till varje säkerhets objekt.
+Ett säkerhetsobjekt är ett objekt som representerar en användare, grupp, tjänst eller ett program som begär åtkomst till Azure-resurser. Azure tilldelar ett unikt **objekt-ID till** varje säkerhetsobjekt.
 
-* Ett säkerhets objekt för **användare** identifierar en person som har en profil i Azure Active Directory.
+* Ett **säkerhetsobjekt** för användaren identifierar en person som har en profil i Azure Active Directory.
 
-* En **grupp** säkerhets objekt identifierar en uppsättning användare som skapats i Azure Active Directory. Alla roller eller behörigheter som tilldelas gruppen beviljas till alla användare i gruppen.
+* Ett  gruppsäkerhetsobjekt identifierar en uppsättning användare som skapats i Azure Active Directory. Alla roller eller behörigheter som tilldelas gruppen beviljas till alla användare i gruppen.
 
-* Ett **huvud namn för tjänsten** är en typ av säkerhets objekt som identiteter ett program eller en tjänst, vilket är att säga en kod del i stället för en användare eller grupp. Ett objekt-ID för tjänstens huvud namn kallas för **klient-ID** och fungerar som sitt användar namn. Tjänst objektets **klient hemlighet** fungerar som sitt lösen ord.
+* Ett **huvudnamn för** tjänsten är en typ av säkerhetsobjekt som identiteter för ett program eller en tjänst, det vill säga ett kodstycke i stället för en användare eller grupp. Objekt-ID:t för tjänstens huvudnamn kallas dess **klient-ID** och fungerar som dess användarnamn. Tjänstens huvudnamns **klienthemlighet** fungerar som dess lösenord.
 
-För program finns det två sätt att hämta ett huvud namn för tjänsten:
+För program finns det två sätt att hämta ett huvudnamn för tjänsten:
 
-* Rekommenderas: Aktivera en systemtilldelad **hanterad identitet** för programmet.
+* Rekommenderat: Aktivera en system tilldelad **hanterad** identitet för programmet.
 
-    Med hanterad identitet hanterar Azure internt programmets tjänst huvud namn och autentiserar automatiskt programmet med andra Azure-tjänster. Hanterad identitet är tillgänglig för program som distribueras till en mängd olika tjänster.
+    Med hanterad identitet hanterar Azure internt programmets huvudnamn för tjänsten och autentiserar automatiskt programmet med andra Azure-tjänster. Hanterad identitet är tillgänglig för program som distribueras till en mängd olika tjänster.
 
-    Mer information finns i [Översikt över hanterade identiteter](../../active-directory/managed-identities-azure-resources/overview.md). Se även [Azure-tjänster som stöder hanterad identitet](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), som länkar till artiklar som beskriver hur du aktiverar hanterad identitet för vissa tjänster (till exempel App Service, Azure Functions, Virtual Machines osv.).
+    Mer information finns i Översikt över [hanterad identitet.](../../active-directory/managed-identities-azure-resources/overview.md) Se även [Azure-tjänster](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)som stöder hanterad identitet , som länkar till artiklar som beskriver hur du aktiverar hanterad identitet för specifika tjänster (till exempel App Service, Azure Functions, Virtual Machines osv.).
 
-* Om du inte kan använda hanterad identitet **registrerar** du i stället programmet med din Azure AD-klient, enligt beskrivningen i [snabb start: registrera ett program med Azure Identity Platform](../../active-directory/develop/quickstart-register-app.md). Registreringen skapar också ett andra program objekt som identifierar appen för alla klienter.
+* Om du inte kan använda  hanterad identitet registrerar du i stället programmet med din Azure AD-klientorganisation enligt beskrivningen i [Snabbstart:](../../active-directory/develop/quickstart-register-app.md)Registrera ett program med Azure Identity Platform. Registreringen skapar också ett andra programobjekt som identifierar appen för alla klienter.
 
-## <a name="authorize-a-security-principal-to-access-key-vault"></a>Auktorisera ett säkerhets objekt för åtkomst Key Vault
+## <a name="authorize-a-security-principal-to-access-key-vault"></a>Auktorisera ett säkerhetsobjekt för åtkomst Key Vault
 
-Key Vault fungerar med två olika nivåer av auktorisering:
+Key Vault fungerar med två separata auktoriseringsnivåer:
 
-- **Åtkomst principer** styr om en användare, grupp eller tjänstens huvud namn har behörighet att få åtkomst till hemligheter, nycklar och certifikat *inom* en befintlig Key Vault resurs (kallas ibland "data Plans åtgärder"). Åtkomst principer beviljas vanligt vis till användare, grupper och program.
+- **Åtkomstprinciper** styr om en användare, grupp eller tjänstens huvudnamn  har behörighet att komma åt hemligheter, nycklar och certifikat inom en befintlig Key Vault-resurs (kallas ibland för "dataplansåtgärder"). Åtkomstprinciper beviljas vanligtvis till användare, grupper och program.
 
-    Information om hur du tilldelar åtkomst principer finns i följande artiklar:
+    Information om hur du tilldelar åtkomstprinciper finns i följande artiklar:
 
     - [Azure-portalen](assign-access-policy-portal.md)
     - [Azure CLI](assign-access-policy-cli.md)
     - [Azure PowerShell](assign-access-policy-portal.md)
 
-- **Roll behörigheter** kontrollerar om en användare, grupp eller tjänstens huvud namn har behörighet att skapa, ta bort och på annat sätt hantera en Key Vault resurs (kallas ibland "hanterings Plans åtgärder"). Sådana roller beviljas oftast bara för administratörer.
+- **Rollbehörigheter** styr om en användare, grupp eller tjänstens huvudnamn har behörighet att skapa, ta bort och på annat sätt hantera en Key Vault-resurs (kallas ibland för hanteringsplansåtgärder). Sådana roller beviljas oftast endast till administratörer.
  
     Information om hur du tilldelar och hanterar roller finns i följande artiklar:
 
@@ -60,55 +60,53 @@ Key Vault fungerar med två olika nivåer av auktorisering:
     - [Azure CLI](../../role-based-access-control/role-assignments-cli.md)
     - [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 
-    Key Vault stöder för närvarande [deltagar](../../role-based-access-control/built-in-roles.md#key-vault-contributor) rollen, som tillåter hanterings åtgärder på Key Vault resurser. Ett antal andra roller är för närvarande en för hands version. Du kan också skapa anpassade roller enligt beskrivningen i [Azures anpassade roller](../../role-based-access-control/custom-roles.md).
-
-    Allmän information om roller finns i [Vad är Azures rollbaserad åtkomst kontroll (Azure RBAC)?](../../role-based-access-control/overview.md).
+    Allmän information om roller finns i [Vad är rollbaserad åtkomstkontroll i Azure (Azure RBAC)?](../../role-based-access-control/overview.md).
 
 
 > [!IMPORTANT]
-> För bästa säkerhet ska du alltid följa huvud kontot för minsta behörighet och endast bevilja de mest särskilda åtkomst principerna och rollerna som behövs. 
+> För bästa säkerhet bör du alltid följa huvudprincipen för minsta behörighet och endast bevilja de mest specifika åtkomstprinciper och roller som är nödvändiga. 
     
-## <a name="configure-the-key-vault-firewall"></a>Konfigurera Key Vault brand vägg
+## <a name="configure-the-key-vault-firewall"></a>Konfigurera Key Vault brandväggen
 
-Som standard ger Key Vault åtkomst till resurser via offentliga IP-adresser. För ökad säkerhet kan du också begränsa åtkomsten till vissa IP-adressintervall, tjänst slut punkter, virtuella nätverk eller privata slut punkter.
+Som standard Key Vault åtkomst till resurser via offentliga IP-adresser. För bättre säkerhet kan du också begränsa åtkomsten till specifika IP-intervall, tjänstslutpunkter, virtuella nätverk eller privata slutpunkter.
 
-Mer information finns i [åtkomst Azure Key Vault bakom en brand vägg](./access-behind-firewall.md).
+Mer information finns i Access [Azure Key Vault bakom en brandvägg.](./access-behind-firewall.md)
 
 
-## <a name="the-key-vault-authentication-flow"></a>Flödet för Key Vault autentisering
+## <a name="the-key-vault-authentication-flow"></a>Det Key Vault autentiseringsflödet
 
-1. En tjänst huvud namn begär att autentisera med Azure AD, till exempel:
-    * En användare loggar in på Azure Portal med ett användar namn och lösen ord.
-    * Ett program anropar en Azure-REST API som presenterar ett klient-ID och en hemlighet eller ett klient certifikat.
-    * En Azure-resurs, till exempel en virtuell dator med en hanterad identitet, kontaktar [azure instance metadata service (IMDS)](../../virtual-machines/windows/instance-metadata-service.md) REST-slutpunkten för att få en åtkomsttoken.
+1. En begäran om tjänstens huvudnamn för autentisering med Azure AD, till exempel:
+    * En användare loggar in på Azure Portal med ett användarnamn och lösenord.
+    * Ett program anropar en Azure REST API och presenterar ett klient-ID och en hemlighet eller ett klientcertifikat.
+    * En Azure-resurs, till exempel en virtuell dator med en hanterad identitet, [kontaktar REST-slutpunkten för Azure Instance Metadata Service (IMDS)](../../virtual-machines/windows/instance-metadata-service.md) för att hämta en åtkomsttoken.
 
-1. Om autentisering med Azure AD lyckas beviljas tjänstens huvud namn en OAuth-token.
+1. Om autentiseringen med Azure AD lyckas beviljas tjänstens huvudnamn en OAuth-token.
 
-1. Tjänstens huvud namn gör ett anrop till Key Vault REST API via Key Vaults slut punkt (URI).
+1. Tjänstens huvudnamn gör ett anrop till Key Vault REST API via Key Vault slutpunkt (URI).
 
-1. Key Vault brand väggen kontrollerar följande kriterier. Om något kriterium är uppfyllt, tillåts anropet. Annars blockeras anropet och ett förbjudet svar returneras.
+1. Key Vault Firewall kontrollerar följande kriterier. Om något villkor uppfylls tillåts anropet. Annars blockeras anropet och ett förbjudet svar returneras.
 
-    * Brand väggen är inaktive rad och den offentliga slut punkten för Key Vault kan kontaktas från det offentliga Internet.
-    * Anroparen är en [Key Vault betrodd tjänst](./overview-vnet-service-endpoints.md#trusted-services), vilket gör att den kan kringgå brand väggen.
-    * Anroparen visas i brand väggen med IP-adress, virtuellt nätverk eller tjänst slut punkt.
-    * Anroparen kan uppnå Key Vault över en konfigurerad anslutning till en privat länk.    
+    * Brandväggen är inaktiverad och den offentliga slutpunkten för Key Vault kan nås från det offentliga Internet.
+    * Anroparen är en [Key Vault betrodd tjänst,](./overview-vnet-service-endpoints.md#trusted-services)så att den kan kringgå brandväggen.
+    * Anroparen visas i brandväggen efter IP-adress, virtuellt nätverk eller tjänstslutpunkt.
+    * Anroparen kan nå Key Vault via en konfigurerad privat länkanslutning.    
 
-1. Om brand väggen tillåter anropet, Key Vault anropar Azure AD för att verifiera tjänstens huvud-åtkomsttoken.
+1. Om brandväggen tillåter anropet anropar Key Vault Azure AD för att verifiera åtkomsttoken för tjänstens huvudnamn.
 
-1. Key Vault kontrollerar om tjänstens huvud namn har den nödvändiga åtkomst principen för den begärda åtgärden. Annars returnerar Key Vault ett otillåtet svar.
+1. Key Vault kontrollerar om tjänstens huvudnamn har den åtkomstprincip som krävs för den begärda åtgärden. Annars returnerar Key Vault ett förbjudet svar.
 
 1. Key Vault utför den begärda åtgärden och returnerar resultatet.
 
-Följande diagram illustrerar processen för ett program som anropar en Key Vault "Get Secret"-API:
+Följande diagram illustrerar processen för ett program som anropar ett api Key Vault "Hämta hemlighet":
 
-![Flödet för Azure Key Vault autentisering](../media/authentication/authentication-flow.png)
+![Det Azure Key Vault autentiseringsflödet](../media/authentication/authentication-flow.png)
 
 > [!NOTE]
-> Key Vault SDK-klienter för hemligheter, certifikat och nycklar gör ett ytterligare anrop till Key Vault utan åtkomsttoken, vilket resulterar i 401-svar för att hämta klient information. Mer information finns i [autentisering, begär Anden och svar](authentication-requests-and-responses.md)
+> Key Vault SDK-klienter för hemligheter, certifikat och nycklar gör ytterligare ett anrop till Key Vault utan åtkomsttoken, vilket resulterar i ett 401-svar för att hämta klientinformation. Mer information finns i [Autentisering, begäranden och svar](authentication-requests-and-responses.md)
 
 ## <a name="code-examples"></a>Kodexempel
 
-Följande tabell länkar till olika artiklar som visar hur du arbetar med Key Vault i program kod med hjälp av Azure SDK-bibliotek för språket i fråga. Andra gränssnitt, till exempel Azure CLI och Azure Portal, ingår för enkelhetens skull.
+Följande tabell innehåller länkar till olika artiklar som visar hur du arbetar med Key Vault i programkod med hjälp av Azure SDK-biblioteken för språket i fråga. Andra gränssnitt, till exempel Azure CLI och Azure Portal ingår för enkelhetens skull.
 
 | Key Vault hemligheter | Key Vault nycklar | Key Vault certifikat |
 |  --- | --- | --- |
@@ -123,7 +121,7 @@ Följande tabell länkar till olika artiklar som visar hur du arbetar med Key Va
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Fel sökning av Key Vault åtkomst princip](troubleshooting-access-issues.md)
-- [Fel koder för Key Vault REST API](rest-error-codes.md)
-- [Guide för Key Vault utvecklare](developers-guide.md)
+- [Key Vault felsökning av åtkomstprincip](troubleshooting-access-issues.md)
+- [Key Vault REST API felkoder](rest-error-codes.md)
+- [Key Vault utvecklarguide](developers-guide.md)
 - [Vad är rollbaserad åtkomstkontroll i Azure (Azure RBAC)?](../../role-based-access-control/overview.md)

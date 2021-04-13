@@ -1,7 +1,7 @@
 ---
-title: 'Snabb start: skapa en intern belastningsutjämnare – Azure CLI'
+title: 'Snabbstart: Skapa en intern lastbalanserare – Azure CLI'
 titleSuffix: Azure Load Balancer
-description: Den här snabb starten visar hur du skapar en intern belastningsutjämnare med hjälp av Azure CLI.
+description: Den här snabbstarten visar hur du skapar en intern lastbalanserare med hjälp av Azure CLI.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,31 +14,28 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: f728e1f1e2186188135666ed54e02c9ed3507509
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 66b3db9a7aec45a2a0881379db6f7ef51950b5c5
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056546"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364319"
 ---
-# <a name="quickstart-create-an-internal-load-balancer-by-using-the-azure-cli"></a>Snabb start: skapa en intern belastningsutjämnare med hjälp av Azure CLI
+# <a name="quickstart-create-an-internal-load-balancer-by-using-the-azure-cli"></a>Snabbstart: Skapa en intern lastbalanserare med hjälp av Azure CLI
 
-Kom igång med Azure Load Balancer med hjälp av Azure CLI för att skapa en intern belastningsutjämnare och tre virtuella datorer.
+Kom igång med Azure Load Balancer hjälp av Azure CLI för att skapa en intern lastbalanserare och tre virtuella datorer.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)] 
 
-Den här snabb starten kräver version 2.0.28 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
-
->[!NOTE]
->Azure Load Balancer standard är det rekommenderade alternativet för produktions arbets belastningar. Den här artikeln innehåller information om Azure Load Balancer standard, samt Azure Load Balancer Basic. Mer information om SKU: er finns i [Azure Load Balancer SKU: er](skus.md).
+Den här snabbstarten kräver version 2.0.28 eller senare av Azure CLI. Om du använder en Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-En Azure-resurs grupp är en logisk behållare där du distribuerar och hanterar dina Azure-resurser.
+En Azure-resursgrupp är en logisk container där du distribuerar och hanterar dina Azure-resurser.
 
-Skapa en resursgrupp med [az group create](/cli/azure/group#az_group_create). Ge resurs gruppen namnet **CreateIntLBQS-RG** och ange platsen som **öst**.
+Skapa en resursgrupp med [az group create](/cli/azure/group#az_group_create). Ge resursgruppen namnet **CreateIntLBQS-rg** och ange platsen **eastus**.
 
 ```azurecli-interactive
   az group create \
@@ -47,26 +44,30 @@ Skapa en resursgrupp med [az group create](/cli/azure/group#az_group_create). Ge
 
 ```
 
-## <a name="azure-load-balancer-standard"></a>Azure Load Balancer standard
+---
+# <a name="standard-sku"></a>[**Standard-SKU**](#tab/option-1-create-load-balancer-standard)
 
-I det här avsnittet skapar du en belastningsutjämnare som laddar upp virtuella datorer. När du skapar en intern belastningsutjämnare konfigureras ett virtuellt nätverk som nätverk för belastningsutjämnaren. Följande diagram visar de resurser som skapats i den här snabb starten:
+>[!NOTE]
+>Standard-SKU-lastbalanserare rekommenderas för produktionsarbetsbelastningar. Mer information om SKU:er finns i **[Azure Load Balancer SKU:er](skus.md)**.
 
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Standard belastnings Utjämnings resurser har skapats för snabb start." border="false":::
+I det här avsnittet skapar du en lastbalanserare som lastbalanserar virtuella datorer. När du skapar en intern lastbalanserare konfigureras ett virtuellt nätverk som lastbalanserares nätverk. Följande diagram visar de resurser som skapades i den här snabbstarten:
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Resurser för standardlastbalanserare som skapats för snabbstart." border="false":::
 
 ### <a name="configure-the-virtual-network"></a>Konfigurera det virtuella nätverket
 
-Innan du distribuerar virtuella datorer och distribuerar belastningsutjämnaren skapar du de stödda virtuella nätverks resurserna.
+Innan du distribuerar virtuella datorer och distribuerar lastbalanserare skapar du de virtuella nätverksresurser som du stöder.
 
 #### <a name="create-a-virtual-network"></a>Skapa ett virtuellt nätverk
 
-Skapa ett virtuellt nätverk med [AZ Network VNet Create](/cli/azure/network/vnet#az-network-vnet-create). Ange följande:
+Skapa ett virtuellt nätverk med [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). Ange följande:
 
-* Med namnet **myVNet**
-* Adressprefix för **10.1.0.0/16**
-* Undernät med namnet **myBackendSubnet**
-* Undernätsprefixet för **10.1.0.0/24**
-* I resurs gruppen **CreateIntLBQS-RG**
-* Plats för **öster**
+* Med **namnet myVNet**
+* Adressprefixet **10.1.0.0/16**
+* Undernät med **namnet myBackendSubnet**
+* Undernätsprefixet **10.1.0.0/24**
+* I **resursgruppen CreateIntLBQS-rg**
+* Platsen **eastus**
 
 ```azurecli-interactive
   az network vnet create \
@@ -80,10 +81,10 @@ Skapa ett virtuellt nätverk med [AZ Network VNet Create](/cli/azure/network/vne
 
 #### <a name="create-a-public-ip-address"></a>Skapa en offentlig IP-adress
 
-Använd [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) för att skapa en offentlig IP-adress för Azure skydds-värden. Ange följande:
+Använd [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) för att skapa en offentlig IP-adress för Azure Bastion värden. Ange följande:
 
-* Skapa en standard zon med redundant offentlig IP-adress med namnet **myBastionIP**
-* I **CreateIntLBQS-RG**
+* Skapa en standardzonredundant offentlig IP-adress med namnet **myBastionIP**
+* I **CreateIntLBQS-rg**
 
 ```azurecli-interactive
 az network public-ip create \
@@ -91,14 +92,14 @@ az network public-ip create \
     --name myBastionIP \
     --sku Standard
 ```
-#### <a name="create-an-azure-bastion-subnet"></a>Skapa ett Azure skydds-undernät
+#### <a name="create-an-azure-bastion-subnet"></a>Skapa ett Azure Bastion undernät
 
-Använd [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) för att skapa ett undernät. Ange följande:
+Använd [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) för att skapa ett undernät. Ange följande:
 
-* Med namnet **AzureBastionSubnet**
-* Adressprefix för **10.1.1.0/24**
-* I virtuellt nätverk **myVNet**
-* I resurs gruppen **CreateIntLBQS-RG**
+* Med **namnet AzureBastionSubnet**
+* Adressprefixet **10.1.1.0/24**
+* I det virtuella nätverket **myVNet**
+* I resursgruppen **CreateIntLBQS-rg**
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -110,13 +111,13 @@ az network vnet subnet create \
 
 #### <a name="create-an-azure-bastion-host"></a>Skapa en Azure Bastion-värd
 
-Använd [AZ Network skydds Create](/cli/azure/network/bastion#az-network-bastion-create) för att skapa en värd. Ange följande:
+Använd [az network bastion create för](/cli/azure/network/bastion#az-network-bastion-create) att skapa en värd. Ange följande:
 
-* Med namnet **myBastionHost**
-* I **CreateIntLBQS-RG**
-* Associerat med offentliga IP- **myBastionIP**
-* Associerad med **myVNet** för virtuellt nätverk
-* På **östra** platsen
+* Med **namnet myBastionHost**
+* I **CreateIntLBQS-rg**
+* Associerad med offentlig IP **myBastionIP**
+* Associerat med det virtuella nätverket **myVNet**
+* På **platsen eastus**
 
 ```azurecli-interactive
 az network bastion create \
@@ -127,14 +128,14 @@ az network bastion create \
     --location eastus
 ```
 
-Det kan ta några minuter innan Azure skydds-värden kan distribueras.
+Det kan ta några minuter för den Azure Bastion värden att distribueras.
 
 #### <a name="create-a-network-security-group"></a>Skapa en nätverkssäkerhetsgrupp
 
-För en standard belastningsutjämnare kontrollerar du att de virtuella datorerna har nätverks gränssnitt som tillhör en nätverks säkerhets grupp. Skapa en nätverks säkerhets grupp med [AZ Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create). Ange följande:
+För en standardlastbalanserare ser du till att dina virtuella datorer har nätverksgränssnitt som tillhör en nätverkssäkerhetsgrupp. Skapa en nätverkssäkerhetsgrupp med az [network nsg create](/cli/azure/network/nsg#az-network-nsg-create). Ange följande:
 
-* Med namnet **myNSG**
-* I resurs gruppen **CreateIntLBQS-RG**
+* Med **namnet myNSG**
+* I resursgruppen **CreateIntLBQS-rg**
 
 ```azurecli-interactive
   az network nsg create \
@@ -144,17 +145,17 @@ För en standard belastningsutjämnare kontrollerar du att de virtuella datorern
 
 #### <a name="create-a-network-security-group-rule"></a>Skapa en regel för nätverkssäkerhetsgruppen
 
-Skapa en regel för nätverks säkerhets grupp genom att använda [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create). Ange följande:
+Skapa en regel för nätverkssäkerhetsgrupp med [hjälp av az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create). Ange följande:
 
-* Med namnet **myNSGRuleHTTP**
-* I den nätverks säkerhets grupp som du skapade i föregående steg, **myNSG**
-* I resurs gruppen **CreateIntLBQS-RG**
+* Med **namnet myNSGRuleHTTP**
+* I nätverkssäkerhetsgruppen som du skapade i föregående steg **myNSG**
+* I resursgruppen **CreateIntLBQS-rg**
 * Protokoll **(*)**
-* Riktningen **inkommande**
+* Riktning **inkommande**
 * Källa **(*)**
 * Mål **(*)**
 * Målport **port 80**
-* **Tillåt** åtkomst
+* Tillåt **åtkomst**
 * Prioritet **200**
 
 ```azurecli-interactive
@@ -176,18 +177,18 @@ Skapa en regel för nätverks säkerhets grupp genom att använda [AZ Network NS
 
 I det här avsnittet skapar du:
 
-* Tre nätverks gränssnitt för de virtuella datorerna.
-* Tre virtuella datorer som ska användas som servrar för belastningsutjämnaren.
+* Tre nätverksgränssnitt för de virtuella datorerna.
+* Tre virtuella datorer som ska användas som servrar för lastbalanseraren.
 
-#### <a name="create-network-interfaces-for-the-virtual-machines"></a>Skapa nätverks gränssnitt för virtuella datorer
+#### <a name="create-network-interfaces-for-the-virtual-machines"></a>Skapa nätverksgränssnitt för de virtuella datorerna
 
-Skapa tre nätverks gränssnitt med [AZ Network NIC Create](/cli/azure/network/nic#az-network-nic-create). Ange följande:
+Skapa tre nätverksgränssnitt med [az network nic create](/cli/azure/network/nic#az-network-nic-create). Ange följande:
 
-* Med namnet **myNicVM1**, **myNicVM2** och **myNicVM3**
-* I resurs gruppen **CreateIntLBQS-RG**
-* I virtuellt nätverk **myVNet**
-* I undernät **myBackendSubnet**
-* I nätverks säkerhets gruppen **myNSG**
+* Med **namnet myNicVM1,** **myNicVM2** och **myNicVM3**
+* I resursgruppen **CreateIntLBQS-rg**
+* I det virtuella nätverket **myVNet**
+* I undernätet **myBackendSubnet**
+* I nätverkssäkerhetsgruppen **myNSG**
 
 ```azurecli-interactive
   array=(myNicVM1 myNicVM2 myNicVM3)
@@ -206,11 +207,11 @@ Skapa tre nätverks gränssnitt med [AZ Network NIC Create](/cli/azure/network/n
 
 Skapa de virtuella datorerna med [az vm create](/cli/azure/vm#az-vm-create). Ange följande:
 
-* Med namnet **myVM1**, **myVM2** och **myVM3**
-* I resurs gruppen **CreateIntLBQS-RG**
-* Ansluten till nätverks gränssnittet **myNicVM1**, **myNicVM2** och **myNicVM3**
-* **Win2019datacenter** för avbildning av virtuell dator
-* I **zon 1**, **zon 2** och **zon 3**
+* Med **namnet myVM1,** **myVM2** och **myVM3**
+* I resursgruppen **CreateIntLBQS-rg**
+* Ansluten till **nätverksgränssnittet myNicVM1,** **myNicVM2** och **myNicVM3**
+* Virtuell datoravbildning **win2019datacenter**
+* I **Zon 1**, **Zon 2** och **Zon 3**
 
 ```azurecli-interactive
   array=(1 2 3)
@@ -227,26 +228,26 @@ Skapa de virtuella datorerna med [az vm create](/cli/azure/vm#az-vm-create). Ang
   done
 ```
 
-Det kan ta några minuter innan de virtuella datorerna distribueras.
+Det kan ta några minuter för de virtuella datorerna att distribueras.
 
 ### <a name="create-the-load-balancer"></a>Skapa lastbalanseraren
 
 I det här avsnittet beskrivs hur du gör för att skapa och konfigurera följande komponenter i lastbalanseraren:
 
-* En IP-pool som tar emot inkommande nätverks trafik i belastningsutjämnaren.
-* En andra IP-pool, där den första poolen skickar den belastningsutjämnade nätverks trafiken.
-* En hälso avsökning som avgör hälso tillståndet för VM-instanserna.
-* En belastnings Utjämnings regel som definierar hur trafiken distribueras till de virtuella datorerna.
+* En IP-pool som tar emot inkommande nätverkstrafik på lastbalanseraren.
+* En andra IP-pool, där den första poolen skickar den belastningsutjämnade nätverkstrafiken.
+* En hälsoavsökning som fastställer hälsotillståndet för de virtuella datorinstanserna.
+* En lastbalanseringsregel som definierar hur trafiken distribueras till de virtuella datorerna.
 
-#### <a name="create-the-load-balancer-resource"></a>Skapa belastnings Utjämnings resursen
+#### <a name="create-the-load-balancer-resource"></a>Skapa lastbalanseringsresursen
 
-Skapa en offentlig belastningsutjämnare med [AZ Network lb Create](/cli/azure/network/lb#az-network-lb-create). Ange följande:
+Skapa en offentlig lastbalanserare med [az network lb create](/cli/azure/network/lb#az-network-lb-create). Ange följande:
 
-* Med namnet **myLoadBalancer**
-* En pool med namnet ' **frontend** '
-* En pool med namnet **myBackEndPool**
+* Med **namnet myLoadBalancer**
+* En pool med **namnet myFrontEnd**
+* En pool med **namnet myBackEndPool**
 * Associerat med det virtuella nätverket **myVNet**
-* Associerad med under nätet **myBackendSubnet**
+* Associerat med undernätet **myBackendSubnet**
 
 ```azurecli-interactive
   az network lb create \
@@ -261,14 +262,14 @@ Skapa en offentlig belastningsutjämnare med [AZ Network lb Create](/cli/azure/n
 
 #### <a name="create-the-health-probe"></a>Skapar hälsoavsökningen
 
-En hälso avsökning kontrollerar alla virtuella dator instanser för att säkerställa att de kan skicka nätverks trafik. En virtuell dator med en misslyckad avsöknings kontroll har tagits bort från belastningsutjämnaren. Den virtuella datorn läggs tillbaka i belastningsutjämnaren när problemet är löst.
+En hälsoavsökning kontrollerar alla instanser av virtuella datorer för att säkerställa att de kan skicka nätverkstrafik. En virtuell dator med en misslyckad avsökningskontroll tas bort från lastbalanseraren. Den virtuella datorn läggs tillbaka till lastbalanseraren när felet är löst.
 
-Skapa en hälso avsökning med [AZ Network lb PROBE Create](/cli/azure/network/lb/probe#az-network-lb-probe-create). Ange följande:
+Skapa en hälsoavsökning med [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create). Ange följande:
 
-* Övervakar hälso tillståndet för de virtuella datorerna
-* Med namnet **myHealthProbe**
-* Protokoll- **TCP**
-* Övervaknings **Port 80**
+* Övervakar hälsotillståndet för de virtuella datorerna
+* Med **namnet myHealthProbe**
+* **Protokoll-TCP**
+* Övervaka **port 80**
 
 ```azurecli-interactive
   az network lb probe create \
@@ -281,20 +282,20 @@ Skapa en hälso avsökning med [AZ Network lb PROBE Create](/cli/azure/network/l
 
 #### <a name="create-a-load-balancer-rule"></a>Skapa en lastbalanseringsregel
 
-En belastnings Utjämnings regel definierar:
+En lastbalanseringsregel definierar:
 
 * IP-konfigurationen för inkommande trafik.
 * IP-poolen som ska ta emot trafiken.
-* Käll-och mål port som krävs. 
+* Nödvändig käll- och målport. 
 
 Använd [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) för att skapa en regel för lastbalanseraren. Ange följande:
 
-* Med namnet **myHTTPRule**
-* Lyssnar på **Port 80** i poolen för- **frontend**
-* Skicka belastningsutjämnad nätverks trafik till adresspoolen **myBackEndPool** genom att använda **port 80** 
-* Använda **myHealthProbe** för hälso avsökning
-* Protokoll- **TCP**
-* Tids gräns för inaktivitet i **15 minuter**
+* Med **namnet myHTTPRule**
+* Lyssna på **port 80** i poolen **myFrontEnd**
+* Skicka belastningsutjämnad nätverkstrafik till **adresspoolen myBackEndPool** med **port 80** 
+* Använda hälsoavsökningen **myHealthProbe**
+* **Protokoll-TCP**
+* Tidsgräns för inaktivitet på **15 minuter**
 * Aktivera TCP-återställning
 
 ```azurecli-interactive
@@ -312,14 +313,14 @@ Använd [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rul
     --enable-tcp-reset true
 ```
 
-#### <a name="add-vms-to-the-load-balancer-pool"></a>Lägga till virtuella datorer i belastningsutjämnaren
+#### <a name="add-vms-to-the-load-balancer-pool"></a>Lägga till virtuella datorer i lastbalanseringspoolen
 
-Lägg till de virtuella datorerna i backend-poolen med [AZ Network NIC IP-config Address-pool Add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add). Ange följande:
+Lägg till de virtuella datorerna i serverpoolen med [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add). Ange följande:
 
-* I **myBackEndPool** för adresspool
-* I resurs gruppen **CreateIntLBQS-RG**
-* Associerad med nätverks gränssnittet **myNicVM1**, **myNicVM2** och **myNicVM3**
-* Kopplad till belastningsutjämnare **myLoadBalancer**
+* I **adresspoolen myBackEndPool**
+* I resursgruppen **CreateIntLBQS-rg**
+* Associerat med **nätverksgränssnittet myNicVM1,** **myNicVM2** och **myNicVM3**
+* Associerat med **lastbalanserare myLoadBalancer**
 
 ```azurecli-interactive
   array=(VM1 VM2 VM3)
@@ -335,26 +336,29 @@ Lägg till de virtuella datorerna i backend-poolen med [AZ Network NIC IP-config
 
 ```
 
-## <a name="azure-load-balancer-basic"></a>Azure Load Balancer Basic
+# <a name="basic-sku"></a>[**Grundläggande SKU**](#tab/option-1-create-load-balancer-basic)
 
-I det här avsnittet skapar du en belastningsutjämnare som laddar upp virtuella datorer. När du skapar en intern belastningsutjämnare konfigureras ett virtuellt nätverk som nätverk för belastningsutjämnaren. Följande diagram visar de resurser som skapats i den här snabb starten:
+>[!NOTE]
+>Standard-SKU-lastbalanserare rekommenderas för produktionsarbetsbelastningar. Mer information om SKU:er finns i **[Azure Load Balancer SKU:er](skus.md)**.
 
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Grundläggande belastnings Utjämnings resurser har skapats för snabb start." border="false":::
+I det här avsnittet skapar du en lastbalanserare som lastbalanserar virtuella datorer. När du skapar en intern lastbalanserare konfigureras ett virtuellt nätverk som lastbalanserares nätverk. Följande diagram visar de resurser som skapades i den här snabbstarten:
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Resurser för grundläggande lastbalanserare som skapats för snabbstart." border="false":::
 
 ### <a name="configure-the-virtual-network"></a>Konfigurera det virtuella nätverket
 
-Innan du distribuerar virtuella datorer och distribuerar belastningsutjämnaren skapar du de stödda virtuella nätverks resurserna.
+Innan du distribuerar virtuella datorer och distribuerar lastbalanseraren skapar du de stödande virtuella nätverksresurserna.
 
 #### <a name="create-a-virtual-network"></a>Skapa ett virtuellt nätverk
 
-Skapa ett virtuellt nätverk med [AZ Network VNet Create](/cli/azure/network/vnet#az-network-vnet-createt). Ange följande:
+Skapa ett virtuellt nätverk med [hjälp av az network vnet create](/cli/azure/network/vnet#az-network-vnet-createt). Ange följande:
 
-* Med namnet **myVNet**
-* Adressprefix för **10.1.0.0/16**
-* Undernät med namnet **myBackendSubnet**
-* Undernätsprefixet för **10.1.0.0/24**
-* I resurs gruppen **CreateIntLBQS-RG**
-* Plats för **öster**
+* Med **namnet myVNet**
+* Adressprefixet **10.1.0.0/16**
+* Undernät med **namnet myBackendSubnet**
+* Undernätsprefixet **10.1.0.0/24**
+* I **resursgruppen CreateIntLBQS-rg**
+* Platsen **eastus**
 
 ```azurecli-interactive
   az network vnet create \
@@ -368,10 +372,10 @@ Skapa ett virtuellt nätverk med [AZ Network VNet Create](/cli/azure/network/vne
 
 #### <a name="create-a-public-ip-address"></a>Skapa en offentlig IP-adress
 
-Använd [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create) för att skapa en offentlig IP-adress för Azure skydds-värden. Ange följande:
+Använd [az network public-ip create för](/cli/azure/network/public-ip#az-network-public-ip-create) att skapa en offentlig IP-adress för Azure Bastion värden. Ange följande:
 
-* Skapa en standard zon med redundant offentlig IP-adress med namnet **myBastionIP**
-* I **CreateIntLBQS-RG**
+* Skapa en standardzonredundant offentlig IP-adress med namnet **myBastionIP**
+* I **CreateIntLBQS-rg**
 
 ```azurecli-interactive
 az network public-ip create \
@@ -379,14 +383,14 @@ az network public-ip create \
     --name myBastionIP \
     --sku Standard
 ```
-#### <a name="create-an-azure-bastion-subnet"></a>Skapa ett Azure skydds-undernät
+#### <a name="create-an-azure-bastion-subnet"></a>Skapa ett Azure Bastion undernät
 
-Använd [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) för att skapa ett undernät. Ange följande:
+Använd [az network vnet subnet create för](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) att skapa ett undernät. Ange följande:
 
-* Med namnet **AzureBastionSubnet**
-* Adressprefix för **10.1.1.0/24**
-* I virtuellt nätverk **myVNet**
-* I resurs gruppen **CreateIntLBQS-RG**
+* Med **namnet AzureBastionSubnet**
+* Adressprefixet **10.1.1.0/24**
+* I det virtuella nätverket **myVNet**
+* I resursgruppen **CreateIntLBQS-rg**
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -398,13 +402,13 @@ az network vnet subnet create \
 
 #### <a name="create-an-azure-bastion-host"></a>Skapa en Azure Bastion-värd
 
-Använd [AZ Network skydds Create](/cli/azure/network/bastion#az-network-bastion-create) för att skapa en värd. Ange följande:
+Använd [az network bastion create för](/cli/azure/network/bastion#az-network-bastion-create) att skapa en värd. Ange följande:
 
-* Med namnet **myBastionHost**
-* I **CreateIntLBQS-RG**
-* Associerat med offentliga IP- **myBastionIP**
-* Associerad med **myVNet** för virtuellt nätverk
-* På **östra** platsen
+* Med **namnet myBastionHost**
+* I **CreateIntLBQS-rg**
+* Associerad med offentlig IP **myBastionIP**
+* Associerat med det virtuella nätverket **myVNet**
+* På **platsen eastus**
 
 ```azurecli-interactive
 az network bastion create \
@@ -415,14 +419,14 @@ az network bastion create \
     --location eastus
 ```
 
-Det kan ta några minuter innan Azure skydds-värden kan distribueras.
+Det kan ta några minuter för den Azure Bastion värden att distribueras.
 
 #### <a name="create-a-network-security-group"></a>Skapa en nätverkssäkerhetsgrupp
 
-För en standard belastningsutjämnare kontrollerar du att de virtuella datorerna har nätverks gränssnitt som tillhör en nätverks säkerhets grupp. Skapa en nätverks säkerhets grupp med [AZ Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create). Ange följande:
+För en standardlastbalanserare ser du till att dina virtuella datorer har nätverksgränssnitt som tillhör en nätverkssäkerhetsgrupp. Skapa en nätverkssäkerhetsgrupp med az [network nsg create](/cli/azure/network/nsg#az-network-nsg-create). Ange följande:
 
-* Med namnet **myNSG**
-* I resurs gruppen **CreateIntLBQS-RG**
+* Med **namnet myNSG**
+* I resursgruppen **CreateIntLBQS-rg**
 
 ```azurecli-interactive
   az network nsg create \
@@ -432,17 +436,17 @@ För en standard belastningsutjämnare kontrollerar du att de virtuella datorern
 
 #### <a name="create-a-network-security-group-rule"></a>Skapa en regel för nätverkssäkerhetsgruppen
 
-Skapa en regel för nätverks säkerhets grupp genom att använda [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create). Ange följande:
+Skapa en regel för nätverkssäkerhetsgrupp med [hjälp av az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create). Ange följande:
 
-* Med namnet **myNSGRuleHTTP**
-* I den nätverks säkerhets grupp som du skapade i föregående steg, **myNSG**
-* I resurs gruppen **CreateIntLBQS-RG**
+* Namngiven **myNSGRuleHTTP**
+* MyNSG i den nätverkssäkerhetsgrupp som du skapade i **föregående steg**
+* I resursgruppen **CreateIntLBQS-rg**
 * Protokoll **(*)**
-* Riktningen **inkommande**
+* Riktning **inkommande**
 * Källa **(*)**
 * Mål **(*)**
 * Målport **port 80**
-* **Tillåt** åtkomst
+* Tillåt **åtkomst**
 * Prioritet **200**
 
 ```azurecli-interactive
@@ -464,19 +468,19 @@ Skapa en regel för nätverks säkerhets grupp genom att använda [AZ Network NS
 
 I det här avsnittet skapar du:
 
-* Tre nätverks gränssnitt för de virtuella datorerna.
-* Tillgänglighets uppsättningen för de virtuella datorerna.
-* Tre virtuella datorer som ska användas som servrar för belastningsutjämnaren.
+* Tre nätverksgränssnitt för de virtuella datorerna.
+* Tillgänglighetsuppsättningen för de virtuella datorerna.
+* Tre virtuella datorer som ska användas som servrar för lastbalanseraren.
 
-#### <a name="create-network-interfaces-for-the-virtual-machines"></a>Skapa nätverks gränssnitt för virtuella datorer
+#### <a name="create-network-interfaces-for-the-virtual-machines"></a>Skapa nätverksgränssnitt för de virtuella datorerna
 
-Skapa tre nätverks gränssnitt med [AZ Network NIC Create](/cli/azure/network/nic#az-network-nic-create). Ange följande:
+Skapa tre nätverksgränssnitt med [az network nic create](/cli/azure/network/nic#az-network-nic-create). Ange följande:
 
-* Med namnet **myNicVM1**, **myNicVM2** och **myNicVM3**
-* I resurs gruppen **CreateIntLBQS-RG**
-* I virtuellt nätverk **myVNet**
-* I undernät **myBackendSubnet**
-* I nätverks säkerhets gruppen **myNSG**
+* Med **namnet myNicVM1,** **myNicVM2** och **myNicVM3**
+* I resursgruppen **CreateIntLBQS-rg**
+* I det virtuella nätverket **myVNet**
+* I undernätet **myBackendSubnet**
+* I nätverkssäkerhetsgruppen **myNSG**
 
 ```azurecli-interactive
   array=(myNicVM1 myNicVM2 myNicVM3)
@@ -491,13 +495,13 @@ Skapa tre nätverks gränssnitt med [AZ Network NIC Create](/cli/azure/network/n
   done
 ```
 
-#### <a name="create-the-availability-set-for-the-virtual-machines"></a>Skapa tillgänglighets uppsättning för de virtuella datorerna
+#### <a name="create-the-availability-set-for-the-virtual-machines"></a>Skapa tillgänglighetsuppsättningen för de virtuella datorerna
 
-Skapa tillgänglighets uppsättningen med [AZ VM Availability-set Create](/cli/azure/vm/availability-set#az-vm-availability-set-create). Ange följande:
+Skapa tillgänglighetsuppsättningen med [az vm availability-set create](/cli/azure/vm/availability-set#az-vm-availability-set-create). Ange följande:
 
-* Med namnet **myAvailabilitySet**
-* I resurs gruppen **CreateIntLBQS-RG**
-* **Östra** platser
+* Med **namnet myAvailabilitySet**
+* I resursgruppen **CreateIntLBQS-rg**
+* Plats **eastus**
 
 ```azurecli-interactive
   az vm availability-set create \
@@ -511,10 +515,10 @@ Skapa tillgänglighets uppsättningen med [AZ VM Availability-set Create](/cli/a
 
 Skapa de virtuella datorerna med [az vm create](/cli/azure/vm#az-vm-create). Ange följande:
 
-* Med namnet **myVM1**, **myVM2** och **myVM3**
-* I resurs gruppen **CreateIntLBQS-RG**
-* Ansluten till nätverks gränssnittet **myNicVM1**, **myNicVM2** och **myNicVM3**
-* **Win2019datacenter** för avbildning av virtuell dator
+* Med **namnet myVM1,** **myVM2** och **myVM3**
+* I resursgruppen **CreateIntLBQS-rg**
+* Ansluten till **nätverksgränssnittet myNicVM1,** **myNicVM2** och **myNicVM3**
+* Virtuell datoravbildning **win2019datacenter**
 * I **myAvailabilitySet**
 
 
@@ -532,26 +536,26 @@ Skapa de virtuella datorerna med [az vm create](/cli/azure/vm#az-vm-create). Ang
     --no-wait
   done
 ```
-Det kan ta några minuter innan de virtuella datorerna distribueras.
+Det kan ta några minuter för de virtuella datorerna att distribueras.
 
 ### <a name="create-the-load-balancer"></a>Skapa lastbalanseraren
 
 I det här avsnittet beskrivs hur du gör för att skapa och konfigurera följande komponenter i lastbalanseraren:
 
-* En IP-pool som tar emot inkommande nätverks trafik i belastningsutjämnaren.
-* En andra IP-pool, där den första poolen skickar den belastningsutjämnade nätverks trafiken.
-* En hälso avsökning som avgör hälso tillståndet för VM-instanserna.
-* En belastnings Utjämnings regel som definierar hur trafiken distribueras till de virtuella datorerna.
+* En IP-pool som tar emot inkommande nätverkstrafik på lastbalanseraren.
+* En andra IP-pool, där den första poolen skickar den belastningsutjämnade nätverkstrafiken.
+* En hälsoavsökning som fastställer hälsotillståndet för de virtuella datorinstanserna.
+* En lastbalanseringsregel som definierar hur trafiken distribueras till de virtuella datorerna.
 
-#### <a name="create-the-load-balancer-resource"></a>Skapa belastnings Utjämnings resursen
+#### <a name="create-the-load-balancer-resource"></a>Skapa lastbalanseringsresursen
 
-Skapa en offentlig belastningsutjämnare med [AZ Network lb Create](/cli/azure/network/lb#az-network-lb-create). Ange följande:
+Skapa en offentlig lastbalanserare med [az network lb create](/cli/azure/network/lb#az-network-lb-create). Ange följande:
 
-* Med namnet **myLoadBalancer**
-* En pool med namnet ' **frontend** '
-* En pool med namnet **myBackEndPool**
+* Med **namnet myLoadBalancer**
+* En pool med **namnet myFrontEnd**
+* En pool med **namnet myBackEndPool**
 * Associerat med det virtuella nätverket **myVNet**
-* Associerad med under nätet **myBackendSubnet**
+* Associerat med undernätet **myBackendSubnet**
 
 ```azurecli-interactive
   az network lb create \
@@ -566,14 +570,14 @@ Skapa en offentlig belastningsutjämnare med [AZ Network lb Create](/cli/azure/n
 
 #### <a name="create-the-health-probe"></a>Skapar hälsoavsökningen
 
-En hälso avsökning kontrollerar alla virtuella dator instanser för att säkerställa att de kan skicka nätverks trafik. En virtuell dator med en misslyckad avsöknings kontroll har tagits bort från belastningsutjämnaren. Den virtuella datorn läggs tillbaka i belastningsutjämnaren när problemet är löst.
+En hälsoavsökning kontrollerar alla instanser av virtuella datorer för att säkerställa att de kan skicka nätverkstrafik. En virtuell dator med en misslyckad avsökningskontroll tas bort från lastbalanseraren. Den virtuella datorn läggs tillbaka i lastbalanseraren när felet är löst.
 
-Skapa en hälso avsökning med [AZ Network lb PROBE Create](/cli/azure/network/lb/probe#az-network-lb-probe-create). Ange följande:
+Skapa en hälsoavsökning med [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create). Ange följande:
 
-* Övervakar hälso tillståndet för de virtuella datorerna
-* Med namnet **myHealthProbe**
-* Protokoll- **TCP**
-* Övervaknings **Port 80**
+* Övervakar hälsotillståndet för de virtuella datorerna
+* Med **namnet myHealthProbe**
+* **Protokoll-TCP**
+* Övervaka **port 80**
 
 ```azurecli-interactive
   az network lb probe create \
@@ -586,20 +590,20 @@ Skapa en hälso avsökning med [AZ Network lb PROBE Create](/cli/azure/network/l
 
 #### <a name="create-a-load-balancer-rule"></a>Skapa en lastbalanseringsregel
 
-En belastnings Utjämnings regel definierar:
+En lastbalanseringsregel definierar:
 
 * IP-konfigurationen för inkommande trafik.
 * IP-poolen som ska ta emot trafiken.
-* Käll-och mål port som krävs. 
+* Den nödvändiga käll- och målporten. 
 
 Använd [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) för att skapa en regel för lastbalanseraren. Ange följande:
 
-* Med namnet **myHTTPRule**
-* Lyssnar på **Port 80** i poolen för- **frontend**
-* Skicka belastningsutjämnad nätverks trafik till adresspoolen **myBackEndPool** genom att använda **port 80** 
-* Använda **myHealthProbe** för hälso avsökning
-* Protokoll- **TCP**
-* Tids gräns för inaktivitet i **15 minuter**
+* Med **namnet myHTTPRule**
+* Lyssna på **port 80** i poolen **myFrontEnd**
+* Skicka belastningsutjämnad nätverkstrafik till **adresspoolen myBackEndPool** med **port 80** 
+* Använda hälsoavsökningen **myHealthProbe**
+* **Protokoll-TCP**
+* Tidsgräns för inaktivitet på **15 minuter**
 
 ```azurecli-interactive
   az network lb rule create \
@@ -614,14 +618,14 @@ Använd [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rul
     --probe-name myHealthProbe \
     --idle-timeout 15 
 ```
-#### <a name="add-vms-to-the-load-balancer-pool"></a>Lägga till virtuella datorer i belastningsutjämnaren
+#### <a name="add-vms-to-the-load-balancer-pool"></a>Lägga till virtuella datorer i lastbalanseringspoolen
 
-Lägg till de virtuella datorerna i backend-poolen med [AZ Network NIC IP-config Address-pool Add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add). Ange följande:
+Lägg till de virtuella datorerna i serverpoolen med [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add). Ange följande:
 
-* I **myBackEndPool** för adresspool
-* I resurs gruppen **CreateIntLBQS-RG**
-* Associerad med nätverks gränssnittet **myNicVM1**, **myNicVM2** och **myNicVM3**
-* Kopplad till belastningsutjämnare **myLoadBalancer**
+* I **adresspoolen myBackEndPool**
+* I resursgruppen **CreateIntLBQS-rg**
+* Associerat med **nätverksgränssnittet myNicVM1,** **myNicVM2** och **myNicVM3**
+* Associerat med **lastbalanserare myLoadBalancer**
 
 ```azurecli-interactive
   array=(VM1 VM2 VM3)
@@ -636,16 +640,16 @@ Lägg till de virtuella datorerna i backend-poolen med [AZ Network NIC IP-config
   done
 
 ```
-
+---
 ## <a name="test-the-load-balancer"></a>Testa lastbalanseraren
 
-Skapa nätverks gränssnittet med [AZ Network NIC Create](/cli/azure/network/nic#az-network-nic-create). Ange följande:
+Skapa nätverksgränssnittet med [az network nic create](/cli/azure/network/nic#az-network-nic-create). Ange följande:
 
-* Med namnet **myNicTestVM**
-* I resurs gruppen **CreateIntLBQS-RG**
-* I virtuellt nätverk **myVNet**
-* I undernät **myBackendSubnet**
-* I nätverks säkerhets gruppen **myNSG**
+* Med **namnet myNicTestVM**
+* I resursgruppen **CreateIntLBQS-rg**
+* I det virtuella nätverket **myVNet**
+* I undernätet **myBackendSubnet**
+* I nätverkssäkerhetsgruppen **myNSG**
 
 ```azurecli-interactive
   az network nic create \
@@ -655,12 +659,12 @@ Skapa nätverks gränssnittet med [AZ Network NIC Create](/cli/azure/network/nic
     --subnet myBackEndSubnet \
     --network-security-group myNSG
 ```
-Skapa den virtuella datorn med [AZ VM Create](/cli/azure/vm#az-vm-create). Ange följande:
+Skapa den virtuella datorn med [az vm create](/cli/azure/vm#az-vm-create). Ange följande:
 
-* Med namnet **myTestVM**
-* I resurs gruppen **CreateIntLBQS-RG**
-* Ansluten till nätverks gränssnittet **myNicTestVM**
-* **Win2019Datacenter** för avbildning av virtuell dator
+* Med **namnet myTestVM**
+* I resursgruppen **CreateIntLBQS-rg**
+* Ansluten till **nätverksgränssnittet myNicTestVM**
+* Avbildning av virtuell **dator Win2019Datacenter**
 
 ```azurecli-interactive
   az vm create \
@@ -675,7 +679,7 @@ Du kan behöva vänta några minuter på att den virtuella datorn ska distribuer
 
 ## <a name="install-iis"></a>Installera IIS
 
-Använd [AZ VM Extension](/cli/azure/vm/extension#az_vm_extension_set) för att installera IIS på de virtuella datorerna och ange standard webbplatsen som dator namn.
+Använd [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) för att installera IIS på de virtuella datorerna och ange datornamnet som standardwebbplats.
 
 ```azurecli-interactive
   array=(myVM1 myVM2 myVM3)
@@ -696,27 +700,27 @@ Använd [AZ VM Extension](/cli/azure/vm/extension#az_vm_extension_set) för att 
 
 1. [Logga in](https://portal.azure.com) i Azure-portalen.
 
-2. På sidan **Översikt** letar du reda på den privata IP-adressen för belastningsutjämnaren. I menyn till vänster väljer du **alla tjänster**  >  **alla resurser**  >  **myLoadBalancer**.
+2. På sidan **Översikt** hittar du den privata IP-adressen för lastbalanseraren. I menyn till vänster väljer du Alla **tjänster Alla**  >  **resurser**  >  **myLoadBalancer**.
 
-3. I översikten över **myLoadBalancer** kopierar du adressen bredvid **privat IP-adress**.
+3. I översikten över **myLoadBalancer** kopierar du adressen bredvid **Privat IP-adress**.
 
-4. I menyn till vänster väljer du **alla tjänster**  >  **alla resurser**. Välj **myTestVM** i resurs gruppen **CreateIntLBQS-RG** i listan resurser.
+4. I menyn till vänster väljer du **Alla tjänster**  >  **Alla resurser**. Välj **myTestVM** i **resursgruppen CreateIntLBQS-rg** i resurslistan.
 
-5. På sidan **Översikt** väljer du **Anslut**  >  **skydds**.
+5. På sidan **Översikt** väljer du **Anslut**  >  **Bastion.**
 
-6. Ange det användar namn och lösen ord som du angav när du skapade den virtuella datorn.
+6. Ange det användarnamn och lösenord som du angav när du skapade den virtuella datorn.
 
-7. Öppna **Internet Explorer** på **myTestVM**.
+7. På **myTestVM** öppnar du **Internet Explorer**.
 
-8. Ange IP-adressen från föregående steg i adress fältet i webbläsaren. Standard sidan för IIS-webbservern visas i webbläsaren.
+8. Ange IP-adressen från föregående steg i webbläsarens adressfält. Standardsidan för IIS-webbservern visas i webbläsaren.
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Skärm bild av IP-adressen i webbläsarens Adress fält." border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Skärmbild av IP-adressen i webbläsarens adressfält." border="true":::
    
-Om du vill se belastningsutjämnaren distribuerar trafik över alla tre virtuella datorer kan du anpassa standard sidan för varje virtuell dators IIS-webbserver. Uppdatera sedan webbläsaren manuellt från klient datorn.
+Om du vill se hur lastbalanseraren distribuerar trafik över alla tre virtuella datorer kan du anpassa standardsidan för varje virtuell dators IIS-webbserver. Uppdatera sedan webbläsaren manuellt från klientdatorn.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När resurserna inte längre behövs kan du använda kommandot [AZ Group Delete](/cli/azure/group#az-group-delete) för att ta bort resurs gruppen, belastningsutjämnaren och alla relaterade resurser.
+När dina resurser inte längre behövs använder du [kommandot az group delete](/cli/azure/group#az-group-delete) för att ta bort resursgruppen, lastbalanseraren och alla relaterade resurser.
 
 ```azurecli-interactive
   az group delete \

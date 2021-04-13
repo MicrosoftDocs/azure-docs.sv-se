@@ -10,135 +10,135 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 826bd22375fb6649bf4edbbeca88aed64cfe7245
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e42096fc32a504ae329d3b179004b6a123de4469
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312135"
+ms.locfileid: "107365645"
 ---
 # <a name="whats-new-in-computer-vision"></a>Vad är nytt i Visuellt innehåll
 
-Läs om vad som är nytt i tjänsten. Dessa objekt kan vara viktig information, videor, blogg inlägg och andra typer av information. Skapa ett bok märke för den här sidan för att hålla dig uppdaterad med tjänsten.
+Lär dig vad som är nytt i tjänsten. Dessa objekt kan vara viktig information, videor, blogginlägg och andra typer av information. Bokmärk den här sidan för att hålla dig uppdaterad med tjänsten.
 
 ## <a name="april-2021"></a>April 2021
 
-### <a name="computer-vision-v32-ga"></a>Visuellt innehåll v 3.2 GA
+### <a name="computer-vision-v32-ga"></a>Visuellt innehåll v3.2 GA
 
-API för visuellt innehåll v 3.2 är nu allmänt tillgänglig med följande uppdateringar:
-* Förbättrad modell för avbildnings märkning: analyserar visuellt innehåll och genererar relevanta Taggar baserat på objekt, åtgärder och innehåll som visas i bilden. Detta är tillgängligt via [tag image-API: et](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f200). Mer information finns i [Översikt över](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) [bild analys och](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) översikt.
-* Uppdaterad modell för innehålls kontroll: identifierar förekomst av olämpligt innehåll och ger flaggor för att filtrera bilder som innehåller vuxna, vågat och fullständig visuellt innehåll. Detta är tillgängligt via [analys-API: et](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b). Mer information finns i [Översikt över](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) [bild analys och](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) översikt.
-* [OCR (läsning) tillgängligt för 73-språk](./language-support.md#optical-character-recognition-ocr) , inklusive förenklade och traditionella kinesiska, japanska, koreanska och latinska språk.
-* [OCR (Läs)](./overview-ocr.md) är också tillgängligt som en [Distroless-behållare](./computer-vision-how-to-install-containers.md?tabs=version-3-2) för lokal distribution.
+Api Visuellt innehåll v3.2 är nu allmänt tillgängligt med följande uppdateringar:
+* Förbättrad bildtaggningsmodell: analyserar visuellt innehåll och genererar relevanta taggar baserat på objekt, åtgärder och innehåll som visas i bilden. Detta är tillgängligt via [API:et taggavbildning.](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200) Mer information finns i [i guiden och översikten](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) [för](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) bildanalys.
+* Uppdaterad innehållsmodereringsmodell: identifierar förekomst av vuxet innehåll och tillhandahåller flaggor för att filtrera bilder som innehåller vuxet, racy och gory visuellt innehåll. Detta är tillgängligt via [API:et Analysera.](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) Mer information finns i [i guiden och översikten](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) [för](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis) bildanalys.
+* [OCR (Read) är tillgängligt för 73 språk,](./language-support.md#optical-character-recognition-ocr) inklusive förenklad och traditionell kinesiska, japanska, koreanska och latinska språk.
+* [OCR (Read)](./overview-ocr.md) finns även som [en distrolös container](./computer-vision-how-to-install-containers.md?tabs=version-3-2) för lokal distribution.
 
 > [!div class="nextstepaction"]
-> [Se Visuellt innehåll v 3.2 GA](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
+> [Se Visuellt innehåll v3.2 GA](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
 
 ## <a name="march-2021"></a>Mars 2021
 
-### <a name="computer-vision-32-public-preview-update"></a>Visuellt innehåll 3,2 offentlig förhands gransknings uppdatering
+### <a name="computer-vision-32-public-preview-update"></a>Visuellt innehåll 3.2 – offentlig förhandsversion
 
-Den offentliga för hands versionen av API för visuellt innehåll v 3.2 har uppdaterats. För hands versionen har alla Visuellt innehåll funktioner tillsammans med uppdaterade API: er för läsning och analys.
+Den offentliga Visuellt innehåll API v3.2 har uppdaterats. Förhandsversionen innehåller alla funktioner Visuellt innehåll tillsammans med uppdaterade API:er för att läsa och analysera.
 
 > [!div class="nextstepaction"]
-> [Se Visuellt innehåll v 3.2 Public Preview 3](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
+> [Se Visuellt innehåll v3.2 offentlig förhandsversion 3](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
 
 ## <a name="february-2021"></a>Februari 2021
 
-### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>Läs API v 3.2 offentlig för hands version med OCR-stöd för 73 språk
-Visuellt innehåll s Read API v 3.2 offentlig för hands version, som är tillgänglig som moln tjänst och Docker-behållare, innehåller följande uppdateringar:
-* [OCR för 73-språk](./language-support.md#optical-character-recognition-ocr) , inklusive förenklade och traditionella kinesiska, japanska, koreanska och latinska språk.
-* Naturlig Läs ordning för text radens utdata (endast latinska språk)
-* Stil klassificering för hand skrift för text rader tillsammans med en förtroende poäng (endast latinska språk).
-* Extrahera endast text för markerade sidor för ett flersidigt dokument.
-* Tillgängligt som en [Distroless-behållare](./computer-vision-how-to-install-containers.md?tabs=version-3-2) för lokal distribution.
+### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>Läs den offentliga förhandsversionen av API v3.2 med OCR-stöd för 73 språk
+Visuellt innehåll offentliga förhandsversionen av Read API v3.2, som är tillgänglig som molntjänst och Docker-container, innehåller följande uppdateringar:
+* [OCR för 73 språk,](./language-support.md#optical-character-recognition-ocr) inklusive förenklad och traditionell kinesiska, japanska, koreanska och latinska språk.
+* Naturlig läsordning för textradsutdata (endast latinska språk)
+* Klassificering av handskriftsstil för textrader tillsammans med en konfidenspoäng (endast latinska språk).
+* Extrahera endast text för valda sidor för ett dokument med flera sidor.
+* Tillgänglig som [en distrolös container](./computer-vision-how-to-install-containers.md?tabs=version-3-2) för lokal distribution.
 
-Mer information finns i [instruktionen Läs API](Vision-API-How-to-Topics/call-read-api.md) .
+Mer information [finns i läs-API-guiden.](Vision-API-How-to-Topics/call-read-api.md)
 
 > [!div class="nextstepaction"]
-> [Använd Read API v 3.2 offentlig för hands version](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
+> [Använda Read API v3.2 Public Preview](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
 
 
 ## <a name="january-2021"></a>Januari 2021
 
-### <a name="spatial-analysis-container-update"></a>Uppdatering av rums analys behållare
+### <a name="spatial-analysis-container-update"></a>Uppdatering av container för rumslig analys
 
-En ny version av [behållaren för rums analys](spatial-analysis-container.md) har släppts med en ny funktions uppsättning. Med den här Docker-behållaren kan du analysera real tids strömnings video för att förstå spatiala relationer mellan människor och deras rörelse genom fysiska miljöer. 
+En ny version av [containern spatial analys](spatial-analysis-container.md) har släppts med en ny funktionsuppsättning. Med den här Docker-containern kan du analysera strömmande video i realtid för att förstå rumsliga relationer mellan människor och deras förflyttning via fysiska miljöer. 
 
-* [Åtgärder för spatial analys](spatial-analysis-operations.md) kan nu konfigureras för att identifiera om en person får en skyddande ansikte som en mask. 
-    * Du kan aktivera en mask-klassificerare `personcount` för `personcrossingline` `personcrossingpolygon` åtgärderna och genom att konfigurera `ENABLE_FACE_MASK_CLASSIFIER` parametern.
-    * Attributen `face_mask` och `face_noMask` kommer att returneras som metadata med förtroende poäng för varje person som identifieras i video strömmen
-* *Personcrossingpolygon* -åtgärden har utökats för att tillåta beräkningen av bostads tiden som en person tillbringar i en zon. Du kan ställa in `type` parametern i zon konfigurationen för åtgärden till `zonedwelltime` och en ny händelse av typen *personZoneDwellTimeEvent* innehåller `durationMs` fältet ifyllt med antalet millisekunder som den person som har använt zonen.
-* **Ändrad ändring**: *personZoneEvent* -händelsen har bytt namn till *personZoneEnterExitEvent*. Den här händelsen utlöses av *personcrossingpolygon* -åtgärden när en person går in eller avslutar zonen och ger riktad information med den numrerade sidan i den zon som har korsats.
-* Video-URL kan anges som "privat parameter/fördunklade" i alla åtgärder. Döljande är valfritt och fungerar bara om `KEY` och `IV` tillhandahålls som miljövariabler.
-* Kalibrering är aktiverat som standard för alla åtgärder. Ange `do_calibration: false` för att inaktivera den.
-* Stöd har lagts till för automatisk omkalibrering (som standard inaktive rad) via `enable_recalibration` parametern. mer information finns i avsnittet om [spatial analys](./spatial-analysis-operations.md) .
-* Kamera kalibrerings parametrar till `DETECTOR_NODE_CONFIG` . Mer information finns i [åtgärder för spatial analys](./spatial-analysis-operations.md) .
+* [Åtgärder för rumslig](spatial-analysis-operations.md) analys kan nu konfigureras för att identifiera om en person bär ett skyddande ansikte, till exempel en mask. 
+    * En maskerings klassificerare kan aktiveras för åtgärderna `personcount` , och genom att konfigurera `personcrossingline` `personcrossingpolygon` `ENABLE_FACE_MASK_CLASSIFIER` parametern .
+    * Attributen `face_mask` och `face_noMask` returneras som metadata med förtroendepoäng för varje person som identifieras i videoströmmen
+* Åtgärden *personcrossingpolygon* har utökats för att tillåta beräkning av den tid en person tillbringar i en zon. Du kan ange parametern i zonkonfigurationen för åtgärden till och en ny händelse av typen `type` `zonedwelltime` *personZoneDwellTimeEvent* innehåller fältet ifylld med det antal millisekunder som personen spenderade i `durationMs` zonen.
+* **Icke-ändring:** *Händelsen personZoneEvent* har bytt namn till *personZoneEnterExitEvent.* Den här händelsen utlöses av *åtgärden personcrossingpolygon* när en person kommer in i eller lämnar zonen och ger riktningsinformation med den numrerade sidan av zonen som korsades.
+* Video-URL kan anges som "Privat parameter/fördruppad" i alla åtgärder. Fördring är valfritt nu och fungerar bara om `KEY` `IV` och tillhandahålls som miljövariabler.
+* Kalibrering är aktiverat som standard för alla åtgärder. Ange för `do_calibration: false` att inaktivera den.
+* Stöd för automatisk omcalibrering (som standard inaktiverat) har lagts till via parametern . Mer information finns i `enable_recalibration` [Åtgärder för rumslig](./spatial-analysis-operations.md) analys
+* Kameraparametrar för kalibrering till `DETECTOR_NODE_CONFIG` . Mer information [finns i Åtgärder för](./spatial-analysis-operations.md) rumslig analys.
 
 
 ## <a name="october-2020"></a>Oktober 2020
 
-### <a name="computer-vision-api-v31-ga"></a>API för visuellt innehåll v 3.1 GA
+### <a name="computer-vision-api-v31-ga"></a>Visuellt innehåll API v3.1 GA
 
-Den API för visuellt innehåll som är allmänt tillgänglig har uppgraderats till v 3.1.
+Api:Visuellt innehåll i allmän tillgänglighet har uppgraderats till v3.1.
 
 ## <a name="september-2020"></a>September 2020
 
-### <a name="spatial-analysis-container-preview"></a>Förhands granskning av rums analys behållare
+### <a name="spatial-analysis-container-preview"></a>Förhandsversion av container för rumslig analys
 
-[Behållaren för rums analys](spatial-analysis-container.md) är nu i för hands version. Med funktionen för spatial analys i Visuellt innehåll kan du analysera real tids strömnings video för att förstå spatiala relationer mellan människor och deras rörelse genom fysiska miljöer. Rums analys är en Docker-behållare som du kan använda lokalt. 
+Containern [för rumslig analys](spatial-analysis-container.md) är nu i förhandsversion. Med funktionen för rumslig analys Visuellt innehåll kan du analysera strömmande video i realtid för att förstå rumsliga relationer mellan människor och deras rörelser via fysiska miljöer. Rumslig analys är en Docker-container som du kan använda lokalt. 
 
-### <a name="read-api-v31-public-preview-adds-ocr-for-japanese"></a>Read API v 3.1 offentlig för hands version lägger till OCR för japanska
-I Visuellt innehåll Läs-API v 3.1, som är allmänt tillgänglig, läggs dessa funktioner till:
-* OCR för japanskt språk
-* För varje textrad anger du om utseendet är hand skrift eller utskrifts format, tillsammans med en förtroende poäng (endast latinska språk).
-* För ett flersidigt dokument extrahera text enbart för markerade sidor eller sid intervall.
+### <a name="read-api-v31-public-preview-adds-ocr-for-japanese"></a>Read API v3.1 Public Preview lägger till OCR för japanska
+Visuellt innehåll den offentliga förhandsversionen av Read API v3.1 lägger till följande funktioner:
+* OCR för japanska
+* För varje textrad anger du om utseendet är Handwriting- eller Print-format, tillsammans med förtroendepoäng (endast latinska språk).
+* För ett dokument med flera sidor extraherar du endast text för valda sidor eller sidintervall.
 
-* Den här för hands versionen av Read API stöder engelska, nederländska, franska, tyska, italienska, japanska, portugisiska, kinesiska (förenklad) och spanska språk.
+* Den här förhandsversionen av Api:et Read stöder engelska, nederländska, franska, tyska, italienska, japanska, portugisiska, förenklad kinesiska och spanska.
 
-Mer information finns i [instruktionen Läs API](Vision-API-How-to-Topics/call-read-api.md) .
+Mer information [finns i läs-API-guiden.](Vision-API-How-to-Topics/call-read-api.md)
 
 > [!div class="nextstepaction"]
-> [Läs mer om Read API v 3.1 Public Preview 2](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)
+> [Läs mer om Read API v3.1 Public Preview 2](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)
 
 ## <a name="july-2020"></a>Juli 2020
 
-### <a name="read-api-v31-public-preview-with-ocr-for-simplified-chinese"></a>Read API v 3.1 offentlig för hands version med OCR för förenklad kinesiska
-Visuellt innehåll s Read API v 3.1 allmän för hands version lägger till stöd för förenklad kinesiska.
+### <a name="read-api-v31-public-preview-with-ocr-for-simplified-chinese"></a>Läs den offentliga förhandsversionen av API v3.1 med OCR för förenklad kinesiska
+Visuellt innehåll offentliga förhandsversionen av Read API v3.1 har stöd för förenklad kinesiska.
 
-* Den här för hands versionen av Read API stöder engelska, nederländska, franska, tyska, italienska, portugisiska, kinesiska (förenklad) och spanska språk.
+* Den här förhandsversionen av API:et Read stöder engelska, nederländska, franska, tyska, italienska, portugisiska, förenklad kinesiska och spanska.
 
-Mer information finns i [instruktionen Läs API](Vision-API-How-to-Topics/call-read-api.md) .
+Mer information [finns i läs-API-guiden.](Vision-API-How-to-Topics/call-read-api.md)
 
 > [!div class="nextstepaction"]
-> [Läs mer om Read API v 3.1 offentlig för hands version 1](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
+> [Läs mer om Read API v3.1 Public Preview 1](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>Maj 2020
-API för visuellt innehåll v 3.0 angav allmän tillgänglighet, med uppdateringar av Read API:
+Visuellt innehåll API v3.0 har angetts för allmän tillgänglighet, med uppdateringar av Api för läsning:
 
 * Stöd för engelska, nederländska, franska, tyska, italienska, portugisiska och spanska
-* Förbättrad precision
-* Säkerhets Poäng för varje extraherat ord
-* Nytt format för utdata
+* Förbättrad noggrannhet
+* Förtroendepoäng för varje extraherat ord
+* Nytt utdataformat
 
-Mer information finns i [Översikt över OCR](overview-ocr.md) .
+Mer information [finns i ÖVERSIKT ÖVER OCR.](overview-ocr.md)
 
 ## <a name="march-2020"></a>Mars 2020
 
-* TLS 1,2 upprätthålls nu för alla HTTP-begäranden till den här tjänsten. Mer information finns i [Azure Cognitive Services Security](../cognitive-services-security.md).
+* TLS 1.2 tillämpas nu för alla HTTP-begäranden till den här tjänsten. Mer information finns i [Azure Cognitive Services säkerhet](../cognitive-services-security.md).
 
 ## <a name="january-2020"></a>Januari 2020
 
-### <a name="read-api-30-public-preview"></a>Läs API 3,0 offentlig för hands version
+### <a name="read-api-30-public-preview"></a>Read API 3.0 Public Preview
 
-Nu har du möjlighet att använda version 3,0 av Read API för att extrahera utskrift eller handskriven text från bilder. Jämfört med tidigare versioner tillhandahåller 3,0:
-* Förbättrad precision
-* Nytt format för utdata
-* Säkerhets Poäng för varje extraherat ord
-* Stöd för både spanska och engelska språk med ytterligare språk parameter
+Nu har du möjlighet att använda version 3.0 av API:et Read för att extrahera tryckt eller handskriven text från bilder. Jämfört med tidigare versioner ger 3.0:
+* Förbättrad noggrannhet
+* Nytt utdataformat
+* Förtroendepoäng för varje extraherat ord
+* Stöd för både spanska och engelska språk med den ytterligare språkparametern
 
-Följ en [snabb start för att extrahera text](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/REST/CSharp-hand-text.md?tabs=version-3) för att komma igång med 3,0-API: et.
+Följ [snabbstarten Extrahera text för](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/REST/CSharp-hand-text.md?tabs=version-3) att komma igång med 3.0-API:et.
 
-## <a name="cognitive-service-updates"></a>Uppdatering av kognitiva tjänster
+## <a name="cognitive-service-updates"></a>Cognitive Service-uppdateringar
 
-[Azure Update-meddelanden för Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)
+[Azure-uppdateringsmeddelanden för Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)

@@ -1,43 +1,39 @@
 ---
-title: Windows Virtual Desktop MSIX-appen koppla Preview PowerShell – Azure
-description: Så här konfigurerar du MSIX-appen Anslut för Windows Virtual Desktop med PowerShell.
+title: Windows Virtual Desktop MSIX-appen anslut PowerShell – Azure
+description: Konfigurera MSIX-app attach för Windows Virtual Desktop powershell.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 8b6bad32ec653fb2ba63c6940cf6a89a13a8afd0
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f44cbf3764063c511c896f11bb7ebfaae2973f0c
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448329"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365407"
 ---
-# <a name="set-up-msix-app-attach-preview-using-powershell"></a>Konfigurera MSIX app attach (för hands version) med PowerShell
+# <a name="set-up-msix-app-attach-using-powershell"></a>Konfigurera MSIX-app attach med PowerShell
 
-> [!IMPORTANT]
-> MSIX app Attach är för närvarande en offentlig för hands version.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Förutom Azure Portal kan du också konfigurera MSIX app attach (för hands version) manuellt med PowerShell. Den här artikeln beskriver hur du använder PowerShell för att konfigurera MSIX app Attach.
+Förutom den här Azure Portal du även konfigurera MSIX-appen manuellt med PowerShell. Den här artikeln beskriver hur du använder PowerShell för att konfigurera MSIX-app attach.
 
 ## <a name="requirements"></a>Krav
 
 >[!IMPORTANT]
->Innan du börjar ska du fylla i och skicka [det här formuläret](https://aka.ms/enablemsixappattach) för att aktivera MSIX app Attach i din prenumeration. Om du inte har en godkänd begäran fungerar inte MSIX-appens koppling. Godkännande av förfrågningar kan ta upp till 24 timmar under arbets dagar. Du får ett e-postmeddelande när din begäran har godkänts och slutförts.
+>Innan du börjar ska du fylla i och skicka det här [formuläret](https://aka.ms/enablemsixappattach) för att aktivera msix-appen i din prenumeration. Om du inte har en godkänd begäran fungerar det inte att bifoga MSIX-appen. Godkännande av begäranden kan ta upp till 24 timmar under arbetsdagar. Du får ett e-postmeddelande när din begäran har accepterats och slutförts.
 
-Det här behöver du för att konfigurera MSIX app Attach:
+Det här behöver du för att konfigurera msix-appen:
 
-- En fungerande distribution av virtuella Windows-datorer. Information om hur du distribuerar virtuella Windows-datorer (klassisk) finns i [skapa en klient i Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Information om hur du distribuerar virtuella Windows-datorer med Azure Resource Manager-integrering finns i [skapa en adresspool med Azure Portal](./create-host-pools-azure-marketplace.md).
-- En Windows-adresspool för virtuella skriv bord med minst en aktiv session-värd.
-- Den här poolen måste vara i validerings miljön.
-- En fjärran sluten grupp för fjärr skrivbord.
-- MSIX-packnings verktyget.
-- Ett MSIX-paketerat program expanderat till en MSIX-avbildning som laddas upp till en fil resurs.
-- En fil resurs i Windows-distributionen för virtuella skriv bord där MSIX-paketet ska lagras.
-- Fil resursen där du laddade upp MSIX-avbildningen måste också vara tillgänglig för alla virtuella datorer i poolen. Användare behöver skrivskyddade behörigheter för att komma åt avbildningen.
+- En fungerande Windows Virtual Desktop distribution. Information om hur du distribuerar Windows Virtual Desktop (klassisk) finns [i Skapa en klientorganisation i Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Information om hur du distribuerar Windows Virtual Desktop med Azure Resource Manager-integrering finns i Skapa en [värdpool med Azure Portal](./create-host-pools-azure-marketplace.md).
+- En Windows Virtual Desktop värdpool med minst en aktiv sessionsvärd.
+- Den här värdpoolen måste finnas i valideringsmiljön.
+- En fjärrskrivbordsappgrupp.
+- MSIX-paketeringsverktyget.
+- Ett MSIX-paketerat program expanderat till en MSIX-avbildning som laddas upp till en filresurs.
+- En filresurs i Windows Virtual Desktop distribution där MSIX-paketet kommer att lagras.
+- Filresursen där du laddade upp MSIX-avbildningen måste också vara tillgänglig för alla virtuella datorer (VM) i värdpoolen. Användarna behöver skrivskyddade behörigheter för att få åtkomst till avbildningen.
 - Ladda ned och installera PowerShell Core.
-- Hämta den offentliga för hands versionen Azure PowerShell-modulen och expandera den till en lokal mapp.
+- Ladda ned den offentliga Azure PowerShell modulen och expandera den till en lokal mapp.
 - Installera Azure-modulen genom att köra följande cmdlet:
 
     ```powershell
@@ -46,7 +42,7 @@ Det här behöver du för att konfigurera MSIX app Attach:
 
 ## <a name="sign-in-to-azure-and-import-the-module"></a>Logga in på Azure och importera modulen
 
-När du har fått alla krav som är klara öppnar du PowerShell core i en upphöjd kommando tolk och kör denna cmdlet:
+När du är klar med alla krav öppnar du PowerShell Core i en upphöjd kommandotolk och kör denna cmdlet:
 
 ```powershell
 Connect-AzAccount
@@ -54,40 +50,40 @@ Connect-AzAccount
 
 När du har kört det autentiserar du ditt konto med dina autentiseringsuppgifter. I det här fallet kan du bli ombedd att ange en enhets-URL eller en token.
 
-## <a name="import-the-azwindowsvirtualdesktop-module"></a>Importera modulen AZ. WindowsVirtualDesktop
+## <a name="import-the-azwindowsvirtualdesktop-module"></a>Importera modulen Az.WindowsVirtualDesktop
 
-Du behöver modulen AZ. DesktopVirtualization för att följa anvisningarna i den här artikeln.
+Du behöver modulen Az.DesktopVirtualization för att följa anvisningarna i den här artikeln.
 
 >[!NOTE]
->För den allmänt tillgängliga för hands versionen kommer vi att tillhandahålla modulen som separata ZIP-filer som du måste importera manuellt.
+>För den offentliga förhandsversionen tillhandahåller vi modulen som separata ZIP-filer som du måste importera manuellt.
 
-Innan du börjar kan du köra följande cmdlet för att se om modulen AZ. DesktopVirtualization redan är installerad på sessionen eller den virtuella datorn:
+Innan du börjar kan du köra följande cmdlet för att se om modulen Az.DesktopVirtualization redan är installerad på din session eller virtuella dator:
 
 ```powershell
 Get-Module | Where-Object { $_.Name -Like "desktopvirtualization" }
 ```
 
-Om du använder WAN för att avinstallera en befintlig kopia av modulen och börja om, kör du denna cmdlet:
+Om du vill avinstallera en befintlig kopia av modulen och börja om från början kör du den här cmdleten:
 
 ```powershell
 Uninstall-Module Az.DesktopVirtualization
 ```
 
-Om modulen är blockerad på den virtuella datorn kör du denna cmdlet för att avblockera den:
+Om modulen är blockerad på den virtuella datorn kör du den här cmdleten för att avblockera den:
 
 ```powershell
 Unblock-File "<path>\Az.DesktopVirtualization.psm1"
 ```
 
-Med den här rensningen är det dags att importera modulen.
+Nu när rensningen är över är det dags att importera modulen.
 
-1. Kör följande cmdlet och tryck sedan på **R** -tangenten när du uppmanas att godkänna att köra den anpassade koden.
+1. Kör följande cmdlet och tryck sedan på **R-tangenten** när du uppmanas att godkänna att köra den anpassade koden.
 
    ```powershell
    Import-Module -Name "<path>\Az.DesktopVirtualization.psm1" -Verbose
    ```
 
-2. När du har kört import-cmdleten kan du kontrol lera om den har cmdletar för MSIX genom att köra följande cmdlet:
+2. När du har kört import-cmdleten kontrollerar du om den har cmdletarna för MSIX genom att köra följande cmdlet:
 
    ```powershell
    Get-Command -Module Az.DesktopVirtualization | Where-Object { $_.Name -match "MSIX" }
@@ -111,11 +107,11 @@ Med den här rensningen är det dags att importera modulen.
    Function        Update-AzWvdMsixPackage                            0.0        Az.DesktopVirtualization
    ```
 
-   Om du inte ser dessa utdata stänger du alla PowerShell-och PowerShell-kärnor och försöker igen.
+   Om du inte ser dessa utdata stänger du alla PowerShell- och PowerShell Core-sessioner och försöker igen.
 
-## <a name="set-up-helper-variables"></a>Konfigurera hjälp variabler
+## <a name="set-up-helper-variables"></a>Konfigurera hjälpvariabler
 
-När du har importerat modulen måste du konfigurera hjälp-variablerna. I följande exempel visas hur du gör var och en.
+När du har importerat modulen måste du konfigurera hjälpvariablerna. I följande exempel visas hur du gör var och en.
 
 Så här hämtar du ditt prenumerations-ID:
 
@@ -123,45 +119,45 @@ Så här hämtar du ditt prenumerations-ID:
 Get-AzContext -ListAvailable | fl
 ```
 
-Så här väljer du kontexten för en Azure-klient och-prenumeration med ett namn:
+Så här väljer du kontexten för en Azure-klientorganisation och -prenumeration med ett namn:
 
 ```powershell
 $obj = Select-AzContext -Name "<Name>"
 ```
 
-Ange prenumerations variabeln:
+Så här anger du prenumerationsvariabeln:
 
 ```powershell
 $subId = $obj.Subscription.Id
 ```
 
-Ange arbets ytans namn:
+Så här anger du arbetsytans namn:
 
 ```powershell
 $ws = "<WorksSpaceName>"
 ```
 
-Ange värdnamn:
+Så här anger du värdpoolens namn:
 
 ```powershell
 $hp = "<HostPoolName>"
 ```
 
-Konfigurera resurs gruppen där de virtuella datorerna i sessionen är konfigurerade:
+Så här konfigurerar du resursgruppen där de virtuella sessionsvärdarna är konfigurerade:
 
 ```powershell
 $rg = "<ResourceGroupName>"
 ```
 
-Och slutligen för att bekräfta att du har angett alla variabler korrekt:
+Och slutligen, för att bekräfta att du har angett alla variabler korrekt:
 
 ```powershell
 Get-AzWvdWorkspace -Name $ws -ResourceGroupName $rg -SubscriptionId $subID
 ```
 
-## <a name="add-an-msix-package-to-a-host-pool"></a>Lägga till ett MSIX-paket i en adresspool
+## <a name="add-an-msix-package-to-a-host-pool"></a>Lägga till ett MSIX-paket i en värdpool
 
-När du har konfigurerat allt är det dags att lägga till MSIX-paketet i en adresspool. För att göra det måste du först hämta UNC-sökvägen till MSIX-avbildningen.
+När du har skapat allt är det dags att lägga till MSIX-paketet i en värdpool. För att göra det måste du först hämta UNC-sökvägen till MSIX-avbildningen.
 
 Använd UNC-sökvägen och kör denna cmdlet för att expandera MSIX-avbildningen:
 
@@ -169,55 +165,55 @@ Använd UNC-sökvägen och kör denna cmdlet för att expandera MSIX-avbildninge
 $obj = Expand-AzWvdMsixImage -HostPoolName $hp -ResourceGroupName $rg -SubscriptionId $subID -Uri <UNCPath>
 ```
 
-Kör denna cmdlet för att lägga till MSIX-paketet till önskad adresspool:
+Kör den här cmdleten för att lägga till MSIX-paketet i önskad värdpool:
 
 ```powershell
 New-AzWvdMsixPackage -HostPoolName $hp -ResourceGroupName $rg -SubscriptionId $subId -PackageAlias $obj.PackageAlias -DisplayName <DisplayName> -ImagePath <UNCPath> -IsActive:$true
 ```
 
-När du är klar kontrollerar du att paketet har skapats med denna cmdlet:
+När du är klar bekräftar du att paketet har skapats med denna cmdlet:
 
 ```powershell
 Get-AzWvdMsixPackage -HostPoolName $hp -ResourceGroupName $rg -SubscriptionId $subId | Where-Object {$_.PackageFamilyName -eq $obj.PackageFamilyName}
 ```
 
-## <a name="remove-an-msix-package-from-a-host-pool"></a>Ta bort ett MSIX-paket från en värdbaserad pool
+## <a name="remove-an-msix-package-from-a-host-pool"></a>Ta bort ett MSIX-paket från en värdpool
 
-Ta bort ett paket från en värdbaserad pool:
+Så här tar du bort ett paket från en värdpool:
 
-Hämta en lista över alla paket som är associerade med en adresspool med denna cmdlet och leta sedan reda på namnet på det paket som du vill ta bort i utdata:
+Hämta en lista över alla paket som är associerade med en värdpool med denna cmdlet och leta upp namnet på det paket som du vill ta bort i utdata:
 
 ```powershell
 Get-AzWvdMsixPackage -HostPoolName $hp -ResourceGroupName $rg -SubscriptionId $subId 
 ```
 
-Du kan också hämta ett visst paket baserat på dess visnings namn med denna cmdlet:
+Du kan också hämta ett visst paket baserat på dess visningsnamn med denna cmdlet:
 
 ```powershell
 Get-AzWvdMsixPackage -HostPoolName $hp -ResourceGroupName $rg -SubscriptionId $subId | Where-Object { $_.Name -like "Power" }
 ```
 
-Om du vill ta bort paketet kör du denna cmdlet:
+Kör den här cmdleten för att ta bort paketet:
 
 ```powershell
 Remove-AzWvdMsixPackage -FullName $obj.PackageFullName -HostPoolName $hp -ResourceGroupName $rg
 ```
 
-## <a name="publish-msix-apps-to-an-app-group"></a>Publicera MSIX-appar i en app-grupp
+## <a name="publish-msix-apps-to-an-app-group"></a>Publicera MSIX-appar till en appgrupp
 
-Du kan bara följa instruktionerna i det här avsnittet om du har följt anvisningarna i föregående avsnitt. Om du har en adresspool med en aktiv session-värd, minst en Skriv bords grupp och har lagt till ett MSIX-paket till poolen, är du redo att sätta igång.
+Du kan bara följa anvisningarna i det här avsnittet om du är klar med att följa anvisningarna i föregående avsnitt. Om du har en värdpool med en aktiv sessionsvärd, minst en skrivbordsappgrupp och har lagt till ett MSIX-paket i värdpoolen, är du redo att gå.
 
-Om du vill publicera en app från MSIX-paketet till en app-grupp måste du hitta namnet och sedan använda namnet i publicerings-cmdleten.
+Om du vill publicera en app från MSIX-paketet till en appgrupp måste du hitta dess namn och sedan använda det namnet i publicerings-cmdleten.
 
 Så här publicerar du en app:
 
-Kör denna cmdlet för att visa en lista över alla tillgängliga app-grupper:
+Kör den här cmdleten för att visa en lista över alla tillgängliga appgrupper:
 
 ```powershell
 Get-AzWvdApplicationGroup -ResourceGroupName $rg -SubscriptionId $subId
 ```
 
-När du har hittat namnet på den app-grupp som du vill publicera appar till, använder du dess namn i denna cmdlet:
+När du har hittat namnet på den appgrupp som du vill publicera appar till använder du dess namn i den här cmdleten:
 
 ```powershell
 $grName = "<AppGroupName>"
@@ -225,28 +221,28 @@ $grName = "<AppGroupName>"
 
 Slutligen måste du publicera appen.
 
-- Om du vill publicera MSIX-programmet i en app-app-grupp kör du denna cmdlet:
+- Om du vill publicera MSIX-programmet till en skrivbordsappgrupp kör du den här cmdleten:
 
    ```powershell
    New-AzWvdApplication -ResourceGroupName $rg -SubscriptionId $subId -Name PowerBi -ApplicationType MsixApplication -ApplicationGroupName $grName -MsixPackageFamilyName $obj.PackageFamilyName -CommandLineSetting 0
    ```
 
-- Om du vill publicera appen i en fjärran sluten app-grupp kör du denna cmdlet i stället:
+- Om du vill publicera appen till en fjärrappgrupp kör du den här cmdleten i stället:
 
    ```powershell
    New-AzWvdApplication -ResourceGroupName $rg -SubscriptionId $subId -Name PowerBi -ApplicationType MsixApplication -ApplicationGroupName $grName -MsixPackageFamilyName $obj.PackageFamilyName -CommandLineSetting 0 -MsixPackageApplicationId $obj.PackageApplication.AppId
    ```
 
 >[!NOTE]
->Om en användare är tilldelad både en fjärran sluten app och en Skriv bords grupp i samma adresspool, kommer de att se MSIX-appar från båda grupperna när användaren ansluter till sina fjärr skrivbord.
+>Om en användare är tilldelad till både en fjärrappgrupp och en skrivbordsappgrupp i samma värdpool visas MSIX-appar från båda grupperna när de ansluter till fjärrskrivbordet.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Fråga våra Community-frågor om den här funktionen på [Windows-TechCommunity för virtuella datorer](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
+Ställ våra communityfrågor om den här funktionen på [Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
 
-Du kan också lämna feedback för virtuella Windows-datorer i [hubben Windows Virtual Desktop feedback](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app).
+Du kan också lämna feedback för Windows Virtual Desktop på Windows Virtual Desktop [feedbackhubben.](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)
 
-Här följer några andra artiklar som du kan ha nytta av:
+Här är några andra artiklar som kan vara till hjälp:
 
-- [Ord lista för MSIX-appen](app-attach-glossary.md)
-- [Vanliga frågor och svar om MSIX app](app-attach-faq.md)
+- [Bifoga MSIX-appordlistor](app-attach-glossary.md)
+- [Vanliga frågor och svar om att bifoga MSIX-appar](app-attach-faq.md)

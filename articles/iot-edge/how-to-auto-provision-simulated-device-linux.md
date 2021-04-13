@@ -4,27 +4,22 @@ description: Använd en simulerad TPM på en virtuell Linux-dator för att testa
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 6/30/2020
+ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5beb3c750f99b8fe314fabbc2ff6109bfa6bc67c
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: ca16099cffc22a19c2ee35b00ae6f1bcbe2977a7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166606"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312407"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Skapa och etablera en IoT Edge enhet med en TPM på Linux
 
-[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 Den här artikeln visar hur du testar automatisk etablering på en Linux IoT Edge-enhet med hjälp av en Trusted Platform Module (TPM). Du kan etablera Azure IoT Edge-enheter automatiskt med [enhets etablerings tjänsten](../iot-dps/index.yml). Om du inte är bekant med processen för automatisk etablering, granskar du [etablerings](../iot-dps/about-iot-dps.md#provisioning-process) översikten innan du fortsätter.
-
-:::moniker range=">=iotedge-2020-11"
-> [!NOTE]
-> För närvarande stöds inte automatisk etablering med TPM-autentisering i IoT Edge version 1,2.
-:::moniker-end
 
 Uppgifterna är följande:
 
@@ -34,7 +29,7 @@ Uppgifterna är följande:
 1. Installera IoT Edge Runtime och Anslut enheten till IoT Hub.
 
 > [!TIP]
-> Den här artikeln beskriver hur du testar DPS-etablering med hjälp av en TPM-simulator, men det är mycket som gäller för fysisk TPM-maskinvara som [INFINEON OPTIGA &trade; TPM](https://devicecatalog.azure.com/devices/3f52cdee-bbc4-d74e-6c79-a2546f73df4e), en Azure-certifierad för IoT-enheter.
+> Den här artikeln beskriver hur du testar DPS-etablering med hjälp av en TPM-simulator, men det är mycket som gäller för fysisk TPM-maskinvara som [INFINEON OPTIGA &trade; TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board), en Azure-certifierad för IoT-enheter.
 >
 > Om du använder en fysisk enhet kan du gå vidare till avsnittet [Hämta etablerings information från en fysisk enhet](#retrieve-provisioning-information-from-a-physical-device) i den här artikeln.
 
@@ -191,6 +186,9 @@ Följ stegen i [installera Azure IoT Edge runtime](how-to-install-iot-edge.md)oc
 
 När körningen har installerats på enheten konfigurerar du enheten med den information som används för att ansluta till enhets etablerings tjänsten och IoT Hub.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. Känna till ditt DPS **-ID-omfång** och enhets **registrerings-ID** som samlades in i föregående avsnitt.
 
 1. Öppna konfigurations filen på den IoT Edge enheten.
@@ -216,11 +214,52 @@ När körningen har installerats på enheten konfigurerar du enheten med den inf
    # dynamic_reprovisioning: false
    ```
 
-   Du kan också använda `always_reprovision_on_startup` raderna eller om `dynamic_reprovisioning` du vill konfigurera enhetens etablerings beteende. Om en enhet har ställts in för att etablera vid start försöker den alltid etableras med DPS först och sedan återgår till etablerings säkerhets kopieringen om det inte går. Om en enhet är inställd på att dynamiskt Ometablera sig själv startas IoT Edge om och reetableras om en reetablerings händelse upptäcks. Mer information finns i [IoT Hub metoder för att etablera enheter](../iot-dps/concepts-device-reprovision.md).
-
 1. Uppdatera värdena för `scope_id` och `registration_id` med din DPS-och enhets information.
 
+1. Du kan också använda `always_reprovision_on_startup` raderna eller om `dynamic_reprovisioning` du vill konfigurera enhetens etablerings beteende. Om en enhet har ställts in för att etablera vid start försöker den alltid etableras med DPS först och sedan återgår till etablerings säkerhets kopieringen om det inte går. Om en enhet är inställd på att dynamiskt Ometablera sig själv startas IoT Edge om och reetableras om en reetablerings händelse upptäcks. Mer information finns i [IoT Hub metoder för att etablera enheter](../iot-dps/concepts-device-reprovision.md).
+
+1. Spara och stäng filen.
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Känna till ditt DPS **-ID-omfång** och enhets **registrerings-ID** som samlades in i föregående avsnitt.
+
+1. Öppna konfigurations filen på den IoT Edge enheten.
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+1. Hitta konfigurations avsnittet för etablering i filen. Ta bort kommentarer till linjerna för TPM-etablering och se till att alla andra etablerings rader är kommenterade.
+
+   ```toml
+   # DPS provisioning with TPM
+   [provisioning]
+   source = "dps"
+   global_endpoint = "https://global.azure-devices-provisioning.net"
+   id_scope = "<SCOPE_ID>"
+   
+   [provisioning.attestation]
+   method = "tpm"
+   registration_id = "<REGISTRATION_ID>"
+   ```
+
+1. Uppdatera värdena för `id_scope` och `registration_id` med din DPS-och enhets information.
+
+1. Du kan också hitta avsnittet om automatiskt etablerings läge i filen. Använd `auto_reprovisioning_mode` parametern om du vill konfigurera enhetens etablerings beteende till antingen `Dynamic` , `AlwaysOnStartup` eller `OnErrorOnly` . Mer information finns i [IoT Hub metoder för att etablera enheter](../iot-dps/concepts-device-reprovision.md).
+
+1. Spara och stäng filen.
+:::moniker-end
+<!-- end 1.2 -->
+
 ## <a name="give-iot-edge-access-to-the-tpm"></a>Ge IoT Edge åtkomst till TPM: en
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 Den IoT Edge körningen måste ha åtkomst till TPM för att automatiskt etablera enheten.
 
@@ -272,9 +311,68 @@ Du kan ge TPM-åtkomst till den IoT Edge körningen genom att åsidosätta syste
    ```
 
    Om du inte ser att rätt behörigheter har tillämpats kan du prova att starta om datorn för att uppdatera udev.
+:::moniker-end
+<!-- end 1.1 -->
 
-## <a name="restart-the-iot-edge-runtime"></a>Starta om IoT Edge runtime
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+IoT Edge runtime är beroende av en TPM-tjänst som Broker har åtkomst till en enhets TPM. Den här tjänsten behöver åtkomst till TPM för att automatiskt etablera enheten.
 
+Du kan ge åtkomst till TPM: en genom att åsidosätta de systemanpassade inställningarna så att `aziottpm` tjänsten har rot privilegier. Om du inte vill höja behörigheten till tjänsten kan du också använda följande steg för att ange TPM-åtkomst manuellt.
+
+1. Hitta fil Sök vägen till modulen TPM-maskinvara på enheten och spara den som en lokal variabel.
+
+   ```bash
+   tpm=$(sudo find /sys -name dev -print | fgrep tpm | sed 's/.\{4\}$//')
+   ```
+
+2. Skapa en ny regel som ger IoT Edge runtime-åtkomst till tpm0.
+
+   ```bash
+   sudo touch /etc/udev/rules.d/tpmaccess.rules
+   ```
+
+3. Öppna regel filen.
+
+   ```bash
+   sudo nano /etc/udev/rules.d/tpmaccess.rules
+   ```
+
+4. Kopiera följande åtkomst information till regel filen.
+
+   ```input
+   # allow aziottpm access to tpm0
+   KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="aziottpm", MODE="0600"
+   ```
+
+5. Spara och avsluta filen.
+
+6. Utlös udev-systemet för att utvärdera den nya regeln.
+
+   ```bash
+   /bin/udevadm trigger $tpm
+   ```
+
+7. Kontrol lera att regeln har tillämpats.
+
+   ```bash
+   ls -l /dev/tpm0
+   ```
+
+   Lyckade utdata visas på följande sätt:
+
+   ```output
+   crw-rw---- 1 root aziottpm 10, 224 Jul 20 16:27 /dev/tpm0
+   ```
+
+   Om du inte ser att rätt behörigheter har tillämpats kan du prova att starta om datorn för att uppdatera udev.
+:::moniker-end
+<!-- end 1.2 -->
+
+## <a name="restart-iot-edge-and-verify-successful-installation"></a>Starta om IoT Edge och kontrol lera att installationen lyckades
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Starta om IoT Edge runtime så att den hämtar alla konfigurations ändringar som du har gjort på enheten.
 
    ```bash
@@ -287,6 +385,12 @@ Kontrol lera att IoT Edge runtime körs.
    sudo systemctl status iotedge
    ```
 
+Granska daemon-loggar.
+
+```cmd/sh
+journalctl -u iotedge --no-pager --no-full
+```
+
 Om du ser etablerings fel kan det bero på att konfigurations ändringarna inte har börjat tillämpas ännu. Försök att starta om IoT Edge daemon igen.
 
    ```bash
@@ -294,22 +398,40 @@ Om du ser etablerings fel kan det bero på att konfigurations ändringarna inte 
    ```
 
 Eller prova att starta om den virtuella datorn för att se om ändringarna börjar gälla på en ny start.
+:::moniker-end
+<!-- end 1.1 -->
 
-## <a name="verify-successful-installation"></a>Verifiera lyckad installation
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Tillämpa konfigurations ändringarna som du har gjort på enheten.
 
-Om körningen har startats kan du gå till din IoT Hub och se att den nya enheten har automatiskt tillhandahållits. Nu är enheten redo att köra IoT Edge moduler.
+   ```bash
+   sudo iotedge config apply
+   ```
 
-Kontrol lera status för IoT Edge daemon.
+Kontrol lera att IoT Edge runtime körs.
 
-```cmd/sh
-systemctl status iotedge
-```
+   ```bash
+   sudo iotedge system status
+   ```
 
 Granska daemon-loggar.
 
-```cmd/sh
-journalctl -u iotedge --no-pager --no-full
-```
+   ```cmd/sh
+   sudo iotedge system logs
+   ```
+
+Om du ser etablerings fel kan det bero på att konfigurations ändringarna inte har börjat tillämpas ännu. Försök att starta om IoT Edge daemon.
+
+   ```bash
+   sudo systemctl daemon-reload
+   ```
+
+Eller prova att starta om den virtuella datorn för att se om ändringarna börjar gälla på en ny start.
+:::moniker-end
+<!-- end 1.2 -->
+
+Om körningen har startats kan du gå till din IoT Hub och se att den nya enheten har automatiskt tillhandahållits. Nu är enheten redo att köra IoT Edge moduler.
 
 Lista med moduler som körs.
 

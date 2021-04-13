@@ -4,13 +4,13 @@ description: Vanliga problem med Azure Monitor metriska aviseringar och möjliga
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 03/15/2021
-ms.openlocfilehash: f14142632f6ded9f598d6e94fd1e91ec17f6d0a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 85be4100d62971ef7f69840ae3e9b117fbc3c047
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466505"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305233"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Felsöka problem i Azure Monitor-måttaviseringar 
 
@@ -91,9 +91,10 @@ Om du vill skapa aviseringar om ett visst mått men inte kan se det när du skap
 Tänk på följande om du vill få [en avisering om ett måtts dimensions värden](./alerts-metric-overview.md#using-dimensions), men inte kan hitta dessa värden:
 
 1. Det kan ta några minuter innan dimensionsvärden visas under listan **Dimensionsvärden**
-1. Dimensionsvärden som visas baseras på måttdata som samlats in under den senaste dagen
-1. Om dimensionsvärdet inte har skickats än eller inte visas, kan du använda alternativet Lägg till anpassat värde för att lägga till ett anpassat dimensionsvärde
-1. Om du vill få aviseringar om alla möjliga värden för en dimension (inklusive framtida värden) väljer du alternativet "Välj alla aktuella och framtida värden"
+2. Dimensionsvärden som visas baseras på måttdata som samlats in under den senaste dagen
+3. Om dimensionsvärdet inte har skickats än eller inte visas, kan du använda alternativet Lägg till anpassat värde för att lägga till ett anpassat dimensionsvärde
+4. Om du vill få aviseringar om alla möjliga värden för en dimension (inklusive framtida värden) väljer du alternativet "Välj alla aktuella och framtida värden"
+5. Anpassade mått dimensioner för Application Insights resurser är inaktiverade som standard. Information om hur du aktiverar samlingen av dimensioner för dessa anpassade mått finns [här](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
 
 ## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>Mått varnings regler som fortfarande har definierats för en borttagen resurs 
 

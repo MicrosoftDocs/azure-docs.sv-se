@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 04/09/2021
 ms.author: tisande
-ms.openlocfilehash: d5d5bc0a108cd08283ea29ce3bdc2de49310c5aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad43d83782a2c7e9eb5cc20128be89a45f0213d1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499568"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312186"
 ---
 # <a name="getting-started-with-sql-queries"></a>Komma igång med SQL-frågor
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ Resten av det här dokumentet visar hur du kommer igång med att skriva SQL-frå
 
 ## <a name="upload-sample-data"></a>Ladda upp exempel data
 
-I ditt SQL API Cosmos DB-konto öppnar du [datautforskaren](./data-explorer.md) för att skapa en behållare med namnet `Families` . När den har skapats använder du data struktur listan för att hitta och öppna den. I din `Families` behållare visas `Items` alternativet direkt under namnet på behållaren. Öppna det här alternativet så visas en knapp i meny raden i mitten av skärmen för att skapa ett nytt objekt. Du kommer att använda den här funktionen för att skapa JSON-objekten nedan.
+I ditt SQL API Cosmos DB-konto öppnar du [datautforskaren](./data-explorer.md) för att skapa en behållare med namnet `Families` . När behållaren har skapats använder du data struktur listan för att hitta och öppna den. I din `Families` behållare visas `Items` alternativet direkt under namnet på behållaren. Öppna det här alternativet så visas en knapp i meny raden i mitten av skärmen för att skapa ett nytt objekt. Du kommer att använda den här funktionen för att skapa JSON-objekten nedan.
 
 ### <a name="create-json-items"></a>Skapa JSON-objekt
 

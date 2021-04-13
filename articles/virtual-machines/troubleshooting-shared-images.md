@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 015fa201fe1c31dde2e30c2fe689ac13452b1b01
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9652e940674ec7580b006cd38df2a7d17014f939
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607600"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309993"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Felsöka delade avbildnings gallerier i Azure
 
@@ -303,6 +303,14 @@ Om du har problem med att utföra åtgärder på delade avbildnings gallerier, b
 **Orsak**: avbildnings definitionen som du använde för att distribuera den virtuella datorn innehåller inte några avbildnings versioner som ingår i senaste.  
 **Lösning**: kontrol lera att det finns minst en avbildnings version som har "exkludera från den senaste" inställt på falskt. 
 
+**Meddelande**: *Galleri avbildningen/Subscriptions/<SubscriptionID \> /resourceGroups/<resourceGroup \> /providers/Microsoft.Compute/Galleries/<galleryName \> /images/<imageName \> /versions/<versions nummer \> är inte tillgänglig i <region \> region. Kontakta avbildningens ägare för att replikera till den här regionen eller ändra din begärda region.*  
+**Orsak**: den version som har valts för distributionen finns inte eller har ingen replik i den angivna regionen.  
+**Lösning**: kontrol lera att namnet på avbildnings resursen är korrekt och att det finns minst en replik i den angivna regionen. 
+
+**Meddelande**: *Galleri avbildningen/Subscriptions/<SubscriptionID \> /resourceGroups/<resourceGroup \> /providers/Microsoft.Compute/Galleries/<galleryName \> /images/<imageName \> är inte tillgänglig i <region \> region. Kontakta avbildningens ägare för att replikera till den här regionen eller ändra din begärda region.*  
+**Orsak**: avbildnings definitionen som har valts för distribution har inga avbildnings versioner som ingår i den senaste och även i den angivna regionen.  
+**Lösning**: kontrol lera att det finns minst en avbildnings version i den region där "exkludera från den senaste" anges till false. 
+
 **Meddelande**: *klienten har behörighet att utföra åtgärden Microsoft. Compute/Galleri/images/versions/read på scope <resourceID \> , men den aktuella klienten <tenantID \> har inte behörighet att komma åt den länkade prenumerationen <subscriptionID \> .*  
 **Orsak**: den virtuella datorn eller skalnings uppsättningen skapades via en sig-avbildning i en annan klient. Du har försökt göra en ändring i den virtuella datorn eller skalnings uppsättningen, men du har inte åtkomst till den prenumeration som äger avbildningen.  
 **Lösning**: kontakta ägaren till prenumerationen på avbildnings versionen för att ge Läs behörighet till avbildnings versionen.
@@ -318,10 +326,6 @@ Om du har problem med att utföra åtgärder på delade avbildnings gallerier, b
 **Meddelande**: den *obligatoriska parametern osProfile saknas (null).*  
 **Orsak**: den virtuella datorn skapas från en generaliserad avbildning och saknar administratörs användar namn, lösen ord eller SSH-nycklar. Eftersom generaliserade avbildningar inte behåller administratörens användar namn, lösen ord eller SSH-nycklar, måste dessa fält anges när en virtuell dator eller skalnings uppsättning skapas.  
 **Lösning**: Ange administratörens användar namn, lösen ord eller SSH-nycklar eller Använd en specialiserad avbildnings version.
-
-**Meddelande**: *det går inte att skapa Galleri avbildnings Version från: <resourceID \> eftersom operativ systemets tillstånd i den överordnade Galleri avbildningen (specialiserad) inte är generaliserad.*  
-**Orsak**: avbildnings versionen skapas från en generaliserad källa, men dess överordnade definition är specialiserad.  
-**Lösning**: skapa avbildnings versionen med hjälp av en specialiserad källa eller Använd en överordnad definition som är generaliserad.
 
 **Meddelande**: *det går inte att uppdatera den virtuella datorns skalnings uppsättning <vmssName \> eftersom det aktuella operativ systemets tillstånd för VM Scale set är generaliserat, vilket skiljer sig från det uppdaterade Galleri avbildnings operativ systemets tillstånd som är specialiserat.*  
 **Orsak**: den aktuella käll avbildningen för skalnings uppsättningen är en generaliserad käll avbildning, men den uppdateras med en anpassad källbild. Den aktuella käll avbildningen och den nya käll avbildningen för en skalnings uppsättning måste vara i samma tillstånd.  

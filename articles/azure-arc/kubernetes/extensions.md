@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Distribuera och hantera livs cykel för tillägg på Azure Arc-aktiverade Kubernetes
-ms.openlocfilehash: 63fb14818d148dcc579300fdb4c89d636b47fd05
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 854d7418515d7927a3c0b4b8790ed4770af555ab
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106451152"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312628"
 ---
 # <a name="kubernetes-cluster-extensions"></a>Kubernetes kluster tillägg
 
@@ -48,10 +48,10 @@ En översikt över den här funktionen finns i avsnittet [kluster tillägg – A
 
 ## <a name="currently-available-extensions"></a>För närvarande tillgängliga tillägg
 
-| Anknytning | Beskrivning |
+| Anknytning | Description |
 | --------- | ----------- |
 | [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json) | Ger insyn i prestandan för arbets belastningar som har distribuerats i Kubernetes-klustret. Samlar in minnes-och processor användnings mått från styrenheter, noder och behållare. |
-| [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Samlar in Gransknings logg data från Control plan-noder i Kubernetes-klustret. Innehåller rekommendationer och hot aviseringar baserade på insamlade data. |
+| [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Samlar in information som rör säkerhet som Gransknings logg data från Kubernetes-klustret. Innehåller rekommendationer och hot aviseringar baserade på insamlade data. |
 
 ## <a name="usage-of-cluster-extensions"></a>Användning av kluster tillägg
 
@@ -235,31 +235,6 @@ az k8s-extension list --cluster-name <clusterName> --resource-group <resourceGro
   }
 ]
 ```
-
-### <a name="update-an-existing-extension-instance"></a>Uppdatera en befintlig tilläggs instans
-
-Uppdatera en tilläggs instans i ett kluster med `k8s-extension update` och överför värdena för att uppdatera.  Det här kommandot uppdaterar endast `auto-upgrade-minor-version` `release-train` egenskaperna,, och `version` . Exempel:
-
-- **Uppdatera lanserings tåg:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --release-train Preview
-    ```
-
-- **Inaktivera instansen för automatisk uppgradering och fäst tillägg till en angiven version:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --auto-upgrade-minor-version false --version 2.2.2
-    ```
-
-- **Aktivera automatisk uppgradering för tilläggs instansen:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --auto-upgrade-minor-version true
-    ```
-
-> [!NOTE]
-> `version`Parametern kan endast anges när `--auto-upgrade-minor-version` har angetts till `false` .
 
 ### <a name="delete-extension-instance"></a>Ta bort tilläggs instans
 

@@ -1,6 +1,6 @@
 ---
-title: 'Snabb start: komma igång med att analysera med Spark'
-description: I den här självstudien får du lära dig att analysera data med Apache Spark.
+title: 'Snabbstart: Kom igång med att analysera med Spark'
+description: I den här självstudien lär du dig att analysera data med Apache Spark.
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,63 +10,63 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 2b85fe21fee34a9bedab33f0d10756bbfe8dc88b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: de48f906f4dc86bf6297cfb3b76f406df49feec3
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305216"
+ms.locfileid: "107363860"
 ---
 # <a name="analyze-with-apache-spark"></a>Analysera med Apache Spark
 
-I den här självstudien får du lära dig de grundläggande stegen för att läsa in och analysera data med Apache Spark för Azure-Synapse.
+I den här självstudien lär du dig de grundläggande stegen för att läsa in och analysera data med Apache Spark för Azure Synapse.
 
-## <a name="create-a-serverless-apache-spark-pool"></a>Skapa en server lös Apache Spark-pool
+## <a name="create-a-serverless-apache-spark-pool"></a>Skapa en serverlös Apache Spark pool
 
-1. I Synapse Studio väljer du **Hantera**  >  **Apache Spark pooler** i det vänstra fönstret.
-1. Välj **nytt** 
-1. Ange **Spark1** som **namn på Apache Spark pool** .
-1. För **Node-storlek** anger du **liten**.
-1. För **antal noder** ställer du in minst 3 och maximalt 3
-1. Välj **Granska + skapa** > **Skapa**. Apache Spark-poolen är klar efter några sekunder.
+1. I Synapse Studio rutan till vänster väljer du Hantera Apache Spark  >  **pooler.**
+1. Välj **Ny** 
+1. För **Apache Spark anger du** **Spark1**.
+1. För **Nodstorlek** anger du **Liten**.
+1. För **Antal noder anger** du minst 3 och det högsta till 3
+1. Välj **Granska + skapa** > **Skapa**. Din Apache Spark är klar om några sekunder.
 
-## <a name="understanding-serverless-apache-spark-pools"></a>Förstå Server lös Apache Spark pooler
+## <a name="understanding-serverless-apache-spark-pools"></a>Förstå serverlösa Apache Spark pooler
 
-En server lös Spark-pool är ett sätt att ange hur en användare vill arbeta med Spark. När du börjar använda en pool skapas en spark-session vid behov. Poolen styr hur många Spark-resurser som ska användas av sessionen och hur länge sessionen ska pausas innan den pausas automatiskt. Du betalar för Spark-resurser som används under den sessionen, inte för själva poolen. På så sätt kan du arbeta med Spark i en spark-pool utan att behöva oroa dig för att hantera kluster. Detta liknar hur en server lös SQL-pool fungerar.
+En serverlös Spark-pool är ett sätt att ange hur en användare vill arbeta med Spark. När du börjar använda en pool skapas en Spark-session om det behövs. Poolen styr hur många Spark-resurser som ska användas av den sessionen och hur länge sessionen varar innan den pausas automatiskt. Du betalar för Spark-resurser som används under den sessionen, inte för själva poolen. På så sätt kan du med en Spark-pool arbeta med Spark utan att behöva oroa dig för att hantera kluster. Detta liknar hur en serverlös SQL-pool fungerar.
 
-## <a name="analyze-nyc-taxi-data-with-a-spark-pool"></a>Analysera NYC taxi-data med en spark-pool
+## <a name="analyze-nyc-taxi-data-with-a-spark-pool"></a>Analysera nyc-taxidata med en Spark-pool
 
-1. Gå till **utveckla** hubben i Synapse Studio
+1. I Synapse Studio du till **hubben Utveckla**
 2. Skapa en ny notebook
-3. Skapa en ny Code-cell och klistra in följande kod i cellen.
+3. Skapa en ny kodcell och klistra in följande kod i cellen.
     ```py
     %%pyspark
     df = spark.read.load('abfss://users@contosolake.dfs.core.windows.net/NYCTripSmall.parquet', format='parquet')
     display(df.limit(10))
     ```
-1. I antecknings boken, på menyn **Anslut till** , väljer du den **Spark1** -server som vi skapade tidigare.
-1. Välj **Kör** i cellen. Synapse kommer att starta en ny Spark-session för att köra den här cellen om det behövs. Om en ny Spark-session behövs tar det en första sekund att skapa två sekunder. 
-1. Om du bara vill se schemat för dataframe kör du en cell med följande kod:
+1. I anteckningsboken går du till **menyn Anslut till** och väljer den **Spark1-serverlösa** Spark-pool som vi skapade tidigare.
+1. Välj **Kör** i cellen. Synapse startar en ny Spark-session för att köra den här cellen om det behövs. Om en ny Spark-session krävs tar det inledningsvis cirka två sekunder att skapa. 
+1. Om du bara vill se schemat för dataramen kör du en cell med följande kod:
 
     ```py
     %%pyspark
     df.printSchema()
     ```
 
-## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>Läs in NYC taxi-data till Spark nyctaxi-databasen
+## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>Läsa in nyc taxi-data i Spark-databasen
 
-Data är tillgängliga via dataframe med namnet **DF**. Läs in den i en spark-databas med namnet **nyctaxi**.
+Data är tillgängliga via dataramen med namnet **df**. Läs in den i en Spark-databas med **namnet nycgett**.
 
-1. Lägg till en ny kod cell i antecknings boken och ange sedan följande kod:
+1. Lägg till en ny kodcell i anteckningsboken och ange sedan följande kod:
 
     ```py
     %%pyspark
     spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
-## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Analysera NYC taxi-data med Spark och Notebooks
+## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Analysera nyc-taxidata med Spark och notebook-datorer
 
-1. Skapa en ny kod cell och ange följande kod. 
+1. Skapa en ny kodcell och ange följande kod. 
 
    ```py
    %%pyspark
@@ -74,17 +74,17 @@ Data är tillgängliga via dataframe med namnet **DF**. Läs in den i en spark-d
    display(df)
    ```
 
-1. Kör cellen för att visa de NYC taxi-data som vi läste in i **nyctaxi** Spark-databasen.
-1. Skapa en ny kod cell och ange följande kod. Vi kommer att analysera dessa data och spara resultaten i en tabell med namnet **nyctaxi. passengercountstats**.
+1. Kör cellen för att visa nyc taxi-data som vi läst in i **nyc** spark-databasen.
+1. Skapa en ny kodcell och ange följande kod. Vi ska analysera dessa data och spara resultaten i en tabell med namnet **nychuvud.passengercountstats**.
 
    ```py
    %%pyspark
    df = spark.sql("""
       SELECT PassengerCount,
-          SUM(TripDistance) as SumTripDistance,
-          AVG(TripDistance) as AvgTripDistance
+          SUM(TripDistanceMiles) as SumTripDistance,
+          AVG(TripDistanceMiles) as AvgTripDistance
       FROM nyctaxi.trip
-      WHERE TripDistance > 0 AND PassengerCount > 0
+      WHERE TripDistanceMiles > 0 AND PassengerCount > 0
       GROUP BY PassengerCount
       ORDER BY PassengerCount
    """) 
@@ -92,7 +92,7 @@ Data är tillgängliga via dataframe med namnet **DF**. Läs in den i en spark-d
    df.write.saveAsTable("nyctaxi.passengercountstats")
    ```
 
-1. I cell resultaten väljer du **diagram** för att visa data som visualiseras.
+1. I cellresultaten väljer du **Diagram för** att se data visualiserade.
 
 
 ## <a name="next-steps"></a>Nästa steg

@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a93ce1c4274f63a863880e932b247726639e5cd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a3bc9378539e6a7f98e34d0a149848d0e892c224
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98614687"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306100"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Självstudie: integrera en enda skog med en enda Azure AD-klient
 
@@ -51,7 +51,7 @@ Du kan använda den miljö som du skapar i den här självstudien för testning 
    - För certifikat validering, avblockera följande URL: er: **mscrl.Microsoft.com:80**, **CRL.Microsoft.com:80**, **OCSP.msocsp.com:80** och **www \. Microsoft.com:80**. Eftersom dessa URL: er används för certifikat validering med andra Microsoft-produkter kan dessa URL: er vara avblockerade.
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Installera Azure AD Connect etablerings agenten
-1. Logga in på den domänanslutna servern.  Om du använder  [Basic AD-och Azures miljö](tutorial-basic-ad-azure.md) vägledning är det DC1.
+1. Logga in på den domänanslutna servern.  Om du använder självstudierna  [Basic A D och Azure-miljön](tutorial-basic-ad-azure.md) , är det DC1.
 2. Logga in på Azure Portal med endast molnbaserad autentiseringsuppgifter för globala administratörer.
 3. Till vänster väljer du **Azure Active Directory**, klickar på **Azure AD Connect** och i mitten väljer du **Hantera moln synkronisering**.
 
@@ -88,7 +88,7 @@ Följ dessa steg för att kontrol lera att agenten visas i Azure:
 ![Azure-portalen](media/how-to-install/install-6.png)</br>
 
 3.  Klicka på **Granska alla agenter** på skärmen **Azure AD Connect Cloud Sync** .
-![Azure AD-etablering](media/how-to-install/install-7.png)</br>
+![Azure A D-etablering](media/how-to-install/install-7.png)</br>
  
 4. På **skärmen lokala etablerings agenter** visas de agenter som du har installerat.  Kontrol lera att agenten i fråga finns där och har marker ATS som **aktiv**.
 ![Etablerings agenter](media/how-to-install/verify-1.png)</br>
@@ -110,28 +110,28 @@ Verifiera att agenten körs genom att följa dessa steg:
 4.  Välj **Hantera Cloud Sync**- 
  ![ skärm bild som visar länken hantera molnbaserad synkronisering.](media/how-to-configure/manage-1.png)
 5.  Klicka på **ny konfiguration** 
- ![ skärm bild av skärmen Azure AD Connect Cloud Sync med länken "ny konfiguration" markerad.](media/tutorial-single-forest/configure-1.png)
+ ![ skärm bild av sidan Azure A D Connect Cloud Sync med länken "ny konfiguration" markerad.](media/tutorial-single-forest/configure-1.png)
 7.  På sidan konfiguration anger du ett **e-postmeddelande för aviseringar**, flyttar väljaren för att **Aktivera** och klickar på **Spara**.
 ![Skärm bild av konfigurera skärmen med e-postmeddelandet ifyllt och aktivera valt.](media/how-to-configure/configure-2.png)
 1.  Konfigurations statusen bör nu vara **felfri**.
-![Skärm bild av skärmen Azure AD Connect Cloud Sync som visar felfri status.](media/how-to-configure/manage-4.png)
+![Skärm bild av Azure A D Connect Cloud Sync skärm bild som visar felfri status.](media/how-to-configure/manage-4.png)
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>Verifiera att användare skapas och att synkronisering sker
-Nu ska du kontrol lera att användarna som du hade i vår lokala katalog har synkroniserats och nu finns i vår Azure AD-klient.  Observera att det kan ta några timmar att slutföra.  För att verifiera att användarna synkroniseras gör du följande.
+Nu ska du kontrol lera att de användare som du hade i din lokala katalog har synkroniserats och nu finns i din Azure AD-klient.  Observera att det kan ta några timmar att slutföra.  För att verifiera att användarna synkroniseras gör du följande.
 
 
 1. Bläddra till [Azure-portalen](https://portal.azure.com) och logga in med ett konto som har en Azure-prenumeration.
 2. Välj **Azure Active Directory** till vänster
 3. Under **Hantera** väljer du **Användare**.
-4. Kontrollera att du ser de nya användarna i vår klient</br>
+4. Kontrol lera att du ser de nya användarna i din klient organisation</br>
 
-## <a name="test-signing-in-with-one-of-our-users"></a>Testa att logga in med någon av våra användare
+## <a name="test-signing-in-with-one-of-your-users"></a>Testa att logga in med en av dina användare
 
 1. Gå till [https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. Logga in med ett användarkonto som har skapats i vår nya klient.  Du måste logga in med följande format: (user@domain.onmicrosoft.com). Använd samma lösenord som användaren använder för att logga in lokalt.</br>
+2. Logga in med ett användar konto som har skapats i din klient organisation.  Du måste logga in med följande format: (user@domain.onmicrosoft.com). Använd samma lösenord som användaren använder för att logga in lokalt.</br>
    ![Verifiera](media/tutorial-single-forest/verify-1.png)</br>
 
-Du har nu har installerat en hybrididentitetsmiljö som du kan använda för att testa och bekanta dig med allt som Azure har att erbjuda.
+Nu har du konfigurerat en hybrid identitets miljö med Azure AD Connect Cloud Sync.
 
 
 ## <a name="next-steps"></a>Nästa steg 

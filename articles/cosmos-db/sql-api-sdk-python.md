@@ -1,20 +1,20 @@
 ---
-title: Azure Cosmos DB SQL python API, SDK & resurser
-description: Lär dig allt om SQL python API och SDK, inklusive versions datum, indragnings datum och ändringar som gjorts mellan varje version av Azure Cosmos DB python SDK.
+title: Azure Cosmos DB SQL Python API, SDK & resurser
+description: Lär dig allt om SQL Python API och SDK, inklusive lanseringsdatum, tillbakagångar och ändringar som görs mellan varje version av Azure Cosmos DB Python SDK.
 author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 08/12/2020
+ms.date: 04/06/2021
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 470ae497acab4c75e83a13e485d1bcb118485ab9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ff551c5d677029f39d9a3db3a64f3d03e2c57eba
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799521"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366043"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK för SQL-API: Viktig information och resurser
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -30,116 +30,117 @@ ms.locfileid: "104799521"
 > * [Synkron Java-SDK v2](sql-api-sdk-java.md)
 > * [Spring-data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring-data v3](sql-api-sdk-java-spring-v3.md)
-> * [Spark-anslutningsprogram](sql-api-sdk-java-spark.md)
+> * [Spark 3 OLTP-anslutning](sql-api-sdk-java-spark-v3.md)
+> * [Spark 2 OLTP Connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
-> * [REST Resource Provider](/rest/api/cosmos-db-resource-provider/)
+> * [REST-resursprovider](/rest/api/cosmos-db-resource-provider/)
 > * [SQL](./sql-query-getting-started.md)
-> * [Mass utförar – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Mass utförare – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Masskörningsbibliotek – Java](sql-api-sdk-bulk-executor-java.md)
 
 | Sida| Länk |
 |---|---|
-|**Hämta SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API-dokumentation**|[Dokumentation om python API-referens](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos?view=azure-python&preserve-view=true)|
-|**Instruktioner för SDK-installation**|[Installations anvisningar för python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
-|**Komma igång**|[Kom igång med python SDK](create-sql-api-python.md)|
-|**Aktuell plattform som stöds**|[Python 2,7](https://www.python.org/downloads/) och [python 3.6 +](https://www.python.org/downloads/)|
+|**Ladda ned SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
+|**API-dokumentation**|[Referensdokumentation för Python API](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos?view=azure-python&preserve-view=true)|
+|**Installationsanvisningar för SDK**|[Installationsanvisningar för Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
+|**Komma igång**|[Kom igång med Python SDK](create-sql-api-python.md)|
+|**Aktuell plattform som stöds**|[Python 2.7](https://www.python.org/downloads/) och [Python 3.6+](https://www.python.org/downloads/)|
 
-## <a name="release-history"></a>Versions historik
+## <a name="release-history"></a>Lanseringshistorik
 
 ## <a name="420"></a>4.2.0
 
-**Fel korrigeringar**
-- Åtgärdat fel där ingen fortsättnings-token används när query_iterable används för att hämta resultat per sida.
-- Ett fel har åtgärd ATS där resurs-token inte bearbetas för dokument läsning och borttagning. 
+**Felkorrigeringar**
+- Bugg där fortsättningstoken inte respekteras när query_iterable används för att hämta resultat per sida har åtgärdats.
+- En bugg där resurstoken inte respekteras för dokumentläsningar och borttagningar har åtgärdats. 
 
 **Nya funktioner**
-- Stöd har lagts till för överföring `partitionKey` vid frågekörning av ändrings-feed.
+- Stöd har lagts till för `partitionKey` att skicka frågor till Change-Feed.
 
 ## <a name="410"></a>4.1.0
 
-- Varning om utfasning har lagts till för "Lazy" Indexing-läge. Server delen tillåter inte längre att skapa behållare med det här läget och anger att de ska vara konsekventa i stället.
+- Utfasningsvarning för "uppskjutet" indexeringsläge har lagts till. Backend tillåter inte längre skapande av containrar med det här läget och anger dem till konsekventa i stället.
 
 **Nya funktioner**
-- Har lagt till möjligheten att ange TTL för analys lagring när du skapar en ny behållare.
+- Lade till möjligheten att ange TTL för analyslagring när du skapar en ny container.
 
-**Fel korrigeringar**
-- Fast stöd för `dicts` som indata för get_client-API: er.
-- Fast python 2/3-kompatibilitet i frågemeddelanden.
-- Fel i fast typ tips.
-- Ett fel har åtgärd ATS där alternativ rubriker inte lades till i upsert_item funktionen. 
-- Ett fast fel uppstod när ett icke-sträng-ID används i ett objekt. Nu genererar TypeError i stället för AttributeError.
+**Felkorrigeringar**
+- Stöd för som `dicts` indata för get_client-API:er har åtgärdats.
+- Python 2/3-kompatibilitet har åtgärdats i fråge-iteratorer.
+- Typtipsfel har åtgärdats.
+- En bugg har åtgärdats där alternativrubriker inte lades till upsert_item funktionen. 
+- Ett fel som utlöses när ett icke-sträng-ID används i ett objekt har åtgärdats. Nu höjs TypeError i stället för AttributeError.
 
 
 ## <a name="400"></a>4.0.0
 
-* Stabil utgåva.
-* Lade till HttpLoggingPolicy i pipeline för att aktivera överföring i en anpassad logg för begäran och svars rubriker.
+* Stabil version.
+* HttpLoggingPolicy har lagts till i pipelinen för att göra det möjligt att skicka in en anpassad loggare för begärande- och svarshuvuden.
 
-### <a name="400b6"></a>4.0.0 B6
+### <a name="400b6"></a>4.0.0b6
 
-* Fast bugg i synchronized_request för media-API: er.
-* Det finns inte stöd för att ta bort MediaReadMode och MediaRequestTimeout från ConnectionPolicy eftersom medie förfrågningar.
+* En bugg i synchronized_request för medie-API:er har åtgärdats.
+* MediaReadMode och MediaRequestTimeout har tagits bort från ConnectionPolicy eftersom mediebegäranden inte stöds.
 
-### <a name="400b5"></a>4.0.0 B5
+### <a name="400b5"></a>4.0.0b5
 
-* modulen Azure. Cosmos. errors inaktuell och ersatts av Azure. Cosmos. Exceptions
-* Parametrarna för åtkomst villkor ( `access_condition` , `if_match` , `if_none_match` ) har ersatts av separata `match_condition` och `etag` parametrar.
-* Fast bugg i routing Map-providern.
-* Stöd har lagts till för frågor distinkt, förskjutning och gräns.
-* Standard kontext för körning av dokument fråga används nu för
+* modulen azure.cosmos.errors är inaktuell och ersätts av azure.cosmos.exceptions
+* Parametrarna för `access_condition` åtkomstvillkor ( , , ) har gjorts `if_match` `if_none_match` inaktuella och ersatts med separata `match_condition` parametrar och `etag` .
+* En bugg i routningsmappningsprovidern har åtgärdats.
+* Stöd för distinkta frågor, förskjutningar och gränser har lagts till.
+* Standarddokumentfrågekörningskontext används nu för
 
-  * Ändra feed-frågor
-  * Single partition-frågor ( `partitionkey` , finns `partitionKeyRangeId` i alternativ)
-  * Frågor som inte är dokument
+  * Frågor om ändringsflöde
+  * enpartitionsfrågor ( `partitionkey` , `partitionKeyRangeId` finns i alternativen)
+  * Icke-dokumentfrågor
 
-* Fel för mängder på flera partitioner, med aktivera Cross partition-fråga inställd på True, men inget "värde"-nyckelord finns
-* Träffar efter fråga plan-slutpunkt för andra scenarier för hämtning av frågeplan
-* Stöd har lagts till `__repr__` för Cosmos entitet-objekt.
+* Fel för aggregeringar på flera partitioner, med aktivera korspartitionsfråga inställt på sant, men inget nyckelord för "värde" finns
+* Träffar frågeplansslutpunkten för andra scenarier för att hämta frågeplan
+* Stöd `__repr__` har lagts till för Cosmos-entitetsobjekt.
 * Uppdaterad dokumentation.
 
-### <a name="400b4"></a>4.0.0 B4
+### <a name="400b4"></a>4.0.0b4
 
-* Stöd har lagts till för ett `timeout` nyckelords argument för alla åtgärder för att ange en absolut tids gräns i sekunder inom vilken åtgärden måste utföras. Om timeout-värdet överskrids höjs en `azure.cosmos.errors.CosmosClientTimeoutError` .
+* Stöd har lagts till för ett nyckelordsargument för alla åtgärder för att ange en absolut tidsgräns i `timeout` sekunder som åtgärden måste slutföras inom. Om tidsgränsvärdet överskrids `azure.cosmos.errors.CosmosClientTimeoutError` utlöses ett .
 
-* Lade till ett nytt `ConnectionRetryPolicy` för att hantera omprövnings beteende vid HTTP-anslutningsfel.
+* En ny har lagts `ConnectionRetryPolicy` till för att hantera återförsöksbeteende vid HTTP-anslutningsfel.
 
-* Nya argument för konfigurations nyckelord för konstruktor och per åtgärd har lagts till:
+* Nya nyckelordsargument för konstruktor och konfiguration per åtgärd har lagts till:
 
-  * `retry_total` – Högsta antal nya försök.
-  * `retry_backoff_max` -Högsta vänte tid för återförsök i sekunder.
-  * `retry_fixed_interval` – Fast återförsöksintervall i millisekunder.
-  * `retry_read` -Maximalt antal Sockets-försök för läsning.
-  * `retry_connect` -Maximalt antal nya försök för anslutnings fel.
-  * `retry_status` -Maximalt antal nya försök vid fel status koder.
-  * `retry_on_status_codes` – En lista med vissa status koder att försöka igen.
-  * `retry_backoff_factor` – Faktor för att beräkna vänte tiden mellan återförsök.
+  * `retry_total` – Maximalt antal återförsök.
+  * `retry_backoff_max` – Maximal väntetid för återförsök i sekunder.
+  * `retry_fixed_interval` – Ett återförsöksintervall i millisekunder har åtgärdats.
+  * `retry_read` – Maximalt antal lästa återförsök för socketar.
+  * `retry_connect` – Maximalt antal anslutningsfel vid återförsök.
+  * `retry_status` – Maximalt antal återförsök för felstatuskoder.
+  * `retry_on_status_codes` – En lista över specifika statuskoder att försöka igen med.
+  * `retry_backoff_factor` – Faktor för att beräkna väntetiden mellan återförsök.
 
-### <a name="400b3"></a>4.0.0 B3
+### <a name="400b3"></a>4.0.0b3
 
-* Tillagda `create_database_if_not_exists()` och `create_container_if_not_exists` funktionella till CosmosClient respektive databas.
+* Funktionerna `create_database_if_not_exists()` `create_container_if_not_exists` och har lagts till i CosmosClient respektive Database.
 
-### <a name="400b2"></a>4.0.0 B2
+### <a name="400b2"></a>4.0.0b2
 
-* Version 4.0.0 B2 är den andra iterationen i våra ansträngningar för att bygga ett klient bibliotek som passar Best Practices för python-språk.
+* Version 4.0.0b2 är den andra iterationen i vårt arbete med att skapa ett klientbibliotek som passar metodtipsen för Python-språket.
 
 **Icke-bakåtkompatibla ändringar**
 
-* Klient anslutningen har anpassats till att använda HTTP-pipeline som definierats i `azure.core.pipeline` .
+* Klientanslutningen har anpassats för att använda HTTP-pipelinen som definierats i `azure.core.pipeline` .
 
-* Interaktiva objekt har nu bytt namn till proxyservrar. Du måste bland annat:
+* Interaktiva objekt har nu bytt namn till proxy. Du måste bland annat:
 
   * `Database` -> `DatabaseProxy`
   * `User` -> `UserProxy`
   * `Container` -> `ContainerProxy`
   * `Scripts` -> `ScriptsProxy`
 
-* Konstruktorn för `CosmosClient` har uppdaterats:
+* Konstruktorn `CosmosClient` för har uppdaterats:
 
-  * `auth`Parametern har bytt namn till `credential` och kommer nu att ta en autentiseringstyp direkt. Det innebär att värdet för primär nyckel, en ord lista med resurs-token eller en lista över behörigheter kan skickas. Det gamla ordboks formatet stöds dock fortfarande.
+  * Parametern `auth` har bytt namn till och tar nu en `credential` autentiseringstyp direkt. Det innebär att det primära nyckelvärdet, en ordlista med resurstoken eller en lista över behörigheter kan skickas in. Det gamla ordlisteformatet stöds dock fortfarande.
 
-  * `connection_policy`Parametern har endast en parameter för nyckelord, och trots att den fortfarande stöds kan var och en av de enskilda attributen i principen skickas in som uttryckliga nyckelords argument:
+  * Parametern har gjorts till en parameter med endast nyckelord, och även om den fortfarande stöds kan vart och ett av de enskilda attributen för principen nu skickas `connection_policy` som explicita nyckelordsargument:
 
     * `request_timeout`
     * `media_request_timeout`
@@ -150,7 +151,7 @@ ms.locfileid: "104799521"
     * `preferred_locations`
     * `multiple_write_locations`
 
-* En ny konstruktor har lagts till för `CosmosClient` att aktivera skapande via en anslutnings sträng som hämtats från Azure Portal.
+* En ny konstruktor har lagts till i `CosmosClient` för att skapa via en anslutningssträng som hämtats från Azure Portal.
 
 * Vissa `read_all` åtgärder har bytt namn till `list` åtgärder:
 
@@ -160,211 +161,211 @@ ms.locfileid: "104799521"
   * `Database.read_all_users` -> `DatabaseProxy.list_users`
   * `User.read_all_permissions` -> `UserProxy.list_permissions`
 
-* Alla åtgärder som tar `request_options` eller `feed_options` parametrar har flyttats till parametrar med enbart nyckelord. Även om de här alternativ lexikonen fortfarande stöds, stöds nu var och en av de enskilda alternativen i ord listan som explicita nyckelords argument.
+* Alla åtgärder som tar `request_options` eller `feed_options` parametrar har flyttats till nyckelordsparametrar. Dessutom stöds dessa alternativordlistor fortfarande, men alla enskilda alternativ i ordlistan stöds nu som explicita nyckelordsargument.
 
-* Felhierarkin har nu ärvts från `azure.core.AzureError` :
+* Felhierarkin ärvs nu från `azure.core.AzureError` :
 
   * `HTTPFailure` har bytt namn till `CosmosHttpResponseError`
   * `JSONParseFailure` har tagits bort och ersatts av `azure.core.DecodeError`
-  * Ytterligare fel har lagts till för vissa svars koder:
+  * Ytterligare fel har lagts till för specifika svarskoder:
     * `CosmosResourceNotFoundError` för status 404
     * `CosmosResourceExistsError` för status 409
     * `CosmosAccessConditionFailedError` för status 412
 
-* `CosmosClient` kan nu köras i en kontext hanterare för att hantera stängning av klient anslutningen.
+* `CosmosClient` kan nu köras i en kontexthanterare för att hantera stängning av klientanslutningen.
 
-* Iterable-svar (till exempel fråge svar och list svar) är nu av typen `azure.core.paging.ItemPaged` . Metoden `fetch_next_block` har ersatts av en sekundär iterator, som används av `by_page` metoden.
+* Iterbara svar (till exempel frågesvar och listsvar) är nu av typen `azure.core.paging.ItemPaged` . Metoden har `fetch_next_block` ersatts av en sekundär iterator som används av `by_page` metoden .
 
-### <a name="400b1"></a>4.0.0 B1
+### <a name="400b1"></a>4.0.0b1
 
-Version 4.0.0 B1 är den första förhands granskningen av våra ansträngningar för att skapa ett användarvänligt klient bibliotek som passar Best Practices för python-språk. Mer information om detta och för hands versioner av andra Azure SDK-bibliotek finns på https://aka.ms/azure-sdk-preview1-python .
+Version 4.0.0b1 är den första förhandsversionen av vårt arbete med att skapa ett användarvänligt klientbibliotek som passar de bästa metoderna för Python-språk. Mer information om detta och förhandsversioner av andra Azure SDK-bibliotek finns på https://aka.ms/azure-sdk-preview1-python .
 
-**Bryta ändringar: ny API-design**
+**Större ändringar: Ny API-design**
 
 * Åtgärder är nu begränsade till en viss klient:
 
-  * `CosmosClient`: Den här klienten hanterar åtgärder på konto nivå. Detta omfattar hantering av tjänst egenskaper och lista över databaser i ett konto.
-  * `Database`: Den här klienten hanterar åtgärder på databas nivå. Detta omfattar att skapa och ta bort behållare, användare och lagrade procedurer. Den kan nås från en cosmosClient-instans efter namn.
-  * `Container`: Den här klienten hanterar åtgärder för en viss behållare. Detta inkluderar frågor och infogning av objekt och hantering av egenskaper.
-  * `User`: Den här klienten hanterar åtgärder för en viss användare. Detta innefattar att lägga till och ta bort behörigheter och hantera användar egenskaper.
+  * `CosmosClient`: Den här klienten hanterar åtgärder på kontonivå. Detta omfattar hantering av tjänstegenskaper och en lista över databaserna i ett konto.
+  * `Database`: Den här klienten hanterar åtgärder på databasnivå. Detta omfattar att skapa och ta bort containrar, användare och lagrade procedurer. Den kan nås från en cosmosClient-instans efter namn.
+  * `Container`: Den här klienten hanterar åtgärder för en viss container. Detta inkluderar frågor och infogning av objekt och hantering av egenskaper.
+  * `User`: Den här klienten hanterar åtgärder för en viss användare. Detta inkluderar att lägga till och ta bort behörigheter och hantera användaregenskaper.
 
-    Dessa klienter kan nås genom att navigera nedåt i klientsessioner med hjälp av `get_<child>_client` metoden. Fullständig information om det nya API: et finns i [referens dokumentationen](https://aka.ms/azsdk-python-cosmos-ref).
+    Dessa klienter kan nås genom att navigera nedåt i klienthierarkin med hjälp av `get_<child>_client` metoden . Fullständig information om det nya API:et finns i [referensdokumentationen](https://aka.ms/azsdk-python-cosmos-ref).
 
-* Klienternas åtkomst till namn i stället för med ID. Du behöver inte sammanfoga strängar för att skapa länkar.
+* Klienterna nås via namn i stället för per ID. Du behöver inte sammanfoga strängar för att skapa länkar.
 
-* Du behöver inte importera typer och metoder från enskilda moduler. Området för den offentliga API-ytan är tillgängligt direkt i `azure.cosmos` paketet.
+* Du behöver inte längre importera typer och metoder från enskilda moduler. Det offentliga API-ytan är tillgänglig direkt i `azure.cosmos` paketet.
 
-* Egenskaper för enskilda begär Anden kan anges som nyckelords argument i stället för att skapa en separat `RequestOptions` instans.
+* Egenskaper för enskilda förfrågningar kan anges som nyckelordsargument i stället för att skapa en separat `RequestOptions` instans.
 
 ### <a name="302"></a>3.0.2
 
-* Stöd har lagts till för data typen multipolygon
-* Fel korrigering i arbets princip för att försöka läsa
-* Fel korrigering för felaktiga utfyllnads problem vid avkodning av bas 64-strängar
+* Stöd har lagts till för MultiPolygon-datatyp
+* Felkorrigering i återförsöksprincip för sessionsläsning
+* Felkorrigering för felaktiga utfyllnadsproblem vid avkodning av base 64-strängar
 
 ### <a name="301"></a>3.0.1
 
-* Fel korrigering i LocationCache
-* Bugg åtgärds fel vid slut punkts omprövning
-* Fast dokumentation
+* Felkorrigering i LocationCache
+* Felkorrigering av logik för slutpunktsförsök
+* Dokumentation har åtgärdats
 
 ### <a name="300"></a>3.0.0
 
-* Skriv stöd för flera regioner har lagts till
-* Namn ändringar
+* Skrivstöd för flera regioner har lagts till
+* Namnge ändringar
   * DocumentClient till CosmosClient
   * Samling till container
   * Dokument till objekt
-  * Paket namnet har uppdaterats till "Azure-Cosmos"
-  * Namn området har uppdaterats till "Azure. Cosmos"
+  * Paketnamnet har uppdaterats till "azure-cosmos"
+  * Namnområdet har uppdaterats till "azure.cosmos"
 
 ### <a name="233"></a>2.3.3
 
-* Stöd har lagts till för proxy
-* Stöd för läsning av ändrings flöde har lagts till
-* Stöd har lagts till för samlings kvot rubriker
-* Problem med Bugfix för stora sessioner
-* Bugfix för ReadMedia-API
-* Cache för Bugfix i partitionsnyckel
+* Stöd för proxy har lagts till
+* Stöd har lagts till för läsning av ändringsflöde
+* Stöd har lagts till för samlingskvotrubriker
+* Felkorrigering för problem med stora sessionstoken
+* Felkorrigering för ReadMedia API
+* Felkorrigering i cacheminnet för partitionsnyckelintervall
 
 ### <a name="232"></a>2.3.2
 
-* Stöd har lagts till för standard återförsök vid anslutnings problem.
+* Stöd har lagts till för standardförsök vid anslutningsproblem.
 
 ### <a name="231"></a>2.3.1
 
-* Uppdaterad dokumentation till referens Azure Cosmos DB i stället för Azure-DocumentDB.
+* Uppdaterad dokumentation för att referera Azure Cosmos DB i stället för Azure DocumentDB.
 
 ### <a name="230"></a>2.3.0
 
-* Den här SDK-versionen kräver att den senaste versionen av Azure Cosmos DB-emulatorn kan laddas ned från https://aka.ms/cosmosdb-emulator .
+* Den här SDK-versionen kräver den senaste versionen Azure Cosmos DB emulatorn som är tillgänglig för nedladdning från https://aka.ms/cosmosdb-emulator .
 
 ### <a name="221"></a>2.2.1
 
-* Bugfix för mängd dict
-* Bugfix för att trimma snedstreck i resurs länken
-* test för Unicode-kodning
+* bugfix för aggregerat dict
+* bugfix för att trimma snedstreck i resurslänken
+* tester för Unicode-kodning
 
 ### <a name="220"></a>2.2.0
 
-* Stöd har lagts till för Request Unit per minut (RU/m)-funktionen.
-* Stöd har lagts till för en ny konsekvens nivå som kallas Konsekvensprincip.
+* Stöd har lagts till för funktionen Enheter för begäran per minut (RU/m).
+* Stöd har lagts till för en ny konsekvensnivå som kallas ConsistentPrefix.
 
 ### <a name="210"></a>2.1.0
 
-* Stöd har lagts till för agg regerings frågor (antal, MIN, MAX, SUM och AVG).
-* Ett alternativ har lagts till för att inaktivera SSL-verifiering när den körs mot DocumentDB-emulatorn.
-* Tog bort begränsningen för modulen för beroende begär Anden så att den är exakt 2.10.0.
-* Sänkt minsta data flöde på partitionerade samlingar från 10 100 RU/s till 2500 RU/s.
-* Stöd har lagts till för att aktivera skript loggning under körning av lagrad procedur.
-* REST API-versionen har blivit 2017-01-19 med den här versionen.
+* Stöd har lagts till för sammansättningsfrågor (COUNT, MIN, MAX, SUM och AVG).
+* Lade till ett alternativ för att inaktivera SSL-verifiering vid körning mot DocumentDB-emulatorn.
+* Begränsningen för modulen beroende begäranden har tagits bort så att den är exakt 2.10.0.
+* Lägre minsta dataflöde för partitionerade samlingar från 10 100 RU/s till 2 500 RU/s.
+* Stöd har lagts till för att aktivera skriptloggning under körning av lagrade procedurer.
+* REST API versionen har 2017-01-19 med den här versionen.
 
 ### <a name="201"></a>2.0.1
 
-* Gjort redaktionella ändringar i dokumentations kommentarer.
+* Gjorde redigeringsändringar i dokumentationskommentarer.
 
 ### <a name="200"></a>2.0.0
 
-* Stöd har lagts till för python 3,5.
-* Stöd har lagts till för anslutningspoolen med modulen begär Anden.
-* Stöd har lagts till för konsekvens av sessioner.
-* Stöd har lagts till för TOP-/ORDERBY-frågor för partitionerade samlingar.
+* Stöd för Python 3.5 har lagts till.
+* Stöd har lagts till för anslutningspooler med hjälp av begärandemodulen.
+* Stöd för sessionskonsekvens har lagts till.
+* Stöd har lagts till för TOP/ORDERBY-frågor för partitionerade samlingar.
 
 ### <a name="190"></a>1.9.0
 
-* Princip stöd för återförsök har lagts till för begränsade begär Anden. (Begränsade begär Anden tar emot en begäran om för stort undantag, felkod 429.) Som standard försöker DocumentDB nio gånger för varje begäran när felkod 429 påträffas, vilket följer retryAfter-tiden i svars huvudet.
-  Du kan nu ange ett intervall med fasta återförsöksintervall som en del av egenskapen RetryOptions i ConnectionPolicy-objektet om du vill ignorera retryAfter-tiden som returnerades av servern mellan Återförsöken.
-  DocumentDB väntar nu i högst 30 sekunder för varje begäran som begränsas (oavsett antal försök) och returnerar svaret med felkoden 429.
-  Den här tiden kan också åsidosättas i egenskapen RetryOptions på ConnectionPolicy-objektet.
+* Stöd för återförsöksprincip för begränsade begäranden har lagts till. (Begränsade begäranden får ett undantag med för hög begärandefrekvens, felkod 429.) Som standard försöker DocumentDB igen nio gånger för varje begäran när felkoden 429 påträffas och respekterar återförsöktiden i svarshuvudet.
+  En fast tid för återförsöksintervall kan nu anges som en del av retryOptions-egenskapen för ConnectionPolicy-objektet om du vill ignorera retryAfter-tiden som returneras av servern mellan återförsöken.
+  DocumentDB väntar nu i högst 30 sekunder för varje begäran som begränsas (oavsett antal återförsök) och returnerar svaret med felkoden 429.
+  Den här gången kan också åsidosättas i egenskapen RetryOptions på ConnectionPolicy-objektet.
 
-* DocumentDB returnerar nu x-MS-begränsning-försök-antal och x-MS-begränsning-försök-wait-Time-MS som svars rubriker i varje begäran om att ange begränsningen för antal återförsök och den ackumulerade tiden som begäran väntar mellan Återförsöken.
+* DocumentDB returnerar nu x-ms-throttle-retry-count och x-ms-throttle-retry-wait-time-ms som svarshuvuden i varje begäran för att ange antalet omförsök för begränsning och den kumulativa tid då begäran väntade mellan återförsöken.
 
-* RetryPolicy-klassen och motsvarande egenskap (retry_policy) har tagits bort från klassen document_client. i stället introducerades en RetryOptions-klass som visar RetryOptions-egenskapen i ConnectionPolicy-klassen som kan användas för att åsidosätta några av standard alternativen för återförsök.
+* Tog bort klassen RetryPolicy och motsvarande egenskap (retry_policy) som exponeras för klassen document_client och introducerade i stället klassen RetryOptions som exponerar egenskapen RetryOptions för klassen ConnectionPolicy som kan användas för att åsidosätta några av standardalternativen för återförsök.
 
 ### <a name="180"></a>1.8.0
 
-* Stöd har lagts till för geo-replikerade databas konton.
-* Testa korrigeringarna för att flytta den globala värden och masterKey till de enskilda test klasserna.
+* Stöd för geo-replikerade databaskonton har lagts till.
+* Testkorrigeringar för att flytta den globala värden och masterKey till de enskilda testklasserna.
 
 ### <a name="170"></a>1.7.0
 
-* Har lagt till stöd för TTL-funktionen (Time to Live) för dokument.
+* Stöd för TTL-funktionen (Time To Live) för dokument har lagts till.
 
 ### <a name="161"></a>1.6.1
 
-* Fel korrigeringar relaterade till partitionering på Server sidan för att tillåta specialtecken i partitionsnyckel Sök vägs nyckel.
+* Felkorrigeringar som rör partitionering på serversidan för att tillåta specialtecken i partitionsnyckelsökvägen.
 
 ### <a name="160"></a>1.6.0
 
-* Stöd för funktionen partitionerade samlingar för Server sidan har lagts till.
+* Stöd har lagts till för funktionen partitionerade samlingar på serversidan.
 
 ### <a name="150"></a>1.5.0
 
-* Horisontell partitionering-ramverket för klient sidan har lagts till i SDK. Implementerade HashPartionResolver-och RangePartitionResolver-klasser.
+* Ramverket för horisontell partitionering på klientsidan har lagts till i SDK:n. Implementerat klasserna HashPartionResolver och RangePartitionResolver.
 
 ### <a name="142"></a>1.4.2
 
-* Implementera upsert. Nya UpsertXXX-metoder har lagts till som stöd för upsert-funktionen.
-* Implementera ID-Based routning. Inga offentliga API-ändringar, alla ändringar internt.
+* Implementera Upsert. Nya UpsertXXX-metoder har lagts till för att stödja Upsert-funktionen.
+* Implementera ID-Based routning. Inga offentliga API-ändringar, alla ändringar sker internt.
 
 ### <a name="130"></a>1.3.0
 
-* Versionen hoppades över för att placera versions numret i justering med andra SDK: er
+* Versionen hoppas över för att anpassa versionsnumret till andra SDK:er
 
 ### <a name="120"></a>1.2.0
 
-* Har stöd för GeoSpatialt index.
-* Verifierar ID-egenskapen för alla resurser. ID: n för resurser får inte innehålla `?, /, #, \\` tecken eller avslutas med blank steg.
-* Lägger till det nya huvudet "indexera omvandlings förlopp" i ResourceResponse.
+* Stöder geospatialt index.
+* Validerar ID-egenskapen för alla resurser. ID:n för resurser får `?, /, #, \\` inte innehålla tecken eller sluta med blanksteg.
+* Lägger till det nya huvudet "förlopp för indextransformering" i ResourceResponse.
 
 ### <a name="110"></a>1.1.0
 
-* Implementerar v2-indexerings princip
+* Implementerar V2-indexeringsprincip
 
 ### <a name="101"></a>1.0.1
 
-* Stöder proxyanslutningar
+* Stöder proxyanslutning
 
-## <a name="release--retirement-dates"></a>Frisläpp & indragnings datum
+## <a name="release--retirement-dates"></a>Frisläppningsdatum & tillbaka
 
-Microsoft tillhandahåller ett meddelande minst **12 månader** i förväg för att dra tillbaka en SDK för att utjämna över gången till en nyare/version som stöds. Nya funktioner, verktyg och optimeringar läggs endast till i den aktuella SDK-versionen. Därför rekommenderar vi att du alltid uppgraderar till den senaste SDK-versionen så snart som möjligt.
+Microsoft tillhandahåller meddelanden minst **12** månader innan ett SDK dras tillbaka för att underlätta övergången till en nyare version som stöds. Nya funktioner, verktyg och optimeringar läggs endast till i den aktuella SDK-versionen. Därför rekommenderar vi att du alltid uppgraderar till den senaste SDK-versionen så snart som möjligt.
 
 > [!WARNING]
-> Efter den 31 augusti 2022 kommer Azure Cosmos DB inte längre att göra fel korrigeringar eller ge stöd till version 1. x och 2. x av Azure Cosmos DB python SDK för SQL API. Om du föredrar att inte uppgradera fortsätter de begär Anden som skickas från version 1. x och 2. x av SDK att hanteras av Azure Cosmos DBs tjänsten.
+> Efter den 31 augusti 2022 kommer Azure Cosmos DB inte längre att göra felkorrigeringar eller ge stöd för version 1.x och 2.x av Azure Cosmos DB Python SDK för SQL API. Om du föredrar att inte uppgradera fortsätter begäranden som skickas från version 1.x och 2.x av SDK:n att betjänas av Azure Cosmos DB tjänsten.
 
 | Version | Utgivningsdatum | Förfallodatum |
 | --- | --- | --- |
-| [4.2.0](#420) |Okt 09, 2020 |--- |
-| [4.1.0](#410) |Aug 10, 2020 |--- |
-| [4.0.0](#400) |20 maj, 2020 |--- |
-| [3.0.2](#302) |Den 15 november 2018 |--- |
-| [3.0.1](#301) |Okt 04, 2018 |--- |
-| [2.3.3](#233) |Sept 08, 2018 |31 augusti 2022 |
-| [2.3.2](#232) |Den 8 maj 2018 |31 augusti 2022 |
-| [2.3.1](#231) |21 december 2017 |31 augusti 2022 |
-| [2.3.0](#230) |10 november 2017 |31 augusti 2022 |
-| [2.2.1](#221) |Sep 29, 2017 |31 augusti 2022 |
-| [2.2.0](#220) |10 maj 2017 |31 augusti 2022 |
-| [2.1.0](#210) |01 maj, 2017 |31 augusti 2022 |
-| [2.0.1](#201) |30 oktober 2016 |31 augusti 2022 |
-| [2.0.0](#200) |29 september 2016 |31 augusti 2022 |
-| [1.9.0](#190) |Den 07 juli 2016 |31 augusti 2022 |
-| [1.8.0](#180) |14 juni 2016 |31 augusti 2022 |
-| [1.7.0](#170) |26 april 2016 |31 augusti 2022 |
-| [1.6.1](#161) |08, 2016 |31 augusti 2022 |
-| [1.6.0](#160) |29 mars 2016 |31 augusti 2022 |
-| [1.5.0](#150) |03 januari 2016 |31 augusti 2022 |
-| [1.4.2](#142) |06 oktober 2015 |31 augusti 2022 |
-| 1.4.1 |06 oktober 2015 |31 augusti 2022 |
-| [1.2.0](#120) |06 augusti 2015 |31 augusti 2022 |
-| [1.1.0](#110) |9 juli 2015 |31 augusti 2022 |
-| [1.0.1](#101) |25 maj 2015 |31 augusti 2022 |
-| 1.0.0 |07, 2015 |31 augusti 2022 |
-| 0.9.4 – för-leasing |14 januari 2015 |29 februari 2016 |
-| 0.9.3 – för-leasing |Den 9 december 2014 |29 februari 2016 |
-| 0.9.2 – för-leasing |25 november 2014 |29 februari 2016 |
-| 0.9.1 till och – för-leasing |23 september 2014 |29 februari 2016 |
-| 0.9.0 – för-leasing |21 augusti 2014 |29 februari 2016 |
+| [4.2.0](#420) |Den 9 oktober 2020 |--- |
+| [4.1.0](#410) |10 augusti 2020 |--- |
+| [4.0.0](#400) |Den 20 maj 2020 |--- |
+| [3.0.2](#302) |15 november 2018 |--- |
+| [3.0.1](#301) |Den 4 oktober 2018 |--- |
+| [2.3.3](#233) |September 08, 2018 |Den 31 augusti 2022 |
+| [2.3.2](#232) |Den 8 maj 2018 |Den 31 augusti 2022 |
+| [2.3.1](#231) |Den 21 december 2017 |Den 31 augusti 2022 |
+| [2.3.0](#230) |Den 10 november 2017 |Den 31 augusti 2022 |
+| [2.2.1](#221) |29 sep 2017 |Den 31 augusti 2022 |
+| [2.2.0](#220) |10 maj 2017 |Den 31 augusti 2022 |
+| [2.1.0](#210) |Den 1 maj 2017 |Den 31 augusti 2022 |
+| [2.0.1](#201) |Den 30 oktober 2016 |Den 31 augusti 2022 |
+| [2.0.0](#200) |Den 29 september 2016 |Den 31 augusti 2022 |
+| [1.9.0](#190) |Den 7 juli 2016 |Den 31 augusti 2022 |
+| [1.8.0](#180) |Den 14 juni 2016 |Den 31 augusti 2022 |
+| [1.7.0](#170) |26 april 2016 |Den 31 augusti 2022 |
+| [1.6.1](#161) |Den 8 april 2016 |Den 31 augusti 2022 |
+| [1.6.0](#160) |Den 29 mars 2016 |Den 31 augusti 2022 |
+| [1.5.0](#150) |Den 3 januari 2016 |Den 31 augusti 2022 |
+| [1.4.2](#142) |Den 6 oktober 2015 |Den 31 augusti 2022 |
+| 1.4.1 |Den 6 oktober 2015 |Den 31 augusti 2022 |
+| [1.2.0](#120) |Den 6 augusti 2015 |Den 31 augusti 2022 |
+| [1.1.0](#110) |Den 9 juli 2015 |Den 31 augusti 2022 |
+| [1.0.1](#101) |Den 25 maj 2015 |Den 31 augusti 2022 |
+| 1.0.0 |Den 7 april 2015 |Den 31 augusti 2022 |
+| 0.9.4-prelease |Den 14 januari 2015 |Den 29 februari 2016 |
+| 0.9.3-prelease |Den 9 december 2014 |Den 29 februari 2016 |
+| 0.9.2-prelease |Den 25 november 2014 |Den 29 februari 2016 |
+| 0.9.1-prelease |Den 23 september 2014 |Den 29 februari 2016 |
+| 0.9.0-prelease |Den 21 augusti 2014 |Den 29 februari 2016 |
 
 ## <a name="faq"></a>Vanliga frågor
 

@@ -1,113 +1,109 @@
 ---
-title: Windows Virtual Desktop förbereda MSIX-appen bifoga avbildning för hands version – Azure
-description: Så här skapar du en MSIX app Attach-avbildning för en Windows-pool för virtuella skriv bord.
+title: Windows Virtual Desktop avbildning för att förbereda MSIX-app bifogas – Azure
+description: Så här skapar du en MSIX-app bifogad avbildning för en Windows Virtual Desktop-värdpool.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a2d909d04c38a7d6bad42020175cbbbfcfd7bf9f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 443f117907381862639564dfbf9752562f4a3564
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448363"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363673"
 ---
 # <a name="prepare-an-msix-image-for-windows-virtual-desktop"></a>Förbereda en MSIX-avbildning för Windows Virtual Desktop
 
-> [!IMPORTANT]
-> MSIX app Attach är för närvarande en offentlig för hands version.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+MSIX-app attach är en lösning för programlagerhantering som gör att du dynamiskt kan koppla appar från ett MSIX-paket till en användarsession. MSIX-paketsystemet separerar appar från operativsystemet, vilket gör det enklare att skapa avbildningar för virtuella datorer. MSIX-paket ger dig också större kontroll över vilka appar som användarna kan komma åt på sina virtuella datorer. Du kan till och med separera appar från huvudavbildningen och ge dem till användarna senare.
 
-MSIX app attach (för hands version) är en lösning för program skikt som gör att du kan koppla appar dynamiskt från ett MSIX-paket till en användarsession. MSIX-paket systemet separerar appar från operativ systemet, vilket gör det enklare att skapa avbildningar för virtuella datorer. MSIX-paket ger dig också bättre kontroll över vilka appar dina användare kan komma åt på sina virtuella datorer. Du kan till och med separera appar från huvud avbildningen och ge dem till användare senare.
+## <a name="create-a-vhd-or-vhdx-package-for-msix"></a>Skapa en VHD- eller VHDX-paket för MSIX
 
-## <a name="create-a-vhd-or-vhdx-package-for-msix"></a>Skapa ett VHD-eller VHDX-paket för MSIX
-
-MSIX-paket måste vara i ett VHD-eller VHDX-format för att fungera korrekt. Det innebär att du måste skapa ett VHD-eller VHDX-paket för att komma igång.
+MSIX-paket måste vara i VHD- eller VHDX-format för att fungera korrekt. Det innebär att du måste skapa en VHD- eller VHDX-paket för att komma igång.
 
 >[!NOTE]
->Om du inte redan har gjort det kontrollerar du att du aktiverar Hyper-V genom att följa anvisningarna i [Installera Hyper-v på Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
+>Om du inte redan har gjort det kontrollerar du att du aktiverar Hyper-V genom att följa anvisningarna i Installera [Hyper-V på Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
 
-Så här skapar du ett VHD-eller VHDX-paket för MSIX:
+Så här skapar du en VHD- eller VHDX-paket för MSIX:
 
-1. Börja med att öppna PowerShell.
-2. Kör sedan följande cmdlet för att skapa en virtuell hård disk:
+1. Öppna först PowerShell.
+2. Kör sedan följande cmdlet för att skapa en virtuell hårddisk:
 
     ```powershell
     New-VHD -SizeBytes <size>MB -Path c:\temp\<name>.vhd -Dynamic -Confirm:$false
     ```
 
     >[!NOTE]
-    > Se till att den virtuella hård disken är tillräckligt stor för att rymma det expanderade MSIX-paketet.
+    > Kontrollera att den virtuella hårddisken är tillräckligt stor för att rymma det expanderade MSIX-paketet.
 
-3. Kör följande cmdlet för att montera den virtuella hård disken som du nyss skapade:
+3. Kör följande cmdlet för att montera den virtuella hårddisken som du nyss skapade:
 
     ```powershell
     $vhdObject = Mount-VHD c:\temp\<name>.vhd -Passthru
     ```
 
-4. Kör sedan denna cmdlet för att initiera den monterade virtuella hård disken:
+4. Kör sedan denna cmdlet för att initiera den monterade virtuella hårddisken:
 
     ```powershell
     $disk = Initialize-Disk -Passthru -Number $vhdObject.Number
     ```
 
-5. Sedan kör du denna cmdlet för att skapa en ny partition för den initierade virtuella hård disken:
+5. Därefter kör du denna cmdlet för att skapa en ny partition för den initierade virtuella hårddisken:
 
     ```powershell
     $partition = New-Partition -AssignDriveLetter -UseMaximumSize -DiskNumber $disk.Number
     ```
 
-6. Kör denna cmdlet för att formatera partitionen:
+6. Kör den här cmdleten för att formatera partitionen:
 
     ```powershell
     Format-Volume -FileSystem NTFS -Confirm:$false -DriveLetter $partition.DriveLetter -Force
     ```
 
-7. Skapa slutligen en överordnad mapp på den monterade virtuella hård disken. Det här steget är obligatoriskt eftersom MSIX-paketet måste ha en överordnad mapp för att fungera korrekt. Det spelar ingen roll vad du namnger den överordnade mappen, så länge den överordnade mappen finns.
+7. Skapa slutligen en överordnad mapp på den monterade virtuella hårddisken. Det här steget krävs eftersom MSIX-paketet måste ha en överordnad mapp för att fungera korrekt. Det spelar ingen roll vad du ger den överordnade mappen namnet, så länge den överordnade mappen finns.
 
 ## <a name="expand-msix"></a>Expandera MSIX
 
-Därefter måste du expandera MSIX-avbildningen genom att "packa upp" sina filer på den virtuella hård disken.
+Efter det måste du expandera MSIX-avbildningen genom att "packa upp" dess filer till den virtuella hårddisken.
 
-Expandera MSIX-avbildningen:
+Så här expanderar du MSIX-avbildningen:
 
-1. [Ladda ned msixmgr-verktyget](https://aka.ms/msixmgr) och spara zip-mappen i en mapp i en VM-session.
+1. [Ladda ned verktyget msixmgr och](https://aka.ms/msixmgr) spara .zip-mappen i en mapp på en virtuell sessionsvärddator.
 
-2. Zippa upp mappen msixmgr-verktyget. zip.
+2. Packa upp .zip-mappen för verktyget msixmgr.
 
-3. Lägg till käll MSIX-paketet i samma mapp där du zippade msixmgr-verktyget.
+3. Placera MSIX-källpaketet i samma mapp där du packade upp verktyget msixmgr.
 
-4. Öppna en kommando tolk som administratör och navigera till den mapp där du laddade ned och zippa upp msixmgr-verktyget.
+4. Öppna en kommandotolk som administratör och navigera till mappen där du laddade ned och uppackade verktyget msixmgr.
 
-5. Kör följande cmdlet för att packa upp MSIX i den virtuella hård disken som du skapade i föregående avsnitt.
+5. Kör följande cmdlet för att packa upp MSIX:en till den virtuella hårddisken som du skapade i föregående avsnitt.
 
     ```powershell
     msixmgr.exe -Unpack -packagePath <package>.msix -destination "f:\<name of folder you created earlier>" -applyacls
     ```
 
-    Följande meddelande ska visas när du är klar med att packa upp:
+    Följande meddelande bör visas när du är klar med uppackningen:
 
-    > Har packat upp och tillämpat ACL: er för paket: <package name> . msix
+    > Uppackat och tillämpat ACL:er för paketet: <package name> .msix
 
     >[!NOTE]
-    > Om du använder paket från Microsoft Store för företag eller utbildning i nätverket eller på enheter som inte är anslutna till Internet, måste du ladda ned och installera paket licenser från Microsoft Store för att köra apparna. Information om hur du hämtar licenserna finns i [använda paket offline](app-attach.md#use-packages-offline).
+    > Om du använder paket från Microsoft Store för företag eller Education i nätverket eller på enheter som inte är anslutna till Internet måste du ladda ned och installera paketlicenser från Microsoft Store för att köra apparna. Information om hur du hämtar licenserna finns [i Använda paket offline.](app-attach.md#use-packages-offline)
 
-6. Gå till den monterade virtuella hård disken och öppna mappen app för att se till att paket innehållet finns där.
+6. Gå till den monterade virtuella hårddisken och öppna appmappen för att kontrollera att paketinnehållet finns där.
 
 7. Demontera den virtuella hårddisken.
 
-## <a name="upload-msix-image-to-share"></a>Ladda upp MSIX-avbildningen till resursen
+## <a name="upload-msix-image-to-share"></a>Ladda upp MSIX-avbildningen för att dela
 
-När du har skapat MSIX-paketet måste du ladda upp den resulterande VHD-, VHDX-eller CIM-filen till en resurs där användarnas virtuella datorer kan komma åt den.
+När du har skapat MSIX-paketet måste du ladda upp den resulterande VHD-, VHDX- eller CIM-filen till en resurs där användarnas virtuella datorer kan komma åt den.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Fråga våra Community-frågor om den här funktionen på [Windows-TechCommunity för virtuella datorer](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
+Ställ våra communityfrågor om den här funktionen på [Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
 
-Du kan också lämna feedback för virtuella Windows-datorer i [hubben Windows Virtual Desktop feedback](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app).
+Du kan också lämna feedback för Windows Virtual Desktop på Windows Virtual Desktop [feedbackhubben](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app).
 
-Här följer några andra artiklar som du kan ha nytta av:
+Här är några andra artiklar som kan vara till hjälp:
 
-- [Ord lista för MSIX-appen](app-attach-glossary.md)
-- [Vanliga frågor och svar om MSIX app](app-attach-faq.md)
+- [Bifoga MSIX-appordlistor](app-attach-glossary.md)
+- [Vanliga frågor och svar om att bifoga MSIX-appar](app-attach-faq.md)
