@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/22/2021
+ms.date: 04/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e8192c5c6734009f69e3f741531251dd85675b47
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 4130ed4bb690edb3c0c5d72d7d158262ed6ff39d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449468"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305607"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Självstudie: utveckla och planera etablering för en SCIM-slutpunkt
 
@@ -62,7 +62,7 @@ SCIM-standarden definierar ett schema för hantering av användare och grupper.
 **Kärn** användar schemat kräver bara tre attribut (alla andra attribut är valfria):
 
 - `id`, identifierare för tjänst leverantör definierad
-- `externalId`, identifierare för klient som definierats
+- `userName`, en unik identifierare för användaren (som vanligt vis mappas till Azure AD User Principal Name)
 - `meta`, *skrivskyddade* metadata som underhålls av tjänst leverantören
 
 Förutom **kärn** användar schemat definierar scim-standarden ett **företags** användar tillägg med en modell för att utöka användar schemat så att det passar ditt programs behov. 

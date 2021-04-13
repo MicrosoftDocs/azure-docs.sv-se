@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1cc517ac3c903930eddb95a4813a8146cae2ec2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3991eb421f42ec6645e3321d3a624e226fd12c67
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100582672"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314260"
 ---
 # <a name="monitor-server-metrics"></a>Övervaka servermått
 
@@ -37,7 +37,7 @@ Använd [Azure Monitor](../azure-monitor/overview.md)för att utföra mer djupg�
 
 Använd den här tabellen för att avgöra vilka mått som passar bäst för ditt övervaknings scenario. Endast mått för samma enhet kan visas i samma diagram.
 
-|Metric|Mått visnings namn|Enhet|Sammansättningstyp|Beskrivning|
+|Metric|Mått visnings namn|Enhet|Sammansättningstyp|Description|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|Kölängd för kommando bassäng|Antal|Genomsnitt|Antal jobb i kön för kommando tråds poolen.|
 |CurrentConnections|Anslutning: aktuella anslutningar|Antal|Genomsnitt|Aktuellt antal upprättade klient anslutningar.|

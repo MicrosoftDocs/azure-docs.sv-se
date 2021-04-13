@@ -3,12 +3,12 @@ title: Översikt över dedikerade Event Hub – Azure Event Hubs | Microsoft Doc
 description: Den här artikeln innehåller en översikt över dedikerade Azure-Event Hubs, som erbjuder distributioner av enskilda innehavare av Event Hub.
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 721acf354c7d14c1362b4f760982af37d59115f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe63b074bfdd01191d81dfb7024af5532a87a12f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715623"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310775"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Översikt över Event Hubs Dedicated
 
@@ -71,4 +71,4 @@ Kontakta din Microsoft-representant eller Microsoft Support för att få mer inf
 
 - [Skapa ett Event Hubs kluster via Azure Portal](https://aka.ms/eventhubsclusterquickstart) 
 - [Event Hubs Dedicated prissättning](https://azure.microsoft.com/pricing/details/event-hubs/). Du kan också kontakta din Microsoft-representant eller Microsoft Support för att få mer information om Event Hubs Dedicated kapacitet.
-- [Event HUBS vanliga](event-hubs-faq.md) frågor och svar innehåller pris information och svar på några vanliga frågor om Event Hubs.
+- [Event HUBS vanliga](event-hubs-faq.yml) frågor och svar innehåller pris information och svar på några vanliga frågor om Event Hubs.

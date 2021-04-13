@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 1e939b86eeadfee276378488cfcb40c07f28684d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b6cf2abfa797965d75bacd0b9c5e2eaf02b57a4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98880666"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308582"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI-guide för förebyggande underhålls lösningar
 
@@ -439,15 +439,16 @@ Microsoft Azure erbjuder utbildnings vägar för grundläggande koncept bakom Pd
 
 | Utbildnings resurs  | Tillgänglighet |
 |:-------------------|--------------|
-| [Utbildnings väg för PdM med träd och slumpmässig skog](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | Offentliga | 
-| [Utbildnings väg för PdM med djup inlärning](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Offentliga |
-| [AI-utvecklare på Azure](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Offentliga |
-| [Microsoft AI-skola](https://aischool.microsoft.com/learning-paths) | Offentliga |
-| [Azure AI-utbildning från GitHub](https://github.com/Azure/connectthedots/blob/master/readme.md) | Offentliga |
+| [Microsoft Docs: data expert-rollen](https://docs.microsoft.com/learn/roles/data-scientist) | Offentliga |
+| [Microsoft Docs: AI-ingenjörs roll](https://docs.microsoft.com/learn/roles/ai-engineer) | Offentliga |
+| [Microsoft Docs: data ingenjörs roll](https://docs.microsoft.com/learn/roles/data-engineer) | Offentliga |
+| [Microsoft AI-skola](https://www.microsoft.com/ai/ai-school) | Offentliga |
 | [LinkedIn Learning](https://www.linkedin.com/learning) | Offentliga |
-| [Microsoft AI YouTube-webb seminarier](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Offentliga |
+| [Microsoft: spel listor på YouTube för artificiell intelligens och analys](https://www.youtube.com/c/MicrosoftAzure/playlists?view=50&sort=dd&shelf_id=7) | Offentliga |
 | [Microsoft AI show](https://channel9.msdn.com/Shows/AI-Show) | Offentliga |
-| [LearnAI@MS](https://learnanalytics.microsoft.com) | Partner |
+| [Översikt över AI-plattform](https://azure.microsoft.com/overview/ai-platform/) | Offentliga |
+| [AI-labb](https://www.microsoft.com/ai/ai-lab) | Offentliga |
+| [Microsoft AI](https://www.microsoft.com/AI) | Offentliga |
 | [Microsoft Partner Network](https://partner.microsoft.com/training/training-center) | Partner |
 
 Dessutom erbjuds kostnads fria MOOC (enorma öppna onlinekurser) på AI online av akademiska institutioner som Stanfords och MIT, och andra utbildnings företag.

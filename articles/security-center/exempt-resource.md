@@ -7,12 +7,12 @@ ms.date: 03/11/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5ab729f5aa94c7137203c25319a5b830448d00a7
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: d545610b8fa13d0c0f8b91bf92107d53b81454c3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968211"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313852"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Undanta resurser och rekommendationer från dina säkra Poäng 
 
@@ -34,9 +34,9 @@ I sådana fall kan du skapa ett undantag för en rekommendation att:
 |---------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Versions tillstånd:                  | Förhandsgranskning<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
 | Priset                        | Detta är en förstklassig Azure Policy-funktion som erbjuds för Azure Defender-kunder utan extra kostnad. För andra användare kan avgifter tillkomma i framtiden.                                                                                                                                                                 |
-| Nödvändiga roller och behörigheter: | **Prenumerations ägare** eller **princip deltagare** för att skapa ett undantag<br>Om du vill skapa en regel måste du ha behörighet att redigera principer i Azure Policy.<br>Läs mer i [Azure RBAC-behörigheter i Azure policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).                                            |
+| Nödvändiga roller och behörigheter: | **Ägare** eller **resurs princip deltagare** för att skapa ett undantag<br>Om du vill skapa en regel måste du ha behörighet att redigera principer i Azure Policy.<br>Läs mer i [Azure RBAC-behörigheter i Azure policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).                                            |
 | Begränsningar:                    | Det går endast att skapa undantag för rekommendationer som ingår i Security Centers standard initiativ, Azure-säkerhetsbenchmark eller någon av de tillhandahållna myndighets standard initiativen. Rekommendationer som genereras från anpassade initiativ kan inte undantas. Lär dig mer om relationerna mellan [principer, initiativ och rekommendationer](security-policy-concept.md). |
-| Moln                         | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Inga](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)                                                                                                                                                                                         |
+| Moln                         | ![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![No](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)                                                                                                                                                                                         |
 |                                 |                                                                                                                                                                                                                                                                                                                                    |
 
 ## <a name="define-an-exemption"></a>Definiera ett undantag

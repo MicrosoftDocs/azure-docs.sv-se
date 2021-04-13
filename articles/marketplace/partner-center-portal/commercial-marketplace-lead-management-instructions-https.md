@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 03/30/2020
-ms.openlocfilehash: 5bea2cf256e30bd896957bbee0e0ad824057a569
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/09/2021
+ms.openlocfilehash: 0da1fd7b98b86ebd75926cc8a2d2bb5294d048ca
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98247190"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308193"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Använd en HTTPS-slutpunkt för att hantera affärs marknads platser
 
@@ -31,13 +31,13 @@ I den här artikeln beskrivs hur du skapar ett nytt flöde i Energis par för at
 
     ![Logga in mina flöden](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-1. Under **+ ny** väljer du **+ snabb – från Tom**.
+1. Under **+ ny** väljer du **+ flöde för direkt moln**.
 
-    ![Mina flöden + automatiserad – från Tom](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-create-fromblank.png)
+    ![Mina flöden + automatiserad – från Tom](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-create-from-blank.png)
 
 1. Namnge ditt flöde och välj sedan **när en HTTP-begäran tas emot** under **Välj hur det här flödet ska utlösas**.
 
-    ![Knappen för att sätta upp en automatisk flödes fönster](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
+    ![Knappen för att sätta upp en automatisk flödes fönster](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-pick-request-trigger.png)
 
 1. Klicka på flödes steget för att expandera det.
 
@@ -137,9 +137,13 @@ I den här artikeln beskrivs hur du skapar ett nytt flöde i Energis par för at
 ### <a name="connect-to-a-crm-system"></a>Ansluta till ett CRM-system
 
 1. Välj **+ Nytt steg**.
-1. Välj önskat CRM-system genom att söka efter det där det står **Sök anslutningar och åtgärder**. Välj den på fliken **åtgärder** med åtgärden för att skapa en ny post. Följande skärm bild visar hur du **skapar en ny post (Dynamics 365)** som exempel.
+1. Välj önskat CRM-system genom att söka efter det där det står **Sök anslutningar och åtgärder**. Följande skärm bild visar hur du skapar en ny post (Common Data Service) som exempel.
 
     ![Skapa en ny post](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
+
+1. Välj **fliken åtgärder** med åtgärden för att **skapa en ny post**.
+
+    ![Välj Skapa en ny post](./media/commercial-marketplace-lead-management-instructions-https/select-create-new-record.png)
 
 1. Ange **organisations namnet** som är kopplat till CRM-systemet. Välj **leads** i list rutan **entitetsnamn** .
 

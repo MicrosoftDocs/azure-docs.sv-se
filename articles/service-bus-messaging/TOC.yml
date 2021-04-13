@@ -92,12 +92,20 @@
   items:
     - name: 'Köer, ämnen och prenumerationer'
       href: service-bus-queues-topics-subscriptions.md
+    - name: Meddelandesessioner
+      href: message-sessions.md
     - name: Ämnesfilter och åtgärder
       href: topic-filters.md
     - name: Premium-meddelandetjänster
       href: service-bus-premium-messaging.md
     - name: Jämför Azure-köer och Service Bus-köer
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
+    - name: 'Överföringar av meddelanden, lås och uppgörelser'
+      href: message-transfers-locks-settlement.md
+    - name: Köer för obeställbara meddelanden
+      href: service-bus-dead-letter-queues.md
+    - name: Meddelanderäknare
+      href: message-counters.md
     - name: Optimera prestanda
       href: service-bus-performance-improvements.md
     - name: Federation
@@ -162,16 +170,12 @@
           href: service-bus-filter-examples.md
         - name: Meddelandehantering
           items:
-            - name: 'Köer, ämnen och prenumerationer'
-              href: service-bus-queues-topics-subscriptions.md
             - name: 'JMS-enheter (Java Message Service) 2,0'
               href: java-message-service-20-entities.md
             - name: Guide.md för JMS-utvecklare (Java Message Service)
               href: jms-developer-guide.md
             - name: 'Meddelanden, nyttolaster och serialisering'
               href: service-bus-messages-payloads.md
-            - name: 'Överföringar av meddelanden, lås och uppgörelser'
-              href: message-transfers-locks-settlement.md
             - name: Ordningsföljd och tidsstämplar för meddelanden
               href: message-sequencing.md
             - name: Förfallodatum för meddelanden (Time to Live)
@@ -180,8 +184,6 @@
           href: service-bus-migrate-standard-premium.md
         - name: Partitionerade köer och ämnen
           href: service-bus-partitioning.md
-        - name: Meddelandesessioner
-          href: message-sessions.md
         - name: AMQP
           items:
             - name: Översikt över AMQP
@@ -198,14 +200,10 @@
               href: service-bus-amqp-troubleshoot.md
         - name: Avancerade funktioner
           items:
-            - name: Köer för obeställbara meddelanden
-              href: service-bus-dead-letter-queues.md
             - name: Förhämtning av meddelanden
               href: service-bus-prefetch.md
             - name: Identifiering av dubbla meddelanden
               href: duplicate-detection.md
-            - name: Meddelanderäknare
-              href: message-counters.md
             - name: Skjut upp meddelanden
               href: message-deferral.md
             - name: Bläddra i meddelanden

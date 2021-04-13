@@ -5,14 +5,14 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: bbe36e072d10b81c421331b2212d8b161afd2693
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fdc299ef1945e3ee0810f1c314fc07edfb4f4873
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87099911"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313308"
 ---
-# <a name="microsoftcommonarmapicontrol-ui-element"></a>Elementet Microsoft. Common. ArmApiControl UI
+# <a name="microsoftsolutionsarmapicontrol-ui-element"></a>GRÄNSSNITTs element för Microsoft. Solutions. ArmApiControl
 
 Med ArmApiControl kan du få resultat från en Azure Resource Manager API-åtgärd. Använd resultaten för att fylla i dynamiskt innehåll i andra kontroller.
 
@@ -46,7 +46,14 @@ Kontrollens utdata visas inte för användaren. I stället används resultatet a
 ## <a name="remarks"></a>Kommentarer
 
 - `request.method`Egenskapen anger HTTP-metoden. Endast `GET` eller `POST` tillåts.
-- `request.path`Egenskapen anger den relativa sökvägen till URL: en. Det kan vara en statisk sökväg eller kan konstrueras dynamiskt genom att referera till utmatnings värden för de andra kontrollerna.
+- `request.path`Egenskapen anger en URL som måste vara en relativ sökväg till en arm-slutpunkt. Det kan vara en statisk sökväg eller kan konstrueras dynamiskt genom att referera till utmatnings värden för de andra kontrollerna.
+
+  Till exempel anropet ARM till `Microsoft.Network/expressRouteCircuits` Resource provider:
+
+  ```json
+  "path": "<subid>/resourceGroup/<resourceGroupName>/providers/Microsoft.Network/expressRouteCircuits/<routecircuitName>/?api-version=2020-05-01"
+  ```
+
 - `request.body`Egenskapen är valfri. Använd den för att ange en JSON-text som skickas med begäran. Texten kan vara statiskt innehåll eller konstrueras dynamiskt genom att referera till utmatnings värden från andra kontroller.
 
 ## <a name="example"></a>Exempel
@@ -81,5 +88,5 @@ Ett exempel på hur du använder ArmApiControl för att kontrol lera tillgängli
 
 ## <a name="next-steps"></a>Nästa steg
 
-* En introduktion till att skapa GRÄNSSNITTs definitioner finns i [komma igång med CreateUiDefinition](create-uidefinition-overview.md).
-* En beskrivning av gemensamma egenskaper i UI-element finns i [CreateUiDefinition-element](create-uidefinition-elements.md).
+- En introduktion till att skapa GRÄNSSNITTs definitioner finns i [komma igång med CreateUiDefinition](create-uidefinition-overview.md).
+- En beskrivning av gemensamma egenskaper i UI-element finns i [CreateUiDefinition-element](create-uidefinition-elements.md).

@@ -15,6 +15,10 @@
     - name: Konfigurera en Route Server-ARM-mall
       href: quickstart-configure-template.md
   expanded: true
+- name: Exempel
+  items:
+    - name: Mallar för Resurshanteraren
+      href: resource-manager-template-samples.md
 - name: Begrepp
   items:
     - name: Vanliga frågor om Route Server

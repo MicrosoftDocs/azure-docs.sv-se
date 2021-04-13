@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/28/2021
 ms.author: bwren
-ms.openlocfilehash: 975a3ea250307e445e9bf48abdc669f2b035038a
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: ac2d1ea17460c56a3369d00d2cc8e41cca616363
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554050"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310928"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Hantera användning och kostnader med Azure Monitor-loggar    
 
@@ -266,7 +266,7 @@ För att komma igång är det här de rekommenderade inställningarna för avise
 - Mål: Välj din Log Analytics-resurs
 - Villkoren 
    - Signal namn: anpassad loggs ökning
-   - Sök fråga: `_LogOperation | where Operation == "Data Collection Status" | where Detail contains "OverQuota"`
+   - Sök fråga: `_LogOperation | where Operation == "Data collection Status" | where Detail contains "OverQuota"`
    - Baserat på: antal resultat
    - Villkor: större än
    - Tröskel: 0

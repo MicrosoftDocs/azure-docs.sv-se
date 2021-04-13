@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a1e6d2f4fc0444be364ce3c07c14f6408b3f19fe
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 21db7ed0cf13a3ed282929b09847c6c3ba8a36ed
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446918"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307256"
 ---
 # <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Konfigurera en Kerberos Key Distribution Center proxy (förhands granskning)
 
@@ -29,7 +29,7 @@ Det finns två komponenter till den Windows Virtual Desktop-tjänst som behöver
 - Feeden i den virtuella Windows-klienten som ger användare en lista över tillgängliga Skriv bord eller program som de har åtkomst till. Den här autentiseringsprocessen sker i Azure Active Directory, vilket innebär att den här komponenten inte fokuserar på den här artikeln.
 - RDP-sessionen som resulterar i en användare som väljer någon av de tillgängliga resurserna. Den här komponenten använder Kerberos-autentisering och kräver en KDC-proxy för fjärran vändare.
 
-Den här artikeln visar hur du konfigurerar feeden i Windows Virtual Desktop-klienten i Azure Portal. Om du vill lära dig hur du konfigurerar RD Gateway-rollen, se [distribuera RD Gateway-rollen](/windows-server/remote/rd-gateway-role).
+Den här artikeln visar hur du konfigurerar feeden i Windows Virtual Desktop-klienten i Azure Portal. Om du vill lära dig hur du konfigurerar RD Gateway-rollen, se [distribuera RD Gateway-rollen](/azure/virtual-desktop/rd-gateway-role).
 
 ## <a name="requirements"></a>Krav
 

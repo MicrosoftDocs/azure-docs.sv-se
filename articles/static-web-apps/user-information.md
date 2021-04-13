@@ -5,15 +5,15 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 04/09/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: d5a1d810c357aa83b8069023b00d76352da124df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9aca1e76c825de52744da817f6a0bf236eef617c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94844803"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313614"
 ---
 # <a name="accessing-user-information-in-azure-static-web-apps-preview"></a>Åtkomst till användar information i Azures statiska Web Apps för hands version
 
@@ -25,12 +25,12 @@ Många användar gränssnitt förlitar sig kraftigt på användar verifierings d
 
 Klientens huvud data objekt visar information som är identifierbar för användaren i din app. Följande egenskaper är aktuella i klientens huvud objekt:
 
-| Egenskap  | Beskrivning |
-|-----------|---------|
-| `identityProvider` | Namnet på [identitets leverantören](authentication-authorization.md). |
-| `userId` | En statisk Web Apps unikt ID för användaren i Azure. <ul><li>Värdet är unikt för varje app. Till exempel returnerar samma användare ett annat `userId` värde på en annan statisk Web Apps resurs.<li>Värdet kvarstår för en användares livs längd. Om du tar bort och lägger till samma användare tillbaka till appen genereras en ny `userId` .</ul>|
-| `userDetails` | Användarens användar namn eller e-postadress. Vissa providers returnerar [användarens e-postadress](authentication-authorization.md), medan andra skickar [användar referensen](authentication-authorization.md). |
-| `userRoles`     | En matris med [användarens tilldelade roller](authentication-authorization.md). |
+| Egenskap           | Beskrivning                                                                                                                                                                                                                                                                                                                                                        |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `identityProvider` | Namnet på [identitets leverantören](authentication-authorization.md).                                                                                                                                                                                                                                                                                              |
+| `userId`           | En statisk Web Apps unikt ID för användaren i Azure. <ul><li>Värdet är unikt för varje app. Till exempel returnerar samma användare ett annat `userId` värde på en annan statisk Web Apps resurs.<li>Värdet kvarstår för en användares livs längd. Om du tar bort och lägger till samma användare tillbaka till appen genereras en ny `userId` .</ul> |
+| `userDetails`      | Användarens användar namn eller e-postadress. Vissa providers returnerar [användarens e-postadress](authentication-authorization.md), medan andra skickar [användar referensen](authentication-authorization.md).                                                                                                                                                                    |
+| `userRoles`        | En matris med [användarens tilldelade roller](authentication-authorization.md).                                                                                                                                                                                                                                                                                          |
 
 Följande exempel är ett exempel på klientens huvud objekt:
 
@@ -39,7 +39,7 @@ Följande exempel är ett exempel på klientens huvud objekt:
   "identityProvider": "facebook",
   "userId": "d75b260a64504067bfc5b2905e3b8182",
   "userDetails": "user@example.com",
-  "userRoles": [ "anonymous", "authenticated" ]
+  "userRoles": ["anonymous", "authenticated"]
 }
 ```
 
@@ -53,7 +53,7 @@ Med hjälp av API: t [Hämta](https://developer.mozilla.org/docs/Web/API/Fetch_A
 
 ```javascript
 async function getUserInfo() {
-  const response = await fetch("/.auth/me");
+  const response = await fetch('/.auth/me');
   const payload = await response.json();
   const { clientPrincipal } = payload;
   return clientPrincipal;
@@ -64,7 +64,7 @@ console.log(getUserInfo());
 
 ## <a name="api-functions"></a>API-funktioner
 
-De API-funktioner som är tillgängliga i statiska Web Apps via server delen Azure Functions har åtkomst till samma användar information som ett klient program. Även om API: et tar emot information som är identifierbar för användaren, utför den inte egna kontroller om användaren är autentiserad eller om de matchar en nödvändig roll. Regler för åtkomst kontroll definieras i [`routes.json`](routes.md) filen.
+De API-funktioner som är tillgängliga i statiska Web Apps via server delen Azure Functions har åtkomst till samma användar information som ett klient program. Även om API: et tar emot information som är identifierbar för användaren, utför den inte egna kontroller om användaren är autentiserad eller om de matchar en nödvändig roll. Regler för åtkomst kontroll definieras i [`staticwebapp.config.json`](routes.md) filen.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -74,14 +74,14 @@ Följande exempel funktion visar hur du läser och returnerar användar informat
 
 ```javascript
 module.exports = async function (context, req) {
-  const header = req.headers["x-ms-client-principal"];
-  const encoded = Buffer.from(header, "base64");
-  const decoded = encoded.toString("ascii");
+  const header = req.headers['x-ms-client-principal'];
+  const encoded = Buffer.from(header, 'base64');
+  const decoded = encoded.toString('ascii');
 
   context.res = {
     body: {
-      clientPrincipal: JSON.parse(decoded)
-    }
+      clientPrincipal: JSON.parse(decoded),
+    },
   };
 };
 ```
@@ -90,7 +90,7 @@ Om du antar att funktionen ovan heter `user` , kan du använda webb läsar API: 
 
 ```javascript
 async function getUser() {
-  const response = await fetch("/api/user");
+  const response = await fetch('/api/user');
   const payload = await response.json();
   const { clientPrincipal } = payload;
   return clientPrincipal;

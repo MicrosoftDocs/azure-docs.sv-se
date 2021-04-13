@@ -2,13 +2,13 @@
 title: Åtgärds regler för Azure Monitor aviseringar
 description: Att förstå vilka åtgärds regler i Azure Monitor är och hur du konfigurerar och hanterar dem.
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.openlocfilehash: 12e7cf8e72c5423b4a2edd6ea2a0f4537e328b08
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/08/2021
+ms.openlocfilehash: df71883d04106dd341af4571c13cc55f35a1ecc3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105036789"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304825"
 ---
 # <a name="action-rules-preview"></a>Åtgärds regler (förhands granskning)
 
@@ -67,7 +67,7 @@ De tillgängliga filtren är:
 
 * **Allvarlighetsgrad**  
 Den här regeln gäller endast för aviseringar med de valda allvarlighets graderna.  
-**Allvarlighets grad = Sev1** innebär till exempel att regeln endast gäller för aviseringar med Sev1-allvarlighets grad.
+**Allvarlighets grad = "Sev1"** innebär till exempel att regeln endast gäller för aviseringar med Sev1-allvarlighets grad.
 * **Övervaka tjänst**  
 Den här regeln gäller endast för aviseringar som kommer från de valda övervaknings tjänsterna.  
 Exempel: **Monitor Service = "Azure Backup"** innebär att regeln endast gäller för säkerhets kopierings aviseringar (kommer från Azure Backup).
@@ -79,15 +79,22 @@ Den här regeln gäller endast för aviseringar som kommer från en speciell avi
 **Varnings regel-ID = "/Subscriptions/SubId1/resourceGroups/RG1/providers/Microsoft.Insights/metricalerts/API-latency"** innebär till exempel att den här regeln endast gäller för aviseringar som kommer från "API-latenion" mått varnings regel.  
 _Obs! Du kan få rätt varnings regel-ID genom att lista dina aviserings regler från CLI eller genom att öppna en speciell varnings regel i portalen, klicka på egenskaper och kopiera värdet "resurs-ID"._
 * **Övervaknings villkor**  
-Den här regeln gäller endast för aviserings händelser med det angivna övervaknings villkoret, antingen **utlöst** eller **löst**.
+Den här regeln gäller endast för aviserings händelser med det angivna övervaknings villkoret, antingen **"utlöst"** eller **"löst"**.
 * **Beskrivning**  
 Den här regeln gäller endast för aviseringar som innehåller en angiven sträng i fältet aviserings beskrivning. Fältet innehåller en beskrivning av varnings regeln.  
 **Beskrivningen innehåller till exempel "Prod"** innebär att regeln endast matchar aviseringar som innehåller strängen "Prod" i deras beskrivning.
 * **Aviserings kontext (nytto Last)**  
 Den här regeln gäller endast för aviseringar som innehåller ett eller flera av de angivna värdena i aviserings kontext fälten.  
-Till exempel **innehåller aviserings kontexten (nytto lasten) "Computer-01"** att regeln endast ska gälla aviseringar vars nytto Last innehåller strängen "Computer-01".
+Till exempel **innehåller aviserings kontexten (nytto lasten) "dator-01"** att regeln endast ska gälla aviseringar vars nytto Last innehåller strängen "Computer-01".
 
-Om du anger flera filter i en regel gäller alla. Om du till exempel anger **resurs typen ' = Virtual Machines** och **allvarlighets grad ' = Sev0** gäller regeln endast för Sev0-aviseringar på virtuella datorer.
+> [!NOTE]
+> Varje filter kan innehålla upp till fem värden.  
+> Ett filter på övervaknings tjänsten kan till exempel innehålla upp till fem övervaknings tjänst namn.
+
+
+
+
+Om du anger flera filter i en regel gäller alla. Om du till exempel anger **resurs typ = "Virtual Machines"** och **allvarlighets grad = "Sev0"** gäller regeln endast för Sev0-aviseringar på virtuella datorer.
 
 ![Åtgärds regel filter](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
@@ -118,7 +125,7 @@ Om du väljer **Åtgärds grupp** i växlingen, lägger du till en befintlig åt
 Konfigurera senast följande information för åtgärds regeln:
 * Name
 * Resurs grupp där den sparas
-* Beskrivning
+* Description
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

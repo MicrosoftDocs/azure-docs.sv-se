@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: 8b2e85744923fb2e7e474e049df1536aebc56f3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: 6954ce289cb3cf219f8c4024a112411fd60d70e0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99536941"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310673"
 ---
-# <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Skapa och hantera API-nycklar för en Azure Kognitiv sökning-tjänst
+# <a name="create-and-manage-api-keys-for-authentication-to-azure-cognitive-search"></a>Skapa och hantera API-nycklar för autentisering till Azure Kognitiv sökning
 
-Alla begär anden till en Sök tjänst behöver en skrivskyddad API-nyckel som har skapats specifikt för din tjänst. API-nyckeln är den enda mekanismen för autentisering av inkommande begär anden till din Sök tjänst slut punkt och krävs på varje begäran. 
+När du ansluter till en Sök tjänst måste alla begär Anden innehålla en skrivskyddad API-nyckel som har skapats specifikt för din tjänst. API-nyckeln är den enda mekanismen för autentisering av inkommande begär anden till din Sök tjänst slut punkt och krävs på varje begäran. 
 
 + I [rest-lösningar](search-get-started-rest.md) `api-key` anges vanligt vis i ett begär ande huvud
 

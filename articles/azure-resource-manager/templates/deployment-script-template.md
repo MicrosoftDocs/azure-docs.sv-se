@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: jgao
-ms.openlocfilehash: fb5fc0b6b673f8a754d0d6bb6ff962697cd5f38b
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 3240cce34a6fa645986a58ab43b28ad38485e97b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967344"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308973"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Använda distributions skript i ARM-mallar
 
@@ -140,7 +140,7 @@ Information om egenskaps värde:
 - `kind`: Ange typ av skript. För närvarande stöds Azure PowerShell-och Azure CLI-skript. Värdena är **AzurePowerShell** och **AzureCLI**.
 - `forceUpdateTag`: Om du ändrar det här värdet mellan mall distributioner tvingas distributions skriptet att köras igen. Om du använder `newGuid()` `utcNow()` funktionerna eller kan båda funktionerna bara användas i standardvärdet för en parameter. Mer information finns i [Kör skript mer än en gång](#run-script-more-than-once).
 - `containerSettings`: Ange inställningarna för att anpassa Azure Container instance. Distributions skriptet kräver en ny Azure Container instance. Du kan inte ange en befintlig Azure Container instance. Du kan dock anpassa behållar gruppens namn genom att använda `containerGroupName` . Om inget anges skapas grupp namnet automatiskt.
-- `storageAccountSettings`: Ange inställningarna för att använda ett befintligt lagrings konto. Om `containerGroupName` inte anges skapas ett lagrings konto automatiskt. Se [Använd ett befintligt lagrings konto](#use-existing-storage-account).
+- `storageAccountSettings`: Ange inställningarna för att använda ett befintligt lagrings konto. Om `storageAccountName` inte anges skapas ett lagrings konto automatiskt. Se [Använd ett befintligt lagrings konto](#use-existing-storage-account).
 - `azPowerShellVersion`/`azCliVersion`: Ange den version av modulen som ska användas. Se en lista över [Azure PowerShell-versioner som stöds](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Se en lista över [Azure CLI-versioner som stöds](https://mcr.microsoft.com/v2/azure-cli/tags/list).
 
   >[!IMPORTANT]
@@ -245,7 +245,7 @@ Följande mall visar hur du överför värden mellan två `deploymentScripts` re
 I den första resursen definierar du en variabel som kallas `$DeploymentScriptOutputs` och använder den för att lagra värdena för utdata. Använd följande för att få åtkomst till resultatvärdet från en annan resurs i mallen:
 
 ```json
-reference('<ResourceName>').output.text
+reference('<ResourceName>').outputs.text
 ```
 
 ## <a name="work-with-outputs-from-cli-script"></a>Arbeta med utdata från CLI-skript
@@ -566,7 +566,7 @@ När skriptet har testats kan du använda det som ett distributions skript i mal
 
 ## <a name="deployment-script-error-codes"></a>Fel koder för distributions skript
 
-| Felkod | Beskrivning |
+| Felkod | Description |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Resurs definitionen för distributions skriptet i mallen innehåller ogiltiga egenskaps namn. |
 | DeploymentScriptResourceConflict | Det går inte att ta bort en distributions skript resurs som är i icke-terminal-tillstånd och körningen har inte överskridit 1 timme. Eller också kan du inte köra samma distributions skript igen med samma resurs-ID (samma prenumeration, resurs grupp namn och resurs namn), men olika skript texts innehåll på samma tid. |

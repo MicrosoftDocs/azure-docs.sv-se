@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/07/2021
 ms.author: terrylan
-ms.openlocfilehash: be270383b868abb7e2865920f4a3852e2f6210dc
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 3ea3c2bcb878dbd8a712e6076dda09853f55e297
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031424"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310350"
 ---
 # <a name="end-to-end-security-in-azure"></a>Säkerhet från slut punkt till slut punkt i Azure
 Ett av de bästa orsakerna till att använda Azure för dina program och tjänster är att dra nytta av dess breda uppsättning säkerhets verktyg och funktioner. Med dessa verktyg och funktioner kan du skapa säkra lösningar på den säkra Azure-plattformen. Microsoft Azure ger konfidentialitet, integritet och tillgänglighet för kund information, samtidigt som du aktiverar transparent ansvars rätt.
@@ -63,8 +63,8 @@ Diagrammet innehåller Azures säkerhets-benchmark-program, en samling med högk
 | [Azure DDoS Protection Standard](../../ddos-protection/ddos-protection-overview.md) | Tillhandahåller förbättrade DDoS-funktioner för att skydda mot DDoS-attacker. Den justeras automatiskt för att hjälpa till att skydda dina Azure-resurser i ett virtuellt nätverk. |
 | [Azure Front Door](../../frontdoor/front-door-overview.md) | En global, skalbar start punkt som använder Microsoft Global Edge-nätverket för att skapa snabba, säkra och mycket skalbara webb program. |
 | [Azure Firewall](../../firewall/overview.md) | En hanterad, molnbaserad nätverks säkerhets tjänst som skyddar dina Azure Virtual Network-resurser. Det är en fullständigt tillståndskänslig tjänst med inbyggd hög tillgänglighet och obegränsad molnskalbarhet. |
-| [Azure Key Vault](../../key-vault/general/overview.md) | En hanterad, molnbaserad nätverks säkerhets tjänst som skyddar dina Azure Virtual Network-resurser. Det är en fullständigt tillståndskänslig tjänst med inbyggd hög tillgänglighet och obegränsad molnskalbarhet. |
-| [Key Vault hanterad HSDM (förhands granskning)](../../key-vault/managed-hsm/overview.md) | En fullständigt hanterad, en standard-kompatibel moln tjänst med hög tillgänglighet, som gör att du kan skydda kryptografiska nycklar för dina moln program med hjälp av FIPS 140-2 nivå 3-verifierade HSM: er. |
+| [Azure Key Vault](../../key-vault/general/overview.md) | En säker hemligheter lagring för token, lösen ord, certifikat, API-nycklar och andra hemligheter. Key Vault kan också användas för att skapa och styra de krypterings nycklar som används för att kryptera dina data. |
+| [Key Vault hanterad HSM (förhands granskning)](../../key-vault/managed-hsm/overview.md) | En fullständigt hanterad, en standard-kompatibel moln tjänst med hög tillgänglighet, som gör att du kan skydda kryptografiska nycklar för dina moln program med hjälp av FIPS 140-2 nivå 3-verifierade HSM: er. |
 | [Azure Private Link](../../private-link/private-link-overview.md) | Ger dig åtkomst till Azure PaaS Services (till exempel Azure Storage och SQL Database) och Azure-värdbaserade kund tjänster/partner tjänster via en privat slut punkt i det virtuella nätverket. |
 | [Azure Application Gateway](../../application-gateway/overview.md) | En belastningsutjämnare för avancerad webb trafik som gör att du kan hantera trafik till dina webb program. Application Gateway kan fatta beslut om routning baserat på ytterligare attribut för en HTTP-begäran, till exempel URI-sökväg eller värd rubriker. |
 | [Azure Service Bus](../../service-bus-messaging/service-bus-messaging-overview.md) | En fullständigt hanterad meddelande tjänst för företags meddelanden med meddelande köer och publicerings prenumerations ämnen. Service Bus används för att frikoppla program och tjänster från varandra. |

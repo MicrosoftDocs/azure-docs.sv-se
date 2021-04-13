@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: fbf2a30d029a579026fa9c590f59bedff594f4b8
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 7204f32b8fec411fba2afa39b011a8755aea3744
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109217"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309687"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hög tillgänglighet för Azure SQL Database-och SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -126,7 +126,7 @@ En redundansväxling kan initieras med PowerShell, REST API eller Azure CLI:
 |Distributions typ|PowerShell|REST-API| Azure CLI|
 |:---|:---|:---|:---|
 |Databas|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Redundansväxling av databas](/rest/api/sql/databases/failover)|[AZ rest](/cli/azure/reference-index#az-rest) kan användas för att anropa ett REST API-anrop från Azure CLI|
-|Elastisk pool|[Invoke-AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Redundans för elastisk pool](/rest/api/sql/elasticpools/failover)|[AZ rest](/cli/azure/reference-index#az-rest) kan användas för att anropa ett REST API-anrop från Azure CLI|
+|Elastisk pool|[Invoke-AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Redundans för elastisk pool](/javascript/api/@azure/arm-sql/elasticpools#failover_string__string__string__msRest_RequestOptionsBase)|[AZ rest](/cli/azure/reference-index#az-rest) kan användas för att anropa ett REST API-anrop från Azure CLI|
 |Managed Instance|[Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Hanterade instanser – redundans](/rest/api/sql/managed%20instances%20-%20failover/failover)|[AZ SQL mi redundans](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
 > [!IMPORTANT]

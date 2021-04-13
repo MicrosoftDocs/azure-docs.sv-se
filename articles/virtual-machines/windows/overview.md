@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 799a7ea6d76df06cea9d3960f43fc78de9bdf5b6
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 07562641ef866074dcf14cb01afd4d7ce071e467
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067800"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311013"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuella Windows-datorer i Azure
 
@@ -50,7 +50,7 @@ I den här tabellen finns några exempel på hur du kan hämta en lista över ti
 | --- | --- |
 | Azure Portal |Välj en plats i listan när du skapar en virtuell dator. |
 | Azure PowerShell |Använd kommandot [Get-AzLocation](/powershell/module/az.resources/get-azlocation). |
-| REST-API |Använd åtgärden [List locations](/rest/api/resources/subscriptions/subscriptions/listlocations) (Listplatser). |
+| REST-API |Använd åtgärden [List locations](/rest/api/resources/subscriptions/listlocations) (Listplatser). |
 | Azure CLI |Använd åtgärden [az account list-locations](/cli/azure/account). |
 
 ## <a name="availability"></a>Tillgänglighet
@@ -95,12 +95,12 @@ Resurserna i den här tabellen används av den virtuella datorn och måste finna
 
 | Resurs | Krävs | Beskrivning |
 | --- | --- | --- |
-| [Resursgrupp](../../azure-resource-manager/management/overview.md) |Ja |Den virtuella datorn måste ingå i en resursgrupp. |
-| [Lagringskonto](../../storage/common/storage-account-create.md) |Ja |Den virtuella datorn behöver lagringskontot för att kunna lagra sina virtuella hårddiskar. |
-| [Virtuellt nätverk](../../virtual-network/virtual-networks-overview.md) |Ja |Den virtuella datorn måste ingå i ett virtuellt nätverk. |
-| [Offentlig IP-adress](../../virtual-network/public-ip-addresses.md) |Inga |Den virtuella datorn kan tilldelas en offentlig IP-adress för att möjliggöra fjärråtkomst till den. |
-| [Nätverksgränssnitt](../../virtual-network/virtual-network-network-interface.md) |Ja |Den virtuella datorn behöver nätverksgränssnittet för att kunna kommunicera i nätverket. |
-| [Datadiskar](attach-managed-disk-portal.md) |Inga |Den virtuella datorn kan innehålla datadiskar för att expandera lagringskapaciteten. |
+| [Resursgrupp](../../azure-resource-manager/management/overview.md) |Yes |Den virtuella datorn måste ingå i en resursgrupp. |
+| [Lagringskonto](../../storage/common/storage-account-create.md) |Yes |Den virtuella datorn behöver lagringskontot för att kunna lagra sina virtuella hårddiskar. |
+| [Virtuellt nätverk](../../virtual-network/virtual-networks-overview.md) |Yes |Den virtuella datorn måste ingå i ett virtuellt nätverk. |
+| [Offentlig IP-adress](../../virtual-network/public-ip-addresses.md) |No |Den virtuella datorn kan tilldelas en offentlig IP-adress för att möjliggöra fjärråtkomst till den. |
+| [Nätverksgränssnitt](../../virtual-network/virtual-network-network-interface.md) |Yes |Den virtuella datorn behöver nätverksgränssnittet för att kunna kommunicera i nätverket. |
+| [Datadiskar](attach-managed-disk-portal.md) |No |Den virtuella datorn kan innehålla datadiskar för att expandera lagringskapaciteten. |
 
 
 ## <a name="data-residency"></a>Dataplacering

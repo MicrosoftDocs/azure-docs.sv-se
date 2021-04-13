@@ -2,13 +2,13 @@
 title: Skapa parameterfil
 description: Skapa parameter fil för att överföra värden under distributionen av en Azure Resource Manager-mall
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: 2b6d942b21594fa608127bb8f403e72295671005
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: d557bcdfe246dc2c9bfccde17b7f9590c2686358
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89276668"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312050"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Skapa parameter fil för Resource Manager
 
@@ -210,6 +210,8 @@ Mer information finns i [distribuera resurser med ARM-mallar och Azure PowerShel
 
 > [!NOTE]
 > Det går inte att använda en parameter fil med bladet anpassad mall i portalen.
+
+Om du använder [Azures resurs grupps projekt i Visual Studio](create-visual-studio-deployment-project.md)kontrollerar du att parameter filen har en **versions åtgärd** som är inställd på **innehåll**.
 
 ## <a name="file-name"></a>Filnamn
 

@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 11/09/2020
-ms.openlocfilehash: 13d5c02fbb4ae06c7a5279ab7c5d3af90c263f71
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 31b2a993267e6e8abbf7184d745889b74e587c50
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521075"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311778"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Data kryptering med Azure Machine Learning
 
@@ -37,7 +37,7 @@ Azure Machine Learning använder en mängd olika Azure-tjänster för data lagri
 * Rensar den lokala disken för tillfällig lagring mellan körningar
 * Skickar autentiseringsuppgifter på ett säkert sätt för ditt lagrings konto, behållar registret och SSH-kontot från körnings skiktet till dina beräknings kluster med hjälp av nyckel valvet
 * Aktiverar IP-filtrering för att säkerställa att underliggande batch-pooler inte kan anropas av andra externa tjänster än AzureMachineLearningService
-* Observera att beräknings instanser inte stöds i HBI-arbetsytan
+* Beräknings instanser stöds i HBI-arbetsytan
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 

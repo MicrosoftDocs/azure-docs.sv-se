@@ -1,18 +1,18 @@
 ---
 title: Programmet Azure Certified Device – självstudie – Skapa ett projekt
 description: Guide för att skapa ett projekt på Azure Certified Device-portalen
-author: nikuntjo
+author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: tutorial
 ms.date: 03/01/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: e5602e133ac8ab13779c9dfebca21d97265d9d76
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 11d72847209a2e706d4aa32d38af1b2c8af3dfa0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969808"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314005"
 ---
 # <a name="tutorial-create-your-project"></a>Självstudie: skapa ett projekt
 
@@ -53,7 +53,7 @@ Sedan måste du ange grundläggande enhets information. Du kan redigera den här
 
 1. Fyll i de obligatoriska fälten i `Basics` avsnittet. Se tabellen nedan för klargöranden avseende de **obligatoriska** fälten:
 
-    | Fält                  | Beskrivning                                                                                                                         |
+    | Fält                  | Description                                                                                                                         |
     |------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
     | Projektnamn           | Internt namn som inte visas i Azure-certifierad enhets katalog                                                        |
     | Enhetsnamn            | Offentligt namn på din enhet                                                                                                |

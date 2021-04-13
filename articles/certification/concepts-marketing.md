@@ -1,18 +1,18 @@
 ---
 title: Marknadsförings egenskaper
 description: En beskrivning av de olika marknadsförings fälten som samlas in i portalen och hur de kommer att visas i Azure-certifierad enhets katalog
-author: nikuntjo
+author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: template-concept
-ms.openlocfilehash: 45ecab18451ca0915ee3891278db47feb7469915
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 262616ca82e9c06baec0d7a1b81a0e3dff2ed8db
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969545"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304519"
 ---
 # <a name="marketing-properties"></a>Marknadsförings egenskaper
 
@@ -75,7 +75,7 @@ Det finns både på sidan produkt-och produkt beskrivning. När du klickar på k
 ## <a name="external-links"></a>Externa länkar
 På sidan produkt beskrivning finns även länkar som navigerar till webbplatser som tillhandahålls av partner eller filer som hjälper kunden att bättre förstå produkten. De visas överst på sidan under produkt beskrivnings texten. Vilka länkar som visas varierar beroende på olika enhets typer och certifierings program.
 
-| Länk | Beskrivning                  | Var du ska lägga till i portalen                |
+| Länk | Description                  | Var du ska lägga till i portalen                |
 |---------------|-------------------------|----------------------------------|
 | Kom igång-guide * | PDF-fil med användar instruktioner för att ansluta och använda din enhet med Azure-tjänster | Lägg till guide avsnittet "kom igång" i portalen|
 | Tillverkarens sida *|Länk till tillverkarens sida. Den här sidan kan vara den speciella produkt sidan för din enhet eller till företagets start sida om en marknadsförings sida inte är tillgänglig. | Tillverkarens marknadsförings sida i marknadsförings information |

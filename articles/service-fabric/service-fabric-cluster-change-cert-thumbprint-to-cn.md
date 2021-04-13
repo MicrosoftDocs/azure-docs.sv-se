@@ -3,12 +3,12 @@ title: Uppdatera ett kluster så att det använder certifikatets nätverks namn
 description: Lär dig hur du konverterar ett Azure Service Fabric Cluster-certifikat från tumavtryck-baserade deklarationer till vanliga namn.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: f719b1eb39da776827c6babec61e9e6701bb4602
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: daf8d55e156f30b1f9e9ec5c50d60714e6f17884
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97900804"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308021"
 ---
 # <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>Konvertera kluster certifikat från tumavtryck-baserade deklarationer till vanliga namn
 
@@ -45,7 +45,7 @@ I test syfte *kan* ett självsignerat certifikat deklareras av CN, men endast om
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>Ladda upp certifikatet och installera det i skalnings uppsättningen
 
-I Azure omfattar den rekommenderade mekanismen för hämtning och etablering av certifikat Azure Key Vault och dess verktyg. Ett certifikat som matchar kluster certifikatets deklaration måste vara etablerad till varje nod i de skalnings uppsättningar för virtuella datorer som utgör ditt kluster. Mer information finns i [hemligheter på Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-securely-ship-a-certificate-to-the-vm).
+I Azure omfattar den rekommenderade mekanismen för hämtning och etablering av certifikat Azure Key Vault och dess verktyg. Ett certifikat som matchar kluster certifikatets deklaration måste vara etablerad till varje nod i de skalnings uppsättningar för virtuella datorer som utgör ditt kluster. Mer information finns i [hemligheter på Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#how-do-i-securely-ship-a-certificate-to-the-vm-).
 
 Det är viktigt att installera både aktuella och mål kluster certifikat på de virtuella datorerna för varje nodtyp i klustret innan du gör ändringar i klustrets certifikat deklarationer. Resan från utfärdande av certifikat till en Service Fabric-nod diskuteras i djupet vid [transporten av ett certifikat](cluster-security-certificate-management.md#the-journey-of-a-certificate).
 

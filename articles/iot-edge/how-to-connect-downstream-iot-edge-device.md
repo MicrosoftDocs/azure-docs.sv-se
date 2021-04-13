@@ -12,23 +12,18 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 70b3ed53747deb1f3bdc90de8fe71f42f8f7ce13
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: e0912fb452a7f587fef19de835eea111b349a9a4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580498"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310027"
 ---
-# <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Ansluta en underordnad IoT Edge enhet till en Azure IoT Edge Gateway (förhands granskning)
+# <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>Ansluta en underordnad IoT Edge enhet till en Azure IoT Edge Gateway
 
 [!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 Den här artikeln innehåller instruktioner för att upprätta en betrodd anslutning mellan en IoT Edge gateway och en underordnad IoT Edge enhet.
-
->[!NOTE]
->Den här funktionen kräver IoT Edge version 1,2, som finns i offentlig för hands version, som kör Linux-behållare.
->
->Den här artikeln visar den senaste för hands versionen av IoT Edge version 1,2. Kontrol lera att enheten kör version [1.2.0-RC4](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc4) eller senare. Anvisningar för hur du hämtar den senaste för hands versionen på enheten finns i [installera Azure IoT Edge för Linux (version 1,2)](how-to-install-iot-edge.md) eller [Uppdatera IoT Edge till version 1,2](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12).
 
 I ett Gateway-scenario kan en IoT Edge enhet vara både en gateway och en underordnad enhet. Flera IoT Edge gatewayer kan skiktas för att skapa en hierarki med enheter. Underordnade (eller underordnade) enheter kan autentisera och skicka eller ta emot meddelanden via deras Gateway (eller överordnade) enhet.
 
@@ -162,13 +157,13 @@ Se till att användar **iotedge** har Läs behörighet för katalogen som inneh�
 
 1. Hitta avsnittet **TRUSTe Bundle cert** . Ta bort kommentaren och uppdatera `trust_bundle_cert` parametern med fil-URI: n till rot certifikat utfärdarens certifikat på enheten.
 
-1. Även om den här funktionen finns i en offentlig för hands version måste du konfigurera din IoT Edge-enhet så att den använder den offentliga för hands versionen av IoT Edge agenten när den startas.
+1. Kontrol lera att din IoT Edge enhet använder rätt version av IoT Edge agenten när den startas.
 
-   Hitta standardvärdet för **Edge-agenten** och uppdatera avbildning svärdet till den offentliga förhands gransknings bilden:
+   Hitta standardvärdet för **Edge-agenten** och kontrol lera att avbildning svärdet är IoT Edge version 1,2. Annars uppdaterar du den:
 
    ```toml
    [agent.config]
-   image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4"
+   image: "mcr.microsoft.com/azureiotedge-agent:1.2"
    ```
 
 1. Hitta avsnittet **Edge CA-certifikat** i konfigurations filen. Ta bort kommentarer till raderna i det här avsnittet och ange fil-URI-sökvägar för certifikatet och nyckelfilen på den IoT Edge enheten.
@@ -200,21 +195,6 @@ Se till att användar **iotedge** har Läs behörighet för katalogen som inneh�
 
    >[!TIP]
    >I IoT Edges kontroll verktyget används en behållare för att utföra en del av diagnostisk kontroll. Om du vill använda det här verktyget på underordnade IoT Edge enheter kontrollerar du att de kan komma åt `mcr.microsoft.com/azureiotedge-diagnostics:latest` eller har behållar avbildningen i ditt privata behållar register.
-
-## <a name="configure-runtime-modules-for-public-preview"></a>Konfigurera Runtime-moduler för offentlig för hands version
-
-Även om den här funktionen finns i en offentlig för hands version måste du konfigurera IoT Edge-enheten så att den använder de offentliga för hands versionerna av IoT Edge runtime-modulerna. I föregående avsnitt finns steg för att konfigurera edgeAgent vid start. Du måste också konfigurera körnings modulerna i distributioner för enheten.
-
-1. Konfigurera edgeHub-modulen så att den använder den offentliga förhands gransknings bilden: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4` .
-
-1. Konfigurera följande miljövariabler för edgeHub-modulen:
-
-   | Name | Värde |
-   | - | - |
-   | `experimentalFeatures__enabled` | `true` |
-   | `experimentalFeatures__nestedEdgeEnabled` | `true` |
-
-1. Konfigurera edgeAgent-modulen så att den använder den offentliga förhands gransknings bilden: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4` .
 
 ## <a name="network-isolate-downstream-devices"></a>Isolerade enheter i nätverket
 
@@ -250,6 +230,8 @@ För varje gateway-enhet i ett lägre lager måste nätverks operatörerna:
 Den IoT Edge enheten på det övre lagret i en gateway-hierarki har en uppsättning nödvändiga moduler som måste distribueras till den, förutom eventuella arbets belastnings moduler som du kan köra på enheten.
 
 API-proxy modulen har utformats för att anpassas för att hantera de flesta vanliga Gateway-scenarier. Den här artikeln innehåller och exempel på hur du ställer in modulerna i en grundläggande konfiguration. Mer detaljerad information och exempel hittar du i [Konfigurera API-proxy-modulen för scenariot för gateway-hierarkin](how-to-configure-api-proxy-module.md) .
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. I [Azure Portal](https://portal.azure.com)navigerar du till din IoT Hub.
 1. Välj **IoT Edge** på navigerings menyn.
@@ -337,6 +319,109 @@ API-proxy modulen har utformats för att anpassas för att hantera de flesta van
 1. Välj **Granska + skapa** för att gå till det sista steget.
 1. Välj **skapa** för att distribuera till din enhet.
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. Skapa en JSON-fil för distribution i [Azure Cloud Shell](https://shell.azure.com/). Exempel:
+
+   ```json
+   {
+       "modulesContent": {
+           "$edgeAgent": {
+               "properties.desired": {
+                   "modules": {
+                       "dockerContainerRegistry": {
+                           "settings": {
+                               "image": "registry:latest",
+                               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5000/tcp\":[{\"HostPort\":\"5000\"}]}}}"
+                           },
+                           "type": "docker",
+                           "version": "1.0",
+                           "env": {
+                               "REGISTRY_PROXY_REMOTEURL": {
+                                   "value": "The URL for the container registry you want this registry module to map to. For example, https://myregistry.azurecr"
+                               },
+                               "REGISTRY_PROXY_USERNAME": {
+                                   "value": "Username to authenticate to the container registry."
+                               },
+                               "REGISTRY_PROXY_PASSWORD": {
+                                   "value": "Password to authenticate to the container registry."
+                               }
+                           },
+                           "status": "running",
+                           "restartPolicy": "always"
+                       },
+                       "IoTEdgeAPIProxy": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-api-proxy:1.0",
+                               "createOptions": "{\"HostConfig\": {\"PortBindings\": {\"443/tcp\": [{\"HostPort\":\"443\"}]}}}"
+                           },
+                           "type": "docker",
+                           "env": {
+                               "NGINX_DEFAULT_PORT": {
+                                   "value": "443"
+                               },
+                               "DOCKER_REQUEST_ROUTE_ADDRESS": {
+                                   "value": "registry:5000"
+                               }
+                           },
+                           "status": "running",
+                           "restartPolicy": "always",
+                           "version": "1.0"
+                       }
+                   },
+                   "runtime": {
+                       "settings": {
+                           "minDockerVersion": "v1.25"
+                       },
+                       "type": "docker"
+                   },
+                   "schemaVersion": "1.1",
+                   "systemModules": {
+                       "edgeAgent": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2",
+                               "createOptions": ""
+                           },
+                           "type": "docker"
+                       },
+                       "edgeHub": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2",
+                               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
+                           },
+                           "type": "docker",
+                           "env": {},
+                           "status": "running",
+                           "restartPolicy": "always"
+                       }
+                   }
+               }
+           },
+           "$edgeHub": {
+               "properties.desired": {
+                   "routes": {
+                       "route": "FROM /messages/* INTO $upstream"
+                   },
+                   "schemaVersion": "1.1",
+                   "storeAndForwardConfiguration": {
+                       "timeToLiveSecs": 7200
+                   }
+               }
+           }
+       }
+   }
+   ```
+
+   Den här distributions filen konfigurerar API-proxy-modulen att lyssna på port 443. För att förhindra port bindnings kollision konfigurerar-filen edgeHub-modulen så att den inte lyssnar på port 443. I stället dirigerar API proxy-modulen all edgeHub-trafik på port 443.
+
+1. Ange följande kommando för att skapa en distribution till en IoT Edge-enhet:
+
+   ```bash
+   az iot edge set-modules --device-id <device_id> --hub-name <iot_hub_name> --content ./<deployment_file_name>.json
+   ```
+
+---
+
 ### <a name="deploy-modules-to-lower-layer-devices"></a>Distribuera moduler till lägre lager enheter
 
 IoT Edge enheter på lägre lager i en gateway-hierarki har en nödvändig modul som måste distribueras till dem, förutom eventuella arbets belastnings moduler som du kan köra på enheten.
@@ -347,7 +432,7 @@ Innan du diskuterar den nödvändiga proxy-modulen för IoT Edge enheter i Gatew
 
 Om de lägre lager enheterna inte kan ansluta till molnet, men du vill att de ska hämta bilder som vanligt, måste den översta lager enheten i Gateway-hierarkin konfigureras för att hantera dessa begär Anden. Enheten på den översta nivån måste köra en Docker **-kontrollmodul som** är mappad till behållar registret. Konfigurera sedan API-proxy-modulen för att dirigera container begär anden till den. Informationen beskrivs i föregående avsnitt i den här artikeln. I den här konfigurationen ska de lägre skikt enheterna inte peka på moln behållar register, utan till registret som körs i det översta lagret.
 
-Till exempel, i stället för att anropa `mcr.microsoft.com/azureiotedge-api-proxy:latest` , ska lägre lager enheter anropa `$upstream:443/azureiotedge-api-proxy:latest` .
+Till exempel, i stället för att anropa `mcr.microsoft.com/azureiotedge-api-proxy:1.0` , ska lägre lager enheter anropa `$upstream:443/azureiotedge-api-proxy:1.0` .
 
 **$Upstream** -parametern pekar på en överordnad enhet som är en enhet med en lägre nivå, så att begäran dirigerar över alla lager tills den når det översta lagret som har en proxy-miljö som dirigerar behållare till registret. `:443`Porten i det här exemplet ska ersättas med den port som API-proxy-modulen på den överordnade enheten lyssnar på.
 
@@ -369,7 +454,7 @@ name = "edgeAgent"
 type = "docker"
 
 [agent.config]
-image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc4"
+image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2"
 ```
 
 Om du använder ett lokalt behållar register eller om du tillhandahåller behållar avbildningarna manuellt på enheten uppdaterar du konfigurations filen på motsvarande sätt.

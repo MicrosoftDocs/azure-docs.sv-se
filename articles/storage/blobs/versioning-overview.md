@@ -10,16 +10,16 @@ ms.date: 04/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f104b98c870fe6eee1d32fe656c0bba416cf3700
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 268de3e8ea168ac721362d42149389b9f37c86fe
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259752"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305063"
 ---
 # <a name="blob-versioning"></a>BLOB-versioner
 
-Du kan aktivera Blob Storage-versioner för att automatiskt underhålla tidigare versioner av ett objekt.  När BLOB-versioner har Aktiver ATS kan du återställa en tidigare version av en BLOB för att återställa dina data om de felaktigt ändras eller tas bort.
+Du kan aktivera Blob Storage-versioner för att automatiskt underhålla tidigare versioner av ett objekt. När BLOB-versioner har Aktiver ATS kan du återställa en tidigare version av en BLOB för att återställa dina data om de felaktigt ändras eller tas bort.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -35,21 +35,21 @@ Mer information om Microsofts rekommendationer för data skydd finns i [Översik
 
 ## <a name="how-blob-versioning-works"></a>Så här fungerar BLOB-versioner
 
-En version fångar in statusen för en BLOB vid en viss tidpunkt. När BLOB-versioner har Aktiver ATS för ett lagrings konto skapar Azure Storage automatiskt en ny version av en BLOB varje gång som bloben ändras.
+En version fångar in statusen för en BLOB vid en viss tidpunkt. Varje version identifieras med ett versions-ID. När BLOB-versioner har Aktiver ATS för ett lagrings konto skapar Azure Storage automatiskt en ny version med ett unikt ID när en BLOB skapas första gången och varje gång bloben ändras.
 
-När du skapar en blob med versions hantering aktive rad är den nya blobben den aktuella versionen av blobben (eller bas-BLOB). Om du senare ändrar denna BLOB skapar Azure Storage en version som fångar upp status för blobben innan den ändrades. Den ändrade blobben blir den nya aktuella versionen. En ny version skapas varje gången du ändrar blobben.
+Ett versions-ID kan identifiera den aktuella versionen eller en tidigare version. En BLOB kan bara ha en aktuell version i taget.
+
+När du skapar en ny BLOB finns det en enda version och den versionen är den aktuella versionen. När du ändrar en befintlig BLOB blir den aktuella versionen en tidigare version. En ny version skapas för att avbilda det uppdaterade läget och den nya versionen är den aktuella versionen. När du tar bort en BLOB blir den aktuella versionen av blobben en tidigare version och det finns inte längre en aktuell version. Alla tidigare versioner av bloben är kvar.
 
 Följande diagram visar hur versioner skapas vid Skriv åtgärder och hur en tidigare version kan uppgraderas till den aktuella versionen:
 
 :::image type="content" source="media/versioning-overview/blob-versioning-diagram.png" alt-text="Diagram över hur BLOB-versioner fungerar":::
 
-När du tar bort en blob med versions hantering aktive rad blir den aktuella versionen av blobben en tidigare version och det finns inte längre en aktuell version. Alla tidigare versioner av bloben är kvar.
-
 BLOB-versioner är oföränderliga. Du kan inte ändra innehållet eller metadata för en befintlig blob-version.
 
 Att ha ett stort antal versioner per BLOB kan öka svars tiden för BLOB List-åtgärder. Microsoft rekommenderar att du behåller färre än 1000 versioner per blob. Du kan använda livs cykel hantering för att automatiskt ta bort gamla versioner. Mer information om livs cykel hantering finns i [optimera kostnader genom att automatisera Azure-Blob Storage åtkomst nivåer](storage-lifecycle-management-concepts.md).
 
-BLOB-versioner är tillgängligt för General-Purpose v2-, Block Blob-och Blob Storage-konton. Lagrings konton med hierarkiskt namn område som är aktiverade för användning med Azure Data Lake Storage Gen2 stöds inte för närvarande.
+BLOB-versioner är tillgänglig för standard General-Purpose v2, Premium Block Blob och äldre Blob Storage-konton. Lagrings konton med hierarkiskt namn område som är aktiverade för användning med Azure Data Lake Storage Gen2 stöds inte för närvarande.
 
 Version 2019-10-10 och senare av Azure Storage REST API stöder BLOB-versioner.
 
@@ -58,9 +58,9 @@ Version 2019-10-10 och senare av Azure Storage REST API stöder BLOB-versioner.
 
 ### <a name="version-id"></a>Versions-ID
 
-Varje blob-version identifieras med ett versions-ID. Värdet för versions-ID är tidsstämpeln då blobben uppdaterades. Versions-ID: t tilldelas vid den tidpunkt då versionen skapades.
+Varje blob-version identifieras med ett unikt versions-ID. Värdet för versions-ID är tidsstämpeln då blobben uppdaterades. Versions-ID: t tilldelas vid den tidpunkt då versionen skapades.
 
-Du kan utföra Läs-eller borttagnings åtgärder för en angiven version av en BLOB genom att ange dess versions-ID. Om du utelämnar versions-ID: t fungerar åtgärden mot den aktuella versionen (bas-blobben).
+Du kan utföra Läs-eller borttagnings åtgärder för en angiven version av en BLOB genom att ange dess versions-ID. Om du utelämnar versions-ID: t fungerar åtgärden mot den aktuella versionen.
 
 När du anropar en Skriv åtgärd för att skapa eller ändra en BLOB returnerar Azure Storage rubriken *x-MS-version-ID* i svaret. Den här rubriken innehåller versions-ID för den aktuella versionen av blobben som skapades av Skriv åtgärden.
 
@@ -70,11 +70,9 @@ Versions-ID: t är detsamma som för versionens livs längd.
 
 När BLOB-versioner aktive ras skapas en ny version av varje Skriv åtgärd till en blob. Skriv åtgärder är [att lägga till BLOB](/rest/api/storageservices/put-blob), sätta i [blockeringslistan](/rest/api/storageservices/put-block-list), [Kopiera BLOB](/rest/api/storageservices/copy-blob)och [Ange BLOB-metadata](/rest/api/storageservices/set-blob-metadata).
 
-Om Skriv åtgärden skapar en ny BLOB, är den resulterande blobben den aktuella versionen av blobben. Om Skriv åtgärden ändrar en befintlig BLOB, hämtas nya data i den uppdaterade blobben, som är den aktuella versionen, och Azure Storage skapar en version som sparar blobens tidigare status.
+Om Skriv åtgärden skapar en ny BLOB, är den resulterande blobben den aktuella versionen av blobben. Om Skriv åtgärden ändrar en befintlig BLOB, blir den aktuella versionen en tidigare version och en ny aktuell version skapas för att avbilda den uppdaterade blobben.
 
-Diagrammet som visas i den här artikeln visar versions-ID: t som ett enkelt heltals värde. I verkligheten är versions-ID en tidsstämpel. Den aktuella versionen visas i blått och tidigare versioner visas i grått.
-
-Följande diagram visar hur Skriv åtgärder påverkar BLOB-versioner. När en BLOB skapas är denna BLOB den aktuella versionen. När samma BLOB ändras, skapas en ny version för att spara blobens tidigare tillstånd och den uppdaterade blobben blir den aktuella versionen.
+Följande diagram visar hur Skriv åtgärder påverkar BLOB-versioner. Diagrammet som visas i den här artikeln visar versions-ID: t som ett enkelt heltals värde. I verkligheten är versions-ID en tidsstämpel. Den aktuella versionen visas i blått och tidigare versioner visas i grått.
 
 :::image type="content" source="media/versioning-overview/write-operations-blob-versions.png" alt-text="Diagram som visar hur Skriv åtgärder påverkar versioner av blobar.":::
 
@@ -194,7 +192,7 @@ BLOB-versioner är utformad för att skydda dina data från oavsiktlig eller ska
 
 I följande tabell visas vilka Azure RBAC-åtgärder som stöder borttagning av BLOB-eller BLOB-versioner.
 
-| Beskrivning | Blob Service åtgärd | Azure RBAC-dataåtgärd krävs | Stöd för inbyggd Azure-roll |
+| Description | Blob Service åtgärd | Azure RBAC-dataåtgärd krävs | Stöd för inbyggd Azure-roll |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | Tar bort den aktuella versionen | Ta bort blob | **Microsoft. Storage/storageAccounts/blobServices/containers/blobbar/Delete** | Storage Blob Data-deltagare |
 | Ta bort en tidigare version | Ta bort blob | **Microsoft. Storage/storageAccounts/blobServices/containers/blobbar/deleteBlobVersion/åtgärd** | Storage Blob Data-ägare |

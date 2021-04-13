@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 49edab5ed20749cb705d160e5cdc46a16bdee951
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dadb23b9a8d00d484a9c42db9007d8c5b94b4c78
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258039"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306797"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurera anpassade domäner med Azure AD-programproxy
 
@@ -90,7 +90,7 @@ Publicera din app via Application Proxy med en anpassad domän:
    
    ![Klicka om du vill överföra ett certifikat](./media/application-proxy-configure-custom-domain/certificate.png)
    
-7. På sidan **SSL-certifikat** bläddrar du till och väljer din PFX-certifikatfil. Ange lösen ordet för certifikatet och välj **Ladda upp certifikat**. Mer information om certifikat finns i avsnittet [certifikat för anpassade domäner](#certificates-for-custom-domains) . Om certifikatet inte är giltigt eller om det är problem med lösen ordet visas ett fel meddelande. [Vanliga frågor om programproxy](application-proxy-faq.md#application-configuration) innehåller några fel söknings steg som du kan prova.
+7. På sidan **SSL-certifikat** bläddrar du till och väljer din PFX-certifikatfil. Ange lösen ordet för certifikatet och välj **Ladda upp certifikat**. Mer information om certifikat finns i avsnittet [certifikat för anpassade domäner](#certificates-for-custom-domains) . Om certifikatet inte är giltigt eller om det är problem med lösen ordet visas ett fel meddelande. [Vanliga frågor om programproxy](application-proxy-faq.yml#application-configuration) innehåller några fel söknings steg som du kan prova.
    
    ![Ladda upp certifikat](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    

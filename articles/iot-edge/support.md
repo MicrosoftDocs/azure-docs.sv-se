@@ -4,16 +4,16 @@ description: Lär dig vilka operativ system som kan köra Azure IoT Edge daemon 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/11/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0bd6a8af4850f3a0519bac7644100c2dcf883635
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: b60deee6ccb95245839ee740c2b237b98315d483
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031180"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313206"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge system som stöds
 
@@ -171,9 +171,15 @@ De system som anges i följande tabell anses vara kompatibla med Azure IoT Edge,
 
 IoT Edge release assets och viktig information finns på sidan med [Azure-iotedge-versioner](https://github.com/Azure/azure-iotedge/releases) . Det här avsnittet visar information från de viktiga anteckningarna som hjälper dig att visualisera komponenterna i varje version enklare.
 
-IoT Edge-komponenter kan installeras eller uppdateras individuellt och är bakåtkompatibla med komponenter från äldre versioner. I följande tabell visas de komponenter som ingår i varje version:
+I följande tabell visas de komponenter som ingår i varje version som börjar med 1.2.0. Komponenterna som anges i den här tabellen kan installeras eller uppdateras individuellt och är bakåtkompatibla med äldre versioner.
 
-| Frisläpp | Security daemon | Edge Hub<br>Edge-agent | Libiothsm | Moby |
+| Frisläpp | aziot-kant | edgeHub<br>edgeAgent | aziot-Identity-service |
+| ------- | ---------- | -------------------- | ---------------------- |
+| **1.2** | 1.2.0      | 1.2.0                | 1.2.0                  |
+
+I följande tabell visas de komponenter som ingår i varje version upp till 1,1 LTS-versionen. Komponenterna som anges i den här tabellen kan installeras eller uppdateras individuellt och är bakåtkompatibla med äldre versioner.
+
+| Frisläpp | iotedge | edgeHub<br>edgeAgent | libiothsm | moby |
 |--|--|--|--|--|
 | **1,1 LTS**<sup>1</sup> | 1.1.0<br>1.1.1 | 1.1.0<br>1.1.1 | 1.1.0<br>1.1.1 |   |
 | **1.0.10** | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br>1.0.10.3<br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 |  |
@@ -192,7 +198,8 @@ IoT Edge använder Microsoft. Azure. devices. client SDK. Mer information finns 
 
 | IoT Edge-version | Microsoft. Azure. devices. client SDK-version |
 |------------------|--------------------------------------------|
-| 1,1 (LTS)      | 1.28.0                                     |
+| 1.2.0            | 1.33.4-NestedEdge
+| 1,1 (LTS)        | 1.28.0                                     |
 | 1.0.10           | 1.28.0                                     |
 | 1.0.9            | 1.21.1                                     |
 | 1.0.8            | 1.20.3                                     |

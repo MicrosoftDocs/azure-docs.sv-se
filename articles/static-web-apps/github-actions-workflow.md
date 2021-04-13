@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: c0cb32bd3308affa473e9039d92bd3cb23acabee
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 4f1f432da33bded4fc0f04170673e5943dec5fb0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027541"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311336"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub åtgärder arbets flöden för för hands versionen av Azure static Web Apps
 
@@ -38,11 +38,11 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
-    - main
+      - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - main
+      - main
 
 jobs:
   build_and_deploy_job:
@@ -50,33 +50,33 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
-    - name: Build And Deploy
-      id: builddeploy
-      uses: Azure/static-web-apps-deploy@v0.0.1-preview
-      with:
-        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
-        repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
-        action: 'upload'
-        ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
-        app_location: '/' # App source code path
-        api_location: 'api' # Api source code path - optional
-        output_location: 'dist' # Built app content directory - optional
-        ###### End of Repository/Build Configurations ######
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
+          action: 'upload'
+          ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
+          app_location: '/' # App source code path
+          api_location: 'api' # Api source code path - optional
+          output_location: 'dist' # Built app content directory - optional
+          ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
     name: Close Pull Request Job
     steps:
-    - name: Close Pull Request
-      id: closepullrequest
-      uses: Azure/static-web-apps-deploy@v0.0.1-preview
-      with:
-        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
-        action: 'close'
+      - name: Close Pull Request
+        id: closepullrequest
+        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
+          action: 'close'
 ```
 
 ## <a name="triggers"></a>Utlösare
@@ -87,11 +87,11 @@ En [utlösare](https://help.github.com/actions/reference/events-that-trigger-wor
 on:
   push:
     branches:
-    - main
+      - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - main
+      - main
 ```
 
 Genom inställningar som är kopplade till `on` egenskapen kan du definiera vilka grenar som utlöser ett jobb och ställa in utlösare för att utlösa olika pull-begäranden.
@@ -104,10 +104,10 @@ Varje händelse utlösare kräver en händelse hanterare. [Jobb](https://help.gi
 
 I den statiska Web Apps arbets flödes filen finns det två tillgängliga jobb.
 
-| Name  | Beskrivning |
-|---------|---------|
-|`build_and_deploy_job` | Körs när du utför push-överföring eller öppnar en pull-begäran mot den gren som anges i `on` egenskapen. |
-|`close_pull_request_job` | Körs bara när du stänger en pull-begäran som tar bort den mellanlagrings miljö som skapats från pull-begäranden. |
+| Name                     | Beskrivning                                                                                                    |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| `build_and_deploy_job`   | Körs när du utför push-överföring eller öppnar en pull-begäran mot den gren som anges i `on` egenskapen.          |
+| `close_pull_request_job` | Körs bara när du stänger en pull-begäran som tar bort den mellanlagrings miljö som skapats från pull-begäranden. |
 
 ## <a name="steps"></a>Steg
 
@@ -115,10 +115,10 @@ Steg är sekventiella uppgifter för ett jobb. Ett steg utför åtgärder som at
 
 En arbets flödes fil definierar följande steg.
 
-| Jobb  | Steg  |
-|---------|---------|
-| `build_and_deploy_job` |<ol><li>Checkar ut databasen i åtgärdens miljö.<li>Skapar och distribuerar lagrings platsen till Azures statiska Web Apps.</ol>|
-| `close_pull_request_job` | <ol><li>Meddelar Azure static Web Apps att en pull-begäran har stängts.</ol>|
+| Jobb                      | Steg                                                                                                                              |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `build_and_deploy_job`   | <ol><li>Checkar ut databasen i åtgärdens miljö.<li>Skapar och distribuerar lagrings platsen till Azures statiska Web Apps.</ol> |
+| `close_pull_request_job` | <ol><li>Meddelar Azure static Web Apps att en pull-begäran har stängts.</ol>                                                        |
 
 ## <a name="build-and-deploy"></a>Skapa och distribuera
 
@@ -126,14 +126,14 @@ Steget som heter `Build and Deploy` bygger och distribuerar till din Azure Stati
 
 ```yml
 with:
-    azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
-    repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
-    action: 'upload'
-    ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
-    app_location: '/' # App source code path
-    api_location: 'api' # Api source code path - optional
-    output_location: 'dist' # Built app content directory - optional
-    ###### End of Repository/Build Configurations ######
+  azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
+  repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
+  action: 'upload'
+  ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
+  app_location: '/' # App source code path
+  api_location: 'api' # Api source code path - optional
+  output_location: 'dist' # Built app content directory - optional
+  ###### End of Repository/Build Configurations ######
 ```
 
 [!INCLUDE [static-web-apps-folder-structure](../../includes/static-web-apps-folder-structure.md)]
@@ -146,10 +146,10 @@ Du kan få detaljerad kontroll över vilka kommandon som körs under en distribu
 
 Distributionen anropar alltid `npm install` före ett anpassat kommando.
 
-| Kommando            | Beskrivning |
-|---------------------|-------------|
-| `app_build_command` | Definierar ett anpassat kommando som ska köras under distributionen av programmet för statiskt innehåll.<br><br>Om du till exempel vill konfigurera en produktions version för ett anmärknings program skapar du ett NPM-skript som heter `build-prod` för att köra `ng build --prod` och ange `npm run build-prod` som det anpassade kommandot. Om inget anges försöker arbets flödet köra `npm run build` `npm run build:azure` kommandona eller.  |
-| `api_build_command` | Definierar ett anpassat kommando som ska köras under distributionen av Azure Functions API-programmet. |
+| Kommando             | Beskrivning                                                                                                                                                                                                                                                                                                                                                                                |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `app_build_command` | Definierar ett anpassat kommando som ska köras under distributionen av programmet för statiskt innehåll.<br><br>Om du till exempel vill konfigurera en produktions version för ett anmärknings program skapar du ett NPM-skript som heter `build-prod` för att köra `ng build --prod` och ange `npm run build-prod` som det anpassade kommandot. Om inget anges försöker arbets flödet köra `npm run build` `npm run build:azure` kommandona eller. |
+| `api_build_command` | Definierar ett anpassat kommando som ska köras under distributionen av Azure Functions API-programmet.                                                                                                                                                                                                                                                                                                  |
 
 ## <a name="skip-app-build"></a>Hoppa över app-build
 
@@ -159,33 +159,33 @@ Om du vill hoppa över skapandet av appen anger `skip_app_build` du till `true` 
 
 ```yml
 with:
-    azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
-    repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
-    action: 'upload'
-    ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
-    app_location: 'dist'  # Application build output generated by a previous step
-    api_location: 'api'   # Api source code path - optional
-    output_location: ''   # Leave this empty
-    skip_app_build: true
-    ###### End of Repository/Build Configurations ######
+  azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_MANGO_RIVER_0AFDB141E }}
+  repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
+  action: 'upload'
+  ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
+  app_location: 'dist' # Application build output generated by a previous step
+  api_location: 'api' # Api source code path - optional
+  output_location: '' # Leave this empty
+  skip_app_build: true
+  ###### End of Repository/Build Configurations ######
 ```
 
-| Egenskap            | Beskrivning |
-|---------------------|-------------|
-| `skip_app_build`    | Ställ in värdet på `true` för att hoppa över skapandet av frontend-appen. |
+| Egenskap         | Beskrivning                                                 |
+| ---------------- | ----------------------------------------------------------- |
+| `skip_app_build` | Ställ in värdet på `true` för att hoppa över skapandet av frontend-appen. |
 
 > [!NOTE]
 > Du kan bara hoppa över versionen av frontend-appen. Om din app har ett API, kommer den fortfarande att skapas av den statiska Web Apps GitHub-åtgärden.
 
 ## <a name="route-file-location"></a>Routes-filens plats
 
-Du kan anpassa arbets flödet för att leta efter [routes.js](routes.md) i i valfri mapp i din lagrings plats. Följande egenskap kan definieras under ett jobb `with` avsnitt.
+Du kan anpassa arbets flödet för att leta efter [staticwebapp.config.js](routes.md) i i valfri mapp i din lagrings plats. Följande egenskap kan definieras under ett jobb `with` avsnitt.
 
-| Egenskap            | Beskrivning |
-|---------------------|-------------|
-| `routes_location` | Definierar den katalog plats där _routes.jspå_ filen hittas. Den här platsen är relativ i förhållande till lagrings platsens rot. |
+| Egenskap          | Beskrivning                                                                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `routes_location` | Definierar den katalog plats där _staticwebapp.config.jspå_ filen hittas. Den här platsen är relativ i förhållande till lagrings platsens rot. |
 
- Det är särskilt viktigt att du är medveten om platsen för din _routes.jsi_ filen om det inte går att flytta den här filen till `output_location` som standard.
+Det är särskilt viktigt att du är medveten om platsen för din _staticwebapp.config.jsi_ filen om det inte går att flytta den här filen till `output_location` som standard.
 
 ## <a name="environment-variables"></a>Miljövariabler
 
@@ -207,11 +207,11 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          action: "upload"
+          action: 'upload'
           ###### Repository/Build Configurations
-          app_location: "/"
-          api_location: "api"
-          output_location: "public"
+          app_location: '/'
+          api_location: 'api'
+          output_location: 'public'
           ###### End of Repository/Build Configurations ######
         env: # Add environment variables here
           HUGO_VERSION: 0.58.0
@@ -219,7 +219,7 @@ jobs:
 
 ## <a name="monorepo-support"></a>Monorepo-stöd
 
-En monorepo är en lagrings plats som innehåller kod för mer än ett program. Som standard spårar en statisk Web Apps arbets flödes fil alla filer i en lagrings plats, men du kan justera den så att den är riktad mot en enda app. För monorepos har varje statisk app därför den konfigurations fil som finns sida vid sida i mappen *. GitHub/arbets flöden* i databasen.
+En monorepo är en lagrings plats som innehåller kod för mer än ett program. Som standard spårar en statisk Web Apps arbets flödes fil alla filer i en lagrings plats, men du kan justera den så att den är riktad mot en enda app. För monorepos har varje statisk app därför den konfigurations fil som finns sida vid sida i mappen _. GitHub/arbets flöden_ i databasen.
 
 ```files
 ├── .github
@@ -261,9 +261,9 @@ on:
 
 I den här instansen utlöser endast ändringar som gjorts i följande filer en ny version:
 
-- Alla filer i mappen *APP1*
-- Alla filer i mappen *API1*
-- Ändringar i appens *Azure-static-Web-Apps-Purple-Pond. yml* -arbetsflöde
+- Alla filer i mappen _APP1_
+- Alla filer i mappen _API1_
+- Ändringar i appens _Azure-static-Web-Apps-Purple-Pond. yml_ -arbetsflöde
 
 ## <a name="next-steps"></a>Nästa steg
 

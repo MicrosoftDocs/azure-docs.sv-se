@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 78e4b35feb4e830a9f4335614a55d49ca90cd791
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1977663f4661fca316e4839671abd76e07b5acda
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667635"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304808"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Använda externa tabeller med Synapse SQL
 
@@ -339,9 +339,9 @@ Anger mappen eller sökvägen och fil namnet för faktiska data i Azure Blob Sto
 Om du anger en mapplats, kommer en server lös SQL-pool-fråga att välja från den externa tabellen och hämta filer från mappen.
 
 > [!NOTE]
-> Till skillnad från Hadoop och PolyBase returnerar inte Server lös SQL-poolen undermappar. Den returnerar filer för vilka fil namnet börjar med en understrykning (_) eller en punkt (.).
+> Till skillnad från Hadoop och PolyBase returnerar inte Server lös SQL-poolen undermappar om du inte anger/* * i slutet av sökvägen.
 
-I det här exemplet returneras rader från mydata.txt och _hidden.txt om plats = '/webdata/', en server lös SQL-pool fråga. Den returnerar inte mydata2.txt och mydata3.txt eftersom de finns i en undermapp.
+I det här exemplet returneras rader från mydata.txt om plats = '/webdata/', en server lös SQL-pool fråga. Den returnerar inte mydata2.txt och mydata3.txt eftersom de finns i en undermapp.
 
 ![Rekursiva data för externa tabeller](./media/develop-tables-external-tables/folder-traversal.png)
 

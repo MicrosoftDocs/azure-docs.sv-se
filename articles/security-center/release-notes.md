@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/06/2021
+ms.date: 04/11/2021
 ms.author: memildin
-ms.openlocfilehash: 81f741fd9b0e3d40eb0027a5cbe0ba4b7113bbea
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 3e4dddf61656ea38bac406366bf993788fd34943
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107027626"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303159"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
@@ -28,26 +28,22 @@ Om du vill veta mer om *planerade* ändringar som kommer snart till Security Cen
 ## <a name="april-2021"></a>April 2021
 
 Uppdateringar i april inkluderar:
-- [Fyra nya rekommendationer relaterade till gäst konfiguration (för hands version)](#four-new-recommendations-related-to-guest-configuration-preview)
+- [Nyligen hämtade behållare register avbildningar genomsöks nu om varje vecka (allmän tillgänglighet)](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
 - [Använd Azure Defender för Kubernetes för att skydda hybrid-och multi-Cloud Kubernetes-distributioner (för hands version)](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
+- [Fyra nya rekommendationer relaterade till gäst konfiguration (för hands version)](#four-new-recommendations-related-to-guest-configuration-preview)
+- [CMK rekommendationer har flyttats till bästa praxis säkerhets kontroll](#cmk-recommendations-moved-to-best-practices-security-control)
 - [11 Azure Defender varningar inaktuellt](#11-azure-defender-alerts-deprecated)
 - [Två rekommendationer från säkerhets kontrollen tillämpa system uppdateringar är inaktuella](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
 
-### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Fyra nya rekommendationer relaterade till gäst konfiguration (för hands version)
+### <a name="recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability"></a>Nyligen hämtade behållare register avbildningar genomsöks nu om varje vecka (allmän tillgänglighet)
 
-Azures [tilläggs rapporter för gäst konfiguration](../governance/policy/concepts/guest-configuration.md) till Security Center för att se till att de virtuella datorernas gäst inställningar är skärpta. Tillägget krävs inte för Arc-aktiverade servrar eftersom de ingår i den Arc-anslutna dator agenten. Tillägget kräver en Systemhanterad identitet på datorn.
+Azure Defender för behållar register innehåller en inbyggd sårbarhets-skanner. Den här skannern söker omedelbart igenom alla bilder som du skickar till registret och alla bilder som har hämtats under de senaste 30 dagarna.
 
-Vi har lagt till fyra nya rekommendationer som Security Center för att få ut mesta möjliga av det här tillägget.
+Nya sårbarheter identifieras varje dag. Med den här uppdateringen kommer behållar avbildningar som hämtats från dina register under de senaste 30 dagarna att **genomsökas** varje vecka. Detta säkerställer att nyligen identifierade sårbarheter identifieras i dina avbildningar.
 
-- Två rekommendationer meddelar dig att installera tillägget och den nödvändiga systemhanterade identiteten:
-    - **Gäst konfigurations tillägget bör installeras på datorerna**
-    - **De virtuella datorernas gäst konfigurations tillägg bör distribueras med systemtilldelad hanterad identitet**
+Genomsökningen debiteras per avbildning, så det finns ingen extra kostnad för dessa genomsökningar.
 
-- När tillägget är installerat och körs börjar granskningen av dina datorer och du uppmanas att göra inställningar som konfiguration av operativ systemets och miljö inställningarna. De här två rekommendationerna kommer att uppmana dig att skärp dina Windows-och Linux-datorer enligt beskrivningen:
-    - **Windows Defender sårbarhet Guard måste vara aktiverat på dina datorer**
-    - **Autentisering till Linux-datorer måste kräva SSH-nycklar**
-
-Läs mer i [förstå Azure policys gäst konfiguration](../governance/policy/concepts/guest-configuration.md).
+Läs mer om den här skannern i [använda Azure Defender för behållar register för att söka igenom dina avbildningar efter sårbarheter](defender-for-container-registries-usage.md).
 
 
 ### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview"></a>Använd Azure Defender för Kubernetes för att skydda hybrid-och multi-Cloud Kubernetes-distributioner (för hands version)
@@ -69,6 +65,40 @@ Den här integrationen mellan Azure Security Center, Azure Defender och Azure Ar
 Läs mer i [använda Azure Defender för Kubernetes med dina lokala och Kubernetes-kluster med flera moln](defender-for-kubernetes-azure-arc.md).
 
 :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Security Center rekommendationen för att distribuera Azure Defender-tillägget för Azure Arc-aktiverade Kubernetes-kluster." lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+
+### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Fyra nya rekommendationer relaterade till gäst konfiguration (för hands version)
+
+Azures [tilläggs rapporter för gäst konfiguration](../governance/policy/concepts/guest-configuration.md) till Security Center för att se till att de virtuella datorernas gäst inställningar är skärpta. Tillägget krävs inte för Arc-aktiverade servrar eftersom de ingår i den Arc-anslutna dator agenten. Tillägget kräver en Systemhanterad identitet på datorn.
+
+Vi har lagt till fyra nya rekommendationer som Security Center för att få ut mesta möjliga av det här tillägget.
+
+- Två rekommendationer meddelar dig att installera tillägget och den nödvändiga systemhanterade identiteten:
+    - **Gäst konfigurations tillägget bör installeras på datorerna**
+    - **De virtuella datorernas gäst konfigurations tillägg bör distribueras med systemtilldelad hanterad identitet**
+
+- När tillägget är installerat och körs börjar granskningen av dina datorer och du uppmanas att göra inställningar som konfiguration av operativ systemets och miljö inställningarna. De här två rekommendationerna kommer att uppmana dig att skärp dina Windows-och Linux-datorer enligt beskrivningen:
+    - **Windows Defender sårbarhet Guard måste vara aktiverat på dina datorer**
+    - **Autentisering till Linux-datorer måste kräva SSH-nycklar**
+
+Läs mer i [förstå Azure policys gäst konfiguration](../governance/policy/concepts/guest-configuration.md).
+
+### <a name="cmk-recommendations-moved-to-best-practices-security-control"></a>CMK rekommendationer har flyttats till bästa praxis säkerhets kontroll
+
+Varje organisations säkerhets program innehåller krav på data kryptering. Som standard krypteras Azures kunders data i vila med tjänst hanterade nycklar. Kundhanterade nycklar (CMK) krävs dock ofta för att uppfylla gällande regler för efterlevnad. Med CMKs kan du kryptera dina data med en [Azure Key Vault](../key-vault/general/overview.md) nyckel som du har skapat och som du äger. Detta ger dig fullständig kontroll och ansvar för nyckel livs cykeln, inklusive rotation och hantering.
+
+Azure Security Centers säkerhets kontroller är logiska grupper av relaterade säkerhets rekommendationer och återspeglar dina sårbara angrepps ytor. Varje kontroll har ett maximalt antal punkter som du kan lägga till i dina säkra poäng om du reparerar alla rekommendationer som anges i kontrollen för alla dina resurser. Säkerhets kontrollen **implementera säkerhets metoder för säkerhet** är värt noll punkter. Rekommendationerna i den här kontrollen påverkar inte dina säkra poäng.
+
+Rekommendationerna nedan flyttas till säkerhets kontrollen **implementera säkerhets metoder för säkerhet** för att bättre återspegla deras valfria natur. Den här flytten säkerställer att dessa rekommendationer är i den lämpligaste kontrollen för att uppfylla deras mål.
+
+- Azure Cosmos DB konton ska använda Kundhanterade nycklar för att kryptera data i vila
+- Azure Machine Learning-arbetsytor bör krypteras med en kundhanterad nyckel (CMK)
+- Cognitive Services konton ska aktivera data kryptering med en kundhanterad nyckel (CMK)
+- Behållar register ska krypteras med en kundhanterad nyckel (CMK)
+- SQL-hanterade instanser bör använda Kundhanterade nycklar för att kryptera data i vila
+- SQL-servrar bör använda Kundhanterade nycklar för att kryptera data i vila
+- Lagrings konton ska använda kundhanterad nyckel (CMK) för kryptering
+
+Lär dig vilka rekommendationer som finns i varje säkerhets kontroll i [säkerhets kontroller och deras rekommendationer](secure-score-security-controls.md#security-controls-and-their-recommendations).
 
 
 ### <a name="11-azure-defender-alerts-deprecated"></a>11 Azure Defender varningar inaktuellt

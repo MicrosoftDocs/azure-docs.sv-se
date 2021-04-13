@@ -7,12 +7,12 @@ author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: d73bd81f15263c79e16b574eb961d4ae0ac61175
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e10177de1a40bf7ece7acde43a91686bd4c98e5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103417815"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306457"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3-serien 
 
@@ -23,12 +23,13 @@ De virtuella datorerna i NCasT4_v3 serien drivs av [NVIDIA Tesla T4](https://www
 [ACU](acu.md): 230-260<br>
 [Premium Storage](premium-storage-performance.md): stöds<br>
 [Premium Storage caching](premium-storage-performance.md): stöds<br>
+[Ultra disks](disks-types.md#ultra-disk): stöds ([Lär dig mer](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312) om tillgänglighet, användning och prestanda) <br>
 [Direktmigrering](maintenance-and-updates.md): stöds inte<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
 [Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
 [Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds inte <br>
-NVIDIA NVLink-Interconnect: stöds<br>
+NVIDIA NVLink-Interconnect: stöds inte<br>
 <br>
 
 | Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | GPU | GPU-minne: GiB | Maximalt antal datadiskar | Högsta antal nätverkskort/förväntad nätverks bandbredd (Mbit/s) |

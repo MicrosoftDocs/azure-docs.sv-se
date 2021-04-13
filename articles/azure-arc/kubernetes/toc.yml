@@ -73,5 +73,7 @@
       href: /powershell/module/Az.ConnectedKubernetes/
 - name: Resurser
   items:
+    - name: Planera för distribution
+      href: plan-at-scale-deployment.md
     - name: Kom igång med Azure Arc
       href: 'https://azurearcjumpstart.io'

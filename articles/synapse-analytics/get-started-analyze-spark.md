@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 5d08bc216157fce9ad81eaf3c0f540c7a4d8c3f2
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 2b85fe21fee34a9bedab33f0d10756bbfe8dc88b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259837"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305216"
 ---
 # <a name="analyze-with-apache-spark"></a>Analysera med Apache Spark
 
@@ -34,10 +34,10 @@ I den här självstudien får du lära dig de grundläggande stegen för att lä
 
 En server lös Spark-pool är ett sätt att ange hur en användare vill arbeta med Spark. När du börjar använda en pool skapas en spark-session vid behov. Poolen styr hur många Spark-resurser som ska användas av sessionen och hur länge sessionen ska pausas innan den pausas automatiskt. Du betalar för Spark-resurser som används under den sessionen, inte för själva poolen. På så sätt kan du arbeta med Spark i en spark-pool utan att behöva oroa dig för att hantera kluster. Detta liknar hur en server lös SQL-pool fungerar.
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>Analysera NYC taxi-data i Blob Storage med Spark
+## <a name="analyze-nyc-taxi-data-with-a-spark-pool"></a>Analysera NYC taxi-data med en spark-pool
 
 1. Gå till **utveckla** hubben i Synapse Studio
-2. Skapa en ny antecknings bok med standard språket inställt på **PySpark (python)**.
+2. Skapa en ny notebook
 3. Skapa en ny Code-cell och klistra in följande kod i cellen.
     ```py
     %%pyspark
@@ -49,22 +49,23 @@ En server lös Spark-pool är ett sätt att ange hur en användare vill arbeta m
 1. Om du bara vill se schemat för dataframe kör du en cell med följande kod:
 
     ```py
+    %%pyspark
     df.printSchema()
     ```
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>Läs in NYC taxi-data till Spark nyctaxi-databasen
 
-Data är tillgängliga via dataframe med namnet **data**. Läs in den i en spark-databas med namnet **nyctaxi**.
+Data är tillgängliga via dataframe med namnet **DF**. Läs in den i en spark-databas med namnet **nyctaxi**.
 
 1. Lägg till en ny kod cell i antecknings boken och ange sedan följande kod:
 
     ```py
+    %%pyspark
     spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Analysera NYC taxi-data med Spark och Notebooks
 
-1. Återgå till din bärbara dator.
 1. Skapa en ny kod cell och ange följande kod. 
 
    ```py

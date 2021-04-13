@@ -8,12 +8,12 @@ ms.author: amjads
 author: amjads1
 ms.collection: windows
 ms.date: 07/20/2019
-ms.openlocfilehash: 33db214013111b0dd4540a1b1d2947b7d1854db9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd845c5ef5a06e3a0bca1cebe54ded2e49355617
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607491"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309823"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Översikt över Azure Virtual Machine agent
 Den Microsoft Azure virtuella dator agenten (VM-agenten) är en säker, lätt process som hanterar interaktionen mellan virtuella datorer (VM) med Azure Fabric-styrenheten. VM-agenten har en primär roll för att aktivera och köra tillägg för virtuella Azure-datorer. Med VM-tillägg kan du konfigurera virtuella datorer efter distributionen, till exempel installera och konfigurera program vara. VM-tillägg möjliggör också återställnings funktioner som att återställa det administrativa lösen ordet för en virtuell dator. Utan Azure VM-agenten kan VM-tillägg inte köras.
@@ -121,7 +121,7 @@ Om du vill ta bort ett certifikat permanent måste du ta bort det från och `OSP
 
 Använd [Remove-AzVMSecret]() för en virtuell dator för att ta bort certifikat från `OSProfile` .
 
-Mer information om certifikat för skalnings uppsättningar för virtuella datorer finns i [Virtual Machine Scale Sets-hur gör jag för att ta bort föråldrade certifikat?](../../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-remove-deprecated-certificates)
+Mer information om certifikat för skalnings uppsättningar för virtuella datorer finns i [Virtual Machine Scale Sets-hur gör jag för att ta bort föråldrade certifikat?](../../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#how-do-i-remove-deprecated-certificates-)
 
 
 ## <a name="next-steps"></a>Nästa steg

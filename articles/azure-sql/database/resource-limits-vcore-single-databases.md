@@ -10,22 +10,33 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/23/2021
-ms.openlocfilehash: a3cd68b610b0e0db05f60450009bc83a80c3037b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/09/2021
+ms.openlocfilehash: 7f96e6638bd021777d2f4bb888ef70c49c42c716
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107626"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313801"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Resursbegränsningar för enskilda databaser med hjälp av vCore-inköpsmodellen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Den här artikeln innehåller detaljerade resurs gränser för enskilda databaser i Azure SQL Database med hjälp av vCore inköps modell.
 
-För inköps modell gränser för DTU för enskilda databaser på en server, se [Översikt över resurs gränser på en server](resource-limits-logical-server.md).
+* För inköps modell gränser för DTU för enskilda databaser på en server, se [Översikt över resurs gränser på en server](resource-limits-logical-server.md).
+* För resurs gränser för DTU-inköps modeller för Azure SQL Database, se [DTU-resurs begränsar enskilda databaser](resource-limits-dtu-single-databases.md) och [DTU-resurs begränsar elastiska pooler](resource-limits-dtu-elastic-pools.md).
+* För vCore resurs gränser, se [vCore Resource Limits-Azure SQL Database](resource-limits-vcore-single-databases.md) [-och vCore-resurs gränser-elastiska pooler](resource-limits-vcore-elastic-pools.md).
+* Mer information om olika inköps modeller finns i [inköps modeller och tjänst nivåer](purchasing-models.md).
 
-Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrymme för en enskild databas med hjälp av [Azure Portal](single-database-manage.md#the-azure-portal), [Transact-SQL](single-database-manage.md#transact-sql-t-sql), [PowerShell](single-database-manage.md#powershell), [Azure CLI](single-database-manage.md#the-azure-cli)eller [REST API](single-database-manage.md#rest-api).
+Varje skrivskyddad replik har sina egna resurser, till exempel virtuella kärnor, minne, data-IOPS, TempDB, arbetare och sessioner. Alla skrivskyddade repliker omfattas av resurs begränsningarna som beskrivs längre fram i den här artikeln.
+
+Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings belopp för en enskild databas med:
+
+* [Transact-SQL](single-database-manage.md#transact-sql-t-sql) via [Alter Database](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database)
+* [Azure-portalen](single-database-manage.md#the-azure-portal)
+* [PowerShell](single-database-manage.md#powershell)
+* [Azure CLI](single-database-manage.md#the-azure-cli)
+* [REST-API](single-database-manage.md#rest-api)
 
 > [!IMPORTANT]
 > Information om skalning och överväganden finns i [skala en enskild databas](single-database-scale.md).

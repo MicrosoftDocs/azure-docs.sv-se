@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 9fdaf42f18c320bf841e710b7066451fca24eaae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fdd62ebfe992398d33d2851a1aa1c66497296b5d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030995"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311200"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundhanterad nyckel i Azure Monitor 
 
@@ -59,7 +59,7 @@ Följande regler gäller:
 - Log Analytics kluster lagrings konton genererar unik krypterings nyckel för varje lagrings konto, vilket kallas för AEK.
 - AEK används för att härleda DEKs, vilket är de nycklar som används för att kryptera varje data block som skrivs till disk.
 - När du konfigurerar din nyckel i Key Vault och refererar till den i klustret, Azure Storage skickar begär anden till din Azure Key Vault att omsluta och packa upp AEK för att utföra data kryptering och dekrypterings åtgärder.
-- Din KEK lämnar aldrig Key Vault och om det finns en HSM-nyckel lämnar den aldrig maskin varan.
+- Din KEK lämnar aldrig Key Vault.
 - Azure Storage använder den hanterade identitet som är kopplad till *kluster* resursen för att autentisera och komma åt Azure Key Vault via Azure Active Directory.
 
 ### <a name="customer-managed-key-provisioning-steps"></a>Steg för Customer-Managed nyckel etablering
@@ -169,6 +169,9 @@ Välj den aktuella versionen av nyckeln i Azure Key Vault för att hämta inform
 
 Uppdatera KeyVaultProperties i kluster med information om nyckel identifierare.
 
+>[!NOTE]
+>Nyckel rotation stöder två lägen: automatisk rotation eller explicit nyckel versions uppdatering, se [nyckel rotation](#key-rotation) för att fastställa den bästa metoden för dig.
+
 Åtgärden är asynkron och kan ta en stund att slutföra.
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
@@ -266,7 +269,9 @@ Klustrets lagrings plats kontrollerar regelbundet Key Vault för att försöka a
 
 ## <a name="key-rotation"></a>Nyckelrotation
 
-För kundhanterad nyckel rotation krävs en explicit uppdatering av klustret med den nya nyckel versionen i Azure Key Vault. [Uppdatera kluster med information om nyckel identifierare](#update-cluster-with-key-identifier-details). Om du inte uppdaterar den nya nyckel versionen i klustret, fortsätter Log Analytics kluster lagring att använda din tidigare nyckel för kryptering. Om du inaktiverar eller tar bort din gamla nyckel innan du uppdaterar den nya nyckeln i klustret kommer du att få statusen för [nyckel återkallning](#key-revocation) .
+Nyckel rotationen har två lägen: 
+- Automatisk rotation – när du uppdaterar klustret med ```"keyVaultProperties"``` men utelämnar ```"keyVersion"``` egenskap, eller ställer in det på ```""``` , kommer lagringen att autoamatically använda de senaste versionerna.
+- Explicit nyckel versions uppdatering – när du uppdaterar klustret och tillhandahåller nyckel version i ```"keyVersion"``` egenskap kräver alla nya nyckel versioner en explicit ```"keyVaultProperties"``` uppdatering i klustret. mer information finns i [Uppdatera kluster med nyckel identifierare](#update-cluster-with-key-identifier-details). Om du skapar en ny nyckel version i Key Vault men inte uppdaterar den i klustret, kommer Log Analytics kluster lagring att fortsätta använda din tidigare nyckel. Om du inaktiverar eller tar bort din gamla nyckel innan du uppdaterar den nya nyckeln i klustret kommer du att få statusen för [nyckel återkallning](#key-revocation) .
 
 Alla dina data är tillgängliga efter nyckel rotations åtgärden, eftersom data alltid krypteras med konto krypterings nyckeln (AEK) medan AEK nu krypteras med din nya KEK-version (Key Encryption Key) i Key Vault.
 
@@ -395,7 +400,7 @@ Customer-Managed nyckel anges i ett dedikerat kluster och dessa åtgärder hänv
 - Ta bort länken mellan en arbets yta och ett kluster
 - Ta bort klustret
 
-## <a name="limitations-and-constraints"></a>Begränsningar och begränsningar
+## <a name="limitations-and-constraints"></a>Begränsningar och restriktioner
 
 - Det högsta antalet kluster per region och prenumeration är 2
 

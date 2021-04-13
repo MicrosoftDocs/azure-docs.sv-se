@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: ad6696fc4fe2af7047c25a3a9c260d3b12588ee2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 69dec2ce00b263f3536e30ba0a5376e6d922b79c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203308"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308361"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Hög tillgänglighet för Azure cache för Redis
 
@@ -21,9 +21,9 @@ Azure cache för Redis implementerar hög tillgänglighet genom att använda fle
 
 | Alternativ | Beskrivning | Tillgänglighet | Standard | Premium | Stora företag |
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
-| [Standardreplikering](#standard-replication)| Replikerad konfiguration med dubbla noder i ett enda data Center med automatisk redundans | 99,9 % |✔|✔|-|
-| [Zonredundans](#zone-redundancy) | Replikerad konfiguration med flera noder över AZs, med automatisk redundans | 99,95% (Premium-nivå), 99,99% (företags nivåer) |-|Förhandsgranskning|Förhandsgranskning|
-| [Geo-replikering](#geo-replication) | Länkade cache-instanser i två regioner med användarspecifik redundans | 99,999% (företags nivå) |-|✔|Förhandsgranskning|
+| [Standardreplikering](#standard-replication)| Replikerad konfiguration med dubbla noder i ett enda data Center med automatisk redundans | 99,9% (se [information](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)) |✔|✔|-|
+| [Zonredundans](#zone-redundancy) | Replikerad konfiguration med flera noder över AZs, med automatisk redundans | Upp till 99,99% (se [information](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)) |-|Förhandsgranskning|Förhandsgranskning|
+| [Geo-replikering](#geo-replication) | Länkade cache-instanser i två regioner med användarspecifik redundans | Upp till 99,999% (se [information](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)) |-|✔|Förhandsgranskning|
 
 ## <a name="standard-replication"></a>Standardreplikering
 

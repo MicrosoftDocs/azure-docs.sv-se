@@ -4,12 +4,12 @@ description: Lär dig mer om skalning i Azure Kubernetes service (AKS), inklusiv
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: b72ed7cefc6a16eb484e1337dbd64e5f069a2201
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6d2121403361c4225a7e0e64411875d83d93194
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94686046"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305743"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Skalningsalternativ för program i Azure Kubernetes Service
 
@@ -26,7 +26,7 @@ Den här artikeln beskriver de viktigaste begreppen som hjälper dig att skala p
 
 Du kan skala repliker (poddar) och noder manuellt för att testa hur programmet svarar på en ändring i tillgängliga resurser och tillstånd. Genom att skala resurser manuellt kan du också definiera en uppsättning resurser som ska användas för att upprätthålla en fast kostnad, till exempel antalet noder. Om du vill skala manuellt definierar du repliken eller antalet noder. Kubernetes-API: et schemalägger sedan att skapa ytterligare poddar eller tömma noder baserat på replikering eller antal noder.
 
-Vid skalning av noder anropar Kubernetes-API: t det relevanta Azure Compute-API: et som är kopplat till den beräknings typ som används av klustret. Exempel: för kluster som bygger på VM Scale Sets logiken för att välja vilka noder som ska tas bort bestäms av VM Scale Sets-API: et. Mer information om hur noder väljs för borttagning vid nedskalning finns i [vanliga frågor och svar om VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed).
+Vid skalning av noder anropar Kubernetes-API: t det relevanta Azure Compute-API: et som är kopplat till den beräknings typ som används av klustret. Exempel: för kluster som bygger på VM Scale Sets logiken för att välja vilka noder som ska tas bort bestäms av VM Scale Sets-API: et. Mer information om hur noder väljs för borttagning vid nedskalning finns i [vanliga frågor och svar om VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#if-i-reduce-my-scale-set-capacity-from-20-to-15--which-vms-are-removed-).
 
 För att komma igång med manuell skalning av poddar och noder, se [skala program i AKS][aks-scale].
 

@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 01/14/2020
+ms.date: 04/12/2021
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: 48de06d28442b4d05cd3a7ab287732c0999e434c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9e87796c3557f21bb6192c7d7d0c0925d08d786
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101659706"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311761"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Djup inlärning jämfört med Machine Learning i Azure Machine Learning
 
@@ -99,7 +99,7 @@ Med rätt data omvandling kan ett neurala-nätverk förstå text-, ljud-och visu
 
 Text analys som bygger på djup inlärnings metoder innebär analys av stora mängder text data (till exempel medicinska dokument eller utgifts kvitton), igenkänning av mönster och skapande av strukturerad och kortfattad information från IT.
 
-Företag använder djup inlärning för att utföra text analyser för att identifiera insider handel och efterlevnad med myndighets bestämmelser. Ett annat vanligt exempel är försäkrings bedrägerier: text analys har ofta använts för att analysera stora mängder dokument för att identifiera sannolikheten för ett försäkrings anspråk som bedrägerier. 
+Företag använder djup inlärning för att utföra text analyser för att identifiera insider handel och efterlevnad med myndighets bestämmelser. Ett annat vanligt exempel är försäkrings bedrägerier: text analys har ofta använts för att analysera stora mängder dokument för att identifiera sannolikheten för ett försäkrings anspråk som bedrägerier.
 
 ## <a name="artificial-neural-networks"></a>Artificiell neurala-nätverk
 
@@ -111,15 +111,33 @@ I följande avsnitt lär du de flesta populära artificiell neurala-nätverkstop
 
 Feedforward neurala Network är den enklaste typen av artificiellt neurala-nätverk. I ett feedforward nätverk flyttas informationen endast i en riktning från indatanivå till output-lagret. Feedforward neurala Networks transformerar inmatningar genom att placera det genom en serie med dolda lager. Varje lager består av en uppsättning neurons och varje lager är fullständigt anslutet till alla neurons i lagret. Det senast fullständigt anslutna lagret (utmatnings lagret) representerar de genererade förutsägelserna.
 
-### <a name="recurrent-neural-network"></a>Aktuellt neurala-nätverk
+### <a name="recurrent-neural-network-rnn"></a>Aktuellt neurala-nätverk (RNN)
 
 Befintliga neurala-nätverk är ett mycket vanligt artificiellt neurala nätverk. Dessa nätverk sparar utdata för ett lager och matar tillbaka det till inmatnings lagret för att förutsäga lagrets resultat. Befintliga neurala-nätverk har fantastiska inlärnings möjligheter. De används ofta för komplexa uppgifter som tids serie prognoser, inlärnings hand skrift och tolknings språk.
 
-### <a name="convolutional-neural-network"></a>(Convolutional neurala-nätverk
+### <a name="convolutional-neural-network-cnn"></a>(Convolutional neurala Network (CNN)
 
 Ett (convolutional neurala-nätverk är ett särskilt effektivt artificiellt neurala-nätverk och det presenterar en unik arkitektur. Lager ordnas i tre dimensioner: bredd, höjd och djup. Neurons i ett lager ansluter inte till alla neurons i nästa skikt, men endast till en liten region i lagrets neurons. Den slutliga utmatningen reduceras till en enda kombination av sannolikhets poäng, ordnat längs djup dimensionen. 
 
 (Convolutional neurala-nätverk har använts i områden som video igenkänning, bild igenkänning och rekommenderade system.
+
+### <a name="generative-adversarial-network-gan"></a>Adversarial-nätverk (GAN)
+
+Adversarial-nätverk är för fullständiga modeller utbildade för att skapa realistiska innehåll, till exempel bilder. Det består av två nätverk som kallas Generator och diskriminator. Båda nätverken tränas samtidigt. Under utbildningen använder generatorn slumpmässiga brus för att skapa nya syntetiska data som liknar verkliga data. Diskriminator tar utdata från generatorn som indata och använder verkliga data för att avgöra om det genererade innehållet är verkligt eller syntetiskt. Varje nätverk konkurrerar med varandra. Generatorn försöker generera syntetiskt innehåll som inte kan särskiljas från verkligt innehåll och diskriminator försöker att korrekt klassificera indata som verkliga eller syntetiska. Utdatan används sedan för att uppdatera vikterna för båda nätverken så att de bättre uppnår sina respektive mål.
+
+Adversarial-nätverk används för att lösa problem som bild till bild översättning och ålders förlopp.
+
+### <a name="transformers"></a>Transformera
+
+Transformatorer är en modell arkitektur som passar för att lösa problem med sekvenser, till exempel text-eller tids serie data. De består av [kodare och avkodares lager](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)#Encoder). Kodaren tar emot indata och mappar den till en numerisk representation som innehåller information som sammanhang. Avkodaren använder information från kodaren för att skapa utdata, till exempel översatt text. Vad gör transformatorer annorlunda än andra arkitekturer som innehåller kodare och avkodare är underavsnitten Attention. Uppmärksamhet är en uppfattning om hur du fokuserar på vissa delar av ett indata baserat på betydelsen av deras sammanhang i förhållande till andra indata i en sekvens. När en nyhets artikel sammanfattas är det till exempel inte alla meningar som är relevanta för att beskriva huvud idén. Genom att fokusera på viktiga ord i artikeln kan du göra sammanfattningen i en enda mening, rubriken.
+
+Transformatorer har använts för att lösa problem som rör bearbetning av naturligt språk, till exempel översättning, text skapande, fråge svar och text Sammanfattning.
+
+En del välkända implementeringar av transformatorer är:
+
+- Dubbelriktade kodares representationer från transformatorer (BERT)
+- Fullständig för hands intränad transformator 2 (GPT-2)
+- Fullständig förtränad transformator 3 (GPT-3)
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Azure Certified Device Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 948fe25da8468e887693fe8c9f75f675dfbea858
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 497ffa4b3026491d6aa95df87708b3b1f2f1619e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969406"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308293"
 ---
 # <a name="azure-certified-device-requirements"></a>Krav för Azure-certifierad enhet 
 (kallades tidigare IoT Hub)
@@ -40,7 +40,7 @@ Ett löfte om Azure-certifierad enhets certifiering är:
 | **Gäller för**          | Löv enhet/gräns enhet                                      |
 | **Operativsystem**                  | Oberoende                                                     |
 | **Validerings typ**     | Automatiserad                                                    |
-| **Signaturverifiering**          | Enheten måste skicka eventuella telemetri scheman till IoT Hub. Microsoft tillhandahåller [Portal arbets flödet](https://certify.azure.come) för att köra testerna. Enhet till moln (krävs): **1.** Verifierar att enheten kan skicka meddelande till AICS-hanterade IoT Hub **2.** Användaren måste ange antal och frekvens för meddelanden. **3.** AICS validerar Telemetrin tas emot av Hub-instansen |
+| **Signaturverifiering**          | Enheten måste skicka eventuella telemetri scheman till IoT Hub. Microsoft tillhandahåller [Portal arbets flödet](https://certify.azure.com/) för att köra testerna. Enhet till moln (krävs): **1.** Verifierar att enheten kan skicka meddelande till AICS-hanterade IoT Hub **2.** Användaren måste ange antal och frekvens för meddelanden. **3.** AICS validerar Telemetrin tas emot av Hub-instansen |
 | **Resurser**           | [Certifierings steg](./overview.md) (har alla ytterligare resurser) |
 
 **Kunna DPS: Syftet med testet är att kontrol lera att enheten implementerar och stöder IoT Hub Device Provisioning Service med en av de tre metoderna för attestering**

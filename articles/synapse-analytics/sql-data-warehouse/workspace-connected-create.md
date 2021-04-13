@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/25/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 769ca4cf0ecbdba5fd80d977eb69c8a4f58df55f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 605f495fbc5913663499f5411abcaa531cea97ee
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98071195"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312220"
 ---
 # <a name="enabling-synapse-workspace-features-for-a-dedicated-sql-pool-formerly-sql-dw"></a>Aktivera Synapse-arbetsytans funktioner för en dedikerad SQL-pool (tidigare SQL DW)
 
@@ -24,6 +24,7 @@ Alla SQL Data Warehouse-användare kan nu komma åt och använda en befintlig de
 ## <a name="prerequisites"></a>Förutsättningar
 Innan du aktiverar Synapse-arbetsytan på ditt data lager måste du kontrol lera att du har följande
 - Behörighet att skapa och hantera de SQL-resurser som finns på den logiska SQL-servern.
+- Skriv behörighet för värden SQL Server. 
 - Rättigheter för att skapa Azure Synapse-resurser.
 - En Azure Active Directory administratör som identifierats på den logiska servern
 
