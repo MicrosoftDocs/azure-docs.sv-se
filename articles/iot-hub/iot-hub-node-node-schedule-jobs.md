@@ -1,6 +1,6 @@
 ---
-title: Schemalägg jobb med Azure IoT Hub (Node) | Microsoft Docs
-description: 'Schemalägga ett Azure IoT Hub-jobb för att anropa en direkt metod på flera enheter. Du kan använda Azure IoT SDK: er för Node.js för att implementera de simulerade enhetens appar och en tjänst-app för att köra jobbet.'
+title: Schemalägga jobb med Azure IoT Hub (Node) | Microsoft Docs
+description: Så här schemalägger du Azure IoT Hub jobb för att anropa en direktmetod på flera enheter. Du använder Azure IoT-SDK:er för Node.js att implementera de simulerade enhetsapparna och en tjänstapp för att köra jobbet.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,81 +9,81 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.custom: mqtt, devx-track-js
-ms.openlocfilehash: e1992c806619154fa7b3c33500b2e54fbc919f20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mqtt, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: dc0ea9817b9cbc27816354c48abbe26d79a83f04
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92151429"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107477918"
 ---
-# <a name="schedule-and-broadcast-jobs-nodejs"></a>Schema-och sändnings jobb (Node.js)
+# <a name="schedule-and-broadcast-jobs-nodejs"></a>Schemalägga och sända jobb (Node.js)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
-Azure IoT Hub är en fullständigt hanterad tjänst som gör det möjligt för en backend-app att skapa och spåra jobb som schemalägger och uppdaterar miljon tals enheter.  Jobb kan användas för följande åtgärder:
+Azure IoT Hub är en helt hanterad tjänst som gör att en backend-app kan skapa och spåra jobb som schemalägger och uppdaterar miljontals enheter.  Jobb kan användas för följande åtgärder:
 
 * Uppdatera önskade egenskaper
-* Uppdatera Taggar
-* Anropa direkt metoder
+* Uppdatera taggar
+* Anropa direktmetoder
 
-Ett jobb är konceptuellt, och spårar förloppet för körningen mot en uppsättning enheter som definieras av en enhets dubbla frågor.  En backend-app kan till exempel använda ett jobb för att anropa en metod för omstart på 10 000 enheter, som anges av en enhets dubbla frågor och schemaläggs vid ett senare tillfälle. Programmet kan sedan spåra förloppet när var och en av enheterna får och kör metoden starta om.
+Konceptuellt omsluter ett jobb en av dessa åtgärder och spårar körningsförloppet mot en uppsättning enheter, som definieras av en enhetstvillingfråga.  En backend-app kan till exempel använda ett jobb för att anropa en omstartsmetod på 10 000 enheter, som anges av en enhetstvillingfråga och schemaläggs vid ett senare tillfälle. Programmet kan sedan följa förloppet när var och en av dessa enheter tar emot och kör omstartsmetoden.
 
-Lär dig mer om var och en av dessa funktioner i dessa artiklar:
+Läs mer om var och en av dessa funktioner i följande artiklar:
 
-* Enhetens dubbla och egenskaper: [Kom igång med enhets dubbla](iot-hub-node-node-twin-getstarted.md) och [Självstudier: hur du använder enhetens dubbla egenskaper](tutorial-device-twins.md)
+* Enhetstvilling och egenskaper: [Kom igång med enhetstvillingarna](iot-hub-node-node-twin-getstarted.md) och [Självstudie: Använda egenskaper för enhetstvilling](tutorial-device-twins.md)
 
-* Direkta metoder: [IoT Hub Developer Guide – direkta metoder](iot-hub-devguide-direct-methods.md) och [Självstudier: direkta metoder](quickstart-control-device-node.md)
+* Direktmetoder: [IoT Hub utvecklarguide – direkta metoder och](iot-hub-devguide-direct-methods.md) [Självstudie: direkta metoder](quickstart-control-device-node.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 I den här självstudiekursen lär du dig att:
 
-* Skapa en Node.js simulerad Device-app som har en direkt metod som aktiverar **lockDoor**, som kan anropas av lösningens Server del.
+* Skapa en Node.js simulerad enhetsapp som har en direktmetod som aktiverar **lockDoor**, som kan anropas av lösningens backend-enhet.
 
-* Skapa en Node.js-konsolsession som anropar **lockDoor** Direct-metoden i den simulerade Device-appen med ett jobb och uppdaterar önskade egenskaper med ett enhets jobb.
+* Skapa en Node.js-konsolapp som anropar **metoden lockDoor** direct i den simulerade enhetsappen med hjälp av ett jobb och uppdaterar önskade egenskaper med hjälp av ett enhetsjobb.
 
-I slutet av den här självstudien har du två Node.js-appar:
+I slutet av den här självstudien har du två Node.js appar:
 
-* **simDevice.js**, som ansluter till din IoT-hubb med enhets identiteten och tar emot en **lockDoor** Direct-metod.
+* **simDevice.js**, som ansluter till din IoT-hubb med enhetsidentiteten och tar emot en **direkt lockDoor-metod.**
 
-* **scheduleJobService.js**, som anropar en direkt metod i den simulerade Device-appen och uppdaterar enhetens dubbla egenskaper med ett jobb.
+* **scheduleJobService.js**, som anropar en direktmetod i den simulerade enhetsappen och uppdaterar enhetstvillingens önskade egenskaper med hjälp av ett jobb.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Node.js version 10.0. x eller senare. [Förbereda utvecklings miljön](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) beskriver hur du installerar Node.js för den här själv studie kursen på antingen Windows eller Linux.
+* Node.js version 10.0.x eller senare. [Förbereda utvecklingsmiljön beskriver hur](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) du installerar Node.js den här självstudien i Windows eller Linux.
 
-* Ett aktivt Azure-konto. (Om du inte har något konto kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/pricing/free-trial/) på bara några minuter.)
+* Ett aktivt Azure-konto. (Om du inte har något konto kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/) på bara några minuter.)
 
-* Kontrol lera att port 8883 är öppen i brand väggen. Enhets exemplet i den här artikeln använder MQTT-protokoll, som kommunicerar via port 8883. Den här porten kan blockeras i vissa företags-och miljö nätverks miljöer. Mer information och sätt att kringgå det här problemet finns i [ansluta till IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Kontrollera att port 8883 är öppen i brandväggen. Enhetsexempel i den här artikeln använder MQTT-protokollet, som kommunicerar via port 8883. Den här porten kan blockeras i vissa företags- och utbildningsnätverksmiljöer. Mer information och sätt att komma runt det här problemet finns i [Ansluta till IoT Hub (MQTT).](iot-hub-mqtt-support.md#connecting-to-iot-hub)
 
 ## <a name="create-an-iot-hub"></a>Skapa en IoT Hub
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Registrera en ny enhet i IoT Hub
+## <a name="register-a-new-device-in-the-iot-hub"></a>Registrera en ny enhet i IoT-hubben
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-a-simulated-device-app"></a>Skapa en simulerad enhetsapp
 
-I det här avsnittet skapar du en Node.js-konsolsession som svarar på en direkt metod som anropas av molnet, vilket utlöser en simulerad **lockDoor** -metod.
+I det här avsnittet skapar du Node.js-konsolapp som svarar på en direktmetod som anropas av molnet, som utlöser en **simulerad lockDoor-metod.**
 
-1. Skapa en ny tom mapp med namnet **simDevice**.  I mappen **simDevice** skapar du en package.jspå en fil med hjälp av följande kommando i kommando tolken.  Acceptera alla standardvärden:
+1. Skapa en ny tom mapp med **namnet simDevice**.  I mappen **simDevice** skapar du en package.jspå filen med följande kommando i kommandotolken.  Acceptera alla standardvärden:
 
    ```console
    npm init
    ```
 
-2. I kommando tolken i mappen **simDevice** kör du följande kommando för att installera paketet **Azure-IoT-Device** SDK och **Azure-IoT-Device-MQTT** :
+2. I kommandotolken i **mappen simDevice** kör du följande kommando för att installera **SDK-paketet azure-iot-device** och **paketet azure-iot-device-mqtt:**
 
    ```console
    npm install azure-iot-device azure-iot-device-mqtt --save
    ```
 
-3. Med hjälp av en text redigerare skapar du en ny **simDevice.js** -fil i mappen **simDevice** .
+3. Med en textredigerare skapar du en **simDevice.js** fil i **mappen simDevice.**
 
-4. Lägg till följande "require"-instruktioner i början av **simDevice.js** -filen:
+4. Lägg till följande "require"-instruktioner  i början avsimDevice.jsfilen:
 
     ```javascript
     'use strict';
@@ -92,14 +92,14 @@ I det här avsnittet skapar du en Node.js-konsolsession som svarar på en direkt
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Lägg till en **connectionString**-variabel och använd den för att skapa en **klientinstans**. Ersätt `{yourDeviceConnectionString}` placeholder-värdet med enhets anslutnings strängen som du kopierade tidigare.
+5. Lägg till en **connectionString**-variabel och använd den för att skapa en **klientinstans**. Ersätt `{yourDeviceConnectionString}` platshållarvärdet med enhetsanslutningssträngen som du kopierade tidigare.
 
     ```javascript
     var connectionString = '{yourDeviceConnectionString}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
-6. Lägg till följande funktion för att hantera metoden **lockDoor** .
+6. Lägg till följande funktion för att hantera **lockDoor-metoden.**
 
     ```javascript
     var onLockDoor = function(request, response) {
@@ -117,7 +117,7 @@ I det här avsnittet skapar du en Node.js-konsolsession som svarar på en direkt
     };
     ```
 
-7. Lägg till följande kod för att registrera hanteraren för **lockDoor** -metoden.
+7. Lägg till följande kod för att registrera hanteraren för **lockDoor-metoden.**
 
    ```javascript
    client.open(function(err) {
@@ -130,37 +130,37 @@ I det här avsnittet skapar du en Node.js-konsolsession som svarar på en direkt
    });
    ```
 
-8. Spara och Stäng **simDevice.jss** filen.
+8. Spara och stäng **simDevice.js** filen.
 
 > [!NOTE]
-> För att göra det så enkelt som möjligt implementerar vi ingen princip för omförsök i den här självstudiekursen. I produktions koden bör du implementera principer för omförsök (till exempel en exponentiell backoff), enligt förslag i artikeln, [hantering av tillfälliga fel](/azure/architecture/best-practices/transient-faults).
+> För att göra det så enkelt som möjligt implementerar vi ingen princip för omförsök i den här självstudiekursen. I produktionskoden bör du implementera principer för omförsök (till exempel en exponentiell backoff), som föreslås i artikeln [Hantering av tillfälliga fel.](/azure/architecture/best-practices/transient-faults)
 >
 
-## <a name="get-the-iot-hub-connection-string"></a>Hämta anslutnings strängen för IoT Hub
+## <a name="get-the-iot-hub-connection-string"></a>Hämta IoT Hub-anslutningssträngen
 
 [!INCLUDE [iot-hub-howto-schedule-jobs-shared-access-policy-text](../../includes/iot-hub-howto-schedule-jobs-shared-access-policy-text.md)]
 
 [!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
 
-## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Schemalägg jobb för att anropa en direkt metod och uppdatera en enhets dubbla egenskaper
+## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Schemalägga jobb för att anropa en direktmetod och uppdatera en enhetstvillings egenskaper
 
-I det här avsnittet skapar du en Node.js-konsolsession som initierar en fjärran sluten **lockDoor** på en enhet med hjälp av en direkt metod och uppdaterar enhetens dubbla egenskaper.
+I det här avsnittet skapar du en Node.js-konsolapp som initierar en **fjärrlåsningsdörr** på en enhet med en direktmetod och uppdaterar enhetstvillingens egenskaper.
 
-1. Skapa en ny tom mapp med namnet **scheduleJobService**.  I mappen **scheduleJobService** skapar du en package.jspå en fil med hjälp av följande kommando i kommando tolken.  Acceptera alla standardvärden:
+1. Skapa en ny tom mapp med namnet **scheduleJobService**.  I mappen **scheduleJobService** skapar du en package.jsfil med följande kommando i kommandotolken.  Acceptera alla standardvärden:
 
     ```console
     npm init
     ```
 
-2. I kommando tolken i mappen **scheduleJobService** kör du följande kommando för att installera paketet **Azure-iothub** Device SDK och paketet **Azure-IoT-Device-MQTT** :
+2. I kommandotolken i mappen **scheduleJobService** kör du följande kommando för att installera **sdk-paketet azure-iothub** Device och **paketet azure-iot-device-mqtt:**
 
     ```console
     npm install azure-iothub uuid --save
     ```
 
-3. Med hjälp av en text redigerare skapar du en ny **scheduleJobService.js** -fil i mappen **scheduleJobService** .
+3. Använd en textredigerare och skapa en **nyscheduleJobService.js** i mappen **scheduleJobService.**
 
-4. Lägg till följande "require"-instruktioner i början av **scheduleJobService.js** -filen:
+4. Lägg till följande "require"-instruktioner  i början avscheduleJobService.jsfilen:
 
     ```javascript
     'use strict';
@@ -169,7 +169,7 @@ I det här avsnittet skapar du en Node.js-konsolsession som initierar en fjärra
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. Lägg till följande variabel deklarationer. Ersätt `{iothubconnectionstring}` placeholder-värdet med värdet som du kopierade i [Hämta IoT Hub-anslutningssträngen](#get-the-iot-hub-connection-string). Om du har registrerat en annan enhet än **myDeviceId**, ska du se till att ändra den i villkoret för frågan.
+5. Lägg till följande variabeldeklarationer. Ersätt `{iothubconnectionstring}` platshållarvärdet med det värde som du kopierade i [Hämta IoT Hub-anslutningssträngen](#get-the-iot-hub-connection-string). Om du har registrerat en annan enhet **än myDeviceId** måste du ändra den i frågevillkoret.
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -199,7 +199,7 @@ I det här avsnittet skapar du en Node.js-konsolsession som initierar en fjärra
     }
     ```
 
-7. Lägg till följande kod för att schemalägga jobbet som anropar enhets metoden:
+7. Lägg till följande kod för att schemalägga jobbet som anropar enhetsmetoden:
   
     ```javascript
     var methodParams = {
@@ -230,7 +230,7 @@ I det här avsnittet skapar du en Node.js-konsolsession som initierar en fjärra
     });
     ```
 
-8. Lägg till följande kod för att schemalägga jobbet för att uppdatera enheten:
+8. Lägg till följande kod för att schemalägga jobbet för att uppdatera enhetstvillingen:
 
     ```javascript
     var twinPatch = {
@@ -266,38 +266,38 @@ I det här avsnittet skapar du en Node.js-konsolsession som initierar en fjärra
     });
     ```
 
-9. Spara och Stäng **scheduleJobService.jss** filen.
+9. Spara och stäng **scheduleJobService.js** fil.
 
 ## <a name="run-the-applications"></a>Köra programmen
 
 Nu är det dags att köra programmen.
 
-1. I kommando tolken i mappen **simDevice** kör du följande kommando för att börja lyssna efter metoden starta om Direct.
+1. I kommandotolken i **mappen simDevice** kör du följande kommando för att börja lyssna efter direktmetoden för omstart.
 
     ```console
     node simDevice.js
     ```
 
-2. I kommando tolken i mappen **scheduleJobService** kör du följande kommando för att utlösa jobben för att låsa dörren och uppdatera den dubbla
+2. I kommandotolken i mappen **scheduleJobService** kör du följande kommando för att utlösa jobben för att låsa dörren och uppdatera tvillingen
 
     ```console
     node scheduleJobService.js
     ```
 
-3. Du ser enhets svaret till den direkta metoden och jobb status i-konsolen.
+3. Du ser enhetssvaret på direktmetoden och jobbstatusen i -konsolen.
 
-   Följande visar enhets svaret till den direkta metoden:
+   Nedan visas enhetssvaret på direktmetoden:
 
-   ![Simulerad enhets programs utdata](./media/iot-hub-node-node-schedule-jobs/sim-device.png)
+   ![Utdata från simulerad enhetsapp](./media/iot-hub-node-node-schedule-jobs/sim-device.png)
 
-   Nedan visas jobb för schemaläggning av tjänster för den direkta uppdateringen av Direct-metoden och enheten, och de jobb som körs till slut för ande:
+   Följande visar tjänstschemaläggningsjobben för direktmetoden och enhetstvillingens uppdatering och jobben som körs till slutförande:
 
-   ![Kör den simulerade Device-appen](./media/iot-hub-node-node-schedule-jobs/schedule-job-service.png)
+   ![Köra den simulerade enhetsappen](./media/iot-hub-node-node-schedule-jobs/schedule-job-service.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien använde du ett jobb för att schemalägga en direkt metod till en enhet och uppdateringen av enhetens egenskaper.
+I den här självstudien använde du ett jobb för att schemalägga en direktmetod till en enhet och uppdateringen av enhetstvillingens egenskaper.
 
-Om du vill fortsätta att komma igång med IoT Hub-och enhets hanterings mönster, t. ex. fjärran sluten av den inbyggda program varan, kan du läsa mer i [självstudie:](tutorial-firmware-update.md)
+Om du vill fortsätta att komma igång med IoT Hub och enhetshanteringsmönster, till exempel fjärruppdatering av inbyggd programvara via luften, kan du gå till Självstudie: Så här gör du en uppdatering [av den inbyggda programvaran.](tutorial-firmware-update.md)
 
-För att fortsätta komma igång med IoT Hub, se [komma igång med Azure IoT Edge](../iot-edge/quickstart-linux.md).
+Om du vill fortsätta komma igång IoT Hub i [Komma igång med Azure IoT Edge](../iot-edge/quickstart-linux.md).
