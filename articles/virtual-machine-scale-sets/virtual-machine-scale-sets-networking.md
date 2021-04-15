@@ -1,6 +1,6 @@
 ---
 title: Nätverk för skalningsuppsättningar för virtuella Azure-datorer
-description: Så här konfigurerar du några av de mer avancerade nätverks egenskaperna för skalnings uppsättningar för virtuella Azure-datorer.
+description: Så här konfigurationer du några av de mer avancerade nätverksegenskaperna för skalningsuppsättningar för virtuella Azure-datorer.
 author: ju-shim
 ms.author: jushiman
 ms.topic: how-to
@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 9ad761f289805d15d316fc6f528a0049adb36b30
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mimckitt
+ms.openlocfilehash: e427d51068115db27a36243d738c0e93a10d3cb1
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97722325"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375924"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Nätverk för skalningsuppsättningar för virtuella Azure-datorer
 
@@ -42,8 +42,8 @@ Azure accelererat nätverk förbättrar nätverkets prestanda genom att aktivera
 }
 ```
 
-## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Skalnings uppsättningar för virtuella Azure-datorer med Azure Load Balancer
-Se [Azure Load Balancer och Virtual Machine Scale Sets](../load-balancer/load-balancer-standard-virtual-machine-scale-sets.md) för mer information om hur du konfigurerar din Standard Load Balancer med Virtual Machine Scale Sets baserat på ditt scenario.
+## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Skalningsuppsättningar för virtuella Azure-datorer med Azure Load Balancer
+I [Azure Load Balancer och Virtual Machine Scale Sets](../load-balancer/load-balancer-standard-virtual-machine-scale-sets.md) du mer information om hur du konfigurerar Standard Load Balancer med Virtual Machine Scale Sets baserat på ditt scenario.
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Skapa en skalningsuppsättning som refererar till en programgateway
 Om du vill skapa en skalningsuppsättning som använder en programgateway refererar du till programgatewayens backend-adresspool i avsnittet ipConfigurations i skaluppsättningen, som i den här ARM-mallkonfigurationen:
@@ -86,7 +86,7 @@ Om du vill konfigurera anpassade DNS-servrar i en Azure-mall lägger du till en 
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Skapa en skalningsuppsättning med konfigurerbara domännamn för virtuella datorer
 För att skapa en skalningsuppsättning med ett anpassat DNS-namn för virtuella datorer med CLI lägger du till argumentet **--vm-domain-name** till kommandot **virtual machine scale set create** följt av en sträng som representerar domännamnet.
 
-Om du vill ange domän namnet i en Azure-mall lägger du till en **dnsSettings** -egenskap i avsnittet skalnings uppsättning **networkInterfaceConfigurations** . Exempel:
+Om du vill ange domännamnet i en Azure-mall lägger du till en **dnsSettings-egenskap** i **skalningsuppsättningens networkInterfaceConfigurations-avsnitt.** Exempel:
 
 ```json
 "networkProfile": {
@@ -125,14 +125,14 @@ Utdata för en enskild virtuell dator dns-namn anges i följande format:
 ```
 
 ## <a name="public-ipv4-per-virtual-machine"></a>Offentlig IPv4 per virtuell dator
-I allmänhet kräver inte skalningsuppsättningar för virtuella Azure-datorer sina egna offentliga IP-adresser. I de flesta fall är det mer ekonomiskt och säkert att associera en offentlig IP-adress till en belastningsutjämnare eller till en enskild virtuell dator (kallas även en hopp) som sedan dirigerar inkommande anslutningar till skalnings uppsättningens virtuella datorer efter behov (till exempel via inkommande NAT-regler).
+I allmänhet kräver inte skalningsuppsättningar för virtuella Azure-datorer sina egna offentliga IP-adresser. I de flesta fall är det mer ekonomiskt och säkert att associera en offentlig IP-adress till en lastbalanserare eller till en enskild virtuell dator (kallas även en jumpbox), som sedan dirigerar inkommande anslutningar till skalningsuppsättnings virtuella datorer efter behov (till exempel via inkommande NAT-regler).
 
 Men vissa scenarier kräver att skalningsuppsättningarna för virtuella datorer har sina egna offentliga IP-adresser. Ett exempel är spel, där en konsol kan behöva ansluta direkt till en virtuell dator i molnet som utför bearbetningen av spelets fysik. Ett annat exempel är när virtuella datorer behöver göra externa anslutningar till varandra över regioner i en distribuerad databas.
 
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Skapa en skalningsuppsättning med en offentlig IP per virtuell dator
 För att skapa en skalningsuppsättning som tilldelar varje virtuell dator en offentlig IP-adress med hjälp av CLI lägger du till parametern **--public-ip-per-vm** till kommandot **vmss create**. 
 
-Om du vill skapa en skalnings uppsättning med hjälp av en Azure-mall ser du till att API-versionen av Microsoft. Compute/virtualMachineScaleSets-resursen är minst **2017-03-30** och lägger till en **publicIpAddressConfiguration** JSON-egenskap i avsnittet för skalnings uppsättningen ipConfigurations. Exempel:
+Om du vill skapa en skalningsuppsättning med en Azure-mall kontrollerar du att API-versionen av resursen Microsoft.Compute/virtualMachineScaleSets är minst **2017-03-30** och lägger till en **publicIpAddressConfiguration** JSON-egenskap i skalningsuppsättningens ipConfigurations-avsnitt. Exempel:
 
 ```json
 "publicIpAddressConfiguration": {
@@ -169,7 +169,7 @@ Fråga [Azure Resource Explorer](https://resources.azure.com):
 1. Expandera din prenumeration.
 1. Expandera din resursgrupp.
 1. Expandera *providers*.
-1. Expandera *Microsoft. Compute*.
+1. Expandera *Microsoft.Compute*.
 1. Expandera *virtualMachineScaleSets*.
 1. Expandera din skalningsuppsättning.
 1. Klicka på *publicipaddresses*.
@@ -382,25 +382,25 @@ az vmss show \
 ]
 ```
 
-## <a name="make-networking-updates-to-specific-instances"></a>Gör nätverks uppdateringar till vissa instanser
+## <a name="make-networking-updates-to-specific-instances"></a>Göra nätverksuppdateringar till specifika instanser
 
-Du kan göra nätverks uppdateringar till vissa instanser av skalnings uppsättningar för virtuella datorer. 
+Du kan göra nätverksuppdateringar för specifika vm-skalningsuppsättningsinstanser. 
 
-Du kan `PUT` Uppdatera nätverks konfigurationen med instansen. Detta kan användas för att lägga till eller ta bort nätverkskort (NIC) eller ta bort en instans från en backend-pool.
+Du kan `PUT` mot instansen uppdatera nätverkskonfigurationen. Detta kan användas för att till exempel lägga till eller ta bort nätverkskort (NIC) eller ta bort en instans från en backend-pool.
 
 ```
 PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
 ```
 
-I följande exempel visas hur du lägger till en andra IP-konfiguration till ditt nätverkskort.
+I följande exempel visas hur du lägger till en andra IP-konfiguration till nätverkskortet.
 
-1. `GET` information om en angiven instans av en skalnings uppsättning för virtuella datorer.
+1. `GET` information om en specifik vm-skalningsuppsättningsinstans.
     
     ``` 
     GET https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
     ```
 
-    *Följande var förenklat för att endast Visa nätverks parametrar för det här exemplet.*
+    *Följande förenklades för att endast visa nätverksparametrar för det här exemplet.*
 
     ```json
     {
@@ -450,14 +450,14 @@ I följande exempel visas hur du lägger till en andra IP-konfiguration till dit
     }
     ```
  
-2. `PUT` mot instansen, uppdatera för att lägga till ytterligare IP-konfiguration. Detta är liknande för att lägga till ytterligare `networkInterfaceConfiguration` .
+2. `PUT` mot instansen och uppdaterar för att lägga till den ytterligare IP-konfigurationen. Detta påminner om när du lägger till ytterligare `networkInterfaceConfiguration` .
 
     
     ```
     PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
     ```
 
-    *Följande var förenklat för att endast Visa nätverks parametrar för det här exemplet.*
+    *Följande förenklades för att endast visa nätverksparametrar för det här exemplet.*
 
     ```json
       {

@@ -1,35 +1,35 @@
 ---
-title: PowerShell-exempel för Azure Active Directory program hantering
-description: Dessa PowerShell-exempel används för appar som du hanterar i Azure Active Directory-klienten. Du kan använda dessa exempel skript för att hitta förfallo information om hemligheter och certifikat.
+title: PowerShell-exempel Azure Active Directory programhantering
+description: Dessa PowerShell-exempel används för appar som du hanterar i din Azure Active Directory klientorganisation. Du kan använda dessa exempelskript för att hitta förfalloinformation om hemligheter och certifikat.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 02/18/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: mifarca
-ms.openlocfilehash: f5f7ec8245a43440a400b9ca6b55bf1093eb62cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b6314935bfafc2fe6288c30619e1d01242a991d
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102636196"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378830"
 ---
-# <a name="azure-active-directory-powershell-examples-for-application-management"></a>Azure Active Directory PowerShell-exempel för program hantering
+# <a name="azure-active-directory-powershell-examples-for-application-management"></a>Azure Active Directory PowerShell-exempel för programhantering
 
-Följande tabell innehåller länkar till exempel på PowerShell-skript för hantering av Azure AD-program. Dessa exempel kräver antingen:
-- [AzureAD v2 PowerShell för Graph-modul](/powershell/azure/active-directory/install-adv2) eller,
-- [AzureAD v2 PowerShell för för hands versionen av Graph module](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true), om inget annat anges.
+Följande tabell innehåller länkar till PowerShell-skriptexempel för Azure AD-programhantering. Dessa exempel kräver antingen:
+- [AzureAD V2 PowerShell för Graph-modulen](/powershell/azure/active-directory/install-adv2) eller,
+- Förhandsversionen [av AzureAD V2 PowerShell för Graph-modulen,](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)om inget annat anges.
 
-Mer information om de cmdletar som används i de här exemplen finns i [program](/powershell/module/azuread/#applications).
+Mer information om de cmdlets som används i dessa exempel finns i [Program](/powershell/module/azuread/#applications).
 
 | Länk | Beskrivning |
 |---|---|
-|**Skript för program hantering**||
-| [Exportera hemligheter och certifikat (app-registreringar)](scripts/powershell-export-all-app-registrations-secrets-and-certs.md) | Exportera hemligheter och certifikat för app-registreringar i Azure Active Directory klient organisation. |
-| [Exportera hemligheter och certifikat (företags program)](scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md) | Exportera hemligheter och certifikat för företags program i Azure Active Directory klient organisationen. |
-| [Exportera utgångna hemligheter och certifikat](scripts/powershell-export-apps-with-expriring-secrets.md) | Exportera registrerings program med utgångna hemligheter och certifikat och deras ägare i Azure Active Directory klient organisationen. |
-| [Exportera hemligheter och certifikat som upphör att gälla efter det datum som krävs](scripts/powershell-export-apps-with-secrets-beyond-required.md) | Exportera app-registreringar med hemligheter och certifikat som upphör att gälla efter det datum som krävs i Azure Active Directory klient organisationen. Den icke-interaktiva Client_Credentials OAuth-flödet används. |
+|**Programhanteringsskript**||
+| [Exportera hemligheter och certifikat (appregistreringar)](scripts/powershell-export-all-app-registrations-secrets-and-certs.md) | Exportera hemligheter och certifikat för appregistreringar i Azure Active Directory klientorganisation. |
+| [Exportera hemligheter och certifikat (företagsappar)](scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md) | Exportera hemligheter och certifikat för företagsappar i Azure Active Directory klientorganisation. |
+| [Exportera utgångna hemligheter och certifikat](scripts/powershell-export-apps-with-expriring-secrets.md) | Exportera appregistreringar med utgångna hemligheter och certifikat och deras ägare i Azure Active Directory klientorganisation. |
+| [Exportera hemligheter och certifikat som upphör att gälla efter det obligatoriska datumet](scripts/powershell-export-apps-with-secrets-beyond-required.md) | Exportera appregistreringar med hemligheter och certifikat som går ut efter det obligatoriska datumet Azure Active Directory klientorganisationen. Detta använder det icke-interaktiva Client_Credentials Oauth-flödet. |

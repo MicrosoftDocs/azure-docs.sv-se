@@ -1,53 +1,53 @@
 ---
-title: Så här tar du bort en användares åtkomst till ett program i Azure Active Directory
+title: Ta bort en användares åtkomst till ett program i Azure Active Directory
 description: Förstå hur du tar bort en användares åtkomst till ett program i Azure Active Directory
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 11/02/2020
-ms.author: kenwith
-ms.openlocfilehash: e6a6c00811a7b87156802897db62a4a10130f130
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: iangithinji
+ms.openlocfilehash: 958abc5f9be443d66037a6d9fe8d8779e6e37e0e
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99257363"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379595"
 ---
-# <a name="how-to-remove-a-users-access-to-an-application"></a>Så här tar du bort en användares åtkomst till ett program
+# <a name="how-to-remove-a-users-access-to-an-application"></a>Ta bort en användares åtkomst till ett program
 
 Den här artikeln hjälper dig att förstå hur du tar bort en användares åtkomst till ett program.
 
-## <a name="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application"></a>Jag vill ta bort tilldelningen för en specifik användare eller grupp till ett program
+## <a name="i-want-to-remove-a-specific-users-or-groups-assignment-to-an-application"></a>Jag vill ta bort en viss användares eller grupps tilldelning till ett program
 
-Om du vill ta bort en användare eller grupp tilldelning till ett program följer du stegen i artikeln [ta bort en användare eller grupp tilldelning från en företags app i Azure Active Directory](./assign-user-or-group-access-portal.md) artikeln.
+Om du vill ta bort en användar- eller grupptilldelning till ett program följer du stegen i artikeln Ta bort en användar- eller [grupptilldelning från en företagsapp i Azure Active Directory.](./assign-user-or-group-access-portal.md)
 
 ## <a name="i-want-to-disable-all-access-to-an-application-for-every-user"></a>Jag vill inaktivera all åtkomst till ett program för varje användare
 
-Om du vill inaktivera alla användar inloggningar till ett program följer du stegen i avsnittet [Inaktivera användar inloggningar för en Enterprise-App i Azure Active Directory](./disable-user-sign-in-portal.md) artikeln.
+Om du vill inaktivera alla användar inloggningar till ett program följer du stegen i artikeln Inaktivera användar inloggningar för en [företagsapp i Azure Active Directory.](./disable-user-sign-in-portal.md)
 
 ## <a name="i-want-to-delete-an-application-entirely"></a>Jag vill ta bort ett program helt
 
-[Snabb starts serien i program hantering](delete-application-portal.md) innehåller vägledning om hur du tar bort ett program från Azure Active Directory-klienten.
+[Snabbstartsserien om programhantering innehåller vägledning](delete-application-portal.md) om hur du tar bort ett program från din Azure Active Directory klientorganisation.
 
-## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Jag vill inaktivera alla framtida åtgärder för användar medgivande till alla program
+## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Jag vill inaktivera alla framtida åtgärder för användarmedgivande för alla program
 
-Om du inaktiverar användar medgivande för hela katalogen kan slutanvändarna inte godkänna något program. Administratörer kan fortfarande godkänna användarens räkning. Om du vill ha mer information om program medgivande och varför du kanske inte vill göra detta, Läs [förstå användar-och administratörs medgivande](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent). Se även [behörigheter och medgivande](../develop/v2-permissions-and-consent.md).
+Om du inaktiverar användarmedgivande för hela katalogen kan slutanvändare inte godkänna program. Administratörer kan fortfarande godkänna för användarens räkning. Mer information om programmedgivande och varför du kanske vill göra detta finns i Förstå [användar- och administratörsmedgivande.](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent) Se även Behörigheter [och medgivande.](../develop/v2-permissions-and-consent.md)
 
-Följ dessa instruktioner om du vill **inaktivera alla framtida användar medgivande åtgärder i hela katalogen**:
+Om **du vill inaktivera alla framtida åtgärder för användarmedgivande i hela katalogen** följer du dessa anvisningar:
 
-1.  Öppna [**Azure Portal**](https://portal.azure.com/) och logga in som **Global administratör.**
+1.  Öppna [**Azure Portal**](https://portal.azure.com/) och logga in som **global administratör.**
 
-2.  Öppna **tillägget Azure Active Directory** 
+2.  Öppna **Azure Active Directory tillägget** 
 
-3.  Klicka på **företags program** på navigerings menyn.
+3.  Klicka **på Företagsprogram** på navigeringsmenyn.
 
-5.  Klicka på **användar inställningar**.
+5.  Klicka **på Användarinställningar.**
 
-6.  Ange att **användarna ska kunna tillåta att appar får åtkomst till företags data för deras räkning** , växla till **Nej** och klicka på knappen Spara.
+6.  Ställ in **Användare kan tillåta att appar får åtkomst till företagsdata för** deras räkning på **Nej** och klicka på knappen Spara.
 
 
 ## <a name="next-steps"></a>Nästa steg

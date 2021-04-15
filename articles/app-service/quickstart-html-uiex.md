@@ -1,29 +1,29 @@
 ---
-title: 'Snabb start: skapa en statisk HTML-webbapp'
-description: Distribuera din första HTML-Hello World till Azure App Service på några minuter. Du distribuerar med git, som är ett av många sätt att distribuera till App Service.
+title: 'Snabbstart: Skapa en statisk HTML-webbapp'
+description: Distribuera din första HTML-Hello World att Azure App Service på några minuter. Du distribuerar med Git, vilket är ett av många sätt att distribuera till App Service.
 author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
+ms.custom: mvc, cli-validate, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 538d414ce606b944fcea7adbb1c817386e13090e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: be555039375e2d71d00bcf8ee58898f54cc3645a
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178583"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379578"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Skapa en statisk HTML-webbapp i Azure
 
-Den här snabb starten visar hur du distribuerar en enkel HTML + CSS-webbplats till <abbr title="En HTTP-baserad tjänst som är värd för webb program, REST API: er och mobila backend-program.">Azure App Service</abbr>. Du kommer att slutföra den här snabb starten i [Cloud Shell](../cloud-shell/overview.md), men du kan också köra dessa kommandon lokalt med [Azure CLI](/cli/azure/install-azure-cli).
+Den här snabbstarten visar hur du distribuerar en enkel HTML+CSS-webbplats till <abbr title="En HTTP-baserad tjänst som är värd för webbprogram, REST-API:er och mobila serverdelsprogram.">Azure App Service</abbr>. Du slutför den här snabbstarten i [Cloud Shell](../cloud-shell/overview.md), men du kan också köra dessa kommandon lokalt med [Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="1-prepare-your-environment"></a>1. Förbered din miljö
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-I [Cloud Shell](../cloud-shell/overview.md)skapar du en snabb starts katalog och ändrar sedan till den.
+I [Cloud Shell](../cloud-shell/overview.md)du en snabbstartskatalog och ändrar sedan till den.
 
 ```bash
 mkdir quickstart
@@ -38,7 +38,7 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 ```
 <hr/>
 
-## <a name="2-create-a-web-app"></a>2. skapa en webbapp
+## <a name="2-create-a-web-app"></a>2. Skapa en webbapp
 
 Ändra till den katalog som innehåller exempelkoden och kör `az webapp up` kommandot. **Ersätt** `<app-name>` med ett globalt unikt namn.
 
@@ -51,25 +51,25 @@ az webapp up --location westeurope --name <app_name> --html
 <details>
 <summary>Felsökning</summary>
 <ul>
-<li>Om <code>az</code> kommandot inte känns igen kontrollerar du att Azure CLI är installerat enligt beskrivningen i <a href="#1-prepare-your-environment">förbereda din miljö</a>.</li>
-<li>Ersätt <code>&lt;app-name&gt;</code> med ett namn som är unikt för alla Azure ( <em> giltiga tecken är <code>a-z</code> , <code>0-9</code> och <code>-</code> </em> ). Ett utmärkt mönster är att använda en kombination av företagets namn och en app-ID.</li>
-<li><code>--sku F1</code>Argumentet skapar webb programmet på den kostnads fria pris nivån. Utelämna det här argumentet om du vill använda en snabbare Premium-nivå, vilket innebär en timkostnad.</li>
-<li>Argumentet innehåller information <code>--html</code> om att behandla allt mappinnehåll som statiskt innehåll och inaktivera Bygg automatisering.</li>
-<li>Du kan också inkludera argumentet <code>--location &lt;location-name&gt;</code> där <code>&lt;location-name&gt;</code> är en tillgänglig Azure-region. Du kan hämta en lista över tillåtna regioner för ditt Azure-konto genom att köra <a href="/cli/azure/appservice#az-appservice-list-locations"> <code>az account list-locations</code> </a> kommandot.</li>
+<li>Om kommandot inte känns igen kontrollerar du att du har Installerat Azure CLI enligt <code>az</code> beskrivningen i <a href="#1-prepare-your-environment">Förbereda din miljö.</a></li>
+<li>Ersätt <code>&lt;app-name&gt;</code> med ett namn som är unikt för hela Azure ( giltiga tecken är , och <em> <code>a-z</code> <code>0-9</code> <code>-</code> </em> ). Ett bra mönster är att använda en kombination av företagets namn och en appidentifierare.</li>
+<li>Argumentet <code>--sku F1</code> skapar webbappen på prisnivån Kostnadsfri. Utelämna det här argumentet för att använda en snabbare premiumnivå, vilket medför en kostnad per timme.</li>
+<li>Argumentet <code>--html</code> säger att allt mappinnehåll ska behandlas som statiskt innehåll och att byggautomatisering ska inaktiveras.</li>
+<li>Du kan även inkludera argumentet där är <code>--location &lt;location-name&gt;</code> <code>&lt;location-name&gt;</code> en tillgänglig Azure-region. Du kan hämta en lista över tillåtna regioner för ditt Azure-konto genom att köra <a href="/cli/azure/appservice#az-appservice-list-locations"> <code>az account list-locations</code> </a> kommandot .</li>
 </ul>
 </details>
 
 Det kan ta några minuter att slutföra kommandot. 
 
 <details>
-<summary>Vad <code>az webapp up</code> gör jag?</summary>
+<summary>Vad <code>az webapp up</code> gör?</summary>
 <p>Kommandot <code>az webapp up</code> utför följande åtgärder:</p>
 <ul>
 <li>Skapa en standardresursgrupp.</li>
-<li>Skapa en standard App Service plan.</li>
-<li><a href="/cli/azure/webapp#az-webapp-create">Skapa en app service-app</a> med det angivna namnet.</li>
+<li>Skapa en App Service plan.</li>
+<li><a href="/cli/azure/webapp#az-webapp-create">Skapa en App Service med</a> det angivna namnet.</li>
 <li><a href="/azure/app-service/deploy-zip">Zip-distribuera</a> filer från den aktuella arbetskatalogen till appen.</li>
-<li>Under körningen innehåller den meddelanden om att skapa, logga och ZIP-distribution.</li>
+<li>När den körs visas meddelanden om resursskapande, loggning och ZIP-distribution.</li>
 </ul>
 
 När den är klar visas information som liknar följande exempel:
@@ -90,7 +90,7 @@ När den är klar visas information som liknar följande exempel:
 
 </details>
 
-Du behöver `resourceGroup` värdet för att [Rensa resurser](#6-clean-up-resources) senare.
+Du behöver värdet `resourceGroup` för att rensa [resurser](#6-clean-up-resources) senare.
 
 <hr/>
 
@@ -104,25 +104,25 @@ Sidan körs som en Azure App Service-webbapp.
 
 <hr/>
 
-## <a name="4-update-and-redeploy-the-app"></a>4. uppdatera och distribuera om appen
+## <a name="4-update-and-redeploy-the-app"></a>4. Uppdatera och distribuera om appen
 
-I Cloud Shell **skriver** `nano index.html` du för att öppna nano text redigeraren. 
+I Cloud Shell du **för att** öppna `nano index.html` nanotextredigeraren. 
 
-`<h1>`Ändra "Azure App Service-exempel statisk HTML-webbplats" till "Azure App Service" i taggen rubrik.
+I `<h1>` rubriktaggen ändrar du "Azure App Service - Sample Static HTML Site" till "Azure App Service".
 
 ![Nano index.html](media/quickstart-html/nano-index-html.png)
 
 **Spara** ändringarna med hjälp av kommandot `^O` .
 
-**Avsluta** nano genom att använda kommandot `^X` .
+**Avsluta** nano med hjälp av kommandot `^X` .
 
-Distribuera appen igen med `az webapp up` kommandot.
+Distribuera om appen med `az webapp up` kommandot .
 
 ```bash
 az webapp up --html
 ```
 
-Växla tillbaka till webbläsarfönstret som öppnades i **Bläddra till app** -steget.
+Växla tillbaka till webbläsarfönstret som öppnades i **steget Bläddra till** appen.
 
 **Uppdatera** sidan.
 
@@ -130,15 +130,15 @@ Växla tillbaka till webbläsarfönstret som öppnades i **Bläddra till app** -
 
 <hr/>
 
-## <a name="5-manage-your-new-azure-app"></a>5. hantera din nya Azure-App
+## <a name="5-manage-your-new-azure-app"></a>5. Hantera din nya Azure-app
 
-**Navigera** till [Azure Portal](https://portal.azure.com)., 
+**Gå** till [Azure Portal](https://portal.azure.com)., 
 
-**Sök** efter och **Välj** **app Services**.
+**Sök** efter och **välj** **App Services**.
 
 ![Välj App Services i Azure Portal](./media/quickstart-html/portal0.png)
 
-**Välj** namnet på din Azure-App.
+**Välj** namnet på din Azure-app.
 
 ![Portalnavigering till Azure-app](./media/quickstart-html/portal1.png)
 

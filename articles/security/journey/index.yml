@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: Dokumentation om cloud security journey
+summary: Oavsett om du överväger att flytta till molnet eller redan har migrerat till molnet finns här vägledning för varje fas i din molnsäkerhetsresa.
+metadata:
+  title: Dokumentation om Azure Security Journey
+  description: Hitta vägledning för varje fas av säkerhetsresan i Azure.
+  services: security
+  ms.service: security
+  ms.subservice: journey
+  ms.topic: landing-page
+  author: TerryLanfear
+  ms.author: terrylan
+  manager: rkarlin
+  ms.date: 04/11/2021
+  ms.openlocfilehash: 624721931c459a164d4eae9957467c90d5845252
+  ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 04/13/2021
+  ms.locfileid: "107379908"
+landingContent:
+- title: Om Azure-säkerhet
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Delat ansvar i molnet
+      url: ../fundamentals/shared-responsibility.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Säkerhetstjänster från end-to-end
+      url: ../fundamentals/end-to-end.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - linkListType: concept
+    links:
+    - text: Så skyddar Microsoft Azure-infrastrukturen
+      url: ../fundamentals/infrastructure.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Säkerhet och integritet för Azure-plattformen
+      url: ../fundamentals/platform.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: Kom igång
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Implementera säkerhet i hela verksamheten
+      url: /azure/cloud-adoption-framework/get-started/security?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - linkListType: concept
+    links:
+    - text: Utforma en säker arkitektur
+      url: /azure/architecture/framework/security/security-principles?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Migrera säkra arbetsbelastningar
+      url: /azure/cloud-adoption-framework/migrate/azure-migration-guide/?tabs=MigrationTools?toc=/azure/security/fundamentals/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: Skydda dina molnarbetsbelastningar
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Rekommenderade säkerhetsmetoder
+      url: ../fundamentals/best-practices-and-patterns.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Säkerhetskontroller och baslinjer
+      url: ../benchmarks/introduction.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+  - linkListType: concept
+    links:
+    - text: Identitetshantering
+      url: ../fundamentals/identity-management-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Nätverkssäkerhet
+      url: ../fundamentals/network-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Datasäkerhet och kryptering
+      url: ../fundamentals/encryption-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Microsoft-programvara mot skadlig kod
+      url: ../fundamentals/antimalware.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Säkerhet för virtuella datorer
+      url: ../fundamentals/virtual-machines-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: Minimera hot
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Hotskydd
+      url: ../fundamentals/threat-detection.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Hotanalys
+      url: /azure/architecture/framework/security/design-threat-model?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- title: Förstå vad som händer i din miljö
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure-loggning
+      url: ../fundamentals/log-audit.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Granska
+      url: /azure/architecture/framework/security/monitor-audit?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - text: Identitets- och nätverksrisker
+      url: /azure/architecture/framework/security/monitor-identity-network?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
