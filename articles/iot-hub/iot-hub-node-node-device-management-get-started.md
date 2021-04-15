@@ -1,6 +1,6 @@
 ---
-title: Kom igång med Azure IoT Hub Device Management (Node) | Microsoft Docs
-description: Så här använder du IoT Hub enhets hantering för att starta en fjärran sluten enhet. Du använder Azure IoT SDK för Node.js för att implementera en simulerad enhets app som innehåller en direkt metod och en tjänst-app som anropar den direkta metoden.
+title: Kom igång med Azure IoT Hub enhetshantering (Node) | Microsoft Docs
+description: Hur du använder IoT Hub för att initiera en omstart av en fjärransluten enhet. Du använder Azure IoT SDK för Node.js att implementera en simulerad enhetsapp som innehåller en direktmetod och en tjänstapp som anropar direktmetoden.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -8,45 +8,45 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.custom: mqtt, devx-track-js
-ms.openlocfilehash: cfc0fa45c08f917b2e0b4a0b055e801173a4ba39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mqtt, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 557cdc5fb71f998dc0b69e52148cc93da7cc8ea7
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91252025"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107477986"
 ---
-# <a name="get-started-with-device-management-nodejs"></a>Kom igång med enhets hantering (Node.js)
+# <a name="get-started-with-device-management-nodejs"></a>Kom igång med enhetshantering (Node.js)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
 I den här självstudiekursen lär du dig att:
 
-* Använd [Azure Portal](https://portal.azure.com) för att skapa en IoT Hub och skapa en enhets identitet i din IoT-hubb.
+* Använd Azure Portal [för](https://portal.azure.com) att skapa en IoT Hub och skapa en enhetsidentitet i din IoT-hubb.
 
-* Skapa en simulerad enhets app som innehåller en direkt metod som startar om enheten. Direkta metoder anropas från molnet.
+* Skapa en simulerad enhetsapp som innehåller en direktmetod som startar om enheten. Direktmetoder anropas från molnet.
 
-* Skapa en Node.js-konsolsession som anropar metoden starta om direkt i den simulerade appen via din IoT Hub.
+* Skapa en Node.js-konsolapp som anropar direktmetoden för omstart i den simulerade enhetsappen via din IoT-hubb.
 
-I slutet av den här självstudien har du två Node.js-konsol program:
+I slutet av den här självstudien har du två Node.js konsolappar:
 
-* **dmpatterns_getstarted_device.js**, som ansluter till din IoT-hubb med enhets identiteten som skapades tidigare, tar emot en direkt metod för omstart, simulerar en fysisk omstart och rapporterar tiden för den senaste omstarten.
+* **dmpatterns_getstarted_device.js**, som ansluter till din IoT-hubb med enhetsidentiteten som skapades tidigare, tar emot en direktmetod för omstart, simulerar en fysisk omstart och rapporterar tiden för den senaste omstarten.
 
-* **dmpatterns_getstarted_service.js**, som anropar en direkt metod i den simulerade Device-appen, visar svaret och visar uppdaterade rapporterade egenskaper.
+* **dmpatterns_getstarted_service.js**, som anropar en direktmetod i den simulerade enhetsappen, visar svaret och visar de uppdaterade rapporterade egenskaperna.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Node.js version 10.0. x eller senare. [Förbereda utvecklings miljön](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) beskriver hur du installerar Node.js för den här själv studie kursen på antingen Windows eller Linux.
+* Node.js version 10.0.x eller senare. [Förbered utvecklingsmiljön beskriver hur](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) du installerar Node.js den här självstudien i Windows eller Linux.
 
-* Ett aktivt Azure-konto. (Om du inte har något konto kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/pricing/free-trial/) på bara några minuter.)
+* Ett aktivt Azure-konto. (Om du inte har något konto kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/) på bara några minuter.)
 
-* Kontrol lera att port 8883 är öppen i brand väggen. Enhets exemplet i den här artikeln använder MQTT-protokoll, som kommunicerar via port 8883. Den här porten kan blockeras i vissa företags-och miljö nätverks miljöer. Mer information och sätt att kringgå det här problemet finns i [ansluta till IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Kontrollera att port 8883 är öppen i brandväggen. Enhetsexempel i den här artikeln använder MQTT-protokollet, som kommunicerar via port 8883. Den här porten kan blockeras i vissa företags- och utbildningsnätverksmiljöer. Mer information och sätt att komma runt det här problemet finns i [Ansluta till IoT Hub (MQTT).](iot-hub-mqtt-support.md#connecting-to-iot-hub)
 
 ## <a name="create-an-iot-hub"></a>Skapa en IoT Hub
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Registrera en ny enhet i IoT Hub
+## <a name="register-a-new-device-in-the-iot-hub"></a>Registrera en ny enhet i IoT-hubben
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
@@ -56,9 +56,9 @@ I det här avsnittet får du:
 
 * Skapa en Node.js-konsolapp som svarar på en direkt metod som anropas via molnet
 
-* Utlösa omstart av en simulerad enhet
+* Utlösa en simulerad omstart av enheten
 
-* Använd de rapporterade egenskaperna för att aktivera enhets dubbla frågor för att identifiera enheter och när de startades om senast
+* Använd de rapporterade egenskaperna för att aktivera enhetstvillingfrågor för att identifiera enheter och när de senast startades om
 
 1. Skapa en tom mapp med namnet **manageddevice**.  I mappen **manageddevice** skapar du en package.json-fil med hjälp av följande kommando i Kommandotolken.  Acceptera alla standardvärden:
 
@@ -66,15 +66,15 @@ I det här avsnittet får du:
     npm init
     ```
 
-2. I kommando tolken i mappen **manageddevice** kör du följande kommando för att installera paketet **Azure-IoT-Device** SDK och **Azure-IoT-Device-MQTT** :
+2. I kommandotolken i mappen **manageddevice** kör du följande kommando för att installera **SDK-paketet azure-iot-device** och **paketet azure-iot-device-mqtt:**
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-3. Med hjälp av en text redigerare skapar du en **dmpatterns_getstarted_device.js** -fil i mappen **manageddevice**
+3. Med hjälp av en textredigerare skapar **dmpatterns_getstarted_device.js** en fil i **mappen manageddevice.**
 
-4. Lägg till följande "require"-instruktioner i början av **dmpatterns_getstarted_device.js** -filen:
+4. Lägg till följande "require"-instruktioner  i början avdmpatterns_getstarted_device.jsfilen:
 
     ```javascript
     'use strict';
@@ -83,14 +83,14 @@ I det här avsnittet får du:
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Lägg till en **connectionString**-variabel och använd den för att skapa en **klientinstans**.  Ersätt `{yourdeviceconnectionstring}` placeholder-värdet med enhets anslutnings strängen som du kopierade tidigare i [Registrera en ny enhet i IoT Hub](#register-a-new-device-in-the-iot-hub).  
+5. Lägg till en **connectionString**-variabel och använd den för att skapa en **klientinstans**.  Ersätt `{yourdeviceconnectionstring}` platshållarvärdet med enhetsanslutningssträngen som du kopierade tidigare [i Registrera en ny enhet i IoT-hubben](#register-a-new-device-in-the-iot-hub).  
 
     ```javascript
     var connectionString = '{yourdeviceconnectionstring}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
-6. Lägg till följande funktion för att implementera den direkta metoden på enheten
+6. Lägg till följande funktion för att implementera direktmetoden på enheten
 
     ```javascript
     var onReboot = function(request, response) {
@@ -132,7 +132,7 @@ I det här avsnittet får du:
     };
     ```
 
-7. Öppna anslutningen till IoT-hubben och starta den direkta metoden lyssnare:
+7. Öppna anslutningen till din IoT-hubb och starta lyssnaren för direktmetod:
 
     ```javascript
     client.open(function(err) {
@@ -145,36 +145,36 @@ I det här avsnittet får du:
     });
     ```
 
-8. Spara och Stäng **dmpatterns_getstarted_device.jss** filen.
+8. Spara och stäng **dmpatterns_getstarted_device.js** filen.
 
 > [!NOTE]
-> För att göra det så enkelt som möjligt implementerar vi ingen princip för omförsök i den här självstudiekursen. I produktions koden bör du implementera principer för omförsök (till exempel en exponentiell backoff), enligt förslag i artikeln, [hantering av tillfälliga fel](/azure/architecture/best-practices/transient-faults).
+> För att göra det så enkelt som möjligt implementerar vi ingen princip för omförsök i den här självstudiekursen. I produktionskoden bör du implementera principer för omförsök (till exempel en exponentiell backoff), som föreslås i artikeln [Hantering av tillfälliga fel.](/azure/architecture/best-practices/transient-faults)
 
-## <a name="get-the-iot-hub-connection-string"></a>Hämta anslutnings strängen för IoT Hub
+## <a name="get-the-iot-hub-connection-string"></a>Hämta IoT Hub-anslutningssträngen
 
 [!INCLUDE [iot-hub-howto-device-management-shared-access-policy-text](../../includes/iot-hub-howto-device-management-shared-access-policy-text.md)]
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Utlösa en fjärran sluten omstart på enheten med en direkt metod
+## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Utlösa en fjärrstart på enheten med en direktmetod
 
-I det här avsnittet skapar du en Node.js-konsolsession som initierar en fjärromstart på en enhet med hjälp av en direkt metod. Appen använder enhets dubbla frågor för att identifiera den senaste omstarts tiden för enheten.
+I det här avsnittet skapar du en Node.js-konsolapp som initierar en fjärrstart på en enhet med hjälp av en direktmetod. Appen använder enhetstvillingfrågor för att identifiera den senaste omstartstiden för enheten.
 
-1. Skapa en tom mapp med namnet **triggerrebootondevice**. I mappen **triggerrebootondevice** skapar du en package.jspå en fil med hjälp av följande kommando i kommando tolken. Acceptera alla standardvärden:
+1. Skapa en tom mapp med **namnet triggerrebootondevice**. I mappen **triggerrebootondevice** skapar du en package.jspå filen med följande kommando i kommandotolken. Acceptera alla standardvärden:
 
     ```cmd/sh
     npm init
     ```
 
-2. I kommando tolken i mappen **triggerrebootondevice** kör du följande kommando för att installera paketet **Azure-iothub** Device SDK och paketet **Azure-IoT-Device-MQTT** :
+2. I kommandotolken i **mappen triggerrebootondevice** kör du följande kommando för att installera **SDK-paketet azure-iothub** Device och **paketet azure-iot-device-mqtt:**
 
     ```cmd/sh
     npm install azure-iothub --save
     ```
 
-3. Med hjälp av en text redigerare skapar du en **dmpatterns_getstarted_service.js** -fil i mappen **triggerrebootondevice**
+3. Använd en textredigerare och skapa **endmpatterns_getstarted_service.js** i **mappen triggerrebootondevice.**
 
-4. Lägg till följande "require"-instruktioner i början av **dmpatterns_getstarted_service.js** -filen:
+4. Lägg till följande "require"-instruktioner  i början avdmpatterns_getstarted_service.jsfilen:
 
     ```javascript
     'use strict';
@@ -183,7 +183,7 @@ I det här avsnittet skapar du en Node.js-konsolsession som initierar en fjärro
     var Client = require('azure-iothub').Client;
     ```
 
-5. Lägg till följande variabel deklarationer och Ersätt `{iothubconnectionstring}` plats hållarnas värde med IoT Hub-anslutningssträngen som du kopierade tidigare i [Hämta IoT Hub-anslutningssträngen](#get-the-iot-hub-connection-string):
+5. Lägg till följande variabeldeklarationer och ersätt platshållarvärdet med den IoT Hub-anslutningssträng som du kopierade tidigare i `{iothubconnectionstring}` [Hämta IoT Hub-anslutningssträngen](#get-the-iot-hub-connection-string):
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -192,7 +192,7 @@ I det här avsnittet skapar du en Node.js-konsolsession som initierar en fjärro
     var deviceToReboot = 'myDeviceId';
     ```
 
-6. Lägg till följande funktion för att anropa enhets metoden för att starta om mål enheten:
+6. Lägg till följande funktion för att anropa enhetsmetoden för att starta om målenheten:
 
     ```javascript
     var startRebootDevice = function(twin) {
@@ -215,7 +215,7 @@ I det här avsnittet skapar du en Node.js-konsolsession som initierar en fjärro
     };
     ```
 
-7. Lägg till följande funktion för att fråga efter enheten och hämta den senaste omstarts tiden:
+7. Lägg till följande funktion för att fråga efter enheten och hämta den senaste omstartstiden:
 
     ```javascript
     var queryTwinLastReboot = function() {
@@ -236,39 +236,39 @@ I det här avsnittet skapar du en Node.js-konsolsession som initierar en fjärro
     };
     ```
 
-8. Lägg till följande kod för att anropa de funktioner som utlöser metoden för omstart direkt och fråga efter senaste omstart:
+8. Lägg till följande kod för att anropa de funktioner som utlöser direktmetoden för omstart och fråga efter den senaste omstarten:
 
     ```javascript
     startRebootDevice();
     setInterval(queryTwinLastReboot, 2000);
     ```
 
-9. Spara och Stäng **dmpatterns_getstarted_service.jss** filen.
+9. Spara och stäng **dmpatterns_getstarted_service.js** fil.
 
 ## <a name="run-the-apps"></a>Kör apparna
 
-Du är nu redo att köra apparna.
+Nu är du redo att köra apparna.
 
-1. I kommando tolken i mappen **manageddevice** kör du följande kommando för att börja lyssna efter metoden starta om Direct.
+1. I kommandotolken i **mappen manageddevice** kör du följande kommando för att börja lyssna efter direktmetoden för omstart.
 
     ```cmd/sh
     node dmpatterns_getstarted_device.js
     ```
 
-2. I kommando tolken i mappen **triggerrebootondevice** kör du följande kommando för att utlösa fjärromstart och fråga efter enhetens för att hitta den senaste omstarts tiden.
+2. Kör följande kommando i kommandotolken i mappen **triggerrebootondevice** för att utlösa fjärrstarten och fråga efter enhetstvillingen för att hitta den senaste omstartstiden.
 
     ```cmd/sh
     node dmpatterns_getstarted_service.js
     ```
 
-3. Du ser enhets svaret för metoden starta om direkt och status för omstart i konsolen.
+3. Du ser enhetssvaret på direktmetoden för omstart och omstartsstatusen i -konsolen.
 
-   Nedan visas enhets svaret på den direkta metoden för omstart som skickas av tjänsten:
+   Nedan visas enhetssvaret på den direktinstartsmetod som skickas av tjänsten:
 
-   ![manageddevice app-utdata](./media/iot-hub-node-node-device-management-get-started/device.png)
+   ![utdata för manageddevice-appen](./media/iot-hub-node-node-device-management-get-started/device.png)
 
-   Följande visar den tjänst som utlöser omstarten och avsöker enheten för den senaste omstarts tiden:
+   Följande visar den tjänst som utlöser omstarten och avsöker enhetstvillingen under den senaste omstarten:
 
-   ![triggerrebootondevice app-utdata](./media/iot-hub-node-node-device-management-get-started/service.png)
+   ![utdata för triggerrebootondevice-appen](./media/iot-hub-node-node-device-management-get-started/service.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
