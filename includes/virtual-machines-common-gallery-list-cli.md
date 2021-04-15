@@ -7,35 +7,35 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 01/28/2020
 ms.author: cynthn
-ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 6432c125c4fedd962faa28a4c84c7494300b0472
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file
+ms.openlocfilehash: 1c06f5ab8995e7285365fa2d0ee77c327be2b1bd
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92756088"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107386701"
 ---
-## <a name="list-information"></a>List information
+## <a name="list-information"></a>Listinformation
 
-Hämta plats, status och annan information om tillgängliga bild gallerier med hjälp av [AZ sig-listan](/cli/azure/sig#az-sig-list).
+Hämta plats, status och annan information om de tillgängliga avbildningsgallerierna med [hjälp av az sig list](/cli/azure/sig#az-sig-list).
 
 ```azurecli-interactive 
 az sig list -o table
 ```
 
-Visa en lista över bild definitionerna i ett galleri, inklusive information om OS-typ och status, med hjälp av [AZ sig-avbildnings definitions lista](/cli/azure/sig/image-definition#az-sig-image-definition-list).
+Lista bilddefinitionerna i ett galleri, inklusive information om os-typ och status, med [az sig image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list).
 
 ```azurecli-interactive 
 az sig image-definition list --resource-group myGalleryRG --gallery-name myGallery -o table
 ```
 
-Visa en lista med delade avbildnings versioner i ett galleri med hjälp av [AZ sig-avbildning – versions lista](/cli/azure/sig/image-version#az-sig-image-version-list).
+Visa en lista över de delade avbildningsversionerna i ett galleri [med hjälp av az sig image-version list](/cli/azure/sig/image-version#az-sig-image-version-list).
 
 ```azurecli-interactive
 az sig image-version list --resource-group myGalleryRG --gallery-name myGallery --gallery-image-definition myImageDefinition -o table
 ```
 
-Hämta ID för en avbildnings version med hjälp av [AZ sig-avbildning-version show](/cli/azure/sig/image-version#az-sig-image-version-show).
+Hämta ID:t för en avbildningsversion [med hjälp av az sig image-version show](/cli/azure/sig/image-version#az-sig-image-version-show).
 
 ```azurecli-interactive
 az sig image-version show \

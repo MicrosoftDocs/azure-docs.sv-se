@@ -1,115 +1,137 @@
 ---
-title: Azure Monitor för SAP-lösnings leverantörer | Microsoft Docs
-description: Den här artikeln innehåller svar på vanliga frågor om Azure Monitor för SAP Solutions-leverantörer.
+title: Azure Monitor för SAP-lösningar leverantörer| Microsoft Docs
+description: Den här artikeln innehåller svar på vanliga frågor om Azure Monitor för SAP-lösningsleverantörer.
 author: rdeltcheva
 ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 1282d1916d669f1026707e15cc8d5437d885087f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93e97f1f04aea2a31b62b2014a88a5aaa998ed2d
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669004"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376094"
 ---
-# <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Azure Monitor för SAP Solutions-providers (för hands version)
+# <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Azure Monitor för SAP-lösningsleverantörer (förhandsversion)
 
 ## <a name="overview"></a>Översikt  
 
-I samband med Azure Monitor för SAP-lösningar refererar en *providertyp* till en speciell *Provider*. Till exempel *SAP HANA*, som har kon figurer ATS för en speciell komponent i SAP-landskap, t. ex. SAP HANA Database. En provider innehåller anslutnings informationen för motsvarande komponent och hjälper till att samla in telemetridata från den komponenten. En Azure Monitor för SAP-lösningar (även kallat SAP Monitor-resurs) kan konfigureras med flera leverantörer av samma providertyp eller flera providers för flera typer av leverantörer.
+När det gäller Azure Monitor för SAP-lösningar avser *en providertyp* en specifik *provider*. Till exempel *SAP HANA*, som är konfigurerad för en specifik komponent i SAP-liggande, till exempel SAP HANA databas. En provider innehåller anslutningsinformationen för motsvarande komponent och hjälper till att samla in telemetridata från komponenten. En Azure Monitor för SAP-lösningar resurs (även kallat SAP-övervakningsresurs) kan konfigureras med flera providers av samma providertyp eller flera providers av flera providertyper.
    
-Kunderna kan välja att konfigurera olika typer av leverantörer för att aktivera insamling av data från motsvarande komponenter i deras SAP-landskap. Kunder kan till exempel konfigurera en provider för SAP HANA typ av Provider, en annan provider för kluster leverantör med hög tillgänglighet och så vidare.  
+Kunder kan välja att konfigurera olika leverantörstyper för att aktivera datainsamling från motsvarande komponent i sap-miljön. Kunder kan till exempel konfigurera en provider för SAP HANA providertyp, en annan provider för klusterprovidertyp med hög tillgänglighet och så vidare.  
 
-Kunder kan också välja att konfigurera flera leverantörer av en speciell typ av Provider för att återanvända samma SAP Monitor-resurs och tillhör ande hanterade grupp. Luta mer om hanterad resurs grupp. För offentlig för hands version stöds följande typer av providers:   
+Kunder kan också välja att konfigurera flera leverantörer av en viss providertyp för att återanvända samma SAP-övervakningsresurs och tillhörande hanterade grupp. Läs mer om hanterad resursgrupp. För offentlig förhandsversion stöds följande providertyper:   
 - SAP HANA
 - Kluster med hög tillgänglighet
 - Microsoft SQL Server
+- SAP NetWeaver
 
-![Azure Monitor för SAP Solutions-leverantörer](./media/azure-monitor-sap/azure-monitor-providers.png)
+![Azure Monitor för SAP-lösningsleverantörer](./media/azure-monitor-sap/azure-monitor-providers.png)
 
-Kunderna rekommenderas att konfigurera minst en provider från de tillgängliga leverantörs typerna när du distribuerar SAP Monitor-resursen. Genom att konfigurera en leverantör initierar kunden data insamling från motsvarande komponent som providern är konfigurerad för.   
+Kunder rekommenderas att konfigurera minst en provider från de tillgängliga providertyperna vid tidpunkten för distributionen av SAP Monitor-resursen. Genom att konfigurera en provider initierar kunderna datainsamling från motsvarande komponent som providern är konfigurerad för.   
 
-Om kunderna inte konfigurerar några providrar vid distribution av SAP Monitor-resursen, kommer inga telemetridata att samlas in, även om SAP Monitor-resursen kommer att distribueras. Kunder har möjlighet att lägga till providrar efter distribution via SAP Monitor-resurs inom Azure Portal. Kunder kan lägga till eller ta bort providrar från SAP Monitor-resursen när som helst.
+Om kunderna inte konfigurerar några leverantörer vid tidpunkten för distributionen av SAP-övervakningsresursen samlas inga telemetridata in, även om SAP-övervakningsresursen kommer att distribueras. Kunder har möjlighet att lägga till leverantörer efter distributionen via SAP-övervakningsresursen i Azure Portal. Kunder kan lägga till eller ta bort providers från SAP-övervakningsresursen när som helst.
 
 > [!Tip]
-> Om du vill att Microsoft ska implementera en speciell Provider måste du lämna feedback via länken i slutet av det här dokumentet eller kontakta ditt konto team.  
+> Om du vill att Microsoft ska implementera en specifik provider kan du lämna feedback via länken i slutet av det här dokumentet eller kontakta ditt kontoteam.  
 
-## <a name="provider-type-sap-hana"></a>Typ av Provider SAP HANA
+## <a name="provider-type-sap-hana"></a>Providertyp SAP HANA
 
-Kunder kan konfigurera en eller flera providers av leverantörs typ *SAP HANA* för att aktivera data insamling från SAP HANA-databasen. SAP HANA-providern ansluter till SAP HANA-databasen via SQL-port, hämtar telemetridata från databasen och skickar den till Log Analytics-arbetsytan i kund prenumerationen. SAP HANA-providern samlar in data var 1 minut från SAP HANA-databasen.  
+Kunder kan konfigurera en eller flera leverantörer av providertyp *SAP HANA* att aktivera datainsamling från SAP HANA databas. Providern SAP HANA ansluter till SAP HANA-databasen via SQL-porten, hämtar telemetridata från databasen och push-erar dem till Log Analytics-arbetsytan i kundprenumerationen. Providern SAP HANA samlar in data var 1 minut från den SAP HANA databasen.  
 
-I en offentlig för hands version kan kunderna se följande data med SAP HANA provider: underliggande infrastruktur användning, SAP HANA värd status, SAP HANA systemreplikering och SAP HANA data för att säkerhetskopiera telemetri. Om du vill konfigurera SAP HANA-providern måste värd-IP-adress, HANA SQL-portnummer och SYSTEMDB användar namn och lösen ord anges. Kunder rekommenderas att konfigurera SAP HANA-providern mot SYSTEMDB, men fler providers kan konfigureras mot andra databas klienter.
+I den offentliga förhandsversionen kan kunder förvänta sig att se följande data hos SAP HANA-providern: Underliggande infrastrukturanvändning, SAP HANA-värdstatus, SAP HANA-systemreplikering och SAP HANA Backup-telemetridata. För att SAP HANA provider krävs värd-IP-adress, HANA SQL-portnummer och SYSTEMDB-användarnamn och lösenord. Kunder rekommenderas att konfigurera SAP HANA mot SYSTEMDB, men fler leverantörer kan konfigureras mot andra databasklienter.
 
-![Azure Monitor för SAP Solutions-providers – SAP HANA](./media/azure-monitor-sap/azure-monitor-providers-hana.png)
+![Azure Monitor för SAP-lösningsleverantörer – SAP HANA](./media/azure-monitor-sap/azure-monitor-providers-hana.png)
 
-## <a name="provider-type-high-availability-cluster"></a>Typ av leverantörs kluster med hög tillgänglighet
-Kunder kan konfigurera en eller flera leverantörer av leverantörs typ *kluster med hög tillgänglighet* för att aktivera data insamling från pacemaker-kluster i SAP-landskapet. Kluster leverantören med hög tillgänglighet ansluter till pacemaker, använder [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) slut punkt, hämtar telemetridata från databasen och skickar den till Log Analytics arbets yta i kund prenumerationen. Kluster leverantören med hög tillgänglighet samlar in data var 60 sekund från pacemaker.  
+## <a name="provider-type-high-availability-cluster"></a>Providertyp kluster med hög tillgänglighet
+Kunder kan konfigurera en eller flera leverantörer av providertyp kluster med hög tillgänglighet för att aktivera datainsamling från *Pacemaker-kluster* i SAP-liggande. Klusterleverantören med hög tillgänglighet ansluter till Pacemaker med [hjälp ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) slutpunkten, hämtar telemetridata från databasen och push-erar dem till Log Analytics-arbetsytan i kundprenumerationen. Klusterleverantören med hög tillgänglighet samlar in data var 60:e sekund från Pacemaker.  
 
-I en offentlig för hands version kan kunderna se följande data med kluster leverantör med hög tillgänglighet:   
- - Kluster status som visas som sammanslagning av nod-och resurs status 
- - [andra](https://github.com/ClusterLabs/ha_cluster_exporter/blob/master/doc/metrics.md) 
+I den offentliga förhandsversionen kan kunder förvänta sig att se följande data med klusterprovidern för hög tillgänglighet:   
+ - Klusterstatus representeras som sammanslagning av nod- och resursstatus 
+ - [Andra](https://github.com/ClusterLabs/ha_cluster_exporter/blob/master/doc/metrics.md) 
 
-![Azure Monitor för SAP Solutions-leverantörer – kluster med hög tillgänglighet](./media/azure-monitor-sap/azure-monitor-providers-pacemaker-cluster.png)
+![Azure Monitor sap-lösningsleverantörer – kluster med hög tillgänglighet](./media/azure-monitor-sap/azure-monitor-providers-pacemaker-cluster.png)
 
-För att konfigurera en kluster leverantör med hög tillgänglighet ingår två primära steg:
+Två primära steg ingår för att konfigurera en klusterprovider med hög tillgänglighet:
 
-1. Installera [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) i *varje* nod i pacemaker-klustret.
+1. Installera [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) på *varje nod* i pacemakerklustret.
 
    Du har två alternativ för att installera ha_cluster_exporter:
    
-   - Använd Azure Automation skript för att distribuera ett kluster med hög tillgänglighet. Skripten installeras [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) på varje klusternod.  
-   - Gör en [manuell installation](https://github.com/ClusterLabs/ha_cluster_exporter#manual-clone--build). 
+   - Använd Azure Automation för att distribuera ett kluster med hög tillgänglighet. Skripten installeras [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) varje klusternod.  
+   - Gör en [manuell installation.](https://github.com/ClusterLabs/ha_cluster_exporter#manual-clone--build) 
 
-2. Konfigurera en kluster leverantör med hög tillgänglighet för *varje* nod i pacemaker-klustret.
+2. Konfigurera en klusterprovider med hög tillgänglighet *för varje* nod i pacemakerklustret.
 
-   Följande information krävs för att konfigurera kluster leverantören med hög tillgänglighet:
+   För att konfigurera klusterprovidern med hög tillgänglighet krävs följande information:
    
-   - **Namn**. Ett namn för den här providern. Det måste vara unikt för den här Azure Monitor för SAP-lösningar-instans.
-   - **Prometheus-slutpunkt**. http \: // \<servername or ip address\> : 9664/Metrics.
-   - **Sid**. För SAP-system använder du SAP SID. För andra system (t. ex. NFS-kluster) använder du ett namn med tre bokstäver för klustret. SID måste skilja sig från andra kluster som övervakas.   
-   - **Kluster namn**. Kluster namnet som används när klustret skapas. Kluster namnet kan hittas i kluster egenskapen `cluster-name` .
-   - **Hostname**. Linux-värdnamn för den virtuella datorn.  
+   - **Namn**. Ett namn för den här providern. Det bör vara unikt för den här Azure Monitor för SAP-lösningsinstansen.
+   - **Prometheus-slutpunkt**. http \: // \<servername or ip address\> :9664/metrics.
+   - **SID**. För SAP-system använder du SAP SID. För andra system (till exempel NFS-kluster) använder du ett namn med tre tecken för klustret. SID måste vara skild från andra kluster som övervakas.   
+   - **Klusternamn**. Klusternamnet som används när klustret skapas. Klusternamnet finns i klusteregenskapen `cluster-name` .
+   - **Värdnamn**. Linux-värdnamnet för den virtuella datorn.  
 
 
-## <a name="provider-type-os-linux"></a>Provider typ OS (Linux)
-Kunder kan konfigurera en eller flera providrar för providerns typ av operativ system (Linux) för att aktivera data insamling från BareMetal eller VM-noden. OS-providern (Linux) ansluter till BareMetal eller VM-noder, med [Node_Exporter](https://github.com/prometheus/node_exporter)   slut punkt, hämtar telemetridata från noderna och skickar dem till Log Analytics arbets yta i kund prenumerationen. OS (Linux) samlar in data var 60: e sekund för de flesta måtten från noderna. 
+## <a name="provider-type-os-linux"></a>Providertypen OS (Linux)
+Kunder kan konfigurera en eller flera leverantörer av providertyp OS (Linux) för att aktivera datainsamling från BareMetal eller VM Node. OS-providern (Linux) ansluter till BareMetal- eller VM-noder med hjälp av Node_Exporter-slutpunkten, hämtar telemetridata från noderna och push-erar dem till Log Analytics-arbetsytan i kundprenumerationen. [](https://github.com/prometheus/node_exporter)   OS-providern (Linux) samlar in data var 60:e sekund för de flesta mått från noder. 
 
-I en offentlig för hands version kan kunderna se följande data med OS-Provider (Linux): 
-   - CPU-användning, CPU-användning per process 
-   - Disk användning, I/O-läsning & skrivning 
-   - Minnes distribution, minnes användning, växlings minnes användning 
-   - Nätverks användning, inkommande & utgående trafik information i nätverket. 
+I den offentliga förhandsversionen kan kunder förvänta sig att se följande data med OS-providern (Linux): 
+   - CPU-användning, CPU-användning efter process 
+   - Diskanvändning, I/O& skrivning 
+   - Minnesdistribution, minnesanvändning, minnesväxlingsanvändning 
+   - Nätverksanvändning, inkommande nätverkstrafik & utgående trafikinformation. 
 
-För att konfigurera en OS-Provider (Linux) är två primära steg inblandade:
-1. Installera [Node_Exporter](https://github.com/prometheus/node_exporter)   på varje BareMetal eller VM-noder.
-   Du har två alternativ för att installera [Node_exporter](https://github.com/prometheus/node_exporter): 
-      - För Automation-installation med Ansible använder du [Node_Exporter](https://github.com/prometheus/node_exporter) på varje BAREMETAL eller VM-noder för att installera OS-providern (Linux).  
-      - Gör en [manuell installation](https://prometheus.io/docs/guides/node-exporter/).
+För att konfigurera en OS-provider (Linux) ingår två huvudsakliga steg:
+1. Installera [Node_Exporter på varje](https://github.com/prometheus/node_exporter)   BareMetal- eller VM-noder.
+   Du har två alternativ för att [installera Node_exporter](https://github.com/prometheus/node_exporter): 
+      - För Automation-installation med Ansible använder [Node_Exporter](https://github.com/prometheus/node_exporter) på varje BareMetal- eller VM-noder för att installera OS-providern (Linux).  
+      - Gör en [manuell installation.](https://prometheus.io/docs/guides/node-exporter/)
 
-2. Konfigurera en OS-Provider (Linux) för varje BareMetal eller instans av VM-noden i din miljö. 
-   Om du vill konfigurera OS (Linux)-providern krävs följande information: 
-      - Namn. Ett namn för den här providern. Det måste vara unikt för den här Azure Monitor för SAP-lösningar-instans. 
-      - Endpoint för Node-verktyget. Vanligt vis http:// <servername or ip address> : 9100/Metrics 
+2. Konfigurera en OS-provider (Linux) för varje BareMetal- eller VM-nodinstans i din miljö. 
+   För att konfigurera OS-providern (Linux) krävs följande information: 
+      - Namn. Ett namn för den här providern. Det bör vara unikt för den här Azure Monitor för SAP-lösningsinstansen. 
+      - Nodexporterslutpunkt. Vanligtvis <servername or ip address> http://:9100/metrics 
 
 > [!NOTE]
-> 9100 är en port som exponeras för Node_Exporter slut punkt.
+> 9100 är en port som exponeras för Node_Exporter slutpunkt.
 
 > [!Warning]
-> Se till att Node-exporten fortsätter att köras efter nodens omstart. 
+> Se till att Node Exporter fortsätter att köras efter omstart av noden. 
 
 
-## <a name="provider-type-microsoft-sql-server"></a>Typ av Provider Microsoft SQL Server
+## <a name="provider-type-microsoft-sql-server"></a>Providertyp Microsoft SQL Server
 
-Kunder kan konfigurera en eller flera providers av leverantörs typ *Microsoft SQL Server* för att aktivera data insamling från [SQL Server på virtuella datorer](https://azure.microsoft.com/services/virtual-machines/sql-server/). SQL Server providern ansluter till Microsoft SQL Server över SQL-porten hämtar telemetridata från databasen och skickar dem till arbets ytan Log Analytics i kund prenumerationen. SQL Server måste konfigureras för SQL-autentisering och en SQL Server inloggning, med SAP DB som standard databas för providern, måste skapas. SQL Server-Provider samlar in data mellan var 60: e sekund i varje timme från SQL Server.  
+Kunder kan konfigurera en eller flera leverantörer av leverantörstyp *Microsoft SQL Server* aktivera datainsamling från [SQL Server på virtuella datorer](https://azure.microsoft.com/services/virtual-machines/sql-server/). SQL Server-providern ansluter till Microsoft SQL Server via SQL-porten, hämtar telemetridata från databasen och push-erar dem till Log Analytics-arbetsytan i kundprenumerationen. Den SQL Server måste konfigureras för SQL-autentisering och en SQL Server inloggning med SAP DB som standarddatabas för providern måste skapas. SQL Server samlar in data mellan var 60:e sekund upp till varje timme från SQL Server.  
 
-I en offentlig för hands version kan kunderna se följande data med SQL Server provider: underliggande infrastruktur användning, översta SQL-uttryck, högsta största tabell, problem som registrerats i SQL Server fel loggar, blockera processer och andra.  
+I den offentliga förhandsversionen kan kunder förvänta sig att se följande data hos SQL Server-providern: underliggande infrastrukturanvändning, de främsta SQL-uttrycken, den största tabellen, problem som registrerats i SQL Server-felloggarna, blockerande processer med mera.  
 
-Om du vill konfigurera Microsoft SQL Server providern måste du ange ID för SAP-system, värd-IP-adress, SQL Server port nummer och SQL Server inloggnings namn och lösen ord.
+För att Microsoft SQL Server en provider krävs SAP-system-ID, värd-IP-adress, SQL Server-portnummer och SQL Server inloggningsnamn och lösenord.
 
-![Azure Monitor för SAP Solutions-leverantörer – SQL](./media/azure-monitor-sap/azure-monitor-providers-sql.png)
+![Azure Monitor för SAP-lösningsleverantörer – SQL](./media/azure-monitor-sap/azure-monitor-providers-sql.png)
+
+## <a name="provider-type-sap-netweaver"></a>Providertyp SAP NetWeaver
+
+Kunder kan konfigurera en eller flera leverantörer av providertyp SAP NetWeaver för att aktivera datainsamling från SAP NetWeaver-lagret. AMS NetWeaver-providern använder det befintliga [SAPControl-webbtjänstgränssnittet](https://www.sap.com/documents/2016/09/0a40e60d-8b7c-0010-82c7-eda71af511fa.html) för att hämta lämplig telemetriinformation.
+
+För den aktuella versionen är nedan de standardbaserade SOAP-webbmetoder som anropas av AMS.
+|Webbmetod|    Abap|   Java|   Mått|
+|--|--|--|--|
+|GetSystemInstanceList| X|  X|  Instanstillgänglighet, meddelandeserver, gateway, ICM, ABAP-tillgänglighet|
+|GetProcessList|    X|  X|  Om instanslistan är RED kan vi se vilken process som orsakar att servern är RED|
+|GetQueueStatistic| X|  X|  Köstatistik (DIA/BATCH/UPD)|
+|ABAPGetWPTable|    X|   -| Användning av arbetsprocess|
+|EnqGetStatistic|   X   |X  |Lås|
+
+I den offentliga förhandsversionen kan kunder förvänta sig att se följande data med SAP NetWeaver-providern: 
+- System- och instanstillgänglighet
+- Användning av arbetsprocess
+- Köanvändning
+- Statistik över låsning iqueue.
+
+![image](https://user-images.githubusercontent.com/75772258/114581825-a9f2eb00-9c9d-11eb-8e6f-79cee7c5093f.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Skapa din första Azure Monitor för SAP-lösnings resurs.
-- Har du frågor om Azure Monitor för SAP-lösningar? Läs avsnittet med [vanliga frågor och svar](./azure-monitor-faq.md)
+- Skapa din första Azure Monitor för SAP-lösningsresursen.
+- Har du frågor om Azure Monitor för SAP-lösningar? Läs avsnittet [vanliga frågor och](./azure-monitor-faq.md) svar

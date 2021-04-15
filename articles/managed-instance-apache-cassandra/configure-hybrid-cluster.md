@@ -1,57 +1,66 @@
 ---
-title: Snabb start – konfigurera ett hybrid kluster med Azure Managed instance för Apache Cassandra
-description: Den här snabb starten visar hur du konfigurerar ett hybrid kluster med en Azure-hanterad instans för Apache Cassandra.
+title: Snabbstart – Konfigurera ett hybridkluster med Azure Managed Instance för Apache Cassandra
+description: Den här snabbstarten visar hur du konfigurerar ett hybridkluster med Azure Managed Instance för Apache Cassandra.
 author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: b022bff9db87c248881cd18cc21569aaef8f404a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9f3ad2a5d5b275ff611653855eff73bd36afda9f
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562145"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379425"
 ---
-# <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>Snabb start: Konfigurera ett hybrid kluster med en Azure-hanterad instans för Apache Cassandra (för hands version)
+# <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>Snabbstart: Konfigurera ett hybridkluster med Azure Managed Instance för Apache Cassandra (förhandsversion)
 
-Azure Managed instance för Apache Cassandra tillhandahåller automatiserade distributions-och skalnings åtgärder för hanterade Apache Cassandra-datacenter med öppen källkod. Den här tjänsten hjälper dig att påskynda hybrid scenarier och minska det löpande underhållet.
+Azure Managed Instance för Apache Cassandra tillhandahåller automatiserade distributioner och skalningsåtgärder för hanterade Apache Cassandra-datacenter med öppen källkod. Den här tjänsten hjälper dig att påskynda hybridscenarier och minska pågående underhåll.
 
 > [!IMPORTANT]
-> Azure Managed instance för Apache Cassandra är för närvarande en offentlig för hands version.
+> Azure Managed Instance för Apache Cassandra finns för närvarande i offentlig förhandsversion.
 > Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
 > Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Den här snabb starten visar hur du använder Azure CLI-kommandon för att konfigurera ett hybrid kluster. Om du har befintliga data Center i en lokal eller lokal miljö kan du använda Azure Managed instance för Apache Cassandra för att lägga till andra data Center i klustret och underhålla dem.
+Den här snabbstarten visar hur du använder Azure CLI-kommandon för att konfigurera ett hybridkluster. Om du har befintliga datacenter i en lokal eller lokal miljö kan du använda Azure Managed Instance för Apache Cassandra för att lägga till andra datacenter i klustret och underhålla dem.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-* Den här artikeln kräver Azure CLI-version 2.12.1 eller senare. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+* Den här artikeln kräver Azure CLI version 2.12.1 eller senare. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
 
-* [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) med anslutning till din egen värd eller lokala miljö. Mer information om hur du ansluter lokala miljöer till Azure finns i artikeln [ansluta ett lokalt nätverk till Azure](/azure/architecture/reference-architectures/hybrid-networking/) .
+* [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) med anslutning till din lokala eller lokala miljö. Mer information om hur du ansluter lokala miljöer till Azure finns i [artikeln Ansluta ett lokalt nätverk till Azure.](/azure/architecture/reference-architectures/hybrid-networking/)
 
-## <a name="configure-a-hybrid-cluster"></a><a id="create-account"></a>Konfigurera ett hybrid kluster
+## <a name="configure-a-hybrid-cluster"></a><a id="create-account"></a>Konfigurera ett hybridkluster
 
-1. Logga in på [Azure Portal](https://portal.azure.com/) och navigera till din Virtual Network-resurs.
+1. Logga in på [Azure Portal](https://portal.azure.com/) och gå till din Virtual Network resurs.
 
-1. Öppna fliken **undernät** och skapa ett nytt undernät. Mer information om fälten i formuläret för att **lägga till undernät** finns i [Virtual Network](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) artikeln:
+1. Öppna fliken **Undernät** och skapa ett nytt undernät. Mer information om fälten i formuläret **Lägg till undernät** finns i [Virtual Network](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) artikeln:
 
-   :::image type="content" source="./media/configure-hybrid-cluster/subnet.png" alt-text="Lägg till ett nytt undernät till din Virtual Network." lightbox="./media/configure-hybrid-cluster/subnet.png" border="true":::
+   :::image type="content" source="./media/configure-hybrid-cluster/subnet.png" alt-text="Lägg till ett nytt undernät i Virtual Network." lightbox="./media/configure-hybrid-cluster/subnet.png" border="true":::
     <!-- ![image](./media/configure-hybrid-cluster/subnet.png) -->
 
-1. Nu ska vi tillämpa vissa särskilda behörigheter för det virtuella nätverket och under nätet som Cassandra-hanterade instanser kräver, med hjälp av Azure CLI. Använd `az role assignment create` kommandot, Ersätt `<subscription ID>` ,, `<resource group name>` `<VNet name>` och `<subnet name>` med lämpliga värden:
+    > [!NOTE]
+    > Distributionen av en Hanterad Azure-instans för Apache Cassandra kräver Internetåtkomst. Distributionen misslyckas i miljöer där Internetåtkomsten är begränsad. Kontrollera att du inte blockerar åtkomsten i ditt VNet till följande viktiga Azure-tjänster som krävs för att Managed Cassandra ska fungera korrekt:
+    > - Azure Storage
+    > - Azure KeyVault
+    > - Azure Virtual Machine Scale Sets
+    > - Azure Monitoring
+    > - Azure Active Directory
+    > - Säkerhet i Azure
+
+1. Nu ska vi tillämpa vissa särskilda behörigheter för det virtuella nätverket och undernätet som Cassandra Managed Instance kräver med hjälp av Azure CLI. Använd kommandot `az role assignment create` och ersätt , och med lämpliga `<subscription ID>` `<resource group name>` `<VNet name>` värden:
 
    ```azurecli-interactive
-   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>
+   az role assignment create --assignee a232010e-820c-4083-83bb-3ace5fc29d0b --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>
    ```
 
    > [!NOTE]
-   > `assignee`Värdena och `role` i föregående kommando är fasta tjänst principer respektive roll identifierare.
+   > Värdena `assignee` och i föregående kommando är fasta `role` tjänstprinciper respektive rollidentifierare.
 
-1. Nu ska vi konfigurera resurser för vårt hybrid kluster. Eftersom du redan har ett kluster, är kluster namnet här bara en logisk resurs för att identifiera namnet på ditt befintliga kluster. Se till att använda namnet på ditt befintliga kluster när du definierar `clusterName` och `clusterNameOverride` variabler i följande skript. Du behöver också startnoder, offentliga klient certifikat (om du har konfigurerat en offentlig/privat nyckel på din Cassandra-slutpunkt) och Gossip-certifikat för det befintliga klustret.
+1. Nu ska vi konfigurera resurser för vårt hybridkluster. Eftersom du redan har ett kluster är klusternamnet här bara en logisk resurs för att identifiera namnet på ditt befintliga kluster. Se till att använda namnet på ditt befintliga kluster när du `clusterName` `clusterNameOverride` definierar variablerna och i följande skript. Du behöver också starttidsnoderna, offentliga klientcertifikat (om du har konfigurerat en offentlig/privat nyckel på cassandra-slutpunkten) och skapa certifikat för ditt befintliga kluster.
 
    > [!NOTE]
-   > Värdet för `delegatedManagementSubnetId` variabeln som du anger nedan är exakt detsamma som värdet för `--scope` som du angav i kommandot ovan:
+   > Värdet för `delegatedManagementSubnetId` variabeln som du kommer att ange nedan är exakt samma som värdet `--scope` för som du angav i kommandot ovan:
 
    ```azurecli-interactive
    resourceGroupName='MyResourceGroup'
@@ -75,9 +84,9 @@ Den här snabb starten visar hur du använder Azure CLI-kommandon för att konfi
    ```
 
     > [!NOTE]
-    > Du bör veta var dina befintliga offentliga och/eller Gossip-certifikat behålls. Om du är osäker bör du kunna köra `keytool -list -keystore <keystore-path> -rfc -storepass <password>` för att skriva ut certifikaten. 
+    > Du bör veta var dina befintliga offentliga certifikat och/eller certifikatcertifikat förvaras. Om du är osäker bör du kunna köra för `keytool -list -keystore <keystore-path> -rfc -storepass <password>` att skriva ut certifikaten. 
 
-1. När kluster resursen har skapats kör du följande kommando för att hämta information om kluster konfigurationen:
+1. När klusterresursen har skapats kör du följande kommando för att hämta information om klusterinstallationen:
 
    ```azurecli-interactive
    resourceGroupName='MyResourceGroup'
@@ -88,12 +97,12 @@ Den här snabb starten visar hur du använder Azure CLI-kommandon för att konfi
        --resource-group $resourceGroupName \
    ```
 
-1. Föregående kommando returnerar information om den hanterade instans miljön. Du behöver Gossip-certifikat så att du kan installera dem på noderna i ditt befintliga data Center. Följande skärm bild visar utdata från föregående kommando och formatet för certifikat:
+1. Föregående kommando returnerar information om den hanterade instansmiljön. Du behöver certifikaten så att du kan installera dem på noderna i ditt befintliga datacenter. Följande skärmbild visar utdata från föregående kommando och certifikatformatet:
 
-   :::image type="content" source="./media/configure-hybrid-cluster/show-cluster.png" alt-text="Hämta certifikat information från klustret." lightbox="./media/configure-hybrid-cluster/show-cluster.png" border="true":::
+   :::image type="content" source="./media/configure-hybrid-cluster/show-cluster.png" alt-text="Hämta certifikatinformationen från klustret." lightbox="./media/configure-hybrid-cluster/show-cluster.png" border="true":::
     <!-- ![image](./media/configure-hybrid-cluster/show-cluster.png) -->
 
-1. Skapa sedan ett nytt Data Center i hybrid klustret. Se till att ersätta variabel värden med kluster informationen:
+1. Skapa sedan ett nytt datacenter i hybridklustret. Ersätt variabelvärdena med klusterinformationen:
 
    ```azurecli-interactive
    resourceGroupName='MyResourceGroup'
@@ -110,7 +119,7 @@ Den här snabb starten visar hur du använder Azure CLI-kommandon för att konfi
        --node-count 9 
    ```
 
-1. Nu när det nya data centret har skapats kör du kommandot show datacenter för att visa information:
+1. Nu när det nya datacentret har skapats kör du kommandot show datacenter för att visa dess information:
 
    ```azurecli-interactive
    resourceGroupName='MyResourceGroup'
@@ -123,20 +132,20 @@ Den här snabb starten visar hur du använder Azure CLI-kommandon för att konfi
        --data-center-name $dataCenterName 
    ```
 
-1. Föregående kommando matar ut det nya datacenter-startnoderna. Lägg till de nya data centrets startnoder i din befintliga data centers konfiguration i filen *Cassandra. yaml* . Och installera de hanterade instans Gossip-certifikat som du har samlat in tidigare:
+1. Föregående kommando matar ut det nya datacentrets start seed-noder. Lägg till det nya datacentrets start seed-noder i det befintliga datacentrets konfiguration i *filen cassandra.yaml.* Och installera certifikat för hanterad instans som du samlade in tidigare:
 
-   :::image type="content" source="./media/configure-hybrid-cluster/show-datacenter.png" alt-text="Information om att hämta data Center." lightbox="./media/configure-hybrid-cluster/show-datacenter.png" border="true":::
+   :::image type="content" source="./media/configure-hybrid-cluster/show-datacenter.png" alt-text="Hämta information om datacentret." lightbox="./media/configure-hybrid-cluster/show-datacenter.png" border="true":::
     <!-- ![image](./media/configure-hybrid-cluster/show-datacenter.png) -->
 
     > [!NOTE]
-    > Om du vill lägga till fler data Center kan du upprepa stegen ovan, men du behöver bara dirigera-noderna. 
+    > Om du vill lägga till fler datacenter kan du upprepa stegen ovan, men du behöver bara start startnoderna. 
 
-1. Använd slutligen följande CQL-fråga för att uppdatera replikeringsprincipen i varje-utrymme för att ta med alla data Center i klustret:
+1. Använd slutligen följande CQL-fråga för att uppdatera replikeringsstrategin i varje nyckelutrymme så att alla datacenter ingår i klustret:
 
    ```bash
    ALTER KEYSPACE "ks" WITH REPLICATION = {'class': 'NetworkTopologyStrategy', ‘on-premise-dc': 3, ‘managed-instance-dc': 3};
    ```
-   Du måste också uppdatera lösen ords tabellerna:
+   Du måste också uppdatera lösenordstabellerna:
 
    ```bash
     ALTER KEYSPACE "system_auth" WITH REPLICATION = {'class': 'NetworkTopologyStrategy', ‘on-premise-dc': 3, ‘managed-instance-dc': 3}
@@ -144,25 +153,25 @@ Den här snabb starten visar hur du använder Azure CLI-kommandon för att konfi
 
 ## <a name="troubleshooting"></a>Felsökning
 
-Om det uppstår ett fel när du tillämpar behörigheter på Virtual Network, till exempel *inte kan hitta användare eller tjänstens huvud namn i graf-databasen för "e5007d2c-4b13-4a74-9b6a-605d99f03501"*, kan du använda samma behörighet manuellt från Azure Portal. Om du vill tillämpa behörigheter från portalen går du till fönstret **åtkomst kontroll (IAM)** i ditt befintliga virtuella nätverk och lägger till en roll tilldelning för "Azure Cosmos dB" i rollen "nätverks administratör". Om två poster visas när du söker efter "Azure Cosmos DB" lägger du till båda posterna som visas i följande bild: 
+Om du stöter på ett fel när du tillämpar behörigheter på din Virtual Network, till exempel Det går inte att hitta användarens eller tjänstens huvudnamn i grafdatabasen för *"e5007d2c-4b13-4a74-9b6a-605d99f03501"* kan du tillämpa samma behörighet manuellt från Azure Portal. Om du vill tillämpa behörigheter från portalen går du till fönstret Åtkomstkontroll **(IAM)** i ditt befintliga virtuella nätverk och lägger till en rolltilldelning för "Azure Cosmos DB" till rollen Nätverksadministratör. Om två poster visas när du söker efter "Azure Cosmos DB" lägger du till båda posterna enligt följande bild: 
 
    :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="Tillämpa behörigheter" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
 
 > [!NOTE] 
-> Roll tilldelningen Azure Cosmos DB används endast i distributions syfte. Azure-hanterad instans för Apache Cassandra har inga Server dels beroenden på Azure Cosmos DB.  
+> Den Azure Cosmos DB rolltilldelningen används endast i distributionssyfte. Azure Managed Instanced för Apache Cassandra har inga backend-beroenden på Azure Cosmos DB.  
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du inte kommer att fortsätta att använda det här hanterade instans klustret, tar du bort det med följande steg:
+Om du inte tänker fortsätta att använda det här hanterade instansklustret tar du bort det med följande steg:
 
-1. Välj **resurs grupper** på den vänstra menyn i Azure Portal.
-1. I listan väljer du den resurs grupp som du skapade för den här snabb starten.
-1. I **översikts** fönstret resurs grupp väljer du **ta bort resurs grupp**.
-3. I nästa fönster anger du namnet på den resurs grupp som ska tas bort och väljer sedan **ta bort**.
+1. På den vänstra menyn i Azure Portal väljer du **Resursgrupper**.
+1. I listan väljer du den resursgrupp som du skapade för den här snabbstarten.
+1. I fönstret Översikt för **resursgruppen** väljer du **Ta bort resursgrupp.**
+3. I nästa fönster anger du namnet på den resursgrupp som ska tas bort och väljer sedan Ta **bort.**
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du lärt dig hur du skapar ett hybrid kluster med Azure CLI och Azure Managed instance för Apache Cassandra. Nu kan du börja arbeta med klustret.
+I den här snabbstarten har du lärt dig hur du skapar ett hybridkluster med Hjälp av Azure CLI och Azure Managed Instance för Apache Cassandra. Nu kan du börja arbeta med klustret.
 
 > [!div class="nextstepaction"]
-> [Hantera Azure-hanterad instans för Apache Cassandra-resurser med hjälp av Azure CLI](manage-resources-cli.md)
+> [Hantera Azure Managed Instance för Apache Cassandra-resurser med Hjälp av Azure CLI](manage-resources-cli.md)

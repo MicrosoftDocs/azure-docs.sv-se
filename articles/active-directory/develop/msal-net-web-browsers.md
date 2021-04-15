@@ -1,7 +1,7 @@
 ---
 title: Använda webbläsare (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Lär dig mer om att tänka på när du använder Xamarin Android med Microsoft Authentication Library för .NET (MSAL.NET).
+description: Lär dig mer om specifika överväganden när du använder Xamarin Android med Microsoft Authentication Library för .NET (MSAL.NET).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,77 +13,77 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 23ba50a6eca1e398b9d459153b84719909f2ecac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4121d4b9ac73ed18da7dce0e397fe919589ac6f0
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99583747"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478768"
 ---
 # <a name="using-web-browsers-msalnet"></a>Använda webbläsare (MSAL.NET)
 
-Webbläsaren krävs för interaktiv autentisering. Som standard har MSAL.NET stöd för [system webbläsare](#system-web-browser-on-xamarinios-xamarinandroid) på Xamarin. iOS och Xamarin. Android. Men [du kan också aktivera den inbäddade webbläsaren](#enable-embedded-webviews-on-ios-and-android) beroende på dina krav (UX, behov av enkel inloggning (SSO), säkerhet) i [Xamarin. iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) och [Xamarin. Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) -appar. Du kan även [välja dynamiskt](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) vilken webbläsare som ska användas baserat på förekomsten av Chrome eller en webbläsare som stöder Chrome anpassade flikar i Android. MSAL.NET stöder endast system webbläsare i .NET Core Desktop-program.
+Webbläsare krävs för interaktiv autentisering. Som standard MSAL.NET systemets [webbläsare på](#system-web-browser-on-xamarinios-xamarinandroid) Xamarin.iOS och Xamarin.Android. Men [du kan också](#enable-embedded-webviews-on-ios-and-android) aktivera den inbäddade webbläsaren beroende på dina krav (UX, behov av enkel inloggning (SSO), säkerhet) i [Xamarin.iOS-](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) och [Xamarin.Android-appar.](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) Du kan även [välja dynamiskt vilken webbläsare](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) som ska användas baserat på förekomsten av Chrome eller en webbläsare som stöder anpassade Chrome-flikar i Android. MSAL.NET stöder endast systemwebbläsaren i .NET Core-skrivbordsprogram.
 
 ## <a name="web-browsers-in-msalnet"></a>Webbläsare i MSAL.NET
 
-### <a name="interaction-happens-in-a-web-browser"></a>Interaktionen sker i en webbläsare
+### <a name="interaction-happens-in-a-web-browser"></a>Interaktion sker i en webbläsare
 
-Det är viktigt att förstå att när du hämtar en token interaktivt, har innehållet i dialog rutan inte tillhandahållits av biblioteket, men av STS (Security Token Service). Autentiseringens slut punkt skickar tillbaka viss HTML och Java Script som styr interaktionen, som återges i en webbläsare eller webb kontroll. Att tillåta STS att hantera HTML-interaktionen har många fördelar:
+Det är viktigt att förstå att när du hämtar en token interaktivt så tillhandahålls inte innehållet i dialogrutan av biblioteket utan av STS (Security Token Service). Autentiseringsslutpunkten skickar tillbaka viss HTML- och JavaScript-kod som styr interaktionen, som återges i en webbläsare eller webbkontroll. Att låta STS hantera HTML-interaktionen har många fördelar:
 
-- Lösen ordet (om ett sådant har skrivits) lagras aldrig av programmet, eller med autentiseringsläget.
-- Aktiverar omdirigering till andra identitets leverantörer (till exempel inloggning med ett arbets skol konto eller ett personligt konto med MSAL, eller med ett socialt konto med Azure AD B2C).
-- Tillåter STS-kontroll av villkorlig åtkomst, till exempel genom att användaren utför [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md) under autentiseringsläget (genom att ange en Windows Hello-PIN-kod eller anropas på deras telefon eller i en webbapp på telefonen). I de fall där den nödvändiga Multi-Factor Authentication inte har kon figurer ATS ännu, kan användaren konfigurera den precis i tid i samma dialog ruta.  Användaren anger sitt mobiltelefon nummer och vägleder dig för att installera ett program för autentisering och skanna en QR-tagg för att lägga till sitt konto. Den här server drivna interaktionen är en bra upplevelse!
-- Låter användaren ändra sitt lösen ord i den här dialog rutan när lösen ordet har upphört att gälla (vilket ger ytterligare fält för det gamla lösen ordet och det nya lösen ordet).
-- Aktiverar varumärkes innehavare, eller programmet (avbildningar) som styrs av Azure AD-klientens administratör/program ägare.
-- Gör det möjligt för användarna att tillåta åtkomst till resurserna/omfattningarna i programmet, precis efter autentiseringen.
+- Lösenordet (om det har skrivits) lagras aldrig av programmet eller autentiseringsbiblioteket.
+- Aktiverar omdirigeringar till andra identitetsproviders (till exempel inloggning med ett arbets skolkonto eller ett personligt konto med MSAL eller med ett socialt konto med Azure AD B2C).
+- Låter STS styra villkorlig åtkomst, till exempel genom att låta användaren göra multifaktorautentisering [(MFA)](../authentication/concept-mfa-howitworks.md) under autentiseringsfasen (ange en PIN-kod för Windows Hello eller bli upp anropad på telefonen eller i en autentiseringsapp på telefonen). I de fall där nödvändig multifaktorautentisering inte har ställts in ännu kan användaren konfigurera just-in-time i samma dialogruta.  Användaren anger sitt mobiltelefonnummer och vägleds att installera ett autentiseringsprogram och skanna en QR-tagg för att lägga till sitt konto. Den här serverdrivna interaktionen är en bra upplevelse!
+- Låter användaren ändra sitt lösenord i samma dialogruta när lösenordet har upphört att gälla (ange ytterligare fält för det gamla lösenordet och det nya lösenordet).
+- Aktiverar profilering av klientorganisationen eller programmet (avbildningar) som styrs av Azure AD-klientadministratören/programägaren.
+- Gör det möjligt för användarna att godkänna att programmet får åtkomst till resurser/omfång i sina namn precis efter autentiseringen.
 
-### <a name="embedded-vs-system-web-ui"></a>Webb gränssnitt för Embedded vs-systemet
+### <a name="embedded-vs-system-web-ui"></a>Inbäddat användargränssnitt jämfört med systemwebbgränssnitt
 
-MSAL.NET är ett bibliotek med flera ramverk och har en Framework-specifik kod som är värd för en webbläsare i en GRÄNSSNITTs kontroll (till exempel på den klassiska .NET-IT använder WinForms, på Xamarin den använder sig av inbyggda mobila kontroller osv.). Den här kontrollen kallas `embedded` webb gränssnitt. Du kan också starta MSAL.NET i systemets OS-webbläsare.
+MSAL.NET är ett bibliotek med flera ramverk och har ramverksspecifik kod som värd för en webbläsare i en UI-kontroll (på .NET Classic används t.ex. WinForms, på Xamarin används interna mobila kontroller osv.). Den här kontrollen kallas `embedded` webbgränssnitt. Alternativt kan MSAL.NET också starta systemoperativsystemets webbläsare.
 
-I allmänhet rekommenderar vi att du använder plattforms standarden och det är vanligt vis system läsaren. System läsaren är bättre för att komma ihåg vilka användare som har loggat in tidigare. Om du vill ändra det här beteendet använder du `WithUseEmbeddedWebView(bool)`
+I allmänhet rekommenderar vi att du använder plattformens standardinställning, och detta är vanligtvis systemwebbläsaren. Systemwebbläsaren är bättre på att komma ihåg de användare som har loggat in tidigare. Om du vill ändra det här beteendet använder du `WithUseEmbeddedWebView(bool)`
 
 ### <a name="at-a-glance"></a>I korthet
 
 | Ramverk        | Inbäddat | System | Standardvärde |
 | ------------- |-------------| -----| ----- |
-| .NET Classic     | Ja | Ja ^ | Inbäddat |
-| .NET Core     | Inga | Ja ^ | System |
-| .NET Standard | Inga | Ja ^ | System |
+| Klassisk .NET     | Ja | Ja^ | Inbäddat |
+| .NET Core     | Inga | Ja^ | System |
+| .NET Standard | Inga | Ja^ | System |
 | UWP | Ja | Inga | Inbäddat |
 | Xamarin.Android | Ja | Ja  | System |
 | Xamarin.iOS | Ja | Ja  | System |
-| Xamarin. Mac| Ja | Inga | Inbäddat |
+| Xamarin.Mac| Ja | Inga | Inbäddat |
 
 ^ Kräver " http://localhost " omdirigerings-URI
 
-## <a name="system-web-browser-on-xamarinios-xamarinandroid"></a>System webbläsare på Xamarin. iOS, Xamarin. Android
+## <a name="system-web-browser-on-xamarinios-xamarinandroid"></a>Systemwebbläsare på Xamarin.iOS, Xamarin.Android
 
-Som standard har MSAL.NET stöd för system webbläsare på Xamarin. iOS, Xamarin. Android och .NET Core. För alla plattformar som tillhandahåller användar gränssnitt (dvs. inte .NET Core) tillhandahålls en dialog ruta av biblioteket som bäddar in en webb läsar kontroll. MSAL.NET använder också en inbäddad webbvy för .NET Desktop och WAB för UWP-plattformen. Det utnyttjar dock som standard **system webbläsare** för Xamarin iOS-och Xamarin Android-program. På iOS väljer den även den webbvy som ska användas beroende på operativ systemets version (iOS12, iOS11 och tidigare).
+Som standard MSAL.NET systemets webbläsare på Xamarin.iOS, Xamarin.Android och .NET Core. För alla plattformar som tillhandahåller användargränssnitt (det vill säga inte .NET Core) tillhandahålls en dialogruta av biblioteket som bäddar in en webbläsarkontroll. MSAL.NET använder också en inbäddad webbvy för .NET Desktop och WAB för UWP-plattformen. Men som standard används **systemwebbläsaren för** Xamarin iOS- och Xamarin Android-program. I iOS väljer den även den webbvy som ska användas beroende på operativsystemsversionen (iOS12, iOS11 och tidigare).
 
-Att använda system webbläsare har stor nytta av att dela SSO-tillstånd med andra program och med webb program utan att behöva en Service Broker (företags Portal/autentiserare). System läsaren användes som standard i MSAL.NET för Xamarin iOS-och Xamarin Android-plattformarna på grund av att på dessa plattformar upptar system webbläsarens hela skärm och användar upplevelsen är bättre. Det går inte att skilja i system webb visningen från en dialog ruta. På iOS kan användaren, om användaren måste ge sitt medgivande för att webbläsaren ska kunna ringa tillbaka programmet, vilket kan vara irriterande.
+Att använda systemwebbläsaren har den stora fördelen med att dela SSO-tillståndet med andra program och med webbprogram utan att behöva en koordinator (företagsportalen/Authenticator). Systemwebbläsaren användes som standard i MSAL.NET för Xamarin iOS- och Xamarin Android-plattformarna eftersom systemets webbläsare tar upp hela skärmen på dessa plattformar och användarupplevelsen är bättre. Systemets webbvy kan inte skiljas från en dialogruta. I iOS kan användaren dock behöva ge sitt medgivande till att webbläsaren anropar programmet igen, vilket kan vara besvärligt.
 
-## <a name="system-browser-experience-on-net-core"></a>System webbläsarens upplevelse av .NET Core
+## <a name="system-browser-experience-on-net"></a>Systemwebbläsare på .NET 
 
-I .NET Core startar MSAL.NET system läsaren som en separat process. MSAL.NET har inte kontroll över den här webbläsaren, men när användaren har slutfört autentiseringen omdirigeras webb sidan på ett sådant sätt att MSAL.NET kan fånga upp URI: n.
+På .NET Core MSAL.NET du systemwebbläsaren som en separat process. MSAL.NET har inte kontroll över den här webbläsaren, men när användaren är klar med autentiseringen omdirigeras webbsidan på ett sådant sätt att MSAL.NET kan fånga upp URI:en.
 
-Du kan också konfigurera appar som skrivits för .NET Classic för att använda den här webbläsaren genom att ange
+Du kan också konfigurera appar som skrivits för .NET Classic eller .NET 5 att använda den här webbläsaren genom att ange:
 
 ```csharp
 await pca.AcquireTokenInteractive(s_scopes)
          .WithUseEmbeddedWebView(false)
 ```
 
-MSAL.NET kan inte identifiera om användaren navigerar bort eller bara stänger webbläsaren. Appar som använder den här metoden uppmuntras att definiera en tids gräns (via `CancellationToken` ). Vi rekommenderar en tids gräns på minst några minuter, för att ta hänsyn till de fall där användaren uppmanas att ändra lösen ordet eller utföra Multi-Factor-Authentication.
+MSAL.NET kan inte identifiera om användaren navigerar bort eller bara stänger webbläsaren. Appar som använder den här tekniken uppmuntras att definiera en tidsgräns (via `CancellationToken` ). Vi rekommenderar en tidsgräns på minst några minuter för att ta hänsyn till fall där användaren uppmanas att ändra lösenord eller utföra multifaktorautentisering.
 
-### <a name="how-to-use-the-default-os-browser"></a>Använda standard webbläsaren för OS
+### <a name="how-to-use-the-default-os-browser"></a>Så här använder du standardoperativsystemwebbläsaren
 
-MSAL.NET måste lyssna på `http://localhost:port` och avlyssna koden som AAD skickar när användaren är färdig med autentisering (se [auktoriseringskod](v2-oauth2-auth-code-flow.md) för information)
+MSAL.NET lyssna på och fånga upp koden som AAD skickar när användaren är autentiserad (mer information finns i `http://localhost:port` Auktoriseringskod) [](v2-oauth2-auth-code-flow.md)
 
-Så här aktiverar du systemets webbläsare:
+Så här aktiverar du systemwebbläsaren:
 
-1. Under registrering av appar konfigurerar du `http://localhost` som en omdirigerings-URI (stöds för närvarande inte av B2C)
-2. När du skapar din PublicClientApplication anger du denna omdirigerings-URI:
+1. Under appregistreringen konfigurerar `http://localhost` du som en omdirigerings-URI (stöds för närvarande inte av B2C)
+2. När du skapar publicClientApplication anger du den här omdirigerings-URI:en:
 
 ```csharp
 IPublicClientApplication pca = PublicClientApplicationBuilder
@@ -94,18 +94,18 @@ IPublicClientApplication pca = PublicClientApplicationBuilder
 ```
 
 > [!Note]
-> Om du konfigurerar `http://localhost` kommer internt MSAL.net att hitta en slumpmässig öppen port och använda den.
+> Om du `http://localhost` konfigurerar hittar MSAL.NET en slumpmässig öppen port och använder den.
 
 ### <a name="linux-and-mac"></a>Linux och MAC
 
-I Linux öppnar MSAL.NET standard webbläsaren för operativ systemet med hjälp av xdg-Open-verktyget. Du kan felsöka genom att köra verktyget från en Terminal, till exempel `xdg-open "https://www.bing.com"` . I Mac öppnas webbläsaren genom att anropa `open <url>` .
+I Linux MSAL.NET standardwebbläsaren för operativsystemet med verktyget xdg-open. Om du vill felsöka kör du verktyget från en terminal, till exempel `xdg-open "https://www.bing.com"` . På Mac öppnas webbläsaren genom att du anropar `open <url>` .
 
 ### <a name="customizing-the-experience"></a>Anpassa upplevelsen
 
 > [!NOTE]
 > Anpassning är tillgänglig i MSAL.NET 4.1.0 eller senare.
 
-MSAL.NET kan svara med ett HTTP-meddelande när en token tas emot eller om det är fel. Du kan visa ett HTML-meddelande eller omdirigera till en valfri URL:
+MSAL.NET kan svara med ett HTTP-meddelande när en token tas emot eller vid fel. Du kan visa ett HTML-meddelande eller omdirigera till valfri URL:
 
 ```csharp
 var options = new SystemWebViewOptions() 
@@ -120,9 +120,9 @@ await pca.AcquireTokenInteractive(s_scopes)
          .ExecuteAsync();
 ```
 
-### <a name="opening-a-specific-browser-experimental"></a>Öppna en speciell webbläsare (experimentell)
+### <a name="opening-a-specific-browser-experimental"></a>Öppna en specifik webbläsare (experimentell)
 
-Du kan anpassa hur MSAL.NET öppnar webbläsaren. I stället för att använda den webbläsare som är standard kan du tvinga öppna en speciell webbläsare:
+Du kan anpassa hur MSAL.NET öppnar webbläsaren. I stället för att använda den webbläsare som är standard kan du tvinga fram en specifik webbläsare:
 
 ```csharp
 var options = new SystemWebViewOptions() 
@@ -131,35 +131,35 @@ var options = new SystemWebViewOptions()
 }
 ```
 
-### <a name="uwp-doesnt-use-the-system-webview"></a>UWP använder inte systemets webbvy
+### <a name="uwp-doesnt-use-the-system-webview"></a>UWP använder inte systemwebbvyn
 
-För Skriv bords program kan dock en system WebView leda till en subpar användar upplevelse, eftersom användaren ser webbläsaren, där de redan har öppnat andra flikar. Och när autentiseringen har skett får användarna en sida där de kan stänga det här fönstret. Om användaren inte betalar uppmärksamheten kan de stänga hela processen (inklusive andra flikar, som inte är relaterade till autentiseringen). Om du använder system läsaren på Skriv bordet måste du också öppna lokala portar och lyssna på dem, vilket kan kräva avancerade behörigheter för programmet. Du, som utvecklare, användare eller administratör, kan vara ovilliga om detta krav.
+För skrivbordsprogram leder dock start av en systemwebbvy till en underanvändarupplevelse, som användaren ser i webbläsaren, där de kanske redan har andra flikar öppna. Och när autentiseringen har skett får användarna en sida där de uppmanas att stänga det här fönstret. Om användaren inte är uppmärksam kan han eller hon stänga hela processen (inklusive andra flikar som inte är relaterade till autentiseringen). Att använda systemwebbläsaren på skrivbordet kräver också att du öppnar lokala portar och lyssnar på dem, vilket kan kräva avancerade behörigheter för programmet. Som utvecklare, användare eller administratör kanske du är ovillig när det gäller det här kravet.
 
 ## <a name="enable-embedded-webviews-on-ios-and-android"></a>Aktivera inbäddade webbvyer på iOS och Android
 
-Du kan också aktivera inbäddade webvyer i Xamarin. iOS och Xamarin. Android-appar. Från och med MSAL.NET 2.0.0 – för hands version stöder MSAL.NET även med hjälp av det **inbäddade** WebView-alternativet. För ADAL.NET är inbäddad webbvy det enda alternativ som stöds.
+Du kan också aktivera inbäddade webbvyer i Xamarin.iOS- och Xamarin.Android-appar. Från och MSAL.NET 2.0.0-förhandsversion har MSAL.NET också stöd för att använda **det inbäddade** webbvyalternativet. För ADAL.NET är inbäddad webbvy det enda alternativ som stöds.
 
-Som utvecklare som använder MSAL.NET Target Xamarin kan du välja att använda antingen inbäddade webbvyer eller system webbläsare. Det här är ditt val beroende på användar upplevelsen och de säkerhets problem som du vill använda.
+Som utvecklare med MSAL.NET med Xamarin som mål kan du välja att använda antingen inbäddade webbvyer eller systemwebbläsare. Det här är ditt val beroende på användarupplevelsen och säkerhetsproblemen som du vill rikta in dig på.
 
-MSAL.NET har för närvarande inte stöd för Android-och iOS-mäklare. För att tillhandahålla enkel inloggning (SSO) kan system läsaren ändå vara ett bättre alternativ. Det finns stöd för utjämnare med den inbäddade webbläsaren på MSAL.NET efter släpning.
+För närvarande MSAL.NET inte stöd för Android- och iOS-brokers. För att tillhandahålla enkel inloggning (SSO) kan därför systemwebbläsaren fortfarande vara ett bättre alternativ. Stöd för a brokers med den inbäddade webbläsaren finns i MSAL.NET eftersläpning.
 
-### <a name="differences-between-embedded-webview-and-system-browser"></a>Skillnader mellan inbäddad webbvy och systemets webbläsare
-Det finns vissa visuella skillnader mellan inbäddad webbvy och systemets webbläsare i MSAL.NET.
+### <a name="differences-between-embedded-webview-and-system-browser"></a>Skillnader mellan inbäddad webbvy och systemwebbläsare
+Det finns vissa visuella skillnader mellan inbäddad webbvy och systemwebbläsare i MSAL.NET.
 
-**Interaktiv inloggning med MSAL.NET med hjälp av den inbäddade webbvy:**
+**Interaktiv inloggning med MSAL.NET embedded-webbvyn:**
 
 ![inbäddad](media/msal-net-web-browsers/embedded-webview.png)
 
-**Interaktiv inloggning med MSAL.NET med hjälp av system webbläsare:**
+**Interaktiv inloggning med MSAL.NET i System Browser:**
 
-![System webbläsare](media/msal-net-web-browsers/system-browser.png)
+![Systemwebbläsare](media/msal-net-web-browsers/system-browser.png)
 
 ### <a name="developer-options"></a>Alternativ för utvecklare
 
-Som utvecklare som använder MSAL.NET har du flera alternativ för att visa den interaktiva dialog rutan från STS:
+Som utvecklare med MSAL.NET har du flera alternativ för att visa den interaktiva dialogrutan från STS:
 
-- **System webbläsare.** System webbläsaren ställs in som standard i biblioteket. Om du använder Android läser du [system webbläsare](msal-net-system-browser-android-considerations.md) för information om vilka webbläsare som stöds för autentisering. När du använder system webbläsaren i Android rekommenderar vi att enheten har en webbläsare som stöder Chrome-anpassade flikar.  Annars kan autentiseringen Miss lyckas.
-- **Inbäddad webbvy.** Om du vill använda en inbäddad webbvy i MSAL.NET `AcquireTokenInteractively` innehåller parameter verktyget en `WithUseEmbeddedWebView()` metod.
+- **Systemwebbläsare.** Systemwebbläsaren anges som standard i biblioteket. Om du använder Android läser [du systemwebbläsare](msal-net-system-browser-android-considerations.md) för specifik information om vilka webbläsare som stöds för autentisering. När du använder systemwebbläsaren i Android rekommenderar vi att enheten har en webbläsare som stöder anpassade Chrome-flikar.  Annars kan autentiseringen misslyckas.
+- **Inbäddad webbvy.** Om du bara vill använda inbäddad webbvy MSAL.NET innehåller `AcquireTokenInteractively` parameterverktyget en `WithUseEmbeddedWebView()` -metod.
 
     iOS
 
@@ -179,17 +179,17 @@ Som utvecklare som använder MSAL.NET har du flera alternativ för att visa den 
                 .ExecuteAsync();
     ```
 
-#### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinios"></a>Välja mellan en inbäddad webbläsare eller system webbläsare på Xamarin. iOS
+#### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinios"></a>Välja mellan inbäddad webbläsare eller systemwebbläsare i Xamarin.iOS
 
-I iOS-appen `AppDelegate.cs` kan du initiera `ParentWindow` till `null` . Den används inte i iOS
+I din iOS-app `AppDelegate.cs` i kan du initiera till `ParentWindow` `null` . Den används inte i iOS
 
 ```csharp
 App.ParentWindow = null; // no UI parent on iOS
 ```
 
-#### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid"></a>Välja mellan en inbäddad webbläsare eller system webbläsare på Xamarin. Android
+#### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid"></a>Välja mellan inbäddad webbläsare eller systemwebbläsare på Xamarin.Android
 
-I din Android-app, i `MainActivity.cs` kan du ange den överordnade aktiviteten, så att autentiseringen blir tillbaka till den:
+I Din Android-app i `MainActivity.cs` kan du ange den överordnade aktiviteten så att autentiseringsresultatet kommer tillbaka till den:
 
 ```csharp
  App.ParentWindow = this;
@@ -204,16 +204,16 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
                       .ExecuteAsync();
 ```
 
-#### <a name="detecting-the-presence-of-custom-tabs-on-xamarinandroid"></a>Identifiera förekomsten av anpassade flikar på Xamarin. Android
+#### <a name="detecting-the-presence-of-custom-tabs-on-xamarinandroid"></a>Identifiera förekomsten av anpassade flikar på Xamarin.Android
 
-Om du vill använda system webbläsare för att aktivera SSO med appar som körs i webbläsaren, men oroar dig om användar upplevelsen för Android-enheter som inte har en webbläsare med stöd för anpassade flikar, har du möjlighet att välja genom att anropa- `IsSystemWebViewAvailable()` metoden i `IPublicClientApplication` . Den här metoden returnerar `true` om PackageManager identifierar anpassade flikar och `false` om de inte identifieras på enheten.
+Om du vill använda systemets webbläsare för att aktivera enkel inloggning med de appar som körs i webbläsaren, men är orolig för användarupplevelsen för Android-enheter som inte har en webbläsare med stöd för anpassad flik, kan du välja genom att anropa `IsSystemWebViewAvailable()` metoden i `IPublicClientApplication` . Den här `true` metoden returnerar om PackageManager identifierar anpassade `false` flikar och om de inte identifieras på enheten.
 
-Utifrån det värde som returneras av den här metoden, och dina krav, kan du fatta ett beslut:
+Baserat på värdet som returneras av den här metoden och dina krav kan du fatta ett beslut:
 
-- Du kan returnera ett anpassat fel meddelande till användaren. Exempel: "installera Chrome för att fortsätta med autentisering"-eller-
-- Du kan gå tillbaka till det inbäddade alternativet för webbvy och starta användar gränssnittet som en inbäddad webbvy.
+- Du kan returnera ett anpassat felmeddelande till användaren. Exempel: "Installera Chrome för att fortsätta med autentisering" -OR-
+- Du kan gå tillbaka till det inbäddade webbvyalternativet och starta användargränssnittet som en inbäddad webbvy.
 
-I koden nedan visas alternativet inbäddad webbvy:
+Koden nedan visar det inbäddade webbvyalternativet:
 
 ```csharp
 bool useSystemBrowser = app.IsSystemWebviewAvailable();
@@ -226,5 +226,5 @@ authResult = await App.PCA.AcquireTokenInteractive(App.Scopes)
 
 #### <a name="net-core-doesnt-support-interactive-authentication-with-an-embedded-browser"></a>.NET Core stöder inte interaktiv autentisering med en inbäddad webbläsare
 
-För .NET Core är hämtning av token interaktivt bara tillgängligt via system webbläsare, inte med inbäddade webbvyer. .NET Core tillhandahåller i själva verket inget användar gränssnitt än.
-Om du vill anpassa webbläsarens utseende med system webbläsare, kan du implementera [IWithCustomUI](scenario-desktop-acquire-token.md#withcustomwebui) -gränssnittet och till och med Ange din egen webbläsare.
+För .NET Core är interaktivt anskaffning av token endast tillgängligt via systemets webbläsare, inte med inbäddade webbvyer. .NET Core tillhandahåller inte något användargränssnitt ännu.
+Om du vill anpassa webbläsarupplevelsen med systemets webbläsare kan du implementera [gränssnittet IWithCustomUI](scenario-desktop-acquire-token.md#withcustomwebui) och även tillhandahålla en egen webbläsare.

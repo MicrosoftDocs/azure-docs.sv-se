@@ -1,0 +1,244 @@
+- name: Dokumentation om säkerhetsresa
+  href: index.yml
+- name: Förstå fördelarna med molnsäkerhet
+  items:
+    - name: Säkerhetsfördelar
+      href: ../fundamentals/overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Delat ansvar i molnet
+      href: ../fundamentals/shared-responsibility.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Identitet som säkerhets perimeter
+      href: ../fundamentals/paas-deployments.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- name: Utforska Azure-säkerhet
+  items:
+    - name: Säkerhet från end-to-end
+      href: ../fundamentals/end-to-end.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Tekniska funktioner
+      href: ../fundamentals/technical-capabilities.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Säkerhet för Azure-infrastruktur
+      href: ../fundamentals/infrastructure.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+      items:
+        - name: Fysisk säkerhet
+          href: ../fundamentals/physical-security.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Tillgänglighet
+          href: ../fundamentals/infrastructure-availability.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Komponenter och gränser
+          href: ../fundamentals/infrastructure-components.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Nätverksarkitektur
+          displayName: 'ssl, https'
+          href: ../fundamentals/infrastructure-network.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Produktionsnätverk
+          href: ../fundamentals/production-network.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: SQL Database
+          href: ../fundamentals/infrastructure-sql.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Åtgärder
+          href: ../fundamentals/infrastructure-operations.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Övervakning
+          href: ../fundamentals/infrastructure-monitoring.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Integritet
+          href: ../fundamentals/infrastructure-integrity.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Dataskydd
+          href: ../fundamentals/protection-customer-data.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Azure-plattformsintegritet och -säkerhet
+      href: ../fundamentals/platform.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+      items:
+        - name: Säkerhet för inbyggd programvara
+          href: ../fundamentals/firmware.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Säker start
+          href: ../fundamentals/secure-boot.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Uppmätt start- och värdattestering
+          href: ../fundamentals/measured-boot-host-attestation.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Project Cerberus
+          href: ../fundamentals/project-cerberus.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Kryptering i vila
+          href: ../fundamentals/encryption-atrest.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Hypervisor-säkerhet
+          href: ../fundamentals/hypervisor.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Isolering i Azure-molnet
+      href: ../fundamentals/isolation-choices.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Jämförelse mellan AWS och Azure-säkerhetstjänster
+      href: /azure/architecture/aws-professional/services#security-identity-and-access?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Jämförelse mellan GCP och Azure-säkerhetstjänster
+      href: /azure/architecture/gcp-professional/services#security?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- name: Planera för migrering
+  items:
+    - name: Utvärdera din säkerhetsberedskap
+      href: 'https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local'
+    - name: Implementera säkerhet i hela verksamheten
+      href: /azure/cloud-adoption-framework/get-started/security?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Utforma en säker arkitektur
+      href: /azure/architecture/framework/security/security-principles?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: 'Säkerhet, styrning och efterlevnad i företagsskala'
+      href: /azure/cloud-adoption-framework/ready/enterprise-scale/security-governance-and-compliance?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- name: Migrera till molnet
+  items:
+    - name: Migrera säkra arbetsbelastningar
+      href: /azure/cloud-adoption-framework/migrate/azure-migration-guide/?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Strategi för styrning eller efterlevnad
+      href: /azure/cloud-adoption-framework/migrate/azure-best-practices/governance-or-compliance?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- name: Skydda och skydda
+  items:
+    - name: Rekommenderade säkerhetsmetoder
+      href: ../fundamentals/best-practices-and-patterns.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Säkerhetskontroller och baslinjer
+      href: ../benchmarks/introduction.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Identitetshantering & åtkomsthantering
+      items:
+        - name: Säkerhetsöversikt
+          href: ../fundamentals/identity-management-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Bästa praxis
+          href: ../fundamentals/identity-management-best-practices.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Kontrollplan
+          href: /azure/architecture/framework/security/design-identity-control-plane?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Autentisering
+          href: /azure/architecture/framework/security/design-identity-authentication?toc=azure/security/fundamentals/toc.json&bc=azure/security/breadcrumb/toc.json
+        - name: Auktorisering
+          href: /architecture/framework/security/design-identity-authorization?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Välja lösenordsfri
+          href: ../../active-directory/authentication/concept-authentication-passwordless.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Checklista
+          href: ../fundamentals/steps-secure-identity.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Nätverkssäkerhet
+      items:
+        - name: Säkerhetsöversikt
+          href: ../fundamentals/network-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Bästa praxis
+          href: ../fundamentals/network-best-practices.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: DDoS Protection
+          items:
+            - name: DDoS Protection-regelverk
+              href: ../../ddos-protection/fundamental-best-practices.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+            - name: DDoS Protection-säkerhetsbaslinje
+              href: ../fundamentals/ddos-protection-security-baseline.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Överflödig DNS och övertagande av underdomäner
+          href: ../fundamentals/subdomain-takeover.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Nätverkssegmentering
+          href: /azure/architecture/framework/security/design-network-segmentation?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Anslutning
+          href: /azure/architecture/framework/security/design-network-connectivity?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Programslutpunkter
+          href: /azure/architecture/framework/security/design-network-endpoints?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Dataflöde
+          href: /azure/architecture/framework/security/design-network-flow?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Skydda hybridnätverksarkitektur
+          href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Checklista
+          href: /azure/architecture/framework/security/design-network?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: 'Datasäkerhet, -kryptering och -lagring'
+      items:
+        - name: Datasäkerhet och kryptering
+          href: ../fundamentals/encryption-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Dubbel kryptering
+          href: ../fundamentals/double-encryption.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Ändringar av TLS-certifikat
+          href: ../fundamentals/tls-certificate-changes.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Diskkryptering
+          items:
+            - name: Bästa praxis
+              href: ../fundamentals/data-encryption-best-practices.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+            - name: Datakryptering i vila
+              href: ../fundamentals/encryption-atrest.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+            - name: Datakrypteringsmodeller
+              href: ../fundamentals/encryption-models.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+            - name: Azure Disk Encryption för virtuella datorer
+              href: ../fundamentals/azure-disk-encryption-vms-vmss.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Databassäkerhet
+          items:
+            - name: Översikt
+              href: ../../azure-sql/database/security-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+            - name: Bästa praxis
+              href: ../../azure-sql/database/security-best-practice.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+            - name: Säkerhetskontrollista
+              href: ../fundamentals/database-security-checklist.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Lagringssäkerhetsguide
+          href: ../../storage/blobs/security-recommendations.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Nyckel- och hemlighetshantering
+          href: /azure/architecture/framework/security/design-storage-keys?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Customer Lockbox
+          items:
+            - name: Customer Lockbox
+              href: ../fundamentals/customer-lockbox-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+            - name: Säkerhetsbaslinje för Customer Lockbox
+              href: ../fundamentals/customer-lockbox-security-baseline.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Checklista
+          href: /azure/architecture/framework/security/design-storage?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: IaaS-säkerhet
+      items:
+        - name: Microsoft-programvara mot skadlig kod
+          href: ../fundamentals/antimalware.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Microsoft Antimalware-kodexempel
+          href: ../fundamentals/antimalware-code-samples.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Säkerhetsöversikt för virtuella datorer
+          href: ../fundamentals/virtual-machines-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Metodtips – IaaS-arbetsbelastningar
+          href: ../fundamentals/iaas.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Azure Marketplace-avbildningar
+          href: ../fundamentals/azure-marketplace-images.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Program
+      items:
+        - name: Programklassificering
+          href: /azure/architecture/framework/security/design-apps-considerations?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Konfiguration och beroenden
+          href: /azure/architecture/framework/security/design-app-dependencies?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: PaaS
+          href: ../fundamentals/paas-deployments.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+          items:
+            - name: Azure App Service för PaaS
+              href: ../fundamentals/paas-applications-using-app-services.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+            - name: Azure Storage för PaaS
+              href: ../fundamentals/paas-applications-using-storage.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+            - name: DB-metodtips för PaaS
+              href: ../fundamentals/paas-applications-using-sql.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: Azure Service Fabric-säkerhet
+          href: ../fundamentals/service-fabric-best-practices.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+        - name: 'Övervakning, granskning och åtgärder'
+          items:
+            - name: Säkerhetshantering och övervakning
+              href: ../fundamentals/management-monitoring-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+            - name: Säkerhetsövervakningsverktyg
+              href: /azure/architecture/framework/security/monitor-tools?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+            - name: Säkerhetsgranskningar
+              href: /azure/architecture/framework/security/monitor-audit?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+            - name: Förbättra fjärrhantering
+              href: ../fundamentals/management.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+            - name: Driftsäkerhet
+              items:
+                - name: Översikt
+                  href: ../fundamentals/operational-overview.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+                - name: Bästa praxis
+                  href: ../fundamentals/operational-best-practices.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+                - name: Säkerhetskontrollista
+                  href: ../fundamentals/operational-checklist.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- name: Identifiera och åtgärda hot
+  items:
+    - name: Hotskydd
+      href: ../fundamentals/threat-detection.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Hotanalys
+      href: /azure/architecture/framework/security/design-threat-model?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- name: Undersöka misstänkt aktivitet
+  items:
+    - name: Loggning och granskning i Azure
+      href: ../fundamentals/log-audit.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Granskning
+      href: /azure/architecture/framework/security/monitor-audit?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Identitets- och nätverksrisker
+      href: /azure/architecture/framework/security/monitor-identity-network?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Checklista
+      href: /azure/architecture/framework/security/monitor?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- name: Optimera säkerhetsinvesteringar
+  items:
+    - name: 'Styrning, risk, efterlevnad'
+      href: /azure/architecture/framework/security/governance?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Validera och testa
+      href: /azure/architecture/framework/security/monitor-test?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+- name: Resurser
+  items:
+    - name: Faktablad om säkerhet
+      href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
+    - name: Bästa praxis
+      href: ../fundamentals/best-practices-and-patterns.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Cybersäkerhetsrådgivning
+      href: ../fundamentals/cyber-services.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Logga ett supportärende för en säkerhetshändelse
+      href: ../fundamentals/event-support-ticket.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Penntestning
+      href: ../fundamentals/pen-testing.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json

@@ -1,40 +1,40 @@
 ---
-title: Snabb start – Azure Key Vault hemligt klient bibliotek för Java
-description: Innehåller en snabb start för klient biblioteket Azure Key Vault Secret för Java.
+title: Snabbstart – Azure Key Vault hemligt klientbibliotek för Java
+description: Innehåller en snabbstart för Azure Key Vault Hemligt klientbibliotek för Java.
 author: msmbaldwin
-ms.custom: devx-track-java, devx-track-azurecli
+ms.custom: devx-track-java
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 95323ec513f1a3d00347da022f7c808b029bd44f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1a502722156bc010dab917afdbd1d49ae93681a
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934806"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375992"
 ---
-# <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Snabb start: Azure Key Vault hemligt klient bibliotek för Java
-Kom igång med Azure Key Vault hemliga klient biblioteket för Java. Följ stegen nedan för att installera paketet och prova exempel koden för grundläggande uppgifter.
+# <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Snabbstart: Azure Key Vault hemligt klientbibliotek för Java
+Kom igång med Azure Key Vault Secret-klientbiblioteket för Java. Följ stegen nedan för att installera paketet och prova exempelkoden för grundläggande uppgifter.
 
 Ytterligare resurser:
 
-* [Käll kod](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets)
+* [Källkod](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets)
 * [Referensdokumentation för API](https://azure.github.io/azure-sdk-for-java/keyvault.html)
 * [Produktdokumentation](index.yml)
 * [Exempel](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
 
 ## <a name="prerequisites"></a>Förutsättningar
-- En Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- En Azure-prenumeration [– skapa en utan kostnad.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - [Java Development Kit (JDK)](/java/azure/jdk/) version 8 eller senare
-- [Apache maven](https://maven.apache.org)
+- [Apache Maven](https://maven.apache.org)
 - [Azure CLI](/cli/azure/install-azure-cli)
 
-Den här snabb starten förutsätter att du kör [Azure CLI](/cli/azure/install-azure-cli) och [Apache maven](https://maven.apache.org) i ett Linux-terminalfönster.
+Den här snabbstarten förutsätter att du [kör Azure CLI](/cli/azure/install-azure-cli) och Apache [Maven i](https://maven.apache.org) ett Linux-terminalfönster.
 
-## <a name="setting-up"></a>Konfigurera
-Den här snabb starten använder Azure Identity-biblioteket med Azure CLI för att autentisera användare till Azure-tjänster. Utvecklare kan också använda Visual Studio eller Visual Studio Code för att autentisera sina anrop. mer information finns i [autentisera klienten med klient biblioteket för Azure Identity](/java/api/overview/azure/identity-readme).
+## <a name="setting-up"></a>Inrätta
+Den här snabbstarten använder Azure Identity-biblioteket med Azure CLI för att autentisera användare till Azure-tjänster. Utvecklare kan också använda Visual Studio eller Visual Studio Code för att autentisera sina anrop. Mer information finns i Autentisera klienten med [Azure Identity-klientbiblioteket](/java/api/overview/azure/identity-readme).
 
 ### <a name="sign-in-to-azure"></a>Logga in på Azure
 1. Kör kommandot `login`.
@@ -43,14 +43,14 @@ Den här snabb starten använder Azure Identity-biblioteket med Azure CLI för a
     az login
     ```
 
-   Om CLI kan öppna din standard webbläsare så gör den det och läser in en Azure-inloggnings sida.
+   Om CLI kan öppna din standardwebbläsare gör den det och läser in en Inloggningssida för Azure.
 
-   Annars öppnar du en webb sida på [https://aka.ms/devicelogin](https://aka.ms/devicelogin) och anger den auktoriseringskod som visas i din terminal.
+   Annars öppnar du en webbläsarsida på och [https://aka.ms/devicelogin](https://aka.ms/devicelogin) anger auktoriseringskoden som visas i terminalen.
 
 2. Logga in med dina autentiseringsuppgifter för kontot i webbläsaren.
 
-### <a name="create-a-new-java-console-app"></a>Skapa en ny Java-konsol-app
-I ett konsol fönster använder du `mvn` kommandot för att skapa en ny Java-konsol-app med namnet `akv-secrets-java` .
+### <a name="create-a-new-java-console-app"></a>Skapa en ny Java-konsolapp
+I ett konsolfönster använder du kommandot `mvn` för att skapa en ny Java-konsolapp med namnet `akv-secrets-java` .
 
 ```console
 mvn archetype:generate -DgroupId=com.keyvault.secrets.quickstart
@@ -60,7 +60,7 @@ mvn archetype:generate -DgroupId=com.keyvault.secrets.quickstart
                        -DinteractiveMode=false
 ```
 
-Resultatet från att generera projektet ser ut ungefär så här:
+Utdata från genereringen av projektet ser ut ungefär så här:
 
 ```console
 [INFO] ----------------------------------------------------------------------------
@@ -84,14 +84,14 @@ Resultatet från att generera projektet ser ut ungefär så här:
 [INFO] ------------------------------------------------------------------------
 ```
 
-Ändra katalogen till den nya `akv-secrets-java/` mappen.
+Ändra katalogen till den nyligen skapade `akv-secrets-java/` mappen.
 
 ```console
 cd akv-secrets-java
 ```
 
 ### <a name="install-the-package"></a>Installera paketet
-Öppna *pom.xml* -filen i text redigeraren. Lägg till följande beroende element i gruppen med beroenden.
+Öppna *pom.xml* i textredigeraren. Lägg till följande beroendeelement i gruppen med beroenden.
 
 ```xml
     <dependency>
@@ -107,18 +107,18 @@ cd akv-secrets-java
     </dependency>
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>Skapa en resurs grupp och ett nyckel valv
+### <a name="create-a-resource-group-and-key-vault"></a>Skapa en resursgrupp och ett nyckelvalv
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
-#### <a name="grant-access-to-your-key-vault"></a>Bevilja åtkomst till ditt nyckel valv
-Skapa en åtkomst princip för nyckel valvet som ger hemliga behörigheter till ditt användar konto.
+#### <a name="grant-access-to-your-key-vault"></a>Bevilja åtkomst till ditt nyckelvalv
+Skapa en åtkomstprincip för ditt nyckelvalv som ger ditt användarkonto hemliga behörigheter.
 
 ```console
 az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --secret-permissions delete get list set purge
 ```
 
 #### <a name="set-environment-variables"></a>Ange miljövariabler
-Det här programmet använder nyckel valvets namn som en miljö variabel som kallas `KEY_VAULT_NAME` .
+Det här programmet använder ditt nyckelvalvsnamn som en miljövariabel med namnet `KEY_VAULT_NAME` .
 
 Windows
 ```cmd
@@ -134,14 +134,14 @@ macOS eller Linux
 export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
-## <a name="object-model"></a>Objekt modell
-Med det Azure Key Vault hemliga klient biblioteket för Java kan du hantera hemligheter. I avsnittet [kod exempel](#code-examples) visas hur du skapar en-klient, ställer in en hemlighet, hämtar en hemlighet och tar bort en hemlighet.
+## <a name="object-model"></a>Objektmodell
+Med Azure Key Vault Secret-klientbiblioteket för Java kan du hantera hemligheter. Avsnittet [Kodexempel](#code-examples) visar hur du skapar en klient, anger en hemlighet, hämtar en hemlighet och tar bort en hemlighet.
 
-Hela konsol programmet är [nedan](#sample-code).
+Hela konsolappen finns [under](#sample-code).
 
 ## <a name="code-examples"></a>Kodexempel
-### <a name="add-directives"></a>Lägg till direktiv
-Lägg till följande direktiv överst i koden:
+### <a name="add-directives"></a>Lägga till direktiv
+Lägg till följande -direktiv överst i koden:
 
 ```java
 import com.azure.core.util.polling.SyncPoller;
@@ -154,9 +154,9 @@ import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
 ```
 
 ### <a name="authenticate-and-create-a-client"></a>Autentisera och skapa en klient
-I den här snabb starten används en inloggad användare för att autentisera till Key Vault, vilket är önskad metod för lokal utveckling. För program som distribueras till Azure ska en hanterad identitet tilldelas till en App Service eller virtuell dator. Mer information finns i [Översikt över hanterade identiteter](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+I den här snabbstarten används en inloggad användare för att autentisera till Key Vault, vilket är den bästa metoden för lokal utveckling. För program som distribueras till Azure ska en hanterad identitet tilldelas till en App Service eller virtuell dator. Mer information finns i Översikt [över hanterad identitet.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-I exemplet nedan expanderas namnet på nyckel valvet till Key Vault-URI: n i formatet "https:// \<your-key-vault-name\> . Vault.Azure.net". I det här exemplet används klassen ["DefaultAzureCredential ()"](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) , som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identitet. Mer information finns i [Azure Credential Authentication](https://docs.microsoft.com/java/api/overview/azure/identity-readme).
+I exemplet nedan expanderas namnet på ditt nyckelvalv till nyckelvalvs-URI:t i formatet "https:// \<your-key-vault-name\> .vault.azure.net". Det här exemplet använder klassen ["DefaultAzureCredential()"](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identitet. Mer information finns i [Standardautentisering med Azure-autentiseringsuppgifter.](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
 
 ```java
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
@@ -169,45 +169,45 @@ SecretClient secretClient = new SecretClientBuilder()
 ```
 
 ### <a name="save-a-secret"></a>Spara en hemlighet
-Nu när ditt program är autentiserat kan du ange en hemlighet i ditt nyckel valv med hjälp av `secretClient.setSecret` metoden. Detta kräver ett namn för hemligheten – vi har tilldelat värdet "hemligt" till `secretName` variabeln i det här exemplet.
+Nu när programmet har autentiserats kan du placera en hemlighet i nyckelvalvet med hjälp av `secretClient.setSecret` metoden . Detta kräver ett namn för hemligheten – vi har tilldelat värdet "mySecret" till variabeln `secretName` i det här exemplet.
 
 ```java
 secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
 ```
 
-Du kan kontrol lera att hemligheten har angetts med kommandot [AZ-valvets hemliga show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) :
+Du kan kontrollera att hemligheten har angetts med [kommandot az keyvault secret show:](/cli/azure/keyvault/secret?#az-keyvault-secret-show)
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
 ```
 
 ### <a name="retrieve-a-secret"></a>Hämta en hemlighet
-Nu kan du hämta den tidigare angivna hemligheten med- `secretClient.getSecret` metoden.
+Nu kan du hämta den tidigare konfigurerade hemligheten med `secretClient.getSecret` metoden .
 
 ```java
 KeyVaultSecret retrievedSecret = secretClient.getSecret(secretName);
  ```
 
-Du kan nu komma åt värdet för den hämtade hemligheten med `retrievedSecret.getValue()` .
+Nu kan du komma åt värdet för den hämtade hemligheten med `retrievedSecret.getValue()` .
 
 ### <a name="delete-a-secret"></a>Ta bort en hemlighet
-Slutligen tar vi bort hemligheten från nyckel valvet med- `secretClient.beginDeleteSecret` metoden.
+Slutligen tar vi bort hemligheten från nyckelvalvet med `secretClient.beginDeleteSecret` metoden .
 
-Hemlig borttagning är en tids krävande åtgärd, som du kan använda för att avsöka förloppet eller vänta tills den är klar.
+Borttagning av hemligheter är en långvarig åtgärd som du kan avse förloppet för eller vänta tills den har slutförts.
 
 ```java
 SyncPoller<DeletedSecret, Void> deletionPoller = secretClient.beginDeleteSecret(secretName);
 deletionPoller.waitForCompletion();
 ```
 
-Du kan kontrol lera att hemligheten har tagits bort med kommandot [AZ-valv för hemligt show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) :
+Du kan kontrollera att hemligheten har tagits bort med kommandot [az keyvault secret show:](/cli/azure/keyvault/secret?#az-keyvault-secret-show)
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
 ```
 
 ## <a name="clean-up-resources"></a>Rensa resurser
-När det inte längre behövs kan du använda Azure CLI eller Azure PowerShell för att ta bort nyckel valvet och motsvarande resurs grupp.
+När det inte längre behövs kan du använda Azure CLI eller Azure PowerShell för att ta bort nyckelvalvet och motsvarande resursgrupp.
 
 ```azurecli
 az group delete -g "myResourceGroup"
@@ -277,8 +277,8 @@ public class App {
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-I den här snabb starten skapade du ett nyckel valv, lagrat en hemlighet, hämtat det och tog sedan bort det. Om du vill veta mer om Key Vault och hur du integrerar den med dina program, Fortsätt till artiklarna nedan.
+I den här snabbstarten skapade du ett nyckelvalv, lagrade en hemlighet, hämtade det och tog sedan bort det. Mer information om Key Vault och hur du integrerar det med dina program finns i artiklarna nedan.
 
-- Läs en [Översikt över Azure Key Vault](../general/overview.md)
-- Se [Azure Key Vault Developer ' s guide](../general/developers-guide.md)
-- Så här [säkrar du åtkomst till ett nyckel valv](../general/secure-your-key-vault.md)
+- Läs en [översikt över Azure Key Vault](../general/overview.md)
+- Se [Azure Key Vault för utvecklare](../general/developers-guide.md)
+- Skydda [åtkomsten till ett nyckelvalv](../general/secure-your-key-vault.md)

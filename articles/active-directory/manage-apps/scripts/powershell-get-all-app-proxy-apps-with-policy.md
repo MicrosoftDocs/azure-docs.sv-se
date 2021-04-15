@@ -1,9 +1,9 @@
 ---
-title: PowerShell-exempel – Visa en lista över alla Application Proxy-appar med en princip
-description: PowerShell-exempel som visar alla Azure Active Directory (Azure AD) Application Proxy-program i din katalog som har en princip för livs längds-token.
+title: PowerShell-exempel – Lista alla Programproxy med en princip
+description: PowerShell-exempel som visar alla Azure Active Directory (Azure AD) Programproxy i din katalog som har en livslängdstokenprincip.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: c2da1885d975ea6b4daf26714e430143dd89da42
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 53ec98ca4bd981655a3b4d6fdbccf10f7c7f9fb9
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709777"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376638"
 ---
-# <a name="get-all-application-proxy-apps-with-a-token-lifetime-policy"></a>Hämta alla Application Proxy-appar med en livs längd princip för token
+# <a name="get-all-application-proxy-apps-with-a-token-lifetime-policy"></a>Hämta alla Programproxy med en livslängdsprincip för token
 
-Detta exempel på PowerShell-skript visar alla Azure Active Directory (Azure AD) Application Proxy-program i din katalog som har en princip för token-livstid och visar information om principen.
+Det här PowerShell-skriptexempel visar alla Azure Active Directory (Azure AD) Programproxy i din katalog som har en livslängdsprincip för token och visar information om principen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,7 +28,7 @@ Detta exempel på PowerShell-skript visar alla Azure Active Directory (Azure AD)
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Det här exemplet kräver [AzureAD v2 PowerShell för AzureADPreview (för hands version av Graph module](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) ).
+Det här exemplet kräver [förhandsversionen av AzureAD V2 PowerShell för Graph-modulen](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) (AzureADPreview).
 
 ## <a name="sample-script"></a>Exempelskript
 
@@ -38,14 +38,14 @@ Det här exemplet kräver [AzureAD v2 PowerShell för AzureADPreview (för hands
 
 | Kommando | Kommentarer |
 |---|---|
-|[Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) | Hämtar ett huvud namn för tjänsten. |
+|[Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) | Hämtar ett huvudnamn för tjänsten. |
 |[Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) | Hämtar ett Azure AD-program. |
 |[Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Hämtar en princip i Azure AD. |
-|[Get-AzureADServicePrincipalPolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Hämtar principen för ett huvud namn för tjänsten i Azure AD. |
+|[Get-AzureADServicePrincipalPolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Hämtar principen för ett huvudnamn för tjänsten i Azure AD. |
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure AD PowerShell-modulen finns i [Översikt över Azure AD PowerShell-modulen](/powershell/azure/active-directory/overview).
+Mer information om Azure AD PowerShell-modulen finns i Översikt över [Azure AD PowerShell-modulen](/powershell/azure/active-directory/overview).
 
-Andra PowerShell-exempel för Application Proxy finns i [Azure AD PowerShell-exempel för azure AD-programproxy](../application-proxy-powershell-samples.md).
+Andra PowerShell-exempel för Programproxy finns i [Azure AD PowerShell-exempel för Azure AD Programproxy](../application-proxy-powershell-samples.md).

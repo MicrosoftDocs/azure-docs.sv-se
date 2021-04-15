@@ -1,21 +1,21 @@
 ---
-title: 'Snabb start: ny princip tilldelning med python'
-description: I den här snabb starten använder du python för att skapa en Azure Policy tilldelning för att identifiera icke-kompatibla resurser.
+title: 'Snabbstart: Ny principtilldelning med Python'
+description: I den här snabbstarten använder du Python för att skapa Azure Policy tilldelning för att identifiera icke-kompatibla resurser.
 ms.date: 03/02/2021
 ms.topic: quickstart
-ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: e600f97dafdd1040c22b6e4d9e333f638334b663
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-python
+ms.openlocfilehash: 2c9a0d6bb00d82748505304264aeaefa409c4b06
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742355"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379410"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>Snabb start: skapa en princip tilldelning för att identifiera icke-kompatibla resurser med python
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>Snabbstart: Skapa en principtilldelning för att identifiera icke-kompatibla resurser med hjälp av Python
 
-Det första steget mot att förstå kompatibilitet i Azure är att identifiera dina resursers status. I den här snabbstarten skapar du en principtilldelning som identifierar virtuella datorer som inte använder hanterade diskar. När du är klar kommer du att identifiera virtuella datorer som _inte är kompatibla_.
+Det första steget mot att förstå kompatibilitet i Azure är att identifiera dina resursers status. I den här snabbstarten skapar du en principtilldelning som identifierar virtuella datorer som inte använder hanterade diskar. När du är klar identifierar du virtuella datorer som inte _är kompatibla._
 
-Python-biblioteket används för att hantera Azure-resurser från kommando raden eller i skript. Den här guiden förklarar hur du använder python-biblioteket för att skapa en princip tilldelning.
+Python-biblioteket används för att hantera Azure-resurser från kommandoraden eller i skript. Den här guiden beskriver hur du använder Python-biblioteket för att skapa en principtilldelning.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -23,16 +23,16 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="add-the-policy-library"></a>Lägg till princip biblioteket
+## <a name="add-the-policy-library"></a>Lägga till principbiblioteket
 
-Om du vill att python ska fungera med Azure Policy måste biblioteket läggas till. Det här biblioteket fungerar där python kan användas, inklusive [bash på Windows 10](/windows/wsl/install-win10) eller lokalt installerat.
+Om du vill aktivera Python för Azure Policy måste du lägga till biblioteket. Det här biblioteket fungerar överallt där Python kan användas, inklusive [bash på Windows 10](/windows/wsl/install-win10) eller lokalt installerat.
 
-1. Kontrol lera att den senaste python-versionen är installerad (minst **3,8**). Om den inte har installerats än kan du ladda ned den på [python.org](https://www.python.org/downloads/).
+1. Kontrollera att den senaste Python-versionen är installerad (minst **3.8**). Om det inte har installerats än laddar du ned det på [Python.org](https://www.python.org/downloads/).
 
-1. Kontrol lera att den senaste versionen av Azure CLI är installerad (minst **2.5.1**). Om den inte har installerats än kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli).
+1. Kontrollera att den senaste versionen av Azure CLI är installerad (minst **2.5.1**). Om det inte har installerats än kan du [gå till Installera Azure CLI.](/cli/azure/install-azure-cli)
 
    > [!NOTE]
-   > Azure CLI krävs för att tillåta python att använda **CLI-baserad autentisering** i följande exempel. Information om andra alternativ finns i [autentisera med hjälp av Azures hanterings bibliotek för python](/azure/developer/python/azure-sdk-authenticate).
+   > Azure CLI krävs för att Python ska kunna använda **CLI-baserad autentisering** i följande exempel. Information om andra alternativ finns i Autentisera [med hjälp av Azure-hanteringsbibliotek för Python.](/azure/developer/python/azure-sdk-authenticate)
 
 1. Autentisera via Azure CLI.
 
@@ -40,7 +40,7 @@ Om du vill att python ska fungera med Azure Policy måste biblioteket läggas ti
    az login
    ```
 
-1. I din python-miljö väljer du de bibliotek som krävs för Azure Policy:
+1. I valfri Python-miljö installerar du de bibliotek som krävs för Azure Policy:
 
    ```bash
    # Add the Python library for Python
@@ -54,9 +54,9 @@ Om du vill att python ska fungera med Azure Policy måste biblioteket läggas ti
    ```
 
    > [!NOTE]
-   > Om python installeras för alla användare måste dessa kommandon köras från en upphöjd konsol.
+   > Om Python är installerat för alla användare måste dessa kommandon köras från en upphöjd konsol.
 
-1. Verifiera att biblioteken har installerats. `azure-mgmt-policyinsights` bör vara **0.5.0** eller högre, `azure-mgmt-resource` vara **9.0.0** eller högre, och `azure-cli-core` bör vara **2.5.0** eller högre.
+1. Kontrollera att biblioteken har installerats. `azure-mgmt-policyinsights` bör vara **0.5.0** eller högre, ska vara `azure-mgmt-resource` **9.0.0** eller högre och ska vara `azure-cli-core` **2.5.0** eller högre.
 
    ```bash
    # Check each installed library
@@ -65,9 +65,9 @@ Om du vill att python ska fungera med Azure Policy måste biblioteket läggas ti
 
 ## <a name="create-a-policy-assignment"></a>Skapa en principtilldelning
 
-I den här snabb starten skapar du en princip tilldelning och tilldelar definitionen **Granska virtuella datorer som inte använder hanterade diskar** ( `06a78e20-9358-41c9-923c-fb736d382a4d` ). Den här principdefinitionen identifierar resurser som inte uppfyller villkoren i principdefinitionen.
+I den här snabbstarten skapar du en principtilldelning och tilldelar definitionen Granska virtuella datorer som inte använder **hanterade** diskar ( `06a78e20-9358-41c9-923c-fb736d382a4d` ). Den här principdefinitionen identifierar resurser som inte uppfyller villkoren i principdefinitionen.
 
-Kör följande kod för att skapa en ny princip tilldelning:
+Kör följande kod för att skapa en ny principtilldelning:
 
 ```python
 # Import specific methods and models from other libraries
@@ -91,23 +91,23 @@ print(policyAssignment)
 
 Föregående kommandon använder följande information:
 
-Tilldelnings information:
-- **display_name** -visnings namn för princip tilldelningen. I det här fallet använder du _granskning av virtuella datorer utan Managed disks tilldelning_.
-- **policy_definition_id** – princip definitions Sök vägen, baserat på vilken du använder för att skapa tilldelningen. I det här fallet är det ID: t för granskning av princip definition för _virtuella datorer som inte använder hanterade diskar_. I det här exemplet är princip definitionen en inbyggd och sökvägen innehåller inte hanterings grupps-eller prenumerations information.
-- **omfång** – en omfattning avgör vilka resurser eller grupper av resurser som princip tilldelningen tillämpas på. Det kan vara ett intervall från en hanterings grupp till en enskild resurs. Se till att ersätta `{scope}` med något av följande mönster:
-  - Hanterings grupp: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
+Tilldelningsinformation:
+- **display_name** – Visningsnamn för principtilldelningen. I det här fallet använder du Tilldelningen _Granska virtuella datorer utan hanterade diskar._
+- **policy_definition_id** – Principdefinitionssökvägen som du använder för att skapa tilldelningen. I det här fallet är det ID:t för principdefinitionen _Granska virtuella datorer som inte använder hanterade diskar_. I det här exemplet är principdefinitionen inbyggd och sökvägen innehåller inte information om hanteringsgrupp eller prenumeration.
+- **scope** – Ett omfång avgör vilka resurser eller gruppering av resurser som principtilldelningen tillämpas på. Det kan vara allt från en hanteringsgrupp till en enskild resurs. Se till att `{scope}` ersätta med något av följande mönster:
+  - Hanteringsgrupp: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
   - Prenumeration: `/subscriptions/{subscriptionId}`
   - Resursgrupp: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
-  - Klusterresursen `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
-- **Beskrivning** – en djupare förklaring av vad principen gör eller varför den är tilldelad till det här omfånget.
+  - Resurs: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
+- **beskrivning** – En djupare förklaring av vad principen gör eller varför den har tilldelats till det här omfånget.
 
 Skapa tilldelning:
 
-- Omfattning – det här omfånget avgör var princip tilldelningen sparas. Omfånget som anges i tilldelnings informationen måste finnas i det här omfånget.
+- Omfång – Det här omfånget avgör var principtilldelningen sparas. Det omfång som anges i tilldelningsinformationen måste finnas i det här omfånget.
 - Namn – det faktiska namnet på tilldelningen. I det här exemplet användes _audit-vm-manageddisks_.
-- Princip tilldelning – python **PolicyAssignment** -objektet som skapades i föregående steg.
+- Principtilldelning – Python **PolicyAssignment-objektet** som skapades i föregående steg.
 
-Du är nu redo att identifiera icke-kompatibla resurser för att förstå miljöns kompatibilitetstillstånd.
+Nu är du redo att identifiera icke-kompatibla resurser för att förstå kompatibilitetstillståndet för din miljö.
 
 ## <a name="identify-non-compliant-resources"></a>Identifiera icke-kompatibla resurser
 
@@ -132,7 +132,7 @@ results = policyInsightsClient.policy_states.list_query_results_for_subscription
 print(results)
 ```
 
-Ersätt `{subscriptionId}` med den prenumeration som du vill se resultatet av efterlevnaden för den här princip tilldelningen. En lista över andra omfattningar och metoder för att sammanfatta data finns i [principer för princip tillstånd](/python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights.operations.policystatesoperations#methods).
+Ersätt `{subscriptionId}` med den prenumeration som du vill visa kompatibilitetsresultaten för den här principtilldelningen. En lista över andra omfång och sätt att sammanfatta data finns i [Metoder för principtillstånd.](/python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights.operations.policystatesoperations#methods)
 
 Ditt resultat liknar följande exempel:
 
@@ -147,7 +147,7 @@ Ditt resultat liknar följande exempel:
 }
 ```
 
-Resultaten matchar det du ser på fliken **Resource Compliance (resurs krav** ) i en princip tilldelning i vyn Azure Portal.
+Resultatet matchar det som visas på fliken **Resursefterlevnad** för en principtilldelning i Azure Portal vyn.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
@@ -168,13 +168,13 @@ policyAssignment = policyClient.policy_assignments.delete("{scope}", "audit-vm-m
 print(policyAssignment)
 ```
 
-Ersätt `{scope}` med samma omfång som du använde för att skapa princip tilldelningen.
+Ersätt `{scope}` med samma omfång som du använde för att skapa principtilldelningen.
 
 ## <a name="next-steps"></a>Nästa steg
 
 I den här snabbstarten har du tilldelat en principdefinition för att identifiera icke-kompatibla resurser i Azure-miljön.
 
-Om du vill veta mer om att tilldela princip definitioner för att verifiera att nya resurser är kompatibla fortsätter du till självstudien för:
+Mer information om hur du tilldelar principdefinitioner för att verifiera att nya resurser är kompatibla finns i självstudien för:
 
 > [!div class="nextstepaction"]
 > [Skapa och hantera principer](./tutorials/create-and-manage.md)
