@@ -1,9 +1,9 @@
 ---
-title: PowerShell-exempel – tilldela grupp till en Application Proxy-app
-description: PowerShell-exempel som tilldelar en grupp till ett Azure Active Directory (Azure AD) Application Proxy-program.
+title: PowerShell-exempel – Tilldela grupp till en Programproxy app
+description: PowerShell-exempel som tilldelar en grupp till ett Azure Active Directory (Azure AD) Programproxy program.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 77c4cfeb45510b1a06e02e398e20006f385511b8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 57c0319efe9353355dc59d9380860569ccbb18cb
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548571"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375635"
 ---
-# <a name="assign-a-group-to-a-specific-azure-ad-application-proxy-application"></a>Tilldela en grupp till ett enskilt Azure AD-programproxy-program
+# <a name="assign-a-group-to-a-specific-azure-ad-application-proxy-application"></a>Tilldela en grupp till ett specifikt Azure AD Programproxy program
 
-Med det här PowerShell-skript exemplet kan du tilldela en specifik grupp till ett Azure Active Directory (Azure AD) Application Proxy-program.
+Med det här PowerShell-skriptexempel kan du tilldela en specifik grupp till en Azure Active Directory (Azure AD) Programproxy program.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,7 +28,7 @@ Med det här PowerShell-skript exemplet kan du tilldela en specifik grupp till e
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Det här exemplet kräver [AzureAD v2 PowerShell för Graph module](/powershell/azure/active-directory/install-adv2) (AzureAD) eller [AzureAD v2 PowerShell för för hands versionen](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) av (AzureADPreview).
+Det här exemplet kräver [AzureAD V2 PowerShell för Graph-modulen](/powershell/azure/active-directory/install-adv2) (AzureAD) eller förhandsversionen av [AzureAD V2 PowerShell för Graph-modulen](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) (AzureADPreview).
 
 ## <a name="sample-script"></a>Exempelskript
 
@@ -38,10 +38,10 @@ Det här exemplet kräver [AzureAD v2 PowerShell för Graph module](/powershell/
 
 | Kommando | Kommentarer |
 |---|---|
-| [New-AzureADGroupAppRoleAssignment](/powershell/module/AzureAD/New-azureadgroupapproleassignment) | Tilldelar en program roll en grupp. |
+| [New-AzureADGroupAppRoleAssignment](/powershell/module/AzureAD/New-azureadgroupapproleassignment) | Tilldelar en grupp till en programroll. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure AD PowerShell-modulen finns i [Översikt över Azure AD PowerShell-modulen](/powershell/azure/active-directory/overview).
+Mer information om Azure AD PowerShell-modulen finns i Översikt över [Azure AD PowerShell-modulen](/powershell/azure/active-directory/overview).
 
-Andra PowerShell-exempel för Application Proxy finns i [Azure AD PowerShell-exempel för azure AD-programproxy](../application-proxy-powershell-samples.md).
+Andra PowerShell-exempel för Programproxy finns i [Azure AD PowerShell-exempel för Azure AD Programproxy](../application-proxy-powershell-samples.md).
