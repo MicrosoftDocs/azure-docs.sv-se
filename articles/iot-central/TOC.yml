@@ -8,6 +8,8 @@
       href: core/overview-iot-central-tour.md
     - name: Senaste uppdateringarna
       items:
+        - name: Nya och uppdaterade funktioner i mars 2021
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-march-2021/'
         - name: Nya och uppdaterade funktioner i februari 2021
           href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-february-2021/'
         - name: Nya och uppdaterade funktioner i januari 2021
@@ -57,7 +59,7 @@
           href: core/tutorial-define-gateway-device-type.md
         - name: Ansluta en IoT Edge-enhet
           href: core/tutorial-add-edge-as-leaf-device.md
-    - name: Bygg integrerade lösningar
+    - name: Skapa integrerade lösningar
       items:
         - name: Skapa en enhetsgrupp.
           href: core/tutorial-use-device-groups.md
@@ -131,11 +133,11 @@
       href: core/concepts-architecture.md
     - name: Guide för enhetsutvecklare
       href: core/overview-iot-central-developer.md
-    - name: Guide för Solution Builder
+    - name: Guide för lösningsbyggare
       href: core/overview-iot-central-solution-builder.md
     - name: Administratörsguide
       href: core/overview-iot-central-admin.md
-    - name: Operatörs guide
+    - name: Operatörsguide
       href: core/overview-iot-central-operator.md
     - name: Vad är programmallar?
       href: core/concepts-app-templates.md
@@ -145,15 +147,15 @@
           items:
             - name: Översikt
               href: retail/overview-iot-central-retail.md
-            - name: Arbets arkitektur i Store Analytics
+            - name: Utcheckningsarkitektur för analys i butik
               href: retail/store-analytics-architecture.md
-            - name: Hanterings arkitektur för smart inventering
+            - name: Arkitektur för smart lagerhantering
               href: retail/architecture-smart-inventory-management.md
-            - name: Ansluten logistik arkitektur
+            - name: Ansluten logistikarkitektur
               href: retail/architecture-connected-logistics.md
             - name: Digitalt distributionscenter
               href: retail/architecture-digital-distribution-center.md
-            - name: Arkitektur för Micro-uppfyllelse Center
+            - name: Arkitektur för mikrouppfyllelsecenter
               href: retail/architecture-micro-fulfillment-center.md
             - name: Videoanalys – objekt- och rörelseidentifiering
               href: retail/architecture-video-analytics.md
@@ -169,11 +171,11 @@
           items:
             - name: Översikt
               href: government/overview-iot-central-government.md
-            - name: Arkitektur för ansluten avfalls övervakning
+            - name: Arkitektur för ansluten övervakning av spill
               href: government/concepts-connectedwastemanagement-architecture.md
-            - name: Arkitektur för övervakning av vatten förbrukning
+            - name: Arkitektur för övervakning av vattenförbrukning
               href: government/concepts-waterconsumptionmonitoring-architecture.md
-            - name: Arkitektur för övervakning av vatten kvalitet
+            - name: Arkitektur för övervakning av vattenkvalitet
               href: government/concepts-waterqualitymonitoring-architecture.md
         - name: Sjukvård
           items:
@@ -207,7 +209,7 @@
           href: core/how-to-connect-devices-x509.md
         - name: Övervaka enhetsanslutningar med Azure CLI
           href: core/howto-monitor-devices-azure-cli.md
-        - name: Ansluta enheter via en IoT Edge transparent Gateway
+        - name: Ansluta enheter via en IoT Edge transparent gateway
           href: core/how-to-connect-iot-edge-transparent-gateway.md
         - name: Förbereda och ansluta ett Azure Sphere DevKit
           href: core/howto-connect-sphere.md
@@ -217,7 +219,7 @@
           href: core/howto-connect-rigado-cascade-500.md
         - name: Ansluta andra IoT-moln
           href: core/howto-build-iotc-device-bridge.md
-    - name: Bygg integrerade lösningar
+    - name: Skapa integrerade lösningar
       items:
         - name: Lägga till paneler på din instrumentpanel
           href: core/howto-add-tiles-to-your-dashboard.md
@@ -241,7 +243,7 @@
           href: core/howto-create-custom-analytics.md
         - name: Visualisera dina data i Power BI
           href: core/howto-connect-powerbi.md
-        - name: Anslut ditt program med Dynamics 365 fält tjänster
+        - name: Ansluta ditt program med Dynamics 365 Field Services
           href: government/how-to-configure-connected-field-services.md
     - name: Hantera dina enheter
       items:
@@ -263,7 +265,7 @@
           href: core/howto-customize-ui.md
         - name: Exportera ditt program
           href: core/howto-use-app-templates.md
-        - name: Migrera v2 till v3-program
+        - name: Migrera V2 till V3-program
           href: core/howto-migrate.md
         - name: Övervaka programhälsa
           href: core/howto-monitor-application-health.md
@@ -285,7 +287,7 @@
           href: core/howto-create-and-manage-applications-csp.md
     - name: Anpassa din lösning
       items:
-        - name: Skapa en personlig instrument panel
+        - name: Skapa en personlig instrumentpanel
           href: core/howto-create-personal-dashboards.md
         - name: Hantera dina personliga inställningar
           href: core/howto-manage-preferences.md

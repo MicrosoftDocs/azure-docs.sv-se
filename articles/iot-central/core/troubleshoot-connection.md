@@ -1,6 +1,6 @@
 ---
-title: Felsöka enhets anslutningar till Azure IoT Central | Microsoft Docs
-description: Felsök varför du inte ser data från dina enheter i IoT Central
+title: Felsöka enhetsanslutningar till Azure IoT Central | Microsoft Docs
+description: Felsöka varför du inte ser data från dina enheter i IoT Central
 services: iot-central
 author: dominicbetts
 ms.author: dobett
@@ -8,60 +8,60 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: ae40571b958897b5f06c4ae72a9049a585561872
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 494608f9dd8fbf986dcda6eeb782a64f6a2ca008
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064723"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378575"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Felsök varför data från dina enheter inte visas i Azure IoT Central
 
-Det här dokumentet hjälper enhets utvecklare att ta reda på varför data enheterna skickas till IoT Central kanske inte visas i programmet.
+Det här dokumentet hjälper enhetsutvecklare att ta reda på varför de data som deras enheter skickar till IoT Central kanske inte visas i programmet.
 
-Det finns två huvud områden att undersöka:
+Det finns två huvudområden att undersöka:
 
-- Problem med enhets anslutning
-  - Autentiseringsproblem som enheten har ogiltiga autentiseringsuppgifter
-  - Problem med nätverks anslutningen
+- Problem med enhetsanslutning
+  - Autentiseringsproblem som att enheten har ogiltiga autentiseringsuppgifter
+  - Problem med nätverksanslutning
   - Enheten är inte godkänd eller blockerad
-- Problem med enhetens nytto Last form
+- Problem med form av nyttolast för enhet
 
-Den här fel söknings guiden fokuserar på problem med enhets anslutning och form av enhets nytto Last.
+Den här felsökningsguiden fokuserar på problem med enhetsanslutningar och problem med nyttolastens form.
 
-## <a name="device-connectivity-issues"></a>Problem med enhets anslutning
+## <a name="device-connectivity-issues"></a>Problem med enhetsanslutning
 
 Det här avsnittet hjälper dig att avgöra om dina data når IoT Central.
 
-Installera verktyget och tillägget om du inte redan gjort det `az cli` `azure-iot` .
+Om du inte redan har gjort det installerar du `az cli` verktyget och `azure-iot` tillägget.
 
-Information om hur du installerar `az cli` finns i [Installera Azure CLI](/cli/azure/install-azure-cli).
+Information om hur du installerar `az cli` finns i Installera Azure [CLI.](/cli/azure/install-azure-cli)
 
-[Installera](/cli/azure/azure-cli-reference-for-IoT#extension-reference-installation) `azure-iot` tillägget genom att köra följande kommando:
+Kör [följande](/cli/azure/azure-cli-reference-for-IoT#extension-reference-installation) kommando `azure-iot` för att installera tillägget:
 
 ```azurecli
 az extension add --name azure-iot
 ```
 
 > [!NOTE]
-> Du kan uppmanas att installera `uamqp` biblioteket första gången du kör ett tilläggs kommando.
+> Du kan uppmanas att installera biblioteket `uamqp` första gången du kör ett tilläggskommando.
 
-När du har installerat `azure-iot` tillägget kan du starta enheten för att se om de meddelanden som skickas är på väg att IoT Central.
+När du har installerat tillägget startar du enheten för att se om de meddelanden som den skickar kommer till `azure-iot` IoT Central.
 
-Använd följande kommandon för att logga in på prenumerationen där du har ditt IoT Central-program:
+Använd följande kommandon för att logga in i prenumerationen där du har ditt IoT Central program:
 
 ```azurecli
 az login
 az set account --subscription <your-subscription-id>
 ```
 
-Använd följande kommando för att övervaka den telemetri som enheten skickar:
+Om du vill övervaka telemetrin som enheten skickar använder du följande kommando:
 
 ```azurecli
 az iot central diagnostics monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
-Om enheten har anslutit till IoT Central visas utdata som liknar följande:
+Om enheten har anslutits till IoT Central visas utdata som liknar följande:
 
 ```output
 Monitoring telemetry.
@@ -80,13 +80,13 @@ Filtering on device: device-001
 }
 ```
 
-Om du vill övervaka egenskapen uppdateringar som enheten utbyter med IoT Central använder du följande för hands versions kommando:
+Om du vill övervaka egenskapsuppdateringar som din enhet utbyter med IoT Central använder du följande förhandsgranskningskommando:
 
 ```azurecli
 az iot central diagnostics monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
-Om enheten har skickat egenskaps uppdateringar ser du utdata som liknar följande:
+Om enheten skickar egenskapsuppdateringar visas utdata som liknar följande:
 
 ```output
 Changes in reported properties:
@@ -96,21 +96,21 @@ version : 32
 rocessorArchitecture': 'ARM', 'swVersion': '1.0.0'}
 ```
 
-Om du ser data som visas i terminalen så gör data det så långt som IoT Central programmet.
+Om du ser data som visas i terminalen, kommer data att göra det så långt som IoT Central program.
 
-Om du inte ser några data efter några minuter kan du prova att trycka på `Enter` `return` tangenten eller på tangent bordet, om resultatet är fastnat.
+Om inga data visas efter några minuter kan du försöka trycka på tangenten eller på tangentbordet `Enter` om utdatan `return` har fastnat.
 
-Om du fortfarande inte ser några data i terminalen är det troligt att enheten har problem med nätverks anslutningen eller att inte skickar data korrekt till IoT Central.
+Om du fortfarande inte ser några data i terminalen är det troligt att enheten har problem med nätverksanslutningen eller inte skickar data korrekt till IoT Central.
 
-### <a name="check-the-provisioning-status-of-your-device"></a>Kontrol lera enhetens etablerings status
+### <a name="check-the-provisioning-status-of-your-device"></a>Kontrollera enhetens etableringsstatus
 
-Om dina data inte visas på övervakaren kontrollerar du etablerings statusen för enheten genom att köra följande kommando:
+Om dina data inte visas på övervakaren kontrollerar du enhetens etableringsstatus genom att köra följande kommando:
 
 ```azurecli
 az iot central device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
-Följande utdata visar ett exempel på en enhet som blockeras från att ansluta:
+Följande utdata visar ett exempel på en enhet som har blockerats från att ansluta:
 
 ```json
 {
@@ -130,65 +130,73 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| Enhets etablerings status | Beskrivning | Möjlig minskning |
+| Enhetsetableringsstatus | Beskrivning | Möjlig åtgärd |
 | - | - | - |
-| Etablerad | Ingen direkt identifierbar fråga. | Ej tillämpligt |
-| Registrerad | Enheten har ännu inte anslutits till IoT Central. | Kontrol lera dina enhets loggar för anslutnings problem. |
-| Blockerad | Enheten har blockerats från att ansluta till IoT Central. | Enheten blockeras från att ansluta till IoT Central-programmet. Avblockera enheten i IoT Central och försök igen. Mer information finns i [blockera enheter](concepts-get-connected.md#device-status-values). |
-| Ej godkända | Enheten är inte godkänd. | Enheten är inte godkänd för att ansluta till IoT Central-programmet. Godkänn enheten i IoT Central och försök igen. Läs mer i [Godkänn enheter](concepts-get-connected.md#device-registration) |
-| Inte kopplad | Enheten är inte kopplad till någon enhets mall. | Associera enheten med en enhets mall så att IoT Central vet hur data ska parsas. |
+| Etablerad | Inget omedelbart identifierbart problem. | Ej tillämpligt |
+| Registrerad | Enheten har ännu inte anslutit till IoT Central. | Kontrollera enhetsloggarna för att se om det finns anslutningsproblem. |
+| Blockerad | Enheten blockeras från att ansluta till IoT Central. | Enheten blockeras från att ansluta till IoT Central program. Avblockera enheten i IoT Central och försök igen. Mer information finns i [Blockera enheter.](concepts-get-connected.md#device-status-values) |
+| Ej godkänd | Enheten är inte godkänd. | Enheten är inte godkänd för att ansluta till IoT Central program. Godkänn enheten i IoT Central och försök igen. Mer information finns i [Godkänn enheter](concepts-get-connected.md#device-registration) |
+| Oassocierade | Enheten är inte associerad med en enhetsmall. | Associera enheten med en enhetsmall så att IoT Central vet hur data ska parsas. |
 
-Läs mer om [enhets status koder](concepts-get-connected.md#device-status-values).
+Läs mer om [enhetsstatuskoder.](concepts-get-connected.md#device-status-values)
 
 ### <a name="error-codes"></a>Felkoder
 
-Om du fortfarande inte kan diagnostisera varför dina data inte visas i `monitor-events` , är nästa steg att leta efter felkoder som rapporteras av enheten.
+Om du fortfarande inte kan diagnostisera varför dina data inte visas i är nästa steg att leta efter felkoder som `monitor-events` rapporteras av enheten.
 
-Starta en felsökningssession på enheten eller samla in loggar från enheten. Sök efter felkoder som rapporteras av enheten.
+Starta en felsökningssession på enheten eller samla in loggar från enheten. Sök efter eventuella felkoder som enheten rapporterar.
 
-Följande tabeller visar de vanliga felkoderna och möjliga åtgärder för att åtgärda problemet.
+I följande tabeller visas vanliga felkoder och möjliga åtgärder att åtgärda.
 
-Om du ser problem som rör ditt autentiseringspaket:
+Om du får problem som rör ditt autentiseringsflöde:
 
-| Felkod | Beskrivning | Möjlig minskning |
+| Felkod | Beskrivning | Möjlig åtgärd |
 | - | - | - |
-| 400 | Bröd texten i begäran är inte giltig. Det går till exempel inte att parsa den, eller så går det inte att verifiera objektet. | Se till att du skickar rätt begär ande text som en del av attesterings flödet eller Använd en enhets-SDK. |
-| 401 | Det går inte att verifiera autentiseringstoken. Till exempel har den upphört att gälla eller inte gäller för frågans URI. Den här felkoden returneras även till enheter som en del av flödet för TPM-attestering. | Kontrol lera att enheten har rätt autentiseringsuppgifter. |
-| 404 | Enhets etablerings tjänstens instans eller en resurs, till exempel en registrering, finns inte. | [Filen a Ticket med kund support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
-| 412 | `ETag`I begäran matchar inte den `ETag` befintliga resursen som per RFC7232. | [Filen a Ticket med kund support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
-| 429 | Åtgärder begränsas av tjänsten. Information om begränsningar för vissa tjänster finns i [IoT Hub Device Provisioning service gränser](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits). | Minska meddelande frekvensen, dela ansvar mellan fler enheter. |
-| 500 | Ett internt fel har inträffat. | [Filen a Ticket med kund support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) för att se om de kan hjälpa dig. |
+| 400 | Brödtexten i begäran är inte giltig. Den kan till exempel inte parsas eller så går det inte att verifiera objektet. | Se till att du skickar rätt begärandetext som en del av attestationsflödet eller använd en enhets-SDK. |
+| 401 | Det går inte att verifiera auktoriseringstoken. Den har till exempel upphört att gälla eller gäller inte för begärans URI. Den här felkoden returneras också till enheter som en del av TPM-attestationsflödet. | Kontrollera att enheten har rätt autentiseringsuppgifter. |
+| 404 | Device Provisioning Service-instansen eller en resurs som en registrering finns inte. | [Skapa en supportbiljett med kundsupporten](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
+| 412 | i `ETag` begäran matchar inte för den befintliga resursen enligt `ETag` RFC7232. | [Skapa en supportbiljett med kundsupporten](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
+| 429 | Åtgärder begränsas av tjänsten. Specifika tjänstbegränsningar finns i [IoT Hub Device Provisioning Service gränser.](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits) | Minska meddelandefrekvensen, dela upp ansvarsområden mellan fler enheter. |
+| 500 | Ett internt fel inträffade. | [Skapa ett ärende hos kundsupporten för](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) att se om de kan hjälpa dig ytterligare. |
 
-## <a name="payload-shape-issues"></a>Problem med nytto Last form
+### <a name="file-upload-error-codes"></a>Felkoder för filuppladdning
 
-När du har upprättat att enheten skickar data till IoT Central, är nästa steg att se till att enheten skickar data i ett giltigt format.
+Här är en lista över vanliga felkoder som kan visas när en enhet försöker ladda upp en fil till molnet. Kom ihåg att innan enheten kan ladda upp en fil måste du konfigurera [enhetsfiluppladdningar](howto-configure-file-uploads.md) i ditt program.
 
-Det finns två huvud kategorier av vanliga problem som gör att enhets data inte visas i IoT Central:
+| Felkod | Beskrivning | Möjlig åtgärd |
+| - | - | - |
+| 403006  | Du har överskridit antalet samtidiga filöverföringsåtgärder. Varje enhetsklient är begränsad till 10 samtidiga filuppladdningar. | Se till att enheten snabbt meddelar IoT Central att filuppladdningen har slutförts. Om det inte fungerar kan du försöka minska tidsgränsen för begäran. |
 
-- Enhets mal len för enhets data matchar inte:
-  - Matchnings fel i namn, till exempel skrivfel eller Skift läges matchnings problem.
-  - Nedmodellerade egenskaper där schemat inte har definierats i enhets mal len.
-  - Schema matchnings fel, till exempel en typ som definierats i mallen som `boolean` , men data är en sträng.
-  - Samma telemetri-namn definieras i flera gränssnitt, men enheten är inte IoT Plug and Play-kompatibel.
-- Data formen är ogiltig JSON. Läs mer i [telemetri, egenskaper och kommando nytto laster](concepts-telemetry-properties-commands.md).
+## <a name="payload-shape-issues"></a>Problem med nyttolastform
 
-För att identifiera vilka kategorier ditt problem är i kör du det mest lämpliga kommandot för ditt scenario:
+När du har fastställt att enheten skickar data till IoT Central är nästa steg att se till att enheten skickar data i ett giltigt format.
 
-- Använd för hands versions kommandot för att validera telemetri:
+Det finns två huvudkategorier av vanliga problem som gör att enhetsdata inte visas i IoT Central:
+
+- Enhetsmall till enhetsdatamatchningsfel:
+  - Matchningsfel i namngivning, till exempel skrivfel eller problem med ärendematchning.
+  - Omodelade egenskaper där schemat inte har definierats i enhetsmallen.
+  - Schemamatchningsfel, till exempel en typ som definierats i mallen `boolean` som , men data är en sträng.
+  - Samma telemetrinamn definieras i flera gränssnitt, men enheten är inte IoT-Plug and Play kompatibel.
+- Dataformen är ogiltig JSON. Mer information finns i [Telemetri, egenskaps- och kommandonyttolaster.](concepts-telemetry-properties-commands.md)
+
+Kör det lämpligaste kommandot för ditt scenario för att identifiera vilka kategorier problemet finns i:
+
+- Verifiera telemetrin med hjälp av förhandsgranskningskommandot:
 
     ```azurecli
     az iot central diagnostics validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
-- Om du vill validera egenskaps uppdateringar använder du kommandot för hands version
+- Om du vill verifiera egenskapsuppdateringar använder du förhandsgranskningskommandot
 
     ```azurecli
     az iot central diagnostics validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
-Du kan uppmanas att installera `uamqp` biblioteket första gången du kör ett `validate` kommando.
+Du kan uppmanas att installera biblioteket `uamqp` första gången du kör ett `validate` kommando.
 
-Följande utdata visar exempel fel och varnings meddelanden från kommandot validate:
+Följande utdata visar exempel på fel- och varningsmeddelanden från kommandot validate:
 
 ```output
 Validating telemetry.
@@ -202,16 +210,16 @@ Exiting after 300 second(s), or 10 message(s) have been parsed (whichever happen
 tatype 'double'. Data '56'. All dates/times/datetimes/durations must be ISO 8601 compliant.
 ```
 
-Om du föredrar att använda ett grafiskt användar gränssnitt använder du vyn IoT Central **rå data** för att se om något inte har modeller ATS. Vyn **rå data** identifierar inte om enheten skickar felaktig JSON.
+Om du föredrar att använda ett grafiskt användargränssnitt IoT Central **vyn Rådata** för att se om något inte modelleras. Vyn **Rådata** identifierar inte om enheten skickar felaktig JSON.
 
-:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="Skärm bild av vyn rå data":::
+:::image type="content" source="media/troubleshoot-connection/raw-data-view.png" alt-text="Skärmbild av vyn Rådata":::
 
-När du har identifierat problemet kan du behöva uppdatera enhetens inbyggda program vara eller skapa en ny enhets mall som modeller tidigare modellbaserade data.
+När du har identifierat problemet kan du behöva uppdatera enhetens inbyggda programvara eller skapa en ny enhetsmall som modellerar tidigare omoderade data.
 
-Om du väljer att skapa en ny mall som modellerar data korrekt, migrerar du enheter från din gamla mall till den nya mallen. Mer information finns i [Hantera enheter i ditt Azure IoT Central-program](howto-manage-devices.md).
+Om du väljer att skapa en ny mall som modellerar data korrekt migrerar du enheter från din gamla mall till den nya mallen. Mer information finns i [Hantera enheter i ditt Azure IoT Central program.](howto-manage-devices.md)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du behöver mer hjälp kan du kontakta Azure-experterna i [MSDN Azure och Stack Overflow forum](https://azure.microsoft.com/support/community/). Du kan också skriva ett [support ärende för Azure](https://portal.azure.com/#create/Microsoft.Support).
+Om du behöver mer hjälp kan du kontakta Azure-experterna på [MSDN Azure och Stack Overflow forumen](https://azure.microsoft.com/support/community/). Du kan också skapa en [Azure-supportbiljett.](https://portal.azure.com/#create/Microsoft.Support)
 
-Mer information finns i [Azure IoT-support och hjälp alternativ](../../iot-fundamentals/iot-support-help.md).
+Mer information finns i [Support- och hjälpalternativ för Azure IoT.](../../iot-fundamentals/iot-support-help.md)

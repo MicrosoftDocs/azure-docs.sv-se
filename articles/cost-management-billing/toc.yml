@@ -48,7 +48,7 @@
           href: understand/analyze-unexpected-charges.md
         - name: Hantera kostnader med automatisering
           href: costs/manage-automation.md
-        - name: Hämta stora data mängder med exporter
+        - name: Hämta stora datauppsättningar med exporter
           href: costs/ingest-azure-usage-at-scale.md
         - name: Cost Management för partner
           href: costs/get-started-partners.md
@@ -98,7 +98,7 @@
           href: reservations/reserved-instance-windows-software-costs.md?toc=/azure/cost-management-billing/toc.json
         - name: Användningsdata för enskilda prenumerationer
           href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
-        - name: Användnings data för företags-och Microsofts kund avtal
+        - name: Användningsdata Microsoft-kundavtal företag och tjänster
           href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
     - name: Fakturering
       items:
@@ -148,7 +148,7 @@
               href: manage/understand-mca-roles.md
             - name: Länka partner-ID
               href: manage/link-partner-id.md
-            - name: Länka partner-ID till Power Apps-konton
+            - name: Länka partner-ID till Power Apps konton
               href: manage/link-partner-id-power-apps-accounts.md
         - name: Administrera prenumerationer
           items:
@@ -162,9 +162,9 @@
               href: manage/azurestudents-subscription-disabled.md
             - name: Överför ägarskap
               href: manage/billing-subscription-transfer.md
-            - name: Begära ägarskap av ett Microsoft-kundavtal
+            - name: Överföra Microsoft-kundavtal ägarskap
               href: manage/mca-request-billing-ownership.md
-            - name: Begära ägarskap av ett Microsoft-partneravtal
+            - name: Överföra Microsoft-partneravtal ägarskap
               href: manage/mpa-request-ownership.md
             - name: Installera och konfigurera AWS-integrering
               href: costs/aws-integration-set-up-configure.md
@@ -206,7 +206,7 @@
               href: manage/transfer-subscriptions-subscribers-csp.md
             - name: Avbryt prenumerationen
               href: manage/cancel-azure-subscription.md
-            - name: Hantera prenumerations principer
+            - name: Hantera prenumerationsprinciper
               href: manage/manage-azure-subscription-policy.md
         - name: Skapa prenumerationer programmässigt
           items:
@@ -280,7 +280,7 @@
           href: manage/cost-management-budget-scenario.md
         - name: Använda kostnadsaviseringar
           href: costs/cost-mgt-alerts-monitor-usage-spending.md
-        - name: Exportera kostnads data med en SAS-nyckel för lagring
+        - name: Exportera kostnadsdata med en Storage SAS-nyckel
           href: costs/export-cost-data-storage-account-sas-key.md
         - name: Tilldela kostnader
           href: costs/allocate-costs.md
@@ -296,7 +296,7 @@
           href: manage/mca-check-azure-credits-balance.md
         - name: 'Migrera från EA till MCA API:er'
           href: costs/migrate-cost-management-api.md
-        - name: Tilldela roller till EA-SPN
+        - name: 'Tilldela roller till EA-SPN:er'
           href: manage/assign-roles-azure-service-principals.md
         - name: 'Migrera från EA-rapporter till Azure Resource Manager-API:er'
           href: costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md
@@ -394,15 +394,15 @@
       href: /rest/api/cost-management
     - name: REST API för Azure Consumption
       href: /rest/api/consumption
-    - name: Budget mal len förbruknings REST API ARM
+    - name: Mall för REST API ARM-budget
       href: /azure/templates/microsoft.consumption/budgets
     - name: Exempel på REST-API för Cost Management
       href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
-    - name: Azure PowerShell-cmdletar för Cost Management
+    - name: Azure PowerShell cmdlets för Cost Management
       href: /powershell/module/Az.CostManagement
     - name: Scenarier för automatisering av fakturering
       href: manage/cost-management-automation-scenarios.md
-    - name: Priser för åter försäljning i Azure REST API
+    - name: Azure-REST API
       href: /rest/api/cost-management/retail-prices/azure-retail-prices
     - name: REST API för Azure-fakturering
       href: /rest/api/billing
@@ -410,21 +410,21 @@
       href: manage/consumption-api-overview.md
     - name: REST API för Azure Consumption
       href: /rest/api/consumption
-    - name: Översikt över företags rapportering REST API
+    - name: Översikt över REST API företagsrapportering
       href: manage/enterprise-api.md
-    - name: 'REST API: er för företags rapportering'
+    - name: 'REST-API:er för Enterprise Reporting'
       href: /rest/api/billing/enterprise/billing-enterprise-api-balance-summary
     - name: Reservationer
       items:
         - name: REST-API för reservationer
           href: reservations/reservation-apis.md?toc=/azure/cost-management-billing/toc.json
-        - name: Azure PowerShell-cmdletar för reservationer
+        - name: Azure PowerShell-cmdlets för reservationer
           href: /powershell/module/azurerm.reservations
         - name: Azure CLI för reservationer
           href: /cli/azure/reservations/reservation
-        - name: Information om användning REST API
+        - name: Användningsinformation REST API
           href: /rest/api/consumption/usagedetails
-        - name: Information om reservationer REST API
+        - name: Reservationsinformation REST API
           href: /rest/api/consumption/reservationsdetails
 - name: Resurser
   items:
