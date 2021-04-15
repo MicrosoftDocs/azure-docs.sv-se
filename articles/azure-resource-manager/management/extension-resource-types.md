@@ -1,235 +1,272 @@
 ---
 title: Filnamnstillägg för resurstyper
-description: Visar en lista över Azures resurs typer som används för att utöka funktionerna i andra resurs typer.
+description: Listar de Azure-resurstyper som används för att utöka funktionerna för andra resurstyper.
 ms.topic: conceptual
-ms.date: 11/14/2020
-ms.openlocfilehash: 5561c480dd5a2849588ed2288eb5bcc35fc1446c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/12/2021
+ms.openlocfilehash: 7085c0894fbf3bd56b56e4187d56f9af54916962
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94658459"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363996"
 ---
-# <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Resurs typer som utökar funktioner i andra resurser
+# <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Resurstyper som utökar funktionerna i andra resurser
 
-En tilläggs resurs är en resurs som lägger till en annan resurss funktioner. Resurs låsning är till exempel en tilläggs resurs. Du kan använda ett resurs lås på en annan resurs för att förhindra att den tas bort eller ändras. Det är inte klokt att skapa ett resurs lås av sig självt. En tilläggs resurs används alltid på en annan resurs.
+En tilläggsresurs är en resurs som lägger till en annan resurss funktioner. Resurslås är till exempel en tilläggsresurs. Du kan tillämpa ett resurslås på en annan resurs för att förhindra att den tas bort eller ändras. Det är inte meningsfullt att skapa ett resurslås på egen hand. En tilläggsresurs tillämpas alltid på en annan resurs.
 
-## <a name="microsoftadvisor"></a>Microsoft. Advisor
+## <a name="microsoftadvisor"></a>Microsoft.Advisor
 
-- Microsoft. Advisor/konfigurationer
-- Microsoft. Advisor/rekommendationer
-- Microsoft. Advisor/undertrycker
+- Microsoft.Advisor/konfigurationer
+- Microsoft.Advisor/rekommendationer
+- Microsoft.Advisor/undertryckningar
 
-## <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
+## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 
-- Microsoft. AlertsManagement/Alerts
+- Microsoft.AlertsManagement/alerts
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
-- Microsoft. Authorization/denyAssignments
-- Microsoft. Authorization/låsen
-- Microsoft. Authorization/policyAssignments
-- Microsoft. Authorization/policyDefinitions
-- Microsoft. Authorization/policyExemptions
-- Microsoft. Authorization/policySetDefinitions
-- Microsoft. Authorization/privateLinkAssociations
-- Microsoft. Authorization/roleAssignments
-- Microsoft. Authorization/roleDefinitions
+- Microsoft.Authorization/denyAssignments
+- Microsoft.Authorization/locks
+- Microsoft.Authorization/policyAssignments
+- Microsoft.Authorization/policyDefinitions
+- Microsoft.Authorization/policyExemptions
+- Microsoft.Authorization/policySetDefinitions
+- Microsoft.Authorization/privateLinkAssociations
+- Microsoft.Authorization/roleAssignmentApprovals
+- Microsoft.Authorization/roleAssignments
+- Microsoft.Authorization/roleAssignmentScheduleInstances
+- Microsoft.Authorization/roleAssignmentScheduleRequests
+- Microsoft.Authorization/roleAssignmentSchedules
+- Microsoft.Authorization/roleDefinitions
+- Microsoft.Authorization/roleEligibilityScheduleInstances
+- Microsoft.Authorization/roleEligibilityScheduleRequests
+- Microsoft.Authorization/roleEligibilitySchedules
+- Microsoft.Authorization/roleManagementPolicies
+- Microsoft.Authorization/roleManagementPolicyAssignments
 
-## <a name="microsoftautomanage"></a>Microsoft. autohantera
+## <a name="microsoftautomanage"></a>Microsoft.Automanage
 
-- Microsoft. automanage/configurationProfileAssignments
+- Microsoft.Automanage/configurationProfileAssignments
 
-## <a name="microsoftbilling"></a>Microsoft. fakturering
+## <a name="microsoftbilling"></a>Microsoft.Billing
 
-- Microsoft. fakturering/billingPeriods
-- Microsoft. fakturering/billingPermissions
-- Microsoft. fakturering/billingRoleAssignments
-- Microsoft. fakturering/billingRoleDefinitions
-- Microsoft. fakturering/createBillingRoleAssignment
+- Microsoft.Billing/billingPeriods
+- Microsoft.Billing/billingPermissions
+- Microsoft.Billing/billingRoleAssignments
+- Microsoft.Billing/billingRoleDefinitions
+- Microsoft.Billing/createBillingRoleAssignment
 
-## <a name="microsoftblueprint"></a>Microsoft. skiss
+## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
-- Microsoft. skiss/blueprintAssignments
-- Microsoft. skiss/skisser
+- Microsoft.Blueprint/blueprintAssignments
+- Microsoft.Blueprint/blueprints
 
-## <a name="microsoftconsumption"></a>Microsoft. förbrukning
+## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
-- Microsoft. förbrukning/AggregatedCost
-- Microsoft. förbrukning/saldon
-- Microsoft. förbrukning/budgetar
-- Microsoft. förbrukning/avgifter
-- Microsoft. förbrukning/CostTags
-- Microsoft. förbrukning/kredit
-- Microsoft. förbrukning/händelser
-- Microsoft. förbrukning/prognoser
-- Microsoft. förbrukning/partier
-- Microsoft. förbrukning/Marketplace
-- Microsoft. förbrukning/Pricesheets
-- Microsoft. förbrukning/produkter
-- Microsoft. förbrukning/ReservationDetails
-- Microsoft. förbrukning/ReservationRecommendationDetails
-- Microsoft. förbrukning/ReservationRecommendations
-- Microsoft. förbrukning/ReservationSummaries
-- Microsoft. förbrukning/ReservationTransactions
+- Microsoft.Capacity/listSkus
 
-## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
+## <a name="microsoftchangeanalysis"></a>Microsoft.ChangeAnalysis
 
-- Microsoft. ContainerInstance/serviceAssociationLinks
+- Microsoft.ChangeAnalysis/changes
 
-## <a name="microsoftcostmanagement"></a>Microsoft. CostManagement
+## <a name="microsoftconsumption"></a>Microsoft.Consumption
 
-- Microsoft. CostManagement/Alerts
-- Microsoft. CostManagement/budgetar
-- Microsoft. CostManagement/dimensions
-- Microsoft. CostManagement/export
-- Microsoft. CostManagement/ExternalSubscriptions
-- Microsoft. CostManagement/Prediktion
-- Microsoft. CostManagement/Insights
-- Microsoft. CostManagement/fråga
-- Microsoft. CostManagement/Reportconfigs
-- Microsoft. CostManagement/-rapporter
-- Microsoft. CostManagement/vyer
+- Microsoft.Consumption/AggregatedCost
+- Microsoft.Consumption/Balances
+- Microsoft.Consumption/Budgets
+- Microsoft.Consumption/Charges
+- Microsoft.Consumption/CostTags
+- Microsoft.Consumption/credits
+- Microsoft.Consumption/events
+- Microsoft.Consumption/Forecasts
+- Microsoft.Consumption/lots
+- Microsoft.Consumption/Marketplaces
+- Microsoft.Consumption/Pricesheets
+- Microsoft.Consumption/products
+- Microsoft.Consumption/ReservationDetails
+- Microsoft.Consumption/ReservationRecommendationDetails
+- Microsoft.Consumption/ReservationRecommendations
+- Microsoft.Consumption/ReservationSummaries
+- Microsoft.Consumption/ReservationTransactions
 
-## <a name="microsoftcustomproviders"></a>Microsoft. CustomProviders
+## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
-- Microsoft. CustomProviders/associationer
+- Microsoft.ContainerInstance/serviceAssociationLinks
 
-## <a name="microsofteventgrid"></a>Microsoft. EventGrid
+## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
-- Microsoft. EventGrid/eventSubscriptions
-- Microsoft. EventGrid/extensionTopics
+- Microsoft.CostManagement/Alerts
+- Microsoft.CostManagement/Budgets
+- Microsoft.CostManagement/CheckNameAvailability
+- Microsoft.CostManagement/Dimensions
+- Microsoft.CostManagement/Export
+- Microsoft.CostManagement/ExternalSubscriptions
+- Microsoft.CostManagement/Forecast
+- Microsoft.CostManagement/GenerateDetailedCostReport
+- Microsoft.CostManagement/Insights
+- Microsoft.CostManagement/OperationResults
+- Microsoft.CostManagement/OperationStatus
+- Microsoft.CostManagement/Query
+- Microsoft.CostManagement/Reportconfigs
+- Microsoft.CostManagement/Reports
+- Microsoft.CostManagement/ScheduledActions
+- Microsoft.CostManagement/Views
 
-## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
+## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
 
-- Microsoft. GuestConfiguration/configurationProfileAssignments
-- Microsoft. GuestConfiguration/guestConfigurationAssignments
-- Microsoft. GuestConfiguration/Software
+- Microsoft.CustomProviders/associations
 
-## <a name="microsoftinsights"></a>Microsoft. Insights
+## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 
-- Microsoft. Insights/bas linje
-- Microsoft. Insights/dataCollectionRuleAssociations
-- Microsoft. Insights/diagnosticSettings
-- Microsoft. Insights/diagnosticSettingsCategories
-- Microsoft. Insights/eventtypes
-- Microsoft. Insights/extendedDiagnosticSettings
-- Microsoft. Insights/guestDiagnosticSettingsAssociation
-- Microsoft. Insights/logDefinitions
-- Microsoft. Insights/loggar
-- Microsoft. Insights/metricbaselines
-- Microsoft. Insights/metricDefinitions
-- Microsoft. Insights/metricNamespaces
-- Microsoft. Insights/mått
-- Microsoft. Insights/mina arbets böcker
-- Microsoft. Insights/topologi
-- Microsoft. Insights/transaktioner
+- Microsoft.DataMigration/DatabaseMigrations
 
-## <a name="microsoftkubernetesconfiguration"></a>Microsoft. KubernetesConfiguration
+## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
-- Microsoft. KubernetesConfiguration/Extensions
-- Microsoft. KubernetesConfiguration/sourceControlConfigurations
+- Microsoft.EventGrid/eventSubscriptions
+- Microsoft.EventGrid/extensionTopics
 
-## <a name="microsoftmaintenance"></a>Microsoft. Maintenance
+## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
-- Microsoft. Maintenance/applyUpdates
-- Microsoft. Maintenance/configurationAssignments
-- Microsoft. Maintenance/uppdateringar
+- Microsoft.GuestConfiguration/configurationProfileAssignments
+- Microsoft.GuestConfiguration/guestConfigurationAssignments
+- Microsoft.GuestConfiguration/software
 
-## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
+## <a name="microsoftinsights"></a>microsoft.insights
 
-- Microsoft. ManagedIdentity/identiteter
+- microsoft.insights/baseline
+- microsoft.insights/dataCollectionRuleAssociations
+- microsoft.insights/diagnosticSettings
+- microsoft.insights/diagnosticSettingsCategories
+- microsoft.insights/eventtypes
+- microsoft.insights/extendedDiagnosticSettings
+- microsoft.insights/guestDiagnosticSettingsAssociation
+- microsoft.insights/logDefinitions
+- microsoft.insights/logs
+- microsoft.insights/metricbaselines
+- microsoft.insights/metricDefinitions
+- microsoft.insights/metricNamespaces
+- microsoft.insights/metrics
+- microsoft.insights/myWorkbooks
+- microsoft.insights/topologi
+- microsoft.insights/transactions
 
-## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
+## <a name="microsoftkubernetesconfiguration"></a>Microsoft.KubernetesConfiguration
 
-- Microsoft. ManagedServices/registrationAssignments
-- Microsoft. ManagedServices/registrationDefinitions
+- Microsoft.KubernetesConfiguration/extensions
+- Microsoft.KubernetesConfiguration/sourceControlConfigurations
 
-## <a name="microsoftoperationalinsights"></a>Microsoft. OperationalInsights
+## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
 
-- Microsoft. OperationalInsights/storageInsightConfigs
+- Microsoft.Maintenance/applyUpdates
+- Microsoft.Maintenance/configurationAssignments
+- Microsoft.Maintenance/updates
 
-## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
+## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
-- Microsoft. OperationsManagement/managementassociations
+- Microsoft.ManagedIdentity/Identities
 
-## <a name="microsoftpolicyinsights"></a>Microsoft. PolicyInsights
+## <a name="microsoftmanagedservices"></a>Microsoft.ManagedServices
 
-- Microsoft. PolicyInsights/attesteringar
-- Microsoft. PolicyInsights/policyEvents
-- Microsoft. PolicyInsights/policyStates
-- Microsoft. PolicyInsights/policyTrackedResources
-- Microsoft. PolicyInsights/-reparationer
+- Microsoft.ManagedServices/registrationAssignments
+- Microsoft.ManagedServices/registrationDefinitions
 
-## <a name="microsoftrecoveryservices"></a>Microsoft. RecoveryServices
+## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
-- Microsoft. RecoveryServices/backupProtectedItems
-- Microsoft. RecoveryServices/replicationEligibilityResults
+- Microsoft.OperationalInsights/storageInsightConfigs
 
-## <a name="microsoftresourcehealth"></a>Microsoft. ResourceHealth
+## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
-- Microsoft. ResourceHealth/childResources
-- Microsoft. ResourceHealth/Events
-- Microsoft. ResourceHealth/impactedResources
-- Microsoft. ResourceHealth/Notifications
+- Microsoft.OperationsManagement/managementassociations
 
-## <a name="microsoftresources"></a>Microsoft. Resources
+## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 
-- Microsoft. Resources/Links
-- Microsoft. Resources/Tags
+- Microsoft.PolicyInsights/attesteringar
+- Microsoft.PolicyInsights/eventGridFilters
+- Microsoft.PolicyInsights/policyEvents
+- Microsoft.PolicyInsights/policyStates
+- Microsoft.PolicyInsights/policyTrackedResources
+- Microsoft.PolicyInsights/reparation
 
-## <a name="microsoftsecurity"></a>Microsoft. Security
+## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
-- Microsoft. Security/adaptiveNetworkHardenings
-- Microsoft. Security/advancedThreatProtectionSettings
-- Microsoft. Security/assessmentMetadata
-- Microsoft. Security/bedömningar
-- Microsoft. Security/Compliances
-- Microsoft. Security/dataCollectionAgents
-- Microsoft. Security/Devices
-- Microsoft. Security/deviceSecurityGroups
-- Microsoft. Security/InformationProtectionPolicies
-- Microsoft. Security/iotSensors
-- Microsoft. Security/jitPolicies
-- Microsoft. Security/serverVulnerabilityAssessments
-- Microsoft. Security/sqlVulnerabilityAssessments
+- Microsoft.RecoveryServices/backupProtectedItems
+- Microsoft.RecoveryServices/replicationEligibilityResults
 
-## <a name="microsoftsecurityinsights"></a>Microsoft. SecurityInsights
+## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
 
-- Microsoft. SecurityInsights/agg regeringar
-- Microsoft. SecurityInsights/alertRules
-- Microsoft. SecurityInsights/alertRuleTemplates
-- Microsoft. SecurityInsights/automationRules
-- Microsoft. SecurityInsights/bok märken
-- Microsoft. SecurityInsights/fall
-- Microsoft. SecurityInsights/dataConnectors
-- Microsoft. SecurityInsights/dataConnectorsCheckRequirements
-- Microsoft. SecurityInsights/entiteter
-- Microsoft. SecurityInsights/incidenter
-- Microsoft. SecurityInsights/inställningar
-- Microsoft. SecurityInsights/threatIntelligence
-- Microsoft. SecurityInsights/watchlists
+- Microsoft.ResourceHealth/childResources
+- Microsoft.ResourceHealth/events
+- Microsoft.ResourceHealth/impactedResources
 
-## <a name="microsoftserialconsoleppe"></a>Microsoft. SerialConsole. skyddsutrustning
+## <a name="microsoftresources"></a>Microsoft.Resources
 
-- Microsoft. SerialConsole. skyddsutrustning/serialPorts
+- Microsoft.Resources/links
+- Microsoft.Resources/tags
 
-## <a name="microsoftsoftwareplan"></a>Microsoft. SoftwarePlan
+## <a name="microsoftsecurity"></a>Microsoft.Security
 
-- Microsoft. SoftwarePlan/hybridUseBenefits
+- Microsoft.Security/adaptiveNetworkHardenings
+- Microsoft.Security/advancedThreatProtectionSettings
+- Microsoft.Security/assessmentMetadata
+- Microsoft.Security/assessments
+- Microsoft.Security/Compliances
+- Microsoft.Security/dataCollectionAgents
+- Microsoft.Security/devices
+- Microsoft.Security/deviceSecurityGroups
+- Microsoft.Security/InformationProtectionPolicies
+- Microsoft.Security/insights
+- Microsoft.Security/iotAlerts
+- Microsoft.Security/iotRecommendations
+- Microsoft.Security/iotSensors
+- Microsoft.Security/iotSites
+- Microsoft.Security/jitPolicies
+- Microsoft.Security/serverVulnerabilityAssessments
+- Microsoft.Security/sqlVulnerabilityAssessments
 
-## <a name="microsoftsupport"></a>Microsoft. support
+## <a name="microsoftsecurityinsights"></a>Microsoft.SecurityInsights
 
-- Microsoft. support/supporttickets
+- Microsoft.SecurityInsights/aggregations
+- Microsoft.SecurityInsights/alertRules
+- Microsoft.SecurityInsights/alertRuleTemplates
+- Microsoft.SecurityInsights/automationRules
+- Microsoft.SecurityInsights/bookmarks
+- Microsoft.SecurityInsights/cases
+- Microsoft.SecurityInsights/dataConnectors
+- Microsoft.SecurityInsights/dataConnectorsCheckRequirements
+- Microsoft.SecurityInsights/berikning
+- Microsoft.SecurityInsights/entiteter
+- Microsoft.SecurityInsights/entityQueryTemplates
+- Microsoft.SecurityInsights/incidents
+- Microsoft.SecurityInsights/settings
+- Microsoft.SecurityInsights/threatIntelligence
+- Microsoft.SecurityInsights/watchlists
 
-## <a name="microsoftworkloadmonitor"></a>Microsoft. WorkloadMonitor
+## <a name="microsoftserialconsole"></a>Microsoft.SerialConsole
 
-- Microsoft. WorkloadMonitor/Components
-- Microsoft. WorkloadMonitor/monitorInstances
-- Microsoft. WorkloadMonitor/övervakare
-- Microsoft. WorkloadMonitor/notificationSettings
+- Microsoft.SerialConsole/serialPorts
+
+## <a name="microsoftservicelinker"></a>Microsoft.ServiceLinker
+
+- Microsoft.ServiceLinker/linkers
+
+## <a name="microsoftsoftwareplan"></a>Microsoft.SoftwarePlan
+
+- Microsoft.SoftwarePlan/hybridUseBenefits
+
+## <a name="microsoftsubscription"></a>Microsoft.Subscription
+
+- Microsoft.Subscription/policies
+
+## <a name="microsoftsupport"></a>microsoft.support
+
+- microsoft.support/supporttickets
+
+## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
+
+- Microsoft.WorkloadMonitor/monitors
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Om du vill hämta resurs-ID för en tilläggs resurs i en Azure Resource Manager mall använder du [extensionResourceId](../templates/template-functions-resource.md#extensionresourceid).
-- Ett exempel på hur du skapar en tilläggs resurs i en mall finns [Event Grid händelse prenumerationer](/azure/templates/microsoft.eventgrid/2019-06-01/eventsubscriptions).
+- Om du vill hämta resurs-ID:t för en tilläggsresurs i Azure Resource Manager mall använder du [extensionResourceId](../templates/template-functions-resource.md#extensionresourceid).
+- Ett exempel på hur du skapar en tilläggsresurs i en mall finns i [Event Grid Event Subscriptions](/azure/templates/microsoft.eventgrid/2019-06-01/eventsubscriptions).
