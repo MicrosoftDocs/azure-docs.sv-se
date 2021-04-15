@@ -1,15 +1,19 @@
-- name: Dokumentation om Microsofts kund avtal
+- name: Microsoft-kundavtal dokumentation
   href: index.yml?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
 - name: Översikt
   expanded: true
   items:
-    - name: Översikt över Microsofts kund avtal
+    - name: Microsoft-kundavtal översikt
       href: ../understand/mca-overview.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
 - name: Begrepp
   items:
-    - name: Förstå användnings-och fakturerings cykeln
+    - name: Checklista efter att du har signerat ditt avtal
+      href: microsoft-customer-agreement-get-started.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Hantera klienter i ditt avtal
+      href: manage-tenants.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Förstå din användnings- och faktureringsperiod
       href: ../understand/mca-understand-your-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - name: Fil villkor för användning och debitering
+    - name: Filvillkor för användning och avgifter
       href: ../understand/mca-understand-your-usage.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
 - name: Självstudier
   items:
@@ -22,17 +26,17 @@
   items:
     - name: Konfigurera fakturering
       href: ../manage/mca-setup-account.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - name: Kom igång med ditt fakturerings konto
+    - name: Kom igång med ditt faktureringskonto
       href: ../understand/mca-overview.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - name: Organisera din faktura
       href: ../manage/mca-section-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - name: Visa dina faktureringskonton
       href: ../manage/view-all-accounts.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - name: Fakturerings roller
+    - name: Faktureringsroller
       href: ../manage/understand-mca-roles.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - name: Hantera åtkomst till fakturering
       href: ../manage/manage-billing-access.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - name: Konfigurera en administratör för att hantera prenumerations användare
+    - name: Konfigurera administratör för att hantera prenumerationsanvändare
       href: ../manage/add-change-subscription-administrator.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - name: Skapa nya prenumerationer
       href: ../manage/create-subscription.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
@@ -40,13 +44,17 @@
       href: ../manage/pay-by-invoice.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - name: Betala din faktura
       href: ../understand/pay-bill.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - name: Få fakturerings ägande
+    - name: Överför faktureringsägarskapet
       href: ../manage/mca-request-billing-ownership.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - name: 'Migrera EA till Microsofts kund avtals-API: er'
+    - name: 'Migrera EA till Microsoft-kundavtal-API:er'
       href: ../costs/migrate-cost-management-api.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - name: Visa och hämta användning och avgifter
+    - name: Visa och ladda ned användning och avgifter
       href: ../understand/download-azure-daily-usage.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - name: Visa och ladda ned priser för Azure
+    - name: Visa och ladda ned dina Azure-priser
       href: ../manage/ea-pricing.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
-    - name: EA-uppgifter i ett Microsofts kund avtal
+    - name: EA-uppgifter i en Microsoft-kundavtal
       href: ../manage/mca-enterprise-operations.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - name: Felsöka
+      items:
+        - name: Prenumerationsåtkomst
+          href: troubleshoot-subscription-access.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json

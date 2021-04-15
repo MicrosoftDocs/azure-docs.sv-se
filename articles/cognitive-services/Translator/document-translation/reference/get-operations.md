@@ -1,7 +1,7 @@
 ---
-title: Hämta åtgärder för dokument Översättning
+title: Hämta åtgärder för dokumentöversättning
 titleSuffix: Azure Cognitive Services
-description: Metoden GET Operations returnerar en lista med batch-begäranden som skickats och status för varje begäran.
+description: Metoden get operations returnerar en lista över batchbegäranden som skickats och status för varje begäran.
 services: cognitive-services
 author: jann-skotdal
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/25/2021
 ms.author: v-jansk
-ms.openlocfilehash: c42f3081a831c267c7bc605267b99e2a916ea3d8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fd7cee564aa3a00e21d1e707d08a18115d519925
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105613090"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484684"
 ---
-# <a name="document-translation-get-operations"></a>Dokument översättning: Hämta åtgärder
+# <a name="document-translation-get-operations"></a>Dokumentöversättning: hämta åtgärder
 
-Metoden GET Operations returnerar en lista med batch-begäranden som skickats och status för varje begäran. Den här listan innehåller bara batch-begäranden som skickats av användaren (baserat på prenumerationen). Statusen för varje begäran sorteras efter ID.
+Metoden Get Operations returnerar en lista över batchbegäranden som skickats och status för varje begäran. Den här listan innehåller endast batchbegäranden som skickats av användaren (baserat på prenumerationen). Statusen för varje begäran sorteras efter ID.
 
-Om antalet förfrågningar överskrider vår växlings gräns används sid växling på Server sidan. Sid brytnings svar indikerar ett partiellt resultat och inkluderar en fortsättnings-token i svaret. Avsaknad av en fortsättnings-token innebär att inga ytterligare sidor är tillgängliga.
+Om antalet begäranden överskrider vår växlingsgräns används sidinväxling på serversidan. Sidnumrerade svar indikerar ett partiellt resultat och inkluderar en fortsättningstoken i svaret. Frånvaron av en fortsättningstoken innebär att inga ytterligare sidor är tillgängliga.
 
-Du kan använda parametrarna $top och $skip Query för att ange ett antal resultat som ska returneras och en förskjutning för samlingen.
+$top och $skip kan användas för att ange ett antal resultat som ska returneras och en offset för samlingen.
 
-Servern följer de värden som anges av klienten. Klienterna måste dock vara för beredda för att hantera svar som innehåller en annan sid storlek eller som innehåller en tilläggs-token.
+Servern respekterar de värden som anges av klienten. Klienter måste dock vara förberedda på att hantera svar som innehåller en annan sidstorlek eller som innehåller en fortsättningstoken.
 
-När både $top och $skip ingår bör servern först tillämpa $skip och sedan $top i samlingen. 
+När både $top och $skip ingår bör servern först tillämpa $skip och sedan $top på samlingen. 
 
 > [!NOTE]
-> Om servern inte kan svara på $top och/eller $skip måste servern returnera ett fel till klienten som informerar om den i stället för att bara ignorera frågealternativen. Detta minskar risken för att klienten gör antaganden om de data som returneras.
+> Om servern inte kan respektera $top och/eller $skip måste servern returnera ett fel till klienten som informerar om det i stället för att bara ignorera frågealternativen. Detta minskar risken för att klienten gör antaganden om de data som returneras.
 
 ## <a name="request-url"></a>Begärans-URL
 
@@ -39,21 +39,21 @@ Skicka en `GET` begäran till:
 GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches
 ```
 
-Lär dig hur du hittar ditt [anpassade domän namn](../get-started-with-document-translation.md#find-your-custom-domain-name).
+Lär dig hur du hittar [ditt anpassade domännamn](../get-started-with-document-translation.md#find-your-custom-domain-name).
 
 > [!IMPORTANT]
 >
-> * **Alla API-förfrågningar till dokument översättnings tjänsten kräver en anpassad domän slut punkt**.
-> * Du kan inte använda slut punkten som finns på Azure Portal resurs _nycklar och slut punkts_ sida eller den globala Translator-slutpunkten – `api.cognitive.microsofttranslator.com` för att göra HTTP-förfrågningar till dokument översättning.
+> * **Alla API-begäranden till tjänsten För dokumentöversättning krävs en slutpunkt för en anpassad domän.**
+> * Du kan inte använda slutpunkten som finns  på sidan Azure Portal nycklar och slutpunkter eller slutpunkten för global översättning– – för att göra `api.cognitive.microsofttranslator.com` HTTP-begäranden till dokumentöversättning.
 
-## <a name="request-parameters"></a>Parametrar för begäran
+## <a name="request-parameters"></a>Begärandeparametrar
 
-Parametrarna för begäran som skickades till frågesträngen är:
+Frågeparametrar som skickas i frågesträngen är:
 
 |Frågeparameter|Krävs|Beskrivning|
 |--- |--- |--- |
-|$skip|Falskt|Hoppa över $skip poster i samlingen. När både $top och $skip anges tillämpas $skip först.|
-|$top|Falskt|Ta $top posterna i samlingen. När både $top och $skip anges tillämpas $skip först.|
+|$skip|Falskt|Hoppa $skip posterna i samlingen. När både $top och $skip anges $skip tillämpas först.|
+|$top|Falskt|Ta $top posterna i samlingen. När både $top och $skip anges $skip tillämpas först.|
 
 ## <a name="request-headers"></a>Begärandehuvuden
 
@@ -61,51 +61,51 @@ Begärandehuvuden är:
 
 |Sidhuvuden|Beskrivning|
 |--- |--- |
-|Ocp-Apim-Subscription-Key|Nödvändigt begär ande huvud|
+|Ocp-Apim-Subscription-Key|Begärandehuvud som krävs|
 
-## <a name="response-status-codes"></a>Svars status koder
+## <a name="response-status-codes"></a>Statuskoder för svar
 
-Följande är de möjliga HTTP-statuskod som en begäran returnerar.
+Följande är möjliga HTTP-statuskoder som en begäran returnerar.
 
 |Statuskod|Beskrivning|
 |--- |--- |
-|200|OK. Lyckad begäran och returnerar statusen för alla åtgärder. HeadersRetry – efter: integerETag: sträng|
-|400|Felaktig begäran. Ogiltig begäran. Kontrol lera indataparametrarna.|
-|401|Tillstånd. Kontrol lera dina autentiseringsuppgifter.|
-|500|Internt Server fel.|
-|Andra status koder|<ul><li>För många begär Anden</li><li>Servern är tillfälligt otillgänglig</li></ul>|
+|200|OK. En lyckad begäran och returnerar status för alla åtgärder. HeadersRetry-After: heltalETag: sträng|
+|400|Felaktig begäran. Ogiltig begäran. Kontrollera indataparametrar.|
+|401|Obehörig. Kontrollera dina autentiseringsuppgifter.|
+|500|Internt serverfel.|
+|Andra statuskoder|<ul><li>För många begäranden</li><li>Tillfälligt otillgänglig server</li></ul>|
 
-## <a name="get-operations-response"></a>Hämta åtgärds svar
+## <a name="get-operations-response"></a>Svar från Hämta åtgärder
 
-### <a name="successful-get-operations-response"></a>Svar på Get-åtgärder slutfördes
+### <a name="successful-get-operations-response"></a>Svar från lyckade get-åtgärder
 
 Följande information returneras i ett lyckat svar.
 
 |Namn|Typ|Beskrivning|
 |--- |--- |--- |
-|id|sträng|Åtgärdens ID.|
-|createdDateTimeUtc|sträng|Åtgärden skapades datum och tid.|
-|lastActionDateTimeUtc|sträng|Datum och tid då åtgärdens status har uppdaterats.|
-|status|Sträng|Lista med möjliga status värden för jobb eller dokument: <ul><li>Avbrutna</li><li>Avbryter</li><li>Misslyckad</li><li>NotStarted</li><li>Körs</li><li>Lyckades</li><li>ValidationFailed</li></ul>|
-|sammanfattning|StatusSummary[]|Sammanfattning som innehåller information som anges nedan.|
-|Sammanfattning. totalt|heltal|Antal dokument totalt.|
-|Sammanfattning. misslyckades|heltal|Antal dokument som misslyckades.|
-|Sammanfattning. lyckades|heltal|Antal dokument som har översatts.|
-|Sammanfattning. förlopp|heltal|Antal dokument som pågår.|
-|Sammanfattning. notYetStarted|heltal|Antal dokument som ännu inte har startat bearbetningen.|
-|Sammanfattning. avbruten|heltal|Antal avbrutna dokument.|
-|Sammanfattning. totalCharacterCharged|heltal|Totalt antal tecken som debiteras.|
+|id|sträng|ID för åtgärden.|
+|createdDateTimeUtc|sträng|Datum/tid för åtgärden skapades.|
+|lastActionDateTimeUtc|sträng|Datum/tid då åtgärdens status har uppdaterats.|
+|status|Sträng|Lista över möjliga statusar för jobb eller dokument: <ul><li>Avbrutna</li><li>Avbryta</li><li>Misslyckad</li><li>Inte startad</li><li>Körs</li><li>Lyckades</li><li>ValidationFailed</li></ul>|
+|sammanfattning|StatusSummary[]|Sammanfattning som innehåller informationen som anges nedan.|
+|summary.total|heltal|Antal totalt antal dokument.|
+|summary.failed|heltal|Antalet dokument misslyckades.|
+|summary.success|heltal|Antal dokument som har översatts.|
+|summary.inProgress|heltal|Antal dokument som pågår.|
+|summary.notYetStarted|heltal|Antal dokument som inte har börjat bearbetas än.|
+|summary.cancelled|heltal|Antal dokument som har avbrutits.|
+|summary.totalCharacterCharged|heltal|Totalt antal tecken som debiteras.|
 
-###<a name="error-response"></a>Fel svar
+### <a name="error-response"></a>Felsvar
 
 |Namn|Typ|Beskrivning|
 |--- |--- |--- |
-|kod|sträng|Uppräkningar som innehåller fel koder på hög nivå. Möjliga värden:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Behörighet saknas</li></ul>|
-|meddelande|sträng|Hämtar fel meddelande på hög nivå.|
-|fokusera|sträng|Hämtar källan till felet. Det skulle till exempel vara "dokument" eller "dokument-ID" för ett ogiltigt dokument.|
-|innerError|InnerErrorV2|Nytt inre fel format, som följer Cognitive Services API-riktlinjer. Den innehåller de obligatoriska egenskaperna ErrorCode, meddelande och valfria egenskaper mål, information (nyckel värde par), inre fel (detta kan kapslas).|
-|innerError. Code|sträng|Hämtar kod fel sträng.|
-|innerError. Message|sträng|Hämtar fel meddelande på hög nivå.|
+|kod|sträng|Uppräkningar som innehåller felkoder på hög nivå. Möjliga värden:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Behörighet saknas</li></ul>|
+|meddelande|sträng|Hämtar felmeddelande på hög nivå.|
+|Mål|sträng|Hämtar källan till felet. Det kan till exempel vara "dokument" eller "dokument-ID" om ett ogiltigt dokument används.|
+|innerError|InnerErrorV2|Nytt innerfelsformat som följer riktlinjerna för Cognitive Services API. Den innehåller de obligatoriska egenskaperna ErrorCode, message och optional properties target, details(key value pair), inner error (detta kan kapslas).|
+|innerError.code|sträng|Hämtar kodfelsträngen.|
+|innerError.message|sträng|Hämtar felmeddelande på hög nivå.|
 
 ## <a name="examples"></a>Exempel
 
@@ -135,11 +135,11 @@ Följande är ett exempel på ett lyckat svar.
 }
 ```
 
-### <a name="example-error-response"></a>Exempel fel svar
+### <a name="example-error-response"></a>Exempel på felsvar
 
-Följande är ett exempel på ett fel svar. Schemat för andra fel koder är detsamma.
+Följande är ett exempel på ett felsvar. Schemat för andra felkoder är detsamma.
 
-Status kod: 500
+Statuskod: 500
 
 ```JSON
 {
@@ -157,7 +157,7 @@ Status kod: 500
 
 ## <a name="next-steps"></a>Nästa steg
 
-Följ vår snabb start för att lära dig mer om hur du använder dokument översättning och klient biblioteket.
+Följ vår snabbstart om du vill veta mer om hur du använder dokumentöversättning och klientbiblioteket.
 
 > [!div class="nextstepaction"]
-> [Kom igång med dokument Översättning](../get-started-with-document-translation.md)
+> [Kom igång med dokumentöversättning](../get-started-with-document-translation.md)

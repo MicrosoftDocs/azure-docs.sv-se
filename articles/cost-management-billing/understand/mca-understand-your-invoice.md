@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 04/08/2021
 ms.author: banders
-ms.openlocfilehash: 996c974473c53833dd26abae2fb61585999f33b4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ff53131f3078b33b7e7d853c1fca891b0b86d792
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050451"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484612"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Termer på din Microsoft-kundavtalsfaktura
 
@@ -22,13 +22,25 @@ Den här artikeln gäller för ett Azure-faktureringskonto för ett Microsoft-ku
 
 Din faktura innehåller en sammanfattning av dina avgifter och instruktioner för betalning. Du kan ladda ned den i PDF-format (.pdf) från [Azure-portalen](https://portal.azure.com/) eller få den skickad via e-post. Mer information finns i [Visa och ladda ned din Microsoft Azure-faktura](download-azure-invoice.md).
 
-Titta på videon om [kund avtals faktura i Microsoft](https://www.youtube.com/watch?v=e2LGZZ7GubA) om du vill veta mer om din faktura och hur du analyserar avgifterna.
+Titta på [videon Understand your Microsoft-kundavtal invoice (Förstå](https://www.youtube.com/watch?v=e2LGZZ7GubA) din faktura) för att lära dig mer om din faktura och hur du analyserar avgifterna på den.
 
 >[!VIDEO https://www.youtube.com/embed/e2LGZZ7GubA]
 
 ## <a name="billing-period"></a>Faktureringsperiod
 
 Du faktureras per månad. Du kan ta reda på vilken dag i månaden du får fakturor genom att kontrollera *fakturadatumet* under egenskaperna för faktureringsprofil i [Azure-portalen](https://portal.azure.com/). Kostnader som inträffar mellan slutet av faktureringsperioden och fakturadatumet inkluderas i nästa månads faktura, eftersom de tillhör nästa faktureringsperiod. Faktureringsperiodens startdatum och slutdatum för varje anges ovanför **Faktureringssammanfattning** i PDF-fakturan.
+
+Om du migrerar från ett EA till en Microsoft-kundavtal fortsätter du att få fakturor för ditt EA fram till migreringsdatumet. Den nya fakturan för Microsoft-kundavtal genereras den femte dagen i månaden efter att du har migrerat. Den första fakturan visar en partiell avgift från migreringsdatumet. Senare fakturor genereras varje månad och visar alla avgifter för varje månad.
+
+### <a name="changes-for-pay-as-you-go-subscriptions"></a>Ändringar för prenumerationer där du betalar enligt din prenumeration
+
+När en prenumeration överförs, överförs eller avbryts innehåller den senaste genererade fakturan avgifter för den tidigare faktureringsperioden och den nya ofullständiga faktureringsperioden.
+
+Exempel:
+
+Anta att faktureringsperioden för din betala per du-prenumeration är från dag 8 till dag 7 i varje månad. Prenumerationen överfördes till en Microsoft-kundavtal den 16 november. Den senaste betala per du-fakturan har avgifter för den 8 oktober 2020 till och med 7 november 2020. Den har också avgifter för den nya partiella faktureringsperioden för Microsoft-kundavtal från 8 november 2020 till och med 16 november 2020. Här är en exempelbild.
+
+:::image type="content" source="./media/mca-understand-your-invoice/last-invoice-billing-cycle.png" alt-text="Exempelbild av en faktura som visar den senaste faktureringsperioden." lightbox="./media/mca-understand-your-invoice/last-invoice-billing-cycle.png" :::
 
 ## <a name="invoice-terms-and-descriptions"></a>Termer och beskrivningar för faktura
 

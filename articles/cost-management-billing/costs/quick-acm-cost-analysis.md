@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 86f7bbbb52b1596e20fb1f3a67e42b2dd27c501a
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.custom: contperf-fy21q2, devx-track-azurecli
+ms.openlocfilehash: 9b73eeccad6d17df8c711671c56fbb7cee20b17a
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103012623"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484735"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Snabbstart: Utforska och analysera kostnader med kostnadsanalys
 
@@ -68,9 +68,9 @@ Den initiala kostnadsanalysvyn innehåller följande områden.
 
 ### <a name="understand-forecast"></a>Förstå en prognos
 
-Baserat på din senaste användning visar kostnads prognoser en projektion av de uppskattade kostnaderna för den valda tids perioden. Om en budget har kon figurer ATS i kostnads analys kan du Visa när prognostiserade utgifter kan överskrida budget tröskeln. Prognos modellen kan förutsäga framtida kostnader i upp till ett år. Välj filter om du vill visa den detaljerade prognostiserade kostnaden för den valda dimensionen.
+Baserat på din senaste användning visar kostnadsprognoser en uppskattning av dina uppskattade kostnader för den valda tidsperioden. Om en budget har ställts in i Kostnadsanalys kan du se när prognostiserade utgifter sannolikt överskrider budgettröskeln. Prognosmodellen kan förutsäga framtida kostnader för upp till ett år. Välj filter för att visa den detaljerade prognostiserade kostnaden för den valda dimensionen.
 
-Prognos modellen baseras på en tids serie Regressions modell. Kostnads- och användningsdata för minst de senaste tio dagarna krävs för att få en korrekt prognostisering av kostnaderna. För en viss tidsperiod behöver prognosmodellen lika delar med träningsdata för prognosperioden. För att göra en uppskattning för tre månader krävs kostnads- och användningsdata för minst de senaste tre månaderna.
+Prognosmodellen baseras på en regressionsmodell för tidsserieression. Kostnads- och användningsdata för minst de senaste tio dagarna krävs för att få en korrekt prognostisering av kostnaderna. För en viss tidsperiod behöver prognosmodellen lika delar med träningsdata för prognosperioden. För att göra en uppskattning för tre månader krävs kostnads- och användningsdata för minst de senaste tre månaderna.
 
 ## <a name="customize-cost-views"></a>Anpassa kostnadsvyer
 

@@ -1,24 +1,24 @@
 ---
-title: Inbyggda princip definitioner för Azure App konfiguration
-description: Visar Azure Policy inbyggda princip definitioner för Azure App konfiguration. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 03/31/2021
+title: Inbyggda principdefinitioner för Azure App Configuration
+description: Visar Azure Policy inbyggda principdefinitioner för Azure App Configuration. Dessa inbyggda principdefinitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
+ms.date: 04/14/2021
 ms.topic: reference
 author: AlexandraKemperMS
 ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 866bd8f41c301765410fa2adf401d92377fc1808
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: abae4cbe8355b4cc01da9c2c71dfba2f68a50196
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106092506"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497361"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-app-configuration"></a>Azure Policy inbyggda definitioner för Azure App konfiguration
+# <a name="azure-policy-built-in-definitions-for-azure-app-configuration"></a>Azure Policy inbyggda definitioner för Azure App Configuration
 
-Den här sidan är ett index över [Azure policy](../governance/policy/overview.md) inbyggda princip definitioner för Azure App konfiguration. Ytterligare Azure Policy inbyggda program för andra tjänster finns i [Azure policy inbyggda definitioner](../governance/policy/samples/built-in-policies.md).
+Den här sidan är ett index [Azure Policy](../governance/policy/overview.md) inbyggda principdefinitioner för Azure App Configuration. Mer information Azure Policy inbyggda program för andra tjänster finns [i Azure Policy inbyggda definitioner](../governance/policy/samples/built-in-policies.md).
 
-Namnet på varje inbyggd princip definition länkar till princip definitionen i Azure Portal. Använd länken i kolumnen **version** om du vill visa källan på [Azure policy GitHub-lagrings platsen](https://github.com/Azure/azure-policy).
+Namnet på varje inbyggd principdefinition länkar till principdefinitionen i Azure Portal. Använd länken i kolumnen **Version för** att visa källan på Azure Policy [GitHub-lagringsplatsen](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-app-configuration"></a>Azure App Configuration
 

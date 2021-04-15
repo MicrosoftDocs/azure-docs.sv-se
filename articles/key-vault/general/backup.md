@@ -1,6 +1,6 @@
 ---
-title: Säkerhetskopiera en hemlighet, nyckel eller ett certifikat som lagras i Azure Key Vault | Microsoft Docs
-description: Använd det här dokumentet för att säkerhetskopiera en hemlighet, nyckel eller ett certifikat som lagras i Azure Key Vault.
+title: Back up a secret, key, or certificate stored in Azure Key Vault | Microsoft Docs
+description: Använd det här dokumentet för att backa upp en hemlighet, nyckel eller ett certifikat som lagras i Azure Key Vault.
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
@@ -10,87 +10,87 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 3/18/2021
 ms.author: sudbalas
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3b148ac83b89850cad66bcd7254d385e655cc2fb
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 399f55d379f99a784fed97d7e9f72c456eb1f914
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968755"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484820"
 ---
-# <a name="azure-key-vault-backup"></a>Azure Key Vault säkerhets kopiering
+# <a name="azure-key-vault-backup"></a>Azure Key Vault säkerhetskopiering
 
-Det här dokumentet visar hur du säkerhetskopierar hemligheter, nycklar och certifikat som lagras i ditt nyckel valv. En säkerhets kopia är avsedd för att ge dig en offlinekopia av alla dina hemligheter i förmodad händelse att du förlorar åtkomst till ditt nyckel valv.
+Det här dokumentet visar hur du kan valva upp hemligheter, nycklar och certifikat som lagras i ditt nyckelvalv. En säkerhetskopia är avsedd att ge dig en offline-kopia av alla dina hemligheter om du sannolikt skulle förlora åtkomsten till ditt nyckelvalv.
 
 ## <a name="overview"></a>Översikt
 
-Azure Key Vault tillhandahåller automatiskt funktioner som hjälper dig att underhålla tillgänglighet och förhindra data förlust. Säkerhetskopiera endast hemligheter om du har en viktig affärs motivering. Att säkerhetskopiera hemligheter i ditt nyckel valv kan leda till drifts utmaningar, till exempel att underhålla flera uppsättningar av loggar, behörigheter och säkerhets kopior när hemligheterna upphör att gälla eller roteras.
+Azure Key Vault automatiskt funktioner som hjälper dig att upprätthålla tillgängligheten och förhindra dataförlust. Back up secrets only if you have a critical business justification. Säkerhetskopiering av hemligheter i nyckelvalvet kan leda till driftutmaningar som att underhålla flera uppsättningar med loggar, behörigheter och säkerhetskopior när hemligheter upphör att gälla eller roteras.
 
-Key Vault bibehåller tillgänglighet i katastrof scenarier och växlar automatiskt över begär anden till en kopplad region utan att användaren behöver göra något. Mer information finns i [Azure Key Vault tillgänglighet och redundans](./disaster-recovery-guidance.md).
+Key Vault upprätthåller tillgängligheten i katastrofscenarier och redundanskopplar automatiskt begäranden till en länkad region utan att användaren behöver göra något. Mer information finns i [Azure Key Vault tillgänglighet och redundans.](./disaster-recovery-guidance.md)
 
-Om du vill skydda mot oavsiktlig eller skadlig borttagning av dina hemligheter konfigurerar du funktionerna för mjuk borttagning och rensning av skydd i nyckel valvet. Mer information finns i [Översikt över Azure Key Vault mjuk borttagning](./soft-delete-overview.md).
+Om du vill skydda mot oavsiktlig eller skadlig borttagning av dina hemligheter konfigurerar du funktioner för mjuk borttagning och rensning av skydd i nyckelvalvet. Mer information finns i [Azure Key Vault översikt över mjuk borttagning.](./soft-delete-overview.md)
 
 ## <a name="limitations"></a>Begränsningar
 
 > [!IMPORTANT]
-> Key Vault stöder inte möjligheten att säkerhetskopiera fler än 500 tidigare versioner av ett nyckel-, hemligt eller certifikat objekt. Försök att säkerhetskopiera en nyckel, ett hemligt objekt eller ett certifikat objekt kan resultera i ett fel. Det går inte att ta bort tidigare versioner av en nyckel, hemlighet eller certifikat.
+> Key Vault stöder inte möjligheten att säkerhetskopiera fler än 500 tidigare versioner av en nyckel, hemlighet eller ett certifikatobjekt. Försök att säkerhetskopiera en nyckel, hemlighet eller ett certifikatobjekt kan resultera i ett fel. Det går inte att ta bort tidigare versioner av en nyckel, hemlighet eller ett certifikat.
 
-Key Vault tillhandahåller för närvarande inte ett sätt att säkerhetskopiera hela nyckel valvet i en enda åtgärd. Alla försök att använda de kommandon som anges i det här dokumentet för att göra en automatiserad säkerhets kopiering av ett nyckel valv kan resultera i fel och stöds inte av Microsoft eller Azure Key Vaults teamet. 
+Key Vault för närvarande inte ett sätt att valva upp ett helt nyckelvalv i en enda åtgärd. Alla försök att använda kommandona som anges i det här dokumentet för att göra en automatisk säkerhetskopiering av ett nyckelvalv kan resultera i fel och stöds inte av Microsoft eller Azure Key Vault teamet. 
 
-Tänk också på följande konsekvenser:
+Tänk också på följande:
 
-* Att säkerhetskopiera hemligheter som har flera versioner kan orsaka timeout-fel.
-* En säkerhets kopiering skapar en tidpunkts ögonblicks bild. Hemligheter kan förnyas under en säkerhets kopiering, vilket orsakar ett matchnings fel i krypterings nycklarna.
-* Om du överskrider gränserna för Key Vault-tjänsten för begär Anden per sekund kommer ditt nyckel valv att begränsas och säkerhets kopieringen kommer att Miss kopie ras.
+* När hemligheter som har flera versioner kan det leda till time out-fel.
+* En säkerhetskopia skapar en tidpunktsögonblicksbild. Hemligheter kan förnyas under en säkerhetskopiering, vilket orsakar ett matchningsfel för krypteringsnycklar.
+* Om du överskrider tjänstgränserna för nyckelvalvet för begäranden per sekund begränsas nyckelvalvet och säkerhetskopieringen misslyckas.
 
 ## <a name="design-considerations"></a>Designöverväganden
 
-När du säkerhetskopierar ett nyckel valvs objekt, t. ex. en hemlighet, nyckel eller certifikat, laddar säkerhets kopierings åtgärden objektet som en krypterad blob. Denna BLOB kan inte dekrypteras utanför Azure. Om du vill hämta användbara data från denna BLOB måste du återställa blobben till ett nyckel valv i samma Azure-prenumeration och [Azure geografi](https://azure.microsoft.com/global-infrastructure/geographies/).
+När du säkerhetskopierar ett nyckelvalvsobjekt, till exempel en hemlighet, en nyckel eller ett certifikat, laddar säkerhetskopieringsåtgärden ned objektet som en krypterad blob. Den här bloben kan inte dekrypteras utanför Azure. Om du vill hämta användbara data från den här bloben måste du återställa bloben till ett nyckelvalv inom samma Azure-prenumeration och [Azure-geografi.](https://azure.microsoft.com/global-infrastructure/geographies/)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Om du vill säkerhetskopiera ett Key Vault-objekt måste du ha: 
+Om du vill valva ett nyckelvalvsobjekt måste du ha: 
 
-* Deltagar nivå eller högre behörigheter för en Azure-prenumeration.
-* Ett primärt nyckel valv som innehåller de hemligheter som du vill säkerhetskopiera.
-* Ett sekundärt nyckel valv där hemligheter kommer att återställas.
+* Behörighet på deltagarnivå eller högre för en Azure-prenumeration.
+* Ett primärt nyckelvalv som innehåller de hemligheter som du vill valva upp.
+* Ett sekundärt nyckelvalv där hemligheter kommer att återställas.
 
-## <a name="back-up-and-restore-from-the-azure-portal"></a>Säkerhetskopiera och återställa från Azure Portal
+## <a name="back-up-and-restore-from-the-azure-portal"></a>Back up and restore from the Azure Portal
 
-Följ stegen i det här avsnittet för att säkerhetskopiera och återställa objekt med hjälp av Azure Portal.
+Följ stegen i det här avsnittet för att återställning och återställning av objekt med hjälp av Azure Portal.
 
 ### <a name="back-up"></a>Säkerhetskopiera
 
 1. Gå till Azure-portalen.
-2. Välj ditt nyckel valv.
-3. Gå till objektet (hemligt, nyckel eller certifikat) som du vill säkerhetskopiera.
+2. Välj ditt nyckelvalv.
+3. Gå till det objekt (hemlighet, nyckel eller certifikat) som du vill backa upp.
 
-    ![Skärm bild som visar var du väljer inställningen nycklar och ett objekt i ett nyckel valv.](../media/backup-1.png)
+    ![Skärmbild som visar var du väljer inställningen Nycklar och ett objekt i ett nyckelvalv.](../media/backup-1.png)
 
-4. Markera objektet.
-5. Välj **Hämta säkerhets kopia**.
+4. Välj objektet .
+5. Välj **Download Backup (Ladda ned säkerhetskopia).**
 
-    ![Skärm bild som visar var du väljer knappen Hämta säkerhets kopia i ett nyckel valv.](../media/backup-2.png)
+    ![Skärmbild som visar var du väljer knappen Ladda ned säkerhetskopiering i ett nyckelvalv.](../media/backup-2.png)
     
 6. Välj **Hämta**.
 
-    ![Skärm bild som visar var du väljer nedladdnings knappen i ett nyckel valv.](../media/backup-3.png)
+    ![Skärmbild som visar var du väljer knappen Ladda ned i ett nyckelvalv.](../media/backup-3.png)
     
-7. Lagra den krypterade blobben på en säker plats.
+7. Lagra den krypterade bloben på en säker plats.
 
 ### <a name="restore"></a>Återställ
 
 1. Gå till Azure-portalen.
-2. Välj ditt nyckel valv.
+2. Välj ditt nyckelvalv.
 3. Gå till den typ av objekt (hemlighet, nyckel eller certifikat) som du vill återställa.
-4. Välj **Återställ säkerhets kopia**.
+4. Välj **Återställ säkerhetskopiering.**
 
-    ![Skärm bild som visar var du väljer Återställ säkerhets kopia i ett nyckel valv.](../media/backup-4.png)
+    ![Skärmbild som visar var du väljer Återställ säkerhetskopiering i ett nyckelvalv.](../media/backup-4.png)
     
-5. Gå till den plats där du sparade den krypterade blobben.
+5. Gå till den plats där du lagrade den krypterade bloben.
 6. Välj **OK**.
 
-## <a name="back-up-and-restore-from-the-azure-cli-or-azure-powershell"></a>Säkerhetskopiera och återställa från Azure CLI eller Azure PowerShell
+## <a name="back-up-and-restore-from-the-azure-cli-or-azure-powershell"></a>Back up and restore from the Azure CLI or Azure PowerShell
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli

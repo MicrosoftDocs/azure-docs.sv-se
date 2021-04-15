@@ -1,26 +1,26 @@
 ---
-title: CLI-exempel på gransknings-och Avancerat skydd – Azure SQL Database
-description: Exempel skript för Azure CLI för att konfigurera gransknings-och Avancerat skydd i en Azure SQL Database
+title: CLI-exempel på granskning och Advanced Threat Protection – Azure SQL Database
+description: Azure CLI-exempelskript för att konfigurera granskning och Advanced Threat Protection i en Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: security
+ms.custom: security, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/09/2021
-ms.openlocfilehash: 7450911dabe04ea04ba16ec5e648f09ecf4a616f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1af5c3ede32ab85652b7f35d53694a77a36947b8
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100095995"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478258"
 ---
-# <a name="use-cli-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>Använd CLI för att konfigurera SQL Database granskning och Avancerat skydd
+# <a name="use-cli-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>Använd CLI för att konfigurera SQL Database granskning och Advanced Threat Protection
 
-Detta exempel på Azure CLI-skript konfigurerar SQL Database granskning och Avancerat skydd.
+Det här Azure CLI-skriptexempel konfigurerar SQL Database granskning och Advanced Threat Protection.
 
 Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI](/cli/azure/install-azure-cli).
 
@@ -76,20 +76,20 @@ az sql db threat-policy update --email-account-admins Disabled --email-addresses
 
 ### <a name="clean-up-deployment"></a>Rensa distribution
 
-Använd följande kommando för att ta bort resurs gruppen och alla resurser som är kopplade till den.
+Använd följande kommando för att ta bort resursgruppen och alla resurser som är associerade med den.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Exempel referens
+## <a name="sample-reference"></a>Exempelreferens
 
 Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
 | Kommando | Beskrivning |
 |---|---|
-| [AZ SQL DB audit-policy](/cli/azure/sql/db/audit-policy) | Anger granskningsprincipen för en databas. |
-| [AZ SQL DB Threat-policy](/cli/azure/sql/db/threat-policy) | Ställer in en princip för avancerat skydd på en databas. |
+| [az sql db audit-policy](/cli/azure/sql/db/audit-policy) | Anger granskningsprincipen för en databas. |
+| [az sql db threat-policy](/cli/azure/sql/db/threat-policy) | Anger en Advanced Threat Protection-princip för en databas. |
 
 ## <a name="next-steps"></a>Nästa steg
 
