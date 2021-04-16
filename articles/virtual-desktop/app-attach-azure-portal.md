@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0d7598e332539b8203d55bbcb1cf497811c32540
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 21dbab6c8d4fb12fe79434a6994dd7f5b8a49190
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366563"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502716"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Konfigurera MSIX-appbifogning med Azure Portal
 
@@ -19,14 +19,10 @@ Den här artikeln beskriver hur du ställer in MSIX-app bifoga i en Windows Virt
 
 ## <a name="requirements"></a>Krav
 
->[!IMPORTANT]
->Innan du börjar ska du fylla i och skicka det här formuläret [för](https://aka.ms/enablemsixappattach) att aktivera att MSIX-appen bifogas i din prenumeration. Om du inte har en godkänd begäran fungerar det inte att bifoga MSIX-appen. Godkännande av begäranden kan ta upp till 24 timmar under arbetsdagar. Du får ett e-postmeddelande när din begäran har accepterats och slutförts.
-
 Det här behöver du för att konfigurera MSIX-app bifoga:
 
 - En fungerande Windows Virtual Desktop distribution. Information om hur du distribuerar Windows Virtual Desktop (klassisk) finns [i Skapa en klientorganisation i Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Information om hur du distribuerar Windows Virtual Desktop med Azure Resource Manager-integrering finns i Skapa en [värdpool med Azure Portal](./create-host-pools-azure-marketplace.md).
 - En Windows Virtual Desktop värdpool med minst en aktiv sessionsvärd.
-- Den här värdpoolen måste finnas i valideringsmiljön. 
 - MSIX-paketeringsverktyget.
 - Ett MSIX-paketerat program expanderat till en MSIX-avbildning som laddas upp till en filresurs.
 - En filresurs i Windows Virtual Desktop distribution där MSIX-paketet ska lagras.
@@ -35,7 +31,7 @@ Det här behöver du för att konfigurera MSIX-app bifoga:
 
 ## <a name="turn-off-automatic-updates-for-msix-app-attach-applications"></a>Inaktivera automatiska uppdateringar för MSIX-apptillämpningar
 
-Innan du börjar måste du inaktivera automatiska uppdateringar för msix-apptillämpningar. Om du vill inaktivera automatiska uppdateringar måste du köra följande kommandon i en upphöjd kommandotolk:
+Innan du börjar måste du inaktivera automatiska uppdateringar för att koppla program till MSIX-appar. Om du vill inaktivera automatiska uppdateringar måste du köra följande kommandon i en upphöjd kommandotolk:
 
 ```cmd
 rem Disable Store auto update:
@@ -57,7 +53,7 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\De
 
 ## <a name="configure-the-msix-app-attach-management-interface"></a>Konfigurera hanteringsgränssnittet för att koppla MSIX-appen
 
-Därefter måste du ladda ned och konfigurera MSIX-appens hanteringsgränssnitt för Azure Portal.
+Därefter måste du ladda ned och konfigurera hanteringsgränssnittet för hantering av MSIX-appen för Azure Portal.
 
 Konfigurera hanteringsgränssnittet:
 
@@ -113,13 +109,13 @@ Så här lägger du till MSIX-avbildningen:
 
 ## <a name="publish-msix-apps-to-an-app-group"></a>Publicera MSIX-appar till en appgrupp
 
-Därefter måste du publicera apparna i paketet. Du måste göra detta för både programgrupper för stationära datorer och fjärranslutna appar.
+Därefter måste du publicera apparna i paketet. Du måste göra detta för både programgrupper för skrivbordsprogram och fjärrappar.
 
 Om du redan har en MSIX-avbildning kan du gå vidare [till Publicera MSIX-appar till en appgrupp.](#publish-msix-apps-to-an-app-group) Om du vill testa äldre program följer du anvisningarna i Skapa ett [MSIX-paket](/windows/msix/packaging-tool/create-app-package-msi-vm/) från ett installationsprogram på en virtuell dator för att konvertera det äldre programmet till ett MSIX-paket.
 
 Så här publicerar du apparna:
 
-1. I Windows Virtual Desktop resursprovidern väljer **du fliken Programgrupper.**
+1. I den Windows Virtual Desktop resursprovidern väljer du **fliken Programgrupper.**
 
 2. Välj den programgrupp som du vill publicera apparna till.
 
@@ -157,7 +153,7 @@ Så här publicerar du apparna:
 
         - **Ikonsökväg**
         - **Ikonindex**
-        - **Visa i webbflöde**
+        - **Visa i webbfeed**
 
 6. När du är klar väljer du **Spara**.
 
@@ -169,17 +165,17 @@ Så här publicerar du apparna:
 När du har tilldelar MSIX-appar till en appgrupp måste du ge användarna åtkomst till dem. Du kan tilldela åtkomst genom att lägga till användare eller användargrupper i en appgrupp med publicerade MSIX-program. Följ anvisningarna i [Hantera appgrupper med Azure Portal](manage-app-groups.md) för att tilldela användarna till en appgrupp.
 
 >[!NOTE]
->MSIX-appens anslutning av fjärrappar kan försvinna från flödet när du testar fjärrappar under den offentliga förhandsversionen. Apparna visas inte eftersom värdpoolen som du använder i utvärderingsmiljön betjänas av en rdutjämning i produktionsmiljön. Eftersom RD Broker i produktionsmiljön inte registrerar förekomsten av ATT MSIX-appen bifogar fjärrappar visas inte apparna i flödet.
+>MSIX-appens anslutning av fjärrappar kan försvinna från flödet när du testar fjärrappar under den offentliga förhandsversionen. Apparna visas inte eftersom värdpoolen som du använder i utvärderingsmiljön betjänas av en koordinator för fjärrskrivbord i produktionsmiljön. Eftersom RD Broker i produktionsmiljön inte registrerar förekomsten av ATT MSIX-appen kopplar fjärrappar visas inte apparna i flödet.
 
 ## <a name="change-msix-package-state"></a>Ändra MSIX-pakettillstånd
 
-Därefter måste du ändra MSIX-pakettillståndet till antingen **Aktiv** eller **Inaktiv**, beroende på vad du vill göra med paketet. Aktiva paket är paket som användarna kan interagera med när de har publicerats. Inaktiva paket ignoreras av Windows Virtual Desktop, så att användarna inte kan interagera med apparna i dem.
+Därefter måste du ändra MSIX-pakettillståndet till antingen **Aktiv** eller **Inaktiv**, beroende på vad du vill göra med paketet. Aktiva paket är paket som användarna kan interagera med när de har publicerats. Inaktiva paket ignoreras av Windows Virtual Desktop, så användarna kan inte interagera med apparna i dem.
 
 ### <a name="change-state-with-the-applications-list"></a>Ändra tillstånd med programlistan
 
 Så här ändrar du pakettillståndet med programlistan:
 
-1. Gå till din värdpool och välj **MSIX-paket.** Du bör se en lista över alla befintliga MSIX-paket i värdpoolen.
+1. Gå till värdpoolen och välj **MSIX-paket.** Du bör se en lista över alla befintliga MSIX-paket i värdpoolen.
 
 2. Välj de MSIX-paket vars tillstånd du behöver ändra och välj sedan **Ändra tillstånd.**
 
@@ -187,7 +183,7 @@ Så här ändrar du pakettillståndet med programlistan:
 
 Så här ändrar du pakettillståndet med ett uppdateringspaket:
 
-1. Gå till värdpoolen och välj **MSIX-paket**. Du bör se en lista över alla befintliga MSIX-paket i värdpoolen.
+1. Gå till din värdpool och välj **MSIX-paket.** Du bör se en lista över alla befintliga MSIX-paket i värdpoolen.
 
 2. Välj namnet på det paket vars tillstånd du vill ändra från MSIX-paketlistan. Då öppnas fliken **Uppdateringspaket.**
 
@@ -215,7 +211,7 @@ Så här tar du bort ett MSIX-paket från värdpoolen:
 
 Så här tar du bort enskilda MSIX-appar från paketet:
 
-1. Gå till värdpoolen och välj **Programgrupper**.
+1. Gå till värdpoolen och välj **Programgrupper.**
 
 2. Välj den programgrupp som du vill ta bort MSIX-appar från.
 
@@ -227,7 +223,7 @@ Så här tar du bort enskilda MSIX-appar från paketet:
 
 Ställ våra communityfrågor om den här funktionen på [Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
 
-Du kan också lämna feedback för Windows Virtual Desktop på Windows Virtual Desktop [feedbackhubben.](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)
+Du kan också lämna feedback för Windows Virtual Desktop på Windows Virtual Desktop [feedbackhubben](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app).
 
 Här är några andra artiklar som kan vara till hjälp:
 

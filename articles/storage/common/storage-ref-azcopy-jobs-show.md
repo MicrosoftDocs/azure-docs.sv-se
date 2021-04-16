@@ -1,6 +1,6 @@
 ---
-title: AzCopy-jobb Visa | Microsoft Docs
-description: Den här artikeln innehåller referensinformation för kommandot AzCopy Jobs show.
+title: azcopy jobs show | Microsoft Docs
+description: Den här artikeln innehåller referensinformation för kommandot azcopy jobs show.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -8,24 +8,24 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 57970371b947c5240be97e58c10299d2f4dfe525
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a14546d8bfc50531902b5150d38ee5ce8b8b5769
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879079"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503362"
 ---
 # <a name="azcopy-jobs-show"></a>azcopy jobbvisning
 
-Visar detaljerad information om angivet jobb-ID.
+Visar detaljerad information för det angivna jobb-ID:t.
 
-## <a name="synopsis"></a>Sammanfattning
+## <a name="synopsis"></a>Synopsis
 
-Om endast jobb-ID anges utan någon flagga returneras förlopps sammanfattningen för jobbet.
+Om endast jobb-ID:t anges utan en flagga returneras förloppssammanfattningen för jobbet.
 
-Antalet byte och procent färdigt som visas när du kör det här kommandot återspeglar bara filer som har slutförts i jobbet. De återspeglar inte delvis slutförda filer.
+Antalet byte och procent som visas när du kör det här kommandot återspeglar endast filer som har slutförts i jobbet. De återspeglar inte delvis slutförda filer.
 
-Om `with-status` flaggan anges, visas listan över överföringar i jobbet med det angivna värdet.
+Om `with-status` flaggan har angetts visas listan över överföringar i jobbet med det angivna värdet.
 
 ```azcopy
 azcopy jobs show [jobID] [flags]
@@ -36,22 +36,21 @@ azcopy jobs show [jobID] [flags]
 - [Kom igång med AzCopy](storage-use-azcopy-v10.md)
 - [Överföra data med AzCopy och Blob Storage](./storage-use-azcopy-v10.md#transfer-data)
 - [Överföra data med AzCopy och fillagring](storage-use-azcopy-files.md)
-- [Konfigurera, optimera och felsöka AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Alternativ
 
 |Alternativ|Beskrivning|
 |--|--|
-|-h,--hjälp|Visar hjälp innehåll för kommandot show.|
-|--med-status sträng|Visa endast överföringar av jobb med denna status, tillgängliga värden: startade, lyckades, misslyckades|
+|-h, --help|Visar hjälpinnehåll för kommandot show.|
+|--with-status string|Lista endast överföringar av jobb med den här statusen, tillgängliga värden: Startad, Lyckades, Misslyckades|
 
 ## <a name="options-inherited-from-parent-commands"></a>Alternativ som ärvts från överordnade kommandon
 
 |Alternativ|Beskrivning|
 |---|---|
-|--Cap-Mbit/s Float|CAPS överföringshastigheten i megabit per sekund. Indata genom strömning kan variera något från höljet. Om det här alternativet är inställt på noll, eller utelämnas, är data flödet inte något tak.|
-|--typ sträng för utdata|Formatet på kommandots utdata. Alternativen är: text, JSON. Standardvärdet är "text".|
-|--sträng för betrodd-Microsoft-suffix   |Anger ytterligare domänsuffix där Azure Active Directory inloggnings-token kan skickas.  Standardvärdet är '*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. De som anges här läggs till i standardvärdet. För säkerhet ska du bara placeras Microsoft Azure domäner här. Avgränsa flera poster med semikolon.|
+|--cap-mbps float|Kapslar överföringshastigheten i megabit per sekund. Dataflödet för ögonblick kan variera något från taket. Om det här alternativet är inställt på noll, eller om det utelämnas, är dataflödet inte begränsat.|
+|--output-type string|Format för kommandots utdata. Alternativen är: text, json. Standardvärdet är "text".|
+|--trusted-microsoft-suffixes string   |Anger ytterligare domänsuffix där Azure Active Directory inloggningstoken kan skickas.  Standardvärdet är *.core.windows.net;*. core.chinacloudapi.cn; *.core.cloudapi.de;*. core.usgovcloudapi.net". Alla som anges här läggs till i standardinställningarna. Av säkerhetsskäl bör du bara placera Microsoft Azure här. Avgränsa flera poster med semikolon.|
 
 ## <a name="see-also"></a>Se även
 

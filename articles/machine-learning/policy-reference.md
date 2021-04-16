@@ -1,26 +1,26 @@
 ---
-title: Inbyggda princip definitioner för Azure Machine Learning
-description: Visar Azure Policy inbyggda princip definitioner för Azure Machine Learning. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 03/31/2021
+title: Inbyggda principdefinitioner för Azure Machine Learning
+description: Visar Azure Policy inbyggda principdefinitioner för Azure Machine Learning. Dessa inbyggda principdefinitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
+ms.date: 04/14/2021
 ms.author: larryfr
 author: BlackMist
 ms.topic: reference
 ms.service: machine-learning
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 01537083de38a019301d1c61e0e0b229f19720e5
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: f8c9ed14bbea3d0a74bbdf1712242d19d21e14f8
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094429"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505997"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-machine-learning"></a>Azure Policy inbyggda princip definitioner för Azure Machine Learning
+# <a name="azure-policy-built-in-policy-definitions-for-azure-machine-learning"></a>Azure Policy inbyggda principdefinitioner för Azure Machine Learning
 
-Den här sidan är ett index över [Azure policy](../governance/policy/overview.md) inbyggda princip definitioner för Azure Machine Learning. Vanliga användnings fall för Azure Policy inkluderar implementering av styrning för resurs konsekvens, regelefterlevnad, säkerhet, kostnad och hantering. Princip definitioner för dessa vanliga användnings fall är redan tillgängliga i din Azure-miljö som inbyggda moduler för att hjälpa dig att komma igång. Ytterligare Azure Policy inbyggda program för andra tjänster finns i [Azure policy inbyggda definitioner](../governance/policy/samples/built-in-policies.md).
+Den här sidan är ett index [Azure Policy](../governance/policy/overview.md) inbyggda principdefinitioner för Azure Machine Learning. Vanliga användningsfall för Azure Policy omfattar implementering av styrning för resurskonsekvens, regelefterlevnad, säkerhet, kostnad och hantering. Principdefinitioner för dessa vanliga användningsfall är redan tillgängliga i Azure-miljön som inbyggda för att hjälpa dig att komma igång. Mer information Azure Policy inbyggda program för andra tjänster finns [i Azure Policy inbyggda definitioner](../governance/policy/samples/built-in-policies.md).
 
-Namnet på varje inbyggd princip definition länkar till princip definitionen i Azure Portal. Använd länken i **GitHub** -kolumnen för att visa källan på [Azure policy GitHub-lagrings platsen](https://github.com/Azure/azure-policy).
+Namnet på varje inbyggd principdefinition länkar till principdefinitionen i Azure Portal. Använd länken i **GitHub-kolumnen** för att visa källan på Azure Policy [GitHub-lagringsplatsen](https://github.com/Azure/azure-policy).
 
-## <a name="built-in-policy-definitions"></a>Inbyggda princip definitioner
+## <a name="built-in-policy-definitions"></a>Inbyggda principdefinitioner
 
 [!INCLUDE [azure-policy-reference-cat-machinelearning](../../includes/policy/reference/bycat/policies-machine-learning.md)]
 

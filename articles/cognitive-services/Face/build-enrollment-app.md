@@ -1,7 +1,7 @@
 ---
-title: Bygg en registrerings app för Android med reagera
+title: Skapa en React-app för att lägga till användare i en ansiktstjänst
 titleSuffix: Azure Cognitive Services
-description: Lär dig hur du konfigurerar din utvecklings miljö och distribuerar en app för ansikts registrering för att få tillåtelse från kunder.
+description: Lär dig hur du ställer in din utvecklingsmiljö och distribuerar en ansiktsapp för att få medgivande från kunder.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,79 +9,79 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 218579176b807bbdae85646f27eaa7f301d4b9a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39a74c7f3d5fb8f8b60a66947fcce9837ed6ee13
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102428277"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505113"
 ---
-# <a name="build-an-enrollment-app-for-android-with-react"></a>Bygg en registrerings app för Android med reagera
+# <a name="build-a-react-app-to-add-users-to-a-face-service"></a>Skapa en React-app för att lägga till användare i en ansiktstjänst
 
-I den här guiden får du lära dig hur du kommer igång med exemplets registrerings program. Appen visar bästa praxis för att få ett meningsfullt medgivande för att registrera användare i en ansikts igenkännings tjänst och få hög exakthet för ansikts data. Ett integrerat system kan använda en app för registrering som detta för att tillhandahålla touch-kontroll, identitets verifiering, närvaro spårning, anpassnings-eller identitets verifiering, baserat på deras ansikts data.
+Den här guiden visar hur du kommer igång med exempelprogrammet för ansiktsregistrering. Appen visar metodtips för att få meningsfullt medgivande för att lägga till användare i en tjänst för ansiktsigenkänning och hämta ansiktsdata med hög noggrannhet. Ett integrerat system kan använda en app som den här för att tillhandahålla peklös åtkomstkontroll, identitetsverifiering, spårning av ansikten, personanpassning eller identitetsverifiering baserat på ansiktsdata.
 
-När programmet startas visas användarna en detaljerad medgivande skärm. Om användaren ger sitt medgivande uppmanas du att ange ett användar namn och lösen ord i appen och sedan fånga en hög kvalitets bild med enhetens kamera.
+När programmet startas visas en detaljerad medgivandeskärm i programmet. Om användaren ger sitt medgivande frågar appen efter ett användarnamn och lösenord och samlar sedan in en ansiktsbild av hög kvalitet med hjälp av enhetens kamera.
 
-Appen för exempel registrering skrivs med Java Script och den reagera inbyggda ramverket. Den kan för närvarande distribueras på Android-enheter. fler distributions alternativ kommer i framtiden.
+Exempelappen skrivs med JavaScript och React Native-ramverket. Den kan för närvarande distribueras på Android-enheter. fler distributionsalternativ kommer i framtiden.
 
 ## <a name="prerequisites"></a>Förutsättningar 
 
-* En Azure-prenumeration – [skapa en kostnads fri](https://azure.microsoft.com/free/cognitive-services/).  
-* När du har en Azure-prenumeration kan du [skapa en ansikts resurs](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats väljer **du gå till resurs**.  
-  * Du behöver nyckeln och slut punkten från resursen som du skapade för att ansluta ditt program till Ansikts-API.  
-  * För lokal utveckling och testning kan du klistra in API-nyckeln och slut punkten i konfigurations filen. För slutlig distribution lagrar du API-nyckeln på en säker plats och aldrig i koden.  
+* En Azure-prenumeration [– Skapa en utan kostnad.](https://azure.microsoft.com/free/cognitive-services/)  
+* När du har din Azure-prenumeration [skapar du en ansiktsresurs](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) i Azure Portal för att hämta din nyckel och slutpunkt. När den har distribuerats väljer du **Gå till resurs**.  
+  * Du behöver nyckeln och slutpunkten från den resurs som du skapade för att ansluta ditt program till Ansikts-API.  
+  * För lokal utveckling och testning kan du klistra in API-nyckeln och slutpunkten i konfigurationsfilen. För slutlig distribution lagrar du API-nyckeln på en säker plats och aldrig i koden.  
 
 > [!IMPORTANT]
-> Dessa prenumerations nycklar används för att få åtkomst till ditt kognitiva tjänst-API. Dela inte dina nycklar. Lagra dem på ett säkert sätt, till exempel med hjälp av Azure Key Vault. Vi rekommenderar också att du återskapar nycklarna regelbundet. Endast en nyckel krävs för att göra ett API-anrop. När du återskapar den första nyckeln kan du använda den andra nyckeln för fortsatt åtkomst till tjänsten.
+> De här prenumerationsnycklarna används för att få åtkomst till cognitive service-API:et. Dela inte dina nycklar. Lagra dem på ett säkert sätt, till exempel med Azure Key Vault. Vi rekommenderar också att du återskapar dessa nycklar regelbundet. Endast en nyckel krävs för att göra ett API-anrop. När du återskapar den första nyckeln kan du använda den andra nyckeln för fortsatt åtkomst till tjänsten.
 
 ## <a name="set-up-the-development-environment"></a>Konfigurera utvecklingsmiljön
 
-1. Klona git-lagringsplatsen för [appen för exempel registrering](https://github.com/azure-samples/cognitive-services-FaceAPIEnrollmentSample).
-1. Om du vill konfigurera din utvecklings miljö följer du anvisningarna för att svara på den inbyggda dokumentationen <a href="https://reactnative.dev/docs/environment-setup"  title=" "  target="_blank"> </a> . Välj **reagerar inbyggd CLI-snabb start** som ditt utvecklings operativ system och välj **Android** som mål operativ system. Slutför avsnitten som **installerar beroenden** och **Android utvecklings miljö**.
-1. Öppna filen env.jsi din önskade text redigerare, t. ex. [Visual Studio Code](https://code.visualstudio.com/), och Lägg till din slut punkt och nyckel. Du kan hämta din slut punkt och nyckel i Azure Portal under fliken **Översikt** för din resurs. Det här steget gäller bara för lokala testnings ändamål &mdash; kontrol lera inte din ansikts-API nyckel till din fjärrlagringsplats.
-1. Kör appen med antingen den virtuella Android-hälsoenhetens emulator från Android Studio eller din egen Android-enhet. Om du vill testa din app på en fysisk enhet följer du relevant dokumentation om att reagera på den <a href="https://reactnative.dev/docs/running-on-device"  title=" "  target="_blank"> interna dokumentationen </a> .  
+1. Klona git-lagringsplatsen för [exempelappen](https://github.com/azure-samples/cognitive-services-FaceAPIEnrollmentSample).
+1. Om du vill konfigurera utvecklingsmiljön följer du React <a href="https://reactnative.dev/docs/environment-setup"  title=" Native-dokumentationen "  target="_blank"> för React Native-dokumentationen. </a> Välj **React Native CLI Quickstart (Snabbstart** för React Native CLI) som utvecklingsoperativsystem och välj **Android** som måloperativsystem. Slutför avsnitten **Installera beroenden och** **Android-utvecklingsmiljön**.
+1. Öppna filen env.jsi den textredigerare du föredrar, till [exempel Visual Studio kod,](https://code.visualstudio.com/)och lägg till din slutpunkt och nyckel. Du kan hämta din slutpunkt och nyckel i Azure Portal under **fliken** Översikt för din resurs. Det här steget är endast för lokala testningsändamål. &mdash; Checka inte in ansikts-API-nyckeln till fjärrlagringsplatsen.
+1. Kör appen med antingen Android Virtual Device-emulatorn från Android Studio eller din egen Android-enhet. Om du vill testa din app på en fysisk enhet följer du relevant <a href="https://reactnative.dev/docs/running-on-device"  title=" React Native-dokumentation "  target="_blank"> react native-dokumentation. </a>  
 
 
-## <a name="create-an-enrollment-experience"></a>Skapa en registrerings upplevelse  
+## <a name="create-a-user-add-experience"></a>Skapa en användarupplevelse för att lägga till  
 
-Nu när du har konfigurerat appen för exempel registrering kan du skräddarsy den efter dina egna behov av registrerings miljö.
+Nu när du har ställt in exempelappen kan du skräddarsy den efter dina egna behov.
 
-Du kanske till exempel vill lägga till information om situationen på din godkännande sida:
-
-> [!div class="mx-imgBorder"]
-> ![Sidan appens godkännande](./media/enrollment-app/1-consent-1.jpg)
-
-Tjänsten tillhandahåller bild kvalitets kontroller för att hjälpa dig att välja om avbildningen har tillräcklig kvalitet för att registrera kunden eller försöka identifiera ansikts igenkänning. Den här appen visar hur du kommer åt ramar från enhetens kamera, väljer de bild rutor som är högst kvalitet och registrerar identifierade ansikte i Ansikts-APIs tjänsten. 
-
-Många ansikts igenkännings problem orsakas av referens avbildningar med låg kvalitet. Vissa faktorer som kan försämra modell prestanda är:
-* Ansikts storlek (ansikten som är avlägsen från kameran)
-* Ansikts orientering (ansikten är aktiverade eller lutade bort från kameran)
-* Dåliga ljus förhållanden (antingen låg ljus eller belysning) där bilden kan vara dåligt exponerad eller har för mycket brus
-* Ocklusion (delvis dolda eller blockerade ansikten), inklusive tillbehör som hatt eller tjocka-med kanter glasögon)
-* Oskärpa (till exempel vid snabb ansikts förflyttning när fotografiet togs). 
+Du kanske till exempel vill lägga till situationsspecifik information på din medgivandesida:
 
 > [!div class="mx-imgBorder"]
-> ![registrerings instruktions sida för app-avbildning](./media/enrollment-app/4-instruction.jpg)
+> ![sidan för appmedgivande](./media/enrollment-app/1-consent-1.jpg)
 
-Observera att appen även erbjuder funktioner för att ta bort användarens registrering och alternativet att registrera igen.
+Tjänsten tillhandahåller kvalitetskontroller av bilder som hjälper dig att välja om bilden har tillräcklig kvalitet för att lägga till kunden eller försöka ansiktsigenkänning. Den här appen visar hur du kommer åt bildrutor från enhetens kamera, väljer bildrutor av högsta kvalitet och lägger till det identifierade ansiktet i ansikts-API-tjänsten. 
+
+Många problem med ansiktsigenkänning orsakas av referensbilder av låg kvalitet. Några faktorer som kan försämra modellens prestanda är:
+* Ansiktsstorlek (ansikten som är avlägsna från kameran)
+* Ansiktsorientering (ansikten vända eller lutade bort från kameran)
+* Dåliga ljusförhållanden (antingen lågt ljus eller bakgrundsbelysning) där bilden kan vara dåligt exponerad eller ha för mycket brus
+* Ocklusion (delvis dolda eller inlösta ansikten), inklusive tillbehör som t.ex. kepsar eller tjockt sämjade glasögon)
+* Oskärpa (till exempel genom snabb ansiktsförflyttning när fotot togs). 
 
 > [!div class="mx-imgBorder"]
-> ![Sidan profil hantering](./media/enrollment-app/10-manage-2.jpg)
+> ![instruktionssida för appavbildning](./media/enrollment-app/4-instruction.jpg)
 
-Om du vill utöka appens funktioner så att de täcker den fullständiga registreringen kan du läsa [översikten över](enrollment-overview.md) ytterligare funktioner för att implementera och bästa praxis.
+Observera att appen även erbjuder funktioner för att ta bort användarens information och alternativet att lägga till igen.
 
-## <a name="deploy-the-enrollment-app"></a>Distribuera appen för registrering
+> [!div class="mx-imgBorder"]
+> ![profilhanteringssidan](./media/enrollment-app/10-manage-2.jpg)
+
+Om du vill utöka appens funktioner till att omfatta hela upplevelsen kan du läsa [översikten över](enrollment-overview.md) ytterligare funktioner att implementera och metodtips.
+
+## <a name="deploy-the-app"></a>Distribuera appen
 
 ### <a name="android"></a>Android
 
-Kontrol lera först att appen är redo för produktions distribution: ta bort alla nycklar eller hemligheter från App-koden och se till att du har följt de [rekommenderade säkerhets metoderna](../cognitive-services-security.md?tabs=command-line%2ccsharp).
+Kontrollera först att appen är redo för produktionsdistribution: ta bort nycklar eller hemligheter från appkoden och kontrollera att du har följt [säkerhetsmetoderna.](../cognitive-services-security.md?tabs=command-line%2ccsharp)
 
-När du är redo att publicera din app för produktion genererar du en APK-fil för klar ande paket, vilket är paket fil formatet för Android-appar. Den här APK-filen måste vara signerad med en privat nyckel. Med den här versionen av versionen kan du börja distribuera appen till dina enheter direkt. 
+När du är redo att släppa appen för produktion genererar du en lanseringsklar APK-fil, som är paketfilformatet för Android-appar. Den här APK-filen måste signeras med en privat nyckel. Med den här versionen kan du börja distribuera appen till dina enheter direkt. 
 
-Följ anvisningarna för att förbereda inför lanseringen <a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title=" "  target="_blank"> för </a> att lära dig hur du skapar en privat nyckel, signerar ditt program och genererar en versions APK.  
+Följ dokumentationen Förbered för lansering för att lära dig hur du genererar en privat nyckel, signerar ditt <a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title=" "  target="_blank"> program och </a> genererar en lanserings-APK.  
 
-När du har skapat en signerad APK går du <a href="https://developer.android.com/studio/publish"  title=" till publicera appen "  target="_blank"> publicera din app- </a> dokumentation för att lära dig mer om hur du släpper appen.
+När du har skapat en signerad APK kan du läsa dokumentationen Publicera din app om du vill veta mer om <a href="https://developer.android.com/studio/publish"  title=" "  target="_blank"> hur du släpper </a> appen.
 
 ## <a name="next-steps"></a>Nästa steg  
 
-I den här guiden har du lärt dig hur du konfigurerar din utvecklings miljö och kommer igång med appen för exempel registrering. Om du inte har arbetat med att reagera internt kan du läsa mer bakgrunds information i [komma igång-dokument](https://reactnative.dev/docs/getting-started) . Det kan också vara bra att bekanta dig med [ansikts-API](Overview.md). Läs de andra avsnitten om registrerings program dokumentationen innan du börjar utveckla.
+I den här guiden har du lärt dig att konfigurera utvecklingsmiljön och komma igång med exempelappen. Om React Native är nytt för dig kan du läsa deras kom [igång-dokument för att](https://reactnative.dev/docs/getting-started) få mer bakgrundsinformation. Det kan också vara bra att bekanta dig med [Ansikts-API.](Overview.md) Läs de andra avsnitten om att lägga till användare innan du börjar utveckla.

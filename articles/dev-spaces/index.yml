@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentation om Azure Dev Spaces
-summary: Azure Dev Spaces tas ur bruk och slutar att fungera den 31 oktober 2023.
+summary: Azure Dev Spaces tas ur bruk och slutar att fungera den 31 oktober 2023. Inga nya styrenheter kan etableras.
 metadata:
   title: Dokumentation om Azure Dev Spaces
-  description: Azure Dev Spaces tas ur bruk och slutar att fungera den 31 oktober 2023.
+  description: Azure Dev Spaces tas ur bruk och slutar att fungera den 31 oktober 2023. Inga nya styrenheter kan etableras.
   services: azure-dev-spaces
   ms.service: azure-dev-spaces
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
   ms.date: 10/29/2020
-  ms.openlocfilehash: a3b3ca8c87871b9ae8e1d6a3db32d9e2051215b6
-  ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-  ms.translationtype: HT
+  ms.openlocfilehash: a2283d189a6423b65364e64f0894e9e666c55463
+  ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+  ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 10/30/2020
-  ms.locfileid: "93072039"
+  ms.lasthandoff: 04/14/2021
+  ms.locfileid: "107505946"
 landingContent:
 - title: Bridge to Kubernetes
   linkLists:

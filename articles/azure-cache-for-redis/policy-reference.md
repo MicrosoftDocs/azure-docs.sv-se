@@ -1,24 +1,24 @@
 ---
-title: Inbyggda princip definitioner för Azure cache för Redis
-description: Visar Azure Policy inbyggda princip definitioner för Azure cache för Redis. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 03/31/2021
+title: Inbyggda principdefinitioner för Azure Cache for Redis
+description: Visar Azure Policy inbyggda principdefinitioner för Azure Cache for Redis. Dessa inbyggda principdefinitioner ger vanliga metoder för att hantera dina Azure-resurser.
+ms.date: 04/14/2021
 ms.topic: reference
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 296d870614c0ce47af299236d4316d30076835e9
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: b587f1775fba844acf10444cc532f0761b0402ac
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095311"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503933"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-cache-for-redis"></a>Azure Policy inbyggda definitioner för Azure cache för Redis
+# <a name="azure-policy-built-in-definitions-for-azure-cache-for-redis"></a>Azure Policy inbyggda definitioner för Azure Cache for Redis
 
-Den här sidan är ett index över [Azure policy](../governance/policy/overview.md) inbyggda princip definitioner för Azure cache för Redis. Ytterligare Azure Policy inbyggda program för andra tjänster finns i [Azure policy inbyggda definitioner](../governance/policy/samples/built-in-policies.md).
+Den här sidan är ett index [Azure Policy](../governance/policy/overview.md) inbyggda principdefinitioner för Azure Cache for Redis. Ytterligare Azure Policy inbyggda funktioner för andra tjänster finns i [Azure Policy inbyggda definitionerna](../governance/policy/samples/built-in-policies.md).
 
-Namnet på varje inbyggd princip definition länkar till princip definitionen i Azure Portal. Använd länken i kolumnen **version** om du vill visa källan på [Azure policy GitHub-lagrings platsen](https://github.com/Azure/azure-policy).
+Namnet på varje inbyggd principdefinition länkar till principdefinitionen i Azure Portal. Använd länken i kolumnen **Version för** att visa källan på Azure Policy [GitHub-lagringsplatsen](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 

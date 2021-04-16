@@ -1,37 +1,38 @@
 ---
-title: Aktivera Azure dev Spaces på AKS & installera verktyg på klient Sidan
+title: Aktivera Azure Dev Spaces på AKS & installera verktygen på klientsidan
 services: azure-dev-spaces
 ms.date: 07/24/2019
 ms.topic: conceptual
-description: Lär dig hur du aktiverar Azure dev Spaces i ett AKS-kluster och installerar verktyg på klient sidan.
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes service, Containers, Helm, service nät, service nät-routning, kubectl, K8s
-ms.openlocfilehash: 177496a53d204306b2b655b8736ce063dedf0f61
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+description: Lär dig hur du aktiverar Azure Dev Spaces i ett AKS-kluster och installerar verktygen på klientsidan.
+ms.custom: devx-track-azurecli
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
+ms.openlocfilehash: 079a9e1b28b315457ac20d3aa9e7d29ce28fa077
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202254"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505368"
 ---
-# <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Aktivera Azure dev Spaces i ett AKS-kluster och installera verktyg på klient Sidan
+# <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Aktivera Azure Dev Spaces i ett AKS-kluster och installera verktygen på klientsidan
 
 [!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
-Den här artikeln visar flera olika sätt att aktivera Azure dev Spaces på ett AKS-kluster samt installera verktyg på klient sidan.
+Den här artikeln visar flera sätt att aktivera Azure Dev Spaces på ett AKS-kluster samt installera verktygen på klientsidan.
 
-## <a name="enable-azure-dev-spaces-using-the-cli"></a>Aktivera Azure dev Spaces med CLI
+## <a name="enable-azure-dev-spaces-using-the-azure-cli"></a>Aktivera Azure Dev Spaces med hjälp av Azure CLI
 
-Innan du kan aktivera dev Spaces med hjälp av CLI behöver du:
-* En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnads fritt konto][az-portal-create-account].
-* [Azure CLI installerat][install-cli].
-* [Ett AKS-kluster][create-aks-cli] i en [region som stöds][supported-regions].
+Innan du kan aktivera Dev Spaces med hjälp av CLI behöver du:
+* En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto.][az-portal-create-account]
+* [Azure CLI installerade][install-cli].
+* [Ett AKS-kluster][create-aks-cli] i en [region som stöds.][supported-regions]
 
-Använd `use-dev-spaces` kommandot för att aktivera dev Spaces på ditt AKS-kluster och följ anvisningarna.
+Använd kommandot `use-dev-spaces` för att aktivera Dev Spaces i ditt AKS-kluster och följ anvisningarna.
 
 ```azurecli
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
 ```
 
-Kommandot ovan aktiverar dev Spaces i *myAKSCluster* -klustret i gruppen *myResourceGroup* och skapar ett *standard* dev-utrymme.
+Kommandot ovan aktiverar Dev Spaces på *myAKSCluster-klustret* i *gruppen myResourceGroup* och skapar ett *standardutrymme* för utveckling.
 
 ```console
 'An Azure Dev Spaces Controller' will be created that targets resource 'myAKSCluster' in resource group 'myResourceGroup'. Continue? (y/N): y
@@ -49,25 +50,25 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-`use-dev-spaces`Kommandot installerar även Azure dev Spaces cli.
+Kommandot `use-dev-spaces` installerar även Azure Dev Spaces CLI.
 
-## <a name="install-the-client-side-tools"></a>Installera verktyg på klient Sidan
+## <a name="install-the-client-side-tools"></a>Installera verktygen på klientsidan
 
-Du kan använda Azure dev Spaces-verktyg på klient sidan för att interagera med dev-utrymmen i ett AKS-kluster från den lokala datorn. Det finns flera sätt att installera verktyg på klient sidan:
+Du kan använda Azure Dev Spaces-verktygen på klientsidan för att interagera med dev spaces i ett AKS-kluster från din lokala dator. Det finns flera sätt att installera verktygen på klientsidan:
 
-* I [Visual Studio Code][vscode]installerar du [tillägget Azure dev Spaces][vscode-extension].
-* Installera arbets belastningen Azure Development i [Visual Studio 2019][visual-studio].
-* Ladda ned och installera [Windows][cli-win], [Mac][cli-mac]eller [Linux][cli-linux] cli.
+* I [Visual Studio Code][vscode]installerar du tillägget Azure Dev [Spaces][vscode-extension].
+* I [Visual Studio 2019][visual-studio]installerar du arbetsbelastningen Azure Development.
+* Ladda ned och installera [Windows,][cli-win] [Mac][cli-mac]eller [Linux][cli-linux] CLI.
 
-## <a name="remove-azure-dev-spaces-using-the-cli"></a>Ta bort Azure dev Spaces med CLI
+## <a name="remove-azure-dev-spaces-using-the-azure-cli"></a>Ta bort Azure Dev Spaces med Hjälp av Azure CLI
 
-Använd kommandot för att ta bort Azure dev Spaces från ditt AKS-kluster `azds remove` .
+Om du vill ta bort Azure Dev Spaces från ditt AKS-kluster använder du `azds remove` kommandot .
 
 ```azurecli
 azds remove -g MyResourceGroup -n MyAKS
 ```
 
-I exemplen nedan visas hur du tar bort Azure dev Spaces från *MyAKS* -klustret.
+Följande exempelutdata visar borttagning av Azure Dev Spaces från *MyAKS-klustret.*
 
 ```azurecli
 $ azds remove -g MyResourceGroup -n MyAKS
@@ -76,11 +77,11 @@ Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that tar
 Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAks' in resource group 'MyResourceGroup' (takes a few minutes)...
 ```
 
-Alla namn områden som du har skapat med Azure dev Spaces är kvar tillsammans med deras arbets belastningar, men nya arbets belastningar i dessa namn områden kommer inte att instrumenteras med Azure dev Spaces. Om du startar om alla befintliga poddar som är instrumenterade med Azure dev Spaces kan du dessutom se fel. Dessa poddar måste distribueras om utan Azure dev Spaces-verktyg. Om du vill ta bort alla Azure dev-utrymmen fullständigt från klustret tar du bort alla poddar i alla namn områden där Azure dev Spaces har Aktiver ATS.
+Alla namnrymder som du har skapat med Azure Dev Spaces kommer att finnas kvar tillsammans med deras arbetsbelastningar, men nya arbetsbelastningar i dessa namnområden kommer inte att instrumenteras med Azure Dev Spaces. Om du startar om befintliga poddar som instrumenterats med Azure Dev Spaces kan du dessutom se fel. Dessa poddar måste omdistribueras utan Azure Dev Spaces-verktyg. Om du vill ta bort Azure Dev Spaces fullständigt från klustret tar du bort alla poddar i alla namnområden där Azure Dev Spaces har aktiverats.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om hur Azure dev Spaces fungerar.
+Läs mer om hur Azure Dev Spaces fungerar.
 
 > [!div class="nextstepaction"]
 > [Så här fungerar Azure Dev Spaces](../how-dev-spaces-works.md)

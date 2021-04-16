@@ -1,6 +1,6 @@
 ---
-title: Översikt över användar konton i Azure Active Directory B2C
-description: Lär dig mer om vilka typer av användar konton som kan användas i Azure Active Directory B2C.
+title: Översikt över användarkonton i Azure Active Directory B2C
+description: Lär dig mer om vilka typer av användarkonton som kan användas i Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,79 +11,79 @@ ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: f2473955db5439911280360b169f469b8c93eb93
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4b35cfeded13a50e5e27c240b0826f1d108ff7eb
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043605"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529439"
 ---
-# <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Översikt över användar konton i Azure Active Directory B2C
+# <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Översikt över användarkonton i Azure Active Directory B2C
 
-I Azure Active Directory B2C (Azure AD B2C) finns flera typer av konton som kan skapas. Azure Active Directory, Active Directory B2B och Active Directory B2C resurs i de typer av användar konton som kan användas.
+I Azure Active Directory B2C (Azure AD B2C) finns det flera typer av konton som kan skapas. Azure Active Directory, Active Directory B2B och Active Directory B2C resurs i de typer av användarkonton som kan användas.
 
 Följande typer av konton är tillgängliga:
 
-- **Arbets konto** – ett arbets konto kan komma åt resurser i en klient, och med en administratörs roll kan de hantera klienter.
-- **Gäst konto** – ett gäst konto kan bara vara en Microsoft-konto eller en Azure Active Directory användare som kan användas för att få åtkomst till program eller hantera klienter.
-- **Konsument konto** – ett konsument konto används av en användare av de program som du har registrerat med Azure AD B2C. Konsument konton kan skapas av:
-  - Användaren går igenom ett registrerings användar flöde i ett Azure AD B2C program
+- **Arbetskonto** – Ett arbetskonto kan komma åt resurser i en klientorganisation och kan hantera klienter med en administratörsroll.
+- **Gästkonto** – Ett gästkonto kan bara vara ett Microsoft-konto eller en Azure Active Directory som kan användas för att komma åt program eller hantera klienter.
+- **Konsumentkonto** – Ett konsumentkonto används av en användare av de program som du har registrerat med Azure AD B2C. Konsumentkonton kan skapas genom att:
+  - Användaren som går igenom ett användarflöde för registrering i ett Azure AD B2C program
   - Använda Microsoft Graph API
   - Använda Azure Portal
 
-## <a name="work-account"></a>Arbets konto
+## <a name="work-account"></a>Arbetskonto
 
-Ett arbets konto skapas på samma sätt för alla klienter som baseras på Azure AD. Om du vill skapa ett arbets konto kan du använda informationen i [snabb start: Lägg till nya användare i Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md). Ett arbets konto skapas med hjälp av det **nya användar** alternativet i Azure Portal.
+Ett arbetskonto skapas på samma sätt för alla klienter baserat på Azure AD. Om du vill skapa ett arbetskonto kan du använda informationen i [Snabbstart: Lägga till nya användare i Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md). Ett arbetskonto skapas med alternativet **Ny** användare i Azure Portal.
 
-När du lägger till ett nytt arbets konto måste du tänka på följande konfigurations inställningar:
+När du lägger till ett nytt arbetskonto måste du tänka på följande konfigurationsinställningar:
 
-- **Namn** och **användar namn** – egenskapen **Name** innehåller användarens tilldelade och efter namn. **Användar namnet** är det ID som användaren anger för att logga in. Användar namnet innehåller den fullständiga domänen. Domän namns delen av användar namnet måste antingen vara det initiala standard domän namnet *your-domain.onmicrosoft.com*, eller ett verifierat, icke-federerat [anpassat domän](../active-directory/fundamentals/add-custom-domain.md) namn, till exempel *contoso.com*. 
-- **E-post** – den nya användaren kan också logga in med en e-postadress. Vi stöder inte specialtecken eller multibyte-tecken i e-post, till exempel japanska tecken.
-- **Profil** -kontot har kon figurer ATS med en profil med användar data. Du har möjlighet att ange förnamn, efter namn, befattning och avdelnings namn. Du kan redigera profilen när kontot har skapats.
-- **Grupper** – Använd grupper för att utföra hanterings uppgifter, till exempel tilldela licenser eller behörigheter till många användare eller enheter på samma gång. Du kan ställa in det nya kontot i en befintlig [grupp](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) i din klient organisation.
-- **Katalog roll** – du måste ange den åtkomst nivå som användar kontot måste ha för resurser i din klient organisation. Följande behörighets nivåer är tillgängliga:
+- **Namn** och **Användarnamn –** Egenskapen **Namn** innehåller användarens givna och efternamn. Användarnamnet **är** den identifierare som användaren anger för att logga in. Användarnamnet innehåller den fullständiga domänen. Domännamnsdelen av användarnamnet måste antingen vara det första standarddomännamnet *your-domain.onmicrosoft.com*, eller [](../active-directory/fundamentals/add-custom-domain.md) ett verifierat, icke-federerat anpassat domännamn, till *exempel contoso.com*. 
+- **E-post** – Den nya användaren kan också logga in med en e-postadress. Vi stöder inte specialtecken eller flerabyte tecken i e-post, till exempel japanska tecken.
+- **Profil** – Kontot konfigureras med en profil med användardata. Du har möjlighet att ange förnamn, efternamn, befattning och avdelningsnamn. Du kan redigera profilen när kontot har skapats.
+- **Grupper** – Använd grupper för att utföra hanteringsuppgifter, till exempel tilldela licenser eller behörigheter till många användare eller enheter samtidigt. Du kan placera det nya kontot i en befintlig [grupp](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) i din klientorganisation.
+- **Katalogroll** – Du måste ange den åtkomstnivå som användarkontot har till resurser i din klientorganisation. Följande behörighetsnivåer är tillgängliga:
 
-    - **Användare** – användare har åtkomst till tilldelade resurser, men kan inte hantera de flesta klient resurser.
-    - **Global administratör** – globala administratörer har fullständig kontroll över alla klient resurser.
-    - **Begränsad administratör** – Välj den administrativa rollen eller rollerna för användaren. Mer information om vilka roller som kan väljas finns [i tilldela administratörs roller i Azure Active Directory](../active-directory/roles/permissions-reference.md).
+    - **Användare** – Användare kan komma åt tilldelade resurser men kan inte hantera de flesta klientresurser.
+    - **Global administratör** – Globala administratörer har fullständig kontroll över alla klientresurser.
+    - **Begränsad administratör** – Välj den administrativa rollen eller rollerna för användaren. Mer information om vilka roller som kan väljas finns i [Tilldela administratörsroller i Azure Active Directory](../active-directory/roles/permissions-reference.md).
 
-### <a name="create-a-work-account"></a>Skapa ett arbets konto
+### <a name="create-a-work-account"></a>Skapa ett arbetskonto
 
-Du kan använda följande information för att skapa ett nytt arbets konto:
+Du kan använda följande information för att skapa ett nytt arbetskonto:
 
 - [Azure-portalen](../active-directory/fundamentals/add-users-azure-active-directory.md)
 - [Microsoft Graph](/graph/api/user-post-users)
 
-### <a name="update-a-user-profile"></a>Uppdatera en användar profil
+### <a name="update-a-user-profile"></a>Uppdatera en användarprofil
 
-Du kan använda följande information för att uppdatera profilen för en användare:
+Du kan använda följande information för att uppdatera en användares profil:
 
 - [Azure-portalen](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
 - [Microsoft Graph](/graph/api/user-update)
 
-### <a name="reset-a-password-for-a-user"></a>Återställa ett lösen ord för en användare
+### <a name="reset-a-password-for-a-user"></a>Återställa ett lösenord för en användare
 
-Du kan använda följande information för att återställa lösen ordet för en användare:
+Du kan använda följande information för att återställa lösenordet för en användare:
 
 - [Azure-portalen](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
 - [Microsoft Graph](/graph/api/user-update)
 
-## <a name="guest-user"></a>Gäst användare
+## <a name="guest-user"></a>Gästanvändare
 
-Du kan bjuda in externa användare till din klient som gäst användare. Ett typiskt scenario för att bjuda in en gäst användare till din Azure AD B2C klient organisation är att dela administrations ansvar. Ett exempel på hur du använder ett gäst konto finns i [Egenskaper för en Azure Active Directory B2B-samarbets användare](../active-directory/external-identities/user-properties.md).
+Du kan bjuda in externa användare till din klientorganisation som gästanvändare. Ett vanligt scenario för att bjuda in en gästanvändare till Azure AD B2C klientorganisation är att dela administrationens ansvarsområden. Ett exempel på hur du använder ett gästkonto finns [i Egenskaper för en Azure Active Directory B2B-samarbetsanvändare](../active-directory/external-identities/user-properties.md).
 
-När du bjuder in en gäst användare till din klient anger du e-postadressen till mottagaren och ett meddelande som beskriver inbjudan. Länken inbjudan tar användaren till sidan medgivande. Om en inkorg inte är kopplad till e-postadressen kan användaren gå till sidan medgivande genom att gå till en Microsoft-sida med de inbjudna autentiseringsuppgifterna. Användaren tvingas sedan att lösa in inbjudan på samma sätt som om du klickar på länken i e-postmeddelandet. Exempel: `https://myapps.microsoft.com/B2CTENANTNAME`.
+När du bjuder in en gästanvändare till din klientorganisation anger du mottagarens e-postadress och ett meddelande som beskriver inbjudan. Inbjudningslänken tar användaren till sidan för medgivande. Om en inkorg inte är kopplad till e-postadressen kan användaren navigera till sidan för medgivande genom att gå till en Microsoft-sida med hjälp av de inbjudna autentiseringsuppgifterna. Användaren tvingas sedan lösa in inbjudan på samma sätt som när användaren klickar på länken i e-postmeddelandet. Exempel: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
-Du kan också använda [Microsoft Graph API](/graph/api/invitation-post?view=graph-rest-beta) för att bjuda in en gäst användare.
+Du kan också använda [api:Microsoft Graph för](/graph/api/invitation-post) att bjuda in en gästanvändare.
 
-## <a name="consumer-user"></a>Konsument användare
+## <a name="consumer-user"></a>Konsumentanvändare
 
-Konsument användaren kan logga in på program som skyddas av Azure AD B2C, men kan inte komma åt Azure-resurser som Azure Portal. Konsument användaren kan använda ett lokalt konto eller federerade konton, till exempel Facebook eller Twitter. Ett konsument konto skapas med hjälp av ett [registrerings-eller inloggnings användar flöde](user-flow-overview.md)med hjälp av Microsoft Graph-API eller med hjälp av Azure Portal.
+Användaren kan logga in på program som skyddas av Azure AD B2C, men kan inte komma åt Azure-resurser som Azure Portal. Användaren kan använda ett lokalt konto eller federerade konton, till exempel Facebook eller Twitter. Ett konsumentkonto skapas med hjälp av ett användarflöde för registrering eller [inloggning,](user-flow-overview.md)med hjälp av Microsoft Graph-API:et eller med hjälp av Azure Portal.
 
-Du kan ange de data som samlas in när ett konsument användar konto skapas. Mer information finns i [lägga till användarattribut och anpassa användarindata](configure-user-input.md).
+Du kan ange de data som samlas in när ett konsumentanvändarkonto skapas. Mer information finns i Lägga [till användarattribut och anpassa användarindata.](configure-user-input.md)
 
-Mer information om hur du hanterar konsument konton finns i [hantera Azure AD B2C användar konton med Microsoft Graph](./microsoft-graph-operations.md).
+Mer information om hur du hanterar konsumentkonton finns [i Hantera Azure AD B2C-användarkonton med Microsoft Graph](./microsoft-graph-operations.md).
 
-### <a name="migrate-consumer-user-accounts"></a>Migrera konsument användar konton
+### <a name="migrate-consumer-user-accounts"></a>Migrera användarkonton för konsumenter
 
-Du kanske behöver migrera befintliga konsument användar konton från valfri identitetsprovider till Azure AD B2C. Mer information finns i [Migrera användare till Azure AD B2C](user-migration.md).
+Du kan behöva migrera befintliga konsumentanvändarkonton från valfri identitetsprovider till Azure AD B2C. Mer information finns i [Migrera användare till Azure AD B2C](user-migration.md).

@@ -1,243 +1,243 @@
 ---
-title: Exempel kontroller för medie skisser
-description: Styr mappningen av medie skiss exemplen. Varje kontroll mappas till en eller flera Azure Policy definitioner som hjälper till med utvärderingen.
-ms.date: 04/02/2021
+title: Exempelkontroller för mediaskiss
+description: Kontrollera mappningen av Media-skissexempel. Varje kontroll mappas till en eller flera Azure Policy definitioner som hjälper till med utvärderingen.
+ms.date: 04/13/2021
 ms.topic: sample
-ms.openlocfilehash: b489111010c9a4fcb112428ae642332980302849
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 4c04c661d7dd8b2b07a05c20524258d6bb887e62
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386420"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376706"
 ---
-# <a name="control-mapping-of-the-media-blueprint-sample"></a>Kontroll mappning av medie skiss exemplet
+# <a name="control-mapping-of-the-media-blueprint-sample"></a>Kontrollmappning av Media-skissexempel
 
-I följande artikel beskrivs hur medie skiss exemplet i Azure skisser mappar till medie kontrollerna. Mer information om kontrollerna finns i [Media](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html).
+I följande artikel beskrivs hur Azure Blueprints Media-skissexempel mappar till mediakontrollerna. Mer information om kontrollerna finns i [Media](https://www.motionpictures.org/best-practices).
 
-Följande mappningar är till **medie** kontrollerna. Använd navigeringen till höger om du vill gå direkt till en bestämd kontroll mappning. Många av de mappade kontrollerna implementeras med ett [Azure policy](../../../policy/overview.md) initiativ. Om du vill granska hela initiativet öppnar du **princip** i Azure Portal och väljer sidan **definitioner** . Leta sedan reda på och välj **\[ förhands granskningen \] : granska medie kontroller** i det inbyggda princip initiativet.
+Följande mappningar är till **mediakontrollerna.** Använd navigeringen till höger för att gå direkt till en specifik kontrollmappning. Många av de mappade kontrollerna implementeras med ett [Azure Policy](../../../policy/overview.md) initiativ. Om du vill granska hela initiativet **öppnar du** Princip i Azure Portal och väljer **sidan** Definitioner. Leta sedan upp och välj det **\[ inbyggda \] principinitiativ för förhandsversionen** : Granska media-kontroller.
 
 > [!IMPORTANT]
-> Varje kontroll nedan är kopplad till en eller flera [Azure policy](../../../policy/overview.md) -definitioner. Dessa principer kan hjälpa dig att [utvärdera efterlevnaden](../../../policy/how-to/get-compliance-data.md) av kontrollen. Det finns dock ofta ingen en-till-en-eller fullständig matchning mellan en kontroll och en eller flera principer. Som sådan är **kompatibel** i Azure policy endast som avser själva principerna. Detta garanterar inte att du är helt kompatibel med alla krav för en kontroll. Standarden för efterlevnad innehåller dessutom kontroller som inte åtgärdas av några Azure Policy definitioner för tillfället. Därför är regelefterlevnad i Azure Policy bara en partiell vy av din övergripande kompatibilitetsstatus. Kopplingarna mellan kontroller och Azure Policy definitioner för det här skiss exemplet för efterlevnad kan ändras med tiden. Om du vill visa ändrings historiken läser du [inchecknings historiken för GitHub](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/media/control-mapping.md).
+> Varje kontroll nedan är associerad med en eller flera [Azure Policy](../../../policy/overview.md) definitioner. Dessa principer kan hjälpa dig [att utvärdera efterlevnaden](../../../policy/how-to/get-compliance-data.md) av kontrollen. Det finns dock ofta inte en en-till-en-matchning eller fullständig matchning mellan en kontroll och en eller flera principer. Därför **refererar Kompatibel i** Azure Policy endast till själva principerna. Detta säkerställer inte att du är helt kompatibel med alla krav för en kontroll. Dessutom innehåller efterlevnadsstandarden kontroller som inte hanteras av några Azure Policy definitioner för just nu. Därför är efterlevnad i Azure Policy endast en partiell vy över din övergripande efterlevnadsstatus. Associationerna mellan kontroller och Azure Policy för det här exemplet på efterlevnadsskiss kan ändras med tiden. Om du vill visa ändringshistoriken kan du gå [till GitHub Commit History (Genomförandehistorik för GitHub).](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/media/control-mapping.md)
 
 ## <a name="access-control"></a>Åtkomstkontroll
 
-### <a name="ac-11--ensure-no-root-access-key-exists"></a>AC-1,1 – kontrol lera att det inte finns någon rot åtkomst nyckel
+### <a name="ac-11--ensure-no-root-access-key-exists"></a>AC-1.1 – Kontrollera att det inte finns någon rotåtkomstnyckel
 
-- \[För hands version \] : Distribuera krav för att granska virtuella Windows-datorer som inte innehåller de angivna certifikaten i den betrodda roten
+- \[Förhandsversion: \] Distribuera krav för att granska virtuella Windows-datorer som inte innehåller de angivna certifikaten i betrodd rot
 
-### <a name="ac-12---passwords-pins-and-tokens-must-be-protected"></a>AC-1,2-lösen ord, PIN-koder och token måste skyddas
+### <a name="ac-12---passwords-pins-and-tokens-must-be-protected"></a>AC-1.2 – Lösenord, PIN-koder och token måste skyddas
 
-- \[För hands version \] : Distribuera krav för att granska virtuella Windows-datorer som inte begränsar minsta längd på lösen ord till 14 tecken
+- \[Förhandsversion: \] Distribuera krav för att granska virtuella Windows-datorer som inte begränsar den minsta lösenordslängden till 14 tecken
 
-### <a name="ac-18---shared-account-access-is-prohibited"></a>AC-1,8 – åtkomst till delat konto är förbjuden
+### <a name="ac-18---shared-account-access-is-prohibited"></a>AC-1.8 – Åtkomst till delat konto är förbjuden
 
-- Alla auktoriseringsregler utom RootManageSharedAccessKey bör tas bort från Service Bus namnrymd
+- Alla auktoriseringsregler utom RootManageSharedAccessKey bör tas bort Service Bus från namnområdet
 
-### <a name="ac-19--system-must-restrict-access-to-authorized-users"></a>AC-1,9-systemet måste begränsa åtkomsten till behöriga användare.
+### <a name="ac-19--system-must-restrict-access-to-authorized-users"></a>AC-1.9 –Systemet måste begränsa åtkomsten till behöriga användare.
 
-- Granska obegränsad nätverks åtkomst till lagrings konton
+- Granska obegränsad nätverksåtkomst till lagringskonton
 
-### <a name="ac--114--system-must-enforce-access-rights"></a>AC-1,14-systemet måste framtvinga åtkomst behörighet.
+### <a name="ac--114--system-must-enforce-access-rights"></a>AC- 1.14 –Systemet måste framtvinga åtkomstbehörigheter.
 
-- \[För hands version \] : Distribuera förutsättningar för att granska Windows-konfigurationer för virtuella datorer i tilldelning av användar rättigheter
+- \[Förhandsversion: \] Distribuera krav för att granska konfigurationer av virtuella Windows-datorer i "Tilldelning av användarrättigheter"
 
-### <a name="ac--115--prevent-unauthorized-access-to-security-relevant-information-or-functions"></a>AC-1,15 – förhindra obehörig åtkomst till säkerhetsrelaterad information eller funktioner.
+### <a name="ac--115--prevent-unauthorized-access-to-security-relevant-information-or-functions"></a>AC- 1.15 – Förhindra obehörig åtkomst till relevant säkerhetsinformation eller funktioner.
 
-- \[För hands version \] : Visa gransknings resultat från konfigurationer för virtuella Windows-datorer i säkerhets alternativ-Systeminställningar
+- \[Förhandsversion: \] Visa granskningsresultat från konfigurationer av virtuella Windows-datorer i "Säkerhetsalternativ – Systeminställningar"
 
-### <a name="ac-1-21---separation-of-duties-must-be-enforced-through-appropriate-assignment-of-role"></a>AC-1-21-separering av uppgifter måste verkställas genom lämplig tilldelning av rollen.
+### <a name="ac-1-21---separation-of-duties-must-be-enforced-through-appropriate-assignment-of-role"></a>AC-1-21 – Uppdelning av uppgifter måste framtvingas genom lämplig rolltilldelning.
 
-- [För hands version \] : Role-Based Access Control (RBAC) ska användas på Kubernetes Services
+- \][Förhandsversion: Role-Based Access Control (RBAC) ska användas på Kubernetes Services
 
-### <a name="ac-140--ensure-that-systems-are-not-connecting-trusted-network-and-untrusted-networks-at-the-same-time"></a>AC-1,40 – Se till att systemen inte ansluter till betrodda nätverk och ej betrodda nätverk på samma tid.
+### <a name="ac-140--ensure-that-systems-are-not-connecting-trusted-network-and-untrusted-networks-at-the-same-time"></a>AC-1.40 – Se till att systemen inte ansluter betrott nätverk och ej betrodda nätverk samtidigt.
 
-- \[För hands version \] : Distribuera krav för att granska Windows-konfigurationer för virtuella datorer i säkerhets alternativ-nätverks åtkomst
+- \[Förhandsversion: \] Distribuera krav för att granska konfigurationer av virtuella Windows-datorer i "Säkerhetsalternativ – nätverksåtkomst"
 
-### <a name="ac-142--ac--143---remote-access-for-non-employees-must-be-restricted-to-allow-access-only-to-specifically-approved-information-systems"></a>AC-1,42 & AC-1,43 – fjärråtkomst för icke-anställda måste begränsas för att tillåta åtkomst enbart till särskilt godkända informations system
+### <a name="ac-142--ac--143---remote-access-for-non-employees-must-be-restricted-to-allow-access-only-to-specifically-approved-information-systems"></a>AC-1.42 & AC- 1.43 – Fjärråtkomst för icke-anställda måste begränsas till att endast tillåta åtkomst till specifikt godkända informationssystem
 
-- \[För hands version \] : Visa gransknings resultat från virtuella Linux-datorer som tillåter fjärr anslutningar från konton utan lösen ord
+- \[Förhandsversion: \] Visa granskningsresultat från virtuella Linux-datorer som tillåter fjärranslutningar från konton utan lösenord
 
-### <a name="ac-150--log-security-related-events-for-all-information-system-components"></a>AC-1,50-logg säkerhets relaterade händelser för alla informations system komponenter.
+### <a name="ac-150--log-security-related-events-for-all-information-system-components"></a>AC-1.50 – Logga säkerhetsrelaterade händelser för alla informationssystemkomponenter.
 
-- Diagnostikloggar i Logic Apps ska vara aktive rad
+- Diagnostikloggar i Logic Apps ska vara aktiverade
 
-### <a name="ac-154--ensure-multi-factor-authentication-mfa-is-enabled-for-all-cloud-console-users"></a>AC-1,54 – Se till att Multi-Factor Authentication (MFA) är aktiverat för alla användare i moln konsolen.
+### <a name="ac-154--ensure-multi-factor-authentication-mfa-is-enabled-for-all-cloud-console-users"></a>AC-1.54 – Se till att multifaktorautentisering (MFA) är aktiverat för alla molnkonsolanvändare.
 
 - Multifaktorautentisering bör aktiveras på konton med skrivbehörighet för prenumerationen
-- Multi-Factor Authentication (MFA) måste vara aktiverat för alla prenumerations konton med Skriv behörighet för att förhindra att konton eller resurser överlappar varandra.
+- Multifaktorautentisering (MFA) ska aktiveras för alla prenumerationskonton med skrivbehörighet för att förhindra intrång i konton eller resurser.
 
-## <a name="auditing--logging"></a>Granska & loggning
+## <a name="auditing--logging"></a>Granskning & loggning
 
-### <a name="al-21--successful-and-unsuccessful-events-must-be-logged"></a>AL-2,1-lyckade och misslyckade händelser måste loggas.
+### <a name="al-21--successful-and-unsuccessful-events-must-be-logged"></a>AL-2.1 – Lyckade och misslyckade händelser måste loggas.
 
-- Diagnostikloggar i search Services ska vara aktive rad
+- Diagnostikloggar i Söktjänster ska vara aktiverade
 
-### <a name="al--216---network-devicesinstances-must-log-any-event-classified-as-a-critical-security-event-by-that-network-deviceinstance-elbs-web-application-firewalls-etc"></a>AL-2,16-nätverks enheter/instanser måste logga varje händelse som klassificeras som en kritisk säkerhets händelse av nätverks enheten/instansen (ELBs, WebApplication-brandväggar osv.)
+### <a name="al--216---network-devicesinstances-must-log-any-event-classified-as-a-critical-security-event-by-that-network-deviceinstance-elbs-web-application-firewalls-etc"></a>AL -2.16 – Nätverksenheter/instanser måste logga alla händelser som klassificeras som en kritisk säkerhetshändelse av den nätverksenheten/nätverksinstansen (ELBs, brandväggar för webbaserade program osv.)
 
-- \[För hands version \] : Visa gransknings resultat från konfigurationer för virtuella Windows-datorer i säkerhets alternativ – konton
+- \[Förhandsversion: \] Visa granskningsresultat från konfigurationer av virtuella Windows-datorer i Säkerhetsalternativ – Konton
 
-### <a name="al-217--serversinstances-must-log-any-event-classified-as-a-critical-security-event-by-that-serverinstance"></a>AL-2,17-servrar/instanser måste logga alla händelser som klassificeras som en kritisk säkerhets händelse av den servern/instansen
+### <a name="al-217--serversinstances-must-log-any-event-classified-as-a-critical-security-event-by-that-serverinstance"></a>AL-2.17 – Servrar/instanser måste logga alla händelser som klassificeras som en kritisk säkerhetshändelse av den servern/instansen
 
-- \[För hands version \] : Visa gransknings resultat från konfigurationer för virtuella Windows-datorer i säkerhets alternativ – konton
+- \[Förhandsversion: \] Visa granskningsresultat från konfigurationer av virtuella Windows-datorer i Säkerhetsalternativ – Konton
 
-### <a name="al-219---domain-events-must-log-any-event-classified-as-a-critical-or-high-security-event-by-the-domain-management-software"></a>AL-2,19 – domän händelser måste logga varje händelse som klassificeras som en kritisk eller hög säkerhets händelse av program varan för domän hantering
+### <a name="al-219---domain-events-must-log-any-event-classified-as-a-critical-or-high-security-event-by-the-domain-management-software"></a>AL-2.19 – Domänhändelser måste logga alla händelser som klassificeras som kritiska eller högsäkerhetshändelser av domänhanteringsprogramvaran
 
-- \[För hands version \] : Visa gransknings resultat från konfigurationer för virtuella Windows-datorer i säkerhets alternativ – konton
-- \[För hands version \] : Distribuera krav för att granska Windows-konfigurationer för virtuella datorer i säkerhets alternativ – Microsoft Network Client
+- \[Förhandsversion: \] Visa granskningsresultat från konfigurationer av virtuella Windows-datorer i Säkerhetsalternativ – Konton
+- \[Förhandsversion: \] Distribuera krav för att granska konfigurationer av virtuella Windows-datorer i "Säkerhetsalternativ – Microsoft-nätverksklient"
 
-### <a name="al-220--domain-events-must-log-any-event-classified-as-a-critical-security-event-by-domain-security-controls"></a>AL-2,20-domän händelser måste logga varje händelse som klassificeras som en kritisk säkerhets händelse av domän säkerhets kontroller
+### <a name="al-220--domain-events-must-log-any-event-classified-as-a-critical-security-event-by-domain-security-controls"></a>AL-2.20 – Domänhändelser måste logga alla händelser som klassificeras som kritiska säkerhetshändelser av domänsäkerhetskontroller
 
-- \[För hands version \] : Visa gransknings resultat från konfigurationer för virtuella Windows-datorer i säkerhets alternativ – konton
+- \[Förhandsversion: \] Visa granskningsresultat från konfigurationer av virtuella Windows-datorer i Säkerhetsalternativ – Konton
 
-### <a name="al-221--domain-events-must-log-any-access-or-changes-to-the-domain-log"></a>AL-2,21 – domän händelser måste logga all åtkomst eller ändringar i domän loggen
+### <a name="al-221--domain-events-must-log-any-access-or-changes-to-the-domain-log"></a>AL-2.21 – Domänhändelser måste logga åtkomst eller ändringar i domänloggen
 
-- \[För hands version \] : Visa gransknings resultat från konfigurationer för virtuella Windows-datorer i säkerhets alternativ-återställnings konsolen
+- \[Förhandsversion: \] Visa granskningsresultat från konfigurationer av virtuella Windows-datorer i "Säkerhetsalternativ – återställningskonsol"
 
 ## <a name="cryptographic-controls"></a>Kryptografiska kontroller
 
-### <a name="cc-42--applications-and-systems-must-use-current-cryptographic-solutions-for-protecting-data"></a>CC-4,2-program och system måste använda aktuella kryptografiska lösningar för att skydda data.
+### <a name="cc-42--applications-and-systems-must-use-current-cryptographic-solutions-for-protecting-data"></a>CC-4.2 – Program och system måste använda aktuella kryptografiska lösningar för att skydda data.
 
-- transparent datakryptering på SQL-databaser ska aktive ras
-- Transparent data kryptering ska vara aktive rad för att skydda data i vila och uppfylla kraven för efterlevnad
+- transparent datakryptering på SQL-databaser ska vara aktiverat
+- Transparent datakryptering ska aktiveras för att skydda vilodata och uppfylla efterlevnadskrav
 
-### <a name="cc-45--digital-certificates-must-be-signed-by-an-approved-certificate-authority"></a>CC-4,5-digitala certifikat måste signeras av en godkänd certifikat utfärdare.
+### <a name="cc-45--digital-certificates-must-be-signed-by-an-approved-certificate-authority"></a>CC-4.5 – Digitala certifikat måste signeras av en godkänd certifikatutfärdare.
 
-- \[För hands version \] : Visa gransknings resultat från virtuella Windows-datorer som innehåller certifikat som upphör att gälla inom det angivna antalet dagar
+- \[Förhandsversion: \] Visa granskningsresultat från virtuella Windows-datorer som innehåller certifikat som upphör att gälla inom det angivna antalet dagar
 
-### <a name="cc-46--digital-certificates-must-be-uniquely-assigned-to-a-user-or-device"></a>CC-4,6-digitala certifikat måste tilldelas unikt till en användare eller enhet.
+### <a name="cc-46--digital-certificates-must-be-uniquely-assigned-to-a-user-or-device"></a>CC-4.6 – Digitala certifikat måste tilldelas unikt till en användare eller enhet.
 
-- \[För hands version \] : Distribuera förutsättningar för att granska virtuella Windows-datorer som innehåller certifikat som upphör att gälla inom det angivna antalet dagar
+- \[Förhandsversion: \] Distribuera krav för att granska virtuella Windows-datorer som innehåller certifikat som upphör att gälla inom det angivna antalet dagar
 
-### <a name="cc-47--cryptographic-material-must-be-stored-to-enable-decryption-of-the-records-for-the-length-of-time-the-records-are-retained"></a>CC-4,7 – kryptografiskt material måste lagras för att möjliggöra dekryptering av posterna under den tid som posterna bevaras.
+### <a name="cc-47--cryptographic-material-must-be-stored-to-enable-decryption-of-the-records-for-the-length-of-time-the-records-are-retained"></a>CC-4.7 – Kryptografiskt material måste lagras för att aktivera dekryptering av posterna under den tid posterna bevaras.
 
-- Disk kryptering bör tillämpas på virtuella datorer
-- Virtuella datorer utan en aktive rad disk kryptering övervakas av Azure Security Center som rekommendationer
+- Diskkryptering ska tillämpas på virtuella datorer
+- Virtuella datorer utan aktiverad diskkryptering kommer att övervakas av Azure Security Center som rekommendationer
 
-### <a name="cc-48--secret-and-private-keys-must-be-stored-securely"></a>CC-4,8 – hemliga och privata nycklar måste lagras på ett säkert sätt.
+### <a name="cc-48--secret-and-private-keys-must-be-stored-securely"></a>CC-4.8 – Hemliga och privata nycklar måste lagras på ett säkert sätt.
 
-- transparent datakryptering på SQL-databaser ska aktive ras
-- Transparent data kryptering ska vara aktive rad för att skydda data i vila och uppfylla kraven för efterlevnad
+- transparent datakryptering på SQL-databaser ska vara aktiverat
+- Transparent datakryptering ska aktiveras för att skydda vilodata och uppfylla efterlevnadskrav
 
-## <a name="change--config-management"></a>Ändra & konfigurations hantering
+## <a name="change--config-management"></a>Ändra & konfigurationshantering
 
-### <a name="cm-52--only-authorized-users-may-implement-approved-changes-on-the-system"></a>CM – 5,2 – endast auktoriserade användare kan implementera godkända ändringar i systemet.
-
-- Systemuppdateringar ska ha installerats på dina datorer
-- Säkerhets system uppdateringar som saknas på dina servrar kommer att övervakas av Azure Security Center som rekommendationer
-
-### <a name="cm-512--maintain-an-up-to-date-complete-accurate-and-readily-available-baseline-configuration-of-the-information-system"></a>CM-5,12 – upprätthålla en uppdaterad, fullständig, korrekt och tillgänglig bas linje konfiguration av informations systemet.
+### <a name="cm-52--only-authorized-users-may-implement-approved-changes-on-the-system"></a>CM-5.2 – Endast behöriga användare kan implementera godkända ändringar i systemet.
 
 - Systemuppdateringar ska ha installerats på dina datorer
-- Säkerhets system uppdateringar som saknas på dina servrar kommer att övervakas av Azure Security Center som rekommendationer
+- Uppdateringar av säkerhetssystem som saknas på dina servrar övervakas av Azure Security Center som rekommendationer
 
-### <a name="cm-513--employ-automated-tools-to-maintain-a-baseline-configuration-of-the-information-system"></a>CM – 5,13 – Använd automatiserade verktyg för att upprätthålla en grundläggande konfiguration av informations systemet.
-
-- Systemuppdateringar ska ha installerats på dina datorer
-- Säkerhets system uppdateringar som saknas på dina servrar kommer att övervakas av Azure Security Center som rekommendationer
-
-### <a name="cm-514--identify-and-disable-unnecessary-andor-non-secure-functions-ports-protocols-and-services"></a>CM-5,14 – identifiera och inaktivera onödiga och/eller icke-säkra funktioner, portar, protokoll och tjänster.
-
-- Nätverks gränssnitt bör inaktivera IP-vidarebefordring
-- \[För hands version \] : IP-vidarebefordran på den virtuella datorn bör inaktive ras
-
-### <a name="cm-519--monitor-changes-to-the-security-configuration-settings"></a>CM-5,19 – övervaka ändringar i inställningarna för säkerhets konfiguration.
-
-- Distribuera diagnostikinställningar för nätverks säkerhets grupper
-
-### <a name="cm-522--ensure-that-only-authorized-software-and-updates-are-installed-on-company-systems"></a>CM – 5,22 – Se till att endast auktoriserad program vara och uppdateringar är installerade på företags system.
+### <a name="cm-512--maintain-an-up-to-date-complete-accurate-and-readily-available-baseline-configuration-of-the-information-system"></a>CM-5.12 – Upprätthålla en uppdaterad, fullständig, korrekt och lättillgänglig baslinjekonfiguration för informationssystemet.
 
 - Systemuppdateringar ska ha installerats på dina datorer
-- Säkerhets system uppdateringar som saknas på dina servrar kommer att övervakas av Azure Security Center som rekommendationer
+- Uppdateringar av säkerhetssystem som saknas på dina servrar övervakas av Azure Security Center som rekommendationer
 
-## <a name="identity--authentication"></a>Identitets &-autentisering
+### <a name="cm-513--employ-automated-tools-to-maintain-a-baseline-configuration-of-the-information-system"></a>CM-5.13 – Använd automatiserade verktyg för att upprätthålla en baslinjekonfiguration av informationssystemet.
 
-### <a name="ia-71--user-accounts-must-be-uniquely-assigned-to-individuals-for-access-to-information-that-is-not-classified-as-public-account-ids-must-be-constructed-using-a-standardized-logical-format"></a>IA-7,1 – användar konton måste tilldelas unikt till enskilda användare för åtkomst till information som inte klassificeras som offentlig. Konto-ID: n måste konstrueras med ett standardiserat logiskt format.
+- Systemuppdateringar ska ha installerats på dina datorer
+- Uppdateringar av säkerhetssystem som saknas på dina servrar övervakas av Azure Security Center som rekommendationer
 
-- Externa konton med ägar behörigheter bör tas bort från din prenumeration
-- Externa konton med ägar behörigheter bör tas bort från din prenumeration för att förhindra oövervakad åtkomst.
+### <a name="cm-514--identify-and-disable-unnecessary-andor-non-secure-functions-ports-protocols-and-services"></a>CM-5.14 – Identifiera och inaktivera onödiga och/eller icke-säkra funktioner, portar, protokoll och tjänster.
+
+- Nätverksgränssnitt ska inaktivera IP-vidare vidarebefordran
+- \[Förhandsversion: \] IP-vidarebefordran på den virtuella datorn ska vara inaktiverat
+
+### <a name="cm-519--monitor-changes-to-the-security-configuration-settings"></a>CM-5.19 – Övervaka ändringar i säkerhetskonfigurationsinställningarna.
+
+- Distribuera diagnostikinställningar för nätverkssäkerhetsgrupper
+
+### <a name="cm-522--ensure-that-only-authorized-software-and-updates-are-installed-on-company-systems"></a>CM-5.22- Se till att endast auktoriserad programvara och uppdateringar är installerade på företagets system.
+
+- Systemuppdateringar ska ha installerats på dina datorer
+- Uppdateringar av säkerhetssystem som saknas på dina servrar övervakas av Azure Security Center som rekommendationer
+
+## <a name="identity--authentication"></a>Identitetsautentisering & autentisering
+
+### <a name="ia-71--user-accounts-must-be-uniquely-assigned-to-individuals-for-access-to-information-that-is-not-classified-as-public-account-ids-must-be-constructed-using-a-standardized-logical-format"></a>IA-7.1 – Användarkonton måste tilldelas unikt till enskilda användare för åtkomst till information som inte klassificeras som offentlig. Konto-ID:er måste konstrueras med ett standardiserat logiskt format.
+
+- Externa konton med ägarbehörighet ska tas bort från din prenumeration
+- Externa konton med ägarbehörighet bör tas bort från din prenumeration för att förhindra oövervakad åtkomst.
 
 ## <a name="network-security"></a>Nätverkssäkerhet
 
-### <a name="ns-92--access-to-network-device-management-functionality-is-restricted-to-authorized-users"></a>NS-9,2 – åtkomst till funktioner för hantering av nätverks enheter är begränsad till behöriga användare.
+### <a name="ns-92--access-to-network-device-management-functionality-is-restricted-to-authorized-users"></a>NS-9.2 – Åtkomsten till funktionen för hantering av nätverksenhet är begränsad till behöriga användare.
 
-- \[För hands version \] : Distribuera krav för att granska Windows-konfigurationer för virtuella datorer i säkerhets alternativ-nätverks åtkomst
+- \[Förhandsversion: \] Distribuera krav för att granska konfigurationer av virtuella Windows-datorer i "Säkerhetsalternativ – Nätverksåtkomst"
 
-### <a name="ns-93--all-network-devices-must-be-configured-using-their-most-secure-configurations"></a>NS-9,3 – alla nätverks enheter måste konfigureras med de mest säkra konfigurationerna.
+### <a name="ns-93--all-network-devices-must-be-configured-using-their-most-secure-configurations"></a>NS-9.3 – Alla nätverksenheter måste konfigureras med sina säkraste konfigurationer.
 
-- \[För hands version \] : Distribuera krav för att granska Windows-konfigurationer för virtuella datorer i säkerhets alternativ-nätverks åtkomst
+- \[Förhandsversion: \] Distribuera krav för att granska konfigurationer av virtuella Windows-datorer i "Säkerhetsalternativ – Nätverksåtkomst"
 
-### <a name="ns-95--all-network-connections-to-a-system-through-a-firewall-must-be-approved-and-audited-on-a-regular-basis"></a>NS-9,5 – alla nätverks anslutningar till ett system via en brand vägg måste godkännas och granskas regelbundet.
+### <a name="ns-95--all-network-connections-to-a-system-through-a-firewall-must-be-approved-and-audited-on-a-regular-basis"></a>NS-9.5 – Alla nätverksanslutningar till ett system via en brandvägg måste godkännas och granskas regelbundet.
 
-- \[För hands version \] : Visa gransknings resultat från virtuella Windows-konfigurationer i egenskaper för Windows-brandväggen
+- \[Förhandsversion: \] Visa granskningsresultat från konfigurationer av virtuella Windows-datorer i Egenskaper för Windows-brandväggen
 
-### <a name="ns-97--appropriate-controls-must-be-present-at-any-boundary-between-a-trusted-network-and-any-untrusted-or-public-network"></a>NS-9,7 – lämpliga kontroller måste finnas i alla gränser mellan ett betrott nätverk och ett icke-betrott eller offentligt nätverk.
+### <a name="ns-97--appropriate-controls-must-be-present-at-any-boundary-between-a-trusted-network-and-any-untrusted-or-public-network"></a>NS-9.7 – Lämpliga kontroller måste finnas vid alla gränser mellan ett betrott nätverk och eventuella ej betrodda eller offentliga nätverk.
 
-- \[För hands version \] : Distribuera förutsättningar för att granska Windows-konfigurationer för virtuella datorer i egenskaper för Windows-brandväggen
+- \[Förhandsversion: \] Distribuera krav för att granska konfigurationer av virtuella Windows-datorer i "Egenskaper för Windows-brandväggen"
 
 ## <a name="security-planning"></a>Säkerhetsplanering
 
-### <a name="sp-113--threats-must-be-identified-that-could-negatively-impact-the-confidentiality-integrity-or-availability-of-company-information-and-content-along-with-the-likelihood-of-their-occurrence"></a>SP-11,3 – hot måste identifieras som kan påverka konfidentialitet, integritet eller tillgänglighet för företags information och innehåll, tillsammans med sannolikheten för deras förekomst.
+### <a name="sp-113--threats-must-be-identified-that-could-negatively-impact-the-confidentiality-integrity-or-availability-of-company-information-and-content-along-with-the-likelihood-of-their-occurrence"></a>SP-11.3 – Hot måste identifieras som kan påverka sekretessen, integriteten eller tillgängligheten för företagets information och innehåll negativt samt sannolikheten för att de inträffar.
 
-- Avancerade skydds typer måste anges till alla i avancerade data säkerhets inställningar för SQL-hanterad instans
+- Advanced Threat Protection-typer ska vara inställda på Alla i SQL Managed Instance Advanced Data Security inställningar
 
-### <a name="security-continuity"></a>Säkerhets kontinuitet
+### <a name="security-continuity"></a>Säkerhetskontinuui
 
-## <a name="sc-125--data-in-long-term-storage-must-be-accessible-throughout-the-retention-period-and-protected-against-media-degradation-and-technology-changes"></a>SC-12,5-data i långtids lagring måste vara tillgängliga under hela kvarhållningsperioden och skyddas mot media försämring och teknik ändringar.
+## <a name="sc-125--data-in-long-term-storage-must-be-accessible-throughout-the-retention-period-and-protected-against-media-degradation-and-technology-changes"></a>SC-12.5 – Data i långsiktig lagring måste vara tillgängliga under kvarhållningsperioden och skyddas mot medieförsämring och teknikändringar.
 
-- SQL-servrar bör konfigureras med granskning av antalet dagar som är större än 90 dagar.
-- Granska SQL-servrar som kon figurer ATS med en gransknings kvarhållningsperiod på mindre än 90 dagar.
+- SQL-servrar ska konfigureras med granskningsbevarande dagar som är längre än 90 dagar.
+- Granska SQL-servrar som konfigurerats med en kvarhållningsperiod för granskning på mindre än 90 dagar.
 
-## <a name="system-integrity"></a>System integritet
+## <a name="system-integrity"></a>Systemintegritet
 
-### <a name="si-143--only-authorized-personnel-may-monitor-network-and-user-activities"></a>SI-14,3 – endast auktoriserad personal kan övervaka nätverks-och användar aktiviteter.
+### <a name="si-143--only-authorized-personnel-may-monitor-network-and-user-activities"></a>SI-14.3 – Endast auktoriserad personal kan övervaka nätverks- och användaraktiviteter.
 
-- Säkerhets risker i SQL-databaser bör åtgärdas
-- Övervaka genomsöknings resultat och rekommendationer för sårbarhets bedömning för att åtgärda databas sårbarheter.
+- Sårbarheter i DINA SQL-databaser bör åtgärdas
+- Övervaka genomsökningsresultat för sårbarhetsbedömning och rekommendationer för hur du åtgärdar sårbarheter i databasen.
 
-### <a name="si-144--internet-facing-systems-must-have-intrusion-detection"></a>SI-14,4-Internet-riktade system måste ha intrångs identifiering.
+### <a name="si-144--internet-facing-systems-must-have-intrusion-detection"></a>SI-14.4 – Internetuppriktade system måste ha intrångsidentifiering.
 
-- Distribuera hot identifiering på SQL-servrar
+- Distribuera hotidentifiering på SQL-servrar
 
-### <a name="si-1413--standardized-centrally-managed-anti-malware-software-should-be-implemented-across-the-company"></a>SI-14,13 – standardiserad Central program vara för program mot skadlig kod bör implementeras i hela företaget.
+### <a name="si-1413--standardized-centrally-managed-anti-malware-software-should-be-implemented-across-the-company"></a>SI-14.13 – Standardiserad centralt hanterad programvara mot skadlig kod bör implementeras i hela företaget.
 
-- Distribuera standard Microsoft IaaSAntimalware-tillägget för Windows Server
+- Distribuera Microsoft IaaSAntimalware-standardtillägget för Windows Server
 
-### <a name="si-1414--anti-malware-software-must-scan-computers-and-media-weekly-at-a-minimum"></a>SI-14,14 – program mot skadlig kod måste genomsöka datorer och media varje vecka med minst.
+### <a name="si-1414--anti-malware-software-must-scan-computers-and-media-weekly-at-a-minimum"></a>SI-14.14 – Program mot skadlig kod måste genomsöka datorer och media varje vecka som minst.
 
-- Distribuera standard Microsoft IaaSAntimalware-tillägget för Windows Server
+- Distribuera Microsoft IaaSAntimalware-standardtillägget för Windows Server
 
 ## <a name="vulnerability-management"></a>Sårbarhetshantering
 
-### <a name="vm-154--ensure-that-applications-are-scanned-for-vulnerabilities-on-a-monthly-basis"></a>VM-15,4 – se till att program genomsöks efter sårbarheter varje månad.
+### <a name="vm-154--ensure-that-applications-are-scanned-for-vulnerabilities-on-a-monthly-basis"></a>VM-15.4 – Kontrollera att program genomsöks efter säkerhetsrisker månadsvis.
 
-- Säkerhets problem i säkerhets konfiguration på den virtuella datorns skalnings uppsättningar bör åtgärdas
-- Granska OS-sårbarheterna på dina virtuella datorers skalnings uppsättningar för att skydda dem mot angrepp.
+- Sårbarheter i säkerhetskonfigurationen på dina VM-skalningsuppsättningar bör åtgärdas
+- Granska säkerhetsproblemen i operativsystemet på dina VM-skalningsuppsättningar för att skydda dem från attacker.
 
-### <a name="vm-155--ensure-that-vulnerabilities-are-identified-paired-to-threats-and-evaluated-for-risk"></a>VM-15,5 – Se till att sårbarheter identifieras, kopplas till hot och utvärderas för risk.
+### <a name="vm-155--ensure-that-vulnerabilities-are-identified-paired-to-threats-and-evaluated-for-risk"></a>VM-15.5 – Se till att sårbarheter identifieras, kopplas till hot och utvärderas för risk.
 
-- Säkerhets problem i säkerhets konfiguration på den virtuella datorns skalnings uppsättningar bör åtgärdas
-- Granska OS-sårbarheterna på dina virtuella datorers skalnings uppsättningar för att skydda dem mot angrepp.
+- Sårbarheter i säkerhetskonfigurationen på dina VM-skalningsuppsättningar bör åtgärdas
+- Granska säkerhetsproblemen i operativsystemet på dina VM-skalningsuppsättningar för att skydda dem mot attacker.
 
-### <a name="vm-156--ensure-that-identified-vulnerabilities-have-been-remediated-within-a-mutually-agreed-upon-timeline"></a>VM-15,6 – Se till att identifierade sårbarheter har åtgärd ATS inom ett ömsesidigt överenskommet avtal på tids linjen.
+### <a name="vm-156--ensure-that-identified-vulnerabilities-have-been-remediated-within-a-mutually-agreed-upon-timeline"></a>VM-15.6 – Se till att identifierade sårbarheter har åtgärdats inom en ömsesidigt överenskommen tidslinje.
 
-- Säkerhets problem i säkerhets konfiguration på den virtuella datorns skalnings uppsättningar bör åtgärdas
-- Granska OS-sårbarheterna på dina virtuella datorers skalnings uppsättningar för att skydda dem mot angrepp.
+- Sårbarheter i säkerhetskonfigurationen på dina VM-skalningsuppsättningar bör åtgärdas
+- Granska säkerhetsproblemen i operativsystemet på dina VM-skalningsuppsättningar för att skydda dem mot attacker.
 
-### <a name="vm-157--access-to-and-use-of-vulnerability-management-systems-must-be-restricted-to-authorized-personnel"></a>VM-15,7 – åtkomst till och användning av sårbarhets hanterings system måste begränsas till behörig personal.
+### <a name="vm-157--access-to-and-use-of-vulnerability-management-systems-must-be-restricted-to-authorized-personnel"></a>VM-15.7 – Åtkomst till och användning av sårbarhetshanteringssystem måste begränsas till auktoriserad personal.
 
-- Säkerhets problem i säkerhets konfiguration på den virtuella datorns skalnings uppsättningar bör åtgärdas
-- Granska OS-sårbarheterna på dina virtuella datorers skalnings uppsättningar för att skydda dem mot angrepp.
+- Sårbarheter i säkerhetskonfigurationen på dina VM-skalningsuppsättningar bör åtgärdas
+- Granska säkerhetsproblemen i operativsystemet på dina VM-skalningsuppsättningar för att skydda dem mot attacker.
 
 > [!NOTE]
-> Tillgängligheten för vissa Azure Policy definitioner kan variera i Azure Government och andra nationella moln. 
+> Tillgängligheten för Azure Policy definitioner kan variera Azure Government och andra nationella moln. 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du har granskat kontroll mappningen för medie skiss exemplet. Gå sedan till följande artiklar för att lära dig mer om översikten och hur du distribuerar det här exemplet:
+Du har granskat kontrollmappningen av Media-skissexempel. Gå sedan till följande artiklar för att lära dig mer om översikten och hur du distribuerar det här exemplet:
 
 > [!div class="next step action"]
-> [Medie skiss – översikt](./control-mapping.md) 
->  [Medie skiss – distribuera steg](./deploy.md)
+> [Media-skiss – översikt](./control-mapping.md) 
+>  [Media-skiss – Distribuera steg](./deploy.md)
 
 Ytterligare artiklar om skisser och hur de används:
 

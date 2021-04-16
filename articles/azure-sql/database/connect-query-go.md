@@ -1,6 +1,6 @@
 ---
-title: Använd gå till fråga
-description: Använd Go för att skapa ett program som ansluter till en databas i Azure SQL Database eller Azure SQL-hanterad instans och kör frågor.
+title: Använda Go för att fråga
+description: Använd Go för att skapa ett program som ansluter till en databas Azure SQL Database eller Azure SQL Managed Instance och kör frågor.
 titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
@@ -11,25 +11,25 @@ ms.topic: quickstart
 author: David-Engel
 ms.author: sstein
 ms.reviewer: MightyPen
-ms.date: 02/12/2019
-ms.openlocfilehash: b4a22c734d2afb90d5ea7bc1bda17d3f8fcf585a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: 1a479572ba8dbd68ccc072fce32446abcc9b873c
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91327552"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517788"
 ---
-# <a name="quickstart-use-golang-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Snabb start: använda Golang för att fråga en databas i Azure SQL Database eller Azure SQL-hanterad instans
+# <a name="quickstart-use-golang-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Snabbstart: Använda Golang för att fråga en databas i Azure SQL Database eller Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-I den här snabb starten använder du programmerings språket [Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) för att ansluta till en databas i Azure SQL Database eller Azure SQL-hanterad instans. Därefter kommer du att köra Transact-SQL-uttryck för att fråga och redigera data. [Golang](https://golang.org/) är ett programmeringsspråk med öppen källkod som gör det enkelt att skapa enkel, pålitlig och effektiv programvara.  
+I den här snabbstarten använder du [programmeringsspråket Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) för att ansluta till en databas i Azure SQL Database eller Azure SQL Managed Instance. Därefter kommer du att köra Transact-SQL-uttryck för att fråga och redigera data. [Golang](https://golang.org/) är ett programmeringsspråk med öppen källkod som gör det enkelt att skapa enkel, pålitlig och effektiv programvara.  
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här snabbstarten behöver du:
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- En databas i Azure SQL Database eller Azure SQL-hanterad instans. Du kan använda någon av följande snabb starter för att skapa en databas:
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- En databas i Azure SQL Database eller Azure SQL Managed Instance. Du kan använda någon av dessa snabbstarter för att skapa en databas:
 
   || SQL Database | SQL-hanterad instans | SQL Server på virtuella Azure-datorer |
   |:--- |:--- |:---|:---|
@@ -37,31 +37,31 @@ För att slutföra den här snabbstarten behöver du:
   | **Skapa** | [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   | **Skapa** | [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
   | **I** | [IP-brandväggsregel på servernivå](firewall-create-server-level-portal-quickstart.md)| [Anslutning från en virtuell dator](../managed-instance/connect-vm-instance-configure.md)|
-  | **I** ||[Anslutning från lokal plats](../managed-instance/point-to-site-p2s-configure.md) | [Ansluta till en SQL Server-instans](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
+  | **I** ||[Anslutning från lokal plats](../managed-instance/point-to-site-p2s-configure.md) | [Ansluta till en SQL Server instans](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   |**Läsa in data**|AdventureWorks som lästs in per snabbstart|[Återställa Wide World Importers](../managed-instance/restore-sample-database-quickstart.md) | [Återställa Wide World Importers](../managed-instance/restore-sample-database-quickstart.md) |
-  | **Läsa in data** ||Återställa eller importera Adventure Works från en [BACPAC](database-import.md) -fil från [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)| Återställa eller importera Adventure Works från en [BACPAC](database-import.md) -fil från [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  | **Läsa in data** ||Återställa eller importera Adventure Works från en [BACPAC-fil](database-import.md) från [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)| Återställa eller importera Adventure Works från en [BACPAC-fil](database-import.md) från [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
 
   > [!IMPORTANT]
-  > Skripten i den här artikeln skrivs för att använda Adventure Works-databasen. Med en SQL-hanterad instans måste du antingen importera Adventure Works-databasen till en instans databas eller ändra skripten i den här artikeln för att använda Wide World imports-databasen.
+  > Skripten i den här artikeln skrivs för att använda Adventure Works-databasen. Med en SQL Managed Instance måste du antingen importera Adventure Works-databasen till en instansdatabas eller ändra skripten i den här artikeln för att använda Wide World Importers-databasen.
 
 - Golang och relaterad programvara för ditt operativsystem installerat:
 
-  - **MacOS**: installera homebrew och Golang. Se [Steg 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
-  - **Ubuntu**: installera Golang. Se [Steg 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
-  - **Windows**: installera Golang. Se [Steg 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).
+  - **macOS:** Installera Homebrew och Golang. Se [Steg 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
+  - **Ubuntu:** Installera Golang. Se [Steg 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
+  - **Windows:** Installera Golang. Se [Steg 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).
 
-## <a name="get-server-connection-information"></a>Hämta information om Server anslutning
+## <a name="get-server-connection-information"></a>Hämta information om serveranslutning
 
-Hämta anslutnings informationen du behöver för att ansluta till databasen. Du behöver det fullständiga servernamnet eller värdnamnet, databasnamnet och inloggningsinformationen för de kommande procedurerna.
+Hämta anslutningsinformationen som du behöver för att ansluta till databasen. Du behöver det fullständiga servernamnet eller värdnamnet, databasnamnet och inloggningsinformationen för de kommande procedurerna.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
 
-2. Gå till sidan **SQL-databaser**  eller **SQL-hanterade instanser** .
+2. Gå till sidan **SQL-databaser** **eller SQL Managed Instances.**
 
-3. På sidan **Översikt** granskar du det fullständigt kvalificerade Server namnet bredvid **Server namnet** för en databas i Azure SQL Database eller det fullständigt kvalificerade Server namnet (eller IP-adressen) bredvid **värd** för en Azure SQL-hanterad instans eller SQL Server på Azure VM. Om du vill kopiera servernamnet eller värdnamnet hovrar du över det och väljer ikonen **Kopiera**.
+3. På sidan **Översikt** granskar du det fullständigt kvalificerade servernamnet bredvid **Servernamn** för en databas i Azure SQL Database eller det fullständigt kvalificerade servernamnet (eller IP-adressen) bredvid **Värd** för en Azure SQL Managed Instance eller SQL Server på en virtuell Azure-dator. Om du vill kopiera servernamnet eller värdnamnet hovrar du över det och väljer ikonen **Kopiera**.
 
 > [!NOTE]
-> Anslutnings information för SQL Server på den virtuella Azure-datorn finns i [Anslut till en SQL Server instans](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
+> Anslutningsinformation för SQL Server virtuell Azure-dator finns i [Ansluta till en SQL Server instans.](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)
 
 ## <a name="create-golang-project-and-dependencies"></a>Skapa Golang-projekt och beroenden
 
@@ -76,7 +76,6 @@ Hämta anslutnings informationen du behöver för att ansluta till databasen. Du
    ```bash
    cd SqlServerSample
    go get github.com/denisenkom/go-mssqldb
-   go install github.com/denisenkom/go-mssqldb
    ```
 
 ## <a name="create-sample-data"></a>Skapa exempeldata
@@ -104,7 +103,7 @@ Hämta anslutnings informationen du behöver för att ansluta till databasen. Du
    GO
    ```
 
-2. Använd `sqlcmd` för att ansluta till databasen och köra ditt nyligen skapade Azure SQL-skript. Ersätt lämpliga värden för din server, databas, användarnamn och lösenord.
+2. Använd `sqlcmd` för att ansluta till databasen och köra ditt nyligen Azure SQL skript. Ersätt lämpliga värden för din server, databas, användarnamn och lösenord.
 
    ```bash
    sqlcmd -S <your_server>.database.windows.net -U <your_username> -P <your_password> -d <your_database> -i ./CreateTestData.sql
@@ -114,7 +113,7 @@ Hämta anslutnings informationen du behöver för att ansluta till databasen. Du
 
 1. Skapa en fil med namnet **sample.go** i mappen **SqlServerSample**.
 
-2. Klistra in den här koden i filen. Lägg till värden för din server, databas, användarnamn och lösenord. I det här exemplet används Golang- [kontext metoder](https://golang.org/pkg/context/) för att se till att det finns en aktiv anslutning.
+2. Klistra in den här koden i filen. Lägg till värden för din server, databas, användarnamn och lösenord. I det här exemplet används [Golang-kontextmetoderna](https://golang.org/pkg/context/) för att kontrollera att det finns en aktiv anslutning.
 
    ```go
    package main

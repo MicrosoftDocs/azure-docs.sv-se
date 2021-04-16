@@ -1,6 +1,6 @@
 ---
-title: Rotations guide för resurser med två uppsättningar autentiseringsuppgifter
-description: I den här självstudien får du lära dig hur du automatiserar rotationen av en hemlighet för resurser som använder två uppsättningar autentiseringsuppgifter för autentisering.
+title: Rotationsskurs för resurser med två uppsättningar autentiseringsuppgifter
+description: Använd den här självstudien om du vill lära dig hur du automatiserar rotationen av en hemlighet för resurser som använder två uppsättningar autentiseringsuppgifter.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,51 +10,51 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d75ba091ff634bf613722e3a194407beeeda68fb
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 1f656a41b0f447b90f58ec14173e418a2defb72e
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967242"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484837"
 ---
-# <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>Automatisera rotationen av en hemlighet för resurser som har två uppsättningar autentiseringsuppgifter för autentisering
+# <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>Automatisera rotationen av en hemlighet för resurser som har två uppsättningar autentiseringsuppgifter
 
-Det bästa sättet att autentisera till Azure-tjänster är genom att använda en [hanterad identitet](../general/authentication.md), men det finns vissa scenarier där det inte är ett alternativ. I dessa fall används åtkomst nycklar eller lösen ord. Du bör rotera åtkomst nycklar och lösen ord ofta.
+Det bästa sättet att autentisera till Azure-tjänster är att använda en hanterad identitet [,](../general/authentication.md)men det finns vissa scenarier där det inte är ett alternativ. I dessa fall används åtkomstnycklar eller lösenord. Du bör rotera åtkomstnycklar och lösenord ofta.
 
-Den här självstudien visar hur du automatiserar den periodiska rotationen av hemligheter för databaser och tjänster som använder två uppsättningar autentiseringsuppgifter för autentisering. Mer specifikt visar den här självstudien hur du roterar Azure Storage konto nycklar som lagras i Azure Key Vault som hemligheter. Du använder en funktion som utlöses av Azure Event Grid-avisering. 
+Den här självstudien visar hur du automatiserar periodisk rotation av hemligheter för databaser och tjänster som använder två uppsättningar autentiseringsuppgifter. Mer specifikt visar den här självstudien hur du roterar Azure Storage-kontonycklar som lagras i Azure Key Vault som hemligheter. Du använder en funktion som utlöses av ett Azure Event Grid meddelande. 
 
 > [!NOTE]
-> Lagrings konto nycklar kan hanteras automatiskt i Key Vault om du anger signatur-token för delad åtkomst för delegerad åtkomst till lagrings kontot. Det finns tjänster som kräver lagrings kontots anslutnings strängar med åtkomst nycklar. I det scenariot rekommenderar vi den här lösningen.
+> Lagringskontonycklar kan hanteras automatiskt i Key Vault om du anger signaturtoken för delad åtkomst för delegerad åtkomst till lagringskontot. Det finns tjänster som kräver anslutningssträngar för lagringskontot med åtkomstnycklar. För det scenariot rekommenderar vi den här lösningen.
 
-Här är rotations lösningen som beskrivs i den här självstudien: 
+Här är rotationslösningen som beskrivs i den här självstudien: 
 
-![Diagram som visar rotations lösningen.](../media/secrets/rotation-dual/rotation-diagram.png)
+![Diagram som visar rotationslösningen.](../media/secrets/rotation-dual/rotation-diagram.png)
 
-I den här lösningen lagrar Azure Key Vault lagrings konton enskilda åtkomst nycklar som versioner av samma hemlighet, alternerande mellan den primära och den sekundära nyckeln i senare versioner. När en åtkomst nyckel lagras i den senaste versionen av hemligheten, återskapas den alternativa nyckeln och läggs till Key Vault som den nya senaste versionen av hemligheten. Lösningen tillhandahåller programmets hela rotations cykel för att uppdatera till den senaste återskapade nyckeln. 
+I den här Azure Key Vault lagringskontots enskilda åtkomstnycklar som versioner av samma hemlighet, alternerande mellan den primära och sekundära nyckeln i senare versioner. När en åtkomstnyckel lagras i den senaste versionen av hemligheten återskapas den alternativa nyckeln och läggs till i Key Vault som den nya senaste versionen av hemligheten. Lösningen tillhandahåller programmets hela rotationscykel för att uppdatera till den senaste återskapade nyckeln. 
 
-1. Trettio dagar före utgångs datumet för en hemlighet, Key Vault publicerar händelsen nära förfallo datum till Event Grid.
-1. Event Grid kontrollerar händelse prenumerationerna och använder HTTP POST för att anropa den slut punkt för funktionen som prenumererar på händelsen.
-1. Function-appen identifierar den alternativa nyckeln (inte den senaste) och anropar lagrings kontot för att återskapa det.
-1. Function-appen lägger till den nya återskapade nyckeln till Azure Key Vault som den nya versionen av hemligheten.
+1. 30 dagar före förfallodatumet för en hemlighet Key Vault publicerar händelsen som snart upphör att gälla till Event Grid.
+1. Event Grid kontrollerar händelseprenumerationer och använder HTTP POST för att anropa funktionsappens slutpunkt som prenumererar på händelsen.
+1. Funktionsappen identifierar den alternativa nyckeln (inte den senaste) och anropar lagringskontot för att återskapa den.
+1. Funktionsappen lägger till den nya återskapade nyckeln Azure Key Vault som den nya versionen av hemligheten.
 
 ## <a name="prerequisites"></a>Förutsättningar
-* En Azure-prenumeration. [Skapa ett kostnads fritt.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Azure- [Cloud Shell](https://shell.azure.com/). Den här självstudien använder Portal Cloud Shell med PowerShell-miljö
+* En Azure-prenumeration. [Skapa ett kostnadsfritt.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Azure [Cloud Shell](https://shell.azure.com/). Den här självstudien använder Cloud Shell med PowerShell-miljö
 * Azure Key Vault.
 * Två Azure Storage-konton.
 
-Du kan använda den här distributions länken om du inte har ett befintligt nyckel valv och befintliga lagrings konton:
+Du kan använda den här distributionslänken om du inte har ett befintligt nyckelvalv och befintliga lagringskonton:
 
-[![Länk som är märkt med att distribuera till Azure.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2FARM-Templates%2FInitial-Setup%2Fazuredeploy.json)
+[![Länk som är märkt Distribuera till Azure.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2FARM-Templates%2FInitial-Setup%2Fazuredeploy.json)
 
-1. Under **resurs grupp** väljer du **Skapa ny**. Namnge gruppen **vaultrotation** och välj sedan **OK**.
+1. Under **Resursgrupp** väljer du **Skapa ny**. Ge gruppen namnet **vaultrotation** och välj **sedan OK.**
 1. Välj **Granska + skapa**.
 1. Välj **Skapa**.
 
-    ![Skärm bild som visar hur du skapar en resurs grupp.](../media/secrets/rotation-dual/dual-rotation-1.png)
+    ![Skärmbild som visar hur du skapar en resursgrupp.](../media/secrets/rotation-dual/dual-rotation-1.png)
 
-Nu har du ett nyckel valv och två lagrings konton. Du kan kontrol lera den här installationen i Azure CLI eller Azure PowerShell genom att köra det här kommandot:
+Nu har du ett nyckelvalv och två lagringskonton. Du kan kontrollera den här konfigurationen i Azure CLI eller Azure PowerShell genom att köra följande kommando:
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az resource list -o table -g vaultrotation
@@ -76,48 +76,48 @@ vaultrotationstorage     vaultrotation      westus      Microsoft.Storage/storag
 vaultrotationstorage2    vaultrotation      westus      Microsoft.Storage/storageAccounts
 ```
 
-## <a name="create-and-deploy-the-key-rotation-function"></a>Skapa och distribuera nyckel rotations funktionen
+## <a name="create-and-deploy-the-key-rotation-function"></a>Skapa och distribuera nyckelrotationsfunktionen
 
-Därefter skapar du en Function-app med en Systemhanterad identitet, förutom andra nödvändiga komponenter. Du distribuerar också rotations funktionen för lagrings konto nycklarna.
+Därefter skapar du en funktionsapp med en system hanterad identitet, utöver andra nödvändiga komponenter. Du distribuerar även rotationsfunktionen för lagringskontonycklarna.
 
-Funktionen app-rotation kräver följande komponenter och konfiguration:
+Roteringsfunktionen för funktionsappen kräver följande komponenter och konfiguration:
 - En Azure App Service plan
-- Ett lagrings konto för att hantera funktionens program utlösare
-- En åtkomst princip för åtkomst till hemligheter i Key Vault
-- Rollen lagrings konto nyckel operatör som är tilldelad Function-appen så att den kan komma åt åtkomst nycklar för lagrings kontot
-- En nyckel rotations funktion med en händelse utlösare och en HTTP-utlösare (rotation på begäran)
-- En Event Grid händelse prenumeration för **SecretNearExpiry** -händelsen
+- Ett lagringskonto för att hantera utlösare för funktionsappen
+- En åtkomstprincip för åtkomst till hemligheter i Key Vault
+- Rollen nyckeloperatör för lagringskonto som tilldelats funktionsappen så att den kan komma åt åtkomstnycklar för lagringskontot
+- En nyckelrotationsfunktion med en händelseutlösare och en HTTP-utlösare (rotation på begäran)
+- En Event Grid händelseprenumeration **för SecretNearExpiry-händelsen**
 
-1. Välj distributions länk för Azure-mallar: 
+1. Välj distributionslänken för Azure-mallar: 
 
-   [![Azure Template Deployment-länk.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2FARM-Templates%2FFunction%2Fazuredeploy.json)
+   [![Distributionslänk för Azure-mallar.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2FARM-Templates%2FFunction%2Fazuredeploy.json)
 
-1. I listan **resurs grupp** väljer du **vaultrotation**.
-1. I rutan **lagrings konto RG** anger du namnet på resurs gruppen där ditt lagrings konto finns. Behåll standardvärdet **[resourceGroup (). name]** om ditt lagrings konto redan finns i samma resurs grupp där du ska distribuera nyckel rotations funktionen.
-1. I rutan **lagrings konto namn** anger du namnet på det lagrings konto som innehåller de åtkomst nycklar som ska roteras. Behåll standardvärdet **[concat (resourceGroup (). namn, lagring)]** om du använder lagrings konto som skapats i [krav](#prerequisites).
-1. I rutan **Key Vault RG** anger du namnet på den resurs grupp som nyckel valvet finns i. Behåll standardvärdet **[resourceGroup (). name]** om det redan finns ett nyckel valv i samma resurs grupp där du ska distribuera nyckel rotations funktionen.
-1. I rutan **Key Vault namn** anger du namnet på nyckel valvet. Behåll standardvärdet **[concat (resourceGroup (). namn, "-kv")]** om du använder nyckel valv som skapats i [krav](#prerequisites).
-1. Välj värd plan i rutan **App Service typ av plan** . **Premium-planen** behövs bara när ditt nyckel valv ligger bakom brand väggen.
-1. I rutan **Funktionsapp namn** anger du namnet på Function-appen.
-1. I rutan **hemligt namn** anger du namnet på hemligheten där du kommer att lagra åtkomst nycklar.
-1. I rutan **LAGRINGS platsen URL** anger du GitHub-platsen för funktions koden. I den här självstudien kan du använda **https://github.com/Azure-Samples/KeyVault-Rotation-StorageAccountKey-PowerShell.git** .
+1. I listan **Resursgrupp** väljer du **vaultrotation**.
+1. I rutan **Lagringskonto-RG** anger du namnet på den resursgrupp där lagringskontot finns. Behåll standardvärdet **[resourceGroup().name]** om ditt lagringskonto redan finns i samma resursgrupp där du distribuerar nyckelroteringsfunktionen.
+1. I rutan **Lagringskontonamn** anger du namnet på det lagringskonto som innehåller de åtkomstnycklar som ska roteras. Behåll standardvärdet **[concat(resourceGroup().name, 'storage')]** om du använder [lagringskontot](#prerequisites)som skapades i Krav .
+1. I rutan **Key Vault RG** anger du namnet på den resursgrupp där nyckelvalvet finns. Behåll standardvärdet **[resourceGroup().name]** om ditt nyckelvalv redan finns i samma resursgrupp där du distribuerar nyckelroteringsfunktionen.
+1. I rutan **Key Vault** namn anger du namnet på nyckelvalvet. Behåll standardvärdet **[concat(resourceGroup().name, '-kv')]** om du använder nyckelvalvet som skapades [i Krav](#prerequisites).
+1. I rutan **App Service väljer** du Värdplan. **Premium-plan** behövs bara när ditt nyckelvalv ligger bakom brandväggen.
+1. I rutan **Funktionsappens** namn anger du namnet på funktionsappen.
+1. I rutan **Hemligt namn** anger du namnet på hemligheten där du ska lagra åtkomstnycklar.
+1. I rutan **Lagringsplats-URL** anger du GitHub-platsen för funktionskoden. I den här självstudien kan du använda **https://github.com/Azure-Samples/KeyVault-Rotation-StorageAccountKey-PowerShell.git** .
 1. Välj **Granska + skapa**.
 1. Välj **Skapa**.
 
-   ![Skärm bild som visar hur du skapar och distribuerar funktioner.](../media/secrets/rotation-dual/dual-rotation-2.png)
+   ![Skärmbild som visar hur du skapar och distribuerar en funktion.](../media/secrets/rotation-dual/dual-rotation-2.png)
 
-När du har slutfört föregående steg har du ett lagrings konto, en Server grupp, en Function-app och Application Insights. När distributionen är klar visas den här sidan:
+När du har slutfört föregående steg har du ett lagringskonto, en servergrupp, en funktionsapp och Application Insights. När distributionen är klar visas den här sidan:
 
-   ![Skärm bild som visar sidan distributionen är klar.](../media/secrets/rotation-dual/dual-rotation-3.png)
+   ![Skärmbild som visar sidan Distributionen är klar.](../media/secrets/rotation-dual/dual-rotation-3.png)
 > [!NOTE]
-> Om du stöter på ett problem kan du välja **distribuera** igen för att slutföra distributionen av komponenterna.
+> Om det uppstår ett fel kan du välja **Distribuera om för** att slutföra distributionen av komponenterna.
 
 
-Du kan hitta mallar och kod för rotations funktionen i [Azure-exempel](https://github.com/Azure-Samples/KeyVault-Rotation-StorageAccountKey-PowerShell).
+Du hittar distributionsmallar och kod för rotationsfunktionen i [Azure Samples](https://github.com/Azure-Samples/KeyVault-Rotation-StorageAccountKey-PowerShell).
 
-## <a name="add-the-storage-account-access-keys-to-key-vault"></a>Lägg till lagrings kontots åtkomst nycklar i Key Vault
+## <a name="add-the-storage-account-access-keys-to-key-vault"></a>Lägg till lagringskontots åtkomstnycklar till Key Vault
 
-Börja med att ange åtkomst principen för att ge behörighet att **Hantera hemligheter** till ditt användar huvud konto:
+Först anger du din åtkomstprincip för att bevilja **behörigheter för att hantera** hemligheter till användarens huvudnamn:
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault set-policy --upn <email-address-of-user> --name vaultrotation-kv --secret-permissions set delete get list
@@ -129,9 +129,9 @@ Set-AzKeyVaultAccessPolicy -UserPrincipalName <email-address-of-user> --name vau
 ```
 ---
 
-Nu kan du skapa en ny hemlighet med lagrings kontots åtkomst nyckel som värde. Du behöver också lagrings kontots resurs-ID, den hemliga giltighets perioden och nyckel-ID: t som ska läggas till i hemligheten så att rotations funktionen kan återskapa nyckeln i lagrings kontot.
+Nu kan du skapa en ny hemlighet med en åtkomstnyckel för lagringskontot som värde. Du behöver också lagringskontots resurs-ID, hemlighetens giltighetsperiod och nyckel-ID som ska läggas till i hemligheten så att rotationsfunktionen kan återskapa nyckeln i lagringskontot.
 
-Fastställ resurs-ID för lagrings kontot. Du kan hitta det här värdet i `id` egenskapen.
+Fastställ lagringskontots resurs-ID. Du hittar det här värdet i `id` egenskapen .
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
@@ -144,7 +144,7 @@ Get-AzStorageAccount -Name vaultrotationstorage -ResourceGroupName vaultrotation
 ```
 ---
 
-Visa en lista med åtkomst nycklar för lagrings kontot så att du kan hämta nyckel värden:
+Visa en lista över åtkomstnycklarna för lagringskontot så att du kan hämta nyckelvärdena:
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account keys list -n vaultrotationstorage
@@ -156,7 +156,7 @@ Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotat
 ```
 ---
 
-Lägg till hemlighet i Key Vault med utgångs datum inställt på imorgon, giltighets period för 60 dagar och resurs-ID för lagrings konto. Kör det här kommandot med dina hämtade värden för `key1Value` och `storageAccountResourceId` :
+Lägg till hemlighet till nyckelvalvet med förfallodatum inställt på imorgon, giltighetsperiod i 60 dagar och resurs-ID för lagringskonto. Kör det här kommandot med dina hämtade värden för `key1Value` och `storageAccountResourceId` :
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
@@ -177,9 +177,9 @@ Set-AzKeyVaultSecret -Name storageKey -VaultName vaultrotation-kv -SecretValue $
 ```
 ---
 
-Över hemlighet kommer att utlösa `SecretNearExpiry` händelsen inom några minuter. Den här händelsen kommer i sin tur att utlösa funktionen för att rotera hemligheten med förfallo datum inställt på 60 dagar. I den konfigurationen skulle händelsen "SecretNearExpiry" utlösas var 30: e dag (30 dagar före förfallo datum) och rotations funktionen kommer att alternera mellan KEY1 och key2.
+Ovanstående hemlighet utlöser `SecretNearExpiry` en händelse inom några minuter. Den här händelsen utlöser i sin tur funktionen för att rotera hemligheten med en förfallotid på 60 dagar. I den konfigurationen utlöses "SecretNearExpiry"-händelsen var 30:e dag (30 dagar innan förfallodatumet) och rotationsfunktionen växlar rotation mellan key1 och key2.
 
-Du kan kontrol lera att åtkomst nycklarna har återskapats genom att hämta lagrings konto nyckeln och Key Vault hemligheten och jämföra dem.
+Du kan kontrollera att åtkomstnycklarna har återskapats genom att hämta lagringskontonyckeln och Key Vault hemligheten och jämföra dem.
 
 Använd det här kommandot för att hämta den hemliga informationen:
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -193,11 +193,11 @@ Get-AzKeyVaultSecret -VaultName vaultrotation-kv -Name storageKey -AsPlainText
 ```
 ---
 
-Observera att `CredentialId` har uppdaterats till alternativ `keyName` och som `value` återskapas:
+Observera att `CredentialId` har uppdaterats till den alternativa `keyName` och `value` som återskapas:
 
-![Skärm bild som visar utdata från ett z-valvs hemliga show-kommando för det första lagrings kontot.](../media/secrets/rotation-dual/dual-rotation-4.png)
+![Skärmbild som visar utdata från kommandot z keyvault secret show för det första lagringskontot.](../media/secrets/rotation-dual/dual-rotation-4.png)
 
-Hämta åtkomst nycklar för att jämföra värdena:
+Hämta åtkomstnycklarna för att jämföra värdena:
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account keys list -n vaultrotationstorage 
@@ -209,37 +209,37 @@ Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotat
 ```
 ---
 
-Observera att `value` nyckeln är samma som hemligheten i Key Vault:
+Observera att `value` för nyckeln är samma som hemligheten i nyckelvalvet:
 
-![Skärm bild som visar utdata från kommandot a z Storage konto Keys-lista för det första lagrings kontot.](../media/secrets/rotation-dual/dual-rotation-5.png)
+![Skärmbild som visar utdata från kommandot z storage account keys list för det första lagringskontot.](../media/secrets/rotation-dual/dual-rotation-5.png)
 
-## <a name="add-storage-accounts-for-rotation"></a>Lägg till lagrings konton för rotation
+## <a name="add-storage-accounts-for-rotation"></a>Lägga till lagringskonton för rotation
 
-Du kan återanvända samma Function-app för att rotera nycklar för flera lagrings konton. 
+Du kan återanvända samma funktionsapp för att rotera nycklar för flera lagringskonton. 
 
-Om du vill lägga till lagrings konto nycklar i en befintlig funktion för rotation behöver du:
-- Rollen lagrings konto nyckel operatör som är tilldelad till Function-appen så att den kan komma åt åtkomst nycklar för lagrings kontot.
-- En Event Grid händelse prenumeration för **SecretNearExpiry** -händelsen.
+Om du vill lägga till lagringskontonycklar i en befintlig funktion för rotation behöver du:
+- Rollen Nyckeloperatör för lagringskonto som tilldelats funktionsappen så att den kan komma åt åtkomstnycklar för lagringskontot.
+- En Event Grid händelseprenumeration **för händelsen SecretNearExpiry.**
 
-1. Välj distributions länk för Azure-mallar: 
+1. Välj distributionslänken för Azure-mallar: 
 
-   [![Azure Template Deployment-länk.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2FARM-Templates%2FAdd-Event-Subscriptions%2Fazuredeploy.json)
+   [![Distributionslänk för Azure-mallar.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2FARM-Templates%2FAdd-Event-Subscriptions%2Fazuredeploy.json)
 
-1. I listan **resurs grupp** väljer du **vaultrotation**.
-1. I rutan **lagrings konto RG** anger du namnet på resurs gruppen där ditt lagrings konto finns. Behåll standardvärdet **[resourceGroup (). name]** om ditt lagrings konto redan finns i samma resurs grupp där du ska distribuera nyckel rotations funktionen.
-1. I rutan **lagrings konto namn** anger du namnet på det lagrings konto som innehåller de åtkomst nycklar som ska roteras.
-1. I rutan **Key Vault RG** anger du namnet på den resurs grupp som nyckel valvet finns i. Behåll standardvärdet **[resourceGroup (). name]** om det redan finns ett nyckel valv i samma resurs grupp där du ska distribuera nyckel rotations funktionen.
-1. I rutan **Key Vault namn** anger du namnet på nyckel valvet.
-1. I rutan **Funktionsapp namn** anger du namnet på Function-appen.
-1. I rutan **hemligt namn** anger du namnet på hemligheten där du kommer att lagra åtkomst nycklar.
+1. I listan **Resursgrupp** väljer du **vaultrotation**.
+1. I rutan **Lagringskonto-RG** anger du namnet på den resursgrupp där lagringskontot finns. Behåll standardvärdet **[resourceGroup().name]** om ditt lagringskonto redan finns i samma resursgrupp där du distribuerar nyckelroteringsfunktionen.
+1. I rutan **Lagringskontonamn** anger du namnet på det lagringskonto som innehåller de åtkomstnycklar som ska roteras.
+1. I rutan **Key Vault RG** anger du namnet på den resursgrupp där nyckelvalvet finns. Behåll standardvärdet **[resourceGroup().name]** om ditt nyckelvalv redan finns i samma resursgrupp där du distribuerar nyckelroteringsfunktionen.
+1. I rutan **Key Vault** namn anger du namnet på nyckelvalvet.
+1. I rutan **Funktionsappens** namn anger du namnet på funktionsappen.
+1. I rutan **Hemligt namn** anger du namnet på hemligheten där du ska lagra åtkomstnycklar.
 1. Välj **Granska + skapa**.
 1. Välj **Skapa**.
 
-   ![Skärm bild som visar hur du skapar ett ytterligare lagrings konto.](../media/secrets/rotation-dual/dual-rotation-7.png)
+   ![Skärmbild som visar hur du skapar ett ytterligare lagringskonto.](../media/secrets/rotation-dual/dual-rotation-7.png)
 
-### <a name="add-another-storage-account-access-key-to-key-vault"></a>Lägg till en annan lagrings konto åtkomst nyckel i Key Vault
+### <a name="add-another-storage-account-access-key-to-key-vault"></a>Lägg till ytterligare en åtkomstnyckel för lagringskontot i Key Vault
 
-Fastställ resurs-ID för lagrings kontot. Du kan hitta det här värdet i `id` egenskapen.
+Fastställ lagringskontots resurs-ID. Du hittar det här värdet i `id` egenskapen .
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account show -n vaultrotationstorage2
@@ -251,7 +251,7 @@ Get-AzStorageAccount -Name vaultrotationstorage -ResourceGroupName vaultrotation
 ```
 ---
 
-Visa en lista med åtkomst nycklar för lagrings kontot så att du kan hämta key2-värdet:
+Visa en lista över åtkomstnycklarna för lagringskontot så att du kan hämta key2-värdet:
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account keys list -n vaultrotationstorage2
@@ -263,7 +263,7 @@ Get-AzStorageAccountKey -Name vaultrotationstorage2 -ResourceGroupName vaultrota
 ```
 ---
 
-Lägg till hemlighet i Key Vault med utgångs datum inställt på imorgon, giltighets period för 60 dagar och resurs-ID för lagrings konto. Kör det här kommandot med dina hämtade värden för `key2Value` och `storageAccountResourceId` :
+Lägg till hemlighet till nyckelvalvet med förfallodatum inställt på imorgon, giltighetsperiod i 60 dagar och resurs-ID för lagringskonto. Kör det här kommandot med dina hämtade värden för `key2Value` och `storageAccountResourceId` :
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
@@ -296,11 +296,11 @@ Get-AzKeyVaultSecret -VaultName vaultrotation-kv -Name storageKey2 -AsPlainText
 ```
 ---
 
-Observera att `CredentialId` har uppdaterats till alternativ `keyName` och som `value` återskapas:
+Observera att `CredentialId` uppdateras till den alternativa och som `keyName` `value` återskapas:
 
-![Skärm bild som visar utdata från ett z-valvs hemliga show-kommando för det andra lagrings kontot.](../media/secrets/rotation-dual/dual-rotation-8.png)
+![Skärmbild som visar utdata från kommandot z keyvault secret show för det andra lagringskontot.](../media/secrets/rotation-dual/dual-rotation-8.png)
 
-Hämta åtkomst nycklar för att jämföra värdena:
+Hämta åtkomstnycklarna för att jämföra värdena:
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account keys list -n vaultrotationstorage 
@@ -312,26 +312,26 @@ Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotat
 ```
 ---
 
-Observera att `value` nyckeln är samma som hemligheten i Key Vault:
+Observera att `value` för nyckeln är samma som hemligheten i nyckelvalvet:
 
-![Skärm bild som visar utdata från kommandot a z Storage konto Keys-lista för det andra lagrings kontot.](../media/secrets/rotation-dual/dual-rotation-9.png)
+![Skärmbild som visar utdata från kommandot a z storage account keys list för det andra lagringskontot.](../media/secrets/rotation-dual/dual-rotation-9.png)
 
-## <a name="key-vault-rotation-functions-for-two-sets-of-credentials"></a>Key Vault rotations funktioner för två uppsättningar med autentiseringsuppgifter
+## <a name="key-vault-rotation-functions-for-two-sets-of-credentials"></a>Key Vault rotationsfunktioner för två uppsättningar autentiseringsuppgifter
 
-Mall för rotations funktioner för två uppsättningar med autentiseringsuppgifter och flera färdiga att använda funktioner:
+Mall för rotationsfunktioner för två uppsättningar autentiseringsuppgifter och flera färdiga funktioner:
 
 - [Projektmall](https://serverlesslibrary.net/sample/bc72c6c3-bd8f-4b08-89fb-c5720c1f997f)
 - [Redis Cache](https://serverlesslibrary.net/sample/0d42ac45-3db2-4383-86d7-3b92d09bc978)
-- [Lagrings konto](https://serverlesslibrary.net/sample/0e4e6618-a96e-4026-9e3a-74b8412213a4)
+- [Lagringskonto](https://serverlesslibrary.net/sample/0e4e6618-a96e-4026-9e3a-74b8412213a4)
 - [Cosmos DB](https://serverlesslibrary.net/sample/bcfaee79-4ced-4a5c-969b-0cc3997f47cc)
 
 > [!NOTE]
-> Rotations funktionerna ovan skapas av en community-medlem och inte av Microsoft. Community-Azure Functions stöds inte i Microsoft Support-program eller-tjänster och görs tillgängliga i befintligt skick utan garanti av något slag.
+> Rotationsfunktionerna ovan skapas av en medlem i communityn och inte av Microsoft. Community Azure Functions stöds inte under något Microsoft-supportprogram eller -tjänster och görs tillgängliga i DESS DESS-form utan garantier av något slag.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Självstudie: [hemligheter rotation för en uppsättning autentiseringsuppgifter](./tutorial-rotation.md)
-- Översikt: [övervaka Key Vault med Azure Event Grid](../general/event-grid-overview.md)
-- Gör så här: [skapa din första funktion i Azure Portal](../../azure-functions/functions-get-started.md)
-- Gör så här: [ta emot e-post när en Key Vault hemliga ändringar](../general/event-grid-logicapps.md)
-- Referens: [Azure Event Grid händelse schema för Azure Key Vault](../../event-grid/event-schema-key-vault.md)
+- Självstudie: [Rotering av hemligheter för en uppsättning autentiseringsuppgifter](./tutorial-rotation.md)
+- Översikt: [Övervaka Key Vault med Azure Event Grid](../general/event-grid-overview.md)
+- Gör så [här: Skapa din första funktion i Azure Portal](../../azure-functions/functions-get-started.md)
+- Gör så här: [Ta emot e-post när Key Vault en hemlighet ändras](../general/event-grid-logicapps.md)
+- Referens: [Azure Event Grid händelseschema för Azure Key Vault](../../event-grid/event-schema-key-vault.md)

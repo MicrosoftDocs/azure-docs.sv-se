@@ -5,30 +5,28 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 03/16/2021
+ms.date: 04/14/2021
 ms.author: banders
-ms.openlocfilehash: bd16bbbe33876a3c44b20c5d1756b83814f9b17d
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 3e8f50efd04364483c32ecb8ef5020bdd053e55b
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601958"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515489"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Byten och återbetalning för Azure-reservationer via självbetjäning
 
-Azure-reservationer ger flexibilitet för att tillgodose dina föränderliga behov. Du kan byta reservationer för en annan reservation av samma typ. Du kan till exempel returnera flera beräknings reservationer, inklusive Azure-dedikerad värd, Azure VMware-lösning och Azure Virtual Machines med varandra samtidigt. Reservations produkter är med andra ord utbytbara med varandra om de är samma typ av reservation. I ett annat exempel kan du utbyta flera typer av SQL-databas reservation, inklusive hanterade instanser och Elastisk pool med varandra.
+Azure-reservationer ger flexibilitet för att tillgodose dina föränderliga behov. Du kan byta reservationer mot en annan reservation av samma typ. Du kan till exempel returnera flera beräkningsreservationer, inklusive Azure Dedicated Host, Azure VMware Solution och Azure Virtual Machines med varandra på samma gång. Med andra ord är reservationsprodukter utbytbara med varandra om de är av samma typ av reservation. I ett annat exempel kan du byta ut flera typer av SQL-databasreservation, inklusive hanterade instanser och Elastisk pool med varandra.
 
-Du kan dock inte byta ut olika reservationer. Du kan till exempel inte byta Cosmos DB reservation för SQL Database.
+Du kan dock inte byta ut olika reservationer. Du kan till exempel inte byta en Cosmos DB reservation mot SQL Database.
 
-Du kan också byta ut en reservation för att köpa en annan reservation av en liknande typ i en annan region. Du kan till exempel byta ut en reservation i USA, västra 2, för en som är i Västeuropa.
+Du kan också byta en reservation för att köpa en annan reservation av en liknande typ i en annan region. Du kan till exempel byta en reservation som är i USA, västra 2 mot en som finns i Europa, västra.
 
-När du utbyter en reservation kan du ändra din period från ett år till tre år.
+När du byter en reservation kan du ändra perioden från ett år till tre år.
 
 Du kan också återbetala reservationer, men summan av alla avbrutna reservationsåtaganden i faktureringsomfånget (till exempel EA, Microsoft-kundavtal eller Microsoft-partneravtal) får inte överstiga 50 000 USD under en rullande period på 12 månader.
 
 Reserverad kapacitet för Azure Databricks, Azure VMware solution by CloudSimple-reservation, Azure Red Hat Open Shift-reservation, Red Hat-avtal och SUSE Linux-planer är inte berättigade till återbetalningar.
-
-Byte eller annullering av kapacitet via självbetjäning är inte tillgängligt för US Government-kunder med Enterprise-avtal. Andra typer av US Government-prenumerationer, inklusive Pay-As-You-Go (betala per användning) och CSP (molnlösningsleverantör) stöds.
 
 > [!NOTE]
 > - **Du måste ha ägaråtkomst till reservationsbeställningen för att byta eller återbetala en befintlig reservation.** Du kan [Lägga till eller ändra användare som kan hantera en reservation](./manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
@@ -47,22 +45,22 @@ Du kan byta din reservation i [Azure-portalen](https://portal.azure.com/#blade/M
 
 Om du vill få en reservation återbetald går du till **Reservationsinformation** och väljer **Återbetalning**.
 
-## <a name="exchange-multiple-reservations"></a>Exchange flera reservationer
+## <a name="exchange-multiple-reservations"></a>Byta flera reservationer
 
-Du kan returnera liknande typer av reservationer i en åtgärd.
+Du kan returnera liknande typer av reservationer i en enda åtgärd.
 
-När du utbyter reservationer måste den nya inköps valuta mängden vara större än bidrags beloppet. Om din nya inköps belopp är lägre än bidrags beloppet får du ett fel meddelande. Om du ser felet minskar du antalet som du vill returnera eller ökar beloppet för att köpa.
+När du byter reservation måste det nya inköpsvalutabeloppet vara större än återbetalningsbeloppet. Om ditt nya inköpsbelopp är mindre än återbetalningsbeloppet får du ett felmeddelande. Om du ser felet kan du minska antalet som du vill returnera eller öka inköpsbeloppet.
 
 1. Logga in på Azure-portalen och gå till **Reservationer**.
-1. I listan över reservationer markerar du kryss rutan för varje reservation som du vill byta ut.
-1. Välj **Exchange** längst upp på sidan.
-1. Om det behövs ändrar du antalet som ska returneras för varje reservation.
-1. Om du väljer automatiskt Fill-antal kan du välja att **återbetala alla** för att fylla i listan med den totala kvantitet som du äger för varje reservation eller **optimera för användning (7 dagar)** för att fylla i listan med en kvantitet som optimerar för användning baserat på den senaste sju dagars användningen. **Välj Använd**.
+1. I listan över reservationer markerar du rutan för varje reservation som du vill byta.
+1. Längst upp på sidan väljer du **Exchange**.
+1. Om det behövs ändrar du kvantiteten så att den returneras för varje reservation.
+1. Om du väljer returkvantiteten för automatisk ifyllning kan du välja Återbetala alla för att fylla i listan med den fullständiga kvantitet som du äger för varje reservation eller Optimera för användning **(7 dagar)** för att fylla listan med en kvantitet som optimerar för användning baserat på de senaste sju dagarnas användning.  **Välj Använd**.
 1. Längst ned på sidan väljer du **Nästa: Köp**.
-1. På fliken köp väljer du de tillgängliga produkter som du vill byta ut för. Du kan välja flera olika typer av produkter.
-1. I fönstret Välj den produkt som du vill köpa väljer du de produkter som du vill använda och väljer sedan **Lägg till i kundvagn** och väljer sedan **Stäng**.
-1. När du är färdig väljer du **Nästa: granska**.
-1. Granska dina reservationer för att returnera och nya reservationer att köpa och välj sedan **Bekräfta Exchange**.
+1. På fliken Köp väljer du de tillgängliga produkter som du vill byta mot. Du kan välja flera produkter av olika typer.
+1. I fönstret Välj den produkt som du vill köpa väljer du de produkter som du vill ha och väljer sedan Lägg till i **kundvagn** och sedan **Stäng**.
+1. När du är klar väljer **du Nästa: Granska**.
+1. Granska dina reservationer för att returnera och nya reservationer att köpa och välj **sedan Bekräfta byte.**
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Byta icke-Premium-lagring mot Premium-lagring
 
@@ -105,7 +103,7 @@ Azure har följande principer för att avbryta, byta och återbetala.
 - För närvarande utgår det ingen avgift för tidig uppsägnings, men en avgift på 12 % för tidig uppsägning för annulleringar kan bli aktuell längre fram.
 - Det totala annullerade åtagandet får inte överstiga 50 000 USD under en rullande period på 12 månader för en faktureringsprofil eller enskild registrering. För en treårig reservation på 100 USD per månad som återbetalas den 18:e månaden är det annullerade åtagandet 1 800 USD. Efter återbetalningen blir din nya tillgängliga gräns för återbetalning 48 200 USD. 365 dagar efter den här återbetalningen höjs gränsen på 48 200 USD med 1 800 USD och din nya pool blir då 50 000 USD. Eventuella andra reservationsannulleringar för samma faktureringsprofil eller EA-registrering dras från samma pool, och samma påfyllningslogik gäller för dem.
 - Azure behandlar inga återbetalningar som överskrider gränsen på 50 000 USD under en period på 12 månader för en faktureringsprofil eller EA-registrering.
-    - Åter betalningar som uppstår från ett utbyte räknas inte mot bidrags gränsen.
+    - Återbetalningar som är resultatet av ett byte räknas inte mot återbetalningsgränsen.
 - Återbetalningar beräknas baserat på det lägsta priset – antingen ditt inköpspris eller det aktuella priset för reservationen.
 - Endast reservationsbeställningsägare kan hantera en återbetalning. [Lär dig hur du lägger till eller ändrar användare som kan hantera en reservation](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 

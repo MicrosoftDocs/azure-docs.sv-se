@@ -12,9 +12,9 @@ items:
         href: create-catalog-portal.md
       - name: Skapa ett Purview-konto – Azure PowerShell
         href: create-catalog-powershell.md
-      - name: Skapa ett avdelningens kontroll-konto – .NET SDK
+      - name: Skapa ett Purview-konto – .NET SDK
         href: create-purview-dotnet.md
-      - name: Skapa ett avdelningens kontroll-konto – python
+      - name: Skapa ett Purview-konto – Python
         href: create-purview-python.md
   - name: Självstudier
     items:
@@ -81,9 +81,9 @@ items:
                 href: manage-data-sources.md
               - name: Översikt över anslutningsprogram för Purview
                 href: purview-connector-overview.md
-              - name: Azure flera källor
+              - name: Flera källor i Azure
                 href: register-scan-azure-multiple-sources.md
-              - name: Azure Synapse Analytics (arbets yta)
+              - name: Azure Synapse Analytics (arbetsyta)
                 href: register-scan-synapse-workspace.md
               - name: Azure Blob Storage
                 href: register-scan-azure-blob-storage-source.md
@@ -128,9 +128,9 @@ items:
             href: how-to-create-import-export-glossary.md
           - name: Hantera termmallar
             href: how-to-manage-term-templates.md
-      - name: Mass redigering
+      - name: Massredigering
         items:
-          - name: Massredigera till gångar för att tagga anteckningar och kontakter
+          - name: Massredigering av tillgångar för att tagga anteckningar och kontakter
             href: how-to-bulk-edit-assets.md
       - name: Klassificera
         items:
@@ -172,13 +172,21 @@ items:
             href: sensitivity-insights.md
           - name: Visa insikter för filnamnstillägg
             href: file-extension-insights.md
-      - name: Säkerhet & nätverk
+      - name: Security & Networking
         items:
-          - name: Hantera privata slut punkter
+          - name: Hantera privata slutpunkter
             href: catalog-private-link.md
   - name: Referens
     items:
       - name: Klassificeringar som stöds
         href: supported-classifications.md
-      - name: Distributions guide för ABAP Function
+      - name: Distributionsguide för ABAP-funktioner
         href: abap-functions-deployment-guide.md
+  - name: Resurser
+    items:
+      - name: Funktionsfeedback (User Voice)
+        href: 'https://feedback.azure.com/forums/932437-azure-purview'
+      - name: Priskalkylator
+        href: 'https://azure.microsoft.com/pricing/details/azure-purview/'
+      - name: Microsoft Q&A-forum
+        href: 'https://docs.microsoft.com/answers/topics/azure-purview.html'

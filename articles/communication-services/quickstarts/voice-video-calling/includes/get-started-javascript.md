@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: a93fe6c6203140bfed3771da8353ea7843b7694f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: bd9a607b46c87ca590bcefef310f822d6f23483c
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327276"
+ms.locfileid: "107386625"
 ---
 I den här snabbstarten lär du dig hur du startar ett anrop med hjälp av Azure Communication Services Anropa SDK för JavaScript.
 
@@ -164,7 +164,7 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 
 :::image type="content" source="../media/javascript/calling-javascript-app-2.png" alt-text="Skärmbild av det färdiga JavaScript-programmet.":::
 
-Du kan göra ett utgående VOIP-anrop genom att ange ett användar-ID i textfältet och klicka på **knappen Starta anrop.** När du anropar ansluts du till en ekorobot. Det här är perfekt för att komma igång `8:echo123` och verifiera att dina ljudenheter fungerar.
+Du kan göra ett utgående VOIP-anrop genom att ange en giltig användaråtkomsttoken och användar-ID i motsvarande textfält och klicka **på knappen Starta anrop.** När du anropar ansluts du till en ekorobot. Det här är perfekt för att komma igång `8:echo123` och verifiera att dina ljudenheter fungerar.
 
 ## <a name="sample-code"></a>Exempelkod
 

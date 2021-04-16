@@ -1,24 +1,26 @@
 ---
-title: 'Snabb start: skapa en ExpressRoute-krets med hjälp av en Azure Resource Manager-mall (ARM-mall)'
-description: Den här snabb starten visar hur du skapar en ExpressRoute-krets med hjälp av Azure Resource Manager mall (ARM-mall).
+title: 'Snabbstart: Skapa en ExpressRoute-krets med hjälp av Azure Resource Manager mall (ARM-mall)'
+description: Den här snabbstarten visar hur du skapar en ExpressRoute-krets med hjälp Azure Resource Manager mall (ARM-mall).
 services: expressroute
 author: duongau
-mnager: kumud
-ms.service: expressroute
-ms.topic: quickstart
-ms.custom: subject-armqs
-ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: 7521344a2bb6aae67724c8bfbb9131e2ff1e6b94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: kumud
+ms.date: 10/12/2020
+ms.topic: quickstart
+ms.service: expressroute
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 3dc1d5f5ec3dfb004468deb2bec80927c7ec189d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92789734"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529894"
 ---
-# <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Snabb start: skapa en ExpressRoute-krets med privat peering med en ARM-mall
+# <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Snabbstart: Skapa en ExpressRoute-krets med privat peering med hjälp av en ARM-mall
 
-I den här snabb starten beskrivs hur du använder en Azure Resource Manager mall (ARM-mall) för att skapa en ExpressRoute-krets med privat peering.
+Den här snabbstarten beskriver hur du använder en Azure Resource Manager mall (ARM-mall) för att skapa en ExpressRoute-krets med privat peering.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -34,24 +36,24 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](htt
 
 Mallen som används i den här snabbstarten kommer från [Azure-snabbstartsmallar](https://azure.microsoft.com/resources/templates/101-expressroute-private-peering-vnet).
 
-I den här snabb starten skapar du en ExpressRoute-krets med *Equinix* som tjänst leverantör. Kretsen använder en *Premium-SKU*, med bandbredd på *50 Mbit/s* och peering-platsen för *Washington DC*. Privat peering aktive ras med ett primärt och sekundärt undernät av *192.168.10.16/30* respektive *192.168.10.20/30* . Ett virtuellt nätverk kommer också att skapas tillsammans med en *HighPerformance ExpressRoute-Gateway*.
+I den här snabbstarten skapar du en ExpressRoute-krets *med Equinix* som tjänstleverantör. Kretsen använder en *Premium-SKU* med en bandbredd på *50* Mbit/s och peeringplatsen för *Washington DC*. Privat peering aktiveras med ett primärt och sekundärt undernät *på 192.168.10.16/30* respektive *192.168.10.20/30.* Ett virtuellt nätverk skapas också tillsammans med en *HighPerformance ExpressRoute-gateway.*
 
 :::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json":::
 
 Flera Azure-resurser har definierats i mallen:
 
-* [**Microsoft. Network/expressRouteCircuits**](/azure/templates/microsoft.network/expressRouteCircuits)
-* [**Microsoft. Network/expressRouteCircuits/peering**](/azure/templates/microsoft.network/expressRouteCircuits/peerings) (används för att aktivera privat peering på kretsen)
-* [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networkSecurityGroups) (nätverks säkerhets gruppen tillämpas på under näten i det virtuella nätverket)
-* [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks)
-* [**Microsoft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicIPAddresses) (offentlig IP används av ExpressRoute-gatewayen)
-* [**Microsoft. Network/virtualNetworkGateways**](/azure/templates/microsoft.network/virtualNetworkGateways) (ExpressRoute Gateway används för att länka VNet till kretsen)
+* [**Microsoft.Network/expressRouteCircuits**](/azure/templates/microsoft.network/expressRouteCircuits)
+* [**Microsoft.Network/expressRouteCircuits/peerings**](/azure/templates/microsoft.network/expressRouteCircuits/peerings) (används för att aktiverat privat peering på kretsen)
+* [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networkSecurityGroups) (nätverkssäkerhetsgruppen tillämpas på undernäten i det virtuella nätverket)
+* [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks)
+* [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicIPAddresses) (offentlig IP används av ExpressRoute-gatewayen)
+* [**Microsoft.Network/virtualNetworkGateways**](/azure/templates/microsoft.network/virtualNetworkGateways) (ExpressRoute-gateway används för att länka VNet till kretsen)
 
-Du hittar fler mallar som är relaterade till ExpressRoute i [Azure snabb starts mallar](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
+Om du vill hitta fler mallar som är relaterade till ExpressRoute kan du läsa [Azure-snabbstartsmallar.](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular)
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
-1. Välj **prova** från följande kodblock för att öppna Azure Cloud Shell och följ sedan anvisningarna för att logga in på Azure.
+1. Välj **Prova från** följande kodblock för att öppna Azure Cloud Shell och följ sedan anvisningarna för att logga in på Azure.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -66,46 +68,46 @@ Du hittar fler mallar som är relaterade till ExpressRoute i [Azure snabb starts
     Read-Host -Prompt "Press [ENTER] to continue ..."
     ```
 
-    Vänta tills du ser prompten från-konsolen.
+    Vänta tills du ser prompten från konsolen.
 
-1. Kopiera PowerShell-skriptet genom att välja **Kopiera** från föregående kodblock.
+1. Välj **Kopiera** från föregående kodblock för att kopiera PowerShell-skriptet.
 
-1. Högerklicka på fönstret Shell-konsol och välj sedan **Klistra in**.
+1. Högerklicka på gränssnittskonsolfönstret och välj klistra **in**.
 
 1. Ange värdena.
 
-    Resurs gruppens namn är projekt namnet med **RG** tillagt.
+    Resursgruppens namn är projektnamnet med **rg** tillagt.
 
-    Det tar cirka 20 minuter att distribuera mallen. När det är slutfört ser utdata ut ungefär så här:
+    Det tar cirka 20 minuter att distribuera mallen. När du är klar ser utdata ut ungefär så här:
 
-    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-powershell-output.png" alt-text="Utdata för PowerShell-distribution för ExpressRoute Resource Manager-mall":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-powershell-output.png" alt-text="Utdata för ExpressRoute Resource Manager mall för PowerShell-distribution":::
 
-Azure PowerShell används för att distribuera mallen. Förutom Azure PowerShell kan du också använda Azure Portal, Azure CLI och REST API. Mer information om andra distributions metoder finns i [distribuera mallar](../azure-resource-manager/templates/deploy-portal.md).
+Azure PowerShell används för att distribuera mallen. Förutom att Azure PowerShell kan du även använda Azure Portal, Azure CLI och REST API. Mer information om andra distributionsmetoder finns i [Distribuera mallar.](../azure-resource-manager/templates/deploy-portal.md)
 
 ## <a name="validate-the-deployment"></a>Verifiera distributionen
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. Välj **resurs grupper** i det vänstra fönstret.
+1. Välj **Resursgrupper** i det vänstra fönstret.
 
-1. Välj den resurs grupp som du skapade i föregående avsnitt. Standard resurs grupps namnet är projekt namnet med **RG** tillagt.
+1. Välj den resursgrupp som du skapade i föregående avsnitt. Standardresursgruppens namn är projektnamnet med **rg** tillagt.
 
-1. Resurs gruppen måste innehålla följande resurser som visas här:
+1. Resursgruppen ska innehålla följande resurser som visas här:
 
-     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="Resurs grupp för ExpressRoute-distribution":::
+     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="Resursgrupp för ExpressRoute-distribution":::
 
-1. Välj ExpressRoute-kretsen **er-ck01** för att kontrol lera att krets statusen **är aktive rad**, providerns status är **inte etablerad** och privat peering har statusen **etablerad**.
+1. Välj  **ExpressRoute-kretsen er-ck01** för att kontrollera att kretsstatusen är **Aktiverad,** providerstatus är Inte etablerat och privat peering har **statusen Etablerat.**
 
-    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute distributions krets":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="Distributionskrets för ExpressRoute":::
 
 > [!NOTE]
-> Du måste anropa providern för att slutföra etablerings processen innan du kan länka det virtuella nätverket till kretsen.
+> Du måste anropa providern för att slutföra etableringsprocessen innan du kan länka det virtuella nätverket till kretsen.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När du inte längre behöver de resurser som du skapade med ExpressRoute-kretsen tar du bort resurs gruppen. Detta tar bort ExpressRoute-kretsen och alla relaterade resurser.
+När du inte längre behöver de resurser som du skapade med ExpressRoute-kretsen tar du bort resursgruppen. Detta tar bort ExpressRoute-kretsen och alla relaterade resurser.
 
-Anropa cmdleten om du vill ta bort resurs gruppen `Remove-AzResourceGroup` :
+Om du vill ta bort resursgruppen anropar du `Remove-AzResourceGroup` cmdleten :
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name <your resource group name>
@@ -113,13 +115,13 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du en:
+I den här snabbstarten skapade du en:
 
 * ExpressRoute-krets
 * Virtual Network
 * VPN Gateway
 * Offentlig IP-adress
-* nätverks säkerhets grupper
+* nätverkssäkerhetsgrupper
 
 Om du vill lära dig hur du länkar ett virtuellt nätverk till en krets fortsätter du till ExpressRoute-självstudierna.
 

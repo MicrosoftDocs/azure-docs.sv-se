@@ -1,6 +1,6 @@
 ---
 title: Vad är Dedikerad HSM? – Dedikerad HSM i Azure| Microsoft Docs
-description: Lär dig hur Azure Dedicated HSM är en Azure-tjänst som tillhandahåller lagring av kryptografiska nycklar i Azure.
+description: Lär dig Azure Dedicated HSM är en Azure-tjänst som tillhandahåller lagring av kryptografiska nycklar i Azure.
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,26 +13,26 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 0e07839c3c5ce542335eeadc92e6a3c98fe87856
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 418c8f0844bf2336ce0d4a681071f237d81877ca
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606988"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505725"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Vad är Dedikerad HSM i Azure?
 
 Dedikerad HSM i Azure är en Azure-tjänst som tillhandahåller lagring av kryptografiska nycklar i Azure. Dedikerad HSM uppfyller de strängaste säkerhetskraven. Det är den perfekta lösningen för kunder som behöver FIPS 140-2 Level 3-validerade enheter och fullständig och exklusiv kontroll över HSM-apparaten. 
 
- HSM enheter distribueras globalt över flera Azure-regioner. De kan enkelt etableras som ett par av enheter och konfigureras för hög tillgänglighet. HSM-enheter kan även etableras över regioner för att säkerställa redundans på regionsnivå. Microsoft levererar en dedikerad HSM-tjänst genom att använda [Thales-A790 för Luna 7 HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) -enheter. Den här enheten erbjuder prestanda och alternativ för kryptografisk integrering på högsta nivå. 
+ HSM enheter distribueras globalt över flera Azure-regioner. De kan enkelt etableras som ett par av enheter och konfigureras för hög tillgänglighet. HSM-enheter kan även etableras över regioner för att säkerställa redundans på regionsnivå. Microsoft levererar tjänsten Dedicated HSM med hjälp av [A790-apparaterna för Thales Dock 7 HSM-modell.](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) Den här enheten erbjuder prestanda och alternativ för kryptografisk integrering på högsta nivå. 
 
-När de är etablerade så är HSM-enheter direkt anslutna till en kunds virtuella nätverk. De kan även användas av lokala program och hanteringsverktyg när du konfigurerar en VPN-anslutning från punkt-till-plats eller plats-till-plats. Kunderna får program varan och dokumentationen för att konfigurera och hantera HSM-enheter från [Thales kund support Portal](https://supportportal.thalesgroup.com/csm).
+När de är etablerade så är HSM-enheter direkt anslutna till en kunds virtuella nätverk. De kan även användas av lokala program och hanteringsverktyg när du konfigurerar en VPN-anslutning från punkt-till-plats eller plats-till-plats. Kunder får programvara och dokumentation för att konfigurera och hantera HSM-enheter från [Thales kundsupportportal.](https://supportportal.thalesgroup.com/csm)
 
 ## <a name="why-use-azure-dedicated-hsm"></a>Varför bör du använda Azure Dedikerad HSM?
 
 ### <a name="fips-140-2-level-3-compliance"></a>FIPS 140-2 Level-3-efterlevnad
 
-Många organisationer har stränga bransch bestämmelser som styr att de kryptografiska nycklarna måste lagras i [FIPS 140-2-nivå 3-](https://csrc.nist.gov/publications/detail/fips/140/2/final) verifierade HSM: er. Azures dedikerad HSM och ett nytt erbjudande för enskild klient, [Azure Key Vault hanterad HSM (för hands version)](https://docs.microsoft.com/azure/key-vault/managed-hsm), hjälper kunder från olika bransch segment, till exempel ekonomi tjänster, myndigheter och andra som uppfyller FIPS 140-2-nivå 3-krav. Även om Microsofts [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) tjänst för flera innehavare använder för närvarande FIPS 140-2 nivå 2-verifierade HSM: er. 
+Många organisationer har stränga branschregler som kräver att kryptografiska nycklar måste lagras i [FIPS 140-2 Level-3-verifierade](https://csrc.nist.gov/publications/detail/fips/140/2/final) HSM:er. Azure Dedicated HSM och ett nytt erbjudande för en enskild [klientorganisation, Azure Key Vault Managed HSM,](https://docs.microsoft.com/azure/key-vault/managed-hsm)hjälper kunder från olika branschsegment, till exempel finansbranschen, myndigheter och andra att uppfylla FIPS 140-2 Level-3-kraven. Microsofts tjänst för flera [klientorganisation Azure Key Vault sklienter använder](https://docs.microsoft.com/azure/key-vault) för närvarande FIPS 140-2 Level-2-verifierade HSM:er. 
 
 ### <a name="single-tenant-devices"></a>Enheter för en enda klient
 
@@ -48,7 +48,7 @@ Många kunder behöver fullständig administrativ kontroll och enskild åtkomst 
 
 ### <a name="high-performance"></a>Höga prestanda
 
-Thales-enheten valdes för den här tjänsten av olika orsaker. Den har ett brett stöd för krypteringsalgoritmer, en mängd olika operativsystem och ett brett API-stöd. Den specifika modell som distribueras erbjuder utmärkta prestanda med 10 000 åtgärder per sekund för RSA-2048. Den har stöd för 10 partitioner som kan användas för unika programinstanser. Det här är en enhet med låg svarstid, hög kapacitet och högt dataflöde.
+Thales-enheten har valts för den här tjänsten av flera olika orsaker. Den har ett brett stöd för krypteringsalgoritmer, en mängd olika operativsystem och ett brett API-stöd. Den specifika modell som distribueras erbjuder utmärkta prestanda med 10 000 åtgärder per sekund för RSA-2048. Den har stöd för 10 partitioner som kan användas för unika programinstanser. Det här är en enhet med låg svarstid, hög kapacitet och högt dataflöde.
 
 ### <a name="unique-cloud-based-offering"></a>Unikt molnbaserat erbjudande
 
@@ -68,11 +68,11 @@ Azure dedikerad HSM lämpar sig bäst för ”lift and shift”-scenarier som kr
 
 ### <a name="not-a-fit"></a>Passar inte
 
-Azure Dedicated HSM passar inte bra för följande typer av scenario: Microsofts moln tjänster som stöder kryptering med Kundhanterade nycklar (till exempel Azure Information Protection, Azure Disk Encryption, Azure Data Lake Store, Azure Storage, Azure SQL Database och kund nyckel för Office 365) som inte är integrerade med Azure Dedicated HSM.
+Azure Dedicated HSM passar inte för följande typ av scenario: Microsoft-molntjänster som stöder kryptering med kund hanterade nycklar (till exempel Azure Information Protection, Azure Disk Encryption, Azure Data Lake Store, Azure Storage, Azure SQL Database och kundnyckel för Office 365) som inte är integrerade med Azure Dedicated HSM.
 
 ### <a name="it-depends"></a>Det beror på
 
-Om Azure dedikerad HSM fungerar för dig beror på en potentiellt komplex blandning av krav och kompromisser som du kan eller inte kan göra. Ett exempel är FIPS 140-2 Level-3-kravet. Detta krav är gemensamt och Azures dedikerad HSM och en ny klient erbjudande [Azure Key Vault hanterad HSM (för hands version)](https://docs.microsoft.com/azure/key-vault/managed-hsm) är för närvarande de enda alternativen för att uppfylla den. Om dessa krav inte är relevanta är det ofta ett val mellan Azure Key Vault och Azures dedikerad HSM. Utvärdera dina krav innan du fattar ett beslut.
+Om Azure dedikerad HSM fungerar för dig beror på en potentiellt komplex blandning av krav och kompromisser som du kan eller inte kan göra. Ett exempel är FIPS 140-2 Level-3-kravet. Det här kravet är vanligt, Azure Dedicated HSM och ett nytt erbjudande för en enskild [klientorganisation, Azure Key Vault Managed HSM](https://docs.microsoft.com/azure/key-vault/managed-hsm) är för närvarande de enda alternativen för att uppfylla det. Om dessa krav inte är relevanta är det ofta ett val mellan Azure Key Vault och Azure Dedicated HSM. Utvärdera dina krav innan du fattar ett beslut.
 
 Situationer där du måste väga dina alternativ är: 
 
@@ -85,7 +85,7 @@ Situationer där du måste väga dina alternativ är:
 
 Det här är en höggradigt specialiserad tjänst. Därför rekommenderar vi att du förstår nyckelbegreppen i den här dokumentationen, inklusive prissättning, support och servicenivåavtal. 
 
-[Thales-integrerings guiderna](https://cpl.thalesgroup.com/partners/overview) hjälper dig att under lätta etableringen av HSM: er i en befintlig virtuell nätverks miljö. Det finns också instruktions guider som hjälper dig att avgöra hur du konfigurerar distributions arkitekturen.
+Thales [integrationsguider](https://cpl.thalesgroup.com/partners/overview) hjälper dig att underlätta etableringen av HSM:er i en befintlig virtuell nätverksmiljö. Det finns också anvisningar som hjälper dig att avgöra hur du ställer in din distributionsarkitektur.
 
 * [Hög tillgänglighet](high-availability.md)
 * [Fysisk säkerhet](physical-security.md)

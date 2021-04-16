@@ -1,6 +1,6 @@
 ---
-title: Autentisering med eng ång slö sen ord för B2B-gäst användare – Azure AD
-description: Använda email eng ång slö sen ord för att autentisera B2B-gäst användare utan att behöva en Microsoft-konto.
+title: Autentisering med ett lösenord för B2B-gästanvändare – Azure AD
+description: Så här använder du ett e-postanvändarkod för att autentisera B2B-gästanvändare utan att behöva Microsoft-konto.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,122 +12,122 @@ manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30f22282b00a7ead2e19805f32d78338126e8087
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 3b4089559b341dd268928b1f150b6fc173869ead
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552758"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529919"
 ---
-# <a name="email-one-time-passcode-authentication"></a>E-postautentisering med eng ång slö sen ord
+# <a name="email-one-time-passcode-authentication"></a>Autentisering med e-post med ett lösenord
 
-Den här artikeln beskriver hur du aktiverar autentisering med eng ång slö sen ord för B2B-gäst användare. Med funktionen för eng ång slö sen ord autentiseras B2B-gäst användare när de inte kan autentiseras via andra sätt som Azure AD, en Microsoft-konto (MSA) eller Google Federation. Med autentisering med eng ång slö sen ord behöver du inte skapa en Microsoft-konto. När gäst användaren löser in en inbjudan eller får åtkomst till en delad resurs, kan de begära en tillfällig kod som skickas till deras e-postadress. Sedan anger de den här koden för att fortsätta logga in.
+I den här artikeln beskrivs hur du aktiverar autentisering med e-postkoder för B2B-gästanvändare. Funktionen för lösenord för e-post autentiserar B2B-gästanvändare när de inte kan autentiseras via andra metoder som Azure AD, en Microsoft-konto (MSA) eller Google-federation. Med autentisering med ett lösenord behöver du inte skapa en Microsoft-konto. När gästanvändaren löser in en inbjudan eller får åtkomst till en delad resurs kan han eller hon begära en tillfällig kod som skickas till deras e-postadress. Sedan anger de den här koden för att fortsätta logga in.
 
-![Översikts diagram över e-post med eng ång slö sen ord](media/one-time-passcode/email-otp.png)
+![Översiktsdiagram över e-post med lösenord vid en tidpunkt](media/one-time-passcode/email-otp.png)
 
 > [!IMPORTANT]
-> - Från och med 1 **oktober 2021** aktive ras funktionen för eng ång slö sen ord för alla befintliga klienter och aktive ras som standard för nya klienter. Om du inte vill att den här funktionen ska aktive ras automatiskt kan du inaktivera den. Se [inaktivera e-post med eng ång slö sen ord](#disable-email-one-time-passcode) nedan.
-> - E-postinställningar för eng ång slö sen ord har flyttats i Azure Portal från **externa samarbets inställningar** till **alla identitets leverantörer**.
+> - **Från oktober 2021** aktiveras funktionen för e-postkoder en gång för alla befintliga klienter och aktiveras som standard för nya klienter. Om du inte vill tillåta att den här funktionen aktiveras automatiskt kan du inaktivera den. Se [Inaktivera lösenord för e-post en gång](#disable-email-one-time-passcode) nedan.
+> - Inställningarna för lösenord för e-post har flyttats i Azure Portal inställningar **för externt samarbete** till Alla **identitetsproviders.**
 
 > [!NOTE]
-> Användare av eng ång slö sen ord måste logga in med en länk som innehåller klient kontexten (till exempel `https://myapps.microsoft.com/?tenantid=<tenant id>` eller `https://portal.azure.com/<tenant id>` , eller, om det är en verifierad domän `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` ). Direkt länkar till program och resurser fungerar även så länge de omfattar klient kontexten. Gäst användare kan för närvarande inte logga in med slut punkter som inte har någon klient kontext. Om du till exempel `https://myapps.microsoft.com` använder `https://portal.azure.com` resulterar det i ett fel.
+> Användare av ett lösenord för en gång måste logga in med en länk som innehåller klientkontexten (till exempel eller , eller i fallet med en `https://myapps.microsoft.com/?tenantid=<tenant id>` `https://portal.azure.com/<tenant id>` verifierad domän, `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` ). Direktlänkar till program och resurser fungerar också så länge de omfattar klientkontexten. Gästanvändare kan för närvarande inte logga in med slutpunkter som inte har någon klientkontext. Om du till `https://myapps.microsoft.com` exempel använder resulterar det i ett `https://portal.azure.com` fel.
 
-## <a name="user-experience-for-one-time-passcode-guest-users"></a>Användar upplevelse för gäst användare med eng ång slö sen ord
+## <a name="user-experience-for-one-time-passcode-guest-users"></a>Användarupplevelse för gästanvändare med ett lösenord
 
-När e-postfunktionen för eng ång slö sen ord är aktive rad kommer nyligen inbjudna användare [som uppfyller vissa villkor](#when-does-a-guest-user-get-a-one-time-passcode) att använda autentisering med eng ång slö sen ord. Gäst användare som har löst en inbjudan innan e-post med eng ång slö sen ord har Aktiver ATS kommer att fortsätta använda samma autentiseringsmetod.
+När funktionen för lösenord för e-post är [](#when-does-a-guest-user-get-a-one-time-passcode) aktiverad använder nyligen inbjudna användare som uppfyller vissa villkor autentisering med ett lösenord. Gästanvändare som löste in en inbjudan innan e-postlösenordet aktiverades fortsätter att använda samma autentiseringsmetod.
 
-Med autentisering med eng ång slö sen ord kan gäst användaren lösa in din inbjudan genom att klicka på en direkt länk eller via e-postinbjudan. I båda fallen indikerar ett meddelande i webbläsaren att en kod skickas till gäst användarens e-postadress. Gäst användaren väljer **Skicka kod**:
+Med autentisering med ett lösenord kan gästanvändaren lösa in din inbjudan genom att klicka på en direktlänk eller genom att använda e-postinbjudan. I båda fallen anger ett meddelande i webbläsaren att en kod kommer att skickas till gästanvändarens e-postadress. Gästanvändaren väljer **Skicka kod:**
 
-   ![Skärm bild som visar knappen Skicka kod](media/one-time-passcode/otp-send-code.png)
+   ![Skärmbild som visar knappen Skicka kod](media/one-time-passcode/otp-send-code.png)
 
-Ett lösen ord skickas till användarens e-postadress. Användaren hämtar lösen ordet från e-postmeddelandet och anger det i webbläsarfönstret:
+Ett lösenord skickas till användarens e-postadress. Användaren hämtar lösenordet från e-postmeddelandet och anger det i webbläsarfönstret:
 
-   ![Skärm bild som visar sidan Ange tecken](media/one-time-passcode/otp-enter-code.png)
+   ![Skärmbild som visar sidan Ange kod](media/one-time-passcode/otp-enter-code.png)
 
-Gäst användaren är nu autentiserad och kan se den delade resursen eller fortsätta att logga in.
+Gästanvändaren autentiseras nu och kan se den delade resursen eller fortsätta att logga in.
 
 > [!NOTE]
-> Lösen ord för eng ång slö sen ord är giltiga i 30 minuter. Efter 30 minuter är det angivna eng ång slö sen ord inte längre giltigt och användaren måste begära en ny. Användarsessioner upphör att gälla efter 24 timmar. Efter det tar gäst användaren emot ett nytt lösen ord när de får åtkomst till resursen. Sessionen upphör att gälla ger ytterligare säkerhet, särskilt när en gäst användare lämnar företaget eller inte längre behöver åtkomst.
+> Lösenordet för en gång är giltigt i 30 minuter. Efter 30 minuter är det specifika lösenordet inte längre giltigt och användaren måste begära ett nytt lösenord. Användarsessioner upphör att gälla efter 24 timmar. Efter det får gästanvändaren ett nytt lösenord när de får åtkomst till resursen. Sessionsförfallotid ger ökad säkerhet, särskilt när en gästanvändare lämnar företaget eller inte längre behöver åtkomst.
 
-## <a name="when-does-a-guest-user-get-a-one-time-passcode"></a>När får en gäst användare en eng ång slö sen ord?
+## <a name="when-does-a-guest-user-get-a-one-time-passcode"></a>När får en gästanvändare ett enda lösenord?
 
-När en gäst användare löser in en inbjudan eller använder en länk till en resurs som har delats med dem får de ett eng ång slö sen ord om:
+När en gästanvändare löser in en inbjudan eller använder en länk till en resurs som har delats med dem får de ett lösenord en gång om:
 
 - De har inget Azure AD-konto
-- De har inte någon Microsoft-konto
-- Den bjudande klienten har inte konfigurerat Google Federation för @gmail.com och @googlemail.com användare
+- De har ingen Microsoft-konto
+- Den inbjudande klientorganisationen konfigurerade inte Google-federation för @gmail.com - och @googlemail.com -användare
 
-Vid tidpunkten för inbjudan finns det ingen indikation på att användaren som du bjuder in ska använda autentisering med eng ång slö sen ord. Men när gäst användaren loggar in blir autentiseringen med eng ång slö sen ord reserv metoden om inga andra autentiseringsmetoder kan användas.
+Vid tidpunkten för inbjudan finns det ingen indikation på att användaren som du bjuder in använder autentisering med ett lösenord. Men när gästanvändaren loggar in är autentisering med ett lösenord reservmetoden om inga andra autentiseringsmetoder kan användas.
 
-Du kan se om en gäst användare autentiseras med eng ång slö sen ord genom att visa **käll** egenskapen i användarens information. Gå till **Azure Active Directory**  >  **användare** i Azure Portal och välj sedan användaren för att öppna informations sidan.
+Du kan se om en gästanvändare autentiseras med ett enda lösenord genom att visa egenskapen **Källa** i användarens information. I Azure Portal du till **Azure Active Directory**  >  **användare** och väljer sedan användaren för att öppna informationssidan.
 
-![Skärm bild som visar en eng ång slö sen ord med käll värde för eng ång slö sen ord](media/one-time-passcode/guest-user-properties.png)
+![Skärmbild som visar en engångslösenordsanvändare med källvärdet OTP](media/one-time-passcode/guest-user-properties.png)
 
 > [!NOTE]
-> När en användare löser ett eng ång slö sen ord och senare hämtar ett MSA, ett Azure AD-konto eller ett annat federerat konto, fortsätter de att autentiseras med ett eng ång slö sen ord. Om du vill uppdatera användarens autentiseringsmetod kan du [återställa deras inlösnings status](reset-redemption-status.md).
+> När en användare löser in ett lösenord en gång och senare får ett MSA-, Azure AD-konto eller ett annat federerat konto fortsätter autentiseringen att ske med ett enda lösenord. Om du vill uppdatera användarens autentiseringsmetod kan du återställa [inlösningsstatusen](reset-redemption-status.md).
 
 ### <a name="example&quot;></a>Exempel
 
-Gäst användare teri@gmail.com bjuds in till Fabrikam, som inte har konfigurerat Google Federation. Teri har inte någon Microsoft-konto. De får ett eng ång slö sen ord för autentisering.
+teri@gmail.comGästanvändaren bjuds in till Fabrikam, som inte har Google-federation konfigurerad. Teri har ingen Microsoft-konto. De får ett enda lösenord för autentisering.
 
-## <a name=&quot;disable-email-one-time-passcode&quot;></a>Inaktivera e-post med eng ång slö sen ord
+## <a name=&quot;disable-email-one-time-passcode&quot;></a>Inaktivera lösenord för e-post en gång
 
-Från och med 1 oktober 2021 aktive ras funktionen för eng ång slö sen ord för alla befintliga klienter och aktive ras som standard för nya klienter. Vid detta tillfälle kommer Microsoft inte längre att stödja inlösen av inbjudningar genom att skapa ohanterade (&quot;virus&quot; eller &quot;just-in-Time") Azure AD-konton och-klienter för B2B-samarbets scenarier. Vi aktiverar e-postfunktionen för eng ång slö sen ord eftersom den ger en sömlös reserv metod för gäst användare. Men du kan inaktivera den här funktionen om du väljer att inte använda den.
+Från oktober 2021 aktiveras funktionen för e-postkoder en gång för alla befintliga klienter och aktiveras som standard för nya klienter. Vid den tidpunkten kommer Microsoft inte längre att stödja inlösning av inbjudningar genom att skapa ohanterade (&quot;virala&quot; eller &quot;just-in-time") Azure AD-konton och -klienter för B2B-samarbetsscenarier. Vi aktiverar funktionen för e-postlösenord vid ett tillfälle eftersom den ger en sömlös reservautentiseringsmetod för dina gästanvändare. Du kan dock välja att inaktivera den här funktionen om du väljer att inte använda den.
 
 > [!NOTE]
 >
-> Om e-postfunktionen för eng ång slö sen ord har Aktiver ATS i din klient och du stänger av den, kommer alla gäst användare som har löst ett eng ång slö sen ord inte att kunna logga in. Du kan [återställa deras inlösnings status](reset-redemption-status.md) så att de kan logga in igen med en annan autentiseringsmetod.
+> Om funktionen för e-postlösenord har aktiverats i din klientorganisation och du inaktiverar den, kommer gästanvändare som har löst in ett lösenord för en gång inte att kunna logga in. Du kan [återställa deras inlösningsstatus](reset-redemption-status.md) så att de kan logga in igen med en annan autentiseringsmetod.
 
-### <a name="to-disable-the-email-one-time-passcode-feature"></a>Så här inaktiverar du e-postfunktionen för eng ång slö sen ord
+### <a name="to-disable-the-email-one-time-passcode-feature"></a>Så här inaktiverar du funktionen för e-postkoder en gång
 
-1. Logga in på [Azure Portal](https://portal.azure.com/) som global administratör för Azure AD.
+1. Logga in på [Azure Portal](https://portal.azure.com/) azure AD global administratör.
 
-2. I navigerings fönstret väljer du **Azure Active Directory**.
+2. I navigeringsfönstret väljer du **Azure Active Directory**.
 
-3. Välj **externa identiteter**  >  **alla identitets leverantörer**.
+3. Välj **External Identities Alla**  >  **identitetsproviders.**
 
-4. Välj **e-post med eng ång slö sen ord** och välj sedan **inaktivera e-post med eng ång slö sen ord för gäster**.
+4. Välj **E-post för ett lösenord och** välj sedan Inaktivera **e-post för gäster.**
 
    > [!NOTE]
-   > E-postinställningar för eng ång slö sen ord har flyttats i Azure Portal från **externa samarbets inställningar** till **alla identitets leverantörer**.
-   > Om du ser en växling i stället för e-postalternativ med eng ång slö sen ord innebär detta att du tidigare har aktiverat, inaktiverat eller valt att förhandsgranska funktionen. Välj **Nej** om du vill inaktivera funktionen.
+   > Inställningarna för ett lösenord för e-post har flyttats i Azure Portal inställningar **för externt samarbete** till Alla **identitetsproviders.**
+   > Om du ser en växlingsknapp i stället för alternativen för lösenord för e-post en gång innebär det att du tidigare har aktiverat, inaktiverat eller valt att använda förhandsversionen av funktionen. Välj **Nej** för att inaktivera funktionen.
    >
-   >![Växla e-post med eng ång slö sen ord](media/one-time-passcode/enable-email-otp-disabled.png)
+   >![Växlingsknapp för e-post för lösenord har inaktiverats](media/one-time-passcode/enable-email-otp-disabled.png)
 
 5. Välj **Spara**.
 
-## <a name="note-for-public-preview-customers"></a>Obs! för kunder med offentlig för hands version
+## <a name="note-for-public-preview-customers"></a>Obs! För kunder med offentlig förhandsversion
 
-Om du tidigare har valt att använda e-postlösenordet med eng ång slö sen ord, är datumet för automatisk funktion i oktober 2021 för automatisk funktion inte tillämpligt, så dina relaterade affärs processer påverkas inte. Dessutom visas inte alternativet för att automatiskt aktivera e-postlösenord med **eng ång slö sen ord för gäster som börjar i oktober 2021**, under e-postlösenorden **eng ång slö sen ord för gäster** i Azure Portal. I stället visas följande **Ja** eller **ingen** växling:
+Om du tidigare har valt att använda e-postmeddelandets offentliga förhandsversion gäller inte datumet för oktober 2021 för automatisk funktionsaktivering för dig, så dina relaterade affärsprocesser påverkas inte. I Azure Portal visas inte alternativet Att automatiskt aktivera lösenord för e-post för gäster från och med oktober **2021** under egenskaperna **E-post** för gäster. I stället visas följande **ja- eller** **nej-växlingsknapp:**
 
-![E-post med eng ång slö sen ord](media/one-time-passcode/enable-email-otp-opted-in.png)
+![Avanmält lösenord via e-post](media/one-time-passcode/enable-email-otp-opted-in.png)
 
-Men om du hellre vill inaktivera funktionen och tillåta att den aktive ras automatiskt i oktober 2021, kan du återgå till standardinställningarna med hjälp av [resurs typen konfiguration av Microsoft Graph-API email Authentication](/graph/api/resources/emailauthenticationmethodconfiguration). När du har återställt standardinställningarna kommer följande alternativ att vara tillgängliga under **email eng ång slö sen ord för gäster**:
+Men om du föredrar att avanmäla dig från funktionen och tillåta att den aktiveras automatiskt i oktober 2021 [](/graph/api/resources/emailauthenticationmethodconfiguration)kan du återgå till standardinställningarna med hjälp av resurstypen för konfigurationsresursen för Microsoft Graph API-e-postautentiseringsmetoden. När du har återställt till standardinställningarna är följande alternativ tillgängliga under **E-post för** gäster vid ett tillfälle:
 
-![Aktivera e-post för eng ång slö sen ord](media/one-time-passcode/email-otp-options.png)
+![Aktivera ett lösenord för e-post som har avanmälts](media/one-time-passcode/email-otp-options.png)
 
-- **Aktivera e-post med eng ång slö sen ord för gäster som börjar i oktober 2021**. Objekt Om e-postfunktionen för eng ång slö sen ord inte redan är aktive rad för din klient, aktive ras den automatiskt första oktober 2021. Ingen ytterligare åtgärd krävs om du vill att funktionen ska vara aktive rad vid den tiden. Om du redan har aktiverat eller inaktiverat funktionen kommer det här alternativet att vara otillgängligt.
+- **Aktivera automatiskt e-post med ett lösenord för gäster från och med oktober 2021.** (Standard) Om funktionen för ett lösenord för e-post inte redan är aktiverad för din klientorganisation aktiveras den automatiskt från och med oktober 2021. Ingen ytterligare åtgärd krävs om du vill att funktionen ska aktiveras vid den tidpunkten. Om du redan har aktiverat eller inaktiverat funktionen är det här alternativet inte tillgängligt.
 
-- **Aktivera e-post med eng ång slö sen ord för gäster gällande nu**. Aktiverar funktionen email eng ång slö sen ord för din klient.
+- **Aktivera lösenord för e-post en gång för gäster som gäller nu**. Aktiverar lösenordsfunktionen för e-post en gång för din klientorganisation.
 
-- **Inaktivera e-post med eng ång slö sen ord för gäster**. Inaktiverar funktionen för eng ång slö sen ord för din klient och förhindrar att funktionen aktive ras i oktober 2021.
+- **Inaktivera e-post med ett lösenord för gäster**. Inaktiverar funktionen för e-postkoder en gång för din klientorganisation och förhindrar att funktionen kan aktivera i oktober 2021.
 
-## <a name="note-for-azure-us-government-customers"></a>Observera för Azure-kunder med amerikanska myndigheter
+## <a name="note-for-azure-us-government-customers"></a>Anmärkning för Azure US Government-kunder
 
-Funktionen email eng ång slö sen ord är inaktive rad som standard i Azure-molnet för amerikanska myndigheter.  
+Funktionen för lösenord för e-post är inaktiverad som standard i Azure US Government-molnet. Dina partner kan inte logga in om inte den här funktionen är aktiverad. Till skillnad från det offentliga Azure-molnet stöder inte Azure US Government-molnet inlösning av inbjudningar med självbetjäning Azure Active Directory-konton.
 
- ![E-post med eng ång slö sen ord](media/one-time-passcode/enable-email-otp-disabled.png)
+ ![E-post för ett lösenord inaktiverat](media/one-time-passcode/enable-email-otp-disabled.png)
 
-Aktivera funktionen för eng ång slö sen ord i Azure-molnet för amerikanska myndigheter:
+Så här aktiverar du funktionen för e-postkoder en gång i Azure US Government-molnet:
 
-1. Logga in på [Azure Portal](https://portal.azure.com) som global administratör för Azure AD.
-2. I navigerings fönstret väljer du **Azure Active Directory**.
-3. Välj inställningar för **organisations relationer**   >  ****.
+1. Logga in på [Azure Portal](https://portal.azure.com) azure AD global administratör.
+2. I navigeringsfönstret väljer du **Azure Active Directory**.
+3. Välj **Organisationsrelationer**   >  **Alla identitetsproviders.**
 
    > [!NOTE]
-   > - Om du inte ser **organisations relationer** söker du efter "externa identiteter" i Sök fältet längst upp.
+   > - Om du inte ser **Organisationsrelationer** söker du efter "External Identities" i sökfältet längst upp.
 
-4. Välj **e-post med eng ång slö sen ord** och välj sedan **Ja**.
+4. Välj **E-post för ett lösenord och** välj sedan **Ja.**
 5. Välj **Spara**.
 
-Mer information om aktuella begränsningar finns i [Azures moln för amerikanska myndigheter](current-limitations.md#azure-us-government-clouds).
+Mer information om aktuella begränsningar finns i [Azure US Government-moln.](current-limitations.md#azure-us-government-clouds)

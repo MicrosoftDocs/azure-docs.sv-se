@@ -4,13 +4,13 @@ description: I den här självstudien om Azure Kubernetes Service (AKS) lär du 
 services: container-service
 ms.topic: tutorial
 ms.date: 01/12/2021
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8efb381562a5c55fa2c29b8379312dc41ef6a046
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc
+ms.openlocfilehash: baf82ee1393214f96f11de8f6d838c41222fa359
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98251343"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377199"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Självstudie: Uppgradera Kubernetes i Azure Kubernetes Service (AKS)
 
@@ -80,9 +80,9 @@ az aks upgrade \
 ```
 
 > [!NOTE]
-> Du kan endast uppgradera en lägre version i taget. Du kan till exempel uppgradera från *1.14. x* till *1.15. x*, men inte uppgradera från *1.14. x* till *1.16. x* direkt. Uppgradera från *1.14. x* till *1.16. x* genom att först uppgradera från *1.14.* x till *1.15. x* och sedan utföra en annan uppgradering från *1.15. x* till *1.16. x*.
+> Du kan endast uppgradera en lägre version i taget. Du kan till exempel uppgradera från *1.14.x* till *1.15.x,* men det går inte att uppgradera direkt från *1.14.x* till *1.16.x.* Om du vill uppgradera *från 1.14.x* till *1.16.x* uppgraderar du först från *1.14.x* till *1.15.x* och utför sedan en till uppgradering från *1.15.x* till *1.16.x*.
 
-I följande komprimerade exempel utdata visas resultatet av uppgraderingen till *1.19.1*. Observera att *kubernetesVersion* nu rapporterar *1.19.1*:
+Följande komprimerade exempelutdata visar resultatet av uppgraderingen till *1.19.1*. Observera att *kubernetesVersion* nu rapporterar *1.19.1*:
 
 ```json
 {
@@ -115,7 +115,7 @@ Bekräfta att uppgraderingen lyckades genom att köra kommandot [az aks show][] 
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Följande exempel på utdata visar AKS-klustret kör *KubernetesVersion 1.19.1*:
+Följande exempelutdata visar att AKS-klustret kör *KubernetesVersion 1.19.1*:
 
 ```output
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
@@ -132,7 +132,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> När du tar bort klustret tas Azure Active Directory-tjänstens huvudnamn, som används av AKS-klustret, inte bort. Stegvisa instruktioner om hur du tar bort tjänstens huvudnamn finns i dokumentationen om [viktiga överväganden och borttagning av AKS-tjänsten][sp-delete]. Om du använder en hanterad identitet hanteras identiteten av plattformen och du behöver inte tillhandahålla eller rotera några hemligheter.
+> När du tar bort klustret tas Azure Active Directory-tjänstens huvudnamn, som används av AKS-klustret, inte bort. Stegvisa instruktioner om hur du tar bort tjänstens huvudnamn finns i dokumentationen om [viktiga överväganden och borttagning av AKS-tjänsten][sp-delete]. Om du använde en hanterad identitet hanteras identiteten av plattformen och kräver inte att du etablerar eller roterar några hemligheter.
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -143,7 +143,7 @@ I den här självstudien har du uppgraderat Kubernetes i ett AKS-kluster. Du har
 > * Uppgradera Kubernetes-noderna
 > * Verifiera uppgraderingen
 
-Mer information om AKS finns i [Översikt över AKS][aks-intro]. Vägledning om hur du skapar fullständiga lösningar med AKS finns i [vägledning för AKS-lösningar][aks-solution-guidance].
+Mer information om AKS finns i [AKS-översikt.][aks-intro] Vägledning om hur du skapar fullständiga lösningar med AKS finns i [Vägledning för AKS-lösningar.][aks-solution-guidance]
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
