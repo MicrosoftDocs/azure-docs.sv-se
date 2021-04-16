@@ -1,7 +1,7 @@
 ---
-title: Översikt över chatt SDK för Azure Communication Services
+title: Översikt över Chat SDK för Azure Communication Services
 titleSuffix: An Azure Communication Services concept document
-description: Lär dig mer om Azure Communication Services Chat SDK.
+description: Läs mer om Azure Communication Services Chat SDK.
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -9,57 +9,57 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 520dc611e49675f35b8ba0330448438192770773
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 561855704d157f9ad826b5db83600a79d9437fc6
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168883"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500693"
 ---
-# <a name="chat-sdk-overview"></a>Översikt över chatt SDK 
+# <a name="chat-sdk-overview"></a>Översikt över Chat SDK 
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include-chat.md)]
 
-Azure Communication Services Chat SDK: er kan användas för att lägga till omfattande chatt i real tid till dina program.
+Azure Communication Services-SDK:er för chatt kan användas för att lägga till omfattande realtidschattar i dina program.
     
-## <a name="chat-sdk-capabilities"></a>Chatta SDK-funktioner    
+## <a name="chat-sdk-capabilities"></a>Funktioner för chatt-SDK    
 
-I följande lista visas en uppsättning funktioner som för närvarande är tillgängliga i kommunikations tjänsterna för chatt-SDK: er.  
+I följande lista visas en uppsättning funktioner som för närvarande är tillgängliga i Communication Services för chatt.  
 
 | Grupp med funktioner | Funktion | JavaScript  | Java | .NET | Python | iOS | Android |
 |-----------------|-------------------|---|-----|----|-----|----|----|
-| Kärn funktioner | Skapa en chatt-tråd mellan två eller flera användare                                                     | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |    
-|                   | Uppdatera ämnet i en chatt-tråd                                                                              | ✔️   | ✔️ | ✔️    | ✔️   |  ✔️    | ✔️   |   
-|                   | Lägga till eller ta bort deltagare från en chatt-tråd                                                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
-|                   | Välj om du vill dela chatt meddelande historik med deltagaren som läggs till                                   | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   | 
-|                   | Hämta en lista över deltagare i en chatt-tråd                                                                          | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   | 
-|                   | Ta bort en chatt-tråd                                                                                              | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-|                   | Med en kommunikations användare får du en lista över chatt-trådar som användaren ingår i                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
-|                   | Hämta information om en viss chatt-tråd                                                                              | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
-|                   | Skicka och ta emot meddelanden i en chatt-tråd                                                                            | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   |   
+| Kärnfunktioner | Skapa en chatttråd mellan 2 eller fler användare                                                     | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |    
+|                   | Uppdatera ämnet för en chatttråd                                                                              | ✔️   | ✔️ | ✔️    | ✔️   |  ✔️    | ✔️   |   
+|                   | Lägga till eller ta bort deltagare från en chatttråd                                                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|                   | Välj om du vill dela chattmeddelandehistorik med deltagaren som läggs till                                   | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   | 
+|                   | Hämta en lista över deltagare i en chatttråd                                                                          | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   | 
+|                   | Ta bort en chatttråd                                                                                              | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
+|                   | Givet en kommunikationsanvändare hämtar du listan över chatttrådar som användaren är en del av                                           | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
+|                   | Hämta information för en viss chatttråd                                                                              | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |   
+|                   | Skicka och ta emot meddelanden i en chatttråd                                                                            | ✔️   | ✔️   | ✔️    | ✔️  |  ✔️    | ✔️   |   
 |                   | Uppdatera innehållet i det skickade meddelandet                                                                               | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
-|                   | Ta bort ett meddelande som du har skickat                                                                                                      | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
+|                   | Ta bort ett meddelande som du har skickat tidigare                                                                                                      | ✔️   | ✔️  | ✔️ | ✔️ |  ✔️    | ✔️   |    
 |                   | Läs kvitton för meddelanden som har lästs av andra deltagare i en chatt                                        | ✔️   | ✔️  | ✔️    | ✔️   |  ✔️    | ✔️   |   
-|                   | Få ett meddelande när deltagare aktivt skriver ett meddelande i en chatt-tråd                                         | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
-|                   | Hämta alla meddelanden i en chatt-tråd                                                                        | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
-|                   | Skicka Unicode-emojis som en del av meddelande innehållet                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-|Real tids aviseringar (aktiverade av patentskyddade signal paket * *)|  Chatt-klienter kan prenumerera på att få real tids uppdateringar för inkommande meddelanden och andra åtgärder som inträffar i en chatt-tråd. Om du vill se en lista över uppdateringar som stöds för meddelanden i real tid, se [chatt-begrepp](concepts.md#real-time-notifications)                                     | ✔️   | ❌    | ❌  | ❌  | ❌  | ❌  | 
-| Integrering med Azure Event Grid             | Använd de Chat-händelser som är tillgängliga i Azure Event Grid för att skicka anpassade meddelande tjänster eller publicera händelsen till en webhook för att köra affärs logik som att uppdatera CRM-poster när en chatt har körts   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
-| Rapportera </br>(Den här informationen är tillgänglig under fliken övervakning för kommunikations tjänst resursen på Azure Portal)      | Förstå API-trafik från chatt-appen genom att övervaka publicerade mått i Azure Metrics Explorer och ange aviseringar för att identifiera avvikelser     | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
-|                   | Övervaka och Felsök kommunikations tjänst lösningen genom att aktivera diagnostisk loggning för din resurs    | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
+|                   | Få ett meddelande när deltagarna aktivt skriver ett meddelande i en chatttråd                                         | ✔️   | ✔️   | ✔️    | ✔️    |  ✔️    | ✔️   | 
+|                   | Hämta alla meddelanden i en chatttråd                                                                        | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   | 
+|                   | Skicka Unicode-emojis som en del av meddelandeinnehåll                                                                            | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
+|Realtidsmeddelanden (aktiveras av tillverkarspecifika signalpaket**)|  Chattklienter kan prenumerera för att få realtidsuppdateringar för inkommande meddelanden och andra åtgärder som sker i en chatttråd. En lista över uppdateringar som stöds för aviseringar i realtid finns i [Chattbegrepp](concepts.md#real-time-notifications)                                     | ✔️   | ❌    | ❌  | ❌  | ✔️  | ✔️  |   
+| Integrering med Azure Event Grid             | Använd de chatthändelser som är Azure Event Grid för att ansluta anpassade meddelandetjänster eller publicera händelsen till en webhook för att köra affärslogik som att uppdatera CRM-poster när en chatt har slutförts   | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |    
+| Rapportera </br>(Den här informationen finns under fliken Övervakning för din Communication Services resurs på Azure Portal)      | Förstå API-trafik från din chattapp genom att övervaka publicerade mått i Azure Metrics Explorer och ställa in aviseringar för att identifiera avvikelser     | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |  
+|                   | Övervaka och felsöka din Communication Services genom att aktivera diagnostisk loggning för din resurs    | ✔️   | ✔️  | ✔️    | ✔️  |  ✔️    | ✔️   |   
 
 
-* * Det tillverkarspecifika signal paketet implementeras med hjälp av Web Sockets. Det kommer att återgå till lång avsökning om Web Sockets inte stöds.  
+**Det egna signalpaketet implementeras med hjälp av webbsocketar. Det går tillbaka till lång avsökning om webbsocketar inte stöds.  
 
-## <a name="javascript-chat-sdk-support-by-os-and-browser"></a>Java Script Chat SDK-stöd från OS och webbläsare    
+## <a name="javascript-chat-sdk-support-by-os-and-browser"></a>Stöd för JavaScript Chat SDK från operativsystem och webbläsare    
 
-Följande tabell visar en uppsättning webbläsare och versioner som stöds och som är tillgängliga för tillfället.
+I följande tabell visas en uppsättning webbläsare och versioner som stöds och som är tillgängliga för närvarande.
     
 |                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | iPad OS|
 |--------------------------------|----------------|--------------|-------|------|------|------|-------|
-| **Chatta SDK** | Firefox *, Chrome*, ny kant | Firefox *, Chrome*, Safari * | Chrome  | Chrome | Chrome | Safari | Safari |
+| **Chatt-SDK** | Firefox,*Chrome*, ny Edge | Firefox,*Chrome,* Safari* | Chrome*  | Chrome* | Chrome* | Safari* | Safari* |
 
-* Observera att den senaste versionen stöds utöver de tidigare två versionerna.<br/>   
+*Observera att den senaste versionen stöds utöver de föregående två versionerna.<br/>   
 
 ## <a name="next-steps"></a>Nästa steg   
 
@@ -67,5 +67,5 @@ Följande tabell visar en uppsättning webbläsare och versioner som stöds och 
 > [Kom igång med chatt](../../quickstarts/chat/get-started.md)    
 
 Följande dokument kan vara intressanta för dig:  
-- Bekanta dig med [chatt-koncept](../chat/concepts.md)
-- Förstå hur [prissättning](../pricing.md#chat) fungerar för chatt
+- Bekanta dig med [chattbegrepp](../chat/concepts.md)
+- Förstå hur [priser](../pricing.md#chat) fungerar för chatt

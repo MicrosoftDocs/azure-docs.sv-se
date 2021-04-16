@@ -1,28 +1,28 @@
 ---
 title: Distribuera flera instanser av resurser
-description: Använd kopierings åtgärd och matriser i en Azure Resource Manager mall (ARM-mall) för att distribuera resurs typen flera gånger.
+description: Använd kopieringsåtgärd och matriser i en Azure Resource Manager mall (ARM-mall) för att distribuera resurstyp många gånger.
 ms.topic: conceptual
 ms.date: 04/01/2021
-ms.openlocfilehash: 3af676cce544c125e441857f06556b9ff7eee697
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 5ddb0cabf0acae1ffe9b9e77e6defa70f9cbd61b
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385724"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479975"
 ---
-# <a name="resource-iteration-in-arm-templates"></a>Resurs upprepning i ARM-mallar
+# <a name="resource-iteration-in-arm-templates"></a>Resurs iteration i ARM-mallar
 
-Den här artikeln visar hur du skapar fler än en instans av en resurs i din Azure Resource Manager-mall (ARM-mall). Genom att lägga till en kopierings slinga i avsnittet resurser i mallen kan du dynamiskt ange antalet resurser som ska distribueras. Du behöver inte heller upprepa syntaxen för mallar.
+Den här artikeln visar hur du skapar fler än en instans av en resurs i din Azure Resource Manager mall (ARM-mall). Genom att lägga till en kopieringsloop i resursavsnittet i mallen kan du dynamiskt ange antalet resurser som ska distribueras. Du undviker också att behöva upprepa mallsyntaxen.
 
-Du kan också använda kopiera slinga med [Egenskaper](copy-properties.md), [variabler](copy-variables.md)och [utdata](copy-outputs.md).
+Du kan också använda en kopieringsloop [med](copy-properties.md)egenskaperna , [variabler](copy-variables.md)och [utdata](copy-outputs.md).
 
-Om du behöver ange om en resurs har distribuerats alls, se [villkors element](conditional-resource-deployment.md).
+Om du vill ange om en resurs har distribuerats alls kan du se [villkorselementet](conditional-resource-deployment.md).
 
 ## <a name="syntax"></a>Syntax
 
 # <a name="json"></a>[JSON](#tab/json)
 
-Lägg till `copy` elementet i avsnittet resurser i mallen för att distribuera flera instanser av resursen. `copy`Elementet har följande allmänna format:
+Lägg till `copy` elementet i resursavsnittet i mallen för att distribuera flera instanser av resursen. Elementet `copy` har följande allmänna format:
 
 ```json
 "copy": {
@@ -33,9 +33,9 @@ Lägg till `copy` elementet i avsnittet resurser i mallen för att distribuera f
 }
 ```
 
-`name`Egenskapen är ett värde som identifierar slingan. `count`Egenskapen anger antalet iterationer som du vill använda för resurs typen.
+Egenskapen `name` är ett värde som identifierar loopen. Egenskapen `count` anger antalet iterationer som du vill använda för resurstypen.
 
-Använd- `mode` och- `batchSize` egenskaperna för att ange om resurserna distribueras parallellt eller i följd. Dessa egenskaper beskrivs i [serie eller parallellt](#serial-or-parallel).
+Använd egenskaperna `mode` och för att ange om resurserna `batchSize` distribueras parallellt eller i följd. Dessa egenskaper beskrivs i [Seriell eller Parallell](#serial-or-parallel).
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
@@ -47,7 +47,7 @@ Loopar kan användas för att deklarera flera resurser genom att:
   @batchSize(<number>)
   resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for <item> in <collection>: {
     <resource-properties>
-  }
+  }]
   ```
 
 - Iterera över elementen i en matris
@@ -56,38 +56,38 @@ Loopar kan användas för att deklarera flera resurser genom att:
   @batchSize(<number>)
   resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for (<item>, <index>) in <collection>: {
     <resource-properties>
-  }
+  }]
   ```
 
-- Använda loop-index
+- Använda loopindex
 
   ```bicep
   @batchSize(<number>)
   resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for <index> in range(<start>, <stop>): {
     <resource-properties>
-  }
+  }]
   ```
 
 ---
 
-## <a name="copy-limits"></a>Kopierings gränser
+## <a name="copy-limits"></a>Kopieringsgränser
 
-Antalet får inte överskrida 800.
+Antalet får inte överstiga 800.
 
-Antalet får inte vara ett negativt tal. Det kan vara noll om du distribuerar mallen med en senare version av Azure CLI, PowerShell eller REST API. Mer specifikt måste du använda:
+Antalet kan inte vara ett negativt tal. Det kan vara noll om du distribuerar mallen med en ny version av Azure CLI, PowerShell eller REST API. Mer specifikt måste du använda:
 
-- Azure PowerShell **2,6** eller senare
-- Azure CLI- **2.0.74** eller senare
+- Azure PowerShell **2.6** eller senare
+- Azure CLI **2.0.74** eller senare
 - REST API version **2019-05-10** eller senare
-- [Länkade distributioner](linked-templates.md) måste använda API version **2019-05-10** eller senare för distributions resurs typen
+- [Länkade distributioner](linked-templates.md) måste använda API-version **2019-05-10** eller senare för distributionsresurstypen
 
-Tidigare versioner av PowerShell, CLI och REST API stöder inte noll för Count.
+Tidigare versioner av PowerShell, CLI och REST API stöder inte noll för antal.
 
-Var försiktig med att använda [fullständig läges distribution](deployment-modes.md) med Copy-slingan. Om du omdistribuerar med slutfört läge till en resurs grupp raderas alla resurser som inte är angivna i mallen när du har löst kopierings slingen.
+Var försiktig med att [använda distribution i fullständigt läge](deployment-modes.md) med kopieringsloop. Om du distribuerar om med fullständigt läge till en resursgrupp tas alla resurser som inte har angetts i mallen när kopieringsloopen har lösts bort.
 
-## <a name="resource-iteration"></a>Resurs upprepning
+## <a name="resource-iteration"></a>Resurs iteration
 
-I följande exempel skapas antalet lagrings konton som anges i `storageCount` parametern.
+I följande exempel skapas antalet lagringskonton som anges i `storageCount` parametern .
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -121,31 +121,31 @@ I följande exempel skapas antalet lagrings konton som anges i `storageCount` pa
 }
 ```
 
-Observera att namnet på varje resurs inkluderar `copyIndex()` funktionen, som returnerar den aktuella iterationen i slingan. `copyIndex()` är nollbaserat. I följande exempel:
+Observera att namnet på varje resurs innehåller funktionen `copyIndex()` , som returnerar den aktuella iterationen i loopen. `copyIndex()` är nollbaserat. Så, i följande exempel:
 
 ```json
 "name": "[concat('storage', copyIndex())]",
 ```
 
-Skapar följande namn:
+Skapar dessa namn:
 
 - storage0
 - storage1
 - storage2.
 
-Du kan ange ett värde i funktionen för att kompensera värdet för indexet `copyIndex()` . Antalet iterationer har fortfarande angetts i kopierings elementet, men värdet för `copyIndex` motbokas med det angivna värdet. I följande exempel:
+Om du vill förskjuta indexvärdet kan du skicka ett värde i `copyIndex()` funktionen . Antalet iterationer anges fortfarande i kopieringselementet, men värdet för `copyIndex` förskjuts av det angivna värdet. Så, i följande exempel:
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
 ```
 
-Skapar följande namn:
+Skapar dessa namn:
 
 - storage1
 - storage2
 - storage3
 
-Kopierings åtgärden är användbar när du arbetar med matriser eftersom du kan iterera igenom varje element i matrisen. Använd `length` funktionen på matrisen för att ange antalet iterationer och `copyIndex` för att hämta det aktuella indexet i matrisen.
+Kopieringsåtgärden är användbar när du arbetar med matriser eftersom du kan iterera genom varje element i matrisen. Använd funktionen `length` i matrisen för att ange antalet iterationer och för `copyIndex` att hämta det aktuella indexet i matrisen.
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
@@ -163,11 +163,11 @@ resource storage_id 'Microsoft.Storage/storageAccounts@2019-04-01' = [for i in r
 }]
 ```
 
-Lägg märke till att indexet `i` används för att skapa lagrings kontots resurs namn.
+Observera att `i` indexet används för att skapa lagringskontots resursnamn.
 
 ---
 
-I följande exempel skapas ett lagrings konto för varje namn som anges i parametern.
+I följande exempel skapas ett lagringskonto för varje namn som anges i parametern .
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -228,21 +228,21 @@ resource storageNames_id 'Microsoft.Storage/storageAccounts@2019-04-01' = [for n
 
 ---
 
-Om du vill returnera värden från de distribuerade resurserna kan du använda [Kopiera i avsnittet utdata](copy-outputs.md).
+Om du vill returnera värden från de distribuerade resurserna kan du använda [kopiera i avsnittet utdata.](copy-outputs.md)
 
-## <a name="serial-or-parallel"></a>Serie eller parallell
+## <a name="serial-or-parallel"></a>Seriell eller parallell
 
-Som standard skapar Resource Manager resurserna parallellt. Den tillämpar ingen gräns för antalet resurser som distribueras parallellt, förutom den totala gränsen på 800-resurser i mallen. Ordningen som de har skapats i är inte garanterad.
+Som standard Resource Manager resurserna parallellt. Det gäller ingen gräns för antalet resurser som distribueras parallellt, förutom den totala gränsen på 800 resurser i mallen. Ordningen som de skapas i garanteras inte.
 
-Men du kanske vill ange att resurserna distribueras i följd. Till exempel, när du uppdaterar en produktions miljö, kanske du vill sprida uppdateringarna så att bara ett visst nummer uppdateras vid ett tillfälle.
+Men du kanske vill ange att resurserna ska distribueras i följd. När du till exempel uppdaterar en produktionsmiljö kanske du vill sprida uppdateringarna så att bara ett visst nummer uppdateras åt gången.
 
-Om du till exempel vill distribuera lagrings konton två i taget, använder du:
+Om du till exempel vill distribuera lagringskonton i serie två i taget använder du:
 
 # <a name="json"></a>[JSON](#tab/json)
 
-Om du vill distribuera mer än en instans av en resurs kan du `mode` ange **seriell** och `batchSize` antalet instanser som ska distribueras i taget. Med seriellt läge skapar Resource Manager ett beroende på tidigare instanser i slingan, så det går inte att starta en batch förrän den föregående batchen har slutförts.
+Om du vill distribuera fler än en instans av en resurs seriellt anger du till seriell och till antalet instanser `mode` som ska  `batchSize` distribueras åt gången. Med seriellt Resource Manager skapar ett beroende på tidigare instanser i loopen, så att den inte startar en batch förrän den föregående batchen har slutförts.
 
-Värdet för `batchSize` får inte överstiga värdet för `count` i kopierings elementet.
+Värdet för `batchSize` får inte överskrida värdet för i `count` kopieringselementet.
 
 ```json
 {
@@ -271,11 +271,11 @@ Värdet för `batchSize` får inte överstiga värdet för `count` i kopierings 
 }
 ```
 
-`mode`Egenskapen accepterar också **parallell**, vilket är standardvärdet.
+Egenskapen `mode` accepterar även parallell , vilket är standardvärdet.
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
-Om du vill distribuera mer än en instans av en resurs kan du ange `batchSize` [decorator](./bicep-file.md#resource-and-module-decorators) till det antal instanser som ska distribueras i taget. Med seriellt läge skapar Resource Manager ett beroende på tidigare instanser i slingan, så det går inte att starta en batch förrän den föregående batchen har slutförts.
+Om du vill distribuera fler än en instans av en resurs seriellt anger du antalet instanser som ska distribueras i taget för `batchSize` [](./bicep-file.md#resource-and-module-decorators) målaren. Med seriellt Resource Manager skapar ett beroende på tidigare instanser i loopen, så den startar inte en batch förrän den föregående batchen har slutförts.
 
 ```bicep
 @batchSize(2)
@@ -294,9 +294,9 @@ resource storage_id 'Microsoft.Storage/storageAccounts@2019-04-01' = [for i in r
 
 ## <a name="iteration-for-a-child-resource"></a>Iteration för en underordnad resurs
 
-Du kan inte använda en kopierings slinga för en underordnad resurs. Om du vill skapa mer än en instans av en resurs som du vanligt vis definierar som kapslad i en annan resurs måste du i stället skapa den resursen som en resurs på den översta nivån. Du definierar relationen med den överordnade resursen genom egenskaperna typ och namn.
+Du kan inte använda en kopieringsloop för en underordnad resurs. Om du vill skapa fler än en instans av en resurs som du vanligtvis definierar som kapslad i en annan resurs måste du i stället skapa den resursen som en resurs på den översta nivån. Du definierar relationen med den överordnade resursen via egenskaperna typ och namn.
 
-Anta till exempel att du vanligt vis definierar en data uppsättning som en underordnad resurs i en data fabrik.
+Anta till exempel att du vanligtvis definierar en datauppsättning som en underordnad resurs i en datafabrik.
 
 ```json
 "resources": [
@@ -316,9 +316,9 @@ Anta till exempel att du vanligt vis definierar en data uppsättning som en unde
   ]
 ```
 
-Om du vill skapa mer än en data uppsättning flyttar du den utanför data fabriken. Data uppsättningen måste vara på samma nivå som data fabriken, men den är fortfarande en underordnad resurs till data fabriken. Du bevarar relationen mellan data uppsättningen och data fabriken genom egenskaperna typ och namn. Eftersom typen inte längre kan härledas från dess position i mallen måste du ange den fullständigt kvalificerade typen i formatet: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}` .
+Om du vill skapa fler än en datauppsättning flyttar du den utanför datafabriken. Datamängden måste vara på samma nivå som datafabriken, men den är fortfarande en underordnad resurs för datafabriken. Du bevarar relationen mellan datauppsättningen och datafabriken via egenskaperna typ och namn. Eftersom typen inte längre kan härledas från dess position i mallen måste du ange den fullständigt kvalificerade typen i formatet: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}` .
 
-Om du vill upprätta en överordnad/underordnad relation med en instans av data fabriken anger du ett namn för den data uppsättning som innehåller namnet på den överordnade resursen. Använd formatet `{parent-resource-name}/{child-resource-name}`.
+Om du vill upprätta en överordnad/underordnad relation med en instans av datafabriken anger du ett namn för datauppsättningen som innehåller det överordnade resursnamnet. Använd formatet `{parent-resource-name}/{child-resource-name}`.
 
 I följande exempel visas implementeringen:
 
@@ -361,23 +361,23 @@ resource dataFactoryName_ArmtemplateTestDatasetIn 'Microsoft.DataFactory/factori
 
 ---
 
-## <a name="example-templates"></a>Exempel på mallar
+## <a name="example-templates"></a>Exempelmallar
 
-I följande exempel visas vanliga scenarier för att skapa mer än en instans av en resurs eller egenskap.
+I följande exempel visas vanliga scenarier för att skapa fler än en instans av en resurs eller egenskap.
 
 |Mall  |Beskrivning  |
 |---------|---------|
-|[Kopiera lagring](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Distribuerar fler än ett lagrings konto med ett index nummer i namnet. |
-|[Lagring av serie kopia](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Distribuerar flera lagrings konton en i taget. Namnet innehåller index numret. |
-|[Kopiera lagring med matris](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Distribuerar flera lagrings konton. Namnet innehåller ett värde från en matris. |
+|[Kopiera lagring](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Distribuerar fler än ett lagringskonto med ett indexnummer i namnet. |
+|[Seriell kopieringslagring](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Distribuerar flera lagringskonton en i taget. Namnet innehåller indexnumret. |
+|[Kopiera lagring med matris](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Distribuerar flera lagringskonton. Namnet innehåller ett värde från en matris. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Information om hur du anger beroenden för resurser som skapas i en kopierings slinga finns i [definiera ordningen för distribution av resurser i arm-mallar](define-resource-dependency.md).
-- Information om hur du går igenom självstudierna finns i [Självstudier: skapa flera resurs instanser med ARM-mallar](template-tutorial-create-multiple-instances.md).
-- En Microsoft Learn-modul som täcker resurs kopiering finns i [hantera komplexa moln distributioner med hjälp av avancerade funktioner i arm-mallar](/learn/modules/manage-deployments-advanced-arm-template-features/).
-- För annan användning av kopierings slingan, se:
-  - [Egenskaps upprepning i ARM-mallar](copy-properties.md)
+- Information om hur du anger beroenden för resurser som skapas i en kopieringsloop finns i Definiera ordningen för [distribution av resurser i ARM-mallar.](define-resource-dependency.md)
+- Om du vill gå igenom en självstudie kan [du gå igenom Självstudie: Skapa flera resursinstanser med ARM-mallar.](template-tutorial-create-multiple-instances.md)
+- En modul Microsoft Learn omfattar resurskopiering finns i [Hantera komplexa molndistributioner med hjälp av avancerade ARM-mallfunktioner.](/learn/modules/manage-deployments-advanced-arm-template-features/)
+- För andra användningsområden för kopieringsloopen, se:
+  - [Egenskaps iteration i ARM-mallar](copy-properties.md)
   - [Variabel iteration i ARM-mallar](copy-variables.md)
-  - [Utdata iteration i ARM-mallar](copy-outputs.md)
-- Information om hur du använder kopiera med kapslade mallar finns i [använda kopiera](linked-templates.md#using-copy).
+  - [Iteration av utdata i ARM-mallar](copy-outputs.md)
+- Information om hur du använder kopiera med kapslade mallar finns i [Använda kopiera](linked-templates.md#using-copy).

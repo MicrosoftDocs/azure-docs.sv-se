@@ -1,21 +1,21 @@
 ---
 title: Ändra kontaktuppgifter för ett Azure-faktureringskonto
 description: Beskriver hur du ändrar kontaktuppgifterna för ditt Azure-faktureringskonto
-author: genlin
-ms.reviewer: dcscontentpm
+author: bandersmsft
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 04/08/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 776c207387ee55b998615131baf77e6c13655b49
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: f394b6b44b2030253f7b78ec68459819c82c3c27
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033946"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480910"
 ---
 # <a name="change-contact-information-for-an-azure-billing-account"></a>Ändra kontaktuppgifter för ett Azure-faktureringskonto
 
@@ -64,6 +64,21 @@ Om du vill uppdatera din Azure Active Directory-användarprofilinformation kan e
     ![Skärmbild som visar var du uppdaterar adressen](./media/change-azure-account-profile/update-bill-to-list-properties-mca.png)
 1. Ange den nya adressen och välj sedan **Spara**.  
     ![Skärmbild som visar uppdatering av adressen](./media/change-azure-account-profile/update-bill-to-save-mca.png)
+
+## <a name="update-a-po-number"></a>Uppdatera ett IO-nummer
+
+Som standard har en faktura för faktureringsprofilen inget associerat IO-nummer. När du har lagt till ett IO-nummer för en faktureringsprofil visas det på fakturor för faktureringsprofilen.
+
+Använd följande steg för att lägga till eller ändra IO-numret för en faktureringsprofil.
+
+1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Sök efter **Cost Management + Billing** och välj sedan **Faktureringsomfång**.
+1. Välj ditt faktureringsomfång.
+1. I den vänstra menyn under **Fakturering** väljer du **Faktureringsprofiler**.
+1. Välj lämplig faktureringsprofil.
+1. I den vänstra menyn under **Inställningar** väljer du **Egenskaper**.
+1. Välj **Uppdatera IO-nummer.**
+1. Ange ett IO-nummer och välj sedan **Uppdatera**.
 
 ## <a name="service-and-marketing-emails"></a>E-postmeddelanden med information om tjänster och marknadsföring
 

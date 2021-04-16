@@ -356,7 +356,7 @@
               items:
                 - name: Konfigurera strategi för rullande distribution
                   href: ./linux/tutorial-devops-azure-pipelines-classic.md
-                - name: Konfigurera strategi för canary-distribution
+                - name: Konfigurera en strategi för canary-distribution
                   href: ./linux/tutorial-azure-devops-canary-strategy.md
                 - name: Konfigurera Blue-Green distributionsstrategi
                   href: ./linux/tutorial-azure-devops-blue-green-strategy.md
@@ -1153,7 +1153,7 @@
             - name: PowerShell
               displayName: Convert disk to another disk type
               href: ./windows/convert-disk-storage.md
-        - name: 'Migrera till Premium-SSD:er med Azure Site Recovery'
+        - name: 'Migrera till Premium-SD:er med Azure Site Recovery'
           items:
             - name: Linux
               displayName: Migrate to premium SSDs with Azure Site Recovery
@@ -1199,13 +1199,13 @@
         - name: Windows
           displayName: detach a disk
           href: ./windows/detach-disk.md
-    - name: Expandera operativsystemets disk
+    - name: Expandera en disk
       items:
         - name: Linux
-          displayName: Expand OS disk
+          displayName: Expand a disk - Linux
           href: ./linux/expand-disks.md
         - name: Windows
-          displayName: Expand OS disk
+          displayName: Expand a disk - Windows
           href: ./windows/expand-os-disk.md
     - name: Hantera lagring
       items:
@@ -1437,14 +1437,14 @@
         - name: 'Azure-SDK:er'
           displayName: Configured managed identies
           href: ../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?context=/azure/virtual-machines/context/context
-    - name: Linux Active Directory-inloggning
+    - name: Inloggning i Linux Active Directory
       href: ./linux/login-using-aad.md
 - name: Uppdateringar och underhåll
   items:
     - name: Översikt
       displayName: Updates and maintenance
       href: updates-maintenance-overview.md
-    - name: Automatisk uppgradering av os-avbildning
+    - name: Automatisk uppgradering av OS-avbildning
       items:
         - name: Översikt
           displayName: 'Automatic OS image upgrade, image, upgrade, OS'
@@ -1800,9 +1800,9 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Exempel
       items:
-        - name: Lagringsplatsen Azure CLI-exempel
+        - name: Lagringsplatsen med Azure CLI-exempel
           href: 'https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine'
-        - name: Lagringsplatsen För PowerShell-exempel
+        - name: Lagringsplatsen för PowerShell-exempel
           href: 'https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine'
     - name: Vanliga CLI-kommandon
       href: ./linux/cli-manage.md

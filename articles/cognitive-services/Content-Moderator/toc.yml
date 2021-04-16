@@ -16,11 +16,11 @@
   items:
     - name: Använda klientbiblioteket eller REST-API
       href: client-libraries.md
-    - name: Använda det webbaserade användar gränssnittet
+    - name: Använda det webbaserade användargränssnittet
       href: quick-start.md
 - name: Exempel
   items:
-    - name: Exempel webbläsare
+    - name: Exempelwebbläsare
       href: /samples/browse/?terms=content+moderator
     - name: .NET SDK-exempel
       href: samples-dotnet.md
@@ -82,6 +82,12 @@
       items:
         - name: 'Granskningar, arbetsflöden och jobb'
           href: review-api.md
+    - name: Företagsberedskap
+      items:
+        - name: Konfigurera virtuella nätverk
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/content-moderator/context/context
+        - name: Använda kund hanterade nycklar
+          href: encrypt-data-at-rest.md
 - name: Begrepp
   items:
     - name: Bildmoderering
@@ -114,19 +120,21 @@
       href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
 - name: Resurser
   items:
-    - name: Azure-webbseminarserie
-      href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
-    - name: Stöd för regioner
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Microsoft Learn moduler
-      href: /learn/browse/?terms=content+moderator
+    - name: Företagsberedskap
+      items:
+        - name: Stöd för regioner
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Efterlevnad och certifiering
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
-    - name: Azure Government och Global Azure
+    - name: Microsoft Learn moduler
+      href: /learn/browse/?terms=content+moderator
+    - name: Azure-webbseminarserie
+      href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
+    - name: Azure Government och globala Azure
       href: ../../azure-government/compare-azure-government-global-azure.md
     - name: Azure-uppdateringar
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Efterlevnad
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Kryptering
-      href: encrypt-data-at-rest.md

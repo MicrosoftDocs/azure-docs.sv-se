@@ -1,87 +1,87 @@
 ---
-title: Konfigurera privata slut punkter för Azure Cosmos DB analys lager.
-description: Lär dig hur du konfigurerar hanterade privata slut punkter för Azure Cosmos DB Analytical Store för att begränsa nätverks åtkomsten.
+title: Konfigurera privata slutpunkter för Azure Cosmos DB analysarkiv.
+description: Lär dig hur du ställer in hanterade privata slutpunkter för Azure Cosmos DB analysarkiv för att begränsa nätverksåtkomst.
 author: AnithaAdusumilli
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: anithaa
-ms.openlocfilehash: 2f15b397fbceb9e097d94080ba03fba50a96ed06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fd0b3ada5fec283562cee9727e3f805a7d34c532
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048513"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479057"
 ---
-# <a name="configure-private-endpoints-for-azure-cosmos-db-analytical-store"></a>Konfigurera privata slut punkter för Azure Cosmos DB analys lager
+# <a name="configure-azure-private-link-for-azure-cosmos-db-analytical-store"></a>Konfigurera Azure Private Link för Azure Cosmos DB analysarkiv
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-I den här artikeln får du lära dig hur du konfigurerar hanterade privata slut punkter för Azure Cosmos DB analys lager. Om du använder transaktions arkivet, se [privata slut punkter för den transaktions Arkiv](how-to-configure-private-endpoints.md) artikeln. Med hanterade privata slut punkter kan du begränsa nätverks åtkomsten för Azure Cosmos DB Analytical Store till Azure Synapse Managed Virtual Network. Hanterade privata slut punkter upprättar en privat länk till analys lagret.
+I den här artikeln får du lära dig att konfigurera hanterade privata slutpunkter för Azure Cosmos DB analysarkiv. Om du använder transaktionslagret kan du läsa [artikeln Privata slutpunkter för](how-to-configure-private-endpoints.md) transaktionsarkivet. Med [hanterade privata slutpunkter](../synapse-analytics/security/synapse-workspace-managed-private-endpoints.md)kan du begränsa nätverksåtkomsten för ditt Azure Cosmos DB analysarkiv till en hanterad Virtual Network som är associerad med Azure Synapse arbetsyta. Hanterade privata slutpunkter upprättar en privat länk till analysarkivet.
 
-## <a name="enable-private-endpoint-for-the-analytical-store"></a>Aktivera privat slut punkt för analys lagret
+## <a name="enable-a-private-endpoint-for-the-analytical-store"></a>Aktivera en privat slutpunkt för analysarkivet
 
-### <a name="set-up-an-azure-synapse-analytics-workspace-with-a-managed-virtual-network"></a>Konfigurera en Azure Synapse Analytics-arbetsyta med ett hanterat virtuellt nätverk
+### <a name="set-up-azure-synapse-analytics-workspace-with-a-managed-virtual-network"></a>Konfigurera en Azure Synapse Analytics med ett hanterat virtuellt nätverk
 
-[Skapa en arbets yta i Azure Synapse Analytics med data exfiltrering aktiverat.](../synapse-analytics/security/how-to-create-a-workspace-with-data-exfiltration-protection.md) Med [exfiltrering skydd](../synapse-analytics/security/workspace-data-exfiltration-protection.md)kan du se till att skadliga användare inte kan kopiera eller överföra data från dina Azure-resurser till platser utanför organisationens omfattning.
+[Skapa en arbetsyta Azure Synapse Analytics med datafiltrering aktiverat.](../synapse-analytics/security/how-to-create-a-workspace-with-data-exfiltration-protection.md) Med [data exfiltreringsskydd](../synapse-analytics/security/workspace-data-exfiltration-protection.md)kan du se till att obehöriga användare inte kan kopiera eller överföra data från dina Azure-resurser till platser utanför organisationens omfång.
 
-Följande åtkomst begränsningar gäller när data exfiltrering Protection är aktiverat för en Azure Synapse Analytics-arbetsyta:
+Följande åtkomstbegränsningar gäller när skydd mot data exfiltrering är aktiverat för en Azure Synapse Analytics arbetsyta:
 
-* Om du använder Azure Spark för Azure Synapse Analytics tillåts åtkomst endast till godkända hanterade privata slut punkter för Azure Cosmos DB analys lager.
+* Om du använder Azure Spark för Azure Synapse Analytics tillåts endast åtkomst till godkända hanterade privata slutpunkter för Azure Cosmos DB analysarkiv.
 
-* Om du använder Synapse-server utan SQL-pooler kan du fråga alla Azure Cosmos DB-konton med hjälp av Azure Synapse-länken. Skriv förfrågningar som [skapar externa tabeller som Select (CETAS)](../synapse-analytics/sql/develop-tables-cetas.md) tillåts dock endast för godkända hantera privata slut punkter i arbets ytans virtuella nätverk.
+* Om du använder Synapse serverlösa SQL-pooler kan du köra frågor mot valfritt Azure Cosmos DB konto med Azure Synapse Link. Skrivbegäranden som skapar externa tabeller som [select (CETAS)](../synapse-analytics/sql/develop-tables-cetas.md) tillåts dock endast till godkända hantera privata slutpunkter i arbetsytans virtuella nätverk.
 
 > [!NOTE]
-> Du kan inte ändra hanterade virtuella nätverk och exfiltrering konfiguration när arbets ytan har skapats.
+> Du kan inte ändra konfigurationen för hanterat virtuellt nätverk och data exfiltrering när arbetsytan har skapats.
 
-### <a name="add-a-managed-private-endpoint-for-azure-cosmos-db-analytical-store"></a>Lägg till en hanterad privat slut punkt för Azure Cosmos DB analys lager
+### <a name="add-a-managed-private-endpoint-for-azure-cosmos-db-analytical-store"></a>Lägga till en hanterad privat slutpunkt för Azure Cosmos DB analysarkiv
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
 
-1. Från Azure Portal navigerar du till din Synapse Analytics-arbetsyta och öppnar **översikts** fönstret.
+1. Från Azure Portal navigerar du till Synapse Analytics arbetsyta och öppnar **fönstret** Översikt.
 
-1. Starta Synapse Studio genom att gå till **komma igång** fönstret och välj **Öppna** under **Öppna Synapse Studio**.
+1. Starta Synapse Studio genom att gå **Komma igång** fönstret och välja **Öppna** under **Öppna Synapse Studio**.
 
-1. Öppna fliken **Hantera** i Synapse Studio.
+1. I Synapse Studio du **fliken** Hantera.
 
-1. Navigera till **hanterade privata slut punkter** och välj **nytt**
+1. Gå till **Hanterade privata slutpunkter** och välj **Ny**
 
-   :::image type="content" source="./media/analytical-store-private-endpoints/create-new-private-endpoint.png" alt-text="Skapa en ny privat slut punkt för analys lagringen." border="true":::
+   :::image type="content" source="./media/analytical-store-private-endpoints/create-new-private-endpoint.png" alt-text="Skapa en ny privat slutpunkt för analysarkiv." border="true":::
 
-1. Välj **Azure Cosmos DB-kontotyp (SQL-API)** > **Fortsätt**.
+1. Välj **Azure Cosmos DB(SQL API)-kontotyp** > **Fortsätt**.
 
-   :::image type="content" source="./media/analytical-store-private-endpoints/select-private-endpoint.png" alt-text="Välj Azure Cosmos DB SQL API för att skapa en privat slut punkt." border="true":::
+   :::image type="content" source="./media/analytical-store-private-endpoints/select-private-endpoint.png" alt-text="Välj Azure Cosmos DB SQL API för att skapa en privat slutpunkt." border="true":::
 
-1. Fyll i det **nya hanterade privata slut punkt** formuläret med följande information:
+1. Fyll i formuläret **Ny hanterad privat** slutpunkt med följande information:
 
-   * **Namn** – namnet på den hanterade privata slut punkten. Det här namnet kan inte uppdateras efter att det har skapats.
-   * **Beskrivning** – ange en egen beskrivning för att identifiera din privata slut punkt.
-   * **Azure-prenumeration** – välj ett Azure Cosmos DB konto i listan över tillgängliga konton i dina Azure-prenumerationer.
-   * **Azure Cosmos DB konto namn** – Välj ett befintligt Azure Cosmos DB konto av typen SQL eller MongoDB.
-   * **Mål under resurs** – Välj något av följande alternativ: **analys**: om du vill lägga till den privata slut punkten för Azure Cosmos DB Analytical Store.
-     **SQL** (eller **MongoDB**): om du vill lägga till OLTP eller transaktions konto slut punkt.
+   * **Namn** – Namnet på den hanterade privata slutpunkten. Det här namnet kan inte uppdateras när det har skapats.
+   * **Beskrivning** – Ange en användarvänlig beskrivning för att identifiera din privata slutpunkt.
+   * **Azure-prenumeration** – Välj Azure Cosmos DB konto i listan över tillgängliga konton i dina Azure-prenumerationer.
+   * **Azure Cosmos DB kontonamn** – Välj ett befintligt Azure Cosmos DB konto av typen SQL eller MongoDB.
+   * **Målunderssouce** – Välj något av följande alternativ: **Analys:** Om du vill lägga till den privata slutpunkten för Azure Cosmos DB analysarkiv.
+     **Sql** (eller **MongoDB):** Om du vill lägga till OLTP eller slutpunkten för transaktionskontot.
 
    > [!NOTE]
-   > Du kan lägga till både transaktions lager och analys lager privata slut punkter till samma Azure Cosmos DB konto i en Azure Synapse Analytics-arbetsyta. Om du bara vill köra analytiska frågor kanske du bara vill mappa den analytiska privata slut punkten.
+   > Du kan lägga till privata slutpunkter för både transaktionslager och analysarkiv till samma Azure Cosmos DB konto i en Azure Synapse Analytics arbetsyta. Om du bara vill köra analysfrågor kanske du bara vill mappa den privata slutpunkten för analys.
 
-   :::image type="content" source="./media/analytical-store-private-endpoints/choose-analytical-private-endpoint.png" alt-text="Välj analys för mål under resursen." border="true":::
+   :::image type="content" source="./media/analytical-store-private-endpoints/choose-analytical-private-endpoint.png" alt-text="Välj analys för målunderkällan." border="true":::
 
-1. När du har skapat går du till namnet på den privata slut punkten och väljer **Hantera godkännanden i Azure Portal**.
+1. När du har skapat går du till namnet på den privata slutpunkten **och väljer Hantera godkännanden i Azure Portal**.
 
-1. Navigera till ditt Azure Cosmos DB konto, Välj den privata slut punkten och välj **Godkänn**.
+1. Gå till Azure Cosmos DB konto, välj den privata slutpunkten och välj **Godkänn.**
 
-1. Gå tillbaka till Synapse Analytics-arbetsytan och klicka på **Uppdatera** i fönstret **hanterade privata slut punkter** . Kontrol lera att den privata slut punkten är i **godkänt** tillstånd.
+1. Gå tillbaka till Synapse Analytics och klicka **på Uppdatera** i fönstret **Hanterade privata slutpunkter.** Kontrollera att den privata slutpunkten är **i tillståndet** Godkänd.
 
-   :::image type="content" source="./media/analytical-store-private-endpoints/approved-private-endpoint.png" alt-text="Kontrol lera att den privata slut punkten är godkänd." border="true":::
+   :::image type="content" source="./media/analytical-store-private-endpoints/approved-private-endpoint.png" alt-text="Kontrollera att den privata slutpunkten är godkänd." border="true":::
 
 ## <a name="use-apache-spark-for-azure-synapse-analytics"></a>Använda Apache Spark för Azure Synapse Analytics
 
-Om du har skapat en Azure Synapse-arbetsyta med data exfiltrering-skydd aktiverat, blockeras den utgående åtkomsten från Synapse Spark till Azure Cosmos DB-konton som standard. Om Azure Cosmos DB redan har en befintlig privat slut punkt kommer Synapse Spark att blockeras från att komma åt den.
+Om du har Azure Synapse en arbetsyta med data exfiltreringsskydd aktiverat blockeras som standard den utgående åtkomsten från Synapse Spark till Azure Cosmos DB-konton. Och om Azure Cosmos DB har en befintlig privat slutpunkt blockeras Synapse Spark från att komma åt den.
 
-För att tillåta åtkomst till Azure Cosmos DB data:
+Så här tillåter du åtkomst Azure Cosmos DB data:
 
-* Om du använder Azure Synapse-länken för att fråga Azure Cosmos DB data lägger du till en hanterad **analytisk** privat slut punkt för det Azure Cosmos DB kontot.
+* Om du använder Azure Synapse Link för att fråga Azure Cosmos DB data  lägger du till en hanterad privat analytisk slutpunkt för Azure Cosmos DB kontot.
 
-* Om du använder batch-skrivningar/läsningar och/eller strömmande skrivningar/läsningar till transaktions lager, lägger du till en hanterad *SQL* -eller *MongoDB* -slutpunkt för det Azure Cosmos DB kontot. Dessutom bör du också ange *connectionMode* till *Gateway* som det visas i följande kodfragment:
+* Om du använder batch-skrivningar/-läsningar och/eller strömmande skrivningar/läsningar till transaktionslager lägger du till en hanterad *privat SQL-* eller *MongoDB-slutpunkt* för Azure Cosmos DB-kontot. Dessutom bör du ange *connectionMode till* *Gateway* enligt följande kodfragment:
 
   ```python
   # Write a Spark DataFrame into an Azure Cosmos DB container
@@ -98,13 +98,13 @@ För att tillåta åtkomst till Azure Cosmos DB data:
   
   ```
 
-## <a name="using-synapse-serverless-sql-pools"></a>Använda Synapse server utan SQL-pooler
+## <a name="using-synapse-serverless-sql-pools"></a>Använda Synapse-serverlösa SQL-pooler
 
-Synapse-server utan SQL-pooler använder funktioner för flera klienter som inte har distribuerats till det hanterade virtuella nätverket. Om Azure Cosmos DB-kontot har en befintlig privat slut punkt kommer Synapse-server utan SQL-pool att blockeras från att komma åt kontot, på grund av att nätverks isoleringen kontrollerar Azure Cosmos DB-kontot.
+Synapse-serverlösa SQL-pooler använder funktioner för flera innehavare som inte distribueras till hanterade virtuella nätverk. Om Azure Cosmos DB-kontot har en befintlig privat slutpunkt blockeras Synapse-serverlös SQL-pool från att komma åt kontot på grund av kontroller av nätverksisolering på Azure Cosmos DB konto.
 
-Så här konfigurerar du nätverks isolering för det här kontot från en Synapse-arbets yta:
+Så här konfigurerar du nätverksisolering för det här kontot från en Synapse-arbetsyta:
 
-1. Tillåt att Synapse-arbetsytan får åtkomst till Azure Cosmos DB konto genom att ange `NetworkAclBypassResourceId` inställning för kontot.
+1. Ge Synapse-arbetsytan åtkomst till Azure Cosmos DB genom att `NetworkAclBypassResourceId` ange inställningen för kontot.
 
    **Använda PowerShell**
 
@@ -119,14 +119,14 @@ Så här konfigurerar du nätverks isolering för det här kontot från en Synap
    ```
 
    > [!NOTE]
-   > Azure Cosmos DB konto och Azure Synapse Analytics-arbetsytan bör ligga under samma Azure Active Directory (AD)-klient.
+   > Azure Cosmos DB och Azure Synapse Analytics ska finnas under samma Azure Active Directory (AD).
 
-2. Du kan nu komma åt kontot från serverbaserade SQL-pooler med hjälp av T-SQL-frågor över Azure Synapse-länken. För att säkerställa nätverks isolering för data i analytisk lagring måste du dock lägga till en **analytisk** hanterad privat slut punkt för det här kontot. Annars blockeras inte data i analys lagret från offentlig åtkomst.
+2. Nu kan du komma åt kontot från serverlösa SQL-pooler med hjälp av T-SQL-frågor via Azure Synapse Link. För att säkerställa nätverksisolering för data i analysarkivet måste du dock lägga till en **analytiskt hanterad** privat slutpunkt för det här kontot. Annars blockeras inte data i analysarkivet från offentlig åtkomst.
 
 > [!IMPORTANT]
-> Om du använder Azure Synapse-länken och behöver nätverks isolering för dina data i ett analys lager måste du mappa Azure Cosmos DB-kontot till Synapse-arbetsytan med **analytisk** hanterad privat slut punkt.
+> Om du använder Azure Synapse Link och behöver nätverksisolering för dina data i analysarkivet måste du mappa Azure Cosmos DB-kontot till Synapse-arbetsytan med analytisk **hanterad** privat slutpunkt.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Kom igång med att [fråga analys lager med Azure Synapse Spark](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)
-* Kom igång med att [fråga analys lager med Azure Synapse-server utan SQL-pooler](../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)
+* Kom igång med [att fråga analysarkiv med Azure Synapse Spark](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)
+* Kom igång med att [fråga analysarkiv med Azure Synapse serverlösa SQL-pooler](../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)

@@ -1,93 +1,93 @@
 ---
-title: Utöka Ontologies
+title: Utöka ontologier
 titleSuffix: Azure Digital Twins
-description: Läs om orsakerna och strategierna bakom utökning av en Ontology
+description: Lär dig mer om orsakerna och strategierna bakom att utöka en ontologi
 author: baanders
 ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e5973f58887b212919ad739232faafddcf9e735c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b38b4910773c433ed63fd2082c5cbefce81e0e9e
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100561547"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480238"
 ---
-# <a name="extending-ontologies"></a>Utöka Ontologies 
+# <a name="extending-ontologies"></a>Utöka ontologier 
 
-En bransch standard [Ontology](concepts-ontologies.md), till exempel [DTDL-baserade RealEstateCore-Ontology för smarta byggnader](https://github.com/Azure/opendigitaltwins-building), är ett bra sätt att börja skapa din IoT-lösning. Bransch Ontologies tillhandahåller en omfattande uppsättning grundläggande gränssnitt som är utformade för din domän och som har utformats för att fungera direkt i Azure IoT-tjänster, till exempel Azure Digital-dubbla. 
+En [ontologi](concepts-ontologies.md)som är branschstandard, till exempel [DTDL-baserad RealEstateCore-ontologi](https://github.com/Azure/opendigitaltwins-building)för smarta byggnader, är ett bra sätt att börja skapa din IoT-lösning. Branschontologier tillhandahåller en omfattande uppsättning basgränssnitt som är utformade för din domän och utformade för att fungera utan vidare i Azure IoT-tjänster, till exempel Azure Digital Twins. 
 
-Det är dock möjligt att din lösning kan ha speciella behov som inte täcks av branschens Ontology. Du kanske till exempel vill länka digitala dubbla till 3D-modeller som lagras i ett separat system. I det här fallet kan du utöka en av dessa Ontologies för att lägga till egna funktioner samtidigt som du behåller alla fördelar med den ursprungliga Ontology.
+Det är dock möjligt att din lösning har specifika behov som inte omfattas av branschens ontologi. Du kanske till exempel vill länka dina digitala tvillingar till 3D-modeller som lagras i ett separat system. I det här fallet kan du utöka en av dessa ontologier och lägga till dina egna funktioner samtidigt som du behåller alla fördelar med den ursprungliga ontologin.
 
-I den här artikeln används DTDL-baserade [RealEstateCore](https://www.realestatecore.io/) -Ontology som grund för exempel på att utöka Ontologies med nya DTDL-egenskaper. De metoder som beskrivs här är allmänna, och kan tillämpas på alla delar av en DTDL-baserad Ontology med en DTDL-funktion (telemetri, egenskap, relation, komponent eller kommando). 
+I den här artikeln används den DTDL-baserade [RealEstateCore-ontologin](https://www.realestatecore.io/) som grund för exempel på att utöka ontologier med nya DTDL-egenskaper. De tekniker som beskrivs här är dock allmänna och kan tillämpas på valfri del av en DTDL-baserad ontologi med valfri DTDL-funktion (telemetri, egenskap, relation, komponent eller kommando). 
 
-## <a name="realestatecore-space-hierarchy"></a>RealEstateCore utrymme-hierarki 
+## <a name="realestatecore-space-hierarchy"></a>Utrymmeshierarki för RealEstateCore 
 
-I den DTDL-baserade RealEstateCore-Ontology används rymd-hierarkin för att definiera olika typer av utrymmen: rum, byggnader, zoner osv. Hierarkin sträcker sig från var och en av dessa modeller för att definiera olika typer av rum, byggnader och zoner. 
+I den DTDL-baserade RealEstateCore-ontologin används utrymmeshierarkin för att definiera olika typer av utrymmen: Rum, Byggnader, Zon osv. Hierarkin sträcker sig från var och en av dessa modeller för att definiera olika typer av rum, byggnader och zoner. 
 
 En del av hierarkin ser ut som diagrammet nedan. 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-original.png" alt-text="Flödes diagram som illustrerar en del av RealEstateCore Space-hierarkin. På den högsta nivån finns det ett element som heter Space; den är ansluten med en utöknings pil ned en nivå till plats. Rummet är anslutet av två &quot;extends&quot;-pilar på en nivå till ConferenceRoom och Office."::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-original.png" alt-text="Flödesdiagram som illustrerar en del av utrymmeshierarkin RealEstateCore. På den översta nivån finns det ett element som heter Space. den är ansluten med en &quot;utökar&quot;-pil nedåt till Rummet. Rummet ansluts med två &quot;utökar&quot;-pilar ned en nivå till ConferenceRoom och Office."::: 
 
-Mer information om RealEstateCore-Ontology finns i [*begrepp: anta bransch standard Ontologies*](concepts-ontologies-adopt.md#realestatecore-smart-building-ontology).
+Mer information om Ontologin RealEstateCore finns i [*Begrepp: Använda ontologier som är branschstandard.*](concepts-ontologies-adopt.md#realestatecore-smart-building-ontology)
 
-## <a name="extending-the-realestatecore-space-hierarchy"></a>Utöka RealEstateCore Space-hierarkin 
+## <a name="extending-the-realestatecore-space-hierarchy"></a>Utöka utrymmeshierarkin RealEstateCore 
 
-Ibland har din lösning vissa behov som inte täcks av branschens Ontology. I det här fallet kan du med utöka hierarkin fortsätta att använda branschens Ontology när du anpassar den efter dina behov. 
+Ibland har din lösning specifika behov som inte omfattas av branschens ontologi. I det här fallet kan du genom att utöka hierarkin fortsätta att använda branschens ontologi samtidigt som du anpassar den efter dina behov. 
 
-I den här artikeln diskuterar vi två olika fall där det är praktiskt att utöka Ontology-hierarkin: 
+I den här artikeln diskuterar vi två olika fall där en utökning av ontologins hierarki är användbar: 
 
-* Lägga till nya gränssnitt för koncept som inte beontologys i branschen. 
-* Lägga till ytterligare egenskaper (eller relationer, komponenter, telemetri eller kommandon) till befintliga gränssnitt.
+* Lägga till nya gränssnitt för begrepp som inte finns i branschens ontologi. 
+* Lägga till ytterligare egenskaper (eller relationer, komponenter, telemetri eller kommandon) i befintliga gränssnitt.
 
-### <a name="add-new-interfaces-for-new-concepts"></a>Lägg till nya gränssnitt för nya koncept 
+### <a name="add-new-interfaces-for-new-concepts"></a>Lägga till nya gränssnitt för nya koncept 
 
-I det här fallet vill du lägga till gränssnitt för de begrepp som krävs för din lösning, men som inte finns i branschens Ontology. Om din lösning exempelvis har andra typer av rum som inte representeras i DTDL-baserade RealEstateCore-Ontology, kan du lägga till dem genom att utöka direkt från RealEstateCore-gränssnitten. 
+I det här fallet vill du lägga till gränssnitt för koncept som behövs för din lösning, men som inte finns i branschens ontologi. Om din lösning till exempel har andra typer av rum som inte representeras i den DTDL-baserade RealEstateCore-ontologin kan du lägga till dem genom att utöka dem direkt från RealEstateCore-gränssnitten. 
 
-Exemplet nedan visar en lösning som måste representera "fokus rum", som inte finns i RealEstateCore-Ontology. Ett fokuserat rum är ett litet utrymme som har utformats för att användare ska kunna fokusera på en uppgift under ett par timmar i taget. 
+I exemplet nedan visas en lösning som måste representera "fokusrum" som inte finns i ontologin RealEstateCore. Ett fokusrum är ett litet utrymme som utformats för att människor ska kunna fokusera på en uppgift några timmar i taget. 
 
-Om du vill utöka bransch Ontology med det nya konceptet skapar du ett nytt gränssnitt som [sträcker sig från](concepts-models.md#model-inheritance) gränssnitten i branschens Ontology. 
+Om du vill utöka branschens ontologi med det här nya konceptet skapar du ett nytt gränssnitt som sträcker sig från gränssnitten i [branschens](concepts-models.md#model-inheritance) ontologi. 
 
-När du har lagt till fokus rums gränssnittet, visar den utökade hierarkin den nya rums typen. 
+När du har lagt till gränssnittet för fokusrum visar den utökade hierarkin den nya rumstypen. 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-extended-1.png" alt-text="Flödes diagram som illustrerar RealEstateCore utrymme-hierarkin från ovan, med ett nytt tillägg. På den nedre nivån med ConferenceRoom och Office finns ett nytt element med namnet FocusRoom (även anslutet via en utöknings pil från rummet)"::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-1.png" alt-text="Flödesdiagram som illustrerar utrymmeshierarkin RealEstateCore ovan, med ett nytt tillägg. På den nedre nivån med ConferenceRoom och Office finns det ett nytt element som heter FocusRoom (ansluts också via en &quot;utökar&quot;-pil från Rummet)"::: 
 
-### <a name="add-additional-capabilities-to-existing-interfaces"></a>Lägg till ytterligare funktioner i befintliga gränssnitt 
+### <a name="add-additional-capabilities-to-existing-interfaces"></a>Lägga till ytterligare funktioner i befintliga gränssnitt 
 
-I det här fallet vill du lägga till fler egenskaper (eller relationer, komponenter, telemetri eller kommandon) till gränssnitt i branschen Ontology.
+I det här fallet vill du lägga till fler egenskaper (eller relationer, komponenter, telemetri eller kommandon) i gränssnitt som finns i branschens ontologi.
 
 I det här avsnittet visas två exempel: 
-* Om du skapar en lösning som visar 3D-ritningar av utrymmen som du redan har i ett befintligt system, kan du vilja associera varje digital grupp till dess 3D-ritning (med ID) så att även 3D-ritningen hämtas från det befintliga systemet när lösningen visar information om utrymmet. 
-* Om din lösning behöver spåra statusen online/offline för konferens rum kanske du vill spåra konferens rummets status för användning i visning eller frågor. 
+* Om du skapar en lösning som visar 3D-ritningar av utrymmen som du redan har i ett befintligt system kanske du vill associera varje digital tvilling med dess 3D-ritning (efter ID) så att när lösningen visar information om utrymmet kan den också hämta 3D-ritningen från det befintliga systemet. 
+* Om din lösning behöver spåra online-/offlinestatus för konferensrum kanske du vill spåra statusen för konferensrum för användning i visning eller frågor. 
 
-Båda exemplen kan implementeras med nya egenskaper: en `drawingId` egenskap som kopplar 3D-ritningen med den digitala dubbla och en "online"-egenskap som anger om konferens rummet är online eller inte. 
+Båda exemplen kan implementeras med nya egenskaper: en egenskap som associerar 3D-ritningen med den digitala tvillingen och en "online"-egenskap som anger om konferensrum är `drawingId` online eller inte. 
 
-Normalt vill du inte ändra bransch Ontology direkt eftersom du vill kunna införliva uppdateringar i lösningen i din lösning i framtiden (som skulle skriva över dina tillägg). Dessa typer av tillägg kan i stället göras i din egen gränssnitts hierarki som sträcker sig från DTDL-baserade RealEstateCore-Ontology. Varje gränssnitt som du skapar använder flera gränssnitts arv för att utöka sitt överordnade RealEstateCore-gränssnitt och dess överordnade gränssnitt från den utökade gränssnitts-hierarkin. Med den här metoden kan du använda bransch Ontology och dina tillägg tillsammans. 
+Normalt vill du inte ändra branschens ontologi direkt eftersom du vill kunna lägga till uppdateringar i den i din lösning i framtiden (vilket skulle skriva över dina tillägg). I stället kan dessa typer av tillägg göras i din egen gränssnittshierarki som sträcker sig från den DTDL-baserade RealEstateCore-ontologin. Varje gränssnitt som du skapar använder flera gränssnittsarv för att utöka det överordnade RealEstateCore-gränssnittet och dess överordnade gränssnitt från din utökade gränssnittshierarki. Med den här metoden kan du använda branschens ontologi och dina tillägg tillsammans. 
 
-För att utöka bransch Ontology skapar du dina egna gränssnitt som utökar från gränssnitten i branschens Ontology och lägger till de nya funktionerna i de utökade gränssnitten. För varje gränssnitt som du vill utöka skapar du ett nytt gränssnitt. De utökade gränssnitten skrivs i DTDL (se avsnittet DTDL for Extended Interfaces senare i det här dokumentet). 
+För att utöka branschens ontologi skapar du dina egna gränssnitt som sträcker sig från gränssnitten i branschens ontologi och lägger till de nya funktionerna i dina utökade gränssnitt. För varje gränssnitt som du vill utöka skapar du ett nytt gränssnitt. De utökade gränssnitten är skrivna i DTDL (se avsnittet DTDL för utökade gränssnitt senare i det här dokumentet). 
 
-När du har utökat den del av hierarkin som visas ovan ser den utökade hierarkin ut som diagrammet nedan. Här lägger du till det utökade utrymmes gränssnittet och lägger till den `drawingId` egenskap som ska innehålla ett ID som associerar det digitala objektet med 3D-ritningen. Dessutom lägger ConferenceRoom-gränssnittet till en "online"-egenskap som kommer att innehålla online-statusen för konferens rummet. Genom arv innehåller ConferenceRoom-gränssnittet alla funktioner från RealEstateCore ConferenceRoom-gränssnittet, samt alla funktioner från det utökade utrymmes gränssnittet. 
+När du har utökat den del av hierarkin som visas ovan ser den utökade hierarkin ut som i diagrammet nedan. Här lägger det utökade Space-gränssnittet till `drawingId` egenskapen som innehåller ett ID som associerar den digitala tvillingen med 3D-ritningen. Dessutom lägger ConferenceRoom-gränssnittet till en "online"-egenskap som innehåller onlinestatus för konferensrumet. Genom arv innehåller ConferenceRoom-gränssnittet alla funktioner från RealEstateCore ConferenceRoom-gränssnittet, samt alla funktioner från det utökade Space-gränssnittet. 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-extended-2.png" alt-text="Flödes diagram som illustrerar hierarkin för utökade RealEstateCore-utrymmen från ovan, med fler nya tillägg. Room delar nu sin nivå med ett utrymmes element, som ansluter med en utöknings pil ned en nivå till ett nytt rums element bredvid ConferenceRoom och Office.  De nya elementen är anslutna till den befintliga Ontology med fler utöknings relationer."::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-2.png" alt-text="Flödesdiagram som illustrerar den utökade RealEstateCore-utrymmeshierarkin ovan, med fler nya tillägg. Rummet delar nu sin nivå med ett Space-element, som ansluter med en &quot;utökar&quot;-pil nedåt en nivå till ett nytt rumselement bredvid ConferenceRoom och Office.  De nya elementen är anslutna till den befintliga ontologin med fler &quot;utökar&quot;-relationer."::: 
 
-## <a name="using-the-extended-space-hierarchy"></a>Använda hierarkin för utökade utrymmen 
+## <a name="using-the-extended-space-hierarchy"></a>Använda den utökade utrymmeshierarkin 
 
-När du skapar digitala fält med hjälp av hierarkin utökat utrymme kommer varje digital-enhets modell att vara en från den utökade utrymmes-hierarkin (inte den ursprungliga branschens Ontology) och kommer att innehålla alla funktioner från branschens Ontology och de utökade gränssnitten, även om gränssnittet ärvs.
+När du skapar digitala tvillingar med hjälp av den utökade Space-hierarkin kommer varje digital tvillingmodell att vara en från den utökade Space-hierarkin (inte den ursprungliga bransch ontologin) och innehåller alla funktioner från branschens ontologi och de utökade gränssnitten genom att använda gränssnittsarv.
 
-Varje digital-enhets modell är ett gränssnitt från den utökade hierarkin, som visas i diagrammet nedan. 
+Varje digital tvillings modell är ett gränssnitt från den utökade hierarkin, som visas i diagrammet nedan. 
  
-:::image type="content" source="media/concepts-extending-ontologies/ontology-with-models.png" alt-text="Ett utdrag från RealEstateCore-hierarkin för utökade utrymmen, inklusive utrymme (toppnivå), ett rum (mellan nivå) och ConferenceRoom, Office och FocusRoom (lägre nivå). Namnen på modeller är anslutna till varje element (till exempel Room är anslutet till en modell med namnet Room101)."::: 
+:::image type="content" source="media/concepts-ontologies-extend/ontology-with-models.png" alt-text="Ett utdrag från den utökade Utrymmeshierarkin RealEstateCore, inklusive Utrymme (översta nivån), ett Rum (mellannivå) och ConferenceRoom, Office och FocusRoom (lägre nivå). Namnen på modellerna är anslutna till varje element (till exempel är Rum anslutet till en modell som heter Room101)."::: 
 
-När du frågar efter digitala ledare med modell-ID ( `IS_OF_MODEL` operatorn) bör modell-ID från den utökade hierarkin användas. Till exempel `SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:com:example:Office;1')`. 
+När du frågar efter digitala tvillingar med hjälp av modell-ID :t (operatorn) ska modell-ID:n från `IS_OF_MODEL` den utökade hierarkin användas. Till exempel `SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:com:example:Office;1')`. 
 
-## <a name="contributing-back-to-the-original-ontology"></a>Bidra tillbaka till den ursprungliga Ontology 
+## <a name="contributing-back-to-the-original-ontology"></a>Bidra tillbaka till den ursprungliga ontologin 
 
-I vissa fall utökar du bransch Ontology på ett sätt som är brett användbart för de flesta användare av Ontology. I detta fall bör du överväga att bidra med dina tillägg till den ursprungliga Ontology. Varje Ontology har en annan process för att bidra, så kontrol lera ontologyens GitHub-lagringsplats för information om bidrag. 
+I vissa fall kommer du att utöka branschens ontologi på ett sätt som är brett användbart för de flesta användare av ontologin. I det här fallet bör du överväga att bidra tillbaka dina tillägg till den ursprungliga ontologin. Varje ontologi har olika processer för att bidra, så se ontologins GitHub-lagringsplats för bidragsinformation. 
 
 ## <a name="dtdl-for-new-interfaces"></a>DTDL för nya gränssnitt 
 
-DTDL för nya gränssnitt som utökar direkt från branschens Ontology skulle se ut så här. 
+DTDL för nya gränssnitt som sträcker sig direkt från branschens ontologi skulle se ut så här. 
 
 ```json
 {
@@ -100,7 +100,7 @@ DTDL för nya gränssnitt som utökar direkt från branschens Ontology skulle se
 
 ## <a name="dtdl-for-extended-interfaces"></a>DTDL för utökade gränssnitt 
 
-DTDL för utökade gränssnitt, begränsade till den del som beskrivs ovan, ser ut så här. 
+DTDL för de utökade gränssnitten, begränsat till den del som beskrivs ovan, skulle se ut så här. 
 
 ```json
 [
@@ -162,4 +162,4 @@ DTDL för utökade gränssnitt, begränsade till den del som beskrivs ovan, ser 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Fortsätt i sökvägen för att utveckla modeller baserade på Ontologies: [*använda Ontology-strategier i en modell utvecklings väg*](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path).
+Fortsätt på vägen för att utveckla modeller baserat på ontologier: [*Använda ontologistrategier i en modellutvecklingsväg*](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path).

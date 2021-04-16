@@ -1,45 +1,45 @@
 ---
 title: Förstå hur användare tilldelas till appar i Azure Active Directory
-description: Ta reda på hur användare tilldelas en app som använder Azure Active Directory för identitets hantering.
+description: Förstå hur användare tilldelas till en app som använder Azure Active Directory för identitetshantering.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/07/2021
-ms.author: kenwith
-ms.openlocfilehash: 161df0446c9478ca0f2b135c1e426f3786b164fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: iangithinji
+ms.openlocfilehash: 84700bca6ff306dbcce01a837c312c4c0c90066d
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99257448"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376417"
 ---
 # <a name="understand-how-users-are-assigned-to-apps-in-azure-active-directory"></a>Förstå hur användare tilldelas till appar i Azure Active Directory
-I den här artikeln får du hjälp att förstå hur användare tilldelas ett program i din klient organisation.
+Den här artikeln hjälper dig att förstå hur användare tilldelas till ett program i din klientorganisation.
 
-## <a name="how-do-users-get-assigned-to-an-application-in-azure-ad"></a>Hur kommer användarna att tilldelas ett program i Azure AD?
-För att en användare ska kunna komma åt ett program måste de först tilldelas till det på något sätt. Tilldelningen kan utföras av en administratör, ett företags ombud eller ibland själva användaren. Nedan beskrivs hur användare kan tilldelas program:
+## <a name="how-do-users-get-assigned-to-an-application-in-azure-ad"></a>Hur tilldelas användare till ett program i Azure AD?
+För att en användare ska kunna komma åt ett program måste de först tilldelas till det på något sätt. Tilldelningen kan utföras av en administratör, en företagsdelegat eller ibland av användaren själv. Nedan beskrivs hur användare kan tilldelas till program:
 
 *  En administratör [tilldelar en användare](./assign-user-or-group-access-portal.md) till programmet direkt
-*  En administratör [tilldelar en grupp](./assign-user-or-group-access-portal.md) som användaren är medlem i programmet, inklusive:
-    * En grupp som har synkroniserats lokalt
-    * En statisk säkerhets grupp som skapats i molnet
-    * En [dynamisk säkerhets grupp](../enterprise-users/groups-dynamic-membership.md) som skapats i molnet
+*  En administratör [tilldelar en](./assign-user-or-group-access-portal.md) grupp som användaren är medlem i i programmet, inklusive:
+    * En grupp som synkroniserades från en lokal plats
+    * En statisk säkerhetsgrupp som skapats i molnet
+    * En [dynamisk säkerhetsgrupp](../enterprise-users/groups-dynamic-membership.md) som skapats i molnet
     * En Microsoft 365 grupp som skapats i molnet
-    * Gruppen [alla användare](../fundamentals/active-directory-groups-create-azure-portal.md)
-*  En administratör möjliggör [åtkomst till självbetjänings program](./manage-self-service-access.md) så att en användare kan lägga till ett program med [Mina appar](../user-help/my-apps-portal-end-user-access.md) **Lägg till app** -funktion **utan affärs godkännande**
-*  En administratör möjliggör [åtkomst till självbetjänings program](./manage-self-service-access.md) så att en användare kan lägga till ett program med hjälp av [Mina appar](../user-help/my-apps-portal-end-user-access.md) **Lägg till app** -funktion, men endast **med tidigare godkännande från en vald uppsättning affärs god kännare**
-*  En administratör möjliggör självbetjänings [grupp hantering](../enterprise-users/groups-self-service-management.md) så att en användare kan ansluta till en grupp som ett program har tilldelats till **utan affärs godkännande**
-*  En administratör möjliggör självbetjänings [grupp hantering](../enterprise-users/groups-self-service-management.md) så att en användare kan ansluta till en grupp som ett program har tilldelats, men endast **med tidigare godkännande från en vald uppsättning affärs god kännare**
-*  En administratör tilldelar en licens till en användare direkt för ett program från den första parten, t. ex. [Microsoft 365](https://products.office.com/)
-*  En administratör tilldelar en licens till en grupp som användaren är medlem i till ett program i den första parten, t. ex. [Microsoft 365](https://products.office.com/)
-*  En [administratör godkänner ett program](../develop/howto-convert-app-to-be-multi-tenant.md) som används av alla användare och sedan loggar användaren in på programmet
-* En användare [samtycker till ett program](../develop/howto-convert-app-to-be-multi-tenant.md) genom att logga in på programmet
+    * Gruppen [Alla](../fundamentals/active-directory-groups-create-azure-portal.md) användare
+*  En administratör aktiverar [programåtkomst via självbetjäning](./manage-self-service-access.md) så att en användare kan lägga till ett program med hjälp [Mina appar](../user-help/my-apps-portal-end-user-access.md) **lägg till app** utan **företagsgodkännande**
+*  En administratör aktiverar [programåtkomst](./manage-self-service-access.md) via självbetjäning så att en användare kan lägga till ett program med [hjälp av Mina appar-funktionen](../user-help/my-apps-portal-end-user-access.md) Lägg till **app,** men endast med förhandsgodkännande från en vald uppsättning företags **godkännare**
+*  En administratör aktiverar [grupphantering med självbetjäning så](../enterprise-users/groups-self-service-management.md) att en användare kan ansluta till en grupp som ett program har tilldelats **utan företagsgodkännande**
+*  En administratör aktiverar [grupphantering med självbetjäning](../enterprise-users/groups-self-service-management.md) så att en användare kan ansluta till en grupp som ett program har tilldelats, men endast med förhandsgodkännande från en vald uppsättning **företags godkännare**
+*  En administratör tilldelar en licens till en användare direkt för ett program från första part, till exempel [Microsoft 365](https://products.office.com/)
+*  En administratör tilldelar en licens till en grupp som användaren är medlem i i ett program från första part, till exempel [Microsoft 365](https://products.office.com/)
+*  En [administratör samtycker till att ett](../develop/howto-convert-app-to-be-multi-tenant.md) program ska användas av alla användare och sedan loggar en användare in i programmet
+* En användare [godkänner själva ett program](../develop/howto-convert-app-to-be-multi-tenant.md) genom att logga in i programmet
 
 ## <a name="next-steps"></a>Nästa steg
-* [Snabb starts serie för program hantering](view-applications-portal.md)
+* [Snabbstartsserie om programhantering](view-applications-portal.md)
 * [Vad är programhantering?](what-is-application-management.md)
 * [Vad är enkel inloggning?](what-is-single-sign-on.md)
