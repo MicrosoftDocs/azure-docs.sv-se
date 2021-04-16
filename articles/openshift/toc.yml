@@ -62,9 +62,7 @@
               href: ../azure-monitor/containers/container-insights-optout-openshift-v4.md
     - name: Utveckla och köra program
       items:
-        - name: Distribuera ett program från källkoden
-          href: howto-deploy-with-s2i.md
-        - name: Distribuera ett program med OpenShift Serverless
+        - name: Distribuera ett program till Azure Red Hat OpenShift med OpenShift Serverless
           href: howto-deploy-with-serverless.md
         - name: Distribuera en Open Liberty-/WebSphere Liberty-app
           href: howto-deploy-java-liberty-app.md
