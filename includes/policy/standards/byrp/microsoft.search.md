@@ -16,7 +16,7 @@ ms.locfileid: "107497425"
 
 Azure [Security Benchmark ger](../../../../articles/security/benchmarks/overview.md) rekommendationer om hur du kan skydda dina molnlösningar i Azure. Om du vill se hur den här tjänsten helt mappar till Azure Security Benchmark kan du gå till [mappningsfilerna för Azure Security Benchmark.](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)
 
-Information om hur tillgängliga Azure Policy inbyggda funktioner för alla Azure-tjänster mappar till den här efterlevnadsstandarden finns i [Azure Policy regelefterlevnad – Azure Security Benchmark.](../../../../articles/governance/policy/samples/azure-security-benchmark.md)
+Information om hur tillgängliga Azure Policy inbyggda funktioner för alla Azure-tjänster mappar till den här efterlevnadsstandarden finns [i Azure Policy regelefterlevnad – Azure Security Benchmark.](../../../../articles/governance/policy/samples/azure-security-benchmark.md)
 
 |Domain |Kontroll-ID |Kontrollrubrik |Policy<br /><sub>(Azure Portal)</sub> |Principversion<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
@@ -48,5 +48,5 @@ Mer information om den här efterlevnadsstandarden finns [i HIPAA HITRUST 9.2](h
 
 |Domain |Kontroll-ID |Kontrollrubrik |Policy<br /><sub>(Azure Portal)</sub> |Principversion<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|
-|Granskningsloggning |1208.09aa3System.1 – 09.aa |Granskningsloggar underhålls för hanteringsaktiviteter, system- och programstart/-avstängning/-fel, filändringar och säkerhetsprincipändringar. |[Resursloggar i Söktjänster ska vara aktiverade](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb4330a05-a843-4bc8-bf9a-cacce50c67f4) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_AuditDiagnosticLog_Audit.json) |
+|Granskningsloggning |1208.09aa3System.1 – 09.aa |Granskningsloggar underhålls för hanteringsaktiviteter, system- och programstart/avstängning/fel, filändringar och ändringar i säkerhetsprincipen. |[Resursloggar i Söktjänster ska vara aktiverade](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb4330a05-a843-4bc8-bf9a-cacce50c67f4) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_AuditDiagnosticLog_Audit.json) |
 

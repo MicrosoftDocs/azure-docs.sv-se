@@ -9,12 +9,12 @@ metadata:
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: 06c6b14d62bb471ecc6dee50d72f11469e3cd161
-  ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+  ms.openlocfilehash: fad34c10d02d4a9daa8795cf77ab76903d8360f4
+  ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 02/17/2021
-  ms.locfileid: "100633214"
+  ms.lasthandoff: 04/14/2021
+  ms.locfileid: "107501203"
 landingContent:
 - title: Om Azure Red Hat OpenShift
   linkLists:
@@ -26,23 +26,23 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Skapa ett Azure Red Hat OpenShift 4-kluster
+    - text: Skapa ett Azure Red Hat OpenShift-kluster
       url: tutorial-create-cluster.md
-    - text: Ansluta till ett Azure Red Hat OpenShift 4-kluster
+    - text: Ansluta till ett Azure Red Hat OpenShift kluster
       url: tutorial-connect-cluster.md
-    - text: Ta bort ett Azure Red Hat OpenShift 4-kluster
+    - text: Ta bort ett Azure Red Hat OpenShift-kluster
       url: tutorial-delete-cluster.md
 - title: Konfigurera
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Skapa ett privat Azure Red Hat OpenShift 4-kluster
-      url: ./howto-create-private-cluster-3x.md
-    - text: Konfigurera DNS-vidarebefordring för ett Azure Red Hat OpenShift 4-kluster
+    - text: Skapa ett privat Azure Red Hat OpenShift kluster
+      url: ./howto-create-private-cluster-4x.md
+    - text: Konfigurera DNS-vidarebefordran för ett Azure Red Hat OpenShift kluster
       url: dns-forwarding.md
-    - text: Konfigurera inbyggt containerregister för Azure Red Hat OpenShift 4
+    - text: Konfigurera ett inbyggt containerregister för Azure Red Hat OpenShift
       url: built-in-container-registry.md
-    - text: Distribuera ett Open Liberty-/WebSphere Liberty-program på ett Azure Red Hat OpenShift 4-kluster
+    - text: Distribuera ett OpenWebSphere/WebSphereSphere-program på ett Azure Red Hat OpenShift kluster
       url: howto-deploy-java-liberty-app.md
 - title: Referens
   linkLists:

@@ -5,7 +5,7 @@
   items:
     - name: Vad är Azure Communication Services?
       href: overview.md
-    - name: Support-och hjälp alternativ
+    - name: Support- och hjälpalternativ
       href: support.md
 - name: Snabbstarter
   expanded: true
@@ -28,7 +28,7 @@
       items:
         - name: Hämta ett telefonnummer
           href: quickstarts/telephony-sms/get-phone-number.md
-        - name: Port a telefonnummer i Azure
+        - name: Porta ett telefonnummer till Azure
           href: quickstarts/telephony-sms/port-phone-number.md
         - name: Lägg till telefonsamtal till din app
           href: quickstarts/voice-video-calling/pstn-call.md
@@ -42,17 +42,17 @@
       items:
         - name: Lägga till röstsamtal i din app
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
-        - name: Lägg till video som anropar din app (Java Script)
+        - name: Lägga till videosamtal i din app (JavaScript)
           href: quickstarts/voice-video-calling/get-started-with-video-calling.md
-        - name: Använd samtals-SDK
+        - name: 'Använda den anropande SDK:n'
           href: quickstarts/voice-video-calling/calling-client-samples.md
         - name: Anslut din samtalsapp till ett Teams-möte
           href: quickstarts/voice-video-calling/get-started-teams-interop.md
-    - name: GRÄNSSNITTs ramverk
+    - name: UI Framework
       items:
         - name: Komma igång med sammansatta komponenter
           href: quickstarts/ui-framework/get-started-with-composites.md
-        - name: Komma igång med bas komponenter
+        - name: Komma igång med baskomponenter
           href: quickstarts/ui-framework/get-started-with-components.md
         - name: Skapa en egen UI Framework-komponent
           href: quickstarts/ui-framework/create-your-own-components.md
@@ -63,16 +63,16 @@
       href: tutorials/trusted-service-tutorial.md
     - name: 'Signera en HTTP-begäran med en HMAC-signatur med C #'
       href: tutorials/hmac-header-tutorial.md
-    - name: Förbereda en webbapp för kommunikations tjänster (Node.js)
+    - name: Förbereda en webbapp för Communication Services (Node.js)
       href: tutorials/building-app-start.md
-    - name: Signera och gör förfrågningar till ACS SMS API med Postman
+    - name: Signera och skicka begäranden till ACS-SMS-API med Postman
       href: tutorials/postman-tutorial.md
 - name: Begrepp
   expanded: false
   items:
     - name: Chatt
       items:
-        - name: Översikt över chatt SDK
+        - name: Översikt över Chat SDK
           href: concepts/chat/sdk-features.md
         - name: Chattbegrepp
           href: concepts/chat/concepts.md
@@ -82,21 +82,21 @@
           href: concepts/telephony-sms/sdk-features.md
         - name: SMS-begrepp
           href: concepts/telephony-sms/concepts.md
-        - name: Telefoni koncept
+        - name: Telefonibegrepp
           href: concepts/telephony-sms/telephony-concept.md
-        - name: Telefonnummer typer
+        - name: Telefonnummertyper
           href: concepts/telephony-sms/plan-solution.md
-        - name: Infrastruktur krav för SIP-gränssnitt
+        - name: Infrastrukturkrav för SIP-gränssnitt
           href: concepts/telephony-sms/sip-interface-infrastructure.md
-        - name: VANLIGA FRÅGOR OCH SVAR OM SMS
+        - name: Vanliga frågor och svar om SMS
           href: concepts/telephony-sms/sms-faq.md
-        - name: Meddelande princip
+        - name: Meddelandeprincip
           href: concepts/telephony-sms/messaging-policy.md
     - name: Röst- och videosamtal
       items:
         - name: Kända problem
           href: concepts/known-issues.md
-        - name: Översikt över samtals-SDK
+        - name: Översikt över anropande SDK
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: Begrepp inom röst- och videosamtal
           href: concepts/voice-video-calling/about-call-types.md
@@ -104,26 +104,15 @@
           href: concepts/voice-video-calling/network-requirements.md
         - name: Samtalsflöden
           href: concepts/call-flows.md
-        - name: Topologier för anrops flöden
+        - name: Anropa flödes topologier
           href: concepts/detailed-call-flows.md
-    - name: GRÄNSSNITTs ramverk
+    - name: UI Framework
       items:
         - name: Översikt över UI Framework
           href: concepts/ui-framework/ui-sdk-overview.md
         - name: Funktioner i UI Framework
           href: concepts/ui-framework/ui-sdk-features.md
-    - name: Data och åtgärder
-      items:
-        - name: Tjänst händelser (EventGrid)
-          href: ../event-grid/event-schema-communication-services.md
-          maintainContext: true
-        - name: Loggning och diagnostik
-          href: concepts/logging-and-diagnostics.md
-        - name: Mått
-          href: concepts/metrics.md
-        - name: Felsökning
-          href: concepts/troubleshooting-info.md
-    - name: 'SDK: er och REST API: er'
+    - name: 'SDK:er och REST API:er'
       href: concepts/sdk-options.md
     - name: Klient- och serverarkitektur
       href: concepts/client-and-server-architecture.md
@@ -139,6 +128,15 @@
       href: concepts/notifications.md
     - name: Samverkan mellan team
       href: concepts/teams-interop.md
+    - name: Tjänsthändelser (EventGrid)
+      href: ../event-grid/event-schema-communication-services.md
+      maintainContext: true
+    - name: Loggning och diagnostik
+      href: concepts/logging-and-diagnostics.md
+    - name: Mått
+      href: concepts/metrics.md
+    - name: Felsökning
+      href: concepts/troubleshooting-info.md
 - name: Exempel
   items:
     - name: Översikt
@@ -173,7 +171,7 @@
           href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationchat'
         - name: Chatt (Android/Java)
           href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-chat'
-        - name: Chat (python)
+        - name: Chatt (Python)
           href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-chat'
     - name: SMS-bibliotek
       items:
@@ -183,17 +181,17 @@
           href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationsms'
         - name: SMS (Android/Java)
           href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-sms'
-        - name: SMS (python)
+        - name: SMS (Python)
           href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-sms'
-    - name: Identitets bibliotek
+    - name: Identitetsbibliotek
       items:
-        - name: Identitet (Java Script)
+        - name: Identitet (JavaScript)
           href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-identity'
         - name: Identitet (.NET)
           href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationidentity'
         - name: Identitet (Android/Java)
           href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-identity'
-        - name: Identitet (python)
+        - name: Identitet (Python)
           href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-identity'
     - name: Vanliga bibliotek
       items:
@@ -203,7 +201,7 @@
           href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationcommon'
         - name: Vanliga (Android/Java)
           href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-common'
-        - name: Common (python)
+        - name: Common (Python)
           href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-common'
 - name: Resurser
   items:

@@ -1,118 +1,122 @@
 ---
-title: 'ID: formulär identifierare'
+title: -FORMIGENKÄNNING
 titleSuffix: Azure Cognitive Services
-description: 'Lär dig begrepp som rör extrahering av data från identitets dokument med hjälp av ID: n för förskapade ID i formulär tolken.'
+description: Lär dig begrepp som rör extrahering av data från identitetsdokument med Formigenkänning förbyggda ID:ns API.
 services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 04/14/2021
 ms.author: lajanuar
-ms.openlocfilehash: ed8516f9a898131338fb5b4d75e25cd774c5ab43
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 00e51d2c9515191b6d127355f49eeed3000a46ed
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285367"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514721"
 ---
-# <a name="form-recognizer-prebuilt-identification-card-id-model"></a>Modell för fördefinierat identifierings kort (ID) för formulär tolken
+# <a name="form-recognizer-prebuilt-identification-id-document-model"></a>Formigenkänning förbyggd dokumentmodell för identifiering (ID)
 
-Azure formulär tolken kan analysera och extrahera information från myndighets identifierings kort (ID) med hjälp av en fördefinierad ID-modell. Den kombinerar vår kraftfulla [OCR-kapacitet (optisk tecken läsning)](../computer-vision/overview-ocr.md) med ID igenkännings funktioner för att extrahera viktig information från Worldwide Passport och amerikanska driv rutins licenser (alla 50-stater och D.C.). ID-API: n extraherar viktig information från dessa identitets dokument, till exempel förnamn, efter namn, födelse datum, dokument nummer och mycket annat. Detta API är tillgängligt i för hands versionen av Forms igenkänning v 2.1 som en moln tjänst och som en lokal behållare.
+Azure Formigenkänning kan analysera och extrahera information från myndighetsutgivna identifieringsdokument (ID: n) med hjälp av dess fördefinierade ID-modell. Den kombinerar våra kraftfulla [OCR-funktioner (optisk teckenläsning)](../computer-vision/overview-ocr.md) med ID-igenkänningsfunktioner för att extrahera viktig information från Worldwide Passports och AMERIKANSKA drivrutinslicenser (alla 50 delstater och D.C.). ID-API:et extraherar viktig information från dessa identitetsdokument, till exempel förnamn, efternamn, födelsedatum, dokumentnummer med mera. Detta API är tillgängligt i Formigenkänning v2.1-förhandsversion som en molntjänst och som en lokal container.
 
-## <a name="what-does-the-id-service-do"></a>Vad gör ID-tjänsten? 
+## <a name="what-does-the-id-service-do"></a>Vad gör ID-tjänsten?
 
-De förinställda ID-tjänsterna extraherar nyckel värden från Worldwide Passport och amerikanska driv Rutins licenser och returnerar dem i ett organiserat strukturerat JSON-svar. 
+Den fördefinierade ID-tjänsten extraherar nyckelvärdena från världsomfattande pass och amerikanska drivrutinslicenser och returnerar dem i ett ordnat strukturerat JSON-svar.
 
-![Exempel på driv Rutins licens](./media/id-example-drivers-license.JPG)
+### <a name="drivers-license-example"></a>**Exempel på drivrutinslicens**
 
-![Exempel på Passport](./media/id-example-passport-result.JPG)
+![Exempel på drivrutinslicens](./media/id-example-drivers-license.JPG)
+
+### <a name="passport-example"></a>**Passport-exempel**
+
+![Passport-exempel](./media/id-example-passport-result.JPG)
 
 ### <a name="fields-extracted"></a>Extraherade fält
 
-|Namn| Typ | Beskrivning | Värde | 
+|Namn| Typ | Description | Värde |
 |:-----|:----|:----|:----|
-|  Land | land | Landskod som är kompatibel med ISO 3166 standard | Förenta | 
-|  DateOfBirth | date | DOB i ÅÅÅÅ-MM-DD-format | "1980-01-01" | 
-|  DateOfExpiration | date | Utgångs datum i ÅÅÅÅ-MM-DD-format | "2019-05-05" |  
-|  DocumentNumber | sträng | Relevant Passport-nummer, driv Rutinens licens nummer osv. | "340020013" |  
-|  FirstName | sträng | Extraherat tilldelat namn och initial om det är tillämpligt | Jennifer | 
-|  LastName | sträng | Extraherat efter namn | "BROOKS" |   
-|  Fartyg | land | Landskod som är kompatibel med ISO 3166 standard | Förenta |
-|  Sex | kön | Möjliga extraherade värden är "M", "F" och "X" | B | 
-|  MachineReadableZone | objekt | Extraherade Passport-MRZ inklusive två rader på 44 tecken | "P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<<<<<<<<<<<<<<<<<<<<<<< 6 715816" |
-|  DocumentType | sträng | Dokument typ, till exempel Passport, driv Rutinens licens | hanteringsobjektet |  
-|  Adress | sträng | Extraherad adress (endast driv Rutinens licens) | "123-GATUADRESS DIN STAD, WA 99999-1234"|
-|  Region | sträng | Extraherad region, delstat, provins osv. (endast driv Rutinens licens) | Region | 
+|  Land | land | Landskod som är kompatibel med ISO 3166-standarden | "USA" |
+|  DateOfBirth | date | DOB i formatet YYYY-MM-DD | "1980-01-01" |
+|  DateOfExpiration | date | Förfallodatum i formatet YYYY-MM-DD | "2019-05-05" |
+|  DocumentNumber | sträng | Relevant passnummer, förarlicensnummer osv. | "340020013" |
+|  FirstName | sträng | Extraherat förnamn och mellan initial om tillämpligt | "KANT" |
+|  LastName | sträng | Extraherat efternamn | "KANT" |
+|  Nationalitet | land | Landskod som är kompatibel med ISO 3166-standarden | "USA" |
+|  Sex | kön | Möjliga extraherade värden är "M", "F" och "X" | "F" |
+|  MachineReadableZone | objekt | Extraherade Passport MRZ inklusive två rader med 44 tecken vardera | "P<USAFARS<<–<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<<<<<<<<<<<<<<<<<<<<<<< 6 715816" |
+|  DocumentType | sträng | Dokumenttyp, till exempel Passport, drivrutinslicens | "passport" |
+|  Adress | sträng | Extraherad adress (endast drivrutinslicens) | "123 STREET ADDRESS YOUR CITY WA 99999-1234"|
+|  Region | sträng | Extraherad region, delstat, provins osv. (endast drivrutinslicens) | "Washington" |
 
 ### <a name="additional-features"></a>Ytterligare funktioner
 
-API: n returnerar även följande information:
+API:et för -API:et returnerar också följande information:
 
-* Fält konfidensnivå (varje fält returnerar ett associerat konfidens värde)
-* OCR RAW-text (OCR-extraherade textutdata för hela kvittot)
-* Avgränsnings ruta för varje extraherat fält i amerikanska driv Rutins licenser
-* Avgränsnings ruta för MRZ (Machine läslig Zone) på Passport
+* Konfidensnivå för fält (varje fält returnerar ett associerat konfidensvärde)
+* OCR-råtext (OCR-extraherad textutdata för hela kvittot)
+* Begränsningsruta för varje extraherat fält i USA-drivrutinslicenser
+* Begränsningsruta för datorns läsbara zon (MRZ) på Passport
 
   > [!NOTE]
-  > Förbyggda ID: n identifierar inte ID-äkthet
+  > Förbyggda ID:n identifierar inte ID-äkthet
   >
-  > Formulär tolken i förväg skapade ID: n extraherar nyckel data från ID-data. Det kommer dock inte att identifiera giltigheten eller äktheten hos det ursprungliga identitets dokumentet. 
+  > Formigenkänning inbyggda ID:n extraherar nyckeldata från ID-data. Den identifierar dock inte giltigheten eller äktheten för det ursprungliga identitetsdokumentet.
 
 ## <a name="try-it-out"></a>Prova
 
-Om du vill testa formulär identifierarens ID-tjänst går du till verktyget online-exempel UI:
+Om du vill prova Formigenkänning IDs-tjänsten går du till exempelgränssnittsverktyget online:
 
 > [!div class="nextstepaction"]
-> [Prova färdiga modeller](https://fott-preview.azurewebsites.net/)
+> [Prova fördefinierade modeller](https://fott-preview.azurewebsites.net/)
 
-## <a name="input-requirements"></a>Krav för indatamängd
+## <a name="input-requirements"></a>Indatakrav
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
-## <a name="supported-id-types"></a>ID-typer som stöds  
+## <a name="supported-id-types"></a>ID-typer som stöds
 
-* **Färdiga ID v 2.1 – för hands version. 3** Extraherar nyckel värden från Worldwide Passport och amerikanska driv Rutins licenser. 
+* **Färdiga IDs v2.1-preview.3** Extraherar nyckelvärden från världsomfattande pass och amerikanska drivrutinslicenser.
 
   > [!NOTE]
-  > Stöd för ID-typ 
+  > Stöd för ID-typ
   >
-  > ID-typer som stöds för närvarande är världs omspännande och amerikanska driv Rutins licenser. Vi söker aktivt för att utöka vårt ID-stöd till andra identitets dokument runtom i världen.
+  > ID-typer som stöds för närvarande är världsomfattande passport- och amerikanska drivrutinslicenser. Vi vill aktivt utöka vårt ID-stöd till andra identitetsdokument över hela världen.
 
-## <a name="post-analyze-id-document"></a>PUBLICERA dokument med analys-ID
+## <a name="post-analyze-id-document"></a>Dokument för POST-analys-ID
 
-Åtgärden [analysera ID](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5f74a7daad1f2612c46f5822) tar en bild eller PDF av ett ID som indata och extraherar värdenas värden. Anropet returnerar ett svars huvud fält som kallas `Operation-Location` . `Operation-Location`Värdet är en URL som innehåller det resultat-ID som ska användas i nästa steg.
+Åtgärden [Analysera ID](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5f74a7daad1f2612c46f5822) tar en bild eller PDF av ett ID som indata och extraherar intressanta värden. Anropet returnerar ett svarshuvudfält med namnet `Operation-Location` . Värdet `Operation-Location` är en URL som innehåller det resultat-ID som ska användas i nästa steg.
 
-|Svars huvud| Resultat-URL |
+|Svarshuvud| Resultat-URL |
 |:-----|:----|
 |Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/idDocument/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
-## <a name="get-analyze-id-document-result"></a>Hämta dokument resultat för analysera ID
+## <a name="get-analyze-id-document-result"></a>Resultat av GET Analyze ID-dokument
 
 <!---
 Need to update this with updated APIM links when available
 -->
 
-Det andra steget är att anropa [**resultat åtgärden Hämta analysera idDocument**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeFormResult) . Den här åtgärden tar in det resultat-ID som skapades av åtgärden analysera ID. Den returnerar ett JSON-svar som innehåller ett **status** fält med följande möjliga värden. Du anropar den här åtgärden iterativt tills den returnerar värdet **lyckades** . Använd ett intervall på 3 till 5 sekunder för att undvika att överskrida antalet begär Anden per sekund (RPS).
+Det andra steget är att anropa [**åtgärden Get Analyze idDocument Result.**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeFormResult) Den här åtgärden tar som indata det resultat-ID som skapades av åtgärden Analysera ID. Den returnerar ett JSON-svar som innehåller **ett statusfält** med följande möjliga värden. Du anropar den här åtgärden iterativt tills den returnerar med **värdet lyckades.** Använd ett intervall på 3 till 5 sekunder för att undvika att överskrida frekvensen för begäranden per sekund (RPS).
 
 |Fält| Typ | Möjliga värden |
 |:-----|:----:|:----|
-|status | sträng | notStarted: analys åtgärden har inte startats. |
-| |  | körs: analys åtgärden pågår. |
-| |  | misslyckades: det gick inte att utföra analysen. |
-| |  | lyckades: analys åtgärden har slutförts. |
+|status | sträng | notStarted: Analysåtgärden har inte startats. |
+| |  | körs: Analysåtgärden pågår. |
+| |  | misslyckades: Analysåtgärden misslyckades. |
+| |  | lyckades: Analysåtgärden har lyckats. |
 
-När fältet **status** har värdet **lyckades** inkluderar JSON-svaret mottagnings förståelse och text igenkännings resultat. ID-resultatet är ordnat som en ord lista med namngivna fält värden där varje värde innehåller den extraherade texten, normaliserat värde, avgränsnings ruta, konfidens och motsvarande Word-element. Resultatet av text igenkänningen är ordnat som en hierarki med rader och ord, med text, avgränsnings ram och information om säkerhet.
+När **statusfältet** har värdet **lyckades innehåller** JSON-svaret resultatet för kvittoförståelse och textigenkänning. Resultatet av -ID:erna ordnas som en ordlista med namngivna fältvärden, där varje värde innehåller den extraherade texten, det normaliserade värdet, en begränsningsruta, konfidens och motsvarande ordelement. Textigenkänningsresultatet ordnas som en hierarki med rader och ord, med text, avgränsare och konfidensinformation.
 
-![exempel på mottagnings resultat](./media/id-example-passport-result.JPG)
+![exempel på kvittoresultat](./media/id-example-passport-result.JPG)
 
 ### <a name="sample-json-output"></a>Exempel på JSON-utdata
 
-Se följande exempel på ett lyckat JSON-svar: `readResults` noden innehåller all identifierad text. Texten sorteras efter sida, sedan efter rad, sedan efter enskilda ord. `documentResults`Noden innehåller de ID-värden som modellen identifierade. Den här noden är också där du hittar användbara nyckel/värde-par som förnamn, efter namn, dokument nummer och mycket annat.
+Se följande exempel på ett lyckat JSON-svar: `readResults` Noden innehåller all tolkad text. Text ordnas efter sida, sedan efter rad och sedan efter enskilda ord. Noden `documentResults` innehåller DE ID-värden som modellen identifierade. I den här noden hittar du även användbara nyckel/värde-par som förnamn, efternamn, dokumentnummer med mera.
 
 ```json
-{ 
+{
    "status": "succeeded",
   "createdDateTime": "2021-03-04T22:29:33Z",
   "lastUpdatedDateTime": "2021-03-04T22:29:36Z",
@@ -157,7 +161,7 @@ Se följande exempel på ett lyckat JSON-svar: `readResults` noden innehåller a
           ...
       }
     ],
-    
+
      "documentResults": [
       {
         "docType": "prebuilt:idDocument:passport",
@@ -243,13 +247,12 @@ Se följande exempel på ett lyckat JSON-svar: `readResults` noden innehåller a
 }
 ```
 
-
 ## <a name="next-steps"></a>Nästa steg
 
-- Testa dina egna ID: n och exempel i [formulär tolkens exempel gränssnitt](https://fott-preview.azurewebsites.net/).
-- Slutför en [snabb start för formulär igenkänning](quickstarts/client-library.md) för att komma igång med att skriva en app för ID-bearbetning med formulär tolken i valfritt utvecklings språk.
+* Prova dina egna ID:er och exempel i [Formigenkänning exempelgränssnittet](https://fott-preview.azurewebsites.net/).
+* Slutför en [Formigenkänning snabbstart för](quickstarts/client-library.md) att komma igång med att skriva en APP för ID-bearbetning med Formigenkänning på val annat utvecklingsspråk.
 
 ## <a name="see-also"></a>Se även
 
 * [**Vad är formigenkänning?**](./overview.md)
-* [**REST API referens dokument**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)
+* [**REST API referensdokument**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)

@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: d777588f0abdd1f771deb259c597f6407e61d874
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 1213d5f7421cc71255f29d013fa47878559110ee
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364625"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481590"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory Managed Virtual Network (förhandsversion)
 
@@ -47,9 +47,9 @@ Hanterade privata slutpunkter är privata slutpunkter som skapas i Azure Data Fa
 
 ![Ny hanterad privat slutpunkt](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure Data Factory har stöd för privata länkar. Med Private Link kan du komma åt Azure-tjänster (till exempel Azure Storage, Azure Cosmos DB Azure Synapse Analytics).
+Azure Data Factory stöder privata länkar. Med Private Link kan du komma åt Azure-tjänster (till exempel Azure Storage, Azure Cosmos DB Azure Synapse Analytics).
 
-När du använder en privat länk passerar trafik mellan dina datalager och Virtual Network helt över Microsofts stamnätverk. Private Link skyddar mot data exfiltreringsrisker. Du upprättar en privat länk till en resurs genom att skapa en privat slutpunkt.
+När du använder en privat länk passerar trafik mellan dina datalager och hanterade Virtual Network helt över Microsofts stamnätverk. Private Link skyddar mot data exfiltreringsrisker. Du skapar en privat länk till en resurs genom att skapa en privat slutpunkt.
 
 Den privata slutpunkten använder en privat IP-adress i den hanterade Virtual Network för att effektivt föra in tjänsten i den. Privata slutpunkter mappas till en specifik resurs i Azure och inte till hela tjänsten. Kunder kan begränsa anslutningen till en specifik resurs som godkänts av organisationen. Läs mer om [privata länkar och privata slutpunkter.](../private-link/index.yml)
 
@@ -59,7 +59,7 @@ Den privata slutpunkten använder en privat IP-adress i den hanterade Virtual Ne
 > [!WARNING]
 > Om ett PaaS-datalager (Blob, ADLS Gen2, Azure Synapse Analytics) redan har en privat slutpunkt som redan har skapats mot det, och även om det tillåter åtkomst från alla nätverk, kan ADF bara komma åt den med hjälp av hanterad privat slutpunkt. Se till att du skapar en privat slutpunkt i sådana scenarier. 
 
-En privat slutpunktsanslutning skapas i ett väntande tillstånd när du skapar en hanterad privat slutpunkt i Azure Data Factory. Ett arbetsflöde för godkännande initieras. Ägaren till den privata länkresursen ansvarar för att godkänna eller avvisa anslutningen.
+En privat slutpunktsanslutning skapas i tillståndet "Väntar" när du skapar en hanterad privat slutpunkt i Azure Data Factory. Ett arbetsflöde för godkännande initieras. Ägaren till den privata länkresursen ansvarar för att godkänna eller avvisa anslutningen.
 
 ![Hantera privat slutpunkt](./media/tutorial-copy-data-portal-private/manage-private-endpoint.png)
 
@@ -120,10 +120,10 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 
 ## <a name="limitations-and-known-issues"></a>Begränsningar och kända problem
 ### <a name="supported-data-sources"></a>Datakällor som stöds
-Nedanstående datakällor kan ansluta via en privat länk från ADF Managed Virtual Network.
-- Azure Blob Storage
-- Azure Table Storage
-- Azure Files
+Nedanstående datakällor stöds för att ansluta via privat länk från ADF Managed Virtual Network.
+- Azure Blob Storage (inkluderar inte lagringskontot V1)
+- Azure Table Storage (inte lagringskonto V1)
+- Azure Files (inkluderar inte lagringskontot V1)
 - Azure Data Lake Gen2
 - Azure SQL Database (inkluderar inte Azure SQL Managed Instance)
 - Azure Synapse Analytics
@@ -164,8 +164,8 @@ Nedanstående datakällor kan ansluta via en privat länk från ADF Managed Virt
 - Endast port 443 öppnas för utgående kommunikation.
 - Azure Storage och Azure Data Lake-Gen2 stöds inte för anslutning via den offentliga slutpunkten från ett ADF-hanterat virtuellt nätverk.
 
-### <a name="linked-service-creation-of-azure-key-vault"></a>Skapande av en länkad tjänst Azure Key Vault 
-- När du skapar en länkad tjänst för Azure Key Vault finns det ingen Azure Integration Runtime-referens. Det gör att du inte kan skapa en privat slutpunkt när en länkad tjänst skapas Azure Key Vault. Men när du skapar en länkad tjänst för datalager som refererar till Azure Key Vault Linked Service och denna länkade tjänst refererar till Azure Integration Runtime med Managed Virtual Network aktiverat, kan du skapa en privat slutpunkt för den länkade Azure Key Vault-tjänsten när den skapas. 
+### <a name="linked-service-creation-of-azure-key-vault"></a>Skapa en länkad tjänst Azure Key Vault 
+- När du skapar en länkad tjänst för Azure Key Vault finns det ingen Azure Integration Runtime-referens. Det gör att du inte kan skapa en privat slutpunkt när en länkad tjänst skapas Azure Key Vault. Men när du skapar länkad tjänst för datalager som refererar till Azure Key Vault Linked Service och denna länkade tjänst refererar till Azure Integration Runtime med Managed Virtual Network aktiverat, kan du skapa en privat slutpunkt för den länkade Azure Key Vault-tjänsten när den skapas. 
 - **Testanslutningsåtgärden** för länkad Azure Key Vault verifierar endast URL-formatet, men gör ingen nätverksåtgärd.
 - Kolumnen Använda **privat slutpunkt visas** alltid som tom även om du skapar privat slutpunkt för Azure Key Vault.
 ![Privat slutpunkt för AKV](./media/managed-vnet/akv-pe.png)
@@ -173,4 +173,4 @@ Nedanstående datakällor kan ansluta via en privat länk från ADF Managed Virt
 ## <a name="next-steps"></a>Nästa steg
 
 - Självstudie: [Skapa en kopieringspipeline med hanterade Virtual Network och privata slutpunkter](tutorial-copy-data-portal-private.md) 
-- Självstudie: [Skapa en pipeline för dataflödesmappning med hanterade Virtual Network och privata slutpunkter](tutorial-data-flow-private.md)
+- Självstudie: [Skapa pipeline för mappning av dataflöde med Virtual Network och privata slutpunkter](tutorial-data-flow-private.md)

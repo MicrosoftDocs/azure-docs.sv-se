@@ -1,7 +1,7 @@
 ---
-title: Träna med Machine Learning-datauppsättningar
+title: Träna med maskininlärningsdatauppsättningar
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du gör dina data tillgängliga för din lokala eller fjärrberäkning för modell utbildning med Azure Machine Learning data uppsättningar.
+description: Lär dig hur du gör dina data tillgängliga för din lokala beräkning eller fjärrbearbetning för modellträning med Azure Machine Learning datauppsättningar.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,43 +12,43 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 8b984a17c8c10c3dff7c57b7d0223ba8b4197012
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: edb7ebc94d2706d1bf20db8ed9a869107163ff8d
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640121"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387997"
 ---
-# <a name="train-models-with-azure-machine-learning-datasets"></a>Träna modeller med Azure Machine Learning data uppsättningar 
+# <a name="train-models-with-azure-machine-learning-datasets"></a>Träna modeller med Azure Machine Learning datauppsättningar 
 
-I den här artikeln får du lära dig hur du arbetar med [Azure Machine Learning data uppsättningar](/python/api/azureml-core/azureml.core.dataset%28class%29) för att träna maskin inlärnings modeller.  Du kan använda data uppsättningar i det lokala eller fjärranslutna beräknings målet utan att behöva oroa dig om anslutnings strängar eller data Sök vägar. 
+I den här artikeln får du lära dig hur du arbetar [med Azure Machine Learning datauppsättningar för](/python/api/azureml-core/azureml.core.dataset%28class%29) att träna maskininlärningsmodeller.  Du kan använda datauppsättningar i ditt lokala eller fjärranslutna beräkningsmål utan att behöva bekymra dig om anslutningssträngar eller datasökvägar. 
 
-Azure Machine Learning data uppsättningar ger en sömlös integrering med Azure Machine Learning inlärnings funktioner som [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig), [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive) och [Azure Machine Learning pipelines](./how-to-create-machine-learning-pipelines.md).
+Azure Machine Learning datauppsättningar ger en sömlös integrering med Azure Machine Learning träningsfunktioner som [ScriptRunConfig,](/python/api/azureml-core/azureml.core.scriptrunconfig) [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive) [och Azure Machine Learning pipelines](./how-to-create-machine-learning-pipelines.md).
 
-Om du inte är redo att göra dina data tillgängliga för modell utbildning, men vill läsa in data till din bärbara dator för data utforskning, se så här [utforskar du data i din data uppsättning](how-to-create-register-datasets.md#explore-data). 
+Om du inte är redo att göra dina data tillgängliga för modellträning, men vill läsa in dina data till notebook-datorn för datautforskning, kan du läsa mer i utforska [data i datamängden](how-to-create-register-datasets.md#explore-data). 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-För att skapa och träna med data uppsättningar behöver du:
+Om du vill skapa och träna med datauppsättningar behöver du:
 
-* En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag.
+* En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnadsfria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag.
 
-* En [Azure Machine Learning-arbetsyta](how-to-manage-workspace.md).
+* En [Azure Machine Learning arbetsyta](how-to-manage-workspace.md).
 
-* [Azure Machine Learning SDK för python installerat](/python/api/overview/azure/ml/install) (>= 1.13.0), som innehåller `azureml-datasets` paketet.
+* [Sdk Azure Machine Learning för Python installerat](/python/api/overview/azure/ml/install) (>= 1.13.0), som innehåller `azureml-datasets` paketet.
 
 > [!Note]
-> Vissa data uppsättnings klasser är beroende av [azureml-nu-](https://pypi.org/project/azureml-dataprep/) paketet. För Linux-användare stöds dessa klasser endast för följande distributioner: Red Hat Enterprise Linux, Ubuntu, Fedora och CentOS.
+> Vissa datamängdsklasser har beroenden på [paketet azureml-dataprep.](https://pypi.org/project/azureml-dataprep/) För Linux-användare stöds dessa klasser endast på följande distributioner: Red Hat Enterprise Linux, Ubuntu, Fedora och CentOS.
 
-## <a name="consume-datasets-in-machine-learning-training-scripts"></a>Använda data uppsättningar i skript för Machine Learning-utbildning
+## <a name="consume-datasets-in-machine-learning-training-scripts"></a>Använda datauppsättningar i maskininlärningsträningsskript
 
-Om du har strukturerade data som ännu inte har registrerats som en data uppsättning skapar du en TabularDataset och använder den direkt i ditt utbildnings skript för ditt lokala eller fjärranslutna experiment.
+Om du har strukturerade data som ännu inte har registrerats som en datauppsättning skapar du en TabularDataset och använder den direkt i ditt träningsskript för ditt lokala experiment eller fjärrexperiment.
 
-I det här exemplet skapar du ett oregistrerat [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) och anger det som ett skript argument i ScriptRunConfig-objektet för träning. Om du vill återanvända den här TabularDataset med andra experiment i din arbets yta, se [så här registrerar du data uppsättningar på din arbets yta](how-to-create-register-datasets.md#register-datasets).
+I det här exemplet skapar du en oregistrerad [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) och anger den som ett skriptargument i [ScriptRunConfig-objektet](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig) för träning. Om du vill återanvända det här TabularDataset med andra experiment på arbetsytan kan du se [hur du registrerar datauppsättningar på din arbetsyta.](how-to-create-register-datasets.md#register-datasets)
 
 ### <a name="create-a-tabulardataset"></a>Skapa en TabularDataset
 
-Följande kod skapar ett oregistrerat TabularDataset från en webb-URL.  
+Följande kod skapar en oregistrerad TabularDataset från en webbadress.  
 
 ```Python
 from azureml.core.dataset import Dataset
@@ -57,16 +57,16 @@ web_path ='https://dprepdata.blob.core.windows.net/demo/Titanic.csv'
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
 ```
 
-TabularDataset-objekt ger möjlighet att läsa in data i din TabularDataset i en Pandas-eller Spark-DataFrame så att du kan arbeta med välbekanta data förberedelse-och utbildnings bibliotek utan att behöva lämna din antecknings bok.
+Med TabularDataset-objekt kan du läsa in data i TabularDataset till en Pandas- eller Spark DataFrame så att du kan arbeta med välbekanta bibliotek för förberedelse av data och träning utan att behöva lämna notebook-datorn.
 
-### <a name="access-dataset-in-training-script"></a>Åtkomst data uppsättning i övnings skript
+### <a name="access-dataset-in-training-script"></a>Komma åt datauppsättningen i träningsskriptet
 
-Följande kod konfigurerar ett skript argument `--input-data` som du anger när du konfigurerar din utbildnings körning (se nästa avsnitt). När tabell data uppsättningen skickas som argumentvärdet kommer Azure ML att matcha detta med ID för data uppsättningen, som du sedan kan använda för att få åtkomst till data uppsättningen i ditt utbildnings skript (utan att behöva hårdkoda namnet eller ID: t för data uppsättningen i skriptet). Den använder sedan [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) metoden för att läsa in data uppsättningen i en Pandas-dataframe för ytterligare data utforskning och förberedelser innan utbildning.
+Följande kod konfigurerar ett skriptargument `--input-data` som du anger när du konfigurerar din träningskörning (se nästa avsnitt). När tabelldatauppsättningen skickas som argumentvärde matchar Azure ML det till ID för datauppsättningen, som du sedan kan använda för att komma åt datauppsättningen i ditt träningsskript (utan att behöva hårdkoda namnet eller ID:t för datauppsättningen i skriptet). Den använder sedan metoden [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) för att läsa in datauppsättningen i en Pandas-dataram för ytterligare datagranskning och förberedelse före träning.
 
 > [!Note]
-> Om den ursprungliga data källan innehåller NaN, tomma strängar eller tomma värden, `to_pandas_dataframe()` ersätts dessa värden som ett *Null* -värde.
+> Om den ursprungliga datakällan innehåller NaN, tomma strängar eller tomma värden ersätts dessa värden som `to_pandas_dataframe()` ett *Null-värde* när du använder .
 
-Om du behöver läsa in de data som för bereddes i en ny data uppsättning från en minnes intern Pandas-dataframe skriver du data till en lokal fil, t. ex. en Parquet och skapar en ny data uppsättning från den filen. Läs mer om [hur du skapar data uppsättningar](how-to-create-register-datasets.md).
+Om du behöver läsa in förberedda data i en ny datauppsättning från en minnes in memory Pandas-dataram skriver du data till en lokal fil, till exempel en parquet, och skapar en ny datauppsättning från filen. Läs mer om [hur du skapar datauppsättningar](how-to-create-register-datasets.md).
 
 ```Python
 %%writefile $script_folder/train_titanic.py
@@ -88,16 +88,16 @@ dataset = Dataset.get_by_id(ws, id=args.input_data)
 df = dataset.to_pandas_dataframe()
 ```
 
-### <a name="configure-the-training-run"></a>Konfigurera utbildnings körningen
+### <a name="configure-the-training-run"></a>Konfigurera träningskörningen
 
-Ett [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrun) -objekt används för att konfigurera och skicka utbildnings körningen.
+Ett [ScriptRunConfig-objekt](/python/api/azureml-core/azureml.core.scriptrun) används för att konfigurera och skicka träningskörningen.
 
-Den här koden skapar ett ScriptRunConfig-objekt, `src` som anger
+Den här koden skapar ett ScriptRunConfig-objekt, `src` , som anger
 
-* En skript katalog för dina skript. Alla filer i den här katalogen laddas upp till klusternoderna för körning.
-* Övnings skriptet *train_titanic. py*.
-* Data uppsättningen för indata för träning, `titanic_ds` som ett skript argument. Azure ML kommer att matcha detta med motsvarande ID för data uppsättningen när den skickas till skriptet.
-* Compute-målet för körningen.
+* En skriptkatalog för dina skript. Alla filer i den här katalogen laddas upp till klusternoderna för körning.
+* Träningsskriptet, *train_titanic.py*.
+* Indatauppsättningen för träning, `titanic_ds` , som ett skriptargument. Azure ML matchar detta till motsvarande ID för datauppsättningen när den skickas till skriptet.
+* Beräkningsmålet för körningen.
 * Miljön för körningen.
 
 ```python
@@ -115,20 +115,29 @@ run = experiment.submit(src)
 run.wait_for_completion(show_output=True)                             
 ```
 
-## <a name="mount-files-to-remote-compute-targets"></a>Montera filer på fjärranslutna beräknings mål
+## <a name="mount-files-to-remote-compute-targets"></a>Montera filer till fjärrbearbetningsmål
 
-Om du har ostrukturerade data kan du skapa en [FileDataset](/python/api/azureml-core/azureml.data.filedataset) och antingen montera eller ladda ned dina datafiler så att de blir tillgängliga för ditt fjärrberäknings mål för utbildning. Lär dig mer om hur du använder [montering jämfört med att ladda ned](#mount-vs-download) för dina experiment. 
+Om du har ostrukturerade data skapar du en [FileDataset](/python/api/azureml-core/azureml.data.filedataset) och monterar eller laddar ned dina datafiler för att göra dem tillgängliga för fjärrbearbetningsmålet för träning. Lär dig mer om när du ska [använda montera eller ladda ned](#mount-vs-download) för dina fjärranslutna träningsexperiment. 
 
-I följande exempel skapas en FileDataset och monterar data uppsättningen till Compute-målet genom att skicka den som ett argument till övnings skriptet. 
+I följande exempel: 
+
+* Skapar indatafilen FileDataset, `mnist_ds` , för dina träningsdata.
+* Anger var träningsresultat ska skrivas och för att höja upp resultaten som en FileDataset.
+* Monterar indatauppsättningen till beräkningsmålet.
 
 > [!Note]
-> Om du använder en anpassad Docker-bas avbildning måste du installera säkring via `apt-get install -y fuse` som ett beroende för att data uppsättnings montering ska fungera. Lär dig hur du [skapar en anpassad versions avbildning](how-to-deploy-custom-docker-image.md#build-a-custom-base-image).
+> Om du använder en anpassad Docker-basavbildning måste du installera Fuse via som ett beroende för att `apt-get install -y fuse` datauppsättningsmonteringen ska fungera. Lär dig hur du [skapar en anpassad byggavbildning](how-to-deploy-custom-docker-image.md#build-a-custom-base-image).
+
+Notebook-exemplet finns i Så [här konfigurerar du en träningskörning med indata och utdata.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/scriptrun-with-data-input-output/how-to-use-scriptrun.ipynb)
 
 ### <a name="create-a-filedataset"></a>Skapa en FileDataset
 
-I följande exempel skapas en oregistrerad FileDataset från webb-URL: er. Lär dig mer om [hur du skapar data uppsättningar](how-to-create-register-datasets.md) från andra källor.
+I följande exempel skapas en oregistrerad FileDataset från `mnist_data` webb-URL:er. Den här FileDataset är indata för din träningskörning.
+
+Läs mer om [hur du skapar datauppsättningar](how-to-create-register-datasets.md) från andra källor.
 
 ```Python
+
 from azureml.core.dataset import Dataset
 
 web_paths = [
@@ -137,22 +146,49 @@ web_paths = [
             'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
             'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
             ]
+
 mnist_ds = Dataset.File.from_files(path = web_paths)
+
+```
+### <a name="where-to-write-training-output"></a>Var du skriver träningsutdata
+
+Du kan ange var du vill skriva träningsresultaten med ett [OutputFileDatasetConfig-objekt](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig). 
+
+Med OutputFileDatasetConfig-objekt kan du: 
+
+* Montera eller ladda upp utdata från en körning till molnlagring som du anger.
+* Spara utdata som en FileDataset till följande lagringstyper som stöds:
+    * Azure-blob
+    * Azure-filresurs
+    * Azure Data Lake Storage generation 1 och 2
+* Spåra datakällan mellan träningskörningar.
+
+Följande kod anger att träningsresultat ska sparas som en FileDataset `outputdataset` i mappen i standardblobdataarkivet, `def_blob_store` . 
+
+```python
+from azureml.core import Workspace
+from azureml.data import OutputFileDatasetConfig
+
+ws = Workspace.from_config()
+
+def_blob_store = ws.get_default_datastore()
+output = OutputFileDatasetConfig(destination=(def_blob_store, 'sample/outputdataset'))
 ```
 
-### <a name="configure-the-training-run"></a>Konfigurera utbildnings körningen
+### <a name="configure-the-training-run"></a>Konfigurera träningskörningen
 
-Vi rekommenderar att du skickar data uppsättningen som ett argument när du monterar via `arguments` parametern för `ScriptRunConfig` konstruktorn. På så sätt får du data Sök vägen (monterings punkten) i utbildnings skriptet via argument. På så sätt kan du använda samma utbildnings skript för lokal fel sökning och fjärran sluten utbildning på vilken moln plattform som helst.
+Vi rekommenderar att du anger datauppsättningen som ett argument vid montering via `arguments` -parametern för `ScriptRunConfig` konstruktorn. På så sätt får du datasökvägen (monteringspunkten) i träningsskriptet via argument. På så sätt kan du använda samma träningsskript för lokal felsökning och fjärrträning på valfri molnplattform.
 
-I följande exempel skapas en ScriptRunConfig som passerar i FileDataset via `arguments` . När du har skickat körningen kommer datafiler som refereras till data uppsättningen att `mnist_ds` monteras till beräknings målet.
+I följande exempel skapas en ScriptRunConfig som skickar FileDataset via `arguments` . När du har skickat körningen monteras de datafiler som datamängden refererar till till beräkningsmålet och träningsresultatet sparas i den angivna mappen i `mnist_ds` `outputdataset` standarddatalagringen.
 
 ```python
 from azureml.core import ScriptRunConfig
 
+input_data= mnist_ds.as_named_input('input').as_mount()# the dataset will be mounted on the remote compute 
+
 src = ScriptRunConfig(source_directory=script_folder,
-                      script='train_mnist.py',
-                      # the dataset will be mounted on the remote compute and the mounted path passed as an argument to the script
-                      arguments=['--data-folder', mnist_ds.as_mount(), '--regularization', 0.5],
+                      script='dummy_train.py',
+                      arguments=[input_data, output],
                       compute_target=compute_target,
                       environment=myenv)
 
@@ -161,53 +197,44 @@ run = experiment.submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
-### <a name="retrieve-data-in-your-training-script"></a>Hämta data i ditt utbildnings skript
+### <a name="simple-training-script"></a>Enkelt träningsskript
 
-Följande kod visar hur du hämtar data i skriptet.
+Följande skript skickas via ScriptRunConfig. Den läser `mnist_ds ` datauppsättningen som indata och skriver filen till `outputdataset` mappen i standardblobdatalagringen, `def_blob_store` .
 
 ```Python
-%%writefile $script_folder/train_mnist.py
+%%writefile $source_directory/dummy_train.py
 
-import argparse
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License.
+import sys
 import os
-import numpy as np
-import glob
 
-from utils import load_data
+print("*********************************************************")
+print("Hello Azure ML!")
 
-# retrieve the 2 arguments configured through `arguments` in the ScriptRunConfig
-parser = argparse.ArgumentParser()
-parser.add_argument('--data-folder', type=str, dest='data_folder', help='data folder mounting point')
-parser.add_argument('--regularization', type=float, dest='reg', default=0.01, help='regularization rate')
-args = parser.parse_args()
+mounted_input_path = sys.argv[1]
+mounted_output_path = sys.argv[2]
 
-data_folder = args.data_folder
-print('Data folder:', data_folder)
-
-# get the file paths on the compute
-X_train_path = glob.glob(os.path.join(data_folder, '**/train-images-idx3-ubyte.gz'), recursive=True)[0]
-X_test_path = glob.glob(os.path.join(data_folder, '**/t10k-images-idx3-ubyte.gz'), recursive=True)[0]
-y_train_path = glob.glob(os.path.join(data_folder, '**/train-labels-idx1-ubyte.gz'), recursive=True)[0]
-y_test = glob.glob(os.path.join(data_folder, '**/t10k-labels-idx1-ubyte.gz'), recursive=True)[0]
-
-# load train and test set into numpy arrays
-X_train = load_data(X_train_path, False) / 255.0
-X_test = load_data(X_test_path, False) / 255.0
-y_train = load_data(y_train_path, True).reshape(-1)
-y_test = load_data(y_test, True).reshape(-1)
+print("Argument 1: %s" % mounted_input_path)
+print("Argument 2: %s" % mounted_output_path)
+    
+with open(mounted_input_path, 'r') as f:
+    content = f.read()
+    with open(os.path.join(mounted_output_path, 'output.csv'), 'w') as fw:
+        fw.write(content)
 ```
 
-## <a name="mount-vs-download"></a>Montering mot nedladdning
+## <a name="mount-vs-download"></a>Montera jämfört med ladda ned
 
-Det finns stöd för att montera eller hämta filer av alla format för data uppsättningar som skapats från Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database och Azure Database for PostgreSQL. 
+Du kan montera eller ladda ned filer i alla format för datauppsättningar som skapats från Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database och Azure Database for PostgreSQL. 
 
-När du **monterar** en data uppsättning bifogar du filerna som data uppsättningen refererar till i en katalog (monterings punkt) och gör den tillgänglig på beräknings målet. Montering stöds för Linux-baserade beräkningar, inklusive Azure Machine Learning Compute, Virtual Machines och HDInsight. 
+När du **monterar** en datauppsättning bifogar du de filer som datamängden refererar till till en katalog (monteringspunkt) och gör den tillgänglig på beräkningsmålet. Montering stöds för Linux-baserade beräkningar, inklusive Azure Machine Learning Compute, virtuella datorer och HDInsight. 
 
-När du **hämtar** en data uppsättning laddas alla filer som refereras till av data uppsättningen ned till beräknings målet. Hämtning stöds för alla beräknings typer. 
+När du **laddar** ned en datauppsättning laddas alla filer som datauppsättningen refererar till ned till beräkningsmålet. Nedladdning stöds för alla beräkningstyper. 
 
-Om skriptet bearbetar alla filer som refereras av data uppsättningen, och din beräknings disk kan passa din fullständiga data uppsättning, rekommenderas nedladdningen för att undvika att strömma data strömmas från lagrings tjänsterna. Om data storleken överskrider beräknings disk storleken är det inte möjligt att hämta. I det här scenariot rekommenderar vi montering eftersom endast de datafiler som används av skriptet läses in vid tidpunkten för bearbetningen.
+Om skriptet bearbetar alla filer som refereras av datauppsättningen och beräkningsdisken kan passa din fullständiga datauppsättning, rekommenderas nedladdning för att undvika overhead för strömmande data från lagringstjänster. Om datastorleken överskrider beräkningsdiskens storlek går det inte att ladda ned. I det här scenariot rekommenderar vi montering eftersom endast de datafiler som används av skriptet läses in vid tidpunkten för bearbetningen.
 
-Följande kod monteras `dataset` i Temp-katalogen på `mounted_path`
+Följande kod monterar till `dataset` temp-katalogen på `mounted_path`
 
 ```python
 import tempfile
@@ -223,9 +250,9 @@ print(os.listdir(mounted_path))
 print (mounted_path)
 ```
 
-## <a name="get-datasets-in-machine-learning-scripts"></a>Hämta data uppsättningar i Machine Learning-skript
+## <a name="get-datasets-in-machine-learning-scripts"></a>Hämta datauppsättningar i maskininlärningsskript
 
-Registrerade data uppsättningar kan nås både lokalt och via fjärr anslutning på beräknings kluster som Azure Machine Learning Compute. Använd följande kod för att komma åt din arbets yta och hämta den data uppsättning som användes i din tidigare skickade körning för att få åtkomst till din registrerade data uppsättning över experiment. Som standard [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset#get-by-name-workspace--name--version--latest--) returnerar metoden i `Dataset` klassen den senaste versionen av data uppsättningen som är registrerad på arbets ytan.
+Registrerade datauppsättningar är tillgängliga både lokalt och via fjärranslutning i beräkningskluster som Azure Machine Learning beräkning. Om du vill komma åt din registrerade datauppsättning mellan experiment använder du följande kod för att komma åt din arbetsyta och hämta datauppsättningen som användes i den tidigare skickade körningen. Som standard [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset#get-by-name-workspace--name--version--latest--) returnerar metoden i `Dataset` klassen den senaste versionen av datauppsättningen som är registrerad på arbetsytan.
 
 ```Python
 %%writefile $script_folder/train.py
@@ -244,38 +271,38 @@ titanic_ds = Dataset.get_by_name(workspace=workspace, name=dataset_name)
 df = titanic_ds.to_pandas_dataframe()
 ```
 
-## <a name="access-source-code-during-training"></a>Åtkomst käll kod under träning
+## <a name="access-source-code-during-training"></a>Få åtkomst till källkoden under träningen
 
-Azure Blob Storage har högre överföringshastigheter än en Azure-filresurs och kommer att skalas till ett stort antal jobb som startas parallellt. Därför rekommenderar vi att du konfigurerar dina körningar för att använda blob-lagring för överföring av källfiler.
+Azure Blob Storage har högre dataflödeshastighet än en Azure-filresurs och skalas till ett stort antal jobb som startas parallellt. Därför rekommenderar vi att du konfigurerar dina körningar att använda Blob Storage för att överföra källkodsfiler.
 
-I följande kod exempel anges i den körnings konfiguration som BLOB data lager ska användas för käll kods överföringar.
+Följande kodexempel anger i körningskonfigurationen vilket blobdatalager som ska användas för källkodsöverföringar.
 
 ```python 
 # workspaceblobstore is the default blob storage
 src.run_config.source_directory_data_store = "workspaceblobstore" 
 ```
 
-## <a name="notebook-examples"></a>Exempel på bärbara datorer
+## <a name="notebook-examples"></a>Notebook-exempel
 
-+ [Antecknings böckerna för data uppsättningen](https://aka.ms/dataset-tutorial) demonstrerar och utökar koncepten i den här artikeln.
-+ Se hur du [parametrize data uppsättningar i dina ml-pipeliner](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb).
++ Fler exempel och begrepp för datauppsättningar finns i [notebook-datauppsättningen.](https://aka.ms/dataset-tutorial)
++ Se hur du [parametrisar datauppsättningar i dina ML-pipelines.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb)
 
 ## <a name="troubleshooting"></a>Felsökning
 
-* **Det gick inte att initiera data uppsättningen: väntar på att en tids gräns för monterings punkten skulle bli klar**: 
-  * Om du inte har några utgående regler för [nätverks säkerhets grupper](../virtual-network/network-security-groups-overview.md) och använder `azureml-sdk>=1.12.0` , uppdatera `azureml-dataset-runtime` och dess beroenden som de senaste för den speciella del versionen, eller om du använder den i en körning, måste du återskapa din miljö så att den kan ha den senaste korrigeringen med korrigeringen. 
+* **Initieringen av datauppsättningen misslyckades: Tiden** för att vänta på att monteringspunkten ska vara klar har gått ut: 
+  * Om du inte har några [](../virtual-network/network-security-groups-overview.md) regler för utgående nätverkssäkerhetsgrupp och använder uppdaterar du och dess beroenden så att de är de senaste för den specifika delversionen. Om du använder den i en körning återskapar du miljön så att den får den senaste korrigeringen `azureml-sdk>=1.12.0` med `azureml-dataset-runtime` korrigeringen. 
   * Om du använder `azureml-sdk<1.12.0` uppgraderar du till den senaste versionen.
-  * Om du har utgående NSG-regler kontrollerar du att det finns en utgående regel som tillåter all trafik för tjänst tag gen `AzureResourceMonitor` .
+  * Om du har utgående NSG-regler kontrollerar du att det finns en regel för utgående trafik som tillåter all trafik för tjänsttaggen `AzureResourceMonitor` .
 
-### <a name="overloaded-azurefile-storage"></a>Överlagrad AzureFile-lagring
+### <a name="overloaded-azurefile-storage"></a>Överbelastad AzureFile-lagring
 
-Använd följande lösningar om du får ett fel meddelande `Unable to upload project files to working directory in AzureFile because the storage is overloaded` .
+Om du får ett felmeddelande `Unable to upload project files to working directory in AzureFile because the storage is overloaded` kan du använda följande lösningar.
 
-Om du använder fil resurs för andra arbets belastningar, till exempel data överföring, är rekommendationen att använda blobbar så att fil resursen är kostnads fri att användas för att skicka körningar. Du kan också dela upp arbets belastningen mellan två olika arbets ytor.
+Om du använder filresurs för andra arbetsbelastningar, till exempel dataöverföring, rekommenderar vi att du använder blobar så att filresursen kan användas för att skicka körningar. Du kan också dela upp arbetsbelastningen mellan två olika arbetsytor.
 
 ### <a name="passing-data-as-input"></a>Skicka data som indata
 
-*  **TypeError: FileNotFound: det finns ingen sådan fil eller katalog**: det här felet uppstår om fil Sök vägen som du anger inte är den plats där filen finns. Du måste kontrol lera att det sätt som du refererar till filen är konsekvent med var du monterade data uppsättningen på beräknings målet. För att säkerställa ett deterministiskt tillstånd rekommenderar vi att du använder den abstrakta sökvägen när du monterar en data uppsättning till ett beräknings mål. I följande kod monterar du till exempel data uppsättningen under roten i fil systemet för beräknings målet `/tmp` . 
+*  **TypeError: FileNotFound: Ingen** sådan fil eller katalog: Det här felet inträffar om filsökvägen som du anger inte finns där filen finns. Du måste se till att sättet du refererar till filen är konsekvent med var du monterade datauppsättningen på beräkningsmålet. För att säkerställa ett deterministiskt tillstånd rekommenderar vi att du använder den abstrakta sökvägen när du monterar en datauppsättning till ett beräkningsmål. I följande kod monterar vi till exempel datauppsättningen under roten för filsystemet i beräkningsmålet, `/tmp` . 
     
     ```python
     # Note the leading / in '/tmp/dataset'
@@ -284,13 +311,13 @@ Om du använder fil resurs för andra arbets belastningar, till exempel data öv
     } 
     ```
 
-    Om du inte tar med det inledande snedstrecket "/" måste du ange prefix för arbets katalogen t. ex. `/mnt/batch/.../tmp/dataset` på beräknings målet för att ange var du vill att data uppsättningen ska monteras.
+    Om du inte inkluderar det inledande snedstrecket "/" måste du ange ett prefix för arbetskatalogen, t.ex. i beräkningsmålet för att ange var du vill att datauppsättningen ska `/mnt/batch/.../tmp/dataset` monteras.
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Träna maskin inlärnings modeller automatiskt](how-to-auto-train-remote.md) med TabularDatasets.
+* [Träna maskininlärningsmodeller](how-to-auto-train-remote.md) automatiskt med TabularDatasets.
 
-* [Träna bild klassificerings modeller](https://aka.ms/filedataset-samplenotebook) med FileDatasets.
+* [Träna bildklassificeringsmodeller](https://aka.ms/filedataset-samplenotebook) med FileDatasets.
 
-* [Träna med data uppsättningar med pipelines](./how-to-create-machine-learning-pipelines.md).
+* [Träna med datauppsättningar med hjälp av pipelines](./how-to-create-machine-learning-pipelines.md).

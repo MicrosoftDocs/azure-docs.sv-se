@@ -1,218 +1,218 @@
 ---
-title: Så här utför du en batch-test – LUIS
+title: Så här utför du ett batchtest – LUIS
 titleSuffix: Azure Cognitive Services
-description: Använd Language Understanding (LUIS) batch test uppsättningar för att hitta yttranden med felaktiga intentor och entiteter.
+description: Använd Language Understanding (LUIS) batchtestningsuppsättningar för att hitta yttranden med felaktiga avsikter och entiteter.
 services: cognitive-services
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/29/2020
-ms.openlocfilehash: b297330f3562babf9e83d36934827f7b92d5ea35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: 9fe4f21a5c9e9e26a2f94b8a60cba47916842fe3
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98787020"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501798"
 ---
-# <a name="batch-testing-with-a-set-of-example-utterances"></a>Batch-testning med en uppsättning exempel yttranden
+# <a name="batch-testing-with-a-set-of-example-utterances"></a>Batchtestning med en uppsättning exempelyttranden
 
-Batch-testning verifierar din aktiva utbildade version för att mäta dess förutsägelse noggrannhet. Ett batch-test hjälper dig att Visa precisionen för varje avsikt och enhet i din aktiva version. Granska resultaten av batch-testet för att vidta lämpliga åtgärder för att förbättra noggrannheten, till exempel lägga till fler exempel yttranden till en avsikt om din app ofta inte kan identifiera rätt avsikts-eller märknings enheter i uttryck.
+Batchtestning verifierar din aktiva tränade version för att mäta dess förutsägelsenoggrannhet. Ett batchtest hjälper dig att visa noggrannheten för varje avsikt och entitet i din aktiva version. Granska batchtestresultatet för att vidta lämpliga åtgärder för att förbättra noggrannheten, till exempel att lägga till fler exempelyttranden till en avsikt om din app ofta inte kan identifiera rätt avsikt eller märka entiteter i yttrandena.
 
-## <a name="group-data-for-batch-test"></a>Gruppera data för batch-test
+## <a name="group-data-for-batch-test"></a>Gruppera data för batchtest
 
-Det är viktigt att yttranden som används för batch-testning är nya för LUIS. Om du har en data uppsättning med yttranden kan du dela upp yttranden i tre mängder: exempel på yttranden som har lagts till i avsikt, yttranden som tagits emot från den publicerade slut punkten och yttranden som används för batch-test LUIS efter att det har tränats.
+Det är viktigt att yttranden som används för batchtestning är nya för LUIS. Om du har en datauppsättning med yttranden delar du upp yttrandena i tre uppsättningar: exempelyttranden som läggs till i en avsikt, yttranden som tas emot från den publicerade slutpunkten och yttranden som används för att batchtesta LUIS när den har tränats.
 
-Den batch-JSON-fil som du använder måste innehålla yttranden med enheter på den högsta nivån som är märkta inklusive start-och slut position. Yttranden ska inte ingå i exemplen som redan finns i appen. De bör vara yttrandena att du vill förutsäga för avsikt och entiteter positivt.
+Batch-JSON-filen som du använder bör innehålla yttranden med maskininlärningsentiteter på den översta nivån märkta, inklusive start- och slutposition. Yttrandena bör inte ingå i exemplen som redan finns i appen. De bör vara yttranden som du vill förutsäga positivt för avsikter och entiteter.
 
-Du kan separera tester efter avsikt och/eller entitet eller ha alla test (upp till 1000 yttranden) i samma fil. 
+Du kan separera tester efter avsikt och/eller entitet eller ha alla tester (upp till 1 000 yttranden) i samma fil. 
 
 ### <a name="common-errors-importing-a-batch"></a>Vanliga fel vid import av en batch
 
-Om du stöter på fel vid överföring av kommando filen till LUIS kontrollerar du följande vanliga problem:
+Om du får fel när du laddar upp batchfilen till LUIS kontrollerar du om det finns följande vanliga problem:
 
-* Mer än 1 000 yttranden i en kommando fil
-* Ett uttryck JSON-objekt som inte har någon entitets-egenskap. Egenskapen kan vara en tom matris.
+* Mer än 1 000 yttranden i en batchfil
+* Ett JSON-objekt för yttranden som inte har en entitetsegenskap. Egenskapen kan vara en tom matris.
 * Ord som är märkta i flera entiteter
-* Enhets etiketter startar eller slutar med ett blank steg.
+* Entitetsetiketter som börjar eller slutar på ett blanksteg.
 
-## <a name="fixing-batch-errors"></a>Korrigera batch-fel
+## <a name="fixing-batch-errors"></a>Åtgärda batchfel
 
-Om det finns fel i batch-testning kan du antingen lägga till fler yttranden till ett avsikts sätt och/eller lägga till etiketten mer yttranden med entiteten för att hjälpa LUIS att göra diskrimineringen mellan olika syften. Om du har lagt till yttranden och märkt dem och fortfarande får förutsägelse fel i batch-testning, bör du överväga att lägga till en [fras lista](luis-concept-feature.md) med en domänbaserad vokabulär för att hjälpa Luis att lära dig snabbare.
+Om det finns fel i batchtestningen kan du antingen lägga till fler yttranden till en avsikt och/eller märka fler yttranden med entiteten för att hjälpa LUIS att göra förhållandet mellan avsikter. Om du har lagt till yttranden och etiketterat dem och fortfarande får förutsägelsefel vid batchtestning bör du överväga att lägga till en fraslista med domänspecifik vokabulär för att hjälpa LUIS att lära sig snabbare. [](luis-concept-feature.md)
 
 
 <a name="batch-testing"></a>
 
-## <a name="batch-testing-using-the-luis-portal"></a>Batch-testning med LUIS-portalen 
+## <a name="batch-testing-using-the-luis-portal"></a>Batchtestning med LUIS-portalen 
 
-### <a name="import-and-train-an-example-app"></a>Importera och träna en exempel-App
+### <a name="import-and-train-an-example-app"></a>Importera och träna en exempelapp
 
-Importera en app som tar en pizza ordning, till exempel `1 pepperoni pizza on thin crust` .
+Importera en app som tar en pizzabeställning, till exempel `1 pepperoni pizza on thin crust` .
 
 1.  Ladda ned och spara [JSON-filen för appen](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json?raw=true).
 
-1. Logga in på [Luis-portalen](https://www.luis.ai)och välj din **prenumerations** -och **redigerings resurs** för att se vilka appar som tilldelats den här redigerings resursen.
-1. Välj pilen bredvid **ny app** och klicka på **Importera som JSON** för att importera JSON till en ny app. Namnge appen `Pizza app` .
+1. Logga in på [LUIS-portalen](https://www.luis.ai)och välj din prenumeration **och** **redigeringsresurs** för att se de appar som tilldelats till den redigeringsresursen.
+1. Välj pilen bredvid Ny app **och klicka** på Importera **som JSON för** att importera JSON till en ny app. Ge appen namnet `Pizza app` .
 
 
-1. Välj **träna** i det övre högra hörnet i navigeringen för att träna appen.
+1. Välj **Träna** i det övre högra hörnet i navigeringen för att träna appen.
 
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
 ### <a name="batch-test-file"></a>Batch-testfil
 
-JSON-exemplet innehåller en uttryck med en etikettad entitet som illustrerar vad en testfil ser ut. I dina egna tester bör du ha många yttranden med rätt avsikts-och maskin inlärnings enhet med etiketten.
+JSON-exemplet innehåller ett uttryck med en märkt entitet som illustrerar hur en testfil ser ut. I dina egna tester bör du ha många yttranden med rätt avsikt och entitet för maskininlärning märkta.
 
-1. Skapa `pizza-with-machine-learned-entity-test.json` i en text redigerare eller [Ladda ned](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true) den.
+1. Skapa `pizza-with-machine-learned-entity-test.json` i en textredigerare eller ladda [ned](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true) den.
 
-2. I den JSON-formaterade kommando filen lägger du till en uttryck med den **avsikt** som du vill förutsäga i testet.
+2. I den JSON-formaterade batchfilen lägger du till ett uttryck med **den** avsikt som du vill förutsäga i testet.
 
    [!code-json[Add the intents to the batch test file](~/samples-cognitive-services-data-files/luis/batch-tests/pizza-with-machine-learned-entity-test.json "Add the intent to the batch test file")]
 
-## <a name="run-the-batch"></a>Kör batchen
+## <a name="run-the-batch"></a>Köra batchen
 
-1. Välj **test** i det övre navigerings fältet.
+1. Välj **Test** i det övre navigeringsfältet.
 
-2. Välj **panelen för batch-testning** på den högra panelen.
+2. Välj **Batch-testpanelen** på den högra panelen.
 
-    ![Batch-testning, länk](./media/luis-how-to-batch-test/batch-testing-link.png)
+    ![Länk för batchtestning](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-3. Välj **Importera**. I dialog rutan som visas väljer du **Välj fil** och letar upp en JSON-fil med rätt JSON-format som *inte innehåller fler än 1 000* yttranden för att testa.
+3. Välj **Importera**. I dialogrutan som visas  väljer du Välj fil och letar upp en JSON-fil med rätt JSON-format som inte innehåller fler än *1 000* yttranden att testa.
 
-    Import fel rapporteras i ett rött meddelande fält överst i webbläsaren. När en import innehåller fel skapas ingen data uppsättning. Mer information finns i [vanliga fel](#common-errors-importing-a-batch).
+    Importfel rapporteras i ett rött meddelandefält överst i webbläsaren. När en import innehåller fel skapas ingen datauppsättning. Mer information finns i [Vanliga fel.](#common-errors-importing-a-batch)
 
-4. Välj filens fil placering `pizza-with-machine-learned-entity-test.json` .
+4. Välj filplatsen för `pizza-with-machine-learned-entity-test.json` filen.
 
-5. Ge data uppsättningen ett namn `pizza test` och välj **färdig**.
+5. Ge datauppsättningen `pizza test` ett namn och välj **Klar.**
 
-6. Klicka på knappen **Kör**. När batch-testet har körts väljer du **se resultat**. 
+6. Klicka på knappen **Kör**. När batchtestet har körs väljer du **Se resultat**. 
 
     > [!TIP]
-    > * Om du väljer **Hämta** hämtas samma fil som du laddade upp.
-    > * Om batch-testet misslyckades visas minst en uttryck-avsikt som inte matchade förutsägelsen.
+    > * Om **du väljer** Ladda ned hämtas samma fil som du laddade upp.
+    > * Om batchtestet misslyckades matchar inte minst en avsikt för yttranden förutsägelsen.
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
 
-### <a name="review-batch-results-for-intents"></a>Granska resultat från batch
+### <a name="review-batch-results-for-intents"></a>Granska batchresultat för avsikter
 
-Om du vill granska resultaten för batch-testet väljer du **se resultat**. Test resultaten visar grafiskt hur test yttranden förutsägdes mot den aktiva versionen.
+Om du vill granska batchtestresultaten väljer du **Visa resultat.** Testresultaten visar grafiskt hur testyttrandena förutsades mot den aktiva versionen.
 
-I batch-diagrammet visas fyra kvadranter av resultat. Till höger om diagrammet är ett filter. Filtret innehåller avsikter och entiteter. När du väljer en [del av diagrammet](#review-batch-results-for-intents) eller en punkt i diagrammet visas tillhör ande uttryck under diagrammet.
+Batchdiagrammet visar fyra kvadranter med resultat. Till höger om diagrammet finns ett filter. Filtret innehåller avsikter och entiteter. När du väljer [ett avsnitt i diagrammet](#review-batch-results-for-intents) eller en punkt i diagrammet visas de associerade yttrandena under diagrammet.
 
-Vid hovring över diagrammet kan ett mushjul förstora eller minska visningen i diagrammet. Detta är användbart när det finns många punkter i diagrammet grupperade nära varandra.
+När du hovrar över diagrammet kan ett mushjul förstora eller minska visningen i diagrammet. Detta är användbart när det finns många punkter i diagrammet grupperade nära varandra.
 
-Diagrammet är i fyra kvadranter, med två av avsnitten som visas i rött.
+Diagrammet är i fyra kvadranter, där två av avsnitten visas i rött.
 
-1. Välj **ModifyOrder** avsikt i filter listan. Uttryck förutsägs som en **sann positiv** betydelse för uttryck som har matchat sin positiva förutsägelse i kommando filen.
-
-    > [!div class="mx-imgBorder"]
-    > ![Uttryck har matchat sin positiva förutsägelse](./media/luis-tutorial-batch-testing/intent-predicted-true-positive.png)
-
-    De gröna bockarna i filter listan visar också testets framgång för varje avsikt. Alla andra avsikter visas med en 1/1 positiv Poäng eftersom uttryck har testats för varje avsikt, som ett negativt test för alla syften som inte listas i batch-testet.
-
-1. Välj **bekräftelse** avsikt. Avsikten visas inte i batch-testet, så det är ett negativt test av uttryck som anges i batch-testet.
+1. Välj avsikten **ModifyOrder** i filterlistan. Tayttrande förutsägs som en **sann** positiv, vilket innebär att tamanten har matchat sin positiva förutsägelse som anges i batchfilen.
 
     > [!div class="mx-imgBorder"]
-    > ![Uttryck har förutsägt negativ för en listaad avsikt i kommando filen](./media/luis-tutorial-batch-testing/true-negative-intent.png)
+    > ![Ta ett uttryck matchade dess positiva förutsägelse](./media/luis-tutorial-batch-testing/intent-predicted-true-positive.png)
 
-    Det negativa testet lyckades, som det skrevs med den gröna texten i filtret och rutnätet.
+    De gröna bockmarkeringarna i filterlistan visar också om testet lyckades för varje avsikt. Alla andra avsikter visas med en positiv poäng på 1/1 eftersom yttrandena testades mot varje avsikt, som ett negativt test för avsikter som inte anges i batchtestet.
 
-### <a name="review-batch-test-results-for-entities"></a>Granska resultat för batch-test för entiteter
-
-ModifyOrder-entiteten, som en dator entitet med underentiteter, visar om den översta entiteten matchar och hur underentiteterna förutsägs.
-
-1. Välj entiteten **ModifyOrder** i filter listan och välj sedan cirkeln i rutnätet.
-
-1. Entitetens förutsägelse visas under diagrammet. Skärmen innehåller heldragna linjer för förutsägelser som matchar förväntad och prickade rader för förutsägelser som inte matchar förväntat.
+1. Välj avsikten **Bekräftelse.** Den här avsikten visas inte i batchtestet, så det här är ett negativt test av de yttranden som anges i batchtestet.
 
     > [!div class="mx-imgBorder"]
-    > ![Den överordnade enheten har förutsägts i kommando filen](./media/luis-tutorial-batch-testing/labeled-entity-prediction.png)
+    > ![Uttryck förutsade negativt för olistad avsikt i batchfil](./media/luis-tutorial-batch-testing/true-negative-intent.png)
+
+    Det negativa testet lyckades, vilket anges med den gröna texten i filtret och rutnätet.
+
+### <a name="review-batch-test-results-for-entities"></a>Granska batchtestresultat för entiteter
+
+Entiteten ModifyOrder, som en datorentitet med underentiteter, visar om entiteten på den översta nivån matchar och hur underentiteterna förutsägs.
+
+1. Välj **entiteten ModifyOrder** i filterlistan och välj sedan cirkeln i rutnätet.
+
+1. Entitetsförutsägelsen visas under diagrammet. Visningen innehåller heldragna linjer för förutsägelser som matchar förväntan och prickade linjer för förutsägelser som inte matchar förväntan.
+
+    > [!div class="mx-imgBorder"]
+    > ![Entitetens överordnade har förutsagts i batchfilen](./media/luis-tutorial-batch-testing/labeled-entity-prediction.png)
 
 <a name="filter-chart-results-by-intent-or-entity"></a>
 
-#### <a name="filter-chart-results"></a>Filtrera diagram resultat
+#### <a name="filter-chart-results"></a>Filtrera diagramresultat
 
-Om du vill filtrera diagrammet efter ett särskilt syfte eller en entitet väljer du avsikten eller entiteten i filter panelen på höger sida. Data punkterna och deras distributions uppdatering i diagrammet efter ditt val.
+Om du vill filtrera diagrammet efter en specifik avsikt eller entitet väljer du avsikten eller entiteten i filtreringspanelen till höger. Datapunkterna och deras distributionsuppdatering i diagrammet enligt ditt val.
 
-![Visuellt batch test resultat](./media/luis-how-to-batch-test/filter-by-entity.png)
+![Visualiserat batchtestresultat](./media/luis-how-to-batch-test/filter-by-entity.png)
 
-### <a name="chart-result-examples"></a>Resultat exempel för diagram
+### <a name="chart-result-examples"></a>Diagramresultatexempel
 
 Diagrammet i LUIS-portalen kan du utföra följande åtgärder:
  
-#### <a name="view-single-point-utterance-data"></a>Visa uttryck-data med en punkt
+#### <a name="view-single-point-utterance-data"></a>Visa yttranden med en enda punkt
 
-Hovra över en data punkt i diagrammet för att se den aktuella uppskattningens resultat. Välj en data punkt för att hämta motsvarande uttryck i listan yttranden längst ned på sidan.
+Hovra över en datapunkt i diagrammet för att se förutsägelseresultatet. Välj en datapunkt för att hämta dess motsvarande yttranden i listan med yttranden längst ned på sidan.
 
-![Valda uttryck](./media/luis-how-to-batch-test/selected-utterance.png)
+![Valt uttryck](./media/luis-how-to-batch-test/selected-utterance.png)
 
 
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
 
-#### <a name="view-section-data"></a>Visa avsnitts data
+#### <a name="view-section-data"></a>Visa avsnittsdata
 
-I det fyra avsnitts diagrammet väljer du avsnittets namn, till exempel **falskt positivt** längst upp till höger i diagrammet. Under diagrammet visas alla yttranden i avsnittet nedanför diagrammet i en lista.
+I diagrammet med fyra avsnitt väljer du avsnittsnamnet, till exempel **False Positive** (Falsk positiv) längst upp till höger i diagrammet. Under diagrammet visas alla yttranden i det avsnittet under diagrammet i en lista.
 
 ![Valda yttranden efter avsnitt](./media/luis-how-to-batch-test/selected-utterances-by-section.png)
 
-I den här bilden `switch on` är uttryck märkt med TurnAllOn-avsikten men fick förutsägelsen ingen avsikt. Detta är en indikation på att TurnAllOn-avsikten kräver fler exempel yttranden för att göra den förväntade förutsägelsen.
+I den här föregående bilden märks yttranden med avsikten TurnAllOn, men avsikten None (Ingen) `switch on` har tagits emot. Detta är en indikation på att avsikten TurnAllOn behöver fler exempelyttranden för att kunna göra den förväntade förutsägelsen.
 
-De två avsnitten i diagrammet i rött indikerar yttranden som inte matchar förväntade förutsägelser. Dessa indikerar yttranden som LUIS behöver mer utbildning.
+De två avsnitten i diagrammet i rött visar yttranden som inte matchade den förväntade förutsägelsen. Dessa anger yttranden som LUIS behöver mer utbildning.
 
-De två avsnitten i diagrammet i grönt matchade förväntade förutsägelse.
+De två avsnitten i diagrammet i grönt matchade den förväntade förutsägelsen.
 
-## <a name="batch-testing-using-the-rest-api"></a>Batch-testning med hjälp av REST API 
+## <a name="batch-testing-using-the-rest-api"></a>Batchtestning med hjälp av REST API 
 
-Med LUIS kan du köra batch-test med LUIS-portalen och REST API. Slut punkterna för REST API visas nedan. Information om batch-testning med LUIS-portalen finns i [Självstudier: batch-testdata uppsättningar](). Använd de fullständiga URL: erna nedan och ersätt plats hållarnas värden med din egen LUIS-förutsägelse nyckel och slut punkt. 
+MED LUIS kan du batchtesta med HJÄLP av LUIS-portalen och REST API. Slutpunkterna för REST API visas nedan. Information om batchtestning med LUIS-portalen finns i [Självstudie: batchtestdatauppsättningar.]() Använd de fullständiga URL:erna nedan och ersätt platshållarvärdena med din egen LUIS-förutsägelsenyckel och slutpunkt. 
 
-Kom ihåg att lägga till din LUIS `Ocp-Apim-Subscription-Key` -nyckel i rubriken och ange `Content-Type` till `application/json` .
+Kom ihåg att lägga till DIN `Ocp-Apim-Subscription-Key` LUIS-nyckel i -huvudet och ange `Content-Type` till `application/json` .
 
-### <a name="start-a-batch-test"></a>Starta ett batch-test
+### <a name="start-a-batch-test"></a>Starta ett batchtest
 
-Starta ett batch-test med antingen ett versions-ID för appen eller ett publicerings fack. Skicka en **post** -begäran till något av följande slut punkts format. Inkludera din batch-fil i bröd texten i begäran.
+Starta ett batchtest med antingen ett appversions-ID eller ett publiceringsfack. Skicka en **POST-begäran** till något av följande slutpunktsformat. Inkludera batchfilen i brödtexten i begäran.
 
-Publicerings plats
+Publiceringsplats
 * `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-NAME>/evaluations`
 
-ID för app-version
+Appversions-ID
 * `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations`
 
-Dessa slut punkter returnerar ett åtgärds-ID som du kommer att använda för att kontrol lera status och få resultat. 
+Dessa slutpunkter returnerar ett åtgärds-ID som du använder för att kontrollera status och hämta resultat. 
 
 
-### <a name="get-the-status-of-an-ongoing-batch-test"></a>Hämta status för ett pågående batch-test
+### <a name="get-the-status-of-an-ongoing-batch-test"></a>Hämta status för ett pågående batchtest
 
-Använd åtgärds-ID: t från batch-testet som du startade för att hämta statusen från följande slut punkts format: 
+Använd åtgärds-ID:t från batchtestet som du började för att hämta dess status från följande slutpunktsformat: 
 
-Publicerings plats
+Publiceringsplats
 * `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/status`
 
-ID för app-version
+Appversions-ID
 * `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/status`
 
-### <a name="get-the-results-from-a-batch-test"></a>Hämta resultatet från ett batch-test
+### <a name="get-the-results-from-a-batch-test"></a>Hämta resultaten från ett batchtest
 
-Använd åtgärds-ID: t från batch-testet som du började för att hämta resultatet från följande slut punkt format: 
+Använd åtgärds-ID:t från batchtestet som du började för att hämta resultatet från följande slutpunktsformat: 
 
-Publicerings plats
+Publiceringsplats
 * `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/result`
 
-ID för app-version
+Appversions-ID
 * `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/result`
 
 
-### <a name="batch-file-of-utterances"></a>Kommando fil för yttranden
+### <a name="batch-file-of-utterances"></a>Batch-fil med yttranden
 
-Skicka en batch-fil med yttranden, som kallas för en *data uppsättning*, för batch-testning. Data uppsättningen är en JSON-formaterad fil som innehåller högst 1 000 med etiketten yttranden. Du kan testa upp till 10 data uppsättningar i en app. Om du behöver testa mer tar du bort en data uppsättning och lägger till en ny. Alla anpassade entiteter i modellen visas i filtret batch-test-entiteter även om det inte finns några motsvarande entiteter i batch-fildata.
+Skicka en batchfil med yttranden, som kallas en *datauppsättning, för* batchtestning. Datauppsättningen är en JSON-formaterad fil som innehåller högst 1 000 märkta yttranden. Du kan testa upp till 10 datauppsättningar i en app. Om du behöver testa mer tar du bort en datauppsättning och lägger sedan till en ny. Alla anpassade entiteter i modellen visas i batchtestentitetsfiltret även om det inte finns några motsvarande entiteter i batchfildata.
 
-Kommando filen består av yttranden. Varje uttryck måste ha en förväntad förutsägelse för matchning tillsammans med alla [Machine Learning-enheter](luis-concept-entity-types.md#types-of-entities) som du förväntar dig att identifiera.
+Batchfilen består av yttranden. Varje yttranden måste ha en förväntad avsiktsförutsägelse tillsammans med eventuella [maskininlärningsentiteter](luis-concept-entity-types.md#machine-learned-ml-entity) som du förväntar dig att identifieras.
 
-### <a name="batch-syntax-template-for-intents-with-entities"></a>Mall för satsvis syntax för avsikter med entiteter
+### <a name="batch-syntax-template-for-intents-with-entities"></a>Batch-syntaxmall för avsikter med entiteter
 
-Använd följande mall för att starta kommando filen:
+Använd följande mall för att starta batchfilen:
 
 ```JSON
 {
@@ -245,23 +245,23 @@ Använd följande mall för att starta kommando filen:
 
 ```
 
-Kommando filen använder egenskaperna **startPos** och **endPos** för att notera början och slutet på en entitet. Värdena är noll-baserade och får inte börja eller sluta med ett blank steg. Det skiljer sig från frågans loggar, som använder start egenskaper och endIndex-egenskaper.
+Batchfilen använder egenskaperna **startPos och** **endPos för att** notera början och slutet av en entitet. Värdena är nollbaserade och bör inte börja eller sluta på ett blanksteg. Detta skiljer sig från frågeloggarna som använder egenskaperna startIndex och endIndex.
 
-Om du inte vill testa entiteter, inkluderar du `entities` egenskapen och anger värdet som en tom matris `[]` .
+Om du inte vill testa entiteter inkluderar du `entities` egenskapen och anger värdet som en tom matris, `[]` .
 
-### <a name="rest-api-batch-test-results"></a>REST API batch test resultat
+### <a name="rest-api-batch-test-results"></a>REST API batchtestresultat
 
-Det finns flera objekt som returneras av API: et:
+Det finns flera objekt som returneras av API:et:
 
-* Information om avsikter och entiteter modeller, till exempel precision, åter kallelse och F-poäng.
-* Information om entiteternas modeller, till exempel precision, åter kallelse och F-Poäng för varje entitet 
-  * Med hjälp av `verbose` flaggan kan du få mer information om entiteten, till exempel `entityTextFScore` och `entityTypeFScore` .
-* Tillhandahöll yttranden med förväntade och namngivna namn
-* En lista med falska positiva entiteter och en lista över falska negativa entiteter.
+* Information om avsikterna och entitetsmodellerna, till exempel precision, träffsäkerhet och F-poäng.
+* Information om entitetsmodellerna, till exempel precision, träffsäkerhet och F-poäng) för varje entitet 
+  * Med hjälp `verbose` av flaggan kan du få mer information om entiteten, till exempel och `entityTextFScore` `entityTypeFScore` .
+* Tillhandahållna yttranden med de förutsagda och märkta avsiktsnamnen
+* En lista över falska positiva entiteter och en lista över falska negativa entiteter.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om testningen visar att LUIS-appen inte känner igen rätt avsikter och entiteter kan du arbeta för att förbättra LUIS-appens prestanda genom att märka fler yttranden eller lägga till funktioner.
+Om testningen indikerar att LUIS-appen inte känner igen rätt avsikter och entiteter kan du arbeta för att förbättra LUIS-appens prestanda genom att märka fler yttranden eller lägga till funktioner.
 
-* [Märk föreslagna yttranden med LUIS](luis-how-to-review-endpoint-utterances.md)
-* [Använd funktioner för att förbättra LUIS-appens prestanda](luis-how-to-add-features.md)
+* [Märka föreslagna yttranden med LUIS](luis-how-to-review-endpoint-utterances.md)
+* [Använda funktioner för att förbättra LUIS-appens prestanda](luis-how-to-add-features.md)

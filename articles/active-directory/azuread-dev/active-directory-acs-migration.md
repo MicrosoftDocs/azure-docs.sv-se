@@ -1,6 +1,6 @@
 ---
 title: Migrera från Azure-Access Control Service | Microsoft Docs
-description: Lär dig mer om alternativen för att flytta appar och tjänster från Azure-Access Control Service (ACS).
+description: Lär dig mer om alternativen för att flytta appar och tjänster från Azure Access Control Service (ACS).
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,61 +13,61 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: d68cfb91445e2055cb3c3feb88bf925987ea9852
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf50db4c463f5161adcc88d69eb2ae8970526103
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687404"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515625"
 ---
-# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Gör så här: Migrera från Azure-Access Control Service
+# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Gör så här: Migrera från Azure Access Control Service
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-Microsoft Azure Access Control Service (ACS), en tjänst Azure Active Directory (Azure AD) tas ur bruk den 7 november 2018. Program och tjänster som för närvarande använder Access Control måste migreras fullständigt till en annan autentiseringsmekanism av. Den här artikeln beskriver rekommendationer för aktuella kunder, när du planerar att använda Access Control. Om du inte använder Access Control för närvarande behöver du inte vidta några åtgärder.
+Microsoft Azure Access Control Service (ACS), en tjänst med Azure Active Directory (Azure AD), dras tillbaka den 7 november 2018. Program och tjänster som för närvarande Access Control måste migreras helt till en annan autentiseringsmekanism då. I den här artikeln beskrivs rekommendationer för aktuella kunder när du planerar att ta bort användningen av Access Control. Om du inte använder Access Control behöver du inte vidta några åtgärder.
 
 ## <a name="overview"></a>Översikt
 
-Access Control är en molnbaserad autentiseringstjänst som ger ett enkelt sätt att autentisera och auktorisera användare för åtkomst till dina webb program och-tjänster. Det gör att många funktioner för autentisering och auktorisering kan delas ut från din kod. Access Control används främst av utvecklare och arkitekter av Microsoft .NET-klienter, ASP.NET webb program och Windows Communication Foundation (WCF)-webb tjänster.
+Access Control är en molnautentiseringstjänst som erbjuder ett enkelt sätt att autentisera och auktorisera användare för åtkomst till dina webbprogram och tjänster. Det gör att många funktioner för autentisering och auktorisering kan tas med i koden. Access Control används främst av utvecklare och arkitekter för Microsoft .NET-klienter, ASP.NET-webbprogram och Windows Communication Foundation-webbtjänster (WCF).
 
-Användnings fall för Access Control kan delas upp i tre huvud kategorier:
+Användningsfall för Access Control kan delas in i tre huvudkategorier:
 
-- Autentisering till vissa Microsofts moln tjänster, inklusive Azure Service Bus och Dynamics CRM. Klient program hämtar tokens från Access Control för att autentisera till dessa tjänster för att utföra olika åtgärder.
-- Lägga till autentisering till webb program, både anpassade och förpaketerade (som SharePoint). Genom att använda Access Control "passiv" autentisering kan webb program stödja inloggning med en Microsoft-konto (tidigare Live ID) och med konton från Google, Facebook, Yahoo, Azure AD och Active Directory Federation Services (AD FS) (AD FS).
-- Skydda anpassade webb tjänster med token som utfärdats av Access Control. Genom att använda "aktiv"-autentisering kan webb tjänster säkerställa att de endast tillåter åtkomst till kända klienter som har autentiserats med Access Control.
+- Autentisering för vissa Microsoft-molntjänster, inklusive Azure Service Bus och Dynamics CRM. Klientprogram hämtar token från Access Control för att autentisera till dessa tjänster för att utföra olika åtgärder.
+- Lägga till autentisering till webbprogram, både anpassade och förpaketerade (t.ex. SharePoint). Med Access Control "passiv" autentisering kan webbprogram stödja inloggning med en Microsoft-konto (tidigare Live ID) och med konton från Google, Facebook, Yahoo, Azure AD och Active Directory Federation Services (AD FS) (AD FS).
+- Skydda anpassade webbtjänster med token som utfärdats av Access Control. Med hjälp av "aktiv" autentisering kan webbtjänster se till att de endast tillåter åtkomst till kända klienter som har autentiserats med Access Control.
 
-Var och en av dessa användnings områden och deras rekommenderade migrations strategier beskrivs i följande avsnitt.
+Var och en av dessa användningsfall och deras rekommenderade migreringsstrategier beskrivs i följande avsnitt.
 
 > [!WARNING]
-> I de flesta fall krävs betydande kod ändringar för att migrera befintliga appar och tjänster till nyare tekniker. Vi rekommenderar att du omedelbart börjar planera och utföra migreringen för att undvika eventuella avbrott eller avbrott.
+> I de flesta fall krävs betydande kodändringar för att migrera befintliga appar och tjänster till nyare tekniker. Vi rekommenderar att du omedelbart börjar planera och köra migreringen för att undvika eventuella avbrott eller driftstopp.
 
-Access Control innehåller följande komponenter:
+Access Control har följande komponenter:
 
-- En säker token service (STS), som tar emot autentiseringsbegäranden och utfärdar säkerhetstoken i retur.
-- Den klassiska Azure-portalen där du skapar, tar bort och aktiverar och inaktiverar Access Control namn områden.
-- En separat Access Control hanterings portal där du kan anpassa och konfigurera Access Control namnrum.
-- En hanterings tjänst som du kan använda för att automatisera funktionerna i portalerna.
-- En regel motor för token-omvandling, som du kan använda för att definiera komplex logik för att ändra utdataformatet i tokens som Access Control problem.
+- En säker tokentjänst (STS) som tar emot autentiseringsförfrågningar och utfärdar säkerhetstoken i utbyte.
+- Den klassiska Azure-portalen, där du skapar, tar bort och aktiverar och inaktiverar Access Control namnområden.
+- En separat Access Control hanteringsportal där du anpassar och konfigurerar Access Control namnområden.
+- En hanteringstjänst som du kan använda för att automatisera portalfunktionerna.
+- En regelmotor för tokentransformering som du kan använda för att definiera komplex logik för att ändra utdataformatet för token som Access Control problem.
 
-Om du vill använda dessa komponenter måste du skapa en eller flera Access Control namnrum. Ett *namn område* är en dedikerad instans av Access Control som dina program och tjänster kommunicerar med. Ett namn område är isolerat från alla andra Access Control-kunder. Andra Access Control kunder använder sina egna namn rymder. Ett namn område i Access Control har en dedikerad URL som ser ut så här:
+Om du vill använda dessa komponenter måste du skapa en eller Access Control namnområden. Ett *namnområde* är en dedikerad instans av Access Control som dina program och tjänster kommunicerar med. Ett namnområde är isolerat från alla andra Access Control kunder. Andra Access Control kunder använder sina egna namnrymder. Ett namnområde i Access Control har en dedikerad URL som ser ut så här:
 
 ```HTTP
 https://<mynamespace>.accesscontrol.windows.net
 ```
 
-All kommunikation med STS-och Management-åtgärderna görs på denna URL. Du använder olika sökvägar för olika syfte. För att avgöra om dina program eller tjänster använder Access Control övervaka för all trafik till https:// &lt; namespace &gt; . AccessControl.Windows.net. All trafik till denna URL hanteras av Access Control och måste avbrytas. 
+All kommunikation med STS och hanteringsåtgärder sker via den här URL:en. Du använder olika sökvägar för olika syften. Kontrollera om dina program eller tjänster använder Access Control genom att övervaka all trafik till https:// &lt; &gt; .accesscontrol.windows.net. All trafik till denna URL hanteras av Access Control och måste upphöra. 
 
-Undantaget till detta är all trafik till `https://accounts.accesscontrol.windows.net` . Trafik till denna URL hanteras redan av en annan tjänst och påverkas **inte** av Access Control-utfasningen. 
+Undantaget till detta är all trafik till `https://accounts.accesscontrol.windows.net` . Trafik till den här URL:en hanteras redan av en annan **tjänst och påverkas** inte Access Control utfasningen. 
 
-Mer information om Access Control finns i [Access Control Service 2,0 (arkiverad)](/previous-versions/azure/azure-services/hh147631(v=azure.100)).
+Mer information om Access Control finns i [Access Control Service 2.0 (arkiverad).](/previous-versions/azure/azure-services/hh147631(v=azure.100))
 
-## <a name="find-out-which-of-your-apps-will-be-impacted"></a>Ta reda på vilka appar som kommer att påverkas
+## <a name="find-out-which-of-your-apps-will-be-impacted"></a>Ta reda på vilka av dina appar som påverkas
 
-Följ stegen i det här avsnittet för att ta reda på vilka av dina appar som kommer att påverkas av ACS-pensionering.
+Följ stegen i det här avsnittet för att ta reda på vilka av dina appar som påverkas av ACS-tillbakagången.
 
-### <a name="download-and-install-acs-powershell"></a>Hämta och installera ACS PowerShell
+### <a name="download-and-install-acs-powershell"></a>Ladda ned och installera ACS PowerShell
 
-1. Gå till PowerShell-galleriet och hämta [ACS. Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2).
+1. Gå till PowerShell-galleriet och ladda ned [Acs.Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2).
 2. Installera modulen genom att köra
 
     ```powershell
@@ -80,7 +80,7 @@ Följ stegen i det här avsnittet för att ta reda på vilka av dina appar som k
     Get-Command -Module Acs.Namespaces
     ```
 
-    Om du vill ha hjälp med ett speciellt kommando kör du:
+    Om du vill ha hjälp med ett visst kommando kör du:
 
     ```
      Get-Help [Command-Name] -Full
@@ -88,54 +88,54 @@ Följ stegen i det här avsnittet för att ta reda på vilka av dina appar som k
     
     där `[Command-Name]` är namnet på ACS-kommandot.
 
-### <a name="list-your-acs-namespaces"></a>Visa en lista över ACS-namnrymder
+### <a name="list-your-acs-namespaces"></a>Lista dina ACS-namnområden
 
-1. Anslut till ACS med cmdleten **Connect-AcsAccount** .
+1. Anslut till ACS med **cmdleten Connect-AcsAccount.**
   
     Du kan behöva köra `Set-ExecutionPolicy -ExecutionPolicy Bypass` innan du kan köra kommandon och vara administratör för dessa prenumerationer för att kunna köra kommandona.
 
-2. Lista dina tillgängliga Azure-prenumerationer med hjälp av cmdleten **Get-AcsSubscription** .
-3. Visa en lista med ACS-namnområden med cmdleten **Get-AcsNamespace** .
+2. Visa en lista över dina tillgängliga **Azure-prenumerationer med hjälp av cmdleten Get-AcsSubscription.**
+3. Lista dina ACS-namnområden med hjälp av **cmdleten Get-AcsNamespace.**
 
-### <a name="check-which-applications-will-be-impacted"></a>Kontrol lera vilka program som påverkas
+### <a name="check-which-applications-will-be-impacted"></a>Kontrollera vilka program som påverkas
 
-1. Använd namn området från föregående steg och gå till `https://<namespace>.accesscontrol.windows.net`
+1. Använd namnområdet från föregående steg och gå till `https://<namespace>.accesscontrol.windows.net`
 
-    Om ett av namn områdena till exempel är contoso-test går du till `https://contoso-test.accesscontrol.windows.net`
+    Om ett av namnrymderna till exempel är contoso-test går du till `https://contoso-test.accesscontrol.windows.net`
 
-2. Under **förtroende relationer** väljer du **förlitande part program** om du vill se en lista över appar som kommer att påverkas av ACS-pensionen.
-3. Upprepa steg 1-2 för alla andra ACS-namnrymder som du har.
+2. Under **Förtroenderelationer** väljer du **Förlitande partsprogram** för att se listan över appar som påverkas av ACS-tillbakadragande.
+3. Upprepa steg 1–2 för alla andra ACS-namnområden som du har.
 
-## <a name="retirement-schedule"></a>Schema för pensionering
+## <a name="retirement-schedule"></a>Schema för tillbakadragande
 
-Från och med november 2017 stöds alla Access Control-komponenter fullständigt och fungerar. Den enda begränsningen är att du [inte kan skapa nya Access Control-namnområden via den klassiska Azure-portalen](https://azure.microsoft.com/blog/acs-access-control-service-namespace-creation-restriction/).
+Från och med november 2017 stöds Access Control komponenter fullt ut och fungerar. Den enda begränsningen är att [du inte kan skapa nya Access Control-namnområden via den klassiska Azure-portalen.](https://azure.microsoft.com/blog/acs-access-control-service-namespace-creation-restriction/)
 
-Här är schemat för inaktuella Access Control-komponenter:
+Här är schemat för inaktuella Access Control komponenter:
 
-- **2017 november**: Azure AD-administrationskonsolen i den klassiska Azure-portalen [har dragits tillbaka](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Nu finns namn områdes hantering för Access Control på en ny, dedikerad URL: `https://manage.windowsazure.com?restoreClassic=true` . Använd den här URl: en för att visa befintliga namn områden, aktivera och inaktivera namn områden och ta bort namnrum om du väljer att.
-- **2 April 2018**: den klassiska Azure-portalen är helt tillbakadragen, vilket innebär att Access Control namn områdes hantering inte längre är tillgängligt via någon URL. I det här läget kan du inte inaktivera eller aktivera, ta bort eller räkna upp Access Control namnrum. Access Control hanterings portalen är dock helt funktionell och finns på `https://<namespace>.accesscontrol.windows.net` . Alla andra komponenter i Access Control fortsätta att arbeta normalt.
-- **7 November 2018**: alla Access Control-komponenter stängs av permanent. Detta inkluderar Access Control hanterings Portal, hanterings tjänst, STS och token för token för omvandling av token. I det här läget fungerar inga förfrågningar som skickats till Access Control (finns på \<namespace\> . AccessControl.Windows.net). Du bör ha migrerat alla befintliga appar och tjänster till andra tekniker precis innan den här gången.
+- **November 2017:** Azure AD-administratörsupplevelsen i den klassiska Azure-portalen [dras tillbaka.](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/) Nu är namnområdeshantering för Access Control tillgänglig på en ny dedikerad URL: `https://manage.windowsazure.com?restoreClassic=true` . Använd den här RL:en för att visa dina befintliga namnområden, aktivera och inaktivera namnområden och ta bort namnområden om du vill.
+- **2 april 2018:** Den klassiska Azure-portalen dras tillbaka helt, vilket innebär Access Control hantering av namnområden inte längre är tillgängligt via någon URL. Nu kan du inte inaktivera eller aktivera, ta bort eller räkna upp dina Access Control namnområden. Dock är Access Control-hanteringsportalen fullt funktionell och finns på `https://<namespace>.accesscontrol.windows.net` . Alla andra komponenter i Access Control fortsätter att fungera normalt.
+- **7 november 2018:** Access Control alla komponenter stängs av permanent. Detta inkluderar Access Control hanteringsportalen, hanteringstjänsten, STS och regelmotorn för tokentransformering. Nu misslyckas alla begäranden som skickas till Access Control (finns \<namespace\> på .accesscontrol.windows.net). Du bör ha migrerat alla befintliga appar och tjänster till andra tekniker långt före den här tiden.
 
 > [!NOTE]
-> En princip inaktiverar namn rymder som inte har begärt en token under en viss tids period. Från och med den tidigaste september 2018 är denna tids period för närvarande 14 dagar av inaktivitet, men detta kommer att kortas till 7 dagars inaktivitet under de kommande veckorna. Om du har Access Control namn områden som för närvarande är inaktiverade kan du [Hämta och installera ACS PowerShell](#download-and-install-acs-powershell) för att återaktivera namn områdena.
+> En princip inaktiverar namnområden som inte har begärt en token under en viss tidsperiod. Från och med början av september 2018 är den här tidsperioden för närvarande vid 14 dagars inaktivitet, men detta förkortas till 7 dagars inaktivitet under de kommande veckorna. Om du har Access Control som för närvarande är inaktiverade kan du ladda ned och installera [ACS PowerShell](#download-and-install-acs-powershell) för att återaktivera namnrymderna.
 
 ## <a name="migration-strategies"></a>Migreringsstrategier
 
-I följande avsnitt beskrivs övergripande rekommendationer för migrering från Access Control till andra Microsoft-tekniker.
+I följande avsnitt beskrivs rekommendationer på hög nivå för att migrera från Access Control till andra Microsoft-tekniker.
 
-### <a name="clients-of-microsoft-cloud-services"></a>Klienter i Microsofts moln tjänster
+### <a name="clients-of-microsoft-cloud-services"></a>Klienter i Microsofts molntjänster
 
-Varje moln tjänst från Microsoft som accepterar token som utfärdas av Access Control stöder nu minst en annan form av autentisering. Rätt autentiseringsmekanism varierar för varje tjänst. Vi rekommenderar att du läser den detaljerade dokumentationen för varje tjänst för officiell vägledning. För enkelhetens skull finns varje uppsättning dokumentation här:
+Varje Microsoft-molntjänst som accepterar token som utfärdas av Access Control stöder nu minst en alternativ form av autentisering. Rätt autentiseringsmekanism varierar för varje tjänst. Vi rekommenderar att du refererar till den specifika dokumentationen för varje tjänst för officiell vägledning. För enkelhetens skull finns varje uppsättning dokumentation här:
 
 | Tjänst | Vägledning |
 | ------- | -------- |
 | Azure Service Bus | [Migrera till signaturer för delad åtkomst](../../service-bus-messaging/service-bus-migrate-acs-sas.md) |
-| Azure Service Bus relä | [Migrera till signaturer för delad åtkomst](../../azure-relay/relay-migrate-acs-sas.md) |
+| Azure Service Bus Relay | [Migrera till signaturer för delad åtkomst](../../azure-relay/relay-migrate-acs-sas.md) |
 | Azure Managed Cache | [Migrera till Azure Cache for Redis](../../azure-cache-for-redis/cache-faq.md) |
 | Azure DataMarket | [Migrera till API:er för Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) |
-| BizTalk Services | [Migrera till Logic Apps funktionen i Azure App Service](https://azure.microsoft.com/services/cognitive-services/) |
+| BizTalk Services | [Migrera till Logic Apps i Azure App Service](https://azure.microsoft.com/services/cognitive-services/) |
 | Azure Media Services | [Migrera till Azure AD-autentisering](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
-| Azure Backup | [Uppgradera Azure Backup Agent](../../backup/backup-azure-file-folder-backup-faq.md) |
+| Azure Backup | [Uppgradera Azure Backup agent](../../backup/backup-azure-file-folder-backup-faq.yml) |
 
 <!-- Dynamics CRM: Migrate to new SDK, Dynamics team handling privately -->
 <!-- Azure RemoteApp deprecated in favor of Citrix: https://www.zdnet.com/article/microsoft-to-drop-azure-remoteapp-in-favor-of-citrix-remoting-technologies/ -->
@@ -146,150 +146,150 @@ Varje moln tjänst från Microsoft som accepterar token som utfärdas av Access 
 
 ### <a name="sharepoint-customers"></a>SharePoint-kunder
 
-SharePoint 2013-, 2016-och SharePoint Online-kunder har länge använt ACS för autentisering i molnet, lokalt och i hybrid scenarion. Vissa SharePoint-funktioner och användnings fall kommer att påverkas av ACS-dragande, medan andra inte kommer. I tabellen nedan sammanfattas vägledningen för migrering för några av de mest populära SharePoint-funktionerna som utnyttjar ACS:
+Kunder med SharePoint 2013, 2016 och SharePoint Online har länge använt ACS för autentiseringsändamål i moln-, lokal- och hybridscenarier. Vissa SharePoint-funktioner och användningsfall påverkas av ATT ACS tas i bruk, medan andra inte gör det. I tabellen nedan sammanfattas migreringsvägledningen för några av de mest populära SharePoint-funktioner som använder ACS:
 
 | Funktion | Vägledning |
 | ------- | -------- |
-| Autentisera användare från Azure AD | Tidigare har Azure AD inte stöd för SAML 1,1-token som krävs av SharePoint för autentisering, och ACS användes som en mellanhand som gjorde SharePoint kompatibelt med Azure AD-tokens. Nu kan du [ansluta SharePoint direkt till Azure AD med hjälp av Azure AD App galleriet SharePoint i den lokala appen](../saas-apps/sharepoint-on-premises-tutorial.md). |
-| [App-autentisering & server-till-Server-autentisering i SharePoint lokalt](/SharePoint/security-for-sharepoint-server/authentication-overview) | Påverkas inte av ACS-dragande, inga ändringar krävs. | 
-| [Auktorisering med lågt förtroende för SharePoint-tillägg (providern och SharePoint som värd)](/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Påverkas inte av ACS-dragande, inga ändringar krävs. |
-| [Hybrid sökning för SharePoint-moln](/archive/blogs/spses/cloud-hybrid-search-service-application) | Påverkas inte av ACS-dragande, inga ändringar krävs. |
+| Autentisera användare från Azure AD | Tidigare hade Azure AD inte stöd för SAML 1.1-token som krävs av SharePoint för autentisering, och ACS användes som en mellanhand som gjorde SharePoint kompatibelt med Azure AD-tokenformat. Nu kan du ansluta [SharePoint direkt till Azure AD med hjälp Azure AD App-galleriets Lokala SharePoint-app](../saas-apps/sharepoint-on-premises-tutorial.md). |
+| [Appautentisering & server-till-server-autentisering i Lokal SharePoint](/SharePoint/security-for-sharepoint-server/authentication-overview) | Påverkas inte av ACS-tillbakagången; inga ändringar krävs. | 
+| [Låg förtroendeauktorisering för SharePoint-tillägg (providern är värd och SharePoint värdbaserade)](/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Påverkas inte av ACS-tillbakagången; inga ändringar krävs. |
+| [Hybridsökning i SharePoint-moln](/archive/blogs/spses/cloud-hybrid-search-service-application) | Påverkas inte av ACS-tillbakagången; inga ändringar krävs. |
 
-### <a name="web-applications-that-use-passive-authentication"></a>Webb program som använder passiv autentisering
+### <a name="web-applications-that-use-passive-authentication"></a>Webbprogram som använder passiv autentisering
 
-För webb program som använder Access Control för användarautentisering är Access Control följande funktioner och funktioner för webbappens utvecklare och arkitekter:
+För webbprogram som använder Access Control för användarautentisering Access Control tillhandahåller följande funktioner för utvecklare och arkitekter av webbprogram:
 
 - Djupgående integrering med Windows Identity Foundation (WIF).
-- Federation med Google-, Facebook-, Yahoo-, Azure Active Directory-och AD FS-konton och Microsoft-konton.
-- Stöd för följande autentiseringsprotokoll: OAuth 2,0 Draft 13, WS-Trust och Web Services Federation (WS-Federation).
-- Stöd för följande token-format: JSON Web Token (JWT), SAML 1,1, SAML 2,0 och simple web token (SWT).
-- En identifiering av start sfär, integrerad i WIF, som gör att användarna kan välja vilken typ av konto de använder för att logga in. Den här upplevelsen är värd för webb programmet och är helt anpassningsbar.
-- Token-transformering som möjliggör omfattande anpassning av de anspråk som tagits emot av webb programmet från Access Control, inklusive:
-    - Släpp igenom anspråk från identitets leverantörer.
-    - Lägger till ytterligare anpassade anspråk.
-    - Enkel if-then-logik för att utfärda anspråk under vissa förhållanden.
+- Federation med Google, Facebook, Yahoo, Azure Active Directory och AD FS-konton och Microsoft-konton.
+- Stöd för följande autentiseringsprotokoll: OAuth 2.0 Draft 13, WS-Trust och Web Services Federation (WS-Federation).
+- Stöd för följande tokenformat: JSON Web Token (JWT), SAML 1.1, SAML 2.0 och Simple Web Token (SWT).
+- En identifieringsupplevelse för hemsfär, integrerad i WIF, som gör att användarna kan välja vilken typ av konto de använder för att logga in. Den här upplevelsen finns i webbappen och är helt anpassningsbar.
+- Tokentransformering som möjliggör omfattande anpassning av de anspråk som tas emot av webbprogrammet från Access Control, inklusive:
+    - Skicka genom anspråk från identitetsproviders.
+    - Lägga till ytterligare anpassade anspråk.
+    - Enkel if-then-logik för att utfärda anspråk under vissa villkor.
 
-Tyvärr finns det ingen tjänst som erbjuder alla dessa motsvarande funktioner. Du bör utvärdera vilka funktioner i Access Control du behöver och sedan välja mellan att använda [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/), [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) (Azure AD B2C) eller en annan molnbaserad autentiseringstjänst-tjänst.
+Tyvärr finns det inte någon tjänst som erbjuder alla dessa motsvarande funktioner. Du bör utvärdera vilka funktioner i Access Control du behöver och sedan välja mellan att använda [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/), [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) (Azure AD B2C) eller en annan molnautentiseringstjänst.
 
 #### <a name="migrate-to-azure-active-directory"></a>Migrera till Azure Active Directory
 
-En väg att överväga är att integrera dina appar och tjänster direkt med Azure AD. Azure AD är den molnbaserade identitets leverantören för Microsoft arbets-eller skol konton. Azure AD är identitets leverantören för Microsoft 365, Azure och mycket mer. Den ger till gång till liknande funktioner för federerade autentisering till Access Control, men har inte stöd för alla Access Controls funktioner. 
+En väg att överväga är att integrera dina appar och tjänster direkt med Azure AD. Azure AD är den molnbaserade identitetsprovidern för Microsofts arbets- eller skolkonton. Azure AD är identitetsprovider för Microsoft 365, Azure och mycket mer. Den ger liknande federerade autentiseringsfunktioner som Access Control, men har inte stöd för alla Access Control funktioner. 
 
-Det primära exemplet är Federation med sociala identitets leverantörer, till exempel Facebook, Google och Yahoo. Om dina användare loggar in med dessa typer av autentiseringsuppgifter är Azure AD inte lösningen för dig. 
+Det primära exemplet är federation med sociala identitetsleverantörer, till exempel Facebook, Google och Yahoo. Om användarna loggar in med dessa typer av autentiseringsuppgifter är Azure AD inte lösningen för dig. 
 
-Azure AD stöder inte heller exakt samma autentiseringsprotokoll som Access Control. Till exempel, även om både Access Control och Azure AD stöder OAuth, finns det diskreta skillnader mellan varje implementering. Olika implementeringar kräver att du ändrar kod som en del av en migrering.
+Azure AD har inte heller nödvändigtvis stöd för exakt samma autentiseringsprotokoll som Access Control. Även om både Access Control och Azure AD stöder OAuth finns det subtila skillnader mellan varje implementering. Olika implementeringar kräver att du ändrar kod som en del av en migrering.
 
-Azure AD ger dock flera möjliga fördelar för att Access Control kunder. Den har inbyggt stöd för Microsoft arbets-eller skol konton som finns i molnet, som ofta används av Access Control kunder. 
+Azure AD ger dock flera potentiella fördelar till Access Control kunder. Det har inbyggt stöd för Microsofts arbets- eller skolkonton som finns i molnet, som ofta används av Access Control kunder. 
 
-En Azure AD-klient kan också vara federerad till en eller flera instanser av lokala Active Directory via AD FS. På så sätt kan din app autentisera molnbaserade användare och användare som finns lokalt. Det stöder också WS-Federation-protokollet, vilket gör det relativt enkelt att integrera med ett webb program med hjälp av WIF.
+En Azure AD-klientorganisation kan också federeras till en eller flera instanser av lokal Active Directory via AD FS. På så sätt kan din app autentisera molnbaserade användare och användare som finns lokalt. Det stöder även WS-Federation protokoll, vilket gör det relativt enkelt att integrera med en webbapp med hjälp av WIF.
 
-I följande tabell jämförs funktionerna i Access Control som är relevanta för webb program med de funktioner som är tillgängliga i Azure AD. 
+I följande tabell jämförs funktionerna i Access Control som är relevanta för webbprogram med de funktioner som är tillgängliga i Azure AD. 
 
-På hög nivå *är Azure Active Directory förmodligen det bästa valet för din migrering om du låter användarna logga in enbart med sina arbets-eller skol konton i Microsoft*.
+På hög nivå är Azure Active Directory förmodligen det bästa valet för migreringen om du tillåter att användarna bara loggar in med sina Microsoft-arbets- *eller skolkonton.*
 
-| Funktion | Access Control support | Support för Azure AD |
+| Funktion | Access Control support | Azure AD-stöd |
 | ---------- | ----------- | ---------------- |
 | **Typer av konton** | | |
-| Microsoft arbets-eller skol konton | Stöds | Stöds |
-| Konton från Windows Server Active Directory och AD FS |– Stöds via Federation med en Azure AD-klient <br />– Stöds via direkt Federation med AD FS | Stöds endast via Federation med en Azure AD-klient | 
-| Konton från andra företags identitets hanterings system |– Möjlig via Federation med en Azure AD-klient <br />– Stöds via direkt Federation | Möjlig via Federation med en Azure AD-klient |
-| Microsoft-konton för personligt bruk | Stöds | Stöds via Azure AD v 2.0 OAuth-protokollet, men inte över några andra protokoll | 
-| Facebook-, Google-, Yahoo-konton | Stöds | Stöds inte alls |
+| Microsoft-arbets- eller skolkonton | Stöds | Stöds |
+| Konton från Windows Server Active Directory och AD FS |– Stöds via federation med en Azure AD-klientorganisation <br />– Stöds via direkt federation med AD FS | Stöds endast via federation med en Azure AD-klientorganisation | 
+| Konton från andra identitetshanteringssystem för företag |– Möjligt via federation med en Azure AD-klientorganisation <br />– Stöds via direkt federation | Möjligt via federation med en Azure AD-klientorganisation |
+| Microsoft-konton för personligt bruk | Stöds | Stöds via Azure AD v2.0 OAuth-protokollet, men inte över andra protokoll | 
+| Facebook-, Google- och Yahoo-konton | Stöds | Stöds inte alls |
 | **Protokoll och SDK-kompatibilitet** | | |
 | WIF | Stöds | Stöds, men det finns begränsade instruktioner |
 | WS-Federation | Stöds | Stöds |
-| OAuth 2.0 | Stöd för Draft 13 | Stöd för RFC 6749, den senaste moderna specifikationen |
+| OAuth 2.0 | Stöd för utkast 13 | Stöd för RFC 6749, den mest moderna specifikationen |
 | WS-Trust | Stöds | Stöds inte |
-| **Token-format** | | |
-| JWT | Stöds i beta | Stöds |
-| SAML 1,1 | Stöds | Förhandsgranskning |
+| **Tokenformat** | | |
+| JWT | Stöds i betaversion | Stöds |
+| SAML 1.1 | Stöds | Förhandsgranskning |
 | SAML 2.0 | Stöds | Stöds |
-| SWT | Stöds | Stöds inte |
+| Swt | Stöds | Stöds inte |
 | **Anpassningar** | | |
-| Anpassningsbar start sfär identifiering/konto – plocknings-UI | Nedladdnings bar kod som kan införlivas i appar | Stöds inte |
+| Anpassningsbar identifiering av hemsfär/konto-välja användargränssnitt | Nedladdningsbar kod som kan införlivas i appar | Stöds inte |
 | Ladda upp anpassade certifikat för tokensignering | Stöds | Stöds |
-| Anpassa anspråk i token |-Släpp igenom inloggade anspråk från identitets leverantörer<br />– Hämta åtkomsttoken från identitets leverantören som ett anspråk<br />– Utfärda utgående anspråk baserat på värden för indata-anspråk<br />– Utfärda utgående anspråk med konstanta värden |-Det går inte att släppa igenom anspråk från federerade identitets leverantörer<br />-Det går inte att hämta åtkomsttoken från identitets leverantören som ett anspråk<br />-Det går inte att utfärda utgående anspråk baserat på värden för indata-anspråk<br />-Kan utfärda utgående anspråk med konstanta värden<br />-Kan utfärda utgående anspråk baserat på Egenskaper för användare som har synkroniserats till Azure AD |
+| Anpassa anspråk i token |– Skicka inkommande anspråk från identitetsproviders<br />– Hämta åtkomsttoken från identitetsprovidern som ett anspråk<br />– Utfärda utgående anspråk baserat på värden för inkommande anspråk<br />– Utfärda utgående anspråk med konstanta värden |– Det går inte att skicka anspråk från federerade identitetsproviders<br />– Det går inte att hämta åtkomsttoken från identitetsprovidern som ett anspråk<br />– Det går inte att utfärda utgående anspråk baserat på värden för inkommande anspråk<br />– Kan utfärda utgående anspråk med konstanta värden<br />– Kan utfärda utgående anspråk baserat på egenskaper för användare som har synkroniserats med Azure AD |
 | **Automation** | | |
-| Automatisera konfigurations-och hanterings uppgifter | Stöds via Access Control hanterings tjänst | Stöds med Microsoft Graph-API: et |
+| Automatisera konfigurations- och hanteringsuppgifter | Stöds via Access Control Management Service | Stöds med hjälp Microsoft Graph API |
 
-Om du bestämmer att Azure AD är den bästa sökvägen för migrering för dina program och tjänster, bör du vara medveten om två sätt att integrera din app med Azure AD.
+Om du bestämmer dig för att Azure AD är den bästa migreringsvägen för dina program och tjänster bör du vara medveten om två sätt att integrera din app med Azure AD.
 
-Om du vill använda WS-Federation eller WIF för att integrera med Azure AD rekommenderar vi att du följer metoden som beskrivs i [Konfigurera federerad enkel inloggning för ett program som inte är ett galleri program](../manage-apps/configure-saml-single-sign-on.md). Artikeln handlar om hur du konfigurerar Azure AD för SAML-baserad enkel inloggning, men som även fungerar för att konfigurera WS-Federation. Följande metod kräver en Azure AD Premium-licens. Den här metoden har två fördelar:
+Om du WS-Federation eller WIF för att integrera med Azure AD rekommenderar vi att du följer metoden som beskrivs i Konfigurera federerad enkel inloggning för ett program som inte [är ett galleriprogram.](../manage-apps/configure-saml-single-sign-on.md) Artikeln handlar om att konfigurera Azure AD för SAML-baserad enkel inloggning, men fungerar även för att konfigurera WS-Federation. För att följa den här metoden krävs Azure AD Premium licens. Den här metoden har två fördelar:
 
-- Du får fullständig flexibilitet för Azure AD-token-anpassning. Du kan anpassa de anspråk som utfärdas av Azure AD för att matcha de anspråk som utfärdas av Access Control. Detta omfattar särskilt användar-ID eller namn-ID-anspråk. Om du vill fortsätta att ta emot konsekventa användar identifierare för användarna när du har ändrat teknik kontrollerar du att de användar-ID: n som utfärdats av Azure AD matchar de som utfärdats av Access Control.
-- Du kan konfigurera ett certifikat för tokensignering som är specifika för ditt program och med en livs längd som du styr.
+- Du får fullständig flexibilitet för anpassning av Azure AD-token. Du kan anpassa anspråken som utfärdas av Azure AD så att de matchar de anspråk som utfärdas av Access Control. Detta inkluderar särskilt användar-ID eller namnidentifieraranspråk. Om du vill fortsätta att ta emot konsekventa användaridentifierare för dina användare när du har ändrat teknik, se till att användar-ID:n som utfärdats av Azure AD matchar de som utfärdats av Access Control.
+- Du kan konfigurera ett certifikat för tokensignering som är specifikt för ditt program och med en livslängd som du styr.
 
 > [!NOTE]
-> Den här metoden kräver en Azure AD Premium-licens. Om du är Access Control kund och behöver en Premium-licens för att ställa in en enkel inloggning för ett program, så kontakta oss. Vi är glada över att tillhandahålla utvecklings licenser som du kan använda.
+> Den här metoden kräver en Azure AD Premium licens. Om du är Access Control kund och du behöver en Premium-licens för att konfigurera enkel inloggning för ett program kan du kontakta oss. Vi tillhandahåller gärna utvecklarlicenser som du kan använda.
 
-En annan metod är att följa [det här kod exemplet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation), vilket ger något annorlunda instruktioner för att konfigurera WS-Federation. Det här kod exemplet använder inte WIF, utan i stället ASP.NET 4,5 OWIN mellan. Instruktionerna för registrering av appar är dock giltiga för appar som använder WIF och kräver inte någon Azure AD Premium-licens. 
+En annan metod är att följa [det här kodexe](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation)exemplet , som ger lite olika instruktioner för att konfigurera WS-Federation. Det här kodexe exemplet använder inte WIF, utan i stället ASP.NET 4.5 OWIN-mellanprogram. Instruktionerna för appregistrering är dock giltiga för appar som använder WIF och kräver inte en Azure AD Premium licens. 
 
-Om du väljer den här metoden måste du förstå [förnyelse av signerings nyckel i Azure AD](../develop/active-directory-signing-key-rollover.md). I den här metoden används den globala Azure AD-signerings nyckeln för att utfärda token. Som standard uppdaterar WIF inte signerings nycklar automatiskt. När Azure AD roterar sina globala signerings nycklar måste din WIF-implementering förberedas för att godkänna ändringarna. Mer information finns i [viktig information om förnyelse av signerings nyckel i Azure AD](/previous-versions/azure/dn641920(v=azure.100)).
+Om du väljer den här metoden måste du förstå [signeringsnyckelns återställning i Azure AD.](../develop/active-directory-signing-key-rollover.md) Den här metoden använder den globala signeringsnyckeln för Azure AD för att utfärda token. Wif uppdaterar som standard inte signeringsnycklar automatiskt. När Azure AD roterar sina globala signeringsnycklar måste DIN WIF-implementering förberedas för att godkänna ändringarna. Mer information finns i Viktig [information om signering av nyckel-rollover i Azure AD.](/previous-versions/azure/dn641920(v=azure.100))
 
-Om du kan integrera med Azure AD via OpenID Connect eller OAuth-protokoll rekommenderar vi att du gör det. Vi har omfattande dokumentation och vägledning om hur du integrerar Azure AD i ditt webb program i [Azure AD Developer Guide](../develop/index.yml).
+Om du kan integrera med Azure AD via OpenID Connect- eller OAuth-protokollen rekommenderar vi att du gör det. Vi har omfattande dokumentation och vägledning om hur du integrerar Azure AD i din webbapp som är tillgänglig i vår [Azure AD-utvecklarguide.](../develop/index.yml)
 
 #### <a name="migrate-to-azure-active-directory-b2c"></a>Migrera till Azure Active Directory B2C
 
-Den andra sökvägen till migrering att överväga är Azure AD B2C. Azure AD B2C är en molnbaserad tjänst i molnet som Access Control, så att utvecklare kan hantera sin autentiserings-och identitets hanterings logik till en moln tjänst. Det är en betald tjänst (med kostnads fria och Premium-nivåer) som är avsedd för konsument program som kan ha upp till miljon tals aktiva användare.
+Den andra migreringsvägen att överväga är Azure AD B2C. Azure AD B2C är en molnautentiseringstjänst som, till exempel Access Control, gör det möjligt för utvecklare att outsourca sin logik för autentisering och identitetshantering till en molntjänst. Det är en betald tjänst (med kostnadsfria nivåer och premiumnivåer) som är utformad för konsumentriktade program som kan ha upp till miljontals aktiva användare.
 
-Precis som Access Control är en av de mest attraktiva funktionerna i Azure AD B2C att den stöder många olika typer av konton. Med Azure AD B2C kan du logga in användare med deras Microsoft-konto-eller Facebook-, Google-, LinkedIn-, GitHub-eller Yahoo-konton med mera. Azure AD B2C stöder också "lokala konton" eller användar namn och lösen ord som användare skapar specifikt för ditt program. Azure AD B2C ger också omfattande utöknings barhet som du kan använda för att anpassa dina inloggnings flöden. 
+Som Access Control är en av de mest snygga funktionerna i Azure AD B2C att den stöder många olika typer av konton. Med Azure AD B2C kan du logga in användare med hjälp av deras Microsoft-konto- eller Facebook-, Google-, LinkedIn-, GitHub- eller Yahoo-konton med mera. Azure AD B2C också stöd för "lokala konton" eller användarnamn och lösenord som användarna skapar specifikt för ditt program. Azure AD B2C ger också omfattande utökningsbarhet som du kan använda för att anpassa dina inloggningsflöden. 
 
-Azure AD B2C stöder dock inte bredden på autentiseringsprotokoll och token-format som Access Control kunder kan behöva. Du kan inte heller använda Azure AD B2C för att hämta token och fråga om du vill ha mer information om användaren från identitets leverantören, Microsoft eller på annat sätt.
+Men Azure AD B2C stöder inte den bredd av autentiseringsprotokoll och tokenformat som Access Control kan kräva. Du kan inte heller använda Azure AD B2C för att hämta token och fråga efter ytterligare information om användaren från identitetsprovidern, Microsoft eller på annat sätt.
 
-I följande tabell jämförs funktionerna i Access Control som är relevanta för webb program med de som är tillgängliga i Azure AD B2C. På hög nivå *är Azure AD B2C förmodligen det rätta valet för din migrering om ditt program är kund riktat eller om det stöder många olika typer av konton.*
+I följande tabell jämförs funktionerna i Access Control som är relevanta för webbprogram med de som är tillgängliga i Azure AD B2C. På hög nivå är Azure AD B2C förmodligen det rätta valet för migreringen om ditt program är konsumentriktad, eller om det stöder *många olika typer av konton.*
 
 | Funktion | Access Control support | Azure AD B2C support |
 | ---------- | ----------- | ---------------- |
 | **Typer av konton** | | |
-| Microsoft arbets-eller skol konton | Stöds | Stöds via anpassade principer  |
-| Konton från Windows Server Active Directory och AD FS | Stöds via direkt Federation med AD FS | Stöds via SAML Federation med anpassade principer |
-| Konton från andra företags identitets hanterings system | Stöds via direkt Federation via WS-Federation | Stöds via SAML Federation med anpassade principer |
+| Microsoft-arbets- eller skolkonton | Stöds | Stöds via anpassade principer  |
+| Konton från Windows Server Active Directory och AD FS | Stöds via direkt federation med AD FS | Stöds via SAML-federation med hjälp av anpassade principer |
+| Konton från andra identitetshanteringssystem för företag | Stöds via direkt federation via WS-Federation | Stöds via SAML-federation med hjälp av anpassade principer |
 | Microsoft-konton för personligt bruk | Stöds | Stöds | 
-| Facebook-, Google-, Yahoo-konton | Stöds | Facebook och Google stöds internt, Yahoo som stöds via OpenID Connect Federation med anpassade principer |
+| Facebook-, Google- och Yahoo-konton | Stöds | Facebook och Google stöds inbyggt, Yahoo stöds via OpenID Connect federation med hjälp av anpassade principer |
 | **Protokoll och SDK-kompatibilitet** | | |
 | Windows Identity Foundation (WIF) | Stöds | Stöds inte |
 | WS-Federation | Stöds | Stöds inte |
-| OAuth 2.0 | Stöd för Draft 13 | Stöd för RFC 6749, den senaste moderna specifikationen |
+| OAuth 2.0 | Stöd för utkast 13 | Stöd för RFC 6749, den mest moderna specifikationen |
 | WS-Trust | Stöds | Stöds inte |
-| **Token-format** | | |
-| JWT | Stöds i beta | Stöds |
-| SAML 1,1 | Stöds | Stöds inte |
+| **Tokenformat** | | |
+| JWT | Stöds i betaversion | Stöds |
+| SAML 1.1 | Stöds | Stöds inte |
 | SAML 2.0 | Stöds | Stöds inte |
-| SWT | Stöds | Stöds inte |
+| Swt | Stöds | Stöds inte |
 | **Anpassningar** | | |
-| Anpassningsbar start sfär identifiering/konto – plocknings-UI | Nedladdnings bar kod som kan införlivas i appar | Fullständigt anpassningsbart gränssnitt via anpassad CSS |
-| Ladda upp anpassade certifikat för tokensignering | Stöds | Anpassade signerings nycklar, inte certifikat, stöds via anpassade principer |
-| Anpassa anspråk i token |-Släpp igenom inloggade anspråk från identitets leverantörer<br />– Hämta åtkomsttoken från identitets leverantören som ett anspråk<br />– Utfärda utgående anspråk baserat på värden för indata-anspråk<br />– Utfärda utgående anspråk med konstanta värden |– Kan släppa igenom anspråk från identitets leverantörer. anpassade principer som krävs för vissa anspråk<br />-Det går inte att hämta åtkomsttoken från identitets leverantören som ett anspråk<br />-Kan utfärda utgående anspråk baserat på värden för indata-anspråk via anpassade principer<br />-Kan utfärda utgående anspråk med konstanta värden via anpassade principer |
+| Anpassningsbar identifiering av hemsfär/konto-välja användargränssnitt | Nedladdningsbar kod som kan införlivas i appar | Fullständigt anpassningsbart användargränssnitt via anpassad CSS |
+| Ladda upp anpassade certifikat för tokensignering | Stöds | Anpassade signeringsnycklar, inte certifikat, stöds via anpassade principer |
+| Anpassa anspråk i token |– Skicka inkommande anspråk från identitetsproviders<br />– Hämta åtkomsttoken från identitetsprovidern som ett anspråk<br />– Utfärda utgående anspråk baserat på värden för inkommande anspråk<br />– Utfärda utgående anspråk med konstanta värden |– Kan skicka anspråk från identitetsproviders. anpassade principer som krävs för vissa anspråk<br />– Det går inte att hämta åtkomsttoken från identitetsprovidern som ett anspråk<br />– Kan utfärda utgående anspråk baserat på värden för inkommande anspråk via anpassade principer<br />– Kan utfärda utgående anspråk med konstanta värden via anpassade principer |
 | **Automation** | | |
-| Automatisera konfigurations-och hanterings uppgifter | Stöds via Access Control hanterings tjänst |– Skapa användare som tillåts använda Microsoft Graph API<br />-Det går inte att skapa B2C-klienter, program eller principer program mässigt |
+| Automatisera konfigurations- och hanteringsuppgifter | Stöds via Access Control Management Service |– Skapa användare som tillåts med hjälp av Microsoft Graph-API:et<br />– Det går inte att skapa B2C-klienter, program eller principer programmatiskt |
 
-Om du bestämmer att Azure AD B2C är den bästa migreringen för dina program och tjänster börjar du med följande resurser:
+Om du bestämmer Azure AD B2C är den bästa migreringsvägen för dina program och tjänster börjar du med följande resurser:
 
 - [Azure AD B2C dokumentation](../../active-directory-b2c/overview.md)
 - [Anpassade principer i Azure AD B2C](../../active-directory-b2c/custom-policy-overview.md)
-- [Azure AD B2C priser](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+- [Azure AD B2C prissättning](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
-#### <a name="migrate-to-ping-identity-or-auth0"></a>Migrera till ping-identitet eller Auth0
+#### <a name="migrate-to-ping-identity-or-auth0"></a>Migrera till Ping-identitet eller Auth0
 
-I vissa fall kanske du upptäcker att Azure AD och Azure AD B2C inte räcker för att ersätta Access Control i dina webb program utan att göra stora kod ändringar. Några vanliga exempel kan vara:
+I vissa fall kanske du upptäcker att Azure AD och Azure AD B2C inte är tillräckliga för att ersätta Access Control i dina webbprogram utan att göra större kodändringar. Några vanliga exempel kan vara:
 
-- Webb program som använder WIF eller WS-Federation för inloggning med sociala identitets leverantörer som Google eller Facebook.
-- Webb program som utför direkt Federation till en företags identitets leverantör via WS-Federation-protokollet.
-- Webb program som kräver åtkomst-token som utfärdats av en social identitetsprovider (till exempel Google eller Facebook) som ett anspråk i de token som utfärdas av Access Control.
-- Webb program med komplex token-omvandlings regler som Azure AD eller Azure AD B2C inte kan återskapa.
-- Webb program för flera innehavare som använder ACS för att centralt hantera Federation till många olika identitets leverantörer
+- Webbprogram som använder WIF eller WS-Federation för inloggning med sociala identitetsproviders som Google eller Facebook.
+- Webbprogram som utför direkt federation till en företagsidentitetsprovider via WS-Federation protokollet.
+- Webbprogram som kräver den åtkomsttoken som utfärdats av en social identitetsprovider (till exempel Google eller Facebook) som ett anspråk i de token som utfärdats av Access Control.
+- Webbprogram med komplexa tokentransformeringsregler som Azure AD Azure AD B2C inte kan återskapa.
+- Webbprogram för flera innehavare som använder ACS för att centralt hantera federation till många olika identitetsprovidrar
 
-I dessa fall kanske du vill överväga att migrera ditt webb program till en annan molnbaserad autentiseringstjänst. Vi rekommenderar att du utforskar följande alternativ. Var och en av följande alternativ erbjuder funktioner som liknar Access Control:
+I dessa fall kanske du vill migrera webbappen till en annan molnautentiseringstjänst. Vi rekommenderar att du utforskar följande alternativ. Vart och ett av följande alternativ erbjuder funktioner som liknar Access Control:
 
 ![Den här bilden visar Auth0-logotypen](./media/active-directory-acs-migration/rsz-auth0.png) 
 
-[Auth0](https://auth0.com/acs) är en flexibel moln identitets tjänst som har skapat [vägledning för migrering på hög nivå för kunder i Access Control](https://auth0.com/acs)och har stöd för nästan alla funktioner i ACS.
+[Auth0 är](https://auth0.com/acs) en flexibel molnidentitetstjänst som har skapat migreringsvägledning på hög nivå för [kunder med Access Control](https://auth0.com/acs)och har stöd för nästan alla funktioner som ACS gör.
 
-![Den här bilden visar ping identitet-logo typen](./media/active-directory-acs-migration/rsz-ping.png)
+![Den här bilden visar pingidentitetslogotypen](./media/active-directory-acs-migration/rsz-ping.png)
 
-[Ping Identity](https://www.pingidentity.com) erbjuder två lösningar som liknar ACS. PingOne är en moln identitets tjänst som stöder många av samma funktioner som ACS, och PingFederate är en liknande lokal identitets produkt som erbjuder mer flexibilitet. Mer information om hur du använder dessa produkter finns i ping: s indragnings vägledning för ACS.
+[Ping Identity](https://www.pingidentity.com) erbjuder två lösningar som liknar ACS. PingOne är en molnidentitetstjänst som stöder många av samma funktioner som ACS och PingFederate är en liknande lokal identitetsprodukt som ger större flexibilitet. Mer information om hur du använder dessa produkter finns i Pings vägledning för ACS-tillbakagångar.
 
-Vårt mål att arbeta med ping Identity och Auth0 är att se till att alla Access Control kunder har en migrerings Sök väg för sina appar och tjänster som minimerar mängden arbete som krävs för att flytta från Access Control.
+Vårt mål med att arbeta med Ping Identity och Auth0 är att se till att alla Access Control-kunder har en migreringsväg för sina appar och tjänster som minimerar mängden arbete som krävs för att flytta från Access Control.
 
 <!--
 
@@ -300,65 +300,65 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 
 -->
 
-### <a name="web-services-that-use-active-authentication"></a>Webb tjänster som använder aktiv autentisering
+### <a name="web-services-that-use-active-authentication"></a>Webbtjänster som använder aktiv autentisering
 
-För webb tjänster som skyddas med token som utfärdats av Access Control erbjuder Access Control följande funktioner:
+För webbtjänster som skyddas med token som utfärdats av Access Control Access Control erbjuder följande funktioner:
 
-- Möjlighet att registrera en eller flera *tjänst identiteter* i Access Control namn området. Tjänst identiteter kan användas för att begära token.
-- Stöd för OAuth-omslutning och OAuth 2,0 Draft 13-protokoll för att begära token genom att använda följande typer av autentiseringsuppgifter:
-    - Ett enkelt lösen ord som skapas för tjänst identiteten
-    - En signerad SWT med hjälp av ett symmetriskt nyckel-eller X509-certifikat
-    - En SAML-token som utfärdats av en betrodd identitets leverantör (vanligt vis en AD FS instans)
-- Stöd för följande token-format: JWT, SAML 1,1, SAML 2,0 och SWT.
-- Transformerings regler för enkel token.
+- Möjlighet att registrera en eller flera *tjänstidentiteter* i Access Control namnområdet. Tjänstidentiteter kan användas för att begära token.
+- Stöd för OAuth WRAP- och OAuth 2.0 Draft 13-protokoll för att begära token med hjälp av följande typer av autentiseringsuppgifter:
+    - Ett enkelt lösenord som har skapats för tjänstidentiteten
+    - En signerad SWT med hjälp av en symmetrisk nyckel eller X509-certifikat
+    - En SAML-token som utfärdats av en betrodd identitetsprovider (vanligtvis en AD FS instans)
+- Stöd för följande tokenformat: JWT, SAML 1.1, SAML 2.0 och SWT.
+- Enkla tokentransformeringsregler.
 
-Tjänst identiteter i Access Control används vanligt vis för att implementera server-till-Server-autentisering. 
+Tjänstidentiteter i Access Control används vanligtvis för att implementera server-till-server-autentisering. 
 
 #### <a name="migrate-to-azure-active-directory"></a>Migrera till Azure Active Directory
 
-Vår rekommendation för den här typen av autentiseringspaket är att migrera till [Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/). Azure AD är den molnbaserade identitets leverantören för Microsoft arbets-eller skol konton. Azure AD är identitets leverantören för Microsoft 365, Azure och mycket mer. 
+Vår rekommendation för den här typen av autentiseringsflöde är att migrera [till Azure Active Directory](https://azure.microsoft.com/develop/identity/signin/). Azure AD är den molnbaserade identitetsprovidern för Microsofts arbets- eller skolkonton. Azure AD är identitetsprovidern för Microsoft 365, Azure och mycket mer. 
 
-Du kan också använda Azure AD för server-till-Server-autentisering med hjälp av Azure AD-implementeringen av tilldelningen av OAuth-klientautentiseringsuppgifter. I följande tabell jämförs funktionerna i Access Control Server-till-Server-autentisering med de som är tillgängliga i Azure AD.
+Du kan också använda Azure AD för server-till-server-autentisering med hjälp av Azure AD-implementeringen av beviljandet av OAuth-klientautentiseringsuppgifter. I följande tabell jämförs funktionerna i Access Control i server-till-server-autentisering med de som är tillgängliga i Azure AD.
 
-| Funktion | Access Control support | Support för Azure AD |
+| Funktion | Access Control support | Azure AD-stöd |
 | ---------- | ----------- | ---------------- |
-| Registrera en webb tjänst | Skapa en förlitande part i Access Control hanterings portalen | Skapa ett Azure AD-webbprogram i Azure Portal |
-| Registrera en klient | Skapa en tjänst identitet i Access Control hanterings Portal | Skapa ett annat Azure AD-webbprogram i Azure Portal |
-| Protokoll som används |– OAuth-protokollet för att packa<br />– OAuth 2,0 Draft 13-tilldelning av klientautentiseringsuppgifter | Beviljande av autentiseringsuppgifter för OAuth 2.0-klient |
-| Metoder för klientautentisering |– Enkelt lösen ord<br />-Signerad SWT<br />– SAML-token från en federerad identitets leverantör |– Enkelt lösen ord<br />-Signerat JWT |
-| Token-format |– JWT<br />– SAML 1,1<br />– SAML 2,0<br />– SWT<br /> | Endast JWT |
-| Token-transformering |-Lägg till anpassade anspråk<br />– Enkel om-then utfärdande logik för anspråk | Lägg till anpassade anspråk | 
-| Automatisera konfigurations-och hanterings uppgifter | Stöds via Access Control hanterings tjänst | Stöds med Microsoft Graph-API: et |
+| Registrera en webbtjänst | Skapa en förlitande part i Access Control-hanteringsportalen | Skapa en Azure AD-webbapp i Azure Portal |
+| Registrera en klient | Skapa en tjänstidentitet i Access Control-hanteringsportalen | Skapa en annan Azure AD-webbapp i Azure Portal |
+| Protokoll som används |– OAuth WRAP-protokoll<br />– Beviljande av autentiseringsuppgifter för OAuth 2.0 Draft 13-klient | Beviljande av autentiseringsuppgifter för OAuth 2.0-klient |
+| Klientautentiseringsmetoder |– Enkelt lösenord<br />– Signerad SWT<br />– SAML-token från en federerad identitetsprovider |– Enkelt lösenord<br />– Signerad JWT |
+| Tokenformat |– JWT<br />– SAML 1.1<br />– SAML 2.0<br />– SWT<br /> | Endast JWT |
+| Tokentransformering |– Lägga till anpassade anspråk<br />– Enkel logik för anspråksutfärdande | Lägga till anpassade anspråk | 
+| Automatisera konfigurations- och hanteringsuppgifter | Stöds via Access Control Management Service | Stöds med hjälp Microsoft Graph API |
 
-Vägledning om hur du implementerar server-till-Server-scenarier finns i följande resurser:
+Vägledning om hur du implementerar server-till-server-scenarier finns i följande resurser:
 
-- Avsnittet tjänst-till-tjänst i [Azure AD Developer Guide](../develop/index.yml)
-- [Bakgrunds exempel kod exempel med hjälp av enkla lösen ord klientens autentiseringsuppgifter](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
-- [Bakgrunds exempel kod exempel med certifikat klientens autentiseringsuppgifter](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
+- Tjänst-till-tjänst-avsnittet i [utvecklarhandboken för Azure AD](../develop/index.yml)
+- [Daemon-kodexempel med enkla lösenordsklientautentiseringsuppgifter](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
+- [Daemonkodexempel med certifikatklientautentiseringsuppgifter](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 
-#### <a name="migrate-to-ping-identity-or-auth0"></a>Migrera till ping-identitet eller Auth0
+#### <a name="migrate-to-ping-identity-or-auth0"></a>Migrera till Ping Identity eller Auth0
 
-I vissa fall kanske du upptäcker att autentiseringsuppgifterna för Azure AD-klienten och OAuth Grant-implementeringen inte räcker för att ersätta Access Control i din arkitektur utan större kod ändringar. Några vanliga exempel kan vara:
+I vissa fall kanske du upptäcker att autentiseringsuppgifterna för Azure AD-klienten och OAuth-beviljandeimplementering inte är tillräckliga för att ersätta Access Control i arkitekturen utan större kodändringar. Några vanliga exempel kan vara:
 
-- Server-till-Server-autentisering med andra token-format än JWTs.
-- Server-till-Server-autentisering med hjälp av en token som tillhandahålls av en extern identitets leverantör.
-- Server-till-Server-autentisering med token omvandlings regler som Azure AD inte kan återskapa.
+- Server-till-server-autentisering med andra tokenformat än JWT.
+- Server-till-server-autentisering med hjälp av en indatatoken som tillhandahålls av en extern identitetsprovider.
+- Server-till-server-autentisering med tokentransformeringsregler som Azure AD inte kan återskapa.
 
-I dessa fall kan du överväga att migrera ditt webb program till en annan molnbaserad autentiseringstjänst-tjänst. Vi rekommenderar att du utforskar följande alternativ. Var och en av följande alternativ erbjuder funktioner som liknar Access Control:
+I dessa fall kan du överväga att migrera webbappen till en annan molnautentiseringstjänst. Vi rekommenderar att du utforskar följande alternativ. Vart och ett av följande alternativ erbjuder funktioner som liknar Access Control:
 
 ![Den här bilden visar Auth0-logotypen](./media/active-directory-acs-migration/rsz-auth0.png)
 
-[Auth0](https://auth0.com/acs) är en flexibel moln identitets tjänst som har skapat [vägledning för migrering på hög nivå för kunder i Access Control](https://auth0.com/acs)och har stöd för nästan alla funktioner i ACS.
+[Auth0 är](https://auth0.com/acs) en flexibel molnidentitetstjänst som har skapat migreringsvägledning på hög nivå för [kunder med Access Control](https://auth0.com/acs)och har stöd för nästan alla funktioner som ACS gör.
 
-![Den här bilden visar ping identity-logo typens ](./media/active-directory-acs-migration/rsz-ping.png)
- [ping-identitet](https://www.pingidentity.com) erbjuder två lösningar som liknar ACS. PingOne är en moln identitets tjänst som stöder många av samma funktioner som ACS, och PingFederate är en liknande lokal identitets produkt som erbjuder mer flexibilitet. Mer information om hur du använder dessa produkter finns i ping: s indragnings vägledning för ACS.
+![Den här bilden visar pingidentitetslogotypen ](./media/active-directory-acs-migration/rsz-ping.png)
+ [Ping Identity](https://www.pingidentity.com) som erbjuder två lösningar som liknar ACS. PingOne är en molnidentitetstjänst som stöder många av de funktioner som ACS och PingFederate är en liknande lokal identitetsprodukt som ger mer flexibilitet. Mer information om hur du använder dessa produkter finns i Pings vägledning för ACS-tillbakagångar.
 
-Vårt mål att arbeta med ping Identity och Auth0 är att se till att alla Access Control kunder har en migrerings Sök väg för sina appar och tjänster som minimerar mängden arbete som krävs för att flytta från Access Control.
+Vårt mål med att arbeta med Ping Identity och Auth0 är att se till att alla Access Control-kunder har en migreringsväg för sina appar och tjänster som minimerar mängden arbete som krävs för att flytta från Access Control.
 
-#### <a name="passthrough-authentication"></a>Genom strömnings autentisering
+#### <a name="passthrough-authentication"></a>Genomströmningsautentisering
 
-För genom strömnings autentisering med godtycklig token-transformering finns det ingen motsvarande Microsoft-teknik till ACS. Om det är vad dina kunder behöver, kan Auth0 vara den som ger en närmast ungefärlig lösning.
+För genomströmningsautentisering med godtycklig tokentransformering finns det ingen motsvarande Microsoft-teknik till ACS. Om det är vad dina kunder behöver kan Auth0 vara den som tillhandahåller den närmaste approximeringslösningen.
 
 ## <a name="questions-concerns-and-feedback"></a>Frågor, problem och feedback
 
-Vi förstår att många Access Control kunder inte hittar en klar sökväg för migrering efter att ha läst den här artikeln. Du kan behöva hjälp eller vägledning för att fastställa rätt plan. Om du vill diskutera dina migrerings scenarier och frågor kan du lämna en kommentar på den här sidan.
+Vi förstår att många Access Control inte hittar en tydlig migreringsväg när de har läst den här artikeln. Du kan behöva hjälp eller vägledning för att fastställa rätt plan. Om du vill diskutera dina migreringsscenarier och frågor kan du lämna en kommentar på den här sidan.

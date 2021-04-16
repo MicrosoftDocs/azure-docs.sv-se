@@ -1,6 +1,6 @@
 ---
 title: Synkronisera attribut till Azure Active Directory för mappning
-description: När du konfigurerar användar etablering med Azure Active Directory-och SaaS-appar använder du funktionen katalog tillägg för att lägga till källattribut som inte synkroniseras som standard.
+description: När du konfigurerar användareetablering med Azure Active Directory- och SaaS-appar använder du katalogtilläggsfunktionen för att lägga till källattribut som inte synkroniseras som standard.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -10,36 +10,36 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 03/31/2021
 ms.author: kenwith
-ms.openlocfilehash: 102c0f7363b8d4f635762a33b82825e9ae71dfc6
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: f7a2429161cebe867d844b4ca7aa08ec3613edcd
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120800"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388218"
 ---
-# <a name="syncing-extension-attributes-for-app-provisioning"></a>Synkroniserar tilläggs-attribut för app-etablering
+# <a name="syncing-extension-attributes-for-app-provisioning"></a>Synkronisera tilläggsattribut för appetablering
 
-Azure Active Directory (Azure AD) måste innehålla alla data (attribut) som krävs för att skapa en användar profil vid etablering av användar konton från Azure AD till en [SaaS-app](../saas-apps/tutorial-list.md). När du anpassar mappningar för mappar för användar etablering, kanske du upptäcker att attributet som du vill mappa inte visas i listan **källattribut** . Den här artikeln visar hur du lägger till attributet som saknas.
+Azure Active Directory (Azure AD) måste innehålla alla data (attribut) som krävs för att skapa en användarprofil vid etablering av användarkonton från Azure AD till en [SaaS-app](../saas-apps/tutorial-list.md). När du anpassar attributmappningar för användareetablering kanske du upptäcker att attributet som du vill mappa inte visas i **listan över källattribut.** Den här artikeln visar hur du lägger till attributet som saknas.
 
-Endast för användare i Azure AD kan du [skapa schema tillägg med PowerShell eller Microsoft Graph](#create-an-extension-attribute-on-a-cloud-only-user).
+För användare endast i Azure AD kan du skapa [schematillägg med hjälp av PowerShell eller Microsoft Graph](#create-an-extension-attribute-on-a-cloud-only-user).
 
-För användare i lokala Active Directory måste du synkronisera användarna till Azure AD. Du kan synkronisera användare och attribut med [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md). Azure AD Connect synkroniserar automatiskt vissa attribut till Azure AD, men inte alla attribut. Dessutom kanske vissa attribut (till exempel SAMAccountName) som synkroniseras som standard inte exponeras med Azure AD-Graph API. I dessa fall kan du [använda funktionen Azure AD Connect katalog tillägg för att synkronisera attributet med Azure AD](#create-an-extension-attribute-using-azure-ad-connect). På så sätt blir attributet synligt för Azure AD-Graph API och Azure AD Provisioning-tjänsten.
+För användare lokal Active Directory måste du synkronisera användarna med Azure AD. Du kan synkronisera användare och attribut med hjälp [av Azure AD Connect](../hybrid/whatis-azure-ad-connect.md). Azure AD Connect synkroniserar automatiskt vissa attribut till Azure AD, men inte alla attribut. Dessutom kanske vissa attribut (till exempel SAMAccountName) som synkroniseras som standard inte exponeras med hjälp av Azure AD-Graph API. I dessa fall kan du använda [funktionen Azure AD Connect katalogtillägg för att synkronisera attributet till Azure AD.](#create-an-extension-attribute-using-azure-ad-connect) På så sätt blir attributet synligt för Azure AD-Graph API och Azure AD-etableringstjänsten.
 
-## <a name="create-an-extension-attribute-on-a-cloud-only-user"></a>Skapa ett attribut för tillägg i en användare som endast har en moln tjänst
-Du kan använda Microsoft Graph och PowerShell för att utöka användar schemat för användare i Azure AD. De här tilläggs attributen identifieras automatiskt i de flesta fall.
+## <a name="create-an-extension-attribute-on-a-cloud-only-user"></a>Skapa ett tilläggsattribut på en molnanvändare
+Du kan använda Microsoft Graph och PowerShell för att utöka användarschemat för användare i Azure AD. Dessa tilläggsattribut identifieras automatiskt i de flesta fall.
 
-Om du har fler än 1000 tjänstens huvud namn kan du hitta tillägg som saknas i listan över källattribut. Om ett attribut som du har skapat inte visas automatiskt, kontrollerar du att attributet har skapats och lägger till det manuellt i schemat. Använd Microsoft Graph och [Graph Explorer](/graph/graph-explorer/graph-explorer-overview.md)för att kontrol lera att det har skapats. Information om hur du lägger till den manuellt i schemat finns i [Redigera listan över attribut som stöds](customize-application-attributes.md#editing-the-list-of-supported-attributes).
+Om du har fler än 1 000 tjänsthuvudnamn kanske tillägg saknas i källattributlistan. Om ett attribut som du har skapat inte visas automatiskt kontrollerar du att attributet har skapats och lägger till det manuellt i schemat. Kontrollera att den har skapats med hjälp Microsoft Graph och [Graph Explorer](/graph/graph-explorer/graph-explorer-overview). Information om hur du lägger till det manuellt i schemat [finns i Redigera listan över attribut som stöds.](customize-application-attributes.md#editing-the-list-of-supported-attributes)
 
-### <a name="create-an-extension-attribute-on-a-cloud-only-user-using-microsoft-graph"></a>Skapa ett tilläggs-attribut i en endast moln användare som använder Microsoft Graph
-Du kan utöka schemat för Azure AD-användare med hjälp av [Microsoft Graph](/graph/overview.md). 
+### <a name="create-an-extension-attribute-on-a-cloud-only-user-using-microsoft-graph"></a>Skapa ett tilläggsattribut för en molnanvändare med hjälp av Microsoft Graph
+Du kan utöka schemat för Azure AD-användare med [hjälp av Microsoft Graph](/graph/overview). 
 
-Börja med att lista apparna i din klient organisation för att hämta ID för den app som du arbetar med. Mer information finns i [lista extensionProperties](/graph/api/application-list-extensionproperty?view=graph-rest-1.0&tabs=http&preserve-view=true).
+Börja med att lista apparna i din klientorganisation för att hämta ID:t för den app som du arbetar med. Mer information finns i [List extensionProperties](/graph/api/application-list-extensionproperty?view=graph-rest-1.0&tabs=http&preserve-view=true).
 
 ```json
 GET https://graph.microsoft.com/v1.0/applications
 ```
 
-Skapa sedan attributet Extension. Ersätt **ID-** egenskapen nedan med det **ID** som hämtades i föregående steg. Du måste använda attributet **"ID"** och inte "appId". Mer information finns i [skapa extensionProperty]/Graph/API/application-post-extensionproperty.MD? View = Graph-rest-1,0&flikar = http&bevara-View = true).
+Skapa sedan tilläggsattributet. Ersätt **ID-egenskapen** nedan med **det ID** som hämtades i föregående steg. Du måste använda attributet **"ID"** och inte "appId". Mer information finns i [Skapa extensionProperty]/graph/api/application-post-extensionproperty.md?view=graph-rest-1.0&tabs=http&preserve-view=true).
 
 ```json
 POST https://graph.microsoft.com/v1.0/applications/{id}/extensionProperties
@@ -54,7 +54,7 @@ Content-type: application/json
 }
 ```
 
-Den tidigare begäran skapade ett tillägg-attribut med formatet `extension_appID_extensionName` . Nu kan du uppdatera en användare med detta tillägg-attribut. Mer information finns i [uppdatera användare](/graph/api/user-update.md?view=graph-rest-1.0&tabs=http&preserve-view=true).
+I föregående begäran skapades ett tilläggsattribut med formatet `extension_appID_extensionName` . Nu kan du uppdatera en användare med det här tilläggsattributet. Mer information finns i [Uppdatera användare.](/graph/api/user-update?view=graph-rest-1.0&tabs=http&preserve-view=true)
 ```json
 PATCH https://graph.microsoft.com/v1.0/users/{id}
 Content-type: application/json
@@ -63,14 +63,14 @@ Content-type: application/json
   "extension_inputAppId_extensionName": "extensionValue"
 }
 ```
-Bekräfta slutligen attributet för användaren. Mer information finns i [Hämta en användare](/graph/api/user-get.md?view=graph-rest-1.0&tabs=http#example-3-users-request-using-select&preserve-view=true).
+Kontrollera slutligen attributet för användaren. Mer information finns i [Hämta en användare.](/graph/api/user-get?view=graph-rest-1.0&tabs=http#example-3-users-request-using-select&preserve-view=true)
 
 ```json
 GET https://graph.microsoft.com/v1.0/users/{id}?$select=displayName,extension_inputAppId_extensionName
 ```
 
 
-### <a name="create-an-extension-attribute-on-a-cloud-only-user-using-powershell"></a>Skapa ett attribut för tillägg i en enda moln användare med hjälp av PowerShell
+### <a name="create-an-extension-attribute-on-a-cloud-only-user-using-powershell"></a>Skapa ett tilläggsattribut på en användare som endast använder PowerShell i molnet
 Skapa ett anpassat tillägg med PowerShell och tilldela ett värde till en användare. 
 
 ```
@@ -97,34 +97,34 @@ Get-AzureADUser -ObjectId 0ccf8df6-62f1-4175-9e55-73da9e742690 | Select -ExpandP
 
 ```
 
-## <a name="create-an-extension-attribute-using-azure-ad-connect"></a>Skapa ett tilläggs attribut med Azure AD Connect
+## <a name="create-an-extension-attribute-using-azure-ad-connect"></a>Skapa ett tilläggsattribut med Azure AD Connect
 
-1. Öppna guiden Azure AD Connect, Välj uppgifter och välj sedan **Anpassa synkroniseringsalternativ**.
+1. Öppna guiden Azure AD Connect, välj Uppgifter och välj sedan **Anpassa synkroniseringsalternativ.**
 
-   ![Sidan ytterligare aktiviteter för Azure Active Directory Connect guiden](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-customize.png)
+   ![Azure Active Directory Connect sidan Ytterligare uppgifter](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-customize.png)
  
-2. Logga in som global administratör för Azure AD. 
+2. Logga in som global Administratör för Azure AD. 
 
-3. På sidan **valfria funktioner** väljer du **katalog tillägg attribut Sync**.
+3. På sidan **Valfria funktioner** väljer du **Synkronisering av katalogtilläggsattribut.**
  
-   ![Sidan med valfria funktioner i Azure Active Directory Connect guiden](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extension-attribute-sync.png)
+   ![Azure Active Directory Connect sidan Valfria funktioner](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extension-attribute-sync.png)
 
-4. Välj det eller de attribut som du vill utöka till Azure AD.
+4. Välj de attribut som du vill utöka till Azure AD.
    > [!NOTE]
-   > Sökningen under **tillgängliga attribut** är Skift läges känslig.
+   > Sökningen under Tillgängliga **attribut är fallkänslig.**
 
-   ![Skärm bild som visar val sidan "katalog tillägg"](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extensions.png)
+   ![Skärmbild som visar sidan för val av katalogtillägg](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extensions.png)
 
-5. Slutför guiden Azure AD Connect och låt en fullständig synkronisering köras. När cykeln har slutförts utökas schemat och de nya värdena synkroniseras mellan din lokala AD och Azure AD.
+5. Slutför guiden Azure AD Connect och låt en fullständig synkroniseringscykel köras. När cykeln är klar utökas schemat och de nya värdena synkroniseras mellan din lokala AD och Azure AD.
  
-6. När du [redigerar mappningar för användarattribut](customize-application-attributes.md)i Azure Portal, kommer listan över **källattribut** nu att innehålla attributet Added i formatet `<attributename> (extension_<appID>_<attributename>)` . Välj attributet och mappa det till mål programmet för etablering.
+6. När du Azure Portal mappningar av [](customize-application-attributes.md)användarattribut i -listan innehåller källattributlistan nu det tillagda attributet i formatet  `<attributename> (extension_<appID>_<attributename>)` . Välj attributet och mappa det till målprogrammet för etablering.
 
-   ![Sidan val av katalog tillägg för Azure Active Directory Connect guide](./media/user-provisioning-sync-attributes-for-mapping/attribute-mapping-extensions.png)
+   ![Azure Active Directory Connect sida för val av katalogtillägg](./media/user-provisioning-sync-attributes-for-mapping/attribute-mapping-extensions.png)
 
 > [!NOTE]
-> Möjligheten att etablera referenser från lokala AD, till exempel **ManagedBy** eller **DN/DistinguishedName**, stöds inte idag. Du kan begära den här funktionen på [användarens röst](https://feedback.azure.com/forums/169401-azure-active-directory). 
+> Möjligheten att etablera referensattribut från lokal AD, till exempel **managedby** eller **DN/DistinguishedName,** stöds inte i dag. Du kan begära den här funktionen på [User Voice.](https://feedback.azure.com/forums/169401-azure-active-directory) 
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Definiera vem som är inom omfånget för etablering](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+* [Definiera vem som ingår i etableringsomfånget](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)

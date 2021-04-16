@@ -1,6 +1,6 @@
 ---
-title: Kom igång med Azure IoT Hub Device Management (python) | Microsoft Docs
-description: Så här använder du IoT Hub enhets hantering för att starta en fjärran sluten enhet. Du använder Azure IoT SDK för python för att implementera en simulerad enhets app som innehåller en direkt metod och en tjänst-app som anropar den direkta metoden.
+title: Kom igång med Azure IoT Hub enhetshantering (Python) | Microsoft Docs
+description: Hur du använder IoT Hub för att initiera en omstart av en fjärransluten enhet. Du använder Azure IoT SDK för Python för att implementera en simulerad enhetsapp som innehåller en direktmetod och en tjänstapp som anropar direktmetoden.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,31 +8,31 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: robinsh
-ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: d4c514042b89341b90b0bb9c939ef4b463741916
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mqtt, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: c07d26715aff2c8dd5e00a7d7adbb548adf00a28
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87872726"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482508"
 ---
-# <a name="get-started-with-device-management-python"></a>Kom igång med enhets hantering (python)
+# <a name="get-started-with-device-management-python"></a>Kom igång med enhetshantering (Python)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
 I den här självstudiekursen lär du dig att:
 
-* Använd Azure Portal för att skapa en IoT Hub och skapa en enhets identitet i din IoT-hubb.
+* Använd Azure Portal för att skapa IoT Hub och skapa en enhetsidentitet i din IoT-hubb.
 
-* Skapa en simulerad enhets app som innehåller en direkt metod som startar om enheten. Direkta metoder anropas från molnet.
+* Skapa en simulerad enhetsapp som innehåller en direktmetod som startar om enheten. Direktmetoder anropas från molnet.
 
-* Skapa en python-konsol-app som anropar metoden starta om direkt i den simulerade Device-appen via din IoT Hub.
+* Skapa en Python-konsolapp som anropar direktmetoden för omstart i den simulerade enhetsappen via din IoT-hubb.
 
-I slutet av den här självstudien har du två python-konsol program:
+I slutet av den här självstudien har du två Python-konsolappar:
 
-* **dmpatterns_getstarted_device. py**, som ansluter till din IoT Hub med enhets identiteten som skapades tidigare, tar emot en direkt metod för omstart, simulerar en fysisk omstart och rapporterar tiden för den senaste omstarten.
+* **dmpatterns_getstarted_device.py**, som ansluter till din IoT-hubb med enhetsidentiteten som skapades tidigare, tar emot en direktmetod för omstart, simulerar en fysisk omstart och rapporterar tiden för den senaste omstarten.
 
-* **dmpatterns_getstarted_service. py**, som anropar en direkt metod i den simulerade Device-appen, visar svaret och visar de uppdaterade egenskaper som rapporteras.
+* **dmpatterns_getstarted_service.py**, som anropar en direktmetod i den simulerade enhetsappen, visar svaret och visar de uppdaterade rapporterade egenskaperna.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
@@ -40,13 +40,13 @@ I slutet av den här självstudien har du två python-konsol program:
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-* Kontrol lera att port 8883 är öppen i brand väggen. Enhets exemplet i den här artikeln använder MQTT-protokoll, som kommunicerar via port 8883. Den här porten kan blockeras i vissa företags-och miljö nätverks miljöer. Mer information och sätt att kringgå det här problemet finns i [ansluta till IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Kontrollera att port 8883 är öppen i brandväggen. Enhetsexempel i den här artikeln använder MQTT-protokollet, som kommunicerar via port 8883. Den här porten kan blockeras i vissa företags- och utbildningsnätverksmiljöer. Mer information och sätt att komma runt det här problemet finns i [Ansluta till IoT Hub (MQTT).](iot-hub-mqtt-support.md#connecting-to-iot-hub)
 
 ## <a name="create-an-iot-hub"></a>Skapa en IoT Hub
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Registrera en ny enhet i IoT Hub
+## <a name="register-a-new-device-in-the-iot-hub"></a>Registrera en ny enhet i IoT-hubben
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
@@ -54,21 +54,21 @@ I slutet av den här självstudien har du två python-konsol program:
 
 I det här avsnittet får du:
 
-* Skapa en python-konsol-app som svarar på en direkt metod som anropas av molnet
+* Skapa en Python-konsolapp som svarar på en direktmetod som anropas av molnet
 
 * Simulera en omstart av enheten
 
-* Använd de rapporterade egenskaperna för att aktivera enhets dubbla frågor för att identifiera enheter och när de startades om senast
+* Använd de rapporterade egenskaperna för att aktivera enhetstvillingfrågor för att identifiera enheter och när de senast startades om
 
-1. Kör följande kommando i kommando tolken för att installera paketet **Azure-IoT-Device** :
+1. Installera paketet **azure-iot-device** genom att köra följande kommando i kommandotolken:
 
     ```cmd/sh
     pip install azure-iot-device
     ```
 
-2. Skapa en fil med namnet **dmpatterns_getstarted_device. py** i din arbets katalog med hjälp av en text redigerare.
+2. Skapa en fil med namnet **dmpatterns_getstarted_device.py i arbetskatalogen med hjälp** av en textredigerare.
 
-3. Lägg till följande- `import` instruktioner i början av filen **dmpatterns_getstarted_device. py** .
+3. Lägg till följande `import` -instruktioner i början av **filen dmpatterns_getstarted_device.py.**
 
     ```python
     import threading
@@ -77,13 +77,13 @@ I det här avsnittet får du:
     from azure.iot.device import IoTHubDeviceClient, MethodResponse
     ```
 
-4. Lägg till variabeln **CONNECTION_STRING** . Ersätt `{deviceConnectionString}` placeholder-värdet med enhets anslutnings strängen. Du har kopierat den här anslutnings strängen tidigare i [Registrera en ny enhet i IoT Hub](#register-a-new-device-in-the-iot-hub).  
+4. Lägg till **CONNECTION_STRING** variabeln . Ersätt `{deviceConnectionString}` platshållarvärdet med enhetens anslutningssträng. Du kopierade den här anslutningssträngen tidigare [i Registrera en ny enhet i IoT-hubben](#register-a-new-device-in-the-iot-hub).  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
-5. Lägg till följande funktions återanrop för att implementera den direkta metoden på enheten.
+5. Lägg till följande funktionsanrop för att implementera direktmetoden på enheten.
 
     ```python
     def reboot_listener(client):
@@ -109,7 +109,7 @@ I det här avsnittet får du:
             client.send_method_response(method_response)
     ```
 
-6. Starta den direkta metoden lyssnare och vänta.
+6. Starta lyssnaren för direktmetoden och vänta.
 
     ```python
     def iothub_client_init():
@@ -138,30 +138,30 @@ I det här avsnittet får du:
         iothub_client_sample_run()
     ```
 
-7. Spara och Stäng filen **dmpatterns_getstarted_device. py** .
+7. Spara och stäng **filen dmpatterns_getstarted_device.py.**
 
 > [!NOTE]
-> För att göra det så enkelt som möjligt implementerar vi ingen princip för omförsök i den här självstudiekursen. I produktions koden bör du implementera principer för omförsök (till exempel en exponentiell backoff), enligt förslag i artikeln, [hantering av tillfälliga fel](/azure/architecture/best-practices/transient-faults).
+> För att göra det så enkelt som möjligt implementerar vi ingen princip för omförsök i den här självstudiekursen. I produktionskoden bör du implementera principer för omförsök (till exempel en exponentiell backoff), som föreslås i artikeln [Hantering av tillfälliga fel.](/azure/architecture/best-practices/transient-faults)
 
-## <a name="get-the-iot-hub-connection-string"></a>Hämta anslutnings strängen för IoT Hub
+## <a name="get-the-iot-hub-connection-string"></a>Hämta IoT Hub-anslutningssträngen
 
 [!INCLUDE [iot-hub-howto-device-management-shared-access-policy-text](../../includes/iot-hub-howto-device-management-shared-access-policy-text.md)]
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Utlösa en fjärran sluten omstart på enheten med en direkt metod
+## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Utlösa en fjärrstart på enheten med en direktmetod
 
-I det här avsnittet skapar du en python-konsol-app som initierar en fjärromstart på en enhet med hjälp av en direkt metod. Appen använder enhets dubbla frågor för att identifiera den senaste omstarts tiden för enheten.
+I det här avsnittet skapar du en Python-konsolapp som initierar en fjärrstart på en enhet med hjälp av en direktmetod. Appen använder enhetstvillingfrågor för att identifiera den senaste omstartstiden för enheten.
 
-1. Kör följande kommando i kommando tolken för att installera paketet **Azure-IoT-Hub** :
+1. Installera paketet **azure-iot-hub** genom att köra följande kommando i kommandotolken:
 
     ```cmd/sh
     pip install azure-iot-hub
     ```
 
-2. Skapa en fil med namnet **dmpatterns_getstarted_service. py** i din arbets katalog med hjälp av en text redigerare.
+2. Skapa en fil med namnet **dmpatterns_getstarted_service.py i arbetskatalogen med hjälp** av en textredigerare.
 
-3. Lägg till följande- `import` instruktioner i början av filen **dmpatterns_getstarted_service. py** .
+3. Lägg till följande `import` -instruktioner i början av **filen dmpatterns_getstarted_service.py.**
 
     ```python
     import sys, time
@@ -170,7 +170,7 @@ I det här avsnittet skapar du en python-konsol-app som initierar en fjärromsta
     from azure.iot.hub.models import CloudToDeviceMethod, CloudToDeviceMethodResult, Twin
     ```
 
-4. Lägg till följande variabel deklarationer. Ersätt `{IoTHubConnectionString}` placeholder-värdet med IoT Hub-anslutningssträngen som du kopierade tidigare i [Hämta IoT Hub-anslutningssträngen](#get-the-iot-hub-connection-string). Ersätt `{deviceId}` placeholder-värdet med det enhets-ID som du registrerade i [Registrera en ny enhet i IoT Hub](#register-a-new-device-in-the-iot-hub).
+4. Lägg till följande variabeldeklarationer. Ersätt platshållarvärdet med IoT Hub-anslutningssträngen som du kopierade tidigare i Hämta `{IoTHubConnectionString}` [IoT Hub-anslutningssträngen](#get-the-iot-hub-connection-string). Ersätt `{deviceId}` platshållarvärdet med det enhets-ID som du registrerade [i Registrera en ny enhet i IoT-hubben](#register-a-new-device-in-the-iot-hub).
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
@@ -182,7 +182,7 @@ I det här avsnittet skapar du en python-konsol-app som initierar en fjärromsta
     WAIT_COUNT = 10
     ```
 
-5. Lägg till följande funktion för att anropa enhets metoden för att starta om mål enheten, och fråga sedan efter enheten och hämta den senaste omstarts tiden.
+5. Lägg till följande funktion för att anropa enhetsmetoden för att starta om målenheten, sedan fråga efter enhetstvillingarna och hämta den senaste omstartstiden.
 
     ```python
     def iothub_devicemethod_sample_run():
@@ -235,32 +235,32 @@ I det här avsnittet skapar du en python-konsol-app som initierar en fjärromsta
         iothub_devicemethod_sample_run()
     ```
 
-6. Spara och Stäng filen **dmpatterns_getstarted_service. py** .
+6. Spara och stäng **filen dmpatterns_getstarted_service.py.**
 
 ## <a name="run-the-apps"></a>Kör apparna
 
-Du är nu redo att köra apparna.
+Nu är du redo att köra apparna.
 
-1. Kör följande kommando i kommando tolken för att börja lyssna efter metoden starta om Direct.
+1. Kör följande kommando i kommandotolken för att börja lyssna efter direktmetoden för omstart.
 
     ```cmd/sh
     python dmpatterns_getstarted_device.py
     ```
 
-2. Kör följande kommando i en annan kommando tolk för att utlösa fjärromstart och fråga efter enheten för att hitta den senaste omstarts tiden.
+2. Kör följande kommando i en annan kommandotolk för att utlösa fjärrstarten och fråga efter enhetstvillingen för att hitta den senaste omstartstiden.
 
     ```cmd/sh
     python dmpatterns_getstarted_service.py
     ```
 
-3. Du ser enhets svaret till den direkta metoden i-konsolen.
+3. Du ser enhetssvaret på direktmetoden i -konsolen.
 
-   Följande visar enhets svaret på den direkta metoden för omstart:
+   Nedan visas enhetssvaret på direktmetoden för omstart:
 
-   ![Simulerad enhets programs utdata](./media/iot-hub-python-python-device-management-get-started/device.png)
+   ![Utdata från simulerad enhetsapp](./media/iot-hub-python-python-device-management-get-started/device.png)
 
-   Följande visar tjänsten som anropar metoden starta om direkt och avsöker enheten så att den har statusen:
+   Följande visar tjänsten som anropar direktmetoden för omstart och avsöker enhetstvillingen efter status:
 
-   ![Utlös utdata för att starta om tjänsten](./media/iot-hub-python-python-device-management-get-started/service.png)
+   ![Utdata från omstartstjänsten](./media/iot-hub-python-python-device-management-get-started/service.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]

@@ -46,7 +46,7 @@
           href: configure-azure-ad-ui.md
         - name: Uppdatera pull-hemlighet för ett ARO-kluster
           href: howto-add-update-pull-secret.md
-    - name: Säkerhetskopiering och återställning
+    - name: Säkerhetskopiera och återställa
       items:
         - name: Skapa en säkerhetskopia av ett klusterprogram med Velero
           href: howto-create-a-backup.md
@@ -121,6 +121,8 @@
       href: support-policies-v4.md
     - name: Supportlivscykel för ARO 4
       href: support-lifecycle.md
+    - name: Ansvarsmatris
+      href: responsibility-matrix.md
     - name: Regional tillgänglighet
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Dokumentation om Red Hat OpenShift 4

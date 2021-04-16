@@ -1,171 +1,169 @@
 ---
-title: Registrera Oracle-källa och installations genomsökningar (för hands version) i Azure avdelningens kontroll
-description: Den här artikeln beskriver hur du registrerar Oracle-källor i Azure avdelningens kontroll och konfigurerar en genomsökning.
+title: Registrera käll- och installationsgenomsökningar för Oracle (förhandsversion) i Azure Purview
+description: Den här artikeln beskriver hur du registrerar Oracle-källa i Azure Purview och ställer in en genomsökning.
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 76aadd667691e12c61e0e5e13c13ca0241a9f0ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 40c5e0ff2c2301607f5a548ff05c742c5c5a948d
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045509"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517070"
 ---
-# <a name="register-and-scan-oracle-source-preview"></a>Registrera och skanna Oracle-källa (för hands version)
+# <a name="register-and-scan-oracle-source-preview"></a>Registrera och skanna Oracle-källa (förhandsversion)
 
-Den här artikeln beskriver hur du registrerar en Oracle-databas i avdelningens kontroll och konfigurerar en genomsökning.
+Den här artikeln beskriver hur du registrerar en Oracle-databas i Purview och ställer in en genomsökning.
 
 ## <a name="supported-capabilities"></a>Funktioner som stöds
 
-Oracle-källan stöder **fullständig sökning** för att extrahera metadata från en Oracle-databas och hämtar **härkomst** mellan data till gångar.
+Oracle-källan stöder **fullständig genomsökning** för att extrahera metadata från en Oracle-databas **och hämtar ursprung** mellan datatillgångar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-1.  Konfigurera den senaste [integrerings körningen med egen värd](https://www.microsoft.com/download/details.aspx?id=39717).
-    Mer information finns i [skapa och konfigurera en integration runtime med egen värd](../data-factory/create-self-hosted-integration-runtime.md).
+1.  Konfigurera den senaste [integrationskörningen med egen värd.](https://www.microsoft.com/download/details.aspx?id=39717)
+    Mer information finns i [Skapa och konfigurera en integrationskörning med egen värd.](../data-factory/create-self-hosted-integration-runtime.md)
 
-2.  Kontrol lera att [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) är installerat på den virtuella datorn där integration runtime med egen värd är installerat.
+2.  Kontrollera att [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) är installerat på den virtuella datorn där integration runtime med egen värd är installerat.
 
-3.  Se till att \" Visual C++ redistributable 2012 uppdatering 4 \" är installerat på den lokala datorn för integration Runtime. Om du \' ännu inte har installerat det kan du ladda ned det [här](https://www.microsoft.com/download/details.aspx?id=30679).
+3.  Kontrollera att \" Visual C++ Redistributable 2012 Uppdatering 4 är installerat på den lokala \" integrationskörningsdatorn. Om du inte \' har installerat det än laddar du ned det [härifrån](https://www.microsoft.com/download/details.aspx?id=30679).
 
-4.  Du måste manuellt hämta en Oracle JDBC-drivrutin [manuellt från den](https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html) virtuella datorn där integration runtime med egen värd körs.
+4.  Du måste manuellt ladda ned en Oracle [](https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html) JDBC-drivrutin härifrån på den virtuella datorn där integrationskörning med egen värd körs.
 
     > [!Note] 
-    > Driv rutinen bör vara tillgänglig för alla konton på den virtuella datorn. Installera det inte i ett användar konto.
+    > Drivrutinen ska vara tillgänglig för alla konton på den virtuella datorn. Installera den inte på ett användarkonto.
 
-5.  De Oracle Database-versioner som stöds är 6i till 19c.
+5.  Oracle-databasversioner som stöds är från 6i till 19c.
 
-6.  Användar behörighet: för att säkerställa en lyckad sökning för första gången krävs en fullständig sys-administratörs typ behörighet.
-
-    För efterföljande genomsökningar krävs en skrivskyddad åtkomst till system tabeller. Användaren måste ha behörighet att skapa en session och roll rollen Välj katalog som \_ har \_ tilldelats. Alternativt kan användaren ha SELECT-behörighet beviljad för varje enskild system tabell som den här anslutningen efterfrågar metadata från:
-       > bevilja skapa session till \[ användare \] ; \
-        bevilja Välj alla \_ användare till \[ användare \] ; \
-        bevilja Välj på DBA- \_ objekt till \[ användare \] ; \
-        Tillåt Välj på DBA- \_ fliken \_ kommentarer till \[ användare \] ; \
-        bevilja Välj på DBA- \_ externa \_ platser till \[ användare \] ; \
-        bevilja Välj på DBA- \_ kataloger till \[ användare \] ; \
-        bevilja Välj på DBA- \_ mviews till \[ användare \] ; \
-        bevilja Välj på DBA- \_ CLU \_ kolumner till \[ användare \] ; \
-        bevilja Välj på fliken DBA- \_ \_ kolumner till \[ användare \] ; \
-        bevilja Välj på DBA \_ - \_ textkommentarer till \[ användare \] ; \
-        Tillåt val av dBA- \_ begränsningar till \[ användare \] ; \
-        bevilja Välj på DBA \_ - \_ kolumner till \[ användare \] ; \
-        bevilja Välj på DBA- \_ index till \[ användare \] ; \
-        bevilja Välj på DBA- \_ IND \_ kolumner till \[ användare \] ; \
-        bevilja urval av dBA- \_ procedurer till \[ användare \] ; \
-        bevilja Välj på DBA- \_ synonymer till \[ användare \] ; \
-        bevilja Välj i DBA- \_ vyer till \[ användare \] ; \
-        bevilja Välj på DBA- \_ källa till \[ användare \] ; \
-        bevilja Välj på DBA- \_ utlösare till \[ användare \] ; \
-        Tillåt val av dBA- \_ argument till \[ användare \] ; \
-        bevilja val på DBA- \_ sekvenser till \[ användare \] ; \
-        bevilja Select on DBA- \_ beroenden till \[ användare \] ; \
-        bevilja Select on V- \_ \$ instans till \[ användare \] ; \
-        bevilja användaren Select-v- \_ \$ databas \[ \]
+6.  Användarbehörighet: En skrivskyddade åtkomst till systemtabeller krävs. Användaren ska ha behörighet att skapa en session samt rollen SELECT \_ CATALOG \_ ROLE assigned (VÄLJ KATALOGROLL). Alternativt kan användaren ha SELECT-behörighet beviljad för varje enskild systemtabell som den här anslutningsappen frågar metadata från:
+       > grant create session to \[ user \] ;\
+        grant select on all \_ users to \[ user \] ;\
+        grant select on dba \_ objects to \[ user \] ;\
+        grant select on dba \_ tab comments to user \_ \[ \] ;\
+        grant select on dba \_ external \_ locations to \[ user \] ;\
+        grant select on dba \_ directories to \[ user \] ;\
+        grant select on dba \_ mviews to \[ user \] ;\
+        grant select on dba \_ clu \_ columns to user \[ \] ;\
+        grant select on dba \_ tab columns to user \_ \[ \] ;\
+        grant select on dba \_ col comments to user \_ \[ \] ;\
+        grant select on dba \_ constraints to \[ user \] ;\
+        grant select on dba \_ cons columns to user \_ \[ \] ;\
+        grant select on dba \_ indexes to \[ user \] ;\
+        grant select on dba \_ ind \_ columns to user \[ \] ;\
+        grant select on dba \_ procedures to \[ user \] ;\
+        grant select on dba \_ synonyms to \[ user \] ;\
+        grant select on dba \_ views to \[ user \] ;\
+        grant select on dba \_ source to \[ user \] ;\
+        grant select on dba \_ triggers to \[ user \] ;\
+        grant select on dba \_ arguments to \[ user \] ;\
+        grant select on dba \_ sequences to \[ user \] ;\
+        grant select on dba \_ dependencies to \[ user \] ;\
+        grant select on V \_ \$ INSTANCE to user \[ \] ;\
+        grant select on v \_ \$ database to user \[ \] ;
     
-## <a name="setting-up-authentication-for-a-scan"></a>Konfigurera autentisering för en sökning
+## <a name="setting-up-authentication-for-a-scan"></a>Konfigurera autentisering för en genomsökning
 
-Den enda autentisering som stöds för en Oracle-källa är **grundläggande autentisering**.
+Den enda autentisering som stöds för en Oracle-källa är **Grundläggande autentisering**.
 
 ## <a name="register-an-oracle-source"></a>Registrera en Oracle-källa
 
-Registrera en ny Oracle-källa i din data katalog genom att göra följande:
+Så här registrerar du en ny Oracle-källa i datakatalogen:
 
-1.  Navigera till ditt avdelningens kontroll-konto.
-2.  Välj **källor** i det vänstra navigerings fältet.
-3.  Välj **register**
-4.  Välj **Oracle** på register källor. Välj **Fortsätt**.
+1.  Gå till ditt Purview-konto.
+2.  Välj **Källor** i det vänstra navigeringsfönstret.
+3.  Välj **Registrera**
+4.  På Registrera källor väljer du **Oracle**. Välj **Fortsätt**.
 
     :::image type="content" source="media/register-scan-oracle-source/register-sources.png" alt-text="registrera källor" border="true":::
 
-På sidan **Registrera källor (Oracle)** gör du följande:
+På skärmen **Registrera källor (Oracle)** gör du följande:
 
-1.  Ange ett **namn** som data källan ska visas i katalogen.
+1.  Ange ett **Namn** som datakällan ska visas i katalogen.
 
-2.  Ange **värd** namnet för att ansluta till en Oracle-källa. Detta kan antingen vara:
-    - Ett värdnamn som används av JDBC för att ansluta till databas servern. Till exempel MyDatabaseServer.com eller
+2.  Ange **värdnamnet för** att ansluta till en Oracle-källa. Detta kan antingen vara:
+    - Ett värdnamn som används av JDBC för att ansluta till databasservern. Till exempel, MyDatabaseServer.com eller
     - IP-adress. Till exempel 192.169.1.2 eller
-    - Den fullständigt kvalificerade JDBC-anslutningssträngen. Till exempel \
-        JDBC: Oracle: tunn: @ (beskrivning = (BELASTNINGs \_ utjämning = på) (adress = (protokoll = TCP) (värd = oracleserver1) (port = 1521)) (adress = (protokoll = TCP) (värd = oracleserver2) (port = 1521)) (adress = (protokoll = TCP) (värd = oracleserver3) (port = 1521)) (Anslut \_ data = (tjänst \_ namn = ORCL)))
+    - Dess fullständigt kvalificerade JDBC-anslutningssträng. Till exempel,\
+        jdbc:oracle:thin:@(DESCRIPTION=(LOAD \_ BALANCE=on)(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver1)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver2)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver3)(PORT=1521))(CONNECT \_ DATA=(SERVICE \_ NAME=orcl))
 
-3.  Ange det **port nummer** som används av JDBC för att ansluta till databas servern (1521 som standard för Oracle).
+3.  Ange det **portnummer som** används av JDBC för att ansluta till databasservern (1521 som standard för Oracle).
 
-4.  Ange det **Oracle-servernamn** som används av JDBC för att ansluta till databas servern.
+4.  Ange **Oracle-tjänstnamnet som** används av JDBC för att ansluta till databasservern.
 
 5.  Välj en samling eller skapa en ny (valfritt)
 
-6.  Slutför för att registrera data källan.
+6.  Slutför registreringen av datakällan.
 
-    :::image type="content" source="media/register-scan-oracle-source/register-sources-2.png" alt-text="alternativ för registrering av källor" border="true":::
+    :::image type="content" source="media/register-scan-oracle-source/register-sources-2.png" alt-text="alternativ för att registrera källor" border="true":::
 
-## <a name="creating-and-running-a-scan"></a>Skapa och köra en sökning
+## <a name="creating-and-running-a-scan"></a>Skapa och köra en genomsökning
 
-Om du vill skapa och köra en ny genomsökning gör du följande:
+Gör följande för att skapa och köra en ny genomsökning:
 
-1.  Klicka på integration runtime i hanterings centret. Kontrol lera att en lokal integration Runtime har kon figurer ATS. Om den inte har kon figurer ATS använder du stegen som beskrivs [här](./manage-integration-runtimes.md) för att skapa en egen värd för integration Runtime.
+1.  I Hanteringscenter klickar du på Integreringskörningar. Kontrollera att en integrationskörning med egen värd har ställts in. Om den inte har ställts in använder du stegen som anges [här](./manage-integration-runtimes.md) för att skapa en integration runtime med egen värd.
 
-2.  Navigera till **källor**.
+2.  Gå till Sources ( **Källor).**
 
 3.  Välj den registrerade Oracle-källan.
 
-4.  Välj **+ Ny skanning**.
+4.  Välj **+ Ny genomsökning.**
 
 5.  Ange informationen nedan:
 
-    a.  **Namn**: namnet på genomsökningen
+    a.  **Namn:** Namnet på genomsökningen
 
-    b.  **Anslut via integration runtime**: Välj den konfigurerade integrerings körningen med egen värd
+    b.  **Ansluta via Integration Runtime:** Välj den konfigurerade integrationskörningen med egen värd
 
-    c.  **Autentiseringsuppgift**: Välj autentiseringsuppgifter för att ansluta till data källan. Se till att:
-    - Välj grundläggande autentisering när du skapar en autentiseringsuppgift.        
-    - Ange det användar namn som används av JDBC för att ansluta till databas servern i fältet användar namn indata        
-    - Lagra det användar lösen ord som används av JDBC för att ansluta till databas servern i den hemliga nyckeln.
+    c.  **Autentiseringsuppgifter:** Välj autentiseringsuppgifterna för att ansluta till datakällan. Se till att:
+    - Välj Grundläggande autentisering när du skapar en autentiseringsautentisering.        
+    - Ange användarnamnet som används av JDBC för att ansluta till databasservern i fältet Användarnamn        
+    - Lagra användarlösenordet som används av JDBC för att ansluta till databasservern i den hemliga nyckeln.
 
-    d.  **Schema**: lista över en delmängd av scheman som ska importeras uttrycks som en semikolonavgränsad lista. Till exempel Schema1; schema2. Alla användar scheman importeras om listan är tom. Alla system scheman (till exempel SysAdmin) och objekt ignoreras som standard. När listan är tom importeras alla tillgängliga scheman.
-        Acceptabla schema namn mönster med SQL LIKE-uttryck inkluderar användning av%, till exempel. En%; T % C%; Styr
-       -   börja med en eller        
-       -   sluta med B eller        
-       -   innehåller C eller        
+    d.  **Schema:** Lista delmängd av scheman som ska importeras uttryckt som en semikolonavgränsad lista. Till exempel schema1; schema2. Alla användarscheman importeras om listan är tom. Alla systemscheman (till exempel SysAdmin) och objekt ignoreras som standard. När listan är tom importeras alla tillgängliga scheman.
+        Godkända schemanamnmönster med SQL LIKE-uttryck syntax inkluderar användning av %, till exempel. A %; %B; %C%; D
+       -   börja med A eller        
+       -   avsluta med B eller        
+       -   innehålla C eller        
        -   lika med D
 
-    Användning av icke-och specialtecken är inte acceptabelt.
+    Användning av NOT och specialtecken är inte acceptabelt.
 
-6.  **Driv rutins plats**: Ange sökvägen till JDBC-drivrutinen på den virtuella datorn där integration runtime med egen värd körs. Detta bör vara sökvägen till giltig plats för JAR-mappen.
+6.  **Drivrutinsplats:** Ange sökvägen till JDBC-drivrutinsplatsen på den virtuella dator där integrationskörning med egen värd körs. Detta bör vara sökvägen till en giltig JAR-mappplats.
 
-7.  **Maximalt tillgängligt minne**: högsta mängd minne (i GB) som är tillgängligt på kundens virtuella dator som ska användas genom genomsökning av processer. Detta beror på storleken på SAP S/4HANA-källan som ska genomsökas.
+7.  **Maximalt tillgängligt minne:** Maximalt minne (i GB) som är tillgängligt på kundens virtuella dator som ska användas av genomsökningsprocesser. Detta beror på storleken på SAP S/4HANA-källan som ska genomsökas.
 
-    :::image type="content" source="media/register-scan-oracle-source/scan.png" alt-text="Sök igenom Oracle" border="true":::
+    :::image type="content" source="media/register-scan-oracle-source/scan.png" alt-text="genomsöka orakel" border="true":::
 
-8.  Klicka på **Fortsätt**.
+8.  Klicka på **Fortsätt.**
 
-9.  Välj din **genomsöknings utlösare**. Du kan ställa in ett schema eller köra genomsökningen en gång.
+9.  Välj **sökutlösaren**. Du kan konfigurera ett schema eller genomsöka en gång.
 
-10.  Granska din genomsökning och klicka på **Spara och kör**.
+10.  Granska genomsökningen och klicka på **Spara och kör**.
 
-## <a name="viewing-your-scans-and-scan-runs"></a>Visa genomsökningar och skannings körningar
+## <a name="viewing-your-scans-and-scan-runs"></a>Visa dina genomsökningar och genomsökningskörningar
 
-1. Gå till hanterings centret. Välj **data källor** under avsnittet **källor och sökning** .
+1. Gå till hanteringscentret. Välj **Datakällor** under avsnittet **Källor och genomsökning.**
 
-2. Välj önskad data källa. En lista över befintliga genomsökningar visas på den data källan.
+2. Välj önskad datakälla. Du ser en lista över befintliga genomsökningar på den datakällan.
 
-3. Välj den genomsökning vars resultat du är intresse rad av.
+3. Välj den genomsökning vars resultat du är intresserad av att visa.
 
-4. På den här sidan visas alla tidigare skannings körningar tillsammans med mått och status för varje genomsöknings körning. Den visar även om din genomsökning har schemalagts eller manuell, hur många till gångar som har klassificeringar tillämpade, hur många totala till gångar som har identifierats, start-och slut tid för genomsökningen och den totala genomsökningens varaktighet.
+4. Den här sidan visar alla tidigare genomsökningskörningar tillsammans med mått och status för varje genomsökningskörning. Den visar också om genomsökningen har schemalagts eller manuellt, hur många tillgångar som hade tillämpade klassificeringar, hur många totala tillgångar som identifierades, start- och sluttiden för genomsökningen samt den totala genomsökningstiden.
 
-## <a name="manage-your-scans"></a>Hantera dina sökningar
+## <a name="manage-your-scans"></a>Hantera dina genomsökningar
 
-Gör följande för att hantera eller ta bort en genomsökning:
+Om du vill hantera eller ta bort en genomsökning gör du följande:
 
-1. Gå till hanterings centret. Välj **data källor** under avsnittet **källor och sökning** och välj sedan på önskad data källa.
+1. Gå till hanteringscentret. Välj **Datakällor** under **avsnittet Källor och genomsökning** och välj sedan önskad datakälla.
 
-2. Välj den genomsökning som du vill hantera. Du kan redigera sökningen genom att välja **Redigera**.
+2. Välj den genomsökning som du vill hantera. Du kan redigera genomsökningen genom att välja **Redigera**.
 
-3. Du kan ta bort din genomsökning genom att välja **ta bort**.
+3. Du kan ta bort genomsökningen genom att välja **Ta bort**.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Bläddra i Azure avdelningens kontroll Data Catalog](how-to-browse-catalog.md)
-- [Sök i Azure avdelningens kontroll-Data Catalog](how-to-search-catalog.md)
+- [Bläddra i Azure Purview Data-katalogen](how-to-browse-catalog.md)
+- [Sök i Azure Purview-Data Catalog](how-to-search-catalog.md)
