@@ -1,17 +1,20 @@
 ---
-title: Snabb start – skapa register – PowerShell
+title: Snabbstart – Skapa register – PowerShell
 description: Lär dig snabbt att skapa ett privat Docker-register i Azure Container Registry med PowerShell
-ms.topic: quickstart
 ms.date: 01/22/2019
-ms.custom: seodec18, mvc, devx-track-azurepowershell
-ms.openlocfilehash: b6928f1c45cdac93b70797daf41205b4c5db27e0
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.topic: quickstart
+ms.custom:
+- mvc
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: bd9b93e22081c43dfa3fd934f13da3713120aadb
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106283826"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537392"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Snabb start: skapa ett privat behållar register med hjälp av Azure PowerShell
+# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Snabbstart: Skapa ett privat containerregister med Azure PowerShell
 
 Azure Container Registry är en hanterad Docker-behållarregistertjänst för att bygga, lagra och hantera Docker-behållaravbildningar. I denna snabbstart kommer du att lära dig hur du skapar ett Azure-containerregister med hjälp av PowerShell. Använd därefter Docker-kommandon för att skicka en containeravbildning till registret, och hämta och kör avbildningen slutligen från registret.
 
@@ -51,11 +54,11 @@ Registernamnet måste vara unikt i Azure och innehålla 5–50 alfanumeriska tec
 $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-I den här snabbstarten skapar du ett *Basic*-register, vilket är ett kostnadsoptimerat alternativ för utvecklare som lär sig om Azure Container Registry. Mer information om tillgängliga tjänst nivåer finns i [tjänste nivåer för container Registry][container-registry-skus].
+I den här snabbstarten skapar du ett *Basic*-register, vilket är ett kostnadsoptimerat alternativ för utvecklare som lär sig om Azure Container Registry. Mer information om tillgängliga tjänstnivåer finns i [Tjänstnivåer för containerregister.][container-registry-skus]
 
 ## <a name="log-in-to-registry"></a>Logga in till registret
 
-Innan du skickar och hämtar containeravbildningar måste du logga in i ditt register. Om du vill att den här snabb starten ska vara kortare aktiverar du administratörs användaren i registret med kommandot [Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] . I produktions scenarier bör du använda en alternativ [autentiseringsmetod](container-registry-authentication.md) för åtkomst till registret, till exempel ett huvud namn för tjänsten. 
+Innan du skickar och hämtar containeravbildningar måste du logga in i ditt register. Om du vill hålla den här snabbstarten kort aktiverar du administratörsanvändaren i registret med kommandot [Get-AzContainerRegistryCredential.][Get-AzContainerRegistryCredential] I produktionsscenarier bör du använda en alternativ [autentiseringsmetod för](container-registry-authentication.md) registeråtkomst, till exempel ett huvudnamn för tjänsten. 
 
 ```powershell
 $creds = Get-AzContainerRegistryCredential -Registry $registry
@@ -70,7 +73,7 @@ $creds.Password | docker login $registry.LoginServer -u $creds.Username --passwo
 Kommandot returnerar `Login Succeeded` när det har slutförts.
 
 > [!TIP]
-> Azure CLI tillhandahåller `az acr login` kommandot, ett bekvämt sätt att logga in på ett behållar register med hjälp av en [individuell identitet](container-registry-authentication.md#individual-login-with-azure-ad), utan att skicka Docker-autentiseringsuppgifter.
+> Azure CLI tillhandahåller kommandot , ett praktiskt sätt att logga in på ett containerregister med din enskilda `az acr login` identitet , utan att skicka autentiseringsuppgifter för Docker. [](container-registry-authentication.md#individual-login-with-azure-ad)
 
 
 [!INCLUDE [container-registry-quickstart-docker-push](../../includes/container-registry-quickstart-docker-push.md)]
@@ -93,7 +96,7 @@ I den här snabbstarten skapade du ett Azure Container Registry med Azure PowerS
 > [Självstudier för Azure Container Registry][container-registry-tutorial-prepare-registry]
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry uppgifter – självstudier][container-registry-tutorial-quick-task]
+> [Azure Container Registry-uppgifter självstudier][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

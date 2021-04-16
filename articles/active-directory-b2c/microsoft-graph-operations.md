@@ -1,7 +1,7 @@
 ---
 title: Hantera resurser med Microsoft Graph
 titleSuffix: Azure AD B2C
-description: Hur du hanterar resurser i en Azure AD B2C klient genom att anropa Microsoft Graph API och använda en program identitet för att automatisera processen.
+description: Hur du hanterar resurser i en Azure AD B2C-klientorganisation genom att anropa Microsoft Graph-API:et och använda en programidentitet för att automatisera processen.
 services: B2C
 author: msmimart
 manager: celestedg
@@ -12,32 +12,32 @@ ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 41336d59d51685d5daf78a1809ce6c0df2cd6124
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 884cb0c30bc754366fda79a4b54b977517fbadd3
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781321"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530541"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Hantera Azure AD B2C med Microsoft Graph
 
-Med Microsoft Graph kan du hantera resurser i Azure AD B2Cs katalogen. Följande Microsoft Graph API-åtgärder stöds för hantering av Azure AD B2C resurser, inklusive användare, identitets leverantörer, användar flöden, anpassade principer och princip nycklar. Varje länk i följande avsnitt riktar sig mot motsvarande sida i Microsoft Graph API-referens för åtgärden. 
+Microsoft Graph kan du hantera resurser i din Azure AD B2C katalog. Följande API Microsoft Graph åtgärder stöds för hantering av Azure AD B2C resurser, inklusive användare, identitetsproviders, användarflöden, anpassade principer och principnycklar. Varje länk i följande avsnitt riktar in sig på motsvarande sida i Microsoft Graph API-referens för den åtgärden. 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Om du vill använda MS Graph API och interagera med resurser i din Azure AD B2C klient behöver du en program registrering som ger behörighet att göra detta. Följ stegen i artikeln [hantera Azure AD B2C med Microsoft Graph](microsoft-graph-get-started.md) för att skapa en program registrering som hanterings programmet kan använda. 
+Om du vill använda MS Graph API och interagera med resurser i din Azure AD B2C klientorganisation behöver du en programregistrering som ger behörighet att göra det. Följ stegen i artikeln [Hantera Azure AD B2C med Microsoft Graph](microsoft-graph-get-started.md) för att skapa en programregistrering som hanteringsprogrammet kan använda. 
 
 ## <a name="user-management"></a>Användarhantering
 
 - [Visa användare](/graph/api/user-list)
-- [Skapa en konsument användare](/graph/api/user-post-users)
+- [Skapa en konsumentanvändare](/graph/api/user-post-users)
 - [Hämta en användare](/graph/api/user-get)
 - [Uppdatera en användare](/graph/api/user-update)
 - [Ta bort en användare](/graph/api/user-delete)
 
-## <a name="user-phone-number-management-beta"></a>Hantering av användar telefonnummer (beta)
+## <a name="user-phone-number-management-beta"></a>Hantering av användarens telefonnummer (beta)
 
-Ett telefonnummer som kan användas av en användare för att logga in med [SMS eller röst samtal](identity-provider-local.md#phone-sign-in-preview)eller [Multi-Factor Authentication](multi-factor-authentication.md). Mer information finns i [Azure AD Authentication Methods API](/graph/api/resources/phoneauthenticationmethod).
+Ett telefonnummer som kan användas av en användare för att logga in med SMS eller [röstsamtal](identity-provider-local.md#phone-sign-in-preview)eller [multifaktorautentisering.](multi-factor-authentication.md) Mer information finns i [API för Azure AD-autentiseringsmetoder.](/graph/api/resources/phoneauthenticationmethod)
 
 - [Lägg till](/graph/api/authentication-post-phonemethods)
 - [Lista](/graph/api/authentication-list-phonemethods)
@@ -45,13 +45,13 @@ Ett telefonnummer som kan användas av en användare för att logga in med [SMS 
 - [Uppdatera](/graph/api/phoneauthenticationmethod-update)
 - [Ta bort](/graph/api/phoneauthenticationmethod-delete)
 
-Obs! [list](/graph/api/authentication-list-phonemethods) åtgärden returnerar bara aktiverade telefonnummer. Följande telefonnummer måste vara aktiverat för att kunna användas med list åtgärderna. 
+Observera att [liståtgärden](/graph/api/authentication-list-phonemethods) endast returnerar aktiverade telefonnummer. Följande telefonnummer ska vara aktiverat för användning med liståtgärderna. 
 
-![Aktivera telefonin loggning](./media/microsoft-graph-operations/enable-phone-sign-in.png)
+![Aktivera telefon inloggning](./media/microsoft-graph-operations/enable-phone-sign-in.png)
 
-## <a name="self-service-password-reset-email-address-beta"></a>E-postadress för lösen ords återställning via självbetjäning (beta)
+## <a name="self-service-password-reset-email-address-beta"></a>E-postadress för lösenordsåterställning via självbetjäning (beta)
 
-En e-postadress som kan användas av ett [inloggnings konto för användar namn](identity-provider-local.md#username-sign-in) för att återställa lösen ordet. Mer information finns i [Azure AD Authentication Methods API](/graph/api/resources/emailauthenticationmethod).
+En e-postadress som kan användas av ett [inloggningskonto för användarnamn för](identity-provider-local.md#username-sign-in) att återställa lösenordet. Mer information finns i [API för Azure AD-autentiseringsmetoder.](/graph/api/resources/emailauthenticationmethod)
 
 - [Lägg till](/graph/api/emailauthenticationmethod-post)
 - [Lista](/graph/api/emailauthenticationmethod-list)
@@ -61,61 +61,61 @@ En e-postadress som kan användas av ett [inloggnings konto för användar namn]
 
 ## <a name="identity-providers"></a>Identitetsprovidrar
 
-Hantera de [identitets leverantörer](add-identity-provider.md) som är tillgängliga för dina användar flöden i Azure AD B2C-klienten.
+Hantera de [identitetsproviders](add-identity-provider.md) som är tillgängliga för dina användarflöden i din Azure AD B2C klientorganisation.
 
-- [Visa lista med identitets leverantörer som registrerats i Azure AD B2C klient organisationen](/graph/api/identityprovider-list)
-- [Skapa en identitets leverantör](/graph/api/identityprovider-post-identityproviders)
-- [Hämta en identitets leverantör](/graph/api/identityprovider-get)
-- [Uppdatera identitets leverantör](/graph/api/identityprovider-update)
-- [Ta bort en identitets leverantör](/graph/api/identityprovider-delete)
+- [Lista identitetsproviders som registrerats Azure AD B2C klientorganisationen](/graph/api/identityprovider-list)
+- [Skapa en identitetsprovider](/graph/api/identityprovider-post-identityproviders)
+- [Hämta en identitetsprovider](/graph/api/identityprovider-get)
+- [Uppdatera identitetsprovider](/graph/api/identityprovider-update)
+- [Ta bort en identitetsprovider](/graph/api/identityprovider-delete)
 
 ## <a name="user-flow"></a>Användarflöde
 
-Konfigurera fördefinierade principer för registrering, inloggning, kombinerad registrering och inloggning, återställning av lösen ord och profil uppdatering.
+Konfigurera förbyggda principer för registrering, inloggning, kombinerad registrering och inloggning, lösenordsåterställning och profiluppdatering.
 
-- [Visa lista över användar flöden](/graph/api/identitycontainer-list-b2cuserflows)
+- [Visa en lista över användarflöden](/graph/api/identitycontainer-list-b2cuserflows)
 - [Skapa ett användarflöde](/graph/api/identitycontainer-post-b2cuserflows)
-- [Hämta ett användar flöde](/graph/api/b2cidentityuserflow-get)
-- [Ta bort ett användar flöde](/graph/api/b2cidentityuserflow-delete)
+- [Hämta ett användarflöde](/graph/api/b2cidentityuserflow-get)
+- [Ta bort ett användarflöde](/graph/api/b2cidentityuserflow-delete)
 
-## <a name="user-flow-authentication-methods-beta"></a>Autentiseringsmetoder för användar flöde (beta)
+## <a name="user-flow-authentication-methods-beta"></a>Autentiseringsmetoder för användarflöde (beta)
 
-Välj en mekanism för att låta användare registrera sig via lokala konton. Lokala konton är de konton där Azure AD gör identitets kontrollen. Mer information finns i [resurs typen b2cAuthenticationMethodsPolicy](/graph/api/resources/b2cauthenticationmethodspolicy).
+Välj en mekanism för att låta användare registrera via lokala konton. Lokala konton är de konton där Azure AD gör identitetspåståendet. Mer information finns i [resurstypen b2cAuthenticationMethodsPolicy.](/graph/api/resources/b2cauthenticationmethodspolicy)
 
 - [Hämta](/graph/api/b2cauthenticationmethodspolicy-get)
 - [Uppdatera](/graph/api/b2cauthenticationmethodspolicy-update)
 
 ## <a name="custom-policies"></a>Anpassade principer
 
-Med följande åtgärder kan du hantera principer för Azure AD B2C förtroende Framework, så kallade [anpassade principer](custom-policy-overview.md).
+Med följande åtgärder kan du hantera dina Azure AD B2C Trust Framework-principer, så kallade [anpassade principer.](custom-policy-overview.md)
 
-- [Lista alla förtroende Ramverks principer som kon figurer ATS i en klient](/graph/api/trustframework-list-trustframeworkpolicies)
-- [Skapa förtroende Ramverks princip](/graph/api/trustframework-post-trustframeworkpolicy)
-- [Läsa egenskaper för en befintlig förtroende Ramverks princip](/graph/api/trustframeworkpolicy-get)
-- [Uppdatera eller skapa förtroende Ramverks princip.](/graph/api/trustframework-put-trustframeworkpolicy)
-- [Ta bort en befintlig princip för förtroende ramverk](/graph/api/trustframeworkpolicy-delete)
+- [Lista alla principer för förtroenderamverk som konfigurerats i en klientorganisation](/graph/api/trustframework-list-trustframeworkpolicies)
+- [Skapa förtroenderamverksprincip](/graph/api/trustframework-post-trustframeworkpolicy)
+- [Läsa egenskaper för en befintlig förtroenderamverksprincip](/graph/api/trustframeworkpolicy-get)
+- [Uppdatera eller skapa förtroenderamverksprincip.](/graph/api/trustframework-put-trustframeworkpolicy)
+- [Ta bort en befintlig princip för förtroenderamverk](/graph/api/trustframeworkpolicy-delete)
 
 ## <a name="policy-keys"></a>Principnycklar
 
-I ramverket med identitets upplevelsen lagras hemligheter som refereras i en anpassad princip för att upprätta förtroende mellan komponenter. Dessa hemligheter kan vara symmetriska eller asymmetriska nycklar/värden. I Azure Portal visas dessa entiteter som **princip nycklar**.
+Den Identity Experience Framework lagrar hemligheterna som refereras i en anpassad princip för att upprätta förtroende mellan komponenter. Dessa hemligheter kan vara symmetriska eller asymmetriska nycklar/värden. I Azure Portal visas dessa entiteter som **Principnycklar**.
 
-Resursen på den översta nivån för princip nycklar i Microsoft Graph API är den [betrodda Ramverks nyckel uppsättningen](/graph/api/resources/trustframeworkkeyset). Varje nyckel **uppsättning** innehåller minst en **nyckel**. Skapa en nyckel genom att först skapa en tom nyckel uppsättning och sedan generera en nyckel i nyckel uppsättningen. Du kan skapa en manuell hemlighet, överföra ett certifikat eller en PKCS12 nyckel. Nyckeln kan vara en genererad hemlighet, en sträng (till exempel Facebook-programmets hemlighet) eller ett certifikat som du överför. Om en nyckel uppsättning har flera nycklar är bara en av nycklarna aktiv.
+Resursen på den översta nivån för principnycklar i MICROSOFT GRAPH-API:et är [Trusted Framework Keyset](/graph/api/resources/trustframeworkkeyset). Varje **nyckeluppsättning** innehåller minst en **nyckel.** Skapa en nyckel genom att först skapa en tom nyckeluppsättning och sedan generera en nyckel i nyckeluppsättningen. Du kan skapa en manuell hemlighet, ladda upp ett certifikat eller en PKCS12-nyckel. Nyckeln kan vara en genererad hemlighet, en sträng (till exempel Facebook-programhemligheten) eller ett certifikat som du laddar upp. Om en nyckeluppsättning har flera nycklar är bara en av nycklarna aktiv.
 
-### <a name="trust-framework-policy-keyset"></a>Princip uppsättning för förtroende ramverk
+### <a name="trust-framework-policy-keyset"></a>Principnycklar för förtroenderamverk
 
-- [Visa en lista med de förtroende Framework-standarduppsättningarna](/graph/api/trustframework-list-keysets)
-- [Skapa ett förtroende Framework-standarduppsättningar](/graph/api/trustframework-post-keysets)
-- [Hämta en nyckel uppsättning](/graph/api/trustframeworkkeyset-get)
-- [Uppdatera en förtroende Framework-gruppuppsättning](/graph/api/trustframeworkkeyset-update)
-- [Ta bort ett förtroende Framework-gruppuppsättningar](/graph/api/trustframeworkkeyset-delete)
+- [Lista nyckeluppsättningar för förtroenderamverk](/graph/api/trustframework-list-keysets)
+- [Skapa en nyckeluppsättningar för förtroenderamverk](/graph/api/trustframework-post-keysets)
+- [Hämta en nyckeluppsättning](/graph/api/trustframeworkkeyset-get)
+- [Uppdatera nyckeluppsättningar för förtroenderamverk](/graph/api/trustframeworkkeyset-update)
+- [Ta bort en nyckeluppsättningar för förtroenderamverk](/graph/api/trustframeworkkeyset-delete)
 
-### <a name="trust-framework-policy-key"></a>Princip nyckel för förtroende ramverk
+### <a name="trust-framework-policy-key"></a>Principnyckel för förtroenderamverk
 
-- [Hämta den aktuella aktiva nyckeln i nyckel uppsättningen](/graph/api/trustframeworkkeyset-getactivekey)
-- [Generera en nyckel i nyckel uppsättningen](/graph/api/trustframeworkkeyset-generatekey)
-- [Ladda upp en sträng baserad hemlighet](/graph/api/trustframeworkkeyset-uploadsecret)
-- [Ladda upp ett X. 509-certifikat](/graph/api/trustframeworkkeyset-uploadcertificate)
-- [Ladda upp ett PKCS12-format certifikat](/graph/api/trustframeworkkeyset-uploadpkcs12)
+- [Hämta den aktiva nyckeln i nyckeluppsättningen](/graph/api/trustframeworkkeyset-getactivekey)
+- [Generera en nyckel i nyckeluppsättningen](/graph/api/trustframeworkkeyset-generatekey)
+- [Ladda upp en strängbaserad hemlighet](/graph/api/trustframeworkkeyset-uploadsecret)
+- [Ladda upp ett X.509-certifikat](/graph/api/trustframeworkkeyset-uploadcertificate)
+- [Ladda upp ett PKCS12-formatcertifikat](/graph/api/trustframeworkkeyset-uploadpkcs12)
 
 ## <a name="applications"></a>Program
 
@@ -123,69 +123,69 @@ Resursen på den översta nivån för princip nycklar i Microsoft Graph API är 
 - [Skapa ett program](/graph/api/resources/application)
 - [Uppdatera program](/graph/api/application-update)
 - [Skapa servicePrincipal](/graph/api/resources/serviceprincipal)
-- [Skapa oauth2Permission-beviljande](/graph/api/resources/oauth2permissiongrant)
+- [Skapa oauth2Permission Grant](/graph/api/resources/oauth2permissiongrant)
 - [Ta bort program](/graph/api/application-delete)
 
-## <a name="application-extension-properties"></a>Egenskaper för program tillägg
+## <a name="application-extension-properties"></a>Egenskaper för programtillägg
 
-- [Egenskaper för List tillägg](/graph/api/application-list-extensionproperty)
+- [Lista tilläggsegenskaper](/graph/api/application-list-extensionproperty)
 
-Azure AD B2C tillhandahåller en katalog som kan innehålla 100 anpassade attribut per användare. För användar flöden hanteras de här tilläggs egenskaperna [med hjälp av Azure Portal](user-flow-custom-attributes.md). För anpassade principer skapar Azure AD B2C egenskapen åt dig, första gången principen skriver ett värde för egenskapen Extension.
+Azure AD B2C innehåller en katalog som kan innehålla 100 anpassade attribut per användare. För användarflöden hanteras dessa tilläggsegenskaper [med hjälp av Azure Portal](user-flow-custom-attributes.md). För anpassade principer Azure AD B2C skapar egenskapen åt dig första gången principen skriver ett värde till tilläggsegenskapen.
 
 ## <a name="audit-logs"></a>Granskningsloggar
 
-- [Lista gransknings loggar](/graph/api/directoryaudit-list)
+- [Lista granskningsloggar](/graph/api/directoryaudit-list)
 
-Mer information om hur du kommer åt Azure AD B2C gransknings loggar finns i avsnittet [komma åt Azure AD B2C gransknings loggar](view-audit-logs.md).
+Mer information om åtkomst till Azure AD B2C finns i Åtkomst till [Azure AD B2C-granskningsloggar.](view-audit-logs.md)
 
 ## <a name="conditional-access"></a>Villkorlig åtkomst
 
-- [Lista alla principer för villkorlig åtkomst](/graph/api/conditionalaccessroot-list-policies?view=graph-rest-beta&tabs=http)
-- [Läsa egenskaper och relationer för en princip för villkorlig åtkomst](/graph/api/conditionalaccesspolicy-get)
+- [Visa en lista över alla principer för villkorlig åtkomst](/graph/api/conditionalaccessroot-list-policies?tabs=http)
+- [Läsa egenskaper och relationer för en princip för villkorsstyrd åtkomst](/graph/api/conditionalaccesspolicy-get)
 - [Skapa en ny princip för villkorlig åtkomst](/graph/api/resources/application)
 - [Uppdatera en princip för villkorlig åtkomst](/graph/api/conditionalaccesspolicy-update)
 - [Ta bort en princip för villkorlig åtkomst](/graph/api/conditionalaccesspolicy-delete)
 
-## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Kod exempel: program mässigt hantera användar konton
+## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Kodexempel: Så här hanterar du användarkonton programmatiskt
 
-Det här kod exemplet är ett .NET Core-konsolprogram som använder [Microsoft Graph SDK](/graph/sdks/sdks-overview) för att interagera med Microsoft Graph API. Koden visar hur du anropar API: et för att hantera användare program mässigt i en Azure AD B2C klient organisation.
-Du kan [Ladda ned exempel arkivet](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*. zip), [Bläddra i lagrings platsen](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) på GitHub eller klona lagrings platsen:
+Det här kodexe exemplet är ett .NET Core-konsolprogram som [använder Microsoft Graph SDK för](/graph/sdks/sdks-overview) att interagera med Microsoft Graph API. Koden visar hur du anropar API:et för att programmatiskt hantera användare i en Azure AD B2C klientorganisation.
+Du kan [ladda ned exempelarkivet](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*.zip), [bläddra på lagringsplatsen](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) på GitHub eller klona lagringsplatsen:
 
 ```cmd
 git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management.git
 ```
 
-När du har fått kod exemplet konfigurerar du det för din miljö och skapar sedan projektet:
+När du har fått kodexe exemplet konfigurerar du det för din miljö och skapar sedan projektet:
 
 1. Öppna projektet i [Visual Studio](https://visualstudio.microsoft.com) eller [Visual Studio Code](https://code.visualstudio.com).
 1. Öppna `src/appsettings.json`.
-1. I `appSettings` avsnittet ersätter du `your-b2c-tenant` med namnet på din klient och `Application (client) ID` och `Client secret` med värdena för registreringen av hanterings programmet. Mer information finns i [Registrera ett Microsoft Graph-program](microsoft-graph-get-started.md).
-1. Öppna ett konsol fönster i din lokala klon av lagrings platsen, växla till `src` katalogen och skapa projektet:
+1. I avsnittet `appSettings` ersätter du `your-b2c-tenant` med namnet på din klientorganisation och och `Application (client) ID` med värdena för registreringen av `Client secret` hanteringsprogrammet. Mer information finns i [Registrera ett Microsoft Graph program](microsoft-graph-get-started.md).
+1. Öppna ett konsolfönster i din lokala klon av lagringsplatsen, växla till `src` katalogen och skapa sedan projektet:
 
     ```console
     cd src
     dotnet build
     ```
     
-1. Kör programmet med `dotnet` kommandot:
+1. Kör programmet med `dotnet` kommandot :
 
     ```console
     dotnet bin/Debug/netcoreapp3.1/b2c-ms-graph.dll
     ```
 
-Programmet visar en lista över kommandon som du kan köra. Du kan till exempel hämta alla användare, hämta en enskild användare, ta bort en användare, uppdatera en användares lösen ord och Mass import.
+Programmet visar en lista över kommandon som du kan köra. Du kan till exempel hämta alla användare, hämta en enskild användare, ta bort en användare, uppdatera en användares lösenord och massimport.
 
-### <a name="code-discussion"></a>Kod diskussion
+### <a name="code-discussion"></a>Koddiskussion
 
-Exempel koden använder [Microsoft Graph SDK](/graph/sdks/sdks-overview), som är utformad för att förenkla skapandet av högkvalitativa, effektiva och elastiska program som har åtkomst till Microsoft Graph.
+Exempelkoden använder [sdk Microsoft Graph,](/graph/sdks/sdks-overview)som är utformat för att förenkla processen att skapa effektiva och elastiska program av hög kvalitet som har åtkomst Microsoft Graph.
 
-Alla begär anden till Microsoft Graph API kräver en åtkomsttoken för autentisering. Lösningen använder sig av [Microsoft. Graph. auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet-paketet som tillhandahåller ett gränssnitts scenario baserat på Microsoft Authentication Library (MSAL) för användning med Microsoft Graph SDK.
+Alla förfrågningar till MICROSOFT GRAPH-API:et kräver en åtkomsttoken för autentisering. Lösningen använder NuGet-paketet [Microsoft.Graph.Auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) som tillhandahåller en autentiseringsscenariobaserad wrapper av Microsoft Authentication Library (MSAL) för användning med Microsoft Graph SDK.
 
-`RunAsync`Metoden i filen _program. cs_ :
+Metoden `RunAsync` i filen _Program.cs:_
 
-1. Läser program inställningar från _appsettings.jspå_ filen
-1. Initierar auth-providern med hjälp av [OAuth 2,0-klientens autentiseringsuppgifter för tilldelnings](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) flöde. Med hjälp av flödet för tilldelning av klientautentiseringsuppgifter kan appen Hämta en åtkomsttoken för att anropa Microsoft Graph-API: et.
-1. Konfigurerar Microsoft Graph tjänst klienten med auth-providern:
+1. Läser programinställningar från den _appsettings.jsfilen_
+1. Initierar autentiseringsprovidern med hjälp av [beviljandeflödet för OAuth 2.0-klientautentiseringsuppgifter.](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) Med flödet för beviljande av klientautentiseringsuppgifter kan appen hämta en åtkomsttoken för att anropa Microsoft Graph-API:et.
+1. Uppsättningar av Microsoft Graph-tjänstklienten med autentiseringsprovidern:
 
     ```csharp
     // Read application settings from appsettings.json (tenant ID, app ID, client secret, etc.)
@@ -203,7 +203,7 @@ Alla begär anden till Microsoft Graph API kräver en åtkomsttoken för autenti
     GraphServiceClient graphClient = new GraphServiceClient(authProvider);
     ```
 
-Den initierade *GraphServiceClient* används sedan i _UserService. cs_ för att utföra användar hanterings åtgärderna. Du kan till exempel hämta en lista över användar kontona i klienten:
+Den initierade *GraphServiceClient* används sedan i _UserService.cs för_ att utföra användarhanteringsåtgärder. Du kan till exempel hämta en lista över användarkonton i klientorganisationen:
 
 ```csharp
 public static async Task ListUsers(GraphServiceClient graphClient)
@@ -228,7 +228,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[Gör API-anrop med hjälp av Microsoft Graph SDK: er](/graph/sdks/create-requests) innehåller information om hur du läser och skriver information från Microsoft Graph, använder `$select` för att kontrol lera de egenskaper som returneras, tillhandahålla anpassade frågeparametrar och använda `$filter` `$orderBy` parametrarna och.
+[Api-anrop med Microsoft Graph-SDK:er](/graph/sdks/create-requests) innehåller information om hur du läser och skriver information från Microsoft Graph, använder för att styra de returnerade egenskaperna, anger anpassade frågeparametrar och använder frågeparametrarna och `$select` `$filter` `$orderBy` .
 
 <!-- LINK -->
 

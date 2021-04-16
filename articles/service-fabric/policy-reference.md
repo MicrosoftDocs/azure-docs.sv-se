@@ -1,21 +1,21 @@
 ---
-title: Inbyggda princip definitioner för Azure Service Fabric
-description: Visar Azure Policy inbyggda princip definitioner för Azure Service Fabric. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 03/31/2021
+title: Inbyggda principdefinitioner för Azure Service Fabric
+description: Visar Azure Policy inbyggda principdefinitioner för Azure Service Fabric. Dessa inbyggda principdefinitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
+ms.date: 04/14/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: be5dcec1ae598b066005292b9809881b9aa60f1b
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: cb47fc89ef4499e847d5ac1d9ca3dd7373ced824
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090381"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498398"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-service-fabric"></a>Azure Policy inbyggda definitioner för Azure Service Fabric
 
-Den här sidan är ett index över [Azure policy](../governance/policy/overview.md) inbyggda princip definitioner för Azure Service Fabric. Ytterligare Azure Policy inbyggda program för andra tjänster finns i [Azure policy inbyggda definitioner](../governance/policy/samples/built-in-policies.md).
+Den här sidan är ett index [Azure Policy](../governance/policy/overview.md) inbyggda principdefinitioner för Azure Service Fabric. Mer information Azure Policy inbyggda program för andra tjänster finns [i Azure Policy inbyggda definitioner](../governance/policy/samples/built-in-policies.md).
 
-Namnet på varje inbyggd princip definition länkar till princip definitionen i Azure Portal. Använd länken i kolumnen **version** om du vill visa källan på [Azure policy GitHub-lagrings platsen](https://github.com/Azure/azure-policy).
+Namnet på varje inbyggd principdefinition länkar till principdefinitionen i Azure Portal. Använd länken i kolumnen **Version för** att visa källan på Azure Policy [GitHub-lagringsplatsen](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-service-fabric"></a>Azure Service Fabric
 

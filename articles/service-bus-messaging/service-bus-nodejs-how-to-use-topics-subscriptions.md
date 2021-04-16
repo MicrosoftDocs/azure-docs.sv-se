@@ -1,41 +1,43 @@
 ---
-title: Använd för hands versionen av Java Script Azure/Service-Bus med ämnen och prenumerationer
-description: Lär dig hur du skriver ett JavaScript-program som använder den senaste för hands versionen av @azure/service-bus paketet för att skicka meddelanden till ett Service Bus ämne och ta emot meddelanden från en prenumeration på avsnittet.
+title: Använda förhandsversionen av JavaScript azure/service-bus med ämnen och prenumerationer
+description: Lär dig hur du skriver ett JavaScript-program som använder den senaste förhandsversionen av paketet för att skicka meddelanden till ett Service Bus-ämne och ta emot meddelanden från en prenumeration @azure/service-bus på ämnet.
 author: spelluru
-ms.devlang: nodejs
-ms.topic: quickstart
-ms.date: 11/09/2020
 ms.author: spelluru
-ms.custom: devx-track-js
-ms.openlocfilehash: a1afe4207ce3833f3bcb55bc7bc2e8e27f393f63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/09/2020
+ms.topic: quickstart
+ms.devlang: nodejs
+ms.custom:
+- devx-track-js
+- mode-api
+ms.openlocfilehash: 59f1bb29099f2b921e687ca9de46365bc34f1b91
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98180004"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537251"
 ---
-# <a name="quickstart-service-bus-topics-and-subscriptions-with-nodejs-and-the-preview-azureservice-bus-package"></a>Snabb start: Service Bus ämnen och prenumerationer med Node.js och för hands versionen av Azure/Service-Bus-paketet
-I den här självstudien får du lära dig hur du använder [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) paketet i ett JavaScript-program för att skicka meddelanden till ett Service Bus ämne och ta emot meddelanden från en Service Bus-prenumeration på det avsnittet.
+# <a name="quickstart-service-bus-topics-and-subscriptions-with-nodejs-and-the-preview-azureservice-bus-package"></a>Snabbstart: Service Bus ämnen och prenumerationer med Node.js och förhandsversionen av azure/service-bus-paketet
+I den här självstudien lär du dig hur du använder paketet i ett JavaScript-program för att skicka meddelanden till ett Service Bus-ämne och ta emot meddelanden från en [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) Service Bus-prenumeration till det ämnet.
 
 ## <a name="prerequisites"></a>Förutsättningar
-- En Azure-prenumeration. Du behöver ett Azure-konto för att genomföra kursen. Du kan aktivera dina [förmåner för MSDN-prenumeranter](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) eller registrera dig för ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Följ stegen i [snabb starten: använd Azure Portal för att skapa ett Service Bus ämne och prenumerationer på avsnittet](service-bus-quickstart-topics-subscriptions-portal.md). Anteckna anslutnings strängen, ämnes namnet och ett prenumerations namn. Du kommer bara att använda en prenumeration för den här snabb starten. 
+- En Azure-prenumeration. Du behöver ett Azure-konto för att genomföra kursen. Du kan aktivera dina [MSDN-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) eller registrera dig för ett [kostnadsfritt konto.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
+- Följ stegen i [Snabbstart: Använd Azure Portal för att skapa ett Service Bus och prenumerationer på ämnet](service-bus-quickstart-topics-subscriptions-portal.md). Anteckna anslutningssträngen, ämnesnamnet och ett prenumerationsnamn. Du kommer bara att använda en prenumeration för den här snabbstarten. 
 
 > [!NOTE]
-> - Den här självstudien fungerar med exempel som du kan kopiera och köra med [NodeJS](https://nodejs.org/). Instruktioner för hur du skapar ett Node.js program finns i [skapa och distribuera ett Node.js program till en Azure-webbplats](../app-service/quickstart-nodejs.md)eller [Node.js moln tjänst med Windows PowerShell](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
+> - Den här självstudien fungerar med exempel som du kan kopiera och köra med [Nodejs](https://nodejs.org/). Anvisningar om hur du skapar ett Node.js-program finns i Skapa och distribuera ett [Node.js-program](../app-service/quickstart-nodejs.md)till en Azure-webbplats eller [Node.js Cloud Service med Windows PowerShell](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Installera paketet med NPM (Node Package Manager)
-Om du vill installera NPM-paketet för Service Bus öppnar du en kommando tolk med `npm` sökvägen och ändrar katalogen till den mapp där du vill ha dina exempel och kör sedan det här kommandot.
+Om du vill installera npm-paketet för Service Bus öppnar du en kommandotolk som har i sökvägen, ändrar katalogen till den mapp där du vill ha exemplen och `npm` kör sedan det här kommandot.
 
 ```bash
 npm install @azure/service-bus
 ```
 
 ## <a name="send-messages-to-a-topic"></a>Skicka meddelanden till ett ämne
-Följande exempel kod visar hur du skickar en batch med meddelanden till ett Service Bus ämne. Se kod kommentarer för mer information. 
+Följande exempelkod visar hur du skickar en batch med meddelanden till ett Service Bus ämne. Mer information finns i kodkommentarer. 
 
-1. Öppna din favorit redigerare, till exempel [Visual Studio Code](https://code.visualstudio.com/)
-2. Skapa en fil med namnet `sendtotopic.js` och klistra in nedanstående kod i den. Den här koden skickar ett meddelande till ditt ämne.
+1. Öppna din favoritredigerare, till exempel [Visual Studio Code](https://code.visualstudio.com/)
+2. Skapa en fil med `sendtotopic.js` namnet och klistra in koden nedan i den. Den här koden skickar ett meddelande till ditt ämne.
 
     ```javascript
     const { ServiceBusClient } = require("@azure/service-bus");
@@ -108,9 +110,9 @@ Följande exempel kod visar hur du skickar en batch med meddelanden till ett Ser
         process.exit(1);
      });    
     ```
-3. Ersätt `<SERVICE BUS NAMESPACE CONNECTION STRING>` med anslutnings strängen till Service Bus namn området.
+3. Ersätt `<SERVICE BUS NAMESPACE CONNECTION STRING>` med anslutningssträngen till Service Bus namnområdet.
 1. Ersätt `<TOPIC NAME>` med namnet på ämnet. 
-1. Kör sedan kommandot i en kommando tolk för att köra den här filen.
+1. Kör sedan kommandot i en kommandotolk för att köra den här filen.
 
     ```console
     node sendtotopic.js 
@@ -122,8 +124,8 @@ Följande exempel kod visar hur du skickar en batch med meddelanden till ett Ser
     ```
 
 ## <a name="receive-messages-from-a-subscription"></a>Ta emot meddelanden från en prenumeration
-1. Öppna din favorit redigerare, till exempel [Visual Studio Code](https://code.visualstudio.com/)
-2. Skapa en fil med namnet **receivefromsubscription.js** och klistra in följande kod i den. Se kod kommentarer för mer information. 
+1. Öppna din favoritredigerare, till exempel [Visual Studio Code](https://code.visualstudio.com/)
+2. Skapa en fil med **receivefromsubscription.js** och klistra in följande kod i den. Mer information finns i kodkommentarer. 
 
     ```javascript
     const { delay, ServiceBusClient, ServiceBusMessage } = require("@azure/service-bus");
@@ -168,10 +170,10 @@ Följande exempel kod visar hur du skickar en batch med meddelanden till ett Ser
         process.exit(1);
      });    
     ```
-3. Ersätt `<SERVICE BUS NAMESPACE CONNECTION STRING>` med anslutnings strängen till namn området. 
+3. Ersätt `<SERVICE BUS NAMESPACE CONNECTION STRING>` med anslutningssträngen till namnområdet. 
 1. Ersätt `<TOPIC NAME>` med namnet på ämnet. 
-1. Ersätt `<SUBSCRIPTION NAME>` med namnet på prenumerationen i ämnet. 
-1. Kör sedan kommandot i en kommando tolk för att köra den här filen.
+1. Ersätt `<SUBSCRIPTION NAME>` med namnet på prenumerationen på ämnet. 
+1. Kör sedan kommandot i en kommandotolk för att köra den här filen.
 
     ```console
     node receivefromsubscription.js
@@ -191,21 +193,21 @@ Följande exempel kod visar hur du skickar en batch med meddelanden till ett Ser
     Received message: Nikolaus Kopernikus
     ```
 
-I Azure Portal navigerar du till Service Bus namn området och markerar avsnittet i den nedre rutan för att se sidan **Service Bus ämne** för ditt ämne. På den här sidan bör du se tre inkommande och tre utgående meddelanden i **meddelande** diagrammet. 
+I Azure Portal du till ditt Service Bus och väljer ämnet i det nedre fönstret för **att se sidan Service Bus ämne** för ditt ämne. På den här sidan bör du se tre inkommande och tre utgående meddelanden i **diagrammet** Meddelanden. 
 
 :::image type="content" source="./media/service-bus-java-how-to-use-topics-subscriptions/topic-page-portal.png" alt-text="Inkommande och utgående meddelanden":::
 
-Om du kör den enda sändnings appen nästa gången ser du sex inkommande meddelanden (3 nya) på sidan **Service Bus ämne** , men tre utgående meddelanden. 
+Om du kör den enda skicka appen nästa gång visas sex **inkommande meddelanden (3** nya) men tre utgående meddelanden på sidan Service Bus ämne. 
 
-:::image type="content" source="./media/service-bus-java-how-to-use-topics-subscriptions/updated-topic-page.png" alt-text="Uppdaterad ämnes sida":::
+:::image type="content" source="./media/service-bus-java-how-to-use-topics-subscriptions/updated-topic-page.png" alt-text="Uppdaterad ämnessida":::
 
-Om du väljer en prenumeration på den här sidan kommer du till sidan **Service Bus prenumeration** . Du kan se antalet aktiva meddelanden, antal meddelanden om obeställbara meddelanden och mer på den här sidan. I det här exemplet finns det tre aktiva meddelanden som inte har tagits emot av en mottagare än. 
+Om du väljer en prenumeration på den här sidan kommer du till sidan **Service Bus Prenumeration.** Du kan se antal aktiva meddelanden, antal meddelanden med dead letter och mer på den här sidan. I det här exemplet finns det tre aktiva meddelanden som inte har tagits emot av en mottagare ännu. 
 
 :::image type="content" source="./media/service-bus-java-how-to-use-topics-subscriptions/active-message-count.png" alt-text="Antal aktiva meddelanden":::
 
 ## <a name="next-steps"></a>Nästa steg
 Se följande dokumentation och exempel: 
 
-- [Azure Service Bus klient bibliotek för python](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
-- [Exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples). **JavaScript** -mappen har JavaScript-exempel och **typescript** har typescript-exempel. 
-- [dokumentation om Azure-Service Bus-referens](/javascript/api/overview/azure/service-bus)
+- [Azure Service Bus klientbibliotek för Python](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/README.md)
+- [Exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples). **Javascript-mappen** har JavaScript-exempel och **typescript innehåller** TypeScript-exempel. 
+- [referensdokumentation för azure-servicebus](/javascript/api/overview/azure/service-bus)

@@ -1,49 +1,51 @@
 ---
-title: Ta emot aktivitets logg aviseringar på Azure Service Notifications med Resource Manager-mall
-description: Få ett meddelande via SMS, e-post eller webhook när Azure-tjänsten sker.
-ms.topic: quickstart
-ms.custom: subject-armqs
+title: Ta emot aktivitetsloggaviseringar i Azure-tjänstmeddelanden med hjälp Resource Manager mall
+description: Bli meddelad via SMS, e-post eller webhook när Azure-tjänsten inträffar.
 ms.date: 06/29/2020
-ms.openlocfilehash: 532fbae505e0bcaa6ab31a2e935362114537d134
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 730c023de61275d95fe594642149770af42b34b9
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594951"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535757"
 ---
-# <a name="quickstart-create-activity-log-alerts-on-service-notifications-using-an-arm-template"></a>Snabb start: skapa aktivitets logg aviseringar för tjänst meddelanden med en ARM-mall
+# <a name="quickstart-create-activity-log-alerts-on-service-notifications-using-an-arm-template"></a>Snabbstart: Skapa aktivitetsloggaviseringar i tjänstmeddelanden med hjälp av en ARM-mall
 
-Den här artikeln visar hur du konfigurerar aktivitets logg aviseringar för meddelanden om tjänstens hälso tillstånd med hjälp av en Azure Resource Manager mall (ARM-mall).
+Den här artikeln visar hur du ställer in aktivitetsloggaviseringar för aviseringar om tjänstens hälsotillstånd med hjälp av en Azure Resource Manager mall (ARM-mall).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Meddelanden om tjänst hälsa lagras i [aktivitets loggen i Azure](../azure-monitor/essentials/platform-logs-overview.md). Med tanke på den stora mängden information som lagras i aktivitets loggen, finns det ett separat användar gränssnitt för att göra det enklare att visa och konfigurera aviseringar om meddelanden om tjänstens hälsa.
+Service Health-meddelanden lagras i [Azure-aktivitetsloggen](../azure-monitor/essentials/platform-logs-overview.md). Med tanke på den eventuellt stora mängden information som lagras i aktivitetsloggen finns det ett separat användargränssnitt som gör det enklare att visa och konfigurera aviseringar om aviseringar om tjänstens hälsotillstånd.
 
-Du kan få en avisering när Azure skickar meddelanden om tjänst hälsa till din Azure-prenumeration. Du kan konfigurera aviseringen baserat på:
+Du kan få en avisering när Azure skickar service health-meddelanden till din Azure-prenumeration. Du kan konfigurera aviseringen baserat på:
 
-- Hälso tillstånds klassen för tjänsten (tjänste problem, planerat underhåll, hälso rekommendationer).
+- Klassen för service health-meddelanden (tjänstproblem, planerat underhåll, hälsorekommendationer).
 - Prenumerationen som påverkas.
-- Den eller de tjänster som påverkas.
+- De tjänster som påverkas.
 - De regioner som påverkas.
 
 > [!NOTE]
-> Meddelanden om tjänstens hälso tillstånd skickar ingen avisering om resurs hälso händelser.
+> Service Health-meddelanden skickar ingen avisering om resource health-händelser.
 
 Du kan också konfigurera vem aviseringen ska skickas till:
 
-- Välj en befintlig åtgärds grupp.
-- Skapa en ny åtgärds grupp (som kan användas för framtida aviseringar).
+- Välj en befintlig åtgärdsgrupp.
+- Skapa en ny åtgärdsgrupp (som kan användas för framtida aviseringar).
 
-Mer information om åtgärds grupper finns i [skapa och hantera åtgärds grupper](../azure-monitor/alerts/action-groups.md).
+Mer information om åtgärdsgrupper finns i [Skapa och hantera åtgärdsgrupper.](../azure-monitor/alerts/action-groups.md)
 
 ## <a name="prerequisites"></a>Krav
 
 - Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
-- Om du vill köra kommandona från den lokala datorn installerar du Azure CLI eller Azure PowerShell modulerna. Mer information finns i [Installera Azure CLI](/cli/azure/install-azure-cli) och [Installera Azure PowerShell](/powershell/azure/install-az-ps).
+- Om du vill köra kommandona från den lokala datorn installerar du Azure CLI eller Azure PowerShell moduler. Mer information finns i [Installera Azure CLI och](/cli/azure/install-azure-cli) Installera [Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="review-the-template"></a>Granska mallen
 
-Följande mall skapar en åtgärds grupp med ett e-postmål och aktiverar alla meddelanden om tjänst hälsa för mål prenumerationen. Spara den här mallen som *CreateServiceHealthAlert.jspå*.
+Följande mall skapar en åtgärdsgrupp med ett e-postmål och aktiverar alla aviseringar om tjänstens hälsotillstånd för målprenumerationen. Spara den här mallen *somCreateServiceHealthAlert.jspå*.
 
 ```json
 {
@@ -133,12 +135,12 @@ Följande mall skapar en åtgärds grupp med ett e-postmål och aktiverar alla m
 
 Mallen definierar två resurser:
 
-- [Microsoft. Insights/actionGroups](/azure/templates/microsoft.insights/actiongroups)
-- [Microsoft. Insights/activityLogAlerts](/azure/templates/microsoft.insights/activityLogAlerts)
+- [Microsoft.Insights/actionGroups](/azure/templates/microsoft.insights/actiongroups)
+- [Microsoft.Insights/activityLogAlerts](/azure/templates/microsoft.insights/activityLogAlerts)
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
-Distribuera mallen med valfri standard metod för att [distribuera en arm-mall](../azure-resource-manager/templates/deploy-portal.md) som i följande exempel med CLI och PowerShell. Ersätt exempel värden för **resurs grupp** och **EmailAddress** med lämpliga värden för din miljö.
+Distribuera mallen med valfri standardmetod för att [distribuera en ARM-mall,](../azure-resource-manager/templates/deploy-portal.md) till exempel följande exempel med hjälp av CLI och PowerShell. Ersätt exempelvärdena för **Resursgrupp och** **emailAddress** med lämpliga värden för din miljö.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -159,7 +161,7 @@ New-AzResourceGroupDeployment -Name CreateServiceHealthAlert -ResourceGroupName 
 
 ## <a name="validate-the-deployment"></a>Verifiera distributionen
 
-Kontrol lera att arbets ytan har skapats med något av följande kommandon. Ersätt exempel värden för **resurs grupp** med det värde som du använde ovan.
+Kontrollera att arbetsytan har skapats med något av följande kommandon. Ersätt exempelvärdena för **Resursgrupp med** värdet som du använde ovan.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -177,7 +179,7 @@ Get-AzActivityLogAlert -ResourceGroupName my-resource-group -Name ServiceHealthA
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du planerar att fortsätta arbeta med efterföljande snabb starter och självstudier, kanske du vill lämna dessa resurser på plats. När de inte längre behövs tar du bort resurs gruppen, som tar bort aviserings regeln och relaterade resurser. Ta bort resurs gruppen med hjälp av Azure CLI eller Azure PowerShell
+Om du planerar att fortsätta arbeta med efterföljande snabbstarter och självstudier kanske du vill lämna dessa resurser på plats. Ta bort resursgruppen när den inte längre behövs, vilket tar bort aviseringsregeln och de relaterade resurserna. Ta bort resursgruppen med hjälp av Azure CLI eller Azure PowerShell
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -195,11 +197,11 @@ Remove-AzResourceGroup -Name my-resource-group
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om [metod tips för att konfigurera Azure Service Health aviseringar](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
-- Lär dig hur du [ställer in mobila push-meddelanden för Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
-- Lär dig hur du [konfigurerar webhook-meddelanden för befintliga problem hanterings system](service-health-alert-webhook-guide.md).
-- Läs mer om [meddelanden om tjänst hälsa](service-notifications.md).
-- Lär dig mer om [begränsning av meddelande frekvens](../azure-monitor/alerts/alerts-rate-limiting.md).
-- Granska [aktivitets logg aviseringens webhook-schema](../azure-monitor/alerts/activity-log-alerts-webhook.md).
-- Få en [Översikt över aktivitets logg aviseringar](../azure-monitor/alerts/alerts-overview.md)och lär dig hur du tar emot aviseringar.
-- Läs mer om [Åtgärds grupper](../azure-monitor/alerts/action-groups.md).
+- Lär dig [mer om metodtips för att konfigurera Azure Service Health aviseringar](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
+- Lär dig att [konfigurera mobila push-meddelanden för Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
+- Lär dig hur du [konfigurerar webhook-meddelanden för befintliga problemhanteringssystem.](service-health-alert-webhook-guide.md)
+- Läs mer om [service health-meddelanden.](service-notifications.md)
+- Läs mer om [begränsning av meddelandefrekvens.](../azure-monitor/alerts/alerts-rate-limiting.md)
+- Granska [webhookschemat för aktivitetsloggaviseringar.](../azure-monitor/alerts/activity-log-alerts-webhook.md)
+- Få en [översikt över aktivitetsloggaviseringar](../azure-monitor/alerts/alerts-overview.md)och lär dig hur du tar emot aviseringar.
+- Läs mer om [åtgärdsgrupper.](../azure-monitor/alerts/action-groups.md)

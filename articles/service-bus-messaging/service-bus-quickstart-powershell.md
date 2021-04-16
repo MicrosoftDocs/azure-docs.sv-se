@@ -1,30 +1,32 @@
 ---
 title: Använda Azure PowerShell för att skapa en Service Bus-kö
-description: I den här snabb starten får du lära dig hur du skapar ett Service Bus-namnområde och en kö i namn området med hjälp av Azure PowerShell.
+description: I den här snabbstarten får du lära dig hur du skapar Service Bus en namnrymd och en kö i namnområdet med hjälp av Azure PowerShell.
 author: spelluru
-ms.devlang: dotnet
-ms.topic: quickstart
-ms.date: 08/12/2020
 ms.author: spelluru
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8cf024735c66e6bae9d334e3d8ce8d0a0eed1426
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2020
+ms.topic: quickstart
+ms.devlang: dotnet
+ms.custom:
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: f7bf9e5435b00ee3076422cccbe689038051499d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95799110"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537093"
 ---
-# <a name="use-azure-powershell-to-create-a-service-bus-namespace-and-a-queue"></a>Använd Azure PowerShell för att skapa ett Service Bus-namnområde och en kö
-Den här snabb starten visar hur du skapar ett Service Bus-namnområde och en kö med hjälp av Azure PowerShell. Det visar också hur du får autentiseringsuppgifter för auktorisering som ett klient program kan använda för att skicka/ta emot meddelanden till/från kön. 
+# <a name="use-azure-powershell-to-create-a-service-bus-namespace-and-a-queue"></a>Använd Azure PowerShell för att skapa Service Bus en namnrymd och en kö
+Den här snabbstarten visar hur du skapar Service Bus en namnrymd och en kö med hjälp av Azure PowerShell. Den visar också hur du hämtar autentiseringsuppgifter som ett klientprogram kan använda för att skicka/ta emot meddelanden till/från kön. 
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Kontrol lera att du har en Azure-prenumeration för att slutföra den här snabb starten. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnads fritt konto][] innan du börjar. 
+Kontrollera att du har en Azure-prenumeration för att slutföra den här snabbstarten. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto][] innan du börjar. 
 
-I den här snabb starten använder du Azure Cloud Shell som du kan starta när du har loggat in på Azure Portal. Mer information om Azure Cloud Shell finns i [Översikt över Azure Cloud Shell](../cloud-shell/overview.md). Du kan också [Installera](/powershell/azure/install-Az-ps) och använda Azure PowerShell på din dator. 
+I den här snabbstarten använder du Azure Cloud Shell som du kan starta efter att ha loggat in på Azure Portal. Mer information om Azure Cloud Shell finns i [Översikt över Azure Cloud Shell](../cloud-shell/overview.md). Du kan också [installera](/powershell/azure/install-Az-ps) och använda Azure PowerShell på datorn. 
 
 
 ## <a name="provision-resources"></a>Etablera resurser
@@ -32,35 +34,35 @@ I den här snabb starten använder du Azure Cloud Shell som du kan starta när d
 2. Starta Azure Cloud Shell genom att välja ikonen som visas i följande bild: 
 
     :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="Starta Cloud Shell":::
-3. Växla från **bash** till **PowerShell** i fönstret längst ned Cloud Shell. 
+3. Växla från Bash Cloud Shell PowerShell längst **ned** i **fönstret.** 
 
     :::image type="content" source="./media/service-bus-quickstart-powershell/cloud-power-shell.png" alt-text="Växla till PowerShell-läge":::    
-4. Kör följande kommando för att skapa en Azure-resurs grupp. Uppdatera resurs gruppens namn och plats om du vill. 
+4. Kör följande kommando för att skapa en Azure-resursgrupp. Uppdatera resursgruppens namn och plats om du vill. 
 
     ```azurepowershell-interactive
     New-AzResourceGroup –Name ContosoRG –Location eastus
     ```
-5. Kör följande kommando för att skapa ett namn område för Service Bus meddelande tjänst. I det här exemplet `ContosoRG` är resurs gruppen du skapade i föregående steg. `ContosoSBusNS` är namnet på Service Bus namn området som skapas i den resurs gruppen. 
+5. Kör följande kommando för att skapa Service Bus namnområdet för meddelanden. I det här exemplet `ContosoRG` är resursgruppen som du skapade i föregående steg. `ContosoSBusNS` är namnet på den Service Bus som skapats i den resursgruppen. 
 
     ```azurepowershell-interactive
     New-AzServiceBusNamespace -ResourceGroupName ContosoRG -Name ContosoSBusNS -Location eastus
     ```
-6. Kör följande för att skapa en kö i namn området som du skapade i föregående steg. 
+6. Kör följande för att skapa en kö i namnområdet som du skapade i föregående steg. 
 
     ```azurepowershell-interactive
     New-AzServiceBusQueue -ResourceGroupName ContosoRG -NamespaceName ContosoSBusNS -Name ContosoOrdersQueue 
     ```
-7. Hämta den primära anslutnings strängen för namn området. Du använder den här anslutnings strängen för att ansluta till kön och skicka och ta emot meddelanden. 
+7. Hämta den primära anslutningssträngen för namnområdet. Du använder den här anslutningssträngen för att ansluta till kön och skicka och ta emot meddelanden. 
 
     ```azurepowershell-interactive    
     Get-AzServiceBusKey -ResourceGroupName ContosoRG -Namespace ContosoSBusNS -Name RootManageSharedAccessKey
     ```
 
-    Anteckna anslutnings strängen och köns namn. Du kan använda dem för att skicka och ta emot meddelanden. 
+    Anteckna anslutningssträngen och könamnet. Du använder dem för att skicka och ta emot meddelanden. 
 
 
 ## <a name="next-steps"></a>Nästa steg
-I den här artikeln har du skapat en Service Bus namnrymd och en kö i namn området. Information om hur du skickar och tar emot meddelanden till/från kön finns i följande snabb starter i avsnittet **skicka och ta emot meddelanden** . 
+I den här artikeln har du Service Bus ett namnområde och en kö i namnområdet. Information om hur du skickar/tar emot meddelanden till/från kön finns i någon av följande snabbstarter i **avsnittet Skicka och ta emot** meddelanden. 
 
 - [.NET](service-bus-dotnet-get-started-with-queues.md)
 - [Java](service-bus-java-how-to-use-queues.md)
@@ -69,5 +71,4 @@ I den här artikeln har du skapat en Service Bus namnrymd och en kö i namn omr�
 - [PHP](service-bus-php-how-to-use-queues.md)
 - [Ruby](service-bus-ruby-how-to-use-queues.md)
 
-[kostnads fritt konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-
+[kostnadsfritt konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

@@ -1,7 +1,7 @@
 ---
-title: Översikt över Ansikts-API registrering
+title: Metodtips för att lägga till användare i en ansiktstjänst
 titleSuffix: Azure Cognitive Services
-description: Lär dig mer om processen för ansikts registrering för att registrera användare i en ansikts igenkännings tjänst.
+description: Lär dig mer om processen för ansiktsregistrering för att registrera användare i en tjänst för ansiktsigenkänning.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,45 +9,45 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: ac5106aa661cb2baea31ee15d57e9c6fac8c7192
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e710771dd14b389e856e752b6587e2a76ad9d85b
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350338"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505079"
 ---
-# <a name="face-api-enrollment"></a>Ansikts-API registrering
+# <a name="best-practices-for-adding-users-to-a-face-service"></a>Metodtips för att lägga till användare i en ansiktstjänst
 
-För att kunna använda Cognitive Services Ansikts-API för ansikts verifiering eller identifiering måste du registrera ansikten i en **LargePersonGroup**. Den här djupet visar bästa praxis för att samla in meningsfulla medgivande från användare och exempel logik för att skapa högkvalitativa registreringar som optimerar igenkännings precisionen.  
+För att kunna använda Cognitive Services-API:et för ansiktsverifiering eller -identifiering måste du registrera ansikten i en **LargePersonGroup.** Den här djupdykningen demonstrerar metodtips för att samla in meningsfullt medgivande från användare samt exempellogik för att skapa registreringar av hög kvalitet som optimerar igenkänningsprecisionen.  
 
 ## <a name="meaningful-consent"></a>Meningsfullt medgivande 
 
-Ett av huvud syftena med ett registrerings program för ansikts igenkänning är att ge användarna möjlighet att godkänna användningen av avbildningar av sitt ansikte för specifika behov, till exempel åtkomst till en Worksite. Eftersom tekniken för ansikts igenkänning kan uppfattas som insamling av känsliga person uppgifter, är det särskilt viktigt att be om medgivande på ett sätt som är både transparent och respectful. Medgivande är meningsfullt för användarna när de kan fatta det beslut som de tycker är bäst för dem.   
+Ett av de viktigaste syftena med ett registreringsprogram för ansiktsigenkänning är att ge användarna möjlighet att samtycka till användningen av bilder av deras ansikte för specifika ändamål, till exempel åtkomst till en arbetsplats. Eftersom tekniker för ansiktsigenkänning kan uppfattas som insamling av känsliga personuppgifter är det särskilt viktigt att be om medgivande på ett sätt som är både transparent och respekterat. Medgivande är meningsfullt för användarna när det ger dem möjlighet att fatta det beslut som de anser är bäst för dem.   
 
-Baserat på Microsoft User Research, Microsofts ansvariga AI-principer och [extern forskning](ftp://ftp.cs.washington.edu/tr/2000/12/UW-CSE-00-12-02.pdf)har vi funnit att godkännandet är meningsfullt när det ger följande till användare som registrerar sig i tekniken:
+Baserat på Microsofts användarforskning, Microsofts principer för ansvarsfull AI och extern forskning [har](ftp://ftp.cs.washington.edu/tr/2000/12/UW-CSE-00-12-02.pdf)vi upptäckt att medgivande är meningsfullt när det ger följande till användare som registrerar sig för tekniken:
 
-* Medvetenhet: användarna bör inte ha någon tvivel när de uppmanas att ange sina egna mallar eller registrera foton. 
-* Förståelse: användarna bör kunna beskriva sig korrekt i sina egna ord, vad de tillfrågas om, av vem, i vilken form och med vilka garantier. 
-* Valfrihet: användarna bör inte vara förändrade eller manipulerade när de väljer att godkänna och registrera sig i ansikts igenkänning. 
-* Kontroll: användare bör kunna återkalla sitt medgivande och ta bort sina data när som helst. 
+* Medvetenhet: Användarna bör utan tvekan behöva uppge sin ansiktsmall eller registrera foton. 
+* Förståelse: Användare bör kunna beskriva vad de efterfrågades för med egna ord, av vem, i vilket syfte och med vilka garantier. 
+* Valfrihet: Användarna ska inte känna sig skrivna eller manipulerade när de väljer om de ska godkänna och registrera sig för ansiktsigenkänning. 
+* Kontroll: Användarna bör kunna återkalla sitt medgivande och ta bort sina data när som helst. 
 
-Det här avsnittet innehåller rikt linjer för att utveckla ett registrerings program för ansikts igenkänning. Den här vägledningen har utvecklats baserat på Microsoft User Research i samband med registrering av personer i ansikts igenkänning för att skapa en post. Dessa rekommendationer kan därför inte gälla för alla lösningar för ansikts igenkänning. Den ansvarige användningen för Ansikts-API är beroende av det specifika sammanhanget där det är integrerat, så prioriteringen och tillämpningen av dessa rekommendationer bör anpassas till ditt scenario. 
+Det här avsnittet innehåller vägledning för att utveckla ett registreringsprogram för ansiktsigenkänning. Den här vägledningen har utvecklats baserat på Microsofts användarforskning när det gäller registrering av individer i ansiktsigenkänning för att skapa en post. Därför kanske dessa rekommendationer inte gäller för alla lösningar för ansiktsigenkänning. Ansvarig användning för ansikts-API är starkt beroende av den specifika kontext där det är integrerat, så prioriteringen och tillämpningen av dessa rekommendationer bör anpassas till ditt scenario. 
 
 > [!NOTE]
-> Det är ditt ansvar att justera ditt registrerings program med tillämpliga juridiska krav i din jurisdiktion och korrekt återspegla alla dina data insamlings-och bearbetnings metoder.
+> Det är ditt ansvar att anpassa ditt registreringsprogram till tillämpliga juridiska krav i din jurisdiktion och korrekt återspegla all insamling och bearbetning av data.
 
 ## <a name="application-development"></a>Programutveckling 
 
-Innan du skapar ett registrerings flöde bör du tänka på hur det program som du skapar kan upprätthålla det löfte du gör till användarna om hur deras data skyddas. Följande rekommendationer kan hjälpa dig att bygga en registrerings miljö som innehåller ansvariga metoder för att skydda personliga data, hantera användarens sekretess och se till att programmet är tillgängligt för alla användare.  
+Innan du utformar ett registreringsflöde bör du tänka på hur programmet du skapar kan upprätthålla de löften du ger användarna om hur deras data skyddas. Följande rekommendationer kan hjälpa dig att skapa en registreringsupplevelse som omfattar ansvarsfulla metoder för att skydda personliga data, hantera användarnas integritet och säkerställa att programmet är tillgängligt för alla användare.  
 
 |Kategori | Rekommendationer |
 |---|---|
-|Maskinvara | Ta hänsyn till kamera kvaliteten på registrerings enheten. |
-|Rekommenderade registrerings funktioner | Inkludera ett inloggnings steg med Multi-Factor Authentication.</br></br>Länka användar information, t. ex. ett alias eller ett identifierings nummer med sitt mall-ID från Ansikts-API (kallas person-ID). Den här mappningen är nödvändig för att hämta och hantera en användares registrering. Obs! person-ID bör behandlas som en hemlighet i programmet.</br></br>Konfigurera en automatiserad process för att ta bort alla registrerings data, inklusive ansikts-och registrerings foton av personer som inte längre är användare av ansikts igenkännings teknik, t. ex. tidigare anställda.</br></br>Undvik automatisk registrering, eftersom det inte ger användaren medvetenhet, förståelse, frihets alternativ eller kontroll som rekommenderas för att inhämta medgivande. </br></br>Be användare om behörighet att spara de avbildningar som används för registrering. Detta är användbart när det finns en modell uppdatering eftersom nya foton för registrering kommer att krävas för att registreras om i den nya modellen var 10: a månad. Om de ursprungliga bilderna inte sparas måste användarna gå igenom registreringen från början.</br></br>Tillåt användare att välja att inte spara foton i systemet. För att göra valet tydligare kan du lägga till en andra begäran-begäran för att spara dina foton för registrering. </br></br>Om foton har sparats skapar du en automatiserad process för att omregistrera alla användare när det finns en modell uppdatering. De som sparade sina registrerings foton behöver inte registrera sig själva igen. </br></br>Skapa en app-funktion som gör det möjligt för angivna administratörer att åsidosätta vissa kvalitets filter om en användare har problem med registreringen. |
-|Säkerhet | Cognitive Services följa [bästa praxis](../cognitive-services-virtual-networks.md?tabs=portal) för att kryptera användar data i vila och under överföring. Följande är ytterligare metoder som kan hjälpa dig att upprätthålla den säkerhet som du gör för användare under registrerings upplevelsen. </br></br>Vidta säkerhets åtgärder för att se till att ingen har åtkomst till person-ID vid något tillfälle under registreringen. Obs: PersonID bör behandlas som en hemlighet i registrerings systemet. </br></br>Använd [rollbaserad åtkomst kontroll](../../role-based-access-control/overview.md) med Cognitive Services. </br></br>Använd token-baserad autentisering och/eller signaturer för delad åtkomst (SAS) över nycklar och hemligheter för att få åtkomst till resurser som databaser. Genom att använda begär Anden eller SAS-token kan du ge begränsad åtkomst till data utan att kompromissa med dina konto nycklar och du kan ange en förfallo tid för token. </br></br>Lagra aldrig hemligheter, nycklar eller lösen ord i din app. |
-|Användarsekretess |Ange ett antal registrerings alternativ för att hantera olika sekretess frågor. Observera inte att personer använder sina personliga enheter för att registrera sig i ett system för ansikts igenkänning. </br></br>Tillåt att användare registrerar om, återkalla medgivande och ta bort data från registrerings programmet när som helst och av någon anledning. |
-|Tillgänglighet |Följ hjälpmedels standarder (till exempel [Ada](https://www.ada.gov/regs2010/2010ADAStandards/2010ADAstandards.htm) eller [W3C](https://www.w3.org/TR/WCAG21/)) för att se till att programmet kan användas av personer med mobilitet eller visualiseringar av visuella objekt. |
+|Maskinvara | Överväg registreringsenhetens kamerakvalitet. |
+|Rekommenderade registreringsfunktioner | Inkludera ett inloggningssteg med multifaktorautentisering.</br></br>Länka användarinformation som ett alias eller ett id-nummer med ansiktsmallens ID från ansikts-API:et (även kallat person-ID). Den här mappningen är nödvändig för att hämta och hantera en användares registrering. Obs! Person-ID ska behandlas som en hemlighet i programmet.</br></br>Konfigurera en automatiserad process för att ta bort alla registreringsdata, inklusive ansiktsmallar och registreringsfoton för personer som inte längre använder ansiktsigenkänningsteknik, till exempel tidigare anställda.</br></br>Undvik automatisk registrering eftersom det inte ger användaren den medvetenhet, förståelse, valfrihet eller kontroll som rekommenderas för att få medgivande. </br></br>Be användarna om behörighet att spara avbildningarna som används för registrering. Detta är användbart när det finns en modelluppdatering eftersom nya registreringsfoton måste registreras på nytt i den nya modellen ungefär var 10:e månad. Om de ursprungliga avbildningarna inte sparas måste användarna gå igenom registreringsprocessen från början.</br></br>Tillåt att användare avanmäler sig från att lagra foton i systemet. För att göra valet tydligare kan du lägga till en andra skärm för begäran om medgivande för att spara registreringsfotona. </br></br>Om fotona sparas skapar du en automatiserad process för att omregistrera alla användare när det finns en modelluppdatering. De som sparade sina registreringsfoton behöver inte registrera sig själva igen. </br></br>Skapa en appfunktion som gör att utsedda administratörer kan åsidosätta vissa kvalitetsfilter om en användare har problem med att registrera sig. |
+|Säkerhet | Cognitive Services [metodtips för](../cognitive-services-virtual-networks.md?tabs=portal) kryptering av användardata i vila och under överföring. Följande är ytterligare metoder som kan hjälpa till att upprätthålla de säkerhet utlovar du till användare under registreringsupplevelsen. </br></br>Vidta säkerhetsåtgärder för att säkerställa att ingen har åtkomst till person-ID:t vid något tillfälle under registreringen. Obs! PersonID ska behandlas som en hemlighet i registreringssystemet. </br></br>Använd [rollbaserad åtkomstkontroll med](../../role-based-access-control/overview.md) Cognitive Services. </br></br>Använd tokenbaserad autentisering och/eller signaturer för delad åtkomst (SAS) över nycklar och hemligheter för att få åtkomst till resurser som databaser. Genom att använda begärande- eller SAS-token kan du bevilja begränsad åtkomst till data utan att äventyra dina kontonycklar, och du kan ange en förfallotid för token. </br></br>Lagra aldrig hemligheter, nycklar eller lösenord i din app. |
+|Användarsekretess |Ange ett antal registreringsalternativ för att hantera olika sekretessnivåer. Be inte om att personer ska använda sina personliga enheter för att registrera sig i ett system för ansiktsigenkänning. </br></br>Tillåt att användare registrerar om, återkallar medgivande och tar bort data från registreringsprogrammet när som helst och av någon anledning. |
+|Tillgänglighet |Följ hjälpmedelsstandarderna (till exempel [ADA](https://www.ada.gov/regs2010/2010ADAStandards/2010ADAstandards.htm) eller [W3C)](https://www.w3.org/TR/WCAG21/)för att säkerställa att programmet kan användas av personer med nedsatt rörlighet eller syn. |
 
 ## <a name="next-steps"></a>Nästa steg  
 
-Följ guiden [skapa en app för registrering](build-enrollment-app.md) för att komma igång med en app för registrering av exempel. Anpassa den eller Skriv din egen app för att passa behoven i din produkt.
+Följ guiden [Skapa en registreringsapp för](build-enrollment-app.md) att komma igång med en exempelregistreringsapp. Anpassa den sedan eller skriv din egen app så att den passar din produkts behov.

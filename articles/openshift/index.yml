@@ -9,12 +9,12 @@ metadata:
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: d6c9d2ae5a2f91cd0c9c5b0b902b254ffcd8c8f8
-  ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+  ms.openlocfilehash: 25c96daa5bdebb07eb868a5e2d5b574e14e38d96
+  ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 04/15/2021
-  ms.locfileid: "107517886"
+  ms.lasthandoff: 04/16/2021
+  ms.locfileid: "107535609"
 landingContent:
 - title: Om Azure Red Hat OpenShift
   linkLists:
@@ -42,9 +42,11 @@ landingContent:
       url: dns-forwarding.md
     - text: Konfigurera ett inbyggt containerregister för Azure Red Hat OpenShift
       url: built-in-container-registry.md
-    - text: Distribuera ett program till Azure Red Hat OpenShift med Hjälp av OpenShift Serverless
+    - text: Distribuera ett program från källan
+      url: howto-deploy-with-s2i.md
+    - text: Distribuera ett program med OpenShift Serverless
       url: howto-deploy-with-serverless.md
-    - text: Distribuera ett Open Liberty-/WebSphere Liberty-program på ett Azure Red Hat OpenShift 4-kluster
+    - text: Distribuera ett OpenWebSphere/WebSphereSphere-program på ett Azure Red Hat OpenShift kluster
       url: howto-deploy-java-liberty-app.md
 - title: Referens
   linkLists:

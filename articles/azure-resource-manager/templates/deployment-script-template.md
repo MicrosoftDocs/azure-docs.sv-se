@@ -1,53 +1,53 @@
 ---
-title: Använda distributions skript i mallar | Microsoft Docs
-description: Använd distributions skript i Azure Resource Manager mallar.
+title: Använda distributionsskript i mallar | Microsoft Docs
+description: använda distributionsskript i Azure Resource Manager mallar.
 services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/15/2021
 ms.author: jgao
-ms.openlocfilehash: 3240cce34a6fa645986a58ab43b28ad38485e97b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d35deb978b3b60b73ac393b241471cb528817d35
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308973"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536967"
 ---
-# <a name="use-deployment-scripts-in-arm-templates"></a>Använda distributions skript i ARM-mallar
+# <a name="use-deployment-scripts-in-arm-templates"></a>Använda distributionsskript i ARM-mallar
 
-Lär dig hur du använder distributions skript i Azure Resource templates (ARM-mallar). Med en ny resurs typ som kallas `Microsoft.Resources/deploymentScripts` kan användare köra skript i mallar distributioner och granska körnings resultat. Dessa skript kan användas för att utföra anpassade steg som:
+Lär dig hur du använder distributionsskript i Azure-resursmallar (ARM-mallar). Med en ny resurstyp med `Microsoft.Resources/deploymentScripts` namnet kan användarna köra skript i malldistributioner och granska körningsresultaten. Dessa skript kan användas för att utföra anpassade steg, till exempel:
 
 - lägga till användare i en katalog
-- utför data Plans åtgärder, till exempel kopiera blobbar eller Dirigerings databas
-- Leta upp och validera en licens nyckel
-- skapa ett självsignerat certifikat
+- utföra dataplansåtgärder, till exempel kopiera blobar eller startdatabas
+- leta upp och verifiera en licensnyckel
+- skapa ett själv signerat certifikat
 - skapa ett objekt i Azure AD
-- Leta upp IP-adressblock från det anpassade systemet
+- leta upp IP-adressblock från ett anpassat system
 
-Fördelarna med distributions skript:
+Fördelarna med distributionsskriptet:
 
-- Enkelt att koda, använda och felsöka. Du kan utveckla distributions skript i dina favorit utvecklings miljöer. Skripten kan bäddas in i mallar eller i externa skriptfiler.
-- Du kan ange språk och plattform för skript. För närvarande stöds Azure PowerShell-och Azure CLI-distributions skript i Linux-miljön.
-- Tillåt att kommando rads argument skickas till skriptet.
-- Kan ange utdata för skript och skicka tillbaka dem till distributionen.
+- Lätt att koda, använda och felsöka. Du kan utveckla distributionsskript i dina favoritutvecklingsmiljöer. Skripten kan bäddas in i mallar eller i externa skriptfiler.
+- Du kan ange skriptspråk och plattform. För närvarande Azure PowerShell och Azure CLI-distributionsskript i Linux-miljön.
+- Tillåt att kommandoradsargumenten kan vidarebefordras till skriptet.
+- Kan ange skriptutdata och skicka dem tillbaka till distributionen.
 
-Distributions skript resursen är bara tillgänglig i de regioner där Azure Container instance är tillgängligt.  Se [resurs tillgänglighet för Azure Container instances i Azure-regioner](../../container-instances/container-instances-region-availability.md).
-
-> [!IMPORTANT]
-> Ett lagrings konto och en behållar instans krävs för skript körning och fel sökning. Du har möjlighet att ange ett befintligt lagrings konto, annars skapas lagrings kontot tillsammans med behållar instansen automatiskt av skript tjänsten. De två automatiskt skapade resurserna tas vanligt vis bort av skript tjänsten när distributions skript körningen blir i ett Terminal-tillstånd. Du debiteras för resurserna tills resurserna tas bort. Läs mer i avsnittet om hur du [säkerhetskopierar skript resurser](#clean-up-deployment-script-resources).
+Distributionsskriptresursen är endast tillgänglig i de regioner där Azure Container Instance är tillgängligt.  Se [Resurstillgänglighet för Azure Container Instances i Azure-regioner.](../../container-instances/container-instances-region-availability.md)
 
 > [!IMPORTANT]
-> DeploymentScripts Resource API version 2020-10-01 stöder [OnBehalfofTokens (OBO)](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md). Genom att använda OBO använder distributions skript tjänsten distributions huvudets token för att skapa de underliggande resurserna för att köra distributions skript, som innehåller Azure Container instance, Azure Storage-konto och roll tilldelningar för den hanterade identiteten. I äldre API-version används den hanterade identiteten för att skapa dessa resurser.
-> Omprövnings logik för Azure-inloggning är nu inbyggt i omslutnings skriptet. Om du beviljar behörigheter i samma mall där du kör distributions skript. Distributions skript tjänsten försöker logga in i 10 minuter med 10 sekunders tid tills tilldelningen av den hanterade identitets rollen replikeras.
+> Ett lagringskonto och en containerinstans krävs för skriptkörning och felsökning. Du kan ange ett befintligt lagringskonto, annars skapas lagringskontot tillsammans med containerinstansen automatiskt av skripttjänsten. De två automatiskt skapade resurserna tas vanligtvis bort av skripttjänsten när körningen av distributionsskriptet hamnar i ett terminaltillstånd. Du debiteras för resurserna tills resurserna tas bort. Mer information finns i Rensa [resurser för distributionsskript.](#clean-up-deployment-script-resources)
 
-## <a name="configure-the-minimum-permissions"></a>Konfigurera lägsta behörighet
+> [!IMPORTANT]
+> Resource API-versionen 2020-10-01 för deploymentScripts stöder [OnBehalfofTokens(OBO).](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md) Med hjälp av OBO använder tjänsten distributionsskript token för distributionshuvudkontot för att skapa de underliggande resurserna för att köra distributionsskript, inklusive Azure Container-instans, Azure Storage-konto och rolltilldelningar för den hanterade identiteten. I en äldre API-version används den hanterade identiteten för att skapa dessa resurser.
+> Omprövningslogiken för Azure-inloggning är nu inbyggd i omslutningsskriptet. Om du beviljar behörigheter i samma mall där du kör distributionsskript. Tjänsten för distributionsskript försöker logga in i 10 minuter med 10 sekunders intervall tills rolltilldelningen för hanterad identitet replikeras.
 
-För distributions skript-API version 2020-10-01 eller senare används distributions huvud namnet för att skapa underliggande resurser som krävs för att distributions skript resursen ska kunna köras – ett lagrings konto och en Azure Container instance. Om skriptet behöver autentisera till Azure och utföra Azure-/regionsspecifika åtgärder rekommenderar vi att du tillhandahåller skriptet med en användardefinierad hanterad identitet. Den hanterade identiteten måste ha den behörighet som krävs för att slutföra åtgärden i skriptet.
+## <a name="configure-the-minimum-permissions"></a>Konfigurera minsta behörighet
 
-Om du vill konfigurera behörigheterna för minsta behörighet måste du:
+För API-version 2020-10-01 eller senare för distributionsskriptet används distributionshuvudkontot för att skapa underliggande resurser som krävs för att distributionsskriptresursen ska kunna köras – ett lagringskonto och en Azure-containerinstans. Om skriptet behöver autentisera till Azure och utföra Azure-specifika åtgärder rekommenderar vi att du ger skriptet en användar tilldelad hanterad identitet. Den hanterade identiteten måste ha nödvändig åtkomst för att slutföra åtgärden i skriptet.
 
-- Tilldela en anpassad roll med följande egenskaper till distributionens huvud namn:
+För att konfigurera behörigheter med minsta behörighet behöver du:
+
+- Tilldela en anpassad roll med följande egenskaper till distributionshuvudnamn:
 
   ```json
   {
@@ -71,13 +71,13 @@ Om du vill konfigurera behörigheterna för minsta behörighet måste du:
   }
   ```
 
-  Om Azure Storage och Azure Container instance Resource providers inte har registrerats, måste du också lägga till `Microsoft.Storage/register/action` och `Microsoft.ContainerInstance/register/action` .
+  Om resursprovidern Azure Storage Azure Container Instance inte har registrerats måste du också lägga till `Microsoft.Storage/register/action` och `Microsoft.ContainerInstance/register/action` .
 
-- Om en hanterad identitet används, behöver distributions huvud kontot rollen **hanterad identitet** (en inbyggd roll) som tilldelas till den hanterade identitets resursen.
+- Om en hanterad identitet används måste distributionshuvudnamn ha rollen Hanterad **identitetsoperatör** (en inbyggd roll) tilldelad till den hanterade identitetsresursen.
 
 ## <a name="sample-templates"></a>Exempelmallar
 
-Följande JSON är ett exempel. Mer information finns i det senaste [schemat](/azure/templates/microsoft.resources/deploymentscripts).
+Följande JSON är ett exempel. Mer information finns i det senaste [mallschemat](/azure/templates/microsoft.resources/deploymentscripts).
 
 ```json
 {
@@ -129,63 +129,63 @@ Följande JSON är ett exempel. Mer information finns i det senaste [schemat](/a
 ```
 
 > [!NOTE]
-> Exemplet är i demonstrations syfte. Egenskaperna `scriptContent` och `primaryScriptUri` kan inte användas samtidigt i en mall.
+> Exemplet är i demonstrationssyfte. Egenskaperna och `scriptContent` `primaryScriptUri` kan inte samexistera i en mall.
 
 > [!NOTE]
-> _ScriptContent_ visar ett skript med flera rader.  Azure Portal-och Azure DevOps-pipelinen kan inte parsa ett distributions skript med flera rader. Du kan antingen koppla samman PowerShell-kommandona (genom att använda semikolon eller _\\ r \\ n_ eller _\\ n_) till en rad, eller använda `primaryScriptUri` egenskapen med en extern skript fil. Det finns många kostnads fria Escape/unescape-verktyg för JSON-strängar tillgängliga. Till exempel [https://www.freeformatter.com/json-escape.html](https://www.freeformatter.com/json-escape.html).
+> _ScriptContent visar_ ett skript med flera rader.  Pipelinen Azure Portal Azure DevOps kan inte parsa ett distributionsskript med flera rader. Du kan antingen länka PowerShell-kommandona (med semikolon eller _\\ r \\ n_ eller _\\ n_) till en rad eller använda egenskapen med `primaryScriptUri` en extern skriptfil. Det finns många kostnadsfria verktyg för JSON-sträng escape/unescape. Till exempel [https://www.freeformatter.com/json-escape.html](https://www.freeformatter.com/json-escape.html).
 
-Information om egenskaps värde:
+Information om egenskapsvärde:
 
-- `identity`: För distributions skript-API version 2020-10-01 eller senare är en användardefinierad hanterad identitet valfri om du inte behöver utföra några Azure-/regionsspecifika åtgärder i skriptet.  För API-versionen 2019-10-01 – för hands version krävs en hanterad identitet som distributions skript tjänsten använder den för att köra skripten. För närvarande stöds endast användardefinierad hanterad identitet.
-- `kind`: Ange typ av skript. För närvarande stöds Azure PowerShell-och Azure CLI-skript. Värdena är **AzurePowerShell** och **AzureCLI**.
-- `forceUpdateTag`: Om du ändrar det här värdet mellan mall distributioner tvingas distributions skriptet att köras igen. Om du använder `newGuid()` `utcNow()` funktionerna eller kan båda funktionerna bara användas i standardvärdet för en parameter. Mer information finns i [Kör skript mer än en gång](#run-script-more-than-once).
-- `containerSettings`: Ange inställningarna för att anpassa Azure Container instance. Distributions skriptet kräver en ny Azure Container instance. Du kan inte ange en befintlig Azure Container instance. Du kan dock anpassa behållar gruppens namn genom att använda `containerGroupName` . Om inget anges skapas grupp namnet automatiskt.
-- `storageAccountSettings`: Ange inställningarna för att använda ett befintligt lagrings konto. Om `storageAccountName` inte anges skapas ett lagrings konto automatiskt. Se [Använd ett befintligt lagrings konto](#use-existing-storage-account).
-- `azPowerShellVersion`/`azCliVersion`: Ange den version av modulen som ska användas. Se en lista över [Azure PowerShell-versioner som stöds](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Se en lista över [Azure CLI-versioner som stöds](https://mcr.microsoft.com/v2/azure-cli/tags/list).
+- `identity`: För API-version 2020-10-01 eller senare är en användar tilldelad hanterad identitet valfri såvida du inte behöver utföra azure-specifika åtgärder i skriptet.  För API-versionen 2019-10-01-preview krävs en hanterad identitet eftersom tjänsten för distributionsskript använder den för att köra skripten. När identitetsegenskapen anges anropar `Connect-AzAccount -Identity` skripttjänsten innan användarskriptet anropas. För närvarande stöds endast användar tilldelad hanterad identitet. Om du vill logga in med en annan identitet kan du [anropa Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) i skriptet.
+- `kind`: Ange typ av skript. För närvarande Azure PowerShell och Azure CLI-skript. Värdena är **AzurePowerShell** och **AzureCLI.**
+- `forceUpdateTag`: Om du ändrar det här värdet mellan malldistributioner tvingar du distributionsskriptet att köra om. Om du använder `newGuid()` funktionerna eller kan båda funktionerna endast användas i `utcNow()` standardvärdet för en parameter. Mer information finns i Köra [skript mer än en gång.](#run-script-more-than-once)
+- `containerSettings`: Ange inställningarna för att anpassa Azure Container Instance. Distributionsskriptet kräver en ny Azure Container Instance. Du kan inte ange en befintlig Azure Container Instance. Du kan dock anpassa namnet på containergruppen med hjälp av `containerGroupName` . Om inget anges genereras gruppnamnet automatiskt.
+- `storageAccountSettings`: Ange inställningarna för att använda ett befintligt lagringskonto. Om `storageAccountName` inte anges skapas ett lagringskonto automatiskt. Se [Använda ett befintligt lagringskonto.](#use-existing-storage-account)
+- `azPowerShellVersion`/`azCliVersion`: Ange modulversionen som ska användas. Se en lista över [versioner Azure PowerShell stöds.](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list) Se en lista över [Azure CLI-versioner som stöds.](https://mcr.microsoft.com/v2/azure-cli/tags/list)
 
   >[!IMPORTANT]
-  > Distributions skriptet använder de tillgängliga CLI-avbildningarna från Microsoft Container Registry (MCR). Det tar ungefär en månad att certifiera en CLI-avbildning för distributions skript. Använd inte de CLI-versioner som släpptes inom 30 dagar. För att hitta versions datumen för avbildningarna, se [versions information för Azure CLI](/cli/azure/release-notes-azure-cli). Om en version som inte stöds används visas de versioner som stöds i fel meddelandet.
+  > Distributionsskriptet använder tillgängliga CLI-avbildningar från Microsoft Container Registry (MCR). Det tar ungefär en månad att certifiera en CLI-avbildning för distributionsskript. Använd inte CLI-versionerna som släpptes inom 30 dagar. Information om hur du hittar lanseringsdatumen för avbildningarna finns [i Azure CLI:s viktiga information.](/cli/azure/release-notes-azure-cli) Om en version som inte stöds används visas de versioner som stöds i felmeddelandet.
 
-- `arguments`: Ange parameter värden. Värdena avgränsas med blank steg.
+- `arguments`: Ange parametervärdena. Värdena avgränsas med blanksteg.
 
-  Distributions skript delar argumenten i en sträng mat ris genom att anropa system anropet [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) . Det här steget är nödvändigt eftersom argumenten skickas som en [kommando egenskap](/rest/api/container-instances/containergroups/createorupdate#containerexec) till Azure Container instance, och kommando egenskapen är en sträng mat ris.
+  Distributionsskript delar upp argumenten i en matris med strängar genom att anropa system-anropet [CommandLineToArgvW.](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) Det här steget är nödvändigt eftersom [](/rest/api/container-instances/containergroups/createorupdate#containerexec) argumenten skickas som en kommandoegenskap till Azure Container Instance och kommandoegenskapen är en strängmatris.
 
-  Om argumenten innehåller Escaped tecken, använder du [JsonEscaper](https://www.jsonescaper.com/) för att dubbla escape-tecknen. Klistra in den ursprungliga undantagna strängen i verktyget och välj sedan **Escape**.  Verktyget matar ut en dubbelt undantagen sträng. Till exempel är argumentet i föregående exempel-mall `-name \"John Dole\"` . Den undantagna strängen är `-name \\\"John Dole\\\"` .
+  Om argumenten innehåller tecken som inte är förrymda använder [du JsonEscaper](https://www.jsonescaper.com/) för att dubbla de tecken som har rymts. Klistra in den ursprungliga escape-strängen i verktyget och välj sedan **Escape**.  Verktyget matar ut en dubbel utrymd sträng. I den föregående exempelmallen är argumentet till exempel `-name \"John Dole\"` . Den utrymda strängen är `-name \\\"John Dole\\\"` .
 
-  För att skicka en ARM-mallparameter av typen Object som ett argument, konvertera objektet till en sträng med hjälp av funktionen [String ()](./template-functions-string.md#string) och Använd sedan funktionen [replace ()](./template-functions-string.md#replace) för att ersätta någon `\"` i `\\\"` . Exempel:
+  Om du vill skicka en ARM-mallparameter av typen objekt som ett argument konverterar du objektet till en sträng med hjälp av [funktionen string()](./template-functions-string.md#string) och använder sedan [funktionen replace()](./template-functions-string.md#replace) för att ersätta `\"` till `\\\"` . Exempel:
 
   ```json
   replace(string(parameters('tables')), '\"', '\\\"')
   ```
 
-  Mer information finns i [exempel mal len](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json).
+  Mer information finns i [exempelmallen](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json).
 
-- `environmentVariables`: Ange de miljövariabler som ska överföras till skriptet. Mer information finns i [utveckla distributions skript](#develop-deployment-scripts).
-- `scriptContent`: Ange skript innehållet. Använd i stället om du vill köra ett externt skript `primaryScriptUri` . Exempel finns i [använda infogat skript](#use-inline-scripts) och [Använd externt skript](#use-external-scripts).
-- `primaryScriptUri`: Ange en offentligt tillgänglig URL till det primära distributions skriptet med fil namns tillägg som stöds. Mer information finns i [använda externa skript](#use-external-scripts).
-- `supportingScriptUris`: Ange en matris med offentligt tillgängliga URL: er till stöd för filer som anropas i antingen `scriptContent` eller `primaryScriptUri` . Mer information finns i [använda externa skript](#use-external-scripts).
-- `timeout`: Ange den högsta tillåtna körnings tiden för skript som anges i [ISO 8601-formatet](https://en.wikipedia.org/wiki/ISO_8601). Standardvärdet är **P1D**.
-- `cleanupPreference`. Ange inställningen för att rensa distributions resurser när skript körningen blir i ett Terminal-tillstånd. Standardinställningen är **Always**, vilket innebär att resurserna tas bort trots att terminalens tillstånd (lyckades, misslyckades, avbröts). Mer information finns i [Rensa distribution skript resurser](#clean-up-deployment-script-resources).
-- `retentionInterval`: Ange med vilket intervall som tjänsten ska behålla distributions skript resurserna när distributions skript körningen har nått ett terminalfönster. Distributions skript resurserna tas bort när denna varaktighet upphör att gälla. Varaktigheten baseras på [ISO 8601-mönstret](https://en.wikipedia.org/wiki/ISO_8601). Kvarhållningsintervallet är mellan 1 och 26 timmar (PT26H). Den här egenskapen används när `cleanupPreference` är inställd på **OnExpiration**. Mer information finns i [Rensa distribution skript resurser](#clean-up-deployment-script-resources).
+- `environmentVariables`: Ange de miljövariabler som ska överföras till skriptet. Mer information finns i [Utveckla distributionsskript.](#develop-deployment-scripts)
+- `scriptContent`: Ange skriptinnehållet. Om du vill köra ett externt skript använder du `primaryScriptUri` i stället. Exempel finns i [Använda infogade skript och](#use-inline-scripts) Använd externt [skript.](#use-external-scripts)
+- `primaryScriptUri`: Ange en offentligt tillgänglig URL till det primära distributionsskriptet med filnamnstillägg som stöds. Mer information finns i [Använda externa skript.](#use-external-scripts)
+- `supportingScriptUris`: Ange en matris med offentligt tillgängliga URL:er till stödfiler som anropas i antingen `scriptContent` eller `primaryScriptUri` . Mer information finns i [Använda externa skript.](#use-external-scripts)
+- `timeout`: Ange den högsta tillåtna skriptkörningstiden som anges i [ISO 8601-formatet](https://en.wikipedia.org/wiki/ISO_8601). Standardvärdet är **P1D**.
+- `cleanupPreference`. Ange inställningen för att rensa distributionsresurser när skriptkörningen hamnar i ett terminaltillstånd. Standardinställningen är **Alltid**, vilket innebär att resurserna tas bort trots terminaltillståndet (lyckades, misslyckades, avbröts). Mer information finns i Rensa [resurser för distributionsskript.](#clean-up-deployment-script-resources)
+- `retentionInterval`: Ange intervallet för vilket tjänsten behåller distributionsskriptresurserna när körningen av distributionsskriptet når ett terminaltillstånd. Resurser för distributionsskript tas bort när den här varaktigheten upphör att gälla. Varaktigheten baseras på [ISO 8601-mönstret](https://en.wikipedia.org/wiki/ISO_8601). Kvarhållningsintervallet är mellan 1 och 26 timmar (PT26H). Den här egenskapen används när `cleanupPreference` är inställt **på OnExpiration**. Mer information finns i Rensa [resurser för distributionsskript.](#clean-up-deployment-script-resources)
 
 ### <a name="additional-samples"></a>Ytterligare exempel
 
-- [Exempel 1](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json): skapa ett nyckel valv och Använd distributions skriptet för att tilldela ett certifikat till nyckel valvet.
-- [Exempel 2](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-subscription.json): skapa en resurs grupp på prenumerations nivån, skapa ett nyckel valv i resurs gruppen och Använd sedan distributions skriptet för att tilldela ett certifikat till nyckel valvet.
-- [Exempel 3](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json): skapa en användardefinierad hanterad identitet, tilldela deltagar rollen till identiteten på resurs grupps nivå, skapa ett nyckel valv och Använd sedan distributions skriptet för att tilldela ett certifikat till nyckel valvet.
+- [Exempel 1:](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)Skapa ett nyckelvalv och använd distributionsskript för att tilldela ett certifikat till nyckelvalvet.
+- [Exempel 2:](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-subscription.json)Skapa en resursgrupp på prenumerationsnivå, skapa ett nyckelvalv i resursgruppen och använd sedan distributionsskriptet för att tilldela ett certifikat till nyckelvalvet.
+- [Exempel 3:](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json)Skapa en användar tilldelad hanterad identitet, tilldela deltagarrollen till identiteten på resursgruppsnivå, skapa ett nyckelvalv och använd sedan distributionsskript för att tilldela ett certifikat till nyckelvalvet.
 
-## <a name="use-inline-scripts"></a>Använd infogade skript
+## <a name="use-inline-scripts"></a>Använda infogade skript
 
-Följande mall har en resurs definierad med `Microsoft.Resources/deploymentScripts` typen. Den markerade delen är det infogade skriptet.
+Följande mall har en resurs som definierats med `Microsoft.Resources/deploymentScripts` typen . Den markerade delen är det infogade skriptet.
 
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-44" highlight="24-30":::
 
 > [!NOTE]
-> Eftersom de infogade distributions skripten omges av dubbla citat tecken måste strängarna i distributions skripten undantas genom att använda ett omvänt snedstreck (**&#92;**) eller omges av enkla citat tecken. Du kan också överväga att använda sträng ersättning som det visas i föregående JSON-exempel.
+> Eftersom de infogade distributionsskripten omges av dubbla citattecken måste strängarna i distributionsskripten vara omslutna med ett omsnedstreck (**&#92;**) eller omges av enkla citattecken. Du kan också överväga att använda strängersättning som det visas i föregående JSON-exempel.
 
-Skriptet tar en parameter och matar ut parametervärdet. `DeploymentScriptOutputs` används för att lagra utdata. I avsnittet utdata `value` visar raden hur du kommer åt de lagrade värdena. `Write-Output` används för fel söknings syfte. Information om hur du kommer åt utdatafilen finns i [övervaka och felsöka distributions skript](#monitor-and-troubleshoot-deployment-scripts). För egenskaps beskrivningar, se [exempel-mallar](#sample-templates).
+Skriptet tar en parameter och matar ut parametervärdet. `DeploymentScriptOutputs` används för att lagra utdata. I avsnittet outputs (utdata) `value` visar raden hur du kommer åt de lagrade värdena. `Write-Output` används för felsökning. Information om hur du kommer åt utdatafilen finns i [Övervaka och felsöka distributionsskript.](#monitor-and-troubleshoot-deployment-scripts) Egenskapsbeskrivningarna finns i [Exempelmallar](#sample-templates).
 
-Om du vill köra skriptet väljer du **prova** att öppna Cloud Shell och klistrar in följande kod i rutan Shell.
+Om du vill köra skriptet **väljer du Prova** för att öppna Cloud Shell och klistrar sedan in följande kod i gränssnittsfönstret.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group to be created"
@@ -200,25 +200,25 @@ Write-Host "Press [ENTER] to continue ..."
 
 Utdata ser ut så här:
 
-![Distributions skript Hello World-utdata i Resource Manager-mall](./media/deployment-script-template/resource-manager-template-deployment-script-helloworld-output.png)
+![Resource Manager hello world-utdata för malldistributionsskriptet](./media/deployment-script-template/resource-manager-template-deployment-script-helloworld-output.png)
 
-## <a name="use-external-scripts"></a>Använd externa skript
+## <a name="use-external-scripts"></a>Använda externa skript
 
-Förutom infogade skript kan du också använda externa skriptfiler. Endast primära PowerShell-skript med fil namns tillägget _ps1_ stöds. För CLI-skript kan primära skript ha alla tillägg (eller utan tillägg), så länge skripten är giltiga bash-skript. Om du vill använda externa skriptfiler ersätter du `scriptContent` med `primaryScriptUri` . Exempel:
+Förutom infogade skript kan du även använda externa skriptfiler. Endast primära PowerShell-skript med _filtillägget ps1_ stöds. För CLI-skript kan de primära skripten ha alla tillägg (eller utan ett tillägg), så länge skripten är giltiga bash-skript. Om du vill använda externa skriptfiler ersätter du `scriptContent` med `primaryScriptUri` . Exempel:
 
 ```json
 "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
 ```
 
-Mer information finns i [exempel mal len](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json).
+Mer information finns i [exempelmallen](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json).
 
-De externa skriptfilerna måste vara tillgängliga. Om du vill skydda skriptfilerna som lagras i Azure Storage-konton skapar du en SAS-token och inkluderar den i URI: n för mallen. Ange förfallo tid för att tillåta tillräckligt med tid för att slutföra distributionen. Mer information finns i [distribuera privat arm-mall med SAS-token](./secure-template-with-sas-token.md).
+De externa skriptfilerna måste vara tillgängliga. Om du vill skydda skriptfiler som lagras i Azure Storage-konton genererar du en SAS-token och inkluderar den i mallens URI. Ange förfallotiden så att det finns tillräckligt med tid för att slutföra distributionen. Mer information finns i Distribuera [privat ARM-mall med SAS-token](./secure-template-with-sas-token.md).
 
-Du ansvarar för att säkerställa integriteten för skript som refereras till av distributions skriptet, antingen `primaryScriptUri` eller `supportingScriptUris` . Referera endast till skript som du litar på.
+Du ansvarar för att säkerställa integriteten för skripten som distributionsskriptet refererar till, antingen `primaryScriptUri` eller `supportingScriptUris` . Referera endast till skript som du litar på.
 
-## <a name="use-supporting-scripts"></a>Använda stöd skript
+## <a name="use-supporting-scripts"></a>Använda stödskript
 
-Du kan separera komplicerade logiker till en eller flera stödfiler. Med `supportingScriptUris` egenskapen kan du ange en matris med URI: er till de stödda skriptfilerna vid behov:
+Du kan separera komplicerad logik i en eller flera stödskriptfiler. Med `supportingScriptUris` egenskapen kan du ange en matris med URI:er till stödskriptfilerna om det behövs:
 
 ```json
 "scriptContent": "
@@ -232,17 +232,17 @@ Du kan separera komplicerade logiker till en eller flera stödfiler. Med `suppor
 ],
 ```
 
-Stöd för skriptfiler kan anropas från både infogade skript och primära skriptfiler. Stöd för skriptfiler har inga begränsningar för fil namns tillägget.
+Stödskriptfiler kan anropas från både infogade skript och primära skriptfiler. Stödskriptfiler har inga begränsningar för filnamnstillägget.
 
-De stödfiler som kopieras kopieras till `azscripts/azscriptinput` vid körningen. Använd relativ sökväg för att referera till stödjande filer från infogade skript och primära skriptfiler.
+Stödfilerna kopieras `azscripts/azscriptinput` till vid körningen. Använd relativ sökväg för att referera till stödfilerna från infogade skript och primära skriptfiler.
 
 ## <a name="work-with-outputs-from-powershell-script"></a>Arbeta med utdata från PowerShell-skript
 
-Följande mall visar hur du överför värden mellan två `deploymentScripts` resurser:
+Följande mall visar hur du skickar värden mellan två `deploymentScripts` resurser:
 
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-68" highlight="30-31,50":::
 
-I den första resursen definierar du en variabel som kallas `$DeploymentScriptOutputs` och använder den för att lagra värdena för utdata. Använd följande för att få åtkomst till resultatvärdet från en annan resurs i mallen:
+I den första resursen definierar du en variabel med namnet `$DeploymentScriptOutputs` och använder den för att lagra utdatavärdena. Om du vill komma åt utdatavärdet från en annan resurs i mallen använder du:
 
 ```json
 reference('<ResourceName>').outputs.text
@@ -250,37 +250,37 @@ reference('<ResourceName>').outputs.text
 
 ## <a name="work-with-outputs-from-cli-script"></a>Arbeta med utdata från CLI-skript
 
-Det skiljer sig från PowerShell-distributions skriptet, CLI/bash-stöd ger inte en gemensam variabel för att lagra skript utdata, i stället finns det en miljö variabel som heter och `AZ_SCRIPTS_OUTPUT_PATH` lagrar platsen där filen med skriptets utdata finns. Om ett distributions skript körs från en Resource Manager-mall, ställs den här miljövariabeln in automatiskt åt dig av bash-gränssnittet.
+Till skillnad från PowerShell-distributionsskriptet exponerar INTE CLI/bash-stöd en gemensam variabel för att lagra skriptutdata. I stället finns det en miljövariabel med namnet som lagrar den plats där skriptets utdatafil `AZ_SCRIPTS_OUTPUT_PATH` finns. Om ett distributionsskript körs från en Resource Manager mall anges den här miljövariabeln automatiskt åt dig av Bash-gränssnittet. Värdet för `AZ_SCRIPTS_OUTPUT_PATH` är */mnt/azscripts/azscriptoutput/scriptoutputs.jspå*.
 
-Utdata för distributions skript måste sparas på `AZ_SCRIPTS_OUTPUT_PATH` platsen och utmatningarna måste vara ett giltigt JSON-String-objekt. Filens innehåll måste sparas som ett nyckel/värde-par. Till exempel lagras en sträng mat ris som `{ "MyResult": [ "foo", "bar"] }` .  Att lagra bara mat ris resultatet är till exempel `[ "foo", "bar" ]` ogiltigt.
+Utdata från distributionsskriptet måste sparas på `AZ_SCRIPTS_OUTPUT_PATH` platsen och utdata måste vara ett giltigt JSON-strängobjekt. Innehållet i filen måste sparas som ett nyckel/värde-par. Till exempel lagras en matris med strängar som `{ "MyResult": [ "foo", "bar"] }` .  Att bara lagra matrisresultat, till exempel `[ "foo", "bar" ]` , är ogiltigt.
 
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json" range="1-44" highlight="32":::
 
-[JQ](https://stedolan.github.io/jq/) används i föregående exempel. Den levereras med behållar avbildningarna. Se [Konfigurera utvecklings miljö](#configure-development-environment).
+[jq](https://stedolan.github.io/jq/) används i föregående exempel. Den levereras med containeravbildningarna. Se [Konfigurera utvecklingsmiljön.](#configure-development-environment)
 
-## <a name="use-existing-storage-account"></a>Använd befintligt lagrings konto
+## <a name="use-existing-storage-account"></a>Använda ett befintligt lagringskonto
 
-Ett lagrings konto och en behållar instans krävs för skript körning och fel sökning. Du har möjlighet att ange ett befintligt lagrings konto, annars skapas lagrings kontot tillsammans med behållar instansen automatiskt av skript tjänsten. Kraven för att använda ett befintligt lagrings konto:
+Ett lagringskonto och en containerinstans krävs för skriptkörning och felsökning. Du har möjlighet att ange ett befintligt lagringskonto, annars skapas lagringskontot tillsammans med containerinstansen automatiskt av skripttjänsten. Kraven för att använda ett befintligt lagringskonto:
 
-- De typer av lagrings konton som stöds är:
+- Typer av lagringskonto som stöds är:
 
     | SKU             | Typ som stöds     |
     |-----------------|--------------------|
     | Premium_LRS     | FileStorage        |
     | Premium_ZRS     | FileStorage        |
-    | Standard_GRS    | Lagring, StorageV2 |
+    | Standard_GRS    | Storage, StorageV2 |
     | Standard_GZRS   | StorageV2          |
-    | Standard_LRS    | Lagring, StorageV2 |
-    | Standard_RAGRS  | Lagring, StorageV2 |
+    | Standard_LRS    | Storage, StorageV2 |
+    | Standard_RAGRS  | Storage, StorageV2 |
     | Standard_RAGZRS | StorageV2          |
     | Standard_ZRS    | StorageV2          |
 
-    Dessa kombinationer stöder fil resurser. Mer information finns i [skapa en Azure-filresurs](../../storage/files/storage-how-to-create-file-share.md) och [typer av lagrings konton](../../storage/common/storage-account-overview.md).
+    Dessa kombinationer stöder filresurser. Mer information finns i Skapa [en Azure-filresurs och](../../storage/files/storage-how-to-create-file-share.md) [Typer av lagringskonton.](../../storage/common/storage-account-overview.md)
 
-- Brand Väggs regler för lagrings konto stöds inte än. Mer information finns i [Konfigurera Azure Storage-brandväggar och virtuella nätverk](../../storage/common/storage-network-security.md).
-- Distributions huvud kontot måste ha behörighet att hantera lagrings kontot, som innehåller läsa, skapa, ta bort fil resurser.
+- Brandväggsregler för lagringskonto stöds inte ännu. Mer information finns i [Konfigurera Azure Storage-brandväggar och virtuella nätverk](../../storage/common/storage-network-security.md).
+- Distributionshuvudnamn måste ha behörighet att hantera lagringskontot, vilket innefattar filresurser för att läsa, skapa och ta bort.
 
-Om du vill ange ett befintligt lagrings konto lägger du till följande JSON till egenskaps elementet för `Microsoft.Resources/deploymentScripts` :
+Om du vill ange ett befintligt lagringskonto lägger du till följande JSON i egenskapselementet i `Microsoft.Resources/deploymentScripts` :
 
 ```json
 "storageAccountSettings": {
@@ -289,8 +289,8 @@ Om du vill ange ett befintligt lagrings konto lägger du till följande JSON til
 },
 ```
 
-- `storageAccountName`: Ange namnet på lagrings kontot.
-- `storageAccountKey`: Ange en av lagrings konto nycklarna. Du kan använda funktionen [listnycklar ()](./template-functions-resource.md#listkeys) för att hämta nyckeln. Exempel:
+- `storageAccountName`: ange namnet på lagringskontot.
+- `storageAccountKey`: ange en av lagringskontonycklarna. Du kan använda funktionen [listKeys()](./template-functions-resource.md#listkeys) för att hämta nyckeln. Exempel:
 
     ```json
     "storageAccountSettings": {
@@ -299,54 +299,74 @@ Om du vill ange ett befintligt lagrings konto lägger du till följande JSON til
     }
     ```
 
-Se [exempel på mallar](#sample-templates) för ett komplett `Microsoft.Resources/deploymentScripts` definitions exempel.
+Se [Exempelmallar](#sample-templates) för ett fullständigt `Microsoft.Resources/deploymentScripts` definitionsexempel.
 
-När ett befintligt lagrings konto används skapar skript tjänsten en fil resurs med ett unikt namn. Se [Rensa distributions skript resurser](#clean-up-deployment-script-resources) för hur skript tjänsten rensar fil resursen.
+När ett befintligt lagringskonto används skapar skripttjänsten en filresurs med ett unikt namn. Se [Rensa resurser för distributionsskript](#clean-up-deployment-script-resources) för hur skripttjänsten rensar filresursen.
 
-## <a name="develop-deployment-scripts"></a>Utveckla distributions skript
+## <a name="develop-deployment-scripts"></a>Utveckla distributionsskript
 
 ### <a name="handle-non-terminating-errors"></a>Hantera icke-avslutande fel
 
-Du kan styra hur PowerShell svarar på icke-avslutande fel genom att använda `$ErrorActionPreference` variabeln i distributions skriptet. Om variabeln inte anges i distributions skriptet använder skript tjänsten standardvärdet Continue ( **Fortsätt**).
+Du kan styra hur PowerShell svarar på icke-avslutande fel med hjälp av `$ErrorActionPreference` variabeln i distributionsskriptet. Om variabeln inte har angetts i distributionsskriptet använder skripttjänsten standardvärdet **Fortsätt.**
 
-Skript tjänsten anger resurs etablerings statusen till **misslyckades** när skriptet påträffar ett fel trots inställningen `$ErrorActionPreference` .
+Skripttjänsten anger resursetableringstillståndet **till Failed** (Misslyckades) när skriptet påträffar ett fel trots inställningen `$ErrorActionPreference` .
 
-### <a name="pass-secured-strings-to-deployment-script"></a>Skicka skyddade strängar till distributions skript
+### <a name="use-environment-variables"></a>Använda miljövariabler
 
-Genom att ställa in miljövariabler (EnvironmentVariable) i behållar instanser kan du tillhandahålla dynamisk konfiguration av programmet eller skriptet som körs av behållaren. Distributions skriptet hanterar icke-skyddade och skyddade miljövariabler på samma sätt som Azure Container instance. Mer information finns i [Ange miljövariabler i container instances](../../container-instances/container-instances-environment-variables.md#secure-values). Ett exempel finns i [exempel på mallar](#sample-templates).
+Distributionsskriptet använder dessa miljövariabler:
 
-Den högsta tillåtna storleken för miljövariabler är 64 KB.
+|Miljövariabel|Standardvärde|Systemreserverade|
+|--------------------|-------------|---------------|
+|AZ_SCRIPTS_AZURE_ENVIRONMENT|AzureCloud|N|
+|AZ_SCRIPTS_CLEANUP_PREFERENCE|OnExpiration|N|
+|AZ_SCRIPTS_OUTPUT_PATH|<AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY>/<AZ_SCRIPTS_PATH_SCRIPT_OUTPUT_FILE_NAME>|Y|
+|AZ_SCRIPTS_PATH_INPUT_DIRECTORY|/mnt/azscripts/azscriptinput|Y|
+|AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY|/mnt/azscripts/azscriptoutput|Y|
+|AZ_SCRIPTS_PATH_USER_SCRIPT_FILE_NAME|Azure PowerShell: userscript.ps1; Azure CLI: userscript.sh|Y|
+|AZ_SCRIPTS_PATH_PRIMARY_SCRIPT_URI_FILE_NAME|primaryscripturi.config|Y|
+|AZ_SCRIPTS_PATH_SUPPORTING_SCRIPT_URI_FILE_NAME|supportingscripturi.config|Y|
+|AZ_SCRIPTS_PATH_SCRIPT_OUTPUT_FILE_NAME|scriptoutputs.jspå|Y|
+|AZ_SCRIPTS_PATH_EXECUTION_RESULTS_FILE_NAME|executionresult.jspå|Y|
+|AZ_SCRIPTS_USER_ASSIGNED_IDENTITY|/subscriptions/|N|
 
-## <a name="monitor-and-troubleshoot-deployment-scripts"></a>Övervaka och felsöka distributions skript
+Mer information om hur du använder `AZ_SCRIPTS_OUTPUT_PATH` finns i Arbeta med [utdata från CLI-skript](#work-with-outputs-from-cli-script).
 
-Skript tjänsten skapar ett [lagrings konto](../../storage/common/storage-account-overview.md) (om du inte anger ett befintligt lagrings konto) och en [behållar instans](../../container-instances/container-instances-overview.md) för skript körning. Om dessa resurser skapas automatiskt av skript tjänsten, har båda resurserna `azscripts` suffixet i resurs namnen.
+### <a name="pass-secured-strings-to-deployment-script"></a>Skicka skyddade strängar till distributionsskriptet
 
-![Distributions skript resurs namn för Resource Manager-mall](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
+Genom att ange miljövariabler (EnvironmentVariable) i dina containerinstanser kan du tillhandahålla dynamisk konfiguration av programmet eller skriptet som körs av containern. Distributionsskriptet hanterar icke-skyddade och skyddade miljövariabler på samma sätt som Azure Container Instance. Mer information finns i [Ange miljövariabler i containerinstanser](../../container-instances/container-instances-environment-variables.md#secure-values). Ett exempel finns i [Exempelmallar](#sample-templates).
 
-Användar skriptet, körnings resultaten och STDOUT-filen lagras i lagrings kontots fil resurser. Det finns en mapp som heter `azscripts` . I mappen finns det två fler mappar för indata och utdatafiler: `azscriptinput` och `azscriptoutput` .
+Den maximala tillåtna storleken för miljövariabler är 64 KB.
 
-Mappen utdata innehåller en _executionresult.jspå_ och skript utdatafilen. Du kan se fel meddelandet för skript körning i _executionresult.jspå_. Utdatafilen skapas endast när skriptet har körts. Mappen indata innehåller en system PowerShell-skriptfil och skript filen för användar distribution. Du kan ersätta skript filen för användar distribution med en ändrad, och köra distributions skriptet på nytt från Azure Container instance.
+## <a name="monitor-and-troubleshoot-deployment-scripts"></a>Övervaka och felsöka distributionsskript
+
+Skripttjänsten skapar ett [lagringskonto](../../storage/common/storage-account-overview.md) (om du inte anger ett befintligt lagringskonto) och en [containerinstans för](../../container-instances/container-instances-overview.md) skriptkörning. Om dessa resurser skapas automatiskt av skripttjänsten har båda resurserna `azscripts` suffixet i resursnamnen.
+
+![Resource Manager resursnamn för malldistributionsskript](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
+
+Användarskriptet, körningsresultaten och stdout-filen lagras i filresurser för lagringskontot. Det finns en mapp med namnet `azscripts` . I mappen finns det ytterligare två mappar för indata- och utdatafilerna: `azscriptinput` och `azscriptoutput` .
+
+Utdatamappen innehåller _enexecutionresult.jspå_ och skriptets utdatafil. Du kan se felmeddelandet för skriptkörning i _executionresult.jspå_. Utdatafilen skapas bara när skriptet har körts. Indatamappen innehåller en PowerShell-systemskriptfil och skriptfilerna för användardistribution. Du kan ersätta skriptfilen för användardistribution med en reviderad skriptfil och köra distributionsskriptet igen från Azure-containerinstansen.
 
 ### <a name="use-the-azure-portal"></a>Använda Azure-portalen
 
-När du har distribuerat en distributions skript resurs visas resursen under resurs gruppen i Azure Portal. Följande skärm bild visar **översikts** sidan för en distributions skript resurs:
+När du har distribuerat en distributionsskriptresurs visas resursen under resursgruppen i Azure Portal. Följande skärmbild visar sidan Översikt **för** en distributionsskriptresurs:
 
-![Översikt över distribution av skript portalen för Resource Manager-mall](./media/deployment-script-template/resource-manager-deployment-script-portal.png)
+![Resource Manager översikt över malldistributionsskriptportalen](./media/deployment-script-template/resource-manager-deployment-script-portal.png)
 
-På sidan Översikt visas viktig information om resursen, till exempel **etablerings status**, **lagrings konto**, **behållar instans** och **loggar**.
+På översiktssidan visas viktig information om resursen, till exempel **Etableringstillstånd,** **Lagringskonto,** **Containerinstans** och **Loggar**.
 
-På den vänstra menyn kan du Visa distributions skriptets innehåll, argumenten som skickas till skriptet och utdata. Du kan också exportera en mall för distributions skriptet, inklusive distributions skriptet.
+På den vänstra menyn kan du visa innehållet i distributionsskriptet, argumenten som skickas till skriptet och utdata. Du kan också exportera en mall för distributionsskriptet, inklusive distributionsskriptet.
 
 ### <a name="use-powershell"></a>Använd PowerShell
 
-Med hjälp av Azure PowerShell kan du hantera distributions skript på prenumerations-eller resurs grupps omfång:
+Med Azure PowerShell kan du hantera distributionsskript i prenumerations- eller resursgruppsomfånget:
 
-- [Get-AzDeploymentScript](/powershell/module/az.resources/get-azdeploymentscript): hämtar eller visar distributions skript.
-- [Get-AzDeploymentScriptLog](/powershell/module/az.resources/get-azdeploymentscriptlog): hämtar loggen för en körning av distributions skript.
-- [Remove-AzDeploymentScript](/powershell/module/az.resources/remove-azdeploymentscript): tar bort ett distributions skript och dess associerade resurser.
-- [Save-AzDeploymentScriptLog](/powershell/module/az.resources/save-azdeploymentscriptlog): sparar loggen för en distributions skript körning till disk.
+- [Get-AzDeploymentScript:](/powershell/module/az.resources/get-azdeploymentscript)Hämtar eller visar distributionsskript.
+- [Get-AzDeploymentScriptLog:](/powershell/module/az.resources/get-azdeploymentscriptlog)Hämtar loggen för en körning av ett distributionsskript.
+- [Remove-AzDeploymentScript:](/powershell/module/az.resources/remove-azdeploymentscript)Tar bort ett distributionsskript och dess associerade resurser.
+- [Save-AzDeploymentScriptLog:](/powershell/module/az.resources/save-azdeploymentscriptlog)Sparar loggen för en körning av distributionsskript till disk.
 
-`Get-AzDeploymentScript`Resultatet ser ut ungefär så här:
+Utdata `Get-AzDeploymentScript` ser ut ungefär så här:
 
 ```output
 Name                : runPowerShellInlineWithOutput
@@ -375,14 +395,14 @@ Timeout             : PT1H
 
 ### <a name="use-azure-cli"></a>Använda Azure CLI
 
-Med Azure CLI kan du hantera distributions skript på prenumerations-eller resurs grupps omfång:
+Med Azure CLI kan du hantera distributionsskript i prenumerations- eller resursgruppsomfånget:
 
-- [AZ distribution-skript ta bort](/cli/azure/deployment-scripts#az-deployment-scripts-delete): ta bort ett distributions skript.
-- [AZ distribution – skript lista](/cli/azure/deployment-scripts#az-deployment-scripts-list): visar alla distributions skript.
-- [AZ distribution – skript Visa](/cli/azure/deployment-scripts#az-deployment-scripts-show): Hämta ett distributions skript.
-- [AZ distribution – skript Visa-logg](/cli/azure/deployment-scripts#az-deployment-scripts-show-log): Visa distributions skript loggar.
+- [az deployment-scripts delete:](/cli/azure/deployment-scripts#az-deployment-scripts-delete)Ta bort ett distributionsskript.
+- [az deployment-scripts list:](/cli/azure/deployment-scripts#az-deployment-scripts-list)Lista alla distributionsskript.
+- [az deployment-scripts show:](/cli/azure/deployment-scripts#az-deployment-scripts-show)Hämta ett distributionsskript.
+- [az deployment-scripts show-log:](/cli/azure/deployment-scripts#az-deployment-scripts-show-log)Visa distributionsskriptloggar.
 
-Utdata för list kommandot liknar:
+Utdata från listkommandot liknar följande:
 
 ```json
 [
@@ -442,9 +462,9 @@ Utdata för list kommandot liknar:
 ]
 ```
 
-### <a name="use-rest-api"></a>Använd REST API
+### <a name="use-rest-api"></a>Använda REST API
 
-Du kan hämta distributions information för distributions skriptets resurs på resurs grupps nivå och prenumerations nivå genom att använda REST API:
+Du kan hämta distributionsskriptresursdistributionsinformation på resursgruppsnivå och prenumerationsnivå med hjälp av REST API:
 
 ```rest
 /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>?api-version=2020-10-01
@@ -519,85 +539,85 @@ Följande REST API returnerar loggen:
 /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>/logs?api-version=2020-10-01
 ```
 
-Den fungerar bara innan distributions skript resurserna tas bort.
+Det fungerar bara innan distributionsskriptresurserna tas bort.
 
-Om du vill se deploymentScripts-resursen i portalen väljer du **Visa dolda typer**:
+Om du vill se resursen deploymentScripts i portalen väljer du **Visa dolda typer:**
 
-![Distributions skript för Resource Manager-mall, Visa dolda typer, Portal](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
+![Resource Manager skript för malldistribution, visa dolda typer, portal](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
 
-## <a name="clean-up-deployment-script-resources"></a>Rensa distributions skript resurser
+## <a name="clean-up-deployment-script-resources"></a>Rensa resurser för distributionsskript
 
-Ett lagrings konto och en behållar instans krävs för skript körning och fel sökning. Du har möjlighet att ange ett befintligt lagrings konto, annars skapas ett lagrings konto tillsammans med en behållar instans automatiskt av skript tjänsten. De två automatiskt skapade resurserna tas bort av skript tjänsten när distributions skript körningen blir i ett Terminal-tillstånd. Du debiteras för resurserna tills resurserna tas bort. Pris informationen finns i [container instances priser](https://azure.microsoft.com/pricing/details/container-instances/) och [Azure Storage prissättning](https://azure.microsoft.com/pricing/details/storage/).
+Ett lagringskonto och en containerinstans krävs för skriptkörning och felsökning. Du kan ange ett befintligt lagringskonto, annars skapas ett lagringskonto tillsammans med en containerinstans automatiskt av skripttjänsten. De två automatiskt skapade resurserna tas bort av skripttjänsten när körningen av distributionsskriptet hamnar i ett terminaltillstånd. Du debiteras för resurserna tills resurserna tas bort. Prisinformationen finns i Container Instances [och](https://azure.microsoft.com/pricing/details/container-instances/) [Azure Storage priser.](https://azure.microsoft.com/pricing/details/storage/)
 
-Livs cykeln för de här resurserna styrs av följande egenskaper i mallen:
+Livscykeln för dessa resurser styrs av följande egenskaper i mallen:
 
-- `cleanupPreference`: Rensnings inställning när skript körningen får statusen Terminal. De värden som stöds är:
+- `cleanupPreference`: Rensa inställningar när skriptkörningen hamnar i ett terminaltillstånd. Värdena som stöds är:
 
-  - **Always**: ta bort de automatiskt skapade resurserna när skript körningen blir i ett Terminal-tillstånd. Om ett befintligt lagrings konto används, tar skript tjänsten bort fil resursen som skapats i lagrings kontot. Eftersom `deploymentScripts` resursen kanske fortfarande finns när resurserna har rensats, behåller skript tjänsten skript körnings resultatet, till exempel STDOUT, utdata och retur värde innan resurserna tas bort.
-  - **OnSuccess**: ta bara bort de automatiskt skapade resurserna när skript körningen har slutförts. Om ett befintligt lagrings konto används tar skript tjänsten bara bort fil resursen när skript körningen har slutförts. Du kan fortfarande komma åt resurserna för att hitta felsöknings information.
-  - **OnExpiration**: ta bara bort de automatiskt skapade resurserna när `retentionInterval` inställningen har upphört att gälla. Om ett befintligt lagrings konto används, tar skript tjänsten bort fil resursen, men behåller lagrings kontot.
+  - **Alltid:** Ta bort de automatiskt skapade resurserna när skriptkörningen hamnar i ett terminaltillstånd. Om ett befintligt lagringskonto används tar skripttjänsten bort filresursen som skapades i lagringskontot. Eftersom resursen fortfarande finns kvar när resurserna har rensats beständiga skripttjänsten skriptkörningsresultaten, till exempel stdout, utdata och returvärde innan resurserna `deploymentScripts` tas bort.
+  - **OnSuccess:** Ta bara bort de automatiskt skapade resurserna när skriptkörningen lyckas. Om ett befintligt lagringskonto används tar skripttjänsten bort filresursen endast när skriptkörningen lyckas. Du kan fortfarande komma åt resurserna för att hitta felsökningsinformationen.
+  - **OnExpiration:** Ta bara bort de automatiskt skapade resurserna när `retentionInterval` inställningen har upphört att gälla. Om ett befintligt lagringskonto används tar skripttjänsten bort filresursen, men behåller lagringskontot.
 
-- `retentionInterval`: Ange det tidsintervall som en skript resurs kommer att behållas och därefter upphör att gälla och tas bort.
+- `retentionInterval`: Ange det tidsintervall som en skriptresurs ska behållas och efter vilket den ska upphöra att gälla och tas bort.
 
 > [!NOTE]
-> Vi rekommenderar inte att du använder lagrings kontot och behållar instansen som genereras av skript tjänsten för andra skäl. De två resurserna kan tas bort beroende på skript livs cykeln.
+> Vi rekommenderar inte att du använder lagringskontot och containerinstansen som genereras av skripttjänsten för andra ändamål. De två resurserna kan tas bort beroende på skriptets livscykel.
 
-Behållar instansen och lagrings kontot tas bort enligt `cleanupPreference` . Men om skriptet Miss lyckas och `cleanupPreference` inte är inställt på **Always**, håller distributions processen automatiskt över behållaren som körs i en timme. Du kan använda den här timmen för att felsöka skriptet. Om du vill behålla behållaren som körs efter lyckade distributioner lägger du till ett vilo läge i skriptet. Lägg till exempel till [Start-sömn](/powershell/module/microsoft.powershell.utility/start-sleep) i slutet av skriptet. Om du inte lägger till vilo läge är behållaren inställd på ett Terminal-tillstånd och kan inte nås även om den inte har tagits bort än.
+Containerinstansen och lagringskontot tas bort enligt `cleanupPreference` . Men om skriptet misslyckas och inte `cleanupPreference` är inställt på **Alltid** håller distributionsprocessen automatiskt containern igång i en timme. Du kan använda den här timmen för att felsöka skriptet. Om du vill att containern ska fortsätta köras efter lyckade distributioner lägger du till ett strömsparlägessteg i skriptet. Lägg till exempel [till Start-Sleep](/powershell/module/microsoft.powershell.utility/start-sleep) i slutet av skriptet. Om du inte lägger till strömsparlägessteget är containern inställd på ett terminaltillstånd och kan inte nås även om den inte har tagits bort ännu.
 
-## <a name="run-script-more-than-once"></a>Kör skript mer än en gång
+## <a name="run-script-more-than-once"></a>Köra skript mer än en gång
 
-Körning av distributions skript är en idempotenta åtgärd. Om ingen av `deploymentScripts` resurs egenskaperna (inklusive det infogade skriptet) ändras, körs inte skriptet när du distribuerar om mallen. Distributions skript tjänsten jämför resurs namnen i mallen med de befintliga resurserna i samma resurs grupp. Det finns två alternativ om du vill köra samma distributions skript flera gånger:
+Körning av distributionsskript är en idempotent åtgärd. Om ingen av resursegenskaperna (inklusive det infogade skriptet) ändras körs inte skriptet `deploymentScripts` när du distribuerar om mallen. Tjänsten för distributionsskript jämför resursnamnen i mallen med de befintliga resurserna i samma resursgrupp. Det finns två alternativ om du vill köra samma distributionsskript flera gånger:
 
-- Ändra namnet på din `deploymentScripts` resurs. Använd till exempel funktionen [utcNow](./template-functions-date.md#utcnow) -mall som resurs namn eller som en del av resurs namnet. Om du ändrar resurs namnet skapas en ny `deploymentScripts` resurs. Det är lämpligt att spara en historik över skript körningen.
+- Ändra namnet på `deploymentScripts` resursen. Använd till exempel [mallfunktionen utcNow](./template-functions-date.md#utcnow) som resursnamn eller som en del av resursnamnet. När du ändrar resursnamnet skapas en ny `deploymentScripts` resurs. Det är bra för att behålla en historik över skriptkörning.
 
     > [!NOTE]
-    > `utcNow`Funktionen kan bara användas i standardvärdet för en parameter.
+    > Funktionen `utcNow` kan bara användas i standardvärdet för en parameter.
 
-- Ange ett annat värde i `forceUpdateTag` egenskapen Template. Använd till exempel `utcNow` som värde.
+- Ange ett annat värde i `forceUpdateTag` mallegenskapen. Använd till exempel `utcNow` som värde.
 
 > [!NOTE]
-> Skriv de distributions skript som är idempotenta. Detta säkerställer att om de körs igen av misstag, kommer de inte att orsaka system ändringar. Om distributions skriptet exempelvis används för att skapa en Azure-resurs kontrollerar du att resursen inte finns innan du skapar den, så skriptet kommer att lyckas eller så skapar du inte resursen igen.
+> Skriv de distributionsskript som är idempotenta. Detta säkerställer att systemändringar inte orsakar om de körs igen av misstag. Om distributionsskriptet till exempel används för att skapa en Azure-resurs kontrollerar du att resursen inte finns innan du skapar den, så att skriptet lyckas eller så skapar du inte resursen igen.
 
 ## <a name="configure-development-environment"></a>Konfigurera utvecklingsmiljön
 
-Du kan använda en förkonfigurerad behållar avbildning som distributions miljö för skript utveckling. Mer information finns i avsnittet [Konfigurera utvecklings miljö för distributions skript i mallar](./deployment-script-template-configure-dev.md).
+Du kan använda en förkonfigurerad containeravbildning som utvecklingsmiljö för distributionsskriptet. Mer information finns i [Konfigurera utvecklingsmiljön för distributionsskript i mallar.](./deployment-script-template-configure-dev.md)
 
-När skriptet har testats kan du använda det som ett distributions skript i mallarna.
+När skriptet har testats kan du använda det som ett distributionsskript i dina mallar.
 
-## <a name="deployment-script-error-codes"></a>Fel koder för distributions skript
+## <a name="deployment-script-error-codes"></a>Felkoder för distributionsskript
 
 | Felkod | Description |
 |------------|-------------|
-| DeploymentScriptInvalidOperation | Resurs definitionen för distributions skriptet i mallen innehåller ogiltiga egenskaps namn. |
-| DeploymentScriptResourceConflict | Det går inte att ta bort en distributions skript resurs som är i icke-terminal-tillstånd och körningen har inte överskridit 1 timme. Eller också kan du inte köra samma distributions skript igen med samma resurs-ID (samma prenumeration, resurs grupp namn och resurs namn), men olika skript texts innehåll på samma tid. |
-| DeploymentScriptOperationFailed | Distributions skript åtgärden misslyckades internt. Kontakta Microsoft-supporten. |
-| DeploymentScriptStorageAccountAccessKeyNotSpecified | Åtkomst nyckeln har inte angetts för det befintliga lagrings kontot.|
-| DeploymentScriptContainerGroupContainsInvalidContainers | En behållar grupp som skapats av distributions skript tjänsten har ändrats externt och ogiltiga behållare lades till. |
-| DeploymentScriptContainerGroupInNonterminalState | Minst två distributions skript resurser använder samma instans namn för Azure Container i samma resurs grupp och en av dem har inte slutfört körningen ännu. |
-| DeploymentScriptStorageAccountInvalidKind | Det befintliga lagrings kontot för BlobBlobStorage-eller BlobStorage-typen stöder inte fil resurser och kan inte användas. |
-| DeploymentScriptStorageAccountInvalidKindAndSku | Det befintliga lagrings kontot har inte stöd för fil resurser. En lista över typer av lagrings konton som stöds finns i [Använd befintligt lagrings konto](#use-existing-storage-account). |
-| DeploymentScriptStorageAccountNotFound | Lagrings kontot finns inte eller har tagits bort av en extern process eller ett verktyg. |
-| DeploymentScriptStorageAccountWithServiceEndpointEnabled | Det angivna lagrings kontot har en tjänst slut punkt. Det finns inte stöd för ett lagrings konto med en tjänst slut punkt. |
-| DeploymentScriptStorageAccountInvalidAccessKey | En ogiltig åtkomst nyckel har angetts för det befintliga lagrings kontot. |
-| DeploymentScriptStorageAccountInvalidAccessKeyFormat | Ogiltigt nyckel format för lagrings konto. Se [Hantera åtkomst nycklar för lagrings konton](../../storage/common/storage-account-keys-manage.md). |
-| DeploymentScriptExceededMaxAllowedTime | Körnings tiden för distributions skriptet överskred det timeout-värde som angavs i resurs definitionen för distributions skriptet. |
-| DeploymentScriptInvalidOutputs | Distributions skriptets utdata är inte ett giltigt JSON-objekt. |
-| DeploymentScriptContainerInstancesServiceLoginFailure | Den tilldelade hanterade identiteten kunde inte logga in efter 10 försök med ett intervall på 1 minut. |
-| DeploymentScriptContainerGroupNotFound | En behållar grupp som skapats av distributions skript tjänsten togs bort av ett externt verktyg eller en process. |
-| DeploymentScriptDownloadFailure | Det gick inte att hämta ett stöd skript. Se [använda stöd skript](#use-supporting-scripts).|
-| DeploymentScriptError | Ett fel inträffade i användar skriptet. |
-| DeploymentScriptBootstrapScriptExecutionFailed | Ett fel inträffade i bootstrap-skriptet. Bootstrap-skript är det system skript som dirigerar distributionen av skript. |
-| DeploymentScriptExecutionFailed | Ett okänt fel inträffade under körningen av distributions skriptet. |
-| DeploymentScriptContainerInstancesServiceUnavailable | När du skapar Azure Container Instance (ACI) utlöste ACI ett otillgängligt tjänst fel. |
-| DeploymentScriptContainerGroupInNonterminalState | När du skapar Azure Container Instance (ACI) använder ett annat distributions skript samma ACI-namn i samma omfång (samma prenumeration, resurs grupp namn och resurs namn). |
-| DeploymentScriptContainerGroupNameInvalid | Det angivna Azure Container instance-namnet (ACI) uppfyller inte kraven för ACI. Se [Felsöka vanliga problem i Azure Container instances](../../container-instances/container-instances-troubleshooting.md#issues-during-container-group-deployment).|
+| DeploymentScriptInvalidOperation | Resursdefinitionen för distributionsskriptet i mallen innehåller ogiltiga egenskapsnamn. |
+| DeploymentScriptResourceConflict | Det går inte att ta bort en distributionsskriptresurs som är i ett icke-terminaltillstånd och körningen inte har överskridit 1 timme. Eller så kan du inte köra samma distributionsskript igen med samma resursidentifierare (samma prenumeration, resursgruppsnamn och resursnamn) utan annat innehåll i skripttexten på samma gång. |
+| DeploymentScriptOperationFailed | Distributionsskriptåtgärden misslyckades internt. Kontakta Microsofts support. |
+| DeploymentScriptStorageAccountAccessKeyNotSpecified | Åtkomstnyckeln har inte angetts för det befintliga lagringskontot.|
+| DeploymentScriptContainerGroupContainsInvalidContainers | En containergrupp som skapades av distributionens skripttjänst ändrades externt och ogiltiga containrar lades till. |
+| DeploymentScriptContainerGroupInNonterminalState | Två eller flera distributionsskriptresurser använder samma Azure-containerinstansnamn i samma resursgrupp, och en av dem har inte slutfört körningen ännu. |
+| DeploymentScriptStorageAccountInvalidKind | Det befintliga lagringskontot för typen BlobBlobStorage eller BlobStorage stöder inte filresurser och kan inte användas. |
+| DeploymentScriptStorageAccountInvalidKindAndSku | Det befintliga lagringskontot stöder inte filresurser. En lista över typer av lagringskonto som stöds finns i [Använda befintligt lagringskonto.](#use-existing-storage-account) |
+| DeploymentScriptStorageAccountNotFound | Lagringskontot finns inte eller har tagits bort av en extern process eller ett externt verktyg. |
+| DeploymentScriptStorageAccountWithServiceEndpointEnabled | Det angivna lagringskontot har en tjänstslutpunkt. Ett lagringskonto med en tjänstslutpunkt stöds inte. |
+| DeploymentScriptStorageAccountInvalidAccessKey | Ogiltig åtkomstnyckel har angetts för det befintliga lagringskontot. |
+| DeploymentScriptStorageAccountInvalidAccessKeyFormat | Ogiltigt lagringskontonyckelformat. Se [Hantera åtkomstnycklar för lagringskonto.](../../storage/common/storage-account-keys-manage.md) |
+| DeploymentScriptExceededMaxAllowedTime | Körningstiden för distributionsskriptet överskred det tidsgränsvärde som anges i resursdefinitionen för distributionsskriptet. |
+| DeploymentScriptInvalidOutputs | Utdata från distributionsskriptet är inte ett giltigt JSON-objekt. |
+| DeploymentScriptContainerInstancesServiceLoginFailure | Den användar tilldelade hanterade identiteten kunde inte logga in efter 10 försök med ett intervall på 1 minut. |
+| DeploymentScriptContainerGroupNotFound | En containergrupp som skapats av skripttjänsten för distribution har tagits bort av ett externt verktyg eller en extern process. |
+| DeploymentScriptDownloadFailure | Det gick inte att ladda ned ett stödskript. Se [Använda stödskript.](#use-supporting-scripts)|
+| DeploymentScriptError | Användarskriptet får ett felmeddelande. |
+| DeploymentScriptBootstrapScriptExecutionFailed | Bootstrap-skriptet utkällde ett fel. Bootstrap-skriptet är det systemskript som dirigerar körningen av distributionsskriptet. |
+| DeploymentScriptExecutionFailed | Okänt fel under körningen av distributionsskriptet. |
+| DeploymentScriptContainerInstancesServiceUnavailable | När du skapar Azure Container Instance (ACI) utser ACI ett fel om att tjänsten inte är tillgänglig. |
+| DeploymentScriptContainerGroupInNonterminalState | När du skapar Azure Container Instance (ACI) använder ett annat distributionsskript samma ACI-namn i samma omfång (samma prenumeration, resursgruppsnamn och resursnamn). |
+| DeploymentScriptContainerGroupNameInvalid | Det angivna Azure-containerinstansnamnet (ACI) uppfyller inte ACI-kraven. Se [Felsöka vanliga problem i Azure Container Instances](../../container-instances/container-instances-troubleshooting.md#issues-during-container-group-deployment).|
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här artikeln har du lärt dig hur du använder distributions skript. För att gå igenom en själv studie kurs om distributions skript:
+I den här artikeln har du lärt dig hur du använder distributionsskript. Så här går du igenom en självstudiekurs om distributionsskript:
 
 > [!div class="nextstepaction"]
-> [Självstudie: använda distributions skript i Azure Resource Manager mallar](./template-tutorial-deployment-script.md)
+> [Självstudie: Använda distributionsskript i Azure Resource Manager mallar](./template-tutorial-deployment-script.md)
 
 > [!div class="nextstepaction"]
-> [Lär dig modul: utöka ARM-mallar med hjälp av distributions skript](/learn/modules/extend-resource-manager-template-deployment-scripts/)
+> [Learn-modul: Utöka ARM-mallar med hjälp av distributionsskript](/learn/modules/extend-resource-manager-template-deployment-scripts/)

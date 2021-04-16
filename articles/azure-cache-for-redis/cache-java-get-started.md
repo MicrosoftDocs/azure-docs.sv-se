@@ -1,32 +1,37 @@
 ---
-title: 'Snabb start: använda Azure cache för Redis i Java'
+title: 'Snabbstart: Använda Azure Cache for Redis i Java'
 description: I den här snabbstarten skapar du en ny Java-app som använder Azure Cache for Redis
 author: yegu-ms
+ms.author: yegu
+ms.date: 05/22/2020
+ms.topic: quickstart
 ms.service: cache
 ms.devlang: java
-ms.topic: quickstart
-ms.date: 05/22/2020
-ms.author: yegu
-ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 856f33875316eca8b3c16f28c6c222f42e0a0be5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom:
+- mvc
+- seo-java-august2019
+- seo-java-september2019
+- devx-track-java
+- mode-api
+ms.openlocfilehash: 7128ff1e20439c57d3e6212f29e6f871997584c6
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121277"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538616"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-in-java"></a>Snabb start: använda Azure cache för Redis i Java
+# <a name="quickstart-use-azure-cache-for-redis-in-java"></a>Snabbstart: Använda Azure Cache for Redis i Java
 
-I den här snabb starten införlivar du Azure cache för Redis i en Java-app med hjälp av [Jedis](https://github.com/xetorthio/jedis) Redis-klienten för att få åtkomst till en säker, dedikerad cache som är tillgänglig från alla program i Azure.
+I den här snabbstarten införlivar du Azure Cache for Redis i en Java-app med hjälp av [Jedis](https://github.com/xetorthio/jedis) Redis-klienten för att få åtkomst till en säker, dedikerad cache som kan nås från alla program i Azure.
 
 ## <a name="skip-to-the-code-on-github"></a>Hoppa till koden på GitHub
 
-Om du vill hoppa över direkt till koden kan du läsa [Java-snabb](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/java) starten på GitHub.
+Om du vill hoppa direkt till koden kan du gå till [Java-snabbstarten](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/java) på GitHub.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
-- [Apache maven](https://maven.apache.org/download.cgi)
+- Azure-prenumeration [– skapa en kostnadsfritt](https://azure.microsoft.com/free/)
+- [Apache Maven](https://maven.apache.org/download.cgi)
 
 ## <a name="create-an-azure-cache-for-redis"></a>Skapa en Azure Cache for Redis
 
@@ -34,9 +39,9 @@ Om du vill hoppa över direkt till koden kan du läsa [Java-snabb](https://githu
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-## <a name="setting-up-the-working-environment"></a>Konfigurera arbets miljön 
+## <a name="setting-up-the-working-environment"></a>Konfigurera arbetsmiljön 
 
-Beroende på vilket operativ system du använder lägger du till miljövariabler för **värd namnet** och den **primära åtkomst nyckeln**. Öppna en kommando tolk eller ett terminalfönster och Ställ in följande värden:
+Beroende på operativsystemet lägger du till miljövariabler för **värdnamnet och** **den primära åtkomstnyckeln**. Öppna en kommandotolk eller ett terminalfönster och konfigurera följande värden:
 
 ```CMD 
 set REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
@@ -48,10 +53,10 @@ export REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
 export REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
 ```
 
-Ersätt plats hållarna med följande värden:
+Ersätt platshållarna med följande värden:
 
-- `<YOUR_HOST_NAME>`: DNS-värdnamnet hämtas från avsnittet *Egenskaper* i Azure cache för Redis-resursen i Azure Portal.
-- `<YOUR_PRIMARY_ACCESS_KEY>`: Den primära åtkomst nyckeln som hämtats från avsnittet *åtkomst nycklar* i Azure cache för Redis-resurser i Azure Portal.
+- `<YOUR_HOST_NAME>`: DNS-värdnamnet som hämtas från *avsnittet* Egenskaper i Azure Cache for Redis resurs i Azure Portal.
+- `<YOUR_PRIMARY_ACCESS_KEY>`: Den primära åtkomstnyckeln, som hämtas *från avsnittet Åtkomstnycklar* i Azure Cache for Redis resurs i Azure Portal.
 
 ## <a name="create-a-new-java-app"></a>Skapa en ny Java-app
 
@@ -75,7 +80,7 @@ mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -Darchetyp
     </dependency>
 ```
 
-Spara *pom.xml* -filen.
+Spara *pom.xml* fil.
 
 Öppna *App.java* och ersätt koden med följande kod:
 
@@ -144,7 +149,7 @@ mvn exec:java -D exec.mainClass=example.demo.App
 
 I exemplet nedan ser du att `Message`-nyckeln tidigare hade ett cachelagrat värde som angavs med Redis-konsolen i Azure Portal. Appen uppdatera det cachelagrade värdet. Appen körde även kommandona `PING` och `CLIENT LIST`.
 
-![Azure cache för Redis-appen har slutförts](./media/cache-java-get-started/azure-cache-redis-complete.png)
+![Azure Cache for Redis slutförd app](./media/cache-java-get-started/azure-cache-redis-complete.png)
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
@@ -158,11 +163,11 @@ Om du är klar med exempelappen för snabbstart kan du ta bort Azure-resurserna 
 
 1. Logga in på [Azure Portal](https://portal.azure.com) och välj **Resursgrupper**.
 
-1. Skriv namnet på din resurs grupp i text rutan **Filtrera efter namn** . Anvisningarna för den här artikeln använde en resursgrupp med namnet *TestResources*. I resurs gruppen i resultat listan väljer du **...** och sedan **ta bort resurs grupp**.
+1. I **textrutan Filtrera efter** namn skriver du namnet på din resursgrupp. Anvisningarna för den här artikeln använde en resursgrupp med namnet *TestResources*. I din resursgrupp i resultatlistan väljer du **... och sedan** Ta bort **resursgrupp**.
 
-   ![Azure-resurs gruppen har tagits bort](./media/cache-java-get-started/azure-cache-redis-delete-resource-group.png)
+   ![Azure-resursgrupp borttagna](./media/cache-java-get-started/azure-cache-redis-delete-resource-group.png)
 
-1. Du blir ombedd att bekräfta borttagningen av resursgruppen. Skriv namnet på resurs gruppen som ska bekräftas och välj **ta bort**.
+1. Du blir ombedd att bekräfta borttagningen av resursgruppen. Skriv namnet på resursgruppen för att bekräfta och välj Ta **bort**.
 
 Efter en liten stund tas resursgruppen och resurser som finns i den bort.
 

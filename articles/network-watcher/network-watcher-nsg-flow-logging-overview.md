@@ -1,7 +1,7 @@
 ---
-title: 'Introduktion till flödes loggning för NSG: er'
+title: Introduktion till flödesloggning för NSG:er
 titleSuffix: Azure Network Watcher
-description: Den här artikeln förklarar hur du använder funktionen NSG Flow-loggar i Azure Network Watcher.
+description: Den här artikeln förklarar hur du använder funktionen NSG-flödesloggar i Azure Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,107 +12,107 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: bc085163b4f738d022ab9771794ec85293de5ed8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 206bcfaeb5cb13d3ecf1e5f6335518c42df21eb8
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100521687"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535289"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Introduktion till flödesloggning för nätverkssäkerhetsgrupper
 
 ## <a name="introduction"></a>Introduktion
 
-Flödes loggar för [nätverks säkerhets grupper](../virtual-network/network-security-groups-overview.md#security-rules) (NSG) är en funktion i Azure Network Watcher som gör att du kan logga information om IP-trafik som flödar genom en NSG. Flow-data skickas till Azure Storage konton från vilka du kan komma åt dem samt exportera dem till alla visualiserings verktyg, SIEM eller ID: n som du väljer.
+[Flödesloggar](../virtual-network/network-security-groups-overview.md#security-rules) för nätverkssäkerhetsgrupp (NSG) är en funktion i Azure Network Watcher som gör att du kan logga information om IP-trafik som flödar genom en NSG. Flödesdata skickas till Azure Storage där du kan komma åt dem samt exportera dem till valbara visualiseringsverktyg, SIEM eller ID:n.
 
-![Översikt över flödes loggar](./media/network-watcher-nsg-flow-logging-overview/homepage.jpg)
+![översikt över flödesloggar](./media/network-watcher-nsg-flow-logging-overview/homepage.jpg)
 
-## <a name="why-use-flow-logs"></a>Varför ska jag använda flödes loggar?
+## <a name="why-use-flow-logs"></a>Varför ska jag använda flödesloggar?
 
-Det är viktigt att övervaka, hantera och känna till ditt eget nätverk för kompromisslös säkerhet, efterlevnad och prestanda. Att känna till din egen miljö är av största vikt för att skydda och optimera den. Du behöver ofta känna till det aktuella läget för nätverket, som ansluter, var de ansluter från, vilka portar som är öppna för Internet, förväntade nätverks beteende, oregelbunden nätverks beteende och plötsliga ökningar i trafiken.
+Det är viktigt att övervaka, hantera och känna till ditt eget nätverk för att få okomprometterad säkerhet, efterlevnad och prestanda. Att känna till din egen miljö är avgörande för att skydda och optimera den. Du behöver ofta känna till nätverkets aktuella tillstånd, vem som ansluter, var de ansluter från, vilka portar som är öppna till Internet, förväntat nätverksbeteende, oregelbunden nätverksbeteende och plötslig ökning av trafik.
 
-Flödes loggar är källan till sanningen för all nätverks aktivitet i din moln miljö. Oavsett om du är en kommande start försöker du optimera resurser eller ett stort företag försöker identifiera intrång, flödes loggar är ditt bästa val. Du kan använda den för att optimera nätverks flöden, övervaka data flöde, kontrol lera efterlevnad, identifiera intrång med mera.
+Flödesloggar är sanningskällan för all nätverksaktivitet i din molnmiljö. Oavsett om du är en kommande startup som försöker optimera resurser eller stora företag som försöker identifiera intrång är Flödesloggar det bästa valet. Du kan använda den för att optimera nätverksflöden, övervaka dataflöde, verifiera efterlevnad, identifiera intrång och mycket mer.
 
 ## <a name="common-use-cases"></a>Vanliga användarsituationer
 
-**Nätverks övervakning**: identifiera okänd eller oönskad trafik. Övervaka trafik nivåer och bandbredds användning. Filtrera flödes loggar efter IP och port för att förstå program beteendet. Exportera flödes loggar till analys-och visualiserings verktyg som du väljer för att ställa in övervaknings instrument paneler.
+**Nätverksövervakning:** Identifiera okänd eller oönskad trafik. Övervaka trafiknivåer och bandbreddsförbrukning. Filtrera flödesloggar efter IP och port för att förstå programmets beteende. Exportera flödesloggar till valfria analys- och visualiseringsverktyg för att konfigurera instrumentpaneler för övervakning.
 
-**Användnings övervakning och optimering:** Identifiera de främsta pratarna i nätverket. Kombinera med GeoIP-data för att identifiera trafik över flera regioner. Förstå trafik tillväxten för kapacitets prognoser. Använd data för att ta bort Overtly restriktiva trafik regler.
+**Övervakning och optimering av användning:** Identifiera de främsta talarna i nätverket. Kombinera med GeoIP-data för att identifiera trafik mellan regioner. Förstå trafiktillväxt för kapacitetsprognoser. Använd data för att ta bort alltför restriktiva trafikregler.
 
-**Kompatibilitet**: Använd Flow-data för att kontrol lera nätverks isolering och efterlevnad med regler för företags åtkomst
+**Efterlevnad:** Använd flödesdata för att verifiera nätverksisolering och efterlevnad med åtkomstregler för företag
 
-**Network data utredning & Security Analysis**: analysera nätverks flöden från komprometterade IP-adresser och nätverks gränssnitt. Exportera flödes loggar till valfritt SIEM-eller ID-verktyg som du själv väljer.
+**Nätverkssäkerhetsanalyser & säkerhetsanalys:** Analysera nätverksflöden från komprometterade IP-adresser och nätverksgränssnitt. Exportera flödesloggar till valbara SIEM- eller IDS-verktyg.
 
 ## <a name="how-logging-works"></a>Så här fungerar loggning
 
-**Nyckel egenskaper**
+**Nyckelegenskaper**
 
-- Flödes loggar körs på [nivå 4](https://en.wikipedia.org/wiki/OSI_model#Layer_4:_Transport_Layer) och spelar in alla IP-flöden som går in och ut ur en NSG
-- Loggar samlas in med **1-minuters intervall** via Azure-plattformen och påverkar inte kund resurser eller nätverks prestanda på något sätt.
-- Loggarna skrivs i JSON-format och visar utgående och inkommande flöden per NSG-regel.
-- Varje loggpost innehåller det nätverks gränssnitt (NIC) som flödet avser, 5-tuple-information, trafik beslut & (endast version 2) data flödes information. Se _logg formatet_ nedan för fullständig information.
-- Flödes loggar har en kvarhållning som gör det möjligt att automatiskt ta bort loggar upp till ett år efter att de skapats. 
+- Flödesloggar fungerar [på Layer 4](https://en.wikipedia.org/wiki/OSI_model#Layer_4:_Transport_Layer) och registrerar alla IP-flöden som går in och ut från en NSG
+- Loggar samlas in med ett intervall på 1 minut via **Azure-plattformen** och påverkar inte kundresurser eller nätverksprestanda på något sätt.
+- Loggar skrivs i JSON-format och visar utgående och inkommande flöden per NSG-regel.
+- Varje loggpost innehåller det nätverksgränssnitt (NIC) som flödet gäller för, 5-tuppelinformation, dataflödesinformation för trafikbeslut & (endast version 2). Fullständig _information finns_ i Loggformat nedan.
+- Flödesloggar har en kvarhållningsfunktion som gör att loggarna kan tas bort automatiskt upp till ett år efter att de har skapats. 
 
 > [!NOTE]
-> Kvarhållning är bara tillgängligt om du använder [generella lagrings konton för användning v2 (GPv2)](../storage/common/storage-account-overview.md#types-of-storage-accounts). 
+> Kvarhållning är bara tillgängligt om du använder [GPv2-konton (Generell användning v2).](../storage/common/storage-account-overview.md#types-of-storage-accounts) 
 
 **Huvudkoncept**
 
-- Programdefinierade nätverk ordnas runt virtuella nätverk (virtuella nätverk) och undernät. Säkerheten för dessa virtuella nätverk och undernät kan hanteras med hjälp av en NSG.
-- En nätverks säkerhets grupp (NSG) innehåller en lista över _säkerhets regler_ som tillåter eller nekar nätverks trafik i resurser som den är ansluten till. NSG: er kan kopplas till undernät, enskilda virtuella datorer eller enskilda nätverks gränssnitt (NIC) som är anslutna till virtuella datorer (Resource Manager). Mer information finns i [Översikt över nätverks säkerhets grupper](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- Alla trafikflöden i nätverket utvärderas med hjälp av reglerna i tillämpliga NSG.
-- Resultatet av dessa utvärderingar är NSG Flow-loggar. Flödes loggar samlas in via Azure-plattformen och kräver ingen ändring av kund resurserna.
-- Obs! regler är av två typer – avslutande & icke-avslutande, var och en med olika loggnings beteenden.
-- - NSG neka-regler avslutas. NSG som nekar trafiken kommer att loggas i flödes loggar och bearbetning i det här fallet stoppas efter att en NSG nekar trafik. 
-- - NSG Tillåt-regler är icke-avslutande, vilket innebär att även om en NSG tillåter det, fortsätter bearbetningen till nästa NSG. Den senaste NSG som tillåter trafik kommer att logga trafiken till flödes loggar.
-- NSG flödes loggar skrivs till lagrings konton där de kan nås.
-- Du kan exportera, bearbeta, analysera och visualisera flödes loggar med verktyg som TA, Splunk, Grafana, Stealthwatch osv.
+- Programvarudefinierade nätverk organiseras runt virtuella nätverk (VNET) och undernät. Säkerheten för dessa virtuella nätverk och undernät kan hanteras med hjälp av en NSG.
+- En nätverkssäkerhetsgrupp (NSG) innehåller  en lista över säkerhetsregler som tillåter eller nekar nätverkstrafik i resurser som den är ansluten till. NSG:er kan associeras med undernät, enskilda virtuella datorer eller enskilda nätverksgränssnitt (NIC) som är kopplade till virtuella datorer (Resource Manager). Mer information finns i Översikt [över nätverkssäkerhetsgrupp.](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)
+- Alla trafikflöden i nätverket utvärderas med hjälp av reglerna i tillämplig NSG.
+- Resultatet av dessa utvärderingar är NSG-flödesloggar. Flödesloggar samlas in via Azure-plattformen och kräver inte några ändringar i kundresurserna.
+- Obs! Regler är av två typer – avslutande & icke-avslutande, var och en med olika loggningsbeteenden.
+- - NSG-neka-regler avslutas. Den NSG som nekar trafiken loggar den i flödesloggar och bearbetningen i det här fallet stoppas när NSG nekar trafik. 
+- - NSG Tillåt-regler är icke-avslutande, vilket innebär att även om en NSG tillåter det, fortsätter bearbetningen till nästa NSG. Den senaste NSG:n som tillåter trafik loggar trafiken till Flödesloggar.
+- NSG-flödesloggar skrivs till lagringskonton som de kan nås från.
+- Du kan exportera, bearbeta, analysera och visualisera flödesloggar med verktyg som TA, Splunk, Grafana, Stealthwatch osv.
 
-## <a name="log-format"></a>Logg format
+## <a name="log-format"></a>Loggformat
 
-Flödes loggar innehåller följande egenskaper:
+Flödesloggar innehåller följande egenskaper:
 
-* **tid** när händelsen loggades
-* **systemId** -nätverks säkerhets grupp system-ID.
-* **kategori** – händelsens kategori. Kategorin är alltid **NetworkSecurityGroupFlowEvent**
-* **ResourceID** -resurs-ID för NSG
-* **operationName** -Always NetworkSecurityGroupFlowEvents
-* **Egenskaper** -en samling av flödets egenskaper
-    * **Version** – versions nummer för flödes loggens händelse schema
-    * **flöden** – en samling flöden. Den här egenskapen har flera poster för olika regler
-        * **regel** – regel för vilken flödena visas
-            * **flöden** – en samling flöden
-                * **Mac** – Mac-adressen för nätverkskortet för den virtuella dator där flödet samlades in
-                * **flowTuples** – en sträng som innehåller flera egenskaper för flödes tuppeln i kommaavgränsat format
-                    * **Tidsstämpel** – det här värdet är tidsstämpeln för när flödet inträffade i formatet UNIX-epok
+* **tid** – Tid då händelsen loggades
+* **systemId –** System-ID för nätverkssäkerhetsgrupp.
+* **category** – Händelsens kategori. Kategorin är alltid **NetworkSecurityGroupFlowEvent**
+* **resourceid** – NSG:ns resurs-ID
+* **operationName** – Always NetworkSecurityGroupFlowEvents
+* **egenskaper** – en samling egenskaper för flödet
+    * **Version** – Versionsnumret för händelseschemat för flödesloggen
+    * **flows** – En samling flöden. Den här egenskapen har flera poster för olika regler
+        * **regel** – Regel som flödena listas för
+            * **flows** – en samling flöden
+                * **mac** – MAC-adressen för nätverkskortet för den virtuella dator där flödet samlades in
+                * **flowTuples** – En sträng som innehåller flera egenskaper för flödestuppeln i kommaavgränsat format
+                    * **Tidsstämpel** – det här värdet är tidsstämpeln för när flödet inträffade i UNIX-epokformat
                     * **Käll-IP** – käll-IP
-                    * **Mål-IP** -mål-IP
-                    * **Källport** – käll porten
-                    * **Målport** – mål porten
+                    * **Mål-IP** – mål-IP
+                    * **Källport** – källporten
+                    * **Målport** – målporten
                     * **Protokoll** – protokollet för flödet. Giltiga värden är **T** för TCP och **U** för UDP
-                    * **Trafikflöde** – riktningen för trafikflödet. Giltiga värden är **i** för inkommande och **O** för utgående trafik.
-                    * **Trafik beslut** – huruvida trafik tillåts eller nekas. Giltiga värden är **A** för tillåtna och **D** för nekad.
-                    * **Flödes tillstånd-version 2 endast** – fångar in flödets tillstånd. Möjliga tillstånd är **B**: Börja, när ett flöde skapas. Statistik tillhandahålls inte. **C**: Fortsätter (Continuing) för en pågående flöde. Statistik tillhandahålls med 5 minuters mellanrum. **E**: Slutet (End), när ett flöde avslutas. Statistik tillhandahålls.
-                    * **Paket-källa till mål-version 2** Det totala antalet TCP-eller UDP-paket som har skickats från källan till målet sedan den senaste uppdateringen.
-                    * **Skickade byte-källa till mål version 2** Det totala antalet TCP-eller UDP-paketfilter som har skickats från källan till målet sedan den senaste uppdateringen. Paketbyte omfattar paketets huvud och nyttolast.
-                    * **Paket-mål till källa-endast version 2** Det totala antalet TCP-eller UDP-paket som har skickats från målet till källan sedan senaste uppdateringen.
-                    * **Skickade byte – målet till källa-version 2** Det totala antalet byte för TCP-och UDP-paket som skickats från målet till källan sedan senaste uppdateringen. Paketbyte omfattar paketets huvud och nyttolast.
+                    * **Trafikflöde** – Trafikflödets riktning. Giltiga värden är **I** för inkommande och **O** för utgående.
+                    * **Trafikbeslut** – Huruvida trafik tilläts eller nekades. Giltiga värden är **A för** tillåten och **D för** nekad.
+                    * **Flödestillstånd – endast version 2** – Avbildar flödets tillstånd. Möjliga tillstånd är **B**: Börja, när ett flöde skapas. Statistik tillhandahålls inte. **C**: Fortsätter (Continuing) för en pågående flöde. Statistik tillhandahålls med 5 minuters mellanrum. **E**: Slutet (End), när ett flöde avslutas. Statistik tillhandahålls.
+                    * **Paket – Källa till mål – endast version 2** Det totala antalet TCP- eller UDP-paket som skickats från källa till mål sedan den senaste uppdateringen.
+                    * **Skickade byte – källa till mål – endast version 2** Det totala antalet TCP- eller UDP-paketbyte som skickats från källa till mål sedan den senaste uppdateringen. Paketbyte omfattar paketets huvud och nyttolast.
+                    * **Paket – mål till källa – endast version 2** Det totala antalet TCP- eller UDP-paket som skickats från mål till källa sedan den senaste uppdateringen.
+                    * **Skickade byte – mål till källa – endast version 2** Det totala antalet TCP- och UDP-paketbyte som skickats från mål till källa sedan den senaste uppdateringen. Paketbyte omfattar paketets huvud och nyttolast.
 
 
-**NSG Flow-loggar version 2 (vs version 1)** 
+**NSG-flödesloggar, version 2 (jämfört med version 1)** 
 
-Version 2 av loggarna introducerar konceptet flödes tillstånd. Du kan konfigurera vilken version av flödes loggar du får.
+Version 2 av loggarna introducerar begreppet flödestillstånd. Du kan konfigurera vilken version av flödesloggar som du får.
 
-Flödets tillstånd _B_ registreras när ett flöde initieras. Flow State _C_ och Flow State _E_ är lägen som markerar fortsättningen för en flödes-och flödes avslutning. Både _C_ och _E_ -tillstånd innehåller bandbredds information.
+_Flödestillstånd B_ registreras när ett flöde initieras. _Flödestillstånd C_ och _flödestillstånd E_ är tillstånd som markerar fortsättningen av ett flöde respektive flödesavslut. Både _C-_ och _E-tillstånd_ innehåller information om trafikbandbredd.
 
-### <a name="sample-log-records"></a>Exempel på logg poster
+### <a name="sample-log-records"></a>Exempelloggposter
 
-Texten som följer är ett exempel på en flödes logg. Som du kan se finns det flera poster som följer egenskaps listan som beskrivs i föregående avsnitt.
+Följande text är ett exempel på en flödeslogg. Som du ser finns det flera poster som följer egenskapslistan som beskrivs i föregående avsnitt.
 
 > [!NOTE]
-> Värdena i egenskapen *flowTuples* är en kommaavgränsad lista.
+> Värden i egenskapen *flowTuples* är en kommaavgränsad lista.
  
-**Version 1 NSG flödes logg format exempel**
+**Exempel på NSG-flödesloggformat för version 1**
 ```json
 {
     "records": [
@@ -221,7 +221,7 @@ Texten som följer är ett exempel på en flödes logg. Som du kan se finns det 
         
         
 ```
-**Version 2 NSG flöde logg format exempel**
+**Exempel på NSG-flödesloggformat för version 2**
 ```json
  {
     "records": [
@@ -292,22 +292,22 @@ Texten som följer är ett exempel på en flödes logg. Som du kan se finns det 
         }
         
 ```
-**Förklarad logg tupel**
+**Förklaring av loggtuppeln**
 
-![tupel för flödes loggar](./media/network-watcher-nsg-flow-logging-overview/tuple.png)
+![flödesloggstuppeln](./media/network-watcher-nsg-flow-logging-overview/tuple.png)
 
-**Exempel på bandbredds beräkning**
+**Exempel på bandbreddsberäkning**
 
-Flow-tupler från en TCP-konversation mellan 185.170.185.105:35370 och 10.2.0.4:23:
+Flödestupplar från en TCP-konversation mellan 185.170.185.105:35370 och 10.2.0.4:23:
 
-"1493763938, 185.170.185.105, 10.2.0.4, 35370, 23, T, A, B,,,," "1493695838, 185.170.185.105, 10.2.0.4, 35370, 23, T, I, A, C, 1021, 588096, 8005, 4610880" "1493696138, 185.170.185.105, 10.2.0.4, 35370, 23, T, A, E, 52, 29952, 47, 27072"
+"1493763938,185.170.185.105,10.2.0.4,35370,23,T,I,A,B,,,," "1493695838,185.170.185.105,10.2.0.4,35370,23,T,I,A,C,1021,588096,8005,4610880" "1493696138,185.170.185.105,10.2.0.4,35370,23,T,I,A,E,52,29952,47,27072"
 
-För tilläggs- _C_ -och slut- _E_ -flöde-tillstånd är antalet byte och paket sammanställda från tiden för den föregående flödes tupel posten. Referens till föregående exempel konversation, det totala antalet överförda paket är 1021 + 52 + 8005 + 47 = 9125. Det totala antalet överförda byte är 588096 + 29952 + 4610880 + 27072 = 5256000.
+För _fortsättnings-C-_ _och E-slutflödes_ tillstånd är byte- och paketantal aggregerade från tiden för den tidigare flödestuppeln. När vi refererar till föregående exempelkonversation är det totala antalet överförda paket 1021+52+8005+47 = 9125. Det totala antalet överförda byte är 588096+29952+4610880+27072 = 5256000.
 
 
 ## <a name="enabling-nsg-flow-logs"></a>Aktivera NSG-flödesloggar
 
-Använd den relevanta länken nedan om du vill ha hjälp med att aktivera flödes loggar.
+Använd relevant länk nedan för guider om hur du aktiverar flödesloggar.
 
 - [Azure-portalen](./network-watcher-nsg-flow-logging-portal.md)
 - [PowerShell](./network-watcher-nsg-flow-logging-powershell.md)
@@ -315,80 +315,92 @@ Använd den relevanta länken nedan om du vill ha hjälp med att aktivera flöde
 - [REST](./network-watcher-nsg-flow-logging-rest.md)
 - [Azure Resource Manager](./network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
-## <a name="updating-parameters"></a>Uppdaterar parametrar
+## <a name="updating-parameters"></a>Uppdatera parametrar
 
 **Azure-portalen**
 
-På Azure Portal går du till avsnittet NSG Flow-loggar i Network Watcher. Klicka sedan på namnet på NSG. Då öppnas fönstret inställningar för flödes loggen. Ändra de parametrar som du vill ha och tryck på **Spara** för att distribuera ändringarna.
+På sidan Azure Portal du till avsnittet NSG-flödesloggar i Network Watcher. Klicka sedan på namnet på NSG:n. Då visas inställningsfönstret för Flödesloggen. Ändra de parametrar som du vill använda och tryck **på Spara** för att distribuera ändringarna.
 
 **PS/CLI/REST/ARM**
 
-Om du vill uppdatera parametrar via kommando rads verktyg använder du samma kommando som används för att aktivera flödes loggar (från ovan), men med uppdaterade parametrar som du vill ändra.
+Om du vill uppdatera parametrar via kommandoradsverktyg använder du samma kommando som används för att aktivera flödesloggar (från ovan) men med uppdaterade parametrar som du vill ändra.
 
-## <a name="working-with-flow-logs"></a>Arbeta med flödes loggar
+## <a name="working-with-flow-logs"></a>Arbeta med Flödesloggar
 
-*Läs-och export flödes loggar*
+*Läsa och exportera flödesloggar*
 
-- [Ladda ned &amp; Visa flödes loggar från portalen](./network-watcher-nsg-flow-logging-portal.md#download-flow-log)
-- [Läs flödes loggar med PowerShell Functions](./network-watcher-read-nsg-flow-logs.md)
-- [Exportera NSG Flow-loggar till Splunk](https://www.splunk.com/en_us/blog/tips-and-tricks/splunking-microsoft-azure-network-watcher-data.html)
+- [Ladda &amp; ned visa flödesloggar från portalen](./network-watcher-nsg-flow-logging-portal.md#download-flow-log)
+- [Läsa flödesloggar med PowerShell-funktioner](./network-watcher-read-nsg-flow-logs.md)
+- [Exportera NSG-flödesloggar till Splunk](https://www.splunk.com/en_us/blog/tips-and-tricks/splunking-microsoft-azure-network-watcher-data.html)
 
-Vid flödes loggningens mål NSG: er, visas de inte på samma sätt som de andra loggarna. Flödes loggar lagras bara inom ett lagrings konto och följer loggnings Sök vägen som visas i följande exempel:
+Flödesloggar är mål för NSG:er, men de visas inte på samma sätt som de andra loggarna. Flödesloggar lagras bara i ett lagringskonto och följer loggningssökvägen som visas i följande exempel:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
-*Visualisera flödes loggar*
+*Visualisera flödesloggar*
 
-- [Azure Traffic Analytics](./traffic-analytics.md) är en Azure Native-tjänst för att bearbeta flödes loggar, extrahera insikter och visualisera flödes loggar. 
-- [Gång Visualisera NSG flödes loggar med Power BI](./network-watcher-visualize-nsg-flow-logs-power-bi.md)
-- [Gång Visualisera NSG flödes loggar med elastisk stack](./network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
-- [Gång Hantera och analysera NSG Flow-loggar med Grafana](./network-watcher-nsg-grafana.md)
-- [Gång Hantera och analysera NSG Flow-loggar med Graylog](./network-watcher-analyze-nsg-flow-logs-graylog.md)
+- [Azure Traffic Analytics är](./traffic-analytics.md) en inbyggd Azure-tjänst för att bearbeta flödesloggar, extrahera insikter och visualisera flödesloggar. 
+- [[Självstudie] Visualisera NSG-flödesloggar med Power BI](./network-watcher-visualize-nsg-flow-logs-power-bi.md)
+- [[Självstudie] Visualisera NSG-flödesloggar med Elastic Stack](./network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+- [[Självstudie] Hantera och analysera NSG-flödesloggar med Grafana](./network-watcher-nsg-grafana.md)
+- [[Självstudie] Hantera och analysera NSG-flödesloggar med Graylog](./network-watcher-analyze-nsg-flow-logs-graylog.md)
 
+*Inaktivera flödesloggar*
 
-## <a name="nsg-flow-logging-considerations"></a>NSG flödes loggnings överväganden
+När flödesloggen är inaktiverad stoppas flödesloggningen för associerad NSG. Men flödesloggen som en resurs finns kvar med alla dess inställningar och associationer. Den kan aktiveras när som helst för att påbörja flödesloggning på den konfigurerade NSG:n. Anvisningar för att inaktivera/aktivera flödesloggar finns i den [här guiden.](./network-watcher-nsg-flow-logging-powershell.md)  
 
-**Överväganden för lagrings konto**: 
+*Ta bort flödesloggar*
 
-- Plats: det lagrings konto som används måste finnas i samma region som NSG.
-- Prestanda nivå: för närvarande stöds endast lagrings konton på standard nivån.
-- Själv hantering av nyckel rotation: om du ändrar/roterar åtkomst nycklarna till ditt lagrings konto slutar NSG Flow-loggar att fungera. För att åtgärda det här problemet måste du inaktivera och sedan återaktivera NSG Flow-loggar.
+När flödesloggen tas bort stoppas inte bara flödesloggningen för den associerade NSG:n, utan även flödesloggresursen tas bort med dess inställningar och associationer. Om du vill börja flödesloggningen igen måste en ny flödesloggresurs skapas för den NSG:n. En flödeslogg kan tas bort med [PowerShell,](https://docs.microsoft.com/powershell/module/az.network/remove-aznetworkwatcherflowlog) [CLI](https://docs.microsoft.com/cli/azure/network/watcher/flow-log#az_network_watcher_flow_log_delete) [eller REST API](https://docs.microsoft.com/rest/api/network-watcher/flowlogs/delete). Stödet för att ta bort flödesloggar från Azure Portal är i pipeline.    
 
-**Flödes loggnings kostnader**: NSG flödes loggning debiteras på volymen av loggar som skapats. Hög trafik volym kan resultera i stor flödes logg volym och tillhör ande kostnader. NSG Flow logg priser omfattar inte de underliggande lagrings kostnaderna. Om du använder funktionen bevarande princip med NSG flödes loggning innebär det att det uppstår separata lagrings kostnader för längre tids perioder. Om du vill behålla data permanent och inte vill tillämpa någon bevarande princip, ställer du in kvarhållning (dagar) på 0. Mer information finns i [Network Watcher priser](https://azure.microsoft.com/pricing/details/network-watcher/) och [Azure Storage prissättning](https://azure.microsoft.com/pricing/details/storage/) för ytterligare information.
+När en NSG tas bort tas dessutom den associerade flödesloggresursen bort som standard.
 
-**Problem med användardefinierade inkommande TCP-regler**: [nätverks säkerhets grupper (NSG: er)](../virtual-network/network-security-groups-overview.md) implementeras som en [tillstånds känslig brand vägg](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true). På grund av aktuella plattforms begränsningar implementeras dock användardefinierade regler som påverkar inkommande TCP-flöden i ett tillstånds lös läge. På grund av detta blir flöden som påverkas av användardefinierade regler för inkommande trafik som inte avslutas. Dessutom registreras inte byte och antal paket för dessa flöden. Därför kan antalet byte och paket som rapporter ATS i NSG Flow-loggar (och Trafikanalys) skilja sig från de faktiska talen. En valbar flagga som åtgärdar de här problemen är schemalagda att vara tillgängliga senast den senaste mars 2021. Kunder som drabbas av allvarliga problem på grund av det här beteendet kan begära väljer via support, ge en supportbegäran under Network Watcher > flödes loggar.  
+> [!NOTE]
+> Om du vill flytta en NSG till en annan resursgrupp eller prenumeration måste de associerade flödesloggarna tas bort, men det går inte att inaktivera flödesloggarna. Efter migreringen av NSG måste flödesloggarna återskapas för att aktivera flödesloggning på den.  
 
-**Inkommande flöden som loggats från Internet-IP-adresser till virtuella datorer utan offentliga** IP-adresser: virtuella datorer som inte har en offentlig IP-adress som tilldelats via en offentlig IP-adress som är kopplad till nätverkskortet som en offentlig IP-adress på instans nivå eller som är en del av en grundläggande belastningsutjämnare, använder [standard SNAT](../load-balancer/load-balancer-outbound-connections.md) och har en IP-adress som tilldelats av Azure för att under lätta Därför kan du se flödes logg poster för flöden från Internet-IP-adresser, om flödet är avsett för en port i intervallet för de portar som tilldelats för SNAT. Även om Azure inte tillåter dessa flöden till den virtuella datorn, loggas försöket och visas i Network Watcher flödes loggen för NSG efter design. Vi rekommenderar att oönskad inkommande Internet trafik uttryckligen blockeras med NSG.
+## <a name="nsg-flow-logging-considerations"></a>Överväganden för NSG-flödesloggning
 
-**Problem med Application Gateway v2-UNDERNÄT NSG**: flödes loggning på undernät för Application Gateway v2-NSG [stöds inte](../application-gateway/application-gateway-faq.yml#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet) för närvarande. Det här problemet påverkar inte Application Gateway v1.
+**Överväganden för lagringskonto:** 
 
-**Inkompatibla tjänster**: på grund av aktuella plattforms begränsningar stöds inte en liten uppsättning Azure-tjänster av NSG Flow-loggar. Den aktuella listan över inkompatibla tjänster är
+- Plats: Det lagringskonto som används måste finnas i samma region som NSG.
+- Prestandanivå: För närvarande stöds endast lagringskonton på standardnivå.
+- Självhantera nyckelrotation: Om du ändrar/roterar åtkomstnycklarna till ditt lagringskonto slutar NSG-flödesloggar att fungera. För att åtgärda det här problemet måste du inaktivera och sedan återaktivera NSG-flödesloggar.
+
+**Kostnader för flödesloggning:** NSG-flödesloggning debiteras på den volym loggar som skapas. Hög trafikvolym kan resultera i stora flödesloggvolymer och tillhörande kostnader. Prissättningen för NSG-flödesloggar inkluderar inte de underliggande kostnaderna för lagring. Användning av funktionen för bevarandeprincip med NSG-flödesloggning innebär separata lagringskostnader under längre tidsperioder. Om du vill behålla data för alltid och inte vill tillämpa någon kvarhållningsprincip anger du kvarhållning (dagar) till 0. Mer information finns i [Network Watcher och](https://azure.microsoft.com/pricing/details/network-watcher/) [Azure Storage prisinformation.](https://azure.microsoft.com/pricing/details/storage/)
+
+**Problem med användardefinierade inkommande TCP-regler:** [Nätverkssäkerhetsgrupper (NSG:er)](../virtual-network/network-security-groups-overview.md) implementeras som en [tillståndsful brandvägg.](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true) På grund av aktuella plattformsbegränsningar implementeras dock användardefinierade regler som påverkar inkommande TCP-flöden på ett tillståndslöst sätt. På grund av detta blir flöden som påverkas av användardefinierade regler för inkommande trafik icke-avslutande. Dessutom registreras inte byte- och paketantal för dessa flöden. Därför kan antalet byte och paket som rapporteras i NSG-flödesloggar (och Trafikanalys) vara annorlunda än faktiska tal. En flagga för att anmäla sig som åtgärdar dessa problem är schemalagd att vara tillgänglig senast i mars 2021. Under tiden kan kunder som har allvarliga problem på grund av det här beteendet begära att få delta via support. Skapa en supportbegäran under Network Watcher > NSG-flödesloggar.  
+
+Inkommande flöden som loggas från **Internet-IP-adresser** till virtuella datorer utan offentliga IP-adresser: Virtuella datorer som inte har en offentlig IP-adress tilldelad via en offentlig IP-adress som är associerad med nätverkskortet som en offentlig IP-adress på instansnivå, eller som ingår i en grundläggande lastbalanseringsdelspool, använder [standard-SNAT](../load-balancer/load-balancer-outbound-connections.md) och har en IP-adress tilldelad av Azure för att underlätta utgående anslutningar. Därför kan du se flödesloggposter för flöden från Internet-IP-adresser, om flödet är avsett för en port i intervallet med portar som tilldelats för SNAT. Azure tillåter inte dessa flöden till den virtuella datorn, men försöket loggas och visas i Network Watcher NSG-flödesloggen som design. Vi rekommenderar att oönskad inkommande Internettrafik uttryckligen blockeras med NSG.
+
+**Problem med Application Gateway NSG** för V2-undernätet: Flödesloggning på programgatewayens V2-undernäts-NSG [stöds inte för](../application-gateway/application-gateway-faq.yml#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet) närvarande. Det här problemet påverkar inte Application Gateway V1.
+
+**Inkompatibla** tjänster: På grund av aktuella plattformsbegränsningar stöds inte en liten uppsättning Azure-tjänster av NSG-flödesloggar. Den aktuella listan över inkompatibla tjänster är
 - [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
 - [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
 
 ## <a name="best-practices"></a>Bästa praxis
 
-**Aktivera för kritiska virtuella nätverk/undernät**: flödes loggar ska aktive ras på alla kritiska virtuella nätverk/undernät i din prenumeration som bästa praxis för granskning och säkerhet. 
+**Aktivera på kritiska virtuella nätverk/undernät: Flödesloggar** ska aktiveras på alla kritiska virtuella nätverk/undernät i din prenumeration som bästa praxis för granskning och säkerhet. 
 
-**Aktivera NSG flödes loggning på alla NSG: er som är kopplade till en resurs**: flödes loggning i Azure konfigureras på NSG-resursen. Ett flöde kommer bara att associeras med en NSG-regel. I scenarier där flera NSG: er används rekommenderar vi att du aktiverar NSG flödes loggar på alla NSG: er som tillämpas på resursens undernät eller nätverks gränssnitt för att säkerställa att all trafik registreras. Mer information finns i [hur trafiken utvärderas](../virtual-network/network-security-group-how-it-works.md) i nätverks säkerhets grupper. 
+**Aktivera NSG-flödesloggning** på alla NSG:er som är kopplade till en resurs: Flödesloggning i Azure har konfigurerats på NSG-resursen. Ett flöde associeras endast med en NSG-regel. I scenarier där kunden använder flera NSG:er rekommenderar vi att du aktiverar NSG-flödesloggar för alla NSG:er som används i resursens undernät eller nätverksgränssnitt för att säkerställa att all trafik registreras. Mer information finns i [hur trafik utvärderas i](../virtual-network/network-security-group-how-it-works.md) nätverkssäkerhetsgrupper. 
 
 Några vanliga scenarier:
-1. **Flera nätverkskort på en virtuell dator**: om flera nätverkskort är kopplade till en virtuell dator måste flödes loggning vara aktiverat på alla
-1. **Ha NSG på både NIC-och under näts nivå**: om NSG har kon figurer ATS på nätverkskortet samt under näts nivån måste flödes loggning aktive ras på både NSG: er. 
+1. **Flera nätverkskort på en virtuell dator:** Om flera nätverkskort är anslutna till en virtuell dator måste flödesloggning vara aktiverat på alla
+1. **Ha NSG** på både NIC- och undernätsnivå: Om NSG har konfigurerats på nätverkskortet och undernätsnivå måste flödesloggning vara aktiverat på båda NSG:erna. 
 
-**Lagrings etablering**: lagringen bör tillhandahållas i finjustera med den förväntade flödes logg volymen.
+**Lagringsetablering:** Lagringen ska etableras i enlighet med förväntad flödesloggvolym.
 
-**Namn**: namnet på NSG måste vara upp till 80 tecken och NSG-regel namnen får innehålla mer än 65 tecken. Om namnen överskrider tecken gränsen kan de trunkeras vid loggning.
+**Namngivning:** NSG-namnet måste vara upp till 80 tecken och NSG-regelnamnen upp till 65 tecken. Om namnen överskrider teckengränsen kan det trunkeras under loggning.
 
 ## <a name="troubleshooting-common-issues"></a>Felsöka vanliga problem
 
 **Jag kunde inte aktivera NSG-flödesloggar**
 
-- **Microsoft. Insights** -resurs leverantören har inte registrerats
+- **Resursprovidern Microsoft.Insights** har inte registrerats
 
-Om du fick felet _AuthorizationFailed_ eller _GatewayAuthenticationFailed_ har du kanske inte aktiverat resursprovidern Microsoft Insights i din prenumeration. [Följ instruktionerna](./network-watcher-nsg-flow-logging-portal.md#register-insights-provider) för att aktivera Microsoft Insights-providern.
+Om du fick felet _AuthorizationFailed_ eller _GatewayAuthenticationFailed_ har du kanske inte aktiverat resursprovidern Microsoft Insights i din prenumeration. [Följ instruktionerna för](./network-watcher-nsg-flow-logging-portal.md#register-insights-provider) att aktivera Microsoft Insights-providern.
 
 **Jag har aktiverat NSG-flödesloggar men ser inte data i mitt lagringskonto**
 
@@ -402,40 +414,40 @@ Ibland visas inte loggar om dina virtuella datorer inte är aktiva eller om det 
 
 **Jag vill automatisera NSG-flödesloggar**
 
-Stöd för automatisering via ARM-mallar är för närvarande inte tillgängligt för NSG-flödesloggar. Mer information finns i [funktions meddelandet](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/) .
+Stöd för automatisering via ARM-mallar är för närvarande inte tillgängligt för NSG-flödesloggar. Mer information finns i [informationsmeddelandet för funktionen](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/).
 
 ## <a name="faq"></a>Vanliga frågor
 
-**Vad gör NSG Flow-loggarna?**
+**Vad gör NSG-flödesloggar?**
 
-Azure nätverks resurser kan kombineras och hanteras via [nätverks säkerhets grupper (NSG: er)](../virtual-network/network-security-groups-overview.md). Med NSG Flow-loggar kan du logga 5 tuple-flödes information om all trafik via din NSG: er. Obehandlade flödes loggar skrivs till ett Azure Storage-konto där de kan bearbetas, analyseras, efter frågas eller exporteras efter behov.
+Azure-nätverksresurser kan kombineras och hanteras via [nätverkssäkerhetsgrupper (NSG:er).](../virtual-network/network-security-groups-overview.md) Med NSG-flödesloggar kan du logga 5-tuppelflödesinformation om all trafik via dina NSG:er. Råflödesloggarna skrivs till ett Azure Storage-konto där de kan bearbetas ytterligare, analyseras, efterfrågas eller exporteras efter behov.
 
-**Påverkar användning av flödes loggar min nätverks svars tid eller prestanda?**
+**Påverkar användning av flödesloggar svarstiden eller prestandan i nätverket?**
 
-Flödes logg data samlas in utanför sökvägen till nätverks trafiken och påverkar därför inte nätverks flödet eller svars tiden. Du kan skapa eller ta bort flödes loggar utan risk för påverkan på nätverkets prestanda.
+Flödesloggdata samlas in utanför sökvägen till nätverkstrafiken och påverkar därför inte nätverkets dataflöde eller svarstid. Du kan skapa eller ta bort flödesloggar utan att påverka nätverkets prestanda.
 
-**Hur gör jag för att använda flödes loggar för NSG med ett lagrings konto bakom en brand vägg?**
+**Hur gör jag för att NSG-flödesloggar med ett lagringskonto bakom en brandvägg?**
 
-Om du vill använda ett lagrings konto bakom en brand vägg måste du ange ett undantag för betrodda Microsoft-tjänster för åtkomst till ditt lagrings konto:
+Om du vill använda ett lagringskonto bakom en brandvägg måste du ange ett undantag för betrodda Microsoft-tjänster för att komma åt ditt lagringskonto:
 
-- Navigera till lagrings kontot genom att skriva lagrings kontots namn i den globala sökningen på portalen eller från [sidan lagrings konton](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts)
-- Under avsnittet  **Inställningar**  väljer du  **brand väggar och virtuella nätverk**
-- I **Tillåt åtkomst från** väljer du  **valda nätverk**. Under  **undantag**, kryssa i rutan bredvid * * * * Tillåt betrodda Microsoft-tjänster att komma åt det här lagrings kontot * * * *
+- Navigera till lagringskontot genom att skriva lagringskontots namn i global sökning på portalen eller från [sidan Lagringskonton](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts)
+- Under avsnittet  **INSTÄLLNINGAR**  väljer du  **Brandväggar och virtuella nätverk**
+- I **Tillåt åtkomst från** väljer du Valda  **nätverk**. Under Undantag  **markerar** du sedan rutan bredvid ***Tillåt betrodda Microsoft-tjänster att komma åt det här lagringskontot***
 - Om det redan är valt behövs ingen ändring.
-- Leta upp mål NSG på [översikts sidan för NSG Flow-loggar](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) och aktivera NSG flödes loggar med ovanstående lagrings konto valt.
+- Leta upp din mål-NSG på översiktssidan [för NSG-flödesloggar](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) och aktivera NSG-flödesloggar med ovanstående lagringskonto valt.
 
 Du kan kontrollera lagringsloggarna efter några minuter och bör se en uppdaterad tidsstämpel eller en ny JSON-fil som skapats.
 
-**Hur gör jag för att använda flödes loggar för NSG med ett lagrings konto bakom en tjänst slut punkt?**
+**Hur gör jag för att NSG-flödesloggar med ett lagringskonto bakom en tjänstslutpunkt?**
 
-NSG flödes loggar är kompatibla med tjänst slut punkter utan att kräva någon extra konfiguration. Se [självstudien om hur du aktiverar tjänstens slut punkter](../virtual-network/tutorial-restrict-network-access-to-resources.md#enable-a-service-endpoint) i det virtuella nätverket.
+NSG-flödesloggar är kompatibla med tjänstslutpunkter utan att det krävs någon extra konfiguration. Se [självstudien om hur du aktiverar tjänstslutpunkter](../virtual-network/tutorial-restrict-network-access-to-resources.md#enable-a-service-endpoint) i ditt virtuella nätverk.
 
-**Vad är skillnaden mellan flödes loggar version 1 & 2?**
+**Vad är skillnaden mellan flödesloggversion 1 & 2?**
 
-Flödes loggar version 2 introducerar konceptet _flödes tillstånd_ & lagrar information om byte och paket som överförs. [Läs mer](#log-format)
+Flödesloggar version 2 introducerar begreppet _flödestillstånd för_ & lagrar information om byte och paket som överförs. [Läs mer](#log-format)
 
 ## <a name="pricing"></a>Priser
 
-NSG flödes loggar debiteras per GB insamlade loggar och levereras med en kostnads fri nivå på 5 GB/månad per prenumeration. För aktuell prissättning i din region, se [sidan Network Watcher prissättning](https://azure.microsoft.com/pricing/details/network-watcher/).
+NSG-flödesloggar debiteras per GB loggar som samlas in och har en kostnadsfri nivå på 5 GB/månad per prenumeration. Aktuella priser i din region finns på Network Watcher [sidan med priser.](https://azure.microsoft.com/pricing/details/network-watcher/)
 
-Lagring av loggar debiteras separat, se [Azure Storage Block Blob-pris sida](https://azure.microsoft.com/pricing/details/storage/blobs/) för relevanta priser.
+Lagring av loggar debiteras separat. Information om [relevanta priser finns Azure Storage sidan med](https://azure.microsoft.com/pricing/details/storage/blobs/) priser för blockblobar.

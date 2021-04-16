@@ -3,13 +3,13 @@
 - name: Översikt
   expanded: true
   items:
-    - name: Översikt över ansikts tjänster
+    - name: Översikt över ansiktstjänsten
       href: Overview.md
     - name: Priser
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: Nyheter
       href: releasenotes.md
-- name: Snabb start för ansikts
+- name: Snabbstart för ansikts
   href: Quickstarts/client-libraries.md
 - name: Exempel
   href: /samples/browse/?products=azure&term=face
@@ -17,9 +17,9 @@
   items:
     - name: Identifiera och analysera ansikten
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
-    - name: Ange en modell version för ansikts igenkänning
+    - name: Ange en version av ansiktsigenkänningsmodellen
       href: Face-API-How-to-Topics/specify-recognition-model.md
-    - name: Ange en modell version för ansikts igenkänning
+    - name: Ange en version av ansiktsavkänningsmodellen
       href: Face-API-How-to-Topics/specify-detection-model.md
     - name: Lägg till ansikten till en grupp
       href: Face-API-How-to-Topics/how-to-add-faces.md
@@ -33,19 +33,18 @@
       href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
     - name: Migrera ansiktsdata
       href: Face-API-How-to-Topics/how-to-migrate-face-data.md
-    - name: Använda ansikts behållaren
+    - name: Använda ansiktscontainern
       items:
         - name: Dokumentation om containrar för Cognitive Services
-          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
+          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/face/context/context
         - name: Översikt över container
-          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/computer-vision/context/context
+          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/face/context/context
         - name: Installera och köra containrar
           href: face-how-to-install-containers.md
         - name: Konfigurera containrar
           href: face-resource-container-config.md
         - name: Använda containerinstanser
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
+          href: /azure/cognitive-services/containers/azure-container-instance-recipe?context=/azure/cognitive-services/face/context/context
 - name: Begrepp
   items:
     - name: Ansiktsspårning
@@ -54,17 +53,15 @@
       href: concepts/face-recognition.md
 - name: Självstudier
   items:
-    - name: Skapa en ansikts detektor-app
-      href: Tutorials/FaceAPIinCSharpTutorial.md
-    - name: Lägg till användare till en ansikts tjänst
+    - name: Lägga till användare i en ansiktstjänst
       items:
-        - name: Metod tips för att lägga till användare
+        - name: Metodtips för att lägga till användare
           href: enrollment-overview.md
-        - name: Skapa en reagerar-app för att lägga till användare
+        - name: Skapa en React-app för att lägga till användare
           href: build-enrollment-app.md
 - name: Referens
   items:
-    - name: Ansikts REST API
+    - name: Ansikts-REST API
       href: APIReference.md
     - name: .NET
       href: /dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet
@@ -80,7 +77,7 @@
   items:
     - name: Stöd för regioner
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Lär dig moduler
+    - name: Learn-moduler
       href: 'https://docs.microsoft.com/learn/modules/detect-analyze-faces/'
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context

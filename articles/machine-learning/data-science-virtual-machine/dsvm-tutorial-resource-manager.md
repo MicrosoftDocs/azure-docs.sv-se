@@ -1,24 +1,26 @@
 ---
-title: 'Snabb start: skapa en Data Science VM-Resource Manager-mall'
+title: 'Snabbstart: Skapa en Data Science VM – Resource Manager mall'
 titleSuffix: Azure Data Science Virtual Machine
-description: I den här snabb starten använder du en Azure Resource Manager-mall för att snabbt distribuera en Data Science Virtual Machine
+description: I den här snabbstarten använder du en Azure Resource Manager för att snabbt distribuera en Data Science Virtual Machine
 services: machine-learning
 author: lobrien
 ms.author: laobri
-ms.custom: subject-armqs
 ms.date: 06/10/2020
-ms.service: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: 7feacec9f0e78749f17359a9080411b6d9696136
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.service: data-science-vm
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 0683634223a63281ce2b42ebb02f87f9211a589e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518223"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530653"
 ---
-# <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>Snabb start: skapa en Ubuntu-Data Science Virtual Machine med en ARM-mall
+# <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>Snabbstart: Skapa en Ubuntu-Data Science Virtual Machine med hjälp av en ARM-mall
 
-I den här snabb starten visas hur du skapar en Ubuntu 18,04-Data Science Virtual Machine med en Azure Resource Manager-mall (ARM-mall). Data vetenskap Virtual Machines är molnbaserade virtuella datorer som är förinstallerade med en svit med data vetenskaps-och maskin inlärnings ramverk och verktyg. När du har distribuerat en GPU-baserad beräknings resurs konfigureras alla verktyg och bibliotek för att använda GPU: n.
+Den här snabbstarten visar hur du skapar en Ubuntu 18.04-Data Science Virtual Machine med hjälp av en Azure Resource Manager mall (ARM-mall). Data Science Virtual Machines molnbaserade virtuella datorer förinstallerade med en uppsättning ramverk och verktyg för datavetenskap och maskininlärning. När de distribueras på GPU-drivna beräkningsresurser konfigureras alla verktyg och bibliotek för att använda GPU:n.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -30,7 +32,7 @@ Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar v
 
 * En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/services/machine-learning/) innan du börjar.
 
-* Om du vill använda CLI-kommandona i det här dokumentet från din **lokala miljö** behöver du [Azure CLI](/cli/azure/install-azure-cli).
+* Om du vill använda CLI-kommandona i det här dokumentet **från din lokala** miljö behöver du Azure [CLI](/cli/azure/install-azure-cli).
 
 ## <a name="review-the-template"></a>Granska mallen
 
@@ -40,16 +42,16 @@ Mallen som används i den här snabbstarten kommer från [Azure-snabbstartsmalla
 
 Följande resurser definieras i mallen:
 
-* [Microsoft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
-* [Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
-* [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-* [Microsoft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-* [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
-* [Microsoft. Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): skapa en molnbaserad virtuell dator. I den här mallen är den virtuella datorn konfigurerad som en Data Science Virtual Machine som kör Ubuntu 18,04.
+* [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+* [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
+* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft.Compute/virtualMachines:](/azure/templates/microsoft.compute/virtualmachines)Skapa en molnbaserad virtuell dator. I den här mallen konfigureras den virtuella datorn som en Data Science Virtual Machine som kör Ubuntu 18.04.
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
-Om du vill använda mallen från Azure CLI loggar du in och väljer din prenumeration (se [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli)). Kör sedan:
+Om du vill använda mallen från Azure CLI loggar du in och väljer din prenumeration (se [Logga in med Azure CLI).](/cli/azure/authenticate-azure-cli) Kör sedan:
 
 ```azurecli-interactive
 read -p "Enter the name of the resource group to create:" resourceGroupName &&
@@ -66,11 +68,11 @@ read
 
 När du kör kommandot ovan anger du:
 
-1. Namnet på den resurs grupp som du vill skapa som innehåller DSVM och tillhör ande resurser.
+1. Namnet på den resursgrupp som du vill skapa som ska innehålla DSVM och associerade resurser.
 1. Den Azure-plats där du vill göra distributionen.
-1. Autentiseringstypen som du vill använda (ange strängen `password` eller `sshPublicKey` ).
-1. Inloggnings namnet för administratörs kontot (det här värdet får inte vara `admin` ).
-1. Värdet för lösen ordet eller den offentliga SSH-nyckeln för kontot.
+1. Den autentiseringstyp som du vill använda (ange strängen `password` eller `sshPublicKey` ).
+1. Inloggningsnamnet för administratörskontot (det här värdet kanske inte är `admin` ).
+1. Värdet för lösenordet eller den offentliga SSH-nyckeln för kontot.
 
 ## <a name="review-deployed-resources"></a>Granska distribuerade resurser
 
@@ -78,17 +80,17 @@ Så här ser du Data Science Virtual Machine:
 
 1. Gå till [Azure Portal](https://portal.azure.com)
 1. Logga in.
-1. Välj den resurs grupp som du nyss skapade.
+1. Välj den resursgrupp som du nyss skapade.
 
-Du ser resurs gruppens information:
+Du ser resursgruppens information:
 
-:::image type="content" source="media/dsvm-tutorial-resource-manager/resource-group-home.png" alt-text="Skärm bild av en grundläggande resurs grupp som innehåller en DSVM":::
+:::image type="content" source="media/dsvm-tutorial-resource-manager/resource-group-home.png" alt-text="Skärmbild av en grundläggande resursgrupp som innehåller en DSVM":::
 
-Klicka på den virtuella dator resursen för att gå till sidan med information. Här hittar du information om den virtuella datorn, inklusive anslutnings information.
+Klicka på resursen Virtuell dator för att gå till dess informationssida. Här hittar du information om den virtuella datorn, inklusive anslutningsinformation.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du inte vill använda den här virtuella datorn tar du bort den. Eftersom DSVM är kopplat till andra resurser, till exempel ett lagrings konto, vill du förmodligen ta bort hela resurs gruppen som du skapade. Du kan ta bort resurs gruppen med hjälp av portalen genom att klicka på knappen **ta bort** och bekräfta. Du kan också ta bort resurs gruppen från CLI med:
+Om du inte vill använda den här virtuella datorn tar du bort den. Eftersom DSVM är associerad med andra resurser, till exempel ett lagringskonto, vill du förmodligen ta bort hela resursgruppen som du skapade. Du kan ta bort resursgruppen med hjälp av portalen genom att klicka på **knappen Ta** bort och bekräfta. Eller så kan du ta bort resursgruppen från CLI med:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -99,7 +101,7 @@ echo "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du en Data Science Virtual Machine från en ARM-mall.
+I den här snabbstarten skapade du en Data Science Virtual Machine från en ARM-mall.
 
 > [!div class="nextstepaction"]
-> [Exempel program & ML-genom gångar](dsvm-samples-and-walkthroughs.md)
+> [Exempelprogram & ML-genomgångar](dsvm-samples-and-walkthroughs.md)

@@ -1,51 +1,53 @@
 ---
-title: 'Snabb start – skicka en fråga till API: et i python-Bing lokal företags sökning'
+title: Snabbstart – Skicka en fråga till API:et i Python – Bing-företagssökning i närområde
 titleSuffix: Azure Cognitive Services
-description: Använd den här snabb starten för att börja använda Bing-API för lokal sökning i python.
+description: Använd den här snabbstarten för att börja använda Bing-företagssökning i närområde API i Python.
 services: cognitive-services
 author: aahill
+ms.author: aahi
 manager: nitinme
+ms.date: 05/12/2020
+ms.topic: quickstart
 ms.service: cognitive-services
 ms.subservice: bing-local-business
-ms.topic: quickstart
-ms.date: 05/12/2020
-ms.author: aahi
-ms.custom: devx-track-python
-ms.openlocfilehash: ff06d29c613b626c48c347628992576fc29b3a89
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.custom:
+- devx-track-python
+- mode-api
+ms.openlocfilehash: adbf3d9abddf01ba67046cfa433ffd46f713ff83
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430147"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536674"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Snabb start: skicka en fråga till API: et för lokal sökning i Bing i python
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Snabbstart: Skicka en fråga till BING-FÖRETAGSSÖKNING I NÄROMRÅDE-API:et i Python
 
 > [!WARNING]
-> API:er för Bing-sökresultat flyttas från Cognitive Services till Bing-sökning tjänster. Från och med den **30 oktober 2020** måste alla nya instanser av Bing-sökning tillhandahållas enligt processen som dokumenteras [här](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
-> API:er för Bing-sökresultat som har tillhandahållits med hjälp av Cognitive Services kommer att stödjas under de kommande tre åren eller tills Enterprise-avtals slut, beroende på vilket som sker först.
-> Instruktioner för migrering finns i [Bing-sökning Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+> Bing-sökning API:er flyttas från Cognitive Services till Bing-sökning Services. Från **och med 30 oktober 2020** måste alla nya instanser av Bing-sökning etableras enligt den process som beskrivs [här](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+> Bing-sökning API:er som etablerats med Cognitive Services kommer att stödjas under de kommande tre åren eller fram till slutet av ditt Enterprise-avtal, beroende på vilket som inträffar först.
+> Migreringsanvisningar finns i [Bing-sökning Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Använd den här snabb starten för att lära dig hur du skickar begär anden till API: et för lokal sökning i Bing, som är en Azure-tjänst för inlärning. Även om det här enkla programmet skrivs i python är API: et en RESTful-webbtjänst som är kompatibel med alla programmeringsspråk som kan göra HTTP-begäranden och parsa JSON.
+Använd den här snabbstarten om du vill lära dig hur du skickar begäranden Bing-företagssökning i närområde API: et, som är en Azure Cognitive Service. Även om det här enkla programmet är skrivet i Python är API:et en RESTful-webbtjänst som är kompatibel med alla programmeringsspråk som kan göra HTTP-begäranden och parsa JSON.
 
-Det här exempel programmet hämtar lokala svars data från API: et för en Sök fråga.
+Det här exempelprogrammet hämtar lokala svarsdata från API:et för en sökfråga.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
-* [Python](https://www.python.org/) 2. x eller 3. x.
-* När du har en Azure-prenumeration <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" skapar du en Bing-sökning resurs "  target="_blank"> skapa en Bing-sökning resurs </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
+* En Azure-prenumeration [– Skapa en kostnadsfritt](https://azure.microsoft.com/free/cognitive-services/)
+* [Python](https://www.python.org/) 2.x eller 3.x.
+* När du har din Azure-prenumeration skapar Bing-sökning resurs en Bing-sökning resurs i Azure Portal för <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" att hämta din nyckel och "  target="_blank"> </a> slutpunkt. När den har distribuerats klickar du **på Gå till resurs**.
 
-## <a name="run-the-complete-application"></a>Kör hela programmet
+## <a name="run-the-complete-application"></a>Kör det fullständiga programmet
 
-Följande exempel hämtar lokaliserade resultat, som implementeras i följande steg:
+Följande exempel hämtar lokaliserade resultat som implementeras i följande steg:
 1. Deklarera variabler för att specificera slutpunkten med hjälp av värd och sökväg.
-2. Ange Frågeparametern. 
-3. Definiera Sök funktionen som skapar begäran och lägger till `Ocp-Apim-Subscription-Key` rubriken.
-4. Ange `Ocp-Apim-Subscription-Key` sidhuvudet. 
+2. Ange frågeparametern. 
+3. Definiera sökfunktionen som skapar begäran och lägger till `Ocp-Apim-Subscription-Key` -huvudet.
+4. Ange `Ocp-Apim-Subscription-Key` rubriken. 
 5. Upprätta anslutningen och skicka begäran.
 6. Skriv ut JSON-resultaten.
 
-Den fullständiga koden för den här demon är följande:
+Den fullständiga koden för den här demonstrationen är följande:
 
 ```python
 import http.client, urllib.parse
@@ -79,6 +81,6 @@ print (json.dumps(json.loads(result), indent=4))
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-- [Lokal affärs sökning Java snabb start](local-search-java-quickstart.md)
-- [Snabb start för lokal affärs sökning i C#](local-quickstart.md)
-- [Snabb start för lokal företags sökning Node.js](local-search-node-quickstart.md)
+- [Snabbstart för sökning efter lokala företag i Java](local-search-java-quickstart.md)
+- [C#-snabbstart för sökning efter lokala företag](local-quickstart.md)
+- [Snabbstart för sökning efter Node.js lokala företag](local-search-node-quickstart.md)

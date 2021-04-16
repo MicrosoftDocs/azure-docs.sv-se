@@ -1,40 +1,45 @@
 ---
-title: Använda Azure Service Bus köer med Java (Azure-Messaging-Service Bus)
-description: I den här självstudien får du lära dig hur du använder Java för att skicka meddelanden till och ta emot meddelanden från en Azure Service Bus kö. Du använder det nya paketet Azure-Messaging-Service Bus.
-ms.devlang: Java
-ms.topic: quickstart
+title: Använda Azure Service Bus köer med Java (azure-messaging-servicebus)
+description: I den här självstudien får du lära dig hur du använder Java för att skicka meddelanden till och ta emot meddelanden från en Azure Service Bus kö. Du använder det nya paketet azure-messaging-servicebus.
 ms.date: 02/13/2021
-ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 1fab8d3f603b3c2c7e3c307d3d2ce53590d7511c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.topic: quickstart
+ms.devlang: Java
+ms.custom:
+- seo-java-july2019
+- seo-java-august2019
+- seo-java-september2019
+- devx-track-java
+- mode-api
+ms.openlocfilehash: e3998e812bb921ff8bea5e83199bc4e142ed2e83
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739771"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533425"
 ---
-# <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-java"></a>Skicka meddelanden till och ta emot meddelanden från Azure Service Bus köer (Java)
-I den här snabb starten ska du skapa en Java-app för att skicka meddelanden till och ta emot meddelanden från en Azure Service Bus kö. 
+# <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-java"></a>Skicka meddelanden till och ta emot meddelanden Azure Service Bus köer (Java)
+I den här snabbstarten skapar du en Java-app för att skicka meddelanden till och ta emot meddelanden från en Azure Service Bus kö. 
 
 > [!IMPORTANT]
-> I den här snabb starten används det nya paketet Azure-Messaging-Service Bus. En snabb start som använder det gamla Azure-Service Bus-paketet finns i [skicka och ta emot meddelanden med Azure-Service Bus](service-bus-java-how-to-use-queues-legacy.md).
+> I den här snabbstarten används det nya paketet azure-messaging-servicebus. En snabbstart som använder det gamla azure-servicebus-paketet finns i [Skicka och ta emot meddelanden med azure-servicebus](service-bus-java-how-to-use-queues-legacy.md).
 
 
 ## <a name="prerequisites"></a>Förutsättningar
-- En Azure-prenumeration. Du behöver ett Azure-konto för att genomföra kursen. Du kan aktivera dina [förmåner för MSDN-prenumeranter](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) eller registrera dig för ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Om du inte har en kö att arbeta med följer du stegen i artikeln [använd Azure Portal för att Service Bus skapa](service-bus-quickstart-portal.md) en kö. Anteckna **anslutnings strängen** för Service Bus namn området och namnet på **kön** som du skapade.
-- Installera [Azure SDK för Java][Azure SDK for Java]. Om du använder Sol förmörkelse kan du installera [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] som innehåller Azure SDK för Java. Du kan sedan lägga till **Microsoft Azure biblioteken för Java** i projektet. Om du använder IntelliJ, se [installera Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/installation). 
+- En Azure-prenumeration. Du behöver ett Azure-konto för att genomföra kursen. Du kan aktivera dina [MSDN-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) eller registrera dig för ett [kostnadsfritt konto.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
+- Om du inte har någon kö att arbeta med följer du stegen i artikeln Använda Azure Portal för att skapa [en Service Bus för](service-bus-quickstart-portal.md) att skapa en kö. Anteckna **anslutningssträngen** för Service Bus namnområdet och namnet på den **kö som** du skapade.
+- Installera [Azure SDK för Java][Azure SDK for Java]. Om du använder Eclipse kan du installera den [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] som innehåller Azure SDK för Java. Du kan sedan lägga till **Microsoft Azure-bibliotek för Java** i projektet. Om du använder IntelliJ kan du se [Installera Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/installation). 
 
 
 ## <a name="send-messages-to-a-queue"></a>Skicka meddelanden till en kö
-I det här avsnittet ska du skapa ett Java-konsol-projekt och lägga till kod för att skicka meddelanden till kön som du skapade tidigare. 
+I det här avsnittet skapar du ett Java-konsolprojekt och lägger till kod för att skicka meddelanden till kön som du skapade tidigare. 
 
-### <a name="create-a-java-console-project"></a>Skapa ett Java-konsol projekt
-Skapa ett Java-projekt med hjälp av Sol förmörkelse eller ett verktyg som du själv väljer. 
+### <a name="create-a-java-console-project"></a>Skapa ett Java-konsolprojekt
+Skapa ett Java-projekt med Eclipse eller ett val av verktyg. 
 
-### <a name="configure-your-application-to-use-service-bus"></a>Konfigurera programmet så att det använder Service Bus
-Lägg till referenser till Azure Core-och Azure Service Bus-bibliotek. 
+### <a name="configure-your-application-to-use-service-bus"></a>Konfigurera ditt program att använda Service Bus
+Lägg till referenser till Azure Core och Azure Service Bus bibliotek. 
 
-Om du använder Sol förmörkelse och skapat ett Java-konsol program konverterar du ditt Java-projekt till en maven: Högerklicka på projektet i fönstret **Package Explorer** och välj **Konfigurera**  ->  **konvertera till Maven-projekt**. Lägg sedan till beroenden till dessa två bibliotek som visas i följande exempel.
+Om du använder Eclipse och har skapat ett Java-konsolprogram konverterar du Ditt Java-projekt till maven: högerklicka på projektet i **fönstret Package Explorer** och välj **Konfigurera** Konvertera  ->  **till Maven-projekt**. Lägg sedan till beroenden till dessa två bibliotek enligt följande exempel.
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -70,7 +75,7 @@ Om du använder Sol förmörkelse och skapat ett Java-konsol program konverterar
 ```
 
 ### <a name="add-code-to-send-messages-to-the-queue"></a>Lägga till kod för att skicka meddelanden till kön
-1. Lägg till följande- `import` instruktioner i avsnittet i Java-filen. 
+1. Lägg till följande `import` -instruktioner i java-filens ämne. 
 
     ```java
     import com.azure.messaging.servicebus.*;
@@ -80,15 +85,15 @@ Om du använder Sol förmörkelse och skapat ett Java-konsol program konverterar
     import java.util.Arrays;
     import java.util.List;
     ```    
-5. I-klassen definierar du variabler som ska innehålla anslutnings strängen och könamnet enligt nedan: 
+5. I klassen definierar du variabler som ska innehålla anslutningssträngen och könamnet enligt nedan: 
 
     ```java
     static String connectionString = "<NAMESPACE CONNECTION STRING>";
     static String queueName = "<QUEUE NAME>";    
     ```
 
-    Ersätt `<NAMESPACE CONNECTION STRING>` med anslutnings strängen till Service Bus namn området. Och Ersätt `<QUEUE NAME>` med namnet på kön.
-3. Lägg till en metod som heter `sendMessage` i klassen för att skicka ett meddelande till kön. 
+    Ersätt `<NAMESPACE CONNECTION STRING>` med anslutningssträngen till Service Bus namnområdet. Och ersätt `<QUEUE NAME>` med namnet på kön.
+3. Lägg till en metod `sendMessage` med namnet i klassen för att skicka ett meddelande till kön. 
 
     ```java
     static void sendMessage()
@@ -105,7 +110,7 @@ Om du använder Sol förmörkelse och skapat ett Java-konsol program konverterar
         System.out.println("Sent a single message to the queue: " + queueName);        
     }
     ```
-1. Lägg till en metod som heter `createMessages` i klassen för att skapa en lista med meddelanden. Normalt får du dessa meddelanden från olika delar av programmet. Här skapar vi en lista över exempel meddelanden.
+1. Lägg till en metod `createMessages` med namnet i klassen för att skapa en lista med meddelanden. Vanligtvis får du dessa meddelanden från olika delar av ditt program. Här skapar vi en lista över exempelmeddelanden.
 
     ```java
     static List<ServiceBusMessage> createMessages()
@@ -119,7 +124,7 @@ Om du använder Sol förmörkelse och skapat ett Java-konsol program konverterar
         return Arrays.asList(messages);
     }
     ```
-1. Lägg till en metod med namnet `sendMessageBatch` metod för att skicka meddelanden till kön som du skapade. Den här metoden skapar en `ServiceBusSenderClient` för kön, anropar `createMessages` metoden för att hämta listan över meddelanden, förbereder en eller flera batchar och skickar batcharna till kön. 
+1. Lägg till en metod med `sendMessageBatch` namnet method för att skicka meddelanden till kön som du skapade. Den här metoden skapar en för kön, anropar metoden för att hämta listan över meddelanden, förbereder en eller flera batchar och skickar `ServiceBusSenderClient` `createMessages` batcharna till kön. 
 
     ```java
     static void sendMessageBatch()
@@ -169,12 +174,12 @@ Om du använder Sol förmörkelse och skapat ett Java-konsol program konverterar
     ```
 
 ## <a name="receive-messages-from-a-queue"></a>Ta emot meddelanden från en kö
-I det här avsnittet ska du lägga till kod för att hämta meddelanden från kön. 
+I det här avsnittet lägger du till kod för att hämta meddelanden från kön. 
 
-1. Lägg till en metod `receiveMessages` som heter för att ta emot meddelanden från kön. Den här metoden skapar en `ServiceBusProcessorClient` för kön genom att ange en hanterare för bearbetning av meddelanden och en annan för hantering av fel. Sedan startar den processorn, väntar några sekunder, skriver ut de meddelanden som tas emot och stoppar och stänger sedan processorn.
+1. Lägg till en metod med `receiveMessages` namnet för att ta emot meddelanden från kön. Den här metoden skapar `ServiceBusProcessorClient` en för kön genom att ange en hanterare för bearbetning av meddelanden och en annan för hantering av fel. Sedan startar den processorn, väntar i några sekunder, skriver ut de meddelanden som tas emot och stoppar och stänger sedan processorn.
 
     > [!IMPORTANT]
-    > Ersätt `QueueTest` i `QueueTest::processMessage` koden med namnet på klassen. 
+    > Ersätt `QueueTest` `QueueTest::processMessage` i i koden med namnet på din klass. 
 
     ```java
     // handles received messages
@@ -199,7 +204,7 @@ I det här avsnittet ska du lägga till kod för att hämta meddelanden från k�
         processorClient.close();        
     }   
     ```
-2. Lägg till `processMessage` metoden för att bearbeta ett meddelande som tagits emot från Service Bus prenumerationen. 
+2. Lägg till `processMessage` metoden för att bearbeta ett meddelande som tas emot från Service Bus prenumerationen. 
 
     ```java
     private static void processMessage(ServiceBusReceivedMessageContext context) {
@@ -208,7 +213,7 @@ I det här avsnittet ska du lägga till kod för att hämta meddelanden från k�
             message.getSequenceNumber(), message.getBody());
     }    
     ```
-3. Lägg till- `processError` metoden för att hantera fel meddelanden.
+3. Lägg till `processError` metoden för att hantera felmeddelanden.
 
     ```java
     private static void processError(ServiceBusErrorContext context, CountDownLatch countdownLatch) {
@@ -245,7 +250,7 @@ I det här avsnittet ska du lägga till kod för att hämta meddelanden från k�
         }
     }  
     ```
-2. Uppdatera `main` metoden för att anropa `sendMessage` -, `sendMessageBatch` -och- `receiveMessages` metoder och att utlösa `InterruptedException` .     
+2. Uppdatera metoden `main` för att anropa metoderna , och och för att skapa `sendMessage` `sendMessageBatch` `receiveMessages` `InterruptedException` .     
 
     ```java
     public static void main(String[] args) throws InterruptedException {        
@@ -256,7 +261,7 @@ I det här avsnittet ska du lägga till kod för att hämta meddelanden från k�
     ```
 
 ## <a name="run-the-app"></a>Kör appen
-När du kör programmet visas följande meddelanden i konsol fönstret. 
+När du kör programmet visas följande meddelanden i konsolfönstret. 
 
 ```console
 Sent a single message to the queue: myqueue
@@ -269,20 +274,20 @@ Processing message. Session: f9a871be07414baf9505f2c3d466c4ab, Sequence #: 4. Co
 Stopping and closing the processor
 ```
 
-På sidan **Översikt** för Service Bus namn området i Azure Portal kan du se antalet **inkommande** och **utgående** meddelanden. Du kan behöva vänta en minut eller så och sedan uppdatera sidan för att se de senaste värdena. 
+På sidan **Översikt** för den Service Bus namnrymden i Azure Portal kan du se antal **inkommande** och **utgående** meddelanden. Du kan behöva vänta i någon minut och sedan uppdatera sidan för att se de senaste värdena. 
 
 :::image type="content" source="./media/service-bus-java-how-to-use-queues/overview-incoming-outgoing-messages.png" alt-text="Antal inkommande och utgående meddelanden" lightbox="./media/service-bus-java-how-to-use-queues/overview-incoming-outgoing-messages.png":::
 
-Välj kön på den här **översikts** sidan för att gå till sidan **Service Bus kö** . Du ser det **inkommande** och **utgående** meddelande antalet på den här sidan. Du kan också se annan information, till exempel köns **aktuella storlek** , **maximal storlek**, **Antal aktiva meddelanden** och så vidare. 
+Välj kön på den här **översiktssidan** för att gå Service Bus **sidan** Kö. Du ser även **antalet inkommande** **och** utgående meddelanden på den här sidan. Du kan också se annan information, till **exempel den aktuella** storleken på kön, maximal **storlek,** **antal aktiva** meddelanden och så vidare. 
 
-:::image type="content" source="./media/service-bus-java-how-to-use-queues/queue-details.png" alt-text="Information om kö" lightbox="./media/service-bus-java-how-to-use-queues/queue-details.png":::
+:::image type="content" source="./media/service-bus-java-how-to-use-queues/queue-details.png" alt-text="Köinformation" lightbox="./media/service-bus-java-how-to-use-queues/queue-details.png":::
 
 
 
 ## <a name="next-steps"></a>Nästa steg
 Se följande dokumentation och exempel:
 
-- [Azure Service Bus klient bibliotek för Java – viktigt](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
+- [Azure Service Bus klientbibliotek för Java – Viktigt](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
 - [Exempel på GitHub](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Referens för Java-API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-messaging-servicebus/7.0.0/index.html)
 

@@ -1,35 +1,36 @@
 ---
-title: 'Snabb start: Konfigurera hög tillgänglighet med Azures frontend-Azure PowerShell'
-description: Den här snabb starten visar hur du använder Azures front dörr för att skapa ett globalt och högpresterande globalt webb program med hjälp av Azure PowerShell.
+title: 'Snabbstart: Konfigurera hög tillgänglighet med Azure Front Door – Azure PowerShell'
+description: Den här snabbstarten visar hur du använder Azure Front Door för att skapa en global webbapp med hög tillgänglighet och höga prestanda med hjälp av Azure PowerShell.
 services: front-door
 documentationcenter: na
 author: duongau
-manager: KumudD
-ms.assetid: ''
-ms.service: frontdoor
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/21/2020
 ms.author: duau
-ms.openlocfilehash: a3ecb8cacd8fa47709432e26243bd754511658d2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+manager: KumudD
+ms.date: 09/21/2020
+ms.topic: quickstart
+ms.service: frontdoor
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.custom:
+- mode-api
+ms.openlocfilehash: cd439a5931340f56401e5f6ba7a4e09f35ab7c7d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057923"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107539045"
 ---
-# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-powershell"></a>Snabb start: skapa en front dörr för ett globalt webb program med hög tillgänglighet med hjälp av Azure PowerShell
+# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-powershell"></a>Snabbstart: Skapa en Front Door för en global webbapp med hög Azure PowerShell
 
-Kom igång med Azures front dörr genom att använda Azure PowerShell för att skapa en hög tillgänglig global webbapp med hög prestanda.
+Kom igång med Azure Front Door hjälp av Azure PowerShell för att skapa en global webbapp med hög tillgång och höga prestanda.
 
-Front dörren dirigerar webb trafik till vissa resurser i en backend-pool. Du definierade frontend-domänen, lägger till resurser i en backend-pool och skapar en regel för routning. Den här artikeln använder en enkel konfiguration av en backend-pool med två webb program resurser och en regel för routning med standard Sök väg som matchar "/*".
+Den Front Door dirigerar webbtrafik till specifika resurser i en backend-pool. Du definierade frontend-domänen, lägger till resurser i en serverpool och skapar en routningsregel. Den här artikeln använder en enkel konfiguration av en serverdelspool med två webbappresurser och en enda routningsregel med standardsökvägsmatchning "/*".
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Azure PowerShell installerat lokalt eller Azure Cloud Shell
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Azure PowerShell lokalt eller Azure Cloud Shell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -37,9 +38,9 @@ Front dörren dirigerar webb trafik till vissa resurser i en backend-pool. Du de
 
 ## <a name="create-resource-group"></a>Skapa resursgrupp
 
-I Azure allokerar du relaterade resurser till en resursgrupp. Du kan antingen använda en befintlig resurs grupp eller skapa en ny.
+I Azure allokerar du relaterade resurser till en resursgrupp. Du kan antingen använda en befintlig resursgrupp eller skapa en ny.
 
-Skapa en resurs grupp med [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup):
+Skapa en resursgrupp med [New-AzResourceGroup:](/powershell/module/az.resources/new-azresourcegroup)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupFD -Location centralus
@@ -47,9 +48,9 @@ New-AzResourceGroup -Name myResourceGroupFD -Location centralus
 
 ## <a name="create-two-instances-of-a-web-app"></a>Skapa två instanser av en webbapp
 
-Den här snabb starten kräver två instanser av ett webb program som körs i olika Azure-regioner. Båda instanserna av webb programmet körs i aktivt/aktivt läge, vilket innebär att det kan ta trafik. Den här konfigurationen skiljer sig från en aktiv/fristående konfiguration, där en fungerar som en redundansväxling.
+Den här snabbstarten kräver två instanser av ett webbprogram som körs i olika Azure-regioner. Båda webbprograminstanserna körs i aktivt/aktivt läge, så att någon av dem kan ta trafik. Den här konfigurationen skiljer sig från en aktiv/fristående konfiguration, där en fungerar som en redundans.
 
-Om du inte redan har en webbapp använder du följande skript för att konfigurera två exempel på webbappar.
+Om du inte redan har en webbapp använder du följande skript för att konfigurera två exempelwebbappar.
 
 ```azurepowershell-interactive
 # Create first web app in Central US region.
@@ -69,15 +70,15 @@ $webapp2 = New-AzWebApp `
 
 ## <a name="create-a-front-door"></a>Skapa en Front Door
 
-I det här avsnittet beskrivs hur du kan skapa och konfigurera följande komponenter i front dörren:
+Det här avsnittet beskriver hur du kan skapa och konfigurera följande komponenter i Front Door:
     
-* Ett klient-frontend-objekt innehåller standard domänen för den främre dörren.
-* En backend-pool är en uppsättning motsvarande Server delar som belastningen på klient begär Anden balanserar.
-* En routningstabell mappar din klient dels värd och matchande URL-sökmönster till en viss backend-pool.
+* Ett frontend-objekt innehåller Front Door standarddomänen.
+* En backend-pool är en uppsättning motsvarande backends som Front Door belastningsutjämnar din klientbegäran.
+* En routningsregel mappar din frontend-värd och matchande URL-sökvägsmönster till en specifik serverpool.
 
-### <a name="create-a-frontend-object"></a>Skapa ett klient dels objekt
+### <a name="create-a-frontend-object"></a>Skapa ett frontend-objekt
 
-Klient delens objekt konfigurerar värd namnet för den främre dörren. Värd namnet har som standard suffixet **. azurefd.net*.
+Objektet frontend konfigurerar värdnamnet för Front Door. Som standard har värdnamnet suffixet **.azurefd.net*.
 
 ```azurepowershell-interactive
 # Create a unique name
@@ -91,7 +92,7 @@ $FrontendEndObject = New-AzFrontDoorFrontendEndpointObject `
 
 ### <a name="create-the-backend-pool"></a>Skapa serverdelspoolen
 
-Backend-poolen består av de två webbappar som skapas i början av den här snabb starten. Inställningarna för hälso avsökning och belastnings utjämning som definierats i det här steget använder standardvärden.
+Backend-poolen består av de två webbappen som skapades i början av den här snabbstarten. Inställningarna för hälsoavsökning och belastningsutjämning som definieras i det här steget använder standardvärden.
 
 ```azurepowershell-interactive
 # Create backend objects that points to the hostname of the web apps
@@ -123,7 +124,7 @@ $BackendPoolObject = New-AzFrontDoorBackendPoolObject `
 
 ### <a name="create-a-routing-rule"></a>Skapa en routningsregel
 
-Regeln för routning mappar backend-poolen till klient delens domän och anger standard Sök vägens matchnings värde till "/*".
+Routningsregeln mappar serverpoolen till frontend-domänen och anger standardvärdet för sökvägsmatchning till "/*".
 
 ```azurepowershell-interactive
 # Create a routing rule mapping the frontend host to the backend pool
@@ -135,9 +136,9 @@ $RoutingRuleObject = New-AzFrontDoorRoutingRuleObject `
 -BackendPoolName "myBackendPool" `
 -PatternToMatch "/*"
 ```
-### <a name="create-the-front-door"></a>Skapa den främre dörren
+### <a name="create-the-front-door"></a>Skapa Front Door
 
-Nu när du har skapat de objekt som krävs skapar du en front dörr:
+Nu när du har skapat de nödvändiga objekten skapar du Front Door:
 
 ```azurepowershell-interactive
 # Creates the Front Door
@@ -151,11 +152,11 @@ New-AzFrontDoor `
 -HealthProbeSetting $HealthProbeObject
 ```
 
-När distributionen har slutförts kan du testa den genom att följa anvisningarna i nästa avsnitt.
+När distributionen är lyckad kan du testa den genom att följa stegen i nästa avsnitt.
 
-## <a name="test-the-front-door"></a>Testa front dörren
+## <a name="test-the-front-door"></a>Testa Front Door
 
-Kör följande kommandon för att hämta värd namnet för den främre dörren.
+Kör följande kommandon för att hämta värdnamnet för Front Door.
 
 ```azurepowershell-interactive
 # Gets Front Door in resource group and output the hostname of the frontend domain.
@@ -163,15 +164,15 @@ $fd = Get-AzFrontDoor -ResourceGroupName myResourceGroupFD
 $fd.FrontendEndpoints[0].Hostname
 ```
 
-Öppna en webbläsare och ange värd namnet hämta från-kommandona. Front dörren dirigerar din begäran till en av Server dels resurserna. 
+Öppna en webbläsare och ange det värdnamn som du får från kommandona. Den Front Door dirigerar din begäran till en av backend-resurserna. 
 
-:::image type="content" source="./media/quickstart-create-front-door-powershell/front-door-test-page.png" alt-text="Test sida för front dörren":::
+:::image type="content" source="./media/quickstart-create-front-door-powershell/front-door-test-page.png" alt-text="Front Door testsida":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Ta bort resurs gruppen när du inte längre behöver de resurser som du skapade med frontend-dörren. När du tar bort resurs gruppen tar du även bort frontend-dörren och alla relaterade resurser. 
+När du inte längre behöver de resurser som du skapade med Front Door kan du ta bort resursgruppen. När du tar bort resursgruppen tar du även bort Front Door alla relaterade resurser. 
 
-Anropa cmdleten om du vill ta bort resurs gruppen `Remove-AzResourceGroup` :
+Om du vill ta bort resursgruppen anropar du `Remove-AzResourceGroup` cmdleten :
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupFD
@@ -179,11 +180,11 @@ Remove-AzResourceGroup -Name myResourceGroupFD
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du en:
+I den här snabbstarten skapade du en:
 * Front Door
-* Två webb program
+* Två webbappar
 
-Om du vill lära dig hur du lägger till en anpassad domän i din frontend-guide kan du fortsätta till självstudierna för front dörren.
+Om du vill lära dig hur du lägger till en anpassad domän Front Door kan du fortsätta till Front Door självstudierna.
 
 > [!div class="nextstepaction"]
 > [Lägga till en anpassad domän](front-door-custom-domain.md)

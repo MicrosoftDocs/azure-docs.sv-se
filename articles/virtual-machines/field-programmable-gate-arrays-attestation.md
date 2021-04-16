@@ -1,84 +1,84 @@
 ---
-title: Azure FPGFA-attesterings tjänst
-description: Attesterings tjänsten för de virtuella datorerna i NP-serien.
+title: Azure FPGFA Attestation Service
+description: Attestationstjänst för virtuella datorer i NP-serien.
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: 563155bb6559f8443f1453a65fa0b1574af106f7
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: ab9c9c6b9d908e86912565ba43cec665432aeda5
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106556247"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389629"
 ---
-# <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>FPGA-attestering för Azure NP-Series VM (för hands version)
+# <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>FPGA-attestation för virtuella Azure NP-Series-datorer (förhandsversion)
 
-FPGA attesterings tjänst utför en serie valideringar på en design punkts fil (kallas "Netlist") som genereras av Xilinx-Programverktygen och skapar en fil som innehåller den verifierade avbildningen (kallas "Bitstream") som kan läsas in på Xilinx U250 FPGA-kortet i en virtuell dator med NP-serien.  
+FPGA-attestationstjänsten utför en serie verifieringar på en designkontrollpunktsfil (kallas "netlist") som genereras av Xilinx-verktygsuppsättningen och skapar en fil som innehåller den verifierade avbildningen (kallas "bitström") som kan läsas in på Xilinx U250 FPGA-kortet i en virtuell NP-serie.  
 
 ## <a name="prerequisites"></a>Förutsättningar  
 
-Du behöver en Azure-prenumeration och ett Azure Storage-konto. Prenumerationen ger dig åtkomst till Azure och lagrings kontot används för att lagra din Netlist-och output-filer för attesteringsservern.  
+Du behöver en Azure-prenumeration och ett Azure Storage konto. Prenumerationen ger dig åtkomst till Azure och lagringskontot används för att lagra dina nätliste- och utdatafiler för attestationstjänsten.  
 
-Vi tillhandahåller PowerShell-och bash-skript för att skicka begäran om attestering.   Skripten använder Azure CLI, som kan köras på Windows och Linux. PowerShell kan köras på Windows, Linux och macOS.  
+Vi tillhandahåller PowerShell- och Bash-skript för att skicka attestationsbegäranden.   Skripten använder Azure CLI, som kan köras i Windows och Linux. PowerShell kan köras i Windows, Linux och macOS.  
 
-Hämtning av Azure CLI (krävs):  
+Azure CLI-nedladdning (krävs):  
 
 https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest  
 
-PowerShell för Windows, Linux och macOS Download (endast för PowerShell-skript):  
+Nedladdning av PowerShell för Windows, Linux och macOS (endast för PowerShell-skript):  
 
 https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-7  
 
-Du måste ha din klient organisation och ditt prenumerations-ID som du har behörighet att skicka till attesterings tjänsten. Besök https://aka.ms/AzureFPGAAttestationPreview för att begära åtkomst. 
+Du måste ha din klientorganisation och ditt prenumerations-ID auktoriserade att skicka till attestationstjänsten. Besök https://aka.ms/AzureFPGAAttestationPreview för att begära åtkomst. 
 
-## <a name="building-your-design-for-attestation"></a>Skapa din design för attestering  
+## <a name="building-your-design-for-attestation"></a>Skapa din design för atterering  
 
-De önskade Xilinx-verktygen för att skapa ritningar är Vitis 2020,2. Netlist-filer som har skapats med en tidigare version av verktygs uppsättningen och är fortfarande kompatibla med 2020,2 kan användas. Kontrol lera att du har läst in rätt gränssnitt för att bygga mot. Den version som stöds för närvarande är xilinx_u250_gen3x16_xdma_2_1_202010_1. Stödfiler kan hämtas från Xilinx ALVEO-lounge. 
+Den föredragna Xilinx-verktygsuppsättningen för att skapa design är Vitis 2020.2. Netlist-filer som har skapats med en tidigare version av verktygsuppsättningen och som fortfarande är kompatibla med 2020.2 kan användas. Kontrollera att du har läst in rätt gränssnitt att bygga mot. Den version som stöds för närvarande xilinx_u250_gen3x16_xdma_2_1_202010_1. Du kan ladda ned supportfilerna från Xilinx Alveo- eller Alveo-filen. 
 
-Du måste inkludera följande argument för Vitis (v + + cmd-raden) för att bygga en xclbin-fil som innehåller en Netlist i stället för en Bitstream.   
+Du måste inkludera följande argument till Vitis (v++-cmd-raden) för att skapa en xclbin-fil som innehåller en netlist i stället för en bitstream.   
 
 ```--advanced.param compiler.acceleratorBinaryContent=dcp  ```
 
 ## <a name="logging-into-azure"></a>Logga in på Azure  
 
-Innan du utför några åtgärder med Azure måste du logga in på Azure och ange den prenumeration som har behörighet att anropa tjänsten. Använd- ```az login``` och- ```az account set –s <Sub ID or Name>``` kommandona för det här ändamålet. Mer information om den här processen beskrivs här:  
+Innan du utför några åtgärder med Azure måste du logga in på Azure och ange den prenumeration som har behörighet att anropa tjänsten. Använd ```az login``` kommandona ```az account set –s <Sub ID or Name>``` och för detta ändamål. Mer information om den här processen finns dokumenterat här:  
 
-https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest. Använd något av alternativen ' logga in interaktivt ' eller ' logga in med autentiseringsuppgifter ' på kommando raden.  
+https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest. Använd antingen alternativet "logga in interaktivt" eller "logga in med autentiseringsuppgifter" på kommandoraden.  
 
-## <a name="creating-a-storage-account-and-blob-container"></a>Skapa ett lagrings konto och en BLOB-behållare  
+## <a name="creating-a-storage-account-and-blob-container"></a>Skapa ett lagringskonto och en blobcontainer  
 
-Din Netlist-fil måste laddas upp till en Azure Storage BLOB-behållare för åtkomst av attesteringsservern.  
+Din nätlistefil måste laddas upp till en Azure Storage Blob-container för åtkomst av attestationstjänsten.  
 
-På den här sidan finns mer information om hur du skapar kontot, en behållare och laddar upp din Netlist som en blob till den behållaren: https://docs.microsoft.com/azure/storage/blobs/storage-quickstartblobs-cli .  
+På den här sidan finns mer information om hur du skapar kontot, en container och laddar upp din nätlista som en blob till den containern: [https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli](/azure/storage/blobs/storage-quickstart-blobs-cli) .  
 
 Du kan också använda Azure Portal för detta.  
 
-## <a name="upload-your-netlist-file-to-azure-blob-storage"></a>Ladda upp din Netlist-fil till Azure Blob Storage  
+## <a name="upload-your-netlist-file-to-azure-blob-storage"></a>Ladda upp din netlist-fil till Azure Blob Storage  
 
-Det finns flera sätt att kopiera filen. ett exempel på hur du använder AZ Storage upload-cmdleten visas nedan. AZ-kommandona körs på både Linux och Windows. Du kan välja ett namn för "BLOB"-namnet men se till att behålla xclbin-tillägget. 
+Det finns flera sätt att kopiera filen: ett exempel som använder cmdleten az storage upload visas nedan. Az-kommandona körs på både Linux och Windows. Du kan välja ett namn för "blob"-namnet, men se till att behålla xclbin-tillägget. 
 
 ```az storage blob upload --account-name <storage account to receive netlist> container-name <blob container name> --name <blob filename> --file <local file with netlist>  ```
 
-## <a name="download-the-attestation-scripts"></a>Hämta skript för attestering  
+## <a name="download-the-attestation-scripts"></a>Ladda ned attestationsskripten  
 
-Verifierings skripten kan laddas ned från följande Azure Storage BLOB-behållare:  
+Valideringsskripten kan laddas ned från följande Azure Storage Blob-container:  
 
 https://fpgaattestation.blob.core.windows.net/validationscripts/validate.zip  
 
-Zip-filen har två PowerShell-skript, en för att skicka och den andra som ska övervakas medan den tredje filen är ett bash-skript som utför båda funktionerna.  
+ZIP-filen har två PowerShell-skript, ett att skicka och det andra som ska övervakas, medan den tredje filen är ett bash-skript som utför båda funktionerna.  
 
-## <a name="running-the-attestation-scripts"></a>Köra skript för attestering  
+## <a name="running-the-attestation-scripts"></a>Köra attestationsskripten  
 
-Om du vill köra skripten måste du ange namnet på ditt lagrings konto, namnet på BLOB-behållaren där Netlist-filen lagras och namnet på Netlist-filen. Du måste också skapa en signatur för delad åtkomst för tjänsten (SAS) som ger Läs-/Skriv behörighet till din behållare (inte i Netlist). Denna SAS används av attesterings tjänsten för att göra en lokal kopia av din Netlist-fil och skriva tillbaka de resulterande utdatafilerna i validerings processen till din behållare.  
+Om du vill köra skripten måste du ange namnet på ditt lagringskonto, namnet på den blobcontainer där filen netlist lagras och namnet på netlist-filen. Du måste också skapa en signatur för delad åtkomst (SAS) för tjänsten som ger läs-/skrivåtkomst till din container (inte netlist). Denna SAS används av attestationstjänsten för att göra en lokal kopia av din netlist-fil och för att skriva tillbaka de resulterande utdatafilerna för verifieringsprocessen till containern.  
 
-En översikt över signaturer för delad åtkomst finns här med detaljerad information om tjänste-SAS som finns här. Sidan för tjänstens SAS innehåller en viktig varning om hur du skyddar de genererade SAS: erna.  Läs varningen för att förstå behovet av att behålla SAS-skyddet från skadlig eller oavsiktlig användning.  
+En översikt över signaturer för delad åtkomst finns här med specifik information om tjänst-SAS som finns här. Sidan Tjänst-SAS innehåller en viktig varning om att skydda den genererade SAS:en.  Läs varningen för att förstå behovet av att skydda SAS från skadlig eller oavsiktlig användning.  
 
-Du kan skapa en SAS för din behållare med hjälp av AZ Storage container generate-cmdlet. Ange en förfallo tid i UTC-format som är minst några timmar efter sändnings tillfället. omkring 6 timmar bör vara mer än lämpligt.  
+Du kan generera en SAS för din container med hjälp av cmdleten az storage container generate-sas. Ange en förfallotid i UTC-format som är minst ett par timmar efter sändningstiden. cirka 6 timmar bör vara mer än tillräckligt.  
 
-Om du vill använda virtuella kataloger måste du inkludera katalogpartitionen som en del av container argumentet. Om du till exempel har en behållare med namnet "netlister" och har en virtuell katalog med namnet "image1" som innehåller Netlist-blobben anger du "netlists/image1" som behållar namn. Lägg till ytterligare katalog namn för att ange en djupare hierarki. 
+Om du vill använda virtuella kataloger måste du inkludera kataloghierarkin som en del av containerargumentet. Om du till exempel har en container med namnet "netlists" och har en virtuell katalog med namnet "image1" som innehåller netlist-bloben anger du "netlists/image1" som containernamn. Lägg till ytterligare katalognamn för att ange en djupare hierarki. 
 
 ### <a name="powershell"></a>PowerShell   
 
@@ -92,19 +92,19 @@ Om du vill använda virtuella kataloger måste du inkludera katalogpartitionen s
 
 ```validate-fpgaimage.sh --storage-account <storage acct name> --container <blob container name> --netlist-name <netlist blob filename> --blob-container-sas $sas ``` 
 
-## <a name="checking-on-the-status-of-your-submission"></a>Kontrollerar status för ditt bidrag  
+## <a name="checking-on-the-status-of-your-submission"></a>Kontrollera statusen för ditt bidrag  
 
-Attesterings tjänsten returnerar Orchestration-ID: t för ditt bidrag. Sändnings skripten börjar automatiskt att övervaka överföringen genom att avsökningen har slutförts. Orchestration-ID: t är det främsta sättet för oss att se vad som hände med ditt bidrag, så se till att du har ett problem. Som referens punkter tar attesteringen cirka 30 minuter att slutföra för en liten Netlist-fil (300MB i storlek). en 1,6 GB-fil tog en timme. 
+Attestationstjänsten returnerar orkestrerings-ID:t för din överföring. Inskickningsskripten börjar automatiskt övervaka överföringen genom att avse slutförandet. Orkestrerings-ID:t är det huvudsakliga sättet för oss att granska vad som hände med din överföring, så behåll det om du har problem. Som referenspunkter tar det cirka 30 minuter att slutföra attestation för en liten netlist-fil (300 MB). en fil på 1,6 GB tog en timme. 
 
-Du kan när som helst anropa Monitor-Validation.ps1-skriptet för att få status och resultat från attesteringen, vilket ger Orchestration-ID: t som ett argument:  
+Du kan anropa Monitor-Validation.ps1 när som helst för att hämta status och resultat för attestation, och ange orkestrerings-ID:t som ett argument:  
 
 ```.\Monitor-Validation.ps1 -OrchestrationId < Orchestration ID>  ```
 
-Alternativt kan du skicka HTTP POST-begäran till attesterings tjänstens slut punkt:  
+Du kan också skicka HTTP-postbegäran till attestationstjänstens slutpunkt:  
 
 https://fpga-attestation.azurewebsites.net/api/ComputeFPGA_HttpGetStatus  
 
-Begär ande texten ska innehålla ditt prenumerations-ID, klient-ID och Orchestration-ID för din begäran om attestering:  
+Begärandetexten ska innehålla ditt prenumerations-ID, klientorganisations-ID och orkestrerings-ID för din atterstationsbegäran:  
 
 ```
 {  
@@ -118,11 +118,11 @@ Begär ande texten ska innehålla ditt prenumerations-ID, klient-ID och Orchestr
 }
 ```
 
-## <a name="post-validation-steps"></a>Efter verifierings steg
+## <a name="post-validation-steps"></a>Steg efter validering
 
-Tjänsten kommer att skriva tillbaka utdata till din behållare. Om verifierings passet lyckas, din behållare kommer att ha den ursprungliga Netlist-filen (ABC. xclbin), en fil med Bitstream (ABC. bit. xclbin), en fil som identifierar den privata platsen för din lagrade Bitstream (ABC. Azure. xclbin) och fyra loggfiler: en för start processen (abc-log.txt) och en för de tre parallella faserna som utför verifieringen. De heter * logPhaseX.txt där X är ett tal för fasen. Azure. xclbin används på den virtuella datorn för att signalera överföringen av den validerade avbildningen till U250. 
+Tjänsten skriver sina utdata tillbaka till containern. Om verifieringen lyckas har containern den ursprungliga netlist-filen (abc.xclbin), en fil med bitstreamen (abc.bit.xclbin), en fil som identifierar den privata platsen för din lagrade bitström (abc.azure.xclbin) och fyra loggfiler: en för startprocessen (abc-log.txt) och en för de tre parallella faserna som utför verifieringen. Dessa heter *logPhaseX.txt där X är ett tal för fasen. Azure.xclbin används på den virtuella datorn för att signalera uppladdningen av din verifierade avbildning till U250. 
 
-Om valideringen Miss lyckas skrivs en error-*. txt-fil som anger vilket steg som misslyckades. Kontrol lera också loggfilerna om fel loggen indikerar att attesteringen misslyckades. När du kontaktar oss för support måste du se till att inkludera alla dessa filer som en del av support förfrågan tillsammans med Orchestration-ID: t.  
+Om verifieringen misslyckades skrivs en error-*.txt-fil som anger vilket steg som misslyckades. Kontrollera också loggfilerna om felloggen indikerar att att attatetering misslyckades. När du kontaktar oss för support bör du inkludera alla dessa filer som en del av supportbegäran tillsammans med orkestrerings-ID:t.  
 
-Du kan använda Azure Portal för att skapa din behållare och ladda upp din Netlist och ladda ned Bitstream-och loggfilerna. Att skicka en begäran om attestering och övervaka förloppet via portalen stöds inte för tillfället och måste göras genom skript enligt beskrivningen ovan. 
+Du kan använda Azure Portal för att skapa din container samt ladda upp din netlist och ladda ned bitstream- och loggfilerna. Att skicka en attestationsbegäran och övervaka förloppet via portalen stöds inte för närvarande och måste göras via skript enligt beskrivningen ovan. 
 

@@ -1,6 +1,6 @@
 ---
-title: 'CLI: återställa en app från en säkerhets kopia'
-description: Lär dig hur du använder Azure CLI för att automatisera distribution och hantering av din App Service-app. Det här exemplet visar hur du återställer en app från en säkerhets kopia.
+title: 'CLI: Återställa en app från en säkerhetskopia'
+description: Lär dig hur du använder Azure CLI för att automatisera distribution och hantering av App Service app. Det här exemplet visar hur du återställer en app från en säkerhetskopia.
 author: msangapu-msft
 tags: azure-service-management
 ms.devlang: azurecli
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 12/07/2017
 ms.author: msangapu
 ms.reviewer: cephalin
-ms.custom: mvc, seodec18
-ms.openlocfilehash: a8b7d20c3eee57d10a7025b05605603f82437cdb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: b30530956b6e8a4b7f10393cf90caf341bcc82a8
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006430"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483409"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-cli"></a>Återställa en webbapp från en säkerhetskopia med CLI
 

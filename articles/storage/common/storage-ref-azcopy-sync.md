@@ -1,6 +1,6 @@
 ---
-title: AzCopy-synkronisering | Microsoft Docs
-description: Den här artikeln innehåller referensinformation för kommandot AzCopy Sync.
+title: azcopy sync | Microsoft Docs
+description: Den här artikeln innehåller referensinformation för kommandot azcopy sync.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -8,45 +8,45 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: dc3451a4b46a317dccda0e4292dcb1712b4171f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83d10a7a6e9eb14379d32cc88800a2c443feac60
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878315"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503056"
 ---
 # <a name="azcopy-sync"></a>azcopy synkronisering
 
-Replikerar käll platsen till mål platsen.
+Replikerar källplatsen till målplatsen. Den här artikeln innehåller en detaljerad referens för kommandot azcopy sync. Mer information om hur du synkroniserar blobar mellan käll- och målplatser finns i Synkronisera med Azure Blob Storage med [hjälp av AzCopy v10.](storage-use-azcopy-blobs-synchronize.md) Mer Azure Files i [Synkronisera filer.](storage-use-azcopy-files.md#synchronize-files)
 
-## <a name="synopsis"></a>Sammanfattning
+## <a name="synopsis"></a>Synopsis
 
-De senast ändrade tiderna används för jämförelse. Filen hoppas över om den senaste ändrings tiden i målet är nyare.
+De senaste ändringstiderna används för jämförelse. Filen hoppas över om tiden för senaste ändring i målet är nyare.
 
 De par som stöds är:
 
-- lokal <-> Azure-Blob (SAS-eller OAuth-autentisering kan användas)
-- Azure Blob <-> Azure-Blob (källan måste innehålla en SAS eller är offentligt tillgänglig, antingen SAS-eller OAuth-autentisering kan användas för mål)
-- Azure File <-> Azure-fil (källan måste innehålla en SAS eller är offentligt tillgänglig. SAS-autentisering ska användas för mål)
+- lokal <-> Azure Blob (antingen SAS- eller OAuth-autentisering kan användas)
+- Azure Blob <-> Azure Blob (Källan måste innehålla en SAS eller är offentligt tillgänglig. SAS- eller OAuth-autentisering kan användas för målet)
+- Azure File <-> Azure File (Källan måste innehålla en SAS eller är offentligt tillgänglig; SAS-autentisering ska användas för målet)
 
-Kommandot Sync skiljer sig från kommandot Copy på flera sätt:
+Synkroniseringskommandot skiljer sig från kopieringskommandot på flera sätt:
 
-1. Som standard är den rekursiva flaggan True och Sync kopierar alla under kataloger. Sync kopierar endast filer på den översta nivån i en katalog om den rekursiva flaggan är falsk.
-2. När du synkroniserar mellan virtuella kataloger lägger du till ett avslutande snedstreck till sökvägen (se exemplen) om det finns en blob med samma namn som en av de virtuella katalogerna.
-3. Om `deleteDestination` flaggan är inställd på True eller prompt kommer synkronisering att ta bort filer och blobbar på det mål som inte finns på källan.
+1. Som standard är den rekursiva flaggan true och sync kopierar alla underkataloger. Sync kopierar endast filerna på den översta nivån i en katalog om den rekursiva flaggan är false.
+2. När du synkroniserar mellan virtuella kataloger lägger du till ett avslutande snedstreck i sökvägen (se exempel) om det finns en blob med samma namn som en av de virtuella katalogerna.
+3. Om flaggan är inställd på true eller prompt tar synkroniseringen bort filer och blobar på det `deleteDestination` mål som inte finns vid källan.
 
 ## <a name="related-conceptual-articles"></a>Relaterade konceptuella artiklar
 
 - [Kom igång med AzCopy](storage-use-azcopy-v10.md)
+- [Självstudie: Migrera lokala data till molnlagring med AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
 - [Överföra data med AzCopy och Blob Storage](./storage-use-azcopy-v10.md#transfer-data)
 - [Överföra data med AzCopy och fillagring](storage-use-azcopy-files.md)
-- [Konfigurera, optimera och felsöka AzCopy](storage-use-azcopy-configure.md)
 
 ### <a name="advanced"></a>Avancerat
 
-Om du inte anger något fil namns tillägg identifierar AzCopy automatiskt filernas innehålls typ vid överföring från den lokala disken, baserat på fil namns tillägget eller innehållet (om inget tillägg har angetts).
+Om du inte anger något filtillägg identifierar AzCopy automatiskt innehållstypen för filerna vid uppladdning från den lokala disken, baserat på filnamnstillägget eller innehållet (om inget tillägg har angetts).
 
-Den inbyggda uppslags tabellen är liten, men på UNIX är den förstärkt av det lokala systemets MIME. typ fil (er) om de är tillgängliga under ett eller flera av följande namn:
+Den inbyggda uppslagstabellen är liten, men på Unix utökas den av det lokala systemets mime.types-filer om de är tillgängliga under ett eller flera av dessa namn:
 
 - /etc/mime.types
 - /etc/apache2/mime.types
@@ -66,13 +66,13 @@ Synkronisera en enskild fil:
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
 
-Samma som ovan, men beräkna även en MD5-hash av fil innehållet och spara sedan MD5-hash som blobens Content-MD5-egenskap. 
+Samma som ovan, men beräkna även en MD5-hash för filinnehållet och spara sedan MD5-hashen som blobens Content-MD5-egenskap. 
 
 ```azcopy
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]" --put-md5
 ```
 
-Synkronisera en hel katalog inklusive dess under kataloger (Observera att rekursivt är aktiverat som standard):
+Synkronisera en hel katalog inklusive dess underkataloger (observera att rekursiv är som standard på):
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]"
@@ -84,25 +84,25 @@ eller
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --put-md5
 ```
 
-Synkronisera endast filerna inuti en katalog, men inte under kataloger eller filer i under kataloger:
+Synkronisera endast filerna i en katalog, men inte underkataloger eller filerna inuti underkataloger:
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=false
 ```
 
-Synkronisera en delmängd av filer i en katalog (till exempel: endast jpg-och PDF-filer, eller om fil namnet är `exactName` ):
+Synkronisera en delmängd av filer i en katalog (till exempel endast jpg- och pdf-filer, eller om filnamnet är `exactName` ):
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --include-pattern="*.jpg;*.pdf;exactName"
 ```
 
-Synkronisera en hel katalog men undanta vissa filer från omfånget (till exempel: varje fil som börjar med foo eller slutar med bar):
+Synkronisera en hel katalog men exkludera vissa filer från omfånget (till exempel: varje fil som börjar med foo eller slutar med stapel):
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --exclude-pattern="foo*;*bar"
 ```
 
-Synkronisera en enskild BLOB:
+Synkronisera en enskild blob:
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
@@ -114,61 +114,61 @@ Synkronisera en virtuell katalog:
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=true
 ```
 
-Synkronisera en virtuell katalog som har samma namn som en BLOB (Lägg till ett avslutande snedstreck till sökvägen i ordningen till disambiguate):
+Synkronisera en virtuell katalog som har samma namn som en blob (lägg till ett avslutande snedstreck i sökvägen för att undvika tvetydighet):
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/" --recursive=true
 ```
 
-Synkronisera en Azure-fil katalog (samma syntax som BLOB):
+Synkronisera en Azure-filkatalog (samma syntax som blob):
 
 ```azcopy
 azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" "https://[account].file.core.windows.net/[share]/[path/to/dir]" --recursive=true
 ```
 
 > [!NOTE]
-> Om inkludera/utelämna-flaggor används tillsammans, kommer endast filer som matchar include-mönster att titta på, men de som matchar de uteslutna mönstren skulle alltid ignoreras.
+> Om include/exclude-flaggor används tillsammans skulle endast filer som matchar inkludningsmönstren tittas på, men de som matchar exkludingsmönstren ignoreras alltid.
 
 ## <a name="options"></a>Alternativ
 
-**--block-size-MB** float Använd den här block storleken (anges i MIB) vid överföring till Azure Storage eller nedladdning från Azure Storage. Standardvärdet beräknas automatiskt baserat på fil storlek. Decimal tal tillåts (till exempel: `0.25` ).
+**--block-size-mb** float Använd den här blockstorleken (anges i MiB) när du laddar upp till Azure Storage eller laddar ned från Azure Storage. Standardvärdet beräknas automatiskt baserat på filstorleken. Decimaler tillåts (till `0.25` exempel: ).
 
-**--kontrol lera-MD5-** sträng anger hur strikt MD5-hashar ska verifieras vid hämtning. Det här alternativet är endast tillgängligt vid hämtning. Tillgängliga värden är: `NoCheck` , `LogOnly` , `FailIfDifferent` , `FailIfDifferentOrMissing` . (standard `FailIfDifferent` ). (standard `FailIfDifferent` )
+**--check-md5-sträng** Anger hur strikt MD5-hash-värden ska verifieras vid nedladdning. Det här alternativet är endast tillgängligt vid nedladdning. Tillgängliga värden är: `NoCheck` , `LogOnly` , , `FailIfDifferent` `FailIfDifferentOrMissing` . (standard `FailIfDifferent` ). (standard `FailIfDifferent` )
 
-**--Delete-destinations** sträng anger om du vill ta bort extra filer från målet som inte finns på källan. Kan anges till `true` , `false` , eller `prompt` . Om detta är inställt på `prompt` , uppmanas användaren att ange en fråga innan de schemalägger filer och blobbar för borttagning. (standard `false` ). (standard `false` )
+**--delete-destination** sträng definierar om du vill ta bort extra filer från målet som inte finns vid källan. Kan anges till `true` `false` , eller `prompt` . Om det är `prompt` inställt på ställs en fråga till användaren innan filer och blobar schemaläggers för borttagning. (standard `false` ). (standard `false` )
 
-**--sträng för exkludera attribut** (endast Windows) utesluter filer vars attribut matchar attributlistan. Exempelvis: `A;S;R`
+**Strängen --exclude-attributes** (endast Windows) Exkluderar filer vars attribut matchar attributlistan. Exempelvis: `A;S;R`
 
-**--sträng med exkludera Sök** vägar utesluter dessa sökvägar när källan jämförs mot målet. Det här alternativet stöder inte jokertecken (*). Kontrollerar prefix för relativ sökväg (till exempel: `myFolder;myFolder/subDirName/file.pdf` ).
+**--exclude-path string** Exkludera dessa sökvägar när du jämför källan med målet. Det här alternativet stöder inte jokertecken (*). Kontrollerar relativt sökvägsprefix (till exempel: `myFolder;myFolder/subDirName/file.pdf` ).
 
-**--exkludera-mönster** sträng exkludera filer där namnet matchar mönster listan. Exempelvis: `*.jpg;*.pdf;exactName`
+**--exclude-pattern** sträng Exkludera filer där namnet matchar mönsterlistan. Exempelvis: `*.jpg;*.pdf;exactName`
 
-**--Hjälp**    för synkronisering.
+**--help**    help for sync.
 
-**--include-attribut** sträng (endast Windows) innehåller bara filer vars attribut matchar attributlistan. Exempelvis: `A;S;R`
+**--include-attributes string** (endast Windows) Innehåller endast filer vars attribut matchar attributlistan. Exempelvis: `A;S;R`
 
-**--Inkludera-mönster** sträng inkludera bara filer där namnet matchar mönster listan. Exempelvis: `*.jpg;*.pdf;exactName`
+**--include-pattern** sträng Inkludera endast filer där namnet matchar mönsterlistan. Exempelvis: `*.jpg;*.pdf;exactName`
 
-**--sträng på loggnivå** definierar loggens utförlighet för logg filen, tillgängliga nivåer: `INFO` (alla begär Anden och svar) `WARNING` (långsamma svar), `ERROR` (endast misslyckade förfrågningar) och `NONE` (inga utgående loggar). (standard `INFO` ). 
+**Sträng på loggnivå** Definiera loggens verbositet för loggfilen, tillgängliga nivåer: (alla begäranden och `INFO` svar), `WARNING` (långsamma svar), `ERROR` (endast misslyckade begäranden) och `NONE` (inga utdataloggar). (standard `INFO` ). 
 
-**--Behåll-SMB-info**   Falskt som standard. Bevarar information om SMB-egenskaper (senaste skrivnings tid, skapande tid, attribut bitar) mellan SMB-medvetna resurser (Windows och Azure Files). Den här flaggan gäller för både filer och mappar, om inte ett fil filter anges (till exempel include-Pattern). Informationen som överförs för mappar är samma som för filer, förutom senaste skrivnings tid som inte bevaras för mappar.
+**--preserve-smb-info**   Falskt som standard. Bevarar SMB-egenskapsinformation (senaste skrivtid, skapandetid, attributbit) mellan SMB-medvetna resurser (Windows och Azure Files). Den här flaggan gäller för både filer och mappar, såvida inte ett filter för endast filer har angetts (till exempel include-pattern). Den information som överförs för mappar är samma som för filer, förutom senaste skrivtiden som inte bevaras för mappar.
 
-**--bevara-SMB-Permissions**   Falskt som standard. Bevarar SMB ACL: er mellan medvetna resurser (Windows och Azure Files). Den här flaggan gäller för både filer och mappar, om inte ett fil filter anges (till exempel `include-pattern` ).
+**--preserve-smb-permissions**   Falskt som standard. Bevarar SMB-ACL:er mellan medvetna resurser (Windows och Azure Files). Den här flaggan gäller för både filer och mappar, såvida inte ett filter för endast filer har angetts (till exempel `include-pattern` ).
 
-**--Skicka-MD5**     Skapa en MD5-hash av varje fil och spara hashen som Content-MD5-egenskapen för Målmatrisen eller-filen. (Som standard skapas inte hashen.) Endast tillgängligt vid uppladdning.
+**--put-md5**     Skapa en MD5-hash för varje fil och spara hashen som Content-MD5-egenskapen för målbloben eller målfilen. (Hashen skapas INTE som standard.) Endast tillgängligt vid uppladdning.
 
-**--rekursivt** `True` som standard tittar du i under kataloger rekursivt vid synkronisering mellan kataloger.     (standard `True` ). 
+**--rekursiv** `True` Som standard kan du titta på underkataloger rekursivt när du synkroniserar mellan kataloger.     (standard `True` ). 
 
-**--S2S-konserver-Access-Tier**  Bevara åtkomst nivån under tjänst-till-tjänst-kopiering. Se [Azure Blob Storage: frekvent åtkomst, låg frekvent åtkomst och Arkiv](../blobs/storage-blob-storage-tiers.md) lag rings nivå för att säkerställa att mål lagrings kontot har stöd för att ange åtkomst nivå. I de fall då det inte finns stöd för att ange åtkomst nivå kan du använda s2sPreserveAccessTier = false för att kringgå kopiering av åtkomst nivå. (standard `true` ). 
+**--s2s-preserve-access-tier**  Bevara åtkomstnivån under tjänst-till-tjänstkopiering. Se [åtkomstnivåer för Azure Blob Storage: hot, cool och archive](../blobs/storage-blob-storage-tiers.md) för att se till att mållagringskontot stöder inställning av åtkomstnivå. Om inställningen av åtkomstnivå inte stöds använder du s2sPreserveAccessTier=false för att kringgå kopiering av åtkomstnivå. (standard `true` ). 
 
 ## <a name="options-inherited-from-parent-commands"></a>Alternativ som ärvts från överordnade kommandon
 
 |Alternativ|Beskrivning|
 |---|---|
-|--Cap-Mbit/s UInt32|CAPS överföringshastigheten i megabit per sekund. Indata genom strömning kan variera något från höljet. Om det här alternativet är inställt på noll, eller utelämnas, är data flödet inte något tak.|
-|--typ sträng för utdata|Formatet på kommandots utdata. Alternativen är: text, JSON. Standardvärdet är "text".|
-|--sträng för betrodd-Microsoft-suffix   |Anger ytterligare domänsuffix där Azure Active Directory inloggnings-token kan skickas.  Standardvärdet är '*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. De som anges här läggs till i standardvärdet. För säkerhet ska du bara placeras Microsoft Azure domäner här. Avgränsa flera poster med semikolon.|
+|--cap-mbps uint32|Kapslar överföringshastigheten i megabit per sekund. Dataflödet för ögonblick kan variera något från taket. Om det här alternativet är inställt på noll, eller om det utelämnas, är dataflödet inte begränsat.|
+|--output-type string|Format för kommandots utdata. Alternativen är: text, json. Standardvärdet är "text".|
+|--trusted-microsoft-suffixes string   |Anger ytterligare domänsuffix där Azure Active Directory inloggningstoken kan skickas.  Standardvärdet är *.core.windows.net;*. core.chinacloudapi.cn; *.core.cloudapi.de;*. core.usgovcloudapi.net". Alla som anges här läggs till i standardinställningarna. Av säkerhetsskäl bör du bara placera Microsoft Azure här. Avgränsa flera poster med semikolon.|
 
 ## <a name="see-also"></a>Se även
 
-- [AzCopy](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

@@ -3,7 +3,7 @@
 - name: Översikt
   expanded: true
   items:
-    - name: Översikt över LUIS
+    - name: Vad är Language Understanding Intelligent Service (LUIS)?
       href: what-is-luis.md
     - name: Stöd för språk
       href: luis-language-support.md
@@ -14,7 +14,7 @@
     - name: Vanliga frågor och svar om LUIS
       href: troubleshooting.md
       displayName: 'Troubleshooting, import'
-- name: LUIS snabb starter
+- name: LUIS-snabbstarter
   items:
     - name: Bygg en fördefinierad domänapp
       href: luis-get-started-create-app.md
@@ -39,7 +39,7 @@
     - name: Starta en ny app
       href: luis-how-to-start-new-app.md
       displayName: 'import, export, container'
-    - name: Bygg modell
+    - name: Skapa modell
       items:
         - name: Lägga till avsikt
           href: luis-how-to-add-intents.md
@@ -53,7 +53,7 @@
         - name: Lägg till funktioner
           displayName: 'synonym, interchange, phrase list, descriptor, feature'
           href: luis-how-to-add-features.md
-        - name: Få avsikt att använda REST API
+        - name: Hämta avsikt med hjälp av REST API
           href: luis-get-started-get-intent-from-rest.md
         - name: Ändra modellen med hjälp av REST API
           href: get-started-get-model-rest-apis.md
@@ -119,22 +119,26 @@
           diplayName: 'import, export, container'
         - name: Med Traffic Manager
           href: luis-traffic-manager.md
-    - name: Distribuera LUIS
+    - name: Använda containrar
       items:
-        - name: Använda containrar
-          items:
-            - name: Installera och köra containrar
-              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, export to container'
-              href: luis-container-howto.md
-            - name: Konfigurera containrar
-              href: luis-container-configuration.md
-            - name: Använda containerinstanser
-              href: ../containers/azure-container-instance-recipe.md
-            - name: Begränsningar för container
-              href: luis-container-limitations.md
-              displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
-            - name: Dokumentation om containrar för Cognitive Services
-              href: ../containers/index.yml
+        - name: Installera och köra containrar
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, export to container'
+          href: luis-container-howto.md
+        - name: Konfigurera containrar
+          href: luis-container-configuration.md
+        - name: Använda containerinstanser
+          href: ../containers/azure-container-instance-recipe.md
+        - name: Begränsningar för container
+          href: luis-container-limitations.md
+          displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+        - name: Dokumentation om containrar för Cognitive Services
+          href: ../containers/index.yml
+    - name: Företagsberedskap
+      items:
+        - name: Konfigurera virtuella nätverk
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/luis/context/context
+        - name: Använda kund hanterade nycklar
+          href: encrypt-data-at-rest.md
 - name: Begrepp
   items:
     - name: Artificiell intelligens
@@ -194,7 +198,7 @@
     - name: Använda LUIS och QnA Maker
       href: choose-natural-language-processing-service.md
       displayName: 'nlp, qna maker'
-    - name: Design strategier för företag
+    - name: Strategier för företagsdesign
       href: luis-concept-enterprise.md
       displayName: import
     - name: Använda DevOps-metoder med LUIS
@@ -315,7 +319,7 @@
       href: luis-reference-application-settings.md
     - name: Entitetsreferens
       items:
-        - name: Fördefinierade
+        - name: Färdiga
           items:
             - name: Fördefinierad domänreferens
               href: luis-reference-prebuilt-domains.md
@@ -375,24 +379,21 @@
       href: luis-reference-prebuilt-sentiment.md
 - name: Resurser
   items:
-    - name: LUIS-portalen
-      href: 'https://www.luis.ai'
+    - name: Företagsberedskap
+      items:
+        - name: Stöd för regioner
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+          displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+        - name: Efterlevnad och certifiering
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
-    - name: Regional tillgänglighet
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-      displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+    - name: LUIS-portalen
+      href: 'https://www.luis.ai'
     - name: Azure-översikt
       href: 'https://go.microsoft.com/fwlink/?linkid=2092089'
     - name: Ordlista
       href: luis-glossary.md
-    - name: Efterlevnad
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Kryptering
-      href: encrypt-data-at-rest.md
-    - name: Konfigurera virtuella nätverk
-      maintainContext: true
-      href: ../cognitive-services-virtual-networks.md
     - name: Search
       href: /search/index?search=LUIS
     - name: Blogg

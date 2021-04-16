@@ -1,6 +1,6 @@
 ---
-title: Vanliga frågor och svar om Azure konfidentiell data behandling
-description: Svar på vanliga frågor om Azures konfidentiella data behandling.
+title: Vanliga frågor och svar om konfidentiell databehandling i Azure
+description: Svar på vanliga frågor om konfidentiell databehandling i Azure.
 author: JBCook
 ms.topic: troubleshooting
 ms.workload: infrastructure
@@ -8,72 +8,71 @@ ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: a5ecd3827bbdc12b098684f1feda2df652f11940
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 05c98102109d1925eb78d4558faf62b366801e77
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551920"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538986"
 ---
-# <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Vanliga frågor och svar om Azures konfidentiella data behandling
+# <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Vanliga frågor och svar om konfidentiell databehandling i Azure
 
-Den här artikeln innehåller svar på några av de vanligaste frågorna om att köra [konfidentiella arbets belastningar på virtuella Azure-datorer](overview.md).
+Den här artikeln innehåller svar på några av de vanligaste frågorna om att köra [arbetsbelastningar för konfidentiell databehandling på virtuella Azure-datorer.](overview.md)
 
-Om ditt Azure-problem inte åtgärdas i den här artikeln kan du gå till Azure-forumen på [MSDN och Stack Overflow](https://azure.microsoft.com/support/forums/). Du kan publicera ditt problem i dessa forum eller publicera på [ @AzureSupport Twitter](https://twitter.com/AzureSupport). Du kan också skicka in en support förfrågan för Azure. Om du vill skicka en supportbegäran väljer du hämta support på [Sidan Support för Azure](https://azure.microsoft.com/support/options/).
+Om ditt Azure-problem inte åtgärdas i den här artikeln går du till Azure-forumen [på MSDN och Stack Overflow](https://azure.microsoft.com/support/forums/). Du kan publicera problemet i dessa forum eller publicera det [ @AzureSupport på Twitter.](https://twitter.com/AzureSupport) Du kan också skicka en Azure-supportbegäran. Om du vill skicka en supportbegäran går du [till Azure-supportsidan](https://azure.microsoft.com/support/options/)och väljer Få support.
 
-## <a name="confidential-computing-virtual-machines"></a>Konfidentiell bearbetning Virtual Machines <a id="vm-faq"></a>
+## <a name="confidential-computing-virtual-machines"></a>Konfidentiell databehandling Virtual Machines <a id="vm-faq"></a>
 
-**Hur kan jag distribuera virtuella datorer i DCsv2-serien på Azure?**
+**Hur distribuerar jag virtuella datorer i DCsv2-serien på Azure?**
 
-Här följer några exempel på hur du kan distribuera en virtuell DCsv2-dator:
+Här är några exempel på hur du kan distribuera en virtuell dator med DCsv2:
    - Använda en [Azure Resource Manager mall](../virtual-machines/windows/template-description.md)
    - Från [Azure Portal](https://portal.azure.com/#create/hub)
-   - I Azure-tjänsten för [konfidentiella data behandling (virtuell dator)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview) Marketplace. Med mallen Marketplace-lösning kan du begränsa en kund till de scenarier som stöds (regioner, avbildningar, tillgänglighet, disk kryptering). 
+   - I [azures lösningsmall för konfidentiell databehandling (virtuell dator).](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview) Marketplace-lösningsmallen hjälper till att begränsa en kund till de scenarier som stöds (regioner, avbildningar, tillgänglighet, diskkryptering). 
 
-**Kommer alla OS-avbildningar att fungera med Azures konfidentiella data behandling?**
+**Kommer alla OS-avbildningar att fungera med konfidentiell databehandling i Azure?**
 
-Nej. De virtuella datorerna kan bara distribueras på generation 2-operativsystem med Ubuntu Server 18,04, Ubuntu Server 16,04, Windows Server 2019 Data Center och Windows Server 2016 Data Center. Läs mer om generation 2 virtuella datorer i [Linux](../virtual-machines/generation-2.md) och [Windows](../virtual-machines/generation-2.md)
+Nej. De virtuella datorerna kan bara distribueras på andra generationens operativsystem med Ubuntu Server 18.04, Ubuntu Server 16.04, Windows Server 2019 Datacenter och Windows Server 2016 Datacenter. Läs mer om virtuella Gen 2-datorer på [Linux](../virtual-machines/generation-2.md) och [Windows](../virtual-machines/generation-2.md)
 
-**DCsv2 virtuella datorer är nedtonade i portalen och jag kan inte välja en**
+**Virtuella DCsv2-datorer är nedtonade i portalen och jag kan inte välja en**
 
-Utifrån informations bubblan bredvid den virtuella datorn finns det olika åtgärder att vidta:
-   -    **UnsupportedGeneration**: ändra avbildningen av den virtuella dator avbildningen till "Gen2".
-   -    **NotAvailableForSubscription**: regionen är inte tillgänglig ännu för din prenumeration. Välj en tillgänglig region.
-   -    **InsufficientQuota**: [skapa en support förfrågan för att öka din kvot](../azure-portal/supportability/per-vm-quota-requests.md). De kostnads fria utvärderings prenumerationerna har ingen kvot för konfidentiella datorer. 
+Baserat på informationsbubblan bredvid den virtuella datorn finns det olika åtgärder att vidta:
+   -    **UnsupportedGeneration**(Generation stöds inte): Ändra genereringen av avbildningen av den virtuella datorn till "Gen2".
+   -    **NotAvailableForSubscription:** Regionen är ännu inte tillgänglig för din prenumeration. Välj en tillgänglig region.
+   -    **InsufficientQuota:** [Skapa en supportbegäran för att öka kvoten.](../azure-portal/supportability/per-vm-quota-requests.md) Prenumerationer på kostnadsfria utvärderingsversion har ingen kvot för virtuella datorer för konfidentiell databehandling. 
 
-**DCsv2 virtuella datorer visas inte när jag försöker söka efter dem i väljaren för Portal storlek**
+**Virtuella DCsv2-datorer visas inte när jag försöker söka efter dem i portalens storleksväljare**
 
-Kontrol lera att du har valt en [tillgänglig region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines). Kontrol lera också att du väljer "Rensa alla filter" i storleks väljaren. 
+Kontrollera att du har valt en [tillgänglig region.](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) Se också till att du väljer "rensa alla filter" i storleksväljaren. 
 
-**Kan jag aktivera accelererat nätverk med Azures konfidentiella data behandling?**
+**Kan jag aktivera accelererat nätverk med konfidentiell databehandling i Azure?**
 
- Nej. Accelererat nätverk stöds inte på DC-Series eller DCsv2-Series virtuella datorer. Det går inte att aktivera accelererat nätverk för en konfidentiell dator distribution eller Azure Kubernetes service Cluster-distribution som körs på konfidentiell dator användning.
+ Nej. Accelererat nätverk stöds inte på DC-Series eller DCsv2-Series virtuella datorer. Accelererat nätverk kan inte aktiveras för distribution av konfidentiella virtuella datorer för databehandling eller för Azure Kubernetes Service klusterdistribution som körs på konfidentiell databehandling.
 
-**Kan jag använda Azures dedikerade värd med de här datorerna?**
+**Kan jag använda Azure Dedicated Host med dessa datorer?**
 
-Ja. Azure-dedikerad värd har stöd för virtuella datorer i DCsv2-serien. Den dedikerade Azure-värden tillhandahåller en fysisk server för enskild klient för att köra virtuella datorer på. Användarna använder vanligt vis Azure-dedikerad värd för att uppfylla kraven på efterlevnad av fysisk säkerhet, data integritet och övervakning. 
+Ja. Azure Dedicated Host stöd för virtuella datorer i DCsv2-serien. Azure Dedicated Host en fysisk server med en enda klient för att köra dina virtuella datorer på. Användare använder vanligtvis Azure Dedicated Host för att uppfylla efterlevnadskrav gällande fysisk säkerhet, dataintegritet och övervakning. 
 
-**Jag får ett fel meddelande om distribution av Azure Resource Manager mallar: "åtgärden kunde inte slutföras eftersom den resulterar i att den godkända standard DcsV2 Family Core-kvoten överskrids"**
+**Jag får ett Azure Resource Manager fel vid malldistribution: "Åtgärden kunde inte slutföras eftersom den resulterar i att den godkända kvoten för DcsV2-familjens kärnor överskrids"**
 
-[Skapa en support förfrågan för att öka din kvot](../azure-portal/supportability/per-vm-quota-requests.md). De kostnads fria utvärderings prenumerationerna har ingen kvot för konfidentiella datorer. 
+[Skapa en supportbegäran för att öka din kvot.](../azure-portal/supportability/per-vm-quota-requests.md) Prenumerationer på kostnadsfria utvärderingsversion har ingen kvot för virtuella datorer för konfidentiell databehandling. 
 
-**Vad är skillnaden mellan DCsv2-Series och DC-Series virtuella datorer?**
+**Vad är skillnaden mellan virtuella DCsv2-Series och DC-Series datorer?**
 
-DC-Series virtuella datorer som körs på äldre 6-kärnors Intel-processorer med Intel SGX och har mindre total minne, mindre EPC-minne (enklaven Page cache) och är bara tillgängliga i två regioner (östra USA och Europa väst i Standard_DC2s och Standard_DC4s storlekar). Det finns inga planer på att göra dessa virtuella datorer allmänt tillgängliga och rekommenderas inte för produktions användning. Om du vill distribuera de virtuella datorerna använder du den  [konfidentiella beräknings DC-Series VM [Preview]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) Marketplace-instans.
+DC-Series virtuella datorer körs på äldre Intel-processorer med 6 kärnor med Intel SGX och har mindre totalt minne, mindre EPC-minne (Enclave Page Cache) och är endast tillgängliga i två regioner (USA, östra och Europa, västra i Standard_DC2s- och Standard_DC4s-storlekar). Det finns inga planer på att göra dessa virtuella datorer allmänt tillgängliga och de rekommenderas inte för produktionsanvändning. Om du vill distribuera de här virtuella datorerna använder [du Marketplace-instansen DC-Series Konfidentiell beräkning och virtuell dator [förhandsversion].](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview)
 
-**Är virtuella DCsv2-datorer tillgängliga globalt?**
+**Är csv2 virtuella datorer tillgängliga globalt?**
 
-Nej. För närvarande är de här virtuella datorerna bara tillgängliga i utvalda regioner. På [sidan produkter per region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) finns de senaste tillgängliga regionerna. 
+Nej. För närvarande är dessa virtuella datorer endast tillgängliga i utvalda regioner. De senaste [tillgängliga regionerna finns på](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) produktsidan efter region. 
 
-**Är Hyper-Threading på de här datorerna?**
+**Är hypertrådning AV på de här datorerna?**
 
-Hyper-Threading har inaktiverats för alla Azures kluster för konfidentiella data behandling.
+Flertrådsteknik är inaktiverad för alla azure-kluster för konfidentiell databehandling.
 
-**Hur gör jag för att installerar du Open enklaven SDK på de virtuella DCsv2-datorerna?**
+**Hur gör jag för att du installera Open Enclave SDK på de virtuella DCsv2-datorerna?**
    
-Anvisningar om hur du installerar OE SDK på en Azure-dator eller en lokal dator finns i anvisningarna på [Öppna SDK-GitHub för enklaven](https://github.com/openenclave/openenclave).
+Om du vill ha instruktioner om hur du installerar OE SDK på en Azure-dator eller en lokal dator följer du anvisningarna på GitHub för [Open Enclave SDK.](https://github.com/openenclave/openenclave)
      
-Du kan också titta på den öppna enklaven SDK-GitHub för OS-användarspecifika installations anvisningar:
-   - [Installera OE SDK i Windows](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)
-   - [Installera OE SDK på Ubuntu 18,04](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md)
-   - [Installera OE SDK på Ubuntu 16,04](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_16.04.md)
+Du kan också titta på GitHub-installationsinstruktioner för Open Enclave SDK för OS-specifika anvisningar:
+   - [Installera OE SDK på Windows](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)
+   - [Installera OE SDK på Ubuntu 18.04](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md)

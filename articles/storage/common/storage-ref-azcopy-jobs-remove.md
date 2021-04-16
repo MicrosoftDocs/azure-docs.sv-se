@@ -1,6 +1,6 @@
 ---
-title: ta bort AzCopy-jobb | Microsoft Docs
-description: Den här artikeln innehåller referensinformation för kommandot AzCopy Jobs Remove.
+title: azcopy jobs remove | Microsoft Docs
+description: Den här artikeln innehåller referensinformation för kommandot azcopy jobs remove.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -8,19 +8,19 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 2744c2a082b5321fb671de08301981fd17396640
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6a4745c4059c81384448deba37495030c4bf3a3
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879096"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503379"
 ---
 # <a name="azcopy-jobs-remove"></a>azcopy jobs remove
 
-Ta bort alla filer som är associerade med angivet jobb-ID.
+Ta bort alla filer som är associerade med det angivna jobb-ID:t.
 
 > [!NOTE] 
-> Du kan anpassa platsen där logg och planera filer sparas. Mer information finns i [AzCopy](storage-ref-azcopy-env.md) -kommandot.
+> Du kan anpassa platsen där logg- och planfilerna sparas. Mer information [finns i kommandot azcopy env.](storage-ref-azcopy-env.md)
 
 ```
 azcopy jobs remove [jobID] [flags]
@@ -31,7 +31,6 @@ azcopy jobs remove [jobID] [flags]
 - [Kom igång med AzCopy](storage-use-azcopy-v10.md)
 - [Överföra data med AzCopy och Blob Storage](./storage-use-azcopy-v10.md#transfer-data)
 - [Överföra data med AzCopy och fillagring](storage-use-azcopy-files.md)
-- [Konfigurera, optimera och felsöka AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Exempel
 
@@ -41,15 +40,15 @@ azcopy jobs remove [jobID] [flags]
 
 ## <a name="options"></a>Alternativ
 
-**--Hjälp**                Hjälp för att ta bort.
+**--help**                Hjälp för att ta bort.
 
 ## <a name="options-inherited-from-parent-commands"></a>Alternativ som ärvts från överordnade kommandon
 
-**--Cap-Mbit/s float**      CAPS överföringshastigheten i megabit per sekund. Indata genom strömning kan variera något från höljet. Om det här alternativet är inställt på noll, eller utelämnas, är data flödet inte något tak.
+**Flyttal på --cap-mbps**      Kapslar överföringshastigheten i megabit per sekund. Dataflödet för ögonblick kan variera något från taket. Om det här alternativet är inställt på noll, eller om det utelämnas, är dataflödet inte begränsat.
 
-**--Skriv** sträng format för kommandots utdata. Alternativen är: text, JSON. Standardvärdet är `text`. (standard `text` )
+**--output-type** strängformat för kommandots utdata. Alternativen är: text, json. Standardvärdet är `text`. (standard `text` )
 
-**--sträng för betrodd-Microsoft-suffix** anger ytterligare domänsuffix där Azure Active Directory inloggnings-token kan skickas.  Standardvärdet är '*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. De som anges här läggs till i standardvärdet. För säkerhet ska du bara placeras Microsoft Azure domäner här. Avgränsa flera poster med semikolon.
+**--trusted-microsoft-suffixesträng** Anger ytterligare domänsuffix där Azure Active Directory inloggningstoken kan skickas.  Standardvärdet är *.core.windows.net;*. core.chinacloudapi.cn; *.core.cloudapi.de;*. core.usgovcloudapi.net". Alla som anges här läggs till i standardinställningarna. Av säkerhetsskäl bör du bara placera Microsoft Azure här. Avgränsa flera poster med semikolon.
 
 ## <a name="see-also"></a>Se även
 

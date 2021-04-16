@@ -1,22 +1,28 @@
 ---
-title: Bicep-operatörer
-description: Beskriver de bicep-operatörer som är tillgängliga för Azure Resource Manager-distributioner.
+title: Bicep-operatorer
+description: Beskriver de Bicep-operatorer som är Azure Resource Manager distributioner.
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: 4bf1005a11b1dcfea9f4b28d6bd3fa7c33e3278f
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.date: 04/15/2021
+ms.openlocfilehash: 0838ebf6bc03f4237ef76e07f1eb6f25aa996fc0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107211335"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537824"
 ---
-# <a name="bicep-operators"></a>Bicep-operatörer
+# <a name="bicep-operators"></a>Bicep-operatorer
 
-I den här artikeln beskrivs de bicep-operatörer som är tillgängliga när du skapar en bicep-mall och använder Azure Resource Manager för att distribuera resurser. Operatorer används för att beräkna värden, jämföra värden eller utvärdera villkor. Det finns tre typer av bicep-operatorer: [jämförelse](#comparison), [logiska](#logical)och [numeriska](#numeric).
+I den här artikeln beskrivs de Bicep-operatorer som är tillgängliga när du skapar en Bicep-mall och använder Azure Resource Manager för att distribuera resurser. Operatorer används för att beräkna värden, jämföra värden eller utvärdera villkor. Det finns tre typer av Bicep-operatorer:
+
+- [Jämförelse](#comparison)
+- [Logiska](#logical)
+- [Numeriska](#numeric)
+
+Genom att omsluta ett uttryck mellan `(` och `)` kan du åsidosätta standardvärdet för Bicep-operatorn. Uttrycket x + y/z utvärderar till exempel divisionen först och sedan additionen. Uttrycket (x + y) /z utvärderar dock additionen först och division andra.
 
 ## <a name="comparison"></a>Jämförelse
 
-Jämförelse operatorer jämför värden och returnerar antingen `true` eller `false` .
+Jämförelseoperatorer jämför värden och returnerar antingen `true` eller `false` .
 
 | Operator | Name | Beskrivning |
 | ---- | ---- | ---- |
@@ -25,25 +31,25 @@ Jämförelse operatorer jämför värden och returnerar antingen `true` eller `f
 | `<=` | [Mindre än eller lika med](bicep-operators-comparison.md#less-than-or-equal-) | Utvärderar om det första värdet är mindre än eller lika med det andra värdet. |
 | `<`  | [Mindre än](bicep-operators-comparison.md#less-than-) | Utvärderar om det första värdet är mindre än det andra värdet. |
 | `==` | [Lika med](bicep-operators-comparison.md#equals-) | Utvärderar om två värden är lika. |
-| `!=` | [Inte lika med](bicep-operators-comparison.md#not-equal-) | Utvärderar om två värden **inte** är lika. |
-| `=~` | [Lika med Skift läges okänslig](bicep-operators-comparison.md#equal-case-insensitive-) | Ignorerar Skift läge för att avgöra om två värden är lika. |
-| `!~` | [Inte lika med Skift läge](bicep-operators-comparison.md#not-equal-case-insensitive-) | Ignorerar Skift läge för att avgöra om två värden **inte** är lika. |
+| `!=` | [Inte lika med](bicep-operators-comparison.md#not-equal-) | Utvärderar om två värden inte **är lika.** |
+| `=~` | [Lika med icke-okänsligt](bicep-operators-comparison.md#equal-case-insensitive-) | Ignorerar ärendet för att avgöra om två värden är lika. |
+| `!~` | [Inte lika med icke-okänsligt](bicep-operators-comparison.md#not-equal-case-insensitive-) | Ignorerar fall för att avgöra om två värden inte **är** lika. |
 
 ## <a name="logical"></a>Logiskt
 
-Logiska operatorer utvärderar booleska värden, returnerar värden som inte är null eller utvärderar ett villkors uttryck.
+De logiska operatorerna utvärderar booleska värden, returnerar värden som inte är null eller utvärderar ett villkorsuttryck.
 
 | Operator | Name | Beskrivning |
 | ---- | ---- | ---- |
-| `&&` | [Särskilt](bicep-operators-logical.md#and-) | Returnerar `true` om alla värden är true. |
-| `||`| [Eller](bicep-operators-logical.md#or-) | Returnerar `true` om något av värdena är true. |
-| `!` | [Ogiltigt](bicep-operators-logical.md#not-) | Negerar ett booleskt värde. |
+| `&&` | [Och](bicep-operators-logical.md#and-) | Returnerar `true` om alla värden är sanna. |
+| `||`| [Eller](bicep-operators-logical.md#or-) | Returnerar `true` om något av dessa värden är sant. |
+| `!` | [Inte](bicep-operators-logical.md#not-) | Negerar ett booleskt värde. |
 | `??` | [Coalesce](bicep-operators-logical.md#coalesce-) | Returnerar det första värdet som inte är null. |
-| `?` `:` | [Villkors uttryck](bicep-operators-logical.md#conditional-expression--) | Utvärderar ett villkor för True eller false och returnerar ett värde. |
+| `?` `:` | [Villkorsuttryck](bicep-operators-logical.md#conditional-expression--) | Utvärderar ett villkor för sant eller falskt och returnerar ett värde. |
 
 ## <a name="numeric"></a>Numerisk
 
-De numeriska operatorerna använder heltal för att utföra beräkningar och returnera heltals värden.
+De numeriska operatorerna använder heltal för att göra beräkningar och returnera heltalsvärden.
 
 | Operator | Name | Beskrivning |
 | ---- | ---- | ---- |
@@ -55,11 +61,11 @@ De numeriska operatorerna använder heltal för att utföra beräkningar och ret
 | `-` | [Minus](bicep-operators-numeric.md#minus--) | Multiplicerar ett heltal med `-1` . |
 
 > [!NOTE]
-> Subtrahera och minus Använd samma operator. Funktionen skiljer sig åt eftersom subtrahera använder två operander och minus använder en operand.
+> Subtrahera och minus använd samma operator. Funktionen skiljer sig eftersom subtrahering använder två operander och minus använder en operand.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Information om hur du skapar en bicep-fil finns i [Självstudier: skapa och distribuera den första Azure Resource Manager bicep-filen](bicep-tutorial-create-first-bicep.md).
-- Information om hur du löser bicep typ fel finns i [valfri funktion för bicep](template-functions-any.md).
-- Om du vill jämföra syntaxen för bicep och JSON, se [jämföra JSON och bicep for templates](compare-template-syntax.md).
-- Exempel på funktioner för bicep och ARM-mallar finns i [funktioner i arm-mallar](template-functions.md).
+- Information om hur du skapar en Bicep-fil [finns i Självstudie: Skapa och distribuera först Azure Resource Manager Bicep-filen](bicep-tutorial-create-first-bicep.md).
+- Information om hur du löser fel av Bicep-typ finns i [Valfri funktion för Bicep](template-functions-any.md).
+- Om du vill jämföra syntax för Bicep och JSON, se [Jämföra JSON och Bicep för mallar](compare-template-syntax.md).
+- Exempel på bicep- och ARM-mallfunktioner finns i [ARM-mallfunktioner.](template-functions.md)

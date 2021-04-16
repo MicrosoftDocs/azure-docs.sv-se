@@ -1,32 +1,34 @@
 ---
-title: Snabb start – skapa en privat Azure-DNS-zon med hjälp av Azure PowerShell
-description: I den här snabb starten får du lära dig hur du skapar och hanterar din första privata DNS-zon och-post med hjälp av Azure PowerShell.
+title: Snabbstart – Skapa en privat DNS-zon i Azure med Azure PowerShell
+description: I den här snabbstarten får du lära dig hur du skapar och hanterar din första privata DNS-zon och DNS-post med Azure PowerShell.
 services: dns
 author: rohinkoul
-ms.service: dns
-ms.topic: quickstart
-ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: ee6dde6b34cccd415f9bf2052f65dcbe940715c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/20/2020
+ms.topic: quickstart
+ms.service: dns
+ms.custom:
+- mode-api
+ms.openlocfilehash: 321cd9c9f85b7f1dc2540992d9db0aaefa1b9b62
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92424384"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535487"
 ---
-# <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>Snabb start: skapa en privat Azure-DNS-zon med hjälp av Azure PowerShell
+# <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>Snabbstart: Skapa en privat DNS-zon i Azure med Azure PowerShell
 
 Den här artikeln visar hur du skapar din första privata DNS-zon och DNS-post med Azure PowerShell.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-En DNS-zon används som värd åt DNS-posterna för en viss domän. Om du vill låta Azure DNS vara värd för din domän så måste du skapa en DNS-zon för det domännamnet. Varje DNS-post för din domän skapas sedan i den här DNS-zonen. Om du vill publicera en privat DNS-zon i ett virtuellt nätverk anger du listan med virtuella nätverk som får matcha poster i zonen.  Dessa kallas *länkade* virtuella nätverk. När autoregistrering har Aktiver ATS uppdaterar Azure DNS även zon posterna när en virtuell dator skapas, ändrar dess IP-adress eller raderas.
+En DNS-zon används som värd åt DNS-posterna för en viss domän. Om du vill låta Azure DNS vara värd för din domän så måste du skapa en DNS-zon för det domännamnet. Varje DNS-post för din domän skapas sedan i den här DNS-zonen. Om du vill publicera en privat DNS-zon i ett virtuellt nätverk anger du listan med virtuella nätverk som får matcha poster i zonen.  Dessa kallas *länkade* virtuella nätverk. När autoregistrering har aktiverats Azure DNS även zonposterna varje gång en virtuell dator skapas, ändrar dess IP-adress eller tas bort.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-Om du vill kan du slutföra den här snabb starten med [Azure CLI](private-dns-getstarted-cli.md).
+Om du vill kan du slutföra den här snabbstarten med [Azure CLI](private-dns-getstarted-cli.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,7 +44,7 @@ New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 
 En DNS-zon skapas med hjälp av cmdleten `New-AzPrivateDnsZone`.
 
-I följande exempel skapas ett virtuellt nätverk med namnet **myAzureVNet**. Sedan skapar den en DNS-zon med namnet **Private.contoso.com** i resurs gruppen **MyAzureResourceGroup** , länkar DNS-zonen till det virtuella **MyAzureVnet** -nätverket och aktiverar automatisk registrering.
+I följande exempel skapas ett virtuellt nätverk med **namnet myAzureVNet**. Sedan skapar den en **DNS-zon private.contoso.com** i resursgruppen **MyAzureResourceGroup,** länkar DNS-zonen till det virtuella **nätverket MyAzureVnet** och aktiverar automatisk registrering.
 
 ```azurepowershell
 Install-Module -Name Az.PrivateDns -force
@@ -62,7 +64,7 @@ $link = New-AzPrivateDnsVirtualNetworkLink -ZoneName private.contoso.com `
   -VirtualNetworkId $vnet.id -EnableRegistration
 ```
 
-Om du bara vill skapa en zon för namn matchning (ingen automatisk registrering av värdnamn) kan du utelämna `-EnableRegistration` parametern.
+Om du vill skapa en zon bara för namnmatchning (ingen automatisk registrering av värdnamn) kan du utelämna `-EnableRegistration` parametern .
 
 ### <a name="list-dns-private-zones"></a>Lista privata DNS-zoner
 
@@ -108,7 +110,7 @@ Det här kan ta några minuter.
 
 ## <a name="create-an-additional-dns-record"></a>Skapa en ytterligare DNS-post
 
-Du skapar postuppsättningar med hjälp av cmdleten `New-AzPrivateDnsRecordSet`. I följande exempel skapas en post med det relativa namnet **db** i DNS-zonen **Private.contoso.com** i resurs gruppen **MyAzureResourceGroup**. Det fullständigt kvalificerade namnet på post uppsättningen är **db.Private.contoso.com**. Posttypen är ”A” med IP-adressen ”10.2.0.4”, och TTL är 3600 sekunder.
+Du skapar postuppsättningar med hjälp av cmdleten `New-AzPrivateDnsRecordSet`. I följande exempel skapas en post med den relativa **namn-databasen** i DNS-zonen **private.contoso.com**, i resursgruppen **MyAzureResourceGroup**. Det fullständigt kvalificerade namnet på postuppsättningen är **db.private.contoso.com**. Posttypen är ”A” med IP-adressen ”10.2.0.4”, och TTL är 3600 sekunder.
 
 ```azurepowershell
 New-AzPrivateDnsRecordSet -Name db -RecordType A -ZoneName private.contoso.com `
@@ -126,7 +128,7 @@ Get-AzPrivateDnsRecordSet -ZoneName private.contoso.com -ResourceGroupName MyAzu
 
 ## <a name="test-the-private-zone"></a>Testa den privata zonen
 
-Nu kan du testa namn matchningen för din privata **Private.contoso.com** -zon.
+Nu kan du testa namnmatchning för din **private.contoso.com** privata zonen.
 
 ### <a name="configure-vms-to-allow-inbound-icmp"></a>Konfigurera virtuella datorer för att tillåta inkommande ICMP
 
@@ -193,7 +195,7 @@ Upprepa för myVM02.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När de inte längre behövs tar du bort resurs gruppen **MyAzureResourceGroup** för att ta bort de resurser som skapats i den här artikeln.
+När resursgruppen **MyAzureResourceGroup inte** längre behövs kan du ta bort den för att ta bort resurserna som skapades i den här artikeln.
 
 ```azurepowershell
 Remove-AzResourceGroup -Name MyAzureResourceGroup

@@ -1,41 +1,43 @@
 ---
-title: Använda Azure/Service-Bus-köer i Java Script
-description: Lär dig hur du skriver ett JavaScript-program som använder den senaste versionen av @azure/service-bus Package för att skicka meddelanden till och ta emot meddelanden från en Service Bus kö.
+title: Så här använder du azure/service-bus-köer i JavaScript
+description: Lär dig hur du skriver ett JavaScript-program som använder den senaste versionen av paketet för att skicka meddelanden till och ta emot @azure/service-bus meddelanden från en Service Bus kö.
 author: spelluru
-ms.devlang: nodejs
-ms.topic: quickstart
-ms.date: 11/09/2020
 ms.author: spelluru
-ms.custom: devx-track-js
-ms.openlocfilehash: 3c499dcb5233cbf5cd4048c641d1b38e289cc35f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 11/09/2020
+ms.topic: quickstart
+ms.devlang: nodejs
+ms.custom:
+- devx-track-js
+- mode-api
+ms.openlocfilehash: aee67becf7519f03839eafbd897838f938871307
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739720"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537239"
 ---
-# <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>Skicka meddelanden till och ta emot meddelanden från Azure Service Bus köer (Java Script)
-I den här självstudien får du lära dig hur du använder [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) paketet i ett JavaScript-program för att skicka meddelanden till och ta emot meddelanden från en Service Bus kö.
+# <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>Skicka meddelanden till och ta emot meddelanden Azure Service Bus köer (JavaScript)
+I den här självstudien lär du dig att använda paketet i ett JavaScript-program för att skicka meddelanden till och ta emot [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) meddelanden från en Service Bus kö.
 
 ## <a name="prerequisites"></a>Förutsättningar
-- En Azure-prenumeration. Du behöver ett Azure-konto för att genomföra kursen. Du kan aktivera dina [förmåner för MSDN-prenumeranter](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) eller registrera dig för ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Om du inte har en kö att arbeta med följer du stegen i artikeln [använd Azure Portal för att Service Bus skapa](service-bus-quickstart-portal.md) en kö. Anteckna **anslutnings strängen** för Service Bus namn området och namnet på **kön** som du skapade.
+- En Azure-prenumeration. Du behöver ett Azure-konto för att genomföra kursen. Du kan aktivera dina [MSDN-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) eller registrera dig för ett [kostnadsfritt konto.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
+- Om du inte har någon kö att arbeta med följer du stegen i artikeln Använda Azure Portal för att skapa en [Service Bus för](service-bus-quickstart-portal.md) att skapa en kö. Anteckna **anslutningssträngen** för Service Bus namnområdet och namnet på den **kö som** du skapade.
 
 > [!NOTE]
-> - Den här självstudien fungerar med exempel som du kan kopiera och köra med [NodeJS](https://nodejs.org/). Instruktioner för hur du skapar ett Node.js program finns i [skapa och distribuera ett Node.js program till en Azure-webbplats](../app-service/quickstart-nodejs.md)eller [Node.js moln tjänst med Windows PowerShell](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
+> - Den här självstudien fungerar med exempel som du kan kopiera och köra med [Nodejs](https://nodejs.org/). Anvisningar om hur du skapar ett Node.js-program finns i Skapa och distribuera ett Node.js-program till en [Azure-webbplats](../app-service/quickstart-nodejs.md)eller [Node.js-molntjänst med hjälp av Windows PowerShell](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Installera paketet med NPM (Node Package Manager)
-Om du vill installera NPM-paketet för Service Bus öppnar du en kommando tolk med `npm` sökvägen och ändrar katalogen till den mapp där du vill ha dina exempel och kör sedan det här kommandot.
+Om du vill installera npm-paketet för Service Bus öppnar du en kommandotolk som har i sökvägen, ändrar katalogen till den mapp där du vill ha dina exempel och kör sedan `npm` det här kommandot.
 
 ```bash
 npm install @azure/service-bus
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Skicka meddelanden till en kö
-Följande exempel kod visar hur du skickar ett meddelande till en kö.
+Följande exempelkod visar hur du skickar ett meddelande till en kö.
 
-1. Öppna din favorit redigerare, till exempel [Visual Studio Code](https://code.visualstudio.com/).
-2. Skapa en fil med namnet `send.js` och klistra in nedanstående kod i den. Den här koden skickar ett meddelande till kön. Meddelandet har en etikett (expert) och brödtext (Einstein).
+1. Öppna din favoritredigerare, till exempel [Visual Studio Code](https://code.visualstudio.com/).
+2. Skapa en fil med `send.js` namnet och klistra in koden nedan i den. Den här koden skickar ett meddelande till din kö. Meddelandet har en etikett (Scientist) och brödtext (Bob).
 
     ```javascript
     const { ServiceBusClient } = require("@azure/service-bus");
@@ -111,9 +113,9 @@ Följande exempel kod visar hur du skickar ett meddelande till en kö.
         process.exit(1);
      });
     ```
-3. Ersätt `<CONNECTION STRING TO SERVICE BUS NAMESPACE>` med anslutnings strängen till Service Bus namn området.
+3. Ersätt `<CONNECTION STRING TO SERVICE BUS NAMESPACE>` med anslutningssträngen till Service Bus namnområdet.
 1. Ersätt `<QUEUE NAME>` med namnet på kön. 
-1. Kör sedan kommandot i en kommando tolk för att köra den här filen.
+1. Kör sedan kommandot i en kommandotolk för att köra den här filen.
 
     ```console
     node send.js 
@@ -126,8 +128,8 @@ Följande exempel kod visar hur du skickar ett meddelande till en kö.
 
 ## <a name="receive-messages-from-a-queue"></a>Ta emot meddelanden från en kö
 
-1. Öppna din favorit redigerare, till exempel [Visual Studio Code](https://code.visualstudio.com/)
-2. Skapa en fil med namnet `receive.js` och klistra in följande kod i den.
+1. Öppna din favoritredigerare, till exempel [Visual Studio Code](https://code.visualstudio.com/)
+2. Skapa en fil med `receive.js` namnet och klistra in följande kod i den.
 
     ```javascript
     const { delay, ServiceBusClient, ServiceBusMessage } = require("@azure/service-bus");
@@ -173,9 +175,9 @@ Följande exempel kod visar hur du skickar ett meddelande till en kö.
         process.exit(1);
      });
     ```
-3. Ersätt `<CONNECTION STRING TO SERVICE BUS NAMESPACE>` med anslutnings strängen till Service Bus namn området.
+3. Ersätt `<CONNECTION STRING TO SERVICE BUS NAMESPACE>` med anslutningssträngen till Service Bus namnområdet.
 1. Ersätt `<QUEUE NAME>` med namnet på kön. 
-1. Kör sedan kommandot i en kommando tolk för att köra den här filen.
+1. Kör sedan kommandot i en kommandotolk för att köra den här filen.
 
     ```console
     node receive.js
@@ -195,17 +197,17 @@ Följande exempel kod visar hur du skickar ett meddelande till en kö.
     Received message: Nikolaus Kopernikus
     ```
 
-På sidan **Översikt** för Service Bus namn området i Azure Portal kan du se antalet **inkommande** och **utgående** meddelanden. Du kan behöva vänta en minut eller så och sedan uppdatera sidan för att se de senaste värdena. 
+På sidan **Översikt** för Service Bus i Azure Portal kan du se antal **inkommande** och **utgående** meddelanden. Du kan behöva vänta i någon minut och sedan uppdatera sidan för att se de senaste värdena. 
 
 :::image type="content" source="./media/service-bus-java-how-to-use-queues/overview-incoming-outgoing-messages.png" alt-text="Antal inkommande och utgående meddelanden":::
 
-Välj kön på den här **översikts** sidan för att gå till sidan **Service Bus kö** . Du ser det **inkommande** och **utgående** meddelande antalet på den här sidan. Du kan också se annan information, till exempel köns **aktuella storlek** , **maximal storlek**, **Antal aktiva meddelanden** och så vidare. 
+Välj kön på den här **översiktssidan** för att gå till **sidan Service Bus Kö.** Du ser även **antalet inkommande** **och** utgående meddelanden på den här sidan. Du ser också annan information, till exempel **den aktuella** storleken på kön, **maximal storlek,** **antal aktiva meddelanden** och så vidare. 
 
-:::image type="content" source="./media/service-bus-java-how-to-use-queues/queue-details.png" alt-text="Information om kö":::
+:::image type="content" source="./media/service-bus-java-how-to-use-queues/queue-details.png" alt-text="Köinformation":::
 ## <a name="next-steps"></a>Nästa steg
 Se följande dokumentation och exempel: 
 
-- [Azure Service Bus klient bibliotek för Java Script](https://www.npmjs.com/package/@azure/service-bus)
+- [Azure Service Bus klientbibliotek för JavaScript](https://www.npmjs.com/package/@azure/service-bus)
 - [JavaScript-exempel](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
 - [TypeScript-exempel](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
 - [Referensdokumentation för API](/javascript/api/overview/azure/service-bus)

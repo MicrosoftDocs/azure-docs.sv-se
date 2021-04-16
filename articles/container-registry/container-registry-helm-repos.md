@@ -1,64 +1,61 @@
 ---
 title: Lagra Helm-diagram
-description: Lär dig hur du lagrar Helm-diagram för dina Kubernetes-program med hjälp av databaser i Azure Container Registry
+description: Lär dig hur du lagrar Helm-diagram för dina Kubernetes-program med hjälp av lagringsplatsen i Azure Container Registry
 ms.topic: article
-ms.date: 06/12/2020
-ms.openlocfilehash: 9897ed6e43813c16314076b0322cd263cd2ed150
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 04/15/2021
+ms.openlocfilehash: 6698eb8f5e18511717e44bf5dc06a51d8f3903b8
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223089"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537323"
 ---
-# <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Push-och pull-Helm diagram till ett Azure Container Registry
+# <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Skicka och hämta Helm-diagram till ett Azure-containerregister
 
-Om du snabbt vill hantera och distribuera program för Kubernetes kan du använda [paket hanteraren med öppen källkod för Helm][helm]. Med Helm definieras programpaket som [diagram](https://helm.sh/docs/topics/charts/), som samlas in och lagras i en Helm- [diagram lagrings plats](https://helm.sh/docs/topics/chart_repository/).
+Om du snabbt vill hantera och distribuera program för Kubernetes kan du använda [Helm-pakethanteraren med öppen källkod.][helm] Med Helm definieras programpaket som diagram , [som](https://helm.sh/docs/topics/charts/)samlas in och lagras på en [Helm-diagramdatabas.](https://helm.sh/docs/topics/chart_repository/)
 
-Den här artikeln visar hur du kan vara värd för Helm Charts-databaser i ett Azure Container Registry med hjälp av Helm 3-kommandon. I många fall skulle du skapa och ladda upp dina egna diagram för de program som du utvecklar. Mer information om hur du skapar egna Helm-diagram finns i [Developer-Guide för diagram mal len][develop-helm-charts]. Du kan också lagra ett befintligt Helm-diagram från en annan Helm lagrings platsen.
-
-> [!IMPORTANT]
-> Stöd för Helm-diagram i Azure Container Registry är för närvarande en för hands version. För hands versionerna görs tillgängliga för dig på villkor att du godkänner kompletterande [användnings villkor][terms-of-use]. Vissa aspekter av funktionen kan ändras innan den är allmänt tillgänglig (GA).
+Den här artikeln visar hur du är värd för Helm-diagramlagringsplatsen i ett Azure-containerregister med hjälp av Helm 3-kommandon. I många scenarier skulle du skapa och ladda upp egna diagram för de program som du utvecklar. Mer information om hur du skapar egna Helm-diagram finns i utvecklarhandboken [för diagrammallen.][develop-helm-charts] Du kan också lagra ett befintligt Helm-diagram från en annan Helm-lagringsplats.
 
 ## <a name="helm-3-or-helm-2"></a>Helm 3 eller Helm 2?
 
-Om du vill lagra, hantera och installera Helm-diagram använder du en Helm-klient och Helm CLI. Större versioner av Helm-klienten är Helm 3 och Helm 2. Mer information om versions skillnaderna finns i [vanliga frågor och svar](https://helm.sh/docs/faq/)om versioner. 
+Om du vill lagra, hantera och installera Helm-diagram använder du en Helm-klient och Helm CLI. Större versioner av Helm-klienten är Helm 3 och Helm 2. Mer information om versionsskillnader finns i vanliga frågor [och svar om versionen.](https://helm.sh/docs/faq/) 
 
-Helm 3 ska användas som värd för Helm-diagram i Azure Container Registry. Med Helm 3 kan du:
+Helm 3 bör användas som värd för Helm-diagram i Azure Container Registry. Med Helm 3 gör du följande:
 
-* Kan skapa en eller flera Helm-databaser i ett Azure Container Registry
-* Lagra Helm 3-diagram i ett register som [OCI-artefakter](container-registry-image-formats.md#oci-artifacts). Helm 3-support för OCI är för närvarande *experimentellt*.
-* Autentisera med ditt register med hjälp av `helm registry login` kommandot.
-* Använd `helm chart` kommandon i Helm CLI för att skicka, hämta och hantera Helm-diagram i ett register
-* Använd `helm install` för att installera diagram till ett Kubernetes-kluster från en lokal cache för lagring.
+* Kan skapa en eller flera Helm-lagringsplatsen i ett Azure-containerregister
+* Lagra Helm 3-diagram i ett register som [OCI-artefakter](container-registry-image-formats.md#oci-artifacts). Azure Container Registry ger GA-stöd för [OCI-artefakter,](container-registry-oci-artifacts.md)inklusive Helm-diagram.
+* Autentisera med registret med hjälp av `helm registry login` kommandot .
+* Använda `helm chart` kommandon i Helm CLI för att skicka, hämta och hantera Helm-diagram i ett register
+* Använd `helm install` för att installera diagram i ett Kubernetes-kluster från en lokal lagringsplatscache.
 > [!NOTE]
-> Från och med Helm 3 är [AZ ACR Helm][az-acr-helm] -kommandon för användning med Helm 2-klienten inaktuella. Ett meddelande om minst 3 månader kommer att tillhandahållas i förväg av kommando borttagningen. Om du tidigare har distribuerat Helm 2-diagram, se [migrera Helm v2 till v3](https://helm.sh/docs/topics/v2_v3_migration/).
+> Från och med Helm 3 [blir az acr helm-kommandon][az-acr-helm] för användning med Helm 2-klienten inaktuella. Minst tre månaders varsel ges innan kommandot tas bort. Om du tidigare har distribuerat Helm 2-diagram kan du se [Migrera Helm v2 till v3.](https://helm.sh/docs/topics/v2_v3_migration/)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Följande resurser krävs för scenariot i den här artikeln:
+Följande resurser behövs för scenariot i den här artikeln:
 
-- **Ett Azure Container Registry** i din Azure-prenumeration. Om det behövs skapar du ett register med hjälp av [Azure Portal](container-registry-get-started-portal.md) eller [Azure CLI](container-registry-get-started-azure-cli.md).
-- **Helm klient version 3.1.0 eller senare** – kör `helm version` för att hitta din aktuella version. Mer information om hur du installerar och uppgraderar Helm finns i [Installera Helm][helm-install].
-- **Ett Kubernetes-kluster** där du ska installera ett Helm-diagram. Om det behövs skapar du ett [Azure Kubernetes service-kluster][aks-quickstart]. 
-- **Azure CLI version 2.0.71 eller senare** – kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][azure-cli-install].
+- **Ett Azure-containerregister** i din Azure-prenumeration. Om det behövs skapar du ett register [med hjälp Azure Portal](container-registry-get-started-portal.md) eller Azure [CLI.](container-registry-get-started-azure-cli.md)
+- **Helm-klientversion 3.1.0 eller senare –** Kör för `helm version` att hitta din aktuella version. Mer information om hur du installerar och uppgraderar Helm finns [i Installera Helm.][helm-install]
+- **Ett Kubernetes-kluster** där du installerar ett Helm-diagram. Om det behövs skapar du [ett Azure Kubernetes Service kluster][aks-quickstart]. 
+- **Azure CLI version 2.0.71 eller senare –** Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][azure-cli-install].
 
 ## <a name="enable-oci-support"></a>Aktivera OCI-stöd
 
-Använd `helm version` kommandot för att kontrol lera att du har installerat Helm 3:
+Använd kommandot `helm version` för att kontrollera att du har installerat Helm 3:
 
 ```console
 helm version
 ```
 
-Ange följande miljö variabel för att aktivera OCI-stöd i Helm 3-klienten. Den här supporten är för närvarande experimentell. 
+Ange följande miljövariabel för att aktivera OCI-stöd i Helm 3-klienten. För närvarande är det här stödet experimentellt. 
 
 ```console
 export HELM_EXPERIMENTAL_OCI=1
 ```
 
-## <a name="create-a-sample-chart"></a>Skapa ett exempel diagram
+## <a name="create-a-sample-chart"></a>Skapa ett exempeldiagram
 
-Skapa ett test diagram med följande kommandon:
+Skapa ett testdiagram med följande kommandon:
 
 ```console
 mkdir helmtest
@@ -74,7 +71,7 @@ cd hello-world/templates
 rm -rf *
 ```
 
-I `templates` mappen skapar du en fil med namnet `configmap.yaml` , genom att köra följande kommando:
+I mappen `templates` skapar du en fil med namnet genom att köra följande `configmap.yaml` kommando:
 
 ```console
 cat <<EOF > configmap.yaml
@@ -87,13 +84,13 @@ data:
 EOF
 ```
 
-Mer information om hur du skapar och kör det här exemplet finns [komma igång](https://helm.sh/docs/chart_template_guide/getting_started/) i Helm-dokumenten.
+Mer information om hur du skapar och kör det här [exemplet finns Komma igång](https://helm.sh/docs/chart_template_guide/getting_started/) i Helm Docs.
 
-## <a name="save-chart-to-local-registry-cache"></a>Spara diagrammet i det lokala registrets cacheminne
+## <a name="save-chart-to-local-registry-cache"></a>Spara diagram till lokal registercache
 
-Ändra katalog till under `hello-world` katalogen. Sedan kör `helm chart save` du för att spara en kopia av diagrammet lokalt och även skapa ett alias med det fullständigt kvalificerade namnet på registret (alla gemener) och mål databasen och taggen. 
+Ändra katalog till `hello-world` underkatalogen. Kör sedan för att spara en kopia av diagrammet lokalt och skapa även ett alias med det fullständigt kvalificerade namnet på registret `helm chart save` (endast gemener) och måldatabasen och taggen. 
 
-I följande exempel är register namnet *mycontainerregistry*, mål lagrings platsen är *Hello-World* och mål diagram tag gen är *v1*, men ersätter värden för din miljö:
+I följande exempel är registernamnet *mycontainerregistry,* måldatabasen *är hello-world* och måldiagramstaggen *är v1,* men ersätter värdena för din miljö:
 
 ```console
 cd ..
@@ -101,7 +98,7 @@ helm chart save . hello-world:v1
 helm chart save . mycontainerregistry.azurecr.io/helm/hello-world:v1
 ```
 
-Kör `helm chart list` för att bekräfta att du har sparat diagrammen i det lokala cacheminnet för registret. Utdata liknar följande:
+Kör `helm chart list` för att bekräfta att du sparade diagrammen i den lokala registercachen. Utdata liknar följande:
 
 ```console
 REF                                                      NAME            VERSION DIGEST  SIZE            CREATED
@@ -111,9 +108,9 @@ mycontainerregistry.azurecr.io/helm/hello-world:v1       hello-world       0.1.0
 
 ## <a name="authenticate-with-the-registry"></a>Autentisera med registret
 
-Kör `helm registry login` kommandot i Helm 3 CLI för att [autentisera med registret](container-registry-authentication.md) med de autentiseringsuppgifter som är lämpliga för ditt scenario.
+Kör kommandot `helm registry login` i Helm 3 CLI för att autentisera [med registret med de autentiseringsuppgifter](container-registry-authentication.md) som är lämpliga för ditt scenario.
 
-Skapa till exempel en Azure Active Directory [tjänstens huvud namn med pull-och push-behörigheter](container-registry-auth-service-principal.md#create-a-service-principal) (AcrPush-rollen) till registret. Ange sedan autentiseringsuppgifterna för tjänstens huvud namn till `helm registry login` . I följande exempel förses lösen ordet med en miljö variabel:
+Du kan till exempel skapa Azure Active Directory [tjänstens huvudnamn](container-registry-auth-service-principal.md#create-a-service-principal) med pull- och push-behörigheter (rollen AcrPush) till registret. Ange sedan autentiseringsuppgifterna för tjänstens huvudnamn till `helm registry login` . I följande exempel anges lösenordet med hjälp av en miljövariabel:
 
 ```console
 echo $spPassword | helm registry login mycontainerregistry.azurecr.io \
@@ -121,15 +118,15 @@ echo $spPassword | helm registry login mycontainerregistry.azurecr.io \
   --password-stdin
 ```
 
-## <a name="push-chart-to-registry"></a>Skicka diagram till registret
+## <a name="push-chart-to-registry"></a>Push-diagram till registret
 
-Kör `helm chart push` kommandot i Helm 3 CLI för att skicka diagrammet till det fullständigt kvalificerade mål lagrings platsen:
+Kör kommandot `helm chart push` i Helm 3 CLI för att skicka diagrammet till den fullständigt kvalificerade måldatabasen:
 
 ```console
 helm chart push mycontainerregistry.azurecr.io/helm/hello-world:v1
 ```
 
-Efter en lyckad push liknar utdata följande:
+Efter en lyckad push-push ser utdata ut ungefär så här:
 
 ```output
 The push refers to repository [mycontainerregistry.azurecr.io/helm/hello-world]
@@ -140,11 +137,11 @@ name:    hello-world
 version: 0.1.0
 ```
 
-## <a name="list-charts-in-the-repository"></a>Visa lista över diagram i databasen
+## <a name="list-charts-in-the-repository"></a>Lista diagram på lagringsplatsen
 
-Precis som med bilder som lagras i ett Azure Container Registry kan du använda [AZ ACR-lagringsplatsen][az-acr-repository] för att visa de databaser som är värdar för dina diagram och diagram etiketter och-manifest. 
+Precis som med avbildningar som lagras i ett Azure-containerregister kan du använda [az acr repository-kommandon][az-acr-repository] för att visa lagringsplatserna som är värdar för dina diagram samt diagramtaggar och manifest. 
 
-Du kan till exempel köra [AZ ACR-lagringsplatsen][az-acr-repository-show] för att se egenskaperna för lagrings platsen som du skapade i föregående steg:
+Kör till exempel [az acr repository show för][az-acr-repository-show] att se egenskaperna för lagringsplatsen som du skapade i föregående steg:
 
 ```azurecli
 az acr repository show \
@@ -171,7 +168,7 @@ Utdata liknar följande:
 }
 ```
 
-Kör kommandot [AZ ACR-lagringsplatsen show-Manifests][az-acr-repository-show-manifests] för att se information om diagrammet som lagras i lagrings platsen. Exempel:
+Kör kommandot [az acr repository show-manifests för][az-acr-repository-show-manifests] att se information om diagrammet som lagras på lagringsplatsen. Exempel:
 
 ```azurecli
 az acr repository show-manifests \
@@ -179,7 +176,7 @@ az acr repository show-manifests \
   --repository helm/hello-world --detail
 ```
 
-Utdata, förkortat i det här exemplet, visar en `configMediaType` av `application/vnd.cncf.helm.config.v1+json` :
+Utdata, förkortat i det här exemplet, visar `configMediaType` ett av `application/vnd.cncf.helm.config.v1+json` :
 
 ```output
 [
@@ -196,15 +193,15 @@ Utdata, förkortat i det här exemplet, visar en `configMediaType` av `applicati
     ]
 ```
 
-## <a name="pull-chart-to-local-cache"></a>Hämta diagram till lokalt cacheminne
+## <a name="pull-chart-to-local-cache"></a>Hämta diagram till lokal cache
 
-Om du vill installera ett Helm-diagram på Kubernetes måste diagrammet vara i det lokala cacheminnet. I det här exemplet ska du först köra `helm chart remove` för att ta bort det befintliga lokala diagrammet med namnet `mycontainerregistry.azurecr.io/helm/hello-world:v1` :
+Om du vill installera ett Helm-diagram i Kubernetes måste diagrammet finnas i den lokala cachen. I det här exemplet kör du först `helm chart remove` för att ta bort det befintliga lokala diagrammet med namnet `mycontainerregistry.azurecr.io/helm/hello-world:v1` :
 
 ```console
 helm chart remove mycontainerregistry.azurecr.io/helm/hello-world:v1
 ```
 
-Kör `helm chart pull` för att ladda ned diagrammet från Azure Container Registry till ditt lokala cacheminne:
+Kör `helm chart pull` för att ladda ned diagrammet från Azure-containerregistret till din lokala cache:
 
 ```console
 helm chart pull mycontainerregistry.azurecr.io/helm/hello-world:v1
@@ -212,21 +209,21 @@ helm chart pull mycontainerregistry.azurecr.io/helm/hello-world:v1
 
 ## <a name="export-helm-chart"></a>Exportera Helm-diagram
 
-Om du vill arbeta mer med diagrammet exporterar du det till en lokal katalog med hjälp av `helm chart export` . Exportera till exempel diagrammet som du hämtade till `install` katalogen:
+Om du vill arbeta vidare med diagrammet exporterar du det till en lokal katalog med hjälp av `helm chart export` . Exportera till exempel diagrammet som du har dragit till `install` katalogen:
 
 ```console
 helm chart export mycontainerregistry.azurecr.io/helm/hello-world:v1 \
   --destination ./install
 ```
 
-Om du vill visa information om det exporterade diagrammet i lagrings platsen kör du `helm show chart` kommandot i den katalog där du exporterade diagrammet.
+Om du vill visa information om det exporterade diagrammet i lagringsplatsen kör `helm show chart` du kommandot i katalogen där du exporterade diagrammet.
 
 ```console
 cd install
 helm show chart hello-world
 ```
 
-Helm returnerar detaljerad information om den senaste versionen av diagrammet, som visas i följande exempel på utdata:
+Helm returnerar detaljerad information om den senaste versionen av diagrammet, som du ser i följande exempelutdata:
 
 ```output
 apiVersion: v2
@@ -239,13 +236,13 @@ version: 0.1.0
 
 ## <a name="install-helm-chart"></a>Installera Helm-diagram
 
-Kör `helm install` för att installera Helm-diagrammet som du hämtade till den lokala cachen och exporterade. Ange ett versions namn, till exempel *myhelmtest*, eller skicka `--generate-name` parametern. Exempel:
+Kör `helm install` för att installera Helm-diagrammet som du har dragit till den lokala cachen och exporterat. Ange ett versionnamn, till *exempel myhelmtest*, eller skicka `--generate-name` parametern . Exempel:
 
 ```console
 helm install myhelmtest ./hello-world
 ```
 
-Utdata efter lyckad diagram installation liknar:
+Utdata efter lyckad diagraminstallation liknar:
 
 ```console
 NAME: myhelmtest
@@ -256,7 +253,7 @@ REVISION: 1
 TEST SUITE: None
 ```
 
-Verifiera installationen genom att köra `helm get manifest` kommandot. 
+Kontrollera installationen genom att köra `helm get manifest` kommandot . 
 
 ```console
 helm get manifest myhelmtest
@@ -264,7 +261,7 @@ helm get manifest myhelmtest
 
 Kommandot returnerar YAML-data i `configmap.yaml` mallfilen.
 
-Kör `helm uninstall` för att avinstallera diagram versionen på klustret:
+Kör `helm uninstall` för att avinstallera diagramutgågåren i klustret:
 
 ```console
 helm uninstall myhelmtest
@@ -272,7 +269,7 @@ helm uninstall myhelmtest
 
 ## <a name="delete-chart-from-the-registry"></a>Ta bort diagram från registret
 
-Om du vill ta bort ett diagram från behållar registret använder du kommandot [AZ ACR databas Delete][az-acr-repository-delete] . Kör följande kommando och bekräfta åtgärden när du uppmanas till det:
+Om du vill ta bort ett diagram från containerregistret använder du [kommandot az acr repository delete.][az-acr-repository-delete] Kör följande kommando och bekräfta åtgärden när du uppmanas att göra det:
 
 ```azurecli
 az acr repository delete --name mycontainerregistry --image helm/hello-world:v1
@@ -280,9 +277,9 @@ az acr repository delete --name mycontainerregistry --image helm/hello-world:v1
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Mer information om hur du skapar och distribuerar Helm-diagram finns i [utveckla Helm-diagram][develop-helm-charts].
-* Lär dig mer om att installera program med Helm i [Azure Kubernetes service (AKS)](../aks/kubernetes-helm.md).
-* Helm-diagram kan användas som en del av behållar Bygg processen. Mer information finns i [använda Azure Container Registry uppgifter][acr-tasks].
+* Mer information om hur du skapar och distribuerar Helm-diagram finns i [Utveckla Helm-diagram.][develop-helm-charts]
+* Läs mer om att installera program med Helm [i Azure Kubernetes Service (AKS).](../aks/kubernetes-helm.md)
+* Helm-diagram kan användas som en del av containerbyggprocessen. Mer information finns i [Använda Azure Container Registry-uppgifter][acr-tasks].
 
 <!-- LINKS - external -->
 [helm]: https://helm.sh/

@@ -1,18 +1,20 @@
 ---
-title: Snabb start – konfigurera Azure Analysis Services server-brandvägg | Microsoft Docs
-description: Den här snabb starten hjälper dig att konfigurera en brand vägg för en Azure Analysis Services-server med hjälp av Azure Portal.
+title: Snabbstart – Konfigurera Azure Analysis Services serverbrandväggen | Microsoft Docs
+description: Den här snabbstarten hjälper dig att konfigurera en brandvägg Azure Analysis Services en server med hjälp av Azure Portal.
 author: minewiskan
-ms.service: azure-analysis-services
-ms.topic: quickstart
-ms.date: 08/12/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e4953137cf939c35c6ac73fe51ca43eca6e99edc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2020
+ms.topic: quickstart
+ms.service: azure-analysis-services
+ms.custom:
+- mode-portal
+ms.openlocfilehash: dd8324607667c6d1f5e397a3266026cf7f2dcc93
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88192438"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536717"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Snabbstart: Konfigurera serverbrandvägg – portalen
 
@@ -24,7 +26,7 @@ Den här snabbstarten hjälper dig att konfigurera en brandvägg för Azure Anal
 - Ett eller flera IP-adressintervall för klientdatorer (om så behövs).
 
 > [!NOTE]
-> Data import (uppdatering) och sid brytnings rapport anslutningar från Power BI Premium i Microsoft Cloud Tyskland stöds för närvarande inte när en brand vägg är aktive rad, även om inställningen Tillåt åtkomst från Power BI är inställd på på.
+> Anslutningar för dataimport (uppdatering) och sidnumrerade rapporter från Power BI Premium i Microsoft Cloud Tyskland stöds för närvarande inte när en brandvägg är aktiverad, även om inställningen Tillåt åtkomst från Power BI är inställd på På.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal 
 
@@ -33,9 +35,9 @@ Den här snabbstarten hjälper dig att konfigurera en brandvägg för Azure Anal
 ## <a name="configure-a-firewall"></a>Konfigurera en brandvägg
 
 1. Öppna sidan Översikt genom att klicka på servern. 
-2. I **Inställningar**  >  **brand vägg**  >  **Aktivera brand vägg**, väljer du **på**.
-3. Om du vill aktivera anslutningar från Power BI och Power BI Premium väljer du **på** i **tillåt åtkomst från Power BI**.  
-4. (Valfritt) Ange ett eller flera IP-adressintervall. Ange ett namn, och start- och slut-IP-adress för varje intervall. Brand Väggs regelns namn får inte vara längre än 128 tecken och får bara innehålla versaler, gemener, siffror, under streck och bindestreck. Blank steg och andra specialtecken är inte tillåtna.
+2. I **INSTÄLLNINGAR**  >    >  **Brandväggen Aktivera brandvägg** väljer du **På**.
+3. Om du vill aktivera anslutningar Power BI och Power BI Premium i **Tillåt åtkomst från Power BI** väljer du **På**.  
+4. (Valfritt) Ange ett eller flera IP-adressintervall. Ange ett namn, och start- och slut-IP-adress för varje intervall. Brandväggsregelns namn ska vara begränsat till 128 tecken och får bara innehålla versaler, gemener, siffror, understreck och bindestreck. Blanksteg och andra specialtecken tillåts inte.
 5. Klicka på **Spara**.
 
      ![Brandväggsinställningar](./media/analysis-services-qs-firewall/aas-qs-firewall.png)
