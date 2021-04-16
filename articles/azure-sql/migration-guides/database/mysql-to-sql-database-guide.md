@@ -1,183 +1,183 @@
 ---
-title: 'MySQL till Azure SQL Database: migration guide'
-description: I den här guiden får du lära dig hur du migrerar dina MySQL-databaser till en Azure SQL Database med hjälp av SQL Server Migration Assistant för MySQL (SSMA for MySQL).
+title: 'MySQL till Azure SQL Database: Migreringsguide'
+description: I den här guiden får du lära dig hur du migrerar dina MySQL-databaser till en Azure SQL-databas med hjälp av SQL Server Migration Assistant for MySQL (SSMA for MySQL).
 ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 32c56df5bafa9439fc559edf137c1080920cfb32
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: d4510aa5cda61dac88102c89b3e03da231380bd6
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284382"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389459"
 ---
-# <a name="migration-guide-mysql-to-azure-sql-database"></a>Guide för migrering: MySQL till Azure SQL Database
+# <a name="migration-guide-mysql-to-azure-sql-database"></a>Migreringsguide: MySQL till Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-I den här guiden får du lära dig [hur du migrerar](https://azure.microsoft.com/migration/migration-journey) MySQL-databasen till en Azure SQL Database med hjälp av [SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant för MySQL (SSMA for MySQL). 
+I den här [](https://azure.microsoft.com/migration/migration-journey) guiden får du lära dig hur du migrerar din MySQL-databas till en Azure SQL-databas med [hjälp av SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant for MySQL (SSMA for MySQL). 
 
-Andra guider för migrering finns i [Guide för Azure Database migration](https://docs.microsoft.com/data-migration). 
+Andra migreringsguider finns i [Azure Database Migration Guide](https://docs.microsoft.com/data-migration). 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar migrera MySQL-databasen till en SQL-databas gör du följande:
 
-- Kontrol lera att käll miljön stöds. För närvarande stöds MySQL 5,6 och 5,7. 
-- Hämta och installera [SQL Server Migration Assistant för MySQL](https://www.microsoft.com/download/details.aspx?id=54257).
-- Se till att du har anslutning och tillräcklig behörighet för att komma åt både källan och målet.
+- Kontrollera att din källmiljö stöds. För närvarande stöds MySQL 5.6 och 5.7. 
+- Ladda ned och [installera SQL Server Migration Assistant för MySQL](https://www.microsoft.com/download/details.aspx?id=54257).
+- Kontrollera att du har anslutning och tillräcklig behörighet för att komma åt både källan och målet.
 
 ## <a name="pre-migration"></a>Före migrering 
 
-När du har uppfyllt kraven är du redo att upptäcka miljön och bedöma möjligheten för din [Azure Cloud-migrering](https://azure.microsoft.com/migration).
+När du har uppfyllt kraven är du redo att identifiera topologin för din miljö och utvärdera möjligheten att migrera [Azure-molnet.](https://azure.microsoft.com/migration)
 
 ### <a name="assess"></a>Utvärdera 
 
-Använd SQL Server Migration Assistant (SSMA) för MySQL för att granska databas objekt och data och utvärdera databaser för migrering. 
+Använd SQL Server Migration Assistant (SSMA) för MySQL för att granska databasobjekt och data och utvärdera databaser för migrering. 
 
-Gör så här för att skapa en utvärdering:
+Skapa en utvärdering genom att göra följande:
 
-1. Öppna [SSMA för MySQL](https://www.microsoft.com/download/details.aspx?id=54257). 
-1. Välj **fil** och välj sedan **nytt projekt**. 
-1. I fönstret **nytt projekt** anger du ett namn och en plats för projektet. i list rutan **migrera till** väljer du **Azure SQL Database**. 
+1. Öppna [SSMA for MySQL](https://www.microsoft.com/download/details.aspx?id=54257). 
+1. Välj **Arkiv** och sedan **Nytt projekt.** 
+1. I fönstret **Nytt projekt** anger du ett namn och en  plats för projektet och går sedan till listrutan Migrera till och väljer **Azure SQL Database**. 
 1. Välj **OK**.
 
-   ![Skärm bild av fönstret "nytt projekt" där du kan ange namn, plats och mål för ditt migreringsjobb.](./media/mysql-to-sql-database-guide/new-project.png)
+   ![Skärmbild av fönstret Nytt projekt där du anger migreringsprojektets namn, plats och mål.](./media/mysql-to-sql-database-guide/new-project.png)
 
 1. Välj fliken **Anslut till MySQL** och ange sedan information om hur du ansluter MySQL-servern. 
 
-   ![Skärm bild av fönstret Anslut till MySQL för att ange anslutningar till källan.](./media/mysql-to-sql-database-guide/connect-to-mysql.png)
+   ![Skärmbild av fönstret "Anslut till MySQL" för att ange anslutningar till källan.](./media/mysql-to-sql-database-guide/connect-to-mysql.png)
 
-1. I fönstret **MySQL metadata Explorer** högerklickar du på MySQL-schemat och väljer sedan **Skapa rapport**. Alternativt kan du välja fliken **Skapa rapport** längst upp till höger.
+1. I fönstret **MySQL Metadata Explorer** högerklickar du på MySQL-schemat och väljer sedan **Skapa rapport.** Du kan också välja fliken **Skapa rapport** längst upp till höger.
 
-   ![Skärm bild av länkarna "Skapa rapport" i SSMA för MySQL.](./media/mysql-to-sql-database-guide/create-report.png)
+   ![Skärmbild av länkarna "Skapa rapport" i SSMA for MySQL.](./media/mysql-to-sql-database-guide/create-report.png)
 
-1. Granska HTML-rapporten för att förstå konverterings statistik, fel och varningar. Analysera den för att förstå konverterings problemen och lösningarna. 
-   Du kan också öppna rapporten i Excel för att få en inventering av MySQL-objekt och förstå den ansträngning som krävs för att utföra schema konverteringar. Standard platsen för rapporten finns i rapportmappen i SSMAProjects. Exempel: 
+1. Granska HTML-rapporten för att förstå konverteringsstatistik, fel och varningar. Analysera den för att förstå konverteringsproblem och lösningar. 
+   Du kan också öppna rapporten i Excel för att få en inventering av MySQL-objekt och förstå det arbete som krävs för att utföra schemakonverteringar. Standardplatsen för rapporten är i rapportmappen i SSMAProjects. Exempel: 
    
    `drive:\Users\<username>\Documents\SSMAProjects\MySQLMigration\report\report_2016_11_12T02_47_55\`
  
-   ![Skärm bild av en exempel konverterings rapport i SSMA.](./media/mysql-to-sql-database-guide/conversion-report.png)
+   ![Skärmbild av en exempelkonverteringsrapport i SSMA.](./media/mysql-to-sql-database-guide/conversion-report.png)
 
-### <a name="validate-the-data-types"></a>Verifiera data typerna
+### <a name="validate-the-data-types"></a>Verifiera datatyperna
 
-Validera standard mappningarna för data typ och ändra dem baserat på krav, om det behövs. Så här gör du: 
+Verifiera standardmappningarna av datatyper och ändra dem baserat på kraven, om det behövs. Så här gör du: 
 
-1. Välj **verktyg** och välj sedan **projekt inställningar**.  
-1. Välj fliken **typ mappningar** . 
+1. Välj **Verktyg** och sedan **Projektinställningar.**  
+1. Välj **fliken Typmappningar.** 
 
-   ![Skärm bild av fönstret "typ mappning" i SSMA för MySQL.](./media/mysql-to-sql-database-guide/type-mappings.png)
+   ![Skärmbild av fönstret "Typmappning" i SSMA för MySQL.](./media/mysql-to-sql-database-guide/type-mappings.png)
 
-1. Du kan ändra typ mappningen för varje tabell genom att välja tabell namnet i fönstret **MySQL metadata Explorer** . 
+1. Du kan ändra typmappningen för varje tabell genom att välja tabellnamnet i **fönstret MySQL Metadata Explorer.** 
 
 ### <a name="convert-the-schema"></a>Konvertera schemat 
 
 Om du vill konvertera schemat gör du följande: 
 
-1. Valfritt Om du vill konvertera dynamiska eller specialiserade frågor högerklickar du på noden och väljer sedan **Lägg till instruktion**. 
+1. (Valfritt) Om du vill konvertera dynamiska eller specialiserade frågor högerklickar du på noden och väljer sedan Lägg **till instruktion**. 
 
-1. Välj fliken **Anslut till Azure SQL Database** och gör sedan följande:
+1. Välj **fliken Anslut Azure SQL Database** och gör sedan följande:
 
    a. Ange information för att ansluta till din SQL-databas.  
-   b. Välj mål-SQL-databas i list rutan. Eller så kan du ange ett nytt namn, vilket innebär att en databas skapas på mål servern.  
-   c. Ange information om autentisering.  
+   b. I listrutan väljer du din SQL-måldatabas. Eller så kan du ange ett nytt namn, vilket innebär att en databas skapas på målservern.  
+   c. Ange autentiseringsinformation.  
    d. Välj **Anslut**.
 
-   ![Skärm bild av fönstret "Anslut till Azure SQL Database" i SSMA för MySQL.](./media/mysql-to-sql-database-guide/connect-to-sqldb.png)
+   ![Skärmbild av fönstret "Anslut till Azure SQL Database" i SSMA för MySQL.](./media/mysql-to-sql-database-guide/connect-to-sqldb.png)
  
-1. Högerklicka på det schema som du arbetar med och välj sedan **konvertera schema**. Alternativt kan du välja fliken **konvertera schema** längst upp till höger.
+1. Högerklicka på det schema som du arbetar med och välj sedan **Konvertera schema.** Du kan också välja fliken **Konvertera schema** längst upp till höger.
 
-   ![Skärm bild av kommandot "Convert schema" i fönstret "MySQL metadata Explorer".](./media/mysql-to-sql-database-guide/convert-schema.png)
+   ![Skärmbild av kommandot "Konvertera schema" i fönstret MySQL Metadata Explorer.](./media/mysql-to-sql-database-guide/convert-schema.png)
 
-1. När konverteringen är klar granskar och jämför du de konverterade objekten till de ursprungliga objekten för att identifiera potentiella problem och åtgärda dem utifrån rekommendationerna. 
+1. När konverteringen är klar granskar du och jämför de konverterade objekten med de ursprungliga objekten för att identifiera potentiella problem och åtgärda dem baserat på rekommendationerna. 
 
-   ![Skärm bild som visar en jämförelse av de konverterade objekten till de ursprungliga objekten.](./media/mysql-to-sql-database-guide/table-comparison.png)
+   ![Skärmbild som visar en jämförelse av de konverterade objekten till de ursprungliga objekten.](./media/mysql-to-sql-database-guide/table-comparison.png)
 
    Jämför den konverterade Transact-SQL-texten med den ursprungliga koden och granska rekommendationerna.
 
-   ![Skärm bild som visar en jämförelse av konverterade frågor till käll koden.](./media/mysql-to-sql-database-guide/procedure-comparison.png)
+   ![Skärmbild som visar en jämförelse av konverterade frågor till källkoden.](./media/mysql-to-sql-database-guide/procedure-comparison.png)
 
-1. I fönstret **utdata** väljer du **gransknings resultat** och granskar eventuella fel i fönstret med **fel listan** . 
-1. Spara projektet lokalt för en arbets schema reparation. Det gör du genom att välja **Arkiv**  >  **Spara projekt**. Det ger dig möjlighet att utvärdera käll-och mål scheman offline och utföra reparation innan du publicerar schemat i SQL-databasen.
+1. I fönstret **Utdata** väljer **du Granska** resultat och granskar sedan eventuella fel i **fönstret Fellista.** 
+1. Spara projektet lokalt för en åtgärdsövning av offlineschemat. Det gör du genom att **välja Arkiv**  >  **Spara projekt.** Detta ger dig möjlighet att utvärdera käll- och målscheman offline och utföra reparation innan du publicerar schemat till din SQL-databas.
 
    Jämför de konverterade procedurerna med de ursprungliga procedurerna, som du ser här: 
 
-   ![Skärm bild som visar en jämförelse av de konverterade procedurerna till de ursprungliga procedurerna.](./media/mysql-to-sql-database-guide/procedure-comparison.png)
+   ![Skärmbild som visar en jämförelse av de konverterade procedurerna med de ursprungliga procedurerna.](./media/mysql-to-sql-database-guide/procedure-comparison.png)
 
 
 ## <a name="migrate-the-databases"></a>Migrera databaserna 
 
-När du har utvärderat dina databaser och åtgärdat eventuella avvikelser kan du köra migreringsprocessen. Migreringen består av två steg: publicera schemat och migrera data. 
+När du har utvärderat dina databaser och åtgärdat eventuella avvikelser kan du köra migreringsprocessen. Migreringen omfattar två steg: att publicera schemat och migrera data. 
 
-Så här publicerar du schemat och migrerar data: 
+Gör följande för att publicera schemat och migrera data: 
 
-1. Publicera schemat. I fönstret **Azure SQL Database metadata Explorer** högerklickar du på databasen och väljer sedan **Synkronisera med databas**. Den här åtgärden publicerar MySQL-schemat till din SQL-databas.
+1. Publicera schemat. I fönstret **Azure SQL Database Metadata Explorer** högerklickar du på databasen och väljer sedan Synkronisera med **databas.** Den här åtgärden publicerar MySQL-schemat till din SQL-databas.
 
-   ![Skärm bild av fönstret "synkronisera med databas" för att granska databas mappning.](./media/mysql-to-sql-database-guide/synchronize-database-review.png)
+   ![Skärmbild av fönstret "Synkronisera med databasen" för granskning av databasmappning.](./media/mysql-to-sql-database-guide/synchronize-database-review.png)
 
-1. Migrera data. I fönstret **MySQL metadata Explorer** högerklickar du på det MySQL-schema som du vill migrera och väljer sedan **migrera data**. Alternativt kan du välja fliken **migrera data** längst upp till höger.
+1. Migrera data. I fönstret **MySQL Metadata Explorer** högerklickar du på det MySQL-schema som du vill migrera och väljer sedan **Migrera data.** Du kan också välja fliken **Migrera data** längst upp till höger.
 
-   Om du vill migrera data för en hel databas markerar du kryss rutan bredvid databas namnet. Om du vill migrera data från enskilda tabeller expanderar du databasen, expanderar **tabeller** och markerar sedan kryss rutan bredvid tabellen. Avmarkera kryss rutan om du vill utelämna data från enskilda tabeller.
+   Om du vill migrera data för en hel databas markerar du kryssrutan bredvid databasnamnet. Om du vill migrera data från enskilda tabeller expanderar du **databasen,** expanderar Tabeller och markerar sedan kryssrutan bredvid tabellen. Avmarkera kryssrutan om du vill utelämna data från enskilda tabeller.
 
-   ![Skärm bild av kommandot "migrera data" i fönstret "MySQL metadata Explorer".](./media/mysql-to-sql-database-guide/migrate-data.png)
+   ![Skärmbild av kommandot "Migrera data" i fönstret "MySQL Metadata Explorer".](./media/mysql-to-sql-database-guide/migrate-data.png)
 
-1. När migreringen är klar kan du Visa **data flyttnings rapporten**.
+1. När migreringen är klar kan du visa **datamigreringsrapporten.**
    
-   ![Skärm bild av data migrations rapporten.](./media/mysql-to-sql-database-guide/data-migration-report.png)
+   ![Skärmbild av datamigreringsrapporten.](./media/mysql-to-sql-database-guide/data-migration-report.png)
 
-1. Anslut till din SQL-databas med hjälp av [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) och verifiera migreringen genom att granska data och schema.
+1. Anslut till DIN SQL-databas med [hjälp SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) och validera migreringen genom att granska data och schema.
 
-   ![Skärm bild av SQL Server Management Studio.](./media/mysql-to-sql-database-guide/validate-in-ssms.png)
+   ![Skärmbild av SQL Server Management Studio.](./media/mysql-to-sql-database-guide/validate-in-ssms.png)
 
 ## <a name="post-migration"></a>Efter migreringen 
 
-När du har slutfört *migreringen* måste du slutföra en serie uppgifter efter migreringen för att säkerställa att allt fungerar så smidigt som möjligt.
+När du har slutfört  migreringssteget måste du slutföra en serie uppgifter efter migreringen för att säkerställa att allt fungerar så smidigt och effektivt som möjligt.
 
 ### <a name="remediate-applications"></a>Åtgärda program
 
-När data har migrerats till mål miljön måste alla program som tidigare förbrukade källan börja använda målet. Om du gör detta måste du i vissa fall göra ändringar i programmen.
+När data har migrerats till målmiljön måste alla program som tidigare förbrukade källan börja använda målet. Detta kräver i vissa fall ändringar i programmen.
 
-### <a name="perform-tests"></a>Utför tester
+### <a name="perform-tests"></a>Utföra tester
 
-Test metoden för migrering av databasen består av följande aktiviteter:
+Test metoden för databasmigrering består av följande aktiviteter:
 
-1. **Utveckla verifieringstester**: om du vill testa migreringen av databasen måste du använda SQL-frågor. Du måste skapa verifierings frågorna som ska köras mot både käll-och mål databaserna. Dina verifierings frågor ska omfatta det definitions område som du har definierat.
+1. **Utveckla valideringstester:** Om du vill testa databasmigreringen måste du använda SQL-frågor. Du måste skapa valideringsfrågor som ska köras mot både käll- och måldatabaserna. Dina valideringsfrågor bör omfatta det omfång som du har definierat.
 
-1. **Konfigurera en test miljö**: test miljön bör innehålla en kopia av käll databasen och mål databasen. Se till att isolera test miljön.
+1. **Konfigurera en testmiljö:** Testmiljön ska innehålla en kopia av källdatabasen och måldatabasen. Se till att isolera testmiljön.
 
-1. **Kör verifieringstester**: kör verifieringstester mot källan och målet och analysera sedan resultaten.
+1. **Kör valideringstester:** Kör valideringstester mot källan och målet och analysera sedan resultaten.
 
-1. **Kör prestandatester**: kör prestandatester mot källan och målet och analysera och jämför sedan resultaten.
+1. **Kör prestandatester:** Kör prestandatester mot källan och målet och analysera och jämför sedan resultaten.
 
 ### <a name="optimize"></a>Optimera
 
-Fasen efter migreringen är avgörande för att stämma av data precisions problem, kontrol lera att de är klara och åtgärda prestanda problem med arbets belastningen.
+Fasen efter migreringen är viktig för att stämma av eventuella problem med datanoggrannhet, verifiera fullständighet och åtgärda prestandaproblem med arbetsbelastningen.
 
-Mer information om de här problemen och stegen för att minimera dem finns i guiden för [validering och optimering efter migrering](/sql/relational-databases/post-migration-validation-and-optimization-guide).
+Mer information om dessa problem och hur du åtgärdar dem finns i [validerings- och optimeringsguiden efter migreringen.](/sql/relational-databases/post-migration-validation-and-optimization-guide)
 
-## <a name="migration-assets"></a>Migrera till gångar
+## <a name="migration-assets"></a>Migreringstillgångar
 
-Mer hjälp om hur du slutför det här scenariot för migrering finns i följande resurs. Den har utvecklats för att ge stöd till ett verkligt projekt engagemang för migrering.
+Mer hjälp med att slutföra det här migreringsscenariot finns i följande resurs. Det utvecklades som stöd för ett verkligt migreringsprojekt.
 
 | Rubrik | Beskrivning |
 | --- | --- |
-| [Modell och verktyg för data arbets belastnings bedömning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Tillhandahåller rekommenderade "bästa anpassning"-språkplattformar, moln beredskap och program/databas reparations nivåer för angivna arbets belastningar. Den erbjuder enkel, enkel beräkning och rapportgenerering som hjälper till att påskynda stora fastighets bedömningar genom att tillhandahålla en automatiserad, enhetlig besluts process för mål plattform. |
+| [Utvärderingsmodell och verktyg för dataarbetsbelastning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | Innehåller föreslagna målplattformar med "bästa passning", molnberedskap och åtgärdsnivåer för program/databaser för angivna arbetsbelastningar. Den erbjuder enkel beräkning med ett klick och rapportgenerering som hjälper till att påskynda stora egendomsutvärderingar genom att tillhandahålla en automatiserad, enhetlig beslutsprocess för målplattformen. |
 
-Data SQL Engineering-teamet utvecklade dessa resurser. Det här teamets kärn stadgan är att avblockera och påskynda komplexa modernisering för migrering av data plattformar till Microsofts Azure-dataplattform.
+Data SQL-teknikteamet utvecklade dessa resurser. Teamets huvudstadga är att avblockera och påskynda komplex modernisering för dataplattformsmigreringsprojekt till Microsofts Azure-dataplattform.
 
 ## <a name="next-steps"></a>Nästa steg 
 
-- För att beräkna de kostnads besparingar du kan inse genom att migrera dina arbets belastningar till Azure kan du läsa mer i [Azures totala kostnad för ägande kostnad](https://aka.ms/azure-tco).
+- Information om kostnadsbesparingar som du kan göra genom att migrera dina arbetsbelastningar till Azure finns i kalkylatorn för total [ägandekostnad i Azure.](https://aka.ms/azure-tco)
 
-- En matris med tjänster och verktyg från Microsoft och tjänster från tredje part som är tillgängliga för att hjälpa dig med olika scenarier för databas-och data migrering och särskilda uppgifter finns i [tjänster och verktyg för datamigrering](../../../dms/dms-tools-matrix.md).
+- En matris med Tjänster och verktyg från Microsoft och tredje part som är tillgängliga för att hjälpa dig med olika scenarier för databas- och datamigrering och specialuppgifter finns i Tjänst och verktyg för [datamigrering.](../../../dms/dms-tools-matrix.md)
 
-- Andra guider för migrering finns i [Guide för Azure Database migration](https://datamigration.microsoft.com/). 
+- Andra migreringsguider finns i [Migreringsguide för Azure Database.](https://datamigration.microsoft.com/) 
 
-- För migrerings-videor, se [Översikt över migrerings resan och rekommenderade verktyg och tjänster för migrering och bedömning](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/).
+- Migreringsvideor finns i [Översikt över migreringsresan och rekommenderade migrerings- och utvärderingsverktyg och -tjänster.](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)
 
-- Mer information om [resurser för molnbaserad migrering](https://azure.microsoft.com/migration/resources/)finns i [lösningar för molnbaserad migrering](https://azure.microsoft.com/migration).
+- Mer [molnmigreringsresurser](https://azure.microsoft.com/migration/resources/)finns i [molnmigreringslösningar.](https://azure.microsoft.com/migration)
 

@@ -1,22 +1,22 @@
 ---
-ms.openlocfilehash: 424e70f4f3656be2196f4dbdfbddb852846b6897
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
-ms.translationtype: MT
+ms.openlocfilehash: a055cc1b715f93830647c9b13793a59d09db605c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307490"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107513175"
 ---
-## <a name="setting-up"></a>Konfigurera
+## <a name="setting-up"></a>Inrätta
 
 ### <a name="create-a-new-c-application"></a>Skapa ett nytt C#-program
 
-I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `ManagedIdentitiesQuickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda käll fil: `Program.cs` .
+I ett konsolfönster (till exempel cmd, PowerShell eller Bash) använder du kommandot för att skapa en ny `dotnet new` konsolapp med namnet `ManagedIdentitiesQuickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda källfil: `Program.cs` .
 
 ```console
 dotnet new console -o ManagedIdentitiesQuickstartQuickstart
 ```
 
-Ändra katalogen till den nya app-mappen och Använd `dotnet build` kommandot för att kompilera ditt program.
+Ändra katalogen till den nyligen skapade appmappen och använd kommandot `dotnet build` för att kompilera programmet.
 
 ```console
 cd ManagedIdentitiesQuickstart
@@ -33,7 +33,7 @@ dotnet add package Azure.Identity
 
 ### <a name="use-the-sdk-packages"></a>Använda SDK-paketen
 
-Lägg till följande `using` direktiv i `Program.cs` för att använda Azure Identity och Azure Storage SDK: er.
+Lägg till följande `using` -direktiv `Program.cs` i för att använda Azure Identity and Azure Storage-SDK:er.
 
 ```csharp
 using Azure.Identity;
@@ -45,7 +45,7 @@ using Azure;
 
 ## <a name="create-a-defaultazurecredential"></a>Skapa en DefaultAzureCredential
 
-Vi använder [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) för den här snabb starten. Den här autentiseringsuppgiften är lämplig för produktions-och utvecklings miljöer. Eftersom det behövs för varje åtgärd ska vi skapa den i- `Program.cs` klassen. Lägg till följande överst i filen.
+Vi använder [DefaultAzureCredential för den](/dotnet/api/azure.identity.defaultazurecredential) här snabbstarten. Dessa autentiseringsuppgifter är lämpliga för produktions- och utvecklingsmiljöer. Eftersom det behövs för varje åtgärd ska vi skapa den i `Program.cs` klassen . Lägg till följande överst i filen.
 
 ```csharp
      private DefaultAzureCredential credential = new DefaultAzureCredential();
@@ -53,7 +53,7 @@ Vi använder [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecre
 
 ## <a name="issue-a-token-with-managed-identities"></a>Utfärda en token med hanterade identiteter
 
-Nu ska vi lägga till kod som använder den skapade autentiseringsuppgiften för att utfärda en VoIP-åtkomsttoken. Vi kommer att anropa den här koden senare.
+Nu ska vi lägga till kod som använder de autentiseringsuppgifter som skapats för att utfärda en VoIP-åtkomsttoken. Vi anropar den här koden senare.
 
 ```csharp
      public Response<AccessToken> CreateIdentityAndGetTokenAsync(Uri resourceEndpoint)
@@ -70,7 +70,7 @@ Nu ska vi lägga till kod som använder den skapade autentiseringsuppgiften för
 
 ## <a name="send-an-sms-with-managed-identities"></a>Skicka ett SMS med hanterade identiteter
 
-Ett annat exempel på att använda hanterade identiteter är att lägga till den här koden som använder samma autentiseringsuppgift för att skicka ett SMS:
+Som ett annat exempel på hur du använder hanterade identiteter lägger vi till den här koden som använder samma autentiseringsuppgifter för att skicka ett SMS:
 
 ```csharp
      public SmsSendResult SendSms(Uri resourceEndpoint, string from, string to, string message)
@@ -87,9 +87,9 @@ Ett annat exempel på att använda hanterade identiteter är att lägga till den
      }
 ```
 
-## <a name="write-the-main-method"></a>Skriv main-metoden
+## <a name="write-the-main-method"></a>Skriva Main-metoden
 
-Du `Program.cs` bör redan ha en huvud metod, vi lägger till kod som anropar den tidigare skapade koden för att demonstrera användningen av hanterade identiteter:
+Din bör redan ha en Main-metod. Nu ska vi lägga till kod som anropar vår tidigare skapade kod för att demonstrera användningen `Program.cs` av hanterade identiteter:
 
 ```csharp
      static void Main(string[] args)
@@ -114,7 +114,7 @@ Du `Program.cs` bör redan ha en huvud metod, vi lägger till kod som anropar de
      }
 ```
 
-Den slutgiltiga `Program.cs` filen bör se ut så här:
+Den slutliga `Program.cs` filen bör se ut så här:
 
 ```csharp
 class Program
@@ -165,7 +165,7 @@ class Program
     }
 ```
 
-## <a name="run-the-program"></a>Kör programmet
+## <a name="run-the-program"></a>Köra programmet
 
 Du bör nu kunna köra ditt program med hjälp av `dotnet run` från programmappen. Utdata bör likna följande:
 ```

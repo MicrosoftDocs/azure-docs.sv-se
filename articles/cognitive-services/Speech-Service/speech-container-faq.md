@@ -1,7 +1,7 @@
 ---
-title: Vanliga frågor och svar om tjänsten för tal tjänst behållare
+title: Vanliga frågor och svar om Speech Service-containrar
 titleSuffix: Azure Cognitive Services
-description: Installera och kör tal behållare. tal till text skickar ljud strömmar till text i real tid som dina program, verktyg eller enheter kan använda eller Visa. Text till tal konverterar inmatad text till mänskligt syntetiskt tal.
+description: Installera och köra Speech-containrar. tal till text transkriberar ljudströmmar till text i realtid som dina program, verktyg eller enheter kan använda eller visa. Text till tal konverterar indatatext till människoliknande syntetiserat tal.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,31 +11,31 @@ ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16158b4ecfb46ea9092fe9eeb31cc4dee259b1ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28a044f42d0774d940521964b68b38a0f35bcdbb
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573752"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387963"
 ---
-# <a name="speech-service-containers-frequently-asked-questions-faq"></a>Vanliga frågor och svar om tjänsten för tal tjänst behållare
+# <a name="speech-service-containers-frequently-asked-questions-faq"></a>Vanliga frågor och svar om Speech Service-containrar
 
-När du använder tal tjänsten med behållare, förlitar du dig på den här samlingen vanliga frågor innan du eskalerar till support. Den här artikeln fångar frågor varierande grad, från allmän till teknisk. Klicka på frågan för att expandera ett svar.
+När du använder Speech-tjänsten med containrar måste du förlita dig på den här samlingen med vanliga frågor innan du eskalerar till supporten. Den här artikeln innehåller frågor med varierande grad, från allmän till teknisk. Om du vill expandera ett svar klickar du på frågan.
 
 ## <a name="general-questions"></a>Allmänna frågor
 
 <details>
 <summary>
-<b>Hur fungerar tal behållare och hur ställer jag in dem?</b>
+<b>Hur fungerar Speech-containrar och hur ställer jag in dem?</b>
 </summary>
 
-**Svar:** När du ställer in produktions klustret finns det flera saker att tänka på. För det första måste du konfigurera ett enskilt språk, flera behållare på samma dator, inte vara ett stort problem. Om det uppstår problem kan det vara ett maskin varu problem – så vi skulle först titta på resursen, det vill säga. Specifikationer för processor och minne.
+**Svar:** När du ställer in produktionsklustret finns det flera saker att tänka på. För det första bör det inte vara något stort problem att konfigurera ett enda språk, flera containrar på samma dator. Om du har problem kan det vara ett maskinvarurelaterat problem, så vi tittar först på resursen, det vill säga: Specifikationer för processor och minne.
 
-Ta en stund, `ja-JP` behållare och den senaste modellen. Den akustiska modellen är den mest krävande delen av processor, medan språk modellen kräver mest minne. När vi har förbrukat användningen tar det cirka 0,6 CPU-kärnor för att bearbeta en enda tal-till-text-begäran när ljudet flödar i real tid (som från mikrofonen). Om du matar in ljud snabbare än i real tid (t. ex. från en fil) kan användningen vara dubbel (1,2 x kärnor). Under tiden är minnet som anges nedan operativ minne för avkodning av tal. Den tar *inte* hänsyn till den faktiska fulla storleken på språk modellen, som kommer att finnas i fil-cachen. För det här `ja-JP` är ytterligare 2 GB. för `en-US` , kan det vara mer (6-7 GB).
+Överväg en stund, `ja-JP` containern och den senaste modellen. Den akustiska modellen är den mest krävande biten CPU-vis, medan språkmodellen kräver mest minne. När vi har benchmarkat användningen tar det cirka 0,6 CPU-kärnor för att bearbeta en enskild tal till text-begäran när ljud flödar in i realtid (t.ex. från mikrofonen). Om du matar in ljud snabbare än realtid (t.ex. från en fil) kan användningen fördubblas (1,2 x kärnor). Under tiden är det minne som anges nedan driftminne för avkodning av tal. Den tar *inte* hänsyn till den faktiska fullständiga storleken på språkmodellen, som kommer att finnas i filcachen. För `ja-JP` det är ytterligare 2 GB, för kan det vara mer `en-US` (6–7 GB).
 
-Om du har en dator där minnet är begränsade och du försöker distribuera flera språk, är det möjligt att filcachen är full och att operativ systemet tvingas att placera modeller i och ut. För en pågående avskrift, som kan vara katastrofal, och kan leda till långsammare och andra prestanda konsekvenser.
+Om du har en dator där minnet är begränsade och du försöker distribuera flera språk på den, är det möjligt att filcachen är full och operativsystemet tvingas att sidin- och utser modeller. För en transkription som körs kan det vara dåligt och kan leda till långsammare och andra prestandakonsekvenser.
 
-Dessutom förpaketerar vi körbara filer för datorer med instruktions uppsättningen [Avancerad Vector-anknytning (AVX2)](speech-container-howto.md#advanced-vector-extension-support) . En dator med AVX512-instruktionen kräver kodgenerering för det målet och start 10-behållare för 10 språk kan tillfälligt ha slut på processor kraft. Ett meddelande som det här visas i Docker-loggarna:
+Dessutom paketerar vi körbara filer i förväg för datorer med [instruktionsuppsättningen advanced vector extension (AVX2).](speech-container-howto.md#advanced-vector-extension-support) En dator med AVX512-instruktionsuppsättningen kräver kodgenerering för målet, och om du startar 10 containrar för 10 språk kan CPU-användningen tillfälligt ta slut. Ett meddelande som det här visas i Docker-loggarna:
 
 ```console
 2020-01-16 16:46:54.981118943 
@@ -43,60 +43,60 @@ Dessutom förpaketerar vi körbara filer för datorer med instruktions uppsättn
 Cannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...
 ```
 
-Du kan ange antalet avkodare som du vill ha i en *enda* behållare med hjälp av `DECODER MAX_COUNT` variabeln. Vi bör därför börja med SKU (CPU/minne) och vi kan föreslå hur du får ut så mycket som möjligt. En bra utgångs punkt refererar till de rekommenderade värd datorernas resurs specifikationer.
+Du kan ange antalet avkodare som du vill ha i en *enda* container med hjälp av `DECODER MAX_COUNT` variabeln . I princip bör vi därför börja med din SKU (CPU/minne) och vi kan föreslå hur du får ut det bästa av den. En bra startpunkt är att referera till de rekommenderade resursspecifikationerna för värddatorn.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Kan du hjälpa till med kapacitets planering och kostnads uppskattning av lokal-behållare från tal till text?</b>
+<b>Kan du hjälpa till med kapacitetsplanering och kostnadsuppskattning av lokala tal till text-containrar?</b>
 </summary>
 
-**Svar:** För container kapacitet i batch-bearbetnings läge kan varje avkodare hantera 2-3x i real tid, med två processor kärnor, för ett enda igenkännings resultat. Vi rekommenderar inte att du behåller fler än två samtidiga igenkänningar per behållar instans, men rekommenderar att du kör fler instanser av behållare för Tillförlitlighets-/tillgänglighets skäl, bakom en belastningsutjämnare.
+**Svar:** För containerkapacitet i batchbearbetningsläge kan varje avkodare hantera 2–3x i realtid, med två PROCESSORkärnor, för en enda igenkänning. Vi rekommenderar inte att du behåller fler än två samtidiga igenkänningar per containerinstans, men rekommenderar att du kör fler instanser av containrar av tillförlitlighets-/tillgänglighetsskäl bakom en lastbalanserare.
 
-Även om vi kan ha varje behållar instans som körs med fler avkodare. Vi kan till exempel konfigurera 7 avkodare per behållar instans på en åtta kärnor (på mer än 2x var), vilket ger 15x-genomflöde. Det finns en param `DECODER_MAX_COUNT` som är medveten om. För det extrema fallet uppstår Tillförlitlighets-och latens problem, och data flödet ökade avsevärt. För en mikrofon kommer den att vara i 1x real tid. Den övergripande användningen bör vara på ungefär en kärna för en enda igenkänning.
+Vi skulle kunna köra varje containerinstans med fler avkodare. Vi kan till exempel konfigurera 7 avkodare per containerinstans på en åttakärnig dator (vid mer än 2 x vardera), vilket ger 15 x dataflöde. Det finns en parameter `DECODER_MAX_COUNT` som du bör känna till. I extrema fall uppstår problem med tillförlitlighet och svarstider, där dataflödet ökar avsevärt. För en mikrofon är den i 1 x realtid. Den totala användningen bör vara ungefär en kärna för en enda igenkänning.
 
-För scenario för bearbetning av 1 K timmar/dag i batchbearbetnings läge kan tre virtuella datorer hantera dem inom 24 timmar men inte garanterade. För att hantera insamling av insamlade dagar, redundans, uppdatering och för att ange lägsta säkerhets kopiering/BCP, rekommenderar vi 4-5 datorer i stället för 3 per kluster och med 2 kluster.
+För scenariot med bearbetning 1 000 timmar/dag i batchbearbetningsläge kan 3 virtuella datorer i extrema fall hantera det inom 24 timmar men inte garanteras. För att hantera toppdagar, redundans, uppdatering och minsta säkerhetskopiering/BCP rekommenderar vi 4–5 datorer i stället för 3 per kluster och med 2+ kluster.
 
-För maskin vara använder vi standard Azure VM `DS13_v2` som en referens (varje kärna måste vara 2,6 GHz eller bättre, med AVX2-instruktions uppsättningen aktive rad).
+För maskinvara använder vi den virtuella Azure-standarddatorn som referens (varje kärna måste vara `DS13_v2` 2,6 GHz eller bättre, med AVX2-instruktionsuppsättning aktiverad).
 
-| Instans  | vCPU (s) | RAM    | Temp-lagring | Betala per användning med AHB | 1 års reserv med AHB (besparingar) | tre år reserverat med AHB (besparingar) |
+| Instans  | vCPU:er | RAM    | Temporär lagring | Betala i taget med AHB | 1 års reserv med AHB (% besparingar) | Tre års reserverad med AHB (% besparingar) |
 |-----------|---------|--------|--------------|------------------------|-------------------------------------|--------------------------------------|
-| `DS13 v2` | 8       | 56 GiB | 112 GiB      | $0.598/timme            | $0.3528/timme (~ 41%)                 | $0.2333/timme (~ 61%)                  |
+| `DS13 v2` | 8       | 56 GiB | 112 GiB      | 0,598 USD/timme            | 0,3528 USD/timme (~41 %)                 | 0,2333 USD/timme (~61 %)                  |
 
-Baserat på design referensen (två kluster på 5 virtuella datorer för att hantera 1 K timmar/dag ljud grupps bearbetning), blir 1 års maskin varu kostnad:
+Baserat på designreferensen (två kluster med 5 virtuella datorer för att hantera 1 000 timmar/dag för bearbetning av ljudbatch) blir kostnaden för 1 års maskinvara:
 
-> 2 (kluster) * 5 (virtuella datorer per kluster) * $0.3528/timme * 365 (dagar) * 24 (timmar) = $31K/år
+> 2 (kluster) * 5 (virtuella datorer per kluster) * 0,3528 USD/timme * 365 (dagar) * 24 (timmar) = 31 000 USD/år
 
-Vid mappning till en fysisk dator är en allmän uppskattning 1 vCPU = 1 fysisk processor kärna. I verkligheten är 1vCPU mer kraftfullare än en enda kärna.
+Vid mappning till fysisk dator är en allmän uppskattning 1 virtuell processor = 1 fysisk processorkärna. I verkligheten är 1vCPU kraftfullare än en enda kärna.
 
-För lokal kommer alla dessa ytterligare faktorer att komma i spel:
+För den som är på plats spelar alla dessa ytterligare faktorer in:
 
-- På vilken typ den fysiska processorn är och hur många kärnor det är
-- Hur många processorer som körs tillsammans i samma ruta/dator
+- På vilken typ den fysiska processorn är och hur många kärnor den har
+- Hur många processorer som körs tillsammans på samma box/dator
 - Hur virtuella datorer konfigureras
-- Hur Hyper-Threading och multi-threading används
-- Hur minnet delas
-- Operativ systemet, osv.
+- Hur hypertrådning/flertråding används
+- Så här delas minne
+- Operativsystemet osv.
 
-Normalt är det inte lika bra som i Azure-miljön. När jag överväger andra kostnader är det en säker uppskattning som är 10 fysiska processor kärnor = 8 Azure-vCPU. Även om populära processorer bara har åtta kärnor. Med lokal distribution är kostnaden högre än att använda virtuella Azure-datorer. Överväg också avskrivnings takten.
+Normalt är den inte lika väl inställd som Azure-miljön. Med tanke på andra kostnader skulle jag säga att en säker uppskattning är 10 fysiska CPU-kärnor = 8 virtuella Azure-processorer. Även om populära processorer bara har åtta kärnor. Med en distribution på plats blir kostnaden högre än för virtuella Azure-datorer. Ta även hänsyn till avskrivningstakten.
 
-Service kostnaden är samma som online tjänsten: $1/timme för tal till text. Tal service kostnaden är:
+Tjänstkostnaden är samma som onlinetjänsten: 1 USD/timme för tal till text. Taltjänstens kostnad är:
 
-> $1 * 1000 * 365 = $365K
+> 1 USD * 1 000 * 365 = 365 000 USD
 
-De underhålls kostnader som betalas ut till Microsoft beror på tjänst nivå och innehåll i tjänsten. Den är olika från $29.99/månad för grundläggande nivå till hundratals tusen om tjänsten är inblandad. Ett grovt tal är $300/timme för service/kvarhållning. Kostnad för personer ingår inte. Andra infrastruktur kostnader (till exempel lagring, nätverk och belastnings utjämning) ingår inte.
+Underhållskostnaden som betalas till Microsoft beror på tjänstens servicenivå och innehåll. Det kan vara från 29,99 USD/månad för grundläggande nivå till hundratusentals om tjänsten på plats ingår. Ett ungefärligt tal är 300 USD/timme för tjänst/underhåll. Kostnaden för personer ingår inte. Andra infrastrukturkostnader (till exempel lagring, nätverk och lastbalanserare) ingår inte.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Varför saknas skiljetecken i avskriften?</b>
+<b>Varför saknas skiljetecken i transkriptionen?</b>
 </summary>
 
-**Svar:** `speech_recognition_language=<YOUR_LANGUAGE>` Ska konfigureras explicit i begäran om de använder en kol-klient.
+**Svar:** `speech_recognition_language=<YOUR_LANGUAGE>` bör uttryckligen konfigureras i begäran om de använder Carbon-klienten.
 
 Exempel:
 
@@ -128,19 +128,19 @@ RECOGNIZED: SpeechRecognitionResult(
 
 <details>
 <summary>
-<b>Kan jag använda en anpassad akustisk modell och en språk modell med tal behållare?</b>
+<b>Kan jag använda en anpassad akustisk modell och språkmodell med Speech-container?</b>
 </summary>
 
-Vi kan för närvarande bara skicka ett modell-ID, antingen en anpassad språk modell eller en anpassad akustisk modell.
+För närvarande kan vi bara skicka ett modell-ID, antingen en anpassad språkmodell eller en anpassad akustisk modell.
 
-**Svar:** Beslutet att *inte* stödja både akustiska och språk modeller gjordes samtidigt. Detta gäller även tills en enhetlig identifierare har skapats för att minska API-avbrott. Därför stöds det tyvärr inte just nu.
+**Svar:** Beslutet att inte *stödja* både akustiska modeller och språkmodeller samtidigt togs. Detta gäller tills en enhetlig identifierare skapas för att minska API-avbrott. Detta stöds tyvärr inte just nu.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Kan du förklara felen från den anpassade tal-till-text-behållaren?</b>
+<b>Kan du förklara de här felen från den anpassade tal till text-containern?</b>
 </summary>
 
 **Fel 1:**
@@ -153,11 +153,11 @@ Failed to fetch manifest: Status: 400 Bad Request Body:
 }
 ```
 
-**Svar 1:** Om du har utbildning med den senaste anpassade modellen stöder vi för närvarande inte det. Om du tränar med en äldre version bör det vara möjligt att använda. Vi arbetar fortfarande med att stödja de senaste versionerna.
+**Svar 1:** Om du tränar med den senaste anpassade modellen stöder vi för närvarande inte det. Om du tränar med en äldre version bör det vara möjligt att använda. Vi arbetar fortfarande med att stödja de senaste versionerna.
 
-I stort sett stöder inte de anpassade behållarna Halide eller ONNX akustiska akustiska modeller (som är standard i den anpassade utbildnings portalen). Detta beror på att anpassade modeller inte krypteras och att vi inte vill exponera ONNX-modeller, men språk modeller är fina. Kunden måste uttryckligen välja en äldre icke-ONNX modell för anpassad utbildning. Noggrannhet kommer inte att påverkas. Modell storleken kan vara större (med 100 MB).
+De anpassade containrarna stöder i princip inte Halogenide eller ONNX-baserade akustiska modeller (vilket är standard i den anpassade träningsportalen). Detta beror på att anpassade modeller inte krypteras och vi vill dock inte exponera ONNX-modeller. språkmodeller fungerar bra. Kunden måste uttryckligen välja en äldre icke-ONNX-modell för anpassad utbildning. Noggrannheten påverkas inte. Modellstorleken kan vara större (med 100 MB).
 
-> Support modell > 20190220 (v 4.5 Unified)
+> Stödmodell > 20190220 (v4.5 Unified)
 
 **Fel 2:**
 
@@ -169,7 +169,7 @@ StatusCode: InvalidArgument,
 Details: Voice does not match.
 ```
 
-**Svar 2:** Du måste ange rätt röst namn i begäran, vilket är Skift läges känsligt. Läs den fullständiga tjänst namns mappningen.
+**Svar 2:** Du måste ange rätt röstnamn i begäran, vilket är ärendekänsligt. Se den fullständiga tjänstnamnmappningen.
 
 **Fel 3:**
 
@@ -180,7 +180,7 @@ Details: Voice does not match.
 }
 ```
 
-**Svar 3:** Du Reed för att skapa en tal resurs, inte en Cognitive Services-resurs.
+**Svar 3:** Du skapade för att skapa en Speech-resurs, inte en Cognitive Services resurs.
 
 
 <br>
@@ -191,34 +191,34 @@ Details: Voice does not match.
 <b>Vilka API-protokoll stöds, REST eller WS?</b>
 </summary>
 
-**Svar:** För tal-till-text-och anpassade tal-till-text-behållare stöder vi för närvarande endast WebSocket-baserat protokoll. SDK: n stöder bara anrop i WS men inte REST. Det finns en plan för att lägga till REST-support, men inte ETA för tillfället. Läs alltid den officiella dokumentationen i [fråga förutsägelse-slutpunkter](speech-container-howto.md#query-the-containers-prediction-endpoint).
+**Svar:** För tal till text-containrar och anpassade tal till text-containrar stöder vi för närvarande endast websocket-baserat protokoll. SDK stöder endast anrop i WS men inte REST. Det finns en plan för att lägga till REST-stöd, men inte ETA för tillfället. Läs alltid den officiella dokumentationen. Se slutpunkter [för frågeförutsägelse.](speech-container-howto.md#query-the-containers-prediction-endpoint)
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Stöds CentOS av tal behållare?</b>
+<b>Stöds CentOS för Speech-containrar?</b>
 </summary>
 
-**Svar:** CentOS 7 stöds inte av python SDK än, även om Ubuntu 19,04 inte stöds.
+**Svar:** CentOS 7 stöds inte av Python SDK ännu, och Ubuntu 19.04 stöds inte.
 
 Python Speech SDK-paketet är tillgängligt för dessa operativsystem:
-- **Windows** -x64 och x86
-- **Mac** -MacOS X version 10,12 eller senare
-- **Linux** -Ubuntu 16,04, Ubuntu 18,04, Debian 9 på x64
+- **Windows** – x64 och x86
+- **Mac** – macOS X version 10.12 eller senare
+- **Linux** – Ubuntu 16.04, Ubuntu 18.04, Debian 9 på x64
 
-Mer information om installations miljön finns i [installations programmet för python-plattformen](quickstarts/setup-platform.md?pivots=programming-language-python). Ubuntu 18,04 är nu den rekommenderade versionen.
+Mer information om miljökonfiguration finns i [Python-plattformskonfiguration.](quickstarts/setup-platform.md?pivots=programming-language-python) För tillfället är Ubuntu 18.04 den rekommenderade versionen.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Varför får jag fel meddelanden när jag försöker anropa LUIS förutsägelse slut punkter?</b>
+<b>Varför får jag fel när jag försöker anropa LUIS-förutsägelseslutpunkter?</b>
 </summary>
 
-Jag använder LUIS-behållaren i en IoT Edge distribution och försöker anropa LUIS förutsägelse-slutpunkten från en annan behållare. LUIS-behållaren lyssnar på port 5001 och den URL jag använder är följande:
+Jag använder LUIS-containern i en IoT Edge-distribution och försöker anropa LUIS-slutpunkten för förutsägelse från en annan container. LUIS-containern lyssnar på port 5001 och url:en jag använder är följande:
 
 ```csharp
 var luisEndpoint =
@@ -232,29 +232,29 @@ Felet jag får är:
 WebSocket Upgrade failed with HTTP status code: 404 SessionId: 3cfe2509ef4e49919e594abf639ccfeb
 ```
 
-Jag ser begäran i LUIS-behållar loggarna och meddelandet som säger:
+Jag ser begäran i LUIS-containerloggarna och meddelandet säger:
 
 ```cmd
 The request path /luis//predict" does not match a supported file type.
 ```
 
-Vad betyder detta? Vad saknas? Jag följer exemplet på tal-SDK: n [här](https://github.com/Azure-Samples/cognitive-services-speech-sdk). Scenariot är att vi identifierar ljudet direkt från PC-mikrofonen och försöker bestämma avsikten, baserat på LUIS-appen vi tränade. Det exempel jag länkade till gör exakt det. Och fungerar bra med den molnbaserade tjänsten LUIS. Genom att använda tal-SDK verkade du spara oss från att behöva göra ett separat explicit anrop till API: et för tal till text och sedan ett andra anrop till LUIS.
+Vad betyder detta? Vad saknas? Jag följde exemplet för Speech SDK, [härifrån](https://github.com/Azure-Samples/cognitive-services-speech-sdk). Scenariot är att vi identifierar ljudet direkt från datorns mikrofon och försöker fastställa avsikten baserat på DEN LUIS-app som vi tränade. Det exempel som jag har länkat till gör exakt det. Och det fungerar bra med den molnbaserade LUIS-tjänsten. Med hjälp av Speech SDK verkade det vara så att vi inte behöver göra ett separat explicit anrop till API:et för tal till text och sedan ett andra anrop till LUIS.
 
-Allt jag försöker göra är att byta från scenariot med att använda LUIS i molnet för att använda LUIS-behållaren. Jag kan inte tänka på om tal-SDK fungerar för en sådan, men det fungerar inte för det andra.
+Allt jag försöker göra är att växla från scenariot med att använda LUIS i molnet till att använda LUIS-containern. Jag kan inte föreställa mig om Speech SDK fungerar för den ena, den fungerar inte för den andra.
 
-**Svar:** Tal-SDK bör inte användas mot en LUIS-behållare. För att använda LUIS-behållaren ska LUIS SDK-eller LUIS-REST API användas. Tal-SDK ska användas mot en tal behållare.
+**Svar:** Speech SDK bör inte användas mot en LUIS-container. För att använda LUIS-containern bör LUIS SDK eller LUIS REST API användas. Speech SDK ska användas mot en speech-container.
 
-Ett moln skiljer sig från en behållare. Ett moln kan bestå av flera aggregerade behållare (kallas ibland Micro-tjänster). Det finns därför en LUIS-behållare och det finns en tal behållare – två separata behållare. Tal behållaren är bara tal. LUIS-behållaren innehåller bara LUIS. I molnet, eftersom båda behållarna är kända för att distribueras och det är dåliga prestanda för en fjärran sluten klient att gå till molnet, gör tal, kom tillbaka och gå sedan till molnet igen och gör LUIS, vi tillhandahåller en funktion som gör att klienten kan gå till tal, stanna kvar i molnet, gå till LUIS och sedan gå tillbaka till klienten. Till och med i det här scenariot går tal-SDK: n till tal Cloud container med ljud och sedan talar tal Cloud container om till LUIS Cloud container med text. LUIS-behållaren har inget begrepp för att acceptera ljud (det skulle inte vara meningen för att LUIS-behållaren ska acceptera strömmande ljud-LUIS är en textbaserad tjänst). Med lokal, vi har ingen säkerhet för att våra kunder har distribuerat båda behållarna, vi förutsätter inte att dirigera mellan behållare i våra kunders lokaler, och om båda behållarna har distribuerats på lokal, med tanke på att de är mer lokala för klienten, är det inte ett krav att gå tillbaka till SR först, tillbaka till klienten och låta kunden ta den texten och gå till LUIS.
+Ett moln skiljer sig från en container. Ett moln kan bestå av flera aggregerade containrar (kallas ibland mikrotjänster). Det finns alltså en LUIS-container och sedan finns det en Speech-container – Två separata containrar. Speech-containern gör bara tal. LUIS-containern gör bara LUIS. Eftersom båda containrarna är kända för att distribueras i molnet och det är dåliga prestanda för en fjärrklient att gå till molnet, tala, komma tillbaka och sedan gå till molnet igen och göra LUIS, tillhandahåller vi en funktion som gör att klienten kan gå till Tal, stanna kvar i molnet, gå till LUIS och sedan gå tillbaka till klienten. Även i det här scenariot går Speech SDK till Speech-molncontainern med ljud och sedan pratar Speech-molncontainern med LUIS-molncontainern med text. LUIS-containern har inget koncept för att acceptera ljud (det skulle inte vara meningsfullt för LUIS-containern att acceptera strömmande ljud – LUIS är en textbaserad tjänst). Med lokal distribution har vi ingen säkerhet som vår kund har distribuerat båda containrarna, vi förutsätter inte att de orkestreras mellan containrar i våra kunders lokaler, och om båda containrarna distribueras lokalt, eftersom de är mer lokala för klienten, är det inte en belastning att gå SR först, tillbaka till klienten och be kunden sedan ta den texten och gå till LUIS.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Varför får vi fel med macOS, tal behållaren och python SDK?</b>
+<b>Varför får vi fel med macOS, Speech-containern och Python SDK?</b>
 </summary>
 
-När vi skickar en *. wav* -fil som ska skrivas tillbaka kommer resultatet att bli tillbaka med:
+När vi skickar *en WAV-fil* som ska transkriberas kommer resultatet tillbaka med:
 
 ```cmd
 recognition is running....
@@ -273,11 +273,11 @@ WebSocket
 }
 ```
 
-Vi vet att WebSocket har kon figurer ATS korrekt.
+Vi vet att websocket har ställts in korrekt.
 
-**Svar:** I så fall, se [detta GitHub-problem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310). Vi har ett arbete runt, som [föreslås här](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310#issuecomment-527542722).
+**Svar:** Om så är fallet kan du se det [här GitHub-problemet.](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310) Vi har en arbetsyt som [föreslås här.](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310#issuecomment-527542722)
 
-Koldioxid som korrigeras detta i version 1,8.
+Kol har åtgärdat detta i version 1.8.
 
 
 <br>
@@ -285,36 +285,36 @@ Koldioxid som korrigeras detta i version 1,8.
 
 <details>
 <summary>
-<b>Vilka är skillnaderna i tal behållarens slut punkter?</b>
+<b>Vilka skillnader finns det i speech-containerslutpunkterna?</b>
 </summary>
 
-Kan du fylla i följande test mått, inklusive vilka funktioner som ska testas och hur du testar SDK och REST-API: er? Särskilt skillnader i "interaktiva" och "konversation", som jag inte ser från ett befintligt dokument/exempel.
+Kan du hjälpa till att fylla i följande testmått, inklusive vilka funktioner som ska testas och hur du testar SDK och REST API:er? I synnerhet skillnader i "interaktiv" och "konversation", som jag inte såg i befintligt dokument/exempel.
 
 | Slutpunkt                                                | Funktionellt test                                                   | SDK | REST-API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
 | `/speech/synthesize/cognitiveservices/v1`               | Syntetisera text (text till tal)                                  |     | Ja      |
-| `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services lokal Diktering v1 WebSocket-slutpunkt        | Ja | Inga       |
-| `/speech/recognition/interactive/cognitiveservices/v1`  | Den Cognitive Services lokal interaktiva v1 WebSocket-slutpunkten  |     |          |
-| `/speech/recognition/conversation/cognitiveservices/v1` | Kognitiva tjänster på lokal-konversation v1 WebSocket-slutpunkt |     |          |
+| `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services websocket-slutpunkt för on-prem dictation v1        | Ja | Inga       |
+| `/speech/recognition/interactive/cognitiveservices/v1`  | Den Cognitive Services interaktiva v1-websocket-slutpunkten  |     |          |
+| `/speech/recognition/conversation/cognitiveservices/v1` | Websocket-slutpunkten för cognitive services on-prem conversation v1 |     |          |
 
-**Svar:** Detta är en fusion av:
-- Personer som försöker köra dikteringens slut punkt för behållare (jag är inte säker på hur de får den URL: en)
-- Slut punkten för 1<sup>St</sup> -parten som är en i en behållare.
-- Slut punkten för 1<sup>St</sup> -parten returnerar tal. fragment-meddelanden i stället för `speech.hypothesis` e-<sup></sup> postmeddelandena för att returnera slut punkten för slut punkterna för slutpunkten.
-- Snabb starter alla använder `RecognizeOnce` (interaktivt läge)
-- Kol har en kontroll att för `speech.fragment` meddelanden som kräver att de inte returneras i interaktivt läge.
-- Kol som har utgångs punkt i versions utlösare (avslutar processen).
+**Svar:** Det här är en blandning av:
+- Personer som provar dikteringsslutpunkten för containrar (jag vet inte hur de fick den URL:en)
+- Den första<sup>partslutpunkten</sup> är den i en container.
+- Slutpunkten<sup>1:a</sup> part returnerar speech.fragment-meddelanden i stället för meddelandena som slutpunkterna i 3:e delen returnerar `speech.hypothesis` <sup></sup> för dikteringsslutpunkten.
+- Carbon-snabbstarter använder alla `RecognizeOnce` (interaktivt läge)
+- Kol som har en kontroll att `speech.fragment` för meddelanden som kräver att de inte returneras i interaktivt läge.
+- Kol som ser till att fire in release-versioner (avlivar processen).
 
-Lösningen är antingen växlad till att använda kontinuerlig igenkänning i koden eller (snabbare) ansluter till antingen de interaktiva eller kontinuerliga slut punkterna i behållaren.
-För din kod ställer du in slut punkten till `host:port` /Speech/Recognition/Interactive/cognitiveservices/v1
+Lösningen är att antingen växla till att använda kontinuerlig igenkänning i koden eller (snabbare) ansluta till antingen de interaktiva eller kontinuerliga slutpunkterna i containern.
+För din kod anger du slutpunkten till `host:port` /speech/recognition/interactive/cognitiveservices/v1
 
-För olika lägen, se tallägen – se nedan:
+Information om de olika lägena finns i Tallägen – se nedan:
 
-## <a name="speech-modes---interactive-conversation-dictation"></a>Tallägen – interaktiv, konversation, Diktering
+## <a name="speech-modes---interactive-conversation-dictation"></a>Tallägen – interaktiv, konversation, diktering
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
-Den rätta korrigeringen kommer med SDK 1,8, som har stöd för lokal (kommer att välja rätt slut punkt, så vi kommer inte att vara lägre än online tjänsten). Under tiden finns det ett exempel på kontinuerlig igenkänning, varför ska vi inte peka på det?
+Rätt korrigering kommer med SDK 1.8, som har stöd för lokala enheter (väljer rätt slutpunkt, så vi blir inte sämre än onlinetjänsten). Under tiden finns det ett urval för kontinuerlig igenkänning. Varför pekar vi inte på det?
 
 https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d9e95c9137fe129bc5d81e35f6309/samples/python/console/speech_sample.py#L196
 
@@ -326,36 +326,36 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 <b>Vilket läge ska jag använda för olika ljudfiler?</b>
 </summary>
 
-**Svar:** Här är en [snabb start med python](./get-started-speech-to-text.md?pivots=programming-language-python). Du kan hitta de andra språken som är länkade på webbplatsen för dokument.
+**Svar:** Här är en [snabbstart med Python](./get-started-speech-to-text.md?pivots=programming-language-python). Du hittar de andra språken som är länkade på dokumentwebbplatsen.
 
-Bara för att klargöra för interaktiva, konversationer och diktering, Det här är ett avancerat sätt att ange på vilket sätt tjänsten ska hantera talfunktionerna. För lokal-behållare måste vi tyvärr ange hela URI (eftersom den innehåller en lokal dator), så den här informationen läcker från abstraktionen. Vi samarbetar med SDK-teamet för att göra detta mer användbart i framtiden.
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>Hur kan vi mäta ett grovt mått på transaktioner/sekund/kärna?</b>
-</summary>
-
-**Svar:** Här följer några av de hårda siffror som förväntas från befintlig modell (kommer att ändras för den som vi kommer att leverera i GA):
-
-- För filer visas begränsningen i tal-SDK: n i 2x. De första fem sekunderna ljudet begränsas inte. Avkodaren kan göra ungefär 3x i real tid. För detta är den totala processor användningen nära 2 kärnor för ett enda igenkännings resultat.
-- För MIC är det klockan 1x real tid. Den övergripande användningen bör vara ungefär 1 kärna för en enda igenkänning.
-
-Detta kan alla verifieras från Docker-loggarna. Vi har faktiskt dumpat raden med sessions-och fras-/uttryck-statistik och innehåller RTF-nummer.
+Bara för att klargöra för den interaktiva konversationen och diktering; Det här är ett avancerat sätt att ange på vilket sätt tjänsten ska hantera talbegäran. För de lokala containrarna måste vi tyvärr ange den fullständiga URI:n (eftersom den innehåller en lokal dator), så den här informationen läckte ut från abstraktionen. Vi arbetar med SDK-teamet för att göra detta mer användbart i framtiden.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Hur gör jag för att vill du köra flera behållare på samma värd?</b>
+<b>Hur kan vi mäta ett ungefärligt mått på transaktioner/sekund/kärna?</b>
 </summary>
 
-Dokumentet säger att du vill exponera en annan port, vilket jag gör, men LUIS-behållaren lyssnar fortfarande på port 5000?
+**Svar:** Här är några av de ungefärliga talen att förvänta sig från den befintliga modellen (kommer att ändras till det bättre i den som vi kommer att leverera i GA):
 
-**Svar:** Försök `-p <outside_unique_port>:5000` . Till exempel `-p 5001:5000`.
+- För filer kommer begränsningen att finnas i speech SDK med 2x. De första fem sekunderna av ljud begränsas inte. Avkodaren kan göra ungefär 3 x realtid. För detta kommer den totala CPU-användningen att vara nära 2 kärnor för en enda igenkänning.
+- För mic är det i 1 x realtid. Den totala användningen bör vara på cirka 1 kärna för en enda igenkänning.
+
+Allt detta kan verifieras från Docker-loggarna. Vi dumpar faktiskt raden med sessions- och fras-/tayttrandestatistik, och den innehåller RTF-talen.
+
+<br>
+</details>
+
+<details>
+<summary>
+<b>Hur gör jag för att att flera containrar körs på samma värd?</b>
+</summary>
+
+Dokumentet säger att man ska exponera en annan port, vilket jag gör, men LUIS-containern lyssnar fortfarande på port 5000?
+
+**Svar:** Prova `-p <outside_unique_port>:5000` . Till exempel `-p 5001:5000`.
 
 
 <br>
@@ -365,10 +365,10 @@ Dokumentet säger att du vill exponera en annan port, vilket jag gör, men LUIS-
 
 <details>
 <summary>
-<b>Hur kan jag få API: er som inte är batch-grupper för att hantera ljud &lt; 15 sekunder längre?</b>
+<b>Hur kan jag få ICKE-batch-API:er att hantera &lt; ljud 15 sekunder långt?</b>
 </summary>
 
-**Svar:** `RecognizeOnce()` i interaktivt läge körs bara upp till 15 sekunders ljud, eftersom läget är avsett för tal kommando, där yttranden förväntas vara korta. Om du använder `StartContinuousRecognition()` för diktering eller konversation finns det ingen gräns på 15 sekunder.
+**Svar:** `RecognizeOnce()` i interaktivt läge bearbetar endast upp till 15 sekunders ljud, eftersom läget är avsett för talkommandon där yttranden förväntas vara korta. Om du använder `StartContinuousRecognition()` för diktering eller konversation finns det ingen gräns på 15 sekunder.
 
 
 <br>
@@ -376,12 +376,12 @@ Dokumentet säger att du vill exponera en annan port, vilket jag gör, men LUIS-
 
 <details>
 <summary>
-<b>Vilka är de rekommenderade resurserna, processorn och RAM-minnet; för 50 samtidiga förfrågningar?</b>
+<b>Vilka är de rekommenderade resurserna, CPU och RAM- för 50 samtidiga begäranden?</b>
 </summary>
 
-Hur många samtidiga begär Anden kommer 4 kärnor, 4 GB RAM-referens? Om vi till exempel måste betjäna 50 samtidiga förfrågningar, hur många kärnor och RAM-minne rekommenderas?
+Hur många samtidiga begäranden kommer en 4-kärnig, 4 GB RAM-minne att hantera? Hur många kärnor och RAM-minne rekommenderas om vi till exempel ska kunna skicka 50 samtidiga begäranden?
 
-**Svar:** I real tid `en-US` rekommenderar vi att du använder fler Docker-behållare utöver 6 samtidiga begär Anden. Den får Crazier bortom 16 kärnor och den blir icke-enhetlig, icke-enhetlig minnes åtkomst (NUMA)-nod känslig. I följande tabell beskrivs den lägsta och rekommenderade fördelningen av resurser för varje tal behållare.
+**Svar:** I realtid 8 med vår senaste , så `en-US` vi rekommenderar att du använder fler Docker-containrar utöver 6 samtidiga begäranden. Den blir mer eller mindre än 16 kärnor och blir nuMA-nodkänslig (icke-enhetlig minnesåtkomst). I följande tabell beskrivs den lägsta och rekommenderade allokeringen av resurser för varje Speech-container.
 
 # <a name="speech-to-text"></a>[Tal till text](#tab/stt)
 
@@ -389,11 +389,11 @@ Hur många samtidiga begär Anden kommer 4 kärnor, 4 GB RAM-referens? Om vi til
 |----------------|---------------------|---------------------|
 | Tal till text | 2 kärnor, 2 GB minne | 4 kärnor, 4 GB minne |
 
-# <a name="custom-speech-to-text"></a>[Custom Speech till text](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Anpassat tal till text](#tab/cstt)
 
 | Container             | Minimum             | Rekommenderas         |
 |-----------------------|---------------------|---------------------|
-| Custom Speech till text | 2 kärnor, 2 GB minne | 4 kärnor, 4 GB minne |
+| Anpassat tal till text | 2 kärnor, 2 GB minne | 4 kärnors, 4 GB minne |
 
 # <a name="text-to-speech"></a>[Text till tal](#tab/tts)
 
@@ -410,25 +410,25 @@ Hur många samtidiga begär Anden kommer 4 kärnor, 4 GB RAM-referens? Om vi til
 ***
 
 - Varje kärna måste vara minst 2,6 GHz eller snabbare.
-- För filer är begränsningen i talet SDK, i 2x (de första 5 sekunderna ljudet är inte begränsat).
-- Avkodaren kan utföra cirka 2 – tre gånger i real tid. För detta är den totala processor användningen nära två kärnor för ett enda igenkänning. Därför rekommenderar vi inte att du behåller fler än två aktiva anslutningar per behållar instans. Den yttersta sidan skulle vara att lagra 10 avkodare i 2x real tid på en åtta kärnor som `DS13_V2` . För container version 1,3 och senare finns det en param som du kan prova att ställa in `DECODER_MAX_COUNT=20` .
-- För mikrofonen är den på 1x real tid. Den övergripande användningen bör vara på ungefär en kärna för en enda igenkänning.
+- För filer finns begränsningen i Speech SDK, 2 gånger (de första 5 sekunderna av ljud begränsas inte).
+- Avkodaren kan göra ungefär 2–3 x realtid. För detta kommer den totala CPU-användningen att vara nära två kärnor för en enda igenkänning. Därför rekommenderar vi inte att du behåller fler än två aktiva anslutningar per containerinstans. Den extrema sidan skulle vara att placera cirka 10 avkodare i 2 x realtid i en dator med åtta kärnor som `DS13_V2` . För containerversion 1.3 och senare finns det en parameter som du kan prova att ange `DECODER_MAX_COUNT=20` .
+- För mikrofon är den i 1 x realtid. Den övergripande användningen bör vara på ungefär en kärna för en enda igenkänning.
 
-Ta hänsyn till det totala antalet timmar av ljudet som du har. Om talet är stort, rekommenderar vi att du kör fler instanser av behållare, antingen i en enda ruta eller i flera rutor, bakom en belastningsutjämnare. Dirigering kan utföras med hjälp av Kubernetes (K8S) och Helm, eller med Docker Compose.
+Ta hänsyn till det totala antalet timmar med ljud som du har. Om antalet är stort för att förbättra tillförlitligheten/tillgängligheten rekommenderar vi att du kör fler instanser av containrar, antingen på en enda ruta eller i flera rutor, bakom en lastbalanserare. Orkestrering kan göras med Kubernetes (K8S) och Helm, eller med Docker Compose.
 
-Som exempel, för att hantera 1000 timmar/24 timmar, har vi försökt konfigurera 3-4 virtuella datorer med 10 instanser/avkodare per virtuell dator.
+För att hantera 1 000 timmar/24 timmar har vi till exempel försökt konfigurera 3–4 virtuella datorer, med 10 instanser/avkodare per virtuell dator.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Stöder tal containern skiljetecken?</b>
+<b>Stöder Speech-containern skiljetecken?</b>
 </summary>
 
-**Svar:** Vi har versaler (REDUNDANSVÄXLINGAR) tillgängliga i lokal-behållaren. Interpunktion är språk beroende och stöds inte för vissa språk, inklusive kinesiska och japanska.
+**Svar:** Vi har tillgång till versaler (ITN) i den on-prem-containern. Skiljetecken är språkberoende och stöds inte för vissa språk, däribland kinesiska och japanska.
 
-Vi *har* stöd för implicit och grundläggande interpunktion för befintliga behållare, men är `off` som standard. Det innebär att du kan hämta `.` specialtecknet i ditt exempel, men inte på- `。` tecknen. För att aktivera den här implicita logiken är här ett exempel på hur du gör i python med vårt tal-SDK (det skulle vara detsamma på andra språk):
+Vi *har* implicita och grundläggande skiljeteckensstöd för befintliga containrar, men det är `off` som standard. Det innebär att du kan hämta tecknet `.` i ditt exempel, men inte `。` tecknet . Om du vill aktivera den här implicita logiken är här ett exempel på hur du gör det i Python med hjälp av vår Speech SDK (det skulle vara liknande på andra språk):
 
 ```python
 speech_config.set_service_property(
@@ -443,10 +443,10 @@ speech_config.set_service_property(
 
 <details>
 <summary>
-<b>Varför får jag 404 fel vid försök att skicka data till en behållare med tal till text?</b>
+<b>Varför får jag 404-fel när jag försöker skicka data till tal till text-container?</b>
 </summary>
 
-Här är ett exempel på ett HTTP-inlägg:
+Här är ett exempel på HTTP POST:
 
 ```http
 POST /speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
@@ -466,7 +466,7 @@ Server: Kestrel
 Content-Length: 0
 ```
 
-**Svar:** Vi stöder inte REST API i en "tal-till-text"-behållare, vi har bara stöd för WebSockets via talet SDK. Läs alltid den officiella dokumentationen i [fråga förutsägelse-slutpunkter](speech-container-howto.md#query-the-containers-prediction-endpoint).
+**Svar:** Vi stöder inte REST API i någon av tal till text-containrarna, vi stöder bara WebSockets via Speech SDK. Läs alltid den officiella dokumentationen. Se slutpunkter [för frågeförutsägelse.](speech-container-howto.md#query-the-containers-prediction-endpoint)
 
 <br>
 </details>
@@ -474,16 +474,16 @@ Content-Length: 0
 
 <details>
 <summary>
-<b> Varför körs behållaren som en användare som inte är en rot? Vilka problem kan uppstå på grund av detta?</b>
+<b> Varför körs containern som en icke-rotanvändare? Vilka problem kan uppstå på grund av detta?</b>
 </summary>
 
-**Svar:** Observera att standard användaren i behållaren är en icke-rot användare. Detta ger skydd mot processer som hoppar över behållaren och hämtar eskalerade behörigheter på noden värd. Som standard gör vissa plattformar som OpenShift container Platform redan detta genom att köra behållare med ett godtyckligt tilldelat användar-ID. För dessa plattformar måste den icke-rot användaren ha behörighet att skriva till en externt mappad volym som kräver skrivningar. Till exempel en mapp för loggning eller en anpassad modell hämtnings mapp.
+**Svar:** Observera att standardanvändaren i containern är en icke-rotanvändare. Detta ger skydd mot processer som undantagstillstånd för containern och att få eskalerade behörigheter på värdnoden. Som standard gör vissa plattformar som OpenShift Container Platform redan detta genom att köra containrar med ett godtyckligt tilldelat användar-ID. För dessa plattformar måste icke-rotanvändaren ha behörighet att skriva till en externt mappad volym som kräver skrivningar. Till exempel en loggningsmapp eller en nedladdningsmapp för en anpassad modell.
 <br>
 </details>
 
 <details>
 <summary>
-<b>Varför får jag det här felet när jag använder tal-till-text-tjänsten?</b>
+<b>Varför får jag det här felet när jag använder tal till text-tjänsten?</b>
 </summary>
 
 ```cmd
@@ -494,17 +494,17 @@ Error in STT call for file 9136835610040002161_413008000252496:
 }
 ```
 
-**Svar:** Detta inträffar vanligt vis när du matar in ljudet snabbare än genom att använda tal igenkännings behållaren. Klientens buffertar fyller upp och annulleringen utlöses. Du måste kontrol lera samtidigheten och RTF-filen där du skickar ljudet.
+**Svar:** Detta inträffar vanligtvis när du matar in ljudet snabbare än containern för taligenkänning kan ta den. Klientbuffertar fylls och annulleringen utlöses. Du måste styra samtidigheten och RTF där du skickar ljudet.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Kan du förklara dessa text till tal-behållar fel från C++-exemplen?</b>
+<b>Kan du förklara dessa text-till-tal-containerfel från C++-exemplen?</b>
 </summary>
 
-**Svar:** Om behållar versionen är äldre än 1,3 ska den här koden användas:
+**Svar:** Om containerversionen är äldre än 1.3 ska den här koden användas:
 
 ```cpp
 const auto endpoint = "http://localhost:5000/speech/synthesize/cognitiveservices/v1";
@@ -513,7 +513,7 @@ auto synthesizer = SpeechSynthesizer::FromConfig(config);
 auto result = synthesizer->SpeakTextAsync("{{{text1}}}").get();
 ```
 
-Äldre behållare har inte den nödvändiga slut punkten för att kol ska fungera med `FromHost` API: et. Om de behållare som används för version 1,3 ska den här koden användas:
+Äldre containrar har inte den slutpunkt som krävs för att Carbon ska fungera med `FromHost` API:et. Om containrarna som används för version 1.3 ska den här koden användas:
 
 ```cpp
 const auto host = "http://localhost:5000";
@@ -524,7 +524,7 @@ auto synthesizer = SpeechSynthesizer::FromConfig(config);
 auto result = synthesizer->SpeakTextAsync("{{{text1}}}").get();
 ```
 
-Nedan visas ett exempel på hur du använder `FromEndpoint` API: et:
+Nedan visas ett exempel på hur du använder `FromEndpoint` API:et:
 
 ```cpp
 const auto endpoint = "http://localhost:5000/cognitiveservices/v1";
@@ -535,77 +535,7 @@ auto synthesizer = SpeechSynthesizer::FromConfig(config);
 auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 ```
 
- `SetSpeechSynthesisVoiceName`Funktionen anropas eftersom det krävs röst namnet för behållarna med en uppdaterad text till tal-motor.
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>Hur kan jag använda v 1.7 av tal-SDK: n med en tal behållare?</b>
-</summary>
-
-**Svar:** Det finns tre slut punkter i tal behållaren för olika användnings områden, de definieras som tallägen – se nedan:
-
-## <a name="speech-modes"></a>Tallägen
-
-[!INCLUDE [speech-modes](includes/speech-modes.md)]
-
-De är av olika syfte och används på olika sätt.
-
-Python- [exempel](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py):
-- För enkel igenkänning (interaktivt läge) med en anpassad slut punkt (det vill säga `SpeechConfig` med en slut punkt parameter), se `speech_recognize_once_from_file_with_custom_endpoint_parameters()` .
-- För kontinuerlig igenkänning (konversations läge) och bara ändra för att använda en anpassad slut punkt som ovan, se `speech_recognize_continuous_from_file()` .
-- Om du vill aktivera diktering i exempel som ovan (endast om du verkligen behöver det), högerklickar du efter att du `speech_config` har skapat, lagt till kod `speech_config.enable_dictation()` .
-
-I C# för att aktivera diktering anropar du `SpeechConfig.EnableDictation()` funktionen.
-
-### <a name="fromendpoint-apis"></a>`FromEndpoint` N
-| Språk | API-information |
-|----------|:------------|
-| C++ | <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromendpoint" target="_blank">`SpeechConfig.FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromendpoint" target="_blank">`SpeechConfig.fromendpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Objective-C | <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithendpoint" target="_blank">`SPXSpeechConfiguration:initWithEndpoint;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| JavaScript | Stöds inte för närvarande eller är inte planerat. |
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>Hur kan jag använda v 1.8 i tal-SDK: n med en tal behållare?</b>
-</summary>
-
-**Svar:** Det finns ett nytt `FromHost` API. Detta ersätter eller ändrar inte några befintliga API: er. Det lägger bara till ett alternativt sätt att skapa en tal konfiguration med hjälp av en anpassad värd.
-
-### <a name="fromhost-apis"></a>`FromHost` N
-
-| Språk | API-information |
-|--|:-|
-| C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost" target="_blank">`SpeechConfig.FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| C++ | <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#fromhost" target="_blank">`SpeechConfig::FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromhost" target="_blank">`SpeechConfig.fromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Objective-C | <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithhost" target="_blank">`SPXSpeechConfiguration:initWithHost;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| JavaScript | Stöds för närvarande inte |
-
-> Parametrar: Host (obligatorisk), prenumerations nyckel (valfritt, om du kan använda tjänsten utan den).
-
-Formatet för värden är `protocol://hostname:port` där `:port` är det valfria (se nedan):
-- Om behållaren körs lokalt är värd namnet `localhost` .
-- Om behållaren körs på en fjärrserver använder du värd namnet eller IPv4-adressen för den servern.
-
-Värd parameter exempel för tal till text:
-- `ws://localhost:5000` -osäker anslutning till en lokal behållare med port 5000
-- `ws://some.host.com:5000` -osäker anslutning till en behållare som körs på en fjärrserver
-
-Python-exempel från ovan, men Använd `host` parameter i stället för `endpoint` :
-
-```python
-speech_config = speechsdk.SpeechConfig(host="ws://localhost:5000")
-```
+ Funktionen `SetSpeechSynthesisVoiceName` anropas eftersom containrarna med en uppdaterad text till tal-motor kräver röstnamnet.
 
 <br>
 </details>
@@ -613,4 +543,4 @@ speech_config = speechsdk.SpeechConfig(host="ws://localhost:5000")
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Cognitive Services behållare](speech-container-howto.md)
+> [Cognitive Services containrar](speech-container-howto.md)

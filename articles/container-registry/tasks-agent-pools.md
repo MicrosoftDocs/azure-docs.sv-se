@@ -1,72 +1,72 @@
 ---
-title: Använd dedikerad pool för att köra uppgifts uppgifter
-description: Konfigurera en dedikerad Compute-pool (lagringspool) i registret för att köra en Azure Container Registry aktivitet.
+title: Använda dedikerad pool för att köra uppgift – uppgifter
+description: Konfigurera en dedikerad beräkningspool (agentpool) i registret för att köra en Azure Container Registry uppgift.
 ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 8b1f077d6216443ad267f8620f87882439cb355c
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 21db066b3f18106938d11fbd8e2cfe688c1ef276
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284149"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389561"
 ---
-# <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>Köra en ACR-uppgift i en dedikerad agent
+# <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>Köra en ACR-uppgift på en dedikerad agentpool
 
-Konfigurera en Azure-hanterad VM-pool (*agent*) så att du kan köra [Azure Container Registry uppgifter][acr-tasks] i en dedikerad beräknings miljö. När du har konfigurerat en eller flera pooler i registret kan du välja en pool för att köra en aktivitet i stället för tjänstens standard beräknings miljö.
+Konfigurera en Azure-hanterad VM-pool *(agentpool)* för att aktivera [körning av Azure Container Registry i][acr-tasks] en dedikerad beräkningsmiljö. När du har konfigurerat en eller flera pooler i registret kan du välja en pool för att köra en uppgift i stället för tjänstens standardmiljö för beräkning.
 
-En agent-pool tillhandahåller:
+En agentpool tillhandahåller:
 
-- **Stöd för virtuella nätverk** – tilldela en modempool till ett Azure VNet, vilket ger åtkomst till resurser i det virtuella nätverket, till exempel ett behållar register, nyckel valv eller lagrings utrymme.
-- **Skala efter behov** – öka antalet instanser i en lagringspool för beräknings intensiva uppgifter eller skala till noll. Faktureringen baseras på tilldelning av pooler. Mer information finns i [prissättning](https://azure.microsoft.com/pricing/details/container-registry/).
-- **Flexibla alternativ** – Välj mellan olika [Poolnivå](#pool-tiers) -och skalnings alternativ för att möta dina arbets belastnings behov.
-- **Azure-hantering** – aktivitetssekvenser korrigeras och underhålls av Azure, vilket ger reserverad allokering utan att behöva underhålla de enskilda virtuella datorerna.
+- **Stöd för virtuella nätverk** – Tilldela en agentpool till ett virtuellt Azure-nätverk, vilket ger åtkomst till resurser i det virtuella nätverket, till exempel ett containerregister, nyckelvalv eller lagring.
+- **Skala efter behov** – Öka antalet instanser i en agentpool för beräkningsintensiva aktiviteter eller skala till noll. Faktureringen baseras på poolallokering. Mer information finns i [Prissättning.](https://azure.microsoft.com/pricing/details/container-registry/)
+- **Flexibla alternativ** – Välj mellan olika [poolnivåer och skalningsalternativ](#pool-tiers) som uppfyller dina uppgiftsarbetsbelastningsbehov.
+- **Azure-hantering** – Uppgiftspooler korrigeras och underhålls av Azure, vilket ger reserverad allokering utan att de enskilda virtuella datorerna behöver underhållas.
 
-Den här funktionen är tillgänglig i tjänst nivån **Premium** container Registry. Information om nivåer och gränser för register tjänster finns i [Azure Container Registry SKU: er][acr-tiers].
+Den här funktionen är tillgänglig på **tjänstnivån** premiumcontainerregister. Information om registertjänstnivåer och begränsningar finns i Azure Container Registry [SKU:er][acr-tiers].
 
 > [!IMPORTANT]
-> Den här funktionen är för närvarande en för hands version och vissa [begränsningar gäller](#preview-limitations). Förhandsversioner är tillgängliga för dig under förutsättning att du godkänner de [kompletterande användningsvillkoren][terms-of-use]. Vissa aspekter av funktionen kan ändras innan den är allmänt tillgänglig (GA).
+> Den här funktionen är för närvarande i förhandsversion och vissa [begränsningar gäller](#preview-limitations). Förhandsversioner är tillgängliga för dig under förutsättning att du godkänner de [kompletterande användningsvillkoren][terms-of-use]. Vissa aspekter av funktionen kan ändras innan den är allmänt tillgänglig (GA).
 >
 
 ## <a name="preview-limitations"></a>Begränsningar för förhandsversion
 
-- Task agent-pooler stöder för närvarande Linux-noder. Windows-noder stöds inte för närvarande.
-- Task agent-pooler är tillgängliga i för hands versionen i följande regioner: USA, västra 2, södra centrala USA, östra USA 2, östra USA, centrala USA, Västeuropa, centrala Kanada, USGov Arizona, USGov Texas och USGov Virginia.
-- För varje register är standard kvoten för total vCPU (kärna) 16 för alla standardagent-pooler och är 0 för isolerade agenter. Öppna en [support förfrågan][open-support-ticket] om ytterligare allokering.
-- Du kan inte avbryta körningen av en aktivitet för en agent.
+- Uppgiftsagentpooler stöder för närvarande Linux-noder. Windows-noder stöds inte för närvarande.
+- Uppgiftsagentpooler är tillgängliga som förhandsversion i följande regioner: USA, västra 2, USA, södra centrala, USA, östra 2, USA, östra, USA, centrala, Europa, västra, Europa, norra, Kanada, centrala, USGov Arizona, USGov Texas och USGov Virginia.
+- För varje register är den totala standardkvoten för vCPU (kärna) 16 för alla standardagentpooler och är 0 för isolerade agentpooler. Öppna en [supportbegäran om][open-support-ticket] ytterligare allokering.
+- Du kan för närvarande inte avbryta en uppgiftskörning på en agentpool.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* För att kunna använda Azure CLI-stegen i den här artikeln krävs Azure CLI version 2.3.1 eller senare. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][azure-cli]. Eller kör i [Azure Cloud Shell](../cloud-shell/quickstart.md).
-* Om du inte redan har ett behållar register [skapar du ett][create-reg-cli] (Premium-nivå krävs) i en för hands versions region.
+* Om du vill använda Azure CLI-stegen i den här artikeln krävs Azure CLI version 2.3.1 eller senare. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][azure-cli]. Eller kör i [Azure Cloud Shell](../cloud-shell/quickstart.md).
+* Om du inte redan har ett containerregister skapar du ett [(Premium-nivå][create-reg-cli] krävs) i en förhandsversionsregion.
 
-## <a name="pool-tiers"></a>Nivåer för pooler
+## <a name="pool-tiers"></a>Poolnivåer
 
-Nivåer för agenter tillhandahåller följande resurser per instans i poolen.
+Agentpoolnivåer tillhandahåller följande resurser per instans i poolen.
 
 |Nivå    | Typ  |  Processor  |Minne (GB)  |
 |---------|---------|---------|---------|
 |S1     |  standard    | 2       |    3     |
 |S2     |  standard    | 4       |    8     |
 |S3     |  standard    | 8       |   16     |
-|I6     |  Isoler    | 64     |   216     |
+|I6     |  Isolerade    | 64     |   216     |
 
 
-## <a name="create-and-manage-a-task-agent-pool"></a>Skapa och hantera en aktivitetssekvens
+## <a name="create-and-manage-a-task-agent-pool"></a>Skapa och hantera en uppgiftsagentpool
 
-### <a name="set-default-registry-optional"></a>Ange standard register (valfritt)
+### <a name="set-default-registry-optional"></a>Ange standardregister (valfritt)
 
-För att förenkla Azure CLI-kommandon som följer ställer du in standard registret genom att köra kommandot [AZ Configure][az-configure] :
+För att förenkla Azure CLI-kommandon som följer anger du standardregistret genom att köra [kommandot az configure:][az-configure]
 
 ```azurecli
 az configure --defaults acr=<registryName>
 ```
 
-I följande exempel förutsätter vi att du har angett standard registret. Om inte, skickar du en `--registry <registryName>` parameter i varje `az acr` kommando.
+I följande exempel förutsätts att du har angett standardregistret. Om inte skickar du en `--registry <registryName>` parameter i varje `az acr` kommando.
 
-### <a name="create-agent-pool"></a>Skapa Agent-pool
+### <a name="create-agent-pool"></a>Skapa agentpool
 
-Skapa en agent-pool med kommandot [AZ ACR agentpoolegenskap Create][az-acr-agentpool-create] . I följande exempel skapas en nivå i S2-poolen (4 processorer/instans). Poolen innehåller som standard 1 instans.
+Skapa en agentpool med hjälp av [kommandot az acr agentpool][az-acr-agentpool-create] create. I följande exempel skapas en nivå S2-pool (4 CPU/instans). Som standard innehåller poolen 1 instans.
 
 ```azurecli
 az acr agentpool create \
@@ -75,11 +75,11 @@ az acr agentpool create \
 ```
 
 > [!NOTE]
-> Det tar flera minuter att slutföra skapandet av en agent och andra hanterings åtgärder för pooler.
+> Det tar flera minuter att skapa en agentpool och andra poolhanteringsåtgärder.
 
-### <a name="scale-pool"></a>Skala pool
+### <a name="scale-pool"></a>Skalningspool
 
-Skala Poolens storlek uppåt eller nedåt med kommandot [AZ ACR agentpoolegenskap Update][az-acr-agentpool-update] . I följande exempel skalas poolen till två instanser. Du kan skala till 0 instanser.
+Skala upp eller ned poolstorleken med [kommandot az acr agentpool update.][az-acr-agentpool-update] I följande exempel skalas poolen till 2 instanser. Du kan skala till 0 instanser.
 
 ```azurecli
 az acr agentpool update \
@@ -89,11 +89,11 @@ az acr agentpool update \
 
 ## <a name="create-pool-in-a-virtual-network"></a>Skapa pool i ett virtuellt nätverk
 
-### <a name="add-firewall-rules"></a>Lägg till brand Väggs regler
+### <a name="add-firewall-rules"></a>Lägga till brandväggsregler
 
-Task agent-pooler kräver åtkomst till följande Azure-tjänster. Följande brand Väggs regler måste läggas till i alla befintliga nätverks säkerhets grupper eller användardefinierade vägar.
+Uppgiftsagentpooler kräver åtkomst till följande Azure-tjänster. Följande brandväggsregler måste läggas till i befintliga nätverkssäkerhetsgrupper eller användardefinierade vägar.
 
-| Riktning | Protokoll | Källa         | Källport | Mål          | Mål Port | Använt    |
+| Riktning | Protokoll | Källa         | Källport | Mål          | Dest-port | Använt    |
 |-----------|----------|----------------|-------------|----------------------|-----------|---------|
 | Utgående  | TCP      | VirtualNetwork | Valfri         | AzureKeyVault        | 443       | Standardvärde |
 | Utgående  | TCP      | VirtualNetwork | Valfri         | Storage              | 443       | Standardvärde |
@@ -102,11 +102,11 @@ Task agent-pooler kräver åtkomst till följande Azure-tjänster. Följande bra
 | Utgående  | TCP      | VirtualNetwork | Valfri         | AzureMonitor         | 443       | Standardvärde |
 
 > [!NOTE]
-> Om aktiviteterna kräver ytterligare resurser från det offentliga Internet lägger du till motsvarande regler. Till exempel krävs ytterligare regler för att köra en Docker-build-uppgift som hämtar bas avbildningarna från Docker Hub, eller återställer ett NuGet-paket.
+> Om dina uppgifter kräver ytterligare resurser från det offentliga Internet lägger du till motsvarande regler. Ytterligare regler krävs till exempel för att köra en docker-build-uppgift som hämtar basavbildningarna från Docker Hub, eller återställer ett NuGet-paket.
 
 ### <a name="create-pool-in-vnet"></a>Skapa pool i VNet
 
-I följande exempel skapas en modempool *i under nätet undernät för* nätverks- *myvnet*:
+I följande exempel skapas en agentpool i *undernätet mysubnet* i nätverket *myvnet*:
 
 ```azurecli
 # Get the subnet ID
@@ -122,17 +122,17 @@ az acr agentpool create \
     --subnet-id $subnetId
 ```
 
-## <a name="run-task-on-agent-pool"></a>Kör uppgift i agenten
+## <a name="run-task-on-agent-pool"></a>Köra uppgiften på agentpoolen
 
-I följande exempel visas hur du anger en agents-pool när en aktivitet köas.
+I följande exempel visas hur du anger en agentpool när du köar en uppgift.
 
 > [!NOTE]
-> Om du vill använda en modempool i en ACR-aktivitet kontrollerar du att poolen innehåller minst en instans.
+> Om du vill använda en agentpool i en ACR-uppgift ser du till att poolen innehåller minst 1 instans.
 >
 
-### <a name="quick-task"></a>Snabb uppgift
+### <a name="quick-task"></a>Snabbuppgift
 
-Köa en snabb uppgift i agenten med hjälp av kommandot [AZ ACR build][az-acr-build] och skicka `--agent-pool` parametern:
+Köa en snabbuppgift i agentpoolen med hjälp av [kommandot az acr build][az-acr-build] och skicka `--agent-pool` parametern :
 
 ```azurecli
 az acr build \
@@ -144,7 +144,7 @@ az acr build \
 
 ### <a name="automatically-triggered-task"></a>Automatiskt utlöst uppgift
 
-Du kan till exempel skapa en schemalagd aktivitet i lagringspoolen med [AZ ACR Task Create][az-acr-task-create], som skickar `--agent-pool` parametern.
+Du kan till exempel skapa en schemalagd aktivitet i agentpoolen [med az acr task create][az-acr-task-create]och skicka `--agent-pool` parametern .
 
 ```azurecli
 az acr task create \
@@ -157,16 +157,16 @@ az acr task create \
     --commit-trigger-enabled false
 ```
 
-Verifiera uppgifts installationen genom att köra [AZ ACR Task Run][az-acr-task-run]:
+Kontrollera aktivitetskonfigurationen genom att [köra az acr task run][az-acr-task-run]:
 
 ```azurecli
 az acr task run \
     --name mytask
 ```
 
-### <a name="query-pool-status"></a>Status för programpoolstillstånd
+### <a name="query-pool-status"></a>Frågepoolstatus
 
-Du hittar antalet körningar som är schemalagda för agenten genom att köra [AZ ACR agentpoolegenskap show][az-acr-agentpool-show].
+Om du vill hitta antalet körningar som är schemalagda i agentpoolen kör [du az acr agentpool show][az-acr-agentpool-show].
 
 ```azurecli
 az acr agentpool show \
@@ -176,7 +176,7 @@ az acr agentpool show \
 
 ## <a name="next-steps"></a>Nästa steg
 
-Fler exempel på behållar avbildnings avbildningar och underhåll i molnet finns i [själv studie serien med ACR tasks](container-registry-tutorial-quick-task.md).
+Fler exempel på containeravbildningsbyggen och underhåll i molnet finns i ACR-uppgifter [självstudieserien](container-registry-tutorial-quick-task.md).
 
 
 

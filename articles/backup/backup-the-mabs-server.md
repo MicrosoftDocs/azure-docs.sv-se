@@ -1,38 +1,38 @@
 ---
 title: Säkerhetskopiera MABS-servern
-description: Lär dig hur du säkerhetskopierar Microsoft Azure Backup Server (MABS).
+description: Lär dig hur du serverar Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: 81a6ee005e15b1d7ab7b11a938b8ab14143818f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbd3d1f2d7cb24c21962dbe5c88acebf73652a04
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92172120"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519127"
 ---
 # <a name="back-up-the-mabs-server"></a>Säkerhetskopiera MABS-servern
 
-För att säkerställa att data kan återställas om Microsoft Azure Backup Server (MABS) Miss lyckas, behöver du en strategi för att säkerhetskopiera MABS-servern. Om den inte har säkerhetskopierats måste du återskapa den manuellt efter ett haveri och det går inte att återställa diskbaserade återställnings punkter. Du kan säkerhetskopiera MABS-servrar genom att säkerhetskopiera MABS-databasen.
+För att säkerställa att data kan återställas Microsoft Azure Backup Server (MABS) misslyckas, behöver du en strategi för att servera MABS-servern. Om den inte säkerhetskopieras måste du återskapa den manuellt efter ett fel, och diskbaserade återställningspunkter kan inte återställas. Du kan servera MABS-servrar genom att servera MABS-databasen.
 
-## <a name="back-up-the-mabs-database"></a>Säkerhetskopiera MABS-databasen
+## <a name="back-up-the-mabs-database"></a>Back up the MABS database ( Back up the MABS database)
 
-Som en del av din strategi för MABS-säkerhetskopiering måste du säkerhetskopiera MABS-databasen. MABS-databasen heter DPMDB. Den här databasen innehåller MABS-konfigurationen tillsammans med data om säkerhets kopiering av MABS. Om det finns en katastrof kan du återskapa de flesta funktionerna i en MABS-server med hjälp av en aktuell säkerhets kopia av databasen. Förutsatt att du kan återställa databasen är bandbaserade säkerhets kopior tillgängliga och de behåller alla skydds grupps inställningar och säkerhets kopierings scheman. Om MABS Storage pool disks inte påverkades av avbrottet kan diskbaserade säkerhets kopieringar också användas efter en återskapning. Du kan säkerhetskopiera databasen med hjälp av flera olika metoder.
+Som en del av din MABS-säkerhetskopieringsstrategi måste du säkerhetskopiera MABS-databasen. MABS-databasen heter DPMDB. Den här databasen innehåller MABS-konfigurationen tillsammans med data om säkerhetskopior av MABS. Vid ett haveri kan du återskapa de flesta funktionerna i en MABS-server med hjälp av en ny säkerhetskopia av databasen. Förutsatt att du kan återställa databasen är bandbaserade säkerhetskopior tillgängliga och de underhåller alla skyddsgruppsinställningar och säkerhetskopieringsscheman. Om MABS-lagringspooldiskarna inte påverkades av avbrottet kan även diskbaserade säkerhetskopior användas efter en återskapning. Du kan säkerhetskopiera databasen med hjälp av flera olika metoder.
 
 |Metod för säkerhetskopiering av databas|Fördelar|Nackdelar|
 |--------------------------|--------------|-----------------|
-|[Säkerhetskopiera till Azure](#back-up-to-azure)|<li>Enkelt konfigurerat och övervakat i MABS.<li>Flera platser för de säkerhetskopierade databasfilerna.<li>Molnlagring är en robust lösning för haveriberedskap.<li>Mycket säker lagring för databasen.<li>Har stöd för 120 onlineåterställningspunkter.|<li>Kräver Azure-konto och ytterligare MABS-konfiguration. Viss kostnad för lagring med Azure tillkommer.<li> Kräver en version av Windows Server-baserad dator som stöds med Azure-agenten för att få åtkomst till MABS säkerhets kopior som lagras i Azure Backup-valvet. Detta kan inte vara en annan MABS-Server.<li>Inte ett alternativ om databasen finns lokalt och du vill aktivera sekundärt skydd. <li>Lite extra tid för förberedelser och återställning uppkommer.|
-|[Säkerhetskopiera databasen genom att säkerhetskopiera MABS-lagringspoolen](#back-up-the-database-by-backing-up-the-mabs-storage-pool)|<li>Enkla att konfigurera och övervaka.<li>Säkerhets kopian sparas på MABS för lagrings diskar och är lätt att komma åt lokalt.<li>MABS schemalagda säkerhets kopieringar stöder 512 snabba och fullständiga säkerhets kopieringar. Om du säkerhetskopierar varje timme har du ett fullständigt skydd på 21 dagar.|<li>Inte ett bra alternativ för haveriberedskap. Det är online och återställning kanske inte fungerar som förväntat om det inte går att MABS-servern eller Storage pool-disken.<li>Inte ett alternativ om databasen finns lokalt och du vill aktivera sekundärt skydd. <li>Vissa förberedelser och särskilda åtgärder krävs för att få åtkomst till återställnings punkterna om MABS-tjänsten eller konsolen inte körs eller fungerar.|
-|[Säkerhetskopiera med intern SQL Server-säkerhetskopiering till en lokal disk](#back-up-with-native-sql-server-backup-to-a-local-disk)|<li>Inbyggt i SQL Server.<li>Säkerhets kopian sparas på en lokal disk som är lättillgänglig.<li>Kan schemaläggas att köras så ofta du vill.<li>Helt oberoende av MABS.<li>Du kan schemalägga en rensning av säkerhetskopieringsfilen.|<li>Inte ett bra alternativ för haveriberedskap, såvida inte säkerhetskopiorna kopieras till en fjärrplats.<li>Kräver lokal lagring för säkerhets kopior, vilket kan begränsa kvarhållning och frekvens.|
-|[Säkerhetskopiera med inbyggd SQL-säkerhetskopiering och MABS-skydd till en resurs som skyddas av MABS](#back-up-to-a-share-protected-by-mabs)|<li>Övervakas enkelt i MABS.<li>Flera platser för de säkerhetskopierade databasfilerna.<li>Lättillgängligt från alla Windows-datorer i nätverket.<li>Potentiellt den snabbaste återställningsmetoden.|<li>Har endast stöd för 64 återställningspunkter.<li>Inte ett bra alternativ för haveriberedskap. MABS Server eller MABS kan förhindra återställnings åtgärder.<li>Inte ett alternativ om MABS DB är lokalt och du vill aktivera sekundärt skydd. <li>Vissa extra förberedelser krävs för konfiguration och tester.<li>En eventuell extra förberedelse och återställnings tid behövs om själva MABS-servern är nere, men det är en bra MABS disk lagring.|
+|[Säkerhetskopiera till Azure](#back-up-to-azure)|<li>Enkelt konfigurerad och övervakad i MABS.<li>Flera platser för de säkerhetskopierade databasfilerna.<li>Molnlagring är en robust lösning för haveriberedskap.<li>Mycket säker lagring för databasen.<li>Har stöd för 120 onlineåterställningspunkter.|<li>Kräver Azure-konto och ytterligare MABS-konfiguration. Viss kostnad för lagring med Azure tillkommer.<li> Kräver en version av Windows Server-baserat system som stöds med Azure-agenten för att få åtkomst till MABS-säkerhetskopior som lagras i Azure-säkerhetskopieringsvalvet. Detta kan inte vara en annan MABS-server.<li>Inte ett alternativ om databasen finns lokalt och du vill aktivera sekundärt skydd. <li>Lite extra tid för förberedelser och återställning uppkommer.|
+|[Back up the database by backing up the MABS storage pool](#back-up-the-database-by-backing-up-the-mabs-storage-pool)|<li>Enkla att konfigurera och övervaka.<li>Säkerhetskopian sparas på MABS-lagringspooldiskarna och är enkel att komma åt lokalt.<li>Schemalagda MABS-säkerhetskopieringar stöder 512 fullständiga snabbsäkerhetskopior. Om du backar upp varje timme har du 21 dagars fullständigt skydd.|<li>Inte ett bra alternativ för haveriberedskap. Det är online och återställning kanske inte fungerar som förväntat om MABS-servern eller lagringspooldisken slutar fungera.<li>Inte ett alternativ om databasen finns lokalt och du vill aktivera sekundärt skydd. <li>Vissa förberedelser och särskilda steg krävs för att få åtkomst till återställningspunkterna om MABS-tjänsten eller -konsolen inte körs eller fungerar.|
+|[Säkerhetskopiera med intern SQL Server-säkerhetskopiering till en lokal disk](#back-up-with-native-sql-server-backup-to-a-local-disk)|<li>Inbyggt i SQL Server.<li>Säkerhetskopian sparas på en lokal disk som är lättillgänglig.<li>Kan schemaläggas att köras så ofta du vill.<li>Helt oberoende av MABS.<li>Du kan schemalägga en rensning av säkerhetskopieringsfilen.|<li>Inte ett bra alternativ för haveriberedskap, såvida inte säkerhetskopiorna kopieras till en fjärrplats.<li>Kräver lokal lagring för säkerhetskopior, vilket kan begränsa kvarhållning och frekvens.|
+|[Säkerhetskopiera med inbyggd SQL-säkerhetskopiering och MABS-skydd till en resurs som skyddas av MABS](#back-up-to-a-share-protected-by-mabs)|<li>Övervakas enkelt i MABS.<li>Flera platser för de säkerhetskopierade databasfilerna.<li>Lättillgängligt från alla Windows-datorer i nätverket.<li>Potentiellt den snabbaste återställningsmetoden.|<li>Har endast stöd för 64 återställningspunkter.<li>Inte ett bra alternativ för haveriberedskap. MABS-servern eller MABS-lagringspooldiskfel kan hindra återställningen.<li>Inte ett alternativ om MABS DB finns lokalt och du vill aktivera sekundärt skydd. <li>Vissa extra förberedelser krävs för konfiguration och tester.<li>Viss extra tid för förberedelse och återställning krävs om själva MABS-servern är nere men MABS-lagringspooldiskar fungerar bra.|
 
-- Om du säkerhetskopierar med hjälp av en MABS skydds grupp rekommenderar vi att du använder en unik skydds grupp för databasen.
+- Om du backar upp med hjälp av en MABS-skyddsgrupp rekommenderar vi att du använder en unik skyddsgrupp för databasen.
 
     > [!NOTE]
-    > I återställnings syfte måste den MABS-installation som du vill återställa med MABS-databasen matcha versionen av MABS-databasen.  Om den databas som du vill återställa till exempel är från en MABS v3 med Samlad uppdatering 1 måste MABS-servern köra samma version med Samlad uppdatering 1. Det innebär att du kan behöva avinstallera och installera om MABS med en kompatibel version innan du återställer databasen.  Om du vill kontrollera databasversionen kan du behöva montera den manuellt till ett temporärt databasnamn och sedan köra en SQL-fråga mot databasen för att kontrollera den senaste samlade uppdateringen som har installerats baserat på den högre och den lägre versionen.
+    > I återställningssyfte måste MABS-installationen som du vill återställa med MABS-databasen matcha versionen av själva MABS-databasen.  Om den databas som du vill återställa till exempel kommer från en MABS V3 med installation av Samlad uppdatering 1, måste MABS-servern köra samma version med Samlad uppdatering 1. Det innebär att du kan behöva avinstallera och installera om MABS med en kompatibel version innan du återställer databasen.  Om du vill kontrollera databasversionen kan du behöva montera den manuellt till ett temporärt databasnamn och sedan köra en SQL-fråga mot databasen för att kontrollera den senaste samlade uppdateringen som har installerats baserat på den högre och den lägre versionen.
 
-- Följ dessa steg om du vill kontrol lera MABS-databasens version:
+- Följ dessa steg om du vill kontrollera MABS-databasversionen:
 
-    1. Om du vill köra frågan öppnar du SQL Management Studio och ansluter sedan till SQL-instansen som kör MABS-databasen.
+    1. Kör frågan genom att öppna SQL Management Studio och sedan ansluta till den SQL-instans som kör MABS-databasen.
 
     2. Välj MABS-databasen och starta sedan en ny fråga.
 
@@ -40,11 +40,11 @@ Som en del av din strategi för MABS-säkerhetskopiering måste du säkerhetskop
 
         `Select distinct MajorVersionNumber,MinorVersionNumber ,BuildNumber, FileName FROM dbo.tbl\_AM\_AgentPatch order byMajorVersionNumber,MinorVersionNumber,BuildNumber`
 
-    Om inget returneras i frågeresultaten, eller om MABS-servern har uppgraderats från tidigare versioner, men ingen ny samlad uppdatering har installerats sedan dess, kommer det inte att finnas någon post för den större, mindre för en grundläggande installation av MABS. För att kontrol lera de MABS-versioner som är associerade med samlade uppdateringar, se [lista över build-nummer för Mabs](https://social.technet.microsoft.com/wiki/contents/articles/36381.microsoft-azure-backup-server-list-of-build-numbers.aspx).
+    Om inget returneras i frågeresultaten, eller om MABS-servern har uppgraderats från tidigare versioner men ingen ny samlad uppdatering har installerats sedan dess, kommer det inte att finnas någon post för större, mindre för en grundläggande installation av MABS. Information om vilka MABS-versioner som är associerade med samlade uppdateringar [finns i Lista över build-nummer för MABS.](https://social.technet.microsoft.com/wiki/contents/articles/36381.microsoft-azure-backup-server-list-of-build-numbers.aspx)
 
 ### <a name="back-up-to-azure"></a>Säkerhetskopiera till Azure
 
-1. Innan du börjar måste du köra ett skript för att hämta sökvägen till monterings punkten för MABS-repliken så att du vet vilken återställnings punkt som innehåller säkerhets kopian av MABS. Gör detta efter den första replikeringen med Azure Backup. I skriptet ersätter du `dplsqlservername%` med namnet på SQL Server-instansen som är värd för Mabs-databasen.
+1. Innan du börjar måste du köra ett skript för att hämta sökvägen till mabs-replikvolymens monteringspunkt så att du vet vilken återställningspunkt som innehåller MABS-säkerhetskopian. Gör detta efter den första replikeringen med Azure Backup. I skriptet ersätter du `dplsqlservername%` med namnet på den SQL Server som är värd för MABS-databasen.
 
     ```SQL
     Select ag.NetbiosName as ServerName,ds.DataSourceName,vol.MountPointPath
@@ -58,34 +58,34 @@ Som en del av din strategi för MABS-säkerhetskopiering måste du säkerhetskop
     and servername like '%dpmsqlservername%' --netbios name of server hosting DPMDB
     ```
 
-    Kontrol lera att du har lösen ordet som angavs när Azure Recovery Services-agenten installerades och att MABS-servern registrerades i Azure Backup-valvet. Du behöver lösenordet för att återställa säkerhetskopian.
+    Kontrollera att du har lösenordet som angavs när Azure Recovery Services-agenten installerades och MABS-servern registrerades i Azure Backup valvet. Du behöver lösenordet för att återställa säkerhetskopian.
 
-2. Skapa ett Azure Backup-valv, ladda ned installationsfilen för Azure Backup Agent och valvautentiseringsuppgifterna. Kör installations filen för att installera agenten på MABS-servern och Använd autentiseringsuppgifterna för valvet för att registrera MABS-servern i valvet. [Läs mer](backup-azure-microsoft-azure-backup.md).
+2. Skapa ett Azure Backup-valv, ladda ned installationsfilen för Azure Backup Agent och valvautentiseringsuppgifterna. Kör installationsfilen för att installera agenten på MABS-servern och använd valvautentiseringsuppgifterna för att registrera MABS-servern i valvet. [Läs mer](backup-azure-microsoft-azure-backup.md).
 
-3. När valvet har kon figurer ATS konfigurerar du en MABS skydds grupp som innehåller MABS-databasen. Välj för att säkerhetskopiera den till disk och till Azure.
+3. När valvet har konfigurerats konfigurerar du en MABS-skyddsgrupp som innehåller MABS-databasen. Välj att backa upp den till disk och till Azure.
 
 #### <a name="recover-the-mabs-database-from-azure"></a>Återställa MABS-databasen från Azure
 
-Du kan återställa databasen från Azure med hjälp av en MABS-server som är registrerad i Azure Backup-valvet, enligt följande:
+Du kan återställa databasen från Azure med valfri MABS-server som är registrerad i Azure Backup valvet enligt följande:
 
-1. I Mabs-konsolen väljer du **återställning**  >  **Lägg till extern Mabs**.
+1. I MABS-konsolen väljer du **Återställning Lägg till** extern  >  **MABS**.
 
-2. Ange autentiseringsuppgifter för valvet (Ladda ned från Azure Backup-valvet). Observera att autentiseringsuppgifterna bara är giltiga i två dagar.
+2. Ange autentiseringsuppgifterna för valvet (ladda ned från Azure Backup valvet). Observera att autentiseringsuppgifterna bara är giltiga i två dagar.
 
-3. I **Välj externa Mabs för återställning** väljer du den Mabs-server som du vill återställa databasen för, skriver in krypterings lösen frasen och väljer **OK.**
+3. I **Välj extern MABS** för återställning väljer du den MABS-server som du vill återställa databasen för, skriver in krypteringsfrasen och väljer **OK.**
 
-4. Välj den återställningspunkt som du vill använda från listan över tillgängliga punkter. Välj **Rensa externa Mabs** för att återgå till den lokala Mabs-vyn.
+4. Välj den återställningspunkt som du vill använda från listan över tillgängliga punkter. Välj **Rensa extern MABS för** att återgå till den lokala MABS-vyn.
 
-## <a name="back-up-the-mabs-database-to-mabs-storage-pool"></a>Säkerhetskopiera MABS-databasen till MABS-lagringspoolen
+## <a name="back-up-the-mabs-database-to-mabs-storage-pool"></a>Back up the MABS database to MABS storage pool
 
 > [!NOTE]  
 > Det här alternativet gäller för MABS med Modern Backup Storage.
 
-1. I Mabs-konsolen väljer du **skydd**  >  **skapa skydds grupp**.
-2. På sidan **Välj typ av skydds grupp** väljer du **servrar**.
-3. På sidan **Välj grupp medlemmar** väljer du **DPM-databas**. Expandera MABS-servern och välj DPMDB.
-4. På sidan **Välj data skydds metod** väljer **du jag vill ha kortvarigt skydd med disk**. Ange alternativ för den kortsiktiga skyddsprincipen.
-5. Kör följande SQL-skript efter den inledande replikeringen av MABS-databasen:
+1. I MABS-konsolen väljer du **Skydd**  >  **Skapa skyddsgrupp.**
+2. På sidan **Välj typ av skyddsgrupp** väljer du **Servrar.**
+3. På sidan **Välj gruppmedlemmar** väljer du **DPM-databas**. Expandera MABS-servern och välj DPMDB.
+4. På sidan **Välj dataskyddsmetod väljer** du **Jag vill ha kortvarigt skydd med disk**. Ange alternativ för den kortsiktiga skyddsprincipen.
+5. Efter den inledande replikeringen av MABS-databasen kör du följande SQL-skript:
 
 ```SQL
 select AG.NetbiosName, DS.DatasourceName, V.AccessPath, LR.PhysicalReplicaId from tbl_IM_DataSource DS
@@ -102,45 +102,45 @@ and LR.Validity in (1,2)
 and AG.ServerName like N'%<dpmsqlservername>%' -- <dpmsqlservername> is a placeholder, put netbios name of server hosting DPMDB
 ```
 
-### <a name="recover-mabs-database"></a>Återställ MABS-databas
+### <a name="recover-mabs-database"></a>Återställa MABS-databas
 
-För att rekonstruera MABS med samma databas måste du först återställa MABS-databasen och synkronisera den med den nyligen installerade MABS.
+För att rekonstruera din MABS med samma databas måste du först återställa MABS-databasen och synkronisera den med den nyligen installerade MABS.
 
 #### <a name="use-the-following-steps"></a>Använd följande steg
 
-1. Öppna en administrativ kommando tolk och kör `psexec.exe -s powershell.exe` för att starta ett PowerShell-fönster i system kontexten.
-2. Bestäm var du vill återställa databasen:
+1. Öppna en administrativ kommandotolk och kör `psexec.exe -s powershell.exe` för att starta ett PowerShell-fönster i systemkontexten.
+2. Bestäm platsen där du vill återställa databasen:
 
-#### <a name="to-copy-the-database-from-the-last-backup"></a>Kopiera databasen från den senaste säkerhets kopian
+#### <a name="to-copy-the-database-from-the-last-backup"></a>Kopiera databasen från den senaste säkerhetskopian
 
-1. Navigera till VHD-sökväg för replikering `\<MABSServer FQDN\>\<PhysicalReplicaId\>\<PhysicalReplicaId\>`
-2. Montera **disk0. vhdx** som finns i den med hjälp av `mount-vhd disk0.vhdx` kommandot.
-3. När den virtuella replik hård disken är monterad använder `mountvol.exe` du för att tilldela replik volymen en enhets beteckning med hjälp av det fysiska replik-ID: t från SQL-skriptet. Exempelvis: `mountvol X: \?\Volume{}\`
+1. Navigera till vhd-repliksökvägen `\<MABSServer FQDN\>\<PhysicalReplicaId\>\<PhysicalReplicaId\>`
+2. Montera **disk0.vhdx som** finns i den med hjälp av `mount-vhd disk0.vhdx` kommandot .
+3. När replikens virtuella hårddisk har monterats använder du för att tilldela replikvolymen en enhetsbeteckning med hjälp av det fysiska `mountvol.exe` replik-ID:t från SQL-skriptets utdata. Exempelvis: `mountvol X: \?\Volume{}\`
 
-#### <a name="to-copy-the-database-from-a-previous-recovery-point"></a>Kopiera databasen från en tidigare återställnings punkt
+#### <a name="to-copy-the-database-from-a-previous-recovery-point"></a>Kopiera databasen från en tidigare återställningspunkt
 
-1. Navigera till behållar katalogen DPMDB  `\<MABSServer FQDN\>\<PhysicalReplicaId\>` . Du ser flera kataloger med vissa unika GUID-identifierare under motsvarande återställnings punkter för MABS-databasen. Andra kataloger representerar en depå/återställnings punkt.
-2. Navigera till valfri depå-VHD-sökväg, till exempel `\<MABSServer FQDN\>\<PhysicalReplicaId\>\<PITId\>` och montera **disk0. vhdx** som finns i den med hjälp av `mount-vhd disk0.vhdx` kommandot.
-3. När den virtuella repliken är monterad använder `mountvol.exe` du för att tilldela replik volymen en enhets beteckning med hjälp av det fysiska replik-ID: t från SQL-skriptet. Exempelvis: `mountvol X: \?\Volume{}\`
+1. Gå till DPMDB-containerkatalogen  `\<MABSServer FQDN\>\<PhysicalReplicaId\>` . Du ser flera kataloger med några unika GUID-identifierare under motsvarande återställningspunkter som tagits för MABS DB. Andra kataloger representerar en PIT/återställningspunkt.
+2. Gå till valfri VHD-sökväg för PIT, till exempel `\<MABSServer FQDN\>\<PhysicalReplicaId\>\<PITId\>` och montera **disk0.vhdx** som finns i den med hjälp av `mount-vhd disk0.vhdx` kommandot .
+3. När replikens virtuella hårddisk har monterats använder du för att tilldela replikvolymen en enhetsbeteckning med hjälp av det fysiska `mountvol.exe` replik-ID:t från SQL-skriptets utdata. Exempelvis: `mountvol X: \?\Volume{}\`
 
-   Alla termer som visas med vinkel paren tes i stegen ovan är placera innehavarna. Ersätt dem med lämpliga värden på följande sätt:
-   - **ReFSVolume** – åtkomst Sök väg från SQL-skriptets utdata
-   - **MABSSERVER FQDN** – fullständigt kvalificerat namn för Mabs-servern
-   - **PhysicalReplicaId** -fysisk replik-ID från SQL-skriptet ut
-   - **PITId** -GUID annat än det fysiska replik-ID: t i behållar katalogen.
-4. Öppna en annan administrativ kommando tolk och kör `psexec.exe -s cmd.exe` för att starta en kommando tolk i system kontexten.
-5. Ändra katalogen till X:-enheten och navigera till platsen för MABS.
-6. Kopiera dem till en plats som är lätt att återställa från. Avsluta PsExec cmd-fönstret när du har kopierat.
-7. Gå till PsExec PowerShell-fönstret som du öppnade i steg 1, navigera till VHDX-sökvägen och demontera VHDX med hjälp av kommandot `dismount-vhd disk0.vhdx` .
-8. När du har installerat om MABS-servern kan du använda den återställda DPMDB för att ansluta till MABS-servern genom att köra `DPMSYNC-RESTOREDB` kommandot.
-9. Kör `DPMSYNC-SYNC` en gång `DPMSYNC-RESTOREDB` har slutförts.
+   Alla termer som visas med angularparenteser i ovanstående steg är platshållare. Ersätt dem med lämpliga värden enligt följande:
+   - **ReFSVolume –** Åtkomstsökväg från SQL-skriptutdata
+   - **MABSServer FQDN** – fullständigt kvalificerat namn på MABS-servern
+   - **PhysicalReplicaId** – fysiskt replik-ID från SQL-skriptet ut
+   - **PITId –** GUID-identifierare förutom det fysiska replik-ID:t i containerkatalogen.
+4. Öppna en annan administrativ kommandotolk och kör `psexec.exe -s cmd.exe` för att starta en kommandotolk i systemkontexten.
+5. Ändra katalogen till enheten X: och navigera till platsen för MABS-databasfilerna.
+6. Kopiera dem till en plats som är lätt att återställa från. Avsluta fönstret psexec cmd när du har kopierat.
+7. Gå till det psexec PowerShell-fönster som öppnades i steg 1, navigera till VHDX-sökvägen och demontera VHDX med hjälp av kommandot `dismount-vhd disk0.vhdx` .
+8. När du har installerat om MABS-servern kan du använda den återställda DPMDB:en för att ansluta till MABS-servern genom att köra `DPMSYNC-RESTOREDB` kommandot .
+9. Kör `DPMSYNC-SYNC` en gång är `DPMSYNC-RESTOREDB` klart.
 
-### <a name="back-up-the-database-by-backing-up-the-mabs-storage-pool"></a>Säkerhetskopiera databasen genom att säkerhetskopiera MABS-lagringspoolen
+### <a name="back-up-the-database-by-backing-up-the-mabs-storage-pool"></a>Back up the database by backing up the MABS storage pool
 
 > [!NOTE]
-> Det här alternativet gäller för MABS med äldre lagrings enheter.
+> Det här alternativet gäller för MABS med äldre lagring.
 
-Innan du börjar måste du köra ett skript för att hämta sökvägen till monterings punkten för MABS-repliken så att du vet vilken återställnings punkt som innehåller säkerhets kopian av MABS. Gör detta efter den första replikeringen med Azure Backup. I skriptet ersätter du `dplsqlservername%` med namnet på SQL Server-instansen som är värd för Mabs-databasen.
+Innan du börjar måste du köra ett skript för att hämta sökvägen till mabs-replikvolymens monteringspunkt så att du vet vilken återställningspunkt som innehåller MABS-säkerhetskopian. Gör detta efter den första replikeringen med Azure Backup. I skriptet ersätter du `dplsqlservername%` med namnet på den SQL Server som är värd för MABS-databasen.
 
 ```SQL
 Select ag.NetbiosName as ServerName,ds.DataSourceName,vol.MountPointPath
@@ -154,59 +154,59 @@ where ds.datasourcename like '%dpmdb%'
 and servername like '%dpmsqlservername%' --netbios name of server hosting DPMDB
 ```
 
-1. I Mabs-konsolen väljer du **skydd**  >  **skapa skydds grupp**.
+1. I MABS-konsolen väljer du **Skydd**  >  **Skapa skyddsgrupp.**
 
 2. Välj **Servrar** på sidan **Välj typ av skyddsgrupp**.
 
-3. På sidan **Välj grupp medlemmar** väljer du Mabs-databasen. Expandera MABS-serverobjektet och välj **DPMDB**.
+3. På sidan **Välj gruppmedlemmar** väljer du MABS-databasen. Expandera MABS-serverobjektet och välj **DPMDB.**
 
-4. På sidan  **Välj data skydds metod** väljer **du jag vill ha kortvarigt skydd med disk**. Ange alternativ för den kortsiktiga skyddsprincipen. Vi rekommenderar ett kvarhållningsintervall på två veckor för MABS-databaser.
+4. På sidan  **Välj dataskyddsmetod väljer** du **Jag vill ha kortvarigt skydd med disk**. Ange alternativ för den kortsiktiga skyddsprincipen. Vi rekommenderar ett kvarhållningsintervall på två veckor för MABS-databaser.
 
 #### <a name="recover-the-database"></a>Återställa databasen
 
-Om MABS-servern fortfarande fungerar och lagringspoolen är intakt (till exempel problem med MABS-tjänsten eller konsolen) kopierar du databasen från replik volymen eller en skugg kopia enligt följande:
+Om MABS-servern fortfarande fungerar och lagringspoolen är intakt (till exempel problem med MABS-tjänsten eller -konsolen) kopierar du databasen från replikvolymen eller en skuggkopia på följande sätt:
 
 1. Välj från vilken tidpunkt du vill återställa databasen.
 
-    - Om du vill kopiera databasen från den senaste säkerhets kopian som tagits direkt från MABS replik volym använder du **mountvol.exe** för att tilldela replik volymen en enhets beteckning med hjälp av det GUID som SQL-skriptet returnerade. Exempelvis: `C:\Mountvol X: \\?\Volume{d7a4fd76\-a0a8\-11e2\-8fd3\-001c23cb7375}\`
+    - Om du vill kopiera databasen från den senaste säkerhetskopian som tagits direkt från MABS-replikvolymen använder du **mountvol.exe** för att tilldela replikvolymen en enhetsbeteckning med hjälp av GUID:t från SQL-skriptets utdata. Exempelvis: `C:\Mountvol X: \\?\Volume{d7a4fd76\-a0a8\-11e2\-8fd3\-001c23cb7375}\`
 
-    - Om du vill kopiera databasen från en tidigare återställnings punkt (skugg kopia) måste du lista alla skugg kopior för repliken med hjälp av volymens GUID från SQL-skriptet. Det här kommandot visar skugg kopior för volymen: `C:\>Vssadmin list shadows /for\=\\?\Volume{d7a4fd76-a0a8-11e2-8fd3-001c23cb7375}\` . Observera skapande tiden och skugg kopians ID som du vill återställa från.
+    - Om du vill kopiera databasen från en tidigare återställningspunkt (skuggkopia) måste du lista alla skuggkopior för repliken med hjälp av volymens GUID från SQL-skriptets utdata. Det här kommandot visar skuggkopior för volymen: `C:\>Vssadmin list shadows /for\=\\?\Volume{d7a4fd76-a0a8-11e2-8fd3-001c23cb7375}\` . Observera skapandetiden och skuggkopie-ID:t som du vill återställa från.
 
-2. Använd **diskshadow.exe** för att montera skugg kopian till en oanvänd enhets beteckning X: med hjälp av skugg kopians ID så att du kan kopiera databasfilerna.
+2. Använd sedan **diskshadow.exemontera** skuggkopian till enhetsbeteckningen X som inte används: med hjälp av skuggkopie-ID:t, så att du kan kopiera databasfilerna.
 
-3. Öppna en administrativ kommando tolk och kör `psexec.exe -s cmd.exe` för att starta en kommando tolk i system kontexten, så att du har behörighet att navigera till replik volymen (X:) och kopiera filerna.
+3. Öppna en administrativ kommandotolk och kör för att starta en kommandotolk i systemkontexten, så att du har behörighet att navigera till `psexec.exe -s cmd.exe` replikvolymen (X:) och kopiera filerna.
 
-4. CD till X:-enheten och navigera till platsen för MABS. Kopiera dem till en plats som är lätt att återställa från. När kopieringen är klar finns PsExec cmd-fönstret och kör **diskshadow.exe** och visar inte X:-volymen.
+4. CD till X:-enheten och navigera till platsen för MABS-databasfilerna. Kopiera dem till en plats som är lätt att återställa från. När kopieringen är klar finns fönstret psexec cmd och **kördiskshadow.exe** och ta bort X:-volymen.
 
-5. Nu kan du återställa databasfilerna med hjälp av SQL Management Studio eller genom att köra **DpmSync- \- restoredb**.
+5. Nu kan du återställa databasfilerna med hjälp av SQL Management Studio eller genom att **köra DPMSYNC \- RESTOREDB**.
 
 ## <a name="back-up-with-native-sql-server-backup-to-a-local-disk"></a>Säkerhetskopiera med intern SQL Server-säkerhetskopiering till en lokal disk
 
-Du kan säkerhetskopiera MABS-databasen till en lokal disk med inbyggd SQL Server säkerhets kopiering, oberoende av MABS.
+Du kan säkerhetskopiera MABS-databasen till en lokal disk med inbyggd SQL Server säkerhetskopiering, oberoende av MABS.
 
 - Hämta en [översikt](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) över SQL Server-säkerhetskopiering.
 
 - [Lär dig mer](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) om att säkerhetskopiera SQL Server till molnet.
 
-## <a name="back-up-to-a-share-protected-by-mabs"></a>Säkerhetskopiera till en resurs som skyddas av MABS
+## <a name="back-up-to-a-share-protected-by-mabs"></a>Tillbaka till en resurs som skyddas av MABS
 
-Det här säkerhets kopierings alternativet använder inbyggd SQL för att säkerhetskopiera MABS-databasen till en resurs, skyddar resursen med MABS och använder Windows VSS tidigare versioner för att under lätta återställningen.
+Det här säkerhetskopieringsalternativet använder intern SQL för att säkerhetskopiera MABS-databasen till en resurs, skydda resursen med MABS och använder Windows VSS tidigare versioner för att underlätta återställningen.
 
 ### <a name="before-you-start"></a>Innan du börjar
 
-1. På SQL Server, gör du en mapp på en enhet med tillräckligt mycket ledigt utrymme för att lagra en enda kopia av en säkerhets kopia. Exempel: `C:\MABSBACKUP`.
+1. På SQL Server en mapp på en enhet med tillräckligt med ledigt utrymme för att rymma en kopia av en säkerhetskopia. Exempel: `C:\MABSBACKUP`.
 
-1. Dela mappen. Dela till exempel `C:\MABSBACKUP` mappen som *DPMBackup*.
+1. Dela mappen. Du kan till exempel `C:\MABSBACKUP` dela mappen som *DPMBACKUP*.
 
-1. Kopiera och klistra in OSQL-kommandot nedan i anteckningar och spara det i en fil med namnet `C:\MABSACKUP\bkupdb.cmd` . Se till att det inte finns något. txt-tillägg. Ändra SQL_Instance_name och DPMDB_NAME för att matcha instans-och DPMDB-namnet som används av MABS-servern.
+1. Kopiera och klistra in OSQL-kommandot nedan i Anteckningar och spara det i en fil med namnet `C:\MABSACKUP\bkupdb.cmd` . Kontrollera att det inte finns något .txt-tillägg. Ändra SQL_Instance_name och DPMDB_NAME så att de matchar instansen och DPMDB-namnet som används av MABS-servern.
 
     ```SQL
     OSQL -E -S localhost\SQL_INSTANCE_NAME -Q "BACKUP DATABASE DPMDB_NAME TO DISK='C:\DPMBACKUP\dpmdb.bak' WITH FORMAT"
     ```
 
-1. Använd anteckningar och öppna filen **ScriptingConfig.xml** som finns under `C:\Program Files\Microsoft System Center\DPM\DPM\Scripting` mappen på Mabs-servern.
+1. Använd Anteckningar och öppna **ScriptingConfig.xml** filen som finns under mappen på `C:\Program Files\Microsoft System Center\DPM\DPM\Scripting` MABS-servern.
 
-1. Ändra **ScriptingConfig.xml** och ändra **DataSourceName =** till enhets beteckningen som innehåller mappen/resursen DPMDBBACKUP. Ändra posten PreBackupScript till den fullständiga sökvägen och namnet på **bkupdb. cmd** som sparades i steg 3.
+1. Ändra **ScriptingConfig.xml** **DataSourceName= till** enhetsbeteckningen som innehåller mappen/resursen DPMDBBACKUP. Ändra posten PreBackupScript till den fullständiga sökvägen och namnet på **bkupdb.cmd som** sparades i steg 3.
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -222,13 +222,13 @@ Det här säkerhets kopierings alternativet använder inbyggd SQL för att säke
 
 1. Spara ändringarna i **ScriptingConfig.xml**.
 
-1. Skydda mappen C:\MABSBACKUP eller `\sqlservername\MABSBACKUP` resursen med Mabs och vänta tills den första repliken har skapats. Det bör finnas en **DPMDB. bak** i mappen C:\MABSBACKUP som ett resultat av skriptet för säkerhets kopiering som körs, som i sin tur kopierades till Mabs-repliken.
+1. Skydda mappen C:\MABSBACKUP eller resursen med MABS och `\sqlservername\MABSBACKUP` vänta tills den första repliken har skapats. Det bör finnas en **dpmdb.bak** i mappen C:\MABSBACKUP som ett resultat av att försäkerhetskopieringsskriptet körs, som i sin tur kopierades till MABS-repliken.
 
-1. Om du inte aktiverar självbetjänings återställning behöver du några ytterligare steg för att dela mappen MABSBACKUP på repliken:
+1. Om du inte aktiverar självbetjäningsåterställning behöver du några ytterligare steg för att dela ut MABSBACKUP-mappen på repliken:
 
-    1. I MABS-konsolen > **skydd** letar du upp data källan MABSBACKUP och markerar den. I avsnittet information väljer **du klicka för att visa information** om länken till replik Sök vägen och kopierar sökvägen till anteckningar. Ta bort källsökvägen och behåll målsökvägen. Sökvägen bör se ut ungefär så här: `C:\Program Files\Microsoft System Center\DPM\DPM\Volumes\Replica\File System\vol_c9aea05f-31e6-45e5-880c-92ce5fba0a58\454d81a0-0d9d-4e07-9617-d49e3f2aa5de\Full\DPMBACKUP` .
+    1. I MABS-konsolen > **Protection** letar du upp MABSBACKUP-datakällan och väljer den. I informationsavsnittet väljer **du Klicka för att visa** information om länken till repliksökvägen och kopierar sökvägen till Anteckningar. Ta bort källsökvägen och behåll målsökvägen. Sökvägen bör se ut ungefär så här: `C:\Program Files\Microsoft System Center\DPM\DPM\Volumes\Replica\File System\vol_c9aea05f-31e6-45e5-880c-92ce5fba0a58\454d81a0-0d9d-4e07-9617-d49e3f2aa5de\Full\DPMBACKUP` .
 
-    2. Gör en resurs till den sökvägen med hjälp av resurs namnet **MABSSERVERNAME-DPMDB**. Du kan använda kommandot Net Share nedan från en administrativ kommandotolk.
+    2. Skapa en resurs till den sökvägen med resursnamnet **MABSSERVERNAME-DPMDB.** Du kan använda kommandot Net Share nedan från en administrativ kommandotolk.
 
         ```cmd
         Net Share MABSSERVERNAME-dpmdb="C:\Program Files\Microsoft System Center\DPM\DPM\Volumes\Replica\File System\vol_c9aea05f-31e6-45e5-880c-92ce5fba0a58\454d81a0-0d9d-4e07-9617-d49e3f2aa5de\Full\DPMBACKUP"
@@ -236,7 +236,7 @@ Det här säkerhets kopierings alternativet använder inbyggd SQL för att säke
 
 ### <a name="configure-the-backup"></a>Konfigurera säkerhetskopieringen
 
-Du kan säkerhetskopiera MABS-databasen på samma sätt som andra SQL Server-databaser med SQL Server inbyggd säkerhets kopiering.
+Du kan säkerhetskopiera MABS-databasen på samma sätt som andra SQL Server med hjälp SQL Server intern säkerhetskopiering.
 
 - Hämta en [översikt](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) över SQL Server-säkerhetskopiering.
 
@@ -244,11 +244,11 @@ Du kan säkerhetskopiera MABS-databasen på samma sätt som andra SQL Server-dat
 
 ### <a name="recover-the-mabs-database"></a>Återställa MABS-databasen
 
-1. Anslut till `\\MABSServer\MABSSERVERNAME-dpmdb` resursen med Utforskaren från valfri Windows-dator.
+1. Anslut till resursen `\\MABSServer\MABSSERVERNAME-dpmdb` med Utforskaren från valfri Windows-dator.
 
-2. Högerklicka på filen **DPMDB. bak** för att visa egenskaper. På fliken **Tidigare versioner** finns alla säkerhetskopior som du kan välja och kopiera. Det finns också den allra senaste säkerhets kopian som fortfarande finns i mappen C:\MABSBACKUP som också är lättillgänglig.
+2. Högerklicka på filen **dpmdb.bak för** att visa egenskaper. På fliken **Tidigare versioner** finns alla säkerhetskopior som du kan välja och kopiera. Det finns också den allra sista säkerhetskopian som fortfarande finns i mappen C:\MABSBACKUP som också är lättillgänglig.
 
-3. Om du behöver flytta en SAN-ansluten MABS till en annan server för att kunna läsa från replik volymen, eller om du vill installera om Windows för att läsa lokalt anslutna diskar, måste du känna till MABS replik volymens monterings punkt eller volym-GUID innan du vet vilken volym som innehåller säkerhets kopian av databasen. Du kan använda SQL-skriptet nedan för att ta fram denna information när som helst efter det inledande skyddet har genomförts, men innan du behöver göra en återställning. Ersätt `%dpmsqlservername%` med namnet på SQL Server som är värd för databasen.
+3. Om du behöver flytta en SAN-ansluten MABS-lagringspooldisk till en annan server för att kunna läsa från replikvolymen, eller installera om Windows för att läsa lokalt anslutna diskar, måste du känna till sökvägen till monteringspunkten för MABS-replikvolymen eller volym-GUID i förväg så att du vet vilken volym som innehåller databassäkerhetskopian. Du kan använda SQL-skriptet nedan för att ta fram denna information när som helst efter det inledande skyddet har genomförts, men innan du behöver göra en återställning. Ersätt `%dpmsqlservername%` med namnet på den SQL Server är värd för databasen.
 
     ```sql
     Select ag.NetbiosName as
@@ -264,66 +264,66 @@ Du kan säkerhetskopiera MABS-databasen på samma sätt som andra SQL Server-dat
 
     ```
 
-4. Om du behöver återställa efter att ha flyttat diskarna för MABS eller en MABS-Server återskapar du:
+4. Om du behöver återställa efter att ha flyttat MABS-lagringspooldiskarna eller återskapa en MABS-server:
 
-    1. Du har volymens GUID, så om volymen måste monteras på en annan Windows-Server eller efter att en MABS-Server återskapas använder du **mountvol.exe** för att tilldela den en enhets beteckning med hjälp av volymens GUID från SQL-skriptet: `C:\Mountvol X: \\?\Volume{d7a4fd76-a0a8-11e2-8fd3-001c23cb7375}\` .
+    1. Du har volymens GUID, så om volymen måste monteras på en annan Windows-server eller efter att en MABS-server har återskapats använder du **mountvol.exe** för att tilldela den en enhetsbeteckning med hjälp av volymens GUID från SQL-skriptets utdata: `C:\Mountvol X: \\?\Volume{d7a4fd76-a0a8-11e2-8fd3-001c23cb7375}\` .
 
-    2. Dela mappen MABSBACKUP på replik volymen med enhets beteckningen och den del av replik Sök vägen som representerar mappstrukturen.
+    2. Dela om MABSBACKUP-mappen på replikvolymen med enhetsbeteckningen och delen av repliksökvägen som representerar mappstrukturen.
 
         ```cmd
         net share SERVERNAME-DPMDB="X:\454d81a0-0d9d-4e07-9617-d49e3f2aa5de\Full\DPMBACKUP"
         ```
 
-    3. Anslut till `\\SERVERNAME\MABSSERVERNAME-dpmdb` resursen med Utforskaren från valfri Windows-dator.
+    3. Anslut till resursen `\\SERVERNAME\MABSSERVERNAME-dpmdb` med Utforskaren från valfri Windows-dator.
 
-    4. Högerklicka på filen **DPMDB. bak** för att visa egenskaperna. På fliken **Tidigare versioner** finns alla säkerhetskopior som du kan välja och kopiera.
+    4. Högerklicka på filen **dpmdb.bak** för att visa egenskaperna. På fliken **Tidigare versioner** finns alla säkerhetskopior som du kan välja och kopiera.
 
 ## <a name="using-dpmsync"></a>Använda DPMSync
 
-**DpmSync** är ett kommando rads verktyg som gör att du kan synkronisera Mabs-databasen med statusen för diskarna i lagringspoolen och med de installerade skydds agenterna. DpmSync återställer MABS-databasen, synkroniserar MABS-databasen med replikerna i lagringspoolen, återställer rapport databasen och allokerar om saknade repliker.
+**DpmSync** är ett kommandoradsverktyg som gör att du kan synkronisera MABS-databasen med tillståndet för diskarna i lagringspoolen och med de installerade skyddsagenterna. DpmSync återställer MABS-databasen, synkroniserar MABS-databasen med replikerna i lagringspoolen, återställer rapportdatabasen och omallokerar saknade repliker.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter      | Beskrivning    |
 |----------------|-----------------------------|
-| **– RestoreDb**                       | Återställer en MABS-databas från en angiven plats.|
-| **-Synkronisera**                            | Synkroniserar återställda databaser. Du måste köra **DpmSync – sync** när du har återställt databaserna. När du har kört **DpmSync – sync** kan vissa repliker fortfarande markeras som saknade. |
-| **– DbLoc-** *plats*                | Identifierar platsen för säkerhets kopieringen av MABS-databasen.|
+| **-RestoreDb**                       | Återställer en MABS-databas från en angiven plats.|
+| **-Sync**                            | Synkroniserar återställda databaser. Du måste köra **DpmSync – Sync när** du har återställt databaserna. När du har **kört DpmSync –Sync** kan vissa repliker fortfarande markeras som saknade. |
+| **-DbLoc-plats**                 | Identifierar platsen för säkerhetskopian av MABS-databasen.|
 | **-InstanceName** <br/>*server\instance*     | Instans som DPMDB måste återställas till.|
-| **– ReallocateReplica**         | Allokerar om alla replik volymer som saknas utan synkronisering. |
-| **– DataCopied**                      | Anger att du har slutfört inläsningen av data i de nyligen allokerade replik volymerna. Detta gäller endast för klient datorer. |
+| **-ReallocateReplica**         | Omallokerar alla saknade replikvolymer utan synkronisering. |
+| **-DataCopied**                      | Anger att du har slutfört inläsningen av data till de nyligen allokerade replikvolymerna. Detta gäller endast för klientdatorer. |
 
-**Exempel 1:** Om du vill återställa MABS-databasen från det lokala säkerhets kopierings mediet på MABS-servern kör du följande kommando:
+**Exempel 1:** Kör följande kommando för att återställa MABS-databasen från lokala säkerhetskopieringsmedia på MABS-servern:
 
 ```cmd
 DpmSync –RestoreDb -DbLoc G:\DPM\Backups\2005\November\DPMDB.bak
 ```
 
-När du har återställt MABS-databasen ska du köra följande kommando för att synkronisera databaserna:
+När du har återställt MABS-databasen kör du följande kommando för att synkronisera databaserna:
 
 ```cmd
 DpmSync -Sync
 ```
 
-När du har återställt och synkroniserat MABS-databasen och innan du återställer repliken kör du följande kommando för att allokera om disk utrymme för repliken:
+När du har återställt och synkroniserat MABS-databasen och innan du återställer repliken kör du följande kommando för att allokera om diskutrymmet för repliken:
 
 ```cmd
 DpmSync -ReallocateReplica
 ```
 
-**Exempel 2:** Om du vill återställa MABS-databasen från en fjärrdatabas kör du följande kommando på fjärrdatorn:
+**Exempel 2:** Kör följande kommando på fjärrdatorn för att återställa MABS-databasen från en fjärrdatabas:
 
 ```cmd
 DpmSync –RestoreDb -DbLoc G:\DPM\Backups\2005\November\DPMDB.bak –InstanceName contoso\ms$dpm
 ```
 
-När du har återställt MABS-databasen ska du köra följande kommando på MABS-servern för att synkronisera databaserna:
+När du har återställt MABS-databasen kör du följande kommando på MABS-servern för att synkronisera databaserna:
 
 ```cmd
 DpmSync -Sync
 ```
 
-När du har återställt och synkroniserat MABS-databasen och innan du återställer repliken kör du följande kommando på MABS-servern för att allokera om disk utrymme för repliken:
+När du har återställt och synkroniserat MABS-databasen och innan du återställer repliken kör du följande kommando på MABS-servern för att omallokera diskutrymmet för repliken:
 
 ```cmd
 DpmSync -ReallocateReplica
@@ -331,5 +331,5 @@ DpmSync -ReallocateReplica
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [MABS support mat ris](backup-support-matrix-mabs-dpm.md)
-- [VANLIGA FRÅGOR OCH SVAR OM MABS](backup-azure-dpm-azure-server-faq.md)
+- [MABS-stödmatris](backup-support-matrix-mabs-dpm.md)
+- [Vanliga frågor och svar om MABS](backup-azure-dpm-azure-server-faq.yml)

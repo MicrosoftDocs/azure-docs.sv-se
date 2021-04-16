@@ -1,25 +1,25 @@
 ---
-title: Inbyggda princip definitioner för Azure API för FHIR
-description: Visar Azure Policy inbyggda princip definitioner för Azure API för FHIR. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 03/31/2021
+title: Inbyggda principdefinitioner för Azure API for FHIR
+description: Visar Azure Policy inbyggda principdefinitioner för Azure API for FHIR. Dessa inbyggda principdefinitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
+ms.date: 04/14/2021
 author: matjazl
 ms.author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 9bb134ac64c47b7a814947f03f0b7e5b2fc475a8
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 292f4115c6e38dcad8cdc389010c53aba2d9292d
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106091567"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501560"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-api-for-fhir"></a>Azure Policy inbyggda definitioner för Azure API för FHIR
+# <a name="azure-policy-built-in-definitions-for-azure-api-for-fhir"></a>Azure Policy inbyggda definitioner för Azure API for FHIR
 
-Den här sidan är ett index över [Azure policy](../../governance/policy/overview.md) inbyggda princip definitioner för Azure API för FHIR. Ytterligare Azure Policy inbyggda program för andra tjänster finns i [Azure policy inbyggda definitioner](../../governance/policy/samples/built-in-policies.md).
+Den här sidan är ett index [Azure Policy](../../governance/policy/overview.md) inbyggda principdefinitioner för Azure API for FHIR. Mer information Azure Policy inbyggda program för andra tjänster finns [i Azure Policy inbyggda definitioner](../../governance/policy/samples/built-in-policies.md).
 
-Namnet på varje inbyggd princip definition länkar till princip definitionen i Azure Portal. Använd länken i kolumnen **version** om du vill visa källan på [Azure policy GitHub-lagrings platsen](https://github.com/Azure/azure-policy).
+Namnet på varje inbyggd principdefinition länkar till principdefinitionen i Azure Portal. Använd länken i kolumnen **Version för** att visa källan på Azure Policy [GitHub-lagringsplatsen](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-api-for-fhir"></a>Azure API för FHIR
 

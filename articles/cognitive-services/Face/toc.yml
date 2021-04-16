@@ -3,13 +3,13 @@
 - name: Översikt
   expanded: true
   items:
-    - name: Översikt över ansiktstjänsten
+    - name: Vad är ansiktstjänsten
       href: Overview.md
     - name: Priser
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: Nyheter
       href: releasenotes.md
-- name: Snabbstart för ansikts
+- name: Snabbstart
   href: Quickstarts/client-libraries.md
 - name: Exempel
   href: /samples/browse/?products=azure&term=face
@@ -45,6 +45,14 @@
           href: face-resource-container-config.md
         - name: Använda containerinstanser
           href: /azure/cognitive-services/containers/azure-container-instance-recipe?context=/azure/cognitive-services/face/context/context
+    - name: Företagsberedskap
+      items:
+        - name: Konfigurera virtuella nätverk
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/face/context/context
+        - name: Använda kund hanterade nycklar
+          href: encrypt-data-at-rest.md
+        - name: Använda Azure AD-autentisering
+          href: ../authentication.md?context=/azure/cognitive-services/face/context/context
 - name: Begrepp
   items:
     - name: Ansiktsspårning
@@ -75,15 +83,15 @@
       href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
 - name: Resurser
   items:
-    - name: Stöd för regioner
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Företagsberedskap
+      items:
+        - name: Stöd för regioner
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Efterlevnad och certifiering
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Learn-moduler
       href: 'https://docs.microsoft.com/learn/modules/detect-analyze-faces/'
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context
-    - name: Efterlevnad
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Kryptering
-      href: encrypt-data-at-rest.md
     - name: Azure-uppdateringar
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

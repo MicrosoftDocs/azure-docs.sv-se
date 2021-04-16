@@ -1,31 +1,31 @@
 ---
-title: Information om princip tilldelnings strukturen
-description: Beskriver den princip tilldelnings definition som används av Azure Policy för att relatera princip definitioner och parametrar till resurser för utvärdering.
-ms.date: 03/17/2021
+title: Information om principtilldelningsstrukturen
+description: Beskriver den principtilldelningsdefinition som används av Azure Policy för att relatera principdefinitioner och parametrar till resurser för utvärdering.
+ms.date: 04/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 909c1c361e092c512a73854a40e22a67efe5f2f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9de210b17264330e79ab5978a449e7a494054be2
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604873"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535866"
 ---
 # <a name="azure-policy-assignment-structure"></a>Tilldelningsstruktur i Azure Policy
 
-Princip tilldelningar används av Azure Policy för att definiera vilka resurser som tilldelas vilka principer eller initiativ. Princip tilldelningen kan fastställa värdena för parametrar för den grupp resurser vid tilldelnings tid, vilket gör det möjligt att återanvända princip definitioner som hanterar samma resurs egenskaper med olika behov av efterlevnad.
+Principtilldelningar används av Azure Policy för att definiera vilka resurser som tilldelas vilka principer eller initiativ. Principtilldelningen kan fastställa värdena för parametrar för den resursgruppen vid tilldelningen, vilket gör det möjligt att återanvända principdefinitioner som behandlar samma resursegenskaper med olika behov av efterlevnad.
 
-Du använder JSON för att skapa en princip tilldelning. Princip tilldelningen innehåller element för:
+Du använder JSON för att skapa en principtilldelning. Principtilldelningen innehåller element för:
 
 - visningsnamn
 - beskrivning
 - metadata
 - tvingande läge
-- undantagna omfattningar
-- princip definition
-- meddelanden som inte uppfyller kraven
+- exkluderade omfång
+- principdefinition
+- meddelanden om bristande efterlevnad
 - parametrar
 
-Följande JSON visar till exempel en princip tilldelning i _DoNotEnforce_ -läge med dynamiska parametrar:
+Följande JSON visar till exempel en principtilldelning i _DoNotEnforce-läge_ med dynamiska parametrar:
 
 ```json
 {
@@ -55,43 +55,67 @@ Följande JSON visar till exempel en princip tilldelning i _DoNotEnforce_ -läge
 }
 ```
 
-Alla Azure Policys exempel finns på [Azure policy exempel](../samples/index.md).
+Alla Azure Policy exempel finns på [Azure Policy exempel](../samples/index.md).
 
-## <a name="display-name-and-description"></a>Visnings namn och beskrivning
+## <a name="display-name-and-description"></a>Visningsnamn och beskrivning
 
-Du kan använda **DisplayName** och **Description** för att identifiera princip tilldelningen och tillhandahålla kontext för dess användning med en speciell uppsättning resurser. **DisplayName** får innehålla högst _128_ tecken och **beskrivningen** får bestå av högst _512_ tecken.
+Du använder **displayName** och **beskrivning** för att identifiera principtilldelningen och ange kontext för dess användning med den specifika uppsättningen resurser. **displayName** har en maximal längd på _128_ tecken **och en** beskrivning på högst _512_ tecken.
+
+## <a name="metadata"></a>Metadata
+
+Den `metadata` valfria egenskapen lagrar information om principtilldelningen. Kunder kan definiera egenskaper och värden som är användbara för organisationen i `metadata` . Det finns dock några vanliga _egenskaper_ som används av Azure Policy. Varje `metadata` egenskap har en gräns på 1 024 tecken.
+
+### <a name="common-metadata-properties"></a>Vanliga metadataegenskaper
+
+- `assignedBy` (sträng): Det egna namnet på säkerhetsobjekt som skapade tilldelningen.
+- `createdBy` (sträng): GUID för säkerhetsobjekt som skapade tilldelningen.
+- `createdOn` (sträng): Formatet Universal ISO 8601 DateTime för tiden då tilldelningen skapades.
+- `parameterScopes` (objekt): En samling nyckel/värde-par där nyckeln matchar ett [strongType-konfigurerat](./definition-structure.md#strongtype) parameternamn och värdet definierar det resursomfång som används i portalen för att tillhandahålla listan över tillgängliga resurser genom att matcha _strongType_. Portalen anger det här värdet om omfånget skiljer sig från tilldelningsomfånget. Om detta anges anger en redigering av principtilldelningen i portalen automatiskt omfånget för parametern till det här värdet. Omfånget är dock inte låst till värdet och kan ändras till ett annat omfång.
+
+  Följande exempel på är `parameterScopes` för en _strongType-parameter_ med namnet **backupPolicyId** som anger ett omfång för resursval när tilldelningen redigeras i portalen.
+
+  ```json
+  "metadata": {
+      "parameterScopes": {
+          "backupPolicyId": "/subscriptions/{SubscriptionID}/resourcegroups/{ResourceGroupName}"
+      }
+  }
+  ```
+
+- `updatedBy` (sträng): Det egna namnet på säkerhetsobjekt som uppdaterade tilldelningen, om det finns några.
+- `updatedOn` (sträng): Universal ISO 8601 DateTime-formatet för tilldelningens uppdateringstid, om det finns någon.
 
 ## <a name="enforcement-mode"></a>Tvingande läge
 
-Egenskapen **enforcementMode** ger kunderna möjlighet att testa resultatet av en princip på befintliga resurser utan att initiera princip påverkan eller utlösa poster i [Azure aktivitets loggen](../../../azure-monitor/essentials/platform-logs-overview.md). Det här scenariot kallas vanligt vis "What If" och anpassas till säkra distributions metoder. **enforcementMode** skiljer sig från den [inaktiverade](./effects.md#disabled) inställningen, eftersom den här inställningen förhindrar att resurs utvärderingen sker alls.
+Egenskapen **enforcementMode** ger kunderna möjlighet att testa resultatet av en princip på befintliga resurser utan att initiera principeffekten eller utlösa poster i [Azure-aktivitetsloggen](../../../azure-monitor/essentials/platform-logs-overview.md). Det här scenariot kallas ofta "What If" och överensstämmer med säkra distributionsmetoder. **enforcementMode** skiljer sig från den [inaktiverade](./effects.md#disabled) effekten eftersom den effekten förhindrar att resursutvärderingen görs alls.
 
 Den här egenskapen har följande värden:
 
-|Läge |JSON-värde |Typ |Åtgärda manuellt |Aktivitets logg post |Beskrivning |
+|Läge |JSON-värde |Typ |Åtgärda manuellt |Aktivitetsloggpost |Description |
 |-|-|-|-|-|-|
-|Enabled |Standardvärde |sträng |Ja |Ja |Princip påverkan tillämpas när en resurs skapas eller uppdateras. |
-|Inaktiverad |DoNotEnforce |sträng |Ja |Inga | Princip påverkan tillämpas inte när en resurs skapas eller uppdateras. |
+|Enabled |Standardvärde |sträng |Ja |Ja |Principeffekten framtvingas när resursen skapas eller uppdateras. |
+|Inaktiverad |DoNotEnforce |sträng |Ja |Inga | Principeffekten tillämpas inte när resursen skapas eller uppdateras. |
 
-Om **enforcementMode** inte anges i en princip eller initiativ definition används värdet _default_ . [Reparations uppgifter](../how-to/remediate-resources.md) kan startas för [deployIfNotExists](./effects.md#deployifnotexists) -principer, även när **enforcementMode** har angetts till _DoNotEnforce_.
+Om **enforcementMode** inte anges i en princip- eller initiativdefinition används _värdet_ Default. [Reparationsåtgärder kan startas](../how-to/remediate-resources.md) för [deployIfNotExists-principer,](./effects.md#deployifnotexists) även om **enforcementMode** är inställt på _DoNotEnforce_.
 
-## <a name="excluded-scopes"></a>Undantagna omfattningar
+## <a name="excluded-scopes"></a>Exkluderade omfång
 
-Tilldelningens **omfattning** inkluderar alla underordnade resurs behållare och underordnade resurser. Om en underordnad resurs behållare eller underordnad resurs inte ska ha definitionen tillämpad, kan var och en _uteslutas_ från utvärderingen genom att ställa in **notScopes**. Den här egenskapen är en matris som aktiverar undantag för en eller flera resurs behållare eller resurser från utvärderingen. **notScopes** kan läggas till eller uppdateras när den inledande tilldelningen har skapats.
+**Tilldelningsomfånget** omfattar alla underordnade resurscontainrar och underordnade resurser. Om en underordnad resurscontainer eller underordnad resurs inte  ska ha definitionen tillämpad kan var och en undantas från utvärderingen genom att ange **notScopes**. Den här egenskapen är en matris som gör det möjligt att exkludera en eller flera resurscontainrar eller resurser från utvärderingen. **notScopes** kan läggas till eller uppdateras när den första tilldelningen har skapats.
 
 > [!NOTE]
-> En _undantagen_ resurs skiljer sig från en _undantagen_ resurs. Mer information finns i [förstå omfattning i Azure policy](./scope.md).
+> En _undantagen_ resurs skiljer sig från en _undantagen_ resurs. Mer information finns i Förstå [omfånget i Azure Policy](./scope.md).
 
-## <a name="policy-definition-id"></a>ID för princip definition
+## <a name="policy-definition-id"></a>Principdefinitions-ID
 
-Det här fältet måste vara det fullständiga Sök vägs namnet för antingen en princip definition eller en initiativ definition.
-`policyDefinitionId` är en sträng och inte en matris. Vi rekommenderar att om flera principer ofta tilldelas tillsammans, så att du kan använda ett [initiativ](./initiative-definition-structure.md) i stället.
+Det här fältet måste vara det fullständiga sökvägsnamnet för antingen en principdefinition eller en initiativdefinition.
+`policyDefinitionId` är en sträng och inte en matris. Vi rekommenderar att du använder ett initiativ i stället om flera principer ofta [tilldelas](./initiative-definition-structure.md) tillsammans.
 
-## <a name="non-compliance-messages"></a>Meddelanden som inte uppfyller kraven
+## <a name="non-compliance-messages"></a>Meddelanden om bristande efterlevnad
 
-Ange ett anpassat meddelande som beskriver varför en resurs inte är kompatibel med principen eller initiativ definitionen, som anges `nonComplianceMessages` i tilldelnings definitionen. Den här noden är en matris med `message` poster. Det anpassade meddelandet är förutom standard fel meddelandet för inkompatibilitet och är valfritt.
+Om du vill ange ett anpassat meddelande som beskriver varför en resurs inte är kompatibel med princip- eller initiativdefinitionen anger `nonComplianceMessages` du i tilldelningsdefinitionen. Den här noden är en matris `message` med poster. Det här anpassade meddelandet är utöver standardfelmeddelandet vid in kompatibilitet och är valfritt.
 
 > [!IMPORTANT]
-> Anpassade meddelanden för icke-efterlevnad stöds endast för definitioner eller initiativ med definitioner för [resurs hanterings lägen](./definition-structure.md#resource-manager-modes) .
+> Anpassade meddelanden för icke-kompatibilitet stöds endast för definitioner eller initiativ med Resource Manager [definitionslägen.](./definition-structure.md#resource-manager-modes)
 
 ```json
 "nonComplianceMessages": [
@@ -101,7 +125,7 @@ Ange ett anpassat meddelande som beskriver varför en resurs inte är kompatibel
 ]
 ```
 
-Om tilldelningen är för ett initiativ kan olika meddelanden konfigureras för varje princip definition i initiativet. Meddelandena använder det `policyDefinitionReferenceId` värde som kon figurer ATS i initiativ definitionen. Mer information finns i [Egenskaper för princip definitioner](./initiative-definition-structure.md#policy-definition-properties).
+Om tilldelningen är för ett initiativ kan olika meddelanden konfigureras för varje principdefinition i initiativet. Meddelandena använder det `policyDefinitionReferenceId` värde som konfigureras i initiativdefinitionen. Mer information finns i egenskaper [för principdefinitioner.](./initiative-definition-structure.md#policy-definition-properties)
 
 ```json
 "nonComplianceMessages": [
@@ -117,7 +141,7 @@ Om tilldelningen är för ett initiativ kan olika meddelanden konfigureras för 
 
 ## <a name="parameters"></a>Parametrar
 
-Det här segmentet i princip tilldelningen innehåller värdena för de parametrar som definierats i [princip definitionen eller initiativ definitionen](./definition-structure.md#parameters). Den här designen gör det möjligt att återanvända en princip eller initiativ definition med olika resurser, men kontrol lera om det finns olika affärs värden eller resultat.
+Det här segmentet av principtilldelningen tillhandahåller värdena för de parametrar som definieras i [principdefinitionen eller initiativdefinitionen](./definition-structure.md#parameters). Den här designen gör det möjligt att återanvända en princip- eller initiativdefinition med olika resurser, men söka efter olika affärsvärden eller affärsresultat.
 
 ```json
 "parameters": {
@@ -130,12 +154,12 @@ Det här segmentet i princip tilldelningen innehåller värdena för de parametr
 }
 ```
 
-I det här exemplet är parametrarna som tidigare definierats i princip definitionen `prefix` och `suffix` . Den här princip tilldelningen anger `prefix` till **Avda** och `suffix` till **-LC**. Samma princip definition kan återanvändas med en annan uppsättning parametrar för en annan avdelning, vilket minskar dupliceringen och komplexiteten i princip definitioner samtidigt som den ger flexibilitet.
+I det här exemplet är de parametrar som tidigare definierats i principdefinitionen `prefix` och `suffix` . Den här specifika principtilldelningen `prefix` är **DeptA** `suffix` och **-LC.** Samma principdefinition kan återanvändas med en annan uppsättning parametrar för en annan avdelning, vilket minskar dupliceringen och komplexiteten för principdefinitioner samtidigt som den ger flexibilitet.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om [princip definitions strukturen](./definition-structure.md).
-- Lär dig att [program mässigt skapa principer](../how-to/programmatically-create.md).
-- Lär dig hur du [hämtar efterlevnadsprinciper](../how-to/get-compliance-data.md).
-- Lär dig hur du [åtgärdar icke-kompatibla resurser](../how-to/remediate-resources.md).
-- Granska en hanterings grupp med [organisera dina resurser med Azures hanterings grupper](../../management-groups/overview.md).
+- Lär dig mer om [principdefinitionsstrukturen](./definition-structure.md).
+- Förstå hur du [programmässigt skapar principer.](../how-to/programmatically-create.md)
+- Lär dig hur du [hämtar efterlevnadsdata.](../how-to/get-compliance-data.md)
+- Lär dig hur [du åtgärdar icke-kompatibla resurser](../how-to/remediate-resources.md).
+- Granska vad en hanteringsgrupp är med [Organisera dina resurser med Azure-hanteringsgrupper.](../../management-groups/overview.md)

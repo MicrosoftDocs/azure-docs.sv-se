@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/07/2021
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: 559ace3e9cb9f6daeb6dc3da581bb99d3ff9145e
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.custom: devx-track-dotnet, devx-track-azurecli
+ms.openlocfilehash: 495191dfcdfd7a4d318bef508878e951d88b3ae6
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365169"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483902"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-preview-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Snabbstart: Skapa en konsolapp med .NET V4 SDK (förhandsversion) för att hantera Azure Cosmos DB SQL API-kontoresurser.
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -36,7 +36,7 @@ Kom igång med Azure Cosmos DB SQL API-klientbiblioteket för .NET. Följ stegen
 > Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
 > Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure Cosmos DB är Microsofts snabba NoSQL-databas med öppna API:er för alla skalor. Du kan använda Azure Cosmos DB för att snabbt skapa och fråga efter nyckel/värde-, dokument- och grafdatabaser. Använd Azure Cosmos DB SQL API-klientbiblioteket för .NET för att:
+Azure Cosmos DB är Microsoftâ™ snabb NoSQL-databas med öppna API:er för alla skalor. Du kan använda Azure Cosmos DB för att snabbt skapa och fråga efter nyckel/värde-, dokument- och grafdatabaser. Använd Azure Cosmos DB SQL API-klientbiblioteket för .NET för att:
 
 * Skapa en Azure Cosmos-databas och en container
 * Lägga till exempeldata i containern
@@ -52,15 +52,15 @@ Azure Cosmos DB är Microsofts snabba NoSQL-databas med öppna API:er för alla 
 
 ## <a name="setting-up"></a>Inrätta
 
-Det här avsnittet vägled dig genom att skapa ett Azure Cosmos-konto och konfigurera ett projekt som använder Azure Cosmos DB SQL API-klientbibliotek för .NET för att hantera resurser. Exempelkoden som beskrivs i den här artikeln skapar `FamilyDatabase` en databas och familjemedlemmar (varje medlem i familjen är ett objekt) i databasen. Varje medlem i familjen har egenskaper som `Id, FamilyName, FirstName, LastName, Parents, Children, Address,` . Egenskapen `LastName` används som partitionsnyckel för containern. 
+Det här avsnittet vägled dig genom att skapa ett Azure Cosmos-konto och konfigurera ett projekt som använder Azure Cosmos DB SQL API-klientbibliotek för .NET för att hantera resurser. Exempelkoden som beskrivs i den här artikeln skapar `FamilyDatabase` en databas och familj (varje medlem i familjen är ett objekt) i databasen. Varje medlem i familjen har egenskaper som `Id, FamilyName, FirstName, LastName, Parents, Children, Address,` . Egenskapen `LastName` används som partitionsnyckel för containern. 
 
 ### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a>Skapa ett Azure Cosmos-konto
 
-Om du använder alternativet [Prova Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) kostnadsfritt för att skapa ett Azure Cosmos-konto måste du skapa ett Azure Cosmos DB-konto av typen **SQL API.** Ett Azure Cosmos DB testkonto har redan skapats åt dig. Du behöver inte skapa kontot uttryckligen, så du kan hoppa över det här avsnittet och gå vidare till nästa avsnitt.
+Om du använder alternativet [Prova Azure Cosmos DB kostnadsfritt](https://azure.microsoft.com/try/cosmosdb/) för att skapa ett Azure Cosmos-konto måste du skapa ett Azure Cosmos DB-konto av typen SQL **API.** Ett Azure Cosmos DB testkonto har redan skapats åt dig. Du behöver inte skapa kontot uttryckligen, så du kan hoppa över det här avsnittet och gå vidare till nästa avsnitt.
 
 Om du har en egen Azure-prenumeration eller om du har skapat en prenumeration kostnadsfritt bör du uttryckligen skapa ett Azure Cosmos-konto. Följande kod skapar ett Azure Cosmos-konto med sessionskonsekvens. Kontot replikeras i `South Central US` och `North Central US` .  
 
-Du kan använda Azure Cloud Shell för att skapa Azure Cosmos-kontot. Azure Cloud Shell är ett interaktivt, autentiserat skal för hantering av Azure-resurser via webbläsare. Den ger dig flexibilitet att välja den gränssnittsmiljö som passar bäst för ditt sätt att arbeta, antingen Bash eller PowerShell. För den här snabbstarten väljer du **Bash-läge.** Azure Cloud Shell kräver ett lagringskonto kan du skapa ett när du uppmanas att göra det.
+Du kan använda Azure Cloud Shell för att skapa Azure Cosmos-kontot. Azure Cloud Shell är ett interaktivt, autentiserat skal för hantering av Azure-resurser via webbläsare. Den ger dig flexibilitet att välja den gränssnittsmiljö som passar bäst för ditt sätt att arbeta, antingen Bash eller PowerShell. För den här snabbstarten väljer du **Bash-läge.** Azure Cloud Shell kräver ett lagringskonto kan du skapa ett när du uppmanas till det.
 
 Välj knappen **Prova bredvid** följande kod, välj **Bash-läge,** välj Skapa ett **lagringskonto** och logga in på Cloud Shell. Kopiera och klistra in följande kod för att Azure Cloud Shell och köra den. Azure Cosmos-kontonamnet måste vara globalt unikt. Se till att uppdatera `mysqlapicosmosdb` värdet innan du kör kommandot.
 
@@ -89,17 +89,17 @@ az cosmosdb create \
 
 ```
 
-Det tar en stund att skapa Azure Cosmos-kontot. När åtgärden har lyckats kan du se bekräftelseutdata. När kommandot har slutförts loggar du in på [Azure Portal](https://portal.azure.com/) och kontrollerar att Azure Cosmos-kontot med det angivna namnet finns. Du kan stänga Azure Cloud Shell-fönstret när resursen har skapats. 
+Det tar en stund att skapa Azure Cosmos-kontot. När åtgärden har lyckats visas bekräftelseutdata. När kommandot har slutförts loggar du in på [Azure Portal](https://portal.azure.com/) och kontrollerar att Azure Cosmos-kontot med det angivna namnet finns. Du kan stänga Azure Cloud Shell när resursen har skapats. 
 
 ### <a name="create-a-new-net-app"></a><a id="create-dotnet-core-app"></a>Skapa en ny .NET-app
 
-Skapa ett nytt .NET-program i önskad redigerare eller IDE. Öppna Kommandotolken i Windows eller ett terminalfönster från den lokala datorn. Du kommer att köra alla kommandon i nästa avsnitt från kommandotolken eller terminalen.  Kör följande nya dotnet-kommando för att skapa en ny app med namnet `todo` . Parametern --langVersion anger egenskapen LangVersion i den skapade projektfilen.
+Skapa ett nytt .NET-program i önskat redigeringsprogram eller IDE. Öppna Kommandotolken i Windows eller ett terminalfönster från den lokala datorn. Du kommer att köra alla kommandon i nästa avsnitt från kommandotolken eller terminalen.  Kör följande nya dotnet-kommando för att skapa en ny app med namnet `todo` . Parametern --langVersion anger egenskapen LangVersion i den skapade projektfilen.
 
    ```bash
-   dotnet new console –langVersion:8 -n todo
+   dotnet new console â€“langVersion:8 -n todo
    ```
 
-Ändra din katalog till den nyligen skapade appmappen. Du kan skapa programmet med:
+Ändra katalogen till den nyligen skapade appmappen. Du kan skapa programmet med:
 
    ```bash
    cd todo
@@ -139,18 +139,18 @@ Exempelprogrammet måste autentisera till ditt Azure Cosmos-konto. För att aute
 
 ## <a name="object-model"></a><a id="object-model"></a>Objektmodell
 
-Innan du börjar skapa programmet ska vi titta på hierarkin med resurser i Azure Cosmos DB och objektmodellen som används för att skapa och komma åt dessa resurser. Den Azure Cosmos DB skapar resurser i följande ordning:
+Innan du börjar skapa programmet ska vi titta på hierarkin för resurser i Azure Cosmos DB och objektmodellen som används för att skapa och komma åt dessa resurser. Den Azure Cosmos DB skapar resurser i följande ordning:
 
 * Azure Cosmos-konto 
 * Databaser 
 * Containers 
 * Poster
 
-Mer information om hierarkin för olika entiteter finns i artikeln arbeta med [databaser,](account-databases-containers-items.md) containrar och objekt i Azure Cosmos DB entiteter. Du kommer att använda följande .NET-klasser för att interagera med dessa resurser:
+Mer information om hierarkin för olika entiteter finns i artikeln Arbeta med [databaser,](account-databases-containers-items.md) containrar och objekt Azure Cosmos DB entiteter. Du kommer att använda följande .NET-klasser för att interagera med dessa resurser:
 
 * CosmosClient – den här klassen tillhandahåller en logisk representation på klientsidan för Azure Cosmos DB tjänsten. Klientobjektet används för att konfigurera och köra begäranden mot tjänsten.
-* CreateDatabaseIfNotExistsAsync – Den här metoden skapar (om den inte finns) eller hämtar (om det redan finns) en databasresurs som en asynkron åtgärd. 
-* CreateContainerIfNotExistsAsync – Den här metoden skapar (om den inte finns) eller hämtar (om den redan finns) en container som en asynkron åtgärd. Du kan kontrollera statuskoden från svaret för att avgöra om containern skapades nyligen (201) eller om en befintlig container returnerades (200). 
+* CreateDatabaseIfNotExistsAsync – Den här metoden skapar (om det inte finns) eller hämtar (om det redan finns) en databasresurs som en asynkron åtgärd. 
+* CreateContainerIfNotExistsAsync – Den här metoden skapar (om den inte finns) eller hämtar (om den redan finns) en container som en asynkron åtgärd. Du kan kontrollera statuskoden från svaret för att avgöra om containern nyligen skapades (201) eller om en befintlig container returnerades (200). 
 * CreateItemAsync – Den här metoden skapar ett objekt i containern.
 * UpsertItemAsync – Den här metoden skapar ett objekt i containern om det inte redan finns eller ersätter objektet om det redan finns. 
 * GetItemQueryIterator – Den här metoden skapar en fråga för objekt under en container i en Azure Cosmos-databas med hjälp av en SQL-instruktion med parametriserade värden. 
@@ -158,13 +158,13 @@ Mer information om hierarkin för olika entiteter finns i artikeln arbeta med [d
 
  ## <a name="code-examples"></a><a id="code-examples"></a>Kodexempel
 
-Exempelkoden som beskrivs i den här artikeln skapar en familjedatabas i Azure Cosmos DB. Familjedatabasen innehåller familjeinformation som namn, adress, plats, associerade föräldrar, barn och husdjur. Innan du fyller i data till ditt Azure Cosmos-konto definierar du egenskaperna för ett familjeobjekt. Skapa en ny klass med `Family.cs` namnet på rotnivån för exempelprogrammet och lägg till följande kod i den:
+Exempelkoden som beskrivs i den här artikeln skapar en familjedatabas i Azure Cosmos DB. Familjedatabasen innehåller familjeinformation som namn, adress, plats, associerade föräldrar, barn och husdjur. Definiera egenskaperna för ett familjeobjekt innan du fyller i data till ditt Azure Cosmos-konto. Skapa en ny klass med `Family.cs` namnet på rotnivån för exempelprogrammet och lägg till följande kod i den:
 
 [!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Family.cs)]
 
-### <a name="add-the-using-directives--define-the-client-object"></a>Lägg till using-direktiv & definiera klientobjektet
+### <a name="add-the-using-directives--define-the-client-object"></a>Lägg till using-& definiera klientobjektet
 
-Öppna filen i redigeringsprogrammet `Program.cs` från projektkatalogen och lägg till följande using-direktiv överst i programmet:
+Från projektkatalogen öppnar du `Program.cs` filen i redigeringsprogrammet och lägger till följande using-direktiv överst i programmet:
 
 [!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=Usings)]
 
@@ -197,7 +197,7 @@ Skapa ett familjeobjekt genom att lägga `AddItemsToContainerAsync` till metoden
 
 ### <a name="query-the-items"></a>Fråga objekten
 
-När du har infogat ett objekt kan du köra en fråga för att få information om familjen "Andersen". Följande kod visar hur du kör frågan direkt med SQL-frågan. SQL-frågan för att hämta information om "Anderson"-familjen är: `SELECT * FROM c WHERE c.LastName = 'Andersen'` . Definiera `QueryItemsAsync` metoden i klassen `Program` och lägg till följande kod i den:
+När du har infogat ett objekt kan du köra en fråga för att få information om "Andersen"-familjen. Följande kod visar hur du kör frågan direkt med SQL-frågan. SQL-frågan för att hämta information om "Anderson"-familjen är: `SELECT * FROM c WHERE c.LastName = 'Andersen'` . Definiera metoden `QueryItemsAsync` i klassen och lägg till följande kod i `Program` den:
 
 [!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=QueryItemsAsync)]
 

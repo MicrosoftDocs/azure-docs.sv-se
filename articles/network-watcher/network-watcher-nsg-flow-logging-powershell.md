@@ -1,7 +1,7 @@
 ---
-title: Hantera NSG Flow-loggar – Azure PowerShell
+title: Hantera NSG-flödesloggar – Azure PowerShell
 titleSuffix: Azure Network Watcher
-description: På den här sidan förklaras hur du hanterar flödes loggar för nätverks säkerhets grupper i Azure Network Watcher med PowerShell
+description: Den här sidan förklarar hur du hanterar flödesloggar för nätverkssäkerhetsgrupp i Azure Network Watcher med PowerShell
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 771b4ce2999357d729c3ffe557b778cf62a5c0f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29340852cabcc77b7488f734a4677697b4a9b972
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98010990"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535220"
 ---
-# <a name="configuring-network-security-group-flow-logs-with-powershell"></a>Konfigurera flödes loggar för nätverks säkerhets grupper med PowerShell
+# <a name="configuring-network-security-group-flow-logs-with-powershell"></a>Konfigurera flödesloggar för nätverkssäkerhetsgrupp med PowerShell
 
 > [!div class="op_single_selector"]
 > - [Azure-portalen](network-watcher-nsg-flow-logging-portal.md)
@@ -27,19 +27,21 @@ ms.locfileid: "98010990"
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST-API](network-watcher-nsg-flow-logging-rest.md)
 
-Flödes loggar för nätverks säkerhets grupper är en funktion i Network Watcher som gör att du kan visa information om inkommande och utgående IP-trafik via en nätverks säkerhets grupp. Dessa flödes loggar skrivs i JSON-format och visar utgående och inkommande flöden per regel, vilket nätverkskort flödet gäller för, 5-tuple-information om flödet (käll-/mål-IP, käll-och mål Port, protokoll) och om trafiken tillåts eller nekas.
+Flödesloggar för nätverkssäkerhetsgrupp är en funktion i Network Watcher som gör att du kan visa information om in- och utgående IP-trafik via en nätverkssäkerhetsgrupp. Dessa flödesloggar skrivs i json-format och visar utgående och inkommande flöden per regel, det nätverkskort som flödet gäller för, 5-tuppelinformation om flödet (käll-/mål-IP, käll-/målport, protokoll) och om trafiken tilläts eller nekades.
+
+Den detaljerade specifikationen för alla kommandon för NSG-flödesloggar för olika versioner av AzPowerShell finns [här](https://docs.microsoft.com/powershell/module/az.network/#network-watcher)
 
 ## <a name="register-insights-provider"></a>Registrera Insights-providern
 
-För att flödes loggningen ska fungera korrekt måste **Microsoft. Insights** -providern vara registrerad. Om du inte är säker på om **Microsoft. Insights** -providern är registrerad kör du följande skript.
+För att flödesloggningen ska fungera korrekt måste **Providern Microsoft.Insights** vara registrerad. Om du inte är säker på om **Providern Microsoft.Insights** är registrerad kör du följande skript.
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 ```
 
-## <a name="enable-network-security-group-flow-logs-and-traffic-analytics"></a>Aktivera flödes loggar för nätverks säkerhets grupper och Trafikanalys
+## <a name="enable-network-security-group-flow-logs-and-traffic-analytics"></a>Aktivera flödesloggar och Trafikanalys
 
-Kommandot för att aktivera flödes loggar visas i följande exempel:
+Kommandot för att aktivera flödesloggar visas i följande exempel:
 
 ```powershell
 $NW = Get-AzNetworkWatcher -ResourceGroupName NetworkWatcherRg -Name NetworkWatcher_westcentralus
@@ -65,11 +67,11 @@ Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id 
 Get-AzNetworkWatcherFlowLogStatus -NetworkWatcher $NW -TargetResourceId $nsg.Id
 ```
 
-Det lagrings konto som du anger kan inte ha nätverks regler som har kon figurer ATS för att begränsa nätverks åtkomsten till enbart Microsoft-tjänster eller vissa virtuella nätverk. Lagrings kontot kan vara i samma eller en annan Azure-prenumeration än NSG som du aktiverar flödes loggen för. Om du använder olika prenumerationer måste båda vara kopplade till samma Azure Active Directory-klient. Det konto som du använder för varje prenumeration måste ha de [behörigheter som krävs](required-rbac-permissions.md).
+Det lagringskonto som du anger kan inte ha nätverksregler konfigurerade för det som begränsar nätverksåtkomsten till endast Microsoft-tjänster eller specifika virtuella nätverk. Lagringskontot kan finnas i samma eller en annan Azure-prenumeration än den NSG som du aktiverar flödesloggen för. Om du använder olika prenumerationer måste båda vara kopplade till samma Azure Active Directory klientorganisation. Det konto som du använder för varje prenumeration måste ha [de behörigheter som krävs.](required-rbac-permissions.md)
 
-## <a name="disable-traffic-analytics-and-network-security-group-flow-logs"></a>Inaktivera flödes loggar för Trafikanalys och nätverks säkerhets grupper
+## <a name="disable-traffic-analytics-and-network-security-group-flow-logs"></a>Inaktivera Trafikanalys och flödesloggar för nätverkssäkerhetsgrupp
 
-Använd följande exempel för att inaktivera trafik analyser och flödes loggar:
+Använd följande exempel för att inaktivera trafikanalys och flödesloggar:
 
 ```powershell
 #Disable Traffic Analaytics by removing -EnableTrafficAnalytics property
@@ -79,20 +81,20 @@ Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id 
 Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -StorageAccountId $storageAccount.Id -EnableFlowLog $false
 ```
 
-## <a name="download-a-flow-log"></a>Hämta en flödes logg
+## <a name="download-a-flow-log"></a>Ladda ned en flödeslogg
 
-Lagrings platsen för en flödes logg definieras när den skapas. Ett användbart verktyg för att komma åt dessa flödes loggar som sparas till ett lagrings konto är Microsoft Azure Storage Explorer, som kan hämtas här:  https://storageexplorer.com/
+Lagringsplatsen för en flödeslogg definieras när den skapas. Ett praktiskt verktyg för att komma åt dessa flödesloggar som sparats till ett lagringskonto är Microsoft Azure Storage Explorer, som du kan hämta här:  https://storageexplorer.com/
 
-Om ett lagrings konto har angetts sparas flödes logg filen på ett lagrings konto på följande plats:
+Om ett lagringskonto anges sparas flödesloggfilerna till ett lagringskonto på följande plats:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
-Mer information om strukturen för logg besöks [logg översikt över nätverks säkerhets grupp](network-watcher-nsg-flow-logging-overview.md)
+Information om loggens struktur finns i Översikt [över flödesloggen för nätverkssäkerhetsgrupp](network-watcher-nsg-flow-logging-overview.md)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig hur du [visualiserar dina NSG Flow-loggar med PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+Lär dig hur du [visualiserar dina NSG-flödesloggar med PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 
-Lär dig hur du [visualiserar dina NSG Flow-loggar med verktyg med öppen källkod](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+Lär dig hur du [visualiserar dina NSG-flödesloggar med verktyg med öppen källkod](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)

@@ -1,21 +1,24 @@
 ---
-title: Snabb start – skapa en behållar instans – Azure Resource Manager mall
-description: I den här snabb starten använder du en Azure Resource Manager-mall för att snabbt distribuera en container som körs i en isolerad Azure Container instance.
+title: Snabbstart – Skapa en containerinstans – Azure Resource Manager mall
+description: I den här snabbstarten använder du en Azure Resource Manager för att snabbt distribuera en containeriserad webbapp som körs i en isolerad Azure-containerinstans.
 services: azure-resource-manager
-ms.service: azure-resource-manager
-ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-js
 ms.date: 04/30/2020
-ms.openlocfilehash: 621e3e1cef39e34656c094a39d218d5d5866fa26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.service: azure-resource-manager
+ms.custom:
+- subject-armqs
+- devx-track-js
+- mode-arm
+ms.openlocfilehash: 5e8b9e1b2a396bb20b35dd69efe26758ba0db543
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91309089"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537503"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>Snabb start: Distribuera en behållar instans i Azure med en ARM-mall
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>Snabbstart: Distribuera en containerinstans i Azure med hjälp av en ARM-mall
 
-Använd Azure Container Instances för att köra Server lös Docker-behållare i Azure med enkelhet och hastighet. Distribuera ett program till en behållar instans på begäran när du inte behöver en fullständig plattform för behållar dirigering som Azure Kubernetes-tjänsten. I den här snabb starten använder du en Azure Resource Manager mall (ARM-mall) för att distribuera en isolerad Docker-behållare och göra dess webb program tillgänglig med en offentlig IP-adress.
+Använd Azure Container Instances för att köra serverlösa Docker-containrar i Azure med enkelhet och hastighet. Distribuera ett program till en containerinstans på begäran när du inte behöver en fullständig plattform för containerorkestrering som Azure Kubernetes Service. I den här snabbstarten använder du en Azure Resource Manager-mall (ARM-mall) för att distribuera en isolerad Docker-container och göra dess webbapp tillgänglig med en offentlig IP-adress.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -35,9 +38,9 @@ Mallen som används i den här snabbstarten kommer från [Azure-snabbstartsmalla
 
 Följande resurs definieras i mallen:
 
-* **[Microsoft. ContainerInstance/containerGroups](/azure/templates/microsoft.containerinstance/containergroups)**: skapa en Azure Container Group. Den här mallen definierar en grupp som består av en enda behållar instans.
+* **[Microsoft.ContainerInstance/containerGroups:](/azure/templates/microsoft.containerinstance/containergroups)** skapa en Azure-containergrupp. Den här mallen definierar en grupp som består av en enda containerinstans.
 
-Du hittar fler Azure Container Instances mal sampel i [galleriet snabb starts mal len](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerinstance&pageNumber=1&sort=Popular).
+Fler Azure Container Instances mallexempel finns i [snabbstartsmallgalleriet](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerinstance&pageNumber=1&sort=Popular).
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
@@ -48,34 +51,34 @@ Du hittar fler Azure Container Instances mal sampel i [galleriet snabb starts ma
  2. Välj eller ange följande värden.
 
     * **Prenumeration**: välj en Azure-prenumeration.
-    * **Resurs grupp**: Välj **Skapa ny**, ange ett unikt namn för resurs gruppen och välj sedan **OK**.
-    * **Plats**: Välj en plats för resursgruppen. Exempel: **centrala USA**.
-    * **Namn**: acceptera det genererade namnet för instansen eller ange ett namn.
-    * **Bild**: Godkänn standard avbildnings namnet. Det här exemplet på Linux-avbildningar är en liten webbapp som skrivits i Node.js som hanterar en statisk HTML-sida. 
+    * **Resursgrupp:** välj **Skapa ny,** ange ett unikt namn för resursgruppen och välj sedan **OK.**
+    * **Plats**: Välj en plats för resursgruppen. Exempel: **USA, centrala.**
+    * **Namn:** acceptera det genererade namnet för instansen eller ange ett namn.
+    * **Bild:** acceptera standardavbildningens namn. Det här Linux-exempelavbildningen paketerar en liten webbapp som skrivits Node.js som fungerar som en statisk HTML-sida. 
 
     Acceptera standardvärden för de återstående egenskaperna.
 
-    Granska de allmänna villkoren. Om du samtycker väljer du **Jag accepterar villkoren som anges ovan**.
+    Granska villkoren. Om du godkänner väljer **du Jag godkänner de villkor som anges ovan.**
 
     ![Mallegenskaper](media/container-instances-quickstart-template/template-properties.png)
 
- 3. När instansen har skapats visas ett meddelande:
+ 3. När instansen har skapats får du ett meddelande:
 
-    ![Portal meddelande](media/container-instances-quickstart-template/deployment-notification.png)
+    ![Portalmeddelande](media/container-instances-quickstart-template/deployment-notification.png)
 
- Azure-portalen används för att distribuera mallen. Förutom Azure Portal kan du använda Azure PowerShell, Azure CLI och REST API. Mer information om andra distributions metoder finns i [distribuera mallar](../azure-resource-manager/templates/deploy-cli.md).
+ Azure-portalen används för att distribuera mallen. Förutom den här Azure Portal kan du använda Azure PowerShell, Azure CLI och REST API. Mer information om andra distributionsmetoder finns i [Distribuera mallar.](../azure-resource-manager/templates/deploy-cli.md)
 
 ## <a name="review-deployed-resources"></a>Granska distribuerade resurser
 
-Använd Azure Portal eller ett verktyg som [Azure CLI](container-instances-quickstart.md) för att granska egenskaperna för behållar instansen.
+Använd Azure Portal eller ett verktyg som [Azure CLI](container-instances-quickstart.md) för att granska egenskaperna för containerinstansen.
 
-1. I portalen söker du efter Container Instances och väljer den behållar instans som du skapade.
+1. I portalen söker du efter Container Instances och väljer den containerinstans som du skapade.
 
-1. På sidan **Översikt** noterar du **status** för instansen och dess **IP-adress**.
+1. På sidan **Översikt** noterar du **Status för** instansen och dess **IP-adress**.
 
     ![Instansöversikt](media/container-instances-quickstart-template/aci-overview.png)
 
-2. När statusen är *igång* navigerar du till IP-adressen i webbläsaren. 
+2. När statusen är *Körs* går du till IP-adressen i webbläsaren. 
 
     ![App som distribuerats via Azure Container Instances visas i webbläsare](media/container-instances-quickstart-template/view-application-running-in-an-azure-container-instance.png)
 
@@ -83,22 +86,22 @@ Använd Azure Portal eller ett verktyg som [Azure CLI](container-instances-quick
 
 Att visa loggar för en containerinstans är användbart när du felsöker problem med din container eller det program som den kör.
 
-Om du vill visa behållarens loggar går du till **Inställningar** och väljer **behållare**  >  **loggar**. Du bör se HTTP GET-begäran som genereras när du har granskat programmet i webbläsaren.
+Om du vill visa containerns loggar går du till **Inställningar och** väljer   >  **Containerloggar.** Du bör se HTTP GET-begäran som genereras när du har granskat programmet i webbläsaren.
 
 ![Containerloggar i Azure-portalen](media/container-instances-quickstart-template/aci-logs.png)
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När du är klar med behållaren väljer du **ta bort** på sidan **Översikt** för behållar instansen. Bekräfta borttagningen när du uppmanas att göra det.
+När du är klar med containern går du till **sidan Översikt för** containerinstansen och väljer Ta **bort**. Bekräfta borttagningen när du uppmanas att göra det.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du en Azure Container instance från en offentlig Microsoft-avbildning. Om du vill skapa en container på egen hand och distribuera den från ett privat Azure-containerregister går du vidare till självstudien för Azure Container Instances.
+I den här snabbstarten skapade du en Azure-containerinstans från en offentlig Microsoft-avbildning. Om du vill skapa en container på egen hand och distribuera den från ett privat Azure-containerregister går du vidare till självstudien för Azure Container Instances.
 
 > [!div class="nextstepaction"]
-> [Självstudie: skapa en behållar avbildning för distribution till Azure Container Instances](./container-instances-tutorial-prepare-app.md)
+> [Självstudie: Skapa en containeravbildning för distribution till Azure Container Instances](./container-instances-tutorial-prepare-app.md)
 
-En stegvis själv studie kurs som vägleder dig genom processen för att skapa en mall finns i:
+En stegvis självstudiekurs som vägleder dig genom processen med att skapa en mall finns i:
 
 > [!div class="nextstepaction"]
-> [Självstudie: skapa och distribuera din första ARM-mall](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Självstudie: Skapa och distribuera din första ARM-mall](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

@@ -5,54 +5,54 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 4bf792dd02e7cddcc40ef868e4a602fdb03ab3c6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 513f262f5d09cf56c4506a4f20c9aa41507c2abd
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052287"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515285"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Vad övervakas av Azure Monitor?
 I den här artikeln beskrivs de olika program och tjänster som övervakas av Azure Monitor. 
 
-## <a name="insights-and-core-solutions"></a>Insikter och huvud lösningar
-Grundläggande insikter och lösningar betraktas som en del av Azure Monitor och följer support-och service nivå avtalen för Azure. De stöds i alla Azure-regioner där Azure Monitor är tillgängligt.
+## <a name="insights-and-core-solutions"></a>Insikter och kärnlösningar
+Viktiga insikter och lösningar betraktas som en del Azure Monitor och följer support- och serviceavtalen för Azure. De stöds i alla Azure-regioner där Azure Monitor är tillgängliga.
 
 ### <a name="insights"></a>Insikter
 
-Insikter ger en anpassad övervaknings miljö för specifika program och tjänster. De samlar in och analyserar både loggar och mått.
+Insikter ger en anpassad övervakningsupplevelse för specifika program och tjänster. De samlar in och analyserar både loggar och mått.
 
-| Insight | Beskrivning |
+| Insight | Description |
 |:---|:---|
-| [Application Insights](app/app-insights-overview.md) | Utöknings bar APM-tjänst (Application Performance Management) för att övervaka ditt Live-webbprogram på valfri plattform. |
-| [Container Insights](containers/container-insights-overview.md) | Övervakar prestanda för behållar arbets belastningar som distribueras till antingen Azure Container Instances eller hanterade Kubernetes-kluster som finns i Azure Kubernetes service (AKS). |
-| [Azure Monitor för Cosmos DB](insights/cosmosdb-insights-overview.md) | Innehåller en översikt över övergripande prestanda, fel, kapacitet och drifts hälsa för alla dina Azure Cosmos DB resurser i en enhetlig interaktiv upplevelse. |
-| [Azure Monitor för nätverk (för hands version)](insights/network-insights-overview.md) | Innehåller en omfattande vy över hälso tillstånd och mått för alla nätverks resurser. Med den avancerade Sök funktionen kan du identifiera resurs beroenden, aktivera scenarier som att identifiera resurser som är värdar för din webbplats genom att helt enkelt söka efter namnet på din webbplats. |
-[Azure Monitor för resurs grupper (förhands granskning)](insights/resource-group-insights.md) |  Prioritering och diagnostisera eventuella problem som kan uppstå för enskilda resurser, samtidigt som den erbjuder kontexten och prestandan för resurs gruppen som helhet. |
-| [Azure Monitor för lagring](insights/storage-insights-overview.md) | Tillhandahåller omfattande övervakning av dina Azure Storage konton genom att leverera en enhetlig vy över dina Azure Storages prestanda, kapacitet och tillgänglighet. |
-| [VM-insikter](vm/vminsights-overview.md) | Övervakar dina virtuella Azure-datorer (VM) och skalnings uppsättningar för virtuella datorer i stor skala. Den analyserar prestanda och hälsotillstånd för dina virtuella datorer med Windows och Linux, och övervakar deras processer och beroenden på andra resurser och i externa processer. |
-| [Azure Monitor för Key Vault (förhands granskning)](./insights/key-vault-insights-overview.md) | Tillhandahåller omfattande övervakning av dina nyckel valv genom att leverera en enhetlig vy över dina Key Vault begär Anden, prestanda, haverier och svars tider. |
-| [Azure Monitor för Azure cache för Redis (för hands version)](insights/redis-cache-insights-overview.md) |  Ger en enhetlig, interaktiv vy över övergripande prestanda, fel, kapacitet och drifts hälsa. |
+| [Application Insights](app/app-insights-overview.md) | Tjänsten Extensible Application Performance Management (APM) för att övervaka ditt live-webbprogram på valfri plattform. |
+| [Containerinsikter](containers/container-insights-overview.md) | Övervakar prestanda för containerarbetsbelastningar som distribueras till antingen Azure Container Instances eller hanterade Kubernetes-kluster som finns på Azure Kubernetes Service (AKS). |
+| [Azure Monitor för Cosmos DB](insights/cosmosdb-insights-overview.md) | Ger en vy över övergripande prestanda, fel, kapacitet och drifthälsa för alla dina Azure Cosmos DB i en enhetlig interaktiv upplevelse. |
+| [Azure Monitor för nätverk (förhandsversion)](insights/network-insights-overview.md) | Ger en omfattande vy över hälsa och mått för alla dina nätverksresurser. Den avancerade sökfunktionen hjälper dig att identifiera resursberoenden, vilket möjliggör scenarier som att identifiera resurser som är värdar för din webbplats genom att helt enkelt söka efter namnet på din webbplats. |
+[Azure Monitor för resursgrupper (förhandsversion)](insights/resource-group-insights.md) |  Att behandla och diagnostisera eventuella problem som dina enskilda resurser stöter på, samtidigt som det ger kontext vad gäller hälsotillstånd och prestanda för resursgruppen som helhet. |
+| [Azure Monitor för Storage](insights/storage-insights-overview.md) | Ger omfattande övervakning av dina Azure Storage-konton genom att leverera en enhetlig vy över dina Azure Storage tjänsters prestanda, kapacitet och tillgänglighet. |
+| [Insikter om virtuella datorer](vm/vminsights-overview.md) | Övervakar dina virtuella Azure-datorer (VM) och VM-skalningsuppsättningar i stor skala. Den analyserar prestanda och hälsotillstånd för dina virtuella datorer med Windows och Linux, och övervakar deras processer och beroenden på andra resurser och i externa processer. |
+| [Azure Monitor för Key Vault (förhandsversion)](./insights/key-vault-insights-overview.md) | Ger omfattande övervakning av dina nyckelvalv genom att leverera en enhetlig vy över dina Key Vault, prestanda, fel och svarstider. |
+| [Azure Monitor för Azure Cache for Redis (förhandsversion)](insights/redis-cache-insights-overview.md) |  Ger en enhetlig, interaktiv vy över övergripande prestanda, fel, kapacitet och drifthälsa. |
 
 
-### <a name="core-solutions"></a>Kärn lösningar
+### <a name="core-solutions"></a>Kärnlösningar
 
-Lösningar baseras på logg frågor och vyer som är anpassade för ett visst program eller en viss tjänst. De samlar in och analyserar bara loggar och är föråldrade med tiden för insikter.
+Lösningarna baseras på loggfrågor och vyer som är anpassade för ett visst program eller en viss tjänst. De samlar bara in och analyserar loggar och blir inaktuella över tid till förmån för insikter.
 
-| Lösning | Beskrivning |
+| Lösning | Description |
 |:---|:---|
-| [Agent hälsa](insights/solution-agenthealth.md) | Analysera hälsan och konfigurationen av Log Analyticss agenter. |
-| [Varningshantering](insights/alert-management-solution.md) | Analysera aviseringar som samlats in från System Center Operations Manager, nagios eller zabbix. |
-| [Tjänstkarta](vm/service-map.md) | Identifierar automatiskt program komponenter i Windows-och Linux-system och mappar kommunikationen mellan tjänsterna. |
+| [Agenthälsa](insights/solution-agenthealth.md) | Analysera hälsotillståndet och konfigurationen för Log Analytics-agenter. |
+| [Varningshantering](insights/alert-management-solution.md) | Analysera aviseringar som samlats in från System Center Operations Manager, Nagios eller Zabbix. |
+| [Tjänstkarta](vm/service-map.md) | Identifierar automatiskt programkomponenter i Windows- och Linux-system och mappar kommunikationen mellan tjänster. |
 
 
 
 ## <a name="azure-services"></a>Azure-tjänster
-I följande tabell visas Azure-tjänster och de data som samlas in i Azure Monitor. 
+I följande tabell visas Azure-tjänster och de data som de samlar in i Azure Monitor. 
 
-- Mått – tjänsten samlar automatiskt in mått i Azure Monitor Mät värden. 
-- Loggar – tjänsten stöder diagnostikinställningar som kan samla in plattforms loggar och statistik för att Azure Monitor loggar.
-- Insight – det finns en insikt tillgänglig för tjänsten som tillhandahåller en anpassad övervaknings upplevelse för tjänsten.
+- Mått – Tjänsten samlar automatiskt in mått Azure Monitor mått. 
+- Loggar – Tjänsten stöder diagnostikinställningar som kan samla in plattformsloggar och mått för att Azure Monitor Loggar.
+- Insikt – Det finns en insikt tillgänglig för tjänsten som ger en anpassad övervakningsupplevelse för tjänsten.
 
 | Tjänst | Mått | Loggar | Insight | Kommentarer |
 |:---|:---|:---|:---|:---|
@@ -69,7 +69,7 @@ I följande tabell visas Azure-tjänster och de data som samlas in i Azure Monit
 |App Service | Ja | Ja | Inga |  |
 |AppConfig | Inga | Inga | Inga |  |
 |Application Gateway | Ja | Ja | Inga |  |
-|Attesterings tjänst | Inga | Inga | Inga |  |
+|Attestation Service | Inga | Inga | Inga |  |
 |Automation | Ja | Ja | Inga |  |
 |Azure Service Manager (RDFE) | Inga | Inga | Inga |  |
 |Backup | Inga | Ja | Inga |  |
@@ -79,7 +79,7 @@ I följande tabell visas Azure-tjänster och de data som samlas in i Azure Monit
 |Blockchain Service | Inga | Ja | Inga |  |
 |Skisser | Inga | Inga | Inga |  |
 |Bot Service | Inga | Inga | Inga |  |
-|Cloud Services | Ja | Ja | Inga | Agent som krävs för att övervaka gäst operativ system och arbets flöden.  |
+|Cloud Services | Ja | Ja | Inga | Agent som krävs för att övervaka gästoperativsystemet och arbetsflöden.  |
 |Cloud Shell | Inga | Inga | Inga |  |
 |Cognitive Services | Ja | Ja | Inga |  |
 |Container Instances | Ja | Inga | Inga |  |
@@ -102,9 +102,9 @@ I följande tabell visas Azure-tjänster och de data som samlas in i Azure Monit
 |DevOps | Inga | Inga | Inga |  |
 |DNS | Ja | Inga | Inga |  |
 |Domännamn | Inga | Inga | Inga |  |
-|– | Inga | Inga | Inga |  |
-|Dynamics 365 kund engagemang | Inga | Inga | Inga |  |
-|Dynamics 365-ekonomi och-åtgärder | Inga | Inga | Inga |  |
+|Dps | Inga | Inga | Inga |  |
+|Dynamics 365 Customer Engagement | Inga | Inga | Inga |  |
+|Dynamics 365 Finance and Operations | Inga | Inga | Inga |  |
 |Event Grid | Ja | Inga | Inga |  |
 |Event Hubs | Ja | Ja | Inga |  |
 |ExpressRoute | Ja | Ja | Inga |  |
@@ -138,109 +138,109 @@ I följande tabell visas Azure-tjänster och de data som samlas in i Azure Monit
 |Power Automate | Inga | Inga | Nej |  |
 |Power BI Embedded | Ja | Ja | Inga |  |
 |Private Link | Inga | Inga | Inga |  |
-|Kommunikations plattform för bufferthanterare | Inga | Inga | Inga |  |
+|Kommunikationsplattform för projektpool | Inga | Inga | Inga |  |
 |Red Hat OpenShift | Inga | Inga | Inga |  |
 |Redis Cache | Ja | Ja | [Ja](insights/redis-cache-insights-overview.md) | |
 |Resource Graph | Inga | Inga | Inga |  |
 |Resource Manager | Inga | Inga | Inga |  |
-|Butiks sökning – efter Bing | Inga | Inga | Inga |  |
+|Detaljhandelssökning – efter Bing | Inga | Inga | Inga |  |
 |Sök | Ja | Ja | Inga |  |
 |Service Bus | Ja | Ja | Inga |  |
-|Service Fabric | Inga | Ja | Inga | Agent som krävs för att övervaka gäst operativ system och arbets flöden.  |
-|Registrerings Portal | Inga | Inga | Inga |  |
+|Service Fabric | Inga | Ja | Inga | Agent som krävs för att övervaka gästoperativsystemet och arbetsflöden.  |
+|Registrering av portal | Inga | Inga | Inga |  |
 |Site Recovery | Inga | Ja | Inga |  |
-|Vår moln tjänst | Inga | Inga | Inga |  |
+|Spring Cloud Service | Inga | Inga | Inga |  |
 |Azure Synapse Analytics | Ja | Ja | Inga |  |
 |SQL Database | Ja | Ja | Inga |  |
 |SQL Server Stretch Database | Ja | Ja | Inga |  |
 |Stack | Inga | Inga | Inga |  |
 |Storage | Ja | Inga | [Ja](insights/storage-insights-overview.md) |  |
-|Storage cache | Inga | Inga | Inga |  |
+|Lagringscache | Inga | Inga | Inga |  |
 |Tjänster för synkronisering av lagring | Inga | Inga | Inga |  |
 |Stream Analytics | Ja | Ja | Inga |  |
 |Time Series Insights | Ja | Ja | Inga |  |
-|TINA | Inga | Inga | Inga |  |
+|Tina | Inga | Inga | Inga |  |
 |Traffic Manager | Ja | Ja | Inga |  |
 |Universell utskrift | Inga | Inga | Inga |  |
-|Virtual Machine Scale Sets | Inga | Ja | [Ja](vm/vminsights-overview.md) | Agent som krävs för att övervaka gäst operativ system och arbets flöden. |
-|Virtual Machines | Ja | Ja | [Ja](vm/vminsights-overview.md) | Agent som krävs för att övervaka gäst operativ system och arbets flöden. |
+|Virtual Machine Scale Sets | Inga | Ja | [Ja](vm/vminsights-overview.md) | Agent som krävs för att övervaka gästoperativsystemet och arbetsflöden. |
+|Virtual Machines | Ja | Ja | [Ja](vm/vminsights-overview.md) | Agent som krävs för att övervaka gästoperativsystemet och arbetsflöden. |
 |Virtual Network | Ja | Ja | [Ja](insights/network-insights-overview.md) |  |
-|Virtual Network NSG flödes loggar | Inga | Ja | Inga |  |
+|Virtual Network – NSG-flödesloggar | Inga | Ja | Inga |  |
 |VPN Gateway | Ja | Ja | Inga |  |
-|Windows Virtual Desktop | Inga | Inga | Inga |  |
+|Windows Virtual Desktop | Inga | Ja | Inga |  |
 
 ## <a name="virtual-machine-agents"></a>Agenter för virtuella datorer
-I följande tabell visas de agenter som kan samla in data från gäst operativ systemet på virtuella datorer och skicka data som ska övervakas. Varje agent kan samla in olika data och skicka dem till antingen mått eller loggar i Azure Monitor. 
+I följande tabell visas de agenter som kan samla in data från gästoperativsystemet på virtuella datorer och skicka data till Monitor. Varje agent kan samla in olika data och skicka dem till mått eller loggar i Azure Monitor. 
 
-Se [Översikt över Azure Monitor agenter](agents/agents-overview.md) för information om de data som varje agent kan samla in.
+Se [Översikt över Azure Monitor för](agents/agents-overview.md) information om de data som varje agent kan samla in.
 
 | Agent |  Mått | Loggar |
 |:---|:---|:---|:---|
-| [Azure Monitor Agent (förhands granskning)](agents/azure-monitor-agent-overview.md) | Ja | Ja |
+| [Azure Monitor agent (förhandsversion)](agents/azure-monitor-agent-overview.md) | Ja | Ja |
 | [Log Analytics-agent](agents/log-analytics-agent.md) | Inga | Ja|
-| [Diagnostiskt tillägg](agents/diagnostics-extension-overview.md) | Ja | Inga |
-| [Teleympkvistar-agent](essentials/collect-custom-metrics-linux-telegraf.md) | Ja | Inga |
+| [Diagnostiktillägg](agents/diagnostics-extension-overview.md) | Ja | Inga |
+| [Telegraf-agent](essentials/collect-custom-metrics-linux-telegraf.md) | Ja | Inga |
 | [Beroendeagent](vm/vminsights-enable-overview.md) | Inga | Ja |
 
 
-## <a name="product-integrations"></a>Produkt integreringar
-Tjänsterna och lösningarna i följande tabell lagrar sina data på en Log Analytics arbets yta så att den kan analyseras med andra loggdata som samlas in av Azure Monitor.
+## <a name="product-integrations"></a>Produktintegreringar
+Tjänsterna och lösningarna i följande tabell lagrar sina data på en Log Analytics-arbetsyta så att de kan analyseras med andra loggdata som samlas in av Azure Monitor.
 
-| Produkt/tjänst | Beskrivning |
+| Produkt/tjänst | Description |
 |:---|:---|
-| [Azure Automation](../automation/index.yml) | Hantera uppdateringar av operativ system och spåra ändringar på Windows-och Linux-datorer. Se [ändringsspårning](../automation/change-tracking/overview.md) och [uppdateringshantering](../automation/update-management/overview.md). |
-| [Azure Information Protection ](/azure/information-protection/) | Klassificera och eventuellt skydda dokument och e-postmeddelanden. Se [Central rapportering för Azure information Protection](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
-| [Azure Security Center](../security-center/index.yml) | Samla in och analysera säkerhets händelser och utför hot analyser. Se [data insamling i Azure Security Center](../security-center/security-center-enable-data-collection.md) |
-| [Azure Sentinel](../sentinel/index.yml) | Ansluter till olika källor, inklusive Office 365 och Amazon Web Services Cloud trailer. Se [Anslut data källor](../sentinel/connect-data-sources.md). |
-| [Microsoft Intune](/intune/) | Skapa en diagnostisk inställning för att skicka loggar till Azure Monitor. Se [Skicka logg data till lagring, Event Hub eller Log Analytics i Intune (för hands version)](/intune/fundamentals/review-logs-using-azure-monitor).  |
-| Nätverk  | [Övervakare av nätverksprestanda](insights/network-performance-monitor.md) -övervaka nätverks anslutningar och prestanda till tjänst-och program slut punkter.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics) – analysera loggar och mått från Azure Application Gateway.<br>[Trafikanalys](../network-watcher/traffic-analytics.md) -analyserar Network Watcher nätverks säkerhets grupps flödes loggar (NSG) för att ge insikter i trafikflödet i ditt Azure-moln. |
-| [Office 365](insights/solution-office-365.md) | Övervaka din Office 365-miljö. Uppdaterad version med förbättrad onboarding tillgänglig via Azure Sentinel. |
-| [SQL-analys](insights/azure-sql.md) | Övervaka prestanda för Azure SQL-databaser och SQL-hanterade instanser i stor skala och över flera prenumerationer. |
-| [Surface Hub](insights/surface-hubs.md) | Spåra hälsan och användningen av Surface Hub enheter. |
-| [System Center Operations Manager](/system-center/scom) | Samla in data från Operations Manager-agenter genom att ansluta hanterings gruppen till Azure Monitor. Se [ansluta Operations Manager till Azure Monitor](agents/om-agents.md)<br> Utvärdera riskerna och hälsan i din System Center Operations Manager hanterings grupp med [Operations Manager utvärderings](insights/scom-assessment.md) lösning. |
-| [Microsoft Teams-rum](/microsoftteams/room-systems/azure-monitor-deploy) | Integrerad hantering av Microsoft Teams-enheter från slut punkt till slut punkt. |
-| [Visual Studio App Center](/appcenter/) | Bygg, testa och distribuera program och övervaka sedan deras status och användning. Se [Starta analys av mobilappen med App Center och Application Insights](app/mobile-center-quickstart.md). |
-| Windows | [Windows Update kompatibilitet](/windows/deployment/update/update-compliance-get-started) – utvärdera dina Windows Desktop-uppgraderingar.<br>[Skriv bords analys](/configmgr/desktop-analytics/overview) – integreras med Configuration Manager för att ge insikt och information för att fatta mer välgrundade beslut om uppdaterings beredskap för dina Windows-klienter. |
+| [Azure Automation](../automation/index.yml) | Hantera uppdateringar av operativsystemet och spåra ändringar på Windows- och Linux-datorer. Se [Ändringsspårning](../automation/change-tracking/overview.md) och [Uppdateringshantering](../automation/update-management/overview.md). |
+| [Azure Information Protection ](/azure/information-protection/) | Klassificera och skydda dokument och e-postmeddelanden om du vill. Se [Central rapportering för Azure Information Protection](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
+| [Azure Security Center](../security-center/index.yml) | Samla in och analysera säkerhetshändelser och utför hotanalys. Se [Datainsamling i Azure Security Center](../security-center/security-center-enable-data-collection.md) |
+| [Azure Sentinel](../sentinel/index.yml) | Ansluter till olika källor, inklusive Office 365 och Amazon Web Services Cloud Trail. Se [Ansluta datakällor.](../sentinel/connect-data-sources.md) |
+| [Microsoft Intune](/intune/) | Skapa en diagnostikinställning för att skicka loggar till Azure Monitor. Se [Skicka loggdata till lagring, händelsehubbb eller logganalys i Intune (förhandsversion)](/intune/fundamentals/review-logs-using-azure-monitor).  |
+| Nätverk  | [Övervakare av nätverksprestanda](insights/network-performance-monitor.md) – Övervaka nätverksanslutning och prestanda till tjänst- och programslutpunkter.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics) – Analysera loggar och mått från Azure Application Gateway.<br>[Trafikanalys](../network-watcher/traffic-analytics.md) – analyserar Network Watcher NSG-flödesloggar (Network Security Group) för att ge insikter om trafikflödet i ditt Azure-moln. |
+| [Office 365](insights/solution-office-365.md) | Övervaka din Office 365-miljö. Uppdaterad version med förbättrad registrering tillgänglig via Azure Sentinel. |
+| [SQL-analys](insights/azure-sql.md) | Övervaka prestanda för Azure SQL databaser och SQL Managed Instances i stor skala och över flera prenumerationer. |
+| [Surface Hub](insights/surface-hubs.md) | Spåra hälsotillstånd och användning av Surface Hub enheter. |
+| [System Center Operations Manager](/system-center/scom) | Samla in data Operations Manager agenterna genom att ansluta hanteringsgruppen till Azure Monitor. Se [Ansluta Operations Manager till Azure Monitor](agents/om-agents.md)<br> Utvärdera risken och hälsotillståndet för din System Center Operations Manager med hjälp av [Operations Manager Assessment.](insights/scom-assessment.md) |
+| [Microsoft Teams-rum](/microsoftteams/room-systems/azure-monitor-deploy) | Integrerad hantering från hela microsoft Teams-rumsenheter. |
+| [Visual Studio App Center](/appcenter/) | Skapa, testa och distribuera program och övervaka deras status och användning. Se [Börja analysera mobilappen med hjälp App Center och Application Insights](app/mobile-center-quickstart.md). |
+| Windows | [Windows Update – Utvärdera](/windows/deployment/update/update-compliance-get-started) dina Windows-skrivbordsuppgraderingar.<br>[Desktop Analytics](/configmgr/desktop-analytics/overview) – integrerar med Konfigurationshanteraren för att ge insikter och information för att fatta mer välgrundade beslut om Windows-klienters uppdateringsberedskap. |
 
 
 
 ## <a name="other-solutions"></a>Andra lösningar
-Andra lösningar är tillgängliga för övervakning av olika program och tjänster, men den aktiva utvecklingen har stoppats och är kanske inte tillgänglig i alla regioner. De omfattas av service avtalet för Azure Log Analytics data inmatnings tjänsten.
+Andra lösningar är tillgängliga för övervakning av olika program och tjänster, men aktiv utveckling har stoppats och de kanske inte är tillgängliga i alla regioner. De omfattas av servicenivåavtalet för datainmatning i Azure Log Analytics.
 
-| Lösning | Beskrivning |
+| Lösning | Description |
 |:---|:---|
-| [Active Directory hälso kontroll](insights/ad-assessment.md) | Utvärdera riskerna och hälso tillståndet i dina Active Directorys miljöer. |
-| [Active Directory replikeringsstatus](insights/ad-replication-status.md) | Övervakar regelbundet din Active Directorys miljö för eventuella replikeringsfel. |
-| [Aktivitets logg analys](essentials/activity-log.md#activity-log-analytics-monitoring-solution) | Visa aktivitets logg poster. |
-| [DNS-analys (för hands version)](insights/dns-analytics.md) | Samlar in, analyserar och korrelerar Windows DNS analys-och gransknings loggar och andra relaterade data från dina DNS-servrar. |
-| [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Samla in, Visa och analysera Cloud Foundry systemets hälso tillstånds-och prestanda mått i flera distributioner. |
-| [Containrar](containers/containers.md) | Visa och hantera Docker-och Windows container-värdar. |
-| [Bedömningar på begäran](/services-hub/health/getting_started_with_on_demand_assessments) | Utvärdera och optimera tillgänglighet, säkerhet och prestanda för dina lokala, hybrid-och molnbaserade Microsoft Technology-miljöer. |
-| [SQL-hälsokontroll](insights/sql-assessment.md) | Utvärdera riskerna och hälso tillståndet i dina SQL Servers miljöer.  |
-| [Wire Data](insights/wire-data.md) | Sammanställd nätverks-och prestanda data som samlas in från Windows-anslutna och Linux-anslutna datorer med Log Analytics-agenten. |
+| [Active Directory-hälsokontroll](insights/ad-assessment.md) | Utvärdera riskerna och hälsotillståndet för dina Active Directory-miljöer. |
+| [Active Directory-replikeringsstatus](insights/ad-replication-status.md) | Övervakar regelbundet Active Directory-miljön för eventuella replikeringsfel. |
+| [Aktivitetslogganalys](essentials/activity-log.md#activity-log-analytics-monitoring-solution) | Visa aktivitetsloggposter. |
+| [DNS-analys (förhandsversion)](insights/dns-analytics.md) | Samlar in, analyserar och korrelerar Windows DNS-analys- och granskningsloggar och andra relaterade data från DNS-servrarna. |
+| [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Samla in, visa och analysera Cloud Foundry för systemets hälsotillstånd och prestanda över flera distributioner. |
+| [Containrar](containers/containers.md) | Visa och hantera Docker- och Windows-containervärdar. |
+| [Utvärderingar på begäran](/services-hub/health/getting_started_with_on_demand_assessments) | Utvärdera och optimera tillgänglighet, säkerhet och prestanda för dina lokala, hybridbaserade och molnbaserade Microsoft-teknikmiljöer. |
+| [SQL-hälsokontroll](insights/sql-assessment.md) | Utvärdera riskerna och hälsotillståndet för dina SQL Server miljöer.  |
+| [Wire Data](insights/wire-data.md) | Konsoliderade nätverks- och prestandadata som samlats in från Windows-anslutna och Linux-anslutna datorer med Log Analytics-agenten. |
 
-## <a name="third-party-integration"></a>Integration från tredje part
+## <a name="third-party-integration"></a>Integrering från tredje part
 
-| Lösning | Beskrivning |
+| Lösning | Description |
 |:---|:---|
 | [ITSM](alerts/itsmc-overview.md) | Med ITMS-anslutningsprogrammet (anslutningsprogram för hantering av IT-tjänster) kan du ansluta Azure och en ITSM-produkt/-tjänst (hantering av IT-tjänster (ITSM)) som stöds.  |
 
 
 ## <a name="resources-outside-of-azure"></a>Resurser utanför Azure
-Azure Monitor kan samla in data från resurser utanför Azure med hjälp av metoderna som anges i följande tabell.
+Azure Monitor kan samla in data från resurser utanför Azure med hjälp av metoderna i följande tabell.
 
 | Resurs | Metod |
 |:---|:---|
-| Program | Övervaka webb program utanför Azure med hjälp av Application Insights. Se [Vad är Application Insights?](./app/app-insights-overview.md). |
-| Virtuella datorer | Använd agenter för att samla in data från gäst operativ systemet för virtuella datorer i andra moln miljöer eller lokalt. Se [Översikt över Azure Monitor agenter](agents/agents-overview.md). |
-| REST API-klient | Separata API: er är tillgängliga för att skriva data till Azure Monitor loggar och mått från valfri REST API-klient. Se [Skicka loggdata till Azure monitor med API: t för HTTP-datainsamling](logs/data-collector-api.md) för loggar och [skicka anpassade mått för en Azure-resurs till Azure Monitor mått lagring med hjälp av en REST API](essentials/metrics-store-custom-rest-api.md) för mått. |
+| Program | Övervaka webbprogram utanför Azure med hjälp av Application Insights. Se [Vad är Application Insights?](./app/app-insights-overview.md). |
+| Virtuella datorer | Använd agenter för att samla in data från gästoperativsystemet på virtuella datorer i andra molnmiljöer eller lokalt. Se [Översikt över Azure Monitor agenter.](agents/agents-overview.md) |
+| REST API Client | Separata API:er är tillgängliga för att skriva data Azure Monitor loggar och mått från valfri REST API klient. Se [Skicka loggdata till Azure Monitor](logs/data-collector-api.md) med HTTP Data Collector API för loggar och Skicka anpassade mått för en Azure-resurs till [Azure Monitor-måttlagret](essentials/metrics-store-custom-rest-api.md) med hjälp av en REST API för mått. |
 
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer om [Azure Monitor data plattform som lagrar loggar och mått som samlas in med insikter och lösningar](data-platform.md).
-- Slutför en [själv studie kurs om att övervaka en Azure-resurs](essentials/tutorial-resource-logs.md).
-- Slutför en [själv studie kurs om hur du skriver en logg fråga för att analysera data i Azure Monitor loggar](essentials/tutorial-resource-logs.md).
-- Slutför en [själv studie kurs om hur du skapar ett mått diagram för att analysera data i Azure Monitor mått](essentials/tutorial-metrics-explorer.md).
+- Läs mer om [Azure Monitor dataplattform som lagrar loggar och mått som samlas in av insikter och lösningar.](data-platform.md)
+- Slutför en [självstudie om övervakning av en Azure-resurs](essentials/tutorial-resource-logs.md).
+- Slutför en [självstudie om att skriva en loggfråga för att analysera data i Azure Monitor Logs](essentials/tutorial-resource-logs.md).
+- Slutför en [självstudie om hur du skapar ett måttdiagram för att analysera data Azure Monitor mått](essentials/tutorial-metrics-explorer.md).
 

@@ -1,15 +1,15 @@
 ---
 title: Felsöka Azure Backup Server
-description: Felsöka installation, registrering av Azure Backup Server och säkerhets kopiering och återställning av program arbets belastningar.
+description: Felsöka installation, registrering av Azure Backup Server samt säkerhetskopiering och återställning av programarbetsbelastningar.
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 09e5fe5da7e316257cbbdcb89074fe8a4bc692c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 644946ca90c2893ba3d87f9d2ff8bfd8325f4715
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91403015"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514758"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Felsöka Azure Backup Server
 
@@ -19,39 +19,39 @@ Använd informationen i följande tabeller för att felsöka fel som uppstår n�
 
 Vi rekommenderar att du utför följande verifiering innan du börjar felsöka Microsoft Azure Backup Server (MABS):
 
-- [Se till att Microsoft Azure Recovery Services (MARS) Agent är uppdaterad](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [Se till att det finns en nätverks anslutning mellan MARS-agenten och Azure](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
-- Kontrollera att Microsoft Azure Recovery Services körs (i tjänstkonsolen). Om det behövs startar du om och försöker igen
-- [Se till att det finns 5-10% ledigt volym utrymme på platsen för mappens virtuella platser](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
-- Om registreringen inte fungerar kontrollerar du att den server som du försöker installera Azure Backup Server inte redan har registrerats med ett annat valv
+- [Kontrollera Microsoft Azure Recovery Services-agenten (MARS) är uppdaterad](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
+- [Kontrollera att det finns en nätverksanslutning mellan MARS-agenten och Azure](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- Kontrollera att Microsoft Azure Recovery Services körs (i tjänstkonsolen). Starta om och försök igen om det behövs
+- [Kontrollera att det finns 5–10 % ledigt utrymme i den tillfälliga mappen](./backup-azure-file-folder-backup-faq.yml#what-s-the-minimum-size-requirement-for-the-cache-folder-)
+- Om registreringen misslyckas ser du till att den server som du försöker installera Azure Backup Server inte redan har registrerats med ett annat valv
 - Kontrollera om DPM-agenten redan finns om push-överföringen misslyckas. Om den gör det avinstallerar du agenten och provar att installera igen
 - [Se till att inga andra processer eller antivirusprogram stör Azure Backup](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
-- Se till att SQL Agent-tjänsten körs och är inställd på automatisk i MABS-servern<br>
+- Kontrollera att SQL Agent-tjänsten körs och är inställd på automatisk på MABS-servern<br>
 
-## <a name="configure-antivirus-for-mabs-server"></a>Konfigurera antivirus program för MABS-Server
+## <a name="configure-antivirus-for-mabs-server"></a>Konfigurera antivirus för MABS-server
 
-MABS är kompatibelt med de flesta populära antivirus program produkter. Vi rekommenderar följande steg för att undvika konflikter:
+MABS är kompatibelt med de flesta populära antivirusprogram. Vi rekommenderar följande steg för att undvika konflikter:
 
-1. **Inaktivera real tids övervakning** – inaktivera real tids övervakning av antivirus programmet för följande:
-    - `C:\Program Files<MABS Installation path>\XSD` projektbevakningsmappen
-    - `C:\Program Files<MABS Installation path>\Temp` projektbevakningsmappen
-    - Enhets bokstav för Modern Backup Storage volym
-    - Replik-och överförings loggar: du kan göra detta genom att inaktivera real tids övervakning av **dpmra.exe**, som finns i mappen `Program Files\Microsoft Azure Backup Server\DPM\DPM\bin` . Prestanda i real tid försämras, eftersom antivirus programmet söker igenom replikerna varje gången MABS synkroniseras med den skyddade servern och söker igenom alla berörda filer varje gången MABS tillämpar ändringar på replikerna.
-    - Administratörs konsol: om du vill undvika påverkan på prestanda inaktiverar du real tids övervakning av **csc.exe** processen. **csc.exe** processen är C \# -kompilatorn och övervakning i real tid kan försämra prestandan eftersom antivirus programmet söker igenom filer som **csc.exe** processen avger när de genererar XML-meddelanden. **CSC.exe** finns i följande sökvägar:
+1. **Inaktivera övervakning i realtid** – inaktivera övervakning i realtid av antivirusprogram för följande:
+    - `C:\Program Files<MABS Installation path>\XSD` Mappen
+    - `C:\Program Files<MABS Installation path>\Temp` Mappen
+    - Enhetsbeteckning för Modern Backup Storage volym
+    - Replik- och överföringsloggar: Inaktivera realtidsövervakning **avdpmra.exe**, som finns i mappen `Program Files\Microsoft Azure Backup Server\DPM\DPM\bin` . Realtidsövervakning försämrar prestandan eftersom antivirusprogram genomsöker replikerna varje gång MABS synkroniserar med den skyddade servern och genomsöker alla berörda filer varje gång MABS tillämpar ändringar på replikerna.
+    - Administratörskonsol: Om du vill undvika prestandapåverkan inaktiverar du realtidsövervakning av **csc.exe** processen. Processen **csc.exe** C-kompilatorn och realtidsövervakning kan försämra prestandan eftersom antivirusprogrammet genomsöker filer somcsc.exegenererar när \# XML-meddelanden  genereras. **CSC.exe** finns i följande sökvägar:
         - `\Windows\Microsoft.net\Framework\v2.0.50727\csc.exe`
         - `\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe`
-    - För att MARS-agenten ska installeras på MABS-servern rekommenderar vi att du undantar följande filer och platser:
+    - För MARS-agenten som är installerad på MABS-servern rekommenderar vi att du undantar följande filer och platser:
         - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\bin\cbengine.exe` som en process
         - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\folder`
-        - Arbets plats (om du inte använder standard platsen)
-2. **Inaktivera real tids övervakning på den skyddade servern**: inaktivera real tids övervakning av **dpmra.exe**, som finns i mappen `C:\Program Files\Microsoft Data Protection Manager\DPM\bin` , på den skyddade servern.
-3. **Konfigurera antivirus program vara för att ta bort de infekterade filerna på skyddade servrar och Mabs-servern**: för att förhindra skadade data från repliker och återställnings punkter konfigurerar du antivirus programmet att ta bort infekterade filer i stället för att automatiskt rengöra eller sätta dem. Automatisk rensning och sätta kan orsaka att antivirus programmet ändrar filer, och gör ändringar som MABS inte kan identifiera.
+        - Scratch-plats (om du inte använder standardplatsen)
+2. **Inaktivera realtidsövervakning på** den skyddade servern: Inaktivera realtidsövervakning **avdpmra.exe**, som finns i mappen , på den `C:\Program Files\Microsoft Data Protection Manager\DPM\bin` skyddade servern.
+3. Konfigurera antivirusprogram för att ta bort de infekterade filerna på skyddade servrar och **MABS-servern:** Om du vill förhindra skadade data för repliker och återställningspunkter konfigurerar du antivirusprogrammet så att det tar bort infekterade filer i stället för att rensa eller ta bort infekterade filer automatiskt. Automatisk rensning och karantän kan göra att antivirusprogrammet ändrar filer och gör ändringar som MABS inte kan identifiera.
 
-Du bör köra en manuell synkronisering med konsekvens. Kontrol lera jobbet varje gången antivirus programmet tar bort en fil från repliken, även om repliken markeras som inkonsekvent.
+Du bör köra en manuell synkronisering med en konsekvens. Kontrollera jobbet varje gång som antivirusprogrammet tar bort en fil från repliken, även om repliken är markerad som inkonsekvent.
 
-### <a name="mabs-installation-folders"></a>MABS-installationsfiler
+### <a name="mabs-installation-folders"></a>MABS-installationsmappar
 
-Standardmappen för installation av DPM är följande:
+Standardinstallationsmapparna för DPM är följande:
 
 - `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM`
 
@@ -65,109 +65,109 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Åtgärd | Felinformation | Lösning |
 | --- | --- | --- |
-| Registrera till ett valv | Ogiltiga valvautentiseringsuppgifter har angetts. Filen är skadad eller har inte de senaste autentiseringsuppgifterna som är associerade med återställnings tjänsten. | Rekommenderad åtgärd: <br> <ul><li> Hämta den senaste inloggnings filen från valvet och försök igen. <br>ELLER</li> <li> Om föregående åtgärd inte fungerade kan du försöka att hämta autentiseringsuppgifterna till en annan lokal katalog eller skapa ett nytt valv. <br>ELLER</li> <li> Försök att uppdatera datum-och tids inställningarna enligt beskrivningen i [den här artikeln](./backup-azure-mars-troubleshoot.md#invalid-vault-credentials-provided). <br>ELLER</li> <li> Kontrol lera om c:\Windows\Temp har fler än 65000 filer. Flytta inaktuella filer till en annan plats eller ta bort objekten i Temp-mappen. <br>ELLER</li> <li> Kontrol lera status för certifikat. <br> a. Öppna **Hantera dator certifikat** (på kontroll panelen). <br> b. Expandera den **personliga** noden och dess underordnade Node- **certifikat**.<br> c.  Ta bort certifikatet **Windows Azure-verktyg**. <br> d. Gör om registreringen i Azure Backup-klienten. <br> ELLER </li> <li> Kontrol lera om någon grup princip finns på plats. </li></ul> |
+| Registrera till ett valv | Ogiltiga valvautentiseringsuppgifter har angetts. Filen är skadad eller har inte de senaste autentiseringsuppgifterna som är associerade med återställningstjänsten. | Rekommenderad åtgärd: <br> <ul><li> Ladda ned den senaste autentiseringsfilen från valvet och försök igen. <br>(OR)</li> <li> Om den föregående åtgärden inte fungerade kan du försöka ladda ned autentiseringsuppgifterna till en annan lokal katalog eller skapa ett nytt valv. <br>(OR)</li> <li> Prova att uppdatera datum- och tidsinställningarna enligt beskrivningen i [den här artikeln.](./backup-azure-mars-troubleshoot.md#invalid-vault-credentials-provided) <br>(OR)</li> <li> Kontrollera om c:\windows\temp har fler än 65 000 filer. Flytta inaktuella filer till en annan plats eller ta bort objekten i Temp-mappen. <br>(OR)</li> <li> Kontrollera certifikatens status. <br> a. Öppna **Hantera datorcertifikat** (i Kontrollpanelen). <br> b. Expandera den **personliga noden** och dess underordnade nodCertifikat. <br> c.  Ta bort certifikatet **Windows Azure Tools**. <br> d. Försök att registrera på nytt i Azure Backup klienten. <br> (OR) </li> <li> Kontrollera om det finns någon grupprincip. </li></ul> |
 
 ## <a name="replica-is-inconsistent"></a>Repliken är inkonsekvent
 
 | Åtgärd | Felinformation | Lösning |
 | --- | --- | --- |
-| Backup | Repliken är inkonsekvent | Kontrol lera att alternativet automatisk konsekvens kontroll i guiden skydds grupp är aktiverat. Mer information om replikeringsalternativ och konsekvens kontroller finns i [den här artikeln](/system-center/dpm/create-dpm-protection-groups) .<br> <ol><li> Kontrol lera att Windows Server Backup är installerat på den skyddade servern om system tillstånd/BMR säkerhets kopiering ska installeras.</li><li> Kontrol lera om det finns problem med problem i DPM-lagringspoolen på DPM/Microsoft Azure Backup-servern och allokera lagrings utrymme efter behov.</li><li> Kontrol lera status för tjänsten Volume Shadow Copy på den skyddade servern. Om det är i inaktiverat tillstånd anger du att det ska starta manuellt. Starta tjänsten på-servern. Gå sedan tillbaka till DPM/Microsoft Azure Backup Server-konsolen och starta synkroniseringen med konsekvens kontroll jobbet.</li></ol>|
+| Backup | Repliken är inkonsekvent | Kontrollera att alternativet för automatisk konsekvenskontroll i guiden Skyddsgrupp är aktiverat. Mer information om replikeringsalternativ och konsekvenskontroller finns i den [här artikeln.](/system-center/dpm/create-dpm-protection-groups)<br> <ol><li> När det gäller säkerhetskopiering av systemtillstånd/BMR kontrollerar du Windows Server Backup har installerats på den skyddade servern.</li><li> Kontrollera om det finns utrymmesrelaterade problem i DPM-lagringspoolen på DPM/Microsoft Azure Backup Server och allokera lagringsutrymme efter behov.</li><li> Kontrollera tillståndet för den tjänsten Volume Shadow Copy på den skyddade servern. Om den är i ett inaktiverat tillstånd anger du att den ska starta manuellt. Starta tjänsten på servern. Gå sedan tillbaka till DPM/Microsoft Azure Backup Server-konsolen och starta synkroniseringen med konsekvenskontrolljobbet.</li></ol>|
 
 ## <a name="online-recovery-point-creation-failed"></a>Det gick inte att skapa återställningspunkten online
 
 | Åtgärd | Felinformation | Lösning |
 | --- | --- | --- |
-| Backup | Det gick inte att skapa återställningspunkten online | **Fel meddelande**: Windows Azure Backup-agenten kunde inte skapa en ögonblicks bild av den valda volymen. <br> **Lösning**: försök att öka utrymmet på replik-och återställnings punkt volymen.<br> <br> **Fel meddelande**: Windows Azure Backup-agenten kan inte ansluta till OBEngine-tjänsten <br> **Lösning**: kontrol lera att OBEngine finns i listan över aktiva tjänster på datorn. Om OBEngine-tjänsten inte körs använder du kommandot "net start OBEngine" för att starta tjänsten OBEngine. <br> <br> **Fel meddelande**: krypterings lösen frasen för den här servern har inte angetts. Konfigurera en krypterings lösen fras. <br> **Lösning**: försök att konfigurera en krypterings lösen fras. Gör så här om det Miss lyckas: <br> <ol><li>Kontrol lera att arbets platsen finns. Detta är den plats som nämns i registret **HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config**, med namnet **ScratchLocation** bör finnas.</li><li> Försök att registrera igen med hjälp av den gamla lösen frasen om det finns en sådan. *När du konfigurerar en krypterings lösen fras sparar du den på en säker plats.*</li><ol>|
+| Backup | Det gick inte att skapa återställningspunkten online | **Felmeddelande:** Windows Azure Backup Agent kunde inte skapa en ögonblicksbild av den valda volymen. <br> **Lösning:** Prova att öka utrymmet på replik- och återställningspunktvolymen.<br> <br> **Felmeddelande:** Windows Azure Backup-agenten kan inte ansluta till OBEngine-tjänsten <br> **Lösning:** Kontrollera att OBEngine finns i listan över tjänster som körs på datorn. Om OBEngine-tjänsten inte körs använder du kommandot "net start OBEngine" för att starta OBEngine-tjänsten. <br> <br> **Felmeddelande:** Krypteringsfrasen för den här servern har inte angetts. Konfigurera en krypteringsfras. <br> **Lösning:** Prova att konfigurera en lösenfras för kryptering. Om det misslyckas gör du följande: <br> <ol><li>Kontrollera att den scratch-platsen finns. Det här är den plats som anges i **HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config**, med namnet **ScratchLocation** ska finnas.</li><li> Om den scratch-platsen finns kan du försöka registrera igen med hjälp av den gamla lösenfrasen. *När du konfigurerar en krypterings lösenfras sparar du den på en säker plats.*</li><ol>|
 
-## <a name="the-original-and-external-dpm-servers-must-be-registered-to-the-same-vault"></a>De ursprungliga och externa DPM-servrarna måste vara registrerade på samma valv
-
-| Åtgärd | Felinformation | Lösning |
-| --- | --- | --- |
-| Återställ | **Felkod**: CBPServerRegisteredVaultDontMatchWithCurrent/valv autentiseringsuppgifter fel: 100110 <br/> <br/>**Fel meddelande**: de ursprungliga och externa DPM-servrarna måste vara registrerade på samma valv | **Orsak**: det här problemet uppstår när du försöker återställa filer till den alternativa servern från den ursprungliga servern med hjälp av alternativet för extern DPM-återställning, och om servern som återställs och den ursprungliga servern från vilken data säkerhets kopie ras inte är kopplad till samma Recovery Services-valv.<br/> <br/>**Lösning** För att lösa det här problemet kontrollerar du att både den ursprungliga och den alternativa servern är registrerade i samma valv.|
-
-## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>Det gick inte att skapa jobb för onlineåterställningspunkt för VMware VM
+## <a name="the-original-and-external-dpm-servers-must-be-registered-to-the-same-vault"></a>De ursprungliga och externa DPM-servrarna måste vara registrerade i samma valv
 
 | Åtgärd | Felinformation | Lösning |
 | --- | --- | --- |
-| Backup | Det gick inte att skapa jobb för onlineåterställningspunkt för VMware VM. DPM påträffade ett fel från VMware vid försök att hämta ChangeTracking-information. ErrorCode-FileFaultFault (ID 33621) |  <ol><li> Återställ CTK på VMware för de virtuella datorerna.</li> <li>Kontrol lera att den oberoende disken inte finns på plats i VMware.</li> <li>Stoppa skyddet för de virtuella datorerna och återaktivera skyddet med knappen **Uppdatera** . </li><li>Kör en kopia av de virtuella datorerna.</li></ol>|
+| Återställ | **Felkod:** CBPServerRegisteredVaultDontMatchWithCurrent/Vault Credentials Error: 100110 <br/> <br/>**Felmeddelande:** De ursprungliga och externa DPM-servrarna måste vara registrerade i samma valv | **Orsak:** Det här problemet uppstår när du försöker återställa filer till den alternativa servern från den ursprungliga servern med hjälp av alternativet Extern DPM-återställning, och om den server som återställs och den ursprungliga servern där data säkerhetskopieras inte är associerade med samma Recovery Services-valv.<br/> <br/>**Lösning** Lös problemet genom att se till att både den ursprungliga och alternativa servern är registrerade i samma valv.|
 
-## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Agent åtgärden misslyckades på grund av ett kommunikations fel med tjänsten DPM agent Coordinator på servern
+## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>Det går inte att skapa återställningspunkt online för virtuella VMware-datorer
 
 | Åtgärd | Felinformation | Lösning |
 | --- | --- | --- |
-| Push-överför agent (er) till skyddade servrar | Agent åtgärden misslyckades på grund av ett kommunikations fel med den DPM-agentkoordinator tjänsten på \<ServerName> . | **Om den rekommenderade åtgärden som visas i produkten inte fungerar utför du följande steg**: <ul><li> Följ [dessa steg](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)om du kopplar en dator från en obetrodd domän. <br> ELLER </li><li> Om du ansluter en dator från en betrodd domän kan du felsöka med hjälp av stegen som beskrivs i [den här bloggen](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726). <br>ELLER</li><li> Försök att inaktivera antivirus som fel söknings steg. Om det löser problemet ändrar du inställningarna för antivirus programmet enligt rekommendationerna i [den här artikeln](/system-center/dpm/run-antivirus-server).</li></ul> |
+| Backup | Det går inte att skapa återställningspunkt online för virtuella VMware-datorer. DPM påträffade ett fel från VMware vid försök att hämta ChangeTracking-information. ErrorCode – FileFaultFault (ID 33621) |  <ol><li> Återställa CTK på VMware för de berörda virtuella datorerna.</li> <li>Kontrollera att oberoende diskar inte finns på VMware.</li> <li>Stoppa skyddet för de berörda virtuella datorerna och återaktivera skyddet med **knappen** Uppdatera. </li><li>Kör en kopia för de berörda virtuella datorerna.</li></ol>|
+
+## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Agentåtgärden misslyckades på grund av ett kommunikationsfel med DPM-agentkoordinatortjänsten på servern
+
+| Åtgärd | Felinformation | Lösning |
+| --- | --- | --- |
+| Push-pusha agenter till skyddade servrar | Agentåtgärden misslyckades på grund av ett kommunikationsfel med DPM-agentkoordinator tjänsten på \<ServerName> . | **Om den rekommenderade åtgärden som visas i produkten inte fungerar utför du följande steg:** <ul><li> Om du kopplar en dator från en obetrott domän följer du [dessa steg.](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains) <br> (OR) </li><li> Om du kopplar en dator från en betrodd domän felsöker du med hjälp av stegen som beskrivs i den [här bloggen.](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726) <br>(OR)</li><li> Prova att inaktivera antivirus som ett felsökningssteg. Om det löser problemet ändrar du antivirusinställningarna enligt förslaget i den [här artikeln.](/system-center/dpm/run-antivirus-server)</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>Det gick inte att uppdatera metadata för registret
 
 | Åtgärd | Felinformation | Lösning |
 |-----------|---------------|------------|
-|Installation | Det gick inte att uppdatera metadata för registret. Det här uppdaterings felet kan leda till överförbrukning av lagrings förbrukning. För att undvika detta uppdaterar du register posten ReFS-trimning. | Justera register nyckeln **SYSTEM\CurrentControlSet\Control\FileSystem\RefsEnableInlineTrim**. Ange värdet DWORD till 1. |
-|Installation | Det gick inte att uppdatera metadata för registret. Det här uppdaterings felet kan leda till överförbrukning av lagrings förbrukning. Undvik detta genom att uppdatera register posten Volume SnapOptimization. | Skapa register nyckeln **SOFTWARE\Microsoft Data Protection Manager\Configuration\VolSnapOptimization\WriteIds** med ett tomt sträng värde. |
+|Installation | Det gick inte att uppdatera registermetadata. Det här uppdateringsfelet kan leda till överanvändning av lagringsförbrukning. Undvik detta genom att uppdatera registerposten ReFS Trimming. | Justera registernyckeln **SYSTEM\CurrentControlSet\Control\FileSystem\RefsEnableInlineTrim.** Ange värdet Dword till 1. |
+|Installation | Det gick inte att uppdatera metadata för registret. Det här uppdateringsfelet kan leda till överanvändning av lagringsförbrukningen. Undvik detta genom att uppdatera registerposten Volume SnapOptimization. | Skapa registernyckeln **SOFTWARE\Microsoft Data Protection Manager\Configuration\VolSnapOptimization\WriteIds** med ett tomt strängvärde. |
 
-## <a name="registration-and-agent-related-issues"></a>Registrerings-och Agent-relaterade problem
-
-| Åtgärd | Felinformation | Lösning |
-| --- | --- | --- |
-| Push-överför agent (er) till skyddade servrar | De angivna autentiseringsuppgifterna för servern är ogiltiga. | **Utför följande steg om den rekommenderade åtgärden som visas i produkten inte fungerar**: <br> Försök att installera skydds agenten manuellt på produktions servern enligt vad som anges i [den här artikeln](/system-center/dpm/deploy-dpm-protection-agent).|
-| Azure Backup-agenten kunde inte ansluta till Azure Backups tjänsten (ID: 100050) | Azure Backup-agenten kunde inte ansluta till Azure Backups tjänsten. | **Utför följande steg om den rekommenderade åtgärden som visas i produkten inte fungerar**: <br>1. Kör följande kommando från en upphöjd prompt: **PsExec-i-s "c:\program\internet Explorer\iexplore.exe**. Fönstret Internet Explorer öppnas. <br/> 2. gå till **verktyg**  >  **Internet alternativ**  >  **anslutningar**  >  **LAN-inställningar**. <br/> 3. ändra inställningarna om du vill använda en proxyserver. Ange sedan information om proxyservern.<br/> 4. om datorn har begränsad Internet åtkomst kontrollerar du att brand Väggs inställningarna på datorn eller proxyservern tillåter dessa [URL: er](install-mars-agent.md#verify-internet-access) och [IP-adress](install-mars-agent.md#verify-internet-access).|
-| Det gick inte att installera Azure Backup Agent | Det gick inte att installera Microsoft Azure Recovery Services. Alla ändringar som har gjorts i systemet av den Microsoft Azure Recovery Services installationen återställdes. (ID: 4024) | Installera Azure-agenten manuellt.
-
-## <a name="configuring-protection-group"></a>Konfigurerar skydds grupp
+## <a name="registration-and-agent-related-issues"></a>Problem med registrering och agent
 
 | Åtgärd | Felinformation | Lösning |
 | --- | --- | --- |
-| Konfigurera skydds grupper | DPM kunde inte räkna upp program komponenten på den skyddade datorn (skyddat dator namn). | Välj **Uppdatera** på skärmen konfigurera skydds gruppens användar gränssnitt på den relevanta data källan/komponent nivån. |
-| Konfigurera skydds grupper | Kan inte konfigurera skydd | Om den skyddade servern är en SQL-Server kontrollerar du att sysadmin-rollens behörigheter har angetts till system kontot (NTAuthority\System) på den skyddade datorn enligt beskrivningen i [den här artikeln](/system-center/dpm/back-up-sql-server).
-| Konfigurera skydds grupper | Det finns inte tillräckligt med ledigt utrymme i lagringspoolen för den här skydds gruppen. | Diskarna som läggs till i lagringspoolen [får inte innehålla en partition](/system-center/dpm/create-dpm-protection-groups). Ta bort alla befintliga volymer på diskarna. Lägg sedan till dem i lagringspoolen.|
-| Princip ändring |Det gick inte att ändra säkerhets kopierings principen. Fel: den aktuella åtgärden kunde inte utföras på grund av ett internt tjänst fel [0x29834]. Försök igen om en stund. Kontakta Microsofts supportavdelning om problemet kvarstår. | **Orsak:**<br/>Det här felet uppstår under tre förhållanden: när säkerhets inställningarna är aktiverade kan du, när du försöker minska kvarhållningsintervallet under de lägsta värdena som angetts tidigare, och när du använder en version som inte stöds. (Versioner som inte stöds är de som är lägre än Microsoft Azure Backup Server version 2.0.9052 och Azure Backup Server uppdatering 1.) <br/>**Rekommenderad åtgärd:**<br/> Om du vill fortsätta med principbaserad uppdateringar anger du kvarhållningsperioden ovanför den minsta kvarhållningsperioden som angetts. (Den minsta Retentions perioden är sju dagar i fyra veckor för varje vecka, tre veckor för varje månad eller ett år för varje år.) <br><br>Alternativt är det en annan prioriterad metod att uppdatera säkerhets kopierings agenten och Azure Backup Server för att utnyttja alla säkerhets uppdateringar. |
+| Push-pusha agenter till skyddade servrar | Autentiseringsuppgifterna som anges för servern är ogiltiga. | **Om den rekommenderade åtgärden som visas i produkten inte fungerar gör du följande:** <br> Försök att installera skyddsagenten manuellt på produktionsservern enligt vad som anges i [den här artikeln.](/system-center/dpm/deploy-dpm-protection-agent)|
+| Azure Backup Agent kunde inte ansluta till Azure Backup (ID: 100050) | Agenten Azure Backup kunde inte ansluta till Azure Backup tjänsten. | **Om den rekommenderade åtgärden som visas i produkten inte fungerar gör du följande:** <br>1. Kör följande kommando från en upphöjd kommandotolk: **psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe**. Då öppnas Internet Explorer fönster. <br/> 2. Gå till **Verktyg**  >  **InternetalternativAnslutningar**  >    >  **LAN-inställningar**. <br/> 3. Ändra inställningarna för att använda en proxyserver. Ange sedan information om proxyservern.<br/> 4. Om datorn har begränsad Internetåtkomst ska du kontrollera att brandväggsinställningarna på datorn eller proxyservern tillåter dessa [URL:er](install-mars-agent.md#verify-internet-access) och [IP-adresser.](install-mars-agent.md#verify-internet-access)|
+| Azure Backup Agentinstallationen misslyckades | Installationen Microsoft Azure Recovery Services misslyckades. Alla ändringar som har gjorts i systemet av Microsoft Azure Recovery Services-installationen återställdes. (ID: 4024) | Installera Azure Agent manuellt.
+
+## <a name="configuring-protection-group"></a>Konfigurera skyddsgrupp
+
+| Åtgärd | Felinformation | Lösning |
+| --- | --- | --- |
+| Konfigurera skyddsgrupper | DPM kunde inte räkna upp programkomponenten på den skyddade datorn (namnet på den skyddade datorn). | Välj **Uppdatera** på skärmen konfigurera skyddsgruppens användargränssnitt på relevant datakälla/komponentnivå. |
+| Konfigurera skyddsgrupper | Kan inte konfigurera skydd | Om den skyddade servern är en SQL-server kontrollerar du att rollbehörigheterna för sysadmin har angetts till systemkontot (NTAuthority\System) på den skyddade datorn enligt beskrivningen i den här [artikeln](/system-center/dpm/back-up-sql-server).
+| Konfigurera skyddsgrupper | Det finns inte tillräckligt med ledigt utrymme i lagringspoolen för den här skyddsgruppen. | Diskarna som läggs till i lagringspoolen [får inte innehålla en partition](/system-center/dpm/create-dpm-protection-groups). Ta bort alla befintliga volymer på diskarna. Lägg sedan till dem i lagringspoolen.|
+| Principändring |Det gick inte att ändra säkerhetskopieringsprincipen. Fel: Den aktuella åtgärden misslyckades på grund av ett internt tjänstfel [0x29834]. Försök igen efter en stund. Kontakta Microsofts supportavdelning om problemet kvarstår. | **Orsak:**<br/>Det här felet inträffar under tre villkor: när säkerhetsinställningar är aktiverade, när du försöker minska kvarhållningsintervallet under de minimivärden som angavs tidigare och när du har en version som inte stöds. (Versioner som inte stöds är de som är lägre än Microsoft Azure Backup Server version 2.0.9052 och Azure Backup Server uppdatering 1.) <br/>**Rekommenderad åtgärd:**<br/> Om du vill fortsätta med principrelaterade uppdateringar anger du kvarhållningsperioden över den minsta kvarhållningsperiod som angetts. (Den minsta kvarhållningsperioden är sju dagar per dag, fyra veckor för varje vecka, tre veckor per månad eller ett år för varje år.) <br><br>En annan bra metod är att uppdatera säkerhetskopieringsagenten och Azure Backup Server att utnyttja alla säkerhetsuppdateringar. |
 
 ## <a name="backup"></a>Backup
 
 | Åtgärd | Felinformation | Lösning |
 | --- | --- | --- |
-| Backup | Ett oväntat fel uppstod när jobbet kördes. Enheten är inte klar. | **Utför följande steg om den rekommenderade åtgärden som visas i produkten inte fungerar:** <br> <ul><li>Ange lagrings utrymmet för skugg kopian till obegränsade för objekten i skydds gruppen och kör sedan konsekvens kontrollen.<br></li> ELLER <li>Försök att ta bort den befintliga skydds gruppen och skapa flera nya grupper. Varje ny skydds grupp måste ha ett enskilt objekt.</li></ul> |
-| Backup | Om du bara säkerhetskopierar system tillstånd kontrollerar du att det finns tillräckligt med ledigt utrymme på den skyddade datorn för att lagra säkerhets kopian av system tillstånd. | <ol><li>Kontrol lera att Windows Server Backup är installerat på den skyddade datorn.</li><li>Kontrol lera att det finns tillräckligt med utrymme på den skyddade datorn för system tillstånd. Det enklaste sättet att kontrol lera detta är att gå till den skyddade datorn, öppna Windows Server Backup, klicka igenom valen och sedan välja BMR. Användar gränssnittet visar sedan hur mycket utrymme som krävs. Öppna **WSB**, lokal säkerhets kopiering schema för säkerhets kopiering  >    >    >  **Välj säkerhets kopierings konfiguration**  >  **fullständig Server** (storleken visas). Använd den här storleken för verifiering.</li></ol>
-| Backup | Säkerhets kopierings problem för BMR | Om storleken på BMR är stor flyttar du några programfiler till OS-enheten och försöker igen. |
-| Backup | Alternativet för att skydda en virtuell VMware-dator på en ny Microsoft Azure Backup Server visas inte som tillgänglig för att lägga till. | VMware-egenskaper pekas på en gammal, tillbakadragen instans av Microsoft Azure Backup Server. Lös problemet så här:<br><ol><li>I VCenter (SC-VMM-motsvarighet) går du till fliken **Sammanfattning** och sedan till **anpassade attribut**.</li>  <li>Ta bort det gamla Microsoft Azure Backup Server namnet från **Dpmserver** -värdet.</li>  <li>Gå tillbaka till den nya Microsoft Azure Backup servern och ändra PG.  När du har valt knappen **Uppdatera** visas den virtuella datorn med en kryss ruta som tillgänglig för att lägga till i skyddet.</li></ol> |
-| Backup | Fel vid åtkomst till filer/delade mappar | Försök att ändra Antivirus inställningarna enligt rekommendationerna i den här artikeln [köra antivirus program på DPM-servern](/system-center/dpm/run-antivirus-server).|
+| Backup | Ett oväntat fel uppstod när jobbet kördes. Enheten är inte klar. | **Om den rekommenderade åtgärden som visas i produkten inte fungerar gör du följande:** <br> <ul><li>Ange skuggkopielagringsutrymmet till obegränsat utrymme för objekten i skyddsgruppen och kör sedan konsekvenskontrollen.<br></li> (OR) <li>Prova att ta bort den befintliga skyddsgruppen och skapa flera nya grupper. Varje ny skyddsgrupp bör ha ett enskilt objekt i den.</li></ul> |
+| Backup | Om du endast säkerhetskopierar systemtillståndet kontrollerar du att det finns tillräckligt med ledigt utrymme på den skyddade datorn för att lagra säkerhetskopian av systemtillståndet. | <ol><li>Kontrollera att Windows Server Backup är installerad på den skyddade datorn.</li><li>Kontrollera att det finns tillräckligt med utrymme på den skyddade datorn för systemtillståndet. Det enklaste sättet att kontrollera detta är att gå till den skyddade datorn, öppna Windows Server Backup, klicka dig igenom valen och sedan välja BMR. Användargränssnittet visar sedan hur mycket utrymme som krävs. Öppna schema för lokal säkerhetskopiering av **WSB**  >    >    >  **Välj säkerhetskopieringskonfiguration**  >  **Fullständig server** (storlek visas). Använd den här storleken för verifiering.</li></ol>
+| Backup | Fel vid återställning av BMR | Om BMR-storleken är stor flyttar du vissa programfiler till OS-enheten och försöker igen. |
+| Backup | Alternativet att återaktivera skyddet av en virtuell VMware-dator på en Microsoft Azure Backup Server visas inte som tillgängligt att lägga till. | VMware-egenskaper pekar på en gammal, tillbakadragen instans av Microsoft Azure Backup Server. Lös problemet så här:<br><ol><li>I VCenter (SC-VMM-motsvarighet) går du till **fliken** Sammanfattning och sedan **till Anpassade attribut.**</li>  <li>Ta bort det Microsoft Azure Backup servernamnet från **DPMServer-värdet.**</li>  <li>Gå tillbaka till den nya Microsoft Azure Backup server och ändra PG.  När du har valt **knappen** Uppdatera visas den virtuella datorn med en kryssruta som tillgänglig för att lägga till i skyddet.</li></ol> |
+| Backup | Fel vid åtkomst till filer/delade mappar | Prova att ändra antivirusinställningarna enligt vad som föreslås i den här [artikeln Kör antivirusprogram på DPM-servern.](/system-center/dpm/run-antivirus-server)|
 
-## <a name="change-passphrase"></a>Ändra lösen fras
+## <a name="change-passphrase"></a>Ändra lösenfras
 
 | Åtgärd | Felinformation | Lösning |
 | --- | --- | --- |
-| Ändra lösen fras |Den angivna säkerhets koden är felaktig. Ange rätt säkerhets kod för att slutföra åtgärden. |**Orsak:**<br/> Det här felet uppstår när du anger en ogiltig eller utgången säkerhets-PIN-kod när du utför en kritisk åtgärd (till exempel ändra en lösen fras). <br/>**Rekommenderad åtgärd:**<br/> Du måste ange en giltig PIN-kod för att slutföra åtgärden. Logga in på Azure Portal och gå till Recovery Services-valvet för att få PIN-koden. Gå sedan till **Inställningar**  >  **Egenskaper**  >  **skapa säkerhets kod**. Använd den här PIN-koden för att ändra lösen frasen. |
-| Ändra lösen fras |Åtgärden misslyckades. ID: 120002 |**Orsak:**<br/>Felet uppstår när säkerhets inställningar är aktiverade, eller när du försöker ändra lösen frasen när du använder en version som inte stöds.<br/>**Rekommenderad åtgärd:**<br/> Om du vill ändra lösen frasen måste du först uppdatera säkerhets kopierings agenten till den lägsta versionen, som är 2.0.9052. Du måste också uppdatera Azure Backup Server till minst uppdatering 1 och sedan ange en giltig PIN-kod för säkerhet. Logga in på Azure Portal och gå till Recovery Services-valvet för att få PIN-koden. Gå sedan till **Inställningar**  >  **Egenskaper**  >  **skapa säkerhets kod**. Använd den här PIN-koden för att ändra lösen frasen. |
+| Ändra lösenfras |Säkerhets-PIN-koden som angavs är felaktig. Ange rätt PIN-kod för säkerhet för att slutföra den här åtgärden. |**Orsak:**<br/> Det här felet uppstår när du anger en ogiltig eller utgången säkerhets-PIN-kod när du utför en kritisk åtgärd (till exempel att ändra en lösenfras). <br/>**Rekommenderad åtgärd:**<br/> För att slutföra åtgärden måste du ange en giltig PIN-kod för säkerhet. Hämta PIN-koden genom att logga in på Azure Portal och gå till Recovery Services-valvet. Gå sedan till Inställningar **Egenskaper**  >  **Generera**  >  **säkerhets-PIN-kod.** Använd den här PIN-koden för att ändra lösenfrasen. |
+| Ändra lösenfras |Åtgärden misslyckades. ID: 120002 |**Orsak:**<br/>Det här felet uppstår när säkerhetsinställningar är aktiverade eller när du försöker ändra lösenfrasen när du använder en version som inte stöds.<br/>**Rekommenderad åtgärd:**<br/> Om du vill ändra lösenfrasen måste du först uppdatera säkerhetskopieringsagenten till den lägsta versionen, som är 2.0.9052. Du måste också uppdatera Azure Backup Server till minst uppdatering 1 och sedan ange en giltig PIN-kod för säkerhet. För att hämta PIN-koden loggar du in Azure Portal och går till Recovery Services-valvet. Gå sedan till Inställningar **Egenskaper**  >  **Generera**  >  **säkerhets-PIN-kod.** Använd den här PIN-koden för att ändra lösenfrasen. |
 
 ## <a name="configure-email-notifications"></a>Konfigurera e-postaviseringar
 
 | Åtgärd | Felinformation | Lösning |
 | --- | --- | --- |
-| Konfigurera e-postaviseringar med ett arbets-eller skol konto |Fel-ID: 2013| **Orsak:**<br> Försöker använda arbets-eller skol konto <br>**Rekommenderad åtgärd:**<ol><li> Det första du ser är att "Tillåt anonym vidarebefordran på en mottagnings anslutning" för DPM-servern har kon figurer ATS på Exchange. Mer information om hur du konfigurerar detta finns i [Tillåt anonymt relä på en Receive-anslutning](/exchange/mail-flow/connectors/allow-anonymous-relay).</li> <li> Om du inte kan använda en intern SMTP-relä och behöver konfigurera med hjälp av din Office 365-Server kan du konfigurera IIS att vara ett relä. Konfigurera DPM-servern så att [den vidarebefordrar SMTP till Office 365 med IIS](/exchange/mail-flow/test-smtp-with-telnet).<br><br>  Se till att använda formatet User \@ Domain.com och *inte* domain\user.<br><br><li>Punkt DPM använder det lokala server namnet som SMTP-server, port 587. Peka sedan på det e-postmeddelande som e-postmeddelandena ska komma från.<li> Användar namnet och lösen ordet på sidan DPM SMTP-installation ska vara ett domän konto i den domän där DPM finns. </li><br> När du ändrar SMTP-serveradressen gör du ändringen av de nya inställningarna, stänger rutan inställningar och öppnar den igen för att vara säker på att den motsvarar det nya värdet.  Att bara ändra och testa kanske inte alltid gör att de nya inställningarna börjar gälla, så testa det på det sättet som är bäst.<br><br>Du kan när som helst under den här processen rensa de här inställningarna genom att stänga DPM-konsolen och redigera följande register nycklar: **HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> ta bort SMTPPassword och SMTPUserName-nycklar**. Du kan lägga tillbaka dem i användar gränssnittet när du startar det igen.
+| Konfigurera e-postaviseringar med ett arbets- eller skolkonto |Fel-ID: 2013| **Orsak:**<br> Försöker använda ett arbets- eller skolkonto <br>**Rekommenderad åtgärd:**<ol><li> Det första du ska se till är att "Tillåt Anonym relä på en mottagningsanslutning" för DPM-servern har ställts in på Exchange. Mer information om hur du konfigurerar detta finns i [Allow Anonymous Relay on a Receive Connector](/exchange/mail-flow/connectors/allow-anonymous-relay).</li> <li> Om du inte kan använda ett internt SMTP-relä och behöver konfigurera det med hjälp av din Office 365-server kan du konfigurera IIS som ett relä. Konfigurera DPM-servern att vidarebefordra [SMTP till Office 365 med hjälp av IIS](/exchange/mail-flow/test-smtp-with-telnet).<br><br>  Se till att använda \@ användarformatet  domain.com inte domän\användare.<br><br><li>Peka DPM för att använda det lokala servernamnet som SMTP-server, port 587. Peka den sedan till användarens e-postadress som e-postmeddelandena ska komma från.<li> Användarnamnet och lösenordet på DPM SMTP-konfigurationssidan ska vara för ett domänkonto i domänen där DPM finns. </li><br> När du ändrar SMTP-serveradressen gör du ändringen i de nya inställningarna, stänger inställningsrutan och öppnar den igen för att vara säker på att den återspeglar det nya värdet.  Att bara ändra och testa kanske inte alltid får de nya inställningarna att gälla, så det är bästa praxis att testa det på det här sättet.<br><br>Du kan när som helst under den här processen rensa inställningarna genom att stänga DPM-konsolen och redigera följande registernycklar: **HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> Ta bort SMTPPassword- och SMTPUserName-nycklar.** Du kan lägga till dem i användargränssnittet igen när du startar det igen.
 
 ## <a name="common-issues"></a>Vanliga problem
 
-I det här avsnittet beskrivs vanliga fel som kan uppstå när du använder Azure Backup Server.
+Det här avsnittet beskriver vanliga fel som kan uppstå när du använder Azure Backup Server.
 
 ### <a name="cbpsourcesnapshotfailedreplicamissingorinvalid"></a>CBPSourceSnapshotFailedReplicaMissingOrInvalid
 
 Felmeddelande | Rekommenderad åtgärd |
 -- | --
-Säkerhetskopieringen misslyckades eftersom disksäkerhetskopieringsrepliken är ogiltig eller saknas. | Lös problemet genom att kontrol lera stegen nedan och försök igen: <br/> 1. skapa en disk återställnings punkt<br/> 2. kör konsekvens kontroll på data källan <br/> 3. stoppa skyddet av data källan och konfigurera sedan om skyddet för den här data källan
+Säkerhetskopieringen misslyckades eftersom disksäkerhetskopieringsrepliken är ogiltig eller saknas. | Lös problemet genom att kontrollera stegen nedan och försök igen: <br/> 1. Skapa en diskåterställningspunkt<br/> 2. Kör konsekvenskontroll på datakällan <br/> 3. Stoppa skyddet av datakällan och konfigurera om skyddet för den här datakällan
 
 ### <a name="cbpsourcesnapshotfailedreplicametadatainvalid"></a>CBPSourceSnapshotFailedReplicaMetadataInvalid
 
 Felmeddelande | Rekommenderad åtgärd |
 -- | --
-Ögonblicks bilden av käll volymen misslyckades eftersom metadata på repliken är ogiltiga. | Skapa en disk återställnings punkt för data källan och försök att säkerhetskopiera online igen
+Ögonblicksbilden av källvolymen misslyckades eftersom metadata på repliken är ogiltiga. | Skapa en diskåterställningspunkt för den här datakällan och försök att säkerhetskopiera online igen
 
 ### <a name="cbpsourcesnapshotfailedreplicainconsistent"></a>CBPSourceSnapshotFailedReplicaInconsistent
 
 Felmeddelande | Rekommenderad åtgärd |
 -- | --
-Ögonblicks bilden av käll volymen misslyckades på grund av inkonsekvent DataSource-replik. | Kör en konsekvens kontroll på den här data källan och försök igen
+Ögonblicksbilden av källvolymen misslyckades på grund av inkonsekvent datakällreplik. | Kör en konsekvenskontroll på den här datakällan och försök igen
 
 ### <a name="cbpsourcesnapshotfailedreplicacloningissue"></a>CBPSourceSnapshotFailedReplicaCloningIssue
 
 Felmeddelande | Rekommenderad åtgärd |
 -- | --
-Det gick inte att säkerhetskopiera eftersom disksäkerhetskopieringsrepliken inte kunde klonas.| Se till att alla tidigare disk säkerhets kopierings repliker (. vhdx) har demonterats och att ingen disk till disk säkerhets kopiering pågår under säkerhets kopiering online
+Det gick inte att säkerhetskopiera eftersom disksäkerhetskopieringsrepliken inte kunde klonas.| Kontrollera att alla tidigare replikfiler för disksäkerhetskopiering (.vhdx) är demonterade och att ingen säkerhetskopiering från disk till disk pågår under onlinesäkerhetskopior

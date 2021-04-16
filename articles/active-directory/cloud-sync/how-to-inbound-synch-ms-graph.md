@@ -1,6 +1,6 @@
 ---
-title: Program mässigt konfigurera molnbaserad synkronisering med MS Graph API
-description: I det här avsnittet beskrivs hur du aktiverar inkommande synkronisering med bara Graph API
+title: Så här konfigurerar du molnsynkronisering programmässigt med MS Graph API
+description: Det här avsnittet beskriver hur du aktiverar inkommande synkronisering med bara Graph API
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,43 +11,48 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c84636ea86b3b640aef365c1c5d8e634b9a1f48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fe220cf7b5cb8b67e5ab7ded221494e89a28aa5
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99593171"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530265"
 ---
-# <a name="how-to-programmatically-configure-cloud-sync-using-ms-graph-api"></a>Program mässigt konfigurera molnbaserad synkronisering med MS Graph API
+# <a name="how-to-programmatically-configure-cloud-sync-using-ms-graph-api"></a>Så här konfigurerar du molnsynkronisering programmässigt med MS Graph API
 
-I följande dokument beskrivs hur du replikerar en Synkroniseringsregel från grunden med endast MSGraph-API: er.  
+I följande dokument beskrivs hur du replikerar en synkroniseringsprofil från grunden med endast MSGraph-API:er.  
 Strukturen för hur du gör detta består av följande steg.  De är:
 
-- [Grundläggande konfiguration](#basic-setup)
-- [Skapa tjänstens huvud namn](#create-service-principals)
-- [Skapa synkroniseringsjobb](#create-sync-job)
-- [Uppdatera riktad domän](#update-targeted-domain)
-- [Aktivera synkronisering av lösen ords-hashar](#enable-sync-password-hashes-on-configuration-blade)
-- [Oavsiktliga borttagningar](#accidental-deletes)
-- [Starta synkroniseringsjobb](#start-sync-job)
-- [Gransknings status](#review-status)
+- [Så här konfigurerar du molnsynkronisering programmässigt med MS Graph API](#how-to-programmatically-configure-cloud-sync-using-ms-graph-api)
+  - [Grundläggande konfiguration](#basic-setup)
+    - [Aktivera klientflaggor](#enable-tenant-flags)
+  - [Skapa tjänsthuvudnamn](#create-service-principals)
+  - [Skapa synkroniseringsjobb](#create-sync-job)
+  - [Uppdatera måldomänen](#update-targeted-domain)
+  - [Aktivera synkronisering av lösenordshashar på konfigurationsbladet](#enable-sync-password-hashes-on-configuration-blade)
+  - [Oavsiktliga borttagningar](#accidental-deletes)
+    - [Aktivera och ange tröskelvärdet](#enabling-and-setting-the-threshold)
+    - [Tillåta borttagningar](#allowing-deletes)
+  - [Starta synkroniseringsjobb](#start-sync-job)
+  - [Granska status](#review-status)
+  - [Nästa steg](#next-steps)
 
-Använd dessa [Microsoft Azure Active Directory-modul för Windows PowerShell](/powershell/module/msonline/) -kommandon för att aktivera synkronisering för en produktions klient, ett krav för att kunna anropa administrations webb tjänsten för den klienten.
+Använd [](/powershell/module/msonline/) dessa Microsoft Azure Active Directory-modul för Windows PowerShell kommandon för att aktivera synkronisering för en produktionsklient, vilket är ett krav för att kunna anropa administrationswebbtjänsten för den klientorganisationen.
 
 ## <a name="basic-setup"></a>Grundläggande konfiguration
 
-### <a name="enable-tenant-flags"></a>Aktivera klient flaggor
+### <a name="enable-tenant-flags"></a>Aktivera klientflaggor
 
  ```PowerShell
  Connect-MsolService ('-AzureEnvironment <AzureEnvironmnet>')
  Set-MsolDirSyncEnabled -EnableDirSync $true
  ```
-Den första av de två kommandona kräver Azure Active Directory autentiseringsuppgifter. Dessa cmdletarna identifierar klienten implicit och aktiverar den för synkronisering.
+Det första av dessa två kommandon kräver Azure Active Directory autentiseringsuppgifter. Dessa kommandon identifierar implicit klientorganisationen och aktiverar den för synkronisering.
 
 ## <a name="create-service-principals"></a>Skapa tjänsthuvudnamn
-Sedan måste vi skapa [AD2AAD-program/tjänstens huvud namn](/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http)
+Därefter måste vi skapa [AD2AAD-programmet/tjänstens huvudnamn](/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http&preserve-view=true)
 
-Du måste använda detta program-ID 1a4721b3-e57f-4451-ae87-ef078703ec94. DisplayName är AD-domänens URL, om den används i portalen (till exempel contoso.com), men den kan ha ett annat namn.
+Du måste använda det här program-ID:t 1a4721b3-e57f-4451-ae87-ef078703ec94. displayName är AD-domän-URL:en, om den används i portalen (till exempel contoso.com), men den kan få ett annat namn.
 
  ```
  POST https://graph.microsoft.com/beta/applicationTemplates/1a4721b3-e57f-4451-ae87-ef078703ec94/instantiate
@@ -59,20 +64,20 @@ Du måste använda detta program-ID 1a4721b3-e57f-4451-ae87-ef078703ec94. Displa
 
 
 ## <a name="create-sync-job"></a>Skapa synkroniseringsjobb
-Utdata från kommandot ovan returnerar objectId för det tjänst huvud namn som skapades. I det här exemplet är objectId 614ac0e9-a59b-481f-bd8f-79a73d167e1c.  Använd Microsoft Graph för att lägga till en synchronizationJob till tjänstens huvud namn.  
+Utdata från kommandot ovan returnerar objectId för tjänstens huvudnamn som skapades. I det här exemplet är objectId 614ac0e9-a59b-481f-bd8f-79a73d167e1c.  Använd Microsoft Graph för att lägga till ett synkroniseringsjobb till tjänstens huvudnamn.  
 
-Dokumentation om hur du skapar ett synkroniseringsjobb finns [här](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta).
+Dokumentation för att skapa ett synkroniseringsjobb finns [här.](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta&preserve-view=true)
 
-Om du inte har loggat in med ID: t ovan kan du hitta tjänstens huvud namn genom att köra följande MS Graph-anrop. Du behöver Directory. Read. alla behörigheter för att utföra det anropet:
+Om du inte antecknade ID:t ovan kan du hitta tjänstens huvudnamn genom att köra följande MS Graph-anrop. Du behöver behörigheterna Directory.Read.All för att göra anropet:
  
  `GET https://graph.microsoft.com/beta/servicePrincipals `
 
-Leta sedan efter appens namn i utdata.
+Leta sedan efter appnamnet i utdata.
 
-Kör följande två kommandon för att skapa två jobb: ett för etablering av användare/grupp och en för synkronisering av lösen ords-hash. Det är samma begäran två gånger, men med olika mall-ID: n.
+Kör följande två kommandon för att skapa två jobb: ett för användare/gruppetablering och ett för synkronisering av lösenordshashar. Det är samma begäran två gånger men med olika mall-ID:er.
 
 
-Anropa följande två begär Anden:
+Anropa följande två begäranden:
 
  ```
  POST https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/jobs
@@ -92,7 +97,7 @@ Anropa följande två begär Anden:
 
 Du behöver två anrop om du vill skapa båda.
 
-Exempel retur värde (för etablering):
+Exempel på returvärde (för etablering):
 
  ```
 HTTP 201/Created
@@ -122,22 +127,22 @@ HTTP 201/Created
 }
 ```
 
-## <a name="update-targeted-domain"></a>Uppdatera riktad domän
-För den här klienten är objekt identifieraren och program identifieraren för tjänstens huvud namn följande:
+## <a name="update-targeted-domain"></a>Uppdatera måldomänen
+För den här klientorganisationen är objektidentifieraren och programidentifieraren för tjänstens huvudnamn följande:
 
-ObjectId: 8895955e-2e6c-4d79-8943-4d72ca36878f AppId: 00000014-0000-0000-C000-000000000000 DisplayName: testApp
+ObjectId: 8895955e-2e6c-4d79-8943-4d72ca36878f AppId: 00000014-0000-0000-c000-000000000000 DisplayName: testApp
 
-Vi kommer att behöva uppdatera den domän som den här konfigurationen är riktad till, så uppdatera hemligheterna för den här domänen.
+Vi kommer att behöva uppdatera domänen som den här konfigurationen är riktad mot, så uppdatera hemligheterna för den här domänen.
 
-Kontrol lera att domän namnet du använder är samma URL som du har angett för lokal-domänkontrollanten
+Kontrollera att domännamnet du använder är samma URL som du har angett för den lokala domänkontrollanten
 
  ```
  PUT – https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/secrets
  ```
- Lägg till följande nyckel/värde-par i nedanstående värde mat ris baserat på vad du försöker göra:
- - Aktivera både PHS och Sync-innehavaradministratör {Key: "AppKey", värde: "{" appKeyScenario ":" AD2AADPasswordHash "}"}
+ Lägg till följande nyckel/värde-par i värdematrisen nedan baserat på vad du försöker göra:
+ - Aktivera både PHS och synkronisera klientflaggor { nyckel: "AppKey", värde: "{"appKeyScenario":"AD2AADPasswordHash"}" }
  
- - Aktivera endast flaggan för synkronisering av klient organisation (Aktivera inte PHS) {Key: "AppKey", värde: "{" appKeyScenario ":" AD2AADProvisioning "}"}
+ - Aktivera endast synkronisering av klientflagga (aktivera inte PHS) { nyckel: "AppKey", värde: "{"appKeyScenario":"AD2AADProvisioning"}" }
  ```
  Request body –
  {
@@ -150,19 +155,19 @@ Kontrol lera att domän namnet du använder är samma URL som du har angett för
   }
 ```
 
-Förväntat svar är... HTTP 204/inget innehåll
+Det förväntade svaret är ... HTTP 204/Inget innehåll
 
-Här är det markerade "domän"-värdet namnet på den lokala Active Directory domän från vilken poster ska tillhandahållas till Azure Active Directory.
+Här är det markerade värdet "Domän" namnet på lokal Active Directory domän som poster ska etableras till Azure Active Directory.
 
-## <a name="enable-sync-password-hashes-on-configuration-blade"></a>Aktivera synkronisering av lösen ords hashar på konfigurations bladet
+## <a name="enable-sync-password-hashes-on-configuration-blade"></a>Aktivera synkronisering av lösenordshashar på konfigurationsbladet
 
- Det här avsnittet beskriver hur du aktiverar synkronisering av lösen ords-hashar för en viss konfiguration. Detta skiljer sig från den AppKey-hemlighet som aktiverar funktions flaggan på klient nivå. Detta gäller endast för en domän/konfig. Du måste ange program nyckeln till den PHS som ska användas för att sluta till slutet.
+ I det här avsnittet går vi in på hur du aktiverar synkronisering av lösenordshashar för en viss konfiguration. Detta skiljer sig från AppKey-hemligheten som aktiverar funktionsflaggan på klientnivå – detta gäller endast för en enskild domän/konfiguration. Du måste ange programnyckeln till PHS-nyckeln för att detta ska fungera från slut till slut.
 
-1. Ta schemat (varningen är ganska stor) 
+1. Hämta schemat (varning om att det är ganska stort) 
  ```
  GET –https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/jobs/ [AD2AADProvisioningJobId]/schema
  ```
-2. Ta den här CredentialData:
+2. Ta den här attributmappningen för CredentialData:
  ``` 
  {
  "defaultValue": null,
@@ -178,15 +183,15 @@ Här är det markerade "domän"-värdet namnet på den lokala Active Directory d
  "parameters": []
  }
  ```
-3. Hitta följande objekt mappningar med följande namn i schemat
- - Etablera Active Directory användare
- - Etablera Active Directory-inetOrgPerson
+3. Hitta följande objektmappningar med följande namn i schemat
+ - Etablera Active Directory-användare
+ - Etablera Active Directory inetOrgPersons
 
- Objekt mappningar finns i schemat. synchronizationRules [0]. objectMappings (för närvarande kan du anta att det bara finns en Synkroniseringsregel)
+ Objektmappningar finns i schema.synchronizationRules[0].objectMappings (för tillfället kan du anta att det bara finns en synkroniseringsregel)
 
-4. Ta CredentialData-mappningen från steg (2) och infoga den i objekt mappningarna i steg (3)
+4. Ta CredentialData-mappningen från steg (2) och infoga den i objektmappningarna i steg (3)
 
- Objekt mappningen ser ut ungefär så här:
+ Objektmappningen ser ut ungefär så här:
  ```
  {
  "enabled": true,
@@ -198,11 +203,11 @@ Här är det markerade "domän"-värdet namnet på den lokala Active Directory d
  ...
  } 
  ```
- Kopiera/klistra in mappningen från steget **skapa AD2AADProvisioning och AD2AADPasswordHash-jobb** ovan till attributeMappings-matrisen. 
+ Kopiera/klistra in mappningen från steget **Create AD2AADProvisioning and AD2AADPasswordHash (Skapa AD2AADProvisioning och AD2AADPasswordHash)** ovan i matrisen attributeMappings. 
 
- Element ordningen i den här matrisen spelar ingen roll (Server delen sorteras efter dig). Var försiktig med att lägga till denna attributmappning om namnet redan finns i matrisen (t. ex. om det redan finns ett objekt i attributeMappings som har targetAttributeName-CredentialData) – du kan få konflikter eller befintliga och nya mappningar kan kombineras tillsammans (vanligt vis inte önskat resultat). Server delen kan inte dedupliceras åt dig. 
+ Ordningen på elementen i den här matrisen spelar ingen roll (backend sorteras åt dig). Var försiktig med att lägga till den här attributmappningen om namnet redan finns i matrisen (t.ex. om det redan finns ett objekt i attributeMappings som har targetAttributeName CredentialData) – du kan få konfliktfel, eller så kan de redan existerande och nya mappningarna kombineras (vanligtvis inte önskat resultat). Backend dedupliceras inte åt dig. 
 
- Kom ihåg att göra detta för både användare och inetOrgperson
+ Kom ihåg att göra detta för både användare och inetOrgpersons
 
 5. Spara schemat som du har skapat 
  ```
@@ -210,27 +215,27 @@ Här är det markerade "domän"-värdet namnet på den lokala Active Directory d
  https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/jobs/ [AD2AADProvisioningJobId]/schema
 ```
 
- Lägg till schemat i begär ande texten. 
+ Lägg till schemat i begärandetexten. 
 
 ## <a name="accidental-deletes"></a>Oavsiktliga borttagningar
-Det här avsnittet beskriver hur du program mässigt aktiverar/inaktiverar och använder [oavsiktliga borttagningar](how-to-accidental-deletes.md) program mässigt.
+Det här avsnittet visar hur du programmässigt aktiverar/inaktiverar och använder [oavsiktliga borttagningar](how-to-accidental-deletes.md) programmatiskt.
 
 
-### <a name="enabling-and-setting-the-threshold"></a>Aktivera och ange tröskeln
-Det finns två inställningar för varje jobb som du kan använda:
+### <a name="enabling-and-setting-the-threshold"></a>Aktivera och ange tröskelvärdet
+Det finns två per jobbinställningar som du kan använda, de är:
 
- - DeleteThresholdEnabled – möjliggör oavsiktlig borttagning av jobbet när det är inställt på "true". Ange till true som standard.
- - DeleteThresholdValue – definierar det maximala antalet borttagningar som ska tillåtas vid varje körning av jobbet när förebyggande borttagning av misstag har Aktiver ATS. Värdet är inställt på 500 som standard.  Så om värdet är inställt på 500 kommer det högsta antalet tillåtna rader att vara 499 i varje körning.
+ - DeleteThresholdEnabled – Aktiverar oavsiktligt borttagningsskydd för jobbet när det är inställt på "true". Ange till "true" som standard.
+ - DeleteThresholdValue – Definierar det maximala antalet borttagningar som tillåts i varje körning av jobbet när skydd mot oavsiktliga borttagningar är aktiverat. Värdet är inställt på 500 som standard.  Så om värdet är inställt på 500 är det maximala antalet tillåtna borttagningar 499 i varje körning.
 
-Inställningarna för tröskelvärde för borttagning är en del av `SyncNotificationSettings` och kan ändras via Graph. 
+Tröskelvärdesinställningarna för borttagning är en del av `SyncNotificationSettings` och kan ändras via grafen. 
 
-Vi kommer att behöva uppdatera SyncNotificationSettings som den här konfigurationen är riktad till, så uppdatera hemligheterna.
+Vi måste uppdatera SyncNotificationSettings som den här konfigurationen är riktad mot, så uppdatera hemligheterna.
 
  ```
  PUT – https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/secrets
  ```
 
- Lägg till följande nyckel/värde-par i nedanstående värde mat ris baserat på vad du försöker göra:
+ Lägg till följande nyckel/värde-par i värdematrisen nedan baserat på vad du försöker göra:
 
 ```
  Request body -
@@ -246,19 +251,19 @@ Vi kommer att behöva uppdatera SyncNotificationSettings som den här konfigurat
 
 ```
 
-Inställningen "aktive rad" i exemplet ovan är att aktivera/inaktivera e-postmeddelanden när jobbet är i karantän.
+Inställningen "Aktiverad" i exemplet ovan är för att aktivera/inaktivera e-postmeddelanden när jobbet har satts i karantän.
 
 
-Vi stöder för närvarande inte PATCH-begäranden för hemligheter, så du måste lägga till alla värden i begärans brödtext (som i exemplet ovan) för att bevara de andra värdena.
+För närvarande stöder vi inte PATCH-begäranden för hemligheter, så du måste lägga till alla värden i brödtexten i PUT-begäran (som i exemplet ovan) för att bevara de andra värdena.
 
-De befintliga värdena för alla hemligheter kan hämtas med hjälp av 
+Befintliga värden för alla hemligheter kan hämtas med hjälp av 
 
 ```
 GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secrets 
 ```
 
-### <a name="allowing-deletes"></a>Tillåter borttagning
-Om du vill tillåta borttagningarna att flöda genom när jobbet har satts i karantän måste du utfärda en omstart med bara "ForceDeletes" som definitions område. 
+### <a name="allowing-deletes"></a>Tillåt borttagningar
+Om du vill tillåta att borttagningarna flödar igenom efter att jobbet har förts i karantän måste du utfärda en omstart med bara "ForceDeletes" som omfång. 
 
 ```
 Request:
@@ -282,21 +287,21 @@ Jobbet kan hämtas igen via följande kommando:
 
  `GET https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/jobs/ ` 
 
-Dokumentation för att hämta jobb hittar du [här](/graph/api/synchronization-synchronizationjob-list?tabs=http&view=graph-rest-beta). 
+Dokumentation för att hämta jobb finns [här.](/graph/api/synchronization-synchronizationjob-list?tabs=http&view=graph-rest-beta&preserve-view=true) 
  
-Starta jobbet genom att utfärda denna begäran med hjälp av objectId för tjänstens huvud namn som skapades i det första steget och jobb identifieraren som returnerades från begäran som skapade jobbet.
+Starta jobbet genom att utfärda den här begäran med objectId för tjänstens huvudnamn som skapades i det första steget och jobbidentifieraren som returnerades från begäran som skapade jobbet.
 
-Dokumentation om hur du startar ett jobb hittar du [här](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta). 
+Dokumentation om hur du startar ett jobb finns [här](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta&preserve-view=true). 
 
  ```
  POST  https://graph.microsoft.com/beta/servicePrincipals/8895955e-2e6c-4d79-8943-4d72ca36878f/synchronization/jobs/AD2AADProvisioning.fc96887f36da47508c935c28a0c0b6da/start
  ```
 
-Förväntat svar är... HTTP 204/inget innehåll.
+Det förväntade svaret är ... HTTP 204/Inget innehåll.
 
-Andra kommandon för att kontrol lera jobbet dokumenteras [här](/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta).
+Andra kommandon för att kontrollera jobbet dokumenteras [här](/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta&preserve-view=true).
  
-För att starta om ett jobb använder det...
+Om du vill starta om ett jobb använder man ...
 
  ```
  POST  https://graph.microsoft.com/beta/servicePrincipals/8895955e-2e6c-4d79-8943-4d72ca36878f/synchronization/jobs/AD2AADProvisioning.fc96887f36da47508c935c28a0c0b6da/restart
@@ -307,17 +312,17 @@ För att starta om ett jobb använder det...
  }
  ```
 
-## <a name="review-status"></a>Gransknings status
-Hämta jobb status via...
+## <a name="review-status"></a>Granska status
+Hämta dina jobbstatusar via ...
 
  ```
  GET https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/jobs/ 
  ```
 
-Titta under avsnittet status för det returnerade objektet för relevant information
+Titta under statusavsnittet i returobjektet för relevant information
 
 ## <a name="next-steps"></a>Nästa steg 
 
-- [Vad är Azure AD Connect Cloud Sync?](what-is-cloud-sync.md)
+- [Vad är Azure AD Connect molnsynkronisering?](what-is-cloud-sync.md)
 - [Transformeringar](how-to-transformation.md)
-- [API för Azure AD-synkronisering](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Synkroniserings-API för Azure AD](/graph/api/resources/synchronization-overview?view=graph-rest-beta&preserve-view=true)

@@ -80,7 +80,7 @@ Leta sedan upp och välj **den inbyggda initiativdefinitionen CIS Microsoft Azur
 
 ### <a name="ensure-that-azure-defender-is-set-to-on-for-azure-sql-database-servers"></a>Kontrollera att Azure Defender är inställt på På för Azure SQL databasservrar
 
-**ID:** CIS Azure 2.3 **Ägarskap:** Kund
+**ID:** CIS Azure 2.3-ägarskap: Kund 
 
 |Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -132,7 +132,7 @@ Leta sedan upp och välj **den inbyggda initiativdefinitionen CIS Microsoft Azur
 
 |Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Automatisk etablering av Log Analytics-agenten ska aktiveras i din prenumeration](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F475aae12-b88a-4572-8b36-9b712b2b3a17) |För att övervaka säkerhetsproblem och hot samlar Azure Security Center in data från dina virtuella Azure-datorer. Data samlas in av Log Analytics-agenten, tidigare kallad Microsoft Monitoring Agent (MMA), som läser olika säkerhetsrelaterade konfigurationer och händelseloggar från datorn och kopierar data till Din Log Analytics-arbetsyta för analys. Vi rekommenderar att du aktiverar automatisk etablering för att automatiskt distribuera agenten till alla virtuella Azure-datorer som stöds och eventuella nya som skapas. |AuditIfNotExists, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Automatic_provisioning_log_analytics_monitoring_agent.json) |
+|[Automatisk etablering av Log Analytics-agenten ska aktiveras i din prenumeration](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F475aae12-b88a-4572-8b36-9b712b2b3a17) |Om du vill övervaka säkerhetsproblem och hot samlar Azure Security Center in data från dina virtuella Azure-datorer. Data samlas in av Log Analytics-agenten, tidigare kallad Microsoft Monitoring Agent (MMA), som läser olika säkerhetsrelaterade konfigurationer och händelseloggar från datorn och kopierar data till Din Log Analytics-arbetsyta för analys. Vi rekommenderar att du aktiverar automatisk etablering för att automatiskt distribuera agenten till alla virtuella Azure-datorer som stöds och eventuella nya som skapas. |AuditIfNotExists, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Automatic_provisioning_log_analytics_monitoring_agent.json) |
 
 ### <a name="ensure-additional-email-addresses-is-configured-with-a-security-contact-email"></a>Se till att "Ytterligare e-postadresser" har konfigurerats med en e-postadress för säkerhetskontakt
 
@@ -158,7 +158,7 @@ Leta sedan upp och välj **den inbyggda initiativdefinitionen CIS Microsoft Azur
 
 |Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Säker överföring till lagringskonton ska vara aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F404c3081-a854-4457-ae30-26a93ef643f9) |Granska krav för säker överföring i ditt lagringskonto. Säker överföring är ett alternativ som tvingar ditt lagringskonto att endast godkänna begäranden från säkra anslutningar (HTTPS). Användning av HTTPS säkerställer autentisering mellan servern och tjänsten och skyddar data under överföring från attacker på nätverksnivå, till exempel man-in-the-middle, avlyssning och sessionskapning |Granska, Neka, Inaktiverad |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_AuditForHTTPSEnabled_Audit.json) |
+|[Säker överföring till lagringskonton ska vara aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F404c3081-a854-4457-ae30-26a93ef643f9) |Granska krav för säker överföring i ditt lagringskonto. Säker överföring är ett alternativ som tvingar ditt lagringskonto att endast godkänna begäranden från säkra anslutningar (HTTPS). Användning av HTTPS garanterar autentisering mellan servern och tjänsten och skyddar data under överföring från attacker på nätverksnivå, till exempel man-in-the-middle, avlyssning och sessionskapning |Granska, Neka, Inaktiverad |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_AuditForHTTPSEnabled_Audit.json) |
 
 ### <a name="ensure-that-public-access-level-is-set-to-private-for-blob-containers"></a>Kontrollera att "Offentlig åtkomstnivå" är inställt på Privat för blobcontainrar
 
@@ -166,11 +166,11 @@ Leta sedan upp och välj **den inbyggda initiativdefinitionen CIS Microsoft Azur
 
 |Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Offentlig åtkomst till lagringskonto ska inte vara tillåtet](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4fa4b6c0-31ca-4c0d-b10d-24b96f62a751) |Anonym offentlig läsåtkomst till containrar och blobar i Azure Storage ett praktiskt sätt att dela data men kan ge säkerhetsrisker. För att förhindra dataintrång som orsakas av oönskad anonym åtkomst rekommenderar Microsoft att du förhindrar offentlig åtkomst till ett lagringskonto om inte ditt scenario kräver det. |audit, deny, disabled |[2.0.1-förhandsversion](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/ASC_Storage_DisallowPublicBlobAccess_Audit.json) |
+|[Offentlig åtkomst till lagringskonto bör inte vara tillåtet](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4fa4b6c0-31ca-4c0d-b10d-24b96f62a751) |Anonym offentlig läsåtkomst till containrar och blobar i Azure Storage ett praktiskt sätt att dela data men kan ge säkerhetsrisker. För att förhindra dataintrång som orsakas av oönskad anonym åtkomst rekommenderar Microsoft att du förhindrar offentlig åtkomst till ett lagringskonto om inte ditt scenario kräver det. |audit, deny, disabled |[2.0.1-förhandsversion](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/ASC_Storage_DisallowPublicBlobAccess_Audit.json) |
 
 ### <a name="ensure-default-network-access-rule-for-storage-accounts-is-set-to-deny"></a>Se till att standardregeln för nätverksåtkomst för lagringskonton är inställd på neka
 
-**ID:** CIS Azure 3.6 **Ägarskap:** Kund
+**ID:** CIS Azure 3.6-ägarskap: Kund 
 
 |Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -203,7 +203,7 @@ Leta sedan upp och välj **den inbyggda initiativdefinitionen CIS Microsoft Azur
 |---|---|---|---|
 |[Granskning på SQL Server ska vara aktiverat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9) |Granskning av SQL Server bör aktiveras för att spåra databasaktiviteter i alla databaser på servern och spara dem i en granskningslogg. |AuditIfNotExists, inaktiverad |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_Audit.json) |
 
-### <a name="ensure-that-data-encryption-is-set-to-on-on-a-sql-database"></a>Se till att "Datakryptering" är inställt på "På" på en SQL Database
+### <a name="ensure-that-data-encryption-is-set-to-on-on-a-sql-database"></a>Kontrollera att "Datakryptering" är inställt på "På" på en SQL Database
 
 **ID:** CIS Azure 4.1.2-ägarskap: Kund 
 
@@ -243,7 +243,7 @@ Leta sedan upp och välj **den inbyggda initiativdefinitionen CIS Microsoft Azur
 
 |Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Inställningarna för sårbarhetsbedömning för SQL Server ska innehålla en e-postadress för att ta emot skanningsrapporter](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F057d6cfe-9c4f-4a6d-bc60-14420ea1f1a9) |Se till att en e-postadress anges för fältet "Skicka genomsökningsrapporter till" i inställningarna för Sårbarhetsbedömning. Den här e-postadressen får en sammanfattning av genomsökningsresultat efter att en regelbunden genomsökning har körs på SQL-servrar. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_VulnerabilityAssessmentEmails_Audit.json) |
+|[Inställningarna för sårbarhetsbedömning för SQL Server ska innehålla en e-postadress för att ta emot skanningsrapporter](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F057d6cfe-9c4f-4a6d-bc60-14420ea1f1a9) |Se till att en e-postadress anges för fältet "Skicka genomsökningsrapporter till" i inställningarna för Sårbarhetsbedömning. Den här e-postadressen tar emot sammanfattning av genomsökningsresultat efter att en regelbunden genomsökning körs på SQL-servrar. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_VulnerabilityAssessmentEmails_Audit.json) |
 
 ### <a name="ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>Kontrollera att "Framtvinga SSL-anslutning" är inställt på "ENABLED" för PostgreSQL-databasservern
 
@@ -287,7 +287,7 @@ Leta sedan upp och välj **den inbyggda initiativdefinitionen CIS Microsoft Azur
 
 ### <a name="ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>Kontrollera att serverparametern "connection_throttling" är inställd på "PÅ" för PostgreSQL-databasservern
 
-**ID:** CIS Azure 4.3.6-ägarskap: Kund 
+**ID:** Ägarskap för CIS Azure 4.3.6: Kund
 
 |Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -308,7 +308,7 @@ Leta sedan upp och välj **den inbyggda initiativdefinitionen CIS Microsoft Azur
 |Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[SQL-hanterade instanser bör använda kund hanterade nycklar för att kryptera vilodata](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F048248b0-55cd-46da-b1ff-39efd52db260) |Genom att implementera transparent datakryptering (TDE) med din egen nyckel får du ökad transparens och kontroll över TDE-skyddet, ökad säkerhet med en extern HSM-backad tjänst och befordran av uppdelning av uppgifter. Den här rekommendationen gäller för organisationer med ett relaterat efterlevnadskrav. |AuditIfNotExists, Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlManagedInstance_EnsureServerTDEisEncryptedWithYourOwnKey_Audit.json) |
-|[SQL-servrar bör använda kund hanterade nycklar för att kryptera vilodata](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0d134df8-db83-46fb-ad72-fe0c9428c8dd) |Implementering transparent datakryptering (TDE) med din egen nyckel ger ökad transparens och kontroll över TDE-skyddet, ökad säkerhet med en extern HSM-backad tjänst och befordran av uppdelning av uppgifter. Den här rekommendationen gäller för organisationer med ett relaterat efterlevnadskrav. |AuditIfNotExists, Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_EnsureServerTDEisEncryptedWithYourOwnKey_Audit.json) |
+|[SQL-servrar bör använda kund hanterade nycklar för att kryptera vilodata](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0d134df8-db83-46fb-ad72-fe0c9428c8dd) |Implementering transparent datakryptering (TDE) med din egen nyckel ger ökad transparens och kontroll över TDE-skyddet, ökad säkerhet med en extern tjänst som stöds av HSM och befordran av uppdelning av uppgifter. Den här rekommendationen gäller för organisationer med ett relaterat efterlevnadskrav. |AuditIfNotExists, Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_EnsureServerTDEisEncryptedWithYourOwnKey_Audit.json) |
 
 ## <a name="logging-and-monitoring"></a>Loggning och övervakning
 
@@ -318,7 +318,7 @@ Leta sedan upp och välj **den inbyggda initiativdefinitionen CIS Microsoft Azur
 
 |Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Offentlig åtkomst till lagringskonto ska inte vara tillåtet](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4fa4b6c0-31ca-4c0d-b10d-24b96f62a751) |Anonym offentlig läsåtkomst till containrar och blobar i Azure Storage ett praktiskt sätt att dela data men kan medför säkerhetsrisker. För att förhindra dataintrång som orsakas av oönskad anonym åtkomst rekommenderar Microsoft att du förhindrar offentlig åtkomst till ett lagringskonto om ditt scenario inte kräver det. |audit, deny, disabled |[2.0.1-förhandsversion](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/ASC_Storage_DisallowPublicBlobAccess_Audit.json) |
+|[Offentlig åtkomst till lagringskonto ska inte vara tillåtet](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4fa4b6c0-31ca-4c0d-b10d-24b96f62a751) |Anonym offentlig läsåtkomst till containrar och blobar i Azure Storage ett praktiskt sätt att dela data men kan ge säkerhetsrisker. För att förhindra dataintrång som orsakas av oönskad anonym åtkomst rekommenderar Microsoft att du förhindrar offentlig åtkomst till ett lagringskonto om ditt scenario inte kräver det. |audit, deny, disabled |[2.0.1-förhandsversion](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/ASC_Storage_DisallowPublicBlobAccess_Audit.json) |
 
 ### <a name="ensure-the-storage-account-containing-the-container-with-activity-logs-is-encrypted-with-byok-use-your-own-key"></a>Se till att lagringskontot som innehåller containern med aktivitetsloggar är krypterat med BYOK (Använd din egen nyckel)
 
@@ -408,9 +408,9 @@ Leta sedan upp och välj **den inbyggda initiativdefinitionen CIS Microsoft Azur
 |---|---|---|---|
 |[Det bör finnas en aktivitetsloggavisering för specifika administrativa åtgärder](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb954148f-4c11-4c38-8221-be76711e194a) |Den här principen granskar specifika administrativa åtgärder utan konfigurerade aktivitetsloggaviseringar. |AuditIfNotExists, inaktiverad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_AdministrativeOperations_Audit.json) |
 
-### <a name="ensure-that-diagnostic-logs-are-enabled-for-all-services-which-support-it"></a>Se till att Diagnostikloggar är aktiverade för alla tjänster som stöder det.
+### <a name="ensure-that-diagnostic-logs-are-enabled-for-all-services-which-support-it"></a>Kontrollera att Diagnostikloggar är aktiverade för alla tjänster som stöder det.
 
-**ID:** CIS Azure 5.3-ägarskap: Kund 
+**ID:** CIS Azure 5.3 **Ägarskap:** Kund
 
 |Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -425,7 +425,7 @@ Leta sedan upp och välj **den inbyggda initiativdefinitionen CIS Microsoft Azur
 |[Resursloggar i Logic Apps ska vara aktiverade](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34f95f76-5386-4de7-b824-0d8478470c9d) |Granska aktivering av resursloggar. På så sätt kan du återskapa aktivitetsloggar som ska användas i undersökningssyfte. när en säkerhetsincident inträffar eller när nätverket har komprometterats |AuditIfNotExists, inaktiverad |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Logic%20Apps/LogicApps_AuditDiagnosticLog_Audit.json) |
 |[Resursloggar i Söktjänster ska vara aktiverade](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb4330a05-a843-4bc8-bf9a-cacce50c67f4) |Granska aktivering av resursloggar. På så sätt kan du återskapa aktivitetsloggar som ska användas i undersökningssyfte. när en säkerhetsincident inträffar eller när nätverket har komprometterats |AuditIfNotExists, Disabled |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_AuditDiagnosticLog_Audit.json) |
 |[Resursloggar i Service Bus ska vara aktiverade](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff8d36e2f-389b-4ee4-898d-21aeb69a0f45) |Granska aktivering av resursloggar. På så sätt kan du återskapa aktivitetsloggar som ska användas i undersökningssyfte. när en säkerhetsincident inträffar eller när nätverket har komprometterats |AuditIfNotExists, Disabled |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Bus/ServiceBus_AuditDiagnosticLog_Audit.json) |
-|[Resursloggar i Virtual Machine Scale Sets ska vara aktiverade](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7c1b1214-f927-48bf-8882-84f0af6588b1) |Vi rekommenderar att du aktiverar loggar så att aktivitetsloggen kan återskapas när utredningar krävs i händelse av en incident eller ett komprometterat fel. |AuditIfNotExists, Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ServiceFabric_and_VMSS_AuditVMSSDiagnostics.json) |
+|[Resursloggar i Virtual Machine Scale Sets ska vara aktiverade](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7c1b1214-f927-48bf-8882-84f0af6588b1) |Vi rekommenderar att du aktiverar loggar så att aktivitetsloggen kan återskapas när undersökningar krävs i händelse av en incident eller ett komprometterat. |AuditIfNotExists, Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ServiceFabric_and_VMSS_AuditVMSSDiagnostics.json) |
 
 ## <a name="networking"></a>Nätverk
 
@@ -445,7 +445,7 @@ Leta sedan upp och välj **den inbyggda initiativdefinitionen CIS Microsoft Azur
 |---|---|---|---|
 |[SSH-åtkomst från Internet ska blockeras](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fab) |Den här principen granskar alla nätverkssäkerhetsregel som tillåter SSH-åtkomst från Internet |Granska, inaktiverad |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkSecurityGroup_SSHAccess_Audit.json) |
 
-### <a name="ensure-that-network-watcher-is-enabled"></a>Kontrollera att Network Watcher är "Aktiverad"
+### <a name="ensure-that-network-watcher-is-enabled"></a>Kontrollera att Network Watcher är aktiverad
 
 **ID:** CIS Azure 6.5-ägarskap: Kund 
 
@@ -477,7 +477,7 @@ Leta sedan upp och välj **den inbyggda initiativdefinitionen CIS Microsoft Azur
 
 |Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Icke-frånkopplade diskar ska vara krypterade](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fb2) |Den här principen granskar alla icke-frånkopplade diskar utan att kryptering har aktiverats. |Granska, inaktiverad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/UnattachedDisk_Encryption_Audit.json) |
+|[Icke-frånkopplade diskar ska krypteras](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fb2) |Den här principen granskar alla icke-frånkopplade diskar utan att kryptering har aktiverats. |Granska, inaktiverad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/UnattachedDisk_Encryption_Audit.json) |
 
 ### <a name="ensure-that-only-approved-extensions-are-installed"></a>Se till att endast godkända tillägg är installerade
 
@@ -593,8 +593,8 @@ Leta sedan upp och välj **den inbyggda initiativdefinitionen CIS Microsoft Azur
 
 |Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Kontrollera att "PHP-versionen" är den senaste, om den används som en del av API-appen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |Med jämna mellanrum släpps nyare versioner för PHP-programvara, antingen på grund av säkerhetsbrister eller för att inkludera ytterligare funktioner. Vi rekommenderar att du använder den senaste PHP-versionen för API-appar för att kunna dra nytta av eventuella säkerhetskorrigeringar och/eller nya funktioner i den senaste versionen. För närvarande gäller den här principen endast för Linux-webbappar. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
-|[Kontrollera att "PHP-versionen" är den senaste, om den används som en del av WEBBappen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |Med jämna mellanrum släpps nyare versioner för PHP-programvara, antingen på grund av säkerhetsbrister eller för att inkludera ytterligare funktioner. Vi rekommenderar att du använder den senaste PHP-versionen för webbappar för att kunna dra nytta av eventuella säkerhetskorrigeringar och/eller nya funktioner i den senaste versionen. För närvarande gäller den här principen endast för Linux-webbappar. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
+|[Kontrollera att "PHP-versionen" är den senaste, om den används som en del av API-appen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |Med jämna mellanrum släpps nyare versioner för PHP-programvara, antingen på grund av säkerhetsbrister eller för att inkludera ytterligare funktioner. Vi rekommenderar att du använder den senaste PHP-versionen för API-appar för att kunna dra nytta av eventuella säkerhetskorrigeringar och/eller nya funktioner i den senaste versionen. Den här principen gäller för närvarande endast för Linux-webbappar. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
+|[Kontrollera att "PHP-versionen" är den senaste, om den används som en del av WEBBappen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |Med jämna mellanrum släpps nyare versioner för PHP-programvara antingen på grund av säkerhetsbrister eller för att inkludera ytterligare funktioner. Vi rekommenderar att du använder den senaste PHP-versionen för webbappar för att kunna dra nytta av eventuella säkerhetskorrigeringar och/eller nya funktioner i den senaste versionen. Den här principen gäller för närvarande endast för Linux-webbappar. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
 
 ### <a name="ensure-that-python-version-is-the-latest-if-used-to-run-the-web-app"></a>Kontrollera att "Python-versionen" är den senaste, om den används för att köra webbappen
 
@@ -608,7 +608,7 @@ Leta sedan upp och välj **den inbyggda initiativdefinitionen CIS Microsoft Azur
 
 ### <a name="ensure-that-java-version-is-the-latest-if-used-to-run-the-web-app"></a>Kontrollera att "Java-versionen" är den senaste, om den används för att köra webbappen
 
-**ID:** CIS Azure 9.8-ägarskap: Kund 
+**ID:** CIS Azure 9.8 **Ägarskap:** Kund
 
 |Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|

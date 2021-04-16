@@ -1,24 +1,21 @@
 ---
 title: Konfigurera Windows Virtual Desktop MSIX-appen bifoga PowerShell-skript – Azure
-description: Så här skapar du PowerShell-skript för MSIX-app attach för Windows Virtual Desktop.
+description: Så här skapar du PowerShell-skript för MSIX-app bifoga för Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 143f0a9d23cdc70425147faa95258ec753b92691
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: d1ca4a843c6731cde7ed70d65fc230a21ef6e7c4
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365388"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389442"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach"></a>Skapa PowerShell-skript för att koppla MSIX-appen
 
-I det här avsnittet får du hjälp med att konfigurera PowerShell-skript för att koppla MSIX-appar.
-
->[!IMPORTANT]
->Innan du börjar ska du fylla i och skicka det här [formuläret](https://aka.ms/enablemsixappattach) för att aktivera msix-appen i din prenumeration. Om du inte har en godkänd begäran fungerar det inte att bifoga MSIX-appen. Godkännande av begäranden kan ta upp till 24 timmar under arbetsdagar. Du får ett e-postmeddelande när din begäran har accepterats och slutförts.
+I det här avsnittet får du lära dig hur du ställer in PowerShell-skript för att koppla MSIX-appar.
 
 ## <a name="install-certificates"></a>Installera certifikat
 
@@ -28,7 +25,7 @@ Om din app använder ett certifikat som inte är offentligt betrott eller som ha
 
 1. Högerklicka på paketet och välj **Egenskaper.**
 2. I fönstret som visas väljer du **fliken Digitala signaturer.** Det bör bara finnas ett objekt i listan på fliken, som du ser i följande bild. Markera objektet för att markera objektet och välj sedan **Information.**
-3. När fönstret med information om den digitala signaturen visas väljer **du** fliken Allmänt och sedan **Visa certifikat.** Välj sedan **Installera certifikat.**
+3. När fönstret med information om den digitala signaturen visas väljer **du fliken** Allmänt och sedan **Visa certifikat** och sedan **Installera certifikat.**
 4. När installationsprogrammet öppnas väljer **du lokal dator** som lagringsplats och väljer sedan **Nästa.**
 5. Om installationsprogrammet frågar dig om du vill tillåta att appen gör ändringar på enheten väljer du **Ja.**
 6. Välj **Placera alla certifikat i följande arkiv** och välj sedan **Bläddra.**
@@ -57,18 +54,18 @@ MSIX-app attach har fyra distinkta faser som måste utföras i följande ordning
 
 Varje fas skapar ett PowerShell-skript. Exempelskript för varje fas finns [här.](https://github.com/Azure/RDS-Templates/tree/master/msix-app-attach)
 
-### <a name="stage-powershell-script"></a>Mellanfasa PowerShell-skript
+### <a name="stage-powershell-script"></a>Mellan olika PowerShell-skript
 
-Innan du uppdaterar PowerShell-skripten kontrollerar du att du har volymens GUID på volymen på den virtuella hårddisken. Så här hämtar du volymens GUID:
+Innan du uppdaterar PowerShell-skripten kontrollerar du att volymens GUID finns på den virtuella hårddisken. Så här hämtar du volymens GUID:
 
-1.  Öppna nätverksresursen där den virtuella hårddisken finns på den virtuella dator där du ska köra skriptet.
+1.  Öppna nätverksresursen där den virtuella hårddisken finns i den virtuella datorn där du ska köra skriptet.
 
 2.  Högerklicka på den virtuella hårddisken och välj **Montera**. Den virtuella hårddisken monteras på en enhetsbeteckning.
 
-3.  När du har monterat den virtuella **Utforskaren** öppnas fönstret. Avbilda den överordnade mappen och uppdatera **$parentFolder** variabeln
+3.  När du har monterat den **virtuella Utforskaren** öppnas fönstret. Avbilda den överordnade mappen och uppdatera **$parentFolder** variabeln
 
     >[!NOTE]
-    >Om du inte ser en överordnad mapp innebär det att MSIX inte expanderades korrekt. Gör om föregående avsnitt och försök igen.
+    >Om du inte ser en överordnad mapp innebär det att MSIX inte har expanderats korrekt. Gör om föregående avsnitt och försök igen.
 
 4.  Öppna den överordnade mappen. Om det är korrekt expanderat visas en mapp med samma namn som paketet. Uppdatera **$packageName** så att den matchar namnet på den här mappen.
 
@@ -76,7 +73,7 @@ Innan du uppdaterar PowerShell-skripten kontrollerar du att du har volymens GUID
 
 5.  Öppna en kommandotolk och ange **mountvol**. Det här kommandot visar en lista över volymer och deras GUID. Kopiera GUID för volymen där enhetsbeteckningen matchar den enhet som du monterade den virtuella hårddisken till i steg 2.
 
-    I det här exemplets utdata för kommandot mountvol ska du kopiera värdet ovan om du har monterat den virtuella hårddisken på enhet `C:\` C:
+    Om du till exempel har monterat den virtuella hårddisken på enhet C i det här exempelutdata för mountvol-kommandot bör du kopiera värdet `C:\` ovan:
 
     ```cmd
     Possible values for VolumeName along with current mount points are:
@@ -205,7 +202,7 @@ Dismount-DiskImage -ImagePath $vhdSrc -Confirm:$false
 
 ## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>Konfigurera simuleringsskript för MSIX-appens anslutningsagent
 
-När du har skapat skripten kan användarna köra dem manuellt eller konfigurera dem så att de körs automatiskt som start-, inloggnings-, utloggnings- och avstängningsskript. Mer information om dessa typer av skript finns i Using [startup, shutdown, logon, and logoff scripts in grupprincip](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/).
+När du har skapat skripten kan användarna köra dem manuellt eller konfigurera dem så att de körs automatiskt som start-, inloggnings-, utloggnings- och avstängningsskript. Mer information om dessa typer av skript finns i Använda skript för [start, avstängning,](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/)inloggning och utloggning i grupprincip .
 
 Vart och ett av dessa automatiska skript kör en fas i appens bifogande skript:
 
@@ -216,7 +213,7 @@ Vart och ett av dessa automatiska skript kör en fas i appens bifogande skript:
 
 ## <a name="use-packages-offline"></a>Använda paket offline
 
-Om du använder paket från [Microsoft Store för företag](https://businessstore.microsoft.com/) eller [Microsoft Store för utbildning](https://educationstore.microsoft.com/) i nätverket eller på enheter som inte är anslutna till Internet måste du hämta paketlicenserna från Microsoft Store och installera dem på enheten för att kunna köra appen. Om enheten är online och kan ansluta till Microsoft Store för företag bör de nödvändiga licenserna laddas ned automatiskt, men om du är offline måste du konfigurera licenserna manuellt.
+Om du använder paket från [Microsoft Store för företag](https://businessstore.microsoft.com/) eller [Microsoft Store för utbildning](https://educationstore.microsoft.com/) i nätverket eller på enheter som inte är anslutna till Internet måste du hämta paketlicenserna från Microsoft Store och installera dem på enheten för att kunna köra appen. Om enheten är online och kan ansluta till Microsoft Store för företag bör nödvändiga licenser laddas ned automatiskt, men om du är offline måste du konfigurera licenserna manuellt.
 
 Om du vill installera licensfilerna måste du använda ett PowerShell-skript som anropar MDM_EnterpriseModernAppManagement_StoreLicenses02_01 i WMI-bryggprovidern.
 
@@ -226,7 +223,7 @@ Så här ställer du in licenser för offlineanvändning:
 2. Uppdatera följande variabler i skriptet för steg 3:
       1. `$contentID` är ContentID-värdet från den okodade licensfilen (.xml). Du kan öppna licensfilen i valfri textredigerare.
       2. `$licenseBlob` är hela strängen för licensbloben i den kodade licensfilen (.bin). Du kan öppna den kodade licensfilen i valfri textredigerare.
-3. Kör följande skript från en Admin PowerShell-kommandotolk. En bra plats för att utföra licensinstallationen är i slutet av [](#stage-powershell-script) mellanlagringsskriptet som också måste köras från en administratörsuppmaning.
+3. Kör följande skript från en Admin PowerShell-kommandotolk. En bra plats för att utföra licensinstallationen är i slutet av mellanlagringsskriptet [](#stage-powershell-script) som också måste köras från en administratörsuppmaning.
 
 ```powershell
 $namespaceName = "root\cimv2\mdm\dmmap"
@@ -266,4 +263,4 @@ catch [Exception]
 
 Den här funktionen stöds inte för närvarande, men du kan ställa frågor till communityn [på Windows Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
 
-Du kan också lämna feedback för Windows Virtual Desktop på Windows Virtual Desktop [feedbackhubben.](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)
+Du kan också lämna feedback för Windows Virtual Desktop på Windows Virtual Desktop [feedbackhubben](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app).

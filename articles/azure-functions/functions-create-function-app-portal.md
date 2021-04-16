@@ -4,25 +4,25 @@ description: Lär dig hur du skapar din första Azure-funktion för serverfri k�
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: ea5b6a9e51b6982a33dc748f72557ed539b8e2e0
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 336e531f4ec64141770fc26d7e6eea9ebfedf922
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385997"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517151"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Skapa din första funktion i Azure Portal
 
-Med Azure Functions kan du köra din kod i en miljö utan server utan att först behöva skapa en virtuell dator (VM) eller publicera ett webb program. I den här artikeln får du lära dig hur du använder Azure Functions för att skapa en "Hello World" HTTP-utlösare i Azure Portal.
+Azure Functions kan du köra din kod i en serverlös miljö utan att först behöva skapa en virtuell dator (VM) eller publicera en webbapp. I den här artikeln får du lära dig hur du använder Azure Functions för att skapa en HTTP-utlösarfunktion "hello world" i Azure Portal.
 
 [!INCLUDE [functions-in-portal-editing-note](../../includes/functions-in-portal-editing-note.md)] 
 
-Vi rekommenderar istället att du [utvecklar dina funktioner lokalt](functions-develop-local.md) och publicerar dem i en Function-app i Azure.  
-Använd någon av följande länkar för att komma igång med din valda lokala utvecklings miljö och ditt språk:
+Vi rekommenderar i stället att du [utvecklar dina funktioner lokalt](functions-develop-local.md) och publicerar till en funktionsapp i Azure.  
+Använd någon av följande länkar för att komma igång med din valda lokala utvecklingsmiljö och språk:
 
-| Visuell Studio-kod | Terminal/kommando-prompt | Visual Studio |
+| Visuell Studio-kod | Terminal/kommandotolk | Visual Studio |
 | --- | --- | --- |
-|  &bull;&nbsp;[Kom igång med C #](./create-first-function-vs-code-csharp.md)<br/>&bull;&nbsp;[Kom igång med Java](./create-first-function-vs-code-java.md)<br/>&bull;&nbsp;[Kom igång med Java Script](./create-first-function-vs-code-node.md)<br/>&bull;&nbsp;[Kom igång med PowerShell](./create-first-function-vs-code-powershell.md)<br/>&bull;&nbsp;[Kom igång med python](./create-first-function-vs-code-python.md) |&bull;&nbsp;[Kom igång med C #](./create-first-function-cli-csharp.md)<br/>&bull;&nbsp;[Kom igång med Java](./create-first-function-cli-java.md)<br/>&bull;&nbsp;[Kom igång med Java Script](./create-first-function-cli-node.md)<br/>&bull;&nbsp;[Kom igång med PowerShell](./create-first-function-cli-powershell.md)<br/>&bull;&nbsp;[Kom igång med python](./create-first-function-cli-python.md) | [Kom igång med C #](functions-create-your-first-function-visual-studio.md) |
+|  &bull;&nbsp;[Kom igång med C #](./create-first-function-vs-code-csharp.md)<br/>&bull;&nbsp;[Kom igång med Java](./create-first-function-vs-code-java.md)<br/>&bull;&nbsp;[Kom igång med JavaScript](./create-first-function-vs-code-node.md)<br/>&bull;&nbsp;[Kom igång med PowerShell](./create-first-function-vs-code-powershell.md)<br/>&bull;&nbsp;[Kom igång med Python](./create-first-function-vs-code-python.md) |&bull;&nbsp;[Kom igång med C #](./create-first-function-cli-csharp.md)<br/>&bull;&nbsp;[Kom igång med Java](./create-first-function-cli-java.md)<br/>&bull;&nbsp;[Kom igång med JavaScript](./create-first-function-cli-node.md)<br/>&bull;&nbsp;[Kom igång med PowerShell](./create-first-function-cli-powershell.md)<br/>&bull;&nbsp;[Kom igång med Python](./create-first-function-cli-python.md) | [Kom igång med C #](functions-create-your-first-function-visual-studio.md) |
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -32,41 +32,41 @@ Logga in på [Azure-portalen](https://portal.azure.com) med ditt Azure-konto.
 
 ## <a name="create-a-function-app"></a>Skapa en funktionsapp
 
-Du måste ha en funktionsapp som värd för körning av dina funktioner. Med en Function-app kan du gruppera funktioner som en logisk enhet för enklare hantering, distribution, skalning och delning av resurser.
+Du måste ha en funktionsapp som värd för körning av dina funktioner. Med en funktionsapp kan du gruppera funktioner som en logisk enhet för enklare hantering, distribution, skalning och delning av resurser.
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-Skapa sedan en funktion i appen ny funktion.
+Skapa sedan en funktion i den nya funktionsappen.
 
-## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>Skapa en HTTP-utlösnings funktion
+## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>Skapa en HTTP-utlösarfunktion
 
-1. På den vänstra menyn i fönstret **funktioner** väljer du **Functions** och väljer sedan **Lägg till** på den översta menyn. 
+1. På den vänstra menyn i **funktionsfönstret** väljer du **Funktioner** och sedan Lägg **till** på den översta menyn. 
  
-1. I fönstret **Lägg till funktion** väljer du mallen **http-utlösare** .
+1. I fönstret **Lägg till funktion** väljer du mallen **HTTP-utlösare.**
 
-    ![Välj funktionen HTTP-utlösare](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
+    ![Välj HTTP-utlösarfunktion](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
 
-1. Under **mall information** Använd `HttpExample` för **ny funktion** väljer du **Anonym** i list rutan **[Autentiseringsnivå](functions-bindings-http-webhook-trigger.md#authorization-keys)** och väljer sedan **Lägg till**.
+1. Under **Använd mallinformation** `HttpExample` för Ny **funktion** väljer du **Anonym** i **[listrutan](functions-bindings-http-webhook-trigger.md#authorization-keys)** Auktoriseringsnivå och väljer sedan Lägg **till.**
 
-    Azure skapar funktionen HTTP-utlösare. Nu kan du köra den nya funktionen genom att skicka en HTTP-begäran.
+    Azure skapar HTTP-utlösarfunktionen. Nu kan du köra den nya funktionen genom att skicka en HTTP-begäran.
 
 ## <a name="test-the-function"></a>Testa funktionen
 
-1. I din nya funktion för HTTP-utlösare väljer du **kod + test** på den vänstra menyn och sedan **Hämta funktions webb adress** på den översta menyn.
+1. I den nya HTTP-utlösarfunktionen **väljer du Kod + test** på den vänstra menyn och väljer sedan Hämta **funktions-URL** på den översta menyn.
 
-    ![Välj Hämta funktions webb adress](./media/functions-create-first-azure-function/function-app-select-get-function-url.png)
+    ![Välj Hämta funktions-URL](./media/functions-create-first-azure-function/function-app-select-get-function-url.png)
 
-1. I dialog rutan **Hämta funktions webb adress** väljer du **standard** i list rutan och väljer sedan ikonen **Kopiera till Urklipp** . 
+1. I dialogrutan **Hämta funktionswebbadress** väljer du **standard** i listrutan och väljer sedan ikonen Kopiera till **Urklipp.** 
 
     ![Kopiera funktionswebbadressen från Azure Portal](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. Klistra in funktionens URL i adressfältet för din webbläsare. Lägg till frågesträngen `?name=<your_name>` i slutet av den här URL: en och tryck på RETUR för att köra begäran. I webbläsaren ska ett svarsmeddelande visas som visar att värdet för frågesträngen har återställts. 
+1. Klistra in funktionens URL i adressfältet för din webbläsare. Lägg till frågesträngsvärdet `?name=<your_name>` i slutet av den här URL:en och tryck på Retur för att köra begäran. Webbläsaren bör visa ett svarsmeddelande som returnerar frågesträngens värde. 
 
-    Om URL: en för begäran innehöll en [åtkomst nyckel](functions-bindings-http-webhook-trigger.md#authorization-keys) ( `?code=...` ), innebär det att du väljer **funktion** i stället för **Anonym** åtkomst nivå när du skapar funktionen. I så fall bör du istället lägga till `&name=<your_name>` .
+    Om begärande-URL:en [inkluderade en åtkomstnyckel](functions-bindings-http-webhook-trigger.md#authorization-keys) ( ), innebär det att du väljer `?code=...` **Funktion** i stället **för Anonym** åtkomstnivå när du skapar funktionen. I det här fallet bör du i stället lägga till `&name=<your_name>` .
 
-1. När din funktion körs skrivs spårningsinformation till loggarna. Om du vill se spårnings resultatet går du tillbaka till sidan **kod + test** i portalen och expanderar pilen **loggar** längst ned på sidan.
+1. När din funktion körs skrivs spårningsinformation till loggarna. Om du vill se spårningsutdata går du tillbaka till sidan Kod **+** test i portalen och expanderar pilen **Loggar** längst ned på sidan. Anropa funktionen igen för att se spårningsutdata som skrivits till loggarna. 
 
-   ![Funktionsloggvisning i Azure Portal.](./media/functions-create-first-azure-function/function-view-logs.png)
+    :::image type="content" source="media/functions-create-first-azure-function/function-view-logs.png" alt-text="Functions-loggvisare i Azure Portal":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

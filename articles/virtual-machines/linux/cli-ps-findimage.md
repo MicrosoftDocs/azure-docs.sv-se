@@ -1,6 +1,6 @@
 ---
-title: Hitta och Använd information om inköps plan för Marketplace med hjälp av CLI
-description: Lär dig hur du använder Azure CLI för att hitta avbildnings-URNs och parametrar för inköps planer, t. ex. utgivare, erbjudande, SKU och version för VM-avbildningar på Marketplace.
+title: Hitta och använda information om marketplace-köpplan med hjälp av CLI
+description: Lär dig hur du använder Azure CLI för att hitta avbildnings-URL:er och köpplansparametrar som utgivare, erbjudande, SKU och version för VM-avbildningar på Marketplace.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -8,44 +8,44 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: cynthn
 ms.collection: linux
-ms.custom: contperf-fy21q3-portal
-ms.openlocfilehash: 70cb4cc54c6f9a376d3bd38dc8bb6cd3a059a20c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy21q3-portal, devx-track-azurecli
+ms.openlocfilehash: be0535a49b47c45cad49abd1bf720b6347a660b8
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022861"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484208"
 ---
-# <a name="find-azure-marketplace-image-information-using-the-azure-cli"></a>Hitta information om Azure Marketplace-avbildningar med Azure CLI
+# <a name="find-azure-marketplace-image-information-using-the-azure-cli"></a>Hitta Azure Marketplace bildinformation med hjälp av Azure CLI
 
-I det här avsnittet beskrivs hur du använder Azure CLI för att hitta VM-avbildningar på Azure Marketplace. Använd den här informationen för att ange en Marketplace-avbildning när du skapar en virtuell dator program mässigt med CLI-, Resource Manager-mallar eller andra verktyg.
+Det här avsnittet beskriver hur du använder Azure CLI för att hitta VM-avbildningar i Azure Marketplace. Använd den här informationen för att ange en Marketplace-avbildning när du skapar en virtuell dator programmatiskt med CLI, Resource Manager-mallar eller andra verktyg.
 
-Du kan också söka efter tillgängliga bilder och erbjudanden med hjälp av [Azure Marketplace](https://azuremarketplace.microsoft.com/) eller  [Azure PowerShell](../windows/cli-ps-findimage.md). 
+Du kan också bläddra bland tillgängliga bilder och erbjudanden med [hjälp av Azure Marketplace](https://azuremarketplace.microsoft.com/) eller  [Azure PowerShell](../windows/cli-ps-findimage.md). 
 
 ## <a name="terminology"></a>Terminologi
 
 En Marketplace-avbildning i Azure har följande attribut:
 
-* **Utgivare**: den organisation som skapade avbildningen. Exempel: Canonical, Microsoft Windows Server
-* **Erbjudande**: namnet på en grupp relaterade bilder som skapats av en utgivare. Exempel: UbuntuServer, Windows Server
-* **SKU**: en instans av ett erbjudande, till exempel en större version av en distribution. Exempel: 18,04-LTS, 2019-datacenter
-* **Version**: versions numret för en avbildnings-SKU. 
+* **Utgivare:** Organisationen som skapade avbildningen. Exempel: Canonical, Microsoft Windows Server
+* **Erbjudande:** Namnet på en grupp med relaterade avbildningar som skapats av en utgivare. Exempel: UbuntuServer, WindowsServer
+* **SKU:** En instans av ett erbjudande, till exempel en större distribution. Exempel: 18.04-LTS, 2019-Datacenter
+* **Version:** Versionsnumret för en avbildnings-SKU. 
 
-Dessa värden kan skickas individuellt eller som en bild- *urn*, vilket kombinerar värdena avgränsade med kolon (:). Exempel: *utgivare*:*erbjudande*:*SKU*:*version*. Du kan ersätta versions numret i URN med `latest` att använda den senaste versionen av avbildningen. 
+Dessa värden kan skickas individuellt eller som en *bild-URN* genom att kombinera värdena avgränsade med kolon (:). Exempel: *Utgivare:**Erbjudande*:*SKU:**Version*. Du kan ersätta versionsnumret i URN med om `latest` du vill använda den senaste versionen av avbildningen. 
 
-Om avbildnings utgivaren ger ytterligare licens-och inköps villkor måste du godkänna dem innan du kan använda avbildningen.  Mer information finns i [kontrol lera informationen om inköps planen](#check-the-purchase-plan-information).
+Om avbildningsutgivaren tillhandahåller ytterligare licens- och köpvillkor måste du godkänna dem innan du kan använda avbildningen.  Mer information finns i [Kontrollera informationen om köpplanen.](#check-the-purchase-plan-information)
 
 
 
-## <a name="list-popular-images"></a>Lista populära bilder
+## <a name="list-popular-images"></a>Lista populära avbildningar
 
-Kör kommandot [AZ VM Image List](/cli/azure/vm/image) , utan `--all` alternativet, om du vill visa en lista över populära VM-avbildningar på Azure Marketplace. Kör till exempel följande kommando för att visa en cachelagrad lista över populära bilder i tabell format:
+Kör kommandot [az vm image list](/cli/azure/vm/image) utan alternativet för att se en lista över populära `--all` VM-avbildningar i Azure Marketplace. Kör till exempel följande kommando för att visa en cachelagrad lista över populära bilder i tabellformat:
 
 ```azurecli
 az vm image list --output table
 ```
 
-Utdata innehåller bildens URN. Du kan också använda *UrnAlias* som är en kort version som skapats för populära bilder som *UbuntuLTS*.
+Utdata innehåller bild-URN. Du kan också använda *UrnAlias som* är en förkortad version som skapats för populära avbildningar som *UbuntuLTS.*
 
 ```output
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
@@ -66,9 +66,9 @@ WindowsServer  MicrosoftWindowsServer  2008-R2-SP1         MicrosoftWindowsServe
 
 ## <a name="find-specific-images"></a>Söka efter specifika avbildningar
 
-Om du vill hitta en speciell VM-avbildning på Marketplace använder du `az vm image list` kommandot med `--all` alternativet. Den här versionen av kommandot tar lite tid att slutföra och kan returnera långa utdata, så du filtrerar vanligt vis listan efter `--publisher` eller en annan parameter. 
+Om du vill hitta en specifik VM-avbildning på Marketplace `az vm image list` använder du kommandot med alternativet `--all` . Den här versionen av kommandot tar lite tid att slutföra och kan returnera långa utdata, så du filtrerar vanligtvis listan efter `--publisher` eller någon annan parameter. 
 
-Till exempel visar följande kommando alla Debian-erbjudanden (kom ihåg att utan `--all` växeln söker det bara i det lokala cacheminnet av vanliga avbildningar):
+Följande kommando visar till exempel alla Debian-erbjudanden (kom ihåg att utan växeln söker det bara i `--all` den lokala cachen med vanliga avbildningar):
 
 ```azurecli
 az vm image list --offer Debian --all --output table 
@@ -99,28 +99,28 @@ Debian                                   credativ                          8    
 ```
 
 
-## <a name="look-at-all-available-images"></a>Titta på alla tillgängliga bilder
+## <a name="look-at-all-available-images"></a>Titta på alla tillgängliga avbildningar
  
-Ett annat sätt att söka efter en bild på en plats är att köra [listan AZ VM Image List-Publishers](/cli/azure/vm/image), [AZ VM Image List-erbjudanden](/cli/azure/vm/image)och [AZ VM Image List-SKU: er](/cli/azure/vm/image) i sekvens. Med de här kommandona fastställer du följande värden:
+Ett annat sätt att hitta en avbildning på en plats är att köra kommandona [az vm image list-publishers](/cli/azure/vm/image), [az vm image list-offers](/cli/azure/vm/image)och [az vm image list-skus](/cli/azure/vm/image) i följd. Med dessa kommandon fastställer du följande värden:
 
-1. Visa en lista över avbildnings utgivare för en plats. I det här exemplet tittar vi på regionen *USA, västra* .
+1. Visa en lista över avbildningsutgivare för en plats. I det här exemplet tittar vi på regionen *USA,* västra.
     
     ```azurecli
     az vm image list-publishers --location westus --output table
     ```
 
-1. Visa en lista över erbjudanden från en viss utgivare. I det här exemplet lägger vi till *kanoniska* som utgivare.
+1. Visa en lista över erbjudanden från en viss utgivare. I det här exemplet lägger vi *till Canonical* som utgivare.
     
     ```azurecli
     az vm image list-offers --location westus --publisher Canonical --output table
     ```
 
-1. Visa en lista över SKU:er för ett visst erbjudande. I det här exemplet lägger vi till *UbuntuServer* som erbjudande.
+1. Visa en lista över SKU:er för ett visst erbjudande. I det här exemplet lägger vi *till UbuntuServer* som erbjudande.
     ```azurecli
     az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
     ```
 
-1. För en specifik utgivare, erbjudande och SKU, visar du alla versioner av avbildningen. I det här exemplet lägger vi till *18,04-LTS* som SKU.
+1. För en viss utgivare, ett erbjudande och en SKU visar du alla versioner av avbildningen. I det här exemplet lägger vi *till 18.04-LTS* som SKU.
 
     ```azurecli
     az vm image list \
@@ -131,20 +131,20 @@ Ett annat sätt att söka efter en bild på en plats är att köra [listan AZ VM
         --all --output table
     ```
 
-Skicka det här värdet för URN-kolumnen med `--image` parametern när du skapar en virtuell dator med kommandot [AZ VM Create](/cli/azure/vm) . Du kan också ersätta versions numret i URN med "senaste", för att bara använda den senaste versionen av avbildningen. 
+Skicka det här värdet för URN-kolumnen med `--image` parametern när du skapar en virtuell dator med [kommandot az vm create.](/cli/azure/vm) Du kan också ersätta versionsnumret i URN med "senaste" om du bara vill använda den senaste versionen av avbildningen. 
 
-Om du distribuerar en virtuell dator med en Resource Manager-mall ställer du in avbildnings parametrarna individuellt i `imageReference` egenskaperna. Se [mallreferensen](/azure/templates/microsoft.compute/virtualmachines).
+Om du distribuerar en virtuell dator Resource Manager en mall anger du avbildningsparametrarna individuellt i `imageReference` egenskaperna. Se [mallreferensen](/azure/templates/microsoft.compute/virtualmachines).
 
 
-## <a name="check-the-purchase-plan-information"></a>Kontrol lera informationen om inköps planen
+## <a name="check-the-purchase-plan-information"></a>Kontrollera informationen om köpplanen
 
-Vissa VM-avbildningar på Azure Marketplace har ytterligare licens-och Köp villkor som du måste acceptera innan du kan distribuera dem program mässigt.  
+Vissa VM-avbildningar i Azure Marketplace har ytterligare licens- och inköpsvillkor som du måste godkänna innan du kan distribuera dem programmatiskt.  
 
-Om du vill distribuera en virtuell dator från en sådan avbildning måste du godkänna avbildningens villkor första gången du använder den, en gång per prenumeration. Du måste också ange *inköps plan* parametrar för att distribuera en virtuell dator från avbildningen
+Om du vill distribuera en virtuell dator från en sådan avbildning måste du godkänna avbildningens villkor första gången du använder den, en gång per prenumeration. Du måste också ange parametrar för *inköpsplanen för att* distribuera en virtuell dator från avbildningen
 
-Om du vill visa information om inköps planen för en bild kör du kommandot [AZ VM Image show](/cli/azure/image) med bildens urn. Om `plan` egenskapen i utdata inte är `null` så har bilden de termer som du behöver acceptera innan du programmerar distributionen.
+Om du vill visa köpinformationen för en avbildning kör du [kommandot az vm image show](/cli/azure/image) med avbildningens URN. Om egenskapen `plan` i utdata inte är `null` har avbildningen termer som du måste godkänna före programmatisk distribution.
 
-Till exempel har den kanoniska Ubuntu Server 18,04 LTS-avbildningen inga ytterligare villkor, eftersom `plan` informationen är `null` :
+Till exempel har Canonical Ubuntu Server 18.04 LTS-avbildningen inga ytterligare termer eftersom `plan` informationen är `null` :
 
 ```azurecli
 az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
@@ -166,7 +166,7 @@ Utdata:
 }
 ```
 
-Om du kör ett liknande kommando för RabbitMQ-certifierad av Bitnami-bilden visas följande `plan` Egenskaper: `name` , `product` och `publisher` . (Vissa bilder har också en `promotion code` egenskap.) 
+Om du kör ett liknande kommando för RabbitMQ Certified by Bitnami-avbildningen visas `plan` följande egenskaper: `name` , och `product` `publisher` . (Vissa bilder har också en `promotion code` -egenskap.) 
 
 ```azurecli
 az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
@@ -191,17 +191,17 @@ Utdata:
 }
 ```
 
-Om du vill distribuera avbildningen måste du godkänna villkoren och tillhandahålla parametrarna för inköps planen när du distribuerar en virtuell dator med avbildningen.
+Om du vill distribuera den här avbildningen måste du godkänna villkoren och ange parametrarna för inköpsplanen när du distribuerar en virtuell dator med hjälp av avbildningen.
 
 ## <a name="accept-the-terms"></a>Acceptera villkoren
 
-Om du vill visa och godkänna licens villkoren använder du kommandot [AZ VM Image accept-terms](/cli/azure/vm/image/terms) . När du godkänner villkoren aktiverar du program mässig distribution i din prenumeration. Du behöver bara godkänna villkoren en gång per prenumeration på avbildningen. Exempel:
+Om du vill visa och godkänna licensvillkoren använder du [kommandot az vm image accept-terms.](/cli/azure/vm/image/terms) När du godkänner villkoren aktiverar du programmatisk distribution i din prenumeration. Du behöver bara godkänna villkoren en gång per prenumeration för avbildningen. Exempel:
 
 ```azurecli
 az vm image terms show --urn bitnami:rabbitmq:rabbitmq:latest
 ``` 
 
-Utdata innehåller en `licenseTextLink` till licens villkoren och anger att värdet för `accepted` är `true` :
+Utdata innehåller `licenseTextLink` en i licensvillkoren och anger att värdet `accepted` för är `true` :
 
 ```output
 {
@@ -220,17 +220,17 @@ Utdata innehåller en `licenseTextLink` till licens villkoren och anger att vär
 }
 ```
 
-Godkänn villkoren genom att skriva:
+Om du vill godkänna villkoren skriver du:
 
 ```azurecli
 az vm image terms accept --urn bitnami:rabbitmq:rabbitmq:latest
 ``` 
 
-## <a name="deploy-a-new-vm-using-the-image-parameters"></a>Distribuera en ny virtuell dator med avbildnings parametrarna
+## <a name="deploy-a-new-vm-using-the-image-parameters"></a>Distribuera en ny virtuell dator med hjälp av avbildningsparametrarna
 
-Med information om avbildningen kan du distribuera den med hjälp av `az vm create` kommandot. 
+Med information om avbildningen kan du distribuera den med hjälp av `az vm create` kommandot . 
 
-Om du vill distribuera en avbildning som inte har plan information, till exempel den senaste Ubuntu Server 18,04-avbildningen från kanoniskt, skickar du URN för `--image` :
+Om du vill distribuera en avbildning som inte har någon planinformation, t.ex. den senaste Ubuntu Server 18.04-avbildningen från Canonical, skickar du URN:et för `--image` :
 
 ```azurecli-interactive
 az group create --name myURNVM --location westus
@@ -243,7 +243,7 @@ az vm create \
 ```
 
 
-För en avbildning med parametrar för inköps planer, som den RabbitMQ-certifierade av Bitnami-avbildningen, skickar du URN för `--image` och anger även parametrarna för inköps planen:
+För en avbildning med parametrar för inköpsplanen, till exempel RabbitMQ Certified by Bitnami-avbildningen, skickar du URN för och anger även parametrarna `--image` för inköpsplanen:
 
 ```azurecli
 az group create --name myPurchasePlanRG --location westus
@@ -259,22 +259,22 @@ az vm create \
    --plan-publisher bitnami
 ```
 
-Om du får ett meddelande om att godkänna villkoren i avbildningen [godkänner du villkoren](#accept-the-terms)i avsnittet granska. Se till att utdata från `az vm image accept-terms` returnerar värdet `"accepted": true,` som visar att du har accepterat villkoren i bilden.
+Om du får ett meddelande om att godkänna villkoren i bilden kan du läsa avsnittet [Acceptera villkoren](#accept-the-terms). Kontrollera att utdata från `az vm image accept-terms` returnerar värdet `"accepted": true,` som visar att du har accepterat villkoren för bilden.
 
 
-## <a name="using-an-existing-vhd-with-purchase-plan-information"></a>Använda en befintlig virtuell hård disk med information om inköps plan
+## <a name="using-an-existing-vhd-with-purchase-plan-information"></a>Använda en befintlig virtuell hårddisk med köpplaninformation
 
-Om du har en befintlig virtuell hård disk från en virtuell dator som har skapats med en betald Azure Marketplace-avbildning kan du behöva ange inköps Plans informationen när du skapar en ny virtuell dator från den virtuella hård disken. 
+Om du har en befintlig virtuell hårddisk från en virtuell dator som har skapats med en betald Azure Marketplace-avbildning kan du behöva ange information om inköpsplanen när du skapar en ny virtuell dator från den virtuella hårddisken. 
 
-Om du fortfarande har den ursprungliga virtuella datorn eller en annan virtuell dator som skapats med samma Marketplace-avbildning kan du hämta plan namn, utgivare och produkt information från den med [AZ VM get-instance-View](/cli/azure/vm#az_vm_get_instance_view). I det här exemplet får du en virtuell dator med namnet *myVM* i resurs gruppen *myResourceGroup* och sedan visas information om inköps planen.
+Om du fortfarande har den ursprungliga virtuella datorn eller en annan virtuell dator som skapats med samma Marketplace-avbildning kan du hämta planens namn, utgivare och produktinformation från den med [hjälp av az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view). Det här exemplet hämtar en virtuell dator med namnet *myVM* i *resursgruppen myResourceGroup* och visar sedan informationen om köpplanen.
 
 ```azurepowershell-interactive
 az vm get-instance-view -g myResourceGroup -n myVM --query plan
 ```
 
-Om du inte fick plan informationen innan den ursprungliga virtuella datorn togs bort, kan du skicka en [support förfrågan](https://ms.portal.azure.com/#create/Microsoft.Support). De kommer att behöva det virtuella dator namnet, prenumerations-ID och tidsstämpeln för borttagnings åtgärden.
+Om du inte fick planinformationen innan den ursprungliga virtuella datorn togs bort kan du skicka en [supportbegäran.](https://ms.portal.azure.com/#create/Microsoft.Support) De behöver vm-namnet, prenumerations-ID:t och tidsstämpeln för borttagningsåtgärden.
 
-När du har planerat informationen kan du skapa den nya virtuella datorn med `--attach-os-disk` parametern för att ange den virtuella hård disken.
+När du har planinformationen kan du skapa den nya virtuella datorn med hjälp av `--attach-os-disk` parametern för att ange den virtuella hårddisken.
 
 ```azurecli-interactive
 az vm create \
@@ -290,4 +290,4 @@ az vm create \
 
 
 ## <a name="next-steps"></a>Nästa steg
-För att snabbt skapa en virtuell dator med hjälp av avbildnings informationen, se [skapa och hantera virtuella Linux-datorer med Azure CLI](tutorial-manage-vm.md).
+Information om hur du snabbt skapar en virtuell dator med hjälp av avbildningsinformationen finns i [Skapa och hantera virtuella Linux-datorer med Azure CLI.](tutorial-manage-vm.md)

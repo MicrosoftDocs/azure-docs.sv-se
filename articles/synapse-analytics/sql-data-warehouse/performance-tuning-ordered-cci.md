@@ -1,34 +1,34 @@
 ---
 title: Prestandajustering med grupperade kolumnlagringsindex
-description: Rekommendationer och överväganden du bör känna till när du använder ordnat grupperat columnstore-index för att förbättra dina frågeresultat i dedikerade SQL-pooler.
+description: Rekommendationer och överväganden som du bör känna till när du använder sorterade grupperade columnstore-index för att förbättra frågeprestanda i dedikerade SQL-pooler.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 09/05/2019
+ms.date: 04/13/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: afb6efcee2ad4f5cf25a411eed353ff2fc27d75c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3245f560d9a5afb1f9cf8824eeaa3bc681706794
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96460797"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389680"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Prestandajustering med grupperade kolumnlagringsindex  
 
-När användarna frågar en columnstore-tabell i en dedikerad SQL-pool kontrollerar optimeringen de lägsta och högsta värden som lagras i varje segment.  Segment som ligger utanför gränserna för frågespråket går inte att läsa från disk till minne.  En fråga kan få snabbare prestanda om antalet segment som ska läsas och deras sammanlagda storlek är små.   
+När användare frågar en columnstore-tabell i en dedikerad SQL-pool kontrollerar optimeraren de lägsta och högsta värdena som lagras i varje segment.  Segment som ligger utanför gränserna för fråge predikatet läses inte från disk till minne.  En fråga kan få snabbare prestanda om antalet segment som ska läsas och deras totala storlek är litet.   
 
-## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Ordnat eller icke-ordnat grupperat columnstore-index
+## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Sorterade jämfört med icke-sorterade grupperade kolumnlagringsindex
 
-Som standard skapar en intern komponent (CCI) ett grupperat columnstore-index (CCI) för varje tabell som skapas utan ett index-alternativ.  Data i varje kolumn komprimeras till ett separat CCI radgrupps-segment.  Det finns metadata för varje segments värde intervall, så segment som ligger utanför gränserna för frågespråket är inte lästa från disk under frågekörningen.  CCI erbjuder den högsta nivån av data komprimering och minskar storleken på segment som ska läsas så att frågor kan köras snabbare. Men eftersom index Builder inte sorterar data innan de komprimeras i segment, kan segment med överlappande värde intervall inträffa, vilket gör att frågor kan läsa fler segment från disken och ta längre tid att slutföra.  
+Som standard skapar en intern komponent (indexbyggare) ett icke-ordnat grupperat columnstore-index (CCI) för varje tabell som skapas utan ett indexalternativ.  Data i varje kolumn komprimeras till ett separat CCI-radgruppsegment.  Det finns metadata för varje segments värdeintervall, så segment som ligger utanför gränserna för fråge predikatet läses inte från disken under frågekörningen.  CCI erbjuder den högsta nivån av datakomprimering och minskar storleken på segment att läsa så att frågor kan köras snabbare. Men eftersom indexverktyget inte sorterar data innan de komprimeras till segment kan segment med överlappande värdeintervall uppstå, vilket gör att frågor läser fler segment från disken och tar längre tid att slutföra.  
 
-När du skapar en ordnad CCI, sorterar den dedikerade SQL-poolen befintliga data i minnet efter beställnings nyckeln (erna) innan index verktyget komprimerar dem till index segment.  Med sorterade data minskas överlappande av segment som gör att frågor kan få en mer effektiv segment Eli minering och därmed snabbare prestanda eftersom antalet segment som ska läsas från disken är mindre.  Om alla data kan sorteras i minnet samtidigt, kan segment som överlappa varandra undvikas.  På grund av stora tabeller i data lager inträffar inte det här scenariot ofta.  
+När du skapar en ordnad CCI sorterar den dedikerade SQL-poolmotorn befintliga data i minnet efter ordernyckel(er) innan indexverktyget komprimerar dem i indexsegment.  Med sorterade data minskas segment överlappande så att frågor kan få ett effektivare segmenteliminering och därmed snabbare prestanda eftersom antalet segment som ska läsas från disken är mindre.  Om alla data kan sorteras i minnet samtidigt kan segment överlappande data undvikas.  På grund av stora tabeller i informationslager sker det här scenariot inte ofta.  
 
-Om du vill kontrol lera segment intervallen för en kolumn kör du följande kommando med ditt tabell namn och kolumn namn:
+Om du vill kontrollera segmentintervallen för en kolumn kör du följande kommando med tabellnamnet och kolumnnamnet:
 
 ```sql
 SELECT o.name, pnp.index_id, 
@@ -50,18 +50,18 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> I en ordnad CCI-tabell, sorteras de nya data som skapas från samma sats av DML-eller data inläsnings åtgärder i batchen, men det finns ingen global sortering för alla data i tabellen.  Användare kan återskapa de beställda CCI för att sortera alla data i tabellen.  I dedikerad SQL-pool är columnstore-indexet återskapa en offline-åtgärd.  För en partitionerad tabell görs en ombyggning av en partition i taget.  Data i partitionen som återskapas är offline och otillgängliga tills återskapandet har slutförts för den partitionen. 
+> I en ordnad CCI-tabell sorteras nya data från samma batch med DML eller data inläsningsåtgärder i den batchen, det finns ingen global sortering över alla data i tabellen.  Användare kan återskapa den sorterade CCI:en för att sortera alla data i tabellen.  I dedikerad SQL-pool är columnstore-indexet REBUILD en offline-åtgärd.  För en partitionerad tabell görs REBUILD en partition i taget.  Data i partitionen som återskapas är "offline" och otillgängliga tills REBUILD har slutförts för den partitionen. 
 
 ## <a name="query-performance"></a>Frågeprestanda
 
-En frågas prestanda vinst från en ordnad CCI är beroende av frågans mönster, storleken på data, hur väl data sorteras, den fysiska strukturen för segment och den DWU och resurs klass som valts för frågekörningen.  Användarna bör granska alla dessa faktorer innan de väljer sorterings kolumner när du designar en ordnad CCI-tabell.
+En frågas prestandavinst från en ordnad CCI beror på frågemönstren, storleken på data, hur väl data sorteras, den fysiska strukturen för segment samt den DWU och resursklass som valts för frågekörningen.  Användarna bör granska alla dessa faktorer innan de väljer ordningskolumner när de utformar en ordnad CCI-tabell.
 
-Frågor med alla dessa mönster körs vanligt vis snabbare med ordnade CCI.  
-1. Frågorna har likhets-, olikhets-eller intervall-predikat
-1. Predikatet predikat och de beställda CCI-kolumnerna är desamma.  
-1. Predikat-kolumnerna används i samma ordning som kolumn ordnings talet för de ordnade CCI-kolumnerna.  
+Frågor med alla dessa mönster körs vanligtvis snabbare med sorterad CCI.  
+1. Frågorna har likhets-, olikhets- eller intervall predikat
+1. Predikatkolumnerna och de sorterade CCI-kolumnerna är desamma.  
+1. Predikatkolumnerna används i samma ordning som kolumnordningen för ordnade CCI-kolumner.  
  
-I det här exemplet har tabell T1 ett grupperat columnstore-index som ordnats i sekvensen av Col_C, Col_B och Col_A.
+I det här exemplet har tabell T1 ett grupperat columnstore-index sorterat i sekvensen med Col_C, Col_B och Col_A.
 
 ```sql
 
@@ -70,7 +70,7 @@ ORDER (Col_C, Col_B, Col_A)
 
 ```
 
-Prestanda för fråga 1 kan dra nytta av mer från beställda CCI än de andra tre frågorna. 
+Prestanda för fråga 1 kan dra större nytta av sorterad CCI än de andra tre frågorna. 
 
 ```sql
 -- Query #1: 
@@ -89,27 +89,27 @@ SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
 
 ```
 
-## <a name="data-loading-performance"></a>Data inläsnings prestanda
+## <a name="data-loading-performance"></a>Prestanda för inläsning av data
 
-Prestanda för data inläsning i en ordnad CCI-tabell liknar en partitionerad tabell.  Inläsning av data i en ordnad CCI-tabell kan ta längre tid än en icke-ordnad CCI-tabell på grund av data sorterings åtgärden, men frågor kan köras snabbare efteråt med ordnade CCI.  
+Prestanda för data som läses in i en ordnad CCI-tabell liknar en partitionerad tabell.  Det kan ta längre tid att läsa in data i en ordnad CCI-tabell än en icke-sorterad CCI-tabell på grund av datasorteringsåtgärden, men frågorna kan köras snabbare efteråt med ordnad CCI.  
 
-Här är ett exempel på prestanda jämförelse av inläsning av data i tabeller med olika scheman.
+Här är ett exempel på en prestandajämförelse av inläsning av data i tabeller med olika scheman.
 
-![Stapeldiagram som visar prestanda jämförelsen för inläsning av data i tabeller med olika scheman.](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
+![Stapeldiagram som visar prestandajämförelse vid inläsning av data i tabeller med olika scheman.](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
 
 
-Här är ett exempel på att fråga prestanda jämförelser mellan CCI och ordnade CCI.
+Här är ett exempel på en jämförelse av frågeprestanda mellan CCI och ordnad CCI.
 
 ![Performance_comparison_data_loading](./media/performance-tuning-ordered-cci/occi_query_performance.png)
 
  
-## <a name="reduce-segment-overlapping"></a>Minska överlappande segment
+## <a name="reduce-segment-overlapping"></a>Minska segment överlappande
 
-Antalet överlappande segment beror på storleken på de data som ska sorteras, tillgängligt minne och den maximala graden av parallellitet (MAXDOP) under skapandet av ordnade CCI. Nedan visas alternativ för att minska överlappande segment när du skapar beställda CCI.
+Antalet överlappande segment beror på storleken på de data som ska sorteras, tillgängligt minne och max grad av parallellitet (MAXDOP) när CCI skapas. Nedan visas alternativ för att minska överlappande segment när du skapar ordnade CCI.
 
-- Använd xlargerc resurs klass på en högre DWU för att tillåta mer minne för data sortering innan index verktyget komprimerar data i segment.  En gång i ett index segment kan inte den fysiska platsen för data ändras.  Det finns ingen data sortering inom ett segment eller mellan segment.  
+- Använd xlargerc-resursklass på en högre DWU för att tillåta mer minne för datasortering innan indexverktyget komprimerar data i segment.  I ett indexsegment går det inte att ändra den fysiska platsen för data.  Det finns ingen datasortering inom ett segment eller mellan segment.  
 
-- Skapa beställda CCI med MAXDOP = 1.  Varje tråd som används för att skapa ordnad CCI fungerar på en delmängd data och sorterar den lokalt.  Det finns ingen global sortering mellan data sorterade efter olika trådar.  Genom att använda parallella trådar kan du minska tiden för att skapa en ordnad CCI men generera fler överlappande segment än att använda en enda tråd.  För närvarande stöds inte alternativet MAXDOP i skapa en ordnad CCI-tabell med CREATE TABLE AS SELECT-kommandot.  Att skapa en ordnad CCI via CREATE INDEX eller CREATE TABLE kommandon stöder inte alternativet MAXDOP. Exempel:
+- Skapa sorterad CCI med MAXDOP = 1.  Varje tråd som används för att skapa sorterade CCI-data fungerar på en delmängd av data och sorterar dem lokalt.  Det finns ingen global sortering över data sorterade efter olika trådar.  Att använda parallella trådar kan minska tiden för att skapa en ordnad CCI, men genererar mer överlappande segment än att använda en enda tråd.  För närvarande stöds maxdop-alternativet endast för att skapa en ordnad CCI-tabell med hjälp CREATE TABLE AS SELECT-kommando.  Att skapa en ordnad CCI via CREATE INDEX eller CREATE TABLE kommandon stöder inte alternativet MAXDOP. Exempel:
 
 ```sql
 CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX ORDER(c1) )
@@ -117,26 +117,31 @@ AS SELECT * FROM ExampleTable
 OPTION (MAXDOP 1);
 ```
 
-- Sortera data efter sorterings nyckel (er) innan du läser in dem i tabeller.
+- Sortera data i förväg efter sorteringsnyckel(er) innan du läser in dem i tabeller.
 
-Här är ett exempel på en ordnad tabell distribution som har noll segment som överlappar följande rekommendationer. Den ordnade CCI-tabellen skapas i en DWU1000c-databas via CTAS från en heap-tabell med 20 GB med MAXDOP 1 och xlargerc.  CCI är ordnade i en BIGINT-kolumn utan dubbletter.  
+Här är ett exempel på en ordnad CCI-tabellfördelning som har noll segment som överlappar enligt rekommendationerna ovan. Den sorterade CCI-tabellen skapas i en DWU1000c-databas via CTAS från en heap-tabell på 20 GB med MAXDOP 1 och xlargerc.  CCI sorteras på en BIGINT-kolumn utan dubbletter.  
 
 ![Segment_No_Overlapping](./media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 
-## <a name="create-ordered-cci-on-large-tables"></a>Skapa beställda CCI i stora tabeller
+## <a name="create-ordered-cci-on-large-tables"></a>Skapa sorterad CCI på stora tabeller
 
-Att skapa en ordnad CCI är en offline-åtgärd.  För tabeller som inte har några partitioner är data inte tillgängliga för användarna förrän den ordnade CCI-processen har skapats.   För partitionerade tabeller, eftersom motorn skapar den beställda CCI-partitionen per partition, kan användarna fortfarande komma åt data i partitioner där ordnade CCI inte har skapats.   Du kan använda det här alternativet för att minimera stillestånds tiden när du skapar ordnade CCI i stora tabeller: 
+Att skapa en ordnad CCI är en offline-åtgärd.  För tabeller utan partitioner är data inte tillgängliga för användare förrän den beställda CCI-skapandeprocessen har slutförts.   Eftersom motorn skapar den sorterade CCI-partitionen efter partition för partition kan användare för partitioner fortfarande komma åt data i partitioner där ordnad CCI-generering inte pågår.   Du kan använda det här alternativet för att minimera avbrottstiden när CCI skapas på stora tabeller: 
 
-1.    Skapa partitioner på den stora mål tabellen (kallas Table_A).
-2.    Skapa en tom ordnad tabell (kallas Table_B) med samma tabell och partition schema som tabell A.
-3.    Växla en partition från tabell A till tabell B.
-4.    Kör ALTER INDEX <Ordered_CCI_Index> på <Table_B> återskapa PARTITION = <Partition_ID> i tabell B för att återskapa den switchade partitionen.  
+1.    Skapa partitioner på den stora måltabellen (kallas för Table_A).
+2.    Skapa en tom sorterad CCI-tabell (Table_B) med samma tabell- och partitionsschema som tabell A.
+3.    Växla en partition från Tabell A till Tabell B.
+4.    Kör ALTER INDEX <Ordered_CCI_Index> ON <Table_B> REBUILD PARTITION = <Partition_ID> på Tabell B för att återskapa den växlade partitionen.  
 5.    Upprepa steg 3 och 4 för varje partition i Table_A.
-6.    När alla partitioner har växlats från Table_A till Table_B och har återskapats, släpp Table_A och Byt namn på Table_B till Table_A. 
+6.    När alla partitioner växlas från Table_A till Table_B har byggts om tar du bort Table_A och byter namn Table_B till Table_A. 
+
+>[!TIP]
+> För en dedikerad SQL-pooltabell med en ordnad CCI sorterar ALTER INDEX REBUILD om data med tempdb. Övervaka tempdb under återskapningsåtgärder. Om du behöver mer tempdb-utrymme skalar du upp poolen. Skala ned igen när indexet har återskapats.
+>
+> För en dedikerad SQL-pooltabell med en ordnad CCI sorterar ALTER INDEX REORGANIZE inte om data. Använd ALTER INDEX REBUILD om du vill använda data.
 
 ## <a name="examples"></a>Exempel
 
-**En. Så här söker du efter ordnade kolumner och ordnings tal:**
+**A. Så här söker du efter sorterade kolumner och ordningstal:**
 
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
@@ -145,7 +150,7 @@ JOIN sys.columns c ON i.object_id = c.object_id AND c.column_id = i.column_id
 WHERE column_store_order_ordinal <>0
 ```
 
-**T. Om du vill ändra kolumn ordnings tal, lägga till eller ta bort kolumner från order listan eller ändra från CCI till ordnade CCI:**
+**B. Om du vill ändra kolumnordningsordning lägger du till eller tar bort kolumner från orderlistan eller ändrar från CCI till sorterad CCI:**
 
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales
@@ -155,4 +160,4 @@ WITH (DROP_EXISTING = ON)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer utvecklings tips finns i [utvecklings översikt](sql-data-warehouse-overview-develop.md).
+Fler utvecklingstips finns i [utvecklingsöversikten.](sql-data-warehouse-overview-develop.md)

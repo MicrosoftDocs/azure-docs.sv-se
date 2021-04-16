@@ -1,6 +1,6 @@
 ---
-title: Azure Backup för SQL Server som körs i Azure VM
-description: I den här artikeln får du lära dig hur du registrerar Azure Backup i SQL Server som körs i en virtuell Azure-dator.
+title: Azure Backup för SQL Server körs på en virtuell Azure-dator
+description: I den här artikeln får du lära dig hur du registrerar Azure Backup i SQL Server körs på en virtuell Azure-dator.
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: extensions
@@ -8,29 +8,29 @@ author: v-amallick
 ms.author: v-amallick
 ms.collection: windows
 ms.date: 07/05/2019
-ms.openlocfilehash: 171a438b8ac2a74437c15a749d6974945877a1ee
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: c10be941206dd60887c9d82025506d1ea15c51a2
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106293761"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517257"
 ---
-# <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure Backup för SQL Server som körs i Azure VM
+# <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure Backup för SQL Server körs på en virtuell Azure-dator
 
-Azure Backup, bland annat erbjudanden, ger stöd för säkerhets kopiering av arbets belastningar som SQL Server som körs i virtuella Azure-datorer. Eftersom SQL-programmet körs i en virtuell Azure-dator måste säkerhets kopierings tjänsten ha behörighet att komma åt programmet och hämta nödvändig information.
-För att göra det, Azure Backup installerar tillägget **AzureBackupWindowsWorkload** på den virtuella datorn, där SQL Server körs, under registrerings processen som utlöses av användaren.
+Azure Backup bland andra erbjudanden ger stöd för att arbetsbelastningsbacka arbetsbelastningar, till exempel SQL Server körs på virtuella Azure-datorer. Eftersom SQL-programmet körs på en virtuell Azure-dator behöver säkerhetskopieringstjänsten behörighet att komma åt programmet och hämta nödvändig information.
+För att göra det Azure Backup installerar **tillägget AzureBackupWindowsWorkload** på den virtuella dator där SQL Server körs under den registreringsprocess som utlöses av användaren.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-En lista över scenarier som stöds finns i [support mat ris](../../backup/sql-support-matrix.md#scenario-support) som stöds av Azure Backup.
+En lista över scenarier som stöds finns i [supportmatrisen som](../../backup/sql-support-matrix.md#scenario-support) stöds av Azure Backup.
 
 ## <a name="network-connectivity"></a>Nätverksanslutningar
 
-Azure Backup stöder NSG-taggar, distribution av en proxyserver eller listade IP-intervall; Mer information om var och en av metoderna finns i den här [artikeln](../../backup/backup-sql-server-database-azure-vms.md#establish-network-connectivity).
+Azure Backup stöd för NSG-taggar, distribution av en proxyserver eller angivna IP-intervall. Mer information om var och en av metoderna finns i den här [artikeln.](../../backup/backup-sql-server-database-azure-vms.md#establish-network-connectivity)
 
 ## <a name="extension-schema"></a>Tilläggsschema
 
-Tilläggs schemats och egenskaps värden är konfigurations värden (körnings inställningar) som tjänsten skickar till CRP-API: et. Dessa konfigurations värden används vid registrering och uppgradering. **AzureBackupWindowsWorkload** -tillägget använder även det här schemat. Schemat är redan konfigurerat. Du kan lägga till en ny parameter i fältet objectStr
+Tilläggsschemat och egenskapsvärdena är de konfigurationsvärden (körningsinställningar) som tjänsten vidarebefordrar till CRP-API:et. Dessa konfigurationsvärden används under registreringen och uppgraderingen. **AzureBackupWindowsWorkload-tillägget** använder också det här schemat. Schemat är förinställt. en ny parameter kan läggas till i fältet objectStr
 
   ```json
       "runtimeSettings": [{
@@ -83,35 +83,35 @@ Följande JSON visar schemat för WorkloadBackup-tillägget.
   }
   ```
 
-### <a name="property-values"></a>Egenskaps värden
+### <a name="property-values"></a>Egenskapsvärden
 
 Name | Värde/exempel | Datatyp
  --- | --- | ---
 locale | sv-se  |  sträng
 taskId | "1c0ae461-9d3b-418c-a505-bb31dfe2095d"  | sträng
-objectStr <br/> (publicSettings)  | "eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIjoiMzVjMjQxYTItOGRjNy00ZGE5LWI4NTMtMjdjYTJhNDZlM2ZkIiwiSWRNZ210Q29udGFpbmVySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTkwOWMyMGVjNjVhIiwiU3Vic2NyaXB0aW9uSWQiOiJkNGEzOTliNy1iYjAyLTQ2MWMtODdmYS1jNTM5ODI3ZTgzNTQiLCJVbmlxdWVDb250 YWluZXJOYW1lIjoiODM4MDZjODUtNTQ4OS00NmNhLWEyZTctNWMzNzNhYjg3OTcyIn0sInN0YW1wTGlzdCI6W3siU2VydmljZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVybCI6Imh0dHA6XC9cL015V0xGYWJTdmMuY29tIn1dfQ = =" | sträng
+objectStr <br/> (publicSettings)  | "eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIjoiMzVjMjQxYTItOGRjNy00ZGE5LWI4NTMtMjdjYTJhNDM2ZkIiwiSWRNZ210Q29udGFpbmVySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTkwOWMyMGVjNjVhIiwiU3Vic2NyaXB0aW9uSWQiOiSymbolNGEzOTliNy1iYjAyLTQ2MWMtODdmYS1jNTM5LIO3ZTgzNTQiLCJVbmlxdWVDb250YWluZXJOYW1lIjoiODM4MDZjODUtNTQ4OS00NmNhLWEyZTctNWMzNzNhYjg3OTcyIn0sInN0YW1wTGlzdCI6W3siU2VydmljZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVybCI6Imh0dHA6XC9cL015V0xGYWJTdmMuY29tIn1dfQ==" | sträng
 commandStartTimeUTCTicks | "636967192566036845"  | sträng
-vmType  | "Microsoft. Compute/virtualmachines"  | sträng
-objectStr <br/> (protectedSettings) | "eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIjoiMzVjMjQxYTItOGRjNy00ZGE5LWI4NTMtMjdjYTJhNDZlM2ZkIiwiSWRNZ210Q29udGFpbmVySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTkwOWMyMGVjNjVhIiwiU3Vic2NyaXB0aW9uSWQiOiJkNGEzOTliNy1iYjAyLTQ2MWMtODdmYS1jNTM5ODI3ZTgzNTQiLCJVbmlxdWVDb250 YWluZXJOYW1lIjoiODM4MDZjODUtNTQ4OS00NmNhLWEyZTctNWMzNzNhYjg3OTcyIn0sInN0YW1wTGlzdCI6W3siU2VydmljZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVybCI6Imh0dHA6XC9cL015V0xGYWJTdmMuY29tIn1dfQ = =" | sträng
+vmType  | "microsoft.compute/virtualmachines"  | sträng
+objectStr <br/> (protectedSettings) | "eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIjoiMzVjMjQxYTItOGRjNy00ZGE5LWI4NTMtMjdjYTJhNDM2ZkIiwiSWRNZ210Q29udGFpbmVySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTkwOWMyMGVjNjVhIiwiU3Vic2NyaXB0aW9uSWQiOiJjNGEzOTliNy1iYjAyLTQ2MWMtODdmYS1jNTM5LIO3ZTgzNTQiLCJVbmlxdWVDb250YWluZXJOYW1lIjoiODM4MDZjODUtNTQ4OS00NmNhLWEyZTctNWMzNzNhYjg3OTcyIn0sInN0YW1wTGlzdCI6W3siU2VydmljZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVybCI6Imh0dHA6XC9cL015V0xGYWJTdmMuY29tIn1dfQ==" | sträng
 logsBlobUri | <https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Logs.txt?sv=2014-02-14&sr=b&sig=DbwYhwfeAC5YJzISgxoKk%2FEWQq2AO1vS1E0rDW%2FlsBw%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw> | sträng
 statusBlobUri | <https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Status.txt?sv=2014-02-14&sr=b&sig=96RZBpTKCjmV7QFeXm5IduB%2FILktwGbLwbWg6Ih96Ao%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw> | sträng
 
 ## <a name="template-deployment"></a>Malldistribution
 
-Vi rekommenderar att du lägger till AzureBackupWindowsWorkload-tillägg i en virtuell dator genom att aktivera SQL Server säkerhets kopiering på den virtuella datorn. Detta kan uppnås via [Resource Manager-mallen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vm-workload-backup) som är utformad för att automatisera säkerhets kopieringen på en SQL Server VM.
+Vi rekommenderar att du lägger till tillägget AzureBackupWindowsWorkload på en virtuell dator genom att aktivera SQL Server säkerhetskopiering på den virtuella datorn. Detta kan uppnås med hjälp av [Resource Manager som utformats](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vm-workload-backup) för att automatisera säkerhetskopiering på en SQL Server VM.
 
 ## <a name="powershell-deployment"></a>PowerShell-distribution
 
-Du måste registrera den virtuella Azure-datorn som innehåller SQL-programmet med ett Recovery Services-valv. Under registreringen installeras AzureBackupWindowsWorkload-tillägget på den virtuella datorn. Använd [register-AzRecoveryServicesBackupContainerPS-](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) cmdlet för att registrera den virtuella datorn.
+Du måste "registrera" den virtuella Azure-dator som innehåller SQL-programmet med ett Recovery Services-valv. Under registreringen installeras tillägget AzureBackupWindowsWorkload på den virtuella datorn. Använd [cmdleten Register-AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) för att registrera den virtuella datorn.
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
 Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetVault.ID -Force
 ```
 
-Kommandot returnerar en **säkerhets kopia** av den här resursen och statusen kommer att **registreras**.
+Kommandot returnerar en **säkerhetskopieringscontainer** för den här resursen och **statusen** registreras.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Lär dig mer](../../backup/backup-sql-server-azure-troubleshoot.md) om fel söknings rikt linjer för Azure SQL Server VM backup
-- [Vanliga frågor](../../backup/faq-backup-sql-server.md) om säkerhets kopiering av SQL Server databaser som körs på virtuella Azure-datorer (VM: ar) och som använder tjänsten Azure Backup.
+- [Läs mer om](../../backup/backup-sql-server-azure-troubleshoot.md) felsökningsriktlinjerna för Azure SQL Server VM-säkerhetskopiering
+- [Vanliga frågor](../../backup/faq-backup-sql-server.yml) om att SQL Server databaser som körs på virtuella Azure-datorer (VM) och som använder Azure Backup tjänsten.

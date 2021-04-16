@@ -169,11 +169,11 @@
               href: storage-blob-change-feed.md
             - name: Blobar som inte kan ändras
               href: storage-blob-immutable-storage.md
-        - name: Redundans och haveri beredskap
+        - name: Redundans och haveriberedskap
           items:
             - name: Dataredundans
               href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Kundhanterad redundansväxling för haveri beredskap
+            - name: Kundhantering av redundans för haveriberedskap
               href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Objektreplikering
           href: object-replication-overview.md
@@ -289,7 +289,7 @@
               href: storage-blob-container-properties-metadata.md
         - name: Skapa och hantera blobar
           items:
-            - name: List blobbar (SDK)
+            - name: Lista blobar (SDK)
               href: storage-blobs-list.md
             - name: Hantera egenskaper och metadata för blobar (.NET)
               href: storage-blob-properties-metadata.md
@@ -299,7 +299,7 @@
               href: storage-blob-copy.md
             - name: Använda blobindextaggar
               href: storage-blob-index-how-to.md
-            - name: Beräkna blobbar och Total storlek
+            - name: Beräkna antalet blobar och total storlek
               href: calculate-blob-count-size.md
         - name: Bevilja åtkomst till blobdata
           items:
@@ -405,19 +405,19 @@
                   href: ../common/configure-network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Konfigurera Azure Defender för hotskydd
               href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Skydda BLOB-data
+        - name: Skydda blobdata
           items:
-            - name: Lås ett lagrings konto
+            - name: Låsa ett lagringskonto
               href: ../common/lock-account-resource.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Aktivera mjuk borttagning för behållare
               href: soft-delete-container-enable.md
             - name: Aktivera blobversionshantering
               href: versioning-enable.md
-            - name: Aktivera och hantera mjuk borttagning för blobbar
+            - name: Aktivera och hantera mjuk borttagning för blobar
               items:
-                - name: Aktivera mjuk borttagning av BLOB
+                - name: Aktivera mjuk borttagning av blob
                   href: soft-delete-blob-enable.md
-                - name: Hantera och återställa mjuka borttagna blobar
+                - name: Hantera och återställa mjukt borttagna blobar
                   href: soft-delete-blob-manage.md
             - name: Aktivera återställning baserat på tidpunkt
               href: point-in-time-restore-manage.md
@@ -445,7 +445,7 @@
           items:
             - name: Använda Azurite-emulatorn med öppen källkod
               href: ../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Använd Azurite för att köra automatiserade tester
+            - name: Använda Azurite för att köra automatiserade tester
               href: use-azurite-to-run-automated-tests.md
             - name: Använda Azure Storage-emulatorn
               href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -469,20 +469,22 @@
                   href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Auktorisera med Azure AD
                   href: ../common/storage-use-azcopy-authorize-azure-active-directory.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Optimera prestanda
+                  href: ../common/storage-use-azcopy-optimize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Använda loggar för att hitta fel och återuppta jobb
+                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Exempel: Ladda upp'
                   href: ../common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Exempel: Ladda ned'
                   href: ../common/storage-use-azcopy-blobs-download.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Exempel: Synkronisera'
-                  href: ../common/storage-use-azcopy-blobs-synchronize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Exempel: Kopiera mellan konton'
                   href: ../common/storage-use-azcopy-blobs-copy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Exempel: Synkronisera'
+                  href: ../common/storage-use-azcopy-blobs-synchronize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Exempel: Amazon S3-bucketar'
                   href: ../common/storage-use-azcopy-s3.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Exempel: Google Cloud Storage-buckets'
+                - name: 'Exempel: Google Cloud Storage-bucketar'
                   href: ../common/storage-use-azcopy-google-cloud.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Konfigurera, optimera, felsöka'
-                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Data Factory
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Montera lagring med NFS
@@ -519,6 +521,8 @@
           href: ../blobs/reference.md
         - name: AzCopy v10
           items:
+            - name: Konfigurationsinställningar
+              href: ../common/storage-ref-azcopy-configuration-settings.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy
               href: ../common/storage-ref-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: azcopy bench
@@ -579,9 +583,9 @@
               href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
             - name: Felsöka Storage Explorer
               href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Storage Explorer kommando rads alternativ
+            - name: Storage Explorer kommandoradsalternativ
               href: ../common/storage-explorer-command-line-options.md
-            - name: Storage Explorer direkt länk
+            - name: Storage Explorer direktlänk
               href: ../common/storage-explorer-direct-link.md
             - name: Storage Explorer-säkerhet
               href: ../common/storage-explorer-security.md
@@ -663,11 +667,11 @@
           href: data-lake-storage-introduction.md
     - name: Självstudier
       items:
-        - name: Använd med Databricks och Spark
+        - name: Använda med Databricks och Spark
           href: data-lake-storage-use-databricks-spark.md
-        - name: Använd med Apache Hive och HDInsight
+        - name: Använda med Apache Hive och HDInsight
           href: data-lake-storage-tutorial-extract-transform-load-hive.md
-        - name: Använd med Databricks delta och Event Grid
+        - name: Använd med Databricks Delta och Event Grid
           href: data-lake-storage-events.md
         - name: Använda med andra Azure-tjänster
           href: data-lake-storage-integrate-with-services-tutorials.md
@@ -727,7 +731,7 @@
       items:
         - name: skapar ett lagringskonto
           href: create-data-lake-storage-account.md
-        - name: Migrera konton och data lager
+        - name: Migrera konton och datalager
           items:
             - name: Migrera från Data Lake Storage Gen1
               href: data-lake-storage-migrate-gen1-to-gen2.md
@@ -741,18 +745,24 @@
               items:
                 - name: Kom igång
                   href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Auktorisera med Azure AD
+                  href: ../common/storage-use-azcopy-authorize-azure-active-directory.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Optimera prestanda
+                  href: ../common/storage-use-azcopy-optimize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Använda loggar för att hitta fel och återuppta jobb
+                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Exempel: Ladda upp'
                   href: ../common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Exempel: Ladda ned'
                   href: ../common/storage-use-azcopy-blobs-download.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Exempel: Synkronisera'
-                  href: ../common/storage-use-azcopy-blobs-synchronize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Exempel: Kopiera mellan konton'
                   href: ../common/storage-use-azcopy-blobs-copy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Exempel: Synkronisera'
+                  href: ../common/storage-use-azcopy-blobs-synchronize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Exempel: Amazon S3-bucketar'
                   href: ../common/storage-use-azcopy-s3.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Konfigurera, optimera och felsöka'
-                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Exempel: Google Cloud Storage-bucketar'
+                  href: ../common/storage-use-azcopy-google-cloud.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Data Factory
               href: ../../data-factory/connector-azure-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Överför data med DistCp-verktyget
@@ -795,11 +805,11 @@
               href: data-lake-storage-query-acceleration-how-to.md
             - name: CLI för Hadoop File System
               href: data-lake-storage-use-hdfs-data-lake-storage.md
-        - name: Använd med Azure-tjänster
+        - name: Använda med Azure-tjänster
           href: data-lake-storage-integrate-with-services-tutorials.md
         - name: Optimera prestanda
           items:
-            - name: Översikt över prestanda optimering
+            - name: Översikt över prestandaoptimering
               href: data-lake-storage-performance-tuning-guidance.md
             - name: Optimera Spark på HDInsight
               href: data-lake-storage-performance-tuning-spark.md

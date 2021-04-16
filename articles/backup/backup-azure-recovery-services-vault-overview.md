@@ -3,66 +3,66 @@ title: Översikt över Recovery Services-valv
 description: En översikt över Recovery Services-valv.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 0ed37446e1ccf0780f924143c8f063964adf0004
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f2018f0f3d3135d632418c2e591e6ad938d62d2
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98755120"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517461"
 ---
 # <a name="recovery-services-vaults-overview"></a>Översikt över Recovery Services-valv
 
-I den här artikeln beskrivs funktionerna i ett Recovery Services-valv. Ett Recovery Services-valv är en lagrings enhet i Azure som huserar data. Data är vanligt vis kopior av data eller konfigurations information för virtuella datorer (VM), arbets belastningar, servrar eller arbets stationer. Du kan använda Recovery Services valv för att lagra säkerhets kopierings data för olika Azure-tjänster, till exempel virtuella IaaS-datorer (Linux eller Windows) och Azure SQL-databaser. Recovery Services valv stöder System Center DPM, Windows Server, Azure Backup Server med mera. Med Recovery Services-valv är det enkelt att organisera dina säkerhetskopierade data samtidigt som du minimerar hanteringskostnaden. Recovery Services-valv baseras på Azure Resource Manager modell för Azure, som innehåller funktioner som:
+I den här artikeln beskrivs funktionerna i ett Recovery Services-valv. Ett Recovery Services-valv är en lagringsentitet i Azure som innehåller data. Data är vanligtvis kopior av data eller konfigurationsinformation för virtuella datorer ,arbetsbelastningar, servrar eller arbetsstationer. Du kan använda Recovery Services-valv för att lagra säkerhetskopierade data för olika Azure-tjänster, till exempel virtuella IaaS-datorer (Linux eller Windows) och Azure SQL databaser. Recovery Services-valv stöder System Center DPM, Windows Server, Azure Backup Server med mera. Med Recovery Services-valv är det enkelt att organisera dina säkerhetskopierade data samtidigt som du minimerar hanteringskostnaden. Recovery Services-valv baseras på Azure Resource Manager av Azure, som innehåller funktioner som:
 
-- **Förbättrade funktioner för att skydda säkerhets kopierings data**: med Recovery Services-valv tillhandahåller Azure Backup säkerhetsfunktioner för säkerhets kopiering av molnet. Säkerhetsfunktionerna garanterar att du kan skydda dina säkerhets kopior och återställa data på ett säkert sätt, även om produktions-och säkerhets kopierings servrar komprometteras. [Läs mer](backup-azure-security-feature.md)
+- **Förbättrade funktioner för att skydda säkerhetskopierade data:** Med Recovery Services-valv Azure Backup säkerhetsfunktioner för att skydda molnsäkerhetskopior. Säkerhetsfunktionerna ser till att du kan skydda dina säkerhetskopior och återställa data på ett säkert sätt, även om produktions- och säkerhetskopieringsservrar komprometteras. [Läs mer](backup-azure-security-feature.md)
 
-- **Central övervakning för din hybrid IT-miljö**: med Recovery Services valv kan du bara övervaka dina [virtuella Azure IaaS-datorer](backup-azure-manage-vms.md) utan även dina [lokala till gångar](backup-azure-manage-windows-server.md#manage-backup-items) från en central Portal. [Läs mer](backup-azure-monitoring-built-in-monitor.md)
+- **Central övervakning för din hybrid-IT-miljö:** Med Recovery Services-valv kan du övervaka inte bara dina virtuella [Azure IaaS-datorer](backup-azure-manage-vms.md) utan även dina lokala tillgångar från en central portal. [](backup-azure-manage-windows-server.md#manage-backup-items) [Läs mer](backup-azure-monitoring-built-in-monitor.md)
 
-- **Rollbaserad åtkomst kontroll i Azure (Azure RBAC)**: Azure RBAC tillhandahåller detaljerade åtkomst hanterings kontroller i Azure. [Azure tillhandahåller olika inbyggda roller](../role-based-access-control/built-in-roles.md)och Azure Backup har tre [inbyggda roller för att hantera återställnings punkter](backup-rbac-rs-vault.md). Recovery Services-valv är kompatibla med Azure RBAC, vilket begränsar säkerhets kopiering och återställning av åtkomst till den definierade uppsättningen användar roller. [Läs mer](backup-rbac-rs-vault.md)
+- **Rollbaserad åtkomstkontroll i Azure (Azure RBAC):** Azure RBAC ger en mer fullständig åtkomsthanteringskontroll i Azure. [Azure tillhandahåller olika inbyggda roller, och](../role-based-access-control/built-in-roles.md)Azure Backup har tre [inbyggda roller för att hantera återställningspunkter.](backup-rbac-rs-vault.md) Recovery Services-valv är kompatibla med Azure RBAC, vilket begränsar åtkomsten till säkerhetskopiering och återställning till den definierade uppsättningen användarroller. [Läs mer](backup-rbac-rs-vault.md)
 
-- **Mjuk borttagning**: med mjuk borttagning, även om en obehörig aktör tar bort en säkerhets kopia (eller säkerhetskopierade data tas bort av misstag), bevaras säkerhets kopierings data i ytterligare 14 dagar, vilket gör att det inte går att återställa säkerhets kopierings objekt utan data förlust. De ytterligare 14 dagarna för kvarhållning av säkerhets kopierings data i läget "mjuk borttagning" kostar inga kostnader för dig. [Läs mer](backup-azure-security-feature-cloud.md).
+- **Mjuk borttagning:** Med mjuk borttagning, även om en illvillig aktör tar bort en säkerhetskopia (eller om säkerhetskopierade data tas bort av misstag), bevaras säkerhetskopierade data i ytterligare 14 dagar, vilket gör att säkerhetskopieringsobjektet kan återställas utan dataförlust. De ytterligare 14 dagarnas kvarhållning för säkerhetskopierade data i läget "mjuk borttagning" medför inte någon kostnad för dig. [Läs mer](backup-azure-security-feature-cloud.md).
 
-- **Återställning mellan regioner**: kors regions återställning (CRR) gör att du kan återställa virtuella Azure-datorer i en sekundär region, som är en Azure-kopplad region. Genom att aktivera den här funktionen på [valv nivån](backup-create-rs-vault.md#set-cross-region-restore)kan du när som helst återställa replikerade data i den sekundära regionen när du väljer. På så sätt kan du återställa de sekundära regions data för gransknings-och återställnings scenarier, utan att vänta på att Azure ska deklarera en katastrof (till skillnad från GRS-inställningarna för valvet). [Läs mer](backup-azure-arm-restore-vms.md#cross-region-restore).
+- **Återställning mellan regioner:** Med återställning mellan regioner (CRR) kan du återställa virtuella Azure-datorer i en sekundär region, som är en länkad Azure-region. Genom att aktivera den här funktionen på [valvnivå](backup-create-rs-vault.md#set-cross-region-restore)kan du återställa replikerade data i den sekundära regionen när du vill. På så sätt kan du återställa data för sekundära regioner för granskningsefterlevnad och under avbrottsscenarier, utan att vänta på att Azure ska deklarera en katastrof (till skillnad från GRS-inställningarna för valvet). [Läs mer](backup-azure-arm-restore-vms.md#cross-region-restore).
 
-## <a name="storage-settings-in-the-recovery-services-vault"></a>Lagrings inställningar i Recovery Services valvet
+## <a name="storage-settings-in-the-recovery-services-vault"></a>Lagringsinställningar i Recovery Services-valvet
 
-Ett Recovery Services-valv är en entitet som lagrar säkerhets kopior och återställnings punkter som skapats med tiden. Recovery Services valvet innehåller också de säkerhets kopierings principer som är associerade med de skyddade virtuella datorerna.
+Ett Recovery Services-valv är en entitet som lagrar säkerhetskopior och återställningspunkter som skapats över tid. Recovery Services-valvet innehåller också de säkerhetskopieringsprinciper som är associerade med de skyddade virtuella datorerna.
 
-- Azure Backup hanterar automatiskt lagring för valvet. Se hur [lagrings inställningarna kan ändras](./backup-create-rs-vault.md#set-storage-redundancy).
+- Azure Backup hanterar automatiskt lagringen för valvet. Se hur [lagringsinställningar kan ändras.](./backup-create-rs-vault.md#set-storage-redundancy)
 
-- Mer information om lagrings redundans finns i de här artiklarna om [geo](../storage/common/storage-redundancy.md#geo-zone-redundant-storage)-, [lokal](../storage/common/storage-redundancy.md#locally-redundant-storage) -och [zonindelade](../storage/common/storage-redundancy.md#zone-redundant-storage) -redundans.
+- Mer information om lagringsredundans finns i dessa artiklar om [geo,](../storage/common/storage-redundancy.md#geo-zone-redundant-storage) [lokal och](../storage/common/storage-redundancy.md#locally-redundant-storage) [zonindelade redundans.](../storage/common/storage-redundancy.md#zone-redundant-storage)
 
-## <a name="encryption-settings-in-the-recovery-services-vault"></a>Krypterings inställningar i Recovery Services valvet
+## <a name="encryption-settings-in-the-recovery-services-vault"></a>Krypteringsinställningar i Recovery Services-valvet
 
-I det här avsnittet beskrivs de alternativ som är tillgängliga för kryptering av säkerhets kopierings data som lagras i Recovery Services valvet.
+I det här avsnittet beskrivs de alternativ som är tillgängliga för kryptering av dina säkerhetskopierade data som lagras i Recovery Services-valvet.
 
-### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>Kryptering av säkerhets kopierings data med hjälp av plattforms hanterade nycklar
+### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>Kryptering av säkerhetskopierade data med plattformsbaserade nycklar
 
-Som standard krypteras alla dina data med hjälp av plattforms hanterade nycklar. Du behöver inte vidta någon uttrycklig åtgärd från din sida för att aktivera den här krypteringen. Den gäller för alla arbets belastningar som säkerhets kopie ras till Recovery Services-valvet.
+Som standard krypteras alla dina data med plattformsbaserade nycklar. Du behöver inte vidta några explicita åtgärder från din slutpunkt för att aktivera den här krypteringen. Det gäller för alla arbetsbelastningar som säkerhetskopieras till Recovery Services-valvet.
 
 ### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Kryptering av säkerhetskopieringsdata med kundhanterade nycklar
 
-Du kan välja att kryptera dina data med hjälp av krypterings nycklar som ägs och hanteras av dig. Med Azure Backup kan du använda dina RSA-nycklar som lagras i Azure Key Vault för kryptering av dina säkerhets kopior. Krypterings nyckeln som används för kryptering av säkerhets kopior kan skilja sig från den som används för källan. Data skyddas med en AES 256-baserad data krypterings nyckel (DEK), som i sin tur skyddas med hjälp av dina nycklar. Detta ger dig fullständig kontroll över data och nycklar. För att tillåta kryptering måste Recovery Servicess valvet beviljas åtkomst till krypterings nyckeln i Azure Key Vault. Du kan inaktivera nyckeln eller återkalla åtkomst när det behövs. Du måste dock aktivera kryptering med dina nycklar innan du försöker skydda några objekt i valvet.
+Du kan välja att kryptera dina data med hjälp av krypteringsnycklar som ägs och hanteras av dig. Azure Backup kan du använda dina RSA-nycklar som lagras i Azure Key Vault för att kryptera dina säkerhetskopior. Krypteringsnyckeln som används för att kryptera säkerhetskopior kan vara en annan än den som används för källan. Data skyddas med en AES 256-baserad datakrypteringsnyckel (DEK), som i sin tur skyddas med hjälp av dina nycklar. Detta ger dig fullständig kontroll över data och nycklar. För att tillåta kryptering måste Recovery Services-valvet beviljas åtkomst till krypteringsnyckeln i Azure Key Vault. Du kan inaktivera nyckeln eller återkalla åtkomsten när det behövs. Du måste dock aktivera kryptering med hjälp av dina nycklar innan du försöker skydda objekt i valvet.
 
-Läs mer om hur du krypterar dina säkerhetskopierade data [med Kundhanterade nycklar](encryption-at-rest-with-cmk.md).
+Läs mer om hur du krypterar dina säkerhetskopierade data [med kund hanterade nycklar.](encryption-at-rest-with-cmk.md)
 
 ## <a name="azure-advisor"></a>Azure Advisor
 
-[Azure Advisor](../advisor/index.yml) är en anpassad moln konsult som hjälper dig att optimera användningen av Azure. Den analyserar din Azure-användning och ger rekommendationer som hjälper dig att optimera och skydda dina distributioner. Det ger rekommendationer i fyra kategorier: hög tillgänglighet, säkerhet, prestanda och kostnad.
+[Azure Advisor](../advisor/index.yml) är en anpassad molnkonsult som hjälper dig att optimera användningen av Azure. Den analyserar din Azure-användning och ger rekommendationer i rätt tid för att optimera och skydda dina distributioner. Den ger rekommendationer i fyra kategorier: hög tillgänglighet, säkerhet, prestanda och kostnad.
 
-Azure Advisor ger [rekommendationer](../advisor/advisor-high-availability-recommendations.md#protect-your-virtual-machine-data-from-accidental-deletion) för virtuella datorer som inte har säkerhetskopierats, så att du aldrig har säkerhetskopierat viktiga virtuella datorer. Du kan också styra rekommendationerna genom att försätta dem i vilo läge.  Du kan välja rekommendationen och aktivera säkerhets kopiering på virtuella datorer på en rad genom att ange valvet (där säkerhets kopior ska lagras) och säkerhets kopierings policyn (schema för säkerhets kopior och kvarhållning av säkerhets kopior).
+Azure Advisor rekommendationer [per](../advisor/advisor-high-availability-recommendations.md#protect-your-virtual-machine-data-from-accidental-deletion) timme för virtuella datorer som inte säkerhetskopieras, så att du aldrig missar säkerhetskopiering av viktiga virtuella datorer. Du kan också styra rekommendationerna genom att snooza dem.  Du kan välja rekommendationen och aktivera säkerhetskopiering på virtuella datorer på rad genom att ange valvet (där säkerhetskopior ska lagras) och säkerhetskopieringsprincipen (schema för säkerhetskopiering och kvarhållning av säkerhetskopior).
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Scenarier som stöds och scenarier som inte stöds](backup-support-matrix.md#vault-support)
-- [Vanliga frågor och svar om valvet](backup-azure-backup-faq.md)
+- [Valvscenarier som stöds och inte stöds](backup-support-matrix.md#vault-support)
+- [Vanliga frågor och svar om Vault](backup-azure-backup-faq.yml)
 
 ## <a name="next-steps"></a>Nästa steg
 
 Använd följande artiklar för att:
 
-- [Säkerhetskopiera en virtuell IaaS-dator](backup-azure-arm-vms-prepare.md)
-- [Säkerhetskopiera en Azure Backup Server](backup-azure-microsoft-azure-backup.md)
-- [Säkerhetskopiera en Windows Server](backup-windows-with-mars-agent.md)
+- [Backa upp en virtuell IaaS-dator](backup-azure-arm-vms-prepare.md)
+- [Back up an Azure Backup Server](backup-azure-microsoft-azure-backup.md)
+- [Back up a Windows Server](backup-windows-with-mars-agent.md)

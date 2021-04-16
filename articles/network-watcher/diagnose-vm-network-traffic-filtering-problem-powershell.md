@@ -1,27 +1,31 @@
 ---
-title: 'Snabb start: diagnostisera ett problem med trafik filter för virtuella dator nätverk – Azure PowerShell'
+title: 'Snabbstart: Diagnostisera problem med filtreringen av VM-nätverkstrafik – Azure PowerShell'
 titleSuffix: Azure Network Watcher
-description: Lär dig hur du använder Azure PowerShell för att diagnostisera ett problem med nätverks trafik filter från en virtuell dator med hjälp av IP-flödet verifiera Azure-Network Watcher.
+description: Lär dig hur du använder Azure PowerShell för att diagnostisera problem med filtreringen av nätverkstrafik på virtuella datorer med funktionen Kontrollera IP-flöde i Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
 author: damendo
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: network-watcher
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: network-watcher
-ms.workload: infrastructure
-ms.date: 01/07/2021
 ms.author: damendo
-ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 9cccd6d17cb741a616d428db5b318fab2334f73b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+editor: ''
+ms.date: 01/07/2021
+ms.assetid: ''
+ms.topic: quickstart
+ms.service: network-watcher
+ms.workload: infrastructure
+ms.tgt_pltfrm: network-watcher
+ms.devlang: na
+tags:
+- azure-resource-manager
+ms.custom:
+- mvc
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: fafe090d72d53b33ddb3e9863b7e62deba1055c5
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065590"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535767"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>Snabbstart: Diagnostisera problem med filtreringen av nätverkstrafik på virtuella datorer – Azure PowerShell
 
@@ -33,7 +37,7 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Om du väljer att installera och använda PowerShell lokalt kräver den här snabb starten Azure PowerShell- `Az` modulen. Kör `Get-Module -ListAvailable Az` för att hitta den installerade versionen. Om du behöver uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-Az-ps) (Installera Azure PowerShell-modul). Om du kör PowerShell lokalt måste du också köra `Connect-AzAccount` för att skapa en anslutning till Azure.
+Om du väljer att installera och använda PowerShell lokalt kräver den här snabbstarten Azure PowerShell `Az` modulen. Kör `Get-Module -ListAvailable Az` för att hitta den installerade versionen. Om du behöver uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-Az-ps) (Installera Azure PowerShell-modul). Om du kör PowerShell lokalt måste du också köra `Connect-AzAccount` för att skapa en anslutning till Azure.
 
 
 
@@ -62,7 +66,7 @@ För att testa nätverkskommunikation med Network Watcher måste du först aktiv
 
 ### <a name="enable-network-watcher"></a>Aktivera nätverksbevakare
 
-Om du redan har en nätverks Övervakare som är aktive rad i regionen USA, östra, använder du [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) för att hämta nätverks bevakaren. I följande exempel hämtas en befintlig nätverksbevakare med namnet *NetworkWatcher_eastus* som finns i resursgruppen *NetworkWatcherRG*:
+Om du redan har aktiverat en nätverks bevakare i regionen USA, östra använder du [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) för att hämta nätverks bevakaren. I följande exempel hämtas en befintlig nätverksbevakare med namnet *NetworkWatcher_eastus* som finns i resursgruppen *NetworkWatcherRG*:
 
 ```azurepowershell-interactive
 $networkWatcher = Get-AzNetworkWatcher `
@@ -70,7 +74,7 @@ $networkWatcher = Get-AzNetworkWatcher `
   -ResourceGroupName NetworkWatcherRG
 ```
 
-Om du inte redan har en nätverks Övervakare som är aktive rad i regionen USA, östra, använder du [New-AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher) för att skapa en nätverks övervakare i regionen USA, östra:
+Om du inte redan har aktiverat en nätverks bevakare i regionen USA, östra använder du [New-AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher) för att skapa en nätverks bevakare i regionen USA, östra:
 
 ```azurepowershell-interactive
 $networkWatcher = New-AzNetworkWatcher `
@@ -81,7 +85,7 @@ $networkWatcher = New-AzNetworkWatcher `
 
 ### <a name="use-ip-flow-verify"></a>Använda Kontrollera IP-flöde
 
-När du skapar en virtuell dator tillåter och nekar Azure nätverkstrafik till och från den virtuella datorn som standard. Om du vill kan du åsidosätta standardinställningarna i Azure och tillåta eller neka andra typer av trafik. Om du vill testa om trafik tillåts eller nekas till olika mål och från en käll-IP-adress använder du kommandot [test-AzNetworkWatcherIPFlow](/powershell/module/az.network/test-aznetworkwatcheripflow) .
+När du skapar en virtuell dator tillåter och nekar Azure nätverkstrafik till och från den virtuella datorn som standard. Om du vill kan du åsidosätta standardinställningarna i Azure och tillåta eller neka andra typer av trafik. Om du vill testa om trafik tillåts eller nekas till olika mål och från en käll-IP-adress använder du kommandot [Test-AzNetworkWatcherIPFlow.](/powershell/module/az.network/test-aznetworkwatcheripflow)
 
 Testa utgående kommunikation från den virtuella datorn till någon av IP-adresserna för www.bing.com:
 
@@ -133,7 +137,7 @@ Resultatet som returneras anger att åtkomsten nekas på grund av en säkerhetsr
 
 ## <a name="view-details-of-a-security-rule"></a>Visa information om en säkerhetsregel
 
-För att avgöra varför reglerna i [testa nätverkskommunikation](#test-network-communication) tillåter eller förhindrar kommunikation, granska de effektiva säkerhets reglerna för nätverks gränssnittet med [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup):
+Du kan ta [](#test-network-communication) reda på varför reglerna i Testa nätverkskommunikation tillåter eller förhindrar kommunikation genom att granska de gällande säkerhetsreglerna för nätverksgränssnittet [med Get-AzEffectiveNetworkSecurityGroup:](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)
 
 ```azurepowershell-interactive
 Get-AzEffectiveNetworkSecurityGroup `
@@ -238,7 +242,7 @@ Kontrollerna i den här snabbstarten testade Azure-konfigurationen. Om kontrolle
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När de inte längre behövs kan du använda [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) för att ta bort resurs gruppen och alla resurser som den innehåller:
+När resursgruppen inte längre behövs kan du använda [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) för att ta bort resursgruppen och alla resurser som den innehåller:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

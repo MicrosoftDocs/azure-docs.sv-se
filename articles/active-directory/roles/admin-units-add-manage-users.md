@@ -25,7 +25,7 @@ ms.locfileid: "107496834"
 
 I Azure Active Directory (Azure AD) kan du lägga till användare i en administrativ enhet för en mer detaljerad administrativ kontroll.
 
-Information om hur du förbereder dig för att använda PowerShell Microsoft Graph för hantering av administrativa enheter finns [i Kom igång.](admin-units-manage.md#get-started)
+Information om hur du förbereder för att använda PowerShell Microsoft Graph för hantering av administrativa enheter finns [i Kom igång.](admin-units-manage.md#get-started)
 
 ## <a name="add-users-to-an-administrative-unit"></a>Lägga till användare i en administrativ enhet
 
@@ -143,7 +143,7 @@ Du kan ta bort en användare från en administrativ enhet på något av två sä
 
 * I Azure Portal du till **Azure AD** och väljer sedan **Användare.** 
   1. Välj användaren för att öppna användarens profil. 
-  1. Välj den administrativa enhet som du vill ta bort användaren från och välj sedan **Ta bort från den administrativa enheten**.
+  1. Välj den administrativa enhet som du vill ta bort användaren från och välj sedan **Ta bort från administrativ enhet.**
 
      ![Skärmbild som visar hur du tar bort en användare från en administrativ enhet från användarens profilfönster.](./media/admin-units-add-manage-users/user-remove-admin-units.png)
 

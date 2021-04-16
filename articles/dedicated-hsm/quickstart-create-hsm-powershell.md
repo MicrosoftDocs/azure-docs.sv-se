@@ -1,24 +1,26 @@
 ---
-title: 'Snabb start: skapa en Azure-dedikerad HSM med Azure PowerShell'
+title: 'Snabbstart: Skapa en Azure Dedicated HSM med Azure PowerShell'
 description: Skapa en Azure Dedicated HSM med Azure PowerShell
 services: dedicated-hsm
 author: msmbaldwin
 ms.author: mbaldwin
+ms.date: 11/13/2020
 ms.topic: quickstart
 ms.service: key-vault
 ms.devlang: azurepowershell
-ms.date: 11/13/2020
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eebfb257d0324cf2771bd3af979ddbebb8429fb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: d5b6d0399ceb98caf9bdd7bbd725e6d92af0eaa3
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94905627"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537797"
 ---
-# <a name="quickstart-create-an-azure-dedicated-hsm-with-azure-powershell"></a>Snabb start: skapa en Azure-dedikerad HSM med Azure PowerShell
+# <a name="quickstart-create-an-azure-dedicated-hsm-with-azure-powershell"></a>Snabbstart: Skapa en Azure Dedicated HSM med Azure PowerShell
 
-I den här artikeln beskrivs hur du kan skapa en Azure-dedikerad HSM med PowerShell-modulen [AZ. DedicatedHsm](/powershell/module/az.dedicatedhsm) .
+Den här artikeln beskriver hur du kan skapa en Azure Dedicated HSM med hjälp av [PowerShell-modulen Az.DedicatedHsm.](/powershell/module/az.dedicatedhsm)
 
 ## <a name="requirements"></a>Krav
 
@@ -27,13 +29,13 @@ I den här artikeln beskrivs hur du kan skapa en Azure-dedikerad HSM med PowerSh
 [!INCLUDE [azure-powershell-requirements-no-header.md](../../includes/azure-powershell-requirements-no-header.md)]
 
   > [!IMPORTANT]
-  > Även om **AZ. DedicatedHsm** PowerShell-modulen är i för hands version måste du installera den separat med hjälp av `Install-Module` cmdleten. När modulen blir allmänt tillgänglig kommer den att ingå i framtida versioner av Az PowerShell-modulen och vara tillgänglig som standard i Azure Cloud Shell.
+  > Även om **PowerShell-modulen Az.DedicatedHsm** är i förhandsversion måste du installera den separat med hjälp av `Install-Module` cmdleten . När modulen blir allmänt tillgänglig kommer den att ingå i framtida versioner av Az PowerShell-modulen och vara tillgänglig som standard i Azure Cloud Shell.
 
   ```azurepowershell-interactive
   Install-Module -Name Az.DedicatedHsm
   ```
 
-* Om du har flera Azure-prenumerationer väljer du lämplig prenumeration där resurserna ska faktureras. Välj en speciell prenumeration med cmdleten [set-AzContext](/powershell/module/az.accounts/set-azcontext) .
+* Om du har flera Azure-prenumerationer väljer du lämplig prenumeration där resurserna ska debiteras. Välj en specifik prenumeration med hjälp [av cmdleten Set-AzContext.](/powershell/module/az.accounts/set-azcontext)
 
   ```azurepowershell-interactive
   Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -41,9 +43,9 @@ I den här artikeln beskrivs hur du kan skapa en Azure-dedikerad HSM med PowerSh
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Skapa en [Azure-resurs grupp](../azure-resource-manager/management/overview.md) med cmdlet: en [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . En resursgrupp är en logisk container där Azure-resurser distribueras och hanteras som en grupp.
+Skapa en [Azure-resursgrupp](../azure-resource-manager/management/overview.md) med [hjälp av cmdleten New-AzResourceGroup.](/powershell/module/az.resources/new-azresourcegroup) En resursgrupp är en logisk container där Azure-resurser distribueras och hanteras som en grupp.
 
-I följande exempel skapas en resurs grupp med det angivna namnet och på den angivna platsen.
+I följande exempel skapas en resursgrupp med det angivna namnet och på den angivna platsen.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myRG -Location westus
@@ -51,7 +53,7 @@ New-AzResourceGroup -Name myRG -Location westus
 
 ## <a name="create-a-dedicated-hsm"></a>Skapa en dedikerad HSM
 
-Om du vill skapa en dedikerad HSM använder du cmdleten [New-AzDedicatedHsm](/powershell/module/az.dedicatedhsm/new-azdedicatedhsm) . I följande exempel skapas en dedikerad HSM i den angivna prenumerationen.
+Om du vill skapa en dedikerad HSM använder du cmdleten [New-AzDedicatedHsm.](/powershell/module/az.dedicatedhsm/new-azdedicatedhsm) I följande exempel skapas en dedikerad HSM i den angivna prenumerationen.
 
 ```azurepowershell-interactive
 $Params = @{
@@ -72,9 +74,9 @@ Name       Provisioning State SKU                           Location
 myhsm      Succeeded          SafeNet Luna Network HSM A790 westus
 ```
 
-## <a name="get-a-dedicated-hsm"></a>Hämta en dedikerad HSM
+## <a name="get-a-dedicated-hsm"></a>Skaffa en dedikerad HSM
 
-Om du vill hämta information om en befintlig dedikerad HSM använder du cmdleten [Get-AzDedicatedHsm](/powershell/module/az.dedicatedhsm/get-azdedicatedhsm) . I följande exempel hämtas den angivna dedikerade HSM.
+Om du vill hämta information om en befintlig dedikerad HSM använder du cmdleten [Get-AzDedicatedHsm.](/powershell/module/az.dedicatedhsm/get-azdedicatedhsm) I följande exempel hämtar den angivna dedikerade HSM:en.
 
 ```azurepowershell-interactive
 Get-AzDedicatedHsm -Name MyHSM -ResourceGroupName myRG
@@ -88,7 +90,7 @@ myhsm      Succeeded          SafeNet Luna Network HSM A790 westus
 
 ## <a name="update-a-dedicated-hsm"></a>Uppdatera en dedikerad HSM
 
-Om du vill uppdatera en dedikerad HSM använder du cmdleten [Update-AzDedicatedHsm](/powershell/module/az.dedicatedhsm/update-azdedicatedhsm) . I följande exempel uppdateras en dedikerad HSM i den angivna prenumerationen.
+Om du vill uppdatera en dedikerad HSM använder du cmdleten [Update-AzDedicatedHsm.](/powershell/module/az.dedicatedhsm/update-azdedicatedhsm) I följande exempel uppdateras en dedikerad HSM i den angivna prenumerationen.
 
 ```azurepowershell-interactive
 Update-AzDedicatedHsm -Name MyHSM -ResourceGroupName myRG -Tag @{'key1' = '1'; 'key2' = 2; 'key3' = 3}
@@ -105,11 +107,11 @@ myhsm      Succeeded          SafeNet Luna Network HSM A790 westus
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om resurserna som skapas i den här artikeln inte behövs kan du ta bort dem genom att köra följande exempel.
+Om resurserna som skapades i den här artikeln inte behövs kan du ta bort dem genom att köra följande exempel.
 
 ### <a name="remove-a-dedicated-hsm"></a>Ta bort en dedikerad HSM
 
-Om du vill ta bort en dedikerad HSM använder du cmdleten [Remove-AzDedicatedHsm](/powershell/module/az.dedicatedhsm/remove-azdedicatedhsm) . I följande exempel tas den angivna dedikerade HSM bort.
+Om du vill ta bort en dedikerad HSM använder du cmdleten [Remove-AzDedicatedHsm.](/powershell/module/az.dedicatedhsm/remove-azdedicatedhsm) I följande exempel tas den angivna dedikeradE HSM bort.
 
 ```azurepowershell-interactive
 Remove-AzDedicatedHsm -Name hsm-7t2xaf -ResourceGroupName lucas-manual-test
@@ -118,8 +120,8 @@ Remove-AzDedicatedHsm -Name hsm-7t2xaf -ResourceGroupName lucas-manual-test
 ### <a name="delete-the-resource-group"></a>Ta bort resursgruppen
 
 > [!CAUTION]
-> I följande exempel tas den angivna resurs gruppen och alla resurser som ingår i den bort.
-> Om resurser utanför omfånget för den här artikeln finns i den angivna resurs gruppen kommer de också att tas bort.
+> I följande exempel tas den angivna resursgruppen och alla resurser som ingår i den bort.
+> Om det finns resurser utanför omfånget för den här artikeln i den angivna resursgruppen tas de också bort.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myRG
@@ -127,4 +129,4 @@ Remove-AzResourceGroup -Name myRG
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om [Azure Dedicated HSM](overview.md).
+Läs mer om [att Azure Dedicated HSM](overview.md).
