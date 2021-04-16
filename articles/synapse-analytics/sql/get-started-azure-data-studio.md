@@ -5,16 +5,16 @@ services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6b039d934993d2acee630205c5b5e5d8e0f6145e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1529e45bd7f799a727a29c8c2e26f7ed77c4e2a0
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667600"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565601"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Ansluta till Synapse SQL med Azure Data Studio
 
@@ -23,61 +23,61 @@ ms.locfileid: "101667600"
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [SQLCMD](get-started-connect-sqlcmd.md)
+> * [Sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-Du kan använda [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?view=azure-sqldw-latest&preserve-view=true) för att ansluta till och fråga Synapse SQL i Azure Synapse Analytics. 
+Du kan använda [Azure Data Studio för](/sql/azure-data-studio/download-azure-data-studio?view=azure-sqldw-latest&preserve-view=true) att ansluta till och fråga Synapse SQL i Azure Synapse Analytics. 
 
 ## <a name="connect"></a>Ansluta
 
-Om du vill ansluta till Synapse SQL öppnar du Azure Data Studio och väljer **ny anslutning**.
+Om du vill ansluta Synapse SQL du Azure Data Studio och väljer **Ny anslutning.**
 
 ![Öppna Azure Data Studio](./media/get-started-azure-data-studio/1-start.png)
 
-Välj **Microsoft SQL Server** som **Anslutnings typ**.
+Välj **Microsoft SQL Server** som **Anslutningstyp.**
 
 Anslutningen kräver följande parametrar:
 
-* **Server:** Server i formatet `<Azure Synapse workspace name>` -OnDemand.SQL.azuresynapse.net
-* **Databas:** Databas namn
+* **Server:** Server i formuläret `<Azure Synapse workspace name>` -ondemand.sql.azuresynapse.net
+* **Databas:** Databasnamn
 
 > [!NOTE]
-> Om du vill använda en **Server utan SQL-pool** bör URL: en se ut så här:
+> Om du vill använda en **serverlös SQL-pool bör** URL:en se ut så här:
 >
 > - `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net.
 >
-> Om du vill använda en **särskild SQL-pool** bör URL: en se ut så här:
+> Om du vill använda dedikerad **SQL-pool bör** URL:en se ut så här:
 >
-> - `<Azure Synapse workspace name>`. sql.azuresynapse.net
+> - `<Azure Synapse workspace name>`.sql.azuresynapse.net
 
-Välj **Windows-autentisering**, **Azure Active Directory** eller **SQL-inloggning** som **Autentiseringstyp**.
+Välj **Windows-autentisering,** **Azure Active Directory** eller **SQL-inloggning** som **Autentiseringstyp.**
 
-Om du vill använda **SQL-inloggning** som autentiseringstyp lägger du till användar namn/lösen ord-parametrar:
+Om du **vill använda SQL-inloggning** som autentiseringstyp lägger du till parametrarna för användarnamn/lösenord:
 
-* **Användare:** Server användare i formuläret `<User>`
-* **Lösen ord:** Lösen ord kopplat till användaren
+* **Användare:** Serveranvändare i formuläret `<User>`
+* **Lösenord:** Lösenord som är associerat med användaren
 
-Om du vill använda Azure Active Directory måste du välja autentiseringstypen som krävs.
+Om du Azure Active Directory autentiseringstyp måste du välja den autentiseringstyp som krävs.
 
 ![AAD-autentisering](./media/get-started-azure-data-studio/3-aad-auth.png)
 
-Följande skärm bild visar **anslutnings information** för **Windows-autentisering**:
+Följande skärmbild visar **anslutningsinformationen för** **Windows-autentisering:**
 
 ![Windows-autentisering](./media/get-started-azure-data-studio/3-windows-auth.png)
 
-Följande skärm bild visar **anslutnings information** med **SQL-inloggning**:
+Följande skärmbild visar **anslutningsinformationen med** **SQL-inloggning:**
 
 ![SQL-inloggning](./media/get-started-azure-data-studio/2-database-details.png)
 
-Efter en lyckad inloggning bör du se en instrument panel så här: ![ instrument panelen](./media/get-started-azure-data-studio/4-dashboard.png)
+Efter lyckad inloggning bör du se en instrumentpanel som den här: ![ Instrumentpanel](./media/get-started-azure-data-studio/4-dashboard.png)
 
 ## <a name="query"></a>Fråga
 
-När du har anslutit kan du fråga Synapse SQL med stöd för [Transact-SQL-uttryck (T-SQL)](/sql/t-sql/language-reference?view=azure-sqldw-latest&preserve-view=true) som stöds mot instansen. Kom igång genom att välja **ny fråga** från vyn instrument panel.
+När du är ansluten kan du fråga Synapse SQL med [hjälp av Transact-SQL-instruktioner (T-SQL)](/sql/t-sql/language-reference?view=azure-sqldw-latest&preserve-view=true) som stöds mot instansen. Välj **Ny fråga i** instrumentpanelsvyn för att komma igång.
 
 ![Ny fråga](./media/get-started-azure-data-studio/5-new-query.png)
 
-Du kan till exempel använda följande Transact-SQL-uttryck för att [fråga Parquet-filer](query-parquet-files.md) med en server lös SQL-pool:
+Du kan till exempel använda följande Transact-SQL-instruktion för att fråga [Parquet-filer med](query-parquet-files.md) hjälp av en serverlös SQL-pool:
 
 ```sql
 SELECT COUNT(*)
@@ -93,6 +93,6 @@ Utforska andra sätt att ansluta till Synapse SQL:
 - [SSMS](get-started-ssms.md)
 - [Power BI](get-started-power-bi-professional.md)
 - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [SQLCMD](get-started-connect-sqlcmd.md)
+- [Sqlcmd](get-started-connect-sqlcmd.md)
 
-Mer information finns på [använd Azure Data Studio för att ansluta och fråga efter data med en dedikerad SQL-pool i Azure Synapse Analytics](/sql/azure-data-studio/quickstart-sql-dw).
+Besök Använd Azure Data Studio för att ansluta och fråga efter data med [hjälp av en dedikerad SQL-pool Azure Synapse Analytics](/sql/azure-data-studio/quickstart-sql-dw), för mer information.

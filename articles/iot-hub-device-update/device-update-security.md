@@ -1,95 +1,97 @@
 ---
-title: Säkerhet för enhets uppdatering för Azure IoT Hub | Microsoft Docs
-description: Förstå hur enhets uppdatering för IoT Hub säkerställer att enheterna uppdateras på ett säkert sätt.
+title: Säkerhet för enhetsuppdatering för Azure IoT Hub | Microsoft Docs
+description: Förstå hur enhetsuppdatering för IoT Hub ser till att enheterna uppdateras på ett säkert sätt.
 author: lichris
 ms.author: lichris
-ms.date: 2/11/2021
+ms.date: 4/15/2021
 ms.topic: conceptual
 ms.service: iot-hub
-ms.openlocfilehash: 86b2dbe6a28d1440f93788eb40e133d9b62d3f0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b10049e03e26cfe8da2bd57cc9f69dd933af706b
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102489437"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567306"
 ---
-# <a name="device-update-security-model"></a>Säkerhets modell för enhets uppdatering
+# <a name="device-update-security-model"></a>Säkerhetsmodell för enhetsuppdatering
 
-Enhets uppdatering för IoT Hub erbjuder en säker metod för att distribuera uppdateringar för enhetens inbyggda program vara, avbildningar och program till dina IoT-enheter. Arbets flödet ger en säker och säker kanal från slut punkt till slut punkt med en fullständig typ av invårdnads modell som en enhet kan använda för att bevisa att en uppdatering är betrodd, oförändrad och avsiktlig.
+Enhetsuppdatering för IoT Hub en säker metod för att distribuera uppdateringar för enhetens inbyggda programvara, avbildningar och program till dina IoT-enheter. Arbetsflödet tillhandahåller en säker kanal från hela kedjan med en fullständig modell för kontroll som en enhet kan använda för att bevisa att en uppdatering är betrodd, oförändrad och avsiktlig.
 
-Varje steg i arbets flödet för enhets uppdateringar skyddas genom olika säkerhetsfunktioner och processer för att säkerställa att varje steg i pipelinen utför en säker leverans till nästa. Enhets uppdaterings klienten identifierar och hanterar korrekt eventuella Illegitimate uppdaterings begär Anden. Klienten kontrollerar också varje nedladdning för att säkerställa att innehållet är betrott, oförändrat och avsiktligt.
+Varje steg i arbetsflödet för enhetsuppdatering skyddas via olika säkerhetsfunktioner och processer för att säkerställa att varje steg i pipelinen utför en säker överkörning till nästa. Enhetsuppdateringsklienten identifierar och hanterar alla olegitima uppdateringsbegäranden korrekt. Klienten kontrollerar också varje nedladdning för att säkerställa att innehållet är betrott, oföränderligt och avsiktligt.
 
-## <a name="for-solution-operators"></a>För lösnings operatörer
+## <a name="for-solution-operators"></a>För lösningsoperatörer
 
-När lösnings operatörer importerar uppdateringar till sin enhets uppdaterings instans, laddar tjänsten upp och kontrollerar uppdateringen av binärfilerna för att säkerställa att de inte har ändrats eller bytts ut av en obehörig användare. När den har verifierats genererar enhets uppdaterings tjänsten ett internt [uppdaterings manifest](./update-manifest.md) med hashar för filer från import manifestet och andra metadata. Uppdaterings manifestet signeras sedan av enhets uppdaterings tjänsten.
+När lösningsoperatörer importerar uppdateringar till enhetsuppdateringsinstansen laddar tjänsten upp och kontrollerar de binära uppdateringsfilerna för att säkerställa att de inte har ändrats eller växlats ut av en obehörig användare. När den har verifierats genererar [](./update-manifest.md) enhetsuppdateringstjänsten ett internt uppdateringsmanifest med filhash-värden från importmanifestet och andra metadata. Det här uppdateringsmanifestet signeras sedan av enhetsuppdateringstjänsten.
 
-När en lösnings operatör begär att uppdatera en enhet skickas ett signerat meddelande över den skyddade IoT Hub-kanalen till enheten. Begärans signatur verifieras av enhetens enhets uppdaterings agent som autentisk. 
+När de har matats in i tjänsten och lagrats i Azure krypteras de binära uppdateringsfilerna och tillhörande kundmetadata automatiskt i vila av Azure Storage-tjänsten. Enhetsuppdateringstjänsten tillhandahåller inte automatiskt ytterligare kryptering, men gör det möjligt för utvecklare att kryptera innehållet själva innan innehållet når enhetsuppdateringstjänsten.
 
-Alla resulterande binära hämtningar skyddas genom validering av signaturen för uppdaterings manifestet. Uppdaterings manifestet innehåller binärfilerna för binärfiler, så när manifestet är betrott är enhets uppdaterings agenten betrodd för hashar och matchar dem mot binärfilerna. När den binära uppdateringen har laddats ned och verifierats, överlämnas den till installations programmet på enheten.
+När lösningsoperatören begär att uppdatera en enhet skickas ett signerat meddelande via den skyddade IoT Hub till enheten. Begärans signatur verifieras av enhetens enhetsuppdateringsagent som giltig. 
 
-## <a name="for-device-builders"></a>För enhets byggare
+Eventuell binär nedladdning skyddas genom validering av uppdateringsmanifestsignaturen. Uppdateringsmanifestet innehåller binärfilens hash-värden, så när manifestet är betrott litar enhetsuppdateringsagenten på hash-koderna och matchar dem mot binärfilerna. När den binära uppdateringsfilen har laddats ned och verifierats lämnas den sedan på ett säkert sätt över till installationsprogrammet på enheten.
 
-För att säkerställa att enhets uppdaterings tjänsten skalar ned till enkla enheter med låg prestanda, använder säkerhets modellen obehandlade asymmetriska nycklar och RAW-signaturer. De använder JSON-baserade format som JSON Web tokens & JSON-webbnycklar.
+## <a name="for-device-builders"></a>För Enhetsbyggare
 
-### <a name="securing-update-content-via-the-update-manifest"></a>Skydda uppdaterings innehåll via uppdaterings manifestet
+För att säkerställa att tjänsten Enhetsuppdatering skalas ned till enkla enheter med låg prestanda använder säkerhetsmodellen asymmetriska rådatanycklar och råsignaturer. De använder JSON-baserade format som JSON-webbtoken & JSON-webbnycklar.
 
-Uppdaterings manifestet verifieras med hjälp av två signaturer. Signaturerna skapas med en struktur som består av *signerings* nycklar och *rot* nycklar.
+### <a name="securing-update-content-via-the-update-manifest"></a>Skydda uppdateringsinnehåll via uppdateringsmanifestet
 
-Enhets uppdaterings agenten har inbäddade offentliga nycklar som används för alla enheter som är kompatibla med enhets uppdateringar. Detta är *rot* nycklarna. Motsvarande privata nycklar styrs av Microsoft.
+Uppdateringsmanifestet verifieras med hjälp av två signaturer. Signaturerna skapas med hjälp av en struktur som består av *signeringsnycklar* och *rotnycklar.*
 
-Microsoft genererar också ett offentligt/privat nyckel par som inte ingår i enhets uppdaterings agenten eller som lagras på enheten. Detta är *signerings* nyckeln.
+Enhetsuppdateringsagenten har inbäddade offentliga nycklar som används för alla enhetsuppdateringskompatibla enheter. Det här är *rotnycklarna.* Motsvarande privata nycklar styrs av Microsoft.
 
-När en uppdatering importeras till enhets uppdatering för IoT Hub och uppdaterings manifestet genereras av tjänsten, signerar tjänsten manifestet med hjälp av signerings nyckeln och inkluderar själva signerings nyckeln, som är signerad av en rot nyckel. När uppdaterings manifestet skickas till enheten tar enhets uppdaterings agenten emot följande signaturinformation:
+Microsoft genererar också ett offentligt/privat nyckelpar som inte ingår i enhetsuppdateringsagenten eller lagras på enheten. Det här är *signeringsnyckeln.*
 
-1. Själva värdet för signaturen.
-2. Den algoritm som används för att skapa #1.
-3. Information om den offentliga nyckeln för den signerings nyckel som används för att generera #1.
-4. Signaturen för den offentliga signerings nyckeln i #3.
-5. ID för den offentliga nyckeln för den rot nyckel som används för att skapa #3.
-6. Den algoritm som används för att skapa #4.
+När en uppdatering importeras till Enhetsuppdatering för IoT Hub och uppdateringsmanifestet genereras av tjänsten signerar tjänsten manifestet med signeringsnyckeln och inkluderar själva signeringsnyckeln, som signeras av en rotnyckel. När uppdateringsmanifestet skickas till enheten tar enhetsuppdateringsagenten emot följande signaturdata:
 
-Enhets uppdaterings agenten använder den information som definierats ovan för att verifiera att signaturen för den offentliga signerings nyckeln signeras av rot nyckeln. Enhets uppdaterings agenten verifierar sedan att signaturen för uppdaterings manifestet signeras av signerings nyckeln. Om alla signaturer är korrekta är uppdaterings manifestet betrott av enhets uppdaterings agenten. Eftersom uppdaterings manifestet innehåller de filhashar som motsvarar själva uppdateringsfilerna kan även uppdateringsfiler vara betrodda om hash-filerna matchar.
+1. Själva signaturvärdet.
+2. Algoritmen som används för att generera #1.
+3. Information om den offentliga nyckeln för signeringsnyckeln som används för att generera #1.
+4. Signaturen för den offentliga signeringsnyckeln i #3.
+5. Id:t för den offentliga nyckeln för den rotnyckel som används för #3.
+6. Algoritmen som används för att #4.
 
-Med rot-och signerings nycklar kan Microsoft regelbundet återställa signerings nyckeln, en säkerhets rutin.
+Enhetsuppdateringsagenten använder informationen som definieras ovan för att verifiera att signaturen för den offentliga signeringsnyckeln signeras av rotnyckeln. Enhetsuppdateringsagenten verifierar sedan att uppdateringsmanifestsignaturen har signerats av signeringsnyckeln. Om alla signaturer är korrekta är uppdateringsmanifestet betrott av enhetsuppdateringsagenten. Eftersom uppdateringsmanifestet innehåller de filhash-värden som motsvarar själva uppdateringsfilerna kan uppdateringsfilerna också vara betrodda om hash-värden matchar.
+
+Med rot- och signeringsnycklar kan Microsoft regelbundet rulla signeringsnyckeln, vilket är en bra säkerhetspraxis.
 
 ### <a name="json-web-signature-jws"></a>JSON-webbsignatur (JWS)
 
-`updateManifestSignature`Används för att säkerställa att den information som ingår i `updateManifest` inte har ändrats. Skapas `updateManifestSignature` med hjälp av en JSON-webbsignatur med JSON-webbnycklar, vilket gör det möjligt att verifiera källan. Signaturen är en Base64Url kodad sträng med tre avsnitt som anges av ".".  Se [Hjälp metoder för jws_util. h](https://github.com/Azure/iot-hub-device-update/tree/main/src/utils/jws_utils) för att parsa och verifiera JSON-nycklar och tokens.
+`updateManifestSignature`används för att säkerställa att informationen i inte har `updateManifest` manipulerats. `updateManifestSignature`skapas med hjälp av en JSON-webbsignatur med JSON-webbnycklar, vilket möjliggör källverifiering. Signaturen är en Base64Url-kodad sträng med tre avsnitt avgränsade med ".".  Se [hjälpmetoderna jws_util.h för](https://github.com/Azure/iot-hub-device-update/tree/main/src/utils/jws_utils) parsning och verifiering av JSON-nycklar och token.
 
-JSON Web Signature är en vanlig [föreslagen IETF-standard](https://tools.ietf.org/html/rfc7515) för signering av innehåll med JSON-baserade data strukturer. Det är ett sätt att säkerställa integriteten för data genom att verifiera signaturen för data. Mer information finns i [RFC 7515](https://www.rfc-editor.org/info/rfc7515)för JSON-webbsignaturen (JWS).
+JSON-webbsignatur är en ofta använd [IETF-standard för](https://tools.ietf.org/html/rfc7515) signering av innehåll med JSON-baserade datastrukturer. Det är ett sätt att säkerställa integriteten för data genom att verifiera signaturen för data. Mer information finns i JSON Web Signature (JWS) [RFC 7515](https://www.rfc-editor.org/info/rfc7515).
 
 ### <a name="json-web-token"></a>JSON Web Token
 
-JSON Web tokens är en öppen, bransch [standard](https://tools.ietf.org/html/rfc7519) Metod för att representera anspråk på ett säkert sätt mellan två parter.
+JSON-webbtoken är en öppen, [branschstandardmetod](https://tools.ietf.org/html/rfc7519) för att representera anspråk på ett säkert sätt mellan två parter.
 
-### <a name="root-keys"></a>Rot nycklar
+### <a name="root-keys"></a>Rotnycklar
 
-Varje enhets uppdaterings enhet innehåller en uppsättning rot nycklar. Dessa nycklar är förtroende roten för alla signaturer för enhets uppdateringar. En signatur måste vara kedjad genom en av dessa rot nycklar för att anses vara legitim.
+Varje enhet för enhetsuppdatering innehåller en uppsättning rotnycklar. De här nycklarna är förtroenderoten för alla signaturer för enhetsuppdateringen. Alla signaturer måste vara kedjade genom någon av dessa rotnycklar för att anses vara legitima.
 
-Uppsättningen rot nycklar ändras med tiden eftersom det är rätt att regelbundet rotera signerings nycklar av säkerhets synpunkt. Det innebär att enhets uppdaterings agentens program vara måste uppdateras med den senaste uppsättningen rot nycklar. 
+Uppsättningen med rotnycklar ändras med tiden eftersom det är lämpligt att regelbundet rotera signeringsnycklar av säkerhetsskäl. Därför måste enhetsuppdateringsagentens programvara uppdatera sig själv med den senaste uppsättningen rotnycklar. 
 
-### <a name="signatures"></a>Signera
+### <a name="signatures"></a>Signaturer
 
-Alla signaturer kommer att tillgodoses av en signerings nyckel (offentlig) signerad av en av rot nycklarna. Signaturen kommer att identifiera vilken rot nyckel som användes för att signera signerings nyckeln. 
+Alla signaturer kommer att kunna användas av en signeringsnyckel (offentlig) som signerats av en av rotnycklarna. Signaturen identifierar vilken rotnyckel som användes för att signera signeringsnyckeln. 
 
-En enhets uppdaterings agent måste verifiera signaturer genom att först verifiera att signaturen (offentlig) nyckelns signatur är korrekt, giltig och signerad av en av de godkända rot nycklarna. När signerings nyckeln har verifierats kan själva signaturen verifieras med hjälp av den offentliga nyckeln för den betrodda signeringen.
+En enhetsuppdateringsagent måste verifiera signaturer genom att först verifiera att signeringsnyckelns signatur (offentlig) är korrekt, giltig och signerad av en av de godkända rotnycklarna. När signeringsnyckeln har verifierats kan själva signaturen verifieras med hjälp av den nu betrodda offentliga signeringsnyckeln.
 
-Signerings nycklar roteras på ett mycket snabbare takt än rot nycklar, så förväntar sig meddelanden som signerats av olika signerings nycklar. 
+Signeringsnycklar roteras mycket snabbare än rotnycklar, så förväntar dig meddelanden som signeras av olika olika signeringsnycklar. 
 
-Återkallning av en signerings nyckel hanteras av enhets uppdaterings tjänsten, så användarna bör inte försöka cache-signera nycklar. Använd alltid signerings nyckeln som tillhör en signatur.
+Återkallning av en signeringsnyckel hanteras av enhetsuppdateringstjänsten, så användarna bör inte försöka cachelagra signeringsnycklar. Använd alltid signeringsnyckeln som medföljer en signatur.
 
 ### <a name="receiving-updates"></a>Ta emot uppdateringar
 
-Uppdaterings begär Anden som tas emot av en enhets uppdaterings Agent innehåller ett UM-dokument (signerat uppdaterings manifest). Agenten måste verifiera att signaturen för UM är korrekt och intakt. Detta görs genom att verifiera att den UM signaturens signerings nyckel har signerats av en korrekt rot nyckel. När den är klar verifierar agenten UM-signaturen mot signerings nyckeln.
+Uppdateringsbegäranden som tas emot av en enhetsuppdateringsagent innehåller ett signerat dokument för uppdateringsmanifestet (UM). Agenten måste verifiera att signaturen för UM är korrekt och intakt. Detta görs genom att verifiera att UM-signaturens signeringsnyckel har signerats av en korrekt rotnyckel. När det är klart verifierar agenten UM-signaturen mot signeringsnyckeln.
 
-När UM-signaturen har verifierats kan enhets uppdaterings agenten lita på den som en "källa för sanningen". Alla ytterligare säkerhets förtroenden härrör från den här källan. 
+När UM-signaturen har verifierats kan enhetsuppdateringsagenten lita på den som en "sanningskälla". Allt ytterligare säkerhetsförtroende kommer från den här källan. 
 
-UM innehåller URL: er och filhashar för innehåll att ladda ned och installera. När agenten har laddat ned en uppdaterings-binärfil måste den Verifiera uppdateringen mot den fil-hash som finns i UM. Detta ger en transitiv förtroende modell för nedladdning av verifiering. Det garanterar inte bara att innehållet är intakt (inte ändrat), utan bekräftar också att det som hämtades var verkligen vad som var tänkt att laddas ned. 
+UM innehåller URL:er och filhash-värden för innehåll som ska laddas ned och installeras. När agenten har laddat ned en binär uppdatering måste den verifiera uppdateringen mot den filhash som finns i UM. Detta ger en transitiv förtroendemodell för nedladdningsverifiering. Det säkerställer inte bara att innehållet är intakt (inte ändrat), utan bekräftar också att det som laddades ned verkligen var det som var avsett att laddas ned. 
 
 ### <a name="securing-the-device"></a>Skydda enheten
 
-Det är viktigt att se till att säkerhets resurserna för enhets uppdatering är korrekt skyddade och skyddade på enheten. Till gångar som rot nycklar måste skyddas mot modifiering. Det finns olika sätt att göra detta, till exempel att använda säkerhetsenheter (TPM, SGX, HSM, andra säkerhetsenheter) eller till och med hårdkoda dem i enhets uppdaterings agenten. Den senare kräver att enhets uppdaterings agentens kod är digitalt signerad och att systemets kod integritets stöd är aktiverat för att skydda mot skadlig modifiering av agent koden.
+Det är viktigt att se till att enhetsuppdateringsrelaterade säkerhetstillgångar är korrekt skyddade på enheten. Tillgångar som rotnycklar måste skyddas mot ändringar. Det finns olika sätt att göra detta, till exempel att använda säkerhetsenheter (TPM, SGX, HSM, andra säkerhetsenheter) eller till och med hårdkoda dem i enhetsuppdateringsagenten. Det senare kräver att enhetsuppdateringsagentens kod är digitalt signerad och att systemets stöd för kodintegritet är aktiverat för att skydda mot skadliga ändringar av agentkoden.
 
-Ytterligare säkerhets åtgärder kan vara motiverade, som att se till att leverans från komponent till komponent utförs på ett säkert sätt. Du kan till exempel registrera ett enskilt isolerat konto för att köra de olika komponenterna. Och begränsa nätverksbaserade kommunikationer (t. ex. REST API-anrop) enbart till localhost.
+Ytterligare säkerhetsåtgärder kan vara befogade, till exempel att överta från komponent till komponent utförs på ett säkert sätt. Du kan till exempel registrera ett specifikt isolerat konto för att köra de olika komponenterna. Och begränsa nätverksbaserad kommunikation (t.ex. REST API)till endast localhost.
 
-**[Nästa steg: Lär dig mer om hur enhets uppdatering använder Azure RBAC](.\device-update-control-access.md)**
+**[Nästa steg: Läs mer om hur enhetsuppdatering använder Azure RBAC](.\device-update-control-access.md)**

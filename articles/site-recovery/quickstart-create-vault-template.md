@@ -1,19 +1,21 @@
 ---
-title: Snabb start för att skapa ett Azure Recovery Services-valv med en Azure Resource Manager-mall.
-description: I den här snabb starten får du lära dig hur du skapar ett Azure Recovery Services-valv med en Azure Resource Manager-mall (ARM-mall).
-ms.topic: quickstart
-ms.custom: subject-armqs
+title: Snabbstart för att skapa ett Azure Recovery Services-valv med Azure Resource Manager mall.
+description: I den här snabbstarten får du lära dig hur du skapar ett Azure Recovery Services-valv med en Azure Resource Manager mall (ARM-mall).
 ms.date: 04/29/2020
-ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 11a88b5485ad970802a65af31daccdb30a1c86df
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92745886"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533256"
 ---
-# <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Snabb start: skapa ett Recovery Services valv med en ARM-mall
+# <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Snabbstart: Skapa ett Recovery Services-valv med hjälp av en ARM-mall
 
-I den här snabb starten beskrivs hur du konfigurerar ett Recovery Services valv med hjälp av en Azure Resource Manager-mall (ARM-mall). [Azure Site Recoverys](site-recovery-overview.md) tjänsten bidrar till din strategi för affärs kontinuitet och haveri beredskap (BCDR) så att dina affärs program hålls online under planerade och oplanerade drifts avbrott. Site Recovery hanterar haveri beredskap för lokala datorer och virtuella Azure-datorer (VM), inklusive replikering, redundans och återställning.
+Den här snabbstarten beskriver hur du ställer in ett Recovery Services-valv med hjälp Azure Resource Manager en mall (ARM-mall). Tjänsten [Azure Site Recovery](site-recovery-overview.md) bidrar till din BCDR-strategi för affärskontinui och haveriberedskap så att dina affärsprogram förblir online under planerade och oplanerade avbrott. Site Recovery hanterar haveriberedskap för lokala datorer och virtuella Azure-datorer (VM), inklusive replikering, redundans och återställning.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -23,7 +25,7 @@ Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar v
 
 ## <a name="prerequisites"></a>Krav
 
-Om du inte har en aktiv Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har en aktiv Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="review-the-template"></a>Granska mallen
 
@@ -33,18 +35,18 @@ Mallen som används i den här snabbstarten kommer från [Azure-snabbstartsmalla
 
 Två Azure-resurser definieras i mallen:
 
-- [Microsoft. RecoveryServices-valv](/azure/templates/microsoft.recoveryservices/vaults): skapar valvet.
-- [Microsoft. RecoveryServices/valv/backupstorageconfig](/rest/api/backup/backupresourcestorageconfigs): konfigurerar valvets inställningar för redundans för säkerhets kopiering.
+- [Microsoft.RecoveryServices-valv](/azure/templates/microsoft.recoveryservices/vaults): skapar valvet.
+- [Microsoft.RecoveryServices/vaults/backupstorageconfig:](/rest/api/backup/backupresourcestorageconfigs)konfigurerar valvets redundansinställningar för säkerhetskopiering.
 
-Mallen innehåller valfria parametrar för valvets säkerhets kopierings konfiguration. Inställningarna för redundans är lokalt redundant lagring (LRS) eller Geo-redundant lagring (GRS). Mer information finns i [set Storage redundans](../backup/backup-create-rs-vault.md#set-storage-redundancy).
+Mallen innehåller valfria parametrar för valvets konfiguration av säkerhetskopiering. Inställningarna för lagringsredundans är lokalt redundant lagring (LRS) eller geo-redundant lagring (GRS). Mer information finns i Ange [lagringsredundans.](../backup/backup-create-rs-vault.md#set-storage-redundancy)
 
-Mer information om Azure Recovery Services-mallar finns i [Azure snabb starts mallar](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Recoveryservices&pageNumber=1&sort=Popular).
+Fler Azure Recovery Services-mallar finns i [Azure-snabbstartsmallar.](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Recoveryservices&pageNumber=1&sort=Popular)
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
-För att distribuera mallen krävs **prenumeration**, **resurs grupp** och **valv namn** .
+Om du vill distribuera mallen måste **du ange** **prenumerations-,** resursgrupps- **och valvnamn.**
 
-1. Om du vill logga in på Azure och öppna mallen väljer du avbildningen **distribuera till Azure** .
+1. Om du vill logga in på Azure och öppna mallen väljer du **avbildningen Distribuera till Azure.**
 
    [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
 
@@ -52,22 +54,22 @@ För att distribuera mallen krävs **prenumeration**, **resurs grupp** och **val
 
    :::image type="content" source="media/quickstart-create-vault-template/create-vault-template.png" alt-text="Mall för att skapa ett Recovery Services-valv.":::
 
-   - **Prenumeration**: Välj din Azure-prenumeration.
-   - **Resurs grupp**: Välj en befintlig grupp eller Välj **Skapa ny** för att lägga till en grupp.
-   - **Plats**: standardvärdet för resurs gruppens plats och blir otillgänglig när en resurs grupp har valts.
-   - **Valv namn**: Ange ett namn för valvet.
-   - **Ändra lagrings typ**: standardvärdet är **false**. Välj endast **True** om du behöver ändra valvets lagrings typ.
-   - **Valv lagrings typ**: standardvärdet är **GloballyRedundant**. Om lagrings typen har angetts till **True** väljer du **LocallyRedundant**.
-   - **Plats**: funktionen `[resourceGroup().location]` används som standard för resurs gruppens plats. Ange ett värde som **väst** för att ändra plats.
-   - Markera kryss rutan **Jag godkänner villkoren som anges ovan**.
+   - **Prenumeration:** Välj din Azure-prenumeration.
+   - **Resursgrupp:** Välj en befintlig grupp eller välj Skapa **ny för att** lägga till en grupp.
+   - **Plats:** standardvärdet är resursgruppens plats och blir otillgänglig när en resursgrupp har valts.
+   - **Valvnamn:** Ange ett namn för valvet.
+   - **Ändra lagringstyp:** Standardvärdet är **false**. Välj **endast** sant om du behöver ändra lagringstypen för valvet.
+   - **Valvlagringstyp:** **Standardvärdet är GloballyRedundant**. Om lagringstypen har angetts **till true** väljer **du LokaltRedundant**.
+   - **Plats:** funktionen `[resourceGroup().location]` använder som standard resursgruppens plats. Om du vill ändra platsen anger du ett värde, till exempel **westus**.
+   - Markera kryssrutan Jag **godkänner de villkor som anges ovan.**
 
-1. Starta valv distributionen genom att välja knappen **köp** . När distributionen har slutförts visas ett meddelande.
+1. Starta valvets distribution genom att välja **knappen** Köp. Efter en lyckad distribution visas ett meddelande.
 
-   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="Valv distributionen lyckades.":::
+   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="Valvdistributionen lyckades.":::
 
 ## <a name="validate-the-deployment"></a>Verifiera distributionen
 
-För att bekräfta att valvet har skapats använder du Azure CLI eller Azure PowerShell.
+Bekräfta att valvet har skapats genom att använda Azure CLI eller Azure PowerShell.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -128,7 +130,7 @@ GeoRedundant
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du planerar att använda de nya resurserna behövs ingen åtgärd. Annars kan du ta bort resurs gruppen och valvet som skapades i den här snabb starten. Om du vill ta bort resurs gruppen och dess resurser använder du Azure CLI eller Azure PowerShell.
+Om du planerar att använda de nya resurserna krävs ingen åtgärd. Annars kan du ta bort resursgruppen och valvet som skapades i den här snabbstarten. Om du vill ta bort resursgruppen och dess resurser använder du Azure CLI eller Azure PowerShell.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -151,7 +153,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du ett Recovery Services-valv. Om du vill veta mer om haveri beredskap fortsätter du till nästa snabb starts artikel.
+I den här snabbstarten skapade du ett Recovery Services-valv. Om du vill veta mer om haveriberedskap fortsätter du till nästa snabbstartsartikel.
 
 > [!div class="nextstepaction"]
 > [Konfigurera haveriberedskap](azure-to-azure-quickstart.md)

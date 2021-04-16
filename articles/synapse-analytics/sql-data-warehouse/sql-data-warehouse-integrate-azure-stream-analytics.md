@@ -1,48 +1,48 @@
 ---
 title: Använda Azure Stream Analytics i dedikerad SQL-pool
-description: Tips för att använda Azure Stream Analytics med dedikerad SQL-pool i Azure Synapse för utveckling av real tids lösningar.
+description: Tips för att Azure Stream Analytics med dedikerad SQL-pool i Azure Synapse för att utveckla realtidslösningar.
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 9/25/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 023cf55a01f34277dd5c5707d0d123f54c1674df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c7f139b50cd43e3e8862fda3f5401a853ced8d0
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600096"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566587"
 ---
 # <a name="use-azure-stream-analytics-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Använda Azure Stream Analytics med dedikerad SQL-pool i Azure Synapse Analytics
 
-Azure Stream Analytics är en helt hanterad tjänst som tillhandahåller låg latens, skalbar komplex händelse behandling med hög tillgänglighet för strömning av data i molnet. Du kan lära dig grunderna genom [att läsa introduktion till Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Du kan sedan lära dig hur du skapar en lösning från slut punkt till slut punkt med Stream Analytics genom att följa själv studie kursen [komma igång med Azure Stream Analytics](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
+Azure Stream Analytics är en fullständigt hanterad tjänst som tillhandahåller skalbar, skalbar, komplex händelsebearbetning med korta svarstider över strömmande data i molnet. Du kan lära dig grunderna genom att läsa [Introduktion till Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Du kan sedan lära dig hur du skapar en lösning från början till slut med Stream Analytics genom att följa självstudien Kom igång [med Azure Stream Analytics.](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
-I den här artikeln får du lära dig hur du använder din dedikerade SQL-pool som utgående mottagare för data inmatning med hög data flöde med Azure Stream Analytics-jobb.
+I den här artikeln får du lära dig hur du använder din dedikerade SQL-pool som utdata mottagare för datainmatning med högt dataflöde med Azure Stream Analytics jobb.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Azure Stream Analytics jobb – om du vill skapa ett Azure Stream Analytics jobb följer du stegen i självstudien [komma igång med Azure Stream Analytics](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) för att:  
+* Azure Stream Analytics Jobb – Skapa ett Azure Stream Analytics jobb genom att följa stegen i självstudien Kom igång [med Azure Stream Analytics](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) för att:  
 
-    1. Skapa en Event Hub-inmatare
-    2. Konfigurera och starta Event Generator-programmet
+    1. Skapa en händelsehubbindata
+    2. Konfigurera och starta händelsegeneratorprogram
     3. Etablera ett Stream Analytics jobb
-    4. Ange inmatade jobb och fråga
-* Dedikerad SQL-pool – om du vill skapa en ny dedikerad SQL-pool följer du stegen i [snabb start: skapa en dedikerad SQL-pool](../quickstart-create-sql-pool-portal.md).
+    4. Ange jobbindata och fråga
+* Dedikerad SQL-pool – Om du vill skapa en ny dedikerad SQL-pool följer du stegen i [Snabbstart: Skapa en dedikerad SQL-pool.](../quickstart-create-sql-pool-portal.md)
 
-## <a name="specify-streaming-output-to-point-to-your-dedicated-sql-pool"></a>Ange strömmande utdata så att de pekar på din dedikerade SQL-pool
+## <a name="specify-streaming-output-to-point-to-your-dedicated-sql-pool"></a>Ange strömmande utdata som pekar på din dedikerade SQL-pool
 
 ### <a name="step-1"></a>Steg 1
 
-Gå till ditt Stream Analytics jobb från Azure Portal och klicka på **utdata** på menyn **jobb sto pol Ogin** .
+Från menyn Azure Portal du till ditt Stream Analytics och klickar på **Utdata** under menyn **Jobbtopologi.**
 
 ### <a name="step-2"></a>Steg 2
 
-Klicka på knappen **Lägg till** och välj **Azure Synapse Analytics** på den nedrullningsbara menyn.
+Klicka på knappen **Lägg** till och **välj Azure Synapse Analytics** från den nedrullningsna menyn.
 
 ![Välj Azure Synapse Analytics](./media/sql-data-warehouse-integrate-azure-stream-analytics/sql-pool-azure-stream-analytics-output.png)
 
@@ -50,21 +50,21 @@ Klicka på knappen **Lägg till** och välj **Azure Synapse Analytics** på den 
 
 Ange följande värden:
 
-* *Alias för utdata*: Ange ett eget namn för jobbets utdata.
-* *Prenumeration*:
-  * Om din dedikerade SQL-pool är i samma prenumeration som Stream Analytics jobb klickar du på ***Välj Azure Synapse Analytics från dina prenumerationer***.
-  * Om din dedikerade SQL-pool finns i en annan prenumeration klickar du på Ange inställningar för Azure Synapse Analytics manuellt.
-* *Databas*: Välj mål databas i list rutan.
-* *Användar namn*: Ange användar namnet för ett konto som har Skriv behörighet för databasen.
-* *Lösen ord*: Ange lösen ordet för det angivna användar kontot.
-* *Tabell*: Ange namnet på mål tabellen i databasen.
-* Klicka på knappen **Spara**
+* *Utdataalias:* Ange ett eget namn för jobbets utdata.
+* *Prenumeration:*
+  * Om din dedikerade SQL-pool finns i samma prenumeration som Stream Analytics klickar du på ***Välj Azure Synapse Analytics från dina prenumerationer.***
+  * Om din dedikerade SQL-pool finns i en annan prenumeration klickar du på Ange Azure Synapse Analytics inställningar manuellt.
+* *Databas:* Välj måldatabasen i listrutan.
+* *Användarnamn:* Ange användarnamnet för ett konto som har skrivbehörighet för databasen.
+* *Lösenord:* Ange lösenordet för det angivna användarkontot.
+* *Tabell:* Ange namnet på måltabellen i databasen.
+* klicka på **knappen** Spara
 
-![Slutfört Azure Synapse Analytics-formulär](./media/sql-data-warehouse-integrate-azure-stream-analytics/sql-pool-azure-stream-analytics-output-db-settings.png)
+![Ifyllda Azure Synapse Analytics formulär](./media/sql-data-warehouse-integrate-azure-stream-analytics/sql-pool-azure-stream-analytics-output-db-settings.png)
 
 ### <a name="step-4"></a>Steg 4
 
-Innan du kan köra ett test måste du skapa tabellen i din dedikerade SQL-pool.  Kör följande skript för att skapa tabell med SQL Server Management Studio (SSMS) eller ditt val av frågeinställningar.
+Innan du kan köra ett test måste du skapa tabellen i din dedikerade SQL-pool.  Kör följande skript för tabellskapande med SQL Server Management Studio (SSMS) eller val av frågeverktyg.
 
 ```sql
 CREATE TABLE SensorLog
@@ -100,27 +100,27 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 ### <a name="step-5"></a>Steg 5
 
-Klicka på jobb namnet på Azure Portal för Stream Analytics jobb.  Klicka på knappen ***test** _ i fönstret _ *_utdata_**.
+På sidan Azure Portal för Stream Analytics jobb klickar du på jobbnamnet.  Klicka på knappen ***Test** _ i fönstret _ *_Utdatainformation_** .
 
-![Test knapp på Outpout information ](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) när anslutningen till databasen lyckas visas ett meddelande i portalen.
+![Testknapp i Outpout-information När anslutningen till databasen lyckas ](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) visas ett meddelande i portalen.
 
 ### <a name="step-6"></a>Steg 6
 
-Klicka på ***fråga** _-menyn under _*_jobb sto pol Ogin_*_ och ändra frågan om du vill infoga data i Stream-utdata som du skapade.  Testa frågan genom att klicka på knappen _*_testa vald fråga_*_ .  Klicka på _ *_Spara fråga_** knappen när du har testat frågan.
+Klicka på menyn ***Fråga** _ under _*_Jobbtopologi och ändra_*_ frågan för att infoga data i Stream-utdata som du skapade.  Klicka på knappen _*_Testa vald fråga_*_ för att testa frågan.  Klicka på *_knappen _ Spara_* fråga * när frågetestet lyckas.
 
 ![Spara fråga](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
 
 ### <a name="step-7"></a>Steg 7
 
-Starta Azure Stream Analytics jobbet.  Klicka på knappen ***Start** _ på menyn _ *_Översikt_**.
+Starta Azure Stream Analytics jobbet.  Klicka på knappen ***Start** _ på menyn _ *_Översikt_** .
 
 ![Starta Stream Analytics-jobb](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
 
-Klicka på ***Start*** -knappen i fönstret Starta jobb.
+Klicka på ***knappen*** Start i fönstret Starta jobb.
 
-![Klicka på Start](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
+![Klicka på Starta](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-En översikt över integrering finns i [integrera andra tjänster](sql-data-warehouse-overview-integrate.md).
-Mer utvecklings tips finns i [design beslut och kodnings tekniker för dedikerad SQL-pool](sql-data-warehouse-overview-develop.md).
+En översikt över integrering finns i [Integrera andra tjänster.](sql-data-warehouse-overview-integrate.md)
+Fler utvecklingstips finns i [Designbeslut och kodningstekniker för dedikerad SQL-pool.](sql-data-warehouse-overview-develop.md)

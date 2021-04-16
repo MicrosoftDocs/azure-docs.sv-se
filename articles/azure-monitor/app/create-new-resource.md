@@ -1,21 +1,21 @@
 ---
-title: Skapa en ny Azure Application Insights-resurs | Microsoft Docs
-description: Konfigurera Application Insights övervakning manuellt för ett nytt Live-program.
+title: Skapa en ny Azure Application Insights-| Microsoft Docs
+description: Konfigurera manuellt Application Insights för ett nytt liveprogram.
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 459f61d9e13a2098403f3e78c7a529e49bf65e59
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6158b5604046897e20053c67321f26d650c21b7f
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100941"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566230"
 ---
 # <a name="create-an-application-insights-resource"></a>Skapa en Application Insights-resurs
 
-Azure Application Insights visar data om ditt program i en Microsoft Azure *resurs*. Att skapa en ny resurs är därför en del av [att konfigurera Application Insights för att övervaka ett nytt program][start]. När du har skapat din nya resurs kan du hämta dess instrument nyckel och använda den för att konfigurera Application Insights SDK. Instrumentation-nyckeln länkar din telemetri till resursen.
+Azure Application Insights visar data om ditt program i en Microsoft Azure *resurs*. Att skapa en ny resurs är därför en del [av att konfigurera Application Insights att övervaka ett nytt program][start]. När du har skapat den nya resursen kan du hämta dess instrumentationsnyckel och använda den för att konfigurera Application Insights SDK. Instrumenteringsnyckeln länkar din telemetri till resursen.
 
 > [!IMPORTANT]
-> Den [klassiska Application Insights är föråldrad](https://azure.microsoft.com/updates/we-re-retiring-classic-application-insights-on-29-february-2024/). Följ de här [anvisningarna om hur du uppgraderar till arbets ytans baserade Application Insights](convert-classic-resource.md).
+> [Klassisk Application Insights har gjorts inaktuell.](https://azure.microsoft.com/updates/we-re-retiring-classic-application-insights-on-29-february-2024/) Följ de här [anvisningarna om hur du uppgraderar till arbetsytebaserade Application Insights](convert-classic-resource.md).
 
 ## <a name="sign-in-to-microsoft-azure"></a>Logga in på Microsoft Azure
 
@@ -30,34 +30,34 @@ Logga in på [Azure Portal](https://portal.azure.com)och skapa en Application In
    | Inställningar        |  Värde           | Beskrivning  |
    | ------------- |:-------------|:-----|
    | **Namn**      | `Unique value` | Namn som identifierar den app som du övervakar. |
-   | **Resursgrupp**     | `myResourceGroup`      | Namnet på den nya eller befintliga resurs gruppen som värd för App Insights-data. |
-   | **Region** | `East US` | Välj en plats nära dig eller nära den plats där din app finns. |
-   | **Resurs läge** | `Classic` eller `Workspace-based` | Arbets ytans baserade resurser finns för närvarande i en offentlig för hands version och gör att du kan skicka Application Insights telemetri till en gemensam Log Analytics arbets yta. Mer information finns i [artikeln om arbets ytor-baserade resurser](create-workspace-resource.md).
+   | **Resursgrupp**     | `myResourceGroup`      | Namnet på den nya eller befintliga resursgruppen som ska vara värd för App Insights-data. |
+   | **Region** | `East US` | Välj en plats nära dig eller nära den plats där appen finns. |
+   | **Resursläge** | `Classic` eller `Workspace-based` | Med arbetsytebaserade resurser kan du skicka Application Insights telemetri till en gemensam Log Analytics-arbetsyta. Mer information finns i artikeln [om arbetsytebaserade resurser.](create-workspace-resource.md)
 
 > [!NOTE]
-> Även om du kan använda samma resurs namn i olika resurs grupper kan det vara bra att använda ett globalt unikt namn. Detta kan vara användbart om du planerar att [utföra kors resurs frågor](../logs/cross-workspace-query.md#identifying-an-application) eftersom det underlättar den nödvändiga syntaxen.
+> Du kan använda samma resursnamn i olika resursgrupper, men det kan vara bra att använda ett globalt unikt namn. Detta kan vara användbart om du planerar [att köra frågor mellan resurser](../logs/cross-workspace-query.md#identifying-an-application) eftersom det förenklar den nödvändiga syntaxen.
 
-Ange lämpliga värden i de obligatoriska fälten och välj sedan **Granska + skapa**.
+Ange lämpliga värden i de obligatoriska fälten och välj sedan **Granska + skapa.**
 
 > [!div class="mx-imgBorder"]
 > ![Ange värden i obligatoriska fält och välj sedan "granska + skapa".](./media/create-new-resource/review-create.png)
 
-När din app har skapats öppnas ett nytt fönster. I det här fönstret visas prestanda-och användnings data om det övervakade programmet. 
+När appen har skapats öppnas ett nytt fönster. I det här fönstret ser du prestanda- och användningsdata om det övervakade programmet. 
 
-## <a name="copy-the-instrumentation-key"></a>Kopiera Instrumentation-nyckeln
+## <a name="copy-the-instrumentation-key"></a>Kopiera instrumenteringsnyckeln
 
-Instrumentation-nyckeln identifierar den resurs som du vill associera dina telemetridata med. Du måste kopiera Instrumentation-nyckeln och lägga till den i programmets kod.
+Instrumenteringsnyckeln identifierar den resurs som du vill associera dina telemetridata med. Du måste kopiera instrumenteringsnyckeln och lägga till den i programmets kod.
 
 > [!IMPORTANT]
-> Nya Azure-regioner **kräver** att anslutnings strängar används i stället för instrument knappar. [Anslutnings strängen](./sdk-connection-string.md?tabs=net) identifierar den resurs som du vill associera dina telemetridata med. Du kan också ändra de slut punkter som resursen kommer att använda som mål för din telemetri. Du måste kopiera anslutnings strängen och lägga till den i programmets kod eller till en miljö variabel.
+> Nya **Azure-regioner kräver** användning av anslutningssträngar i stället för instrumentationsnycklar. [Anslutningssträngen](./sdk-connection-string.md?tabs=net) identifierar den resurs som du vill associera dina telemetridata med. Du kan också ändra de slutpunkter som din resurs ska använda som mål för din telemetri. Du måste kopiera anslutningssträngen och lägga till den i programmets kod eller till en miljövariabel.
 
 ## <a name="install-the-sdk-in-your-app"></a>Installera SDK i din app
 
-Installera Application Insights SDK i din app. Det här steget beror på typen av program.
+Installera Application Insights SDK i din app. Det här steget beror mycket på typen av program.
 
-Använd Instrumentation-tangenten för att konfigurera [SDK: n som du installerar i ditt program][start].
+Använd instrumenteringsnyckeln för att [konfigurera SDK:n som du installerar i ditt program][start].
 
-SDK inkluderar standardmoduler som skickar telemetri utan att du behöver skriva någon ytterligare kod. [Använd API: et][api] för att skicka din egen telemetri för att spåra användar åtgärder eller diagnostisera problem i detalj.
+SDK:n innehåller standardmoduler som skickar telemetri utan att du behöver skriva någon ytterligare kod. Om du vill spåra användaråtgärder eller diagnostisera problem i detalj använder [du API:et][api] för att skicka din egen telemetri.
 
 ## <a name="creating-a-resource-automatically"></a>Skapa en resurs automatiskt
 
@@ -98,19 +98,19 @@ SamplingPercentage :
 TenantId           : {subid}
 ```
 
-Den fullständiga PowerShell-dokumentationen för denna cmdlet och lär dig hur du hämtar Instrumentation-nyckeln finns i [Azure PowerShell-dokumentationen](/powershell/module/az.applicationinsights/new-azapplicationinsights).
+Den fullständiga PowerShell-dokumentationen för den här cmdleten och information om hur du hämtar instrumenteringsnyckeln finns [i Azure PowerShell dokumentationen](/powershell/module/az.applicationinsights/new-azapplicationinsights).
 
-### <a name="azure-cli-preview"></a>Azure CLI (för hands version)
+### <a name="azure-cli-preview"></a>Azure CLI (förhandsversion)
 
-För att få åtkomst till för hands versionen Application Insights Azure CLI-kommandon måste du först köra:
+För att få åtkomst Application Insights azure CLI-kommandon måste du först köra:
 
 ```azurecli
  az extension add -n application-insights
 ```
 
-Om du inte kör `az extension add` kommandot visas ett fel meddelande som säger: `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Om du inte kör `az extension add` kommandot visas ett felmeddelande som säger: `az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
-Nu kan du köra följande för att skapa din Application Insights-resurs:
+Nu kan du köra följande för att skapa Application Insights resurs:
 
 ```azurecli
 az monitor app-insights component create --app
@@ -155,10 +155,10 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-Den fullständiga Azure CLI-dokumentationen för det här kommandot och lär dig hur du hämtar Instrumentation-nyckeln finns i [Azure CLI-dokumentationen](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create).
+Den fullständiga Azure CLI-dokumentationen för det här kommandot och information om hur du hämtar instrumenteringsnyckeln finns i [Azure CLI-dokumentationen.](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create)
 
 ## <a name="next-steps"></a>Nästa steg
-* [Diagnostisk sökning](./diagnostic-search.md)
+* [Diagnostiksökning](./diagnostic-search.md)
 * [Utforska mått](../essentials/metrics-charts.md)
 * [Skriv analysfrågor](../logs/log-query-overview.md)
 

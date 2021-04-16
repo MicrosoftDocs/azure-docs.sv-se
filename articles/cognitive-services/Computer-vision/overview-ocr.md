@@ -1,7 +1,7 @@
 ---
-title: Vad är optisk teckensnitts igenkänning?
+title: Vad är optisk teckenläsning?
 titleSuffix: Azure Cognitive Services
-description: Tjänsten OCR (optisk tecken läsning) extraherar synlig text i en bild och returnerar den som strukturerad sträng.
+description: Tjänsten optisk teckenläsning (OCR) extraherar synlig text i en bild och returnerar den som strukturerade strängar.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,57 +11,71 @@ ms.topic: overview
 ms.date: 03/29/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 41b3552a633c9cebce1138fa042dbd154eee0cb5
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: da4ada8b505c747d24738e175a1701b5ea73b4e4
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107314124"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536746"
 ---
-# <a name="what-is-optical-character-recognition"></a>Vad är optisk teckensnitts igenkänning?
+# <a name="what-is-optical-character-recognition"></a>Vad är optisk teckenläsning?
 
-Med tjänsten optisk tecken igenkänning (OCR) kan du extrahera tryckt eller handskriven text från bilder, till exempel foton av gatu tecken och produkter, samt från dokument &mdash; fakturor, fakturor, ekonomiska rapporter, artiklar med mera. Den använder djup inlärning baserade modeller och fungerar med text på en rad olika ytor och bakgrunder.
+Med tjänsten optisk teckenläsning (OCR) kan du extrahera tryckt eller handskriven text från bilder, till exempel foton på gatuskyltar och produkter, samt från dokumentfakturor, fakturor, ekonomiska &mdash; rapporter, artiklar med mera. Den använder djupinlärningsbaserade modeller och arbetar med text på olika ytor och bakgrunder.
 
-API: erna för OCR stöder extrahering av utskriven text på [flera språk](./language-support.md). Kom igång genom att följa en [snabb start](./quickstarts-sdk/client-library.md) .
+OCR-API:erna stöder extrahering av tryckt text på [flera språk.](./language-support.md) Följ en [snabbstart för](./quickstarts-sdk/client-library.md) att komma igång.
 
 ![OCR-demonstrationer](./Images/ocr-demo.gif)
 
 Den här dokumentationen innehåller följande typer av artiklar:
-* [Snabb starterna](./quickstarts-sdk/client-library.md) är steg-för-steg-instruktioner som gör att du kan anropa tjänsten och få resultat under en kort tids period. 
-* [Instruktions guiderna](./Vision-API-How-to-Topics/call-read-api.md) innehåller instruktioner för att använda tjänsten på mer exakta eller anpassade sätt.
+* [Snabbstarterna](./quickstarts-sdk/client-library.md) är stegvisa instruktioner som gör att du kan göra anrop till tjänsten och få resultat på kort tid. 
+* [Instruktionsguiderna innehåller](./Vision-API-How-to-Topics/call-read-api.md) instruktioner för att använda tjänsten på mer specifika eller anpassade sätt.
 <!--* The [conceptual articles](Vision-API-How-to-Topics/call-read-api.md) provide in-depth explanations of the service's functionality and features.
 * The [tutorials](./tutorials/storage-lab-tutorial.md) are longer guides that show you how to use this service as a component in broader business solutions. -->
 
 ## <a name="supported-languages"></a>Språk som stöds
-API: erna för OCR stöder totalt 73 språk för utskrifts format text. Se den fullständiga listan över [språk som stöds av OCR](./language-support.md#optical-character-recognition-ocr). OCR med Skriv stil stöds enbart för engelska.
+OCR-API:erna stöder totalt 73 språk för textutskrift. Se den fullständiga listan över [OCR-språk som stöds.](./language-support.md#optical-character-recognition-ocr) OCR i handskriven stil stöds exklusivt för engelska.
 
-## <a name="input-requirements"></a>Krav för indatamängd
+## <a name="input-requirements"></a>Indatakrav
 
-**Läs** anropet tar bilder och dokument som inaktuella. De har följande krav:
+**Anropet** Läsa tar bilder och dokument som indata. De har följande krav:
 
-* Fil format som stöds: JPEG, PNG, BMP, PDF och TIFF
-* För PDF-och TIFF-filer, bearbetas upp till 2000 sidor (endast de två första sidorna för den kostnads fria nivån).
-* Fil storleken måste vara mindre än 50 MB (4 MB för den kostnads fria nivån) och dimensioner minst 50 x 50 bild punkter och högst 10000 x 10000 bild punkter. 
-* PDF-dimensionerna måste bestå av högst 17 × 17 tum, som motsvarar legal eller a3 pappers storlekar och mindre.
+* Filformat som stöds: JPEG, PNG, BMP, PDF och TIFF
+* För PDF- och TIFF-filer bearbetas upp till 2 000 sidor (endast de första två sidorna för den kostnadsfria nivån).
+* Filstorleken måste vara mindre än 50 MB (4 MB för den kostnadsfria nivån) och dimensioner minst 50 x 50 bildpunkter och högst 1 0 0000 x 1 0 000 bildpunkter. 
 
-## <a name="read-api"></a>Läs-API 
+## <a name="read-api"></a>Api för läsning 
 
-Visuellt innehåll [Read API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005) är Azures senaste OCR-teknik ([Läs om vad som är nytt](./whats-new.md)) som extraherar utskriven text (på flera språk), handskriven text (endast engelska), siffror och valuta symboler från bilder och PDF-dokument med flera sidor. Det är optimerat för att extrahera text från text – tunga bilder och PDF-dokument med flera sidor med blandade språk. Det stöder identifiering av både skriven och handskriven text i samma bild eller dokument.
+API:et Visuellt innehåll [Read](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005) är Azures senaste OCR-teknik[(lär](./whats-new.md)dig vad som är nytt) som extraherar tryckt text (på flera språk), handskriven text (endast engelska), siffror och valutasymboler från bilder och PDF-dokument med flera sidor. Den är optimerad för att extrahera text från texttunga bilder och PDF-dokument med flera sidor med blandade språk. Den stöder identifiering av både tryckt och handskriven text i samma bild eller dokument.
 
 ![Hur OCR konverterar bilder och dokument till strukturerade utdata med extraherad text](./Images/how-ocr-works.svg)
 
+### <a name="key-features"></a>Huvudfunktioner
 
-## <a name="use-the-cloud-api-or-deploy-on-premise"></a>Använd moln-API eller distribuera lokalt
-Moln-API: erna för att läsa 3. x är det bästa alternativet för de flesta kunder på grund av enkel integrering och snabb produktivitet. Azure och Visuellt innehåll service hanterar skalning, prestanda, data säkerhet och efterlevnad för att möta kundernas behov.
+API:et Read innehåller följande funktioner. 
 
-För lokal distribution kan du med hjälp av den [skrivskyddade Docker-behållaren (för hands version)](./computer-vision-how-to-install-containers.md) distribuera de nya OCR-funktionerna i din egen lokala miljö. Containrar är bra för specifika säkerhets- och datastyrningskrav.
+* Extrahering av text på 73 språk
+* Handskriven textuttrahering på engelska
+* Textrader och ord med plats- och förtroendepoäng
+* Ingen språkidentifiering krävs
+* Stöd för blandade språk, blandat läge (skriv ut och handskriven)
+* Välj sidor och sidintervall från stora dokument med flera sidor
+* Naturlig läsordning för textrader
+* Handskriftsklassificering för textrader
+* Tillgänglig som distrolös Docker-container för lokal distribution
 
-## <a name="ocr-api"></a>OCR-API
+Lär [dig hur du använder OCR-funktionerna](./vision-api-how-to-topics/call-read-api.md).
 
-Den äldre [OCR-API: n](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f20d) använder en äldre igenkännings modell, stöder bara bilder och körs synkront, och returneras omedelbart med den identifierade texten. I kolumnen OCR för [språk som stöds](./language-support.md#optical-character-recognition-ocr) finns en lista över språk som stöds.
+## <a name="use-the-cloud-api-or-deploy-on-premise"></a>Använda moln-API:et eller distribuera lokalt
+Read 3.x-moln-API:erna är det föredragna alternativet för de flesta kunder eftersom det är enkelt att integrera och få snabb produktivitet. Azure och Visuellt innehåll hanterar skalnings-, prestanda-, datasäkerhets- och efterlevnadsbehov samtidigt som du fokuserar på att uppfylla dina kunders behov.
+
+För lokal distribution gör [Read Docker-containern (förhandsversion)](./computer-vision-how-to-install-containers.md) att du kan distribuera de nya OCR-funktionerna i din egen lokala miljö. Containrar är bra för specifika säkerhets- och datastyrningskrav.
+
+## <a name="ocr-api"></a>OCR API
+
+Det äldre [OCR-API:et](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f20d) använder en äldre igenkänningsmodell, stöder endast bilder och körs synkront och returnerar omedelbart med den identifierade texten. En lista över språk som [stöds finns i](./language-support.md#optical-character-recognition-ocr) ocr-kolumnen med språk som stöds.
 
 > [!WARNING]
-> Visuellt innehåll 2,0-RecognizeText åtgärder håller på att föråldras med den nya [Read-API: n](#read-api) som beskrivs i den här artikeln. Befintliga kunder ska [övergå till att använda Läs åtgärder](upgrade-api-versions.md).
+> De Visuellt innehåll 2.0 RecognizeText-åtgärderna håller på att bli inaktuella för det nya [Läs-API](#read-api) som beskrivs i den här artikeln. Befintliga kunder bör [övergå till att använda läsåtgärder.](upgrade-api-versions.md)
 
 ## <a name="data-privacy-and-security"></a>Datasekretess och säkerhet
 
@@ -69,5 +83,5 @@ Som med alla Cognitive Services bör utvecklare som använder tjänsten Visuellt
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Kom igång med [OCR (Läs) REST API eller klient biblioteks snabb starter](./quickstarts-sdk/client-library.md).
-- Lär dig mer om att [läsa 3,2 REST API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005).
+- Kom igång med [snabbstarterna OCR (REST API eller klientbibliotek).](./quickstarts-sdk/client-library.md)
+- Läs mer om [Read 3.2 REST API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005).

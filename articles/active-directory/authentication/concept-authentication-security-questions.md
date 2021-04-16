@@ -1,6 +1,6 @@
 ---
-title: Autentiseringsmetod för säkerhets frågor – Azure Active Directory
-description: Lär dig mer om att använda säkerhets frågor i Azure Active Directory för att hjälpa till att förbättra och säkra inloggnings händelser
+title: Autentiseringsmetod för säkerhetsfrågor – Azure Active Directory
+description: Lär dig mer om att använda säkerhetsfrågor Azure Active Directory för att förbättra och skydda inloggningshändelser
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -10,90 +10,90 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7229dabd690e5932fbd297992e09782eda85a002
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 841391778e0fb8c00f503aa0cc79b5562661e309
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96744150"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530354"
 ---
-# <a name="authentication-methods-in-azure-active-directory---security-questions"></a>Autentiseringsmetoder i Azure Active Directory-säkerhets frågor
+# <a name="authentication-methods-in-azure-active-directory---security-questions"></a>Autentiseringsmetoder i Azure Active Directory – säkerhetsfrågor
 
-Säkerhets frågor används inte som autentiseringsmetod under en inloggnings händelse. I stället kan säkerhets frågor användas under processen för självbetjäning för återställning av lösen ord (SSPR) för att bekräfta vem du är. Administratörs konton kan inte använda säkerhets frågor som verifieringsmetod med SSPR.
+Säkerhetsfrågor används inte som autentiseringsmetod under en inloggningshändelse. I stället kan säkerhetsfrågor användas under självbetjäningsprocessen för lösenordsåterställning (SSPR) för att bekräfta vem du är. Administratörskonton kan inte använda säkerhetsfrågor som verifieringsmetod med SSPR.
 
-När användarna registrerar sig för SSPR uppmanas de att välja de autentiseringsmetoder som ska användas. Om de väljer att använda säkerhets frågor, väljs de från en uppsättning frågor att fråga efter och ger sina egna svar.
+När användarna registrerar sig för SSPR uppmanas de att välja de autentiseringsmetoder som ska användas. Om de väljer att använda säkerhetsfrågor väljer de från en uppsättning frågor för att fråga efter och sedan ange sina egna svar.
 
-![Skärm bild av Azure Portal som visar autentiseringsmetoder och alternativ för säkerhets frågor](media/concept-authentication-methods/security-questions-authentication-method.png)
+![Skärmbild av Azure Portal som visar autentiseringsmetoder och alternativ för säkerhetsfrågor](media/concept-authentication-methods/security-questions-authentication-method.png)
 
 > [!NOTE]
-> Säkerhets frågor lagras privat och säkert på ett användar objekt i katalogen och kan bara besvaras av användare under registreringen. Det finns inget sätt för en administratör att läsa eller ändra en användares frågor eller svar.
+> Säkerhetsfrågor lagras privat och säkert på ett användarobjekt i katalogen och kan endast besvaras av användare under registreringen. Det finns inget sätt för en administratör att läsa eller ändra en användares frågor eller svar.
 
-Säkerhets frågor kan vara mindre säkra än andra metoder eftersom vissa personer kanske känner till svaren på en annan användares frågor. Om du använder säkerhets frågor med SSPR rekommenderar vi att du använder dem tillsammans med en annan metod. En användare kan uppmanas att använda Microsoft Authenticator appen eller telefonen för att verifiera sin identitet under SSPR-processen och välja säkerhets frågor enbart om de inte har sin telefon eller registrerade enhet.
+Säkerhetsfrågor kan vara mindre säkra än andra metoder eftersom vissa kanske känner till svaren på en annan användares frågor. Om du använder säkerhetsfrågor med SSPR rekommenderar vi att du använder dem tillsammans med en annan metod. En användare kan uppmanas att använda Microsoft Authenticator-appen eller telefonautentisering för att verifiera sin identitet under SSPR-processen och välja säkerhetsfrågor endast om de inte har sin telefon eller registrerade enhet med sig.
 
 ## <a name="predefined-questions"></a>Fördefinierade frågor
 
-Följande fördefinierade säkerhets frågor är tillgängliga för användning som en verifieringsmetod med SSPR. Alla dessa säkerhets frågor översätts och lokaliseras till den fullständiga uppsättningen Microsoft 365 språk baserat på användarens språk:
+Följande fördefinierade säkerhetsfrågor är tillgängliga för användning som en verifieringsmetod med SSPR. Alla dessa säkerhetsfrågor översätts och lokaliseras till en fullständig uppsättning Microsoft 365 språk baserat på användarens språk i webbläsaren:
 
-* I vilken stad uppfyller du din första make/maka/partner?
-* I vilken stad uppfyllde dina föräldrar?
-* I vilken stad har du närmaste aktiva syskon?
+* I vilken stad träffar du din första make/partner?
+* I vilken stad träffar dina föräldrar?
+* I vilken stad bor dina närmaste på samma plats?
 * I vilken stad föddes din far?
 * I vilken stad var ditt första jobb?
 * I vilken stad föddes din mamma?
-* Vilken stad var du på årets nya år 2000?
-* Vad är det sista namnet på din favorit lärare i gymnasie skolan?
-* Vad är namnet på en skola som du har använt till men inte var?
-* Vad är namnet på den plats där du höll din första bröllops mottagning?
-* Vad är ditt fars mellan namn?
-* Vad är ditt favorit mat?
-* Vad är din mormor för för-och efter namn?
-* Vad är din mammas mellan namn?
-* Vad är ditt äldsta syskons födelsedags månad och år? (till exempel november 1985)
-* Vad är ditt äldsta syskons mellan namn?
-* Vad är din farfar-farfar för för-och efter namn?
-* Vad är ditt unga syskons mellan namn?
-* Vilken skola deltog du i sjätte klass?
-* Vad hette din barns bästa vänner?
-* Vad hette det första och sista namnet på din första större?
-* Vilket är det sista namnet på din favorit lärare i din favorit klass?
-* Vad är märke och modell för din första bil eller motorcykel?
-* Vad hette den första skolan som du deltog i?
-* Vad var namnet på det sjukhus där du föddes?
-* Vad är namnet på gatan för ditt första barn hemma?
-* Vad hette din barns hjälte?
-* Vad är namnet på ditt favorit fyllda djur?
-* Vad hette ditt första hus djur?
-* Vad hade ditt barn smek namn?
-* Vad var din favorit sport i gymnasie skola?
+* Vilken stad var du i på nyår 2000?
+* Vad är efternamnet på din favorit lärare i high school?
+* Vad heter ett universitet som du har sökt på men inte har varit på?
+* Vad är namnet på den plats där du höll din första mottagning?
+* Vad är din fars mellannamn?
+* Vilken är din favoritmat?
+* Vad är din mammas för- och efternamn?
+* Vad är din mammas mellannamn?
+* Vad är din äldsta födelsedag på samma år som på samma år? (till exempel november 1985)
+* Vad är ditt äldsta mellannamn på samma dator?
+* Vad är din fars för- och efternamn?
+* Vilket är ditt yngste mellannamn på samma dator?
+* Vilken skola gick du i för sjätte klass?
+* Vad var det första och sista namnet på din bästa vän?
+* Vad var det första och sista namnet på din partner?
+* Vad var efternamnet på din favoritklasss lärare?
+* Vad var modell och modell för din första bil eller motorcykel?
+* Vad hette den första skolan du gick i?
+* Vad hette det sjukhus där du föddes?
+* Vad var namnet på gatuadressen i ditt första hem?
+* Vad hette din hero-hero?
+* Vad var namnet på ditt favoritkniga djur?
+* Vad hette ditt första husdjur?
+* Vad var ditt smeknamn för smeknamn?
+* Vilken var din favoritsport i skolan?
 * Vad var ditt första jobb?
-* Vilka var de sista fyra siffrorna i ditt barns telefonnummer?
-* Vad gjorde du när du var ung, vad gjorde du när du blev vuxna?
-* Vilken är den mest berömda person som du någonsin har uppfyllt?
+* Vilka var de sista fyra siffrorna i telefonnumret till din telefon?
+* Vad ville du bli när du var liten?
+* Vem är den mest berömda person som du någonsin har uppfyllt?
 
-## <a name="custom-security-questions"></a>Anpassade säkerhets frågor
+## <a name="custom-security-questions"></a>Anpassade säkerhetsfrågor
 
-För ytterligare flexibilitet kan du definiera egna säkerhets frågor. Den maximala längden för en anpassad säkerhets fråga är 200 tecken.
+För ytterligare flexibilitet kan du definiera egna anpassade säkerhetsfrågor. Den maximala längden på en anpassad säkerhetsfråga är 200 tecken.
 
-Anpassade säkerhets frågor lokaliseras inte automatiskt som med standard säkerhets frågorna. Alla anpassade frågor visas på samma språk som de är angivna i det administrativa användar gränssnittet, även om användarens webbläsare är annorlunda. Om du behöver lokaliserade frågor bör du använda de fördefinierade frågorna.
+Anpassade säkerhetsfrågor lokaliseras inte automatiskt som med standardsäkerhetsfrågorna. Alla anpassade frågor visas på samma språk som de anges i det administrativa användargränssnittet, även om användarens språk i webbläsaren skiljer sig åt. Om du behöver lokaliserade frågor bör du använda de fördefinierade frågorna.
 
-## <a name="security-question-requirements"></a>Krav för säkerhets fråga
+## <a name="security-question-requirements"></a>Krav på säkerhetsfrågor
 
-För både standard-och anpassade säkerhets frågor gäller följande krav och begränsningar:
+För både standardsäkerhetsfrågor och anpassade säkerhetsfrågor gäller följande krav och begränsningar:
 
-* Gränsen för minsta antal svars tecken är tre tecken.
-* Gränsen för maximalt antal svars tecken är 40 tecken.
-* Användare kan inte besvara samma fråga mer än en gången.
-* Användare kan inte ange samma svar på fler än en fråga.
-* Alla teckenuppsättningar kan användas för att definiera frågor och svar, inklusive Unicode-tecken.
-* Antalet frågor som definieras måste vara större än eller lika med antalet frågor som krävs för registrering.
+* Den minsta gränsen för svarstecken är tre tecken.
+* Maxgränsen för svarstecken är 40 tecken.
+* Användarna kan inte besvara samma fråga mer än en gång.
+* Användare kan inte ge samma svar på mer än en fråga.
+* Valfri teckenuppsättning kan användas för att definiera frågor och svar, inklusive Unicode-tecken.
+* Antalet definierade frågor måste vara större än eller lika med det antal frågor som krävdes för att registrera sig.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Information om hur du kommer igång finns i [självstudien för självbetjäning för återställning av lösen ord (SSPR)][tutorial-sspr].
+Kom igång genom att gå [självstudien för självbetjäning av lösenordsåterställning (SSPR).][tutorial-sspr]
 
-Mer information om SSPR-koncept finns i [hur Azure AD självbetjäning för återställning av lösen ord fungerar][concept-sspr].
+Mer information om SSPR-begrepp finns i [Så här fungerar självåterställning][concept-sspr]av lösenord i Azure AD.
 
-Läs mer om hur du konfigurerar autentiseringsmetoder med hjälp av [Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
+Läs mer om hur du konfigurerar autentiseringsmetoder med [hjälp av Microsoft Graph REST API](/graph/api/resources/authenticationmethods-overview).
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

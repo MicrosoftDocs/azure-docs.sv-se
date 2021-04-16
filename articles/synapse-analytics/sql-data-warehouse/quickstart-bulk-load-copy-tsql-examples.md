@@ -1,38 +1,38 @@
 ---
-title: Autentiseringsmekanismer med KOPIERINGs instruktionen
-description: Beskriver autentiseringsmekanismer för Mass inläsning av data
+title: Autentiseringsmekanismer med COPY-instruktionen
+description: Beskriver autentiseringsmekanismerna för massinläsning av data
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 07/10/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 70e8f15b2b02008f24c87cfe70372fccbf0506fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 510f2556fba42176817b782fe48d01d76eaa3fd7
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600130"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568462"
 ---
-# <a name="securely-load-data-using-synapse-sql"></a>Läs in data på ett säkert sätt med Synapse SQL
+# <a name="securely-load-data-using-synapse-sql"></a>Läs in data säkert med Synapse SQL
 
-Den här artikeln beskriver och innehåller exempel på mekanismer för säker autentisering för [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true). KOPIERINGs instruktionen är det mest flexibla och säkra sättet för Mass inläsning av data i Synapse SQL.
+Den här artikeln visar och innehåller exempel på säkra autentiseringsmekanismer för [COPY-instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true). COPY-instruktionen är det mest flexibla och säkra sättet att massinläsning av data i Synapse SQL.
 ## <a name="supported-authentication-mechanisms"></a>Autentiseringsmekanismer som stöds
 
-I följande matris beskrivs de autentiseringsmetoder som stöds för varje filtyp och lagrings konto. Detta gäller för käll lagrings platsen och fel filens plats.
+I följande matris beskrivs de autentiseringsmetoder som stöds för varje filtyp och lagringskonto. Detta gäller källlagringsplatsen och platsen för felfilen.
 
-|                          |                CSV                |                      Parquet                       |                        ORC                         |
+|                          |                CSV                |                      Parquet                       |                        Orc                         |
 | :----------------------: | :-------------------------------: | :------------------------------------------------: | :------------------------------------------------: |
-|  **Azure Blob Storage**  | SAS/MSI/TJÄNSTENS HUVUD NAMN/NYCKEL/AAD |                      SAS/NYCKEL                       |                      SAS/NYCKEL                       |
-| **Azure Data Lake Gen2** | SAS/MSI/TJÄNSTENS HUVUD NAMN/NYCKEL/AAD | SAS (BLOB<sup>1</sup>)/MSI (DFS<sup>2</sup>)/service-huvud/nyckel/AAD | SAS (BLOB<sup>1</sup>)/MSI (DFS<sup>2</sup>)/service-huvud/nyckel/AAD |
+|  **Azure Blob Storage**  | SAS/MSI/TJÄNSTENS HUVUDNAMN/NYCKEL/AAD |                      SAS/NYCKEL                       |                      SAS/NYCKEL                       |
+| **Azure Data Lake Gen2** | SAS/MSI/TJÄNSTENS HUVUDNAMN/NYCKEL/AAD | SAS (blob<sup>1</sup>)/MSI (dfs<sup>2</sup>)/TJÄNSTENS HUVUDNAMN/NYCKEL/AAD | SAS (blob<sup>1</sup>)/MSI (dfs<sup>2</sup>)/TJÄNSTENS HUVUDNAMN/NYCKEL/AAD |
 
-1:. blob-slutpunkten (**. blob**. Core.Windows.net) i sökvägen till den externa platsen krävs för den här autentiseringsmetoden.
+1: .blob-slutpunkten (**.blob**.core.windows.net) i sökvägen till den externa platsen krävs för den här autentiseringsmetoden.
 
-2:. DFS-slutpunkten (**. DFS**. Core.Windows.net) i sökvägen till den externa platsen krävs för den här autentiseringsmetoden.
+2: .dfs-slutpunkten (**.dfs**.core.windows.net) i sökvägen till den externa platsen krävs för den här autentiseringsmetoden.
 
-## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. Lagrings konto nyckel med LF som rad avgränsare (UNIX-typ ny rad)
+## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. Lagringskontonyckel med LF som radterminator (ny rad i Unix-format)
 
 
 ```sql
@@ -49,9 +49,9 @@ WITH (
 ```
 > [!IMPORTANT]
 >
-> - Använd det hexadecimala värdet (0x0A) för att ange rad matnings tecknet. Obs! COPY-instruktionen tolkar strängen "\n" som "\r\n" (rad matnings retur).
+> - Använd det hexadecimala värdet (0x0A) för att ange tecknet Radflöde/Ny rad. Observera att COPY-instruktionen tolkar strängen \n som \r\n (vagnretur ny rad).
 
-## <a name="b-shared-access-signatures-sas-with-crlf-as-the-row-terminator-windows-style-new-line"></a>B. Signaturer för delad åtkomst (SAS) med CRLF som rad avslutning (Windows-formatmall, ny rad)
+## <a name="b-shared-access-signatures-sas-with-crlf-as-the-row-terminator-windows-style-new-line"></a>B. Signaturer för delad åtkomst (SAS) med CRLF som radterminator (ny rad i Windows-format)
 ```sql
 COPY INTO target_table
 FROM 'https://adlsgen2account.dfs.core.windows.net/myblobcontainer/folder1/'
@@ -66,21 +66,21 @@ WITH (
 
 > [!IMPORTANT]
 >
-> - Ange inte ROWTERMINATOR som ' \r\n ' som ska tolkas som ' \r\r\n ' och kan resultera i tolknings problem
+> - Ange inte ROWTERMINATOR som \r\n, vilket tolkas som \r\r\n och kan resultera i parsningsproblem
 
 ## <a name="c-managed-identity"></a>C. Hanterad identitet
 
-Hanterad identitets autentisering krävs när ditt lagrings konto är kopplat till ett VNet. 
+Autentisering med hanterad identitet krävs när ditt lagringskonto är kopplat till ett VNet. 
 
 ### <a name="prerequisites"></a>Förutsättningar
 
 1. Installera Azure PowerShell med hjälp av den här [guiden](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 2. Om du har ett konto av typen generell användning v1 eller bloblagring måste du först uppgradera till generell användning v2 med hjälp av den här [guiden](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
-3. Du måste ha **Tillåt att betrodda Microsoft-tjänster har åtkomst till det här lagrings kontot** under Azure Storage konto **brand väggar och inställningar för virtuella nätverk** . Mer information finns i den här [guiden](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions).
+3. Du måste ha **Tillåt betrodda Microsoft-tjänster** åtkomst till det här **lagringskontot** aktiverat under inställningsmenyn Azure Storage brandväggar och virtuella nätverk. Mer information finns i den här [guiden](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions).
 
 #### <a name="steps"></a>Steg
 
-1. Om du har en fristående SQL-pool registrerar du SQL Server med Azure Active Directory (AAD) med hjälp av PowerShell: 
+1. Om du har en fristående dedikerad SQL-pool registrerar du din SQL-server med Azure Active Directory (AAD) med hjälp av PowerShell: 
 
    ```powershell
    Connect-AzAccount
@@ -88,34 +88,34 @@ Hanterad identitets autentisering krävs när ditt lagrings konto är kopplat ti
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-   Det här steget krävs inte för dedikerade SQL-pooler inom en Synapse-arbetsyta.
+   Det här steget krävs inte för dedikerade SQL-pooler i en Synapse-arbetsyta.
 
-1. Om du har en Synapse-arbetsyta registrerar du arbets ytans systemhanterade identitet:
+1. Om du har en Synapse-arbetsyta registrerar du arbetsytans system hanterade identitet:
 
-   1. Gå till din Synapse-arbetsyta i Azure Portal
-   2. Gå till bladet hanterade identiteter 
-   3. Kontrol lera att alternativet Tillåt pipeliner är aktiverat
+   1. Gå till Synapse-arbetsytan i Azure Portal
+   2. Gå till bladet Hanterade identiteter 
+   3. Kontrollera att alternativet "Tillåt pipelines" är aktiverat
    
-   ![Registrera arbets ytans system-MSI](./media/quickstart-bulk-load-copy-tsql-examples/msi-register-example.png)
+   ![Registrera arbetsytesystemet msi](./media/quickstart-bulk-load-copy-tsql-examples/msi-register-example.png)
 
-1. Skapa ett **Allmänt-syfte v2-lagrings konto** med hjälp av den här [guiden](../../storage/common/storage-account-create.md).
+1. Skapa ett **v2-lagringskonto för generell användning med hjälp** av den här [guiden.](../../storage/common/storage-account-create.md)
 
    > [!NOTE]
    >
-   > - Om du har ett allmänt v1-eller Blob Storage-konto måste du **först uppgradera till v2** med hjälp av den här [guiden](../../storage/common/storage-account-upgrade.md).
-   > - Information om kända problem med Azure Data Lake Storage Gen2 finns i den här [hand boken](../../storage/blobs/data-lake-storage-known-issues.md).
+   > - Om du har ett V1- eller Blob Storage-konto för generell användning måste **du först uppgradera till v2 med** hjälp av den här [guiden.](../../storage/common/storage-account-upgrade.md)
+   > - Information om kända problem Azure Data Lake Storage Gen2 finns i den här [guiden.](../../storage/blobs/data-lake-storage-known-issues.md)
 
-1. Under ditt lagrings konto navigerar du till **Access Control (IAM)** och väljer **Lägg till roll tilldelning**. Tilldela Azure-rollen **Storage BLOB data Contributor** till den server eller arbets yta som är värd för din dedikerade SQL-pool som du har registrerat med Azure Active Directory (AAD).
+1. Under ditt lagringskonto går du **till Access Control (IAM)** och väljer Lägg **till rolltilldelning.** Tilldela **Azure-rollen Storage Blob Data-deltagare** till den server eller arbetsyta som är värd för din dedikerade SQL-pool som du har registrerat med Azure Active Directory (AAD).
 
    > [!NOTE]
-   > Endast medlemmar med ägar behörighet kan utföra det här steget. Information om olika inbyggda Azure-roller finns i den här [guiden](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+   > Endast medlemmar med ägarbehörighet kan utföra det här steget. Information om olika inbyggda Roller i Azure finns i den här [guiden.](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
    
     > [!IMPORTANT]
-    > Ange **lagrings** **data** ägare, deltagare eller Reader Azure-roll. De här rollerna skiljer sig från de inbyggda Azure-rollerna för ägare, deltagare och läsare. 
+    > Ange **Azure-rollen** **Storage Blob Data-ägare,** Deltagare eller Läsare. De här rollerna skiljer sig från de inbyggda Rollerna Ägare, Deltagare och Läsare i Azure. 
 
-    ![Bevilja Azure RBAC-behörighet att läsa in](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![Bevilja Azure RBAC behörighet att läsa in](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
-4. Nu kan du köra COPY-instruktionen som anger "hanterad identitet":
+4. Nu kan du köra COPY-instruktionen med "Hanterad identitet":
 
     ```sql
     COPY INTO dbo.target_table
@@ -129,16 +129,16 @@ Hanterad identitets autentisering krävs när ditt lagrings konto är kopplat ti
 ## <a name="d-azure-active-directory-authentication"></a>D. Azure Active Directory-autentisering
 #### <a name="steps"></a>Steg
 
-1. Under ditt lagrings konto navigerar du till **Access Control (IAM)** och väljer **Lägg till roll tilldelning**. Tilldela Azure AD-användaren rollen som **ägare av BLOB-dataägare, deltagare eller läsare** . 
+1. Under ditt lagringskonto går du **till Access Control (IAM)** och väljer Lägg **till rolltilldelning**. Tilldela **Azure-rollen Storage Blob Data-ägare, -deltagare eller** -läsare till din Azure AD-användare. 
 
     > [!IMPORTANT]
-    > Ange **lagrings** **data** ägare, deltagare eller Reader Azure-roll. De här rollerna skiljer sig från de inbyggda Azure-rollerna för ägare, deltagare och läsare.
+    > Ange **Azure-rollen** **Storage Blob Data-ägare,** -deltagare eller -läsare. De här rollerna skiljer sig från de inbyggda Rollerna Ägare, Deltagare och Läsare i Azure.
 
-    ![Bevilja Azure RBAC-behörighet att läsa in](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![Bevilja Azure RBAC behörighet att läsa in](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 2. Konfigurera Azure AD-autentisering genom att gå igenom följande [dokumentation](../../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell). 
 
-3. Anslut till din SQL-pool med Active Directory där du kan köra COPY-instruktionen utan att ange några autentiseringsuppgifter:
+3. Anslut till SQL-poolen med Hjälp av Active Directory där du nu kan köra COPY-instruktionen utan att ange några autentiseringsuppgifter:
 
     ```sql
     COPY INTO dbo.target_table
@@ -154,9 +154,9 @@ Hanterad identitets autentisering krävs när ditt lagrings konto är kopplat ti
 
 1. [Skapa ett Azure Active Directory program](../..//active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
 2. [Hämta program-ID](../..//active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)
-3. [Hämta autentiseringsnyckel](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)
-4. [Hämta v1 OAuth 2,0-token-slutpunkt](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
-5. [Tilldela läs-, skriv-och körnings behörighet till ditt Azure AD-program](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder) på ditt lagrings konto
+3. [Hämta autentiseringsnyckeln](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)
+4. [Hämta V1 OAuth 2.0-tokenslutpunkten](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
+5. [Tilldela läs-, skriv- och körningsbehörigheter till Azure AD-programmet](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder) på ditt lagringskonto
 6. Nu kan du köra COPY-instruktionen:
 
     ```sql
@@ -172,9 +172,9 @@ Hanterad identitets autentisering krävs när ditt lagrings konto är kopplat ti
 
 > [!IMPORTANT]
 >
-> - Använd **v1** -versionen av OAuth 2,0-token-slutpunkt
+> - Använda **V1-versionen** av OAuth 2.0-tokenslutpunkten
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Mer information finns i artikeln om att [Kopiera instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
-- Läs artikeln [Översikt över data inläsning](./design-elt-data-loading.md#what-is-elt) för att läsa in metod tips
+- Den detaljerade [syntaxen finns i](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax) artikeln COPY-instruktion
+- Läs [översiktsartikeln om dataläsning](./design-elt-data-loading.md#what-is-elt) för att läsa in metodtips

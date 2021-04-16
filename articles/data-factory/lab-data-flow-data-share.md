@@ -6,25 +6,25 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 04/14/2021
-ms.openlocfilehash: d3924c38f760a9698735a2757bdad2af5beb0e24
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 04/16/2021
+ms.openlocfilehash: 392b1a1650ab40951704d003f2a5e5337cf3c0f5
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518816"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566716"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Dataintegrering med Azure Data Factory och Azure Data Share
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-När kunderna går vidare med sina moderna informationslager- och analysprojekt behöver de inte bara mer data, utan även mer insyn i sina data i sin datae egendom. Den här workshoppen går in på hur förbättringar av Azure Data Factory och Azure Data Share förenklar dataintegrering och hantering i Azure. 
+När kunderna sätter igång med sina moderna informationslager- och analysprojekt behöver de inte bara mer data utan även bättre insyn i sina data i sin datae egendom. I den här workshoppen går vi in på hur Azure Data Factory och Azure Data Share förenklar dataintegrering och hantering i Azure. 
 
-Från att aktivera kodfri ETL/ELT till att skapa en heltäckande vy över dina data, ger förbättringar i Azure Data Factory dina datatekniker möjlighet att på ett säkert sätt få in mer data och därmed mer värde för ditt företag. Azure Data Share gör att du kan dela företag till företag på ett reglerat sätt.
+Förbättringar i Azure Data Factory gör det möjligt för datatekniker att på ett säkert sätt få in mer data och därmed mer värde till ditt företag, från att aktivera kodfri ETL/ELT till att skapa en heltäckande vy över dina data. Azure Data Share gör att du kan dela företag till företag på ett reglerat sätt.
 
-I den här workshoppen använder du Azure Data Factory (ADF) för att mata in data från Azure SQL Database till Azure Data Lake Storage Gen2 (ADLS Gen2). När du har landat data i laken transformerar du dem via mappning av dataflöden, datafabrikens interna transformeringstjänst och skickar dem till Azure Synapse Analytics. Sedan delar du tabellen med transformerade data tillsammans med ytterligare data med hjälp av Azure Data Share. 
+I den här workshoppen använder du Azure Data Factory (ADF) för att mata in data från Azure SQL Database till Azure Data Lake Storage Gen2 (ADLS Gen2). När du har landat data i en lake transformerar du dem via mappningsdataflöden, datafabrikens interna transformeringstjänst och skickar dem till Azure Synapse Analytics. Sedan delar du tabellen med transformerade data tillsammans med ytterligare data med hjälp av Azure Data Share. 
 
-De data som används i den här labblabbet är New York City-taxidata. Om du vill importera den till databasen i SQL Database laddar du ned [bacpac-filen taxi-data.](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac)
+De data som används i den här labbuppgifterna är New York City-taxidata. Om du vill importera den till databasen i SQL Database laddar du ned [bacpac-filen taxi-data.](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -34,9 +34,9 @@ De data som används i den här labblabbet är New York City-taxidata. Om du vil
 
 * **Azure Data Lake Storage Gen2 lagringskonto:** Om du inte har ett ADLS Gen2 storage-konto kan du lära dig hur du skapar [ett ADLS Gen2-lagringskonto](../storage/common/storage-account-create.md).
 
-* **Azure Synapse Analytics:** Om du inte har en Azure Synapse Analytics kan du lära dig hur du [skapar en Azure Synapse Analytics instans](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
+* **Azure Synapse Analytics:** Om du inte har någon Azure Synapse Analytics kan du lära dig hur du [skapar en Azure Synapse Analytics instans](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
 
-* **Azure Data Factory:** Om du inte har skapat en datafabrik kan du se hur du [skapar en datafabrik](./quickstart-create-data-factory-portal.md).
+* **Azure Data Factory:** Om du inte har skapat en datafabrik kan du se hur du [skapar en datafabrik.](./quickstart-create-data-factory-portal.md)
 
 * **Azure Data Share:** Om du inte har skapat en dataresurs kan du se hur du [skapar en dataresurs](../data-share/share-your-data.md#create-a-data-share-account).
 
@@ -52,7 +52,7 @@ I Azure Data Factory definierar länkade tjänster anslutningsinformationen till
 1. Använd sökfältet längst upp på sidan och sök efter "Datafabriker"
 
     ![Portal 1](media/lab-data-flow-data-share/portal1.png)
-1. Klicka på datafabriksresursen för att öppna dess resursblad.
+1. Klicka på datafabriksresursen för att öppna resursbladet.
 
     ![Portal 2](media/lab-data-flow-data-share/portal2.png)
 1. Klicka på **Författare och övervakare** för att öppna ADF UX. ADF UX kan också nås på adf.azure.com.
@@ -64,22 +64,22 @@ I Azure Data Factory definierar länkade tjänster anslutningsinformationen till
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Skapa en länkad Azure SQL Database-tjänst
 
-1. Om du vill skapa  en länkad tjänst väljer du  Hantera hubb i det vänstra sidofältet. I fönstret Anslutningar väljer du **Länkade** tjänster och sedan **Ny** för att lägga till en ny länkad tjänst.
+1. Om du vill skapa  en länkad tjänst väljer du  Hantera hubb  i det vänstra sidofältet. I fönstret Anslutningar väljer du Länkade tjänster och sedan **Ny** för att lägga till en ny länkad tjänst.
 
     ![Portalkonfigurering 2](media/lab-data-flow-data-share/configure2.png)
-1. Den första länkade tjänsten som du konfigurerar är en Azure SQL DB. Du kan använda sökfältet för att filtrera datalagerlistan. Klicka på panelen **Azure SQL Database** och klicka på Fortsätt.
+1. Den första länkade tjänsten som du konfigurerar är en Azure SQL DB. Du kan använda sökfältet för att filtrera datalagerlistan. Klicka på **Azure SQL Database** panelen och klicka på Fortsätt.
 
     ![Portalkonfigurering 4](media/lab-data-flow-data-share/configure-4.png)
 1. I konfigurationsfönstret för SQL DB anger du SQLDB som namn på den länkade tjänsten. Ange dina autentiseringsuppgifter för att tillåta att Data Factory ansluter till databasen. Om du använder SQL-autentisering anger du servernamnet, databasen, ditt användarnamn och lösenord. Du kan kontrollera att anslutningsinformationen är korrekt genom att klicka på **Testa anslutning.** Klicka **på Skapa** när du är klar.
 
-    ![Konfigurera portalen 5](media/lab-data-flow-data-share/configure5.png)
+    ![Portal konfigurera 5](media/lab-data-flow-data-share/configure5.png)
 
 ### <a name="create-an-azure-synapse-analytics-linked-service"></a>Skapa en Azure Synapse Analytics länkad tjänst
 
 1. Upprepa samma process för att lägga till en Azure Synapse Analytics länkad tjänst. På fliken anslutningar klickar du på **Ny.** Välj panelen **Azure Synapse Analytics** och klicka på Fortsätt.
 
     ![Portalkonfigurering 6](media/lab-data-flow-data-share/configure-6.png)
-1. I konfigurationsfönstret för länkad tjänst anger du SQLDW som namn på den länkade tjänsten. Ange dina autentiseringsuppgifter för att tillåta att Data Factory ansluter till databasen. Om du använder SQL-autentisering anger du servernamnet, databasen, ditt användarnamn och lösenord. Du kan kontrollera att anslutningsinformationen är korrekt genom att klicka på **Testa anslutning.** Klicka **på Skapa** när du är klar.
+1. I konfigurationsfönstret för länkad tjänst anger du SQLDW som namn på den länkade tjänsten. Ange dina autentiseringsuppgifter för att tillåta att Data Factory ansluter till databasen. Om du använder SQL-autentisering anger du servernamnet, databasen, användarnamnet och lösenordet. Du kan kontrollera att anslutningsinformationen är korrekt genom att klicka på **Testa anslutning.** Klicka **på Skapa** när du är klar.
 
     ![Portalkonfigurering 7](media/lab-data-flow-data-share/configure-7.png)
 
@@ -100,11 +100,11 @@ Om du vill aktivera felsökning klickar du på skjutreglaget **Dataflödesfelsö
 
 ![Portalkonfigurering 10](media/lab-data-flow-data-share/configure10.png)
 
-![Portal konfigurera 11](media/lab-data-flow-data-share/configure11.png)
+![Skärmbild som visar var är skjutreglaget För felsökning av dataflöde.](media/lab-data-flow-data-share/configure-11.png)
 
 ## <a name="ingest-data-using-the-copy-activity"></a>Mata in data med kopieringsaktiviteten
 
-I det här avsnittet skapar du en pipeline med en kopieringsaktivitet som matar in en tabell från en Azure SQL DB till ett ADLS Gen2-lagringskonto. Du lär dig hur du lägger till en pipeline, konfigurerar en datauppsättning och felsöker en pipeline via ADF UX. Konfigurationsmönstret som används i det här avsnittet kan användas för att kopiera från ett relationsdatalager till ett filbaserat datalager.
+I det här avsnittet skapar du en pipeline med en kopieringsaktivitet som matar in en tabell från en Azure SQL DB till ett ADLS Gen2-lagringskonto. Du lär dig hur du lägger till en pipeline, konfigurerar en datauppsättning och felsöker en pipeline via ADF UX. Konfigurationsmönstret som används i det här avsnittet kan tillämpas på kopiering från ett relationsdatalager till ett filbaserat datalager.
 
 I Azure Data Factory är en pipeline en logisk gruppering av aktiviteter som tillsammans utför en uppgift. En aktivitet definierar en åtgärd som ska utföras på dina data. En datauppsättning pekar på de data som du vill använda i en länkad tjänst.
 
@@ -122,63 +122,63 @@ I Azure Data Factory är en pipeline en logisk gruppering av aktiviteter som til
 
 ### <a name="configure-azure-sql-db-source-dataset"></a>Konfigurera Azure SQL DB-källdatauppsättning
 
-1. Klicka på **fliken Källa** för kopieringsaktiviteten. Om du vill skapa en ny datauppsättning klickar du **på Ny.** Källan blir tabellen "dbo". TripData finns i den länkade tjänsten "SQLDB" som konfigurerades tidigare.
+1. Klicka på **fliken Källa** för kopieringsaktiviteten. Klicka på Ny för att skapa en **ny datauppsättning.** Din källa blir tabellen 'dbo. TripData finns i den länkade tjänsten SQLDB som konfigurerades tidigare.
 
     ![Portalkopia 4](media/lab-data-flow-data-share/copy4.png)
 1. Sök efter **Azure SQL Database** och klicka på Fortsätt.
 
     ![Portalkopia 5](media/lab-data-flow-data-share/copy-5.png)
-1. Anropa din datauppsättning "TripData". Välj SQLDB som länkad tjänst. Välj tabellnamnet 'dbo. TripData' från listrutan tabellnamn. Importera schemat från **anslutning/lagra**. Klicka på OK när du är klar.
+1. Anropa datauppsättningen "TripData". Välj SQLDB som länkad tjänst. Välj tabellnamnet 'dbo. TripData" från listrutan tabellnamn. Importera schemat från **anslutning/lagra**. Klicka på OK när du är klar.
 
     ![Portalkopia 6](media/lab-data-flow-data-share/copy6.png)
 
-Du har skapat din källdatauppsättning. Se till att standardvärdet Tabell är markerat **i** fältet Använd fråga i källinställningarna.
+Du har skapat din källdatauppsättning. Se till att standardvärdet Tabell är markerat i fältet **Använd** fråga i källinställningarna.
 
-### <a name="configure-adls-gen2-sink-dataset"></a>Konfigurera ADLS Gen2 datauppsättning för mottagare
+### <a name="configure-adls-gen2-sink-dataset"></a>Konfigurera ADLS Gen2 för mottagare
 
-1. Klicka på fliken **Mottagare** för kopieringsaktiviteten. Om du vill skapa en ny datauppsättning klickar du **på Ny.**
+1. Klicka på fliken **Mottagare** för kopieringsaktiviteten. Om du vill skapa en ny datauppsättning klickar du på **Ny**.
 
     ![Portalkopia 7](media/lab-data-flow-data-share/copy7.png)
 1. Sök efter **Azure Data Lake Storage Gen2** och klicka på Fortsätt.
 
     ![Portalkopia 8](media/lab-data-flow-data-share/copy8.png)
-1. I fönstret Välj format väljer du **DelimitedText** när du skriver till en csv-fil. Klicka på Fortsätt.
+1. I fönstret Välj format väljer du **AvgränsadText när** du skriver till en csv-fil. Klicka på Fortsätt.
 
     ![Portalkopia 9](media/lab-data-flow-data-share/copy9.png)
-1. Ge mottagaren namnet TripDataCSV. Välj ADLSGen2 som länkad tjänst. Ange var du vill skriva csv-filen. Du kan till exempel skriva dina data till filen `trip-data.csv` i containern `staging-container` . Ange **Första raden som rubrik till** sant eftersom du vill att dina utdata ska ha rubriker. Eftersom det inte finns någon fil i målet ännu anger du **Importera schema** till **Ingen.** Klicka på OK när du är klar.
+1. Ge mottagaren namnet "TripDataCSV". Välj ADLSGen2 som länkad tjänst. Ange var du vill skriva csv-filen. Du kan till exempel skriva dina data till en fil `trip-data.csv` i containern `staging-container` . Ange **Första raden som rubrik till** true eftersom du vill att dina utdata ska ha rubriker. Eftersom det inte finns någon fil i målet ännu anger du **Importera schema till** **Ingen.** Klicka på OK när du är klar.
 
     ![Portalkopia 10](media/lab-data-flow-data-share/copy10.png)
 
 ### <a name="test-the-copy-activity-with-a-pipeline-debug-run"></a>Testa kopieringsaktiviteten med en pipelinefelsökningskörning
 
-1. Kontrollera att kopieringsaktiviteten fungerar korrekt genom att klicka på **Felsök** längst upp på pipelinearbetsytan för att köra en felsökningskörning. Med en felsökningskörning kan du testa pipelinen från ena änden till slutet eller tills en brytpunkt innan du publicerar den till datafabrikstjänsten.
+1. Kontrollera att kopieringsaktiviteten fungerar korrekt genom att klicka på **Felsök** överst på pipelinearbetsytan för att köra en felsökningskörning. Med en felsökningskörning kan du testa din pipeline från ena änden till slutet eller tills en brytpunkt innan du publicerar den till datafabrikstjänsten.
 
     ![Portalkopia 11](media/lab-data-flow-data-share/copy11.png)
-1. Om du vill övervaka felsökningskörningen går du **till fliken Utdata** på pipelinearbetsytan. Övervakningsskärmen uppdateras automatiskt var 20:e sekund eller när du klickar på uppdateringsknappen manuellt. Kopieringsaktiviteten har en särskild övervakningsvy som du kan komma åt genom att klicka på glasögonikonen i **kolumnen Åtgärder.**
+1. Om du vill övervaka felsökningskörningen går du till **fliken Utdata** på pipelinearbetsytan. Övervakningsskärmen uppdateras automatiskt var 20:e sekund eller när du klickar på uppdateringsknappen manuellt. Kopieringsaktiviteten har en särskild övervakningsvy som du kan komma åt genom att klicka på glasögonikonen i **kolumnen** Åtgärder.
 
     ![Portalkopia 12](media/lab-data-flow-data-share/copy12.png)
 1. Kopieringsövervakningsvyn ger aktivitetens körningsinformation och prestandaegenskaper. Du kan se information som lästa/skrivna data, lästa/skrivna rader, lästa/skrivna filer och dataflöde. Om du har konfigurerat allt korrekt bör du se 49 999 rader skrivna i en fil i ADLS-mottagaren.
 
     ![Portalkopia 13](media/lab-data-flow-data-share/copy13.png)
-1. Innan du går vidare till nästa avsnitt föreslår vi att du publicerar  ändringarna i datafabrikstjänsten genom att klicka på Publicera alla i fabriksfältet. Även om det inte tas upp i den här labb Azure Data Factory stöd för fullständig Git-integrering. Git-integrering möjliggör versionskontroll, iterativ besparing i en lagringsplats och samarbete på en datafabrik. Mer information finns i [källkontroll i Azure Data Factory](./source-control.md#troubleshooting-git-integration).
+1. Innan du går vidare till nästa avsnitt föreslår vi att du publicerar ändringarna i datafabrikstjänsten genom att klicka på Publicera **alla** i fabriksfältet. Även om det inte tas upp i den här övningen Azure Data Factory stöd för fullständig Git-integrering. Git-integrering möjliggör versionskontroll, iterativ besparing i en lagringsplats och samarbete i en datafabrik. Mer information finns i [källkontroll i Azure Data Factory](./source-control.md#troubleshooting-git-integration).
 
-    ![Publicera på portalen 1](media/lab-data-flow-data-share/publish1.png)
+    ![Publicera i portalen 1](media/lab-data-flow-data-share/publish1.png)
 
 ## <a name="transform-data-using-mapping-data-flow"></a>Omvandla data med Mappa dataflöden
 
-Nu när du har kopierat data till Azure Data Lake Storage är det dags att ansluta och aggregera dessa data till ett informationslager. Vi kommer att använda mappningsdataflöde Azure Data Factory är en visuellt utformad transformeringstjänst. Genom att mappa dataflöden kan användarna utveckla transformeringslogik utan kod och köra dem i Spark-kluster som hanteras av ADF-tjänsten.
+Nu när du har kopierat data till Azure Data Lake Storage är det dags att ansluta och aggregera dessa data till ett informationslager. Vi kommer att använda mappningsdataflöde, Azure Data Factory är en visuellt utformad transformeringstjänst. Genom att mappa dataflöden kan användarna utveckla kodfri transformeringslogik och köra dem på Spark-kluster som hanteras av ADF-tjänsten.
 
-Dataflödet som skapas i det här steget ansluter till datauppsättningen "TripDataCSV" som skapades i föregående avsnitt med en tabell "dbo. TripFares lagras i SQLDB baserat på fyra nyckelkolumner. Sedan aggregeras data baserat på kolumn för `payment_type` att beräkna medelvärdet för vissa fält och skrivas i en Azure Synapse Analytics tabell.
+Dataflödet som skapades i det här steget ansluter till datauppsättningen "TripDataCSV" som skapades i föregående avsnitt med tabellen "dbo". TripFares lagras i SQLDB baserat på fyra nyckelkolumner. Sedan aggregeras data baserat på kolumn för att `payment_type` beräkna medelvärdet av vissa fält och skrivas i en Azure Synapse Analytics tabell.
 
 ### <a name="add-a-data-flow-activity-to-your-pipeline"></a>Lägga till en dataflödesaktivitet i din pipeline
 
-1. I aktivitetsfönstret på pipelinearbetsytan  öppnar du flyttnings- och transformeringskopplingen och drar **aktiviteten Dataflöde** till arbetsytan.
+1. I aktivitetsfönstret på pipelinearbetsytan öppnar du draget **Flytta** och Transformera och drar **aktiviteten Dataflöde** till arbetsytan.
 
     ![Portaldataflöde 1](media/lab-data-flow-data-share/dataflow1.png)
 1. I sidofönstret som öppnas väljer du **Skapa nytt dataflöde och** sedan **Mappa dataflöde.** Klicka på **OK**.
 
     ![Portaldataflöde 2](media/lab-data-flow-data-share/dataflow2.png)
-1. Du dirigeras till dataflödesarbetsytan där du kommer att skapa din transformeringslogik. På fliken Allmänt ger du dataflödet namnet "JoinAndAggregateData".
+1. Du dirigeras till dataflödesarbetsytan där du skapar din transformeringslogik. På fliken Allmänt ger du dataflödet namnet JoinAndAggregateData.
 
     ![Portaldataflöde 3](media/lab-data-flow-data-share/dataflow3.png)
 
@@ -208,7 +208,7 @@ Dataflödet som skapas i det här steget ansluter till datauppsättningen "TripD
 1. Ge den här källan namnet TripFaresSQL. Klicka **på Ny** bredvid fältet för källdatauppsättning för att skapa en ny SQL DB-datauppsättning.
 
     ![Portaldataflöde 9](media/lab-data-flow-data-share/dataflow9.png)
-1. Välj panelen **Azure SQL Database** och klicka på Fortsätt. *Obs! Du kanske märker att många av anslutningarna i datafabriken inte stöds i mappning av dataflöden. Om du vill transformera data från någon av dessa källor matar du in dem till en källa som stöds med hjälp av kopieringsaktiviteten*.
+1. Välj panelen **Azure SQL Database** och klicka på Fortsätt. *Obs! Du kanske märker att många av anslutningsapparna i datafabriken inte stöds i mappning av dataflöde. Om du vill transformera data från någon av dessa källor matar du in dem till en källa som stöds med hjälp av kopieringsaktiviteten*.
 
     ![Portaldataflöde 10](media/lab-data-flow-data-share/dataflow-10.png)
 1. Anropa datauppsättningen "TripFares". Välj SQLDB som länkad tjänst. Välj tabellnamnet 'dbo. TripFares' från listrutan tabellnamn. Importera schemat från **anslutning/lagra**. Klicka på OK när du är klar.
@@ -239,15 +239,15 @@ Dataflödet som skapas i det här steget ansluter till datauppsättningen "TripD
     ![Portalagg 1](media/lab-data-flow-data-share/agg1.png)
 1. Ge den sammanställda omvandlingen namnet "AggregateByPaymentType". Välj `payment_type` som gruppera efter kolumn.
 
-    ![Portalagg 2](media/lab-data-flow-data-share/agg2.png)
-1. Gå till **fliken Aggregat.** Här anger du två sammansättningar:
+    ![Portal agg 2](media/lab-data-flow-data-share/agg2.png)
+1. Gå till **fliken Aggregeringar.** Här anger du två sammansättningar:
     * Genomsnittligt pris grupperat efter betalningstyp
     * Totalt reseavstånd grupperat efter betalningstyp
 
     Först skapar du det genomsnittliga prisuttrycket. I textrutan med etiketten Lägg **till eller välj en kolumn** anger du "average_fare".
 
     ![Portal agg 3](media/lab-data-flow-data-share/agg3.png)
-1. Om du vill ange ett sammansättningsuttryck klickar du på den blå rutan med etiketten **Retur-uttryck.** Då öppnas dataflödesuttrycksverktyget, ett verktyg som används för att visuellt skapa dataflödesuttryck med hjälp av indataschema, inbyggda funktioner och åtgärder samt användardefinierade parametrar. Mer information om funktionerna i uttrycksverktyget finns i dokumentationen [för uttrycksverktyget.](./concepts-data-flow-expression-builder.md)
+1. Om du vill ange ett sammansättningsuttryck klickar du på den blå rutan med etiketten **Retur-uttryck.** Då öppnas dataflödesuttrycksverktyget, ett verktyg som används för att visuellt skapa dataflödesuttryck med hjälp av indataschema, inbyggda funktioner och åtgärder samt användardefinierade parametrar. Mer information om funktionerna i uttrycksverktyget finns i expression [builder-dokumentationen.](./concepts-data-flow-expression-builder.md)
 
     Om du vill hämta genomsnittspriset använder du `avg()` sammansättningsfunktionen för att aggregera `total_amount` kolumnen som har ett heltal med `toInteger()` . I dataflödesuttrycksspråket definieras detta som `avg(toInteger(total_amount))` . Klicka **på Spara och** slutför när du är klar.
 
@@ -287,7 +287,7 @@ Du har skapat ditt dataflöde. Nu är det dags att köra den i en pipeline-aktiv
 
 ### <a name="debug-your-pipeline-end-to-end"></a>Felsöka din pipeline från end-to-end
 
-1. Gå tillbaka till fliken för **Pipelinen IngestAndTransformData.** Lägg märke till den gröna rutan för kopieringsaktiviteten "IngestIntoADLS". Dra den till dataflödesaktiviteten JoinAndAggregateData. Detta skapar ett "om åtgärden lyckades", vilket gör att dataflödesaktiviteten endast körs om kopieringen lyckas.
+1. Gå tillbaka till fliken för **Pipelinen IngestAndTransformData.** Lägg märke till den gröna rutan för kopieringsaktiviteten "IngestIntoADLS". Dra den till dataflödesaktiviteten JoinAndAggregateData. Detta skapar en "vid lyckad", vilket gör att dataflödesaktiviteten endast körs om kopieringen lyckas.
 
     ![Portalpipeline 1](media/lab-data-flow-data-share/pipeline1.png)
 1. Som vi gjorde för kopieringsaktiviteten klickar du **på Felsök** för att köra en felsökningskörning. För felsökningskörningar använder dataflödesaktiviteten det aktiva felsökningsklustret i stället för att skapa ett nytt kluster. Den här pipelinen tar lite över en minut att köra.
@@ -296,7 +296,7 @@ Du har skapat ditt dataflöde. Nu är det dags att köra den i en pipeline-aktiv
 1. Precis som kopieringsaktiviteten har dataflödet en särskild övervakningsvy som visas av glasögonikonen när aktiviteten har slutförts.
 
     ![Portalpipeline 3](media/lab-data-flow-data-share/pipeline3.png)
-1. I övervakningsvyn visas ett förenklat dataflödesdiagram tillsammans med körningstider och rader i varje körningssteg. Om det görs på rätt sätt bör du ha sammanställt 49 999 rader i fem rader i den här aktiviteten.
+1. I övervakningsvyn kan du se ett förenklat dataflödesdiagram tillsammans med körningstider och rader i varje körningssteg. Om det görs korrekt bör du ha sammanställt 49 999 rader i fem rader i den här aktiviteten.
 
     ![Portalpipeline 4](media/lab-data-flow-data-share/pipeline4.png)
 1. Du kan klicka på en transformering för att få ytterligare information om dess körning, till exempel partitioneringsinformation och nya/uppdaterade/bort ignorerade kolumner.
@@ -311,7 +311,7 @@ I det här avsnittet lär du dig att konfigurera en ny dataresurs med hjälp av 
 
 När du har skapat en dataresurs växlar du sedan huvudena och blir *datakonsumenten*. Som datakonsument går du igenom flödet för att acceptera en dataresursinbjudan och konfigurerar var du vill att data ska tas emot och mappar datauppsättningar till olika lagringsplatser. Sedan utlöser du en ögonblicksbild som kopierar de data som delas med dig till det angivna målet. 
 
-### <a name="sharing-data-data-provider-flow"></a>Dela data (dataleverantörsflöde)
+### <a name="sharing-data-data-provider-flow"></a>Dela data (dataproviderflöde)
 
 1. Öppna Azure Portal antingen i Microsoft Edge eller Google Chrome.
 
@@ -325,7 +325,7 @@ När du har skapat en dataresurs växlar du sedan huvudena och blir *datakonsume
 
     ![Börja dela](media/lab-data-flow-data-share/ads-start-sharing.png)
 
-1. Välj **+ Skapa för** att börja konfigurera din nya dataresurs. 
+1. Välj **+Skapa för** att börja konfigurera din nya dataresurs. 
 
 1. Under **Resursnamn** anger du ett val av namn. Det här är resursnamnet som datakonsumenten kommer att se, så se till att ge den ett beskrivande namn, till exempel TaxiData.
 
@@ -361,7 +361,7 @@ När du har skapat en dataresurs växlar du sedan huvudena och blir *datakonsume
 
 1. Välj **EDW** och sedan **AggregatedData** för tabellen. 
 
-1. Välj **Lägg till datauppsättning**
+1. Välj Lägg **till datauppsättning**
 
     Nu har vi en SQL-tabell som ingår i vår datauppsättning. Nu ska vi lägga till ytterligare datauppsättningar från Azure Data Lake Store. 
 
@@ -395,7 +395,7 @@ När du har skapat en dataresurs växlar du sedan huvudena och blir *datakonsume
 
 1. Välj **Skapa**.
 
-    Nu har du en aktiv dataresurs. Vi går igenom vad du kan se som dataleverantör när du skapar en dataresurs. 
+    Nu har du en aktiv dataresurs. Nu ska vi gå igenom vad du kan se som dataleverantör när du skapar en dataresurs. 
 
 1. Välj den dataresurs som du skapade, med namnet **DataProvider**. Du kan navigera till den genom att **välja Skickade resurser** i **Data Share**. 
 
@@ -409,13 +409,13 @@ När du har skapat en dataresurs växlar du sedan huvudena och blir *datakonsume
 
     ![Väntande inbjudningar](media/lab-data-flow-data-share/pending-invites.png)
 
-1. Välj inbjudan till *janedoe@fabrikam.com* . Välj Ta bort. Om mottagaren inte har accepterat inbjudan än kommer han eller hon inte längre att kunna göra det. 
+1. Välj inbjudan till *janedoe@fabrikam.com* . Välj Ta bort. Om mottagaren inte har accepterat inbjudan än kommer den inte längre att kunna göra det. 
 
 1. Välj **fliken Historik.** Inget visas ännu eftersom datakonsumenten ännu inte har accepterat din inbjudan och utlöst en ögonblicksbild. 
 
 ### <a name="receiving-data-data-consumer-flow"></a>Ta emot data (datakonsumentflöde)
 
-Nu när vi har granskat vår dataresurs är vi redo att byta kontext och ha på oss vår datakonsumenthat. 
+Nu när vi har granskat vår dataresurs är vi redo att byta kontext och förslita vår datakonsumenthatt. 
 
 Nu bör du ha en Azure Data Share inbjudan i inkorgen från Microsoft Azure. Starta Outlook Web Access (outlook.com) och logga in med de autentiseringsuppgifter som angetts för din Azure-prenumeration.
 
@@ -433,7 +433,7 @@ Du kan uppmanas att välja en prenumeration. Se till att du väljer den prenumer
 
 1. För **Dataresurskonto** väljer du **DataConsumer**. Du kan också skapa ett nytt dataresurskonto. 
 
-1. Bredvid **Mottaget resursnamn** ser du att standardresursnamnet är det namn som angavs av dataleverantören. Ge resursen ett eget namn som beskriver de data som du kommer att ta emot, t.ex. **TaxiDataShare**.
+1. Bredvid **Mottagen resursnamn** ser du att standardresursnamnet är det namn som angavs av dataleverantören. Ge resursen ett eget namn som beskriver de data som du kommer att ta emot, t.ex. **TaxiDataShare**.
 
     ![Inbjudan accepterar](media/lab-data-flow-data-share/consumer-accept.png)
 
@@ -441,7 +441,7 @@ Du kan uppmanas att välja en prenumeration. Se till att du väljer den prenumer
 
 1. Välj **Acceptera och konfigurera senare.** 
 
-    När du konfigurerar det här alternativet skapas en resursprenumeration, men det finns en möjlighet att data hamnar eftersom inget mål har mappats. 
+    När du konfigurerar det här alternativet skapas en resursprenumeration, men det finns inget sätt att landa data eftersom inget mål har mappats. 
 
     Nu ska vi konfigurera datauppsättningsmappningar för dataresursen. 
 
@@ -483,15 +483,15 @@ Du kan uppmanas att välja en prenumeration. Se till att du väljer den prenumer
 
 1. Välj **Frågeredigeraren (förhandsversion)**
 
-1. Använd AAD-autentisering för att logga in i frågeredigeraren. 
+1. Använd AAD-autentisering för att logga in på Frågeredigeraren. 
 
 1. Kör frågan i dataresursen (kopierades till Urklipp i steg 14). 
 
-    Med det här kommandot Azure Data Share-tjänsten använda hanterade identiteter för Azure-tjänster för att autentisera till SQL Server att kunna kopiera data till den. 
+    Med det här kommandot Azure Data Share-tjänsten använda hanterade identiteter för Azure-tjänster för att autentisera till SQL Server för att kunna kopiera data till den. 
 
-1. Gå tillbaka till den ursprungliga fliken och välj **Mappa för att ange som mål.**
+1. Gå tillbaka till den ursprungliga fliken och välj **Mappa till mål.**
 
-1. Välj sedan mappen Azure Data Lake Gen2 som ingår i datauppsättningen och mappa den till ett Azure Blob Storage konto. 
+1. Välj sedan mappen Azure Data Lake Gen2 som är en del av datauppsättningen och mappa den till ett Azure Blob Storage konto. 
 
     ![storage](media/lab-data-flow-data-share/storage-map.png)
 
@@ -501,7 +501,7 @@ Du kan uppmanas att välja en prenumeration. Se till att du väljer den prenumer
     
 1. Välj **Information.** 
 
-    Observera att **utlösarögonblicksbild** inte längre är nedtonad, eftersom dataresursen nu har mål att kopiera till.
+    Observera att **utlösarögonblicksbild** inte längre är nedtonad eftersom dataresursen nu har mål att kopiera till.
 
 1. Välj Utlösarögonblicksbild > fullständig kopia. 
 
@@ -511,8 +511,8 @@ Du kan uppmanas att välja en prenumeration. Se till att du väljer den prenumer
 
     Det tar cirka 3–5 minuter för data att komma fram. Du kan övervaka förloppet genom att klicka på **fliken Historik.** 
 
-    Medan du väntar går du till den ursprungliga dataresursen (DataProvider) och visar status för fliken **Dela prenumerationer** **och historik.** Observera att det nu finns en aktiv prenumeration och som dataleverantör kan du även övervaka när datakonsumenten har börjat ta emot data som delas med dem. 
+    Medan du väntar går du till den ursprungliga dataresursen (DataProvider) och visar status för **fliken Resursprenumerationer** **och historik.** Observera att det nu finns en aktiv prenumeration, och som dataleverantör kan du även övervaka när datakonsumenten har börjat ta emot data som delas med dem. 
 
-1. Gå tillbaka till datakonsumentens dataresurs. När utlösaren har status navigerar du till SQL-måldatabasen och datasjön för att se att data har landat i respektive lager. 
+1. Gå tillbaka till datakonsumentens dataresurs. När statusen för utlösaren har lyckats navigerar du till SQL-måldatabasen och datasjön för att se att data har landat i respektive lager. 
 
 Grattis, du har slutfört labbet!

@@ -1,89 +1,89 @@
 ---
-title: 'SQL Server till Azure SQL-hanterad instans: prestanda analys'
-description: Lär dig att skapa och jämföra en bas linje för prestanda när du migrerar SQL Server-databaser till Azure SQL-hanterad instans.
+title: 'SQL Server till Azure SQL Managed Instance: Prestandabaslinje'
+description: Lär dig att skapa och jämföra en prestandabaslinje när du migrerar dina SQL Server-databaser till Azure SQL Managed Instance.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: mokabiru
 ms.date: 11/06/2020
-ms.openlocfilehash: a97dabe36efb252b04c1b5c8fa741d33a6c92703
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a47684bf29f1f34b8c9c59c04b7d33d234505cc2
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023681"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389715"
 ---
-# <a name="migration-performance-sql-server-to--azure-sql-managed-instance-performance-analysis"></a>Migrerings prestanda: SQL Server till prestanda analys av Azure SQL-hanterad instans
+# <a name="migration-performance-sql-server-to--azure-sql-managed-instance-performance-baseline"></a>Migreringsprestanda: SQL Server för Azure SQL Managed Instance prestandabaslinje
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
-Skapa en bas linje för prestanda som jämför arbets Belastningens prestanda på en SQL-hanterad instans med din ursprungliga arbets belastning som körs på SQL Server. 
+Skapa en prestandabaslinje för att jämföra prestandan för din arbetsbelastning på en SQL Managed Instance med din ursprungliga arbetsbelastning som körs SQL Server. 
 
-## <a name="create-a-baseline"></a>Skapa en bas linje
+## <a name="create-a-baseline"></a>Skapa en baslinje
 
-Vi rekommenderar att prestandan är liknande eller bättre efter migreringen, så det är viktigt att mäta och registrera bas linje prestanda värden på källan och sedan jämföra dem med mål miljön. En bas linje för prestanda är en uppsättning parametrar som definierar din genomsnittliga arbets belastning på din källa. 
+Vi rekommenderar att prestandan är liknande eller bättre efter migreringen, så det är viktigt att mäta och registrera baslinjens prestandavärden på källan och sedan jämföra dem med målmiljön. En prestandabaslinje är en uppsättning parametrar som definierar din genomsnittliga arbetsbelastning på källan. 
 
-Välj en uppsättning frågor som är viktiga för och som är representativ för din verksamhets arbets belastning. Mät och dokumentera minimi-/genomsnitts tiden och CPU-användningen för dessa frågor, samt prestanda mått på käll servern, t. ex. genomsnittlig/högsta CPU-användning, genomsnittlig/högsta disk-i/o-latens, data flöde, IOPS, Genomsnittligt/Max förväntad och genomsnittlig Max storlek på tempdb. 
+Välj en uppsättning frågor som är viktiga för och representativa för din affärsarbetsbelastning. Mät och dokumentera min/genomsnittlig/maximal varaktighet och CPU-användning för dessa frågor, samt prestandamått på källservern, till exempel genomsnittlig/max CPU-användning, genomsnittlig/maximal disk-I/O-svarstid, dataflöde, IOPS, genomsnittlig/maximal förväntad sidlivslängd och genomsnittlig maximal storlek för tempdb. 
 
-Följande resurser kan hjälpa dig att definiera en bas linje för prestanda: 
+Följande resurser kan hjälpa dig att definiera en prestandabaslinje: 
 
    - [Övervaka CPU-användning ](https://techcommunity.microsoft.com/t5/azure-sql-database/monitor-cpu-usage-on-sql-server-and-azure-sql/ba-p/680777#M131)
-   - [Övervaka minnes användning](/sql/relational-databases/performance-monitor/monitor-memory-usage)   och avgör hur mycket minne som används av olika komponenter, t. ex. buffertpooltillägget, planera cache, Column-Store-pool, [minnes intern OLTP](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage)osv. Dessutom bör du hitta de genomsnittliga och högsta värdena för sid livstidens förväntad minnes prestanda räknare. 
-   - Övervaka diskens IO-användning på käll SQL Servers instansen med hjälp av [sys.dm_io_virtual_file_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)   Visa eller [prestanda räknare](/sql/relational-databases/performance-monitor/monitor-disk-usage). 
-   - Övervaka prestanda för arbets belastning och frågor genom att undersöka vyer för dynamisk hantering (eller Query Store om du migrerar från SQL Server 2016 och senare). Identifiera Genomsnittlig varaktighet och CPU-användning för de viktigaste frågorna i din arbets belastning. 
+   - [Övervaka minnesanvändning](/sql/relational-databases/performance-monitor/monitor-memory-usage)   och fastställ mängden minne som används av olika komponenter, till exempel buffertpool, plancache, kolumnlagringspool, minnes [in memory OLTP](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage)osv. Dessutom bör du hitta genomsnittliga och högsta värden för prestandaräknaren för förväntad sidlivslängd. 
+   - Övervaka disk-I/S-användning SQL Server källinstansen [med sys.dm_io_virtual_file_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)   eller [prestandaräknare.](/sql/relational-databases/performance-monitor/monitor-disk-usage) 
+   - Övervaka arbetsbelastnings- och frågeprestanda genom att undersöka dynamiska hanteringsvyer (eller Query Store om du migrerar från SQL Server 2016 och senare). Identifiera genomsnittlig varaktighet och CPU-användning för de viktigaste frågorna i din arbetsbelastning. 
 
-Prestanda problem på käll SQL Server bör åtgärdas innan migreringen. Om du migrerar kända problem till nya system kan det leda till oväntade resultat och ogiltig prestanda jämförelse. 
+Eventuella prestandaproblem på SQL Server bör åtgärdas före migreringen. Migrering av kända problem till ett nytt system kan orsaka oväntade resultat och göra prestandajämförelser ogiltiga. 
 
 
 ## <a name="compare-performance"></a>Jämför prestanda 
 
-När du har definierat en bas linje jämför du liknande arbets belastnings prestanda för den SQL-hanterade instansen. Av precision är det viktigt att den SQL-hanterade instans miljön är jämförbar med SQL Server miljön så mycket som möjligt. 
+När du har definierat en baslinje kan du jämföra liknande arbetsbelastningsprestanda på SQL Managed Instance. För noggrannhetens del är det viktigt att SQL Managed Instance miljö är jämförbar med den SQL Server miljön så mycket som möjligt. 
 
-Det finns skillnader i infrastruktur för SQL-hanterade instanser som gör matchnings prestanda exakt osannolik. Vissa frågor kan köras snabbare än förväntat, medan andra kan vara långsammare. Syftet med den här jämförelsen är att kontrol lera att arbets belastnings prestandan i den hanterade instansen matchar prestanda på SQL Server (i genomsnitt) och för att identifiera kritiska frågor med prestanda som inte matchar dina ursprungliga prestanda. 
+Det finns SQL Managed Instance infrastrukturskillnader som gör det helt osannolikt att prestandan matchar. Vissa frågor kan köras snabbare än förväntat, medan andra kan vara långsammare. Målet med den här jämförelsen är att verifiera att arbetsbelastningens prestanda i den hanterade instansen matchar prestanda för SQL Server (i genomsnitt) och att identifiera kritiska frågor med prestanda som inte matchar din ursprungliga prestanda. 
 
-Prestanda jämförelsen kommer troligen att resultera i följande resultat: 
+Prestandajämförelse resulterar troligen i följande resultat: 
 
-- Arbets belastnings prestanda på den hanterade instansen är anpassad eller bättre än arbets belastnings prestandan på din käll SQL Server. I det här fallet har du bekräftat att migreringen lyckades. 
+- Arbetsbelastningsprestanda på den hanterade instansen är justerad eller bättre än arbetsbelastningens prestanda på SQL Server. I det här fallet har du bekräftat att migreringen lyckades. 
 
-- Majoriteten av prestanda parametrarna och frågorna i arbets belastningen fungerar som förväntat, med vissa undantag som resulterar i försämrade prestanda. I det här fallet identifierar du skillnaderna och deras prioritet. Om det finns några viktiga frågor med försämrade prestanda bör du undersöka om de underliggande SQL-planerna har ändrats eller om frågor har nått resurs gränser. Du kan minska detta genom att använda några tips på kritiska frågor (till exempel ändra kompatibilitetsnivå, tidigare kardinalation-uppskattning), antingen direkt eller med hjälp av plan guider. Se till att statistik och index är uppdaterade och motsvarar varandra i båda miljöerna. 
+- De flesta prestandaparametrar och frågor i arbetsbelastningen fungerar som förväntat, med vissa undantag som resulterar i försämrad prestanda. I det här fallet identifierar du skillnaderna och deras betydelse. Om det finns några viktiga frågor med försämrad prestanda kan du undersöka om de underliggande SQL-planerna har ändrats eller om frågorna har stött på resursgränserna. Du kan åtgärda detta genom att använda några tips på kritiska frågor (till exempel ändra kompatibilitetsnivå, äldre kardinalitetsestimator) antingen direkt eller med hjälp av planguider. Se till att statistik och index är uppdaterade och likvärdiga i båda miljöerna. 
 
-- De flesta frågor går långsammare på en hanterad instans jämfört med din käll SQL Server instans. I det här fallet kan du prova att identifiera rotor saken till skillnaden, till exempel för att [nå vissa resurs](../../managed-instance/resource-limits.md#service-tier-characteristics) gränser, till exempel IO-, minnes-eller instans logg frekvens gränser. Om det inte finns några resurs gränser som orsakar skillnaden kan du prova att ändra kompatibilitetsnivån för databasen eller ändra databas inställningar som bakåtkompatibelt kardinalitet och köra testet igen. Granska de rekommendationer som tillhandahålls av vyerna hanterad instans eller Frågearkivet för att identifiera frågor med försämrat-prestanda. 
+- De flesta frågor är långsammare på en hanterad instans jämfört med din SQL Server instans. I det här fallet kan du försöka identifiera [](../../managed-instance/resource-limits.md#service-tier-characteristics) rotorsaken till skillnaden, till exempel att nå en viss resursgräns, till exempel gränser för I/O, minne eller instanslogghastighet. Om det inte finns några resursgränser som orsakar skillnaden kan du prova att ändra kompatibilitetsnivån för databasen eller ändra databasinställningarna, till exempel beräkning av äldre kardinalitet, och köra testet igen. Granska rekommendationerna från den hanterade instansen eller Query Store-vyerna för att identifiera frågor med regrederade prestanda. 
 
-SQL-hanterad instans har en inbyggd funktion för automatisk plan korrigering som är aktive rad som standard. Den här funktionen säkerställer att frågor som fungerat bra tidigare inte försämras i framtiden. Om den här funktionen inte är aktive rad kan du köra arbets belastningen med de gamla inställningarna så att SQL-hanterad instans kan lära sig prestanda bas linjen. Aktivera sedan funktionen och kör arbets belastningen igen med de nya inställningarna. 
+SQL Managed Instance har en inbyggd funktion för automatisk plankorrigering som är aktiverad som standard. Den här funktionen säkerställer att frågor som fungerat bra tidigare inte försämras i framtiden. Om den här funktionen inte är aktiverad kör du arbetsbelastningen med de gamla inställningarna så SQL Managed Instance kan lära dig prestandabaslinjen. Aktivera sedan funktionen och kör arbetsbelastningen igen med de nya inställningarna. 
 
-Ändra parametrarna för testet eller uppgradera till högre tjänst nivåer för att uppnå den optimala konfigurationen för de arbets belastnings prestanda som passar dina behov. 
+Gör ändringar i parametrarna för testet eller uppgradera till högre tjänstnivåer för att uppnå den optimala konfigurationen för den arbetsbelastningsprestanda som passar dina behov. 
 
 ## <a name="monitor-performance"></a>Övervaka prestanda 
 
-SQL-hanterad instans innehåller avancerade verktyg för övervakning och fel sökning, och du bör använda dem för att övervaka prestanda på din instans. Några av de nyckel mått som ska övervakas är: 
+SQL Managed Instance innehåller avancerade verktyg för övervakning och felsökning, och du bör använda dem för att övervaka prestanda på din instans. Några av de viktigaste måtten att övervaka är: 
 
-- CPU-användning på instansen för att avgöra om antalet virtuella kärnor som du har allokerat är rätt matchning för din arbets belastning. 
-- Förväntad på din hanterade instans för att avgöra om du behöver [mer minne](https://techcommunity.microsoft.com/t5/azure-sql-database/do-you-need-more-memory-on-azure-sql-managed-instance/ba-p/563444).
--  Statistik som INSTANCE_LOG_GOVERNOR eller PAGEIOLATCH som identifierar lagrings-i/o-problem, särskilt på Generell användning nivå, där du kan behöva förallokera filer för att få bättre IO-prestanda. 
+- CPU-användning på instansen för att avgöra om antalet virtuella kärnor som du har etablerat är rätt matchning för din arbetsbelastning. 
+- Förväntad sidlivslängd på din hanterade instans för att avgöra om du [behöver ytterligare minne.](https://techcommunity.microsoft.com/t5/azure-sql-database/do-you-need-more-memory-on-azure-sql-managed-instance/ba-p/563444)
+-  Statistik som INSTANCE_LOG_GOVERNOR eller PAGEIOLATCH som identifierar problem med lagrings-I/O, särskilt på Generell användning-nivån, där du kan behöva allokera filer i förväg för att få bättre I/O-prestanda. 
 
 
 ## <a name="considerations"></a>Överväganden  
 
 Tänk på följande när du jämför prestanda: 
 
-- Inställningarna överensstämmer mellan källa och mål. Kontrol lera att olika inställningar för instans, databas och tempdb är likvärdiga mellan de två miljöerna. Skillnader i konfiguration, kompatibilitetsnivå, krypterings inställningar, spårnings flaggor osv. kan ge alla sneda prestanda. 
+- Inställningarna matchar mellan källa och mål. Kontrollera att olika inställningar för instans, databas och tempdb är likvärdiga mellan de två miljöerna. Skillnader i konfiguration, kompatibilitetsnivåer, krypteringsinställningar, spårningsflaggor osv. kan ha olika prestanda. 
 
-- Lagringen konfigureras enligt [bästa praxis](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525). För Generell användning kan du till exempel behöva förallokera filernas storlek för att förbättra prestandan. 
+- Lagring konfigureras enligt [bästa praxis.](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525) Du kan till Generell användning behöva allokera filernas storlek i förväg för att förbättra prestandan. 
 
-- Det finns [viktiga skillnader i miljön](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/) som kan orsaka prestanda skillnaderna mellan en hanterad instans och SQL Server. Identifiera risker som är relevanta för din miljö och som kan bidra till ett prestanda problem. 
+- Det finns [viktiga miljöskillnader](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/) som kan orsaka prestandaskillnader mellan en hanterad instans och SQL Server. Identifiera risker som är relevanta för din miljö och som kan bidra till ett prestandaproblem. 
 
-- Frågearkivet och automatisk justering ska vara aktiverat på din SQL-hanterade instans eftersom de hjälper dig att mäta arbets belastnings prestanda och automatiskt minimera potentiella prestanda problem. 
+- Query Store och automatisk justering bör aktiveras på din SQL Managed Instance eftersom de hjälper dig att mäta arbetsbelastningens prestanda och automatiskt minimera potentiella prestandaproblem. 
 
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om hur du optimerar din nya Azure SQL-hanterade instans miljö finns i följande resurser: 
+Mer information om hur du optimerar din Azure SQL Managed Instance miljö finns i följande resurser: 
 
-- [Hur ska man identifiera varför arbets belastnings prestanda på en hanterad Azure SQL-instans skiljer sig från SQL Server?](https://medium.com/azure-sqldb-managed-instance/what-to-do-when-azure-sql-managed-instance-is-slower-than-sql-server-dd39942aaadd)
-- [Viktiga orsaker till prestanda skillnader mellan SQL-hanterad instans och SQL Server](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)
-- [Bästa praxis och överväganden för lagrings prestanda för Azure SQL-hanterad instans (Generell användning)](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)
-- [Prestanda övervakning i real tid för Azure SQL-hanterad instans (detta är arkiverat, är det avsedda målet?)](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)
+- [Hur identifierar jag varför arbetsbelastningsprestanda på Azure SQL Managed Instance skiljer sig från SQL Server?](https://medium.com/azure-sqldb-managed-instance/what-to-do-when-azure-sql-managed-instance-is-slower-than-sql-server-dd39942aaadd)
+- [Viktiga orsaker till prestandaskillnader mellan SQL Managed Instance och SQL Server](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)
+- [Metodtips och överväganden för lagringsprestanda för Azure SQL Managed Instance (Generell användning)](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)
+- [Prestandaövervakning i realtid för Azure SQL Managed Instance (detta är arkiverat, är detta det avsedda målet?)](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)

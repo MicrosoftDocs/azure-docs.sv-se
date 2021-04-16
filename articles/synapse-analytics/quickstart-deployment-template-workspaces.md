@@ -1,23 +1,24 @@
 ---
-title: 'Snabb start: skapa en Azure Synapse-arbetsyta Azure Resource Manager mall'
-description: Lär dig hur du skapar en Synapse-arbetsyta med hjälp av Azure Resource Manager mall (ARM-mall).
+title: 'Snabbstart: Skapa en Azure Synapse arbetsyta Azure Resource Manager mall'
+description: Lär dig hur du skapar en Synapse-arbetsyta med Azure Resource Manager mall (ARM-mall).
 services: azure-resource-manager
 author: julieMSFT
-ms.service: azure-resource-manager
+ms.service: synapse-analytics
+ms.subservice: workspace
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
-ms.openlocfilehash: 2b05220081dde4db6f07f21fb9978d9e466235ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7317b7f51c6d0f9d72e3aad81794a569276d2145
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92740373"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566128"
 ---
-# <a name="quickstart-create-an-azure-synapse-workspace-using-an-arm-template"></a>Snabb start: skapa en Azure dataSynapses-arbetsyta med en ARM-mall
+# <a name="quickstart-create-an-azure-synapse-workspace-using-an-arm-template"></a>Snabbstart: Skapa en Azure Synapse med en ARM-mall
 
-Med den här Azure Resource Manager mallen (ARM-mallen) skapas en Azure Synapse-arbetsyta med underliggande Data Lake Storage. Azure dataSynapses-arbetsytan är en skydds bara samarbets gränser för analys processer i Azure Synapse Analytics.
+Den Azure Resource Manager mallen (ARM-mall) skapar en Azure Synapse arbetsyta med underliggande Data Lake Storage. Arbetsytan Azure Synapse ett skyddat samarbete för analysprocesser i Azure Synapse Analytics.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -31,7 +32,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](htt
 
 ## <a name="review-the-template"></a>Granska mallen
 
-Du kan granska mallen genom att välja länken **visualisera** . Välj sedan **Redigera mall**.
+Du kan granska mallen genom att välja **länken** Visualisera. Välj sedan **Redigera mall.**
 
 [![Visualisera](../media/template-deployments/template-visualize-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
@@ -48,20 +49,20 @@ Mallen definierar två resurser:
 
 1. Ange eller uppdatera följande värden:
 
-   - **Prenumeration**: Välj en Azure-prenumeration.
-   - **Resurs grupp**: Välj **Skapa ny** och ange ett unikt namn för resurs gruppen och välj **OK**. En ny resurs grupp gör det lättare att rensa resursen.
-   - **Region**: Välj en region.  Välj till exempel **USA, centrala**.
-   - **Namn**: Ange ett namn för din arbets yta.
-   - **SQL-administratör inloggning**: Ange administratörs användar namnet för SQL Server.
-   - **SQL-administratörs lösen ord**: Ange administratörs lösen ordet för SQL Server.
-   - **Tagg värden**: Acceptera standardvärdet.
-   - **Granska och skapa**: Välj.
-   - **Skapa**: Välj.
+   - **Prenumeration:** Välj en Azure-prenumeration.
+   - **Resursgrupp:** Välj **Skapa ny,** ange ett unikt namn för resursgruppen och välj **OK.** En ny resursgrupp underlättar resursrensning.
+   - **Region:** Välj en region.  Välj till exempel **USA, centrala**.
+   - **Namn:** Ange ett namn för din arbetsyta.
+   - **SQL-administratörsinloggning:** Ange administratörens användarnamn för SQL Server.
+   - **SQL-administratörslösenord:** Ange administratörslösenordet för SQL Server.
+   - **Tagga** värden: Acceptera standardvärdet.
+   - **Granska och skapa:** Välj.
+   - **Skapa:** Välj.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill veta mer om Azure Synapse Analytics och Azure Resource Manager kan du fortsätta till artiklarna nedan.
+Om du vill veta Azure Synapse Analytics och Azure Resource Manager kan du fortsätta med artiklarna nedan.
 
-- Läs en [Översikt över Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+- Läs en [översikt över Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 - Läs mer om [Azure Resource Manager](../azure-resource-manager/management/overview.md)
 - [Skapa och distribuera din första ARM-mall](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

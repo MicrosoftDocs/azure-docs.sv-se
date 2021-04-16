@@ -1,33 +1,35 @@
 ---
-title: 'Snabb start: din första JavaScript-fråga'
-description: I den här snabb starten följer du stegen för att aktivera resurs biblioteks biblioteket för Java Script och köra din första fråga.
+title: 'Snabbstart: Din första JavaScript-fråga'
+description: I den här snabbstarten följer du stegen för att aktivera Resource Graph för JavaScript och köra din första fråga.
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.custom: devx-track-js
-ms.openlocfilehash: 97cbd9ddf65a4135f55304f6dd67c704c6fcac5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- devx-track-js
+- mode-api
+ms.openlocfilehash: ef93378acaf2c92cf4f7761345cea326af63d300
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98917529"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533045"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>Snabb start: kör din första resurs diagram fråga med hjälp av Java Script
+# <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>Snabbstart: Kör din första Resource Graph med JavaScript
 
-Den här snabb starten vägleder dig genom processen att lägga till biblioteken i JavaScript-installationen. Det första steget i att använda Azure Resource Graph är att initiera ett JavaScript-program med de bibliotek som krävs.
+Den här snabbstarten går igenom processen för att lägga till biblioteken i JavaScript-installationen. Det första steget för att Azure Resource Graph är att initiera ett JavaScript-program med de bibliotek som krävs.
 
-I slutet av den här processen har du lagt till biblioteken i JavaScript-installationen och kört din första resurs diagram fråga.
+I slutet av den här processen har du lagt till biblioteken i JavaScript-installationen och kört din första Resource Graph fråga.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- **Azure-prenumeration**: om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt](https://azure.microsoft.com/free/) konto innan du börjar.
+- **Azure-prenumeration:** Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
-- **Node.js**: [Node.js](https://nodejs.org/) version 12 eller högre krävs.
+- **Node.js:** [Node.js](https://nodejs.org/) version 12 eller senare krävs.
 
 ## <a name="application-initialization"></a>Programinitiering
 
-Om du vill aktivera Java Script för att fråga Azure Resource Graph måste miljön konfigureras. Den här installationen fungerar där Java Script kan användas, inklusive [bash i Windows 10](/windows/wsl/install-win10).
+Om du vill aktivera JavaScript Azure Resource Graph fråga måste miljön konfigureras. Den här konfigurationen fungerar överallt där JavaScript kan användas, inklusive [bash på Windows 10](/windows/wsl/install-win10).
 
-1. Initiera ett nytt Node.js-projekt genom att köra följande kommando.
+1. Initiera ett nytt Node.js projekt genom att köra följande kommando.
 
    ```bash
    npm init -y
@@ -39,24 +41,24 @@ Om du vill aktivera Java Script för att fråga Azure Resource Graph måste milj
    npm install yargs
    ```
 
-1. Lägg till en referens till Azure-resursens diagram-modul.
+1. Lägg till en referens till Azure Resource Graph modulen.
 
    ```bash
    npm install @azure/arm-resourcegraph
    ```
 
-1. Lägg till en referens till Azure Authentication-biblioteket.
+1. Lägg till en referens till Azure-autentiseringsbiblioteket.
 
    ```bash
    npm install @azure/ms-rest-nodeauth
    ```
 
    > [!NOTE]
-   > Kontrol lera att _package.jspå_ `@azure/arm-resourcegraph` är version **2.0.0** eller högre och att den `@azure/ms-rest-nodeauth` är version **3.0.3** eller högre.
+   > Kontrollera att _package.jspå_ är `@azure/arm-resourcegraph` version **2.0.0** eller senare och `@azure/ms-rest-nodeauth` är version **3.0.3** eller senare.
 
-## <a name="query-the-resource-graph"></a>Fråga resurs diagrammet
+## <a name="query-the-resource-graph"></a>Fråga Resource Graph
 
-1. Skapa en ny fil med namnet _index.js_ och ange följande kod.
+1. Skapa en ny fil _medindex.js_ och ange följande kod.
 
    ```javascript
    const argv = require("yargs").argv;
@@ -90,12 +92,12 @@ Om du vill aktivera Java Script för att fråga Azure Resource Graph måste milj
    node index.js --query "Resources | project name, type | limit 5" --subs <YOUR_SUBSCRIPTION_ID_LIST>
    ```
 
-   Se till att ersätta `<YOUR_SUBSCRIPTION_ID_LIST>` plats hållaren med en kommaavgränsad lista över Azures prenumerations-ID.
+   Ersätt platshållaren med din kommaavgränsade lista över `<YOUR_SUBSCRIPTION_ID_LIST>` Azure-prenumerations-ID:er.
 
    > [!NOTE]
-   > Eftersom den här frågan inte tillhandahåller en sorterings modifierare, till exempel `order by` att köra den här frågan flera gånger, är det troligt att en annan uppsättning resurser skapas per begäran.
+   > Eftersom det här frågeexempel inte ger någon sorteringsmodifierare som , kommer körning av frågan flera gånger troligen att ge en annan `order by` uppsättning resurser per begäran.
 
-1. Ändra den första parametern till `index.js` och ändra frågan till `order by` egenskapen **namn** . Ersätt `<YOUR_SUBSCRIPTION_ID_LIST>` med ditt prenumerations-ID:
+1. Ändra den första parametern `index.js` till och ändra frågan till `order by` **egenskapen** Namn. Ersätt `<YOUR_SUBSCRIPTION_ID_LIST>` med ditt prenumerations-ID:
 
    ```bash
    node index.js --query "Resources | project name, type | limit 5 | order by name asc" --subs "<YOUR_SUBSCRIPTION_ID_LIST>"
@@ -103,24 +105,24 @@ Om du vill aktivera Java Script för att fråga Azure Resource Graph måste milj
 
    När skriptet försöker autentisera visas ett meddelande som liknar följande meddelande i terminalen:
 
-   > Logga in genom att använda en webbläsare för att öppna sidan https://microsoft.com/devicelogin och ange koden FGB56WJUGK för att autentisera.
+   > Logga in genom att använda en webbläsare för att öppna sidan och ange koden https://microsoft.com/devicelogin FGB56WJUGK för att autentisera.
 
    När du har autentiserat i webbläsaren fortsätter skriptet att köras.
 
    > [!NOTE]
-   > Om du kör den här frågan flera kommer den, precis som den första frågan, sannolikt att resultera i olika resurser vid varje begäran. Ordningen på frågekommandona är viktig. I det här exemplet kommer `order by` efter `limit`. Den här kommando ordningen begränsar först frågeresultaten och beställer dem.
+   > Om du kör den här frågan flera kommer den, precis som den första frågan, sannolikt att resultera i olika resurser vid varje begäran. Ordningen på frågekommandona är viktig. I det här exemplet kommer `order by` efter `limit`. Den här kommandoordningen begränsar först frågeresultatet och beställer dem sedan.
 
-1. Ändra den första parametern till `index.js` och ändra frågan till första `order by` egenskapen **namn** och sedan `limit` till de fem översta resultaten. Ersätt `<YOUR_SUBSCRIPTION_ID_LIST>` med ditt prenumerations-ID:
+1. Ändra den första parametern `index.js` till och ändra frågan till först egenskapen `order by` **Name** och sedan till de fem `limit` främsta resultaten. Ersätt `<YOUR_SUBSCRIPTION_ID_LIST>` med ditt prenumerations-ID:
 
    ```bash
    node index.js --query "Resources | project name, type | order by name asc | limit 5" --subs "<YOUR_SUBSCRIPTION_ID_LIST>"
    ```
 
-När den slutliga frågan körs flera gånger, förutsatt att ingenting i din miljö ändras, är resultatet som returneras konsekvent och beställt av egenskapen **namn** , men fortfarande begränsat till de fem främsta resultaten.
+När den sista frågan körs flera gånger, förutsatt att ingenting i din miljö ändras, är resultatet som returneras konsekventa och sorterade efter egenskapen **Name,** men fortfarande begränsade till de fem främsta resultaten.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Kör följande kommando om du vill ta bort de installerade biblioteken från programmet.
+Om du vill ta bort de installerade biblioteken från programmet kör du följande kommando.
 
 ```bash
 npm uninstall @azure/arm-resourcegraph @azure/ms-rest-nodeauth yargs
@@ -128,7 +130,7 @@ npm uninstall @azure/arm-resourcegraph @azure/ms-rest-nodeauth yargs
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du lagt till resurs biblioteks biblioteken i JavaScript-miljön och kör din första fråga. Om du vill veta mer om det här resurs språket fortsätter du till sidan information om frågespråk.
+I den här snabbstarten har du lagt till Resource Graph i JavaScript-miljön och kört din första fråga. Om du vill veta mer Resource Graph språk fortsätter du till sidan med information om frågespråk.
 
 > [!div class="nextstepaction"]
 > [Få mer information om frågespråket](./concepts/query-language.md)

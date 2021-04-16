@@ -251,6 +251,8 @@
               href: hbv3-series.md
             - name: HC-serien
               href: hc-series.md
+        - name: Tillstånd och fakturering
+          href: states-billing.md
         - name: vCPU-kvoter
           items:
             - name: CLI
@@ -795,6 +797,8 @@
               href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
             - name: Skapa en virtuell dator från avbildningsversion
               href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+        - name: Ansible
+          href: 'https://docs.microsoft.com/azure/developer/ansible/vm-configure-from-azure-shared-image-gallery?tabs=ansible'
         - name: Felsöka delade bilder
           displayName: 'Shared Image Gallery, SIG, sig, gallery, image, troubleshooting'
           href: troubleshooting-shared-images.md
@@ -944,8 +948,6 @@
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
     - name: Förstå omstarter av virtuella datorer
       href: understand-vm-reboots.md
-    - name: Tillstånd och fakturering
-      href: states-billing.md
     - name: Azure-regioner
       href: regions.md
 - name: Diskar
@@ -1097,7 +1099,7 @@
         - name: Diskrelaterade mått
           href: disks-metrics.md
           displayname: 'Performance, cost, perf, disks, disk'
-        - name: Modeller för disk bursting
+        - name: Modeller med disk bursting
           href: disk-bursting.md
           displayname: 'Performance, cost, perf, disks, disk'
         - name: Aktivera bursting på begäran
@@ -1800,7 +1802,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Exempel
       items:
-        - name: Lagringsplatsen med Azure CLI-exempel
+        - name: Lagringsplatsen azure CLI-exempel
           href: 'https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine'
         - name: Lagringsplatsen för PowerShell-exempel
           href: 'https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine'

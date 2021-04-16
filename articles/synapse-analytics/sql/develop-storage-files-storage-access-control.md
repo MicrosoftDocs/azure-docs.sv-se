@@ -1,6 +1,6 @@
 ---
-title: Kontrol lera åtkomsten till lagrings kontot för SQL-poolen utan Server
-description: Beskriver hur Server lös SQL-poolen får åtkomst till Azure Storage och hur du kan kontrol lera lagrings åtkomst för SQL-poolen utan server i Azure Synapse Analytics.
+title: Kontrollera åtkomsten till lagringskontot för en serverlös SQL-pool
+description: Beskriver hur serverlös SQL-poolåtkomst Azure Storage och hur du kan styra lagringsåtkomsten för en serverlös SQL-pool i Azure Synapse Analytics.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,143 +9,143 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: acfaa780f21f5264b546f97e9a3792aa43e9c30b
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 266a6c27261107b883fdc0c1cdd274e6345de6db
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029751"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483460"
 ---
-# <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Kontrol lera åtkomsten till lagrings kontot för SQL-poolen utan server i Azure Synapse Analytics
+# <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Kontrollera åtkomsten till lagringskontot för en serverlös SQL-pool i Azure Synapse Analytics
 
-En server utan SQL-pool läser filer direkt från Azure Storage. Behörigheter för att komma åt filerna i Azure Storage styrs på två nivåer:
-- **Lagrings nivå** – användaren bör ha behörighet att komma åt underliggande lagringsfiler. Lagrings administratören ska tillåta att Azure AD-huvudobjektet läser/skriver filer, eller genererar SAS-nyckel som används för åtkomst till lagring.
-- **SQL Service nivå** – användaren ska ha beviljats behörighet att läsa data med hjälp av en [extern tabell](develop-tables-external-tables.md) eller köra `OPENROWSET` funktionen. Läs mer om [de behörigheter som krävs i det här avsnittet](develop-storage-files-overview.md#permissions).
+En serverlös SQL-poolfråga läser filer direkt från Azure Storage. Behörigheter för att komma åt filer i Azure Storage styrs på två nivåer:
+- **Lagringsnivå** – Användaren ska ha behörighet att komma åt underliggande lagringsfiler. Lagringsadministratören bör tillåta att Azure AD-huvudkontot läser/skriver filer eller genererar EN SAS-nyckel som används för att få åtkomst till lagring.
+- **SQL-tjänstnivå** – Användaren ska ha beviljats behörighet att läsa data [med hjälp av extern](develop-tables-external-tables.md) tabell eller köra `OPENROWSET` funktionen. Läs mer om [de behörigheter som krävs i det här avsnittet.](develop-storage-files-overview.md#permissions)
 
-Den här artikeln beskriver de typer av autentiseringsuppgifter som du kan använda och hur sökning efter autentiseringsuppgifter registreras för SQL-och Azure AD-användare.
+I den här artikeln beskrivs de typer av autentiseringsuppgifter som du kan använda och hur sökning efter autentiseringsuppgifter används för SQL- och Azure AD-användare.
 
-## <a name="storage-permissions"></a>Lagrings behörigheter
+## <a name="storage-permissions"></a>Lagringsbehörigheter
 
-En server lös SQL-pool i Synapse Analytics-arbetsytan kan läsa innehållet i filer som lagras i Azure Data Lake-lagring. Du måste konfigurera behörigheter för lagring för att aktivera en användare som kör en SQL-fråga för att läsa filerna. Det finns tre metoder för att aktivera åtkomst till filerna>
-- Med **[rollbaserad åtkomst kontroll (RBAC)](../../role-based-access-control/overview.md)** kan du tilldela en roll till en Azure AD-användare i klient organisationen där ditt lagrings utrymme placeras. RBAC-roller kan tilldelas till Azure AD-användare. En läsare måste ha `Storage Blob Data Reader` , `Storage Blob Data Contributor` eller- `Storage Blob Data Owner` rollen. En användare som skriver data i Azure-lagringen måste ha `Storage Blob Data Writer` eller- `Storage Blob Data Owner` rollen. Observera att `Storage Owner` rollen inte innebär att en användare också är `Storage Data Owner` .
-- Med **Access Control listor (ACL)** kan du definiera detaljerad behörighets modell för filer och kataloger i Azure Storage. ACL kan tilldelas till Azure AD-användare. Om läsarna vill läsa en fil på en sökväg i Azure Storage måste de ha Execute (X) ACL på varje mapp i fil Sök vägen och läsa (R) ACL på filen. [Läs mer om hur du ställer in ACL-behörigheter i lagrings skikt](../../storage/blobs/data-lake-storage-access-control.md#how-to-set-acls)
-- **Signaturen för delad åtkomst (SAS)** gör det möjligt för en läsare att komma åt filerna på den Azure Data Lake lagringen med tidsbegränsad token. Läsaren behöver inte heller autentiseras som Azure AD-användare. SAS-token innehåller de behörigheter som har tilldelats läsaren samt den period då token är giltig. SAS-token är ett bra alternativ för tidsbegränsad åtkomst till en användare som inte ens behöver finnas i samma Azure AD-klient. SAS-token kan definieras på lagrings kontot eller i vissa kataloger. Lär dig mer om [att bevilja begränsad åtkomst till Azure Storage-resurser med hjälp av signaturer för delad åtkomst](../../storage/common/storage-sas-overview.md).
+En serverlös SQL-pool i Synapse Analytics kan läsa innehållet i filer som lagras i Azure Data Lake Storage. Du måste konfigurera behörigheter för lagring så att en användare som kör en SQL-fråga kan läsa filerna. Det finns tre metoder för att aktivera åtkomst till de filer som>
+- **[Med rollbaserad åtkomstkontroll (RBAC)](../../role-based-access-control/overview.md)** kan du tilldela en roll till en viss Azure AD-användare i den klientorganisation där lagringen finns. RBAC-roller kan tilldelas till Azure AD-användare. En läsare måste ha `Storage Blob Data Reader` `Storage Blob Data Contributor` rollen , eller `Storage Blob Data Owner` . En användare som skriver data i Azure Storage måste ha `Storage Blob Data Writer` rollen `Storage Blob Data Owner` eller . Observera att `Storage Owner` rollen inte innebär att en användare också är `Storage Data Owner` .
+- **Access Control (ACL)** kan du definiera en mer exakt behörighetsmodell för filer och kataloger i Azure Storage. ACL kan tilldelas till Azure AD-användare. Om läsarna vill läsa en fil på en sökväg i Azure Storage måste de ha en körnings-ACL (X) på varje mapp i sökvägen och read(R) ACL på filen. [Läs mer om hur du ställer in ACL-behörigheter i lagringslagret](../../storage/blobs/data-lake-storage-access-control.md#how-to-set-acls)
+- **Signatur för delad åtkomst (SAS)** gör det möjligt för en läsare att komma åt filerna i Azure Data Lake-lagringen med hjälp av den tidsbegränsade token. Läsaren behöver inte ens autentiseras som Azure AD-användare. SAS-token innehåller de behörigheter som beviljas till läsaren samt perioden när token är giltig. SAS-token är ett bra alternativ för tidsbegränsad åtkomst till alla användare som inte ens behöver vara i samma Azure AD-klientorganisation. SAS-token kan definieras för lagringskontot eller för specifika kataloger. Läs mer om [att bevilja begränsad åtkomst till Azure Storage resurser med hjälp av signaturer för delad åtkomst.](../../storage/common/storage-sas-overview.md)
 
 ## <a name="supported-storage-authorization-types"></a>Lagringsauktoriseringstyper som stöds
 
-En användare som har loggat in på en server lös SQL-pool måste ha behörighet att komma åt och fråga filerna i Azure Storage om filerna inte är offentligt tillgängliga. Du kan använda tre typer av autentisering för att komma åt icke-offentlig lagring – [användar identitet](?tabs=user-identity), [delad åtkomst-signatur](?tabs=shared-access-signature)och [hanterad identitet](?tabs=managed-identity).
+En användare som har loggat in på en serverlös SQL-pool måste ha behörighet att komma åt och fråga filerna i Azure Storage om filerna inte är offentligt tillgängliga. Du kan använda tre auktoriseringstyper för åtkomst till icke-offentlig lagring – [användaridentitet,](?tabs=user-identity) [signatur för delad](?tabs=shared-access-signature)åtkomst och [hanterad identitet](?tabs=managed-identity).
 
 > [!NOTE]
-> **Azure AD-vidarekoppling** är standard beteendet när du skapar en arbets yta.
+> **Azure AD-genomsnimning** är standardbeteendet när du skapar en arbetsyta.
 
-### <a name="user-identity"></a>[Användar identitet](#tab/user-identity)
+### <a name="user-identity"></a>[Användaridentitet](#tab/user-identity)
 
-**Användar identitet**, som även kallas "Azure AD-vidarekoppling", är en typ av auktorisering där identiteten för den Azure AD-användare som har loggat in på en server utan SQL-pool används för att ge åtkomst till data. Innan du får åtkomst till data måste Azure Storages administratören bevilja behörighet till Azure AD-användaren. Som anges i tabellen nedan, stöds den inte för SQL-användargruppen.
+**Användaridentitet**, som även kallas "Azure AD-genoms vidare", är en auktoriseringstyp där identiteten för den Azure AD-användare som är inloggad i en serverlös SQL-pool används för att auktorisera dataåtkomst. Innan användaren får åtkomst till data måste Azure Storage bevilja behörigheter till Azure AD-användaren. Som du ser i tabellen nedan stöds den inte för SQL-användartypen.
 
 > [!IMPORTANT]
-> AAD-autentiseringstoken kan cachelagras av klient programmen. Till exempel PowerBI cachelagrar AAD-token och återanvänder samma token i en timme. De långa kör-frågorna kanske inte fungerar om token upphör att gälla i mitten av frågekörningen. Om du har frågor som orsakas av AAD-åtkomsttoken som förfaller mitt i frågan, bör du överväga att växla till [hanterad identitet](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) eller [signatur för delad åtkomst](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#supported-storage-authorization-types).
+> AAD-autentiseringstoken kan cachelagras av klientprogrammen. PowerBI cachelagrar till exempel AAD-token och återanvänder samma token i en timme. De långvariga frågorna kan misslyckas om token upphör att gälla mitt i frågekörningen. Om du får frågefel som orsakas av AAD-åtkomsttoken som upphör [](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) att gälla mitt i frågan kan du överväga att byta till hanterad identitet eller [signatur för delad åtkomst.](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#supported-storage-authorization-types)
 
-Du måste ha rollen som ägare/deltagare/läsare för Storage BLOB-rollen för att kunna använda din identitet för att komma åt data. Alternativt kan du ange detaljerade ACL-regler för åtkomst till filer och mappar. Även om du är ägare till ett lagrings konto behöver du fortfarande lägga till dig själv i en av lagrings BLOB-datarollerna.
-Läs mer om åtkomst kontroll i Azure Data Lake Store Gen2 genom att granska [åtkomst kontrollen i Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-access-control.md) artikeln.
+Du måste ha rollen Storage Blob Data Owner/Contributor/Reader för att kunna använda din identitet för att komma åt data. Alternativt kan du ange mer precisa ACL-regler för att få åtkomst till filer och mappar. Även om du är ägare till ett lagringskonto måste du fortfarande lägga till dig själv i någon av Storage Blob Data-rollerna.
+Mer information om åtkomstkontroll i Azure Data Lake Store Gen2 finns i [artikeln Åtkomstkontroll i Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-access-control.md) artikeln.
 
 
 ### <a name="shared-access-signature"></a>[Signatur för delad åtkomst](#tab/shared-access-signature)
 
-**Signaturen för delad åtkomst (SAS)** ger delegerad åtkomst till resurser i ett lagrings konto. Med SAS kan en kund bevilja klienter åtkomst till resurser i ett lagrings konto utan att dela konto nycklar. SAS ger detaljerad kontroll över vilken typ av åtkomst du beviljar till klienter som har en SAS, inklusive giltighets intervall, beviljade behörigheter, acceptabelt IP-adressintervall och acceptabelt protokoll (https/http).
+**Signatur för delad åtkomst (SAS) ger** delegerad åtkomst till resurser i ett lagringskonto. Med SAS kan en kund ge klienter åtkomst till resurser i ett lagringskonto utan att dela kontonycklar. SAS ger dig detaljerad kontroll över vilken typ av åtkomst du beviljar till klienter som har en SAS, inklusive giltighetsintervall, beviljade behörigheter, acceptabelt IP-adressintervall och godkänt protokoll (https/http).
 
-Du kan få en SAS-token genom att gå till **Azure Portal-> lagrings konto-> signatur för delad åtkomst-> konfigurera behörigheter – > generera SAS och anslutnings sträng.**
+Du kan hämta en SAS-token genom att gå **till Azure Portal -> Storage Account -> Shared access signature -> Configure permissions -> Generate SAS and connection string** (Skapa SAS och anslutningssträng).
 
 > [!IMPORTANT]
-> När en SAS-token skapas, innehåller den ett frågetecken ("?") i början av token. Om du vill använda token i SQL-poolen utan server måste du ta bort frågetecknet (?) när du skapar en autentiseringsuppgift. Exempel:
+> När en SAS-token genereras innehåller den ett frågetecken (?) i början av token. Om du vill använda token i en serverlös SQL-pool måste du ta bort frågetecknet (?) när du skapar autentiseringsuppgifter. Exempel:
 >
-> SAS-token:? sa = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&sig = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
+> SAS-token: ?sv=2018-03-28&ss=dpqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHrkNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D
 
-Om du vill aktivera åtkomst med hjälp av en SAS-token måste du skapa en databas-eller Server begränsad autentiseringsuppgift 
+Om du vill aktivera åtkomst med hjälp av en SAS-token måste du skapa en databasbeomfångsbefattning eller serverbeomfångsbefattning för autentiseringsuppgifter 
 
 
 > [!IMPORTANT]
-> Du har inte åtkomst till privata lagrings konton med SAS-token. Överväg att växla till [hanterad identitet](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) eller [Azure AD-direktautentisering](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) för att få åtkomst till skyddad lagring.
+> Du kan inte komma åt privata lagringskonton med SAS-token. Överväg att byta till [Hanterad identitet](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) eller [Azure AD-direktautentisering](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) för att få åtkomst till skyddad lagring.
 
 ### <a name="managed-identity"></a>[Hanterad identitet](#tab/managed-identity)
 
-**Hanterad identitet** kallas även MSI. Det är en funktion i Azure Active Directory (Azure AD) som tillhandahåller Azure-tjänster för Server lös SQL-pool. Dessutom distribueras en automatiskt hanterad identitet i Azure AD. Den här identiteten kan användas för att auktorisera begäran om data åtkomst i Azure Storage.
+**Hanterad** identitet kallas även MSI. Det är en funktion i Azure Active Directory (Azure AD) som tillhandahåller Azure-tjänster för serverlös SQL-pool. Dessutom distribuerar den en automatiskt hanterad identitet i Azure AD. Den här identiteten kan användas för att auktorisera begäran om dataåtkomst i Azure Storage.
 
-Innan du får åtkomst till data måste Azure Storages administratören bevilja behörighet till hanterad identitet för att komma åt data. Att bevilja behörigheter till hanterad identitet görs på samma sätt som när du beviljar behörighet till andra Azure AD-användare.
+Innan dataåtkomsten nås måste Azure Storage bevilja behörigheter till hanterad identitet för åtkomst till data. Du beviljar behörigheter till hanterad identitet på samma sätt som du beviljar behörighet till andra Azure AD-användare.
 
 ### <a name="anonymous-access"></a>[Anonym åtkomst](#tab/public-access)
 
-Du kan komma åt offentligt tillgängliga filer som placerats på Azure Storage-konton som [tillåter anonym åtkomst](../../storage/blobs/anonymous-read-access-configure.md).
+Du kan komma åt offentligt tillgängliga filer som placeras på Azure-lagringskonton [som tillåter anonym åtkomst.](../../storage/blobs/anonymous-read-access-configure.md)
 
 ---
 
-### <a name="supported-authorization-types-for-databases-users"></a>Auktoriserade typer som stöds för databas användare
+### <a name="supported-authorization-types-for-databases-users"></a>Auktoriseringstyper som stöds för databasanvändare
 
-I tabellen nedan hittar du tillgängliga typer av autentisering:
+I tabellen nedan hittar du de tillgängliga auktoriseringstyperna:
 
 | Auktoriseringstyp                    | *SQL-användare*    | *Azure AD-användare*     |
 | ------------------------------------- | ------------- | -----------    |
-| [Användar identitet](?tabs=user-identity#supported-storage-authorization-types)       | Stöds inte | Stöds      |
+| [Användaridentitet](?tabs=user-identity#supported-storage-authorization-types)       | Stöds inte | Stöds      |
 | [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)       | Stöds     | Stöds      |
-| [Hanterad identitet](?tabs=managed-identity#supported-storage-authorization-types) | Stöds inte | Stöds      |
+| [Hanterad identitet](?tabs=managed-identity#supported-storage-authorization-types) | Stöds | Stöds      |
 
-### <a name="supported-storages-and-authorization-types"></a>Lagrings enheter och verifierings typer som stöds
+### <a name="supported-storages-and-authorization-types"></a>Lagrings- och auktoriseringstyper som stöds
 
-Du kan använda följande kombinationer av auktoriserings-och Azure Storage typer:
+Du kan använda följande kombinationer av auktorisering och Azure Storage typer:
 
 | Auktoriseringstyp  | Blob Storage   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
 | [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | Stöds\*      | Stöds inte   | Stöds\*     |
 | [Hanterad identitet](?tabs=managed-identity#supported-storage-authorization-types) | Stöds      | Stöds        | Stöds     |
-| [Användar identitet](?tabs=user-identity#supported-storage-authorization-types)    | Stöds\*      | Stöds\*        | Stöds\*     |
+| [Användaridentitet](?tabs=user-identity#supported-storage-authorization-types)    | Stöds\*      | Stöds\*        | Stöds\*     |
 
-\* SAS-token och Azure AD-identitet kan användas för att få åtkomst till lagring som inte skyddas med brand väggen.
+\* SAS-token och Azure AD-identitet kan användas för att få åtkomst till lagring som inte skyddas med brandväggen.
 
 
 ### <a name="querying-firewall-protected-storage"></a>Köra frågor mot en lagringsplats som skyddas av en brandvägg
 
-När du använder lagring som skyddas med brand väggen kan du använda **användar identitet** eller **hanterad identitet**.
+När du använder lagring som skyddas med brandväggen kan du använda **användaridentitet eller** **hanterad identitet.**
 
 > [!NOTE]
-> Brand Väggs funktionen på lagrings platsen finns i en offentlig för hands version och är tillgänglig i alla offentliga moln regioner. 
+> Brandväggsfunktionen i Storage är i offentlig förhandsversion och är tillgänglig i alla offentliga molnregioner. 
 
-#### <a name="user-identity"></a>Användar identitet
+#### <a name="user-identity"></a>Användaridentitet
 
-För att komma åt lagring som skyddas med brand väggen via användar identitet kan du använda Azure Portal UI eller PowerShell-modulen AZ. Storage.
+Om du vill komma åt lagring som skyddas med brandväggen via användaridentitet kan du använda Azure Portal användargränssnitt eller PowerShell-modulen Az.Storage.
 #### <a name="configuration-via-azure-portal"></a>Konfiguration via Azure Portal
 
-1. Sök efter ditt lagrings konto i Azure Portal.
-1. Gå till nätverk under Inställningar för avsnitt.
-1. I avsnittet "resurs instanser" lägger du till ett undantag för din Synapse-arbetsyta.
-1. Välj Microsoft. Synapse/arbets ytor som en resurs typ.
-1. Välj namn på arbets ytan som ett instans namn.
+1. Sök efter ditt lagringskonto i Azure Portal.
+1. Gå till Nätverk under avsnittet Inställningar.
+1. I avsnittet "Resursinstanser" lägger du till ett undantag för Synapse-arbetsytan.
+1. Välj Microsoft.Synapse/workspaces som resurstyp.
+1. Välj namnet på din arbetsyta som ett instansnamn.
 1. Klicka på Spara.
 
 #### <a name="configuration-via-powershell"></a>Konfiguration via PowerShell
 
-Följ dessa steg om du vill konfigurera din brand vägg för lagrings kontot och lägga till ett undantag för Synapse-arbetsytan.
+Följ de här stegen för att konfigurera brandväggen för lagringskontot och lägga till ett undantag för Synapse-arbetsytan.
 
-1. Öppna PowerShell eller [Installera PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows)
-2. Installera modulen AZ. Storage 3.4.0 och AZ. Synapse 0.7.0: 
+1. Öppna PowerShell eller [installera PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows)
+2. Installera modulen Az.Storage 3.4.0 och Az.Synapse 0.7.0: 
     ```powershell
     Install-Module -Name Az.Storage -RequiredVersion 3.4.0
     Install-Module -Name Az.Synapse -RequiredVersion 0.7.0
     ```
     > [!IMPORTANT]
-    > Kontrol lera att du använder **version 3.4.0**. Du kan kontrol lera din AZ. Storage-version genom att köra det här kommandot:  
+    > Kontrollera att du använder **version 3.4.0**. Du kan kontrollera din Az.Storage-version genom att köra det här kommandot:  
     > ```powershell 
     > Get-Module -ListAvailable -Name  Az.Storage | select Version
     > ```
     > 
 
-3. Anslut till din Azure-klient: 
+3. Anslut till din Azure-klientorganisation: 
     ```powershell
     Connect-AzAccount
     ```
 4. Definiera variabler i PowerShell: 
-    - Resurs grupp namn – du hittar det här i Azure Portal i Översikt över lagrings kontot.
-    - Konto namn – namnet på det lagrings konto som skyddas av brand Väggs regler.
-    - Klient-ID – du kan hitta det här i Azure Portal i Azure Active Directory i klient information.
-    - Arbets ytans namn – namnet på Synapse-arbetsytan.
+    - Namn på resursgrupp – du hittar detta i Azure Portal översikt över Lagringskonto.
+    - Kontonamn – namnet på lagringskontot som skyddas av brandväggsregler.
+    - Klientorganisations-ID – du hittar detta Azure Portal i Azure Active Directory i klientorganisationsinformation.
+    - Namn på arbetsyta – Namnet på Synapse-arbetsytan.
 
     ```powershell
         $resourceGroupName = "<resource group name>"
@@ -161,19 +161,19 @@ Följ dessa steg om du vill konfigurera din brand vägg för lagrings kontot och
         $resourceId
     ```
     > [!IMPORTANT]
-    > Kontrol lera att resurs-ID matchar den här mallen i utskriften av resourceId-variabeln.
+    > Kontrollera att resurs-ID:t matchar den här mallen i utskriften av resourceId-variabeln.
     >
-    > Det är viktigt att skriva **ResourceGroups** i gemener.
+    > Det är viktigt att skriva **resursgrupper i** gemener.
     > Exempel på ett resurs-ID: 
     > ```
     > /subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Synapse/workspaces/{name-of-workspace}
     > ```
     > 
-5. Lägg till lagrings nätverks regel: 
+5. Lägg till regel för lagringsnätverk: 
     ```powershell
         Add-AzStorageAccountNetworkRule -ResourceGroupName $resourceGroupName -Name $accountName -TenantId $tenantId -ResourceId $resourceId
     ```
-6. Kontrol lera att regeln har tillämpats på ditt lagrings konto: 
+6. Kontrollera att regeln tillämpades på ditt lagringskonto: 
     ```powershell
         $rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
         $rule.ResourceAccessRules | ForEach-Object { 
@@ -188,58 +188,58 @@ Följ dessa steg om du vill konfigurera din brand vägg för lagrings kontot och
     ```
 
 #### <a name="managed-identity"></a>Hanterad identitet
-Du måste [tillåta betrodda Microsoft-tjänster... Ange](../../storage/common/storage-network-security.md#trusted-microsoft-services) och [tilldela uttryckligen en Azure-roll](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) till den [systemtilldelade hanterade identiteten](../../active-directory/managed-identities-azure-resources/overview.md) för den resurs instansen. I det här fallet motsvarar åtkomst omfånget för instansen den Azure-roll som tilldelats den hanterade identiteten.
+Du måste tillåta [betrodda Microsoft-tjänster... ange](../../storage/common/storage-network-security.md#trusted-microsoft-services) och uttryckligen [tilldela en Azure-roll till](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) den system tilldelade [hanterade identiteten för](../../active-directory/managed-identities-azure-resources/overview.md) den resursinstansen. I det här fallet motsvarar åtkomstomfånget för instansen den Azure-roll som tilldelats den hanterade identiteten.
 
 ## <a name="credentials"></a>Autentiseringsuppgifter
 
-Om du vill skicka en fråga till en fil som finns i Azure Storage behöver den serverbaserade SQL-poolens slut punkt en autentiseringsuppgift som innehåller autentiseringsinformationen. Två typer av autentiseringsuppgifter används:
-- AUTENTISERINGSUPPGIFTER på server nivå används för ad hoc-frågor som körs med hjälp av `OPENROWSET` funktion. Namnet på autentiseringsuppgiften måste matcha lagrings-URL: en.
-- DATABASens begränsade AUTENTISERINGSUPPGIFTER används för externa tabeller. En extern tabell refererar till `DATA SOURCE` den autentiseringsuppgift som ska användas för åtkomst till lagring.
+Om du vill fråga en fil Azure Storage serverlös SQL-poolslutpunkt en autentiseringsautentisering som innehåller autentiseringsinformationen. Två typer av autentiseringsuppgifter används:
+- Autentiseringsuppgifter på servernivå används för ad hoc-frågor som körs med hjälp av `OPENROWSET` funktionen . Autentiseringsnamnet måste matcha lagrings-URL:en.
+- DATABASE SCOPED CREDENTIAL används för externa tabeller. Externa `DATA SOURCE` tabellreferenser med de autentiseringsuppgifter som ska användas för åtkomst till lagring.
 
-Om du vill tillåta att en användare skapar eller släpper en autentiseringsuppgift, kan administratören bevilja/neka behörighet att ändra AUTENTISERINGSUPPGIFTER till en användare:
+Om du vill tillåta en användare att skapa eller ta bort en autentiseringsbehörighet kan administratören bevilja/NEKA ALTER ANY CREDENTIAL-behörighet till en användare:
 
 ```sql
 GRANT ALTER ANY CREDENTIAL TO [user_name];
 ```
 
-Databas användare som har åtkomst till extern lagring måste ha behörighet att använda autentiseringsuppgifter.
+Databasanvändare som har åtkomst till extern lagring måste ha behörighet att använda autentiseringsuppgifter.
 
-### <a name="grant-permissions-to-use-credential"></a>Bevilja behörighet att använda autentiseringsuppgifter
+### <a name="grant-permissions-to-use-credential"></a>Bevilja behörigheter för att använda autentiseringsuppgifter
 
-Om du vill använda autentiseringsuppgifterna måste användaren ha `REFERENCES` behörighet för en speciell autentiseringsuppgift. Om du vill bevilja en behörighet för en `REFERENCES` storage_credential för en specific_user kör du:
+Om du vill använda autentiseringsbehörigheten måste en användare `REFERENCES` ha behörighet för en specifik autentiseringsbehörighet. Om du vill `REFERENCES` ge en behörighet på storage_credential en specific_user kör du:
 
 ```sql
 GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 ```
 
-## <a name="server-scoped-credential"></a>Autentiseringsuppgifter för Server omfång
+## <a name="server-scoped-credential"></a>Serveromfångsbaserade autentiseringsuppgifter
 
-Autentiseringsuppgifter för Server omfång används när SQL login-anrop `OPENROWSET` fungerar utan `DATA_SOURCE` att läsa filer på vissa lagrings konton. Namnet på serverns begränsade autentiseringsuppgifter **måste** matcha bas-URL: en för Azure Storage (eventuellt följt av ett behållar namn). Du lägger till en autentiseringsuppgift genom att köra [skapa autentiseringsuppgifter](/sql/t-sql/statements/create-credential-transact-sql?view=azure-sqldw-latest&preserve-view=true). Du måste ange ett namn argument för AUTENTISERINGSUPPGIFTER.
+Serveromfångsbaserade autentiseringsuppgifter används när SQL-inloggning `OPENROWSET` anropar funktionen utan `DATA_SOURCE` att läsa filer på vissa lagringskonto. Namnet på autentiseringsuppgifter med serveromfång måste matcha bas-URL:en för Azure Storage (eventuellt följt av ett containernamn).  En autentiseringsidentifiering läggs till genom att [köra CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?view=azure-sqldw-latest&preserve-view=true). Du måste ange ett CREDENTIAL NAME-argument.
 
 > [!NOTE]
-> `FOR CRYPTOGRAPHIC PROVIDER`Argumentet stöds inte.
+> Argumentet `FOR CRYPTOGRAPHIC PROVIDER` stöds inte.
 
-Namnet på Server nivåns AUTENTISERINGSUPPGIFTER måste matcha den fullständiga sökvägen till lagrings kontot (och eventuellt container) i följande format: `<prefix>://<storage_account_path>[/<container_name>]` . Lagrings konto Sök vägar beskrivs i följande tabell:
+Namnet på autentiseringsnamnet på servernivå måste matcha den fullständiga sökvägen till lagringskontot (och eventuellt containern) i följande format: `<prefix>://<storage_account_path>[/<container_name>]` . Sökvägar för lagringskonto beskrivs i följande tabell:
 
-| Extern data Källa       | Prefix | Sökväg till lagrings konto                                |
+| Extern datakälla       | Prefix | Sökväg till lagringskonto                                |
 | -------------------------- | ------ | --------------------------------------------------- |
-| Azure Blob Storage         | https  | <storage_account>. blob.core.windows.net             |
-| Azure Data Lake Storage Gen1 | https  | <storage_account>. azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Storage Gen2 | https  | <storage_account>. dfs.core.windows.net              |
+| Azure Blob Storage         | https  | <storage_account>.blob.core.windows.net             |
+| Azure Data Lake Storage Gen1 | https  | <storage_account>.azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Storage Gen2 | https  | <storage_account>.dfs.core.windows.net              |
 
-Autentiseringsuppgifter för Server omfång ger åtkomst till Azure Storage med följande autentiseringstyper:
+Serveromfångsbaserade autentiseringsuppgifter ger åtkomst till Azure Storage med hjälp av följande autentiseringstyper:
 
-### <a name="user-identity"></a>[Användar identitet](#tab/user-identity)
+### <a name="user-identity"></a>[Användaridentitet](#tab/user-identity)
 
-Azure AD-användare kan komma åt alla filer i Azure Storage om de har `Storage Blob Data Owner` , `Storage Blob Data Contributor` eller- `Storage Blob Data Reader` rollen. Azure AD-användare behöver inte autentiseringsuppgifter för att komma åt lagringen. 
+Azure AD-användare kan komma åt alla filer i Azure Storage om de har `Storage Blob Data Owner` `Storage Blob Data Contributor` , eller `Storage Blob Data Reader` roll. Azure AD-användare behöver inte autentiseringsuppgifter för att få åtkomst till lagring. 
 
-SQL-användare kan inte använda Azure AD-autentisering för åtkomst till lagring.
+SQL-användare kan inte använda Azure AD-autentisering för att få åtkomst till lagring.
 
 ### <a name="shared-access-signature"></a>[Signatur för delad åtkomst](#tab/shared-access-signature)
 
-Följande skript skapar en autentiseringsuppgift på server nivå som kan användas av `OPENROWSET` funktion för att få åtkomst till alla filer i Azure Storage med SAS-token. Skapa den här autentiseringsuppgiften för att aktivera SQL-huvudobjektet som kör `OPENROWSET` funktionen för att läsa filer som skyddas med SAS-nyckel på Azure Storage som matchar URL: en i autentiseringsuppgiften.
+Följande skript skapar autentiseringsuppgifter på servernivå som kan användas av funktionen för att komma åt alla filer i Azure Storage med `OPENROWSET` hjälp av SAS-token. Skapa den här autentiseringsnyckeln för att aktivera SQL-huvudnamn som kör funktionen för att läsa filer som skyddas med SAS-nyckel på Azure Storage som matchar `OPENROWSET` URL:en i autentiseringsnamnet.
 
-Exchange <*mystorageaccountname*> med ditt faktiska lagrings konto namn och <*mystorageaccountcontainername*> med det faktiska behållar namnet:
+Exchange <*mystorageaccountname*> med det faktiska lagringskontonamnet och <*mystorageaccountcontainername*> med det faktiska containernamnet:
 
 ```sql
 CREATE CREDENTIAL [https://<mystorageaccountname>.dfs.core.windows.net/<mystorageaccountcontainername>]
@@ -248,34 +248,34 @@ WITH IDENTITY='SHARED ACCESS SIGNATURE'
 GO
 ```
 
-Du kan också använda bara bas-URL: en för lagrings kontot, utan behållar namn.
+Om du vill kan du bara använda lagringskontots grundläggande URL utan containernamn.
 
 ### <a name="managed-identity"></a>[Hanterad identitet](#tab/managed-identity)
 
-Följande skript skapar en autentiseringsuppgift på server nivå som kan användas av `OPENROWSET` funktionen för att få åtkomst till alla filer i Azure Storage med hjälp av arbets ytans hanterade identiteter.
+Följande skript skapar autentiseringsuppgifter på servernivå som kan användas av funktionen för att komma åt alla filer i Azure Storage med hjälp `OPENROWSET` av arbetsyte hanterad identitet.
 
 ```sql
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
 WITH IDENTITY='Managed Identity'
 ```
 
-Du kan också använda bara bas-URL: en för lagrings kontot, utan behållar namn.
+Om du vill kan du bara använda lagringskontots grundläggande URL utan containernamn.
 
 ### <a name="public-access"></a>[Offentlig åtkomst](#tab/public-access)
 
-Databasens begränsade autentiseringsuppgifter krävs inte för att tillåta åtkomst till offentligt tillgängliga filer. Skapa [data källa utan databasens begränsade autentiseringsuppgifter](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source) för att få åtkomst till offentligt tillgängliga filer i Azure Storage.
+Databasomfångsdelade autentiseringsuppgifter krävs inte för att tillåta åtkomst till offentligt tillgängliga filer. Skapa [en datakälla utan databasomfångsbehörighet för att](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source) få åtkomst till offentligt tillgängliga filer i Azure Storage.
 
 ---
 
-## <a name="database-scoped-credential"></a>Autentiseringsuppgifter för databas omfattning
+## <a name="database-scoped-credential"></a>Databasomfångsbaserade autentiseringsuppgifter
 
-Autentiseringsuppgifter för databasens omfattning används när en huvud anrops `OPENROWSET` funktion med `DATA_SOURCE` eller väljer data från [extern tabell](develop-tables-external-tables.md) som inte kommer åt offentliga filer. Databasens begränsade autentiseringsuppgifter behöver inte matcha namnet på lagrings kontot. Den används explicit i DATA källan som definierar lagrings platsen.
+Databasomfångsbaserade autentiseringsuppgifter används när huvudnamnsanrop fungerar med eller väljer data från en extern `OPENROWSET` tabell som inte har åtkomst till offentliga `DATA_SOURCE` filer. [](develop-tables-external-tables.md) Databasomfånget för autentiseringsuppgifter behöver inte matcha namnet på lagringskontot. Den används explicit i DATAKÄLLA som definierar lagringsplatsen.
 
-Autentiseringsuppgifter för databasens omfång ger åtkomst till Azure Storage med följande autentiseringstyper:
+Databasomfångsbaserade autentiseringsuppgifter ger åtkomst till Azure Storage med hjälp av följande autentiseringstyper:
 
 ### <a name="azure-ad-identity"></a>[Azure AD-identitet](#tab/user-identity)
 
-Azure AD-användare kan komma åt alla filer i Azure Storage om de har minst `Storage Blob Data Owner` , `Storage Blob Data Contributor` eller `Storage Blob Data Reader` roll. Azure AD-användare behöver inte autentiseringsuppgifter för att komma åt lagringen.
+Azure AD-användare kan komma åt alla filer i Azure Storage om de har minst `Storage Blob Data Owner` `Storage Blob Data Contributor` , eller `Storage Blob Data Reader` roll. Azure AD-användare behöver inte autentiseringsuppgifter för att få åtkomst till lagring.
 
 ```sql
 CREATE EXTERNAL DATA SOURCE mysample
@@ -283,11 +283,11 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 )
 ```
 
-SQL-användare kan inte använda Azure AD-autentisering för åtkomst till lagring.
+SQL-användare kan inte använda Azure AD-autentisering för att få åtkomst till lagring.
 
 ### <a name="shared-access-signature"></a>[Signatur för delad åtkomst](#tab/shared-access-signature)
 
-Följande skript skapar en autentiseringsuppgift som används för att komma åt filer på lagrings platsen med SAS-token som anges i autentiseringsuppgiften. Skriptet skapar ett exempel på en extern data källa som använder denna SAS-token för att komma åt lagringen.
+Följande skript skapar en autentiseringsbehörighet som används för att komma åt filer på lagring med hjälp av SAS-token som anges i autentiseringssuppgifter. Skriptet skapar en extern exempeldatakälla som använder denna SAS-token för att få åtkomst till lagring.
 
 ```sql
 -- Optional: Create MASTER KEY if not exists in database:
@@ -305,7 +305,7 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 
 ### <a name="managed-identity"></a>[Hanterad identitet](#tab/managed-identity)
 
-Följande skript skapar en databas-begränsade autentiseringsuppgifter som kan användas för att personifiera den aktuella Azure AD-användaren som hanterad identitet för tjänsten. Skriptet skapar ett exempel på en extern data källa som använder arbets ytans identitet för att komma åt lagringen.
+Följande skript skapar en databasomfattning för autentiseringsuppgifter som kan användas för att personifiera aktuell Azure AD-användare som hanterad identitet för tjänsten. Skriptet skapar en extern exempeldatakälla som använder arbetsytans identitet för att få åtkomst till lagring.
 
 ```sql
 -- Optional: Create MASTER KEY if not exists in database:
@@ -319,11 +319,11 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 )
 ```
 
-Den databasbaserade autentiseringsuppgiften behöver inte matcha namnet på lagrings kontot eftersom det används explicit i DATA källan som definierar lagrings platsen.
+Databasomfånget för autentiseringsuppgifter behöver inte matcha namnet på lagringskontot eftersom det uttryckligen används i DATAKÄLLA som definierar lagringsplatsen.
 
 ### <a name="public-access"></a>[Offentlig åtkomst](#tab/public-access)
 
-Databasens begränsade autentiseringsuppgifter krävs inte för att tillåta åtkomst till offentligt tillgängliga filer. Skapa [data källa utan databasens begränsade autentiseringsuppgifter](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source) för att få åtkomst till offentligt tillgängliga filer i Azure Storage.
+Databasomfångsdelade autentiseringsuppgifter krävs inte för att tillåta åtkomst till offentligt tillgängliga filer. Skapa [en datakälla utan databasomfångsbehörighet för att](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source) få åtkomst till offentligt tillgängliga filer i Azure Storage.
 
 ```sql
 CREATE EXTERNAL DATA SOURCE mysample
@@ -332,7 +332,7 @@ WITH (    LOCATION   = 'https://<storage_account>.blob.core.windows.net/<contain
 ```
 ---
 
-Autentiseringsuppgifter för databas omfånget används i externa data källor för att ange vilken autentiseringsmetod som ska användas för att få åtkomst till den här lagringen:
+Databasomfångsautentiseringsuppgifter används i externa datakällor för att ange vilken autentiseringsmetod som ska användas för åtkomst till lagringen:
 
 ```sql
 CREATE EXTERNAL DATA SOURCE mysample
@@ -343,9 +343,9 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 
 ## <a name="examples"></a>Exempel
 
-### <a name="access-a-publicly-available-data-source"></a>**Åtkomst till en offentligt tillgänglig data Källa**
+### <a name="access-a-publicly-available-data-source"></a>**Få åtkomst till en offentligt tillgänglig datakälla**
 
-Använd följande skript för att skapa en tabell som har åtkomst till offentligt tillgängliga data källor.
+Använd följande skript för att skapa en tabell som har åtkomst till offentligt tillgänglig datakälla.
 
 ```sql
 CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat]
@@ -361,7 +361,7 @@ WITH ( LOCATION = 'parquet/user-data/*.parquet',
        FILE_FORMAT = [SynapseParquetFormat] )
 ```
 
-Databas användaren kan läsa innehållet i filerna från data källan med hjälp av en extern tabell eller en [OpenRowSet](develop-openrowset.md) -funktion som refererar till data källan:
+Databasanvändare kan läsa innehållet i filerna från datakällan med hjälp av en extern tabell eller [openrowset-funktion](develop-openrowset.md) som refererar till datakällan:
 
 ```sql
 SELECT TOP 10 * FROM dbo.userPublicData;
@@ -372,9 +372,9 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
 GO
 ```
 
-### <a name="access-a-data-source-using-credentials"></a>**Åtkomst till en data källa med hjälp av autentiseringsuppgifter**
+### <a name="access-a-data-source-using-credentials"></a>**Få åtkomst till en datakälla med autentiseringsuppgifter**
 
-Ändra följande skript för att skapa en extern tabell som får åtkomst till Azure Storage med SAS-token, Azure AD-identitet för användare eller hanterad identitet för arbets ytan.
+Ändra följande skript för att skapa en extern tabell som har åtkomst till Azure Storage med hjälp av SAS-token, Azure AD-identitet för användare eller hanterad identitet för arbetsytan.
 
 ```sql
 -- Create master key in databases with some password (one-off per database)
@@ -408,7 +408,7 @@ WITH ( LOCATION = 'parquet/user-data/*.parquet',
 
 ```
 
-Databas användaren kan läsa innehållet i filerna från data källan med hjälp av en [extern tabell](develop-tables-external-tables.md) eller en [OpenRowSet](develop-openrowset.md)  -funktion som refererar till data källan:
+Databasanvändare kan läsa innehållet i filerna från datakällan med hjälp av [en extern](develop-tables-external-tables.md) tabell eller [openrowset-funktion](develop-openrowset.md)  som refererar till datakällan:
 
 ```sql
 SELECT TOP 10 * FROM dbo.userdata;
@@ -419,11 +419,11 @@ GO
 
 ## <a name="next-steps"></a>Nästa steg
 
-Artiklarna i listan nedan hjälper dig att lära dig hur frågar olika typer av mappar, filtyper och hur du skapar och använder vyer:
+Artiklarna nedan hjälper dig att lära dig hur du frågar olika mapptyper, filtyper och skapar och använder vyer:
 
-- [Fråga en enkel CSV-fil](query-single-csv-file.md)
+- [Fråga en enskild CSV-fil](query-single-csv-file.md)
 - [Fråga mappar och flera CSV-filer](query-folders-multiple-csv-files.md)
-- [Fråga efter vissa filer](query-specific-files.md)
+- [Fråga specifika filer](query-specific-files.md)
 - [Efterfråga Parquet-filer](query-parquet-files.md)
 - [Skapa och använda vyer](create-use-views.md)
 - [Efterfråga JSON-filer](query-json-files.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Självstudie: komma igång med att analysera data med en server lös SQL-pool'
-description: I den här självstudien får du lära dig hur du analyserar data med en server lös SQL-pool med hjälp av data som finns i Spark-databaser.
+title: 'Självstudie: Kom igång med att analysera data med en serverlös SQL-pool'
+description: I den här självstudien lär du dig att analysera data med en serverlös SQL-pool med hjälp av data som finns i Spark-databaser.
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,28 +9,27 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 7c228bfe5897b45e6345234f2ed8e0f5cfbec73a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 04/15/2021
+ms.openlocfilehash: c6f2dfe0d4846227400ac9b3c7ac3e6ead8f0b57
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312798"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567561"
 ---
-# <a name="analyze-data-with-a-serverless-sql-pool"></a>Analysera data med en server lös SQL-pool
+# <a name="analyze-data-with-a-serverless-sql-pool"></a>Analysera data med en serverlös SQL-pool
 
-I den här självstudien får du lära dig hur du analyserar data med en server lös SQL-pool. 
+I den här självstudien lär du dig att analysera data med en serverlös SQL-pool. 
 
-## <a name="the-built-in-serverless-sql-pool"></a>Den inbyggda SQL-poolen utan Server
+## <a name="the-built-in-serverless-sql-pool"></a>Den inbyggda serverlösa SQL-poolen
 
-SQL-pooler utan Server gör att du kan använda SQL utan att behöva reservera kapacitet. Faktureringen för en server lös SQL-pool baseras på mängden data som bearbetas för att köra frågan och inte antalet noder som används för att köra frågan.
+Med serverlösa SQL-pooler kan du använda SQL utan att behöva reservera kapacitet. Faktureringen för en serverlös SQL-pool baseras på mängden data som bearbetas för att köra frågan och inte antalet noder som används för att köra frågan.
 
-Varje arbets yta levereras med en förkonfigurerad server utan SQL-pool som kallas **inbyggd**. 
+Varje arbetsyta levereras med en förkonfigurerad serverlös **SQL-pool som kallas Inbyggd.** 
 
-## <a name="analyze-nyc-taxi-data-with-a-serverless-sql-pool"></a>Analysera NYC taxi-data med en server lös SQL-pool
+## <a name="analyze-nyc-taxi-data-with-a-serverless-sql-pool"></a>Analysera nyc-taxidata med en serverlös SQL-pool
 
-
-1. Gå till **utveckla** hubben i Synapse Studio
+1. I Synapse Studio du till **hubben Utveckla**
 1. Skapa ett nytt SQL-skript.
 1. Klistra in följande kod i skriptet.
 
@@ -39,13 +38,13 @@ Varje arbets yta levereras med en förkonfigurerad server utan SQL-pool som kall
         TOP 100 *
     FROM
         OPENROWSET(
-                BULK 'https://contosolake.dfs.core.windows.net/users/NYCTripSmall.parquet',
+            BULK 'https://contosolake.dfs.core.windows.net/users/NYCTripSmall.parquet',
             FORMAT='PARQUET'
         ) AS [result]
     ```
-1. Klicka på **Kör**
+1. Klicka på **Kör**. 
 
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Analysera data med en server lös Spark-pool](get-started-analyze-spark.md)
+> [Analysera data med en serverlös Spark-pool](get-started-analyze-spark.md)

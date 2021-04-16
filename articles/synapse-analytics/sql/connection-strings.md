@@ -1,29 +1,28 @@
 ---
-title: Anslutnings strängar för Synapse-SQL
-description: Anslutnings strängar för Synapse-SQL
-services: synapse-analytics
+title: Anslutningssträngar för Synapse SQL
+description: Anslutningssträngar för Synapse SQL
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5ce411f3a2f3be162f9af16422d20b3e8b536fee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb68a15bb64640fd8aa18d2ee01fd4a03d809125
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98120928"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565278"
 ---
-# <a name="connection-strings-for-synapse-sql"></a>Anslutnings strängar för Synapse-SQL
+# <a name="connection-strings-for-synapse-sql"></a>Anslutningssträngar för Synapse SQL
 
-Du kan ansluta till Synapse SQL med flera olika program protokoll som, [ADO.net](/dotnet/framework/data/adonet/), [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows), [php](/sql/connect/php/overview-of-the-php-sql-driver?f=255&MSPPError=-2147217396)och [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server). Nedan visas några exempel på anslutnings strängar för varje protokoll. 
+Du kan ansluta till Synapse SQL med flera olika programprotokoll, till exempel, [ADO.NET,](/dotnet/framework/data/adonet/) [ODBC,](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows) [PHP](/sql/connect/php/overview-of-the-php-sql-driver?f=255&MSPPError=-2147217396)och [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server). Nedan visas några exempel på anslutningssträngar för varje protokoll. 
 
-Du kan också använda Azure Portal för att bygga anslutnings strängen.  Om du vill bygga anslutnings strängen med hjälp av Azure Portal navigerar du till bladet databas under *Essentials* . Välj *Visa databas anslutnings strängar*.
+Du kan också använda Azure Portal för att skapa anslutningssträngen.  Om du vill skapa *anslutningssträngen* med Azure Portal navigerar du till databasbladet. Under Essentials väljer du Visa *databasanslutningssträngar*.
 
-## <a name="sample-adonet-connection-string"></a>Exempel på ADO.NET-anslutningssträng
+## <a name="sample-adonet-connection-string"></a>Exempel på ADO.NET anslutningssträng
 
 ```csharp
 Server=tcp:{your_server}.sql.azuresynapse.net,1433;Database={your_database};User ID={your_user_name};Password={your_password_here};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
@@ -48,12 +47,12 @@ jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=yourdatabase;user
 ```
 
 > [!NOTE]
-> Överväg att ange tids gränsen för anslutningen till 300 sekunder så att anslutningen kan överleva korta perioder med otillgänglighet.
+> Överväg att ställa in tidsgränsen för anslutningen på 300 sekunder så att anslutningen klarar korta perioder av otillgänglighet.
 
 ## <a name="recommendations"></a>Rekommendationer
 
-Rekommenderade verktyg är [Azure Data Studio](get-started-azure-data-studio.md) och Azure Synapse Studio för att köra frågor utan **Server utan SQL-pool** .
+För att köra **serverlösa SQL-poolfrågor** rekommenderas verktyg [Azure Data Studio](get-started-azure-data-studio.md) och Azure Synapse Studio.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Information om hur du börjar fråga din analys med Visual Studio och andra program finns i [fråga med Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Information om hur du börjar köra frågor mot din analys Visual Studio program finns i [Fråga med Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

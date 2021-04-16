@@ -1,30 +1,30 @@
 ---
-title: Snabb start – ansluta till ett team möte från en webbapp
-description: I den här självstudien får du lära dig hur du ansluter till ett team möte med Azure Communication Services som anropar SDK för Java Script
+title: Snabbstart – Delta i ett Teams-möte från en webbapp
+description: I den här självstudien lär du dig hur du ansluter till ett Teams-möte med hjälp Azure Communication Services Anropa SDK för JavaScript
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 4b6cf48c577bb6f22f497007c4b1c1b57ab6f187
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6747d1d3cfba1c9e2bee7a8a7a48d67d6bed9f8e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108218"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564740"
 ---
-I den här snabb starten får du lära dig hur du ansluter till ett team möte med Azure Communication Services som anropar SDK för Java Script.
+I den här snabbstarten lär du dig hur du ansluter till ett Teams-möte med hjälp Azure Communication Services Anropa SDK för JavaScript.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- En fungerande [kommunikations tjänst som anropar en webbapp](../getting-started-with-calling.md).
-- En [team distribution](/deployoffice/teams-install).
+- En fungerande [Communication Services anropar webbappen](../getting-started-with-calling.md).
+- En [Teams-distribution](/deployoffice/teams-install).
 
 
-## <a name="add-the-teams-ui-controls"></a>Lägg till Team UI-kontroller
+## <a name="add-the-teams-ui-controls"></a>Lägga till ui-kontroller i Teams
 
-Ersätt Code i index.html med följande kodfragment.
-Text rutan används för att ange team Mötes kontexten och knappen kommer att användas för att ansluta till det angivna mötet:
+Ersätt koden i index.html med följande kodfragment.
+Textrutan används för att ange Kontext för Teams-möte och knappen används för att ansluta till det angivna mötet:
 
 ```html
 <!DOCTYPE html>
@@ -53,9 +53,9 @@ Text rutan används för att ange team Mötes kontexten och knappen kommer att a
 </html>
 ```
 
-## <a name="enable-the-teams-ui-controls"></a>Aktivera UI-kontroller för team
+## <a name="enable-the-teams-ui-controls"></a>Aktivera gränssnittskontrollerna i Teams
 
-Ersätt innehållet i client.js-filen med följande kodfragment.
+Ersätt innehållet i client.js med följande kodfragment.
 
 ```javascript
 import { CallClient } from "@azure/communication-calling";
@@ -110,14 +110,14 @@ teamsMeetingJoinButton.addEventListener("click", () => {
 });
 ```
 
-## <a name="get-the-teams-meeting-link"></a>Hämta team Mötes länken
+## <a name="get-the-teams-meeting-link"></a>Hämta länken för Teams-mötet
 
-Länken Teams möte kan hämtas med Graph API: er. Detta beskrivs i [Graph-dokumentationen](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta).
-Kommunikations tjänsterna som anropar SDK accepterar en länk till en fullständig Teams möte. Den här länken returneras som en del av `onlineMeeting` resursen, som är tillgänglig under [ `joinWebUrl` egenskapen](/graph/api/resources/onlinemeeting?view=graph-rest-beta) . du kan också hämta nödvändig Mötes information från URL: en **till kopplings mötet** i team mötets inbjudan.
+Teams-möteslänken kan hämtas med Graph API:er. Detta beskrivs i [Graph-dokumentationen.](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)
+Den Communication Services anropande SDK accepterar en fullständig Teams-möteslänk. Den här länken returneras som en del av resursen och är tillgänglig under egenskapen . Du kan också hämta nödvändig mötesinformation från URL:en för kopplingsmöte i `onlineMeeting` själva [ `joinWebUrl` ](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) Teams-mötesbjudan. 
 
 ## <a name="run-the-code"></a>Kör koden
 
-WebPack-användare kan använda `webpack-dev-server` för att skapa och köra din app. Kör följande kommando för att paketera din program värd på en lokal webserver:
+Webpack-användare kan använda `webpack-dev-server` för att skapa och köra din app. Kör följande kommando för att paketa programvärden på en lokal webbserver:
 
 ```console
 npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
@@ -125,6 +125,6 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 
 Öppna webbläsaren och gå till http://localhost:8080/ . Du bör se följande:
 
-:::image type="content" source="../media/javascript/acs-join-teams-meeting-quickstart.PNG" alt-text="Skärm bild av det färdiga JavaScript-programmet.":::
+:::image type="content" source="../media/javascript/acs-join-teams-meeting-quickstart.PNG" alt-text="Skärmbild av det färdiga JavaScript-programmet.":::
 
-Infoga team-kontexten i text rutan och tryck på *Anslut Teams möte* för att ansluta till teamen i kommunikations tjänst programmet.
+Infoga Teams-kontexten i textrutan och tryck på *Anslut till Teams-möte* för att ansluta till Teams-mötet från ditt Communication Services program.

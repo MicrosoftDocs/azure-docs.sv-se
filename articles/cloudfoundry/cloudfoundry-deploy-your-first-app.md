@@ -7,72 +7,72 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 037ac972dca49484f7b8c0ad8eed6942c901b997
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1cffc36cbd4f24bbcbb5996a323ffa963e311693
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562936"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530961"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Distribuera din första app till Cloud Foundry på Microsoft Azure
 
-[Cloud Foundry](https://cloudfoundry.org) är en populär program plattform med öppen källkod som finns på Microsoft Azure. I den här artikeln visar vi hur du distribuerar och hanterar ett program på Cloud Foundry i en Azure-miljö.
+[Cloud Foundry](https://cloudfoundry.org) är en populär programplattform med öppen källkod som finns på Microsoft Azure. I den här artikeln visar vi hur du distribuerar och hanterar ett program på Cloud Foundry i en Azure-miljö.
 
-## <a name="create-a-cloud-foundry-environment"></a>Skapa en Cloud Foundry-miljö
+## <a name="create-a-cloud-foundry-environment"></a>Skapa en Cloud Foundry miljö
 
-Det finns flera alternativ för att skapa en Cloud Foundry-miljö på Azure:
+Det finns flera alternativ för att skapa en Cloud Foundry miljö i Azure:
 
-- Använd [pivotal Cloud Foundry-erbjudandet][pcf-azuremarketplace] på Azure Marketplace för att skapa en standard miljö som innehåller PCF Ops Manager och Azure Service Broker. Du hittar [fullständiga instruktioner][pcf-azuremarketplace-pivotaldocs] för att distribuera Marketplace-erbjudandet i Pivot-dokumentationen.
-- Skapa en anpassad miljö genom att [distribuera pivotal Cloud Foundry manuellt][pcf-custom].
-- [Distribuera Cloud Foundry-paket med öppen källkod direkt][oss-cf-bosh] genom att konfigurera en [Bosh](https://bosh.io) -regissör, en virtuell dator som samordnar distributionen av Cloud foundrys miljön.
+- Använd [pivotal-Cloud Foundry i][pcf-azuremarketplace] Azure Marketplace för att skapa en standardmiljö som innehåller PCF Ops Manager och Azure Service Broker. Du hittar fullständiga [anvisningar för][pcf-azuremarketplace-pivotaldocs] att distribuera Marketplace-erbjudandet i Pivotal-dokumentationen.
+- Skapa en anpassad miljö genom [att distribuera Pivotal Cloud Foundry manuellt][pcf-custom].
+- [Distribuera paketet med öppen källkod Cloud Foundry genom][oss-cf-bosh] att konfigurera en [BOSH-katalog,](https://bosh.io) en virtuell dator som samordnar distributionen av Cloud Foundry miljön.
 
 > [!IMPORTANT] 
-> Om du distribuerar PCF från Azure Marketplace noterar du de SYSTEMDOMAINURL och de autentiseringsuppgifter som krävs för att få åtkomst till hanteraren för pivoting Apps, som beskrivs i distributions guiden för Marketplace. De behövs för att slutföra den här självstudien. För Marketplace-distributioner finns SYSTEMDOMAINURL i formuläret `https://system.*ip-address*.cf.pcfazure.com` .
+> Om du distribuerar PCF från Azure Marketplace ska du anteckna SYSTEMDOMAINURL och de administratörsautentiseringsuppgifter som krävs för att få åtkomst till Pivotal Apps Manager. Båda beskrivs i distributionsguiden för Marketplace. De behövs för att slutföra den här självstudien. För Marketplace-distributioner har SYSTEMDOMAINURL formen `https://system.*ip-address*.cf.pcfazure.com` .
 
-## <a name="connect-to-the-cloud-controller"></a>Ansluta till moln styrenheten
+## <a name="connect-to-the-cloud-controller"></a>Ansluta till molnstyrenheten
 
-Moln styrenheten är den primära start punkten för en Cloud Foundry miljö för distribution och hantering av program. CCAPI (Core Cloud Controller API) är ett REST API, men det är tillgängligt via olika verktyg. I det här fallet interagerar vi med det via [Cloud FOUNDRY CLI][cf-cli]. Du kan installera CLI på Linux, macOS eller Windows, men om du hellre inte vill installera det alls är det tillgängligt för hands installerat i [Azure Cloud Shell][cloudshell-docs].
+Molnstyrenheten är den primära startpunkten för en Cloud Foundry för distribution och hantering av program. Kärn-API:et för molnkontrollant ( MOCKPI) är REST API, men det är tillgängligt via olika verktyg. I det här fallet interagerar vi med den via [Cloud Foundry CLI][cf-cli]. Du kan installera CLI på Linux, macOS eller Windows, men om du inte vill installera det alls är det tillgängligt förinstallerat i [Azure Cloud Shell][cloudshell-docs].
 
-Logga in genom att lägga `api` till den SYSTEMDOMAINURL som du har fått från Marketplace-distributionen. Eftersom standard distributionen använder ett självsignerat certifikat bör du även inkludera `skip-ssl-validation` växeln.
+Logga in genom att gå till den `api` SYSTEMDOMAINURL som du fick från Marketplace-distributionen. Eftersom standarddistributionen använder ett själv signerat certifikat bör du även inkludera `skip-ssl-validation` växeln .
 
 ```bash
 cf login -a https://api.SYSTEMDOMAINURL --skip-ssl-validation
 ```
 
-Du uppmanas att logga in på moln styrenheten. Använd de autentiseringsuppgifter för administratörs kontot som du har köpt från distributions stegen för Marketplace.
+Du uppmanas att logga in på molnstyrenheten. Använd autentiseringsuppgifterna för administratörskontot som du har köpt från distributionsstegen för Marketplace.
 
-Cloud Foundry tillhandahåller *organisationer* och *blank steg* som namn rymder för att isolera team och miljöer inom en delad distribution. PCF Marketplace-distributionen innehåller standard *system* org och en uppsättning blank steg som skapats för att innehålla bas komponenterna, t. ex. tjänsten för automatisk skalning och Azure Service Broker. För tillfället väljer du *system* utrymmet.
+Cloud Foundry tillhandahåller *organisationer och* *utrymmen som* namnrymder för att isolera teamen och miljöerna i en delad distribution. PCF Marketplace-distributionen  innehåller standardsystemorganisationen och en uppsättning utrymmen som skapats för att innehålla baskomponenterna, till exempel autoskalningstjänsten och Azure Service Broker. Välj systemutrymme för *tillfället.*
 
 
-## <a name="create-an-org-and-space"></a>Skapa ett organisations-och utrymme
+## <a name="create-an-org-and-space"></a>Skapa en organisation och ett utrymme
 
-Om du skriver `cf apps` , ser du en uppsättning system program som har distribuerats i system utrymmet i system-org. 
+Om du `cf apps` skriver visas en uppsättning systemprogram som har distribuerats i systemutrymmet i systemorganisationen. 
 
-Du bör se till att *system* org reserverat för System program, så skapa ett organisations-och utrymme för att House vårt exempel program.
+Du bör behålla *systemorganisationen* reserverad för systemprogram, så skapa en organisation och ett utrymme för vårt exempelprogram.
 
 ```bash
 cf create-org myorg
 cf create-space dev -o myorg
 ```
 
-Använd mål kommandot för att växla till det nya organisationen och utrymmet:
+Använd målkommandot för att växla till den nya organisationen och utrymmet:
 
 ```bash
 cf target -o testorg -s dev
 ```
 
-Nu när du distribuerar ett program skapas det automatiskt i det nya org och utrymmet. För att bekräfta att det inte finns några appar i det nya org/utrymmet, skriver du `cf apps` igen.
+När du distribuerar ett program skapas det nu automatiskt i den nya organisationen och i det nya utrymmet. Bekräfta att det för närvarande inte finns några appar i den nya organisationen/utrymmet genom att skriva `cf apps` igen.
 
 > [!NOTE] 
-> Mer information om organisationer och blank steg och hur de kan användas för Cloud Foundry rollbaserad åtkomst kontroll (Cloud Foundry RBAC) finns i [Cloud Foundry-dokumentationen][cf-orgs-spaces-docs].
+> Mer information om organisationer och utrymmen och hur de kan användas för Cloud Foundry rollbaserad åtkomstkontroll (Cloud Foundry RBAC) finns i [Cloud Foundry dokumentationen][cf-orgs-spaces-docs].
 
 ## <a name="deploy-an-application"></a>Distribuera ett program
 
-Vi använder ett exempel Cloud Foundry program som kallas Hello våren Cloud, som är skrivet i Java och som baseras på [våren-ramverket](https://spring.io) och [våren Boot](https://projects.spring.io/spring-boot/).
+Vi använder ett exempelprogram Cloud Foundry Hello Spring Cloud, som är skrivet i Java och baserat på [Spring Framework](https://spring.io) [och Spring Boot](https://projects.spring.io/spring-boot/).
 
-### <a name="clone-the-hello-spring-cloud-repository"></a>Klona Hello våren Cloud-lagringsplatsen
+### <a name="clone-the-hello-spring-cloud-repository"></a>Klona Hello Spring Cloud databasen
 
-Exempel programmet Hello våren Cloud är tillgängligt på GitHub. Klona den till din miljö och ändra till den nya katalogen:
+Hello Spring Cloud-exempelprogrammet finns på GitHub. Klona den till din miljö och ändra till den nya katalogen:
 
 ```bash
 git clone https://github.com/cloudfoundry-samples/hello-spring-cloud
@@ -81,40 +81,40 @@ cd hello-spring-cloud
 
 ### <a name="build-the-application"></a>Skapa programmet
 
-Bygg appen med [Apache maven](https://maven.apache.org).
+Skapa appen med [Apache Maven](https://maven.apache.org).
 
 ```bash
 mvn clean package
 ```
 
-### <a name="deploy-the-application-with-cf-push"></a>Distribuera programmet med CF-push
+### <a name="deploy-the-application-with-cf-push"></a>Distribuera programmet med cf push
 
-Du kan distribuera de flesta program till Cloud Foundry med hjälp av `push` kommandot:
+Du kan distribuera de flesta program Cloud Foundry med hjälp av `push` kommandot :
 
 ```bash
 cf push
 ```
 
-När du *push* -överför ett program identifierar Cloud Foundry program typen (i det här fallet en Java-app) och identifierar dess beroenden (i det här fallet våren-ramverket). Sedan paketeras allt som krävs för att köra din kod i en fristående behållar avbildning som kallas *droplet*. Slutligen Cloud Foundry schemalägger programmet på någon av de tillgängliga datorerna i din miljö och skapar en URL där du kan komma åt den, vilket är tillgängligt i kommandots utdata.
+När du *push-Cloud Foundry* ett program identifierar Cloud Foundry typ av program (i det här fallet en Java-app) och identifierar dess beroenden (i det här fallet Spring-ramverket). Sedan paketerar den allt som krävs för att köra koden i en fristående containeravbildning, som kallas en *droplet*. Slutligen Cloud Foundry programmet på en av de tillgängliga datorerna i din miljö och skapar en URL där du kan nå den, som är tillgänglig i kommandots utdata.
 
-![Utdata från CF push-kommando][cf-push-output]
+![Utdata från push-kommandot cf][cf-push-output]
 
-Öppna den URL som visas i webbläsaren om du vill se programmet Hello-våren-Cloud:
+Om du vill se hello-spring-cloud-programmet öppnar du den angivna URL:en i webbläsaren:
 
-![Standard gränssnitt för Hello våren Cloud][hello-spring-cloud-basic]
+![Standardgränssnitt för Hello Spring Cloud][hello-spring-cloud-basic]
 
 > [!NOTE] 
-> Mer information om vad som händer `cf push` finns i [hur program mellanlagras][cf-push-docs] i Cloud Foundry-dokumentationen.
+> Mer information om vad som händer under `cf push` finns i How Applications Are [Staged i][cf-push-docs] Cloud Foundry dokumentationen.
 
-## <a name="view-application-logs"></a>Visa program loggar
+## <a name="view-application-logs"></a>Visa programloggar
 
-Du kan använda Cloud Foundry CLI för att visa loggar för ett program med hjälp av namnet:
+Du kan använda Cloud Foundry CLI för att visa loggar för ett program efter dess namn:
 
 ```bash
 cf logs hello-spring-cloud
 ```
 
-Som standard använder loggar kommandot *pilslut*, som visar nya loggar när de skrivs. Om du vill se nya loggar visas uppdaterar du appen Hello-våren-Cloud i webbläsaren.
+Som standard använder kommandot logs *tail*, som visar nya loggar när de skrivs. Om du vill se nya loggar uppdaterar du hello-spring-cloud-appen i webbläsaren.
 
 Om du vill visa loggar som redan har skrivits lägger du till `recent` växeln:
 
@@ -124,27 +124,27 @@ cf logs --recent hello-spring-cloud
 
 ## <a name="scale-the-application"></a>Skala programmet
 
-Som standard `cf push` skapar bara en enda instans av programmet. För att säkerställa hög tillgänglighet och för att skala ut för högre data flöde vill du ofta köra fler än en instans av dina program. Du kan enkelt skala ut redan distribuerade program med hjälp av `scale` kommandot:
+Som standard skapar `cf push` endast en enda instans av ditt program. För att säkerställa hög tillgänglighet och aktivera utskalning för högre dataflöde vill du vanligtvis köra mer än en instans av dina program. Du kan enkelt skala ut redan distribuerade program med hjälp av `scale` kommandot :
 
 ```bash
 cf scale -i 2 hello-spring-cloud
 ```
 
-Att köra `cf app` kommandot i programmet visar att Cloud Foundry skapar en annan instans av programmet. När programmet har startats påbörjar Cloud Foundry automatiskt belastnings Utjämnings trafik till den.
+Om du `cf app` kör kommandot i programmet ser du Cloud Foundry skapar en annan instans av programmet. När programmet har startats startar Cloud Foundry belastningsutjämnande trafik till den.
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Läs Cloud Foundry-dokumentationen][cloudfoundry-docs]
-- [Konfigurera Azure DevOps Services-plugin-programmet för Cloud Foundry][vsts-plugin]
-- [Konfigurera Microsoft Log Analytics munstycke för Cloud Foundry][loganalytics-nozzle]
+- [Läs Cloud Foundry dokumentationen][cloudfoundry-docs]
+- [Konfigurera Plugin-programmet Azure DevOps Services för Cloud Foundry][vsts-plugin]
+- [Konfigurera Microsoft Log Analytics Nozzle för Cloud Foundry][loganalytics-nozzle]
 
 <!-- LINKS -->
 
 [pcf-azuremarketplace]: https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry
 [pcf-custom]: https://docs.pivotal.io/pivotalcf/1-10/customizing/azure.html
 [oss-cf-bosh]: https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs
-[pcf-azuremarketplace-pivotaldocs]: https://docs.pivotal.io/pivotalcf/customizing/pcf_azure.html
+[pcf-azuremarketplace-pivotaldocs]: https://docs.pivotal.io/ops-manager/2-10/install/pcf_azure.html
 [cf-cli]: https://github.com/cloudfoundry/cli
 [cloudshell-docs]: ../cloud-shell/overview.md
 [cf-orgs-spaces-docs]: https://docs.cloudfoundry.org/concepts/roles.html

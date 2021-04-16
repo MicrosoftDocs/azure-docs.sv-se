@@ -1,6 +1,6 @@
 ---
-title: återuppta AzCopy-jobb | Microsoft Docs
-description: Den här artikeln innehåller referensinformation för kommandot AzCopy Jobs Resume.
+title: azcopy jobs resume | Microsoft Docs
+description: Den här artikeln innehåller referensinformation för kommandot azcopy jobs resume.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -8,18 +8,18 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 30c0a31cc58ee6f1bbe78af017be42ae7d410fe0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 497aa3a77397a8a587badc0911176cd092eb1f23
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878417"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503345"
 ---
 # <a name="azcopy-jobs-resume"></a>azcopy jobb-CV
 
-Återupptar det befintliga jobbet med angivet jobb-ID.
+Återupptar det befintliga jobbet med det angivna jobb-ID:t.
 
-## <a name="synopsis"></a>Sammanfattning
+## <a name="synopsis"></a>Synopsis
 
 ```azcopy
 azcopy jobs resume [jobID] [flags]
@@ -30,25 +30,24 @@ azcopy jobs resume [jobID] [flags]
 - [Kom igång med AzCopy](storage-use-azcopy-v10.md)
 - [Överföra data med AzCopy och Blob Storage](./storage-use-azcopy-v10.md#transfer-data)
 - [Överföra data med AzCopy och fillagring](storage-use-azcopy-files.md)
-- [Konfigurera, optimera och felsöka AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Alternativ
 
 |Alternativ|Beskrivning|
 |--|--|
-|--mål – SAS-sträng|Mål-SAS för målet för angivet jobb-ID.|
-|--Exkludera sträng|Filtrera: exkludera de här misslyckade överföringarna när jobbet återupptas. Filerna ska avgränsas med ";".|
-|-h,--hjälp|Visa hjälp innehåll för kommandot Resume.|
-|--inkludera sträng|Filter: ta bara med de här misslyckade överföringarna när jobbet återupptas. Filerna ska avgränsas med ";".|
-|--Källa – SAS-sträng |käll-SAS för källan för angivet jobb-ID.|
+|--destination-sas sträng|Mål-SAS för målet för det angivna jobb-ID:t.|
+|--exclude sträng|Filter: Undanta dessa misslyckade överföringar när jobbet återupptas. Filerna ska avgränsas med ";".|
+|-h, --help|Visa hjälpinnehåll för kommandot resume.|
+|--include string|Filter: Inkludera endast dessa misslyckade överföringar när jobbet återupptas. Filerna ska avgränsas med ";".|
+|--source-sas string |källans SAS för källan för det angivna jobb-ID:t.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Alternativ som ärvts från överordnade kommandon
 
 |Alternativ|Beskrivning|
 |---|---|
-|--Cap-Mbit/s Float|CAPS överföringshastigheten i megabit per sekund. Indata genom strömning kan variera något från höljet. Om det här alternativet är inställt på noll, eller utelämnas, är data flödet inte något tak.|
-|--typ sträng för utdata|Formatet på kommandots utdata. Alternativen är: text, JSON. Standardvärdet är "text".|
-|--sträng för betrodd-Microsoft-suffix   |Anger ytterligare domänsuffix där Azure Active Directory inloggnings-token kan skickas.  Standardvärdet är '*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. De som anges här läggs till i standardvärdet. För säkerhet ska du bara placeras Microsoft Azure domäner här. Avgränsa flera poster med semikolon.|
+|--cap-mbps float|Kapslar överföringshastigheten i megabit per sekund. Dataflödet för ögonblick kan variera något från taket. Om det här alternativet är inställt på noll, eller om det utelämnas, är dataflödet inte begränsat.|
+|--output-type string|Format för kommandots utdata. Alternativen är: text, json. Standardvärdet är "text".|
+|--trusted-microsoft-suffixes string   |Anger ytterligare domänsuffix där Azure Active Directory inloggningstoken kan skickas.  Standardvärdet är *.core.windows.net.* core.chinacloudapi.cn; *.core.cloudapi.de;*. core.usgovcloudapi.net". Alla som anges här läggs till i standardinställningarna. Av säkerhetsskäl bör du bara placera Microsoft Azure här. Avgränsa flera poster med semikolon.|
 
 ## <a name="see-also"></a>Se även
 

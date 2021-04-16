@@ -1,25 +1,25 @@
 ---
-title: Aviserings schema definitioner i Azure Monitor
-description: Förstå vanliga aviserings schema definitioner för Azure Monitor
+title: Aviseringsschemadefinitioner i Azure Monitor
+description: Förstå de vanliga definitionerna för aviseringsschema för Azure Monitor
 author: ofirmanor
 ms.topic: conceptual
 ms.date: 04/12/2021
-ms.openlocfilehash: 5ec2adc4594c71f640b027d799b0a3c133ca2333
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 6d835b6d2c3519bc47decf8256ab3f3380170df6
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308667"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565125"
 ---
 # <a name="common-alert-schema-definitions"></a>Vanliga aviseringsschemadefinitioner
 
-I den här artikeln beskrivs [vanliga aviserings schema definitioner](./alerts-common-schema.md) för Azure Monitor, inklusive de för Webhooks, Azure Logic Apps, Azure Functions och Azure Automation runbooks. 
+Den här artikeln beskriver [vanliga](./alerts-common-schema.md) definitioner av aviseringsscheman för Azure Monitor, inklusive för webhooks, Azure Logic Apps, Azure Functions och Azure Automation runbooks. 
 
-En varnings instans beskriver den resurs som påverkades och orsaken till aviseringen. Dessa instanser beskrivs i det gemensamma schemat i följande avsnitt:
-* **Essentials**: en uppsättning standardiserade fält, gemensamma för alla aviserings typer, som beskriver vilken resurs som aviseringen finns på, tillsammans med ytterligare vanliga aviserings-metadata (till exempel allvarlighets grad eller beskrivning). Du hittar definitioner av allvarlighets grad i [Översikt över aviseringar](alerts-overview.md#overview). 
-* **Aviserings kontext**: en uppsättning fält som beskriver orsaken till aviseringen, med fält som varierar beroende på aviserings typen. Till exempel innehåller en mått varning fält som måttets namn och mått värde i aviserings kontexten, medan en aktivitets logg avisering innehåller information om händelsen som genererade aviseringen. 
+Alla aviseringsinstanser beskriver den resurs som påverkades och orsaken till aviseringen. Dessa instanser beskrivs i det vanliga schemat i följande avsnitt:
+* **Essentials:** En uppsättning standardiserade fält som är gemensamma för alla aviseringstyper, som beskriver vilken resurs aviseringen finns på, tillsammans med ytterligare vanliga aviseringsmetadata (till exempel allvarlighetsgrad eller beskrivning). Definitioner av allvarlighetsgrad finns i [aviseringsöversikten](alerts-overview.md#overview). 
+* **Aviseringskontext:** En uppsättning fält som beskriver orsaken till aviseringen, med fält som varierar beroende på aviseringstyp. En måttavisering innehåller till exempel fält som måttnamn och måttvärde i aviseringskontexten, medan en aktivitetsloggavisering har information om händelsen som genererade aviseringen. 
 
-**Exempel på aviserings nytto Last**
+**Exempel på aviseringsnyttolast**
 ```json
 {
   "schemaId": "azureMonitorCommonAlertSchema",
@@ -72,21 +72,21 @@ En varnings instans beskriver den resurs som påverkades och orsaken till aviser
 
 | Fält | Beskrivning|
 |:---|:---|
-| alertId | GUID: n identifierar aviserings instansen unikt. |
-| alertRule | Namnet på den aviserings regel som genererade aviserings instansen. |
-| Allvarlighetsgrad | Aviseringens allvarlighets grad. Möjliga värden: Sev0, Sev1, Sev2, Sev3 eller Sev4. |
-| signalType | Identifierar signalen som varnings regeln definierats på. Möjliga värden: statistik, logg eller aktivitets logg. |
-| monitorCondition | När en varning utlöses anges övervaknings villkoret för aviseringen till **utlöst**. När det underliggande villkoret som orsakade aviseringen om att brand figurer rensas, anges övervaknings villkoret som **löst**.   |
-| monitoringService | Övervaknings tjänsten eller lösningen som skapade aviseringen. Fälten för aviserings kontexten styrs av övervaknings tjänsten. |
-| alertTargetIds | En lista över de Azure Resource Manager-ID: n som påverkar en aviserings mål. För en logg avisering som definierats på en Log Analytics arbets yta eller Application Insights instans är det respektive arbets yta eller program. |
-| originAlertId | ID: t för varnings instansen, som genereras av övervaknings tjänsten som genererar den. |
-| firedDateTime | Datum och tid när aviserings instansen utlöstes i UTC (Coordinated Universal Time). |
-| resolvedDateTime | Datum och tid när övervaknings villkoret för varnings instansen har angetts till **löst** i UTC. Gäller för närvarande endast för mått aviseringar.|
-| beskrivning | Beskrivningen, enligt definitionen i varnings regeln. |
-|essentialsVersion| Avsnittet versions nummer för avsnittet Essentials.|
-|alertContextVersion | Versions numret för `alertContext` avsnittet. |
+| alertId | Det unika resurs-ID:t som identifierar aviseringsinstansen. |
+| alertRule | Namnet på den aviseringsregel som genererade aviseringsinstansen. |
+| Allvarlighetsgrad | Aviseringens allvarlighetsgrad. Möjliga värden: Sev0, Sev1, Sev2, Sev3 eller Sev4. |
+| signalType | Identifierar den signal som aviseringsregeln definierades på. Möjliga värden: Mått, Logg eller Aktivitetslogg. |
+| monitorCondition | När en avisering utbrandas är aviseringens övervakningsvillkor inställt på **Uttad**. När det underliggande villkoret som orsakade aviseringens brand rensas är övervakningsvillkoret inställt på **Löst**.   |
+| monitoringService | Den övervakningstjänst eller lösning som genererade aviseringen. Fälten för aviseringskontexten styrs av övervakningstjänsten. |
+| alertTargetIds | Listan över de Azure Resource Manager-ID:er som påverkas av en avisering. För en loggavisering som definierats på en Log Analytics-arbetsyta Application Insights en instans är det respektive arbetsyta eller program. |
+| originAlertId | ID:t för aviseringsinstansen, som genereras av övervakningstjänsten som genererar den. |
+| firedDateTime | Datum och tid då aviseringsinstansen utades i Coordinated Universal Time (UTC). |
+| resolvedDateTime | Datum och tid då övervakningsvillkoret för aviseringsinstansen är inställt på **Löst** i UTC. Gäller för närvarande endast för måttaviseringar.|
+| beskrivning | Beskrivningen, som definieras i aviseringsregeln. |
+|essentialsVersion| Versionsnumret för avsnittet essentials.|
+|alertContextVersion | Avsnittets `alertContext` versionsnummer. |
 
-**Exempel värden**
+**Exempelvärden**
 ```json
 {
   "essentials": {
@@ -108,13 +108,13 @@ En varnings instans beskriver den resurs som påverkades och orsaken till aviser
 }
 ```
 
-## <a name="alert-context"></a>Aviserings kontext
+## <a name="alert-context"></a>Aviseringskontext
 
-### <a name="metric-alerts-excluding-availability-tests"></a>Mått varningar (exklusive tillgänglighets test)
+### <a name="metric-alerts-excluding-availability-tests"></a>Måttaviseringar (exklusive tillgänglighetstester)
 
 #### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
-**Exempel värden**
+**Exempelvärden**
 ```json
 {
   "alertContext": {
@@ -145,11 +145,11 @@ En varnings instans beskriver den resurs som påverkades och orsaken till aviser
 }
 ```
 
-### <a name="metric-alerts-availability-tests"></a>Mått varningar (tillgänglighets test)
+### <a name="metric-alerts-availability-tests"></a>Måttaviseringar (tillgänglighetstester)
 
 #### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
-**Exempel värden**
+**Exempelvärden**
 ```json
 {
   "alertContext": {
@@ -179,11 +179,11 @@ En varnings instans beskriver den resurs som påverkades och orsaken till aviser
 ### <a name="log-alerts"></a>Loggaviseringar
 
 > [!NOTE]
-> För logg aviseringar som har ett anpassat e-postämne och/eller en JSON-nyttolast definierad, aktiverar det gemensamma schemat e-postämnet och/eller nytto Last schema till det som beskrivs i följande avsnitt. Aviseringar med det gemensamma schemat aktiverat har en övre storleks gräns på 256 KB per varning. Sök resultaten är inte inbäddade i logg aviserings nytto lasten om de orsakar aviserings storleken mellan detta tröskelvärde. Du kan fastställa detta genom att kontrol lera flaggan `IncludeSearchResults` . När Sök resultaten inte ingår bör du använda `LinkToFilteredSearchResultsAPI` eller `LinkToSearchResultsAPI` för att få åtkomst till frågeresultaten med Log Analytics- [API: et](/rest/api/loganalytics/dataaccess/query/get).
+> För loggaviseringar som har ett anpassat e-postämne och/eller en definierad JSON-nyttolast som aktiverar det gemensamma schemat återställs e-postämnet och/eller nyttolastschemat till det som beskrivs nedan. Aviseringar med det vanliga schemat aktiverat har en övre storleksgräns på 256 kB per avisering. Sökresultaten bäddas inte in i loggaviseringsnyttolasten om de gör att aviseringsstorleken passerar det här tröskelvärdet. Du kan fastställa detta genom att kontrollera flaggan `IncludeSearchResults` . När sökresultaten inte ingår bör du använda eller för att komma åt `LinkToFilteredSearchResultsAPI` `LinkToSearchResultsAPI` frågeresultat med [Log Analytics-API:et](/rest/api/loganalytics/dataaccess/query/get).
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
-**Exempel värden**
+**Exempelvärden**
 ```json
 {
   "alertContext": {
@@ -259,7 +259,7 @@ En varnings instans beskriver den resurs som påverkades och orsaken till aviser
 
 #### <a name="monitoringservice--application-insights"></a>`monitoringService` = `Application Insights`
 
-**Exempel värden**
+**Exempelvärden**
 ```json
 {
   "alertContext": {
@@ -331,7 +331,7 @@ En varnings instans beskriver den resurs som påverkades och orsaken till aviser
 
 #### <a name="monitoringservice--log-alerts-v2"></a>`monitoringService` = `Log Alerts V2`
 
-**Exempel värden**
+**Exempelvärden**
 ```json
 {
   "alertContext": {
@@ -375,7 +375,7 @@ En varnings instans beskriver den resurs som påverkades och orsaken till aviser
 
 #### <a name="monitoringservice--activity-log---administrative"></a>`monitoringService` = `Activity Log - Administrative`
 
-**Exempel värden**
+**Exempelvärden**
 ```json
 {
   "alertContext": {
@@ -402,7 +402,7 @@ En varnings instans beskriver den resurs som påverkades och orsaken till aviser
 
 #### <a name="monitoringservice--activity-log---policy"></a>`monitoringService` = `Activity Log - Policy`
 
-**Exempel värden**
+**Exempelvärden**
 ```json
 {
   "alertContext": {
@@ -435,7 +435,7 @@ En varnings instans beskriver den resurs som påverkades och orsaken till aviser
 
 #### <a name="monitoringservice--activity-log---autoscale"></a>`monitoringService` = `Activity Log - Autoscale`
 
-**Exempel värden**
+**Exempelvärden**
 ```json
 {
   "alertContext": {
@@ -465,7 +465,7 @@ En varnings instans beskriver den resurs som påverkades och orsaken till aviser
 
 #### <a name="monitoringservice--activity-log---security"></a>`monitoringService` = `Activity Log - Security`
 
-**Exempel värden**
+**Exempelvärden**
 ```json
 {
   "alertContext": {
@@ -498,7 +498,7 @@ En varnings instans beskriver den resurs som påverkades och orsaken till aviser
 
 #### <a name="monitoringservice--servicehealth"></a>`monitoringService` = `ServiceHealth`
 
-**Exempel värden**
+**Exempelvärden**
 ```json
 {
   "alertContext": {
@@ -542,7 +542,7 @@ En varnings instans beskriver den resurs som påverkades och orsaken till aviser
 ```
 #### <a name="monitoringservice--resource-health"></a>`monitoringService` = `Resource Health`
 
-**Exempel värden**
+**Exempelvärden**
 ```json
 {
   "alertContext": {
@@ -571,5 +571,5 @@ En varnings instans beskriver den resurs som påverkades och orsaken till aviser
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer om det [vanliga aviserings schemat](./alerts-common-schema.md).
-- Lär dig [hur du skapar en logisk app som använder det gemensamma aviserings schemat för att hantera alla dina aviseringar](./alerts-common-schema-integrations.md).
+- Läs mer om det [vanliga aviseringsschemat](./alerts-common-schema.md).
+- Lär [dig hur du skapar en logikapp som använder det gemensamma aviseringsschemat för att hantera alla dina aviseringar.](./alerts-common-schema-integrations.md)

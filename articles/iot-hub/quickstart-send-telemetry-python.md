@@ -1,5 +1,5 @@
 ---
-title: Snabb start – skicka telemetri till Azure IoT Hub snabb start (python) | Microsoft Docs
+title: Snabbstart – Skicka telemetri till Azure IoT Hub snabbstart (Python) | Microsoft Docs
 description: I den här snabbstarten kör du ett Python-exempelprogram som skickar simulerad telemetri till en IoT-hubb och använder ett verktyg för att läsa telemetrin från IoT-hubben.
 author: wesmc7777
 manager: philmea
@@ -15,28 +15,28 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/16/2020
-ms.openlocfilehash: bb86ccafaa0b9eac5ef35e96bbe3031a40f350ee
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 18163c3e5cdf83d736cdb52a3de028bf8890e728
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067545"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568581"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Snabb start: skicka telemetri från en enhet till en IoT-hubb och Läs den med Server dels program (python)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Snabbstart: Skicka telemetri från en enhet till en IoT-hubb och läsa den med ett backend-program (Python)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-I den här snabb starten skickar du telemetri från ett simulerat enhets program via Azure IoT Hub till ett Server dels program för bearbetning. IoT Hub är en Azure-tjänst som gör att du kan mata in stora mängder telemetri från IoT-enheter i molnet för lagring eller bearbetning. I den här snabb starten används två i förväg skrivna python-program: en för att skicka Telemetrin och en för att läsa Telemetrin från hubben. Innan du kör dessa två program skapar du en IoT-hubb och registrerar en enhet med navet.
+I den här snabbstarten skickar du telemetri från ett simulerat enhetsprogram via Azure IoT Hub till ett backend-program för bearbetning. IoT Hub är en Azure-tjänst som gör att du kan mata in stora mängder telemetri från IoT-enheter i molnet för lagring eller bearbetning. Den här snabbstarten använder två färdiga Python-program: ett för att skicka telemetrin och ett för att läsa telemetrin från hubben. Innan du kör dessa två program skapar du en IoT-hubb och registrerar en enhet med navet.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Ett Azure-konto med en aktiv prenumeration. [Skapa ett kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Ett Azure-konto med en aktiv prenumeration. [Skapa en utan kostnad.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-* [Python 3.7 +](https://www.python.org/downloads/). Andra versioner av python som stöds finns i [funktioner i Azure IoT-enheter](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features).
+* [Python 3.7+](https://www.python.org/downloads/). Andra versioner av Python som stöds finns i [Azure IoT-enhetsfunktioner.](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features)
 
-* [Ett exempel på python-projekt](https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip).
+* [Ett Python-exempelprojekt](https://github.com/Azure-Samples/azure-iot-samples-python/) från github. Ladda ned eller klona exemplen med **kodknappen** på github-lagringsplatsen.
 
-* Port 8883 öppna i brand väggen. Enhets exemplet i den här snabb starten använder MQTT-protokoll, som kommunicerar via port 8883. Den här porten kan blockeras i vissa företags-och miljö nätverks miljöer. Mer information och sätt att kringgå det här problemet finns i [ansluta till IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Port 8883 är öppen i brandväggen. Enhetsexempel i den här snabbstarten använder MQTT-protokollet, som kommunicerar via port 8883. Den här porten kan blockeras i vissa företags- och utbildningsnätverksmiljöer. Mer information och sätt att komma runt det här problemet finns [i Ansluta till IoT Hub (MQTT).](iot-hub-mqtt-support.md#connecting-to-iot-hub)
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
@@ -50,17 +50,17 @@ I den här snabb starten skickar du telemetri från ett simulerat enhets program
 
 En enhet måste vara registrerad vid din IoT-hubb innan den kan ansluta. I den här snabbstarten använder du Azure Cloud Shell till att registrera en simulerad enhet.
 
-1. Kör följande kommando i Azure Cloud Shell för att skapa enhets identiteten.
+1. Kör följande kommando i Azure Cloud Shell för att skapa enhetsidentiteten.
 
     **YourIoTHubName**: Ersätt platshållaren nedan med det namn du valde för din IoT-hubb.
 
-    **MyPythonDevice**: det här är namnet på enheten som du registrerar. Vi rekommenderar att du använder **MyPythonDevice** som det visas. Om du väljer ett annat namn på din enhet måste du också använda det namnet i den här artikeln och uppdatera enhets namnet i exempel programmen innan du kör dem.
+    **MyPythonDevice:** Det här är namnet på den enhet som du registrerar. Vi rekommenderar att du använder **MyPythonDevice** enligt bilden. Om du väljer ett annat namn för din enhet måste du också använda det namnet i hela den här artikeln och uppdatera enhetsnamnet i exempelprogrammen innan du kör dem.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyPythonDevice
     ```
 
-1. Kör följande kommando i Azure Cloud Shell för att hämta _enhets anslutnings strängen_ för den enhet som du har registrerat:
+1. Kör följande kommando i Azure Cloud Shell hämta _enhetsanslutningssträngen för_ den enhet som du registrerade:
 
     **YourIoTHubName**: Ersätt platshållaren nedan med det namn du valde för din IoT-hubb.
 
@@ -72,9 +72,9 @@ En enhet måste vara registrerad vid din IoT-hubb innan den kan ansluta. I den h
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyPythonDevice;SharedAccessKey={YourSharedAccessKey}`
 
-    Du kommer att använda det här värdet senare i snabb starten.
+    Du använder det här värdet senare i snabbstarten.
 
-1. Du behöver också _Event Hubs-kompatibel slut punkt_, _Event Hubs-kompatibel sökväg_ och _tjänstens primära nyckel_ från din IoT Hub för att aktivera backend-programmet för att ansluta till din IoT-hubb och hämta meddelandena. Följande kommandon hämtar dessa värden för din IoT-hubb:
+1. Du behöver även _den Event Hubs-kompatibla_ slutpunkten , Event Hubs-kompatibla sökvägen och den primära tjänstnyckeln från din IoT Hub för att göra det möjligt för backend-programmet att ansluta till IoT-hubben och hämta meddelandena.   Följande kommandon hämtar dessa värden för din IoT-hubb:
 
    **YourIoTHubName** : Ersätt platshållaren nedan med det namn du väljer för din IoT-hubb.
 
@@ -86,17 +86,19 @@ En enhet måste vara registrerad vid din IoT-hubb innan den kan ansluta. I den h
     az iot hub policy show --name service --query primaryKey --hub-name {YourIoTHubName}
     ```
 
-    Anteckna de här tre värdena, som du kommer att använda senare i snabb starten.
+    Anteckna dessa tre värden, som du kommer att använda senare i snabbstarten.
 
 ## <a name="send-simulated-telemetry"></a>Skicka simulerad telemetri
 
 Det simulerade enhetsprogrammet ansluter till en enhetsspecifik slutpunkt på din IoT-hubb och skickar simulerad telemetri om temperatur och luftfuktighet.
 
+1. Ladda ned eller klona lagringsplatsen azure-iot-samples-python med knappen Kod på lagringsplatsen [azure-iot-samples-python.](https://github.com/Azure-Samples/azure-iot-samples-python/) 
+
 1. Navigera till Python-exempelprojektets rotmapp i ett lokalt terminalfönster. Gå sedan till mappen **iot-hub\Quickstarts\simulated-device**.
 
 1. Öppna filen **SimulatedDevice.py** i en valfri textredigerare.
 
-    Ersätt värdet för `CONNECTION_STRING` variabeln med enhets anslutnings strängen som du antecknade tidigare. Spara sedan ändringarna i **SimulatedDevice.py**.
+    Ersätt värdet för variabeln `CONNECTION_STRING` med enhetsanslutningssträngen som du antecknade tidigare. Spara sedan ändringarna till **SimulatedDevice.py**.
 
 1. Installera de bibliotek som krävs för det simulerade enhetsprogrammet genom att köra följande kommandon i det lokala terminalfönstret:
 
@@ -119,17 +121,17 @@ Det simulerade enhetsprogrammet ansluter till en enhetsspecifik slutpunkt på di
 Serverdelsprogrammet ansluter till **Events**-slutpunkten för tjänstsidan på din IoT-hubb. Programmet tar emot enhet-till-moln-meddelanden som skickats från din simulerade enhet. Ett IoT Hub-serverprogram körs normalt i molnet för att ta emot och bearbeta enhet-till-molnet-meddelanden.
 
 > [!NOTE]
-> I följande steg används det synkrona exemplet **read_device_to_cloud_messages_sync. py**. Du kan utföra samma steg med det asynkrona exemplet **read_device_to_cloud_messages_async. py**.
+> I följande steg används det synkrona exemplet, **read_device_to_cloud_messages_sync.py**. Du kan utföra samma steg med det asynkrona exemplet, **read_device_to_cloud_messages_async.py**.
 
 1. Navigera till Python-exempelprojektets rotmapp i ett annat lokalt terminalfönster. Gå sedan till mappen **iot-hub\Quickstarts\read-d2c-messages**.
 
-2. Öppna filen **read_device_to_cloud_messages_sync. py** i valfri text redigerare. Uppdatera följande variabler och spara ändringarna i filen.
+2. Öppna filen **read_device_to_cloud_messages_sync.py** i valfri textredigerare. Uppdatera följande variabler och spara ändringarna i filen.
 
     | Variabel | Värde |
     | -------- | ----------- |
-    | `EVENTHUB_COMPATIBLE_ENDPOINT` | Ersätt värdet för variabeln med den Event Hubs-kompatibla slut punkten som du antecknade tidigare. |
-    | `EVENTHUB_COMPATIBLE_PATH`     | Ersätt värdet för variabeln med Event Hubs-kompatibel sökväg som du antecknade tidigare. |
-    | `IOTHUB_SAS_KEY`                | Ersätt värdet för variabeln med tjänstens primära nyckel som du gjorde en anteckning om tidigare. |
+    | `EVENTHUB_COMPATIBLE_ENDPOINT` | Ersätt värdet för variabeln med den Event Hubs slutpunkt som du antecknade tidigare. |
+    | `EVENTHUB_COMPATIBLE_PATH`     | Ersätt värdet för variabeln med den Event Hubs sökväg som du antecknade tidigare. |
+    | `IOTHUB_SAS_KEY`                | Ersätt värdet för variabeln med den primärnyckel för tjänsten som du antecknade tidigare. |
 
 3. Installera de bibliotek som krävs för serverdelsprogrammet genom att köra följande kommandon i det lokala terminalfönstret:
 
@@ -153,7 +155,7 @@ Serverdelsprogrammet ansluter till **Events**-slutpunkten för tjänstsidan på 
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapar du en IoT-hubb, registrerat en enhet, skickade simulerad telemetri till hubben med hjälp av ett python-program och läser Telemetrin från hubben med hjälp av ett enkelt Server dels program.
+I den här snabbstarten ska du konfigurera en IoT-hubb, registrera en enhet, skicka simulerad telemetri till hubben med hjälp av ett Python-program och läsa telemetrin från hubben med hjälp av ett enkelt backend-program.
 
 Om du vill veta hur du kan styra den simulerade enheten från ett serverdelsprogram fortsätter du till nästa snabbstart.
 

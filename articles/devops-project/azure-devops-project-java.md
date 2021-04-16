@@ -1,43 +1,49 @@
 ---
-title: 'Snabb start: skapa en CI/CD-pipeline för Java-Azure DevOps starter'
-description: Lär dig att använda den förenklade start upplevelsen av Azure DevOps för att konfigurera en pipeline för kontinuerlig integrering (CI) och kontinuerlig leverans (CD) för din Java-app i Azure-pipeline.
-ms.prod: devops
-ms.technology: devops-cicd
+title: 'Snabbstart: Skapa en CI/CD-pipeline för Java – Azure DevOps Starter'
+description: Lär dig att använda den förenklade Azure DevOps Starter-upplevelsen för att konfigurera en pipeline för kontinuerlig integrering (CI) och kontinuerlig leverans (CD) för din Java-app i Azure Pipelines.
 services: vsts
 documentationcenter: vs-devops-build
 author: mlearned
+ms.author: mlearned
 manager: gwallace
+ms.date: 03/24/2020
+ms.prod: devops
+ms.technology: devops-cicd
+ms.topic: quickstart
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.topic: quickstart
-ms.date: 03/24/2020
-ms.author: mlearned
-ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: d76c4206ca39518c3a09d27ee470c05db108ae6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mvc
+- seo-java-july2019
+- seo-java-august2019
+- seo-java-september2019
+- devx-track-java
+- mode-api
+ms.openlocfilehash: 30ee97e0928f7b2995bd7bf02bec15bb8a46f7e2
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551889"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535426"
 ---
-# <a name="set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-starter"></a>Konfigurera en CI/CD-pipeline för en Java-app med Azure DevOps starter
+# <a name="set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-starter"></a>Konfigurera en CI/CD-pipeline för en Java-app med Azure DevOps Starter
 
-I den här snabb starten använder du den förenklade start miljön för Azure DevOps för att konfigurera en pipeline för kontinuerlig integrering (CI) och kontinuerlig leverans (CD) för din Java-app i Azure-pipeline. Du kan använda Azure DevOps starter för att konfigurera allt du behöver för att utveckla, distribuera och övervaka din app. 
+I den här snabbstarten använder du den förenklade Azure DevOps Starter-upplevelsen för att konfigurera en pipeline för kontinuerlig integrering (CI) och kontinuerlig leverans (CD) för din Java-app i Azure Pipelines. Du kan använda Azure DevOps Starter för att konfigurera allt du behöver för att utveckla, distribuera och övervaka din app. 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
-- Ett [Azure DevOps](https://azure.microsoft.com/services/devops/) -konto och en organisation.
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) 
+- Ett [Azure DevOps-konto](https://azure.microsoft.com/services/devops/) och en organisation.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
 
-DevOps starter skapar en CI/CD-pipeline i Azure-pipelines. Du kan skapa en ny Azure DevOps-organisation eller använda en befintlig organisation. DevOps starter skapar också Azure-resurser i den Azure-prenumeration du väljer.
+DevOps Starter skapar en CI/CD-pipeline i Azure Pipelines. Du kan skapa en ny Azure DevOps-organisation eller använda en befintlig organisation. DevOps Starter skapar även Azure-resurser i valfri Azure-prenumeration.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. I rutan Sök skriver du **DevOps starter** och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
+1. I sökrutan skriver du **DevOps Starter** och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
 
-    ![DevOps starter-instrumentpanelen](_img/azure-devops-starter-aks/search-devops-starter.png)
+    ![DevOps Starter-instrumentpanelen](_img/azure-devops-starter-aks/search-devops-starter.png)
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Välj ett exempelprogram och en Azure-tjänst
 
@@ -54,21 +60,21 @@ DevOps starter skapar en CI/CD-pipeline i Azure-pipelines. Du kan skapa en ny Az
    1. Välj ett namn för projektet. 
    
    1. Välj din Azure-prenumeration och plats, välj ett namn för programmet och välj sedan **Klar**.  
-   Efter några minuter visas DevOps starter-instrumentpanelen i Azure Portal. Ett exempelprogram konfigureras i en lagringsplats i din Azure DevOps-organisation, en version körs och programmet distribueras till Azure. Den här instrumentpanelen ger insyn i kodlagringsplatsen, CI/CD-pipelinen och ditt program i Azure.
+   Efter några minuter visas DevOps Starter-instrumentpanelen i Azure Portal. Ett exempelprogram konfigureras i en lagringsplats i din Azure DevOps-organisation, en version körs och programmet distribueras till Azure. Den här instrumentpanelen ger insyn i kodlagringsplatsen, CI/CD-pipelinen och ditt program i Azure.
    
 2. Visa ditt körande program genom att välja **Bläddra**.
    
-   ![Visa instrument panelen för programmet i Azure Portal](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
+   ![Visa programmets instrumentpanel i Azure Portal](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
 
-DevOps starter konfigurerade automatiskt en CI-version och versions utlösare.  Nu är du redo att samarbeta med ett team på en Java-app med en CI/CD-process som automatiskt distribuerar ditt senaste arbete till din webbplats.
+DevOps Starter konfigurerade automatiskt en CI-version och lanseringsutlösare.  Nu är du redo att samarbeta med ett team på en Java-app med en CI/CD-process som automatiskt distribuerar ditt senaste arbete till din webbplats.
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Genomför ändringar i koden och kör CI/CD
 
-DevOps starter skapar en git-lagringsplats i Azure databaser eller GitHub. Visa lagringsplatsen och gör kodändringar i programmet genom att utföra följande:
+DevOps Starter skapar en Git-lagringsplats i Azure Repos eller GitHub. Visa lagringsplatsen och gör kodändringar i programmet genom att utföra följande:
 
-1. Till vänster om instrument panelen för DevOps starter väljer du länken för huvud grenen. Den här länken öppnar en vy till den nyligen skapade Git-lagringsplatsen.
+1. Till vänster om DevOps Starter-instrumentpanelen väljer du länken för din huvudgren. Den här länken öppnar en vy till den nyligen skapade Git-lagringsplatsen.
 
-1. Om du vill visa webbadressen för den klonade lagringsplatsen väljer du **Klona** längst upp till höger i webbläsaren. Du kan klona Git-lagringsplatsen till din favorit-IDE. I de följande stegen kan du använda webbläsaren för att göra och bekräfta kod ändringar direkt till huvud grenen.
+1. Om du vill visa webbadressen för den klonade lagringsplatsen väljer du **Klona** längst upp till höger i webbläsaren. Du kan klona Git-lagringsplatsen till din favorit-IDE. I följande steg kan du använda webbläsaren för att göra och genomföra kodändringar direkt till huvudgrenen.
 
 1. På vänster sida i webbläsaren går du till filen **src/main/webapp/index.html**.
 
@@ -77,16 +83,16 @@ DevOps starter skapar en git-lagringsplats i Azure databaser eller GitHub. Visa 
 
 1. Välj **Incheckning** och spara sedan ändringarna.
 
-1. I webbläsaren går du till DevOps starter-instrumentpanelen.   
+1. Gå till DevOps Starter-instrumentpanelen i webbläsaren.   
 Du bör nu se att en version håller på att skapas. De ändringar som du just utfört skapas och distribueras automatiskt via en CI/CD-pipeline.
 
 ## <a name="examine-the-cicd-pipeline"></a>Granska CI/CD-pipelinen
 
- I det föregående steget konfigurerade DevOps starter automatiskt en fullständigt CI/CD-pipeline. Utforska och anpassa pipelinen efter behov. Utför följande steg för att bekanta dig med bygg- och versionspipelines.
+ I föregående steg konfigurerade DevOps Starter automatiskt en fullständig CI/CD-pipeline. Utforska och anpassa pipelinen efter behov. Utför följande steg för att bekanta dig med bygg- och versionspipelines.
 
-1. Välj **Bygg pipelines** överst på DevOps starter-instrumentpanelen. Länken öppnar en webbläsarflik och bygg-pipelinen för det nya projektet.
+1. Längst upp på DevOps Starter-instrumentpanelen väljer du **Skapa pipelines.** Länken öppnar en webbläsarflik och bygg-pipelinen för det nya projektet.
 
-1. Peka på fältet **status** och välj ellipsen (...). Den här åtgärden öppnar en meny där du kan starta flera aktiviteter, till exempel köa en ny version, göra en paus och redigera build-pipeline.
+1. Peka på **fältet Status** och välj sedan ellipsen (...). Den här åtgärden öppnar en meny där du kan starta flera aktiviteter, till exempel att köa en ny version, pausa en version och redigera bygg-pipelinen.
 
 1. Välj **Redigera**.
 
@@ -99,12 +105,12 @@ Du bör nu se att en version håller på att skapas. De ändringar som du just u
 1. Under ditt bygg-pipelinenamn väljer du **Historik**.   
 I fönsterrutan **Historik** ser du en spårningslogg över de senaste ändringarna för versionen.  Azure Pipelines spårar alla ändringar som görs av bygg-pipelinen, vilket innebär att du kan jämföra versioner.
 
-1. Välj **Utlösare**.  DevOps starter skapade automatiskt en CI-utlösare och varje incheckning till databasen startar en ny version.  Du kan välja att inkludera eller exkludera grenar från CI-processen.
+1. Välj **Utlösare**.  DevOps Starter skapade automatiskt en CI-utlösare, och varje genomförande till lagringsplatsen startar en ny version.  Du kan välja att inkludera eller exkludera grenar från CI-processen.
 
 1. Välj **Kvarhållning**. Beroende på ditt scenario kan du ange principer för att behålla eller ta bort ett visst antal versioner.
 
 1. Välj **Build and Release** (Byggen och versioner) och sedan **Versioner**.  
- DevOps starter skapar en versions pipeline för att hantera distributioner till Azure.
+ DevOps Starter skapar en lanseringspipeline för att hantera distributioner till Azure.
 
 1. Välj ellipsen (...) till vänster intill din versionspipeline och välj sedan **Redigera**. Versionspipelinen innehåller en pipeline som definierar versionsprocessen.  
     
@@ -116,15 +122,15 @@ I fönsterrutan **Historik** ser du en spårningslogg över de senaste ändringa
 
 1. Till höger väljer du alternativet för att **visa versioner**. Den här vyn visar en historik över versioner.
 
-1. Välj ellipsen (...) bredvid någon av dina versioner och välj sedan **Öppna**. Det finns flera menyer att utforska, till exempel en versionssammanfattning, tillhörande arbetsobjekt och tester.
+1. Välj ellipsen (...) bredvid en av dina versioner och välj sedan **Öppna**. Det finns flera menyer att utforska, till exempel en versionssammanfattning, tillhörande arbetsobjekt och tester.
 
 1. Välj **Incheckningar**. Den här vyn visar kodincheckningar som är associerade med den specifika distributionen. 
 
-1. Välj **loggar**. Loggarna innehåller användbar information om distributionsprocessen. De kan visas både under och efter distributionerna.
+1. Välj **Loggar**. Loggarna innehåller användbar information om distributionsprocessen. De kan visas både under och efter distributionerna.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Du kan ta bort Azure App Service och andra relaterade resurser när de inte längre behövs. Använd **borttagnings** funktionen på DevOps starter-instrumentpanelen.
+Du kan ta bort Azure App Service och andra relaterade resurser när de inte längre behövs. Använd funktionen **Ta bort** på DevOps Starter-instrumentpanelen.
 
 ## <a name="next-steps"></a>Nästa steg
 

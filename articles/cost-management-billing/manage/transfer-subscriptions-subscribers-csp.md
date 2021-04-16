@@ -6,14 +6,14 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/24/2021
+ms.date: 04/15/2021
 ms.author: banders
-ms.openlocfilehash: b88a5bc10afeffe7e15ad7a90e28bd8b8ff28688
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 687db46ea2f6c9c4fae6e5355e3236cde3d7a401
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105046563"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567255"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Överför Azure-prenumerationer mellan prenumeranter och molnlösningsleverantörer
 
@@ -21,7 +21,7 @@ Den här artikeln innehåller enkla steg för att överföra Azure-prenumeration
 
 Innan du startar en överföringsbegäran bör du ladda ned eller exportera eventuell kostnads- och faktureringsinformation som du vill behålla. Information om fakturering och användning överförs inte med prenumerationen. Mer information om export av kostnadshanteringsdata finns i [Skapa och hantera exporterade data](../costs/tutorial-export-acm-data.md). Mer information om hur du laddar ned din faktura och dina användningsdata finns i [Ladda ned eller visa din Azure-faktura och information om den dagliga användningen](download-azure-invoice-daily-usage-date.md).
 
-Om du har några befintliga reservationer, slutar de att använda 90 dagar efter att du har överfört en prenumeration. Glöm inte att [avbryta eventuella reservationer och återbetala dem](../reservations/exchange-and-refund-azure-reservations.md) innan du överför en prenumeration för att undvika avgifter efter perioden på 90 dagar.
+Om du har några befintliga reservationer upphör de att tillämpas 90 dagar efter att du har överfört en prenumeration. Se till att [avbryta eventuella reservationer och återbetala dem innan](../reservations/exchange-and-refund-azure-reservations.md) du överför en prenumeration för att undvika avgifter efter respitperioden på 90 dagar.
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>Överföra EA-prenumerationer till en CSP-partner
 
@@ -36,7 +36,7 @@ När begäran har godkänts kan CSP:n tillhandahålla en kombinerad faktura till
 
 För att kunna överföra andra Azure-prenumerationer till en CSP-partner måste prenumeranten flytta resurser från källprenumerationer till CSP-prenumerationer. Använd följande vägledning när du flyttar resurser mellan prenumerationer.
 
-1. Upprätta en [åter försäljares relation](/partner-center/request-a-relationship-with-a-customer) med kunden. Granska den [regionala CSP-auktoriseringen](/partner-center/regional-authorization-overview) för att se till att både kund-och partner klienten är inom samma auktoriserade regioner.
+1. Upprätta en [återförsäljarrelation](/partner-center/request-a-relationship-with-a-customer) med kunden. Granska [översikten över CSP regional auktorisering](/partner-center/regional-authorization-overview) för att se till att både kund- och partnerklientorganisationen finns i samma auktoriserade regioner.
 1. Samarbeta med din CSP-partner när du skapar Azure CSP-målprenumerationer.
 1. Se till att käll- och målprenumerationerna finns i samma Azure Active Directory-klient (Azure AD).  
     Du kan inte ändra Azure AD-klienten för en Azure CSP-prenumeration. I stället måste du lägga till eller associera källprenumerationen till CSP Azure AD-klienten. Mer information finns i [Lägga till eller associera en Azure-prenumeration till Azure Active Directory-klienten](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
@@ -55,9 +55,9 @@ För att kunna överföra andra Azure-prenumerationer till en CSP-partner måste
 
 ## <a name="transfer-csp-subscription-to-other-offer"></a>Överföra CSP-prenumeration till ett annat erbjudande
 
-För att kunna överföra andra Azure-prenumerationer till en CSP-partner måste prenumeranten flytta resurser mellan källprenumerationer och målprenumerationer.
+För att kunna överföra andra Azure-prenumerationer till en CSP-partner måste prenumeranten flytta resurser mellan källprenumerationer och målprenumerationer. Detta görs av en partner och en kund – det utförs inte av en Microsoft-representant.
 
-1. Skapa Azure-målprenumerationer.
+1. Kunden skapar Azure-målprenumerationer.
 1. Se till att käll- och målprenumerationerna finns i samma Azure Active Directory-klient (Azure AD). Mer information om hur du ändrar en Azure AD-klient finns i [Lägga till eller associera en Azure-prenumeration till Azure Active Directory-klienten](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
     Observera att alternativet för att byta katalog inte stöds med CSP-prenumerationen. Du överförs till exempel från en CSP till en prenumeration där du betalar per användning. Du måste ändra katalog för prenumerationen med betalning per användning så att katalogen matchar.
 
@@ -65,7 +65,7 @@ För att kunna överföra andra Azure-prenumerationer till en CSP-partner måste
     >  - När du associerar en prenumeration med en annan katalog förlorar de användare som har tilldelats roller med [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) sin åtkomst. Klassiska prenumerationsadministratörer, inklusive tjänstadministratörer och medadministratörer, förlorar också åtkomsten.
     >  - Principtilldelningar tas också bort från en prenumeration när prenumerationen associeras med en annan katalog.
 
-1. Det användarkonto som du använder när du gör överföringen måste ha [Azure RBAC](add-change-subscription-administrator.md)-ägaråtkomst på båda prenumerationerna.
+1. Det kundanvändarkonto som du använder för att göra överföringen måste ha [Azure RBAC-ägaråtkomst](add-change-subscription-administrator.md) för båda prenumerationerna.
 1. Innan du börjar måste du [verifiera](/rest/api/resources/resources/validatemoveresources) att alla Azure-resurser kan flyttas från källprenumerationen till målprenumerationen.
     > [!IMPORTANT]
     >  - Vissa Azure-resurser kan inte flyttas mellan prenumerationer. En fullständig lista över Azure-resurser som kan flyttas finns i [Stöd för flytt av resurser](../../azure-resource-manager/management/move-support-resources.md).

@@ -1,31 +1,34 @@
 ---
-title: Använda Azure Service Bus köer med python Azure-Service Bus paket version 7.0.0
-description: Den här artikeln visar hur du använder python för att skicka meddelanden till och ta emot meddelanden från Azure Service Bus köer.
-author: spelluru
+title: Använd Azure Service Bus köer med Python azure-servicebus package version 7.0.0
+description: Den här artikeln visar hur du använder Python för att skicka meddelanden till och ta emot meddelanden från Azure Service Bus köer.
 documentationcenter: python
-ms.devlang: python
-ms.topic: quickstart
-ms.date: 11/18/2020
+author: spelluru
 ms.author: spelluru
-ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 0553062032a58ec9eb9cf3c474ee7c8f19fc544d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/18/2020
+ms.topic: quickstart
+ms.devlang: python
+ms.custom:
+- seo-python-october2019
+- devx-track-python
+- mode-api
+ms.openlocfilehash: e982b3f36dbfe2144170d53d07473201abb014ef
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98631563"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534966"
 ---
-# <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-python"></a>Skicka meddelanden till och ta emot meddelanden från Azure Service Bus köer (python)
-Den här artikeln visar hur du använder python för att skicka meddelanden till och ta emot meddelanden från Azure Service Bus köer. 
+# <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-python"></a>Skicka meddelanden till och ta emot meddelanden Azure Service Bus köer (Python)
+Den här artikeln visar hur du använder Python för att skicka meddelanden till och ta emot meddelanden från Azure Service Bus köer. 
 
 ## <a name="prerequisites"></a>Förutsättningar
-- En Azure-prenumeration. Du kan aktivera dina [förmåner för Visual Studio eller MSDN-prenumeranter](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) eller registrera dig för ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Om du inte har en kö att arbeta med följer du stegen i artikeln [använd Azure Portal för att Service Bus skapa](service-bus-quickstart-portal.md) en kö. Anteckna **anslutnings strängen** för Service Bus namn området och namnet på **kön** som du skapade.
-- Python 2,7 eller högre, med [python Azure Service Bus](https://pypi.python.org/pypi/azure-servicebus) -paketet installerat. Mer information finns i [installations guiden för python](/azure/developer/python/azure-sdk-install). 
+- En Azure-prenumeration. Du kan aktivera dina [Visual Studio- eller MSDN-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) eller registrera dig för ett [kostnadsfritt konto.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
+- Om du inte har någon kö att arbeta med följer du stegen i artikeln Använda Azure Portal för att skapa en [Service Bus för](service-bus-quickstart-portal.md) att skapa en kö. Anteckna **anslutningssträngen** för Service Bus namnområdet och namnet på den **kö som** du skapade.
+- Python 2.7 eller senare, med [Python Azure Service Bus-paketet](https://pypi.python.org/pypi/azure-servicebus) installerat. Mer information finns i [installationsguiden för Python.](/azure/developer/python/azure-sdk-install) 
 
 ## <a name="send-messages-to-a-queue"></a>Skicka meddelanden till en kö
 
-1. Lägg till följande import instruktion. 
+1. Lägg till följande importutdrag. 
 
     ```python
     from azure.servicebus import ServiceBusClient, ServiceBusMessage
@@ -38,9 +41,9 @@ Den här artikeln visar hur du använder python för att skicka meddelanden till
     ```
 
     > [!IMPORTANT]
-    > - Ersätt `<NAMESPACE CONNECTION STRING>` med anslutnings strängen för din Service Bus-namnrymd.
+    > - Ersätt `<NAMESPACE CONNECTION STRING>` med anslutningssträngen för Service Bus namnområdet.
     > - Ersätt `<QUEUE NAME>` med namnet på kön. 
-3. Lägg till en metod för att skicka ett enskilt meddelande.
+3. Lägg till en metod för att skicka ett enda meddelande.
 
     ```python
     def send_single_message(sender):
@@ -51,7 +54,7 @@ Den här artikeln visar hur du använder python för att skicka meddelanden till
         print("Sent a single message")
     ```
 
-    Avsändaren är ett objekt som fungerar som en klient för den kö som du har skapat. Du skapar det senare och skickar det som ett argument till den här funktionen. 
+    Avsändaren är ett objekt som fungerar som en klient för den kö som du skapade. Du skapar den senare och skickar den som ett argument till den här funktionen. 
 4. Lägg till en metod för att skicka en lista med meddelanden.
 
     ```python
@@ -80,7 +83,7 @@ Den här artikeln visar hur du använder python för att skicka meddelanden till
         sender.send_messages(batch_message)
         print("Sent a batch of 10 messages")
     ```
-6. Skapa en Service Bus-klient och sedan ett objekt i kö för att skicka meddelanden.
+6. Skapa en Service Bus klient och sedan ett objekt för köavsändar för att skicka meddelanden.
 
     ```python
     # create a Service Bus client using the connection string
@@ -101,7 +104,7 @@ Den här artikeln visar hur du använder python för att skicka meddelanden till
     ```
  
 ## <a name="receive-messages-from-a-queue"></a>Ta emot meddelanden från en kö
-Lägg till följande kod efter Print-instruktionen. Den här koden tar kontinuerligt emot nya meddelanden tills den inte får några nya meddelanden i 5 ( `max_wait_time` ) sekunder. 
+Lägg till följande kod efter utskriftsuttrycket. Den här koden tar kontinuerligt emot nya meddelanden tills den inte tar emot några nya meddelanden under 5 ( `max_wait_time` ) sekunder. 
 
 ```python
 with servicebus_client:
@@ -192,20 +195,20 @@ Received: Message inside a ServiceBusMessageBatch
 Received: Message inside a ServiceBusMessageBatch
 ```
 
-I Azure Portal navigerar du till Service Bus namn området. På sidan **Översikt** kontrollerar du att antalet **inkommande** och **utgående** meddelanden är 16. Om antalet inte visas uppdaterar du sidan efter några minuter. 
+I Azure Portal navigerar du till Service Bus namnområdet. På sidan **Översikt kontrollerar** du att antalet **inkommande** och **utgående** meddelanden är 16. Om du inte ser antalet uppdaterar du sidan efter att ha väntat i några minuter. 
 
 :::image type="content" source="./media/service-bus-python-how-to-use-queues/overview-incoming-outgoing-messages.png" alt-text="Antal inkommande och utgående meddelanden":::
 
-Välj kön på den här **översikts** sidan för att gå till sidan **Service Bus kö** . Du kan också se antalet **inkommande** och **utgående** meddelanden på den här sidan. Du ser också annan information, till exempel den **aktuella storleken** på kön och **antalet aktiva meddelanden**. 
+Välj kön på den här **översiktssidan** för att gå till **sidan Service Bus Kö.** Du kan också se antalet **inkommande och** **utgående** meddelanden på den här sidan. Du ser även annan information, till exempel **den aktuella storleken** på kön och antalet aktiva **meddelanden.** 
 
-:::image type="content" source="./media/service-bus-python-how-to-use-queues/queue-details.png" alt-text="Information om kö":::
+:::image type="content" source="./media/service-bus-python-how-to-use-queues/queue-details.png" alt-text="Köinformation":::
 
 
 ## <a name="next-steps"></a>Nästa steg
 Se följande dokumentation och exempel: 
 
-- [Azure Service Bus klient bibliotek för python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus)
+- [Azure Service Bus klientbibliotek för Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus)
 - [Exempel](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples). 
-    - Mappen **sync_samples** innehåller exempel som visar hur du interagerar med Service Bus på ett synkront sätt. I den här snabb starten använde du den här metoden. 
+    - Mappen **sync_samples** innehåller exempel som visar hur du interagerar med Service Bus på ett synkront sätt. I den här snabbstarten använde du den här metoden. 
     - Mappen **async_samples** innehåller exempel som visar hur du interagerar med Service Bus på ett asynkront sätt. 
-- [dokumentation om Azure-Service Bus-referens](/python/api/azure-servicebus/azure.servicebus?preserve-view=true)
+- [referensdokumentation för azure-servicebus](/python/api/azure-servicebus/azure.servicebus?preserve-view=true)

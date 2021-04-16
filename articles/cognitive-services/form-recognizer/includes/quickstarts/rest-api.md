@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 04/14/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8f729d3d2ebc41552919634c68557042a95649ec
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: cd9cf0e4a2abec1ad29d5b34f3d6f473ca5bf71d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516457"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564658"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -23,7 +23,7 @@ ms.locfileid: "107516457"
 > [!NOTE]
 > Den här guiden använder cURL för att köra REST API-anrop.
 
-| [Formigenkänning REST API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) | [Referens för Azure REST API-konto](/rest/api/azure/) | [Exempel](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer)|
+|[Formigenkänning REST API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) | [Referens för Azure REST API](/rest/api/azure/)|
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -31,11 +31,11 @@ ms.locfileid: "107516457"
 * [PowerShell version 6.0+](/powershell/scripting/install/installing-powershell-core-on-windows)eller ett liknande kommandoradsprogram.
 * Azure-prenumeration [– Skapa en kostnadsfritt](https://azure.microsoft.com/free/cognitive-services/)
 * En Azure Storage blob som innehåller en uppsättning träningsdata. Se [Skapa en träningsdatauppsättning för en anpassad modell för](../../build-training-data-set.md) tips och alternativ för att sätta ihop din träningsdatauppsättning. I den här snabbstarten kan du använda filerna under mappen **Train** (Träna) i [exempeldatauppsättningen](https://go.microsoft.com/fwlink/?linkid=2090451) (ladda ned och extrahera *sample_data.zip*).
-* När du har din Azure-prenumeration skapar du Formigenkänning en resurs Formigenkänning resurs i Azure Portal för att hämta <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" "  target="_blank"> din nyckel och </a> slutpunkt. När den har distribuerats klickar du **på Gå till resurs**.
+* När du har din Azure-prenumeration skapar Formigenkänning resurs en Formigenkänning resurs i Azure Portal för att <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" hämta din nyckel och "  target="_blank"> </a> slutpunkt. När den har distribuerats klickar du **på Gå till resurs**.
   * Du behöver nyckeln och slutpunkten från den resurs som du skapar för att ansluta ditt program till Formigenkänning-API:et. Du klistrar in nyckeln och slutpunkten i koden nedan senare i snabbstarten.
   * Du kan använda den kostnadsfria prisnivån ( `F0` ) för att prova tjänsten och senare uppgradera till en betald nivå för produktion.
-* En URL för en bild av ett kvitto. Du kan använda en [exempelbild för den](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) här snabbstarten.
-* En URL för en bild av ett visitkort. Du kan använda en [exempelbild för den](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/business_cards/business-card-english.jpg) här snabbstarten.
+* En URL för en bild av ett kvitto. Du kan använda en [exempelavbildning för](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) den här snabbstarten.
+* En URL för en bild av ett visitkort. Du kan använda en [exempelavbildning för](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/business_cards/business-card-english.jpg) den här snabbstarten.
 * En URL för en bild av en faktura. Du kan använda ett [exempeldokument för](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf) den här snabbstarten.
 
 ## <a name="analyze-layout"></a>Analysera layout
@@ -872,7 +872,7 @@ Det här JSON-exempelutdata har förkortats för läsbarhet. Se fullständiga [e
 }
 ```
 
-Skriptet skriver ut svar till konsolen tills **åtgärden Analysera** visitkort har slutförts.
+Skriptet skriver ut svar till konsolen tills **åtgärden Analysera visitkort** har slutförts.
 
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
@@ -1133,7 +1133,7 @@ curl -X GET "https://{endpoint}/formrecognizer/v2.1-preview.3/prebuilt/idDocumen
 
 ### <a name="examine-the-response"></a>Granska svaret
 
-Du får ett svar med `200 (Success)` JSON-utdata. Det första `"status"` fältet, , anger status för åtgärden. Om åtgärden inte slutförs är värdet för eller , och du bör anropa API:et igen, antingen manuellt eller via ett skript tills `"status"` `"running"` du får `"notStarted"` `succeeded` värdet. Vi rekommenderar ett intervall på en sekund eller mer mellan anrop.
+Du får ett svar med `200 (Success)` JSON-utdata. Det första `"status"` fältet, , anger status för åtgärden. Om åtgärden inte slutförs är värdet eller , och du bör anropa API:et igen, antingen manuellt eller via ett skript tills `"status"` `"running"` du får `"notStarted"` `succeeded` värdet. Vi rekommenderar ett intervall på en sekund eller mer mellan anrop.
 
 * Fältet `"readResults"` innehåller varje rad med text som har extraherats från identitetsdokumentet.
 * Fältet `"documentResults"` innehåller en matris med objekt som var och en representerar ett ID-dokument som identifierats i indatadokumentet.
@@ -1372,7 +1372,7 @@ curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Conte
 
 ---
 
-Du får ett svar `201 (Success)` med ett **Location-huvud.** Värdet för den här rubriken är ID:t för den nya modell som tränas.
+Du får ett svar `201 (Success)` med ett **Location-huvud.** Värdet för den här rubriken är ID:t för den nya modellen som tränas.
 
 ### <a name="get-training-results"></a>Hämta träningsresultat
 
@@ -1515,7 +1515,7 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/ana
 
 Du får ett svar `200 (Success)` med en JSON-brödtext i följande format. Utdata har förkortats för enkelhetens skull. Lägg märke `"status"` till fältet längst ned. Detta får värdet när `"succeeded"` åtgärden Analysera är klar. Om åtgärden Analysera inte har slutförts måste du fråga tjänsten igen genom att köra kommandot igen. Vi rekommenderar ett intervall på en sekund eller mer mellan anrop.
 
-I anpassade modeller som tränats utan etiketter finns nyckel/värde-parkopplingarna och tabellerna i `"pageResults"` noden i JSON-utdata. I anpassade modeller som tränats med etiketter finns nyckel/värde-parkopplingarna i `"documentResults"` noden. Om du även har angett extrahering av oformaterad text via URL-parametern *includeTextDetails* visar noden innehållet och positionerna för `"readResults"` all text i dokumentet.
+I anpassade modeller som tränats utan etiketter finns nyckel/värde-parkopplingar och tabeller i `"pageResults"` noden i JSON-utdata. I anpassade modeller som tränats med etiketter finns nyckel/värde-parkopplingarna i `"documentResults"` noden. Om du även har angett extrahering av oformaterad text via URL-parametern *includeTextDetails* visar noden innehållet och positionerna för `"readResults"` all text i dokumentet.
 
 Det här JSON-exempelutdata har förkortats för enkelhetens skull. Se fullständiga [exempelutdata på GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/analyze-result-invoice-6.pdf.json).
 

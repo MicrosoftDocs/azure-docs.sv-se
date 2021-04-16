@@ -1,74 +1,74 @@
 ---
-title: Upptäck, Anslut och utforska data i Synapse med Azure avdelningens kontroll
+title: Identifiera, ansluta och utforska data i Synapse med Azure Purview
 description: Guide om hur du identifierar data, ansluter dem och utforskar dem i Synapse
-services: synapse-analytics
 author: Rodrigossz
 ms.service: synapse-analytics
+ms.subservice: ''
 ms.topic: how-to
 ms.date: 12/16/2020
 ms.author: rosouz
 ms.reviewer: jrasnick
-ms.openlocfilehash: 79090bfbf08cde3f18b1ca734b8af22d16e7e0ea
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f98507fa72f4503700bf39393063dd1ecc650e91
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628670"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567901"
 ---
-# <a name="discover-connect-and-explore-data-in-synapse-using-azure-purview"></a>Upptäck, Anslut och utforska data i Synapse med Azure avdelningens kontroll 
+# <a name="discover-connect-and-explore-data-in-synapse-using-azure-purview"></a>Identifiera, ansluta och utforska data i Synapse med Azure Purview 
 
-I det här dokumentet får du lära dig vilken typ av interaktioner som du kan utföra när du registrerar ett Azure avdelningens kontroll-konto i Synapse. 
+I det här dokumentet får du lära dig vilken typ av interaktioner du kan utföra när du registrerar ett Azure Purview-konto i Synapse. 
 
 ## <a name="prerequisites"></a>Förutsättningar 
 
-- [Azure avdelningens kontroll-konto](../../purview/create-catalog-portal.md) 
+- [Azure Purview-konto](../../purview/create-catalog-portal.md) 
 - [Synapse-arbetsyta](../quickstart-create-workspace.md) 
-- [Anslut ett Azure avdelningens kontroll-konto till Synapse](quickstart-connect-azure-purview.md) 
+- [Ansluta ett Azure Purview-konto till Synapse](quickstart-connect-azure-purview.md) 
 
-## <a name="using-azure-purview-in-synapse"></a>Använda Azure-avdelningens kontroll i Synapse 
+## <a name="using-azure-purview-in-synapse"></a>Använda Azure Purview i Synapse 
 
-Med Azure-avdelningens kontroll i Synapse måste du ha åtkomst till det avdelningens kontroll-kontot. Synapse passerar din avdelningens kontroll-behörighet. Om du till exempel har en curator-behörighet kan du redigera metadata som genomsöks av Azure avdelningens kontroll. 
+Om du vill använda Azure Purview i Synapse måste du ha åtkomst till det Purview-kontot. Synapse passerar genom din Purview-behörighet. Om du till exempel har rollen som intendent kan du redigera metadata som skannas av Azure Purview. 
 
-### <a name="data-discovery-search-datasets"></a>Data identifiering: Sök data uppsättningar 
+### <a name="data-discovery-search-datasets"></a>Dataidentifiering: sök efter datauppsättningar 
 
-Om du vill identifiera data som registrerats och genomsökts av Azure avdelningens kontroll kan du använda Sök fältet längst upp i mitten av Synapse-arbetsytan. Se till att du väljer Azure-avdelningens kontroll för att söka efter alla organisations data. 
+Om du vill identifiera data som registrerats och genomsökts av Azure Purview kan du använda sökfältet längst upp i mitten av Synapse-arbetsytan. Se till att du väljer Azure Purview för att söka efter alla dina organisationsdata. 
 
-[![Sök efter Azure avdelningens kontroll-tillgångar](./media/purview-access.png)](./media/purview-access.png#lightbox)
+[![Sök efter Azure Purview-tillgångar](./media/purview-access.png)](./media/purview-access.png#lightbox)
 
-## <a name="azure-purview-actions"></a>Azure avdelningens kontroll-åtgärder 
+## <a name="azure-purview-actions"></a>Azure Purview Actions 
 
-Här är en lista över de Azure avdelningens kontroll-funktioner som är tillgängliga i Synapse: 
+Här är en lista över De Azure Purview-funktioner som är tillgängliga i Synapse: 
 - **Översikt** över metadata 
-- Visa och redigera **schemat** för metadata med klassificeringar, ord listans villkor, data typer och beskrivningar 
-- Visa **härkomst** för att förstå beroenden och gör konsekvens analys. Mer information om finns i [härkomst](../../purview/catalog-lineage-user-guide.md)
-- Visa och redigera **kontakter** för att veta vem som är en ägare eller expert på en data uppsättning 
-- **Relaterade** till förståelse av hierarkiska beroenden för en speciell data uppsättning. Den här upplevelsen är användbar för att bläddra igenom Datahierarkin.
+- Visa och **redigera scheman** för metadata med klassificeringar, ordlista, datatyper och beskrivningar 
+- Visa **härledning** för att förstå beroenden och analysera påverkan. Mer information om finns [i härledning](../../purview/catalog-lineage-user-guide.md)
+- Visa och redigera **kontakter för** att veta vem som är ägare eller expert på en datauppsättning 
+- **Relaterat** till att förstå hierarkiska beroenden för en specifik datauppsättning. Den här upplevelsen är användbar för att bläddra i datahierarkin.
 
-## <a name="actions-that-you-can-perform-over-datasets-with-synapse-resources"></a>Åtgärder som du kan utföra över data uppsättningar med Synapse-resurser 
+## <a name="actions-that-you-can-perform-over-datasets-with-synapse-resources"></a>Åtgärder som du kan utföra över datauppsättningar med Synapse-resurser 
 
-### <a name="connect-data-to-synapse"></a>Anslut data till Synapse 
+### <a name="connect-data-to-synapse"></a>Ansluta data till Synapse 
 
-- Du kan skapa en **ny länkad tjänst** till Synapse. Åtgärden kommer att krävas för att kopiera data till Synapse eller ha dem i din data hubb (för data källor som stöds som ADLSg2) 
-- För objekt som filer, mappar eller tabeller kan du direkt skapa en **ny integrerings data uppsättning** och utnyttja en befintlig länkad tjänst om den redan har skapats 
+- Du kan skapa en **ny länkad tjänst** till Synapse. Den åtgärden krävs för att kopiera data till Synapse eller ha dem i din datahubb (för datakällor som stöds som ADLSg2) 
+- För objekt som filer, mappar eller tabeller kan du direkt skapa en ny **integrationsdatauppsättning** och utnyttja en befintlig länkad tjänst om den redan har skapats 
 
-Vi kan ännu inte härleda om det finns en befintlig länkad tjänst eller integrations data uppsättning. 
+Vi kan ännu inte dra slutsatsen om det finns en befintlig länkad tjänst eller integrationsdatauppsättning. 
 
 ###  <a name="develop-in-synapse"></a>Utveckla i Synapse 
 
-Det finns tre åtgärder som du kan utföra: **nytt SQL-skript**, **ny antecknings bok** och **nytt data flöde**. 
+Det finns tre åtgärder som du kan utföra: **Nytt SQL-skript,** **Ny notebook-dator** **och ny Dataflöde**. 
 
-Med det **nya SQL-skriptet**, beroende på typen av support, kan du: 
-- Visa de översta 100 raderna för att förstå formen på data. 
-- Skapa en extern tabell från Synapse SQL Database 
-- Läs in data i en Synapse SQL-databas 
+Med **Nytt SQL-skript** kan du, beroende på typ av stöd,: 
+- Visa de 100 översta raderna för att förstå dataformen. 
+- Skapa en extern tabell från Synapse SQL databas 
+- Läsa in data i en Synapse SQL databas 
  
-Med **ny antecknings bok** kan du: 
-- Läs in data i en spark-DataFrame 
-- Skapa en spark-tabell (om du gör det över Parquet-formatet skapas även en server lös SQL-adresspool). 
+Med **Ny notebook-dator** kan du: 
+- Läsa in data till en Spark DataFrame 
+- Skapa en Spark-tabell (om du gör det i Parquet-format skapas även en serverlös SQL-pooltabell). 
  
-Med **nytt data flöde** kan du skapa en integrations data uppsättning som kan användas som en källa i en pipeline för data flöde. Data flödet är en programmerings funktion utan kod för att utföra datatransformering. Mer information om hur du [använder data flöden i Synapse](../quickstart-data-flow.md).
+Med **Nytt dataflöde** kan du skapa en integreringsdatauppsättning som kan användas som källa i en dataflödespipeline. Dataflödet är en utvecklarfunktion utan kod för att utföra datatransformering. Mer information om hur [du använder dataflöden i Synapse](../quickstart-data-flow.md).
 
 ##  <a name="nextsteps"></a>Nästa steg 
 
-- [Registrera och skanna Azure Synapse-tillgångar i Azure avdelningens kontroll](../../purview/register-scan-azure-synapse-analytics.md)
-- [Söka efter data i Azure avdelningens kontroll Data Catalog](../../purview/how-to-search-catalog.md)
+- [Registrera och skanna Azure Synapse i Azure Purview](../../purview/register-scan-azure-synapse-analytics.md)
+- [Söka efter data i Azure Purview Data Catalog](../../purview/how-to-search-catalog.md)

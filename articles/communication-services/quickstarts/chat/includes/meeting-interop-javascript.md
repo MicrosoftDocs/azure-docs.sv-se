@@ -1,24 +1,24 @@
 ---
-title: Snabb start – Anslut till ett team möte
+title: Snabbstart – Delta i ett Teams-möte
 author: askaur
 ms.author: askaur
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 773bca81694534346019e30e9d55190af6f51e74
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 49f9bac40ae803f980a22c19fd5d44d85fa99e9e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106809"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564602"
 ---
-## <a name="joining-the-meeting-chat"></a>Ansluta till mötes chatten 
+## <a name="joining-the-meeting-chat"></a>Delta i möteschatten 
 
-När team samverkan är aktiverat kan en kommunikations tjänst användare ansluta till Team anropet som en extern användare med hjälp av anrops-SDK. När du ansluter till samtalet läggs de till som deltagare till mötes chatten, där de kan skicka och ta emot meddelanden med andra användare på anropet. Användaren har inte åtkomst till chatt meddelanden som har skickats innan de anslöt till anropet. Om du vill ansluta till mötet och börja chatta kan du följa anvisningarna nedan.
+När Teams-samverkan har aktiverats kan en Communication Services ansluta till Teams-anropet som en extern användare med hjälp av anropande SDK. Om du ansluter till anropet lägger du även till dem som deltagare i möteschatten, där de kan skicka och ta emot meddelanden med andra användare under samtalet. Användaren har inte åtkomst till chattmeddelanden som skickades innan de anslöt till anropet. Om du vill delta i mötet och börja chatta kan du följa nästa steg.
 
-## <a name="install-the-chat-packages"></a>Installera chatt-paketen
+## <a name="install-the-chat-packages"></a>Installera chattpaketen
 
-Använd `npm install` kommandot för att installera de nödvändiga SDK: erna för kommunikations tjänster för Java Script.
+Använd kommandot `npm install` för att installera nödvändiga Communication Services-SDK:er för JavaScript.
 
 ```console
 npm install @azure/communication-common --save
@@ -32,13 +32,13 @@ npm install @azure/communication-chat --save
 npm install @azure/communication-calling --save
 ```
 
-I det här `--save` alternativet visas biblioteket som ett beroende i **package.jsi** filen.
+Alternativet `--save` visar biblioteket som ett beroende i dittpackage.js **på** filen.
 
-## <a name="add-the-teams-ui-controls"></a>Lägg till Team UI-kontroller
+## <a name="add-the-teams-ui-controls"></a>Lägga till ui-kontroller i Teams
 
-Ersätt koden i index.html med följande kodfragment.
-Text rutorna överst på sidan används för att ange team Mötes kontext och mötes-ID. Knappen Anslut till Teams möte kommer att användas för att ansluta till det angivna mötet.
-Popup-fönstret chat visas längst ned på sidan. Den kan användas för att skicka meddelanden i Mötes tråden och den visas i real tid av meddelanden som skickas i tråden när ACS-användaren är medlem.
+Ersätt koden i index.html med följande kodavsnitt.
+Textrutorna överst på sidan används för att ange Teams-möteskontext och tråd-ID för möte. Knappen Delta i Teams-mötet används för att ansluta till det angivna mötet.
+Ett popup-fönster för chatt visas längst ned på sidan. Den kan användas för att skicka meddelanden i mötestråden och visas i realtid alla meddelanden som skickas i tråden medan ACS-användaren är medlem.
 
 ```html
 <!DOCTYPE html>
@@ -140,13 +140,13 @@ Popup-fönstret chat visas längst ned på sidan. Den kan användas för att ski
 </html>
 ```
 
-## <a name="enable-the-teams-ui-controls"></a>Aktivera UI-kontroller för team
+## <a name="enable-the-teams-ui-controls"></a>Aktivera gränssnittskontrollerna i Teams
 
-Ersätt innehållet i client.js-filen med följande kodfragment.
+Ersätt innehållet i client.js med följande kodavsnitt.
 
 I kodfragmentet ersätter du 
-- `SECRET CONNECTION STRING` med anslutnings strängen för kommunikations tjänsten 
-- `ENDPOINT URL` med din kommunikations tjänsts slut punkts-URL
+- `SECRET CONNECTION STRING` med kommunikationstjänstens anslutningssträng 
+- `ENDPOINT URL` med kommunikationstjänstens slutpunkts-URL
 
 ```javascript
 // run using
@@ -284,17 +284,17 @@ sendMessageButton.addEventListener("click", async () =>
   });
 ```
 
-## <a name="get-a-teams-meeting-chat-thread-for-a-communication-services-user"></a>Skaffa en team Meeting Chat-tråd för en kommunikations tjänst användare
+## <a name="get-a-teams-meeting-chat-thread-for-a-communication-services-user"></a>Hämta en teams-möteschatttråd för en Communication Services användare
 
-Team Mötes länken och chatten kan hämtas med Graph API: er, som beskrivs i [Graph-dokumentationen](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta). Kommunikations tjänsterna som anropar SDK accepterar en länk till en fullständig Teams möte. Den här länken returneras som en del av `onlineMeeting` resursen, som är tillgänglig under [ `joinWebUrl` egenskapen](/graph/api/resources/onlinemeeting?view=graph-rest-beta) med [Graph API: er](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta), men du kan också hämta `threadId` . Svaret kommer att ha ett- `chatInfo` objekt som innehåller `threadID` . 
+Teams-möteslänken och chatten kan hämtas med graph-API:er, som beskrivs i [Graph-dokumentationen.](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) Den Communication Services anropande SDK accepterar en fullständig Teams-möteslänk. Den här länken returneras som en del av resursen som är tillgänglig under egenskapen `onlineMeeting` Med [ `joinWebUrl` ](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) [Graph-API:erna](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)kan du också hämta `threadId` . Svaret har ett `chatInfo` -objekt som innehåller `threadID` . 
 
-Du kan också hämta nödvändig Mötes information och tråd-ID från URL: en **till kopplings mötet** i de team som bjuder in sig själva.
-Länken Teams möte ser ut så här: `https://teams.microsoft.com/l/meetup-join/meeting_chat_thread_id/1606337455313?context=some_context_here` . `threadId`Kommer att finnas `meeting_chat_thread_id` i länken. Kontrol lera att `meeting_chat_thread_id` är avbrotts ur bruk. Den bör ha följande format: `19:meeting_ZWRhZDY4ZGUtYmRlNS00OWZaLTlkZTgtZWRiYjIxOWI2NTQ4@thread.v2`
+Du kan också hämta nödvändig mötesinformation och tråd-ID från URL:en **för kopplingsmöte** i själva Teams-mötesbjudan.
+En Teams-möteslänk ser ut så här: `https://teams.microsoft.com/l/meetup-join/meeting_chat_thread_id/1606337455313?context=some_context_here` . `threadId`kommer att vara där finns i `meeting_chat_thread_id` länken. Se till att `meeting_chat_thread_id` är obildad före användning. Det bör ha följande format: `19:meeting_ZWRhZDY4ZGUtYmRlNS00OWZaLTlkZTgtZWRiYjIxOWI2NTQ4@thread.v2`
 
 
 ## <a name="run-the-code"></a>Kör koden
 
-WebPack-användare kan använda `webpack-dev-server` för att skapa och köra din app. Kör följande kommando för att paketera din program värd på en lokal webserver:
+Webpack-användare kan använda `webpack-dev-server` för att skapa och köra din app. Kör följande kommando för att paketa programvärden på en lokal webbserver:
 
 ```console
 npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
@@ -302,9 +302,9 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 
 Öppna webbläsaren och gå till http://localhost:8080/ . Du bör se följande:
 
-:::image type="content" source="../acs-join-teams-meeting-chat-quickstart.png" alt-text="Skärm bild av det färdiga JavaScript-programmet.":::
+:::image type="content" source="../acs-join-teams-meeting-chat-quickstart.png" alt-text="Skärmbild av det färdiga JavaScript-programmet.":::
 
-Infoga Mötes länken för team och tråd-ID i text rutorna. Tryck på *Anslut Teams möte* för att ansluta till Team-mötet. När ACS-användaren har tillåtits att delta i mötet kan du chatta i kommunikations tjänst programmet. Navigera till rutan längst ned på sidan för att börja chatta.
+Infoga Teams-möteslänken och tråd-ID:t i textrutorna. Tryck *på Join Teams Meeting (Anslut till Teams-möte)* för att delta i Teams-mötet. När ACS-användaren har blivit intagen på mötet kan du chatta inifrån ditt Communication Services program. Gå till rutan längst ned på sidan för att börja chatta.
 
 > [!NOTE] 
-> För närvarande stöds endast att skicka, ta emot och redigera meddelanden för samverkan scenarier med team. Andra funktioner som att skriva indikatorer och kommunikations tjänster användare som lägger till eller tar bort andra användare från Team-mötet stöds inte ännu.  
+> För närvarande stöds endast sändning, mottagning och redigering av meddelanden för samverkansscenarier med Teams. Andra funktioner som att skriva indikatorer Communication Services användare som lägger till eller tar bort andra användare från Teams-mötet stöds inte ännu.  
