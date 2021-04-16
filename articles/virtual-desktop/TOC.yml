@@ -36,7 +36,7 @@
           href: connect-ios.md
         - name: Ansluta med Microsoft Store-klienten
           href: connect-microsoft-store.md
-        - name: Ansluta till tunna klienter
+        - name: Ansluta med tunna klienter
           href: linux-overview.md
     - name: Konfigurera omdirigering av enheter
       href: configure-device-redirections.md
@@ -66,7 +66,7 @@
           href: create-profile-container-adds.md
         - name: Använda Azure Files och Active Directory Domain Services
           href: create-file-share.md
-        - name: Installera Office med FSLogix-program behållare
+        - name: Installera Office med FSLogix-appcontainrar
           href: fslogix-office-app-rule-editor.md
     - name: Konfigurera inställningar för värdpool
       items:
@@ -106,7 +106,7 @@
           href: app-attach-image-prep.md
         - name: Konfigurera en filresurs
           href: app-attach-file-share.md
-        - name: Konfigurera verktyget MSIXMGR
+        - name: Konfigurera VERKTYGET MSIXMGR
           href: app-attach-msixmgr.md
     - name: Använda Microsoft Teams
       href: teams-on-wvd.md
@@ -126,12 +126,14 @@
       href: disaster-recovery.md
     - name: Konfigurera KDC-proxyn
       href: key-distribution-center-proxy.md
-    - name: Starta virtuell dator vid anslutning
+    - name: Starta virtuell dator på Anslut
       items:
-        - name: Konfigurera starta virtuell dator vid anslutning
+        - name: Konfigurera den virtuella startdatorn på Connect
           href: start-virtual-machine-connect.md
-        - name: Vanliga frågor om att starta VM vid anslutning
+        - name: Starta virtuell dator på Anslut – vanliga frågor och svar
           href: start-virtual-machine-connect-faq.md
+    - name: Ange tömningsläge
+      href: drain-mode.md
 - name: Begrepp
   items:
     - name: Inbyggda roller
@@ -214,7 +216,7 @@
       href: linux-overview.md
     - name: Azure CLI
       href: /cli/azure/ext/desktopvirtualization/desktopvirtualization
-    - name: Uppskatta Azure Monitor kostnader
+    - name: Beräkna Azure Monitor kostnader
       href: azure-monitor-costs.md
     - name: RDP-filinställningar som stöds
       href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context

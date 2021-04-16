@@ -1,6 +1,6 @@
 ---
 title: Konfigurera automatisk acceleration för inloggning med identifiering av hemsfär
-description: Lär dig hur du konfigurerar identifieringsprincipen för Azure Active Directory autentisering för federerade användare, inklusive automatisk acceleration och domäntips.
+description: Lär dig hur du konfigurerar identifieringsprincipen för Azure Active Directory för federerade användare, inklusive automatisk acceleration och domäntips.
 services: active-directory
 author: iantheninja
 manager: CelesteDG
@@ -12,22 +12,22 @@ ms.date: 02/12/2021
 ms.author: iangithinji
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92dea75855ab1e5486b39d072692e72b26c4da1c
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 1af80979a4712f6d25d994835128f9d5d2205f42
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377776"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534732"
 ---
-# <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurera Azure Active Directory inloggningsbeteende för ett program med hjälp av en identifieringsprincip för hemsfär
+# <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurera Azure Active Directory för ett program med hjälp av en identifieringsprincip för hemsfär
 
 Den här artikeln innehåller en introduktion till att konfigurera Azure Active Directory för federerade användare med en HRD-princip (Home Realm Discovery).  Den beskriver hur du använder automatisk acceleration för att hoppa över användarnamnsinmatningsskärmen och automatiskt vidarebefordra användare till federerade inloggningsslutpunkter.  Microsoft rekommenderar inte att du konfigurerar automatisk acceleration längre, eftersom det kan förhindra användning av starkare autentiseringsmetoder som FIDO och hindrar samarbete.
 
 ## <a name="home-realm-discovery"></a>Upptäckt av hemsfär
 
-Identifiering av hemsfär (HRD) är den process som gör att Azure Active Directory (Azure AD) kan avgöra vilken identitetsprovider ("IdP") som en användare behöver autentisera med vid inloggningen.  När en användare loggar in på en Azure AD-klientorganisation för att få åtkomst till en resurs, eller på den vanliga inloggningssidan för Azure AD, skriver de ett användarnamn (UPN). Azure AD använder det för att identifiera var användaren behöver logga in.
+Identifiering av hemsfär (HRD) är den process som gör att Azure Active Directory (Azure AD) kan avgöra vilken identitetsprovider ("IdP") som en användare behöver autentisera med vid inloggningen.  När en användare loggar in på en Azure AD-klientorganisation för att få åtkomst till en resurs, eller till den vanliga inloggningssidan för Azure AD, skriver de ett användarnamn (UPN). Azure AD använder det för att identifiera var användaren behöver logga in.
 
-Användaren kommer till någon av följande identitetsproviders som ska autentiseras:
+Användaren kommer att tas till någon av följande identitetsproviders som ska autentiseras:
 
 - Användarens hemklientorganisation (kan vara samma klientorganisation som den resurs som användaren försöker komma åt).
 
@@ -45,7 +45,7 @@ När en användare loggar in i ett program visas först en Inloggningssida för 
 
 Därför kan användarna hoppa över den första Azure Active Directory sidan. Den här processen kallas "automatisk acceleration vid inloggning".
 
-I de fall där klientorganisationen är federerad till en annan IdP för inloggning, gör automatisk acceleration användar inloggningen mer effektiv.  Du kan konfigurera automatisk acceleration för enskilda program.
+I de fall där klientorganisationen är federerad till en annan IdP för inloggning, gör automatisk acceleration användar inloggning mer effektiviserad.  Du kan konfigurera automatisk acceleration för enskilda program.
 
 >[!NOTE]
 >Om du konfigurerar ett program för automatisk acceleration kan användarna inte använda hanterade autentiseringsuppgifter (som FIDO) och gästanvändare kan inte logga in. Om du tar en användare direkt till en federerad IdP för autentisering går det inte att gå tillbaka till Azure Active Directory inloggningssidan. Gästanvändare som kan behöva dirigeras till andra klienter eller en extern IdP, till exempel en Microsoft-konto, kan inte logga in i programmet eftersom de hoppar över identifieringssteget för hemsfär.  
@@ -60,9 +60,9 @@ Det finns tre sätt att styra automatisk acceleration till en federerad IdP:
 
 Domäntips är direktiv som ingår i autentiseringsbegäran från ett program. De kan användas för att påskynda användarens federerade IdP-inloggningssida. Eller så kan de användas av ett program för flera innehavare för att snabba upp användaren direkt till den märkta Azure AD-inloggningssidan för sin klientorganisation.  
 
-Till exempel kan programmet "largeapp.com" göra det möjligt för kunderna att komma åt programmet via en anpassad URL contoso.largeapp.com. Appen kan också innehålla en domäntips för att contoso.com i autentiseringsbegäran.
+Till exempel kan programmet "largeapp.com" göra det möjligt för kunderna att komma åt programmet via en anpassad URL contoso.largeapp.com. Appen kan också innehålla ett domäntips för contoso.com i autentiseringsbegäran.
 
-Syntaxen för domäntips varierar beroende på vilket protokoll som används och det konfigureras vanligtvis i programmet.
+Syntaxen för domäntips varierar beroende på vilket protokoll som används och den konfigureras vanligtvis i programmet.
 
 **WS-Federation:** whr=contoso.com i frågesträngen.
 
@@ -144,13 +144,13 @@ Dessutom finns det två HRD-alternativ på klientnivå som inte visas ovan:
 
 ### <a name="priority-and-evaluation-of-hrd-policies"></a>Prioritet och utvärdering av HRD-principer
 
-HRD-principer kan skapas och sedan tilldelas till specifika organisationer och tjänstens huvudnamn. Det innebär att flera principer kan tillämpas på ett visst program, så Azure AD måste bestämma vilken som har företräde. En uppsättning regler avgör vilken HRD-princip (många som tillämpas):
+HRD-principer kan skapas och sedan tilldelas till specifika organisationer och tjänstens huvudnamn. Det innebär att det är möjligt för flera principer att tillämpas på ett visst program, så Azure AD måste bestämma vilken som har företräde. En uppsättning regler avgör vilken HRD-princip (många som tillämpas):
 
 - Om det finns en domäntips i autentiseringsbegäran kontrolleras HRD-principen för klienten (principen som angetts som klientorganisationsstandard) för att se om domäntips ska [ignoreras.](prevent-domain-hints-with-home-realm-discovery.md) Om domäntips tillåts används det beteende som anges av domäntipset.
 
 - Om en princip uttryckligen tilldelas till tjänstens huvudnamn tillämpas den annars.
 
-- Om det inte finns någon domäntips och ingen princip uttryckligen tilldelas till tjänstens huvudnamn, tillämpas en princip som uttryckligen har tilldelats till den överordnade organisationen för tjänstens huvudnamn.
+- Om det inte finns någon domäntips och ingen princip uttryckligen tilldelas till tjänstens huvudnamn, tillämpas en princip som uttryckligen tilldelas till den överordnade organisationen för tjänstens huvudnamn.
 
 - Om det inte finns någon domäntips och ingen princip har tilldelats till tjänstens huvudnamn eller organisationen används standardbeteendet för HRD.
 
@@ -162,7 +162,7 @@ Vi använder Azure AD PowerShell-cmdlets för att gå igenom några scenarier, i
 
 - Konfigurera EN HRD-princip för automatisk acceleration av ett program till en av flera domäner som har verifierats för din klientorganisation.
 
-- Konfigurera EN HRD-princip för att göra så att ett äldre program kan göra direkt autentisering med användarnamn/lösenord till Azure Active Directory för en federerad användare.
+- Konfigurera HRD-principen så att ett äldre program kan autentiseras direkt med användarnamn/lösenord till Azure Active Directory en federerad användare.
 
 - Lista de program som en princip har konfigurerats för.
 
@@ -226,7 +226,7 @@ Om du vill tillämpa HRD-principen när du har skapat den kan du tilldela den ti
 
 Du behöver **ObjectID för** de tjänsthuvudnamn som du vill tilldela principen till. Det finns flera sätt att hitta **ObjectID för** tjänstens huvudnamn.
 
-Du kan använda portalen eller köra frågor mot [Microsoft Graph](/graph/api/resources/serviceprincipal?view=graph-rest-beta). Du kan också gå till [Graph Explorer-verktyget](https://developer.microsoft.com/graph/graph-explorer) och logga in på ditt Azure AD-konto för att se alla tjänstens huvudnamn för din organisation.
+Du kan använda portalen eller köra frågor mot [Microsoft Graph](/graph/api/resources/serviceprincipal). Du kan också gå till [Graph Explorer-verktyget](https://developer.microsoft.com/graph/graph-explorer) och logga in på ditt Azure AD-konto för att se alla tjänstens huvudnamn för din organisation.
 
 Eftersom du använder PowerShell kan du använda följande cmdlet för att visa en lista över tjänstens huvudnamn och deras ID:n.
 

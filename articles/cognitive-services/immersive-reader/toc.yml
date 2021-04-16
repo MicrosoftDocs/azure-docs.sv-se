@@ -2,7 +2,7 @@
   href: index.yml
 - name: Översikt
   items:
-    - name: Översikt över avancerad läsare
+    - name: Vad är Avancerad läsare?
       href: Overview.md
     - name: Stöd för språk
       href: language-support.md
@@ -10,17 +10,17 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/'
     - name: Viktig information
       href: release-notes.md
-- name: Snabb start för avancerad läsare
+- name: Snabbstart
   href: ./quickstarts/client-libraries.md
 - name: Instruktioner
   items:
     - name: Skapa en resurs för Avancerad läsare
       href: how-to-create-immersive-reader.md
-    - name: Starta den fördjupade läsaren
+    - name: Starta Avancerad läsare
       href: how-to-launch-immersive-reader.md
-    - name: Förbered HTML-innehåll
+    - name: Förbereda HTML-innehåll
       href: how-to-prepare-html.md
-    - name: Redigera knappen för att starta avancerad läsare
+    - name: Redigera Avancerad läsare startknappen
       href: how-to-customize-launch-button.md
     - name: Cachelagra autentiseringstoken
       href: how-to-cache-token.md
@@ -36,14 +36,24 @@
       href: how-to-store-user-preferences.md
     - name: Använda flera resurser för Avancerad läsare
       href: how-to-multiple-resources.md
+    - name: Företagsberedskap
+      items:
+        - name: Konfigurera virtuella nätverk
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/immersive-reader/context/context
+        - name: Använda Azure AD-autentisering
+          href: ../authentication.md?context=/azure/cognitive-services/immersive-reader/context/context
 - name: Referens
   items:
     - name: JavaScript SDK
       href: reference.md
 - name: Resurser
   items:
-    - name: Regional support
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Företagsberedskap
+      items:
+        - name: Stöd för regioner
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Efterlevnad och certifiering
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/immersive-reader/context/context
     - name: Azure-uppdateringar

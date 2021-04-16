@@ -1,26 +1,26 @@
 ---
-title: Azure Policy kontroll av efterlevnad för Azure Kognitiv sökning
-description: Visar Azure Policy regler för regelefterlevnad som är tillgängliga för Azure Kognitiv sökning. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 03/31/2021
+title: Azure Policy för regelefterlevnad för Azure Cognitive Search
+description: Visar Azure Policy för regelefterlevnad som är Azure Cognitive Search. Dessa inbyggda principdefinitioner ger vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
+ms.date: 04/14/2021
 ms.topic: sample
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: a8817bf4b85158d6065747727b10dbf9168aa4ec
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 807201d5626bcdbc421d182f06b888c5775dcc48
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106089493"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497429"
 ---
-# <a name="azure-policy-regulatory-compliance-controls-for-azure-cognitive-search"></a>Azure Policy kontroll av efterlevnad för Azure Kognitiv sökning
+# <a name="azure-policy-regulatory-compliance-controls-for-azure-cognitive-search"></a>Azure Policy för regelefterlevnad för Azure Cognitive Search
 
-Om du använder [Azure policy](../governance/policy/overview.md) för att genomdriva rekommendationerna i [Azure Security benchmark](../security/benchmarks/introduction.md)vet du förmodligen redan att du kan skapa principer för att identifiera och åtgärda icke-kompatibla tjänster. Dessa principer kan vara anpassade, eller så kan de baseras på inbyggda definitioner som innehåller villkor för efterlevnad och lämpliga lösningar för välförståde metod tips.
+Om du använder [Azure Policy](../governance/policy/overview.md) för att genomdriva rekommendationerna i [Azure Security Benchmark](../security/benchmarks/introduction.md)vet du förmodligen redan att du kan skapa principer för att identifiera och åtgärda icke-kompatibla tjänster. Dessa principer kan vara anpassade, eller så kan de baseras på inbyggda definitioner som tillhandahåller efterlevnadsvillkor och lämpliga lösningar för väl förstådda metodtips.
 
-För Azure Kognitiv sökning finns det för närvarande en inbyggd definition, som visas nedan, som du kan använda i en princip tilldelning. Det inbyggda är för loggning och övervakning. Genom att använda den här inbyggda definitionen i en [princip som du skapar](../governance/policy/assign-policy-portal.md), söker systemet efter Sök tjänster som inte har [diagnostikloggning](search-monitor-logs.md)och aktiverar det därefter.
+För Azure Cognitive Search finns det för närvarande en inbyggd definition, som anges nedan, som du kan använda i en principtilldelning. Den inbyggda är för loggning och övervakning. Genom att använda den här inbyggda definitionen i en princip som du skapar [söker](../governance/policy/assign-policy-portal.md)systemet efter söktjänster som inte har diagnostisk loggning [och](search-monitor-logs.md)aktiverar det sedan.
 
-Regelefterlevnad som [följer Azure policy](../governance/policy/concepts/regulatory-compliance.md) tillhandahåller definitioner av Microsoft-skapade och hanterade initiativ, som kallas _inbyggda moduler_, för **domäner** och **säkerhets kontroller** som är relaterade till olika efterlevnads standarder. Den här sidan innehåller en lista över **domäner för efterlevnad** och **säkerhets kontroller** för Azure kognitiv sökning. Du kan tilldela de inbyggda programmen för en **säkerhets kontroll** individuellt för att hjälpa dina Azure-resurser att vara kompatibla med den aktuella standarden.
+[Regelefterlevnad i Azure Policy](../governance/policy/concepts/regulatory-compliance.md) tillhandahåller Microsoft-skapade och hanterade initiativdefinitioner,  så kallade  inbyggda , för _efterlevnadsdomäner_ och säkerhetskontroller relaterade till olika efterlevnadsstandarder. På den här sidan visas **efterlevnadsdomäner** **och säkerhetskontroller** för Azure Cognitive Search. Du kan tilldela de inbyggda för en säkerhetskontroll **individuellt för** att göra dina Azure-resurser kompatibla med den specifika standarden.
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 
@@ -28,5 +28,5 @@ Regelefterlevnad som [följer Azure policy](../governance/policy/concepts/regula
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om att [Azure policy](../governance/policy/concepts/regulatory-compliance.md)regelefterlevnad.
+- Läs mer om [Azure Policy regelefterlevnad.](../governance/policy/concepts/regulatory-compliance.md)
 - Se de inbyggda programmen på [Azure Policy GitHub-lagringsplatsen](https://github.com/Azure/azure-policy).

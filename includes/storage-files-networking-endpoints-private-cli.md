@@ -7,15 +7,15 @@ ms.service: storage
 ms.topic: include
 ms.date: 5/11/2020
 ms.author: rogarana
-ms.custom: include file
-ms.openlocfilehash: b6f0f77da639bceaea680f015dad5c0d3d6dbda6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: e6cc45c3aedc013b63f9d7876b923e7db36ccd37
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84465068"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107511533"
 ---
-Om du vill skapa en privat slut punkt för ditt lagrings konto måste du först hämta en referens till ditt lagrings konto och det virtuella nätverks under nätet där du vill lägga till den privata slut punkten. Ersätt `<storage-account-resource-group-name>` ,,,  `<storage-account-name>` `<vnet-resource-group-name>` `<vnet-name>` och `<vnet-subnet-name>` nedan:
+Om du vill skapa en privat slutpunkt för ditt lagringskonto måste du först hämta en referens till ditt lagringskonto och det virtuella nätverksundernät som du vill lägga till den privata slutpunkten i. Ersätt `<storage-account-resource-group-name>` , , , och  `<storage-account-name>` `<vnet-resource-group-name>` `<vnet-name>` `<vnet-subnet-name>` nedan:
 
 ```bash
 storageAccountResourceGroupName="<storage-account-resource-group-name>"
@@ -47,7 +47,7 @@ subnet=$(az network vnet subnet show \
     tr -d '"')
 ```
 
-Om du vill skapa en privat slut punkt måste du först se till att under nätets nätverks princip är inställd på inaktive rad. Sedan kan du skapa en privat slut punkt med `az network private-endpoint create` kommandot.
+Om du vill skapa en privat slutpunkt måste du först se till att undernätets nätverksprincip för privata slutpunkter är inställd på inaktiverad. Sedan kan du skapa en privat slutpunkt med `az network private-endpoint create` kommandot .
 
 ```bash
 # Disable private endpoint network policies
@@ -75,7 +75,7 @@ privateEndpoint=$(az network private-endpoint create \
     tr -d '"')
 ```
 
-När du skapar en privat DNS-zon för Azure kan du använda det ursprungliga namnet på lagrings kontot, till exempel `storageaccount.file.core.windows.net` för att matcha den privata IP-adressen i det virtuella nätverket. Även om det är valfritt från perspektivet för att skapa en privat slut punkt krävs det uttryckligen för att montera Azure-filresursen med hjälp av ett huvud för AD-användare eller åtkomst via REST API.  
+När du skapar en privat DNS-zon i Azure kan du använda det ursprungliga namnet på lagringskontot, till exempel för att matcha mot den privata `storageaccount.file.core.windows.net` IP-adressen i det virtuella nätverket. Även om det är valfritt när det gäller att skapa en privat slutpunkt krävs det uttryckligen för att montera Azure-filresursen med hjälp av ett AD-användarhuvudnamn eller åtkomst via REST API.  
 
 ```bash
 # Get the desired storage account suffix (core.windows.net for public cloud).
@@ -140,7 +140,7 @@ then
 fi
 ```
 
-Nu när du har en referens till den privata DNS-zonen måste du skapa en A-post för ditt lagrings konto.
+Nu när du har en referens till den privata DNS-zonen måste du skapa en A-post för ditt lagringskonto.
 
 ```bash
 privateEndpointNIC=$(az network private-endpoint show \

@@ -1,34 +1,34 @@
 ---
-title: Schemalagt underhåll – Azure Database for PostgreSQL – flexibel Server
-description: Den här artikeln beskriver det schemalagda underhålls funktionen i Azure Database for PostgreSQL-flexibel Server.
+title: Schemalagt underhåll – Azure Database for PostgreSQL – flexibel server
+description: I den här artikeln beskrivs funktionen för schemalagt underhåll Azure Database for PostgreSQL – flexibel server.
 author: niklarin
 ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: ffee15776a48b6495f78b6becf81c620e1dc4d69
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50ef040f1cb7d8c533ec5ee31e9bffa2e6dca2f5
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91336317"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478020"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-postgresql--flexible-server"></a>Schemalagt underhåll i Azure Database for PostgreSQL – flexibel server
  
-Azure Database for PostgreSQL-flexibel Server utför regelbundet underhåll för att hålla din hanterade databas säker, stabil och uppdaterad. Under underhållet hämtar servern nya funktioner, uppdateringar och korrigeringar.
+Azure Database for PostgreSQL – Flexibel server utför regelbundet underhåll för att hålla din hanterade databas säker, stabil och uppdaterad. Under underhållet får servern nya funktioner, uppdateringar och korrigeringar.
  
 > [!IMPORTANT]
-> Azure Database for PostgreSQL-flexibel Server är i för hands version
+> Azure Database for PostgreSQL – Flexibel server är i förhandsversion
  
-## <a name="selecting-a-maintenance-window"></a>Välja en underhålls period
+## <a name="selecting-a-maintenance-window"></a>Välja en underhållsfönstret
  
-Du kan schemalägga underhåll under en angiven dag i veckan och en tids period inom den dagen. Eller så kan du låta systemet välja dag och tids period för dig automatiskt. Oavsett hur du gör det meddelar systemet dig fem dagar innan du kör något underhåll. Systemet kommer också att meddela dig när underhållet har startats och när det har slutförts.
+Du kan schemalägga underhåll under en viss dag i veckan och en tidsperiod inom den dagen. Eller så kan du låta systemet välja en dag och en tidsfönster för dig automatiskt. Oavsett vilket varnar systemet dig fem dagar innan underhållet körs. Systemet kommer också att meddela dig när underhållet har startats och när det har slutförts.
  
-Aviseringar om kommande schemalagt underhåll kan vara:
+Meddelanden om kommande schemalagt underhåll kan vara:
  
-* Skickas via e-post till en speciell adress
-* Skickas via e-post till en Azure Resource Manager roll
-* Skickas i ett textmeddelande (SMS) till mobila enheter
+* E-postad till en specifik adress
+* E-postas till en Azure Resource Manager roll
+* Skickas i ett SMS till mobila enheter
 * Som en push-avisering till en Azure-app
 * Som ett röstmeddelande
  
@@ -39,12 +39,19 @@ När du anger inställningar för underhållsschemat kan du välja en veckodag o
 >
 > Men om det finns en kritisk uppdatering, till exempel en allvarligt säkerhetsrisk kan aviseringsperioden vara kortare än fem dagar. Den kritiska uppdateringen kan tillämpas på servern även om ett lyckat schemalagt underhåll har utförts under de senaste 30 dagarna.
 
-Du kan uppdatera schemaläggnings inställningarna när som helst. Om det finns ett underhåll som schemalagts för din flexibla Server och du uppdaterar inställningarna för schemaläggning, kommer den aktuella händelsen att fortsätta enligt schema och schema inställningarna ändras efter lyckad slut för ande. 
+Du kan uppdatera schemaläggningsinställningarna när som helst. Om underhåll har schemalagts för din flexibla server och du uppdaterar schemaläggningsinställningarna fortsätter den aktuella versionen som schemalagd och ändringen av schemaläggningsinställningarna börjar gälla när den har slutförts för nästa schemalagda underhåll.
 
-Om underhålls händelsen avbryts av systemet eller om den inte kan slutföras, kommer systemet att skapa ett meddelande om avbrott eller misslyckade underhålls händelser. Nästa försök att utföra underhåll kommer att schemaläggas enligt aktuella schemaläggnings inställningar och du får ett meddelande om det fem dagar i förväg.
+Du kan definiera system-hanterat schema eller anpassat schema för varje flexibel server i din Azure-prenumeration.  
+* Med anpassat schema kan du ange underhållsfönstret för servern genom att välja veckodag och en timma.  
+* Med system-hanterat schema väljer systemet ett entimmefönster mellan kl. 11:00 och 07:00 i serverns regiontid.  
+
+Som en del av att distribuera ändringar tillämpar vi uppdateringarna på de servrar som konfigurerats med system-hanterat schema först följt av servrar med anpassat schema efter en minsta lucka på 7 dagar inom en viss region. Om du planerar att få tidiga uppdateringar på en vagnpark med servrar för utvecklings- och testmiljöer rekommenderar vi att du konfigurerar system hanterat schema för servrar som används i utvecklings- och testmiljön. På så sätt kan du få den senaste uppdateringen först i din Dev/Test-miljö för testning och utvärdering för verifiering. Om du stöter på något beteende eller icke-större ändringar har du tid att åtgärda dem innan samma uppdatering distribueras till produktionsservrar med anpassat hanterat schema. Uppdateringen börjar distribueras på flexibla servrar enligt anpassat schema efter 7 dagar och tillämpas på servern i den definierade underhållsfönstret. Just nu finns det inget alternativ för att skjuta upp uppdateringen när meddelandet har skickats. Anpassat schema rekommenderas endast för produktionsmiljöer. 
+
+I sällsynta fall kan underhållshändelsen avbrytas av systemet eller misslyckas med att slutföras. Om uppdateringen misslyckas återställs uppdateringen och den tidigare versionen av binärfilerna återställs. I sådana scenarier med misslyckad uppdatering kan det fortfarande uppstå omstart av servern under underhållsfönstret. Om uppdateringen avbryts eller misslyckas skapar systemet ett meddelande om avbruten eller misslyckad underhållshändelse som meddelar dig. Nästa försök att utföra underhåll schemaläggs enligt dina aktuella schemaläggningsinställningar och du får ett meddelande om det fem dagar i förväg. 
+
  
 ## <a name="next-steps"></a>Nästa steg
  
-* Lär dig hur du [ändrar underhålls schema](how-to-maintenance-portal.md)
-* Lär dig hur du [får aviseringar om kommande underhåll](../../service-health/service-notifications.md) med Azure Service Health
-* Lär dig hur du [ställer in aviseringar om kommande schemalagda underhålls händelser](../../service-health/resource-health-alert-monitor-guide.md)
+* Lär dig hur [du ändrar underhållsschemat](how-to-maintenance-portal.md)
+* Lär dig hur [du får meddelanden om kommande underhåll med](../../service-health/service-notifications.md) hjälp av Azure Service Health
+* Lär dig hur [du ställer in aviseringar om kommande schemalagda underhållshändelser](../../service-health/resource-health-alert-monitor-guide.md)

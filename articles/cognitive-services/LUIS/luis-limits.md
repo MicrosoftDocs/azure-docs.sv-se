@@ -32,10 +32,10 @@ Om din app överskrider LUIS-modellgränserna bör du överväga att använda en
 | [Lista entiteter](./luis-concept-entity-types.md) | Överordnad: 50, underordnad: 20 000 objekt. Kanoniskt namn är *standardtecken max. Synonymvärden har ingen längdbegränsning. |
 | [maskininlärningsentiteter + roller:](./luis-concept-entity-types.md)<br> Sammansatt<br>Enkel<br>entitetsroll|En gräns på antingen 100 överordnade entiteter eller 330 entiteter, beroende på vilken gräns som användaren når först. En roll räknas som en entitet för den här gränsen. Ett exempel är en sammansatt med en enkel entitet som har 2 roller: 1 sammansatt + 1 enkel + 2 roller = 4 av de 330 entiteterna.<br>Underentiteter kan kapslas upp till 5 nivåer, med högst 20 barn per nivå.|
 |Modell som en funktion| Maximalt antal modeller som kan användas som en funktion för en specifik modell för att vara 10 modeller. Det maximala antalet fraslistor som används som en funktion för en specifik modell är 10 fraslistor.|
-| [Förhandsversion – Dynamiska listentiteter](./luis-migration-api-v3.md)|2 listor med ~1 000 per begäran om frågeförutsägelseslutpunkt|
+| [Förhandsversion – Dynamiska listentiteter](./luis-migration-api-v3.md)|2 listor med ~1 000 per begäran för frågeförutsägelseslutpunkt|
 | [Mönster](luis-concept-patterns.md)|500 mönster per program.<br>Maximal längd på mönstret är 400 tecken.<br>3 Pattern.any-entiteter per mönster<br>Högst 2 kapslade valfria texter i mönster|
 | [Pattern.any](./luis-concept-entity-types.md)|100 per program, 3 pattern.any-entiteter per mönster |
-| [Fraslista][phrase-list]|500 fraslistor. 10 globala fraslistor på grund av modellen som en funktionsgräns. Icke-utbytbar fraslista innehåller högst 5 000 fraser. Den utbytbara fraslistan har högst 50 000 fraser. Maximalt antal totalt antal fraser per program med 500 000 fraser.|
+| [Fraslista][phrase-list]|500 fraslistor. 10 globala fraslistor på grund av modellen som en funktionsgräns. Icke-utbytbar fraslista innehåller högst 5 000 fraser. Den utbytbara fraslistan innehåller högst 50 000 fraser. Maximalt antal fraser per program med 500 000 fraser.|
 | [Fördefinierade entiteter](./howto-add-prebuilt-models.md) | ingen gräns|
 | [Lägga till entiteter för reguljära uttryck](./luis-concept-entity-types.md)|20 entiteter<br>Max 500 tecken. entitetsmönster per reguljärt uttryck|
 | [Roller](./luis-concept-entity-types.md)|300 roller per program. 10 roller per entitet|
@@ -70,7 +70,7 @@ Använd inte följande tecken i följande namn.
 
 ## <a name="resource-usage-and-limits"></a>Resursanvändning och resursbegränsningar
 
-Language Understand har separata resurser, en typ för redigering och en typ för att fråga förutsägelseslutpunkten. Mer information om skillnaderna mellan nyckeltyper finns i [Authoring and query prediction endpoint keys in LUIS (Redigera och fråga förutsägelseslutpunktsnycklar i LUIS).](luis-how-to-azure-subscription.md)
+Language Understand har separata resurser, en typ för redigering och en typ för att fråga förutsägelseslutpunkten. Mer information om skillnaderna mellan nyckeltyper finns i Slutpunktsnycklar [för redigering och frågeförutsägelse i LUIS.](luis-how-to-azure-subscription.md)
 
 <a name="key-limits"></a>
 

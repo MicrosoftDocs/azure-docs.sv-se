@@ -57,6 +57,12 @@
       href: ./export-delete-data.md
     - name: Uppdatera din app till API-version 3.0
       href: ./update-application-to-3.0-sdk.md
+    - name: Företagsberedskap
+      items:
+        - name: Konfigurera virtuella nätverk
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/custom-vision-service/context/context
+        - name: Använda kund hanterade nycklar
+          href: encrypt-data-at-rest.md
 - name: Referens
   items:
     - name: API för Custom Vision Training
@@ -81,6 +87,12 @@
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction'
 - name: Resurser
   items:
+    - name: Företagsberedskap
+      items:
+        - name: Stöd för regioner
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Efterlevnad och certifiering
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/custom-vision-service/context/context
     - name: Exempel
@@ -89,11 +101,5 @@
       href: limits-and-quotas.md
     - name: Azure-översikt
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Regional tillgänglighet
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Efterlevnad
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Kryptering
-      href: encrypt-data-at-rest.md
     - name: Viktig information
       href: release-notes.md

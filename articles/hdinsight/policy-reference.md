@@ -1,6 +1,6 @@
 ---
 title: Inbyggda principdefinitioner för Azure HDInsight
-description: Visar Azure Policy inbyggda principdefinitioner för Azure HDInsight. Dessa inbyggda principdefinitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
+description: Visar Azure Policy inbyggda principdefinitioner för Azure HDInsight. Dessa inbyggda principdefinitioner ger vanliga metoder för att hantera dina Azure-resurser.
 ms.date: 04/14/2021
 ms.topic: reference
 author: hrasheed-msft
@@ -16,7 +16,7 @@ ms.locfileid: "107497140"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-hdinsight"></a>Azure Policy inbyggda definitioner för Azure HDInsight
 
-Den här sidan är ett index [Azure Policy](../governance/policy/overview.md) inbyggda principdefinitioner för Azure HDInsight. Mer information Azure Policy inbyggda program för andra tjänster finns [i Azure Policy inbyggda definitioner](../governance/policy/samples/built-in-policies.md).
+Den här sidan är ett index [Azure Policy](../governance/policy/overview.md) inbyggda principdefinitioner för Azure HDInsight. Ytterligare Azure Policy inbyggda funktioner för andra tjänster finns i [Azure Policy inbyggda definitionerna](../governance/policy/samples/built-in-policies.md).
 
 Namnet på varje inbyggd principdefinition länkar till principdefinitionen i Azure Portal. Använd länken i kolumnen **Version för** att visa källan på Azure Policy [GitHub-lagringsplatsen](https://github.com/Azure/azure-policy).
 
