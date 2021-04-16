@@ -1,6 +1,6 @@
 ---
-title: Metod för Microsoft Authenticator app-autentisering – Azure Active Directory
-description: Lär dig mer om att använda Microsoft Authenticator-appen i Azure Active Directory för att förbättra och säkra inloggnings händelser
+title: Microsoft Authenticator-appautentiseringsmetod – Azure Active Directory
+description: Lär dig mer om Microsoft Authenticator-appen i Azure Active Directory för att förbättra och skydda inloggningshändelser
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -10,56 +10,56 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e33c87d53580d96363ba15bccbc889370f2479d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3175b1292a7e69506b9193d1182e184e257ebda3
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212917"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530499"
 ---
-# <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Autentiseringsmetoder i Azure Active Directory-Microsoft Authenticator-appen
+# <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Autentiseringsmetoder i Azure Active Directory – Microsoft Authenticator app
 
-Microsoft Authenticator-appen ger dig ytterligare en säkerhets nivå för ditt Azure AD-arbets-eller skol konto eller din Microsoft-konto och är tillgänglig för [Android](https://go.microsoft.com/fwlink/?linkid=866594) och [iOS](https://go.microsoft.com/fwlink/?linkid=866594). Med Microsoft Authenticator-appen kan användare autentiseras på ett lösen ords effektivt sätt under inloggningen eller som ett ytterligare verifierings alternativ under självbetjäning för återställning av lösen ord (SSPR) eller Azure AD Multi-Factor Authentication-händelser.
+Appen Microsoft Authenticator ger ytterligare en säkerhetsnivå för ditt arbets- eller skolkonto i Azure AD eller ditt Microsoft-konto och är tillgänglig för [Android](https://go.microsoft.com/fwlink/?linkid=866594) [och iOS.](https://go.microsoft.com/fwlink/?linkid=866594) Med Microsoft Authenticator-appen kan användarna autentisera på ett lösenordsfritt sätt under inloggningen eller som ytterligare ett verifieringsalternativ vid självbetjäning av lösenordsåterställning (SSPR) eller Azure AD Multi-Factor Authentication-händelser.
 
-Användare kan få ett meddelande via mobilappen för att godkänna eller neka eller använda Authenticator-appen för att generera en OAUTH-verifierings kod som kan anges i ett inloggnings gränssnitt. Om du aktiverar både en meddelande-och verifierings kod kan användare som registrerar Authenticator-appen använda någon av metoderna för att verifiera sin identitet.
+Användare kan få ett meddelande via mobilappen för att godkänna eller neka, eller använda Authenticator-appen för att generera en OAUTH-verifieringskod som kan anges i ett inloggningsgränssnitt. Om du aktiverar både en meddelande- och verifieringskod kan användare som registrerar Authenticator-appen använda någon av metoderna för att verifiera sin identitet.
 
-Om du vill använda Authenticator-appen i en inloggnings tolk i stället för en kombination av användar namn och lösen ord, se [Aktivera lösen ords lös inloggning med Microsoft Authenticator-appen](howto-authentication-passwordless-phone.md).
+Om du vill använda Authenticator-appen vid en inloggningsuppmaning i stället för en kombination av användarnamn och lösenord kan du gå till Aktivera lösenordslös inloggning [med Microsoft Authenticator appen](howto-authentication-passwordless-phone.md).
 
 > [!NOTE]
-> Användarna har inte möjlighet att registrera sina mobilappar när de aktiverar SSPR. I stället kan användarna registrera sin mobilapp på [https://aka.ms/mfasetup](https://aka.ms/mfasetup) eller som en del av den kombinerade registreringen av säkerhets information på [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
+> Användarna har inte möjlighet att registrera sin mobilapp när de aktiverar SSPR. I stället kan användare registrera sin mobilapp på [https://aka.ms/mfasetup](https://aka.ms/mfasetup) eller som en del av den kombinerade registreringen av säkerhetsinformation på [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
 
-## <a name="passwordless-sign-in"></a>Lösen ords avsignering
+## <a name="passwordless-sign-in"></a>Lösenordsfri inloggning
 
-I stället för att visa en uppfråga efter ett lösen ord när du har angett ett användar namn, ser en användare som har aktiverat telefonin loggning från Microsoft Authenticator-appen ett meddelande om att trycka ett nummer i appen. När rätt nummer är markerat är inloggnings processen slutförd.
+I stället för att se en uppmaning om ett lösenord efter att ha angett ett användarnamn ser en användare som har aktiverat telefon inloggning från Microsoft Authenticator-appen ett meddelande om att trycka på ett nummer i appen. När rätt nummer har valts är inloggningsprocessen klar.
 
-![Exempel på en webb läsar inloggning som ber användaren att godkänna inloggningen](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
+![Exempel på en webbläsar inloggning där användaren uppmanas att godkänna inloggningen](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
 
-Den här autentiseringsmetoden ger en hög säkerhets nivå och tar bort behovet av att användaren anger ett lösen ord vid inloggning. 
+Den här autentiseringsmetoden ger en hög säkerhetsnivå och tar bort behovet av att användaren anger ett lösenord vid inloggningen. 
 
-Information om hur du kommer igång med lösen ords lös inloggning finns i [Aktivera lösen ords lös inloggning med Microsoft Authenticator-appen](howto-authentication-passwordless-phone.md).
+Information om hur du kommer igång med lösenordsfri inloggning finns i Aktivera [lösenordsfri inloggning med Microsoft Authenticator appen](howto-authentication-passwordless-phone.md).
 
 ## <a name="notification-through-mobile-app"></a>Meddelande via mobilapp
 
-Authenticator-appen kan hjälpa till att förhindra obehörig åtkomst till konton och stoppa bedrägliga transaktioner genom att skicka ett meddelande till din smartphone eller surfplatta. Användare visar meddelandet, och om det är legitimt väljer du **Verifiera**. Annars kan de välja **neka**.
+Authenticator-appen kan hjälpa till att förhindra obehörig åtkomst till konton och stoppa bedrägliga transaktioner genom att push-meddela din smartphone eller surfplatta. Användarna visar meddelandet och om det är giltigt väljer du **Verifiera**. Annars kan de välja **Neka**.
 
-![Skärm bild av exempel på en webbläsares fråga om meddelandeautentisering för att slutföra inloggnings processen](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
+![Skärmbild av exempelwebbläsaren som uppmanar Authenticator-appen att slutföra inloggningsprocessen](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
-> Om din organisation har personal som arbetar i eller reser till Kina, fungerar inte *meddelandet via mobilappen* på Android-enheter i landet/regionen som Google Play-tjänster (inklusive push-meddelanden) är blockerade i regionen. IOS-avisering fungerar dock. För Android-enheter ska alternativa autentiseringsmetoder göras tillgängliga för dessa användare.
+> Om din organisation har personal som arbetar  i eller reser till Kina fungerar inte metoden Meddelande via mobilapp på Android-enheter i det landet/regionen eftersom Google Play-tjänster (inklusive push-meddelanden) blockeras i regionen. IOS-meddelanden fungerar dock. För Android-enheter bör alternativa autentiseringsmetoder göras tillgängliga för dessa användare.
 
-## <a name="verification-code-from-mobile-app"></a>Verifierings kod från mobilapp
+## <a name="verification-code-from-mobile-app"></a>Verifieringskod från mobilapp
 
-Authenticator-appen kan användas som en programvarubaserad token för att generera en OATH-verifierings kod. När du har angett ditt användar namn och lösen ord anger du koden från Authenticator-appen i inloggnings gränssnittet. Verifieringskoden utgör en andra form av autentisering.
+Authenticator-appen kan användas som en programvarutoken för att generera en OATH-verifieringskod. När du har angett ditt användarnamn och lösenord anger du koden som tillhandahålls av Authenticator-appen i inloggningsgränssnittet. Verifieringskoden utgör en andra form av autentisering.
 
-Användare kan ha en kombination av upp till fem OATH-token eller Authenticator-program, till exempel Microsoft Authenticator-appen, som har kon figurer ATS för användning när som helst.
+Användare kan ha en kombination av upp till fem OATH-maskinvarutoken eller autentiseringsprogram, till exempel Microsoft Authenticator-appen, som konfigurerats för användning när som helst.
 
 > [!WARNING]
-> För att säkerställa den högsta säkerhets nivån för lösen ords återställning via självbetjäning när endast en metod krävs för återställning är en verifierings kod det enda alternativet som är tillgängligt för användarna.
+> För att säkerställa den högsta säkerhetsnivån för självbetjäning av lösenordsåterställning när endast en metod krävs för återställning är en verifieringskod det enda alternativet som är tillgängligt för användarna.
 >
-> När två metoder krävs kan användare återställa med hjälp av ett meddelande eller en verifierings kod utöver andra aktiverade metoder.
+> När två metoder krävs kan användare återställa med hjälp av antingen en meddelande- eller verifieringskod utöver andra aktiverade metoder.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Information om hur du kommer igång med lösen ords lös inloggning finns i [Aktivera lösen ords lös inloggning med Microsoft Authenticator-appen](howto-authentication-passwordless-phone.md).
+Information om hur du kommer igång med lösenordsfri inloggning finns i Aktivera [lösenordsfri inloggning med Microsoft Authenticator appen](howto-authentication-passwordless-phone.md).
 
-Läs mer om hur du konfigurerar autentiseringsmetoder med hjälp av [Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
+Läs mer om hur du konfigurerar autentiseringsmetoder med [hjälp av Microsoft Graph REST API](/graph/api/resources/authenticationmethods-overview).

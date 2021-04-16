@@ -1,48 +1,48 @@
 ---
-title: Snabb start – övervakning av Azure våren-molnappar med loggar, mått och spårning
-description: Använd logg strömning, logg analys, mått och spårning för att övervaka Piggymetrics-testappar i Azure våren Cloud.
+title: Snabbstart – Övervaka Azure Spring Cloud appar med loggar, mått och spårning
+description: Använd loggströmning, logganalys, mått och spårning för att övervaka Samplingymetrics-exempelappar på Azure Spring Cloud.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/04/2020
-ms.custom: devx-track-java, devx-track-azurecli
+ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 4cc7c91e8bbc959c15e18503a9f715d84d1472e1
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 907bf06323d13b2d26dec5003e4739f2ae9faf74
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256182"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378524"
 ---
-# <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Snabb start: övervaka Azure våren Cloud-appar med loggar, mått och spårning
+# <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Snabbstart: Övervaka Azure Spring Cloud appar med loggar, mått och spårning
 
 ::: zone pivot="programming-language-csharp"
-Med den inbyggda övervaknings funktionen i Azure våren-molnet kan du felsöka och övervaka komplexa problem. Azure våren Cloud integrerar Steeltoe- [distribuerad spårning](https://steeltoe.io/docs/3/tracing/distributed-tracing) med azures [Application Insights](../azure-monitor/app/app-insights-overview.md). Den här integrationen tillhandahåller kraftfulla loggar, mått och distribuerad spårnings funktion från Azure Portal.
+Med den inbyggda övervakningsförmågan i Azure Spring Cloud kan du felsöka och övervaka komplexa problem. Azure Spring Cloud integrerar Distribuerad tracing [för](https://steeltoe.io/docs/3/tracing/distributed-tracing) Steeltoe med Azures [Application Insights](../azure-monitor/app/app-insights-overview.md). Den här integreringen ger kraftfulla loggar, mått och funktioner för distribuerad spårning från Azure Portal.
 
-Följande procedurer beskriver hur du använder logg strömning, Log Analytics, mått och distribuerad spårning med den exempel-app som du distribuerade i föregående snabb starter.
+I följande procedurer förklaras hur du använder Log Streaming, Log Analytics, Metrics och Distributed Tracing med exempelappen som du distribuerade i föregående snabbstarter.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Slutför föregående snabb starter i den här serien:
+* Slutför de föregående snabbstarterna i den här serien:
 
-  * [Etablera Azure våren Cloud Service](spring-cloud-quickstart-provision-service-instance.md).
-  * [Konfigurera konfigurations servern för Azure våren Cloud](spring-cloud-quickstart-setup-config-server.md).
-  * [Bygg och distribuera appar](spring-cloud-quickstart-deploy-apps.md).
+  * [Etablera Azure Spring Cloud tjänsten](spring-cloud-quickstart-provision-service-instance.md).
+  * [Konfigurera Azure Spring Cloud konfigurationsservern](spring-cloud-quickstart-setup-config-server.md).
+  * [Skapa och distribuera appar](spring-cloud-quickstart-deploy-apps.md).
 
 ## <a name="logs"></a>Loggar
 
-Det finns två sätt att se loggar i Azure våren Cloud: **logg strömning** av real tids loggar per app-instans eller **Log Analytics** för sammanställda loggar med avancerad fråge funktion.
+Det finns två sätt att se loggar på Azure Spring Cloud: **Loggströmning** av realtidsloggar per appinstans eller **Log Analytics** för aggregerade loggar med avancerad frågefunktion.
 
-### <a name="log-streaming"></a>Logg strömning
+### <a name="log-streaming"></a>Loggströmning
 
-Du kan använda logg strömning i Azure CLI med följande kommando.
+Du kan använda loggströmning i Azure CLI med följande kommando.
 
 ```azurecli
 az spring-cloud app logs -n solar-system-weather -f
 ```
 
-Du kommer att se utdata som liknar följande exempel:
+Du ser utdata som liknar följande exempel:
 
 ```output
 => ConnectionId:0HM2HOMHT82UK => RequestPath:/weatherforecast RequestId:0HM2HOMHT82UK:00000003, SpanId:|e8c1682e-46518cc0202c5fd9., TraceId:e8c1682e-46518cc0202c5fd9, ParentId: => Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.Controllers.WeatherForecastController.Get (Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather)
@@ -59,163 +59,163 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 ```
 
 > [!TIP]
-> Använd `az spring-cloud app logs -h` för att utforska fler parametrar och logg Ströms funktioner.
+> Använd `az spring-cloud app logs -h` för att utforska fler parametrar och funktioner för loggströmmar.
 
 ### <a name="log-analytics"></a>Log Analytics
 
-1. I Azure Portal går du till **tjänsten | Sidan översikt** och välj **loggar** i avsnittet **övervakning** . Välj **Kör** på en av exempel frågorna för Azure våren Cloud.
+1. I Azure Portal går du till **| Översiktssidan** och **välj Loggar** i **avsnittet** Övervakning. Välj **Kör** på någon av exempelfrågorna för Azure Spring Cloud.
 
-   [![Loggar Analytics-post ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
+   [![Logs Analytics-post ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
-1. Redigera frågan för att ta bort WHERE-satserna som begränsar visningen till varnings-och fel loggar.
+1. Redigera frågan för att ta bort where-satserna som begränsar visningen till varnings- och felloggar.
 
-1. Välj sedan så visas `Run` loggar. I [Azure Log Analytics-dokument](../azure-monitor/logs/get-started-queries.md) finns mer information om hur du skriver frågor.
+1. Välj sedan `Run` så visas loggarna. Mer [information om hur du skriver frågor](../azure-monitor/logs/get-started-queries.md) finns i Azure Log Analytics-dokument.
 
-   [![Loggar Analytics-fråga – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
+   [![Logs Analytics-fråga –Toe ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
 
-1. Om du vill veta mer om frågespråket som används i Log Analytics, se [Azure Monitor logg frågor](/azure/data-explorer/kusto/query/). Om du vill fråga alla Log Analytics loggar från en centraliserad klient kan du kolla in [Azure datautforskaren](https://docs.microsoft.com/azure/data-explorer/query-monitor-data).
+1. Mer information om frågespråket som används i Log Analytics finns i [Azure Monitor och loggfrågor.](/azure/data-explorer/kusto/query/) Om du vill fråga efter alla Log Analytics-loggar från en centraliserad klient kan du [läsa Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/query-monitor-data).
 
 ## <a name="metrics"></a>Mått
 
-1. I Azure Portal går du till **tjänsten | Sidan översikt** och välj **mått** i avsnittet **övervakning** . Lägg till ditt första mått genom att välja ett av .NET-måtten under **prestanda (.net)** eller **begär (.net)** i list rutan **mått** och `Avg` för **agg regering** att Visa tids linjen för det måttet.
+1. I Azure Portal går du till **| Översiktssidan** och **välj Mått** i **avsnittet** Övervakning. Lägg till ditt första mått genom att välja ett av .NET-måtten under  **Prestanda (.NET)** eller Begäran **(.NET)** i listrutan Mått och för Sammansättning för att visa tidslinjen för `Avg` måttet. 
 
-   [![Mått poster – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png#lightbox)
+   [![Posten Mått –Toe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png#lightbox)
     
-1. Klicka på **Lägg till filter** i verktygsfältet, Välj `App=solar-system-weather` för att se CPU-användning enbart för **solsystem – väder-** appen.
+1. Klicka **på Lägg** till filter i verktygsfältet och välj om du vill visa endast `App=solar-system-weather` **CPU-användning för appen solar-system-weather.**
 
-   [![Använd filter i mått – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png#lightbox)
+   [![Använda filter i mått – Kanttoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png#lightbox)
 
-1. Ignorera filtret som du skapade i föregående steg, Välj **tillämpa delning** och välj `App` för **värden** för att se CPU-användning av olika appar.
+1. Stäng filtret som skapades i föregående steg, välj Tillämpa **uppdelning** och välj värden för `App` **att** se CPU-användning av olika appar.
 
-   [![Använd delning i mått – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split-steeltoe.png#lightbox)
+   [![Använda uppdelning i mått – Metalltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split-steeltoe.png#lightbox)
 
 ## <a name="distributed-tracing"></a>Distribuerad spårning
 
-1. I Azure Portal går du till **tjänsten | Översikts** sida och välj **distribuerad spårning** i avsnittet **övervakning** . Välj sedan fliken **Visa program karta** till höger.
+1. I Azure Portal går du till **| Översiktssidan** och **välj Distribuerad spårning** i **avsnittet** Övervakning. Välj sedan **fliken Visa programkarta** till höger.
 
-   [![Distributed tracing-post – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png#lightbox)
+   [![Post för distribuerad spårning – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png#lightbox)
 
 1. Nu kan du se status för anrop mellan appar. 
 
-   [![Översikt över distribuerad spårning – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview-steeltoe.png#lightbox)
+   [![Översikt över distribuerad spårning – Kanttoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview-steeltoe.png#lightbox)
     
-1. Välj länken mellan **sol systemet – väder** och **planet – väder-Provider** för att se mer information som LÅNGSAMMASTE anrop via http-metoder.
+1. Välj länken mellan **solar-system-weather och** **planet-weather-provider** för att se mer information som långsammaste anrop med HTTP-metoder.
 
-   [![Distribuerad spårning – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call-steeltoe.png#lightbox)
+   [![Distribuerad spårning – Metalltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call-steeltoe.png#lightbox)
     
-1. Slutligen väljer du **Undersök prestanda** för att utforska mer kraftfulla inbyggda prestanda analyser.
+1. Välj slutligen Undersök **prestanda för** att utforska mer kraftfulla inbyggda prestandaanalyser.
 
    [![Prestanda för distribuerad spårning – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance-steeltoe.png#lightbox)
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-Med den inbyggda övervaknings funktionen i Azure våren-molnet kan du felsöka och övervaka komplexa problem. Azure våren Cloud integrerar [våren Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) med azures [Application Insights](../azure-monitor/app/app-insights-overview.md). Den här integrationen tillhandahåller kraftfulla loggar, mått och distribuerad spårnings funktion från Azure Portal. Följande procedurer beskriver hur du använder logg strömning, Log Analytics, mått och distribuerad spårning med distribuerade PiggyMetrics-appar.
+Med den inbyggda övervakningsförmågan i Azure Spring Cloud kan du felsöka och övervaka komplexa problem. Azure Spring Cloud [integrerar Spring Cloud Suvth](https://spring.io/projects/spring-cloud-sleuth) med Azures [Application Insights](../azure-monitor/app/app-insights-overview.md). Den här integreringen ger kraftfulla loggar, mått och funktioner för distribuerad spårning från Azure Portal. I följande procedurer förklaras hur du använder Log Streaming, Log Analytics, Metrics och distribuerad spårning med distribuerade SymmetryMetrics-appar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 Slutför föregående steg: 
 
-* [Etablera en instans av Azure våren Cloud](spring-cloud-quickstart-provision-service-instance.md)
-* [Konfigurera konfigurations servern](spring-cloud-quickstart-setup-config-server.md)
-* [Bygg och distribuera appar](spring-cloud-quickstart-deploy-apps.md).
+* [Etablera en instans av Azure Spring Cloud](spring-cloud-quickstart-provision-service-instance.md)
+* [Konfigurera konfigurationsservern](spring-cloud-quickstart-setup-config-server.md)
+* [Skapa och distribuera appar](spring-cloud-quickstart-deploy-apps.md).
 
 ## <a name="logs"></a>Loggar
 
-Det finns två sätt att se loggar i Azure våren Cloud: **logg strömning** av real tids loggar per app-instans eller **Log Analytics** för sammanställda loggar med avancerad fråge funktion.
+Det finns två sätt att se loggar på Azure Spring Cloud: **Loggströmning** av realtidsloggar per appinstans eller **Log Analytics** för aggregerade loggar med avancerad frågefunktion.
 
-### <a name="log-streaming"></a>Logg strömning
+### <a name="log-streaming"></a>Loggströmning
 
 #### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 
-Du kan använda logg strömning i Azure CLI med följande kommando.
+Du kan använda loggströmning i Azure CLI med följande kommando.
 
 ```azurecli
 az spring-cloud app logs -s <service instance name> -g <resource group name> -n gateway -f
 ```
 
-Loggarna ser ut så här:
+Du ser loggar som dessa:
 
-[![Logga strömning från Azure CLI ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-streaming-cli.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-streaming-cli.png#lightbox)
+[![Loggströmning från Azure CLI ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-streaming-cli.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-streaming-cli.png#lightbox)
 
 > [!TIP]
-> Använd `az spring-cloud app logs -h` för att utforska fler parametrar och logg strömmars funktioner.
+> Använd `az spring-cloud app logs -h` för att utforska fler parametrar och funktioner för loggströmmar.
 
-#### <a name="intellij"></a>[IntelliJ](#tab/IntelliJ)
+#### <a name="intellij"></a>[Intellij](#tab/IntelliJ)
 
-Hämta loggarna med Azure Toolkit for IntelliJ:
+Hämta loggarna med hjälp av Azure Toolkit for IntelliJ:
 
-1. Välj **Azure Explorer** och sedan **våren Cloud**.
+1. Välj **Azure Explorer** och **Spring Cloud**.
 
 1. Högerklicka på appen som körs.
 
-1. Välj **strömmande loggar** från den nedrullningsbara listan.
+1. Välj **Strömningsloggar** i listrutan.
 
-   ![Välj strömmande loggar](media/spring-cloud-intellij-howto/streaming-logs.png)
+   ![Välj strömningsloggar](media/spring-cloud-intellij-howto/streaming-logs.png)
     
-1. Välj **instans**.
+1. Välj **Instans**.
 
    ![Välj instans](media/spring-cloud-intellij-howto/select-instance.png)
     
-1. Direkt uppspelnings loggen visas i fönstret utdata.
+1. Strömningsloggen visas i utdatafönstret.
 
-   ![Strömmande logg utdata](media/spring-cloud-intellij-howto/streaming-log-output.png)
+   ![Strömmande loggutdata](media/spring-cloud-intellij-howto/streaming-log-output.png)
 
 ---
 ### <a name="log-analytics"></a>Log Analytics
 
-1. Gå till **tjänsten | Sidan översikt** och välj **loggar** i avsnittet **övervakning** . Klicka på **Kör** på en av exempel frågorna för Azure våren Cloud. 
+1. Gå till **| Översiktssidan** och **välj Loggar** i **avsnittet** Övervakning. Klicka **på** Kör på någon av exempelfrågorna för Azure Spring Cloud. 
 
-   [![Loggar Analytics-post ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
+   [![Logs Analytics-post ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
-1. Sedan visas filtrerade loggar. I [Azure Log Analytics-dokument](../azure-monitor/logs/get-started-queries.md) finns mer information om hur du skriver frågor.
+1. Sedan visas filtrerade loggar. Mer [information om hur du skriver frågor](../azure-monitor/logs/get-started-queries.md) finns i Azure Log Analytics-dokument.
 
-   [![Loggar Analytics-fråga ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
+   [![Logs Analytics-fråga ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png)](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
 
-1. Om du vill veta mer om frågespråket som används i Log Analytics, se [Azure Monitor logg frågor](/azure/data-explorer/kusto/query/). Om du vill fråga alla Log Analytics loggar från en centraliserad klient kan du kolla in [Azure datautforskaren](https://docs.microsoft.com/azure/data-explorer/query-monitor-data).
+1. Mer information om frågespråket som används i Log Analytics finns i [Azure Monitor och loggfrågor.](/azure/data-explorer/kusto/query/) Om du vill fråga efter alla Log Analytics-loggar från en centraliserad klient kan du [läsa Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/query-monitor-data).
 
 ## <a name="metrics"></a>Mått
 
-1. Gå till **tjänsten | Sidan översikt** och välj **mått** i avsnittet **övervakning** . Lägg till ditt första mått genom att välja `system.cpu.usage` för **mått** och `Avg` för **agg regering** för att se tids linjen för total CPU-användning.
+1. Gå till **| Översiktssidan** och **välj Mått** i **avsnittet** Övervakning. Lägg till ditt första mått genom att `system.cpu.usage` välja **Mått och** för `Avg` Sammansättning **för** att se tidslinjen för total CPU-användning.
 
-   [![Mått post ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu.png#lightbox)
+   [![Posten Mått ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu.png#lightbox)
     
-1. Klicka på **Lägg till filter** i verktygsfältet ovan, Välj `App=Gateway` för att Visa CPU-användning för **Gateway** -appen.
+1. Klicka **på Lägg** till filter i verktygsfältet ovan och välj för att visa endast `App=Gateway` CPU-användning för **gatewayappen.**
 
-   [![Använd filter i mått ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter.png#lightbox)
+   [![Använda filter i mått ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter.png#lightbox)
 
-1. Ignorera filtret som har skapats ovan, klicka på **tillämpa delning** och välj `App` för **värden** för att se CPU-användning av olika appar.
+1. Stäng filtret som skapades ovan, klicka på **Tillämpa delning** och välj Värden `App` för **att** se CPU-användning av olika appar.
 
-   [![Använd delning i mått ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split.png#lightbox)
+   [![Använda delning i mått ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split.png#lightbox)
 
 ## <a name="distributed-tracing"></a>Distribuerad spårning
 
-1. Gå till **tjänsten | Översikts** sida och välj **distribuerad spårning** i avsnittet **övervakning** . Klicka sedan på fliken **Visa program karta** till höger.
+1. Gå till **tjänst-| Översiktssidan** och välj **Distribuerad spårning** i **avsnittet** Övervakning. Klicka sedan på **fliken Visa programkarta** till höger.
 
-   [![Distribuerad spårnings post ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png#lightbox)
+   [![Post för distribuerad spårning ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png#lightbox)
 
-1. Nu kan du se status för anrop mellan Piggymetrics-appar. 
+1. Nu kan du se status för anrop mellan Programymetrics-appar. 
 
-   [![Översikt över ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview.png) distribuerad spårning](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview.png#lightbox)
+   [![Översikt över distribuerad spårning ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview.png#lightbox)
     
-1. Klicka på länken mellan **Gateway** och **konto tjänst** för att se mer information som LÅNGSAMMASTE anrop via http-metoder.
+1. Klicka på länken mellan **gateway och** account-service om du vill se mer information om långsammaste anrop med **HTTP-metoder.**
 
    [![Distribuerad spårning ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call.png#lightbox)
     
-1. Klicka slutligen på **Undersök prestanda** för att utforska mer kraftfulla inbyggda prestanda analyser.
+1. Klicka slutligen på **Undersök prestanda** för att utforska mer kraftfulla inbyggda prestandaanalyser.
 
-   [![Prestanda ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance.png) för distribuerad spårning](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance.png#lightbox)
+   [![Prestanda för distribuerad spårning ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance.png#lightbox)
 
 ::: zone-end
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-I de här snabb starterna skapade du Azure-resurser som kommer fortsätta att debiteras om de finns kvar i din prenumeration. Om du inte tror att du behöver dessa resurser i framtiden tar du bort resurs gruppen med hjälp av portalen eller genom att köra följande kommando i Cloud Shell:
+I de här snabbstarterna skapade du Azure-resurser som fortsätter att ackumulera avgifter om de finns kvar i din prenumeration. Om du inte förväntar dig att behöva dessa resurser i framtiden tar du bort resursgruppen med hjälp av portalen eller genom att köra följande kommando i Cloud Shell:
 
 ```azurecli
 az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
 ```
 
-I en tidigare snabb start anger du också standard resurs gruppens namn. Om du inte tänker fortsätta med nästa snabb start tar du bort standardvärdet genom att köra följande CLI-kommando:
+I en tidigare snabbstart anger du även standardresursgruppens namn. Om du inte planerar att fortsätta till nästa snabbstart rensar du ut standardvärdet genom att köra följande CLI-kommando:
 
 ```azurecli
 az configure --defaults group=
@@ -223,10 +223,10 @@ az configure --defaults group=
 
 ## <a name="next-steps"></a>Nästa steg
 
-Information om hur du utforskar fler övervaknings funktioner i Azure våren Cloud finns i:
+Mer information om övervakningsfunktionerna i Azure Spring Cloud finns i:
 
 > [!div class="nextstepaction"]
-> [Diagnostiska tjänster](diagnostic-services.md)
+> [Diagnostiktjänster](diagnostic-services.md)
 >
 > [Distribuerad spårning](spring-cloud-howto-distributed-tracing.md)
 >

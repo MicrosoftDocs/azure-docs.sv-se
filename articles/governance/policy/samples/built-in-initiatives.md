@@ -1,21 +1,21 @@
 ---
-title: Lista över inbyggda princip initiativ
-description: Visa en lista över inbyggda princip initiativ för Azure Policy. Kategorier omfattar regelefterlevnad, gäst konfiguration och mycket annat.
-ms.date: 03/31/2021
+title: Lista över inbyggda principinitiativ
+description: Lista inbyggda principinitiativ för Azure Policy. Kategorierna omfattar regelefterlevnad, gästkonfiguration med mera.
+ms.date: 04/14/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: ef643e551c2ddab715d67467620fb748fb836eee
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: c43886f19d2128b7e1168810a0ac20577ccded15
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090119"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107504888"
 ---
-# <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy inbyggda definitioner för initiativ
+# <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy inbyggda initiativdefinitioner
 
-Den här sidan är ett index med Azure Policy inbyggda definitioner för initiativ.
+Den här sidan är ett index Azure Policy inbyggda initiativdefinitioner.
 
-Namnet på varje inbyggt länkar till initiativ definitions källan på [Azure policy GitHub-lagrings platsen](https://github.com/Azure/azure-policy). De inbyggda programmen grupperas efter egenskapen **Category** i **metadata**. Om du vill gå till en viss **kategori** använder du menyn på höger sida av sidan. Annars använder du <kbd>CTRL</kbd> - <kbd>F</kbd> för att använda Sök funktionen i webbläsaren.
+Namnet på varje inbyggt länkar till initiativdefinitionskällan på den Azure Policy [GitHub-lagringsplatsen](https://github.com/Azure/azure-policy). De inbyggda är grupperade efter **kategoriegenskapen** i **metadata**. Om du vill gå till **en** viss kategori använder du menyn till höger på sidan. Annars använder du <kbd>Ctrl</kbd> - <kbd>F</kbd> för att använda webbläsarens sökfunktion.
 
 ## <a name="cosmos-db"></a>Cosmos DB
 

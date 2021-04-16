@@ -21,9 +21,9 @@
       href: tutorial-monitor-your-data.md
     - name: Undersöka incidenter
       href: tutorial-investigate-cases.md
-    - name: Använd Automation för att svara på hot
+    - name: Använda automatisering för att svara på hot
       href: tutorial-respond-threats-playbook.md
-    - name: Skapa KQL-frågor (lära modulen)
+    - name: Skapa KQL-frågor (Learn-modul)
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
 - name: Begrepp
   items:
@@ -35,7 +35,7 @@
           href: roles.md
         - name: Hantera åtkomst efter resurs
           href: resource-context-rbac.md
-        - name: Skydda MSSP intellektuell egendom
+        - name: Skydda immateriell egendom i MSSP
           href: mssp-protect-intellectual-property.md
     - name: Avancerad attackidentifiering i flera faser
       href: fusion.md
@@ -43,9 +43,9 @@
       items:
         - name: SOAR i Azure Sentinel
           href: automation-in-azure-sentinel.md
-        - name: Automatiserings regler för incident hantering
+        - name: Automatiseringsregler för incidenthantering
           href: automate-incident-handling-with-automation-rules.md
-        - name: Avancerad automatisering med spel böcker
+        - name: Avancerad automatisering med spelböcker
           href: automate-responses-with-playbooks.md
     - name: Identifiera avancerade hot med UEBA
       href: identify-threats-with-entity-behavior-analytics.md
@@ -96,7 +96,7 @@
               href: connect-azure-sql-logs.md
             - name: Azure-brandvägg för webbaserade program (WAF)
               href: connect-azure-waf.md
-            - name: Defender för IoT (tidigare ASC för IoT)
+            - name: Defender for IoT (tidigare ASC for IoT)
               href: connect-asc-iot.md
             - name: Domännamnserver
               href: connect-dns.md
@@ -120,15 +120,17 @@
               href: connect-windows-firewall.md
             - name: Windows säkerhetshändelser
               href: connect-windows-security-events.md
+            - name: Windows Virtual Desktop
+              href: connect-windows-virtual-desktop.md
         - name: Ansluta externa lösningar
           items:
-            - name: Agari phishing-skydd och varumärkes skydd
+            - name: Agari Phishing Defense och Varumärkesskydd
               href: connect-agari-phishing-defense.md
             - name: Alcide kAudit
               href: connect-alcide-kaudit.md
             - name: Alsid för Active Directory
               href: connect-alsid-active-directory.md
-            - name: Apache HTTP-Server
+            - name: Apache HTTP Server
               href: connect-apache-http-server.md
             - name: Barracuda WAF
               href: connect-barracuda.md
@@ -176,7 +178,7 @@
               href: connect-qualys-vm.md
             - name: Salesforce Service Cloud
               href: connect-salesforce-service-cloud.md
-            - name: Sophos Cloud Optix
+            - name: Sophos Cloud ×
               href: connect-sophos-cloud-optix.md
             - name: Sophos XG-brandvägg
               href: connect-sophos-xg-firewall.md
@@ -210,7 +212,7 @@
                   items:
                     - name: AI Vectra Detect
                       href: connect-ai-vectra-detect.md
-                    - name: Akamai säkerhets händelser
+                    - name: Akamai-säkerhetshändelser
                       href: connect-akamai-security-events.md
                     - name: Aruba ClearPass
                       href: connect-aruba-clearpass.md
@@ -234,7 +236,7 @@
                       href: connect-fortinet.md
                     - name: Illusive Networks AMS
                       href: connect-illusive-attack-management-system.md
-                    - name: Imperva WAF-Gateway
+                    - name: Imperva WAF Gateway
                       href: connect-imperva-waf-gateway.md
                     - name: One Identity Safeguard
                       href: connect-one-identity.md
@@ -252,7 +254,7 @@
                       href: connect-zscaler.md
                 - name: STEG 3 Verifiera anslutningen
                   href: connect-cef-verify.md
-        - name: Skapa anpassade anslutningar
+        - name: Skapa anpassade anslutningsappar
           href: create-custom-connector.md
         - name: Ansluta till hotinformation
           href: connect-threat-intelligence.md
@@ -260,9 +262,9 @@
           href: connect-azure-stack.md
         - name: Övervaka hälsotillstånd för dataanslutningsprogram
           href: monitor-data-connector-health.md
-    - name: Aktivera användar-och enhets beteende analys
+    - name: Aktivera beteendeanalys för användare och entiteter
       href: enable-entity-behavior-analytics.md
-    - name: Mappa data fält till entiteter
+    - name: Mappa datafält till entiteter
       href: map-data-fields-to-entities.md
     - name: Hantera flera klientorganisationer (MSSP)
       href: multiple-tenants-service-providers.md
@@ -270,13 +272,13 @@
       href: multiple-workspace-view.md
     - name: Konfigurera kundhanterade nycklar (CMK)
       href: customer-managed-keys.md
-    - name: Anpassad information om ytan i aviseringar
+    - name: Anpassad information för Surface i aviseringar
       href: surface-custom-details-in-alerts.md
     - name: Skapa incidenter från aviseringar
       href: create-incidents-from-alerts.md
     - name: Hantera SOC bättre med incidentmått
       href: manage-soc-with-incident-metrics.md
-    - name: Granska Azure Sentinel-frågor och-aktiviteter
+    - name: Granska Azure Sentinel frågor och aktiviteter
       href: audit-sentinel-data.md
     - name: Hotjakt
       href: hunting.md
@@ -291,7 +293,7 @@
       href: offboard.md
 - name: Referens
   items:
-    - name: Bästa Azure Sentinel-arbetsböcker
+    - name: De Azure Sentinel arbetsböckerna
       href: top-workbooks.md
     - name: Azure CLI
       href: /cli/azure/ext/sentinel/sentinel
@@ -299,15 +301,15 @@
       items:
         - name: Alla Azure-roller
           href: ../role-based-access-control/built-in-roles.md#all
-        - name: Azure Sentinel-roller
+        - name: Azure Sentinel roller
           href: ../role-based-access-control/built-in-roles.md#security
     - name: 'REST API:er'
       items:
-        - name: Azure Sentinel REST – API
+        - name: Azure Sentinel REST-API
           href: /rest/api/securityinsights/
         - name: Hantera jaktfrågor med REST-API
           href: hunting-with-rest-api.md
-        - name: Hantera watchlists med REST-API
+        - name: Hantera visningslistor med REST-API
           href: watchlist-with-rest-api.md
     - name: Logic Apps-anslutningsappen i Azure Sentinel
       href: /connectors/azuresentinel/
@@ -315,25 +317,25 @@
       href: entities-reference.md
     - name: Schema för nätverksnormalisering
       href: normalization-schema.md
-    - name: Schema referens för data Källa
+    - name: Schemareferens för datakälla
       href: data-source-schema-reference.md
     - name: Kusto-frågespråk
       items:
-        - name: Översikt över Kusto-frågor
+        - name: Översikt över Kusto-fråga
           href: /azure/data-explorer/kusto/query/
-        - name: Snabb referens för Kusto Query Language
+        - name: Snabbreferens för Kusto Query Language
           href: /azure/data-explorer/kql-quick-reference
-        - name: Optimering av Azure Monitor logg fråga
+        - name: Azure Monitor optimering av loggfrågor
           href: ../azure-monitor/logs/query-optimization.md
     - name: UEBA-berikande
       href: ueba-enrichments.md
-    - name: CEF för logg fälts mappning
+    - name: CEF-loggfältmappning
       href: cef-name-mapping.md
 - name: Resurser
   items:
     - name: Användbara resurser
       href: resources.md
-    - name: Azure Sentinel-blogg
+    - name: Azure Sentinel blogg
       href: 'https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog'
     - name: Regional tillgänglighet
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'

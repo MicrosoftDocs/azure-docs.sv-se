@@ -4,303 +4,297 @@ summary: Azure Active Directory (Azure AD) är en molnbaserad identitets- och å
 brand: azure
 metadata:
   title: Dokumentation om Azure Active Directory
-  description: Azure Active Directory (Azure AD) är Microsofts molnbaserade katalogtjänst för identitetshantering för flera innehavare som kombinerar viktiga katalogtjänster, åtkomsthantering för program och identitetsskydd i en och samma lösning.
+  description: 'Azure Active Directory (Azure AD) är Microsofts molnbaserade katalogtjänst för identitetshantering för flera innehavare som kombinerar viktiga katalogtjänster, åtkomsthantering för program och identitetsskydd i en och samma lösning.'
   ms.service: active-directory
   ms.topic: hub-page
   ms.collection: M365-identity-device-management
   author: mtillman
   ms.author: mtillman
   manager: daveba
-  ms.date: 12/01/2020
-  ms.openlocfilehash: de96c1ed6828a6933102755d6c020cf01c4c9c7b
-  ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
-  ms.translationtype: MT
-  ms.contentlocale: sv-SE
-  ms.lasthandoff: 01/20/2021
-  ms.locfileid: "98611159"
+  ms.date: 04/14/2021
 highlightedContent:
   items:
-  - title: Vad är Azure AD?
-    itemType: overview
-    url: ./fundamentals/active-directory-whatis.md
-  - title: Vad är nytt i Azure AD?
-    itemType: whats-new
-    url: ./fundamentals/whats-new.md
-  - title: Skydda din fjärranslutna personal
-    itemType: get-started
-    url: /enterprise-mobility-security/remote-work/
-  - title: Tilldela roller till användare
-    itemType: how-to-guide
-    url: ./fundamentals/active-directory-users-assign-role-azure-portal.md
-  - title: Checklista för Azure AD-distribution
-    itemType: concept
-    url: ./fundamentals/active-directory-deployment-checklist-p2.md
-  - title: Bygg in återhämtning i identitets- och åtkomsthanteringen med Azure AD
-    itemType: overview
-    url: ./fundamentals/resilience-overview.md
+    - title: Vad är Azure AD?
+      itemType: overview
+      url: ./fundamentals/active-directory-whatis.md
+    - title: Vad är nytt i Azure AD?
+      itemType: whats-new
+      url: ./fundamentals/whats-new.md
+    - title: Skydda din fjärranslutna personal
+      itemType: get-started
+      url: /enterprise-mobility-security/remote-work/
+    - title: Vad är verifierbara autentiseringsuppgifter (förhandsversion)?
+      itemType: overview
+      url: ./verifiable-credentials/decentralized-identifier-overview.md
+    - title: Checklista för Azure AD-distribution
+      itemType: concept
+      url: ./fundamentals/active-directory-deployment-checklist-p2.md
+    - title: Bygg in återhämtning i identitets- och åtkomsthanteringen med Azure AD
+      itemType: overview
+      url: ./fundamentals/resilience-overview.md
 conceptualContent:
   items:
-  - title: Programhantering
-    links:
-    - url: ./manage-apps/what-is-application-management.md
-      itemType: overview
-      text: Vad är programhantering?
-    - url: ./manage-apps/view-applications-portal.md
-      itemType: quickstart
-      text: Visa appar som använder din klientorganisation för identitetshantering
-    - url: ./manage-apps/add-application-portal-setup-sso.md
-      itemType: quickstart
-      text: Konfigurera SAML-baserad enkel inloggning
-    footerLink:
-      url: ./manage-apps/index.yml
-      text: Mer information
-  - title: Program- och HR-etablering
-    links:
-    - url: ./app-provisioning/user-provisioning.md
-      itemType: overview
-      text: Vad är programetablering?
-    - url: ./app-provisioning/how-provisioning-works.md
-      itemType: concept
-      text: Så fungerar programetablering
-    - url: ./app-provisioning/plan-cloud-hr-provision.md
-      itemType: how-to-guide
-      text: Planera en molndistribution av HR-etablering
-    footerLink:
-      url: ./app-provisioning/index.yml
-      text: Mer information
-  - title: Autentisering
-    links:
-    - url: ./authentication/overview-authentication.md
-      itemType: concept
-      text: Vad är Azure AD-autentisering?
-    - url: ./authentication/tutorial-enable-sspr.md
-      itemType: tutorial
-      text: Aktivera lösenordsåterställning via självbetjäning
-    - url: ./authentication/tutorial-enable-azure-mfa.md
-      itemType: tutorial
-      text: Aktivera Azure AD-multifaktorautentisering
-    footerLink:
-      url: ./authentication/index.yml
-      text: Mer information
-  - title: Molnbaserad synkronisering
-    links:
-    - url: ./cloud-sync/what-is-cloud-sync.md
-      itemType: overview
-      text: Vad är Cloud Sync?
-    - url: ./cloud-sync/tutorial-single-forest.md
-      itemType: tutorial
-      text: Integrera en enskild skog med en enskild Azure AD-klientorganisation
-    - url: ./cloud-sync/how-to-install.md
-      itemType: how-to-guide
-      text: Installera Azure AD Connect etablerings agent
-    footerLink:
-      url: ./cloud-sync/index.yml
-      text: Mer information
-  - title: Villkorlig åtkomst
-    links:
-    - url: ./conditional-access/overview.md
-      itemType: overview
-      text: Vad är villkorsstyrd åtkomst?
-    - url: ./authentication/tutorial-enable-azure-mfa.md
-      itemType: quickstart
-      text: Kräv MFA för specifika appar
-    - url: ./conditional-access/location-condition.md
-      itemType: concept
-      text: Villkor som baseras på plats
-    footerLink:
-      url: ./conditional-access/index.yml
-      text: Mer information
-  - title: Enhetshantering
-    links:
-    - url: ./devices/overview.md
-      itemType: overview
-      text: Vad är enhetshantering?
-    - url: ./devices/hybrid-azuread-join-plan.md
-      itemType: how-to-guide
-      text: Planera en Azure AD-hybridanslutning
-    - url: ./devices/azureadjoin-plan.md
-      itemType: how-to-guide
-      text: Planera en Azure AD-anslutning
-    footerLink:
-      url: ./devices/index.yml
-      text: Mer information
-  - title: Domain Services
-    links:
-    - url: ../active-directory-domain-services/overview.md
-      itemType: overview
-      text: Vad är Azure AD Domain Services?
-    - url: ../active-directory-domain-services/tutorial-create-instance.md
-      itemType: quickstart
-      text: Aktivera Azure AD Domain Services
-    - url: ../active-directory-domain-services/manage-group-policy.md
-      itemType: how-to-guide
-      text: Administrera en grupprincip
-    footerLink:
-      url: ../active-directory-domain-services/index.yml
-      text: Mer information
-  - title: Företagsanvändare
-    links:
-    - url: ./enterprise-users/groups-create-rule.md
-      itemType: how-to-guide
-      text: Skapa en dynamisk grupp
-    - url: ./enterprise-users/groups-settings-v2-cmdlets.md
-      itemType: how-to-guide
-      text: PowerShell för Azure AD-grupper
-    - url: ./enterprise-users/directory-service-limits-restrictions.md
-      itemType: reference
-      text: Azure AD-tjänstens begränsningar
-    footerLink:
-      url: ./enterprise-users/index.yml
-      text: Mer information
-  - title: Externa identiteter
-    links:
-    - url: ./external-identities/compare-with-b2c.md
-      itemType: overview
-      text: Jämför lösningar för externa användare
-    - url: ../active-directory-b2c/overview.md
-      itemType: overview
-      text: Skala dina appar till konsumenter (B2C)
-    - url: ./external-identities/what-is-b2b.md
-      itemType: overview
-      text: Samarbeta med användare utanför organisationen (B2B)
-    footerLink:
-      url: ./external-identities/index.yml
-      text: Mer information
-  - title: Hybrididentitet
-    links:
-    - url: ./hybrid/whatis-hybrid-identity.md
-      itemType: overview
-      text: Vad är hybrididentitet?
-    - url: ./hybrid/how-to-connect-sso.md
-      itemType: how-to-guide
-      text: Enkel inloggning med Azure AD Connect
-    - url: ./hybrid/how-to-connect-install-custom.md
-      itemType: how-to-guide
-      text: Anpassad installation av Azure AD Connect
-    footerLink:
-      url: ./hybrid/index.yml
-      text: Mer information
-  - title: Identitetsstyrning
-    links:
-    - url: ./governance/entitlement-management-access-package-first.md
-      itemType: how-to-guide
-      text: Skapa ett åtkomstpaket
-    - url: ./governance/create-access-review.md
-      itemType: how-to-guide
-      text: Skapa en åtkomstgranskning av en grupp eller en app
-    - url: ./conditional-access/terms-of-use.md
-      itemType: how-to-guide
-      text: Kräva att användarna godkänner användningsvillkoren
-    footerLink:
-      url: ./governance/index.yml
-      text: Mer information
-  - title: Identitetsskydd
-    links:
-    - url: ./identity-protection/overview-identity-protection.md
-      itemType: overview
-      text: Vad är identitetsskydd?
-    - url: ./identity-protection/howto-identity-protection-configure-risk-policies.md
-      itemType: how-to-guide
-      text: Konfigurera riskprinciper
-    - url: ./identity-protection/howto-identity-protection-remediate-unblock.md
-      itemType: how-to-guide
-      text: Avblockera användare
-    footerLink:
-      url: ./identity-protection/index.yml
-      text: Mer information
-  - title: Hanterade identiteter för Azure-resurser
-    links:
-    - url: ./managed-identities-azure-resources/tutorial-windows-vm-access-sql.md
-      itemType: tutorial
-      text: Använda en virtuell Windows-dator för att få åtkomst till Azure SQL
-    - url: ./managed-identities-azure-resources/how-to-use-vm-token.md
-      itemType: how-to-guide
-      text: Använda en virtuell Azure-dator för tokenförvärv
-    - url: ./managed-identities-azure-resources/services-support-managed-identities.md
-      itemType: concept
-      text: Tjänster som stöder hanterade identiteter
-    footerLink:
-      url: ./managed-identities-azure-resources/index.yml
-      text: Mer information
-  - title: Microsoft identitetsplattform
-    links:
-    - url: ./develop/v2-overview.md
-      itemType: overview
-      text: Om Microsoft Identity-plattformen
-    - url: ./develop/v2-oauth2-auth-code-flow.md
-      itemType: concept
-      text: Beviljande av OAuth 2.0-kodflöde
-    - url: ./develop/quickstart-register-app.md
-      itemType: quickstart
-      text: Registrera en app med Microsoft-identitetsplattformen
-    footerLink:
-      url: ./develop/index.yml
-      text: Mer information
-  - title: Privileged Identity Management (PIM)
-    links:
-    - url: ./privileged-identity-management/pim-getting-started.md
-      itemType: how-to-guide
-      text: Börja använda PIM
-    - url: ./privileged-identity-management/pim-how-to-activate-role.md
-      itemType: how-to-guide
-      text: Aktivera mina katalogroller
-    - url: ./privileged-identity-management/pim-how-to-add-role-to-user.md
-      itemType: how-to-guide
-      text: Tilldela katalogroller
-    footerLink:
-      url: ./privileged-identity-management/index.yml
-      text: Mer information
-  - title: Rapporter och övervakning
-    links:
-    - url: ./reports-monitoring/concept-audit-logs.md
-      itemType: concept
-      text: Granskningsloggar
-    - url: ./reports-monitoring/concept-sign-ins.md
-      itemType: concept
-      text: Inloggningsloggar
-    - url: ./reports-monitoring/reference-sign-ins-error-codes.md
-      itemType: reference
-      text: Referens för felkoder för inloggning
-    footerLink:
-      url: ./reports-monitoring/index.yml
-      text: Mer information
-  - title: Roller
-    links:
-    - url: ./roles/groups-assign-role.md
-      itemType: concept
-      text: Förstå Azure AD-roller
-    - url: ./roles/concept-understand-roles.md
-      itemType: how-to-guide
-      text: Skapa en anpassad roll
-    - url: ./roles/groups-view-assignments.md
-      itemType: reference
-      text: Visa roller som har tilldelats till en grupp
-    footerLink:
-      url: ./roles/index.yml
-      text: Mer information
-  - title: Program från tredje part
-    links:
-    - url: ./saas-apps/amazon-web-service-tutorial.md
-      itemType: tutorial
-      text: Integrering av enkel inloggning i Azure Active Directory med Amazon Web Services
-    - url: ./saas-apps/workday-inbound-tutorial.md
-      itemType: tutorial
-      text: Konfigurera Workday för automatisk användaretablering
-    - url: ./develop/v2-howto-app-gallery-listing.md
-      itemType: get-started
-      text: Begära att lägga till din app i galleriet
-    footerLink:
-      url: ./saas-apps/tutorial-list.md
-      text: Visa fler appar
+    - title: Programhantering
+      links:
+        - url: ./manage-apps/what-is-application-management.md
+          itemType: overview
+          text: Vad är programhantering?
+        - url: ./manage-apps/view-applications-portal.md
+          itemType: quickstart
+          text: Visa appar som använder din klientorganisation för identitetshantering
+        - url: ./manage-apps/add-application-portal-setup-sso.md
+          itemType: quickstart
+          text: Konfigurera SAML-baserad enkel inloggning
+      footerLink:
+        url: ./manage-apps/index.yml
+        text: Mer information
+    - title: Program- och HR-etablering
+      links:
+        - url: ./app-provisioning/user-provisioning.md
+          itemType: overview
+          text: Vad är programetablering?
+        - url: ./app-provisioning/how-provisioning-works.md
+          itemType: concept
+          text: Så fungerar programetablering
+        - url: ./app-provisioning/plan-cloud-hr-provision.md
+          itemType: how-to-guide
+          text: Planera en molndistribution av HR-etablering
+      footerLink:
+        url: ./app-provisioning/index.yml
+        text: Mer information
+    - title: Autentisering
+      links:
+        - url: ./authentication/overview-authentication.md
+          itemType: concept
+          text: Vad är Azure AD-autentisering?
+        - url: ./authentication/tutorial-enable-sspr.md
+          itemType: tutorial
+          text: Aktivera lösenordsåterställning via självbetjäning
+        - url: ./authentication/tutorial-enable-azure-mfa.md
+          itemType: tutorial
+          text: Aktivera Azure AD-multifaktorautentisering
+      footerLink:
+        url: ./authentication/index.yml
+        text: Mer information
+    - title: Molnsynkronisering
+      links:
+        - url: ./cloud-sync/what-is-cloud-sync.md
+          itemType: overview
+          text: Vad är molnsynkronisering?
+        - url: ./cloud-sync/tutorial-single-forest.md
+          itemType: tutorial
+          text: Integrera en enskild skog med en enskild Azure AD-klientorganisation
+        - url: ./cloud-sync/how-to-install.md
+          itemType: how-to-guide
+          text: Installera Azure AD Connect etableringsagent
+      footerLink:
+        url: ./cloud-sync/index.yml
+        text: Mer information
+    - title: Villkorlig åtkomst
+      links:
+        - url: ./conditional-access/overview.md
+          itemType: overview
+          text: Vad är villkorsstyrd åtkomst?
+        - url: ./authentication/tutorial-enable-azure-mfa.md
+          itemType: quickstart
+          text: Kräv MFA för specifika appar
+        - url: ./conditional-access/location-condition.md
+          itemType: concept
+          text: Villkor som baseras på plats
+      footerLink:
+        url: ./conditional-access/index.yml
+        text: Mer information
+    - title: Enhetshantering
+      links:
+        - url: ./devices/overview.md
+          itemType: overview
+          text: Vad är enhetshantering?
+        - url: ./devices/hybrid-azuread-join-plan.md
+          itemType: how-to-guide
+          text: Planera en Azure AD-hybridanslutning
+        - url: ./devices/azureadjoin-plan.md
+          itemType: how-to-guide
+          text: Planera en Azure AD-anslutning
+      footerLink:
+        url: ./devices/index.yml
+        text: Mer information
+    - title: Domain Services
+      links:
+        - url: ../active-directory-domain-services/overview.md
+          itemType: overview
+          text: Vad är Azure AD Domain Services?
+        - url: ../active-directory-domain-services/tutorial-create-instance.md
+          itemType: quickstart
+          text: Aktivera Azure AD Domain Services
+        - url: ../active-directory-domain-services/manage-group-policy.md
+          itemType: how-to-guide
+          text: Administrera en grupprincip
+      footerLink:
+        url: ../active-directory-domain-services/index.yml
+        text: Mer information
+    - title: Företagsanvändare
+      links:
+        - url: ./enterprise-users/groups-create-rule.md
+          itemType: how-to-guide
+          text: Skapa en dynamisk grupp
+        - url: ./enterprise-users/groups-settings-v2-cmdlets.md
+          itemType: how-to-guide
+          text: PowerShell för Azure AD-grupper
+        - url: ./enterprise-users/directory-service-limits-restrictions.md
+          itemType: reference
+          text: Azure AD-tjänstens begränsningar
+      footerLink:
+        url: ./enterprise-users/index.yml
+        text: Mer information
+    - title: Externa identiteter
+      links:
+        - url: ./external-identities/compare-with-b2c.md
+          itemType: overview
+          text: Jämför lösningar för externa användare
+        - url: ../active-directory-b2c/overview.md
+          itemType: overview
+          text: Skala dina appar till konsumenter (B2C)
+        - url: ./external-identities/what-is-b2b.md
+          itemType: overview
+          text: Samarbeta med användare utanför organisationen (B2B)
+      footerLink:
+        url: ./external-identities/index.yml
+        text: Mer information
+    - title: Hybrididentitet
+      links:
+        - url: ./hybrid/whatis-hybrid-identity.md
+          itemType: overview
+          text: Vad är hybrididentitet?
+        - url: ./hybrid/how-to-connect-sso.md
+          itemType: how-to-guide
+          text: Enkel inloggning med Azure AD Connect
+        - url: ./hybrid/how-to-connect-install-custom.md
+          itemType: how-to-guide
+          text: Anpassad installation av Azure AD Connect
+      footerLink:
+        url: ./hybrid/index.yml
+        text: Mer information
+    - title: Identitetsstyrning
+      links:
+        - url: ./governance/entitlement-management-access-package-first.md
+          itemType: how-to-guide
+          text: Skapa ett åtkomstpaket
+        - url: ./governance/create-access-review.md
+          itemType: how-to-guide
+          text: Skapa en åtkomstgranskning av en grupp eller en app
+        - url: ./conditional-access/terms-of-use.md
+          itemType: how-to-guide
+          text: Kräva att användarna godkänner användningsvillkoren
+      footerLink:
+        url: ./governance/index.yml
+        text: Mer information
+    - title: Identitetsskydd
+      links:
+        - url: ./identity-protection/overview-identity-protection.md
+          itemType: overview
+          text: Vad är identitetsskydd?
+        - url: ./identity-protection/howto-identity-protection-configure-risk-policies.md
+          itemType: how-to-guide
+          text: Konfigurera riskprinciper
+        - url: ./identity-protection/howto-identity-protection-remediate-unblock.md
+          itemType: how-to-guide
+          text: Avblockera användare
+      footerLink:
+        url: ./identity-protection/index.yml
+        text: Mer information
+    - title: Hanterade identiteter för Azure-resurser
+      links:
+        - url: ./managed-identities-azure-resources/tutorial-windows-vm-access-sql.md
+          itemType: tutorial
+          text: Använda en virtuell Windows-dator för att få åtkomst till Azure SQL
+        - url: ./managed-identities-azure-resources/how-to-use-vm-token.md
+          itemType: how-to-guide
+          text: Använda en virtuell Azure-dator för tokenförvärv
+        - url: ./managed-identities-azure-resources/services-support-managed-identities.md
+          itemType: concept
+          text: Tjänster som stöder hanterade identiteter
+      footerLink:
+        url: ./managed-identities-azure-resources/index.yml
+        text: Mer information
+    - title: Microsoft identitetsplattform
+      links:
+        - url: ./develop/v2-overview.md
+          itemType: overview
+          text: Om Microsoft Identity-plattformen
+        - url: ./develop/v2-oauth2-auth-code-flow.md
+          itemType: concept
+          text: Beviljande av OAuth 2.0-kodflöde
+        - url: ./develop/quickstart-register-app.md
+          itemType: quickstart
+          text: Registrera en app med Microsoft-identitetsplattformen
+      footerLink:
+        url: ./develop/index.yml
+        text: Mer information
+    - title: Privileged Identity Management (PIM)
+      links:
+        - url: ./privileged-identity-management/pim-getting-started.md
+          itemType: how-to-guide
+          text: Börja använda PIM
+        - url: ./privileged-identity-management/pim-how-to-activate-role.md
+          itemType: how-to-guide
+          text: Aktivera mina katalogroller
+        - url: ./privileged-identity-management/pim-how-to-add-role-to-user.md
+          itemType: how-to-guide
+          text: Tilldela katalogroller
+      footerLink:
+        url: ./privileged-identity-management/index.yml
+        text: Mer information
+    - title: Rapporter och övervakning
+      links:
+        - url: ./reports-monitoring/concept-audit-logs.md
+          itemType: concept
+          text: Granskningsloggar
+        - url: ./reports-monitoring/concept-sign-ins.md
+          itemType: concept
+          text: Inloggningsloggar
+        - url: ./reports-monitoring/reference-sign-ins-error-codes.md
+          itemType: reference
+          text: Referens för felkoder för inloggning
+      footerLink:
+        url: ./reports-monitoring/index.yml
+        text: Mer information
+    - title: Roller
+      links:
+        - url: ./roles/groups-assign-role.md
+          itemType: concept
+          text: Förstå Azure AD-roller
+        - url: ./roles/concept-understand-roles.md
+          itemType: how-to-guide
+          text: Skapa en anpassad roll
+        - url: ./roles/groups-view-assignments.md
+          itemType: reference
+          text: Visa roller som har tilldelats till en grupp
+      footerLink:
+        url: ./roles/index.yml
+        text: Mer information
+    - title: Program från tredje part
+      links:
+        - url: ./saas-apps/amazon-web-service-tutorial.md
+          itemType: tutorial
+          text: Integrering av enkel inloggning i Azure Active Directory med Amazon Web Services
+        - url: ./saas-apps/workday-inbound-tutorial.md
+          itemType: tutorial
+          text: Konfigurera Workday för automatisk användaretablering
+        - url: ./develop/v2-howto-app-gallery-listing.md
+          itemType: get-started
+          text: Begära att lägga till din app i galleriet
+      footerLink:
+        url: ./saas-apps/tutorial-list.md
+        text: Visa fler appar
 additionalContent:
   sections:
-  - items:
-    - title: Microsoft 365
-      summary: Utforska Microsoft 365, en komplett lösning som omfattar Azure AD.
-      url: /microsoft-365/
-    - title: Azure AD PowerShell
-      summary: Lär dig hur du installerar och använder Azure AD PowerShell-modulen.
-      url: /powershell/module/azuread/
-    - title: Azure CLI-kommandon för Azure AD
-      summary: Du kan läsa om Azure AD-kommandona i CLI-referensen.
-      url: /cli/azure/ad
+    - items:
+        - title: Microsoft 365
+          summary: 'Utforska Microsoft 365, en komplett lösning som omfattar Azure AD.'
+          url: /microsoft-365/
+        - title: Azure AD PowerShell
+          summary: Lär dig hur du installerar och använder Azure AD PowerShell-modulen.
+          url: /powershell/module/azuread/
+        - title: Azure CLI-kommandon för Azure AD
+          summary: Du kan läsa om Azure AD-kommandona i CLI-referensen.
+          url: /cli/azure/ad

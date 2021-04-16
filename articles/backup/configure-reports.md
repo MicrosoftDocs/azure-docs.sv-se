@@ -1,35 +1,35 @@
 ---
 title: Konfigurera Azure Backup-rapporter
-description: Konfigurera och Visa rapporter för Azure Backup med Log Analytics och Azure-arbetsböcker
+description: Konfigurera och visa rapporter för Azure Backup med hjälp av Log Analytics och Azure-arbetsböcker
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 0720af0848aa8263587dfd9573d205abf73303d4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0f3638e7649fc02f050c575ee621ce9dc237c24f
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562332"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517274"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurera Azure Backup-rapporter
 
-Ett vanligt krav för säkerhets kopierings administratörer är att få insikter om säkerhets kopieringar baserat på data som omfattar en lång tids period. Användnings fall för sådan lösning är:
+Ett vanligt krav för säkerhetskopieringsadministratörer är att få insikter om säkerhetskopior baserat på data som sträcker sig över en längre tidsperiod. Användningsfall för en sådan lösning är:
 
-- Allokering och Prognosticering av moln lagring förbrukat.
-- Granskning av säkerhets kopiering och återställning.
-- Identifiera viktiga trender på olika nivåer av granularitet.
+- Allokera och göra prognoser för förbrukad molnlagring.
+- Granskning av säkerhetskopieringar och återställningar.
+- Identifiera viktiga trender med olika kornighetsnivåer.
 
-Idag tillhandahåller Azure Backup en rapporterings lösning som använder [Azure Monitor loggar](../azure-monitor/logs/log-analytics-tutorial.md) och [Azure-arbetsböcker](../azure-monitor/visualize/workbooks-overview.md). De här resurserna hjälper dig att få omfattande insikter om dina säkerhets kopieringar i hela reserv fastigheten. Den här artikeln förklarar hur du konfigurerar och visar Azure Backup rapporter.
+I dag Azure Backup en rapporteringslösning som använder [Azure Monitor-loggar](../azure-monitor/logs/log-analytics-tutorial.md) och [Azure-arbetsböcker.](../azure-monitor/visualize/workbooks-overview.md) De här resurserna hjälper dig att få omfattande insikter om dina säkerhetskopior i hela din säkerhetskopieringse egendom. Den här artikeln förklarar hur du konfigurerar och visar Azure Backup rapporter.
 
 ## <a name="supported-scenarios"></a>Scenarier som stöds
 
-- Säkerhets kopierings rapporter stöds för virtuella Azure-datorer, SQL på virtuella Azure-datorer, SAP HANA i virtuella Azure-datorer, Microsoft Azure Recovery Services MARS-agent (MARS), Microsoft Azure Backup Server (MABS) och System Center-Data Protection Manager (DPM). För säkerhets kopiering av Azure-filresurs visas data för poster som skapats den 1 juni 2020.
-- För säkerhets kopiering av Azure-filresurs visas data på skyddade instanser för poster som skapats efter feb 1st 2021 (Standardvärdet är noll för äldre poster).
-- För DPM-arbetsbelastningar stöds säkerhets kopierings rapporter för DPM version 5.1.363.0 och senare och agent version 2.0.9127.0 och senare.
-- För MABS-arbetsbelastningar stöds backup-rapporter för MABS version 13.0.415.0 och senare samt agent version 2.0.9170.0 och senare.
-- Säkerhets kopierings rapporter kan visas i alla säkerhets kopierings objekt, valv, prenumerationer och regioner så länge som deras data skickas till en Log Analytics-arbetsyta som användaren har åtkomst till. Om du vill visa rapporter för en uppsättning valv behöver du bara ha Läs behörighet till den Log Analytics arbets ytan som valven skickar data till. Du behöver inte ha åtkomst till enskilda valv.
-- Om du är en [Azure Lighthouse](../lighthouse/index.yml) -användare med delegerad åtkomst till dina kunders prenumerationer kan du använda dessa rapporter med Azure Lighthouse för att visa rapporter över alla dina klienter.
-- För närvarande kan data visas i säkerhets kopierings rapporter över högst 100 Log Analytics arbets ytor (mellan klienter).
-- Data för säkerhets kopierings jobb för loggar visas inte i rapporterna.
+- Säkerhetskopieringsrapporter stöds för virtuella Azure-datorer, SQL i virtuella Azure-datorer, SAP HANA på virtuella Azure-datorer, Microsoft Azure Recovery Services-agenten (MARS), Microsoft Azure Backup Server (MABS) och System Center Data Protection Manager (DPM). För säkerhetskopiering av Azure-filresurs visas data för poster som skapats den 1 juni 2020 eller senare.
+- För säkerhetskopiering av Azure-filresurs visas data på skyddade instanser för poster som skapats efter den 1 februari 2021 (standardvärdet är noll för äldre poster).
+- För DPM-arbetsbelastningar stöds säkerhetskopieringsrapporter för DPM version 5.1.363.0 och senare och agentversion 2.0.9127.0 och senare.
+- För MABS-arbetsbelastningar stöds säkerhetskopieringsrapporter för MABS version 13.0.415.0 och senare och agentversion 2.0.9170.0 och senare.
+- Säkerhetskopieringsrapporter kan visas för alla säkerhetskopieringsobjekt, valv, prenumerationer och regioner så länge deras data skickas till en Log Analytics-arbetsyta som användaren har åtkomst till. Om du vill visa rapporter för en uppsättning valv behöver du bara ha läsåtkomst till Log Analytics-arbetsytan som valven skickar sina data till. Du behöver inte ha åtkomst till de enskilda valven.
+- Om du är en [Azure Lighthouse-användare](../lighthouse/index.yml) med delegerad åtkomst till dina kunders prenumerationer kan du använda dessa rapporter med Azure Lighthouse för att visa rapporter över alla dina klienter.
+- För närvarande kan data visas i Backup-rapporter över högst 100 Log Analytics-arbetsytor (mellan klienter).
+- Data för loggsäkerhetskopieringsjobb visas för närvarande inte i rapporterna.
 
 [!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
@@ -37,179 +37,179 @@ Idag tillhandahåller Azure Backup en rapporterings lösning som använder [Azur
 
 Följ de här stegen för att börja använda rapporterna.
 
-### <a name="1-create-a-log-analytics-workspace-or-use-an-existing-one"></a>1. skapa en Log Analytics arbets yta eller Använd en befintlig
+### <a name="1-create-a-log-analytics-workspace-or-use-an-existing-one"></a>1. Skapa en Log Analytics-arbetsyta eller använd en befintlig
 
-Konfigurera en eller flera Log Analytics arbets ytor för att lagra dina säkerhets kopierings rapporterings data. Platsen och prenumerationen där Log Analytics arbets ytan kan skapas är oberoende av platsen och prenumerationen där valven finns.
+Konfigurera en eller flera Log Analytics-arbetsytor för att lagra dina rapporteringsdata för Säkerhetskopiering. Platsen och prenumerationen där Log Analytics-arbetsytan kan skapas är oberoende av den plats och prenumeration där dina valv finns.
 
-Om du vill konfigurera en Log Analytics arbets yta, se [skapa en Log Analytics arbets yta i Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
+Om du vill konfigurera en Log Analytics-arbetsyta [kan du gå till Skapa en Log Analytics-arbetsyta i Azure Portal](../azure-monitor/logs/quick-create-workspace.md).
 
-Som standard behålls data i en Log Analytics-arbetsyta i 30 dagar. Om du vill visa data under en längre tids Horisont ändrar du kvarhållningsperioden för Log Analytics arbets ytan. Information om hur du ändrar kvarhållningsperioden finns i [Hantera användning och kostnader med Azure Monitor loggar](../azure-monitor/logs/manage-cost-storage.md).
+Som standard bevaras data i en Log Analytics-arbetsyta i 30 dagar. Om du vill se data under en längre tidsperiod ändrar du kvarhållningsperioden för Log Analytics-arbetsytan. Information om hur du ändrar kvarhållningsperioden [finns i Hantera användning och kostnader med Azure Monitor loggar.](../azure-monitor/logs/manage-cost-storage.md)
 
 ### <a name="2-configure-diagnostics-settings-for-your-vaults"></a>2. Konfigurera diagnostikinställningar för dina valv
 
-Azure Resource Manager resurser, till exempel Recovery Services-valv, registrera information om schemalagda åtgärder och användar utlösta åtgärder som diagnostikdata.
+Azure Resource Manager resurser, till exempel Recovery Services-valv, registrerar information om schemalagda åtgärder och användarutlösta åtgärder som diagnostikdata.
 
-I avsnittet övervakning i Recovery Services-valvet väljer du **diagnostikinställningar** och anger målet för Recovery Services valvets diagnostikdata. Mer information om hur du använder diagnostiska händelser finns i [använda diagnostikinställningar för Recovery Services valv](./backup-azure-diagnostic-events.md).
+I övervakningsavsnittet i Recovery Services-valvet väljer du **Diagnostikinställningar** och anger målet för Recovery Services-valvets diagnostikdata. Mer information om hur du använder diagnostikhändelser finns i [Använda diagnostikinställningar för Recovery Services-valv.](./backup-azure-diagnostic-events.md)
 
 ![Fönstret Diagnostikinställningar](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
-Azure Backup innehåller också en inbyggd Azure Policy definition som automatiserar konfigurationen av diagnostikinställningar för alla valv i ett angivet omfång. Information om hur du använder den här principen finns i [Konfigurera inställningar för valv diagnostik i skala](./azure-policy-configure-diagnostics.md).
+Azure Backup också en inbyggd definition Azure Policy som automatiserar konfigurationen av diagnostikinställningar för alla valv i ett visst omfång. Information om hur du använder den här principen finns i [Konfigurera valvdiagnostikinställningar i stor skala.](./azure-policy-configure-diagnostics.md)
 
 > [!NOTE]
-> När du har konfigurerat diagnostik kan det ta upp till 24 timmar innan den första data-push-installationen har slutförts. När data börjar flöda in i Log Analytics-arbetsytan kan du inte se data i rapporterna direkt eftersom data för den aktuella del dagen inte visas i rapporterna. Mer information finns i [konventioner som används i säkerhets kopierings rapporter](#conventions-used-in-backup-reports). Vi rekommenderar att du börjar visa rapporterna två dagar efter att du har konfigurerat dina valv för att skicka data till Log Analytics.
+> När du har konfigurerat diagnostiken kan det ta upp till 24 timmar innan den första data push-installationen är klar. När data börjar flöda till Log Analytics-arbetsytan kanske du inte ser data i rapporterna direkt eftersom data för den aktuella deldagen inte visas i rapporterna. Mer information finns i Konventioner [som används i Backup-rapporter.](#conventions-used-in-backup-reports) Vi rekommenderar att du börjar visa rapporterna två dagar efter att du har konfigurerat dina valv för att skicka data till Log Analytics.
 
 #### <a name="3-view-reports-in-the-azure-portal"></a>3. Visa rapporter i Azure Portal
 
-När du har konfigurerat dina valv för att skicka data till Log Analytics visar du dina säkerhets kopierings rapporter genom att gå till ett valv fönster och välja **säkerhets kopierings rapporter**.
+När du har konfigurerat dina valv så att de skickar data till Log Analytics kan du visa dina säkerhetskopieringsrapporter genom att gå till ett valvs fönster och **välja Backup-rapporter**.
 
-![Valv instrument panel](./media/backup-azure-configure-backup-reports/vault-dashboard.png)
+![Instrumentpanel för valv](./media/backup-azure-configure-backup-reports/vault-dashboard.png)
 
-Välj den här länken om du vill öppna arbets boken för säkerhets kopierings rapporten.
+Välj den här länken för att öppna arbetsboken för säkerhetskopieringsrapport.
 
 > [!NOTE]
 >
 > - Den första inläsningen av rapporten kan för närvarande ta upp till 1 minut.
-> - Recovery Services valvet är bara en start punkt för säkerhets kopierings rapporter. När arbets boken för säkerhets kopierings rapporten öppnas från ett valvs fönster väljer du lämplig uppsättning Log Analytics arbets ytor för att se data som sammanställs för alla dina valv.
+> - Recovery Services-valvet är bara en startpunkt för Säkerhetskopieringsrapporter. När arbetsboken för säkerhetskopieringsrapport öppnas från ett valvs fönster väljer du lämplig uppsättning Log Analytics-arbetsytor för att se data aggregerade över alla dina valv.
 
 Rapporten innehåller olika flikar:
 
 ##### <a name="summary"></a>Sammanfattning
 
-Använd den här fliken för att få en översikt över reserv fastigheten. Du kan få en snabb överblick över det totala antalet säkerhets kopierings objekt, total moln lagring som förbrukas, antalet skyddade instanser och jobbets slut för ande frekvens per arbets belastnings typ. Mer detaljerad information om en speciell typ av säkerhets kopierings artefakt finns på respektive flik.
+Använd den här fliken för att få en översikt på hög nivå över din säkerhetskopieringse egendom. Du kan få en snabb överblick över det totala antalet säkerhetskopieringsobjekt, förbrukad total molnlagring, antalet skyddade instanser och antalet lyckade jobb per arbetsbelastningstyp. Mer detaljerad information om en specifik typ av säkerhetskopieringsartefakt finns på respektive flik.
 
    ![Fliken Sammanfattning](./media/backup-azure-configure-backup-reports/summary.png)
 
 ##### <a name="backup-items"></a>Säkerhetskopieringsobjekt
 
-Använd den här fliken för att se information och trender i moln lagring som förbrukas på en säkerhets kopierings nivå. Om du till exempel använder SQL i en Azure VM-säkerhetskopiering kan du se den förbrukade moln lagringen för varje SQL-databas som säkerhets kopie ras. Du kan också välja att se data för säkerhets kopierings objekt av en viss skydds status. Om du till exempel väljer rutan **skydds stoppad** överst på fliken filtrerar alla widgetar under för att endast visa data för säkerhets kopierings objekt i läget skydd har stoppats.
+Använd den här fliken om du vill se information och trender om molnlagring som förbrukats på nivån Säkerhetskopieringsobjekt. Om du till exempel använder SQL i en säkerhetskopiering av en virtuell Azure-dator kan du se molnlagringen som förbrukas för varje SQL-databas som säkerhetskopieras. Du kan också välja att visa data för säkerhetskopieringsobjekt med en viss skyddsstatus. Om du till exempel väljer **panelen** Skydd har stoppats överst på fliken filtreras alla widgetar under för att endast visa data för säkerhetskopieringsobjekt med tillståndet Skydd stoppad.
 
-   ![Fliken säkerhets kopierings objekt](./media/backup-azure-configure-backup-reports/backup-items.png)
+   ![Fliken Säkerhetskopieringsobjekt](./media/backup-azure-configure-backup-reports/backup-items.png)
 
 ##### <a name="usage"></a>Användning
 
-Använd den här fliken för att Visa nyckel fakturerings parametrar för dina säkerhets kopior. Informationen som visas på den här fliken finns på en fakturerings enhets nivå (skyddad container). Om en DPM-server exempelvis säkerhets kopie ras till Azure kan du se trenden för skyddade instanser och moln lagring som förbrukas för DPM-servern. Om du använder SQL i Azure Backup eller SAP HANA i Azure Backup, visar den här fliken användnings relaterad information på nivån för den virtuella dator där dessa databaser finns.
+Använd den här fliken för att visa viktiga faktureringsparametrar för dina säkerhetskopior. Informationen som visas på den här fliken finns på faktureringsentitetsnivå (skyddad container). Om en DPM-server till exempel säkerhetskopieras till Azure kan du se trenden för skyddade instanser och molnlagring som används för DPM-servern. Om du använder SQL i Azure Backup eller SAP HANA i Azure Backup ger den här fliken användningsrelaterad information på nivån för den virtuella dator där databaserna finns.
 
-   ![Fliken användning](./media/backup-azure-configure-backup-reports/usage.png)
+   ![Fliken Användning](./media/backup-azure-configure-backup-reports/usage.png)
 
 > [!NOTE]
-> För DPM-arbetsbelastningar kan användarna se en liten skillnad (i ordningen 20 MB per DPM-server) mellan användnings värden som visas i rapporterna jämfört med värdet för den sammanlagda användningen som visas på fliken **Översikt över** Recovery Services valv. Denna skillnad redovisas av det faktum att varje DPM-server som registreras för säkerhets kopiering har en tillhör ande metadata-datakälla som inte är kopplad till en artefakt för rapportering.
+> För DPM-arbetsbelastningar kan användarna se en viss skillnad (i ordningen på 20 MB per DPM-server) mellan användningsvärdena som visas i rapporterna jämfört med det aggregerade användningsvärdet som visas på fliken Översikt för Recovery **Services-valvet.** Den här skillnaden förklaras av det faktum att varje DPM-server som registreras för säkerhetskopiering har en associerad "metadata"-datakälla som inte är en artefakt för rapportering.
 
 ##### <a name="jobs"></a>Jobb
 
-Använd den här fliken för att Visa tids krävande trender för jobb, till exempel antalet misslyckade jobb per dag och de vanligaste orsakerna till jobbfel. Du kan visa den här informationen på både en aggregerad nivå och på en säkerhets kopierings objekt nivå. Välj ett visst säkerhets kopierings objekt i ett rutnät om du vill visa detaljerad information om varje jobb som har utlösts på det säkerhetskopierade objektet i det valda tidsintervallet.
+Använd den här fliken för att visa långvariga trender för jobb, till exempel antalet misslyckade jobb per dag och de främsta orsakerna till jobbfel. Du kan visa den här informationen både på aggregeringsnivå och på nivån Säkerhetskopieringsobjekt. Välj ett visst säkerhetskopieringsobjekt i ett rutnät för att visa detaljerad information om varje jobb som utlöstes för säkerhetskopieringsobjektet i det valda tidsperioden.
 
-   ![Fliken jobb](./media/backup-azure-configure-backup-reports/jobs.png)
+   ![Fliken Jobb](./media/backup-azure-configure-backup-reports/jobs.png)
 
 ##### <a name="policies"></a>Principer
 
-Använd den här fliken om du vill visa information om alla dina aktiva principer, till exempel antalet associerade objekt och den totala moln lagring som förbrukas av objekt som har säkerhetskopierats under en specifik princip. Välj en viss princip om du vill visa information om var och en av de associerade säkerhets kopierings objekten.
+Använd den här fliken om du vill visa information om alla aktiva principer, till exempel antalet associerade objekt och den totala molnlagringen som förbrukas av objekt som säkerhetskopieras under en viss princip. Välj en viss princip om du vill visa information om var och en av dess associerade säkerhetskopieringsobjekt.
 
-   ![Fliken principer](./media/backup-azure-configure-backup-reports/policies.png)
+   ![Fliken Principer](./media/backup-azure-configure-backup-reports/policies.png)
 
 ##### <a name="optimize"></a>Optimera
 
-Använd den här fliken för att få insyn i potentiella kostnads optimerings möjligheter för dina säkerhets kopieringar. Nedan visas scenarier för vilka fliken optimera för närvarande ger insikter:
+Använd den här fliken för att få insyn i potentiella möjligheter till kostnadsoptimering för dina säkerhetskopior. Följande är de scenarier där fliken Optimera för närvarande ger insikter:
 
 ###### <a name="inactive-resources"></a>Inaktiva resurser
 
-Med den här vyn kan du identifiera de säkerhets kopierings objekt som inte har haft en lyckad säkerhets kopiering under en lång tids period. Detta kan betyda att den underliggande datorn som säkerhets kopie ras inte finns längre (och att den resulterar i misslyckade säkerhets kopieringar) eller att det finns problem med datorn som hindrar säkerhets kopieringarna från att bli tillförlitligt.
+Med den här vyn kan du identifiera de säkerhetskopieringsobjekt som inte har haft en lyckad säkerhetskopiering under en längre tid. Detta kan antingen innebära att den underliggande datorn som säkerhetskopieras inte finns längre (vilket resulterar i misslyckade säkerhetskopieringar), eller att det finns ett problem med datorn som förhindrar att säkerhetskopior tas på ett tillförlitligt sätt.
 
-Om du vill visa inaktiva resurser går du till fliken **optimera** och väljer panelen **inaktiva resurser** . Välj den här panelen visar ett rutnät som innehåller information om alla inaktiva resurser som finns i det valda omfånget. Som standard visar rutnätet objekt som inte har någon återställnings punkt under de senaste sju dagarna. Om du vill hitta inaktiva resurser under ett annat tidsintervall kan du justera **tids intervalls** filtret överst på fliken.
+Om du vill visa inaktiva resurser går du **till** fliken Optimera och väljer **panelen Inaktiva** resurser. Välj den här panelen visar ett rutnät som innehåller information om alla inaktiva resurser som finns i det valda omfånget. Som standard visar rutnätet objekt som inte har någon återställningspunkt under de senaste sju dagarna. Om du vill hitta inaktiva resurser för ett annat tidsperioder kan du justera **filtret** För tidsintervall högst upp på fliken.
 
-När du har identifierat en inaktiv resurs kan du undersöka problemet ytterligare genom att gå till instrument panelen för säkerhets kopierings objekt eller fönstret för Azure-resurser för den resursen (där det är tillämpligt). Beroende på ditt scenario kan du antingen stoppa säkerhets kopieringen för datorn (om den inte finns längre) och ta bort onödiga säkerhets kopieringar som sparar kostnaderna, eller så kan du åtgärda problem på datorn för att säkerställa att säkerhets kopieringarna görs på ett tillförlitligt sätt.
+När du har identifierat en inaktiv resurs kan du undersöka problemet ytterligare genom att gå till instrumentpanelen för säkerhetskopieringsobjekt eller Azure-resursfönstret för resursen (där det är tillämpligt). Beroende på ditt scenario kan du välja att antingen stoppa säkerhetskopieringen för datorn (om den inte finns längre) och ta bort onödiga säkerhetskopior, vilket sparar kostnader, eller så kan du åtgärda problem på datorn för att säkerställa att säkerhetskopiorna tas på ett tillförlitligt sätt.
 
-![Optimera TABB-inaktiva resurser](./media/backup-azure-configure-backup-reports/optimize-inactive-resources.png)
+![Fliken Optimera – Inaktiva resurser](./media/backup-azure-configure-backup-reports/optimize-inactive-resources.png)
 
 ###### <a name="backup-items-with-a-large-retention-duration"></a>Säkerhetskopieringsobjekt med lång kvarhållningsperiod
 
-I den här vyn kan du identifiera de objekt som har säkerhets kopior som behålls under en längre tid än vad som krävs av din organisation.
+Med den här vyn kan du identifiera de objekt som har säkerhetskopior kvarhållna under en längre tid än vad som krävs av din organisation.
 
-Om du väljer panelen **princip optimeringar** följt av panelen **kvarhållning optimeringar** visas ett rutnät som innehåller alla säkerhets kopierings objekt för vilka kvarhållning av antingen dag, vecka, månad eller årlig kvarhållning (RP) är större än ett angivet värde. Som standard visar rutnätet alla säkerhets kopierings objekt i det valda omfånget. Du kan använda filtren för dagliga, vecko Visa, månatliga och årliga RP-kvarhållning för att filtrera rutnätet ytterligare och identifiera de objekt som kvarhållning skulle kunna minska för att spara pengar på reserv lagrings kostnader.
+Om du väljer panelen **Principoptimeringar** följt av panelen Kvarhållningsoptimering visas ett rutnät som innehåller alla säkerhetskopieringsobjekt där kvarhållningen av antingen den dagliga, veckovisa, månatliga eller årliga **kvarhållningspunkten** (RP) är större än ett angivet värde. Som standard visar rutnätet alla säkerhetskopieringsobjekt i det valda omfånget. Du kan använda filtren för kvarhållning per dag, vecka, månad och år för att filtrera rutnätet ytterligare och identifiera de objekt för vilka kvarhållning kan minskas för att minska kostnaderna för lagring av säkerhetskopior.
 
-För databas arbets belastningar som SQL och SAP HANA, motsvarar de kvarhållningsperiod som visas i rutnätet lagrings perioder för de fullständiga säkerhets kopierings punkterna och inte de differentiella säkerhets kopierings punkterna. Samma gäller även för kvarhållning filter.  
+För databasarbetsbelastningar som SQL och SAP HANA motsvarar kvarhållningsperioderna som visas i rutnätet kvarhållningsperioderna för de fullständiga säkerhetskopieringspunkterna och inte de differentiella säkerhetskopieringspunkterna. Samma sak gäller även för kvarhållningsfilter.  
 
-![Optimera optimeringar av tabbar](./media/backup-azure-configure-backup-reports/optimize-retention.png)
+![Fliken Optimera – Kvarhållningsoptimeringar](./media/backup-azure-configure-backup-reports/optimize-retention.png)
 
 ###### <a name="databases-configured-for-daily-full-backup"></a>Databaser som konfigurerats för fullständig säkerhetskopiering dagligen
 
-Med den här vyn kan du identifiera databas arbets belastningar som har kon figurer ATS för daglig fullständig säkerhets kopiering. Ofta är det kostnads effektivt att använda daglig differentiell säkerhets kopiering tillsammans med veckovis fullständig säkerhets kopiering.
+Med den här vyn kan du identifiera databasarbetsbelastningar som har konfigurerats för daglig fullständig säkerhetskopiering. Det är ofta mer kostnadseffektivt att använda daglig differentiell säkerhetskopiering tillsammans med veckovis fullständig säkerhetskopiering.
 
-Om du väljer panelen **princip optimeringar** följt av panelen **säkerhets kopierings schema optimeringar** visas ett rutnät som innehåller alla databaser med en daglig fullständig säkerhets kopierings princip. Du kan välja att navigera till ett visst säkerhets kopierings objekt och ändra principen för att använda daglig differentiell säkerhets kopiering med varje veckovis fullständig säkerhets kopiering.
+Om du **väljer panelen Principoptimeringar** följt av panelen Optimering av schema för säkerhetskopiering visas ett rutnät som innehåller alla databaser med en princip för fullständig säkerhetskopiering varje dag.  Du kan välja att navigera till ett visst säkerhetskopieringsobjekt och ändra principen så att den använder daglig differentiell säkerhetskopiering med veckovis fullständig säkerhetskopiering.
 
-Filter för **säkerhets kopierings hantering** överst på fliken ska ha objekts- **SQL i azure VM** och **SAP HANA på** den valda Azure-datorn för att rutnätet ska kunna visa databas arbets belastningar som förväntat.
+Filtret **Typ av säkerhetskopieringshantering** längst upp på fliken bör ha objekten SQL på den virtuella **Azure-datorn** och SAP HANA i den virtuella **Azure-datorn** markerade för att rutnätet ska kunna visa databasarbetsbelastningar som förväntat.
 
-![Optimera fliken – optimeringar av säkerhets kopierings schema](./media/backup-azure-configure-backup-reports/optimize-backup-schedule.png)
+![Fliken Optimera – Optimering av säkerhetskopieringsschema](./media/backup-azure-configure-backup-reports/optimize-backup-schedule.png)
 
-###### <a name="policy-adherence"></a>Princip inställning
+###### <a name="policy-adherence"></a>Principeftersening
 
-På den här fliken kan du identifiera om alla säkerhets kopierings instanser har minst en genomförd säkerhets kopiering varje dag. För objekt med princip för veckovis säkerhets kopiering kan du använda den här fliken för att avgöra om alla säkerhets kopierings instanser har minst en lyckad säkerhets kopiering per vecka.
+På den här fliken kan du identifiera om alla dina säkerhetskopieringsinstanser har haft minst en lyckad säkerhetskopiering varje dag. För objekt med veckovisa säkerhetskopieringspolicyer kan du använda den här fliken för att avgöra om alla säkerhetskopieringsinstanser har haft minst en lyckad säkerhetskopiering per vecka.
 
-Det finns två typer av princip för att visa tillgängliga vyer:
+Det finns två typer av vyer för principeftersening:
 
-* **Princip efter tids period**: om du använder den här vyn kan du identifiera hur många objekt som har minst en genomförd säkerhets kopiering under en viss dag och hur många som inte hade haft en lyckad säkerhets kopiering under den dagen. Du kan klicka på en rad om du vill se information om alla säkerhets kopierings jobb som har utlösts på den valda dagen. Observera att om du ökar tidsintervallet till ett större värde, till exempel de senaste 60 dagarna, återges rutnätet i veckovis vy och visar antalet objekt som har minst en genomförd säkerhets kopiering på varje dag under den givna veckan. På samma sätt finns det en månatlig vy för större tidsintervall.
+* **Principefterseningen** efter tidsperiod: Med den här vyn kan du identifiera hur många objekt som har haft minst en lyckad säkerhetskopiering under en viss dag och hur många som inte har haft någon lyckad säkerhetskopiering under den dagen. Du kan klicka på en rad om du vill se information om alla säkerhetskopieringsjobb som har utlösts på den valda dagen. Observera att om du ökar intervallet till ett större värde, till exempel de senaste 60 dagarna, återges rutnätet i veckovyn och visar antalet objekt som har haft minst en lyckad säkerhetskopiering varje dag under den angivna veckan. På samma sätt finns det en månadsvy för större tidsintervall.
 
-När det gäller objekt som har säkerhetskopierats varje vecka hjälper detta rutnät dig att identifiera alla objekt som har minst en genomförd säkerhets kopiering under den aktuella veckan. För ett större tidsintervall, till exempel de senaste 120 dagarna, återges rutnätet i månatlig vy och visar antalet objekt som har minst en genomförd säkerhets kopiering varje vecka under den månaden. Se [konventioner som används i Backup-rapporter](#conventions-used-in-backup-reports) för mer information om dagliga, veckovis och månatliga vyer.
+När det gäller objekt som säkerhetskopieras varje vecka hjälper det här rutnätet dig att identifiera alla objekt som har haft minst en lyckad säkerhetskopiering under den aktuella veckan. För ett större tidsintervall, till exempel de senaste 120 dagarna, återges rutnätet i månadsvyn och visar antalet objekt som har haft minst en lyckad säkerhetskopiering varje vecka under den angivna månaden. Se [Konventioner som används i Backup-rapporter](#conventions-used-in-backup-reports) mer information om dagliga, veckovisa och månatliga vyer.
 
-![Princip efter tids period](./media/backup-azure-configure-backup-reports/policy-adherence-by-time-period.png)
+![Principefter efterlevnad efter tidsperiod](./media/backup-azure-configure-backup-reports/policy-adherence-by-time-period.png)
 
-* **Princip genom gång av säkerhets kopierings instans**: med hjälp av den här vyn kan du välja att visa information om en säkerhets kopierings instans. En cell som är grön anger att säkerhets kopierings instansen hade minst en slutförd säkerhets kopia på den aktuella dagen. En cell som är röd anger att säkerhets kopierings instansen inte har ens en genomförd säkerhets kopiering på den aktuella dagen. Varje dag, veckovis och månads agg regeringar följer samma beteende som vyn princip efter tids period. Du kan klicka på valfri rad om du vill visa alla säkerhets kopierings jobb på den angivna säkerhets kopierings instansen i det valda tidsintervallet.
+* **Principefter efterlevnad av säkerhetskopieringsinstans:** Med den här vyn kan du principefterse efterlevnadsinformation på nivån för säkerhetskopieringsinstanser. En cell som är grön anger att säkerhetskopieringsinstansen hade minst en lyckad säkerhetskopiering den angivna dagen. En cell som är röd anger att säkerhetskopieringsinstansen inte ens har en lyckad säkerhetskopiering den angivna dagen. Aggregeringar per dag, vecka och månad följer samma beteende som vyn Principeftersening efter tidsperiod. Du kan klicka på valfri rad om du vill visa alla säkerhetskopieringsjobb på den angivna säkerhetskopieringsinstansen inom det valda tidsperioden.
 
-![Policy genom gång av säkerhets kopierings instans](./media/backup-azure-configure-backup-reports/policy-adherence-by-backup-instance.png)
+![Principefter efterlevnad av Säkerhetskopieringsinstans](./media/backup-azure-configure-backup-reports/policy-adherence-by-backup-instance.png)
 
 ###### <a name="email-azure-backup-reports"></a>E-Azure Backup rapporter
 
-Med hjälp av funktionen **e-postrapport** som är tillgänglig i säkerhets kopierings rapporter kan du skapa automatiska uppgifter som tar emot regelbundna rapporter via e-post. Den här funktionen fungerar genom att distribuera en Logic-app i din Azure-miljö som frågar data från dina valda Log Analytics (LA)-arbets ytor, baserat på de indata som du anger.
+Med hjälp **av funktionen e-postrapport** som är Backup-rapporter kan du skapa automatiserade uppgifter för att få regelbundna rapporter via e-post. Den här funktionen fungerar genom att distribuera en logikapp i din Azure-miljö som frågar efter data från dina valda Log Analytics-arbetsytor (LA), baserat på de indata som du anger.
 
-När du har skapat Logic-appen måste du auktorisera anslutningar till Azure Monitor loggar och Office 365. Det gör du genom att gå till **Logic Apps** i Azure Portal och söka efter namnet på den uppgift som du har skapat. Om du väljer meny alternativet **API-anslutningar** öppnas listan över API-anslutningar som du behöver auktorisera. [Läs mer om hur du konfigurerar e-post och felsöker problem](backup-reports-email.md).
+När logikappen har skapats måste du auktorisera anslutningar till Azure Monitor Logs och Office 365. Det gör du genom att **Logic Apps** i Azure Portal och söka efter namnet på den uppgift som du har skapat. Om du **väljer menyalternativet API-anslutningar** öppnas listan över API-anslutningar som du behöver auktorisera. [Läs mer om hur du konfigurerar e-postmeddelanden och felsöker problem.](backup-reports-email.md)
 
 ###### <a name="customize-azure-backup-reports"></a>Anpassa Azure Backup rapporter
 
-I Backup-rapporter används [system funktioner på Azure Monitor loggar](backup-reports-system-functions.md). Dessa funktioner fungerar på data i rå Azure Backup tabeller i LA och returnerar formaterade data som hjälper dig att enkelt hämta information om alla säkerhetskopierade entiteter med hjälp av enkla frågor. 
+Backup-rapporter använder [systemfunktioner på Azure Monitor loggar](backup-reports-system-functions.md). Dessa funktioner fungerar på data i råtabellerna Azure Backup i LA och returnerar formaterade data som hjälper dig att enkelt hämta information om alla dina säkerhetskopieringsrelaterade entiteter med hjälp av enkla frågor. 
 
-Om du vill skapa egna rapporterings arbets böcker med hjälp av säkerhets kopierings rapporter som en bas, kan du gå till säkerhets kopierings rapporter, klicka på **Redigera** överst i rapporten och Visa/redigera frågorna som används i rapporterna. Läs mer om hur du skapar anpassade rapporter i [dokumentationen för Azure-arbetsböcker](../azure-monitor/visualize/workbooks-overview.md) . 
+Om du vill skapa egna rapportarbetsböcker med Backup-rapporter som bas kan du  gå till Backup-rapporter, klicka på Redigera överst i rapporten och visa/redigera de frågor som används i rapporterna. Läs dokumentationen [om Azure-arbetsböcker](../azure-monitor/visualize/workbooks-overview.md) om du vill veta mer om hur du skapar anpassade rapporter. 
 
 ## <a name="export-to-excel"></a>Exportera till Excel
 
-Välj nedåtpilen längst upp till höger om en widget, t. ex. en tabell eller ett diagram, för att exportera innehållet i widgeten som ett Excel-blad som är med befintliga filter applicerade. Om du vill exportera fler rader i en tabell till Excel kan du öka antalet rader som visas på sidan med hjälp av den nedrullningsbara pilen **rader per sida** överst i varje rutnät.
+Välj nedåtpilen längst upp till höger i en widget, till exempel en tabell eller ett diagram, för att exportera innehållet i widgeten som ett Excel-blad som det är med befintliga filter tillämpade. Om du vill exportera fler rader i en tabell till Excel kan du öka antalet rader som visas på sidan med hjälp av listrpilen **Rader per** sida överst i varje rutnät.
 
 ## <a name="pin-to-dashboard"></a>Fäst vid instrumentpanelen
 
-Välj knappen Fäst längst upp i varje widget för att fästa widgeten på Azure Portal instrument panelen. Med den här funktionen kan du skapa anpassade instrument paneler som är skräddarsydda för att visa den viktigaste information som du behöver.
+Välj fästknappen längst upp i varje widget för att fästa widgeten på Azure Portal instrumentpanel. Den här funktionen hjälper dig att skapa anpassade instrumentpaneler som är skräddarsydda för att visa den viktigaste informationen du behöver.
 
-## <a name="cross-tenant-reports"></a>Rapporter över flera klienter
+## <a name="cross-tenant-reports"></a>Rapporter mellan klienter
 
-Om du använder [Azure-Lighthouse](../lighthouse/index.yml) med delegerad åtkomst till prenumerationer i flera klient miljöer kan du använda standard prenumerations filtret. Välj filter knappen i det övre högra hörnet i Azure Portal för att välja alla prenumerationer som du vill se data för. På så sätt kan du välja Log Analytics arbets ytor över dina klienter för att visa rapporter från flera klienter.
+Om du använder [Azure Lighthouse med](../lighthouse/index.yml) delegerad åtkomst till prenumerationer i flera klientmiljöer kan du använda standardprenumerationsfiltret. Välj filterknappen i det övre högra hörnet av Azure Portal för att välja alla prenumerationer som du vill visa data för. På så sätt kan du välja Log Analytics-arbetsytor i klientorganisationen för att visa rapporter med flera klienter.
 
-## <a name="conventions-used-in-backup-reports"></a>Konventioner som används i säkerhets kopierings rapporter
+## <a name="conventions-used-in-backup-reports"></a>Konventioner som används i Säkerhetskopieringsrapporter
 
-- Filtren arbetar från vänster till höger och uppifrån och ned på varje flik. Det innebär att alla filter endast gäller för alla widgetar som är placerade antingen till höger om filtret eller under filtret.
-- Om du väljer en färgad panel filtreras widgetarna under panelen för poster som hör till värdet i den panelen. Om du till exempel väljer ikonen **stoppad skydd** på fliken **säkerhets kopierings objekt** filtreras rutnätet och diagrammen nedan för att visa data för säkerhets kopierings objekt i tillstånds stopp.
-- Paneler som inte är färgade är inte valbara.
-- Data för den aktuella del dagen visas inte i rapporterna. När det valda värdet för **tidsintervallet** är de **senaste 7 dagarna**, visar rapporten poster för de senaste sju slutförda dagarna. Aktuell dag ingår inte.
-- Rapporten visar information om jobb (förutom logg jobb) som har *utlösts* i det valda tidsintervallet.
-- Värdena som visas för **moln lagring** och **skyddade instanser** är i *slutet* av det valda tidsintervallet.
-- De säkerhets kopierings objekt som visas i rapporterna är de objekt som finns i *slutet* av det valda tidsintervallet. Säkerhets kopierings objekt som har tagits bort i mitten av det valda tidsintervallet visas inte. Samma konvention gäller även för säkerhets kopierings principer.
-- Om det valda tidsintervallet sträcker sig över en period på 30 dagar på mindre, återges diagram i dagsvyn, där det finns en data punkt för varje dag. Om tidsintervallet omfattar en period som är längre än 30 dagar och mindre än (eller lika med) 90 dagar, återges diagram i vyn veckovis. För större tidsintervall återges diagram i månatlig vy. Att aggregera data varje vecka eller månad bidrar till bättre prestanda för frågor och enklare läsbarhet för data i diagram.
-- Rikt linjerna för policyn följer också en liknande agg regerings logik enligt beskrivningen ovan. Det finns dock några mindre skillnader. Den första skillnaden är att för objekt med en veckovis säkerhets kopierings policy finns det ingen daglig vy (endast veckovis och månatlig vy är tillgängliga). I rutnätet för objekt med en princip för veckovis säkerhets kopiering betraktas en månad som en 4-veckors period (28 dagar) och inte 30 dagar, för att eliminera delvis veckor från överväganden.
+- Filter fungerar från vänster till höger och uppifrån och ned på varje flik. Det innebär att alla filter endast gäller för alla widgetar som är placerade till höger om filtret eller under filtret.
+- Om du väljer en färgad panel filtreras widgetarna under panelen för poster som hör till värdet för panelen. Om du till exempel väljer  **panelen Stoppat** skydd på fliken Säkerhetskopieringsobjekt filtreras rutnäten och diagrammen nedan för att visa data för säkerhetskopieringsobjekt med tillståndet Skydd stoppade.
+- Paneler som inte är färgade kan inte väljas.
+- Data för den aktuella deldagen visas inte i rapporterna. När det valda värdet för Time **Range (Tidsintervall)** är **Last 7 days**(Senaste 7 dagarna) visar rapporten poster för de senaste sju slutförda dagarna. Den aktuella dagen ingår inte.
+- Rapporten visar information om jobb (förutom loggjobb) som *utlöstes i* det valda tidsperioden.
+- Värdena som visas **för Molnlagring** **och Skyddade instanser** finns i slutet *av* det valda tidsperioden.
+- Säkerhetskopieringsobjekten som visas i rapporterna är de objekt som finns *i slutet* av det valda tidsperioden. Säkerhetskopieringsobjekt som togs bort mitt i det valda tidsperioden visas inte. Samma konvention gäller även för säkerhetskopieringsprinciper.
+- Om det valda tidsintervallet sträcker sig över en period på 30 dagar mindre återges diagram i daglig vy, där det finns en datapunkt för varje dag. Om tidsintervallet sträcker sig över en period som är större än 30 dagar och mindre än (eller lika med) 90 dagar återges diagram i veckovyn. För större tidsintervall återges diagram i månadsvyn. Genom att aggregera data varje vecka eller varje månad får du bättre prestanda för frågor och enklare att läsa data i diagram.
+- Rutnäten för principefter efterlevnad följer också en liknande aggregeringslogik som beskrivs ovan. Det finns dock några mindre skillnader. Den första skillnaden är att för objekt med princip för veckovis säkerhetskopiering finns det ingen daglig vy (endast veckovisa och månatliga vyer är tillgängliga). I rutnäten för objekt med en veckovis säkerhetskopieringspolicy betraktas dessutom en "månad" som en 4-veckorsperiod (28 dagar) och inte 30 dagar, för att eliminera partiella veckor från övervägande.
 
-## <a name="query-load-times"></a>Fråga om inläsnings tider
+## <a name="query-load-times"></a>Frågebelastningstider
 
-Widgetarna i säkerhets kopierings rapporten drivs av Kusto-frågor som körs på användarens Log Analytics-arbetsytor. Dessa frågor omfattar vanligt vis bearbetning av stora mängder data med flera kopplingar för att ge bättre insikter. Därför kanske widgeten inte kommer att läsas in omedelbart när användaren tittar på rapporter över en stor reserv fastighet. Den här tabellen innehåller en grov uppskattning av tiden som olika widgetar kan ta för att läsa in, baserat på antalet säkerhets kopierings objekt och tidsintervallet som rapporten visas för.
+Widgetarna i säkerhetskopieringsrapporten drivs av Kusto-frågor som körs på användarens Log Analytics-arbetsytor. Dessa frågor omfattar vanligtvis bearbetning av stora mängder data, med flera kopplingar för att ge bättre insikter. Därför kanske widgetarna inte läses in omedelbart när användaren visar rapporter över en stor säkerhetskopia. Den här tabellen ger en ungefärlig uppskattning av hur lång tid det kan ta att läsa in olika widgetar, baserat på antalet säkerhetskopieringsobjekt och det tidsperiod som rapporten visas för.
 
-| **Antal data källor**                         | **Tids Horisont** | **Ungefärlig inläsnings tider**                                              |
+| **Antal datakällor**                         | **Tids horisont** | **Ungefärliga inläsningstider**                                              |
 | --------------------------------- | ------------- | ------------------------------------------------------------ |
-| ~ 5 K                       | 1 månad          | Paneler: 5-10 sekunder <br> Rutnät: 5-10 sekunder <br> Diagram: 5-10 sekunder <br> Filter på rapport nivå: 5-10 sekunder|
-| ~ 5 K                       | 3 månader          | Paneler: 5-10 sekunder <br> Rutnät: 5-10 sekunder <br> Diagram: 5-10 sekunder <br> Filter på rapport nivå: 5-10 sekunder|
-| ~ 10 K                       | 3 månader          | Paneler: 15-20 sekunder <br> Rutnät: 15-20 sekunder <br> Diagram: 1-2 minuter <br> Filter på rapport nivå: 25-30 sekunder|
-| ~ 15 K                       | 1 månad          | Paneler: 15-20 sekunder <br> Rutnät: 15-20 sekunder <br> Diagram: 50-60 sekunder <br> Filter på rapport nivå: 20-25 sekunder|
-| ~ 15 K                       | 3 månader          | Paneler: 20-30 sekunder <br> Rutnät: 20-30 sekunder <br> Diagram: 2-3 minuter <br> Filter på rapport nivå: 50-60 sekunder |
+| ~5 K                       | 1 månad          | Paneler: 5–10 sek <br> Rutnät: 5–10 sek <br> Diagram: 5–10 sek <br> Filter på rapportnivå: 5–10 sek|
+| ~5 K                       | 3 månader          | Paneler: 5–10 sek <br> Rutnät: 5–10 sek <br> Diagram: 5–10 sek <br> Filter på rapportnivå: 5–10 sek|
+| ~10 K                       | 3 månader          | Paneler: 15–20 sek <br> Rutnät: 15–20 sek <br> Diagram: 1–2 minuter <br> Filter på rapportnivå: 25–30 sek|
+| ~15 K                       | 1 månad          | Paneler: 15–20 sek <br> Rutnät: 15–20 sek <br> Diagram: 50–60 sek <br> Filter på rapportnivå: 20–25 sek|
+| ~15 K                       | 3 månader          | Paneler: 20–30 sekunder <br> Rutnät: 20–30 sek <br> Diagram: 2–3 minuter <br> Filter på rapportnivå: 50–60 sek |
 
 ## <a name="what-happened-to-the-power-bi-reports"></a> Vad har hänt med Power BI-rapporterna? 
 
-- Den tidigare Power BI Template-appen för rapportering, som har käll data från ett Azure Storage-konto, finns på en föråldrad sökväg. Vi rekommenderar att du börjar skicka valv diagnostikdata till Log Analytics för att visa rapporter.
+- Den tidigare Power BI för rapportering, som har data från ett Azure Storage-konto, är på en utfasningsväg. Vi rekommenderar att du börjar skicka valvdiagnostikdata till Log Analytics för att visa rapporter.
 
-- Dessutom finns v1- [schemat](./backup-azure-diagnostics-mode-data-model.md#v1-schema-vs-v2-schema) för att skicka diagnostikdata till ett lagrings konto eller en La-arbetsytan på en föråldrad sökväg. Det innebär att om du har skrivit anpassade frågor eller automationer baserat på schemat v1, uppmanas du att uppdatera dessa frågor för att använda det v2-schema som stöds för närvarande.
+- Dessutom är [V1-schemat för](./backup-azure-diagnostics-mode-data-model.md#v1-schema-vs-v2-schema) att skicka diagnostikdata till ett lagringskonto eller en LA-arbetsyta också på en utfasningsväg. Det innebär att om du har skrivit anpassade frågor eller automatiseringar baserat på V1-schemat rekommenderar vi att du uppdaterar dessa frågor så att de använder det V2-schema som stöds för närvarande.
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Läs mer om övervakning och rapportering med Azure Backup](./backup-azure-monitor-alert-faq.md)
+[Läs mer om övervakning och rapportering med Azure Backup](./backup-azure-monitor-alert-faq.yml)

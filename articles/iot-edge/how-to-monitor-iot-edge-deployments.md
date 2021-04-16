@@ -1,6 +1,6 @@
 ---
 title: Övervaka IoT Edge distributioner – Azure IoT Edge
-description: Övervakning på hög nivå, inklusive edgeHub och edgeAgent rapporterade egenskaper och automatiska distributions mått.
+description: Övervakning på hög nivå, inklusive egenskaper för edgeHub och edgeAgent och mått för automatisk distribution.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -10,97 +10,97 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: f4f2f8522f6d3d1039673803d946323deb485db9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39e7bb5c151d490e79ef111589f52f260c3e6c7a
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200251"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483171"
 ---
 # <a name="monitor-iot-edge-deployments"></a>Övervaka IoT Edge-distributioner
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-Azure IoT Edge ger rapporter som gör att du kan övervaka real tids information i de moduler som distribueras till dina IoT Edge-enheter. Tjänsten IoT Hub hämtar status från enheterna och gör dem tillgängliga för operatören. Övervakning är också viktigt för [distributioner som görs i skala](module-deployment-monitoring.md) , inklusive automatiska distributioner och lager distributioner.
+Azure IoT Edge innehåller rapporter som gör att du kan övervaka realtidsinformation om de moduler som distribueras till dina IoT Edge enheter. Tjänsten IoT Hub hämtar statusen från enheterna och gör dem tillgängliga för operatören. Övervakning är också viktigt för [distributioner i stor skala](module-deployment-monitoring.md) som omfattar automatiska distributioner och lagerdistributioner.
 
-Både enheter och moduler har liknande data, till exempel anslutningar, så att värdena hämtas enligt enhets-ID eller modul-ID.
+Både enheter och moduler har liknande data, till exempel anslutning, så värden hämtas enligt enhets-ID eller modul-ID.
 
-IoT Hubs tjänsten samlar in data som rapporter ATS av enhet och modul, och innehåller antalet olika tillstånd som enheterna kan ha. Tjänsten IoT Hub organiserar dessa data i fyra grupper av mått:
+Tjänsten IoT Hub samlar in data som rapporteras av enhets- och modultvillingarna och visar antalet olika tillstånd som enheter kan ha. Tjänsten IoT Hub organiserar dessa data i fyra grupper med mått:
 
 | Typ | Beskrivning |
 | --- | ---|
-| Riktad | Visar de IoT Edge enheter som matchar villkoret för distributions målet. |
-| Tillämpat | Visar mål IoT Edge enheter som inte är riktade till en annan distribution med högre prioritet. |
-| Rapporten lyckades | Visar de IoT Edge enheter som har rapporterat att modulerna har distribuerats korrekt. |
-| Rapporterings problem | Visar de IoT Edge enheter som har rapporterat att en eller flera moduler inte har distribuerats korrekt. Du kan undersöka felet genom att fjärrans luta till dessa enheter och Visa loggfilerna. |
+| Riktad | Visar IoT Edge enheter som matchar distributionsmålvillkoret. |
+| Tillämpat | Visar målenheterna IoT Edge som inte är mål för en annan distribution med högre prioritet. |
+| Rapporteringen lyckades | Visar IoT Edge enheter som har rapporterat att modulerna har distribuerats. |
+| Rapporteringsfel | Visar IoT Edge enheter som har rapporterat att en eller flera moduler inte har distribuerats. Du kan undersöka felet ytterligare genom att fjärransluta till enheterna och visa loggfilerna. |
 
-Den IoT Hub tjänsten gör dessa data tillgängliga för att övervaka i Azure Portal och i Azure CLI.
+Tjänsten IoT Hub gör dessa data tillgängliga för dig att övervaka i Azure Portal och i Azure CLI.
 
 ## <a name="monitor-a-deployment-in-the-azure-portal"></a>Övervaka en distribution i Azure Portal
 
 Använd följande steg för att visa information om en distribution och övervaka de enheter som kör den:
 
-1. Logga in på [Azure Portal](https://portal.azure.com) och navigera till din IoT Hub.
-1. Välj **IoT Edge** på menyn i den vänstra rutan.
-1. Välj fliken **IoT Edge distributioner** .
-1. Granska distributions listan. För varje distribution kan du se följande information:
+1. Logga in på [Azure Portal](https://portal.azure.com) och gå till IoT Hub.
+1. Välj **IoT Edge** på menyn till vänster.
+1. Välj fliken **IoT Edge distributioner.**
+1. Granska distributionslistan. För varje distribution kan du visa följande information:
 
     | Kolumn | Beskrivning |
     | --- | --- |
     | ID | Namnet på distributionen. |
-    | Typ | Distributions typ, antingen **distribution** eller **lager distribution**. |
-    | Mål villkor | Den tagg som används för att definiera mål enheter. |
-    | Prioritet | Prioritets numret som tilldelats distributionen. |
-    | System mått | Antalet enheter är dubbla i IoT Hub som matchar mål villkoret. **Tillämpad** anger det antal enheter som har haft det distributions innehåll som applicerats på deras modul är dubbla i IoT Hub. |
-    | Enhets mått | Antalet IoT Edge enheter som rapporterar lyckade eller felaktiga enheter från IoT Edge klient körning. |
-    | Anpassade mått | Antalet IoT Edge enheter som rapporterar data för alla mät värden som du har definierat för distributionen. |
-    | Skapande tid | Tidsstämpeln från när distributionen skapades. Den här tidsstämpeln används för att avbryta relationer när två distributioner har samma prioritet. |
+    | Typ | Typen av distribution, antingen **Distribution** eller **Skiktad distribution**. |
+    | Målvillkor | Taggen som används för att definiera målenheter. |
+    | Prioritet | Det prioritetsnummer som tilldelats distributionen. |
+    | Systemmått | Antalet enhetstvillingar i IoT Hub matchar målvillkoret. **Tillämpad** anger antalet enheter som har haft distributionsinnehållet tillämpat på sina modultvillingar i IoT Hub. |
+    | Enhetsmått | Antalet enheter IoT Edge rapporterar lyckade eller fel från IoT Edge klientkörning. |
+    | Anpassade mått | Antalet enheter IoT Edge som rapporterar data för mått som du har definierat för distributionen. |
+    | Skapandetid | Tidsstämpeln från när distributionen skapades. Den här tidsstämpeln används för att bryta oavgjort när två distributioner har samma prioritet. |
 
 1. Välj den distribution som du vill övervaka.  
-1. Rulla ned till det nedersta avsnittet på sidan **distributions information** och välj fliken **mål villkor** . Välj **Visa** för att visa en lista över de enheter som matchar mål villkoret. Du kan ändra villkoret och även **prioriteten**. Välj **Spara** om du har gjort ändringar.
+1. På sidan **Distributionsinformation** rullar du ned till avsnittet längst ned och väljer **fliken Målvillkor.** Välj **Visa** för att visa de enheter som matchar målvillkoret. Du kan ändra villkoret och även **prioriteten**. Välj **Spara** om du har gjort ändringar.
 
-   ![Visa riktade enheter för en distribution](./media/how-to-monitor-iot-edge-deployments/target-devices.png)
+   ![Visa målenheter för en distribution](./media/how-to-monitor-iot-edge-deployments/target-devices.png)
 
-1. Välj fliken **mått** . Om du väljer ett mått från List rutan **Välj mått** visas en **Visa** -knapp där du kan visa resultatet. Du kan också välja **Redigera mått** om du vill justera villkoren för anpassade mått som du har definierat. Välj **Spara** om du har gjort ändringar.
+1. Välj **fliken** Mått. Om du väljer ett mått i **listrutan Välj** mått visas **knappen Visa** så att du kan visa resultatet. Du kan också välja **Redigera mått om** du vill justera villkoren för anpassade mått som du har definierat. Välj **Spara** om du har gjort ändringar.
 
    ![Visa mått för en distribution](./media/how-to-monitor-iot-edge-deployments/deployment-metrics-tab.png)
 
-Information om hur du gör ändringar i distributionen finns i [ändra en distribution](how-to-deploy-at-scale.md#modify-a-deployment).
+Information om hur du gör ändringar i distributionen finns [i Ändra en distribution.](how-to-deploy-at-scale.md#modify-a-deployment)
 
 ## <a name="monitor-a-deployment-with-azure-cli"></a>Övervaka en distribution med Azure CLI
 
-Använd kommandot [az IoT Edge Deployment show](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show) för att visa information om en enda distribution:
+Använd kommandot [az iot edge deployment show](/cli/azure/iot/edge/deployment) för att visa information om en enskild distribution:
 
 ```azurecli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
 ```
 
-Kommandot Deployment show tar följande parametrar:
+Kommandot deployment show tar följande parametrar:
 
-* **--Deployment-ID** – namnet på den distribution som finns i IoT Hub. Obligatorisk parameter.
-* **--hubb-Name** -namnet på den IoT-hubb som distributionen finns i. Navet måste finnas i den aktuella prenumerationen. Växla till önskad prenumeration med kommandot `az account set -s [subscription name]`
+* **--deployment-id** – Namnet på distributionen som finns i IoT-hubben. Obligatorisk parameter.
+* **--hub-name** – Namnet på den IoT-hubb där distributionen finns. Hubben måste finnas i den aktuella prenumerationen. Växla till önskad prenumeration med kommandot `az account set -s [subscription name]`
 
-Granska distributionen i kommando fönstret. Egenskapen **mått** visar ett antal för varje mått som utvärderas av varje hubb:
+Granska distributionen i kommandofönstret. Egenskapen **metrics** visar ett antal för varje mått som utvärderas av varje hubb:
 
-* **targetedCount** – ett system mått som anger antalet enheter i IoT Hub som matchar mål villkoret.
-* **appliedCount** – ett system mått anger det antal enheter som har haft det distributions innehåll som tillämpas på deras modul är dubbla i IoT Hub.
-* **reportedSuccessfulCount** – ett enhets mått som anger antalet IoT Edge enheter i distributions rapporten som lyckas från IoT Edge klient körning.
-* **reportedFailedCount** – ett enhets mått som anger antalet IoT Edge enheter i distributions rapporterings felen från IoT Edge klient körningen.
+* **targetedCount** – Ett systemmått som anger antalet enhetstvillingar i IoT Hub som matchar målvillkoret.
+* **appliedCount** – Ett systemmått anger antalet enheter som har haft distributionsinnehållet tillämpat på sina modultvillingarna i IoT Hub.
+* **reportedSuccessfulCount** – Ett enhetsmått som anger antalet IoT Edge enheter i distributionen som rapporterar att IoT Edge från klientkörningen.
+* **reportedFailedCount** – Ett enhetsmått som anger antalet IoT Edge enheter i distributionsrapporteringsfelet från IoT Edge klientkörningen.
 
-Du kan visa en lista över enhets-ID: n eller objekt för vart och ett av måtten med kommandot [az IoT Edge Deployment show-Metric](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show-metric) :
+Du kan visa en lista över enhets-ID:er eller objekt för vart och ett av måtten med [kommandot az iot edge deployment show-metric:](/cli/azure/iot/edge/deployment)
 
 ```azurecli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]
 ```
 
-Kommandot Deployment show-Metric använder följande parametrar:
+Kommandot för att visa mått för distribution använder följande parametrar:
 
-* **--Deployment-ID** – namnet på den distribution som finns i IoT Hub.
-* **--Metric-ID** – namnet på det mått som du vill se listan över enhets-ID: n för, till exempel `reportedFailedCount` .
-* **--hubb-Name** -namnet på den IoT-hubb som distributionen finns i. Navet måste finnas i den aktuella prenumerationen. Växla till den önskade prenumerationen med kommandot `az account set -s [subscription name]` .
+* **--deployment-id** – Namnet på distributionen som finns i IoT-hubben.
+* **--metric-id** – Namnet på måttet som du vill visa listan över enhets-ID:n för, till exempel `reportedFailedCount` .
+* **--hub-name** – Namnet på den IoT-hubb där distributionen finns. Hubben måste finnas i den aktuella prenumerationen. Växla till önskad prenumeration med kommandot `az account set -s [subscription name]` .
 
-Information om hur du gör ändringar i distributionen finns i [ändra en distribution](how-to-deploy-cli-at-scale.md#modify-a-deployment).
+Information om hur du gör ändringar i distributionen finns [i Ändra en distribution.](how-to-deploy-cli-at-scale.md#modify-a-deployment)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig hur du [övervakar modulerna](how-to-monitor-module-twins.md), i huvudsak IoT Edge-Agent och IoT Edge Hub runtime-moduler, för anslutning och hälsa för dina IoT Edge-distributioner.
+Lär dig hur [du](how-to-monitor-module-twins.md)övervakar modultvillingarna , främst modulerna IoT Edge Agent och IoT Edge Hub runtime, för anslutning och hälsa för dina IoT Edge-distributioner.

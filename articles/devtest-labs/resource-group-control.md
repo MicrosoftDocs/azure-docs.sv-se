@@ -1,45 +1,45 @@
 ---
-title: Ange resurs grupp för virtuella datorer i Azure DevTest Labs | Microsoft Docs
-description: Lär dig hur du anger en resurs grupp för virtuella datorer i ett labb i Azure DevTest Labs.
+title: Ange resursgrupp för virtuella datorer i Azure DevTest Labs | Microsoft Docs
+description: Lär dig hur du anger en resursgrupp för virtuella datorer i ett labb i Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7b72048405d3025ca21b324b6ad3168dd0c9ac95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6f576a20fc8fada9dd515e8ba2a266761a3e586
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85483371"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377496"
 ---
-# <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Ange en resurs grupp för virtuella labb datorer i Azure DevTest Labs
+# <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Ange en resursgrupp för virtuella labbdatorer i Azure DevTest Labs
 
-Som labb ägare kan du konfigurera dina virtuella labb datorer så att de skapas i en speciell resurs grupp. Den här funktionen hjälper dig i följande scenarier:
+Som labbägare kan du konfigurera dina virtuella labbdatorer så att de skapas i en specifik resursgrupp. Den här funktionen hjälper dig i följande scenarier:
 
-- Har färre resurs grupper som skapats av labb i din prenumeration.
-- Låt dina labb köras i en fast uppsättning resurs grupper som du konfigurerar.
-- Undvik begränsningar och godkännanden som krävs för att skapa resurs grupper i din Azure-prenumeration.
-- Konsolidera alla dina labb resurser i en enda resurs grupp för att förenkla spårning av dessa resurser och tillämpa [principer](../governance/policy/overview.md) för att hantera resurser på resurs grupps nivå.
+- Ha färre resursgrupper som skapats av labb i din prenumeration.
+- Få dina labb att fungera inom en fast uppsättning resursgrupper som du konfigurerar.
+- Gå runt begränsningar och godkännanden som krävs för att skapa resursgrupper i din Azure-prenumeration.
+- Konsolidera alla labbresurser i en enda resursgrupp för att förenkla spårningen av resurserna och tillämpa [principer](../governance/policy/overview.md) för att hantera resurser på resursgruppsnivå.
 
-Med den här funktionen kan du använda ett skript för att ange en ny eller befintlig resurs grupp i din Azure-prenumeration för alla dina virtuella labb datorer. För närvarande har Azure DevTest Labs stöd för den här funktionen via ett API.
+Med den här funktionen kan du använda ett skript för att ange en ny eller befintlig resursgrupp i din Azure-prenumeration för alla dina virtuella labb datorer. För närvarande Azure DevTest Labs den här funktionen via ett API.
 
 > [!NOTE]
-> Alla prenumerations begränsningar gäller när du skapar labb i DevTest Labs. Tänk på ett labb som andra resurser i din prenumeration. I händelse av resurs grupper är gränsen [980 resurs grupper per prenumeration](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits). 
+> Alla prenumerationsgränser gäller när du skapar labb i DevTest Labs. Tänk på ett labb som en annan resurs i din prenumeration. När det gäller resursgrupper är gränsen [980 resursgrupper per prenumeration](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits). 
 
 ## <a name="use-azure-portal"></a>Använda Azure-portalen
-Följ dessa steg om du vill ange en resurs grupp för alla virtuella datorer som skapats i labbet. 
+Följ de här stegen för att ange en resursgrupp för alla virtuella datorer som skapats i labbet. 
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. Välj **alla tjänster** i den vänstra navigerings menyn. 
+2. Välj **Alla tjänster** på den vänstra navigeringsmenyn. 
 3. Välj **DevTest Labs** från listan.
-4. I listan med labb väljer du ditt **labb**.  
-5. Välj **konfiguration och principer** i avsnittet **Inställningar** på den vänstra menyn. 
-6. Välj **Lab-inställningar** på den vänstra menyn. 
-7. Välj **alla virtuella datorer i en resurs grupp**. 
-8. Välj en befintlig resurs grupp i list rutan (eller) Välj **Skapa ny**, ange ett **namn** för resurs gruppen och välj **OK**. 
+4. I listan över labb väljer du ditt **labb.**  
+5. Välj **Konfiguration och principer** i **avsnittet** Inställningar på den vänstra menyn. 
+6. Välj **Labbinställningar** på den vänstra menyn. 
+7. Välj **Alla virtuella datorer i en resursgrupp.** 
+8. Välj en befintlig resursgrupp i listrutan (eller) välj  **Skapa** ny, ange ett namn för resursgruppen och välj **OK.** 
 
-    ![Välj resurs grupp för alla virtuella labb datorer](./media/resource-group-control/select-resource-group.png)
+    ![Välj resursgrupp för alla virtuella labb datorer](./media/resource-group-control/select-resource-group.png)
 
 ## <a name="use-powershell"></a>Använd PowerShell 
-I följande exempel visas hur du använder ett PowerShell-skript för att skapa alla virtuella labb datorer i en ny resurs grupp.
+I följande exempel visas hur du använder ett PowerShell-skript för att skapa alla virtuella labbdatorer i en ny resursgrupp.
 
 ```powershell
 [CmdletBinding()]
@@ -63,20 +63,20 @@ az resource update -g $labRg -n $labName --resource-type "Microsoft.DevTestLab/l
 "Done. New virtual machines will now be created in the resource group '$vmRg'."
 ```
 
-Anropa skriptet med hjälp av följande kommando. ResourceGroup.ps1 är den fil som innehåller föregående skript:
+Anropa skriptet med hjälp av följande kommando. ResourceGroup.ps1 är filen som innehåller föregående skript:
 
 ```powershell
 .\ResourceGroup.ps1 -subId <subscriptionID> -labRg <labRGNAme> -labName <LanName> -vmRg <RGName> 
 ```
 
 ## <a name="use-an-azure-resource-manager-template"></a>Använda en Azure Resource Manager mall
-Om du använder en Azure Resource Manager mall för att skapa ett labb använder du egenskapen **vmCreationResourceGroupId** i avsnittet labb egenskaper i din mall, som du ser i följande exempel:
+Om du använder en Azure Resource Manager-mall för att skapa ett labb använder du egenskapen **vmCreationResourceGroupId** i avsnittet labbegenskaper i mallen, enligt följande exempel:
 
 ```json
         {
             "type": "microsoft.devtestlab/labs",
             "name": "[parameters('lab_name')]",
-            "apiVersion": "2018_10_15_preview",
+            "apiVersion": "2018-10-15-preview",
             "location": "eastus",
             "tags": {},
             "scale": null,
@@ -92,20 +92,20 @@ Om du använder en Azure Resource Manager mall för att skapa ett labb använder
 ```
 
 
-## <a name="api-to-configure-a-resource-group-for-lab-vms"></a>API för att konfigurera en resurs grupp för virtuella labb datorer
-Du har följande alternativ som labb ägare när du använder det här API: et:
+## <a name="api-to-configure-a-resource-group-for-lab-vms"></a>API för att konfigurera en resursgrupp för virtuella labb datorer
+Du har följande alternativ som labbägare när du använder det här API:et:
 
-- Välj **Labbets resurs grupp** för alla virtuella datorer.
-- Välj en annan **resurs grupp** än Labbets resurs grupp för alla virtuella datorer.
-- Ange ett **nytt resurs grupps** namn för alla virtuella datorer.
-- Fortsätt att använda det befintliga beteendet, där en resurs grupp skapas för varje virtuell dator i labbet.
+- Välj **labbets resursgrupp för** alla virtuella datorer.
+- Välj en **befintlig resursgrupp** förutom labbets resursgrupp för alla virtuella datorer.
+- Ange ett **nytt resursgruppnamn** för alla virtuella datorer.
+- Fortsätt att använda det befintliga beteendet, där en resursgrupp skapas för varje virtuell dator i labbet.
  
-Den här inställningen gäller för nya virtuella datorer som skapats i labbet. De äldre virtuella datorerna i labbet som skapades i deras egna resurs grupper förblir opåverkade. Miljöer som skapas i ditt labb fortsätter att finnas kvar i sina egna resurs grupper.
+Den här inställningen gäller för nya virtuella datorer som skapats i labbet. De äldre virtuella datorerna i labbet som har skapats i egna resursgrupper påverkas inte. Miljöer som skapas i ditt labb fortsätter att finnas kvar i sina egna resursgrupper.
 
-Så här använder du detta API:
-- Använd API-version **2018_10_15_preview**.
-- Om du anger en ny resurs grupp måste du kontrol lera att du har **Skriv behörighet för resurs grupper** i din prenumeration. Om du saknar Skriv behörighet kommer du inte att kunna skapa nya virtuella datorer i den angivna resurs gruppen.
-- Skicka i det **fullständiga resurs grupps-ID: t** när du använder API: et. Exempel: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Se till att resurs gruppen finns i samma prenumeration som labbet. 
+Så här använder du det här API:et:
+- Använd API-version **2018-10-15-preview**.
+- Om du anger en ny resursgrupp måste du kontrollera att du har **skrivbehörighet för resursgrupper** i din prenumeration. Om du saknar skrivbehörighet kommer det inte att gå att skapa nya virtuella datorer i den angivna resursgruppen.
+- När du använder API:et skickar du det **fullständiga resursgrupps-ID:t**. Exempel: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Kontrollera att resursgruppen finns i samma prenumeration som labbet. 
 
 
 ## <a name="next-steps"></a>Nästa steg

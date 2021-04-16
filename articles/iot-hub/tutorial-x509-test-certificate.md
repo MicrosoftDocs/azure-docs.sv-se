@@ -1,6 +1,6 @@
 ---
-title: Självstudie – testa möjligheten för X. 509-certifikat för att autentisera enheter till en Azure-IoT Hub | Microsoft Docs
-description: Självstudie – testa dina X. 509-certifikat för att autentisera till Azure IoT Hub
+title: Självstudie – Testa möjligheten för X.509-certifikat att autentisera enheter till en Azure IoT Hub | Microsoft Docs
+description: Självstudie – Testa dina X.509-certifikat för att autentisera till Azure IoT Hub
 author: v-gpettibone
 manager: philmea
 ms.service: iot-hub
@@ -12,41 +12,40 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-- devx-track-azurecli
-ms.openlocfilehash: 91eea344914120a396ba9465ec504a37f5844d4e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7d1900782fce6b84ed79014e985393f3626d171b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105630769"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379442"
 ---
-# <a name="tutorial-testing-certificate-authentication"></a>Självstudie: testa certifikatautentisering
+# <a name="tutorial-testing-certificate-authentication"></a>Självstudie: Testa certifikatautentisering
 
-Du kan använda följande C#-kod exempel för att testa att ditt certifikat kan autentisera din enhet till din IoT Hub. Observera att du måste göra följande innan du kör test koden:
+Du kan använda följande C#-kodexempel för att testa att certifikatet kan autentisera enheten till din IoT Hub. Observera att du måste göra följande innan du kör testkoden:
 
-* Skapa en rot certifikat utfärdare eller ett underordnat CA-certifikat.
-* Ladda upp certifikat utfärdarens certifikat till din IoT Hub.
-* Bevisa att du innehar CA-certifikatet.
-* Lägg till en enhet till din IoT Hub.
-* Skapa ett enhets certifikat med samma enhets-ID som du är din enhet.
+* Skapa en rotcertifikatutfärdare eller ett underordnat CA-certifikat.
+* Ladda upp ca-certifikatet till IoT Hub.
+* Bevisa att du har CA-certifikatet.
+* Lägg till en enhet i IoT Hub.
+* Skapa ett enhetscertifikat med samma enhets-ID som din enhet.
 
-## <a name="code-example"></a>Kod exempel
+## <a name="code-example"></a>Kodexempel
 
-I följande kod exempel visas hur du skapar ett C#-program för att simulera X. 509-enheten som är registrerad för IoT Hub. Exemplet skickar temperatur-och fuktighets värden från den simulerade enheten till hubben. I den här självstudien skapar vi endast enhets programmet. Den lämnas som en övning för läsarna att skapa det IoT Hub tjänst program som ska skicka svar till de händelser som skickas av den här simulerade enheten.
+I följande kodexempel visas hur du skapar ett C#-program för att simulera X.509-enheten som är registrerad för din IoT Hub. Exemplet skickar temperatur- och luftfuktighetsvärden från den simulerade enheten till hubben. I den här självstudien skapar vi bara enhetsprogrammet. Det är kvar som en övning för läsarna att skapa IoT Hub-tjänstprogrammet som skickar svar på de händelser som skickas av den här simulerade enheten.
 
-1. Öppna Visual Studio, Välj **skapa ett nytt projekt** och välj sedan projekt mal len **konsol program (.NET Framework)** . Välj **Nästa**.
+1. Öppna Visual Studio, välj **Skapa ett nytt** projekt och välj sedan **projektmallen Konsolapp (.NET Framework).** Välj **Nästa**.
 
-1. I **Konfigurera ditt nya projekt** namnger du projektet *SimulateX509Device* och väljer sedan **skapa**.
+1. I **Konfigurera det nya projektet** ger du projektet namnet *SimulateX509Device* och väljer sedan **Skapa**.
 
-   ![Skapa X. 509-enhets projekt i Visual Studio](./media/iot-hub-security-x509-get-started/create-device-project-vs2019.png)
+   ![Skapa X.509-enhetsprojekt i Visual Studio](./media/iot-hub-security-x509-get-started/create-device-project-vs2019.png)
 
-1. I Solution Explorer högerklickar du på projektet **SimulateX509Device** och väljer sedan **Hantera NuGet-paket**.
+1. I Solution Explorer högerklickar du på **projektet SimulateX509Device** och väljer sedan **Hantera NuGet-paket.**
 
-1. I **NuGet Package Manager** väljer du **Bläddra** och söker efter och väljer **Microsoft. Azure. devices. client**. Välj **installera**.
+1. I **NuGet Package Manager väljer** du **Bläddra** och sök efter och väljer **Microsoft.Azure.Devices.Client.** Välj **installera**.
 
-   ![Lägg till enhets-SDK NuGet-paketet i Visual Studio](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
+   ![Lägga till NuGet-paketet för enhets-SDK i Visual Studio](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
 
-    I det här steget hämtas, installeras och läggs en referens till i Azure IoT Device SDK NuGet-paketet och dess beroenden.
+    Det här steget hämtar, installerar och lägger till en referens till NuGet-paketet sdk för Azure IoT-enheter och dess beroenden.
 
     Mata in och kör följande kod:
 

@@ -1,6 +1,6 @@
 ---
-title: Inbyggda princip definitioner
-description: Visar Azure Policy inbyggda princip definitioner för Data Factory. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
+title: Inbyggda principdefinitioner
+description: Visar Azure Policy inbyggda principdefinitioner för Data Factory. Dessa inbyggda principdefinitioner ger vanliga metoder för att hantera dina Azure-resurser.
 ms.author: lle
 author: lrtoyou1223
 ms.service: data-factory
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
-ms.date: 03/31/2021
-ms.openlocfilehash: 25e0db490493871cca1e79faa967f21d12af013f
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.date: 04/14/2021
+ms.openlocfilehash: 287ad14c25e7b926a7d6fbe84743d45648f7bf42
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094971"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503749"
 ---
-# <a name="azure-policy-built-in-definitions-for-data-factory-preview"></a>Azure Policy inbyggda definitioner för Data Factory (förhands granskning)
+# <a name="azure-policy-built-in-definitions-for-data-factory-preview"></a>Azure Policy inbyggda definitioner för Data Factory (förhandsversion)
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Den här sidan är ett index över [Azure policy](../governance/policy/overview.md) inbyggda princip definitioner för Data Factory. Ytterligare Azure Policy inbyggda program för andra tjänster finns i [Azure policy inbyggda definitioner](../governance/policy/samples/built-in-policies.md).
+Den här sidan är ett index [Azure Policy](../governance/policy/overview.md) inbyggda principdefinitioner för Data Factory. Ytterligare Azure Policy inbyggda funktioner för andra tjänster finns i [Azure Policy inbyggda definitionerna](../governance/policy/samples/built-in-policies.md).
 
-Namnet på varje inbyggd princip definition länkar till princip definitionen i Azure Portal. Använd länken i kolumnen **version** om du vill visa källan på [Azure policy GitHub-lagrings platsen](https://github.com/Azure/azure-policy).
+Namnet på varje inbyggd principdefinition länkar till principdefinitionen i Azure Portal. Använd länken i kolumnen **Version för** att visa källan på Azure Policy [GitHub-lagringsplatsen](https://github.com/Azure/azure-policy).
 
 ## <a name="data-factory"></a>Data Factory
 

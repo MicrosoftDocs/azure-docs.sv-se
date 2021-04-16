@@ -1,19 +1,22 @@
 ---
-title: Snabb start – skapa Azure Analysis Services med PowerShell-Azure Analysis Services | Microsoft Docs
-description: I den här snabb starten beskrivs hur du skapar en Azure Analysis Services-server med hjälp av PowerShell
+title: Snabbstart – Skapa Azure Analysis Services powershell-Azure Analysis Services | Microsoft Docs
+description: Den här snabbstarten beskriver hur du skapar en Azure Analysis Services-server med hjälp av PowerShell
 author: minewiskan
-ms.service: azure-analysis-services
-ms.topic: quickstart
-ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.custom: references_regions , devx-track-azurepowershell
-ms.openlocfilehash: 737649538aaf82352e27aec6220b13ba355a7a82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/31/2020
+ms.topic: quickstart
+ms.service: azure-analysis-services
+ms.custom:
+- references_regions
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: eb76925e695f92da973fef9cb86d4e936a766587
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89229352"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531480"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Snabbstart: Skapa en server – PowerShell
 
@@ -23,7 +26,7 @@ I den här snabbstarten beskrivs hur du använder PowerShell från kommandoraden
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure-prenumeration**: Besök [Azures kostnads fri utvärderings version](https://azure.microsoft.com/offers/ms-azr-0044p/) för att skapa ett konto.
+- **Azure-prenumeration:** Gå [till Kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/offers/ms-azr-0044p/) för att skapa ett konto.
 - **Azure Active Directory**: Prenumerationen måste vara kopplad till en Azure Active Directory-klientorganisation och du måste ha ett konto i den katalogen. Mer information finns i [Autentisering och användarbehörigheter](analysis-services-manage-users.md).
 - **Azure PowerShell**. Kör `Get-Module -ListAvailable Az` för att hitta den installerade versionen. Information om att installera och uppgradera finns i [Install Azure PowerShell module](/powershell/azure/install-Az-ps) (Installera Azure PowerShell-modul).
 

@@ -1,22 +1,22 @@
 ---
-ms.openlocfilehash: a055cc1b715f93830647c9b13793a59d09db605c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
-ms.translationtype: HT
+ms.openlocfilehash: fe487aa684e0ec4c68adb9f5224066ac742676be
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107513175"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564668"
 ---
 ## <a name="setting-up"></a>Inrätta
 
 ### <a name="create-a-new-c-application"></a>Skapa ett nytt C#-program
 
-I ett konsolfönster (till exempel cmd, PowerShell eller Bash) använder du kommandot för att skapa en ny `dotnet new` konsolapp med namnet `ManagedIdentitiesQuickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda källfil: `Program.cs` .
+I ett konsolfönster (till exempel cmd, PowerShell eller Bash) använder du kommandot för att skapa en `dotnet new` ny konsolapp med namnet `ManagedIdentitiesQuickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda källfil: `Program.cs` .
 
 ```console
 dotnet new console -o ManagedIdentitiesQuickstartQuickstart
 ```
 
-Ändra katalogen till den nyligen skapade appmappen och använd kommandot `dotnet build` för att kompilera programmet.
+Ändra katalogen till den nyligen skapade appmappen och använd kommandot `dotnet build` för att kompilera ditt program.
 
 ```console
 cd ManagedIdentitiesQuickstart
@@ -45,7 +45,7 @@ using Azure;
 
 ## <a name="create-a-defaultazurecredential"></a>Skapa en DefaultAzureCredential
 
-Vi använder [DefaultAzureCredential för den](/dotnet/api/azure.identity.defaultazurecredential) här snabbstarten. Dessa autentiseringsuppgifter är lämpliga för produktions- och utvecklingsmiljöer. Eftersom det behövs för varje åtgärd ska vi skapa den i `Program.cs` klassen . Lägg till följande överst i filen.
+Vi använder [DefaultAzureCredential för den](/dotnet/api/azure.identity.defaultazurecredential) här snabbstarten. Den här autentiseringsidentifieraren är lämplig för produktions- och utvecklingsmiljöer. Eftersom det behövs för varje åtgärd ska vi skapa den i `Program.cs` klassen . Lägg till följande överst i filen.
 
 ```csharp
      private DefaultAzureCredential credential = new DefaultAzureCredential();
@@ -53,7 +53,7 @@ Vi använder [DefaultAzureCredential för den](/dotnet/api/azure.identity.defaul
 
 ## <a name="issue-a-token-with-managed-identities"></a>Utfärda en token med hanterade identiteter
 
-Nu ska vi lägga till kod som använder de autentiseringsuppgifter som skapats för att utfärda en VoIP-åtkomsttoken. Vi anropar den här koden senare.
+Nu ska vi lägga till kod som använder de skapade autentiseringssuppgifter för att utfärda en VoIP-åtkomsttoken. Vi anropar den här koden senare.
 
 ```csharp
      public Response<AccessToken> CreateIdentityAndGetTokenAsync(Uri resourceEndpoint)
@@ -136,7 +136,7 @@ class Program
                Console.WriteLine("Sending SMS using Managed Identities");
 
                // You will need a phone number from your resource to send an SMS.
-               SmsSendResult result = instance.SendSms(endpoint, "+18445504651", "+14256253982", "Hello from Managed Identities");
+               SmsSendResult result = instance.SendSms(endpoint, "<Your ACS Phone Number>", "<The Phone Number you'd like to send the SMS to.>", "Hello from Managed Identities");
                Console.WriteLine($"Sms id: {result.MessageId}");
                Console.WriteLine($"Send Result Successful: {result.Successful}");
           }

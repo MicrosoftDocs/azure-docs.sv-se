@@ -7,12 +7,12 @@ ms.date: 4/12/2021
 author: sakthi-vetrivel
 ms.author: suvetriv
 keywords: aro, openshift, az aro, red hat, cli, RACI, support
-ms.openlocfilehash: 364b0a04e3394efcacba00c538218ecee2355f89
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 4bb00cb533d0065a992831f09ed8280c96efcdee
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107495071"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537004"
 ---
 # <a name="overview-of-responsibilities-for-azure-red-hat-openshift"></a>Översikt över ansvarsområden för Azure Red Hat OpenShift
 
@@ -145,7 +145,7 @@ Tabell 1. Ansvarsområden efter resurs
 
 ### <a name="incident-and-operations-management"></a>Incident- och drifthantering 
 
-Kunden och Microsoft och Red Hat delar ansvaret för övervakning och underhåll av ett Azure Red Hat OpenShift kluster. Kunden ansvarar för incident- och drifthantering av [kundprogramdata](#customer-data-and-applications) och eventuella anpassade nätverk som kunden har konfigurerat.
+Kunden och Microsoft och Red Hat delar ansvaret för övervakning och underhåll av ett Azure Red Hat OpenShift kluster. Kunden ansvarar för incident- och drifthantering av [kundprogramdata](#customer-data-and-applications) och eventuella anpassade nätverk som kunden kan ha konfigurerat.
 
 <table>
   <tr>
@@ -153,7 +153,7 @@ Kunden och Microsoft och Red Hat delar ansvaret för övervakning och underhåll
    </td>
    <td><strong>Microsoft- och Red Hat-ansvarsområden</strong>
    </td>
-   <td><strong>Kundens ansvar</strong>
+   <td><strong>Kundens ansvarsområden</strong>
    </td>
   </tr>
   <tr>
@@ -190,7 +190,7 @@ Kunden och Microsoft och Red Hat delar ansvaret för övervakning och underhåll
    <td>
 <ul>
 
-<li>Övervaka nätverkstrafik som kan konfigureras via VNet-till-VNet-anslutning, VPN-anslutning eller Private Link-anslutning för potentiella problem eller säkerhetshot.
+<li>Övervaka nätverkstrafik som eventuellt har konfigurerats via VNet-till-VNet-anslutning, VPN-anslutning eller Private Link-anslutning för potentiella problem eller säkerhetshot.
 </li>
 </ul>
    </td>
@@ -203,7 +203,7 @@ Tabell 2. Delat ansvar för incident- och drifthantering
 
 ### <a name="change-management"></a>Ändringshantering
 
-Microsoft och Red Hat ansvarar för att aktivera ändringar i den klusterinfrastruktur och de tjänster som kunden kontrollerar, samt att underhålla versioner som är tillgängliga för huvudnoderna, infrastrukturtjänsterna och arbetsnoderna. Kunden ansvarar för att initiera infrastrukturändringar och installera och underhålla valfria tjänster och nätverkskonfigurationer i klustret, samt alla ändringar i kunddata och kundprogram.
+Microsoft och Red Hat ansvarar för att aktivera ändringar i klusterinfrastrukturen och -tjänsterna som kunden ska kontrollera, samt att underhålla versioner som är tillgängliga för huvudnoderna, infrastrukturtjänsterna och arbetsnoderna. Kunden ansvarar för att initiera infrastrukturändringar och installera och underhålla valfria tjänster och nätverkskonfigurationer i klustret, samt alla ändringar i kunddata och kundprogram.
 
 
 <table>
@@ -212,7 +212,7 @@ Microsoft och Red Hat ansvarar för att aktivera ändringar i den klusterinfrast
    </td>
    <td><strong>Microsoft- och Red Hat-ansvarsområden</strong>
    </td>
-   <td><strong>Kundens ansvar</strong>
+   <td><strong>Kundens ansvarsområden</strong>
    </td>
   </tr>
   <tr>
@@ -383,7 +383,7 @@ Identitets- och åtkomsthanteringen omfattar alla ansvarsområden för att säke
    <td>
 <ul>
 
-<li>Följ en branschstandardbaserad nivåindelad intern åtkomstprocess för plattformsgranskningsloggar.
+<li>Följ en branschstandardbaserad process för nivåindelad intern åtkomst för plattformsgranskningsloggar.
 
 <li>Tillhandahåll inbyggda RBAC-funktioner för OpenShift.
 </li>
@@ -405,14 +405,14 @@ Identitets- och åtkomsthanteringen omfattar alla ansvarsområden för att säke
    <td>
 <ul>
 
-<li>Tillhandahåll inbyggda RBAC-funktioner för OpenShift och dedikerade administratörer.
+<li>Tillhandahåll inbyggda RBAC-funktioner för OpenShift.
 </li>
 </ul>
    </td>
    <td>
 <ul>
 
-<li>Konfigurera OpenShift dedicated-admins och RBAC för att styra åtkomsten till vägkonfigurationen efter behov.
+<li>Konfigurera OpenShift RBAC för att styra åtkomsten till vägkonfigurationen efter behov.
 </li>
 </ul>
    </td>
@@ -423,7 +423,7 @@ Identitets- och åtkomsthanteringen omfattar alla ansvarsområden för att säke
    <td>
 <ul>
 
-<li>Tillhandahåll inbyggda RBAC- och dedicated-admin-funktioner i OpenShift.
+<li>Tillhandahåll inbyggda RBAC-funktioner för OpenShift.
 </li>
 </ul>
    </td>
@@ -434,7 +434,7 @@ Identitets- och åtkomsthanteringen omfattar alla ansvarsområden för att säke
 
 <li>Hantera organisationsadministratörer för Red Hat-organisationen för att bevilja åtkomst till OpenShift Cluster Manager.
 
-<li>Konfigurera OpenShift dedicated-admins och RBAC för att styra åtkomsten till vägkonfigurationen efter behov.
+<li>Konfigurera OpenShift RBAC för att styra åtkomsten till vägkonfigurationen efter behov.
 </li>
 </ul>
    </td>
@@ -546,7 +546,7 @@ Kunden ansvarar för de program, arbetsbelastningar och data som de distribuerar
 
 <li>Upprätthålla standarder på plattformsnivå för datakryptering enligt definitionen i branschens säkerhets- och efterlevnadsstandarder. 
 
-<li>Tillhandahåll OpenShift-komponenter som hjälper dig att hantera programdata, till exempel hemligheter.
+<li>Tillhandahålla OpenShift-komponenter som hjälper dig att hantera programdata, till exempel hemligheter.
 
 <li>Aktivera integrering med datatjänster från tredje part (till exempel Azure SQL) för att lagra och hantera data utanför klustret och/eller Microsoft och Red Hat Azure.
 </li>
@@ -583,7 +583,7 @@ Kunden ansvarar för de program, arbetsbelastningar och data som de distribuerar
 
 <li>Om en kund lägger till Red Hat, community, tredje part, sina egna eller andra tjänster i klustret med hjälp av operatörer eller externa avbildningar, ansvarar kunden för dessa tjänster och för att arbeta med lämplig leverantör (inklusive Red Hat) för att felsöka eventuella problem.
 
-<li>Använd de tillhandahållna verktygen och funktionerna för <a href="https://docs.openshift.com/dedicated/4/architecture/understanding-development.html#application-types">att konfigurera och distribuera</a>. <a href="https://docs.openshift.com/dedicated/4/applications/deployments/deployment-strategies.html">hålla dig uppdaterad</a>; <a href="https://docs.openshift.com/dedicated/4/applications/working-with-quotas.html">konfigurera resursbegäranden och gränser</a>; <a href="https://docs.openshift.com/dedicated/4/getting_started/scaling-your-cluster.html">ändra storlek på klustret så att det finns tillräckligt med resurser för att köra appar</a>; <a href="https://docs.openshift.com/dedicated/4/administering_a_cluster/dedicated-admin-role.html#dedicated-admin-granting-permissions_dedicated-administrator">konfigurera behörigheter</a>; integrera med andra tjänster; <a href="https://docs.openshift.com/dedicated/4/openshift_images/images-understand.html">hantera avbildningsströmmar eller mallar som kunden distribuerar;</a> <a href="https://docs.openshift.com/dedicated/4/cloud_infrastructure_access/dedicated-aws-private-cluster.html">externt betjäna</a>; spara, återställning och återställning av data; och på annat sätt hantera sina hög tillgängliga och motståndskraftiga arbetsbelastningar.
+<li>Använd de tillhandahållna verktygen och funktionerna för <a href="https://docs.openshift.com/aro/4/architecture/understanding-development.html#application-types">att konfigurera och distribuera</a>. <a href="https://docs.openshift.com/aro/4/applications/deployments/deployment-strategies.html">hålla dig uppdaterad</a>; <a href="https://docs.openshift.com/aro/4/applications/working-with-quotas.html">konfigurera resursbegäranden och gränser</a>; <a href="https://docs.openshift.com/aro/4/getting_started/scaling-your-cluster.html">ändra storlek på klustret så att det finns tillräckligt med resurser för att köra appar</a>; <a href="https://docs.openshift.com/aro/4/administering_a_cluster/">konfigurera behörigheter</a>; integrera med andra tjänster; <a href="https://docs.openshift.com/aro/4/openshift_images/images-understand.html">hantera avbildningsströmmar eller mallar som kunden distribuerar;</a> <a href="https://docs.openshift.com/aro/4/cloud_infrastructure_access">externt betjäna</a>; spara, återställning och återställning av data; och på annat sätt hantera sina hög tillgängliga och motståndskraftiga arbetsbelastningar.
 
 <li>Ha kvar ansvaret för att övervaka de program som körs på Azure Red Hat OpenShift; inklusive installation och drift av programvara för att samla in mått och skapa aviseringar.
 </li>
@@ -593,4 +593,4 @@ Kunden ansvarar för de program, arbetsbelastningar och data som de distribuerar
 </table>
 
 
-Tabell 7. Kundens ansvar för kunddata, kundprogram och tjänster
+Tabell 7. Kundansvar för kunddata, kundprogram och tjänster

@@ -1,34 +1,34 @@
 ---
-title: Självstudier läsa in data från Azure Data Lake Storage
-description: Använd COPY-instruktionen för att läsa in data från Azure Data Lake Storage för dedikerade SQL-pooler.
+title: Självstudie om att läsa in data från Azure Data Lake Storage
+description: Använd COPY-instruktionen för att läsa in data Azure Data Lake Storage för dedikerade SQL-pooler.
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 11/20/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: ca57c6200cf7006a89be4b1fd621974559e5b514
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 16f95a86169be04eba202b311fc4437b204ec8b3
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104606131"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566536"
 ---
-# <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Läs in data från Azure Data Lake Storage i dedikerade SQL-pooler i Azure Synapse Analytics
+# <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Läsa in data från Azure Data Lake Storage till dedikerade SQL-pooler i Azure Synapse Analytics
 
-Den här guiden beskriver hur du använder Copy- [instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) för att läsa in data från Azure Data Lake Storage. Exempel på hur du använder COPY-instruktionen för alla autentiseringsmetoder finns i följande dokumentation: [Läs in data på ett säkert sätt med dedikerade SQL-pooler](./quickstart-bulk-load-copy-tsql-examples.md).
+Den här guiden beskriver hur du använder [COPY-instruktionen för](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) att läsa in data från Azure Data Lake Storage. Snabbexempel på hur du använder COPY-instruktionen för alla autentiseringsmetoder finns i följande dokumentation: Läs in data säkert med [dedikerade SQL-pooler.](./quickstart-bulk-load-copy-tsql-examples.md)
 
 > [!NOTE]  
-> Skicka ett e-postmeddelande till följande distributions lista för att ge feedback eller rapportera problem på KOPIERINGs instruktionen: sqldwcopypreview@service.microsoft.com .
+> Om du vill ge feedback eller rapportera problem med COPY-instruktionen skickar du ett e-postmeddelande till följande distributionslista: sqldwcopypreview@service.microsoft.com .
 >
 > [!div class="checklist"]
 >
-> * Skapa mål tabellen för att läsa in data från Azure Data Lake Storage.
-> * Skapa COPY-instruktionen för att läsa in data till data lagret.
+> * Skapa måltabellen för att läsa in data från Azure Data Lake Storage.
+> * Skapa COPY-instruktionen för att läsa in data till informationslagret.
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
@@ -36,14 +36,14 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](ht
 
 Innan du börjar med de här självstudierna ska du ladda ned och installera den senaste versionen av [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS).
 
-För att kunna köra den här självstudien behöver du:
+Om du vill köra den här självstudien behöver du:
 
-* En dedikerad SQL-pool. Se [skapa en dedikerad SQL-pool och fråga efter data](create-data-warehouse-portal.md).
-* Ett Data Lake Storage konto. Se [Kom igång med Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). För det här lagrings kontot måste du konfigurera eller ange någon av följande autentiseringsuppgifter som ska läsas in: en lagrings konto nyckel, en signatur för delad åtkomst (SAS), en Azure Directory-programanvändare eller en AAD-användare som har rätt Azure-roll till lagrings kontot.
+* En dedikerad SQL-pool. Se [Skapa en dedikerad SQL-pool och fråga efter data.](create-data-warehouse-portal.md)
+* Ett Data Lake Storage konto. Se [Kom igång med Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). För det här lagringskontot måste du konfigurera eller ange någon av följande autentiseringsuppgifter för att läsa in: en lagringskontonyckel, en SAS-nyckel (signatur för delad åtkomst), en Azure Directory Application-användare eller en AAD-användare som har rätt Azure-roll för lagringskontot.
 
-## <a name="create-the-target-table"></a>Skapa mål tabellen
+## <a name="create-the-target-table"></a>Skapa måltabellen
 
-Anslut till din dedikerade SQL-pool och skapa mål tabellen som du ska läsa in till. I det här exemplet skapar vi en produkt dimensions tabell.
+Anslut till din dedikerade SQL-pool och skapa måltabellen som du ska läsa in till. I det här exemplet skapar vi en tabell med produktdimensioner.
 
 ```sql
 -- A: Create the target table
@@ -63,9 +63,9 @@ WITH
 ```
 
 
-## <a name="create-the-copy-statement"></a>Skapa KOPIERINGs instruktionen
+## <a name="create-the-copy-statement"></a>Skapa COPY-instruktionen
 
-Anslut till din SQL-dedikerade pool och kör KOPIERINGs instruktionen. En fullständig lista över exempel finns i följande dokumentation: [Läs in data på ett säkert sätt med hjälp av dedikerade SQL-pooler](./quickstart-bulk-load-copy-tsql-examples.md).
+Anslut till den dedikerade SQL-poolen och kör COPY-instruktionen. En fullständig lista över exempel finns i följande dokumentation: Läs in data [säkert med dedikerade SQL-pooler.](./quickstart-bulk-load-copy-tsql-examples.md)
 
 ```sql
 -- B: Create and execute the COPY statement
@@ -102,11 +102,11 @@ WITH
 ) OPTION (LABEL = 'COPY: ADLS tutorial');
 ```
 
-## <a name="optimize-columnstore-compression"></a>Optimera columnstore-komprimering
+## <a name="optimize-columnstore-compression"></a>Optimera kolumnlagringskomprimering
 
-Som standard definieras tabeller som ett grupperat columnstore-index. När en belastning är klar kanske vissa av data raderna inte komprimeras till columnstore.  Det finns en mängd olika orsaker till varför detta kan inträffa. Mer information finns i [Hantera columnstore-index](sql-data-warehouse-tables-index.md).
+Som standard definieras tabeller som ett grupperat columnstore-index. När inläsningen är klar kanske vissa datarader inte komprimeras till columnstore.  Det finns en mängd olika orsaker till varför detta kan inträffa. Mer information finns i [hantera columnstore-index.](sql-data-warehouse-tables-index.md)
 
-Om du vill optimera prestanda och columnstore-komprimering efter en belastning måste du återskapa tabellen för att tvinga columnstore-indexet att komprimera alla rader.
+Om du vill optimera frågeprestanda och columnstore-komprimering efter en inläsning återskapar du tabellen för att tvinga columnstore-indexet att komprimera alla rader.
 
 ```sql
 
@@ -116,23 +116,23 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 ## <a name="optimize-statistics"></a>Optimera statistik
 
-Det är bäst att skapa statistik med en kolumn direkt efter en belastning. Det finns några val för statistik. Om du till exempel skapar en statistik med en kolumn på varje kolumn kan det ta lång tid att bygga om all statistik. Om du vet att vissa kolumner inte kommer att finnas i frågesyntaxen kan du hoppa över att skapa statistik för dessa kolumner.
+Det är bäst att skapa statistik med en kolumn direkt efter en inläsning. Det finns några alternativ för statistik. Om du till exempel skapar statistik med en kolumn för varje kolumn kan det ta lång tid att återskapa all statistik. Om du vet att vissa kolumner inte kommer att finnas i fråge predikat kan du hoppa över att skapa statistik för dessa kolumner.
 
-Om du väljer att skapa en statistik med en kolumn på varje kolumn i varje tabell, kan du använda exemplet på den lagrade procedur koden `prc_sqldw_create_stats` i [statistik](sql-data-warehouse-tables-statistics.md) artikeln.
+Om du bestämmer dig för att skapa statistik med en kolumn i varje kolumn i varje tabell kan du använda kodexempel för lagrad `prc_sqldw_create_stats` procedur i [statistikartikeln.](sql-data-warehouse-tables-statistics.md)
 
-I följande exempel visas en start punkt för att skapa statistik. Den skapar statistik med en kolumn för varje kolumn i tabellen dimension och i varje kopplings kolumn i fakta tabellerna. Du kan alltid lägga till en eller flera kolumn statistik i andra fakta tabell kolumner senare.
+Följande exempel är en bra utgångspunkt för att skapa statistik. Den skapar statistik med en kolumn för varje kolumn i dimensionstabellen och för varje sammanfogning av kolumn i faktatabellerna. Du kan alltid lägga till statistik med en eller flera kolumner i andra faktatabellkolumner senare.
 
-## <a name="achievement-unlocked"></a>Utmärkelse upplåst!
+## <a name="achievement-unlocked"></a>Achievement upplåst!
 
-Du har läst in data i informations lagret. Bra jobbat!
+Du har läst in data i informationslagret. Bra jobbat!
 
 ## <a name="next-steps"></a>Nästa steg
-Inläsning av data är det första steget för att utveckla en informations lager lösning med Azure Synapse Analytics. Kolla våra utvecklings resurser.
+Att läsa in data är det första steget för att utveckla en informationslagerlösning med Azure Synapse Analytics. Kolla in våra utvecklingsresurser.
 
 > [!div class="nextstepaction"]
-> [Lär dig hur du utvecklar tabeller för data lager hantering](sql-data-warehouse-tables-overview.md)
+> [Lär dig hur du utvecklar tabeller för informationslager](sql-data-warehouse-tables-overview.md)
 
-Läs följande dokumentation om du vill läsa mer om exempel och referenser:
-- [Referens dokumentation för KOPIERINGs instruktion](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
-- [Kopiera exempel för varje autentiseringsmetod](./quickstart-bulk-load-copy-tsql-examples.md)
-- [Kopiera snabb start för en enskild tabell](./quickstart-bulk-load-copy-tsql.md)
+Fler inläsningsexempel och referenser finns i följande dokumentation:
+- [Referensdokumentation för COPY-instruktion](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
+- [KOPIERA exempel för varje autentiseringsmetod](./quickstart-bulk-load-copy-tsql-examples.md)
+- [SNABBSTART FÖR KOPIA för en enskild tabell](./quickstart-bulk-load-copy-tsql.md)

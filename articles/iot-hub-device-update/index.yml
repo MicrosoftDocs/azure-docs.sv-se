@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Enhets uppdatering för IoT Hub-dokumentation
-summary: Enhets uppdatering för IoT Hub är en tjänst som gör att du kan distribuera OTA (över-Air-uppdateringar) till dina IoT-enheter.
+title: Enhetsuppdatering för IoT Hub dokumentation
+summary: Enhetsuppdatering för IoT Hub är en tjänst som gör att du kan distribuera trådlösa uppdateringar (OTA) till dina IoT-enheter.
 metadata:
-  title: Enhets uppdatering för IoT Hub-dokumentation
-  description: Enhets uppdatering för IoT Hub är en tjänst som gör att du kan distribuera OTA (över-Air-uppdateringar) till dina IoT-enheter.
+  title: Enhetsuppdatering för IoT Hub dokumentation
+  description: Enhetsuppdatering för IoT Hub är en tjänst som gör att du kan distribuera trådlösa uppdateringar (OTA) till dina IoT-enheter.
   services: iot-hub
   ms.service: iot-hub
   ms.topic: landing-page
@@ -11,62 +11,62 @@ metadata:
   ms.author: philmea
   manager: philmea
   ms.date: 2/17/2021
-  ms.openlocfilehash: 8943e22428d6f510b374ef31938257ec08a0dff6
-  ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+  ms.openlocfilehash: 9fd99eeefcae6667dfcc9a11c7d623f5d213ffac
+  ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
   ms.translationtype: MT
   ms.contentlocale: sv-SE
   ms.lasthandoff: 04/13/2021
-  ms.locfileid: "107312101"
+  ms.locfileid: "107377827"
 landingContent:
-- title: Om enhets uppdatering
+- title: Om enhetsuppdatering
   linkLists:
   - linkListType: overview
     links:
-    - text: Vad är enhets uppdatering för IoT Hub?
+    - text: Vad är enhetsuppdatering för IoT Hub?
       url: understand-device-update.md
 - title: Läs mer
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Skapa ett konto för enhets uppdatering
+    - text: Skapa ett konto för enhetsuppdatering
       url: create-device-update-account.md
-    - text: Etablering av enhets uppdatering för Azure IoT Hub agent
+    - text: Etablering av enhetsuppdateringsagent
       url: device-update-agent-provisioning.md
     - text: Importera en uppdatering
       url: import-update.md
-    - text: Skapa en uppdaterings grupp
+    - text: Skapa en uppdateringsgrupp
       url: create-update-group.md
     - text: Distribuera en uppdatering
       url: deploy-update.md
   - linkListType: concept
     links:
-    - text: Hur enhets uppdatering använder Plug and Play
+    - text: Hur enhetsuppdatering använder Plug and Play
       url: device-update-plug-and-play.md
-    - text: Förstå autentisering och auktorisering av enhets uppdateringar
+    - text: Förstå autentisering och auktorisering för enhetsuppdatering
       url: device-update-control-access.md
-    - text: Förstå enhets uppdaterings agent
+    - text: Förstå enhetsuppdateringsagenten
       url: device-update-agent-overview.md
-    - text: Förstå hur enhets uppdateringar importeras
+    - text: Förstå import av enhetsuppdatering
       url: import-concepts.md
-    - text: Förstå enhets uppdaterings grupper
+    - text: Förstå enhetuppdateringsgrupper
       url: device-update-groups.md
 - title: Utvecklarguide
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Skapa och köra enhets uppdaterings agenten
+    - text: Skapa och köra enhetsuppdateringsagenten
       url: device-update-agent-provisioning.md#how-to-build-and-run-device-update-agent
 - title: Kom igång
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Enhets uppdatering på en simulator
+    - text: Enhetsuppdatering i en simulator
       url: device-update-simulator.md
-    - text: Enhets uppdatering på Raspberry Pi
+    - text: Enhetsuppdatering på Raspberry Pi
       url: device-update-raspberry-pi.md
-    - text: Enhets uppdatering på Ubuntu Server 18,04 x64 Package agent
+    - text: Enhetsuppdatering på Ubuntu Server 18.04 x64-paketagenten
       url: device-update-ubuntu-agent.md
-- title: API-och SDK-referens
+- title: API- och SDK-referens
   linkLists:
   - linkListType: reference
     links:
@@ -74,15 +74,15 @@ landingContent:
       url: https://docs.microsoft.com/rest/api/deviceupdate/
   - linkListType: reference
     links:
-    - text: Kontroll plan – .NET
+    - text: Kontrollplan – .NET
       url: https://docs.microsoft.com/dotnet/api/overview/azure/iot/management?view=azure-dotnet
-    - text: Kontroll plan – python
+    - text: Kontrollplan – Python
       url: https://docs.microsoft.com/python/api/azure-mgmt-deviceupdate/?view=azure-python
   - linkListType: reference
     links:
-    - text: Data plan – Java Script
+    - text: Dataplan – JavaScript
       url: https://docs.microsoft.com/javascript/api/@azure/iot-device-update/?view=azure-node-preview
-    - text: Data plan – Java
+    - text: Dataplan – Java
       url: https://docs.microsoft.com/java/api/com.azure.iot.deviceupdate?view=azure-java-preview
-    - text: Data plan – python
+    - text: Dataplan – Python
       url: https://docs.microsoft.com/python/api/azure-mgmt-deviceupdate/azure.mgmt.deviceupdate?view=azure-python-preview

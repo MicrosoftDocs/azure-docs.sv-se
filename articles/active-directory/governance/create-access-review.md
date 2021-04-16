@@ -1,6 +1,6 @@
 ---
-title: Skapa en åtkomst granskning av grupper & program – Azure AD
-description: Lär dig hur du skapar en åtkomst granskning av grupp medlemmar eller program åtkomst i Azure Active Directory åtkomst granskningar.
+title: Skapa en åtkomstgranskning av grupper & program – Azure AD
+description: Lär dig hur du skapar en åtkomstgranskning av gruppmedlemmar eller programåtkomst i Azure Active Directory åtkomstgranskningar.
 services: active-directory
 author: ajburnle
 manager: daveba
@@ -15,154 +15,154 @@ ms.date: 3/3/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7143c3f9786d41c32ae954ab219197a9cfaa1050
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f4d6502ffdd13272d396852b11a11d13f929b11b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176883"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532268"
 ---
-# <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Skapa en åtkomst granskning av grupper och program i åtkomst granskningar för Azure AD
+# <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Skapa en åtkomstgranskning av grupper och program i Azure AD-åtkomstgranskningar
 
-Åtkomst till grupper och program för medarbetare och gäster förändras över tid. För att minska risken som är kopplad till inaktuella åtkomst tilldelningar kan administratörer använda Azure Active Directory (Azure AD) för att skapa åtkomst granskningar för grupp medlemmar eller program åtkomst. Om du behöver granska åtkomst rutinmässigt kan du också skapa återkommande åtkomst granskningar. Mer information om dessa scenarier finns i [hantera användar åtkomst](manage-user-access-with-access-reviews.md) och [Hantera gäst åtkomst](manage-guest-access-with-access-reviews.md).
+Åtkomsten till grupper och program för anställda och gäster ändras över tid. För att minska risken för inaktuella åtkomsttilldelningar kan administratörer använda Azure Active Directory (Azure AD) för att skapa åtkomstgranskningar för gruppmedlemmar eller programåtkomst. Om du regelbundet behöver granska åtkomsten kan du även skapa återkommande åtkomstgranskningar. Mer information om dessa scenarier finns i [Hantera användaråtkomst och](manage-user-access-with-access-reviews.md) [Hantera gäståtkomst.](manage-guest-access-with-access-reviews.md)
 
-Du kan se en snabb video som talar om hur du aktiverar åtkomst granskningar:
+Du kan titta på en snabbvideo som pratar om att aktivera åtkomstgranskningar:
 
 >[!VIDEO https://www.youtube.com/embed/X1SL2uubx9M]
 
-Den här artikeln beskriver hur du skapar en eller flera åtkomst granskningar för grupp medlemmar eller program åtkomst.
+Den här artikeln beskriver hur du skapar en eller flera åtkomstgranskningar för gruppmedlemmar eller programåtkomst.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Azure AD Premium P2
-- Global administratör eller användar administratör
+- Global administratör eller användaradministratör
 
-Mer information finns i [licens krav](access-reviews-overview.md#license-requirements).
+Mer information finns i [Licenskrav.](access-reviews-overview.md#license-requirements)
 
-## <a name="create-one-or-more-access-reviews"></a>Skapa en eller flera åtkomst granskningar
+## <a name="create-one-or-more-access-reviews"></a>Skapa en eller flera åtkomstgranskningar
 
-1. Logga in på Azure Portal och öppna [sidan identitets styrning](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+1. Logga in på Azure Portal och öppna sidan [Identity Governance (Identitetsstyrning).](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)
 
-2. Klicka på **åtkomst granskningar** på den vänstra menyn.
+2. I den vänstra menyn klickar du på **Åtkomstgranskningar.**
 
-3. Klicka på **ny åtkomst granskning** för att skapa en ny åtkomst granskning.
+3. Klicka **på Ny åtkomstgranskning** för att skapa en ny åtkomstgranskning.
 
-    ![Fönstret åtkomst granskningar i identitets styrning](./media/create-access-review/access-reviews.png)
+    ![Fönstret Åtkomstgranskningar i Identity Governance](./media/create-access-review/access-reviews.png)
 
-4. I **steg 1: Välj vad du vill granska och** Välj vilken resurs som du vill granska.
+4. I **Steg 1: Välj vad du vill granska** och välj vilken resurs du vill granska.
 
-    ![Skapa en åtkomst granskning – granska namn och beskrivning](./media/create-access-review/select-what-review.png)
+    ![Skapa en åtkomstgranskning – Granska namn och beskrivning](./media/create-access-review/select-what-review.png)
 
-5. Om du har valt **Teams + grupper** i steg 1 har du två alternativ i steg 2
-   - **Alla Microsoft 365 grupper med gäst användare.** Välj det här alternativet om du vill skapa återkommande granskningar för alla gäst användare i alla dina Microsoft-team och M365-grupper i din organisation. Du kan välja att undanta vissa grupper genom att klicka på Välj grupp (er) att undanta.
-   - **Välj Teams + grupper.** Välj det här alternativet om du vill ange en begränsad uppsättning team och/eller grupper att granska. När du har klickat på det här alternativet visas en lista över grupper till höger att välja från.
+5. Om du valde **Teams + Grupper** i steg 1 har du två alternativ i steg 2
+   - **Alla Microsoft 365 grupper med gästanvändare.** Välj det här alternativet om du vill skapa återkommande granskningar för alla gästanvändare i alla dina Microsoft Teams- och M365-grupper i din organisation. Du kan välja att undanta vissa grupper genom att klicka på Välj vilka grupper som ska undantas.
+   - **Välj team + grupper.** Välj det här alternativet om du vill ange en begränsad uppsättning team och/eller grupper att granska. När du klickar på det här alternativet visas en lista över grupper till höger att välja bland.
 
      ![Team och grupper](./media/create-access-review/teams-groups.png)
 
-     ![Team och grupper som valts i användar gränssnittet](./media/create-access-review/teams-groups-detailed.png)
+     ![Team och grupper som valts i användargränssnittet](./media/create-access-review/teams-groups-detailed.png)
 
-6. Om du har valt **program** i steg 1 kan du sedan välja ett eller flera program i steg 2.
-
-    >[!NOTE]
-    > Om du väljer flera grupper och/eller program leder det till att flera åtkomst granskningar har skapats. Om du till exempel väljer 5 grupper som ska granskas resulterar det i 5 separata åtkomst granskningar
-
-   ![Gränssnittet som visas om du väljer program i stället för grupper](./media/create-access-review/select-application-detailed.png)
-
-7. I steg 3 kan du sedan välja ett omfång för granskningen. Dina alternativ är
-   - **Endast gäst användare.** Om du väljer det här alternativet begränsas åtkomst granskningen enbart till Azure AD B2B-gäst användare i din katalog.
-   - **Grupperna.** Om du väljer det här alternativet omfångs åtkomst granskningen till alla användar objekt som är associerade med resursen.
+6. Om du valde **Program** i steg 1 kan du välja ett eller flera program i steg 2.
 
     >[!NOTE]
-    > Om du har valt alla Microsoft 365 grupper med gäst användare i steg 2, är ditt enda alternativ att granska gäst användare i steg 3
+    > Om du väljer flera grupper och/eller program skapas flera åtkomstgranskningar. Om du till exempel väljer 5 grupper att granska resulterar det i 5 separata åtkomstgranskningar
 
-8. Klicka på Nästa: recensioner
-9. I avsnittet **Välj granskare** väljer du antingen en eller flera personer för att utföra åtkomst granskningarna. Du kan välja mellan:
-    - **Grupp ägare (er)** (endast tillgängligt när du utför en granskning på ett team eller en grupp)
+   ![Gränssnittet visas om du väljer program i stället för grupper](./media/create-access-review/select-application-detailed.png)
+
+7. I steg 3 kan du sedan välja ett omfång för granskningen. Alternativen är
+   - **Endast gästanvändare.** Om du väljer det här alternativet begränsas åtkomstgranskningen till endast Azure AD B2B-gästanvändare i din katalog.
+   - **Alla.** Om du väljer det här alternativet omfattas åtkomstgranskningen av alla användarobjekt som är associerade med resursen.
+
+    >[!NOTE]
+    > Om du valde Alla Microsoft 365 med gästanvändare i steg 2 är det enda alternativet att granska gästanvändare i steg 3
+
+8. Klicka på Nästa: Granskningar
+9. I avsnittet **Välj granskare** väljer du antingen en eller flera personer för att utföra åtkomstgranskningarna. Du kan välja mellan:
+    - **Gruppägare (endast tillgängligt** när du utför en granskning i ett team eller en grupp)
     - **Valda användare eller grupper**
     - **Användare granskar egen åtkomst**
     - **Användares chefer.**
-    Om du väljer antingen **Administratörer av användare** eller **grupp ägare**  kan du också välja att ange en återställnings granskare. Återställnings granskare uppmanas att göra en granskning när användaren inte har angett någon ansvarig i katalogen eller om gruppen inte har någon ägare.
+    Om du väljer **antingen Chefer för** användare **eller Gruppägare**  kan du också ange en återställningsg granskare. Fallback-granskare uppmanas att göra en granskning när användaren inte har någon chef angiven i katalogen eller om gruppen inte har någon ägare.
 
-    ![ny åtkomst granskning](./media/create-access-review/new-access-review.png)
+    ![ny åtkomstgranskning](./media/create-access-review/new-access-review.png)
 
-10. I avsnittet **Ange upprepning av granskning** kan du ange en frekvens, till exempel **varje vecka, varje månad, varje kvartal, varje halvår, varje år**. Sedan anger du en **varaktighet** som definierar hur länge en granskning ska vara öppen för inmatade granskare. Den längsta tid som du kan ange för en månatlig granskning är till exempel 27 dagar för att undvika överlappande granskningar. Du kanske vill förkorta varaktigheten för att se till att dina inmatade granskare används tidigare. Sedan kan du välja ett **start datum** och **slutdatum**.
+10. I avsnittet **Ange upprepning av granskning** kan du ange en frekvens som Varje **vecka, Varje månad, Varje kvartal, Varje halvår, Varje år, Varje år.** Sedan anger du en **Varaktighet**, som definierar hur länge en granskning ska vara öppen för indata från granskare. Den maximala varaktighet som du kan ange för en månatlig granskning är till exempel 27 dagar för att undvika överlappande granskningar. Du kanske vill förkorta varaktigheten för att säkerställa att granskarens indata tillämpas tidigare. Därefter kan du välja **startdatum och** **slutdatum.**
 
     ![Välj hur ofta granskningen ska ske](./media/create-access-review/frequency.png)
 
-11. Klicka på **Nästa: inställningar** -knappen längst ned på sidan
-12. När du har slutfört **inställningarna** kan du ange vad som händer när granskningen är klar
+11. Klicka på **knappen Nästa:** Inställningar längst ned på sidan
+12. I inställningarna **för Vid slutförande** kan du ange vad som händer när granskningen har slutförts
 
-    ![Skapa en åtkomst granskning-när inställningarna slutförs](./media/create-access-review/upon-completion-settings-new.png)
+    ![Skapa en åtkomstgranskning – när slutförandeinställningarna har slutförts](./media/create-access-review/upon-completion-settings-new.png)
 
-Om du vill ta bort åtkomsten för nekade användare automatiskt anger du Använd automatiskt tillämpa resultat till resurs för att aktivera. Om du vill tillämpa resultaten manuellt när granskningen är klar ställer du in växeln på Inaktivera.
-Använd listan om granskare inte svarar för att ange vad som händer för användare som inte granskas av granskaren under gransknings perioden. Den här inställningen påverkar inte användare som har granskats manuellt av granskarna. Om den sista granskaren av beslutet är neka tas användarens åtkomst bort.
+Om du vill ta bort åtkomst automatiskt för nekade användare ställer du in Tillämpa resultat automatiskt på resurs på Aktivera. Om du vill tillämpa resultaten manuellt när granskningen är klar ställer du in växeln på Inaktivera.
+Använd listan Om granskare inte svarar för att ange vad som händer för användare som inte granskas av granskaren inom granskningsperioden. Den här inställningen påverkar inte användare som har granskats manuellt av granskarna. Om den slutliga granskarens beslut är Neka tas användarens åtkomst bort.
 
-- **Ingen ändring** – lämna användarens åtkomst oförändrad
-- **Ta bort åtkomst** – ta bort användares åtkomst
+- **Ingen ändring** – Lämna användarens åtkomst oförändrad
+- **Ta bort** åtkomst – Ta bort användarens åtkomst
 - **Godkänn åtkomst** – Godkänn användarens åtkomst
-- **Ta rekommendationer** – beakta systemets rekommendation om att neka eller godkänna användarens fortsatta åtkomst
+- **Ta rekommendationer** – Ta systemets rekommendation om att neka eller godkänna användarens fortsatt åtkomst
 
-    ![Vid inställnings alternativ för slut för ande](./media/create-access-review/upon-completion-settings-new.png)
+    ![Alternativ för inställningar vid slutförande](./media/create-access-review/upon-completion-settings-new.png)
 
-Använd åtgärden som ska tillämpas på nekade **gäst** användare för att ange vad som händer för gäst användare om de nekas.
-- Ta bort användarens medlemskap från resursen tar bort nekad användares åtkomst till gruppen eller programmet som granskas, men de kommer fortfarande att kunna logga in till klienten.
-- Blockera användare från att logga in i 30 dagar och ta sedan bort användare från klienten som nekade användare från att logga in till klienten, oavsett om de har åtkomst till andra resurser. Om det var fel eller om en administratör bestämmer sig för att återaktivera en åtkomst, kan de göra det inom 30 dagar efter att användaren har inaktiverats. Om ingen åtgärd vidtas för de inaktiverade användarna tas de bort från klienten.
+Använd åtgärden för att tillämpa på nekade **gästanvändare** för att ange vad som ska hända för gästanvändare om de nekas.
+- Ta bort användarens medlemskap från resursen tar bort nekad användares åtkomst till gruppen eller programmet som granskas, kommer de fortfarande att kunna logga in på klienten.
+- Blockera användare från att logga in i 30 dagar och ta sedan bort användare från klientorganisationen blockerar nekade användare från att logga in på klienten, oavsett om de har åtkomst till andra resurser. Om det har skett ett misstag eller om en administratör bestämmer sig för att återaktivera åtkomsten kan administratören göra det inom 30 dagar efter att användaren har inaktiverats. Om inga åtgärder vidtas för de inaktiverade användarna tas de bort från klientorganisationen.
 
-Om du vill veta mer om metod tips för att ta bort gäst användare som inte längre har åtkomst till resurser i din organisation läser du artikeln [med rubriken använd Azure AD Identity Governance för att granska och ta bort externa användare som inte längre har åtkomst till resursen.](access-reviews-external-users.md)
+Mer information om metodtips för att ta bort gästanvändare som inte längre har åtkomst till resurser i din organisation finns i artikeln Använda Azure AD Identity Governance för att granska och ta bort externa användare som inte längre har [resursåtkomst.](access-reviews-external-users.md)
 
    >[!NOTE]
-   >Åtgärder som ska tillämpas på nekade gäst användare kan inte konfigureras för recensioner som är begränsade till fler än gäst användare. Den kan inte heller konfigureras för granskningar av **alla M365-grupper med gäst användare.** När det inte går att konfigurera används standard alternativet för att ta bort användarens medlemskap från resursen för nekade användare.
+   >Åtgärden som ska tillämpas på nekade gästanvändare kan inte konfigureras för granskningar som är begränsade till mer än gästanvändare. Det kan inte heller konfigureras för granskningar av **alla M365-grupper med gästanvändare.** Om det inte går att konfigurera används standardalternativet att ta bort användarens medlemskap från resursen för nekade användare.
 
-13. I avsnittet **Aktivera gransknings hjälp** väljer du om du vill att granskaren ska få rekommendationer under gransknings processen.
+13. I Aktivera **beslutshjälp för granskning** väljer du om du vill att granskaren ska få rekommendationer under granskningsprocessen.
 
-    ![Aktivera alternativ för besluts hjälp](./media/create-access-review/helpers.png)
+    ![Aktivera alternativ för beslutshjälp](./media/create-access-review/helpers.png)
 
-14. I avsnittet **Avancerade inställningar** kan du välja följande
-    - Ange en **motivering som krävs** för att göra det **möjligt** för granskaren att ange en orsak till godkännande.
-    - Ange **e-postaviseringar** för att **tillåta** att Azure AD skickar e-postmeddelanden till granskare när en åtkomst granskning startar och till administratörer när en granskning har slutförts.
-    - Ställ in **påminnelser** för att **tillåta** att Azure AD skickar påminnelser om åtkomst granskningar till granskare som inte har slutfört sin granskning. Dessa påminnelser är själv hälften av tiden för granskningen.
-    - Innehållet i e-postmeddelandet som skickas till granskare genereras automatiskt baserat på gransknings informationen, till exempel gransknings namn, resurs namn, förfallo datum osv. Om du behöver ett sätt att kommunicera ytterligare information, till exempel ytterligare instruktioner eller kontakt information, kan du ange den här informationen i avsnittet **ytterligare innehåll för e-post i granskare** . Den information som du anger inkluderas i e-postinbjudan och påminnelse-e-postmeddelanden som skickas till tilldelade granskare. Avsnittet som är markerat i bilden nedan visar var den här informationen visas.
+14. I **avsnittet Avancerade** inställningar kan du välja följande
+    - Ställ **in Motivering som** krävs **på** Aktivera för att kräva att granskaren anger en orsak till godkännandet.
+    - Ställ in **e-postaviseringar** på Aktivera om du vill att Azure AD ska skicka e-postmeddelanden till granskare när en åtkomstgranskning startar och till administratörer när en granskning har slutförts. 
+    - Ställ **in Påminnelser** **på Aktivera** om du vill att Azure AD ska skicka påminnelser om pågående åtkomstgranskningar till granskare som inte har slutfört sin granskning. Dessa påminnelser kommer att vara själv halvvägs genom granskningens varaktighet.
+    - Innehållet i e-postmeddelandet som skickas till granskare genereras automatiskt baserat på granskningsinformationen, till exempel granskningsnamn, resursnamn, förfallodatum osv. Om du behöver ett sätt att kommunicera ytterligare information, till exempel ytterligare instruktioner eller kontaktinformation, kan du ange den här informationen i avsnittet Ytterligare **innehåll för granskarens e-post.** Den information som du anger ingår i inbjudan och påminnelser som skickas till tilldelade granskare. Avsnittet som är markerat i bilden nedan visar var den här informationen visas.
 
 
-      ![ytterligare innehåll för granskare](./media/create-access-review/additional-content-reviewer.png)
+      ![ytterligare innehåll för granskaren](./media/create-access-review/additional-content-reviewer.png)
 
-15. Klicka på **Nästa: granska + skapa** för att gå till nästa sida
-16. Ge åtkomst granskningen namnet. Du kan också ange en beskrivning av granskningen. Namnet och beskrivningen visas för granskarna.
-17. Granska informationen och välj **skapa**
+15. Klicka på **Nästa: Granska + skapa** för att gå till nästa sida
+16. Ge åtkomstgranskningen ett namn. Du kan också ge granskningen en beskrivning. Namnet och beskrivningen visas för granskarna.
+17. Granska informationen och välj **Skapa**
 
-       ![Skapa gransknings skärmen](./media/create-access-review/create-review.png)
+       ![skärmen skapa granskning](./media/create-access-review/create-review.png)
 
-## <a name="start-the-access-review"></a>Starta åtkomst granskningen
+## <a name="start-the-access-review"></a>Starta åtkomstgranskningen
 
-När du har angett inställningarna för åtkomst granskning klickar du på **Start**. Åtkomst granskningen visas i listan med en indikator för dess status.
+När du har angett inställningarna för en åtkomstgranskning klickar du på **Starta**. Åtkomstgranskningen visas i listan med en indikator på dess status.
 
-![Lista över åtkomst granskningar och deras status](./media/create-access-review/access-reviews-list.png)
+![Lista över åtkomstgranskningar och deras status](./media/create-access-review/access-reviews-list.png)
 
-Som standard skickar Azure AD ett e-postmeddelande till granskare strax efter att granskningen startar. Om du väljer att inte låta Azure AD skicka e-postmeddelandet måste du meddela granskarna att en åtkomst granskning väntar på att de ska slutföras. Du kan visa dem i anvisningarna för hur du [granskar åtkomst till grupper eller program](perform-access-review.md). Om granskningen är till för gäster för att granska sin egen åtkomst, visar du dem i anvisningarna för att [Granska åtkomsten för dig själv till grupper eller program](review-your-access.md).
+Som standard skickar Azure AD ett e-postmeddelande till granskare strax efter att granskningen har startat. Om du väljer att inte få Azure AD att skicka e-postmeddelandet måste du informera granskarna om att en åtkomstgranskning väntar på att de ska slutföras. Du kan visa dem instruktionerna för hur du [granskar åtkomsten till grupper eller program.](perform-access-review.md) Om din granskning är till för gäster att granska sin egen åtkomst, visar du dem anvisningarna för hur du granskar åtkomst för dig [själv till grupper eller program.](review-your-access.md)
 
-Om du har tilldelat gäster som granskare och de inte har accepterat inbjudan får han eller hon ingen e-post från åtkomst granskningar eftersom de först måste godkänna inbjudan innan de kan granskas.
+Om du har tilldelat gäster som granskare och de inte har accepterat inbjudan får de inget e-postmeddelande från åtkomstgranskningar eftersom de först måste godkänna inbjudan innan de granskar den.
 
-## <a name="access-review-status-table"></a>Status tabell för åtkomst granskning
+## <a name="access-review-status-table"></a>Statustabell för åtkomstgranskning
 
 | Status | Definition |
 |--------|------------|
-|NotStarted | Granskningen skapades, användar identifieringen väntar på att starta. |
-|Initierar   | Användar identifiering pågår för att identifiera alla användare som ingår i granskningen. |
-|Startar | Granskningen startas. Om e-postaviseringar har Aktiver ATS skickas e-postmeddelanden till granskare. |
-|Pågår | Granskning har startat. Om e-postaviseringar har Aktiver ATS har e-postmeddelanden skickats till granskarna. Granskare kan skicka beslut fram till förfallo datumet. |
-|Slutföra | Granskningen slutförs och e-postmeddelanden skickas till gransknings ägaren. |
-|Automatisk visning | Granskning är i ett system gransknings steg. Systemet registrerar beslut för användare som inte har granskats utifrån rekommendationer eller förkonfigurerade beslut. |
-|Automatiskt granskad | Beslut har registrerats av systemet för alla användare som inte har granskats. Granskning är redo att fortsätta att **tillämpa** om Auto-Apply har Aktiver ATS. |
-|Lägger | Det kommer inte att gå att komma åt användare som har godkänts. |
-|Tillämpat | Nekade användare, om sådana finns, har tagits bort från resursen eller katalogen. |
-|Misslyckad | Granskningen kunde inte fortsätta. Det här felet kan bero på borttagning av klienten, en ändring i licenser eller andra interna klient ändringar. |
+|Inte startad | Granskningen har skapats och användaridentifiering väntar på att starta. |
+|Initierar   | Användaridentifiering pågår för att identifiera alla användare som ingår i granskningen. |
+|Startar | Granskningen börjar. Om e-postaviseringar är aktiverade skickas e-postmeddelanden till granskare. |
+|InProgress | Granskningen har startat. Om e-postaviseringar är aktiverade har e-postmeddelanden skickats till granskare. Granskare kan skicka beslut fram till förfallodatumet. |
+|Slutföra | Granskningen slutförs och e-postmeddelanden skickas till granskningsägaren. |
+|Granska automatiskt | Granskningen är i ett systemgranskningssteg. Systemet registrerar beslut för användare som inte har granskats baserat på rekommendationer eller förkonfigurerade beslut. |
+|Granskas automatiskt | Beslut har registrerats av systemet för alla användare som inte har granskats. Granskning är redo att fortsätta **till Tillämpa** om Tillämpa automatiskt är aktiverat. |
+|Tillämpa | Åtkomsten för användare som har godkänts ändras inte. |
+|Tillämpat | Nekade användare, om några, har tagits bort från resursen eller katalogen. |
+|Misslyckad | Granskning kunde inte fortskrida. Det här felet kan vara relaterat till borttagning av klientorganisationen, en ändring av licenser eller andra interna klientändringar. |
 
-## <a name="create-reviews-via-apis"></a>Skapa recensioner via API: er
+## <a name="create-reviews-via-apis"></a>Skapa granskningar via API:er
 
-Du kan också skapa åtkomst granskningar med hjälp av API: er. Vad du gör för att hantera åtkomst granskningar av grupper och program användare i Azure Portal kan också göras med hjälp av Microsoft Graph-API: er. Mer information finns i API- [referens för Azure AD Access-granskning](/graph/api/resources/accessreviews-root?view=graph-rest-beta). Ett kod exempel finns i [exempel på hämtning av åtkomst granskningar för Azure AD via Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
+Du kan också skapa åtkomstgranskningar med hjälp av API:er. Det du gör för att hantera åtkomstgranskningar av grupper och programanvändare i Azure Portal kan också göras med hjälp av Microsoft Graph-API:er. Mer information finns i API-referensen [för Azure AD-åtkomstgranskningar.](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true) Ett kodexempel finns i Exempel [på hämtning av Azure AD-åtkomstgranskningar via Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
 
 ## <a name="next-steps"></a>Nästa steg
 
 - [Granska åtkomst till grupper eller program](perform-access-review.md)
 - [Granska åtkomst för dig själv till grupper eller program](review-your-access.md)
-- [Slutför en åtkomst granskning av grupper eller program](complete-access-review.md)
+- [Slutför en åtkomstgranskning av grupper eller program](complete-access-review.md)

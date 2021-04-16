@@ -1,28 +1,28 @@
 ---
 title: Hanteringsadresser
-description: Hitta de hanterings adresser som används för att styra en App Service-miljön. Konfigurerade dem i en routningstabell för att undvika problem med asymmetrisk routning.
+description: Hitta de hanteringsadresser som används för att styra App Service-miljön. Konfigurerade dem i en routningstabell för att undvika problem med asymmetrisk routning.
 author: ccompy
 ms.assetid: a7738a24-89ef-43d3-bff1-77f43d5a3952
 ms.topic: article
 ms.date: 03/22/2021
 ms.author: ccompy
-ms.custom: seodec18, references_regions
-ms.openlocfilehash: 25bdfb7a0301af472baa89d3d9e73aacf8cff139
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seodec18, references_regions, devx-track-azurecli
+ms.openlocfilehash: aaaa190935da8c016c43832712f553a116332974
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954623"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482576"
 ---
-# <a name="app-service-environment-management-addresses"></a>App Service-miljön hanterings adresser
+# <a name="app-service-environment-management-addresses"></a>App Service-miljön hanteringsadresser
 
-App Service-miljön (ASE) är en enda klient distribution av Azure App Service som körs i Azure-Virtual Network (VNet).  Medan ASE körs i ditt VNet, måste det fortfarande vara tillgängligt från ett antal dedikerade IP-adresser som används av Azure App Service för att hantera tjänsten.  När det gäller en ASE, passerar hanterings trafiken det användar kontrollerade nätverket. Om den här trafiken är blockerad eller feldirigerad blir ASE inaktive rad. Mer information om ASE nätverks beroenden finns i avsnittet [om nätverks överväganden och App Service-miljön][networking]. För allmän information om ASE kan du börja med [Introduktion till App Service-miljön][intro].
+Ase App Service-miljön (Single Tenant Deployment) är en enskild klientdistribution av Azure App Service som körs i ditt Azure Virtual Network (VNet).  Ase körs i ditt virtuella nätverk, men det måste fortfarande vara tillgängligt från ett antal dedikerade IP-adresser som används av Azure App Service för att hantera tjänsten.  När det gäller en ASE passerar hanteringstrafiken det användarkontrollerade nätverket. Om den här trafiken blockeras eller dirigeras felaktigt pausas ASE:en. Mer information om ASE-nätverksberoenden finns i [Nätverksöverväganden och App Service-miljön][networking]. Om du vill ha allmän information om ASE kan du börja [med Introduktion till App Service-miljön][intro].
 
-Alla ASE har en offentlig VIP som hanterings trafiken kommer till. Inkommande hanterings trafik från dessa adresser kommer in från till portarna 454 och 455 på den offentliga VIP-adressen för din ASE. I det här dokumentet visas App Service käll adresser för hanterings trafik till ASE. De här adresserna finns också i IP-taggen med namnet AppServiceManagement.
+Alla ASE:er har en offentlig VIP som hanteringstrafik kommer till. Inkommande hanteringstrafik från dessa adresser kommer från till portarna 454 och 455 på din ASE:s offentliga VIP. Det här dokumentet innehåller App Service källadresser för hanteringstrafik till ASE. Dessa adresser finns också i IP-tjänsttaggen med namnet AppServiceManagement.
 
-De adresser som anges nedan kan konfigureras i en routningstabell för att undvika problem med asymmetrisk routning med hanterings trafiken. Vägar agerar på trafik på IP-nivå och har ingen medvetenhet om trafik riktning eller som trafiken är en del av ett TCP-svarsmeddelande. Om svars adressen för en TCP-begäran skiljer sig från den adress den skickades till har du ett problem med asymmetrisk routning. För att undvika problem med asymmetrisk routning med ASE hanterings trafik måste du se till att svaren skickas tillbaka från samma adress som de skickades till. Mer information om hur du konfigurerar din ASE så att den fungerar i en miljö där utgående trafik skickas lokalt, finns i [Konfigurera din ASE med Tvingad tunnel trafik][forcedtunnel]
+Adresserna som anges nedan kan konfigureras i en routningstabell för att undvika problem med asymmetrisk routning med hanteringstrafiken. Vägar fungerar på trafik på IP-nivå och har ingen medvetenhet om trafikriktningen eller att trafiken är en del av ett TCP-svarsmeddelande. Om svarsadressen för en TCP-begäran skiljer sig från den adress som den skickades till har du ett problem med asymmetrisk routning. För att undvika problem med asymmetrisk routning med ASE-hanteringstrafiken måste du se till att svar skickas tillbaka från samma adress som de skickades till. Mer information om hur du konfigurerar din ASE för att fungera i en miljö där utgående trafik skickas lokalt finns i Konfigurera ASE med [tvingad tunneltrafik][forcedtunnel]
 
-## <a name="list-of-management-addresses"></a>Lista över hanterings adresser ##
+## <a name="list-of-management-addresses"></a>Lista över hanteringsadresser ##
 
 | Region | Adresser |
 |--------|-----------|
@@ -30,15 +30,15 @@ De adresser som anges nedan kan konfigureras i en routningstabell för att undvi
 | Microsoft Azure Government | 23.97.29.209, 13.72.53.37, 13.72.180.105, 52.181.183.11, 52.227.80.100, 52.182.93.40, 52.244.79.34, 52.238.74.16 |
 | Azure Kina | 42.159.4.236, 42.159.80.125 |
 
-## <a name="configuring-a-network-security-group"></a>Konfigurera en nätverks säkerhets grupp
+## <a name="configuring-a-network-security-group"></a>Konfigurera en nätverkssäkerhetsgrupp
 
-Med nätverks säkerhets grupper behöver du inte bekymra dig om de enskilda adresserna eller upprätthålla din egen konfiguration. Det finns en IP-tjänstetagg med namnet AppServiceManagement som hålls uppdaterad med alla adresser. Om du vill använda den här IP-tjänstetaggen i din NSG går du till portalen, öppnar användar gränssnittet för nätverks säkerhets grupper och väljer inkommande säkerhets regler. Om du har en befintlig regel för inkommande hanterings trafik redigerar du den. Om den här NSG inte har skapats med din ASE, eller om det är nytt, väljer du **Lägg till**. Under List rutan källa väljer du **service tag**.  Under käll tjänst tag gen väljer du **AppServiceManagement**. Ange käll port intervall till \* , mål Port till **alla**, mål port intervall till **454-455**, protokoll till **TCP** och åtgärd att **tillåta**. Om du skapar regeln måste du ange prioriteten. 
+Med nätverkssäkerhetsgrupper behöver du inte bekymra dig om enskilda adresser eller att underhålla din egen konfiguration. Det finns en IP-tjänsttagg med namnet AppServiceManagement som hålls uppdaterad med alla adresser. Om du vill använda den här IP-tjänsttaggen i din NSG går du till portalen, öppnar användargränssnittet för nätverkssäkerhetsgrupper och väljer Inkommande säkerhetsregler. Om du har en befintlig regel för inkommande hanteringstrafik redigerar du den. Om den här NSG:n inte har skapats med din ASE, eller om allt är nytt, väljer du Lägg **till**. Under listrutan Källa väljer du **Tjänsttagg**.  Under Källtjänsttagg väljer du **AppServiceManagement**. Ange källportintervallen till , Mål till \* **Alla,** Målportintervall till **454–455,** Protokoll till **TCP** och Åtgärd **för att tillåta**. Om du gör regeln måste du ange Prioritet. 
 
-![skapa en NSG med tjänst tag gen][1]
+![skapa en NSG med tjänsttaggen][1]
 
-## <a name="configuring-a-route-table"></a>Konfigurera en routningstabell
+## <a name="configuring-a-route-table"></a>Konfigurera en vägtabell
 
-Hanterings adresserna kan placeras i en routningstabell med nästa hopp på Internet för att säkerställa att all inkommande hanterings trafik kan gå tillbaka genom samma sökväg. De här vägarna behövs när du konfigurerar Tvingad tunnel trafik. Du kan skapa routningstabellen med hjälp av portalen, PowerShell eller Azure CLI.  Kommandona för att skapa en routningstabell med hjälp av Azure CLI från en PowerShell-prompt visas nedan. 
+Hanteringsadresserna kan placeras i en vägtabell med ett nästa hopp till Internet för att säkerställa att all inkommande hanteringstrafik kan gå tillbaka via samma sökväg. Dessa vägar behövs när du konfigurerar tvingad tunneling. Du kan skapa vägtabellen med hjälp av portalen, PowerShell eller Azure CLI.  Kommandona för att skapa en vägtabell med Azure CLI från en PowerShell-kommandotolk visas nedan. 
 
 ```azurepowershell-interactive
 $rg = "resource group name"
@@ -52,19 +52,19 @@ foreach ($ip in $managementAddresses) {
 }
 ```
 
-När du har skapat routningstabellen måste du ange den i ASE-undernätet.  
+När du har skapat din vägtabell måste du ange den i ASE-undernätet.  
 
-## <a name="get-your-management-addresses-from-api"></a>Hämta dina hanterings adresser från API ##
+## <a name="get-your-management-addresses-from-api"></a>Hämta dina hanteringsadresser från API:et ##
 
-Du kan visa en lista med de hanterings adresser som matchar din ASE med följande API-anrop.
+Du kan lista hanteringsadresserna som matchar din ASE med följande API-anrop.
 
 ```http
 get /subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Web/hostingEnvironments/<ASE Name>/inboundnetworkdependenciesendpoints?api-version=2016-09-01
 ```
 
-API: et returnerar ett JSON-dokument som innehåller alla inkommande adresser för din ASE. I listan med adresser ingår hanterings adresserna, VIP-adressen som används av din ASE och själva ASE under nätets adress intervall.  
+API:et returnerar ett JSON-dokument som innehåller alla inkommande adresser för din ASE. Listan över adresser innehåller hanteringsadresserna, den VIP som används av din ASE och ase-undernätets adressintervall.  
 
-Använd följande kommandon för att anropa API: et med [armclient](https://github.com/projectkudu/ARMClient) , men Ersätt i PRENUMERATIONS-ID, resurs grupp och ASE namn.  
+Om du vill anropa API:et [med armclient använder](https://github.com/projectkudu/ARMClient) du följande kommandon men ersätter i ditt prenumerations-ID, resursgrupp och ASE-namn.  
 
 ```azurepowershell-interactive
 armclient login

@@ -1,29 +1,29 @@
 ---
-title: Snabb start – ansluta till ett team möte från en Android-app
-description: I den här självstudien får du lära dig hur du ansluter till ett team möte med Azure Communication Services som anropar SDK för Android
+title: Snabbstart – Delta i ett Teams-möte från en Android-app
+description: I den här självstudien lär du dig hur du ansluter till ett Teams-möte med hjälp Azure Communication Services Anropa SDK för Android
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: e5361b92c2080c724b872be2ad27bc5bd4554e8d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: af1794a2f9eeaa1b1de2c62d5131c722dfd152a5
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108217"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564463"
 ---
-I den här snabb starten får du lära dig hur du ansluter till ett team möte med Azure Communication Services som anropar SDK för Android.
+I den här snabbstarten lär du dig hur du ansluter till ett Teams-möte med hjälp Azure Communication Services Anropa SDK för Android.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- En fungerande [kommunikations tjänst som anropar Android-appen](../getting-started-with-calling.md).
-- En [team distribution](/deployoffice/teams-install).
+- En fungerande [Communication Services anropar Android-appen](../getting-started-with-calling.md).
+- En [Teams-distribution](/deployoffice/teams-install).
 
 
-## <a name="add-the-teams-ui-controls"></a>Lägg till Team UI-kontroller
+## <a name="add-the-teams-ui-controls"></a>Lägga till ui-kontroller i Teams
 
-Ersätt Code i activity_main.xml med följande kodfragment. Text rutan används för att ange team Mötes kontexten och knappen kommer att användas för att ansluta till det angivna mötet:
+Ersätt koden i activity_main.xml med följande kodfragment. Textrutan används för att ange Kontext för Teams-möte och knappen används för att ansluta till det angivna mötet:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -91,7 +91,7 @@ Ersätt Code i activity_main.xml med följande kodfragment. Text rutan används 
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
-## <a name="enable-the-teams-ui-controls"></a>Aktivera UI-kontroller för team
+## <a name="enable-the-teams-ui-controls"></a>Aktivera gränssnittskontrollerna i Teams
 
 Ersätt innehållet i `MainActivity.java` med följande kodfragment:
 
@@ -251,15 +251,15 @@ public class MainActivity extends AppCompatActivity {
 
 ```
 
-## <a name="get-the-teams-meeting-link"></a>Hämta team Mötes länken
+## <a name="get-the-teams-meeting-link"></a>Hämta länken för Teams-mötet
 
-Länken Teams möte kan hämtas med Graph API: er. Detta beskrivs i [Graph-dokumentationen](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta).
-Kommunikations tjänsterna som anropar SDK accepterar en länk till en fullständig Teams möte. Den här länken returneras som en del av `onlineMeeting` resursen och är tillgänglig under [ `joinWebUrl` egenskapen](/graph/api/resources/onlinemeeting?view=graph-rest-beta). Du kan också hämta nödvändig Mötes information från URL: en **till kopplings mötet** i team Mötes mötet.
+Teams-möteslänken kan hämtas med Graph API:er. Detta beskrivs i [Graph-dokumentationen.](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)
+Den Communication Services anropande SDK accepterar en fullständig Teams-möteslänk. Den här länken returneras som en del `onlineMeeting` av resursen som är tillgänglig under [ `joinWebUrl` egenskapen](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true). Du kan också hämta nödvändig mötesinformation från **URL:en för kopplingsmöte** i själva Teams-mötesbjudan.
 
-## <a name="launch-the-app-and-join-teams-meeting"></a>Starta appen och gå med i Teams möte
+## <a name="launch-the-app-and-join-teams-meeting"></a>Starta appen och anslut till Teams-mötet
 
-Nu kan du starta appen med hjälp av knappen "kör app" i verktygsfältet (Shift + F10). Du bör se följande:
+Appen kan nu startas med knappen "Kör app" i verktygsfältet (Skift + F10). Du bör se följande:
 
-:::image type="content" source="../media/android/acs-join-teams-meeting-quickstart.png" alt-text="Skärm bild som visar det färdiga programmet.":::
+:::image type="content" source="../media/android/acs-join-teams-meeting-quickstart.png" alt-text="Skärmbild som visar det färdiga programmet.":::
 
-Infoga team-kontexten i text rutan och tryck på *Anslut till möte* för att ansluta till Team-mötet i kommunikations tjänst programmet.
+Infoga Teams-kontexten i textrutan och tryck på *Anslut till möte* för att ansluta till Teams-mötet inifrån ditt Communication Services program.
