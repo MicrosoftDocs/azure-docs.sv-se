@@ -1,37 +1,38 @@
 ---
-title: 'Snabb start: formulär tolkens klient bibliotek eller REST API'
+title: 'Snabbstart: Formigenkänning klientbibliotek eller REST API'
 titleSuffix: Azure Cognitive Services
-description: Använd formulär tolkens klient bibliotek eller REST API för att skapa en app för formulär bearbetning som extraherar nyckel/värde-par och tabell data från dina anpassade dokument.
+description: Använd Formigenkänning klientbibliotek eller REST API för att skapa en formulärbearbetningsapp som extraherar nyckel/värde-par och tabelldata från dina anpassade dokument.
 services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/29/2021
+ms.date: 04/14/2021
 ms.author: lajanuar
 zone_pivot_groups: programming-languages-set-formre
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
-keywords: formulär bearbetning, automatisk data bearbetning
-ms.openlocfilehash: 43182892aa80f6226ffb5177d0be2e24d15ead5c
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+keywords: formulärbearbetning, automatiserad databehandling
+ms.openlocfilehash: b4631892f1c35c665c4468a6e0b3ad481a19e8df
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467234"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516442"
 ---
-# <a name="quickstart-use-the-form-recognizer-client-library-or-rest-api"></a>Snabb start: Använd formulär identifierarens klient bibliotek eller REST API
+# <a name="quickstart-use-the-form-recognizer-client-library-or-rest-api"></a>Snabbstart: Använd Formigenkänning klientbibliotek eller REST API
 
-Kom igång med formulär tolken med valfritt utvecklings språk. Azure formulär igenkänning är en kognitiv tjänst som gör att du kan skapa automatiserad data bearbetnings program vara med hjälp av Machine Learning-teknik. Identifiera och extrahera text, nyckel/värde-par, markerings märken, tabell data och mycket mer från formuläret dokument &mdash; data som innehåller de strukturerade data som innehåller relationerna i original filen. Du kan använda formulär igenkänning via REST API eller SDK. Följ de här stegen för att installera SDK-paketet och prova exempel koden för grundläggande uppgifter. 
+Kom igång med Formigenkänning med val av utvecklingsspråk. Azure Formigenkänning är en kognitiv tjänst som gör att du kan skapa programvara för automatiserad databehandling med hjälp av maskininlärningsteknik. Identifiera och extrahera text, nyckel/värde-par, markeringsmarkeringar, tabelldata med mera från formulärdokument som tjänsten matar ut strukturerade data som innehåller relationerna i &mdash; den ursprungliga filen. Du kan använda Formigenkänning via REST API eller SDK. Följ de här stegen för att installera SDK-paketet och prova exempelkoden för grundläggande uppgifter.
 
-Använd formulär igenkänning för att:
+Använd Formigenkänning för att:
 
 * [Analysera layout](#analyze-layout)
-* [Analysera fakturor](#analyze-invoices)
-* [Träna en anpassad modell](#train-a-custom-model)
-* [Analysera formulär med en anpassad modell](#analyze-forms-with-a-custom-model)
 * [Analysera kvitton](#analyze-receipts)
 * [Analysera visitkort](#analyze-business-cards)
+* [Analysera fakturor](#analyze-invoices)
+* [Analysera identitetsdokument](#analyze-identity-documents)
+* [Träna en anpassad modell](#train-a-custom-model)
+* [Analysera formulär med en anpassad modell](#analyze-forms-with-a-custom-model)
 * [Hantera dina anpassade modeller](#manage-your-custom-models)
 
 ::: zone pivot="programming-language-csharp"

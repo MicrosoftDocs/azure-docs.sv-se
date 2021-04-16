@@ -1,40 +1,39 @@
 ---
 title: Felsökningsguide för Azure Attestation
-description: Fel söknings guide för de problem som observerats ofta
+description: Felsökningsguide för vanliga problem
 services: attestation
 author: msmbaldwin
 ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3ae3e12c11f194b3efcc149382dc952bd74d38b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5eefcb55bb5447d557f097af872847576aa86eed
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97704324"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519314"
 ---
-# <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure fel söknings guide för attestering
+# <a name="microsoft-azure-attestation-troubleshooting-guide"></a>felsökningsguide Microsoft Azure attestation
 
-Fel hantering i Azure-attestering implementeras i [rikt linjerna för Microsoft REST API](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#7102-error-condition-responses). Det fel svar som returneras av API: erna för Azure attestering innehåller HTTP-statuskod och namn/värde-par med namnen "Code" och "Message". Värdet för kod är läsligt och är en indikator för typen av fel. Värdet "Message" avser att hjälpa användaren och ger fel information.
+Felhantering i Azure Attestation implementeras enligt [Microsofts REST API riktlinjer.](https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#7102-error-condition-responses) Felsvaret som returneras av Azure Attestation-API:er innehåller HTTP-statuskod och namn/värde-par med namnen "code" och "message". Värdet för "kod" är läsbart för människor och är en indikator på typen av fel. Värdet för "meddelande" har för avsikt att hjälpa användaren och ger felinformation.
 
-Om problemet inte åtgärdas i den här artikeln kan du även skicka en support förfrågan för Azure på [support sidan för Azure](https://azure.microsoft.com/support/options/).
+Om problemet inte åtgärdas i den här artikeln kan du också skicka en Azure-supportbegäran på [Azure-supportsidan.](https://azure.microsoft.com/support/options/)
 
-Nedan visas några exempel på de fel som returneras av Azure-attestering:
+Nedan visas några exempel på fel som returneras av Azure Attestation:
 
-## <a name="1-http401--unauthorized-exception"></a>1. HTTP – 401: otillåtet undantag
+## <a name="1-http401--unauthorized-exception"></a>1. HTTP–401: Otillåtet undantag
 
 ### <a name="http-status-code"></a>HTTP-statuskod
 401
 
-**Felkod** Tillstånd
+**Felkod** Obehörig
 
-**Scenario exempel**
-  - Attesterings problem om användaren inte har tilldelats rollen som attesterings läsare
-  - Det går inte att hantera attesterings principer eftersom användaren inte har tilldelats lämpliga roller
-  - Det går inte att hantera signerings princip för attestering eftersom användaren inte har tilldelats lämpliga roller
+**Scenarioexempel**
+  - Det går inte att hantera attestationsprinciper eftersom användaren inte har tilldelats lämpliga roller
+  - Det går inte att hantera attestationsprincipens signerare eftersom användaren inte har tilldelats lämpliga roller
 
-Användare med läsar roll som försöker redigera en attesterings princip i PowerShell 
+Användare med rollen Läsare som försöker redigera en attestationsprincip i PowerShell 
 
   ```powershell
   Set-AzAttestationPolicy : Operation returned HTTP Status Code 401
@@ -47,70 +46,40 @@ At line:1 char:1
 
 **Felsökningsanvisningar**
 
-För att kunna visa attesterings principer/princip undertecknare kräver en Azure AD-användare behörigheten för "åtgärder":
-- Microsoft. attestering/attestationProviders/attestering/läsning
+För att kunna hantera principer kräver en Azure AD-användare följande behörigheter för "Åtgärder":
+- Microsoft.Attestation/attestationProviders/attestation/read
+- Microsoft.Attestation/attestationProviders/attestation/write
+- Microsoft.Attestation/attestationProviders/attestation/delete
 
-  Den här behörigheten kan tilldelas till en AD-användare via en roll som "ägare" (behörighet som jokertecken) eller "läsare" (behörigheter för jokertecken) eller "attesterings läsare" (endast vissa behörigheter för Azure-attestering).
+  För att utföra de här åtgärderna måste en Azure AD-användare ha rollen "Attestation Contributor" (Attestation-deltagare) på attestationsprovidern. Dessa behörigheter kan också ärvas med roller som "Ägare" (behörigheter med jokertecken), "Deltagare" (behörigheter med jokertecken) i prenumerationen/resursgruppen.  
 
-För att kunna lägga till/ta bort princip undertecknare eller konfigurera principer, kräver en Azure AD-användare följande behörigheter för "åtgärder":
-- Microsoft. attestering/attestationProviders/attestering/skrivning
-- Microsoft. attestering/attestationProviders/attestering/Delete
+För att kunna läsa principer kräver en Azure AD-användare följande behörighet för "Åtgärder":
+- Microsoft.Attestation/attestationProviders/attestation/read
 
-  Dessa behörigheter kan tilldelas till en AD-användare via en roll som "ägare" (behörigheter för jokertecken), "deltagare" (behörigheter för jokertecken) eller "attesterings bidrags givare" (endast vissa behörigheter för Azure-attestering).
+  För att utföra den här åtgärden måste en Azure AD-användare ha rollen "Attestation Reader" på attestationsprovidern. Läsbehörigheten kan också ärvas med roller som "läsare" (behörigheter med jokertecken) i prenumerationen/resursgruppen.  
 
-Kunder kan välja att använda standardprovidern för attestering eller skapa egna leverantörer med anpassade principer. Om du vill skicka begäran om attestering till anpassade attesterings leverantörer krävs "ägare" (behörigheter för jokertecken) eller "läsare" (behörigheter för jokertecken) eller "attesterings läsare" för användaren. Standard leverantörerna är tillgängliga för alla Azure AD-användare.
-
-Verifiera rollerna i PowerShell genom att köra följande:
+Kontrollera rollerna i PowerShell genom att köra stegen nedan:
 
 a. Starta PowerShell och logga in på Azure via cmdleten "Connect-AzAccount"
 
-b. Verifiera dina roll tilldelnings inställningar för Azure
+b. Se vägledningen här [för](../role-based-access-control/role-assignments-list-powershell.md) att verifiera din Azure-rolltilldelning på attestationsprovidern
 
+c. Om du inte hittar en lämplig rolltilldelning följer du anvisningarna [här](../role-based-access-control/role-assignments-powershell.md)
 
-  ```powershell
-  $c = Get-AzContext
-  Get-AzRoleAssignment -ResourceGroupName $attestationResourceGroup -ResourceName $attestationProvider -ResourceType Microsoft.Attestation/attestationProviders -SignInName $c.Account.Id
-  ```
-
-  Du bör se något som liknar följande:
-
-  ```
-  RoleAssignmentId   :/subscriptions/subscriptionId/providers/Microsoft.Authorization/roleAssignments/roleAssignmentId
-  
-  Scope              : /subscriptions/subscriptionId
-  
-  DisplayName        : displayName
-  
-  SignInName         : signInName
-  
-  RoleDefinitionName : Reader
-  
-  RoleDefinitionId   : roleDefinitionId
-  
-  ObjectId           : objectid
-  
-  ObjectType         : User
-  
-  CanDelegate        : False
- 
-  ```
-
-c. Om du inte hittar en lämplig roll tilldelning i listan följer du anvisningarna i [här](../role-based-access-control/role-assignments-powershell.md)
-
-## <a name="2-http--400-errors"></a>2. HTTP – 400 fel
+## <a name="2-http--400-errors"></a>2. HTTP – 400-fel
 
 ### <a name="http-status-code"></a>HTTP-statuskod
 400
 
-Det finns olika orsaker till varför en begäran kan returnera 400. Nedan visas några exempel på fel som returneras av Azure attesterings-API: er:
+Det finns olika orsaker till varför en begäran kan returnera 400. Nedan visas några exempel på fel som returneras av Azure Attestation-API:er:
 
-### <a name="21-attestation-failure-due-to-policy-evaluation-errors"></a>2.1. Attesterings fel på grund av princip utvärderings fel
+### <a name="21-attestation-failure-due-to-policy-evaluation-errors"></a>2.1. Attestationsfel på grund av principutvärderingsfel
 
-Attesterings principen inkluderar auktoriseringsregler och utgivnings regler. Enklaven-beviset utvärderas baserat på auktoriseringsregler. Utfärdande regler definierar de anspråk som ska tas med i attesterings-token. Om anspråk i enklaven-bevis inte är kompatibla med auktoriseringsregler, kommer attesterings anrop att returnera princip utvärderings fel. 
+Attestationsprincipen innehåller auktoriseringsregler och utfärdanderegler. Enklav e-bevis utvärderas baserat på auktoriseringsreglerna. Utfärdanderegler definierar de anspråk som ska ingå i attestationstoken. Om anspråk i enklavbevis inte följer auktoriseringsreglerna returnerar attest-anrop principutvärderingsfel. 
 
 **Felkod** PolicyEvaluationError
 
-**Scenario exempel** När anspråk i enklaven-offerten inte stämmer överens med auktoriseringsregler för policyn för attestering
+**Scenarioexempel** När anspråk i enklavcitatet inte överensstämmer med auktoriseringsreglerna för attereringsprincipen
 
 ```
 Native operation failed with 65518: G:\Az\security\Attestation\src\AttestationServices\Instance\NativePolicyWrapper\NativePolicyEngine.cpp(168)\(null)!00007FF801762308: (caller: 00007FF80143DCC8) Exception(0) 83FFFFEE Policy Evaluation Error has occurred Msg:[Policy Engine Exception: A Deny claim was issued, authorization failed.]
@@ -119,32 +88,32 @@ G:\Az\security\Attestation\src\AttestationServices\Instance\Enclave\api.cpp(840)
 
 ```
 
-**Fel söknings steg** Användare kan utvärdera enklaven-bevis mot en princip för SGX-attestering innan du konfigurerar samma.
+**Felsökningssteg** Användare kan utvärdera enklavbevis mot en SGX-atterstationsprincip innan de konfigurerar samma.
 
-Skicka en begäran till attesterings-API genom att ange princip text i parametern "draftPolicyForAttestation". AttestSgxEnclave-API: et kommer att använda det här princip dokumentet under attesterings anropet och kan användas för att testa attesterings principer innan de används. Attesterings-token som genererades när det här fältet finns blir oskyddat.
+Skicka en begäran om attesterings-API genom att tillhandahålla principtext i parametern "draftPolicyForAttestation". AttestSgxEnclave-API:et använder det här principdokumentet under attestanropet och kan användas för att testa attesteringsprinciper innan de används. Den attestationstoken som genereras när det här fältet finns kommer att vara oskyddad.
 
-Se [exempel på attesterings princip](./policy-examples.md)
+Se [exempel på attestationeringsprincip](./policy-examples.md)
 
-### <a name="22-attestation-failure-due-to-invalid-input"></a>2.2. Attesteringen kunde inte utföras på grund av ogiltiga ininformation
+### <a name="22-attestation-failure-due-to-invalid-input"></a>2.2. Attestationsfel på grund av ogiltiga indata
 
 **Felkod** InvalidParameter
 
-**Scenario exempel** Fel i SGX-attestering på grund av ogiltiga indatatyper. Nedan visas några exempel på fel meddelanden:
-- Den angivna offerten var ogiltig på grund av ett fel i offertens säkerhet 
-- Den angivna offerten var ogiltig eftersom den enhet där offerten genererades inte uppfyller kraven för Azures bas linje
-- Den angivna offerten var ogiltig eftersom den TCBInfo eller QEID som tillhandahölls av PCK Cache Service var ogiltig
+**Scenarioexempel** SGX-attestationsfel på grund av ogiltiga indata. Nedan visas några exempel på felmeddelanden:
+- Det angivna offerten var ogiltig på grund av ett fel i offerten 
+- Det angivna offerten var ogiltig eftersom enheten där offerten genererades inte uppfyller Azure-baslinjekraven
+- Det angivna citatt var ogiltigt eftersom TCBInfo eller QEID som tillhandahölls av PCK Cache Service var ogiltigt
 
 **Felsökningsanvisningar**
 
-Microsoft Azure attestering stöder attestering av SGX-offerter som genererats av Intel SDK och öppen enklaven SDK.
+Microsoft Azure attestation stöder attestation av SGX-citattecken som genererats av Intel SDK och Open Enclave SDK.
 
-Se [kod exempel](/samples/browse/?expanded=azure&terms=attestation) för att utföra attestering med Open enklaven SDK/Intel SDK
+Se [kodexempel för](/samples/browse/?expanded=azure&terms=attestation) att utföra attestation med Hjälp av Open Enclave SDK/Intel SDK
 
-### <a name="23-invalid-certificate-chain-error-while-uploading-policypolicy-signer"></a>2.3. Ogiltigt certifikat kedje fel vid uppladdning av princip-/princip undertecknare
+### <a name="23-invalid-certificate-chain-error-while-uploading-policypolicy-signer"></a>2.3. Ogiltigt certifikatkedjefel vid uppladdning av princip-/principloggare
 
 **Felkod** InvalidParameter
 
-**Scenario exempel** Konfigurera signerad princip eller Lägg till/ta bort princip undertecknare, som är signerad med en ogiltig certifikat kedja (till exempel när det grundläggande begränsnings tillägget för rot certifikatet inte är inställt på subject-typ = CA)
+**Scenarioexempel** Konfigurera signerad princip eller lägg till/ta bort princip signerad, som är signerad med en ogiltig certifikatkedja (till exempel när tillägget Grundläggande begränsningar för rotcertifikatet inte har angetts till Ämnestyp = CA)
 
 ```
 Native operation failed with 65529: C:\source\src\AttestationServices\Instance\SgxPal\sgxcert.cpp(1074)\(null)!00007FFA285CDAED: (caller: 00007FFA285C36E8) Exception(0) 83FFFFF9 The requested item is not found    Msg:[Unable to find issuer certificate CN=attestationsigningcert]
@@ -157,21 +126,21 @@ At line:1 char:1
 
 ```
 
-**Fel söknings steg** Rot certifikatet måste flaggas som utfärdat av en CA (Basic-begränsningarna för X. 509), annars betraktas det inte som ett giltigt certifikat. 
+**Felsökningssteg** Rotcertifikatet måste flaggas som utfärdat av en certifikatutfärdare (de grundläggande X.509-begränsningarna), annars betraktas det inte som ett giltigt certifikat. 
 
-Kontrol lera att rot certifikatets tillägg för grundläggande begränsningar är inställt på att ange ämnes typen = CA
+Se till att tillägget Grundläggande begränsningar för rotcertifikatet är inställt för att indikera att Ämnestyp = CA
 
-Annars anses certifikat kedjan vara ogiltig.
+Annars anses certifikatkedjan vara ogiltig.
 
-Se [princip undertecknare](./policy-signer-examples.md) och [princip](./policy-examples.md) exempel 
+Se [exempel på principtecken](./policy-signer-examples.md) [och](./policy-examples.md) princip 
 
-### <a name="24-adddelete-policy-signer-failure"></a>2.4. Lägg till/ta bort princip signerings problem
+### <a name="24-adddelete-policy-signer-failure"></a>2.4. Fel med att lägga till/ta bort princip signerare
 
 **Felkod** InvalidOperation
 
-**Scenario exempel**
+**Scenarioexempel**
 
-När användaren laddar upp JWS utan "Maa-policyCertificate"-anspråk
+När användaren laddar upp JWS utan anspråket "maa-policyCertificate"
 
 ```
 Add-AzAttestationPolicySigner : Operation returned HTTP Status Code 400
@@ -188,7 +157,7 @@ At line:1 char:1
 
 ```
 
-När användaren inte överför ett certifikat i JWS-format
+När användaren inte laddar upp ett certifikat i JWS-format
 
 ```
 Add-AzAttestationPolicySigner : Operation returned HTTP Status Code 400
@@ -209,13 +178,13 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.AddAzureAttestationPolicySigner
 ```
 
-**Fel söknings steg** Om du vill lägga till/ta bort ett nytt princip signerings certifikat använder du RFC7519 JSON Web Token (JWT) med ett anspråk med namnet "x-MS-policyCertificate". Värdet för anspråket är en RFC7517 JSON-webbnyckel som innehåller det certifikat som ska läggas till. JWT måste vara signerat med en privat nyckel för alla giltiga princip registrerings certifikat som är associerade med providern. Se [exempel på princip registrering](./policy-signer-examples.md).
+**Felsökningssteg** Om du vill lägga till/ta bort ett nytt certifikat för principtecken använder du RFC7519 JSON Web Token (JWT) med ett anspråk med namnet "x-ms-policyCertificate". Anspråksvärdet är en RFC7517 JSON Web Key som innehåller certifikatet som ska läggas till. JWT måste signeras med privat nyckel för något av de giltiga principcertifikat som är associerade med providern. Se [exempel på principtecken.](./policy-signer-examples.md)
 
-### <a name="25-attestation-policy-configuration-failure"></a>2.5. Konfigurations problem för attesterings princip
+### <a name="25-attestation-policy-configuration-failure"></a>2.5. Konfigurationsfel för att bestationeringsprincip
 
 **Felkod** PolicyParsingError
 
-**Scenario exempel** Principen tillhandahölls med felaktig syntax (till exempel saknas semikolon)/valid JWT-princip)
+**Scenarioexempel** Princip med felaktig syntax (till exempel om semikolon saknas)/giltig JWT-princip)
 
 ```
 Native operation failed with 65526: ..\NativePolicyWrapper\NativePolicyEngine.cpp(31)\(null)!: (caller: ) Exception(0) 83FFFFF6 Invalid policy was specified    Msg:[Policy Parser Exception Thrown: Offending
@@ -233,7 +202,7 @@ At line:1 char:1
 
 **Felkod** InvalidOperation
 
-**Scenario exempel** Ogiltigt innehåll har angetts (till exempel Ladda upp princip/osignerad princip när princip signering krävs)
+**Scenarioexempel** Ogiltigt innehåll har angetts (till exempel ladda upp princip/osignerad princip när principsignering krävs)
 
 ```
 Native operation failed with 74: ..\Shared\base64url.h(226)\(null)!: (caller: ) Exception(0) 83FF004A Bad message    Msg:[Unknown base64 character: 41 (')')]
@@ -245,59 +214,59 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.SetAzureAttestationPolicy
 ```
 
-**Fel söknings steg** Se till att principen i text format är UTF-8-kodad.
+**Felsökningssteg** Kontrollera att principen i textformat är UTF-8-kodad.
 
-Om princip signering krävs måste attesterings principen bara konfigureras i formatet RFC7519 JSON Web Token (JWT). Om princip signering inte krävs kan du konfigurera en princip i text-eller JWT-format.
+Om principsignering krävs måste attestationsprincipen endast konfigureras i JWT-format (RFC7519 JSON Web Token). Om principsignering inte krävs kan principen konfigureras i text- eller JWT-format.
 
-Om du vill konfigurera en princip i JWT-format använder du JWT med ett anspråk med namnet "AttestationPolicy". Värdet för anspråket är Base64URL-kodad version av princip texten. Om attesteringsservern har kon figurer ATS med princip signerings certifikat, måste JWT signeras med en privat nyckel för alla giltiga certifikat signerings certifikat som är associerade med providern. 
+Om du vill konfigurera en princip i JWT-format använder du JWT med ett anspråk med namnet "AttestationPolicy". Anspråksvärdet är Base64URL-kodad version av principtexten. Om attesteringsprovidern är konfigurerad med certifikat för princip signerare, måste JWT signeras med privat nyckel för något av de giltiga princip signerarcertifikat som är associerade med providern. 
 
-Om du vill konfigurera en princip i text format anger du princip texten direkt.
+Om du vill konfigurera en princip i textformat anger du principtext direkt.
 
-I PowerShell anger du PolicyFormat som JWT för att konfigurera principen i JWT-format. Standard princip formatet är text.
+I PowerShell anger du PolicyFormat som JWT för att konfigurera principen i JWT-format. Standardprincipformatet är Text.
 
-Se exempel på attesterings [princip](./policy-examples.md) och [hur du skapar en princip för attestering](./author-sign-policy.md) 
+Se exempel på [attestationsprincip](./policy-examples.md) [och hur du skapar en attestationsprincip](./author-sign-policy.md) 
 
-## <a name="3-azattestation-installation-issues-in-powershell"></a>3. AZ. installations problem för attestering i PowerShell
+## <a name="3-azattestation-installation-issues-in-powershell"></a>3. Installationsproblem med Az.Attestation i PowerShell
 
-Det gick inte att installera AZ eller AZ. attesterings-moduler i PowerShell
+Det går inte att installera Az- eller Az.Attestation-moduler i PowerShell
 
 ### <a name="error"></a>Fel
 
-Varning! det går inte att matcha paket källans https://www.powershellgallery.com/api/v2 PackageManagement\Install-Package: ingen matchning hittades för de angivna Sök kriterierna och modulnamnet
+VARNING! Det gick inte att matcha paketkällan https://www.powershellgallery.com/api/v2 PackageManagement\Install-Package: Ingen matchning hittades för de angivna sökvillkoren och modulnamnet
 
 ### <a name="troubleshooting-steps"></a>Felsökningsanvisningar
 
-PowerShell-galleriet har inaktuella Transport Layer Security (TLS) version 1,0 och 1,1. 
+PowerShell-galleriet har inaktuella versioner Transport Layer Security (TLS) 1.0 och 1.1. 
 
-TLS 1,2 eller en senare version rekommenderas. 
+TLS 1.2 eller senare rekommenderas. 
 
-Om du vill fortsätta att interagera med PowerShell-galleriet kör du följande kommando innan du Install-Module kommandon
+Om du vill fortsätta att interagera med PowerShell-galleriet kör du följande kommando före Install-Module kommandona
 
-**[Net. ServicePointManager]:: SecurityProtocol = [net. SecurityProtocolType]:: Tls12**
+**[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12**
 
-## <a name="4-policy-accessconfiguration-issues-in-powershell"></a>4. princip åtkomst/konfigurations problem i PowerShell
+## <a name="4-policy-accessconfiguration-issues-in-powershell"></a>4. Problem med principåtkomst/konfiguration i PowerShell
 
-Användaren har tilldelats lämpliga roller. Men problem med att drabbas vid hantering av attesterings principer via PowerShell.
+Användare som tilldelats med lämpliga roller. Men problem med auktorisering vid hantering av attestationsprinciper via PowerShell.
 
 ### <a name="error"></a>Fel
-Klienten med objekt-ID &lt; objekt-ID &gt;  har inte behörighet att utföra åtgärden Microsoft. Authorization/RoleAssignments/Write över omfånget///Write över omfånget/ &lt; subscriptionId &gt; ResourceGroups/secure_enclave_poc/providers/Microsoft.Authorization/RoleAssignments/ &lt; Role assignmentId &gt; eller så är omfattningen ogiltigt. Om åtkomst nyligen har beviljats ska du uppdatera dina autentiseringsuppgifter
+Klienten med objekt-ID för objekt-ID har inte behörighet att utföra åtgärden &lt; &gt;  Microsoft.Authorization/roleassignments/write över omfånget 'subcriptions/subscriptionId &lt; &gt; resourcegroups/secure_enclave_poc/providers/Microsoft.Authorization/roleassignments/ role assignmentId ' eller &lt; omfånget är &gt; ogiltigt. Uppdatera dina autentiseringsuppgifter om åtkomsten nyligen har beviljats
 
 ### <a name="troubleshooting-steps"></a>Felsökningsanvisningar
 
-Den minsta versionen av AZ-moduler som krävs för att ge stöd för attestering är följande: 
+Den lägsta version av Az-moduler som krävs för att stödja attestationsåtgärder är följande: 
 
- **AZ 4.5.0** 
+ **Az 4.5.0** 
  
- **AZ. Accounts 1.9.2**
+ **Az.Accounts 1.9.2**
  
- **AZ. attestering 0.1.8** 
+ **Az.Attestation 0.1.8** 
 
-Kör kommandot nedan för att kontrol lera den installerade versionen av alla AZ-moduler 
+Kör kommandot nedan för att verifiera den installerade versionen av alla Az-moduler 
 
 ```powershell
 Get-InstalledModule 
 ```
 
-Om versionerna inte matchar minimi kravet kör Update-Module-kommandon
+Om versionerna inte matchar minimikraven kör du Update-Module kommandon
 
-t. ex.-Update-Module-Name AZ. attestering
+t.ex. - Update-Module -Name Az.Attestation

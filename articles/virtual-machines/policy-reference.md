@@ -1,31 +1,31 @@
 ---
-title: Inbyggda princip definitioner för Azure Virtual Machines
-description: Visar Azure Policy inbyggda princip definitioner för Azure Virtual Machines. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 03/31/2021
+title: Inbyggda principdefinitioner för Azure Virtual Machines
+description: Visar Azure Policy inbyggda principdefinitioner för Azure Virtual Machines. Dessa inbyggda principdefinitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
+ms.date: 04/14/2021
 ms.topic: reference
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.subservice: security
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 95f604659212935017ef09cde713bd1f8cf09395
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 6e337318418dd4aa8c7021e77706252497b18944
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096220"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502513"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-machines"></a>Azure Policy inbyggda definitioner för Azure Virtual Machines
 
-Den här sidan är ett index över [Azure policy](../governance/policy/overview.md) inbyggda princip definitioner för Azure Virtual Machines. Ytterligare Azure Policy inbyggda program för andra tjänster finns i [Azure policy inbyggda definitioner](../governance/policy/samples/built-in-policies.md).
+Den här sidan är ett index [Azure Policy](../governance/policy/overview.md) inbyggda principdefinitioner för Azure Virtual Machines. Mer information Azure Policy inbyggda program för andra tjänster finns [i Azure Policy inbyggda definitioner](../governance/policy/samples/built-in-policies.md).
 
-Namnet på varje inbyggd princip definition länkar till princip definitionen i Azure Portal. Använd länken i kolumnen **version** om du vill visa källan på [Azure policy GitHub-lagrings platsen](https://github.com/Azure/azure-policy).
+Namnet på varje inbyggd principdefinition länkar till principdefinitionen i Azure Portal. Använd länken i kolumnen **Version för** att visa källan på Azure Policy [GitHub-lagringsplatsen](https://github.com/Azure/azure-policy).
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 [!INCLUDE [azure-policy-reference-rp-compute](../../includes/policy/reference/byrp/microsoft.compute.md)]
 
-## <a name="microsoftvirtualmachineimages"></a>Microsoft. VirtualMachineImages
+## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
 
 [!INCLUDE [azure-policy-reference-rp-vmimages](../../includes/policy/reference/byrp/microsoft.virtualmachineimages.md)]
 

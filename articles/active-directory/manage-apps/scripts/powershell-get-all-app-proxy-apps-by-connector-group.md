@@ -1,9 +1,9 @@
 ---
-title: Visa Azure AD-programproxy Connector-grupper för appar
-description: PowerShell-exempel som visar alla Azure Active Directory (Azure AD) Application Proxy Connector-grupper med de tilldelade programmen.
+title: Lista grupper Programproxy Azure AD-anslutningsprogram för appar
+description: PowerShell-exempel som visar alla Azure Active Directory (Azure AD) Programproxy Connector-grupper med de tilldelade programmen.
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: de4177917beafd05295bab0379eadc718428c24a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1adb576e751d93dc4a9d240546325d7e671d0892
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565673"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377059"
 ---
-# <a name="get-all-application-proxy-apps-and-list-by-connector-group"></a>Hämta alla appar för program-proxy och lista efter anslutnings grupp
+# <a name="get-all-application-proxy-apps-and-list-by-connector-group"></a>Hämta alla Programproxy och lista efter anslutningsgrupp
 
-Detta exempel på PowerShell-skript visar information om alla Azure Active Directory (Azure AD) Application Proxy Connector-grupper med de tilldelade programmen.
+Det här PowerShell-skriptexempel visar information om alla Azure Active Directory (Azure AD) Programproxy Connector-grupper med de tilldelade programmen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,7 +28,7 @@ Detta exempel på PowerShell-skript visar information om alla Azure Active Direc
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Det här exemplet kräver [AzureAD v2 PowerShell för Graph module](/powershell/azure/active-directory/install-adv2) (AzureAD) eller [AzureAD v2 PowerShell för för hands versionen](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) av (AzureADPreview).
+Det här exemplet kräver [AzureAD V2 PowerShell för Graph-modulen](/powershell/azure/active-directory/install-adv2) (AzureAD) eller Förhandsversionen av [AzureAD V2 PowerShell för Graph-modulen](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) (AzureADPreview).
 
 ## <a name="sample-script"></a>Exempelskript
 
@@ -38,14 +38,14 @@ Det här exemplet kräver [AzureAD v2 PowerShell för Graph module](/powershell/
 
 | Kommando | Kommentarer |
 |---|---|
-|[Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) | Hämtar ett huvud namn för tjänsten. |
+|[Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) | Hämtar ett huvudnamn för tjänsten. |
 |[Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) | Hämtar ett Azure AD-program. |
-|[Get-AzureADApplicationProxyApplication](/powershell/module/azuread/get-azureadapplicationproxyapplication) | Hämtar ett program konfigurerat för Application Proxy i Azure AD. |
-| [Get-AzureADApplicationProxyConnectorGroup](/powershell/module/azuread/get-azureadapplicationproxyconnectorgroup) | Hämtar en lista över alla kopplings grupper, eller om den anges, information om den angivna anslutnings gruppen. |
+|[Get-AzureADApplicationProxyApplication](/powershell/module/azuread/get-azureadapplicationproxyapplication) | Hämtar ett program som konfigurerats för Programproxy i Azure AD. |
+| [Get-AzureADApplicationProxyConnectorGroup](/powershell/module/azuread/get-azureadapplicationproxyconnectorgroup) | Hämtar en lista över alla anslutningsgrupper, eller, om det har angetts, information om den angivna anslutningsgruppen. |
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure AD PowerShell-modulen finns i [Översikt över Azure AD PowerShell-modulen](/powershell/azure/active-directory/overview).
+Mer information om Azure AD PowerShell-modulen finns i [Översikt över Azure AD PowerShell-modulen.](/powershell/azure/active-directory/overview)
 
-Andra PowerShell-exempel för Application Proxy finns i [Azure AD PowerShell-exempel för azure AD-programproxy](../application-proxy-powershell-samples.md).
+Andra PowerShell-exempel för Programproxy finns i [Azure AD PowerShell-exempel för Azure AD Programproxy](../application-proxy-powershell-samples.md).

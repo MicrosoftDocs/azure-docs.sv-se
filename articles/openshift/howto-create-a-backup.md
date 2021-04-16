@@ -1,39 +1,39 @@
 ---
-title: Skapa en Azure Red Hat OpenShift 4-kluster program säkerhets kopiering med Velero
-description: Lär dig hur du skapar en säkerhets kopia av dina Azure Red Hat OpenShift-kluster program med Velero
+title: Skapa en Azure Red Hat OpenShift 4-klusterprogramsäkerhetskopiering med Velero
+description: Lär dig hur du skapar en säkerhetskopia av dina Azure Red Hat OpenShift-klusterprogram med Hjälp av Velero
 ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 06/22/2020
 author: troy0820
 ms.author: b-trconn
-keywords: Aro, OpenShift, AZ Aro, Red Hat, CLI
-ms.custom: mvc
-ms.openlocfilehash: bbfe280ed0b1b562e0f50b23a09ea159750c4a79
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+keywords: aro, openshift, az aro, red hat, cli
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: c8bf722bd77372cd89e7c64757347b5fd07eb1ed
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217099"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481369"
 ---
-# <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>Skapa ett säkerhets kopierings program för Azure Red Hat OpenShift 4-kluster
+# <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>Skapa en programsäkerhetskopia Azure Red Hat OpenShift 4-kluster
 
-I den här artikeln förbereder du din miljö för att skapa en säkerhets kopia av kluster program för Azure Red Hat OpenShift 4. Du lär dig följande:
+I den här artikeln förbereder du din miljö för att skapa en Azure Red Hat OpenShift 4 klusterprogramsäkerhetskopiering. Du lär dig följande:
 
 > [!div class="checklist"]
 > * Konfigurera förutsättningarna och installera nödvändiga verktyg
-> * Skapa en Azure Red Hat OpenShift 4 program säkerhets kopiering
+> * Skapa en Azure Red Hat OpenShift 4-programsäkerhetskopia
 
-Om du väljer att installera och använda CLI lokalt kräver den här självstudien att du kör Azure CLI-version 2.6.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli).
+Om du väljer att installera och använda CLI lokalt kräver den här självstudien att du kör Azure CLI version 2.6.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
 ### <a name="install-velero"></a>Installera Velero
 
-Om du vill [Installera](https://velero.io/docs/main/basic-install/) Velero på systemet följer du den rekommenderade processen för ditt operativ system.
+Om [du](https://velero.io/docs/main/basic-install/) vill installera Velero på datorn följer du den rekommenderade processen för ditt operativsystem.
 
-### <a name="set-up-azure-storage-account-and-blob-container"></a>Konfigurera Azure Storage-konto och blob-behållare
+### <a name="set-up-azure-storage-account-and-blob-container"></a>Konfigurera Azure Storage-konto och blobcontainer
 
-I det här steget skapas en resurs grupp utanför ARO-klustrets resurs grupp.  Den här resurs gruppen tillåter att säkerhets kopiorna bevaras och kan återställa program till nya kluster.
+Det här steget skapar en resursgrupp utanför ARO-klustrets resursgrupp.  Med den här resursgruppen kan säkerhetskopiorna bevaras och program kan återställas till nya kluster.
 
 ```bash
 AZURE_BACKUP_RESOURCE_GROUP=Velero_Backups
@@ -57,7 +57,7 @@ az storage container create -n $BLOB_CONTAINER --public-access off --account-nam
 
 ### <a name="create-service-principal"></a>Skapa tjänstens huvudnamn
 
-Velero måste ha behörighet för att säkerhetskopiera och återställa. När du skapar ett huvud namn för tjänsten ger du Velero behörighet att komma åt den resurs grupp som du definierar i föregående steg. I det här steget hämtas resurs gruppen för klustret:
+Velero behöver behörighet för att göra säkerhetskopieringar och återställningar. När du skapar ett huvudnamn för tjänsten ger du Velero behörighet att komma åt resursgruppen som du definierar i föregående steg. Det här steget hämtar klustrets resursgrupp:
 
 ```bash
 export AZURE_RESOURCE_GROUP=$(az aro show --name <name of cluster> --resource-group <name of resource group> | jq -r .clusterProfile.resourceGroupId | cut -d '/' -f 5,5)
@@ -90,7 +90,7 @@ EOF
 
 ## <a name="install-velero-on-azure-red-hat-openshift-4-cluster"></a>Installera Velero på Azure Red Hat OpenShift 4-kluster
 
-Det här steget installerar Velero i det egna projektet och de [anpassade resurs definitioner](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) som krävs för att säkerhetskopiera och återställa med Velero. Kontrol lera att du har loggat in i ett Azure Red Hat OpenShift v4-kluster.
+Det här steget installerar Velero i [](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) sitt eget projekt och de anpassade resursdefinitioner som krävs för att göra säkerhetskopieringar och återställningar med Velero. Kontrollera att du har loggat in på ett Azure Red Hat OpenShift v4-kluster.
 
 
 ```bash
@@ -105,49 +105,49 @@ velero install \
 --velero-pod-mem-request="0" --velero-pod-cpu-request="0"
 ```
 
-## <a name="create-a-backup-with-velero"></a>Skapa en säkerhets kopia med Velero
+## <a name="create-a-backup-with-velero"></a>Skapa en säkerhetskopia med Velero
 
-Om du vill skapa en säkerhets kopia av programmet med Velero måste du inkludera det namn område som programmet finns i.  Om du har ett `nginx-example` namn område och vill inkludera alla resurser i namn området i säkerhets kopian kör du följande kommando i terminalen:
+Om du vill skapa en programsäkerhetskopia med Velero måste du inkludera det namnområde som programmet finns i.  Om du har ett namnområde och vill inkludera alla resurser i namnområdet i säkerhetskopian kör du `nginx-example` följande kommando i terminalen:
 
 ```bash
 velero create backup <name of backup> --include-namespaces=nginx-example
 ```
-Du kan kontrol lera status för säkerhets kopieringen genom att köra:
+Du kan kontrollera säkerhetskopieringsstatusen genom att köra:
 
 ```bash
 oc get backups -n velero <name of backup> -o yaml
 ```
 
-En lyckad säkerhets kopiering kommer att matas ut `phase:Completed` och objekten är aktiva i behållaren i lagrings kontot.
+En lyckad säkerhetskopiering matar `phase:Completed` ut och objekten finns i containern på lagringskontot.
 
-## <a name="create-a-backup-with-velero-to-include-snapshots"></a>Skapa en säkerhets kopia med Velero för att inkludera ögonblicks bilder
+## <a name="create-a-backup-with-velero-to-include-snapshots"></a>Skapa en säkerhetskopia med Velero för att inkludera ögonblicksbilder
 
-Om du vill skapa en säkerhets kopia av programmet med Velero för att inkludera de beständiga volymerna i ditt program måste du inkludera det namn område som programmet finns i samt inkludera `snapshot-volumes=true` flaggan när du skapar säkerhets kopian
+Om du vill skapa en programsäkerhetskopia med Velero för att inkludera de beständiga volymerna i ditt program måste du inkludera det namnområde som programmet finns i samt inkludera flaggan när du skapar `snapshot-volumes=true` säkerhetskopian
 
 ```bash
 velero backup create <name of backup> --include-namespaces=nginx-example --snapshot-volumes=true --include-cluster-resources=true
 ```
 
-Du kan kontrol lera status för säkerhets kopieringen genom att köra:
+Du kan kontrollera säkerhetskopieringsstatusen genom att köra:
 
 ```bash
 oc get backups -n velero <name of backup> -o yaml
 ```
 
-En lyckad säkerhets kopiering med utdata `phase:Completed` och objekten är Live i behållaren i lagrings kontot.
+En lyckad säkerhetskopiering med `phase:Completed` utdata och objekten finns i containern på lagringskontot.
 
-Mer information om hur du skapar säkerhets kopior och återställer med hjälp av Velero finns i [OpenShift-resurser för säkerhets kopiering på det inbyggda sättet](https://www.openshift.com/blog/backup-openshift-resources-the-native-way)
+Mer information om hur du skapar säkerhetskopior och återställningar med Hjälp av Velero finns i [Backup OpenShift-resurser på det inbyggda sättet](https://www.openshift.com/blog/backup-openshift-resources-the-native-way)
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här artikeln säkerhetskopierades ett Azure Red Hat OpenShift 4-kluster program. Du har lärt dig att:
+I den här artikeln säkerhetskopierades Azure Red Hat OpenShift 4-klusterprogram. Du har lärt dig att:
 
 > [!div class="checklist"]
-> * Skapa en OpenShift v4-kluster program säkerhets kopiering med Velero
-> * Skapa en OpenShift v4-kluster program säkerhets kopiering med ögonblicks bilder med hjälp av Velero
+> * Skapa en säkerhetskopiering av OpenShift v4-klusterprogram med Velero
+> * Skapa en säkerhetskopiering av OpenShift v4-klusterprogram med ögonblicksbilder med Hjälp av Velero
 
 
-Gå vidare till nästa artikel om du vill lära dig hur du skapar en Azure Red Hat OpenShift 4-kluster program återställning.
+Gå vidare till nästa artikel om du vill lära dig hur du skapar en Azure Red Hat OpenShift 4-klusterprogramåterställning.
 
-* [Skapa en Azure Red Hat OpenShift 4-kluster program återställning](howto-create-a-restore.md)
-* [Skapa en Azure Red Hat OpenShift 4-kluster program återställning inklusive ögonblicks bilder](howto-create-a-restore.md)
+* [Skapa en Azure Red Hat OpenShift 4-klusterprogramåterställning](howto-create-a-restore.md)
+* [Skapa en Azure Red Hat OpenShift 4-klusterprogramåterställning inklusive ögonblicksbilder](howto-create-a-restore.md)

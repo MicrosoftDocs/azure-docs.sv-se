@@ -1,131 +1,131 @@
 ---
 title: Återställa Azure-Managed Disks
-description: Lär dig hur du återställer Azure-Managed Disks från Azure Portal.
+description: Lär dig hur du återställer Azure Managed Disks från Azure Portal.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 94adc8512987b50a8df07d295215ffcff873162f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c57d60047a5bcef58c721ee25bd8a0b3ed523aa4
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108595"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517206"
 ---
 # <a name="restore-azure-managed-disks"></a>Återställa Azure-Managed Disks
 
-I den här artikeln förklaras hur du återställer [Azure-Managed disks](../virtual-machines/managed-disks-overview.md) från en återställnings punkt som skapats av Azure Backup.
+Den här artikeln beskriver hur du [återställer Azure Managed Disks](../virtual-machines/managed-disks-overview.md) från en återställningspunkt som skapats av Azure Backup.
 
-För närvarande stöds inte alternativet Original-Location återställning (OLR) för återställning genom att ersätta den befintliga käll disken där säkerhets kopiorna gjordes. Du kan återställa från en återställnings punkt för att skapa en ny disk antingen i samma resurs grupp som käll disken från vilken säkerhets kopian gjordes eller i någon annan resurs grupp. Detta kallas Alternate-Location återställning (återställning till) och detta hjälper till att hålla både käll disken och den återställda (nya) disken.
+För närvarande stöds Original-Location Recovery (OLR) att återställa genom att ersätta den befintliga källdisken som säkerhetskopiorna gjordes från inte. Du kan återställa från en återställningspunkt för att skapa en ny disk antingen i samma resursgrupp som den källdisk som säkerhetskopiorna gjordes från eller i någon annan resursgrupp. Detta kallas för Alternate-Location Recovery (ALR) och hjälper till att behålla både källdisken och den återställda (nya) disken.
 
 I den här artikeln får du lära dig att:
 
-- Återställ för att skapa en ny disk
+- Återställa för att skapa en ny disk
 
-- Spåra status för återställnings åtgärden
+- Spåra status för återställningsåtgärden
 
-## <a name="restore-to-create-a-new-disk"></a>Återställ för att skapa en ny disk
+## <a name="restore-to-create-a-new-disk"></a>Återställa för att skapa en ny disk
 
-Säkerhets kopierings valv använder hanterad identitet för att få åtkomst till andra Azure-resurser. För att återställa från säkerhets kopian kräver säkerhets kopierings valvets hanterade identitet en uppsättning behörigheter för resurs gruppen där disken ska återställas.
+Backup Vault använder hanterad identitet för att få åtkomst till andra Azure-resurser. För att återställa från en säkerhetskopia kräver Backup-valvets hanterade identitet en uppsättning behörigheter för den resursgrupp där disken ska återställas.
 
-Säkerhets kopierings valvet använder en systemtilldelad hanterad identitet, som är begränsad till en per resurs och är kopplad till livs cykeln för den här resursen. Du kan bevilja behörighet till den hanterade identiteten med hjälp av rollbaserad åtkomst kontroll i Azure (Azure RBAC). Hanterad identitet är ett tjänst objekt av en särskild typ som bara kan användas med Azure-resurser. Läs mer om [hanterade identiteter](../active-directory/managed-identities-azure-resources/overview.md).
+Säkerhetskopieringsvalvet använder en system tilldelad hanterad identitet, som är begränsad till en per resurs och är kopplad till den här resursens livscykel. Du kan bevilja behörigheter till den hanterade identiteten med hjälp av rollbaserad åtkomstkontroll i Azure (Azure RBAC). Hanterad identitet är ett huvudnamn för tjänsten av en särskild typ som endast kan användas med Azure-resurser. Läs mer om [hanterade identiteter.](../active-directory/managed-identities-azure-resources/overview.md)
 
-Följande krav krävs för att utföra en återställnings åtgärd:
+Följande förutsättningar krävs för att utföra en återställningsåtgärd:
 
-1. Tilldela rollen **disk återställnings operatör** till säkerhets kopierings valvets hanterade identitet i resurs gruppen där disken ska återställas av Azure Backup-tjänsten.
+1. Tilldela rollen **Diskåterställningsoperatör** till backup-valvets hanterade identitet i resursgruppen där disken kommer att återställas av Azure Backup tjänsten.
 
     >[!NOTE]
-    > Du kan välja samma resurs grupp som käll disken där säkerhets kopiorna tas eller till någon annan resurs grupp i samma eller en annan prenumeration.
+    > Du kan välja samma resursgrupp som källdisken där säkerhetskopiorna ska tas eller till en annan resursgrupp inom samma eller en annan prenumeration.
 
-    1. Gå till resurs gruppen där disken ska återställas. Till exempel är resurs gruppen *TargetRG*.
+    1. Gå till resursgruppen där disken ska återställas. Resursgruppen är till exempel *TargetRG*.
 
-    1. Gå till **åtkomst kontroll (IAM)** och välj **Lägg till roll tilldelningar**
+    1. Gå till **Åtkomstkontroll (IAM) och** välj Lägg **till rolltilldelningar**
 
-    1. I rutan till höger kontext väljer du **disk återställnings operator** i list rutan **roll** . Välj den hanterade identiteten för säkerhets kopierings valvet och **Spara**.
+    1. I det högra kontextfönstret väljer du **Diskåterställningsoperatör** i **listrutan** Roll. Välj den hanterade identiteten för säkerhetskopieringsvalvet och **spara**.
 
         >[!TIP]
-        >Ange namnet på säkerhets kopierings valvet för att välja valvets hanterade identitet.
+        >Skriv namnet på säkerhetskopieringsvalvet för att välja valvets hanterade identitet.
 
-        ![Välj rollen disk återställnings operatör](./media/restore-managed-disks/disk-restore-operator-role.png)
+        ![Välj operatörsroll för diskåterställning](./media/restore-managed-disks/disk-restore-operator-role.png)
 
-1. Kontrol lera att den hanterade identiteten för säkerhets kopierings valvet har rätt uppsättning roll tilldelningar i resurs gruppen där disken kommer att återställas.
+1. Kontrollera att den hanterade identiteten för säkerhetskopieringsvalvet har rätt uppsättning rolltilldelningar för resursgruppen där disken ska återställas.
 
-    1. Gå till **säkerhets kopierings valv – > identitet** och välj **Azure Role-tilldelningar**
+    1. Gå till **Säkerhetskopieringsvalv – > identitet** och välj **Azure-rolltilldelningar**
 
-        ![Välj Azure Role-tilldelningar](./media/restore-managed-disks/azure-role-assignments.png)
+        ![Välj Azure-rolltilldelningar](./media/restore-managed-disks/azure-role-assignments.png)
 
-    1. Kontrol lera att rollen, resurs namnet och resurs typen visas korrekt.
+    1. Kontrollera att rollen, resursnamnet och resurstypen visas korrekt.
 
-        ![Verifiera roll, resurs namn och resurs typ](./media/restore-managed-disks/verify-role.png)
+        ![Verifiera roll, resursnamn och resurstyp](./media/restore-managed-disks/verify-role.png)
 
     >[!NOTE]
-    >När roll tilldelningarna visas korrekt på portalen kan det ta ungefär 15 minuter innan behörigheten tillämpas på säkerhets kopierings valvets hanterade identitet.
+    >Även om rolltilldelningarna visas korrekt på portalen kan det ta cirka 15 minuter innan behörigheten tillämpas på säkerhetskopieringsvalvet hanterade identitet.
     >
-    >Under schemalagda säkerhets kopieringar eller en säkerhets kopiering på begäran lagrar Azure Backup diskens stegvisa ögonblicks bilder i den ögonblicks bilds resurs grupp som angavs när säkerhets kopian av disken konfigurerades. Azure Backup använder dessa stegvisa ögonblicks bilder under återställnings åtgärden. Om ögonblicks bilderna tas bort eller flyttas från resurs gruppen för ögonblicks bilder eller om roll tilldelningarna för säkerhets kopierings valvet har återkallats på resurs gruppen för ögonblicks bilder, kommer återställningen att Miss förflyttning
+    >Under schemalagda säkerhetskopieringar eller en säkerhetskopiering på begäran, Azure Backup disk inkrementella ögonblicksbilder i resursgruppen för ögonblicksbilder som tillhandahålls när du konfigurerar säkerhetskopiering av disken. Azure Backup använder dessa inkrementella ögonblicksbilder under återställningen. Om ögonblicksbilderna tas bort eller flyttas från resursgruppen för ögonblicksbilder eller om rolltilldelningarna för säkerhetskopieringsvalvet återkallas i resursgruppen för ögonblicksbilder misslyckas återställningen.
 
-1. Om disken som ska återställas är krypterad med [Kundhanterade nycklar (CMK)](../virtual-machines/disks-enable-customer-managed-keys-portal.md) eller med hjälp av [Double Encryption med hjälp av plattforms hanterade nycklar och Kundhanterade nycklar](../virtual-machines/disks-enable-double-encryption-at-rest-portal.md), tilldelar du sedan rollen **läsare** behörighet till säkerhets kopierings valvets hanterade identitet på **disk krypterings uppsättnings** resursen.
+1. Om disken som ska återställas krypteras med kund-hanterade nycklar [(CMK)](../virtual-machines/disks-enable-customer-managed-keys-portal.md) eller med dubbel kryptering med  plattformsbaserade nycklar och kundhanteringsnycklar, [](../virtual-machines/disks-enable-double-encryption-at-rest-portal.md)tilldelar du behörigheten Läsare till Backup Vault:s hanterade identitet på resursen för diskkrypteringsuppsättning. 
 
-När förutsättningarna är uppfyllda följer du stegen nedan för att utföra återställnings åtgärden.
+När kraven är uppfyllda följer du dessa steg för att utföra återställningen.
 
-1. I [Azure Portal](https://portal.azure.com/)går du till **säkerhets kopierings Center**. Välj **säkerhets kopierings instanser** under avsnittet **Hantera** . I listan över säkerhets kopierings instanser väljer du den disk säkerhets kopierings instans som du vill utföra återställnings åtgärden för.
+1. I [Azure Portal](https://portal.azure.com/)du till **Backup Center**. Välj **Säkerhetskopieringsinstanser** under **avsnittet** Hantera. I listan över säkerhetskopieringsinstanser väljer du den disksäkerhetskopieringsinstans som du vill utföra återställningen för.
 
-    ![Lista över säkerhets kopierings instanser](./media/restore-managed-disks/backup-instances.png)
+    ![Lista över säkerhetskopieringsinstanser](./media/restore-managed-disks/backup-instances.png)
 
-    Alternativt kan du utföra den här åtgärden från det säkerhets kopierings valv som du använde för att konfigurera säkerhets kopiering för disken.
+    Alternativt kan du utföra den här åtgärden från säkerhetskopieringsvalvet som du använde för att konfigurera säkerhetskopiering för disken.
 
-1. På sidan **säkerhets kopierings instans** väljer du den återställnings punkt som du vill använda för att utföra återställnings åtgärden och väljer **Återställ**.
+1. På skärmen **Säkerhetskopieringsinstans** väljer du den återställningspunkt som du vill använda för att utföra återställningsåtgärden och väljer **Återställ**.
 
-    ![Välj återställnings punkt](./media/restore-managed-disks/select-restore-point.png)
+    ![Välj återställningspunkt](./media/restore-managed-disks/select-restore-point.png)
 
-1. I **återställnings** arbets flödet granskar du **grunderna** och **väljer fliken återställnings punkt** information och väljer **sedan Nästa: återställnings parametrar**.
+1. I **arbetsflödet Återställ** granskar du fliken Grundläggande inställningar och Välj **återställningspunkt** och väljer **Nästa: Återställ parametrar.** 
 
-    ![Granska grunderna och välj information om återställnings punkt](./media/restore-managed-disks/review-information.png)
+    ![Granska grundläggande information och välj information om återställningspunkt](./media/restore-managed-disks/review-information.png)
 
-1. På fliken **återställnings parametrar** väljer du den **mål prenumeration** och **mål resurs grupp** där du vill återställa säkerhets kopian. Ange namnet på disken som ska återställas. Välj **Nästa: granska + Återställ**.
+1. På fliken **Återställ parametrar** väljer du den **målprenumeration** **och målresursgrupp** där du vill återställa säkerhetskopian. Ange namnet på disken som ska återställas. Välj **Nästa: Granska + återställ**.
 
-    ![Återställ parametrar](./media/restore-managed-disks/restore-parameters.png)
+    ![Återställningsparametrar](./media/restore-managed-disks/restore-parameters.png)
 
     >[!TIP]
-    >Diskar som säkerhets kopie ras av Azure Backup med hjälp av disk säkerhets kopierings lösningen kan också säkerhets kopie ras genom att Azure Backup hjälp av Azure VM backup-lösningen med Recovery Services-valvet. Om du har konfigurerat skyddet av den virtuella Azure-datorn som disken är ansluten till kan du även använda åtgärden för återställning av virtuella Azure-datorer. Du kan välja att återställa den virtuella datorn eller diskar och filer eller mappar från återställnings punkten för motsvarande instans av Azure VM-säkerhetskopiering. Mer information finns i [säkerhets kopiering av virtuella Azure-datorer](./about-azure-vm-restore.md).
+    >Diskar som säkerhetskopieras av Azure Backup med disksäkerhetskopieringslösningen kan också säkerhetskopieras av Azure Backup med hjälp av Azure VM-säkerhetskopieringslösningen med Recovery Services-valvet. Om du har konfigurerat skydd för den virtuella Azure-datorn som den här disken är ansluten till kan du också använda återställningsåtgärden för virtuella Azure-datorer. Du kan välja att återställa den virtuella datorn eller diskar och filer eller mappar från återställningspunkten för motsvarande azure VM-säkerhetskopieringsinstans. Mer information finns i Säkerhetskopiering [av virtuella Azure-datorer.](./about-azure-vm-restore.md)
 
-1. När verifieringen är klar väljer du **Återställ** för att starta återställnings åtgärden.
+1. När verifieringen har lyckats väljer du **Återställ** för att starta återställningsåtgärden.
 
-    ![Initiera återställnings åtgärd](./media/restore-managed-disks/initiate-restore.png)
+    ![Starta återställningsåtgärden](./media/restore-managed-disks/initiate-restore.png)
 
     >[!NOTE]
-    > Det kan ta några minuter innan verifieringen har slutförts innan du kan utlösa återställnings åtgärden. Verifieringen kan Miss lyckas om:
+    > Verifieringen kan ta några minuter att slutföra innan du kan utlösa återställningsåtgärden. Verifieringen kan misslyckas om:
     >
-    > - Det finns redan en disk med samma namn som angavs i det **återställda disk namnet** i **mål resurs gruppen**
-    > - den hanterade identiteten för säkerhets kopierings valvet har inte några giltiga roll tilldelningar i **mål resurs gruppen**
-    > - Säkerhets kopierings valvets hanterade identitets roll tilldelningar återkallas på **resurs gruppen för ögonblicks bilder** där stegvisa ögonblicks bilder lagras
-    > - Om stegvisa ögonblicks bilder tas bort eller flyttas från resurs gruppen för ögonblicks bilder
+    > - Det finns redan en disk med samma **namn som det återställda disknamnet** i **målresursgruppen**
+    > - Backup-valvets hanterade identitet har inte giltiga rolltilldelningar i **målresursgruppen**
+    > - Rolltilldelningarna för säkerhetskopieringsvalvet för hanterad identitet återkallas i resursgruppen **Ögonblicksbild där** inkrementella ögonblicksbilder lagras
+    > - Om inkrementella ögonblicksbilder tas bort eller flyttas från resursgruppen för ögonblicksbilder
 
-Restore kommer att skapa en ny disk från den valda återställnings punkten i mål resurs gruppen som angavs under återställningen. Om du vill använda den återställda disken på en befintlig virtuell dator måste du utföra fler steg:
+Återställningen skapar en ny disk från den valda återställningspunkten i målresursgruppen som angavs under återställningen. Om du vill använda den återställda disken på en befintlig virtuell dator måste du utföra fler steg:
 
-- Om den återställda disken är en data disk kan du koppla en befintlig disk till en virtuell dator. Om den återställda disken är en operativ system disk kan du byta OS-disk för en virtuell dator från Azure Portal under fönstret **virtuell dator** -> **diskar** i avsnittet **Inställningar** .
+- Om den återställda disken är en datadisk kan du ansluta en befintlig disk till en virtuell dator. Om den återställda disken är en OS-disk kan du växla OS-disken  för en virtuell dator från Azure Portal under fönstret Virtuell dator – > **diskmenyn** i **avsnittet** Inställningar.
 
     ![Växla OS-diskar](./media/restore-managed-disks/swap-os-disks.png)
 
-- För virtuella Windows-datorer, om den återställda disken är en datadisk, följer du anvisningarna för att [Koppla från den ursprungliga data disken](../virtual-machines/windows/detach-disk.md#detach-a-data-disk-using-the-portal) från den virtuella datorn. [Anslut sedan den återställda disken](../virtual-machines/windows/attach-managed-disk-portal.md) till den virtuella datorn. Följ anvisningarna för att [Växla OS-disken](../virtual-machines/windows/os-disk-swap.md) för den virtuella datorn med den återställda disken.
+- Om den återställda disken är en datadisk för virtuella Windows-datorer följer du anvisningarna för att koppla från den ursprungliga [datadisken](../virtual-machines/windows/detach-disk.md#detach-a-data-disk-using-the-portal) från den virtuella datorn. Anslut [sedan den återställda disken](../virtual-machines/windows/attach-managed-disk-portal.md) till den virtuella datorn. Följ instruktionerna för [att växla OS-disken](../virtual-machines/windows/os-disk-swap.md) på den virtuella datorn med den återställda disken.
 
-- För virtuella Linux-datorer, om den återställda disken är en datadisk, följer du anvisningarna för att [Koppla från den ursprungliga data disken](../virtual-machines/linux/detach-disk.md#detach-a-data-disk-using-the-portal) från den virtuella datorn. [Anslut sedan den återställda disken](../virtual-machines/linux/attach-disk-portal.md#attach-an-existing-disk) till den virtuella datorn. Följ anvisningarna för att [Växla OS-disken](../virtual-machines/linux/os-disk-swap.md) för den virtuella datorn med den återställda disken.
+- Om den återställda disken är en datadisk för virtuella Linux-datorer följer du anvisningarna för att koppla från den ursprungliga [datadisken](../virtual-machines/linux/detach-disk.md#detach-a-data-disk-using-the-portal) från den virtuella datorn. Anslut [sedan den återställda disken](../virtual-machines/linux/attach-disk-portal.md#attach-an-existing-disk) till den virtuella datorn. Följ instruktionerna för [att växla OS-disken](../virtual-machines/linux/os-disk-swap.md) på den virtuella datorn med den återställda disken.
 
-Vi rekommenderar att du återkallar rollen för **disk återställnings operatören** från säkerhets kopierings valvets hanterade identitet i **mål resurs gruppen** när återställnings åtgärden har slutförts.
+Vi rekommenderar att du återkallar rolltilldelningen **Diskåterställningsoperatör** från Backup-valvets hanterade identitet i målresursgruppen när återställningen har slutförts. 
 
-## <a name="track-a-restore-operation"></a>Spåra en återställnings åtgärd
+## <a name="track-a-restore-operation"></a>Spåra en återställningsåtgärd
 
-När du har utlöst återställnings åtgärden skapar säkerhets kopierings tjänsten ett jobb för spårning. Azure Backup visar meddelanden om jobbet i portalen. Så här visar du återställnings jobbets förlopp:
+När du har utlöst återställningsåtgärden skapar säkerhetskopieringstjänsten ett jobb för spårning. Azure Backup visar meddelanden om jobbet i portalen. Så här visar du förloppet för återställningsjobbet:
 
-1. Gå till sidan **säkerhets kopierings instans** . Den visar instrument panelen jobb med drift och status för de senaste sju dagarna.
+1. Gå till skärmen **Säkerhetskopieringsinstans.** Den visar jobbinstrumentpanelen med åtgärd och status för de senaste sju dagarna.
 
-    ![Instrument panel för jobb](./media/restore-managed-disks/jobs-dashboard.png)
+    ![Instrumentpanel för jobb](./media/restore-managed-disks/jobs-dashboard.png)
 
-1. Om du vill visa status för återställnings åtgärden väljer du **Visa alla** för att visa pågående och tidigare jobb för den här säkerhets kopierings instansen.
+1. Om du vill visa status för återställningsåtgärden väljer du **Visa alla** för att visa pågående och tidigare jobb för den här säkerhetskopieringsinstansen.
 
     ![Välj Visa alla](./media/restore-managed-disks/view-all.png)
 
-1. Granska listan över säkerhets kopierings-och återställnings jobb och deras status. Välj ett jobb i listan med jobb för att visa jobb information.
+1. Granska listan över säkerhetskopierings- och återställningsjobb och deras status. Välj ett jobb i listan över jobb för att visa jobbinformation.
 
     ![Lista över jobb](./media/restore-managed-disks/list-of-jobs.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Vanliga frågor och svar om Azure disk backup](disk-backup-faq.md)
+- [Vanliga frågor och svar om Azure Disk Backup](disk-backup-faq.yml)

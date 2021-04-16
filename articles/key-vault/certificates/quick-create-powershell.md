@@ -1,6 +1,6 @@
 ---
-title: Snabb start – ange & Visa Azure Key Vault certifikat med Azure PowerShell
-description: Snabb start visar hur du ställer in och hämtar ett certifikat från Azure Key Vault med Azure PowerShell
+title: Snabbstart – Konfigurera & visa Azure Key Vault certifikat med Azure PowerShell
+description: Snabbstart som visar hur du ställer in och hämtar ett certifikat från Azure Key Vault med Azure PowerShell
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -8,19 +8,19 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 587815cf9628df35f1e1efdbc6a7a3c89a27ed55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11f463ab0ae60f489fd6b10d06402b6d27fc9930
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071925"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502274"
 ---
-# <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>Snabb start: Ange och hämta ett certifikat från Azure Key Vault med Azure PowerShell
+# <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>Snabbstart: Ange och hämta ett certifikat från en Azure Key Vault med Azure PowerShell
 
-I den här snabb starten skapar du ett nyckel valv i Azure Key Vault med Azure PowerShell. Azure Key Vault är en molntjänst som fungerar som ett säkert lager för hemligheter. Du kan på ett säkert sätt lagra nycklar, lösenord, certifikat och andra hemligheter. Mer information om Key Vault kan du läsa [översikten](../general/overview.md). Azure PowerShell används för att skapa och hantera Azure-resurser med hjälp av kommandon eller skript. När du har slutfört det kommer du att lagra ett certifikat.
+I den här snabbstarten skapar du ett nyckelvalv i Azure Key Vault med Azure PowerShell. Azure Key Vault är en molntjänst som fungerar som ett säkert lager för hemligheter. Du kan på ett säkert sätt lagra nycklar, lösenord, certifikat och andra hemligheter. Mer information om Key Vault finns i [Översikt.](../general/overview.md) Azure PowerShell används för att skapa och hantera Azure-resurser med hjälp av kommandon eller skript. När du har slutfört det lagrar du ett certifikat.
 
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
@@ -41,11 +41,11 @@ Login-AzAccount
 
 [!INCLUDE [Create a key vault](../../../includes/key-vault-powershell-kv-creation.md)]
 
-## <a name="add-a-certificate-to-key-vault"></a>Lägg till ett certifikat i Key Vault
+## <a name="add-a-certificate-to-key-vault"></a>Lägga till ett certifikat i Key Vault
 
-Om du vill lägga till ett certifikat i valvet behöver du bara göra några ytterligare steg. Det här certifikatet kan användas av ett program. 
+Om du vill lägga till ett certifikat i valvet behöver du bara vidta några ytterligare steg. Det här certifikatet kan användas av ett program. 
 
-Skriv kommandona nedan för att skapa ett självsignerat certifikat med principen med namnet **ExampleCertificate** :
+Skriv kommandona nedan för att skapa ett själv signerat certifikat med principen **ExampleCertificate** :
 
 ```azurepowershell-interactive
 $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal
@@ -53,9 +53,9 @@ $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs
 Add-AzKeyVaultCertificate -VaultName "<your-unique-keyvault-name>" -Name "ExampleCertificate" -CertificatePolicy $Policy
 ```
 
-Nu kan du referera till det här certifikatet som du lade till Azure Key Vault med hjälp av dess URI. Använd **"https://<ditt-Unique-nyckel-namn>. Vault.Azure.net/certificates/ExampleCertificate"** för att hämta den aktuella versionen. 
+Du kan nu referera till det här certifikatet som du har lagt till Azure Key Vault med hjälp av dess URI. Använd **"https://<your-unique-keyvault-name>.vault.azure.net/certificates/ExampleCertificate" för** att hämta den aktuella versionen. 
 
-Visa tidigare lagrat certifikat:
+Så här visar du tidigare lagrade certifikat:
 
 ```azurepowershell-interactive
 Get-AzKeyVaultCertificate -VaultName "<your-unique-keyvault-name>" -Name "ExampleCertificate"
@@ -63,14 +63,26 @@ Get-AzKeyVaultCertificate -VaultName "<your-unique-keyvault-name>" -Name "Exampl
 
 Nu har du skapat en Key Vault, lagrat ett certifikat och hämtat det.
 
+**Felsökning:**
+
+Åtgärden returnerade den ogiltiga statuskoden "Förbjuden"
+
+Om du får det här felet har kontot som använder Azure Key Vault inte rätt behörighet för att skapa certifikat.
+
+Kör följande kommando Azure PowerShell för att tilldela rätt behörigheter:
+
+```azurepowershell-interactive
+Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> -ObjectId <AzureObjectID> -PermissionsToCertificates get,list,update,create
+```
+
 ## <a name="clean-up-resources"></a>Rensa resurser
 
 [!INCLUDE [Create a key vault](../../../includes/key-vault-powershell-delete-resources.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du ett Key Vault och lagrat ett certifikat i det. Om du vill veta mer om Key Vault och hur du integrerar den med dina program, Fortsätt till artiklarna nedan.
+I den här snabbstarten har du skapat Key Vault och lagrat ett certifikat i den. Mer information om Key Vault och hur du integrerar det med dina program finns i artiklarna nedan.
 
-- Läs en [Översikt över Azure Key Vault](../general/overview.md)
-- Se referensen för [Azure PowerShell Key Vault-cmdletar](/powershell/module/az.keyvault/)
-- Granska [Key Vault säkerhets översikt](../general/security-overview.md)
+- Läs en [översikt över Azure Key Vault](../general/overview.md)
+- Se referensen för [Azure PowerShell Key Vault cmdlets](/powershell/module/az.keyvault/)
+- Granska Key Vault [säkerhetsöversikten](../general/security-overview.md)

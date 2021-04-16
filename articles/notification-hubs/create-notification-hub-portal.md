@@ -3,22 +3,24 @@ title: Skapa en Azure-meddelandehubb med hjälp av Azure-portalen | Microsoft Do
 description: I den här självstudien lär du dig att skapa en Azure SQL-meddelandehubb med hjälp av Azure-portalen.
 services: notification-hubs
 author: sethmanheim
+ms.author: sethm
 manager: femila
+ms.reviewer: thsomasu
+ms.date: 08/04/2020
+ms.lastreviewed: 02/14/2019
+ms.topic: quickstart
 ms.service: notification-hubs
 ms.workload: mobile
-ms.topic: quickstart
-ms.date: 08/04/2020
-ms.author: sethm
-ms.reviewer: thsomasu
-ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 141812e83653b458a2562bf73b70117c39bf7be0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 4381c9259788982832a02ecbe2c87c6f6e723772
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92426555"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533595"
 ---
-# <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>Snabb start: skapa en Azure Notification Hub i Azure Portal
+# <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>Snabbstart: Skapa en Azure-meddelandehubb i Azure Portal
 
 Azure Notification Hubs innehåller en lättanvänd och uppskalad push-motor som gör det möjligt för dig att skicka meddelanden till valfri plattform (iOS, Android, Windows, Kindle, Baidu osv) från valfri serverdel (molnet eller lokalt). Mer information om tjänsten finns i [Vad är Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
@@ -52,10 +54,10 @@ I det här avsnittet skapar du en meddelandehubb i en befintlig namnrymd.
       ![Distributionsmeddelande](./media/create-notification-hub-portal/deployment-notification.png)
 7. Uppdatera webbplatsen **Notification Hub Namespaces** (Namnrymder för meddelandehubb) för att se den nya hubben i listan.
 
-      ![Skärm bild som visar webb sidan för Notification Hub-namnområden med den nya hubben i listan.](./media/create-notification-hub-portal/new-hub-in-list.png)
+      ![Skärmbild som visar webbsidan Notification Hub Namespaces med den nya hubben i listan.](./media/create-notification-hub-portal/new-hub-in-list.png)
 8. Välj din **meddelandehubb** för att se startsidan för meddelandehubben.
 
-      ![Skärm bild som visar start sidan för Notification Hub.](./media/create-notification-hub-portal/hub-home-page.png)
+      ![Skärmbild som visar startsidan för din meddelandehubb.](./media/create-notification-hub-portal/hub-home-page.png)
 
 ## <a name="next-steps"></a>Nästa steg
 

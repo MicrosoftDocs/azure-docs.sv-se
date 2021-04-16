@@ -1,6 +1,6 @@
 ---
-title: Hantera extern åtkomst med Azure Active Directory rättighets hantering
-description: Använda Azure Active Directory rättighets hantering som en del av din övergripande säkerhets plan för extern åtkomst.
+title: Hantera extern åtkomst med Azure Active Directory Berättigandehantering
+description: Hur du använder Azure Active Directory Berättigandehantering som en del av din övergripande säkerhetsplan för extern åtkomst.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,65 +13,65 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f06a54f59405d9833194b2e7d4488bc93d2437ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89744b63a555cc02d35815b4066ce572b7f77e38
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98725186"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531889"
 ---
-# <a name="manage-external-access-with-entitlement-management"></a>Hantera extern åtkomst med hantering av rättigheter 
+# <a name="manage-external-access-with-entitlement-management"></a>Hantera extern åtkomst med berättigandehantering 
 
 
-[Rättighets hantering](../governance/entitlement-management-overview.md) är en identitets styrnings funktion som gör det möjligt för organisationer att hantera identitets-och åtkomst livs cykeln i skala genom att automatisera åtkomst till begär ande arbets flöden, åtkomst tilldelningar, recensioner och förfallo datum. Rättighets hantering gör det möjligt för delegerade icke-administratörer att skapa [åtkomst paket](../governance/entitlement-management-overview.md) som externa användare från andra organisationer kan begära åtkomst till. Ett arbets flöde för godkännande med flera steg kan konfigureras för att utvärdera förfrågningar och [etablera](../governance/what-is-provisioning.md) användare för tidsbegränsad åtkomst med återkommande granskningar. Hantering av rättigheter möjliggör principbaserad etablering och avetablering av externa konton.
+[Berättigandehantering](../governance/entitlement-management-overview.md) är en identitetsstyrningsfunktion som gör det möjligt för organisationer att hantera identitets- och åtkomstlivscykeln i stor skala genom att automatisera arbetsflöden för åtkomstbegäran, åtkomsttilldelningar, granskningar och förfallodatum. Med berättigandehantering kan delegerade icke-administratörer skapa [åtkomstpaket](../governance/entitlement-management-overview.md) som externa användare från andra organisationer kan begära åtkomst till. Ett arbetsflöde för godkännande i flera steg kan konfigureras för att utvärdera begäranden och etablera användare för tidsbegränsad åtkomst med återkommande granskningar. [](../governance/what-is-provisioning.md) Berättigandehantering möjliggör principbaserad etablering och avetablering av externa konton.
 
-## <a name="key-concepts-for-enabling-entitlement-management"></a>Viktiga begrepp för att aktivera hantering av rättigheter
+## <a name="key-concepts-for-enabling-entitlement-management"></a>Viktiga begrepp för att aktivera berättigandehantering
 
-Följande viktiga begrepp är viktiga för att förstå hantering av rättigheter.
+Följande viktiga begrepp är viktiga att förstå för berättigandehantering.
 
-### <a name="access-packages"></a>Åtkomst paket
+### <a name="access-packages"></a>Åtkomstpaket
 
-Ett [Access-paket](../governance/entitlement-management-overview.md) är grunden för rättighets hantering. Åtkomst paketen är grupper av reglerade resurser som en användare behöver för att samar beta med ett projekt eller utföra andra uppgifter. Till exempel kan ett Access-paket innehålla:
+Ett [åtkomstpaket](../governance/entitlement-management-overview.md) är grunden för berättigandehantering. Åtkomstpaket är gruppindelade principstyrda resurser som en användare behöver för att samarbeta i ett projekt eller utföra andra uppgifter. Ett åtkomstpaket kan till exempel innehålla:
 
-* åtkomst till vissa SharePoint-webbplatser.
+* åtkomst till specifika SharePoint-webbplatser.
 
-* företags program inklusive dina anpassade interna och SaaS appar som Salesforce.
+* företagsprogram, inklusive dina anpassade in-house- och SaaS-appar som Salesforce.
 
 * Microsoft Teams-kanaler.
 
-* Microsoft 365 grupper. 
+* Microsoft 365-grupper. 
 
 ### <a name="catalogs"></a>Kataloger
 
-Åtkomst paket finns i [kataloger](../governance/entitlement-management-catalog-create.md). Du skapar en katalog när du vill gruppera relaterade resurser och få åtkomst till paket och delegera möjligheten att hantera dem. Först lägger du till resurser i en katalog och sedan kan du lägga till dessa resurser för att få åtkomst till paket. Du kanske till exempel vill skapa en "ekonomi"-katalog och [delegera dess hantering](../governance/entitlement-management-delegate.md) till en medlem i ekonomi teamet. Den personen kan sedan [lägga till resurser](../governance/entitlement-management-catalog-create.md), skapa åtkomst paket och hantera åtkomst godkännande till dessa paket.
+Åtkomstpaket finns [i kataloger](../governance/entitlement-management-catalog-create.md). Du skapar en katalog när du vill gruppera relaterade resurser och komma åt paket och delegera möjligheten att hantera dem. Först lägger du till resurser i en katalog och sedan kan du lägga till resurserna för att komma åt paket. Du kanske till exempel vill skapa en "ekonomikatalog" och [delegera dess hantering](../governance/entitlement-management-delegate.md) till en medlem i ekonomiteamet. Den personen kan sedan [lägga till resurser,](../governance/entitlement-management-catalog-create.md)skapa åtkomstpaket och hantera åtkomstgodkännande för dessa paket.
 
-Följande diagram visar en typisk styrnings livs cykel för en extern användare som får åtkomst till ett Access-paket som har ett förfallo datum.
+Följande diagram visar en typisk styrningslivscykel för en extern användare som får åtkomst till ett åtkomstpaket som har förfallotid.
 
-![Ett diagram över den externa användar styrnings cykeln.](media/secure-external-access/6-governance-lifecycle.png)
+![Ett diagram över styrningscykeln för externa användare.](media/secure-external-access/6-governance-lifecycle.png)
 
-### <a name="self-service-external-access"></a>Extern åtkomst till självbetjäning
+### <a name="self-service-external-access"></a>Extern självbetjäning
 
-Du kan få åtkomst till paket för Surface via [Azure AD My Access-portalen](../governance/entitlement-management-request-access.md) för att göra det möjligt för externa användare att begära åtkomst. Principer avgör vem som kan begära ett åtkomst paket. Du anger vem som tillåts att begära åtkomst paketet:
+Du kan öppna åtkomstpaket via [Azure AD Min åtkomst portalen så](../governance/entitlement-management-request-access.md) att externa användare kan begära åtkomst. Principer avgör vem som kan begära ett åtkomstpaket. Du anger vem som får begära åtkomstpaketet:
 
-* Vissa [anslutna organisationer](../governance/entitlement-management-organization.md)
+* Specifika [anslutna organisationer](../governance/entitlement-management-organization.md)
 
 * Alla konfigurerade anslutna organisationer
 
-* Alla användare från vilken organisation som helst
+* Alla användare från valfri organisation
 
-* Användare av medlemmar eller gäster som redan finns i din klient organisation
+* Medlems- eller gästanvändare som redan finns i din klientorganisation
 
 ### <a name="approvals"></a>Godkännanden   
-Åtkomst paket kan innehålla obligatoriskt godkännande för åtkomst. **Implementera alltid godkännande processer för externa användare**. Godkännanden kan vara ett enda eller ett godkännande av flera steg. Godkännanden bestäms av principer. Om både interna och externa användare behöver åtkomst till samma paket kommer du troligen att ha olika åtkomst principer för olika kategorier av anslutna organisationer och för interna användare.
+Åtkomstpaket kan innehålla obligatoriskt godkännande för åtkomst. **Implementera alltid godkännandeprocesser för externa användare.** Godkännanden kan vara ett godkännande i en eller flera steg. Godkännanden bestäms av principer. Om både interna och externa användare behöver åtkomst till samma paket kommer du troligen att konfigurera olika åtkomstprinciper för olika kategorier av anslutna organisationer och för interna användare.
 
 ### <a name="expiration"></a>Förfallodatum  
-Åtkomst paket kan innehålla ett förfallo datum. Förfallo datum kan anges till en angiven dag eller ge användaren ett bestämt antal dagar för åtkomst. När åtkomst paketet upphör att gälla och användaren inte har någon annan åtkomst, kan det B2B-gäst användar objekt som representerar användaren tas bort eller blockeras från att logga in. Vi rekommenderar att du tillämpar förfallo datum på åtkomst paket för externa användare. Alla åtkomst paket har inte förfallit. Se till att du utför åtkomst granskningar för de som inte gör det.
+Åtkomstpaket kan innehålla ett förfallodatum. Förfallotiden kan anges till en viss dag eller ge användaren ett visst antal dagar för åtkomst. När åtkomstpaketet upphör att gälla och användaren inte har någon annan åtkomst kan B2B-gästanvändarobjektet som representerar användaren tas bort eller blockeras från att logga in. Vi rekommenderar att du framtvingar förfallotid för åtkomstpaket för externa användare. Alla åtkomstpaket har inte förfallotid. Se till att du utför åtkomstgranskningar för dem som inte gör det.
 
 ### <a name="access-reviews"></a>Åtkomstgranskningar
 
-Åtkomst paket kan kräva periodiska [åtkomst granskningar](../governance/manage-guest-access-with-access-reviews.md), som kräver att paket ägaren eller en formgivningsmall bestyrkar fortsatt behov av användarens åtkomst. 
+Åtkomstpaket kan kräva [periodiska åtkomstgranskningar,](../governance/manage-guest-access-with-access-reviews.md)vilket kräver att paketägaren eller en designmottagare kan intyga det återkommande behovet av användarnas åtkomst. 
 
-Innan du ställer in din granskning ska du bestämma följande.
+Innan du ställer in granskningen bör du fastställa följande.
 
 * Vem
 
@@ -81,93 +81,93 @@ Innan du ställer in din granskning ska du bestämma följande.
 
 * Hur ofta ska schemalagda granskningar ske?
 
-   * Inbyggda alternativ omfattar varje månad, kvartals vis, två per år eller varje år. 
+   * Inbyggda alternativ omfattar månadsvis, kvartalsvis, varannan år eller varje år. 
 
-   * Vi rekommenderar kvartals vis eller oftare för paket som stöder extern åtkomst. 
+   * Vi rekommenderar kvartalsvis eller oftare för paket som stöder extern åtkomst. 
 
  
 
 > [!IMPORTANT]
-> Åtkomst granskningar av åtkomst paket granska endast åtkomst som beviljats via rättighets hantering. Du måste därför konfigurera andra processer för att granska all åtkomst som erbjuds till externa användare utanför hantering av rättigheter.
+> Åtkomstgranskningar av åtkomstpaket granskar endast åtkomst som beviljats via berättigandehantering. Du måste därför konfigurera andra processer för att granska all åtkomst som ges till externa användare utanför Rättighetshantering.
 
-Mer information om åtkomst granskningar finns i [Planera distribution av åtkomst granskningar för Azure AD](../governance/deploy-access-reviews.md).
+Mer information om åtkomstgranskningar finns i [Planera en distribution av Azure AD-åtkomstgranskningar.](../governance/deploy-access-reviews.md)
 
-## <a name="using-automation-in-entitlement-management"></a>Använda Automation i hantering av rättigheter
+## <a name="using-automation-in-entitlement-management"></a>Använda automatisering i berättigandehantering
 
-Du kan utföra [rättighets hanterings funktioner med hjälp av Microsoft Graph](/graph/tutorial-access-package-api), inklusive
+Du kan utföra [funktioner för berättigandehantering med hjälp Microsoft Graph](/graph/tutorial-access-package-api), inklusive
 
-* [Hantera åtkomst paket](/graph/api/resources/accesspackage?view=graph-rest-beta)
+* [Hantera åtkomstpaket](/graph/api/resources/accesspackage?view=graph-rest-beta&preserve-view=true)
 
-* [Hantera åtkomst granskningar](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
+* [Hantera åtkomstgranskningar](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true)
 
-* [Hantera anslutna organisationer](/graph/api/resources/connectedorganization?view=graph-rest-beta)
+* [Hantera anslutna organisationer](/graph/api/resources/connectedorganization?view=graph-rest-beta&preserve-view=true)
 
-* [Hantera inställningar för hantering av rättigheter](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
+* [Hantera inställningar för berättigandehantering](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta&preserve-view=true)
 
 ## <a name="recommendations"></a>Rekommendationer 
 
-Vi rekommenderar metoderna för att styra extern åtkomst med hantering av rättigheter.
+Vi rekommenderar metoder för att styra extern åtkomst med berättigandehantering.
 
-**För projekt med en eller flera affärs partner kan du [skapa och använda Access-paket](../governance/entitlement-management-access-package-create.md) för att publicera och etablera dessa partners användares åtkomst till resurser**. 
+**För projekt med en eller [](../governance/entitlement-management-access-package-create.md) flera affärspartner skapar** och använder du åtkomstpaket för att registrera och etablera dessa partners användare åtkomst till resurser. 
 
-* Om du redan har B2B-användare i din katalog kan du också tilldela dem direkt till lämpliga åtkomst paket.
+* Om du redan har B2B-användare i din katalog kan du också tilldela dem direkt till lämpliga åtkomstpaket.
 
-* Du kan tilldela åtkomst i [Azure Portal](../governance/entitlement-management-access-package-assignments.md)eller via [Microsoft Graph](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta).
+* Du kan tilldela åtkomst i [Azure Portal](../governance/entitlement-management-access-package-assignments.md), eller via [Microsoft Graph](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta&preserve-view=true).
 
-**Använd dina inställningar för identitets styrning för att ta bort användare från din katalog när åtkomst paketen upphör att gälla**.
+**Använd inställningarna för Identitetsstyrning för att ta bort användare från din katalog när deras åtkomstpaket upphör att gälla.**
 
-![Skärm bild av konfiguration hantera livs cykeln för externa användare.](media/secure-external-access/6-manage-external-lifecycle.png)
+![Skärmbild av hur du konfigurerar hantering av livscykeln för externa användare.](media/secure-external-access/6-manage-external-lifecycle.png)
 
-Dessa inställningar gäller endast för användare som har registrerats via rättighets hantering.
+De här inställningarna gäller endast för användare som har introducerats via berättigandehantering.
 
-**[Delegera hantering av kataloger och åtkomst paket](../governance/entitlement-management-delegate.md) till företags ägare, som har mer information om vem som ska ha åtkomst**.
+**[Delegera hantering av kataloger och åtkomstpaket till](../governance/entitlement-management-delegate.md) företagsägare som har mer information om vem som ska ha åtkomst till**.
 
-![Skärm bild som visar hur du konfigurerar en katalog.](media/secure-external-access/6-catalog-management.png)
+![Skärmbild av att konfigurera en katalog.](media/secure-external-access/6-catalog-management.png)
 
-**[Framtvinga förfallo datum för de åtkomst paket](../governance/entitlement-management-access-package-lifecycle-policy.md) som externa användare har åtkomst till.**
+**[Framtvinga förfallodatum för åtkomstpaket](../governance/entitlement-management-access-package-lifecycle-policy.md) som externa användare har åtkomst till.**
 
 
-![Skärm bild över att konfigurera åtkomst paketets förfallo datum.](media/secure-external-access/6-access-package-expiration.png)
+![Skärmbild av konfiguration av förfallotid för åtkomstpaket.](media/secure-external-access/6-access-package-expiration.png)
 
-* Om du känner till slutdatumet för ett projekt baserat åtkomst paket använder du datumet för att ange ett visst datum. 
+* Om du känner till slutdatumet för ett projektbaserat åtkomstpaket använder du Datumet för att ange det specifika datumet. 
 
-* Annars rekommenderar vi att giltighets tiden inte längre är 365 dagar, om det inte är känt att det är ett fyraårigt engagemang.
+* Annars rekommenderar vi att förfallotiden inte längre är 365 dagar, såvida det inte är känt som ett flerårsinteragemang.
 
-* Tillåt användare att utöka åtkomst.
+* Tillåt användare att utöka åtkomsten.
 
 * Kräv godkännande för att bevilja tillägget.
 
-**[Framtvinga åtkomst granskningar av paket](../governance/manage-guest-access-with-access-reviews.md) för att undvika olämplig åtkomst för gäster.**
+**[Framtvinga åtkomstgranskningar av](../governance/manage-guest-access-with-access-reviews.md) paket för att undvika olämplig åtkomst för gäster.**
 
-![Skärm bild som visar hur du skapar ett nytt Access-paket.](media/secure-external-access/6-new-access-package.png)
+![Skärmbild av att skapa ett nytt åtkomstpaket.](media/secure-external-access/6-new-access-package.png)
 
-* Påtvinga granskningar kvartals vis.
+* Framtvinga granskningar kvartalsvis.
 
-* För kompatibilitets känsliga projekt anger du att granskarna ska vara enskilda granskare i stället för själv granskning för externa användare. De användare som har åtkomst till paket hanterare är en bra plats för att starta för granskare. 
+* För efterlevnadskänsliga projekt anger du att granskarna ska vara specifika granskare i stället för att vara självgranskning för externa användare. Användare som är åtkomstpakethanterare är ett bra ställe att börja på för granskare. 
 
-* För mindre känsliga projekt kan användare med själv granskning minska belastningen på organisationen för att ta bort åtkomst från användare som inte längre har sin hem organisation.
+* För mindre känsliga projekt kan användarnas självgranskning minska organisationens arbetsbörda med att ta bort åtkomst från användare som inte längre är med i hemorganisationen.
 
-Mer information finns i [styra åtkomsten för externa användare i hantering av Azure AD-rättigheter](../governance/entitlement-management-external-users.md) 
+Mer information finns i Styra [åtkomst för externa användare i Azure AD-berättigandehantering](../governance/entitlement-management-external-users.md) 
 
 ### <a name="next-steps"></a>Nästa steg
 
-Se följande artiklar om hur du skyddar extern åtkomst till resurser. Vi rekommenderar att du vidtar åtgärder i den angivna ordningen.
+Se följande artiklar om att skydda extern åtkomst till resurser. Vi rekommenderar att du vidta åtgärderna i den angivna ordningen.
 
-1. [Bestäm din säkerhets position för extern åtkomst](1-secure-access-posture.md)
+1. [Fastställa din säkerhetsstatus för extern åtkomst](1-secure-access-posture.md)
 
-2. [Identifiera ditt nuvarande tillstånd](2-secure-access-current-state.md)
+2. [Identifiera ditt aktuella tillstånd](2-secure-access-current-state.md)
 
-3. [Skapa en styrnings plan](3-secure-access-plan.md)
+3. [Skapa en styrningsplan](3-secure-access-plan.md)
 
 4. [Använda grupper för säkerhet](4-secure-access-groups.md)
 
-5. [Över gång till Azure AD B2B](5-secure-access-b2b.md)
+5. [Övergång till Azure AD B2B](5-secure-access-b2b.md)
 
-6. [Säker åtkomst med hantering av rättigheter](6-secure-access-entitlement-managment.md) (du är här.)
+6. [Säker åtkomst med berättigandehantering](6-secure-access-entitlement-managment.md) (du är här.)
 
-7. [Säker åtkomst med principer för villkorlig åtkomst](7-secure-access-conditional-access.md)
+7. [Säker åtkomst med principer för villkorsstyrd åtkomst](7-secure-access-conditional-access.md)
 
-8. [Säker åtkomst med känslighets etiketter](8-secure-access-sensitivity-labels.md)
+8. [Säker åtkomst med känslighetsetiketter](8-secure-access-sensitivity-labels.md)
 
 9. [Säker åtkomst till Microsoft Teams, OneDrive och SharePoint](9-secure-access-teams-sharepoint.md)
 

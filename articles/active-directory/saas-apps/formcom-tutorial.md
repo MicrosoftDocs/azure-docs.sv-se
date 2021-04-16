@@ -9,103 +9,77 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/15/2019
+ms.date: 04/05/2021
 ms.author: jeedes
-ms.openlocfilehash: d1a203824eabaf9e3be73a68350f58c0e20a1449
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 011f854c7c6885029468c1e93ce60af9a1c06b80
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92451980"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516135"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>Självstudie: Azure Active Directory integrering med Form.com
 
-I den här självstudien lär du dig att integrera Form.com med Azure Active Directory (Azure AD).
-När du integrerar Form.com med Azure AD får du följande fördelar:
+I den här självstudien lär du dig att integrera Form.com med Azure Active Directory (Azure AD). När du integrerar Form.com med Azure AD kan du:
 
-* Du kan styra vem som har åtkomst till Form.com i Azure AD.
-* Du kan låta dina användare loggas in automatiskt på Form.com (enkel inloggning) med sina Azure AD-konton.
-* Du kan hantera dina konton på en central plats – Azure-portalen.
-
-Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
+* Kontrollera i Azure AD vem som har åtkomst till Form.com.
+* Gör så att dina användare automatiskt loggas in på Form.com med sina Azure AD-konton.
+* Hantera dina konton på en central plats – Azure Portal.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-För att konfigurera Azure AD-integrering med Form.com behöver du följande:
+För att komma igång behöver du följande:
 
-* En Azure AD-prenumeration. Om du inte har någon Azure AD-miljö kan du hämta en månads utvärderingsversion [här](https://azure.microsoft.com/pricing/free-trial/)
-* En aktiverad Form.com-prenumeration med enkel inloggning
+* En Azure AD-prenumeration. Om du inte har en prenumeration kan du skaffa ett [kostnadsfritt konto.](https://azure.microsoft.com/free/)
+* Form.com-prenumeration med enkel inloggning (SSO).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
 I den här självstudien konfigurerar och testar du enkel inloggning med Azure AD i en testmiljö.
 
-* Form.com har stöd för **SP**-initierad enkel inloggning
+* Form.com har stöd för **SP-initierad** enkel inloggning.
 
-## <a name="adding-formcom-from-the-gallery"></a>Lägga till Form.com från galleriet
+## <a name="add-formcom-from-the-gallery"></a>Lägga Form.com från galleriet
 
 När du konfigurerar integreringen av Form.com i Azure AD, måste du lägga till Form.com från galleriet i din lista med hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till Form.com från galleriet:**
+1. Logga in på Azure Portal med ett arbets- eller skolkonto eller ett personligt Microsoft-konto.
+1. I det vänstra navigeringsfönstret väljer du **Azure Active Directory** tjänst.
+1. Gå till **Företagsprogram** och välj sedan **Alla program.**
+1. Om du vill lägga till ett nytt program väljer **du Nytt program**.
+1. I avsnittet **Lägg till från** galleriet skriver **Form.com** i sökrutan.
+1. Välj **Form.com** från resultatpanelen och lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klientorganisation.
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen.
+## <a name="configure-and-test-azure-ad-sso-for-formcom"></a>Konfigurera och testa enkel inloggning med Azure AD för Form.com
 
-    ![Azure Active Directory-knappen](common/select-azuread.png)
+Konfigurera och testa enkel inloggning för Azure AD Form.com med hjälp av en testanvändare med namnet **B.Simon**. För att enkel inloggning ska fungera måste du upprätta en länkrelation mellan en Azure AD-användare och den relaterade användaren i Form.com.
 
-2. Gå till **Företagsprogram** och välj alternativet **Alla program**.
+Utför följande steg för att konfigurera och testa enkel inloggning Form.com Azure AD med hjälp av Form.com:
 
-    ![Bladet Företagsprogram](common/enterprise-applications.png)
+1. **[Konfigurera enkel inloggning med Azure AD](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
+    1. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** – för att testa enkel inloggning med Azure AD med B.Simon.
+    1. **[Tilldela Azure AD-testanvändaren](#assign-the-azure-ad-test-user)** – så att B.Simon kan använda enkel inloggning med Azure AD.
+1. **[Konfigurera Form.com enkel inloggning](#configure-formcom-sso)** – för att konfigurera inställningarna för enkel inloggning på programsidan.
+    1. **[Skapa Form.com testanvändare –](#create-formcom-test-user)** för att ha en motsvarighet för B.Simon i Form.com som är länkad till En Azure AD-representation av användaren.
+1. **[Testa enkel inloggning](#test-sso)** – för att kontrollera om konfigurationen fungerar.
 
-3. Lägg till ett nytt program genom att klicka på knappen **Nytt program** högst upp i dialogrutan.
+## <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
 
-    ![Knappen Nytt program](common/add-new-app.png)
+Följ dessa steg för att aktivera enkel inloggning med Azure AD i Azure Portal.
 
-4. I sökrutan skriver du **Form.com**, väljer **Form.com** i resultatpanelen och klickar sedan på knappen **Lägg till** för att lägga till programmet.
+1. I Azure Portal på sidan **Form.com** programintegrering hittar du avsnittet **Hantera** och väljer **enkel inloggning.**
+1. På sidan **Välj en metod för enkel inloggning** väljer du **SAML**.
+1. På sidan **Konfigurera enkel inloggning med SAML klickar** du på pennikonen för Grundläggande **SAML-konfiguration för** att redigera inställningarna.
 
-     ![Form.com i resultatlistan](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
-
-I det här avsnittet ska du konfigurera och testa enkel inloggning i Azure AD med Form.com baserat på testanvändaren **Britta Simon**.
-För att enkel inloggning ska fungera måste en länkrelation mellan en Azure AD-användare och den relaterade användaren i Form.com upprättas.
-
-Om du vill konfigurera och testa enkel inloggning i Azure AD med Form.com, måste du slutföra följande byggblock:
-
-1. **[Konfigurera enkel inloggning med Azure AD](#configure-azure-ad-single-sign-on)** – så att användarna kan använda den här funktionen.
-2. **[Konfigurera enkel inloggning för Form.com](#configure-formcom-single-sign-on)** – för att konfigurera inställningarna för enkel inloggning på programsidan.
-3. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** – för att testa enkel inloggning med Azure AD med Britta Simon.
-4. **[Tilldela Azure AD-testanvändaren](#assign-the-azure-ad-test-user)** – så att Britta Simon kan använda enkel inloggning med Azure AD.
-5. **[Skapa Form.com-testanvändare](#create-formcom-test-user)** – för att ha en motsvarighet till Britta Simon i Form.com som är länkad till Azure AD-representationen av användaren.
-6. **[Testa enkel inloggning](#test-single-sign-on)** – för att verifiera om konfigurationen fungerar.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera enkel inloggning med Azure AD
-
-I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen.
-
-Utför följande steg för att konfigurera enkel inloggning i Azure AD med Form.com:
-
-1. Välj **Enkel inloggning** på sidan för programintegrering av **Form.com** i [Azure-portalen](https://portal.azure.com/).
-
-    ![Konfigurera länk för enkel inloggning](common/select-sso.png)
-
-2. I dialogrutan **Välj en metod för enkel inloggning** väljer du läget **SAML/WS-Fed** för att aktivera enkel inloggning.
-
-    ![Välja läge för enkel inloggning](common/select-saml-option.png)
-
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
-
-    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
+   ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 4. I avsnittet **Grundläggande SAML-konfiguration** utför du följande steg:
 
-    ![Information om Form.com-domän och URL:er med enkel inloggning](common/sp-identifier-reply.png)
+    a. I **textrutan Inloggnings-URL** skriver du en URL med följande mönster: `https://<subdomain>.wa-form.com`
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<subdomain>.wa-form.com`
+    b. I rutan **Identifierare** skriver du en URL med följande mönster: `https://<subdomain>.form.com`
 
-    b. I rutan **identifierare** anger du en URL med följande mönster: `https://<subdomain>.form.com`
-
-    c. I textrutan **Svars-URL** skriver du in en URL med följande mönster:
+    c. I **textrutan Svars-URL** skriver du en URL med något av följande mönster:
     
     ```http
     https://<subdomain>.wa-form.com/Member/UserAccount/SAML2.action
@@ -123,81 +97,48 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Form.
 
     ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
 
-    a. Inloggnings-URL
-
-    b. Azure AD-identifierare
-
-    c. Utloggnings-URL
-
-### <a name="configure-formcom-single-sign-on"></a>Konfigurera enkel inloggning i Form.com
-
-För att konfigurera enkel inloggning på **Form.com**-sidan behöver du skicka det nedladdade **certifikatet (Base64)**, **URL för appfederationsmetadata** samt lämpliga kopierade URL:er från Azure-portalen till [supportteamet för Form.com](https://form.com/about/company/contact-us/). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
-
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
 
-Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
+I det här avsnittet skapar du en testanvändare i Azure Portal med namnet B.Simon.
 
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory**, välj **Users** och sedan **Alla användare**.
-
-    ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
-
-2. Välj **ny användare** överst på skärmen.
-
-    ![Knappen Ny användare](common/new-user.png)
-
-3. Genomför följande steg i Användaregenskaper.
-
-    ![Dialogrutan Användare](common/user-properties.png)
-
-    a. I fältet **Namn** anger du **BrittaSimon**.
-  
-    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
-    Till exempel BrittaSimon@contoso.com
-
-    c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
-
-    d. Klicka på **Skapa**.
+1. I den vänstra rutan i Azure Portal väljer **du Azure Active Directory**, **väljer Användare** och sedan **Alla användare.**
+1. Välj **Ny** användare överst på skärmen.
+1. Följ dessa **steg** i Användaregenskaper:
+   1. I **Namn**-fältet skriver du `B.Simon`.  
+   1. I **fältet Användarnamn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
-I det här avsnittet låter du Britta Simon använda enkel inloggning i Azure genom att ge henne åtkomst till Form.com.
+I det här avsnittet gör du det möjligt för B.Simon att använda enkel inloggning med Azure genom att ge åtkomst till Form.com.
 
-1. I Azure-portalen väljer du **Företagsprogram**, **Alla program** och sedan **Form.com**.
+1. I Azure Portal väljer du **Företagsprogram** och sedan **Alla program**.
+1. I listan med program väljer du **Form.com**.
+1. På appens översiktssida hittar du avsnittet **Hantera** och väljer **Användare och grupper.**
+1. Välj **Lägg till** användare och välj sedan Användare och **grupper** i dialogrutan Lägg **till** tilldelning.
+1. I **dialogrutan Användare och** grupper väljer du **B.Simon** i  listan Användare och klickar sedan på knappen Välj längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas till användarna kan du välja den från **listrutan Välj en** roll. Om ingen roll har ställts in för den här appen visas rollen "Standardåtkomst" vald.
+1. I dialogrutan **Lägg till** tilldelning klickar du på **knappen** Tilldela.
 
-    ![Bladet Företagsprogram](common/enterprise-applications.png)
+## <a name="configure-formcom-sso"></a>Konfigurera Form.com enkel inloggning
 
-2. I listan med program väljer du **Form.com**.
-
-    ![Form.com-länken i programlistan](common/all-applications.png)
-
-3. På menyn till vänster väljer du **Användare och grupper**.
-
-    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
-
-    ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
-
-5. I dialogrutan **Användare och grupper** väljer du **Britta Simon** i listan med användare och klickar på knappen **Välj** längst ned på skärmen.
-
-6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
-
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
+För att konfigurera enkel inloggning på **Form.com**-sidan behöver du skicka det nedladdade **certifikatet (Base64)**, **URL för appfederationsmetadata** samt lämpliga kopierade URL:er från Azure-portalen till [supportteamet för Form.com](https://form.com/about/company/contact-us/). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
 
 ### <a name="create-formcom-test-user"></a>Skapa Form.com-testanvändare
 
-I det här avsnittet ska du skapa en användare med namnet Britta Simon i Form.com. Arbeta med [form.com support team](https://form.com/about/company/contact-us/) för att lägga till användare i form.com-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
+I det här avsnittet ska du skapa en användare med namnet Britta Simon i Form.com. Ta hjälp [Form.com supportteamet för](https://form.com/about/company/contact-us/) att lägga till användare i Form.com plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
 
-### <a name="test-single-sign-on"></a>Testa enkel inloggning 
+## <a name="test-sso"></a>Testa enkel inloggning
 
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
+I det här avsnittet testar du konfigurationen av enkel inloggning med Azure AD med följande alternativ. 
 
-När du klickar på Form.com-ikonen i åtkomstpanelen bör du automatiskt loggas in på den Form.com som du har konfigurerat enkel inloggning för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+* Klicka på **Testa det här programmet** i Azure Portal. Detta omdirigerar till Form.com inloggnings-URL där du kan initiera inloggningsflödet. 
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Gå till Form.com inloggnings-URL direkt och initiera inloggningsflödet därifrån.
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](./tutorial-list.md)
+* Du kan använda Microsoft Mina appar. När du klickar Form.com panelen i Mina appar omdirigeras den till Form.com inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Nästa steg
 
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
+När du Form.com kan du framtvinga sessionskontroll, vilket skyddar exfiltrering och infiltrering av organisationens känsliga data i realtid. Sessionskontrollen utökas från villkorlig åtkomst. [Lär dig hur du framtvingar sessionskontroll med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

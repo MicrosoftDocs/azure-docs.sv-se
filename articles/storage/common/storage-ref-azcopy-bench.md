@@ -1,6 +1,6 @@
 ---
-title: AzCopy bänk | Microsoft Docs
-description: Den här artikeln innehåller referensinformation för AzCopy bänk kommando.
+title: azcopycopycopy | Microsoft Docs
+description: Den här artikeln innehåller referensinformation för kommandot azcopycopycopy.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -8,36 +8,42 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c1028d0a4a458746c08fd6fa4f16aa952d9962a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e49e787854069c2fcea30df7a43c3aacdd21b9e
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87282015"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502036"
 ---
-# <a name="azcopy-benchmark"></a>AzCopy-prestandatest
+# <a name="azcopy-benchmark"></a>azcopy benchmark
 
-Kör ett prestanda mått genom att ladda upp eller ladda ned test data till eller från ett angivet mål. För uppladdningar genereras test data automatiskt.
+Kör ett prestandatest genom att ladda upp eller ned testdata till eller från ett angivet mål. För uppladdningar genereras testdata automatiskt.
 
-Benchmark-kommandot kör samma process som "Copy", förutom att: 
+Benchmark-kommandot kör samma process som "kopiera", förutom att: 
 
-  - I stället för både käll-och mål parametrarna tar benchmark bara en. Detta är BLOB-behållaren, Azure Files resurs eller Azure Data Lake Storage Gen2 fil system som du vill ladda upp eller ladda ned från.
+  - I stället för att kräva både käll- och målparametrar tar benchmark bara en. Det här är blobcontainern, Azure Files Resurs eller det Azure Data Lake Storage Gen2 filsystem som du vill ladda upp till eller ladda ned från.
 
-  - Parametern "mode" beskriver huruvida AzCopy ska testa uppladdningar eller ladda ned från det angivna målet. Giltiga värden är upload och Download. Standardvärdet är ' upload '.
+  - Parametern "mode" beskriver om AzCopy ska testa uppladdningar till eller nedladdningar från det angivna målet. Giltiga värden är "Ladda upp" och "Ladda ned". Standardvärdet är "Ladda upp".
 
-  - För att ladda upp benchmarks, beskrivs nytto lasten av kommando rads parametrar, som styr hur många filer som genereras automatiskt och hur viktiga filerna ska vara. Generations processen sker helt i minnet. Disken används inte.
+  - För uppladdningstestvärden beskrivs nyttolasten av kommandoradsparametrar, som styr hur många filer som genererats automatiskt och hur viktiga filerna är. Genereringsprocessen sker helt i minnet. Disken används inte.
 
-  - För hämtningar består nytto lasten av de filer som redan finns på källan. (Se exemplet nedan om hur du genererar testfiler om det behövs).
+  - För nedladdningar består nyttolasten av de filer som redan finns vid källan. (Se exemplet nedan om hur du genererar testfiler om det behövs).
   
-  - Endast några av de valfria parametrarna som är tillgängliga för kopierings kommandot stöds.
+  - Endast några av de valfria parametrar som är tillgängliga för kopieringskommandot stöds.
   
   - Ytterligare diagnostik mäts och rapporteras.
   
-  - För uppladdningar är standard beteendet att ta bort överförda data i slutet av test körningen.  För hämtningar sparas inte data lokalt.
+  - För uppladdningar är standardbeteendet att ta bort överförda data i slutet av testkörningen.  För nedladdningar sparas data aldrig lokalt.
 
-Benchmark-läget justerar sig automatiskt till antalet parallella TCP-anslutningar som ger maximalt data flöde. Den kommer att visas i slutet av den här siffran. För att förhindra autojustering ställer du in AZCOPY_CONCURRENCY_VALUE-miljövariabeln på ett angivet antal anslutningar. 
+Prestandatestläget finjusterar sig automatiskt efter antalet parallella TCP-anslutningar som ger maximalt dataflöde. Talet visas i slutet. Om du vill förhindra automatisk AZCOPY_CONCURRENCY_VALUE ange AZCOPY_CONCURRENCY_VALUE miljövariabeln till ett specifikt antal anslutningar. 
 
-Alla typer av vanliga autentiseringar stöds. Den bekvämaste metoden för benchmarking-överföring är dock vanligt vis att skapa en tom behållare med en SAS-token och använda SAS-autentisering. (Hämtnings läget kräver att en uppsättning test data finns i mål behållaren.)
+Alla vanliga autentiseringstyper stöds. Den en mest praktiska metoden för prestandatestning av uppladdning är dock vanligtvis att skapa en tom container med en SAS-token och använda SAS-autentisering. (Nedladdningsläget kräver att en uppsättning testdata finns i målcontainern.)
+
+## <a name="related-conceptual-articles"></a>Relaterade konceptuella artiklar
+
+- [Kom igång med AzCopy](storage-use-azcopy-v10.md)
+- [Optimera prestanda för AzCopy v10 med Azure Storage](storage-use-azcopy-optimize.md)
+
 
 ## <a name="examples"></a>Exempel
 
@@ -45,17 +51,17 @@ Alla typer av vanliga autentiseringar stöds. Den bekvämaste metoden för bench
 azcopy benchmark [destination] [flags]
 ```
 
-Kör ett benchmark-test med standard parametrar (lämpligt för benchmarking-nätverk upp till 1 Gbit/s):
+Kör ett benchmark-test med standardparametrar (lämpligt för prestandatestning av nätverk upp till 1 Gbit/s):'
 
 ```azcopy
 azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>"
 ```
-Kör ett benchmark-test som överför 100-filer, varje 2-GiB i storlek: (lämpligt för benchmarking i ett snabbt nätverk, till exempel 10 Gbit/s): '
+Kör ett benchmark-test som laddar upp 100 filer, var 2 GiB i storlek: (lämpligt för prestandatestning i ett snabbt nätverk, till exempel 10 Gbit/s):'
 
 ```azcopy
 azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>"--file-count 100 --size-per-file 2G
 ```
-Kör ett benchmark-test men Använd 50 000-filer, varje 8 MiB i storlek och beräkna deras MD5-hashar (på samma sätt som `--put-md5` flaggan gör detta i kopierings kommandot). Syftet med `--put-md5` när benchmarking är att testa om MD5-beräkningen påverkar data flödet för det valda fil antalet och storleken:
+Kör ett benchmark-test men använd 50 000 filer, var och en med 8 MiB i storlek och beräkna deras MD5-hashvärden (på samma sätt som flaggan gör detta i `--put-md5` kopieringskommandot). Syftet med `--put-md5` benchmarking är att testa om MD5-beräkningen påverkar dataflödet för det valda filantalet och den valda storleken:
 
 ```azcopy
 azcopy bench --mode='Upload' "https://[account].blob.core.windows.net/[container]?<SAS>" --file-count 50000 --size-per-file 8M --put-md5
@@ -67,7 +73,7 @@ Kör ett benchmark-test som laddar ned befintliga filer från ett mål
 azcopy bench --mode='Download' "https://[account].blob.core.windows.net/[container]?<SAS?"
 ```
 
-Kör en uppladdning som inte tar bort de överförda filerna. (De här filerna kan sedan fungera som nytto last för ett nedladdnings test)
+Kör en uppladdning som inte tar bort de överförda filerna. (Dessa filer kan sedan fungera som nyttolast för ett nedladdningstest)
 
 ```azcopy
 azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>" --file-count 100 --delete-test-data=false
@@ -75,37 +81,37 @@ azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>" --file-
 
 ## <a name="options"></a>Alternativ
 
-**--BLOB-Type** -strängen definierar BLOB-typen vid målet. Används för att tillåta benchmarking av olika BLOB-typer. Identiskt med samma namngivna parameter i kopierings kommandot (standard identifiering).
+**--blob-type** string Definierar typen av blob vid målet. Används för att tillåta benchmarking av olika blobtyper. Identisk med samma namngivna parameter i kopieringskommandot (standardvärdet "Identifiera").
 
-**--block-size-MB** float Använd den här block storleken (anges i MIB). Standardvärdet beräknas automatiskt baserat på fil storlek. Decimal tal är tillåtna – till exempel 0,25. Identiskt med samma-namngivna parameter i kopierings kommandot.
+**--block-size-mb** float Använd den här blockstorleken (anges i MiB). Standardvärdet beräknas automatiskt baserat på filstorlek. Decimaler tillåts , till exempel 0,25. Identisk med parametern med samma namn i kopieringskommandot.
 
-**--kontrol lera längd**  Kontrol lera längden på en fil på målet efter överföringen. Om det finns ett matchnings fel mellan källan och målet markeras överföringen som misslyckad. (standard sant)
+**--check-length**  Kontrollera längden på en fil på målet efter överföringen. Om det finns ett matchningsfel mellan källa och mål markeras överföringen som misslyckad. (standard true)
 
-**--Delete-test-data**  Om värdet är True tas benchmark-data bort i slutet av benchmark-körningen.  Ange värdet till false om du vill behålla data vid målet, till exempel för att använda den för manuella tester utanför benchmark-läge (standard sant).
+**--delete-test-data**  Om det är sant tas benchmark-data bort i slutet av benchmark-körningen.  Ställ in det på false om du vill behålla data vid målet – till exempel för att använda dem för manuella tester utanför benchmark-läget (standardvärdet är true).
 
-**--fil-Count-** uint.  Antalet automatiskt genererade datafiler som ska användas (standard 100).
+**--file-count** uint.  Antalet automatiskt genererade datafiler som ska användas (standard 100).
 
-**--Hjälp**  Hjälp för bänk
+**--help**  Hjälp för att få hjälp
 
-**--sträng på loggnivå** definierar loggens utförlighet för logg filen, tillgängliga nivåer: info (alla begär Anden/svar), varning (långsamma svar), fel (endast misslyckade förfrågningar) och ingen (inga utgående loggar). (standard information)
+**--log-level** string (sträng på loggnivå) Definiera loggfilens verbositet, tillgängliga nivåer: INFO(alla begäranden/svar), WARNING(långsamma svar), ERROR(only failed requests) och NONE (inga utdataloggar). (standard "INFO")
 
-**--läge** strängen definierar om AzCopy ska testa överföringar eller nedladdningar från det här målet. Giltiga värden är upload och Download. Standard alternativet är upload. (standard överföring)
+**--mode sträng** definierar om Azcopy ska testa uppladdningar eller nedladdningar från det här målet. Giltiga värden är "upload" och "download". Standardalternativet är "upload". (standarduppladdning)
 
-**--antal-Folders** -uint om större än 0, skapa mappar för att dela upp data.
+**--number-of-folders** uint Om det är större än 0 skapar du mappar för att dela upp data.
 
-**--Skicka-MD5**  Skapa en MD5-hash av varje fil och spara hashen som Content-MD5-egenskapen för Målmatrisen/-filen. (Som standard skapas inte hashen.) Identiskt med samma-namngivna parameter i kopierings kommandot.
+**--put-md5**  Skapa en MD5-hash för varje fil och spara hashen som Content-MD5-egenskapen för målbloben/-filen. (Hashen skapas INTE som standard.) Identisk med parametern med samma namn i kopieringskommandot.
 
-**--storleks per fil** sträng storlek för varje automatiskt genererad data fil. Måste vara ett tal omedelbart följt av K, M eller G. t. ex. 12K eller 200G (standard "250M").
+**--size-per-file** string Storlek för varje automatiskt genererad datafil. Måste vara ett tal omedelbart följt av K, M eller G. T.ex. 12k eller 200G (standard "250M").
 
 ## <a name="options-inherited-from-parent-commands"></a>Alternativ som ärvts från överordnade kommandon
 
-**--Cap-Mbit/s float**  CAPS överföringshastigheten i megabit per sekund. Indata genom strömning kan variera något från höljet. Om det här alternativet är inställt på noll, eller utelämnas, är data flödet inte något tak.
+**--cap-mbps float**  Kapslar överföringshastigheten i megabit per sekund. Dataflödet för ögonblick kan variera något från taket. Om det här alternativet är inställt på noll, eller om det utelämnas, är dataflödet inte begränsat.
 
-**--Skriv** sträng format för kommandots utdata. Alternativen är: text, JSON. Standardvärdet är ' text '. (standard text).
+**--output-type** strängformat för kommandots utdata. Alternativen är: text, json. Standardvärdet är "text". (standard "text").
 
-**--sträng för betrodd-Microsoft-suffix** anger ytterligare domänsuffix där Azure Active Directory inloggnings-token kan skickas.  Standardvärdet är '*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. De som anges här läggs till i standardvärdet. För säkerhet ska du bara placeras Microsoft Azure domäner här. Avgränsa flera poster med semikolon.
+**--trusted-microsoft-suffixesträng** Anger ytterligare domänsuffix där Azure Active Directory inloggningstoken kan skickas.  Standardvärdet är *.core.windows.net.* core.chinacloudapi.cn; *.core.cloudapi.de;*. core.usgovcloudapi.net". Alla som visas här läggs till i standardinställningarna. Av säkerhetsskäl bör du bara placera Microsoft Azure här. Avgränsa flera poster med semikolon.
 
 
 ## <a name="see-also"></a>Se även
 
-- [AzCopy](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

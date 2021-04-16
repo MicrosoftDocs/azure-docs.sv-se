@@ -1,76 +1,76 @@
 ---
 title: Hög tillgänglighet och haveriberedskap
 titleSuffix: Azure Digital Twins
-description: Beskriver Azure och Azures digitala dubbla funktioner som hjälper dig att skapa hög tillgängliga Azure IoT-lösningar med haveri beredskap.
+description: Beskriver funktionerna i Azure och Azure Digital Twins som hjälper dig att skapa Azure IoT-lösningar med hög tillgänglig kapacitet för haveriberedskap.
 author: baanders
 ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3336a086fbe8f4291f752836a610cd80b773ec2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 41edef58910fe2b772831ef083e5aca8bb52a321
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98790824"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482276"
 ---
-# <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure Digitals dubblare hög tillgänglighet och haveri beredskap
+# <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure Digital Twins hög tillgänglighet och haveriberedskap
 
-Ett viktigt område med överväganden för elastiska IoT-lösningar är verksamhets kontinuitet och haveri beredskap. Design för **hög tillgänglighet (ha)** och **HAVERI beredskap (Dr)** kan hjälpa dig att definiera och uppnå lämpliga drift tids mål för din lösning.
+Ett viktigt övervägande för motståndskraftiga IoT-lösningar är affärskontinuhet och haveriberedskap. Genom att **designa för hög tillgänglighet (HA)** och haveriberedskap **(DR)** kan du definiera och uppnå lämpliga drifttidsmål för din lösning.
 
-Den här artikeln beskriver de HA och DR-funktioner som erbjuds specifikt av tjänsten Azure Digitals dubbla.
+I den här artikeln beskrivs funktionerna för ha och dr som erbjuds specifikt av Azure Digital Twins tjänsten.
 
-Azure Digitals dubbla har stöd för dessa funktioner:
-* *Intra-region ha* – inbyggd redundans för att leverera drift tiden för tjänsten
-* *Mellan region Dr* – redundans till en geo-kopplad Azure-region i händelse av ett oväntat Data Center fel
+Azure Digital Twins har stöd för följande funktionsalternativ:
+* *Hög tillgänglighet inom regionen* – Inbyggd redundans för att leverera tjänstens drifttid
+* *Haveri mellan* regioner – Redundans till en geo-länkad Azure-region i händelse av ett oväntat datacenterfel
 
-Du kan också se avsnittet [*metod tips*](#best-practices) för allmän Azure-vägledning om design för ha/Dr.
+Du kan också se avsnittet [*Metodtips för*](#best-practices) allmän Azure-vägledning om att utforma för HA/DR.
 
-## <a name="intra-region-ha"></a>HA inom region
+## <a name="intra-region-ha"></a>Hög hög regions-HA
  
-Azure Digitals dubbla är en del regions hektar genom att implementera redundans inom tjänsten. Detta återspeglas i [service avtalet för tjänsten](https://azure.microsoft.com/support/legal/sla/digital-twins) för drift tid. **Det krävs inget ytterligare arbete för utvecklare av en Azure digital-lösning för att dra nytta av dessa HA-funktioner.** Även om Azures digitala dubbla enheter erbjuder en rimlig hög drifts garanti, kan tillfälliga problem fortfarande förväntas, som med alla distribuerade dator plattformar. Lämpliga principer för återförsök bör vara inbyggda i komponenterna som samverkar med ett moln program för att hantera tillfälliga fel.
+Azure Digital Twins tillhandahåller ha inom regionen genom att implementera redundanser i tjänsten. Detta återspeglas i [serviceavtalet för](https://azure.microsoft.com/support/legal/sla/digital-twins) drifttid. **Inget ytterligare arbete krävs av utvecklarna av en Azure Digital Twins för att dra nytta av dessa FUNKTIONER för den här ha-lösningen.** Även Azure Digital Twins erbjuder en relativt hög drifttidsgaranti kan tillfälliga fel fortfarande förväntas, precis som med alla distribuerade databehandlingsplattformar. Lämpliga återförsöksprinciper bör vara inbyggda i de komponenter som interagerar med ett molnprogram för att hantera tillfälliga fel.
 
-## <a name="cross-region-dr"></a>DR mellan regioner
+## <a name="cross-region-dr"></a>Dr i flera regioner
 
-Det kan finnas sällsynta situationer när ett Data Center upplever utökade avbrott på grund av strömavbrott eller andra händelser i regionen. Sådana händelser är sällsynta, och under sådana fel är det inte säkert att de regioner som beskrivs ovan beskrivits. Azure Digital-adresserna löser detta med Microsoft-initierad redundans.
+Det kan finnas sällsynta situationer när ett datacenter upplever längre avbrott på grund av strömavbrott eller andra händelser i regionen. Sådana händelser är sällsynta, och under sådana fel kanske inte ha-funktionen inom regionen som beskrivs ovan. Azure Digital Twins åtgärdar detta med Microsoft-initierad redundans.
 
-**Microsoft-initierad redundans** utnyttjas av Microsoft i sällsynta fall för att redundansväxla alla Azures digitala dubbla instanser från en berörd region till motsvarande geo-kopplade region. Den här processen är ett standard alternativ (utan möjlighet för användare att avanmäla) och kräver ingen åtgärd från användaren. Microsoft förbehåller sig rätten att fastställa när det här alternativet kommer att användas. Den här mekanismen omfattar inte användarens medgivande innan användarens instans redundansväxlas.
+**Microsoft-initierad redundans** används av Microsoft i sällsynta fall för att redundanskoppla alla Azure Digital Twins instanser från en berörd region till motsvarande geoparade region. Den här processen är ett standardalternativ (utan möjlighet för användare att välja bort) och kräver ingen åtgärd från användaren. Microsoft förbehåller sig rätten att fastställa när det här alternativet kommer att användas. Den här mekanismen omfattar inte ett användarmedgivande innan användarens instans har överfördr alltför ofta.
 
 >[!NOTE]
-> Vissa Azure-tjänster tillhandahåller också ytterligare ett alternativ som kallas **kundinitierad redundans**, vilket gör det möjligt för kunder att initiera en redundans just för sin instans, till exempel för att köra en Dr-granskning. Den här mekanismen stöds för närvarande **inte** av digitala Azure-dubbla. 
+> Vissa **Azure-tjänster** tillhandahåller också ytterligare ett alternativ som kallas kundinitierad redundans, vilket gör att kunder kan initiera en redundans endast för sin instans, till exempel att köra ett DR-programgranskning. Den här mekanismen stöds **för närvarande inte** av Azure Digital Twins. 
 
 ## <a name="monitor-service-health"></a>Övervaka tjänstens hälsa
 
-Eftersom Azure Digitals dubbla instanser har redundansväxlats och återställts kan du övervaka processen med hjälp av [Azure Service Health](../service-health/service-health-overview.md) -verktyget. Service Health spårar hälso tillståndet för dina Azure-tjänster i olika regioner och prenumerationer och delar service – påverkar kommunikationen med avbrott och drift stopp.
+När Azure Digital Twins instanserna har återställts kan du övervaka processen [](../service-health/service-health-overview.md) med hjälp av Azure Service Health verktyget. Service Health spårar hälsotillståndet för dina Azure-tjänster i olika regioner och prenumerationer och delar information som påverkar tjänster om avbrott och driftstopp.
 
-Under en redundansväxling kan Service Health ange när tjänsten är avstängd och när den är säkerhets kopia.
+Under en redundanshändelse kan Service Health ge en indikation om när tjänsten är ur drift och när den är tillbaka.
 
-För att Visa Service Health händelser...
-1. Navigera till [service Health](https://portal.azure.com/?feature.customportal=false#blade/Microsoft_Azure_Health/AzureHealthBrowseBlade/serviceIssues) i Azure Portal (du kan använda den här länken eller söka efter den med Portal Sök fältet).
-1. Använd den vänstra menyn för att växla till sidan *hälso historik* .
-1. Leta efter ett *problem namn* som börjar med **Azure Digitals** och markera det.
+Om du vill Service Health händelser...
+1. Gå till [Service Health](https://portal.azure.com/?feature.customportal=false#blade/Microsoft_Azure_Health/AzureHealthBrowseBlade/serviceIssues) i Azure Portal (du kan använda den här länken eller söka efter den med hjälp av portalens sökfält).
+1. Använd den vänstra menyn för att växla till *sidan Hälsohistorik.*
+1. Leta efter ett *problemnamn* som börjar **Azure Digital Twins** och välj det.
 
-    :::image type="content" source="media/concepts-high-availability-disaster-recovery/navigate.png" alt-text="Skärm bild av Azure Portal som visar hälso historik sidan. Det finns en lista över flera problem från de senaste dagarna och ett problem med namnet &quot;Azure Digitals-Västeuropa – västra Europa-&quot;-dämpat &quot;är markerat." lightbox="media/concepts-high-availability-disaster-recovery/navigate.png":::
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/navigate.png" alt-text="Skärmbild av Azure Portal som visar sidan Hälsohistorik. Det finns en lista över flera problem från de senaste dagarna och ett problem som kallas &quot;Azure Digital Twins – Europa, västra – Minimerad&quot; är markerat." lightbox="media/concepts-high-availability-disaster-recovery/navigate.png":::
 
-1. Allmän information om avbrottet finns på fliken *Sammanfattning* .
+1. Allmän information om avbrottet finns på *fliken* Sammanfattning.
 
-    :::image type="content" source="media/concepts-high-availability-disaster-recovery/summary.png" alt-text="Fliken Sammanfattning är markerad på sidan hälso historik. Fliken visar allmän information, till exempel den resurs som påverkades, dess region och prenumerationen." lightbox="media/concepts-high-availability-disaster-recovery/summary.png":::
-1. Mer information och uppdateringar av problemet med tiden finns på fliken *problem uppdateringar* .
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/summary.png" alt-text="På sidan Hälsohistorik är fliken Sammanfattning markerad. På fliken visas allmän information, till exempel den resurs som påverkades, dess region och dess prenumeration." lightbox="media/concepts-high-availability-disaster-recovery/summary.png":::
+1. Mer information och uppdateringar om problemet över tid finns på fliken *Problemuppdateringar.*
 
-    :::image type="content" source="media/concepts-high-availability-disaster-recovery/issue-updates.png" alt-text="På sidan hälso historik är fliken problem uppdateringar markerad. Fliken visar flera poster som visar aktuell status från en dag sedan." lightbox="media/concepts-high-availability-disaster-recovery/issue-updates.png":::
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/issue-updates.png" alt-text="På sidan Hälsohistorik är fliken Problemuppdateringar markerad. På fliken visas flera poster som visar aktuell status från en dag sedan." lightbox="media/concepts-high-availability-disaster-recovery/issue-updates.png":::
 
 
-Observera att informationen som visas i det här verktyget inte är unik för en digital Azure-instans. När du har använt Service Health för att ta reda på vad som händer med Azure Digitals dubblare-tjänst i en viss region eller prenumeration kan du övervaka ett steg ytterligare genom att använda [resurs hälso verktyget](troubleshoot-resource-health.md) för att öka detalj nivån i specifika instanser och se om de påverkas.
+Observera att informationen som visas i det här verktyget inte är specifik för en Azure Digital-instans. När du har använt Service Health för att förstå vad som händer med Azure Digital Twins-tjänsten i en viss region eller prenumeration kan du ta ett steg längre i övervakningen med hjälp av resource [health-verktyget](troubleshoot-resource-health.md) för att öka detaljnivå för specifika instanser och se om de påverkas.
 
 ## <a name="best-practices"></a>Bästa praxis
 
-Bästa praxis för HA/DR finns i följande Azure-vägledning om det här ämnet: 
-* Den [*tekniska vägledningen för Azures affärs kontinuitet*](/azure/architecture/framework/resiliency/overview) beskriver ett allmänt ramverk som hjälper dig att tänka på verksamhets kontinuitet och haveri beredskap. 
-* [*Haveri beredskap och hög tillgänglighet för Azure*](/azure/architecture/framework/resiliency/backup-and-recovery) -programpapper ger arkitektur vägledning om strategier för Azure-program för att uppnå hög tillgänglighet (ha) och haveri beredskap (Dr).
+Metodtips för HA/DR finns i följande Azure-vägledning om det här ämnet: 
+* I artikeln [*Teknisk vägledning för affärskontinuhet*](/azure/architecture/framework/resiliency/overview) i Azure beskrivs ett allmänt ramverk för att hjälpa dig att tänka på affärskontinuhet och haveriberedskap. 
+* Dokumentet [*Haveriberedskap och hög tillgänglighet*](/azure/architecture/framework/resiliency/backup-and-recovery) för Azure-program ger arkitekturvägledning för strategier för Azure-program för att uppnå hög tillgänglighet (HA) och haveriberedskap (DR).
 
 ## <a name="next-steps"></a>Nästa steg 
 
-Läs mer om att komma igång med Azure Digitals dubbla lösningar:
+Läs mer om att komma igång Azure Digital Twins lösningar:
  
 * [*Vad är Azure Digital Twins?*](overview.md)
-* [*Snabb start: utforska ett exempel scenario*](quickstart-adt-explorer.md)
+* [*Snabbstart: Utforska ett exempelscenario*](quickstart-azure-digital-twins-explorer.md)

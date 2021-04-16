@@ -1,6 +1,6 @@
 ---
-title: Felsöka fel i API för Azure Active Directory rapportering | Microsoft Docs
-description: 'Ger en lösning på fel när du anropar Azure Active Directory rapporterings-API: er.'
+title: Felsöka fel i API:Azure Active Directory reporting | Microsoft Docs
+description: Ger dig en lösning på fel när du anropar Azure Active Directory Reporting-API:er.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,38 +17,38 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abc8badf261e631dd6ceb7af9a6a0cb3676ae25d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 445514297550210d80cd50895201d1129fac4f20
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96017601"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533717"
 ---
-# <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>Felsöka fel i Azure Active Directory rapporterings-API
+# <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>Felsöka fel i API:Azure Active Directory Reporting
 
-Den här artikeln innehåller vanliga fel meddelanden som du kan köra i när du får åtkomst till aktivitets rapporter med hjälp av Microsoft Graph API och steg för deras lösning.
+Den här artikeln innehåller vanliga felmeddelanden som du kan få när du använder aktivitetsrapporter med hjälp Microsoft Graph API och steg för deras lösning.
 
-### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>500 HTTP internt Server fel vid åtkomst till Microsoft Graph v2-slutpunkt
+### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>500 INTERNT HTTP-serverfel vid åtkomst till Microsoft Graph V2-slutpunkt
 
-Vi stöder för närvarande inte Microsoft Graph v2-slutpunkten – se till att få åtkomst till aktivitets loggarna med hjälp av Microsoft Graph v1-slutpunkten.
+Vi stöder för närvarande inte Microsoft Graph v2-slutpunkten – se till att komma åt aktivitetsloggarna med hjälp Microsoft Graph v1-slutpunkten.
 
-### <a name="error-neither-tenant-is-b2c-or-tenant-doesnt-have-premium-license"></a>Fel: ingen klient organisation är B2C eller klienten har ingen Premium-licens
+### <a name="error-neither-tenant-is-b2c-or-tenant-doesnt-have-premium-license"></a>Fel: Ingen av klienterna är B2C eller så har klientorganisationen ingen Premium-licens
 
-Åtkomst till inloggnings rapporter kräver en licens för Azure Active Directory Premium 1 (P1). Om du ser det här fel meddelandet vid åtkomst till inloggningar kontrollerar du att klienten är licensierad med en Azure AD P1-licens.
+Åtkomst till inloggningsrapporter kräver en Azure Active Directory premium 1-licens (P1). Om du ser det här felmeddelandet när du använder inloggningar kontrollerar du att din klientorganisation är licensierad med en Azure AD P1-licens.
 
-### <a name="error-user-is-not-in-the-allowed-roles"></a>Fel: användaren har inte de tillåtna rollerna 
+### <a name="error-user-is-not-in-the-allowed-roles"></a>Fel: Användaren är inte i de tillåtna rollerna 
 
-Om du ser det här fel meddelandet när du försöker få åtkomst till gransknings loggar eller inloggningar med hjälp av API: et kontrollerar du att ditt konto är en del av rollen **säkerhets läsare** eller **rapport läsare** i Azure Active Directory klient organisationen. 
+Om du ser det här felmeddelandet när du försöker komma åt granskningsloggar eller  inloggningar  med hjälp av API:et kontrollerar du att ditt konto är en del av rollen Säkerhetsläsare eller Rapportläsare i din Azure Active Directory klientorganisation. 
 
-### <a name="error-application-missing-aad-read-directory-data-permission"></a>Fel: appen saknar AAD-behörighet för Läs katalog data 
+### <a name="error-application-missing-aad-read-directory-data-permission"></a>Fel: Programmet saknar behörigheten Läsa katalogdata för AAD 
 
-Följ stegen i [kraven för att få åtkomst till Azure Active Directory rapporterings-API: et](howto-configure-prerequisites-for-reporting-api.md) för att se till att programmet körs med rätt behörighets uppsättning. 
+Följ stegen i Krav för att få åtkomst till [Azure Active Directory reporting-API:et](howto-configure-prerequisites-for-reporting-api.md) för att säkerställa att programmet körs med rätt uppsättning behörigheter. 
 
-### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>Fel: programmet saknar Microsoft Graph API: et Läs alla Gransknings logg data behörighet
+### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>Fel: Program som saknar Microsoft Graph API-behörigheten "Läsa alla granskningsloggdata"
 
-Följ stegen i [kraven för att få åtkomst till Azure Active Directory rapporterings-API: et](howto-configure-prerequisites-for-reporting-api.md) för att se till att programmet körs med rätt behörighets uppsättning. 
+Följ stegen i Krav för att få åtkomst till [Azure Active Directory reporting-API:et](howto-configure-prerequisites-for-reporting-api.md) för att säkerställa att programmet körs med rätt uppsättning behörigheter. 
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Använda gransknings-API-referensen](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
- [Använd rapport-API-referens för inloggnings aktivitet](/graph/api/resources/signin?view=graph-rest-beta)
+[Använda referensen för gransknings-API:et](/graph/api/resources/directoryaudit) 
+ [Använda API-referensen för inloggningsaktivitetsrapporten](/graph/api/resources/signin)

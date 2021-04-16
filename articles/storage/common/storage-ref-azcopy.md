@@ -1,6 +1,6 @@
 ---
-title: AzCopy | Microsoft Docs
-description: Den här artikeln innehåller referensinformation för kommandot AzCopy.
+title: azcopy | Microsoft Docs
+description: Den här artikeln innehåller referensinformation för azcopy-kommandot.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -8,39 +8,39 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 19d5a5214ae4d2d6c0a18b68863211aa1f6573c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3b4f7737320cc0359192f947271a0f4beb3c478
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878994"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503005"
 ---
 # <a name="azcopy"></a>azcopy
 
-AzCopy är ett kommando rads verktyg som flyttar data till och från Azure Storage.
+AzCopy är ett kommandoradsverktyg som flyttar data till och från Azure Storage. I artikeln [Kom igång med AzCopy kan](storage-use-azcopy-v10.md) du ladda ned AzCopy och lära dig mer om hur du kan ange autentiseringsuppgifter för auktorisering till lagringstjänsten.
 
-## <a name="synopsis"></a>Sammanfattning
+## <a name="synopsis"></a>Synopsis
 
-Det allmänna formatet för kommandon är: `azcopy [command] [arguments] --[flag-name]=[flag-value]` .
+Det allmänna formatet för kommandona är: `azcopy [command] [arguments] --[flag-name]=[flag-value]` .
 
-Information om hur du rapporterar problem eller Lär dig mer om verktyget finns i [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy) .
+Om du vill rapportera problem eller lära dig mer om verktyget kan du läsa [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy) .
 
 ## <a name="related-conceptual-articles"></a>Relaterade konceptuella artiklar
 
 - [Kom igång med AzCopy](storage-use-azcopy-v10.md)
+- [Självstudie: Migrera lokala data till molnlagring med AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
 - [Överföra data med AzCopy och Blob Storage](./storage-use-azcopy-v10.md#transfer-data)
 - [Överföra data med AzCopy och fillagring](storage-use-azcopy-files.md)
-- [Konfigurera, optimera och felsöka AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Alternativ
 
-**--Cap (float-Mbit/s) –** CAPS-överföringshastighet, i megabit per sekund. Indata genom strömning kan variera något från höljet. Om det här alternativet är inställt på noll, eller utelämnas, är data flödet inte något tak.
+**--cap-mbps** (float) Kapslar överföringshastigheten, i megabit per sekund. Dataflödet för ögonblick kan variera något från taket. Om det här alternativet är inställt på noll, eller om det utelämnas, är dataflödet inte begränsat.
 
-**--Hjälp** Hjälp för AzCopy
+**--help** Hjälp för azcopy
       
-**--**  format (sträng) för kommandots utdata. Alternativen är: text, JSON. Standardvärdet är `text`. (standard `text` )
+**--output-type**  (sträng) Format för kommandots utdata. Alternativen är: text, json. Standardvärdet är `text`. (standard `text` )
 
-**--Trusted-Microsoft-suffix** (sträng) anger ytterligare domänsuffix där Azure Active Directory inloggnings-token kan skickas.  Standardvärdet är '*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. De som anges här läggs till i standardvärdet. För säkerhet ska du bara placeras Microsoft Azure domäner här. Avgränsa flera poster med semikolon.
+**--trusted-microsoft-suffix (sträng)** Anger ytterligare domänsuffix där Azure Active Directory inloggningstoken kan skickas.  Standardvärdet är *.core.windows.net;*. core.chinacloudapi.cn; *.core.cloudapi.de;*. core.usgovcloudapi.net". Alla som anges här läggs till i standardinställningarna. Av säkerhetsskäl bör du bara placera Microsoft Azure här. Avgränsa flera poster med semikolon.
 
 ## <a name="see-also"></a>Se även
 

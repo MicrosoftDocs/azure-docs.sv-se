@@ -1,51 +1,55 @@
 ---
-title: Azure Service Bus-meddelande bläddring
-description: Bläddra och granska Service Bus meddelanden gör det möjligt för en Azure Service Bus klient att räkna upp alla meddelanden i en kö eller prenumeration.
+title: Azure Service Bus – meddelandesurfning
+description: Bläddra och granska Service Bus-meddelanden gör att Azure Service Bus klient kan räkna upp alla meddelanden i en kö eller prenumeration.
 ms.topic: article
 ms.date: 03/29/2021
-ms.openlocfilehash: f4943685f03eccb1c3b8da079973cf083bdcc416
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: deafe9e6ddeeebf233922aade36823ddaaede864
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090315"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520130"
 ---
 # <a name="message-browsing"></a>Bläddra i meddelanden
+Genom att bläddra eller titta på meddelanden kan en Service Bus-klient räkna upp alla meddelanden i en kö eller i en prenumeration för diagnostik- och felsökningsändamål.
 
-Genom att söka efter meddelanden eller granska, kan en Service Bus-klient räkna upp alla meddelanden i en kö eller en prenumeration för diagnostik-och fel söknings syfte.
+Åtgärden Granska i en kö eller en prenumeration returnerar högst det begärda antalet meddelanden. I följande tabell visas de typer av meddelanden som returneras av åtgärden Peek. 
 
-Gransknings åtgärden i en **kö** returnerar alla meddelanden i kön, inte bara de som är tillgängliga för omedelbar förvärv. Gransknings åtgärden för en **prenumeration** returnerar alla meddelanden utom schemalagda meddelanden i prenumerations meddelande loggen. 
+| Typ av meddelanden | Ingår? | 
+| ---------------- | ----- | 
+| Aktiva meddelanden | Yes |
+| Meddelanden med inkommande meddelanden | No | 
+| Låsta meddelanden | Yes |
+| Meddelanden som har upphört att gälla |  Kan vara (innan de är inbokade) |
+| Schemalagda meddelanden | Ja för köer. Nej för prenumerationer |
 
-Förbrukade och förfallna meddelanden rensas av en asynkron "skräp insamling"-körning. Det här steget kanske inte alltid inträffar omedelbart efter att meddelanden har gått ut. Därför kan en gransknings åtgärd returnera meddelanden som redan har upphört att gälla. De här meddelandena tas bort eller tas bort från kön när en mottagnings åtgärd anropas i kön eller prenumerationen nästa gång. Tänk på detta när du försöker återställa uppskjutna meddelanden från kön. Ett utgånget meddelande är inte längre tillgängligt för vanlig hämtning på något annat sätt, även när det returneras av Peek. Att returnera dessa meddelanden är avsiktligt som Peek är ett diagnos verktyg som återspeglar loggens aktuella status.
+## <a name="dead-lettered-messages"></a>Meddelanden med inkommande meddelanden
+Om du vill titta på meddelanden med dead letter i en kö eller prenumeration ska **peek-åtgärden** köras på kön för dead letter som är associerad med kön eller prenumerationen. Mer information finns i komma [åt köer för dead letter](service-bus-dead-letter-queues.md#path-to-the-dead-letter-queue).
 
-Peek returnerar även meddelanden som var låsta och som för närvarande bearbetas av andra mottagare. Men eftersom Peek returnerar en frånkopplad ögonblicks bild kan inte lås statusen för ett meddelande observeras på granskade meddelanden.
+## <a name="expired-messages"></a>Meddelanden som har upphört att gälla
+Meddelanden som har upphört att gälla kan ingå i resultaten som returneras från åtgärden Peek. Förbrukade och utgångna meddelanden rensas av en asynkron "skräpinsamlingskörning". Det här steget kanske inte nödvändigtvis sker omedelbart efter att meddelanden upphör att gälla. Därför kan en snabbåtgärd returnera meddelanden som redan har upphört att gälla. Dessa meddelanden tas bort eller skickas utan bokstav när en mottagningsåtgärd anropas i kön eller prenumerationen nästa gång. Tänk på det här beteendet när du försöker återställa uppskjutna meddelanden från kön. 
 
-## <a name="peek-apis"></a>Granska API: er
-## <a name="azuremessagingservicebus"></a>[Azure. Messaging. Service Bus](#tab/dotnet)
-Metoderna [PeekMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebusreceiver.peekmessageasync) och [PeekMessagesAsync](/dotnet/api/azure.messaging.servicebus.servicebusreceiver.peekmessagesasync) finns på mottagar objekt: `ServiceBusReceiver` , `ServiceBusSessionReceiver` . Peek fungerar på köer, prenumerationer och deras respektive köer för obeställbara meddelanden.
+Ett meddelande som har upphört att gälla är inte längre berättigat till vanlig hämtning på något annat sätt, även när det returneras av Peek. Det är design att returnera dessa meddelanden eftersom Peek är ett diagnostikverktyg som återspeglar loggens aktuella tillstånd.
 
-När anropas upprepade gånger, `PeekMessageAsync` räknar upp alla meddelanden i kön eller i prenumerations loggen i ordning från det lägsta tillgängliga sekvensnumret till högst. Det är ordningen i vilken meddelanden har placerats i kö, inte i den ordning som meddelanden kan komma att hämtas.
-PeekMessagesAsync hämtar flera meddelanden och returnerar dem som en uppräkning. Om inga meddelanden är tillgängliga, är uppräknings objektet tomt, inte null.
+## <a name="locked-messages"></a>Låsta meddelanden
+Peek returnerar även meddelanden som **har låsts** och som för närvarande bearbetas av andra mottagare. Men eftersom Peek returnerar en frånkopplad ögonblicksbild kan ett meddelandes låstillstånd inte observeras för granskade meddelanden.
 
-Du kan också fylla i parametern [fromSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.eventposition.fromsequencenumber) med en SequenceNumber som ska startas och sedan anropa metoden igen utan att ange parametern för att räkna upp ytterligare. `PeekMessagesAsync` fungerar som likvärdigt, men hämtar en uppsättning meddelanden samtidigt.
+## <a name="peek-apis"></a>Granska API:er
+Peek fungerar på köer, prenumerationer och deras köer med dead letter. 
 
+När åtgärden anropas upprepade gånger räknar den upp alla meddelanden i kön eller prenumerationen i ordning från det lägsta tillgängliga sekvensnumret till det högsta. Det är i vilken ordning meddelandena har förts iqueued, inte den ordning i vilken meddelanden så småningom kan hämtas.
 
-## <a name="microsoftazureservicebus"></a>[Microsoft. Azure. Service Bus](#tab/dotnetold)
-Metoderna [Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) och [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) finns på mottagar objekt: `MessageReceiver` , `MessageSession` . Peek fungerar på köer, prenumerationer och deras respektive köer för obeställbara meddelanden.
-
-När anropas upprepade gånger, `Peek` räknar upp alla meddelanden i kön eller i prenumerations loggen i ordning från det lägsta tillgängliga sekvensnumret till högst. Det är ordningen i vilken meddelanden har placerats i kö, inte i den ordning som meddelanden kan komma att hämtas.
-
-[PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) hämtar flera meddelanden och returnerar dem som en uppräkning. Om inga meddelanden är tillgängliga, är uppräknings objektet tomt, inte null.
-
-Du kan också använda en överlagring av metoden med en [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) som ska startas och sedan anropa den parameter lös metoden överbelastning för att räkna upp ytterligare. **PeekBatch** -funktioner likvärdigt, men hämtar en uppsättning meddelanden samtidigt.
-
-
----
+Du kan också skicka en SequenceNumber till en peek-åtgärd. Den används för att avgöra var du ska börja titta från. Du kan göra efterföljande anrop till peek-åtgärden utan att ange parametern för att räkna upp ytterligare.
 
 ## <a name="next-steps"></a>Nästa steg
+Prova exemplen på det språk du väljer för att utforska funktionen för att granska eller bläddra i meddelanden:
 
-Mer information om Service Bus meddelanden finns i följande avsnitt:
+- [Azure Service Bus klientbiblioteksexempel för Java](/samples/azure/azure-sdk-for-java/servicebus-samples/)  -  **Titta på ett meddelandeexempel**
+- [Azure Service Bus exempel på klientbibliotek för Python](/samples/azure/azure-sdk-for-python/servicebus-samples/)  -  **receive_peek.py-exempel**
+- [Azure Service Bus klientbiblioteksexempel för JavaScript](/samples/azure/azure-sdk-for-js/service-bus-javascript/)  -  **browseMessages.js** exempel
+- [Azure Service Bus klientbiblioteksexempel för TypeScript](/samples/azure/azure-sdk-for-js/service-bus-typescript/)  -  **browseMessages.ts-exempel**
+- [Azure.Messaging.ServiceBus-exempel för .NET](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) – Se granska metoder för mottagarklasser i [referensdokumentationen](/dotnet/api/azure.messaging.servicebus).
 
-* [Service Bus-köer, ämnen och prenumerationer](service-bus-queues-topics-subscriptions.md)
-* [Komma igång med Service Bus-köer](service-bus-dotnet-get-started-with-queues.md)
-* [Använd Service Bus ämnen och prenumerationer](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+Hitta exempel för äldre .NET- och Java-klientbibliotek nedan:
+- [Microsoft.Azure.ServiceBus-exempel för .NET](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)  -  **Exempel på meddelandesurfning (peek)** 
+- [azure-servicebus-exempel för Java](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)  -  **Exempel på bläddring** av meddelande. 
