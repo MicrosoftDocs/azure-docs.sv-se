@@ -57,7 +57,7 @@
               href: how-to-custom-speech-continuous-integration-continuous-deployment.md
             - name: Skapa transkriptioner med mänsklig etikett
               href: how-to-custom-speech-human-labeled-transcriptions.md
-            - name: Livs cykel för modell och slut punkt
+            - name: Livscykel för modell och slutpunkt
               href: how-to-custom-speech-model-and-endpoint-lifecycle.md
     - name: Självstudier
       items:
@@ -114,13 +114,13 @@
           href: speech-synthesis-markup.md
         - name: Syntetisera tal med API för långt ljud
           href: long-audio-api.md
-        - name: Hämta händelser för ansikts attityd för Lip-Sync
+        - name: Hämta ansiktsställningshändelser för Synkronisering av ansiktsigenkänning
           href: how-to-speech-synthesis-viseme.md
         - name: Anpassning
           items:
             - name: Portal för anpassad röst
               items:
-                - name: Vad är anpassat neurala röst?
+                - name: Vad är Anpassad neural röst?
                   href: custom-neural-voice.md
                 - name: Komma igång med Custom Voice
                   displayName: 'custom voice, neural voice'
@@ -137,11 +137,11 @@
                   href: how-to-audio-content-creation.md
     - name: Ansvarsfull användning av AI
       items:
-        - name: Anpassad röst för neurala
+        - name: Anpassad neural röst
           items:
             - name: Transparensinformation
               items:
-                - name: Användnings fall för anpassad röst för neurala
+                - name: Användningsfall för Anpassad neural röst
                   href: /legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
                 - name: Egenskaper och begränsningar
                   href: /legal/cognitive-services/speech-service/custom-neural-voice/characteristics-and-limitations-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
@@ -149,7 +149,7 @@
               items:
                 - name: Begränsad åtkomst
                   href: /legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
-                - name: Ansvarig distribution av syntetiskt tal
+                - name: Ansvarsfull distribution av syntetiskt tal
                   href: concepts-guidelines-responsible-deployment-synthetic.md
                 - name: Utlämnande för röstförmågor
                   href: /legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context
@@ -462,7 +462,7 @@
       href: how-to-track-speech-sdk-memory-usage.md
     - name: Aktivera privat slutpunkt
       href: speech-services-private-link.md
-    - name: Aktivera VNet-tjänstens slut punkt
+    - name: Aktivera VNet-tjänstslutpunkt
       href: speech-service-vnet-service-endpoint.md
     - name: Konfigurera OpenSSL för Linux
       displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
@@ -470,7 +470,7 @@
     - name: Konfigurera RHEL/CentOS 7
       href: how-to-configure-rhel-centos-7.md
       displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
-    - name: Containers
+    - name: Använda containrar
       items:
         - name: Installera och köra Speech-containrar
           displayName: 'containers,install container,run container'
@@ -497,6 +497,12 @@
           href: how-to-migrate-from-bing-speech.md
         - name: 'Från Translator Speech API:et'
           href: how-to-migrate-from-translator-speech-api.md
+    - name: Företagsberedskap
+      items:
+        - name: Konfigurera virtuella nätverk
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/speech-service/context/context
+        - name: Använda kund hanterade nycklar
+          href: speech-encryption-of-data-at-rest.md
 - name: Enheter
   items:
     - name: Dokumentation om Speech-enheter
@@ -582,6 +588,12 @@
           href: 'https://speech.microsoft.com'
         - name: Skapa en app för anpassade kommandon med Speech Studio
           href: ./quickstart-custom-commands-application.md
+    - name: Företagsberedskap
+      items:
+        - name: Stöd för regioner
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Efterlevnad och certifiering
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context
     - name: Dokumentation om Swagger
@@ -591,10 +603,6 @@
       href: sovereign-clouds.md
     - name: Priskalkylator
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Efterlevnad
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Kryptering
-      href: speech-encryption-of-data-at-rest.md
     - name: Azure-översikt
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
     - name: Sekretess och cookies

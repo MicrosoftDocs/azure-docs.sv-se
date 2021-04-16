@@ -1,6 +1,6 @@
 ---
 title: Inbyggda principdefinitioner för Azure SQL Database
-description: Visar Azure Policy inbyggda principdefinitioner för Azure SQL Database och SQL Managed Instance. Dessa inbyggda principdefinitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
+description: Visar Azure Policy inbyggda principdefinitioner för Azure SQL Database och SQL Managed Instance. Dessa inbyggda principdefinitioner ger vanliga metoder för att hantera dina Azure-resurser.
 ms.date: 04/14/2021
 ms.topic: reference
 author: stevestein

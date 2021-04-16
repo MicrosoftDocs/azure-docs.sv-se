@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: b22954edf4f3a5a935c470326aa43bd24ee2d708
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 61fcbfa9d40ebb26485ce8160fa3b011935ab4d6
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366070"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536312"
 ---
 # <a name="creating-a-synapse-workspace"></a>Skapa en Synapse-arbetsyta
 
@@ -43,7 +43,10 @@ Fyll i följande fält:
 Fyll i följande fält:
 
 1. **Namn på arbetsyta** – Välj ett globalt unikt namn. I den här självstudien använder vi **myworkspace**.
-1. **Region** – Välj valfri region.
+1. **Region** – Välj den region där du har placerat dina klientprogram/tjänster (till exempel virtuell Azure-dator, Power BI, Azure Analysis Service) och lagringar som innehåller data (till exempel Azure Data Lake-lagring Azure Cosmos DB analyslagring).
+
+> [!NOTE]
+> En arbetsyta som inte är samplacerad med klientprogram eller lagring kan vara grundorsaken till många prestandaproblem. Om dina data eller klienterna placeras i flera regioner kan du skapa separata arbetsytor i olika regioner tillsammans med dina data och klienter.
 
 Under **Välj Data Lake Storage Gen 2:**
 
@@ -52,7 +55,7 @@ Under **Välj Data Lake Storage Gen 2:**
 1. Markera rutan "Tilldela mig rollen Storage Blob Data-deltagare Data Lake Storage Gen2 lagringskonto". 
 
 ## <a name="completing-the-process"></a>Slutföra processen
-Välj **Granska + skapa** > **Skapa**. Arbetsytan är klar på några minuter.
+Välj **Granska + skapa** > **Skapa**. Arbetsytan är klar om några minuter.
 
 > [!NOTE]
 > Om du vill aktivera arbetsytefunktioner från en befintlig dedikerad SQL-pool (tidigare SQL DW) kan du gå till Aktivera en arbetsyta för din dedikerade [SQL-pool (tidigare SQL DW).](./sql-data-warehouse/workspace-connected-create.md)
@@ -71,7 +74,7 @@ Vi ska använda en liten exempeldatamängd på 100 000 rader med NYX Taxi Cab-da
 * Ladda ned den här filen till datorn: https://azuresynapsestorage.blob.core.windows.net/sampledata/NYCTaxiSmall/NYCTripSmall.parquet 
 * I Synapse Studio navigerar du till datahubben. 
 * Välj **Länkad**.
-* Under kategorin **Azure Data Lake Storae Gen2** visas ett objekt med ett namn som **myworkspace ( Primary - contosolake )**.
+* Under kategorin **Azure Data Lake Storage Gen2** visas ett objekt med ett namn som **myworkspace ( Primary - contosolake ).**
 * Välj containern med **namnet användare (primär).**
 * Välj **Ladda** upp och välj den `NYCTripSmall.parquet` fil som du laddade ned.
 

@@ -1,5 +1,5 @@
 ---
-title: Skapa en vinkel-app med Azure Cosmos DB s API för MongoDB (part1)
+title: Skapa en Angular-app med Azure Cosmos DB API för MongoDB (del 1)
 description: Del 4 i självstudieserien om hur du skapar en MongoDB-app med Angular och Node i Azure Cosmos DB med exakt samma API:er som du använder för MongoDB.
 author: johnpapa
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: jopapa
-ms.custom: seodec18, devx-track-js
+ms.custom: seodec18, devx-track-js, devx-track-azurecli
 ms.reviewer: sngun
-ms.openlocfilehash: 4ca7286676c441b2fa96883e0c187497f59d6222
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0690f7f6d0807af181740a7133ec5400fc64cc12
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93082648"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482287"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Skapa en Angular-app med Azure Cosmos DB:s API för MongoDB – skapa ett Cosmos-konto
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -49,7 +49,7 @@ I den här delen av självstudiekursen kan du antingen använda Azure Cloud Shel
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Skapa ett Azure Cosmos DB-konto
 
-Skapa ett Azure Cosmos DB-konto med [`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) kommandot.
+Skapa ett Azure Cosmos DB-konto med [`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) kommandot .
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -62,14 +62,14 @@ Det kan ta ett par minuter innan kommandot har slutförts. När det är klart vi
 
 När Azure Cosmos DB-kontot har skapats:
 1. Öppna ett nytt webbläsarfönster och gå till [https://portal.azure.com](https://portal.azure.com)
-1. Klicka på Azure Cosmos DB logo typ :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png"::: i det vänstra fältet och visar alla Azure Cosmos-databaser som du har.
+1. Klicka på Azure Cosmos DB logotyp :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png"::: i det vänstra fältet så visas alla Azure Cosmos-DBs som du har.
 1. Klicka på det Azure Cosmos DB-konto som du precis skapat, välj fliken **Översikt** och rulla nedåt tills du ser kartan som visar databasens plats. 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png" alt-text="Skärm bild som visar en översikt över ett Azure Cosmos D B-konto.":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png" alt-text="Skärmbild som visar översikten över ett Azure Cosmos D B-konto.":::
 
 4. Rulla nedåt i det vänstra navigeringsfönstret och klicka på fliken **Replikera data globalt**. En karta visas där du ser de olika regioner som du kan replikera till. Du kan till exempel klicka på Australien, sydöstra eller Australien, östra om du vill replikera dina data till Australien. Mer information om global replikering finns i avsnittet [How to distribute data globally with Azure Cosmos DB](distribute-data-globally.md) (Distribuera data globalt med Azure Cosmos DB). För stunden nöjer vi oss med vår instans, men när vi vill replikera vet vi hur vi gör.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png" alt-text="Skärm bild som visar ett Azure Cosmos D B-konto med replikerade data globalt valda.":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png" alt-text="Skärmbild som visar ett Azure Cosmos D B-konto med Replikera data globalt valt.":::
 
 ## <a name="next-steps"></a>Nästa steg
 

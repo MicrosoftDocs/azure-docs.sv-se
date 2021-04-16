@@ -7,7 +7,7 @@
     - name: Jämföra meddelandetjänster
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
-    - name: 'Använda Service Bus med Java Message Service (JMS) 2,0'
+    - name: Använda Service Bus med Java Message Service (JMS) 2.0
       href: how-to-use-java-message-service-20.md
 - name: Snabbstarter
   items:
@@ -92,22 +92,34 @@
   items:
     - name: 'Köer, ämnen och prenumerationer'
       href: service-bus-queues-topics-subscriptions.md
-    - name: Meddelandesessioner
-      href: message-sessions.md
-    - name: Ämnesfilter och åtgärder
-      href: topic-filters.md
     - name: Premium-meddelandetjänster
       href: service-bus-premium-messaging.md
     - name: Jämför Azure-köer och Service Bus-köer
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
-    - name: 'Överföringar av meddelanden, lås och uppgörelser'
-      href: message-transfers-locks-settlement.md
-    - name: Köer för obeställbara meddelanden
-      href: service-bus-dead-letter-queues.md
-    - name: Meddelanderäknare
-      href: message-counters.md
-    - name: Optimera prestanda
-      href: service-bus-performance-improvements.md
+    - name: Avancerade funktioner
+      items:
+        - name: Meddelandesessioner
+          href: message-sessions.md
+        - name: Ämnesfilter och åtgärder
+          href: topic-filters.md
+        - name: Bläddra i meddelanden
+          href: message-browsing.md
+        - name: 'Överföringar av meddelanden, lås och uppgörelser'
+          href: message-transfers-locks-settlement.md
+        - name: Köer för obeställbara meddelanden
+          href: service-bus-dead-letter-queues.md
+        - name: Meddelanderäknare
+          href: message-counters.md
+        - name: Optimera prestanda
+          href: service-bus-performance-improvements.md
+        - name: Geo-haveriberedskap och geo-replikering
+          href: service-bus-geo-dr.md
+        - name: Asynkrona meddelanden och hög tillgänglighet
+          href: service-bus-async-messaging.md
+        - name: Hantera avbrott och katastrofer
+          href: service-bus-outages-disasters.md
+        - name: Begränsning
+          href: service-bus-throttling.md
     - name: Federation
       items:
         - name: Meddelandereplikering och federation mellan regioner
@@ -124,14 +136,6 @@
           href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
         - name: Hämta meddelanden från Event Hubs
           href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
-    - name: Geo-haveriberedskap och geo-replikering
-      href: service-bus-geo-dr.md
-    - name: Asynkrona meddelanden och hög tillgänglighet
-      href: service-bus-async-messaging.md
-    - name: Hantera avbrott och katastrofer
-      href: service-bus-outages-disasters.md
-    - name: Begränsning
-      href: service-bus-throttling.md
     - name: Säkerhet
       items:
         - name: Säkerhetsbaslinje
@@ -158,7 +162,7 @@
           href: network-security.md
     - name: Integrering med andra tjänster
       items:
-        - name: Azure Service Bus och Azure Event Grid-integrering
+        - name: Azure Service Bus och Azure Event Grid integrering
           href: service-bus-to-event-grid-integration-concept.md
 - name: Anvisningar
   items:
@@ -166,13 +170,13 @@
       items:
         - name: Skapa ett namnområde
           href: service-bus-create-namespace-portal.md
-        - name: Ange prenumerations filter och åtgärder
+        - name: Ange prenumerationsfilter och åtgärder
           href: service-bus-filter-examples.md
         - name: Meddelandehantering
           items:
-            - name: 'JMS-enheter (Java Message Service) 2,0'
+            - name: Java Message Service (JMS) 2.0-entiteter
               href: java-message-service-20-entities.md
-            - name: Guide.md för JMS-utvecklare (Java Message Service)
+            - name: Jms-utvecklare (Java Message Service) guide.md
               href: jms-developer-guide.md
             - name: 'Meddelanden, nyttolaster och serialisering'
               href: service-bus-messages-payloads.md
@@ -206,8 +210,6 @@
               href: duplicate-detection.md
             - name: Skjut upp meddelanden
               href: message-deferral.md
-            - name: Bläddra i meddelanden
-              href: message-browsing.md
             - name: Chain-enheter med automatisk vidarebefordran
               href: service-bus-auto-forwarding.md
             - name: Transaktionsbearbetning

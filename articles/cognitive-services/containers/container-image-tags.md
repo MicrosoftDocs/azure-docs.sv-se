@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/12/2021
 ms.author: aahi
-ms.openlocfilehash: 80b1af824f1c7bd47f16723f839141c4bed756df
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: aeb5ba4145409db5b2884102d7e886222a37de7a
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364999"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388371"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Azure Cognitive Services taggar och information om containeravbildningar
 
@@ -44,9 +44,9 @@ Den här containeravbildningen har följande tillgängliga taggar. Du hittar ock
 
 ---
 
-## <a name="read-ocr-optical-character-recognition"></a>Läs OCR (optisk teckenläsning)
+## <a name="read-ocr-optical-character-recognition"></a>Read OCR (optisk teckenläsning)
 
-Den [Visuellt innehåll][cv-containers] Read OCR-containeravbildningen finns i `mcr.microsoft.com` containerregistrets registeravbildning. Den finns i `azure-cognitive-services` lagringsplatsen och har namnet `read` . Det fullständigt kvalificerade containeravbildningsnamnet är `mcr.microsoft.com/azure-cognitive-services/vision/read` .
+[Containeravbildningen Visuellt innehåll][cv-containers] Read OCR finns i `mcr.microsoft.com` containerregistrets registeravbildning. Den finns i `azure-cognitive-services` lagringsplatsen och har namnet `read` . Det fullständigt kvalificerade containeravbildningsnamnet är `mcr.microsoft.com/azure-cognitive-services/vision/read` .
 
 Den här containeravbildningen har följande tillgängliga taggar. Du hittar också en fullständig lista över [taggar på MCR.](https://mcr.microsoft.com/v2/azure-cognitive-services/vision/read/tags/list)
 
@@ -68,17 +68,17 @@ Information om `3.2-preview.2` :
 * Distrolös version
 * Parametern ReadingOrder för att välja mellan textradsordning i JSON-svar
 * Förbättrad loggning
-* Snabbkorrigeringar till CJK-modellen
+* Snabbkorrigeringar till CJK-modell
 * 
 Information om `v2.0.013250001-amd64-preview` :
 
 * Minska minnesanvändningen ytterligare för containern.
-* Extern cache krävs för installation av flera poddar. Du kan till exempel konfigurera Redis för cachelagring.
-* Saknade resultat har åtgärdats när Redis-cachen har ställts in `ResultExpirationPeriod` och är inställd på 0.
-* Ta bort storleksbegränsning för begärandetext på 26 MB. Containern kan nu acceptera >26MB-filer.
+* Extern cache krävs för konfiguration av flera poddar. Du kan till exempel konfigurera Redis för cachelagring.
+* Saknade resultat har åtgärdats när Redis Cache har ställts in `ResultExpirationPeriod` och är inställd på 0.
+* Ta bort storleksbegränsningen för begärandetexten på 26 MB. Containern kan nu acceptera >26 MB filer.
 * Lägg till tidsstämpel och byggversion i konsolloggning.
 
-Release Notes for `1.1.013050001-amd64-preview`
+Information om `1.1.013050001-amd64-preview`
 
 * Konfiguration `ReadEngineConfig:ResultExpirationPeriod` av containeritiering har lagts till för att ange när systemet ska rensa igenkänningsresultat. 
     * Inställningen är i timmar och standardvärdet är 48 timmar.
@@ -161,20 +161,24 @@ Den här containeravbildningen har följande tillgängliga taggar. Du hittar ock
 
 # <a name="latest-version"></a>[Senaste version](#tab/current)
 
-Publiceringsnotering för `2.10.0-amd64` :
+Publiceringsnotering för `2.11.0-amd64` :
 
-**Funktion**
-* Uppgradera till de senaste modellerna.
+**Fixar**
+* Se till att användarens indata är case-känsliga.
 
-Observera att på grund av de inkluderade fraslistorna har storleken på containeravbildningen ökat.
+Observera att på grund av funktionen för fraslistor har storleken på containeravbildningen ökat.
 
 | Bildtaggar                    | Kommentarer | Sammandrag                                                                   |
 |-------------------------------|:------|:-------------------------------------------------------------------------|
-| `latest`                      |       | `sha256:944f051e3b90aa8eb8a37a4d4a18d4e13dbb49f9fe6d5ced61a0f99b3b3e312c`|
-| `2.10.0-amd64`                |       | `sha256:944f051e3b90aa8eb8a37a4d4a18d4e13dbb49f9fe6d5ced61a0f99b3b3e312c`|
+| `latest`                      |       | `sha256:bbf23ded55bf61421f673bffa7d97aca5724f782328a80efe43020c9979cd069`|
+| `2.11.0-amd64`                |       | `sha256:bbf23ded55bf61421f673bffa7d97aca5724f782328a80efe43020c9979cd069`|
 
 
 # <a name="previous-version"></a>[Tidigare version](#tab/previous)
+
+Publiceringsnotering för `2.10.0-amd64` :
+
+Vanlig månatlig version
 
 Publiceringsnotering för `2.9.0-amd64` :
 
@@ -192,7 +196,7 @@ Observera att på grund av de inkluderade fraslistorna har storleken på contain
 Publiceringsnotering för `2.6.0-amd64` :
 
 **Funktioner**
-* Stöd för fraslista v2 
+* Stöd för phraselist v2 
 * Fraslistor stöds på följande språk:
     * en-au
     * en-ca
@@ -221,6 +225,7 @@ Publiceringsnotering för `2.5.0-amd64` :
 
 | Bildtaggar                    | Kommentarer               |
 |-------------------------------|:--------------------|
+| `2.10.0-amd64`                |                     |
 | `2.9.0-amd64`                 |                     |
 | `2.7.0-amd64`                 |                     |
 | `2.6.0-amd64`                 |                     |
@@ -230,23 +235,27 @@ Publiceringsnotering för `2.5.0-amd64` :
 
 ## <a name="custom-text-to-speech"></a>Anpassad text till tal
 
-Du [hittar containeravbildningen][sp-ctts] Anpassad text till tal i `mcr.microsoft.com` containerregistret. Den finns i `azure-cognitive-services/speechservices/` lagringsplatsen och har namnet `custom-text-to-speech` . Det fullständigt kvalificerade containeravbildningsnamnet är `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech` . Du hittar också en fullständig lista över [taggar på MCR.](https://mcr.microsoft.com/v2/azure-cognitive-services/speechservices/custom-text-to-speech/tags/list)
+Du [hittar containeravbildningen Anpassad][sp-ctts] text till tal i `mcr.microsoft.com` containerregistret. Den finns i `azure-cognitive-services/speechservices/` lagringsplatsen och har namnet `custom-text-to-speech` . Det fullständigt kvalificerade containeravbildningsnamnet är `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech` . Du hittar också en fullständig lista över [taggar på MCR.](https://mcr.microsoft.com/v2/azure-cognitive-services/speechservices/custom-text-to-speech/tags/list)
 
 
 # <a name="latest-version"></a>[Senaste version](#tab/current)
 
-Publiceringsnotering för `1.12.0-amd64` :
+Publiceringsnotering för `1.13.0-amd64` :
 
-**Funktion**
-* Uppgradera till de senaste modellerna.
+**Fixar**
+* Se till att användarens indata är case-känsliga.
 
 | Bildtaggar                    | Kommentarer | Sammandrag                                                                   |
 |-------------------------------|:------|:-------------------------------------------------------------------------|
-| `latest`                      |       | `sha256:82806245b8ccce808523c4276d8f447c8429db8b04ff26bdbc4d36ba6a704db4` |
-| `1.12.0-amd64`                |       | `sha256:82806245b8ccce808523c4276d8f447c8429db8b04ff26bdbc4d36ba6a704db4` |
+| `latest`                      |       | `sha256:390ff9e4981c798058058e7825cd1e6d173d9d54d66d8fdc450d157cf393aaec` |
+| `1.13.0-amd64`                |       | `sha256:390ff9e4981c798058058e7825cd1e6d173d9d54d66d8fdc450d157cf393aaec` |
 
 
 # <a name="previous-version"></a>[Tidigare version](#tab/previous)
+
+Publiceringsnotering för `1.12.0-amd64` :
+
+Vanlig månatlig version
 
 Publiceringsnotering för `1.11.0-amd64` :
 
@@ -269,6 +278,7 @@ Publiceringsnotering för `1.7.0-amd64` :
 
 | Bildtaggar                    | Kommentarer               |
 |-------------------------------|:--------------------|
+| `1.12.0-amd64`                |                     |
 | `1.11.0-amd64`                |                     |
 | `1.9.0-amd64`                 |                     |
 | `1.8.0-amd64`                 |                     |
@@ -278,23 +288,188 @@ Publiceringsnotering för `1.7.0-amd64` :
 
 ## <a name="speech-to-text"></a>Tal till text
 
-Tal [till text-containeravbildningen][sp-stt] finns i `mcr.microsoft.com` containerregistrets registeravbildning. Den finns i `azure-cognitive-services/speechservices/` lagringsplatsen och har namnet `speech-to-text` . Det fullständigt kvalificerade containeravbildningsnamnet är `mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text` . Du hittar en fullständig lista över [taggar i MCR.](https://mcr.microsoft.com/v2/azure-cognitive-services/speechservices/speech-to-text/tags/list)
+Tal [till text-containeravbildningen][sp-stt] finns i `mcr.microsoft.com` containerregistrets registeravbildning. Den finns i `azure-cognitive-services/speechservices/` lagringsplatsen och har namnet `speech-to-text` . Det fullständigt kvalificerade containeravbildningsnamnet är `mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text` . Du hittar en fullständig lista över [taggar på MCR.](https://mcr.microsoft.com/v2/azure-cognitive-services/speechservices/speech-to-text/tags/list)
 
 Eftersom tal till text v2.5.0 stöds avbildningar i regionen *US Government Virginia.* Använd faktureringsslutpunkten *för US Government Virginia* och API-nycklar när du använder den här regionen.
 
 # <a name="latest-version"></a>[Senaste version](#tab/current)
+
+Publiceringsnotering för `2.11.0-amd64-<locale>` :
+
+**Funktion**
+* Uppgradera till de senaste modellerna.
+
+**Fixar**
+* Se till att användarens indata är case-känsliga.
+
+Observera att på grund av funktionen för fraslistor har storleken på containeravbildningen ökat. 
+
+| Bildtaggar                    | Kommentarer                                                                                                |
+|-------------------------------|:-----------------------------------------------------------------------------------------------------|
+| `latest`                      | Containeravbildning med `en-US` språk.                                                             |
+| `2.11.0-amd64-<locale>`       | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `2.11.0-amd64-en-us`.|
+
+Den här containern har följande språk tillgängliga.
+
+| Språk för v2.11.0          | Kommentarer                                    | Sammandrag                                                                    |
+|-----------------------------|:-----------------------------------------|:--------------------------------------------------------------------------|
+| `ar-ae`                     | Containeravbildning med `ar-AE` språk. | `sha256:32c26ed8370d1f30098811fda382e68aceccabc671570365f15ead37c3d84304` |
+| `ar-bh`                     | Containeravbildning med `ar-BH` språk. | `sha256:a6af48cdaf9f7562bfaced449016106dbde5c678fdd4c69985d166959a38b146` |
+| `ar-eg`                     | Containeravbildning med `ar-EG` språk. | `sha256:43cec166dcde9dc7cd535228440d11d396518fcfb14d9fa617e6e26f5156dc84` |
+| `ar-iq`                     | Containeravbildning med `ar-IQ` språk. | `sha256:b55095b27e8eef60dfe9657735a425b9ca1fe3c29ce4ff1f3d67bf7b2ac77bb1` |
+| `ar-jo`                     | Containeravbildning med `ar-JO` språk. | `sha256:7cc4ad997a76844414a982982251653525f27dc396db44f23b7f012d20f53677` |
+| `ar-kw`                     | Containeravbildning med `ar-KW` språk. | `sha256:32c26ed8370d1f30098811fda382e68aceccabc671570365f15ead37c3d84304` |
+| `ar-lb`                     | Containeravbildning med `ar-LB` språk. | `sha256:5d3b402f41f616ee792a5e7e3f41b4ec5638dc8ad60a3c133ec588e07b09d581` |
+| `ar-om`                     | Containeravbildning med `ar-OM` språk. | `sha256:c4f88fdaec73ebe241d6c94695b20eb2c792a9fd77dbb51f24fc7807dfd0dc61` |
+| `ar-qa`                     | Containeravbildning med `ar-QA` språk. | `sha256:32c26ed8370d1f30098811fda382e68aceccabc671570365f15ead37c3d84304` |
+| `ar-sa`                     | Containeravbildning med `ar-SA` språk. | `sha256:32c26ed8370d1f30098811fda382e68aceccabc671570365f15ead37c3d84304` |
+| `ar-sy`                     | Containeravbildning med `ar-SY` språk. | `sha256:a42b6f63a16313f280088bd47978e177bc2f1bf2d392a070cf5c6a06d9f7a62c` |
+| `bg-bg`                     | Containeravbildning med `bg-BG` språk. | `sha256:21425557e62d71326e9eb614c535878f981a914bf66d9dd883221656ca891858` |
+| `ca-es`                     | Containeravbildning med `ca-ES` språk. | `sha256:682e8a8ad5f2582f25a18b0518f9fba9b3849b72eb5dab5454586724272c52de` |
+| `cs-cz`                     | Containeravbildning med `cs-CZ` språk. | `sha256:1d0661ae5920f82e607c72ae7d6eee917c190d80c3d13403d770947c67a4294e` |
+| `da-dk`                     | Containeravbildning med `da-DK` språk. | `sha256:8d5257d6c326e4d96ba395faa0c717f48c4d437866f8dc1e1252c5e983b3008f` |
+| `de-de`                     | Containeravbildning med `de-DE` språk. | `sha256:086a4e33f746868fc1865322f1d7dfb5c1c3af64bdbd369804155f18710ad96e` |
+| `el-gr`                     | Containeravbildning med `el-GR` språk. | `sha256:0e2c7d5337f953d45fc7594317e6eab5eecec44a1c15fba51a128fc510519c3f` |
+| `en-au`                     | Containeravbildning med `en-AU` språk. | `sha256:dcfe3fc95b895d0205a7b72368595e98dfdcb4b6398522e7daa2fbbe2b087ef6` |
+| `en-ca`                     | Containeravbildning med `en-CA` språk. | `sha256:f04cedb6b50560f0584cb3634cbfee5e9c147d60fc044cbd0df10fc28f04ed98` |
+| `en-gb`                     | Containeravbildning med `en-GB` språk. | `sha256:9692c45c6b5b8716f99852a2ddf4b7fd1e2c00ea29f9a20da68e899cf3064fa1` |
+| `en-hk`                     | Containeravbildning med `en-HK` språk. | `sha256:97106aa991b4ef5b0f1859ae7a7df3c6e22dd009123281a7458d336a78ebd854` |
+| `en-ie`                     | Containeravbildning med `en-IE` språk. | `sha256:da2bc14cd86f200a439b3ce708c6643d507d482daabae87c351bee4c10efa60b` |
+| `en-in`                     | Containeravbildning med `en-IN` språk. | `sha256:f8fc43e5d20afe8108b6f35c3e09d403557f150413672d45322421be1fddff20` |
+| `en-nz`                     | Containeravbildning med `en-NZ` språk. | `sha256:abb8ca669c806a71af88d3643694252e1833ca99aacbd739a3962ec00c3cdb61` |
+| `en-ph`                     | Containeravbildning med `en-PH` språk. | `sha256:13bc7717dd73f4323956a3f7441b24dd2f86c13d41adc709e3f6f26266cacd91` |
+| `en-sg`                     | Containeravbildning med `en-SG` språk. | `sha256:b7f44d7cf4bbe4d89729207a38e91726c321ea03a66c5e5624b27ae9913fdafa` |
+| `en-us`                     | Containeravbildning med `en-US` språk. | `sha256:d81ee15821646607aec9fa46223c9197f74675a89070912ca892ad5adfcab6f9` |
+| `en-za`                     | Containeravbildning med `en-ZA` språk. | `sha256:2e2f9102c9f6fba0736fb01d745d35b677bf92750eed5cad245ee089998f66f2` |
+| `es-ar`                     | Containeravbildning med `es-AR` språk. | `sha256:dd962ec3f32b8fdeb15f7ab18ea9d19e7c93baf4c801fac59d44f5cf845e9935` |
+| `es-bo`                     | Containeravbildning med `es-BO` språk. | `sha256:f89c0e513f43800e1d19177384b815c1a04f5b07ccba8fd9c80aa5ebf5c71648` |
+| `es-cl`                     | Containeravbildning med `es-CL` språk. | `sha256:3ebc64dceb1b7fbef716de3736a020b23e8fb4e9aceb183524863681e0b278fe` |
+| `es-co`                     | Containeravbildning med `es-CO` språk. | `sha256:ba05465c312acf6b9a1a1866c81c795027470e8bda8389dd0fcb641c9f1af592` |
+| `es-cr`                     | Containeravbildning med `es-CR` språk. | `sha256:51d49d90f600ae971019974a6a38c71b3bf01a84301ee6e8604c3f424bc6773f` |
+| `es-cu`                     | Containeravbildning med `es-CU` språk. | `sha256:a19f0ab805d0268c06a0e83aad2dcab458638e8c2f7869f5b2315695ae2ea4d8` |
+| `es-do`                     | Containeravbildning med `es-DO` språk. | `sha256:a9539f091ec3feef34511ce9d337436151980eda69c7f8c8f2493e8d1be81e66` |
+| `es-ec`                     | Containeravbildning med `es-EC` språk. | `sha256:a0f5c19a683b92566747db79e30ac7ad09cde07bcb15451166b5257d036a86bc` |
+| `es-es`                     | Containeravbildning med `es-ES` språk. | `sha256:2aa5e82c726a8771c706a2de38bed09ca9c8298bb166c49fa227b8966011efa4` |
+| `es-gt`                     | Containeravbildning med `es-GT` språk. | `sha256:60361c1a305d0fef3deb0e4886c4044aebcf41878a748bc0615b94fcf9489cf9` |
+| `es-hn`                     | Containeravbildning med `es-HN` språk. | `sha256:d628b894966988880bb11f1ec1380702077bd45c2a83b912ae3e7451d8fd90cb` |
+| `es-mx`                     | Containeravbildning med `es-MX` språk. | `sha256:2bd901c320237e041ecca1ea34c359cf847cf8dacecfcb0e1ed8fd1794463fe5` |
+| `es-ni`                     | Containeravbildning med `es-NI` språk. | `sha256:099d21e5e5816d5d7e0965cda5878bfe78f5447e4994957dcc45ae40223b14b1` |
+| `es-pa`                     | Containeravbildning med `es-PA` språk. | `sha256:af6c258b7e984ee17d32b9dfc49969cfc1d7ee33aa2485017fab191d8d574e92` |
+| `es-pe`                     | Containeravbildning med `es-PE` språk. | `sha256:7d0e03c7f44f61b4632b730c2cf8e3d7c584a869bb5d53b9e5021549d1d500a8` |
+| `es-pr`                     | Containeravbildning med `es-PR` språk. | `sha256:ad580c1ac73d919434387869803d9fabec24e19afd6b4cc5aa7e809fb93dc908` |
+| `es-py`                     | Containeravbildning med `es-PY` språk. | `sha256:2e85df2af0003c0a41752c6e989ed8b724a22958e7ed3cbf67e54ca621bb5975` |
+| `es-sv`                     | Containeravbildning med `es-SV` språk. | `sha256:bae49ae543878096c1dd0c77a8f83a30ba1416605efa58dad59ca3577f7006ea` |
+| `es-us`                     | Containeravbildning med `es-US` språk. | `sha256:fd9deebe4e5a4466af439a8e40a1a39261a7b0228a4ed979b8086e1c65c60e26` |
+| `es-uy`                     | Containeravbildning med `es-UY` språk. | `sha256:0e69fc4689dafad97e00bed7c4eb7ca44b94e3a3d9357d6d36bed8135963e9e4` |
+| `es-ve`                     | Containeravbildning med `es-VE` språk. | `sha256:37ebac38fac4306668858140736d83e008ae0756f8e1fe5ed6386780bc9796ba` |
+| `et-ee`                     | Containeravbildning med `et-EE` språk. | `sha256:223d494cf64cdceaabe6e9bae82d378d7ea53eb8c01d58bdbd2e1ed360aaa34b` |
+| `fi-fi`                     | Containeravbildning med `fi-FI` språk. | `sha256:378e5735198e38d6bed8c87a59ed69f8c3bd57ac8a462332d74dd8495cb07ed2` |
+| `fr-ca`                     | Containeravbildning med `fr-CA` språk. | `sha256:d92f672c2a61a67db43d9884bc2692c304b3c2c5446bed2d315892876270366b` |
+| `fr-fr`                     | Containeravbildning med `fr-FR` språk. | `sha256:11dc172c7ae91b6cba7fb4ab1a61e48b27b193bf434a68827eb197c0ba05d6fb` |
+| `ga-ie`                     | Containeravbildning med `ga-IE` språk. | `sha256:3057eaaf8e0403690c0223c0db3a392b05f2ec45e53511327b8447912e32b8b4` |
+| `gu-in`                     | Containeravbildning med `gu-IN` språk. | `sha256:37062edf6805dce30309e4615c2947dded730b5b5be7e3bcd85bb93e38b08f31` |
+| `hi-in`                     | Containeravbildning med `hi-IN` språk. | `sha256:9f1bf1901a6b0e2caf4c9ff30e0b6bb3f1f4f814ad86fc62a471d4fe1fe4c101` |
+| `hr-hr`                     | Containeravbildning med `hr-HR` språk. | `sha256:095b40ad1afeebd932c299410a4732fd64da2251230aa044ca2c43b4d0bb6791` |
+| `hu-hu`                     | Containeravbildning med `hu-HU` språk. | `sha256:60e9257735cee7dc6cde1b5725588b1c1ea84f852220f1f4f3e873177a24fc5c` |
+| `it-it`                     | Containeravbildning med `it-IT` språk. | `sha256:71c5e3a9196155678a6ad9cd62b812386579521ac410b40e3526dee153d749e1` |
+| `ja-jp`                     | Containeravbildning med `ja-JP` språk. | `sha256:fce7d215575d2a94cdb4818bb1525f6448f5f881fc3e7f04274c64978bd6aaa7` |
+| `ko-kr`                     | Containeravbildning med `ko-KR` språk. | `sha256:d71d8e1e3692bb0781e98b984dea79950a8009a6fa03e729325c338ca5c09a98` |
+| `lt-lt`                     | Containeravbildning med `lt-LT` språk. | `sha256:dc2e35e158c09fd793b180050a0100df4a3716da4d0a7a528dc3ea65b6ecf21b` |
+| `lv-lv`                     | Containeravbildning med `lv-LV` språk. | `sha256:e6ab373eb9477d90d44175fffb646298d403405633e0a61ccf20f9e7381243b8` |
+| `mr-in`                     | Containeravbildning med `mr-IN` språk. | `sha256:0ce15c2d14bba49639adea30c91df1ac47e7b2a7796be551276bad8ec8312ed4` |
+| `mt-mt`                     | Containeravbildning med `mt-MT` språk. | `sha256:bbe958ff9c7c51efc6521866173b26ac2cfe682d114ce3ed6b1f6b8e9b3a7327` |
+| `nb-no`                     | Containeravbildning med `nb-NO` språk. | `sha256:4e4d890605e09717ef88982f586611c605342465a8ef81f2280f665ad1378522` |
+| `nl-nl`                     | Containeravbildning med `nl-NL` språk. | `sha256:60bd2d1f817019e6626876b15f5697be07c3b2b368e4cc7e3c3871c3e9181052` |
+| `pl-pl`                     | Containeravbildning med `pl-PL` språk. | `sha256:c8520e7155ef176fb9fea48c541acae995a6a80ba6913ac4289786ee55062ce6` |
+| `pt-br`                     | Containeravbildning med `pt-BR` språk. | `sha256:c8440308a5cb77791f33ae458c49abc084a1be8c418df9feeda9a4aa917a59bc` |
+| `pt-pt`                     | Containeravbildning med `pt-PT` språk. | `sha256:a66739b36a410c181ccd2205c59fee2726b3905d1c5ba4531909be96cf85a55c` |
+| `ro-ro`                     | Containeravbildning med `ro-RO` språk. | `sha256:c4ba7ff5c11d4243a3e128aca1f8110e62df82d956706c97c237016a94cb485f` |
+| `ru-ru`                     | Containeravbildning med `ru-RU` språk. | `sha256:c3fc4117598c0dcea0fd5e6f19adf7763e42732e32e3ac93ff74795fdc167e67` |
+| `sk-sk`                     | Containeravbildning med `sk-SK` språk. | `sha256:78bcfa610f645c113134cc24c8af8dd3c630065c1b009fb5e36dfab4999c16fb` |
+| `sl-si`                     | Containeravbildning med `sl-SI` språk. | `sha256:134eb68c900787bae3a98a2bdf192f2a5460fb96b92590d65765d982245a7ccf` |
+| `sv-se`                     | Containeravbildning med `sv-SE` språk. | `sha256:d194aaefe82a5f91df9e01beec271ad9565c4d36cb0539421e947b5c8e67228d` |
+| `ta-in`                     | Containeravbildning med `ta-IN` språk. | `sha256:cf272b112b10587c034f00f7df2bfcdefbf542859fa089c15581040db99ed383` |
+| `te-in`                     | Containeravbildning med `te-IN` språk. | `sha256:7364a1068f9940e9bb6ea5476b0a007a37d42b899dc4ba56be833e4d2b8d359d` |
+| `th-th`                     | Containeravbildning med `th-TH` språk. | `sha256:21ce33714fa37bfede60560a7a24c17c88566c767b76c58c877a48c51811c9ac` |
+| `tr-tr`                     | Containeravbildning med `tr-TR` språk. | `sha256:b97035a4f0334f890ff3630a2de249b72a879de3c7d4fcc849c3d76aa97f4d2e` |
+| `zh-cn`                     | Containeravbildning med `zh-CN` språk. | `sha256:ae4a89a26768c978d91ed797e9ecb8035fdb61f12c1b1124c86939c79ddcb38e` |
+| `zh-hk`                     | Containeravbildning med `zh-HK` språk. | `sha256:41bc980abe79cd69034a8ade2be203478b531a00f5e74b1f7b8f9c5267700261` |
+| `zh-tw`                     | Containeravbildning med `zh-TW` språk. | `sha256:51a50a7fcd5a9db6422235a2df0e8fba360efcd3cefee9abe44ab2cdce62088f` |
+
+
+# <a name="previous-version"></a>[Tidigare version](#tab/previous)
 
 Publiceringsnotering för `2.10.0-amd64-<locale>` :
 
 **Funktion**
 * Uppgradera till de senaste modellerna.
 
+Publiceringsnotering för `2.9.0-amd64-<locale>` :
+
+**Funktion**
+* Mer felinformation för problem vid hämtning av anpassade modeller efter ID.
+* Hypotesen stöds som standard i konversationsresultat.
+
+Publiceringsnotering för `2.7.0-amd64-<locale>` :
+
+**Funktioner**
+* Stöd för följande nya språk:
+    * ar-lb, ar-iq, ar-jo, ar-lb, ar-om, ar-sy
+    * bg-bg
+    * el-gr
+    * en-hk, en-ie, en-ph, en-sg, en-za
+    * es-ar, es-bo, es-cl, es-co, es-cr, es-cu, es-do, es-ec, es-gt, es-pa, es-pe, es-pr, es-py, es-sv, es-us, es-uy, es-ve
+    * et-ee
+    * ga-ie
+    * hr-hr
+    * hu-hu
+    * lt-lt
+    * lv-lv
+    * mt-mt
+    * ro-ro
+    * sk-sk
+    * sl-sl
+* Skiljetecken är aktiverat som standard.
+
 Observera att på grund av de inkluderade fraslistorna har storleken på containeravbildningen ökat. 
 
-| Bildtaggar                    | Kommentarer                                                                                                |
-|-------------------------------|:-----------------------------------------------------------------------------------------------------|
-| `latest`                      | Containeravbildning med `en-US` språk.                                                             |
-| `2.10.0-amd64-<locale>`       | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `2.10.0-amd64-en-us`.|
+Publiceringsnotering för `2.6.0-amd64-<locale>` :
+
+**Funktioner**
+* Uppgraderad till de senaste modellerna och fullständigt migrerad till .NET 3.1
+* Stöd för phraselist v2
+* Fraslistor stöds på följande språk:
+    * en-au
+    * en-ca
+    * en-gb
+    * en-in
+    * sv-se
+    * zh-cn
+* Stöd för nya språk `cs-CZ` 
+    * Versaler och skiljetecken stöds inte för närvarande.
+
+**Fixar**
+* Åtgärdar ett problem där förtroendepoängen alltid var 1 i diariseringsläge
+* Migrerad använder TextAnalytics 3.0 API
+
+Observera att på grund av de inkluderade fraslistorna har storleken på containeravbildningen ökat. 
+
+Publiceringsnotering för `2.5.0-amd64-<locale>` :
+
+**Funktioner**
+* Stöd för Azure US Government Cloud
+
+**Fixar**
+* Åtgärdar ett problem med körning som en icke-rotanvändare i diariseringsläge
+
+| Bildtaggar                  | Kommentarer                                    |
+|-----------------------------|:-----------------------------------------|
+| `2.10.0-amd64-<locale>`     | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `2.10.0-amd64-en-us`.|
+| `2.9.0-amd64-<locale>`      | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `2.9.0-amd64-en-us`. |
+| `2.7.0-amd64-<locale>`      | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `2.7.0-amd64-en-us`. |
+| `2.6.0-amd64-<locale>`      | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `2.6.0-amd64-en-us`. |
+| `2.5.0-amd64-<locale>`      | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `2.5.0-amd64-en-us`. |
+
 
 Den här containern har följande språk tillgängliga.
 
@@ -382,77 +557,6 @@ Den här containern har följande språk tillgängliga.
 | `zh-cn`                     | Containeravbildning med `zh-CN` språk. | `sha256:9087a08cc455772515f5775a788cdde35d7f5bbe3aa3ba34ae99573fd87b29a1` |
 | `zh-hk`                     | Containeravbildning med `zh-HK` språk. | `sha256:372e1c256520e9ee84c4c400eae935c1d6b1d59adb2be4c4dbc56439db069ba0` |
 | `zh-tw`                     | Containeravbildning med `zh-TW` språk. | `sha256:8406a3be34530c7d654d1dfa1c593dd51b8946b480fe80a100e599e86385dc2b` |
-
-
-# <a name="previous-version"></a>[Tidigare version](#tab/previous)
-
-Publiceringsnotering för `2.9.0-amd64-<locale>` :
-
-**Funktion**
-* Mer felinformation för problem vid hämtning av anpassade modeller efter ID.
-* Hypotesen stöds som standard i konversationsresultat.
-
-Publiceringsnotering för `2.7.0-amd64-<locale>` :
-
-**Funktioner**
-* Stöd för följande nya språk:
-    * ar-lb, ar-iq, ar-jo, ar-lb, ar-om, ar-sy
-    * bg-bg
-    * el-gr
-    * en-hk, en-ie, en-ph, en-sg, en-za
-    * es-ar, es-bo, es-cl, es-co, es-cr, es-cu, es-do, es-ec, es-gt, es-pa, es-pe, es-pr, es-py, es-sv, es-us, es-uy, es-ve
-    * et-ee
-    * ga-ie
-    * hr-hr
-    * hu-hu
-    * lt-lt
-    * lv-lv
-    * mt-mt
-    * ro-ro
-    * sk-sk
-    * sl-sl
-* Skiljetecken är aktiverat som standard.
-
-Observera att på grund av de inkluderade fraslistorna har storleken på containeravbildningen ökat. 
-
-Publiceringsnotering för `2.6.0-amd64-<locale>` :
-
-**Funktioner**
-* Uppgraderad till de senaste modellerna och fullständigt migrerad till .NET 3.1
-* Stöd för fraslista v2
-* Fraslistor stöds på följande språk:
-    * en-au
-    * en-ca
-    * en-gb
-    * en-in
-    * sv-se
-    * zh-cn
-* Stöd för nya språk `cs-CZ` 
-    * Versaler och skiljetecken stöds inte för närvarande.
-
-**Fixar**
-* Åtgärdar ett problem där förtroendepoängen alltid var 1 i diariseringsläge
-* Migrerad använder TextAnalytics 3.0 API
-
-Observera att på grund av de inkluderade fraslistorna har storleken på containeravbildningen ökat. 
-
-Publiceringsnotering för `2.5.0-amd64-<locale>` :
-
-**Funktioner**
-* Stöd för Azure US Government Cloud
-
-**Fixar**
-* Åtgärdar ett problem med körning som en icke-rotanvändare i diariseringsläge
-
-| Bildtaggar                  | Kommentarer                                    |
-|-----------------------------|:-----------------------------------------|
-| `2.9.0-amd64-<locale>`      | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `2.9.0-amd64-en-us`. |
-| `2.7.0-amd64-<locale>`      | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `2.7.0-amd64-en-us`. |
-| `2.6.0-amd64-<locale>`      | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `2.6.0-amd64-en-us`. |
-| `2.5.0-amd64-<locale>`      | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `2.5.0-amd64-en-us`. |
-
-
-Den här containern har följande språk tillgängliga.
 
 | Språk för v2.9.0           | Kommentarer                                    | Sammandrag                                                                    |
 |-----------------------------|:-----------------------------------------|:--------------------------------------------------------------------------|
@@ -715,12 +819,12 @@ Den här containern har följande språk tillgängliga.
 
 Text [till tal-containeravbildningen][sp-tts] finns i `mcr.microsoft.com` containerregistrets registeravbildning. Den finns i `azure-cognitive-services/speechservices/` lagringsplatsen och har namnet `text-to-speech` . Det fullständigt kvalificerade containeravbildningsnamnet är `mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech` .
 
-Den här containeravbildningen har följande taggar tillgängliga. Du hittar också en fullständig lista över [taggar på MCR.](https://mcr.microsoft.com/v2/azure-cognitive-services/speechservices/text-to-speech/tags/list)
+Den här containeravbildningen har följande tillgängliga taggar. Du hittar också en fullständig lista över [taggar på MCR.](https://mcr.microsoft.com/v2/azure-cognitive-services/speechservices/text-to-speech/tags/list)
 
 
 # <a name="latest-version"></a>[Senaste version](#tab/current)
 
-Publiceringsnotering för `1.12.0-amd64-<locale-and-voice>` :
+Publiceringsnotering för `1.13.0-amd64-<locale-and-voice>` :
 
 **Funktion**
 * Uppgradera till de senaste modellerna.
@@ -728,7 +832,128 @@ Publiceringsnotering för `1.12.0-amd64-<locale-and-voice>` :
 | Bildtaggar                                  | Kommentarer                                                                                                         |
 |---------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
 | `latest`                                    | Containeravbildning med `en-US` språk och `en-US-AriaRUS` röst.                                            | 
+| `1.13.0-amd64-<locale-and-voice>`           | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `1.13.0-amd64-en-us-ariarus`. |
+
+| Språk för v1.13.0                         | Kommentarer                                                                      | Sammandrag                         |
+|---------------------------------------------|:---------------------------------------------------------------------------|:-------------------------------|
+| `ar-eg-hoda`                                | Containeravbildning med `ar-EG` språk och `ar-EG-Hoda` röst.            | `sha256:8ff6360ba584d81b987582ce1c2cb6bb624cf68e4d71544805b9afc0401542dd` |
+| `ar-sa-naayf`                               | Containeravbildning med `ar-SA` språk och `ar-SA-Naayf` röst.           | `sha256:da5037de95c00362cb1871374735778c3eb68640ae4cb6a260659e7e0a67c37e` |
+| `bg-bg-ivan`                                | Containeravbildning med `bg-BG` språk och `bg-BG-Ivan` röst.            | `sha256:871140e57c126ac79c92c69572b86587150d1f14447c91152de3d4b10b3ef9f6` |
+| `ca-es-herenarus`                           | Containeravbildning med `ca-ES` språk och `ca-ES-HerenaRUS` röst.       | `sha256:7291ca9c579b1967cca941ce11321daa06ed6a9a1f0922d425d39f70a4aa8acd` |
+| `cs-cz-jakub`                               | Containeravbildning med `cs-CZ` språk och `cs-CZ-Jakub` röst.           | `sha256:c8f34c3a7fc5af5141da5439b520614e039d133b6180e8157f12ec7279e9163a` |
+| `da-dk-hellerus`                            | Containeravbildning med `da-DK` språk och `da-DK-HelleRUS` röst.        | `sha256:694eb294595700266355f8d57530ec3cccd4e04aa74dd630b96558bf2b481e71` |
+| `de-at-michael`                             | Containeravbildning med `de-AT` språk och `de-AT-Michael` röst.         | `sha256:f875435d8fadb56df2123d5aa1ceca34990d00f4c75678eb2526b83058972717` |
+| `de-ch-karsten`                             | Containeravbildning med `de-CH` språk och `de-CH-Karsten` röst.         | `sha256:c58359bd6e6676e23dda181a86caee1771366b0329a44fae0f363bbd381058ad` |
+| `de-de-heddarus`                            | Containeravbildning med `de-DE` språk och `de-DE-Hedda` röst.           | `sha256:c8e615d40c6e96216b90e329bf7185060de646db1e92fd1fdcd344a52bd86b55` |
+| `de-de-hedda`                               | Containeravbildning med `de-DE` språk och `de-DE-Hedda` röst.           | `sha256:c8e615d40c6e96216b90e329bf7185060de646db1e92fd1fdcd344a52bd86b55` |
+| `de-de-stefan-apollo`                       | Containeravbildning med `de-DE` språk och `de-DE-Stefan-Apollo` röst.   | `sha256:e8e3f04f0ee74d4247ffb7c69e54559f0cc6db66a121406e06ceb9dcdc3c4379` |
+| `el-gr-stefanos`                            | Containeravbildning med `el-GR` språk och `el-GR-Stefanos` röst.        | `sha256:15112a55bc7ccb6c29ee0a1de464fa6352a0e9953399032e5c8a0d29ec064af0` |
+| `en-au-catherine`                           | Containeravbildning med `en-AU` språk och `en-AU-Catherine` röst.       | `sha256:9a77bb5451889f62b8a146bfcc4a412c1cef95fd2102650528ccee84a08b25b8` |
+| `en-au-hayleyrus`                           | Containeravbildning med `en-AU` språk och `en-AU-HayleyRUS` röst.       | `sha256:90ee1094fbb8e739788545b3b9f4fabad5b4dffb5b7087cfd01c3b21ba1b2473` |
+| `en-ca-heatherrus`                          | Containeravbildning med `en-CA` språk och `en-CA-HeatherRUS` röst.      | `sha256:43b7d3c87162129253fd5c150307a5d9dc6ea28b8fa19776b66f4aa7a546f43b` |
+| `en-ca-linda`                               | Containeravbildning med `en-CA` språk och `en-CA-Linda` röst.           | `sha256:75a4423d5b24136efdc5de28a7a5b50a3a09b65b3824f86dd50a95eefea7ead6` |
+| `en-gb-george-apollo`                       | Containeravbildning med `en-GB` språk och `en-GB-George-Apollo` röst.   | `sha256:87e926f7db4a27870c735c80ad801bc5480fb2665594727ae760c8c287677088` |
+| `en-gb-hazelrus`                            | Containeravbildning med `en-GB` språk och `en-GB-HazelRUS` röst.        | `sha256:3fbd6a824831f158762036aa41c0397f7c1148150a4dc045db5f19ba840e74b6` |
+| `en-gb-susan-apollo`                        | Containeravbildning med `en-GB` språk och `en-GB-Susan-Apollo` röst.    | `sha256:646810c4129f8919ff56d91701b488e229bd12b3dd9c89a1635868f9340e00b8` |
+| `en-ie-sean`                                | Containeravbildning med `en-IE` språk och `en-IE-Sean` röst.            | `sha256:641abfa96380f142d4b2f9145cd02886d44f01bce68614094b48c1e01b50ed59` |
+| `en-in-heera-apollo`                        | Containeravbildning med `en-IN` språk och `en-IN-Heera-Apollo` röst.    | `sha256:c0acfffceae9c1ff5ad305d8b98929d9c65eca25f49ddcb8999d7de6118392d2` |
+| `en-in-priyarus`                            | Containeravbildning med `en-IN` språk och `en-IN-PriyaRUS` röst.        | `sha256:fbdc9ef0b4308ffce87d6ff6854814804b3cafacad6c4dc5cdac6a47c6de7975` |
+| `en-in-ravi-apollo`                         | Containeravbildning med `en-IN` språk och `en-IN-Ravi-Apollo` röst.     | `sha256:f31c40c9db2f1e826686649e748d0b2be0c00abcac62c2aae5b8981b0d8c681d` |
+| `en-us-aria24krus`                          | Containeravbildning med `en-US` språk och `en-US-Aria24kRUS` röst.      | `sha256:1232b798aae3ce68d1e555a5b35142bde5b4c871488f8c82c3d7c0767925afd8` |
+| `en-us-ariarus`                             | Containeravbildning med `en-US` språk och `en-US-AriaRUS` röst.         | `sha256:1232b798aae3ce68d1e555a5b35142bde5b4c871488f8c82c3d7c0767925afd8` |
+| `en-us-benjaminrus`                         | Containeravbildning med `en-US` språk och `en-US-BenjaminRUS` röst.     | `sha256:5fd7e9fbcc84ab467d04e95b18f5411579ce2d9a153b7f6e396f2412d08898dc` |
+| `en-us-guy24krus`                           | Containeravbildning med `en-US` språk och `en-US-Guy24kRUS` röst.       | `sha256:5fbbd16ab58b7f2440778b258bb0cd966286de0dbb3ce7f5e54d0f244f63dd3f` |
+| `en-us-zirarus`                             | Containeravbildning med `en-US` språk och `en-US-ZiraRUS` röst.         | `sha256:806b92916b2fe1e7855023a009742033a48cb7eddde84ddf7c93be93b9621026` |
+| `es-es-helenarus`                           | Containeravbildning med `es-ES` språk och `es-ES-HelenaRUS` röst.       | `sha256:507d9f40dcb846a5d1511a5e9e1cf94b360b1d9922f4b1143c3146d1b3bc69a2` |
+| `es-es-laura-apollo`                        | Containeravbildning med `es-ES` språk och `es-ES-Laura-Apollo` röst.    | `sha256:594add691d03d02fa5925f817e6a25c091fac1a924e0ea4b626e0fce858a78cb` |
+| `es-es-pablo-apollo`                        | Containeravbildning med `es-ES` språk och `es-ES-Pablo-Apollo` röst.    | `sha256:09d288b58fea080689471618227d1cb3ccc467f2edc9477eaaffffb09b3d6d8b` |
+| `es-mx-hildarus`                            | Containeravbildning med `es-MX` språk och `es-MX-HildaRUS` röst.        | `sha256:7019c80c88444a60bf1016eb66284745dc8184b051685df4a1b3c40d32c8ad7f` |
+| `es-mx-raul-apollo`                         | Containeravbildning med `es-MX` språk och `es-MX-Raul-Apollo` röst.     | `sha256:eed46588733b884c330fff1ff7f4e3e3fd6416cb340ebd80e44c4b3d1e085e55` |
+| `fi-fi-heidirus`                            | Containeravbildning med `fi-FI` språk och `fi-FI-HeidiRUS` röst.        | `sha256:00f7a854c4a01bdbef88e0b138c97f732f1c6008a8b2c1722fc8da3a91fa79a4` |
+| `fr-ca-caroline`                            | Containeravbildning med `fr-CA` språk och `fr-CA-Caroline` röst.        | `sha256:5f32e838a0925c560d2961a42487b99dd7e79e04661a7711f905d36c55973fd6` |
+| `fr-ca-harmonierus`                         | Containeravbildning med `fr-CA` språk och `fr-CA-HarmonieRUS` röst.     | `sha256:6f3d3237c990f8f04d4c8f488746f74fa94edd2c5f1def758af90b2be251900e` |
+| `fr-ch-guillaume`                           | Containeravbildning med `fr-CH` språk och `fr-CH-Guillaume` röst.       | `sha256:282e2e48c1147b74d927e801534be52b1301a081ff881994e85bb9d85b6e85fb` |
+| `fr-fr-hortenserus`                         | Containeravbildning med `fr-FR` språk och `fr-FR-HortenseRUS` röst.     | `sha256:16370c22530c93fc6c5ebeaf10663de7c3d45db58eccc716abd5274b5bee56d3` |
+| `fr-fr-julie-apollo`                        | Containeravbildning med `fr-FR` språk och `fr-FR-Julie-Apollo` röst.    | `sha256:e6541e82b8555f748f1feb5eef1c0ebf884245c5448f0ced46e6f25dabb925a2` |
+| `fr-fr-paul-apollo`                         | Containeravbildning med `fr-FR` språk och `fr-FR-Paul-Apollo` röst.     | `sha256:a4cf0bab208a31da3e796bf353969dfd98184b30e0cf713df49cb4fb07ff568b` |
+| `he-il-asaf`                                | Containeravbildning med `he-IL` språk och `he-IL-Asaf` röst.            | `sha256:4417d0a14098b564eb4ba91772eb7ad5976ac52b0b59ae484fc3a88017e0776b` |
+| `hi-in-hemant`                              | Containeravbildning med `hi-IN` språk och `hi-IN-Hemant` röst.          | `sha256:da086a3e2bc3e17f4e44165055fc61679e9356688d3735ee8cfd81e6265b8622` |
+| `hi-in-kalpana-apollo`                      | Containeravbildning med `hi-IN` språk och `hi-IN-Kalpana-Apollo` röst.  | `sha256:0c9915bf34e3045e39aa245c597aa7223fbf6100d7e20cbcc1bf131f89ee785e` |
+| `hi-in-kalpana`                             | Containeravbildning med `hi-IN` språk och `hi-IN-Kalpana` röst.         | `sha256:0c9915bf34e3045e39aa245c597aa7223fbf6100d7e20cbcc1bf131f89ee785e` |
+| `hr-hr-matej`                               | Containeravbildning med `hr-HR` språk och `hr-HR-Matej` röst.           | `sha256:fc08c968efe882ed11ad0ee0755a9d43eff88b96da8ec19e7a5c071810c84d8c` |
+| `hu-hu-szabolcs`                            | Containeravbildning med `hu-HU` språk och `hu-HU-Szabolcs` röst.        | `sha256:b6ad73f07efd1576e166b4d7e54a4ff419bfedc513a175fbb968389eb289a4ee` |
+| `id-id-andika`                              | Containeravbildning med `id-ID` språk och `id-ID-Andika` röst.          | `sha256:3aad5ccf0c155593934c29a3e50502bc80b0370fa29626e67cda141d4bf5ac89` |
+| `it-it-cosimo-apollo`                       | Containeravbildning med `it-IT` språk och `it-IT-Cosimo-Apollo` röst.   | `sha256:01502f274bad378e6e99bed5f80fdb476880ce04e8775ca56d338de2f2d43e8c` |
+| `it-it-luciarus`                            | Containeravbildning med `it-IT` språk och `it-IT-LuciaRUS` röst.        | `sha256:fdc20724194612d99e8339d25c72c7fe937ad741abe46d86def6c62880913c2a` |
+| `ja-jp-ayumi-apollo`                        | Containeravbildning med `ja-JP` språk och `ja-JP-Ayumi-Apollo` röst.    | `sha256:abf0e442ec972e25743a8af55da49a6fd5bf2ffd6ca09619d68e4dc9f9db779a` |
+| `ja-jp-harukarus`                           | Containeravbildning med `ja-JP` språk och `ja-JP-HarukaRUS` röst.       | `sha256:9eff152cd4bea6f9de3b101c0704f37c8a061e060287e3f9f8fc2eb28d7dcec7` |
+| `ja-jp-ichiro-apollo`                       | Containeravbildning med `ja-JP` språk och `ja-JP-Ichiro-Apollo` röst.   | `sha256:83aa3c569f7598843d4957f075915ac2635d3aaf577ac1158c12a1238dd7e148` |
+| `ko-kr-heamirus`                            | Containeravbildning med `ko-KR` språk och `ko-KR-HeamiRUS` röst.        | `sha256:ea404c7857f9df0a23cbf3fac12ae00f11c32a6822d91078a321302f09f01082` |
+| `ms-my-rizwan`                              | Containeravbildning med `ms-MY` språk och `ms-MY-Rizwan` röst.          | `sha256:d4c15f7da8e03650395489b6cb6975d59322b1bbd2c59957617f0c0a297409ee` |
+| `nb-no-huldarus`                            | Containeravbildning med `nb-NO` språk och `nb-NO-HuldaRUS` röst.        | `sha256:cb2c0fb57513c66e00bd6b8cbb44882d5bb7d483c19784d2b1e09511d58842bc` |
+| `nl-nl-hannarus`                            | Containeravbildning med `nl-NL` språk och `nl-NL-HannaRUS` röst.        | `sha256:7b9a92ab8a9856f422e65b428b845571a059c0923dc1c348134f271ed7a4abe0` |
+| `pl-pl-paulinarus`                          | Containeravbildning med `pl-PL` språk och `pl-PL-PaulinaRUS` röst.      | `sha256:cface74973368a78d75a2a079214aa748574c5f037b0c4189888269b6016f230` |
+| `pt-br-daniel-apollo`                       | Containeravbildning med `pt-BR` språk och `pt-BR-Daniel-Apollo` röst.   | `sha256:cc3e74228002b8d4e7dc487ff6f930316ac5d7a93f97937942a23f41b484ba8c` |
+| `pt-br-heloisarus`                          | Containeravbildning med `pt-BR` språk och `pt-BR-HeloisaRUS` röst.      | `sha256:dca613867e2f559d9485f9ba553ecea3de6d4b2779d4eed0ce1e53e7f7939773` |
+| `pt-pt-heliarus`                            | Containeravbildning med `pt-PT` språk och `pt-PT-HeliaRUS` röst.        | `sha256:791ac2b3100725f909cfeceb17fc0d5fd1022242db45ba455d7ea088d76ac033` |
+| `ro-ro-andrei`                              | Containeravbildning med `ro-RO` språk och `ro-RO-Andrei` röst.          | `sha256:3b93df188bcbdf9416d203a7e30ade8908728316666cd3451a5f0320cdf219a9` |
+| `ru-ru-ekaterinarus`                        | Containeravbildning med `ru-RU` språk och `ru-RU-EkaterinaRUS` röst.    | `sha256:d2f636e35e67be196a4ad79f168e4df74d2f00d5b5c6123bd61f9aec72bfd1a7` |
+| `ru-ru-irina-apollo`                        | Containeravbildning med `ru-RU` språk och `ru-RU-Irina-Apollo` röst.    | `sha256:247a4c6025faced1be1738d816c1bb74b23bbc5d49458f9afe95dc32ab3ea71c` |
+| `ru-ru-pavel-apollo`                        | Containeravbildning med `ru-RU` språk och `ru-RU-Pavel-Apollo` röst.    | `sha256:355c3a0f64f003d0a041a757b8ddcdea8130b6a56a7c4003a68ba0412400c446` |
+| `sk-sk-filip`                               | Containeravbildning med `sk-SK` språk och `sk-SK-Filip` röst.           | `sha256:55fff1cde012a7791c756104ba68a360e609a765bd776024a9f5f00199f568e5` |
+| `sl-si-lado`                                | Containeravbildning med `sl-SI` språk och `sl-SI-Lado` röst.            | `sha256:7f80965dde85e3a5aae9f69561c296d073289f0b6aa37e95ff0aa5192a5b7f90` |
+| `sv-se-hedvigrus`                           | Containeravbildning med `sv-SE` språk och `sv-SE-HedvigRUS` röst.       | `sha256:1bd43f513a5b2752c44a107e1898459cdda5d7267ec21f379679d411700e5189` |
+| `ta-in-valluvar`                            | Containeravbildning med `ta-IN` språk och `ta-IN-Valluvar` röst.        | `sha256:8062e2479a6a3dc17b8342c07a94a39dd1e1f788c1def0a1ab55a885b491bbab` |
+| `te-in-chitra`                              | Containeravbildning med `te-IN` språk och `te-IN-Chitra` röst.          | `sha256:6ce345df654bd1db213c16c866b608037dcefb1d056fc14727db3b9e21437762` |
+| `th-th-pattara`                             | Containeravbildning med `th-TH` språk och `th-TH-Pattara` röst.         | `sha256:9b9c8ad7f8621f887f3e9fda26f43995855dba76831fdf2598ef383cf3d20f39` |
+| `tr-tr-sedarus`                             | Containeravbildning med `tr-TR` språk och `tr-TR-SedaRUS` röst.         | `sha256:2e45f019df702d8788c1d9c20ff75cfd94aecaaf6facb9f41b642ef1bfe7d318` |
+| `vi-vn-an`                                  | Containeravbildning med `vi-VN` språk och `vi-VN-An` röst.              | `sha256:3b142a414ff9f30ebef144e22bf979589600f226442d2f882384695795739178` |
+| `zh-cn-huihuirus`                           | Containeravbildning med `zh-CN` språk och `zh-CN-HuihuiRUS` röst.       | `sha256:23b76501492c9b60e8888eda2f6b0258859f68ed6ff7fb49bacbb18cd5f542ed` |
+| `zh-cn-kangkang-apollo`                     | Containeravbildning med `zh-CN` språk och `zh-CN-Kangkang-Apollo` röst. | `sha256:e9acc58168f6800d9dd11cbc569c9d279ecf28f3d17c702528d25f67edd447c9` |
+| `zh-cn-yaoyao-apollo`                       | Containeravbildning med `zh-CN` språk och `zh-CN-Yaoyao-Apollo` röst.   | `sha256:85e7d7ae77d41195de5102b772621ef34564d40fad224a0ed21a8fe8daf98b0f` |
+| `zh-hk-danny-apollo`                        | Containeravbildning med `zh-HK` språk och `zh-HK-Danny-Apollo` röst.    | `sha256:1fcba05138c0e5bf36447530311800e2d4044824b5d893439a12f3ebc6380135` |
+| `zh-hk-tracy-apollo`                        | Containeravbildning med `zh-HK` språk och `zh-HK-Tracy-Apollo` röst.    | `sha256:d02bd8759e085abbc95725aa4f70f124c4505aa0856a17696a1555b2cf64512e` |
+| `zh-hk-tracyrus`                            | Containeravbildning med `zh-HK` språk och `zh-HK-TracyRUS` röst.        | `sha256:d02bd8759e085abbc95725aa4f70f124c4505aa0856a17696a1555b2cf64512e` |
+| `zh-tw-hanhanrus`                           | Containeravbildning med `zh-TW` språk och `zh-TW-HanHanRUS` röst.       | `sha256:a3f68538088b5b07f4dc27239fa3a6308d949c2643638634c74f3ee132bca911` |
+| `zh-tw-yating-apollo`                       | Containeravbildning med `zh-TW` språk och `zh-TW-Yating-Apollo` röst.   | `sha256:bb0696685f3a90fe6898ff1487cb0c5957e02f3c63cdb7d02394b5c061339bf3` |
+| `zh-tw-zhiwei-apollo`                       | Containeravbildning med `zh-TW` språk och `zh-TW-Zhiwei-Apollo` röst.   | `sha256:1772b3bc8b166f429356b00d07ca438202c75d578b6d1655351b9c1e06ae1424` |
+
+
+# <a name="previous-version"></a>[Tidigare version](#tab/previous)
+
+Publiceringsnotering för `1.12.0-amd64-<locale-and-voice>` :
+
+**Funktion**
+* Uppgradera till de senaste modellerna.
+
+Publiceringsnotering för `1.11.0-amd64-<locale-and-voice>` :
+
+**Funktion**
+* Mer felinformation för problem vid hämtning av anpassade modeller efter ID.
+
+Publiceringsnotering för `1.9.0-amd64-<locale-and-voice>` :
+
+* Vanlig månatlig version
+
+Publiceringsnotering för `1.8.0-amd64-<locale-and-voice>` :
+
+**Funktion**
+
+* Fullständigt migrerat till .NET 3.1
+
+Publiceringsnotering för `1.7.0-amd64-<locale-and-voice>` :
+
+**Funktion**
+
+* Uppgraderade komponenter till .NET 3.1
+
+| Bildtaggar                                  | Kommentarer                                                                                                         |
+|---------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
 | `1.12.0-amd64-<locale-and-voice>`           | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `1.12.0-amd64-en-us-ariarus`. |
+| `1.11.0-amd64-<locale-and-voice>`           | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `1.11.0-amd64-en-us-ariarus`. |
+| `1.9.0-amd64-<locale-and-voice>`            | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `1.9.0-amd64-en-us-ariarus`.  |
+| `1.8.0-amd64-<locale-and-voice>`            | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `1.8.0-amd64-en-us-ariarus`.  |
+| `1.7.0-amd64-<locale-and-voice>`            | Första GA-versionen. Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `1.7.0-amd64-en-us-ariarus`.  |
 
 | Språk för v1.12.0                         | Kommentarer                                                                      | Sammandrag                         |
 |---------------------------------------------|:---------------------------------------------------------------------------|:-------------------------------|
@@ -813,37 +1038,6 @@ Publiceringsnotering för `1.12.0-amd64-<locale-and-voice>` :
 | `zh-tw-hanhanrus`                           | Containeravbildning med `zh-TW` språk och `zh-TW-HanHanRUS` röst.       | `sha256:9802fc4a9656063cb9f215ca757db5289960d323244272ce280db0395ddd46ac` |
 | `zh-tw-yating-apollo`                       | Containeravbildning med `zh-TW` språk och `zh-TW-Yating-Apollo` röst.   | `sha256:05f50dffbeb17e4215a5a53cc0791d825b63bc1e2b007b00797e5d0e1b1d6d1e` |
 | `zh-tw-zhiwei-apollo`                       | Containeravbildning med `zh-TW` språk och `zh-TW-Zhiwei-Apollo` röst.   | `sha256:e96f4aecba6e3c0741218f3e1aec35e53147b12543be9fdcd76ff98d4c34cf84` |
-
-
-# <a name="previous-version"></a>[Tidigare version](#tab/previous)
-
-Publiceringsnotering för `1.11.0-amd64-<locale-and-voice>` :
-
-**Funktion**
-* Mer felinformation för problem vid hämtning av anpassade modeller efter ID.
-
-Publiceringsnotering för `1.9.0-amd64-<locale-and-voice>` :
-
-* Vanlig månatlig version
-
-Publiceringsnotering för `1.8.0-amd64-<locale-and-voice>` :
-
-**Funktion**
-
-* Fullständigt migrerat till .NET 3.1
-
-Publiceringsnotering för `1.7.0-amd64-<locale-and-voice>` :
-
-**Funktion**
-
-* Uppgraderade komponenter till .NET 3.1
-
-| Bildtaggar                                  | Kommentarer                                                                                                         |
-|---------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
-| `1.11.0-amd64-<locale-and-voice>`           | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `1.11.0-amd64-en-us-ariarus`. |
-| `1.9.0-amd64-<locale-and-voice>`            | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `1.9.0-amd64-en-us-ariarus`.  |
-| `1.8.0-amd64-<locale-and-voice>`            | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `1.8.0-amd64-en-us-ariarus`.  |
-| `1.7.0-amd64-<locale-and-voice>`            | Första GA-versionen. Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `1.7.0-amd64-en-us-ariarus`.  |
 
 | Språk för v1.11.0                         | Kommentarer                                                                      | Sammandrag                         |
 |---------------------------------------------|:---------------------------------------------------------------------------|:-------------------------------|
@@ -1192,16 +1386,72 @@ Den här containeravbildningen har följande tillgängliga taggar. Du hittar ock
 
 # <a name="latest-version"></a>[Senaste version](#tab/current)
 
+Information om `v1.5.0` :
+* Uppgradera till de senaste modellerna med kvalitetsförbättringar och felkorrigeringar
+* Stöd för upp till 38 neurala röster
+
+| Bildtaggar                                  | Kommentarer                                                                      |
+|---------------------------------------------|:---------------------------------------------------------------------------|
+| `latest`                                    | Containeravbildning med `en-US` språk och `en-US-AriaNeural` röst.      |
+| `1.5.0-amd64-<locale-and-voice>`            | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `1.5.0-amd64-en-us-arianeural`. |
+
+
+| Språk och röster för v1.5.0           | Kommentarer                                                                      |
+|-------------------------------------|:---------------------------------------------------------------------------|
+| `de-de-conradneural`                | Containeravbildning med `de-DE` språk och `de-DE-ConradNeural` röst.    |
+| `de-de-katjaneural`                 | Containeravbildning med `de-DE` språk och `de-DE-KatjaNeural` röst.     |
+| `en-au-natashaneural`               | Containeravbildning med `en-AU` språk och `en-AU-NatashaNeural` röst.   |
+| `en-au-williamneural`               | Containeravbildning med `en-AU` språk och `en-AU-WilliamNeural` röst.   |
+| `en-ca-claraneural`                 | Containeravbildning med `en-CA` språk och `en-CA-ClaraNeural` röst.     |
+| `en-ca-liamneural`                  | Containeravbildning med `en-CA` språk och `en-CA-LiamNeural` röst.      |
+| `en-gb-libbyneural`                 | Containeravbildning med `en-GB` språk och `en-GB-LibbyNeural` röst.     |
+| `en-gb-mianeural`                   | Containeravbildning med `en-GB` språk och `en-GB-MiaNeural` röst.       |
+| `en-gb-ryanneural`                  | Containeravbildning med `en-GB` språk och `en-GB-RyanNeural` röst.      |
+| `en-us-arianeural`                  | Containeravbildning med `en-US` språk och `en-US-AriaNeural` röst.      |
+| `en-us-guyneural`                   | Containeravbildning med `en-US` språk och `en-US-GuyNeural` röst.       |
+| `en-us-jennyneural`                 | Containeravbildning med `en-US` språk och `en-US-JennyNeural` röst.     |
+| `es-es-alvaroneural`                | Containeravbildning med `es-ES` språk och `es-ES-AlvaroNeural` röst.    |
+| `es-es-elviraneural`                | Containeravbildning med `es-ES` språk och `es-ES-ElviraNeural` röst.    |
+| `es-mx-dalianeural`                 | Containeravbildning med `es-MX` språk och `es-MX-DaliaNeural` röst.     |
+| `es-mx-jorgeneural`                 | Containeravbildning med `es-MX` språk och `es-MX-JorgeNeural` röst.     |
+| `fr-ca-antoineneural`               | Containeravbildning med `fr-CA` språk och `fr-CA-AntoineNeural` röst.   |
+| `fr-ca-jeanneural`                  | Containeravbildning med `fr-CA` språk och `fr-CA-JeanNeural` röst.      |
+| `fr-ca-sylvieneural`                | Containeravbildning med `fr-CA` språk och `fr-CA-SylvieNeural` röst.    |
+| `fr-fr-deniseneural`                | Containeravbildning med `fr-FR` språk och `fr-FR-DeniseNeural` röst.    |
+| `fr-fr-henrineural`                 | Containeravbildning med `fr-FR` språk och `fr-FR-HenriNeural` röst.     |
+| `hi-in-madhurneural`                | Containeravbildning med `hi-IN` språk och `hi-IN-MadhurNeural` röst.    |
+| `hi-in-swaraneural`                 | Containeravbildning med `hi-IN` språk och `hi-IN-Swaraneural` röst.     |
+| `it-it-diegoneural`                 | Containeravbildning med `it-IT` språk och `it-IT-DiegoNeural` röst.     |
+| `it-it-elsaneural`                  | Containeravbildning med `it-IT` språk och `it-IT-ElsaNeural` röst.      |
+| `it-it-isabellaneural`              | Containeravbildning med `it-IT` språk och `it-IT-IsabellaNeural` röst.  |
+| `ja-jp-keitaneural`                 | Containeravbildning med `ja-JP` språk och `ja-JP-KeitaNeural` röst.     |
+| `ja-jp-nanamineural`                | Containeravbildning med `ja-JP` språk och `ja-JP-NanamiNeural` röst.    |
+| `ko-kr-injoonneural`                | Containeravbildning med `ko-KR` språk och `ko-KR-InJoonNeural` röst.    |
+| `ko-kr-sunhineural`                 | Containeravbildning med `ko-KR` språk och `ko-KR-SunHiNeural` röst.     |
+| `pt-br-antonioneural`               | Containeravbildning med `pt-BR` språk och `pt-BR-AntonioNeural` röst.   |
+| `pt-br-franciscaneural`             | Containeravbildning med `pt-BR` språk och `pt-BR-FranciscaNeural` röst. |
+| `tr-tr-ahmetneural`                 | Containeravbildning med `tr-TR` språk och `tr-TR-AhmetNeural` röst.     |
+| `tr-tr-emelneural`                  | Containeravbildning med `tr-TR` språk och `tr-TR-EmelNeural` röst.      |
+| `zh-cn-xiaoxiaoneural`              | Containeravbildning med `zh-CN` språk och `zh-CN-XiaoxiaoNeural` röst.  |
+| `zh-cn-xiaoyouneural`               | Containeravbildning med `zh-CN` språk och `zh-CN-XiaoYouNeural` röst.   |
+| `zh-cn-yunyangneural`               | Containeravbildning med `zh-CN` språk och `zh-CN-YunYangNeural` röst.   |
+| `zh-cn-yunyeneural`                 | Containeravbildning med `zh-CN` språk och `zh-CN-YunYeNeural` röst.     |
+
+# <a name="previous-version"></a>[Tidigare version](#tab/previous)
+
 Information om `v1.4.0` :
 * Uppgradera till de senaste modellerna. 
 * Cpu-kostnaden och svarstiden minskades.
 * Bättre stöd för prosodyjustering med SSML-tagg (t.ex. pitch- och pitch-
 
+Information om `v1.3.0` :
+* Containern neural text till tal är nu allmänt tillgänglig. 
+
 | Bildtaggar                                  | Kommentarer                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
-| `latest`                                    | Containeravbildning med `en-US` språk och `en-US-AriaNeural` röst.      |
-| `1.4.0-amd64-<locale-and-voice>`    | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `1.4.0-amd64-en-us-arianeural`. |
-
+| `1.4.0-amd64-<locale-and-voice>`            | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `1.4.0-amd64-en-us-arianeural`. |
+| `1.3.0-amd64-<locale-and-voice>-preview`    | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `1.3.0-amd64-en-us-arianeural-preview`. |
+| `1.2.0-amd64-<locale-and-voice>-preview`    | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `1.2.0-amd64-en-us-arianeural-preview`. |
 
 | Språk och röster för v1.4.0           | Kommentarer                                                                      |
 |-------------------------------------|:---------------------------------------------------------------------------|
@@ -1217,7 +1467,7 @@ Information om `v1.4.0` :
 | `es-mx-dalianeural`                 | Containeravbildning med `es-MX` språk och `es-MX-DaliaNeural` röst.     |
 | `fr-ca-sylvieneural`                | Containeravbildning med `fr-CA` språk och `fr-CA-SylvieNeural` röst.    |
 | `fr-fr-deniseneural`                | Containeravbildning med `fr-FR` språk och `fr-FR-DeniseNeural` röst.    |
-| `hi-in-swaracpuneural`              | Containeravbildning med `hi-IN` språk och `hi-IN-Swaraneural` röst.     |
+| `hi-in-swaraneural`                 | Containeravbildning med `hi-IN` språk och `hi-IN-Swaraneural` röst.     |
 | `it-it-elsaneural`                  | Containeravbildning med `it-IT` språk och `it-IT-ElsaNeural` röst.      |
 | `ja-jp-nanamineural`                | Containeravbildning med `ja-JP` språk och `ja-JP-NanamiNeural` röst.    |
 | `ko-kr-sunhineural`                 | Containeravbildning med `ko-KR` språk och `ko-KR-SunHiNeural` röst.     |
@@ -1226,17 +1476,6 @@ Information om `v1.4.0` :
 | `zh-cn-xiaoyouneural`               | Containeravbildning med `zh-CN` språk och `zh-CN-XiaoYouNeural` röst.   |
 | `zh-cn-yunyangneural`               | Containeravbildning med `zh-CN` språk och `zh-CN-YunYangNeural` röst.   |
 | `zh-cn-yunyeneural`                 | Containeravbildning med `zh-CN` språk och `zh-CN-YunYeNeural` röst.     |
-
-# <a name="previous-version"></a>[Tidigare version](#tab/previous)
-
-Information om `v1.3.0` :
-* Containern neural text till tal är nu allmänt tillgänglig. 
-
-| Bildtaggar                                  | Kommentarer                                                                      |
-|---------------------------------------------|:---------------------------------------------------------------------------|
-| `latest`                                    | Containeravbildning med `en-US` språk och `en-US-AriaNeural` röst.      |
-| `1.3.0-amd64-<locale-and-voice>-preview`    | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `1.3.0-amd64-en-us-arianeural-preview`. |
-| `1.2.0-amd64-<locale-and-voice>-preview`    | Ersätt `<locale>` med något av de tillgängliga språken som anges nedan. Till exempel `1.2.0-amd64-en-us-arianeural-preview`. |
 
 | Språk och röster för v1.3.0           | Kommentarer                                                                      |
 |-------------------------------------|:---------------------------------------------------------------------------|
@@ -1252,7 +1491,7 @@ Information om `v1.3.0` :
 | `es-mx-dalianeural`                 | Containeravbildning med `es-MX` språk och `es-MX-DaliaNeural` röst.     |
 | `fr-ca-sylvieneural`                | Containeravbildning med `fr-CA` språk och `fr-CA-SylvieNeural` röst.    |
 | `fr-fr-deniseneural`                | Containeravbildning med `fr-FR` språk och `fr-FR-DeniseNeural` röst.    |
-| `hi-in/swaracpuneural`              | Containeravbildning med `hi-IN` språk och `hi-IN-Swaraneural` röst.     |
+| `hi-in-swaraneural`                 | Containeravbildning med `hi-IN` språk och `hi-IN-Swaraneural` röst.     |
 | `it-it-elsaneural`                  | Containeravbildning med `it-IT` språk och `it-IT-ElsaNeural` röst.      |
 | `ja-jp-nanamineural`                | Containeravbildning med `ja-JP` språk och `ja-JP-NanamiNeural` röst.    |
 | `ko-kr-sunhineural`                 | Containeravbildning med `ko-KR` språk och `ko-KR-SunHiNeural` röst.     |
@@ -1294,9 +1533,9 @@ Den här containeravbildningen har följande tillgängliga taggar. Du hittar ock
 
 ## <a name="key-phrase-extraction"></a>Extrahering av nyckelfraser
 
-du hittar containeravbildningen i `mcr.microsoft.com` containerregistret. Den finns i `azure-cognitive-services/textanalytics/` lagringsplatsen och har namnet `keyphrase` . Det fullständigt kvalificerade containeravbildningsnamnet är `mcr.microsoft.com/azure-cognitive-services/textanalytics/keyphrase` .
+containeravbildningen finns i `mcr.microsoft.com` containerregistret. Den finns i `azure-cognitive-services/textanalytics/` lagringsplatsen och har namnet `keyphrase` . Det fullständigt kvalificerade containeravbildningsnamnet är `mcr.microsoft.com/azure-cognitive-services/textanalytics/keyphrase` .
 
-Den här containeravbildningen har följande taggar tillgängliga. Du hittar också en fullständig lista över [taggar på MCR.](https://mcr.microsoft.com/v2/azure-cognitive-services/textanalytics/keyphrase/tags/list)
+Den här containeravbildningen har följande taggar tillgängliga. Du hittar också en fullständig lista över [taggar i MCR.](https://mcr.microsoft.com/v2/azure-cognitive-services/textanalytics/keyphrase/tags/list)
 
 # <a name="latest-version"></a>[Senaste version](#tab/current)
 
@@ -1343,9 +1582,9 @@ Den här containeravbildningen har följande taggar tillgängliga. Du hittar ock
 
 ## <a name="sentiment-analysis"></a>Attitydanalys
 
-Du [Attitydanalys][ta-se] containeravbildningen i `mcr.microsoft.com` containerregistret. Den finns i `azure-cognitive-services/textanalytics/` lagringsplatsen och har namnet `sentiment` . Det fullständiga namnet på containeravbildningen är: `mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment`
+Den [Attitydanalys][ta-se] containeravbildningen finns i `mcr.microsoft.com` containerregistrets registeravbildning. Den finns i `azure-cognitive-services/textanalytics/` lagringsplatsen och har namnet `sentiment` . Det fullständigt kvalificerade containeravbildningsnamnet är: `mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment`
 
-Den här containeravbildningen har följande taggar tillgängliga. Du hittar också en fullständig lista över [taggar på MCR.](https://mcr.microsoft.com/v2/azure-cognitive-services/textanalytics/sentiment/tags/list)
+Den här containeravbildningen har följande taggar tillgängliga. Du hittar också en fullständig lista över [taggar i MCR.](https://mcr.microsoft.com/v2/azure-cognitive-services/textanalytics/sentiment/tags/list)
 
 | Bildtaggar | Kommentarer                                         |
 |------------|:----------------------------------------------|

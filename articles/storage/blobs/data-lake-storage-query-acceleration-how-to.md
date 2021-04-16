@@ -1,6 +1,6 @@
 ---
-title: Filtrera data med hjälp av Azure Data Lake Storage fråga acceleration | Microsoft Docs
-description: Använd Query acceleration för att hämta en delmängd av data från ditt lagrings konto.
+title: Filtrera data med hjälp Azure Data Lake Storage frågeacceleration | Microsoft Docs
+description: Använd frågeacceleration för att hämta en delmängd data från ditt lagringskonto.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,27 +8,27 @@ ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: a925d3f55395d094c7f19f65de4b72fd20a11a41
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 58b8cdef604861342a6489ef4e57ff1d057cd3f4
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102213682"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377742"
 ---
-# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Filtrera data med hjälp av Azure Data Lake Storage fråga om acceleration
+# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Filtrera data med hjälp Azure Data Lake Storage frågeacceleration
 
-Den här artikeln visar hur du använder Query acceleration för att hämta en delmängd av data från ditt lagrings konto. 
+Den här artikeln visar hur du använder frågeacceleration för att hämta en delmängd data från ditt lagringskonto. 
 
-Med hjälp av frågekörning kan program och analys ramverk dramatiskt optimera data bearbetningen genom att bara hämta de data som de behöver för att utföra en specifik åtgärd. Mer information finns i [Azure Data Lake Storage fråga om acceleration](data-lake-storage-query-acceleration.md).
+Frågeacceleration gör det möjligt för program och analysramverk att dramatiskt optimera databehandlingen genom att endast hämta de data som krävs för att utföra en viss åtgärd. Mer information finns i Azure Data Lake Storage [Frågeacceleration](data-lake-storage-query-acceleration.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Du behöver en Azure-prenumeration för att få åtkomst till Azure Storage. Om du inte redan har en prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+- Du behöver en Azure-prenumeration för att få åtkomst till Azure Storage. Om du inte redan har en prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-- Ett **Allmänt-syfte v2-** lagrings konto. Se [skapa ett lagrings konto](../common/storage-account-create.md).
+- Ett **v2-lagringskonto** för generell användning. se [Skapa ett lagringskonto](../common/storage-account-create.md).
 
-- Välj en flik för att visa alla SDK-särskilda krav.
+- Välj en flik för att visa eventuella SDK-specifika krav.
 
   ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -42,14 +42,14 @@ Med hjälp av frågekörning kan program och analys ramverk dramatiskt optimera 
 
   - [Java Development Kit (JDK)](/java/azure/jdk/) version 8 eller senare
 
-  - [Apache maven](https://maven.apache.org/download.cgi) 
+  - [Apache Maven](https://maven.apache.org/download.cgi) 
 
     > [!NOTE] 
-    > I den här artikeln förutsätter vi att du har skapat ett Java-projekt med Apache Maven. Ett exempel på hur du skapar ett projekt med hjälp av Apache maven finns i [Konfigurera](storage-quickstart-blobs-java.md#setting-up).
+    > Den här artikeln förutsätter att du har skapat ett Java-projekt med hjälp av Apache Maven. Ett exempel på hur du skapar ett projekt med apache Maven finns i [Konfigurera](storage-quickstart-blobs-java.md#setting-up).
   
   ### <a name="python"></a>[Python](#tab/python)
 
-  [Python](https://www.python.org/downloads/) 3,8 eller senare.
+  [Python](https://www.python.org/downloads/) 3.8 eller högre.
 
   ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
@@ -57,17 +57,17 @@ Med hjälp av frågekörning kan program och analys ramverk dramatiskt optimera 
 
 ---
 
-## <a name="enable-query-acceleration"></a>Aktivera acceleration av fråga
+## <a name="enable-query-acceleration"></a>Aktivera frågeacceleration
 
-Om du vill använda acceleration av frågor måste du registrera funktionen för frågans acceleration med din prenumeration. När du har kontrollerat att funktionen har registrerats måste du registrera Azure Storage Resource Provider. 
+Om du vill använda frågeacceleration måste du registrera frågeaccelerationsfunktionen i din prenumeration. När du har kontrollerat att funktionen har registrerats måste du registrera Azure Storage resursprovidern. 
 
-### <a name="step-1-register-the-query-acceleration-feature"></a>Steg 1: registrera funktionen för frågans acceleration
+### <a name="step-1-register-the-query-acceleration-feature"></a>Steg 1: Registrera frågeaccelerationsfunktionen
 
-Om du vill använda acceleration av frågor måste du först registrera funktionen för frågans acceleration med din prenumeration. 
+Om du vill använda frågeacceleration måste du först registrera funktionen för frågeacceleration i din prenumeration. 
 
 #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. Öppna ett Windows PowerShell-kommando fönster.
+1. Öppna ett Windows PowerShell kommandofönster.
 
 1. Logga in på din Azure-prenumeration med kommandot `Connect-AzAccount` och följ anvisningarna på skärmen.
 
@@ -75,16 +75,16 @@ Om du vill använda acceleration av frågor måste du först registrera funktion
    Connect-AzAccount
    ```
 
-2. Om din identitet är associerad med mer än en prenumeration anger du den aktiva prenumerationen.
+2. Om din identitet är associerad med mer än en prenumeration anger du din aktiva prenumeration.
 
    ```powershell
    $context = Get-AzSubscription -SubscriptionId <subscription-id>
    Set-AzContext $context
    ```
 
-   Ersätt `<subscription-id>` placeholder-värdet med ID: t för din prenumeration.
+   Ersätt `<subscription-id>` platshållarvärdet med ID:t för din prenumeration.
 
-3. Registrera funktionen för frågans acceleration med kommandot [register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) .
+3. Registrera frågeaccelerationsfunktionen med kommandot [Register-AzProviderFeature.](/powershell/module/az.resources/register-azproviderfeature)
 
    ```powershell
    Register-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuery
@@ -92,17 +92,17 @@ Om du vill använda acceleration av frågor måste du först registrera funktion
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Öppna [Azure Cloud Shell](../../cloud-shell/overview.md), eller om du har [installerat](/cli/azure/install-azure-cli) Azure CLI lokalt öppnar du ett kommando konsol program, till exempel Windows PowerShell.
+1. Öppna [Azure Cloud Shell,](../../cloud-shell/overview.md)eller om du har [](/cli/azure/install-azure-cli) installerat Azure CLI lokalt öppnar du ett kommandokonsolprogram, till exempel Windows PowerShell.
 
-2. Om din identitet är associerad med fler än en prenumeration ställer du in din aktiva prenumeration på prenumerationen på lagrings kontot.
+2. Om din identitet är associerad med mer än en prenumeration anger du din aktiva prenumeration till prenumeration på lagringskontot.
 
    ```azurecli-interactive
    az account set --subscription <subscription-id>
    ```
 
-   Ersätt `<subscription-id>` placeholder-värdet med ID: t för din prenumeration.
+   Ersätt `<subscription-id>` platshållarvärdet med ID:t för din prenumeration.
 
-3. Registrera funktionen för frågans acceleration med hjälp av kommandot [AZ Feature register](/cli/azure/feature#az-feature-register) .
+3. Registrera frågeaccelerationsfunktionen med [kommandot az feature register.](/cli/azure/feature#az-feature-register)
 
    ```azurecli
    az feature register --namespace Microsoft.Storage --name BlobQuery
@@ -110,11 +110,11 @@ Om du vill använda acceleration av frågor måste du först registrera funktion
 
 ---
 
-### <a name="step-2-verify-that-the-feature-is-registered"></a>Steg 2: kontrol lera att funktionen har registrerats
+### <a name="step-2-verify-that-the-feature-is-registered"></a>Steg 2: Kontrollera att funktionen är registrerad
 
 #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Verifiera att registreringen är klar med kommandot [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) .
+Kontrollera att registreringen är klar med kommandot [Get-AzProviderFeature.](/powershell/module/az.resources/get-azproviderfeature)
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuery
@@ -122,7 +122,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuer
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Verifiera att registreringen är klar med hjälp av kommandot [AZ Feature](/cli/azure/feature#az-feature-show) .
+Kontrollera att registreringen är klar med kommandot [az feature.](/cli/azure/feature#az-feature-show)
 
 ```azurecli
 az feature show --namespace Microsoft.Storage --name BlobQuery
@@ -130,13 +130,13 @@ az feature show --namespace Microsoft.Storage --name BlobQuery
 
 ---
 
-### <a name="step-3-register-the-azure-storage-resource-provider"></a>Steg 3: registrera Azure Storage Resource Provider
+### <a name="step-3-register-the-azure-storage-resource-provider"></a>Steg 3: Registrera Azure Storage resursprovidern
 
-När registreringen har godkänts måste du registrera Azure Storage resurs leverantören igen. 
+När registreringen har godkänts måste du registrera om Azure Storage resursprovidern. 
 
 #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Registrera resurs leverantören med kommandot [register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) .
+Registrera resursprovidern med kommandot [Register-AzResourceProvider.](/powershell/module/az.resources/register-azresourceprovider)
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
@@ -144,7 +144,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Registrera resurs leverantören med kommandot [AZ Provider register](/cli/azure/provider#az-provider-register) .
+Registrera resursprovidern med kommandot [az provider register.](/cli/azure/provider#az-provider-register)
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'
@@ -154,17 +154,17 @@ az provider register --namespace 'Microsoft.Storage'
 
 ## <a name="set-up-your-environment"></a>Konfigurera din miljö
 
-### <a name="step-1-install-packages"></a>Steg 1: installera paket 
+### <a name="step-1-install-packages"></a>Steg 1: Installera paket 
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Installera AZ-modulen version 4.6.0 eller högre.
+Installera Az-modul version 4.6.0 eller senare.
 
 ```powershell
 Install-Module -Name Az -Repository PSGallery -Force
 ```
 
-Om du vill uppdatera från en äldre version av AZ kör du följande kommando:
+Om du vill uppdatera från en äldre version av Az kör du följande kommando:
 
 ```powershell
 Update-Module -Name Az
@@ -172,19 +172,19 @@ Update-Module -Name Az
 
 #### <a name="net"></a>[.NET](#tab/dotnet)
 
-1. Öppna en kommando tolk och ändra katalogen ( `cd` ) i projektmappen till exempel:
+1. Öppna en kommandotolk och ändra katalog ( `cd` ) till projektmappen Till exempel:
 
    ```console
    cd myProject
    ```
 
-2. Installera `12.5.0-preview.6` versionen eller en senare version av Azure Blob Storage klient biblioteket för .net-paketet med hjälp av `dotnet add package` kommandot. 
+2. Installera versionen `12.5.0-preview.6` eller senare av Azure Blob Storage-klientbiblioteket för .NET-paketet med hjälp av kommandot `dotnet add package` . 
 
    ```console
    dotnet add package Azure.Storage.Blobs -v 12.8.0
    ```
 
-3. I exemplen som visas i den här artikeln analyseras en CSV-fil med hjälp av [CsvHelper](https://www.nuget.org/packages/CsvHelper/) -biblioteket. Använd följande kommando för att använda biblioteket.
+3. Exemplen som visas i den här artikeln parsar en CSV-fil med hjälp av [csvHelper-biblioteket.](https://www.nuget.org/packages/CsvHelper/) Om du vill använda biblioteket använder du följande kommando.
 
    ```console
    dotnet add package CsvHelper
@@ -192,7 +192,7 @@ Update-Module -Name Az
 
 #### <a name="java"></a>[Java](#tab/java)
 
-1. Öppna *pom.xml* -filen för projektet i en text redigerare. Lägg till följande beroende element i gruppen med beroenden. 
+1. Öppna *pom.xml* i projektet i en textredigerare. Lägg till följande beroendeelement i gruppen med beroenden. 
 
    ```xml
    <!-- Request static dependencies from Maven -->
@@ -215,7 +215,7 @@ Update-Module -Name Az
 
 #### <a name="python"></a>[Python](#tab/python)
 
-Installera Azure Data Lake Storage klient bibliotek för python med hjälp av [pip](https://pypi.org/project/pip/).
+Installera Azure Data Lake Storage för Python med hjälp av [pip](https://pypi.org/project/pip/).
 
 ```
 pip install azure-storage-blob==12.4.0
@@ -223,7 +223,7 @@ pip install azure-storage-blob==12.4.0
 
 #### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Installera Data Lake klient bibliotek för Java Script genom att öppna ett terminalfönster och sedan skriva in följande kommando.
+Installera Data Lake-klientbiblioteket för JavaScript genom att öppna ett terminalfönster och skriv sedan följande kommando.
 
 ```javascript
     npm install @azure/storage-blob
@@ -240,7 +240,7 @@ Inte tillämpligt
 
 #### <a name="net"></a>[.NET](#tab/dotnet)
 
-Lägg till dessa `using` uttryck överst i din kod fil.
+Lägg till `using` de här isatserna överst i kodfilen.
 
 ```csharp
 using Azure.Storage.Blobs;
@@ -248,14 +248,14 @@ using Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs.Specialized;
 ```
 
-Frågans acceleration hämtar CSV-och JSON-formaterade data. Därför bör du se till att lägga till instruktioner för alla CSV-eller JSON-parsningsfel som du väljer att använda. I exemplen som visas i den här artikeln analyseras en CSV-fil med hjälp av [CsvHelper](https://www.nuget.org/packages/CsvHelper/) -biblioteket som finns på NuGet. Därför skulle vi lägga till dessa `using` instruktioner överst i kod filen.
+Frågeacceleration hämtar CSV- och Json-formaterade data. Se därför till att lägga till using-instruktioner för alla CSV- eller Json-parsningsbibliotek som du väljer att använda. Exemplen som visas i den här artikeln parsar en CSV-fil med hjälp av [csvHelper-biblioteket](https://www.nuget.org/packages/CsvHelper/) som är tillgängligt på NuGet. Därför lägger vi till de `using` här isatserna överst i kodfilen.
 
 ```csharp
 using CsvHelper;
 using CsvHelper.Configuration;
 ```
 
-För att kunna kompilera exempel som presenteras i den här artikeln måste du också lägga till dessa `using` instruktioner.
+För att kompilera exempel som presenteras i den här artikeln måste du också lägga till `using` de här isatserna.
 
 ```csharp
 using System.Threading.Tasks;
@@ -265,7 +265,7 @@ using System.Globalization;
 
 #### <a name="java"></a>[Java](#tab/java)
 
-Lägg till dessa `import` uttryck överst i din kod fil.
+Lägg till `import` de här isatserna överst i kodfilen.
 
 ```java
 import com.azure.storage.blob.*;
@@ -279,7 +279,7 @@ import org.apache.commons.csv.*;
 
 #### <a name="python"></a>[Python](#tab/python)
 
-Lägg till dessa import uttryck längst upp i din kod fil.
+Lägg till dessa importutdrag överst i kodfilen.
 
 ```python
 import sys, csv
@@ -288,13 +288,13 @@ from azure.storage.blob import BlobServiceClient, ContainerClient, BlobClient, D
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Inkludera `storage-blob` modulen genom att placera den här instruktionen överst i din kod fil. 
+Inkludera modulen `storage-blob` genom att placera den här instruktionen överst i kodfilen. 
 
 ```javascript
 const { BlobServiceClient } = require("@azure/storage-blob");
 ```
 
-Frågans acceleration hämtar CSV-och JSON-formaterade data. Därför bör du se till att lägga till instruktioner för alla CSV-eller JSON-parsningsfel som du väljer att använda. I exemplen som visas i den här artikeln analyseras en CSV-fil med hjälp av [snabb-CSV-](https://www.npmjs.com/package/fast-csv) modulen. Vi skulle därför lägga till den här instruktionen överst i kod filen.
+Frågeacceleration hämtar CSV- och Json-formaterade data. Se därför till att lägga till instruktioner för alla CSV- eller Json-parsningsmoduler som du väljer att använda. Exemplen som visas i den här artikeln parsar en CSV-fil med hjälp av [modulen fast-csv.](https://www.npmjs.com/package/fast-csv) Därför lägger vi till den här instruktionen överst i kodfilen.
 
 ```javascript
 const csv = require('@fast-csv/parse');
@@ -304,11 +304,11 @@ const csv = require('@fast-csv/parse');
 
 ## <a name="retrieve-data-by-using-a-filter"></a>Hämta data med hjälp av ett filter
 
-Du kan använda SQL för att ange rad filter-predikat och kolumn projektioner i en begäran om acceleration av frågor. Följande kod frågar en CSV-fil i Storage och returnerar alla rader med data där den tredje kolumnen matchar värdet `Hemingway, Ernest` . 
+Du kan använda SQL för att ange radfilter-predikat och kolumnprojektioner i en begäran om frågeacceleration. Följande kod frågar en CSV-fil i lagringen och returnerar alla rader med data där den tredje kolumnen matchar värdet `Hemingway, Ernest` . 
 
-- I SQL-frågan används nyckelordet `BlobStorage` för att beteckna filen som efter frågas.
+- I SQL-frågan används `BlobStorage` nyckelordet för att ange den fil som efterfrågas.
 
-- Kolumn referenser anges som `_N` den första kolumnen `_1` . Om käll filen innehåller en rubrik rad kan du referera till kolumner med det namn som anges i rubrik raden. 
+- Kolumnreferenser anges som `_N` där den första kolumnen är `_1` . Om källfilen innehåller en rubrikrad kan du referera till kolumner med det namn som anges på rubrikraden. 
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -328,7 +328,7 @@ Get-QueryCsv $ctx $container $blob "SELECT * FROM BlobStorage WHERE _3 = 'Heming
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Metoden async `BlobQuickQueryClient.QueryAsync` skickar frågan till API för frågans acceleration och skickar sedan tillbaka resultatet till programmet som ett [Stream](/dotnet/api/system.io.stream) -objekt.
+Den asynkrona metoden skickar frågan till API:et för frågeacceleration och strömmar sedan resultaten tillbaka `BlobQuickQueryClient.QueryAsync` till programmet som ett [Stream-objekt.](/dotnet/api/system.io.stream)
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)
@@ -375,7 +375,7 @@ private static async Task DumpQueryCsv(BlockBlobClient blob, string query, bool 
 
 ### <a name="java"></a>[Java](#tab/java)
 
-Metoden `BlobQuickQueryClient.openInputStream()` skickar frågan till API för frågans acceleration och skickar sedan tillbaka resultatet till programmet som ett `InputStream` objekt som kan läsas som andra InputStream-objekt.
+Metoden skickar frågan till API:et för frågeacceleration och strömmar sedan tillbaka resultatet till programmet som ett -objekt som kan läsas som andra `BlobQuickQueryClient.openInputStream()` `InputStream` InputStream-objekt.
 
 ```java
 static void QueryHemingway(BlobClient blobClient) {
@@ -437,7 +437,7 @@ def dump_query_csv(blob: BlobClient, query: str, headers: bool):
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-I det här exemplet skickas frågan till API för frågans acceleration och strömmar sedan tillbaka resultatet. `blob`Objektet som har skickats till `queryHemingway` Hjälp funktionen är av typen [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient). Mer information om hur du hämtar ett [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient) -objekt finns i [snabb start: hantera blobbar med Java Script v12 SDK i Node.js](storage-quickstart-blobs-nodejs.md).
+Det här exemplet skickar frågan till API:et för frågeacceleration och strömmar sedan resultatet tillbaka. Objektet `blob` som skickas till `queryHemingway` hjälpfunktionen är av typen [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient). Mer information om hur du hämtar ett [BlockBlobClient-objekt](/javascript/api/@azure/storage-blob/blockblobclient) finns i [Snabbstart: Hantera blobar med JavaScript v12 SDK i Node.js](storage-quickstart-blobs-nodejs.md).
 
 ```javascript
 async function queryHemingway(blob)
@@ -476,11 +476,11 @@ async function dumpQueryCsv(blob, query, headers)
 
 ---
 
-## <a name="retrieve-specific-columns"></a>Hämta vissa kolumner
+## <a name="retrieve-specific-columns"></a>Hämta specifika kolumner
 
-Du kan begränsa resultaten till en delmängd av kolumnerna. På så sätt hämtar du bara de kolumner som behövs för att utföra en specifik beräkning. Detta förbättrar programmets prestanda och minskar kostnaden eftersom mindre data överförs över nätverket. 
+Du kan begränsa resultatet till en delmängd kolumner. På så sätt hämtar du bara de kolumner som behövs för att utföra en viss beräkning. Detta förbättrar programmets prestanda och minskar kostnaderna eftersom mindre data överförs över nätverket. 
 
-Den här koden hämtar endast `BibNum` kolumnen för alla böcker i data uppsättningen. Den använder också informationen från rubrik raden i käll filen för att referera till kolumner i frågan.
+Den här koden hämtar endast `BibNum` kolumnen för alla böcker i datauppsättningen. Den använder också informationen från rubrikraden i källfilen för att referera till kolumner i frågan.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -538,7 +538,7 @@ async function queryBibNum(blob)
 
 ---
 
-Följande kod kombinerar rad filtrering och kolumn prognoser till samma fråga. 
+I följande kod kombineras radfiltrering och kolumnprojektioner i samma fråga. 
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -614,5 +614,5 @@ async function queryDvds(blob)
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Azure Data Lake Storage fråga om acceleration](data-lake-storage-query-acceleration.md)
-- [Språk referens för Query acceleration SQL](query-acceleration-sql-reference.md)
+- [Azure Data Lake Storage frågeacceleration](data-lake-storage-query-acceleration.md)
+- [Referens för SQL-språk för frågeacceleration](query-acceleration-sql-reference.md)

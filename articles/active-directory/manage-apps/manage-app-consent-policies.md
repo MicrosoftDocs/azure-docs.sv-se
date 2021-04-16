@@ -1,37 +1,37 @@
 ---
-title: Hantera principer för program medgivande i Azure AD
-description: Lär dig hur du hanterar inbyggda och anpassade appar för medgivande för att styra när medgivande kan beviljas.
+title: Hantera principer för appmedgivande i Azure AD
+description: Lär dig hur du hanterar inbyggda och anpassade principer för appmedgivande för att kontrollera när medgivande kan beviljas.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 06/01/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9c269e2ab37a08e48eedd3ee468080a382f9a8e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44299fadd17d1acfa292dd88bd57c8be4a44be36
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558737"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375703"
 ---
 # <a name="manage-app-consent-policies"></a>Hantera principer för appmedgivande
 
-Med Azure AD PowerShell kan du Visa och hantera principer för program medgivande.
+Med Azure AD PowerShell kan du visa och hantera principer för appmedgivande.
 
-En princip för program medgivande består av en eller flera villkors uppsättningar, inklusive villkors uppsättningar som är noll eller fler. För att en händelse ska kunna beaktas i en princip för en app-princip måste den matcha *minst* en "inkluderar"-villkors uppsättning och får inte matcha *alla* villkors uppsättningar för "exkluderande".
+En appmedgivandeprincip består av en eller flera "inkluderar" villkorsuppsättningar och noll eller flera villkorsuppsättningar som "undantas". För att en händelse ska beaktas i en  appmedgivandeprincip måste den matcha minst en "inkluder"-villkorsuppsättning och får inte matcha några  "exkluderar"-villkorsuppsättning.
 
-Varje villkors uppsättning består av flera villkor. För att en händelse ska matcha en villkors uppsättning måste *alla* villkor i villkors uppsättningen vara uppfyllda.
+Varje villkorsuppsättning består av flera villkor. För att en händelse ska matcha en *villkorsuppsättning* måste alla villkor i villkorsuppsättningen vara uppfyllda.
 
-Principer för program medgivande där ID: t börjar med "Microsoft-" är inbyggda principer. Några av dessa inbyggda principer används i befintliga inbyggda katalog roller. `microsoft-application-admin`Appens medgivande princip beskriver till exempel de villkor under vilka rollen program administratör och moln program administratör tillåts att bevilja administratörs medgivande för hela klienten. Inbyggda principer kan användas i anpassade katalog roller och för att konfigurera inställningar för användar medgivande, men kan inte redige ras eller tas bort.
+Principer för appmedgivande där ID:t börjar med "microsoft-" är inbyggda principer. Vissa av dessa inbyggda principer används i befintliga inbyggda katalogroller. Principen för appmedgivande beskriver till exempel de villkor under vilka rollerna Programadministratör och Molnprogramadministratör tillåts bevilja administratörsmedgivande för `microsoft-application-admin` hela klientorganisationen. Inbyggda principer kan användas i anpassade katalogroller och för att konfigurera inställningar för användarmedgivande, men de kan inte redigeras eller tas bort.
 
 ## <a name="pre-requisites"></a>Förutsättningar
 
-1. Kontrol lera att du använder [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) -modulen. Det här steget är viktigt om du har installerat både [AzureAD](/powershell/module/azuread/) -modulen och [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) -modulen.
+1. Kontrollera att du använder modulen [AzureADPreview.](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) Det här steget är viktigt om du har installerat både [AzureAD-modulen](/powershell/module/azuread/) och [AzureADPreview-modulen).](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview)
 
     ```powershell
     Remove-Module AzureAD -ErrorAction SilentlyContinue
@@ -44,35 +44,35 @@ Principer för program medgivande där ID: t börjar med "Microsoft-" är inbygg
    Connect-AzureAD
    ```
 
-## <a name="list-existing-app-consent-policies"></a>Visa en lista över befintliga principer för program medgivande
+## <a name="list-existing-app-consent-policies"></a>Visa en lista över befintliga principer för appmedgivande
 
-Det är en bra idé att börja med att bekanta dig med de befintliga appens medgivande principer i din organisation:
+Det är en bra idé att börja med att bekanta dig med de befintliga appmedgivandeprinciperna i din organisation:
 
-1. Visa en lista med alla principer för program medgivande:
+1. Lista alla principer för appmedgivande:
 
    ```powershell
    Get-AzureADMSPermissionGrantPolicy | ft Id, DisplayName, Description
    ```
 
-1. Visa villkors uppsättningar för en princip:
+1. Visa villkorsuppsättningarna "inkluderar" för en princip:
 
     ```powershell
     Get-AzureADMSPermissionGrantConditionSet -PolicyId "microsoft-application-admin" `
                                              -ConditionSetType "includes"
     ```
 
-1. Visa villkors uppsättningar för "exkluderar":
+1. Visa villkorsuppsättningarna "undantar":
 
     ```powershell
     Get-AzureADMSPermissionGrantConditionSet -PolicyId "microsoft-application-admin" `
                                              -ConditionSetType "excludes"
     ```
 
-## <a name="create-a-custom-app-consent-policy"></a>Skapa en anpassad princip för program medgivande
+## <a name="create-a-custom-app-consent-policy"></a>Skapa en anpassad appmedgivandeprincip
 
-Följ de här stegen för att skapa en anpassad princip för program medgivande:
+Följ dessa steg för att skapa en anpassad appmedgivandeprincip:
 
-1. Skapa en ny tom princip för program medgivande.
+1. Skapa en ny tom appmedgivandeprincip.
 
    ```powershell
    New-AzureADMSPermissionGrantPolicy `
@@ -81,7 +81,7 @@ Följ de här stegen för att skapa en anpassad princip för program medgivande:
        -Description "This is a sample custom app consent policy."
    ```
 
-1. Lägg till villkors uppsättningar för "inkluderar".
+1. Lägg till villkorsuppsättningar för "includes".
 
    ```powershell
    # Include delegated permissions classified "low", for apps from verified publishers
@@ -93,9 +93,9 @@ Följ de här stegen för att skapa en anpassad princip för program medgivande:
        -ClientApplicationsFromVerifiedPublisherOnly $true
    ```
 
-   Upprepa det här steget om du vill lägga till fler villkors uppsättningar för "inkludera".
+   Upprepa det här steget för att lägga till ytterligare "inkludera"-villkorsuppsättningar.
 
-1. Du kan också lägga till villkors uppsättningar "utesluter".
+1. Du kan också lägga till villkorsuppsättningar som "undantar".
 
    ```powershell
    # Retrieve the service principal for the Azure Management API
@@ -109,47 +109,47 @@ Följ de här stegen för att skapa en anpassad princip för program medgivande:
        -ResourceApplication $azureApi.AppId
    ```
 
-   Upprepa det här steget om du vill lägga till fler villkors uppsättningar för "exkludera".
+   Upprepa det här steget om du vill lägga till ytterligare villkorsuppsättningar för "exkludera".
 
-När appens medgivande princip har skapats kan du tillåta att [användarens medgivande](configure-user-consent.md?tabs=azure-powershell#allow-user-consent-subject-to-an-app-consent-policy) omfattas av den här principen.
+När principen för appmedgivande har skapats kan du tillåta [användarens medgivande enligt](configure-user-consent.md?tabs=azure-powershell#allow-user-consent-subject-to-an-app-consent-policy) den här principen.
 
-## <a name="delete-a-custom-app-consent-policy"></a>Ta bort en anpassad princip för program medgivande
+## <a name="delete-a-custom-app-consent-policy"></a>Ta bort en anpassad appmedgivandeprincip
 
-1. Följande visar hur du kan ta bort en anpassad princip för program medgivande. **Det går inte att ångra den här åtgärden.**
+1. Följande visar hur du kan ta bort en anpassad appmedgivandeprincip. **Det går inte att ångra den här åtgärden.**
 
    ```powershell
    Remove-AzureADMSPermissionGrantPolicy -Id "my-custom-policy"
    ```
 
 > [!WARNING]
-> Det går inte att återställa den borttagna appens medgivande principer. Om du råkar ta bort en anpassad princip för program medgivande måste du återskapa principen.
+> Det går inte att återställa borttagna principer för appmedgivande. Om du av misstag tar bort en anpassad appmedgivandeprincip måste du skapa principen på nytt.
 
 ---
 
 ### <a name="supported-conditions"></a>Villkor som stöds
 
-I följande tabell visas en lista över de villkor som stöds för principer för program medgivande.
+Följande tabell innehåller en lista över villkor som stöds för appmedgivandeprinciper.
 
 | Villkor | Beskrivning|
 |:---------------|:----------|
-| PermissionClassification | [Behörighets klassificeringen](configure-permission-classifications.md) för behörigheten som beviljas, eller "alla" så att den överensstämmer med behörighets klassificeringen (inklusive behörigheter som inte klassificeras). Standardvärdet är all. |
-| PermissionType | Behörighets typen för den behörighet som beviljas. Använd "program" för program behörigheter (t. ex. app-roller) eller "delegerad" för delegerade behörigheter. <br><br>**Obs!** värdet "delegatedUserConsentable" indikerar delegerade behörigheter som inte har kon figurer ATS av API-utgivaren för att kräva administrativt godkännande – det här värdet kan användas i inbyggda behörighets beviljande principer, men kan inte användas i anpassade behörighets beviljande principer. Krävs. |
-| ResourceApplication | **AppId** för resurs programmet (t. ex. API) som en behörighet beviljas för, eller "any", för att matcha alla resurs program eller API: er. Standardvärdet är "any". |
-| Behörigheter | Listan med behörighets-ID: n för de angivna behörigheterna för att matcha med, eller en lista med det enskilda värdet "all", för att matcha alla behörigheter. Standardvärdet är "alla". <ul><li>Delegerade behörighets-ID: n kan hittas i egenskapen **OAuth2Permissions** för API: s ServicePrincipal-objekt.</li><li>Program behörighets-ID: n kan hittas i egenskapen **AppRoles** för API: s ServicePrincipal-objekt.</li></ol> |
-| ClientApplicationIds | En lista med **AppId** -värden för klient programmen som ska matchas med, eller en lista med det enskilda värdet "all" för att matcha alla klient program. Standardvärdet är "alla". |
-| ClientApplicationTenantIds | En lista med Azure Active Directory klient-ID: n där klient programmet är registrerat, eller en lista med det enskilda värdet "all" för att matcha med klient program som registrerats i en klient. Standardvärdet är "alla". |
-| ClientApplicationPublisherIds | En lista med Microsoft Partner Network-ID: n (MPN) för [verifierade utgivare](../develop/publisher-verification-overview.md) av klient programmet eller en lista med det enskilda värdet "all" för att matcha klient program från valfri utgivare. Standardvärdet är "alla". |
-| ClientApplicationsFromVerifiedPublisherOnly | Ange till `$true` att bara matcha på klient program med en [verifierad utgivare](../develop/publisher-verification-overview.md). Ställ in så att `$false` den matchar alla klient program, även om den inte har någon verifierad utgivare. Standardvärdet är `$false`. |
+| PermissionClassification | [Behörighetsklassificeringen](configure-permission-classifications.md) för behörigheten som beviljas, eller "alla" för att matcha med en behörighetsklassificering (inklusive behörigheter som inte har klassificerats). Standardvärdet är "all". |
+| PermissionType | Behörighetstypen för behörigheten som beviljas. Använd "program" för programbehörigheter (t.ex. approller) eller "delegerad" för delegerade behörigheter. <br><br>**Obs!** Värdet "delegatedUserConsentable" anger delegerade behörigheter som inte har konfigurerats av API-utgivaren för att kräva administratörsmedgivande – det här värdet kan användas i inbyggda principer för behörighetstilldelegering, men kan inte användas i anpassade behörighetstilldelade principer. Krävs. |
+| ResursApplication | **AppId för** resursprogrammet (t.ex. API:et) som en behörighet beviljas för, eller "any" för att matcha med alla resursprogram eller API:er. Standardvärdet är "any". |
+| Behörigheter | Listan över behörighets-ID:er för de specifika behörigheter som ska matchas med, eller en lista med det enskilda värdet "alla" för att matcha med vilken behörighet som helst. Standardvärdet är "alla". <ul><li>Delegerade behörighets-ID:n finns **i egenskapen OAuth2Permissions** för API:et ServicePrincipal-objektet.</li><li>Programbehörighets-ID:n finns i **egenskapen AppRoles** för API:et ServicePrincipal-objekt.</li></ol> |
+| ClientApplicationIds | En lista med **AppId-värden** som klientprogrammen ska matcha med, eller en lista med det enskilda värdet "alla" för att matcha alla klientprogram. Standardvärdet är "alla". |
+| ClientApplicationTenantIds | En lista Azure Active Directory klientorganisations-ID:er där klientprogrammet är registrerat, eller en lista med det enda värdet "alla" för att matcha med klientappar som registrerats i en klientorganisation. Standardvärdet är "alla". |
+| ClientApplicationPublisherIds | En lista Microsoft Partner Network (MPN) för verifierade utgivare av klientprogrammet, eller en lista med det enda värdet "alla" som ska [matchas](../develop/publisher-verification-overview.md) med klientappar från valfri utgivare. Standardvärdet är "alla". |
+| ClientApplicationsFromVerifiedPublisherOnly | Ange till `$true` för att endast matcha på klientprogram med en [verifierad utgivare](../develop/publisher-verification-overview.md). Ange till `$false` för att matcha i alla klientprogram, även om den inte har en verifierad utgivare. Standardvärdet är `$false`. |
 
 ## <a name="next-steps"></a>Nästa steg
 
 Mer information:
 
-* [Konfigurera inställningar för användar godkännande](configure-user-consent.md)
-* [Konfigurera arbets flödet för administratörs medgivande](configure-admin-consent-workflow.md)
-* [Lär dig hur du hanterar medgivande till program och att utvärdera medgivande begär Anden](manage-consent-requests.md)
+* [Konfigurera inställningar för användarmedgivande](configure-user-consent.md)
+* [Konfigurera arbetsflödet för administratörsmedgivande](configure-admin-consent-workflow.md)
+* [Lär dig hur du hanterar medgivande till program och utvärderar begäranden om medgivande](manage-consent-requests.md)
 * [Bevilja administratörsmedgivande för hela klientorganisationen till ett program](grant-admin-consent.md)
-* [Behörigheter och medgivande i Microsoft Identity Platform](../develop/v2-permissions-and-consent.md)
+* [Behörigheter och medgivande i Microsofts identitetsplattform](../develop/v2-permissions-and-consent.md)
 
-För att få hjälp eller hitta svar på dina frågor:
+För att få hjälp eller få svar på dina frågor:
 * [Azure AD på Microsoft Q&A](/answers/products/)

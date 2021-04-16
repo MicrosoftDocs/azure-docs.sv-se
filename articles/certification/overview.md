@@ -1,71 +1,74 @@
 ---
 title: Översikt över programmet Azure Certified Device
-description: En översikt över Azure Certified Device-programmet för våra partner och kunder. Använd dessa resurser för att starta processen för enhets certifiering. Lär dig hur du certifierar enheten, från IoT-enhetens krav på att publicera din enhet.
+description: En översikt över Programmet Azure Certified Device för våra partner och kunder. Använd dessa resurser för att starta enhetscertifieringsprocessen. Lär dig hur du certifierar din enhet, från IoT-enhetskrav till publicering av din enhet.
 author: nkuntjoro
 ms.author: nikuntjo
 ms.topic: overview
 ms.date: 04/09/2021
 ms.custom: template-overview
 ms.service: certification
-ms.openlocfilehash: b9d599542a53e3d809748b72028512c66409b4ec
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e7cd664e9eb61cae4f1888e4c94f02f19301e9e5
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307715"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502104"
 ---
-# <a name="what-is-the-azure-certified-device-program"></a>Vad är Azure Certified Device-programmet?
+# <a name="what-is-the-azure-certified-device-program"></a>Vad är programmet Azure Certified Device?
 
-Tack för visat intresse för Azure Certified Device-programmet! Det här programmet är din arbets station för att enkelt särskilja, marknadsföra och hitta IoT-enheter som skapats för att köras på Azure. Med den här förbättrade IoT-enhetens certifierings program hjälper enhets byggaren att öka sin produkt synlighet och sparar kunderna tid för att skapa lösningar från smarta kameror till en gräns infrastruktur.
+Tack för ditt intresse för Programmet Azure Certified Device! Azure Certified Device är ett kostnadsfritt program som gör att du kan göra skillnad på, certifiera och höja upp dina IoT-enheter som skapats för att köras i Azure. Det här förbättrade programmet för IoT-enhetscertifiering hjälper enhetsbyggare att öka produktsynligheten och sparar kunderna tid i att skapa lösningar, från intelligenta kameror till anslutna sensorer till gränsinfrastruktur.
 
-## <a name="our-certification-promise"></a>Vårt certifierings löfte
+## <a name="our-certification-promise"></a>Vårt certifierings-löfte
 
-Programmet Azure Certified Device ser till att kund lösningar fungerar bra på Azure. Det är ett program som använder verktyg, tjänster och en katalog för att dela bransch kunskap med vår community med byggprogram i IoT-eko systemet för att hjälpa byggen och kunderna.
+Programmet Azure Certified Device ser till att kundlösningar fungerar bra i Azure. Det är ett program som använder verktyg, tjänster och en katalog för att dela branschkunskap med vår community med byggare i IoT-ekosystemet för att hjälpa byggare och kunder.
 
-I hela enhets certifierings processen är de tre Tenets av det här programmet:
+I hela enhetscertifieringsprocessen är de tre grundsatserna i det här programmet:
 
-- **Ge kunderna förtroende:** Kunder kan på ett säkert sätt köpa Azure Certified-enheter som har Microsoft Promise.
+- **Ge kunderna förtroende:** Kunder kan på ett säkert sätt köpa Azure-certifierade enheter som har Microsoft-löftet.
 
-- **Matchmaking kunder med rätt enheter för dem:** Enhets byggare kan ställa in sig själva med certifiering som framhäver deras unika funktioner, och kunder kan enkelt hitta särskilda IoT-enheter som passar deras behov.
+- **Matcha kunder med rätt enheter för dem:** Enhetsbyggare kan sätta sig ifrån varandra med certifiering som markerar deras unika funktioner, och kunderna kan enkelt hitta IoT-kvalificerade enheter som passar deras behov.
 
-- **Befordra certifierade enheter:** Enhets byggare får ökad insyn, kontakt med kunder och användning av Microsoft Azure Certified Device-varumärket.
+- **Befordra certifierade enheter:** Enhetsbyggare får ökad synlighet, kontakt med kunder och användning av Microsofts Azure Certified Device-varumärke.
 
 ## <a name="user-roles"></a>Användarroller
 
-Programmet Azure Certified Device hanterar två olika mål grupper.
+Programmet Azure Certified Device har två olika målgrupper.
 
-1. **Enhets byggare**: skapar du IoT-enheter? Du kan enkelt särskilja dina IoT-enheter och få till gång till en världs omspännande grupp som vill köpa enheter som är byggda för att köras på Azure. Använd Azure-certifierad enhets katalog för att öka produkt synligheten och ansluta till kunderna genom att certifiera enheten och visa att den uppfyller särskilda krav för IoT-enheter.
-1.  **Lösnings byggare**: undrar vad är kvalificerade enheter för IoT? Hitta och Köp IoT-enheter som skapats för att köras på Azure och se att de uppfyller särskilda IoT-krav. Sök enkelt och välj rätt certifierad enhet för din IoT-lösning på [Azure-certifierad enhets katalog](https://devicecatalog.azure.com/).
+1. **Enhetsbyggare:** Skapar du IoT-enheter? Gör det enkelt att särskilja dina IoT-enhetsfunktioner och få åtkomst till en världsomspännande publik som vill köpa enheter som skapats för att köras i Azure på ett tillförlitligt sätt. Använd Azure Certified Device Catalog för att öka produktsynligheten och ansluta till kunder genom att certifiera din enhet och visa att den uppfyller specifika krav för IoT-enheter.
+1.  **Lösningsbyggare:** Undrar du vad IoT-kvalificerade enheter är? Hitta och köp säkert IoT-enheter som är byggda för att köras i Azure, med vetskapen om att de uppfyller specifika IoT-krav. Sök enkelt och välj rätt certifierad enhet för din IoT-lösning i [Azure Certified Device-katalogen.](https://devicecatalog.azure.com/)
 
-## <a name="our-certification-programs-and-iot-device-requirements"></a>Våra certifierings program och krav för IoT-enheter.
+## <a name="our-certification-programs-and-iot-device-requirements"></a>Våra certifieringsprogram och IoT-enhetskrav.
 
-Det finns fyra olika tillgängliga certifieringar nu! Varje certifiering fokuserar på att leverera ett annat kund värde. Beroende på typ av enhet och mål grupp kan du välja vilka certifikat som är mest tillämpliga för att du ska kunna använda. Välj titlarna för varje program om du vill veta mer om programmet och IoT-krav.
+Det finns fyra olika certifieringar tillgängliga nu! Varje certifiering fokuserar på att leverera olika kundvärden. Beroende på typ av enhet och målgrupp kan du välja vilka certifieringar som är mest tillämpliga för dig att ansöka om. Välj rubrikerna för varje program för att lära dig mer om programmet och IoT-kraven.
 
-| Certifierings program         |  Översikt                      |
+| Certifieringsprogram         |  Översikt                      |
 ------------------------------|-------------------------------------------------|
-| [Azure-certifierad enhet](program-requirements-azure-certified-device.md)          | Azure-certifierad enhets certifiering verifierar att en enhet kan ansluta till Azure IoT Hub och på ett säkert sätt etablera genom enhets etablerings tjänsten (DPS). Den här certifieringen visar en enhets funktioner och interoperabilitet, som är en **nödvändig bas linje** för alla andra certifieringar.          |
-| [IoT Plug and Play](program-requirements-pnp.md) | IoT Plug and Play-certifiering, en stegvis certifiering utöver den grundläggande Azure-certifierade enhetens certifiering, validerar Digital, definitions språk version 2 (DTDL) och interaktionen baserat på din enhets modell. Det möjliggör en sömlös integrering av enhet till molnet och gör det möjligt för maskin varu partner att bygga enheter som kan integreras sömlöst utan att behöva skriva anpassad kod.  |
-| [Edge-hanterad](program-requirements-edge-managed.md) | Edge-hanterad certifiering, en stegvis certifiering utöver den grundläggande Azure-certifierade enhetens certifiering, fokuserar på enhets hanterings standarder för Azure Connected-enheter.  |
-| [Edge-säkrad kärna](program-requirements-edge-secured-core.md)                             | Edge Secure-Core-certifiering, en stegvis certifiering utöver den grundläggande Azure-certifierade enhetens certifiering, är för IoT-enheter som kör ett fullständigt operativ system, till exempel Linux eller Windows 10 IoT. Den verifierar att enheterna uppfyller ytterligare säkerhets krav kring enhets identitet, säker start, härdning av operativ system, enhets uppdateringar, data skydd och säkerhets problem. |
+| [Azure-certifierad enhet](program-requirements-azure-certified-device.md)          | Azure Certified Device Certification verifierar att en enhet kan ansluta till Azure IoT Hub och etablera säkert via Device Provisioning Service (DPS). Den här certifieringen återspeglar en enhets funktioner och samverkan, vilket är en **obligatorisk baslinje** för alla andra certifieringar.          |
+| [IoT Plug and Play](program-requirements-pnp.md) | IoT Plug and Play certifiering, en inkrementell certifiering utöver baslinjen Azure Certified Device Certification, validerar Digital Twin Definition Language version 2 (DTDL) och interaktion baserat på din enhetsmodell. Det möjliggör en sömlös integrering mellan enheter och molnet och gör det möjligt för maskinvarupartner att skapa enheter som kan integreras sömlöst utan att behöva skriva anpassad kod.  |
+| [Edge-hanterad](program-requirements-edge-managed.md) | Edge-hanterad certifiering, en inkrementell certifiering utöver baslinjen Azure Certified Device Certification, fokuserar på enhetshanteringsstandarder för Azure-anslutna enheter.  |
+| [Edge-skyddad kärna](program-requirements-edge-secured-core.md)                             | Edge-certifiering med skyddad kärna, en inkrementell certifiering utöver baslinjen Azure Certified Device Certification, är för IoT-enheter som kör ett fullständigt operativsystem som Linux eller Windows 10 IoT. Den validerar att enheter uppfyller ytterligare säkerhetskrav för enhetsidentitet, säker start, härdning av operativsystem, enhetsuppdateringar, dataskydd och sårbarhetsavskanning. |
 
-## <a name="how-to-certify-your-device"></a>Så här certifierar du din enhet
+## <a name="how-to-certify-your-device"></a>Certifiera din enhet
 
-Att certifiera en enhet omfattar flera viktiga steg på [Azure-certifierad enhets Portal](https://certify.azure.com):
+Certifiering av en enhet omfattar flera viktiga steg i [Azure Certified Device Portal:](https://certify.azure.com)
 
-1. Välj rätt certifiering för enheten baserat på IoT-enhetens krav.
-1. Skapa ditt projekt i [Azure-certifierad enhets Portal](https://certify.azure.com).
-1. Lägg till enhets information inklusive information om maskin varu kapacitet för att starta processen för enhets certifiering.
-1. Verifiera enhets funktioner
-1. Skicka och slutför gransknings processen
+1. Välj rätt certifiering för din enhet baserat på IoT-enhetens krav.
+1. Skapa projektet i [Azure Certified Device Portal.](https://certify.azure.com)
+1. Lägg till enhetsinformation, inklusive information om maskinvarukapacitet, för att påbörja enhetscertifieringsprocessen.
+1. Validera enhetsfunktioner
+1. Skicka och slutför granskningsprocessen
 
-När du har certifierat enheten kan du välja att slutföra två av följande aktiviteter:
+> [!Note]
+> Granskningsprocessen kan ta upp till en vecka att slutföra, men ibland kan det ta längre tid.
 
-1. Publicera till Azure-certifierad enhets katalog (valfritt)
-1. Uppdatera projektet efter att det har godkänts/publicerats (valfritt)
+När du har certifierat enheten kan du välja att utföra två av följande aktiviteter: 
+
+1. Publicera till Azure Certified Device Catalog (valfritt)
+1. Uppdatera projektet när det har godkänts/publicerats (valfritt)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Är du redo att komma igång med din certifierings resa? Se våra resurser nedan för att starta processen för enhets certifiering!
+Är du redo att komma igång med certifieringsresan? Visa våra resurser nedan för att starta enhetscertifieringsprocessen!
 
-- [Starta certifierings processen](tutorial-00-selecting-your-certification.md)
-- Om du har ytterligare frågor eller feedback kan du kontakta [Azure Certified Device-teamet](mailto:iotcert@microsoft.com).
+- [Starta certifieringsprocessen](tutorial-00-selecting-your-certification.md)
+- Om du har andra frågor eller feedback kan du kontakta [Azure Certified Device-teamet](mailto:iotcert@microsoft.com).

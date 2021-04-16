@@ -1,66 +1,66 @@
 ---
-title: 'Snabb start: Mass inläsning av data med en dedikerad SQL-pool'
-description: Använd Synapse Studio för att överföra data till en dedikerad SQL-pool i Azure Synapse Analytics.
+title: 'Snabbstart: Massinläsning av data med en dedikerad SQL-pool'
+description: Använd Synapse Studio massinläsning av data till en dedikerad SQL-pool i Azure Synapse Analytics.
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
 ms.date: 12/11/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: be15a37a9a2965da36f7e8f884a0a3112106b9ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 838138fb6ca6f64b4296b54a81bc2764c3f1399c
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104586734"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567918"
 ---
-# <a name="quickstart-bulk-loading-with-synapse-studio"></a>Snabb start: Mass inläsning med Synapse Studio
+# <a name="quickstart-bulk-loading-with-synapse-studio"></a>Snabbstart: Massinläsning med Synapse Studio
 
-Det är enkelt att läsa in data med guiden för Mass inläsning i Synapse Studio. Synapse Studio är en funktion i Azure Synapse Analytics. Guiden för Mass inläsning vägleder dig genom att skapa ett T-SQL-skript med [copy-instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) för att överföra data till en dedikerad SQL-pool. 
+Det är enkelt att läsa in data med guiden Massinläsning i Synapse Studio. Synapse Studio är en funktion i Azure Synapse Analytics. Guiden Massinläsning vägleder dig genom skapandet [](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) av ett T-SQL-skript med COPY-instruktionen för massinläsning av data till en dedikerad SQL-pool. 
 
-## <a name="entry-points-to-the-bulk-load-wizard"></a>Start punkter i guiden för Mass inläsning
+## <a name="entry-points-to-the-bulk-load-wizard"></a>Startpunkter i guiden Massinläsning
 
-Du kan Mass inläsning av data genom att högerklicka på följande område i Synapse Studio: en fil eller mapp från ett Azure Storage-konto som är kopplat till din arbets yta.
+Du kan massinläsning av data genom att högerklicka på följande område i Synapse Studio: en fil eller mapp från ett Azure Storage-konto som är kopplat till din arbetsyta.
 
-![Skärm bild som visar hur du högerklickar på en fil eller mapp från ett lagrings konto.](./sql/media/bulk-load/bulk-load-entry-point-0.png)
+![Skärmbild som visar hur du högerklickar på en fil eller mapp från ett lagringskonto.](./sql/media/bulk-load/bulk-load-entry-point-0.png)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Guiden genererar en KOPIERINGs instruktion som använder Azure Active Directory (Azure AD) genom strömning för autentisering. Din [Azure AD-användare måste ha åtkomst](./sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples.md#d-azure-active-directory-authentication) till arbets ytan med minst Storage BLOB data Contributor Azure-rollen för det Azure Data Lake Storage Gen2 kontot. 
+- Guiden genererar en COPY-instruktion som använder Azure Active Directory (Azure AD) för autentisering. Din [Azure AD-användare måste ha åtkomst](./sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples.md#d-azure-active-directory-authentication) till arbetsytan med minst Azure-rollen Storage Blob Data-deltagare för Azure Data Lake Storage Gen2 kontot. 
 
-- Du måste ha de [behörigheter som krävs för att använda kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#permissions) och skapa tabell behörigheter om du skapar en ny tabell som ska läsas in på.
+- Du måste ha de behörigheter [som krävs för att kunna](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#permissions) använda COPY-instruktionen och skapa tabell-behörigheter om du skapar en ny tabell att läsa in till.
 
-- Den länkade tjänst som är kopplad till Data Lake Storage Gen2 kontot *måste ha åtkomst till filen eller mappen* för att kunna läsa in den. Om mekanismen för den länkade tjänsten till exempel är en hanterad identitet, måste arbets ytans hanterade identitet ha minst behörighet för lagrings-BLOB-dataläsaren på lagrings kontot.
+- Den länkade tjänst som är associerad med *Data Lake Storage Gen2-kontot måste ha åtkomst till filen eller mappen som ska* läsas in. Om autentiseringsmekanismen för den länkade tjänsten till exempel är en hanterad identitet måste arbetsytans hanterade identitet minst ha behörigheten Storage Blob Data Reader för lagringskontot.
 
-- Om ett virtuellt nätverk har Aktiver ATS på arbets ytan kontrollerar du att den integrerade körningen som är associerad med Data Lake Storage Gen2 kontots länkade tjänster för källdata och Felfilens plats har interaktiv redigering aktive rad. Interaktiv redigering krävs för autoschema-identifiering, för att Visa käll filens innehåll och bläddra Data Lake Storage Gen2 lagrings konton i guiden.
+- Om ett virtuellt nätverk är aktiverat på arbetsytan kontrollerar du att den integrerade körning som är associerad med Data Lake Storage Gen2-kontots länkade tjänster för källdata och felfilens plats har interaktiv redigering aktiverat. Interaktiv redigering krävs för identifiering av autoschema, förhandsgranskning av källfilens innehåll och surfning Data Lake Storage Gen2 lagringskonton i guiden.
 
 ## <a name="steps"></a>Steg
 
-1. På panelen **käll lagrings plats** väljer du lagrings kontot och filen eller mappen som du läser in från. Guiden försöker automatiskt identifiera Parquet-filer och avgränsade textfiler (CSV), inklusive att mappa käll fälten från filen till rätt mål SQL-datatyper. 
+1. På panelen **Källlagringsplats** väljer du lagringskontot och filen eller mappen som du läser in från. Guiden försöker automatiskt identifiera Parquet-filer och CSV-filer (avgränsad text), inklusive mappning av källfälten från filen till lämpliga SQL-måldatatyper. 
 
-   ![Skärm bild som visar att du väljer en käll plats.](./sql/media/bulk-load/bulk-load-source-location.png)
+   ![Skärmbild som visar val av en källplats.](./sql/media/bulk-load/bulk-load-source-location.png)
 
-2. Välj fil formats inställningar, inklusive fel inställningarna för när det finns avvisade rader under Mass inläsnings processen. Du kan också välja **Förhandsgranska data** om du vill se hur kopierings instruktionen kommer att parsa filen så att du kan konfigurera fil formats inställningarna. Välj **Förhandsgranska data** varje gång du ändrar fil formats inställningen för att se hur kopierings instruktionen kommer att parsa filen med den uppdaterade inställningen.
+2. Välj filformatsinställningar, inklusive felinställningarna för när det finns avvisade rader under massinläsningen. Du kan också välja **Förhandsgranska data för** att se hur COPY-instruktionen parsar filen för att hjälpa dig att konfigurera filformatinställningarna. Välj **Förhandsgranska data** varje gång du ändrar en filformatinställning för att se hur COPY-instruktionen parsar filen med den uppdaterade inställningen.
 
-   ![Skärm bild som visar för hands Visa data.](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
+   ![Skärmbild som visar förhandsgranskning av data.](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
    > [!NOTE]  
    >
-   > - Guiden för Mass inläsning stöder inte för hands visning av data med avslutande fält-avgränsare. När du anger ett fält med flera tecken kan du förhandsgranska data i en kolumn i guiden. 
-   > - När du väljer **Härled kolumn namn** kommer guiden för Mass inläsning att parsa kolumn namnen från den första raden som anges av det **första rad** fältet. Guiden för Mass inläsning ökar automatiskt `FIRSTROW` värdet i kopierings instruktionen med 1 för att ignorera denna rubrik rad. 
-   > - Det finns stöd för att ange rader med flera rader i KOPIERINGs instruktionen. Guiden för Mass inläsning stöder dock inte den och kommer att utlösa ett fel.
+   > - Massinläsningsguiden stöder inte förhandsgranskning av data med fältterminatorer med flera tecken. När du anger en fältparentator med flera tecken förhandsgranskar guiden data i en enda kolumn. 
+   > - När du väljer **Härner kolumnnamn** parsar guiden Massinläsning kolumnnamnen från den första raden som anges av **fältet Första** raden. Guiden Massinläsning ökar automatiskt värdet i `FIRSTROW` COPY-instruktionen med 1 för att ignorera den här rubrikraden. 
+   > - Det finns stöd för att ange radterminatorer med flera tecken i COPY-instruktionen. Men massinläsningsguiden stöder det inte och kastar ett fel.
 
-3. Välj den dedikerade SQL-pool som du använder för att läsa in, inklusive om belastningen ska användas för en befintlig tabell eller en ny tabell.
-   ![Skärm bild som visar valet av målplats.](./sql/media/bulk-load/bulk-load-target-location.png)
-4. Välj **Konfigurera kolumn mappning** för att kontrol lera att du har rätt kolumn mappning. Observera att kolumn namn identifieras automatiskt om du har aktiverat **härledda kolumn namn**. För nya tabeller är det viktigt att konfigurera kolumn mappningen för att uppdatera data typerna för mål kolumnen.
+3. Välj den dedikerade SQL-pool som du använder för att läsa in, inklusive om inläsningen ska ske för en befintlig tabell eller en ny tabell.
+   ![Skärmbild som visar val av en målplats.](./sql/media/bulk-load/bulk-load-target-location.png)
+4. Välj **Konfigurera kolumnmappning** för att kontrollera att du har rätt kolumnmappning. Namn på anteckningskolumner identifieras automatiskt om du har **aktiverat Härner kolumnnamn**. För nya tabeller är det viktigt att konfigurera kolumnmappningen för att uppdatera målkolumndatatyperna.
 
-   ![Skärm bild som visar konfiguration av kolumn mappning.](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
-5. Välj **Öppna skript**. Ett T-SQL-skript genereras med COPY-instruktionen som ska läsas in från data Lake.
-   ![Skärm bild som visar hur du öppnar SQL-skriptet.](./sql/media/bulk-load/bulk-load-target-final-script.png)
+   ![Skärmbild som visar konfiguration av kolumnmappning.](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. Välj **Öppna skript.** Ett T-SQL-skript genereras med COPY-instruktionen för inläsning från datasjön.
+   ![Skärmbild som visar hur du öppnar SQL-skriptet.](./sql/media/bulk-load/bulk-load-target-final-script.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Se artikeln [Kopiera instruktion](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax) för mer information om kopierings funktionerna.
-- Se artikeln [Översikt över data inläsning](./sql-data-warehouse/design-elt-data-loading.md#what-is-elt) för information om hur du använder en process för att extrahera, transformera och läsa in (ETL).
+- Mer information [om COPY-funktioner](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax) finns i artikeln COPY-instruktion.
+- I [översiktsartikeln för](./sql-data-warehouse/design-elt-data-loading.md#what-is-elt) dataläsning finns information om hur du använder en process för extrahering, transformering och inläsning (ETL).

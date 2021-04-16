@@ -1,6 +1,6 @@
 ---
-title: Snabb start – hantera telefonnummer med Azure Communication Services
-description: Lär dig hur du hanterar telefonnummer med Azure Communication Services
+title: Snabbstart – Hantera telefonnummer med hjälp av Azure Communication Services
+description: Lär dig hur du hanterar telefonnummer med hjälp av Azure Communication Services
 author: prakulka
 manager: nmurav
 services: azure-communication-services
@@ -10,16 +10,18 @@ ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
 zone_pivot_groups: acs-azp-java-net-python-csharp-js
-ms.openlocfilehash: 0f4a461ac5d459c6e3311400785e34bc22f40a00
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 19bb79f9a4deaebfacc75918c46a5516d2d398be
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728461"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498207"
 ---
-# <a name="quickstart-manage-phone-numbers"></a>Snabb start: hantera telefonnummer
+# <a name="quickstart-manage-phone-numbers"></a>Snabbstart: Hantera telefonnummer
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
+
+[!INCLUDE [Bulk Acquisition Instructions](../../includes/phone-number-special-order.md)]
 
 ::: zone pivot="platform-azp"
 [!INCLUDE [Azure portal](./includes/phone-numbers-portal.md)]
@@ -45,22 +47,22 @@ ms.locfileid: "105728461"
 
 Vanliga frågor och problem:
 
-- Köp telefon stöds endast i USA. För att köpa telefonnummer, se till att:
-  - Den associerade fakturerings adressen för Azure-prenumerationen finns i USA. Det går för tillfället inte att flytta en resurs till en annan prenumeration.
-  - Resursen för kommunikations tjänster är etablerad på USA data plats. Det går inte att flytta en resurs till en annan data plats för tillfället.
+- Köp av telefon stöds endast i USA. Om du vill köpa telefonnummer ser du till att:
+  - Den associerade faktureringsadressen för Azure-prenumerationen finns i USA. Du kan inte flytta en resurs till en annan prenumeration just nu.
+  - Din Communication Services-resurs etableras på den USA dataplatsen. Du kan inte flytta en resurs till en annan dataplats just nu.
 
-- När ett telefonnummer släpps, frigörs inte telefonnumret eller kan inte köpas förrän i slutet av fakturerings perioden.
+- När ett telefonnummer släpps släpps inte telefonnumret eller kan köpas på nytt förrän faktureringsperioden är slut.
 
-- När en kommunikations tjänst resurs tas bort, släpps de telefonnummer som är associerade med resursen automatiskt samtidigt.
+- När en Communication Services resurs tas bort släpps de telefonnummer som är associerade med den resursen automatiskt samtidigt.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du lärt dig att:
+I den här snabbstarten har du lärt dig att:
 
 > [!div class="checklist"]
-> * Köp ett telefonnummer
+> * Köpa ett telefonnummer
 > * Hantera ditt telefonnummer
-> * Frisläpp ett telefonnummer
+> * Släpp ett telefonnummer
 
 > [!div class="nextstepaction"]
 > [Skicka ett SMS](../telephony-sms/send.md) 

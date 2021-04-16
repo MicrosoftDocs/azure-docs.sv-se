@@ -1,45 +1,48 @@
 ---
-title: 'Snabb start: skapa en Azure SignalR service – ARM-mall'
-description: I den här snabb starten får du lära dig hur du skapar en Azure SignalR-tjänst med en Azure Resource Manager-mall (ARM-mall).
+title: 'Snabbstart: Skapa en Azure SignalR Service – ARM-mall'
+description: I den här snabbstarten lär du dig hur du skapar en Azure SignalR Service med en Azure Resource Manager mall (ARM-mall).
 author: sffamily
-ms.service: signalr
-ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-azurecli
 ms.author: zhshang
 ms.date: 10/02/2020
-ms.openlocfilehash: 4ab029048b37a4dcb44ef405249dcb9e20de70cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.service: signalr
+ms.custom:
+- subject-armqs
+- devx-track-azurecli
+- mode-arm
+ms.openlocfilehash: 075915f2a06e29eb5b80425913c6e7a2c476ff99
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94841640"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536515"
 ---
-# <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>Snabb start: Använd en ARM-mall för att distribuera Azure SignalR-tjänsten
+# <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>Snabbstart: Använda en ARM-mall för att distribuera Azure SignalR Service
 
-I den här snabb starten beskrivs hur du använder en Azure Resource Manager mall (ARM-mall) för att skapa en Azure SignalR-tjänst. Du kan distribuera Azure SignalR-tjänsten via Azure Portal, PowerShell eller CLI.
+Den här snabbstarten beskriver hur du använder en Azure Resource Manager (ARM-mall) för att skapa en Azure SignalR Service. Du kan distribuera Azure SignalR Service via Azure Portal, PowerShell eller CLI.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas i Azure Portal när du loggar in.
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="För att distribuera Azure SignalR service till Azure med en ARM-mall i Azure Portal.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-signalr%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Knapp för att Azure SignalR Service till Azure med hjälp av en ARM-mall i Azure Portal.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-signalr%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Ett Azure-konto med en aktiv prenumeration. [Skapa ett kostnads fritt](https://azure.microsoft.com/free/).
+Ett Azure-konto med en aktiv prenumeration. [Skapa en utan kostnad.](https://azure.microsoft.com/free/)
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-* Ett Azure-konto med en aktiv prenumeration. [Skapa ett kostnads fritt](https://azure.microsoft.com/free/).
-* Om du vill köra koden lokalt [Azure PowerShell](/powershell/azure/install-az-ps).
+* Ett Azure-konto med en aktiv prenumeration. [Skapa en utan kostnad.](https://azure.microsoft.com/free/)
+* Om du vill köra koden lokalt kan du [Azure PowerShell](/powershell/azure/install-az-ps).
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
-* Ett Azure-konto med en aktiv prenumeration. [Skapa ett kostnads fritt](https://azure.microsoft.com/free/).
+* Ett Azure-konto med en aktiv prenumeration. [Skapa en utan kostnad.](https://azure.microsoft.com/free/)
 * Om du vill köra koden lokalt:
-    * Ett bash-gränssnitt (till exempel git bash, som ingår i [git för Windows](https://gitforwindows.org)).
+    * Ett Bash-gränssnitt (till exempel Git Bash, som ingår i [Git för Windows](https://gitforwindows.org)).
     * [Azure CLI](/cli/azure/install-azure-cli).
 
 ---
@@ -52,52 +55,52 @@ Mallen som används i den här snabbstarten kommer från [Azure-snabbstartsmalla
 
 Mallen definierar en Azure-resurs:
 
-* [**Microsoft. SignalRService/SignalR**](/azure/templates/microsoft.signalrservice/signalr)
+* [**Microsoft.SignalRService/SignalR**](/azure/templates/microsoft.signalrservice/signalr)
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Välj följande länk för att distribuera Azure SignalR-tjänsten med ARM-mallen i Azure Portal:
+Välj följande länk för att distribuera Azure SignalR Service med arm-mallen i Azure Portal:
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="För att distribuera Azure SignalR service till Azure med ARM-mallen i Azure Portal.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-signalr%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Knapp för att Azure SignalR Service till Azure med hjälp av ARM-mallen i Azure Portal.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-signalr%2fazuredeploy.json)
 
-På sidan **distribuera en Azure SignalR-tjänst** :
+På sidan **Distribuera en Azure SignalR Service:**
 
-1. Om du vill kan du ändra **prenumerationen** från standardvärdet.
+1. Om du vill kan du ändra **Prenumeration** från standardvärdet.
 
-2. För **resurs grupp** väljer du **Skapa ny**, anger ett namn för den nya resurs gruppen och väljer **OK**.
+2. För **Resursgrupp** väljer du **Skapa ny,** anger ett namn för den nya resursgruppen och väljer **OK.**
 
-3. Om du har skapat en ny resurs grupp väljer du en **region** för resurs gruppen.
+3. Om du har skapat en ny resursgrupp väljer **du en** Region för resursgruppen.
 
-4. Om du vill kan du ange ett nytt **namn** och en annan **plats** (till exempel **eastus2**) för Azure SignalR-tjänsten. Om du inte anger något namn genereras det automatiskt. Platsen för Azure SignalR-tjänsten kan vara samma som eller en annan från den region där resurs gruppen finns. Om du inte anger en plats har den angetts till samma region som resurs gruppen.
+4. Om du vill anger du ett nytt **Namn** och **Plats** (till exempel **eastus2**) för Azure SignalR Service. Om du inte anger något namn genereras det automatiskt. Platsen för Azure SignalR Service kan vara samma som eller en annan än regionen för resursgruppen. Om du inte anger en plats anges den till samma region som resursgruppen.
 
-5. Välj **pris nivå** (**Free_F1** eller **Standard_S1**), ange **kapaciteten** (antal signal enheter) och välj ett **tjänst läge** som **standard** (kräver Hub-servern), utan **Server** (tillåter inte någon server anslutning) eller **klassisk** (dirigerad till NAV Server endast om hubben har server anslutning). Välj sedan om du vill **Aktivera anslutnings loggar** eller **Aktivera meddelande loggar**.
+5. Välj **Prisnivå** (**Free_F1** eller **Standard_S1**), ange **Kapacitet (antal** SignalR-enheter)  och välj tjänstläget Standard **(kräver** hubbserver), **Serverlös** (tillåter inte serveranslutning) eller **Klassisk** (dirigeras endast till hubbservern om hubben har en serveranslutning). Välj sedan om du vill **aktivera anslutningsloggar eller** **Aktivera meddelandeloggar.**
 
     > [!NOTE]
-    > För **Free_F1** pris nivån är kapaciteten begränsad till 1 enhet.
+    > För **Free_F1** prisnivån är kapaciteten begränsad till 1 enhet.
 
-    :::image type="content" source="./media/signalr-quickstart-azure-signalr-service-arm-template/deploy-azure-signalr-service-arm-template-portal.png" alt-text="Skärm bild av ARM-mallen för att skapa en Azure SignalR-tjänst i Azure Portal.":::
+    :::image type="content" source="./media/signalr-quickstart-azure-signalr-service-arm-template/deploy-azure-signalr-service-arm-template-portal.png" alt-text="Skärmbild av ARM-mallen för att skapa Azure SignalR Service i Azure Portal.":::
 
 6. Välj **Granska + skapa**.
 
-7. Läs igenom villkoren och välj sedan **skapa**.
+7. Läs villkoren och välj sedan **Skapa.**
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 > [!NOTE]
-> Om du vill köra PowerShell-skripten lokalt börjar `Connect-AzAccount` du med att ange dina Azure-autentiseringsuppgifter.
+> Om du vill köra PowerShell-skripten lokalt anger du först för `Connect-AzAccount` att konfigurera dina autentiseringsuppgifter för Azure.
 
-Använd följande kod för att distribuera Azure SignalR-tjänsten med ARM-mallen. Koden efterfrågar följande objekt:
+Använd följande kod för att distribuera Azure SignalR Service med arm-mallen. Koden uppmanar dig att ange följande objekt:
 
-* Namn och region för den nya Azure SignalR-tjänsten
-* Namn och region för en ny resurs grupp
-* Pris nivån för Azure (**Free_F1** eller **Standard_S1**)
-* Signal enhetens kapacitet (1, 2, 5, 10, 20, 50 eller 100)
+* Namn och region för den nya Azure SignalR Service
+* Namn och region för en ny resursgrupp
+* Azure-prisnivån (**Free_F1** eller **Standard_S1**)
+* SignalR-enhetens kapacitet (1, 2, 5, 10, 20, 50 eller 100)
   > [!NOTE]
-  > För **Free_F1** pris nivån är kapaciteten begränsad till 1 enhet.
-* Tjänst läge: **standard** för att kräva en NAV Server, **Server** lös för att inte tillåta någon server anslutning eller **klassisk** att endast dirigera till en NAV Server om navet har en server anslutning
-* Om du vill aktivera loggar för anslutning eller meddelanden (**Sant** eller **falskt**)
+  > För **Free_F1** prisnivån är kapaciteten begränsad till 1 enhet.
+* Tjänstläge: Kräver **som** standard en hubbserver, **serverlös** för att  inte tillåta någon serveranslutning eller klassisk för att dirigera till en hubbserver endast om hubben har en serveranslutning
+* Om du vill aktivera loggar för anslutning eller meddelanden **(sant** eller **falskt)**
 
 ```azurepowershell-interactive
 $serviceName = Read-Host -Prompt "Enter a name for the new Azure SignalR Service"
@@ -133,16 +136,16 @@ Read-Host "Press [ENTER] to continue"
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
-Använd följande kod för att distribuera Azure SignalR-tjänsten med ARM-mallen. Koden efterfrågar följande objekt:
+Använd följande kod för att distribuera Azure SignalR Service med hjälp av ARM-mallen. Koden uppmanar dig att ange följande objekt:
 
-* Namn och region för den nya Azure SignalR-tjänsten
-* Namn och region för en ny resurs grupp
-* Pris nivån för Azure (**Free_F1** eller **Standard_S1**)
-* Signal enhetens kapacitet (1, 2, 5, 10, 20, 50 eller 100)
+* Namn och region för den nya Azure SignalR Service
+* Namn och region för en ny resursgrupp
+* Azure-prisnivån (**Free_F1** eller **Standard_S1**)
+* SignalR-enhetens kapacitet (1, 2, 5, 10, 20, 50 eller 100)
     > [!NOTE]
-    > För **Free_F1** pris nivån är kapaciteten begränsad till 1 enhet.
-* Tjänst läge: **standard** för att kräva en NAV Server, **Server** lös för att inte tillåta någon server anslutning eller **klassisk** att endast dirigera till en NAV Server om navet har en server anslutning
-* Om du vill aktivera loggar för anslutning eller meddelanden (**Sant** eller **falskt**)
+    > För **Free_F1** prisnivån är kapaciteten begränsad till 1 enhet.
+* Tjänstläge: Kräver **som** standard en hubbserver, **serverlös** för att  inte tillåta någon serveranslutning eller klassisk för att dirigera till en hubbserver endast om hubben har en serveranslutning
+* Om du vill aktivera loggar för anslutning eller meddelanden **(sant** eller **falskt)**
 
 ```azurecli-interactive
 read -p "Enter a name for the new Azure SignalR Service: " serviceName &&
@@ -165,21 +168,21 @@ read -p "Press [ENTER] to continue: "
 ---
 
 > [!NOTE]
-> Det kan ta några minuter att slutföra distributionen. Anteckna namnen på Azure SignalR-tjänsten och resurs gruppen, som du kan använda för att granska de distribuerade resurserna senare.
+> Det kan ta några minuter att slutföra distributionen. Anteckna namnen för Azure SignalR Service och resursgruppen, som du använder för att granska de distribuerade resurserna senare.
 
 ## <a name="review-deployed-resources"></a>Granska distribuerade resurser
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Följ dessa steg om du vill se en översikt över din nya Azure SignalR-tjänst:
+Följ dessa steg om du vill se en översikt över din Azure SignalR Service:
 
-1. Sök efter och välj **signaler** i [Azure Portal](https://portal.azure.com).
+1. I [Azure Portal](https://portal.azure.com)du efter och väljer **SignalR**.
 
-2. I listan signaler väljer du den nya tjänsten. **Översikts** sidan för den nya Azure SignalR-tjänsten visas.
+2. I listan SignalR väljer du den nya tjänsten. Sidan **Översikt** för den nya Azure SignalR Service visas.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-Kör följande interaktiva kod om du vill visa information om din Azure SignalR-tjänst. Du måste ange namnet på den nya tjänsten och resurs gruppen.
+Kör följande interaktiva kod för att visa information om Azure SignalR Service. Du måste ange namnet på den nya tjänsten och resursgruppen.
 
 ```azurepowershell-interactive
 $serviceName = Read-Host -Prompt "Enter the name of your Azure SignalR Service"
@@ -191,7 +194,7 @@ Read-Host "Press [ENTER] to continue"
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
-Kör följande interaktiva kod om du vill visa information om din Azure SignalR-tjänst. Du måste ange namnet på den nya tjänsten och resurs gruppen.
+Kör följande interaktiva kod för att visa information om Azure SignalR Service. Du måste ange namnet på den nya tjänsten och resursgruppen.
 
 ```azurecli-interactive
 read -p "Enter the name of your Azure SignalR Service: " serviceName &&
@@ -205,17 +208,17 @@ read -p "Press [ENTER] to continue: "
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När den inte längre behövs tar du bort resurs gruppen, som tar bort resurserna i resurs gruppen.
+När den inte längre behövs tar du bort resursgruppen, vilket tar bort resurserna i resursgruppen.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. I [Azure Portal](https://portal.azure.com)söker du efter och väljer **resurs grupper**.
+1. I [Azure Portal](https://portal.azure.com)du efter och väljer **Resursgrupper**.
 
-2. I listan resurs grupp väljer du namnet på din resurs grupp.
+2. Välj namnet på resursgruppen i listan med resursgrupper.
 
-3. På sidan **Översikt** i resurs gruppen väljer du **ta bort resurs grupp**.
+3. På sidan **Översikt** för resursgruppen väljer du Ta **bort resursgrupp.**
 
-4. I bekräftelse dialog rutan skriver du namnet på din resurs grupp och väljer sedan **ta bort**.
+4. I bekräftelsedialogrutan skriver du namnet på resursgruppen och väljer sedan Ta **bort.**
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -239,7 +242,7 @@ read -p "Press [ENTER] to continue: "
 
 ## <a name="next-steps"></a>Nästa steg
 
-En steg-för-steg-guide som vägleder dig genom processen att skapa en ARM-mall finns i:
+En stegvis självstudiekurs som vägleder dig genom processen för att skapa en ARM-mall finns i:
 
 > [!div class="nextstepaction"]
-> [ Självstudie: skapa och distribuera din första ARM-mall](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [ Självstudie: Skapa och distribuera din första ARM-mall](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

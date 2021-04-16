@@ -1,6 +1,6 @@
 ---
-title: Självstudie – bevisa att du är ägare till CA-certifikat i Azure IoT Hub | Microsoft Docs
-description: Självstudie – bevisa att du äger ett CA-certifikat för Azure IoT Hub
+title: Självstudie – Bevisa ägarskapet för CA-certifikat i Azure IoT Hub | Microsoft Docs
+description: Självstudie – Bevisa att du äger ett CA-certifikat för Azure IoT Hub
 author: v-gpettibone
 manager: philmea
 ms.service: iot-hub
@@ -12,41 +12,40 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-- devx-track-azurecli
-ms.openlocfilehash: 5e2827a4f87398f0a37ef04f797d2c7276d1a66d
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: b7740fa1f6a54dcfcc1181dddedcdd5fdb50402c
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384178"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378235"
 ---
-# <a name="tutorial-proving-possession-of-a-ca-certificate"></a>Självstudie: bevisa innehav av ett CA-certifikat
+# <a name="tutorial-proving-possession-of-a-ca-certificate"></a>Självstudie: Bevisa innehavet av ett CA-certifikat
 
-När du har överfört certifikat utfärdare för rot certifikat utfärdare eller underordnat certifikat till din IoT-hubb måste du bevisa att du äger certifikatet:
+När du har överfört ditt rotcertifikatutfärdarcertifikat (CA) eller ett underordnat CA-certifikat till din IoT-hubb måste du bevisa att du äger certifikatet:
 
-1. Gå till din IoTHub i Azure Portal och välj **inställningar > certifikat**.
+1. I dialogrutan Azure Portal du till din IoTHub och väljer **Inställningar för > Certifikat**.
 
-2. Välj **Lägg** till för att lägga till ett nytt CA-certifikat.
+2. Välj **Lägg till** för att lägga till ett nytt CA-certifikat.
 
-3. Ange ett visnings namn i fältet **certifikat namn** och välj det PEM-certifikat som du vill lägga till.
+3. Ange ett visningsnamn i fältet **Certifikatnamn** och välj det PEM-certifikat som ska läggas till.
 
-4. Välj **Spara**. Ditt certifikat visas i certifikat listan med statusen **overifierad**. Den här verifierings processen visar att du har till gång till certifikatet.
+4. Välj **Spara**. Certifikatet visas i certifikatlistan med statusen **Overifierad.** Verifieringsprocessen bevisar att du har tillgång till certifikatet.
 
-5. Välj certifikat för att Visa dialog rutan **certifikat information** .
+5. Välj certifikatet för att visa **dialogrutan Certifikatinformation.**
 
-6. Välj **generera verifierings kod** i dialog rutan.
+6. Välj **Generera verifieringskod** i dialogrutan.
 
-  :::image type="content" source="media/tutorial-x509-prove-possession/certificate-details.png" alt-text="{Dialog rutan certifikat information}":::
+  :::image type="content" source="media/tutorial-x509-prove-possession/certificate-details.png" alt-text="Dialogrutan {Certifikatinformation}":::
 
-7. Kopiera verifieringskoden till Urklipp. Du måste ange verifierings koden som certifikat ämne. Om verifierings koden till exempel är 75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3 kan du lägga till den som ämne för ditt certifikat, som du ser i nästa steg.
+7. Kopiera verifieringskoden till Urklipp. Du måste ange verifieringskoden som certifikatämne. Om verifieringskoden till exempel är 75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3 lägger du till det som certifikatämne som visas i nästa steg.
 
-8. Det finns tre sätt att generera ett verifierings certifikat:
+8. Det finns tre sätt att generera ett verifieringscertifikat:
 
-    * Om du använder PowerShell-skriptet från Microsoft kör `New-CACertsVerificationCert "75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3"` du för att skapa ett certifikat med namnet `VerifyCert4.cer` . Mer information finns i [använda skript som tillhandahålls av Microsoft](tutorial-x509-scripts.md).
+    * Om du använder Det PowerShell-skript som tillhandahålls av Microsoft kör du för `New-CACertsVerificationCert "75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3"` att skapa ett certifikat med namnet `VerifyCert4.cer` . Mer information finns i [Använda skript från Microsoft.](tutorial-x509-scripts.md)
 
-    * Om du använder bash-skriptet som tillhandahålls av Microsoft kör `./certGen.sh create_verification_certificate "75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3"` du för att skapa ett certifikat med namnet `verification-code.cert.pem` . Mer information finns i [använda skript som tillhandahålls av Microsoft](tutorial-x509-scripts.md).
+    * Om du använder Bash-skriptet som tillhandahålls av Microsoft kör du för `./certGen.sh create_verification_certificate "75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3"` att skapa ett certifikat med namnet `verification-code.cert.pem` . Mer information finns i [Använda skript från Microsoft.](tutorial-x509-scripts.md)
 
-    * Om du använder OpenSSL för att generera certifikat måste du först skapa en privat nyckel och sedan en certifikat signerings förfrågan (CSR):
+    * Om du använder OpenSSL för att generera certifikat måste du först generera en privat nyckel och sedan en certifikatsigneringsbegäran (CSR):
 
       ```bash
       $ openssl genpkey -out pop.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048
@@ -69,15 +68,15 @@ När du har överfört certifikat utfärdare för rot certifikat utfärdare elle
  
       ```
 
-      Skapa sedan ett certifikat med hjälp av rot certifikat utfärdarens konfigurations fil (visas nedan) eller den underordnade CA-konfigurationsfilen och CSR-filen.
+      Skapa sedan ett certifikat med hjälp av rotcertifikatutfärdarkonfigurationsfilen (visas nedan) eller den underordnade CA-konfigurationsfilen och CSR.
 
       ```bash
       openssl ca -config rootca.conf -in pop.csr -out pop.crt -extensions client_ext
 
       ```
 
-    Mer information finns i [använda OpenSSL för att skapa test certifikat](tutorial-x509-openssl.md).
+    Mer information finns i Använda [OpenSSL för att skapa testcertifikat.](tutorial-x509-openssl.md)
 
-10. Välj det nya certifikatet i vyn **certifikat information** .
+10. Välj det nya certifikatet i **vyn Certifikatinformation.**
 
-11. När du har laddat upp certifikatet väljer du **Verifiera**. Certifikat utfärdarens certifikat status bör ändras till **verifierad**.
+11. När certifikatet har laddats upp väljer du **Verifiera**. Ca-certifikatstatusen bör ändras till **Verifierad.**

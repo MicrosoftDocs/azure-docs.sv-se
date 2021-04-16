@@ -1,50 +1,50 @@
 ---
-title: Konfigurera grupp ägare medgivande till appar som har åtkomst till grupp data med hjälp av Azure AD
-description: Läs om hur grupp-och team ägare kan godkänna program som kommer att ha åtkomst till gruppens eller teamets data.
+title: Konfigurera gruppägarens medgivande till att appar får åtkomst till gruppdata med hjälp av Azure AD
+description: Lär dig hur du hanterar om grupp- och teamägare kan samtycka till program som har åtkomst till gruppens eller teamets data.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8d8604a1dd54ed819bb9e27c46d61a46466bf3da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be28148aacf270f2f3cfabad4cbd5f03afa05d3b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548809"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374428"
 ---
-# <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Konfigurera grupp ägare medgivande till appar som har åtkomst till grupp data
+# <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Konfigurera gruppägarens medgivande till att appar får åtkomst till gruppdata
 
-Grupp-och team ägare kan auktorisera program, till exempel program som publiceras av tredjepartsleverantörer, för att komma åt din organisations data som är associerade med en grupp. Till exempel kan en grupp ägare i Microsoft-team tillåta att en app läser alla team meddelanden i teamet eller listar grund profilen för en grupps medlemmar. Mer information finns i [Resource-Specific medgivande i Microsoft Teams](/microsoftteams/resource-specific-consent) .
+Grupp- och teamägare kan auktorisera program, till exempel program som publicerats av tredjepartsleverantörer, för att få åtkomst till organisationens data som är associerade med en grupp. En teamägare i Microsoft Teams kan till exempel tillåta att en app läser alla Teams-meddelanden i teamet eller listar den grundläggande profilen för en grupps medlemmar. Mer [information finns i Resursspecifikt medgivande i Microsoft Teams.](/microsoftteams/resource-specific-consent)
 
-## <a name="manage-group-owner-consent-to-apps"></a>Hantera grupp ägarens medgivande till appar
+## <a name="manage-group-owner-consent-to-apps"></a>Hantera gruppägarens medgivande till appar
 
-Du kan konfigurera vilka användare som tillåts att godkänna appar som har åtkomst till sina gruppers eller teams data, eller så kan du inaktivera detta för alla användare.
+Du kan konfigurera vilka användare som ska tillåtas godkänna att appar får åtkomst till deras gruppers eller teams data, eller så kan du inaktivera detta för alla användare.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Följ de här stegen för att hantera grupp ägarens medgivande till appar som har åtkomst till grupp data:
+Följ dessa steg om du vill hantera gruppens ägarmedgivande för appar som kommer åt gruppdata:
 
-1. Logga in på [Azure Portal](https://portal.azure.com) som [Global administratör](../roles/permissions-reference.md#global-administrator).
-2. Välj **Azure Active Directory**  >  **företags program**  >  **medgivande-och**  >  **användar** tillstånds inställningar.
-3. Under **grupp ägarens medgivande för appar som har åtkomst till data** väljer du det alternativ som du vill aktivera.
-4. Spara inställningarna genom att välja **Spara** .
+1. Logga in på [Azure Portal](https://portal.azure.com) som [global administratör.](../roles/permissions-reference.md#global-administrator)
+2. Välj **Azure Active Directory För**  >  **företagsprogram Medgivande** och behörigheter  >  **Inställningar** för  >  **användarmedgivande.**
+3. Under **Medgivande från gruppägare för appar som har åtkomst** till data väljer du det alternativ som du vill aktivera.
+4. Välj **Spara** för att spara inställningarna.
 
-I det här exemplet har alla grupp ägare tillåtelse att tillåta appar som har åtkomst till sina gruppers data:
+I det här exemplet tillåts alla gruppägare att godkänna att appar får åtkomst till sina gruppers data:
 
-:::image type="content" source="media/configure-user-consent-groups/group-owner-consent.png" alt-text="Inställningar för godkännande av grupp ägare":::
+:::image type="content" source="media/configure-user-consent-groups/group-owner-consent.png" alt-text="Inställningar för gruppägares medgivande":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Du kan använda Azure AD PowerShell Preview-modulen, [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview), för att aktivera eller inaktivera grupp ägarens möjlighet att godkänna program som har åtkomst till organisationens data för de grupper som de äger.
+Du kan använda Azure AD PowerShell Preview-modulen [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview)för att aktivera eller inaktivera gruppägares möjlighet att samtycka till program som har åtkomst till organisationens data för de grupper som de äger.
 
-1. Kontrol lera att du använder [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) -modulen. Det här steget är viktigt om du har installerat både [AzureAD](/powershell/module/azuread/) -modulen och [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) -modulen.
+1. Kontrollera att du använder modulen [AzureADPreview.](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) Det här steget är viktigt om du har installerat både [AzureAD-modulen](/powershell/module/azuread/) och [AzureADPreview-modulen).](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview)
 
     ```powershell
     Remove-Module AzureAD
@@ -57,7 +57,7 @@ Du kan använda Azure AD PowerShell Preview-modulen, [AzureADPreview](/powershel
    Connect-AzureAD
    ```
 
-1. Hämta det aktuella värdet för katalog inställningarna för **medgivande princip inställningarna** i din klient organisation. Detta kräver att du kontrollerar om katalog inställningarna för den här funktionen har skapats, och om inte använder värdena från motsvarande katalog inställnings mall.
+1. Hämta det aktuella värdet för **kataloginställningarna för inställningar för** medgivandeprincip i din klientorganisation. Detta kräver att du kontrollerar om kataloginställningarna för den här funktionen har skapats, och om inte, med hjälp av värdena från motsvarande kataloginställningsmall.
 
     ```powershell
     $consentSettingsTemplateId = "dffd5d46-495d-40a9-8e21-954ff55e198a" # Consent Policy Settings
@@ -72,14 +72,14 @@ Du kan använda Azure AD PowerShell Preview-modulen, [AzureADPreview](/powershel
     $limitedToValue = $settings.Values | ? { $_.Name -eq "ConstrainGroupSpecificConsentToMembersOfGroupId" }
     ```
 
-1. Förstå inställnings värden. Det finns två inställnings värden som definierar vilka användare som ska kunna tillåta en app åtkomst till deras grupp data:
+1. Förstå inställningsvärdena. Det finns två inställningsvärden som definierar vilka användare som ska kunna tillåta att en app får åtkomst till gruppens data:
 
     | Inställningen       | Typ         | Beskrivning  |
     | ------------- | ------------ | ------------ |
-    | _EnableGroupSpecificConsent_   | Boolesk | Flagga som anger om grupp ägare tillåts att bevilja gruppdefinierade behörigheter. |
-    | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | GUID | Om _EnableGroupSpecificConsent_ är inställt på "true" och det här värdet har angetts till en grupps objekt-ID kommer medlemmar i den identifierade gruppen ha behörighet att bevilja gruppspecifika behörigheter till de grupper som de äger. |
+    | _EnableGroupSpecificConsent_   | Boolesk | Flagga som anger om gruppägare tillåts bevilja gruppspecifika behörigheter. |
+    | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | GUID | Om _EnableGroupSpecificConsent_ är inställt på "True" och det här värdet är inställt på en grupps objekt-ID, kommer medlemmar i den identifierade gruppen att ha behörighet att bevilja gruppspecifika behörigheter till de grupper som de äger. |
 
-1. Uppdatera inställnings värden för önskad konfiguration:
+1. Uppdatera inställningsvärden för önskad konfiguration:
 
     ```powershell
     # Disable group-specific consent entirely
@@ -117,11 +117,11 @@ Du kan använda Azure AD PowerShell Preview-modulen, [AzureADPreview](/powershel
 
 Mer information:
 
-* [Konfigurera inställningar för användar godkännande](configure-user-consent.md)
-* [Konfigurera arbets flödet för administratörs medgivande](configure-admin-consent-workflow.md)
-* [Lär dig hur du hanterar medgivande till program och att utvärdera medgivande begär Anden](manage-consent-requests.md)
+* [Konfigurera inställningar för användarmedgivande](configure-user-consent.md)
+* [Konfigurera arbetsflödet för administratörsmedgivande](configure-admin-consent-workflow.md)
+* [Lär dig hur du hanterar medgivande till program och utvärderar begäranden om medgivande](manage-consent-requests.md)
 * [Bevilja administratörsmedgivande för hela klientorganisationen till ett program](grant-admin-consent.md)
-* [Behörigheter och medgivande i Microsoft Identity Platform](../develop/v2-permissions-and-consent.md)
+* [Behörigheter och medgivande i Microsofts identitetsplattform](../develop/v2-permissions-and-consent.md)
 
-För att få hjälp eller hitta svar på dina frågor:
+För att få hjälp eller få svar på dina frågor:
 * [Azure AD på Microsoft Q&A ](/answers/topics/azure-active-directory.html)

@@ -1,26 +1,26 @@
 ---
-title: Inbyggda princip definitioner för Azure IoT Hub
-description: Visar Azure Policy inbyggda princip definitioner för Azure IoT Hub. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 03/31/2021
+title: Inbyggda principdefinitioner för Azure IoT Hub
+description: Visar Azure Policy inbyggda principdefinitioner för Azure IoT Hub. Dessa inbyggda principdefinitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
+ms.date: 04/14/2021
 ms.topic: reference
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 5b59516f938ca6467e57a7b70050b9ef7c2a08d5
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 254cbe5b5f3cff78138d230defb3123ba50a6934
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093271"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501305"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-iot-hub"></a>Azure Policy inbyggda definitioner för Azure IoT Hub
 
-IoT Hub exempel kod som visar hur du implementerar vanliga IoT-scenarier finns i [IoT Hub snabb starter](./quickstart-send-telemetry-cli.md). Det finns snabb starter för flera programmeringsspråk, inklusive C, Node.js och python.
+Mer IoT Hub exempelkod som visar hur du implementerar vanliga IoT-scenarier finns [i IoT Hub snabbstarter](./quickstart-send-telemetry-cli.md). Det finns snabbstarter för flera programmeringsspråk som C, Node.js och Python.
 
-Den här sidan är ett index över [Azure policy](../governance/policy/overview.md) inbyggda princip definitioner för Azure IoT Hub. Ytterligare Azure Policy inbyggda program för andra tjänster finns i [Azure policy inbyggda definitioner](../governance/policy/samples/built-in-policies.md).
+Den här sidan är ett index [Azure Policy](../governance/policy/overview.md) inbyggda principdefinitioner för Azure IoT Hub. Mer information Azure Policy inbyggda program för andra tjänster finns [i Azure Policy inbyggda definitioner](../governance/policy/samples/built-in-policies.md).
 
-Namnet på varje inbyggd princip definition länkar till princip definitionen i Azure Portal. Använd länken i kolumnen **version** om du vill visa källan på [Azure policy GitHub-lagrings platsen](https://github.com/Azure/azure-policy).
+Namnet på varje inbyggd principdefinition länkar till principdefinitionen i Azure Portal. Använd länken i kolumnen **Version för** att visa källan på Azure Policy [GitHub-lagringsplatsen](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-iot-hub"></a>Azure IoT Hub
 

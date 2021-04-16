@@ -1,116 +1,116 @@
 ---
-title: Hantera användar-och administratörs behörigheter – Azure Active Directory | Microsoft Docs
-description: Lär dig hur du granskar och hanterar behörigheter för programmet i Azure AD. Återkalla till exempel alla behörigheter som beviljats till ett program.
+title: Hantera användar- och administratörsbehörigheter – Azure Active Directory | Microsoft Docs
+description: Lär dig hur du granskar och hanterar behörigheter för programmet i Azure AD. Du kan till exempel återkalla alla behörigheter som beviljats för ett program.
 services: active-directory
-author: msmimart
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 7/10/2020
-ms.author: mimart
+ms.author: iangithinji
 ms.reviewer: luleonpla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbd2bc7b9ccc9efe0c6fdf8de02665160667cb8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bcd137030e4e1f3e88f47ec5ba78b3bde08fe068
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256940"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107373987"
 ---
-# <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>Vidta åtgärder för överanvändning eller misstänkta program i Azure Active Directory
+# <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>Vidta åtgärder för överprivilegierade eller misstänkta program i Azure Active Directory
 
-Lär dig hur du granskar och hanterar program behörigheter. Den här artikeln innehåller olika åtgärder som du kan vidta för att skydda ditt program enligt scenariot. Dessa åtgärder gäller för alla program som har lagts till i din Azure Active Directory (Azure AD)-klient via användare eller administrativt medgivande.
+Lär dig hur du granskar och hanterar programbehörigheter. Den här artikeln innehåller olika åtgärder som du kan vidta för att skydda ditt program enligt scenariot. Dessa åtgärder gäller för alla program som har lagts till i din Azure Active Directory-klientorganisation (Azure AD) via användar- eller administratörsmedgivande.
 
-Mer information om samtycker till program finns i [Azure Active Directory medgivande Framework](../develop/consent-framework.md).
+Mer information om medgivande till program finns i Azure Active Directory [ramverket för medgivande.](../develop/consent-framework.md)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Om du vill utföra följande åtgärder måste du logga in som global administratör, program administratör eller en moln program administratör.
+Om du vill utföra följande åtgärder måste du logga in som global administratör, programadministratör eller molnprogramadministratör.
 
-Om du vill begränsa åtkomsten till program måste du kräva användar tilldelning och sedan tilldela användare eller grupper till programmet.  Mer information finns i [metoder för att tilldela användare och grupper](./assign-user-or-group-access-portal.md).
+Om du vill begränsa åtkomsten till program måste du kräva användartilldelning och sedan tilldela användare eller grupper till programmet.  Mer information finns i [Metoder för att tilldela användare och grupper](./assign-user-or-group-access-portal.md).
 
-Du kan komma åt Azure AD-portalen för att hämta sammanhangsbaserade PowerShell-skript för att utföra åtgärderna.
+Du kan komma åt Azure AD-portalen för att hämta kontextuella PowerShell-skript för att utföra åtgärderna.
  
-1. Logga in på [Azure Portal](https://portal.azure.com) som global administratör, program administratör eller en moln program administratör.
-2. Välj **Azure Active Directory**  >  **företags program**.
+1. Logga in på [Azure Portal](https://portal.azure.com) som global administratör, programadministratör eller molnprogramadministratör.
+2. Välj **Azure Active Directory**  >  **Företagsprogram**.
 3. Välj det program som du vill begränsa åtkomsten till.
-4. Välj **Behörigheter**. I kommando fältet väljer du **gransknings behörigheter**.
+4. Välj **Behörigheter**. I kommandofältet väljer du **Granska behörigheter.**
 
-![Skärm bild av fönstret gransknings behörigheter.](./media/manage-application-permissions/review-permissions.png)
+![Skärmbild av fönstret granska behörigheter.](./media/manage-application-permissions/review-permissions.png)
 
 
-## <a name="control-access-to-an-application"></a>Kontrol lera åtkomst till ett program
+## <a name="control-access-to-an-application"></a>Kontrollera åtkomsten till ett program
 
-Vi rekommenderar att du begränsar åtkomsten till programmet genom att aktivera inställningen för **användar tilldelning** .
+Vi rekommenderar att du begränsar åtkomsten till programmet genom att aktivera inställningen **Användartilldelning.**
 
-1. Logga in på [Azure Portal](https://portal.azure.com) som global administratör, program administratör eller en moln program administratör.
-2. Välj **Azure Active Directory**  >  **företags program**.
+1. Logga in på [Azure Portal](https://portal.azure.com) som global administratör, programadministratör eller molnprogramadministratör.
+2. Välj **Azure Active Directory**  >  **Företagsprogram**.
 3. Välj det program som du vill begränsa åtkomsten till.
-4. Välj **Egenskaper** och ange sedan **användar krav som krävs** till **Ja**.
-5. Välj **användare och grupper** och ta sedan bort de oönskade användare som har tilldelats programmet.
+4. Välj **Egenskaper** och ange sedan **Användarkrav som krävs** till **Ja.**
+5. Välj **Användare och grupper** och ta sedan bort de oönskade användare som har tilldelats till programmet.
 6. Tilldela användare eller grupper till programmet.
 
-Du kan också ta bort alla användare som är tilldelade till programmet med hjälp av PowerShell.
+Du kan också ta bort alla användare som har tilldelats till programmet med hjälp av PowerShell.
 
 ## <a name="revoke-all-permissions-for-an-application"></a>Återkalla alla behörigheter för ett program
 
-Om du använder PowerShell-skriptet återkallar du alla behörigheter som har beviljats för programmet.
+När du använder PowerShell-skriptet återkallas alla behörigheter som beviljats för det här programmet.
 
 > [!NOTE]
-> Om du återkallar den aktuella beviljade behörigheten kommer användarna inte att hindra användare från att godkänna programmet på nytt. Om du vill blockera användare från att godkänna, Läs [Konfigurera hur användare godkänner program](configure-user-consent.md).
+> Om du återkallar den aktuella behörigheten hindras inte användarna från att godkänna programmet på nytt. Om du vill blockera användare från medgivande läser du Konfigurera [hur användare godkänner program.](configure-user-consent.md)
 
-Du kan också inaktivera programmet för att hindra användare från att komma åt appen och hindra programmet från att komma åt dina data.
+Du kan också inaktivera programmet för att hålla användarna från att komma åt appen och för att hålla programmet från att komma åt dina data.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) som global administratör, program administratör eller en moln program administratör.
-2. Välj **Azure Active Directory**  >  **företags program**.
+1. Logga in på [Azure Portal](https://portal.azure.com) som global administratör, programadministratör eller molnprogramadministratör.
+2. Välj **Azure Active Directory**  >  **Företagsprogram**.
 3. Välj det program som du vill begränsa åtkomsten till.
-4. Välj **Egenskaper** och Ställ in **aktiverat för användare för inloggning?** till **Nej**.
+4. Välj **Egenskaper** och ange sedan **Aktiverad för användare att logga in?** till **Nej.**
 
-## <a name="investigate-a-suspicious-application"></a>Undersök ett misstänkt program
+## <a name="investigate-a-suspicious-application"></a>Undersöka ett misstänkt program
 
-Vi rekommenderar att du begränsar åtkomsten till programmet genom att aktivera inställningen för **användar tilldelning** . Granska sedan de behörigheter som användare och administratörer har beviljat programmet.
+Vi rekommenderar att du begränsar åtkomsten till programmet genom att aktivera inställningen **Användartilldelning.** Granska sedan de behörigheter som användare och administratörer har beviljat till programmet.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) som global administratör, program administratör eller en moln program administratör.
-3. Välj **Azure Active Directory**  >  **företags program**.
+1. Logga in på [Azure Portal](https://portal.azure.com) som global administratör, programadministratör eller molnprogramadministratör.
+3. Välj **Azure Active Directory**  >  **Företagsprogram**.
 5. Välj det program som du vill begränsa åtkomsten till.
-6. Välj **Egenskaper** och ange sedan **användar krav som krävs** till **Ja**.
-7. Välj **behörigheter** och granska administratörs-och användarens behörigheter.
+6. Välj **Egenskaper** och ange sedan **Användarkrav som krävs** till **Ja.**
+7. Välj **Behörigheter** och granska de behörigheter som administratören och användaren har samtyckt till.
 
-Du kan också använda PowerShell för att:
+Om du vill kan du med hjälp av PowerShell:
 
 - Ta bort alla tilldelade användare för att hindra dem från att logga in i programmet.
-- Invalidera uppdateringstoken för användare som har åtkomst till programmet.
+- Ogiltigförklara uppdateringstoken för användare som har åtkomst till programmet.
 - Återkalla alla behörigheter för programmet.
 
-Du kan också inaktivera programmet för att blockera användarnas åtkomst och stoppa programmets åtkomst till dina data.
+Eller så kan du inaktivera programmet för att blockera användarnas åtkomst och stoppa programmets åtkomst till dina data.
 
 
 ## <a name="disable-a-malicious-application"></a>Inaktivera ett skadligt program 
 
-Vi rekommenderar att du inaktiverar programmet för att blockera användarnas åtkomst och förhindrar att programmet kommer åt dina data. Om du tar bort programmet i stället kan användare godkänna programmet igen och bevilja åtkomst till dina data.
+Vi rekommenderar att du inaktiverar programmet för att blockera användarnas åtkomst och för att hindra programmet från att komma åt dina data. Om du tar bort programmet i stället kan användarna godkänna programmet på ett annat sätt och bevilja åtkomst till dina data.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) som global administratör, program administratör eller en moln program administratör.
-2. Välj **Azure Active Directory**  >  **företags program**.
+1. Logga in på [Azure Portal](https://portal.azure.com) som global administratör, programadministratör eller molnprogramadministratör.
+2. Välj **Azure Active Directory**  >  **Enterprise-program**.
 3. Välj det program som du vill begränsa åtkomsten till.
-4. Välj **Egenskaper** och kopiera sedan objekt-ID: t.
+4. Välj **Egenskaper** och kopiera sedan objekt-ID:t.
 
 ### <a name="powershell-commands"></a>PowerShell-kommandon
 
 
-Hämta objekt-ID för tjänstens huvud namn.
+Hämta objekt-ID:t för tjänstens huvudnamn.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) som global administratör, program administratör eller en moln program administratör.
-2. Välj **Azure Active Directory**  >  **företags program**.
+1. Logga in på [Azure Portal](https://portal.azure.com) som global administratör, programadministratör eller molnprogramadministratör.
+2. Välj **Azure Active Directory**  >  **Företagsprogram**.
 3. Välj det program som du vill begränsa åtkomsten till.
-4. Välj **Egenskaper** och kopiera sedan objekt-ID: t.
+4. Välj **Egenskaper** och kopiera sedan objekt-ID:t.
 
 ```powershell
 $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
 $sp.ObjectId
 ```
-Ta bort alla användare som är tilldelade till programmet.
+Ta bort alla användare som har tilldelats till programmet.
  ```powershell
 Connect-AzureAD
 
@@ -130,7 +130,7 @@ $assignments | ForEach-Object {
 }
  ```
 
-Återkalla behörigheter som har beviljats för programmet.
+Återkalla behörigheter som beviljats för programmet.
 
 ```powershell
 Connect-AzureAD
@@ -154,7 +154,7 @@ $spApplicationPermissions | ForEach-Object {
     Remove-AzureADServiceAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.objectId
 }
 ```
-Ogiltig uppdatering av tokens.
+Ogiltigförklara uppdateringstoken.
 ```powershell
 Connect-AzureAD
 
@@ -170,6 +170,6 @@ $assignments | ForEach-Object {
 }
 ```
 ## <a name="next-steps"></a>Nästa steg
-- [Hantera medgivande till program och utvärdera medgivande förfrågan](manage-consent-requests.md)
+- [Hantera medgivande till program och utvärdera begäran om medgivande](manage-consent-requests.md)
 - [Konfigurera användarmedgivande](configure-user-consent.md)
-- [Konfigurera arbets flöde för administratörs medgivande](configure-admin-consent-workflow.md)
+- [Konfigurera arbetsflöde för administratörsmedgivande](configure-admin-consent-workflow.md)

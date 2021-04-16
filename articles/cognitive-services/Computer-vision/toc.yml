@@ -3,15 +3,15 @@
 - name: Översikt
   expanded: true
   items:
-    - name: Visuellt innehåll översikt
+    - name: Vad är visuellt innehåll?
       href: overview.md
     - name: Stöd för språk
       href: language-support.md
-    - name: Priser och begränsningar
+    - name: Prissättning
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
     - name: Nyheter
       href: whats-new.md
-    - name: Vanliga Visuellt innehåll vanliga frågor och svar
+    - name: vanliga Visuellt innehåll vanliga frågor och svar
       href: FAQ.md
 - name: Optisk teckenläsning (OCR)
   items:
@@ -162,7 +162,7 @@
           href: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/computer-vision/context/context
     - name: Anvisningar
       items:
-        - name: Använda containern för rumslig analys
+        - name: Använda containern Spatial Analysis
           items:
             - name: Konfigurera värddatorn och kör containern
               href: spatial-analysis-container.md
@@ -180,21 +180,23 @@
               href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
 - name: Anvisningar
   items:
-    - name: Så här konfigurerar du virtuella nätverk
-      href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
-    - name: Så här konfigurerar du AAD-autentisering
-      href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
-    - name: Så här använder du kund hanterade nycklar
-      href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
+    - name: Företagsberedskap
+      items:
+        - name: Konfigurera virtuella nätverk
+          href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
+        - name: Använda Azure AD-autentisering
+          href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
 - name: Resurser
   items:
-    - name: Stöd för regioner
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: LEARN-moduler
-      href: /learn/paths/explore-computer-vision-microsoft-azure/
+    - name: Företagsberedskap
+      items:
+        - name: Stöd för regioner
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Efterlevnad och certifiering
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
-    - name: Efterlevnad
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Microsoft Learn moduler
+      href: /learn/paths/explore-computer-vision-microsoft-azure/
     - name: Azure-uppdateringar
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

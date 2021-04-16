@@ -1,6 +1,6 @@
 ---
-title: AzCopy-inloggning | Microsoft Docs
-description: Den här artikeln innehåller referensinformation för kommandot AzCopy login.
+title: azcopy login | Microsoft Docs
+description: Den här artikeln innehåller referensinformation för kommandot azcopy login.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -8,27 +8,27 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e4740870dd2d9748aad55150ce1946e3eb666619
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4861749d66e466bc3302553af8b3ed4919a72e0
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878366"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503243"
 ---
 # <a name="azcopy-login"></a>azcopy inloggning
 
-Loggar in på Azure Active Directory för att få åtkomst till Azure Storage resurser.
+Loggar in på Azure Active Directory åtkomst till Azure Storage resurser.
 
-## <a name="synopsis"></a>Sammanfattning
+## <a name="synopsis"></a>Synopsis
 
-Logga in på Azure Active Directory för att få åtkomst till Azure Storage resurser.
+Logga in på Azure Active Directory för att komma Azure Storage resurser.
 
-Om du vill ha behörighet till ditt Azure Storage-konto måste du tilldela rollen **Storage BLOB data Contributor** till ditt användar konto i kontexten för antingen lagrings kontot, den överordnade resurs gruppen eller den överordnade prenumerationen.
+För att kunna auktorisera till ditt Azure Storage-konto måste du tilldela rollen **Storage Blob Data-deltagare** till ditt användarkonto i kontexten för lagringskontot, den överordnade resursgruppen eller den överordnade prenumerationen.
 
-Det här kommandot cachelagrar krypterad inloggnings information för den aktuella användaren med hjälp av inbyggda OS-mekanismer.
+Det här kommandot cachelagrar krypterad inloggningsinformation för den aktuella användaren med hjälp av de inbyggda mekanismerna i operativsystemet.
 
 > [!IMPORTANT]
-> Om du anger en miljö variabel med hjälp av kommando raden, kommer den variabeln att läsas i kommando rads historiken. Överväg att ta bort variabler som innehåller autentiseringsuppgifter från din kommando rads historik. Om du vill att variablerna ska visas i historiken kan du använda ett skript för att uppmana användaren att ange sina autentiseringsuppgifter och ange miljövariabeln.
+> Om du anger en miljövariabel med hjälp av kommandoraden kan variabeln läsas i kommandoradshistoriken. Överväg att rensa variabler som innehåller autentiseringsuppgifter från kommandoradshistoriken. Om du inte vill att variabler ska visas i historiken kan du använda ett skript för att uppmana användaren att ange sina autentiseringsuppgifter och för att ange miljövariabeln.
 
 ```azcopy
 azcopy login [flags]
@@ -37,96 +37,96 @@ azcopy login [flags]
 ## <a name="related-conceptual-articles"></a>Relaterade konceptuella artiklar
 
 - [Kom igång med AzCopy](storage-use-azcopy-v10.md)
+- [Självstudie: Migrera lokala data till molnlagring med AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
 - [Överföra data med AzCopy och Blob Storage](./storage-use-azcopy-v10.md#transfer-data)
 - [Överföra data med AzCopy och fillagring](storage-use-azcopy-files.md)
-- [Konfigurera, optimera och felsöka AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Exempel
 
-Logga in interaktivt med standard-ID för AAD-klient har angetts till common:
+Logga in interaktivt med standard-AAD-klientorganisations-ID inställt på vanligt:
 
 ```azcopy
 azcopy login
 ```
 
-Logga in interaktivt med ett angivet klient-ID:
+Logga in interaktivt med ett angivet klientorganisations-ID:
 
 ```azcopy
 azcopy login --tenant-id "[TenantID]"
 ```
 
-Logga in med den systemtilldelade identiteten för en virtuell dator (VM):
+Logga in med hjälp av den system tilldelade identiteten för en virtuell dator (VM):
 
 ```azcopy
 azcopy login --identity
 ```
 
-Logga in med den användardefinierade identiteten för en virtuell dator och klient-ID: t för tjänstens identitet:
+Logga in med den användar tilldelade identiteten för en virtuell dator och ett klient-ID för tjänstidentiteten:
   
 ```azcopy
 azcopy login --identity --identity-client-id "[ServiceIdentityClientID]"
 ```
  
-Logga in med den användardefinierade identiteten för en virtuell dator och ett objekt-ID för tjänst identiteten:
+Logga in med hjälp av den användar tilldelade identiteten för en virtuell dator och ett objekt-ID för tjänstidentiteten:
 
 ```azcopy
 azcopy login --identity --identity-object-id "[ServiceIdentityObjectID]"
 ```
 
-Logga in med den användardefinierade identiteten för en virtuell dator och resurs-ID: t för tjänstens identitet:
+Logga in med hjälp av den användar tilldelade identiteten för en virtuell dator och ett resurs-ID för tjänstidentiteten:
  
 ```azcopy
 azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/resourcegroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myID"
 ```
 
-Logga in som tjänstens huvud namn genom att använda en klient hemlighet: ange miljövariabeln AZCOPY_SPA_CLIENT_SECRET till klient hemligheten för den hemliga autentiseringen för tjänstens huvud namn.
+Logga in som ett huvudnamn för tjänsten med hjälp av en klienthemlighet: Ange miljövariabeln som AZCOPY_SPA_CLIENT_SECRET till klienthemligheten för autentisering med hemligt huvudnamn för tjänsten.
 
 ```azcopy
 azcopy login --service-principal --application-id <your service principal's application ID>
 ```
 
-Logga in som tjänstens huvud namn genom att använda ett certifikat och dess lösen ord:
+Logga in som ett huvudnamn för tjänsten med hjälp av ett certifikat och dess lösenord:
 
-Ange miljövariabeln AZCOPY_SPA_CERT_PASSWORD till certifikatets lösen ord för cert-baserad tjänstens huvud namns-auth:
+Ange miljövariabeln AZCOPY_SPA_CERT_PASSWORD certifikatets lösenord för certifikatbaserad autentisering av tjänstens huvudnamn:
 
 ```azcopy
 azcopy login --service-principal --certificate-path /path/to/my/cert --application-id <your service principal's application ID>
 ```
 
-Behandla `/path/to/my/cert` som en sökväg till en PEM-eller PKCS12-fil. AzCopy når inte till system certifikat arkivet för att hämta ditt certifikat.
+Behandla `/path/to/my/cert` som en sökväg till en PEM- eller PKCS12-fil. AzCopy når inte systemcertifikatarkivet för att hämta certifikatet.
 
-`--certificate-path` är obligatoriskt när du gör en cert-baserad tjänstens huvud namns-auth.
+`--certificate-path` är obligatoriskt när du utför certifikatbaserad autentisering av tjänstens huvudnamn.
 
 ## <a name="options"></a>Alternativ
 
-**--AAD-slutpunkt-** sträng som Azure Active Directory slut punkten som ska användas. Standardvärdet ( https://login.microsoftonline.com) är korrekt för det globala Azure-molnet. Ange den här parametern vid autentisering i ett nationellt moln. Krävs inte för Hanterad tjänstidentitet.
+**--aad-endpoint string** Den Azure Active Directory slutpunkt som ska användas. Standardvärdet ( https://login.microsoftonline.com) är korrekt för det globala Azure-molnet. Ange den här parametern vid autentisering i ett nationellt moln. Krävs inte för hanterad tjänstidentitet.
 
-**--program-ID** sträng program-ID för användar tilldelad identitet. Krävs för tjänstens huvud namns autentisering.
+**--application-id string** Program-ID för användar-tilldelad identitet. Krävs för autentisering av tjänstens huvudnamn.
 
-**--** sökväg till certifikat Sök väg till certifikat för SPN-autentisering. Krävs för certifikatbaserad tjänstens huvud namns-auth.
+**--certificate-path string** Sökväg till certifikat för SPN-autentisering. Krävs för certifikatbaserad autentisering av tjänstens huvudnamn.
 
-**--Hjälp**   för `azcopy login` kommandot.
+**--help**   help for the `azcopy login` command.
 
-**--identitet**   Logga in med den virtuella datorns identitet, även kallat hanterad tjänst identitet (MSI).
+**--identity**   Logga in med den virtuella datorns identitet, även kallat hanterad tjänstidentitet (MSI).
 
-**--Identity-Client-ID** sträng klient-ID för användar tilldelad identitet.
+**--identity-client-id string** Klient-ID för användar-tilldelad identitet.
 
-**--identitet-objekt-ID** sträng objekt-ID för användardefinierad identitet.
+**--identity-object-id string** Object ID of user-assigned identity.
 
-**--identitet-resurs-ID** sträng resurs-ID för användar tilldelad identitet.
+**--identity-resource-id string** Resource ID of user-assigned identity.
 
-**--tjänst-huvud konto**   Logga in via tjänstens huvud namn (SPN) genom att använda ett certifikat eller en hemlighet. Klient hemligheten eller certifikat lösen ordet måste placeras i lämplig miljö variabel. Skriv AzCopy-kuvert för att se namn och beskrivningar för miljövariabler.
+**--service-principal**   Logga in via tjänstens huvudnamn (SPN) med hjälp av ett certifikat eller en hemlighet. Klienthemligheten eller certifikatlösenordet måste placeras i lämplig miljövariabel. Skriv AzCopy env för att se namn och beskrivningar av miljövariabler.
 
-**--ID för klient organisation** Azure Active Directory klient-ID som ska användas för interaktiv inloggning i OAuth-enhet.
+**--tenant-id string** Den här Azure Active Directory klientorganisations-ID som ska användas för interaktiv inloggning för OAuth-enhet.
 
 ## <a name="options-inherited-from-parent-commands"></a>Alternativ som ärvts från överordnade kommandon
 
 |Alternativ|Beskrivning|
 |---|---|
-|--Cap-Mbit/s Float|CAPS överföringshastigheten i megabit per sekund. Indata genom strömning kan variera något från höljet. Om det här alternativet är inställt på noll, eller utelämnas, är data flödet inte något tak.|
-|--typ sträng för utdata|Formatet på kommandots utdata. Alternativen är: text, JSON. Standardvärdet är "text".|
-|--sträng för betrodd-Microsoft-suffix   |Anger ytterligare domänsuffix där Azure Active Directory inloggnings-token kan skickas.  Standardvärdet är '*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. De som anges här läggs till i standardvärdet. För säkerhet ska du bara placeras Microsoft Azure domäner här. Avgränsa flera poster med semikolon.|
+|--cap-mbps float|Kapslar överföringshastigheten i megabit per sekund. Dataflödet för ögonblick kan variera något från taket. Om det här alternativet är inställt på noll, eller om det utelämnas, är dataflödet inte begränsat.|
+|--output-type string|Format för kommandots utdata. Alternativen är: text, json. Standardvärdet är "text".|
+|--trusted-microsoft-suffixes string   |Anger ytterligare domänsuffix där Azure Active Directory inloggningstoken kan skickas.  Standardvärdet är *.core.windows.net.* core.chinacloudapi.cn; *.core.cloudapi.de;*. core.usgovcloudapi.net". Alla som visas här läggs till i standardinställningarna. Av säkerhetsskäl bör du bara placera Microsoft Azure här. Avgränsa flera poster med semikolon.|
 
 ## <a name="see-also"></a>Se även
 
-- [AzCopy](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

@@ -1,20 +1,22 @@
 ---
-title: 'Snabb start: skapa en Azure DNS zon och post-Azure PowerShell'
+title: 'Snabbstart: Skapa en Azure DNS zon och post – Azure PowerShell'
 titleSuffix: Azure DNS
 description: Läs om hur du skapar en DNS-zon och en DNS-post i Azure DNS. Detta är en stegvis snabbstart om hur du skapar och hanterar din första DNS-zon och DNS-post med Azure PowerShell.
 services: dns
 author: rohinkoul
-ms.service: dns
-ms.topic: quickstart
-ms.date: 10/20/2020
 ms.author: rohink
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f2563c33d02490732f73fcf9d1a78f548ec2d3e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/20/2020
+ms.topic: quickstart
+ms.service: dns
+ms.custom:
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: 9c457b435ca17ce9dc86e1a83a4d1a56d9623b17
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92282216"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537885"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Snabbstart: Skapa en Azure DNS-zon och post med Azure PowerShell
 
@@ -28,8 +30,8 @@ Azure DNS stöder även skapandet av privata domäner. Stegvisa instruktioner f�
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Azure PowerShell installerat lokalt eller Azure Cloud Shell
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Azure PowerShell lokalt eller Azure Cloud Shell
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -43,7 +45,7 @@ New-AzResourceGroup -name MyResourceGroup -location "eastus"
 
 ## <a name="create-a-dns-zone"></a>Skapa en DNS-zon
 
-En DNS-zon skapas med hjälp av cmdleten `New-AzDnsZone`. I följande exempel skapas en DNS-zon med namnet *contoso.xyz* i resurs gruppen med namnet *MyResourceGroup*. Använd exemplet när du vill skapa en DNS-zon, och ersätt värdena med dina egna.
+En DNS-zon skapas med hjälp av cmdleten `New-AzDnsZone`. I följande exempel skapas en DNS-zon *med namnet contoso.xyz* i resursgruppen med namnet *MyResourceGroup*. Använd exemplet när du vill skapa en DNS-zon, och ersätt värdena med dina egna.
 
 ```powershell
 New-AzDnsZone -Name contoso.xyz -ResourceGroupName MyResourceGroup
@@ -51,7 +53,7 @@ New-AzDnsZone -Name contoso.xyz -ResourceGroupName MyResourceGroup
 
 ## <a name="create-a-dns-record"></a>Skapa en DNS-post
 
-Du skapar postuppsättningar med hjälp av cmdleten `New-AzDnsRecordSet`. I följande exempel skapas en post med det relativa namnet "www" i DNS-zonen "contoso.xyz" i resurs gruppen "MyResourceGroup". Det fullständigt kvalificerade namnet på post uppsättningen är "www.contoso.xyz". Post typen är "A", med IP-adressen "10.10.10.10" och TTL är 3600 sekunder.
+Du skapar postuppsättningar med hjälp av cmdleten `New-AzDnsRecordSet`. I följande exempel skapas en post med det relativa namnet "www" i DNS-zonen "contoso.xyz", i resursgruppen "MyResourceGroup". Det fullständigt kvalificerade namnet på postuppsättningen är "www.contoso.xyz". Posttypen är "A" med IP-adressen "10.10.10.10" och TTL-värdet är 3 600 sekunder.
 
 ```powershell
 New-AzDnsRecordSet -Name www -RecordType A -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "10.10.10.10")
@@ -71,13 +73,13 @@ Nu när du har en DNS-testzon med en ”A”-testpost kan du testa namnmatchning
 
 **Så här testar du DNS-namnmatchning:**
 
-1. Kör följande cmdlet för att hämta listan över namnservrar för zonen:
+1. Kör följande cmdlet för att hämta listan över namnservrar för din zon:
 
    ```azurepowershell
    Get-AzDnsRecordSet -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup -RecordType ns
    ```
 
-1. Kopiera ett av namn server namnen från utdata från föregående steg.
+1. Kopiera ett av namnservernamnen från utdata från föregående steg.
 
 1. Öppna en kommandotolk och kör följande kommando:
 
@@ -93,9 +95,9 @@ Nu när du har en DNS-testzon med en ”A”-testpost kan du testa namnmatchning
 
    Du bör se något som liknar följande skärm:
 
-   ![Skärm bild som visar ett kommando tolks fönster med ett n s lookup-kommando och-värden för Server, adress, namn och adress.](media/dns-getstarted-portal/nslookup.PNG)
+   ![Skärmbild som visar ett kommandotolkfönster med ett n s uppslagskommando och värden för Server, Adress, Namn och Adress.](media/dns-getstarted-portal/nslookup.PNG)
 
-Det värdnamn som **www- \. contoso.xyz** matchar **10.10.10.10**, precis som du konfigurerade det. Resultatet verifierar att namnmatchningen fungerar korrekt.
+Värdnamnet **www \. contoso.xyz** matchas till **10.10.10.10**, precis som du konfigurerade det. Resultatet verifierar att namnmatchningen fungerar korrekt.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
@@ -111,4 +113,3 @@ Nu när du har skapat din första DNS-zon och DNS-post med hjälp av Azure Power
 
 > [!div class="nextstepaction"]
 > [Skapa DNS-poster för en webbapp i en anpassad domän](./dns-web-sites-custom-domain.md)
-
