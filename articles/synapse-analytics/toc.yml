@@ -21,13 +21,13 @@ items:
       - name: 1 Skapa en Synapse-arbetsyta
         href: get-started-create-workspace.md
         displayName: 'get, started'
-      - name: 2 analysera med Server lös SQL-pool
+      - name: 2 Analysera med serverlös SQL-pool
         href: get-started-analyze-sql-on-demand.md
         displayName: 'get, started'
-      - name: 3 analysera med hjälp av en beständigt Spark-pool
+      - name: 3 Analysera med hjälp av serverlös Spark-pool
         href: get-started-analyze-spark.md
         displayName: 'get, started'
-      - name: 4 analysera med en dedikerad SQL-pool
+      - name: 4 Analysera med hjälp av en dedikerad SQL-pool
         href: get-started-analyze-sql-pool.md
         displayName: 'get, started'
       - name: 5 Analysera data i ett lagringskonto
@@ -45,7 +45,7 @@ items:
       - name: 9 Utforska kunskapscentret
         href: get-started-knowledge-center.md
         displayName: 'get, started'
-      - name: 10 lägga till en administratör
+      - name: 10 Lägg till en administratör
         href: get-started-add-admin.md
         displayName: 'get, started'
   - name: Arbetsyta
@@ -69,7 +69,7 @@ items:
           - name: Länka en Power BI-arbetsyta
             href: quickstart-power-bi.md
             displayName: quickstart
-          - name: Läs ADLS Gen2 till Pandas dataframe
+          - name: Läsa ADLS Gen2 till Pandas-dataram
             href: quickstart-read-from-gen2-to-pandas-dataframe.md
             displayName: quickstart
           - name: Anslut till Azure Data Explorer
@@ -105,7 +105,7 @@ items:
             href: ./cicd/continuous-integration-deployment.md
           - name: Säkerhet
             items:
-              - name: Säkerhets kontroller per Azure Policy
+              - name: Säkerhetskontroller från Azure Policy
                 href: ./security-controls-policy.md
               - name: Kryptering
                 href: ./security/workspaces-encryption.md
@@ -124,7 +124,7 @@ items:
                     href: ./security/workspace-data-exfiltration-protection.md
                   - name: Synapse-arbetsyta med privata länkhubbar
                     href: ./security/synapse-private-link-hubs.md
-                  - name: Anslut till ett skyddat lagrings konto
+                  - name: Ansluta till ett skyddat lagringskonto
                     href: ./security/connect-to-a-secure-storage-account.md
               - name: Autentisering och vidarekoppling
                 items:
@@ -354,9 +354,9 @@ items:
                     href: sql/develop-stored-procedures.md
                   - name: Transaktioner
                     items:
-                      - name: Dedikerade transaktioner i SQL-pooler
+                      - name: Transaktioner för dedikerad SQL-pool
                         href: sql/develop-transactions.md
-                      - name: Dedikerade metod tips för SQL-pool
+                      - name: Metodtips för transaktioner för dedikerad SQL-pool
                         displayname: 'Transaction, best, practices'
                         href: sql/develop-transaction-best-practices.md
                   - name: Användardefinierade scheman
@@ -564,17 +564,17 @@ items:
             href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           - name: Skicka Spark-jobbdefinitioner
             href: ./spark/apache-spark-job-definitions.md
-          - name: Anslut och övervaka Azure Synapse Spark-programnivå mått
+          - name: Ansluta och övervaka Azure Synapse mått på Spark-programnivå
             href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
-          - name: Övervaka Apache Spark mått på program nivå med Prometheus och Grafana
+          - name: Övervaka Apache Spark mått på programnivå med Prometheus och Grafana
             href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
-          - name: Använd Azure Log Analytics för att samla in och visualisera mått och loggar (för hands version)
+          - name: Använda Azure Log Analytics för att samla in och visualisera mått och loggar (förhandsversion)
             href: ./spark/apache-spark-azure-log-analytics.md
       - name: Begrepp
         items:
           - name: Apache Spark
             href: ./spark/apache-spark-concepts.md
-          - name: Konfigurationer för Apache Spark pool
+          - name: Apache Spark poolkonfigurationer
             href: ./spark/apache-spark-pool-configurations.md
           - name: Data Lake
             href: ./spark/apache-spark-what-is-delta-lake.md
@@ -596,11 +596,11 @@ items:
             href: ./spark/apache-spark-delta-lake-overview.md
           - name: Hantera paket
             items:
-              - name: Hantera python-paket
+              - name: Hantera Python-paket
                 href: ./spark/apache-spark-manage-python-packages.md
               - name: Hantera Scala-paket
                 href: ./spark/apache-spark-manage-scala-packages.md
-              - name: Felsöka installations fel för python-paket
+              - name: Felsöka installationsfel för Python-paket
                 href: ./spark/apache-spark-troubleshoot-library-errors.md
               - name: Skapa en privat Conda-kanal
                 href: ./spark/apache-spark-custom-conda-channel.md
@@ -1148,7 +1148,7 @@ items:
             href: ./machine-learning/tutorial-cognitive-services-sentiment.md
           - name: Avvikelseidentifiering med Cognitive Services
             href: ./machine-learning/tutorial-cognitive-services-anomaly.md
-          - name: Bygg maskin inlärnings program med Microsoft Machine Learning för Apache Spark (för hands version)
+          - name: Skapa maskininlärningsprogram med Microsoft Machine Learning for Apache Spark (förhandsversion)
             href: ./machine-learning/tutorial-build-applications-use-mmlspark.md
   - name: Data Catalog och styrning
     items:

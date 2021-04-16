@@ -1,257 +1,261 @@
 ---
-title: Aviserings typer och beskrivningar
-description: Granska Defender för IoT-aviserings beskrivningar.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
+title: Aviseringstyper och beskrivningar
+description: Läs beskrivningarna för Defender for IoT-aviseringar.
 ms.date: 4/8/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 9ef7aa388d0f25adcafec1cb4a5b38dcfb8597a1
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 483563b53a5849b0354986269568bc42b9124cc2
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210473"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478003"
 ---
-# <a name="alert-types-and-descriptions"></a>Aviserings typer och beskrivningar
+# <a name="alert-types-and-descriptions"></a>Aviseringstyper och beskrivningar
 
-I den här artikeln beskrivs alla aviserings typer som kan genereras från Defender för IoT-motorer. Aviseringar visas i fönstret aviseringar som låter dig hantera aviserings händelsen. 
+I den här artikeln beskrivs alla aviseringstyper som kan genereras från Defender for IoT-motorerna. Aviseringar visas i fönstret Aviseringar, där du kan hantera aviseringshändelsen. 
 
-## <a name="policy-engine-alerts"></a>Aviseringar för princip motor
+## <a name="policy-engine-alerts"></a>Principmotoraviseringar
 
-Princip motor aviseringar beskriver avvikelser från det inlärt nätverks beteendet.
+Principmotoraviseringar beskriver identifierade avvikelser från inlärt baslinjebeteende.
 
 | Rubrik  | Beskrivning | Allvarlighetsgrad |
 |--|--|--|
-| Onormal användning av MAC-adresser | En ny käll enhet identifierades i nätverket men har inte auktoriserats. | Mindre |
-| Beckhoff program vara har ändrats | Inbyggd program vara har uppdaterats på en käll enhet. Detta kan vara en behörig aktivitet, till exempel ett planerat underhålls förfarande. | Större |
-| Databas inloggningen misslyckades | Ett misslyckat inloggnings försök upptäcktes från en käll enhet till en mål server. Detta kan bero på mänskligt fel, men det kan också tyda på ett skadligt försök att kompromettera servern eller data på den. | Större |
-| Emerson ROC-versionen av inbyggd program vara har ändrats | Inbyggd program vara har uppdaterats på en käll enhet. Detta kan vara en behörig aktivitet, till exempel ett planerat underhålls förfarande. | Större |
-| Extern adress i nätverket som kommunicerats med Internet | En käll enhet som definieras som en del av nätverket kommunicerar med Internet adresser. Källan har inte behörighet att kommunicera med Internet adresser. | Kritiskt |
-| Fält enheten identifierades utan förvarning | En ny käll enhet identifierades i nätverket men har inte auktoriserats. | Större |
-| Ändring av inbyggd program vara upptäcktes | Inbyggd program vara har uppdaterats på en käll enhet. Detta kan vara en behörig aktivitet, till exempel ett planerat underhålls förfarande. | Större |
-| Versionen av inbyggd program vara har ändrats | Inbyggd program vara har uppdaterats på en käll enhet. Detta kan vara en behörig aktivitet, till exempel ett planerat underhålls förfarande. | Större |
-| Foxboro I/A ej behörig åtgärd | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| FTP-inloggningen misslyckades | Ett misslyckat inloggnings försök upptäcktes från en käll enhet till en mål server. Detta kan bero på mänskligt fel, men det kan också tyda på ett skadligt försök att kompromettera servern eller data på den. | Större |
-| Funktions kod utlöst otillåtet undantag | En käll enhet (slav) returnerade ett undantag till en mål enhet (Master). | Större |
-| Typ inställningar för GOOSE-meddelande | Meddelandet (identifieras av protokoll-ID) inställningarna har ändrats på en käll enhet. | Varning |
-| Honeywell-versionen av inbyggd program vara har ändrats | Inbyggd program vara har uppdaterats på en käll enhet. Detta kan vara en behörig aktivitet, till exempel ett planerat underhålls förfarande. | Större |
-| Otillåten HTTP-kommunikation | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Internet åtkomst har identifierats | En käll enhet som definieras som en del av nätverket kommunicerar med Internet adresser. Källan har inte behörighet att kommunicera med Internet adresser. | Större |
-| Mitsubishi-versionen av inbyggd program vara har ändrats | Inbyggd program vara har uppdaterats på en käll enhet. Detta kan vara en behörig aktivitet, till exempel ett planerat underhålls förfarande. | Större |
-| Överträdelse av Modbus-adressintervall | En huvud enhet begärde åtkomst till en ny slav minnes adress. | Större |
-| Modbus-versionen av inbyggd program vara har ändrats | Inbyggd program vara har uppdaterats på en käll enhet. Detta kan vara en behörig aktivitet, till exempel ett planerat underhålls förfarande. | Större |
-| Ny aktivitet identifierad – CIP-klass | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet identifierad – CIP Class service | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet identifierad-CIP PCCC-kommando | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet identifierad – CIP symbol | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet identifierad – EtherNet/IP-I/O-anslutning | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet identifierad – kommandot EtherNet/IP-protokoll | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet identifierad – GSM-meddelande kod | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet identifierad-LonTalk kommando koder | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny port identifiering | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Varning |
-| Ny aktivitet identifierad-LonTalk-nätverks variabel | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet identifierad – Ovation data förfrågan | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet identifierad – Läs-och skriv kommando (AMS index Group) | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet identifierad – Läs/skriv-kommando (AMS index offset) | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet upptäckt – ej behörig DeltaV meddelande typ | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet upptäckt – otillåten DeltaV ROC-åtgärd | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet identifierad – otillåten RPC-meddelande typ | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet upptäckt – otillåtet RPC-procedur anrop | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet identifierad – använder AMS-protokoll kommando | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet identifierad – använder Siemens SICAM-kommando | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet identifierad – använder Suitelink-protokoll kommando | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet identifierad – använder Suitelink-protokoll-sessioner | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny aktivitet identifierad-använder kommandot Yokogawa VNetIP | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Ny till gång identifierad | En ny käll enhet identifierades i nätverket men har inte auktoriserats. | Större |
-| Ny konfiguration av LLDP-enhet | En ny käll enhet identifierades i nätverket men har inte auktoriserats. | Större |
-| Ny port identifiering | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Varning |
-| Omron fenor obehörigt kommando | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| S7 plus den inbyggda program varan har ändrats | Inbyggd program vara har uppdaterats på en käll enhet. Detta kan vara en behörig aktivitet, till exempel ett planerat underhålls förfarande. | Större |
-| Exempel på meddelande typs inställningar för exempel värden | Meddelandet (identifieras av protokoll-ID) inställningarna har ändrats på en käll enhet. | Varning |
-| Misstanke om olaglig integritets genomsökning | En sökning upptäcktes på en DNP3-datakälla (Station Station). Den här genomsökningen har inte auktoriserats som inlärd trafik i nätverket. | Större |
-| Toshiba dator länk, kommando | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Mindre |
-| Otillåten ABB Totalflow-fil åtgärd | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Otillåten ABB Totalflow-register åtgärd | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Obehörig åtkomst till Siemens S7 data block | En käll enhet försökte få åtkomst till en resurs på en annan enhet. Ett åtkomst försök till den här resursen mellan dessa två enheter har inte auktoriserats som inlärd trafik i nätverket. | Varning |
-| Obehörig åtkomst till Siemens S7 plus-objekt | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Obehörig åtkomst till Wonder-tagg | En käll enhet försökte få åtkomst till en resurs på en annan enhet. Ett åtkomst försök till den här resursen mellan dessa två enheter har inte auktoriserats som inlärd trafik i nätverket. | Större |
-| Obehörig åtkomst till BACNet-objekt | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Obehörig BACNet-väg | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Obehörig databas inloggning | Ett inloggnings försök mellan en käll klient och en mål server upptäcktes. Kommunikation mellan dessa enheter har inte auktoriserats som inlärd trafik i nätverket. | Större |
-| Otillåten databas åtgärd | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Otillåten Emerson ROC-åtgärd | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Obehörig GE SRTP fil åtkomst | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Otillåtet GE SRTP-protokoll kommando | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Obehörig GE SRTP system minnes åtgärd | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Otillåten HTTP-aktivitet | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Otillåten HTTP-Server | Ett obehörigt program upptäcktes på en käll enhet. Programmet har inte auktoriserats som ett lärt program i nätverket. | Större |
-| Otillåten HTTP SOAP-åtgärd | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Obehörig HTTP-användaragent | Ett obehörigt program upptäcktes på en käll enhet. Programmet har inte auktoriserats som ett lärt program i nätverket. | Större |
-| Obehörig Internet anslutning upptäckt | En käll enhet som definieras som en del av nätverket kommunicerar med Internet adresser. Källan har inte behörighet att kommunicera med Internet adresser. | Kritiskt |
-| Otillåtet Mitsubishi MELSEC-kommando | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Obehörig åtkomst till MMS-program | En käll enhet försökte få åtkomst till en resurs på en annan enhet. Ett åtkomst försök till den här resursen mellan dessa två enheter har inte auktoriserats som inlärd trafik i nätverket. | Större |
-| Obehörig MMS-tjänst | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Obehörig multicast/broadcast-anslutning | En multicast/broadcast-anslutning upptäcktes mellan en käll enhet och andra enheter. Multicast/broadcast-kommunikation är inte auktoriserad. | Kritiskt |
-| Otillåten namn fråga | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Obehörig OPC UA-aktivitet | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Obehörig OPC UA-begäran/svar | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Otillåten åtgärd upptäcktes av en användardefinierad regel | Trafiken upptäcktes mellan två enheter. Den här aktiviteten är inte tillåten baserat på en anpassad aviserings regel som definierats av en användare. | Större |
-| Otillåten PLC-konfiguration läsa | Käll enheten är inte definierad som en programmerings enhet men utförde en Läs-/skriv åtgärd på en mål styrenhet. Programmerings ändringar bör bara utföras av programmerings enheter. Ett programmerings program kan ha installerats på den här enheten. | Varning |
-| Otillåten PLC-konfiguration skrivning | Käll enheten skickade ett kommando för att läsa/skriva programmet för en mål kontroll. Den här aktiviteten visades inte tidigare. | Större |
-| Obehörigt PLC-program uppladdning | Käll enheten skickade ett kommando för att läsa/skriva programmet för en mål kontroll. Den här aktiviteten visades inte tidigare. | Större |
-| Otillåten PLC-programmering | Käll enheten är inte definierad som en programmerings enhet men utförde en Läs-/skriv åtgärd på en mål styrenhet. Programmerings ändringar bör bara utföras av programmerings enheter. Ett programmerings program kan ha installerats på den här enheten. | Kritiskt |
-| Otillåten typ av ramtyp | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Otillåtet SAIA S-Bus-kommando | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Otillåten Siemens S7-körning av kontroll funktion | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Otillåten Siemens S7-körning av användardefinierad funktion | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Obehörig Siemens-S7 plus åtkomst till block | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Otillåten Siemens S7 plus-åtgärd | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Obehörig SMB-inloggning | Ett inloggnings försök mellan en käll klient och en mål server upptäcktes. Kommunikation mellan dessa enheter har inte auktoriserats som inlärd trafik i nätverket. | Större |
-| Otillåten SNMP-åtgärd | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Obehörig SSH-åtkomst | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Otillåten Windows-process | Ett obehörigt program upptäcktes på en käll enhet. Programmet har inte auktoriserats som ett lärt program i nätverket. | Större |
-| Obehörig Windows-tjänst | Ett obehörigt program upptäcktes på en käll enhet. Programmet har inte auktoriserats som ett lärt program i nätverket. | Större |
-| Otillåten åtgärd upptäcktes av en användardefinierad regel | Nya trafik parametrar har identifierats. Denna parameter kombination bryter mot en användardefinierad regel | Större |
-| Otillåten Modbus Schneider Electrical extension | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Otillåten användning av ASDU-typer | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Otillåten användning av DNP3-funktions kod | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
-| Otillåten användning av intern indikation (IIN) | En DNP3 käll enhet (överordnad) rapporterade en intern indikation (IIN) som inte har auktoriserats som inlärd trafik i nätverket. | Större |
-| Otillåten användning av Modbus-funktions kod | Nya trafik parametrar har identifierats. Denna parameter kombination har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är inte tillåten. | Större |
+| Onormal användning av MAC-adresser | En ny källenhet har identifierats i nätverket men har inte auktoriserats. | Mindre |
+| – Programvara har ändrats | Den inbyggda programvaran har uppdaterats på en källenhet. Detta kan vara auktoriserad aktivitet, till exempel en procedur för planerat underhåll. | Större |
+| Databasinloggningen misslyckades | Ett misslyckat inloggningsförsök har identifierats från en källenhet till en målserver. Detta kan bero på mänskliga fel, men kan också tyda på ett skadligt försök att kompromettera servern eller data på den. | Större |
+| Emerson ROC Firmware-versionen har ändrats | Den inbyggda programvaran har uppdaterats på en källenhet. Detta kan vara auktoriserad aktivitet, till exempel en procedur för planerat underhåll. | Större |
+| Extern adress i nätverket som kommunicerar med Internet | En källenhet som definieras som en del av nätverket kommunicerar med Internetadresser. Källan har inte behörighet att kommunicera med Internetadresser. | Kritiskt |
+| Fältenhet identifierades oväntat | En ny källenhet har identifierats i nätverket men har inte auktoriserats. | Större |
+| Ändring av inbyggd programvara har identifierats | Den inbyggda programvaran har uppdaterats på en källenhet. Detta kan vara auktoriserad aktivitet, till exempel en procedur för planerat underhåll. | Större |
+| Versionen för inbyggd programvara har ändrats | Den inbyggda programvaran har uppdaterats på en källenhet. Detta kan vara auktoriserad aktivitet, till exempel en procedur för planerat underhåll. | Större |
+| Foxboro I/A-obehörig åtgärd | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| FTP-inloggningen misslyckades | Ett misslyckat inloggningsförsök har identifierats från en källenhet till en målserver. Detta kan bero på mänskliga fel, men kan också tyda på ett skadligt försök att kompromettera servern eller data på den. | Större |
+| Funktionskoden utlöste ett obehörigt undantag | En källenhet (undermål) returnerade ett undantag till en målenhet (huvudenhet). | Större |
+| INSTÄLLNINGAR FÖR MEDDELANDETYP FÖR MEDDELANDETYP | Meddelandeinställningarna (identifierades av protokoll-ID) har ändrats på en källenhet. | Varning |
+| Honeywells version av inbyggd programvara har ändrats | Den inbyggda programvaran har uppdaterats på en källenhet. Detta kan vara auktoriserad aktivitet, till exempel en procedur för planerat underhåll. | Större |
+| Ogiltig HTTP-kommunikation | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Internetåtkomst har identifierats | En källenhet som definieras som en del av nätverket kommunicerar med Internetadresser. Källan har inte behörighet att kommunicera med Internetadresser. | Större |
+| Firmware Firmware-versionen har ändrats | Den inbyggda programvaran har uppdaterats på en källenhet. Detta kan vara auktoriserad aktivitet, till exempel en procedur för planerat underhåll. | Större |
+| Överträdelse av Modbus-adressintervall | En huvudenhet begärde åtkomst till en ny minnesadress till en underström. | Större |
+| Versionen för den inbyggda Modbus-programvaran har ändrats | Den inbyggda programvaran har uppdaterats på en källenhet. Detta kan vara auktoriserad aktivitet, till exempel en procedur för planerat underhåll. | Större |
+| Ny aktivitet har identifierats – CIP-klass | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – CIP-klasstjänst | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – CIP PCCC-kommando | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – CIP-symbol | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – EtherNet/IP I/O-anslutning | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – EtherNet/IP-protokollkommando | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – GSM-meddelandekod | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – LonTalk-kommandokoder | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny portidentifiering | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Varning |
+| Ny aktivitet har identifierats – nätverksvariabeln LonTalk | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – Ovation Data Request | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – läs-/skrivkommando (AMS-indexgrupp) | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – läs-/skrivkommando (AMS-indexförskjutning) | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – Otillåten DeltaV-meddelandetyp | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – Obehörig DeltaV ROC-åtgärd | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – Obehörig RPC-meddelandetyp | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – Anrop av obehörig RPC-procedur | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – med hjälp av AMS-protokollkommandot | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – med kommandot SiCAM i Sicam | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – kommandot Suitelink Protocol används | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – använda Suitelink-protokollsessioner | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny aktivitet har identifierats – Med Yokogawa VNetIP-kommando | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ny tillgång har identifierats | En ny källenhet har identifierats i nätverket men har inte auktoriserats. | Större |
+| Ny LLDP-enhetskonfiguration | En ny källenhet har identifierats i nätverket men har inte auktoriserats. | Större |
+| Ny portidentifiering | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Varning |
+| Kommandot Omron FINS Unauthorized | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| S7 Plus FIRMWARE Inbyggd programvara har ändrats | Den inbyggda programvaran har uppdaterats på en källenhet. Detta kan vara auktoriserad aktivitet, till exempel en procedur för planerat underhåll. | Större |
+| Inställningar för meddelandetyp för exempelvärden | Meddelandeinställningarna (identifierades av protokoll-ID) har ändrats på en källenhet. | Varning |
+| Misstänkt ogiltig integritetsskanning | En genomsökning upptäcktes på en DNP3-källenhet (utstation). Den här genomsökningen auktoriserades inte som inlärd trafik i nätverket. | Större |
+| Toshiba Computer Link Unauthorized Command | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Mindre |
+| Obehörig ABB Totalflow-filåtgärd | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Otillåten ABB-åtgärd för totalflödesregistering | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig åtkomst till Datacenter S7 Data Block | En källenhet försökte komma åt en resurs på en annan enhet. Ett åtkomstförsök till den här resursen mellan dessa två enheter har inte godkänts som inlärd trafik i nätverket. | Varning |
+| Obehörig åtkomst till Siemens S7 Plus-objekt | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig åtkomst till Wonderware-tagg | En källenhet försökte komma åt en resurs på en annan enhet. Ett åtkomstförsök till den här resursen mellan dessa två enheter har inte godkänts som inlärd trafik i nätverket. | Större |
+| Obehörig åtkomst till BACNet-objekt | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig BACNet-väg | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig databasinloggning | Ett inloggningsförsök mellan en källklient och målserver har identifierats. Kommunikationen mellan dessa enheter har inte auktoriserats som inlärd trafik i nätverket. | Större |
+| Obehörig databasåtgärd | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig Emerson ROC-åtgärd | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig GE SRTP-filåtkomst | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Unauthorized GE SRTP Protocol Command | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig GE SRTP-systemminnesåtgärd | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig HTTP-aktivitet | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig HTTP-server | Ett obehörigt program har identifierats på en källenhet. Programmet har inte auktoriserats som ett inlärt program i nätverket. | Större |
+| Obehörig HTTP SOAP-åtgärd | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig HTTP-användaragent | Ett obehörigt program har identifierats på en källenhet. Programmet har inte auktoriserats som ett inlärt program i nätverket. | Större |
+| Obehörig Internetanslutning har identifierats | En källenhet som definieras som en del av nätverket kommunicerar med Internetadresser. Källan har inte behörighet att kommunicera med Internetadresser. | Kritiskt |
+| Obehörigt Mel MELSEC-kommando | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig MMS-programåtkomst | En källenhet försökte komma åt en resurs på en annan enhet. Ett åtkomstförsök till den här resursen mellan dessa två enheter har inte auktoriserats som inlärd trafik i nätverket. | Större |
+| Obehörig MMS-tjänst | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig multicast-/broadcast-anslutning | En Multicast/Broadcast-anslutning har identifierats mellan en källenhet och andra enheter. Multicast-/broadcast-kommunikation är inte auktoriserad. | Kritiskt |
+| Fråga om obehörigt namn | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig OPC UA-aktivitet | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig OPC UA-begäran/-svar | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig åtgärd upptäcktes av en användardefinierad regel | Trafik har identifierats mellan två enheter. Den här aktiviteten är obehörig baserat på en anpassad aviseringsregel som definierats av en användare. | Större |
+| Obehöriga AV CONFIGURATION-konfigurationsläsningar | Källenheten definieras inte som en programmeringsenhet utan utför en läs-/skrivåtgärd på en målstyrenhet. Programmeringsändringar bör endast utföras av programmeringsenheter. Ett programmeringsprogram kan ha installerats på den här enheten. | Varning |
+| Obehörig SKRIVNING av CONFIGURATION-konfiguration | Källenheten skickade ett kommando för att läsa/skriva programmet för en målstyrenhet. Den här aktiviteten har inte setts tidigare. | Större |
+| Obehörig UPLOAD-programuppladdning | Källenheten skickade ett kommando för att läsa/skriva programmet för en målstyrenhet. Den här aktiviteten har inte setts tidigare. | Större |
+| Obehörig PROGRAMMERING | Källenheten definieras inte som en programmeringsenhet utan utför en läs-/skrivåtgärd på en målstyrenhet. Programmeringsändringar bör endast utföras av programmeringsenheter. Ett programmeringsprogram kan ha installerats på den här enheten. | Kritiskt |
+| Otillåten Profinet-ramtyp | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Ej auktoriserad SAIA S-Bus-kommando | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Unauthorized Siemens S7 Execution of Control Function | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehöriga Siemens S7-körning av användardefinierad funktion | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehöriga Siemens S7 Plus Block Access | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehöriga Siemens S7 Plus-åtgärd | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig SMB-inloggning | Ett inloggningsförsök mellan en källklient och målserver har identifierats. Kommunikationen mellan dessa enheter har inte auktoriserats som inlärd trafik i nätverket. | Större |
+| Obehörig SNMP-åtgärd | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig SSH-åtkomst | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obehörig Windows-process | Ett obehörigt program har identifierats på en källenhet. Programmet har inte auktoriserats som ett inlärt program i nätverket. | Större |
+| Obehörig Windows-tjänst | Ett obehörigt program har identifierats på en källenhet. Programmet har inte auktoriserats som ett inlärt program i nätverket. | Större |
+| Obehörig åtgärd upptäcktes av en användardefinierad regel | Nya trafikparametrar har identifierats. Den här parameterkombinationen bryter mot en användardefinierad regel | Större |
+| Oföränderliga Modbus Electric-tillägg | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obevakad användning av ASDU-typer | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Opåläst användning av DNP3-funktionskod | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
+| Obevakad användning av intern indikation (IIN) | En DNP3-källenhet (utstation) rapporterade en intern indikation (IIN) som inte har auktoriserats som inlärd trafik i nätverket. | Större |
+| Opåläst användning av Modbus-funktionskod | Nya trafikparametrar har identifierats. Den här parameterkombinationen har inte auktoriserats som inlärd trafik i nätverket. Följande kombination är obehörig. | Större |
 
-## <a name="anomaly-engine-alerts"></a>Avvikelse motor aviseringar
+## <a name="anomaly-engine-alerts"></a>Aviseringar om avvikelsemotor
 
-| Rubrik | Beskrivning | Allvarlighetsgrad |
-|--|--|--|
-| Onormalt undantags mönster i slav | Ett högt antal fel upptäcktes på en käll enhet. Detta kan vara resultatet av ett drifts problem. | Mindre |
-| Onormalt HTTP-huvudets längd | Käll enheten skickade ett onormalt meddelande. Detta kan tyda på ett försök att angripa mål enheten. | Kritiskt |
-| Onormalt antal parametrar i HTTP-huvud | Käll enheten skickade ett onormalt meddelande. Detta kan tyda på ett försök att angripa mål enheten. | Kritiskt |
-| Onormalt periodiskt beteende i kommunikations kanal | En ändring i frekvensen av kommunikationen mellan käll-och mål enheterna upptäcktes. | Mindre |
-| Onormal avslutning av program | Ett högt antal stopp kommandon upptäcktes på en käll enhet. Detta kan bero på ett drifts problem eller ett försök att manipulera enheten. | Större |
-| Onormal trafik bandbredd | Onormal bandbredd upptäcktes på en kanal. Bandbredden förefaller vara betydligt lägre eller högre än vad som tidigare har upptäckts. För mer information, arbeta med widgeten total bandbredd. | Varning |
-| Onormal trafik bandbredd mellan enheter | Onormal bandbredd upptäcktes på en kanal. Bandbredden förefaller vara betydligt lägre eller högre än vad som tidigare har upptäckts. För mer information, arbeta med widgeten total bandbredd. | Varning |
-| Adress genomsökning identifierad | En käll enhet identifierade genomsökning av nätverks enheter. Den här enheten har inte auktoriserats som en enhet för nätverks genomsökning. | Kritiskt |
-| Sökning efter ARP-adress identifierades | En käll enhet identifierade genomsökning av nätverks enheter med hjälp av ARP (Address Resolution Protocol). Den här enhets adressen har inte auktoriserats som giltig adress för ARP-sökning. | Kritiskt |
-| Sökning efter ARP-adress identifierades | En käll enhet identifierade genomsökning av nätverks enheter med hjälp av ARP (Address Resolution Protocol). Den här enhets adressen har inte auktoriserats som giltig adress för ARP-sökning. | Kritiskt |
-| ARP-förfalskning | En onormal mängd paket har identifierats i nätverket. Detta kan tyda på ett angrepp, till exempel en ARP-förfalskning eller ICMP-översvämmande angrepp. | Varning |
-| Alltför stora inloggnings försök | En käll enhet visade sig att utföra överdriven inloggnings försök till en mål server. Detta kan vara en brute force-attack. Servern kan komprometteras av en skadlig aktör. | Kritiskt |
-| Högt antal sessioner | En käll enhet visade sig att utföra överdriven inloggnings försök till en mål server. Detta kan vara en brute force-attack. Servern kan komprometteras av en skadlig aktör. | Kritiskt |
-| För hög omstarts takt för en station | Ett högt antal kommandon för omstart har identifierats på en käll enhet. Detta kan bero på ett drifts problem eller ett försök att manipulera enheten. | Större |
-| Alltför långa SMB-inloggningsförsök | En käll enhet visade sig att utföra överdriven inloggnings försök till en mål server. Detta kan vara en brute force-attack. Servern kan komprometteras av en skadlig aktör. | Kritiskt |
-| ICMP-översvämning | En onormal mängd paket har identifierats i nätverket. Detta kan tyda på ett angrepp, till exempel en ARP-förfalskning eller ICMP-översvämmande angrepp. | Varning |
-| Ogiltigt innehåll i HTTP-huvudet | Käll enheten initierade en ogiltig begäran. | Kritiskt |
-| Inaktiv kommunikations kanal | En kommunikations kanal mellan två enheter var inaktiv under en period då aktivitet vanligt vis visas. Detta kan tyda på att programmet som genererar den här trafiken har ändrats eller att programmet kanske inte är tillgängligt. Vi rekommenderar att du granskar konfigurationen av installerade program och kontrollerar att den är korrekt konfigurerad. | Varning |
-| Sökning efter långa varaktighets adresser upptäcktes | En käll enhet identifierade genomsökning av nätverks enheter. Den här enheten har inte auktoriserats som en enhet för nätverks genomsökning. | Kritiskt |
-| Ett försök att gissa lösen ord identifierades | En käll enhet visade sig att utföra överdriven inloggnings försök till en mål server. Detta kan vara en brute force-attack. Servern kan komprometteras av en skadlig aktör. | Kritiskt |
-| PLC-genomsökning upptäckt | En käll enhet identifierade genomsökning av nätverks enheter. Den här enheten har inte auktoriserats som en enhet för nätverks genomsökning. | Kritiskt |
-| Ports ökning identifierad | En käll enhet identifierade genomsökning av nätverks enheter. Den här enheten har inte auktoriserats som en enhet för nätverks genomsökning. | Kritiskt |
-| Oväntad meddelande längd | Käll enheten skickade ett onormalt meddelande. Detta kan tyda på ett försök att angripa mål enheten. | Kritiskt |
-| Oväntad trafik för standard port | Trafik identifierades på en enhet med hjälp av en port som är reserverad för ett annat protokoll. | Större |
-
-## <a name="protocol-violation-engine-alerts"></a>Varning om protokoll överträdelse
+Aviseringar från avvikelsemotorn beskriver identifierade avvikelser i nätverksaktiviteten.
 
 | Rubrik | Beskrivning | Allvarlighetsgrad |
 |--|--|--|
-| Överflödiga felaktiga paket i en enda session | Ett onormalt antal felaktiga paket som skickats från käll enheten till mål enheten. Detta kan tyda på felaktig kommunikation eller ett försök att ändra mål enheten. | Större |
-| Uppdatering av inbyggd programvara | En käll enhet skickade ett kommando för att uppdatera den inbyggda program varan på en mål enhet. Kontrol lera att senaste program-, konfigurations-och inbyggd uppgraderingar av inbyggd program vara har gjorts på mål enheten. | Varning |
-| Funktions koden stöds inte av utstationen | Mål enheten mottog en ogiltig begäran. | Större |
-| Otillåtet BACNet-meddelande | Käll enheten initierade en ogiltig begäran. | Större |
-| Ogiltigt anslutnings försök på Port 0 | En käll enhet försökte ansluta till mål enheten på port numret noll (0). För TCP är port 0 reserverad och kan inte användas. För UDP är porten valfritt och värdet 0 innebär ingen port. Det finns vanligt vis ingen tjänst på ett system som lyssnar på Port 0. Den här händelsen kan indikera ett försök att angripa mål enheten, eller ange att ett program har programmerats felaktigt. | Mindre |
-| Ogiltig DNP3-åtgärd | Käll enheten initierade en ogiltig begäran. | Större |
-| Ogiltig MODBUS-åtgärd (undantag utlöst av Master) | Käll enheten initierade en ogiltig begäran. | Större |
-| Ogiltig MODBUS-åtgärd (funktions kod noll) | Käll enheten initierade en ogiltig begäran. | Större |
-| Ogiltig protokoll version | Käll enheten initierade en ogiltig begäran. | Större |
-| Felaktig parameter skickades till utstationeringen | Mål enheten mottog en ogiltig begäran. | Större |
-| Initiering av en inaktuell funktions kod (initiera data) | Käll enheten initierade en ogiltig begäran. | Mindre |
-| Initiering av en föråldrad funktions kod (Spara konfiguration) | Käll enheten initierade en ogiltig begäran. | Mindre |
-| Master begärde en program lager bekräftelse | Käll enheten initierade en ogiltig begäran. | Varning |
-| Modbus-undantag | En käll enhet (slav) returnerade ett undantag till en mål enhet (Master). | Större |
-| Slaven het tog emot illegal ASDU-typ | Mål enheten mottog en ogiltig begäran. | Större |
-| Slaven het tog emot otillåten kommando orsak till överföring | Mål enheten mottog en ogiltig begäran. | Större |
-| Slaven het mottog felaktig gemensam adress | Mål enheten mottog en ogiltig begäran. | Större |
-| Felaktig data adress parameter togs emot på slav enhet | Mål enheten mottog en ogiltig begäran. | Större |
-| Felaktig data värde parameter togs emot slav enhet | Mål enheten mottog en ogiltig begäran. | Större |
-| Slaven het mottog ogiltig funktions kod | Mål enheten mottog en ogiltig begäran. | Större |
-| Slaven het tog emot illegal information objekt adress | Mål enheten mottog en ogiltig begäran. | Större |
-| Ett okänt objekt har skickats till utstationeringen | Mål enheten mottog en ogiltig begäran. | Större |
-| Användning av en reserverad funktions kod | Käll enheten initierade en ogiltig begäran. | Större |
-| Användning av felaktig formatering efter Station | Käll enheten initierade en ogiltig begäran. | Varning |
-| Användning av reserverade status flaggor (IIN) | En DNP3 käll enhet (Station Station) använde den reserverade interna indikatorn 2,6. Vi rekommenderar att du kontrollerar enhetens konfiguration. | Varning |
+| Onormalt undantagsmönster hos under | Ett stort antal fel har identifierats på en källenhet. Detta kan vara resultatet av ett driftproblem. | Mindre |
+| Onormal HTTP-huvudlängd | Källenheten skickade ett onormalt meddelande. Detta kan tyda på ett försök att angripa målenheten. | Kritiskt |
+| Onormalt antal parametrar i HTTP-huvud | Källenheten skickade ett onormalt meddelande. Detta kan tyda på ett försök att angripa målenheten. | Kritiskt |
+| Onormalt regelbundet beteende i kommunikationskanalen | En ändring i kommunikationsfrekvensen mellan käll- och målenheterna har identifierats. | Mindre |
+| Onormal avslutning av program | Ett stort antal stoppkommandon har identifierats på en källenhet. Detta kan vara resultatet av ett driftproblem eller ett försök att manipulera enheten. | Större |
+| Onormal trafikbandbredd | Onormal bandbredd har identifierats på en kanal. Bandbredden verkar vara betydligt lägre/högre än tidigare upptäckt. Mer information finns i arbeta med widgeten Total bandbredd. | Varning |
+| Onormal trafikbandbredd mellan enheter | Onormal bandbredd upptäcktes på en kanal. Bandbredden verkar vara betydligt lägre/högre än vad som har identifierats tidigare. Mer information finns i arbeta med widgeten Total bandbredd. | Varning |
+| Adressgenomsökning har identifierats | En källenhet upptäcktes genomsökning av nätverksenheter. Den här enheten har inte auktoriserats som en enhet för nätverksgenomsökning. | Kritiskt |
+| ARP-adressgenomsökning har identifierats | En källenhet upptäcktes genomsökning av nätverksenheter med hjälp av Address Resolution Protocol (ARP). Den här enhetsadressen har inte auktoriserats som giltig ARP-genomsökningsadress. | Kritiskt |
+| ARP-adressgenomsökning har identifierats | En källenhet upptäcktes genomsökning av nätverksenheter med hjälp av Address Resolution Protocol (ARP). Den här enhetsadressen har inte auktoriserats som giltig ARP-genomsökningsadress. | Kritiskt |
+| ARP-förfalskning | En onormal mängd paket upptäcktes i nätverket. Detta kan tyda på en attack, till exempel ett ARP-förfalskning eller en ICMP-attack som översvämmar. | Varning |
+| För många inloggningsförsök | En källenhet sågs utföra omfattande inloggningsförsök till en målserver. Det här kan vara en råstyrkattack. Servern kan komprometteras av en illvillig aktör. | Kritiskt |
+| För många sessioner | En källenhet sågs utföra omfattande inloggningsförsök till en målserver. Detta kan vara en brute force-attack. Servern kan komprometteras av en illvillig aktör. | Kritiskt |
+| För hög omstartsfrekvens för en utstation | Ett stort antal omstartskommandon har identifierats på en källenhet. Detta kan vara resultatet av ett driftproblem eller ett försök att manipulera enheten. | Större |
+| För många SMB-inloggningsförsök | En källenhet sågs utföra omfattande inloggningsförsök till en målserver. Detta kan vara en brute force-attack. Servern kan komprometteras av en illvillig aktör. | Kritiskt |
+| ICMP-översvämningar | En onormal mängd paket upptäcktes i nätverket. Detta kan tyda på en attack, till exempel ett ARP-förfalskning eller en ICMP-attack som översvämmar. | Varning |
+| Ogiltigt HTTP-huvudinnehåll | Källenheten initierade en ogiltig begäran. | Kritiskt |
+| Inaktiv kommunikationskanal | En kommunikationskanal mellan två enheter var inaktiv under en period då aktiviteten vanligtvis visas. Detta kan tyda på att programmet som genererar den här trafiken har ändrats eller att programmet kanske inte är tillgängligt. Vi rekommenderar att du granskar konfigurationen av det installerade programmet och kontrollerar att det är korrekt konfigurerat. | Varning |
+| Adressgenomsökning med lång varaktighet har identifierats | En källenhet upptäcktes genomsökning av nätverksenheter. Den här enheten har inte auktoriserats som en enhet för nätverksgenomsökning. | Kritiskt |
+| Ett försök till lösenords gissande har identifierats | En källenhet sågs utföra omfattande inloggningsförsök till en målserver. Det här kan vara en råstyrkattack. Servern kan komprometteras av en illvillig aktör. | Kritiskt |
+| HAR IDENTIFIERATS | En källenhet upptäcktes genomsökning av nätverksenheter. Den här enheten har inte auktoriserats som en enhet för nätverksgenomsökning. | Kritiskt |
+| Portgenomsökning har identifierats | En källenhet upptäcktes genomsökning av nätverksenheter. Den här enheten har inte auktoriserats som en enhet för nätverksgenomsökning. | Kritiskt |
+| Oväntad meddelandelängd | Källenheten skickade ett onormalt meddelande. Detta kan tyda på ett försök att angripa målenheten. | Kritiskt |
+| Oväntad trafik för standardport | Trafik upptäcktes på en enhet med hjälp av en port som är reserverad för ett annat protokoll. | Större |
 
-## <a name="malware-engine-alerts"></a>Aviseringar för skadlig kod
+## <a name="protocol-violation-engine-alerts"></a>Aviseringar för protokollöverträdelsemotor
+
+Aviseringar från protokollmotorn beskriver identifierade avvikelser i paketstrukturen eller fältvärden jämfört med protokollspecifikationer.
+
+| Rubrik | Beskrivning | Allvarlighetsgrad |
+|--|--|--|
+| För många felaktiga paket i en enda session | Ett onormalt antal felaktiga paket som skickats från källenheten till målenheten. Detta kan tyda på felaktig kommunikation eller ett försök att manipulera målenheten. | Större |
+| Uppdatering av inbyggd programvara | En källenhet skickade ett kommando för att uppdatera den inbyggda programvaran på en målenhet. Kontrollera att de senaste uppgraderingarna av programmering, konfiguration och inbyggd programvara som gjorts till målenheten är giltiga. | Varning |
+| Funktionskod stöds inte av outstation | Målenheten tog emot en ogiltig begäran. | Större |
+| Ogiltigt BACNet-meddelande | Källenheten initierade en ogiltig begäran. | Större |
+| Ogiltigt anslutningsförsök på port 0 | En källenhet försökte ansluta till målenheten på portnummer noll (0). För TCP är port 0 reserverad och kan inte användas. För UDP är porten valfri och värdet 0 innebär att det inte finns någon port. Det finns vanligtvis ingen tjänst i ett system som lyssnar på port 0. Den här händelsen kan tyda på ett försök att angripa målenheten eller ange att ett program har programmerats felaktigt. | Mindre |
+| Ogiltig DNP3-åtgärd | Källenheten initierade en ogiltig begäran. | Större |
+| Ogiltig MODBUS-åtgärd (undantag som utlöses av huvudhanterare) | Källenheten initierade en ogiltig begäran. | Större |
+| Ogiltig MODBUS-åtgärd (funktionskod noll) | Källenheten initierade en ogiltig begäran. | Större |
+| Ogiltig protokollversion | Källenheten initierade en ogiltig begäran. | Större |
+| Felaktig parameter skickades till utstation | Målenheten tog emot en ogiltig begäran. | Större |
+| Initiering av en föråldrad funktionskod (initiera data) | Källenheten initierade en ogiltig begäran. | Mindre |
+| Initiering av en föråldrad funktionskod (Spara konfiguration) | Källenheten initierade en ogiltig begäran. | Mindre |
+| Master begärde en bekräftelse på programlagret | Källenheten initierade en ogiltig begäran. | Varning |
+| Modbus-undantag | En källenhet (undermål) returnerade ett undantag till en målenhet (master). | Större |
+| Svart enhet mottagen ogiltig ASDU-typ | Målenheten tog emot en ogiltig begäran. | Större |
+| Den underrede enheten tog emot ett ogiltigt kommando som orsakar överföringen | Målenheten tog emot en ogiltig begäran. | Större |
+| Den underrede enheten har tagit emot en ogiltig gemensam adress | Målenheten tog emot en ogiltig begäran. | Större |
+| Parametern Otillåten dataadress togs emot av den underdrigt mottagna enheten | Målenheten tog emot en ogiltig begäran. | Större |
+| Parametern För ogiltigt datavärde togs emot av den underdringsenhet som togs emot | Målenheten tog emot en ogiltig begäran. | Större |
+| Otillåten funktionskod togs emot av den underifikna enheten | Målenheten tog emot en ogiltig begäran. | Större |
+| Otillåten informationsobjektsadress mottagen från en underlig enhet | Målenheten tog emot en ogiltig begäran. | Större |
+| Okänt objekt som skickats till utstation | Målenheten tog emot en ogiltig begäran. | Större |
+| Användning av en reserverad funktionskod | Källenheten initierade en ogiltig begäran. | Större |
+| Användning av felaktig formatering efter utstation | Källenheten initierade en ogiltig begäran. | Varning |
+| Användning av flaggor för reserverad status (IIN) | En DNP3-källenhet (utstation) använde den reserverade interna indikatorn 2.6. Vi rekommenderar att du kontrollerar enhetens konfiguration. | Varning |
+
+## <a name="malware-engine-alerts"></a>Aviseringar från motorn för skadlig kod
+
+Aviseringar från motorn för skadlig kod beskriver upptäckt skadlig nätverksaktivitet.
 
 | Rubrik | Beskrivning| Allvarlighetsgrad |
 |--|--|--|
-| Anslutnings försök till känd skadlig IP | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Större |
-| Ogiltigt SMB-meddelande (DoublePulsar bakdörr installation) | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Kritiskt |
-| Begäran om skadlig domän namn | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Större |
-| Test filen för skadlig kod har identifierats-EICAR AV lyckades | En EICAR AV-test-filen upptäcktes i trafik mellan två enheter. Filen är inte skadlig kod. Det används för att bekräfta att antivirus programmet är korrekt installerat. demonstrera vad som händer när ett virus hittas och kontrol lera interna procedurer och reaktioner när ett virus påträffas. Antivirus program bör upptäcka EICAR som om det vore ett verkligt virus. | Större |
-| Misstänkt av Conficker skadlig kod | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Större |
-| Misstanke om denial of service-attack | En käll enhet försökte initiera ett högt antal nya anslutningar till en mål enhet. Detta kan vara en DOS-attack (Denial of Service) mot mål enheten och kan störa enhets funktioner, påverka prestanda och tjänst tillgänglighet eller orsaka oåterkalleliga fel. | Kritiskt |
-| Misstanke om skadlig aktivitet | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Större |
-| Misstanke om skadlig aktivitet (BlackEnergy) | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Kritiskt |
-| Misstanke om skadlig aktivitet (DarkComet) | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Kritiskt |
-| Misstanke om skadlig aktivitet (Duqu) | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Kritiskt |
-| Misstanke om skadlig aktivitet (lågan) | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Kritiskt |
-| Misstanke om skadlig aktivitet (Havex) | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Kritiskt |
-| Misstanke om skadlig aktivitet (Karagany) | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Kritiskt |
-| Misstanke om skadlig aktivitet (ljus) | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Kritiskt |
-| Misstanke om skadlig aktivitet (namn frågor) | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Större |
-| Misstanke om skadlig aktivitet (Poison Ivy) | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Kritiskt |
-| Misstanke om skadlig aktivitet (regin) | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Kritiskt |
-| Misstanke om skadlig aktivitet (Stuxnet) | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Kritiskt |
-| Misstanke om skadlig aktivitet (WannaCry) | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Större |
-| Misstanke om skadlig kod för NotPetya – ogiltiga SMB-parametrar har identifierats | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Kritiskt |
-| Misstanke om NotPetya skadlig kod-ogiltig SMB-transaktion upptäckt | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Kritiskt |
-| Misstanke om fjärrkörning av kod med PsExec | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Större |
-| Misstanke om fjärrhantering av Windows-tjänster | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Större |
-| Misstänkt körbar fil upptäcktes i slut punkten | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Större |
-| Misstänkt trafik har identifierats | Misstänkt nätverks aktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känt skadlig kod. | Kritiskt |
+| Anslutningsförsök till känd skadlig IP-adress | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känd skadlig kod. | Större |
+| Ogiltigt SMB-meddelande (DoublePulsar-bakdörr) | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känd skadlig kod. | Kritiskt |
+| Begäran om skadligt domännamn | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känd skadlig kod. | Större |
+| Testfil för skadlig kod har identifierats – EICAR AV Success | En EICAR AV-testfil upptäcktes i trafik mellan två enheter. Filen är inte skadlig kod. Den används för att bekräfta att antivirusprogrammet är korrekt installerat. visa vad som händer när ett virus hittas och kontrollera interna procedurer och reaktioner när ett virus hittas. Antivirusprogram bör identifiera EICAR som om det vore ett verkligt virus. | Större |
+| Misstänkt skadlig Conficker-kod | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känd skadlig kod. | Större |
+| Misstänkt DoS-attack | En källenhet försökte initiera ett stort antal nya anslutningar till en målenhet. Detta kan vara en DoS-attack (Denial Of Service) mot målenheten och kan avbryta enhetsfunktioner, påverka prestanda och tjänstens tillgänglighet eller orsaka oåterkalleliga fel. | Kritiskt |
+| Misstänkt skadlig aktivitet | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan vara associerad med en attack som utnyttjar en metod som används av känd skadlig kod. | Större |
+| Misstänkt skadlig aktivitet (BlackEnergy) | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan vara associerad med en attack som utnyttjar en metod som används av känd skadlig kod. | Kritiskt |
+| Misstänkt skadlig aktivitet (DarkComet) | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan vara associerad med en attack som utnyttjar en metod som används av känd skadlig kod. | Kritiskt |
+| Misstänkt skadlig aktivitet (Duqu) | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan vara associerad med en attack som utnyttjar en metod som används av känd skadlig kod. | Kritiskt |
+| Misstänkt skadlig aktivitet (FSE) | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan vara associerad med en attack som utnyttjar en metod som används av känd skadlig kod. | Kritiskt |
+| Misstänkt skadlig aktivitet (Havex) | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan vara associerad med en attack som utnyttjar en metod som används av känd skadlig kod. | Kritiskt |
+| Misstänkt skadlig aktivitet (Cargany) | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan vara associerad med en attack som utnyttjar en metod som används av känd skadlig kod. | Kritiskt |
+| Misstänkt skadlig aktivitet (LightsOut) | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känd skadlig kod. | Kritiskt |
+| Misstänkt skadlig aktivitet (namnfrågor) | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känd skadlig kod. | Större |
+| Misstänkt skadlig aktivitet (skadlig ivy) | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känd skadlig kod. | Kritiskt |
+| Misstänkt skadlig aktivitet (Regin) | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känd skadlig kod. | Kritiskt |
+| Misstänkt skadlig aktivitet (Stuxnet) | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känd skadlig kod. | Kritiskt |
+| Misstänkt skadlig aktivitet (WannaCry) | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan associeras med en attack som utnyttjar en metod som används av känd skadlig kod. | Större |
+| Misstänkt skadlig kod i NotPetya – Ogiltiga SMB-parametrar har identifierats | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan vara associerad med en attack som utnyttjar en metod som används av känd skadlig kod. | Kritiskt |
+| Misstänkt notPetya-skadlig kod – ogiltig SMB-transaktion har identifierats | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan vara associerad med en attack som utnyttjar en metod som används av känd skadlig kod. | Kritiskt |
+| Misstanke om fjärrkörning av kod med PsExec | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan vara associerad med en attack som utnyttjar en metod som används av känd skadlig kod. | Större |
+| Misstanke om fjärrhantering av Windows-tjänster | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan vara associerad med en attack som utnyttjar en metod som används av känd skadlig kod. | Större |
+| Misstänkt körbar fil har identifierats på slutpunkten | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan vara associerad med en attack som utnyttjar en metod som används av känd skadlig kod. | Större |
+| Misstänkt trafik har identifierats | Misstänkt nätverksaktivitet har identifierats. Den här aktiviteten kan vara associerad med en attack som utnyttjar en metod som används av känd skadlig kod. | Kritiskt |
 
-## <a name="operational-engine-alerts"></a>Aviseringar för drifts motor
+## <a name="operational-engine-alerts"></a>Aviseringar för driftmotor
+
+Aviseringar från driftmotorn beskriver identifierade driftincidenter eller entiteter som inte fungerar.
 
 | Rubrik | Beskrivning | Allvarlighetsgrad |
 |--|--|--|
-| Ett S7 Stop PLC-kommando har skickats | Käll enheten skickade ett stopp-kommando till en mål styrenhet. Kontrollanten slutar att fungera tills ett start kommando har skickats. | Varning |
-| BACNet-åtgärden misslyckades | En server returnerade en felkod. Detta indikerar ett Server fel eller en ogiltig begäran från en klient. | Större |
-| Felaktigt status för MMS-enhet | En virtuell MMS-Manufacturing-enhet (VMD) skickade ett status meddelande. Meddelandet anger att servern kanske inte är korrekt konfigurerad, delvis drift eller inte fungerar alls. | Större |
-| Ändring av enhets konfiguration | En konfigurations ändring upptäcktes på en käll enhet. | Mindre |
-| Oavbruten händelse buffertspill vid utstation | En buffertöverskridning-händelse upptäcktes på en käll enhet. Händelsen kan leda till att data skadas, att programmet kraschar eller att skadlig kod körs. | Större |
-| Återställning av styrenhet | En käll enhet skickade ett återställnings kommando till en mål styrenhet. Styrenheten stoppades tillfälligt och startade igen automatiskt. | Varning |
-| Kontroll av styrenheten stoppas | Käll enheten skickade ett stopp-kommando till en mål styrenhet. Kontrollanten slutar att fungera tills ett start kommando har skickats. | Varning |
-| Enheten kunde inte ta emot en dynamisk IP-adress | Käll enheten är konfigurerad att ta emot en dynamisk IP-adress från en DHCP-server men fick ingen adress. Detta tyder på ett konfigurations fel på enheten, eller ett drifts fel i DHCP-servern. Vi rekommenderar att du meddelar nätverks administratören om incidenten | Större |
-| Enheten kan misstänkas vara frånkopplad (svarar inte) | En käll enhet svarade inte på ett kommando som skickats till den. Den kan ha kopplats från när kommandot skickades. | Större |
-| Begäran om EtherNet-CIP-tjänst misslyckades | En server returnerade en felkod. Detta indikerar ett Server fel eller en ogiltig begäran från en klient. | Större |
-| Kommandot för EtherNet/IP-inkapslings protokoll misslyckades | En server returnerade en felkod. Detta indikerar ett Server fel eller en ogiltig begäran från en klient. | Större |
-| Spill i händelsens buffert i utstationen | En buffertöverskridning-händelse upptäcktes på en käll enhet. Händelsen kan leda till att data skadas, att programmet kraschar eller att skadlig kod körs. | Större |
-| Den förväntade säkerhets kopieringen utfördes inte | Förväntad säkerhets kopierings-/fil överförings aktivitet sker inte mellan två enheter. Detta kan tyda på fel i processen för säkerhets kopiering/fil överföring. | Större |
-| GE SRTP kommando haveri | En server returnerade en felkod. Detta indikerar ett Server fel eller en ogiltig begäran från en klient. | Större |
-| GE SRTP Stop PLC-kommando skickat | Käll enheten skickade ett stopp-kommando till en mål styrenhet. Kontrollanten slutar att fungera tills ett start kommando har skickats. | Varning |
-| GOOSE Control Block kräver ytterligare konfiguration | En käll enhet skickade ett GOOSE-meddelande som anger att enheten behöver provision. Det innebär att GOOSE-kontroll blocket kräver ytterligare konfigurations-och GOOSE-meddelanden är delvis eller helt icke-operativa. | Större |
-| Konfigurationen av GOOSE-datauppsättningen ändrades | Ett meddelande (identifierat av protokoll-ID) dataset har ändrats på en käll enhet. Det innebär att enheten rapporterar en annan data uppsättning för det här meddelandet. | Varning |
-| Oväntad status för Honeywell Controller | En Honeywell kontrollant skickade ett oväntat diagnostikpaket som indikerar en status ändring. | Varning |
-| HTTP-klient fel | Käll enheten initierade en ogiltig begäran. | Varning |
-| Ogiltig IP-adress | Systemet upptäckte trafik mellan en käll enhet och en IP-adress som är en ogiltig adress. Detta kan tyda på felaktig konfiguration eller ett försök att generera ogiltig trafik. | Mindre |
-| Master-Slave autentiseringsfel | Det gick inte att autentisera processen mellan en DNP3 käll enhet (Master) och en målenhet (Station Station). | Mindre |
-| Begäran om MMS-tjänst misslyckades | En server returnerade en felkod. Detta indikerar ett Server fel eller en ogiltig begäran från en klient. | Större |
-| Ingen trafik har identifierats i sensor gränssnittet | En sensor slutade identifiera nätverks trafik i ett nätverks gränssnitt. | Kritiskt |
-| OPC UA-Server utlöste en händelse som kräver användarens uppmärksamhet | En OPC UA-Server skickade ett händelse meddelande till en klient. Den här typen av händelse kräver användar åtgärd | Större |
-| OPC UA service-begäran misslyckades | En server returnerade en felkod. Detta indikerar ett Server fel eller en ogiltig begäran från en klient. | Större |
-| Datorn har startats om | En kall omstart upptäcktes på en käll enhet. Det innebär att enheten är fysiskt avstängd och tillbaka igen. | Varning |
-| Stationerna startar om ofta | Ett högt antal kall omstarter upptäcktes på en käll enhet. Det innebär att enheten har stängts av fysiskt och sedan en gång till ett alltför stort antal gånger. | Mindre |
-| Profilens konfiguration har ändrats | En konfigurations ändring upptäcktes på en käll enhet. | Större |
-| Den skadade konfigurationen av Stations stationen har identifierats | Den här käll enheten för DNP3 (stationen) rapporterade en skadad konfiguration. | Större |
-| Ett noDCP-kommando misslyckades | En server returnerade en felkod. Detta indikerar ett Server fel eller en ogiltig begäran från en klient. | Större |
-| Återställ enhet fabriks återställning | En käll enhet skickade ett fabriks återställnings kommando till en förfinad mål enhet. Kommandot reset rensar konfigurationerna med hjälp av enhets konfiguration och stoppar åtgärden. | Varning |
-| RPC-åtgärden misslyckades | En server returnerade en felkod. Detta indikerar ett Server fel eller en ogiltig begäran från en klient. | Större |
-| Konfiguration av meddelande data uppsättning för exempel värden ändrades | Ett meddelande (identifierat av protokoll-ID) dataset har ändrats på en käll enhet. Det innebär att enheten rapporterar en annan data uppsättning för det här meddelandet. | Varning |
-| Slav enhet som inte går att återställa | Ett oåterkalleligt villkors fel upptäcktes på en käll enhet. Den här typen av fel indikerar vanligt vis ett maskin varu fel eller om det inte går att utföra ett speciellt kommando. | Större |
-| Misstanke om maskin varu problem i utstationeringen | Ett oåterkalleligt villkors fel upptäcktes på en käll enhet. Den här typen av fel indikerar vanligt vis ett maskin varu fel eller om det inte går att utföra ett speciellt kommando. | Större |
-| Misstanke om att MODBUS-enheten inte svarar | En käll enhet svarade inte på ett kommando som skickats till den. Den kan ha kopplats från när kommandot skickades. | Mindre |
-| Trafik upptäcktes i sensor gränssnittet | En sensor återupptog identifiering av nätverks trafik i ett nätverks gränssnitt. | Varning |
+| Ett S7-stoppKOMMANDO skickades | Källenheten skickade ett stoppkommando till en målstyrenhet. Kontrollanten slutar fungera tills ett startkommando skickas. | Varning |
+| BACNet-åtgärden misslyckades | En server returnerade en felkod. Detta indikerar ett serverfel eller en ogiltig begäran från en klient. | Större |
+| Felaktigt MMS-enhetstillstånd | En MMS Virtual Manufacturing Device (VMD) skickade ett statusmeddelande. Meddelandet anger att servern kanske inte är korrekt konfigurerad, delvis i drift eller inte fungerar alls. | Större |
+| Ändring av enhetskonfiguration | En konfigurationsändring har identifierats på en källenhet. | Mindre |
+| Kontinuerligt händelsebuffertspill vid utstation | En buffertspillshändelse upptäcktes på en källenhet. Händelsen kan orsaka skadade data, programkrasch eller körning av skadlig kod. | Större |
+| Kontrollantåterställning | En källenhet skickade ett återställningskommando till en målstyrenhet. Kontrollanten slutade fungera tillfälligt och startades igen automatiskt. | Varning |
+| Kontrollantstopp | Källenheten skickade ett stoppkommando till en målstyrenhet. Kontrollanten slutar fungera tills ett startkommando skickas. | Varning |
+| Enheten kunde inte ta emot en dynamisk IP-adress | Källenheten är konfigurerad för att ta emot en dynamisk IP-adress från en DHCP-server men fick ingen adress. Detta anger ett konfigurationsfel på enheten eller ett driftfel på DHCP-servern. Vi rekommenderar att du meddelar nätverksadministratören om incidenten | Större |
+| Enheten misstänks vara frånkopplad (svarar inte) | En källenhet svarade inte på ett kommando som skickades till den. Det kan ha kopplats från när kommandot skickades. | Större |
+| EtherNet/IP CIP-tjänstbegäran misslyckades | En server returnerade en felkod. Detta indikerar ett serverfel eller en ogiltig begäran från en klient. | Större |
+| Kommandot EtherNet/IP Encapsulation Protocol misslyckades | En server returnerade en felkod. Detta indikerar ett serverfel eller en ogiltig begäran från en klient. | Större |
+| Händelsebuffert spill i utstation | En buffertspillshändelse har identifierats på en källenhet. Händelsen kan orsaka skadade data, programkrasch eller körning av skadlig kod. | Större |
+| Den förväntade säkerhetskopieringen har inte inträffat | Förväntad säkerhetskopierings-/filöverföringsaktivitet inträffar inte mellan två enheter. Detta kan tyda på fel i processen för säkerhetskopiering/filöverföring. | Större |
+| Fel med GE SRTP-kommando | En server returnerade en felkod. Detta indikerar ett serverfel eller en ogiltig begäran från en klient. | Större |
+| KOMMANDOT GE SRTP StopKOMMANDO skickades | Källenheten skickade ett stoppkommando till en målstyrenhet. Kontrollanten slutar fungera tills ett startkommando skickas. | Varning |
+| CONTROL-kontrollblocket kräver ytterligare konfiguration | En källenhet skickade ett MEDDELANDE AVSV som anger att enheten behöver i uppdragsningen. Det innebär att KONTROLLBLOCK-kontrollblocket kräver ytterligare konfiguration och ATT MEDDELANDENa delvis eller helt inte fungerar. | Större |
+| DATASET-datauppsättningskonfigurationen har ändrats | Ett meddelande (identifierat av protokoll-ID) har ändrats på en källenhet. Det innebär att enheten rapporterar en annan datamängd för det här meddelandet. | Varning |
+| Oväntad status för Honeywell-kontrollanten | En Honeywell-kontrollant skickade ett oväntat diagnostikmeddelande som anger en statusändring. | Varning |
+| HTTP-klientfel | Källenheten initierade en ogiltig begäran. | Varning |
+| Ogiltig IP-adress | Systemet har identifierat trafik mellan en källenhet och en IP-adress som är en ogiltig adress. Detta kan tyda på fel konfiguration eller ett försök att generera ogiltig trafik. | Mindre |
+| Master-Slave för autentisering | Autentiseringsprocessen mellan en DNP3-källenhet (master) och en målenhet (utstation) misslyckades. | Mindre |
+| MMS-tjänstbegäran misslyckades | En server returnerade en felkod. Detta indikerar ett serverfel eller en ogiltig begäran från en klient. | Större |
+| Ingen trafik har identifierats i sensorgränssnittet | En sensor slutade identifiera nätverkstrafik i ett nätverksgränssnitt. | Kritiskt |
+| OPC UA-servern har utlyst en händelse som kräver användarens uppmärksamhet | En OPC UA-server skickade ett händelsemeddelande till en klient. Den här typen av händelse kräver användar uppmärksamhet | Större |
+| OPC UA-tjänstbegäran misslyckades | En server returnerade en felkod. Detta indikerar ett serverfel eller en ogiltig begäran från en klient. | Större |
+| Utstation har startats om | En kall omstart upptäcktes på en källenhet. Det innebär att enheten var fysiskt avstängd och återigen aktiverad. | Varning |
+| Utstation startas om ofta | Ett stort antal kallstarter har identifierats på en källenhet. Det innebär att enheten stängdes av fysiskt och återigen återigen ett stort antal gånger. | Mindre |
+| Utstationeringens konfiguration har ändrats | En konfigurationsändring har identifierats på en källenhet. | Större |
+| Utstationeringens skadade konfiguration har identifierats | Denna DNP3-källenhet (utstation) rapporterade en skadad konfiguration. | Större |
+| Profinet DCP-kommandot misslyckades | En server returnerade en felkod. Detta indikerar ett serverfel eller en ogiltig begäran från en klient. | Större |
+| Profinet Device Factory Reset | En källenhet skickade ett fabriksåterställningskommando till en Profinet-målenhet. Återställningskommandot rensar Profinet-enhetskonfigurationer och stoppar åtgärden. | Varning |
+| RPC-åtgärden misslyckades | En server returnerade en felkod. Detta indikerar ett serverfel eller en ogiltig begäran från en klient. | Större |
+| Konfiguration av exempelvärden– meddelandedatauppsättning har ändrats | Ett meddelande (identifierat av protokoll-ID) har ändrats på en källenhet. Det innebär att enheten rapporterar en annan datamängd för det här meddelandet. | Varning |
+| Oåterkalleligt fel för den obevakade enheten | Ett oåterkalleligt tillståndsfel upptäcktes på en källenhet. Den här typen av fel indikerar vanligtvis ett maskinvarufel eller att det inte går att utföra ett visst kommando. | Större |
+| Misstänkt maskinvaruproblem vid outstation | Ett oåterkalleligt tillståndsfel upptäcktes på en källenhet. Den här typen av fel indikerar vanligtvis ett maskinvarufel eller att det inte går att utföra ett visst kommando. | Större |
+| Misstänkt MODBUS-enhet som inte svarar | En källenhet svarade inte på ett kommando som skickades till den. Det kan ha kopplats från när kommandot skickades. | Mindre |
+| Trafik som identifierats i sensorgränssnittet | En sensor återupptog identifieringen av nätverkstrafik i ett nätverksgränssnitt. | Varning |
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du kan [Hantera aviserings händelser](how-to-manage-the-alert-event.md).
-Lär dig hur du [vidarebefordrar aviserings information](how-to-forward-alert-information-to-partners.md).
+Du kan [hantera aviseringshändelser.](how-to-manage-the-alert-event.md)
+Lär dig hur du [vidarebefordrar aviseringsinformation](how-to-forward-alert-information-to-partners.md).

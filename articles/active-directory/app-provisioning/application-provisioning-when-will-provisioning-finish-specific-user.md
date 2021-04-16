@@ -1,6 +1,6 @@
 ---
-title: Ta reda på när en speciell användare kan komma åt en app
-description: Så här tar du reda på när en viktig användare kan komma åt ett program som du har konfigurerat för användar etablering med Azure AD
+title: Ta reda på när en viss användare kommer att kunna komma åt en app
+description: Så här tar du reda på när en kritiskt viktig användare kan komma åt ett program som du har konfigurerat för användareablering med Azure AD
 services: active-directory
 author: kenwith
 manager: daveba
@@ -11,92 +11,92 @@ ms.topic: how-to
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 890c4a8a5aec3b15b150908c64bb114bd85a61a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9835ba2b6db2d71d0ff5825f2eb1996133e75537
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256770"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530824"
 ---
-# <a name="check-the-status-of-user-provisioning"></a>Kontrol lera status för användar etablering
+# <a name="check-the-status-of-user-provisioning"></a>Kontrollera status för användareablering
 
-Azure AD Provisioning-tjänsten kör en första etablerings cykel mot käll systemet och mål systemet, följt av periodiska stegvisa cykler. När du konfigurerar etablering för en app kan du kontrol lera den aktuella statusen för etablerings tjänsten och se när en användare kommer att ha åtkomst till en app.
+Azure AD-etableringstjänsten kör en inledande etableringscykel mot källsystemet och målsystemet, följt av periodiska inkrementella cykler. När du konfigurerar etablering för en app kan du kontrollera etableringstjänstens aktuella status och se när en användare kommer att kunna komma åt en app.
 
-## <a name="view-the-provisioning-progress-bar"></a>Visa förlopps indikatorn för etablering
+## <a name="view-the-provisioning-progress-bar"></a>Visa förloppsfältet för etablering
 
- På **etablerings** sidan för en app kan du visa statusen för Azure AD Provisioning-tjänsten. Avsnittet **aktuell status** längst ned på sidan visar om en etablerings cykel har börjat att etablering av användar konton. Du kan se förloppet för cykeln, se hur många användare och grupper som har etablerats och se hur många roller som skapas.
+ På sidan **Etablering för** en app kan du visa status för Azure AD-etableringstjänsten. Avsnittet **Aktuell status** längst ned på sidan visar om en etableringscykel har börjat etablera användarkonton. Du kan se förloppet för cykeln, se hur många användare och grupper som har etablerats och se hur många roller som skapas.
 
-När du först konfigurerar automatisk etablering visas statusen för den inledande etablerings cykeln i avsnittet **aktuell status** längst ned på sidan. Det här avsnittet uppdateras varje gången en stegvis cykel körs. Följande information visas:
-- Typ av etablerings cykel (initial eller stegvis) som körs för tillfället eller som senast slutfördes.
-- En **förlopps indikator** som visar procent andelen av etablerings cykeln som har slutförts. Procent andelen visar antalet sidor som har allokerats. Observera att varje sida kan innehålla flera användare eller grupper, så att procent andelen inte direkt korreleras med antalet användare, grupper eller roller som tillhandahålls.
-- En **uppdaterings** knapp som du kan använda för att hålla vyn uppdaterad.
-- Antalet **användare** och **grupper** i data lagret för anslutningen. Antalet ökar när som helst ett objekt läggs till i omfånget för etableringen. Antalet går inte nedåt om en användare är mjuk raderad eller hårt borttagen eftersom detta inte tar bort objektet från anslutnings data lagret. Antalet beräknas om den första synkroniseringen när CD-skivorna har [återställts](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta) 
-- En länk för **gransknings loggar** som öppnar Azure AD-etablerings loggar för information om alla åtgärder som körs av användar etablerings tjänsten, inklusive etablerings status för enskilda användare (se avsnittet [använda etablerings loggar](#use-provisioning-logs-to-check-a-users-provisioning-status) nedan).
+Första gången du konfigurerar automatisk etablering visar avsnittet **Aktuell status** längst ned på sidan statusen för den inledande etableringscykeln. Det här avsnittet uppdateras varje gång en inkrementell cykel körs. Följande information visas:
+- Den typ av etableringscykel (inledande eller inkrementell) som körs eller senast slutfördes.
+- En **förloppsstapel** som visar procentandelen av etableringscykeln som har slutförts. Procentandelen visar antalet etablerade sidor. Observera att varje sida kan innehålla flera användare eller grupper, så procentandelen korrelerar inte direkt med antalet användare, grupper eller roller som etablerats.
+- En **uppdateringsknapp** som du kan använda för att hålla vyn uppdaterad.
+- Antalet användare **och grupper** **i** anslutningsdatalagret. Antalet ökar varje gång ett objekt läggs till i etableringsomfånget. Antalet går inte ned om en användare är mjukt borttagna eller hårdborttagna eftersom detta inte tar bort objektet från anslutningsappens datalager. Antalet räknas om den första synkroniseringen när CDS har [återställts](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true) 
+- Länken **Visa granskningsloggar** öppnar Azure AD-etableringsloggarna för information om alla åtgärder som körs av användaretableringstjänsten, inklusive etableringsstatus för enskilda användare (se avsnittet Använd etableringsloggar nedan). [](#use-provisioning-logs-to-check-a-users-provisioning-status)
 
-När en etablerings cykel är klar visar **statistik till datum** avsnittet det ackumulerade antalet användare och grupper som har etablerats till datum, tillsammans med slutdatum och varaktighet för den senaste cykeln. **Aktivitets-ID: t** identifierar unikt den senaste etablerings cykeln. **Jobb-ID: t** är en unik identifierare för etablerings jobbet och är särskilt för appen i din klient organisation.
+När en etableringscykel har  slutförts visar avsnittet Statistik hittills det ackumulerade antalet användare och grupper som har etablerats hittills, tillsammans med slutförandedatum och varaktighet för den senaste cykeln. **Aktivitets-ID:t** identifierar unikt den senaste etableringscykeln. **Jobb-ID:t** är en unik identifierare för etableringsjobbet och är specifik för appen i din klientorganisation.
 
-Etablerings förloppet kan visas i Azure Portal på fliken **Azure Active Directory &gt; företags &gt; \[ program namn \] &gt; etablering** .
+Etableringsförloppet kan visas i Azure Portal på fliken Azure Active Directory Enterprise Apps-programnamn **&gt; &gt; \[ \] &gt; Etablering.**
 
-![Förlopps indikator för etablerings Sidan](./media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
+![Förloppsfält för etableringssidan](./media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
 
-## <a name="use-provisioning-logs-to-check-a-users-provisioning-status"></a>Använd etablerings loggar för att kontrol lera en användares etablerings status
+## <a name="use-provisioning-logs-to-check-a-users-provisioning-status"></a>Använd etableringsloggar för att kontrollera en användares etableringsstatus
 
-Om du vill se etablerings statusen för en vald användare, se [etablerings loggarna (för hands version)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) i Azure AD. Alla åtgärder som körs av användar etablerings tjänsten registreras i Azure AD-etablerings loggarna. Detta omfattar alla Läs-och skriv åtgärder som gjorts för käll-och mål systemen och de användar data som lästs eller skrevs under varje åtgärd.
+Om du vill se etableringsstatus för en vald användare kan du läsa [Etableringsloggar (förhandsversion)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) i Azure AD. Alla åtgärder som körs av tjänsten för användareablering registreras i Azure AD-etableringsloggarna. Detta omfattar alla läs- och skrivåtgärder som görs till käll- och målsystemen, samt användardata som har lästs eller skrivits under varje åtgärd.
 
-Du kan komma åt etablerings loggarna i Azure Portal genom att välja **Azure Active Directory** &gt; etablerings loggar för **företags appar** &gt; **(för hands version)** i avsnittet **aktivitet** . Du kan söka i etablerings data baserat på användarens namn eller identifieraren i antingen käll systemet eller mål systemet. Mer information finns i [etablerings loggar (för hands version)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
+Du kan komma åt etableringsloggarna i Azure Portal genom **att Azure Active Directory** etableringsloggar för Enterprise &gt; **Apps** &gt; **(förhandsversion)** i **avsnittet** Aktivitet. Du kan söka i etableringsdata baserat på namnet på användaren eller identifieraren i antingen källsystemet eller målsystemet. Mer information finns i [Etableringsloggar (förhandsversion).](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 
 
-Etablerings loggarna registrerar alla åtgärder som utförs av etablerings tjänsten, inklusive:
+Etableringsloggarna registrerar alla åtgärder som utförs av etableringstjänsten, inklusive:
 
-* Fråga Azure AD efter tilldelade användare som är inom omfånget för etablering
-* Fråga mål appen efter dessa användare
-* Jämför användar objekt mellan systemet
-* Lägga till, uppdatera eller inaktivera användar kontot i mål systemet baserat på jämförelsen
+* Fråga Azure AD efter tilldelade användare som omfattas av etablering
+* Fråga målappen om förekomsten av dessa användare
+* Jämföra användarobjekten mellan systemet
+* Lägga till, uppdatera eller inaktivera användarkontot i målsystemet baserat på jämförelsen
 
-Mer information om hur du läser etablerings loggar i Azure Portal finns i [rapport guiden för etablering](check-status-user-account-provisioning.md).
+Mer information om hur du läser etableringsloggarna i Azure Portal finns i guiden [för etableringsrapportering.](check-status-user-account-provisioning.md)
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Hur lång tid tar det att etablera användare?
-När du använder automatisk användar etablering med ett program, etablerar Azure AD automatiskt och uppdaterar användar konton i en app baserat på saker som [användar-och grupp tilldelning](../manage-apps/assign-user-or-group-access-portal.md) enligt ett regelbundet schemalagt tidsintervall, vanligt vis var 40: e minut.
+När du använder automatisk användareablering med ett program etablerar och uppdaterar [](../manage-apps/assign-user-or-group-access-portal.md) Azure AD automatiskt användarkonton i en app baserat på saker som användar- och grupptilldelning enligt ett regelbundet schemalagt tidsintervall, vanligtvis var 40:e minut.
 
-Hur lång tid det tar för en specifik användare att tillhandahållas beror huvudsakligen på om ditt etablerings jobb kör en inledande cykel eller en stegvis cykel.
+Hur lång tid det tar för en viss användare att etableras beror huvudsakligen på om etableringsjobbet kör en inledande cykel eller en inkrementell cykel.
 
-- För den **första cykeln** beror jobb tiden på många faktorer, inklusive antalet användare och grupper inom omfånget för etablering och det totala antalet användare och grupper i käll systemet. Den första synkroniseringen mellan Azure AD och en app kan ta var som helst från 20 minuter till flera timmar, beroende på storleken på Azure AD-katalogen och antalet användare i omfånget för etablering. En omfattande lista över faktorer som påverkar inledande cykel prestanda sammanfattas senare i det här avsnittet.
+- För **den inledande** cykeln beror jobbtiden på många faktorer, inklusive antalet användare och grupper i etableringsomfånget och det totala antalet användare och grupper i källsystemet. Den första synkroniseringen mellan Azure AD och en app kan ta allt från 20 minuter till flera timmar, beroende på Azure AD-katalogens storlek och antalet användare i etableringsomfånget. En omfattande lista över faktorer som påverkar den inledande cykelns prestanda sammanfattas senare i det här avsnittet.
 
-- För **stegvisa cykler** efter den första cykeln, tenderar jobb tiderna att bli snabbare (till exempel inom 10 minuter), eftersom etablerings tjänsten lagrar vattenstämplar som representerar båda systemens tillstånd efter den första cykeln, vilket förbättrar prestandan för efterföljande synkroniseringar. Jobb tiden beror på antalet ändringar som har upptäckts i den etablerings cykeln. Om det finns mindre än 5 000 ändringar av användare eller grupp medlemskap kan jobbet avslutas inom en enda stegvis etablerings cykel. 
+- För  inkrementella cykler efter den första cykeln brukar jobbtiderna vara snabbare (t.ex. inom 10 minuter), eftersom etableringstjänsten lagrar vattenstämplar som representerar tillståndet för båda systemen efter den inledande cykeln, vilket förbättrar prestandan för efterföljande synkroniseringar. Jobbtiden beror på antalet ändringar som identifierats i etableringscykeln. Om det finns färre än 5 000 ändringar av användar- eller gruppmedlemskap kan jobbet slutföras inom en enda inkrementell etableringscykel. 
 
-I följande tabell sammanfattas synkroniserings tider för vanliga etablerings scenarier. I dessa scenarier är käll systemet Azure AD och mål systemet är ett SaaS-program. Sync-tiderna härleds från en statistisk analys av synkroniseringsjobb för SaaS-programmen ServiceNow, Workplace, Salesforce och G Suite.
+I följande tabell sammanfattas synkroniseringstider för vanliga etableringsscenarier. I dessa scenarier är källsystemet Azure AD och målsystemet är ett SaaS-program. Synkroniseringstiderna härleds från en statistisk analys av synkroniseringsjobb för SaaS-programmen ServiceNow, Workplace, Salesforce och G Suite.
 
 
-| Omfattnings konfiguration | Användare, grupper och medlemmar i omfattningen | Första cykel tid | Stegvis cykel tid |
+| Omfångskonfiguration | Användare, grupper och medlemmar i omfånget | Inledande cykeltid | Inkrementell cykeltid |
 | -------- | -------- | -------- | -------- |
 | Synkronisera endast tilldelade användare och grupper |  < 1 000 |  < 30 minuter | < 30 minuter |
-| Synkronisera endast tilldelade användare och grupper |  1 000 – 10 000 | 142 – 708 minuter | < 30 minuter |
-| Synkronisera endast tilldelade användare och grupper |   10 000 – 100 000 | 1 170 – 2 340 minuter | < 30 minuter |
+| Synkronisera endast tilldelade användare och grupper |  1,000 - 10,000 | 142–708 minuter | < 30 minuter |
+| Synkronisera endast tilldelade användare och grupper |   10,000 - 100,000 | 1 170–2 340 minuter | < 30 minuter |
 | Synkronisera alla användare och grupper i Azure AD |  < 1 000 | < 30 minuter  | < 30 minuter |
-| Synkronisera alla användare och grupper i Azure AD |  1 000 – 10 000 | < 30-120 minuter | < 30 minuter |
-| Synkronisera alla användare och grupper i Azure AD |  10 000 – 100 000  | 713 – 1 425 minuter | < 30 minuter |
+| Synkronisera alla användare och grupper i Azure AD |  1,000 - 10,000 | < 30–120 minuter | < 30 minuter |
+| Synkronisera alla användare och grupper i Azure AD |  10,000 - 100,000  | 713–1 425 minuter | < 30 minuter |
 | Synkronisera alla användare i Azure AD|  < 1 000  | < 30 minuter | < 30 minuter |
-| Synkronisera alla användare i Azure AD | 1 000 – 10 000  | 43 – 86 minuter | < 30 minuter |
+| Synkronisera alla användare i Azure AD | 1,000 - 10,000  | 43–86 minuter | < 30 minuter |
 
-För den konfigurations **synkronisering som tilldelas användare och grupper** kan du använda följande formler för att fastställa den ungefärliga minsta och högsta förväntade **första cykel** tiden:
+För konfigurationen Synkronisera **endast tilldelad användare och** grupper kan du använda följande formler för att fastställa ungefärliga minsta och högsta förväntade inledande **cykeltider:**
 
-- Minsta antal minuter = 0,01 x [antal tilldelade användare, grupper och grupp medlemmar]
-- Maximalt antal minuter = 0,08 x [antal tilldelade användare, grupper och grupp medlemmar]
+- Minsta minuter = 0,01 x [antal tilldelade användare, grupper och gruppmedlemmar]
+- Maximalt antal minuter = 0,08 x [antal tilldelade användare, grupper och gruppmedlemmar]
 
-Sammanfattning av faktorer som påverkar hur lång tid det tar att slutföra en **första cykel**:
+Sammanfattning av faktorer som påverkar den tid det tar att slutföra en **inledande cykel:**
 
-- Det totala antalet användare och grupper i omfånget för etablering.
+- Det totala antalet användare och grupper i etableringsomfånget.
 
-- Det totala antalet användare, grupper och grupp medlemmar som finns i käll systemet (Azure AD).
+- Det totala antalet användare, grupper och gruppmedlemmar som finns i källsystemet (Azure AD).
 
-- Om användare i omfång för etablering matchas med befintliga användare i mål programmet eller behöver skapas för första gången. Synkroniseringsjobb för vilka alla användare skapas för första gången tar ungefär *två gånger så länge* som synkroniseringsjobb för vilka alla användare matchas till befintliga användare.
+- Om användare i etableringsomfånget matchas mot befintliga användare i målprogrammet eller måste skapas för första gången. Synkroniseringsjobb som alla användare skapas för  första gången tar ungefär dubbelt så lång tid som synkroniseringsjobb som alla användare matchas mot befintliga användare för.
 
-- Antal fel i [etablerings loggarna](check-status-user-account-provisioning.md). Prestanda är långsammare om det finns många fel och etablerings tjänsten har gått in i ett karantäns tillstånd. 
+- Antal fel i [etableringsloggarna](check-status-user-account-provisioning.md). Prestandan går långsammare om det finns många fel och etableringstjänsten har förts in i ett karantäntillstånd. 
 
-- Hastighets begränsningar och begränsning för begäran som implementeras av mål systemet. Vissa mål system implementerar begränsningar för begär ande hastighet och begränsning, vilket kan påverka prestanda under stora synkroniseringar. Under dessa villkor kan en app som tar emot för många begär Anden för snabbt få en långsam svars frekvens eller stänga anslutningen. För att förbättra prestanda måste anslutningen justeras genom att inte skicka app-begärandena snabbare än appen kan bearbeta dem. Etablerings anslutningar som skapats av Microsoft gör den här ändringen. 
+- Hastighetsbegränsningar för förfrågningar och begränsningar som implementeras av målsystemet. Vissa målsystem implementerar begränsningar för begärandefrekvens och begränsning, vilket kan påverka prestanda under stora synkroniseringsåtgärder. Under dessa förhållanden kan en app som tar emot för många begäranden för snabbt sakta ned svarsfrekvensen eller stänga anslutningen. För att förbättra prestandan måste anslutningsappen justeras genom att inte skicka appbegäranden snabbare än appen kan bearbeta dem. Etableringsanslutningsappar som skapats av Microsoft gör den här justeringen. 
 
-- Antalet och storlekarna för tilldelade grupper. Synkronisering av tilldelade grupper tar längre tid än att synkronisera användare. Både antalet och storlekarna i de tilldelade grupperna påverkar prestanda. Om ett program har [mappningar aktiverade för synkronisering av grupp objekt](customize-application-attributes.md#editing-group-attribute-mappings)synkroniseras grupp egenskaper, till exempel grupp namn och medlemskap, förutom användare. Dessa ytterligare synkroniseringar tar längre tid än att synkronisera användar objekt.
+- Antal och storlekar för tilldelade grupper. Det tar längre tid att synkronisera tilldelade grupper än att synkronisera användare. Både antalet och storlekarna för de tilldelade grupperna påverkar prestandan. Om ett program har [mappningar aktiverade](customize-application-attributes.md#editing-group-attribute-mappings)för gruppobjektsynkronisering synkroniseras gruppegenskaper som gruppnamn och medlemskap utöver användare. Dessa ytterligare synkroniseringar tar längre tid än att bara synkronisera användarobjekt.
 
-- Om prestanda blir ett problem och du försöker etablera de flesta användare och grupper i din klient organisation använder du områdes filter. Med omfångs filter kan du finjustera de data som etablerings tjänsten extraherar från Azure AD genom att filtrera ut användare baserat på särskilda attributvärden. Mer information om omfångs filter finns i [attribut-baserad program etablering med omfångs filter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+- Om prestandan blir ett problem och du försöker etablera de flesta användare och grupper i din klientorganisation använder du omfångsfilter. Med omfångsfilter kan du finjustera de data som etableringstjänsten extraherar från Azure AD genom att filtrera bort användare baserat på specifika attributvärden. Mer information om omfångsfilter finns i [Attributbaserad programetablering med omfångsfilter.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
 
 ## <a name="next-steps"></a>Nästa steg
 [Automatisera användaretablering och avetablering för SaaS-program med Azure Active Directory](user-provisioning.md)

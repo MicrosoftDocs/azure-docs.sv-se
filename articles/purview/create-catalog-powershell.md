@@ -1,35 +1,37 @@
 ---
-title: 'Snabb start: skapa ett Azure avdelningens kontroll-konto med Azure PowerShell/Azure CLI (för hands version)'
-description: I den här snabb starten beskrivs hur du skapar ett Azure avdelningens kontroll-konto med hjälp av Azure PowerShell/Azure CLI.
+title: 'Snabbstart: Skapa ett Azure Purview-konto med Azure PowerShell/Azure CLI (förhandsversion)'
+description: Den här snabbstarten beskriver hur du skapar ett Azure Purview-konto med Azure PowerShell/Azure CLI.
 author: hophanms
 ms.author: hophan
+ms.date: 11/23/2020
+ms.topic: quickstart
 ms.service: purview
 ms.subservice: purview-data-catalog
-ms.topic: quickstart
-ms.date: 11/23/2020
-ms.openlocfilehash: 0698295688a4587a704e8cdba0a4796e8d1e6fcd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-api
+ms.openlocfilehash: 6266aedaec8f171a1a6ff3e0d15abdad0263767a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880007"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530869"
 ---
-# <a name="quickstart-create-an-azure-purview-account-using-azure-powershellazure-cli"></a>Snabb start: skapa ett Azure avdelningens kontroll-konto med Azure PowerShell/Azure CLI
+# <a name="quickstart-create-an-azure-purview-account-using-azure-powershellazure-cli"></a>Snabbstart: Skapa ett Azure Purview-konto med Azure PowerShell/Azure CLI
 
 > [!IMPORTANT]
-> Azure avdelningens kontroll är för närvarande en för hands version. Kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versioner innehåller ytterligare juridiska villkor som gäller för Azure-funktioner som är beta, för hands version eller på annat sätt ännu inte har publicerats i allmän tillgänglighet.
+> Azure Purview finns för närvarande i FÖRHANDSVERSION. De [kompletterande användningsvillkoren för Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) förhandsversioner innehåller ytterligare juridiska villkor som gäller för Azure-funktioner som är i betaversion, förhandsversion eller som inte har släppts i allmän tillgänglighet ännu.
 
-I den här snabb starten skapar du ett Azure avdelningens kontroll-konto med hjälp av Azure PowerShell/Azure CLI.
+I den här snabbstarten skapar du ett Azure Purview-konto med Azure PowerShell/Azure CLI.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
-* Det användar konto som du använder för att logga in på Azure måste vara medlem i rollen deltagare eller ägare, eller en administratör för Azure-prenumerationen.
+* Det användarkonto som du använder för att logga in på Azure måste vara medlem i rollen deltagare eller ägare eller administratör för Azure-prenumerationen.
 
 * En egen [klientorganisation i Azure Active Directory](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
-* Installera antingen Azure PowerShell eller Azure CLI på klient datorn för att distribuera mallen: [distribution av kommando raden](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-cli#command-line-deployment)
+* Installera antingen Azure PowerShell eller Azure CLI på klientdatorn för att distribuera mallen: [Kommandoradsdistribution](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-cli#command-line-deployment)
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -37,24 +39,24 @@ Logga in på [Azure-portalen](https://portal.azure.com) med ditt Azure-konto.
 
 ## <a name="configure-your-subscription"></a>Konfigurera din prenumeration
 
-Om det behövs följer du de här stegen för att konfigurera din prenumeration så att Azure-avdelningens kontroll kan köras i din prenumeration:
+Om det behövs följer du dessa steg för att konfigurera din prenumeration så att Azure Purview kan köras i din prenumeration:
 
-   1. Sök efter och välj **prenumerationer** i Azure Portal.
+   1. I Azure Portal du efter och väljer **Prenumerationer**.
 
-   1. I listan över prenumerationer väljer du den prenumeration som du vill använda. Administrativ behörighet för prenumerationen krävs.
+   1. I listan över prenumerationer väljer du den prenumeration som du vill använda. Administrativ åtkomstbehörighet för prenumerationen krävs.
 
-      :::image type="content" source="./media/create-catalog-portal/select-subscription.png" alt-text="Skärm bild som visar hur du väljer en prenumeration i Azure Portal.":::
+      :::image type="content" source="./media/create-catalog-portal/select-subscription.png" alt-text="Skärmbild som visar hur du väljer en prenumeration i Azure Portal.":::
 
-   1. För din prenumeration väljer du **resurs leverantörer**. I fönstret **resurs leverantörer** söker du efter och registrerar alla tre resurs leverantörer: 
-       1. **Microsoft. avdelningens kontroll**
+   1. För din prenumeration väljer du **Resursproviders.** I fönstret **Resursproviders** söker du efter och registrerar alla tre resursproviders: 
+       1. **Microsoft.Purview**
        1. **Microsoft.Storage**
-       1. **Microsoft. EventHub** 
+       1. **Microsoft.EventHub** 
       
-      Om de inte är registrerade registrerar du dem genom att välja **Registrera**.
+      Om de inte är registrerade registrerar du den genom att välja **Registrera**.
 
-      :::image type="content" source="./media/create-catalog-portal/register-purview-resource-provider.png" alt-text="Skärm bild som visar hur du registrerar Microsoft dot Azure avdelningens kontroll Resource Provider i Azure Portal.":::
+      :::image type="content" source="./media/create-catalog-portal/register-purview-resource-provider.png" alt-text="Skärmbild som visar hur du registrerar Resursprovidern Microsoft dot Azure Purview i Azure Portal.":::
 
-## <a name="create-an-azure-purview-account-instance"></a>Skapa en instans av Azure avdelningens kontroll-konto
+## <a name="create-an-azure-purview-account-instance"></a>Skapa en Azure Purview-kontoinstans
 
 1. Logga in med dina Azure-autentiseringsuppgifter
 
@@ -88,7 +90,7 @@ Om det behövs följer du de här stegen för att konfigurera din prenumeration 
     
     ---
 
-1. Skapa en resurs grupp för ditt avdelningens kontroll-konto. Du kan hoppa över det här steget om du redan har ett:
+1. Skapa en resursgrupp för ditt Purview-konto. Du kan hoppa över det här steget om du redan har ett:
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
     
@@ -108,7 +110,7 @@ Om det behövs följer du de här stegen för att konfigurera din prenumeration 
     
     ---
 
-1. Skapa en mall för avdelningens kontroll, till exempel `purviewtemplate.json` . Du kan uppdatera `name` , `location` och `capacity` ( `4` eller `16` ):
+1. Skapa en Purview-mallfil, till exempel `purviewtemplate.json` . Du kan uppdatera `name` , och ( eller `location` `capacity` `4` `16` ):
 
     ```json
     {
@@ -140,7 +142,7 @@ Om det behövs följer du de här stegen för att konfigurera din prenumeration 
     }
     ```
 
-1. Distribuera avdelningens kontroll-mall
+1. Distribuera Purview-mall
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
     
@@ -158,13 +160,13 @@ Om det behövs följer du de här stegen för att konfigurera din prenumeration 
     
     ---
 
-1. Distributions kommandot returnerar resultat. Leta efter för `ProvisioningState` att se om distributionen har slutförts.
+1. Distributionskommandot returnerar resultat. Leta efter `ProvisioningState` för att se om distributionen lyckades.
     
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du lärt dig hur du skapar ett Azure avdelningens kontroll-konto.
+I den här snabbstarten har du lärt dig hur du skapar ett Azure Purview-konto.
 
-Gå vidare till nästa artikel om du vill lära dig hur du ger användare åtkomst till ditt Azure avdelningens kontroll-konto. 
+Gå vidare till nästa artikel om du vill lära dig hur du ger användare åtkomst till ditt Azure Purview-konto. 
 
 > [!div class="nextstepaction"]
-> [Lägg till användare till ditt Azure avdelningens kontroll-konto](catalog-permissions.md)
+> [Lägga till användare i ditt Azure Purview-konto](catalog-permissions.md)

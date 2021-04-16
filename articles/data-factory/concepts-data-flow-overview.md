@@ -1,103 +1,106 @@
 ---
 title: Mappa dataflöden
-description: En översikt över att mappa data flöden i Azure Data Factory
+description: En översikt över mappning av dataflöden i Azure Data Factory
 author: kromerm
 ms.author: makromer
-ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 04/11/2021
-ms.openlocfilehash: 53f300adb57eb17e704e7e3323b9829c485bb87a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 26d119fb6880f4c539e0064db424699bc5d22f96
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308990"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478683"
 ---
-# <a name="mapping-data-flows-in-azure-data-factory"></a>Mappa data flöden i Azure Data Factory
+# <a name="mapping-data-flows-in-azure-data-factory"></a>Mappa dataflöden i Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 ## <a name="what-are-mapping-data-flows"></a>Vad är Mappa dataflöden?
 
-Mappning av data flöden är visuellt utformad med data transformationer i Azure Data Factory. Data flöden gör det möjligt för data tekniker att utveckla data omvandlings logik utan att skriva kod. De resulterande data flödena körs som aktiviteter i Azure Data Factory pipelines som använder utskalade Apache Spark kluster. Data flödes aktiviteter kan användas med befintliga Azure Data Factory schemaläggning, kontroll, flöde och övervakning.
+Mappning av dataflöden är visuellt utformade datatransformationer i Azure Data Factory. Med dataflöden kan datatekniker utveckla datatransformeringslogik utan att skriva kod. Resulterande dataflöden körs som aktiviteter i Azure Data Factory som använder utskalade Apache Spark kluster. Dataflödesaktiviteter kan operationaliseras med befintliga funktioner Azure Data Factory, kontroll, flöde och övervakning.
 
-Genom att mappa data flöden får du en helt visuell upplevelse utan kodning som krävs. Dina data flöden körs på ADF-hanterade körnings kluster för att skala ut data bearbetningen. Azure Data Factory hanterar all kod översättning, Sök vägs optimering och körning av dina data flödes jobb.
+Mappning av dataflöden ger en helt visuell upplevelse utan att kodning krävs. Dina dataflöden körs på ADF-hanterade körningskluster för utskalade databearbetning. Azure Data Factory hanterar all kodöversättning, sökvägsoptimering och körning av dina dataflödesjobb.
 
 ## <a name="getting-started"></a>Komma igång
 
-Data flöden skapas från fönstret fabriks resurser som pipelines och data uppsättningar. Om du vill skapa ett data flöde väljer du plus tecknet bredvid **fabriks resurser** och väljer sedan **data flöde**. 
+Dataflöden skapas från fönstret med fabriksresurser som pipelines och datauppsättningar. Om du vill skapa ett dataflöde väljer du plustecknet bredvid **Fabriksresurser** och väljer **sedan Dataflöde**. 
 
-![Nytt data flöde](media/data-flow/new-data-flow.png)
+![Nytt dataflöde](media/data-flow/new-data-flow.png)
 
-Den här åtgärden tar dig till data flödets arbets yta där du kan skapa din omvandlings logik. Välj **Lägg till källa** för att börja konfigurera din käll omvandling. Mer information finns i [käll omvandling](data-flow-source.md).
+Den här åtgärden tar dig till dataflödesarbetsytan, där du kan skapa din transformeringslogik. Välj **Lägg till källa** för att börja konfigurera din källtransformering. Mer information finns i [Källtransformering](data-flow-source.md).
 
-## <a name="authoring-data-flows&quot;></a>Redigera data flöden
+## <a name="authoring-data-flows&quot;></a>Redigera dataflöden
 
-Kart data flödet har en unik redigerings yta som är utformad för att skapa omvandlings logik enkelt. Data flödes arbets ytan är uppdelad i tre delar: det översta fältet, grafen och konfigurations panelen. 
+Mappning av dataflöde har en unik redigeringsarbetsyta som är utformad för att göra det enkelt att skapa transformeringslogik. Dataflödesarbetsytan är uppdelad i tre delar: det översta fältet, diagrammet och konfigurationspanelen. 
 
-![Skärm bild som visar data flödets arbets yta med översta stapel-, graf-och konfigurations panelen märkt.](media/data-flow/canvas-1.png &quot;Arbetsyta")
+![Skärmbild som visar dataflödesarbetsytan med den översta stapeln, grafen och konfigurationspanelen märkt.](media/data-flow/canvas-1.png &quot;Arbetsyta")
 
 ### <a name="graph"></a>Graph
 
-I diagrammet visas omvandlings strömmen. Den visar härkomst för källdata när den flödar till en eller flera handfat. Om du vill lägga till en ny källa väljer du **Lägg till källa**. Om du vill lägga till en ny omvandling väljer du plus tecknet längst ned till höger i en befintlig omvandling. Läs mer om hur du [hanterar data flödes diagrammet](concepts-data-flow-manage-graph.md).
+Diagrammet visar transformeringsströmmen. Den visar ursprunget för källdata när de flödar till en eller flera mottagare. Om du vill lägga till en ny källa väljer du **Lägg till källa.** Om du vill lägga till en ny transformering väljer du plustecknet i det nedre högra högra av en befintlig transformering. Läs mer om hur du [hanterar dataflödesdiagrammet](concepts-data-flow-manage-graph.md).
 
-![Skärm bild som visar graf-delen av arbets ytan med en söktext ruta.](media/data-flow/canvas-2.png)
+![Skärmbild som visar diagramdelen av arbetsytan med en söktextruta.](media/data-flow/canvas-2.png)
 
-### <a name="configuration-panel"></a>Konfigurations panel
+### <a name="configuration-panel"></a>Konfigurationspanel
 
-Konfigurations panelen visar inställningarna för den aktuella valda omvandlingen. Om ingen omvandling väljs visas data flödet. I den övergripande data flödes konfigurationen kan du lägga till parametrar via fliken **parametrar** . Mer information finns i [mappa data flödes parametrar](parameters-data-flow.md).
+Konfigurationspanelen visar de inställningar som är specifika för den valda transformeringen. Om ingen transformering har valts visas dataflödet. I den övergripande dataflödeskonfigurationen kan du lägga till parametrar via **fliken** Parametrar. Mer information finns i [Mappa dataflödesparametrar](parameters-data-flow.md).
 
-Varje omvandling innehåller minst fyra konfigurations flikar.
+Varje transformering innehåller minst fyra konfigurationsflikar.
 
-#### <a name="transformation-settings"></a>Omvandlings inställningar
+#### <a name="transformation-settings"></a>Transformeringsinställningar
 
-Den första fliken i varje omvandlings konfigurations fönster innehåller inställningar som är speciella för omvandlingen. Mer information finns på dokument sidan för omvandling.
+Den första fliken i varje transformerings konfigurationsfönster innehåller de inställningar som är specifika för transformeringen. Mer information finns på dokumentationssidan för transformeringen.
 
-![Fliken käll inställningar](media/data-flow/source1.png "Fliken käll inställningar")
+![Fliken Källinställningar](media/data-flow/source1.png "Fliken Källinställningar")
 
 #### <a name="optimize"></a>Optimera
 
-Fliken **Optimize** innehåller inställningar för att konfigurera partitionerings scheman. Mer information om hur du optimerar dina data flöden finns i [prestanda guiden för att mappa data flödet](concepts-data-flow-performance.md).
+Fliken **Optimera** innehåller inställningar för att konfigurera partitioneringsscheman. Mer information om hur du optimerar dina dataflöden finns i [prestandaguiden för mappning av dataflöden.](concepts-data-flow-performance.md)
 
-![Skärm bild som visar fliken optimering, som innehåller partitionsalternativ, partitionstyper och antalet partitioner.](media/data-flow/optimize.png)
+![Skärmbild som visar fliken Optimera, som innehåller alternativet Partition, Partitionstyp och Antal partitioner.](media/data-flow/optimize.png)
 
-#### <a name="inspect&quot;></a>Allmänt
+#### <a name="inspect&quot;></a>Inspektera
 
-Fliken **Granska** visar metadata för den data ström som du transformerar. Du kan se kolumn antal, kolumnerna har ändrats, kolumnerna tillagda, data typer, kolumn ordning och kolumn referenser. **Granska** är en skrivskyddad vy av dina metadata. Du behöver inte ha aktiverat fel söknings läge för att se metadata i rutan **Granska** .
+Fliken **Granska** innehåller en vy över metadata för dataströmmen som du transformerar. Du kan se antalet kolumner, kolumnerna har ändrats, kolumnerna har lagts till, datatyper, kolumnordningen och kolumnreferenserna. **Inspect** är en skrivskyddade vy över dina metadata. Du behöver inte ha felsökningsläget aktiverat för att se metadata i **fönstret** Inspektera.
 
-![Allmänt](media/data-flow/inspect1.png &quot;Allmänt")
+![Inspektera](media/data-flow/inspect1.png &quot;Inspektera")
 
-När du ändrar formen på dina data med omvandlingar visas flödet ändringar i metadata i rutan **Granska** . Om det inte finns ett definierat schema i din käll omvandling visas inte metadata i rutan **Granska** . Brist på metadata är vanligt i schema avvikelse scenarier.
+När du ändrar formen på dina data genom omvandlingar ser du flödet för metadataändringar i **fönstret** Inspektera. Om det inte finns något definierat schema i din källtransformering visas inte metadata i **fönstret** Inspektera. Brist på metadata är vanligt i schemaavdriftsscenarier.
 
 #### <a name="data-preview"></a>Förhandsgranskning
 
-Om fel söknings läget är på visar fliken **data förhands granskning** en interaktiv ögonblicks bild av data vid varje transformering. Mer information finns [i förhands granskning av data i fel söknings läge](concepts-data-flow-debug-mode.md#data-preview).
+Om felsökningsläget är aktiverat ger **fliken Dataförhandsgranskning** dig en interaktiv ögonblicksbild av data vid varje transformering. Mer information finns i [Dataförhandsgranskning i felsökningsläge.](concepts-data-flow-debug-mode.md#data-preview)
 
 ### <a name="top-bar"></a>Översta fältet
 
-Det översta fältet innehåller åtgärder som påverkar hela data flödet, t. ex. Spara och verifiera. Du kan även visa den underliggande JSON-koden och data flödes skriptet för din omvandlings logik. Mer information finns i [data flödes skriptet](data-flow-script.md).
+Det översta fältet innehåller åtgärder som påverkar hela dataflödet, som att spara och validera. Du kan även visa den underliggande JSON-koden och dataflödesskriptet för din transformeringslogik. Mer information finns i [dataflödesskriptet](data-flow-script.md).
 
-## <a name="available-transformations"></a>Tillgängliga omvandlingar
+## <a name="available-transformations"></a>Tillgängliga transformningar
 
-Visa [Översikt över mappnings data flödet](data-flow-transformation-overview.md) för att hämta en lista över tillgängliga transformeringar.
+Visa [översikten över mappning av](data-flow-transformation-overview.md) dataflödestransformering för att hämta en lista över tillgängliga omvandlingar.
 
-## <a name="data-flow-activity"></a>Data flödes aktivitet
+## <a name="data-flow-data-types"></a>Dataflödesdatatyper
 
-Mappning av data flöden fungerar i ADF-pipeline med [data flödes aktiviteten](control-flow-execute-data-flow-activity.md). Alla användare behöver göra är att ange vilken integration runtime som ska användas och skicka in parameter värden. Mer information finns i [Azure integration runtime](concepts-integration-runtime.md#azure-integration-runtime).
+array binary boolean complex decimal date float integer long map short string timestamp
+
+## <a name="data-flow-activity"></a>Dataflödesaktivitet
+
+Mappningsdataflöden operationaliseras i ADF-pipelines med hjälp av [dataflödesaktiviteten](control-flow-execute-data-flow-activity.md). Allt en användare behöver göra är att ange vilken integreringskörning som ska användas och skicka in parametervärden. Mer information finns i [Azure Integration Runtime.](concepts-integration-runtime.md#azure-integration-runtime)
 
 ## <a name="debug-mode"></a>Felsökningsläge
 
-Fel söknings läge gör att du interaktivt kan se resultatet av varje omformnings steg medan du skapar och felsöker dina data flöden. Felsökningssessionen kan användas både i när du skapar din data flödes logik och kör fel söknings körning av pipelinen med data flödes aktiviteter. Mer information finns i dokumentationen om [fel söknings läge](concepts-data-flow-debug-mode.md).
+Med felsökningsläget kan du interaktivt se resultatet av varje transformeringssteg när du skapar och felsöker dina dataflöden. Felsökningssessionen kan användas både i när du skapar dataflödeslogiken och kör pipelinefelsökningskörningar med dataflödesaktiviteter. Mer information finns i dokumentationen [om felsökningsläge.](concepts-data-flow-debug-mode.md)
 
-## <a name="monitoring-data-flows"></a>Övervaka data flöden
+## <a name="monitoring-data-flows"></a>Övervaka dataflöden
 
-Kart data flödet integreras med befintliga Azure Data Factory övervakningsfunktionerna. Information om hur du förstår utdata för data flödes övervakning finns i [övervaka mappning av data flöden](concepts-data-flow-monitoring.md).
+Mappningsdataflödet integreras med befintliga Azure Data Factory funktioner för övervakning. Information om hur du förstår övervakningsutdata för dataflöden finns i [Övervaka mappning av dataflöden.](concepts-data-flow-monitoring.md)
 
-Azure Data Factorys teamet har skapat en [prestanda justerings guide](concepts-data-flow-performance.md) som hjälper dig att optimera körnings tiden för dina data flöden när du har skapat din affärs logik.
+Teamet Azure Data Factory skapat en guide [](concepts-data-flow-performance.md) för prestandajustering som hjälper dig att optimera körningstiden för dina dataflöden när du har skapat din affärslogik.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Lär dig hur du skapar en [käll omvandling](data-flow-source.md).
-* Lär dig hur du skapar dina data flöden i [fel söknings läge](concepts-data-flow-debug-mode.md).
+* Lär dig hur du skapar en [källtransformering](data-flow-source.md).
+* Lär dig hur du skapar dina dataflöden [i felsökningsläge.](concepts-data-flow-debug-mode.md)

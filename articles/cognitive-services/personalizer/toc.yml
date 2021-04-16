@@ -3,7 +3,7 @@
 - name: Översikt
   expanded: true
   items:
-    - name: Översikt över personanpassa
+    - name: Vad är Personanpassning?
       href: what-is-personalizer.md
     - name: Priser
       href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
@@ -11,7 +11,7 @@
     - name: Nyheter
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
-- name: Snabb start för personanpassa
+- name: Snabbstart
   href: ./quickstart-personalizer-sdk.md
 - name: Exempel
   href: 'https://github.com/Azure-Samples/cognitive-services-personalizer-samples'
@@ -32,6 +32,12 @@
       href: how-to-manage-model.md
     - name: Analysera med en offlineutvärdering
       href: how-to-offline-evaluation.md
+    - name: Företagsberedskap
+      items:
+        - name: Konfigurera virtuella nätverk
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/personalizer/context/context
+        - name: Använda kund hanterade nycklar
+          href: encrypt-data-at-rest.md
 - name: Begrepp
   items:
     - name: Så här fungerar Personanpassning
@@ -43,7 +49,7 @@
     - name: Terminologi
       href: terminology.md
       displayName: 'best practice, design'
-    - name: Personanpassa fundament ALS
+    - name: Grundläggande om personanpassare
       items:
         - name: Funktionerna Åtgärd och Kontext
           href: concepts-features.md
@@ -81,7 +87,7 @@
       displayName: 'jupyter, notebook, python, cell, graph, chart, aggregate, model update frequency'
 - name: Referens
   items:
-    - name: Personanpassa REST API
+    - name: Personanpassare REST API
       href: 'https://go.microsoft.com/fwlink/?linkid=2092082'
     - name: .NET
       items:
@@ -107,17 +113,17 @@
           href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: Resurser
   items:
+    - name: Företagsberedskap
+      items:
+        - name: Stöd för regioner
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Efterlevnad och certifiering
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Microsoft Learn moduler
+      href: 'https://docs.microsoft.com/learn/browse/?terms=personalizer'
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/personalizer/context/context
     - name: Felsökning
       href: troubleshooting.md
-    - name: Lär dig moduler
-      href: 'https://docs.microsoft.com/learn/browse/?terms=personalizer'
-    - name: Stöd för regioner
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Efterlevnad
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Kryptering
-      href: encrypt-data-at-rest.md
     - name: Azure-uppdateringar
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'

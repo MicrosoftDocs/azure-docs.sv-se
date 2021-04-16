@@ -1,104 +1,104 @@
 ---
 title: Kom igång med att integrera Azure Active Directory med appar
-description: Den här artikeln är en komma igång-guide för att integrera Azure Active Directory (AD) med lokala program och moln program.
+description: Den här artikeln är en komma igång-guide för Azure Active Directory (AD) med lokala program och molnprogram.
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/05/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: asteen
-ms.openlocfilehash: 2873f3946b5b3c7eed5a3ba1cde702670040c41a
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 37916e5e356e7c5ad6e685ac0838363fe2579496
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443465"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374989"
 ---
-# <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Att integrera Azure Active Directory med program komma igång-guide
+# <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Kom igång Azure Active Directory integrering med program
 
-I det här avsnittet sammanfattas processen för att integrera program med Azure Active Directory (AD). Vart och ett av avsnitten nedan innehåller en kort sammanfattning av ett mer detaljerat avsnitt, så att du kan identifiera vilka delar av den här komma igång-guiden som är relevanta för dig.
+Det här avsnittet sammanfattar processen för att integrera program med Azure Active Directory (AD). Vart och ett av avsnitten nedan innehåller en kort sammanfattning av ett mer detaljerat ämne så att du kan identifiera vilka delar av den här kom igång-guiden som är relevanta för dig.
 
-Information om hur du hämtar djupgående distributions planer finns i [Nästa steg](#next-steps).
+Information om hur du laddar ned djupgående distributionsplaner finns i [Nästa steg.](#next-steps)
 
-## <a name="take-inventory"></a>Ta inventering
-Innan du integrerar program med Azure AD är det viktigt att veta var du är och var du vill gå.  Följande frågor är avsedda att hjälpa dig att tänka på ditt Azure AD Application Integration-projekt.
+## <a name="take-inventory"></a>Gör en inventering
+Innan du integrerar program med Azure AD är det viktigt att veta var du är och vart du vill gå.  Följande frågor är avsedda att hjälpa dig att tänka på ditt Azure AD-programintegreringsprojekt.
 
 ### <a name="application-inventory"></a>Applikationsinventering
 * Var finns alla dina program? Vem äger dem?
 * Vilken typ av autentisering kräver dina program?
 * Vem behöver åtkomst till vilka program?
 * Vill du distribuera ett nytt program?
-  * Kommer du att bygga den internt och distribuera den på en Azure Compute-instans?
+  * Kommer du att skapa den internt och distribuera den på en Azure-beräkningsinstans?
   * Kommer du att använda en som är tillgänglig i Azure Application galleriet?
 
-### <a name="user-and-group-inventory"></a>Användar-och grupp inventering
-* Var finns dina användar konton?
+### <a name="user-and-group-inventory"></a>Användar- och gruppinventering
+* Var finns dina användarkonton?
   * Lokalt Active Directory
   * Azure AD
-  * I en separat program databas som du äger
-  * I program som inte är sanktionerade
+  * I en separat programdatabas som du äger
+  * I icke-sanktionerade program
   * Alla alternativ ovan
-* Vilka behörigheter och roll tilldelningar har enskilda användare för närvarande? Behöver du granska åtkomsten eller är du säker på att användarnas åtkomst-och roll tilldelningar är lämpliga nu?
-* Är grupper redan etablerade i din lokala Active Directory?
+* Vilka behörigheter och rolltilldelningar har enskilda användare för närvarande? Behöver du granska deras åtkomst eller är du säker på att din användaråtkomst och rolltilldelningar är lämpliga nu?
+* Har grupper redan upprättats i lokal Active Directory?
   * Hur organiseras dina grupper?
-  * Vilka är grupp medlemmarna?
-  * Vilka behörigheter/roll tilldelningar har grupperna för närvarande?
-* Behöver du rensa användare/grupp-databaser innan du integrerar?  (Det här är en viktig fråga. Skräp in, skräp ut.)
+  * Vilka är gruppmedlemmarna?
+  * Vilka behörigheter/rolltilldelningar har grupperna för närvarande?
+* Behöver du rensa användar-/gruppdatabaser innan du integrerar?  (Det här är en viktig fråga. Skräp in, skräp ut.)
 
-### <a name="access-management-inventory"></a>Åtkomst hanterings inventering
-* Hur hanterar du användar åtkomst för program? Vill du ändra?  Har du funderat på andra sätt att hantera åtkomst, t. ex. med [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) till exempel?
+### <a name="access-management-inventory"></a>Åtkomsthanteringsinventering
+* Hur hanterar du för närvarande användaråtkomst till program? Behöver det ändras?  Har du övervägt andra sätt att hantera åtkomst, till exempel [med Azure RBAC?](../../role-based-access-control/role-assignments-portal.md)
 * Vem behöver åtkomst till vad?
 
-Du kanske inte har svar på alla dessa frågor fram, men det är OK.  Den här guiden hjälper dig att besvara några av dessa frågor och fatta några välgrundade beslut.
+Du kanske inte har svar på alla dessa frågor direkt, men det är okej.  Den här guiden kan hjälpa dig att besvara några av dessa frågor och fatta välgrundade beslut.
 
-### <a name="find-unsanctioned-cloud-applications-with-cloud-discovery"></a>Hitta ej sanktionerade moln program med Cloud Discovery
+### <a name="find-unsanctioned-cloud-applications-with-cloud-discovery"></a>Hitta osanktionerade molnprogram med Cloud Discovery
 
-Som nämnts ovan kan det finnas program som inte har hanterats av din organisation förrän nu.  Som en del av inventerings processen är det möjligt att hitta ej sanktionerade moln program. Se [konfigurera Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
+Som nämnts ovan kan det finnas program som inte har hanterats av din organisation förrän nu.  Som en del av inventeringsprocessen är det möjligt att hitta osanktionerade molnprogram. Se [Konfigurera Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 
 ## <a name="integrating-applications-with-azure-ad"></a>Integrera program med Azure AD
-I följande artiklar diskuteras de olika sätten att integrera med Azure AD och ge lite vägledning.
+Följande artiklar beskriver de olika sätt som program integrerar med Azure AD och ger viss vägledning.
 
-* [Bestämma vilken Active Directory som ska användas](../fundamentals/active-directory-whatis.md)
-* [Använda program i Azures program Galleri](what-is-single-sign-on.md)
-* [Integrerings lista för integrering av SaaS-program](../saas-apps/tutorial-list.md)
+* [Avgöra vilken Active Directory som ska användas](../fundamentals/active-directory-whatis.md)
+* [Använda program i Azure-programgalleriet](what-is-single-sign-on.md)
+* [Integrera en lista med självstudier för SaaS-program](../saas-apps/tutorial-list.md)
 
 ## <a name="capabilities-for-apps-not-listed-in-the-azure-ad-gallery"></a>Funktioner för appar som inte visas i Azure AD-galleriet
 
-Du kan lägga till alla program som redan finns i din organisation eller program från tredje part från en leverantör som inte redan ingår i Azure AD-galleriet. Beroende på ditt [licens avtal](https://azure.microsoft.com/pricing/details/active-directory/)är följande funktioner tillgängliga:
+Du kan lägga till program som redan finns i din organisation eller program från tredje part från en leverantör som inte redan ingår i Azure AD-galleriet. Beroende på [ditt licensavtal](https://azure.microsoft.com/pricing/details/active-directory/)är följande funktioner tillgängliga:
 
-- Självbetjänings integrering av alla program som stöder [Security Assertion Markup Language (SAML) 2,0](https://wikipedia.org/wiki/SAML_2.0) identitets leverantörer (SP-initierad eller IDP-initierad)
-- Självbetjänings integrering av alla webb program som har en HTML-baserad inloggnings sida med [LÖSENORDSBASERAD SSO](sso-options.md#password-based-sso)
-- Anslutning via självbetjäning för program som använder [systemet för scim-protokoll (Cross-Domain Identity Management) för användar etablering](../app-provisioning/use-scim-to-provision-users-and-groups.md)
-- Möjlighet att lägga till länkar till ett program i [Office 365-appen starta](https://support.microsoft.com/office/meet-the-microsoft-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) eller [Mina appar](https://myapplications.microsoft.com/)
+- Självbetjäning av alla program som har [stöd för Security Assertion Markup Language (SAML) 2.0-identitetsproviders](https://wikipedia.org/wiki/SAML_2.0) (SP-initierade eller IdP-initierade)
+- Självbetjäning av alla webbprogram som har en HTML-baserad inloggningssida med [lösenordsbaserad enkel inloggning](sso-options.md#password-based-sso)
+- Självbetjäningsanslutning av program som använder [protokollet System for Cross-Domain Identity Management (SCIM) för användareablering](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+- Möjlighet att lägga till länkar till alla program i [Office 365-appstartaren](https://support.microsoft.com/office/meet-the-microsoft-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) [eller Mina appar](https://myapplications.microsoft.com/)
 
-Om du vill ha råd om utvecklare om hur du integrerar anpassade appar med Azure AD, se [autentiserings scenarier för Azure AD](../develop/authentication-vs-authorization.md). När du utvecklar en app som använder ett modernt protokoll som [OpenID Connect/OAuth](../develop/active-directory-v2-protocols.md) för att autentisera användare, kan du registrera den med Microsoft Identity Platform genom att använda [Appregistreringar](../develop/quickstart-register-app.md) upplevelse i Azure Portal.
+Om du behöver vägledning för utvecklare om hur du integrerar anpassade appar med Azure AD kan du gå till [Autentiseringsscenarier för Azure AD.](../develop/authentication-vs-authorization.md) När du utvecklar en app som använder ett modernt protokoll som [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md) för att autentisera användare kan du registrera den med Microsoft Identity Platform med [hjälp av Appregistreringar-upplevelsen](../develop/quickstart-register-app.md) i Azure Portal.
 
 ### <a name="authentication-types"></a>Autentiseringstyper
-Varje program kan ha olika autentiseringskrav. Med Azure AD kan du använda signerings certifikat med program som använder SAML 2,0, WS-Federation eller OpenID Connect-protokoll och enkel inloggning med lösen ord. Mer information om programautentiserings typer finns i [Hantera certifikat för federerade enkla Sign-On i Azure Active Directory](manage-certificates-for-federated-single-sign-on.md) och [lösen ords baserad enkel inloggning](what-is-single-sign-on.md).
+Vart och ett av dina program kan ha olika autentiseringskrav. Med Azure AD kan signeringscertifikat användas med program som använder SAML 2.0, WS-Federation eller OpenID Connect-protokoll och enkel inloggning med lösenord. Mer information om typer av programautentisering finns i Hantera certifikat för [federerad](manage-certificates-for-federated-single-sign-on.md) enskild Sign-On i Azure Active Directory [och Lösenordsbaserad enkel inloggning på](what-is-single-sign-on.md).
 
-### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Aktivera SSO med Azure AD App proxy
-Med Microsoft Azure AD Application Proxy kan du ge åtkomst till program som finns i ditt privata nätverk på ett säkert sätt, från valfri plats och på valfri enhet. När du har installerat en Application Proxy-koppling i din miljö kan den enkelt konfigureras med Azure AD.
+### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Aktivera enkel inloggning med Azure AD App Proxy
+Med Microsoft Azure AD Programproxy kan du ge åtkomst till program som finns i ditt privata nätverk på ett säkert sätt, var som helst och på valfri enhet. När du har installerat en programproxyanslutning i din miljö kan den enkelt konfigureras med Azure AD.
 
 ### <a name="integrating-custom-applications"></a>Integrera anpassade program
-Om du vill lägga till ett anpassat program i Azure Application galleriet, se [Publicera appen i Azure AD App-galleriet](../develop/v2-howto-app-gallery-listing.md).
+Om du vill lägga till ditt anpassade program i Azure Application-galleriet kan du gå till Publicera din [app i Azure AD-appgalleriet](../develop/v2-howto-app-gallery-listing.md).
 
 ## <a name="managing-access-to-applications"></a>Hantera åtkomst till program
-I följande artiklar beskrivs hur du kan hantera åtkomst till program när de har integrerats med Azure AD med hjälp av Azure AD-anslutningar och Azure AD.
+I följande artiklar beskrivs hur du kan hantera åtkomst till program när de har integrerats med Azure AD med hjälp av Azure AD-anslutningsprogram och Azure AD.
 
-* [Hantera åtkomst till appar med hjälp av Azure AD](what-is-access-management.md)
-* [Automatisera med Azure AD-anslutningar](../app-provisioning/user-provisioning.md)
+* [Hantera åtkomst till appar med Azure AD](what-is-access-management.md)
+* [Automatisera med Azure AD-anslutningsappar](../app-provisioning/user-provisioning.md)
 * [Tilldela användare till ett program](./assign-user-or-group-access-portal.md)
 * [Tilldela grupper till ett program](./assign-user-or-group-access-portal.md)
 * [Dela konton](../enterprise-users/users-sharing-accounts.md)
 
 ## <a name="next-steps"></a>Nästa steg
-För detaljerad information kan du hämta Azure Active Directory distributions planer från [GitHub](../fundamentals/active-directory-deployment-plans.md). För Galleri program kan du hämta distributions planer för enkel inloggning, villkorlig åtkomst och användar etablering via [Azure Portal](https://portal.azure.com).
+Om du vill ha detaljerad information kan du ladda ned Azure Active Directory distributionsplaner från [GitHub.](../fundamentals/active-directory-deployment-plans.md) För galleriprogram kan du ladda ned distributionsplaner för enkel inloggning, villkorsstyrd åtkomst och användareablering via [Azure Portal](https://portal.azure.com).
 
-Så här hämtar du en distributions plan från Azure Portal:
+Så här laddar du ned en distributionsplan från Azure Portal:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. Välj **företags program**  |  **Välj en app**  |  **Deployment-plan**.
+2. Välj **Företagsprogram**  |  **Välj en appdistributionsplan.**  |  

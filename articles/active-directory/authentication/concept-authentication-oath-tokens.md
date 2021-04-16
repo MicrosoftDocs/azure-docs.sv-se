@@ -1,6 +1,6 @@
 ---
 title: Autentiseringsmetod för OATH-token – Azure Active Directory
-description: Lär dig mer om att använda OATH-token i Azure Active Directory för att hjälpa till att förbättra och säkra inloggnings händelser
+description: Lär dig mer om att använda OATH-token Azure Active Directory för att förbättra och skydda inloggningshändelser
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -10,38 +10,38 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44016d81b18e8df7b6e2ed7c14559cf19ac0c07d
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 99d0dd081e3e1a681ba55e3457b79a548d6b2bb7
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106644"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530383"
 ---
-# <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Autentiseringsmetoder i Azure Active Directory-OATH-token 
+# <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Autentiseringsmetoder i Azure Active Directory – OATH-token 
 
-OATH-TOTP mobilapp (Time-based ett Time-lösenordet) är en öppen standard som anger hur eng ång slö sen ord (eng ång slö sen ord) genereras. OATH-TOTP mobilapp kan implementeras med hjälp av antingen program vara eller maskin vara för att generera koderna. Azure AD har inte stöd för OATH-HOTP, en annan kodgenerering standard.
+OATH TOTP (tidsbaserat engångslösenord) är en öppen standard som anger hur engångslösenordskoder (OTP) genereras. OATH TOTP kan implementeras med antingen programvara eller maskinvara för att generera koderna. Azure AD stöder inte OATH HOTP, en annan standard för kodgenerering.
 
-## <a name="oath-software-tokens"></a>OATH-programvaru-token
+## <a name="oath-software-tokens"></a>OATH-programvarutoken
 
-OATH-token för program vara är vanligt vis program som Microsoft Authenticator-appen och andra Authenticator-appar. Azure AD genererar den hemliga nyckeln eller dirigeringen som inmatas i appen och används för att generera varje eng ång slö sen ord.
+Oath-token för programvara är vanligtvis program som Microsoft Authenticator och andra autentiseringsappar. Azure AD genererar den hemliga nyckeln, eller seed, som matas in i appen och används för att generera varje engångslösenord.
 
-Authenticator-appen genererar automatiskt koder när de konfigureras att utföra push-meddelanden så att en användare har en säkerhets kopia även om deras enheter inte har någon anslutning. Program från tredje part som använder OATH-TOTP mobilapp för att generera koder kan också användas.
+Authenticator-appen genererar automatiskt koder när den har ställts in för att skicka push-meddelanden så att en användare får en säkerhetskopia även om enheten inte har någon anslutning. Program från tredje part som använder OATH TOTP för att generera koder kan också användas.
 
-Vissa TOTP mobilapp-token för OATH är programmerbara, vilket innebär att de inte har en hemlig nyckel eller ett förprogrammerat dirigerings-. Dessa programmerbara maskinvaru-token kan konfigureras med hjälp av den hemliga nyckeln eller dirigeringen som hämtats från installations flödet för programtoken. Kunder kan köpa dessa token från den leverantör de väljer och använda den hemliga nyckeln eller dirigeringen i deras leverantörs konfigurations process.
+Vissa OATH TOTP-maskinvarutoken är programmerbara, vilket innebär att de inte har en hemlig nyckel eller förprogrammerat startprogram. Dessa programmerbara maskinvarutoken kan konfigureras med hjälp av den hemliga nyckeln eller start seed som hämtas från konfigurationsflödet för programvarutoken. Kunder kan köpa dessa token från leverantören och använda den hemliga nyckeln eller start seed i leverantörens konfigurationsprocess.
 
-## <a name="oath-hardware-tokens-preview"></a>OATH-token för maskin vara (för hands version)
+## <a name="oath-hardware-tokens-preview"></a>OATH-maskinvarutoken (förhandsversion)
 
-Azure AD stöder användningen av OATH-TOTP mobilapp SHA-1-token som uppdaterar koder var 30: e sekund eller 60 sekunder. Kunder kan köpa dessa token från den leverantör de väljer.
+Azure AD stöder användning av OATH-TOTP SHA-1-tokens som uppdaterar koder var 30:e eller 60:e sekund. Kunder kan köpa dessa token från valfri leverantör.
 
-OATH TOTP mobilapp-token levereras vanligt vis med en hemlig nyckel eller dirigeras, förprogrammeras i token. De här nycklarna måste vara inmatade i Azure AD enligt beskrivningen i följande steg. Hemliga nycklar är begränsade till 128 tecken, som kanske inte är kompatibla med alla tokens. Den hemliga nyckeln får bara innehålla tecknen *a-z* eller *a-z* och siffror *2-7* och måste kodas i *Base32*.
+OATH TOTP-maskinvarutoken har vanligtvis en hemlig nyckel, eller seed, förprogrammerat i token. Dessa nycklar måste anges i Azure AD enligt beskrivningen i följande steg. Hemliga nycklar är begränsade till 128 tecken, vilket kanske inte är kompatibelt med alla token. Den hemliga nyckeln får bara innehålla tecknen *a-z* eller *A-Z* och siffrorna *2–7* och måste vara kodade i *Base32*.
 
-Programmerbara OATH TOTP mobilapp-maskinvaru-token som kan dirigeras om kan också konfigureras med Azure AD i installations flödet för programtoken.
+Programmerbara OATH TOTP-maskinvarutoken som kan skickas igen kan också konfigureras med Azure AD i konfigurationsflödet för programvarutoken.
 
-OATH-token för OATH-enheter stöds som en del av en offentlig för hands version. Mer information om för hands versionerna finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
+OATH-maskinvarutoken stöds som en del av en offentlig förhandsversion. Mer information om förhandsversioner finns i [Kompletterande användningsvillkor för Microsoft Azure förhandsversioner.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-![Laddar upp OATH-token till bladet MFA OATH-token](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+![Ladda upp OATH-token till bladet MFA OATH-token](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
-När token har hämtats måste de överföras i ett fil format med kommaavgränsade värden (CSV), inklusive UPN, serie nummer, hemlig nyckel, tidsintervall, tillverkare och modell, som du ser i följande exempel:
+När token har köpts måste de laddas upp i ett filformat med kommaavgränsade värden (CSV), inklusive UPN, serienummer, hemlig nyckel, tidsintervall, tillverkare och modell, enligt följande exempel:
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
@@ -49,16 +49,16 @@ Helga@contoso.com,1234567,2234567abcdef2234567abcdef,60,Contoso,HardwareKey
 ```  
 
 > [!NOTE]
-> Se till att du inkluderar rubrik raden i CSV-filen. Om ett UPN har ett enda citat, kan du kringgå det med ett annat enkelt citat tecken. Om UPN till exempel är My ' user@domain.com , ändrar du det till mitt ' ' user@domain.com när du laddar upp filen.
+> Se till att du inkluderar rubrikraden i CSV-filen. Om ett UPN har ett enkelt citattecken kan du undvika det med ett annat enkelt citattecken. Om TILL exempel UPN är min' user@domain.com ändrar du det till my'' när du laddar upp user@domain.com filen.
 
-När den är korrekt formaterad som en CSV-fil kan en global administratör logga in på Azure Portal, navigera till **Azure Active Directory > säkerhet > MFA > Oath-token** och ladda upp den resulterande CSV-filen.
+När den är korrekt formaterad som en CSV-fil kan en global administratör logga in på Azure Portal, navigera till **Azure Active Directory > Security > MFA > OATH-token och** ladda upp den resulterande CSV-filen.
 
-Beroende på storleken på CSV-filen kan det ta några minuter att bearbeta. Välj knappen **Uppdatera** för att hämta aktuell status. Om det finns fel i filen kan du ladda ned en CSV-fil som visar eventuella fel som du kan lösa. Fält namnen i den hämtade CSV-filen skiljer sig från den överförda versionen.  
+Beroende på CSV-filens storlek kan det ta några minuter att bearbeta. Välj knappen **Uppdatera** för att få den aktuella statusen. Om det finns några fel i filen kan du ladda ned en CSV-fil som visar eventuella fel som du kan lösa. Fältnamnen i den nedladdade CSV-filen skiljer sig från den uppladdade versionen.  
 
-När eventuella fel har åtgärd ATS kan administratören aktivera varje nyckel genom att välja **Aktivera** för token och ange det eng ång slö sen ord som visas i token. Du kan aktivera maximalt 200 OATH-token var 5: e minut. 
+När eventuella fel har åtgärdats kan administratören aktivera  varje nyckel genom att välja Aktivera för token och ange OTP som visas på token. Du kan aktivera högst 200 OATH-token var femte minut. 
 
-Användare kan ha en kombination av upp till fem OATH-token eller Authenticator-program, till exempel Microsoft Authenticator-appen, som har kon figurer ATS för användning när som helst. Det går inte att tilldela maskinvaru-OATH-token till gäst användare i resurs klienten.
+Användare kan ha en kombination av upp till fem OATH-maskinvarutoken eller autentiseringsprogram, till exempel Microsoft Authenticator-appen, som konfigurerats för användning när som helst. OATH-maskinvarutoken kan inte tilldelas till gästanvändare i resursklientorganisationen.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs mer om hur du konfigurerar autentiseringsmetoder med hjälp av [Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
+Läs mer om att konfigurera autentiseringsmetoder med [hjälp av Microsoft Graph REST API](/graph/api/resources/authenticationmethods-overview).
