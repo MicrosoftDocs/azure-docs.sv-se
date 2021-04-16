@@ -1,6 +1,6 @@
 ---
-title: 'CLI: kontinuerlig distribution från GitHub'
-description: Lär dig hur du använder Azure CLI för att automatisera distribution och hantering av din App Service-app. Det här exemplet visar hur du skapar en app med CI/CD från GitHub.
+title: 'CLI: Kontinuerlig distribution från GitHub'
+description: Lär dig hur du använder Azure CLI för att automatisera distribution och hantering av din App Service appen. Det här exemplet visar hur du skapar en app med CI/CD från GitHub.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 0205c991-0989-4ca3-bb41-237dcc964460
@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 09/02/2019
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 2147976ae73f93e6f451dbd871ead865e2331455
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: 6e1759e0279c99025d0975dd207ca56b7679d5f6
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006354"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482350"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>Skapa en App Service-app med kontinuerlig distribution från GitHub med CLI
 
 Det här exempelskriptet skapar en app i App Service med dess relaterade resurser och ställer sedan in kontinuerlig distribution från en GitHub-lagringsplats. Mer information om GitHub-distribution utan kontinuerlig distribution finns i [Skapa en app och distribuera kod från GitHub](cli-deploy-github.md). För det här exemplet behöver du följande:
 
-* En GitHub-lagringsplats med programkod som du har administratörsbehörighet för. Om du vill hämta automatiska versioner strukturerar du lagrings platsen enligt tabellen [Förbered din lagrings plats](../deploy-continuous-deployment.md#prepare-your-repository) .
+* En GitHub-lagringsplats med programkod som du har administratörsbehörighet för. Om du vill hämta automatiska byggen strukturerar du lagringsplatsen enligt [tabellen Förbered din lagringsplats.](../deploy-continuous-deployment.md#prepare-your-repository)
 * En [personlig åtkomsttoken (PAT)](https://help.github.com/articles/creating-an-access-token-for-command-line-use) för ditt GitHub-konto.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

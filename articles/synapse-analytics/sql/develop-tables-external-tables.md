@@ -9,40 +9,40 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1977663f4661fca316e4839671abd76e07b5acda
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0986a1d6a75f0d464eb405841af821c606c68200
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304808"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565329"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Använda externa tabeller med Synapse SQL
 
-En extern tabell pekar på data som finns i Hadoop, Azure Storage BLOB eller Azure Data Lake Storage. Externa tabeller används för att läsa data från filer eller skriva data till filer i Azure Storage. Med Synapse SQL kan du använda externa tabeller för att läsa och skriva data till dedikerad SQL-pool eller SQL-pool utan server.
+En extern tabell pekar på data som finns i Hadoop, Azure Storage blob eller Azure Data Lake Storage. Externa tabeller används för att läsa data från filer eller skriva data till filer i Azure Storage. Med Synapse SQL kan du använda externa tabeller för att läsa och skriva data till dedikerad SQL-pool eller serverlös SQL-pool.
 
-## <a name="external-tables-in-dedicated-sql-pool-and-serverless-sql-pool"></a>Externa tabeller i dedikerad SQL-pool och Server lös SQL-pool
+## <a name="external-tables-in-dedicated-sql-pool-and-serverless-sql-pool"></a>Externa tabeller i dedikerad SQL-pool och serverlös SQL-pool
 
 ### <a name="dedicated-sql-pool"></a>[Dedikerad SQL-pool](#tab/sql-pool) 
 
 I dedikerad SQL-pool kan du använda en extern tabell för att:
 
-- Fråga Azure Blob Storage och Azure Data Lake Gen2 med Transact-SQL-uttryck.
+- Fråga Azure Blob Storage Azure Data Lake Gen2 med Transact-SQL-instruktioner.
 - Importera och lagra data från Azure Blob Storage och Azure Data Lake Storage till dedikerad SQL-pool.
 
-När det används tillsammans med [CREATE TABLE som Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) -instruktion, importerar data till en tabell i SQL-poolen genom att välja från en extern tabell. Förutom [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)är externa tabeller användbara för att läsa in data. 
+När den används tillsammans med [CREATE TABLE AS SELECT-instruktionen](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) och väljer från en extern tabell importeras data till en tabell i SQL-poolen. Förutom COPY-instruktionen [är externa](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)tabeller användbara för att läsa in data. 
 
-En inläsnings kurs finns i [använda PolyBase för att läsa in data från Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
+En självstudiekurs om inläsning finns [i Använda PolyBase för att läsa in data från Azure Blob Storage](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
-### <a name="serverless-sql-pool"></a>[SQL-pool utan Server](#tab/sql-on-demand)
+### <a name="serverless-sql-pool"></a>[Serverlös SQL-pool](#tab/sql-on-demand)
 
-För en server utan SQL-pool använder du en extern tabell för att:
+För serverlös SQL-pool använder du en extern tabell för att:
 
-- Fråga efter data i Azure Blob Storage eller Azure Data Lake Storage med Transact-SQL-uttryck
-- Lagra frågeresultat i SQL-pooler i Azure Blob Storage eller Azure Data Lake Storage med hjälp av [CETAS](develop-tables-cetas.md)
+- Fråga efter data Azure Blob Storage eller Azure Data Lake Storage Transact-SQL-uttryck
+- Lagra serverlösa SQL-poolfrågeresultat till filer i Azure Blob Storage eller Azure Data Lake Storage med HJÄLP av [CETAS](develop-tables-cetas.md)
 
-Du kan skapa externa tabeller med en server lös SQL-pool via följande steg:
+Du kan skapa externa tabeller med hjälp av en serverlös SQL-pool med hjälp av följande steg:
 
-1. SKAPA EXTERN DATA KÄLLA
+1. SKAPA EXTERN DATAKÄLLA
 2. CREATE EXTERNAL FILE FORMAT
 3. SKAPA EXTERN TABELL
 
@@ -50,19 +50,19 @@ Du kan skapa externa tabeller med en server lös SQL-pool via följande steg:
 
 ### <a name="security"></a>Säkerhet
 
-Användaren måste ha `SELECT` behörighet för den externa tabellen för att kunna läsa data.
-Extern tabell åtkomst till underliggande Azure-lagring med hjälp av databasen begränsade autentiseringsuppgifter som definierats i data källan med hjälp av följande regler:
-- Data källan utan autentiseringsuppgifter gör det möjligt för externa tabeller att komma åt offentligt tillgängliga filer i Azure Storage.
-- Data källan kan ha autentiseringsuppgifter som gör det möjligt för externa tabeller att enbart komma åt filerna på Azure Storage med SAS-token eller arbets ytans hanterade identitet – exempel finns i artikeln [utveckla lagrings fil åtkomst kontroll](develop-storage-files-storage-access-control.md#examples) .
+Användaren måste ha `SELECT` behörighet för extern tabell för att kunna läsa data.
+Extern tabell har åtkomst till underliggande Azure-lagring med hjälp av databasomfångsuppgifterna som definierats i datakällan med hjälp av följande regler:
+- Datakälla utan autentiseringsuppgifter gör att externa tabeller kan komma åt offentligt tillgängliga filer i Azure Storage.
+- Datakällan kan ha autentiseringsuppgifter som gör att externa tabeller endast kan komma åt filer i Azure Storage med hjälp av SAS-token eller hanterad identitet för arbetsytan . Exempel finns i artikeln Utveckla lagringsfiler med [åtkomstkontroll](develop-storage-files-storage-access-control.md#examples) för lagring.
 
 > [!IMPORTANT]
-> I en dedikerad SQL-pool gör en data källa som skapats utan autentiseringsuppgifter att Azure AD-användare kan komma åt lagringsfiler med sin Azure AD-identitet. I SQL-poolen utan server måste du skapa en data källa med en databas som har en databas som innehåller `IDENTITY='User Identity'` Egenskaper – se [exempel här](develop-storage-files-storage-access-control.md#examples).
+> I en dedikerad SQL-pool gör en datakälla som skapats utan autentiseringsuppgifter att Azure AD-användare kan komma åt lagringsfiler med hjälp av sin Azure AD-identitet. I en serverlös SQL-pool måste du skapa en datakälla med en databasomfattning för autentiseringsuppgifter som har egenskapen `IDENTITY='User Identity'` – se exempel [här](develop-storage-files-storage-access-control.md#examples).
 
-## <a name="create-external-data-source"></a>SKAPA EXTERN DATA KÄLLA
+## <a name="create-external-data-source"></a>SKAPA EXTERN DATAKÄLLA
 
-Externa data källor används för att ansluta till lagrings konton. Den fullständiga dokumentationen beskrivs [här](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true).
+Externa datakällor används för att ansluta till lagringskonton. Den fullständiga dokumentationen beskrivs [här.](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
-### <a name="syntax-for-create-external-data-source"></a>Syntax för skapa extern DATA källa
+### <a name="syntax-for-create-external-data-source"></a>Syntax för CREATE EXTERNAL DATA SOURCE
 
 #### <a name="dedicated-sql-pool"></a>[Dedikerad SQL-pool](#tab/sql-pool)
 
@@ -76,7 +76,7 @@ WITH
 [;]
 ```
 
-#### <a name="serverless-sql-pool"></a>[SQL-pool utan Server](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[Serverlös SQL-pool](#tab/sql-on-demand)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
@@ -89,39 +89,39 @@ WITH
 
 ---
 
-### <a name="arguments-for-create-external-data-source"></a>Argument för skapa extern DATA källa
+### <a name="arguments-for-create-external-data-source"></a>Argument för CREATE EXTERNAL DATA SOURCE
 
 data_source_name
 
-Anger det användardefinierade namnet för data källan. Namnet måste vara unikt i databasen.
+Anger det användardefinierade namnet för datakällan. Namnet måste vara unikt i databasen.
 
 #### <a name="location"></a>Location
-LOCATION = `'<prefix>://<path>'`   -tillhandahåller anslutnings protokollet och sökvägen till den externa data källan. Följande mönster kan användas på platsen:
+LOCATION = `'<prefix>://<path>'`   – Tillhandahåller anslutningsprotokollet och sökvägen till den externa datakällan. Följande mönster kan användas på plats:
 
-| Extern data Källa        | Location-prefix | Sökväg till plats                                         |
+| Extern datakälla        | Platsprefix | Platssökväg                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
 | Azure Blob Storage          | `wasb[s]`       | `<container>@<storage_account>.blob.core.windows.net` |
 | Azure Blob Storage          | `http[s]`       | `<storage_account>.blob.core.windows.net/<container>/subfolders` |
-| Azure Data Lake Store gen 1 | `http[s]`       | `<storage_account>.azuredatalakestore.net/webhdfs/v1` |
-| Azure Data Lake Store gen 2 | `http[s]`       | `<storage_account>.dfs.core.windows.net/<container>/subfolders`  |
+| Azure Data Lake Store Gen 1 | `http[s]`       | `<storage_account>.azuredatalakestore.net/webhdfs/v1` |
+| Azure Data Lake Store Gen 2 | `http[s]`       | `<storage_account>.dfs.core.windows.net/<container>/subfolders`  |
 
-`https:` prefix gör att du kan använda undermappen i sökvägen.
+`https:` med prefixet kan du använda undermappen i sökvägen.
 
 #### <a name="credential"></a>Autentiseringsuppgift
-CREDENTIAL = `<database scoped credential>` är valfri autentiseringsuppgift som ska användas för att autentisera i Azure Storage. Extern data källa utan autentiseringsuppgifter kan komma åt offentligt lagrings konto. 
+CREDENTIAL = `<database scoped credential>` är valfria autentiseringsuppgifter som används för att autentisera i Azure Storage. Extern datakälla utan autentiseringsuppgifter kan komma åt det offentliga lagringskontot. 
 
-Externa data källor utan autentiseringsuppgifter i den dedikerade SQL-poolen kommer att använda anroparens Azure AD-identitet för att komma åt filer på lagrings platsen. En extern data källa för en server lös SQL-pool med autentiseringsuppgifter  `IDENTITY='User Identity'` kommer att använda anroparens Azure AD-identitet för att komma åt filer.
-- I dedikerad SQL-pool kan databas omfattnings behörighet ange anpassad program identitet, hanterad identitet för arbets yta eller SAK nyckel. 
-- I SQL-poolen utan server kan databasens begränsade autentiseringsuppgifter ange anroparens Azure AD-identitet, arbets ytans hanterade identitet eller SAS-nyckel. 
+Externa datakällor utan autentiseringsuppgifter i dedikerad SQL-pool använder anroparens Azure AD-identitet för att komma åt filer i lagringen. En extern datakälla för serverlös SQL-pool med autentiseringsuppgifter använder anroparens  `IDENTITY='User Identity'` Azure AD-identitet för att komma åt filer.
+- I dedikerad SQL-pool kan databasomfattningar ange anpassad programidentitet, hanterad identitet för arbetsyta eller SAK-nyckel. 
+- I en serverlös SQL-pool kan databasomfångsberoende autentiseringsuppgifter ange anroparens Azure AD-identitet, arbetsytans hanterade identitet eller SAS-nyckel. 
 
 #### <a name="type"></a>TYP
-TYPE = `HADOOP` är det obligatoriska alternativet i en dedikerad SQL-pool och anger att PolyBase-tekniken används för att komma åt underliggande filer. Den här parametern kan inte användas i en SQL-pool utan server som använder inbyggd inbyggd läsare.
+TYPE = `HADOOP` är det obligatoriska alternativet i dedikerad SQL-pool och anger att Polybase-teknik används för att komma åt underliggande filer. Den här parametern kan inte användas i en serverlös SQL-pool som använder inbyggd läsare.
 
-### <a name="example-for-create-external-data-source"></a>Exempel på Skapa extern DATA källa
+### <a name="example-for-create-external-data-source"></a>Exempel för CREATE EXTERNAL DATA SOURCE (Skapa extern datakälla)
 
 #### <a name="dedicated-sql-pool"></a>[Dedikerad SQL-pool](#tab/sql-pool)
 
-I följande exempel skapas en extern data källa för Azure Data Lake Gen2 som pekar på data uppsättningen New York:
+I följande exempel skapas en extern datakälla för Azure Data Lake Gen2 som pekar på New York-datauppsättningen:
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
@@ -133,9 +133,9 @@ WITH
   ) ;
 ```
 
-#### <a name="serverless-sql-pool"></a>[SQL-pool utan Server](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[Serverlös SQL-pool](#tab/sql-on-demand)
 
-I följande exempel skapas en extern data källa för Azure Data Lake Gen2 som kan nås med SAS-autentiseringsuppgifter:
+I följande exempel skapas en extern datakälla för Azure Data Lake Gen2 som kan nås med hjälp av SAS-autentiseringsuppgifter:
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL [sqlondemand]
@@ -149,7 +149,7 @@ CREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (
 );
 ```
 
-I följande exempel skapas en extern data källa för Azure Data Lake Gen2 som pekar på den offentligt tillgängliga New York-data uppsättningen:
+I följande exempel skapas en extern datakälla för Azure Data Lake Gen2 som pekar på den offentligt tillgängliga New York-datauppsättningen:
 
 ```sql
 CREATE EXTERNAL DATA SOURCE YellowTaxi
@@ -159,11 +159,11 @@ WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yel
 
 ## <a name="create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT
 
-Skapar ett externt fil formats objekt som definierar externa data som lagras i Azure Blob Storage eller Azure Data Lake Storage. Att skapa ett externt fil format är ett krav för att skapa en extern tabell. Den fullständiga dokumentationen finns [här](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true).
+Skapar ett externt filformatobjekt som definierar externa data som lagras i Azure Blob Storage eller Azure Data Lake Storage. Att skapa ett externt filformat är en förutsättning för att skapa en extern tabell. Den fullständiga dokumentationen finns [här.](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
-Genom att skapa ett externt fil format anger du den faktiska layouten för de data som en extern tabell refererar till.
+Genom att skapa ett externt filformat anger du den faktiska layouten för de data som en extern tabell refererar till.
 
-### <a name="syntax-for-create-external-file-format"></a>Syntax för skapa externt fil FORMAT
+### <a name="syntax-for-create-external-file-format"></a>Syntax för CREATE EXTERNAL FILE FORMAT
 
 #### <a name="sql-pool"></a>[SQL-pool](#tab/sql-pool)
 
@@ -195,7 +195,7 @@ WITH (
 }
 ```
 
-#### <a name="serverless-sql-pool"></a>[SQL-pool utan Server](#tab/sql-on-demand)
+#### <a name="serverless-sql-pool"></a>[Serverlös SQL-pool](#tab/sql-on-demand)
 
 ```syntaxsql
 -- Create an external file format for PARQUET files.  
@@ -229,63 +229,63 @@ WITH (
 ---
 
 
-### <a name="arguments-for-create-external-file-format"></a>Argument för skapa externt fil FORMAT
+### <a name="arguments-for-create-external-file-format"></a>Argument för CREATE EXTERNAL FILE FORMAT
 
-file_format_name-anger ett namn för det externa fil formatet.
+file_format_name- Anger ett namn för det externa filformatet.
 
-FORMAT_TYPE = [PARQUET | DELIMITEDTEXT] – anger formatet för externa data.
+FORMAT_TYPE = [ PARQUET | DELIMITEDTEXT]- Anger formatet för externa data.
 
-- PARQUET – anger ett Parquet-format.
-- DELIMITEDTEXT – anger ett text format med kolumn avgränsare, vilket även kallas avslutare för fält.
+- PARQUET – Anger ett Parquet-format.
+- DELIMITEDTEXT – Anger ett textformat med kolumnavgränsare, som även kallas fältavgränsare.
 
-FIELD_TERMINATOR = *field_terminator* -gäller endast för avgränsade textfiler. Fält begränsningen anger ett eller flera tecken som markerar slutet på varje fält (kolumn) i den text avgränsade filen. Standardvärdet är pipe-tecknet (ꞌ | ꞌ).
+FIELD_TERMINATOR = *field_terminator* – Gäller endast för avgränsade textfiler. Fältavgränsaren anger ett eller flera tecken som markerar slutet av varje fält (kolumn) i den textavgränsade filen. Standardvärdet är pipe-tecknet (ꞌ|ꞌ).
 
 Exempel:
 
-- FIELD_TERMINATOR = |
+- FIELD_TERMINATOR = "|"
 - FIELD_TERMINATOR = ' '
-- FIELD_TERMINATOR = ꞌ \ t ꞌ
+- FIELD_TERMINATOR = ꞌ\tꞌ
 
-STRING_DELIMITER = *string_delimiter* -anger fält begränsningen för data av typen sträng i den text avgränsade filen. Sträng avgränsaren är ett eller flera tecken i längd och omges med enkla citat tecken. Standardvärdet är den tomma strängen ("").
+STRING_DELIMITER = *string_delimiter* – Anger fältavgränsaren för data av typen sträng i den textavgränsade filen. Strängavgränsaren är ett eller flera tecken lång och omges av enkla citattecken. Standardvärdet är den tomma strängen ("").
 
 Exempel:
 
-- STRING_DELIMITER = "" "
-- STRING_DELIMITER = ' * '
-- STRING_DELIMITER = ꞌ, ꞌ
+- STRING_DELIMITER = """
+- STRING_DELIMITER = *'
+- STRING_DELIMITER = ꞌ,ꞌ
 
-FIRST_ROW = *First_row_int* -anger rad numret som läses först och gäller för alla filer. Om du anger värdet till två kommer den första raden i varje fil (rubrik rad) att hoppas över när data läses in. Rader hoppas över baserat på förekomsten av rad avbrott (/r/n,/r,/n).
+FIRST_ROW = *First_row_int* – Anger radnumret som läses först och gäller för alla filer. Om du anger värdet till två hoppas den första raden i varje fil (rubrikrad) över när data läses in. Rader hoppas över baserat på förekomsten av radterminatorer (/r/n, /r, /n).
 
-USE_TYPE_DEFAULT = {TRUE | **Falskt** } -Anger hur värden som saknas ska hanteras i avgränsade textfiler när data hämtas från text filen.
+USE_TYPE_DEFAULT = { TRUE | **FALSE** } - Anger hur du hanterar saknade värden i avgränsade textfiler när data hämtas från textfilen.
 
-SANT – om du hämtar data från text filen lagrar du varje värde som saknas genom att använda Standardvärdets datatyp för motsvarande kolumn i den externa tabell definitionen. Ersätt till exempel ett värde som saknas med:
+TRUE – Om du hämtar data från textfilen lagrar du varje värde som saknas med hjälp av standardvärdets datatyp för motsvarande kolumn i definitionen av den externa tabellen. Ersätt till exempel ett värde som saknas med:
 
-- 0 om kolumnen definieras som en numerisk kolumn. Decimal kolumner stöds inte och resulterar i fel.
-- Tom sträng ("") om kolumnen är en sträng kolumn.
-- 1900-01-01 om kolumnen är en datum kolumn.
+- 0 om kolumnen definieras som en numerisk kolumn. Decimalkolumner stöds inte och orsakar ett fel.
+- Tom sträng ("") om kolumnen är en strängkolumn.
+- 1900-01-01 om kolumnen är en datumkolumn.
 
-FALSe – lagra alla värden som saknas som NULL. Alla NULL-värden som lagras med hjälp av ordet NULL i den avgränsade text filen importeras som strängen NULL.
+FALSE – Lagra alla saknade värden som NULL. Alla NULL-värden som lagras med hjälp av ordet NULL i den avgränsade textfilen importeras som strängen "NULL".
 
-Encoding = {' UTF8 ' | ' UTF16 '}-SQL-poolen utan server kan läsa UTF8 och UTF16-kodade avgränsade textfiler.
+Encoding = {'UTF8' | UTF16 – Serverlös SQL-pool kan läsa UTF8- och UTF16-kodade avgränsade textfiler.
 
-DATA_COMPRESSION = *data_compression_method* – det här argumentet anger data komprimerings metoden för externa data. 
+DATA_COMPRESSION = *data_compression_method* – Det här argumentet anger datakomprimeringsmetoden för externa data. 
 
-Fil formats typen PARQUET stöder följande komprimerings metoder:
+Filformattypen PARQUET stöder följande komprimeringsmetoder:
 
-- DATA_COMPRESSION = ' org. apache. Hadoop. io. compress. GzipCodec '
-- DATA_COMPRESSION = ' org. apache. Hadoop. io. compress. SnappyCodec '
+- DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
+- DATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'
 
-När du läser från PARQUET externa tabeller, ignoreras det här argumentet, men används vid skrivning till externa tabeller med [CETAS](develop-tables-cetas.md).
+Vid läsning från externa PARQUET-tabeller ignoreras det här argumentet, men används när du skriver till externa tabeller med [HJÄLP av CETAS](develop-tables-cetas.md).
 
-Fil formats typen DELIMITEDTEXT stöder följande komprimerings metod:
+Filformattypen DELIMITEDTEXT stöder följande komprimeringsmetod:
 
-- DATA_COMPRESSION = ' org. apache. Hadoop. io. compress. GzipCodec '
+- DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
 
-PARSER_VERSION = parser_version anger vilken parser-version som ska användas vid läsning av filer. Se PARSER_VERSION argument i [OpenRowSet-argument](develop-openrowset.md#arguments) för mer information.
+PARSER_VERSION = "parser_version" Anger vilken parserversion som ska användas vid läsning av filer. Kontrollera PARSER_VERSION argument i [OPENROWSET-argument för](develop-openrowset.md#arguments) mer information.
 
-### <a name="example-for-create-external-file-format"></a>Exempel på Skapa externt fil FORMAT
+### <a name="example-for-create-external-file-format"></a>Exempel för CREATE EXTERNAL FILE FORMAT (SKAPA EXTERNT FILFORMAT)
 
-I följande exempel skapas ett externt fil format för inventerings filer:
+I följande exempel skapas ett externt filformat för censusfiler:
 
 ```sql
 CREATE EXTERNAL FILE FORMAT census_file_format
@@ -298,9 +298,9 @@ WITH
 
 ## <a name="create-external-table"></a>SKAPA EXTERN TABELL
 
-Kommandot Skapa extern tabell skapar en extern tabell för Synapse-SQL för att komma åt data som lagras i Azure Blob Storage eller Azure Data Lake Storage. 
+Kommandot CREATE EXTERNAL TABLE skapar en extern tabell för att Synapse SQL komma åt data som lagras i Azure Blob Storage eller Azure Data Lake Storage. 
 
-### <a name="syntax-for-create-external-table"></a>Syntax för skapa extern tabell
+### <a name="syntax-for-create-external-table"></a>Syntax för CREATE EXTERNAL TABLE
 
 ```sql
 CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table_name | table_name }
@@ -317,43 +317,43 @@ column_name <data_type>
     [ COLLATE collation_name ]
 ```
 
-### <a name="arguments-create-external-table"></a>Argument skapa extern tabell
+### <a name="arguments-create-external-table"></a>Argument CREATE EXTERNAL TABLE
 
-*{database_name. schema_name. table_name | schema_name. table_name | table_name}*
+*{ database_name.schema_name.table_name | schema_name.table_name | table_name }*
 
-Namnet på en till tre delar av tabellen som ska skapas. För en extern tabell lagrar SQL-poolen utan server endast tabellens metadata. Inga faktiska data flyttas eller lagras i SQL-poolen utan server.
+Namnet på tabellen i en till tre delar som ska skapas. För en extern tabell lagrar serverlös SQL-pool endast tabellmetadata. Inga faktiska data flyttas eller lagras i en serverlös SQL-pool.
 
-<column_definition>,... *n* ]
+<column_definition>, ... *n* ]
 
-Skapa extern tabell stöder möjligheten att konfigurera kolumn namn, data typ och sortering. Du kan inte använda standard BEGRÄNSNINGen på externa tabeller.
+CREATE EXTERNAL TABLE stöder möjligheten att konfigurera kolumnnamn, datatyp och sortering. Du kan inte använda DEFAULT CONSTRAINT för externa tabeller.
 
 >[!IMPORTANT]
 >Kolumndefinitionerna, inklusive datatyp och antalet kolumner, måste matcha data i de externa filerna. Vid felmatchning avvisas filraderna när du kör frågor mot faktiska data.
 
 När du läser från Parquet-filer kan du bara ange de kolumner som du vill läsa och hoppa över resten.
 
-PLATS =*folder_or_filepath*
+LOCATION =*'folder_or_filepath'*
 
-Anger mappen eller sökvägen och fil namnet för faktiska data i Azure Blob Storage. Platsen börjar från rotmappen. Rotmappen är den dataplats som anges i den externa datakällan.
+Anger mappen eller sökvägen och filnamnet för faktiska data i Azure Blob Storage. Platsen börjar från rotmappen. Rotmappen är den dataplats som anges i den externa datakällan.
 
-Om du anger en mapplats, kommer en server lös SQL-pool-fråga att välja från den externa tabellen och hämta filer från mappen.
+Om du anger en plats för mappen, kommer en serverlös SQL-poolfråga att välja från den externa tabellen och hämta filer från mappen.
 
 > [!NOTE]
-> Till skillnad från Hadoop och PolyBase returnerar inte Server lös SQL-poolen undermappar om du inte anger/* * i slutet av sökvägen.
+> Till skillnad från Hadoop och PolyBase returnerar inte serverlös SQL-pool undermappar om du inte anger /** i slutet av sökvägen. Precis som Hadoop och PolyBase returnerar den inte filer som filnamnet börjar med en understrykning (_) eller en punkt (.).
 
-I det här exemplet returneras rader från mydata.txt om plats = '/webdata/', en server lös SQL-pool fråga. Den returnerar inte mydata2.txt och mydata3.txt eftersom de finns i en undermapp.
+I det här exemplet returnerar om LOCATION='/webdata/', en serverlös SQL-poolfråga, rader från mydata.txt. Den returnerar inte mydata2.txt och mydata3.txt eftersom de finns i en undermapp.
 
 ![Rekursiva data för externa tabeller](./media/develop-tables-external-tables/folder-traversal.png)
 
-DATA_SOURCE = *external_data_source_name* – anger namnet på den externa data källa som innehåller platsen för externa data. Om du vill skapa en extern data källa använder du [skapa extern data källa](#create-external-data-source).
+DATA_SOURCE = *external_data_source_name* – Anger namnet på den externa datakälla som innehåller platsen för externa data. Om du vill skapa en extern datakälla använder [du CREATE EXTERNAL DATA SOURCE](#create-external-data-source).
 
-FILE_FORMAT = *external_file_format_name* – anger namnet på det externa fil formats objekt som lagrar filtypen och komprimerings metoden för externa data. Om du vill skapa ett externt fil format använder du [Skapa externt fil format](#create-external-file-format).
+FILE_FORMAT = *external_file_format_name* – Anger namnet på det externa filformatsobjekt som lagrar filtypen och komprimeringsmetoden för externa data. Om du vill skapa ett externt filformat använder [du CREATE EXTERNAL FILE FORMAT](#create-external-file-format).
 
-### <a name="permissions-create-external-table"></a>Behörigheter för att skapa extern tabell
+### <a name="permissions-create-external-table"></a>Behörigheter CREATE EXTERNAL TABLE
 
-Om du vill välja från en extern tabell måste du ha rätt autentiseringsuppgifter med list-och Läs behörighet.
+Om du vill välja från en extern tabell behöver du rätt autentiseringsuppgifter med list- och läsbehörigheter.
 
-### <a name="example-create-external-table"></a>Exempel på Skapa extern tabell
+### <a name="example-create-external-table"></a>Exempel på CREATE EXTERNAL TABLE
 
 I följande exempel skapas en extern tabell. Den returnerar den första raden:
 
@@ -381,35 +381,35 @@ SELECT TOP 1 * FROM census_external_table
 
 ## <a name="create-and-query-external-tables-from-a-file-in-azure-data-lake"></a>Skapa och fråga externa tabeller från en fil i Azure Data Lake
 
-Med hjälp av Data Lake utforsknings funktioner kan du nu skapa och skicka frågor till en extern tabell med hjälp av en dedikerad SQL-pool eller en server lös SQL-pool med enkel högerklickning på filen. En enkel klickning för att skapa externa tabeller från ADLS Gen2 lagrings kontot stöds bara för Parquet-filer. 
+Med hjälp av Data Lake-utforskningsfunktioner kan du nu skapa och fråga en extern tabell med dedikerad SQL-pool eller serverlös SQL-pool med ett enkelt högerklick på filen. Gesten med ett klick för att skapa externa tabeller ADLS Gen2 lagringskontot stöds endast för Parquet-filer. 
 
 ### <a name="prerequisites"></a>Förutsättningar
 
-- Du måste ha åtkomst till arbets ytan med minst Storage BLOB data Contributor-åtkomst roll till ADLS Gen2 kontot
+- Du måste ha åtkomst till arbetsytan med minst ARM-åtkomstrollen Storage Blob Data-deltagare till ADLS Gen2 konto
 
-- Du måste ha minst [behörighet för att skapa](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#permissions-2&preserve-view=true) och fråga externa tabeller i SQL-poolen eller SQL OD
+- Du måste minst ha behörighet [att skapa och fråga](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#permissions-2&preserve-view=true) externa tabeller i SQL-poolen eller SQL OD
 
-I panelen data väljer du den fil som du vill skapa den externa tabellen från:
+Från panelen Data väljer du den fil som du vill skapa den externa tabellen från:
 > [!div class="mx-imgBorder"]
 >![externaltable1](./media/develop-tables-external-tables/external-table-1.png)
 
-Ett dialog fönster öppnas. Välj en dedikerad SQL-pool eller Server lös SQL-pool, namnge tabellen och välj Öppna skript:
+Ett dialogfönster öppnas. Välj dedikerad SQL-pool eller serverlös SQL-pool, ge tabellen ett namn och välj öppna skript:
 
 > [!div class="mx-imgBorder"]
 >![externaltable2](./media/develop-tables-external-tables/external-table-2.png)
 
-SQL-skriptet genererar automatiskt schemat från filen:
+SQL-skriptet skapas automatiskt och här framtar schemat från filen:
 > [!div class="mx-imgBorder"]
 >![externaltable3](./media/develop-tables-external-tables/external-table-3.png)
 
-Kör skriptet. Skriptet kommer automatiskt att köra en SELECT Top 100 *.:
+Kör skriptet. Skriptet kör automatiskt ett Select Top 100 *.:
 > [!div class="mx-imgBorder"]
 >![externaltable4](./media/develop-tables-external-tables/external-table-4.png)
 
-Den externa tabellen skapas nu, för framtida utforskning av innehållet i den externa tabellen som användaren kan skicka frågor till direkt från fönstret data:
+Den externa tabellen skapas nu. För framtida utforskning av innehållet i den externa tabellen kan användaren fråga den direkt från fönstret Data:
 > [!div class="mx-imgBorder"]
 >![externaltable5](./media/develop-tables-external-tables/external-table-5.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Se artikeln om [CETAS](develop-tables-cetas.md) för att spara frågeresultaten till en extern tabell i Azure Storage. Du kan också börja fråga [Apache Spark för externa Azure Synapse-tabeller](develop-storage-files-spark-tables.md).
+I [CETAS-artikeln](develop-tables-cetas.md) finns information om hur du sparar frågeresultaten i en extern tabell i Azure Storage. Eller så kan du börja fråga [Apache Spark för Azure Synapse externa tabeller](develop-storage-files-spark-tables.md).

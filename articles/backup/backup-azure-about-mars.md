@@ -1,71 +1,71 @@
 ---
 title: Om MARS-agenten
-description: Lär dig hur MARS-agenten stöder säkerhets kopierings scenarier
+description: Lär dig hur MARS-agenten stöder säkerhetskopieringsscenarier
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 8e4ace0c17dbe75e989981db56583ed9477b3716
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e01694aca386482f9ff7ba52593c88326ba3d62
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87562607"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517750"
 ---
-# <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Om Microsoft Azure Recovery Services (MARS)-agenten
+# <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Om MICROSOFT AZURE Recovery Services-agenten (MARS)
 
-I den här artikeln beskrivs hur Azure Backup tjänsten använder MARS-agenten (Microsoft Azure Recovery Services) för att säkerhetskopiera och återställa filer, mappar och volym eller system tillstånd från en lokal dator till Azure.
+I den här artikeln beskrivs hur Azure Backup-tjänsten använder MARS-agenten (Microsoft Azure Recovery Services) för att backa upp och återställa filer, mappar och volym- eller systemtillståndet från en lokal dator till Azure.
 
-## <a name="backup-scenarios"></a>Säkerhets kopierings scenarier
+## <a name="backup-scenarios"></a>Säkerhetskopieringsscenarier
 
-MARS-agenten stöder följande säkerhets kopierings scenarier:
+MARS-agenten stöder följande säkerhetskopieringsscenarier:
 
-![Scenarier med MARS-säkerhetskopiering](./media/backup-try-azure-backup-in-10-mins/backup-scenarios.png)
+![MARS-säkerhetskopieringsscenarier](./media/backup-try-azure-backup-in-10-mins/backup-scenarios.png)
 
-- **Filer och mappar**: selektivt skydda Windows-filer och mappar.
-- **Volym nivå**: skydda en hel Windows-volym på din dator.
-- **System nivå**: skydda ett helt Windows-system tillstånd.
+- **Filer och mappar:** Skydda Windows-filer och -mappar selektivt.
+- **Volymnivå:** Skydda en hel Windows-volym på datorn.
+- **Systemnivå:** Skydda ett helt Windows-systemtillstånd.
 
 ### <a name="additional-scenarios"></a>Fler scenarier
 
-- **Säkerhetskopiera vissa filer och mappar i Azure Virtual Machines**: den primära metoden för att säkerhetskopiera virtuella datorer i Azure är att använda ett Azure Backup-tillägg på den virtuella datorn. Tillägget säkerhetskopierar hela den virtuella datorn. Om du vill säkerhetskopiera vissa filer och mappar i en virtuell dator kan du installera MARS-agenten på de virtuella Azure-datorerna. Mer information finns i [arkitektur: inbyggd virtuell Azure-säkerhetskopiering](./backup-architecture.md#architecture-built-in-azure-vm-backup).
+- **Back up specific files and folders within Azure virtual machines**(Bladet innehåller specifika filer och mappar på virtuella Azure-datorer): Den primära metoden för att servera virtuella Azure-datorer (VM) är att använda ett Azure Backup-tillägg på den virtuella datorn. Tillägget backar upp hela den virtuella datorn. Om du vill backa upp specifika filer och mappar på en virtuell dator kan du installera MARS-agenten på de virtuella Azure-datorerna. Mer information finns i [Architecture: Built-in Azure VM Backup (Arkitektur: Inbyggd säkerhetskopiering av virtuella Azure-datorer).](./backup-architecture.md#architecture-built-in-azure-vm-backup)
 
-- **Offline-seeding**: inledande fullständiga säkerhets kopieringar av data till Azure överför vanligt vis stora mängder data och kräver mer nätverks bandbredd. Vid efterföljande säkerhets kopieringar överförs endast delta eller stegvis mängd data. Azure Backup komprimerar de första säkerhets kopiorna. Genom processen för *dirigering av dirigering* kan Azure Backup använda diskar för att ladda upp komprimerade första säkerhets kopierings data offline till Azure. Mer information finns i [Azure Backup offline-säkerhetskopiering med Azure Data Box](offline-backup-azure-data-box.md).
+- **Offline-seeding:** Inledande fullständiga säkerhetskopior av data till Azure överför vanligtvis stora mängder data och kräver mer nätverksbandbredd. Efterföljande säkerhetskopieringar överför endast delta, eller inkrementell, mängd data. Azure Backup komprimerar de första säkerhetskopiorna. Med *offline-seeding kan* Azure Backup använda diskar för att ladda upp komprimerade inledande säkerhetskopierade data offline till Azure. Mer information finns i Azure Backup [offlinesäkerhetskopiering med hjälp av Azure Data Box](offline-backup-azure-data-box.md).
 
 ## <a name="restore-scenarios"></a>Återställningsscenarier
 
-MARS-agenten stöder följande återställnings scenarier:
+MARS-agenten stöder följande återställningsscenarier:
 
-![Scenarier för MARS-återställning](./media/backup-try-azure-backup-in-10-mins/restore-scenarios.png)
+![MARS-återställningsscenarier](./media/backup-try-azure-backup-in-10-mins/restore-scenarios.png)
 
-- **Samma server**: den server där säkerhets kopian skapades.
-  - **Filer och mappar**: Välj de enskilda filer och mappar som du vill återställa.
-  - **Volym nivå**: Välj den volym och återställnings punkt som du vill återställa. Återställ den sedan till samma plats eller till en annan plats på samma dator.  Skapa en kopia av befintliga filer, Skriv över befintliga filer eller hoppa över att återskapa befintliga filer.
-  - **System nivå**: Välj system tillstånd och återställnings punkt för att återställa till samma dator på en angiven plats.
+- **Samma server:** Den server där säkerhetskopian ursprungligen skapades.
+  - **Filer och mappar:** Välj de enskilda filer och mappar som du vill återställa.
+  - **Volymnivå:** Välj den volym och återställningspunkt som du vill återställa. Återställ den sedan till samma plats eller en alternativ plats på samma dator.  Skapa en kopia av befintliga filer, skriva över befintliga filer eller hoppa över återställning av befintliga filer.
+  - **Systemnivå:** Välj det systemtillstånd och den återställningspunkt som ska återställas till samma dator på en angiven plats.
 
-- **Alternativ server**: en annan server än den server där säkerhets kopian gjordes.
-  - **Filer och mappar**: Välj de enskilda filerna och mapparna vars återställnings punkt du vill återställa till mål datorn.
-  - **Volym nivå**: Välj den volym och återställnings punkt som du vill återställa till en annan plats. Skapa en kopia av befintliga filer, Skriv över befintliga filer eller hoppa över att återskapa befintliga filer.
-  - **System nivå**: Välj system tillstånd och återställnings punkt för att återställa som en system tillstånds fil till en annan dator.
+- **Alternativ server:** En annan server än den server där säkerhetskopian gjordes.
+  - **Filer och mappar:** Välj de enskilda filer och mappar vars återställningspunkt du vill återställa till en måldator.
+  - **Volymnivå:** Välj den volym och återställningspunkt som du vill återställa till en annan plats. Skapa en kopia av befintliga filer, skriva över befintliga filer eller hoppa över återställning av befintliga filer.
+  - **Systemnivå:** Välj det systemtillstånd och den återställningspunkt som ska återställas som en systemtillståndsfil till en annan dator.
 
 ## <a name="backup-process"></a>Säkerhetskopieringsprocessen
 
-1. Skapa ett [Recovery Services-valv](install-mars-agent.md#create-a-recovery-services-vault)från Azure Portal och välj filer, mappar och system tillstånd från **säkerhets kopierings målen**.
-2. [Ladda ned autentiseringsuppgifterna för Recovery Services valvet och agent installations programmet](./install-mars-agent.md#download-the-mars-agent) till en lokal dator.
+1. Från Azure Portal du ett [Recovery Services-valv](install-mars-agent.md#create-a-recovery-services-vault)och väljer filer, mappar och systemtillståndet från **Säkerhetskopieringsmål.**
+2. [Ladda ned autentiseringsuppgifterna för Recovery Services-valvet och agentinstallationsprogrammet](./install-mars-agent.md#download-the-mars-agent) till en lokal dator.
 
-3. [Installera agenten](./install-mars-agent.md#install-and-register-the-agent) och Använd de hämtade autentiseringsuppgifterna för valvet för att registrera datorn i Recovery Services-valvet.
-4. I agent konsolen på klienten [konfigurerar du säkerhets kopieringen](./backup-windows-with-mars-agent.md#create-a-backup-policy) för att ange vad som ska säkerhets kopie ras, när säkerhets kopieringen ska ske (schemat), hur länge säkerhets kopiorna ska behållas i Azure (bevarande principen) och börja skydda.
+3. [Installera agenten och](./install-mars-agent.md#install-and-register-the-agent) använd de nedladdade valvautentiseringsuppgifterna för att registrera datorn till Recovery Services-valvet.
+4. Från agentkonsolen på [](./backup-windows-with-mars-agent.md#create-a-backup-policy) klienten konfigurerar du säkerhetskopieringen för att ange vad som ska säkerhetskopieras, när du ska säkerhetskopiera (schemat), hur länge säkerhetskopiorna ska behållas i Azure (bevarandeprincipen) och börja skydda.
 
-![Azure Backup Agent diagram](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
+![Azure Backup agentdiagram](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
 
 ### <a name="additional-information"></a>Ytterligare information
 
-- Den **första säkerhets kopieringen** (första säkerhets kopieringen) körs enligt inställningarna för säkerhets kopiering.  MARS-agenten använder VSS för att ta en ögonblicks bild av de volymer som valts för säkerhets kopiering. Agenten använder bara Windows System Writer-åtgärden för att avbilda ögonblicks bilden. Den använder inte några VSS-skrivare för program och fångar inte in programkonsekventa ögonblicks bilder. När du har tagit ögonblicks bilden med VSS skapar MARS-agenten en virtuell hård disk (VHD) i cache-mappen som du angav när du konfigurerade säkerhets kopian. Agenten lagrar också kontroll summor för varje data block.
+- Den **första säkerhetskopieringen** (första säkerhetskopieringen) körs enligt dina inställningar för säkerhetskopiering.  MARS-agenten använder VSS för att ta en ögonblicksbild av de volymer som valts för säkerhetskopiering. Agenten använder bara Windows System Writer-åtgärden för att ta ögonblicksbilden. Den använder inte några VSS-skrivare för program och samlar inte in app-konsekventa ögonblicksbilder. När DU har tagit ögonblicksbilden med VSS skapar MARS-agenten en virtuell hårddisk (VHD) i den cachemapp som du angav när du konfigurerade säkerhetskopieringen. Agenten lagrar också kontrollsumor för varje datablock.
 
-- **Stegvisa säkerhets kopieringar** (efterföljande säkerhets kopieringar) körs enligt det schema du anger. Under stegvisa säkerhets kopieringar identifieras ändrade filer och en ny virtuell hård disk skapas. Den virtuella hård disken komprimeras och krypteras och skickas sedan till valvet. När den stegvisa säkerhets kopieringen har slutförts slås den nya virtuella hård disken samman med den virtuella hård disk som skapades efter den inledande replikeringen. Denna sammanlagda virtuella hård disk tillhandahåller det senaste tillstånd som ska användas för att jämföra säkerhets kopior.
+- **Inkrementella** säkerhetskopieringar (efterföljande säkerhetskopior) körs enligt det schema som du anger. Under inkrementella säkerhetskopieringar identifieras ändrade filer och en ny virtuell hårddisk skapas. Den virtuella hårddisken komprimeras och krypteras och skickas sedan till valvet. När den inkrementella säkerhetskopieringen är klar sammanfogas den nya virtuella hårddisken med den virtuella hårddisken som skapades efter den inledande replikeringen. Den här sammanslagna virtuella hårddisken ger det senaste tillståndet som ska användas för jämförelse av pågående säkerhetskopiering.
 
-- MARS-agenten kan köra säkerhets kopierings jobbet i **optimerat läge** med hjälp av ändrings journalen för USN (Update Sequence Number) eller i **läget ej optimerad** genom att söka efter ändringar i kataloger eller filer genom att genomsöka hela volymen. Icke-optimerat läge är långsammare eftersom agenten måste genomsöka varje fil på volymen och jämföra den mot metadata för att fastställa de ändrade filerna.  Den **första säkerhets kopieringen** körs alltid i icke-optimerat läge. Om den tidigare säkerhets kopieringen misslyckades kommer nästa schemalagda säkerhets kopierings jobb att köras i icke-optimerat läge. Mer information om dessa lägen och hur du verifierar dem finns i [den här artikeln](backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-job-running-in-unoptimized-mode).
+- MARS-agenten kan köra säkerhetskopieringsjobbet i **optimerat** läge med hjälp av USN-ändringsjournalen (uppdateringssekvensnummer) eller i **icke-optimerat läge** genom att söka efter ändringar i kataloger eller filer via genomsökning av hela volymen. Det optimerade läget går långsammare eftersom agenten måste genomsöka varje fil på volymen och jämföra den med metadata för att fastställa de ändrade filerna.  Den **första säkerhetskopieringen** körs alltid i icke-optimerat läge. Om den tidigare säkerhetskopieringen misslyckades körs nästa schemalagda säkerhetskopieringsjobb i icke-optimerat läge. Mer information om dessa lägen och hur du verifierar dem finns i den [här artikeln.](backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-job-running-in-unoptimized-mode)
 
 ## <a name="next-steps"></a>Nästa steg
 
 [Stödmatris för MARS-agenten](./backup-support-matrix-mars-agent.md)
 
-[Vanliga frågor och svar om MARS-agent](./backup-azure-file-folder-backup-faq.md)
+[Vanliga frågor och svar om MARS-agenten](./backup-azure-file-folder-backup-faq.yml)
