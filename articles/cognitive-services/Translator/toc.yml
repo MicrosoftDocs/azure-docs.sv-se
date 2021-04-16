@@ -1,11 +1,11 @@
-- name: Dokumentation om Translator-tjänsten
+- name: Dokumentation om Translator Service
   href: index.yml
 - name: Översikt
   expanded: true
   items:
     - name: Stöd för språk
       href: language-support.md
-    - name: Priser och begränsningar
+    - name: Priser
       href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/translator'
 - name: Textöversättning
   expanded: true
@@ -18,7 +18,7 @@
       href: quickstart-translator.md
     - name: Exempel
       items:
-        - name: Kod exempel sida
+        - name: Sidan Kodexempel
           href: /samples/browse/?terms=microsoft%20translator
         - name: C#
           href: /samples/microsofttranslator/text-translation-api-v3-c-sharp/translator-c-sharp-v3/
@@ -36,7 +36,7 @@
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Ruby'
     - name: Anvisningar
       items:
-        - name: Skapa en översättare-resurs
+        - name: Skapa en Translator-resurs
           href: ./translator-how-to-signup.md
         - name: Migrera till V3 Text API
           href: migrate-to-v3.md
@@ -82,7 +82,7 @@
           href: reference/v3-0-dictionary-lookup.md
         - name: Ordlisteexempel
           href: reference/v3-0-dictionary-examples.md
-- name: Anpassad Översättning
+- name: Anpassad översättning
   items:
     - name: Vad är Custom Translator?
       href: custom-translator/overview.md
@@ -134,42 +134,52 @@
           href: custom-translator/training-and-model.md
         - name: BLEU-poäng
           href: custom-translator/what-is-bleu-score.md
-- name: Dokument Översättning
+- name: Dokumentöversättning
   items:
-    - name: Vad är dokument Översättning?
+    - name: Vad är dokumentöversättning?
       href: document-translation/overview.md
     - name: Snabbstart
       href: document-translation/get-started-with-document-translation.md
     - name: Anvisningar
       items:
-        - name: Skapa SAS-token för dokument Översättning
+        - name: Skapa SAS-token för dokumentöversättning
           href: document-translation/create-sas-tokens.md
     - name: Referens
       items:
-        - name: Hämta dokument format
+        - name: Hämta dokumentformat
           href: document-translation/reference/get-document-formats.md
-        - name: Hämta ord format
+        - name: Hämta ordlisteformat
           href: document-translation/reference/get-glossary-formats.md
-        - name: Hämta dokument lagrings källa
+        - name: Hämta källa för dokumentlagring
           href: document-translation/reference/get-document-storage-source.md
-        - name: Skicka batch-begäran
+        - name: Skicka batchbegäran
           href: document-translation/reference/submit-batch-request.md
-        - name: Hämta åtgärds dokument status
+        - name: Hämta status för åtgärdsdokument
           href: document-translation/reference/get-operation-documents-status.md
-        - name: Hämta dokument status
+        - name: Hämta dokumentstatus
           href: document-translation/reference/get-document-status.md
         - name: Hämta åtgärder
           href: document-translation/reference/get-operations.md
         - name: Avbryt åtgärd
           href: document-translation/reference/cancel-operation.md
+- name: Anvisningar
+  items:
+    - name: Företagsberedskap
+      items:
+        - name: Konfigurera virtuella nätverk
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/translator/context/context
+        - name: Använda kund hanterade nycklar
+          href: encrypt-data-at-rest.md
 - name: Resurser
   items:
+    - name: Företagsberedskap
+      items:
+        - name: Stöd för regioner
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Efterlevnad och certifiering
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
-    - name: Efterlevnad
-      href: 'https://azure.microsoft.com/en-us/support/legal/cognitive-services-compliance-and-privacy'
-    - name: Kryptering
-      href: encrypt-data-at-rest.md
     - name: Kodexempel på GitHub
       href: 'https://aka.ms/TranslatorGitHub'
     - name: Sekretess och cookies

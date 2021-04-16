@@ -1,143 +1,43 @@
 ---
-title: Konfigurera, optimera och Felsök AzCopy med Azure Storage | Microsoft Docs
-description: Konfigurera, optimera och Felsök AzCopy med Azure Storage. Ändra platsen för eller ta bort plan-och loggfilerna. Ändra standard logg nivån.
+title: Hitta fel & återuppta jobb med loggar i AzCopy (Azure Storage) | Microsoft Docs
+description: Lär dig hur du använder loggar för att diagnostisera fel och för att återuppta jobb som pausas med hjälp av planfiler.
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: ad9e5665204dbd3f99f83af3578b1996814d6fa0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d3b956803e9a796c49288f90873e88c3b69f1c7b
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728851"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502903"
 ---
-# <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurera, optimera och felsöka AzCopy
+# <a name="find-errors-and-resume-jobs-by-using-log-and-plan-files-in-azcopy"></a>Hitta fel och återuppta jobb med hjälp av logg- och planfiler i AzCopy
 
-AzCopy är ett kommandoradsverktyg som du kan använda för att kopiera blobar eller filer till eller från ett lagringskonto. Den här artikeln hjälper dig att utföra avancerade konfigurationsåtgärder och felsöka problem som kan uppstå när du använder AzCopy.
-
-> [!NOTE]
-> Om du letar efter innehåll som hjälper dig att komma igång med AzCopy kan du läsa följande artiklar:
-> - [Kom igång med AzCopy](storage-use-azcopy-v10.md)
-> - [Överföra data med AzCopy och Blob Storage](./storage-use-azcopy-v10.md#transfer-data)
-> - [Överföra data med AzCopy och fillagring](storage-use-azcopy-files.md)
-> - [Överföra data med AzCopy och Amazon S3-buckets](storage-use-azcopy-s3.md)
-
-## <a name="configure-proxy-settings"></a>Konfigurera proxyinställningar
-
-Om du vill konfigurera proxyinställningarna för AzCopy anger du `HTTPS_PROXY` miljövariabeln. Om du kör AzCopy i Windows identifierar AzCopy automatiskt proxyinställningar, så du behöver inte använda den här inställningen i Windows. Om du väljer att använda den här inställningen i Windows kommer den att åsidosätta automatisk identifiering.
-
-| Operativsystem | Kommando  |
-|--------|-----------|
-| **Windows** | Använd följande i en kommando tolk: `set HTTPS_PROXY=<proxy IP>:<proxy port>`<br> I PowerShell använder du: `$env:HTTPS_PROXY="<proxy IP>:<proxy port>"`|
-| **Linux** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
-| **macOS** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
-
-För närvarande stöder AzCopy inte proxyservrar som kräver autentisering med NTLM eller Kerberos.
-
-### <a name="bypassing-a-proxy"></a>Kringgå en proxy ###
-
-Om du kör AzCopy på Windows och vill att den inte ska använda _någon_ proxy alls (i stället för att automatiskt identifiera inställningarna) använder du dessa kommandon. Med de här inställningarna kommer AzCopy inte att leta upp eller försöka använda någon proxy.
-
-| Operativsystem | Miljö | Kommandon  |
-|--------|-----------|----------|
-| **Windows** | Kommando tolk (CMD) | `set HTTPS_PROXY=dummy.invalid` <br>`set NO_PROXY=*`|
-| **Windows** | PowerShell | `$env:HTTPS_PROXY="dummy.invalid"` <br>`$env:NO_PROXY="*"`<br>|
-
-På andra operativ system lämnar du bara HTTPS_PROXY Variable unset om du inte vill använda någon proxy.
-
-## <a name="optimize-performance"></a>Optimera prestanda
-
-Du kan använda prestanda mätning och sedan använda kommandon och miljövariabler för att hitta en optimal kompromiss mellan prestanda och resursförbrukning.
-
-Det här avsnittet hjälper dig att utföra följande optimerings aktiviteter:
-
-> [!div class="checklist"]
-> * Kör benchmark-tester
-> * Optimera data flödet
-> * Optimera minnes användning 
-> * Optimera filsynkronisering
-
-### <a name="run-benchmark-tests"></a>Kör benchmark-tester
-
-Du kan köra ett prestandatest på vissa BLOB-behållare eller fil resurser för att visa allmänna prestanda statistik och för att identifiera Flask halsar i identiteter. Du kan köra testet genom att ladda upp eller hämta genererade test data. 
-
-Använd följande kommando för att köra ett prestandatest.
-
-| Syntax/exempel  |  Kod |
-|--------|-----------|
-| **Syntax** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
-| **Exempel** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
-
-> [!TIP]
-> I det här exemplet omges Sök vägs argument med enkla citat tecken (' '). Använd enkla citat tecken i alla kommando gränssnitt utom Windows Command Shell (cmd.exe). Om du använder ett Windows Command Shell (cmd.exe), omger Sök vägs argument med dubbla citat tecken ("") i stället för enkla citat tecken ().
-
-Det här kommandot kör prestanda mätning genom att överföra test data till ett angivet mål. Test data genereras i minnet, överförs till målet och tas sedan bort från målet när testet har slutförts. Du kan ange hur många filer som ska genereras och vilken storlek du vill att de ska vara med hjälp av valfria kommando parametrar.
-
-Om du vill köra det här testet genom att hämta data anger du `mode` parametern till `download` . Detaljerade referens dokument finns i [AzCopy benchmark](storage-ref-azcopy-bench.md). 
-
-### <a name="optimize-throughput"></a>Optimera data flödet
-
-Du kan använda `cap-mbps` flaggan i dina kommandon för att placera ett tak på data flödets data hastighet. Följande kommando återupptar till exempel ett jobb-och Caps-genomflöde till `10` megabit (MB) per sekund. 
-
-```azcopy
-azcopy jobs resume <job-id> --cap-mbps 10
-```
-
-Dataflödet kan minska vid överföring av små filer. Du kan öka data flödet genom att ställa in `AZCOPY_CONCURRENCY_VALUE` miljövariabeln. Den här variabeln anger antalet samtidiga begäranden som kan utföras.  
-
-Om datorn har färre än 5 processorer anges värdet för den här variabeln till `32` . Annars är standardvärdet lika med 16 multiplicerat med antalet processorer. Det maximala standardvärdet för den här variabeln är `3000` , men du kan manuellt ange det här värdet högre eller lägre. 
-
-| Operativsystem | Kommando  |
-|--------|-----------|
-| **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
-| **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
-| **macOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
-
-Använd `azcopy env` för att kontrol lera det aktuella värdet för den här variabeln. Om värdet är tomt kan du läsa vilket värde som används genom att titta i början av en AzCopy logg fil. Det valda värdet, och orsaken till det valdes, rapporteras där.
-
-Innan du anger den här variabeln rekommenderar vi att du kör ett benchmark-test. Test processen för benchmark rapporterar det rekommenderade samtidiga värdet. Om ditt nätverks villkor och dina nytto laster varierar kan du ange den här variabeln till ordet `AUTO` i stället för ett visst tal. Detta gör att AzCopy alltid kör samma automatiska justerings process som används i benchmark-tester.
-
-### <a name="optimize-memory-use"></a>Optimera minnes användning
-
-Ange `AZCOPY_BUFFER_GB` miljövariabeln för att ange den maximala mängd system minne som du vill att AzCopy ska använda för buffring vid hämtning och uppladdning av filer. Express detta värde i gigabyte (GB).
-
-| Operativsystem | Kommando  |
-|--------|-----------|
-| **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
-| **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
-| **macOS** | `export AZCOPY_BUFFER_GB=<value>` |
+AzCopy är ett kommandoradsverktyg som du kan använda för att kopiera blobar eller filer till eller från ett lagringskonto. Den här artikeln hjälper dig att använda loggar för att diagnostisera fel och sedan använda planfiler för att återuppta jobb. Den här artikeln visar också hur du konfigurerar logg- och planfiler genom att ändra deras detaljnivå och standardplatsen där de lagras.
 
 > [!NOTE]
-> Jobb spårningen debiteras alltid ytterligare kostnader för minnes användning. Mängden varierar beroende på antalet överföringar i ett jobb. Buffertar är den största delen av minnes användningen. Du kan kontrol lera omkostnader genom `AZCOPY_BUFFER_GB` att använda så att det är så stort som möjligt, men ingen flagga för att enbart täcka den totala minnes användningen är tillgänglig.
+> Om du letar efter innehåll som hjälper dig att komma igång med AzCopy kan du gå [till Kom igång med AzCopy.](storage-use-azcopy-v10.md)
 
-### <a name="optimize-file-synchronization"></a>Optimera filsynkronisering
+## <a name="log-and-plan-files"></a>Logg- och planfiler
 
-[Sync](storage-ref-azcopy-sync.md) -kommandot identifierar alla filer vid målet och jämför sedan fil namn och senast ändrade tidsstämplar innan synkroniseringen startades. Om du har ett stort antal filer kan du förbättra prestandan genom att ta bort klient bearbetningen. 
+AzCopy skapar *logg-* *och planfiler* för varje jobb. Du kan använda dessa loggar för att undersöka och felsöka eventuella problem. 
 
-För att åstadkomma detta använder du i stället [AzCopy Copy](storage-ref-azcopy-copy.md) -kommandot och anger `--overwrite` flaggan till `ifSourceNewer` . AzCopy kommer att jämföra filer när de kopieras utan att utföra några startgenomsökningar och jämförelser. Detta ger en prestanda gräns i fall där det finns ett stort antal filer att jämföra.
+Loggarna innehåller statusen för felet ( `UPLOADFAILED` , och ), den fullständiga `COPYFAILED` `DOWNLOADFAILED` sökvägen och orsaken till felet.
 
-[AzCopy Copy](storage-ref-azcopy-copy.md) -kommandot tar inte bort filer från målet, så om du vill ta bort filer på målet när de inte längre finns på källan använder du kommandot [AzCopy Sync](storage-ref-azcopy-sync.md) med `--delete-destination` flaggan inställd på värdet `true` eller `prompt` . 
+Som standard finns logg- och planfilerna i katalogen i Windows eller katalogen på Mac och `%USERPROFILE%\.azcopy` `$HOME$\.azcopy` Linux, men du kan ändra den platsen. 
 
-## <a name="troubleshoot-issues"></a>Felsöka problem
-
-AzCopy skapar logg- och planfiler för varje jobb. Du kan undersöka och felsöka eventuella problem med hjälp av loggarna. 
-
-Loggarna innehåller status för felen ( `UPLOADFAILED` , `COPYFAILED` , och `DOWNLOADFAILED` ), den fullständiga sökvägen och orsaken till problemet.
-
-Som standard finns logg-och plan-filerna i `%USERPROFILE%\.azcopy` katalogen på Windows eller i en `$HOME$\.azcopy` katalog på Mac och Linux, men du kan ändra platsen om du vill.
-
-Det relevanta felet är inte nödvändigt vis det första fel som visas i filen. För fel som nätverks fel, timeout-fel och Server upptaget, kommer AzCopy att försöka igen till 20 gånger, och normalt lyckas processen igen.  Det första fel du ser kan vara något ofarligt som har gjorts om.  Så i stället för att titta på det första felet i filen söker du efter de fel som finns nära `UPLOADFAILED` , `COPYFAILED` eller `DOWNLOADFAILED` . 
+Det relevanta felet är inte nödvändigtvis det första felet som visas i filen. För fel som nätverksfel, tidsgränser och upptagen server försöker AzCopy igen upp till 20 gånger och vanligtvis lyckas återförsöksprocessen.  Det första felet som visas kan vara något ofarligt som har lyckats.  I stället för att titta på det första felet i filen letar du efter fel som är nära `UPLOADFAILED` `COPYFAILED` , eller `DOWNLOADFAILED` . 
 
 > [!IMPORTANT]
-> När du skickar en begäran till Microsoft Support (eller fel sökning av problemet som berör tredje part) delar du den avvisade versionen av kommandot som du vill köra. Detta säkerställer att SAS inte delas av misstag med vem. Du kan hitta den avvisade versionen i början av logg filen.
+> När du skickar en begäran Microsoft Support (eller felsöker problemet som rör tredje part) ska du dela den version av kommandot som du vill köra. Detta säkerställer att SAS inte delas av misstag med någon. Du hittar den redacted-versionen i början av loggfilen.
 
-### <a name="review-the-logs-for-errors"></a>Granska loggarna för fel
+## <a name="review-the-logs-for-errors"></a>Granska loggarna och se om det finns fel
 
-Följande kommando får alla fel med `UPLOADFAILED` status från `04dc9ca9-158f-7945-5933-564021086c79` loggen:
+Följande kommando hämtar alla fel med `UPLOADFAILED` status från `04dc9ca9-158f-7945-5933-564021086c79` loggen:
 
 **Windows (PowerShell)**
 
@@ -151,27 +51,27 @@ Select-String UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
 grep UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
 ```
 
-### <a name="view-and-resume-jobs"></a>Visa och återuppta jobb
+## <a name="view-and-resume-jobs"></a>Visa och återuppta jobb
 
-Varje överförings åtgärd kommer att skapa ett AzCopy-jobb. Använd följande kommando för att visa jobb historiken:
+Varje överföringsåtgärd skapar ett AzCopy-jobb. Använd följande kommando för att visa jobbhistoriken:
 
 ```
 azcopy jobs list
 ```
 
-Om du vill visa jobb statistiken använder du följande kommando:
+Om du vill visa jobbstatistiken använder du följande kommando:
 
 ```
 azcopy jobs show <job-id>
 ```
 
-Använd följande kommando för att filtrera överföringarna efter status:
+Om du vill filtrera överföringarna efter status använder du följande kommando:
 
 ```
 azcopy jobs show <job-id> --with-status=Failed
 ```
 
-Använd följande kommando för att återuppta ett misslyckat/avbrutet jobb. Det här kommandot använder sitt ID tillsammans med SAS-token eftersom det inte är beständigt av säkerhets skäl:
+Använd följande kommando för att återuppta ett misslyckat/avbrutet jobb. Det här kommandot använder sin identifierare tillsammans med SAS-token eftersom den inte är beständig av säkerhetsskäl:
 
 ```
 azcopy jobs resume <job-id> --source-sas="<sas-token>"
@@ -179,46 +79,46 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
 
 > [!TIP]
-> Omge Sök vägs argument som SAS-token med enkla citat tecken (). Använd enkla citat tecken i alla kommando gränssnitt utom Windows Command Shell (cmd.exe). Om du använder ett Windows Command Shell (cmd.exe), omger Sök vägs argument med dubbla citat tecken ("") i stället för enkla citat tecken ().
+> Omge sökvägsargument som SAS-token med enkla citattecken (''). Använd enkla citattecken i alla kommandogränssnitt utom Windows-kommandogränssnittet (cmd.exe). Om du använder ett Windows-kommandogränssnitt (cmd.exe) omsluter du sökvägsargument med dubbla citattecken ("") i stället för enkla citattecken ('').
 
-När du återupptar ett jobb tittar AzCopy på jobb Plans filen. Plan filen visar en lista över alla filer som identifierades för bearbetning när jobbet först skapades. När du återupptar ett jobb kommer AzCopy att försöka överföra alla filer som anges i den plan fil som inte redan har överförts.
+När du återupptar ett jobb tittar AzCopy på jobbplanfilen. Planfilen visar en lista över alla filer som identifierades för bearbetning när jobbet först skapades. När du återupptar ett jobb försöker AzCopy överföra alla filer som anges i planfilen som inte redan har överförts.
 
-## <a name="change-the-location-of-the-plan-and-log-files"></a>Ändra placeringen av plan-och loggfilerna
-
-Som standard finns plan-och loggfiler i `%USERPROFILE%\.azcopy` katalogen på Windows eller i `$HOME/.azcopy` katalogen på Mac och Linux. Du kan ändra den här platsen.
-
-### <a name="change-the-location-of-plan-files"></a>Ändra placeringen av plan filer
+## <a name="change-the-location-of-plan-files"></a>Ändra platsen för planfiler
 
 Använd något av dessa kommandon.
 
 | Operativsystem | Kommando  |
 |--------|-----------|
-| **Windows** | PowerShell`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> Använd följande i en kommando tolk: `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Windows** | Powershell:`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> I en kommandotolk använder du:: `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **macOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
-Använd `azcopy env` för att kontrol lera det aktuella värdet för den här variabeln. Om värdet är tomt skrivs planera filer till standard platsen.
+Använd för `azcopy env` att kontrollera det aktuella värdet för den här variabeln. Om värdet är tomt skrivs planfilerna till standardplatsen.
 
-### <a name="change-the-location-of-log-files"></a>Ändra platsen för loggfiler
+## <a name="change-the-location-of-log-files"></a>Ändra platsen för loggfiler
 
 Använd något av dessa kommandon.
 
 | Operativsystem | Kommando  |
 |--------|-----------|
-| **Windows** | PowerShell`$env:AZCOPY_LOG_LOCATION="<value>"` <br> Använd följande i en kommando tolk: `set AZCOPY_LOG_LOCATION=<value>`|
+| **Windows** | Powershell:`$env:AZCOPY_LOG_LOCATION="<value>"` <br> I en kommandotolk använder du:: `set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
 | **macOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 
-Använd `azcopy env` för att kontrol lera det aktuella värdet för den här variabeln. Om värdet är tomt skrivs loggar till standard platsen.
+Använd för `azcopy env` att kontrollera det aktuella värdet för den här variabeln. Om värdet är tomt skrivs loggarna till standardplatsen.
 
-## <a name="change-the-default-log-level"></a>Ändra standard logg nivån
+## <a name="change-the-default-log-level"></a>Ändra standardloggnivå
 
-Som standard är logg nivån för AzCopy inställd på `INFO` . Om du vill minska loggens utförlighet för att spara disk utrymme skriver du över den här inställningen med hjälp av ``--log-level`` alternativet. 
+Som standard är AzCopy-loggnivån inställd på `INFO` . Om du vill minska loggens verbositet för att spara diskutrymme skriver du över den här inställningen med hjälp av ``--log-level`` alternativet . 
 
-Tillgängliga logg nivåer är: `NONE` ,,,,, `DEBUG` `INFO` `WARNING` `ERROR` `PANIC` och `FATAL` .
+Tillgängliga loggnivåer är: `NONE` , , , , , och `DEBUG` `INFO` `WARNING` `ERROR` `PANIC` `FATAL` .
 
-## <a name="remove-plan-and-log-files"></a>Ta bort plan-och loggfiler
+## <a name="remove-plan-and-log-files"></a>Ta bort plan- och loggfiler
 
-Om du vill ta bort alla plan-och loggfiler från den lokala datorn för att spara disk utrymme, använder du `azcopy jobs clean` kommandot.
+Om du vill ta bort alla plan- och loggfiler från den lokala datorn för att spara diskutrymme använder du `azcopy jobs clean` kommandot .
 
-Om du vill ta bort plan-och loggfilerna som är associerade med endast ett jobb använder du `azcopy jobs rm <job-id>` . Ersätt `<job-id>` plats hållaren i det här exemplet med jobb-ID: t för jobbet.
+Om du vill ta bort planen och loggfilerna som endast är associerade med ett jobb använder du `azcopy jobs rm <job-id>` . Ersätt `<job-id>` platshållaren i det här exemplet med jobbets jobb-ID.
+
+## <a name="see-also"></a>Se även
+
+- [Kom igång med AzCopy](storage-use-azcopy-v10.md)

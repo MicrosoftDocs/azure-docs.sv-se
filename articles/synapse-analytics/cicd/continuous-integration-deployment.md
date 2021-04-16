@@ -1,99 +1,99 @@
 ---
-title: Kontinuerlig integrering och leverans för Synapse-arbetsytan
-description: Lär dig hur du använder kontinuerlig integrering och leverans för att distribuera ändringar i arbets ytan från en miljö (utveckling, testning, produktion) till en annan.
-services: synapse-analytics
+title: Kontinuerlig integrering och leverans för Synapse-arbetsyta
+description: Lär dig hur du använder kontinuerlig integrering och leverans för att distribuera ändringar i arbetsytan från en miljö (utveckling, testning, produktion) till en annan.
 author: liud
 ms.service: synapse-analytics
+ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: de3738573bb9bb6f045a45d290c74ba9e6902a5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f68e3698f8616b581d319bc19d2a8c636c79c36
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103561965"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566094"
 ---
-# <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Kontinuerlig integrering och leverans för Azure dataSynapses-arbetsyta
+# <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Kontinuerlig integrering och leverans för Azure Synapse arbetsyta
 
 ## <a name="overview"></a>Översikt
 
-Kontinuerlig integrering (CI) är en process som automatiserar genereringen och testningen av kod varje gång en grupp medlem genomför ändringar i versions kontrollen. Kontinuerlig distribution (CD) är en process för att bygga, testa, konfigurera och distribuera från flera testnings-eller utvecklings miljöer till en produktions miljö.
+Kontinuerlig integrering (CI) är en process där man automatiserar komningen och testningen av kod varje gång en teammedlem genomför ändringar i versionskontroll. Kontinuerlig distribution (CD) är en process för att skapa, testa, konfigurera och distribuera från flera test- eller mellanlagringsmiljöer till en produktionsmiljö.
 
-För Azure Synapse-arbetsytan, kontinuerlig integrering och leverans (CI/CD) flyttar alla entiteter från en miljö (utveckling, test, produktion) till en annan. För att kunna befordra arbets ytan till en annan arbets yta finns det två delar: Använd [Azure Resource Manager mallar](../../azure-resource-manager/templates/overview.md) för att skapa eller uppdatera arbets ytans resurser (pooler och arbets yta). Migrera artefakter (SQL-skript, Notebook, Spark jobb definition, pipeliner, data uppsättningar, data flöden osv) med Synapse CI/CD-verktyg i Azure DevOps. 
+För Azure Synapse arbetsyta flyttar kontinuerlig integrering och leverans (CI/CD) alla entiteter från en miljö (utveckling, testning, produktion) till en annan. För att höja upp din arbetsyta till en annan arbetsyta finns det två delar: använda [Azure Resource Manager](../../azure-resource-manager/templates/overview.md) för att skapa eller uppdatera arbetsyteresurser (pooler och arbetsyta); migrera artefakter (SQL-skript, notebook-fil, Spark-jobbdefinition, pipelines, datauppsättningar, dataflöden och så vidare) med Synapse CI/CD-verktyg i Azure DevOps. 
 
-Den här artikeln beskriver hur du kan använda Azure release pipeline för att automatisera distributionen av en Synapse-arbetsyta till flera miljöer.
+Den här artikeln beskriver hur du använder Azures lanseringspipeline för att automatisera distributionen av en Synapse-arbetsyta till flera miljöer.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
--   Arbets ytan som används för utveckling har kon figurer ATS med en git-lagringsplats i Studio, se [käll kontroll i Synapse Studio](source-control.md).
--   Ett Azure DevOps-projekt har förberetts för att köra versions pipelinen.
+-   Arbetsytan som används för utveckling har konfigurerats med en Git-lagringsplats i Studio. Mer information finns i [Källkontroll i Synapse Studio](source-control.md).
+-   Ett Azure DevOps-projekt har förberetts för att köra en lanseringspipeline.
 
-## <a name="set-up-a-release-pipelines"></a>Konfigurera en versions pipeline
+## <a name="set-up-a-release-pipelines"></a>Konfigurera en lanseringspipeline
 
-1.  Öppna projektet som skapats för versionen i [Azure-DevOps](https://dev.azure.com/).
+1.  Öppna projektet som skapades för versionen i [Azure DevOps.](https://dev.azure.com/)
 
-1.  Välj **pipelines** på vänster sida av sidan och välj sedan **versioner**.
+1.  Till vänster på sidan väljer du **Pipelines** och sedan **Versioner.**
 
-    ![Välj pipeliner, versioner](media/create-release-1.png)
+    ![Välj Pipelines, Versioner](media/create-release-1.png)
 
-1.  Välj **ny pipeline** eller, om du har befintliga pipeliner, väljer du **ny** och sedan **ny versions pipeline**.
+1.  Välj **Ny pipeline,** eller, om du har befintliga pipelines, väljer du **Ny** och sedan **Ny lanseringspipeline**.
 
-1.  Välj den **tomma jobb** mal len.
+1.  Välj mallen **Tomt** jobb.
 
     ![Välj tomt jobb](media/create-release-select-empty.png)
 
-1.  I rutan **scen namn** anger du namnet på din miljö.
+1.  I rutan **Fasnamn** anger du namnet på din miljö.
 
-1.  Välj **Lägg till artefakt** och välj sedan den git-lagringsplats som kon figurer ATS med din utvecklings Synapse Studio. Välj den git-lagringsplats som du använde för att hantera ARM-mall för pooler och arbets yta. Om du använder GitHub som källa måste du skapa en tjänst anslutning för ditt GitHub-konto och pull-databaser. Mer information om [tjänst anslutning](/azure/devops/pipelines/library/service-endpoints) 
+1.  Välj **Lägg till artefakt** och välj sedan den git-lagringsplats som konfigurerats med Synapse Studio. Välj den git-lagringsplats som du använde för att hantera ARM-mallen för pooler och arbetsytor. Om du använder GitHub som källa måste du skapa en tjänstanslutning för ditt GitHub-konto och hämta lagringsplatsen. Mer information om [tjänstanslutning](/azure/devops/pipelines/library/service-endpoints) 
 
-    ![Lägg till publicerings gren](media/release-creation-github.png)
+    ![Lägg till publiceringsgren](media/release-creation-github.png)
 
-1.  Välj grenen för ARM-mallen för resurs uppdatering. Välj **senaste från standard gren** för **standard versionen**.
+1.  Välj grenen av ARM-mallen för resursuppdatering. För **Standardversion väljer** du **Senaste från standardgrenen**.
 
-    ![Lägg till ARM-mall](media/release-creation-arm-branch.png)
+    ![Lägga till ARM-mall](media/release-creation-arm-branch.png)
 
-1.  Välj [publicerings grenen](source-control.md#configure-publishing-settings) för lagrings platsen för **standard grenen**. Som standard är publicerings grenen `workspace_publish` . Välj **senaste från standard gren** för **standard versionen**.
+1.  Välj [publiceringsgrenen](source-control.md#configure-publishing-settings) för lagringsplatsen för **standardgrenen**. Som standard är den här publiceringsgrenen `workspace_publish` . För **Standardversion väljer** du **Senaste från standardgrenen**.
 
     ![Lägg till en artefakt](media/release-creation-publish-branch.png)
 
-## <a name="set-up-a-stage-task-for-arm-resource-create-and-update"></a>Konfigurera en fas aktivitet för ARM-resursen skapa och uppdatera 
+## <a name="set-up-a-stage-task-for-arm-resource-create-and-update"></a>Konfigurera en fasuppgift för att skapa och uppdatera ARM-resurser 
 
-Lägg till en Azure Resource Manager distributions uppgift för att skapa eller uppdatera resurser, inklusive arbets ytan och pooler:
+Lägg till Azure Resource Manager distributionsaktivitet för att skapa eller uppdatera resurser, inklusive arbetsyta och pooler:
 
-1. I vyn fas väljer du **Visa fas aktiviteter**.
+1. I fasvyn väljer du **Visa fasuppgifter.**
 
-    ![Vyn fas](media/release-creation-stage-view.png)
+    ![Fasvy](media/release-creation-stage-view.png)
 
-1. Skapa en ny uppgift. Sök efter **distribution av arm-mall** och välj sedan **Lägg till**.
+1. Skapa en ny uppgift. Sök efter **ARM-malldistribution** och välj sedan Lägg **till**.
 
-1. I distributions aktiviteten väljer du prenumeration, resurs grupp och plats för mål arbets ytan. Ange autentiseringsuppgifter om det behövs.
+1. I uppgiften Distribution väljer du prenumeration, resursgrupp och plats för målarbetsytan. Ange autentiseringsuppgifter om det behövs.
 
-1. I listan **åtgärd** väljer du **skapa eller uppdatera resurs grupp**.
+1. I listan **Åtgärd** väljer du **Skapa eller uppdatera resursgruppen**.
 
-1. Välj knappen med tre punkter (**...**) bredvid rutan **mall** . Bläddra efter Azure Resource Manager mall för mål arbets ytan
+1. Välj ellipsknappen (**...**) bredvid **rutan** Mall. Bläddra efter Azure Resource Manager för målarbetsytan
 
-1. Välj **...** bredvid rutan **mallparametrar** för att välja parameter filen.
+1. Välj **...** bredvid rutan **Mallparametrar** väljer du parameterfilen.
 
-1. Välj **...** bredvid rutan **Åsidosätt mallparametrar** och ange önskade parameter värden för mål arbets ytan. 
+1. Välj **...** bredvid rutan **Åsidosätt mallparametrar** och ange önskade parametervärden för målarbetsytan. 
 
-1. Välj **stegvis** för **distributions läget**.
+1. Välj **Inkrementellt** **för Distributionsläge.**
     
-    ![distribution av arbets ytor och pooler](media/pools-resource-deploy.png)
+    ![distribuera arbetsyta och pooler](media/pools-resource-deploy.png)
 
-1. Valfritt Lägg till **Azure PowerShell** för roll tilldelningen tilldela och uppdatera arbets ytan. Om du använder versions pipeline för att skapa en Synapse-arbetsyta läggs pipelinens tjänst objekt till som standard arbets ytans administratör. Du kan köra PowerShell för att ge andra konton åtkomst till arbets ytan. 
+1. (Valfritt) Lägg **Azure PowerShell för** tilldelning och uppdatering av rolltilldelning för arbetsyta. Om du använder en lanseringspipeline för att skapa en Synapse-arbetsyta läggs pipelinens huvudnamn för tjänsten till som standardadministratör för arbetsytan. Du kan köra PowerShell för att ge andra konton åtkomst till arbetsytan. 
     
     ![bevilja behörighet](media/release-creation-grant-permission.png)
 
  > [!WARNING]
-> I fullständigt distributions läge **raderas** resurser som finns i resurs gruppen men inte har angetts i den nya Resource Manager-mallen. Mer information finns i [Azure Resource Manager distributions lägen](../../azure-resource-manager/templates/deployment-modes.md)
+> I läget Slutför distribution tas resurser som finns i resursgruppen men som inte anges i den nya Resource Manager mallen **bort.** Mer information finns i Azure Resource Manager [distributionslägen](../../azure-resource-manager/templates/deployment-modes.md)
 
-## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>Konfigurera en fas uppgift för distribution av artefakter 
+## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>Konfigurera en fasuppgift för artefaktdistribution 
 
-Använd [distributions tillägget Synapse-arbetsyta](https://marketplace.visualstudio.com/items?itemName=AzureSynapseWorkspace.synapsecicd-deploy) för att distribuera andra objekt i Synapse-arbetsytan, t. ex. data uppsättning, SQL-skript, Notebook, Spark jobb definition, data flöde, pipeline, länkad tjänst, AUTENTISERINGSUPPGIFTER och IR (integration Runtime).  
+Använd [distributionstillägget för Synapse-arbetsytan](https://marketplace.visualstudio.com/items?itemName=AzureSynapseWorkspace.synapsecicd-deploy) för att distribuera andra objekt i Synapse-arbetsytan, till exempel datauppsättning, SQL-skript, notebook-fil, spark-jobbdefinition, dataflöde, pipeline, länkad tjänst, autentiseringsuppgifter och IR (Integration Runtime).  
 
-1. Sök och hämta tillägget från **Azure DevOps Marketplace**(https://marketplace.visualstudio.com/azuredevops) 
+1. Sök efter och hämta tillägget från **Azure DevOps Marketplace**(https://marketplace.visualstudio.com/azuredevops) 
 
      ![Hämta tillägg](media/get-extension-from-market.png)
 
@@ -101,57 +101,57 @@ Använd [distributions tillägget Synapse-arbetsyta](https://marketplace.visuals
 
      ![Installera tillägget](media/install-extension.png)
 
-1. Se till att Azure DevOps pipeline: s tjänst huvud namn har beviljats behörigheten för prenumerationen och även tilldelats som arbets ytans administratör för mål arbets ytan. 
+1. Kontrollera att tjänstens huvudnamn för Azure DevOps-pipelinen har beviljats behörighet för prenumerationen och även tilldelats som arbetsyteadministratör för målarbetsytan. 
 
-1. Skapa en ny uppgift. Sök efter **distributionen av Synapse-arbetsytan** och välj sedan **Lägg till**.
+1. Skapa en ny uppgift. Sök efter **Distribution av Synapse-arbetsyta** och välj sedan **Lägg till**.
 
      ![Lägg till tillägg](media/add-extension-task.png)
 
-1.  I uppgiften väljer du **...** bredvid rutan **mall** för att välja mallfilen.
+1.  I uppgiften väljer du **...** bredvid rutan **Mall för** att välja mallfilen.
 
-1. Välj **...** bredvid rutan **mallparametrar** för att välja parameter filen.
+1. Välj **...** bredvid rutan **Mallparametrar för** att välja parameterfilen.
 
-1. Välj anslutning, resurs grupp och namn på mål arbets ytan. 
+1. Välj anslutning, resursgrupp och namn på målarbetsytan. 
 
-1. Välj **...** bredvid rutan **Åsidosätt mallparametrar** och ange önskade parameter värden för mål arbets ytan. 
+1. Välj **...** bredvid rutan **Åsidosätt mallparametrar** och ange önskade parametervärden för målarbetsytan. 
 
     ![Distribuera Synapse-arbetsyta](media/create-release-artifacts-deployment.png)
 
 > [!IMPORTANT]
-> I CI/CD-scenarier måste integrerings körnings typen (IR) i olika miljöer vara densamma. Om du till exempel har en lokal IR-anslutning i utvecklings miljön, måste samma IR också vara av typen egen värd i andra miljöer, till exempel test och produktion. Om du däremot delar integrerings körningar över flera steg, måste du konfigurera integration runtime som länkad egen värd i alla miljöer, till exempel utveckling, testning och produktion.
+> I CI/CD-scenarier måste integration runtime-typen (IR) vara densamma i olika miljöer. Om du till exempel har en IR med egen värd i utvecklingsmiljön måste samma IR också ha en egen värd i andra miljöer, till exempel test och produktion. Om du delar integreringskörningar i flera steg måste du på samma sätt konfigurera integreringskörningarna som länkade lokala i alla miljöer, till exempel utveckling, testning och produktion.
 
 ## <a name="create-release-for-deployment"></a>Skapa version för distribution 
 
-När du har sparat alla ändringar kan du välja **Skapa version** för att skapa en version manuellt. För att automatisera skapandet av versioner, se [Azure DevOps release triggers](/azure/devops/pipelines/release/triggers)
+När du har sparat alla ändringar kan du välja **Skapa version för** att skapa en version manuellt. Information om hur du automatiserar skapandet av versioner finns i [Azure DevOps-lanseringsutlösare](/azure/devops/pipelines/release/triggers)
 
    ![Välj Skapa version](media/release-creation-manually.png)
 
-## <a name="use-custom-parameters-of-the-workspace-template"></a>Använd anpassade parametrar för arbets ytans mall 
+## <a name="use-custom-parameters-of-the-workspace-template"></a>Använda anpassade parametrar för arbetsytans mall 
 
-Du använder automatiserad CI/CD och du vill ändra vissa egenskaper under distributionen, men egenskaperna är inte parameterstyrda som standard. I det här fallet kan du åsidosätta standard parameter mal len.
+Du använder automatiserad CI/CD och vill ändra vissa egenskaper under distributionen, men egenskaperna är inte parametriserade som standard. I det här fallet kan du åsidosätta standardparametermallen.
 
-Om du vill åsidosätta standard parameter mal len måste du skapa en anpassad parametriserad mall, en fil med namnet **template-parameters-definition.js** i rotmappen i din git Collaboration-gren. Du måste använda det exakta fil namnet. När du publicerar från samarbets grenen kommer Synapse-arbetsytan att läsa den här filen och använda dess konfiguration för att generera parametrarna. Om ingen fil hittas används standard parameter mal len.
+Om du vill **åsidosätta** standardparametermallen måste du skapa en anpassad parametermall, en fil med namnettemplate-parameters-definition.jspå i rotmappen för git-samarbetsgrenen. Du måste använda det exakta filnamnet. När du publicerar från samarbetsgrenen läser Synapse-arbetsytan den här filen och använder dess konfiguration för att generera parametrarna. Om ingen fil hittas används standardparametermallen.
 
-### <a name="custom-parameter-syntax"></a>Anpassad parameter-syntax
+### <a name="custom-parameter-syntax"></a>Anpassad parametersyntax
 
-Här följer några rikt linjer för att skapa filen med anpassade parametrar:
+Följande är några riktlinjer för att skapa den anpassade parameterfilen:
 
-* Ange sökvägen till egenskapen under den relevanta entitetstypen.
-* Om du anger ett egenskaps namn för att ange att `*` du vill Parameterisera alla egenskaper under den (enbart till den första nivån, inte rekursivt). Du kan också ange undantag för den här konfigurationen.
-* Att ange värdet för en egenskap som en sträng anger att du vill Parameterisera egenskapen. Använd formatet `<action>:<name>:<stype>`.
+* Ange egenskapssökvägen under relevant entitetstyp.
+* Om du anger ett egenskapsnamn till anger du att du vill parameterisera alla egenskaper under det (endast ned till den första `*` nivån, inte rekursivt). Du kan också ange undantag till den här konfigurationen.
+* Om du anger värdet för en egenskap som en sträng anger du att du vill parameterisera egenskapen. Använd formatet `<action>:<name>:<stype>`.
    *  `<action>` kan vara något av följande tecken:
-      * `=` betyder att det aktuella värdet ska vara standardvärdet för parametern.
-      * `-` innebär att inte behålla standardvärdet för parametern.
-      * `|` är ett specialfall för hemligheter från Azure Key Vault för anslutnings strängar eller nycklar.
-   * `<name>` är namnet på parametern. Om det är tomt tar det med namnet på egenskapen. Om värdet börjar med ett `-` Character förkortas namnet. Till exempel `AzureStorage1_properties_typeProperties_connectionString` skulle kortas till `AzureStorage1_connectionString` .
-   * `<stype>` är typen av parameter. Om `<stype>` är tomt är standard typen `string` . Värden som stöds:,,,, `string` `securestring` `int` `bool` `object` `secureobject` och `array` .
-* Att ange en matris i filen anger att den matchande egenskapen i mallen är en matris. Synapse itererar igenom alla objekt i matrisen med hjälp av definitionen som anges. Det andra objektet, en sträng, blir namnet på egenskapen, som används som namn för parametern för varje iteration.
-* En definition kan inte vara unik för en resurs instans. Alla definitioner gäller för alla resurser av den typen.
-* Som standard är alla säkra strängar, som Key Vault hemligheter och säkra strängar, som anslutnings strängar, nycklar och tokens, parameterstyrda.
+      * `=` innebär att det aktuella värdet behålls som standardvärde för parametern .
+      * `-` innebär att du inte behåller standardvärdet för parametern .
+      * `|` är ett specialfall för hemligheter från Azure Key Vault för anslutningssträngar eller nycklar.
+   * `<name>` är namnet på parametern . Om den är tom tar den namnet på egenskapen . Om värdet börjar med `-` ett tecken förkortas namnet. Till exempel `AzureStorage1_properties_typeProperties_connectionString` skulle förkortas till `AzureStorage1_connectionString` .
+   * `<stype>` är parametertypen. Om `<stype>` är tomt är standardtypen `string` . Värden som stöds: `string` , , , , och `securestring` `int` `bool` `object` `secureobject` `array` .
+* Om du anger en matris i filen betyder det att matchningsegenskapen i mallen är en matris. Synapse itererar genom alla objekt i matrisen med hjälp av definitionen som har angetts. Det andra objektet, en sträng, blir namnet på egenskapen, som används som namn på parametern för varje iteration.
+* En definition kan inte vara specifik för en resursinstans. Alla definitioner gäller för alla resurser av den typen.
+* Som standard parametriseras alla säkra strängar, som Key Vault hemligheter och säkra strängar som anslutningssträngar, nycklar och token.
 
-### <a name="parameter-template-definition-samples"></a>Definitions exempel för parameter mal len 
+### <a name="parameter-template-definition-samples"></a>Exempel på parametermalldefinition 
 
-Här är ett exempel på hur en definition av en parametriserad mall ser ut så här:
+Här är ett exempel på hur en parametermallsdefinition ser ut:
 
 ```json
 {
@@ -225,56 +225,56 @@ Här är ett exempel på hur en definition av en parametriserad mall ser ut så 
     }
 }
 ```
-Här är en förklaring av hur föregående mall skapas, uppdelat efter resurs typ.
+Här är en förklaring av hur föregående mall konstrueras, uppdelat efter resurstyp.
 
 #### <a name="notebooks"></a>Notebooks 
 
-* Alla egenskaper i sökvägen `properties/bigDataPool/referenceName` är parameterstyrda med standardvärdet. Du kan Parameterisera anslutna Spark-pool för varje Notebook-fil. 
+* Alla -egenskap i `properties/bigDataPool/referenceName` sökvägen parametriseras med dess standardvärde. Du kan parametrisera den anslutna Spark-poolen för varje notebook-fil. 
 
 #### <a name="sql-scripts"></a>SQL-skript 
 
-* Egenskaperna (poolName och databaseName) i sökvägen `properties/content/currentConnection` är parameterstyrda som strängar utan standardvärdena i mallen. 
+* Egenskaper (poolName och databaseName) i `properties/content/currentConnection` sökvägen parametriseras som strängar utan standardvärdena i mallen. 
 
 #### <a name="pipelines"></a>Pipelines
 
-* Alla egenskaper i sökvägen `activities/typeProperties/waitTimeInSeconds` är parameterstyrda. Alla aktiviteter i en pipeline som har en kod nivå egenskap med namnet `waitTimeInSeconds` (till exempel `Wait` aktiviteten) är parameterstyrda som ett tal med ett standard namn. Men det finns inget standardvärde i Resource Manager-mallen. Det är en obligatorisk Indatatyp under distributionen av Resource Manager.
-* På samma sätt är en egenskap `headers` som kallas (t. ex. i en `Web` aktivitet) parameterstyrda med typ `object` (objekt). Det har ett standardvärde, vilket är samma värde som käll fabriken.
+* Alla -egenskap i sökvägen `activities/typeProperties/waitTimeInSeconds` parametriseras. Alla aktiviteter i en pipeline som har en kodnivåegenskap med namnet (till exempel aktiviteten) parametriseras som ett `waitTimeInSeconds` `Wait` tal med ett standardnamn. Men den har inget standardvärde i Resource Manager mall. Det är obligatoriska indata under den Resource Manager distributionen.
+* På samma sätt parametriseras `headers` en egenskap med namnet (till exempel i en `Web` aktivitet) med typen `object` (Objekt). Den har ett standardvärde, vilket är samma värde som källfabriken.
 
 #### <a name="integrationruntimes"></a>IntegrationRuntimes
 
-* Alla egenskaper under sökvägen `typeProperties` är parameterstyrda med respektive standardvärden. Det finns till exempel två egenskaper under `IntegrationRuntimes` typ egenskaper: `computeProperties` och `ssisProperties` . Båda egenskaps typerna skapas med deras respektive standardvärden och typer (objekt).
+* Alla egenskaper under sökvägen `typeProperties` parametriseras med respektive standardvärden. Det finns till exempel två egenskaper under `IntegrationRuntimes` typegenskaperna: `computeProperties` och `ssisProperties` . Båda egenskapstyperna skapas med respektive standardvärden och standardtyper (Objekt).
 
 #### <a name="triggers"></a>Utlösare
 
-* Under `typeProperties` , har två egenskaper parametriserade. Det första är `maxConcurrency` , som har angetts att ha ett standardvärde och är av typen `string` . Den har standard parameter namnet `<entityName>_properties_typeProperties_maxConcurrency` .
-* `recurrence`Egenskapen är också parametriserad. Under den här nivån anges alla egenskaper på den nivån som parameterstyrda som strängar, med standardvärden och parameter namn. Ett undantag är `interval` egenskapen, som är parameterstyrda som typ `int` . Parameter namnet har suffix `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . På samma sätt `freq` är egenskapen en sträng och är parameterstyrda som en sträng. `freq`Egenskapen är dock parameterstyrda utan ett standardvärde. Namnet är kortare och suffixet. Till exempel `<entityName>_freq`.
+* Under `typeProperties` parametriseras två egenskaper. Den första är `maxConcurrency` , som anges ha ett standardvärde och är av typen `string` . Den har standardparameternamnet `<entityName>_properties_typeProperties_maxConcurrency` .
+* Egenskapen `recurrence` är också parametriserad. Under den anges alla egenskaper på den nivån för att parametriseras som strängar, med standardvärden och parameternamn. Ett undantag är egenskapen `interval` , som parametriseras som typen `int` . Parameternamnet har suffixet `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . På samma sätt är `freq` egenskapen en sträng och parametriseras som en sträng. Egenskapen `freq` parametriseras dock utan ett standardvärde. Namnet förkortas och suffixet . Till exempel `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
 
-* Länkade tjänster är unika. Eftersom länkade tjänster och data uppsättningar har en mängd olika typer, kan du ange en typ bestämd anpassning. I det här exemplet `AzureDataLakeStore` används en speciell mall för alla länkade tjänster av typen. En annan mall används för alla andra (via `*` ).
-* `connectionString`Egenskapen är parameterstyrda som ett `securestring` värde. Det har inget standardvärde. Det kommer att ha ett förkortat parameter namn med suffix `connectionString` .
-* Egenskapen `secretAccessKey` inträffar som en (till `AzureKeyVaultSecret` exempel i en länkad Amazon S3-tjänst). Den är automatiskt parameterstyrda som en Azure Key Vault hemlighet och hämtas från det konfigurerade nyckel valvet. Du kan också Parameterisera själva nyckel valvet.
+* Länkade tjänster är unika. Eftersom länkade tjänster och datauppsättningar har en mängd olika typer kan du ange typspecifik anpassning. I det här exemplet tillämpas en specifik mall för alla länkade tjänster `AzureDataLakeStore` av typen . För alla andra (via `*` ) tillämpas en annan mall.
+* Egenskapen `connectionString` parametriseras som ett `securestring` värde. Det har inget standardvärde. Det får ett förkortat parameternamn med suffixet `connectionString` .
+* Egenskapen råkar `secretAccessKey` vara en `AzureKeyVaultSecret` (till exempel i en länkad Amazon S3-tjänst). Den parametriseras automatiskt som en Azure Key Vault hemlighet och hämtas från det konfigurerade nyckelvalvet. Du kan också parameterisera själva nyckelvalvet.
 
 #### <a name="datasets"></a>Datauppsättningar
 
-* Även om typ specifik anpassning är tillgänglig för data uppsättningar kan du ange konfiguration utan att uttryckligen ha en \* -nivå-konfiguration. I föregående exempel är alla data uppsättnings egenskaper under `typeProperties` parameterstyrda.
+* Även om typspecifik anpassning är tillgänglig för datauppsättningar kan du ange konfiguration utan att uttryckligen ha en \* konfiguration på -nivå. I föregående exempel parametriseras alla `typeProperties` datamängdsegenskaper under .
 
 
-## <a name="best-practices-for-cicd"></a>Metod tips för CI/CD
+## <a name="best-practices-for-cicd"></a>Metodtips för CI/CD
 
-Om du använder git-integrering med din Synapse-arbetsyta och har en CI/CD-pipeline som flyttar dina ändringar från utveckling till test och sedan till produktion, rekommenderar vi följande metod tips:
+Om du använder Git-integrering med synapse-arbetsytan och har en CI/CD-pipeline som flyttar ändringarna från utveckling till testning och sedan till produktion, rekommenderar vi följande metodtips:
 
--   **Git-integrering**. Konfigurera endast din utvecklings Synapse-arbetsyta med git-integrering. Ändringar av test-och produktions arbets ytor distribueras via CI/CD och kräver inte git-integrering.
--   **Förbered pooler innan artefakter migreras**. Om du har SQL-skript eller antecknings bok ansluten till pooler i arbets ytan utveckling förväntas samma namn på pooler i olika miljöer. 
--   **Infrastruktur som kod (IaC)**. Hantering av infrastruktur (nätverk, virtuella datorer, belastningsutjämnare och nätverkstopologi) i en beskrivande modell använder samma version som DevOps-teamet för käll koden. 
--   **Andra**. Se [metod tips för ADF-artefakter](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd)
+-   **Git-integrering**. Konfigurera endast din Synapse-arbetsyta för utveckling med Git-integrering. Ändringar av test- och produktionsarbetsytor distribueras via CI/CD och behöver inte Git-integrering.
+-   **Förbered pooler innan artefaktmigrering**. Om du har ETT SQL-skript eller en notebook-fil som är kopplad till pooler på utvecklingsarbetsytan förväntas samma namn på pooler i olika miljöer. 
+-   **Infrastruktur som kod (IaC).** Hantering av infrastruktur (nätverk, virtuella datorer, lastbalanserare och anslutningstopologi) i en beskrivande modell använder samma versionshantering som DevOps-teamet använder för källkod. 
+-   **Andra**. Se [metodtips för ADF-artefakter](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd)
 
-## <a name="troubleshooting-artifacts-deployment"></a>Felsöka artefakt distribution 
+## <a name="troubleshooting-artifacts-deployment"></a>Felsöka distribution av artefakter 
 
-### <a name="use-the-synapse-workspace-deployment-task"></a>Använda distributions uppgiften Synapse-arbetsyta
+### <a name="use-the-synapse-workspace-deployment-task"></a>Använda distributionsuppgiften för Synapse-arbetsytan
 
-I Synapse finns det ett antal artefakter som inte är ARM-resurser. Detta skiljer sig från Azure Data Factory. Distributions uppgiften för ARM-mallen fungerar inte korrekt för att distribuera Synapse-artefakter
+I Synapse finns det ett antal artefakter som inte är ARM-resurser. Detta skiljer sig från Azure Data Factory. Distributionsuppgiften för ARM-mall fungerar inte korrekt för att distribuera Synapse-artefakter
  
-### <a name="unexpected-token-error-in-release"></a>Oväntat token-fel i version
+### <a name="unexpected-token-error-in-release"></a>Oväntat tokenfel i versionen
 
-När parameter filen har parameter värden som inte är undantagna, kan inte versions pipelinen parsa filen och generera felet "oväntad token". Vi föreslår att du åsidosätter parametrar eller använder Azure-nyckel valvet för att hämta parameter värden. Du kan också använda dubbla escape-tecken som en lösning.
+När parameterfilen har parametervärden som inte är ryms kommer lanseringspipelinen inte att parsa filen och genererar felet "oväntad token". Vi rekommenderar att du åsidosätter parametrar eller använder Azure KeyVault för att hämta parametervärden. Du kan också använda dubbla escape-tecken som en lösning.

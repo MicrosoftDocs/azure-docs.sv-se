@@ -7,7 +7,7 @@
       href: overview.md
     - name: Stöd för språk
       href: language-support.md
-    - name: Priser och begränsningar
+    - name: Prissättning
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: Nyheter
       href: whats-new.md
@@ -27,8 +27,6 @@
       href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
     - name: SDK för JavaScript Formigenkänning klientbibliotek
       href: /samples/azure/azure-sdk-for-js/ai-form-recognizer-javascript/
-    - name: REST API och cURL
-      href: 'https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer'
 - name: Anvisningar
   items:
     - name: Skapa en träningsdatauppsättning
@@ -52,6 +50,14 @@
           href: ../containers/index.yml
     - name: Säkerhetskopiera och återställa modeller
       href: disaster-recovery.md
+    - name: Företagsberedskap
+      items:
+        - name: Konfigurera virtuella nätverk
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/form-recognizer/context/context
+        - name: Använda kund hanterade nycklar
+          href: encrypt-data-at-rest.md
+        - name: Använda Azure AD-autentisering
+          href: ../authentication.md?context=/azure/cognitive-services/form-recognizer/context/context
 - name: Begrepp
   items:
     - name: Layout-API
@@ -97,15 +103,15 @@
           href: /javascript/api/overview/azure/ai-form-recognizer-readme
 - name: Resurser
   items:
+    - name: Företagsberedskap
+      items:
+        - name: Stöd för regioner
+          href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
+        - name: Efterlevnad och certifiering
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
     - name: Azure-översikt
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Regional tillgänglighet
-      href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
-    - name: Efterlevnad
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Kryptering
-      href: encrypt-data-at-rest.md
     - name: Sekretess och cookies
       href: 'https://privacy.microsoft.com/en-US/privacystatement'

@@ -1,6 +1,6 @@
 ---
 title: Microsoft Graph API
-description: Microsoft Graph API är ett RESTful webb-API som gör att du kan komma åt Microsoft Cloud tjänst resurser.
+description: API:Microsoft Graph är ett RESTful-webb-API som gör att du kan komma åt Microsoft Cloud-tjänstresurser.
 author: davidmu1
 services: active-directory
 manager: CelesteDG
@@ -11,50 +11,50 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: a799d7c32ad632303931adf838ca8e2e715b2adc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e689e620a5aeb7c5028f1a1b30dd6def8e447ab
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96860192"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529986"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-Microsoft Graph API är ett RESTful webb-API som gör att du kan komma åt Microsoft Cloud tjänst resurser. När du har registrerat din app och get Authentication-token för en användare eller tjänst kan du göra förfrågningar till Microsoft Graph API. Mer information finns i [Översikt över Microsoft Graph](/graph/overview).
+API:Microsoft Graph är ett RESTful-webb-API som gör att du kan komma åt Microsoft Cloud-tjänstresurser. När du har registrerat din app och fått autentiseringstoken för en användare eller tjänst kan du göra begäranden till Microsoft Graph API. Mer information finns i [Översikt över Microsoft Graph](/graph/overview).
 
-Microsoft Graph exponerar REST-API: er och klient bibliotek för att komma åt data på följande Microsoft 365-tjänster:
-- Microsoft 365 tjänster: Delve, Excel, Microsoft-bokningar, Microsoft Teams, OneDrive, OneNote, Outlook/Exchange, Planner och SharePoint
-- Enterprise Mobility and Security Services: Advanced Threat Analytics, Avancerat skydd, Azure Active Directory, Identity Manager och Intune
-- Windows 10-tjänster: aktiviteter, enheter, meddelanden
+Microsoft Graph exponerar REST-API:er och klientbibliotek för att komma åt data på följande Microsoft 365 tjänster:
+- Microsoft 365 tjänster: Delve, Excel, Microsoft Bookings, Microsoft Teams, OneDrive, OneNote, Outlook/Exchange, Planner och SharePoint
+- Enterprise Mobility and Security Services: Advanced Threat Analytics, Advanced Threat Protection, Azure Active Directory, Identity Manager och Intune
+- Windows 10 tjänster: aktiviteter, enheter, meddelanden
 - Dynamics 365 Business Central
 
 ## <a name="versions"></a>Versioner
 
-Microsoft Graph stöder för närvarande två versioner: v 1.0 och beta. V 1.0-versionen innehåller allmänt tillgängliga API: er. Använd v 1.0-versionen för alla produktions program. Beta versionen innehåller API: er som för närvarande finns i för hands version. Eftersom vi kan införa ändringar i våra beta-API: er, rekommenderar vi att du bara använder Beta versionen för att testa appar som utvecklas. Använd inte beta-API: er i dina produktions program. Mer information finns i [Versioning, support och brytande ändrings principer för Microsoft Graph](/graph/versioning-and-support).
+Microsoft Graph stöder för närvarande två versioner: v1.0 och beta. Versionen v1.0 innehåller allmänt tillgängliga API:er. Använd v1.0-versionen för alla produktionsappar. Betaversionen innehåller API:er som för närvarande är i förhandsversion. Eftersom vi kan införa större ändringar i våra beta-API:er rekommenderar vi att du endast använder betaversionen för att testa appar som är under utveckling. använd inte beta-API:er i dina produktionsappar. Mer information finns i [Versionshantering, support och policyer för större ändringar för Microsoft Graph](/graph/versioning-and-support).
 
-För att börja använda beta-API: erna, se [Microsoft Graph beta slut punkts referens](/graph/api/overview?view=graph-rest-beta)
+Information om hur du börjar använda beta-API:Microsoft Graph finns [i Microsoft Graph betaslutpunktsreferens](/graph/api/overview?view=graph-rest-beta&preserve-view=true)
 
-Om du vill börja använda v 1.0-API: erna, se [Microsoft Graph REST API v 1.0-referens](/graph/api/overview)
+Information om hur du börjar använda v1.0-API:er [finns Microsoft Graph REST API v1.0-referens](/graph/api/overview?view=graph-rest-1.0&preserve-view=true)
 
 ## <a name="get-started"></a>Kom igång
 
-Om du vill läsa från eller skriva till en resurs, till exempel en användare eller ett e-postmeddelande, skapar du en begäran som ser ut ungefär så här:
+Om du vill läsa från eller skriva till en resurs, till exempel en användare eller ett e-postmeddelande, skapar du en begäran som ser ut så här:
 
 `{HTTP method} https://graph.microsoft.com/{version}/{resource}?{query-parameters}`
 
-Mer information om elementen i den konstruerade begäran finns i [använda Microsoft Graph API](/graph/use-the-api)
+Mer information om elementen i den konstruerade begäran finns i [Använda Microsoft Graph API](/graph/use-the-api)
 
-Snabb starts exempel finns tillgängliga för att visa hur du får åtkomst till kraften i Microsoft Graph-API: et. Exempel som är tillgängliga för åtkomst till två tjänster med en autentisering: Microsoft-konto och Outlook. Varje snabb start kommer åt information från Microsoft-konto användarnas profiler och visar händelser från deras kalender.
-Snabb starterna omfattar fyra steg:
+Det finns snabbstartsexempel som visar hur du får åtkomst till kraften i Microsoft Graph API. De exempel som är tillgängliga har åtkomst till två tjänster med en autentisering: Microsoft-konto och Outlook. Varje snabbstart kommer åt information Microsoft-konto användarnas profiler och visar händelser från kalendern.
+Snabbstarterna omfattar fyra steg:
 - Välj din plattform
 - Hämta ditt app-ID (klient-ID)
-- Bygg exemplet
-- Logga in och Visa händelser i din kalender
+- Skapa exemplet
+- Logga in och visa händelser i kalendern
 
-När du har slutfört snabb starten har du en app som är redo att köras. Mer information finns i [vanliga frågor och svar om Microsoft Graph snabb start](/graph/quick-start-faq). Information om hur du kommer igång med exemplen finns i [Microsoft Graph snabb start](https://developer.microsoft.com/graph/quick-start).
+När du har slutfört snabbstarten har du en app som är redo att köras. Mer information finns i Microsoft Graph [vanliga frågor och svar.](/graph/quick-start-faq) Information om hur du kommer igång med exemplen finns [i Microsoft Graph Snabbstart.](https://developer.microsoft.com/graph/quick-start)
 
 ## <a name="tools"></a>Verktyg
 
-Microsoft Graph Explorer är ett webbaserat verktyg som du kan använda för att bygga och testa förfrågningar med hjälp av Microsoft Graph-API: er. Du kan komma åt Microsoft Graph Explorer på: `https://developer.microsoft.com/graph/graph-explorer` .
+Microsoft Graph Explorer är ett webbaserat verktyg som du kan använda för att skapa och testa begäranden med hjälp av Microsoft Graph-API:er. Du kan komma Microsoft Graph Explorer på: `https://developer.microsoft.com/graph/graph-explorer` .
 
-Postman är ett verktyg som du kan använda för att bygga och testa förfrågningar med hjälp av Microsoft Graph API: er. Du kan hämta Postman på: `https://www.getpostman.com/` . Om du vill interagera med Microsoft Graph i Postman använder du samlingen Microsoft Graph i Postman. Mer information finns i [använda Postman med Microsoft Graph-API: et](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).
+Postman är ett verktyg som du också kan använda för att skapa och testa begäranden med hjälp Microsoft Graph API:er. Du kan ladda ned Postman på: `https://www.getpostman.com/` . Om du vill Microsoft Graph i Postman använder du Microsoft Graph i Postman. Mer information finns i [Använda Postman med Microsoft Graph API.](/graph/use-postman)

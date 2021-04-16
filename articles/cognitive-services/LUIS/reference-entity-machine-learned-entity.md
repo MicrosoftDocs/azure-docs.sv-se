@@ -1,32 +1,32 @@
 ---
-title: Enhets typ för maskin inlärning – LUIS
+title: Entitetstyp för maskininlärning – LUIS
 titleSuffix: Azure Cognitive Services
-description: Enheten för maskin inlärning är den prioriterade entiteten för att skapa LUIS-program.
+description: Maskininlärningsentiteten är den prioriterade entiteten för att skapa LUIS-program.
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 04/30/2020
-ms.openlocfilehash: f16f3ec445af777c3bde1cb2ab0735df4b6614f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: 12724175ebb9e23efa431169c01a804cd193cdd5
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91542248"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502597"
 ---
 # <a name="machine-learning-entity"></a>Enhet för maskininlärning
 
-Enheten för maskin inlärning är den prioriterade entiteten för att skapa LUIS-program.
+Maskininlärningsentiteten är den prioriterade entiteten för att skapa LUIS-program.
 
 
-## <a name="example-json"></a>Exempel-JSON
+## <a name="example-json"></a>Exempel på JSON
 
-Anta att appen tar pizza-beställningar, till exempel [själv studie kursen för desammansättnings bara entiteter](tutorial-machine-learned-entity.md). Varje ordning kan innehålla flera olika pizzor, inklusive olika storlekar.
+Anta att appen tar emot pizzabeställningar, till exempel självstudien [om entiteten](tutorial-machine-learned-entity.md)som kan dekompileras. Varje beställning kan innehålla flera olika pizza, inklusive olika storlekar.
 
 Här är några exempelyttranden:
 
-|Exempel på yttranden för pizza-appen|
+|Exempelyttranden för pizzaappen|
 |--|
 |`Can I get a pepperoni pizza and a can of coke please`|
 |`can I get a small pizza with onions peppers and olives`|
@@ -34,15 +34,15 @@ Här är några exempelyttranden:
 
 
 
-#### <a name="v3-prediction-endpoint-response"></a>[V3 slut punkts svar för förutsägelse](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[Svar från V3-förutsägelseslutpunkt](#tab/V3)
 
-Eftersom en maskin inlärnings enhet kan ha många underentiteter med nödvändiga funktioner, är detta bara ett exempel. Den bör betraktas som en vägledning för vad din entitet kommer att returnera.
+Eftersom en maskininlärningsentitet kan ha många underentiteter med nödvändiga funktioner är detta bara ett exempel. Det bör betraktas som en guide för vad din entitet kommer att returnera.
 
 Överväg frågan:
 
 `deliver 1 large cheese pizza on thin crust and 2 medium pepperoni pizzas on deep dish crust`
 
-Detta är JSON om anges `verbose=false` i frågesträngen:
+Det här är JSON om `verbose=false` har angetts i frågesträngen:
 
 ```json
 "entities": {
@@ -100,7 +100,7 @@ Detta är JSON om anges `verbose=false` i frågesträngen:
 
 ```
 
-Detta är JSON om anges `verbose=true` i frågesträngen:
+Det här är JSON om `verbose=true` har angetts i frågesträngen:
 
 ```json
 "entities": {
@@ -339,13 +339,13 @@ Detta är JSON om anges `verbose=true` i frågesträngen:
     }
 }
 ```
-#### <a name="v2-prediction-endpoint-response"></a>[Slut punkts svar för v2 förutsägelse](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[Svar från V2-förutsägelseslutpunkt](#tab/V2)
 
-Den här entiteten är inte tillgänglig i körnings miljön för v2-förutsägelse.
+Den här entiteten är inte tillgänglig i V2-prediktionskörningen.
 * * *
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om enheten för maskin inlärning, inklusive en [själv studie kurs](tutorial-machine-learned-entity.md), [koncept](luis-concept-entity-types.md#design-entities-for-decomposition)och [instruktions guide](luis-how-to-add-entities.md#create-a-machine-learned-entity).
+Lär dig mer om maskininlärningsentiteten, [](tutorial-machine-learned-entity.md) [inklusive](luis-concept-entity-types.md#machine-learned-ml-entity)en självstudie, begrepp och [instruktionsguide.](luis-how-to-add-entities.md#create-a-machine-learned-entity)
 
-Lär dig mer om entiteten [lista](reference-entity-list.md) och [reguljära uttryck](reference-entity-regular-expression.md) .
+Lär dig mer om [entiteten lista](reference-entity-list.md) och [entiteten för reguljära](reference-entity-regular-expression.md) uttryck.

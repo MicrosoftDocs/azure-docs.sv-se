@@ -2,20 +2,20 @@
   href: index.yml
 - name: Översikt
   items:
-    - name: Vad är Azure Certified Device-programmet?
+    - name: Vad är programmet Azure Certified Device?
       href: overview.md
 - name: Självstudier
   expanded: true
   items:
-    - name: 1 – välja rätt certifikat
+    - name: 1 – Välja rätt certifiering
       href: tutorial-00-selecting-your-certification.md
-    - name: 2 – Skapa ditt projekt
+    - name: 2 – Skapa projektet
       href: tutorial-01-creating-your-project.md
-    - name: 3 – lägga till enhets information
+    - name: 3 – Lägga till enhetsinformation
       href: tutorial-02-adding-device-details.md
-    - name: 4 – testa din enhet
+    - name: 4 – Testa din enhet
       href: tutorial-03-testing-your-device.md
-    - name: 5 – publicera din enhet
+    - name: 5 – Publicera din enhet
       href: tutorial-04-publishing-your-device.md
 - name: Programkrav
   items:
@@ -25,23 +25,25 @@
       href: program-requirements-pnp.md
     - name: Edge-hanterad
       href: program-requirements-edge-managed.md
-    - name: Edge Secure-Core (för hands version)
+    - name: Edge-skyddad kärna (förhandsversion)
       href: program-requirements-edge-secured-core.md
 - name: Begrepp
   items:
     - name: Äldre enheter
       href: concepts-legacy.md
-    - name: Marknadsförings koncept
+    - name: Marknadsföringsbegrepp
       href: concepts-marketing.md
 - name: Anvisningar
   items:
     - name: Så här redigerar du en publicerad enhet
       href: how-to-edit-published-device.md
-    - name: Så här certifierar du en indirekt ansluten enhet
+    - name: Certifiera en indirekt ansluten enhet
       href: how-to-indirectly-connected-devices.md
-    - name: Använda funktionen komponenter
+    - name: Så här felsöker du din IoT Plug and Play enhet
+      href: how-to-troubleshoot-pnp.md
+    - name: Så här använder du komponentfunktionen
       href: how-to-using-the-components-feature.md
 - name: Resurser
   items:
-    - name: Ord lista för certifiering
+    - name: Certifieringsordlistor
       href: resources-glossary.md

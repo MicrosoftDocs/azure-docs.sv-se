@@ -1,32 +1,32 @@
 ---
-title: 'Självstudie: läsa in New York Taxidata-data'
-description: Självstudier använder Azure Portal och SQL Server Management Studio för att läsa in New York Taxidata-data från en Azure-Blob för Synapse SQL.
+title: 'Självstudie: Läsa in New York Taxicab-data'
+description: Självstudien använder Azure Portal och SQL Server Management Studio för att läsa in New York-taxicabdata från en Azure-blob för Synapse SQL.
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 11/23/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 1490a0e094c6ce2665e28f7d32540ad58d53cb2a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7ede40aba8e2d36e4262b4bc89a35f5d67079e0e
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600147"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567520"
 ---
-# <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Självstudie: Läs in New York Taxidata-datauppsättningen
+# <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Självstudie: Läsa in New York Taxicab-datauppsättningen
 
-I den här självstudien används [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) för att läsa in New York taxidata data uppsättning från ett Azure Blob Storage-konto I självstudierna används [Azure-portalen](https://portal.azure.com) och [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) för att:
+I den här [självstudien används COPY-instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) för att läsa in New York Taxicab-datauppsättningen från Azure Blob Storage-konto. I självstudierna används [Azure-portalen](https://portal.azure.com) och [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) för att:
 
 > [!div class="checklist"]
 >
 > * Skapa en användare som utsetts för att läsa in data
-> * Skapa tabellerna för exempel data uppsättningen 
-> * Använd instruktionen COPY T-SQL för att läsa in data i informations lagret
+> * Skapa tabellerna för exempeldatamängden 
+> * Använd COPY T-SQL-instruktionen för att läsa in data till ditt informationslager
 > * Visa dataförloppet vid hämtning
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
@@ -35,17 +35,17 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](ht
 
 Innan du börjar med de här självstudierna ska du ladda ned och installera den senaste versionen av [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS).  
 
-Den här självstudien förutsätter att du redan har skapat en dedikerad SQL-pool från följande [självstudie](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin).
+Den här självstudien förutsätter att du redan har skapat en SQL-dedikerad pool från följande [självstudie.](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin)
 
 ## <a name="create-a-user-for-loading-data"></a>Skapa en användare för att läsa in data
 
-Serveradministratörskontot är avsett för att utföra hanteringsåtgärder och är inte lämpligt för att köra frågor på användardata. Datainläsning är en minneskrävande åtgärd. Högsta minnes storlek definieras enligt de konfigurerade [data lager enheterna](what-is-a-data-warehouse-unit-dwu-cdwu.md) och [resurs klassen](resource-classes-for-workload-management.md) .
+Serveradministratörskontot är avsett för att utföra hanteringsåtgärder och är inte lämpligt för att köra frågor på användardata. Datainläsning är en minneskrävande åtgärd. Maximalt minne definieras enligt de [informationslagerenheter och](what-is-a-data-warehouse-unit-dwu-cdwu.md) [den konfigurerade resursklassen.](resource-classes-for-workload-management.md)
 
 Det är bäst att skapa en särskild inloggning och en särskild användare för inläsning av data. Lägg sedan till inläsningsanvändaren i en [resursklass](resource-classes-for-workload-management.md) som möjliggör en lämplig maximal minnesallokering.
 
-Anslut som Server administratör så att du kan skapa inloggningar och användare. Följ dessa steg för att skapa en inloggning och användare som kallas för **LoaderRC20**. Tilldela användaren resursklassen **staticrc20**.
+Anslut som serveradministratör så att du kan skapa inloggningar och användare. Följ dessa steg för att skapa en inloggning och användare som kallas för **LoaderRC20**. Tilldela användaren resursklassen **staticrc20**.
 
-1. I SSMS högerklickar du på **huvud** för att visa en nedrullningsbar meny och väljer **ny fråga**. Ett nytt frågefönster öppnas.
+1. I SSMS högerklickar du på **huvudmenyn** för att visa en nedrullningsen meny och väljer **Ny fråga.** Ett nytt frågefönster öppnas.
 
     ![Ny fråga i huvuddatabas](./media/load-data-from-azure-blob-storage-using-polybase/create-loader-login.png)
 
@@ -76,7 +76,7 @@ Anslut som Server administratör så att du kan skapa inloggningar och användar
 
 Första steget mot att läsa in data är att logga in som LoaderRC20.  
 
-1. I Object Explorer väljer du den nedrullningsbara menyn **Anslut** och väljer **databas motor**. Dialogrutan **Anslut till server** visas.
+1. I Object Explorer väljer du **den nedrullningsna** menyn Anslut och sedan **Databasmotor.** Dialogrutan **Anslut till server** visas.
 
     ![Ansluta med ny inloggning](./media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
@@ -88,11 +88,11 @@ Första steget mot att läsa in data är att logga in som LoaderRC20.
 
     ![Anslutningen lyckades](./media/load-data-from-azure-blob-storage-using-polybase/connected-as-new-login.png)
 
-## <a name="create-tables-for-the-sample-data"></a>Skapa tabeller för exempel data
+## <a name="create-tables-for-the-sample-data"></a>Skapa tabeller för exempeldata
 
-Du är redo att börja läsa in data till ditt nya informationslager. Den här delen av självstudien visar hur du använder COPY-instruktionen för att läsa in New York City Cab-datauppsättningen från en Azure Storage-blob. Information om hur du hämtar dina data till Azure Blob Storage eller läser in den direkt från din källa finns i [Översikt över inläsning](design-elt-data-loading.md).
+Du är redo att börja läsa in data till ditt nya informationslager. Den här delen av självstudien visar hur du använder COPY-instruktionen för att läsa in New York City-taxidatamängden från en Azure Storage blob. Mer information om hur du hämtar data till Azure Blob Storage eller läser in dem direkt från källan finns i översikten över [inläsning.](design-elt-data-loading.md)
 
-Kör följande SQL-skript och ange information om de data du vill läsa in. Informationen omfattar var informationen finns, formatet för innehållet i aktuella data och tabelldefinitionen för dessa data.
+Kör följande SQL-skript och ange information om de data som du vill läsa in. Informationen omfattar var informationen finns, formatet för innehållet i aktuella data och tabelldefinitionen för dessa data.
 
 1. I det föregående avsnittet loggade du in på ditt informationslager som LoaderRC20. Högerklicka på anslutningen LoaderRC20 i SSMS, och välj **Ny fråga**.  Ett nytt frågefönster visas.
 
@@ -251,10 +251,10 @@ Kör följande SQL-skript och ange information om de data du vill läsa in. Info
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>Läsa in data till informationslagret
 
-I det här avsnittet används [kopierings instruktionen för att läsa in](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) exempel data från Azure Storage blob.  
+Det här avsnittet använder [COPY-instruktionen för att](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) läsa in exempeldata från Azure Storage Blob.  
 
 > [!NOTE]
-> De här självstudierna läser in data direkt till den slutliga tabellen. Du skulle vanligt vis läsa in i en mellanlagrings tabell för dina produktions arbets belastningar. Du kan utföra alla nödvändiga omvandlingar när data är i mellanlagringstabellen. 
+> De här självstudierna läser in data direkt till den slutliga tabellen. Normalt skulle du läsa in i en mellanlagringstabell för dina produktionsarbetsbelastningar. Du kan utföra alla nödvändiga omvandlingar när data är i mellanlagringstabellen. 
 
 1. Kör följande instruktioner för att läsa in data:
 
@@ -334,7 +334,7 @@ I det här avsnittet används [kopierings instruktionen för att läsa in](/sql/
     OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
 
-2. Visa data som laddas. Du läser in flera GB data och komprimerar dem till högpresterande grupperade columnstore-index. Kör följande fråga som använder en dynamisk hanteringsvy (DMV) för att visa status för belastningen.
+2. Visa data som laddas. Du läser in flera GB data och komprimerar dem till grupperade kolumnlagringsindex med höga resultat. Kör följande fråga som använder en dynamisk hanteringsvy (DMV) för att visa status för belastningen.
 
     ```sql
     SELECT  r.[request_id]                           
@@ -379,21 +379,21 @@ Du debiteras för beräkningsresurser och data som du har läst in i ditt inform
 
 Följ dessa steg för att rensa resurser enligt dina önskemål.
 
-1. Logga in på [Azure Portal](https://portal.azure.com)och välj ditt informations lager.
+1. Logga in på [Azure Portal](https://portal.azure.com), välj ditt informationslager.
 
     ![Rensa resurser](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Om du vill pausa beräkningen väljer du knappen **pausa** . När informationslagret har pausats visas knappen **Starta**.  Om du vill återuppta beräkningen väljer du **Start**.
+2. Om du vill pausa beräkningen väljer du **knappen Pausa.** När informationslagret har pausats visas knappen **Starta**.  Om du vill återuppta beräkningen väljer du **Starta**.
 
-3. Om du vill ta bort data lagret så att du inte debiteras för beräkning eller lagring väljer du **ta bort**.
+3. Om du vill ta bort informationslagret så att du inte debiteras för beräkning eller lagring väljer du Ta **bort**.
 
-4. Om du vill ta bort den server som du har skapat väljer du **mynewserver-20180430.Database.Windows.net** i föregående bild och väljer sedan **ta bort**.  Var försiktig: om du tar bort servern tas nämligen alla databaser som servern har tilldelats bort.
+4. Om du vill ta bort servern som **du skapade mynewserver-20180430.database.windows.net** i föregående bild och väljer sedan Ta **bort.**  Var försiktig: om du tar bort servern tas nämligen alla databaser som servern har tilldelats bort.
 
-5. Om du vill ta bort resurs gruppen väljer du **myResourceGroup** och väljer sedan **ta bort resurs grupp**.
+5. Om du vill ta bort resursgruppen väljer **du myResourceGroup** och sedan Ta **bort resursgrupp.**
 
 ## <a name="next-steps"></a>Nästa steg
 
-I de här självstudierna lärde du dig att skapa ett informationslager och skapa en användare för att läsa in data. Du använde den enkla [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples) för att läsa in data i informations lagret.
+I de här självstudierna lärde du dig att skapa ett informationslager och skapa en användare för att läsa in data. Du använde den enkla [COPY-instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples) för att läsa in data i informationslagret.
 
 Du gjorde detta:
 > [!div class="checklist"]
@@ -402,17 +402,17 @@ Du gjorde detta:
 > * Skapade en brandväggsregel på servernivå på Azure-portalen
 > * Anslöt till informationslagret med SSMS
 > * Skapade en användare för inläsning av data
-> * Skapade tabellerna för exempel data
-> * Använde instruktionen COPY T-SQL för att läsa in data i informations lagret
+> * Skapade tabellerna för exempeldata
+> * Använde COPY T-SQL-instruktionen för att läsa in data till ditt informationslager
 > * Visade förloppet för data under inläsning
 
-Gå vidare till utvecklings översikten och lär dig hur du migrerar en befintlig databas till Azure Synapse Analytics:
+Gå vidare till utvecklingsöversikten för att lära dig hur du migrerar en befintlig databas till Azure Synapse Analytics:
 
 > [!div class="nextstepaction"]
-> [Design beslut för att migrera en befintlig databas till Azure Synapse Analytics](sql-data-warehouse-overview-develop.md)
+> [Designbeslut för att migrera en befintlig databas till Azure Synapse Analytics](sql-data-warehouse-overview-develop.md)
 
-Läs följande dokumentation om du vill läsa mer om exempel och referenser:
+Mer information om inläsning av exempel och referenser finns i följande dokumentation:
 
-- [Referens dokumentation för KOPIERINGs instruktion](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
-- [Kopiera exempel för varje autentiseringsmetod](./quickstart-bulk-load-copy-tsql-examples.md)
-- [Kopiera snabb start för en enskild tabell](./quickstart-bulk-load-copy-tsql.md)
+- [Referensdokumentation för COPY-instruktion](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
+- [KOPIERA exempel för varje autentiseringsmetod](./quickstart-bulk-load-copy-tsql-examples.md)
+- [SNABBSTART FÖR KOPIA för en enskild tabell](./quickstart-bulk-load-copy-tsql.md)

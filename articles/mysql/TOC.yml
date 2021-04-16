@@ -7,7 +7,7 @@
       href: overview.md
     - name: Vilket MySQL-alternativ bör jag välja?
       href: select-right-deployment-type.md
-    - name: Versions support princip
+    - name: Princip för versionsstöd
       href: concepts-version-policy.md
       displayName: version policy
 - name: Enskild server
@@ -30,7 +30,7 @@
     - name: Snabbstarter
       expanded: true
       items:
-        - name: Skapa en fristående MySQL-Server
+        - name: Skapa en enskild MySQL-server
           items:
             - name: Azure Portal
               href: quickstart-create-mysql-server-database-using-azure-portal.md
@@ -85,14 +85,14 @@
         - name: Konfigurera SSL
           href: howto-configure-ssl.md
           displayName: 'ssl, security, application'
-        - name: Konfigurera brand Väggs regler
+        - name: Konfigurera brandväggsregler
           items:
             - name: Begrepp
               href: concepts-firewall-rules.md
-            - name: Konfigurera brand Väggs regler med hjälp av Azure Portal
+            - name: Konfigurera brandväggsregler med Azure Portal
               href: howto-manage-firewall-using-portal.md
               displayName: firewall
-            - name: Konfigurera brand Väggs regler med Azure CLI
+            - name: Konfigurera brandväggsregler med Azure CLI
               href: howto-manage-firewall-using-cli.md
               displayName: firewall
         - name: Konfigurera serverparametrar
@@ -109,7 +109,7 @@
         - name: Skapa databaser och användare
           href: howto-create-users.md
           displayName: users
-        - name: Övervaka Server
+        - name: Övervaka server
           items:
             - name: Skapa aviseringar för mått
               href: howto-alert-on-metric.md
@@ -142,7 +142,7 @@
             - name: Begrepp
               href: concepts-connectivity.md
               displayName: 'connection, resiliency'
-            - name: Exempel – konfigurera Java-anslutningspoolen
+            - name: Exempel – Konfigurera Java-anslutningspooler
               href: sample-scripts-java-connection-pooling.md
             - name: Ansluta med omdirigering
               href: howto-redirection.md
@@ -157,20 +157,20 @@
           items:
             - name: Begrepp
               href: concepts-data-access-and-security-vnet.md
-            - name: Konfigurera VNet-tjänstens slut punkter med Azure Portal
+            - name: Konfigurera VNet-tjänstslutpunkter med hjälp av Azure Portal
               href: howto-manage-vnet-using-portal.md
               displayName: 'vnet, virtual network, service endpoint'
-            - name: Konfigurera VNet-tjänstens slut punkter med Azure CLI
+            - name: Konfigurera VNet-tjänstslutpunkter med Azure CLI
               href: howto-manage-vnet-using-cli.md
               displayName: 'vnet, virtual network, service endpoint'
         - name: Private Link
           items:
             - name: Begrepp
               href: concepts-data-access-security-private-link.md
-            - name: Konfigurera privat länk med Azure Portal
+            - name: Konfigurera Private Link med Azure Portal
               href: howto-configure-privatelink-portal.md
               displayName: 'private link, private endpoint'
-            - name: Konfigurera usingAzure CLI för Private Link
+            - name: Konfigurera Private Link med Hjälp avAzure CLI
               href: howto-configure-privatelink-cli.md
               displayName: 'private link, private endpoint'
     - name: Säkerhet
@@ -189,7 +189,7 @@
             - name: Ansluta med hanterad identitet
               href: howto-connect-with-managed-identity.md
               displayName: 'managed identity, msi'
-        - name: Nätverks säkerhet (kryptering i rörelse)
+        - name: Nätverkssäkerhet (kryptering i rörelse)
           items:
             - name: Konfigurerar SSL
               href: concepts-ssl-connection-security.md
@@ -200,7 +200,7 @@
               items:
                 - name: Begrepp
                   href: concepts-data-access-and-security-threat-protection.md
-                - name: Konfigurera Avancerat skydd med hjälp av Azure Portal
+                - name: Konfigurera Advanced Threat Protection med Azure Portal
                   href: howto-database-threat-protection-portal.md
                   displayName: 'atp, advanced thread, security'
         - name: Kryptering i vila
@@ -230,15 +230,15 @@
             - name: Använda Azure Portal
               href: howto-deny-public-network-access.md
               displayName: 'security, public access'
-        - name: Server granskning
+        - name: Servergranskning
           items:
             - name: Begrepp
               href: concepts-audit-logs.md
               displayName: 'monitor, alerts, audit log'
-            - name: Konfigurera gransknings loggar med Azure Portal
+            - name: Konfigurera granskningsloggar med Azure Portal
               href: howto-configure-audit-logs-portal.md
               displayName: 'debug, audit log'
-            - name: Konfigurera gransknings loggar med Azure CLI
+            - name: Konfigurera granskningsloggar med Azure CLI
               href: howto-configure-audit-logs-cli.md
               displayName: 'debug, audit log'
         - name: Efterlevnad
@@ -256,7 +256,7 @@
       items:
         - name: Servrar
           href: concepts-servers.md
-        - name: Server begränsningar
+        - name: Serverbegränsningar
           href: concepts-limits.md
         - name: Serverparametrar
           href: concepts-server-parameters.md
@@ -318,7 +318,7 @@
             - name: Använda Azure PowerShell
               href: howto-restore-server-powershell.md
               displayName: 'restore server, backup, geo-restore powershell'
-        - name: Återställa en borttagen Server
+        - name: Återställa en borttagna server
           href: howto-restore-dropped-server.md
           displayName: 'restore server,dropped, recover'
     - name: Replikering
@@ -334,16 +334,16 @@
             - name: Begrepp
               href: concepts-read-replicas.md
               displayName: 'replication, read replica'
-            - name: Skapa Läs replik med Azure Portal
+            - name: Skapa skrivskyddade repliker med Azure Portal
               href: howto-read-replicas-portal.md
               displayName: 'data-in replication, replica, failover'
-            - name: 'Skapa Läs repliker med Azure CLI, REST API'
+            - name: 'Skapa skrivskyddade repliker med Azure CLI, REST API'
               href: howto-read-replicas-cli.md
               displayName: 'data-in replication, replica, failover'
-            - name: Skapa Läs repliker med Azure PowerShell
+            - name: Skapa skrivskyddade repliker med Azure PowerShell
               href: howto-read-replicas-powershell.md
               displayName: 'data-in replication, replica, failover'
-    - name: Underhåll av tjänst
+    - name: Tjänstunderhåll
       items:
         - name: Planerat underhåll
           href: concepts-planned-maintenance-notification.md
@@ -361,10 +361,10 @@
             - name: Begrepp
               href: concepts-server-logs.md
               displayName: 'monitor, slow query log, alert'
-            - name: Konfigurera långsamma Query-loggar med Azure Portal
+            - name: Konfigurera långsamma frågeloggar med Azure Portal
               href: howto-configure-server-logs-in-portal.md
               displayName: 'debug, slow query log , performance'
-            - name: Konfigurera långsamma Query-loggar med Azure CLI
+            - name: Konfigurera långsamma frågeloggar med Azure CLI
               href: howto-configure-server-logs-in-cli.md
               displayName: 'debug, slow query log , performance'
         - name: Query Store
@@ -384,7 +384,7 @@
           href: concept-monitoring-best-practices.md
         - name: Bästa praxis för prestanda
           href: concept-performance-best-practices.md
-        - name: Metod tips för program utveckling
+        - name: Metodtips för programutveckling
           href: app-development-best-practices.md
           displayName: application
         - name: Metodtips för drift
@@ -402,7 +402,7 @@
     - name: Snabbstarter
       expanded: true
       items:
-        - name: Skapa en MySQL-flexibel Server
+        - name: Skapa en flexibel MySQL-server
           items:
             - name: Azure Portal
               href: flexible-server/quickstart-create-server-portal.md
@@ -438,7 +438,7 @@
         - name: Skapa databaser och användare
           href: howto-create-users.md
           displayName: users
-        - name: Övervaka Server
+        - name: Övervaka server
           href: flexible-server/how-to-alert-on-metric.md
     - name: Apputveckling
       items:
@@ -466,6 +466,8 @@
           href: flexible-server/how-to-stop-start-server-portal.md
         - name: Starta om servern med Azure Portal
           href: flexible-server/how-to-restart-server-portal.md
+        - name: Starta/stoppa/starta om med Azure CLI
+          href: flexible-server/how-to-restart-stop-start-server-cli.md
     - name: Nätverk
       items:
         - name: Begrepp
@@ -479,11 +481,11 @@
               href: flexible-server/how-to-manage-virtual-network-cli.md
         - name: Offentlig åtkomst (tillåtna IP-adresser)
           items:
-            - name: Konfigurera offentlig åtkomst med Azure Portal
+            - name: Konfigurera offentlig åtkomst med hjälp av Azure Portal
               href: flexible-server/how-to-manage-firewall-portal.md
             - name: Konfigurera offentlig åtkomst med Azure CLI
               href: flexible-server/how-to-manage-firewall-cli.md
-    - name: Underhåll av tjänst
+    - name: Tjänstunderhåll
       items:
         - name: Schemalagt underhåll
           href: flexible-server/concepts-maintenance.md
@@ -495,33 +497,39 @@
           href: flexible-server/concepts-business-continuity.md
         - name: Hög tillgänglighet
           href: flexible-server/concepts-high-availability.md
-        - name: Konfigurera hög tillgänglighet med hjälp av Azure Portal
+        - name: Konfigurera hög tillgänglighet med Azure Portal
           href: flexible-server/how-to-configure-high-availability.md
+        - name: Konfigurera hög tillgänglighet med Azure CLI
+          href: flexible-server/how-to-configure-high-availability-cli.md
     - name: Övervakning och loggar
       items:
         - name: Begrepp
           href: flexible-server/concepts-monitoring.md
-        - name: Långsamma Query-loggar
+        - name: Långsamma frågeloggar
           items:
             - name: Begrepp
               href: flexible-server/concepts-slow-query-logs.md
-            - name: Konfigurera långsamma Query-loggar med Azure Portal
+            - name: Konfigurera långsamma frågeloggar med hjälp av Azure Portal
               href: flexible-server/how-to-configure-slow-query-logs-portal.md
+            - name: Konfigurera långsamma frågeloggar med Azure CLI
+              href: flexible-server/how-to-configure-slow-query-log-cli.md
         - name: Granskningsloggar
           items:
             - name: Begrepp
               href: flexible-server/concepts-audit-logs.md
-            - name: Konfigurera gransknings loggar
+            - name: Konfigurera granskningsloggar
               href: flexible-server/how-to-configure-audit-logs-portal.md
+            - name: Konfigurera granskningsloggar med Azure CLI
+              href: flexible-server/how-to-configure-audit-log-cli.md
     - name: Replikering
       items:
         - name: Skrivskyddade repliker
           href: flexible-server/concepts-read-replicas.md
-        - name: Skapa Läs repliker
+        - name: Skapa skrivskyddade repliker
           items:
-            - name: Skapa Läs repliker med Azure Portal
+            - name: Skapa skrivskyddade repliker med Azure Portal
               href: flexible-server/how-to-read-replicas-portal.md
-            - name: Skapa Läs repliker med Azure CLI
+            - name: Skapa skrivskyddade repliker med Azure CLI
               href: flexible-server/how-to-read-replicas-cli.md
     - name: Säkerhetskopiera & återställning
       items:
@@ -529,9 +537,11 @@
           href: flexible-server/concepts-backup-restore.md
         - name: Återställa en server med hjälp av Microsoft Azure-portalen
           href: flexible-server/how-to-restore-server-portal.md
+        - name: Återställa en server med hjälp av Azure CLI
+          href: flexible-server/how-to-restore-server-cli.md
     - name: Felsökning
       items:
-        - name: Felsöka anslutnings fel
+        - name: Felsöka anslutningsfel
           href: flexible-server/how-to-troubleshoot-common-connection-issues.md
 - name: Migrering
   items:
@@ -552,7 +562,7 @@
       displayName: 'SUPER privilege, DBA role, Access is denied'
 - name: Felsökning
   items:
-    - name: Felsöka migrerings fel
+    - name: Felsöka migreringsfel
       href: howto-troubleshoot-common-errors.md
       displayName: 'SUPER privilege, DBA role, Access is denied'
     - name: Felsöka frågeprestanda
@@ -567,7 +577,7 @@
     - name: Felsöka svarstid för replikering
       href: howto-troubleshoot-replication-latency.md
       displayName: 'replication, latency, monitor'
-    - name: Felsöka databas fel
+    - name: Felsöka skadad databas
       href: how-to-fix-corrupt-database.md
       displayName: corrupt data
 - name: Referens

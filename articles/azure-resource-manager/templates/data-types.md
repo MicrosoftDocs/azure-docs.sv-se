@@ -1,40 +1,40 @@
 ---
-title: Data typer i mallar
-description: Beskriver de data typer som är tillgängliga i Azure Resource Manager mallar.
+title: Datatyper i mallar
+description: Beskriver de datatyper som är tillgängliga i Azure Resource Manager mallar.
 ms.topic: conceptual
 ms.author: tomfitz
 author: tfitzmac
 ms.date: 03/04/2021
-ms.openlocfilehash: 7d3f15c8852e6e25c621baad9bc6f20c303ffdb9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d6c8306b3dbdfe895055dc008d81cc0d85d8d6c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102125165"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538068"
 ---
-# <a name="data-types-in-arm-templates"></a>Data typer i ARM-mallar
+# <a name="data-types-in-arm-templates"></a>Datatyper i ARM-mallar
 
-Den här artikeln beskriver de data typer som stöds i Azure Resource Manager mallar (ARM-mallar). Den täcker både JSON-och bicep-datatyper.
+I den här artikeln beskrivs de datatyper som stöds i Azure Resource Manager (ARM-mallar). Den omfattar både JSON- och Bicep-datatyper.
 
 ## <a name="supported-types"></a>Typer som stöds
 
-I en ARM-mall kan du använda dessa data typer:
+I en ARM-mall kan du använda följande datatyper:
 
 * matris
 * boolesk
 * int
 * objekt
-* secureObject – anges av modifieraren i bicep
-* secureString – anges av modifieraren i bicep
+* secureObject – anges av modifieraren i Bicep
+* secureString – anges av modifieraren i Bicep
 * sträng
 
 ## <a name="arrays"></a>Matriser
 
-Matriser börjar med en vänsterparentes ( `[` ) och slutar med en höger hak paren tes ( `]` ).
+Matriser börjar med en vänster hakparentes ( `[` ) och slutar med en höger hakparentes ( `]` ).
 
-I JSON kan en matris deklareras i en enskild rad eller flera rader. Varje element avgränsas med ett kommatecken.
+I JSON kan en matris deklareras på en enda rad eller flera rader. Varje element avgränsas med ett kommatecken.
 
-I bicep måste en matris deklareras i flera rader. Använd inte kommatecken mellan värden.
+I Bicep måste en matris deklareras i flera rader. Använd inte kommatecken mellan värden.
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -93,7 +93,7 @@ var mixedArray = [
 
 ## <a name="booleans"></a>Booleska värden
 
-När du anger booleska värden använder `true` eller `false` . Omge inte värdet med citat tecken.
+När du anger booleska värden använder `true` du eller `false` . Omge inte värdet med citattecken.
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -116,7 +116,7 @@ param exampleBool bool = true
 
 ## <a name="integers"></a>Heltal
 
-Använd inte citat tecken när du anger heltals värden.
+Använd inte citattecken när du anger heltalsvärden.
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -137,17 +137,15 @@ param exampleInt int = 1
 
 ---
 
-För heltal som skickas som infogade parametrar kan värde intervallet begränsas av SDK eller kommando rads verktyget som du använder för distribution. När du till exempel använder PowerShell för att distribuera en mall kan heltals typer vara mellan-2147483648 och 2147483647. Undvik den här begränsningen genom att ange stora heltals värden i en [parameter fil](parameter-files.md). Resurs typer tillämpar egna gränser för heltals egenskaper.
+För heltal som skickas som infogade parametrar kan intervallet med värden begränsas av SDK:n eller kommandoradsverktyget som du använder för distribution. När du till exempel använder PowerShell för att distribuera en mall kan heltalstyperna vara mellan -2147483648 och 2147483647. För att undvika den här begränsningen anger du stora heltalsvärden i [en parameterfil](parameter-files.md). Resurstyper tillämpar sina egna gränser för heltalsegenskaper.
 
 ## <a name="objects"></a>Objekt
 
-Objekt börjar med en vänster klammerparentes ( `{` ) och slutar med en höger klammerparentes ( `}` ). Varje egenskap i ett objekt består av nyckel och värde. Nyckeln och värdet skiljs åt av kolon ( `:` ).
-
-I JSON är nyckeln omgiven av dubbla citat tecken. Varje egenskap avgränsas med ett kommatecken.
-
-I bicep är nyckeln inte omgiven av citat tecken. Använd inte kommatecken i mellan egenskaper.
+Objekt börjar med en vänsterparentes ( `{` ) och slutar med en högerparentes ( `}` ). Varje egenskap i ett objekt består av nyckel och värde. Nyckeln och värdet avgränsas med ett kolon ( `:` ).
 
 # <a name="json"></a>[JSON](#tab/json)
+
+I JSON omges nyckeln av dubbla citattecken. Varje egenskap avgränsas med ett kommatecken.
 
 ```json
 "parameters": {
@@ -165,6 +163,8 @@ I bicep är nyckeln inte omgiven av citat tecken. Använd inte kommatecken i mel
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
+I Bicep omges inte nyckeln av citattecken. Använd inte kommatecken mellan egenskaper.
+
 ```bicep
 param exampleObject object = {
   name: 'test name'
@@ -174,11 +174,27 @@ param exampleObject object = {
 }
 ```
 
+Egenskapsåtkomst används för att komma åt egenskaper för ett objekt. De konstrueras med `.` operatorn . Exempel:
+
+```bicep
+var x = {
+  y: {
+    z: 'Hello`
+    a: true
+  }
+  q: 42
+}
+```
+
+I den föregående deklarationen utvärderas uttrycket x.y.z till literalsträngen "Hello". På samma sätt utvärderas uttrycket x.q till heltalslitteralen 42.
+
+Egenskapsåtkomster kan användas med alla objekt. Detta inkluderar parametrar och variabler för objekttyper och objektlitteraler. Att använda en egenskapsåtkomstor för ett uttryck av icke-objekttyp är ett fel.
+
 ---
 
 ## <a name="strings"></a>Strängar
 
-I JSON är strängarna markerade med dubbla citat tecken. I bicep är strängarna markerade med enkla citat tecken.
+I JSON markeras strängar med dubbla citattecken. I Bicep markeras strängar med enkla citattecken.
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -200,9 +216,9 @@ param exampleString string = 'test value'
 
 ## <a name="secure-strings-and-objects"></a>Säkra strängar och objekt
 
-En säker sträng använder samma format som sträng, och det skyddade objektet använder samma format som objektet. När du anger en parameter till en säker sträng eller ett säkert objekt, sparas inte värdet för parametern i distributions historiken och loggas inte. Men om du anger ett säkert värde till en egenskap som inte förväntar ett säkert värde, skyddas inte värdet. Om du till exempel anger en säker sträng till en tagg lagras värdet som oformaterad text. Använd säkra strängar för lösen ord och hemligheter.
+Säker sträng använder samma format som sträng, och skyddat objekt använder samma format som -objektet. När du anger en parameter till en säker sträng eller ett säkert objekt sparas inte värdet för parametern i distributionshistoriken och loggas inte. Men om du anger det säkra värdet till en egenskap som inte förväntar sig ett säkert värde skyddas inte värdet. Om du till exempel anger en säker sträng till en tagg lagras det värdet som oformaterad text. Använd säkra strängar för lösenord och hemligheter.
 
-Med bicep lägger du till `@secure()` modifieraren i en sträng eller ett objekt.
+Med Bicep lägger du till `@secure()` modifieraren i en sträng eller ett objekt.
 
 I följande exempel visas två säkra parametrar:
 
@@ -233,4 +249,4 @@ param configValues object
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs mer om mallens syntax i [förstå strukturen och syntaxen för ARM-mallar](template-syntax.md).
+Mer information om mallsyntaxen finns i [Förstå strukturen och syntaxen för ARM-mallar.](template-syntax.md)

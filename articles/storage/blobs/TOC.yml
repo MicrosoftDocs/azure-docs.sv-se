@@ -173,7 +173,7 @@
           items:
             - name: Dataredundans
               href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Kundhantering av redundans för haveriberedskap
+            - name: Kund-hanterad redundans för haveriberedskap
               href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Objektreplikering
           href: object-replication-overview.md
@@ -299,7 +299,7 @@
               href: storage-blob-copy.md
             - name: Använda blobindextaggar
               href: storage-blob-index-how-to.md
-            - name: Beräkna antalet blobar och total storlek
+            - name: Beräkna antal blobar och total storlek
               href: calculate-blob-count-size.md
         - name: Bevilja åtkomst till blobdata
           items:
@@ -579,6 +579,8 @@
               href: 'https://azure.microsoft.com/features/storage-explorer/'
             - name: Kom igång med Storage Explorer
               href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Logga in på Storage Explorer
+              href: ../common/storage-explorer-sign-in.md
             - name: Viktig information om Storage Explorer
               href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
             - name: Felsöka Storage Explorer

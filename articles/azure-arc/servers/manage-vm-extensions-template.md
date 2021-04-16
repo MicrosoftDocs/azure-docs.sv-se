@@ -1,27 +1,30 @@
 ---
 title: Aktivera VM-tillägg med Azure Resource Manager mall
-description: Den här artikeln beskriver hur du distribuerar tillägg för virtuella datorer till Azure Arc-aktiverade servrar som körs i hybrid moln miljöer med hjälp av en Azure Resource Manager-mall.
-ms.date: 03/01/2021
+description: Den här artikeln beskriver hur du distribuerar tillägg för virtuella datorer till Azure Arc-aktiverade servrar som körs i hybridmolnmiljöer med en Azure Resource Manager mall.
+ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 88296cd4f410defcaf7db15507ddac42e80cba2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 095f95192a2054d34e438d8683ac9c2e20a824f1
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688271"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389646"
 ---
-# <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Aktivera Azure VM-tillägg med ARM-mall
+# <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Aktivera Azure VM-tillägg med hjälp av ARM-mall
 
-Den här artikeln visar hur du använder en Azure Resource Manager mall (ARM-mall) för att distribuera virtuella Azure-tillägg, som stöds av Azure Arc-aktiverade servrar.
+Den här artikeln visar hur du använder en Azure Resource Manager (ARM-mall) för att distribuera Azure VM-tillägg som stöds av Azure Arc aktiverade servrar.
 
-VM-tillägg kan läggas till i en Azure Resource Manager mall och köras med mallen. Med de VM-tillägg som stöds av Arc-aktiverade servrar kan du distribuera VM-tillägget som stöds på Linux-eller Windows-datorer med Azure PowerShell. Varje exempel nedan innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.
+VM-tillägg kan läggas till Azure Resource Manager en mall och köras med distributionen av mallen. Med de VM-tillägg som stöds av Arc-aktiverade servrar kan du distribuera det VM-tillägg som stöds på Linux- eller Windows-datorer med hjälp av Azure PowerShell. Varje exempel nedan innehåller en mallfil och en parameterfil med exempelvärden som ska anges för mallen.
 
 >[!NOTE]
->Även om flera tillägg kan grupperas tillsammans och bearbetas, installeras de seriellt. När den första tilläggs installationen har slutförts görs ett försök att installera nästa tillägg.
+>Flera tillägg kan batchas tillsammans och bearbetas, men de installeras seriellt. När den första installationen av tillägget är klar görs ett försök att installera nästa tillägg.
+
+> [!NOTE]
+> Azure Arc-aktiverade servrar stöder inte distribution och hantering av VM-tillägg till virtuella Azure-datorer. För virtuella Azure-datorer kan du läsa följande [översiktsartikel om VM-tillägg.](../../virtual-machines/extensions/overview.md)
 
 ## <a name="deploy-the-log-analytics-vm-extension"></a>Distribuera Log Analytics VM-tillägget
 
-För att enkelt distribuera Log Analytics agenten finns följande exempel på hur du installerar agenten på Windows eller Linux.
+För att enkelt distribuera Log Analytics-agenten tillhandahålls följande exempel för att installera agenten på antingen Windows eller Linux.
 
 ### <a name="template-file-for-linux"></a>Mallfil för Linux
 
@@ -106,7 +109,7 @@ För att enkelt distribuera Log Analytics agenten finns följande exempel på hu
 }
 ```
 
-### <a name="parameter-file"></a>Parameter fil
+### <a name="parameter-file"></a>Parameterfil
 
 ```json
 {
@@ -129,7 +132,7 @@ För att enkelt distribuera Log Analytics agenten finns följande exempel på hu
 }
 ```
 
-Spara mallen och parametervärdena på disk och redigera parameter filen med lämpliga värden för din distribution. Du kan sedan installera tillägget på alla anslutna datorer i en resurs grupp med följande kommando. Kommandot använder parametern *TemplateFile* för att ange mallen och parametern *TemplateParameterFile* för att ange en fil som innehåller parametrar och parameter värden.
+Spara mallen och parameterfilerna på disk och redigera parameterfilen med lämpliga värden för distributionen. Du kan sedan installera tillägget på alla anslutna datorer i en resursgrupp med följande kommando. Kommandot använder parametern *TemplateFile* för att ange mallen och parametern *TemplateParameterFile* för att ange en fil som innehåller parametrar och parametervärden.
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\LogAnalyticsAgent.json" -TemplateParameterFile "D:\Azure\Templates\LogAnalyticsAgentParms.json"
@@ -137,15 +140,15 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 ## <a name="deploy-the-custom-script-extension"></a>Distribuera tillägget för anpassat skript
 
-Om du vill använda tillägget för anpassat skript kan du köra följande exempel på Windows och Linux. Om du inte är bekant med tillägget för anpassat skript, se tillägg [för anpassat skript för Windows](../../virtual-machines/extensions/custom-script-windows.md) eller [anpassat skript tillägg för Linux](../../virtual-machines/extensions/custom-script-linux.md). Det finns ett par olika egenskaper som du bör känna till när du använder det här tillägget med hybrid datorer:
+Om du vill använda tillägget för anpassat skript tillhandahålls följande exempel för körning i Windows och Linux. Om du inte är bekant med tillägget för anpassat skript kan du gå [till Tillägg för](../../virtual-machines/extensions/custom-script-windows.md) anpassat skript för Windows eller Anpassat [skripttillägg för Linux.](../../virtual-machines/extensions/custom-script-linux.md) Det finns ett par olika egenskaper som du bör känna till när du använder det här tillägget med hybriddatorer:
 
-* Listan över operativ system som stöds med det anpassade skript tillägget för Azure VM kan inte tillämpas på Azure Arc-aktiverade servrar. Du hittar en lista över vilka OSs-funktioner som stöds för Arc-aktiverade servrar [här](agent-overview.md#supported-operating-systems).
+* Listan över operativsystem som stöds med tillägget för anpassat skript för virtuell Azure-dator gäller inte för Azure Arc aktiverade servrar. Listan över OS:er som stöds för Arc-aktiverade servrar finns [här.](agent-overview.md#supported-operating-systems)
 
-* Konfigurations information om Azure Virtual Machine Scale Sets eller klassiska virtuella datorer är inte tillämplig.
+* Konfigurationsinformation om Azure Virtual Machine Scale Sets eller klassiska virtuella datorer är inte tillämpligt.
 
-* Om dina datorer behöver hämta ett skript externt och bara kan kommunicera via en proxyserver, måste du [Konfigurera den anslutna dator agenten](manage-agent.md#update-or-remove-proxy-settings) för att ställa in miljövariabeln för proxyservern.
+* Om datorerna behöver ladda ned ett skript externt och bara kan kommunicera via en proxyserver måste du konfigurera Connected [Machine-agenten](manage-agent.md#update-or-remove-proxy-settings) för att ange miljövariabeln för proxyservern.
 
-Konfigurationen för det anpassade skript tillägget anger saker som skript plats och kommandot som ska köras. Den här konfigurationen anges i en Azure Resource Manager-mall som anges nedan för både Linux-och Windows hybrid-datorer.
+Konfigurationen av tillägget för anpassat skript anger saker som skriptplats och kommandot som ska köras. Den här konfigurationen anges i en Azure Resource Manager mall som anges nedan för både Linux- och Windows-hybriddatorer.
 
 ### <a name="template-file-for-linux"></a>Mallfil för Linux
 
@@ -237,7 +240,7 @@ Konfigurationen för det anpassade skript tillägget anger saker som skript plat
 }
 ```
 
-### <a name="parameter-file"></a>Parameter fil
+### <a name="parameter-file"></a>Parameterfil
 
 ```json
 {
@@ -291,9 +294,9 @@ Konfigurationen för det anpassade skript tillägget anger saker som skript plat
 }
 ```
 
-## <a name="deploy-the-dependency-agent-extension"></a>Distribuera tillägget för beroende agent
+## <a name="deploy-the-dependency-agent-extension"></a>Distribuera beroendeagenttillägget
 
-Om du vill använda tillägget Azure Monitor beroende agent, finns följande exempel på att köras på Windows och Linux. Om du inte är bekant med beroende agenten kan du läsa mer i [Översikt över Azure Monitor agenter](../../azure-monitor/agents/agents-overview.md#dependency-agent).
+Om du vill Azure Monitor beroendeagenttillägget tillhandahålls följande exempel för körning i Windows och Linux. Om du inte är bekant med beroendeagenten kan du gå till [Översikt över Azure Monitor agenter](../../azure-monitor/agents/agents-overview.md#dependency-agent).
 
 ### <a name="template-file-for-linux"></a>Mallfil för Linux
 
@@ -373,15 +376,15 @@ Om du vill använda tillägget Azure Monitor beroende agent, finns följande exe
 
 ### <a name="template-deployment"></a>Malldistribution
 
-Spara mallfilen på disk. Du kan sedan distribuera tillägget till den anslutna datorn med följande kommando.
+Spara mallfilen på disken. Du kan sedan distribuera tillägget till den anslutna datorn med följande kommando.
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\DependencyAgent.json"
 ```
 
-## <a name="deploy-azure-key-vault-vm-extension-preview"></a>Distribuera Azure Key Vault VM-tillägg (för hands version)
+## <a name="deploy-azure-key-vault-vm-extension-preview"></a>Distribuera Azure Key Vault VM-tillägg (förhandsversion)
 
-Följande JSON visar schemat för Key Vault VM-tillägget (för hands version). Tillägget kräver inte skyddade inställningar. alla dess inställningar betraktas som offentlig information. Tillägget kräver en lista över övervakade certifikat, avsöknings frekvens och mål certifikat arkivet. Specifikt:
+Följande JSON visar schemat för den virtuella Key Vault (förhandsversion). Tillägget kräver inte skyddade inställningar – alla dess inställningar betraktas som offentlig information. Tillägget kräver en lista över övervakade certifikat, avsökningsfrekvens och målcertifikatarkiv. Specifikt:
 
 ### <a name="template-file-for-linux"></a>Mallfil för Linux
 
@@ -520,24 +523,24 @@ Följande JSON visar schemat för Key Vault VM-tillägget (för hands version). 
 ```
 
 > [!NOTE]
-> URL: er för dina observerade certifikat bör ha formatet `https://myVaultName.vault.azure.net/secrets/myCertName` .
+> Dina observerade certifikat-URL:er ska ha formen `https://myVaultName.vault.azure.net/secrets/myCertName` .
 >
-> Detta beror på att `/secrets` sökvägen returnerar det fullständiga certifikatet, inklusive den privata nyckeln, medan `/certificates` sökvägen inte fungerar. Mer information om certifikat hittar du här: [Key Vault certifikat](../../key-vault/general/about-keys-secrets-certificates.md)
+> Det beror på att `/secrets` sökvägen returnerar det fullständiga certifikatet, inklusive den privata nyckeln, medan `/certificates` sökvägen inte gör det. Mer information om certifikat finns här: [Key Vault certifikat](../../key-vault/general/about-keys-secrets-certificates.md)
 
 ### <a name="template-deployment"></a>Malldistribution
 
-Spara mallfilen på disk. Du kan sedan distribuera tillägget till den anslutna datorn med följande kommando.
+Spara mallfilen på disken. Du kan sedan distribuera tillägget till den anslutna datorn med följande kommando.
 
 > [!NOTE]
-> VM-tillägget kräver att en systemtilldelad identitet tilldelas till autentisering till Key Vault. Se [hur du autentiserar till Key Vault att använda hanterad identitet](managed-identity-authentication.md) för Windows-och Linux-aktiverade servrar.
+> VM-tillägget kräver att en system tilldelad identitet tilldelas för att autentisera till Key Vault. Se [Så här autentiserar du för att Key Vault hanterad identitet för](managed-identity-authentication.md) Windows- och Linux Arc-aktiverade servrar.
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\KeyVaultExtension.json"
 ```
 
-## <a name="deploy-the-azure-defender-integrated-scanner"></a>Distribuera den integrerade Azure Defender-skannern
+## <a name="deploy-the-azure-defender-integrated-scanner"></a>Distribuera den Azure Defender inbyggda skannern
 
-Om du vill använda tillägget Azure Defender Integrated scanner kan du köra följande exempel på Windows och Linux. Om du inte känner till den integrerade skannern kan du läsa mer i [Översikt över lösning för sårbarhets bedömning i Azure Defender](../../security-center/deploy-vulnerability-assessment-vm.md) för Hybrid datorer.
+Om du vill Azure Defender tillägget för integrerad skanner tillhandahålls följande exempel för körning i Windows och Linux. Om du inte är bekant med den integrerade skannern kan du gå [till Översikt Azure Defender den s sårbarhetsbedömningslösningen](../../security-center/deploy-vulnerability-assessment-vm.md) för hybriddatorer.
 
 ### <a name="template-file-for-windows"></a>Mallfil för Windows
 
@@ -615,7 +618,7 @@ Om du vill använda tillägget Azure Defender Integrated scanner kan du köra f�
 
 ### <a name="template-deployment"></a>Malldistribution
 
-Spara mallfilen på disk. Du kan sedan distribuera tillägget till den anslutna datorn med följande kommando.
+Spara mallfilen på disken. Du kan sedan distribuera tillägget till den anslutna datorn med följande kommando.
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\AzureDefenderScanner.json"
@@ -623,6 +626,6 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Du kan distribuera, hantera och ta bort VM-tillägg med hjälp av [Azure PowerShell](manage-vm-extensions-powershell.md), från [Azure Portal](manage-vm-extensions-portal.md)eller [Azure CLI](manage-vm-extensions-cli.md).
+* Du kan distribuera, hantera och ta bort [VM-tillägg med hjälp Azure PowerShell](manage-vm-extensions-powershell.md), från [Azure Portal](manage-vm-extensions-portal.md)eller [Azure CLI.](manage-vm-extensions-cli.md)
 
-* Felsöknings information finns i [fel söknings guiden för VM-tillägg](troubleshoot-vm-extensions.md).
+* Felsökningsinformation finns i felsökningsguiden [för VM-tillägg.](troubleshoot-vm-extensions.md)

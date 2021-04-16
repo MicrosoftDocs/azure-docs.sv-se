@@ -1,40 +1,40 @@
 ---
-title: 'Snabb start: Mass inläsning av data med ett enda T-SQL-uttryck'
-description: Mass inläsning av data med hjälp av KOPIERINGs instruktionen
+title: 'Snabbstart: Massinläsning av data med en enda T-SQL-instruktion'
+description: Massinläsning av data med COPY-instruktionen
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 11/20/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 2f97c630189a0f037f1231bb2386fcb7226a9350
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2b41342ab7d267c37b8e68fdbcaa9d570034ac17
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600045"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568445"
 ---
-# <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Snabb start: Mass inläsning av data med hjälp av KOPIERINGs instruktionen
+# <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Snabbstart: Massinläsning av data med COPY-instruktionen
 
-I den här snabb starten ska du samla in data i den dedikerade SQL-poolen med hjälp av den enkla och flexibla [kopierings instruktionen](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) för data inmatning med stora data flöden. KOPIERINGs instruktionen är det rekommenderade inläsnings verktyget, som du kan använda för att sömlöst och flexibelt läsa in data genom att tillhandahålla funktioner för att:
+I den här snabbstarten massinläsningar du data till [](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) din dedikerade SQL-pool med hjälp av den enkla och flexibla COPY-instruktionen för datainmatning med högt dataflöde. COPY-instruktionen är det inläsningsverktyg som rekommenderas eftersom du smidigt och flexibelt kan läsa in data genom att tillhandahålla funktioner för att:
 
-- Tillåt att lägre privilegierade användare läser in utan att du behöver strikt behörighet för data lagret
-- Använd endast ett enda T-SQL-uttryck utan att behöva skapa några ytterligare databas objekt
-- Utnyttja en bättre behörighets modell utan att exponera lagrings konto nycklar med hjälp av dela åtkomst-signaturer (SAS)
-- Ange ett annat lagrings konto för ERRORFILE-platsen (REJECTED_ROW_LOCATION)
-- Anpassa standardvärden för varje mål kolumn och ange käll data fält som ska läsas in i specifika mål kolumner
-- Ange en anpassad rads avslutning för CSV-filer
-- Escape-sträng, fält och rad avgränsare för CSV-filer
-- Utnyttja SQL Server datum format för CSV-filer
-- Ange jokertecken och flera filer i sökvägen till lagrings platsen
+- Tillåt lägre privilegierade användare att läsa in utan att behöva strikta kontrollbehörigheter för informationslagret
+- Utnyttja endast en enda T-SQL-instruktion utan att behöva skapa ytterligare databasobjekt
+- Utnyttja en finare behörighetsmodell utan att exponera lagringskontonycklar med hjälp av signaturer för resursåtkomst (SAS)
+- Ange ett annat lagringskonto för ERRORFILE-platsen (REJECTED_ROW_LOCATION)
+- Anpassa standardvärden för varje målkolumn och ange källdatafält som ska läsas in i specifika målkolumner
+- Ange en anpassad radparentator för CSV-filer
+- Escape-sträng, fält och radavgränsare för CSV-filer
+- Utnyttja SQL Server för CSV-filer
+- Ange jokertecken och flera filer i sökvägen till lagringsplatsen
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Den här snabb starten förutsätter att du redan har en särskild SQL-pool. Om en dedikerad SQL-pool inte har skapats använder du snabb starten [skapa och Anslut-portalen](create-data-warehouse-portal.md) .
+Den här snabbstarten förutsätter att du redan har en dedikerad SQL-pool. Om en dedikerad SQL-pool inte har skapats använder du [snabbstarten Skapa och ansluta –](create-data-warehouse-portal.md) portalen.
 
 ## <a name="set-up-the-required-permissions"></a>Konfigurera de behörigheter som krävs
 
@@ -64,9 +64,9 @@ GRANT INSERT ON <yourtable> TO <yourusername>
 
 ```
 
-## <a name="create-the-target-table"></a>Skapa mål tabellen
+## <a name="create-the-target-table"></a>Skapa måltabellen
 
-I det här exemplet kommer vi att läsa in data från New York taxi-datauppsättningen. Vi läser in en tabell med namnet resa som representerar taxi resor som fattas under ett och samma år. Kör följande för att skapa tabellen:
+I det här exemplet ska vi läsa in data från New York Taxi-datamängden. Vi läser in en tabell med namnet Trip (Resa) som representerar taxiresor som tagits inom ett enda år. Kör följande för att skapa tabellen:
 
 ```sql
 CREATE TABLE [dbo].[Trip]
@@ -102,9 +102,9 @@ WITH
 );
 ```
 
-## <a name="run-the-copy-statement"></a>Kör KOPIERINGs instruktionen
+## <a name="run-the-copy-statement"></a>Kör COPY-instruktionen
 
-Kör följande KOPIERINGs instruktion som läser in data från Azure Blob Storage-kontot i rese tabellen.
+Kör följande COPY-instruktion som läser in data från Azure Blob Storage-kontot till resetabellen.
 
 ```sql
 COPY INTO [dbo].[Trip] FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013/'
@@ -116,7 +116,7 @@ WITH (
 
 ## <a name="monitor-the-load"></a>Övervaka belastningen
 
-Kontrol lera om din belastning gör att processen körs genom att regelbundet köra följande fråga:
+Kontrollera om inläsningen går framåt genom att köra följande fråga regelbundet:
 
 ```sql
 SELECT  r.[request_id]                           
@@ -138,5 +138,5 @@ GROUP BY r.[request_id]
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Metod tips för inläsning av data finns i [metod tips för att läsa in data](./guidance-for-loading-data.md).
-- Information om hur du hanterar resurserna för dina data belastningar finns i [arbets belastnings isolering](./quickstart-configure-workload-isolation-tsql.md).
+- Metodtips för inläsning av data finns i [Metodtips för att läsa in data.](./guidance-for-loading-data.md)
+- Information om hur du hanterar resurserna för dina databelastningar finns i [Arbetsbelastningsisolering.](./quickstart-configure-workload-isolation-tsql.md)

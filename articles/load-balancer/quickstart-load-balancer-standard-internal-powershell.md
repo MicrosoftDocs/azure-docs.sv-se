@@ -1,7 +1,7 @@
 ---
-title: 'Snabb start: skapa en intern belastningsutjämnare – Azure PowerShell'
+title: 'Snabbstart: Skapa en intern lastbalanserare – Azure PowerShell'
 titleSuffix: Azure Load Balancer
-description: Den här snabb starten visar hur du skapar en intern belastningsutjämnare med hjälp av Azure PowerShell
+description: Den här snabbstarten visar hur du skapar en intern lastbalanserare med Azure PowerShell
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,22 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/27/2020
 ms.author: allensu
-ms:custom: seodec18
-ms.openlocfilehash: 8d94a784aba5995fd7e4645c3b56929874da2bcd
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 618ca8722cef1959fddc5dcd24e8e8bdbb1f620a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056376"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530040"
 ---
-# <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Snabb start: skapa en intern belastningsutjämnare för att belastningsutjämna virtuella datorer med Azure PowerShell
+# <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Snabbstart: Skapa en intern lastbalanserare som lastbalanserar virtuella datorer med Azure PowerShell
 
-Kom igång med Azure Load Balancer genom att använda Azure PowerShell för att skapa en intern belastningsutjämnare och två virtuella datorer.
+Kom igång med Azure Load Balancer hjälp av Azure PowerShell för att skapa en intern lastbalanserare och två virtuella datorer.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Azure PowerShell installerat lokalt eller Azure Cloud Shell
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Azure PowerShell lokalt eller Azure Cloud Shell
 
 Om du väljer att installera och använda PowerShell lokalt kräver den här artikeln version 5.4.1 eller senare av Azure PowerShell-modulen. Kör `Get-Module -ListAvailable Az` för att hitta den installerade versionen. Om du behöver uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-Az-ps) (Installera Azure PowerShell-modul). Om du kör PowerShell lokalt måste du också köra `Connect-AzAccount` för att skapa en anslutning till Azure.
 
@@ -47,31 +46,31 @@ New-AzResourceGroup -Name 'CreateIntLBQS-rg' -Location 'eastus'
 # <a name="standard-sku"></a>[**Standard-SKU**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
->Standard-SKU-belastningsutjämnare rekommenderas för produktions arbets belastningar. Mer information om SKU: er finns i **[Azure Load Balancer SKU: er](skus.md)**.
+>Standard-SKU-lastbalanserare rekommenderas för produktionsarbetsbelastningar. Mer information om SKU:er finns i **[Azure Load Balancer SKU:er](skus.md)**.
 
-I det här avsnittet skapar du en belastningsutjämnare som laddar upp virtuella datorer. 
+I det här avsnittet skapar du en lastbalanserare som lastbalanserar virtuella datorer. 
 
-När du skapar en intern belastningsutjämnare konfigureras ett virtuellt nätverk som nätverk för belastningsutjämnaren. 
+När du skapar en intern lastbalanserare konfigureras ett virtuellt nätverk som lastbalanserares nätverk. 
 
-Följande diagram visar de resurser som skapats i den här snabb starten:
+Följande diagram visar de resurser som skapades i den här snabbstarten:
 
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Standard belastnings Utjämnings resurser har skapats för snabb start." border="false":::
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Resurser för standardlastbalanserare som skapats för snabbstart." border="false":::
 
-## <a name="configure-virtual-network---standard"></a>Konfigurera virtuellt nätverk – standard
+## <a name="configure-virtual-network---standard"></a>Konfigurera virtuellt nätverk – Standard
 
-Innan du distribuerar virtuella datorer och testar belastningsutjämnaren, skapar du de stödda virtuella nätverks resurserna.
+Innan du distribuerar virtuella datorer och testar lastbalanseraren skapar du de virtuella nätverksresurser som du stöder.
 
-Skapa ett virtuellt nätverk för de virtuella datorerna i Server delen.
+Skapa ett virtuellt nätverk för de virtuella serverdatorerna.
 
-Skapa en nätverks säkerhets grupp för att definiera inkommande anslutningar till det virtuella nätverket.
+Skapa en nätverkssäkerhetsgrupp för att definiera inkommande anslutningar till ditt virtuella nätverk.
 
-### <a name="create-virtual-network-network-security-group-and-bastion-host"></a>Skapa ett virtuellt nätverk, en nätverks säkerhets grupp och en skydds-värd
+### <a name="create-virtual-network-network-security-group-and-bastion-host"></a>Skapa virtuellt nätverk, nätverkssäkerhetsgrupp och skyddsvärd
 
 * Skapa ett virtuellt nätverk med hjälp av [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork).
 
-* Skapa en regel för nätverks säkerhets grupp med [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
+* Skapa en regel för nätverkssäkerhetsgruppen [med New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
 
-* Skapa en Azure skydds-värd med [New-AzBastion](/powershell/module/az.network/new-azbastion).
+* Skapa en Azure Bastion värd med [New-AzBastion](/powershell/module/az.network/new-azbastion).
 
 * Skapa en nätverkssäkerhetsgrupp med [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
 
@@ -144,19 +143,19 @@ $nsg = @{
 New-AzNetworkSecurityGroup @nsg
 
 ```
-## <a name="create-standard-load-balancer"></a>Skapa standard Load Balancer
+## <a name="create-standard-load-balancer"></a>Skapa en standardlastbalanserare
 
 I det här avsnittet beskrivs hur du gör för att skapa och konfigurera följande komponenter i lastbalanseraren:
 
-* Skapa en frontend IP-adress med [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) för klient DELENS IP-pool. Den här IP-adressen tar emot inkommande trafik i belastningsutjämnaren
+* Skapa en IP-adress på [frontend-sidan med New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) som IP-adresspool för frontend. Den här IP-adressen tar emot inkommande trafik på lastbalanseraren
 
-* Skapa en backend-adresspool med [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) för trafik som skickas från belastningsutjämnarens klient del. Den här poolen är den plats där dina virtuella backend-datorer distribueras.
+* Skapa en backend-adresspool med [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) för trafik som skickas från lastbalanseringshanterarens frontend. I den här poolen distribueras dina virtuella serverdatorer.
 
-* Skapa en hälso avsökning med [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) som avgör hälso tillståndet för VM-instanser i Server delen.
+* Skapa en hälsoavsökning [med Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) som avgör hälsotillståndet för de virtuella datorinstanserna i backend.
 
-* Skapa en belastnings Utjämnings regel med [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) som definierar hur trafiken distribueras till de virtuella datorerna.
+* Skapa en lastbalanseringsregel [med Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) som definierar hur trafiken distribueras till de virtuella datorerna.
 
-* Skapa en offentlig belastningsutjämnare med [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer).
+* Skapa en offentlig lastbalanserare [med New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer).
 
 
 ```azurepowershell-interactive
@@ -212,13 +211,13 @@ New-AzLoadBalancer @loadbalancer
 
 ```
 
-## <a name="create-virtual-machines---standard"></a>Skapa virtuella datorer – standard
+## <a name="create-virtual-machines---standard"></a>Skapa virtuella datorer – Standard
 
-I det här avsnittet skapar du de tre virtuella datorerna för belastningsutjämnaren.
+I det här avsnittet skapar du de tre virtuella datorerna för lastbalanseringspoolens serverdelspool.
 
-* Skapa tre nätverks gränssnitt med [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface).
+* Skapa tre nätverksgränssnitt med [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface).
 
-* Ange ett administratörs användar namn och lösen ord för de virtuella datorerna med [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential).
+* Ange ett administratörsnamn och lösenord för de virtuella datorerna [med Get-Credential](/powershell/module/microsoft.powershell.security/get-credential).
 
 * Skapa de virtuella datorerna med:
     * [New-AzVM](/powershell/module/az.compute/new-azvm)
@@ -290,7 +289,7 @@ New-AzVM @vm -AsJob
 
 ```
 
-Distributionerna av de virtuella datorerna och skydds-värden skickas som PowerShell-jobb. Använd [Get-Job](/powershell/module/microsoft.powershell.core/get-job)för att Visa jobbets status:
+Distributionerna av de virtuella datorerna och skyddsvärdarna skickas som PowerShell-jobb. Om du vill visa status för jobben använder du [Get-Job:](/powershell/module/microsoft.powershell.core/get-job)
 
 ```azurepowershell-interactive
 Get-Job
@@ -303,34 +302,36 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 4      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
 ```
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 # <a name="basic-sku"></a>[**Grundläggande SKU**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
->Standard-SKU-belastningsutjämnare rekommenderas för produktions arbets belastningar. Mer information om SKU: er finns i **[Azure Load Balancer SKU: er](skus.md)**.
+>Standard-SKU-lastbalanserare rekommenderas för produktionsarbetsbelastningar. Mer information om SKU:er finns i **[Azure Load Balancer SKU:er](skus.md)**.
 
-I det här avsnittet skapar du en belastningsutjämnare som laddar upp virtuella datorer. 
+I det här avsnittet skapar du en lastbalanserare som lastbalanserar virtuella datorer. 
 
-När du skapar en intern belastningsutjämnare konfigureras ett virtuellt nätverk som nätverk för belastningsutjämnaren. 
+När du skapar en intern lastbalanserare konfigureras ett virtuellt nätverk som lastbalanserares nätverk. 
 
-Följande diagram visar de resurser som skapats i den här snabb starten:
+Följande diagram visar de resurser som skapades i den här snabbstarten:
 
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Grundläggande belastnings Utjämnings resurser skapade i snabb starten." border="false":::
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Resurser för grundläggande lastbalanserare som skapats i snabbstarten." border="false":::
 
-## <a name="configure-virtual-network---basic"></a>Konfigurera virtuellt nätverk – grundläggande
+## <a name="configure-virtual-network---basic"></a>Konfigurera virtuellt nätverk – Basic
 
-Innan du distribuerar virtuella datorer och testar belastningsutjämnaren, skapar du de stödda virtuella nätverks resurserna.
+Innan du distribuerar virtuella datorer och testar lastbalanseraren skapar du de virtuella nätverksresurser som du stöder.
 
-Skapa ett virtuellt nätverk för de virtuella datorerna i Server delen.
+Skapa ett virtuellt nätverk för de virtuella serverdatorerna.
 
-Skapa en nätverks säkerhets grupp för att definiera inkommande anslutningar till det virtuella nätverket.
+Skapa en nätverkssäkerhetsgrupp för att definiera inkommande anslutningar till ditt virtuella nätverk.
 
-### <a name="create-virtual-network-network-security-group-and-bastion-host"></a>Skapa ett virtuellt nätverk, en nätverks säkerhets grupp och en skydds-värd
+### <a name="create-virtual-network-network-security-group-and-bastion-host"></a>Skapa virtuellt nätverk, nätverkssäkerhetsgrupp och skyddsvärd
 
 * Skapa ett virtuellt nätverk med hjälp av [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork).
 
-* Skapa en regel för nätverks säkerhets grupp med [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
+* Skapa en regel för nätverkssäkerhetsgruppen [med New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
 
-* Skapa en Azure skydds-värd med [New-AzBastion](/powershell/module/az.network/new-azbastion).
+* Skapa en Azure Bastion värd med [New-AzBastion](/powershell/module/az.network/new-azbastion).
 
 * Skapa en nätverkssäkerhetsgrupp med [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
 
@@ -403,19 +404,19 @@ $nsg = @{
 New-AzNetworkSecurityGroup @nsg
 
 ```
-## <a name="create-basic-load-balancer"></a>Skapa Basic Load Balancer
+## <a name="create-basic-load-balancer"></a>Skapa en grundläggande lastbalanserare
 
 I det här avsnittet beskrivs hur du gör för att skapa och konfigurera följande komponenter i lastbalanseraren:
 
-* Skapa en frontend IP-adress med [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) för klient DELENS IP-pool. Den här IP-adressen tar emot inkommande trafik i belastningsutjämnaren
+* Skapa en IP-adress på [frontend-sidan med New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) som IP-adresspool för frontend. Den här IP-adressen tar emot inkommande trafik på lastbalanseraren
 
-* Skapa en backend-adresspool med [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) för trafik som skickas från belastningsutjämnarens klient del. Den här poolen är den plats där dina virtuella backend-datorer distribueras.
+* Skapa en backend-adresspool med [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) för trafik som skickas från lastbalanseringshanterarens frontend. I den här poolen distribueras dina virtuella serverdatorer.
 
-* Skapa en hälso avsökning med [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) som avgör hälso tillståndet för VM-instanser i Server delen.
+* Skapa en hälsoavsökning [med Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) som avgör hälsotillståndet för de virtuella datorinstanserna i backend.
 
-* Skapa en belastnings Utjämnings regel med [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) som definierar hur trafiken distribueras till de virtuella datorerna.
+* Skapa en lastbalanseringsregel [med Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) som definierar hur trafiken distribueras till de virtuella datorerna.
 
-* Skapa en offentlig belastningsutjämnare med [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer).
+* Skapa en offentlig lastbalanserare [med New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer).
 
 ```azurepowershell-interactive
 ## Place virtual network created in previous step into a variable. ##
@@ -473,15 +474,15 @@ New-AzLoadBalancer @loadbalancer
 
 ```
 
-## <a name="create-virtual-machines---basic"></a>Skapa virtuella datorer – grundläggande
+## <a name="create-virtual-machines---basic"></a>Skapa virtuella datorer – Basic
 
-I det här avsnittet ska du skapa de virtuella datorerna för belastningsutjämnaren för belastningsutjämnaren.
+I det här avsnittet skapar du de virtuella datorerna för lastbalanseringspoolens serverdelspool.
 
-* Skapa tre nätverks gränssnitt med [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface).
+* Skapa tre nätverksgränssnitt med [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface).
 
-* Ange ett administratörs användar namn och lösen ord för de virtuella datorerna med [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential).
+* Ange ett administratörsnamn och lösenord för de virtuella datorerna [med Get-Credential](/powershell/module/microsoft.powershell.security/get-credential).
 
-* Använd [New-AzAvailabilitySet](/powershell/module/az.compute/new-azvm) för att skapa en tillgänglighets uppsättning för de virtuella datorerna.
+* Använd [New-AzAvailabilitySet för](/powershell/module/az.compute/new-azvm) att skapa en tillgänglighetsuppsättning för de virtuella datorerna.
 
 * Skapa de virtuella datorerna med:
     * [New-AzVM](/powershell/module/az.compute/new-azvm)
@@ -564,7 +565,7 @@ New-AzVM @vm -AsJob
 
 ```
 
-Distributionerna av de virtuella datorerna och skydds-värden skickas som PowerShell-jobb. Använd [Get-Job](/powershell/module/microsoft.powershell.core/get-job)för att Visa jobbets status:
+Distributionerna av de virtuella datorerna och skyddsvärdarna skickas som PowerShell-jobb. Om du vill visa status för jobben använder du [Get-Job:](/powershell/module/microsoft.powershell.core/get-job)
 
 ```azurepowershell-interactive
 Get-Job
@@ -577,6 +578,8 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 4      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
 ```
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ---
 
 ## <a name="install-iis"></a>Installera IIS
@@ -586,7 +589,7 @@ Använd [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) fö
 Tillägget kör `PowerShell Add-WindowsFeature Web-Server` för att installera IIS-webbservern och uppdaterar sedan sidan Default.htm till att visa värddatornamnet för den virtuella datorn:
 
 > [!IMPORTANT]
-> Se till att distributionen av virtuella datorer har slutförts från föregående steg innan du fortsätter.  Använd `Get-Job` för att kontrol lera statusen för distributions jobben för virtuella datorer.
+> Se till att distributionerna av virtuella datorer har slutförts från föregående steg innan du fortsätter.  Använd `Get-Job` för att kontrollera status för de virtuella datordistributionsjobben.
 
 ```azurepowershell-interactive
 ## For loop with variable to install custom script extension on virtual machines. ##
@@ -606,7 +609,7 @@ Set-AzVMExtension @ext -AsJob
 }
 ```
 
-Tilläggen distribueras som PowerShell-jobb. Använd [Get-Job](/powershell/module/microsoft.powershell.core/get-job)för att visa status för installations jobben:
+Tilläggen distribueras som PowerShell-jobb. Om du vill visa status för installationsjobben använder du [Get-Job:](/powershell/module/microsoft.powershell.core/get-job)
 
 
 ```azurepowershell-interactive
@@ -687,27 +690,27 @@ New-AzVM @vm
 
 1. [Logga in](https://portal.azure.com) i Azure-portalen.
 
-1. Hitta den privata IP-adressen för belastningsutjämnaren på **översikts** skärmen. Välj **alla tjänster** i den vänstra menyn, Välj **alla resurser** och välj sedan **myLoadBalancer**.
+1. Hitta den privata IP-adressen för lastbalanseraren på **skärmen** Översikt. Välj **Alla tjänster** på den vänstra menyn, välj Alla **resurser** och välj sedan **myLoadBalancer**.
 
-2. Anteckna eller kopiera adressen bredvid **privat IP-adress** i **översikten** över **myLoadBalancer**.
+2. Anteckna eller kopiera adressen bredvid Privat **IP-adress** i **Översikt över** **myLoadBalancer**.
 
-3. Välj **alla tjänster** i den vänstra menyn, Välj **alla resurser** och välj **myTestVM** i resurs gruppen **CreateIntLBQS-RG** i resurs listan.
+3. Välj **Alla tjänster** på den vänstra menyn, välj Alla resurser och välj sedan **myTestVM** som finns i resursgruppen **CreateIntLBQS-rg** i resurslistan.
 
-4. På sidan **Översikt** väljer du **Anslut** och sedan **skydds**.
+4. På sidan **Översikt** väljer du **Anslut** och sedan **Bastion**.
 
-6. Ange det användar namn och lösen ord som angavs när den virtuella datorn skapades.
+6. Ange det användarnamn och lösenord som angavs när den virtuella datorn skapades.
 
 7. Öppna **Internet Explorer** på **myTestVM**.
 
-8. Ange IP-adressen från föregående steg i adress fältet i webbläsaren. IIS-webbserverns standardsida visas i webbläsaren.
+8. Ange IP-adressen från föregående steg i webbläsarens adressfält. IIS-webbserverns standardsida visas i webbläsaren.
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Skapa en intern standard belastnings utjämning" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Skapa en intern standardlastbalanserare" border="true":::
    
-Om du vill se belastningsutjämnaren distribuerar trafik över alla tre virtuella datorer kan du anpassa standard sidan för varje virtuell dators IIS-webbserver och sedan framtvinga en uppdatering av webbläsaren från klient datorn.
+Om du vill se hur lastbalanserare distribuerar trafik över alla tre virtuella datorer kan du anpassa standardsidan för varje virtuell dators IIS-webbserver och sedan tvinga fram en uppdatering av webbläsaren från klientdatorn.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När det inte längre behövs kan du använda kommandot [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) för att ta bort resurs gruppen, belastningsutjämnaren och återstående resurser.
+När den inte längre behövs kan du använda kommandot [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) för att ta bort resursgruppen, lastbalanseraren och återstående resurser.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name 'CreateIntLBQS-rg'
@@ -717,11 +720,11 @@ Remove-AzResourceGroup -Name 'CreateIntLBQS-rg'
 
 I den här snabbstarten:
 
-* Du har skapat en intern belastningsutjämnare för standard eller Basic
+* Du har skapat en intern standardlastbalanserare eller en grundläggande lastbalanserare
 * Anslutna virtuella datorer. 
-* Konfigurerat trafik regel för belastnings utjämning och hälso avsökning.
-* Belastnings utjämning har testats.
+* Konfigurerade trafikregeln för lastbalanserare och hälsoavsökningen.
+* Testade lastbalanseraren.
 
-Om du vill veta mer om Azure Load Balancer fortsätter du till:
+Om du vill veta mer Azure Load Balancer kan du fortsätta att:
 > [!div class="nextstepaction"]
 > [Vad är Azure Load Balancer?](load-balancer-overview.md)

@@ -6,17 +6,17 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 04/13/2021
-ms.openlocfilehash: aebfeed055fad7c1108620ab494236640285aa1e
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.date: 04/14/2021
+ms.openlocfilehash: 99e507fed35e5b74aa44bc2713550f7cf9d7b2e5
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107495079"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518889"
 ---
 # <a name="point-in-time-restore-of-a-hyperscale-citus-server-group"></a>Återställning till tidpunkt av en Hyperskala (Citus) servergrupp
 
-Den här artikeln innehåller stegvisa [](concepts-hyperscale-backup.md#point-in-time-restore-pitr) procedurer för att utföra återställningar till en tidpunkt för en Hyperskala (Citus)-servergrupp med hjälp av säkerhetskopior. Du kan återställa antingen till den tidigaste säkerhetskopian eller till en anpassad återställningspunkt inom kvarhållningsperioden.
+Den här artikeln innehåller stegvisa [](concepts-hyperscale-backup.md#restore) procedurer för att utföra återställningar till en tidpunkt för en Hyperskala (Citus)-servergrupp med hjälp av säkerhetskopior. Du kan återställa antingen till den tidigaste säkerhetskopian eller till en anpassad återställningspunkt inom kvarhållningsperioden.
 
 ## <a name="restoring-to-the-earliest-restore-point"></a>Återställa till den tidigaste återställningspunkten
 
@@ -43,7 +43,7 @@ Följ slutligen aktiviteterna [efter återställningen.](#post-restore-tasks)
 
 ## <a name="restoring-to-a-custom-restore-point"></a>Återställa till en anpassad återställningspunkt
 
-Följ de här stegen för att Hyperskala (Citus) din servergrupp till ett datum och en tidpunkt som du väljer.
+Följ dessa steg för att återställa Hyperskala (Citus) servergrupp till ett datum och en tidpunkt som du väljer.
 
 1.  I [Azure Portal](https://portal.azure.com/)väljer du den servergrupp som du vill återställa.
 
@@ -77,4 +77,4 @@ Efter en återställning bör du göra följande för att få igång dina använ
 ## <a name="next-steps"></a>Nästa steg
 
 * Läs mer om [säkerhetskopiering och återställning](concepts-hyperscale-backup.md) i Hyperskala (Citus).
-* Ange [föreslagna aviseringar](./howto-hyperscale-alert-on-metric.md#suggested-alerts) för Hyperskala (Citus) servergrupper.
+* Ange [föreslagna aviseringar](./howto-hyperscale-alert-on-metric.md#suggested-alerts) Hyperskala (Citus) servergrupper.

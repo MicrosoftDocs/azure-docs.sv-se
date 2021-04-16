@@ -1,6 +1,6 @@
 ---
-title: Autentiseringsmetod-aktivitet – Azure Active Directory
-description: Översikt över de autentiseringsmetoder som användarna registrerar för att logga in och återställa lösen ord.
+title: Aktivitet för autentiseringsmetoder – Azure Active Directory
+description: Översikt över de autentiseringsmetoder som användarna registrerar för att logga in och återställa lösenord.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,25 +11,25 @@ author: sopand
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a1cb71917fdb30ffccda21bedffe1c7f2a428c1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 699ff88e4181dada5eacaa3f13469722cdf7ceaa
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557963"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530455"
 ---
 # <a name="authentication-methods-activity"></a>Aktiviteter i autentiseringsmetoder 
 
-Med den nya autentiseringsmetoden aktivitets instrument panel kan administratörer övervaka registreringen och användningen av autentiseringsmetoder i organisationen. Den här rapporterings funktionen ger din organisation möjlighet att förstå vilka metoder som registreras och hur de används.
+Med den nya instrumentpanelen för autentiseringsmetoder kan administratörer övervaka registrering och användning av autentiseringsmetoder i hela organisationen. Den här rapporteringsfunktionerna ger din organisation möjlighet att förstå vilka metoder som registreras och hur de används.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="permissions-and-licenses"></a>Behörigheter och licenser
 
-Inbyggda och anpassade roller med följande behörigheter kan komma åt aktivitets bladet för autentiseringsmetoder och API: er:
+Inbyggda och anpassade roller med följande behörigheter kan komma åt bladet Aktivitet för autentiseringsmetoder och API:er:
 
-- Microsoft. Directory/auditLogs/allProperties/Read
-- Microsoft. Directory/signInReports/allProperties/Read
+- Microsoft.directory/auditLogs/allProperties/read
+- Microsoft.directory/signInReports/allProperties/read
 
 Följande roller har de behörigheter som krävs:
 
@@ -40,105 +40,105 @@ Följande roller har de behörigheter som krävs:
 - Säkerhetsadministratör
 - Global administratör
 
- En Azure AD Premium P1-eller P2-licens krävs för att komma åt användning och insikter. Azure AD Multi-Factor Authentication och SSPR-licensierings information (Self-Service Password rereset) finns på [Azure Active Directory prissättnings webbplats](https://azure.microsoft.com/pricing/details/active-directory/).
+ En Azure AD Premium P1- eller P2-licens krävs för att få åtkomst till användning och insikter. Licensieringsinformation för Azure AD Multi-Factor Authentication och självbetjäning av lösenordsåterställning (SSPR) [finns på Azure Active Directory prissättningswebbplatsen](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="how-it-works"></a>Så här fungerar det
 
-Åtkomst till användning av autentiseringsmetoder och insikter:
+Så här får du åtkomst till autentiseringsmetodanvändning och insikter:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Klicka på **Azure Active Directory**  >  **säkerhets**  >  **autentiseringsmetoder**  >  .
-1. Det finns två flikar i rapporten: **registrering** och **användning**.
+1. Klicka **Azure Active Directory aktivitet** för  >    >    >  **autentiseringsmetoder för säkerhet.**
+1. Det finns två flikar i rapporten: **Registrering** och **användning.**
 
-   ![Översikt över autentiseringsmetoder](media/how-to-authentication-methods-usage-insights/registration-usage-tabs.png)
+   ![Översikt över aktivitet för autentiseringsmetoder](media/how-to-authentication-methods-usage-insights/registration-usage-tabs.png)
 
-## <a name="registration-details"></a>Registrerings information
+## <a name="registration-details"></a>Registreringsinformation
 
-Du kan komma åt [**fliken registrering**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade) för att visa antalet användare som stöder Multi-Factor Authentication, passowordless-autentisering och lösen ords återställning via självbetjäning. 
+Du kan öppna [**fliken Registrering för**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade) att visa antalet användare som kan använda multifaktorautentisering, lösenordslös autentisering och lösenordsåterställning via självbetjäning. 
 
-Klicka på något av följande alternativ för att filtrera en lista över användar registrerings information i förväg:
+Klicka på något av följande alternativ för att förfiltrera en lista med användarregistreringsinformation:
 
-- **Användare som kan använda Azure Multi-Factor Authentication** visar en nedbrytning av de användare som är båda:
+- **Användare som kan använda Azure Multi-Factor Authentication** visar uppdelningen av användare som båda är:
   - Registrerad för en stark autentiseringsmetod 
-  - Aktive rad av princip för att använda den metoden för MFA 
+  - Har aktiverats av principen för att använda den metoden för MFA 
   
-  Det här talet återspeglar inte användare som registrerats för MFA utanför Azure AD. 
-- **Användare som stöder lösen ords lös autentisering** visar en uppdelning av användare som är registrerade för att logga in utan lösen ord med hjälp av FIDO2, Windows Hello för företag eller lösen ords lös telefonin loggning med Microsoft Authenticator-appen. 
-- **Användare som stöder lösen ords återställning via självbetjäning** visar en uppdelning av användare som kan återställa sina lösen ord. Användare kan återställa sina lösen ord om båda är:
-  - Registrerad för tillräckligt många metoder för att uppfylla organisationens principer för lösen ords återställning via självbetjäning 
-  - Aktiverat för att återställa lösen ordet 
+  Det här numret återspeglar inte användare som har registrerats för MFA utanför Azure AD. 
+- **Användare som kan** använda lösenordslös autentisering visar uppdelningen av användare som är registrerade för att logga in utan lösenord med hjälp av FIDO2, Windows Hello för företag eller lösenordsfri telefon-inloggning med Microsoft Authenticator-appen. 
+- **Användare som kan återställa lösenord via självbetjäning** visar en analys av användare som kan återställa sina lösenord. Användare kan återställa sina lösenord om båda är:
+  - Registrerad för tillräckligt med metoder för att uppfylla organisationens princip för lösenordsåterställning via självbetjäning 
+  - Aktiverat för att återställa sitt lösenord 
 
-  ![Skärm bild av användare som kan registrera sig](media/how-to-authentication-methods-usage-insights/users-capable.png)
+  ![Skärmbild av användare som kan registrera sig](media/how-to-authentication-methods-usage-insights/users-capable.png)
 
-**Användare som registrerats med autentiseringsmetoden** visar hur många användare som har registrerats för varje autentiseringsmetod. Klicka på en autentiseringsmetod för att se vem som har registrerats för den metoden.
+**Användare som registrerats med autentiseringsmetod** visar hur många användare som är registrerade för varje autentiseringsmetod. Klicka på en autentiseringsmetod för att se vem som är registrerad för den metoden.
 
-![Skärm bild av registrerade användare](media/how-to-authentication-methods-usage-insights/users-registered.png)
+![Skärmbild av registrerade användare](media/how-to-authentication-methods-usage-insights/users-registered.png)
 
-Den **senaste registreringen per autentiseringsmetod** visar hur många registreringar som har lyckats och misslyckats, sorterade efter autentiseringsmetod. Klicka på en autentiseringsmetod för att se de senaste registrerings händelserna för den metoden.
+**Den senaste registreringen efter autentiseringsmetod** visar hur många registreringar som lyckades och misslyckades, sorterade efter autentiseringsmetod. Klicka på en autentiseringsmetod för att se de senaste registreringshändelserna för den metoden.
 
-![Skärm bild av nyligen registrerad](media/how-to-authentication-methods-usage-insights/recently-registered.png)
+![Skärmbild av nyligen registrerade](media/how-to-authentication-methods-usage-insights/recently-registered.png)
 
 ## <a name="usage-details"></a>Användningsinformation
 
-**Användnings** rapporten visar vilka autentiseringsmetoder som används för att logga in och återställa lösen ord.
+**Användningsrapporten** visar vilka autentiseringsmetoder som används för att logga in och återställa lösenord.
 
-![Skärm bild av sidan användning](media/how-to-authentication-methods-usage-insights/usage-page.png)
+![Skärmbild av sidan Användning](media/how-to-authentication-methods-usage-insights/usage-page.png)
 
-**Inloggningar efter autentiseringskrav** visar antalet lyckade användare interaktiva inloggningar som krävdes för en enkel faktor jämfört med Multi-Factor Authentication i Azure AD. Inloggningar där MFA tillämpades av en tredjepartsleverantör för MFA-leverantörer ingår inte.
+**Inloggningar efter autentiseringskrav** visar antalet lyckade interaktiva användarbaserade inloggningar som krävdes för enkelfaktors- och multifaktorautentisering i Azure AD. Inloggningar där MFA har verkställts av en tredjeparts-MFA-provider ingår inte.
 
-![Skärm bild av inloggnings krav för autentisering](media/how-to-authentication-methods-usage-insights/sign-ins-protected.png)
+![Skärmbild av inloggningar efter autentiseringskrav](media/how-to-authentication-methods-usage-insights/sign-ins-protected.png)
 
-**Inloggningar per autentiseringsmetod** visar antalet interaktiva inloggningar för användare (lyckade och misslyckade) med autentiseringsmetoden som används. Den innehåller inte inloggningar där autentiseringskrav uppfylldes av ett anspråk i token.
+**Inloggningar efter autentiseringsmetod visar** antalet användar interaktiva inloggningar (lyckade och misslyckade) efter autentiseringsmetod som används. Den innehåller inte inloggningar där autentiseringskravet uppfyllts av ett anspråk i token.
 
-![Skärm bild av Sign-ins enligt metod](media/how-to-authentication-methods-usage-insights/sign-ins-by-method.png)
+![Skärmbild av inloggningar efter metod](media/how-to-authentication-methods-usage-insights/sign-ins-by-method.png)
 
-Antal återställningar **av lösen ord och konto upplåsningar** visar antalet lyckade lösen ords ändringar och återställning av lösen ord (självbetjäning och administratör) över tid.
+**Antalet lösenordsåterställningar och kontoupplåsningar** visar antalet lyckade lösenordsändringar och lösenordsåterställningar (självbetjäning och av administratör) över tid.
 
-![Skärm bild av Återställ och låsa upp](media/how-to-authentication-methods-usage-insights/password-changes.png)
+![Skärmbild av återställningar och upplåsningar](media/how-to-authentication-methods-usage-insights/password-changes.png)
 
-Vid återställning **av lösen ord per autentiseringsmetod** visas antalet lyckade och misslyckade autentiseringar under flödet för lösen ords återställnings flöde per autentiseringsmetod.
+**Lösenordsåterställningar med autentiseringsmetod** visar antalet lyckade och misslyckade autentiseringar under flödet för lösenordsåterställning med hjälp av autentiseringsmetod.
 
-![Skärm bild av metoden RESETS efter](media/how-to-authentication-methods-usage-insights/resets-by-method.png)
+![Skärmbild av återställningar efter metod](media/how-to-authentication-methods-usage-insights/resets-by-method.png)
 
-## <a name="user-registration-details"></a>Information om användar registrering 
+## <a name="user-registration-details"></a>Användarregistreringsinformation 
 
 Med hjälp av kontrollerna överst i listan kan du söka efter en användare och filtrera listan över användare baserat på de kolumner som visas.
 
-Rapporten registrerings information visar följande information för varje användare:
+Rapporten med registreringsinformation visar följande information för varje användare:
 
-- Användarens huvud namn
+- Användarens huvudnamn
 - Name
-- MFA-kompatibel (kapabel, kan inte användas)
-- Stöd för lösen ord (möjligt, stöder inte)
-- SSPR registrerad (registrerad, ej registrerad)
+- MFA-kompatibel (kompatibel, inte kompatibel)
+- Lösenordsfri kapacitet (kompatibel, inte kompatibel)
+- SSPR-registrerad (registrerad, inte registrerad)
 - SSPR aktiverat (aktiverat, inte aktiverat)
-- SSPR-kapabel (kapabel, stöder inte) 
-- Registrerade metoder (e-post, mobil telefon, alternativt mobil telefon, arbets telefon, Microsoft Authenticator push, program vara för en tid, FIDO2, säkerhets nyckel, säkerhets frågor)
+- SSPR-kompatibel (kompatibel, inte kompatibel) 
+- Registrerade metoder (e-post, mobiltelefon, alternativ mobiltelefon, kontorstelefon, Microsoft Authenticator Push, software one time-lösenord, FIDO2, säkerhetsnyckel, säkerhetsfrågor)
 
-  ![Skärm bild av användar registrerings information](media/how-to-authentication-methods-usage-insights/registration-details.png)
+  ![Skärmbild av användarregistreringsinformation](media/how-to-authentication-methods-usage-insights/registration-details.png)
 
-## <a name="registration-and-reset-events"></a>Registrerings-och återställnings händelser 
+## <a name="registration-and-reset-events"></a>Registrerings- och återställningshändelser 
 
-**Registrerings-och återställnings händelser** visar registrerings-och återställnings händelser från de senaste 24 timmarna, de senaste sju dagarna eller de senaste 30 dagarna, inklusive:
+**Registrerings- och återställningshändelser** visar registrerings- och återställningshändelser från de senaste 24 timmarna, de senaste sju dagarna eller de senaste 30 dagarna, inklusive:
 
 - Datum
 - Användarnamn
-- User 
+- Användare 
 - Funktion (registrering, återställning)
-- Använd metod (app-meddelande, app-kod, telefonsamtal, Office-samtal, alternativt mobil samtal, SMS, e-post, säkerhets frågor)
+- Metod som används (appmeddelande, appkod, telefonsamtal, Office-samtal, alternativt mobilsamtal, SMS, e-post, säkerhetsfrågor)
 - Status (lyckades, misslyckades)
-- Orsak till startfel (förklaring)
+- Orsak till fel (förklaring)
 
-  ![Skärm bild av registrerings-och återställnings händelser](media/how-to-authentication-methods-usage-insights/registration-and-reset-logs.png)
+  ![Skärmbild av registrerings- och återställningshändelser](media/how-to-authentication-methods-usage-insights/registration-and-reset-logs.png)
 
 ## <a name="limitations"></a>Begränsningar
 
-- Data i rapporten uppdateras inte i real tid och kan avspegla en fördröjning på upp till några timmar.
-- Tillfälliga åtkomst pass-registreringar visas inte på fliken registrering i rapporten eftersom de bara är giltiga under kort tids period.
-- **PhoneAppNotification** -eller **PhoneAppOTP** -metoderna som en användare kan ha konfigurerat visas inte i instrument panelen. 
+- Data i rapporten uppdateras inte i realtid och kan visa en svarstid på upp till några timmar.
+- Tillfällig åtkomstkod registreringar visas inte på registreringsfliken i rapporten eftersom de bara är giltiga under en kort tidsperiod.
+- De **PhoneAppNotification-** **eller PhoneAppOTP-metoder** som en användare har konfigurerat visas inte på instrumentpanelen. 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Arbeta med autentiserings metoder användning rapport-API](/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [Arbeta med API:et för autentiseringsmetoder för användningsrapport](/graph/api/resources/authenticationmethods-usage-insights-overview)
 - [Välja autentiseringsmetoder för din organisation](concept-authentication-methods.md)
-- [Kombinerad registrerings upplevelse](concept-registration-mfa-sspr-combined.md)
+- [Kombinerad registreringsupplevelse](concept-registration-mfa-sspr-combined.md)

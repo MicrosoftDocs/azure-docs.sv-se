@@ -1,6 +1,6 @@
 ---
-title: Kopiera en bild från ett annat galleri med hjälp av PowerShell
-description: Kopiera en bild från ett annat galleri med hjälp av Azure PowerShell.
+title: Kopiera en avbildning från ett annat galleri med PowerShell
+description: Kopiera en bild från ett annat galleri med Azure PowerShell.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -9,37 +9,37 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: d9bbe40e35bdad6fac5c5ccb0b15b909e77b938c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35346836767bc1da8c498e23fd3b42afe7a9c350
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564024"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531194"
 ---
-# <a name="copy-an-image-from-another-gallery-using-powershell"></a>Kopiera en bild från ett annat galleri med hjälp av PowerShell
+# <a name="copy-an-image-from-another-gallery-using-powershell"></a>Kopiera en avbildning från ett annat galleri med PowerShell
 
-Om du har flera gallerier i din organisation kan du skapa bilder från bilder som lagras i andra gallerier. Du kan till exempel ha ett utvecklings-och test Galleri för att skapa och testa nya avbildningar. När de är redo att användas i produktionen kan du kopiera dem till ett produktions galleri med hjälp av det här exemplet. Du kan också skapa en avbildning från en avbildning i ett annat galleri med hjälp av [Azure CLI](image-version-another-gallery-cli.md).
+Om du har flera gallerier i din organisation kan du skapa avbildningar från bilder som lagras i andra gallerier. Du kan till exempel ha ett utvecklings- och testgalleri för att skapa och testa nya bilder. När de är redo att användas i produktion kan du kopiera dem till ett produktionsgalleri med hjälp av det här exemplet. Du kan också skapa en avbildning från en avbildning i ett annat galleri med hjälp av [Azure CLI.](image-version-another-gallery-cli.md)
 
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-För att slutföra den här artikeln måste du ha ett befintligt käll Galleri, bild definition och avbildnings version. Du bör också ha ett mål Galleri. 
+För att kunna slutföra den här artikeln måste du ha ett befintligt källgalleri, en bilddefinition och en bildversion. Du bör också ha ett målgalleri. 
 
-Käll avbildnings versionen måste replikeras till den region där mål galleriet finns. 
+Källavbildningsversionen måste replikeras till den region där målgalleriet finns. 
 
-Vi kommer att skapa en ny avbildnings definition och avbildnings version i mål galleriet.
-
-
-Ersätt resurs namnen där det behövs när du arbetar i den här artikeln.
+Vi kommer att skapa en ny bilddefinition och avbildningsversion i målgalleriet.
 
 
-## <a name="get-the-source-image"></a>Hämta käll avbildningen 
+När du går igenom den här artikeln ersätter du resursnamnen där det behövs.
 
-Du behöver information från käll avbildnings definitionen så att du kan skapa en kopia av den i mål galleriet.
 
-Visa information om befintliga gallerier, bild definitioner och avbildnings versioner med hjälp av cmdleten [Get-AzResource](/powershell/module/az.resources/get-azresource) .
+## <a name="get-the-source-image"></a>Hämta källavbildningen 
 
-Resultaten är i formatet `gallery\image definition\image version` .
+Du behöver information från källavbildningsdefinitionen så att du kan skapa en kopia av den i målgalleriet.
+
+Visa information om befintliga gallerier, bilddefinitioner och avbildningsversioner med hjälp av cmdleten [Get-AzResource.](/powershell/module/az.resources/get-azresource)
+
+Resultatet har formatet `gallery\image definition\image version` .
 
 ```azurepowershell-interactive
 Get-AzResource `
@@ -47,7 +47,7 @@ Get-AzResource `
    Format-Table -Property Name,ResourceGroupName
 ```
 
-När du har all information du behöver kan du hämta ID för käll avbildnings versionen med hjälp av [Get-AzGalleryImageVersion](/powershell/module/az.compute/get-azgalleryimageversion). I det här exemplet hämtar vi `1.0.0` avbildnings versionen av `myImageDefinition` definitionen i `myGallery` käll galleriet i `myResourceGroup` resurs gruppen.
+När du har all information du behöver kan du hämta ID:t för källavbildningsversionen med hjälp av [Get-AzGalleryImageVersion](/powershell/module/az.compute/get-azgalleryimageversion). I det här exemplet hämtar vi `1.0.0` avbildningsversionen, `myImageDefinition` av definitionen, i `myGallery` källgalleriet, i `myResourceGroup` resursgruppen.
 
 ```azurepowershell-interactive
 $sourceImgVer = Get-AzGalleryImageVersion `
@@ -58,9 +58,9 @@ $sourceImgVer = Get-AzGalleryImageVersion `
 ```
 
 
-## <a name="create-the-image-definition"></a>Skapa avbildnings definitionen 
+## <a name="create-the-image-definition"></a>Skapa avbildningsdefinitionen 
 
-Du måste skapa en ny avbildnings definition som matchar bild definitionen för din källa. Du kan se all information som du behöver för att återskapa avbildnings definitionen med [Get-AzGalleryImageDefinition](/powershell/module/az.compute/get-azgalleryimagedefinition).
+Du måste skapa en ny bilddefinition som matchar avbildningsdefinitionen för din källa. Du kan se all information som du behöver för att återskapa avbildningsdefinitionen med hjälp av [Get-AzGalleryImageDefinition](/powershell/module/az.compute/get-azgalleryimagedefinition).
 
 ```azurepowershell-interactive
 Get-AzGalleryImageDefinition `
@@ -100,10 +100,10 @@ Utdata ser ut ungefär så här:
 }
 ```
 
-Skapa en ny avbildnings definition i mål galleriet med hjälp av cmdleten [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) och informationen från utdata ovan.
+Skapa en ny avbildningsdefinition i målgalleriet med cmdleten [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) och informationen från utdata ovan.
 
 
-I det här exemplet heter bild definitionen *myDestinationImgDef* i galleriet med namnet *myDestinationGallery*.
+I det här exemplet heter bilddefinitionen *myDestinationImgDef* i galleriet med namnet *myDestinationGallery*.
 
 
 ```azurepowershell-interactive
@@ -121,13 +121,13 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 ```
 
 
-## <a name="create-the-image-version"></a>Skapa avbildnings versionen
+## <a name="create-the-image-version"></a>Skapa avbildningsversionen
 
-Skapa en avbildnings version med [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion). Du måste skicka in käll avbildningens ID i- `--managed-image` parametern för att skapa avbildnings versionen i mål galleriet. 
+Skapa en avbildningsversion [med New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion). Du måste skicka in ID:t för källavbildningen i `-Source` parametern för att skapa avbildningsversionen i målgalleriet. 
 
-Tillåtna tecken för bild version är tal och punkter. Talen måste vara inom intervallet för ett 32-bitars heltal. Format: *Major version*. *MinorVersion*. *Korrigering*.
+Tillåtna tecken för bildversion är siffror och punkter. Tal måste vara inom intervallet för ett 32-bitars heltal. Format: *MajorVersion*. *MinorVersion*. *Korrigera*.
 
-I det här exemplet heter mål galleriet *myDestinationGallery*, i resurs gruppen *MYDESTINATIONRG* på platsen *USA, västra* . Versionen av vår avbildning är *1.0.0* och vi kommer att skapa en replik i regionen USA, *södra centrala* och 2 repliker i regionen *västra USA* . 
+I det här exemplet heter målgalleriet *myDestinationGallery* i resursgruppen *myDestinationRG* på platsen *USA,* västra. Versionen av avbildningen är *1.0.0* och vi ska skapa en replik i regionen USA, södra *centrala* och 2 repliker i regionen *USA,* västra. 
 
 
 ```azurepowershell-interactive
@@ -147,23 +147,23 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -asJob 
 ```
 
-Det kan ta en stund att replikera avbildningen till alla mål regioner, så vi har skapat ett jobb så att vi kan spåra förloppet. Om du vill se förloppet för jobbet skriver du `$job.State` .
+Det kan ta en stund att replikera avbildningen till alla målregioner, så vi har skapat ett jobb så att vi kan följa förloppet. Om du vill se förloppet för jobbet skriver du `$job.State` .
 
 ```azurepowershell-interactive
 $job.State
 ```
 
 > [!NOTE]
-> Du måste vänta tills avbildnings versionen är fullständigt slutförd och replikerad innan du kan använda samma hanterade avbildning för att skapa en annan avbildnings version.
+> Du måste vänta tills avbildningsversionen har skapats och replikerats helt innan du kan använda samma hanterade avbildning för att skapa en annan avbildningsversion.
 >
-> Du kan också lagra avbildningen i premiun-lagringen genom att lägga till `-StorageAccountType Premium_LRS` eller [zonen redundant lagring](../storage/common/storage-redundancy.md) genom att lägga till `-StorageAccountType Standard_ZRS` när du skapar avbildnings versionen.
+> Du kan också lagra avbildningen i premiunlagring genom att lägga till eller zonredundant lagring genom att lägga `-StorageAccountType Premium_LRS` till när du skapar [](../storage/common/storage-redundancy.md) `-StorageAccountType Standard_ZRS` avbildningsversionen.
 >
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Skapa en virtuell dator från en [generaliserad](vm-generalized-image-version-powershell.md) eller [specialiserad](vm-specialized-image-version-powershell.md) avbildnings version.
+Skapa en virtuell dator från en [generaliserad eller](vm-generalized-image-version-powershell.md) specialiserad avbildningsversion. [](vm-specialized-image-version-powershell.md)
 
-[Azure Image Builder (för hands version)](./image-builder-overview.md) kan hjälpa dig att automatisera avbildnings versionen, du kan även använda den för att uppdatera och [skapa en ny avbildnings version från en befintlig avbildnings version](./linux/image-builder-gallery-update-image-version.md). 
+[Azure Image Builder (förhandsversion)](./image-builder-overview.md) kan hjälpa dig att automatisera skapandet av avbildningsversion. Du kan till och med använda det för att uppdatera och skapa en ny [avbildningsversion från en befintlig avbildningsversion.](./linux/image-builder-gallery-update-image-version.md) 
 
-Information om hur du anger information om inköps planer finns i [tillhandahålla information om inköps plan för Azure Marketplace när du skapar avbildningar](marketplace-images.md).
+Information om hur du tillhandahåller information om inköpsplanen finns i [Ange Azure Marketplace information om inköpsplanen när du skapar avbildningar.](marketplace-images.md)

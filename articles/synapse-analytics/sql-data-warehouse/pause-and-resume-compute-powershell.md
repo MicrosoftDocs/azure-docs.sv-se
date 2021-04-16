@@ -2,8 +2,8 @@
 title: 'Snabbstart: Pausa och återuppta beräkning i dedikerad SQL-pool (tidigare SQL DW) med Azure PowerShell'
 description: Du kan använda Azure PowerShell för att pausa och återuppta dedikerad SQL-pool (tidigare SQL DW). beräkningsresurser.
 services: synapse-analytics
-author: gaursa
-ms.author: gaursa
+author: julieMSFT
+ms.author: jrasnick
 manager: craigg
 ms.reviewer: igorstan
 ms.date: 03/20/2019
@@ -15,12 +15,12 @@ ms.custom:
 - azure-synapse
 - devx-track-azurepowershell
 - mode-api
-ms.openlocfilehash: b204132a49a8790b35cc99af8eebf465fd90f041
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: be82b6dcc17c2850b9a35085316cd0905a5b6b75
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536372"
+ms.locfileid: "107566808"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Snabbstart: Pausa och återuppta beräkning i dedikerad SQL-pool (tidigare SQL DW) med Azure PowerShell
 
@@ -35,7 +35,7 @@ Den här snabbstarten förutsätter att du redan har en dedikerad SQL-pool (tidi
 
 ## <a name="log-in-to-azure"></a>Logga in på Azure
 
-Logga in på Azure-prenumerationen [med kommandot Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) och följ anvisningarna på skärmen.
+Logga in på din Azure-prenumeration [med kommandot Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) och följ anvisningarna på skärmen.
 
 ```powershell
 Connect-AzAccount
@@ -53,15 +53,15 @@ Om du behöver använda en annan prenumeration än standardprenumerationen kör 
 Set-AzContext -SubscriptionName "MySubscription"
 ```
 
-## <a name="look-up-dedicated-sql-pool-formerly-sql-dw-information"></a>Leta upp dedikerad information om SQL-pool (tidigare SQL DW)
+## <a name="look-up-dedicated-sql-pool-formerly-sql-dw-information"></a>Leta upp dedikerad SQL-poolinformation (tidigare SQL DW)
 
 Leta upp databasnamnet, servernamnet och resursgruppen för den dedikerade SQL-poolen (tidigare SQL DW) som du planerar att pausa och återuppta.
 
-Följ de här stegen för att hitta platsinformation för din dedikerade SQL-pool (tidigare SQL DW):
+Följ dessa steg för att hitta platsinformation för din dedikerade SQL-pool (tidigare SQL DW):
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
-1. Klicka **Azure Synapse Analytics (tidigare SQL DW)** på vänster sida i Azure Portal.
-1. Välj **mySampleDataWarehouse** på **Azure Synapse Analytics (tidigare SQL DW).** SQL-poolen öppnas.
+1. Klicka **Azure Synapse Analytics (tidigare SQL DW)** till vänster på Azure Portal.
+1. Välj **mySampleDataWarehouse** på **sidan Azure Synapse Analytics (tidigare SQL DW).** SQL-poolen öppnas.
 
     ![Servernamn och resursgrupp](./media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
@@ -70,19 +70,19 @@ Följ de här stegen för att hitta platsinformation för din dedikerade SQL-poo
 
 ## <a name="pause-compute"></a>Pausa beräkning
 
-För att spara kostnader kan du pausa och återuppta beräkningsresurser på begäran. Om du till exempel inte använder databasen under natten och på helger kan du pausa den under dessa tider och återuppta den under dagen.
+Du kan spara kostnader genom att pausa och återuppta beräkningsresurser på begäran. Om du till exempel inte använder databasen under natten och på helger kan du pausa den under dessa tider och återuppta den under dagen.
 
 >[!NOTE]
 >Beräkningsresurser debiteras inte när databasen pausas. Du fortsätter dock att debiteras för lagring.
 
-Om du vill pausa en databas använder [du cmdleten Suspend-AzSqlDatabase.](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) I följande exempel pausas en SQL-pool med **namnet mySampleDataWarehouse** på en server med namnet **sqlpoolservername**. Servern finns i en Azure-resursgrupp med namnet **myResourceGroup.**
+Om du vill pausa en databas använder du cmdleten [Suspend-AzSqlDatabase.](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) I följande exempel pausas en SQL-pool med **namnet mySampleDataWarehouse** på en server med **namnet sqlpoolservername**. Servern finns i en Azure-resursgrupp med namnet **myResourceGroup.**
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "sqlpoolservername" –DatabaseName "mySampleDataWarehouse"
 ```
 
-I följande exempel hämtas databasen till det $database objektet. Sedan kommer objektet att ledas [till Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Resultaten lagras i objektet resultDatabase. Det sista kommandot visar resultatet.
+I följande exempel hämtas databasen till det $database objektet. Sedan pipes -objektet till [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Resultaten lagras i objektet resultDatabase. Det sista kommandot visar resultatet.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -93,7 +93,7 @@ $resultDatabase
 
 ## <a name="resume-compute"></a>Återuppta beräkning
 
-Starta en databas med cmdleten [Resume-AzSqlDatabase.](/powershell/module/az.sql/resume-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) I följande exempel startas en databas med **namnet mySampleDataWarehouse** på en server med namnet **sqlpoolservername**. Servern finns i en Azure-resursgrupp med namnet **myResourceGroup.**
+Starta en databas med cmdleten [Resume-AzSqlDatabase.](/powershell/module/az.sql/resume-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) I följande exempel startas en databas med **namnet mySampleDataWarehouse på** en server med namnet **sqlpoolservername**. Servern finns i en Azure-resursgrupp med namnet **myResourceGroup.**
 
 ```Powershell
 Resume-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -121,7 +121,7 @@ Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlp
 
 Du debiteras för informationslagerenheter och data som lagras i din dedikerade SQL-pool (tidigare SQL DW). Dessa beräknings- och lagringsresurser debiteras separat.
 
-- Om du vill behålla data i lagringen pausar du beräkningen.
+- Om du vill lagra data pausar du beräkningen.
 - Om du vill ta bort framtida avgifter kan du ta bort SQL-poolen.
 
 Följ dessa steg för att rensa resurser enligt dina önskemål.
@@ -140,4 +140,4 @@ Följ dessa steg för att rensa resurser enligt dina önskemål.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill veta mer om SQL-pool fortsätter du till [artikeln Läsa in data till dedikerad SQL-pool (tidigare SQL DW).](./load-data-from-azure-blob-storage-using-copy.md) Mer information om hur du hanterar beräkningsfunktioner finns i artikeln [Hantera beräkningsöversikt.](sql-data-warehouse-manage-compute-overview.md)
+Om du vill veta mer om SQL-pool kan du fortsätta [till artikeln Läsa in data i dedikerad SQL-pool (tidigare SQL DW).](./load-data-from-azure-blob-storage-using-copy.md) Mer information om hur du hanterar beräkningsfunktioner finns i artikeln [Hantera beräkningsöversikt.](sql-data-warehouse-manage-compute-overview.md)
