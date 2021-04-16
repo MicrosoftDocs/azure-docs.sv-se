@@ -1,37 +1,40 @@
 ---
-title: Snabb start – bygga och skicka Java-behållar avbildningar till Azure Container Registry med Maven och kran
-description: Bygg en Java-app i behållare och skicka den till Azure Container Registry med hjälp av maven kran-plugin-programmet.
+title: Snabbstart – Skapa och push-skicka Java-containeravbildningar till Azure Container Registry maven och Jib
+description: Skapa en ContainerIzed Java-app och skicka den till Azure Container Registry med maven Jib-plugin-programmet.
 author: KarlErickson
-ms.custom: devx-track-java, devx-track-azurecli
 ms.author: karler
-ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 9e400ee0bae2690a84f9cfd3f6a76359e08eabc2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.custom:
+- devx-track-java
+- devx-track-azurecli
+- mode-api
+ms.openlocfilehash: 4d805458d90c73de879a9b87d5b08c98a8f1a250
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92018346"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537295"
 ---
-# <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Snabb start: bygga och skicka Java-behållar avbildningar till Azure Container Registry
+# <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Snabbstart: Skapa och push-skicka Java-containeravbildningar till Azure Container Registry
 
-Den här snabb starten visar hur du skapar en Java-app i behållare och push-överför den till Azure Container Registry med hjälp av maven kran-plugin-programmet. Användningen av Maven och kran är ett exempel på att använda utvecklarverktyg för att interagera med ett Azure Container Registry.
+Den här snabbstarten visar hur du skapar en Java-app i en container och push-Azure Container Registry med maven Jib-plugin-programmet. Maven och Jib är ett exempel på hur du använder utvecklarverktyg för att interagera med ett Azure-containerregister.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure-prenumeration. Om du inte redan har en Azure-prenumeration kan du aktivera din [MSDN-prenumerantförmån](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) eller registrera dig för ett [kostnadsfritt Azure-konto](https://azure.microsoft.com/pricing/free-trial).
-* [Azure Command-Line Interface (CLI)](/cli/azure/overview).
+* [Azure Command-Line Interface (CLI).](/cli/azure/overview)
 * Ett Java Development Kit (JDK) som stöds. Mer information om vilka JDK:s som är tillgängliga för användning när du utvecklar på Azure finns i <https://aka.ms/azure-jdks>.
-* Apache: s [maven](http://maven.apache.org) build-verktyg (version 3 eller senare).
+* Apaches [Maven-byggverktyg](http://maven.apache.org) (version 3 eller senare).
 * En [Git](https://git-scm.com)-klient.
 * En [Docker](https://www.docker.com)-klient.
-* [Hjälp för ACR Docker-autentiseringsuppgifter](https://github.com/Azure/acr-docker-credential-helper).
+* [ACR Docker-autentiseringshjälpen](https://github.com/Azure/acr-docker-credential-helper).
 
 ## <a name="create-the-spring-boot-on-docker-getting-started-web-app"></a>Skapa webbappen Spring Boot on Docker Getting Started
 
 Med följande steg skapar du en Spring Boot-webbapp och testar den lokalt.
 
-1. Från kommando tolken använder du följande kommando för att klona [våren boot i docker komma igång](https://github.com/spring-guides/gs-spring-boot-docker) exempelprojektet.
+1. Från kommandotolken använder du följande kommando för att klona [Spring Boot docker Komma igång](https://github.com/spring-guides/gs-spring-boot-docker) exempelprojekt.
 
    ```bash
    git clone https://github.com/spring-guides/gs-spring-boot-docker.git
@@ -59,21 +62,21 @@ Du bör se följande meddelande: **Hello Docker World**
 
 ## <a name="create-an-azure-container-registry-using-the-azure-cli"></a>Skapa ett Azure-containerregister med hjälp av Azure CLI
 
-Därefter skapar du en Azure-resurs grupp och din ACR med hjälp av följande steg:
+Nu ska du skapa en Azure-resursgrupp och din ACR med följande steg:
 
-1. Logga in på ditt Azure-konto med hjälp av följande kommando:
+1. Logga in på ditt Azure-konto med följande kommando:
 
    ```azurecli
    az login
    ```
 
-1. Ange vilken Azure-prenumeration som ska användas:
+1. Ange den Azure-prenumeration som ska användas:
 
    ```azurecli
    az account set -s <subscription ID>
    ```
 
-1. Skapa en resursgrupp för de Azure-resurser som används i den här självstudien. I följande kommando ser du till att ersätta plats hållarna med ditt eget resurs namn och en plats som `eastus` .
+1. Skapa en resursgrupp för de Azure-resurser som används i den här självstudien. I följande kommando ska du ersätta platshållarna med ditt eget resursnamn och en plats som `eastus` .
 
    ```azurecli
    az group create \
@@ -81,7 +84,7 @@ Därefter skapar du en Azure-resurs grupp och din ACR med hjälp av följande st
        --location=<location>
    ```
 
-1. Skapa ett privat Azure Container Registry i resurs gruppen med hjälp av följande kommando. Se till att ersätta plats hållarna med faktiska värden. Självstudien skickar exempelappen som en Docker-avbildning till det här registret under senare steg.
+1. Skapa ett privat Azure-containerregister i resursgruppen med följande kommando. Se till att ersätta platshållarna med faktiska värden. Självstudien skickar exempelappen som en Docker-avbildning till det här registret under senare steg.
 
    ```azurecli
    az acr create \
@@ -93,23 +96,23 @@ Därefter skapar du en Azure-resurs grupp och din ACR med hjälp av följande st
 
 ## <a name="push-your-app-to-the-container-registry-via-jib"></a>Skicka appen till containerregistret via Jib
 
-Slutligen uppdaterar du projekt konfigurationen och använder kommando tolken för att bygga och distribuera avbildningen.
+Slutligen uppdaterar du projektkonfigurationen och använder kommandotolken för att skapa och distribuera avbildningen.
 
 > [!NOTE]
-> Om du vill logga in på Azure Container Registry som du nyss skapade måste du ha Docker-daemonen igång. [Här är den officiella Docker-dokumentationen](https://docs.docker.com/install/)för att installera Docker på datorn.
+> Om du vill logga in i Azure-containerregistret som du nyss skapade måste docker-daemonen köras. Om du vill installera Docker på datorn finns [den officiella Docker-dokumentationen här.](https://docs.docker.com/install/)
 
-1. Logga in på din Azure Container Registry från Azure CLI med hjälp av följande kommando. Se till att ersätta plats hållaren med ditt eget register namn.
+1. Logga in på Azure Container Registry från Azure CLI med följande kommando. Se till att ersätta platshållaren med ditt eget registernamn.
 
    ```azurecli
    az configure --defaults acr=<your registry name>
    az acr login
    ```
 
-   `az configure`Kommandot anger standard register namnet som ska användas med- `az acr` kommandon.
+   Kommandot `az configure` anger det standardregisternamn som ska användas med `az acr` kommandon.
 
 1. Gå till det slutförda projektet för ditt Spring Boot-program (till exempel, "*C:\SpringBoot\gs-spring-boot-docker\complete*" eller "*/users/robert/SpringBoot/gs-spring-boot-docker/complete*") och öppna *pom.xml*-filen med en textredigerare.
 
-1. Uppdatera `<properties>` samlingen i *pom.xml* -filen med följande XML. Ersätt plats hållaren med ditt register namn och Lägg till en `<jib-maven-plugin.version>` egenskap med värde `2.2.0` , eller en nyare version av [kran-maven-plugin-programmet](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin).
+1. Uppdatera samlingen `<properties>` i pom.xmlmed följande XML. Ersätt platshållaren med ditt registernamn och lägg till en egenskap med värdet , eller en `<jib-maven-plugin.version>` `2.2.0` nyare version av [jib-maven-plugin.](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)
 
    ```xml
    <properties>
@@ -119,7 +122,7 @@ Slutligen uppdaterar du projekt konfigurationen och använder kommando tolken f�
    </properties>
    ```
 
-1. Uppdatera `<plugins>` samlingen i *pom.xml* -filen så att `<plugin>` elementet innehåller och posten för `jib-maven-plugin` , som visas i följande exempel. Observera att vi använder en bas avbildning från Microsoft Container Registry (MCR): `mcr.microsoft.com/java/jdk:8-zulu-alpine` , som innehåller en JDK som stöds officiellt för Azure. För andra MCR Base-avbildningar med officiellt stödd JDKs, se [Java Se JDK](https://hub.docker.com/_/microsoft-java-jdk), [Java se JRE](https://hub.docker.com/_/microsoft-java-jre), [Java se konsol lös JRE](https://hub.docker.com/_/microsoft-java-jre-headless)och [Java Se JDK och maven](https://hub.docker.com/_/microsoft-java-maven).
+1. Uppdatera samlingen `<plugins>` i pom.xmlfilen så att `<plugin>` elementet innehåller och posten för , som du ser i `jib-maven-plugin` följande exempel. Observera att vi använder en basavbildning från Microsoft Container Registry (MCR): , som innehåller en `mcr.microsoft.com/java/jdk:8-zulu-alpine` JDK som stöds officiellt för Azure. Andra MCR-basavbildningar med JDK:er som stöds officiellt finns i [Java SE JDK,](https://hub.docker.com/_/microsoft-java-jdk) [Java SE JRE,](https://hub.docker.com/_/microsoft-java-jre) [Java SE Headless JRE](https://hub.docker.com/_/microsoft-java-jre-headless)och [Java SE JDK och Maven.](https://hub.docker.com/_/microsoft-java-maven)
 
    ```xml
    <plugin>
@@ -145,11 +148,11 @@ Slutligen uppdaterar du projekt konfigurationen och använder kommando tolken f�
 
 > [!NOTE]
 >
-> Av säkerhets skäl är de autentiseringsuppgifter som skapas av `az acr login` bara giltig i 1 timme. Om du får ett *401-otillåtet* fel kan du köra `az acr login -n <your registry name>` kommandot igen för att autentisera igen.
+> Av säkerhetsskäl är de autentiseringsuppgifter som skapats av `az acr login` endast giltiga i 1 timme. Om du får felet *401 Unauthorized* (Obehörig) kan du köra `az acr login -n <your registry name>` kommandot igen för att återauktorera.
 
-## <a name="verify-your-container-image"></a>Verifiera behållar avbildningen
+## <a name="verify-your-container-image"></a>Verifiera containeravbildningen
 
-Grattis! Nu har du en behållare för Java-appar i Azure som stöds JDK som skickas till din ACR. Nu kan du testa avbildningen genom att distribuera den till Azure App Service eller genom att dra den till en lokal med-kommando (ersätta plats hållaren):
+Grattis! Nu har du en containeriserad Java-app som bygger på JDK som stöds av Azure och push-installerats till din ACR. Du kan nu testa avbildningen genom att distribuera den till Azure App Service eller hämta den lokalt med kommandot (ersätt platshållaren):
 
 ```bash
 docker pull <your registry name>.azurecr.io/gs-spring-boot-docker
@@ -157,12 +160,12 @@ docker pull <your registry name>.azurecr.io/gs-spring-boot-docker
 
 ## <a name="next-steps"></a>Nästa steg
 
-Andra versioner av de officiella Microsoft-baserade avbildningarna av Java Base finns i:
+För andra versioner av de officiella Java-basavbildningar som stöds av Microsoft, se:
 
 * [Java SE JDK](https://hub.docker.com/_/microsoft-java-jdk)
 * [Java SE JRE](https://hub.docker.com/_/microsoft-java-jre)
-* [Konsol för Java SE JRE](https://hub.docker.com/_/microsoft-java-jre-headless)
-* [Java SE JDK och maven](https://hub.docker.com/_/microsoft-java-maven)
+* [Java SE Headless JRE](https://hub.docker.com/_/microsoft-java-jre-headless)
+* [Java SE JDK och Maven](https://hub.docker.com/_/microsoft-java-maven)
 
 Om du vill veta mer om Spring och Azure kan du fortsätta till dokumentationscentret för Spring i Azure.
 

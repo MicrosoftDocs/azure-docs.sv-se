@@ -258,7 +258,7 @@
         - name: Använda Resource Manager-mallar
           displayName: arm
           href: how-to-create-workspace-template.md
-        - name: Länka till Azure Synapse Analytics-arbetsyta
+        - name: Länk till Azure Synapse Analytics arbetsyta
           href: how-to-link-synapse-ml-workspaces.md
     - name: Skapa och hantera beräkningsresurser
       items:
@@ -268,7 +268,7 @@
         - name: Beräkningskluster
           displayName: 'compute target, low priority, managed identity'
           href: how-to-create-attach-compute-cluster.md
-        - name: Uppgradera värd operativ system
+        - name: Uppgradera värdoperativsystemet
           displayName: 'upgrade compute cluster, upgrade compute instance, upgrade ubuntu'
           href: how-to-compute-cluster-instance-os-upgrade.md
         - name: Azure Kubernetes Service
@@ -292,7 +292,7 @@
               displayName: 'Jupyter, notebooks, clone, samples'
             - name: Kör Jupyter Notebooks
               href: how-to-run-jupyter-notebooks.md
-            - name: Använd en Terminal
+            - name: Använda en terminal
               href: how-to-access-terminal.md
               displayName: 'git, github, clone, kernel, package'
         - name: Konfigurera programvarumiljöer
@@ -326,7 +326,7 @@
             - name: Skapa datauppsättningar med etiketter
               displayName: 'data, labels, torchvision'
               href: how-to-use-labeled-dataset.md
-        - name: Hämta & förbereda data
+        - name: Hämta & förbereder data
           items:
             - name: Datainmatning med Azure Data Factory
               displayName: 'data, ingestion, adf'
@@ -345,7 +345,7 @@
             - name: Ansluta till Azure Storage (Python)
               displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
-            - name: Identitets baserad data åtkomst till lagring
+            - name: Identitetsbaserad dataåtkomst till lagring
               displayName: 'blob, access, data lake, datastore, managed identity'
               href: how-to-identity-based-data-access.md
             - name: Hämta data från ett datalager (Python)
@@ -450,7 +450,7 @@
           displayName: 'automl, feature engineering, feature importance'
           href: how-to-configure-cross-validation-data-splits.md
         - name: Funktionalisering i automatiserad ML (python)
-          displayName: 'automl, feature engineering, feature importance'
+          displayName: 'automl, feature engineering, feature importance, BERT'
           href: how-to-configure-auto-features.md
         - name: Använda automatiserad ML i ML-pipelines (Python)
           displayName: machine learning automl
@@ -459,7 +459,7 @@
           href: how-to-understand-automated-ml.md
         - name: Använda ONNX-modellen i .NET-program
           href: how-to-use-automl-onnx-model-dotnet.md
-        - name: Felsök automatisk ML
+        - name: Felsöka automatiserad ML
           href: how-to-troubleshoot-auto-ml.md
     - name: Distribuera och hantera modeller
       items:
@@ -544,7 +544,7 @@
           href: how-to-move-data-in-out-of-pipelines.md
         - name: Distribuera ML-pipelines (Python)
           href: how-to-deploy-pipelines.md
-        - name: Använda Azure Synapse Apache Spark-pooler i en ML pipeline (python)
+        - name: Använda Azure Synapse Apache Spark-pooler i en ML-pipeline (Python)
           href: how-to-use-synapsesparkstep.md
         - name: Utlösa en pipeline
           href: how-to-trigger-published-pipeline.md
@@ -556,7 +556,7 @@
             - name: Omvandla data
               displayName: pipeline
               href: how-to-designer-transform-data.md
-            - name: Använd pipeline-parametrar
+            - name: Använda pipelineparametrar
               displayName: 'designer, pipeline parameters'
               href: how-to-use-pipeline-parameter.md
             - name: Omträna med publicerade pipelines

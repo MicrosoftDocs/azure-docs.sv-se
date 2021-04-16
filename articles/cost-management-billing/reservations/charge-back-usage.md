@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 03/10/2021
 ms.author: banders
-ms.openlocfilehash: 4fb15a7e677d566454d5d487c1cf69767d7f3a30
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4059318e6b8052f3b0221c87e8a357cfc8679e44
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368752"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532761"
 ---
 # <a name="charge-back-azure-reservation-costs"></a>Återbetala kostnader för Azure-reservationer
 
@@ -20,11 +20,11 @@ Faktureringsläsare för Enterprise-avtal och Microsoft-kundavtal kan visa amort
 
 Användare med en enskild prenumeration kan hämta amorterade kostnadsdata från sin användningsfil. När en resurs får en reservationsrabatt innehåller avsnittet *AdditionalInfo* i användningsfilen reservationsinformationen. Du kan läsa mer i [Ladda ned användningsinformation från Azure-portalen](../understand/download-azure-daily-usage.md#download-usage-from-the-azure-portal-csv).
 
-## <a name="see-reservation-usage-data-for-show-back-and-charge-back"></a>Se reservations användnings data för Visa tillbaka och tillbaka till åter debitering
+## <a name="see-reservation-usage-data-for-show-back-and-charge-back"></a>Se reservationsanvändningsdata för att visa bakåt och ladda tillbaka
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. Navigera till **Cost Management + fakturering** 
-3. Välj **kostnads analys** från vänster navigering 
+2. Gå till **Kostnadshantering och fakturering** 
+3. Välj **Kostnadsanalys i** det vänstra navigeringsfönstret 
 4. Under **Faktisk kostnad** väljer du måttet **Amorterad kostnad**.
 5. Om du vill se vilka resurser som använts av en reservation använder du ett filter för **reservation** och väljer sedan reservationer.
 6. Ange **Kornighet** till **Varje månad** eller **Varje dag**.
@@ -33,18 +33,18 @@ Användare med en enskild prenumeration kan hämta amorterade kostnadsdata från
 
 [![Exempel som visar kostnader för reservationsresurser som du kan använda för återbetalning](./media/charge-back-usage/amortized-reservation-costs.png)](./media/charge-back-usage/amortized-reservation-costs.png#lightbox)
 
-Här är en video som visar hur du ser kostnader för reservationsanvändning i Azure Portal.
+Här är en video som visar hur du visar kostnader för reservationsanvändning på prenumerations-, resursgrupps- och resursnivå i Azure Portal.
 
  > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4sQOw] 
 
-## <a name="get-the-data-for-show-back-and-charge-back"></a>Hämta data för att Visa tillbaka och debitera igen
+## <a name="get-the-data-for-show-back-and-charge-back"></a>Hämta data för att visa bakåt och ladda tillbaka
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. Navigera till **Cost Management + fakturering** 
-3. Välj **Exportera** från vänster navigering 
-4. Klicka på knappen **Lägg till**
-5. Välj amorterings kostnad som knappen mått och konfigurera exporten
+2. Gå till **Kostnadshantering och fakturering** 
+3. Välj **Exportera i** det vänstra navigeringsfönstret 
+4. Klicka på **knappen Lägg** till
+5. Välj Amorterad kostnad som måttknapp och konfigurera exporten
 
-EffectivePrice för användning som erhåller reservations rabatt är den beräknade kostnaden för reservationen (i stället för att vara noll). På så sätt kan du se penningvärdet för reservationsförbrukningen för en prenumeration, en resursgrupp eller en resurs. Det gör det också enklare att allokera reservationsanvändningen internt. Datauppsättningen har även oanvända reservationstimmar. 
+EffectivePrice för den användning som får reservationsrabatten är den prorrerade kostnaden för reservationen (i stället för noll). På så sätt kan du se penningvärdet för reservationsförbrukningen för en prenumeration, en resursgrupp eller en resurs. Det gör det också enklare att allokera reservationsanvändningen internt. Datauppsättningen har även oanvända reservationstimmar. 
 
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Hämta data om användning och reservationer i Azure med hjälp av API:er
 
@@ -74,7 +74,7 @@ Informationen i följande tabell om mått och filter kan hjälpa dig att lösa v
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Ladda ned CSV-filen med nya användningsdata
 
-Om du är en EA-administratör kan du ladda ned den CSV-fil som innehåller nya användnings data från Azure Portal. Dessa data är inte tillgängliga från EA-portalen (ea.azure.com). Du måste hämta användningsfilen från Azure-portalen (portal.azure.com) för att se nya data.
+Om du är EA-administratör kan du ladda ned CSV-filen som innehåller nya användningsdata från Azure Portal. Dessa data är inte tillgängliga från EA-portalen (ea.azure.com). Du måste hämta användningsfilen från Azure-portalen (portal.azure.com) för att se nya data.
 
 Navigera till [Kostnadshantering + fakturering](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts) på Azure-portalen.
 
@@ -82,7 +82,7 @@ Navigera till [Kostnadshantering + fakturering](https://portal.azure.com/#blade/
 2. Klicka på **Användning + avgifter**.
 3. Klicka på **Hämta**.  
 ![Exempel som visar var du kan ladda ned CSV-filen med användningsdata på Azure-portalen](./media/understand-reserved-instance-usage-ea/portal-download-csv.png)
-4. I **användnings information** väljer du **periodiserade användnings data**.
+4. I **Användningsinformation** väljer du **Amorterade användningsdata.**
 
 CSV-filerna som du laddar ned innehåller faktiska kostnader och amorterade kostnader.
 
@@ -91,6 +91,6 @@ CSV-filerna som du laddar ned innehåller faktiska kostnader och amorterade kost
 Om du har frågor eller behöver hjälp kan du [skapa en supportbegäran](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Nästa steg
-- Mer information om Azure Reservations användnings data finns i följande artiklar:
-  - [Enterprise-avtal och Microsofts kund avtal reservations kostnader och användning](understand-reserved-instance-usage-ea.md)
+- Mer information om användningsdata för Azure-reservationer finns i följande artiklar:
+  - [Enterprise-avtal och Microsoft-kundavtal kostnader för och användning av reservationer](understand-reserved-instance-usage-ea.md)
  

@@ -1,21 +1,21 @@
 ---
-title: Lista över inbyggda princip definitioner
-description: Visa en lista över inbyggda princip definitioner för Azure Policy. Kategorierna omfattar taggar, regelefterlevnad, Key Vault, Kubernetes, gäst konfiguration och mycket annat.
-ms.date: 03/31/2021
+title: Lista över inbyggda principdefinitioner
+description: Lista inbyggda principdefinitioner för Azure Policy. Kategorierna är taggar, regelefterlevnad, Key Vault, Kubernetes, gästkonfiguration med mera.
+ms.date: 04/14/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 13b772a5e80db12ee4be4bec7731f72e46f0898f
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 8110ee2539165dfd6daa243dca151578726d0d84
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106091244"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498901"
 ---
-# <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy inbyggda princip definitioner
+# <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy inbyggda principdefinitioner
 
-Den här sidan är ett index över Azure Policy inbyggda princip definitioner.
+Den här sidan är ett index Azure Policy inbyggda principdefinitioner.
 
-Namnet på de inbyggda länkarna till princip definitionen i Azure Portal. Använd länken i kolumnen **källa** för att visa källan på [Azure policy GitHub-lagrings platsen](https://github.com/Azure/azure-policy). De inbyggda programmen grupperas efter egenskapen **Category** i **metadata**. Om du vill gå till en viss **kategori** använder du menyn på höger sida av sidan. Annars använder du <kbd>CTRL</kbd> - <kbd>F</kbd> för att använda Sök funktionen i webbläsaren.
+Namnet på varje inbyggd länkar till principdefinitionen i Azure Portal. Använd länken i **källkolumnen** för att visa källan på Azure Policy [GitHub-lagringsplatsen](https://github.com/Azure/azure-policy). De inbyggda är grupperade efter **kategoriegenskapen** i **metadata**. Om du vill gå till **en** viss kategori använder du menyn till höger på sidan. Annars använder du <kbd>Ctrl</kbd> - <kbd>F</kbd> för att använda webbläsarens sökfunktion.
 
 ## <a name="api-for-fhir"></a>API för FHIR
 
@@ -29,7 +29,7 @@ Namnet på de inbyggda länkarna till princip definitionen i Azure Portal. Anvä
 
 [!INCLUDE [azure-policy-reference-policies-app-configuration](../../../../includes/policy/reference/bycat/policies-app-configuration.md)]
 
-## <a name="app-platform"></a>App-plattform
+## <a name="app-platform"></a>Appplattform
 
 [!INCLUDE [azure-policy-reference-policies-app-platform](../../../../includes/policy/reference/bycat/policies-app-platform.md)]
 
@@ -41,7 +41,7 @@ Namnet på de inbyggda länkarna till princip definitionen i Azure Portal. Anvä
 
 [!INCLUDE [azure-policy-reference-policies-attestation](../../../../includes/policy/reference/bycat/policies-attestation.md)]
 
-## <a name="automanage"></a>Autohantera
+## <a name="automanage"></a>Automanage
 
 [!INCLUDE [azure-policy-reference-policies-automanage](../../../../includes/policy/reference/bycat/policies-automanage.md)]
 
@@ -93,7 +93,7 @@ Namnet på de inbyggda länkarna till princip definitionen i Azure Portal. Anvä
 
 [!INCLUDE [azure-policy-reference-policies-cosmos-db](../../../../includes/policy/reference/bycat/policies-cosmos-db.md)]
 
-## <a name="custom-provider"></a>Anpassad Provider
+## <a name="custom-provider"></a>Anpassad provider
 
 [!INCLUDE [azure-policy-reference-policies-custom-provider](../../../../includes/policy/reference/bycat/policies-custom-provider.md)]
 
@@ -169,7 +169,7 @@ Namnet på de inbyggda länkarna till princip definitionen i Azure Portal. Anvä
 
 [!INCLUDE [azure-policy-reference-policies-network](../../../../includes/policy/reference/bycat/policies-network.md)]
 
-## <a name="portal"></a>Portal
+## <a name="portal"></a>Portalen
 
 [!INCLUDE [azure-policy-reference-policies-portal](../../../../includes/policy/reference/bycat/policies-portal.md)]
 
@@ -205,7 +205,7 @@ Namnet på de inbyggda länkarna till princip definitionen i Azure Portal. Anvä
 
 [!INCLUDE [azure-policy-reference-policies-stream-analytics](../../../../includes/policy/reference/bycat/policies-stream-analytics.md)]
 
-## <a name="synapse"></a>Synapse
+## <a name="synapse"></a>Synaps
 
 [!INCLUDE [azure-policy-reference-policies-synapse](../../../../includes/policy/reference/bycat/policies-synapse.md)]
 

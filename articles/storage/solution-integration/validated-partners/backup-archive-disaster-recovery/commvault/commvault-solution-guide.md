@@ -1,244 +1,244 @@
 ---
-title: Säkerhetskopiera dina data till Azure med CommVault
+title: Backa dina data till Azure med Commvault
 titleSuffix: Azure Storage
-description: Ger en översikt över faktorer att överväga och steg att följa för att använda Azure som ett lagrings mål och en återställnings plats för fullständig säkerhets kopiering och återställning av CommVault
+description: Innehåller en översikt över faktorer att tänka på och steg att följa för att använda Azure som lagringsmål och återställningsplats för fullständig säkerhetskopiering och återställning av Commvault
 author: karauten
 ms.author: karauten
 ms.date: 03/15/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: ce321574ce2878f51864f55bf5618df2c96d1068
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa60b6f002e49babc1e1f014bcb941e7953a43a8
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589896"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484786"
 ---
-# <a name="backup-to-azure-with-commvault"></a>Säkerhetskopiera till Azure med CommVault
+# <a name="backup-to-azure-with-commvault"></a>Säkerhetskopiera till Azure med Commvault
 
-Den här artikeln hjälper dig att integrera en CommVault-infrastruktur med Azure Blob Storage. Det innehåller krav, överväganden, implementering och drifts vägledning. Den här artikeln handlar om att använda Azure som ett säkerhets kopierings mål på en annan plats och en återställnings plats om en katastrof inträffar, vilket förhindrar normal drift på den primära platsen.
+Den här artikeln hjälper dig att integrera en Commvault-infrastruktur med Azure Blob Storage. Den innehåller förutsättningar, överväganden, implementering och driftvägledning. Den här artikeln beskriver hur du använder Azure som ett säkerhetskopieringsmål på annan plats och en återställningsplats om en katastrof inträffar, vilket förhindrar normal drift på din primära plats.
 
 > [!NOTE]
-> CommVault erbjuder en mindre RTO-lösning (Recovery Time mål), CommVault Live Sync. Med den här lösningen kan du ha en virtuell dator för vänte läge som kan hjälpa dig att återställa snabbare i händelse av en katastrof i en Azure-produktions miljö. Dessa funktioner är utanför omfånget för det här dokumentet.
+> Commvault erbjuder en lösning med lägre mål för återställningstid (RTO), Commvault Live Sync. Med den här lösningen kan du ha en virtuell dator i vänteläge som kan hjälpa dig att återställa snabbare i händelse av ett haveri i en Azure-produktionsmiljö. Dessa funktioner ligger utanför omfånget för det här dokumentet.
 
 ## <a name="reference-architecture"></a>Referensarkitektur
 
-Följande diagram innehåller en referens arkitektur för lokala Azure-distributioner och Azure-distributioner.
+Följande diagram innehåller en referensarkitektur för distributioner lokalt till Azure och i Azure.
 
-![Referens arkitektur för CommVault till Azure](../media/commvault-diagram.png)
+![Referensarkitektur för Commvault till Azure](../media/commvault-diagram.png)
 
-Din befintliga CommVault-distribution kan enkelt integreras med Azure genom att lägga till ett Azure Storage-konto eller flera konton som ett moln lagrings mål. Med CommVault kan du också återställa säkerhets kopior från lokala platser i Azure med en återställnings-på-begäran-webbplats i Azure.
+Din befintliga Commvault-distribution kan enkelt integreras med Azure genom att lägga till ett Azure Storage-konto eller flera konton som ett molnlagringsmål. Med Commvault kan du även återställa säkerhetskopior lokalt i Azure, vilket ger dig en webbplats för återställning på begäran i Azure.
 
-## <a name="commvault-interoperability-matrix"></a>CommVault Interoperabilitets mat ris
+## <a name="commvault-interoperability-matrix"></a>Samverkansmatris för Commvault
 
-| Arbetsbelastning | GPv2 och Blob Storage | Support på låg frekvent nivå | Arkiv nivå stöd | Stöd för Data Box-enhet-familjen |
+| Arbetsbelastning | GPv2 och Blob Storage | Stöd för den coola nivån | Stöd för arkivnivå | Data Box-enhet supportfamilj |
 |-----------------------|--------------------|--------------------|-------------------------|-------------------------|
-| Lokala virtuella datorer/data | v-11,5 | v-11,5 | v-11.10 | v-11.10 |
-| Virtuella Azure-datorer | v-11,5 | v-11,5 | v-11,5 | Ej tillämpligt |
-| Azure-blobb | v-11.6 | v-11.6 | v-11.6 | Ej tillämpligt |
-| Azure Files | v-11.6 | v-11.6 | v-11.6 | Ej tillämpligt |
+| Lokala virtuella datorer/data | v11.5 | v11.5 | v11.10 | v11.10 |
+| Virtuella Azure-datorer | v11.5 | v11.5 | v11.5 | Ej tillämpligt |
+| Azure-blobb | v11.6 | v11.6 | v11.6 | Ej tillämpligt |
+| Azure Files | v11.6 | v11.6 | v11.6 | Ej tillämpligt |
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-En lite första planering hjälper dig att använda Azure som en säkerhets kopierings mål och återställnings plats.
+Lite startplanering hjälper dig att använda Azure som mål för säkerhetskopiering och återställning på annan plats.
 
 ### <a name="get-started-with-azure"></a>Komma igång med Azure
 
-Microsoft erbjuder ett ramverk som följer för att komma igång med Azure. [Cloud adoption Framework](/azure/architecture/cloud-adoption/) (CAF) är en detaljerad metod för digital transformering i företag och omfattande vägledning för att planera ett moln införande i produktions klass. CAF innehåller en steg-för-steg- [Guide för Azure-installationen](/azure/cloud-adoption-framework/ready/azure-setup-guide/) som hjälper dig att komma igång snabbt och säkert. Du kan hitta en interaktiv version i [Azure Portal](https://portal.azure.com/?feature.quickstart=true#blade/Microsoft_Azure_Resources/QuickstartCenterBlade). Du hittar exempel arkitekturer, metod tips för att distribuera program och kostnads fria utbildnings resurser som du kan använda för att få information om sökvägen till Azures expertis.
+Microsoft erbjuder ett ramverk att följa för att komma igång med Azure. Den [Cloud Adoption Framework](/azure/architecture/cloud-adoption/) (CAF) är en detaljerad metod för företagets digitala omvandling och en omfattande guide för att planera molnintro sig på produktionsklass. CAF innehåller en stegvis konfigurationsguide för [Azure som](/azure/cloud-adoption-framework/ready/azure-setup-guide/) hjälper dig att komma igång snabbt och säkert. Du hittar en interaktiv version i [Azure Portal](https://portal.azure.com/?feature.quickstart=true#blade/Microsoft_Azure_Resources/QuickstartCenterBlade). Du hittar exempelarkitekturer, specifika metodtips för distribution av program och kostnadsfria utbildningsresurser som hjälper dig att komma i vägen för Azure-expertis.
 
 ### <a name="consider-the-network-between-your-location-and-azure"></a>Överväg nätverket mellan din plats och Azure
 
-Oavsett om du använder moln resurser för att köra produktion, testning och utveckling, eller som en säkerhets kopierings plats och återställnings plats, är det viktigt att förstå dina bandbredds behov för inledande dirigerad säkerhets kopiering och för pågående dagliga överföringar.
+Oavsett om du använder molnresurser för att köra produktion, testning och utveckling, eller som mål för säkerhetskopiering och återställning, är det viktigt att du förstår bandbreddsbehoven för inledande start av säkerhetskopiering och pågående dagliga överföringar.
 
-Azure Data Box är ett sätt att överföra din första säkerhets kopierings bas linje till Azure utan att kräva mer bandbredd. Detta är användbart om bas linje överföringen är beräknad för att ta längre tid än vad du kan tolerera. Du kan använda Dataöverföring uppskattningen när du skapar ett lagrings konto för att beräkna den tid som krävs för att överföra den första säkerhets kopian.
+Azure Data Box är ett sätt att överföra din första säkerhetskopieringsbaslinje till Azure utan att kräva mer bandbredd. Detta är användbart om baslinjeöverföringen uppskattas ta längre tid än du kan tolerera. Du kan använda dataöverföringsberäknaren när du skapar ett lagringskonto för att uppskatta den tid som krävs för att överföra den första säkerhetskopian.
 
-![Visar uppskattningen Azure Storage data överförings uppskattning i portalen.](../media/az-storage-transfer.png)
+![Visar Azure Storage för dataöverföring i portalen.](../media/az-storage-transfer.png)
 
-Kom ihåg att du behöver tillräckligt med nätverks kapacitet för att stödja dagliga data överföringar i fönstret för överföring av begärda data (säkerhets kopierings fönster) utan att påverka produktions program. Det här avsnittet beskriver de verktyg och tekniker som är tillgängliga för att bedöma dina nätverks behov.
+Kom ihåg att du behöver tillräckligt med nätverkskapacitet för att stödja dagliga dataöverföringar inom det nödvändiga överföringsfönstret (säkerhetskopieringsfönstret) utan att påverka produktionsprogram. I det här avsnittet beskrivs de verktyg och tekniker som är tillgängliga för att utvärdera dina nätverksbehov.
 
-#### <a name="determine-how-much-bandwidth-youll-need"></a>Ta reda på hur mycket bandbredd du behöver
+#### <a name="determine-how-much-bandwidth-youll-need"></a>Fastställ hur mycket bandbredd du behöver
 
 Använd följande resurser för att avgöra hur mycket bandbredd du behöver:
 
-- Rapporter från program varan för säkerhets kopiering.
-- CommVault tillhandahåller standard rapporter för att fastställa [ändrings takten](https://documentation.commvault.com/commvault/v11_sp19/article?p=39699.htm) och den [totala storleken för säkerhets kopierings uppsättningen](https://documentation.commvault.com/commvault/v11_sp19/article?p=39621.htm) för den inledande bas linje överföringen till Azure.
-- Säkerhetskopiera program vara – oberoende utvärderings-och rapporterings verktyg som:
+- Rapporter från din programvara för säkerhetskopiering.
+- Commvault tillhandahåller standardrapporter för att fastställa [ändringsfrekvensen](https://documentation.commvault.com/commvault/v11_sp19/article?p=39699.htm) och [den totala storleken](https://documentation.commvault.com/commvault/v11_sp19/article?p=39621.htm) på uppsättningen säkerhetskopior för den första baslinjeöverföringen till Azure.
+- Säkerhetskopiera programoberoende verktyg för utvärdering och rapportering som:
   - [MiTrend](https://mitrend.com/)
   - [Aptare](https://www.veritas.com/insights/aptare-it-analytics)
   - [Datavoss](https://www.datavoss.com/)
 
-#### <a name="determine-unutilized-internet-bandwidth"></a>Fastställa den outnyttjade Internet bandbredden
+#### <a name="determine-unutilized-internet-bandwidth"></a>Fastställa outnyttjad Internetbandbredd
 
-Det är viktigt att känna till hur mycket normalt outnyttjad bandbredd (eller *utrymme*) som du har tillgängligt på en dag till dags basis. Detta hjälper dig att bedöma om du kan uppfylla dina mål för:
+Det är viktigt att veta hur mycket normalt outnyttjad bandbredd (eller *utrymme)* som du har tillgänglig från dag till dag. Detta hjälper dig att bedöma om du kan uppfylla dina mål för:
 
-- Start tid att ladda upp när du inte använder Azure Data Box för seeding offline
-- slutföra dagliga säkerhets kopieringar baserat på ändrings frekvensen som identifierades tidigare och säkerhets kopierings fönstret
+- första gången du laddar upp när du inte använder Azure Data Box offline-seeding
+- slutföra dagliga säkerhetskopieringar baserat på ändringstakten som identifierades tidigare och säkerhetskopieringsfönstret
 
-Använd följande metoder för att identifiera bandbredds utrymme som dina säkerhets kopieringar till Azure är kostnads fria att använda.
+Använd följande metoder för att identifiera bandbreddsutrymme som dina säkerhetskopior till Azure kan använda.
 
-- Om du är en befintlig Azure ExpressRoute-kund kan du se din [krets användning](../../../../../expressroute/expressroute-monitoring-metrics-alerts.md#circuits-metrics) i Azure Portal.
-- Kontakta din Internet leverantör. De bör kunna dela rapporter som visar din befintliga dagliga och månatliga användning.
-- Det finns flera verktyg som kan mäta användningen genom att övervaka din nätverks trafik på router-/växel nivån. Dessa omfattar:
-  - [SolarWinds Bandwidth Analyzer-paket](https://www.solarwinds.com/network-bandwidth-analyzer-pack?CMP=ORG-BLG-DNS)
+- Om du är en befintlig Azure ExpressRoute kan du visa din [kretsanvändning](../../../../../expressroute/expressroute-monitoring-metrics-alerts.md#circuits-metrics) i Azure Portal.
+- Kontakta Internetleverantören. De bör kunna dela rapporter som visar din befintliga dagliga och månatliga användning.
+- Det finns flera verktyg som kan mäta användningen genom att övervaka nätverkstrafiken på router-/switchnivå. Dessa omfattar:
+  - [Solarwinds Bandwidth Analyzer Pack](https://www.solarwinds.com/network-bandwidth-analyzer-pack?CMP=ORG-BLG-DNS)
   - [Paessler PRTG](https://www.paessler.com/bandwidth_monitoring)
-  - [Cisco-nätverks assistent](https://www.cisco.com/c/en/us/products/cloud-systems-management/network-assistant/index.html)
-  - [WhatsUp guld](https://www.whatsupgold.com/network-traffic-monitoring)
+  - [Cisco Network Assistant](https://www.cisco.com/c/en/us/products/cloud-systems-management/network-assistant/index.html)
+  - [WhatsUp Gold](https://www.whatsupgold.com/network-traffic-monitoring)
 
-### <a name="choose-the-right-storage-options"></a>Välj rätt lagrings alternativ
+### <a name="choose-the-right-storage-options"></a>Välja rätt lagringsalternativ
 
-När du använder Azure som ett säkerhets kopierings mål använder du [Azure Blob Storage](../../../../blobs/storage-blobs-introduction.md). Blob Storage är Microsofts lösning för objekt lagring. Blob Storage är optimerat för att lagra enorma mängder ostrukturerade data, som är data som inte följer någon data modell eller definition. Dessutom är Azure Storage tåligt, hög tillgängligt, säkert och skalbart. Du kan välja rätt lagring för din arbets belastning för att ge den [återhämtnings nivå](../../../../common/storage-redundancy.md) som passar din interna service avtal. Blob Storage är en tjänst för betalning per användning. Du [debiteras månads vis](../../../../blobs/storage-blob-storage-tiers.md#pricing-and-billing) för den mängd data som lagras, till gång till dessa data och i händelse av låg frekvent lagrings nivå, minst en kvarhållningsperiod som krävs. De återhämtnings-och nivåers alternativ som gäller för säkerhetskopierade data sammanfattas i följande tabeller.
+När du använder Azure som mål för säkerhetskopiering använder du [Azure Blob Storage](../../../../blobs/storage-blobs-introduction.md). Blob Storage är Microsofts objektlagringslösning. Blob Storage är optimerat för att lagra stora mängder ostrukturerade data, vilket är data som inte följer någon datamodell eller definition. Dessutom är Azure Storage beständig, mycket tillgänglig, säker och skalbar. Du kan välja rätt lagring för din arbetsbelastning för att ge [återhämtningsnivån för att](../../../../common/storage-redundancy.md) uppfylla dina interna serviceavtal. Blob Storage är en tjänst där du betalar per användning. Du debiteras [månadsvis](../../../../blobs/storage-blob-storage-tiers.md#pricing-and-billing) för den mängd data som lagras, åtkomst till dessa data och, i fallet med nivåerna cool och arkiv, en minsta kvarhållningsperiod som krävs. Återhämtnings- och nivåalternativen för säkerhetskopierade data sammanfattas i följande tabeller.
 
-**Återhämtnings alternativ för Blob Storage:**
+**Återhämtningsalternativ för Blob Storage:**
 
-|  |Lokalt redundant  |Zon – redundant  |Geo-redundant  |Redundant geo-zon  |
+|  |Lokalt redundant  |Zonredundant  |Geo-redundant  |Geo-zonredundant  |
 |---------|---------|---------|---------|---------|
 |**Gällande antal kopior**     | 3         | 3         | 6         | 6 |
-|**antal tillgänglighets zoner**     | 1         | 3         | 2         | 4 |
-|**antal regioner**     | 1         | 1         | 2         | 2 |
+|**Antal tillgänglighetszoner**     | 1         | 3         | 2         | 4 |
+|**Antal regioner**     | 1         | 1         | 2         | 2 |
 |**Manuell redundans till sekundär region**     | Saknas         | Saknas         | Ja         | Ja |
 
 **Blob Storage-nivåer:**
 
-|  | Frekvent nivå   |Låg frekvent nivå   | Arkiv lag ring |
+|  | Hot-nivå   |Nivån Cool   | Arkivnivå |
 | ----------- | ----------- | -----------  | -----------  |
 | **Tillgänglighet** | 99,9 %         | 99 %         | Offline      |
-| **Användnings kostnader** | Högre kostnader för lagring, lägre åtkomst och transaktionskostnader | Lägre kostnader för lagring, högre åtkomst och transaktionskostnader | Lägsta kostnader för lagring, högsta åtkomst och transaktionskostnader |
-| **Minsta data lagring krävs**| Ej tillämpligt | 30 dagar | 180 dagar |
-| **Svars tid (tid till första byte)** | Millisekunder | Millisekunder | Tider |
+| **Användningsavgifter** | Högre lagringskostnader, lägre åtkomst- och transaktionskostnader | Lägre lagringskostnader, högre åtkomst- och transaktionskostnader | Lägsta lagringskostnader, högsta åtkomst- och transaktionskostnader |
+| **Minsta datalagring som krävs**| Ej tillämpligt | 30 dagar | 180 dagar |
+| **Svarstid (tid till första byte)** | Millisekunder | Millisekunder | Tider |
 
-#### <a name="sample-backup-to-azure-cost-model"></a>Exempel på säkerhets kopiering till Azures kostnads modell
+#### <a name="sample-backup-to-azure-cost-model"></a>Exempel på säkerhetskopiering till Azure-kostnadsmodell
 
-Med betala per användning kan du avskräckande till kunder som är nya i molnet. Även om du bara betalar för den kapacitet som används betalar du även för transaktioner (läsning och skrivning) och utgångs punkt [för data](https://azure.microsoft.com/pricing/details/bandwidth/) som läses tillbaka till din lokala miljö när [Azure Express Route Direct Local eller Express Route unlimiting data plan](https://azure.microsoft.com/pricing/details/expressroute/) används där data som utgående från Azure ingår. Du kan använda [pris Kalkylatorn för Azure](https://azure.microsoft.com/pricing/calculator/) för att utföra "Vad händer om"-analys. Du kan basera analysen på list prissättning eller på [Azure Storage reserverade kapacitets priser](../../../../../cost-management-billing/reservations/save-compute-costs-reservations.md), vilket kan leverera upp till 38% besparingar. Här är ett exempel på prissättning för att modellera månads kostnaden för säkerhets kopiering till Azure. Detta är bara ett exempel. *Din prissättning kan variera på grund av aktiviteter som inte har registrerats här.*
+Med betalning per användning kan vara svår för kunder som är nya i molnet. Även om du bara betalar för den kapacitet som används betalar du även för transaktioner (läsa och eller skrivningar) och gå ut för data som läses tillbaka till din lokala miljö när [Azure Express Route](https://azure.microsoft.com/pricing/details/expressroute/) direct local eller Express Route unlimited data plan används där utgående [data](https://azure.microsoft.com/pricing/details/bandwidth/) från Azure ingår. Du kan använda [Azures priskalkylator för](https://azure.microsoft.com/pricing/calculator/) att utföra "vad om"-analys. Du kan basera analysen på listpriser eller [på Azure Storage för](../../../../../cost-management-billing/reservations/save-compute-costs-reservations.md)reserverad kapacitet, vilket kan ge upp till 38 % besparingar. Här är ett exempel på en prisövning för att modellera månadskostnaden för att backa upp till Azure. Det här är bara ett exempel. *Priserna kan variera på grund av aktiviteter som inte avbildas här.*
 
-|Kostnads faktor  |Månatlig kostnad  |
+|Kostnadsfaktor  |Månadskostnad  |
 |---------|---------|
-|100 TB säkerhets kopierings data i cool Storage     |$1556,48         |
-|2 TB nya data som skrivs per dag x 30 dagar     |$39 i transaktioner          |
-|Månatlig uppskattad summa     |$1595,48         |
+|100 TB säkerhetskopierade data på kall lagring     |1556,48 USD         |
+|2 TB nya data som skrivits per dag x 30 dagar     |39 USD i transaktioner          |
+|Uppskattad månatlig totalsumma     |1595,48 USD         |
 |---------|---------|
-|En tids återställning på 5 TB till lokal över offentligt Internet   | $491,26         |
+|En tidsåterställning på 5 TB till lokal plats via offentligt Internet   | 491,26 USD         |
 
 > [!NOTE]
-> Den här uppskattningen genererades i pris Kalkylatorn för Azure med hjälp av amerikanska priser för "betala per användning" och baseras på CommVault-standardvärdet på 32 MB under segment storlek som genererar 65 536-begäranden (Skriv transaktioner) per dag. Det här exemplet kanske inte gäller för dina krav.
+> Den här uppskattningen genererades i Priskalkylatorn för Azure med betala per användning-priser för USA, östra och baseras på Commvault-standardstorleken på 32 MB under segment som genererar 65 536 PUT-begäranden (skrivtransaktioner) per dag. Det här exemplet kanske inte gäller för dina krav.
 
-## <a name="implementation-guidance"></a>Implementerings vägledning
+## <a name="implementation-guidance"></a>Implementeringsvägledning
 
-Det här avsnittet innehåller en kort guide för hur du lägger till Azure Storage i en lokal CommVault-distribution. Detaljerad vägledning och överväganden för överväganden finns i den [offentliga arkitektur guiden för CommVault för Microsoft Azure](https://documentation.commvault.com/commvault/v11/others/pdf/public-cloud-architecture-guide-for-microsoft-azure11-19.pdf).
+Det här avsnittet innehåller en kort guide för hur du lägger Azure Storage till en lokal Commvault-distribution. Detaljerad vägledning och planeringsöverväganden finns i [Commvault Public Cloud Architecture guide for Microsoft Azure](https://documentation.commvault.com/commvault/v11/others/pdf/public-cloud-architecture-guide-for-microsoft-azure11-19.pdf).
 
-1. Öppna Azure Portal och Sök efter **lagrings konton**. Du kan också klicka på ikonen för standard **lagrings konton** .
+1. Öppna Azure Portal och sök efter **lagringskonton**. Du kan också klicka på standardikonen **lagringskonton.**
 
-    ![Visar hur du lägger till ett lagrings konto i Azure Portal.](../media/azure-portal.png)
+    ![Visar hur du lägger till ett lagringskonto i Azure Portal.](../media/azure-portal.png)
   
-    ![Visar var du har skrivit in Storage i sökrutan för Azure Portal.](../media/locate-storage-account.png)
+    ![Visar var du har skrivit lagring i sökrutan för Azure Portal.](../media/locate-storage-account.png)
 
-2. Välj **skapa** för att lägga till ett konto. Välj eller skapa en resurs grupp, ange ett unikt namn, Välj region, Välj **standard** prestanda, lämna alltid konto typ som **Storage v2**, Välj den replikeringsprincip som uppfyller dina service avtal och standard nivån som säkerhets kopierings programmet kommer att gälla. Ett Azure Storage-konto gör frekventa, svala och Arkiv nivåer tillgängliga i ett enda konto och CommVault-principer gör att du kan använda flera nivåer för att effektivt hantera data livs cykeln.
+2. Välj **Skapa för** att lägga till ett konto. Välj eller skapa en resursgrupp, ange ett unikt namn, välj region, välj **Standardprestanda,** lämna alltid typ av konto som **Storage V2,** välj den replikeringsnivå som uppfyller dina serviceavtal och standardnivån som din programvara för säkerhetskopiering ska tillämpas på. Ett Azure Storage-konto gör nivåerna hot, cool och archive tillgängliga inom ett enda konto och Commvault-principer så att du kan använda flera nivåer för att effektivt hantera livscykeln för dina data.
 
-    ![Visar inställningar för lagrings konto i portalen](../media/account-create-1.png)
+    ![Visar inställningar för lagringskonto i portalen](../media/account-create-1.png)
 
-3. Behåll standard nätverks alternativen nu och gå vidare till **data skydd**. Här kan du välja att aktivera mjuk borttagning, vilket gör att du kan återställa en säkerhets kopia som tagits bort av misstag inom den definierade kvarhållningsperioden och ger skydd mot oavsiktlig eller skadlig borttagning.
+3. Behåll standardnätverksalternativen för tillfället och gå vidare **till Dataskydd.** Här kan du välja att aktivera mjuk borttagning, vilket gör att du kan återställa en säkerhetskopieringsfil som tagits bort av misstag inom den definierade kvarhållningsperioden och ger skydd mot oavsiktlig eller skadlig borttagning.
 
-    ![Visar inställningarna för data skydd i portalen.](../media/account-create-2.png)
+    ![Visar dataskyddsinställningarna i portalen.](../media/account-create-2.png)
 
-4. Sedan rekommenderar vi standardinställningarna från den **avancerade** skärmen för säkerhets kopiering till Azures användnings fall.
+4. Därefter rekommenderar vi standardinställningarna från skärmen **Avancerat för säkerhetskopiering** till Azure-användningsfall.
 
     ![Visar fliken Avancerade inställningar i portalen.](../media/account-create-3.png)
 
-5. Lägg till taggar för organisation om du använder taggning och skapa ditt konto.
+5. Lägg till taggar för organisation om du använder taggning och skapar ditt konto.
 
-6. Två snabba steg är nu obligatoriska innan du kan lägga till kontot i din CommVault-miljö. Navigera till det konto som du skapade i Azure Portal och välj **behållare** under menyn **BLOB service** . Lägg till en behållare och välj ett meningsfullt namn. Navigera sedan till objektet **åtkomst nycklar** under **Inställningar** och kopiera **lagrings kontots namn** och en av de två åtkomst nycklarna. Du behöver behållar namn, konto namn och åtkomst nyckel i nästa steg.
+6. Två snabba steg krävs nu innan du kan lägga till kontot i Commvault-miljön. Gå till det konto som du skapade i Azure Portal och välj **Containrar** under **menyn Blob** Service. Lägg till en container och välj ett beskrivande namn. Gå sedan till objektet **Åtkomstnycklar** under **Inställningar och** kopiera **lagringskontots namn och** en av de två åtkomstnycklarna. Du behöver containernamnet, kontonamnet och åtkomstnyckeln i nästa steg.
 
-    ![Visar skapande av behållare i portalen.](../media/container.png)
+    ![Visar hur du skapar containrar i portalen.](../media/container.png)
 
-    ![Visar åtkomst nyckel inställningar i portalen.](../media/access-key.png)
+    ![Visar inställningar för åtkomstnyckel i portalen.](../media/access-key.png)
 
-7. (*Valfritt*) Du kan lägga till ytterligare säkerhets lager i din distribution.
+7. (*Valfritt*) Du kan lägga till ytterligare säkerhetslager i distributionen.
 
-    1. Konfigurera rollbaserad åtkomst för att begränsa vem som kan göra ändringar i ditt lagrings konto. Mer information finns i [inbyggda roller för hanterings åtgärder](../../../../common/authorization-resource-provider.md#built-in-roles-for-management-operations).
-    1. Begränsa åtkomsten till kontot till vissa nätverks segment med [inställningarna för lagrings brand väggen](../../../../common/storage-network-security.md) för att förhindra åtkomst försök utanför företagets nätverk.
+    1. Konfigurera rollbaserad åtkomst för att begränsa vem som kan göra ändringar i ditt lagringskonto. Mer information finns i [Inbyggda roller för hanteringsåtgärder.](../../../../common/authorization-resource-provider.md#built-in-roles-for-management-operations)
+    1. Begränsa åtkomsten till kontot till specifika nätverkssegment med [lagringsbrandväggsinställningar](../../../../common/storage-network-security.md) för att förhindra åtkomstförsök utanför företagsnätverket.
 
-        ![Visar inställningar för lagrings brand väggen i portalen.](../media/storage-firewall.png)
+        ![Visar inställningar för lagringsbrandväggen i portalen.](../media/storage-firewall.png)
 
-    1. Ange ett [borttagnings lås](../../../../../azure-resource-manager/management/lock-resources.md) för kontot för att förhindra oavsiktlig borttagning av lagrings kontot.
+    1. Ange ett [borttagningslås](../../../../../azure-resource-manager/management/lock-resources.md) för kontot för att förhindra oavsiktlig borttagning av lagringskontot.
 
-        ![Visar inställning av ett borttagnings lås i portalen.](../media/resource-lock.png)
+        ![Visar inställning av ett borttagningslås i portalen.](../media/resource-lock.png)
 
-    1. Konfigurera ytterligare [rekommenderade säkerhets metoder](../../../../../storage/blobs/security-recommendations.md).
+    1. Konfigurera ytterligare [säkerhetsmetoder.](../../../../../storage/blobs/security-recommendations.md)
 
-1. I CommVault-kommando centret navigerar du till **Hantera**  ->  hanterare för **säkerhets**  ->  **referenser**. Välj ett **moln konto**, **leverantörs typ** **Microsoft Azure Storage**, Välj **MediaAgent**, som överför data till och från Azure, Lägg till lagrings kontots namn och åtkomst nyckel.
+1. I Commvault Command Center går du till **Hantera**  ->  **Autentiseringshanteraren**  ->  . Välj **molnkonto,** **leverantörstyp** **för Microsoft Azure Storage**, välj **MediaAgent**, som ska överföra data till och från Azure, lägga till lagringskontots namn och åtkomstnyckel.
 
-    ![Visar tillägg av autentiseringsuppgifter i CommVault Command Center.](../media/commvault-credential.png)
+    ![Visar tillägg av autentiseringsuppgifter i Commvault Command Center.](../media/commvault-credential.png)
 
-9. Gå sedan till **lagrings**  ->  **moln** i CommVault Command Center. Välj att **lägga till**. Ange ett eget namn på lagrings kontot och välj sedan **Microsoft Azure Storage** i listan **typ** . Välj en medie agent server som ska användas för att överföra säkerhets kopior till Azure Storage. Lägg till den behållare som du skapade, Välj den lagrings nivå som ska användas i Azure Storage-kontot och välj de autentiseringsuppgifter som skapades i steg #8. Slutligen väljer du om du vill överföra deduplicerade säkerhets kopior eller inte och en plats för Deduplicerings databasen.
+9. Gå sedan till **Lagringsmoln**  ->   i Commvault Command Center. Välj lägg **till**. Ange ett eget namn för lagringskontot och välj **Microsoft Azure Storage** i **listan** Typ. Välj en Media Agent-server som ska användas för att överföra säkerhetskopior till Azure Storage. Lägg till containern som du skapade, välj den lagringsnivå som ska användas i Azure Storage-kontot och välj de autentiseringsuppgifter som skapades i steg #8. Välj slutligen om du vill överföra deduplicerade säkerhetskopior eller inte och en plats för dedupliceringsdatabasen.
 
-     ![Skärm bild av CommVaults Lägg till moln användar gränssnitt. I den nedrullningsbara menyn Arkiv är * * Arkiv * * markerat.](../media/commvault-add-storage.png)
+     ![Skärmbild av Commvaults Add cloud user interface (Lägg till molngränssnitt). I den nedrullningsna menyn Arkiv har **Arkiv** valts.](../media/commvault-add-storage.png)
 
-10. Lägg slutligen till din nya Azure Storage-resurs till en befintlig eller ny plan i CommVault Command Center via **Hantera**  ->  **planer** som ett säkerhets kopierings mål.
+10. Slutligen lägger du till din Azure Storage resurs i en befintlig eller ny plan i Commvault Command Center via **Hantera**  ->  **planer** som ett mål för säkerhetskopiering.
 
-    ![Skärm bild av användar gränssnittet för CommVault Command Center. I det vänstra navigerings fältet under * * Manage * *, * * Plans * * är markerat.](../media/commvault-plan.png)
+    ![Skärmbild av användargränssnittet för Commvault Command Center. Under **Hantera** i det vänstra navigeringsfönstret är **Planer** markerat.](../media/commvault-plan.png)
 
-11. *(Valfritt)* Om du planerar att använda Azure som en återställnings plats eller CommVault för att migrera servrar och program till Azure, är det en bra idé att distribuera en VSA-proxy i Azure. Du hittar detaljerade instruktioner [här](https://documentation.commvault.com/commvault/v11/article?p=106208.htm).
+11. *(Valfritt)* Om du planerar att använda Azure som en återställningsplats eller Commvault för att migrera servrar och program till Azure är det bästa praxis att distribuera en VSA-proxy i Azure. Du hittar detaljerade anvisningar [här.](https://documentation.commvault.com/commvault/v11/article?p=106208.htm)
 
-## <a name="operational-guidance"></a>Operationell vägledning
+## <a name="operational-guidance"></a>Verksamhetsvägledning
 
-### <a name="azure-alerts-and-performance-monitoring"></a>Azure-aviseringar och prestanda övervakning
+### <a name="azure-alerts-and-performance-monitoring"></a>Azure-aviseringar och prestandaövervakning
 
-Vi rekommenderar att du övervakar både dina Azure-resurser och CommVaults möjlighet att utnyttja dem på samma sätt som med lagrings mål som du förlitar dig på för att lagra dina säkerhets kopior. En kombination av Azure Monitor och CommVault Command Center Monitoring hjälper dig att hålla din miljö felfri.
+Det är lämpligt att övervaka både dina Azure-resurser och Commvaults möjlighet att utnyttja dem på samma sätt som med alla lagringsmål som du förlitar dig på för att lagra dina säkerhetskopior. En kombination av Azure Monitor och Commvault Command Center-övervakning hjälper dig att hålla din miljö felfri.
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Azure tillhandahåller en robust övervaknings lösning i form av [Azure Monitor](../../../../../azure-monitor/essentials/monitor-azure-resource.md). Du kan [konfigurera Azure Monitor](../../../../blobs/monitor-blob-storage.md) att spåra Azure Storage kapacitet, transaktioner, tillgänglighet, autentisering med mera. Du kan hitta en fullständig referens till mått som samlas in [här](../../../../blobs/monitor-blob-storage-reference.md). Några användbara mått för att spåra är BlobCapacity – för att se till att du är kvar under den maximala [kapacitets gränsen för lagrings kontot](../../../../common/scalability-targets-standard-account.md), ingress och utgångs läge, för att spåra mängden data som skrivs till och läses från ditt Azure Storage-konto och SuccessE2ELatency – för att spåra tur och retur-tiden för förfrågningar till och från Azure Storage och din MediaAgent.
+Azure tillhandahåller en robust övervakningslösning i form av [Azure Monitor](../../../../../azure-monitor/essentials/monitor-azure-resource.md). Du kan [konfigurera Azure Monitor](../../../../blobs/monitor-blob-storage.md) att spåra Azure Storage kapacitet, transaktioner, tillgänglighet, autentisering med mera. Du hittar den fullständiga referensen till mått som samlas in [här.](../../../../blobs/monitor-blob-storage-reference.md) Några användbara mått att spåra är BlobCapacity – för att se till att du håller dig under den högsta gränsen för lagringskontots [kapacitet,](../../../../common/scalability-targets-standard-account.md)Ingress och Egress – för att spåra mängden data som skrivs till och läses från ditt Azure Storage-konto och SuccessE2ELatency – för att spåra tur och retur-tiden för begäranden till och från Azure Storage och din MediaAgent.
 
-Du kan också [Skapa logg aviseringar](../../../../../service-health/alerts-activity-log-service-notifications-portal.md) för att spåra Azure Storage tjänstens hälsa och se [Azures status instrument panel](https://status.azure.com/status) när som helst.
+Du kan också [skapa logga aviseringar för](../../../../../service-health/alerts-activity-log-service-notifications-portal.md) att spåra Azure Storage tjänstens hälsa och visa [Azure-statusinstrumentpanelen](https://status.azure.com/status) när som helst.
 
-#### <a name="commvault-command-center"></a>CommVault Command Center
+#### <a name="commvault-command-center"></a>Commvault Command Center
 
-- [Skapa en avisering för moln lagrings pooler](https://documentation.commvault.com/commvault/v11/article?p=100514_3.htm)
-- Information om var du kan visa prestanda rapporter, slut för ande av jobb och påbörja grundläggande fel sökning finns i [instrument paneler](https://documentation.commvault.com/commvault/v11/article?p=95306_1.htm).
+- [Skapa en avisering för molnlagringspooler](https://documentation.commvault.com/commvault/v11/article?p=100514_3.htm)
+- Information om var du kan visa prestandarapporter, slutföra jobb och påbörja grundläggande felsökning finns i [Instrumentpaneler.](https://documentation.commvault.com/commvault/v11/article?p=95306_1.htm)
 
-### <a name="how-to-open-support-cases"></a>Så här öppnar du support ärenden
+### <a name="how-to-open-support-cases"></a>Så här öppnar du supportärenden
 
-När du behöver hjälp med din säkerhets kopiering till Azure-lösning bör du öppna ett ärende med både CommVault och Azure. Detta hjälper våra support organisationer att samar beta, om det behövs.
+När du behöver hjälp med säkerhetskopieringen till Azure-lösningen bör du öppna ett ärende med både Commvault och Azure. Detta hjälper våra supportorganisationer att samarbeta om det behövs.
 
-#### <a name="to-open-a-case-with-commvault"></a>Öppna ett ärende med CommVault
+#### <a name="to-open-a-case-with-commvault"></a>Öppna ett ärende med Commvault
 
-På [webbplatsen för CommVault-support](https://www.commvault.com/support)loggar du in och öppnar ett ärende.
+Logga in [på Commvault-supportwebbplatsen](https://www.commvault.com/support)och öppna ett ärende.
 
-Information om de support kontrakts alternativ som är tillgängliga finns i [alternativ för CommVault-support](https://ma.commvault.com/support)
+Information om vilka supportavtalsalternativ som är tillgängliga finns i [Commvault-supportalternativ](https://ma.commvault.com/support)
 
-Du kan också anropa i för att öppna ett ärende eller få åtkomst till CommVault-support via e-post:
+Du kan också ringa in för att öppna ett ärende eller kontakta Commvault-supporten via e-post:
 
-- Avgiftsfritt: + 1 877-780-3077
-- [Worldwide support-nummer](https://ma.commvault.com/Support/TelephoneSupport)
-- [Support för e-post för CommVault](mailto:support@commvault.com)
+- Kostnadsfritt: +1 877-780-3077
+- [Supportnummer över hela världen](https://ma.commvault.com/Support/TelephoneSupport)
+- [Skicka e-post till Commvault-supporten](mailto:support@commvault.com)
 
 #### <a name="to-open-a-case-with-azure"></a>Öppna ett ärende med Azure
 
-I [Azure Portal](https://portal.azure.com) Sök efter **support** i Sök fältet längst upp. Välj **Hjälp + Support**  ->  **ny supportbegäran**.
+I [Azure Portal](https://portal.azure.com) du **efter support** i sökfältet högst upp. Välj **Hjälp + support** Ny  ->  **supportbegäran.**
 
 > [!NOTE]
-> När du öppnar ett ärende är det viktigt att du behöver hjälp med Azure Storage eller Azure-nätverk. Ange inte Azure Backup. Azure Backup är namnet på en Azure-tjänst och ditt ärende kommer att dirigeras felaktigt.
+> När du öppnar ett ärende måste du vara specifik för att du behöver hjälp Azure Storage eller Azure-nätverkstjänster. Ange inte Azure Backup. Azure Backup är namnet på en Azure-tjänst och ditt ärende dirigeras felaktigt.
 
-### <a name="links-to-relevant-commvault-documentation"></a>Länkar till relevant CommVault-dokumentation
+### <a name="links-to-relevant-commvault-documentation"></a>Länkar till relevant Commvault-dokumentation
 
-Mer information finns i följande CommVault-dokumentation:
+Mer information finns i följande Commvault-dokumentation:
 
-- [Användar handbok för CommVault](https://documentation.commvault.com/commvault/v11/article?p=37684_1.htm)
-- [Arkitektur guide för CommVault Azure](https://www.commvault.com/resources/public-cloud-architecture-guide-for-microsoft-azure-v11-sp16)
+- [Användarhandbok för Commvault](https://documentation.commvault.com/commvault/v11/article?p=37684_1.htm)
+- [Guide för Commvault Azure-arkitektur](https://documentation.commvault.com/commvault/v11/others/pdf/public-cloud-architecture-guide-for-microsoft-azure11-19.pdf)
 
 ### <a name="marketplace-offerings"></a>Marketplace-erbjudanden
 
-CommVault har gjort det enkelt att distribuera sin lösning i Azure för att skydda Azure Virtual Machines och många andra Azure-tjänster. Läs mer i följande referenser:
+Commvault har gjort det enkelt att distribuera sin lösning i Azure för att skydda Azure Virtual Machines och många andra Azure-tjänster. Läs mer i följande referenser:
 
-- [Distribuera CommVault via Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/commvault.commvault?tab=Overview)
-- [CommVault för Azure-datablad](https://www.commvault.com/resources/microsoft-azure-cloud-platform-datasheet)
-- [CommVaults lista över Azure-funktioner och Azure-tjänster som stöds](https://documentation.commvault.com/commvault/v11/article?p=109795_1.htm)
-- [Använda CommVault för att skydda SAP HANA i Azure](https://azure.microsoft.com/resources/protecting-sap-hana-in-azure/)
+- [Distribuera Commvault via Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/commvault.commvault?tab=Overview)
+- [Commvault för Azure-datablad](https://www.commvault.com/resources/microsoft-azure-cloud-platform-datasheet)
+- [Commvaults lista över Azure-funktioner och -tjänster som stöds](https://documentation.commvault.com/commvault/v11/article?p=109795_1.htm)
+- [Använda Commvault för att skydda SAP HANA i Azure](https://azure.microsoft.com/resources/protecting-sap-hana-in-azure/)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Se dessa ytterligare CommVault-resurser för information om specialiserade användnings scenarier.
+Se dessa ytterligare Commvault-resurser för information om specialiserade användningsscenarier.
 
-- [Använd CommVault för att migrera dina servrar och program till Azure](https://www.commvault.com/resources/demonstration-vmware-to-azure-migrations-with-commvault)
-- [Skydda SAP i Azure med CommVault](https://www.youtube.com/watch?v=4ZGGE53mGVI)
-- [Skydda Office365 med CommVault](https://www.youtube.com/watch?v=dl3nvAacxZU)
+- [Använda Commvault för att migrera dina servrar och program till Azure](https://www.commvault.com/resources/demonstration-vmware-to-azure-migrations-with-commvault)
+- [Skydda SAP i Azure med Commvault](https://www.youtube.com/watch?v=4ZGGE53mGVI)
+- [Skydda Office365 med Commvault](https://www.youtube.com/watch?v=dl3nvAacxZU)

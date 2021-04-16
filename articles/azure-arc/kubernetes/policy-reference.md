@@ -1,24 +1,24 @@
 ---
-title: Inbyggda princip definitioner för Azure Arc-aktiverade Kubernetes
-description: Visar Azure Policy inbyggda princip definitioner för Azure Arc-aktiverade Kubernetes. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 03/31/2021
+title: Inbyggda principdefinitioner för Azure Arc aktiverat Kubernetes
+description: Visar Azure Policy inbyggda principdefinitioner för Azure Arc aktiverat Kubernetes. Dessa inbyggda principdefinitioner ger vanliga metoder för att hantera dina Azure-resurser.
+ms.date: 04/14/2021
 ms.service: azure-arc
 author: mlearned
 ms.author: mlearned
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 9adcb15362a048c43c1bd5c3f1b4327b23416574
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: cfcb9d7de1a0a114d876bceb3ca11e6fb8ae8fda
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106092914"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499737"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-kubernetes"></a>Azure Policy inbyggda definitioner för Azure Arc-aktiverade Kubernetes
+# <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-kubernetes"></a>Azure Policy inbyggda definitioner för Azure Arc Kubernetes
 
-Den här sidan är ett index över [Azure policy](../../governance/policy/overview.md) inbyggda princip definitioner för Azure Arc-aktiverade Kubernetes. Ytterligare Azure Policy inbyggda program för andra tjänster finns i [Azure policy inbyggda definitioner](../../governance/policy/samples/built-in-policies.md).
+Den här sidan är ett index [Azure Policy](../../governance/policy/overview.md) inbyggda principdefinitioner för Azure Arc aktiverat Kubernetes. Ytterligare Azure Policy inbyggda funktioner för andra tjänster finns i [Azure Policy inbyggda definitionerna](../../governance/policy/samples/built-in-policies.md).
 
-Namnet på varje inbyggd princip definition länkar till princip definitionen i Azure Portal. Använd länken i kolumnen **version** om du vill visa källan på [Azure policy GitHub-lagrings platsen](https://github.com/Azure/azure-policy).
+Namnet på varje inbyggd principdefinition länkar till principdefinitionen i Azure Portal. Använd länken i kolumnen **Version för** att visa källan på Azure Policy [GitHub-lagringsplatsen](https://github.com/Azure/azure-policy).
 
 ## <a name="arc-enabled-kubernetes"></a>Arc-aktiverat Kubernetes
 

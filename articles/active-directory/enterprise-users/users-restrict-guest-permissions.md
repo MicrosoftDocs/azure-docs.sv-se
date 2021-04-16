@@ -1,6 +1,6 @@
 ---
-title: Begränsa åtkomst behörighet till gäst användare – Azure Active Directory | Microsoft Docs
-description: Begränsa åtkomst behörigheter för gäst användare med hjälp av Azure Portal, PowerShell eller Microsoft Graph i Azure Active Directory
+title: Begränsa åtkomstbehörigheter för gästanvändare – Azure Active Directory | Microsoft Docs
+description: Begränsa åtkomstbehörigheter för gästanvändare med Azure Portal, PowerShell eller Microsoft Graph i Azure Active Directory
 services: active-directory
 author: curtand
 ms.author: curtand
@@ -13,47 +13,47 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf2d0d3335468147575eb53a99940866baa18375
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df4cb32720d80dd23289be7e760c9934e9a8db8a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98222529"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501509"
 ---
-# <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Begränsa åtkomst behörigheter för gäst (för hands version) i Azure Active Directory
+# <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Begränsa behörigheter för gäståtkomst (förhandsversion) i Azure Active Directory
 
-Med Azure Active Directory (Azure AD) kan du begränsa vad externa gäst användare kan se i sin organisation i Azure AD. Gäst användare ställs in på en begränsad behörighets nivå som standard i Azure AD, medan standardvärdet för medlems användare är en fullständig uppsättning standard användar behörigheter. Det här är en förhands granskning av en ny behörighets nivå för gäst användare i Azure AD-organisationens externa samarbets inställningar för ännu mer begränsad åtkomst, så dina gäst åtkomst alternativ är nu:
+Azure Active Directory (Azure AD) kan du begränsa vad externa gästanvändare kan se i organisationen i Azure AD. Gästanvändare anges till en begränsad behörighetsnivå som standard i Azure AD, medan standardvärdet för medlemsanvändare är den fullständiga uppsättningen standardanvändarbehörigheter. Det här är en förhandsversion av en ny behörighetsnivå för gästanvändare i Azure AD-organisationens inställningar för externt samarbete för ännu mer begränsad åtkomst, så dina gäståtkomstalternativ är nu:
 
-Behörighetsnivå         | Åtkomstnivå
-----------------         | ------------
-Samma som medlems användare     | Gäster har samma åtkomst till Azure AD-resurser som medlems användare
-Begränsad åtkomst (standard) | Gäster kan se medlemskap i alla icke-dolda grupper
-**Begränsad åtkomst (ny)**  | **Gäster kan inte se medlemskap i några grupper**
+Behörighetsnivå         | Åtkomstnivå | Värde
+----------------         | ------------ | -----
+Samma som medlemsanvändare     | Gäster har samma åtkomst till Azure AD-resurser som medlemsanvändare | a0b1b346-4d3e-4e8b-98f8-753987be4970
+Begränsad åtkomst (standard) | Gäster kan se medlemskap i alla icke-dolda grupper | 10dae51f-b6af-4016-8d66-8c2a99b929b3
+**Begränsad åtkomst (ny)**  | **Gäster kan inte se medlemskap i några grupper** | **2af84b1e-32c8-42b7-82bc-daa82404023b**
 
-När gäst åtkomst är begränsad kan gästerna bara se sin egen användar profil. Behörighet att visa andra användare tillåts inte även om gästen söker efter användarens huvud namn eller objectId. Begränsad åtkomst begränsar även gäst användare från att se medlemskapet i de grupper de befinner sig i. Mer information om de övergripande standard användar behörigheterna, inklusive gäst användar behörigheter, finns i [Vad är standard användar behörigheter i Azure Active Directory?](../fundamentals/users-default-permissions.md).
+När gäståtkomsten är begränsad kan gäster endast visa sin egen användarprofil. Behörighet att visa andra användare tillåts inte även om gästen söker efter användarens huvudnamn eller objectId. Begränsad åtkomst begränsar också gästanvändare från att se medlemskap i grupper som de finns i. Mer information om de övergripande standardanvändarbehörigheterna, inklusive gästanvändarbehörigheter, finns i Vilka är [standardanvändarbehörigheterna i Azure Active Directory?](../fundamentals/users-default-permissions.md).
 
 ## <a name="permissions-and-licenses"></a>Behörigheter och licenser
 
-Du måste vara i rollen global administratör för att konfigurera de externa samarbets inställningarna. Det finns inga ytterligare licensierings krav för att begränsa gäst åtkomsten.
+Du måste ha rollen Global administratör för att konfigurera inställningarna för externt samarbete. Det finns inga ytterligare licensieringskrav för att begränsa gäståtkomsten.
 
 ## <a name="update-in-the-azure-portal"></a>Uppdatera i Azure Portal
 
-Vi har gjort ändringar i befintliga Azure Portal-kontroller för gäst användar behörigheter.
+Vi har gjort ändringar i de befintliga Azure Portal för gästanvändarbehörigheter.
 
-1. Logga in på [administrations Center för Azure AD](https://aad.portal.azure.com) med globala administratörs behörigheter.
-1. På sidan **Azure Active Directory** översikt för din organisation väljer du **användar inställningar**.
-1. Under **externa användare** väljer du **Hantera inställningar för externt samarbete**.
-1. På sidan **Inställningar för externt samarbete** väljer du **åtkomst till gäst användare är begränsad till egenskaper och medlemskap för de egna katalog objekt** alternativen.
+1. Logga in på [Azure AD-administrationscentret med](https://aad.portal.azure.com) Global administratör behörigheter.
+1. På **Azure Active Directory** översiktssidan för din organisation väljer du **Användarinställningar.**
+1. Under **Externa användare** väljer du Hantera inställningar för externt **samarbete.**
+1. På sidan **Inställningar för externt** samarbete väljer du **Gästanvändaråtkomst är begränsad till egenskaper och medlemskap i deras egna katalogobjekt.**
 
-    ![Sidan för externa samarbets inställningar i Azure AD](./media/users-restrict-guest-permissions/external-collaboration-settings.png)
+    ![Inställningssida för externt samarbete i Azure AD](./media/users-restrict-guest-permissions/external-collaboration-settings.png)
 
-1. Välj **Spara**. Det kan ta upp till 15 minuter innan ändringarna börjar gälla för gäst användare.
+1. Välj **Spara**. Det kan ta upp till 15 minuter innan ändringarna verkställs för gästanvändare.
 
-## <a name="update-with-the-microsoft-graph-api"></a>Uppdatera med Microsoft Graph API
+## <a name="update-with-the-microsoft-graph-api"></a>Uppdatera med MICROSOFT GRAPH-API:et
 
-Vi har lagt till ett nytt Microsoft Graph-API för att konfigurera gäst behörigheter i din Azure AD-organisation. Följande API-anrop kan göras för att tilldela alla behörighets nivåer. Värdet för guestUserRoleId som används här är för att illustrera den mest begränsade gäst användar inställningen. Mer information om hur du använder Microsoft Graph för att ange gäst behörigheter finns i [resurs typen authorizationPolicy](/graph/api/resources/authorizationpolicy).
+Vi har lagt till ett nytt Microsoft Graph API för att konfigurera gästbehörigheter i Azure AD-organisationen. Följande API-anrop kan göras för att tilldela valfri behörighetsnivå. Värdet för guestUserRoleId som används här är för att illustrera den mest begränsade gästanvändarinställningen. Mer information om hur du använder Microsoft Graph för att ange gästbehörigheter finns i [authorizationPolicy resource type](/graph/api/resources/authorizationpolicy).
 
-### <a name="configuring-for-the-first-time"></a>Konfigurerar för första gången
+### <a name="configuring-for-the-first-time"></a>Konfigurera för första gången
 
 ````PowerShell
 POST https://graph.microsoft.com/beta/policies/authorizationPolicy/authorizationPolicy
@@ -63,9 +63,9 @@ POST https://graph.microsoft.com/beta/policies/authorizationPolicy/authorization
 }
 ````
 
-Svaret ska vara framgångs rik 204.
+Svaret bör vara Lyckades 204.
 
-### <a name="updating-the-existing-value"></a>Uppdaterar det befintliga värdet
+### <a name="updating-the-existing-value"></a>Uppdatera det befintliga värdet
 
 ````PowerShell
 PATCH https://graph.microsoft.com/beta/policies/authorizationPolicy/authorizationPolicy
@@ -75,7 +75,7 @@ PATCH https://graph.microsoft.com/beta/policies/authorizationPolicy/authorizatio
 }
 ````
 
-Svaret ska vara framgångs rik 204.
+Svaret bör vara Lyckades 204.
 
 ### <a name="view-the-current-value"></a>Visa det aktuella värdet
 
@@ -99,9 +99,9 @@ Exempelsvar:
 }
 ````
 
-## <a name="update-with-powershell-cmdlets"></a>Uppdatera med PowerShell-cmdletar
+## <a name="update-with-powershell-cmdlets"></a>Uppdatera med PowerShell-cmdlets
 
-Med den här funktionen har vi lagt till möjligheten att konfigurera begränsade behörigheter via PowerShell V2-cmdletar. Hämta och ange PowerShell-cmdletar har publicerats i version 2.0.2.85.
+Med den här funktionen har vi lagt till möjligheten att konfigurera begränsade behörigheter via PowerShell v2-cmdlets. Hämta och ange PowerShell-cmdlets har publicerats i version 2.0.2.85.
 
 ### <a name="get-command-get-azureadmsauthorizationpolicy"></a>Hämta kommando: Get-AzureADMSAuthorizationPolicy
 
@@ -119,7 +119,7 @@ GuestUserRoleId                                   : 10dae51f-b6af-4016-8d66-8c2a
 PermissionGrantPolicyIdsAssignedToDefaultUserRole : {user-default-legacy}
 ````
 
-### <a name="set-command-set-azureadmsauthorizationpolicy"></a>Set-kommando: Set-AzureADMSAuthorizationPolicy
+### <a name="set-command-set-azureadmsauthorizationpolicy"></a>Ange kommando: Set-AzureADMSAuthorizationPolicy
 
 Exempel:
 
@@ -128,23 +128,23 @@ PS C:\WINDOWS\system32> Set-AzureADMSAuthorizationPolicy -GuestUserRoleId '2af84
 ````
 
 > [!NOTE]
-> Du måste ange authorizationPolicy som-ID när du begär det.
+> Du måste ange authorizationPolicy som ID på begäran.
 
-## <a name="supported-microsoft-365-services"></a>Microsoft 365 tjänster som stöds
+## <a name="supported-microsoft-365-services"></a>Stöd Microsoft 365 tjänster
 
 ### <a name="supported-services"></a>Tjänster som stöds
 
-Med stöd för vi betyder det att upplevelsen är som förväntat. Mer specifikt är det samma som den aktuella gäst upplevelsen.
+Med stöd menar vi att upplevelsen är som förväntat. mer specifikt att det är samma som den aktuella gästupplevelsen.
 
 - Teams
 - Outlook (OWA)
 - SharePoint
 - Planner i Teams
-- Webb program för Planner
+- Planner-webbapp
 
-### <a name="services-currently-not-supported"></a>Tjänster stöds inte för närvarande
+### <a name="services-currently-not-supported"></a>Tjänster som för närvarande inte stöds
 
-Tjänsten utan aktuellt stöd kan ha kompatibilitetsproblem med den nya inställningen för gäst begränsning.
+Tjänsten utan aktuellt stöd kan ha kompatibilitetsproblem med den nya gästbegränsningsinställningen.
 
 - Formulär
 - Planner-mobilapp
@@ -155,17 +155,17 @@ Tjänsten utan aktuellt stöd kan ha kompatibilitetsproblem med den nya inställ
 
 Fråga | Svar
 -------- | ------
-Var gäller dessa behörigheter? | Dessa behörigheter för katalog nivå tillämpas i Azure AD-tjänster och portaler, inklusive Microsoft Graph, PowerShell V2, Azure Portal och mina apps-portalen. Microsoft 365 tjänster som utnyttjar Microsoft 365 grupper för samarbets scenarier påverkas också, särskilt Outlook, Microsoft Teams och SharePoint.
-Hur påverkar begränsade behörigheter vilka grupper gäster kan se? | Gäster kan inte räkna upp listan över grupper eller användare oavsett standard behörighet eller begränsad gäst behörighet. Gäster kan se grupper som de är medlemmar i i både Azure Portal och mina apps-portalen beroende på behörigheter:<li>**Standard behörigheter**: för att hitta de grupper som de är medlemmar av i Azure Portal måste gästen söka efter sitt objekt-ID i listan **alla användare** och sedan välja **grupper**. Här kan de se en lista över grupper som de är medlemmar i, inklusive alla grupp uppgifter, inklusive namn, e-post och så vidare. I portalen Mina appar kan de se en lista över grupper som de äger och grupper som de är medlemmar i.</li><li>**Begränsade gäst behörigheter**: i Azure Portal kan de fortfarande hitta listan över grupper som de är medlemmar i genom att söka efter deras objekt-ID i listan alla användare och sedan välja grupper. De kan bara se mycket begränsad information om gruppen, särskilt objekt-ID. I design är kolumnerna namn och e-post tomma och grupp typen känns inte igen. I portalen Mina appar kan de inte komma åt listan över grupper som de äger eller grupper som de är medlemmar i.</li><br>Mer detaljerad information om de katalog behörigheter som kommer från Graph API finns i [standard användar behörigheter](../fundamentals/users-default-permissions.md#member-and-guest-users).
-Vilka delar av portalen för Mina appar påverkar den här funktionen? | Grupp funktionen i portalen Mina appar kommer att respektera dessa nya behörigheter. Detta omfattar alla sökvägar för att Visa grupp listan och grupp medlemskap i Mina appar. Inga ändringar har gjorts i grupp panelens tillgänglighet. Grupp panelens tillgänglighet styrs fortfarande av den befintliga grupp inställningen i Azure Portal.
-Åsidosätter dessa behörigheter SharePoint-eller Microsoft Teams gäst inställningar? | Nej. De befintliga inställningarna styr fortfarande upplevelsen och åtkomsten i dessa program. Om du till exempel ser problem i SharePoint, dubbelklickar du på inställningarna för extern delning.
-Vilka är kända kompatibilitetsproblem i Planner och Yammer? | <li>Om behörigheterna har angetts till "begränsad" kommer gäster som är inloggade i Planner-mobilappen inte att kunna komma åt sina planer eller aktiviteter.<li>Om behörigheterna har angetts till "begränsad" kan inte gäster som är inloggade i Yammer lämna gruppen.
-Kommer mina befintliga gäst behörigheter att ändras i min klient? | Inga ändringar har gjorts i de aktuella inställningarna. Vi bibehåller bakåtkompatibilitet med dina befintliga inställningar. Du bestämmer när du vill göra ändringar.
-Kommer de här behörigheterna att anges som standard? | Nej. De befintliga standard behörigheterna förblir oförändrade. Du kan också ange att behörigheterna ska vara mer restriktiva.
-Finns det några licens krav för den här funktionen? | Nej, det finns inga nya licensierings krav för den här funktionen.
+Var gäller dessa behörigheter? | Dessa behörigheter på katalognivå tillämpas i azure AD-tjänster och -portaler, inklusive Microsoft Graph, PowerShell v2, Azure Portal och Mina appar portalen. Microsoft 365 tjänster som utnyttjar Microsoft 365 för samarbetsscenarier påverkas också, särskilt Outlook, Microsoft Teams och SharePoint.
+Hur påverkar begränsade behörigheter vilka grupper som gäster kan se? | Oavsett standard- eller begränsad gästbehörighet kan gäster inte räkna upp listan över grupper eller användare. Gäster kan se grupper som de är medlemmar i i både Azure Portal och Mina appar-portalen beroende på behörigheter:<li>**Standardbehörigheter:** För att hitta de grupper som de är medlemmar i i Azure Portal  måste gästen söka efter sitt objekt-ID i listan Alla användare och sedan **välja Grupper.** Här kan de se en lista över grupper som de är medlemmar i, inklusive all gruppinformation, inklusive namn, e-post och så vidare. I Mina appar portal kan de se en lista över grupper som de äger och grupper som de är medlemmar i.</li><li>**Begränsade gästbehörigheter:** I Azure Portal kan de fortfarande hitta listan över grupper som de är medlemmar i genom att söka efter objekt-ID:t i listan Alla användare och sedan välja Grupper. De kan bara se mycket begränsad information om gruppen, särskilt objekt-ID:t. Kolumnerna Namn och E-post är tomma och Grupptyp är okända. I Mina appar-portalen kan de inte komma åt listan över grupper som de äger eller grupper som de är medlemmar i.</li><br>Mer detaljerad jämförelse av de katalogbehörigheter som kommer från Graph API finns i [Standardanvändarbehörigheter.](../fundamentals/users-default-permissions.md#member-and-guest-users)
+Vilka delar av Mina appar kommer den här funktionen att påverka? | Gruppfunktionerna i Mina appar portalen respekterar dessa nya behörigheter. Detta inkluderar alla sökvägar för att visa grupplistan och gruppmedlemskap i Mina appar. Inga ändringar har gjorts i grupppanelens tillgänglighet. Tillgängligheten för grupppanelen styrs fortfarande av den befintliga gruppinställningen i Azure Portal.
+Åsidosätter dessa behörigheter SharePoint- eller Microsoft Teams-gästinställningar? | Nej. De befintliga inställningarna styr fortfarande upplevelsen och åtkomsten i dessa program. Om du till exempel ser problem i SharePoint kontrollerar du inställningarna för extern delning.
+Vilka kända kompatibilitetsproblem finns i Planner och Yammer? | <li>Med behörigheten "begränsad" kan gäster som är inloggade i Planner-mobilappen inte komma åt sina planer eller uppgifter.<li>När behörigheterna är begränsade kan gäster som är inloggade på Yammer inte lämna gruppen.
+Kommer mina befintliga gästbehörigheter att ändras i min klient? | Inga ändringar har gjorts i dina aktuella inställningar. Vi bibehåller bakåtkompatibilitet med dina befintliga inställningar. Du bestämmer när du vill göra ändringar.
+Kommer dessa behörigheter att anges som standard? | Nej. De befintliga standardbehörigheterna förblir oförändrade. Du kan också ange att behörigheterna ska vara mer restriktiva.
+Finns det några licenskrav för den här funktionen? | Nej, det finns inga nya licensieringskrav för den här funktionen.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Mer information om befintliga gäst behörigheter i Azure AD finns i [Vad är standard användar behörigheter i Azure Active Directory?](../fundamentals/users-default-permissions.md)
-- Om du vill se Microsoft Graph API-metoder för att begränsa gäst åtkomst, se [resurs typen authorizationPolicy](/graph/api/resources/authorizationpolicy)
-- Om du vill återkalla all åtkomst till en användare läser du [återkalla användar åtkomst i Azure AD](users-revoke-access.md)
+- Mer information om befintliga gästbehörigheter i Azure AD finns i [Vilka är standardanvändarbehörigheterna i Azure Active Directory?](../fundamentals/users-default-permissions.md)
+- Information om hur du Microsoft Graph API-metoder för att begränsa gäståtkomst finns i [authorizationPolicy resource type (auktoriseringPolicy-resurstyp)](/graph/api/resources/authorizationpolicy)
+- Information om hur du återkallar all åtkomst för en användare finns [i Återkalla användaråtkomst i Azure AD](users-revoke-access.md)

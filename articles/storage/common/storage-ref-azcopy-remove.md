@@ -1,6 +1,6 @@
 ---
-title: AzCopy ta bort | Microsoft Docs
-description: Den här artikeln innehåller referensinformation för kommandot AzCopy Remove.
+title: azcopy remove | Microsoft Docs
+description: Den här artikeln innehåller referensinformation för kommandot azcopy remove.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -8,18 +8,18 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d28a20a6afc78939491e56f46a32782b4c0844cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd221215d6be3c14ce1200e8bd374a97cb7608a0
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879011"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503022"
 ---
 # <a name="azcopy-remove"></a>azcopy ta bort
 
-Ta bort blobbar eller filer från ett Azure Storage-konto.
+Ta bort blobar eller filer från ett Azure Storage-konto.
 
-## <a name="synopsis"></a>Sammanfattning
+## <a name="synopsis"></a>Synopsis
 
 ```azcopy
 azcopy remove [resourceURL] [flags]
@@ -30,11 +30,10 @@ azcopy remove [resourceURL] [flags]
 - [Kom igång med AzCopy](storage-use-azcopy-v10.md)
 - [Överföra data med AzCopy och Blob Storage](./storage-use-azcopy-v10.md#transfer-data)
 - [Överföra data med AzCopy och fillagring](storage-use-azcopy-files.md)
-- [Konfigurera, optimera och felsöka AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Exempel
 
-Ta bort en enskild BLOB med hjälp av en SAS-token:
+Ta bort en enskild blob med hjälp av en SAS-token:
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
@@ -46,25 +45,25 @@ Ta bort en hel virtuell katalog med hjälp av en SAS-token:
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
 ```
 
-Ta bara bort blobarna i en virtuell katalog, men ta inte bort några under kataloger eller blobbar i dessa under kataloger:
+Ta bara bort blobarna i en virtuell katalog, men ta inte bort underkataloger eller blobar i dessa underkataloger:
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=false
 ```
 
-Ta bort en delmängd av blobbar i en virtuell katalog (till exempel: ta endast bort jpg-och PDF-filer, eller om BLOB-namnet är `exactName` ):
+Ta bort en delmängd av blobar i en virtuell katalog (till exempel ta bort endast jpg- och pdf-filer, eller om blobnamnet är `exactName` ):
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --include-pattern="*.jpg;*.pdf;exactName"
 ```
 
-Ta bort en hel virtuell katalog men undanta vissa blobbar från omfånget (till exempel: varje blob som börjar med foo eller slutar med bar):
+Ta bort en hel virtuell katalog men undanta vissa blobar från omfånget (till exempel varje blob som börjar med foo eller slutar med stapel):
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --exclude-pattern="foo*;*bar"
 ```
 
-Ta bort vissa blobbar och virtuella kataloger genom att placera deras relativa sökvägar (inte URL-kodade) i en fil:
+Ta bort specifika blobar och virtuella kataloger genom att placera deras relativa sökvägar (INTE URL-kodade) i en fil:
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/parent/dir]" --recursive=true --list-of-files=/usr/bar/list.txt
@@ -73,13 +72,13 @@ azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/parent/d
     blob1
     blob2
 ```
-Ta bort en enskild fil från ett Blob Storage konto som har ett hierarkiskt namn område (inkludera/exkludera stöds inte):
+Ta bort en enskild fil Blob Storage ett konto som har en hierarkisk namnrymd (inkludera/exkludera stöds inte):
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/file]?[SAS]"
 ```
 
-Ta bort en enskild katalog från ett Blob Storage-konto som har ett hierarkiskt namn område (inkludera/exkludera stöds inte):
+Ta bort en enskild katalog från Blob Storage-konto som har en hierarkisk namnrymd (inkludera/exkludera stöds inte):
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory]?[SAS]"
@@ -87,36 +86,36 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="options"></a>Alternativ
 
-**--ta bort-ögonblicks bilder** sträng som standard Miss lyckas borttagnings åtgärden om en BLOB har ögonblicks bilder. Ange `include` om du vill ta bort rot-bloben och alla dess ögonblicks bilder. Alternativt kan du ange `only` att endast ögonblicks bilderna ska tas bort men behåll rot-bloben.
+**--delete-snapshots-sträng** Som standard misslyckas borttagningsåtgärden om en blob har ögonblicksbilder. Ange för att ta bort rotbloben och alla dess ögonblicksbilder. Alternativt kan du ange att endast ögonblicksbilderna ska tas bort `include` `only` men behålla rotbloben.
 
-**--sträng för exkluderings Sök väg** utesluter dessa sökvägar när de tas bort. Det här alternativet stöder inte jokertecken (*). Kontrollerar prefix för relativ sökväg. Exempelvis: `myFolder;myFolder/subDirName/file.pdf`
+**--exclude-path string** Exkludera dessa sökvägar när du tar bort. Det här alternativet stöder inte jokertecken (*). Kontrollerar relativt sökvägsprefix. Exempelvis: `myFolder;myFolder/subDirName/file.pdf`
 
-**--exkludera-mönster** sträng exkludera filer där namnet matchar mönster listan. Exempel: `*.jpg` ; `*.pdf` ;`exactName`
+**--exclude-pattern** sträng Exkludera filer där namnet matchar mönsterlistan. Till exempel: `*.jpg` `*.pdf` ; ;`exactName`
 
-**--tvång-skrivskyddad**   När du tar bort en Azure Files-fil eller-mapp, tvinga borttagningen att fungera även om det befintliga objektet har en skrivskyddad attribut uppsättning.
+**--force-if-read-only**   När du tar Azure Files en fil eller mapp måste borttagningen fungera även om det befintliga objektet har sitt skrivskyddade attribut.
 
-**--Hjälp**   för att ta bort.
+**--help**   help for remove.
 
-**--include-Path-** sträng innehåller bara dessa sökvägar när de tas bort. Det här alternativet stöder inte jokertecken (*). Kontrollerar prefix för relativ sökväg. Exempelvis: `myFolder;myFolder/subDirName/file.pdf`
+**--include-path string** Inkludera endast dessa sökvägar när du tar bort. Det här alternativet stöder inte jokertecken (*). Kontrollerar relativt sökvägsprefix. Exempelvis: `myFolder;myFolder/subDirName/file.pdf`
 
-**--Inkludera-mönster** sträng inkludera bara filer där namnet matchar mönster listan. Exempel: *`.jpg` ;* `.pdf` ;`exactName`
+**--include-pattern** string Inkludera endast filer där namnet matchar mönsterlistan. Till exempel: *`.jpg` ;* `.pdf` ;`exactName`
 
-**--** en sträng som anger en fil som innehåller en lista över filer och kataloger som ska tas bort. De relativa Sök vägarna ska avgränsas med rad brytningar och Sök vägarna får inte vara URL-kodade. 
+**--list-of-files sträng** definierar platsen för en fil, som innehåller listan över filer och kataloger som ska tas bort. De relativa sökvägarna ska avgränsas med radbrytningar och sökvägarna ska INTE vara URL-kodade. 
 
-**--list-of-versions** -sträng anger en fil där varje versions-ID visas på en separat rad. Se till att källan måste peka på en enskild blob och att alla versions-ID: n som anges i filen med den här flaggan endast tillhör käll-bloben. Angivet versions-ID för den angivna blobben tas bort från Azure Storage. 
+**Strängen --list-of-versions** Anger en fil där varje versions-ID visas på en separat rad. Se till att källan måste peka på en enskild blob och att alla versions-ID:er som anges i filen med den här flaggan endast tillhör källbloben. Angivna versions-ID:er för den angivna bloben tas bort från Azure Storage. 
 
-**--sträng för logg nivå** definierar loggens utförlighet för logg filen. Tillgängliga nivåer är: `INFO` (alla begär Anden/svar), `WARNING` (långsamma svar), `ERROR` (endast misslyckade förfrågningar) och `NONE` (inga utgående loggar). (standard `INFO` ) (standard `INFO` )
+**--log-level** string (Sträng på loggnivå) Definiera loggens verbositet för loggfilen. Tillgängliga nivåer är: `INFO` (alla begäranden/svar), `WARNING` (långsamma svar), `ERROR` (endast misslyckade begäranden) och `NONE` (inga utdataloggar). (standard `INFO` ) (standard `INFO` )
 
-**--rekursivt**    Titta i under kataloger rekursivt vid synkronisering mellan kataloger.
+**--rekursiv**    Titta på underkataloger rekursivt när du synkroniserar mellan kataloger.
 
 ## <a name="options-inherited-from-parent-commands"></a>Alternativ som ärvts från överordnade kommandon
 
 |Alternativ|Beskrivning|
 |---|---|
-|--Cap-Mbit/s Float|CAPS överföringshastigheten i megabit per sekund. Indata genom strömning kan variera något från höljet. Om det här alternativet är inställt på noll, eller utelämnas, är data flödet inte något tak.|
-|--typ sträng för utdata|Formatet på kommandots utdata. Alternativen är: text, JSON. Standardvärdet är "text".|
-|--sträng för betrodd-Microsoft-suffix   |Anger ytterligare domänsuffix där Azure Active Directory inloggnings-token kan skickas.  Standardvärdet är '*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. De som anges här läggs till i standardvärdet. För säkerhet ska du bara placeras Microsoft Azure domäner här. Avgränsa flera poster med semikolon.|
+|--cap-mbps float|Kapslar överföringshastigheten i megabit per sekund. Dataflödet för ögonblick kan variera något från taket. Om det här alternativet är inställt på noll, eller om det utelämnas, är dataflödet inte begränsat.|
+|--output-type string|Format för kommandots utdata. Alternativen är: text, json. Standardvärdet är "text".|
+|--trusted-microsoft-suffixes string   |Anger ytterligare domänsuffix där Azure Active Directory inloggningstoken kan skickas.  Standardvärdet är *.core.windows.net;*. core.chinacloudapi.cn; *.core.cloudapi.de;*. core.usgovcloudapi.net". Alla som anges här läggs till i standardinställningarna. Av säkerhetsskäl bör du bara placera Microsoft Azure här. Avgränsa flera poster med semikolon.|
 
 ## <a name="see-also"></a>Se även
 
-- [AzCopy](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

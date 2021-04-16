@@ -3,17 +3,17 @@
 - name: Översikt
   expanded: true
   items:
-    - name: Vad är avvikelse detektor (multivarierad)?
+    - name: Vad är Avvikelseidentifiering (multivariate)?
       href: overview-multivariate.md
-    - name: Vad är avvikelse detektor (univariate)?
+    - name: Vad är Avvikelseidentifiering (univariate)?
       href: overview.md
-    - name: Priser och begränsningar
+    - name: Prissättning
       href: 'https://aka.ms/adpricing'
-- name: Snabb starter för avvikelse detektor
+- name: Snabbstarter
   items:
-    - name: Multivarierad-klient bibliotek
+    - name: Flervarierade klientbibliotek
       href: ./quickstarts/client-libraries-multivariate.md
-    - name: Univariate-klient bibliotek
+    - name: Univariate-klientbibliotek
       href: ./quickstarts/client-libraries.md
 - name: Exempel
   items:
@@ -27,7 +27,7 @@
   items:
     - name: Identifiera avvikelser i dina data
       href: how-to/identify-anomalies.md
-    - name: Distribuera avvikelse detektor
+    - name: Distribuera Avvikelseidentifiering
       items:
         - name: Distribuera till IoT Edge
           href: how-to/deploy-anomaly-detection-on-iot-edge.md
@@ -43,19 +43,25 @@
               displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
             - name: Använda containerinstanser
               href: how-to/deploy-anomaly-detection-on-container-instances.md
+    - name: Företagsberedskap
+      items:
+        - name: Konfigurera virtuella nätverk
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/anomaly-detector/context/context
+        - name: Använda Azure AD-autentisering
+          href: ../authentication.md?context=/azure/cognitive-services/anomaly-detector/context/context
 - name: Begrepp
   items:
-    - name: 'Metod tips för API: er med avvikelse detektor (multivarierad)'
+    - name: 'Avvikelseidentifiering metodtips för API :et (multivariat)'
       href: concepts/best-practices-multivariate.md
-    - name: 'Metod tips för API: er med avvikelse detektor (univariate)'
+    - name: Avvikelseidentifiering metodtips för API (univariate)
       href: concepts/anomaly-detection-best-practices.md
-    - name: Förutsägelse underhålls arkitektur (multivarierad)
+    - name: Arkitektur för förutsägande underhåll (multivariat)
       href: concepts/multivariate-architecture.md
-    - name: Felsöka multivarierad
+    - name: Felsöka multivariate
       href: concepts/troubleshoot.md
-    - name: Spectral rest (SR) och (convolutional neurala net (CNN) avvikelse identifiering
+    - name: Avvikelseidentifiering för specal residual (SR) och CNN (Convolutional Neural Net)
       href: 'https://arxiv.org/abs/1906.03821'
-    - name: Multivarierad Time-Series avvikelse identifiering via diagram Attention Network
+    - name: Avvikelseidentifiering i flera tidsserier via graph attention-nätverk
       href: 'https://arxiv.org/abs/2009.02040'
 - name: Självstudier
   items:
@@ -63,7 +69,7 @@
       href: tutorials/batch-anomaly-detection-powerbi.md
 - name: Referens
   items:
-    - name: Avvikelse detektor REST API
+    - name: Avvikelseidentifiering REST API
       href: 'https://aka.ms/anomaly-detector-rest-api-ref'
     - name: .NET
       href: 'https://aka.ms/anomaly-detector-dotnet-ref'
@@ -75,20 +81,22 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
 - name: Resurser
   items:
-    - name: Stöd för regioner
-      href: 'https://aka.ms/adregion'
-    - name: Lär dig moduler
-      href: 'https://docs.microsoft.com/learn/modules/intro-to-anomaly-detector/'
-    - name: Support & hjälp
+    - name: Företagsberedskap
+      items:
+        - name: Stöd för regioner
+          href: 'https://aka.ms/adregion'
+        - name: Efterlevnad och certifiering
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
+    - name: Microsoft Learn moduler
+      href: 'https://docs.microsoft.com/learn/modules/intro-to-anomaly-detector/'
     - name: Användargenererat innehåll
       href: user-generated-content.md
     - name: Gå med i rådgivningsgruppen för avvikelseidentifiering på Microsoft Teams
       href: 'https://aka.ms/adadvisorsjoin'
     - name: Referenslösningsarkitektur
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
-    - name: Efterlevnad
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure-uppdateringar
       href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
     - name: Tekniska bloggar

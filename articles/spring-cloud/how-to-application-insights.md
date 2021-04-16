@@ -1,33 +1,33 @@
 ---
-title: Använda Application Insights Java-In-Process agent i Azure våren Cloud
-description: Övervaka appar och mikrotjänster med hjälp av Application Insights Java In-Process agent i Azure våren Cloud.
+title: Så här använder du Application Insights Java In-Process Agent i Azure Spring Cloud
+description: Så här övervakar du appar och mikrotjänster med hjälp Application Insights Java In-Process Agent i Azure Spring Cloud.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: f6f1ed1a3e09397a720dfd4d842b79cd88aa738d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: c7083cb6669d7bc779a8e69babfef38988819f8c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104878561"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483781"
 ---
-# <a name="application-insights-java-in-process-agent-in-azure-spring-cloud-preview"></a>Application Insights Java In-Process agent i Azure våren Cloud (för hands version)
+# <a name="application-insights-java-in-process-agent-in-azure-spring-cloud-preview"></a>Application Insights Java In-Process Agent i Azure Spring Cloud (förhandsversion)
 
-Det här dokumentet beskriver hur du övervakar appar och mikrotjänster med Application Insights Java-agenten i Azure våren Cloud. 
+Det här dokumentet beskriver hur du övervakar appar och mikrotjänster med hjälp Application Insights Java-agenten i Azure Spring Cloud. 
 
 Med den här funktionen kan du:
 
-* Sök spårnings data med olika filter.
-* Visa beroende karta för mikrotjänster.
-* Kontrol lera prestanda för begäran.
-* Övervaka Live-mått i real tid.
-* Kontrol lera begär Anden som Miss lyckas.
-* Kontrol lera program måtten.
+* Sök efter spårningsdata med olika filter.
+* Visa beroendekarta över mikrotjänster.
+* Kontrollera begärandeprestanda.
+* Övervaka realtidsbaserade livemått.
+* Kontrollera misslyckade förfrågningar.
+* Kontrollera programmått.
 
-Application Insights ge många observerbara perspektiv, inklusive:
+Application Insights ger många observerbara perspektiv, inklusive:
 
 * Programkarta
 * Prestanda
@@ -36,59 +36,59 @@ Application Insights ge många observerbara perspektiv, inklusive:
 * Live Metrics
 * Tillgänglighet
 
-## <a name="enable-java-in-process-agent-for-application-insights"></a>Aktivera Java In-Process agent för Application Insights
+## <a name="enable-java-in-process-agent-for-application-insights"></a>Aktivera Java In-Process Agent för Application Insights
 
-Aktivera för hands versionen av Java In-Process-agenten med hjälp av följande procedur.
+Aktivera förhandsversionsfunktionen för Java In-Process Agent med hjälp av följande procedur.
 
-1. Gå till tjänst översikts sidan för din tjänst instans.
-2. Klicka på **Application Insights** post under övervaknings bladet.
-3. Klicka på **aktivera Application Insights** om du vill aktivera **Application Insights** -integrering.
-4. Välj en befintlig instans av Application Insights eller skapa en ny.
-5. Kyckling **Aktivera Java in process-agenten** för att aktivera förhands granskning av java i process agent-funktionen. Här kan du också anpassa samplings frekvensen från 0 till 100.
+1. Gå till tjänstöversiktssidan för tjänstinstansen.
+2. Klicka **Application Insights** under övervakningsbladet.
+3. Klicka **på Application Insights** för att aktivera **Application Insights** integrering.
+4. Välj en befintlig instans Application Insights skapa en ny.
+5. Enable **Java in-process agent to** enable preview Java in-process agent feature. Här kan du också anpassa samplingsfrekvensen från 0 till 100.
 6.  Spara ändringen genom att klicka på **Spara**.
 
-## <a name="portal"></a>Portal
+## <a name="portal"></a>Portalen
 
-1. Gå till **tjänsten | Sidan översikt** och välj **Application Insights** i avsnittet **övervakning** . 
-2. Aktivera Application Insights i Azure våren Cloud genom att klicka på **aktivera Application Insights** .
-3. Klicka på **Aktivera Java-agent i processen** för att aktivera funktionen för för hands version av Java-IPA. När en IPA för hands version är aktive rad kan du konfigurera en valfri samplings frekvens (standard 10,0%).
+1. Gå till **| Översiktssidan** och **Application Insights** i **avsnittet** Övervakning. 
+2. Klicka **på Aktivera Application Insights** för att Application Insights i Azure Spring Cloud.
+3. Klicka **på Enable Java in-process agent (Aktivera processagent** för Java) för att aktivera förhandsversionsfunktionen i Java IPA. När en IPA-förhandsgranskningsfunktion är aktiverad kan du konfigurera en valfri samplingsfrekvens (standardvärdet är 10,0 %).
 
   [![IPA 0](media/spring-cloud-application-insights/insights-process-agent-0.png)](media/spring-cloud-application-insights/insights-process-agent-0.png)
 
-## <a name="using-the-application-insights-feature"></a>Använda funktionen Application Insights
+## <a name="using-the-application-insights-feature"></a>Använda Application Insights funktion
 
-När **Application Insights** funktionen är aktive rad kan du:
+När **Application Insights** har aktiverats kan du:
 
-I det vänstra navigerings fönstret klickar du på **Application Insights** för att gå till **översikts** sidan för Application Insights. 
+I det vänstra navigeringsfönstret klickar du **på Application Insights** för att gå **till översiktssidan** för Application Insights. 
 
-* Klicka på **program karta** för att se status för anrop mellan program.
+* Klicka **på Programkarta** för att se status för anrop mellan program.
 
   [![IPA 2](media/spring-cloud-application-insights/insights-process-agent-2-map.png)](media/spring-cloud-application-insights/insights-process-agent-2-map.png)
 
-* Klicka på länken mellan kunder – tjänst och `petclinic` för att se mer information, till exempel en fråga från SQL.
+* Klicka på länken mellan customers-service och `petclinic` om du vill se mer information, till exempel en fråga från SQL.
 
-* I det vänstra navigerings fönstret klickar du på **prestanda** för att visa prestanda data för alla programs åtgärder, samt beroenden och roller.
+* I det vänstra navigeringsfönstret klickar **du på Prestanda** för att se prestandadata för alla programåtgärder, samt beroenden och roller.
 
   [![IPA 4](media/spring-cloud-application-insights/insights-process-agent-4-performance.png)](media/spring-cloud-application-insights/insights-process-agent-4-performance.png)
 
-* I det vänstra navigerings fönstret klickar du på **fel** för att se om något oväntade från dina program.
+* I det vänstra navigeringsfönstret klickar du på **Fel för** att se om något oväntat från dina program.
 
   [![IPA 6](media/spring-cloud-application-insights/insights-process-agent-6-failures.png)](media/spring-cloud-application-insights/insights-process-agent-6-failures.png)
 
-* I det vänstra navigerings fönstret klickar du på **mått** och väljer namn området. du kommer att se både våren Boot-mått och anpassade mått, om det finns några.
+* I det vänstra navigeringsfönstret klickar du på Mått och väljer namnområdet. Du ser både Spring Boot mått och anpassade mått, om det finns några. 
 
   [![IPA 7](media/spring-cloud-application-insights/insights-process-agent-5-metrics.png)](media/spring-cloud-application-insights/insights-process-agent-5-metrics.png)
 
-* I det vänstra navigerings fönstret klickar du på **Live-mått** för att se Real tids mått för olika dimensioner.
+* I det vänstra navigeringsfönstret klickar du **på Live Metrics** för att se realtidsmått för olika dimensioner.
 
   [![IPA 8](media/spring-cloud-application-insights/petclinic-microservices-live-metrics.jpg)](media/spring-cloud-application-insights/petclinic-microservices-live-metrics.jpg)
 
-* I det vänstra navigerings fönstret klickar du på **tillgänglighet** för att övervaka tillgänglighet och svars tider för webbappar genom att skapa [tillgänglighets test i Application Insights](../azure-monitor/app/monitor-web-app-availability.md).
+* I det vänstra navigeringsfönstret klickar du på **Tillgänglighet** för att övervaka tillgängligheten och svarstiden för webbappar genom att [skapa tillgänglighetstester i Application Insights](../azure-monitor/app/monitor-web-app-availability.md).
 
   [![IPA 9](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)
 
 ## <a name="arm-template"></a>ARM-mall
-Om du vill använda mallen Azure Resource Manager kopierar du följande innehåll till `azuredeploy.json` .
+Om du vill Azure Resource Manager mallen kopierar du följande innehåll till `azuredeploy.json` .
 
 ```json
 {
@@ -123,24 +123,24 @@ Om du vill använda mallen Azure Resource Manager kopierar du följande innehål
 ## <a name="cli"></a>CLI
 Använd ARM-mall med CLI-kommandot:
 
-* För en befintlig Azure våren Cloud-instans:
+* För en befintlig Azure Spring Cloud instans:
 
 ```azurecli
-az spring-cloud app-insights update [--app-insights/--app-insights-key] "assignedName" [--sampling-rate] "samplingRate" –name "assignedName" –resource-group "resourceGroupName"
+az spring-cloud app-insights update [--app-insights/--app-insights-key] "assignedName" [--sampling-rate] "samplingRate" â€“name "assignedName" â€“resource-group "resourceGroupName"
 ```
-* För en nyligen skapad Azure våren-moln instans:
+* För en nyligen Azure Spring Cloud instans:
 
 ```azurecli
-az spring-cloud create/update [--app-insights]/[--app-insights-key] "assignedName" --disable-app-insights false --enable-java-agent true --name "assignedName" –resource-group "resourceGroupName"
+az spring-cloud create/update [--app-insights]/[--app-insights-key] "assignedName" --disable-app-insights false --enable-java-agent true --name "assignedName" â€“resource-group "resourceGroupName"
 ```
-* Så här inaktiverar du program insikter:
+* Så här inaktiverar du appinsikter:
 
 ```azurecli
-az spring-cloud app-insights update --disable –name "assignedName" –resource-group "resourceGroupName"
+az spring-cloud app-insights update --disable â€“name "assignedName" â€“resource-group "resourceGroupName"
 
 ```
 
 ## <a name="see-also"></a>Se även
-* [Använd distribuerad spårning med Azure våren Cloud](spring-cloud-howto-distributed-tracing.md)
+* [Använda distribuerad spårning med Azure Spring Cloud](spring-cloud-howto-distributed-tracing.md)
 * [Analysera loggar och mått](diagnostic-services.md)
 * [Strömma loggar i realtid](spring-cloud-howto-log-streaming.md)

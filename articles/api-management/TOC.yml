@@ -112,7 +112,7 @@
           href: import-logic-app-as-api.md
         - name: Redigera ett API
           href: edit-api.md
-        - name: Konfigurera Service Fabric Server del
+        - name: Konfigurera Service Fabric backend
           href: how-to-configure-service-fabric-backend.md
     - name: Etablera och skala
       items:
@@ -128,6 +128,9 @@
           href: configure-custom-domain.md
         - name: Distribuera till flera Azure-regioner
           href: api-management-howto-deploy-multi-region.md
+        - name: Aktivera zonredundans
+          displayName: Availability zones
+          href: zone-redundancy.md
         - name: Etablera en gateway med egen värd
           href: api-management-howto-provision-self-hosted-gateway.md
         - name: Distribuera en gateway med egen värd till Azure Kubernetes Service
@@ -245,7 +248,7 @@
           href: api-management-transformation-policies.md
         - name: Integreringspolicyer för Distributed Apps Runtime (Dapr)
           href: api-management-dapr-policies.md
-        - name: Validerings principer
+        - name: Valideringsprinciper
           href: validation-policies.md
     - name: Hantera i produktionen
       items:
