@@ -1,41 +1,58 @@
 ---
-title: Borttagning av ITSM-anslutaren och åtgärden som är kopplad till den
-description: Den här artikeln innehåller en förklaring av hur du tar bort ITSM-anslutningen och de åtgärds grupper som är kopplade till den.
+title: Ta bort itsm-anslutningsappar som inte används
+description: Den här artikeln innehåller en förklaring av hur du tar bort ITSM-anslutningsappar och de åtgärdsgrupper som är associerade med den.
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/29/2020
 ms.custom: references_regions
-ms.openlocfilehash: e73510b6c61c58f6f0b2b8067a240214ee35a46c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3dc84ea6def9b762527226dbeb3e2eaab78ec200
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036494"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387946"
 ---
-# <a name="deletion-of-unused-itsm-connectors"></a>Borttagning av oanvända ITSM-kopplingar
+# <a name="delete-unused-itsm-connectors"></a>Ta bort itsm-anslutningsappar som inte används
 
-Processen att ta bort oanvänd koppling innehåller 2 faser:
+Processen att ta bort oanvända Hantering av IT-tjänster (ITSM)-anslutningsappar (ITSM) har två faser. Du tar bort alla åtgärder som är associerade med en ITSM-anslutning och sedan tar du bort själva anslutningsappen. Du tar bort åtgärderna först eftersom åtgärder utan anslutning kan orsaka fel i din prenumeration.
 
-1. Borttagning av associerade åtgärder: alla åtgärder som är associerade med ITSM-anslutningsprogrammet bör tas bort. Detta bör göras för att inte ha åtgärder utan anslutning som kan orsaka fel i din prenumeration.
+## <a name="delete-associated-actions"></a>Ta bort associerade åtgärder
 
-2. Borttagning av den oanvända ITSM-anslutningen.
+1. I Azure Portal du **Övervaka.**
+  
+    ![Skärmbild av valet Övervaka.](media/itsmc-connector-deletion/itsmc-monitor-selection.png)
 
-## <a name="deletion-of-the-associated-actions"></a>Borttagning av associerade åtgärder
+2. Välj **Aviseringar.**
+   
+    ![Skärmbild av valet Aviseringar.](media/itsmc-connector-deletion/itsmc-alert-selection.png)
 
-1. För att hitta åtgärds gruppen ska du gå till skärm bilden "övervaka"  ![ för att övervaka val.](media/itsmc-connector-deletion/itsmc-monitor-selection.png)
+3. Välj **Hantera åtgärder.**
+   
+    ![Skärmbild av valet Hantera åtgärder.](media/itsmc-connector-deletion/itsmc-actions-selection.png)
 
-2. Välj "aviseringar"  ![ skärm bild av aviserings urvalet.](media/itsmc-connector-deletion/itsmc-alert-selection.png)
-3. Välj  ![ skärm bild av alternativet hantera åtgärder.](media/itsmc-connector-deletion/itsmc-actions-selection.png)
-4. Välj alla ITSM-kopplingar som är anslutna till Cherwell  ![ skärm bild av ITSM-kopplingar som är anslutna till Cherwell.](media/itsmc-connector-deletion/itsmc-actions-screen.png)
-5. Ta bort skärm bilden åtgärds grupp  ![ för borttagning av åtgärds grupp.](media/itsmc-connector-deletion/itsmc-action-deletion.png)
+4. Välj en åtgärdsgrupp som är associerad med ITSM-anslutningsprogrammet som du vill ta bort. I den här artikeln används ett exempel på en Cherwell-anslutningsapp.
+   
+    ![Skärmbild av åtgärder som är associerade med Cherwell-anslutningsappen.](media/itsmc-connector-deletion/itsmc-actions-screen.png)
 
-## <a name="deletion-of-the-unused-itsm-connector"></a>Borttagning av den oanvända ITSM-anslutningen
+5. Granska informationen och välj sedan Ta **bort åtgärdsgrupp.**
 
-1. Du bör söka och välja "ServiceDesk"-LA i den övre delen av Sök fältet i  ![ Sök och välja "servicedesk" La.](media/itsmc-connector-deletion/itsmc-connector-selection.png)
-2. Välj "ITSM Connections" och välj  ![ skärm bilden Cherwell Connector för CHERWELL ITSM-kopplingar.](media/itsmc-connector-deletion/itsmc-cherwell-connector.png)
-3. Välj Ta bort  ![ skärm bild av ITSM Connector-borttagning.](media/itsmc-connector-deletion/itsmc-connector-deletion.png)
+    ![Skärmbild av information om åtgärdsgrupp och knappen för att ta bort gruppen.](media/itsmc-connector-deletion/itsmc-action-deletion.png)
+
+## <a name="delete-the-connector"></a>Ta bort anslutningsappen
+
+1. I sökfältet söker du efter **servicedesk**. Välj sedan **ServiceDesk** i listan över resurser.
+
+    ![Skärmbild av sökning efter och val av ServiceDesk.](media/itsmc-connector-deletion/itsmc-connector-selection.png)
+
+2. Välj **ITSM-anslutningar** och sedan Cherwell-anslutningsappen.
+
+    ![Skärmbild av Cherwell I T S M-anslutningsappen.](media/itsmc-connector-deletion/itsmc-cherwell-connector.png)
+
+3. Välj **Ta bort**.
+
+    ![Skärmbild av borttagningsknappen för I T S M-anslutningsappen.](media/itsmc-connector-deletion/itsmc-connector-deletion.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Felsöka problem med anslutningsprogram för hantering av IT-tjänster (ITSM)](./itsmc-resync-servicenow.md)
+* [Felsöka problem i en ITSM-anslutning](./itsmc-resync-servicenow.md)

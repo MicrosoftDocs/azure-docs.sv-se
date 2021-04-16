@@ -1,6 +1,6 @@
 ---
-title: Azure Compute – Linux Diagnostic-tillägg 4,0
-description: Så här konfigurerar du LAD (Azure Linux Diagnostic Extension) 4,0 för att samla in mått och logg händelser från virtuella Linux-datorer som körs i Azure.
+title: Azure Compute – Linux-diagnostiktillägg 4.0
+description: Så här konfigurerar du Azure Linux-diagnostiktillägget (LAD) 4.0 för att samla in mått och logghändelser från virtuella Linux-datorer som körs i Azure.
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: extensions
@@ -8,83 +8,87 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 02/05/2021
-ms.openlocfilehash: 4c4851ab28e5da74e7f1fa36f087ecfdabb1c638
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e862915bcc524db50e7e66c969b713f729c64aa
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560131"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479652"
 ---
-# <a name="use-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>Använd Linux Diagnostic Extension 4,0 för att övervaka mått och loggar
+# <a name="use-the-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>Använd Linux-diagnostiktillägget 4.0 för att övervaka mått och loggar
 
-I det här dokumentet beskrivs version 4,0 och senare av Linux-diagnostik.
+Det här dokumentet beskriver de senaste versionerna av Linux-diagnostiktillägget (LAD).
 
 > [!IMPORTANT]
-> Information om version 3. * finns i  [det här dokumentet](./diagnostics-linux-v3.md). Information om version 2,3 och äldre finns i [det här dokumentet](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
+> Information om version 3.x finns i [Använda Linux-diagnostiktillägget 3.0 för att övervaka mått och loggar.](./diagnostics-linux-v3.md) Information om version 2.3 och tidigare finns i Övervaka prestanda och diagnostikdata för en [virtuell Linux-dator.](https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)
 
 ## <a name="introduction"></a>Introduktion
 
-Tillägget för Linux-diagnostik hjälper en användare att övervaka hälsan hos en virtuell Linux-dator som körs på Microsoft Azure. Den har följande funktioner:
+Linux-diagnostiktillägget hjälper en användare att övervaka hälsotillståndet för en virtuell Linux-dator som körs Microsoft Azure. Den har följande funktioner:
 
-* Samlar in system prestanda mått från den virtuella datorn och lagrar dem i en viss tabell i ett särskilt lagrings konto.
-* Hämtar logg händelser från syslog och lagrar dem i en viss tabell i det angivna lagrings kontot.
-* Gör det möjligt för användare att anpassa de data mått som samlas in och överförs.
-* Gör det möjligt för användare att anpassa syslog-funktionerna och allvarlighets graden för händelser som samlas in och överförs.
-* Gör det möjligt för användare att överföra angivna loggfiler till en angiven lagrings tabell.
-* Stöder sändning av mått och logg händelser till godtyckliga EventHub-slutpunkter och JSON-formaterade blobbar i det angivna lagrings kontot.
+* Samlar in systemprestandamått från den virtuella datorn och lagrar dem i en specifik tabell i ett anvisat lagringskonto.
+* Hämtar logghändelser från syslog och lagrar dem i en specifik tabell i det angivna lagringskontot.
+* Gör det möjligt för användare att anpassa de datamått som samlas in och laddas upp.
+* Gör det möjligt för användare att anpassa syslog-anläggningar och allvarlighetsnivåerna för händelser som samlas in och laddas upp.
+* Gör det möjligt för användare att ladda upp angivna loggfiler till en angiven lagringstabell.
+* Stöder sändning av mått och logghändelser till godtyckliga EventHub-slutpunkter och JSON-formaterade blobar i det avsedda lagringskontot.
 
-Det här tillägget fungerar med både Azures distributions modeller.
+Det här tillägget fungerar med båda Azure-distributionsmodellerna.
 
-## <a name="installing-the-extension-in-your-vm"></a>Installera tillägget på din virtuella dator
+## <a name="install-the-extension-on-a-vm"></a>Installera tillägget på en virtuell dator
 
-Du kan aktivera det här tillägget med hjälp av Azure PowerShell-cmdletar, Azure CLI-skript, ARM-mallar eller Azure Portal. Mer information finns i [tillägg-funktioner](features-linux.md).
+Du kan aktivera det här tillägget med hjälp Azure PowerShell cmdlets, Azure CLI-skript, Azure Resource Manager-mallar (ARM-mallar) eller Azure Portal. Mer information finns i [Tillägg och funktioner.](features-linux.md)
 
 >[!NOTE]
->Vissa komponenter i det virtuella diagnostik-tillägget för virtuella datorer levereras också i [Log Analytics VM-tillägget](./oms-linux.md). På grund av den här arkitekturen kan konflikter uppstå om båda tilläggen instansieras i samma ARM-mall. Undvik dessa installations tids konflikter genom att använda [ `dependsOn` direktivet](../../azure-resource-manager/templates/define-resource-dependency.md#dependson) för att se till att tilläggen installeras i tur och ordning. Tilläggen kan installeras i valfri ordning.
+>Vissa komponenter i linux-diagnostiktillägget för virtuella datorer levereras också i [Log Analytics VM-tillägget](./oms-linux.md). På grund av den här arkitekturen kan konflikter uppstå om båda tilläggen instansieras i samma ARM-mall. 
+>
+>Använd -direktivet för att installera tilläggen [ `dependsOn` sekventiellt för](../../azure-resource-manager/templates/define-resource-dependency.md#dependson) att undvika installationskonflikter. Tilläggen kan installeras i båda ordningsföljderna.
 
-Dessa installationsinstruktioner och en [nedladdnings bar exempel konfiguration](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) konfigurerar lad 4,0 till:
+Använd installationsanvisningarna och en nedladdningsbar [exempelkonfiguration för att](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) konfigurera LAD 4.0 för att:
 
-* avbilda och lagra samma mått som tillhandahölls av LAD 2,3, 3 *;
-* Skicka mått till Azure Monitor Sink tillsammans med den vanligaste sinken till Azure Storage, ny i lad 4,0
-* avbilda en användbar uppsättning med fil Systems mått som tillhandahölls av LAD 3,0;
-* avbilda Standard-syslog-samlingen som aktive ras av LAD 2,3;
-* Aktivera Azure Portal upplevelse för diagram och aviseringar på VM-mått.
+* Samla in och lagra samma mått som LAD-versionerna 2.3 och 3.x.
+* Skicka mått till Azure Monitor tillsammans med den vanliga mottagaren till Azure Storage. Den här funktionen är ny i LAD 4.0.
+* Samla in en användbar uppsättning filsystemmått, som i LAD 3.0.
+* Avbilda syslog-standardsamlingen som aktiverats av LAD 2.3.
+* Aktivera Azure Portal för diagram och aviseringar för VM-mått.
 
-Den nedladdnings bara konfigurationen är bara ett exempel. ändra den så att den passar dina egna behov.
+Den nedladdningsbara konfigurationen är bara ett exempel. Ändra den så att den passar dina behov.
 
 ### <a name="supported-linux-distributions"></a>Linux-distributioner som stöds
 
-Tillägget för Linux-diagnostik stöder följande distributioner och versioner. Listan över distributioner och versioner gäller endast för Azure-godkända Linux-leverantörs avbildningar. BYOL-och BYOS-avbildningar från tredje part, t. ex. enheter, stöds vanligt vis inte för Linux Diagnostic-tillägget.
+Linux-diagnostiktillägget stöder många distributioner och versioner. Följande lista över distributioner och versioner gäller endast för Azure-godkända Linux-leverantörsavbildningar. Tillägget stöder vanligtvis inte BYOL- och BYOS-avbildningar från tredje part, t.ex. installationer.
 
-En distribution som endast listar huvud versioner, som Debian 7, stöds också för alla del versioner. Om en specifik del version anges stöds endast den specifika versionen. om "+" läggs till stöds lägre versioner som är lika med eller större än den angivna versionen.
+En distribution som endast visar större versioner, t.ex. Debian 7, stöds också för alla mindre versioner. Om en specifik delversion anges stöds endast den versionen. Om ett plustecken (+) läggs till stöds mindre versioner som är lika med eller senare än den angivna versionen.
 
 Distributioner och versioner som stöds:
 
-- Ubuntu 18,04, 16,04, 14,04
-- CentOS 7, 6.5 +
-- Oracle Linux 7, 6.4 +
-- OpenSUSE 13.1 +
+- Ubuntu 18.04, 16.04, 14.04
+- CentOS 7, 6.5+
+- Oracle Linux 7, 6.4+
+- OpenSUSE 13.1+
 - SUSE Linux Enterprise Server 12
 - Debian 9, 8, 7
-- RHEL 7, 6,7 +
+- Red Hat Enterprise Linux (RHEL) 7, 6.7+
 
 ### <a name="prerequisites"></a>Förutsättningar
 
-* **Azure Linux-agentens version 2.2.0 eller senare**. De flesta Azure VM Linux-avbildningar innehåller version 2.2.7 eller senare. Kör `/usr/sbin/waagent -version` för att bekräfta versionen som är installerad på den virtuella datorn. Om den virtuella datorn kör en äldre version av gäst agenten följer du [de här anvisningarna](./update-linux-agent.md) för att uppdatera den.
-* **Azure CLI**. [Konfigurera Azure CLI](/cli/azure/install-azure-cli) -miljön på din dator.
-* Kommandot wget, om du inte redan har det: kör `sudo apt-get install wget` .
-* En befintlig Azure-prenumeration och ett befintligt allmänt lagrings konto för lagring av data i.  Lagrings konton för generell användning stöder tabell lagring som krävs.  Ett Blob Storage-konto kommer inte att fungera.
-* Python 2
+* **Azure Linux-agent version 2.2.0 eller senare.** De flesta Azure VM Linux-galleriavbildningar innehåller version 2.2.7 eller senare. Kör `/usr/sbin/waagent -version` för att bekräfta vilken version som är installerad på den virtuella datorn. Om den virtuella datorn kör en äldre version av gästagenten uppdaterar [du Linux-agenten](./update-linux-agent.md).
+* **Azure CLI**. [Konfigurera Azure CLI-miljön](/cli/azure/install-azure-cli) på datorn.
+* **Kommandot `wget`**. Om du inte redan har det kör du `sudo apt-get install wget` .
+* **En Azure-prenumeration och ett allmänt lagringskonto** för lagring av data.  Allmänna lagringskonton har stöd för tabellagring, vilket krävs.  Ett Blob Storage-konto fungerar inte.
+* **Python 2**.
 
 ### <a name="python-requirement"></a>Python-krav
 
-Tillägget för Linux-diagnostik kräver python 2. Om den virtuella datorn använder en distribution som inte innehåller python 2 som standard måste du installera den. Följande exempel kommandon kommer att installera python 2 på olika distributioner.    
+Linux-diagnostiktillägget kräver Python 2. Om den virtuella datorn använder en distribution som inte innehåller Python 2 som standard installerar du den. 
 
- - Red Hat, CentOS, Oracle: `yum install -y python2`
- - Ubuntu, Debian: `apt-get install -y python2`
- - SUSE `zypper install -y python2`
+Följande exempelkommandon installerar Python 2 på olika distributioner:    
 
-Den körbara filen python2 måste ha ett alias till *python*. Följande är en metod som du kan använda för att ange det här aliaset:
+- Red Hat, CentOS, Oracle: `yum install -y python2`
+- Ubuntu, Debian: `apt-get install -y python2`
+- Suse: `zypper install -y python2`
+
+Den `python2` körbara filen måste ha aliaset *python*. Här är ett sätt att ange det här aliaset:
 
 1. Kör följande kommando för att ta bort alla befintliga alias.
  
@@ -98,78 +102,84 @@ Den körbara filen python2 måste ha ett alias till *python*. Följande är en m
     sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
     ```
 
-### <a name="sample-installation"></a>Exempel installation
+### <a name="sample-installation"></a>Exempelinstallation
 
 > [!NOTE]
-> För något av exemplen fyller du i rätt värden för variablerna i det första avsnittet innan du kör. 
+> För följande exempel fyller du i rätt värden för variablerna i det första avsnittet innan du kör koden. 
 
-Exempel konfigurationen som hämtas i de här exemplen samlar in en uppsättning standard data och skickar dem till Table Storage. URL: en för exempel konfigurationen och dess innehåll kan komma att ändras. I de flesta fall bör du ladda ned en kopia av JSON-filen med Portal inställningar och anpassa den efter dina behov. därefter har du alla mallar eller automatiseringar som du skapar med din egen version av konfigurations filen i stället för att hämta URL: en varje tillfälle.
+I de här exemplen samlar exempelkonfigurationen in en uppsättning standarddata och skickar dem till tabellagring. URL:en för exempelkonfigurationen och dess innehåll kan ändras. 
+
+I de flesta fall bör du ladda ned en kopia av JSON-filen med portalinställningar och anpassa den efter dina behov. Använd sedan mallar eller din egen automatisering för att använda en anpassad version av konfigurationsfilen i stället för att ladda ned från URL:en varje gång.
 
 > [!NOTE]
-> För att aktivera den nya Azure Monitor-mottagaren måste de virtuella datorerna ha systemtilldelad identitet aktive rad för generering av MSI auth-token. Detta kan göras när du skapar en virtuell dator eller när den virtuella datorn har skapats. Steg för att aktivera systemtilldelad identitet via portal, CLI, PowerShell och Resource Manager.  visas i detalj [här](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md). 
+> När du aktiverar den nya Azure Monitor-mottagaren måste de virtuella datorerna ha system tilldelad identitet aktiverad för att generera autentiseringstoken för hanterad tjänstidentitet (MSI). Du kan lägga till de här inställningarna under eller efter skapandet av den virtuella datorn. 
+>
+> Anvisningar för Azure Portal, Azure CLI, PowerShell och Azure Resource Manager finns i [Konfigurera hanterade identiteter.](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) 
+
+
 
 #### <a name="azure-cli-sample"></a>Azure CLI-exempel
 
 ```azurecli
-# Set your Azure VM diagnostic variables correctly below
+# Set your Azure VM diagnostic variables.
 my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
 my_linux_vm=<your_azure_linux_vm_name>
 my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
 
-# Should login to Azure first before anything else
+# Login to Azure before you do anything else.
 az login
 
-# Select the subscription containing the storage account
+# Select the subscription that contains the storage account.
 az account set --subscription <your_azure_subscription_id>
 
-# Enable System Assigned Identity to the existing VM
+# Enable system-assigned identity on the existing VM.
 az vm identity assign -g $my_resource_group -n $my_linux_vm
 
-# Download the sample Public settings. (You could also use curl or any web browser)
+# Download the sample public settings. (You could also use curl or any web browser.)
 wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
 
-# Build the VM resource ID. Replace storage account name and resource ID in the public settings.
+# Build the VM resource ID. Replace the storage account name and resource ID in the public settings.
 my_vm_resource_id=$(az vm show -g $my_resource_group -n $my_linux_vm --query "id" -o tsv)
 sed -i "s#__DIAGNOSTIC_STORAGE_ACCOUNT__#$my_diagnostic_storage_account#g" portal_public_settings.json
 sed -i "s#__VM_RESOURCE_ID__#$my_vm_resource_id#g" portal_public_settings.json
 
-# Build the protected settings (storage account SAS token)
+# Build the protected settings (storage account SAS token).
 my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --account-name $my_diagnostic_storage_account --expiry 2037-12-31T23:59:00Z --permissions wlacu --resource-types co --services bt -o tsv)
 my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
 
-# Finally tell Azure to install and enable the extension
+# Finally, tell Azure to install and enable the extension.
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
-#### <a name="azure-cli-sample-for-installing-lad-40-extension-on-the-virtual-machine-scale-set-instance"></a>Azure CLI-exempel för att installera LAD 4,0-tillägget på den virtuella datorns skalnings uppsättnings instans
+#### <a name="azure-cli-sample-for-installing-lad-40-on-a-virtual-machine-scale-set-instance"></a>Azure CLI-exempel för att installera LAD 4.0 på en vm-skalningsuppsättningsinstans
 
 ```azurecli
-#Set your Azure VMSS diagnostic variables correctly below
+# Set your Azure virtual machine scale set diagnostic variables. 
 $my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
 $my_linux_vmss=<your_azure_linux_vmss_name>
 $my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
 
-# Should login to Azure first before anything else
+# Login to Azure before you do anything else.
 az login
 
-# Select the subscription containing the storage account
+# Select the subscription that contains the storage account.
 az account set --subscription <your_azure_subscription_id>
 
-# Enable System Assigned Identity to the existing VMSS
+# Enable system-assigned identity on the existing virtual machine scale set.
 az vmss identity assign -g $my_resource_group -n $my_linux_vmss
 
-# Download the sample Public settings. (You could also use curl or any web browser)
+# Download the sample public settings. (You could also use curl or any web browser.)
 wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
 
-# Build the VMSS resource ID. Replace storage account name and resource ID in the public settings.
+# Build the virtual machine scale set resource ID. Replace the storage account name and resource ID in the public settings.
 $my_vmss_resource_id=$(az vmss show -g $my_resource_group -n $my_linux_vmss --query "id" -o tsv)
 sed -i "s#__DIAGNOSTIC_STORAGE_ACCOUNT__#$my_diagnostic_storage_account#g" portal_public_settings.json
 sed -i "s#__VM_RESOURCE_ID__#$my_vmss_resource_id#g" portal_public_settings.json
 
-# Build the protected settings (storage account SAS token)
+# Build the protected settings (storage account SAS token).
 $my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --account-name $my_diagnostic_storage_account --expiry 2037-12-31T23:59:00Z --permissions wlacu --resource-types co --services bt -o tsv)
 $my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
 
-# Finally tell Azure to install and enable the extension
+# Finally, tell Azure to install and enable the extension.
 az vmss extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group $my_resource_group --vmss-name $my_linux_vmss --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
 
@@ -184,15 +194,15 @@ $VMresourceGroup = "yourVMResourceGroupName"
 # Get the VM object
 $vm = Get-AzVM -Name $vmName -ResourceGroupName $VMresourceGroup
 
-# Enable System Assigned Identity on an existing VM
+# Enable system-assigned identity on an existing VM
 Update-AzVM -ResourceGroupName $VMresourceGroup -VM $vm -IdentityType SystemAssigned
 
-# Get the public settings template from GitHub and update the templated values for storage account and resource ID
+# Get the public settings template from GitHub and update the templated values for the storage account and resource ID
 $publicSettings = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json).Content
 $publicSettings = $publicSettings.Replace('__DIAGNOSTIC_STORAGE_ACCOUNT__', $storageAccountName)
 $publicSettings = $publicSettings.Replace('__VM_RESOURCE_ID__', $vm.Id)
 
-# If you have your own customized public settings, you can inline those rather than using the template above: $publicSettings = '{"ladCfg":  { ... },}'
+# If you have your own customized public settings, you can inline those rather than using the preceding template: $publicSettings = '{"ladCfg":  { ... },}'
 
 # Generate a SAS token for the agent to use to authenticate with the storage account
 $sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context -ExpiryTime $([System.DateTime]::Now.AddYears(10))
@@ -200,31 +210,30 @@ $sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Servi
 # Build the protected settings (storage account SAS token)
 $protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountSasToken': '$sasToken'}"
 
-# Finally install the extension with the settings built above
+# Finally, install the extension with the settings you built
 Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location $vm.Location -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 4.0 
 ```
 
-### <a name="updating-the-extension-settings"></a>Uppdaterar tilläggs inställningarna
+### <a name="update-the-extension-settings"></a>Uppdatera tilläggsinställningarna
 
-När du har ändrat dina skyddade eller offentliga inställningar distribuerar du dem till den virtuella datorn genom att köra samma kommando. Om något ändras i inställningarna skickas de uppdaterade inställningarna till tillägget. LAD laddar om konfigurationen och startar om sig själv.
+När du har ändrat dina skyddade eller offentliga inställningar distribuerar du dem till den virtuella datorn genom att köra samma kommando. Om några inställningar ändras skickas uppdateringarna till tillägget. LAD läser in konfigurationen på nytt och startar om sig själv.
 
-### <a name="migration-from-previous-versions-of-the-extension"></a>Migrering från tidigare versioner av tillägget
+### <a name="migrate-from-previous-versions-of-the-extension"></a>Migrera från tidigare versioner av tillägget
 
-Den senaste versionen av tillägget är **4,0 som för närvarande finns i en offentlig för hands** version. **Äldre versioner av 3. x stöds fortfarande, medan versioner av 2. x föråldras sedan den 31 juli 2018**.
+Den senaste versionen av tillägget är *4.0, som för närvarande är i offentlig förhandsversion.* Äldre versioner av 3.x stöds fortfarande. Men 2.x-versioner har gjorts inaktuella sedan den 31 juli 2018.
 
 > [!IMPORTANT]
-> Om du vill migrera från 3. x till den här nya versionen av tillägget måste du avinstallera det gamla tillägget och sedan installera version 4 av tillägget (med den uppdaterade konfigurationen för tilldelade identiteter och mottagare för att skicka mått till Azure Monitor Sink.)
+> Om du vill migrera från 3.x till den senaste versionen av tillägget avinstallerar du det gamla tillägget. Installera sedan version 4, som innehåller den uppdaterade konfigurationen för system tilldelad identitet och mottagare för att skicka mått till Azure Monitor mottagare.
 
-Rekommendationer:
+När du installerar det nya tillägget aktiverar du automatiska delversionsuppgraderingar:
+* På virtuella datorer med den klassiska distributionsmodellen anger du version om du installerar `4.*` tillägget via Azure Xplat CLI eller PowerShell.
+* Inkludera Azure Resource Manager vm-distributionsmallen på den virtuella datorn `"autoUpgradeMinorVersion": true` i distributionsmodellen.
 
-* Installera tillägget med automatisk uppgradering av lägre version aktiverat.
-  * På klassiska virtuella datorer för distributions modell anger du ' 4. * ' som version om du installerar tillägget via Azure XPLAT CLI eller PowerShell.
-  * På Azure Resource Manager distributions modellens virtuella datorer inkluderar du "" aktiverat autoupgrademinorversion ": true" i mallen för VM-distribution.
-* Kan använda samma lagrings konto för LAD 4,0 som med LAD 3. *. 
+Du kan använda samma lagringskonto som du använde för LAD 3.x. 
 
 ## <a name="protected-settings"></a>Skyddade inställningar
 
-Den här uppsättningen konfigurations information innehåller känslig information som bör skyddas från offentlig vy, till exempel autentiseringsuppgifter för lagring. De här inställningarna överförs till och lagras av tillägget i krypterad form.
+Den här uppsättningen konfigurationsinformation innehåller känslig information som ska skyddas från offentlig vy. Den innehåller till exempel autentiseringsuppgifter för lagring. Inställningarna överförs till och lagras av tillägget i krypterad form.
 
 ```json
 {
@@ -238,24 +247,24 @@ Den här uppsättningen konfigurations information innehåller känslig informat
 
 Name | Värde
 ---- | -----
-storageAccountName | Namnet på det lagrings konto där data skrivs av tillägget.
-storageAccountEndPoint | valfritt Slut punkten som identifierar molnet där lagrings kontot finns. Om den här inställningen saknas, LAD standardvärdet för det offentliga Azure-molnet `https://core.windows.net` . Om du vill använda ett lagrings konto i Azure Germany, Azure Government eller Azure Kina anger du detta värde i enlighet med detta.
-storageAccountSasToken | En [SAS-token](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) för blob och table Services ( `ss='bt'` ) som gäller för behållare och objekt ( `srt='co'` ), som ger behörigheterna Lägg till, skapa, lista, uppdatera och skriv ( `sp='acluw'` ). Ta *inte* med det inledande fråga-tecknet (?).
-mdsdHttpProxy | valfritt Information om HTTP-proxy som krävs för att aktivera tillägget för att ansluta till det angivna lagrings kontot och slut punkten.
-sinksConfig | valfritt Information om alternativa destinationer till vilka mått och händelser som kan levereras. Detaljerad information om varje data mottagare som stöds av tillägget beskrivs i avsnitten som följer.
+storageAccountName | Namnet på lagringskontot där tillägget skriver data.
+storageAccountEndPoint | (Valfritt) Slutpunkten som identifierar molnet där lagringskontot finns. Om den här inställningen saknas använder LAD som standard det offentliga Azure-molnet, `https://core.windows.net` . Om du vill använda ett lagringskonto i Azure Azure Government eller Azure China 21Vianet anger du det här värdet som obligatoriskt.
+storageAccountSasToken | En [KONTO-SAS-token](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) för blob- och tabelltjänster ( `ss='bt'` ). Denna token gäller för containrar och objekt ( `srt='co'` ). Den ger behörighet att lägga till, skapa, lista, uppdatera och skriva ( `sp='acluw'` ). Ta *inte* med inledande frågetecken (?).
+mdsdHttpProxy | (Valfritt) HTTP-proxyinformation tillägget måste ansluta till det angivna lagringskontot och slutpunkten.
+sinksConfig | (Valfritt) Information om alternativa mål som mått och händelser kan levereras till. Följande avsnitt innehåller information om varje data mottagare som stöds av tillägget.
 
-Om du vill hämta en SAS-token i en Resource Manager-mall använder du funktionen **listAccountSas** . En exempel-mall finns i [exempel på en lista funktion](../../azure-resource-manager/templates/template-functions-resource.md#list-example).
+Om du vill hämta en SAS-token i en ARM-mall använder du `listAccountSas` funktionen . En exempelmall finns i List [function example](../../azure-resource-manager/templates/template-functions-resource.md#list-example).
 
-Du kan enkelt skapa den SAS-token som krävs via Azure Portal.
+Du kan skapa den SAS-token som krävs via Azure Portal:
 
-1. Välj det allmänna lagrings konto som du vill att tillägget ska skrivas till
-1. Välj "signatur för delad åtkomst" från inställningar-delen av den vänstra menyn
-1. Gör lämpliga avsnitt enligt beskrivningen ovan
-1. Klicka på knappen generera SAS.
+1. Välj det allmänna lagringskonto som du vill att tillägget ska skriva till.
+1. I menyn till vänster under Inställningar **väljer du** Signatur för **delad åtkomst.**
+1. Gör valen enligt beskrivningen ovan.
+1. Välj **Generera SAS.**
 
-:::image type="content" source="./media/diagnostics-linux/make_sas.png" alt-text="Skärm bild som visar sidan signatur för delad åtkomst med generera S.":::
+:::image type="content" source="./media/diagnostics-linux/make_sas.png" alt-text="Skärmbild som visar sidan Signatur för delad åtkomst med knappen Generera S A S.":::
 
-Kopiera de genererade SAS: erna till fältet storageAccountSasToken; ta bort det inledande fråga-tecknet ("?").
+Kopiera den genererade SAS:en till `storageAccountSasToken` fältet . Ta bort inledande frågetecken (?).
 
 ### <a name="sinksconfig"></a>sinksConfig
 
@@ -272,16 +281,16 @@ Kopiera de genererade SAS: erna till fältet storageAccountSasToken; ta bort det
 },
 ```
 
-Det här valfria avsnittet definierar ytterligare destinationer dit tillägget skickar den information som samlas in. Matrisen "Sink" innehåller ett objekt för varje ytterligare data mottagare. Attributet "Type" bestämmer de andra attributen i objektet.
+Det `sinksConfig` valfria avsnittet definierar fler mål som tillägget skickar insamlad information till. Matrisen `"sink"` innehåller ett -objekt för varje ytterligare data mottagare. Attributet `"type"` avgör de andra attributen i objektet.
 
 Element | Värde
 ------- | -----
-name | En sträng som används för att referera till denna mottagare någon annan stans i tilläggs konfigurationen.
-typ | Typ av mottagare som definieras. Bestämmer de andra värdena (om sådana finns) i instanser av den här typen.
+name | En sträng som används för att referera till den här mottagaren någon annanstans i tilläggskonfigurationen.
+typ | Den typ av mottagare som definieras. Anger de andra värdena (om sådana finns) i instanser av den här typen.
 
-Version 4,0 av Linux Diagnostic-tillägget har stöd för två typer av mottagare: EventHub och JsonBlob.
+Linux-diagnostiktillägget 4.0 stöder två typer av mottagare: `EventHub` och `JsonBlob` .
 
-#### <a name="the-eventhub-sink"></a>EventHub-sinken
+#### <a name="eventhub-sink"></a>EventHub-mottagare
 
 ```json
 "sink": [
@@ -294,21 +303,21 @@ Version 4,0 av Linux Diagnostic-tillägget har stöd för två typer av mottagar
 ]
 ```
 
-Posten "sasURL" innehåller den fullständiga URL: en, inklusive SAS-token, för den Händelsehubben som data ska publiceras till. LAD kräver en SAS som namnger en princip som aktiverar Send-anspråk. Ett exempel:
+Posten `"sasURL"` innehåller den fullständiga URL:en, inklusive SAS-token, för den händelsehubb som data ska publiceras till. LAD kräver en SAS för att namnge en princip som gör det möjligt att skicka anspråket. Här är ett exempel:
 
-* Skapa ett Event Hubs-namnområde som kallas `contosohub`
-* Skapa en Event Hub i namn området som kallas `syslogmsgs`
-* Skapa en princip för delad åtkomst på Händelsehubben med namnet `writer` som aktiverar Send-anspråk
+* Skapa ett Event Hubs namnområde med namnet `contosohub` .
+* Skapa en händelsehubb i namnområdet `syslogmsgs` .
+* Skapa en princip för delad åtkomst på händelsehubben med `writer` namnet som gör att anspråket kan skickas.
 
-Om du har skapat ett SAS-värde till och med midnatt UTC den 1 januari 2018 kan sasURL-värdet vara:
+Om du har skapat en SAS som är bra fram till midnatt UTC den 1 januari 2018 kan värdet se `sasURL` ut som i följande exempel.
 
 ```https
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
-Mer information om att skapa och hämta information om SAS-token för Event Hubs finns på [den här webb sidan](/rest/api/eventhub/generate-sas-token#powershell).
+Mer information om hur du genererar och hämtar information om SAS-token för Event Hubs finns i [Generera en SAS-token](/rest/api/eventhub/generate-sas-token#powershell).
 
-#### <a name="the-jsonblob-sink"></a>JsonBlob-mottagare
+#### <a name="jsonblob-sink"></a>JsonBlob-mottagare
 
 ```json
 "sink": [
@@ -320,11 +329,13 @@ Mer information om att skapa och hämta information om SAS-token för Event Hubs
 ]
 ```
 
-Data som dirigeras till en JsonBlob-mottagare lagras i blobbar i Azure Storage. Varje instans av LAD skapar en BLOB varje timme för varje mottagar namn. Varje Blob innehåller alltid en syntaktiskt giltig JSON-matris med objekt. Nya poster läggs atomict till i matrisen. Blobbar lagras i en behållare med samma namn som mottagaren. Reglerna för Azure Storage för BLOB container-namn gäller för namnen på JsonBlob-mottagare: mellan 3 och 63 gemena alfanumeriska ASCII-tecken eller bindestreck.
+Data som dirigeras `JsonBlob` till en mottagare lagras i blobar i Azure Storage. Varje instans av LAD skapar en blob varje timme för varje mottagares namn. Varje blob innehåller alltid en syntaktiskt giltig JSON-matris med objekt. Nya poster läggs till atomiskt i matrisen. 
+
+Blobar lagras i en container som har samma namn som mottagaren. Reglerna Azure Storage för blobcontainernamn gäller för namnen på `JsonBlob` mottagare. Det innebär att namn måste ha mellan 3 och 63 gemener alfanumeriska ASCII-tecken eller bindestreck.
 
 ## <a name="public-settings"></a>Offentliga inställningar
 
-Den här strukturen innehåller olika block med inställningar som styr den information som samlas in av tillägget. Varje inställning (förutom ladCfg) är valfri. Om du anger mått eller syslog-samling i `ladCfg` måste du också ange `StorageAccount` . sinksConfig-element måste anges för att det ska gå att aktivera Azure Monitor mottagare för mått från LAD 4,0
+Den offentliga inställningsstrukturen innehåller olika inställningsblock som styr den information som tillägget samlar in. Varje inställning, förutom `ladCfg` , är valfri. Om du anger mått eller syslog-samling `ladCfg` i måste du också ange `StorageAccount` . Du måste ange elementet `sinksConfig` för att aktivera Azure Monitor för mått från LAD 4.0.
 
 ```json
 {
@@ -338,10 +349,10 @@ Den här strukturen innehåller olika block med inställningar som styr den info
 
 Element | Värde
 ------- | -----
-StorageAccount | Namnet på det lagrings konto där data skrivs av tillägget. Måste vara samma namn som anges i de [skyddade inställningarna](#protected-settings).
-mdsdHttpProxy | valfritt Samma som i de [skyddade inställningarna](#protected-settings). Det offentliga värdet åsidosätts av det privata värdet, om det är inställt. Placera proxyinställningar som innehåller en hemlighet, till exempel ett lösen ord, i de [skyddade inställningarna](#protected-settings).
+StorageAccount | Namnet på lagringskontot där tillägget skriver data. Måste vara det namn som anges i [de skyddade inställningarna](#protected-settings).
+mdsdHttpProxy | (Valfritt) Proxyn som anges i [de skyddade inställningarna](#protected-settings). Om det privata värdet anges åsidosätts det offentliga värdet. Placera proxyinställningar som innehåller en hemlighet, till exempel ett lösenord, i [de skyddade inställningarna](#protected-settings).
 
-Återstående element beskrivs i detalj i följande avsnitt.
+Följande avsnitt innehåller information om de återstående elementen.
 
 ### <a name="ladcfg"></a>ladCfg
 
@@ -357,9 +368,9 @@ mdsdHttpProxy | valfritt Samma som i de [skyddade inställningarna](#protected-s
 }
 ```
 
-Den här strukturen styr insamlingen av mått och loggar för leverans till Azure Metrics-tjänsten och andra data mottagare. Du måste ange antingen `performanceCounters` eller `syslogEvents` eller båda. Du måste ange `metrics` strukturen.
+Strukturen `ladCfg` styr insamlingen av mått och loggar för leverans till Azure Monitor Metrics-tjänsten och till andra data mottagare. Ange `performanceCounters` antingen `syslogEvents` eller eller båda. Ange även `metrics` strukturen.
 
-Om du inte vill aktivera syslog eller mått samling kan du bara ange en tom struktur för ladCfg-elementet enligt nedan – 
+Om du inte vill aktivera syslog eller måttsamling anger du en tom struktur för elementet, som `ladCfg` i det här exemplet: 
 
 ```json
 "ladCfg": {
@@ -369,8 +380,8 @@ Om du inte vill aktivera syslog eller mått samling kan du bara ange en tom stru
 
 Element | Värde
 ------- | -----
-eventVolume | valfritt Styr antalet partitioner som skapats i lagrings tabellen. Måste vara en av `"Large"` , `"Medium"` eller `"Small"` . Om inget värde anges är standardvärdet `"Medium"` .
-sampleRateInSeconds | valfritt Standard intervallet mellan samling av RAW-mått (unaggregerade). Den minsta samplings frekvensen som stöds är 15 sekunder. Om inget värde anges är standardvärdet `15` .
+eventVolume | (Valfritt) Styr antalet partitioner som skapas i lagringstabellen. Värdet måste vara `"Large"` , `"Medium"` eller `"Small"` . Om värdet inte anges är standardvärdet `"Medium"` .
+sampleRateInSeconds | (Valfritt) Standardintervallet mellan insamlingen av råa (ej aggregerade) mått. Den minsta samplingsfrekvensen som stöds är 15 sekunder. Om värdet inte anges är standardvärdet `15` .
 
 #### <a name="metrics"></a>metrics
 
@@ -386,10 +397,10 @@ sampleRateInSeconds | valfritt Standard intervallet mellan samling av RAW-mått 
 
 Element | Värde
 ------- | -----
-resourceId | Azure Resource Manager resurs-ID för den virtuella datorn eller den virtuella datorns skalnings uppsättning som den virtuella datorn tillhör. Den här inställningen måste också anges om en JsonBlob-mottagare används i konfigurationen.
-scheduledTransferPeriod | Den frekvens med vilken aggregerade mått ska beräknas och överföras till Azure-mått, uttryckt som ett 8601-tidsintervall. Den minsta överförings perioden är 60 sekunder, det vill säga PT1M. Du måste ange minst en scheduledTransferPeriod.
+resourceId | Det Azure Resource Manager resurs-ID:t för den virtuella datorn eller vm-skalningsuppsättningen som den virtuella datorn tillhör. Ange även den här inställningen om konfigurationen använder någon `JsonBlob` mottagare.
+scheduledTransferPeriod | Den frekvens med vilken aggregeringsmått beräknas och överförs Azure Monitor mått. Frekvensen uttrycks som ett IS 8601-tidsintervall. Den minsta överföringsperioden är 60 sekunder, det vill säga PT1M. Ange minst en `scheduledTransferPeriod` .
 
-Exempel på de mått som anges i avsnittet performanceCounters samlas in var 15: e sekund eller vid den samplings frekvens som uttryckligen definierats för räknaren. Om flera scheduledTransferPeriod frekvenser visas (som i exemplet) beräknas varje agg regering oberoende av varandra.
+Exempel på de mått som anges i avsnittet samlas in var 15:e sekund eller med den `performanceCounters` samplingsfrekvens som uttryckligen definierats för räknaren. Om flera `scheduledTransferPeriod` frekvenser visas, som i exemplet, beräknas varje aggregering oberoende av varandra.
 
 #### <a name="performancecounters"></a>performanceCounters
 
@@ -416,42 +427,50 @@ Exempel på de mått som anges i avsnittet performanceCounters samlas in var 15:
 }
 ```
 
-Det här valfria avsnittet styr insamlingen av mått. RAW-exempel sammanställs för varje [scheduledTransferPeriod](#metrics) för att producera följande värden:
+Det `performanceCounters` valfria avsnittet styr insamlingen av mått. Rådata sammanställs för var och en [`scheduledTransferPeriod`](#metrics) för att skapa dessa värden:
 
-* medelvärde
-* min
-* max
-* senast insamlat värde
-* antal RAW-exempel som används för att beräkna mängden
+* Medelvärde
+* Minimum
+* Maximal
+* Senast insamlade värden
+* Antal råexempel som används för att beräkna aggregeringen
 
 Element | Värde
 ------- | -----
-mottagare | valfritt En kommaavgränsad lista över namn på mottagare som LAD skickar sammanställda mått resultat till. Alla sammansatta mått publiceras till varje mottagen mottagare. Se [sinksConfig](#sinksconfig). Exempel: `"EHsink1, myjsonsink"`.
-typ | Identifierar den faktiska providern för måttet.
-klass | Tillsammans med "Counter" identifierar det angivna måttet i namn området för providern.
-räknare | Tillsammans med "Class" identifierar det angivna måttet i namn området för providern.
-counterSpecifier | Identifierar det speciella måttet i namn området för Azure-mått.
-moduletype | valfritt Väljer en speciell instans av objektet som måttet gäller för eller väljer agg regeringen för alla instanser av objektet. Mer information finns i `builtin` mått definitionerna.
-sampleRate | ÄR 8601 intervall som anger med vilken hastighet rå samplingar för det här måttet samlas in. Om den inte anges anges samlings intervallet av värdet för [sampleRateInSeconds](#ladcfg). Den kortaste samplings frekvensen är 15 sekunder (PT15S).
-unit | Måste vara en av följande strängar: "count", "bytes", "Seconds", "percent", "CountPerSecond", "BytesPerSecond", "Millisekunde". Definierar måttets enhet. Användare av insamlade data förväntar sig insamlade datavärden som matchar den här enheten. LAD ignorerar det här fältet.
-displayName | Etiketten (på det språk som anges av den associerade språk inställningen) som ska kopplas till dessa data i Azure-mått. LAD ignorerar det här fältet.
+Sjunker | (Valfritt) En kommaavgränsad lista med namn på mottagare som LAD skickar aggregerade måttresultat till. Alla aggregerade mått publiceras till varje mottagare i listan. Exempel: `"EHsink1, myjsonsink"`. Mer information finns i [`sinksConfig`](#sinksconfig). 
+typ | Identifierar den faktiska providern av måttet.
+klass | Tillsammans med `"counter"` identifierar det specifika måttet inom leverantörens namnområde.
+räknare | Tillsammans med `"class"` identifierar det specifika måttet i providerns namnområde.
+counterSpecifier | Identifierar det specifika måttet i Azure Monitor metrics-namnområdet.
+Villkor | (Valfritt) Väljer en instans av objektet som måttet gäller för. Eller väljer aggregeringen för alla instanser av objektet. 
+Samplerate | IS 8601-intervallet som anger med vilken hastighet råprover för det här måttet samlas in. Om värdet inte anges anges samlingsintervallet med värdet [`sampleRateInSeconds`](#ladcfg) . Den kortaste samplingsfrekvensen som stöds är 15 sekunder (PT15S).
+unit | Definierar måttenheten. Bör vara någon av dessa strängar: `"Count"` , , , , , , `"Bytes"` `"Seconds"` `"Percent"` `"CountPerSecond"` `"BytesPerSecond"` `"Millisecond"` . Konsumenter av insamlade data förväntar sig att insamlade datavärden matchar den här enheten. LAD ignorerar det här fältet.
+displayName | Etiketten som ska kopplas till data i Azure Monitor Mått. Den här etiketten är på det språk som anges av den associerade språkinställningen. LAD ignorerar det här fältet.
 
-CounterSpecifier är en godtycklig identifierare. Konsumenter av mått, som Azure Portal funktion för diagram och avisering, använder counterSpecifier som "Key" som identifierar ett mått eller en instans av ett mått. För `builtin` mått rekommenderar vi att du använder counterSpecifier-värden som börjar med `/builtin/` . Om du samlar in en speciell instans av ett mått rekommenderar vi att du kopplar instansens identifierare till counterSpecifier-värdet. Några exempel:
+är `counterSpecifier` en godtycklig identifierare. Konsumenter av mått, till exempel Azure Portal och aviseringsfunktionen, använder som "nyckel" som identifierar ett mått eller en `counterSpecifier` instans av ett mått. 
 
-* `/builtin/Processor/PercentIdleTime` -Inaktiv tid i genomsnitt för alla virtuella processorer
-* `/builtin/Disk/FreeSpace(/mnt)` – Ledigt utrymme för/mnt-filsystem
-* `/builtin/Disk/FreeSpace` – Genomsnittligt utrymme i genomsnitt i alla monterade fil system
+För `builtin` mått rekommenderar vi värden som börjar med `counterSpecifier` `/builtin/` . Om du samlar in en specifik instans av ett mått kopplar du instansens identifierare till `counterSpecifier` värdet. Här är några exempel:
 
-Varken LAD eller Azure Portal förväntar sig att counterSpecifier-värdet matchar eventuella mönster. Var konsekvent i hur du skapar counterSpecifier-värden.
+* `/builtin/Processor/PercentIdleTime` – Inaktivitetstid i genomsnitt för alla virtuella processorer
+* `/builtin/Disk/FreeSpace(/mnt)` – Ledigt utrymme för `/mnt` filsystemet
+* `/builtin/Disk/FreeSpace` – Ledigt utrymme i genomsnitt för alla monterade filsystem
 
-När du anger `performanceCounters` skriver lad alltid data till en tabell i Azure Storage. Du kan ha samma data som skrivits till JSON-blobbar och/eller Event Hubs, men du kan inte inaktivera lagring av data i en tabell. Alla instanser av diagnostiskt tillägg som kon figurer ATS för att använda samma lagrings konto namn och slut punkt lägger till sina mått och loggar i samma tabell. Om för många virtuella datorer skrivs till samma Table-partition kan Azure begränsa skrivningar till den partitionen. Inställningen eventVolume gör att poster sprids över 1 (små), 10 (medel) eller 100 (stora) olika partitioner. Normalt räcker "medium" för att säkerställa att trafiken inte begränsas. Azure Metrics-funktionen i Azure Portal använder data i den här tabellen för att skapa grafer eller utlösa aviseringar. Tabell namnet är sammanfogningen av dessa strängar:
+LAD och Azure Portal förväntar sig inte att `counterSpecifier` värdet matchar något mönster. Var konsekvent i hur du skapar `counterSpecifier` värden.
+
+När du anger `performanceCounters` skriver LAD alltid data till en tabell i Azure Storage. Samma data kan skrivas till JSON-blobar eller Event Hubs eller båda. Men du kan inte inaktivera lagring av data i en tabell. 
+
+Alla instanser av LAD som använder samma lagringskontonamn och slutpunkt lägger till sina mått och loggar i samma tabell. Om för många virtuella datorer skriver till samma tabellpartition kan Azure begränsa skrivningar till den partitionen. 
+
+Inställningen `eventVolume` gör att poster sprids över 1 (liten), 10 (medel) eller 100 (stora) partitioner. Vanligtvis räcker det med medelstora partitioner för att undvika trafikbegränsning. 
+
+Funktionen Azure Monitor mått i den här Azure Portal använder data i den här tabellen för att skapa grafer eller utlösa aviseringar. Tabellnamnet är sammanfogningen av dessa strängar:
 
 * `WADMetrics`
-* "ScheduledTransferPeriod" för de sammanställda värdena som lagras i tabellen
+* `"scheduledTransferPeriod"`för aggregerade värden som lagras i tabellen
 * `P10DV2S`
-* Ett datum, i formatet "ÅÅÅÅMMDD", som ändras var 10: e dag
+* Ett datum i formuläret "YYYYMMDD" som ändras var 10:e dag
 
-Exempel: `WADMetricsPT1HP10DV2S20170410` och `WADMetricsPT1MP10DV2S20170609` .
+Exempel är `WADMetricsPT1HP10DV2S20170410` och `WADMetricsPT1MP10DV2S20170609` .
 
 #### <a name="syslogevents"></a>syslogEvents
 
@@ -466,29 +485,31 @@ Exempel: `WADMetricsPT1HP10DV2S20170410` och `WADMetricsPT1MP10DV2S20170609` .
 }
 ```
 
-Det här valfria avsnittet styr samlingen av logg händelser från syslog. Om avsnittet utelämnas, samlas inga Syslog-händelser in alls.
+Det `syslogEvents` valfria avsnittet styr insamlingen av logghändelser från syslog. Om avsnittet utelämnas avbildas inte syslog-händelser alls.
 
-SyslogEventConfiguration-samlingen har en post för varje syslog-funktion. Om minSeverity är "ingen" för en viss anläggning, eller om denna funktion inte visas i elementet alls, så fångas inga händelser från den funktionen.
+Samlingen `syslogEventConfiguration` har en post för varje syslog-anläggning av intresse. Om är för en viss anläggning, eller om den anläggningen inte visas i elementet alls, fångas inga händelser från `minSeverity` `"NONE"` den anläggningen.
 
 Element | Värde
 ------- | -----
-mottagare | En kommaavgränsad lista över namn på mottagare som enskilda logg händelser publiceras till. Alla logg händelser som matchar begränsningarna i syslogEventConfiguration publiceras till varje mottagen mottagare. Exempel: "EHforsyslog"
-facilityName | Ett syslog-servernamn (till exempel "LOG \_ User" eller "log \_ LOCAL0"). Se avsnittet "anläggning" på [sidan syslog-man](http://man7.org/linux/man-pages/man3/syslog.3.html) för den fullständiga listan.
-minSeverity | En syslog-allvarlighets nivå (till exempel "LOG \_ Err" eller "logg \_ information"). Se avsnittet "nivå" på [sidan syslog-man](http://man7.org/linux/man-pages/man3/syslog.3.html) för den fullständiga listan. Tillägget fångar händelser som skickas till anläggningen på eller över den angivna nivån.
+Sjunker | En kommaavgränsad lista med namn på mottagare som enskilda logghändelser publiceras till. Alla logghändelser som matchar begränsningarna i `syslogEventConfiguration` publiceras till varje mottagare i listan. Exempel: `"EHforsyslog"`
+facilityName | Ett syslog-anläggningsnamn, till `"LOG\_USER"` exempel eller `"LOG\_LOCAL0"` . Mer information finns i avsnittet "anläggning" på [syslog-man-sidan.](http://man7.org/linux/man-pages/man3/syslog.3.html)
+minSeverity | En allvarlighetsgrad för syslog, till exempel `"LOG\_ERR"` eller `"LOG\_INFO"` . Mer information finns i avsnittet "nivå" på [syslog man-sidan](http://man7.org/linux/man-pages/man3/syslog.3.html). Tillägget samlar in händelser som skickas till anläggningen på eller över den angivna nivån.
 
-När du anger `syslogEvents` skriver lad alltid data till en tabell i Azure Storage. Du kan ha samma data som skrivits till JSON-blobbar och/eller Event Hubs, men du kan inte inaktivera lagring av data i en tabell. Partitionerings beteendet för den här tabellen är detsamma som beskrivs för `performanceCounters` . Tabell namnet är sammanfogningen av dessa strängar:
+När du anger `syslogEvents` skriver LAD alltid data till en tabell i Azure Storage. Samma data kan skrivas till JSON-blobar eller Event Hubs eller båda. Men du kan inte inaktivera lagring av data i en tabell. 
+
+Partitioneringsbeteendet för den här tabellen är detsamma som det som beskrivs för `performanceCounters` . Tabellnamnet är sammanfogningen av dessa strängar:
 
 * `LinuxSyslog`
-* Ett datum, i formatet "ÅÅÅÅMMDD", som ändras var 10: e dag
+* Ett datum i formuläret "YYYYMMDD" som ändras var 10:e dag
 
-Exempel: `LinuxSyslog20170410` och `LinuxSyslog20170609` .
+Exempel är `LinuxSyslog20170410` och `LinuxSyslog20170609` .
 
 ### <a name="sinksconfig"></a>sinksConfig
 
-Det här valfria avsnittet styr aktivering av mått till Azure Monitor-mottagare utöver lagrings kontot och standard måttet för gäst mått.
+Det `sinksConfig` valfria avsnittet gör det möjligt att skicka mått till Azure Monitor-mottagaren utöver lagringskontot och standardbladet gästmått.
 
 > [!NOTE]
-> Detta kräver att systemtilldelad identitet aktive ras på de virtuella datorerna/VMSS. Detta kan göras via portal, CLI, PowerShell och Resource Manager. Stegen visas i detalj [här](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md). Stegen för att aktivera detta finns också i installations exemplen för AZ CLI, PowerShell osv. 
+> Avsnittet `sinksConfig` kräver att system tilldelad identitet är aktiverat på de virtuella datorerna eller VM-skalningsuppsättningen. Du kan aktivera system tilldelad identitet via Azure Portal, CLI, PowerShell eller Azure Resource Manager. Följ de [detaljerade anvisningarna](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) eller se tidigare installationsexempel i den här artikeln. 
 
 ```json
   "sinksConfig": {
@@ -505,10 +526,10 @@ Det här valfria avsnittet styr aktivering av mått till Azure Monitor-mottagare
 
 ### <a name="filelogs"></a>fileLogs
 
-Styr avbildningen av loggfiler. LAD fångar nya text rader när de skrivs till filen och skriver dem till tabell rader och/eller angivna handfat (JsonBlob eller EventHub).
+Avsnittet `fileLogs` styr insamlingen av loggfiler. LAD samlar in nya textrader när de skrivs till filen. Den skriver dem till tabellrader och/eller angivna mottagare, till exempel `JsonBlob` och `EventHub` .
 
 > [!NOTE]
-> fileLogs fångas upp av en del komponent i LAD som anropas `omsagent` . För att kunna samla in fileLogs måste du se till att `omsagent` användaren har Läs behörighet för de filer som du anger, samt kör behörigheter för alla kataloger i sökvägen till filen. Du kan kontrol lera detta genom att köra `sudo su omsagent -c 'cat /path/to/file'` när lad har installerats.
+> `fileLogs`avbildas av en delkomponent av LAD som kallas `omsagent` . Om du `fileLogs` vill samla in ser du till att användaren har `omsagent` läsbehörighet för de filer som du anger. Den måste också ha körbehörighet för alla kataloger i sökvägen till filen. När LAD har installerats kan du kontrollera behörigheterna genom att köra `sudo su omsagent -c 'cat /path/to/file'` .
 
 ```json
 "fileLogs": [
@@ -522,18 +543,18 @@ Styr avbildningen av loggfiler. LAD fångar nya text rader när de skrivs till f
 
 Element | Värde
 ------- | -----
-file | Den fullständiga sökvägen till logg filen som ska bevakas och fångas. Sökvägen måste ha ett namn på en enskild fil. den kan inte namnge en katalog eller innehålla jokertecken. Användar kontot "omsagent" måste ha Läs behörighet till fil Sök vägen.
-tabell | valfritt Azure Storage-tabellen, i det angivna lagrings kontot (enligt vad som anges i den skyddade konfigurationen), som nya rader från "änden" av filen skrivs till.
-mottagare | valfritt En kommaavgränsad lista över namn på ytterligare mottagare som logg rader skickas till.
+file | Den fullständiga sökvägen till loggfilen som ska övervakas och avbildas. Sökvägen är för en enskild fil. Den kan inte namnge en katalog eller innehålla jokertecken. Användarkontot `omsagent` måste ha läsbehörighet till filsökvägen.
+tabell | (Valfritt) Den Azure Storage tabell där nya rader från "slutet" av filen skrivs. Tabellen måste finnas i det angivna lagringskontot, enligt vad som anges i den skyddade konfigurationen. 
+Sjunker | (Valfritt) En kommaavgränsad lista med namn på fler mottagare som loggrader skickas till.
 
-Du måste ange antingen "table" eller "Sinks" eller båda.
+Antingen `"table"` eller eller båda måste `"sinks"` anges.
 
 ## <a name="metrics-supported-by-the-builtin-provider"></a>Mått som stöds av den inbyggda providern
 
 > [!NOTE]
-> Standard måtten som stöds av LAD sammanställs för alla fil system/diskar/namn. För icke-aggregerade mått, referera till det senaste stödet för Azure Monitor Sink-mått.
+> Standardmåtten som LAD stöder sammanställs över alla filsystem, diskar eller namn. För icke-aggregerade mått kan du gå till det nyare Azure Monitor stöd för statistik för mottagare.
 
-Den inbyggda mått leverantören är en källa till mått som är mest intressanta för en bred uppsättning användare. Dessa mått delas in i fem breda klasser:
+Måttleverantören `builtin` är en källa till mått som är mest intressanta för en bred uppsättning användare. Dessa mått är indela i fem breda klasser:
 
 * Processor
 * Minne
@@ -541,127 +562,140 @@ Den inbyggda mått leverantören är en källa till mått som är mest intressan
 * Filsystem
 * Disk
 
-### <a name="builtin-metrics-for-the-processor-class"></a>inbyggda mått för processor klassen
+### <a name="builtin-metrics-for-the-processor-class"></a>inbyggda mått för processorklassen
 
-Processor klassen för mått ger information om processor användning på den virtuella datorn. När procent andelen beräknas är resultatet genomsnittet för alla CPU: er. I en vCPU virtuell dator, om en vCPU var 100% upptagen och den andra var 100% inaktiv, skulle den rapporterade PercentIdleTime vara 50. Om varje vCPU var 50% upptagen för samma period skulle det rapporterade resultatet också vara 50. I en vCPU virtuell dator med fyra virtuella datorer, med en vCPU på 100% upptagen och andra inaktiva, skulle den rapporterade PercentIdleTime vara 75.
+Måttklassen Processor innehåller information om processoranvändningen på den virtuella datorn. När procentandelar aggregeras är resultatet medelvärdet för alla processorer. 
 
-räknare | Innebörd
+Om en virtuell dator med två vCPU:er är 100 procent upptagen och den andra är 100 procent inaktiv är den rapporterade `PercentIdleTime` 50. Om varje vCPU är 50 procent upptagen under samma period är det rapporterade resultatet också 50. När en virtuell dator med fyra virtuella processor är 100 procent upptagen och de andra är inaktiva är den rapporterade `PercentIdleTime` 75.
+
+Räknare | Innebörd
 ------- | -------
-PercentIdleTime | Procent andel av tiden under agg regerings perioden som processorerna körde kernel Idle-slingan
-PercentProcessorTime | Procent andel av tiden som en icke-inaktiv tråd körs
-PercentIOWaitTime | Procent andel av tid i väntan på att IO-åtgärder ska slutföras
-PercentInterruptTime | Procent andel av tiden som maskin vara/program avbrott och DPC-anrop (uppskjutna steg) körs
-PercentUserTime | Vid icke-inaktivitet under agg regerings perioden, den procent andel av tiden som ägnats åt användare mer med normal prioritet
-PercentNiceTime | För icke-inaktivitet, procent andelen för sänkt (snyggt) prioritet
-PercentPrivilegedTime | För icke-inaktivitet, procent andelen förbrukat i kernelläge
+PercentIdleTime | Procentandel tid under aggregeringsfönstret som processorerna körde kernel-inaktivitetsloopen
+PercentProcessorTime | Procentandel tid som kör en icke-inaktiv tråd
+PercentIOWaitTime | Procentandel av tiden som väntar på att I/A-åtgärder ska slutföras
+PercentInterruptTime | Procentandel tid som kör avbrott i maskinvara eller programvara och DPC (uppskjutna procedursamtal)
+PercentUserTime | Av icke-inaktiv tid under aggregeringsfönstret, procentandelen tid som ägnats i användarläge med normal prioritet
+PercentNiceTime | Av icke-inaktiv tid har procentandelen som spenderats på lägre (bra) prioritet
+PercentPrivilegedTime | Av icke-inaktiv tid förbrukades procentandelen i privilegierat läge (kernel)
 
-De första fyra räknarna ska summera till 100%. De sista tre räknarna summerar också till 100%; de sammanslager summan av PercentProcessorTime, PercentIOWaitTime och PercentInterruptTime.
+De första fyra räknarna ska summeras till 100 procent. De sista tre räknarna summeras också till 100 procent. Dessa tre räknare delar in summan av `PercentProcessorTime` , `PercentIOWaitTime` och `PercentInterruptTime` .
 
-### <a name="builtin-metrics-for-the-memory-class"></a>inbyggda mått för minnes klassen
+### <a name="builtin-metrics-for-the-memory-class"></a>inbyggda mått för klassen Memory
 
-Minnes klassen för mått ger information om minnes användning, växling och växling.
+Måttklassen Minne innehåller information om minnesanvändning, växling och växling.
 
 räknare | Innebörd
 ------- | -------
 AvailableMemory | Tillgängligt fysiskt minne i MiB
-PercentAvailableMemory | Tillgängligt fysiskt minne som en procent andel av det totala minnet
-UsedMemory | Förbrukat fysiskt minne (MiB)
-PercentUsedMemory | Fysiskt minne i bruk som en procent andel av det totala minnet
-PagesPerSec | Total växling (Läs/skriv)
-PagesReadPerSec | Sidor läses från lagrings plats (växlings fil, program fil, mappad fil osv.)
-PagesWrittenPerSec | Sidor som skrivs till lagrings platsen (växlings fil, mappad fil osv.)
-AvailableSwap | Oanvänt växlings utrymme (MiB)
-PercentAvailableSwap | Oanvänt växlings utrymme i procent av total växling
-UsedSwap | Använd växlings utrymme (MiB)
-PercentUsedSwap | Använd växlings utrymme i procent av total växling
+PercentAvailableMemory | Tillgängligt fysiskt minne som en procentandel av det totala minnet
+UsedMemory | Fysiskt minne som används (MiB)
+PercentUsedMemory | Fysiskt minne används som en procentandel av det totala minnet
+PagesPerSec | Totalt antal sidinläsningar (läsning/skrivning)
+PagesReadPerSec | Sidor som läses från lagringslagret, till exempel växlingsfil, programfil och mappad fil
+PagesWrittenPerSec | Sidor som skrivits till lagringslagret, till exempel växlingsfil och mappad fil
+AvailableSwap | Oanvänd växlingsutrymme (MiB)
+PercentAvailableSwap | Oanvänd växlingsutrymme som en procentandel av den totala växlingen
+UsedSwap | Växlingsutrymme under användning (MiB)
+PercentUsedSwap | Växlingsutrymme under användning som en procentandel av den totala växlingen
 
-Den här klassen av mått har bara en enda instans. Attributet "Condition" har inga användbara inställningar och bör utelämnas.
+Den här måttklassen har bara en instans. Attributet `"condition"` har inga användbara inställningar och bör utelämnas.
 
-### <a name="builtin-metrics-for-the-network-class"></a>inbyggda mått för nätverks klassen
+### <a name="builtin-metrics-for-the-network-class"></a>inbyggda mått för klassen Network
 
-Nätverks klassen för mått ger information om nätverks aktivitet i ett enskilt nätverks gränssnitt sedan start. LAD visar inte bandbredds mått som kan hämtas från värd mått.
+Måttklassen Nätverk innehåller information om nätverksaktivitet i ett enskilt nätverksgränssnitt sedan starten. 
 
-räknare | Innebörd
+LAD exponerar inte bandbreddsmått. Du kan hämta dessa mått från värdmått.
+
+Räknare | Innebörd
 ------- | -------
-BytesTransmitted | Totalt antal byte som har skickats sedan start
-BytesReceived | Totalt antal mottagna byte sedan start
-BytesTotal | Totalt antal byte som skickats eller tagits emot sedan start
-PacketsTransmitted | Totalt antal paket som har skickats sedan start
-PacketsReceived | Totalt antal mottagna paket sedan start
-TotalRxErrors | Antal mottagna fel sedan start
-TotalTxErrors | Antal överförings fel sedan start
-TotalCollisions | Antal kollisioner som rapporter ATS av nätverks portarna sedan start
+BytesTransmitted | Totalt antal byte som skickats sedan starten
+ByteReceived | Totalt antal byte som tagits emot sedan starten
+BytesTotal | Totalt antal byte som skickats eller tagits emot sedan starten
+Paket som haröversatts | Totalt antal paket som skickats sedan starten
+PacketsReceived | Totalt antal paket som tagits emot sedan starten
+TotalRxErrors | Antal mottagningsfel sedan starten
+TotalTxErrors | Antal överföringsfel sedan starten
+TotalCollisions | Antal kollisioner som rapporterats av nätverksportarna sedan starten
 
-### <a name="builtin-metrics-for-the-filesystem-class"></a>inbyggda mått för klassen fil system
+### <a name="builtin-metrics-for-the-file-system-class"></a>inbyggda mått för filsystemklassen
 
-Klassen system för mått innehåller information om fil Systems användning. Absoluta och procentuella värden rapporteras när de visas för en vanlig användare (inte rot).
+Filsystemklassen med mått innehåller information om filsystemanvändning. Absoluta värden och procentvärden rapporteras som de skulle visas för en vanlig användare (inte rot).
 
-räknare | Innebörd
+Räknare | Innebörd
 ------- | -------
-LedigtUtrymme | Tillgängligt disk utrymme i byte
-UsedSpace | Använt disk utrymme i byte
-PercentFreeSpace | Ledigt utrymme i procent
-PercentUsedSpace | Använt utrymme i procent
-PercentFreeInodes | Procent andel oanvända noder i procent
-PercentUsedInodes | Procent andel allokerade (används) noder i procent summeras i alla fil system
-BytesReadPerSecond | Lästa byte per sekund
-BytesWrittenPerSecond | Skrivna byte per sekund
-BytesPerSecond | Lästa byte eller skrivna byte per sekund
-ReadsPerSecond | Läs åtgärder per sekund
-WritesPerSecond | Skriv åtgärder per sekund
-TransfersPerSecond | Läs-eller Skriv åtgärder per sekund
+LedigtUtrymme | Tillgängligt diskutrymme i byte
+UsedSpace | Använt diskutrymme i byte
+PercentFreeSpace | Procentandel ledigt utrymme
+PercentUsedSpace | Procentandel använt utrymme
+PercentFreeInodes | Procentandel oanvända indexnoder (i noder)
+PercentUsedInodes | Procentandel allokerade (används) i -odes summerade i alla filsystem
+ByteReadPerSecond | Byte läses per sekund
+BytesWrittenPerSecond | Byte skrivna per sekund
+BytePerSecond | Byte som läses eller skrivs per sekund
+ReadsPerSecond | Läsåtgärder per sekund
+WritesPerSecond | Skrivåtgärder per sekund
+TransfersPerSecond | Läs- eller skrivåtgärder per sekund
 
-### <a name="builtin-metrics-for-the-disk-class"></a>inbyggda mått för disk klassen
+### <a name="builtin-metrics-for-the-disk-class"></a>inbyggda mått för diskklassen
 
-Disk klassen för mått innehåller information om disk enhets användning. Den här statistiken gäller hela enheten. Om det finns flera fil system på en enhet, är räknarna för enheten på ett effektivt sätt sammantaget över alla.
+Måttklassen Disk innehåller information om diskenhetsanvändning. Den här statistiken gäller för hela enheten. 
 
-räknare | Innebörd
+När en enhet har flera filsystem aggregeras räknarna för den enheten effektivt i alla filsystem.
+
+Räknare | Innebörd
 ------- | -------
-ReadsPerSecond | Läs åtgärder per sekund
-WritesPerSecond | Skriv åtgärder per sekund
+ReadsPerSecond | Läsåtgärder per sekund
+WritesPerSecond | Skrivåtgärder per sekund
 TransfersPerSecond | Totalt antal åtgärder per sekund
-AverageReadTime | Genomsnittligt antal sekunder per Läs åtgärd
-AverageWriteTime | Genomsnittligt antal sekunder per Skriv åtgärd
-AverageTransferTime | Genomsnittligt antal sekunder per åtgärd
-AverageDiskQueueLength | Genomsnittligt antal disk åtgärder i kö
+AverageReadTime | Genomsnittliga sekunder per läsåtgärd
+AverageWriteTime | Genomsnittliga sekunder per skrivåtgärd
+AverageTransferTime | Genomsnittliga sekunder per åtgärd
+AverageDiskQueueLength | Genomsnittligt antal diskåtgärder i kö
 ReadBytesPerSecond | Antal lästa byte per sekund
-WriteBytesPerSecond | Antal skrivna byte per sekund
-BytesPerSecond | Antal lästa byte eller skrivna per sekund
+WriteBytesPerSecond | Antal byte som skrivits per sekund
+BytesPerSecond | Antal lästa eller skrivna byte per sekund
 
-## <a name="installing-and-configuring-lad-40"></a>Installera och konfigurera LAD 4,0
+## <a name="install-and-configure-lad-40"></a>Installera och konfigurera LAD 4.0
+
+Du kan installera och konfigurera LAD 4.0 i Azure CLI eller i PowerShell.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Förutsatt att dina skyddade inställningar finns i filen ProtectedSettings.jspå och din offentliga konfigurations information är i PublicSettings.jspå, kör du följande kommando:
+Om dina skyddade inställningar finns i filen *ProtectedSettings.jspå* och din offentliga konfigurationsinformation finns i *PublicSettings.jskör* du det här kommandot:
 
 ```azurecli
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-Kommandot förutsätter att du använder Azures resurs hanterings läge i Azure CLI. Om du vill konfigurera LAD för virtuella datorer med klassisk distributions modell (ASM) växlar du till "ASM"-läge ( `azure config mode asm` ) och utelämnar resurs gruppens namn i kommandot. Mer information finns i dokumentationen för plattforms [oberoende CLI](/cli/azure/authenticate-azure-cli).
+Kommandot förutsätter att du använder Azure Resource Management-läget i Azure CLI. Om du vill konfigurera LAD för den klassiska distributionsmodellens virtuella datorer växlar du till "asm"-läge ( ) och utelämnar `azure config mode asm` resursgruppens namn i kommandot . 
+
+Mer information finns i [cli-dokumentationen för flera plattformar.](/cli/azure/authenticate-azure-cli)
 
 ### <a name="powershell"></a>PowerShell
 
-Under förutsättning att dina skyddade inställningar finns i `$protectedSettings` variabeln och din offentliga konfigurations information finns i `$publicSettings` variabeln, kör du följande kommando:
+Om dina skyddade inställningar finns i `$protectedSettings` variabeln och din offentliga konfigurationsinformation finns i `$publicSettings` variabeln kör du det här kommandot:
 
 ```powershell
 Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 4.0
 ```
 
-## <a name="an-example-lad-40-configuration"></a>Ett exempel på en LAD 4,0-konfiguration
+## <a name="example-lad-40-configuration"></a>Exempel på LAD 4.0-konfiguration
 
-Baserat på föregående definitioner är här ett exempel på en LAD 4,0-tilläggs konfiguration med en förklaring. Om du vill använda det här exemplet i ditt fall bör du använda ditt eget lagrings konto namn, SAS-token för konto och EventHubs SAS-token.
+Det här avsnittet, som baseras på föregående definitioner, innehåller ett exempel på konfiguration av LAD 4.0-tillägget och en förklaring. Om du vill använda det här exemplet i ditt fall använder du ditt eget lagringskontonamn, kontots SAS-token och Event Hubs SAS-token.
 
 > [!NOTE]
-> Beroende på om du använder Azure CLI eller PowerShell för att installera LAD, kommer metoden för att tillhandahålla offentliga och skyddade inställningar att variera. Om du använder Azure CLI sparar du följande inställningar för att ProtectedSettings.jspå och PublicSettings.jspå som ska användas med exempel kommandot ovan. Om du använder PowerShell sparar du inställningarna till `$protectedSettings` och `$publicSettings` genom att köra `$protectedSettings = '{ ... }'` .
+> Beroende på om du använder Azure CLI eller PowerShell för att installera LAD, skiljer sig metoden för att tillhandahålla offentliga och skyddade inställningar: 
+>
+> * Om du använder Azure CLI sparar du följande inställningar för *attProtectedSettings.jspå* och *PublicSettings.jsvidare* för att använda föregående exempelkommando. 
+> * Om du använder PowerShell sparar du följande inställningar i och `$protectedSettings` `$publicSettings` genom att köra `$protectedSettings = '{ ... }'` .
 
 ### <a name="protected-settings"></a>Skyddade inställningar
 
-De här skyddade inställningarna konfigureras:
+De skyddade inställningarna konfigurerar:
 
-* ett lagrings konto
-* en SAS-token för ett matchande konto
-* flera handfat (JsonBlob eller EventHubs med SAS-token)
+* Ett lagringskonto.
+* En matchande SAS-token för kontot.
+* Flera mottagare ( eller `JsonBlob` `EventHub` med SAS-token).
 
 ```json
 {
@@ -707,16 +741,16 @@ De här skyddade inställningarna konfigureras:
 
 ### <a name="public-settings"></a>Offentliga inställningar
 
-Dessa offentliga inställningar gör att LAD:
+De offentliga inställningarna gör att LAD:
 
-* Ladda upp måtten för procent-processor-och användnings disk utrymme till `WADMetrics*` tabellen
-* Ladda upp meddelanden från syslog-funktionen "User" och allvarlighets grad "info" till `LinuxSyslog*` tabellen
-* Överför rader som lagts till i filen `/var/log/myladtestlog` till `MyLadTestLog` tabellen
+* Ladda upp mätvärden för processortid i procent och mått för använt diskutrymme till `WADMetrics*` tabellen,
+* Ladda upp meddelanden från `"user"` systemloggen och `"info"` allvarlighetsgraden till `LinuxSyslog*` tabellen.
+* Ladda upp tilladdade rader i `/var/log/myladtestlog` filen till `MyLadTestLog` tabellen.
 
-I varje enskilt fall överförs data också till:
+I varje fall överförs även data till:
 
-* Azure Blob Storage (behållarens namn definieras i JsonBlob-sinken)
-* EventHubs-slutpunkt (som anges i EventHubs-mottagaren)
+* Azure Blob Storage. Containernamnet är enligt definitionen i `JsonBlob` mottagaren.
+* En Event Hubs slutpunkt som anges i `EventHubs` mottagaren.
 
 ```json
 {
@@ -796,35 +830,35 @@ I varje enskilt fall överförs data också till:
 }
 ```
 
-`resourceId`I konfigurationen måste vara samma som för den virtuella datorn eller skalnings uppsättningen för den virtuella datorn.
+i `resourceId` konfigurationen måste matcha den virtuella datorns eller den virtuella datorns skalningsuppsättning.
 
-* Azures plattforms mått diagram och aviseringar känner till resourceId för den virtuella dator som du arbetar med. Det förväntar sig att hitta data för din virtuella dator med hjälp av Sök nyckeln resourceId.
-* Om du använder automatisk skalning i Azure måste resourceId i konfigurationen för automatisk skalning matcha de resourceId som används av LAD.
-* ResourceId är inbyggt i namnen på JsonBlobs som skrivits av LAD.
+* Azure-plattformens måttdiagram och aviseringar känner till `resourceId` vilken virtuell dator du arbetar med. Den förväntar sig att hitta data för den virtuella datorn med `resourceId` hjälp av uppslagsnyckeln.
+* Om du använder Autoskalning i Azure måste `resourceId` konfigurationen för autoskalning matcha `resourceId` den som används av LAD.
+* `resourceId`är inbyggt i namnen på JSON-blobar som skrivits av LAD.
 
 ## <a name="view-your-data"></a>Visa dina data
 
-Använd Azure Portal för att visa prestanda data eller ange aviseringar:
+Använd Azure Portal för att visa prestandadata eller ställa in aviseringar:
 
-:::image type="content" source="./media/diagnostics-linux/graph_metrics.png" alt-text="Skärm bild som visar Azure Portal med använt disk utrymme på mått som valts och det resulterande diagrammet.":::
+:::image type="content" source="./media/diagnostics-linux/graph_metrics.png" alt-text="Skärmbild som visar Azure Portal. Måttet Använt diskutrymme har valts. Det resulterande diagrammet visas.":::
 
-`performanceCounters`Data lagras alltid i en Azure Storage tabell. Azure Storage-API: er är tillgängliga för många språk och plattformar.
+Data `performanceCounters` lagras alltid i en Azure Storage tabell. Azure Storage API:er är tillgängliga för många språk och plattformar.
 
-Data som skickas till JsonBlob-mottagare lagras i blobbar i lagrings kontot med de [skyddade inställningarna](#protected-settings). Du kan använda BLOB-data med hjälp av alla Azure Blob Storage-API: er.
+Data som skickas `JsonBlob` till mottagare lagras i blobar i lagringskontot med namnet i [de skyddade inställningarna](#protected-settings). Du kan använda blobdata i alla Azure Blob Storage API:er.
 
-Dessutom kan du använda dessa UI-verktyg för att komma åt data i Azure Storage:
+Du kan också använda dessa gränssnittsverktyg för att komma åt data i Azure Storage:
 
-* Visual Studio-Server Explorer.
-* [Skärm bild som visar behållare och tabeller i Azure Storage Explorer.](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
+* Visual Studio Server Explorer
+* [Azure Lagringsutforskaren](https://azurestorageexplorer.codeplex.com/)
 
-Den här ögonblicks bilden av en Microsoft Azure Storage Explorer-session visar de genererade Azure Storage tabellerna och behållarna från ett korrekt konfigurerat LAD 3,0-tillägg på en virtuell test dator. Avbildningen stämmer inte exakt med [exemplet på LAD 3,0-konfigurationen](#an-example-lad-40-configuration).
+Följande skärmbild av en Azure Storage Explorer session visar de genererade Azure Storage och containrar från ett korrekt konfigurerat LAD 4.0-tillägg på en virtuell test-dator. Avbildningen matchar inte exakt [LAD 4.0-exempelkonfigurationen](#example-lad-40-configuration).
 
-:::image type="content" source="./media/diagnostics-linux/stg_explorer.png" alt-text="Skärm bild som visar Azure Storage Explorer.":::
+:::image type="content" source="./media/diagnostics-linux/stg_explorer.png" alt-text="Skärmbild som visar Azure Storage Explorer.":::
 
-Se relevant [EventHubs-dokumentation](../../event-hubs/event-hubs-about.md) för att lära dig hur du använder meddelanden som publicerats till en EventHubs-slutpunkt.
+Mer information om hur du använder meddelanden som publicerats till en Event Hubs-slutpunkt finns i relevant [Event Hubs dokumentation](../../event-hubs/event-hubs-about.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Skapa mått varningar i [Azure Monitor](../../azure-monitor/alerts/alerts-classic-portal.md) för de mått som du samlar in.
-* Skapa [övervaknings diagram](../../azure-monitor/data-platform.md) för dina mått.
-* Lär dig hur du [skapar en skalnings uppsättning för virtuella datorer](../linux/tutorial-create-vmss.md) med hjälp av dina mått för att styra autoskalning.
+* I [Azure Monitor](../../azure-monitor/alerts/alerts-classic-portal.md)skapar du aviseringar för de mått som du samlar in.
+* [Skapa övervakningsdiagram](../../azure-monitor/data-platform.md) för dina mått.
+* [Skapa en VM-skalningsuppsättning](../linux/tutorial-create-vmss.md) med hjälp av dina mått för att styra autoskalning.

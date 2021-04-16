@@ -1,28 +1,28 @@
 ---
 title: Definiera flera instanser av en egenskap
-description: Använd kopierings åtgärden i en Azure Resource Manager mall (ARM-mall) om du vill iterera flera gånger när du skapar en egenskap för en resurs.
+description: Använd kopieringsåtgärden i en Azure Resource Manager mall (ARM-mall) för att iterera flera gånger när du skapar en egenskap på en resurs.
 ms.topic: conceptual
 ms.date: 04/01/2021
-ms.openlocfilehash: 94bc153a49f80694ab9b2d5b04fdf57e8a12e8c8
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 16c293f1c3aff64aeb8b6cae4b7f1aa14dcd0a77
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385759"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480009"
 ---
-# <a name="property-iteration-in-arm-templates"></a>Egenskaps upprepning i ARM-mallar
+# <a name="property-iteration-in-arm-templates"></a>Egenskaps iteration i ARM-mallar
 
-Den här artikeln visar hur du skapar fler än en instans av en egenskap i din Azure Resource Manager-mall (ARM-mall). Genom att lägga till en kopierings slinga i avsnittet Egenskaper för en resurs i mallen kan du dynamiskt ange antalet objekt för en egenskap under distributionen. Du behöver inte heller upprepa syntaxen för mallar.
+Den här artikeln visar hur du skapar fler än en instans av en egenskap i din Azure Resource Manager mall (ARM-mall). Genom att lägga till en kopieringsloop i egenskapsavsnittet för en resurs i mallen kan du dynamiskt ange antalet objekt för en egenskap under distributionen. Du undviker också att behöva upprepa mallsyntaxen.
 
-Du kan bara använda Copy-loop med toppnivå resurser, även när du använder kopierings slinga till en egenskap. Mer information om hur du ändrar en underordnad resurs till en resurs på den översta nivån finns i [iteration för en underordnad resurs](copy-resources.md#iteration-for-a-child-resource).
+Du kan bara använda en kopieringsloop med resurser på den översta nivån, även när du tillämpar en kopieringsloop på en egenskap. Mer information om hur du ändrar en underordnad resurs till en resurs på den översta nivån finns [i Iteration for a child resource (Iteration för en underordnad resurs).](copy-resources.md#iteration-for-a-child-resource)
 
-Du kan också använda kopierings slinga med [resurser](copy-resources.md), [variabler](copy-variables.md)och [utdata](copy-outputs.md).
+Du kan också använda en kopieringsloop [med](copy-resources.md)resurser, [variabler](copy-variables.md) [och utdata.](copy-outputs.md)
 
 ## <a name="syntax"></a>Syntax
 
 # <a name="json"></a>[JSON](#tab/json)
 
-Lägg till `copy` elementet i avsnittet resurser i mallen för att ange antalet objekt för en egenskap. Kopierings elementet har följande allmänna format:
+Lägg till `copy` elementet i resursavsnittet i mallen för att ange antalet objekt för en egenskap. Kopieringselementet har följande allmänna format:
 
 ```json
 "copy": [
@@ -34,22 +34,22 @@ Lägg till `copy` elementet i avsnittet resurser i mallen för att ange antalet 
 ]
 ```
 
-För `name` anger du namnet på den resurs egenskap som du vill skapa.
+För `name` anger du namnet på den resursegenskap som du vill skapa.
 
-`count`Egenskapen anger antalet iterationer som du vill använda för egenskapen.
+Egenskapen `count` anger antalet iterationer som du vill använda för egenskapen .
 
-`input`Egenskapen anger de egenskaper som du vill upprepa. Du skapar en matris med element som skapats från värdet i `input` egenskapen.
+Egenskapen `input` anger de egenskaper som du vill upprepa. Du skapar en matris med element som skapas från värdet i `input` egenskapen .
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
-Loopar kan användas för att deklarera flera egenskaper med:
+Loopar kan användas för att deklarera flera egenskaper genom att:
 
 - Iterera över en matris:
 
   ```bicep
   <property-name>: [for <item> in <collection>: {
     <properties>
-  }
+  }]
   ```
 
 - Iterera över elementen i en matris
@@ -57,35 +57,35 @@ Loopar kan användas för att deklarera flera egenskaper med:
   ```bicep
   <property-name>: [for (<item>, <index>) in <collection>: {
     <properties>
-  }
+  }]
   ```
 
-- Använda loop-index
+- Använda loopindex
 
   ```bicep
   <property-name>: [for <index> in range(<start>, <stop>): {
     <properties>
-  }
+  }]
   ```
 
 ---
 
-## <a name="copy-limits"></a>Kopierings gränser
+## <a name="copy-limits"></a>Kopieringsgränser
 
-Antalet får inte överskrida 800.
+Antalet får inte överstiga 800.
 
-Antalet får inte vara ett negativt tal. Det kan vara noll om du distribuerar mallen med en senare version av Azure CLI, PowerShell eller REST API. Mer specifikt måste du använda:
+Antalet får inte vara ett negativt tal. Det kan vara noll om du distribuerar mallen med en ny version av Azure CLI, PowerShell eller REST API. Mer specifikt måste du använda:
 
-- Azure PowerShell **2,6** eller senare
-- Azure CLI- **2.0.74** eller senare
+- Azure PowerShell **2.6** eller senare
+- Azure CLI **2.0.74** eller senare
 - REST API version **2019-05-10** eller senare
-- [Länkade distributioner](linked-templates.md) måste använda API version **2019-05-10** eller senare för distributions resurs typen
+- [Länkade distributioner](linked-templates.md) måste använda API-version **2019-05-10** eller senare för distributionsresurstypen
 
-Tidigare versioner av PowerShell, CLI och REST API stöder inte noll för Count.
+Tidigare versioner av PowerShell, CLI och REST API stöder inte noll för antal.
 
-## <a name="property-iteration"></a>Egenskaps upprepning
+## <a name="property-iteration"></a>Egenskaps iteration
 
-I följande exempel visas hur du använder kopiera loop till `dataDisks` egenskapen på en virtuell dator:
+I följande exempel visas hur du tillämpar en kopieringsloop på `dataDisks` egenskapen på en virtuell dator:
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -132,7 +132,7 @@ I följande exempel visas hur du använder kopiera loop till `dataDisks` egenska
 }
 ```
 
-Observera att när `copyIndex` du använder i en egenskap iteration måste du ange namnet på iterationen. Egenskapen iteration stöder också ett offset-argument. Förskjutningen måste komma efter namnet på iterationen, till exempel `copyIndex('dataDisks', 1)` .
+Observera att när du `copyIndex` använder inuti en egenskaps iteration måste du ange namnet på iterationen. Egenskaps iteration stöder också ett offset-argument. Förskjutningen måste komma efter namnet på iterationen, till exempel `copyIndex('dataDisks', 1)` .
 
 Den distribuerade mallen blir:
 
@@ -163,9 +163,9 @@ Den distribuerade mallen blir:
       ...
 ```
 
-Kopierings åtgärden är användbar när du arbetar med matriser eftersom du kan iterera igenom varje element i matrisen. Använd `length` funktionen på matrisen för att ange antalet iterationer och `copyIndex` för att hämta det aktuella indexet i matrisen.
+Kopieringsåtgärden är användbar när du arbetar med matriser eftersom du kan iterera genom varje element i matrisen. Använd funktionen `length` i matrisen för att ange antalet iterationer och för `copyIndex` att hämta det aktuella indexet i matrisen.
 
-I följande exempel mall skapas en failover-grupp för databaser som skickas in som en matris.
+I följande exempelmall skapas en redundansgrupp för databaser som skickas som en matris.
 
 ```json
 {
@@ -223,7 +223,7 @@ I följande exempel mall skapas en failover-grupp för databaser som skickas in 
 }
 ```
 
-`copy`Elementet är en matris så att du kan ange mer än en egenskap för resursen.
+Elementet `copy` är en matris så du kan ange fler än en egenskap för resursen.
 
 ```json
 {
@@ -306,7 +306,7 @@ Den distribuerade mallen blir:
 
 ---
 
-Du kan använda en iteration av resurs och egenskap tillsammans. Referera till egenskapen iteration efter namn.
+Du kan använda resurs- och egenskaps iteration tillsammans. Referera till egenskapens iteration efter namn.
 
 # <a name="json"></a>[JSON](#tab/json)
 
@@ -366,20 +366,20 @@ resource vnetname_resource 'Microsoft.Network/virtualNetworks@2018-04-01' = [for
 
 ---
 
-## <a name="example-templates"></a>Exempel på mallar
+## <a name="example-templates"></a>Exempelmallar
 
-I följande exempel visas ett vanligt scenario för att skapa mer än ett värde för en egenskap.
+I följande exempel visas ett vanligt scenario för att skapa fler än ett värde för en egenskap.
 
 |Mall  |Beskrivning  |
 |---------|---------|
-|[VM-distribution med ett variabel antal data diskar](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Distribuerar flera data diskar till en virtuell dator. |
+|[VM-distribution med ett variabelt antal datadiskar](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Distribuerar flera datadiskar med en virtuell dator. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Information om hur du går igenom självstudierna finns i [Självstudier: skapa flera resurs instanser med ARM-mallar](template-tutorial-create-multiple-instances.md).
-- För annan användning av kopierings slingan, se:
-  - [Resurs upprepning i ARM-mallar](copy-resources.md)
+- Om du vill gå igenom en självstudie [kan du gå igenom Självstudie: Skapa flera resursinstanser med ARM-mallar.](template-tutorial-create-multiple-instances.md)
+- För andra användningsområden för kopieringsloopen, se:
+  - [Resurs iteration i ARM-mallar](copy-resources.md)
   - [Variabel iteration i ARM-mallar](copy-variables.md)
-  - [Utdata iteration i ARM-mallar](copy-outputs.md)
-- Om du vill lära dig mer om avsnitten i en mall, se [förstå strukturen och syntaxen för ARM-mallar](template-syntax.md).
-- Information om hur du distribuerar din mall finns i [distribuera resurser med ARM-mallar och Azure PowerShell](deploy-powershell.md).
+  - [Iteration av utdata i ARM-mallar](copy-outputs.md)
+- Om du vill lära dig mer om avsnitten i en mall kan du [läsa Förstå strukturen och syntaxen för ARM-mallar.](template-syntax.md)
+- Information om hur du distribuerar mallen finns i [Distribuera resurser med ARM-mallar och Azure PowerShell](deploy-powershell.md).

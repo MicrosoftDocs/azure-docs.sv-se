@@ -1,47 +1,47 @@
 ---
-title: 'Självstudie: Distribuera WordPress på AKS-kluster med MySQL-flexibel server med hjälp av Azure CLI'
-description: Lär dig hur du snabbt skapar och distribuerar WordPress på AKS med Azure Database for MySQL-flexibel Server.
+title: 'Självstudie: Distribuera WordPress i AKS-kluster med MySQL – flexibel server med hjälp av Azure CLI'
+description: Lär dig hur du snabbt skapar och distribuerar WordPress på AKS med Azure Database for MySQL – flexibel server.
 ms.service: mysql
 author: mksuni
 ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.custom: mvc
-ms.openlocfilehash: 6f2b3d9f38fc04428678a71c9942fc7aa2182dc8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: b631173ed92905870e73e6c560d90aab08476ce1
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217201"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480162"
 ---
-# <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>Självstudie: Distribuera WordPress-app på AKS med Azure Database for MySQL-flexibel Server
+# <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>Självstudie: Distribuera WordPress-app på AKS med Azure Database for MySQL – flexibel server
 
-I den här snabb starten distribuerar du ett WordPress-program på Azure Kubernetes service (AKS)-kluster med Azure Database for MySQL-flexibel Server (för hands version) med Azure CLI. 
-**[AKS](../../aks/intro-kubernetes.md)** är en hanterad Kubernetes-tjänst som gör att du snabbt kan distribuera och hantera kluster. **[Azure Database for MySQL-flexibel Server (för hands version)](overview.md)** är en fullständigt hanterad databas tjänst som är utformad för att ge mer detaljerad kontroll och flexibilitet för funktioner i databas hantering och konfigurations inställningar. Den flexibla servern är i för hands version.
+I den här snabbstarten distribuerar du ett WordPress-program på Azure Kubernetes Service-kluster (AKS) med Azure Database for MySQL – flexibel server (förhandsversion) med hjälp av Azure CLI. 
+**[AKS](../../aks/intro-kubernetes.md)** är en hanterad Kubernetes-tjänst som gör att du snabbt kan distribuera och hantera kluster. **[Azure Database for MySQL – flexibel server (förhandsversion)](overview.md)** är en fullständigt hanterad databastjänst som har utformats för att ge mer detaljerad kontroll och flexibilitet över databashanteringsfunktioner och konfigurationsinställningar. För närvarande är flexibel server i förhandsversion.
 
 > [!NOTE]
-> - Azure Database for MySQL flexibel Server är för närvarande en offentlig för hands version
-> - Den här snabb starten förutsätter grundläggande kunskaper om Kubernetes-koncept, WordPress och MySQL.
+> - Azure Database for MySQL flexibel server är för närvarande i offentlig förhandsversion
+> - Den här snabbstarten förutsätter grundläggande kunskaper om Kubernetes-begrepp, WordPress och MySQL.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-- Den här artikeln kräver den senaste versionen av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+- Den här artikeln kräver den senaste versionen av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 > [!NOTE]
-> Om du kör kommandona i den här snabb starten lokalt (i stället för Azure Cloud Shell), måste du kontrol lera att du kör kommandona som administratör.
+> Om du kör kommandona i den här snabbstarten lokalt (i Azure Cloud Shell stället för att köra dem) ska du köra kommandona som administratör.
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-En Azure-resursgrupp är en logisk grupp där Azure-resurser distribueras och hanteras. Nu ska vi skapa en resurs grupp, *WordPress-projekt* med [AZ Group Create] [AZ-Group-Create]-kommandot på den *östra* platsen.
+En Azure-resursgrupp är en logisk grupp där Azure-resurser distribueras och hanteras. Nu ska vi skapa en resursgrupp, *wordpress-project* med kommandot [az group create][az-group-create] på *platsen eastus.*
 
 ```azurecli-interactive
 az group create --name wordpress-project --location eastus
 ```
 
 > [!NOTE]
-> Platsen för resurs gruppen är den plats där resurs gruppens metadata lagras. Det är också var dina resurser körs i Azure om du inte anger någon annan region när du skapar en resurs.
+> Platsen för resursgruppen är där resursgruppens metadata lagras. Det är också här dina resurser körs i Azure om du inte anger en annan region när resursen skapas.
 
 Följande exempelutdata visar den resursgrupp som skapats:
 
@@ -69,7 +69,7 @@ az aks create --resource-group wordpress-project --name myAKSCluster --node-coun
 Efter några minuter slutförs kommandot och returnerar JSON-formaterad information om klustret.
 
 > [!NOTE]
-> När du skapar ett AKS-kluster skapas en andra resurs grupp automatiskt för att lagra AKS-resurserna. Se [Varför är två resurs grupper skapade med AKS?](../../aks/faq.md#why-are-two-resource-groups-created-with-aks)
+> När du skapar ett AKS-kluster skapas automatiskt en andra resursgrupp för att lagra AKS-resurserna. Se [Varför skapas två resursgrupper med AKS?](../../aks/faq.md#why-are-two-resource-groups-created-with-aks)
 
 ## <a name="connect-to-the-cluster"></a>Anslut till klustret
 
@@ -86,7 +86,7 @@ az aks get-credentials --resource-group wordpress-project --name myAKSCluster
 ```
 
 > [!NOTE]
-> Kommandot ovan använder standard platsen för [konfigurations filen Kubernetes](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/), som är `~/.kube/config` . Du kan ange en annan plats för Kubernetes-konfigurations filen med *--File*.
+> Kommandot ovan använder standardplatsen för [Kubernetes-konfigurationsfilen](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/), som är `~/.kube/config` . Du kan ange en annan plats för Kubernetes-konfigurationsfilen med *hjälp av --file*.
 
 Du kan kontrollera anslutningen till klustret genom att köra kommandot [kubectl get]( https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) för att returnera en lista över klusternoderna.
 
@@ -101,45 +101,45 @@ NAME                       STATUS   ROLES   AGE     VERSION
 aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
-## <a name="create-an-azure-database-for-mysql---flexible-server"></a>Skapa en Azure Database for MySQL-flexibel Server
-Skapa en flexibel server med kommandot [AZ MySQL Flexible-Server Create](/cli/azure/mysql/flexible-server). Följande kommando skapar en server som använder tjänstens standardinställningar och värden från Azure CLI: s lokala kontext:
+## <a name="create-an-azure-database-for-mysql---flexible-server"></a>Skapa en Azure Database for MySQL – flexibel server
+Skapa en flexibel server med [kommandot az mysql flexible-server](/cli/azure/mysql/flexible-server)create. Följande kommando skapar en server med hjälp av tjänstens standardvärden och värden från din lokala Azure CLI-kontext:
 
 ```azurecli-interactive
 az mysql flexible-server create --public-access <YOUR-IP-ADDRESS>
 ```
 
-Servern som har skapats har följande attribut:
-- En ny tom databas ```flexibleserverdb``` skapas när servern först konfigureras. I den här snabb starten kommer vi att använda den här databasen.
-- Automatiskt genererad Server namn, administratörs användar namn, administratörs lösen ord, resurs grupp namn (om det inte redan har angetts i den lokala kontexten) och på samma plats som resurs gruppen
-- Standardinställningar för tjänsten för återstående serverkonfigurationer: beräknings nivå (burst), Compute size/SKU (B1MS), kvarhållning av säkerhets kopior (7 dagar) och MySQL-version (5,7)
-- Med hjälp av ett offentligt-Access-argument kan du skapa en server med offentlig åtkomst som skyddas av brand Väggs regler. Genom att ange IP-adressen för att lägga till brand Väggs regeln för att tillåta åtkomst från klient datorn.
-- Eftersom kommandot använder en lokal kontext skapas servern i resurs gruppen ```wordpress-project``` och i regionen ```eastus``` .
+Servern som skapas har attributen nedan:
+- En ny tom ```flexibleserverdb``` databas skapas när servern först etableras. I den här snabbstarten använder vi den här databasen.
+- Automatiskt genererat servernamn, administratörsnamn, administratörslösenord, resursgruppsnamn (om det inte redan anges i lokal kontext) och på samma plats som resursgruppen
+- Tjänstens standardinställningar för återstående serverkonfigurationer: beräkningsnivå (burstable), beräkningsstorlek/SKU (B1MS), kvarhållningsperiod för säkerhetskopior (7 dagar) och MySQL-version (5.7)
+- Med argumentet public-access kan du skapa en server med offentlig åtkomst som skyddas av brandväggsregler. Genom att ange din IP-adress för att lägga till brandväggsregeln för att tillåta åtkomst från klientdatorn.
+- Eftersom kommandot använder lokal kontext skapas servern i resursgruppen ```wordpress-project``` och i regionen ```eastus``` .
 
 
-### <a name="build-your-wordpress-docker-image"></a>Bygg din WordPress Docker-avbildning
+### <a name="build-your-wordpress-docker-image"></a>Skapa din Docker-avbildning för WordPress
 
-Hämta den [senaste WordPress](https://wordpress.org/download/) -versionen. Skapa en ny katalog ```my-wordpress-app``` för projektet och Använd den här enkla mappstrukturen
-
-```
-└───my-wordpress-app
-    └───public
-        ├───wp-admin
-        │   ├───css
-        . . . . . . .
-        ├───wp-content
-        │   ├───plugins
-        . . . . . . .
-        └───wp-includes
-        . . . . . . .
-        ├───wp-config-sample.php
-        ├───index.php
-        . . . . . . .
-    └─── Dockerfile
+Ladda ned [den senaste WordPress-versionen.](https://wordpress.org/download/) Skapa en ny ```my-wordpress-app``` katalog för projektet och använd den här enkla mappstrukturen
 
 ```
+â””â”€â”€â”€my-wordpress-app
+    â””â”€â”€â”€public
+        â”œâ”€â”€â”€wp-admin
+        â”‚   â”œâ”€â”€â”€css
+        . . . . . . .
+        â”œâ”€â”€â”€wp-content
+        â”‚   â”œâ”€â”€â”€plugins
+        . . . . . . .
+        â””â”€â”€â”€wp-includes
+        . . . . . . .
+        â”œâ”€â”€â”€wp-config-sample.php
+        â”œâ”€â”€â”€index.php
+        . . . . . . .
+    â””â”€â”€â”€ Dockerfile
+
+```
 
 
-Byt namn ```wp-config-sample.php```  till ```wp-config.php``` och ersätt raderna 21 till 32 med det här kodfragmentet. Kodfragmentet nedan läser databasens värd, användar namn och lösen ord från manifest filen för Kubernetes.
+Byt ```wp-config-sample.php```  namn på till och ersätt raderna ```wp-config.php``` 21 till 32 med det här kodfragmentet. Kodfragmentet nedan läser databasvärden , användarnamn och lösenord från Kubernetes-manifestfilen.
 
 ```php
 //Using environment variables for DB connection information
@@ -175,7 +175,7 @@ define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 ```
 
 ### <a name="create-a-dockerfile"></a>Hur du skapar en Dockerfile
-Skapa en ny Dockerfile och kopiera det här kodfragmentet. Den här Dockerfile konfigurerar Apache-webbservern med PHP och aktiverar mysqli-tillägget.
+Skapa en ny Dockerfile och kopiera det här kodfragmentet. Den här Dockerfile när du ställer in Apache-webbservern med PHP och aktiverar mysqli-tillägget.
 
 ```docker
 FROM php:7.2-apache
@@ -184,8 +184,8 @@ RUN docker-php-ext-install mysqli
 RUN docker-php-ext-enable mysqli
 ```
 
-### <a name="build-your-docker-image"></a>Bygg din Docker-avbildning
-Se till att du befinner dig i katalogen ```my-wordpress-app``` i en Terminal med hjälp av ```cd``` kommandot. Kör följande kommando för att skapa avbildningen:
+### <a name="build-your-docker-image"></a>Skapa dockeravbildningen
+Kontrollera att du är i katalogen i ```my-wordpress-app``` en terminal med hjälp av kommandot ```cd``` . Kör följande kommando för att skapa avbildningen:
 
 ``` bash
 
@@ -193,23 +193,23 @@ docker build --tag myblog:latest .
 
 ```
 
-Distribuera avbildningen till [Docker Hub](https://docs.docker.com/get-started/part3/#create-a-docker-hub-repository-and-push-your-image) eller [Azure Container Registry](../../container-registry/container-registry-get-started-azure-cli.md).
+Distribuera avbildningen till [Docker Hub](https://docs.docker.com/get-started/part3/#create-a-docker-hub-repository-and-push-your-image) eller [Azure Container Registry.](../../container-registry/container-registry-get-started-azure-cli.md)
 
 > [!IMPORTANT]
->Om du använder Azure Container regdistry (ACR) kör du ```az aks update``` kommandot för att ansluta ACR-konto till AKS-klustret.
+>Om du använder Azure Container Regdistry (ACR) kör du kommandot för att koppla ```az aks update``` ACR-kontot till AKS-klustret.
 >
 >```azurecli-interactive
 >az aks update -n myAKSCluster -g wordpress-project --attach-acr <your-acr-name>
 > ```
 >
 
-## <a name="create-kubernetes-manifest-file"></a>Skapa Kubernetes manifest fil
+## <a name="create-kubernetes-manifest-file"></a>Skapa Kubernetes-manifestfil
 
-En Kubernetes-manifestfil definierar ett önskat tillstånd för klustret, till exempel vilka containeravbildningar som ska köras. Nu ska vi skapa en manifest fil med namnet `mywordpress.yaml` och kopiera i följande yaml-definition.
+En Kubernetes-manifestfil definierar ett önskat tillstånd för klustret, till exempel vilka containeravbildningar som ska köras. Nu ska vi skapa en manifestfil med `mywordpress.yaml` namnet och kopiera följande YAML-definition.
 
 >[!IMPORTANT]
-> - Ersätt ```[DOCKER-HUB-USER/ACR ACCOUNT]/[YOUR-IMAGE-NAME]:[TAG]``` med ditt faktiska WordPress Docker-avbildnings namn och tagg, till exempel ```docker-hub-user/myblog:latest``` .
-> - Uppdaterings ```env``` avsnittet nedan med din ```SERVERNAME``` , ```YOUR-DATABASE-USERNAME``` , ```YOUR-DATABASE-PASSWORD``` av din MySQL-flexibla Server.
+> - Ersätt ```[DOCKER-HUB-USER/ACR ACCOUNT]/[YOUR-IMAGE-NAME]:[TAG]``` med det faktiska Docker-avbildningsnamnet och taggen för WordPress, till exempel ```docker-hub-user/myblog:latest``` .
+> - Uppdatera ```env``` avsnittet nedan med din , , för din flexibla ```SERVERNAME``` ```YOUR-DATABASE-USERNAME``` ```YOUR-DATABASE-PASSWORD``` MySQL-server.
 
 ```yaml
 apiVersion: apps/v1
@@ -287,7 +287,7 @@ Du kan övervaka förloppet genom att använda kommandot [kubectl get service](h
 kubectl get service wordpress-blog --watch
 ```
 
-Den *externa IP-adressen* för *WordPress-blogg* tjänsten visas som *väntar*.
+Till en *början visas EXTERNAL-IP* *för wordpress-blog-tjänsten* *som väntande*.
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
@@ -302,17 +302,17 @@ wordpress-blog  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 ### <a name="browse-wordpress"></a>Bläddra i WordPress
 
-Öppna en webbläsare till den externa IP-adressen för din tjänst för att se din WordPress-installations sida.
+Öppna en webbläsare till den externa IP-adressen för din tjänst för att se din WordPress-installationssida.
 
-   :::image type="content" source="./media/tutorial-deploy-wordpress-on-aks/wordpress-aks-installed-success.png" alt-text="WordPress-installationen lyckades på AKS och MySQL-flexibel Server":::
+   :::image type="content" source="./media/tutorial-deploy-wordpress-on-aks/wordpress-aks-installed-success.png" alt-text="Wordpress-installationen lyckades på AKS och MySQL – flexibel server":::
 
 >[!NOTE]
-> - För närvarande används inte HTTPS för WordPress-webbplatsen. Vi rekommenderar att du [aktiverar TLS med dina egna certifikat](../../aks/ingress-own-tls.md).
-> - Du kan aktivera [http-routning](../../aks/http-application-routing.md) för klustret.
+> - För närvarande använder inte WordPress-webbplatsen HTTPS. Vi rekommenderar att du [aktiverar TLS med dina egna certifikat.](../../aks/ingress-own-tls.md)
+> - Du kan aktivera [HTTP-routning](../../aks/http-application-routing.md) för klustret.
 
 ## <a name="clean-up-the-resources"></a>Rensa resurserna
 
-För att undvika Azure-avgifter bör du rensa resurser som inte behövs.  När klustret inte längre behövs kan du använda kommandot [az group delete](/cli/azure/group#az_group_delete) för att ta bort resursgruppen, containertjänsten och alla relaterade resurser.
+För att undvika Azure-avgifter bör du rensa onödiga resurser.  När klustret inte längre behövs kan du använda kommandot [az group delete](/cli/azure/group#az_group_delete) för att ta bort resursgruppen, containertjänsten och alla relaterade resurser.
 
 ```azurecli-interactive
 az group delete --name wordpress-project --yes --no-wait
@@ -325,6 +325,6 @@ az group delete --name wordpress-project --yes --no-wait
 
 - Lär dig hur du [kommer åt Kubernetes-webbinstrumentpanelen](../../aks/kubernetes-dashboard.md) för ditt AKS-kluster
 - Lär dig hur du [skalar klustret](../../aks/tutorial-kubernetes-scale.md)
-- Lär dig hur du hanterar din [MySQL-flexibla Server](./quickstart-create-server-cli.md)
-- Lär dig hur du [konfigurerar Server parametrar](./how-to-configure-server-parameters-cli.md) för din databas server.
+- Lär dig hur du hanterar din [flexibla MySQL-server](./quickstart-create-server-cli.md)
+- Lär dig hur [du konfigurerar serverparametrar](./how-to-configure-server-parameters-cli.md) för databasservern.
 

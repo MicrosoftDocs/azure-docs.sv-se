@@ -1,21 +1,21 @@
 ---
 author: baanders
-description: ta med fil för Azure Digitals dubbla komponenter – krav för att konfigurera en instans
+description: include file for Azure Digital Twins – förutsättning för att konfigurera en instans
 ms.service: digital-twins
 ms.topic: include
 ms.date: 10/29/2020
 ms.author: baanders
-ms.openlocfilehash: 3f46f7131d5465ec6542d9212e310c04a656f50c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 270be8a38a0419527622ffbdaa1874dfdc5d694c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774212"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480743"
 ---
-Om du vill arbeta med digitala Azure-objekt i den här artikeln måste du först **Konfigurera en digital Azure-instans** och de behörigheter som krävs för att använda den. Om du redan har en Azure Digital-instans som har kon figurer ATS från föregående arbete kan du använda den instansen.
+Om du vill Azure Digital Twins den här artikeln måste du först *konfigurera en Azure Digital Twins instans*. Du behöver också de behörigheter som krävs för att använda den. Om du redan har Azure Digital Twins en instans kan du använda den i stället.
 
-Annars följer du anvisningarna i [*instruktion: Konfigurera en instans och autentisering*](../articles/digital-twins/how-to-set-up-instance-portal.md). Instruktionerna innehåller också anvisningar för att kontrol lera att du har slutfört varje steg och att du är redo att gå vidare till att använda den nya instansen.
+Annars följer du anvisningarna i [Konfigurera en instans och autentisering](../articles/digital-twins/how-to-set-up-instance-portal.md). Anvisningarna innehåller information som hjälper dig att verifiera att du har slutfört varje steg.
 
-När du har konfigurerat Azure Digitals-instansen ska du anteckna följande värden som du behöver för att ansluta till instansen senare:
-* instansens **värdnamn**. Du kan hitta det här värdet i Azure Portal ([instruktioner](../articles/digital-twins/how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
-* den **Azure-prenumeration** som du använde för att skapa instansen (antingen dess namn eller ID fungerar). Du kan se vilken prenumeration en Azure Digitals-instans finns i genom att titta på samma *översikts* sida för din instans i [Azure Portal](https://portal.azure.com).
+Anteckna följande värden när du har ställt in instansen. Du behöver dessa värden för att ansluta till instansen senare:
+* Instansens *värdnamn*. Du hittar [värdnamnet i Azure Portal](../articles/digital-twins/how-to-set-up-instance-portal.md#verify-success-and-collect-important-values).
+* Den *Azure-prenumeration* som du använde för att skapa instansen. Antingen dess namn eller dess ID fungerar. Du hittar prenumerationen på sidan Översikt för **din instans** i [Azure Portal](https://portal.azure.com).

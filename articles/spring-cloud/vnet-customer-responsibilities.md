@@ -1,76 +1,76 @@
 ---
-title: Kund ansvar som kör Azure våren Cloud i VNet
-description: I den här artikeln beskrivs kund ansvar som kör Azure våren Cloud i VNet.
+title: Kundansvar som körs Azure Spring Cloud i vnet
+description: I den här artikeln beskrivs kundansvar som Azure Spring Cloud i vnet.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 91c8834b48625aac0f279f84648d374df15fbdd0
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.custom: devx-track-java
+ms.openlocfilehash: a6b444092ec4e3588564a3f902b49c4ed3dc5fe5
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285402"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376791"
 ---
-# <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>Kund ansvar för att köra Azure våren Cloud i VNET
-Det här dokumentet innehåller specifikationer för användning av Azure våren Cloud i ett virtuellt nätverk.
+# <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>Kundens ansvar för att Azure Spring Cloud i VNET
+Det här dokumentet innehåller specifikationer för användning av Azure Spring Cloud i ett virtuellt nätverk.
 
-När Azure våren Cloud distribueras i det virtuella nätverket har det utgående beroenden för tjänster utanför det virtuella nätverket. I hanterings-och drift syfte måste Azure våren-molnet komma åt vissa portar och fullständiga domän namn (FQDN). Dessa slut punkter krävs för att kommunicera med Azures moln hanterings plan och för att hämta och installera kärn Kubernetes-kluster komponenter och säkerhets uppdateringar.
+När Azure Spring Cloud distribueras i ditt virtuella nätverk har det utgående beroenden av tjänster utanför det virtuella nätverket. För hantering och drift måste Azure Spring Cloud komma åt vissa portar och fullständigt kvalificerade domännamn (FQDN). Dessa slutpunkter krävs för att kommunicera med Azure Spring Cloud-hanteringsplanet och för att ladda ned och installera kärnkomponenter för Kubernetes-kluster och säkerhetsuppdateringar.
 
-Som standard har Azure våren Cloud obegränsad utgående Internet åtkomst (utgående). Den här nivån av nätverks åtkomst innebär att program som du kör för att få åtkomst till externa resurser efter behov. Om du vill begränsa utgående trafik måste ett begränsat antal portar och adresser vara tillgängliga för underhålls aktiviteter. Den enklaste lösningen för att säkra utgående adresser är användning av en brand Väggs enhet som kan styra utgående trafik baserat på domän namn. Azure-brandväggen kan till exempel begränsa utgående HTTP-och HTTPS-trafik baserat på målets FQDN. Du kan också konfigurera önskade brand Väggs-och säkerhets regler för att tillåta dessa obligatoriska portar och adresser.
+Som standard Azure Spring Cloud obegränsad utgående (utgående) Internetåtkomst. Med den här nivån av nätverksåtkomst kan program som du kör komma åt externa resurser efter behov. Om du vill begränsa utgående trafik måste ett begränsat antal portar och adresser vara tillgängliga för underhållsaktiviteter. Den enklaste lösningen för att skydda utgående adresser är att använda en brandväggsenhet som kan styra utgående trafik baserat på domännamn. Azure Firewall kan till exempel begränsa utgående HTTP- och HTTPS-trafik baserat på målets FQDN. Du kan också konfigurera dina önskade brandväggs- och säkerhetsregler för att tillåta dessa portar och adresser som krävs.
 
-## <a name="azure-spring-cloud-resource-requirements"></a>Resurs krav för Azure våren Cloud 
+## <a name="azure-spring-cloud-resource-requirements"></a>Azure Spring Cloud resurskrav 
 
-Följande är en lista över resurs krav för Azure våren Cloud Services. Som ett allmänt krav bör du inte ändra resurs grupper som skapats av Azure våren Cloud och de underliggande nätverks resurserna.
-- Ändra inte resurs grupper som skapats och ägs av Azure våren Cloud.
-  - Som standard heter dessa resurs grupper som AP-SVC-rt_ [tjänst instans-namn]_[region] * och AP_[tjänst instans-namn] _ [region] *.
-- Ändra inte undernät som används av Azure våren Cloud.
-- Skapa inte fler än en Azure våren Cloud Service-instans i samma undernät.
-- När du använder en brand vägg för att styra trafiken ska du *inte* Blockera följande utgående trafik till moln komponenter i Azure våren som hanterar, underhåller och stöder tjänst instansen.
+Följande är en lista över resurskrav för Azure Spring Cloud tjänster. Som ett allmänt krav bör du inte ändra resursgrupper som skapats av Azure Spring Cloud och de underliggande nätverksresurserna.
+- Ändra inte resursgrupper som skapats och ägs av Azure Spring Cloud.
+  - Som standard namnges dessa resursgrupper som ap-svc-rt_[SERVICE-INSTANCE-NAME]_[REGION]* och ap_[SERVICE-INSTANCE-NAME]_[REGION]*.
+- Ändra inte undernät som används av Azure Spring Cloud.
+- Skapa inte fler än en Azure Spring Cloud tjänstinstans i samma undernät.
+- När du använder en  brandvägg för att styra trafik ska du inte blockera följande utgående trafik till Azure Spring Cloud-komponenter som använder, underhåller och stöder tjänstinstansen.
 
-## <a name="azure-spring-cloud-network-requirements"></a>Nätverks krav för Azure våren Cloud
+## <a name="azure-spring-cloud-network-requirements"></a>Azure Spring Cloud nätverkskrav
 
-  | Destinations slut punkt | Port | Användning | Anteckning |
+  | Målslutpunkt | Port | Användning | Anteckning |
   |------|------|------|------|
-  | *: 1194 *eller* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud: 1194 | UDP: 1194 | Underliggande hantering av Kubernetes-kluster. | |
-  | *: 443 *eller* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud: 443 | TCP: 443 | Azure våren Cloud Service Management. | Information om tjänst instansen "requiredTraffics" kan vara känd i resurs nytto lasten under avsnittet "networkProfile". |
-  | *: 9000 *eller* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureCloud: 9000 | TCP: 9000 | Underliggande hantering av Kubernetes-kluster. |
-  | *: 123 *eller* NTP.Ubuntu.com:123 | UDP: 123 | NTP-tidssynkronisering på Linux-noder. | |
-  | *. azure.io:443 *eller* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -AzureContainerRegistry: 443 | TCP: 443 | Azure Container Registry. | Kan ersättas genom att aktivera *Azure Container Registry* [tjänstens slut punkt i virtuellt nätverk](../virtual-network/virtual-network-service-endpoints-overview.md). |
-  | *. core.windows.net:443 och *. core.windows.net:445 *eller* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -Storage: 443 och lagring: 445 | TCP: 443, TCP: 445 | Azure File Storage | Kan ersättas genom att aktivera *Azure Storage* [tjänstens slut punkt i virtuellt nätverk](../virtual-network/virtual-network-service-endpoints-overview.md). |
-  | *. servicebus.windows.net:443 *eller* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -EventHub: 443 | TCP: 443 | Azure Event Hub. | Kan ersättas genom att aktivera *Azure Event Hubs* [service-slutpunkten i det virtuella nätverket](../virtual-network/virtual-network-service-endpoints-overview.md). |
+  | *:1194 *Eller* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) – AzureCloud:1194 | UDP:1194 | Underliggande Kubernetes-klusterhantering. | |
+  | *:443 *Eller* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) – AzureCloud:443 | TCP:443 | Azure Spring Cloud Service Management. | Information om tjänstinstansen "requiredTraffics" kan vara känd i resursnyttolasten under avsnittet "networkProfile". |
+  | *:9000 *Or* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) – AzureCloud:9000 | TCP:9000 | Underliggande Kubernetes-klusterhantering. |
+  | *:123 *Eller* ntp.ubuntu.com:123 | UDP:123 | NTP-tidssynkronisering på Linux-noder. | |
+  | *.azure.io:443 Or  [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) – AzureContainerRegistry:443 | TCP:443 | Azure Container Registry. | Kan ersättas genom att aktivera Azure Container Registry  [tjänstslutpunkt i det virtuella nätverket](../virtual-network/virtual-network-service-endpoints-overview.md). |
+  | *.core.windows.net:443 och *.core.windows.net:445 *Or* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) – Storage:443 och Storage:445 | TCP:443, TCP:445 | Azure File Storage | Kan ersättas genom att aktivera *Azure Storage* [tjänstslutpunkt i det virtuella nätverket](../virtual-network/virtual-network-service-endpoints-overview.md). |
+  | *.servicebus.windows.net:443 Or  [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) – EventHub:443 | TCP:443 | Azure Event Hub. | Kan ersättas genom att aktivera Azure Event Hubs  [tjänstslutpunkt i det virtuella nätverket](../virtual-network/virtual-network-service-endpoints-overview.md). |
   
 
-## <a name="azure-spring-cloud-fqdn-requirementsapplication-rules"></a>Krav för Azure våren Cloud FQDN/applikations regler
+## <a name="azure-spring-cloud-fqdn-requirementsapplication-rules"></a>Azure Spring Cloud FQDN-krav/programregler
 
-Azure-brandväggen tillhandahåller FQDN-taggen **AzureKubernetesService** för att förenkla följande konfigurationer:
+Azure Firewall innehåller FQDN-taggen **AzureKubernetesService** för att förenkla följande konfigurationer:
 
   | Mål-FQDN | Port | Användning |
   |------|------|------|
-  | *. azmk8s.io | HTTPS: 443 | Underliggande hantering av Kubernetes-kluster. |
-  | <i>mcr.microsoft.com</i> | HTTPS: 443 | Microsoft Container Registry (MCR). |
-  | *. cdn.mscr.io | HTTPS: 443 | MCR-lagring som backas upp av Azure CDN. |
-  | *. data.mcr.microsoft.com | HTTPS: 443 | MCR-lagring som backas upp av Azure CDN. |
-  | <i>management.azure.com</i> | HTTPS: 443 | Underliggande hantering av Kubernetes-kluster. |
-  | <i>* login.microsoftonline.com</i> | HTTPS: 443 | Azure Active Directory autentisering. |
-  | <i>* login.microsoft.com</i> | HTTPS: 443 | Azure Active Directory autentisering. |
-  |<i>packages.microsoft.com</i>    | HTTPS: 443 | Microsoft-paketets lagrings plats. |
-  | <i>acs-mirror.azureedge.net</i> | HTTPS: 443 | Lagrings plats som krävs för att installera nödvändiga binärfiler som Kubernetes och Azure CNI. |
-  | *mscrl.microsoft.com* | HTTPS: 80 | Obligatoriska sökvägar för Microsoft-certifikat kedjan. |
-  | *crl.microsoft.com* | HTTPS: 80 | Obligatoriska sökvägar för Microsoft-certifikat kedjan. |
-  | *crl3.digicert.com* | HTTPS: 80 | Sök vägar för SSL-certifikat från tredje part. |
+  | *.azmk8s.io | HTTPS:443 | Underliggande Kubernetes-klusterhantering. |
+  | <i>mcr.microsoft.com</i> | HTTPS:443 | Microsoft Container Registry (MCR). |
+  | *.cdn.mscr.io | HTTPS:443 | MCR-lagring backas upp av Azure CDN. |
+  | *.data.mcr.microsoft.com | HTTPS:443 | MCR-lagring backas upp av Azure CDN. |
+  | <i>management.azure.com</i> | HTTPS:443 | Underliggande Kubernetes-klusterhantering. |
+  | <i>*login.microsoftonline.com</i> | HTTPS:443 | Azure Active Directory autentisering. |
+  | <i>*login.microsoft.com</i> | HTTPS:443 | Azure Active Directory autentisering. |
+  |<i>packages.microsoft.com</i>    | HTTPS:443 | Lagringsplats för Microsoft-paket. |
+  | <i>acs-mirror.azureedge.net</i> | HTTPS:443 | Lagringsplats som krävs för att installera nödvändiga binärfiler som kubenet och Azure CNI. |
+  | *mscrl.microsoft.com* | HTTPS:80 | Sökvägar för Microsoft-certifikatkedjan som krävs. |
+  | *crl.microsoft.com* | HTTPS:80 | Sökvägar för Microsoft-certifikatkedjan som krävs. |
+  | *crl3.digicert.com* | HTTPS:80 | Sökvägar för SSL-certifikatkedjan från tredje part. |
   
-## <a name="azure-spring-cloud-optional-fqdn-for-third-party-application-performance-management"></a>Azure våren Cloud valfria FQDN för program prestanda hantering från tredje part
+## <a name="azure-spring-cloud-optional-fqdn-for-third-party-application-performance-management"></a>Azure Spring Cloud ett valfritt FQDN för prestandahantering av program från tredje part
 
-Azure-brandväggen tillhandahåller FQDN-taggen **AzureKubernetesService** för att förenkla följande konfigurationer:
+Azure Firewall innehåller FQDN-taggen **AzureKubernetesService** för att förenkla följande konfigurationer:
 
   | Mål-FQDN | Port | Användning                                                          |
   | ---------------- | ---- | ------------------------------------------------------------ |
-  | Collector *. newrelic. com | TCP: 443/80 | De nätverk som krävs för nya Relic APM-agenter från regionen USA, även i [nätverk med APM-agenter](https://docs.newrelic.com/docs/using-new-relic/cross-product-functions/install-configure/networks/#agents). |
-  | Collector *. eu01. nr-data.net | TCP: 443/80 | De nätverk som krävs för nya Relic APM-agenter från EU-region, kan också se [nätverk med APM-agenter](https://docs.newrelic.com/docs/using-new-relic/cross-product-functions/install-configure/networks/#agents). |
+  | collector*.newrelic.com | TCP:443/80 | Obligatoriska nätverk för New Relic APM-agenter från regionen USA, se även [APM Agent Networks](https://docs.newrelic.com/docs/using-new-relic/cross-product-functions/install-configure/networks/#agents). |
+  | collector*.eu01.nr-data.net | TCP:443/80 | Obligatoriska nätverk för New Relic APM-agenter från EU-regionen, se även [APM Agent Networks](https://docs.newrelic.com/docs/using-new-relic/cross-product-functions/install-configure/networks/#agents). |
 
 ## <a name="see-also"></a>Se även
 * [Få åtkomst till ditt program i ett privat nätverk](access-app-virtual-network.md)
-* [Exponera appar med hjälp av Application Gateway och Azure-brandväggen](expose-apps-gateway-azure-firewall.md)
+* [Exponera appar med Application Gateway och Azure Firewall](expose-apps-gateway-azure-firewall.md)

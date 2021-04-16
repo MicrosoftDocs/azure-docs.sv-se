@@ -1,42 +1,42 @@
 ---
-title: 'Snabb start: ansluta med Azure CLI – Azure Database for MySQL-flexibel Server'
-description: Den här snabb starten innehåller flera olika sätt att ansluta till Azure CLI med Azure Database for MySQL-flexibel Server.
+title: 'Snabbstart: Ansluta med Azure CLI – Azure Database for MySQL – flexibel server'
+description: Den här snabbstarten innehåller flera olika sätt att ansluta till Azure CLI med Azure Database for MySQL – flexibel server.
 author: mksuni
 ms.author: sumuth
 ms.service: mysql
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/01/2021
-ms.openlocfilehash: d40dfa9c8a79625910414409ac3a6df7045c31f2
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: e0fd5969a3c4f84b6e8f98e99335bf120179e7af
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490921"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481097"
 ---
-# <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>Snabb start: Anslut och fråga med Azure CLI med Azure Database for MySQL-flexibel Server
+# <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>Snabbstart: Ansluta och fråga med Azure CLI med Azure Database for MySQL – flexibel server
 
 > [!IMPORTANT]
-> Azure Database for MySQL-flexibel Server är för närvarande en offentlig för hands version.
+> Azure Database for MySQL – Flexibel server är för närvarande i offentlig förhandsversion.
 
-Den här snabb starten visar hur du ansluter till en Azure Database for MySQL flexibel server med hjälp av Azure CLI med ```az mysql flexible-server connect``` kommandot. Med det här kommandot kan du testa anslutningen till din databas server och köra frågor direkt mot servern.  Du kan också använda kör kommandot i ett interaktivt läge för att köra flera frågor.
+Den här snabbstarten visar hur du ansluter till en Azure Database for MySQL flexibel server med hjälp av Azure CLI med ```az mysql flexible-server connect``` kommandot . Med det här kommandot kan du testa anslutningen till databasservern och köra frågor direkt mot servern.  Du kan också köra kommandot i ett interaktivt läge för att köra flera frågor.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto. Om du inte har någon kan du [få en kostnads fri utvärderings version](https://azure.microsoft.com/free/).
+- Ett Azure-konto. Om du inte har någon kan du skaffa [en kostnadsfri utvärderingsversion.](https://azure.microsoft.com/free/)
 - Installera den senaste versionen av [Azure CLI](/cli/azure/install-azure-cli) (2.20.0 eller senare)
-- Logga in med kommandot Azure CLI med ```az login``` 
-- Aktivera parameter persistence med ```az config param-persist on``` . Parameter persistence hjälper dig att använda lokal kontext utan att behöva upprepa många argument, t. ex. resurs grupp eller plats osv.
+- Logga in med Azure CLI med ```az login``` kommandot 
+- Aktivera parameterpersistence med ```az config param-persist on``` . Parameterperssistence hjälper dig att använda lokal kontext utan att behöva upprepa många argument som resursgrupp eller plats osv.
 
-## <a name="create-an-mysql-flexible-server"></a>Skapa en MySQL-flexibel Server
+## <a name="create-an-mysql-flexible-server"></a>Skapa en flexibel MySQL-server
 
-Det första steget är att skapa en hanterad MySQL-server. Kör följande skript i [Azure Cloud Shell](https://shell.azure.com/)och anteckna **Server namnet**, **användar namnet** och  **lösen ordet** som genereras av det här kommandot.
+Det första steget är att skapa en hanterad MySQL-server. I [Azure Cloud Shell](https://shell.azure.com/)kör du följande skript och anteckning om **servernamnet,** **användarnamnet** och lösenordet  **som genererades** från det här kommandot.
 
 ```azurecli
 az mysql flexible-server create --public-access <your-ip-address>
 ```
 
-Du kan ange ytterligare argument för det här kommandot för att anpassa det. Se alla argument för [AZ MySQL Flexible Server Create](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_create).
+Du kan ange ytterligare argument för det här kommandot för att anpassa det. Se alla argument för [az mysql flexible-server create](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_create).
 
 ## <a name="create-a-database"></a>Skapa en databas
 Kör följande kommando för att skapa en databas, **newdatabase** om du inte redan har skapat en.
@@ -45,15 +45,15 @@ Kör följande kommando för att skapa en databas, **newdatabase** om du inte re
 az mysql flexible-server db create -d newdatabase
 ```
 
-## <a name="view-all-the-arguments"></a>Visa alla argument
-Du kan visa alla argument för det här kommandot med ```--help``` argumentet. 
+## <a name="view-all-the-arguments"></a>Visa alla argumenten
+Du kan visa alla argument för det här kommandot med ```--help``` argumentet . 
 
 ```azurecli
 az mysql flexible-server connect --help
 ```
 
-## <a name="test-database-server-connection"></a>Testa databas server anslutning
-Kör följande skript för att testa och validera anslutningen till databasen från utvecklings miljön.
+## <a name="test-database-server-connection"></a>Testa databasserveranslutningen
+Kör följande skript för att testa och verifiera anslutningen till databasen från utvecklingsmiljön.
 
 ```azurecli
 az mysql flexible-server connect -n <servername> -u <username> -p <password> -d <databasename>
@@ -64,21 +64,21 @@ az mysql flexible-server connect -n <servername> -u <username> -p <password> -d 
 az mysql flexible-server connect -n mysqldemoserver1 -u dbuser -p "dbpassword" -d newdatabase
 ```
 
-Du bör se följande utdata för lyckad anslutning:
+Du bör se följande utdata för att anslutningen ska lyckas:
 
 ```output
 Command group 'mysql flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 Connecting to newdatabase database.
 Successfully connected to mysqldemoserver1.
 ```
-Om anslutningen Miss lyckas kan du prova följande lösningar:
-- Kontrol lera om Port 3306 är öppen på klient datorn.
-- om Server administratörens användar namn och lösen ord är korrekta
-- Om du har konfigurerat brand Väggs regeln för klient datorn
-- Om du har konfigurerat servern med privat åtkomst i virtuella nätverk kontrollerar du att klient datorn finns i samma virtuella nätverk.
+Om anslutningen misslyckades kan du prova följande lösningar:
+- Kontrollera om port 3306 är öppen på klientdatorn.
+- om serveradministratörens användarnamn och lösenord är korrekta
+- om du har konfigurerat brandväggsregeln för klientdatorn
+- Om du har konfigurerat servern med privat åtkomst i virtuella nätverk kontrollerar du att klientdatorn finns i samma virtuella nätverk.
 
-## <a name="run-single-query"></a>Kör en enskild fråga
-Kör följande kommando för att köra en enskild fråga med ```--querytext``` argument, ```-q``` .
+## <a name="run-single-query"></a>Köra enskild fråga
+Kör följande kommando för att köra en enskild fråga med ```--querytext``` argumentet ```-q``` .
 
 ```azurecli
 az mysql flexible-server connect -n <server-name> -u <username> -p "<password>" -d <database-name> --querytext "<query text>"
@@ -89,7 +89,7 @@ az mysql flexible-server connect -n <server-name> -u <username> -p "<password>" 
 az mysql flexible-server connect -n mysqldemoserver1 -u dbuser -p "dbpassword" -d newdatabase -q "select * from table1;" --output table
 ```
 
-Du kommer att se utdata som visas nedan:
+Du ser utdata enligt nedan:
 
 ```output
 Command group 'mysql flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
@@ -111,7 +111,7 @@ test   200
 ```
 
 ## <a name="run-multiple-queries-using-interactive-mode"></a>Köra flera frågor med interaktivt läge
-Du kan köra flera frågor i **interaktivt** läge. Kör följande kommando för att aktivera interaktivt läge
+Du kan köra flera frågor i det **interaktiva** läget. Om du vill aktivera interaktivt läge kör du följande kommando
 
 ```azurecli
 az mysql flexible-server connect -n <server-name> -u <username> -p <password> --interactive
@@ -122,7 +122,7 @@ az mysql flexible-server connect -n <server-name> -u <username> -p <password> --
 az mysql flexible-server connect -n mysqldemoserver1 -u dbuser -p "dbpassword" -d newdatabase --interactive
 ```
 
-Du kommer att se **MySQL** -Shell-upplevelsen som visas nedan:
+Du ser **MySQL-gränssnittet** enligt nedan:
 
 ```bash
 Command group 'mysql flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
@@ -157,6 +157,6 @@ Your preference of  are now saved to local context. To learn more, type in `az l
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-* [Ansluta till Azure Database for MySQL-flexibel server med krypterade anslutningar](how-to-connect-tls-ssl.md)
+* [Ansluta till Azure Database for MySQL – flexibel server med krypterade anslutningar](how-to-connect-tls-ssl.md)
 * [Hantera servern](./how-to-manage-server-cli.md)
 

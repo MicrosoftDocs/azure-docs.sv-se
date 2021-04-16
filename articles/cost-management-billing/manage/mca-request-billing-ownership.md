@@ -1,21 +1,21 @@
 ---
-title: Få faktureringsägarskap för Azure-prenumerationer
-description: Lär dig hur du begär faktureringsägarskap för Azure-prenumerationer från andra användare.
+title: Överföra faktureringsägarskapet för en Azure-prenumeration för Microsoft-kundavtal
+description: Lär dig hur du överför faktureringsägarskapet för Azure-prenumerationer.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 12/09/2020
+ms.date: 04/08/2021
 ms.author: banders
-ms.openlocfilehash: ca55773b2deb74ea0647ed33df4040065762f94a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
-ms.translationtype: HT
+ms.openlocfilehash: 4cfb5c0b746ab8cf4ebb26ee0f755b34b6289982
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938485"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481437"
 ---
-# <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Få faktureringsägarskap för Azure-prenumerationer från andra konton
+# <a name="transfer-azure-subscription-billing-ownership-for-a-microsoft-customer-agreement"></a>Överföra faktureringsägarskapet för en Azure-prenumeration för Microsoft-kundavtal
 
 Du vill kanske ta över ägarskapet för Azure-prenumerationer om den befintliga faktureringsägaren lämnar din organisation, eller när du vill betala för prenumerationerna via ditt faktureringskonto. Om du tar över ägarskapet överförs faktureringsansvar för prenumerationer till ditt konto.
 

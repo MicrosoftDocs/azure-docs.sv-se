@@ -1,31 +1,31 @@
 ---
-ms.openlocfilehash: 55876d85e72555f51ce47b9bd77a961a194f4e4a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b51f52e24ca843abd94a8511e86b3193a797edd5
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307449"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107511092"
 ---
-## <a name="additional-prerequisites-for-java"></a>Ytterligare krav för Java
+## <a name="additional-prerequisites-for-java"></a>Ytterligare förutsättningar för Java
 För Java behöver du också:
 - [Java Development Kit (JDK)](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install) version 8 eller senare.
 - [Apache Maven](https://maven.apache.org/download.cgi).
 
-## <a name="setting-up"></a>Konfigurera
+## <a name="setting-up"></a>Inrätta
 
 ### <a name="create-a-new-java-application"></a>Skapa ett nytt Java-program
 
-Öppna terminalen eller kommando fönstret. Navigera till den katalog där du vill skapa ditt Java-program. Kör kommandot nedan för att skapa Java-projektet från maven-archetype-snabb starts mal len.
+Öppna terminalen eller kommandofönstret. Gå till katalogen där du vill skapa Java-programmet. Kör kommandot nedan för att generera Java-projektet från mallen maven-archetype-quickstart.
 
 ```console
 mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=communication-quickstart -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
 ```
 
-Du ser att aktiviteten "generera" skapade en katalog med samma namn som `artifactId` . Under den här katalogen innehåller src/main/Java-katalogen projekt käll koden, `src/test/java directory` innehåller test källan och `pom.xml` filen är projektets projekt objekt modell eller POM.
+Du ser att aktiviteten "generate" skapade en katalog med samma namn som `artifactId` . Under den här katalogen innehåller katalogen src/main/java projektkällkoden, innehåller testkällan och filen är projektets `src/test/java directory` Project Object Model eller `pom.xml` POM.
 
 ### <a name="install-the-package"></a>Installera paketet
 
-Öppna **pom.xml** -filen i text redigeraren. Lägg till följande beroende element i gruppen med beroenden.
+Öppna **pom.xml** i textredigeraren. Lägg till följande beroendeelement i gruppen med beroenden.
 
 ```xml
 <dependency>
@@ -47,7 +47,7 @@ Du ser att aktiviteten "generera" skapade en katalog med samma namn som `artifac
 
 ### <a name="use-the-sdk-packages"></a>Använda SDK-paketen
 
-Lägg till följande `import` direktiv i koden för att använda SDK: er för Azure Identity och Azure-kommunikation.
+Lägg till följande `import` -direktiv i koden för att använda AZURE Identity- och Azure Communication-ID:erna.
 
 ```java
 import com.azure.communication.common.*;
@@ -63,7 +63,7 @@ import java.util.*;
 
 ## <a name="create-a-defaultazurecredential"></a>Skapa en DefaultAzureCredential
 
-Vi använder [DefaultAzureCredential](/java/api/com.azure.identity.defaultazurecredential) för den här snabb starten. Den här autentiseringsuppgiften är lämplig för produktions-och utvecklings miljöer. Eftersom det behövs för varje åtgärd ska vi skapa den i- `App.java` klassen. Lägg till följande överst i- `App.java` klassen.
+Vi använder [DefaultAzureCredential för den](/java/api/com.azure.identity.defaultazurecredential) här snabbstarten. Dessa autentiseringsuppgifter är lämpliga för produktions- och utvecklingsmiljöer. Eftersom det behövs för varje åtgärd ska vi skapa den i `App.java` klassen . Lägg till följande överst i `App.java` klassen.
 
 ```java
 private TokenCredential credential = new DefaultAzureCredentialBuilder().build();
@@ -71,7 +71,7 @@ private TokenCredential credential = new DefaultAzureCredentialBuilder().build()
 
 ## <a name="issue-a-token-with-managed-identities"></a>Utfärda en token med hanterade identiteter
 
-Nu ska vi lägga till kod som använder den skapade autentiseringsuppgiften för att utfärda en VoIP-åtkomsttoken. Vi kallar den här koden senare.
+Nu ska vi lägga till kod som använder de autentiseringsuppgifter som skapats för att utfärda en VoIP-åtkomsttoken. Vi anropar den här koden senare.
 
 ```java
     public AccessToken createIdentityAndGetTokenAsync(String endpoint) {
@@ -87,7 +87,7 @@ Nu ska vi lägga till kod som använder den skapade autentiseringsuppgiften för
 
 ## <a name="send-an-sms-with-managed-identities"></a>Skicka ett SMS med hanterade identiteter
 
-Ett annat exempel på att använda hanterade identiteter är att lägga till den här koden som använder samma autentiseringsuppgift för att skicka ett SMS:
+Som ett annat exempel på hur du använder hanterade identiteter lägger vi till den här koden som använder samma autentiseringsuppgifter för att skicka ett SMS:
 
 ```java
      public SmsSendResult sendSms(String endpoint, String from, String to, String message) {
@@ -100,9 +100,9 @@ Ett annat exempel på att använda hanterade identiteter är att lägga till den
           return smsClient.send(from, to, message);
      }
 ```
-## <a name="write-the-main-method"></a>Skriv main-metoden
+## <a name="write-the-main-method"></a>Skriva Main-metoden
 
-Du `App.java` bör redan ha en huvud metod, vi lägger till kod som anropar den tidigare skapade koden för att demonstrera användningen av hanterade identiteter:
+Din bör redan ha en Main-metod. Nu ska vi lägga till kod som anropar vår tidigare skapade kod för att demonstrera användningen `App.java` av hanterade identiteter:
 ```java
     public static void main(String[] args) {
           App instance = new App();
@@ -122,7 +122,7 @@ Du `App.java` bör redan ha en huvud metod, vi lägger till kod som anropar den 
     }
 ```
 
-Din slutgiltiga `App.java` bör se ut så här:
+Den slutliga `App.java` bör se ut så här:
 
 ```java
 package com.communication.quickstart;
@@ -182,13 +182,13 @@ public class App
 
 ## <a name="run-the-code"></a>Kör koden
 
-Navigera till den katalog som innehåller *pom.xml* -filen och kompilera projektet med hjälp av följande `mvn` kommando.
+Navigera till katalogen som innehåller *pom.xml* och kompilera projektet med hjälp av följande `mvn` kommando.
 
 ```console
 mvn compile
 ```
 
-Sedan skapar du paketet.
+Skapa sedan paketet.
 
 ```console
 mvn package
@@ -200,7 +200,7 @@ Kör följande `mvn` kommando för att köra appen.
 mvn exec:java -Dexec.mainClass="com.communication.quickstart.App" -Dexec.cleanupDaemonThreads=false
 ```
 
-Slutgiltiga utdata bör se ut ungefär så här:
+De slutliga utdata bör likna följande:
 ```
 Retrieving new Access Token, using Managed Identities
 Retrieved Access Token: ey..A

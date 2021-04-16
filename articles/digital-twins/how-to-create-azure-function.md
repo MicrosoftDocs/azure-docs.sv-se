@@ -1,148 +1,150 @@
 ---
-title: Konfigurera en funktion i Azure för bearbetning av data
+title: Konfigurera en funktion i Azure för att bearbeta data
 titleSuffix: Azure Digital Twins
-description: Se hur du skapar en funktion i Azure som kan komma åt och utlösas av digitala dubbla.
+description: Se hur du skapar en funktion i Azure som kan komma åt och utlösas av digitala tvillingar.
 author: baanders
 ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f1ed4b9beda9848bba8fb12783f49dcf8016d3dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5dddaabf47a261f741b3b1cb8d3319d589c4e474
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104590627"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480766"
 ---
-# <a name="connect-function-apps-in-azure-for-processing-data"></a>Anslut funktions appar i Azure för att bearbeta data
+# <a name="connect-function-apps-in-azure-for-processing-data"></a>Ansluta funktionsappar i Azure för bearbetning av data
 
-Uppdatering av digitala dubbla objekt baserat på data hanteras med hjälp av [**händelse vägar**](concepts-route-events.md) genom beräknings resurser, till exempel en funktion som görs med hjälp av [Azure Functions](../azure-functions/functions-overview.md). Funktioner kan användas för att uppdatera ett digitalt som svar på:
-* data från enheten som kommer från IoT Hub
-* egenskaps ändring eller andra data som kommer från ett annat digitalt värde i den dubbla grafen
+Digitala tvillingar kan uppdateras baserat på data med hjälp av [händelsevägar via](concepts-route-events.md) beräkningsresurser. Till exempel kan en funktion som görs med hjälp av [Azure Functions](../azure-functions/functions-overview.md) uppdatera en digital tvilling som svar på:
+* Enhettelemetridata från Azure IoT Hub.
+* En egenskapsändring eller andra data från en annan digital tvilling i tvillingdiagrammet.
 
-Den här artikeln vägleder dig genom att skapa en funktion i Azure för användning med Azure Digital-dubbla. 
+Den här artikeln visar hur du skapar en funktion i Azure för användning med Azure Digital Twins. Om du vill skapa en funktion följer du dessa grundläggande steg:
 
-Här är en översikt över de steg som den innehåller:
+1. Skapa ett Azure Functions-projekt i Visual Studio.
+2. Skriv en funktion som har en [Azure Event Grid](../event-grid/overview.md) utlösare.
+3. Lägg till autentiseringskod i funktionen så att du kan komma åt Azure Digital Twins.
+4. Publicera funktionsappen i Azure.
+5. Konfigurera [säkerhet](concepts-security.md) för funktionsappen.
 
-1. Skapa ett Azure Functions-projekt i Visual Studio
-2. Skriv en funktion med en [Event Grid](../event-grid/overview.md) -utlösare
-3. Lägg till en autentiseringsnyckel till funktionen (för att kunna komma åt Azure Digital-dubbla)
-4. Publicera funktionsappen till Azure
-5. Konfigurera [säkerhets](concepts-security.md) åtkomst för Function-appen
-
-## <a name="prerequisite-set-up-azure-digital-twins-instance"></a>Förutsättning: Konfigurera Azure Digitals dubbla instanser
+## <a name="prerequisite-set-up-azure-digital-twins"></a>Krav: Konfigurera Azure Digital Twins
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
-## <a name="create-a-function-app-in-visual-studio"></a>Skapa en Function-app i Visual Studio
+## <a name="create-a-function-app-in-visual-studio"></a>Skapa en funktionsapp i Visual Studio
 
-I Visual Studio 2019 väljer du _fil > nytt > projekt_ och söker efter _Azure Functions_ -mallen. Välj _Nästa_.
+I Visual Studio 2019 väljer du **Arkiv**  >  **nytt**  >  **projekt.** Sök efter **Azure Functions** mall. Välj **Nästa**.
 
-:::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Skärm bild av Visual Studio som visar dialog rutan nytt projekt. Den Azure Functions projekt mal len är markerad.":::
+:::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Skärmbild av Visual Studio som visar dialogrutan för det nya projektet. Den Azure Functions projektmallen är markerad.":::
 
-Ange ett namn för Function-appen och välj _skapa_.
+Ange ett namn för funktionsappen och välj sedan __Skapa.__
 
-:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Skärm bild av Visual Studio som visar dialog rutan för att konfigurera ett nytt projekt, inklusive projekt namn, spara plats, val för att skapa en ny lösning och lösnings namn.":::
+:::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Skärmbild av Visual Studio visar dialogrutan för att konfigurera ett nytt projekt. Inställningarna omfattar projektnamn, spara plats, val för att skapa en ny lösning och lösningsnamn.":::
 
-Välj programmets typ av *Event Grid utlösare* och välj _skapa_.
+Välj den typ av **funktionsapp Event Grid utlösaren** och välj sedan __Skapa__.
 
-:::image type="content" source="media/how-to-create-azure-function/event-grid-trigger-function.png" alt-text="Skärm bild av Visual Studio som visar dialog rutan för att skapa ett nytt Azure Functions-program. Alternativet Event Grid utlösare är markerat.":::
+:::image type="content" source="media/how-to-create-azure-function/event-grid-trigger-function.png" alt-text="Skärmbild av Visual Studio visar dialogrutan för att skapa ett nytt Azure Functions program. Alternativet Event Grid utlösare är markerat.":::
 
-När din Function-app har skapats kommer Visual Studio att generera ett kod exempel i en **Function1. cs** -fil i projektmappen. Den här korta funktionen används för att logga händelser.
+När funktionsappen har skapats Visual Studio ett kodexempel i en *Function1.cs-fil* i projektmappen. Den här korta funktionen används för att logga händelser.
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Skärm bild av Visual Studio i projekt fönstret för det nya projektet som har skapats. Det finns en kod för en exempel funktion som kallas Function1." lightbox="media/how-to-create-azure-function/visual-studio-sample-code.png":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Skärmbild av Visual Studio. Projektfönstret för det nya projektet visas. Kod för en exempelfunktion visas i en fil som heter Function1." lightbox="media/how-to-create-azure-function/visual-studio-sample-code.png":::
 
-## <a name="write-a-function-with-an-event-grid-trigger"></a>Skriv en funktion med en Event Grid-utlösare
+## <a name="write-a-function-that-has-an-event-grid-trigger"></a>Skriva en funktion som har en Event Grid utlösare
 
-Du kan skriva en funktion genom att lägga till SDK i din Function-app. Function-appen interagerar med Azure Digitals dubbla med [Azure Digitals-SDK för .net (C#)](/dotnet/api/overview/azure/digitaltwins/client). 
+Du kan skriva en funktion genom att lägga till en SDK i funktionsappen. Funktionsappen interagerar med Azure Digital Twins med hjälp [av Azure Digital Twins SDK för .NET (C#).](/dotnet/api/overview/azure/digitaltwins/client) 
 
-För att kunna använda SDK måste du inkludera följande paket i projektet. Du kan antingen installera paketen med hjälp av Visual Studios NuGet Package Manager eller lägga till paketen med `dotnet` i ett kommando rads verktyg.
+Om du vill använda SDK:n måste du inkludera följande paket i projektet. Installera paketen med hjälp Visual Studio NuGet-pakethanteraren. Eller lägg till paketen med `dotnet` hjälp av i ett kommandoradsverktyg.
 
-* [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core/)
-* [Azure. Identity](https://www.nuget.org/packages/Azure.Identity/)
-* [System .net. http](https://www.nuget.org/packages/System.Net.Http/)
-* [Azure. Core](https://www.nuget.org/packages/Azure.Core/)
+* [Azure.DigitalTwins.Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core/)
+* [Azure.Identity](https://www.nuget.org/packages/Azure.Identity/)
+* [System.Net.Http](https://www.nuget.org/packages/System.Net.Http/)
+* [Azure.Core](https://www.nuget.org/packages/Azure.Core/)
 
-I Visual Studio-Solution Explorer öppnar du sedan filen _Function1. cs_ där du har exempel kod och lägger till följande `using` instruktioner för dessa paket i din funktion.
+I nästa Visual Studio Solution Explorer du filen _Function1.cs_ som innehåller exempelkoden. Lägg till följande `using` -instruktioner för paketen.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
-## <a name="add-authentication-code-to-the-function"></a>Lägg till autentiserings kod till funktionen
+## <a name="add-authentication-code-to-the-function"></a>Lägga till autentiseringskod i funktionen
 
-Du kommer nu att deklarera variabler på klass nivå och lägga till en kod som gör det möjligt att komma åt Azure Digitals dubbla. Du lägger till följande i din funktion i filen _Function1. cs_ .
+Deklarera nu variabler på klassnivå och lägg till autentiseringskod som gör att funktionen kan komma åt Azure Digital Twins. Lägg till variablerna och koden i funktionen i filen _Function1.cs._
 
-* Kod för att läsa URL: en för Azure Digitals dubblare-tjänst som en **miljö variabel**. Det är en bra idé att läsa tjänste-URL: en från en miljö variabel, i stället för att hårdkoda den i-funktionen. Du anger värdet för den här miljövariabeln [senare i den här artikeln](#set-up-security-access-for-the-function-app). Mer information om miljövariabler finns i [*Hantera din Function-app*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal).
+* **Kod för att läsa url Azure Digital Twins tjänsten som en miljövariabel.** Det är en bra idé att läsa tjänst-URL:en från en miljövariabel i stället för att hårdkoda den i funktionen. Du anger värdet för den här miljövariabeln senare [i den här artikeln.](#set-up-security-access-for-the-function-app) Mer information om miljövariabler finns i [Hantera funktionsappen](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal).
 
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ADT_service_URL":::
 
-* En statisk variabel som innehåller en HttpClient-instans. HttpClient är relativt dyrt att skapa och vi vill undvika att behöva göra detta för varje funktions anrop.
+* **En statisk variabel som ska innehålla en HttpClient-instans.** HttpClient är relativt dyrt att skapa, så vi vill undvika att skapa det för varje funktionsanrop.
 
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="HTTP_client":::
 
-* Du kan använda autentiseringsuppgifterna för hanterad identitet i Azure Functions.
+* **Autentiseringsuppgifter för hanterad identitet.**
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ManagedIdentityCredential":::
 
-* Lägg till en lokal variabel _DigitalTwinsClient_ inuti din funktion för att hålla din Azure Digital-klient instans. Gör *inte* den här variabeln statisk i klassen.
+* **En lokal _variabel, DigitalTwinsClient_.** Lägg till variabeln i funktionen för att Azure Digital Twins klientinstansen. Gör *inte* den här variabeln statisk i klassen.
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="DigitalTwinsClient":::
 
-* Lägg till en null-kontroll för _adtInstanceUrl_ och packa upp funktions logiken i ett try/catch-block för att fånga eventuella undantag.
+* **En null-kontroll _för adtInstanceUrl_.** Lägg till null-kontrollen och omslut sedan funktionslogiken i ett try/catch-block för att fånga upp eventuella undantag.
 
-Efter dessa ändringar ser funktions koden ut ungefär så här:
+Efter dessa ändringar ser funktionskoden ut som i följande exempel.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs":::
 
-Nu när ditt program är skrivet kan du publicera det till Azure med hjälp av stegen i nästa avsnitt.
+Nu när programmet har skrivits kan du publicera det till Azure.
 
 ## <a name="publish-the-function-app-to-azure"></a>Publicera funktionsappen till Azure
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
-### <a name="verify-function-publish"></a>Verifiera funktionen publicera
+### <a name="verify-the-publication-of-your-function"></a>Verifiera publiceringen av funktionen
 
 1. Logga in med dina autentiseringsuppgifter i [Azure Portal](https://portal.azure.com/).
-2. I Sök fältet högst upp i fönstret söker du efter namnet på din **funktion i appen**.
+2. I sökrutan högst upp i fönstret söker du efter funktionsappens namn och väljer det sedan.
 
-    :::image type="content" source="media/how-to-create-azure-function/search-function-app.png" alt-text="Sök efter din Function-app med namnet i Azure Portal." lightbox="media/how-to-create-azure-function/search-function-app.png":::
+    :::image type="content" source="media/how-to-create-azure-function/search-function-app.png" alt-text="Skärmbild som visar Azure Portal. I sökfältet anger du funktionsappens namn." lightbox="media/how-to-create-azure-function/search-function-app.png":::
 
-3. På sidan *Function-appen* som öppnas väljer du *funktioner* i meny alternativen till vänster. Om din funktion har publicerats visas funktions namnet i listan.
-Observera att du kan behöva vänta några minuter eller uppdatera sidan ett par gånger innan du kan se din funktion listad i listan publicerade funktioner.
+3. På sidan **Funktionsapp** som öppnas går du till menyn till vänster och väljer **Functions**. Om funktionen har publicerats visas dess namn i listan.
+
+    > [!Note] 
+    > Du kan behöva vänta några minuter eller uppdatera sidan några gånger innan funktionen visas i listan över publicerade funktioner.
 
     :::image type="content" source="media/how-to-create-azure-function/view-published-functions.png" alt-text="Visa publicerade funktioner i Azure Portal." lightbox="media/how-to-create-azure-function/view-published-functions.png":::
 
-För att din Function-app ska kunna komma åt Azure Digitals, måste den ha en Systemhanterad identitet med behörigheter för åtkomst till din Azure Digital-instansen. Nu ska du ställa in det här.
+För att Azure Digital Twins åtkomst måste funktionsappen ha en system hanterad identitet med behörighet att komma åt din Azure Digital Twins instans. Du kommer att konfigurera det härnäst.
 
-## <a name="set-up-security-access-for-the-function-app"></a>Konfigurera säkerhets åtkomst för Function-appen
+## <a name="set-up-security-access-for-the-function-app"></a>Konfigurera säkerhetsåtkomst för funktionsappen
 
-Du kan ställa in säkerhets åtkomst för Function-appen med hjälp av antingen Azure CLI eller Azure Portal. Följ anvisningarna för önskat alternativ nedan.
+Du kan konfigurera säkerhetsåtkomst för funktionsappen med hjälp av antingen Azure CLI eller Azure Portal. Följ stegen för det alternativ du föredrar.
 
 # <a name="cli"></a>[CLI](#tab/cli)
 
-Du kan köra dessa kommandon i [Azure Cloud Shell](https://shell.azure.com) eller en [lokal Azure CLI-installation](/cli/azure/install-azure-cli).
-Du kan använda Function-appens systemhanterade identitet för att ge den _**Azure Digitals data ägar**_ roll för Azure Digitals-instansen. Detta ger funktionen app behörighet i instansen för att utföra data Plans aktiviteter. Sedan kan du göra webb adressen till Azure Digitals dubblare-instans tillgänglig för din funktion genom att ange en miljö variabel.
+Kör dessa kommandon i [Azure Cloud Shell](https://shell.azure.com) eller en [lokal Azure CLI-installation.](/cli/azure/install-azure-cli)
+Du kan använda funktionsappens system hanterade identitet för att ge **den rollen Azure Digital Twins dataägare** för din Azure Digital Twins instans. Rollen ger funktionsappen behörighet i instansen att utföra dataplansaktiviteter. Gör sedan instansens URL tillgänglig för din funktion genom att ange en miljövariabel.
 
-### <a name="assign-access-role"></a>Tilldela åtkomst roll
+### <a name="assign-an-access-role"></a>Tilldela en åtkomstroll
 
 [!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
-Funktionen Skeleton från tidigare exempel kräver att en Bearer-token skickas till den, för att kunna autentisera med Azure Digital-dubbla. För att se till att denna Bearer-token överförs måste du konfigurera [hanterad tjänstidentitet (MSI)](../active-directory/managed-identities-azure-resources/overview.md) -behörigheter för Function-appen för att få åtkomst till Azure Digital-dubbla. Detta måste bara göras en gång för varje Function-app.
+Funktionsstommen i tidigare exempel kräver att en bearer-token skickas till den. Om bearer-token inte skickas kan funktionsappen inte autentisera med Azure Digital Twins. 
+
+För att säkerställa att bearer-token skickas ställer du in behörigheter för [hanterade](../active-directory/managed-identities-azure-resources/overview.md) identiteter så att funktionsappen kan komma åt Azure Digital Twins. Du ställer bara in dessa behörigheter en gång för varje funktionsapp.
 
 
-1. Använd följande kommando för att se information om den systemhanterade identiteten för funktionen. Anteckna fältet _principalId_ i utdata.
+1. Använd följande kommando för att se information om den system hanterade identiteten för funktionen. Anteckna fältet `principalId` i utdata.
 
     ```azurecli-interactive 
     az functionapp identity show -g <your-resource-group> -n <your-App-Service-(function-app)-name> 
     ```
 
     >[!NOTE]
-    > Om resultatet är tomt i stället för att visa information om en identitet skapar du en ny Systemhanterad identitet för funktionen med hjälp av det här kommandot:
+    > Om resultatet är tomt i stället för att visa identitetsinformation skapar du en ny system hanterad identitet för funktionen med hjälp av det här kommandot:
     > 
     >```azurecli-interactive    
     >az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>  
     >```
     >
-    > Utdata visar sedan information om identiteten, inklusive det _principalId_ -värde som krävs för nästa steg. 
+    > Utdata visar information om identiteten, inklusive det `principalId` värde som krävs för nästa steg. 
 
-1. Använd _principalId_-värdet i följande kommando för att tilldela funktionsappens identitet till _Azure Digital Twins-dataägarrollen_ för Azure Digital-instansen.
+1. Använd värdet i följande kommando för att tilldela funktionsappens identitet `principalId` _till Azure Digital Twins dataägare_ för din Azure Digital Twins instans.
 
     ```azurecli-interactive 
     az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
@@ -150,10 +152,10 @@ Funktionen Skeleton från tidigare exempel kräver att en Bearer-token skickas t
 
 ### <a name="configure-application-settings"></a>Konfigurera programinställningar
 
-Slutligen kan du göra webb adressen till din Azure Digital-instansen tillgänglig för din funktion genom att ange en **miljö variabel** för den. Mer information om miljövariabler finns i [*Hantera din Function-app*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). 
+Gör din instanss URL tillgänglig för funktionen genom att ange en miljövariabel för den. Mer information om miljövariabler finns i [Hantera funktionsappen](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). 
 
 > [!TIP]
-> URL: en för Azure Digitals dubbla instanser görs genom att lägga till *https://* i början av *värd namnet* för din Azure Digital-instansen. Om du vill se värd namnet, tillsammans med alla egenskaper för din instans, kan du köra `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
+> Den Azure Digital Twins instansens URL görs genom *att https://* i början av instansens värdnamn. Om du vill se värdnamnet, tillsammans med alla egenskaper för din instans, kör du `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
 
 ```azurecli-interactive 
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-host-name>"
@@ -163,78 +165,81 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 Utför följande steg i [Azure Portal](https://portal.azure.com/).
 
-### <a name="assign-access-role"></a>Tilldela åtkomst roll
+### <a name="assign-an-access-role"></a>Tilldela en åtkomstroll
 
 [!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
-En systemtilldelad hanterad identitet gör det möjligt för Azure-resurser att autentisera till moln tjänster (till exempel Azure Key Vault) utan att lagra autentiseringsuppgifter i kod. När den är aktive rad kan alla nödvändiga behörigheter beviljas via rollbaserad åtkomst kontroll i Azure. Livs cykeln för den här typen av hanterad identitet är kopplad till livs cykeln för den här resursen. Dessutom kan varje resurs bara ha en systemtilldelad hanterad identitet.
+En system tilldelad hanterad identitet gör det möjligt för Azure-resurser att autentisera till molntjänster (till exempel Azure Key Vault) utan att lagra autentiseringsuppgifter i kod. När du aktiverar system tilldelad hanterad identitet kan alla nödvändiga behörigheter beviljas via rollbaserad åtkomstkontroll i Azure. 
 
-1. I [Azure Portal](https://portal.azure.com/)söker du efter din Function-app genom att skriva dess namn i Sök fältet. Välj din app från resultaten. 
+Livscykeln för den här typen av hanterad identitet är kopplad till den här resursens livscykel. Dessutom kan varje resurs bara ha en system tilldelad hanterad identitet.
 
-    :::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Skärm bild av Azure Portal: namnet på appens funktion genomsöks i portalens sökfält och Sök resultatet är markerat.":::
+1. I [Azure Portal](https://portal.azure.com/)du efter funktionsappen genom att skriva dess namn i sökrutan. Välj din app i resultatet. 
 
-1. På sidan Function-appen väljer du _identitet_ i navigerings fältet till vänster för att arbeta med en hanterad identitet för funktionen. På sidan _systemtilldelat_ , kontrollerar du att _statusen_ är inställd **på på** (om den inte är det, anger du den nu och *sparar* ändringen).
+    :::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Skärmbild av Azure Portal. Funktionsappens namn finns i portalens sökfält och sökresultatet är markerat.":::
 
-    :::image type="content" source="media/how-to-create-azure-function/verify-system-managed-identity.png" alt-text="Skärm bild av Azure Portal: på sidan identitet för Function-appen är alternativet status inställt på on." lightbox="media/how-to-create-azure-function/verify-system-managed-identity.png":::
+1. På funktionsappsidan går du till menyn till vänster och väljer Identitet __för__ att arbeta med en hanterad identitet för funktionen. På sidan __System tilldelad__ kontrollerar du att __Status__ har angetts till **På**. Om den inte är det anger du den nu och **sedan Spara** ändringen.
 
-1. Välj knappen _Azure Role-tilldelningar_ som öppnar sidan *roll tilldelningar för Azure* .
+    :::image type="content" source="media/how-to-create-azure-function/verify-system-managed-identity.png" alt-text="Skärmbild av Azure Portal. På sidan Identitet för funktionsappen är alternativet Status inställt på På." lightbox="media/how-to-create-azure-function/verify-system-managed-identity.png":::
 
-    :::image type="content" source="media/how-to-create-azure-function/add-role-assignment-1.png" alt-text="Skärm bild av Azure Portal: en högdager runt knappen roll tilldelningar i Azure under behörigheter på Azure-funktionens identitets sida." lightbox="media/how-to-create-azure-function/add-role-assignment-1.png":::
+1. Välj __Azure-rolltilldelningar.__
 
-    Välj _+ Lägg till roll tilldelning (för hands version)_.
+    :::image type="content" source="media/how-to-create-azure-function/add-role-assignment-1.png" alt-text="Skärmbild av Azure Portal. På sidan Identitet för Azure-funktionen, under Behörigheter, är knappen Azure-rolltilldelningar markerad." lightbox="media/how-to-create-azure-function/add-role-assignment-1.png":::
 
-    :::image type="content" source="media/how-to-create-azure-function/add-role-assignment-2.png" alt-text="Skärm bild av Azure Portal: en högdager runt + Lägg till roll tilldelning (för hands version) på sidan roll tilldelningar för Azure." lightbox="media/how-to-create-azure-function/add-role-assignment-2.png":::
+    Välj __+ Lägg till rolltilldelning (förhandsversion)__.
 
-1. På sidan _Lägg till roll tilldelning (förhands granskning)_ som öppnas, väljer du följande värden:
+    :::image type="content" source="media/how-to-create-azure-function/add-role-assignment-2.png" alt-text="Skärmbild av Azure Portal. På sidan Azure-rolltilldelningar är knappen Lägg till rolltilldelning (förhandsversion) markerad." lightbox="media/how-to-create-azure-function/add-role-assignment-2.png":::
 
-    * **Omfång**: Resursgrupp
-    * **Prenumeration**: Välj din Azure-prenumeration
-    * **Resurs grupp**: Välj din resurs grupp i list rutan
-    * **Roll**: Välj _Azure Digitals sammanflätade data ägare_ i list rutan
+1. På sidan __Lägg till rolltilldelning (förhandsversion)__ väljer du följande värden:
 
-    Spara sedan informationen genom att trycka på knappen _Spara_ .
+    * **Omfång:** _Resursgrupp_
+    * **Prenumeration**: Välj din Azure-prenumeration.
+    * **Resursgrupp:** Välj din resursgrupp.
+    * **Roll:** _Azure Digital Twins dataägare_
 
-    :::image type="content" source="media/how-to-create-azure-function/add-role-assignment-3.png" alt-text="Skärm bild av dialog rutan Azure Portal: för att lägga till en ny roll tilldelning (för hands version). Det finns fält för omfånget, prenumerationen, resurs gruppen och rollen.":::
+    Spara informationen genom att välja __Spara__.
+
+    :::image type="content" source="media/how-to-create-azure-function/add-role-assignment-3.png" alt-text="Skärmbild av Azure Portal visar hur du lägger till en ny rolltilldelning. Dialogrutan visar fält för Omfång, Prenumeration, Resursgrupp och Roll.":::
 
 ### <a name="configure-application-settings"></a>Konfigurera programinställningar
 
-Om du vill göra webb adressen till din Azure Digital-instansen tillgänglig för din funktion kan du ange en **miljö variabel** för den. Mer information om miljövariabler finns i [*Hantera din Function-app*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). Program inställningarna visas som miljövariabler för att komma åt Azure Digitals-instansen. 
+Om du vill göra URL Azure Digital Twins instansen tillgänglig för funktionen kan du ange en miljövariabel. Programinställningar exponeras som miljövariabler för att tillåta åtkomst Azure Digital Twins instansen. Mer information om miljövariabler finns i [Hantera funktionsappen](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal). 
 
-Om du vill ange en miljö variabel med URL: en för din instans, hämtar du först URL: en genom att hitta värd namnet för Azure Digital-instansen. Sök efter din instans i [Azure Portal](https://portal.azure.com) Sök fältet. Välj sedan _Översikt_ i det vänstra navigerings fältet för att visa _värd namnet_. Kopiera det här värdet.
+Om du vill ange en miljövariabel med URL:en för din instans ska du först hitta instansens värdnamn: 
 
-:::image type="content" source="media/how-to-create-azure-function/instance-host-name.png" alt-text="Skärm bild av Azure Portal: på sidan Översikt för Azure Digital-instansen är värd namn svärdet markerat.":::
+1. Sök efter din instans i [Azure Portal](https://portal.azure.com). 
+1. I menyn till vänster väljer du __Översikt.__ 
+1. Kopiera värdet __för Värdnamn.__
 
-Nu kan du skapa en program inställning med följande steg:
+    :::image type="content" source="media/how-to-create-azure-function/instance-host-name.png" alt-text="Skärmbild av Azure Portal. Värdnamnsvärdet är markerat på instansens översiktssida.":::
 
-1. Sök efter din Function-app i Portal Sök fältet och välj den från resultaten.
+Nu kan du skapa en programinställning:
 
-    :::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Skärm bild av Azure Portal: namnet på appens funktion genomsöks i portalens sökfält och Sök resultatet är markerat.":::
+1. I portalens sökfält söker du efter funktionsappen och väljer den sedan i resultaten.
 
-1. Välj _konfiguration_ i navigerings fältet till vänster. På fliken _program inställningar_ väljer du _+ ny program inställning_.
+    :::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Skärmbild av Azure Portal. Funktionsappens namn genomsöks i portalens sökfält. Sökresultatet är markerat.":::
 
-    :::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Skärm bild av Azure Portal: på sidan konfiguration för Function-appen markeras knappen för att skapa en ny program inställning.":::
+1. Till vänster väljer du __Konfiguration__. På fliken __Programinställningar väljer__ du __+ Ny programinställning.__
 
-1. I fönstret som öppnas, använder du värd namn svärdet som du kopierade ovan för att skapa en program inställning.
-    * **Namn**: ADT_SERVICE_URL
-    * **Värde**: https://{Your-Azure-Digital-Garns-Host-Name}
+    :::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Skärmbild av Azure Portal. På fliken Konfiguration för funktionsappen är knappen för att skapa en ny programinställning markerad.":::
+
+1. I fönstret som öppnas använder du värdet för värdnamnet som du kopierade för att skapa en programinställning.
+    * **Namn:** ADT_SERVICE_URL
+    * **Värde:** https://{your-azure-digital-twins-host-name}
     
-    Välj _OK_ för att skapa en program inställning.
+    Välj __OK__ för att skapa en programinställning.
     
-    :::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Skärm bild av Azure Portal: knappen OK är markerad när du har fyllt i fälten namn och värde på inställnings sidan Lägg till/redigera program.":::
+    :::image type="content" source="media/how-to-create-azure-function/add-application-setting.png" alt-text="Skärmbild av Azure Portal. På sidan Lägg till/redigera programinställning fylls fälten Namn och Värde i. Knappen O K är markerad.":::
 
-1. När du har skapat inställningen bör du se att den visas igen på fliken _program inställningar_ . Verifiera *ADT_SERVICE_URL* visas i listan och spara sedan den nya program inställningen genom att välja knappen _Spara_ .
+1. När du har skapat inställningen bör den visas på __fliken Programinställningar.__ Kontrollera **ADT_SERVICE_URL** visas i listan. Spara sedan den nya programinställningen genom att välja __Spara.__
 
-    :::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Skärm bild av Azure Portal: Sidan program inställningar med den nya inställningen ADT_SERVICE_URL markerad. Knappen Spara markeras också.":::
+    :::image type="content" source="media/how-to-create-azure-function/application-setting-save-details.png" alt-text="Skärmbild av Azure Portal. På fliken programinställningar är den nya inställningen A D T SERVICE U R L markerad. Knappen Spara är också markerad.":::
 
-1. Alla ändringar av program inställningarna kräver att en program omstart börjar gälla, så välj _Fortsätt_ för att starta om programmet när du uppmanas till det.
+1. Alla ändringar av programinställningarna kräver en omstart av programmet, så välj __Fortsätt för__ att starta om programmet när du uppmanas att göra det.
 
-    :::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Skärm bild av Azure Portal: det finns ett meddelande om att program inställningarna har ändrats med starta om programmet. Knappen Fortsätt är markerad.":::
+    :::image type="content" source="media/how-to-create-azure-function/save-application-setting.png" alt-text="Skärmbild av Azure Portal. En anteckning visar att eventuella ändringar i programinställningarna startar om programmet. Knappen Fortsätt är markerad.":::
 
 ---
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här artikeln har du följt stegen för att ställa in en Function-app i Azure för användning med Azure Digital-dubbla.
-
-Sedan kan du se hur du bygger på din grundläggande funktion för att mata in IoT Hub data i Azure Digitals:
-* [*How-to: intag av telemetri från IoT Hub*](how-to-ingest-iot-hub-data.md)
+I den här artikeln ställer du in en funktionsapp i Azure för användning med Azure Digital Twins. Se sedan hur du bygger vidare på din grundläggande funktion för [att mata in IoT Hub data i Azure Digital Twins](how-to-ingest-iot-hub-data.md).

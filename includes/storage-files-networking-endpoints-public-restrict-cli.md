@@ -7,15 +7,15 @@ ms.service: storage
 ms.topic: include
 ms.date: 6/2/2020
 ms.author: rogarana
-ms.custom: include file
-ms.openlocfilehash: a42f963f5eb79ef5b430f6fc9d2a0144c370353a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: d3d2afa3b02d4ab4524d9b5c5d5f981cddebe1a9
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98673862"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107511595"
 ---
-För att begränsa åtkomsten till lagrings kontots offentliga slut punkt till vissa virtuella nätverk som använder tjänst slut punkter, behöver vi först samla in information om lagrings kontot och det virtuella nätverket. Fyll i `<storage-account-resource-group>` ,,, `<storage-account-name>` `<vnet-resource-group-name>` `<vnet-name>` och `<subnet-name>` för att samla in den här informationen.
+För att begränsa åtkomsten till lagringskontots offentliga slutpunkt till specifika virtuella nätverk med hjälp av tjänstslutpunkter måste vi först samla in information om lagringskontot och det virtuella nätverket. Fyll i `<storage-account-resource-group>` , , , och för att samla in den här `<storage-account-name>` `<vnet-resource-group-name>` `<vnet-name>` `<subnet-name>` informationen.
 
 ```bash
 storageAccountResourceGroupName="<storage-account-resource-group>"
@@ -44,7 +44,7 @@ subnet=$(az network vnet subnet show \
     tr -d '"')
 ```
 
-För att trafik från det virtuella nätverket ska tillåtas av Azure Network Fabric för att komma till lagrings kontots offentliga slut punkt måste tjänst slut punkten vara utsatt för det virtuella nätverkets undernät `Microsoft.Storage` . Följande CLI-kommandon lägger till `Microsoft.Storage` tjänstens slut punkt i under nätet om den inte redan finns där.
+För att trafik från det virtuella nätverket ska tillåtas av Azure-nätverks fabric att komma till den offentliga slutpunkten för lagringskontot måste det virtuella nätverkets undernät ha `Microsoft.Storage` tjänstslutpunkten exponerad. Följande CLI-kommandon lägger till `Microsoft.Storage` tjänstslutpunkten i undernätet om den inte redan finns där.
 
 ```bash
 serviceEndpoints=$(az network vnet subnet show \
@@ -82,7 +82,7 @@ then
 fi
 ```
 
-Det sista steget i att begränsa trafiken till lagrings kontot är att skapa en nätverks regel och lägga till lagrings kontots nätverks regel uppsättning.
+Det sista steget i att begränsa trafiken till lagringskontot är att skapa en nätverksregel och lägga till den i lagringskontots nätverksregeluppsättning.
 
 ```azurecli
 az storage account network-rule add \
