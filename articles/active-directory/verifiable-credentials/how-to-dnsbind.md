@@ -1,6 +1,6 @@
 ---
-title: Länka din domän till ditt decentraliserade ID (förhands granskning) – Azure Active Directory verifierbara autentiseringsuppgifter
-description: Lär du dig hur du gör DNS-bindning?
+title: Länka din domän till din decentraliserade identifierare (DID) (förhandsversion) – Azure Active Directory autentiseringsuppgifter
+description: Lär dig hur du dns-bindning?
 documentationCenter: ''
 author: barclayn
 manager: daveba
@@ -9,43 +9,43 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 90ea52b0ed5ee2d8e36caab18491eecd6e1295fd
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: ad5bb6e45479b4cccfa0b002427066439135e468
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222823"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588453"
 ---
 # <a name="link-your-domain-to-your-decentralized-identifier-did"></a>Länka din domän till din decentraliserade identifierare (DID)
 
 > [!IMPORTANT]
-> Azure Active Directory verifierbara autentiseringsuppgifter finns för närvarande i en offentlig för hands version.
+> Azure Active Directory verifierbara autentiseringsuppgifter är för närvarande i offentlig förhandsversion.
 > Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 I den här artikeln:
 > [!div class="checklist"]
-> * Varför behöver vi länka oss till vår domän?
-> * Hur länkar vi DIDs och domäner?
-> * Hur fungerar domän länknings processen?
-> * Hur fungerar verifiera/overifierad domän logik?
+> * Varför behöver vi länka vår DID till vår domän?
+> * Hur länkar vi DID:er och domäner?
+> * Hur fungerar domänlänkningsprocessen?
+> * Hur fungerar verifierad/overifierad domänlogik?
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-För att länka till din domän måste du ha slutfört följande.
+Om du vill länka DID till din domän måste du ha slutfört följande.
 
-- Slutför [komma igång](get-started-verifiable-credentials.md) och efterföljande [själv studie kurs uppsättning](enable-your-tenant-verifiable-credentials.md).
+- Slutför Komma igång [och](get-started-verifiable-credentials.md) efterföljande [självstudie ange](enable-your-tenant-verifiable-credentials.md).
 
-## <a name="why-do-we-need-to-link-our-did-to-our-domain"></a>Varför behöver vi länka oss till vår domän?
+## <a name="why-do-we-need-to-link-our-did-to-our-domain"></a>Varför behöver vi länka vår DID till vår domän?
 
-En påbörjades som en identifierare som inte är fäst vid befintliga system. Det var användbart eftersom en användare eller organisation kan äga den och kontrol lera den. Om en entitet som interagerar med organisationen inte vet att "vem" tillhör, är det inte så användbart.
+DID börjar som en identifierare som inte är fäst vid befintliga system. En DID är användbar eftersom en användare eller organisation kan äga den och kontrollera den. Om en entitet som interagerar med organisationen inte vet "vem" SOM DID tillhör är DID inte lika användbart.
 
-Att länka en till en domän löser det första förtroende problemet genom att tillåta att alla entiteter kryptografiskt kan verifiera relationen mellan en och en domän.
+Länkning av en DID till en domän löser det första förtroendeproblemet genom att tillåta en entitet att kryptografiskt verifiera relationen mellan en DID och en domän.
 
-## <a name="how-do-we-link-dids-and-domains"></a>Hur länkar vi DIDs och domäner?
+## <a name="how-do-we-link-dids-and-domains"></a>Hur länkar vi DID:er och domäner?
 
-Vi skapar en länk mellan en domän och en genomförd genom att implementera en öppen standard skriven av den decentraliserade Identity Foundation som kallas [välkänd konfiguration](https://identity.foundation/.well-known/resources/did-configuration/). Tjänsten verifierbara autentiseringsuppgifter i Azure Active Directory (Azure AD) hjälper din organisation att skapa länken mellan domänen och domänen genom att inkludera den domän information som du angav i den gjorde du och generera en välkänd konfigurations fil:
+Vi gör en länk mellan en domän och en DID genom att implementera en öppen standard som skrivits av den decentraliserade Identity Foundation [som kallas well-known DID-konfiguration.](https://identity.foundation/.well-known/resources/did-configuration/) Tjänsten för verifierbara autentiseringsuppgifter i Azure Active Directory (Azure AD) hjälper din organisation att skapa länken mellan DID och domänen genom att inkludera den domäninformation som du angav i DID och generera den välkända konfigurationsfilen:
 
-1. Azure AD använder den domän information som du anger under organisations installationen för att skriva en tjänst slut punkt i dokumentet. Alla parter som interagerar med kan se den domän som du gjorde anspråk på för att associeras med.  
+1. Azure AD använder den domäninformation som du anger under organisationskonfigurationen för att skriva en tjänstslutpunkt i DID-dokumentet. Alla parter som interagerar med DID kan se domänen som dina DID-användare har associerats med.  
 
     ```json
         "service": [
@@ -60,7 +60,7 @@ Vi skapar en länk mellan en domän och en genomförd genom att implementera en 
           }
     ```
 
-2. Tjänsten verifierbar behörighet i Azure AD genererar en kompatibel och känd konfigurations resurs som du kan använda som värd för din domän. Konfigurations filen innehåller en självutfärdad verifierbar autentiseringsuppgift för credentialType ' DomainLinkageCredential ' som är signerad med den som har sitt ursprung i din domän. Här är ett exempel på det config-dokument som lagras i rot domänens URL.
+2. Den verifierbara autentiseringstjänsten i Azure AD genererar en kompatibel välkänd konfigurationsresurs som du kan vara värd för i din domän. Konfigurationsfilen innehåller en självutfärdad verifierbar autentiseringsfil för credentialType 'DomainLinkageCredential' som signerats med din DID som har domänens ursprung. Här är ett exempel på konfigurationsdokument som lagras på rotdomänens URL.
 
 
     ```json
@@ -72,65 +72,65 @@ Vi skapar en länk mellan en domän och en genomförd genom att implementera en 
     }
     ```
 
-När du har en välkänd konfigurations fil måste du göra filen tillgänglig med det domän namn som du angav när du aktiverade AAD för verifierbara autentiseringsuppgifter.
+När du har den välkända konfigurationsfilen måste du göra filen tillgänglig med det domännamn som du angav när du aktiverar AAD för verifierbara autentiseringsuppgifter.
 
-* VAR värd för den välkända konfigurations filen i domänens rot.
+* Var värd för den välkända DID-konfigurationsfilen i roten av domänen.
 * Använd inte omdirigeringar.
-* Använd https för att distribuera konfigurations filen.
+* Använd https för att distribuera konfigurationsfilen.
 
 >[!IMPORTANT]
->Microsoft Authenticator inte följer omdirigeringar, den angivna URL: en måste vara den slutgiltiga mål-URL: en.
+>Microsoft Authenticator inte respekterar omdirigeringar måste den angivna URL:en vara den slutliga mål-URL:en.
 
 ## <a name="user-experience"></a>Användarupplevelse 
 
-När en användare går igenom ett utfärdande flöde eller visar en verifierbar autentiseringsuppgift, bör de känna till något om organisationen och dess gjort. Om domänens plån boks referens för verifierbar, Microsoft Authenticator, validerar en relation med domänen i dokumentet i dokumentet och visar användare två olika upplevelser beroende på resultatet.
+När en användare går igenom ett utfärdandeflöde eller visar en verifierbar autentiseringsidentifiering bör de känna till något om organisationen och dess DID. Om domänen vår verifierbara plånbok för autentiseringsuppgifter Microsoft Authenticator verifierar en DID-relation med domänen i DID-dokumentet och ger användarna två olika upplevelser beroende på resultatet.
 
 ## <a name="verified-domain"></a>Verifierad domän
 
-Innan Microsoft Authenticator visar en **verifierad** ikon måste några saker vara sanna:
+Innan Microsoft Authenticator visar **en verifierad** ikon måste några saker vara sanna:
 
-* Den signerade SIOP-begäran (Open ID) måste ha en tjänst slut punkt för den länkade domänen.
-* Rot domänen använder inte en omdirigering och använder https.
-* Domänen som anges i dokumentet har en välkänd känd resurs som kan matchas.
-* Den välkända resursens verifierbara autentiseringsuppgifter är signerad med samma som användes för att signera SIOP som Microsoft Authenticator använt för att koppla start flödet.
+* DID-signeringen av den självutgivna öppna ID-begäran (SIOP) måste ha en tjänstslutpunkt för länkad domän.
+* Rotdomänen använder inte någon omdirigering och använder https.
+* Domänen som anges i DID-dokumentet har en välkänd resurs som kan matchas.
+* Den välkända resursens verifierbara autentiseringsuppgifter signeras med samma DID som användes för att signera DEN SIOP som Microsoft Authenticator för att starta flödet.
 
-Om alla tidigare angivna villkor är uppfyllda visar Microsoft Authenticator en verifierad sida och inkluderar den domän som har verifierats.
+Om alla tidigare nämnda är sanna visar Microsoft Authenticator en verifierad sida och innehåller domänen som verifierades.
 
-![ny behörighets förfrågan](media/how-to-dnsbind/new-permission-request.png) 
+![ny behörighetsbegäran](media/how-to-dnsbind/new-permission-request.png) 
 
 ## <a name="unverified-domain"></a>Overifierad domän
 
-Om något av ovanstående inte är sant, visar Microsoft Authenticator en fullständig sid varning för användaren att domänen är overifierad, användaren är i mitten av en riskfylld transaktion och de bör fortsätta med försiktighet. Vi har valt att ta den här vägen eftersom:
+Om något av ovanstående inte är sant visar Microsoft Authenticator en helsidesvarning för användaren om att domänen är overifierad, att användaren är mitt i en riskabel transaktion och bör fortsätta med försiktighet. Vi har valt att ta den här vägen eftersom:
 
-* Den har antingen inte fästs på en domän.
+* DID är antingen inte fäst vid en domän.
 * Konfigurationen har inte ställts in korrekt.
-* Användaren interagerar med är skadlig och kan inte bevisa att de äger en domän (eftersom de faktiskt inte är det). På grund av den här sista punkten är det absolut nödvändigt att du länkar till den domän som användaren är van vid, för att undvika att sprida varnings meddelandet.
+* DID användaren interagerar med är skadlig och kan faktiskt inte bevisa att de äger en domän (eftersom de faktiskt inte gör det). På grund av den sista punkten är det viktigt att du länkar DID till domänen som användaren är bekant med för att undvika att varningsmeddelandet sprids.
 
-![overifierad domän varning på skärmen Lägg till autentiseringsuppgifter](media/how-to-dnsbind/add-credential-not-verified-authenticated.png)
+![varning om overifierad domän på skärmen lägg till autentiseringsuppgifter](media/how-to-dnsbind/add-credential-not-verified-authenticated.png)
 
-## <a name="distribute-well-known-config"></a>Distribuera välkända config
+## <a name="distribute-well-known-config"></a>Distribuera välkänd konfiguration
 
-1. Gå till sidan Inställningar i autentiseringsuppgifter för verifierbar och välj **verifiera den här domänen**
+1. Gå till sidan Inställningar i Verifieable Credentials (Verifiera autentiseringsuppgifter) och välj **Verify this domain (Verifiera den här domänen)**
 
-   ![Verifiera den här domänen i inställningar](media/how-to-dnsbind/settings-verify.png) 
+   ![Verifiera den här domänen i inställningarna](media/how-to-dnsbind/settings-verify.png) 
 
-2. Ladda ned did-configuration.jspå filen som visas på bilden nedan.
+2. Ladda ned did-configuration.jspå filen som visas i bilden nedan.
 
-   ![Hämta välkänd välkänd konfiguration](media/how-to-dnsbind/verify-download.png) 
+   ![Ladda ned välkänd konfiguration](media/how-to-dnsbind/verify-download.png) 
 
-3. Kopiera JWT, öppna [JWT.MS](https://www.jwt.ms) och verifiera att domänen är korrekt.
+3. Kopiera JWT, öppna [jwt.ms](https://www.jwt.ms) och verifiera att domänen är korrekt.
 
-4. Kopiera din DID-filen och öppna [Jon nätverks Utforskaren](https://identity.foundation/ion/explorer) för att kontrol lera att samma domän ingår i dokumentet. 
+4. Kopiera DID och öppna [ION-Nätverksutforskaren](https://identity.foundation/ion/explorer) för att verifiera att samma domän ingår i DID-dokumentet. 
 
-5. Var värd för den välkända konfigurations resursen på den angivna platsen. Exempel: https://www.example.com/.well-known/did-configuration.json
+5. Var värd för den välkända konfigurationsresursen på den angivna platsen. Exempel: `https://www.example.com/.well-known/did-configuration.json`
 
-6. Testa utfärdande eller presentation med Microsoft Authenticator för att verifiera. Kontrol lera att inställningen i autentiseraren ' varna om osäkra appar ' är växlad på.
+6. Testa att utfärda eller presentera med Microsoft Authenticator för att verifiera. Kontrollera att inställningen i Authenticator "Varna om osäkra appar" är på.
 
 >[!NOTE]
->Som standard är "varna om osäkra appar" aktiverat.
+>Som standard är "Varna om osäkra appar" aktiverat.
 
-Grattis, nu har du startat förtroendet med din!
+Grattis, nu har du bootstrappat förtroendewebb med did!
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du anger fel domän information som du väljer att ändra i när du registrerar den, måste du [avanmäla](how-to-opt-out.md)dig. För tillfället stöder vi inte uppdatering av dokumentet. Väljer ut och väljer tillbaka i kommer att skapa ett helt nytt.
+Om du under onboarding-registrering anger fel domäninformation för du bestämmer dig för att ändra den, måste du [välja bort](how-to-opt-out.md). För stunden stöder vi inte uppdatering av did-dokumentet. Om du väljer bort och anmäler dig igen skapas en helt ny DID.

@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 3da4f8f946b11985d93be35fa2748e7f25015a71
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 98866a4f06df0380d52d1aee3eede8aa2f70aaed
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107564461"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588145"
 ---
 Azure Instance Metadata Service (IMDS) innehåller information om instanser av virtuella datorer som körs för närvarande. Du kan använda den för att hantera och konfigurera dina virtuella datorer.
 Den här informationen omfattar SKU, lagring, nätverkskonfigurationer och kommande underhållshändelser. En fullständig lista över tillgängliga data finns i Sammanfattning [av slutpunktskategorier.](#endpoint-categories)
@@ -35,7 +35,7 @@ Här är exempelkod för att hämta alla metadata för en instans. En översikt 
 **Förfrågan**
 
 > [!IMPORTANT]
-> I det här exemplet kringgås proxys. Du **måste** kringgå proxy när du frågar IMDS. Mer information [finns i Proxys.](#proxies)
+> Det här exemplet kringgår proxys. Du **måste** kringgå proxy när du frågar IMDS. Mer information [finns i](#proxies) Proxys.
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
@@ -154,11 +154,11 @@ Om vi vill filtrera svaret till bara beräkningsegenskapen skickar vi begäran:
 http://169.254.169.254/metadata/instance/compute?api-version=<version>
 ```
 
-Om vi vill filtrera på en kapslad egenskap eller ett specifikt matriselement fortsätter vi på samma sätt att lägga till nycklar: 
+Och om vi vill filtrera på en kapslad egenskap eller ett specifikt matriselement fortsätter vi att lägga till nycklar: 
 ```
 http://169.254.169.254/metadata/instance/network/interface/0?api-version=<version>
 ```
-filtrerar till det första elementet från `Network.interface` egenskapen och returnerar:
+filtrerar du på det första elementet från `Network.interface` egenskapen och returnerar:
 
 ```json
 {
@@ -205,7 +205,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?ap
 
 ---
 
-I json-svar kommer alla primitiver att vara av typen , och värden som saknas eller inte kan användas ingår alltid, men de anges `string` till en tom sträng.
+I json-svar kommer alla primitiver att vara av typen , och saknade eller inapplicerbara värden ingår alltid men anges `string` till en tom sträng.
 
 ### <a name="versioning"></a>Versionshantering
 
@@ -289,7 +289,7 @@ GET /metadata/versions
 
 #### <a name="parameters"></a>Parametrar
 
-Ingen (den här slutpunkten är icke-versionerad).
+Ingen (den här slutpunkten är inte versionerad).
 
 #### <a name="response"></a>Svarsåtgärder
 
@@ -333,7 +333,7 @@ Schemauppdelning:
 | Data | Description | Version introducerad |
 |------|-------------|--------------------|
 | `azEnvironment` | Azure-miljö där den virtuella datorn körs i | 2018-10-01
-| `customData` | Den här funktionen är inaktuell och inaktiverad. Den har ersatts av `userData` | 2019-02-01
+| `customData` | Den här funktionen är inaktuell och inaktiverad [i IMDS](#frequently-asked-questions). Den har ersatts av `userData` | 2019-02-01
 | `evictionPolicy` | Anger hur en [virtuell spot-dator](../articles/virtual-machines/spot-vms.md) ska avlägsnas. | 2020-12-01
 | `isHostCompatibilityLayerVm` | Anger om den virtuella datorn körs på värdkompatibilitetsskiktet | 2020-06-01
 | `licenseType` | Typ av licens för [Azure Hybrid-förmån](https://azure.microsoft.com/pricing/hybrid-benefit). Detta gäller endast för AHB-aktiverade virtuella datorer | 2020-09-01
@@ -963,7 +963,7 @@ Det avkodade dokumentet innehåller följande fält:
 | Data | Description | Version introducerad |
 |------|-------------|--------------------|
 | `licenseType` | Typ av licens för [Azure Hybrid-förmån](https://azure.microsoft.com/pricing/hybrid-benefit). Detta gäller endast för AHB-aktiverade virtuella datorer. | 2020-09-01
-| `nonce` | En sträng som kan anges med begäran om du vill. Om inget `nonce` har angetts används den Coordinated Universal Time tidsstämpeln. | 2018-10-01
+| `nonce` | En sträng som kan anges med begäran om du vill. Om ingen `nonce` har angetts används den Coordinated Universal Time tidsstämpeln. | 2018-10-01
 | `plan` | [Avbildningsplanen Azure Marketplace .](/rest/api/compute/virtualmachines/createorupdate#plan) Innehåller plan-ID (namn), produktavbildning eller erbjudande (produkt) och utgivar-ID (utgivare). | 2018-10-01
 | `timestamp.createdOn` | UTC-tidsstämpeln för när det signerade dokumentet skapades | 2018-20-01
 | `timestamp.expiresOn` | UTC-tidsstämpeln för när det signerade dokumentet upphör att gälla | 2018-10-01
@@ -1111,9 +1111,9 @@ I `nonce` det signerade dokumentet kan jämföras om du har angett en `nonce` pa
 > [!NOTE]
 > Certifikaten kanske inte matchar det `metadata.azure.com` offentliga molnet exakt. Därför bör certifieringsverifieringen tillåta ett eget namn från alla `.metadata.azure.com` underdomäner.
 
-I de fall där det mellanliggande certifikatet inte kan laddas ned på grund av nätverksbegränsningar under verifieringen kan du fästa det mellanliggande certifikatet. Azure rullar över certifikaten, vilket är PKI-standardpraxis. Du måste uppdatera de fästa certifikaten när en rollover sker. När en ändring av mellanliggande certifikat planeras uppdateras Azure-bloggen och Azure-kunder meddelas. 
+I de fall där det mellanliggande certifikatet inte kan laddas ned på grund av nätverksbegränsningar under verifieringen kan du fästa det mellanliggande certifikatet. Azure rullar över certifikaten, vilket är vanlig PKI-praxis. Du måste uppdatera de fästa certifikaten när en rollover sker. När en ändring av mellanliggande certifikat planeras uppdateras Azure-bloggen och Azure-kunder meddelas. 
 
-Du hittar mellanliggande certifikat på [PKI-lagringsplatsen](https://www.microsoft.com/pki/mscorp/cps/default.htm). De mellanliggande certifikaten för var och en av regionerna kan vara olika.
+Mellanliggande certifikat finns på [PKI-lagringsplatsen](https://www.microsoft.com/pki/mscorp/cps/default.htm). De mellanliggande certifikaten för var och en av regionerna kan vara olika.
 
 > [!NOTE]
 > Det mellanliggande certifikatet för Azure China 21Vianet kommer från DigiCert Global Root CA i stället för Baltimore.
@@ -1128,7 +1128,7 @@ Du kan sedan begära token för hanterade identiteter från IMDS. Använd dessa 
 Detaljerade anvisningar för hur du aktiverar den här funktionen finns i [Hämta en åtkomsttoken.](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
 
 ## <a name="load-balancer-metadata"></a>Load Balancer Metadata
-När du placerar instanser av virtuella datorer eller virtuella datoruppsättningsinstanser bakom en Azure Standard Load Balancer kan du använda IMDS för att hämta metadata relaterade till lastbalanseraren och instanserna. Mer information finns i Hämta [information om lastbalanserare.](../articles/load-balancer/instance-metadata-service-load-balancer.md)
+När du placerar instanser av virtuella datorer eller virtuella datoruppsättningsinstanser bakom en Azure Standard Load Balancer kan du använda IMDS för att hämta metadata som är relaterade till lastbalanseraren och instanserna. Mer information finns i Hämta [information om lastbalanserare.](../articles/load-balancer/instance-metadata-service-load-balancer.md)
 
 ## <a name="scheduled-events"></a>Schemalagda händelser
 Du kan hämta status för schemalagda händelser med hjälp av IMDS. Användaren kan sedan ange en uppsättning åtgärder som ska köras på dessa händelser. Mer information finns i [Schemalagda händelser för Linux eller](../articles/virtual-machines/linux/scheduled-events.md) [Schemalagda händelser för Windows.](../articles/virtual-machines/windows/scheduled-events.md)
@@ -1153,12 +1153,12 @@ I följande tabell visas exempel på anrop av IMDS med hjälp av olika språk i 
 
 ## <a name="errors-and-debugging"></a>Fel och felsökning
 
-Om det inte finns ett dataelement som inte hittas eller en felaktig begäran returnerar Instance Metadata Service HTTP-standardfel. Exempel:
+Om ett dataelement inte hittas eller en felaktig begäran returneras Instance Metadata Service http-standardfel. Exempel:
 
 | HTTP-statuskod | Anledning |
 |------------------|--------|
 | `200 OK` | Begäran lyckades.
-| `400 Bad Request` | Saknar `Metadata: true` rubrik eller parameter som saknas när du frågar en `format=json` lövnod
+| `400 Bad Request` | Saknad `Metadata: true` rubrik eller saknad parameter `format=json` vid frågor mot en lövnod
 | `404 Not Found` | Det begärda elementet finns inte
 | `405 Method Not Allowed` | HTTP-metoden (verb) stöds inte på slutpunkten.
 | `410 Gone` | Försök igen efter en stund i högst 70 sekunder
@@ -1302,7 +1302,7 @@ Om det inte finns ett dataelement som inte hittas eller en felaktig begäran ret
     ```
 
     > [!NOTE]
-    > Följande exempelutdata kommer från en virtuell Windows Server-dator med aktiverat redundanskluster. För enkelhetens skull innehåller utdata endast IPv4-vägtabellen.
+    > Följande exempelutdata kommer från en virtuell Windows Server-dator med redundanskluster aktiverat. För enkelhetens skull innehåller utdata endast IPv4-vägtabellen.
 
     ```
     IPv4 Route Table

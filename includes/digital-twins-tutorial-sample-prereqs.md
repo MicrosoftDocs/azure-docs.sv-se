@@ -1,36 +1,36 @@
 ---
 author: baanders
-description: inkludera fil för Azure Digitals-självstudier – krav för exempelprojektet
+description: inkludera fil Azure Digital Twins självstudier – förutsättningar för exempelprojektet
 ms.service: digital-twins
 ms.topic: include
 ms.date: 1/20/2021
 ms.author: baanders
-ms.openlocfilehash: 43cc3dfc5b425df6d9dd5e2c2f35a792907ccdea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00d584690d37f1dcc47b785ef533abe888befec3
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103622058"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107510737"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
-För att slutföra stegen i den här självstudien måste du först uppfylla följande krav. 
+För att slutföra stegen i den här självstudien måste du först slutföra följande krav. 
 
-Om du inte har en Azure-prenumeration kan du **skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** innan du börjar.
+Om du inte har en Azure-prenumeration kan du **skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** innan du börjar.
 
 ### <a name="get-required-resources"></a>Hämta nödvändiga resurser
 
-För att slutföra den här självstudien **installerar du [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/), version 16,5 eller senare** på din utvecklings dator. Om du redan har installerat en äldre version kan du öppna *Visual Studio Installer* -appen på datorn och följa anvisningarna för att uppdatera installationen.
+För att slutföra den här **[självstudien installerar Visual Studio 2019](https://visualstudio.microsoft.com/downloads/), version 16.5** eller senare på utvecklingsdatorn. Om du redan har en äldre version installerad kan du *öppna Visual Studio Installer-appen* på datorn och följa anvisningarna för att uppdatera installationen.
 
 >[!NOTE]
-> Se till att installationen av Visual Studio 2019 omfattar **[arbets belastningen Azure Development](/dotnet/azure/configure-visual-studio)**. Den här arbets belastningen gör det möjligt för ett program att publicera Azure Functions och utföra andra Azure-utvecklings uppgifter.
+> Se till att installationen Visual Studio 2019 innehåller **[arbetsbelastningen Azure Development](/dotnet/azure/configure-visual-studio)**. Med den här arbetsbelastningen kan ett program publicera Azure-funktioner och utföra andra Azure-utvecklingsuppgifter.
 
-Självstudien drivs av ett exempel projekt som skrivits i C#. Exemplet finns här: [Azure Digitals dubblare-exempel från slut punkt till slut punkt](/samples/azure-samples/digital-twins-samples/digital-twins-samples). **Hämta exempelprojektet** på datorn genom att gå till exempel länken och välja knappen *Bläddra kod* under rubriken. Detta tar dig till GitHub-lagrings platsen för exemplen, som du kan hämta som en *. ZIP* genom att välja knappen *kod* och *Hämta zip*.
+Självstudien drivs av ett exempelprojekt som skrivits i C#. Exemplet finns här: [Azure Digital Twins exempel från slutet till slut.](/samples/azure-samples/digital-twins-samples/digital-twins-samples) **Hämta exempelprojektet på** datorn genom att gå till exempellänken och välja *knappen Bläddra* efter kod under rubriken. Då kommer du till GitHub-lagringsplatsen för exemplen, som du kan ladda ned som *en . ZIP* genom att välja *knappen Kod* och Ladda *ned ZIP.*
 
-:::image type="content" source="../articles/digital-twins/media/includes/download-repo-zip.png" alt-text="Vy över de digitala-och lagrings platsen-exemplen på GitHub. Knappen kod är markerad och skapar en liten dialog ruta där hämtnings ZIP-knappen är markerad." lightbox="../articles/digital-twins/media/includes/download-repo-zip.png":::
+:::image type="content" source="../articles/digital-twins/media/includes/download-repo-zip.png" alt-text="Skärmbild av lagringsplatsen digital-twins-samples på GitHub. Knappen Kod är markerad och skapar en liten dialogruta där knappen Ladda ned ZIP är markerad." lightbox="../articles/digital-twins/media/includes/download-repo-zip.png":::
 
-Då hämtas en *. ZIP* -mapp på din dator som **digital-twins-samples-master.zip**. Zippa upp mappen och extrahera filerna.
+Då laddas en *. ZIP-mapp* till datorn som **digital-twins-samples-master.zip**. Packa upp mappen och extrahera filerna.
 
-### <a name="prepare-an-azure-digital-twins-instance"></a>Förbered en digital Azure-instans
+### <a name="prepare-an-azure-digital-twins-instance"></a>Förbereda en Azure Digital Twins instans
 
 [!INCLUDE [Azure Digital Twins: instance prereq](digital-twins-prereq-instance.md)]

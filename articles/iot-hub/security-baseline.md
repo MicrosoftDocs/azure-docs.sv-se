@@ -1,90 +1,90 @@
 ---
-title: Azures säkerhets bas linje för Azure IoT Hub
-description: Azure IoT Hub Security-datalinjen ger procedur vägledning och resurser för att implementera de säkerhets rekommendationer som anges i Azures säkerhets benchmark.
+title: Azure-säkerhetsbaslinje för Azure IoT Hub
+description: Säkerhetsbaslinjen Azure IoT Hub innehåller procedurvägledning och resurser för implementering av säkerhetsrekommendationerna som anges i Azure Security Benchmark.
 author: msmbaldwin
 ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a21e0ae235d5b5c514f3d82b76b4d17394035872
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99243dbfac7fddb8a4fe9d64ed64ab706245ec3c
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104576907"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587637"
 ---
-# <a name="azure-security-baseline-for-azure-iot-hub"></a>Azures säkerhets bas linje för Azure IoT Hub
+# <a name="azure-security-baseline-for-azure-iot-hub"></a>Azure-säkerhetsbaslinje för Azure IoT Hub
 
-Den här säkerhets bas linjen använder vägledning från [Azures säkerhets benchmark-version 1,0](../security/benchmarks/overview-v1.md) för att Microsoft Azure IoT Hub. Azure Security Benchmark ger rekommendationer om hur du kan skydda dina molnlösningar i Azure.
-Innehållet grupperas efter de **säkerhets kontroller** som definieras av Azures säkerhets benchmark och relaterade rikt linjer som gäller för Azure IoT Hub. **Kontroller** som inte gäller för Azure IoT Hub har uteslutits.
+Den här säkerhetsbaslinjen tillämpar vägledning [från Azure Security Benchmark version 1.0](../security/benchmarks/overview-v1.md) för Microsoft Azure IoT Hub. Azure Security Benchmark ger rekommendationer om hur du kan skydda dina molnlösningar i Azure.
+Innehållet grupperas av de säkerhetskontroller **som definieras** av Azure Security Benchmark och tillhörande vägledning som gäller för Azure IoT Hub. **Kontroller** som inte är Azure IoT Hub har undantagits.
 
  
-Om du vill se hur Azure IoT Hub fullständigt mappar till Azures säkerhets benchmark kan du läsa mer i den [fullständiga Azure IoT Hub säkerhets bas linje mappnings filen](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
+Om du vill Azure IoT Hub mappa helt till Azure Security Benchmark kan du se den fullständiga [Azure IoT Hub säkerhetsbaslinjemappningsfilen](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 ## <a name="network-security"></a>Nätverkssäkerhet
 
 *Mer information finns i [Azure Security Benchmark: Nätverkssäkerhet](../security/benchmarks/security-control-network-security.md).*
 
-### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: skydda Azure-resurser i virtuella nätverk
+### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1: Skydda Azure-resurser i virtuella nätverk
 
-**Vägledning**: IoT Hub är en PaaS-tjänst (Platform-as-a-Service) med flera innehavare, delar olika kunder samma pool med beräknings-, nätverks-och lagrings maskin varu resurser. IoT Hubs värdnamn mappas till en offentlig slut punkt med en offentligt dirigerad IP-adress via Internet. Olika kunder delar den här IoT Hub offentliga slut punkten och IoT-enheter i över WAN-nätverk och lokala nätverk kan komma åt dem. Microsoft utformade tjänsten för fullständig isolering mellan varje klients data och fungerar kontinuerligt för att säkerställa det här resultatet.
+**Vägledning:** IoT Hub är en plattform som en tjänst (PaaS) för flera innehavare och delar samma pool med maskinvaruresurser för beräkning, nätverk och lagring. IoT Hub värdnamn mappar till en offentlig slutpunkt med en offentligt dirigerbar IP-adress via Internet. Olika kunder delar den IoT Hub offentliga slutpunkten, och IoT-enheter i över breda nätverk och lokala nätverk kan komma åt den. Microsoft har utformat tjänsten för fullständig isolering mellan varje klients data och arbetar kontinuerligt för att säkerställa det här resultatet.
 
-IoT Hub funktioner som meddelanderoutning, fil uppladdning och Mass import/export kräver även anslutning från IoT Hub till en Azure-resurs som ägs av en kund via den offentliga slut punkten. Dessa anslutnings vägar utgör tillsammans den utgående trafiken från IoT Hub till kund resurser.
+IoT Hub funktioner som meddelanderoutning, filuppladdning och massimport/massexport av enheter kräver också anslutning från IoT Hub till en kundägd Azure-resurs via dess offentliga slutpunkt. Dessa anslutningsvägar utgör tillsammans utgående trafik från IoT Hub till kundresurser.
 
-Rekommendera att begränsa anslutningen till dina Azure-resurser (inklusive Azure IoT Hub) via ett virtuellt nätverk som du äger och arbetar för att minska risken för anslutning i ett isolerat nätverk och möjliggör lokal nätverks anslutning direkt till Azure stamnät nätverket. Använd Azures privata länk och privat Azure-slutpunkt, där det är möjligt, för att aktivera privat åtkomst till dina tjänster från andra virtuella nätverk. 
+Rekommenderar att du begränsar anslutningen till dina Azure-resurser (inklusive Azure IoT Hub) via ett virtuellt nätverk som du äger och arbetar för att minska exponeringen för anslutningar i ett isolerat nätverk och aktivera lokal nätverksanslutning direkt till Azure-stamnätverket. Använd Azure Private Link och azure privat slutpunkt, där det är möjligt, för att aktivera privat åtkomst till dina tjänster från andra virtuella nätverk. 
 
-När du har upprättat privat åtkomst inaktiverar du åtkomsten till offentliga nätverk för IoT Hub för ytterligare säkerhet. Den här kontrollen på nätverks nivå tillämpas på en angiven IoT Hub-resurs, vilket säkerställer isolering. Om du vill hålla tjänsten aktiv för andra kund resurser med hjälp av den offentliga sökvägen kan dess offentliga slut punkt fortsätta att matchas, IP-adresser upptäckas och portarna förblir öppna. Detta är inte en orsak till att Microsoft integrerar flera säkerhets nivåer för att säkerställa en fullständig isolering mellan klienter.
+När privat åtkomst har upprättats inaktiverar du offentlig nätverksåtkomst för IoT Hub för ytterligare säkerhet. Den här kontrollen på nätverksnivå tillämpas på en specifik IoT Hub-resurs, vilket säkerställer isolering. För att tjänsten ska fortsätta att vara aktiv för andra kundresurser med hjälp av den offentliga sökvägen förblir den offentliga slutpunkten matchningsbar, IP-adresser kan upptäckas och portar förblir öppna. Detta är inget problem eftersom Microsoft integrerar flera säkerhetslager för att säkerställa fullständig isolering mellan klienter.
 
-Behåll öppna maskin varu portar i dina enheter så att de inte är minimala för att undvika oönskad åtkomst. Dessutom kan du bygga mekanismer för att förhindra eller identifiera fysisk manipulering av enheten.
+Håll öppna maskinvaruportar på dina enheter på ett minimum för att undvika oönskad åtkomst. Skapa dessutom mekanismer för att förhindra eller identifiera fysisk manipulering av enheten.
 
 - [Stöd för virtuella IoT-nätverk](virtual-network-support.md)
 
-- [Hantera offentlig nätverks åtkomst för IoT Hub](iot-hub-public-network-access.md)
+- [Hantera offentlig nätverksåtkomst för IoT Hub](iot-hub-public-network-access.md)
 
-- [Klient isolering i Azure](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices#tenant-level-isolation)
+- [Klientisolering i Azure](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices#tenant-level-isolation)
 
-- [metod tips för stor nätverk](https://docs.microsoft.com/azure/iot-fundamentals/security-recommendations#networking)
+- [bästa praxis för loT-nätverk](https://docs.microsoft.com/azure/iot-fundamentals/security-recommendations#networking)
 
-- [Översikt över Azure privat länk](../private-link/private-link-overview.md)
+- [Azure Private Link översikt](../private-link/private-link-overview.md)
 
-- [Azure nätverks säkerhets grupp](../virtual-network/network-security-groups-overview.md)
+- [Azure-nätverkssäkerhetsgrupp](../virtual-network/network-security-groups-overview.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: övervaka och logga konfigurationen och trafiken för virtuella nätverk, undernät och nätverkskort
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2: Övervaka och logga konfiguration och trafik för virtuella nätverk, undernät och nätverkskort
 
-**Vägledning**: Använd Azure Security Center och följ rekommendationerna för nätverks skydd för att skydda dina Azure-nätverks resurser. Aktivera flödes loggar för nätverks säkerhets grupper och skicka loggarna till ett Azure Storage konto för granskning. Du kan också skicka flödes loggarna till en Log Analytics arbets yta och sedan använda Trafikanalys för att ge insikter om trafik mönster i Azure-molnet. Några av fördelarna med Trafikanalys är möjligheten att visualisera nätverks aktivitet, identifiera frekventa fläckar och säkerhetshot, förstå trafikflödes mönster och hitta nätverks-felkonfigurationer.
+**Vägledning:** Använd Azure Security Center och följ nätverksskyddsrekommendationerna för att skydda dina Azure-nätverksresurser. Aktivera flödesloggar för nätverkssäkerhetsgruppen och skicka loggarna till ett Azure Storage konto för granskning. Du kan också skicka flödesloggarna till en Log Analytics-arbetsyta och sedan använda Trafikanalys för att ge insikter om trafikmönster i Ditt Azure-moln. Några fördelar med Trafikanalys är möjligheten att visualisera nätverksaktivitet, identifiera hotpunkter och säkerhetshot, förstå trafikflödesmönster och hitta felkonfigurationer i nätverk.
  
-- [Så här aktiverar du flödes loggar för nätverks säkerhets grupper](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
+- [Så här aktiverar du flödesloggar för nätverkssäkerhetsgrupp](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
 - [Så här aktiverar och använder du Trafikanalys](../network-watcher/traffic-analytics.md)
  
-- [Förstå nätverks säkerhet som tillhandahålls av Azure Security Center](../security-center/security-center-network-recommendations.md)
+- [Förstå nätverkssäkerhet som tillhandahålls av Azure Security Center](../security-center/security-center-network-recommendations.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="13-protect-critical-web-applications"></a>1,3: skydda viktiga webb program
+### <a name="13-protect-critical-web-applications"></a>1.3: Skydda kritiska webbprogram
 
-**Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för webb program som körs på Azure App Service-eller beräknings resurser.
+**Vägledning:** Inte tillämpligt; den här rekommendationen är avsedd för webbprogram som körs Azure App Service eller beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: neka kommunikation med kända skadliga IP-adresser
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Neka kommunikation med kända skadliga IP-adresser
 
-**Vägledning**: blockera kända skadliga IP-adresser med IoT Hub IP-filter regler. Skadliga försök registreras också via Azure Security Center för IoT.
+**Vägledning:** Blockera kända skadliga IP-adresser IoT Hub IP-filterregler. Skadliga försök registreras och varnas också via Azure Security Center för IoT.
 
-Azure DDoS Protection Basic är redan aktiverat och tillgängligt utan ytterligare kostnad som en del av IoT Hub. Always on trafikövervakning och real tids minskning av vanliga attacker på nätverks nivå, ger samma försvar som Microsofts onlinetjänster. Hela skalningen av Azures globala nätverk kan användas för att distribuera och minska angrepps trafiken mellan regioner.
+Azure DDoS Protection Basic är redan aktiverat och tillgängligt utan extra kostnad som en del av IoT Hub. Alltid på trafikövervakning och riskreducering i realtid för vanliga attacker på nätverksnivå ger samma försvar som används av Microsofts onlinetjänster. Hela skalan för Azures globala nätverk kan användas för att distribuera och minimera angreppstrafik mellan regioner.
 
 - [IoT Hub IP-filter](iot-hub-ip-filtering.md)
 
-- [Azure Security Center för IoT misstänkt IP-adress kommunikation](/azure/asc-for-iot/concept-security-alerts)
+- [Azure Security Center för misstänkt IP-adresskommunikation i IoT](/azure/asc-for-iot/concept-security-alerts)
 
 - [Hantera Azure DDoS Protection Basic](../ddos-protection/ddos-protection-overview.md)
 
@@ -92,266 +92,266 @@ Azure DDoS Protection Basic är redan aktiverat och tillgängligt utan ytterliga
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="15-record-network-packets"></a>1,5: registrera nätverks paket
+### <a name="15-record-network-packets"></a>1.5: Registrera nätverkspaket
 
-**Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för erbjudanden som producerar nätverks paket som kan registreras och visas av kunder. IoT Hub skapar inte nätverks paket som är riktade mot kunden och är inte utformade för att distribueras direkt till virtuella Azure-nätverk.
+**Vägledning:** Ej tillämpligt; Den här rekommendationen är avsedd för erbjudanden som producerar nätverkspaket som kan registreras och visas av kunder. IoT Hub skapar inte nätverkspaket som är kundriktade och är inte utformade för att distribueras direkt till virtuella Azure-nätverk.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: Distribuera nätverksbaserade intrångs identifiering/system för skydd mot intrång (ID/IP-adresser)
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Distribuera nätverksbaserade system för intrångsidentifiering/intrångsskydd (IDS/IPS)
 
-**Vägledning**: Välj ett erbjudande från Azure Marketplace som stöder ID/IP-funktioner med funktioner för nytto Last kontroll.  När nytto lasts granskning inte är ett krav kan du använda Azure Firewall Threat intelligence. Azure Firewall Threat Intelligence-baserad filtrering används för att varna vid och/eller blockera trafik till och från kända skadliga IP-adresser och domäner. IP-adresserna och domänerna hämtas från Microsoft Threat Intelligence-flödet.
+**Vägledning:** Välj ett erbjudande från Azure Marketplace som stöder IDS/IPS-funktioner med funktioner för nyttolastgranskning.  När nyttolastgranskning inte är ett krav Azure Firewall hotinformation användas. Azure Firewall filtrering baserad på hotinformation används för att varna om och/eller blockera trafik till och från kända skadliga IP-adresser och domäner. IP-adresserna och domänerna hämtas från Microsoft Threat Intelligence-flödet.
 
-Distribuera den brand Väggs lösning som du väljer för var och en av organisationens nätverks gränser för att identifiera och/eller blockera skadlig trafik. 
+Distribuera valfri brandväggslösning vid var och en av organisationens nätverksgränser för att identifiera och/eller blockera skadlig trafik. 
 
 - [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-- [Så här distribuerar du Azure-brandvägg](../firewall/tutorial-firewall-deploy-portal.md)
+- [Så här distribuerar du Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Konfigurera aviseringar med Azure-brandväggen](../firewall/threat-intel.md)
-
-**Ansvar**: Kund
-
-**Azure Security Center övervakning**: ingen
-
-### <a name="17-manage-traffic-to-web-applications"></a>1,7: hantera trafik till webb program
-
-**Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för webb program som körs på Azure App Service-eller beräknings resurser.
-
-**Ansvars område**: inte tillämpligt
-
-**Azure Security Center övervakning**: ingen
-
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: minimera komplexitet och administrativa kostnader för nätverks säkerhets regler
-
-**Vägledning**: för resurser som behöver åtkomst till din Azure-IoT Hub använder du Virtual Network Service-taggar för att definiera nätverks åtkomst kontroller i nätverks säkerhets grupper eller Azure-brandvägg. Du kan använda tjänsttaggar i stället för specifika IP-adresser när du skapar säkerhetsregler. Genom att ange service tag-namnet (till exempel AzureIoTHub) i lämpligt käll-eller mål fält för en regel kan du tillåta eller neka trafiken för motsvarande tjänst. Microsoft hanterar de adressprefix som omfattas av tjänst tag gen och uppdaterar automatiskt tjänst tag gen när adresser ändras.
-
-- [Använda service märken för Azure IoT](iot-hub-understand-ip-address.md)
-- [Mer information om att använda service märken](../virtual-network/service-tags-overview.md)
+- [Så här konfigurerar du aviseringar med Azure Firewall](../firewall/threat-intel.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: underhåll standardkonfigurationer för nätverks enheter
+### <a name="17-manage-traffic-to-web-applications"></a>1.7: Hantera trafik till webbprogram
 
-**Vägledning**: definiera och implementera standardinställda säkerhetskonfigurationer för nätverks resurser som är kopplade till dina Azure IoT Hub-namnområden med Azure policy. Använd Azure Policy alias i namn områdena "Microsoft. Devices" och "Microsoft. Network" om du vill skapa anpassade principer för granskning eller tillämpa nätverks konfigurationen för dina Machine Learning namn områden. 
+**Vägledning:** Inte tillämpligt; den här rekommendationen är avsedd för webbprogram som körs Azure App Service eller beräkningsresurser.
+
+**Ansvar:** Ej tillämpligt
+
+**Azure Security Center övervakning**: Ingen
+
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Minimera komplexitet och administrativa kostnader för nätverkssäkerhetsregler
+
+**Vägledning:** För resurser som behöver åtkomst till Azure IoT Hub kan du använda Virtual Network för att definiera nätverksåtkomstkontroller för nätverkssäkerhetsgrupper eller Azure Firewall. Du kan använda tjänsttaggar i stället för specifika IP-adresser när du skapar säkerhetsregler. Genom att ange tjänsttaggnamnet (till exempel AzureIoTHub) i rätt käll- eller målfält för en regel kan du tillåta eller neka trafiken för motsvarande tjänst. Microsoft hanterar de adressprefix som omfattas av tjänsttaggen och uppdaterar automatiskt tjänsttaggen när adresserna ändras.
+
+- [Så här använder du tjänsttaggar för Azure IoT](iot-hub-understand-ip-address.md)
+- [Mer information om hur du använder tjänsttaggar](../virtual-network/service-tags-overview.md)
+
+**Ansvar**: Kund
+
+**Azure Security Center övervakning**: Ingen
+
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Underhålla standardsäkerhetskonfigurationer för nätverksenheter
+
+**Vägledning:** Definiera och implementera standardsäkerhetskonfigurationer för nätverksresurser som är associerade Azure IoT Hub nätverksnamnrymder med Azure Policy. Använd Azure Policy alias i namnrymderna "Microsoft.Devices" och "Microsoft.Network" för att skapa anpassade principer för att granska eller framtvinga nätverkskonfigurationen för Machine Learning namnområden. 
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="110-document-traffic-configuration-rules"></a>1,10: dokumentera trafik konfigurations regler
+### <a name="110-document-traffic-configuration-rules"></a>1.10: Dokumentera trafikkonfigurationsregler
 
-**Vägledning**: Använd taggar för nätverks resurser som är associerade med din Azure IoT Hub-distribution för att logiskt organisera dem i en taxonomi.
+**Vägledning:** Använd taggar för nätverksresurser som är associerade Azure IoT Hub din distribution för att organisera dem logiskt i en taxonomi.
 
-- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
-
-**Ansvar**: Kund
-
-**Azure Security Center övervakning**: ingen
-
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: Använd automatiserade verktyg för att övervaka konfigurationer för nätverks resurser och identifiera ändringar
-
-**Vägledning**: Använd Azure aktivitets logg för att övervaka konfigurationer av nätverks resurser och identifiera ändringar för nätverks resurser som är relaterade till Azure IoT Hub. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av kritiska nätverks resurser sker.
-
-- [Visa och hämta Azure aktivitets logg händelser](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
-
-- [Så här skapar du aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
+- [Skapa och använda taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
+
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Använd automatiserade verktyg för att övervaka nätverksresurskonfigurationer och identifiera ändringar
+
+**Vägledning:** Använd Azure-aktivitetsloggen för att övervaka nätverksresurskonfigurationer och identifiera ändringar för nätverksresurser relaterade till Azure IoT Hub. Skapa aviseringar inom Azure Monitor som utlöses när ändringar av kritiska nätverksresurser sker.
+
+- [Så här visar och hämtar du Händelser i Azure-aktivitetsloggen](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
+
+- [Skapa aviseringar i Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
+
+**Ansvar**: Kund
+
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="logging-and-monitoring"></a>Loggning och övervakning
 
-*Mer information finns i [säkerhets benchmark för Azure: loggning och övervakning](../security/benchmarks/security-control-logging-monitoring.md).*
+*Mer information finns i [Benchmark för Azure-säkerhet: Loggning och övervakning.](../security/benchmarks/security-control-logging-monitoring.md)*
 
-### <a name="22-configure-central-security-log-management"></a>2,2: Konfigurera central hantering av säkerhets loggar
+### <a name="22-configure-central-security-log-management"></a>2.2: Konfigurera central hantering av säkerhetsloggar
 
-**Vägledning**: mata in loggar via Azure Monitor för att samla in säkerhets data som genereras av Azure IoT Hub. I Azure Monitor använder du Log Analytics arbets ytor för att fråga och utföra analyser och använda lagrings konton för långsiktig/lagring. Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel eller en säkerhets incident och händelse hantering från tredje part (SIEM).
+**Vägledning:** Mata in loggar via Azure Monitor för att aggregera säkerhetsdata som genereras av Azure IoT Hub. I Azure Monitor du Använda Log Analytics-arbetsytor för att köra frågor mot och utföra analyser och använda lagringskonton för långsiktig lagring/arkiveringslagring. Du kan också aktivera och ta med data för att Azure Sentinel eller en säkerhetsincident- och händelsehantering från tredje part (SIEM).
 
 - [Konfigurera Azure IoT-loggar](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub-reference#resource-logs)
 
-- [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
+- [Registrera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: Aktivera gransknings loggning för Azure-resurser
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Aktivera granskningsloggning för Azure-resurser
 
-**Vägledning**: Aktivera Azure IoT Diagnostic-inställningar på Azure-resurser för åtkomst till gransknings-, säkerhets-och resurs loggar. Aktivitets loggar, som är automatiskt tillgängliga, innehåller händelse källa, datum, användare, tidsstämpel, käll adresser, mål adresser och andra användbara element.
+**Vägledning:** Aktivera Azure IoT-diagnostikinställningar för Azure-resurser för åtkomst till gransknings-, säkerhets- och resursloggar. Aktivitetsloggar, som är automatiskt tillgängliga, inkluderar händelsekälla, datum, användare, tidsstämpel, källadresser, måladresser och andra användbara element.
 
 - [Konfigurera Azure IoT Hub loggar](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub-reference#resource-logs)
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
+- [Samla in plattformsloggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Förstå loggning och olika logg typer i Azure](../azure-monitor/essentials/platform-logs-overview.md)
+- [Förstå loggning och olika loggtyper i Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: [Azures säkerhets benchmark](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) är standard policy initiativ för Security Center och är grunden för [Security Center rekommendationer](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). De Azure Policy-definitioner som är relaterade till den här kontrollen aktive ras automatiskt av Security Center. Aviseringar som är relaterade till den här kontrollen kan kräva en [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) -plan för de relaterade tjänsterna.
+**Azure Security Center övervakning:** [Azure Security Benchmark](/azure/governance/policy/samples/azure-security-benchmark) är standardprincipinitiativ för Security Center och är grunden för Security Center [rekommendationerna](/azure/security-center/security-center-recommendations). De Azure Policy som är relaterade till den här kontrollen aktiveras automatiskt av Security Center. Aviseringar som rör den här kontrollen kan kräva [en Azure Defender](/azure/security-center/azure-defender) plan för de relaterade tjänsterna.
 
-**Azure policy inbyggda definitioner – Microsoft. Devices**:
+**Azure Policy inbyggda definitioner – Microsoft.Devices**:
 
 [!INCLUDE [Resource Policy for Microsoft.Devices 2.3](../../includes/policy/standards/asb/rp-controls/microsoft.devices-2-3.md)]
 
-### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: samla in säkerhets loggar från operativ system
+### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: Samla in säkerhetsloggar från operativsystem
 
-**Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
+**Vägledning:** Ej tillämpligt; den här rekommendationen är avsedd för beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurera säkerhets logg lagrings kvarhållning
+### <a name="25-configure-security-log-storage-retention"></a>2.5: Konfigurera kvarhållning av säkerhetslogglagring
 
-**Vägledning**: i Azure Monitor anger du logg kvarhållningsperioden för Log Analytics arbets ytor som är kopplade till dina Azure IoT Hub-instanser enligt organisationens regler för efterlevnad.
+**Vägledning:** I Azure Monitor anger du loggens kvarhållningsperiod för Log Analytics-arbetsytor som är associerade med dina Azure IoT Hub-instanser enligt organisationens efterlevnadsregler.
 
-- [Ange parametrar för logg bevarande](https://docs.microsoft.com/azure/azure-monitor/logs/manage-cost-storage#change-the-data-retention-period)
+- [Så här anger du parametrar för loggbevarande](https://docs.microsoft.com/azure/azure-monitor/logs/manage-cost-storage#change-the-data-retention-period)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="26-monitor-and-review-logs"></a>2,6: övervaka och granska loggar
+### <a name="26-monitor-and-review-logs"></a>2.6: Övervaka och granska loggar
 
-**Vägledning**: analysera och övervaka loggar för avvikande beteende och granska resultaten regelbundet från Azure-IoT Hub. Använd Azure Monitor och en Log Analytics arbets yta för att granska loggar och köra frågor på loggdata.
+**Vägledning:** Analysera och övervaka loggar för avvikande beteende och granska regelbundet resultaten från Azure IoT Hub. Använd Azure Monitor och en Log Analytics-arbetsyta för att granska loggar och köra frågor på loggdata.
 
-Du kan också aktivera och inaktivera data till Azure Sentinel eller en SIEM från tredje part. 
+Du kan också aktivera och ta med data till Azure Sentinel eller en SIEM från tredje part. 
 
-- [Övervaka Azure IoT Health](monitor-iot-hub.md)
+- [Övervaka Azure IoT-hälsa](monitor-iot-hub.md)
 
-- [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
+- [Registrera Azure Sentinel](../sentinel/quickstart-onboard.md)
   
-- [Komma igång med Log Analytics frågor](../azure-monitor/logs/log-analytics-tutorial.md)
+- [Komma igång med Log Analytics-frågor](../azure-monitor/logs/log-analytics-tutorial.md)
    
 - [ Så här utför du anpassade frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: aktivera aviseringar för avvikande aktiviteter
+### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7: Aktivera aviseringar för avvikande aktiviteter
 
-**Vägledning**: Använd Azure Security Center för IoT med en Log Analytics arbets yta för övervakning och avisering om avvikande aktivitet i säkerhets loggar och händelser. Du kan också aktivera och inaktivera data till Azure Sentinel. Du kan också definiera drifts aviseringar med Azure Monitor som kan ha säkerhets effekter, till exempel när trafiken ignoreras oväntad.
+**Vägledning:** Använd Azure Security Center för IoT med en Log Analytics-arbetsyta för övervakning och avisering om avvikande aktivitet som finns i säkerhetsloggar och händelser. Du kan också aktivera och ta med data för att Azure Sentinel. Du kan också definiera driftaviseringar med Azure Monitor som kan ha säkerhetskonsekvenser, till exempel när trafiken sjunker oväntat.
 
-- [Övervaka Azure IoT Hub Health](monitor-iot-hub.md)
+- [Övervaka Azure IoT Hub hälsotillstånd](monitor-iot-hub.md)
 
-- [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
+- [Registrera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 - [Azure Security Center för IoT-aviseringar](/azure/asc-for-iot/concept-security-alerts)
 
-- [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/alerts/tutorial-response.md)
+- [Så här varnar du om loggdata i Log Analytics](../azure-monitor/alerts/tutorial-response.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="28-centralize-anti-malware-logging"></a>2,8: centralisera loggning mot skadlig kod
+### <a name="28-centralize-anti-malware-logging"></a>2.8: Centralisera loggning mot skadlig kod
 
-**Vägledning**: ej tillämpligt; Azure IoT Hub bearbetar eller skapar inte relaterade loggar mot skadlig kod.
+**Vägledning:** Inte tillämpligt; Azure IoT Hub inte bearbetar eller producerar loggar relaterade till skadlig kod.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="29-enable-dns-query-logging"></a>2,9: Aktivera loggning av DNS-frågor
+### <a name="29-enable-dns-query-logging"></a>2.9: Aktivera DNS-frågeloggning
 
-**Vägledning**: ej tillämpligt; Azure IoT Hub bearbetar eller skapar inte DNS-relaterade loggar.
+**Vägledning:** Ej tillämpligt; Azure IoT Hub inte bearbetar eller producerar DNS-relaterade loggar.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="210-enable-command-line-audit-logging"></a>2,10: Aktivera loggning av kommando rads granskning
+### <a name="210-enable-command-line-audit-logging"></a>2.10: Aktivera granskningsloggning på kommandoraden
 
-**Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
+**Vägledning:** Inte tillämpligt; den här rekommendationen är avsedd för beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="identity-and-access-control"></a>Identitets- och åtkomstkontroll
 
-*Mer information finns i [Azure Security benchmark: identitet och Access Control](../security/benchmarks/security-control-identity-access-control.md).*
+*Mer information finns i [Azure Security Benchmark: Identity and Access Control](../security/benchmarks/security-control-identity-access-control.md).*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: underhåll en inventering av administrativa konton
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Upprätthålla en förteckning över administrativa konton
 
-**Vägledning**: Azure rollbaserad åtkomst kontroll (Azure RBAC) gör att du kan hantera åtkomst till Azure IoT Hub via roll tilldelningar. Du kan tilldela dessa roller till användare, grupper tjänstens huvud namn och hanterade identiteter. Det finns fördefinierade inbyggda roller för vissa resurser och dessa roller kan inventeras eller frågas via verktyg som Azure CLI, eller Azure PowerShell eller Azure Portal.
+**Vägledning:** Med rollbaserad åtkomstkontroll i Azure (Azure RBAC) kan du hantera åtkomsten till Azure IoT Hub via rolltilldelningar. Du kan tilldela dessa roller till användare, grupper av tjänstens huvudnamn och hanterade identiteter. Det finns fördefinierade inbyggda roller för vissa resurser och dessa roller kan inventeras eller efterfrågas via verktyg som Azure CLI eller Azure PowerShell eller Azure Portal.
 
-- [Så här hämtar du en katalog roll i Azure Active Directory (Azure AD) med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
+- [Så här får du en katalogroll i Azure Active Directory (Azure AD) med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
-
-**Ansvar**: Kund
-
-**Azure Security Center övervakning**: ingen
-
-### <a name="32-change-default-passwords-where-applicable"></a>3,2: ändra standard lösen ord där tillämpligt
-
-**Vägledning**: åtkomst hantering till Azure IoT Hub-resurser styrs via Azure Active Directory (Azure AD). Azure AD har inte begreppet standard lösen ord.
+- [Så här hämtar du medlemmar i en katalogroll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="33-use-dedicated-administrative-accounts"></a>3,3: Använd dedikerade administrativa konton
+### <a name="32-change-default-passwords-where-applicable"></a>3.2: Ändra standardlösenord i förekommande fall
 
-**Vägledning**: skapa standard procedurer för användning av dedikerade administrativa konton.
+**Vägledning:** Åtkomsthantering till Azure IoT Hub-resurser styrs via Azure Active Directory (Azure AD). Azure AD har inte begreppet standardlösenord.
 
-Du kan också aktivera just-in-Time-åtkomst till administrativa konton genom att använda Azure Active Directory (Azure AD) Privileged Identity Management och Azure Resource Manager.
+**Ansvar**: Kund
+
+**Azure Security Center övervakning**: Ingen
+
+### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Använd dedikerade administrativa konton
+
+**Vägledning:** Skapa standardprocedurer för användning av dedikerade administrativa konton.
+
+Du kan också aktivera just-in-time-åtkomst till administrativa konton med hjälp av Azure Active Directory (Azure AD) Privileged Identity Management och Azure Resource Manager.
 
 - [Läs mer om Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: Använd enkel inloggning (SSO) med Azure Active Directory
+### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Använd enkel inloggning (SSO) med Azure Active Directory
 
-**Vägledning**: för användare som kommer åt IoT Hub använder du Azure Active Directory (Azure AD) SSO. Använd Azure Security Center identitets-och åtkomst rekommendationer.
+**Vägledning:** För användare som har IoT Hub använder du Azure Active Directory (Azure AD) enkel inloggning. Använd Azure Security Center rekommendationer för identitet och åtkomst.
 
-- [Förstå SSO med Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
+- [Förstå enkel inloggning med Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Använd Multi-Factor Authentication för all Azure Active Directory baserad åtkomst
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Använd multifaktorautentisering för Azure Active Directory åtkomst
 
-**Vägledning**: Aktivera Azure Active Directory (Azure AD) multifaktorautentisering för att skydda din totala Azure-klient och dra nytta av alla tjänster. IoT Hub-tjänsten har inte stöd för multifaktorautentisering.
+**Vägledning:** Aktivera Azure Active Directory (Azure AD) multifaktorautentisering för att skydda din övergripande Azure-klientorganisation och dra nytta av alla tjänster. IoT Hub-tjänsten har inte stöd för multifaktorautentisering.
 
 - [Så här aktiverar du multifaktorautentisering i Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [Övervaka identitet och åtkomst i Azure Security Center](../security-center/security-center-identity-access.md)
+- [Övervaka identitet och åtkomst inom Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Använd dedikerade datorer (arbets stationer med privilegie rad åtkomst) för alla administrativa uppgifter
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Använd dedikerade datorer (arbetsstationer för privilegierad åtkomst) för alla administrativa uppgifter
 
-**Vägledning**: Använd en säker arbets station för privilegie rad åtkomst (Paw) för administrativa uppgifter som kräver förhöjda privilegier.
+**Vägledning:** Använd en arbetsstation med säker privilegierad åtkomst (PAW) för administrativa uppgifter som kräver utökade privilegier.
 
-- [Förstå säkra arbets stationer med privilegie rad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
+- [Förstå säkra arbetsstationer med privilegierad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Aktivera Azure Active Directory (Azure AD) multifaktorautentisering](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Så här aktiverar du Azure Active Directory multifaktorautentisering (Azure AD)](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: Logga och Avisera om misstänkta aktiviteter från administrativa konton
+### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7: Logga och avisering om misstänkta aktiviteter från administrativa konton
 
-**Vägledning**: använda Azure Active Directory (Azure AD) säkerhets rapporter och övervakning för att identifiera när misstänkt eller osäker aktivitet inträffar i miljön. Använd Azure Security Center för att övervaka identitets-och åtkomst aktiviteter.
+**Vägledning:** Använd Azure Active Directory (Azure AD) säkerhetsrapporter och övervakning för att identifiera när misstänkt eller osäker aktivitet inträffar i miljön. Använd Azure Security Center för att övervaka identitets- och åtkomstaktivitet.
 
 - [Så här identifierar du Azure AD-användare som har flaggats för riskfylld aktivitet](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -359,38 +359,38 @@ Du kan också aktivera just-in-Time-åtkomst till administrativa konton genom at
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="38-manage-azure-resources-only-from-approved-locations"></a>3,8: hantera endast Azure-resurser från godkända platser
+### <a name="38-manage-azure-resources-only-from-approved-locations"></a>3.8: Hantera Azure-resurser endast från godkända platser
 
-**Vägledning**: för användare som har åtkomst till IoT Hub stöds inte villkorlig åtkomst. Du kan undvika detta genom att använda Azure Active Directory (Azure AD) med namnet platser för att endast tillåta åtkomst från särskilda logiska grupperingar av IP-adressintervall eller länder/regioner för din övergripande Azure-klient, får alla tjänster, inklusive IoT Hub.
+**Vägledning:** För användare som IoT Hub åtkomst stöds inte villkorlig åtkomst. Du kan åtgärda detta genom att använda Azure Active Directory (Azure AD) namngivna platser för att endast tillåta åtkomst från specifika logiska gruppningar av IP-adressintervall eller länder/regioner för din övergripande Azure-klientorganisation, vilket drar nytta av alla tjänster, inklusive IoT Hub.
 
-- [Så här konfigurerar du Azure AD-namngivna platser](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
+- [Så här konfigurerar du azure AD-namngivna platser](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="39-use-azure-active-directory"></a>3,9: Använd Azure Active Directory
+### <a name="39-use-azure-active-directory"></a>3.9: Använd Azure Active Directory
 
-**Vägledning**: Använd Azure Active Directory (Azure AD) som central autentiserings-och auktoriserings system för användar åtkomst till IoT Hub. Azure AD skyddar data med stark kryptering för data i vila och under överföring. Azure AD innehåller även salter, hash-värden och lagrar användarautentiseringsuppgifter på ett säkert sätt.
+**Vägledning:** För användaråtkomst till IoT Hub, Använd Azure Active Directory (Azure AD) som centralt system för autentisering och auktorisering. Azure AD skyddar data med hjälp av stark kryptering för vilodata och under överföring. Azure AD använder också salter, hash-värden och lagrar användarautentiseringsuppgifter på ett säkert sätt.
 
-För enhets-och tjänst åtkomst använder IoT Hub säkerhetstoken och SAS-token (signatur för delad åtkomst) för att autentisera enheter och tjänster för att undvika att skicka nycklar i nätverket. 
+För enhets- och tjänståtkomst använder IoT Hub säkerhetstoken och SAS-token (signatur för delad åtkomst) för att autentisera enheter och tjänster för att undvika att skicka nycklar i nätverket. 
 
 - [Skapa och konfigurera en Azure AD-instans](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 - [IoT Hub säkerhetstoken](https://docs.microsoft.com/azure/iot-fundamentals/iot-security-deployment#iot-hub-security-tokens)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: granska och stäm regelbundet av användar åtkomst
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Granska och stämma av användaråtkomst regelbundet
 
-**Vägledning**: Azure Active Directory (Azure AD) innehåller loggar som hjälper till att identifiera inaktuella konton. Dessutom kan du använda Azure AD-identitets-och åtkomst granskningar för att effektivt hantera grupp medlemskap, åtkomst till företags program och roll tilldelningar. Användar åtkomst kan granskas regelbundet för att se till att endast rätt användare har fortsatt åtkomst.
+**Vägledning:** Azure Active Directory (Azure AD) innehåller loggar som hjälper dig att identifiera inaktuella konton. Använd dessutom Azure AD-identitet och åtkomstgranskningar för att effektivt hantera gruppmedlemskap, åtkomst till företagsprogram och rolltilldelningar. Användaråtkomst kan granskas regelbundet för att se till att endast rätt användare har fortsatt åtkomst.
 
-Använd Azure AD Privileged Identity Management (PIM) för att skapa loggar och varningar när misstänkt eller osäker aktivitet inträffar i miljön.
+Använd Azure AD Privileged Identity Management (PIM) för generering av loggar och aviseringar när misstänkt eller osäker aktivitet inträffar i miljön.
 
-- [Förstå Azure AD repor ting](/azure/active-directory/reports-monitoring/)
+- [Förstå Azure AD-rapportering](/azure/active-directory/reports-monitoring/)
 
 - [Så här använder du identitets- och åtkomstgranskningar i Azure AD](../active-directory/governance/access-reviews-overview.md)
 
@@ -398,114 +398,114 @@ Använd Azure AD Privileged Identity Management (PIM) för att skapa loggar och 
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: övervakaren försöker komma åt inaktiverade autentiseringsuppgifter
+### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11: Övervakaren försöker komma åt inaktiverade autentiseringsuppgifter
 
-**Vägledning**: du har åtkomst till Azure Active Directory (Azure AD) inloggnings aktivitet, gransknings-och risk händelse logg källor, som gör att du kan integrera med alla Siem/övervaknings verktyg.
+**Vägledning:** Du har åtkomst till Azure Active Directory(Azure AD) inloggningsaktivitet, gransknings- och riskhändelseloggkällor, vilket gör att du kan integrera med alla SIEM-/övervakningsverktyg.
 
-Du kan effektivisera den här processen genom att skapa diagnostikinställningar för Azure AD-användarkonton och skicka gransknings loggar och inloggnings loggar till en Log Analytics-arbetsyta. Du kan konfigurera önskade aviseringar i Log Analytics arbets ytan.
+Du kan effektivisera den här processen genom att skapa diagnostikinställningar för Azure AD-användarkonton och skicka granskningsloggar och inloggningsloggar till en Log Analytics-arbetsyta. Du kan konfigurera önskade aviseringar på Log Analytics-arbetsytan.
 
-Användare Azure Monitor resurs loggar för att övervaka otillåtna anslutnings försök i anslutnings kategorin.
+Användaren Azure Monitor resursloggar för att övervaka obehöriga anslutningsförsök i kategorin Anslutningar.
 
-- [Så här integrerar du Azure-aktivitets loggar med Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrera Azure-aktivitetsloggar med Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
-- [Konfigurera resurs loggar för IoT Hub](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub#collection-and-routing)
-
-**Ansvar**: Kund
-
-**Azure Security Center övervakning**: ingen
-
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: avisering om beteende för beteende för konto inloggning
-
-**Vägledning**: Använd Azure Active Directory (Azure AD) Identity Protection-funktioner för att konfigurera automatiserade svar på identifierade misstänkta åtgärder relaterade till användar identiteter. Du kan också mata in data i Azure Sentinel för ytterligare undersökning.
-
-- [ Visa Azure AD-riskfyllda inloggningar](../active-directory/identity-protection/overview-identity-protection.md)
-
-- [ Så här konfigurerar och aktiverar du risk principer för identitets skydd](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
-
-- [ Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
+- [Konfigurera resursloggar för IoT Hub](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub#collection-and-routing)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: ge Microsoft åtkomst till relevant kund information under support scenarier
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Avisering om kontoinloggningens beteendeavvikelse
 
-**Vägledning**: i support scenarier där Microsoft behöver åtkomst till kund information kommer den att begäras direkt från kunden.
+**Vägledning:** Använd Azure Active Directory (Azure AD) Identity Protection för att konfigurera automatiserade svar på identifierade misstänkta åtgärder relaterade till användaridentiteter. Du kan också mata in data i Azure Sentinel för ytterligare undersökning.
+
+- [ Så här visar du riskfyllda inloggningar i Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
+
+- [ Så här konfigurerar och aktiverar du riskprinciper för Identity Protection](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
+
+- [ Registrera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
+
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: Ge Microsoft åtkomst till relevanta kunddata under supportscenarier
+
+**Vägledning:** I supportscenarier där Microsoft behöver åtkomst till kunddata begärs det direkt från kunden.
+
+**Ansvar**: Kund
+
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="data-protection"></a>Dataskydd
 
 *Mer information finns i [Azure Security Benchmark: Dataskydd](../security/benchmarks/security-control-data-protection.md).*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: underhåll en inventering av känslig information
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Upprätthålla en förteckning över känslig information
 
-**Vägledning**: Använd taggar för att spåra Azure-resurser som lagrar eller bearbetar känslig information.
+**Vägledning:** Använd taggar för att spåra Azure-resurser som lagrar eller bearbetar känslig information.
  
-- [ Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
+- [ Skapa och använda taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: isolera system som lagrar eller bearbetar känslig information
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Isolera system som lagrar eller bearbetar känslig information
 
-**Vägledning**: implementera isolering med separata prenumerationer och hanterings grupper för enskilda säkerhets domäner, till exempel miljö typ och data känslighets nivå. Du kan begränsa åtkomst nivån till dina Azure-resurser som dina program och företags miljöer kräver. Du kan styra åtkomsten till Azure-resurser via Azure RBAC.
+**Vägledning:** Implementera isolering med separata prenumerationer och hanteringsgrupper för enskilda säkerhetsdomäner, till exempel miljötyp och känslighetsnivå för data. Du kan begränsa åtkomstnivån till dina Azure-resurser som dina program och företagsmiljöer kräver. Du kan styra åtkomsten till Azure-resurser via Azure RBAC.
   
 - [ Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
-- [ Så här skapar du hanterings grupper](../governance/management-groups/create-management-group-portal.md)
+- [ Så här skapar du hanteringsgrupper](../governance/management-groups/create-management-group-portal.md)
 
-- [ Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
+- [ Skapa och använda taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: övervaka och blockera obehörig överföring av känslig information
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Övervaka och blockera obehörig överföring av känslig information
 
-**Vägledning**: Använd en lösning från tredje part från Azure Marketplace i nätverks omkretser för att övervaka obehörig överföring av känslig information och blockera sådana överföringar samtidigt som du varnar information om informations säkerhet.
+**Vägledning:** Använd en lösning från tredje part från Azure Marketplace i nätverksnätverket för att övervaka obehörig överföring av känslig information och blockera sådana överföringar samtidigt som informationssäkerhetspersonal varnas.
 
-För den underliggande plattformen som hanteras av Microsoft behandlar Microsoft allt kund innehåll som känsligt och skyddar mot kund data förlust och exponering. För att säkerställa att kunddata i Azure förblir skyddade har Microsoft implementerat och underhåller en svit med robusta data skydds kontroller och-funktioner.
+För den underliggande plattform som hanteras av Microsoft behandlar Microsoft allt kundinnehåll som känsligt och skyddar mot förlust och exponering av kunddata. För att säkerställa att kunddata i Azure förblir säkra har Microsoft implementerat och upprätthåller en uppsättning robusta dataskyddskontroller och -funktioner.
 
 - [Förstå skydd av kunddata i Azure](../security/fundamentals/protection-customer-data.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: kryptera all känslig information under överföring
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Kryptera all känslig information under överföring
 
-**Vägledning**: IoT Hub använder Transport Layer Security (TLS) för att skydda anslutningar från IoT-enheter och-tjänster. Tre versioner av TLS-protokollet stöds för närvarande, nämligen version 1,0, 1,1 och 1,2. Vi rekommenderar starkt att du använder TLS 1,2 som den önskade TLS-versionen när du ansluter till IoT Hub.
+**Vägledning:** IoT Hub använder Transport Layer Security (TLS) för att skydda anslutningar från IoT-enheter och -tjänster. Tre versioner av TLS-protokollet stöds för närvarande, nämligen versionerna 1.0, 1.1 och 1.2. Vi rekommenderar starkt att du använder TLS 1.2 som önskad TLS-version vid anslutning till IoT Hub.
 
-Följ Azure Security Center rekommendationer för kryptering i vila och kryptering under överföring, i förekommande fall.
+Följ Azure Security Center rekommendationer för kryptering i vila och kryptering under överföring, om tillämpligt.
 
 - [TLS-stöd i IoT Hub](iot-hub-tls-support.md)
-- [Förstå kryptering i överföring med Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [Förstå kryptering under överföring med Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: Använd ett aktivt identifierings verktyg för att identifiera känsliga data
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Använd ett aktivt identifieringsverktyg för att identifiera känsliga data
 
-**Vägledning**: funktionerna för data identifiering, klassificering och förlust av förlust är ännu inte tillgängliga för Azure IoT Hub. Implementera en lösning från tredje part om det krävs för efterlevnad.
+**Vägledning:** Funktioner för dataidentifiering, klassificering och förlustskydd är ännu inte tillgängliga för Azure IoT Hub. Implementera en lösning från tredje part om det behövs i efterlevnadssyfte.
 
-För den underliggande Azure-plattformen som hanteras av Microsoft behandlar Microsoft allt kund innehåll som känsligt och ger bra längd för att skydda mot förlust och exponering av kund information. För att säkerställa att kunddata i Azure förblir skyddade har Microsoft implementerat och underhåller en svit med robusta data skydds kontroller och-funktioner.
+För den underliggande Azure-plattformen som hanteras av Microsoft behandlar Microsoft allt kundinnehåll som känsligt och tar lång tid att skydda mot förlust och exponering av kunddata. För att säkerställa att kunddata i Azure förblir säkra har Microsoft implementerat och upprätthåller en uppsättning robusta dataskyddskontroller och -funktioner.
 
 - [Förstå skydd av kunddata i Azure](../security/fundamentals/protection-customer-data.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: Använd Azure RBAC för att hantera åtkomst till resurser
+### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6: Använd Azure RBAC för att hantera åtkomst till resurser
 
-**Vägledning**: du kan använda Azure RBAC för att kontrol lera åtkomsten för användar åtkomst i kontroll planet till IoT Hub. För data Plans åtkomst till IoT Hub använder du delade åtkomst principer för IoT Hub.
+**Vägledning:** För kontrollplansanvändaråtkomst till IoT Hub använder du Azure RBAC för att styra åtkomsten. För dataplansåtkomst till IoT Hub använder du principer för delad åtkomst för IoT Hub.
 
 - [Så här konfigurerar du Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
@@ -513,99 +513,99 @@ För den underliggande Azure-plattformen som hanteras av Microsoft behandlar Mic
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: logg och varning vid ändringar av kritiska Azure-resurser
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Logga och avisering om ändringar av viktiga Azure-resurser
 
-**Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i produktions instanser av Azure IoT Hub och andra kritiska eller relaterade resurser.
+**Vägledning:** Använd Azure Monitor med Azure-aktivitetsloggen för att skapa aviseringar för när ändringar sker i produktionsinstanser av Azure IoT Hub och andra kritiska eller relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md)
+- [Så här skapar du aviseringar för Händelser i Azure-aktivitetsloggen](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="vulnerability-management"></a>Sårbarhetshantering
 
-*Mer information finns i [Azure Security benchmark: sårbarhet Management](../security/benchmarks/security-control-vulnerability-management.md).*
+*Mer information finns i [Azure Security Benchmark: Vulnerability Management](../security/benchmarks/security-control-vulnerability-management.md).*
 
-### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5,3: Distribuera en automatiserad korrigerings hanterings lösning för program varu titlar från tredje part
+### <a name="53-deploy-an-automated-patch-management-solution-for-third-party-software-titles"></a>5.3: Distribuera en automatiserad korrigeringshanteringslösning för programvarutitlar från tredje part
 
-**Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
+**Vägledning:** Inte tillämpligt; den här riktlinjen är avsedd för beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: jämför sökningar efter säkerhets risker
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: Jämför tillbaka-till-tillbaka-sårbarhetsgenomsökningar
 
-**Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
+**Vägledning:** Inte tillämpligt; den här riktlinjen är avsedd för beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: Använd en risk klassificerings process för att prioritera reparation av identifierade säkerhets risker
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Använd en riskklassificeringsprocess för att prioritera åtgärder för identifierade säkerhetsrisker
 
-**Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
+**Vägledning:** Ej tillämpligt; den här riktlinjen är avsedd för beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="inventory-and-asset-management"></a>Inventerings- och tillgångshantering
 
-*Mer information finns i [Azure Security benchmark: inventering och till gångs hantering](../security/benchmarks/security-control-inventory-asset-management.md).*
+*Mer information finns i [Azure Security Benchmark: Inventory and Asset Management](../security/benchmarks/security-control-inventory-asset-management.md).*
 
-### <a name="61-use-automated-asset-discovery-solution"></a>6,1: Använd automatiserad identifierings lösning för till gång
+### <a name="61-use-automated-asset-discovery-solution"></a>6.1: Använd automatisk tillgångsidentifiering
 
-**Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
+**Vägledning:** Inte tillämpligt; den här riktlinjen är avsedd för beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="62-maintain-asset-metadata"></a>6,2: underhåll till gångens metadata
+### <a name="62-maintain-asset-metadata"></a>6.2: Underhålla tillgångsmetadata
 
-**Vägledning**: Använd taggar för Azure-resurser (inte alla resurser som stöder taggar, men de flesta) för att logiskt organisera dem i en taxonomi.
+**Vägledning:** Tillämpa taggar på Azure-resurser (inte alla resurser stöder taggar, men de flesta) för att organisera dem logiskt i en taxonomi.
 
-- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
+- [Skapa och använda taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6,3: ta bort obehöriga Azure-resurser
+### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Ta bort obehöriga Azure-resurser
 
-**Vägledning**: Använd taggning, hanterings grupper och separata prenumerationer om det behövs för att organisera och spåra till gångar. Stäm av inventering regelbundet och se till att obehöriga resurser tas bort från prenumerationen inom rimlig tid.
+**Vägledning:** Använd taggning, hanteringsgrupper och separata prenumerationer när det är lämpligt för att organisera och spåra tillgångar. Stämma av inventeringen regelbundet och se till att obehöriga resurser tas bort från prenumerationen inom rimlig tid.
   
 - [ Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
-- [Så här skapar du hanterings grupper](../governance/management-groups/create-management-group-portal.md)
+- [Så här skapar du hanteringsgrupper](../governance/management-groups/create-management-group-portal.md)
 
-- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
-
-**Ansvar**: Kund
-
-**Azure Security Center övervakning**: ingen
-
-### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: definiera och underhålla en inventering av godkända Azure-resurser
-
-**Vägledning**: skapa en inventering av godkända Azure-resurser och godkänd program vara för beräknings resurser enligt organisationens behov.
-
-Varje IoT Hub har ett identitets register som kan användas för att skapa resurser per enhet i tjänsten. Enskilda eller grupper av enhets identiteter kan läggas till i en tillåten, eller en blockeringslistan, vilket ger fullständig kontroll över enhets åtkomsten.
-
-- [IoT Hub identitets register](iot-hub-devguide-identity-registry.md)
+- [Skapa och använda taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: övervaka för ej godkända Azure-resurser
+### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4: Definiera och underhålla en förteckning över godkända Azure-resurser
 
-**Vägledning**: Använd Azure policy för att ange begränsningar för den typ av resurser som kan skapas i dina prenumerationer. 
+**Vägledning:** Skapa en förteckning över godkända Azure-resurser och godkänd programvara för beräkningsresurser enligt organisationens behov.
 
-Använd Azure Resource Graph till att fråga efter och identifiera resurser i prenumerationerna.  Se till att alla Azure-resurser som finns i miljön är godkända. 
+Varje IoT Hub har ett identitetsregister som kan användas för att skapa resurser per enhet i tjänsten. Enskilda eller grupper av enhetsidentiteter kan läggas till i en lista över tillåtna, eller en blockeringslista, vilket ger fullständig kontroll över enhetsåtkomst.
+
+- [IoT Hub identity registry](iot-hub-devguide-identity-registry.md)
+
+**Ansvar**: Kund
+
+**Azure Security Center övervakning**: Ingen
+
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Övervaka för ej godkända Azure-resurser
+
+**Vägledning:** Använd Azure Policy att ange begränsningar för vilken typ av resurser som kan skapas i dina prenumerationer. 
+
+Använd Azure Resource Graph till att fråga efter och identifiera resurser i prenumerationerna.  Se till att alla Azure-resurser som finns i miljön godkänns. 
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -613,292 +613,292 @@ Använd Azure Resource Graph till att fråga efter och identifiera resurser i pr
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: övervaka för program som inte godkänts i beräknings resurser
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Övervaka för program som inte är godkända i beräkningsresurser
 
-**Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
+**Vägledning:** Inte tillämpligt; den här rekommendationen är avsedd för beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: ta bort icke godkända Azure-resurser och program
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Ta bort ej godkända Azure-resurser och program
 
-**Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
+**Vägledning:** Inte tillämpligt; den här rekommendationen är avsedd för beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="68-use-only-approved-applications"></a>6,8: Använd endast godkända program
+### <a name="68-use-only-approved-applications"></a>6.8: Använd endast godkända program
 
-**Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
+**Vägledning:** Ej tillämpligt; den här rekommendationen är avsedd för beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="69-use-only-approved-azure-services"></a>6,9: Använd endast godkända Azure-tjänster
+### <a name="69-use-only-approved-azure-services"></a>6.9: Använd endast godkända Azure-tjänster
 
-**Vägledning**: Använd Azure policy för att ange begränsningar för den typ av resurser som kan skapas i kund prenumerationer med hjälp av följande inbyggda princip definitioner:
+**Vägledning:** Använd Azure Policy att ange begränsningar för vilken typ av resurser som kan skapas i kundprenumerationer med hjälp av följande inbyggda principdefinitioner:
 
 * Otillåtna resurstyper
 * Tillåtna resurstyper
 
-Använd dessutom Azure Resource Graph för att fråga/identifiera resurser i prenumerationerna.
+Dessutom kan du använda Azure Resource Graph för att fråga/identifiera resurser i prenumerationerna.
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
-- [Så här skapar du frågor med Azure Graph](../governance/resource-graph/first-query-portal.md)
+- [Skapa frågor med Azure Graph](../governance/resource-graph/first-query-portal.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: underhåll en inventering av godkända program varu titlar
+### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10: Upprätthålla en förteckning över godkända programvarutitlar
 
-**Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
+**Vägledning:** Inte tillämpligt; den här rekommendationen är avsedd för beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6,11: begränsa användarnas möjlighet att interagera med Azure Resource Manager
+### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11: Begränsa användarnas möjlighet att interagera med Azure Resource Manager
 
-**Vägledning**: Använd Azure Active Directory (Azure AD) villkorlig åtkomst för att begränsa användarnas möjlighet att interagera med Azure Resource Manager genom att konfigurera "blockera åtkomst" för appen "Microsoft Azure hantering".
+**Vägledning:** Använd Azure Active Directory (Azure AD) villkorlig åtkomst för att begränsa användarnas möjlighet att interagera med Azure Resource Manager genom att konfigurera "Blockera åtkomst" för appen "Microsoft Azure Management".
 
 - [ Så här konfigurerar du villkorlig åtkomst för att blockera åtkomst till Azure Resource Manager](../role-based-access-control/conditional-access-azure-management.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6,12: begränsa användarnas möjlighet att köra skript i beräknings resurser
+### <a name="612-limit-users-ability-to-execute-scripts-in-compute-resources"></a>6.12: Begränsa användarnas möjlighet att köra skript i beräkningsresurser
 
-**Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för beräknings resurser.
+**Vägledning:** Ej tillämpligt; den här rekommendationen är avsedd för beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fysiskt eller logiskt särskiljande program med hög risk
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Fysiskt eller logiskt avsegrera program med hög risk
 
-**Vägledning**: ej tillämpligt; den här rekommendationen är avsedd för webb program som körs på Azure App Service-eller beräknings resurser.
+**Vägledning:** Inte tillämpligt; den här rekommendationen är avsedd för webbprogram som körs Azure App Service eller beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="secure-configuration"></a>Säker konfiguration
 
-*Mer information finns i [Azure Security benchmark: säker konfiguration](../security/benchmarks/security-control-secure-configuration.md).*
+*Mer information finns i [Azure Security Benchmark: Secure Configuration](../security/benchmarks/security-control-secure-configuration.md).*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: upprätta säkra konfigurationer för alla Azure-resurser
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Upprätta säkra konfigurationer för alla Azure-resurser
 
-**Vägledning**: definiera och implementera standard säkerhetskonfigurationer för tjänsten Azure IoT Hub med Azure policy. Använd Azure Policy alias i namn rymden "Microsoft. Devices" för att skapa anpassade principer för att granska eller tillämpa konfigurationen för Azure IoT Hub-tjänsterna.
+**Vägledning:** Definiera och implementera standardsäkerhetskonfigurationer för din Azure Iot Hub-tjänst med Azure Policy. Använd Azure Policy alias i namnområdet "Microsoft.Devices" för att skapa anpassade principer för att granska eller framtvinga konfigurationen av Azure IoT Hub tjänster.
 
-Azure Resource Manager kan exportera mallen i JavaScript Object Notation (JSON), som bör granskas för att säkerställa att konfigurationerna uppfyller säkerhets kraven för din organisation.
+Azure Resource Manager har möjlighet att exportera mallen i JavaScript Object Notation (JSON), som bör granskas för att säkerställa att konfigurationerna uppfyller säkerhetskraven för din organisation.
 
-Du kan också använda rekommendationerna från Azure Security Center som en säker konfigurations bas linje för dina Azure-resurser.
+Du kan också använda rekommendationerna från Azure Security Center som en säker konfigurationsbaslinje för dina Azure-resurser.
 
 - [Visa tillgängliga Azure Policy alias](/powershell/module/az.resources/get-azpolicyalias)
 
-- [Självstudie: skapa och hantera principer för att genomdriva efterlevnad](../governance/policy/tutorials/create-and-manage.md)
+- [Självstudie: Skapa och hantera principer för att framtvinga efterlevnad](../governance/policy/tutorials/create-and-manage.md)
 
-- [Exportera en och flera resurser till en mall i Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
+- [Export av en enskild resurs och flera resurser till en mall i Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
 - [Säkerhetsrekommendationer – en referensguide](../security-center/recommendations-reference.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="72-establish-secure-operating-system-configurations"></a>7,2: upprätta säkra konfigurationer för operativ system
+### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Upprätta säkra operativsystemkonfigurationer
 
-**Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
+**Vägledning:** Ej tillämpligt; den här riktlinjen är avsedd för beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: underhåll säker Azure-resurs-konfigurationer
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Upprätthålla säkra Azure-resurskonfigurationer
 
-**Vägledning**: Använd Azure policy [neka] och [distribuera om det inte finns] för att framtvinga säkra inställningar i dina Azure-resurser. Dessutom kan du använda Azure Resource Manager mallar för att underhålla säkerhets konfigurationen för dina Azure-resurser som krävs av din organisation.  
+**Vägledning:** Använd Azure Policy [neka] och [distribuera om det inte finns] för att framtvinga säkra inställningar för alla dina Azure-resurser. Dessutom kan du använda Azure Resource Manager för att upprätthålla säkerhetskonfigurationen för dina Azure-resurser som krävs av din organisation.  
  
-- [Förstå Azure Policys effekter](../governance/policy/concepts/effects.md)
+- [Förstå Azure Policy effekter](../governance/policy/concepts/effects.md)
 - [Skapa och hantera principer för att använda kompatibilitet](../governance/policy/tutorials/create-and-manage.md)
-- [Översikt över Azure Resource Manager mallar](../azure-resource-manager/templates/overview.md)
+- [översikt Azure Resource Manager mallar](../azure-resource-manager/templates/overview.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: underhåll säkra konfigurationer för operativ system
+### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Upprätthåll säkra operativsystemkonfigurationer
 
-**Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
+**Vägledning:** Ej tillämpligt; den här riktlinjen är avsedd för beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Spara konfigurationen av Azure-resurser på ett säkert sätt
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Lagra konfiguration av Azure-resurser på ett säkert sätt
 
-**Vägledning**: om du använder anpassade Azure policys definitioner för Azure IoT Hub eller relaterade resurser använder du Azure-databaser för att lagra och hantera din kod på ett säkert sätt.
+**Vägledning:** Om du använder anpassade Azure Policy för dina Azure IoT Hub relaterade resurser använder du Azure Repos för att lagra och hantera din kod på ett säkert sätt.
 
 - [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-- [Dokumentation om Azure databaser](/azure/devops/repos)
+- [Dokumentation om Azure Repos](/azure/devops/repos)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7,6: lagra anpassade operativ Systems avbildningar på ett säkert sätt
+### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Lagra anpassade operativsystemavbildningar på ett säkert sätt
 
-**Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
+**Vägledning:** Inte tillämpligt; den här riktlinjen är avsedd för beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: Distribuera konfigurations hanterings verktyg för Azure-resurser
+### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7: Distribuera konfigurationshanteringsverktyg för Azure-resurser
 
-**Vägledning**: Använd Azure policy alias i namn rymden "Microsoft. Devices" för att skapa anpassade principer för att varna, granska och genomdriva system konfigurationer. Dessutom kan du utveckla en process och pipeline för att hantera princip undantag.
+**Vägledning:** Använd Azure Policy alias i namnområdet "Microsoft.Devices" för att skapa anpassade principer för att varna, granska och framtvinga systemkonfigurationer. Utveckla dessutom en process och pipeline för hantering av principundantag.
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
-- [Använda alias](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Så här använder du alias](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7,8: Distribuera konfigurations hanterings verktyg för operativ system
+### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8: Distribuera konfigurationshanteringsverktyg för operativsystem
 
-**Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
+**Vägledning:** Ej tillämpligt; den här riktlinjen är avsedd för beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: implementera automatisk konfigurations övervakning för Azure-resurser
+### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9: Implementera automatisk konfigurationsövervakning för Azure-resurser
 
-**Vägledning**: Använd Azure Security Center för att utföra bas linjes ökningar för dina Azure-resurser. Du kan också använda Azure Policy för att varna och granska Azure-resursfiler. 
+**Vägledning:** Använd Azure Security Center för att utföra baslinjesökningar för dina Azure-resurser. Du kan också använda Azure Policy för att varna och granska Azure-resurskonfigurationer. 
  
 - [ Så här åtgärdar du rekommendationer i Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: implementera automatisk konfigurations övervakning för operativ system
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementera automatisk konfigurationsövervakning för operativsystem
 
-**Vägledning**: ej tillämpligt; den här rikt linjen är avsedd för beräknings resurser.
+**Vägledning:** Inte tillämpligt; den här riktlinjen är avsedd för beräkningsresurser.
 
-**Ansvars område**: inte tillämpligt
+**Ansvar:** Ej tillämpligt
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="711-manage-azure-secrets-securely"></a>7,11: Hantera Azure-hemligheter på ett säkert sätt
+### <a name="711-manage-azure-secrets-securely"></a>7.11: Hantera Azure-hemligheter på ett säkert sätt
 
-**Vägledning**: IoT Hub använder SÄKERHETSTOKEN och SAS-token (signatur för delad åtkomst) för att autentisera enheter och tjänster för att undvika att skicka nycklar i nätverket. 
+**Vägledning:** IoT Hub använder säkerhetstoken och SAS-token (signatur för delad åtkomst) för att autentisera enheter och tjänster för att undvika att skicka nycklar i nätverket. 
 
-Använd hanterade identiteter tillsammans med Azure Key Vault för att förenkla hemlig hantering för dina moln program.
+Använd hanterade identiteter tillsammans med Azure Key Vault för att förenkla hemlighetshanteringen för dina molnprogram.
 
 - [IoT Hub säkerhetstoken](https://docs.microsoft.com/azure/iot-fundamentals/iot-security-deployment#iot-hub-security-tokens)
 
 - [Använda hanterade identiteter för IoT Hub](https://docs.microsoft.com/azure/iot-hub/virtual-network-support#turn-on-managed-identity-for-iot-hub)
 
-- [Så här skapar du ett nyckel valv](../key-vault/general/quick-create-portal.md)
+- [Så här skapar du ett nyckelvalv](../key-vault/general/quick-create-portal.md)
 
-- [Så här ger Key Vault autentisering med en hanterad identitet](../key-vault/general/assign-access-policy-portal.md)
+- [Så här tillhandahåller du Key Vault autentisering med en hanterad identitet](../key-vault/general/assign-access-policy-portal.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7,12: hantera identiteter säkert och automatiskt
+### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Hantera identiteter på ett säkert och automatiskt sätt
 
-**Vägledning**: IoT Hub använder SÄKERHETSTOKEN och SAS-token (signatur för delad åtkomst) för att autentisera enheter och tjänster för att undvika att skicka nycklar i nätverket.
+**Vägledning:** IoT Hub använder säkerhetstoken och SAS-token (signatur för delad åtkomst) för att autentisera enheter och tjänster för att undvika att skicka nycklar i nätverket.
 
-Använd hanterade identiteter för att tillhandahålla Azure-tjänster med en automatiskt hanterad identitet i Azure Active Directory (Azure AD). Med hanterade identiteter kan du autentisera till vilken tjänst som helst som stöder Azure AD-autentisering, inklusive Key Vault utan autentiseringsuppgifter i din kod.
+Använd hanterade identiteter för att förse Azure-tjänster med en automatiskt hanterad identitet Azure Active Directory (Azure AD). Med hanterade identiteter kan du autentisera till alla tjänster som stöder Azure AD-autentisering, inklusive Key Vault, utan några autentiseringsuppgifter i koden.
 
 - [IoT Hub säkerhetstoken](https://docs.microsoft.com/azure/iot-fundamentals/iot-security-deployment#iot-hub-security-tokens)
 
-- [Konfigurera hanterade identiteter för IoT Hub](https://docs.microsoft.com/azure/iot-hub/virtual-network-support#turn-on-managed-identity-for-iot-hub)
+- [Så här konfigurerar du hanterade identiteter för IoT Hub](https://docs.microsoft.com/azure/iot-hub/virtual-network-support#turn-on-managed-identity-for-iot-hub)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: eliminera oavsiktlig exponering för autentiseringsuppgifter
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: Eliminera oavsiktlig exponering av autentiseringsuppgifter
 
-**Vägledning**: implementera autentiseringsuppgifterna för inloggning för att identifiera autentiseringsuppgifter inom koden. Credential Scanner uppmanar också till att flytta identifierade autentiseringsuppgifter till en säkrare plats som Azure Key Vault. 
+**Vägledning:** Implementera skanner för autentiseringsuppgifter för att identifiera autentiseringsuppgifter i koden. Credential Scanner uppmanar också till att flytta identifierade autentiseringsuppgifter till en säkrare plats som Azure Key Vault. 
  
-- [  Så här konfigurerar du en inloggnings skanner](https://secdevtools.azurewebsites.net/helpcredscan.html)
+- [  Så här ställer du in skanner för autentiseringsuppgifter](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="malware-defense"></a>Skydd mot skadlig kod
 
-*Mer information finns i [Azure Security benchmark: skydd mot skadlig kod](../security/benchmarks/security-control-malware-defense.md).*
+*Mer information finns i [Azure Security Benchmark: Malware Defense.](../security/benchmarks/security-control-malware-defense.md)*
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: för skanning av filer som ska laddas upp till Azure-resurser som inte är Compute
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: Skanna filer i förväg som ska laddas upp till Icke-beräkningsbaserade Azure-resurser
 
-**Vägledning**: Microsofts program mot skadlig kod har Aktiver ATS på den underliggande värden som har stöd för Azure-tjänster (till exempel Azure IoT Hub), men det körs inte på kund innehåll.
+**Vägledning:** Microsoft Anti-malware är aktiverat på den underliggande värden som stöder Azure-tjänster (till exempel Azure IoT Hub), men den körs inte på kundinnehåll.
 
-Det är ditt ansvar att i förväg genomsöka allt innehåll som laddas upp till Azure-resurser som inte är Compute. Microsoft kan inte komma åt kunddata och kan därför inte utföra genomsökningar av kund innehåll för program mot skadlig kod.
+Det är ditt ansvar att försöka allt innehåll som laddas upp till icke-beräkningsbaserade Azure-resurser. Microsoft kan inte komma åt kunddata och kan därför inte utföra genomsökningar av kundinnehåll för din räkning.
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="data-recovery"></a>Dataåterställning
 
-*Mer information finns i [Azure Security benchmark: Data återställning](../security/benchmarks/security-control-data-recovery.md).*
+*Mer information finns i [Prestandatest för Azure-säkerhet: Dataåterställning.](../security/benchmarks/security-control-data-recovery.md)*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9,1: se till att vanlig automatisk säkerhets kopiering UPS
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Säkerställ regelbundna automatiserade säkerhetskopieringar
 
-**Vägledning**: Azure IoT Hub-tjänsten tillhandahåller metoder och ramverk för att göra dina IoT Hub-tjänster hög tillgängliga och kan återvinnas från katastrofer baserat på specifika affärs mål. 
+**Vägledning:** Azure IoT Hub-tjänsten tillhandahåller metoder och ramverk för att ge dina IoT Hub hög tillgängliga och återställningsbara efter katastrofer baserat på specifika affärsmål. 
 
 - [Hög tillgänglighet och haveriberedskap för IoT Hub](iot-hub-ha-dr.md)
 
-- [Klona IoT Hub](iot-hub-how-to-clone.md)
+- [Så här klonar du IoT Hub](iot-hub-how-to-clone.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: Utför fullständig säkerhets kopiering av systemet och säkerhetskopiera alla Kundhanterade nycklar
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Utför fullständiga systemsäkerhetskopior och säkerhetskopiera kund hanterade nycklar
 
-**Vägledning**: Azure IoT Hub rekommenderar att den sekundära IoT Hub måste innehålla alla enhets identiteter som kan ansluta till lösningen. Lösningen bör behålla geo-replikerade säkerhets kopior av enhets identiteter och överföra dem till den sekundära IoT-hubben innan du växlar den aktiva slut punkten för enheterna. Funktionen för export av enhets identiteter i IoT Hub är användbar i den här kontexten.
+**Vägledning:** Azure IoT Hub rekommenderar att den sekundära IoT-hubben måste innehålla alla enhetsidentiteter som kan ansluta till lösningen. Lösningen bör behålla geo-replikerade säkerhetskopior av enhetsidentiteter och ladda upp dem till den sekundära IoT-hubben innan du växlar den aktiva slutpunkten för enheterna. Exportfunktionen för enhetsidentiteter i IoT Hub användbar i det här sammanhanget.
 
 - [Hög tillgänglighet och haveriberedskap för IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr#achieve-cross-region-ha)
 
-- [Exportera IoT Hub enhets identitet](iot-hub-bulk-identity-mgmt.md)
+- [IoT Hub exportera enhetsidentitet](iot-hub-bulk-identity-mgmt.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: validera alla säkerhets kopior inklusive Kundhanterade nycklar
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Verifiera alla säkerhetskopior, inklusive kund hanterade nycklar
 
-**Vägledning**: Azure IoT Hub rekommenderar att den sekundära IoT Hub måste innehålla alla enhets identiteter som kan ansluta till lösningen. Lösningen bör behålla geo-replikerade säkerhets kopior av enhets identiteter och överföra dem till den sekundära IoT-hubben innan du växlar den aktiva slut punkten för enheterna. Funktionen för export av enhets identiteter i IoT Hub är användbar i den här kontexten.
+**Vägledning:** Azure IoT Hub rekommenderar att den sekundära IoT-hubben måste innehålla alla enhetsidentiteter som kan ansluta till lösningen. Lösningen bör behålla geo-replikerade säkerhetskopior av enhetsidentiteter och ladda upp dem till den sekundära IoT-hubben innan du växlar den aktiva slutpunkten för enheterna. Exportfunktionen för enhetsidentiteter i IoT Hub användbar i det här sammanhanget.
 
-Utför regelbundet data återställning av innehåll i säkerhets kopian. Se till att du kan återställa säkerhetskopierade nycklar som hanteras av kunden.
+Utför regelbundet dataåterställning av innehåll i en säkerhetskopia. Se till att du kan återställa säkerhetskopierade kund hanterade nycklar.
 
 - [Hög tillgänglighet och haveriberedskap för IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr#achieve-cross-region-ha)
 
-- [Exportera IoT Hub enhets identitet](iot-hub-bulk-identity-mgmt.md)
+- [IoT Hub exportera enhetsidentitet](iot-hub-bulk-identity-mgmt.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: se till att skydda säkerhets kopior och Kundhanterade nycklar
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Skydda säkerhetskopior och kund hanterade nycklar
 
-**Vägledning**: Aktivera mjuk borttagning och rensning av skydd i Key Vault för att skydda nycklar mot oavsiktlig eller skadlig borttagning. Om Azure Storage används för att lagra säkerhets kopior aktiverar du mjuk borttagning för att spara och återställa data när blobbar eller BLOB-ögonblicksbilder tas bort.
+**Vägledning:** Aktivera mjuk borttagning och rensningsskydd i Key Vault att skydda nycklar mot oavsiktlig eller skadlig borttagning. Om Azure Storage används för att lagra säkerhetskopior aktiverar du mjuk borttagning för att spara och återställa data när blobar eller blobögonblicksbilder tas bort.
 
  
 - [Förstå Azure RBAC](../role-based-access-control/overview.md)
@@ -907,90 +907,90 @@ Utför regelbundet data återställning av innehåll i säkerhets kopian. Se til
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="incident-response"></a>Incidenthantering
 
 *Mer information finns i [Azure Security Benchmark: Incidentsvar](../security/benchmarks/security-control-incident-response.md).*
 
-### <a name="101-create-an-incident-response-guide"></a>10,1: skapa en incident svars guide
+### <a name="101-create-an-incident-response-guide"></a>10.1: Skapa en guide för incidentsvar
 
-**Vägledning**: utveckla en incident svars guide för din organisation. Se till att det finns skriftliga svars planer för incidenter som definierar alla roller för personal samt de olika faserna av incident hantering och hantering från identifiering till granskning efter incidenten. 
+**Vägledning:** Utveckla en guide för incidenter för din organisation. Se till att det finns skriftliga planer för incidenthantering som definierar alla roller för personal samt faserna för incidenthantering och incidenthantering från identifiering till granskning efter incident. 
   
-- [ Vägledning om hur du skapar en egen svars process för säkerhets incidenter](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
+- [ Vägledning om hur du skapar en egen process för svar på säkerhetsincidenter](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
   
-- [ Microsoft Security Response Centers Beskrivning av en incident](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
+- [ Microsoft Security Response Center är en incidents uppbyggnad](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
  
-- [  Använd NIST hanterings guide för dator säkerhet för att hjälpa till med att skapa din egen incident svars plan](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
+- [  Använd NIST:s guide för hantering av säkerhetsincidenter för att hjälpa dig att skapa en egen plan för incidenthantering](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: skapa en incident bedömnings-och prioriterings procedur
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Skapa en procedur för incidentbedömning och prioritering
 
-**Vägledning**: Azure Security Center tilldelar en allvarlighets grad till varje avisering för att hjälpa dig att prioritera vilka aviseringar som bör undersökas först. Allvarlighets graden baseras på hur tillförlitlig Security Center befinner sig i att söka efter eller den analytiskt som används för att utfärda aviseringen samt vilken konfidensnivå som det fanns skadlig avsikt bakom den aktivitet som ledde till aviseringen.
+**Vägledning:** Azure Security Center tilldelar en allvarlighetsgrad till varje avisering för att hjälpa dig att prioritera vilka aviseringar som ska undersökas först. Allvarlighetsgraden baseras på hur säker Security Center är vid upptäckten eller det analytiskt använda för att utfärda aviseringen samt konfidensnivån för att det fanns en skadlig avsikt bakom aktiviteten som ledde till aviseringen.
 
   
- Dessutom kan du markera prenumerationer med taggar och skapa ett namngivnings system för att identifiera och kategorisera Azure-resurser, särskilt för bearbetning av känsliga data. Det är ditt ansvar att prioritera reparationen av aviseringar baserat på allvarlighets graden för de Azure-resurser och den miljö där incidenten inträffade.
+ Markera dessutom prenumerationer med hjälp av taggar och skapa ett namngivningssystem för att identifiera och kategorisera Azure-resurser, särskilt de som bearbetar känsliga data. Det är ditt ansvar att prioritera åtgärder för aviseringar baserat på allvarligheten i de Azure-resurser och den miljö där incidenten inträffade.
   
-- [ Säkerhets aviseringar i Azure Security Center](../security-center/security-center-alerts-overview.md)
+- [ Säkerhetsaviseringar i Azure Security Center](../security-center/security-center-alerts-overview.md)
   
-- [ Använd taggar för att organisera dina Azure-resurser](../azure-resource-manager/management/tag-resources.md)
+- [ Använda taggar för att organisera dina Azure-resurser](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="103-test-security-response-procedures"></a>10,3: testa säkerhets svars procedurer
+### <a name="103-test-security-response-procedures"></a>10.3: Testa procedurer för säkerhetssvar
 
-**Vägledning**: utföra övningar för att testa dina Systems funktioner för incident svar på en vanlig takt för att hjälpa till att skydda dina Azure-resurser. Identifiera svaga punkter och luckor och ändra sedan svars planen efter behov.
+**Vägledning:** Genomför övningar för att regelbundet testa systemets incidentsvarsfunktioner för att skydda dina Azure-resurser. Identifiera svaga punkter och luckor och ändra sedan din åtgärdsplan efter behov.
   
-- [ NISTs publikation – guide för att testa, träna och träna program för IT-planer och-funktioner](https://csrc.nist.gov/publications/detail/sp/800-84/final)
+- [ NIST:s publikation – Guide till test-, tränings- och övningsprogram för IT-planer och IT-funktioner](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: Ange kontakt information för säkerhets incidenter och konfigurera aviseringar för säkerhets incidenter
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Ange kontaktuppgifter för säkerhetsincidenter och konfigurera aviseringsmeddelanden för säkerhetsincidenter
 
-**Vägledning**: kontakt information om säkerhets incidenter kommer att användas av Microsoft för att kontakta dig om Microsoft Security Response Center (MSRC) upptäcker att dina data har använts av en olagligt eller obehörig part. Granska incidenter när du är säker på att problemen är lösta.
+**Vägledning:** Kontaktinformation om säkerhetsincident används av Microsoft för att kontakta dig om Microsoft Security Response Center (MSRC) upptäcker att dina data har använts av en obehörig eller obehörig part. Granska incidenter i efterhand för att se till att problemen är lösta.
   
-- [ Så här ställer du in Azure Security Center säkerhets kontakt](../security-center/security-center-provide-security-contact-details.md)
+- [ Så här ställer du Azure Security Center säkerhetskontakten](../security-center/security-center-provide-security-contact-details.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: införliva säkerhets aviseringar i ditt incident svars system
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Införliva säkerhetsaviseringar i systemet för incidentsvar
 
-**Vägledning**: exportera Azure Security Center aviseringar och rekommendationer med hjälp av funktionen för kontinuerlig export för att identifiera risker för Azure-resurser. Med kontinuerlig export kan du exportera aviseringar och rekommendationer antingen manuellt eller i löpande miljö. Du kan använda Azure Security Center Data Connector för att strömma aviseringarna till Azure Sentinel.
+**Vägledning:** Exportera dina Azure Security Center och rekommendationer med hjälp av funktionen för löpande export för att identifiera risker för Azure-resurser. Med löpande export kan du exportera aviseringar och rekommendationer manuellt eller kontinuerligt. Du kan använda anslutningsappen Azure Security Center data för att strömma aviseringarna till Azure Sentinel.
   
-- [ Så här konfigurerar du kontinuerlig export](../security-center/continuous-export.md)
+- [ Så här konfigurerar du löpande export](../security-center/continuous-export.md)
  
-- [ Strömma aviseringar till Azure Sentinel](../sentinel/connect-azure-security-center.md)
+- [ Så här strömmar du aviseringar till Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatisera svaret på säkerhets aviseringar
+### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Automatisera svaret på säkerhetsaviseringar
 
-**Vägledning**: Använd funktionen för automatisering av arbets flöde Azure Security Center för att automatiskt utlösa svar på säkerhets aviseringar och rekommendationer för att skydda dina Azure-resurser.
+**Vägledning:** Använd funktionen för automatisering av arbetsflöden Azure Security Center att automatiskt utlösa svar på säkerhetsaviseringar och rekommendationer för att skydda dina Azure-resurser.
   
-- [ Konfigurera automatisering av arbets flöden i Security Center](../security-center/workflow-automation.md)
+- [ Så här konfigurerar du arbetsflödesautomation i Security Center](../security-center/workflow-automation.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Intrångstester och Red Team-övningar (rött lag)
 
-*Mer information finns i [övningen för Azure Security benchmark: inträngande tester och röda team](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
+*Mer information finns i [Azure Security Benchmark: Penetration Tests (Intrångstester) och Red Team Exercises (Red Team-övningar).](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: utför regelbundna inträngande tester av dina Azure-resurser och se till att åtgärda alla viktiga säkerhets brister
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1: Genomför regelbundna intrångstester av dina Azure-resurser och se till att alla viktiga säkerhetsresultat åtgärdas
 
-**Vägledning**: Följ Microsoft Cloud inträngande test för att se till att dina inträngande tester inte strider mot Microsofts principer. Använd Microsofts strategi och utförande av ”red team”-aktiviteter och intrångstester live mot molninfrastruktur, tjänster och appar som hanteras av Microsoft.
+**Vägledning:** Följ Microsoft Cloud Penetration Testing Rules of Engagement för att säkerställa att intrångstesterna inte bryter mot Microsofts principer. Använd Microsofts strategi och utförande av ”red team”-aktiviteter och intrångstester live mot molninfrastruktur, tjänster och appar som hanteras av Microsoft.
 
 - [Regler för intrångstester](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
@@ -998,7 +998,7 @@ Utför regelbundet data återställning av innehåll i säkerhets kopian. Se til
 
 **Ansvar**: Delad
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="next-steps"></a>Nästa steg
 

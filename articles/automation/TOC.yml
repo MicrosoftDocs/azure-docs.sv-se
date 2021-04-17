@@ -43,7 +43,7 @@
       href: automation-runbook-types.md
     - name: PowerShell DSC
       href: /powershell/scripting/dsc/overview/overview
-    - name: Konfigurations information för Automation-nätverk
+    - name: Information om nätverkskonfiguration för Automation
       href: automation-network-configuration.md
     - name: Säkerhet
       items:
@@ -66,13 +66,19 @@
           href: automation-create-standalone-account.md
         - name: Skapa ett Automation-konto med en Resource Manager-mall
           href: quickstart-create-automation-account-template.md
+        - name: Hanterad identitet
+          items:
+            - name: Aktivera hanterad identitet
+              href: enable-managed-identity-for-automation.md
+            - name: Inaktivera hanterad identitet
+              href: disable-managed-identity-for-automation.md
         - name: Kör som-konto
           items:
             - name: Skapa Kör som-konto
               href: create-run-as-account.md
             - name: Ta bort Kör som-konto
               href: delete-run-as-account.md
-            - name: Hantera kör som-konto
+            - name: Hantera Kör som-konto
               href: manage-runas-account.md
         - name: Konfigurera autentisering med Amazon Web Services
           href: automation-config-aws-account.md
@@ -116,7 +122,7 @@
           href: troubleshoot/shared-resources.md
     - name: Processautomatisering
       items:
-        - name: Använda befintliga Runbooks och moduler
+        - name: Använda befintliga runbooks och moduler
           href: automation-runbook-gallery.md
         - name: Lär dig mer om PowerShell-arbetsflödet
           href: automation-powershell-workflow.md

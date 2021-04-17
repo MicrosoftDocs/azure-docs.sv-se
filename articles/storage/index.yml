@@ -1,149 +1,143 @@
 ### YamlMime:Hub
 title: Dokumentation om Azure Storage
-summary: Azure Storage används till lagring av objekt, filer, diskar, köer och tabeller. Det finns även tjänster för hybridlagringslösningar och tjänster för att överföra, dela och säkerhetskopiera data.
+summary: 'Azure Storage används till lagring av objekt, filer, diskar, köer och tabeller. Det finns även tjänster för hybridlagringslösningar och tjänster för att överföra, dela och säkerhetskopiera data.'
 brand: azure
 metadata:
   title: Dokumentation om Azure Storage
-  description: Hubb för dokumentation om Azure Storage. Pekar på tjänstdokumentationen om moln- och hybridlagringslösningar och tjänster för att överföra, dela och säkerhetskopiera data.
+  description: 'Hubb för dokumentation om Azure Storage. Pekar på tjänstdokumentationen om moln- och hybridlagringslösningar och tjänster för att överföra, dela och säkerhetskopiera data.'
   ms.service: storage
   ms.topic: hub-page
   author: twooley
   ms.author: twooley
-  ms.date: 05/01/2020
-  ms.openlocfilehash: 886f61206bdc87dc5283a46e50ff438041be1a2f
-  ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-  ms.translationtype: MT
-  ms.contentlocale: sv-SE
-  ms.lasthandoff: 01/27/2021
-  ms.locfileid: "98878484"
+  ms.date: 04/14/2021
 highlightedContent:
   items:
-  - title: Introduktion till de viktigaste lagringstjänsterna
-    itemType: concept
-    url: ./common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - title: Läs mer om olika typer av lagringskonton
-    itemType: concept
-    url: ./common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - title: skapar ett lagringskonto
-    itemType: how-to-guide
-    url: ./common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - title: Läs mer om dataredundans
-    itemType: concept
-    url: ./common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - title: Överföra data till Azure
-    itemType: concept
-    url: ./common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: Introduktion till de viktigaste lagringstjänsterna
+      itemType: concept
+      url: ./common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: Läs mer om olika typer av lagringskonton
+      itemType: concept
+      url: ./common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: skapar ett lagringskonto
+      itemType: how-to-guide
+      url: ./common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: Läs mer om dataredundans
+      itemType: concept
+      url: ./common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - title: Migrera data till Azure Storage
+      itemType: concept
+      url: ./common/storage-migration-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 additionalContent:
   sections:
-  - title: Molnlagringslösningar
-    items:
-    - title: Objektlagring för dina appar
-      links:
-      - url: ./blobs/storage-blobs-introduction.md
-        text: Lär dig mer om lagring av ostrukturerade data (bloblagring)
-      - url: /rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs
-        text: Förstå block-, tilläggs- och sidblobar
-      - url: ./blobs/index.yml
-        text: Mer information >
-    - title: Lagring för stordataanalys
-      links:
-      - url: ./blobs/data-lake-storage-introduction.md
-        text: Lär dig mer om lagring i företagsdatasjöar (Data Lake Storage)
-      - url: ./blobs/data-lake-storage-data-scenarios.md
-        text: Förstå alternativ och verktyg för att bearbeta stordata
-    - title: Molnbaserade filresurser
-      links:
-      - url: ./files/storage-files-introduction.md
-        text: Använda filresurser som tillhandahålls av den centrala Azure Storage-plattformen (Azure Files)
-      - url: ../azure-netapp-files/azure-netapp-files-introduction.md
-        text: Använda volymer som tillhandahålls av NetApp ONTAP (Azure NetApp Files)
-    - title: Disklagring för IaaS-arbetsbelastningar
-      links:
-      - url: ../virtual-machines/managed-disks-overview.md
-        text: Lär dig mer om lagringsvolymer på blocknivå för virtuella Azure-datorer
-      - url: ../virtual-machines/disks-types.md
-        text: Förstå tillgängliga disktyper
-      - url: ../virtual-machines/windows/attach-managed-disk-portal.md
-        text: Lägga till en ny disk i en virtuell dator – Windows
-      - url: ../virtual-machines/linux/attach-disk-portal.md
-        text: Koppla en datadisk till en virtuell dator – Linux
-    - title: Lagring för asynkrona meddelandeköer
-      links:
-      - url: ./queues/storage-queues-introduction.md
-        text: Lär dig mer om Azure Storage-lösningen för köer (Queue Storage)
-      - url: ../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md
-        text: Jämföra Queue Storage och Service Bus-köer
-      - url: ./queues/index.yml
-        text: Mer information >
-    - title: Lagring av strukturerade NoSQL-data
-      links:
-      - url: ./tables/table-storage-overview.md
-        text: Lagra strukturerade NoSQL-data i molnet (Table Storage och Cosmos DB)
-      - url: ../cosmos-db/table-support.md
-        text: Jämföra Table Storage och Cosmos DB-API:et Table
-      - url: ./tables/index.yml
-        text: Mer information >
-  - title: Hybridlagringslösningar
-    items:
-    - title: Expandera en lokal filresurs till molnet
-      links:
-      - url: ./files/storage-sync-files-planning.md
-        text: Synkronisera Azure-filresurser med en Windows-filserver (Azure FileSync)
-      - url: ./files/storage-sync-files-deployment-guide.md
-        text: Distribuera Azure File Sync
-      - url: ./files/index.yml
-        text: Mer information >
-    - title: Dataöverföring online (lokalt till Azure)
-      links:
-      - url: ../databox-gateway/data-box-gateway-overview.md
-        text: Smidig dataöverföring till Azure (Data Box Gateway)
-      - url: ../databox-online/azure-stack-edge-overview.md
-        text: Bearbeta data lokalt innan de överförs till Azure (Azure Stack Edge)
-      - url: ../databox-online/index.yml
-        text: Mer information >
-    - title: Cachelagring för HPC-arbetsbelastningar (databehandling med höga prestanda)
-      links:
-      - url: ../hpc-cache/hpc-cache-overview.md
-        text: Använda en fullständigt hanterad cachelagringstjänst för filer (Azure HPC Cache)
-      - url: ../avere-vfxt/avere-vfxt-overview.md
-        text: Cachelagra lokala NAS i Azure (Avere vFXT för Azure)
-      - url: ../fxt-edge-filer/fxt-overview.md
-        text: Distribuera en lokal cachelagringsapparat (Azure FXT Edge Filer)
-  - title: Dataåtgärder
-    items:
-    - title: Massöverföring offline till Azure
-      links:
-      - url: ../databox/data-box-disk-overview.md
-        text: Överföra < 40 TB data (Data Box Disk)
-      - url: ../databox/data-box-overview.md
-        text: Överföra 40–500 TB data (Data Box)
-      - url: ../databox/data-box-heavy-overview.md
-        text: Överföra > 500 TB data (Data Box Heavy)
-      - url: ../databox/index.yml
-        text: Mer information >
-    - title: Överföra små data datamängder (online)
-      links:
-      - url: ./common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        text: Använda kommandoradsverktyget AzCopy
-      - url: ./blobs/storage-quickstart-blobs-storage-explorer.md
-        text: Använda det GUI-baserade verktyget Azure Storage Explorer
-    - title: Kontrollera kostnader
-      links:
-      - url: ./blobs/storage-blob-storage-tiers.md
-        text: Nivåindela blobdata kostnadseffektivt (frekvent, lågfrekvent, arkiv)
-    - title: Dela dina data
-      links:
-      - url: ../data-share/index.yml
-        text: Dela data med kunder och partner (Azure Data Share)
-      - url: ../data-share/supported-data-stores.md
-        text: Datalager som stöds för delning
-      - url: ../data-share/index.yml
-        text: Mer information >
-    - title: Säkerhetskopiera data
-      links:
-      - url: ../backup/quick-backup-vm-portal.md
-        text: Säkerhetskopiera virtuella datorer (Azure Backup)
-      - url: ../backup/backup-afs.md
-        text: Säkerhetskopiera Azure-filresurser
-      - url: ../backup/index.yml
-        text: Mer information >
+    - title: Molnlagringslösningar
+      items:
+        - title: Objektlagring för dina appar
+          links:
+            - url: ./blobs/storage-blobs-introduction.md
+              text: Lär dig mer om lagring av ostrukturerade data (bloblagring)
+            - url: /rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs
+              text: 'Förstå block-, tilläggs- och sidblobar'
+            - url: ./blobs/index.yml
+              text: Mer information >
+        - title: Lagring för stordataanalys
+          links:
+            - url: ./blobs/data-lake-storage-introduction.md
+              text: Lär dig mer om lagring i företagsdatasjöar (Data Lake Storage)
+            - url: ./blobs/data-lake-storage-data-scenarios.md
+              text: Förstå alternativ och verktyg för att bearbeta stordata
+        - title: Molnbaserade filresurser
+          links:
+            - url: ./files/storage-files-introduction.md
+              text: Använda filresurser som tillhandahålls av den centrala Azure Storage-plattformen (Azure Files)
+            - url: ../azure-netapp-files/azure-netapp-files-introduction.md
+              text: Använda volymer som tillhandahålls av NetApp ONTAP (Azure NetApp Files)
+        - title: Disklagring för IaaS-arbetsbelastningar
+          links:
+            - url: ../virtual-machines/managed-disks-overview.md
+              text: Lär dig mer om lagringsvolymer på blocknivå för virtuella Azure-datorer
+            - url: ../virtual-machines/disks-types.md
+              text: Förstå tillgängliga disktyper
+            - url: ../virtual-machines/windows/attach-managed-disk-portal.md
+              text: Lägga till en ny disk i en virtuell dator – Windows
+            - url: ../virtual-machines/linux/attach-disk-portal.md
+              text: Koppla en datadisk till en virtuell dator – Linux
+        - title: Lagring för asynkrona meddelandeköer
+          links:
+            - url: ./queues/storage-queues-introduction.md
+              text: Lär dig mer om Azure Storage-lösningen för köer (Queue Storage)
+            - url: ../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md
+              text: Jämföra Queue Storage och Service Bus-köer
+            - url: ./queues/index.yml
+              text: Mer information >
+        - title: Lagring av strukturerade NoSQL-data
+          links:
+            - url: ./tables/table-storage-overview.md
+              text: Lagra strukturerade NoSQL-data i molnet (Table Storage och Cosmos DB)
+            - url: ../cosmos-db/table-support.md
+              text: 'Jämföra Table Storage och Cosmos DB-API:et Table'
+            - url: ./tables/index.yml
+              text: Mer information >
+    - title: Hybridlagringslösningar
+      items:
+        - title: Expandera en lokal filresurs till molnet
+          links:
+            - url: ./files/storage-sync-files-planning.md
+              text: Synkronisera Azure-filresurser med en Windows-filserver (Azure FileSync)
+            - url: ./files/storage-sync-files-deployment-guide.md
+              text: Distribuera Azure File Sync
+            - url: ./files/index.yml
+              text: Mer information >
+        - title: Dataöverföring online (lokalt till Azure)
+          links:
+            - url: ../databox-gateway/data-box-gateway-overview.md
+              text: Smidig dataöverföring till Azure (Data Box Gateway)
+            - url: ../databox-online/azure-stack-edge-overview.md
+              text: Bearbeta data lokalt innan de överförs till Azure (Azure Stack Edge)
+            - url: ../databox-online/index.yml
+              text: Mer information >
+        - title: Cachelagring för HPC-arbetsbelastningar (databehandling med höga prestanda)
+          links:
+            - url: ../hpc-cache/hpc-cache-overview.md
+              text: Använda en fullständigt hanterad cachelagringstjänst för filer (Azure HPC Cache)
+            - url: ../avere-vfxt/avere-vfxt-overview.md
+              text: Cachelagra lokala NAS i Azure (Avere vFXT för Azure)
+            - url: ../fxt-edge-filer/fxt-overview.md
+              text: Distribuera en lokal cachelagringsapparat (Azure FXT Edge Filer)
+    - title: Dataåtgärder
+      items:
+        - title: Massöverföring offline till Azure
+          links:
+            - url: ../databox/data-box-disk-overview.md
+              text: Överföra < 40 TB data (Data Box Disk)
+            - url: ../databox/data-box-overview.md
+              text: Överföra 40–500 TB data (Data Box)
+            - url: ../databox/data-box-heavy-overview.md
+              text: Överföra > 500 TB data (Data Box Heavy)
+            - url: ../databox/index.yml
+              text: Mer information >
+        - title: Överföra små data datamängder (online)
+          links:
+            - url: ./common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              text: Använda kommandoradsverktyget AzCopy
+            - url: ./blobs/storage-quickstart-blobs-storage-explorer.md
+              text: Använda det GUI-baserade verktyget Azure Storage Explorer
+        - title: Kontrollera kostnader
+          links:
+            - url: ./blobs/storage-blob-storage-tiers.md
+              text: 'Nivåindela blobdata kostnadseffektivt (frekvent, lågfrekvent, arkiv)'
+        - title: Dela dina data
+          links:
+            - url: ../data-share/index.yml
+              text: Dela data med kunder och partner (Azure Data Share)
+            - url: ../data-share/supported-data-stores.md
+              text: Datalager som stöds för delning
+            - url: ../data-share/index.yml
+              text: Mer information >
+        - title: Säkerhetskopiera data
+          links:
+            - url: ../backup/quick-backup-vm-portal.md
+              text: Säkerhetskopiera virtuella datorer (Azure Backup)
+            - url: ../backup/backup-afs.md
+              text: Säkerhetskopiera Azure-filresurser
+            - url: ../backup/index.yml
+              text: Mer information >

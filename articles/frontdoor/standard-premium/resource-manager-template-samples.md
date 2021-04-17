@@ -7,24 +7,25 @@ ms.author: jodowns
 ms.service: frontdoor
 ms.topic: sample
 ms.date: 04/16/2021
-ms.openlocfilehash: 3559270710f56d43fe486e2e3d3e41c63e2a619b
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: e939aec8f1cf5fa615904bb81bad82ea3cf22c61
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565839"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587484"
 ---
 # <a name="azure-resource-manager-templates-for-azure-front-door"></a>Azure Resource Manager mallar för Azure Front Door
 
 > [!Note]
 > Den här dokumentationen är Azure Front Door Standard/Premium (förhandsversion). Letar du efter information om Azure Front Door? Visa [här.](../front-door-overview.md)
 
-Följande tabell innehåller länkar till Azure Resource Manager mallar för Azure Front Door, med referensarkitekturer inklusive andra Azure-tjänster.
+Följande tabell innehåller länkar till Azure Resource Manager mallar för Azure Front Door, med referensarkitekturer, inklusive andra Azure-tjänster.
 
 | Exempel | Beskrivning |
 |-|-|
 | [Front Door (snabbstart)](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium/) | Skapar en grundläggande Front Door inklusive en slutpunkt, ursprungsgrupp, ursprung och väg.  |
 | [Regeluppsättning](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set/) | Skapar en Front Door-profil och regeluppsättning.  |
+| [WAF-princip med hanterad regeluppsättning](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-waf-managed/) | Skapar en Front Door-profil och WAF med hanterad regeluppsättning.  |
 | [WAF-princip med anpassad regel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-waf-custom/) | Skapar en Front Door-profil och WAF med anpassad regel.  |
 |**App Service ursprung**| **Beskrivning** |
 | [App Service](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-app-service-public) | Skapar en App Service-app med en offentlig slutpunkt och en Front Door profil.  |

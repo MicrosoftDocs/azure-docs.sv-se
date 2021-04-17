@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: efa5061a49978ed5e7766c0e7bf9b56a1e73cf5d
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 21247f6b396cb1f7016c74cbec528149c0583724
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389765"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587213"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Använda Azure Digital Twins-API:er och -SDK:er
 
 Azure Digital Twins har både **kontrollplans-API:er och** **API:er för dataplanet** för att hantera din instans och dess element. 
 * API:erna för kontrollplanet [är Azure Resource Manager(ARM)-API:er](../azure-resource-manager/management/overview.md) och täcker resurshanteringsåtgärder som att skapa och ta bort din instans. 
-* API:erna för dataplanet är Azure Digital Twins API:er och används för datahanteringsåtgärder som att hantera modeller, tvillingar och grafen.
+* API:erna för dataplanet Azure Digital Twins API:er och används för datahanteringsåtgärder som att hantera modeller, tvillingar och grafen.
 
 Den här artikeln ger en översikt över de API:er som är tillgängliga och metoder för att interagera med dem. Du kan antingen använda REST-API:erna direkt med deras associerade Swaggers (via ett verktyg som [Postman](how-to-use-postman.md)) eller via ett SDK.
 
@@ -42,7 +42,7 @@ Du kan också använda API:er för kontrollplan genom att interagera Azure Digit
 ## <a name="overview-data-plane-apis"></a>Översikt: API:er för dataplanet
 
 API:erna för dataplanet är Azure Digital Twins API:er som används för att hantera elementen i din Azure Digital Twins instans. De omfattar åtgärder som att skapa vägar, ladda upp modeller, skapa relationer och hantera tvillingar. De kan delas upp i följande kategorier:
-* **DigitalTwinModels** – Kategorin DigitalTwinModels innehåller API:er för att hantera [modeller i](concepts-models.md) en Azure Digital Twins instans. Hanteringsaktiviteter omfattar uppladdning, validering, hämtning och borttagning av modeller som har skrivits i DTDL.
+* **DigitalTwinModels** – Kategorin DigitalTwinModels innehåller API:er för att hantera [modeller i](concepts-models.md) en Azure Digital Twins instans. Hanteringsaktiviteter omfattar uppladdning, validering, hämtning och borttagning av modeller som har redigerats i DTDL.
 * **DigitalTwins** – Kategorin DigitalTwins innehåller API:er som gör att utvecklare kan skapa, ändra och ta bort [digitala](concepts-twins-graph.md) tvillingar och deras relationer i en Azure Digital Twins instans.
 * **Fråga** – Med frågekategorin kan [utvecklare hitta uppsättningar med digitala tvillingar i tvillingdiagrammet](how-to-query-graph.md) över relationer.
 * **Händelsevägar** – Kategorin Händelsevägar innehåller API:er för [att dirigera data,](concepts-route-events.md)via systemet och till underordnade tjänster.
@@ -81,7 +81,7 @@ Den Azure Digital Twins .NET (C#) SDK är en del av Azure SDK för .NET. Den har
 > [!NOTE]
 > Mer information om SDK-design finns i de allmänna [designprinciperna för Azure SDK:er](https://azure.github.io/azure-sdk/general_introduction.html) och de specifika [designriktlinjerna för .NET.](https://azure.github.io/azure-sdk/dotnet_introduction.html)
 
-Om du vill använda SDK:n inkluderar du NuGet-paketet **Azure.DigitalTwins.Core** med ditt projekt. Du behöver även den senaste versionen av **Azure.Identity-paketet.** I Visual Studio kan du lägga till dessa paket med hjälp av NuGet Package Manager (nås via *Verktyg > NuGet Package Manager > Hantera NuGet-paket för lösning).* Du kan också använda .NET-kommandoradsverktyget med kommandona i NuGet-paketlänkarna nedan för att lägga till dem i projektet:
+Om du vill använda SDK:n inkluderar du NuGet-paketet **Azure.DigitalTwins.Core** med ditt projekt. Du behöver även den senaste versionen av **Azure.Identity-paketet.** I Visual Studio kan du lägga till dessa paket med hjälp av NuGet Package Manager (nås via *Tools > NuGet Package Manager > Manage NuGet Packages for Solution*). Du kan också använda .NET-kommandoradsverktyget med kommandona i NuGet-paketlänkarna nedan för att lägga till dem i projektet:
 * [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Det här är paketet för [Azure Digital Twins SDK för .NET](/dotnet/api/overview/azure/digitaltwins/client). 
 * [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity). Det här biblioteket innehåller verktyg som hjälper dig med autentisering mot Azure.
 
@@ -109,7 +109,7 @@ Skapa tvillingar:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
 
-Fråga tvillingar och loopa igenom resultat:
+Fråga tvillingar och loopa genom resultat:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="FullQuerySample":::
 
@@ -124,12 +124,12 @@ Serialiseringshjälpfunktioner är hjälpfunktioner som är tillgängliga i SDK:
 De tillgängliga hjälpklasserna är:
 * `BasicDigitalTwin`: Representerar huvuddata för en digital tvilling
 * `BasicDigitalTwinComponent`: Representerar en komponent i egenskaperna för `Contents` en `BasicDigitalTwin`
-* `BasicRelationship`: Representerar grundläggande data i en relation
+* `BasicRelationship`: Representerar huvuddata för en relation
 * `DigitalTwinsJsonPropertyName`: Innehåller strängkonstanterna för användning i JSON-serialisering och deserialisering för anpassade digitala tvillingtyper
 
 ##### <a name="deserialize-a-digital-twin"></a>Deserialisera en digital tvilling
 
-Du kan alltid deserialisera tvillingdata med hjälp av det JSON-bibliotek som du väljer, `System.Text.Json` till exempel eller `Newtonsoft.Json` . För grundläggande åtkomst till en tvilling kan hjälpklasserna göra detta enklare.
+Du kan alltid deserialisera tvillingdata med hjälp av det JSON-bibliotek du väljer, t.ex. `System.Text.Json` eller `Newtonsoft.Json` . För grundläggande åtkomst till en tvilling kan hjälpklasserna göra detta enklare.
 
 Hjälpklassen `BasicDigitalTwin` ger dig också åtkomst till egenskaper som definierats för tvillingen via en `Dictionary<string, object>` . Om du vill visa egenskaper för tvillingen kan du använda:
 
@@ -160,7 +160,7 @@ Hjälpklassen `BasicRelationship` ger dig också åtkomst till egenskaper som de
 
 ##### <a name="create-a-relationship"></a>Skapa en relation
 
-Med klassen `BasicRelationship` kan du också förbereda data för att skapa relationer på en tvillinginstans:
+Med klassen `BasicRelationship` kan du även förbereda data för att skapa relationer på en tvillinginstans:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_short":::
 
@@ -180,7 +180,7 @@ Följande lista innehåller ytterligare information och allmänna riktlinjer fö
 * Du kan använda ett HTTP REST-testningsverktyg som Postman för att göra direkta anrop till Azure Digital Twins API:er. Mer information om den här processen finns i [*How-to: Make requests with Postman*](how-to-use-postman.md).
 * Om du vill använda SDK:n instansierar du `DigitalTwinsClient` klassen . Konstruktorn kräver autentiseringsuppgifter som kan hämtas med en mängd olika autentiseringsmetoder i `Azure.Identity` paketet. Mer information om `Azure.Identity` finns i dess [namnområdesdokumentation](/dotnet/api/azure.identity). 
 * Det kan vara användbart när du kommer igång, men det finns flera andra alternativ, inklusive autentiseringsuppgifter för hanterad identitet , som du förmodligen kommer att använda för att autentisera Azure-funktioner som har ställts in med `InteractiveBrowserCredential` [MSI](../app-service/overview-managed-identity.md?tabs=dotnet) [](/dotnet/api/azure.identity.interactivebrowsercredential)mot Azure Digital Twins. Mer information om `InteractiveBrowserCredential` finns i dess [klassdokumentation](/dotnet/api/azure.identity.interactivebrowsercredential).
-* Begäranden till Azure Digital Twins-API:er kräver en användare eller tjänstens [](../active-directory/fundamentals/active-directory-whatis.md) huvudnamn som är en del av samma Azure Active Directory-klientorganisation (Azure AD) där Azure Digital Twins-instansen finns. För att förhindra att obehöriga aktörer genomsöker URL:er för att identifiera var Azure Digital Twins-instanserna finns, returneras felmeddelandet "404 Sub-Domain not found" (404 Sub-Domain hittades inte). Det här felet returneras *även* om användaren eller tjänstens huvudnamn har fått rollen Azure Digital Twins dataägare eller Azure Digital Twins dataläsare via [Azure AD B2B-samarbete.](../active-directory/external-identities/what-is-b2b.md)
+* Begäranden till Azure Digital Twins-API:er kräver en användare eller tjänstens [](../active-directory/fundamentals/active-directory-whatis.md) huvudnamn som är en del av samma Azure Active Directory-klientorganisation (Azure AD) där Azure Digital Twins-instansen finns. För att förhindra skadlig genomsökning Azure Digital Twins slutpunkter returneras begäranden med åtkomsttoken utanför den ursprungliga klienten ett felmeddelande om att "404 Sub-Domain kunde inte hittas". Det här felet returneras *även* om användarens eller tjänstens huvudnamn har fått rollen Azure Digital Twins dataägare eller Azure Digital Twins dataläsare via [Azure AD B2B-samarbete.](../active-directory/external-identities/what-is-b2b.md) Information om hur du uppnår åtkomst över flera klienter finns i [*How-to: Write app authentication code*](how-to-authenticate-client.md#authenticate-across-tenants).
 * Alla tjänst-API-anrop exponeras som medlemsfunktioner i `DigitalTwinsClient` klassen .
 * Alla tjänstfunktioner finns i synkrona och asynkrona versioner.
 * Alla tjänstfunktioner returnerar ett undantag för returstatusen 400 eller högre. Se till att omsluta anrop `try` i ett avsnitt och fånga minst `RequestFailedExceptions` . Mer information om den här typen av undantag finns [här.](/dotnet/api/azure.requestfailedexception)
@@ -196,7 +196,7 @@ Tjänstmetoder returnerar starkt typifierade objekt där det är möjligt. Men e
 
 API-mått som begäranden, svarstid och felfrekvens kan visas i Azure Portal [.](https://portal.azure.com/) 
 
-Från portalens startsida söker du efter din Azure Digital Twins instans för att hämta information om den. Välj alternativet **Mått** på Azure Digital Twins instansens meny för att öppna *sidan* Mått.
+Från portalens startsida söker du efter Azure Digital Twins instans för att hämta information om den. Välj alternativet **Mått** på Azure Digital Twins instansens meny för att öppna *sidan* Mått.
 
 :::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="Skärmbild som visar måttsidan för Azure Digital Twins":::
 

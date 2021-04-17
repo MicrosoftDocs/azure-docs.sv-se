@@ -1,39 +1,41 @@
 ---
-title: Använda Azure Service Bus ämnen och prenumerationer med Java (Azure-Messaging-Service Bus)
-description: I den här snabb starten skriver du Java-kod med Azure-Messaging-Service Bus-paketet för att skicka meddelanden till ett Azure Service Bus ämne och sedan ta emot meddelanden från prenumerationer till det avsnittet.
-ms.devlang: Java
-ms.topic: quickstart
+title: Använda Azure Service Bus ämnen och prenumerationer med Java (azure-messaging-servicebus)
+description: I den här snabbstarten skriver du Java-kod med hjälp av paketet azure-messaging-servicebus för att skicka meddelanden till ett Azure Service Bus-ämne och sedan ta emot meddelanden från prenumerationer på det ämnet.
 ms.date: 02/13/2021
-ms.openlocfilehash: c5b930fb2c87a09a1f4801365936c62a7cf79f1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.devlang: Java
+ms.custom:
+- mode-api
+ms.openlocfilehash: 6fe0a3a91ebbd5b6daced95494b8eaa5b7db0c46
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100516183"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536376"
 ---
-# <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-java"></a>Skicka meddelanden till ett Azure Service Bus ämne och ta emot meddelanden från prenumerationer till ämnet (Java)
-I den här snabb starten skriver du Java-kod med Azure-Messaging-Service Bus-paketet för att skicka meddelanden till ett Azure Service Bus ämne och sedan ta emot meddelanden från prenumerationer till det avsnittet.
+# <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-java"></a>Skicka meddelanden till ett Azure Service Bus ämne och ta emot meddelanden från prenumerationer på ämnet (Java)
+I den här snabbstarten skriver du Java-kod med hjälp av paketet azure-messaging-servicebus för att skicka meddelanden till ett Azure Service Bus-ämne och sedan ta emot meddelanden från prenumerationer på det ämnet.
 
 > [!IMPORTANT]
-> I den här snabb starten används det nya paketet Azure-Messaging-Service Bus. En snabb start som använder det gamla Azure-Service Bus-paketet finns i [skicka och ta emot meddelanden med Azure-Service Bus](service-bus-java-how-to-use-topics-subscriptions-legacy.md).
+> I den här snabbstarten används det nya paketet azure-messaging-servicebus. En snabbstart som använder det gamla azure-servicebus-paketet finns i [Skicka och ta emot meddelanden med azure-servicebus](service-bus-java-how-to-use-topics-subscriptions-legacy.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- En Azure-prenumeration. Du behöver ett Azure-konto för att genomföra kursen. Du kan aktivera dina [förmåner för Visual Studio eller MSDN-prenumeranter](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) eller registrera dig för ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Följ stegen i [snabb starten: använd Azure Portal för att skapa ett Service Bus ämne och prenumerationer på avsnittet](service-bus-quickstart-topics-subscriptions-portal.md). Anteckna anslutnings strängen, ämnes namnet och ett prenumerations namn. Du kommer bara att använda en prenumeration för den här snabb starten. 
-- Installera [Azure SDK för Java][Azure SDK for Java]. Om du använder Sol förmörkelse kan du installera [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] som innehåller Azure SDK för Java. Du kan sedan lägga till **Microsoft Azure biblioteken för Java** i projektet. Om du använder IntelliJ, se [installera Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/installation). 
+- En Azure-prenumeration. Du behöver ett Azure-konto för att genomföra kursen. Du kan aktivera dina [Visual Studio- eller MSDN-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) eller registrera dig för ett [kostnadsfritt konto.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
+- Följ stegen i [Snabbstart: Använd Azure Portal för att skapa Service Bus ett ämne och prenumerationer på ämnet](service-bus-quickstart-topics-subscriptions-portal.md). Anteckna anslutningssträngen, ämnesnamnet och ett prenumerationsnamn. Du använder bara en prenumeration för den här snabbstarten. 
+- Installera [Azure SDK för Java][Azure SDK for Java]. Om du använder Eclipse kan du installera den [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] som innehåller Azure SDK för Java. Du kan sedan lägga till **Microsoft Azure-bibliotek för Java** i projektet. Om du använder IntelliJ kan du se [Installera Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/installation). 
 
 
 ## <a name="send-messages-to-a-topic"></a>Skicka meddelanden till ett ämne
-I det här avsnittet ska du skapa ett Java-konsol-projekt och lägga till kod för att skicka meddelanden till ämnet som du har skapat. 
+I det här avsnittet skapar du ett Java-konsolprojekt och lägger till kod för att skicka meddelanden till det ämne som du skapade. 
 
-### <a name="create-a-java-console-project"></a>Skapa ett Java-konsol projekt
-Skapa ett Java-projekt med hjälp av Sol förmörkelse eller ett verktyg som du själv väljer. 
+### <a name="create-a-java-console-project"></a>Skapa ett Java-konsolprojekt
+Skapa ett Java-projekt med Eclipse eller ett val av verktyg. 
 
-### <a name="configure-your-application-to-use-service-bus"></a>Konfigurera programmet så att det använder Service Bus
-Lägg till referenser till Azure Core-och Azure Service Bus-bibliotek. 
+### <a name="configure-your-application-to-use-service-bus"></a>Konfigurera ditt program att använda Service Bus
+Lägg till referenser till Azure Core och Azure Service Bus bibliotek. 
 
-Om du använder Sol förmörkelse och skapat ett Java-konsol program konverterar du ditt Java-projekt till en maven: Högerklicka på projektet i fönstret **Package Explorer** och välj **Konfigurera**  ->  **konvertera till Maven-projekt**. Lägg sedan till beroenden till dessa två bibliotek som visas i följande exempel.
+Om du använder Eclipse och har skapat ett Java-konsolprogram konverterar du Ditt Java-projekt till maven: högerklicka på projektet i **fönstret Package Explorer** och välj **Konfigurera** konvertera  ->  **till Maven-projekt**. Lägg sedan till beroenden till dessa två bibliotek enligt följande exempel.
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -68,8 +70,8 @@ Om du använder Sol förmörkelse och skapat ett Java-konsol program konverterar
 </project>
 ```
 
-### <a name="add-code-to-send-messages-to-the-topic"></a>Lägg till kod för att skicka meddelanden till ämnet
-1. Lägg till följande- `import` instruktioner i avsnittet i Java-filen. 
+### <a name="add-code-to-send-messages-to-the-topic"></a>Lägga till kod för att skicka meddelanden till ämnet
+1. Lägg till följande `import` -instruktioner i java-filens ämne. 
 
     ```java
     import com.azure.messaging.servicebus.*;
@@ -79,7 +81,7 @@ Om du använder Sol förmörkelse och skapat ett Java-konsol program konverterar
     import java.util.Arrays;
     import java.util.List;
     ```    
-5. I-klassen definierar du variabler som ska innehålla anslutnings strängen och ämnes namnet enligt nedan: 
+5. I klassen definierar du variabler som ska innehålla anslutningssträngen och ämnesnamnet enligt nedan: 
 
     ```java
     static String connectionString = "<NAMESPACE CONNECTION STRING>";
@@ -87,8 +89,8 @@ Om du använder Sol förmörkelse och skapat ett Java-konsol program konverterar
     static String subName = "<SUBSCRIPTION NAME>";
     ```
 
-    Ersätt `<NAMESPACE CONNECTION STRING>` med anslutnings strängen till Service Bus namn området. Och Ersätt `<TOPIC NAME>` med namnet på ämnet.
-3. Lägg till en metod som heter `sendMessage` i klassen för att skicka ett meddelande till ämnet. 
+    Ersätt `<NAMESPACE CONNECTION STRING>` med anslutningssträngen till Service Bus namnområdet. Och ersätt `<TOPIC NAME>` med namnet på ämnet.
+3. Lägg till en metod `sendMessage` med namnet i klassen för att skicka ett meddelande till ämnet. 
 
     ```java
     static void sendMessage()
@@ -105,7 +107,7 @@ Om du använder Sol förmörkelse och skapat ett Java-konsol program konverterar
         System.out.println("Sent a single message to the topic: " + topicName);        
     }
     ```
-1. Lägg till en metod som heter `createMessages` i klassen för att skapa en lista med meddelanden. Normalt får du dessa meddelanden från olika delar av programmet. Här skapar vi en lista över exempel meddelanden.
+1. Lägg till en metod `createMessages` med namnet i klassen för att skapa en lista med meddelanden. Vanligtvis får du dessa meddelanden från olika delar av ditt program. Här skapar vi en lista över exempelmeddelanden.
 
     ```java
     static List<ServiceBusMessage> createMessages()
@@ -119,7 +121,7 @@ Om du använder Sol förmörkelse och skapat ett Java-konsol program konverterar
         return Arrays.asList(messages);
     }
     ```
-1. Lägg till en metod med namnet `sendMessageBatch` metod för att skicka meddelanden till ämnet som du skapade. Den här metoden skapar en `ServiceBusSenderClient` för avsnittet och anropar `createMessages` metoden för att hämta listan över meddelanden, förbereder en eller flera batchar och skickar batcharna till ämnet. 
+1. Lägg till en metod med `sendMessageBatch` namnet method för att skicka meddelanden till det ämne som du skapade. Den här metoden skapar en för ämnet, anropar metoden för att hämta listan över meddelanden, förbereder en eller flera batchar och skickar `ServiceBusSenderClient` `createMessages` batcharna till ämnet. 
 
     ```java
     static void sendMessageBatch()
@@ -169,12 +171,12 @@ Om du använder Sol förmörkelse och skapat ett Java-konsol program konverterar
     ```
 
 ## <a name="receive-messages-from-a-subscription"></a>Ta emot meddelanden från en prenumeration
-I det här avsnittet ska du lägga till kod för att hämta meddelanden från en prenumeration till ämnet. 
+I det här avsnittet lägger du till kod för att hämta meddelanden från en prenumeration till ämnet. 
 
-1. Lägg till en metod `receiveMessages` som heter för att ta emot meddelanden från prenumerationen. Den här metoden skapar en `ServiceBusProcessorClient` för prenumerationen genom att ange en hanterare för bearbetning av meddelanden och en annan för hantering av fel. Sedan startar den processorn, väntar några sekunder, skriver ut de meddelanden som tas emot och stoppar och stänger sedan processorn.
+1. Lägg till en metod med `receiveMessages` namnet för att ta emot meddelanden från prenumerationen. Den här metoden skapar `ServiceBusProcessorClient` en för prenumerationen genom att ange en hanterare för bearbetning av meddelanden och en annan för hantering av fel. Sedan startar den processorn, väntar i några sekunder, skriver ut de meddelanden som tas emot och stoppar och stänger sedan processorn.
 
     > [!IMPORTANT]
-    > Ersätt `ServiceBusTopicTest` i `ServiceBusTopicTest::processMessage` koden med namnet på klassen. 
+    > Ersätt `ServiceBusTopicTest` `ServiceBusTopicTest::processMessage` i i koden med namnet på din klass. 
 
     ```java
     // handles received messages
@@ -200,7 +202,7 @@ I det här avsnittet ska du lägga till kod för att hämta meddelanden från en
         processorClient.close();        
     }  
     ```
-2. Lägg till `processMessage` metoden för att bearbeta ett meddelande som tagits emot från Service Bus prenumerationen. 
+2. Lägg till `processMessage` metoden för att bearbeta ett meddelande som tas emot från Service Bus prenumerationen. 
 
     ```java
     private static void processMessage(ServiceBusReceivedMessageContext context) {
@@ -209,7 +211,7 @@ I det här avsnittet ska du lägga till kod för att hämta meddelanden från en
             message.getSequenceNumber(), message.getBody());
     }    
     ```
-3. Lägg till- `processError` metoden för att hantera fel meddelanden.
+3. Lägg till `processError` metoden för att hantera felmeddelanden.
 
     ```java
     private static void processError(ServiceBusErrorContext context, CountDownLatch countdownLatch) {
@@ -246,7 +248,7 @@ I det här avsnittet ska du lägga till kod för att hämta meddelanden från en
         }
     }  
     ```
-1. Uppdatera `main` metoden för att anropa `sendMessage` -, `sendMessageBatch` -och- `receiveMessages` metoder och att utlösa `InterruptedException` .     
+1. Uppdatera metoden `main` för att anropa metoderna , och och för att skapa `sendMessage` `sendMessageBatch` `receiveMessages` `InterruptedException` .     
 
     ```java
     public static void main(String[] args) throws InterruptedException {        
@@ -269,26 +271,26 @@ Processing message. Session: 56d3a9ea7df446f8a2944ee72cca4ea0, Sequence #: 3. Co
 Processing message. Session: 7bd3bd3e966a40ebbc9b29b082da14bb, Sequence #: 4. Contents: Third message
 ```
 
-På sidan **Översikt** för Service Bus namn området i Azure Portal kan du se antalet **inkommande** och **utgående** meddelanden. Du kan behöva vänta en minut eller så och sedan uppdatera sidan för att se de senaste värdena. 
+På sidan **Översikt** för Service Bus i Azure Portal kan du se antal **inkommande** och **utgående** meddelanden. Du kan behöva vänta i någon minut och sedan uppdatera sidan för att se de senaste värdena. 
 
 :::image type="content" source="./media/service-bus-java-how-to-use-queues/overview-incoming-outgoing-messages.png" alt-text="Antal inkommande och utgående meddelanden" lightbox="./media/service-bus-java-how-to-use-queues/overview-incoming-outgoing-messages.png":::
 
-Växla till fliken **ämnen** i det mittersta fönstret och markera avsnittet om du vill se sidan **Service Bus ämne** för ditt ämne. På den här sidan bör du se fyra inkommande och fyra utgående meddelanden i **meddelande** diagrammet. 
+Växla till **fliken Ämnen** i fönstret längst ned i mitten och välj ämnet för att Service Bus **sidan** Ämne för ditt ämne. På den här sidan bör du se fyra inkommande och fyra utgående meddelanden i **diagrammet** Meddelanden. 
 
 :::image type="content" source="./media/service-bus-java-how-to-use-topics-subscriptions/topic-page-portal.png" alt-text="Inkommande och utgående meddelanden" lightbox="./media/service-bus-java-how-to-use-topics-subscriptions/topic-page-portal.png":::
 
-Om du kommenterar ut `receiveMessages` anropet i- `main` metoden och kör appen igen på sidan **Service Bus ämne** visas 8 inkommande meddelanden (4 nya), men fyra utgående meddelanden. 
+Om du kommenterar bort anropet i metoden och kör appen igen visas 8 inkommande `receiveMessages` meddelanden (4 nya) men fyra utgående meddelanden `main` på sidan Service Bus **Ämne.** 
 
-:::image type="content" source="./media/service-bus-java-how-to-use-topics-subscriptions/updated-topic-page.png" alt-text="Uppdaterad ämnes sida" lightbox="./media/service-bus-java-how-to-use-topics-subscriptions/updated-topic-page.png":::
+:::image type="content" source="./media/service-bus-java-how-to-use-topics-subscriptions/updated-topic-page.png" alt-text="Uppdaterad ämnessida" lightbox="./media/service-bus-java-how-to-use-topics-subscriptions/updated-topic-page.png":::
 
-Om du väljer en prenumeration på den här sidan kommer du till sidan **Service Bus prenumeration** . Du kan se antalet aktiva meddelanden, antal meddelanden om obeställbara meddelanden och mer på den här sidan. I det här exemplet finns det fyra aktiva meddelanden som inte har tagits emot av en mottagare än. 
+På den här sidan, om du väljer en prenumeration, kommer du **Service Bus prenumerationssidan.** Du kan se antal aktiva meddelanden, antal meddelanden med dead letter och mer på den här sidan. I det här exemplet finns det fyra aktiva meddelanden som inte har tagits emot av en mottagare ännu. 
 
 :::image type="content" source="./media/service-bus-java-how-to-use-topics-subscriptions/active-message-count.png" alt-text="Antal aktiva meddelanden" lightbox="./media/service-bus-java-how-to-use-topics-subscriptions/active-message-count.png":::
 
 ## <a name="next-steps"></a>Nästa steg
 Se följande dokumentation och exempel:
 
-- [Azure Service Bus klient bibliotek för Java – viktigt](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
+- [Azure Service Bus klientbibliotek för Java – Viktigt](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
 - [Exempel på GitHub](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Referens för Java-API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-messaging-servicebus/7.0.0/index.html)
 

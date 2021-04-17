@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 monikerRange: iotedge-2018-06
-ms.openlocfilehash: 1c7c221a2fea60f3bbbc4f2cde960dcb8638efe2
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: a5407c46be6726974a920b5dddd87639dc426d0d
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576575"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587280"
 ---
 # <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Så här installerar IoT Edge på Kubernetes (förhandsversion)
 
-[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 IoT Edge kan integreras med Kubernetes som ett motståndskraftigt infrastrukturlager med hög kapacitet. Här passar det här stödet in i en IoT Edge lösning:
 

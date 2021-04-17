@@ -1,205 +1,205 @@
 ---
-title: Azures säkerhets bas linje för Azure Kognitiv sökning
-description: Azure Kognitiv sökning Security-datalinjen ger procedur vägledning och resurser för att implementera de säkerhets rekommendationer som anges i Azures säkerhets benchmark.
+title: Azure-säkerhetsbaslinje för Azure Cognitive Search
+description: Säkerhetsbaslinjen Azure Cognitive Search innehåller procedurvägledning och resurser för implementering av säkerhetsrekommendationerna som anges i Azure Security Benchmark.
 author: msmbaldwin
 ms.service: search
 ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ebf948c76196224806afda21bd2f266b1b797f74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 313ac05d8e4fdc19736d0c35285c2b854ec26968
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604393"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589201"
 ---
-# <a name="azure-security-baseline-for-azure-cognitive-search"></a>Azures säkerhets bas linje för Azure Kognitiv sökning
+# <a name="azure-security-baseline-for-azure-cognitive-search"></a>Azure-säkerhetsbaslinje för Azure Cognitive Search
 
-Den här säkerhets bas linjen använder vägledning från [Azures säkerhets benchmark version 1,0](../security/benchmarks/overview-v1.md) till Azure kognitiv sökning. Azure Security Benchmark ger rekommendationer om hur du kan skydda dina molnlösningar i Azure. Innehållet grupperas efter de **säkerhets kontroller** som definieras av Azures säkerhets benchmark och relaterade rikt linjer som gäller för Azure kognitiv sökning. **Kontroller** som inte är tillämpliga på Azure kognitiv sökning eller kunden har uteslutits.
+Den här säkerhetsbaslinjen tillämpar vägledning [från Azure Security Benchmark version 1.0](../security/benchmarks/overview-v1.md) för Azure Cognitive Search. Azure Security Benchmark ger rekommendationer om hur du kan skydda dina molnlösningar i Azure. Innehållet grupperas efter de säkerhetskontroller **som definieras** av Azure Security Benchmark och tillhörande vägledning som gäller för Azure Cognitive Search. **Kontroller** som inte Azure Cognitive Search, eller som kunden har exkluderats från.
 
-Om du vill se hur Azure Kognitiv sökning fullständigt mappar till Azures säkerhets benchmark kan du läsa mer i den [fullständiga Azure kognitiv sökning säkerhets bas linje mappnings filen](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
+Information om hur Azure Cognitive Search mappning helt till Azure Security Benchmark finns i den fullständiga [mappningsfilen Azure Cognitive Search säkerhetsbaslinje.](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)
 
 ## <a name="network-security"></a>Nätverkssäkerhet
 
 *Mer information finns i [Azure Security Benchmark: Nätverkssäkerhet](../security/benchmarks/security-control-network-security.md).*
 
-### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: skydda Azure-resurser i virtuella nätverk
+### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1: Skydda Azure-resurser i virtuella nätverk
 
-**Vägledning**: kontrol lera att alla distributioner av Microsoft Azure Virtual Network undernät har en nätverks säkerhets grupp som tillämpas med regler för att implementera åtkomst schema med minst privilegier. Tillåt endast åtkomst till programmets betrodda portar och IP-adressintervall. Distribuera Azure Kognitiv sökning med en privat Azure-slutpunkt, där det är möjligt, för att aktivera privat åtkomst till dina tjänster från det virtuella nätverket.
+**Vägledning:** Se till att Microsoft Azure Virtual Network undernätsdistributioner har en nätverkssäkerhetsgrupp tillämpad med regler för att implementera ett "minst privilegierat" åtkomstschema. Tillåt endast åtkomst till programmets betrodda portar och IP-adressintervall. Distribuera Azure Cognitive Search med en privat Azure-slutpunkt, där det är möjligt, för att aktivera privat åtkomst till dina tjänster från ditt virtuella nätverk.
 
-Kognitiv sökning stöder också ytterligare funktioner för nätverks säkerhet för hantering av åtkomst kontrol listor i nätverket. Konfigurera Sök tjänsten så att den endast tillåter kommunikation med betrodda källor genom att begränsa åtkomsten från vissa offentliga IP-adressintervall med hjälp av dess brand Väggs funktion.
+Cognitive Search också stöd för ytterligare nätverkssäkerhetsfunktioner för att hantera åtkomstkontrolllistor för nätverk. Konfigurera din söktjänst så att den endast tillåter kommunikation med betrodda källor genom att begränsa åtkomsten från specifika offentliga IP-adressintervall med dess brandväggsfunktion.
 
-- [Konfigurera privata slut punkter för Azure Kognitiv sökning](service-create-private-endpoint.md)
+- [Så här konfigurerar du privata slutpunkter för Azure Cognitive Search](service-create-private-endpoint.md)
 
-- [Så här konfigurerar du Azure Kognitiv sökning-brandväggen](service-configure-firewall.md)
+- [Så här konfigurerar du Azure Cognitive Search brandväggen](service-configure-firewall.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: övervaka och logga konfigurationen och trafiken för virtuella nätverk, undernät och nätverkskort
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2: Övervaka och logga konfiguration och trafik för virtuella nätverk, undernät och nätverkskort
 
-**Vägledning**: kognitiv sökning kan inte distribueras direkt till ett virtuellt nätverk. Men om ditt klient program eller data källor finns i ett virtuellt nätverk kan du övervaka och logga trafik för dessa komponenter i nätverket, inklusive förfrågningar som skickas till en Sök tjänst i molnet. Standard rekommendationer är att aktivera en nätverks säkerhets grupp flödes logg och skicka loggar till antingen Azure Storage eller en Log Analytics arbets yta. Du kan också använda Trafikanalys för insikter i trafik mönster.
+**Vägledning:** Cognitive Search kan inte distribueras direkt till ett virtuellt nätverk. Men om klientprogrammet eller datakällorna finns i ett virtuellt nätverk kan du övervaka och logga trafik för dessa komponenter i nätverket, inklusive begäranden som skickas till en söktjänst i molnet. Standardrekommendationer är att aktivera en flödeslogg för nätverkssäkerhetsgruppen och skicka loggar till antingen Azure Storage eller en Log Analytics-arbetsyta. Du kan också använda Trafikanalys för att få insikter om trafikmönster.
 
-- [Så här aktiverar du flödes loggar för nätverks säkerhets grupper](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
+- [Så här aktiverar du flödesloggar för nätverkssäkerhetsgrupp](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
 - [Så här aktiverar och använder du Trafikanalys](../network-watcher/traffic-analytics.md)
 
-- [Förstå nätverks säkerhet som tillhandahålls av Azure Security Center](../security-center/security-center-network-recommendations.md)
+- [Förstå nätverkssäkerhet som tillhandahålls av Azure Security Center](../security-center/security-center-network-recommendations.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: neka kommunikation med kända skadliga IP-adresser
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Neka kommunikation med kända skadliga IP-adresser
 
-**Vägledning**: kognitiv sökning tillhandahåller inte en speciell funktion för att bekämpa en distribuerad denial-of-service-attack, men du kan aktivera DDoS Protection standard på de virtuella nätverk som är kopplade till din kognitiv sökning tjänst för allmänt skydd.
+**Vägledning:** Cognitive Search tillhandahåller inte en specifik funktion för att bekämpa en distribuerad denial-of-service-attack, men du kan aktivera DDoS Protection Standard på de virtuella nätverk som är associerade med din Cognitive Search-tjänst för allmänt skydd.
 
 - [Så här konfigurerar du DDoS-skydd](../ddos-protection/manage-ddos-protection.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="15-record-network-packets"></a>1,5: registrera nätverks paket
+### <a name="15-record-network-packets"></a>1.5: Registrera nätverkspaket
 
-**Vägledning**: Aktivera nätverks säkerhets grupp flödes loggar för nätverks säkerhets grupper som skyddar Azure-Virtual Machines (VM) som ska ansluta till din kognitiv sökning-tjänst. Skicka loggar till ett Azure Storage-konto för trafik granskning. 
+**Vägledning:** Aktivera flödesloggar för nätverkssäkerhetsgrupper för de nätverkssäkerhetsgrupper som skyddar Azure Virtual Machines (VM) som ska ansluta till din Cognitive Search-tjänst. Skicka loggar till ett Azure Storage konto för trafikgranskning. 
 
-Aktivera Network Watcher paket fångst om det behövs för att undersöka avvikande aktivitet.
+Aktivera Network Watcher paketinfångst om det behövs för att undersöka avvikande aktivitet.
 
-- [Så här aktiverar du NSG Flow-loggar](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
+- [Så här aktiverar du NSG-flödesloggar](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
 - [Så här aktiverar du Network Watcher](../network-watcher/network-watcher-create.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: Distribuera nätverksbaserade intrångs identifiering/system för skydd mot intrång (ID/IP-adresser)
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Distribuera nätverksbaserade system för intrångsidentifiering/intrångsskydd (IDS/IPS)
 
-**Vägledning**: kognitiv sökning har inte stöd för identifiering av nätverks intrång, men som en avbrotts minskning kan du konfigurera brand Väggs regler för att ange de IP-adresser som accepteras av kognitiv söknings tjänsten. Konfigurera en privat slut punkt för att hålla Sök trafiken bort från det offentliga Internet.
+**Vägledning:** Cognitive Search inte stöder identifiering av nätverksintrång, men som en intrångsminskning kan du konfigurera brandväggsregler för att ange de IP-adresser som accepteras av Cognitive Search tjänsten. Konfigurera en privat slutpunkt för att hålla söktrafik borta från det offentliga Internet.
 
-- [Så här konfigurerar du Kundhanterade nycklar för data kryptering](search-security-manage-encryption-keys.md)
+- [Så här konfigurerar du kund hanterade nycklar för datakryptering](search-security-manage-encryption-keys.md)
 
-- [Så här hämtar du kundhanterad viktig information från index och synonym Maps](search-security-get-encryption-keys.md)
-
-**Ansvar**: Kund
-
-**Azure Security Center övervakning**: ingen
-
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: minimera komplexitet och administrativa kostnader för nätverks säkerhets regler
-
-**Vägledning**: Använd service märken om du utnyttjar indexerare och färdighetsuppsättningar i kognitiv sökning för att representera ett intervall med IP-adresser som har behörighet att ansluta till externa resurser. 
-
-Tillåt eller neka trafik till resurser genom att ange service tag-namnet (till exempel AzureCognitiveSearch) i lämpligt käll-eller mål fält för en regel. 
-
-- [Tjänst taggar för virtuellt nätverk](../virtual-network/service-tags-overview.md)
+- [Så här hämtar du kund hanterad nyckelinformation från index och synonymmappningar](search-security-get-encryption-keys.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="110-document-traffic-configuration-rules"></a>1,10: dokumentera trafik konfigurations regler
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Minimera komplexiteten och det administrativa arbetet med nätverkssäkerhetsregler
 
-**Vägledning**: du kan konfigurera kognitiv sökning med en privat Azure-slutpunkt för att integrera din Sök tjänst med ett virtuellt nätverk.  Använd resurs taggar för nätverks säkerhets grupper och andra resurser som rör nätverks säkerhets-och trafikflödet. Använd fältet Beskrivning för enskilda regler för nätverks säkerhets grupper för att dokumentera de regler som tillåter trafik till/från ett nätverk. 
+**Vägledning:** Använd tjänsttaggar, om du använder indexerare och kompetensuppsättningar i Cognitive Search, för att representera ett intervall med IP-adresser som har behörighet att ansluta till externa resurser. 
+
+Tillåt eller neka trafik till resurser genom att ange tjänsttaggnamnet (till exempel AzureCognitiveSearch) i lämpligt käll- eller målfält för en regel. 
+
+- [Tjänsttaggar för virtuellt nätverk](../virtual-network/service-tags-overview.md)
+
+**Ansvar**: Kund
+
+**Azure Security Center övervakning**: Ingen
+
+### <a name="110-document-traffic-configuration-rules"></a>1.10: Dokumentera trafikkonfigurationsregler
+
+**Vägledning:** Du kan konfigurera Cognitive Search med en privat Azure-slutpunkt för att integrera din söktjänst med ett virtuellt nätverk.  Använd resurstaggar för nätverkssäkerhetsgrupper och andra resurser som rör nätverkssäkerhet och trafikflöde. För enskilda regler för nätverkssäkerhetsgrupp använder du fältet "Beskrivning" för att dokumentera reglerna som tillåter trafik till/från ett nätverk. 
  
 
-Använd någon av de inbyggda Azure Policy definitionerna som är relaterade till taggning, t. ex. "Kräv tagg och dess värde", för att säkerställa att alla resurser skapas med taggar och meddela dig om befintliga otaggade resurser. 
+Använd någon av de inbyggda Azure Policy-definitioner som rör taggning, till exempel "Kräv tagg och dess värde"-effekter, för att säkerställa att alla resurser skapas med taggar och för att meddela dig om befintliga otaggade resurser. 
 
 Du kan använda Azure PowerShell eller Azure CLI för att söka efter eller utföra åtgärder på resurser baserat på deras taggar.  
 
  
-- [Så här skapar du en privat slut punkt för Kognitiv sökning](service-create-private-endpoint.md) 
+- [Så här skapar du en privat slutpunkt för Cognitive Search](service-create-private-endpoint.md) 
 
  
  
-- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
+- [Skapa och använda taggar](../azure-resource-manager/management/tag-resources.md)
 
 - [Så här skapar du en Azure-Virtual Network](../virtual-network/quick-create-portal.md) 
 
  
-- [Filtrera nätverks trafik med regler för nätverks säkerhets grupper](../virtual-network/tutorial-filter-network-traffic.md)
+- [Så här filtrerar du nätverkstrafik med regler för nätverkssäkerhetsgrupp](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="logging-and-monitoring"></a>Loggning och övervakning
 
-*Mer information finns i [säkerhets benchmark för Azure: loggning och övervakning](../security/benchmarks/security-control-logging-monitoring.md).*
+*Mer information finns i [Prestandatest för Azure-säkerhet: Loggning och övervakning.](../security/benchmarks/security-control-logging-monitoring.md)*
 
-### <a name="22-configure-central-security-log-management"></a>2,2: Konfigurera central hantering av säkerhets loggar
+### <a name="22-configure-central-security-log-management"></a>2.2: Konfigurera central hantering av säkerhetsloggar
 
-**Vägledning**: mata in loggar som är relaterade till Kognitiv sökning via Azure Monitor för att samla in säkerhets data som genererats av slut punkts enheter, nätverks resurser och andra säkerhets system. I Azure Monitor använder du Log Analytics arbets ytor för att fråga och utföra analyser och använda Azure Storage konton för långsiktig lagring. Du kan också aktivera och inaktivera dessa data till Azure Sentinel eller en SIEM från tredje part.
- 
-
- 
-- [Komma igång med Azure Monitor och SIEM-integrering från tredje part](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
+**Vägledning:** Mata in loggar relaterade till Cognitive Search via Azure Monitor för att aggregera säkerhetsdata som genereras av slutpunktsenheter, nätverksresurser och andra säkerhetssystem. I Azure Monitor använder du Log Analytics-arbetsytor för att köra frågor mot och utföra analyser och använda Azure Storage-konton för långsiktig lagring och arkiveringslagring. Du kan också aktivera och ta med dessa data för att Azure Sentinel eller en SIEM från tredje part.
  
 
  
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
+- [Så här kommer du igång Azure Monitor siem-integrering från tredje part](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
  
 
  
-- [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
+- [Samla in plattformsloggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md) 
+ 
+
+ 
+- [Registrera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: Aktivera gransknings loggning för Azure-resurser
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Aktivera granskningsloggning för Azure-resurser
 
-**Vägledning**: diagnostik-och drift loggar ger insikt i de detaljerade åtgärderna i kognitiv sökning och är användbara för att övervaka tjänsten och för arbets belastningar som har åtkomst till din tjänst.  Om du vill samla in diagnostikdata aktiverar du loggning genom att ange var loggnings information lagras.
+**Vägledning:** Diagnostikloggar och driftloggar ger inblick i detaljerade åtgärder för Cognitive Search och är användbara för övervakning av tjänsten och för arbetsbelastningar som har åtkomst till din tjänst.  Om du vill samla in diagnostikdata aktiverar du loggning genom att ange var loggningsinformation lagras.
  
 
  
-- [Samla in och analysera loggdata för Azure Kognitiv sökning](search-monitor-logs.md) 
+- [Så här samlar du in och analyserar loggdata för Azure Cognitive Search](search-monitor-logs.md) 
 
  
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
+- [Samla in plattformsloggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: [Azures säkerhets benchmark](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md) är standard policy initiativ för Security Center och är grunden för [Security Center rekommendationer](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md). De Azure Policy-definitioner som är relaterade till den här kontrollen aktive ras automatiskt av Security Center. Aviseringar som är relaterade till den här kontrollen kan kräva en [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) -plan för de relaterade tjänsterna.
+**Azure Security Center övervakning:** [Azure Security Benchmark](/azure/governance/policy/samples/azure-security-benchmark) är standardprincipinitiativ för Security Center och är grunden för Security Center [rekommendationerna](/azure/security-center/security-center-recommendations). De Azure Policy som är relaterade till den här kontrollen aktiveras automatiskt av Security Center. Aviseringar som rör den här kontrollen kan kräva [en Azure Defender](/azure/security-center/azure-defender) plan för de relaterade tjänsterna.
 
-**Azure policy inbyggda definitioner – Microsoft. search**:
+**Azure Policy inbyggda definitioner – Microsoft.Search:**
 
 [!INCLUDE [Resource Policy for Microsoft.Search 2.3](../../includes/policy/standards/asb/rp-controls/microsoft.search-2-3.md)]
 
-### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurera säkerhets logg lagrings kvarhållning
+### <a name="25-configure-security-log-storage-retention"></a>2.5: Konfigurera kvarhållning av säkerhetslogglagring
 
-**Vägledning**: historiska data som matas in i diagnostiska mått bevaras av kognitiv sökning i 30 dagar som standard. För längre kvarhållning, se till att aktivera inställningen som anger ett lagrings alternativ för att spara loggade händelser och mått.
- 
-
- 
-I Azure Monitor anger du din Log Analytics bevarande period för arbets ytan enligt organisationens regler för efterlevnad. Använd Azure Storage konton för långsiktig lagring och arkivering. 
+**Vägledning:** Historiska data som matas in i diagnostikmått bevaras av Cognitive Search i 30 dagar som standard. För längre kvarhållning måste du aktivera inställningen som anger ett lagringsalternativ för ständiga loggade händelser och mått.
  
 
  
-- [Ändra data lagrings perioden i Log Analytics](https://docs.microsoft.com/azure/azure-monitor/logs/manage-cost-storage#change-the-data-retention-period) 
+I Azure Monitor du kvarhållningsperioden för Log Analytics-arbetsytan enligt organisationens efterlevnadsregler. Använd Azure Storage-konton för långsiktig lagring och arkiveringslagring. 
+ 
 
  
-- [Konfigurera bevarande princip för Azure Storage konto loggar](https://docs.microsoft.com/azure/storage/common/manage-storage-analytics-logs#enable-logs)
+- [Ändra kvarhållningsperioden för data i Log Analytics](https://docs.microsoft.com/azure/azure-monitor/logs/manage-cost-storage#change-the-data-retention-period) 
+
+ 
+- [Så här konfigurerar du bevarandeprincip för Azure Storage-kontologgar](https://docs.microsoft.com/azure/storage/common/manage-storage-analytics-logs#enable-logs)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="26-monitor-and-review-logs"></a>2,6: övervaka och granska loggar
+### <a name="26-monitor-and-review-logs"></a>2.6: Övervaka och granska loggar
 
-**Vägledning**: analysera och övervaka loggar från din kognitiv sökning-tjänst för avvikande beteende. Använd Azure Monitor Log Analytics för att granska loggar och köra frågor om loggdata. Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel eller en SIEM från tredje part. 
-
- 
- 
-- [Samla in och analysera loggdata för Kognitiv sökning](search-monitor-logs.md)
- 
-- [Visualisera Sök logg data i Power BI](search-monitor-logs-powerbi.md)
- 
+**Vägledning:** Analysera och övervaka loggar från din Cognitive Search för avvikande beteende. Använd Azure Monitor Log Analytics för att granska loggar och köra frågor på loggdata. Du kan också aktivera och ta med data till Azure Sentinel siem eller siem från tredje part. 
 
  
-- [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
+ 
+- [Så här samlar du in och analyserar loggdata för Cognitive Search](search-monitor-logs.md)
+ 
+- [Visualisera sökloggdata i Power BI](search-monitor-logs-powerbi.md)
+ 
+
+ 
+- [Registrera Azure Sentinel](../sentinel/quickstart-onboard.md)
  
 
  
@@ -211,15 +211,15 @@ I Azure Monitor anger du din Log Analytics bevarande period för arbets ytan enl
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: aktivera aviseringar för avvikande aktiviteter
+### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7: Aktivera aviseringar för avvikande aktiviteter
 
-**Vägledning**: Använd Security Center med Log Analytics arbets yta för övervakning och avisering om avvikande aktivitet i säkerhets loggar och händelser. Du kan också aktivera och inaktivera data till Azure Sentinel.
+**Vägledning:** Använd Security Center Log Analytics-arbetsyta för övervakning och avisering om avvikande aktivitet som finns i säkerhetsloggar och händelser. Du kan också aktivera och ta med data för att Azure Sentinel.
  
 
  
-- [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
+- [Registrera Azure Sentinel](../sentinel/quickstart-onboard.md)
  
 
  
@@ -227,91 +227,91 @@ I Azure Monitor anger du din Log Analytics bevarande period för arbets ytan enl
  
 
  
-- [Så här aviserar du om Log Analytics-loggdata](../azure-monitor/alerts/tutorial-response.md)
+- [Så här varnar du om loggdata i Log Analytics](../azure-monitor/alerts/tutorial-response.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="identity-and-access-control"></a>Identitets- och åtkomstkontroll
 
-*Mer information finns i [Azure Security benchmark: identitet och Access Control](../security/benchmarks/security-control-identity-access-control.md).*
+*Mer information finns i [Azure Security Benchmark: Identity and Access Control](../security/benchmarks/security-control-identity-access-control.md).*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: underhåll en inventering av administrativa konton
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Upprätthålla en förteckning över administrativa konton
 
-**Vägledning**: Azure rollbaserad åtkomst kontroll (Azure RBAC) gör att du kan hantera åtkomst till Azure-resurser via roll tilldelningar. Du kan tilldela dessa roller till användare, grupper tjänstens huvud namn och hanterade identiteter. Det finns fördefinierade inbyggda roller för vissa resurser och dessa roller kan inventeras eller frågas via verktyg som Azure CLI, Azure PowerShell eller Azure-portalen.
+**Vägledning:** Med rollbaserad åtkomstkontroll i Azure (Azure RBAC) kan du hantera åtkomsten till Azure-resurser via rolltilldelningar. Du kan tilldela dessa roller till användare, grupper av tjänstens huvudnamn och hanterade identiteter. Det finns fördefinierade inbyggda roller för vissa resurser och dessa roller kan inventeras eller frågas via verktyg som Azure CLI, Azure PowerShell eller Azure-portalen.
 
-Kognitiv sökning roller är associerade med behörigheter som stöder aktiviteter på service nivå hantering. Dessa roller beviljar inte åtkomst till tjänstens slut punkt. Åtkomst till åtgärder mot slut punkten, (till exempel index hantering, index ifyllning och frågor om Sök data), använder API-nycklar för att autentisera begäran.
+Cognitive Search är associerade med behörigheter som stöder hanteringsuppgifter på servicenivå. De här rollerna beviljar inte åtkomst till tjänstslutpunkten. Åtkomst till åtgärder mot slutpunkten (till exempel indexhantering, indexpopulation och frågor om sökdata) använder API-nycklar för att autentisera begäran.
 
-- [Ange roller för administrativ åtkomst till Azure Kognitiv sökning](search-security-rbac.md)
+- [Ange roller för administrativ åtkomst till Azure Cognitive Search](search-security-rbac.md)
 
-- [Skapa och hantera API-nycklar för en Azure Kognitiv sökning-tjänst](search-security-api-keys.md)
+- [Skapa och hantera API-nycklar för en Azure Cognitive Search tjänst](search-security-api-keys.md)
 
-- [Så här hämtar du en katalog roll i Azure Active Directory (Azure AD) med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Så här får du en katalogroll i Azure Active Directory (Azure AD) med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
 
-- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
-
-**Ansvar**: Kund
-
-**Azure Security Center övervakning**: ingen
-
-### <a name="33-use-dedicated-administrative-accounts"></a>3,3: Använd dedikerade administrativa konton
-
-**Vägledning**: kognitiv sökning har inte konceptet alla lokala eller Azure Active Directory-administratörs konton (Azure AD) som kan användas för att hantera index och åtgärder. 
-
-Använd de inbyggda Azure AD-rollerna som måste tilldelas explicit för hanterings åtgärder. Anropa Azure AD PowerShell-modulen för att utföra ad hoc-frågor för att identifiera konton som är medlemmar i administrativa grupper.
-
-- [Så här använder du roller för administrativ åtkomst i Kognitiv sökning](search-security-rbac.md)
-
-- [Så här hämtar du en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
+- [Så här hämtar du medlemmar i en katalogroll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: Använd enkel inloggning (SSO) med Azure Active Directory
+### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Använd dedikerade administrativa konton
 
-**Vägledning**: Använd SSO-autentisering med Azure Active Directory (Azure AD) för att få åtkomst till Sök tjänst information för hanterings åtgärder som stöds via Azure Resource Manager. 
+**Vägledning:** Cognitive Search har inte begreppet administratörskonton på lokal nivå eller Azure Active Directory (Azure AD) som kan användas för att hantera index och åtgärder. 
 
-Upprätta en process för att minska antalet identiteter och autentiseringsuppgifter genom att aktivera SSO för tjänsten med din organisations befintliga identiteter.
+Använd de inbyggda Azure AD-rollerna som måste tilldelas explicit för hanteringsåtgärder. Anropa Azure AD PowerShell-modulen för att utföra ad hoc-frågor för att identifiera konton som är medlemmar i administrativa grupper.
 
-- [Förstå SSO med Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
+- [Använda roller för administrativ åtkomst i Cognitive Search](search-security-rbac.md)
+
+- [Så här får du en katalogroll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Använd Multi-Factor Authentication för all Azure Active Directory baserad åtkomst
+### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Använd enkel inloggning (SSO) med Azure Active Directory
 
-**Vägledning**: Aktivera Azure Active Directory (Azure AD) funktionen multifaktor-autentisering och följ Security Centers identitets-och åtkomst rekommendationer.
+**Vägledning:** Använda SSO-autentisering med Azure Active Directory (Azure AD) för att få åtkomst till söktjänstinformation för hanteringsåtgärder som stöds via Azure Resource Manager. 
+
+Upprätta en process för att minska antalet identiteter och autentiseringsuppgifter genom att aktivera enkel inloggning för tjänsten med din organisations befintliga identiteter.
+
+- [Förstå enkel inloggning med Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
+
+**Ansvar**: Kund
+
+**Azure Security Center övervakning**: Ingen
+
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Använd multifaktorautentisering för Azure Active Directory åtkomst
+
+**Vägledning:** Aktivera Azure Active Directory (Azure AD)s multifaktorautentiseringsfunktion och följ Security Center identitets- och åtkomstrekommendationerna.
 
 - [Så här aktiverar du multifaktorautentisering i Azure](../active-directory/authentication/howto-mfa-getstarted.md) 
 
-- [Övervaka identitet och åtkomst i Azure Security Center](../security-center/security-center-identity-access.md)
+- [Övervaka identitet och åtkomst inom Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Använd dedikerade datorer (arbets stationer med privilegie rad åtkomst) för alla administrativa uppgifter
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Använd dedikerade datorer (arbetsstationer för privilegierad åtkomst) för alla administrativa uppgifter
 
-**Vägledning**: Använd en privilegie rad åtkomst arbets Station (Paw) med multifaktorautentisering konfigurerad för att logga in på och få åtkomst till Azure-resurser.
+**Vägledning:** Använda en PAW (Privileged Access Workstation) med multifaktorautentisering som konfigurerats för att logga in på och få åtkomst till Azure-resurser.
  
 
  
-- [Förstå säkra, Azure-hanterade arbets stationer](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
+- [Förstå säkra Och Azure-hanterade arbetsstationer](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
  
 
  
-- [Aktivera Azure Active Directory (Azure AD) multifaktorautentisering](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Så här aktiverar du Azure Active Directory multifaktorautentisering (Azure AD)](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: Logga och Avisera om misstänkta aktiviteter från administrativa konton
+### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7: Logga och varna om misstänkta aktiviteter från administrativa konton
 
-**Vägledning**: använda Azure Active Directory (Azure AD) säkerhets rapporter och övervakning för att identifiera när misstänkt eller osäker aktivitet inträffar i miljön. Använd Security Center för att övervaka identitets-och åtkomst aktiviteter.
+**Vägledning:** Använd Azure Active Directory (Azure AD) säkerhetsrapporter och övervakning för att identifiera när misstänkt eller osäker aktivitet inträffar i miljön. Använd Security Center för att övervaka identitets- och åtkomstaktivitet.
 
 - [Så här identifierar du Azure AD-användare som har flaggats för riskfylld aktivitet](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -319,161 +319,161 @@ Upprätta en process för att minska antalet identiteter och autentiseringsuppgi
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="39-use-azure-active-directory"></a>3,9: Använd Azure Active Directory
+### <a name="39-use-azure-active-directory"></a>3.9: Använd Azure Active Directory
 
-**Vägledning**: Använd Azure Active Directory (Azure AD) som central-autentiserings-och auktoriserings system för hanterings uppgifter på tjänst nivå i Azure kognitiv sökning. Azure AD-identiteter ger inte åtkomst till Sök tjänstens slut punkt.  Åtkomst till åtgärder som index hantering, index ifyllning och frågor om Sök data är tillgängliga via API-nycklar.
+**Vägledning:** Använd Azure Active Directory (Azure AD) som centralt autentiserings- och auktoriseringssystem för hanteringsuppgifter på tjänstnivå i Azure Cognitive Search. Azure AD-identiteter beviljar inte åtkomst till söktjänstens slutpunkt.  Åtkomst till åtgärder som indexhantering, indexpopulation och frågor om sökdata är tillgängliga via API-nycklar.
 
 - [Skapa och konfigurera en Azure AD-instans](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [Skapa och hantera API-nycklar för en Azure Kognitiv sökning-tjänst](search-security-api-keys.md)
+- [Skapa och hantera API-nycklar för en Azure Cognitive Search tjänst](search-security-api-keys.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: granska och stäm regelbundet av användar åtkomst
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Granska och stämma av användaråtkomst regelbundet
 
-**Vägledning**: Azure Active Directory (Azure AD) innehåller loggar som hjälper till att identifiera inaktuella konton. Använd Azure AD: s identitets-och åtkomst granskningar för att effektivt hantera grupp medlemskap, åtkomst till företags program och roll tilldelningar. Användar åtkomst kan granskas regelbundet för att se till att endast rätt användare har fortsatt åtkomst. 
+**Vägledning:** Azure Active Directory (Azure AD) innehåller loggar som hjälper dig att identifiera inaktuella konton. Använd Azure AD:s identitets- och åtkomstgranskningar för att effektivt hantera gruppmedlemskap, åtkomst till företagsprogram och rolltilldelningar. Användaråtkomst kan granskas regelbundet för att se till att endast rätt användare har fortsatt åtkomst. 
 
-Granska diagnostikloggar från Kognitiv sökning för aktivitet i Sök tjänstens slut punkt, till exempel index hantering, index ifyllning och frågor.
+Granska diagnostikloggar från Cognitive Search efter aktivitet i söktjänstens slutpunkt, till exempel indexhantering, indexpopulation och frågor.
 
-- [Förstå Azure AD repor ting](/azure/active-directory/reports-monitoring/)
+- [Förstå Azure AD-rapportering](/azure/active-directory/reports-monitoring/)
 
 - [Så här använder du identitets- och åtkomstgranskningar i Azure AD](../active-directory/governance/access-reviews-overview.md)
 
-- [Övervaka åtgärder och aktiviteter i Azure Kognitiv sökning](search-monitor-usage.md)
+- [Övervaka åtgärder och aktivitet för Azure Cognitive Search](search-monitor-usage.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: övervakaren försöker komma åt inaktiverade autentiseringsuppgifter
+### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11: Övervakaren försöker komma åt inaktiverade autentiseringsuppgifter
 
-**Vägledning**: åtkomst till Azure Active Directory (Azure AD) inloggnings aktivitet, gransknings-och risk händelse logg källor, så att du kan integrera med alla Siem-eller övervaknings verktyg.
+**Vägledning:** Åtkomst till Azure Active Directory inloggningsaktiviteter, gransknings- och riskhändelseloggkällor (Azure AD) gör att du kan integrera med val annat SIEM- eller övervakningsverktyg.
 
-Effektivisera den här processen genom att skapa diagnostikinställningar för Azure AD-användarkonton och skicka gransknings loggar och inloggnings loggar till en Log Analytics-arbetsyta. Konfigurera önskade aviseringar i Log Analytics arbets ytan.
+Effektivisera den här processen genom att skapa diagnostikinställningar för Azure AD-användarkonton och skicka granskningsloggar och inloggningsloggar till en Log Analytics-arbetsyta. Konfigurera önskade aviseringar i Log Analytics-arbetsytan.
 
-- [Så här integrerar du Azure-aktivitets loggar med Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrera Azure-aktivitetsloggar med Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: avisering om beteende för beteende för konto inloggning
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Avisering om kontoinloggningens beteendeavvikelse
 
-**Vägledning**: Använd Azure Active Directory (Azure AD) Identity Protection-funktioner för att konfigurera automatiserade svar på identifierade misstänkta åtgärder relaterade till användar identiteter. Mata in data i Azure Sentinel för ytterligare undersökning, efter behov.
+**Vägledning:** Använd Azure Active Directory (Azure AD) Identity Protection för att konfigurera automatiserade svar på identifierade misstänkta åtgärder relaterade till användaridentiteter. Mata in data i Azure Sentinel för ytterligare undersökning efter behov.
 
 - [Så visar du riskfyllda inloggningar för Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Så här konfigurerar och aktiverar du risk principer för identitets skydd](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
+- [Så här konfigurerar och aktiverar du riskprinciper för Identity Protection](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
-- [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
+- [Registrera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="data-protection"></a>Dataskydd
 
 *Mer information finns i [Azure Security Benchmark: Dataskydd](../security/benchmarks/security-control-data-protection.md).*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: underhåll en inventering av känslig information
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Upprätthålla en förteckning över känslig information
 
-**Vägledning**: Använd taggar för att spåra Azure-resurser som lagrar eller bearbetar känslig information.
+**Vägledning:** Använd taggar för att spåra Azure-resurser som lagrar eller bearbetar känslig information.
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: isolera system som lagrar eller bearbetar känslig information
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Isolera system som lagrar eller bearbetar känslig information
 
-**Vägledning**: implementera separata prenumerationer och/eller hanterings grupper för utveckling, testning och produktion. Resurser bör åtskiljas av ett virtuellt nätverk/undernät, taggas på lämpligt sätt och skyddas inom en nätverks säkerhets grupp eller Azure-brandvägg. Resurser som lagrar eller bearbetar känsliga data bör isoleras. Använd privat länk om du vill konfigurera en privat slut punkt till Kognitiv sökning.
+**Vägledning:** Implementera separata prenumerationer och/eller hanteringsgrupper för utveckling, testning och produktion. Resurserna ska avgränsas med virtuellt nätverk/undernät, taggas på rätt sätt och skyddas i en nätverkssäkerhetsgrupp eller Azure Firewall. Resurser som lagrar eller bearbetar känsliga data bör isoleras. Använd Private Link att konfigurera en privat slutpunkt för att Cognitive Search.
 
 - [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
-- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
+- [Skapa och använda taggar](../azure-resource-manager/management/tag-resources.md)
 
-- [Så här skapar du en privat slut punkt för Kognitiv sökning](service-create-private-endpoint.md)
+- [Så här skapar du en privat slutpunkt för Cognitive Search](service-create-private-endpoint.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: övervaka och blockera obehörig överföring av känslig information
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Övervaka och blockera obehörig överföring av känslig information
 
-**Vägledning**: Använd en lösning från tredje part från Azure Marketplace i nätverks omkretser för att övervaka obehörig överföring av känslig information och blockera sådana överföringar samtidigt som du varnar information om informations säkerhet.
+**Vägledning:** Använd en tredjepartslösning från en Azure Marketplace i nätverksnätverket för att övervaka obehörig överföring av känslig information och blockera sådana överföringar samtidigt som du varnar säkerhetspersonal.
 
-Microsoft hanterar den underliggande plattformen och hanterar allt kund innehåll som känsligt och skyddar mot kund data förlust och exponering. För att säkerställa att kunddata i Azure förblir skyddade har Microsoft implementerat och underhåller en svit med robusta data skydds kontroller och-funktioner.
+Microsoft hanterar den underliggande plattformen och behandlar allt kundinnehåll som känsligt och skyddar mot förlust och exponering av kunddata. För att säkerställa att kunddata i Azure förblir säkra har Microsoft implementerat och upprätthåller en uppsättning robusta dataskyddskontroller och funktioner.
 
 - [Förstå skydd av kunddata i Azure](../security/fundamentals/protection-customer-data.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: Använd ett aktivt identifierings verktyg för att identifiera känsliga data
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Använd ett aktivt identifieringsverktyg för att identifiera känsliga data
 
-**Vägledning**: funktionerna för data identifiering, klassificering och förlust av förlust är ännu inte tillgängliga för kognitiv sökning. Implementera en lösning från tredje part om det behövs för efterlevnad. 
+**Vägledning:** Funktioner för dataidentifiering, klassificering och förlustskydd är ännu inte tillgängliga för Cognitive Search. Implementera en lösning från tredje part om det behövs för efterlevnadsändamål. 
 
-Microsoft hanterar den underliggande plattformen och hanterar allt kund innehåll som känsligt och skyddar mot kund data förlust och exponering. För att säkerställa att kunddata i Azure förblir skyddade har Microsoft implementerat och underhåller en svit med robusta data skydds kontroller och-funktioner.
+Microsoft hanterar den underliggande plattformen och behandlar allt kundinnehåll som känsligt och skyddar mot förlust och exponering av kunddata. För att säkerställa att kunddata i Azure förblir säkra har Microsoft implementerat och upprätthåller en uppsättning robusta dataskyddskontroller och funktioner.
 
 - [Förstå skydd av kunddata i Azure](../security/fundamentals/protection-customer-data.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: Använd Azure RBAC för att hantera åtkomst till resurser
+### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6: Använd Azure RBAC för att hantera åtkomst till resurser
 
-**Vägledning**: för tjänst administration använder du rollbaserad åtkomst kontroll i Azure (Azure RBAC) för att hantera åtkomst till nycklar och konfiguration. För innehålls åtgärder, till exempel indexering och frågor, använder Kognitiv sökning nycklar i stället för en identitets baserad åtkomst kontroll modell. Använd Azure RBAC för att kontrol lera åtkomst till nycklar. 
+**Vägledning:** För tjänstadministration använder du rollbaserad åtkomstkontroll i Azure (Azure RBAC) för att hantera åtkomst till nycklar och konfiguration. För innehållsåtgärder, till exempel indexering och frågor, använder Cognitive Search nycklar i stället för en identitetsbaserad åtkomstkontrollmodell. Använd Azure RBAC för att styra åtkomsten till nycklar. 
 
  
 - [Så här konfigurerar du Azure RBAC](../role-based-access-control/role-assignments-portal.md)  
  
  
-- [Så här använder du roller för administrativ åtkomst till Kognitiv sökning](search-security-rbac.md)
+- [Använda roller för administrativ åtkomst till Cognitive Search](search-security-rbac.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: kryptera känslig information i vila
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Kryptera känslig information i vila
 
-**Vägledning**: kognitiv sökning automatiskt krypterat indexerat innehåll i vila med Microsoft-hanterade nycklar. Om du behöver ytterligare skydd kan du lägga till standard kryptering med ett andra krypterings lager med hjälp av nycklar som du skapar och hanterar i Azure Key Vault.
+**Vägledning:** Cognitive Search krypterar automatiskt indexerat innehåll i vila med Microsoft-hanterade nycklar. Om du behöver mer skydd kan du komplettera standardkryptering med ett andra krypteringslager med hjälp av nycklar som du skapar och hanterar i Azure Key Vault.
 
-- [Konfigurera Kundhanterade nycklar för data kryptering i Azure Kognitiv sökning](search-security-manage-encryption-keys.md)
+- [Konfigurera kund hanterade nycklar för datakryptering i Azure Cognitive Search](search-security-manage-encryption-keys.md)
 
 - [Förstå kryptering vid vila i Azure](../security/fundamentals/encryption-atrest.md)
 
 **Ansvar**: Delad
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: logg och varning vid ändringar av kritiska Azure-resurser
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Logga och avisering om ändringar av viktiga Azure-resurser
 
-**Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i produktions instanser av kognitiv sökning och andra kritiska eller relaterade resurser. 
-
- 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](../azure-monitor/alerts/alerts-activity-log.md) 
+**Vägledning:** Använd Azure Monitor med Azure-aktivitetsloggen för att skapa aviseringar för när ändringar sker i produktionsinstanser av Cognitive Search och andra kritiska eller relaterade resurser. 
 
  
-- [Skapa aviseringar för Kognitiv sökning aktiviteter](search-monitor-logs.md)
+- [Så här skapar du aviseringar för Azure-aktivitetslogghändelser](../azure-monitor/alerts/alerts-activity-log.md) 
+
+ 
+- [Skapa aviseringar för Cognitive Search aktiviteter](search-monitor-logs.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="inventory-and-asset-management"></a>Inventerings- och tillgångshantering
 
-*Mer information finns i [Azure Security benchmark: inventering och till gångs hantering](../security/benchmarks/security-control-inventory-asset-management.md).*
+*Mer information finns i [Benchmark för Azure-säkerhet: Inventering och tillgångshantering.](../security/benchmarks/security-control-inventory-asset-management.md)*
 
-### <a name="61-use-automated-asset-discovery-solution"></a>6,1: Använd automatiserad identifierings lösning för till gång
+### <a name="61-use-automated-asset-discovery-solution"></a>6.1: Använd lösningen för automatisk tillgångsidentifiering
 
-**Vägledning**: Använd Azure Resource Graph för att fråga efter och identifiera alla resurser (t. ex. data bearbetning, lagring, nätverk, portar, protokoll och så vidare) i dina prenumerationer.
+**Vägledning:** Använd Azure Resource Graph för att söka efter och identifiera alla resurser (till exempel beräkning, lagring, nätverk, portar, protokoll och så vidare) i dina prenumerationer.
 
-Se till att du har rätt (Läs) behörigheter i din klient organisation och räkna upp alla Azure-prenumerationer samt resurser i dina prenumerationer.
+Se till att du har rätt (läs) behörigheter i din klientorganisation och räkna upp alla Azure-prenumerationer samt resurser i dina prenumerationer.
 
 - [Skapa frågor med Azure Resource Graph Explorer](../governance/resource-graph/first-query-portal.md)
 
@@ -483,43 +483,43 @@ Se till att du har rätt (Läs) behörigheter i din klient organisation och räk
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="62-maintain-asset-metadata"></a>6,2: underhåll till gångens metadata
+### <a name="62-maintain-asset-metadata"></a>6.2: Underhålla tillgångsmetadata
 
-**Vägledning**: Använd taggar till Azure-resurser med metadata för att logiskt organisera dem i en taxonomi.
+**Vägledning:** Tillämpa taggar på Azure-resurser med metadata för att organisera dem logiskt i en taxonomi.
 
-- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
+- [Skapa och använda taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6,3: ta bort obehöriga Azure-resurser
+### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Ta bort obehöriga Azure-resurser
 
-**Vägledning**: Använd taggning, hanterings grupper och separata prenumerationer om det behövs för att organisera och spåra till gångar. Stäm av inventering regelbundet och se till att obehöriga resurser tas bort från prenumerationen inom rimlig tid.
+**Vägledning:** Använd taggning, hanteringsgrupper och separata prenumerationer när det är lämpligt för att organisera och spåra tillgångar. Stämma av inventeringen regelbundet och se till att obehöriga resurser tas bort från prenumerationen inom rimlig tid.
 
 - [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
-- [Så här skapar du hanterings grupper](../governance/management-groups/create-management-group-portal.md)
+- [Så här skapar du hanteringsgrupper](../governance/management-groups/create-management-group-portal.md)
 
-- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
-
-**Ansvar**: Kund
-
-**Azure Security Center övervakning**: ingen
-
-### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: definiera och underhålla en inventering av godkända Azure-resurser
-
-**Vägledning**: definiera en lista över godkända Azure-resurser relaterade till indexering och färdigheter bearbetning i kognitiv sökning.
+- [Skapa och använda taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: övervaka för ej godkända Azure-resurser
+### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4: Definiera och underhålla en förteckning över godkända Azure-resurser
 
-**Vägledning**: Vi rekommenderar att du definierar en inventering av Azure-resurser som har godkänts för användning enligt organisationens principer och standarder tidigare, och sedan övervaka för icke godkända Azure-resurser med Azure policy eller Azure Resource Graph.
+**Vägledning:** Definiera en lista över godkända Azure-resurser relaterade till indexering och kompetensuppsättningsbearbetning i Cognitive Search.
+
+**Ansvar**: Kund
+
+**Azure Security Center övervakning**: Ingen
+
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Övervaka för ej godkända Azure-resurser
+
+**Vägledning:** Vi rekommenderar att du definierar en inventering av Azure-resurser som har godkänts för användning enligt organisationens principer och standarder tidigare och sedan övervakar för ej godkända Azure-resurser med Azure Policy eller Azure Resource Graph.
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
@@ -527,216 +527,216 @@ Se till att du har rätt (Läs) behörigheter i din klient organisation och räk
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="69-use-only-approved-azure-services"></a>6,9: Använd endast godkända Azure-tjänster
+### <a name="69-use-only-approved-azure-services"></a>6.9: Använd endast godkända Azure-tjänster
 
-**Vägledning**: Använd Azure policy för att placera begränsningar för den typ av resurser som kan skapas i kund prenumerationer med hjälp av följande inbyggda princip definitioner:
+**Vägledning:** Använd Azure Policy att ange begränsningar för vilken typ av resurser som kan skapas i kundprenumerationer med hjälp av följande inbyggda principdefinitioner:
 - Otillåtna resurstyper
 - Tillåtna resurstyper
 
-Använd Azure Resource Graph för att fråga eller identifiera resurser i dina prenumerationer. Se till att alla Azure-resurser som finns i miljön är godkända.
+Använd Azure Resource Graph för att fråga efter eller identifiera resurser i dina prenumerationer. Se till att alla Azure-resurser som finns i miljön godkänns.
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](/azure/governance/policy/samples/)
+- [Så här nekar du en viss resurstyp med Azure Policy](/azure/governance/policy/samples/)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6,11: begränsa användarnas möjlighet att interagera med Azure Resource Manager
+### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11: Begränsa användarnas möjlighet att interagera med Azure Resource Manager
 
-**Vägledning**: Använd villkorlig åtkomst i Azure för att begränsa användarnas möjlighet att interagera med Azure Resource Manager genom att konfigurera "blockera åtkomst" för appen "Microsoft Azure hantering".  
+**Vägledning:** Använd villkorsstyrd åtkomst i Azure för att begränsa användarnas möjlighet att interagera med Azure Resource Manager genom att konfigurera "Blockera åtkomst" för Microsoft Azure-hanteringsappen.  
 
  
-Kontrol lera åtkomsten till nycklarna som används för att autentisera begär Anden för alla andra åtgärder, särskilt de som är relaterade till innehåll med Kognitiv sökning.
+Kontrollera åtkomsten till de nycklar som används för att autentisera begäranden för alla andra åtgärder, särskilt de som rör innehåll med Cognitive Search.
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="secure-configuration"></a>Säker konfiguration
 
-*Mer information finns i [Azure Security benchmark: säker konfiguration](../security/benchmarks/security-control-secure-configuration.md).*
+*Mer information finns i [Azure Security Benchmark: Secure Configuration](../security/benchmarks/security-control-secure-configuration.md).*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: upprätta säkra konfigurationer för alla Azure-resurser
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Upprätta säkra konfigurationer för alla Azure-resurser
 
-**Vägledning**: Använd Azure policy alias i namn området "Microsoft. search" för att skapa anpassade principer som ska granskas eller tillämpa konfigurationen för Azure kognitiv sökning-resurser. Du kan också använda inbyggda Azure Policy definitioner för Kognitiv sökning tjänster som:
+**Vägledning:** Använd Azure Policy alias i namnområdet "Microsoft.Search" för att skapa anpassade principer för att granska eller framtvinga konfigurationen av Azure Cognitive Search resurser. Du kan också använda inbyggda Azure Policy för Cognitive Search tjänster som:
 
-Aktivera gransknings loggning för Azure-resurser
+Aktivera granskningsloggning för Azure-resurser
 
-Azure Resource Manager kan exportera mallen i JavaScript Object Notation (JSON), som bör granskas för att säkerställa att konfigurationerna uppfyller säkerhets kraven för din organisation.
+Azure Resource Manager kan exportera mallen i JavaScript Object Notation (JSON), som bör granskas för att säkerställa att konfigurationerna uppfyller säkerhetskraven för din organisation.
 
-Du kan också använda rekommendationerna från Azure Security Center som en säker konfigurations bas linje för dina Azure-resurser.
+Du kan också använda rekommendationerna från Azure Security Center som en säker konfigurationsbaslinje för dina Azure-resurser.
 
-- [Azure Policy kontroll av efterlevnad för Azure Kognitiv sökning](security-controls-policy.md)
+- [Azure Policy för regelefterlevnad för Azure Cognitive Search](security-controls-policy.md)
 
 - [Visa tillgängliga Azure Policy alias](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: underhåll säker Azure-resurs-konfigurationer
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Underhålla säkra Azure-resurskonfigurationer
 
-**Vägledning**: Använd Azure policy [neka] och [distribuera om det inte finns]-effekter för att framtvinga säkra inställningar för dina kognitiv sökning tjänst resurser. 
+**Vägledning:** Använd Azure Policy [neka] och [distribuera om det inte finns] för att tillämpa säkra inställningar i Cognitive Search tjänstresurser. 
 
-Azure Resource Manager mallar kan användas för att underhålla säkerhets konfigurationen för dina Azure-resurser som krävs av din organisation. 
+Azure Resource Manager-mallar kan användas för att upprätthålla säkerhetskonfigurationen för dina Azure-resurser som krävs av din organisation. 
 
-- [Förstå Azure Policys effekter](../governance/policy/concepts/effects.md)
+- [Förstå Azure Policy effekter](../governance/policy/concepts/effects.md)
 
-- [Azure Policy kontroll av efterlevnad för Azure Kognitiv sökning](security-controls-policy.md)
+- [Azure Policy för regelefterlevnad för Azure Cognitive Search](security-controls-policy.md)
 
 - [Skapa och hantera principer för att använda kompatibilitet](../governance/policy/tutorials/create-and-manage.md)
 
-- [Översikt över Azure Resource Manager mallar](../azure-resource-manager/templates/overview.md)
+- [översikt Azure Resource Manager mallar](../azure-resource-manager/templates/overview.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Spara konfigurationen av Azure-resurser på ett säkert sätt
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Lagra konfiguration av Azure-resurser på ett säkert sätt
 
-**Vägledning**: om du använder anpassade Azure policys definitioner använder du Azure DevOps eller Azure databaser för att lagra och hantera din kod på ett säkert sätt.
+**Vägledning:** Om du använder anpassade Azure Policy bör du använda Azure DevOps eller Azure Repos för att lagra och hantera din kod på ett säkert sätt.
 
 - [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-- [Dokumentation om Azure databaser](/azure/devops/repos/index)
+- [Dokumentation om Azure Repos](/azure/devops/repos/index)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: Distribuera konfigurations hanterings verktyg för Azure-resurser
+### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7: Distribuera konfigurationshanteringsverktyg för Azure-resurser
 
-**Vägledning**: definiera och implementera standardkonfigurationer för dina kognitiv sökning tjänst resurser med Azure policy. 
+**Vägledning:** Definiera och implementera standardsäkerhetskonfigurationer för dina Cognitive Search-tjänstresurser med hjälp av Azure Policy. 
 
-Använd alias för att skapa anpassade principer för att granska eller framtvinga nätverkskonfigurationer. Du kan också använda inbyggda princip definitioner som är relaterade till dina speciella resurser. 
+Använd alias för att skapa anpassade principer för att granska eller framtvinga nätverkskonfigurationerna. Du kan också använda inbyggda principdefinitioner som är relaterade till dina specifika resurser. 
 
-Du kan också använda Azure Automation för att distribuera konfigurations ändringar och hantera princip undantag. 
+Dessutom kan du använda Azure Automation för att distribuera konfigurationsändringar och hantera principundantag. 
 
-- [Azure Policy kontroll av efterlevnad för Azure Kognitiv sökning](security-controls-policy.md)
+- [Azure Policy för regelefterlevnad för Azure Cognitive Search](security-controls-policy.md)
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: implementera automatisk konfigurations övervakning för Azure-resurser
+### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9: Implementera automatisk konfigurationsövervakning för Azure-resurser
 
-**Vägledning**: Använd Security Center för att utföra bas linjes ökningar av kognitiv sökning tjänst resurser.  Du kan också använda Azure Policy för att varna och granska dina resurspooler. 
+**Vägledning:** Använd Security Center för att utföra baslinjesökningar av dina Cognitive Search-tjänstresurser.  Du kan också använda Azure Policy för att varna och granska dina resurskonfigurationer. 
 
 - [Så här åtgärdar du rekommendationer i Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
-- [Azure Policy kontroll av efterlevnad för Azure Kognitiv sökning](security-controls-policy.md)
+- [Azure Policy för regelefterlevnad för Azure Cognitive Search](security-controls-policy.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="711-manage-azure-secrets-securely"></a>7,11: Hantera Azure-hemligheter på ett säkert sätt
+### <a name="711-manage-azure-secrets-securely"></a>7.11: Hantera Azure-hemligheter på ett säkert sätt
 
-**Vägledning**: Använd Azure Managed identiteter tillsammans med Azure Key Vault för att förenkla den hemliga hanteringen för dina moln program.
+**Vägledning:** Använd Azure Managed Identities tillsammans med Azure Key Vault för att förenkla hemlighetshanteringen för dina molnprogram.
 
 - [Använda hanterade identiteter för Azure-resurser](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md) 
 
 - [Så här skapar du en Key Vault](../key-vault/general/quick-create-portal.md)
 
-- [Så här ger Key Vault autentisering med en hanterad identitet](../key-vault/general/assign-access-policy-portal.md)
+- [Så här tillhandahåller du Key Vault autentisering med en hanterad identitet](../key-vault/general/assign-access-policy-portal.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7,12: hantera identiteter säkert och automatiskt
+### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Hantera identiteter säkert och automatiskt
 
-**Vägledning**: Använd en Azure-hanterad identitet för att ge kognitiv sökning åtkomst till andra Azure-tjänster, till exempel Key Vault-och indexerare data källor med hjälp av en automatiskt hanterad identitet i Azure Active Directory (Azure AD). Med hanterade identiteter kan du autentisera till vilken tjänst som helst som stöder Azure AD-autentisering, inklusive Azure Key Vault utan autentiseringsuppgifter i din kod. 
+**Vägledning:** Använda en hanterad Azure-identitet för att ge Cognitive Search åtkomst till andra Azure-tjänster som Key Vault- och indexerardatakällor med hjälp av en automatiskt hanterad identitet i Azure Active Directory (Azure AD). Med hanterade identiteter kan du autentisera till alla tjänster som stöder Azure AD-autentisering, inklusive Azure Key Vault, utan några autentiseringsuppgifter i koden. 
 
-- [Konfigurera en indexerare-anslutning till en data källa med hjälp av en hanterad identitet](search-howto-managed-identities-data-sources.md)
+- [Konfigurera en indexeraranslutning till en datakälla med hjälp av en hanterad identitet](search-howto-managed-identities-data-sources.md)
 
-- [Konfigurera Kundhanterade nycklar för data kryptering med hjälp av en hanterad identitet](search-security-manage-encryption-keys.md)
+- [Konfigurera kund hanterade nycklar för datakryptering med hjälp av en hanterad identitet](search-security-manage-encryption-keys.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="malware-defense"></a>Skydd mot skadlig kod
 
-*Mer information finns i [Azure Security benchmark: skydd mot skadlig kod](../security/benchmarks/security-control-malware-defense.md).*
+*Mer information finns i [Azure Security Benchmark: Malware Defense.](../security/benchmarks/security-control-malware-defense.md)*
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: för skanning av filer som ska laddas upp till Azure-resurser som inte är Compute
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: Skanna filer i förväg som ska laddas upp till Icke-beräkningsbaserade Azure-resurser
 
-**Vägledning**: för skanning av allt innehåll som laddas upp till Azure-resurser som inte är Compute, till exempel Kognitiv sökning, Blob Storage, Azure SQL Database och så vidare. 
+**Vägledning:** Sök igenom allt innehåll som överförs till Azure-resurser som inte beräknas i förväg, till exempel Cognitive Search, Blob Storage, Azure SQL Database och så vidare. 
 
-Det är ditt ansvar att i förväg genomsöka allt innehåll som laddas upp till Azure-resurser som inte är Compute. Microsoft kan inte komma åt kunddata och kan därför inte utföra genomsökningar av kund innehåll för program mot skadlig kod.
+Det är ditt ansvar att försöka allt innehåll som laddas upp till icke-beräkningsbaserade Azure-resurser. Microsoft kan inte komma åt kunddata och kan därför inte utföra genomsökningar av kundinnehåll för din räkning.
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="83-ensure-antimalware-software-and-signatures-are-updated"></a>8,3: se till att program vara och signaturer för program mot skadlig kod uppdateras
+### <a name="83-ensure-antimalware-software-and-signatures-are-updated"></a>8.3: Se till att program mot skadlig programvara och signaturer uppdateras
 
-**Vägledning**: gäller inte för kognitiv sökning. Den tillåter inte att lösningar mot skadlig kod installeras på resurserna. För den underliggande plattformen hanterar Microsoft uppdateringar av program vara och signaturer mot skadlig kod.  
+**Vägledning:** Gäller inte för Cognitive Search. Det tillåter inte att lösningar mot skadlig kod installeras på dess resurser. För den underliggande plattformen hanterar Microsoft uppdatering av program och signaturer mot skadlig kod.  
 
  
-För alla beräknings resurser som ägs av din organisation och används i din Sök lösning följer du rekommendationer i Security Center, beräknar &amp; program för att se till att alla slut punkter är uppdaterade med de senaste signaturerna. För Linux använder du en lösning mot skadlig program vara från tredje part.
+För alla beräkningsresurser som ägs av din organisation och används i söklösningen följer du rekommendationerna i Security Center, Compute Apps för att se till att alla slutpunkter är uppdaterade med de senaste &amp; signaturerna. För Linux använder du en tredjepartslösning mot skadlig kod.
 
 **Ansvar**: Delad
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="data-recovery"></a>Dataåterställning
 
-*Mer information finns i [Azure Security benchmark: Data återställning](../security/benchmarks/security-control-data-recovery.md).*
+*Mer information finns i [Prestandatest för Azure-säkerhet: Dataåterställning.](../security/benchmarks/security-control-data-recovery.md)*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9,1: se till att vanlig automatisk säkerhets kopiering UPS
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Säkerställ regelbundna automatiserade säkerhetskopieringar
 
-**Vägledning**: innehåll som lagras i en Sök tjänst kan inte säkerhets kopie ras via Azure Backup eller någon annan inbyggd mekanism, men du kan återskapa ett index från program käll koden och de primära data källorna, eller skapa ett anpassat verktyg för att hämta och lagra indexerat innehåll. 
+**Vägledning:** Innehåll som lagras i en söktjänst kan inte säkerhetskopieras via Azure Backup eller någon annan inbyggd mekanism, men du kan återskapa ett index från programmets källkod och primära datakällor eller skapa ett anpassat verktyg för att hämta och lagra indexerat innehåll. 
 
  
-- [GitHub-index – exempel på säkerhets kopierings återställning](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/index-backup-restore)
+- [GitHub-exempel på indexsäkerhetskopiering–återställning](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/index-backup-restore)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: Utför fullständig säkerhets kopiering av systemet och säkerhetskopiera alla Kundhanterade nycklar
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Utför fullständiga systemsäkerhetskopior och säkerhetskopiera kund hanterade nycklar
 
-**Vägledning**: kognitiv sökning för närvarande inte har stöd för automatisk säkerhets kopiering för data i en Sök tjänst och måste säkerhets kopie ras via en manuell process. Du kan också säkerhetskopiera Kundhanterade nycklar i Azure Key Vault.
+**Vägledning:** Cognitive Search stöder för närvarande inte automatisk säkerhetskopiering av data i en söktjänst och måste säkerhetskopieras via en manuell process. Du kan också backa upp kund hanterade nycklar i Azure Key Vault.
  
 
-- [Säkerhetskopiera och återställa ett Azure Kognitiv sökning-index](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
+- [Back up and restore an Azure Cognitive Search index](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
 
-- [Säkerhetskopiera Key Vault nycklar i Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Säkerhetskopiera Key Vault i Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: validera alla säkerhets kopior inklusive Kundhanterade nycklar
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Verifiera alla säkerhetskopior, inklusive kund hanterade nycklar
 
-**Vägledning**: kognitiv sökning för närvarande inte har stöd för automatisk säkerhets kopiering för data i en Sök tjänst och måste säkerhets kopie ras och återställas via en manuell process. Regelbundet utföra Data återställning av innehåll som du säkerhetskopierade manuellt för att säkerställa den kompletta integriteten för säkerhets kopieringen.
+**Vägledning:** Cognitive Search stöder för närvarande inte automatisk säkerhetskopiering av data i en söktjänst och måste säkerhetskopieras och återställas via en manuell process. Utför regelbundet dataåterställning av innehåll som du har säkerhetskopierat manuellt för att säkerställa integriteten hos säkerhetskopieringsprocessen från slutet till slut.
 
-- [Säkerhetskopiera och återställa ett Azure Kognitiv sökning-index](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
+- [Back up and restore an Azure Cognitive Search index](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
 
-- [Så här återställer du Key Vault nycklar i Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Återställa Key Vault i Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: se till att skydda säkerhets kopior och Kundhanterade nycklar
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Skydda säkerhetskopior och kund hanterade nycklar
 
-**Vägledning**: kognitiv sökning för närvarande inte har stöd för automatisk säkerhets kopiering för data i en Sök tjänst och måste säkerhets kopie ras via en manuell process.  Du kan också säkerhetskopiera Kundhanterade nycklar i Azure Key Vault.  
-
- 
-Aktivera mjuk borttagning och tömning av skydd i Key Vault för att skydda nycklar mot oavsiktlig eller skadlig borttagning. Om Azure Storage används för att lagra manuella säkerhets kopieringar aktiverar du mjuk borttagning för att spara och återställa data när blobbar eller BLOB-ögonblicksbilder tas bort. 
- 
+**Vägledning:** Cognitive Search för närvarande inte stöder automatisk säkerhetskopiering av data i en söktjänst och måste säkerhetskopieras via en manuell process.  Du kan också backa upp kund hanterade nycklar i Azure Key Vault.  
 
  
-- [Säkerhetskopiera och återställa ett Azure Kognitiv sökning-index](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
+Aktivera mjuk borttagning och rensningsskydd i Key Vault att skydda nycklar mot oavsiktlig eller skadlig borttagning. Om Azure Storage används för att lagra manuella säkerhetskopior aktiverar du mjuk borttagning för att spara och återställa data när blobar eller blobögonblicksbilder tas bort. 
+ 
+
+ 
+- [Back up and restore an Azure Cognitive Search index](/samples/azure-samples/azure-search-dotnet-samples/azure-search-backup-restore-index/)
  
 
  
@@ -746,31 +746,31 @@ Aktivera mjuk borttagning och tömning av skydd i Key Vault för att skydda nyck
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="incident-response"></a>Incidenthantering
 
 *Mer information finns i [Azure Security Benchmark: Incidentsvar](../security/benchmarks/security-control-incident-response.md).*
 
-### <a name="101-create-an-incident-response-guide"></a>10,1: skapa en incident svars guide
+### <a name="101-create-an-incident-response-guide"></a>10.1: Skapa en guide för incidentsvar
 
-**Vägledning**: utveckla en incident svars guide för din organisation. Se till att det finns skriftliga svars planer för incidenter som definierar alla roller för personal samt de olika faserna av incident hantering och hantering från identifiering till granskning efter incidenten.
+**Vägledning:** Utveckla en guide för incidenter för din organisation. Se till att det finns skriftliga planer för incidenthantering som definierar alla roller för personal samt faserna för incidenthantering och incidenthantering från identifiering till granskning efter incident.
 
-- [Vägledning om hur du skapar en egen svars process för säkerhets incidenter](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
+- [Vägledning om hur du skapar en egen process för svar på säkerhetsincidenter](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
-- [Microsoft Security Response Centers Beskrivning av en incident](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
+- [Microsoft Security Response Center är en incidents uppbyggnad](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
-- [Kunden kan också utnyttja NISTs hanterings guide för dator säkerhet för att hjälpa till med att skapa egna incident svars planer](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
+- [Kunden kan också använda NIST:s guide för hantering av säkerhetsincidenter för att underlätta skapandet av en egen plan för incidenthantering](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: skapa en incident bedömnings-och prioriterings procedur
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Skapa en procedur för incidentbedömning och prioritering
 
-**Vägledning**: Security Center tilldelar en allvarlighets grad till varje avisering för att hjälpa dig att prioritera vilka aviseringar som bör undersökas först. Allvarlighets graden baseras på hur tillförlitlig Security Center befinner sig i att söka efter eller den analytiskt som används för att utfärda aviseringen samt vilken konfidensnivå som det fanns skadlig avsikt bakom den aktivitet som ledde till aviseringen.
+**Vägledning:** Security Center tilldelar en allvarlighetsgrad till varje avisering för att hjälpa dig att prioritera vilka aviseringar som ska undersökas först. Allvarlighetsgraden baseras på hur säker Security Center är vid upptäckten eller det analytiskt använda för att utfärda aviseringen samt konfidensnivån för att det fanns skadlig avsikt bakom aktiviteten som ledde till aviseringen.
 
-Dessutom kan du markera prenumerationer med taggar och skapa ett namngivnings system för att identifiera och kategorisera Azure-resurser, särskilt för bearbetning av känsliga data. Det är ditt ansvar att prioritera reparationen av aviseringar baserat på allvarlighets graden för de Azure-resurser och den miljö där incidenten inträffade.
+Markera dessutom prenumerationer med hjälp av taggar och skapa ett namngivningssystem för att identifiera och kategorisera Azure-resurser, särskilt de som bearbetar känsliga data. Det är ditt ansvar att prioritera åtgärder för aviseringar baserat på allvarligheten i de Azure-resurser och den miljö där incidenten inträffade.
 
 - [Använda taggar för att organisera dina Azure-resurser](../azure-resource-manager/management/tag-resources.md)
 
@@ -778,57 +778,57 @@ Dessutom kan du markera prenumerationer med taggar och skapa ett namngivnings sy
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="103-test-security-response-procedures"></a>10,3: testa säkerhets svars procedurer
+### <a name="103-test-security-response-procedures"></a>10.3: Testa procedurer för säkerhetssvar
 
-**Vägledning**: utföra övningar för att testa dina Systems incident svars funktioner på en vanlig takt. Identifiera svaga punkter och luckor, och ändra planen efter behov.
+**Vägledning:** Genomför övningar för att regelbundet testa systemets funktioner för incidenter. Identifiera svaga punkter och luckor, och ändra planen efter behov.
 
-- [Se NIST-publikation, "guide till test, utbildning och övnings program för IT-planer och-funktioner"](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
-
-**Ansvar**: Kund
-
-**Azure Security Center övervakning**: ingen
-
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: Ange kontakt information för säkerhets incidenter och konfigurera aviseringar för säkerhets incidenter
-
-**Vägledning**: kontakt information om säkerhets incidenter kommer att användas av Microsoft för att kontakta dig om Microsoft Security Response Center (MSRC) upptäcker att dina data har använts av en olagligt eller obehörig part. Granska incidenter när du är säker på att problemen är lösta.
-
-- [Så här ställer du in Azure Security Center säkerhets kontakt](../security-center/security-center-provide-security-contact-details.md)
+- [Se NIST:s publikation "Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities" (Guide till test-, tränings- och övningsprogram för IT-planer och IT-funktioner)](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: införliva säkerhets aviseringar i ditt incident svars system
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Ange kontaktuppgifter för säkerhetsincidenter och konfigurera aviseringsmeddelanden för säkerhetsincidenter
 
-**Vägledning**: exportera Security Center aviseringar och rekommendationer med hjälp av funktionen för kontinuerlig export. Med kontinuerlig export kan du exportera aviseringar och rekommendationer antingen manuellt eller regelbundet. Du kan använda Security Center Data Connector för att strömma aviseringarna till Azure Sentinel.
+**Vägledning:** Kontaktinformation om säkerhetsincidenter används av Microsoft för att kontakta dig om Microsoft Security Response Center (MSRC) upptäcker att dina data har använts av en obehörig part. Granska incidenter i efterhand för att säkerställa att problemen är lösta.
 
-- [Så här konfigurerar du kontinuerlig export](../security-center/continuous-export.md)
+- [Ställa in Azure Security Center säkerhetskontakt](../security-center/security-center-provide-security-contact-details.md)
+
+**Ansvar**: Kund
+
+**Azure Security Center övervakning**: Ingen
+
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Införliva säkerhetsaviseringar i systemet för incidenter
+
+**Vägledning:** Exportera dina Security Center och rekommendationer med hjälp av funktionen Kontinuerlig export. Med löpande export kan du exportera aviseringar och rekommendationer manuellt eller kontinuerligt. Du kan använda anslutningsappen Security Center data för att strömma aviseringarna till Azure Sentinel.
+
+- [Så här konfigurerar du löpande export](../security-center/continuous-export.md)
 
 - [Så här strömmar du aviseringar till Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatisera svaret på säkerhets aviseringar
+### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Automatisera svaret på säkerhetsaviseringar
 
-**Vägledning**: Använd funktionen för automatisering av arbets flöden i Azure Security Center för att automatiskt utlösa svar via "Logic Apps" i säkerhets aviseringar och rekommendationer.
+**Vägledning:** Använd funktionen Arbetsflödesautomation i Azure Security Center att automatiskt utlösa svar via "Logic Apps" för säkerhetsaviseringar och rekommendationer.
 
-- [Konfigurera automatisering av arbets flöden och Logic Apps](../security-center/workflow-automation.md)
+- [Så här konfigurerar du arbetsflödesautomation och Logic Apps](../security-center/workflow-automation.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Intrångstester och Red Team-övningar (rött lag)
 
-*Mer information finns i [övningen för Azure Security benchmark: inträngande tester och röda team](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
+*Mer information finns i [Prestandatest för Azure-säkerhet: Intrångstester och Red Team-övningar.](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: utför regelbundna inträngande tester av dina Azure-resurser och se till att åtgärda alla viktiga säkerhets brister
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1: Genomför regelbundna intrångstester av dina Azure-resurser och se till att alla viktiga säkerhetsresultat åtgärdas
 
-**Vägledning**: Följ Microsoft Cloud inträngande test för att se till att dina inträngande tester inte strider mot Microsofts principer. Använd Microsofts strategi och utförande av ”red team”-aktiviteter och intrångstester live mot molninfrastruktur, tjänster och appar som hanteras av Microsoft.
+**Vägledning:** Följ Microsoft Cloud Penetration Testing Rules of Engagement för att säkerställa att dina intrångstester inte bryter mot Microsofts principer. Använd Microsofts strategi och utförande av ”red team”-aktiviteter och intrångstester live mot molninfrastruktur, tjänster och appar som hanteras av Microsoft.
 
 - [Regler för intrångstester](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
@@ -836,7 +836,7 @@ Dessutom kan du markera prenumerationer med taggar och skapa ett namngivnings sy
 
 **Ansvar**: Delad
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -1,6 +1,6 @@
 ---
-title: Översikt över etablering av loggar i Azure Portal (för hands version) | Microsoft Docs
-description: Få en introduktion till etablerings logg rapporter i Azure Active Directory via Azure Portal.
+title: Översikt över etableringsloggar i Azure Portal (förhandsversion) | Microsoft Docs
+description: Få en introduktion till etablering av loggrapporter i Azure Active Directory via Azure Portal.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,27 +17,27 @@ ms.date: 1/29/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d8c4876faf9ebc2619309aa0095a8ffe1e9e93d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 468e885bab6aab4becb5aaaec7b4d52ce5ef5e07
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500554"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535985"
 ---
-# <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>Översikt över etablering av loggar i Azure Portal (för hands version)
+# <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>Översikt över etableringsloggar i Azure Portal (förhandsversion)
 
-Rapporterings arkitekturen i Azure Active Directory (Azure AD) består av följande komponenter:
+Rapporteringsarkitekturen i Azure Active Directory (Azure AD) består av följande komponenter:
 
 - Aktivitet: 
-    - **Inloggningar**: information om användningen av hanterade program och användar inloggnings aktiviteter.
-    - [Gransknings loggar](concept-audit-logs.md): system aktivitets information om användar-och grupp hantering, hanterade program och katalog aktiviteter.
-    - **Etablerings loggar**: system aktivitet om användare, grupper och roller som tillhandahålls av Azure AD Provisioning-tjänsten. 
+    - **Inloggningar:** Information om användningen av hanterade program och användaraktiviteter för inloggning.
+    - [Granskningsloggar:](concept-audit-logs.md)Systemaktivitetsinformation om användar- och grupphantering, hanterade program och katalogaktiviteter.
+    - **Etableringsloggar:** Systemaktivitet om användare, grupper och roller som etableras av Azure AD-etableringstjänsten. 
 
-- Bullet 
-    - **Riskfyllda inloggningar**: en [riskfylld inloggning](../identity-protection/overview-identity-protection.md) är en indikator för ett inloggnings försök som kan ha utförts av någon som inte är en legitim ägare till ett användar konto.
-    - **Användare som har flaggats för risk**: en [riskfylld användare](../identity-protection/overview-identity-protection.md) är en indikator för ett användar konto som kan ha komprometterats.
+- Säkerhet: 
+    - **Riskfyllda inloggningar:** En [riskabel](../identity-protection/overview-identity-protection.md) inloggning är en indikator för ett inloggningsförsök som kan ha utförts av någon som inte är legitim ägare till ett användarkonto.
+    - **Användare som har flaggats** för risk: [En riskabel](../identity-protection/overview-identity-protection.md) användare är en indikator för ett användarkonto som kan ha komprometterats.
 
-I det här avsnittet får du en översikt över etablerings loggarna. Loggarna ger svar på frågor som: 
+Det här avsnittet ger dig en översikt över etableringsloggarna. Loggarna ger svar på frågor som: 
 
 * Vilka grupper har skapats i ServiceNow?
 * Vilka användare har tagits bort från Adobe?
@@ -45,59 +45,59 @@ I det här avsnittet får du en översikt över etablerings loggarna. Loggarna g
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Dessa användare kan komma åt data i etablerings loggar:
+Dessa användare kan komma åt data i etableringsloggar:
 
-* Program ägare (loggar för sina egna program)
-* Användare i rollerna säkerhets administratör, säkerhets läsare, rapport läsare, säkerhets operatör, program administratör och moln program administratör
-* Användare i en anpassad roll med [provisioningLogs-behörighet](../roles/custom-enterprise-app-permissions.md#full-list-of-permissions)
+* Programägare (loggar för sina egna program)
+* Användare med rollerna Säkerhetsadministratör, Säkerhetsläsare, Rapportläsare, Säkerhetsoperatör, Programadministratör och Molnprogramadministratör
+* Användare i en anpassad roll med [behörigheten provisioningLogs](../roles/custom-enterprise-app-permissions.md#full-list-of-permissions)
 * Globala administratörer
 
 
-För att du ska kunna visa etablerings aktivitets rapporten måste klienten ha en Azure AD Premium licens som är kopplad till den. Information om hur du uppgraderar din Azure AD-utgåva finns i [komma igång med Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md). 
+För att du ska kunna visa etableringsaktivitetsrapporten måste klientorganisationen ha en associerad Azure AD Premium licens. Information om hur du uppgraderar din Azure [AD-version finns i Komma igång med Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md). 
 
 
-## <a name="ways-of-interacting-with-the-provisioning-logs"></a>Sätt att interagera med etablerings loggar 
-Kunder kan interagera med etablerings loggar på fyra sätt:
+## <a name="ways-of-interacting-with-the-provisioning-logs"></a>Sätt att interagera med etableringsloggarna 
+Kunder kan interagera med etableringsloggarna på fyra sätt:
 
-- Åtkomst till loggarna från Azure Portal, enligt beskrivningen i nästa avsnitt.
-- Strömmar etablerings loggarna till [Azure Monitor](../app-provisioning/application-provisioning-log-analytics.md). Med den här metoden kan du utöka data kvarhållning och skapa anpassade instrument paneler, aviseringar och frågor.
-- Fråga Microsoft Graph- [API:](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) t för etablerings loggarna.
-- Hämtar etablerings loggarna som en CSV-eller JSON-fil.
+- Åtkomst till loggarna från Azure Portal enligt beskrivningen i nästa avsnitt.
+- Strömma etableringsloggarna till [Azure Monitor](../app-provisioning/application-provisioning-log-analytics.md). Med den här metoden kan du använda utökad datalagring och skapa anpassade instrumentpaneler, aviseringar och frågor.
+- Köra frågor mot [Microsoft Graph-API:et](/graph/api/resources/provisioningobjectsummary) för etableringsloggarna.
+- Ladda ned etableringsloggarna som en CSV- eller JSON-fil.
 
-## <a name="access-the-logs-from-the-azure-portal"></a>Komma åt loggarna från Azure Portal
-Du kan komma åt etablerings loggarna genom att välja **etablerings loggar** i avsnittet **övervakning** i fönstret **Azure Active Directory** i [Azure Portal](https://portal.azure.com). Det kan ta upp till två timmar innan etablerings poster visas i portalen.
+## <a name="access-the-logs-from-the-azure-portal"></a>Få åtkomst till loggarna från Azure Portal
+Du kan komma åt etableringsloggarna genom  **att** välja Etableringsloggar **i avsnittet Övervakning Azure Active Directory** fönstret i [Azure Portal](https://portal.azure.com). Det kan ta upp till två timmar innan vissa etableringsposter visas i portalen.
 
-![Skärm bild som visar val för att få åtkomst till etablerings loggar.](./media/concept-provisioning-logs/access-provisioning-logs.png "Etableringsloggar")
+![Skärmbild som visar val för åtkomst till etableringsloggar.](./media/concept-provisioning-logs/access-provisioning-logs.png "Etableringsloggar")
 
 
-En etablerings logg har en Standardlistvy som visar:
+En etableringslogg har en standardlistvy som visar:
 
 - Identiteten
 - Åtgärden
-- Käll systemet
-- Mål systemet
+- Källsystemet
+- Målsystemet
 - Status
-- Datum
+- Datumet
 
 
-![Skärm bild som visar standard kolumner i en etablerings logg.](./media/concept-provisioning-logs/default-columns.png "Standard kolumner")
+![Skärmbild som visar standardkolumner i en etableringslogg.](./media/concept-provisioning-logs/default-columns.png "Standardkolumner")
 
-Du kan anpassa List visningen genom att välja **kolumner** i verktygsfältet.
+Du kan anpassa listvyn genom att **välja** Kolumner i verktygsfältet.
 
-![Skärm bild som visar knappen för att anpassa kolumner.](./media/concept-provisioning-logs/column-chooser.png "Kolumn väljare")
+![Skärmbild som visar knappen för att anpassa kolumner.](./media/concept-provisioning-logs/column-chooser.png "Kolumn-väljaren")
 
-I det här avsnittet kan du Visa ytterligare fält eller ta bort fält som redan visas.
+Med det här området kan du visa ytterligare fält eller ta bort fält som redan visas.
 
-![Skärm bild som visar tillgängliga kolumner med vissa markerade.](./media/concept-provisioning-logs/available-columns.png "Tillgängliga kolumner")
+![Skärmbild som visar tillgängliga kolumner med vissa valda.](./media/concept-provisioning-logs/available-columns.png "Tillgängliga kolumner")
 
-Välj ett objekt i listvyn om du vill ha mer detaljerad information.
+Välj ett objekt i listvyn för att få mer detaljerad information.
 
-![Skärm bild som visar detaljerad information.](./media/concept-provisioning-logs/steps.png "Filtrera")
+![Skärmbild som visar detaljerad information.](./media/concept-provisioning-logs/steps.png "Filtrera")
 
 
-## <a name="filter-provisioning-activities"></a>Filtrera etablerings aktiviteter
+## <a name="filter-provisioning-activities"></a>Filtrera etableringsaktiviteter
 
-Du kan filtrera dina etablerings data. Vissa filter värden fylls i dynamiskt baserat på din klient. Om du till exempel inte har några "skapa"-händelser i din klient, så finns det inget alternativ för att **skapa** filter.
+Du kan filtrera dina etableringsdata. Vissa filtervärden fylls i dynamiskt baserat på din klientorganisation. Om du till exempel inte har några "skapa"-händelser i din klientorganisation finns det inget alternativ **för att skapa** filter.
 
 I standardvyn kan du välja följande filter:
 
@@ -107,14 +107,14 @@ I standardvyn kan du välja följande filter:
 - **Åtgärd**
 
 
-![Skärm bild som visar filter värden.](./media/concept-provisioning-logs/default-filter.png "Filtrera")
+![Skärmbild som visar filtervärden.](./media/concept-provisioning-logs/default-filter.png "Filtrera")
 
-Med filtret **identitet** kan du ange namnet eller identiteten som du bryr dig om. Den här identiteten kan vara en användare, grupp, roll eller något annat objekt. 
+Med **filtret** Identitet kan du ange det namn eller den identitet som du bryr dig om. Den här identiteten kan vara en användare, en grupp, en roll eller ett annat objekt. 
 
-Du kan söka efter objektets namn eller ID. ID varierar beroende på scenario. När du till exempel konfigurerar ett objekt från Azure AD till Salesforce, är käll-ID: t objekt-ID för användaren i Azure AD. Mål-ID: t är användarens ID i Salesforce. När du håller på att etablering från arbets dagar till Active Directory, är käll-ID: t arbets dagen anställdas anställnings-ID. 
+Du kan söka efter namn eller ID för objektet. ID:t varierar beroende på scenario. När du till exempel etablerar ett objekt från Azure AD till Salesforce är käll-ID:t objekt-ID:t för användaren i Azure AD. Mål-ID:t är ID:t för användaren i Salesforce. När du etablerar från Workday till Active Directory är käll-ID:t arbetsmedarbetarens ID för Workday. 
 
 > [!NOTE]
-> Namnet på användaren kanske inte alltid finns i **identitets** kolumnen. Det kommer alltid att finnas ett ID. 
+> Namnet på användaren kanske inte alltid finns i **kolumnen** Identitet. Det kommer alltid att finnas ett ID. 
 
 
 Med filtret **Datum** kan du definiera en tidsram för de data som returneras. Möjliga värden:
@@ -125,16 +125,16 @@ Med filtret **Datum** kan du definiera en tidsram för de data som returneras. M
 - 24 timmar
 - Anpassat tidsintervall
 
-När du väljer en anpassad tidsram kan du konfigurera ett start datum och ett slutdatum.
+När du väljer en anpassad tidsram kan du konfigurera ett startdatum och ett slutdatum.
 
-Med **status** filtret kan du välja:
+Med **filtret** Status kan du välja:
 
 - **Alla**
 - **Klart**
-- **Haverera**
+- **Fel**
 - **Överhoppad**
 
-Med **Åtgärds** filtret kan du filtrera följande åtgärder:
+Med **filtret** Åtgärd kan du filtrera följande åtgärder:
 
 - **Skapa** 
 - **Uppdatera**
@@ -144,60 +144,60 @@ Med **Åtgärds** filtret kan du filtrera följande åtgärder:
 
 Förutom filtren i standardvyn kan du ange följande filter.
 
-![Skärm bild som visar fält som du kan lägga till som filter.](./media/concept-provisioning-logs/add-filter.png "Välj ett fält")
+![Skärmbild som visar fält som du kan lägga till som filter.](./media/concept-provisioning-logs/add-filter.png "Välj ett fält")
 
-- **Jobb-ID**: ett unikt jobb-ID är associerat med varje program som du har aktiverat etableringen för.   
+- **Jobb-ID:** Ett unikt jobb-ID är associerat med varje program som du har aktiverat etablering för.   
 
-- **Cykel-ID**: cykel-ID: t identifierar en unik etablerings cykel. Du kan dela detta ID med produkt support för att leta upp den cykel där händelsen inträffade.
+- **Cykel-ID:** Cykel-ID:t identifierar etableringscykeln unikt. Du kan dela det här ID:t med produktsupporten för att leta upp den cykel där den här händelsen inträffade.
 
-- **Ändrings-ID**: ändrings-ID: t är en unik identifierare för etablerings händelsen. Du kan dela detta ID med produkt support för att leta upp etablerings händelsen.   
+- **Ändrings-ID:** Ändrings-ID:t är en unik identifierare för etableringshändelsen. Du kan dela detta ID med produktsupporten för att leta upp etableringshändelsen.   
 
-- **Käll system**: du kan ange var identiteten ska hämtas från. När du till exempel konfigurerar ett objekt från Azure AD till ServiceNow är käll systemet Azure AD. 
+- **Källsystem:** Du kan ange var identiteten etableras från. När du till exempel etablerar ett objekt från Azure AD till ServiceNow är källsystemet Azure AD. 
 
-- **Mål system**: du kan ange var identiteten ska hämtas till. När du till exempel konfigurerar ett objekt från Azure AD till ServiceNow är mål systemet ServiceNow. 
+- **Målsystem:** Du kan ange var identiteten ska etableras. När du till exempel etablerar ett objekt från Azure AD till ServiceNow är målsystemet ServiceNow. 
 
-- **Program**: du kan bara visa poster med program med ett visnings namn som innehåller en specifik sträng.
+- **Program:** Du kan bara visa poster för program med ett visningsnamn som innehåller en specifik sträng.
 
-## <a name="provisioning-details"></a>Information om etablering 
+## <a name="provisioning-details"></a>Etableringsinformation 
 
-När du väljer ett objekt i etablerings listans vy får du mer information om det här objektet. Informationen är grupperad i följande flikar.
+När du väljer ett objekt i etableringslistvyn får du mer information om det här objektet. Informationen är grupperad i följande flikar.
 
-![Skärm bild som visar fyra flikar som innehåller information om etablering.](./media/concept-provisioning-logs/provisioning-tabs.png "Tabbar")
+![Skärmbild som visar fyra flikar som innehåller etableringsinformation.](./media/concept-provisioning-logs/provisioning-tabs.png "Tabbar")
 
-- **Steg**: beskriver stegen för att etablera ett objekt. Etablering av ett objekt kan bestå av fyra steg:
+- **Steg:** Beskriver de steg som vidtas för att etablera ett -objekt. Etablering av ett objekt kan bestå av fyra steg:
   
-  1. Importera objektet.
-  1. Kontrol lera om objektet är i omfånget.
+  1. Importera -objektet.
+  1. Kontrollera om objektet finns i omfånget.
   1. Matcha objektet mellan källa och mål.
   1. Etablera objektet (skapa, uppdatera, ta bort eller inaktivera).
 
-  ![Skärm bild som visar etablerings stegen på fliken steg.](./media/concept-provisioning-logs/steps.png "Filtrera")
+  ![Skärmbild som visar etableringsstegen på fliken Steg.](./media/concept-provisioning-logs/steps.png "Filtrera")
 
-- Fel **sökning av & rekommendationer**: innehåller felkoden och orsaken. Fel informationen är bara tillgänglig om ett fel inträffar.
+- **Felsökning &:** Innehåller felkoden och orsaken. Felinformationen är bara tillgänglig om ett fel inträffar.
 
-- **Ändrade egenskaper**: visar det gamla värdet och det nya värdet. Om det inte finns något gammalt värde är den kolumnen tom.
+- **Ändrade egenskaper:** Visar det gamla värdet och det nya värdet. Om det inte finns något gammalt värde är den kolumnen tom.
 
-- **Sammanfattning**: innehåller en översikt över vad som hände och identifierare för objektet i käll-och mål systemen.
+- **Sammanfattning:** Ger en översikt över vad som hände och identifierare för objektet i käll- och målsystemen.
 
-## <a name="download-logs-as-csv-or-json"></a>Hämta loggar som CSV eller JSON
+## <a name="download-logs-as-csv-or-json"></a>Ladda ned loggar som CSV eller JSON
 
-Du kan hämta etablerings loggarna för senare användning genom att gå till loggarna i Azure Portal och välja **Hämta**. Filen kommer att filtreras baserat på de filter villkor du har valt. Gör filtren så exakta som möjligt för att minska storleken och tiden för nedladdningen. 
+Du kan ladda ned etableringsloggarna för senare användning genom att gå till loggarna i Azure Portal och välja **Ladda ned**. Filen filtreras baserat på de filterkriterier som du har valt. Gör filtren så specifika som möjligt för att minska nedladdningens storlek och tid. 
 
 CSV-nedladdningen innehåller tre filer:
 
-* **ProvisioningLogs**: hämtar alla loggar, förutom etablerings stegen och ändrade egenskaper.
-* **ProvisioningLogs_ProvisioningSteps**: innehåller etablerings stegen och ändrings-ID: t. Du kan använda ändrings-ID: t för att koppla händelsen till de andra två filerna.
-* **ProvisioningLogs_ModifiedProperties**: innehåller de attribut som har ändrats och ändrings-ID. Du kan använda ändrings-ID: t för att koppla händelsen till de andra två filerna.
+* **ProvisioningLogs**: Hämtar alla loggar, förutom etableringsstegen och ändrade egenskaper.
+* **ProvisioningLogs_ProvisioningSteps:** Innehåller etableringsstegen och ändrings-ID:t. Du kan använda ändrings-ID:t för att koppla händelsen till de andra två filerna.
+* **ProvisioningLogs_ModifiedProperties:** Innehåller attributen som har ändrats och ändrings-ID:t. Du kan använda ändrings-ID:t för att koppla händelsen till de andra två filerna.
 
 #### <a name="open-the-json-file"></a>Öppna JSON-filen
-Öppna JSON-filen genom att använda en text redigerare, till exempel [Microsoft Visual Studio Code](https://aka.ms/vscode). Visual Studio Code gör filen lättare att läsa genom att tillhandahålla syntax för att markera. Du kan också öppna JSON-filen med hjälp av webbläsare i ett format som inte kan redige ras, till exempel [Microsoft Edge](https://aka.ms/msedge). 
+Om du vill öppna JSON-filen använder du en textredigerare, till [exempel Microsoft Visual Studio Code](https://aka.ms/vscode). Visual Studio Code gör det lättare att läsa filen genom att ange syntaxmarkering. Du kan också öppna JSON-filen med hjälp av webbläsare i ett oredigerbart format, till [exempel Microsoft Edge](https://aka.ms/msedge). 
 
-#### <a name="prettify-the-json-file"></a>Prettify JSON-filen
-JSON-filen laddas ned i minified-format för att minska storleken på nedladdningen. Det här formatet kan göra nytto lasten svår att läsa. Ta en titt på två alternativ för att prettify filen:
+#### <a name="prettify-the-json-file"></a>Förinstallera JSON-filen
+JSON-filen laddas ned i minimerat format för att minska storleken på nedladdningen. Det här formatet kan göra nyttolasten svår att läsa. Titta på två alternativ för att prettifiera filen:
 
-- Använd [Visual Studio Code för att formatera JSON](https://code.visualstudio.com/docs/languages/json#_formatting).
+- Använd [Visual Studio Code för att formatera JSON.](https://code.visualstudio.com/docs/languages/json#_formatting)
 
-- Använd PowerShell för att formatera JSON. Det här skriptet matar ut JSON i ett format som innehåller tabbar och blank steg: 
+- Använd PowerShell för att formatera JSON. Det här skriptet matar ut JSON i ett format som innehåller tabbar och blanksteg: 
 
   ` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
 
@@ -205,19 +205,19 @@ JSON-filen laddas ned i minified-format för att minska storleken på nedladdnin
 
 #### <a name="parse-the-json-file"></a>Parsa JSON-filen
 
-Här följer några exempel kommandon för att arbeta med JSON-filen med hjälp av PowerShell. Du kan använda valfritt programmeringsspråk som du är van vid.  
+Här är några exempelkommandon för att arbeta med JSON-filen med hjälp av PowerShell. Du kan använda alla programmeringsspråk som du känner dig bekväm med.  
 
-Börja med [att läsa JSON-filen](/powershell/module/microsoft.powershell.utility/convertfrom-json) genom att köra det här kommandot:
+Läs först [JSON-filen genom att](/powershell/module/microsoft.powershell.utility/convertfrom-json) köra det här kommandot:
 
 ` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
 
-Nu kan du analysera data enligt ditt scenario. Här följer några exempel: 
+Nu kan du parsa data enligt ditt scenario. Här följer några exempel: 
 
-- Utdata för alla jobb-ID: n i JSON-filen:
+- Mata ut alla jobb-ID:er i JSON-filen:
 
   `foreach ($provitem in $JSONContent) { $provitem.jobId }`
 
-- Spara alla ändrings-ID: n för händelser där åtgärden skapades:
+- Mata ut alla ändrings-ID:er för händelser där åtgärden var "create":
 
   `foreach ($provitem in $JSONContent) { `
   `   if ($provItem.action -eq 'Create') {`
@@ -227,46 +227,46 @@ Nu kan du analysera data enligt ditt scenario. Här följer några exempel:
 
 ## <a name="what-you-should-know"></a>Det här bör du veta
 
-Här följer några tips och överväganden för etablering av rapporter:
+Här är några tips och överväganden för att etablera rapporter:
 
-- Azure Portal lagrar rapporterade etablerings data i 30 dagar om du har en Premium-version och 7 dagar om du har en kostnads fri version. Du kan publicera etablerings loggarna till [Log Analytics](../app-provisioning/application-provisioning-log-analytics.md) för kvarhållning bortom 30 dagar. 
+- Den Azure Portal lagrar rapporterade etableringsdata i 30 dagar om du har en Premium-version och 7 dagar om du har en kostnadsfri version. Du kan publicera etableringsloggarna till [Log Analytics för](../app-provisioning/application-provisioning-log-analytics.md) kvarhållning längre än 30 dagar. 
 
-- Du kan använda attributet ändra ID som unik identifierare. Detta är användbart när du interagerar med produkt support, till exempel.
+- Du kan använda attributet ändra ID som unik identifierare. Detta är till exempel användbart när du interagerar med produktsupporten.
 
-- Du kan se överhoppade händelser för användare som inte omfattas av omfånget. Detta förväntas, särskilt när Sync-omfånget är inställt på alla användare och grupper. Tjänsten utvärderar alla objekt i klienten, även de som ligger utanför omfånget. 
+- Du kan se överhoppade händelser för användare som inte ingår i omfånget. Detta är förväntat, särskilt när synkroniseringsomfånget är inställt på alla användare och grupper. Tjänsten utvärderar alla objekt i klientorganisationen, även de som ligger utanför omfånget. 
 
-- Etablerings loggarna är för närvarande inte tillgängliga i det offentliga molnet. Om du inte kan komma åt etablerings loggarna använder du gransknings loggarna som en tillfällig lösning. 
+- Etableringsloggarna är för närvarande inte tillgängliga i myndighetsmolnet. Om du inte kan komma åt etableringsloggarna använder du granskningsloggarna som en tillfällig lösning. 
 
-- Etablerings loggarna visar inte roll import (gäller för AWS, Salesforce och Zendesk). Du hittar loggarna för roll importer i gransknings loggarna. 
+- Etableringsloggarna visar inte rollimporter (gäller för AWS, Salesforce och Zendesk). Du hittar loggarna för rollimporter i granskningsloggarna. 
 
 ## <a name="error-codes"></a>Felkoder
 
-Använd följande tabell för att bättre förstå hur du löser fel som du hittar i etablerings loggarna. För felkoder som saknas ger du feedback genom att använda länken längst ned på den här sidan. 
+Använd följande tabell för att bättre förstå hur du löser fel som du hittar i etableringsloggarna. Om du har felkoder som saknas kan du ge feedback via länken längst ned på den här sidan. 
 
-|Felkod|Beskrivning|
+|Felkod|Description|
 |---|---|
-|Konflikt, EntryConflict|Korrigera attributvärdena i konflikt i antingen Azure AD eller programmet. Du kan också granska konfigurationen av matchande attribut om det motstridiga användar kontot skulle matchas och tas över. Läs [dokumentationen](../app-provisioning/customize-application-attributes.md) för mer information om hur du konfigurerar matchande attribut.|
-|TooManyRequests|Mål appen avvisade det här försöket att uppdatera användaren eftersom den är överbelastad och tar emot för många begär Anden. Det finns inget att göra. Detta försök kommer automatiskt att dras tillbaka. Microsoft har också fått ett meddelande om det här problemet.|
-|InternalServerError |Mål appen returnerade ett oväntat fel. Ett tjänst problem med mål programmet kan förhindra att detta fungerar. Detta försök kommer automatiskt att dras tillbaka om 40 minuter.|
-|InsufficientRights, MethodNotAllowed, NotPermitted, obehörig| Azure AD har autentiserats med mål programmet men har inte behörighet att utföra uppdateringen. Granska eventuella instruktioner som mål programmet har tillhandahållit, tillsammans med respektive program [självstudie](../saas-apps/tutorial-list.md).|
-|UnprocessableEntity|Mål programmet returnerade ett oväntat svar. Konfigurationen av mål programmet kanske inte är korrekt eller också kan ett tjänst problem med mål programmet förhindra detta från att fungera.|
-|WebExceptionProtocolError |Ett HTTP-protokollfel inträffade vid anslutning till mål programmet. Det finns inget att göra. Detta försök kommer automatiskt att dras tillbaka om 40 minuter.|
-|InvalidAnchor|En användare som tidigare har skapats eller matchade av etablerings tjänsten finns inte längre. Se till att användaren finns. Om du vill tvinga fram en ny matchning av alla användare använder du Microsoft Graph API för att [starta om jobbet](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta). <br><br>Om du startar om etableringen utlöses en första cykel, vilket kan ta lång tid att slutföra. Om du startar om etableringen tas även den cache som etablerings tjänsten använder att använda. Det innebär att alla användare och grupper i klienten måste utvärderas igen och vissa etablerings händelser kan släppas.|
-|NotImplemented | Mål appen returnerade ett oväntat svar. Appens konfiguration kanske inte är korrekt eller också kan ett tjänst problem med mål appen förhindra att detta fungerar. Granska eventuella instruktioner som mål programmet har tillhandahållit, tillsammans med respektive program [självstudie](../saas-apps/tutorial-list.md). |
-|MandatoryFieldsMissing, MissingValues |Det gick inte att skapa användaren eftersom de värden som krävs saknas. Korrigera attributvärdena som saknas i käll posten eller granska konfigurationen av matchande attribut för att se till att de obligatoriska fälten inte utelämnas. [Läs mer](../app-provisioning/customize-application-attributes.md) om hur du konfigurerar matchande attribut.|
-|SchemaAttributeNotFound |Det gick inte att utföra åtgärden eftersom ett attribut angavs som inte finns i mål programmet. Se [dokumentationen](../app-provisioning/customize-application-attributes.md) om attribut anpassning och kontrol lera att konfigurationen är korrekt.|
-|InternalError |Ett internt tjänst fel uppstod i Azure AD Provisioning-tjänsten. Det finns inget att göra. Det här försöket görs automatiskt om 40 minuter.|
-|InvalidDomain |Det gick inte att utföra åtgärden eftersom ett attributvärde innehåller ett ogiltigt domän namn. Uppdatera domän namnet på användaren eller Lägg till det i listan över tillåtna i mål programmet. |
-|Tidsgräns |Det gick inte att slutföra åtgärden eftersom mål programmet tog för lång tid att svara. Det finns inget att göra. Det här försöket görs automatiskt om 40 minuter.|
-|LicenseLimitExceeded|Det gick inte att skapa användaren i mål programmet eftersom det inte finns några tillgängliga licenser för den här användaren. Skaffa fler licenser för mål programmet. Du kan också granska användar tilldelningarna och konfigurationen av attributmappning för att säkerställa att rätt användare har tilldelats rätt attribut.|
-|DuplicateTargetEntries  |Det gick inte att slutföra åtgärden eftersom mer än en användare i mål programmet hittades med de konfigurerade matchande attributen. Ta bort den duplicerade användaren från mål programmet eller [Konfigurera om dina mappningar för attribut](../app-provisioning/customize-application-attributes.md).|
-|DuplicateSourceEntries | Det gick inte att slutföra åtgärden eftersom mer än en användare hittades med de konfigurerade matchande attributen. Ta bort den duplicerade användaren eller [Konfigurera om dina mappningar för attribut](../app-provisioning/customize-application-attributes.md).|
-|ImportSkipped | När varje användare utvärderas försöker systemet importera användaren från käll systemet. Det här felet uppstår vanligt vis när användaren som importeras saknar matchande egenskap som definierats i dina Attribute-mappningar. Utan ett värde som finns på användarobjektet för matchande attribut kan systemet inte utvärdera omfattnings-, matchnings-eller export ändringar. Observera att förekomsten av det här felet inte indikerar att användaren är i omfånget, eftersom du ännu inte har utvärderat omfattning för användaren.|
-|EntrySynchronizationSkipped | Etablerings tjänsten har skickat frågan till käll systemet och identifierade användaren. Ingen ytterligare åtgärd vidtogs för användaren och de hoppades över. Användaren kan ha varit utanför omfånget eller också har användaren redan funnits i mål systemet utan att ytterligare ändringar krävs.|
-|SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| En GET-begäran för att hämta en användare eller grupp tog emot flera användare eller grupper i svaret. Systemet förväntar sig att endast ta emot en användare eller grupp i svaret. Om du [till exempel](../app-provisioning/use-scim-to-provision-users-and-groups.md#get-group)gör en get-begäran för att hämta en grupp och anger ett filter för att undanta medlemmar, och systemet för slut punkten för scim (Cross-Domain Identity Management) returnerar medlemmarna, får du det här felet.|
+|Konflikt, EntryConflict|Korrigera de motstridiga attributvärdena i antingen Azure AD eller programmet. Du kan också granska din matchande attributkonfiguration om det motstridiga användarkontot skulle matchas och tas över. Mer information [om hur](../app-provisioning/customize-application-attributes.md) du konfigurerar matchande attribut finns i dokumentationen.|
+|TooManyRequests|Målappen avvisade det här försöket att uppdatera användaren eftersom den är överbelastad och tar emot för många begäranden. Det finns inget att göra. Det här försöket dras automatiskt tillbaka. Microsoft har också fått ett meddelande om det här problemet.|
+|InternalServerError |Målappen returnerade ett oväntat fel. Ett tjänstproblem med målprogrammet kan hindra detta från att fungera. Det här försöket dras automatiskt tillbaka om 40 minuter.|
+|InsufficientRights, MethodNotAllowed, NotPermitted, Unauthorized| Azure AD autentiserades med målprogrammet men har inte behörighet att utföra uppdateringen. Granska alla instruktioner som målprogrammet har angett, tillsammans med respektive programs [självstudie.](../saas-apps/tutorial-list.md)|
+|UnprocessableEntity|Målprogrammet returnerade ett oväntat svar. Konfigurationen av målprogrammet kanske inte är korrekt, eller så kanske ett tjänstproblem med målprogrammet förhindrar att det fungerar.|
+|WebExceptionProtocolError |Ett HTTP-protokollfel inträffade vid anslutning till målprogrammet. Det finns inget att göra. Det här försöket dras automatiskt tillbaka om 40 minuter.|
+|InvalidAnchor|En användare som tidigare har skapats eller matchats av etableringstjänsten finns inte längre. Kontrollera att användaren finns. Om du vill tvinga en ny matchning av alla användare använder du Microsoft Graph API för [att starta om jobbet](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true). <br><br>Om etableringen startas om utlöses en inledande cykel, vilket kan ta tid att slutföra. När etableringen startas om tas även den cache som etableringstjänsten använder för att fungera. Det innebär att alla användare och grupper i klientorganisationen måste utvärderas igen, och vissa etableringshändelser kan tas bort.|
+|Inte implementerad | Målappen returnerade ett oväntat svar. Konfigurationen av appen kanske inte är korrekt, eller så kan ett tjänstproblem med målappen hindra detta från att fungera. Granska alla instruktioner som målprogrammet har angett tillsammans med respektive programs [självstudie.](../saas-apps/tutorial-list.md) |
+|MandatoryFieldsMissing, MissingValues |Det gick inte att skapa användaren eftersom nödvändiga värden saknas. Korrigera de saknade attributvärdena i källposten eller granska din matchande attributkonfiguration för att säkerställa att de obligatoriska fälten inte utelämnas. [Läs mer om](../app-provisioning/customize-application-attributes.md) hur du konfigurerar matchande attribut.|
+|SchemaAttributeNotFound |Det gick inte att utföra åtgärden eftersom ett attribut har angetts som inte finns i målprogrammet. Se dokumentationen [om](../app-provisioning/customize-application-attributes.md) attributanpassning och se till att konfigurationen är korrekt.|
+|InternalError |Ett internt tjänstfel inträffade i Azure AD-etableringstjänsten. Det finns inget att göra. Det här försöket görs automatiskt om 40 minuter.|
+|InvalidDomain |Det gick inte att utföra åtgärden eftersom ett attributvärde innehåller ett ogiltigt domännamn. Uppdatera domännamnet på användaren eller lägg till det i listan över tillåtna i målprogrammet. |
+|Tidsgräns |Det gick inte att slutföra åtgärden eftersom målprogrammet tog för lång tid att svara. Det finns inget att göra. Det här försöket görs automatiskt om 40 minuter.|
+|LicenseLimitExceeded|Det gick inte att skapa användaren i målprogrammet eftersom det inte finns några tillgängliga licenser för den här användaren. Skaffa fler licenser för målprogrammet. Du kan också granska konfigurationen av användartilldelningar och attributmappning för att se till att rätt användare tilldelas rätt attribut.|
+|DuplicateTarget-poster  |Det gick inte att slutföra åtgärden eftersom fler än en användare i målprogrammet hittades med de konfigurerade matchande attributen. Ta bort den duplicerade användaren från målprogrammet eller [konfigurera om attributmappningarna](../app-provisioning/customize-application-attributes.md).|
+|DuplicateSourceEntries | Det gick inte att slutföra åtgärden eftersom fler än en användare hittades med de konfigurerade matchande attributen. Ta bort den duplicerade användaren [eller konfigurera om attributmappningarna](../app-provisioning/customize-application-attributes.md).|
+|ImportSkipped | När varje användare utvärderas försöker systemet importera användaren från källsystemet. Det här felet uppstår vanligtvis när den användare som importeras saknar den matchande egenskapen som definierats i dina attributmappningar. Utan ett värde som finns i användarobjektet för det matchande attributet kan systemet inte utvärdera omfångs-, matchnings- eller exportändringar. Observera att förekomsten av det här felet inte indikerar att användaren finns i omfånget, eftersom du ännu inte har utvärderat omfånget för användaren.|
+|EntrySynchronizationSkipped | Etableringstjänsten har frågat källsystemet och identifierat användaren. Ingen ytterligare åtgärd vidtogs för användaren och de hoppas över. Användaren kan ha varit utanför omfånget eller så kanske användaren redan har funnits i målsystemet utan att ytterligare ändringar krävs.|
+|SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| En GET-begäran för att hämta en användare eller grupp tog emot flera användare eller grupper i svaret. Systemet förväntar sig att endast ta emot en användare eller grupp i svaret. [Om du](../app-provisioning/use-scim-to-provision-users-and-groups.md#get-group)till exempel gör en GET-begäran för att hämta en grupp och ange ett filter för att undanta medlemmar, och din SYSTEM for Cross-Domain Identity Management-slutpunkt (SCIM) returnerar medlemmarna, får du det här felet.|
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Kontrol lera status för användar etablering](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
-* [Problem med att konfigurera användar etablering i ett Azure AD Gallery-program](../app-provisioning/application-provisioning-config-problem.md)
-* [Graph API för etablerings loggar](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)
+* [Kontrollera status för användareablering](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
+* [Problem med att konfigurera användareablering till ett Azure AD-galleriprogram](../app-provisioning/application-provisioning-config-problem.md)
+* [Graph API för etableringsloggar](/graph/api/resources/provisioningobjectsummary)

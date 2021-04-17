@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8942262c2e02670d57b1db324eb154dcc38f00f8
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: b3f0dd599f982e19fee7febc3b85d46f91a55b35
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575402"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589303"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Förstå tvillingmodeller i Azure Digital Twins
 
@@ -34,7 +34,7 @@ Resten av den här artikeln sammanfattar hur språket används i Azure Digital T
 
 ### <a name="azure-digital-twins-dtdl-implementation-specifics"></a>Azure Digital Twins om DTDL-implementering
 
-Alla tjänster som använder DTDL implementerar inte exakt samma funktioner i DTDL. IoT-Plug and Play till exempel inte de DTDL-funktioner som är för grafer, medan Azure Digital Twins inte för närvarande implementerar DTDL-kommandon. 
+Alla tjänster som använder DTDL implementerar inte exakt samma funktioner i DTDL. IoT-Plug and Play till exempel inte de DTDL-funktioner som är till för grafer, medan Azure Digital Twins inte för närvarande implementerar DTDL-kommandon. 
 
 För att en DTDL-modell ska vara kompatibel Azure Digital Twins måste den uppfylla följande krav:
 
@@ -58,7 +58,7 @@ Ett DTDL-modellgränssnitt kan innehålla noll, ett eller flera av följande fä
     
     >[!TIP] 
     >Komponenter kan också användas för organisation, för att gruppera uppsättningar av relaterade egenskaper i ett modellgränssnitt. I så fall kan du tänka på varje komponent som ett namnområde eller en "mapp" i gränssnittet.
-* **Relation** – Med relationer kan du representera hur en digital tvilling kan användas med andra digitala tvillingar. Relationer kan representera olika semantiska betydelser, t.ex. *contains* ("floor contains room"), cools ("hvac cools room"), *isBilledTo* ("kant *faktureras* till användaren") osv. Relationer gör att lösningen kan tillhandahålla ett diagram över relaterade entiteter.
+* **Relation** – Med relationer kan du representera hur en digital tvilling kan användas med andra digitala tvillingar. Relationer kan representera olika semantiska betydelser, t.ex. *contains* ("floor contains room"), cools ("hvac cools room"), *isBilledTo* ("kylar *faktureras* till användaren") osv. Relationer gör att lösningen kan tillhandahålla ett diagram över relaterade entiteter. Relationer kan också [ha](#properties-of-relationships) egna egenskaper.
 
 > [!NOTE]
 > Specifikationen för [DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) definierar också **Kommandon**, som är metoder som kan köras på en digital tvilling (till exempel ett återställningskommando eller ett kommando för att slå på eller stänga av en fläkt). Kommandon stöds *dock för närvarande inte i Azure Digital Twins.*
@@ -81,9 +81,13 @@ Telemetri och egenskaper fungerar ofta tillsammans för att hantera indata från
 
 Du kan också publicera en telemetrihändelse från Azure Digital Twins API. Precis som med annan telemetri är det en kortlivad händelse som kräver att en lyssnare hanterar.
 
+#### <a name="properties-of-relationships"></a>Egenskaper för relationer
+
+DTDL tillåter också **att** relationer har egna egenskaper. När du definierar en relation i en DTDL-modell kan relationen ha ett eget fält där du kan definiera anpassade egenskaper för `properties` att beskriva relationsspecifikt tillstånd.
+
 ## <a name="model-inheritance"></a>Modellarv
 
-Ibland kanske du vill specialisera en modell ytterligare. Det kan till exempel vara användbart att ha en generisk *modell, Room*, och specialiserade varianter *ConferenceRoom* och *ConferenceRoom* och Conference . För att uttrycka specialisering stöder DTDL arv: gränssnitt kan ärva från ett eller flera andra gränssnitt. 
+Ibland kanske du vill specialiserade en modell ytterligare. Det kan till exempel vara användbart att ha en generisk *modell, Room*, och specialiserade varianter *ConferenceRoom* och *ConferenceRoom* och Conference . För att uttrycka specialisering stöder DTDL arv: gränssnitt kan ärva från ett eller flera andra gränssnitt. 
 
 I följande exempel åter föreställa sig *planetmodellen* från det tidigare DTDL-exemplet som en undertyp av en *störreBodyBody-modell.* Den "överordnade" modellen definieras först och sedan bygger den "underordnade" modellen på den med hjälp av fältet `extends` .
 
@@ -93,7 +97,7 @@ I det här exemplet *bidrarBodyBody* med ett namn, en mass och en temperatur til
 
 När arv har tillämpats exponerar det utökande gränssnittet alla egenskaper från hela arvskedjan.
 
-Det utökade gränssnittet kan inte ändra någon av definitionerna för de överordnade gränssnitten. Det kan bara lägga till i dem. Den kan inte heller omdefiniera en funktion som redan har definierats i något av dess överordnade gränssnitt (även om funktionerna har definierats att vara desamma). Om ett överordnat gränssnitt till exempel definierar en egenskapsvikt får det utökande gränssnittet inte innehålla en massdeklaration , även om `double` det också är en   `double` .
+Det utökade gränssnittet kan inte ändra någon av definitionerna för de överordnade gränssnitten. Det kan bara lägga till i dem. Den kan inte heller definiera om en funktion som redan har definierats i något av dess överordnade gränssnitt (även om funktionerna har definierats att vara desamma). Om ett överordnat gränssnitt till exempel definierar en egenskapsvikt får det utökande gränssnittet inte innehålla en massdeklaration , även om `double` det också är en   `double` .
 
 ## <a name="model-code"></a>Modellkod
 
@@ -103,7 +107,7 @@ Tvillingtypmodeller kan skrivas i valfri textredigerare. DTDL-språket följer J
 
 Enligt DTDL kan schemat  för egenskaps- och *telemetriattribut* vara av primitiva standardtyper– , , och – och andra typer `integer` som och `double` `string` `Boolean` `DateTime` `Duration` . 
 
-Förutom primitiva typer kan fälten *Egenskap* *och Telemetri* ha följande komplexa typer:
+Förutom primitiva typer kan *fälten Egenskap* *och Telemetri* ha följande komplexa typer:
 * `Object`
 * `Map`
 * `Enum`
@@ -114,7 +118,7 @@ Förutom primitiva typer kan fälten *Egenskap* *och Telemetri* ha följande kom
 
 Det här avsnittet innehåller ett exempel på en typisk modell som skrivits som ett DTDL-gränssnitt. Modellen beskriver **planeter**, var och en med ett namn, en massa och en temperatur.
  
-Tänk på att planeter också kan **interagera med månar** som är deras satelliter och kan innehålla **månar**. I exemplet nedan uttrycker `Planet` modellen anslutningar till dessa andra entiteter genom att referera till två externa modeller– och `Moon` `Crater` . Dessa modeller definieras också i exempelkoden nedan, men hålls mycket enkla så att de inte försämrar det primära `Planet` exemplet.
+Tänk på att planeter också kan **interagera med månar** som är deras satelliter och kan innehålla **månar.** I exemplet nedan uttrycker `Planet` modellen anslutningar till dessa andra entiteter genom att referera till två externa modeller– och `Moon` `Crater` . Dessa modeller definieras också i exempelkoden nedan, men hålls mycket enkla så att de inte försämrar det primära `Planet` exemplet.
 
 :::code language="json" source="~/digital-twins-docs-samples/models/Planet-Crater-Moon.json":::
 
@@ -133,7 +137,7 @@ Fälten i modellen är:
 
 ## <a name="best-practices-for-designing-models"></a>Metodtips för att utforma modeller
 
-När du utformar modeller för att återspegla entiteterna i [](concepts-query-language.md) din miljö kan det vara bra att titta framåt och överväga frågekonsekvenserna av din design. Du kanske vill utforma egenskaper på ett sätt som undviker stora resultatuppsättningar från diagramgenrering. Du kanske också vill modellera relationer som ska besvaras i en enskild fråga som relationer på en nivå.
+När du utformar modeller för att återspegla entiteterna i [](concepts-query-language.md) din miljö kan det vara användbart att titta framåt och överväga frågekonsekvenserna av din design. Du kanske vill utforma egenskaper på ett sätt som undviker stora resultatmängder från diagramgenrering. Du kanske också vill modellera relationer som ska besvaras i en enskild fråga som relationer på en nivå.
 
 ### <a name="validating-models"></a>Verifiera modeller
 
@@ -149,19 +153,19 @@ I det här avsnittet beskrivs den aktuella uppsättningen exempel i detalj.
 
 _**För att ladda upp modeller till Azure Digital Twins**_
 
-När du är klar med att skapa, utöka eller välja dina modeller kan du ladda upp dem till din Azure Digital Twins instans så att de blir tillgängliga för användning i din lösning. Detta görs med hjälp Azure Digital Twins [API:er](how-to-use-apis-sdks.md), enligt beskrivningen i [*How-to: Manage DTDL models*](how-to-manage-model.md#upload-models).
+När du är klar med att skapa, utöka eller välja modeller kan du ladda upp dem till din Azure Digital Twins instans så att de blir tillgängliga för användning i din lösning. Detta görs med hjälp Azure Digital Twins [API:er](how-to-use-apis-sdks.md), enligt beskrivningen i [*How-to: Manage DTDL models*](how-to-manage-model.md#upload-models).
 
-Men om du har många modeller att ladda upp– eller om de har många beroenden som skulle göra det svårt att ordna enskilda uppladdningar – kan du använda det här exemplet för att ladda upp många modeller samtidigt: [**Azure Digital Twins Model Uploader**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader). Följ anvisningarna i exemplet för att konfigurera och använda det här projektet för att ladda upp modeller till din egen instans.
+Men om du har många modeller att ladda upp– eller om de har många beroenden som skulle göra beställningen av enskilda uppladdningar komplicerad – kan du använda det här exemplet för att ladda upp många modeller samtidigt: [**Azure Digital Twins Model Uploader**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader). Följ anvisningarna i exemplet för att konfigurera och använda det här projektet för att ladda upp modeller till din egen instans.
 
 ### <a name="model-visualizer"></a>Modell visualiserare 
 
-_**För visualisering av modeller**_
+_**För att visualisera modeller**_
 
-När du har laddat upp modeller till din Azure Digital Twins-instans kan du visa modellerna i din Azure Digital Twins-instans, inklusive arv och modellrelationer, med [**hjälp av Azure Digital Twins Model Visualizer**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer). Det här exemplet är för närvarande i utkasttillstånd. Vi uppmuntrar digital twins-utvecklings communityn att utöka och bidra till exemplet. 
+När du har överfört modeller till din Azure Digital Twins-instans kan du visa modellerna i din Azure Digital Twins-instans, inklusive arv och modellrelationer, med [**hjälp av Azure Digital Twins Model Visualizer**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer). Det här exemplet är för närvarande i utkasttillstånd. Vi uppmuntrar digital twins-utvecklings communityn att utöka och bidra till exemplet. 
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Lär dig mer om att skapa modeller baserade på branschstandardbaserade ontologier: [ *Begrepp: Vad är en ontologi?*](concepts-ontologies.md)
+* Lär dig mer om att skapa modeller baserade på ontologier av [ *branschstandard: Begrepp: Vad är en ontologi?*](concepts-ontologies.md)
 
 * Fördjupa dig i att hantera modeller med [ *API-åtgärder: Så här hanterar du DTDL-modeller*](how-to-manage-model.md)
 

@@ -1,18 +1,18 @@
 ---
 title: Konfigurera en WAF
-description: Lär dig hur du konfigurerar en brand vägg för webbaserade program (WAF) framför dina App Service-miljön, antingen med Azure Application Gateway eller WAF från tredje part.
+description: Lär dig hur du konfigurerar en brandvägg för webbaserade program (WAF) framför din App Service-miljön, antingen med Azure Application Gateway eller en brandvägg för webbaserade program från tredje part.
 author: ccompy
 ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
 ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 354568fa3ab3816b643a8f08305ab55868a9b0b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56d931f2346e5a0b615d3f11dce3b06396e586b4
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90973699"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588725"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurera en brandvägg för webbaserade program (WAF) för en App Service-miljö
 ## <a name="overview"></a>Översikt
@@ -26,7 +26,7 @@ Det finns flera alternativ utöver Azure Application Gateway, till exempel [Barr
 ## <a name="setup"></a>Konfiguration
 I det här dokumentet konfigurerar vi App Service-miljön bakom flera belastningsutjämnade instanser av Barracuda WAF så att endast trafik från WAF kan nå App Service-miljön och att det inte går att komma åt miljön från DMZ. Vi har också Azure Traffic Manager framför Barracuda WAF-instanserna för att belastningsutjämna över Azure-datacenter och -regioner. Ett översiktsdiagram över hur konfigurationen skulle se ut:
 
-![Diagram visar ett valfritt Azure-Traffic Manager ansluter till instanser av brand vägg för webbaserade program, ansluter till nätverk A C L för att bara tillåta trafik från brand väggen i en App Service-miljön som innehåller webb, en P I och mobilapp för två regioner.][Architecture] 
+![Diagram som visar ett valfritt Azure Traffic Manager som ansluter till instanser av Web Application Firewall och ansluter till nätverk A C L för att endast tillåta trafik från brandväggen i en App Service-miljön som innehåller webb-, A P I- och mobilapp för två regioner.][Architecture] 
 
 > [!NOTE]
 > Med introduktionen av [ILB-stöd för App Service-miljön](app-service-environment-with-internal-load-balancer.md) kan du konfigurera ASE så att miljön inte kan nås från DMZ utan endast är tillgänglig för det privata nätverket. 
@@ -66,12 +66,12 @@ När du har loggat in visas en instrumentpanel som ser ut som på bilden nedan. 
 
 ![Hanteringspanel][ManagementDashboard]
 
-Om du klickar på fliken **Tjänster** kan du konfigurera WAF för de tjänster som skyddas av brandväggen. Mer information om hur du konfigurerar Barracuda WAF finns i [Barracudas dokumentation](https://techlib.barracuda.com/waf/getstarted1). I följande exempel visas en Azure App Service-app som har konfigurerats med trafik via HTTP och HTTPS.
+Om du klickar på fliken **Tjänster** kan du konfigurera WAF för de tjänster som skyddas av brandväggen. Mer information om hur du konfigurerar Barracuda WAF finns i [Barracudas dokumentation](https://campus.barracuda.com/product/webapplicationfirewall/doc/4259884/configure-the-barracuda-web-application-firewall-from-the-web-interface/). I följande exempel visas en Azure App Service-app som har konfigurerats med trafik via HTTP och HTTPS.
 
 ![Lägga till tjänster att hantera][ManagementAddServices]
 
 > [!NOTE]
-> Beroende på hur dina program har kon figurer ATS och vilka funktioner som används i App Service-miljön måste du vidarebefordra trafik för andra TCP-portar än 80 och 443, om du till exempel har en IP-TLS-installation för en App Service-app. En lista över nätverksportar som används i App Service-miljöer finns i [avsnittet om nätverksportar i dokumentationen om hur du kontrollerar inkommande trafik](app-service-app-service-environment-control-inbound-traffic.md).
+> Beroende på hur dina program konfigureras och vilka funktioner som används i din App Service-miljön måste du vidarebefordra trafik för andra TCP-portar än 80 och 443, till exempel om du har IP-TLS-konfiguration för en App Service-app. En lista över nätverksportar som används i App Service-miljöer finns i [avsnittet om nätverksportar i dokumentationen om hur du kontrollerar inkommande trafik](app-service-app-service-environment-control-inbound-traffic.md).
 > 
 > 
 
@@ -89,7 +89,7 @@ För att kunna vidarebefordra Traffic Manager-ping från WAF till ditt program m
 ![Website Translations (webbplatsöversättningar)][WebsiteTranslations]
 
 ## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>Skydda trafik till App Service-miljön med nätverkssäkerhetsgrupper
-I [dokumentationen om hur du kontrollerar inkommande trafik](app-service-app-service-environment-control-inbound-traffic.md) finns information om hur du begränsar trafiken till din App Service-miljö från endast WAF med hjälp av VIP-adressen för din molntjänst. Här är ett exempel på PowerShell-kommando för att utföra den här uppgiften för TCP-port 80.
+I [dokumentationen om hur du kontrollerar inkommande trafik](app-service-app-service-environment-control-inbound-traffic.md) finns information om hur du begränsar trafiken till din App Service-miljö från endast WAF med hjälp av VIP-adressen för din molntjänst. Här är ett PowerShell-exempelkommando för att utföra den här uppgiften för TCP-port 80.
 
 ```azurepowershell-interactive
 Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP

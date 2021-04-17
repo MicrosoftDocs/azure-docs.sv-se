@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 04/16/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28cc8a858d1779e17c893d64eda5f907bb4c808e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1aafcd8ace846d7da65d95d4148872d5a6eddeee
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577996"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587858"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Självstudie: Konfigurera anslutna Azure Active Directory-hybridenheter manuellt
 
@@ -61,7 +61,7 @@ Kontrollerar att följande URL:er är åtkomliga från datorer i organisationens
 * Organisationens STS (för federerade domäner), som ska ingå i användarens inställningar för lokalt intranät
 
 > [!WARNING]
-> Om din organisation använder proxyservrar som fångar upp SSL-trafik för scenarier som förebyggande av data förlust eller begränsningar för Azure AD-innehavare, kontrollerar du att trafik till ( https://device.login.microsoftonline.com ) är exkluderad från TLS-och-undersök. Det går inte att utesluta " https://device.login.microsoftonline.com " kan orsaka störningar med autentisering av klient certifikat, vilket orsakar problem med enhets registrering och enhets-baserad villkorlig åtkomst.
+> Om din organisation använder proxyservrar som fångar upp SSL-trafik för scenarier som skydd mot dataförlust eller Begränsningar för Azure AD-klientorganisation, ska du se till att trafik till " " undantas från https://device.login.microsoftonline.com TLS-avbrott och -inspektion. Om du inte https://device.login.microsoftonline.com utesluter kan det orsaka störningar i klientcertifikatautentisering, vilket orsakar problem med enhetsregistrering och enhetsbaserad villkorlig åtkomst.
 
 Om organisationen planerar att använda sömlös enkel inloggning måste följande URL kunna nås från datorerna i organisationen. Den måste även läggas till i användarens lokala intranätzon.
 
@@ -76,9 +76,9 @@ För Windows 10-enheter med version 1703 eller tidigare måste du implementera W
 Från och med Windows 10 1803 försöker enheten att slutföra Azure AD-hybridanslutningen med hjälp av den synkroniserade datorn/enheten även om ett försök till en Azure AD-hybridanslutning från en enhet i en federerad domän via AD FS misslyckas, och om Azure AD Connect är konfigurerat för att synkronisera dator-/enhetsobjekten till Azure AD.
 
 > [!NOTE]
-> Om du vill hämta synkroniseringen av enhets registrering för att lyckas, som en del av enhets registrerings konfigurationen, ska du inte utesluta standardattributen för enheten från Azure AD Connect Sync-konfigurationen. Om du vill veta mer om standardenhets-attribut som synkroniseras till Azure AD, se [attribut som synkroniseras med Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10).
+> Om du vill att synkroniseringen av enhetsregistreringen ska lyckas ska du, som en del av konfigurationen för enhetsregistrering, inte undanta standardenhetsattributen från din Azure AD Connect synkroniseringskonfiguration. Mer information om standardenhetsattribut som synkroniseras med Azure AD finns i [Attribut som synkroniseras av Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10).
 
-För att kontrol lera om enheten har åtkomst till ovanstående Microsoft-resurser under system kontot kan du använda anslutnings skriptet för [test av enhets registrering](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) .
+För att kontrollera om enheten kan komma åt ovanstående Microsoft-resurser under systemkontot kan du använda skriptet [Testa enhetsregistreringsanslutning.](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/)
 
 ## <a name="verify-configuration-steps"></a>Verifiera konfigurationssteg
 
@@ -145,9 +145,9 @@ Följande skript visar ett exempel på användning av cmdleten. I det här skrip
 
 Cmdleten `Initialize-ADSyncDomainJoinedComputerSync`:
 
-* Använder Active Directory PowerShell-modulen och Azure Active Directory Domain Services-verktyg (Azure AD DS). De här verktygen är beroende av Active Directory-webbtjänster som körs på en domänkontrollant. Active Directory Web Services fungerar på domänkontrollanter som kör Windows Server 2008 R2 och senare.
-* Det stöds endast av MSOnline PowerShell-modulversion 1.1.166.0. Använd [den här länken](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)om du vill hämta den här modulen.
-* Om AD DS-verktygen inte är installerade `Initialize-ADSyncDomainJoinedComputerSync` kommer att Miss förfaller. Du kan installera AD DS-verktyg via Serverhanteraren under **funktioner**  >  **verktyg för fjärrserveradministration**  >  **roll administrations verktyg**.
+* Använder Active Directory PowerShell-modulen och Active Directory Domain Services (AD DS) verktyg. De här verktygen är beroende av Active Directory-webbtjänster som körs på en domänkontrollant. Active Directory Web Services fungerar på domänkontrollanter som kör Windows Server 2008 R2 och senare.
+* Det stöds endast av MSOnline PowerShell-modulversion 1.1.166.0. Använd den här länken för att [ladda ned den här modulen.](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
+* Om AD DS-verktygen inte är installerade `Initialize-ADSyncDomainJoinedComputerSync` misslyckas. Du kan installera AD DS-verktygen via Serverhanteraren under **Funktioner**  >  **verktyg för fjärrserveradministration**  >  **verktyg för rolladministration.**
 
 För domänkontrollanter som kör Windows Server 2008 eller tidigare versioner använder du följande skript för att skapa tjänstanslutningspunkten. I en konfiguration med flera skogar använder du följande skript för att skapa tjänstanslutningspunkten i varje skog där det finns datorer.
 
@@ -182,7 +182,7 @@ I en federerad Azure AD-konfiguration förlitar sig enheter på AD FS eller en l
 
 Aktuella Windows-enheter autentiseras med hjälp av integrerad Windows-autentisering till en aktiv WS-Trust-slutpunkt (antingen version 1.3 eller 2005) som har den lokala federationstjänsten som värd.
 
-När du använder AD FS måste du aktivera följande WS-Trust-slutpunkter
+När du använder AD FS måste du aktivera följande WS-Trust slutpunkter
 - `/adfs/services/trust/2005/windowstransport`
 - `/adfs/services/trust/13/windowstransport`
 - `/adfs/services/trust/2005/usernamemixed`
@@ -191,7 +191,7 @@ När du använder AD FS måste du aktivera följande WS-Trust-slutpunkter
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> Både **ADFS/tjänster/Trust/2005/windowstransport** och **adfs/services/trust/13/windowstransport** ska aktive ras som enbart intranät riktade slut punkter och får inte visas som extra näts slut punkter via webbprogramproxy. Mer information om hur du inaktiverar WS-Trust slut punkter i Windows finns i [inaktivera WS-Trust Windows-slutpunkter på proxyn](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Du kan se vilka slut punkter som aktive ras via AD FS hanterings konsolen under **tjänst**  >  **slut punkter**.
+> Både **adfs/services/trust/2005/windowstransport** och **adfs/services/trust/13/windowstransport** ska aktiveras som endast intranätriktade slutpunkter och får INTE exponeras som extranätsriktade slutpunkter via Programproxy. Mer information om hur du inaktiverar WS-Trust Windows-slutpunkter finns [i Inaktivera WS-Trust Windows-slutpunkter på proxyservern.](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet) Du kan se vilka slutpunkter som är aktiverade via AD FS-hanteringskonsolen under  >  **Tjänstslutpunkter**.
 
 > [!NOTE]
 >Om du inte har AD FS som en lokal federationstjänst följer du instruktionerna från din leverantör för att kontrollera att den stöder WS-Trust 1.3- eller 2005-slutpunkter och att de har publicerats via MEX-filen (Metadata Exchange).
@@ -206,7 +206,7 @@ Om du har mer än ett verifierat domännamn måste du ange följande anspråk f�
 
 * `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`
 
-Om du redan utfärdar ett ImmutableID-anspråk (t. ex. genom att använda `mS-DS-ConsistencyGuid` eller ett annat attribut som käll värde för ImmutableID) måste du ange ett motsvarande anspråk för datorer:
+Om du redan utfärdar ett ImmutableID-anspråk (till exempel med eller ett annat attribut som källvärde för ImmutableID) måste du ange ett motsvarande anspråk `mS-DS-ConsistencyGuid` för datorer:
 
 * `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`
 
@@ -335,7 +335,7 @@ Om du vill hämta en lista över verifierade företagsdomäner kan du använda c
 
 ![Lista över företagsdomäner](./media/hybrid-azuread-join-manual/01.png)
 
-### <a name="issue-immutableid-for-the-computer-when-one-for-users-exists-for-example-using-ms-ds-consistencyguid-as-the-source-for-immutableid"></a>Utfärda ImmutableID för datorn när en för användare finns (till exempel med mS-DS-ConsistencyGuid som källa för ImmutableID)
+### <a name="issue-immutableid-for-the-computer-when-one-for-users-exists-for-example-using-ms-ds-consistencyguid-as-the-source-for-immutableid"></a>Utfärda ImmutableID för datorn när det finns ett för användare (till exempel med mS-DS-ConsistencyGuid som källa för ImmutableID)
 
 Anspråket `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID` måste innehålla ett giltigt värde för datorer. I AD FS kan du skapa en utfärdanderegel för transformering enligt följande:
 
@@ -487,7 +487,7 @@ Med följande skript kan du skapa utfärdande av transformeringsregler såsom be
 #### <a name="remarks"></a>Kommentarer
 
 * Det här skriptet lägger till reglerna till befintliga regler. Kör inte skriptet två gånger, eftersom regeluppsättningen då läggs till två gånger. Kontrollera att det inte finns några motsvarande regler för anspråken (under motsvarande villkor) innan du kör skriptet igen.
-* Om du har flera verifierade domännamn (som visas i Azure AD-portalen eller via cmdleten **Get-MsolDomain**) anger du värdet **$multipleVerifiedDomainNames** i skriptet till **$true**. Se också till att du tar bort alla befintliga **issuerid** -anspråk som kan ha skapats av Azure AD Connect eller via andra sätt. Här är ett exempel för den här regeln:
+* Om du har flera verifierade domännamn (som visas i Azure AD-portalen eller via cmdleten **Get-MsolDomain**) anger du värdet **$multipleVerifiedDomainNames** i skriptet till **$true**. Se också till att du tar bort alla **befintliga issuerid-anspråk** som kan ha skapats av Azure AD Connect eller på annat sätt. Här är ett exempel för den här regeln:
 
    ```
    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"]
@@ -507,9 +507,9 @@ Om några av dina domänanslutna enheter är äldre Windows-enheter måste du:
 
 ### <a name="set-a-policy-in-azure-ad-to-enable-users-to-register-devices"></a>Ange en princip i Azure AD för att göra det möjligt för användare att registrera enheter
 
-Om du vill registrera äldre Windows-enheter ser du till att den inställning som tillåter användarna att registrera enheter i Azure AD är aktiverad. I Azure Portal kan du hitta den här inställningen under **Azure Active Directory**  >  **användare och grupper**  >  **enhets inställningar**.
+Om du vill registrera äldre Windows-enheter ser du till att den inställning som tillåter användarna att registrera enheter i Azure AD är aktiverad. I Azure Portal hittar du den här inställningen under **Azure Active Directory**  >  **Användare och grupper**  >  **Enhetsinställningar**.
 
-Följande princip måste anges till **alla**: **användare kan registrera sina enheter med Azure AD**.
+Följande princip måste vara inställd på **Alla:** **Användare kan registrera sina enheter med Azure AD.**
 
 ![Knappen Alla som gör att användarna kan registrera enheter](./media/hybrid-azuread-join-manual/23.png)
 
@@ -529,7 +529,7 @@ När en sådan begäran inkommer måste den lokala federationstjänsten autentis
 
 I AD FS måste du lägga till en utfärdanderegel för transformering som skickas genom autentiseringsmetoden. Så här lägger du till regeln:
 
-1. I AD FS hanterings konsolen går du till **AD FS**  >  **förtroende relationer**  >  **förlitande parts förtroenden**.
+1. I AD FS-hanteringskonsolen går **du till AD FS**  >  **förtroenderelationer**  >  **förlitande partsförtroende.**
 1. Högerklicka på förtroendeobjektet som förlitar sig på Microsoft Office 365-identitetsplattformen och välj **Edit Claim Rules** (Redigera anspråksregler).
 1. På fliken **Issuance Transform Rules** (Regler för utfärdandetransformering) väljer du **Lägg till regel**.
 1. I mallistan **Claim rule** (Anspråksregel) väljer du **Skicka anspråk med hjälp av en anpassad regel**.
@@ -539,7 +539,7 @@ I AD FS måste du lägga till en utfärdanderegel för transformering som skicka
 
    `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-1. På din federationsserver ange du följande PowerShell-kommando. Ersätt **\<RPObjectName\>** med det förlitande part objekt namnet för ditt Azure AD-förtroende objekt för förlitande part. Det här objektet heter vanligtvis **Microsoft Office 365-identitetsplattformen**.
+1. På din federationsserver ange du följande PowerShell-kommando. Ersätt **\<RPObjectName\>** med objektnamnet för den förlitande parten för ditt Azure AD-förlitande partsförtroendeobjekt. Det här objektet heter vanligtvis **Microsoft Office 365-identitetsplattformen**.
 
    `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 
@@ -551,58 +551,58 @@ Om du vill undvika certifikatuppmaningar när användare av registrerade enheter
 
 ### <a name="control-windows-down-level-devices"></a>Kontrollera äldre Windows-enheter
 
-För att registrera äldre Windows-enheter måste du ladda ned och installera ett Windows Installer-paket (.msi) från Download Center. Mer information finns i avsnittet [kontrollerad validering av hybrid Azure AD-anslutning på Windows-baserade enheter](hybrid-azuread-join-control.md#controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices).
+För att registrera äldre Windows-enheter måste du ladda ned och installera ett Windows Installer-paket (.msi) från Download Center. Mer information finns i avsnittet [Kontrollerad validering av Azure AD-hybridanslutningar på windows-enheter på lägre nivå.](hybrid-azuread-join-control.md#controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices)
 
 ## <a name="verify-joined-devices"></a>Verifiera anslutna enheter
 
-Här är tre sätt att hitta och kontrol lera enhets status:
+Här är tre sätt att hitta och verifiera enhetens tillstånd:
 
 ### <a name="locally-on-the-device"></a>Lokalt på enheten
 
 1. Öppna Windows PowerShell.
 2. Ange `dsregcmd /status`.
-3. Kontrol lera att både **AzureAdJoined** och **DomainJoined** har angetts till **Ja**.
-4. Du kan använda **DeviceID** och jämföra statusen för tjänsten med hjälp av antingen Azure Portal eller PowerShell.
+3. Kontrollera att både **AzureAdJoined** **och DomainJoined** är inställda på YES ( **JA).**
+4. Du kan använda **DeviceId och** jämföra statusen för tjänsten med hjälp av antingen Azure Portal eller PowerShell.
 
 ### <a name="using-the-azure-portal"></a>Använda Azure Portal
 
-1. Gå till sidan enheter med en [direkt länk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices).
-2. Information om hur du hittar en enhet hittar [du i hantera enhets identiteter med hjälp av Azure Portal](./device-management-azure-portal.md#manage-devices).
-3. Om den **registrerade** kolumnen säger **väntar**, slutförs inte hybrid Azure AD Join. I federerade miljöer kan detta bara inträffa om det inte kunde registreras och AAD Connect har kon figurer ATS för att synkronisera enheterna.
-4. Om den **registrerade** kolumnen innehåller ett **datum/tid** har hybrid Azure AD Join slutförts.
+1. Gå till enhetssidan med en [direktlänk.](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)
+2. Information om hur du hittar en enhet finns i Så här [hanterar du enhetsidentiteter med hjälp av Azure Portal](./device-management-azure-portal.md#manage-devices).
+3. Om det **står Väntande** i **kolumnen Registrerad** har Inte Hybrid Azure AD Join slutförts. I federerade miljöer kan detta bara inträffa om det inte gick att registrera och AAD Connect har konfigurerats för att synkronisera enheterna.
+4. Om kolumnen **Registrerad** innehåller ett **datum/tid har** Hybrid Azure AD Join slutförts.
 
 ### <a name="using-powershell"></a>Använda PowerShell
 
-Verifiera enhetens registrerings tillstånd i din Azure-klient med hjälp av **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)**. Denna cmdlet finns i [Azure Active Directory PowerShell-modulen](/powershell/azure/active-directory/install-msonlinev1).
+Kontrollera enhetsregistreringstillståndet i din Azure-klientorganisation **[med hjälp av Get-MsolDevice](/powershell/module/msonline/get-msoldevice)**. Den här cmdleten finns [i Azure Active Directory PowerShell-modulen](/powershell/azure/active-directory/install-msonlinev1).
 
-När du använder cmdleten **Get-MSolDevice** för att kontrol lera tjänst informationen:
+När du använder **cmdleten Get-MSolDevice** för att kontrollera tjänstinformationen:
 
-- Det måste finnas ett objekt med det **enhets-ID** som matchar ID: t för Windows-klienten.
-- Värdet för **DeviceTrustType** **är domänanslutna**. Den här inställningen motsvarar **hybrid Azure AD-anslutna** tillstånd på sidan **enheter** i Azure AD-portalen.
-- För enheter som används i villkorlig åtkomst är värdet för **Enabled** **True** och **DeviceTrustLevel** **hanteras**.
+- Det måste finnas ett **objekt med det enhets-ID** som matchar ID:t på Windows-klienten.
+- Värdet för **DeviceTrustType är** **Domän-ansluten**. Den här inställningen motsvarar tillståndet **Hybrid Azure AD-ansluten** på **sidan Enheter** i Azure AD-portalen.
+- För enheter som används i villkorsstyrd åtkomst är värdet **för Aktiverad** **True och** **DeviceTrustLevel** **hanterat.**
 
 1. Öppna Windows PowerShell som administratör.
-2. Ange `Connect-MsolService` för att ansluta till din Azure-klient.
+2. Ange `Connect-MsolService` för att ansluta till din Azure-klientorganisation.
 
-#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>Räkna alla hybrid Azure AD-anslutna enheter (exklusive **väntande** tillstånd)
+#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>Räkna alla Hybrid Azure AD-anslutna enheter (exklusive **väntande** tillstånd)
 
 ```azurepowershell
 (Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
 ```
 
-#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Räkna alla hybrid Azure AD-anslutna enheter med **väntande** tillstånd
+#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Räkna alla Hybrid Azure AD-anslutna enheter med **väntande** tillstånd
 
 ```azurepowershell
 (Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
 ```
 
-#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>Lista alla hybrid Azure AD-anslutna enheter
+#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>Lista alla Hybrid Azure AD-anslutna enheter
 
 ```azurepowershell
 Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
 ```
 
-#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Lista alla hybrid Azure AD-anslutna enheter med **väntande** tillstånd
+#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Lista alla Hybrid Azure AD-anslutna enheter **med väntande** tillstånd
 
 ```azurepowershell
 Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
@@ -610,16 +610,16 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 #### <a name="list-details-of-a-single-device"></a>Visa information om en enskild enhet:
 
-1. Ange `get-msoldevice -deviceId <deviceId>` (detta är den **DeviceID** som hämtades lokalt på enheten).
+1. Ange `get-msoldevice -deviceId <deviceId>` (Detta är det **DeviceId som** hämtas lokalt på enheten).
 2. Kontrollera att **Aktiverad** är inställd på **SANT**.
 
 ## <a name="troubleshoot-your-implementation"></a>Felsöka din implementering
 
-Om du får problem med att slutföra hybrid Azure AD Join för domänanslutna Windows-enheter, se:
+Om du får problem med att slutföra Azure AD-hybridanslutningar för domän anslutna Windows-enheter kan du se:
 
 - [Felsöka enheter med kommandot dsregcmd](./troubleshoot-device-dsregcmd.md)
 - [Felsöka Azure Active Directory-hybridanslutna enheter](troubleshoot-hybrid-join-windows-current.md)
-- [Felsöka hybrid Azure Active Directory anslutna enheter med äldre versioner](troubleshoot-hybrid-join-windows-legacy.md)
+- [Felsöka hybridenheter Azure Active Directory anslutna enheter på lägre nivå](troubleshoot-hybrid-join-windows-legacy.md)
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -1,7 +1,7 @@
 ---
-title: SSML (Speech syntes Markup Language) – tal tjänsten
+title: Speech Synthesis Markup Language (SSML) – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Använd tal syntes märknings språk för att kontrol lera uttal och prosody i text-till-tal.
+description: Använda Speech Synthesis Markup Language för att styra uttal och prosody i text till tal.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,45 +11,45 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2c66a7e3bf9e417b47d08e50e21c08625e9d0549
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 1d21691af4d52892f507695a56331816b14bf517
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210218"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588385"
 ---
-# <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Förbättra syntesen med SSML (Speech syntes Markup Language)
+# <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Förbättra syntesen med Speech Synthesis Markup Language (SSML)
 
-SSML (Speech syntes Markup Language) är ett XML-baserat kodspråk som låter utvecklare ange hur indata ska konverteras till syntetiskt tal med hjälp av text till tal-tjänsten. Jämfört med oformaterad text gör SSML att utvecklare kan finjustera färgdjup, uttal, tal frekvens, volym och annat text till tal-utdata. Normal interpunktion, till exempel pausa efter en punkt eller med rätt intonation när en mening slutar med ett frågetecken, hanteras automatiskt.
+Speech Synthesis Markup Language (SSML) är ett XML-baserat märkspråk som gör att utvecklare kan ange hur indatatext konverteras till syntetiserat tal med hjälp av text till tal-tjänsten. Jämfört med oformaterad text gör SSML att utvecklare kan finjustera tonhöjd, uttal, talfrekvens, volym och mer av text till tal-utdata. Normala skiljetecken, till exempel att pausa efter en punkt eller använda rätt intonation när en mening slutar med ett frågetecken, hanteras automatiskt.
 
-Tal tjänst implementeringen av SSML baseras på World Wide Web Consortiumens [tal syntess språk Version 1,0](https://www.w3.org/TR/speech-synthesis).
+Speech Service-implementeringen av SSML baseras på World Wide Web Consortium Speech [Synthesis Markup Language version 1.0](https://www.w3.org/TR/speech-synthesis).
 
 > [!IMPORTANT]
-> Kinesiska, japanska och koreanska tecken räknas som två tecken för fakturering. Mer information finns i [prissättning](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> Kinesiska, japanska och koreanska tecken räknas som två tecken för fakturering. Mer information finns i [Prissättning.](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 
 ## <a name="neural-and-custom-voices"></a>Neurala och anpassade röster
 
-Använd en mänsklig neurala röst eller skapa en egen anpassad röst som är unik för din produkt eller ditt varumärke. En fullständig lista över språk som stöds, nationella inställningar och röster finns i [språk stöd](language-support.md). Läs mer om neurala och anpassade röster i [text till tal-översikt](text-to-speech.md).
+Använd en mänsklig neural röst eller skapa en egen anpassad röst som är unik för din produkt eller ditt varumärke. En fullständig lista över språk, språk och röster som stöds finns i [språkstöd.](language-support.md) Mer information om neurala och anpassade röster finns i [Översikt över text till tal.](text-to-speech.md)
 
 
 > [!NOTE]
-> Du kan höra röster i olika format och läsa exempel texten på [sidan text till tal](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features).
+> Du kan höra röster i olika format och tonhöjder läsa exempeltext [med hjälp Text till tal sidan](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features).
 
 
 ## <a name="special-characters"></a>Specialtecken
 
-När du använder SSML bör du tänka på att specialtecken, till exempel citat tecken, apostrofer och hakparenteser måste föregås. Mer information finns i [Extensible Markup Language (XML) 1,0: bilaga D](https://www.w3.org/TR/xml/#sec-entexpand).
+När du använder SSML bör du komma ihåg att specialtecken, till exempel citattecken, apostrofer och hakparenteser måste hoppas över. Mer information finns i [Extensible Markup Language (XML) 1.0: Bilaga D](https://www.w3.org/TR/xml/#sec-entexpand).
 
 ## <a name="supported-ssml-elements"></a>SSML-element som stöds
 
-Varje SSML-dokument skapas med SSML-element (eller taggar). Dessa element används för att justera bredd, prosody, volym och mycket annat. Följande avsnitt innehåller information om hur varje element används och när ett element krävs eller är valfritt.
+Varje SSML-dokument skapas med SSML-element (eller taggar). De här elementen används för att justera tonhöjd, prosody, volym med mera. I följande avsnitt beskrivs hur varje element används och när ett element krävs eller är valfritt.
 
 > [!IMPORTANT]
-> Glöm inte att använda dubbla citat tecken runt attributvärden. Standarder för välformulerad, giltig XML kräver att attributvärden omges av dubbla citat tecken. Till exempel `<prosody volume="90">` är ett välformulerat, giltigt element, men `<prosody volume=90>` det är inte. SSML kan inte identifiera attributvärden som inte är inom citat tecken.
+> Glöm inte att använda dubbla citattecken runt attributvärden. Standarder för välformade, giltiga XML kräver att attributvärden omges av dubbla citattecken. Är till `<prosody volume="90">` exempel ett välformade, giltigt element, men `<prosody volume=90>` det är det inte. SSML kanske inte känner igen attributvärden som inte är inom citattecken.
 
 ## <a name="create-an-ssml-document"></a>Skapa ett SSML-dokument
 
-`speak` är rot elementet och **krävs** för alla SSML-dokument. `speak`-Elementet innehåller viktig information, till exempel version, språk och definition av terminologi för markering.
+`speak` är rotelementet och krävs **för** alla SSML-dokument. Elementet `speak` innehåller viktig information, till exempel version, språk och definition av påläggsvokabulär.
 
 **Syntax**
 
@@ -61,13 +61,13 @@ Varje SSML-dokument skapas med SSML-element (eller taggar). Dessa element använ
 
 | Attribut | Beskrivning | Obligatorisk/valfri |
 |-----------|-------------|---------------------|
-| `version` | Anger den version av SSML-specifikationen som används för att tolka dokument markeringen. Den aktuella versionen är 1,0. | Obligatorisk |
-| `xml:lang` | Anger språket för rot dokumentet. Värdet får innehålla gemener, gemener och versaler (t. ex. `en` ) eller språk koden och land/region (t. ex. `en-US` ). | Obligatorisk |
-| `xmlns` | Anger den URI till dokumentet som definierar ord listan (element typerna och attributnamnet) för SSML-dokumentet. Aktuell URI är http://www.w3.org/2001/10/synthesis . | Obligatorisk |
+| `version` | Anger vilken version av SSML-specifikationen som används för att tolka dokumentpålägget. Den aktuella versionen är 1.0. | Obligatorisk |
+| `xml:lang` | Anger språket i rotdokumentet. Värdet kan innehålla en språkkod med gemener, två bokstäver (till exempel ), eller språkkoden och `en` land/region med versaler (till exempel `en-US` ). | Obligatorisk |
+| `xmlns` | Anger URI:n till dokumentet som definierar påläggsvokabulären (elementtyper och attributnamn) för SSML-dokumentet. Den aktuella URI:en är http://www.w3.org/2001/10/synthesis . | Obligatorisk |
 
-## <a name="choose-a-voice-for-text-to-speech"></a>Välj röst för text till tal
+## <a name="choose-a-voice-for-text-to-speech"></a>Välja en röst för text till tal
 
-`voice`Elementet måste anges. Den används för att ange vilken röst som används för text till tal.
+Elementet `voice` är obligatoriskt. Den används för att ange rösten som används för text till tal.
 
 **Syntax**
 
@@ -79,14 +79,14 @@ Varje SSML-dokument skapas med SSML-element (eller taggar). Dessa element använ
 
 **Attribut**
 
-| Attribut | Beskrivning | Obligatorisk/valfri |
+| Attribut | Beskrivning | Obligatoriskt/valfritt |
 |-----------|-------------|---------------------|
-| `name` | Identifierar rösten som används för text till tal-utdata. En fullständig lista över vilka röster som stöds finns i [språk stöd](language-support.md#text-to-speech). | Obligatorisk |
+| `name` | Identifierar rösten som används för text-till-tal-utdata. En fullständig lista över röster som stöds finns i [Språkstöd.](language-support.md#text-to-speech) | Obligatorisk |
 
 **Exempel**
 
 > [!NOTE]
-> I det här exemplet används `en-US-JennyNeural` rösten. En fullständig lista över vilka röster som stöds finns i [språk stöd](language-support.md#text-to-speech).
+> I det här exemplet används `en-US-JennyNeural` rösten. En fullständig lista över röster som stöds finns i [Språkstöd.](language-support.md#text-to-speech)
 
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -96,26 +96,26 @@ Varje SSML-dokument skapas med SSML-element (eller taggar). Dessa element använ
 </speak>
 ```
 
-## <a name="use-multiple-voices"></a>Använd flera röster
+## <a name="use-multiple-voices"></a>Använda flera röster
 
-I `speak` -elementet kan du ange flera röster för text till tal-utdata. Dessa röster kan vara på olika språk. För varje röst måste texten vara figursatt i ett- `voice` element.
+I elementet `speak` kan du ange flera röster för text-till-tal-utdata. Dessa röster kan finnas på olika språk. För varje röst måste texten vara omsluten i ett `voice` -element.
 
 **Attribut**
 
-| Attribut | Beskrivning | Obligatorisk/valfri |
+| Attribut | Beskrivning | Obligatoriskt/valfritt |
 |-----------|-------------|---------------------|
-| `name` | Identifierar rösten som används för text till tal-utdata. En fullständig lista över vilka röster som stöds finns i [språk stöd](language-support.md#text-to-speech). | Obligatorisk |
+| `name` | Identifierar rösten som används för text-till-tal-utdata. En fullständig lista över röster som stöds finns i [Språkstöd.](language-support.md#text-to-speech) | Obligatorisk |
 
 > [!IMPORTANT]
-> Flera röster är inkompatibla med ord gränsens funktion. Ord gränsen måste inaktive ras för att flera röster ska kunna användas.
+> Flera röster är inkompatibla med funktionen för ordgräns. Funktionen för ordgräns måste inaktiveras för att flera röster ska kunna användas.
 
-### <a name="disable-word-boundary"></a>Inaktivera ord gränser
+### <a name="disable-word-boundary"></a>Inaktivera ordgräns
 
-Beroende på språket Speech SDK anger du `"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"` egenskapen till `false` på en instans av `SpeechConfig` objektet.
+Beroende på språket för Speech SDK anger du egenskapen `"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"` till på en instans av `false` `SpeechConfig` objektet.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Mer information finns i <a href="/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty" target="_blank"> `SetProperty` </a>.
+Mer information finns <a href="/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty" target="_blank"> `SetProperty` </a>i .
 
 ```csharp
 speechConfig.SetProperty(
@@ -124,7 +124,7 @@ speechConfig.SetProperty(
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-Mer information finns i <a href="/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` </a>.
+Mer information finns <a href="/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` </a>i .
 
 ```cpp
 speechConfig->SetProperty(
@@ -133,7 +133,7 @@ speechConfig->SetProperty(
 
 # <a name="java"></a>[Java](#tab/java)
 
-Mer information finns i <a href="/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` </a>.
+Mer information finns <a href="/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` </a>i .
 
 ```java
 speechConfig.setProperty(
@@ -142,7 +142,7 @@ speechConfig.setProperty(
 
 # <a name="python"></a>[Python](#tab/python)
 
-Mer information finns i <a href="/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` </a>.
+Mer information finns <a href="/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` </a>i .
 
 ```python
 speech_config.set_property_by_name(
@@ -151,7 +151,7 @@ speech_config.set_property_by_name(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Mer information finns i <a href="/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#setproperty-string--string-" target="_blank"> `setProperty` </a>.
+Mer information finns <a href="/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#setproperty-string--string-" target="_blank"> `setProperty` </a>i .
 
 ```javascript
 speechConfig.setProperty(
@@ -160,7 +160,7 @@ speechConfig.setProperty(
 
 # <a name="objective-c"></a>[Objective-C](#tab/objectivec)
 
-Mer information finns i <a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>.
+Mer information finns <a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>i .
 
 ```objectivec
 [speechConfig setPropertyTo:@"false" byName:@"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"];
@@ -168,7 +168,7 @@ Mer information finns i <a href="/objectivec/cognitive-services/speech/spxspeech
 
 # <a name="swift"></a>[Swift](#tab/swift)
 
-Mer information finns i <a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>.
+Mer information finns <a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>i .
 
 ```swift
 speechConfig!.setPropertyTo(
@@ -190,11 +190,11 @@ speechConfig!.setPropertyTo(
 </speak>
 ```
 
-## <a name="adjust-speaking-styles"></a>Ändra tal format
+## <a name="adjust-speaking-styles"></a>Justera talformat
 
-Som standard används text-till-tal-tjänsten för att syntetisera text med ett neutralt tal format för neurala-röster. Du kan ändra tal formatet till att uttrycka olika känslor, t. ex. cheerfulness, empati och lugn, eller optimera rösten för olika scenarier, t. ex. kund tjänst, newscasting och röst assistenten med hjälp av- `mstts:express-as` elementet. Detta är ett valfritt element som är unikt för tal tjänsten.
+Som standard syntetiserar text till tal-tjänsten text med ett neutralt talformat för neurala röster. Du kan justera talstilen för att uttrycka olika känslor, till exempel känslor, empati och lugn, eller optimera rösten för olika scenarier som kundtjänst, nyhetssändningar och röstassistent med hjälp av `mstts:express-as` elementet . Det här är ett valfritt element som är unikt för Speech-tjänsten.
 
-För närvarande stöds anpassning av format justeringar för följande neurala-röster:
+För närvarande stöds justeringar av talstilen för följande neurala röster:
 * `en-US-AriaNeural`
 * `en-US-JennyNeural`
 * `en-US-GuyNeural`
@@ -202,19 +202,19 @@ För närvarande stöds anpassning av format justeringar för följande neurala-
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 * `zh-CN-YunyeNeural`
-* `zh-CN-YunxiNeural` Förhandsgranskningsvyn
-* `zh-CN-XiaohanNeural` Förhandsgranskningsvyn
-* `zh-CN-XiaomoNeural` Förhandsgranskningsvyn
-* `zh-CN-XiaoxuanNeural` Förhandsgranskningsvyn
-* `zh-CN-XiaoruiNeural` Förhandsgranskningsvyn
+* `zh-CN-YunxiNeural` (Förhandsversion)
+* `zh-CN-XiaohanNeural` (Förhandsversion)
+* `zh-CN-XiaomoNeural` (Förhandsversion)
+* `zh-CN-XiaoxuanNeural` (Förhandsversion)
+* `zh-CN-XiaoruiNeural` (Förhandsversion)
 
-Du kan ändra utseendet på tal formatet så att det bättre passar ditt användnings fall. Du kan ange ett starkare eller mjukare format med `styledegree` om du vill göra talet mer lättfattliga programspecifika eller subdued. För närvarande stöds anpassning av format justeringar för neurala-röster på kinesiska (mandariner, förenklad).
+Intensiteten i talstilen kan ändras ytterligare så att den passar ditt användningsfall bättre. Du kan ange ett starkare eller mjukare format med `styledegree` för att göra talet mer uttrycksfullt eller undermålat. För närvarande stöds justeringar av talstilen för neurala kinesiska röster (mandarin, förenklad).
 
-Förutom att justera tal formaten och format graderna kan du också justera `role` parametern så att rösten imiterar en annan ålder och kön. Till exempel kan en hane-röst öka bredden och ändra intonation till imitera en kvinna röst, men röst namnet kommer inte att ändras. För närvarande stöds roll justeringar för dessa kinesiska (mandariner, förenklade) neurala-röster:
+Förutom att justera talstilarna och stilgraden kan du även justera parametern så att rösten `role` imiterar en annan ålder och ett annat kön. En mans röst kan till exempel höja rösten och ändra intonationen till att imitera en kvinnas röst, men röstnamnet ändras inte. För närvarande stöds rolljusteringar för dessa neurala kinesiska röster (mandarin, förenklad):
 * `zh-CN-XiaomoNeural`
 * `zh-CN-XiaoxuanNeural`
 
-Ovanstående ändringar tillämpas på menings nivå, och format och roll-spelar varierar med röst. Om en stil eller roll-uppspelning inte stöds returnerar tjänsten tal på det neutrala standard sättet. Du kan se vilka formatmallar och roller som stöds för varje röst via [röst listans API](rest-text-to-speech.md#get-a-list-of-voices) eller genom att använda en kod fri plattform för att [skapa ljud innehåll](https://aka.ms/audiocontentcreation) .
+Ändringarna ovan tillämpas på meningsnivå och formaten och rollspelen varierar beroende på röst. Om ett format eller rollspel inte stöds returnerar tjänsten tal på standardneutralt talsätt. Du kan se vilka format och roller [](rest-text-to-speech.md#get-a-list-of-voices) som stöds för varje röst via API:et för röstlistor eller via den [kodfria](https://aka.ms/audiocontentcreation) Skapa ljudinnehåll plattformen.
 
 **Syntax**
 
@@ -228,107 +228,107 @@ Ovanstående ändringar tillämpas på menings nivå, och format och roll-spelar
 <mstts:express-as role="string" style="string"></mstts:express-as>
 ```
 > [!NOTE]
-> För tillfället `styledegree` stöder endast kinesiska (mandariner, förenklad) neurala-röster. `role` stöder endast zh-CN-XiaomoNeural och zh-CN-XiaoxuanNeural.
+> För tillfället stöder endast `styledegree` kinesiska (mandarin, förenklad) neurala röster. `role` har endast stöd för zh-CN-XiauanNeuan och zh-CN-XiaoxuanNeuan.
 
 **Attribut**
 
-| Attribut | Beskrivning | Obligatorisk/valfri |
+| Attribut | Beskrivning | Obligatoriskt/valfritt |
 |-----------|-------------|---------------------|
-| `style` | Anger tal formatet. För närvarande är det röst alternativ att tala om format. | Krävs om du justerar tal formatet för en neurala röst. Om du använder `mstts:express-as` , måste format tillhandahållas. Om ett ogiltigt värde har angetts ignoreras det här elementet. |
-| `styledegree` | Anger intensiteten för tal format. **Godkända värden**: 0,01 till 2. Standardvärdet är 1 vilket innebär den fördefinierade stil intensiteten. Den minsta enheten är 0,01 vilket resulterar i en något tendens för mål formatet. Värdet 2 resulterar i en dubblerad standard stil.  | Valfritt (för tillfället `styledegree` stöder endast kinesiska (mandariner, förenklad) neurala-röster.)|
-| `role` | Anger den talande roll som spelas upp. Rösten fungerar som en annan ålder och kön, men röst namnet kommer inte att ändras.  | Valfritt (för tillfället `role` stöder endast zh-cn-XiaomoNeural och zh-cn-XiaoxuanNeural.)|
+| `style` | Anger talstilen. För närvarande är talformat röstspecifika. | Krävs om du justerar talstilen för en neural röst. Om du `mstts:express-as` använder måste stil anges. Om ett ogiltigt värde anges ignoreras det här elementet. |
+| `styledegree` | Anger intensiteten för talstilen. **Godkända värden:** 0,01 till 2. Standardvärdet är 1, vilket innebär den fördefinierade stilintensiteten. Den minsta enheten är 0,01, vilket resulterar i en något tendens för målformatet. Värdet 2 resulterar i en fördubbling av standardformatintensiteten.  | Valfritt (för tillfället stöder `styledegree` endast kinesiska (mandarin, förenklad) neurala röster.)|
+| `role` | Anger det talade rollspel. Rösten fungerar som en annan ålder och ett annat kön, men röstnamnet ändras inte.  | Valfritt (för tillfället har `role` endast stöd för zh-CN-Xiaaznezh och zh-CN-XiaoxuanNe anomalie.)|
 
-Använd den här tabellen för att avgöra vilka tal format som stöds för varje neurala röst.
+Använd den här tabellen för att avgöra vilka talformat som stöds för varje neural röst.
 
-| Röst                   | Format                     | Beskrivning                                                 |
+| Röst                   | Format                     | Description                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
-| `en-US-AriaNeural`      | `style="newscast-formal"` | Uttrycker en formell, trygg och auktoritativ ton för nyhets leverans |
-|                         | `style="newscast-casual"` | Uttrycker en mångsidig och vardaglig ton för allmän nyhets leverans        |
-|                         | `style="narration-professional"` | Uttrycka en professionell, objektiv ton för innehålls läsning        |
-|                         | `style="customerservice"` | Uttrycker en vänlig och användbar ton för kund support  |
-|                         | `style="chat"`            | Uttrycker en vardaglig och avslappnad ton                         |
-|                         | `style="cheerful"`        | Uttrycker en positiv och trevlig ton                         |
-|                         | `style="empathetic"`      | Uttrycker en uppfattning om Caring och förståelse               |
-| `en-US-JennyNeural`     | `style="customerservice"` | Uttrycker en vänlig och användbar ton för kund support  |
-|                         | `style="chat"`            | Uttrycker en vardaglig och avslappnad ton                         |
+| `en-US-AriaNeural`      | `style="newscast-formal"` | Uttrycker en formell, säker och auktoritativ ton för nyhetsleverans |
+|                         | `style="newscast-casual"` | Uttrycker en mångsidig och informell ton för allmän nyhetsleverans        |
+|                         | `style="narration-professional"` | Uttrycka en professionell, objektiv ton för innehållsläsning        |
+|                         | `style="customerservice"` | Uttrycker en vänlig och användbar ton för kundsupport  |
+|                         | `style="chat"`            | Uttrycker en informell och avslappnad ton                         |
+|                         | `style="cheerful"`        | Uttrycker en positiv och glad ton                         |
+|                         | `style="empathetic"`      | Uttrycker en känsla av omståelse och förståelse               |
+| `en-US-JennyNeural`     | `style="customerservice"` | Uttrycker en vänlig och användbar ton för kundsupporten  |
+|                         | `style="chat"`            | Uttrycker en informell och avslappnad ton                         |
 |                         | `style="assistant"`       | Uttrycker en varm och avslappnad ton för digitala assistenter    |
-|                         | `style="newscast"`        | Uttrycker en mångsidig och vardaglig ton för allmän nyhets leverans   |
-| `en-US-GuyNeural`       | `style="newscast"`        | Uttrycker en formell och professionell ton för nya berättarröstinspelningar |
-| `pt-BR-FranciscaNeural` | `style="calm"`            | Uttrycker en häftig, samlad och bestående attityd när du talar. Ton, färgdjup och prosody är mycket mer enhetligt jämfört med andra typer av tal.                                |
-| `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Uttrycker en formell och professionell ton för nya berättarröstinspelningar |
-|                         | `style="customerservice"` | Uttrycker en vänlig och användbar ton för kund support  |
+|                         | `style="newscast"`        | Uttrycker en mångsidig och informell ton för allmän nyhetsleverans   |
+| `en-US-GuyNeural`       | `style="newscast"`        | Uttrycker en formell och professionell ton för att berätta nyheter |
+| `pt-BR-FranciscaNeural` | `style="calm"`            | Uttrycker en cool, samlad och sammansatt attityd när du talar. Tonfall, tonfall och prosody är mycket mer enhetlig jämfört med andra typer av tal.                                |
+| `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Uttrycker en formell och professionell ton för att berätta nyheter |
+|                         | `style="customerservice"` | Uttrycker en vänlig och användbar ton för kundsupport  |
 |                         | `style="assistant"`       | Uttrycker en varm och avslappnad ton för digitala assistenter    |
-|                         | `style="chat"`            | Uttrycker en vardaglig och avslappnad ton för CHI2TEST           |
-|                         | `style="calm"`            | Uttrycker en häftig, samlad och bestående attityd när du talar. Ton, färgdjup och prosody är mycket mer enhetligt jämfört med andra typer av tal.                                |
-|                         | `style="cheerful"`        | Uttrycker en takt och entusiastisk ton, med högre färgdjup och Vocal energi                         |
-|                         | `style="sad"`             | Uttrycker en sorrowful-ton, med högre avstånd, mindre intensitet och lägre Vocal energi. Vanliga indikatorer för den här känslo skulle vara whimpers eller grått under tal.            |
-|                         | `style="angry"`           | Uttrycker en Angry-och uppretad-ton, med lägre färgdjup, högre intensitet och högre Vocal energi. Högtalaren är i ett tillstånd att vara Irate, avstängt och felfritt.       |
-|                         | `style="fearful"`         | Uttrycker en Scared-och nerv ton, med högre färgdjup, högre Vocal energi och snabbare hastighet. Högtalaren är i läget tenseness och uneasiness.                          |
-|                         | `style="disgruntled"`     | Uttrycker en disdainful och en klagad ton. Tal för den här känslo visar avnöjes och bevarar.              |
-|                         | `style="serious"`         | Uttrycker en strikt och kommando rads ton. Talare låter ofta styvare och mycket mindre avslappnad med fast takt.          |
-|                         | `style="affectionate"`    | Uttrycker en varm och affectionate ton, med högre färgdjup och Vocal energi. Högtalaren är i ett tillstånd där du kan dra uppmärksamheten till lyssnaren. Den "personlighet" av högtalaren är ofta av betydelse.          |
-|                         | `style="gentle"`          | Uttrycker en viss, avslutningen och Pleasant ton, med lägre färgdjup och Vocal energi         |
-|                         | `style="lyrical"`         | Uttrycker känslor i ett Melodic-och sentimental-sätt         |
-| `zh-CN-YunyangNeural`   | `style="customerservice"` | Uttrycker en vänlig och användbar ton för kund support  |
-| `zh-CN-YunyeNeural`     | `style="calm"`            | Uttrycker en häftig, samlad och bestående attityd när du talar. Ton, färgdjup och prosody är mycket mer enhetligt jämfört med andra typer av tal.    |
-|                         | `style="cheerful"`        | Uttrycker en takt och entusiastisk ton, med högre färgdjup och Vocal energi                         |
-|                         | `style="sad"`             | Uttrycker en sorrowful-ton, med högre avstånd, mindre intensitet och lägre Vocal energi. Vanliga indikatorer för den här känslo skulle vara whimpers eller grått under tal.            |
-|                         | `style="angry"`           | Uttrycker en Angry-och uppretad-ton, med lägre färgdjup, högre intensitet och högre Vocal energi. Högtalaren är i ett tillstånd att vara Irate, avstängt och felfritt.       |
-|                         | `style="fearful"`         | Uttrycker en Scared-och nerv ton, med högre färgdjup, högre Vocal energi och snabbare hastighet. Högtalaren är i läget tenseness och uneasiness.                          |
-|                         | `style="disgruntled"`     | Uttrycker en disdainful och en klagad ton. Tal för den här känslo visar avnöjes och bevarar.              |
-|                         | `style="serious"`         | Uttrycker en strikt och kommando rads ton. Talare låter ofta styvare och mycket mindre avslappnad med fast takt.          |
-| `zh-CN-YunxiNeural`     | `style="cheerful"`        | Uttrycker en takt och entusiastisk ton, med högre färgdjup och Vocal energi                         |
-|                         | `style="sad"`             | Uttrycker en sorrowful-ton, med högre avstånd, mindre intensitet och lägre Vocal energi. Vanliga indikatorer för den här känslo skulle vara whimpers eller grått under tal.            |
-|                         | `style="angry"`           | Uttrycker en Angry-och uppretad-ton, med lägre färgdjup, högre intensitet och högre Vocal energi. Högtalaren är i ett tillstånd att vara Irate, avstängt och felfritt.       |
-|                         | `style="fearful"`         | Uttrycker en Scared-och nerv ton, med högre färgdjup, högre Vocal energi och snabbare hastighet. Högtalaren är i läget tenseness och uneasiness.                          |
-|                         | `style="disgruntled"`     | Uttrycker en disdainful och en klagad ton. Tal för den här känslo visar avnöjes och bevarar.              |
-|                         | `style="serious"`         | Uttrycker en strikt och kommando rads ton. Talare låter ofta styvare och mycket mindre avslappnad med fast takt.    |
-|                         | `style="depressed"`       | Uttrycker en melancholic-och despondent-ton med lägre färgdjup och energi    |
-|                         | `style="embarrassed"`     | Uttrycker en osäker och tveka ton när talare känner sig osäker   |
-| `zh-CN-XiaohanNeural`   | `style="cheerful"`        | Uttrycker en takt och entusiastisk ton, med högre färgdjup och Vocal energi                         |
-|                         | `style="sad"`             | Uttrycker en sorrowful-ton, med högre avstånd, mindre intensitet och lägre Vocal energi. Vanliga indikatorer för den här känslo skulle vara whimpers eller grått under tal.            |
-|                         | `style="angry"`           | Uttrycker en Angry-och uppretad-ton, med lägre färgdjup, högre intensitet och högre Vocal energi. Högtalaren är i ett tillstånd att vara Irate, avstängt och felfritt.       |
-|                         | `style="fearful"`         | Uttrycker en Scared-och nerv ton, med högre färgdjup, högre Vocal energi och snabbare hastighet. Högtalaren är i läget tenseness och uneasiness.                          |
-|                         | `style="disgruntled"`     | Uttrycker en disdainful och en klagad ton. Tal för den här känslo visar avnöjes och bevarar.              |
-|                         | `style="serious"`         | Uttrycker en strikt och kommando rads ton. Talare låter ofta styvare och mycket mindre avslappnad med fast takt.    |
-|                         | `style="embarrassed"`     | Uttrycker en osäker och tveka ton när talare känner sig osäker   |
-|                         | `style="affectionate"`    | Uttrycker en varm och affectionate ton, med högre färgdjup och Vocal energi. Högtalaren är i ett tillstånd där du kan dra uppmärksamheten till lyssnaren. Den "personlighet" av högtalaren är ofta av betydelse.          |
-|                         | `style="gentle"`          | Uttrycker en viss, avslutningen och Pleasant ton, med lägre färgdjup och Vocal energi         |
-| `zh-CN-XiaomoNeural`    | `style="cheerful"`        | Uttrycker en takt och entusiastisk ton, med högre färgdjup och Vocal energi                         |
-|                         | `style="angry"`           | Uttrycker en Angry-och uppretad-ton, med lägre färgdjup, högre intensitet och högre Vocal energi. Högtalaren är i ett tillstånd att vara Irate, avstängt och felfritt.       |
-|                         | `style="fearful"`         | Uttrycker en Scared-och nerv ton, med högre färgdjup, högre Vocal energi och snabbare hastighet. Högtalaren är i läget tenseness och uneasiness.                          |
-|                         | `style="disgruntled"`     | Uttrycker en disdainful och en klagad ton. Tal för den här känslo visar avnöjes och bevarar.              |
-|                         | `style="serious"`         | Uttrycker en strikt och kommando rads ton. Talare låter ofta styvare och mycket mindre avslappnad med fast takt.    |
-|                         | `style="depressed"`       | Uttrycker en melancholic-och despondent-ton med lägre färgdjup och energi    |
-|                         | `style="gentle"`          | Uttrycker en viss, avslutningen och Pleasant ton, med lägre färgdjup och Vocal energi         |
-| `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | Uttrycker en takt och entusiastisk ton, med högre färgdjup och Vocal energi                         |
-|                         | `style="angry"`           | Uttrycker en Angry-och uppretad-ton, med lägre färgdjup, högre intensitet och högre Vocal energi. Högtalaren är i ett tillstånd att vara Irate, avstängt och felfritt.       |
-|                         | `style="fearful"`         | Uttrycker en Scared-och nerv ton, med högre färgdjup, högre Vocal energi och snabbare hastighet. Högtalaren är i läget tenseness och uneasiness.                          |
-|                         | `style="disgruntled"`     | Uttrycker en disdainful och en klagad ton. Tal för den här känslo visar avnöjes och bevarar.              |
-|                         | `style="serious"`         | Uttrycker en strikt och kommando rads ton. Talare låter ofta styvare och mycket mindre avslappnad med fast takt.    |
-|                         | `style="depressed"`       | Uttrycker en melancholic-och despondent-ton med lägre färgdjup och energi    |
-|                         | `style="gentle"`          | Uttrycker en viss, avslutningen och Pleasant ton, med lägre färgdjup och Vocal energi         |
-| `zh-CN-XiaoruiNeural`    | `style="sad"`             | Uttrycker en sorrowful-ton, med högre avstånd, mindre intensitet och lägre Vocal energi. Vanliga indikatorer för den här känslo skulle vara whimpers eller grått under tal.            |
-|                         | `style="angry"`           | Uttrycker en Angry-och uppretad-ton, med lägre färgdjup, högre intensitet och högre Vocal energi. Högtalaren är i ett tillstånd att vara Irate, avstängt och felfritt.       |
-|                         | `style="fearful"`         | Uttrycker en Scared-och nerv ton, med högre färgdjup, högre Vocal energi och snabbare hastighet. Högtalaren är i läget tenseness och uneasiness.                          |
+|                         | `style="chat"`            | Uttrycker en informell och avslappnad ton för chit-chat           |
+|                         | `style="calm"`            | Uttrycker en cool, samlad och sammansatt attityd när du talar. Tonfall, tonfall och prosody är mycket mer enhetlig jämfört med andra typer av tal.                                |
+|                         | `style="cheerful"`        | Uttrycker en positiv och entusiastisk ton, med högre tonhöjd och röstkraft                         |
+|                         | `style="sad"`             | Uttrycker en bra tonfall med högre tonhöjd, mindre intensitet och lägre röstkraft. Vanliga indikatorer på den här känslorna skulle vara smpers eller känslor under tal.            |
+|                         | `style="angry"`           | Uttrycker en stört och retad ton, med lägre tonhöjd, högre intensitet och högre röstkraft. Talaren är i ett tillstånd av att vara irate, displeased och störande.       |
+|                         | `style="fearful"`         | Uttrycker en orolig och nervös ton, med högre tonhöjd, högre röstkraft och snabbare hastighet. Talaren är i ett tillstånd av tempus och oförselighet.                          |
+|                         | `style="disgruntled"`     | Uttrycker en föraktlig och klagande ton. Tal av den här känslan visar displeasure och förakt.              |
+|                         | `style="serious"`         | Uttrycker en strikt och kommandoton. Talaren låter ofta lite lugnare och mycket mindre avslappnad med fast takt.          |
+|                         | `style="affectionate"`    | Uttrycker en varm och färgad ton, med högre tonhöjd och röstkraft. Talaren är i ett tillstånd av att dra till sig lyssnarens uppmärksamhet. Talarens "personlighet" är ofta endearing av sin natur.          |
+|                         | `style="gentle"`          | Uttrycker en glad, glad och glad ton med lägre tonhöjd och röstkraft         |
+|                         | `style="lyrical"`         | Uttrycker känslor på ett sentimentalt sätt         |
+| `zh-CN-YunyangNeural`   | `style="customerservice"` | Uttrycker en vänlig och användbar ton för kundsupporten  |
+| `zh-CN-YunyeNeural`     | `style="calm"`            | Uttrycker en cool, samlad och sammansatt attityd när du talar. Tonfall, tonfall och prosody är mycket mer enhetlig jämfört med andra typer av tal.    |
+|                         | `style="cheerful"`        | Uttrycker en positiv och engagerande ton med högre tonhöjd och röstkraft                         |
+|                         | `style="sad"`             | Uttrycker en ydig tonfall med högre tonhöjd, mindre intensitet och lägre röstkraft. Vanliga indikatorer på den här känslorna skulle vara klumpiga eller undermrena under tal.            |
+|                         | `style="angry"`           | Uttrycker en stämt och upphöjd ton, med lägre tonhöjd, högre intensitet och högre röstkraft. Talaren är i ett tillstånd av att vara irate, displeased och förlamad.       |
+|                         | `style="fearful"`         | Uttrycker en nedtoning och en röstton med högre tonhöjd, högre röstkraft och snabbare hastighet. Talaren är i ett tillstånd av tempus och oförselighet.                          |
+|                         | `style="disgruntled"`     | Uttrycker en föraktlig och klagande ton. Tal av den här känslan visar displeasure och förakt.              |
+|                         | `style="serious"`         | Uttrycker en strikt och kommandoton. Talaren låter ofta lite tåligare och mycket mindre avslappnad med fast takt.          |
+| `zh-CN-YunxiNeural`     | `style="cheerful"`        | Uttrycker en positiv och entusiastisk ton, med högre tonhöjd och röstkraft                         |
+|                         | `style="sad"`             | Uttrycker en bra tonfall med högre tonhöjd, mindre intensitet och lägre röstkraft. Vanliga indikatorer på den här känslan är smpers eller underhållare under tal.            |
+|                         | `style="angry"`           | Uttrycker en stämt och upphöjd ton, med lägre tonhöjd, högre intensitet och högre röstkraft. Talaren är i ett tillstånd av att vara irate, displeased och störande.       |
+|                         | `style="fearful"`         | Uttrycker en nedtoning och en röstton med högre tonhöjd, högre röstkraft och snabbare hastighet. Talaren är i ett tillstånd av tempus och oförselighet.                          |
+|                         | `style="disgruntled"`     | Uttrycker en föraktlig och klagande ton. Tal av den här känslan visar displeasure och förakt.              |
+|                         | `style="serious"`         | Uttrycker en strikt och kommandoton. Talaren låter ofta lite tåligare och mycket mindre avslappnad med fast takt.    |
+|                         | `style="depressed"`       | Uttrycker en melancholic and despondent-ton med lägre tonhöjd och energi    |
+|                         | `style="embarrassed"`     | Uttrycker en osäker och tveksam ton när talaren känner sig osäker   |
+| `zh-CN-XiaohanNeural`   | `style="cheerful"`        | Uttrycker en positiv och engagerande ton med högre tonhöjd och röstkraft                         |
+|                         | `style="sad"`             | Uttrycker en ydig tonfall med högre tonhöjd, mindre intensitet och lägre röstkraft. Vanliga indikatorer på den här känslorna skulle vara klumpiga eller undermrena under tal.            |
+|                         | `style="angry"`           | Uttrycker en stört och retad ton, med lägre tonhöjd, högre intensitet och högre röstkraft. Talaren är i ett tillstånd av att vara irate, displeased och störande.       |
+|                         | `style="fearful"`         | Uttrycker en orolig och nervös ton med högre tonhöjd, högre röstkraft och snabbare hastighet. Talaren är i ett tillstånd av tempus och oförselighet.                          |
+|                         | `style="disgruntled"`     | Uttrycker en föraktlig och klagande ton. Tal av den här känslan visar displeasure och förakt.              |
+|                         | `style="serious"`         | Uttrycker en strikt och kommandoton. Talaren låter ofta lite lugnare och mycket mindre avslappnad med fast takt.    |
+|                         | `style="embarrassed"`     | Uttrycker en osäker och tveksam ton när talaren känner sig osäker   |
+|                         | `style="affectionate"`    | Uttrycker en varm och färgad ton, med högre tonhöjd och röstkraft. Talaren är i ett tillstånd av att dra till sig lyssnarens uppmärksamhet. Talarens "personlighet" är ofta endearing av sin natur.          |
+|                         | `style="gentle"`          | Uttrycker en glad, glad och glad ton med lägre tonhöjd och röstkraft         |
+| `zh-CN-XiaomoNeural`    | `style="cheerful"`        | Uttrycker en positiv och engagerande ton med högre tonhöjd och röstkraft                         |
+|                         | `style="angry"`           | Uttrycker en stört och retad ton, med lägre tonhöjd, högre intensitet och högre röstkraft. Talaren är i ett tillstånd av att vara irate, displeased och störande.       |
+|                         | `style="fearful"`         | Uttrycker en nedtoning och en röstton med högre tonhöjd, högre röstkraft och snabbare hastighet. Talaren är i ett tillstånd av tempus och oförselighet.                          |
+|                         | `style="disgruntled"`     | Uttrycker en föraktlig och klagande ton. Tal av den här känslan visar displeasure och förakt.              |
+|                         | `style="serious"`         | Uttrycker en strikt och kommandoton. Talaren låter ofta lite tåligare och mycket mindre avslappnad med fast takt.    |
+|                         | `style="depressed"`       | Uttrycker en melancholic and despondent-ton med lägre tonhöjd och energi    |
+|                         | `style="gentle"`          | Uttrycker en glad, vänlig och färgad ton med lägre tonhöjd och röstkraft         |
+| `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | Uttrycker en positiv och entusiastisk ton, med högre tonhöjd och röstkraft                         |
+|                         | `style="angry"`           | Uttrycker en stämt och upphöjd ton, med lägre tonhöjd, högre intensitet och högre röstkraft. Talaren är i ett tillstånd av att vara irate, displeased och förlamad.       |
+|                         | `style="fearful"`         | Uttrycker en nedtoning och en röstton med högre tonhöjd, högre röstkraft och snabbare hastighet. Talaren är i ett tillstånd av tempus och oförselighet.                          |
+|                         | `style="disgruntled"`     | Uttrycker en föraktlig och klagande ton. Tal av den här känslan visar displeasure och förakt.              |
+|                         | `style="serious"`         | Uttrycker en strikt och kommandoton. Talaren låter ofta lite tåligare och mycket mindre avslappnad med fast takt.    |
+|                         | `style="depressed"`       | Uttrycker en melancholic and despondent-ton med lägre tonhöjd och energi    |
+|                         | `style="gentle"`          | Uttrycker en glad, vänlig och färgad ton med lägre tonhöjd och röstkraft         |
+| `zh-CN-XiaoruiNeural`    | `style="sad"`             | Uttrycker en bra tonfall med högre tonhöjd, mindre intensitet och lägre röstkraft. Vanliga indikatorer på den här känslorna skulle vara klumpiga eller undermrena under tal.            |
+|                         | `style="angry"`           | Uttrycker en stört och retad ton, med lägre tonhöjd, högre intensitet och högre röstkraft. Talaren är i ett tillstånd av att vara irate, displeased och störande.       |
+|                         | `style="fearful"`         | Uttrycker en orolig och nervös ton, med högre tonhöjd, högre röstkraft och snabbare hastighet. Talaren är i ett tillstånd av tempus och oförselighet.                          |
 
-Använd den här tabellen för att kontrol lera vilka roller som stöds och deras definitioner.
+Använd den här tabellen för att kontrollera vilka roller som stöds och deras definitioner.
 
 |Roll                     | Beskrivning                |
 |-------------------------|----------------------------|
-|`role="Girl"`            | Rösten imiterar en flicka. |
-|`role="Boy"`             | Rösten imiterar en pojke. |
-|`role="YoungAdultFemale"`| Rösten imiterar en ung vuxen hona.|
-|`role="YoungAdultMale"`  | Rösten imiterar en ung vuxen hane.|
-|`role="OlderAdultFemale"`| Rösten imiterar en äldre vuxen hona.|
-|`role="OlderAdultMale"`  | Rösten imiterar en äldre vuxen hane.|
-|`role="SeniorFemale"`    | Rösten imiterar en erfaren hona.|
-|`role="SeniorMale"`      | Rösten imiterar en senior hane.|
+|`role="Girl"`            | Rösten liknar en kvinna. |
+|`role="Boy"`             | Rösten liknar en pojkar. |
+|`role="YoungAdultFemale"`| Rösten liknar en ung, vuxen kvinna.|
+|`role="YoungAdultMale"`  | Rösten liknar en ung, vuxen man.|
+|`role="OlderAdultFemale"`| Rösten liknar en äldre vuxen kvinna.|
+|`role="OlderAdultMale"`  | Rösten liknar en äldre vuxen man.|
+|`role="SeniorFemale"`    | Rösten liknar en erfaren kvinna.|
+|`role="SeniorMale"`      | Rösten liknar en erfaren man.|
 
 
 **Exempel**
 
-Det här SSML-kodfragmentet illustrerar hur `<mstts:express-as>` elementet används för att ändra tal formatet till `cheerful` .
+Det här SSML-kodfragmentet `<mstts:express-as>` illustrerar hur elementet används för att ändra talstilen till `cheerful` .
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
@@ -341,7 +341,7 @@ Det här SSML-kodfragmentet illustrerar hur `<mstts:express-as>` elementet anvä
 </speak>
 ```
 
-Det här SSML-kodfragmentet illustrerar hur `styledegree` attributet används för att ändra intensiteten för tal format för XiaoxiaoNeural.
+Det här SSML-kodfragmentet illustrerar hur attributet används för att ändra intensiteten i talstilen för `styledegree` XiaxoaoNexo.
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
        xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
@@ -353,7 +353,7 @@ Det här SSML-kodfragmentet illustrerar hur `styledegree` attributet används f�
 </speak>
 ```
 
-Det här SSML-kodfragmentet illustrerar hur `role` attributet används för att ändra roll-Play för XiaomoNeural.
+Det här SSML-kodfragmentet illustrerar hur attributet används för att `role` ändra rollspel för XiauaNeodo.
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
        xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
@@ -370,12 +370,12 @@ Det här SSML-kodfragmentet illustrerar hur `role` attributet används för att 
 </speak>
 ```
 
-## <a name="add-or-remove-a-breakpause"></a>Lägg till eller ta bort en paus/pausa
+## <a name="add-or-remove-a-breakpause"></a>Lägga till eller ta bort en paus
 
-Använd `break` elementet för att infoga pauser (eller brytningar) mellan ord, eller förhindra att pauser automatiskt läggs till av tjänsten text till tal.
+Använd elementet för att infoga pauser (eller pauser) mellan ord eller förhindra pauser som läggs till `break` automatiskt av text till tal-tjänsten.
 
 > [!NOTE]
-> Använd det här elementet om du vill åsidosätta standard beteendet för text till tal (TTS) för ett ord eller en fras om det syntetiska talet för ordet eller frasen låter unnaturlig. Ställ in `strength` på `none` för att förhindra en prosodic rast, som infogas automatiskt av text till tal-tjänsten.
+> Använd det här elementet för att åsidosätta standardbeteendet för text till tal (TTS) för ett ord eller en fras om det syntetiserade talet för det ordet eller frasen inte låter onaturligt. Ange `strength` till för att förhindra en `none` prosodic-brytning som infogas automatiskt av text till tal-tjänsten.
 
 **Syntax**
 
@@ -386,19 +386,19 @@ Använd `break` elementet för att infoga pauser (eller brytningar) mellan ord, 
 
 **Attribut**
 
-| Attribut | Beskrivning | Obligatorisk/valfri |
+| Attribut | Beskrivning | Obligatoriskt/valfritt |
 |-----------|-------------|---------------------|
-| `strength` | Anger den relativa varaktigheten för en paus med något av följande värden:<ul><li>inget</li><li>x-svaga</li><li>svaga</li><li>medel (standard)</li><li>kraftfull</li><li>x – stark</li></ul> | Valfritt |
-| `time` | Anger den absoluta varaktigheten för en paus i sekunder eller millisekunder. värdet ska vara mindre än 5000ms. Exempel på giltiga värden är `2s` och `500ms` | Valfritt |
+| `strength` | Anger den relativa varaktigheten för en paus med något av följande värden:<ul><li>inget</li><li>x-svag</li><li>Svag</li><li>medium (standard)</li><li>Stark</li><li>x-strong</li></ul> | Valfritt |
+| `time` | Anger den absoluta varaktigheten för en paus i sekunder eller millisekunder. Det här värdet ska vara mindre än 5 000 ms. Exempel på giltiga värden `2s` är och `500ms` | Valfritt |
 
-| Styrka                      | Beskrivning |
+| Styrka                      | Description |
 |-------------------------------|-------------|
-| Ingen, eller om inget värde anges | 0 MS        |
-| x-svaga                        | 250 MS      |
-| svaga                          | 500 ms      |
+| Ingen, eller om inget värde har angetts | 0 ms        |
+| x-svag                        | 250 ms      |
+| Svag                          | 500 ms      |
 | medel                        | 750 ms      |
-| kraftfull                        | 1000 MS     |
-| x – stark                      | 1250 MS     |
+| Stark                        | 1 000 ms     |
+| x-strong                      | 1250 ms     |
 
 **Exempel**
 
@@ -411,10 +411,10 @@ Använd `break` elementet för att infoga pauser (eller brytningar) mellan ord, 
 ```
 ## <a name="add-silence"></a>Lägg till tystnad
 
-Använd `mstts:silence` elementet för att infoga pauser före eller efter text, eller mellan de två intilliggande meningarna.
+Använd elementet `mstts:silence` för att infoga pauser före eller efter text eller mellan de två intilliggande meningarna.
 
 > [!NOTE]
->Skillnaden mellan `mstts:silence` och `break` är som `break` kan läggas till var som helst i texten, men tystnad fungerar bara i början eller slutet av inmatad text, eller på gräns 2 närliggande meningar.
+>Skillnaden mellan och är att kan läggas till på valfri plats i texten, men tystnad fungerar bara i början eller slutet av indatatexten, eller vid gränsen på 2 angränsande `mstts:silence` `break` `break` meningar.
 
 
 **Syntax**
@@ -425,12 +425,12 @@ Använd `mstts:silence` elementet för att infoga pauser före eller efter text,
 
 **Attribut**
 
-| Attribut | Beskrivning | Obligatorisk/valfri |
+| Attribut | Beskrivning | Obligatoriskt/valfritt |
 |-----------|-------------|---------------------|
-| `type` | Anger platsen för tystnad som ska läggas till: <ul><li>`Leading` – i början av texten </li><li>`Tailing` – i slutet av texten </li><li>`Sentenceboundary` – mellan intilliggande meningar </li></ul> | Obligatorisk |
-| `Value` | Anger den absoluta varaktigheten för en paus i sekunder eller millisekunder. värdet ska vara mindre än 5000ms. Exempel på giltiga värden är `2s` och `500ms` | Obligatorisk |
+| `type` | Anger platsen för tystnad som ska läggas till: <ul><li>`Leading` – i början av texten </li><li>`Tailing` – i slutet av texten </li><li>`Sentenceboundary` – mellan angränsande meningar </li></ul> | Obligatorisk |
+| `Value` | Anger den absoluta varaktigheten för en paus i sekunder eller millisekunder. Det här värdet ska vara mindre än 5 000 ms. Exempel på giltiga värden `2s` är och `500ms` | Obligatorisk |
 
-**Exempel** I det här exemplet `mtts:silence` används för att lägga till 200 MS av tystnaden mellan två meningar.
+**Exempel** I det här exemplet `mtts:silence` används för att lägga till 200 ms tystnad mellan två meningar.
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
 <voice name="en-US-AriaNeural">
@@ -443,11 +443,11 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 ## <a name="specify-paragraphs-and-sentences"></a>Ange stycken och meningar
 
-`p` och `s` element används för att ange stycken respektive meningar. Om dessa element saknas bestämmer text till tal-tjänsten automatiskt strukturen för SSML-dokumentet.
+`p` - `s` och -element används för att ange stycken respektive meningar. I avsaknad av dessa element avgör text till tal-tjänsten automatiskt strukturen för SSML-dokumentet.
 
-`p`Elementet kan innehålla text och följande element:,,,,,, `audio` `break` `phoneme` `prosody` `say-as` `sub` `mstts:express-as` och `s` .
+Elementet `p` kan innehålla text och följande element: , , , , `audio` , , , och `break` `phoneme` `prosody` `say-as` `sub` `mstts:express-as` `s` .
 
-`s`Elementet kan innehålla text och följande element:,,,,, `audio` `break` `phoneme` `prosody` `say-as` `mstts:express-as` och `sub` .
+Elementet `s` kan innehålla text och följande element: , , , , `audio` , , och `break` `phoneme` `prosody` `say-as` `mstts:express-as` `sub` .
 
 **Syntax**
 
@@ -473,14 +473,14 @@ A good place to start is by trying out the slew of educational apps that are hel
 </speak>
 ```
 
-## <a name="use-phonemes-to-improve-pronunciation"></a>Använd fonem för att förbättra uttal
+## <a name="use-phonemes-to-improve-pronunciation"></a>Använda fonem för att förbättra uttal
 
-`ph`Elementet används för fonetiskt uttal i SSML-dokument. `ph`Elementet får bara innehålla text, inga andra element. Tillhandahålla alltid läsliga tal som reserv.
+Elementet `ph` används för fonetiskt uttal i SSML-dokument. Elementet `ph` får bara innehålla text, inga andra element. Tillhandahåll alltid tal som kan läsas av människor som reserv.
 
-Fonetiska alfabet består av telefoner, som består av bokstäver, siffror eller tecken, ibland i kombination. Varje telefon beskriver ett unikt ljud av tal. Detta är i motsats till det latinska alfabetet, där en bokstav kan representera flera talade ljud. Överväg de olika uttalna av bokstaven "c" i orden "Candy" och "upphör", eller de olika uttal av bokstavs kombinationen "th" i orden "sak" och "de".
+Fonetiska alfabet består av telefoner, som består av bokstäver, siffror eller tecken, ibland i kombination. Varje telefon beskriver ett unikt talljud. Detta skiljer sig från det latinska alfabetet, där alla bokstäver kan representera flera talade ljud. Tänk på de olika uttalen av bokstaven "c" med orden "godis" och "upphör" eller de olika uttalen av bokstavskombinationen "th" i orden "thing" och "those".
 
 > [!NOTE]
-> Fonem-taggen stöds inte för de här 5 rösterna (et-EE-AnuNeural, ga-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural och MT-MT-GarceNeural) för tillfället.
+> Phonemes-taggen stöds inte för dessa 5 röster (et-EE-AnuNelv, ga-IE-OrlaNe lv, lt-LT-OnaNe lv, lv-EveritaNe mt-GarceNe lv) för tillfället.
 
 **Syntax**
 
@@ -490,10 +490,10 @@ Fonetiska alfabet består av telefoner, som består av bokstäver, siffror eller
 
 **Attribut**
 
-| Attribut | Beskrivning | Obligatorisk/valfri |
+| Attribut | Beskrivning | Obligatoriskt/valfritt |
 |-----------|-------------|---------------------|
-| `alphabet` | Anger det fonetiska alfabetet som ska användas vid syntetiskt uttal av strängen i `ph` attributet. Strängen som anger alfabetet måste anges med små bokstäver. Följande är de möjliga alfabet som du kan ange.<ul><li>`ipa`&ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">Internationellt fonetiskt alfabet</a></li><li>`sapi`&ndash; [Fonetiskt alfabet i Speech service](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash; <a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank">Universal Phone-uppsättning</a></li></ul><br>Alfabetet gäller endast i- `phoneme` elementet.. | Valfritt |
-| `ph` | En sträng som innehåller telefoner som anger uttal av ordet i `phoneme` elementet. Om den angivna strängen innehåller okända telefoner avvisar tjänsten text till tal (TTS) hela SSML-dokumentet och genererar ingen av tal utmatningen som anges i dokumentet. | Krävs om du använder fonem. |
+| `alphabet` | Anger det fonetiska alfabetet som ska användas vid synkronisering av uttalet av strängen i `ph` attributet. Strängen som anger alfabetet måste anges med gemener. Följande är de möjliga alfabet som du kan ange.<ul><li>`ipa`&ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">Internationellt fonetiska alfabet</a></li><li>`sapi`&ndash; [Taltjänstens fonetiska alfabet](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash; <a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank">Universal Phone Set</a></li></ul><br>Alfabetet gäller endast `phoneme` för i -elementet. | Valfritt |
+| `ph` | En sträng som innehåller telefoner som anger uttalet av ordet i `phoneme` elementet . Om den angivna strängen innehåller okända telefoner avvisar TTS-tjänsten (text till tal) hela SSML-dokumentet och genererar ingen av de talutdata som anges i dokumentet. | Krävs om du använder fonem. |
 
 **Exempel**
 
@@ -521,15 +521,15 @@ Fonetiska alfabet består av telefoner, som består av bokstäver, siffror eller
 </speak>
 ```
 
-## <a name="use-custom-lexicon-to-improve-pronunciation"></a>Använd anpassat lexikon för att förbättra uttal
+## <a name="use-custom-lexicon-to-improve-pronunciation"></a>Använda anpassad lexikon för att förbättra uttalet
 
-Ibland kan inte text till tal-tjänsten uttala ett ord. Till exempel namnet på ett företag eller en medicinsk term. Utvecklare kan definiera hur enkla entiteter ska läsas i SSML med `phoneme` `sub` taggarna och. Men om du behöver definiera hur flera entiteter ska läsas, kan du skapa ett anpassat lexikon med `lexicon` taggen.
-
-> [!NOTE]
-> Anpassat lexikon stöder UTF-8-kodning för närvarande.
+Ibland kan text till tal-tjänsten inte exakt uttala ett ord. Till exempel namnet på ett företag eller en medicinsk term. Utvecklare kan definiera hur enskilda entiteter läses i SSML med `phoneme` taggarna `sub` och . Men om du behöver definiera hur flera entiteter ska läsas kan du skapa en anpassad lexikon med `lexicon` taggen .
 
 > [!NOTE]
-> Anpassat lexikon stöds inte för de här 5 rösterna (et-EE-AnuNeural, ga-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural och MT-MT-GarceNeural) för tillfället.
+> Custom lexicon stöder för närvarande UTF-8-kodning.
+
+> [!NOTE]
+> Custom lexicon stöds inte för dessa 5 röster (et-EE-AnuNeua, ga-IE-OrlaNedon, lt-LT-OnaNeison, lv-LV-EveritaNegräns och mt-MT-GarceNeison) för tillfället.
 
 
 **Syntax**
@@ -540,13 +540,13 @@ Ibland kan inte text till tal-tjänsten uttala ett ord. Till exempel namnet på 
 
 **Attribut**
 
-| Attribut | Beskrivning                               | Obligatorisk/valfri |
+| Attribut | Beskrivning                               | Obligatoriskt/valfritt |
 |-----------|-------------------------------------------|---------------------|
-| `uri`     | Adressen för det externa PLS-dokumentet. | Krävs.           |
+| `uri`     | Adressen till det externa PLS-dokumentet. | Krävs.           |
 
 **Användning**
 
-Om du vill definiera hur flera entiteter ska läsas kan du skapa ett anpassat lexikon, som lagras som en XML-eller pls-fil. Följande är en exempel-XML-fil.
+Om du vill definiera hur flera entiteter läses kan du skapa en anpassad lexikon som lagras som en XML- eller PLS-fil. Följande är en XML-exempelfil.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -567,9 +567,9 @@ Om du vill definiera hur flera entiteter ska läsas kan du skapa ett anpassat le
 </lexicon>
 ```
 
-`lexicon`Elementet innehåller minst ett- `lexeme` element. Varje `lexeme` -element innehåller minst ett `grapheme` element och ett eller flera `grapheme` element `alias` , och `phoneme` . `grapheme`Elementet innehåller text som beskriver <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">Orthography </a>. `alias`Elementen används för att ange uttal av en akronym eller en förkortad term. `phoneme`Elementet innehåller text som beskriver hur `lexeme` uttalas.
+Elementet `lexicon` innehåller minst ett `lexeme` element. Varje `lexeme` element innehåller minst ett element och ett eller flera element , och `grapheme` `grapheme` `alias` `phoneme` . Elementet `grapheme` innehåller text som beskriver <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">ortografin </a>. Elementen `alias` används för att ange uttalet av en förkortning eller en förkortad term. Elementet `phoneme` innehåller text som beskriver hur `lexeme` uttalas.
 
-Det är viktigt att Observera att du inte kan ange uttal av en fras direkt med hjälp av det anpassade lexikonet. Om du behöver ange uttal för en akronym eller en förkortad term, anger du först ett `alias` och sedan associerar du `phoneme` med det `alias` . Exempel:
+Observera att du inte kan ange uttalet av en fras direkt med hjälp av det anpassade lexikonet. Om du behöver ange uttalet för en förkortning eller en förkortad term anger du först ett `alias` och associerar sedan `phoneme` med den `alias` . Exempel:
 
 ```xml
   <lexeme>
@@ -582,7 +582,7 @@ Det är viktigt att Observera att du inte kan ange uttal av en fras direkt med h
   </lexeme>
 ```
 
-Du kan också ange ett förväntat `alias` eller förkortat villkor för förkortningen. Exempel:
+Du kan också ange din `alias` förväntade akronym eller förkortade term direkt. Exempel:
 ```xml
   <lexeme>
     <grapheme>Scotland MV</grapheme>
@@ -591,16 +591,16 @@ Du kan också ange ett förväntat `alias` eller förkortat villkor för förkor
 ```
 
 > [!IMPORTANT]
-> `phoneme`Elementet får inte innehålla blank steg när du använder IPA.
+> Elementet `phoneme` får inte innehålla blanksteg när du använder IPA.
 
-Mer information om den anpassade lexikon filen finns i avsnittet uttal av ord [lexikons specifikation (pls) Version 1,0](https://www.w3.org/TR/pronunciation-lexicon/).
+Mer information om anpassad lexikonfil finns [i Uttal Lexicon Specification (PLS) Version 1.0.](https://www.w3.org/TR/pronunciation-lexicon/)
 
-Publicera sedan din anpassade lexikon fil. Även om det inte finns några begränsningar för var filen kan lagras rekommenderar vi att du använder [Azure Blob Storage](../../storage/blobs/storage-quickstart-blobs-portal.md).
+Publicera sedan din anpassade lexikonfil. Även om vi inte har några begränsningar för var den här filen kan lagras rekommenderar vi att du använder [Azure Blob Storage](../../storage/blobs/storage-quickstart-blobs-portal.md).
 
 När du har publicerat ditt anpassade lexikon kan du referera till det från din SSML.
 
 > [!NOTE]
-> `lexicon`Elementet måste finnas i `voice` elementet.
+> Elementet `lexicon` måste finnas inuti elementet `voice` .
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
@@ -614,19 +614,19 @@ När du har publicerat ditt anpassade lexikon kan du referera till det från din
 </speak>
 ```
 
-När du använder det här anpassade lexikonet kommer "BTW" att läsas som "på väg". "Oskadligi" kommer att läsas med den tillhandahållna IPA "bɛ ˈ ni ː Nji".
+När du använder den här anpassade lexikonen läses "SMILE" som "By the way". "Benigni" kommer att läsas med den angivna IPA:en "bmsnji".
 
 **Begränsningar**
-- Fil storlek: den maximala storleks gränsen för den anpassade fil storleken är 100 KB, om den överskrider den här storleken kommer syntes förfrågan att Miss förväntas.
-- Uppdatering av lexikon-cache: anpassat lexikon cachelagras med URI som nyckel på TTS-tjänst när den läses in första gången. Det går inte att läsa in ett lexikon med samma URI inom 15 minuter, så den anpassade lexikon ändringen måste vänta högst 15 minuter innan den börjar gälla.
+- Filstorlek: storleksgränsen för anpassade Lexicon-filer är högst 100 kB. Om den här storleken är större än så misslyckas syntesbegäran.
+- Uppdatering av lexikoncache: custom lexicon cachelagras med URI som nyckel i TTS-tjänsten när den läses in för första gången. Lexikon med samma URI läse inte in igen inom 15 minuter, så anpassad lexikonändring måste vänta högst 15 minuter för att gälla.
 
-**Fonetiska uppsättningar för tal tjänst**
+**Fonetiska uppsättningar för Speech-tjänsten**
 
-I exemplet ovan använder vi det internationella fonetiska alfabetet, även kallat IPA telefon uppsättning. Vi rekommenderar att utvecklare använder IPA, eftersom det är den internationella standarden. För vissa IPA-tecken har de "fördelade" och "desammansatt"-versionen när de representeras med Unicode. Anpassat lexikon har endast stöd för uppdelade Unicode.
+I exemplet ovan använder vi det internationella fonetiska alfabetet, även kallat IPA-telefonuppsättning. Vi föreslår att utvecklare använder IPA eftersom det är den internationella standarden. För vissa IPA-tecken har de versionen "förkompilerad" och "decomposed" när de representeras med Unicode. Custom Lexicon har endast stöd för de nedkompilerade Unicode-formaten.
 
-Med tanke på att IPA inte är lätt att komma ihåg definierar tal tjänsten en fonetisk uppsättning för sju språk ( `en-US` ,,,,, `fr-FR` `de-DE` `es-ES` `ja-JP` `zh-CN` och `zh-TW` ).
+Med tanke på att IPA inte är lätt att komma ihåg definierar Speech-tjänsten en fonetiska uppsättning för sju språk ( `en-US` , , , , , , och `fr-FR` `de-DE` `es-ES` `ja-JP` `zh-CN` `zh-TW` ).
 
-Du kan använda `sapi` as-värdet för `alphabet` attributet med anpassade lexikon som visas nedan:
+Du kan använda `sapi` som värde för `alphabet` attributet med anpassade lexikoner enligt nedan:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -647,13 +647,13 @@ Du kan använda `sapi` as-värdet för `alphabet` attributet med anpassade lexik
 </lexicon>
 ```
 
-Mer information om den detaljerade röst tjänsten fonetiskt alfabet finns i [röst tjänstens fonetiska uppsättningar](speech-ssml-phonetic-sets.md).
+Mer information om det detaljerade fonetiska alfabetet för Speech-tjänsten finns i [Taltjänstens fonetiska uppsättningar.](speech-ssml-phonetic-sets.md)
 
 ## <a name="adjust-prosody"></a>Justera prosody
 
-`prosody`Elementet används för att ange ändringar av bredd, profil, intervall, hastighet, varaktighet och volym för text till tal-utdata. `prosody`Elementet kan innehålla text och följande element:,,,,,, `audio` `break` `p` `phoneme` `prosody` `say-as` `sub` och `s` .
+Elementet `prosody` används för att ange ändringar för tonhöjd, intervall, frekvens, varaktighet och volym för text-till-tal-utdata. Elementet `prosody` kan innehålla text och följande element: , , , , `audio` , , , och `break` `p` `phoneme` `prosody` `say-as` `sub` `s` .
 
-Eftersom prosodic-attributvärden kan variera över ett brett intervall, tolkar tal igenkännings verktyget de tilldelade värdena som ett förslag på vad de faktiska prosodic-värdena för den valda rösten ska vara. Text till tal-tjänsten begränsar eller byter ut värden som inte stöds. Exempel på värden som inte stöds är ett färgdjup på 1 MHz eller en volym på 120.
+Eftersom prosodic-attributvärden kan variera över ett brett intervall tolkar taligenkänningen de tilldelade värdena som ett förslag på vad de faktiska prosodic-värdena för den valda rösten ska vara. Text till tal-tjänsten begränsar eller ersätter värden som inte stöds. Exempel på värden som inte stöds är en pitch på 1 MHz eller en volym på 120.
 
 **Syntax**
 
@@ -663,18 +663,18 @@ Eftersom prosodic-attributvärden kan variera över ett brett intervall, tolkar 
 
 **Attribut**
 
-| Attribut | Beskrivning | Obligatorisk/valfri |
+| Attribut | Beskrivning | Obligatoriskt/valfritt |
 |-----------|-------------|---------------------|
-| `pitch` | Anger textens bas linje bredd. Du kan uttrycka bredden som:<ul><li>Ett absolut värde, uttryckt som ett tal följt av "Hz" (Hertz). Till exempel `<prosody pitch="600Hz">some text</prosody>`.</li><li>Ett relativt värde, uttryckt som ett tal som föregås av "+" eller "-" och följt av "Hz" eller "St", som anger ett belopp för att ändra bredden. Till exempel: `<prosody pitch="+80Hz">some text</prosody>` eller `<prosody pitch="-2st">some text</prosody>` . "St" anger att ändrings enheten är semitone, som är hälften av en ton (ett halv steg) i standard skalan för diatonic.</li><li>Ett konstant värde:<ul><li>x-låg</li><li>börjar</li><li>medel</li><li>hög</li><li>x – hög</li><li>standard</li></ul></li></ul> | Valfritt |
-| `contour` |Kon turen stöder nu både neurala-och standard röster. Kontur representerar ändringar i färgdjup. Dessa ändringar visas som en matris med mål vid angivna tids positioner i tal utmatningen. Varje mål definieras av uppsättningar av parameter par. Exempel: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Det första värdet i varje parameter uppsättning anger platsen för bredd ändringen som en procent andel av längden på texten. Det andra värdet anger hur mycket du vill höja eller sänka avståndet med ett relativt värde eller ett uppräknings värde för färgdjup (se `pitch` ). | Valfritt |
-| `range` | Ett värde som representerar text områdets avstånd. Du kan uttrycka `range` använda samma absoluta värden, relativa värden eller uppräknings värden som används för att beskriva `pitch` . | Valfritt |
-| `rate` | Anger textens tal hastighet. Du kan uttrycka `rate` som:<ul><li>Ett relativt värde, uttryckt som ett tal som fungerar som en multiplikator för standardvärdet. Värdet *1* resulterar till exempel i ingen ändring av hastigheten. Värdet *0,5* resulterar i en halving av hastigheten. Värdet *3* resulterar i en rese frekvens.</li><li>Ett konstant värde:<ul><li>x – långsam</li><li>långsam</li><li>medel</li><li>snabb</li><li>x-fast</li><li>standard</li></ul></li></ul> | Valfritt |
-| `duration` | Tids perioden som ska förflyta när tal syntes tjänsten läser texten, i sekunder eller millisekunder. Till exempel *2s* eller *1800ms*. Varaktighet stöder endast standard röster.| Valfritt |
-| `volume` | Anger volym nivån för tal rösten. Du kan uttrycka volymen som:<ul><li>Ett absolut värde, uttryckt som ett tal i intervallet 0,0 till 100,0, från *tyst* till *högsta*. Till exempel 75. Standardvärdet är 100,0.</li><li>Ett relativt värde, uttryckt som ett tal som föregås av "+" eller "-" som anger ett belopp för att ändra volymen. Till exempel + 10 eller-5,5.</li><li>Ett konstant värde:<ul><li>trafiken</li><li>x-Soft</li><li>programvaru</li><li>medel</li><li>starka</li><li>x-högt</li><li>standard</li></ul></li></ul> | Valfritt |
+| `pitch` | Anger baslinjehöjden för texten. Du kan uttrycka din tonhöjd som:<ul><li>Ett absolut värde, uttryckt som ett tal följt av "Hz" (Hertz). Till exempel `<prosody pitch="600Hz">some text</prosody>`.</li><li>Ett relativt värde, uttryckt som ett tal före "+" eller "-" och följt av "Hz" eller "st", som anger hur mycket som ska ändra tonhöjden. Till exempel: `<prosody pitch="+80Hz">some text</prosody>` eller `<prosody pitch="-2st">some text</prosody>` . "st" anger att ändringsenheten är semikolon, vilket är hälften av en ton (ett halvsteg) på den diatoniska standardskalan.</li><li>Ett konstant värde:<ul><li>x-low</li><li>Låg</li><li>medel</li><li>hög</li><li>x-high</li><li>standard</li></ul></li></ul> | Valfritt |
+| `contour` |Now Now har stöd för både neurala och standardröster. En stapel representerar ändringar i tonhöjden. Dessa ändringar representeras som en matris med mål vid angivna tidspositioner i talutdata. Varje mål definieras av uppsättningar med parameterpar. Exempel: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Det första värdet i varje uppsättning parametrar anger platsen för tonhöjdsändringen som en procentandel av textens varaktighet. Det andra värdet anger hur mycket som ska höjas eller sänka tonhöjden med hjälp av ett relativt värde eller ett uppräkningsvärde för pitch (se `pitch` ). | Valfritt |
+| `range` | Ett värde som representerar intervallet för textens tonhöjd. Du kan uttrycka `range` med samma absoluta värden, relativa värden eller uppräkningsvärden som används för att beskriva `pitch` . | Valfritt |
+| `rate` | Anger talfrekvensen för texten. Du kan uttrycka `rate` som:<ul><li>Ett relativt värde, uttryckt som ett tal som fungerar som en multiplikator av standardvärdet. Till exempel resulterar värdet *1* i att hastigheten inte ändras. Värdet *0,5* resulterar i en halvering av hastigheten. Värdet *3 resulterar* i en tredling av priset.</li><li>Ett konstantvärde:<ul><li>x-långsam</li><li>Långsam</li><li>medel</li><li>snabb</li><li>x-fast</li><li>standard</li></ul></li></ul> | Valfritt |
+| `duration` | Den tidsperiod som ska förfluta när tjänsten för talsyntes (TTS) läser texten, i sekunder eller millisekunder. Till exempel *2:or* eller *1800 ms*. Varaktighet stöder endast standardröster.| Valfritt |
+| `volume` | Anger volymnivån för talrösten. Du kan uttrycka volymen som:<ul><li>Ett absolut värde, uttryckt som ett tal i intervallet 0,0 till 100,0, från *tystaste* till *högsta*. Till exempel 75. Standardvärdet är 100.0.</li><li>Ett relativt värde, uttryckt som ett tal före "+" eller "-" som anger hur mycket volymen ska ändras. Till exempel +10 eller -5,5.</li><li>Ett konstantvärde:<ul><li>Tyst</li><li>x-soft</li><li>Mjuk</li><li>medel</li><li>Högt</li><li>x-hög</li><li>standard</li></ul></li></ul> | Valfritt |
 
-### <a name="change-speaking-rate"></a>Ändra tal hastighet
+### <a name="change-speaking-rate"></a>Ändra talfrekvens
 
-Tal frekvensen kan tillämpas på neurala-röster och standard röster på ord-eller menings nivå.
+Talfrekvensen kan tillämpas på neurala röster och standardröster på ord- eller meningsnivå.
 
 **Exempel**
 
@@ -690,7 +690,7 @@ Tal frekvensen kan tillämpas på neurala-röster och standard röster på ord-e
 
 ### <a name="change-volume"></a>Ändra volym
 
-Volym ändringar kan tillämpas på standard-röster på ord-eller menings nivå. Volym ändringar kan bara tillämpas på neurala-röster på menings nivå.
+Volymändringar kan tillämpas på standardröster på ord- eller meningsnivå. Volymändringar kan bara tillämpas på neurala röster på meningsnivå.
 
 **Exempel**
 
@@ -704,9 +704,9 @@ Volym ändringar kan tillämpas på standard-röster på ord-eller menings nivå
 </speak>
 ```
 
-### <a name="change-pitch"></a>Ändra avstånd
+### <a name="change-pitch"></a>Ändra tonhöjd
 
-Du kan ändra bredden på standard-röster på ord-eller menings nivå. Förändringar av förändringar kan bara tillämpas på neurala-röster på menings nivå.
+Tonhöjdsändringar kan tillämpas på standardröster på ord- eller meningsnivå. Tonhöjdsändringar kan bara tillämpas på neurala röster på meningsnivå.
 
 **Exempel**
 
@@ -718,10 +718,10 @@ Du kan ändra bredden på standard-röster på ord-eller menings nivå. Föränd
 </speak>
 ```
 
-### <a name="change-pitch-contour"></a>Ändra bredd för kontur
+### <a name="change-pitch-contour"></a>Ändra tonhöjd
 
 > [!IMPORTANT]
-> Förändringar av kon tur kon turen stöds nu med neurala-röster.
+> Pitch-ändringar stöds nu med neurala röster.
 
 **Exempel**
 
@@ -734,9 +734,9 @@ Du kan ändra bredden på standard-röster på ord-eller menings nivå. Föränd
     </voice>
 </speak>
 ```
-## <a name="say-as-element"></a>Säg som-element
+## <a name="say-as-element"></a>say-as-element
 
-`say-as` är ett valfritt element som anger innehålls typen (t. ex. antal eller datum) för elementets text. Detta ger vägledning till tal syntes motorn om hur du uttalar texten.
+`say-as` är ett valfritt element som anger innehållstypen (till exempel nummer eller datum) för elementets text. Detta ger vägledning till talsyntesmotorn om hur texten ska uttalas.
 
 **Syntax**
 
@@ -746,35 +746,35 @@ Du kan ändra bredden på standard-röster på ord-eller menings nivå. Föränd
 
 **Attribut**
 
-| Attribut | Beskrivning | Obligatorisk/valfri |
+| Attribut | Beskrivning | Obligatoriskt/valfritt |
 |-----------|-------------|---------------------|
-| `interpret-as` | Anger innehålls typen för elementets text. En lista med typer finns i tabellen nedan. | Obligatorisk |
-| `format` | Innehåller ytterligare information om den exakta formateringen av elementets text för innehålls typer som kan ha tvetydiga format. SSML definierar format för innehålls typer som använder dem (se tabellen nedan). | Valfritt |
-| `detail` | Anger detalj nivån som ska läsas. Det här attributet kan till exempel begära att tal syntes motorn uttalar skiljetecken. Inga standard värden har definierats för `detail` . | Valfritt |
+| `interpret-as` | Anger innehållstypen för elementets text. En lista över typer finns i tabellen nedan. | Obligatorisk |
+| `format` | Innehåller ytterligare information om den exakta formateringen av elementets text för innehållstyper som kan ha tvetydiga format. SSML definierar format för innehållstyper som använder dem (se tabellen nedan). | Valfritt |
+| `detail` | Anger detaljnivån som ska talas. Det här attributet kan till exempel begära att talsyntesmotorn avskriver skiljetecken. Inga standardvärden har definierats för `detail` . | Valfritt |
 
 <!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
 
-Följande är de innehålls typer som stöds för `interpret-as` `format` attributen och. Inkludera `format` endast attributet om `interpret-as` har angetts till datum och tid.
+Följande är de innehållstyper som stöds för `interpret-as` attributen `format` och . Inkludera `format` attributet endast om `interpret-as` har angetts till datum och tid.
 
 | tolka som | format | Tolkning |
 |--------------|--------|----------------|
-| `address` | | Texten talas som en adress. Tal syntes motorn uttalar:<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />Som "Jag är på 150th-domstolen norra östra Redmond Washington". |
-| `cardinal`, `number` | | Texten talas som ett kardinal nummer. Tal syntes motorn uttalar:<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />Det finns tre alternativ. " |
-| `characters`, `spell-out` | | Texten talas som enskilda bokstäver (rättstavade). Tal syntes motorn uttalar:<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />T. ex. "T E S." |
-| `date` | DMY, MDÅ, YMD, ådm, YM, My, MD, DM, d, m, y | Texten talas som ett datum. `format`Attributet anger datumets format (*d = dag, m = månad och y = år*). Tal syntes motorn uttalar:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />Som "idag är den Nineteenth oktober 2016". |
-| `digits`, `number_digit` | | Texten talas som en sekvens med enskilda siffror. Tal syntes motorn uttalar:<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />Som "1 2 3 4 5 6 7 8 9". |
-| `fraction` | | Texten talas som ett bråk tals tal. Tal syntes motorn uttalar:<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />Som "tre åttondelar av en tum". |
-| `ordinal` | | Texten talas som ett ordnings tal. Tal syntes motorn uttalar:<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />Som "Välj det tredje alternativet". |
-| `telephone` | | Texten talas som ett telefonnummer. `format`Attributet får innehålla siffror som representerar en landskod. Till exempel "1" för USA eller "39" för Italien. Tal syntes motorn kan använda den här informationen för att vägleda sitt uttal av ett telefonnummer. Telefonnumret kan också innehålla lands koden, och i så fall prioriteras lands koden i `format` . Tal syntes motorn uttalar:<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />As "My Number är rikt nummer 8 8 8 5 5 5 1 2 1 2". |
-| `time` | hms12, hms24 | Texten talas som en tid. `format`Attributet anger om tiden anges med en 12-timmarsformat (hms12) eller en 24-timmarsklocka (hms24). Använd kolon för att avgränsa tal som representerar timmar, minuter och sekunder. Följande är giltiga tids exempel: 12:35, 1:14:32, 08:15 och 02:50:45. Tal syntes motorn uttalar:<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />Som "tåget är i en del av fyra A M." |
+| `address` | | Texten talas som en adress. Talsyntesmotorn uttalar:<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />Som "I'm at 150th court north east redmond washington." |
+| `cardinal`, `number` | | Texten talas som ett kardinaltal. Talsyntesmotorn uttalar:<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />Som "Det finns tre alternativ". |
+| `characters`, `spell-out` | | Texten talas som enskilda bokstäver (utstavade). Talsyntesmotorn uttalar:<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />Som "T E S T." |
+| `date` | dmy, mdy, ymd, ydm, ym, my, md, dm, d, m, y | Texten talas som ett datum. Attributet `format` anger datumformatet (*d=day, m=month och y=year*). Talsyntesmotorn avlöser:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />"Idag är oktober 2 000 160.000". |
+| `digits`, `number_digit` | | Texten talas som en sekvens med enskilda siffror. Talsyntesmotorn avlöser:<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />Som "1 2 3 4 5 6 7 8 9". |
+| `fraction` | | Texten talas som ett bråktal. Talsyntesmotorn avlöser:<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />Som "tre åttondelar av en tum". |
+| `ordinal` | | Texten talas som ett ordningstal. Talsyntesmotorn avlöser:<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />Som "Välj det tredje alternativet". |
+| `telephone` | | Texten talas som ett telefonnummer. Attributet `format` kan innehålla siffror som representerar en landskod. Till exempel "1" för USA eller "39" för Italien. Talsyntesmotorn kan använda den här informationen för att vägleda uttalet av ett telefonnummer. Telefonnumret kan också innehålla landskoden, och i så fall har det företräde framför landskoden i `format` . Talsyntesmotorn avlöser:<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />Som "My number is area code eight eight eight five five five one two one two". |
+| `time` | hms12, hms24 | Texten talas som en tid. Attributet anger om tiden anges med `format` en 12-timmarsklocka (hms12) eller en 24-timmarsklocka (hms24). Använd ett kolon för att avgränsa tal som representerar timmar, minuter och sekunder. Följande är giltiga tidsexempel: 12:35, 1:14:32, 08:15 och 02:50:45. Talsyntesmotorn uttalar:<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />Som "The train avviker vid fyra A M." |
 
 **Användning**
 
-`say-as`Elementet får bara innehålla text.
+Elementet `say-as` får bara innehålla text.
 
 **Exempel**
 
-Tal syntes motorn läser följande exempel som "din första förfrågan var för ett rum den Nineteenth oktober 20 10 med tidig ankomst till 12 35 PM."
+Talsyntesmotorn talar följande exempel som "Din första begäran var för ett rum i oktober kl. 20 med tidig ankomst kl. 15.50".
 
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -789,16 +789,16 @@ Tal syntes motorn läser följande exempel som "din första förfrågan var för
 
 ## <a name="add-recorded-audio"></a>Lägg till inspelat ljud
 
-`audio` är ett valfritt element som gör att du kan infoga MP3-ljud i ett SSML-dokument. Bröd texten i ljud elementet kan innehålla oformaterad text eller SSML som talas om ljud filen inte är tillgänglig eller kan spelas upp. Dessutom `audio` kan elementet innehålla text och följande element:,,,,,, `audio` `break` `p` `s` `phoneme` `prosody` `say-as` och `sub` .
+`audio` är ett valfritt element som gör att du kan infoga MP3-ljud i ett SSML-dokument. Brödtexten i ljudelementet kan innehålla oformaterad text eller SSML-markering som talas om ljudfilen inte är tillgänglig eller inte kan spelas upp. Dessutom kan elementet `audio` innehålla text och följande element: , , , , , `audio` , , och `break` `p` `s` `phoneme` `prosody` `say-as` `sub` .
 
-Alla ljud som ingår i SSML-dokumentet måste uppfylla följande krav:
+Ljud som ingår i SSML-dokumentet måste uppfylla följande krav:
 
-* MP3-filen måste vara värd för en HTTPS-slutpunkt som är tillgänglig för Internet. HTTPS krävs, och den domän som är värd för MP3-filen måste presentera ett giltigt betrott TLS/SSL-certifikat.
-* MP3-filen måste vara en giltig MP3-fil (MPEG v2).
-* Bit hastigheten måste vara 48 kbit/s.
-* Samplings frekvensen måste vara 16 000 Hz.
-* Den sammanlagda tiden för alla text-och ljudfiler i ett enskilt svar får inte överstiga 90 (90) sekunder.
-* MP3-filen får inte innehålla kundspecifik eller annan känslig information.
+* MP3 måste finnas på en HTTPS-slutpunkt som är tillgänglig via Internet. HTTPS krävs och domänen som är värd för MP3-filen måste innehålla ett giltigt, betrott TLS/SSL-certifikat.
+* MP3 måste vara en giltig MP3-fil (MPEG v2).
+* Bithastigheten måste vara 48 kbit/s.
+* Samplingsfrekvensen måste vara 16 000 Hz.
+* Den sammanlagda totala tiden för alla text- och ljudfiler i ett enda svar får inte överstiga nittio (90) sekunder.
+* MP3 får inte innehålla kundspecifik eller annan känslig information.
 
 **Syntax**
 
@@ -808,9 +808,9 @@ Alla ljud som ingår i SSML-dokumentet måste uppfylla följande krav:
 
 **Attribut**
 
-| Attribut | Beskrivning                                   | Obligatorisk/valfri                                        |
+| Attribut | Beskrivning                                   | Obligatoriskt/valfritt                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
-| `src`     | Anger ljud filens plats/URL. | Krävs om du använder ljud elementet i ditt SSML-dokument. |
+| `src`     | Anger plats/URL för ljudfilen. | Krävs om du använder ljudelementet i SSML-dokumentet. |
 
 **Exempel**
 
@@ -828,13 +828,13 @@ Alla ljud som ingår i SSML-dokumentet måste uppfylla följande krav:
 </speak>
 ```
 
-## <a name="add-background-audio"></a>Lägg till bakgrunds ljud
+## <a name="add-background-audio"></a>Lägg till bakgrundsljud
 
-Med `mstts:backgroundaudio` -elementet kan du lägga till bakgrunds ljud till dina SSML-dokument (eller blanda en ljudfil med text till tal). Med `mstts:backgroundaudio` kan du repetera en ljudfil i bakgrunden, tona in i början av text till tal och tona ut i slutet av text till tal.
+Med `mstts:backgroundaudio` elementet kan du lägga till bakgrundsljud i dina SSML-dokument (eller blanda en ljudfil med text till tal). Med kan du loopa en ljudfil i bakgrunden, tona in i början av text till tal och tona ut i slutet av `mstts:backgroundaudio` text till tal.
 
-Om bakgrunds ljudet som tillhandahålls är kortare än text-till-tal-eller övertoningen, kommer den att upprepas. Om det är längre än text till tal, stoppas det när toningen är färdig.
+Om bakgrundsljudet är kortare än text till tal eller tona ut loopas det. Om det är längre än text-till-tal stoppas den när toningen är klar.
 
-Endast en bakgrunds ljud fil tillåts per SSML-dokument. Du kan dock blanda `audio` taggar i `voice` elementet för att lägga till ytterligare ljud till ditt SSML-dokument.
+Endast en bakgrundsljudfil tillåts per SSML-dokument. Du kan dock intersperse-taggar `audio` i elementet för att lägga till ytterligare ljud i `voice` SSML-dokumentet.
 
 **Syntax**
 
@@ -844,12 +844,12 @@ Endast en bakgrunds ljud fil tillåts per SSML-dokument. Du kan dock blanda `aud
 
 **Attribut**
 
-| Attribut | Beskrivning | Obligatorisk/valfri |
+| Attribut | Beskrivning | Obligatoriskt/valfritt |
 |-----------|-------------|---------------------|
-| `src` | Anger plats/URL för bakgrunds ljud filen. | Krävs om du använder bakgrunds ljud i ditt SSML-dokument. |
-| `volume` | Anger bakgrunds ljud filens volym. **Godkända värden**: `0` till `100` inklusiv. Standardvärdet är `1`. | Valfritt |
-| `fadein` | Anger bakgrunds ljudets varaktighet "tona in" som millisekunder. Standardvärdet är `0` , vilket motsvarar ingen toning i. **Godkända värden**: `0` till `10000` inklusiv.  | Valfritt |
-| `fadeout` | Anger bakgrunds ljudets varaktighet tonar ut i millisekunder. Standardvärdet är `0` , vilket motsvarar ingen toning. **Godkända värden**: `0` till `10000` inklusiv.  | Valfritt |
+| `src` | Anger plats/URL för bakgrundsljudfilen. | Krävs om du använder bakgrundsljud i SSML-dokumentet. |
+| `volume` | Anger volymen för bakgrundsljudfilen. **Godkända värden:** `0` till `100` inkluderande. Standardvärdet är `1`. | Valfritt |
+| `fadein` | Anger varaktigheten för bakgrundsljudet "tona in" som millisekunder. Standardvärdet är `0` , vilket motsvarar ingen toning. **Godkända värden:** `0` till `10000` inkluderande.  | Valfritt |
+| `fadeout` | Anger varaktigheten för bakgrundsljudet tonas ut i millisekunder. Standardvärdet är `0` , vilket motsvarar ingen toning. **Godkända värden:** `0` till `10000` inkluderande.  | Valfritt |
 
 **Exempel**
 
@@ -862,14 +862,14 @@ Endast en bakgrunds ljud fil tillåts per SSML-dokument. Du kan dock blanda `aud
 </speak>
 ```
 
-## <a name="bookmark-element"></a>Bok märkes element
+## <a name="bookmark-element"></a>Bokmärkeselement
 
-Med bok märkes elementet kan du infoga anpassade markörer i SSML för att hämta förskjutningen för varje markör i ljud strömmen.
-Vi kommer inte att läsa bok märkes elementen.
-Bok märkes elementet kan användas för att referera till en speciell plats i text-eller taggkontrollen.
+Med bokmärkeselementet kan du infoga anpassade markörer i SSML för att hämta förskjutningen av varje markör i ljudströmmen.
+Vi kommer inte att läsa upp bokmärkeselementen.
+Bokmärkeselementet kan användas för att referera till en specifik plats i text- eller taggsekvensen.
 
 > [!NOTE]
-> `bookmark` elementet fungerar bara för `en-US-AriaNeural` Voice för tillfället.
+> `bookmark` -elementet fungerar bara `en-US-AriaNeural` för rösten just nu.
 
 **Syntax**
 
@@ -881,11 +881,11 @@ Bok märkes elementet kan användas för att referera till en speciell plats i t
 
 | Attribut | Beskrivning                                   | Obligatorisk/valfri                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
-|  `mark`   | Anger referens texten för `bookmark` elementet. | Krävs. |
+|  `mark`   | Anger referenstexten för `bookmark` elementet. | Krävs. |
 
 **Exempel**
 
-Som exempel kanske du vill veta tids förskjutningen för varje blomma ord enligt följande
+Du kanske till exempel vill veta tidsförskjutningen för varje blommans ord enligt följande
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -895,21 +895,21 @@ Som exempel kanske du vill veta tids förskjutningen för varje blomma ord enlig
 </speak>
 ```
 
-### <a name="get-bookmark-using-speech-sdk"></a>Hämta bok märke med Speech SDK
+### <a name="get-bookmark-using-speech-sdk"></a>Hämta bokmärke med hjälp av Speech SDK
 
-Du kan prenumerera på `BookmarkReached` händelsen i tal-SDK för att hämta bok märkes förskjutningar.
+Du kan prenumerera på händelsen `BookmarkReached` i Speech SDK för att hämta bokmärkesförskjutningarna.
 
 > [!NOTE]
-> `BookmarkReached` händelsen är endast tillgänglig sedan tal SDK-versionen 1.16.0.
+> `BookmarkReached` -händelsen är endast tillgänglig sedan Speech SDK version 1.16.0.
 
-`BookmarkReached` händelser aktive ras när ljud data för utdata blir tillgängliga, vilket är snabbare än uppspelning till en utdataenhet.
+`BookmarkReached` händelser utlöses när utdata från ljuddata blir tillgängliga, vilket är snabbare än uppspelning till en utdataenhet.
 
-* `AudioOffset` rapporterar hur lång tid det tar att mata ut ljudet mellan början av syntes och bok märkes elementet. Detta mäts i hundra-nanosekunder-enheter (HNS) med 10 000 HNS motsvarande 1 millisekunder.
-* `Text` är referens texten för Bookmark-elementet, som är den sträng som du anger i `mark` attributet.
+* `AudioOffset` rapporterar utdataljudens förfluten tid mellan början av syntesen och bokmärkeselementet. Detta mäts i hundra nanosekundersenheter (HNS) med 10 000 HNS motsvarande 1 millisekunder.
+* `Text` är referenstexten för bokmärkeselementet, vilket är den sträng som du anger i `mark` attributet.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Mer information finns i <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkreached" target="_blank"> `BookmarkReached` </a>.
+Mer information finns <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkreached" target="_blank"> `BookmarkReached` </a>i .
 
 ```csharp
 synthesizer.BookmarkReached += (s, e) =>
@@ -920,7 +920,7 @@ synthesizer.BookmarkReached += (s, e) =>
 };
 ```
 
-I exemplet ovan `BookmarkReached` kommer händelsen att utlösas två gånger och konsolens utdata kommer att
+I exemplet med SSML ovan `BookmarkReached` utlöses händelsen två gånger och konsolens utdata blir
 ```text
 Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
 Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
@@ -928,7 +928,7 @@ Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-Mer information finns i <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#bookmarkreached" target="_blank"> `BookmarkReached` </a>.
+Mer information finns <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#bookmarkreached" target="_blank"> `BookmarkReached` </a>i .
 
 ```cpp
 synthesizer->BookmarkReached += [](const SpeechSynthesisBookmarkEventArgs& e)
@@ -940,7 +940,7 @@ synthesizer->BookmarkReached += [](const SpeechSynthesisBookmarkEventArgs& e)
 };
 ```
 
-I exemplet ovan `BookmarkReached` kommer händelsen att utlösas två gånger och konsolens utdata kommer att
+I exemplet med SSML ovan `BookmarkReached` utlöses händelsen två gånger och konsolens utdata blir
 ```text
 Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
 Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
@@ -948,7 +948,7 @@ Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Mer information finns i <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkReached#com_microsoft_cognitiveservices_speech_SpeechSynthesizer_BookmarkReached" target="_blank"> `BookmarkReached` </a>.
+Mer information finns <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkReached#com_microsoft_cognitiveservices_speech_SpeechSynthesizer_BookmarkReached" target="_blank"> `BookmarkReached` </a>i .
 
 ```java
 synthesizer.BookmarkReached.addEventListener((o, e) -> {
@@ -958,7 +958,7 @@ synthesizer.BookmarkReached.addEventListener((o, e) -> {
 });
 ```
 
-I exemplet ovan `BookmarkReached` kommer händelsen att utlösas två gånger och konsolens utdata kommer att
+I exemplet med SSML ovan utlöses händelsen två gånger och konsolens utdata `BookmarkReached` blir
 ```text
 Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
 Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
@@ -966,7 +966,7 @@ Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Mer information finns i <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer#bookmark-reached" target="_blank"> `bookmark_reached` </a>.
+Mer information finns <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer#bookmark-reached" target="_blank"> `bookmark_reached` </a>i .
 
 ```python
 # The unit of evt.audio_offset is tick (1 tick = 100 nanoseconds), divide it by 10,000 to convert to milliseconds.
@@ -974,7 +974,7 @@ speech_synthesizer.bookmark_reached.connect(lambda evt: print(
     "Bookmark reached: {}, audio offset: {}ms, bookmark text: {}.".format(evt, evt.audio_offset / 10000, evt.text)))
 ```
 
-I exemplet ovan `bookmark_reached` kommer händelsen att utlösas två gånger och konsolens utdata kommer att
+I exemplet med SSML ovan utlöses händelsen två gånger och konsolens utdata `bookmark_reached` blir
 ```text
 Bookmark reached, audio offset: 825ms, bookmark text: flower_1.
 Bookmark reached, audio offset: 1462.5ms, bookmark text: flower_2.
@@ -982,7 +982,7 @@ Bookmark reached, audio offset: 1462.5ms, bookmark text: flower_2.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Mer information finns i <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer#bookmarkReached" target="_blank"> `bookmarkReached` </a>.
+Mer information finns <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer#bookmarkReached" target="_blank"> `bookmarkReached` </a>i .
 
 ```javascript
 synthesizer.bookmarkReached = function (s, e) {
@@ -990,7 +990,7 @@ synthesizer.bookmarkReached = function (s, e) {
 }
 ```
 
-I exemplet ovan `bookmarkReached` kommer händelsen att utlösas två gånger och konsolens utdata kommer att
+I exemplet med SSML ovan utlöses händelsen två gånger och konsolens utdata `bookmarkReached` blir
 ```text
 (Bookmark reached), Audio offset: 825ms, bookmark text: flower_1.
 (Bookmark reached), Audio offset: 1462.5ms, bookmark text: flower_2.
@@ -998,7 +998,7 @@ I exemplet ovan `bookmarkReached` kommer händelsen att utlösas två gånger oc
 
 # <a name="objective-c"></a>[Objective-C](#tab/objectivec)
 
-Mer information finns i <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a>.
+Mer information finns <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a>i .
 
 ```objectivec
 [synthesizer addBookmarkReachedEventHandler: ^ (SPXSpeechSynthesizer *synthesizer, SPXSpeechSynthesisBookmarkEventArgs *eventArgs) {
@@ -1007,7 +1007,7 @@ Mer information finns i <a href="https://docs.microsoft.com/objectivec/cognitive
 }];
 ```
 
-I exemplet ovan `BookmarkReached` kommer händelsen att utlösas två gånger och konsolens utdata kommer att
+I exemplet med SSML ovan utlöses händelsen två gånger och konsolens utdata `BookmarkReached` blir
 ```text
 Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
 Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
@@ -1015,10 +1015,10 @@ Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 
 # <a name="swift"></a>[Swift](#tab/swift)
 
-Mer information finns i <a href="https://docs.microsoft.com/swift/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a>.
+Mer information finns <a href="/objectivec/cognitive-services/speech/spxspeechsynthesizer" target="_blank"> `addBookmarkReachedEventHandler` </a>i .
 
 ---
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Språk stöd: röster, nationella inställningar, språk](language-support.md)
+* [Språkstöd: röster, språk, språk](language-support.md)

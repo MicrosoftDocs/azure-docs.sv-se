@@ -9,22 +9,22 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5bab4a7a90101d3749571e0f2d4179f0fce14296
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 2ea75adfb7c2d990cfa543270f245113e15e4ee2
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378643"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389850"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Hantera enheter i ditt Azure IoT Central program
 
-Den här artikeln beskriver hur du som operatör hanterar enheter i ditt Azure IoT Central program. Som operatör kan du:
+I den här artikeln beskrivs hur du som operatör hanterar enheter i Azure IoT Central program. Som operatör kan du:
 
 - Använd sidan **Enheter för** att visa, lägga till och ta bort enheter som är anslutna till Azure IoT Central program.
 - Importera och exportera enheter i grupp.
-- Upprätthålla en uppdaterad inventering av dina enheter.
+- Håll en uppdaterad inventering av dina enheter.
 - Håll dina enhetsmetadata uppdaterade genom att ändra värdena som lagras i enhetsegenskaperna från dina vyer.
-- Kontrollera enheternas beteende genom att uppdatera en inställning på en specifik enhet från dina vyer.
+- Kontrollera beteendet för dina enheter genom att uppdatera en inställning på en specifik enhet från dina vyer.
 
 Information om hur du hanterar anpassade grupper av enheter finns i [Självstudie: Använda enhetsgrupper för att analysera enhettelemetri.](tutorial-use-device-groups.md)
 
@@ -36,7 +36,7 @@ Så här visar du en enskild enhet:
 
 1. Välj en enhetsmall.
 
-1. I den högra rutan på sidan **Enheter visas** en lista över enheter som skapats från enhetsmallen. Välj en enskild enhet för att se enhetens informationssida:
+1. I den högra rutan på sidan **Enheter visas** en lista över enheter som skapats från enhetsmallen. Välj en enskild enhet för att se enhetens enhetsinformationssida:
 
     ![Sidan Enhetsinformation](./media/howto-manage-devices/devicelist.png)
 
@@ -50,7 +50,7 @@ Så här lägger du till en enhet Azure IoT Central ditt program:
 
 1. Välj + **Ny.**
 
-1. Ändra **reglaget** Simulerad till **På** eller **Av.** En riktig enhet är för en fysisk enhet som du ansluter till Azure IoT Central program. En simulerad enhet har exempeldata som genereras åt dig av Azure IoT Central.
+1. Aktivera **eller inaktivera växlingsknappen** **Simulerad.**  En riktig enhet är för en fysisk enhet som du ansluter till Azure IoT Central program. En simulerad enhet har exempeldata som genereras åt dig av Azure IoT Central.
 
 1. Välj **Skapa**.
 
@@ -58,12 +58,14 @@ Så här lägger du till en enhet Azure IoT Central ditt program:
 
 ## <a name="import-devices"></a>Importera enheter
 
-Om du vill ansluta ett stort antal enheter till ditt program kan du massimporta enheter från en CSV-fil. CSV-filen ska ha följande kolumnrubriker:
+Om du vill ansluta ett stort antal enheter till ditt program kan du massimporta enheter från en CSV-fil. Du hittar en CSV-exempelfil på [lagringsplatsen För Azure-exempel.](https://github.com/Azure-Samples/iot-central-docs-samples/tree/master/bulk-upload-devices) CSV-filen bör innehålla följande kolumnrubriker:
 
 | Kolumn | Beskrivning 
 | - | - | 
-| IOTC_DEVICEID | Enhets-ID:t är ett unikt identifierat som den här enheten kommer att använda för att ansluta. Enhets-ID:t kan innehålla bokstäver, siffror `-` och tecknet utan blanksteg. |
+| IOTC_DEVICEID | Enhets-ID:t är en unik identifiering som den här enheten använder för att ansluta. Enhets-ID:t kan innehålla bokstäver, siffror `-` och tecken utan blanksteg. |
 | IOTC_DEVICENAME | Valfritt. Enhetsnamnet är ett eget namn som visas i hela programmet. Om inget anges är detta samma som enhets-ID:t.   |
+
+
 
 Massregistrera enheter i ditt program:
 
@@ -81,13 +83,13 @@ Massregistrera enheter i ditt program:
 
 1. Välj den CSV-fil som innehåller listan över enhets-ID:er som ska importeras.
 
-1. Enhetsimporten startar när filen har laddats upp. Du kan spåra importstatusen i panelen Enhetsåtgärder. Den här panelen visas automatiskt när importen startar eller så kan du komma åt den via klockikonen i det övre högra hörnet.
+1. Enhetsimporten startar när filen har laddats upp. Du kan spåra importstatusen på panelen Enhetsåtgärder. Den här panelen visas automatiskt när importen startar eller så kan du komma åt den via klockikonen i det övre högra hörnet.
 
 1. När importen är klar visas ett meddelande på panelen Enhetsåtgärder.
 
     ![Importen lyckades](./media/howto-manage-devices/bulkimport3a.png)
 
-Om enhetsimportåtgärden misslyckas visas ett felmeddelande på panelen Enhetsåtgärder. En loggfil som samlar in alla fel genereras som du kan ladda ned.
+Om enhetsimporten misslyckas visas ett felmeddelande på panelen Enhetsåtgärder. En loggfil som samlar in alla fel genereras som du kan ladda ned.
 
 ## <a name="migrate-devices-to-a-template"></a>Migrera enheter till en mall
 
@@ -99,7 +101,7 @@ Om du registrerar enheter genom att starta importen under **Alla** enheter skapa
 
     ![Enheter som inte är associerade](./media/howto-manage-devices/unassociateddevices1a.png)
 
-1. Använd filtret i rutnätet för att avgöra om värdet i **kolumnen Enhetsmall** är **Ej associerat** för någon av dina enheter.
+1. Använd filtret i rutnätet för att avgöra om värdet i kolumnen **Enhetsmall** är **Ej associerat** för någon av dina enheter.
 
 1. Välj de enheter som du vill associera med en mall:
 
@@ -113,13 +115,13 @@ Om du registrerar enheter genom att starta importen under **Alla** enheter skapa
 
 ## <a name="export-devices"></a>Exportera enheter
 
-Om du vill ansluta en riktig IoT Central måste du ha dess anslutningssträng. Du kan exportera enhetsinformation grupp för att få den information du behöver för att skapa enhetsanslutningssträngar. Exportprocessen skapar en CSV-fil med enhetsidentitet, enhetsnamn och nycklar för alla valda enheter.
+Om du vill ansluta en riktig IoT Central måste du ha dess anslutningssträng. Du kan exportera enhetsinformation i grupp för att få den information du behöver för att skapa enhetsanslutningssträngar. Exportprocessen skapar en CSV-fil med enhetsidentitet, enhetsnamn och nycklar för alla valda enheter.
 
 Massexport av enheter från ditt program:
 
 1. Välj **Enheter** i det vänstra fönstret.
 
-1. Välj den enhetsmall som du vill exportera enheterna från i den vänstra rutan.
+1. I den vänstra rutan väljer du den enhetsmall som du vill exportera enheterna från.
 
 1. Välj de enheter som du vill exportera och välj sedan **åtgärden** Exportera.
 
@@ -127,13 +129,13 @@ Massexport av enheter från ditt program:
 
 1. Exportprocessen startar. Du kan spåra statusen med hjälp av panelen Enhetsåtgärder.
 
-1. När exporten är klar visas ett meddelande med en länk för att ladda ned den genererade filen.
+1. När exporten är klar visas ett meddelande om att det lyckades tillsammans med en länk för att ladda ned den genererade filen.
 
 1. Välj länken **Ladda ned** fil för att ladda ned filen till en lokal mapp på disken.
 
     ![Exporten lyckades](./media/howto-manage-devices/export2a.png)
 
-1. Den exporterade CSV-filen innehåller följande kolumner: enhets-ID, enhetsnamn, enhetsnycklar och X509-certifikattumavtryck:
+1. Den exporterade CSV-filen innehåller följande kolumner: enhets-ID, enhetsnamn, enhetsnycklar och tumavtryck för X509-certifikat:
 
     * IOTC_DEVICEID
     * IOTC_DEVICENAME
@@ -146,7 +148,7 @@ Mer information om anslutningssträngar och anslutning av verkliga enheter till 
 
 ## <a name="delete-a-device"></a>Ta bort en enhet
 
-Så här tar du bort en verklig eller simulerad enhet från Azure IoT Central program:
+Så här tar du bort en verklig eller simulerad enhet från ditt Azure IoT Central program:
 
 1. Välj **Enheter** i det vänstra fönstret.
 
@@ -164,7 +166,7 @@ Molnegenskaper är enhetsmetadata som är associerade med enheten, till exempel 
 
 1. Välj enhetsmallen för den enhet vars egenskaper du vill ändra och välj målenheten.
 
-1. Välj den vy som innehåller egenskaper för enheten. I den  här vyn kan du ange värden och välja Spara överst på sidan. Här ser du de egenskaper som din enhet har och deras aktuella värden. Molnegenskaper och skrivbara egenskaper har redigerbara fält, medan enhetsegenskaper är skrivskyddade. För skrivbara egenskaper kan du se deras synkroniseringsstatus längst ned i fältet. 
+1. Välj den vy som innehåller egenskaper för din enhet. I den här vyn kan du ange värden **och** välja Spara överst på sidan. Här ser du de egenskaper som din enhet har och deras aktuella värden. Molnegenskaper och skrivbara egenskaper har redigerbara fält, medan enhetsegenskaper är skrivskyddade. För skrivbara egenskaper kan du se deras synkroniseringsstatus längst ned i fältet. 
 
 1. Ändra egenskaperna till de värden du behöver. Du kan ändra flera egenskaper i taget och uppdatera dem på samma gång.
 
@@ -172,4 +174,4 @@ Molnegenskaper är enhetsmetadata som är associerade med enheten, till exempel 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har lärt dig hur du hanterar enheter i ditt Azure IoT Central program föreslår vi att du går vidare med att lära dig hur du[konfigurerar regler](howto-configure-rules.md) för dina enheter.
+Nu när du har lärt dig hur du hanterar enheter i ditt Azure IoT Central program är nästa steg att lära dig hur du[konfigurerar regler](howto-configure-rules.md) för dina enheter.

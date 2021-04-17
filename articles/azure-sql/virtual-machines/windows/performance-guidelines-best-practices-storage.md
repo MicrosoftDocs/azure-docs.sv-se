@@ -1,6 +1,6 @@
 ---
-title: 'Lagring: metod tips för prestanda & rikt linjer'
-description: Tillhandahåller metod tips och rikt linjer för lagring för att optimera prestanda för dina SQL Server på Azure Virtual Machine (VM).
+title: 'Lagring: Metodtips för prestanda & riktlinjer'
+description: Innehåller metodtips och riktlinjer för lagring för att optimera prestanda för dina SQL Server på virtuella Azure-datorer (VM).
 services: virtual-machines-windows
 documentationcenter: na
 author: dplessMSFT
@@ -15,274 +15,274 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: 001a9a15c259d0b0d73eec9c9a39ad7c27f26721
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 23e006c637285ad484e98b23b2a9f506156f519c
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572517"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389731"
 ---
-# <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>Lagring: metod tips för prestanda för SQL Server på virtuella Azure-datorer
+# <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>Lagring: Metodtips för prestanda för SQL Server virtuella Azure-datorer
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Den här artikeln innehåller metod tips och rikt linjer för lagring som optimerar prestanda för dina SQL Server på Azure Virtual Machines (VM).
+Den här artikeln innehåller metodtips och riktlinjer för lagring för att optimera prestanda för SQL Server på Azure Virtual Machines (VM).
 
-Det finns vanligt vis en kompromiss mellan optimering av kostnader och optimering för prestanda. Den här prestanda serien för bästa metoder fokuserar på att få *bästa möjliga* prestanda för SQL Server på Azure Virtual Machines. Om din arbets belastning är mindre krävande kanske du inte behöver varje rekommenderad optimering. Överväg dina prestanda behov, kostnader och arbets belastnings mönster när du utvärderar dessa rekommendationer.
+Det finns vanligtvis en avvägning mellan kostnadsoptimering och prestandaoptimering. Den här serien med metodtips för prestanda fokuserar på *att få bästa* prestanda för SQL Server på Azure Virtual Machines. Om din arbetsbelastning är mindre krävande kanske du inte behöver alla rekommenderade optimeringar. Överväg dina prestandabehov, kostnader och arbetsbelastningsmönster när du utvärderar dessa rekommendationer.
 
-Mer information finns i de andra artiklarna i serien: [prestanda check lista](performance-guidelines-best-practices-checklist.md), [VM-storlek](performance-guidelines-best-practices-vm-size.md)och [insamling av bas linje](performance-guidelines-best-practices-collect-baseline.md). 
+Mer information finns i de andra artiklarna i den här serien: Checklista [för](performance-guidelines-best-practices-checklist.md)prestanda, [VM-storlek](performance-guidelines-best-practices-vm-size.md)och Samla in [baslinje.](performance-guidelines-best-practices-collect-baseline.md) 
 
 ## <a name="checklist"></a>Checklista
 
-Läs igenom följande check lista för en kort översikt över metod tips för lagring som resten av artikeln omfattar i större detalj: 
+Läs följande checklista för en kort översikt över metodtipsen för lagring som beskrivs i resten av artikeln i detalj: 
 
-- Övervaka programmet och [fastställa krav på lagrings bandbredd och latens](../../../virtual-machines/premium-storage-performance.md#counters-to-measure-application-performance-requirements) för SQL Server data, logg och tempdb-filer innan du väljer disk typen. 
-- Du kan optimera lagrings prestanda genom att planera för högsta otillgängliga IOPS och använda Datacachen som en prestanda funktion för data läsningar samtidigt som du undviker [virtuella datorer och diskar capping](../../../virtual-machines/premium-storage-performance.md#throttling).
-- Placera data, logg och tempdb-filer på separata enheter.
-    - För data enheten använder du endast [Premium-P30 och P40-diskar](../../../virtual-machines/disks-types.md#premium-ssd) för att säkerställa tillgängligheten för cache-stöd
-    - För logg enhets planen för kapacitets-och test prestanda jämfört med kostnaderna vid utvärdering av [Premium P30-P80-diskar](../../../virtual-machines/disks-types.md#premium-ssd)
-      - Om det krävs en lagrings fördröjning i millisekunder, använder du [Azure Ultra disks](../../../virtual-machines/disks-types.md#ultra-disk) för transaktions loggen. 
-      - För distribution av virtuella datorer i M-serien kan du [skriva Accelerator](../../../virtual-machines/how-to-enable-write-accelerator.md) för att använda Azure Ultra disks.
-    - Placera [tempdb](/sql/relational-databases/databases/tempdb-database) på den lokala tillfälliga SSD- `D:\` enheten för de flesta SQL Server arbets belastningar när du har valt den optimala storleken för virtuella datorer. 
-      - Om den lokala enhetens kapacitet inte räcker för tempdb bör du överväga att ändra storlek på den virtuella datorn. Mer information finns i [principer för cachelagring av data filer](#data-file-caching-policies) .
-- Stripa flera Azure-datadiskar med [lagrings utrymmen](/windows-server/storage/storage-spaces/overview) för att öka i/O-bandbredden upp till den virtuella mål DATORns IOPS-och data flödes gränser.
-- Ange att [cachelagring av värden](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits) ska vara skrivskyddat för data fil diskar.
-- Ange [cachelagring av värden](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits) till ingen för logg fil diskar.
-    - Aktivera inte cachelagring för läsning/skrivning på diskar som innehåller SQL Server filer. 
-    - Stoppa alltid SQL Server tjänsten innan du ändrar cache-inställningarna för disken.
-- För utvecklings-och test arbets belastningar och arkivering med långsiktig säkerhets kopiering bör du använda standard lagring. Vi rekommenderar inte att du använder Standard HDD/SDD för produktions arbets belastningar.
-- [Kreditbaserade disk burst](../../../virtual-machines/disk-bursting.md#credit-based-bursting) (P1-P20) bör endast beaktas för mindre arbets belastningar för utveckling/testning och avdelnings system.
-- Etablera lagrings kontot i samma region som SQL Server VM. 
-- Inaktivera Azure Geo-redundant lagring (geo-replikering) och Använd LRS (lokalt redundant lagring) på lagrings kontot.
-- Formatera datadisken så att den använder storleken 64 KB för allokeringsenheter för alla datafiler som placerats på en annan enhet än den temporära `D:\` enheten (som har ett standardvärde på 4 KB). SQL Server virtuella datorer som distribueras via Azure Marketplace levereras med data diskar som är formaterade med storlek och överlagring för allokeringsenhet och överlagring för lagringspoolen inställd på 64 KB. 
+- Övervaka programmet och fastställa [krav på lagringsbandbredd](../../../virtual-machines/premium-storage-performance.md#counters-to-measure-application-performance-requirements) och svarstid för SQL Server, loggfiler och tempdb-filer innan du väljer disktyp. 
+- För att optimera [lagringsprestanda](../../../virtual-machines/premium-storage-performance.md#throttling)bör du planera för högsta tillgängliga IOPS och använda cachelagring av data som en prestandafunktion för dataläsningar samtidigt som du undviker virtuella datorer och diskar med ett tak för .
+- Placera data, loggfiler och tempdb-filer på separata enheter.
+    - För dataenheten använder du endast [Premium P30- och P40-diskar](../../../virtual-machines/disks-types.md#premium-ssd) för att säkerställa tillgängligheten för cachestöd
+    - För loggenhetsplanen för kapacitet och testprestanda jämfört med kostnad vid utvärdering av [Premium P30–P80-diskarna](../../../virtual-machines/disks-types.md#premium-ssd)
+      - Om lagringsfördröjning för under millisekunder krävs använder du [Azure Ultra-diskar](../../../virtual-machines/disks-types.md#ultra-disk) för transaktionsloggen. 
+      - För distributioner av virtuella datorer i M-serien bör du [överväga att skriva accelerator](../../../virtual-machines/how-to-enable-write-accelerator.md) över med Hjälp av Azure Ultra-diskar.
+    - Placera [tempdb](/sql/relational-databases/databases/tempdb-database) på den lokala tillfälliga SSD-enheten för de flesta SQL Server `D:\` efter att du har valt den optimala VM-storleken. 
+      - Om kapaciteten för den lokala enheten inte är tillräcklig för tempdb bör du överväga att ändra storlek på den virtuella datorn. Mer information [finns i Cachelagringsprinciper](#data-file-caching-policies) för datafiler.
+- Stripe multiple Azure data disks using [Storage Spaces](/windows-server/storage/storage-spaces/overview) to increase I/O bandwidth up to the target virtual machine's IOPS and throughput limits .
+- Ange [värdcachelagring](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits) till skrivskyddade för datafildiskar.
+- Ange [värdcachelagring](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits) till ingen för loggfilsdiskar.
+    - Aktivera inte cachelagring av läsning/skrivning på diskar som innehåller SQL Server filer. 
+    - Stoppa alltid SQL Server innan du ändrar diskens cacheinställningar.
+- För arbetsbelastningar för utveckling och testning och långsiktig säkerhetskopiering bör du överväga att använda standardlagring. Vi rekommenderar inte att du använder Standard HDD/SDD för produktionsarbetsbelastningar.
+- [Kreditbaserad disk bursting](../../../virtual-machines/disk-bursting.md#credit-based-bursting) (P1-P20) bör endast övervägas för mindre dev/test-arbetsbelastningar och avdelningssystem.
+- Etablera lagringskontot i samma region som SQL Server VM. 
+- Inaktivera geo-redundant lagring i Azure (geo-replikering) och använd LRS (lokal redundant lagring) på lagringskontot.
+- Formatera datadisken så att den använder blockstorleken 64 KB (storlek på allokeringsenhet) för alla datafiler som placeras på en annan enhet än den tillfälliga enheten (som har standardinställningen `D:\` 4 KB). SQL Server virtuella datorer som distribueras via Azure Marketplace med datadiskar formaterade med en blockstorlek och överlagring för lagringspoolen inställda på 64 kB. 
 
-Information om hur du jämför lagrings check listan med de andra finns i [Check lista för omfattande prestanda för bästa praxis](performance-guidelines-best-practices-checklist.md). 
+Om du vill jämföra checklistan för lagring med de andra kan du se den omfattande [checklistan med metodtips för prestanda.](performance-guidelines-best-practices-checklist.md) 
 
 ## <a name="overview"></a>Översikt
 
-Om du vill hitta den mest effektiva konfigurationen för SQL Server arbets belastningar på en virtuell Azure-dator börjar du med att [mäta lagrings prestanda för affärs programmet](performance-guidelines-best-practices-collect-baseline.md#storage). När lagrings kraven är kända väljer du en virtuell dator som stöder nödvändiga IOPS och data flöde med lämpligt minne-till-vCore-förhållande. 
+För att hitta den mest effektiva konfigurationen SQL Server arbetsbelastningar på en virtuell Azure-dator börjar du med att mäta lagringsprestanda [för ditt affärsprogram.](performance-guidelines-best-practices-collect-baseline.md#storage) När lagringskraven är kända väljer du en virtuell dator som stöder nödvändig IOPS och dataflöde med rätt förhållande mellan minne och virtuell kärnor. 
 
-Välj en VM-storlek med tillräckligt skalbart lagrings utrymme för din arbets belastning och en blandning av diskar (vanligt vis i en lagringspool) som uppfyller företagets kapacitet och prestanda krav. 
+Välj en VM-storlek med tillräcklig lagringsskalbarhet för din arbetsbelastning och en blandning av diskar (vanligtvis i en lagringspool) som uppfyller företagets kapacitets- och prestandakrav. 
 
-Vilken typ av disk som är beror på både den filtyp som finns på disken och kraven för högsta prestanda.
+Typen av disk beror på både filtypen som finns på disken och dina högsta prestandakrav.
 
 > [!TIP]
-> Genom att tillhandahålla en SQL Server VM via Azure Portal får du hjälp med lagrings konfigurations processen och implementerar de flesta bästa metoder för lagring, till exempel att skapa separata lagringspooler för dina data och loggfiler, rikta in tempdb till `D:\` enheten och aktivera den optimala auktoriseringsprincipen för cachelagring. Mer information om etablering och konfiguration av lagring finns i [SQL VM Storage Configuration](storage-configuration.md). 
+> Etablering av en SQL Server VM via Azure Portal hjälper dig att gå igenom lagringskonfigurationsprocessen och implementerar de flesta metodtips för lagring, till exempel att skapa separata lagringspooler för dina data och loggfiler, rikta tempdb till enheten och aktivera `D:\` optimal cachelagringsprincip. Mer information om hur du etablerar och konfigurerar lagring finns i [SQL VM-lagringskonfiguration.](storage-configuration.md) 
 
 ## <a name="vm-disk-types"></a>VM-disktyper
 
-Du har ett alternativ i prestanda nivån för diskarna. De typer av hanterade diskar som är tillgängliga som underliggande lagring (listade genom ökade prestanda funktioner) är standard hård diskar (HDD), standard SSD, förstklassiga solid state-hårddiskar (SSD) och Ultra disks. 
+Du kan välja prestandanivå för dina diskar. De typer av hanterade diskar som är tillgängliga som underliggande lagring (visas genom att öka prestandafunktionerna) är standardhårddiskar (HDD), standard SSD,Premium SOLID State-hårddiskar (SSD) och ultradiskar. 
 
-Diskens prestanda ökar med kapaciteten, grupperad efter [Premium disk etiketter](../../../virtual-machines/disks-types.md#premium-ssd) som P1 med 4 GiB utrymme och 120 IOPS till P80 med 32 TIB storage och 20 000 IOPS. Premium Storage stöder lagrings cachen som hjälper till att förbättra Läs-och skriv prestanda för vissa arbets belastningar. Mer information finns i [Översikt över Managed disks](../../../virtual-machines/managed-disks-overview.md). 
+Diskens prestanda ökar med kapaciteten, grupperad efter [premiumdisketiketter](../../../virtual-machines/disks-types.md#premium-ssd) som P1 med 4 GiB utrymme och 120 IOPS till P80 med 32 TiB lagringsutrymme och 20 000 IOPS. Premium Storage stöder en lagringscache som hjälper till att förbättra läs- och skrivprestanda för vissa arbetsbelastningar. Mer information finns i [Översikt över hanterade diskar.](../../../virtual-machines/managed-disks-overview.md) 
 
-Det finns också tre typer av huvud [diskar](../../../virtual-machines/managed-disks-overview.md#disk-roles) som du bör tänka på för din SQL Server på Azure VM – en OS-disk, en temporär disk och dina data diskar. Välj noga vad som lagras på operativ system enheten `(C:\)` och den tillfälliga tillfälliga enheten `(D:\)` . 
+Det finns också tre huvudsakliga [disktyper](../../../virtual-machines/managed-disks-overview.md#disk-roles) att tänka på SQL Server virtuella Azure-datorer – en OS-disk, en tillfällig disk och dina datadiskar. Välj noggrant vad som lagras på operativsystemenheten `(C:\)` och den tillfälliga tillfälliga enheten `(D:\)` . 
 
 ### <a name="operating-system-disk"></a>Operativsystemdisk
 
-En operativ system disk är en virtuell hård disk som kan startas och monteras som en aktiv version av ett operativ system och som är märkt som `C:\` enhet. När du skapar en virtuell Azure-dator kommer plattformen att ansluta minst en disk till den virtuella datorn för operativ system disken. `C:\`Enheten är standard platsen för program installationer och fil konfiguration. 
+En operativsystemdisk är en virtuell hårddisk som kan startas och monteras som en version av ett operativsystem som körs och som är märkt som `C:\` enheten. När du skapar en virtuell Azure-dator ansluter plattformen minst en disk till den virtuella datorn för operativsystemdisken. Enheten `C:\` är standardplatsen för programinstallationer och filkonfiguration. 
 
-För produktions SQL Server miljöer ska du inte använda operativ system disken för datafiler, loggfiler, fel loggar. 
+För produktionsmiljöer SQL Server bör du inte använda operativsystemdisken för datafiler, loggfiler eller felloggar. 
 
 ### <a name="temporary-disk"></a>Tillfällig disk
 
-Många virtuella Azure-datorer innehåller en annan disk typ som kallas temporär disk (märkt som `D:\` enhet). Beroende på den virtuella dator serien och storleken på diskens kapacitet varierar. Den temporära disken är tillfällig, vilket innebär att disk lagringen återskapas (som i, den frigörs och tilldelas igen) när den virtuella datorn startas om, eller flyttas till en annan värd (för [tjänst återställning](/troubleshoot/azure/virtual-machines/understand-vm-reboot), till exempel). 
+Många virtuella Azure-datorer innehåller en annan disktyp som kallas den tillfälliga disken (märkt som `D:\` enheten). Beroende på den virtuella datorserien och storleken varierar diskens kapacitet. Den tillfälliga disken är tillfällig, vilket innebär att disklagringen återskapas (som i, den frisätts och allokeras igen), när den [](/troubleshoot/azure/virtual-machines/understand-vm-reboot)virtuella datorn startas om eller flyttas till en annan värd (till exempel för tjänstläsning). 
 
-Den tillfälliga lagrings enheten är inte beständig för Fjärrlagring och bör därför inte lagra databasfiler för användare, transaktionsloggfiler eller något som måste bevaras. 
+Den tillfälliga lagringsenheten bevaras inte i fjärrlagring och bör därför inte lagra användardatabasfiler, transaktionsloggfiler eller något annat som måste bevaras. 
 
-Placera tempdb på den lokala tillfälliga SSD- `D:\` enheten för SQL Server arbets belastningar om inte konsumtion av lokal cache är ett problem. Om du använder en virtuell dator som [inte har en temporär disk](../../../virtual-machines/azure-vms-no-temp-disk.md) , rekommenderar vi att du placerar tempdb på sin egen isolerade disk eller lagringspool med cachelagring inställd på skrivskyddad. Läs mer i tempdb- [data caching-principer](performance-guidelines-best-practices-storage.md#data-file-caching-policies).
+Placera tempdb på den lokala tillfälliga `D:\` SSD-enheten för SQL Server arbetsbelastningar om inte förbrukning av lokal cache är ett problem. Om du använder en virtuell dator som inte har en tillfällig [disk](../../../virtual-machines/azure-vms-no-temp-disk.md) rekommenderar vi att du placerar tempdb på en egen isolerad disk eller lagringspool med cachelagring inställd på skrivskyddat. Mer information finns i [tempdb-principer för cachelagring av data.](performance-guidelines-best-practices-storage.md#data-file-caching-policies)
 
 ### <a name="data-disks"></a>Datadiskar
 
-Data diskar är fjärrlagringsenheter som ofta skapas i [lagringspooler](/windows-server/storage/storage-spaces/overview) för att överskrida kapaciteten och prestandan som en enskild disk kan erbjuda till den virtuella datorn.
+Datadiskar är fjärrlagringsdiskar som [](/windows-server/storage/storage-spaces/overview) ofta skapas i lagringspooler för att överskrida den kapacitet och prestanda som en enskild disk kan erbjuda den virtuella datorn.
 
-Koppla det minsta antalet diskar som uppfyller de IOPS-, data flödes-och kapacitets krav som gäller för din arbets belastning. Överskrider inte det maximala antalet data diskar på den minsta virtuella dator som du planerar att ändra storlek till.
+Koppla det minsta antalet diskar som uppfyller IOPS-, dataflödes- och kapacitetskraven för din arbetsbelastning. Överskrid inte det maximala antalet datadiskar för den minsta virtuella dator som du planerar att ändra storlek till.
 
-Placera data och loggfiler på data diskar etablerade för bästa prestanda krav. 
+Placera data och loggfiler på datadiskar som etablerats så att de bäst passar prestandakraven. 
 
-Formatera datadisken så att den använder storleken 64 KB för allokeringsenheter för alla datafiler som placerats på en annan enhet än den temporära `D:\` enheten (som har ett standardvärde på 4 KB). SQL Server virtuella datorer som distribueras via Azure Marketplace levereras med data diskar som är formaterade med storlek och överlagring för allokeringsenhet och överlagring för lagringspoolen inställd på 64 KB. 
+Formatera datadisken så att allokeringsenhetens storlek på 64 KB används för alla datafiler som placeras på en annan enhet än den temporära enheten (som har standardinställningen `D:\` 4 KB). SQL Server virtuella datorer som distribueras via Azure Marketplace med datadiskar formaterade med allokeringsenhetsstorlek och överlagring för lagringspoolen inställda på 64 kB. 
 
-## <a name="premium-disks"></a>Premium diskar
+## <a name="premium-disks"></a>Premiumdiskar
 
-Använd Premium SSD-diskar för data-och loggfiler för produktions SQL Server arbets belastningar. Premium SSD IOPS och bandbredd varierar beroende på [diskens storlek och typ](../../../virtual-machines/disks-types.md). 
+Använd Premium SSD-diskar för data och loggfiler för SQL Server arbetsbelastningar. Premium SSD IOPS och bandbredd varierar beroende på [diskstorleken och typen](../../../virtual-machines/disks-types.md). 
 
-För produktions arbets belastningar använder du P30-och/eller P40-diskarna för SQL Server datafiler för att säkerställa cachelagring av stöd och använda P30 upp till P80 för SQL Server transaktionsloggfiler.  För bästa möjliga ägande kostnad börjar du med P30s (5000 IOPS/200 MBIT/s) för data-och loggfiler och väljer bara högre kapacitet när du behöver kontrol lera antalet diskar på den virtuella datorn.
+För produktionsarbetsbelastningar använder du P30- och/eller P40-diskarna för SQL Server-datafiler för att säkerställa stöd för cachelagring och använda P30 upp till P80 för SQL Server-transaktionsloggfiler.  För den bästa totala ägandekostnaden börjar du med P30s (5 000 IOPS/200 Mbit/s) för data- och loggfiler och väljer bara högre kapaciteter när du behöver styra antalet virtuella diskar.
 
-För OLTP-arbetsbelastningar måste du matcha målets IOPS per disk (eller lagringspool) med dina prestanda krav med arbets belastningar vid hög belastnings tider och `Disk Reads/sec`  +  `Disk Writes/sec` prestanda räknarna. För data lager-och rapporterings arbets belastningar matchar du mål data flödet med arbets belastningar vid hög belastnings tider och `Disk Read Bytes/sec`  +  `Disk Write Bytes/sec` . 
+För OLTP-arbetsbelastningar matchar du mål-IOPS per disk (eller lagringspool) med dina prestandakrav med hjälp av arbetsbelastningar vid hög belastning och `Disk Reads/sec`  +  `Disk Writes/sec` prestandaräknare. För arbetsbelastningar för informationslager och rapportering matchar du måldataflödet med hjälp av arbetsbelastningar vid hög belastning och `Disk Read Bytes/sec`  +  `Disk Write Bytes/sec` . 
 
-Använd lagrings utrymmen för att uppnå optimala prestanda, konfigurera två pooler, en för loggfilerna och den andra för datafilerna. Om du inte använder disk ränder använder du två Premium SSD-diskar som är mappade till separata enheter, där en enhet innehåller logg filen och den andra innehåller data.
+Använd Lagringsutrymmen för att uppnå optimala prestanda, konfigurera två pooler, en för loggfilerna och den andra för datafilerna. Om du inte använder diskstrimning använder du två Premium SSD-diskar som är mappade till separata enheter, där den ena enheten innehåller loggfilen och den andra innehåller data.
 
-Den [tillhandahållna IOPS och data flödet](../../../virtual-machines/disks-types.md#premium-ssd) per disk som används som en del av lagringspoolen. De kombinerade IOPS-och data flödes funktionerna i diskarna är den maximala kapaciteten upp till data flödes gränserna för den virtuella datorn.
+Etablerat [IOPS och dataflöde per](../../../virtual-machines/disks-types.md#premium-ssd) disk som används som en del av lagringspoolen. De kombinerade IOPS- och dataflödesfunktionerna på diskarna är den maximala kapaciteten upp till dataflödesgränserna för den virtuella datorn.
 
-Den bästa metoden är att använda det minsta antalet diskar som kan användas för att uppfylla de lägsta kraven för IOPS (och data flöde) och kapacitet. Dock är balansen mellan pris och prestanda bättre att vara bättre med ett stort antal små diskar i stället för ett litet antal stora diskar.
+Det bästa sättet är att använda så få diskar som möjligt samtidigt som minimikraven för IOPS (och dataflöde) och kapacitet uppfyllas. Balansen mellan pris och prestanda brukar dock vara bättre med ett stort antal små diskar i stället för ett litet antal stora diskar.
 
-### <a name="scaling-premium-disks"></a>Skala Premium-diskar
+### <a name="scaling-premium-disks"></a>Skala premiumdiskar
 
-När en Azure-hanterad disk först distribueras, baseras prestanda nivån för den disken på den allokerade disk storleken. Ange prestanda nivån vid distributionen eller ändra den efteråt, utan att ändra storleken på disken. Om efter frågan ökar kan du öka prestanda nivån så att den passar dina affärs behov. 
+När en Azure Managed Disk först distribueras baseras prestandanivån för den disken på den etablerade diskstorleken. Ange prestandanivån vid distributionen eller ändra den efteråt, utan att ändra diskens storlek. Om efterfrågan ökar kan du öka prestandanivån för att uppfylla dina affärsbehov. 
 
-Genom att ändra prestanda nivån kan administratörer förbereda för och uppfylla högre efter frågan utan att behöva förlita sig på [disk-burst](../../../virtual-machines/disk-bursting.md#credit-based-bursting). 
+Genom att ändra prestandanivån kan administratörer förbereda sig för och uppfylla högre krav utan att förlita sig på [disk bursting](../../../virtual-machines/disk-bursting.md#credit-based-bursting). 
 
-Använd den högre prestandan så länge som det behövs, där faktureringen är utformad för att uppfylla lagrings prestanda nivån. Uppgradera nivån så att den matchar prestanda kraven utan att öka kapaciteten. Återgå till den ursprungliga nivån när extra prestanda inte längre krävs.
+Använd högre prestanda så länge det behövs där faktureringen är utformad för att uppfylla lagringsprestandanivån. Uppgradera nivån så att den matchar prestandakraven utan att öka kapaciteten. Gå tillbaka till den ursprungliga nivån när den extra prestandan inte längre krävs.
 
-Den här kostnads effektiva och tillfälliga utökningen av prestanda är ett starkt användnings fall för riktade händelser som shopping, prestandatester, utbildnings händelser och andra korta fönster där större prestanda bara behövs för en kort period. 
+Den här kostnadseffektiva och tillfälliga utökningen av prestanda är ett starkt användningsfall för riktade händelser som shopping, prestandatestning, träningshändelser och andra korta fönster där bättre prestanda endast behövs på kort sikt. 
 
-Mer information finns i [prestanda nivåer för hanterade diskar](../../../virtual-machines/disks-change-performance.md). 
+Mer information finns i [Prestandanivåer för hanterade diskar.](../../../virtual-machines/disks-change-performance.md) 
 
-## <a name="azure-ultra-disk"></a>Azure Ultra disk
+## <a name="azure-ultra-disk"></a>Azure Ultra Disk
 
-Om det finns ett behov av svars tider under millisekunder med minskad latens bör du använda [Azure Ultra disk](../../../virtual-machines/disks-types.md#ultra-disk) för den SQL Server logg enheten, eller till och med data enheten för program som är mycket känsliga för i/O-latens. 
+Om det finns ett behov av svarstider under millisekunder med kortare svarstider bör du överväga att använda [Azure Ultra Disk](../../../virtual-machines/disks-types.md#ultra-disk) för SQL Server-loggenheten, eller till och med dataenheten för program som är mycket känsliga för I/O-svarstider. 
 
-Ultra disk kan konfigureras där kapacitet och IOPS kan skalas oberoende av varandra. Med Ultra disk-administratörer kan du etablera en disk med kapacitets-, IOPS-och data flödes krav baserat på program behov. 
+Ultradisk kan konfigureras där kapacitet och IOPS kan skalas oberoende av varandra. Med ultradiskadministratörer kan etablera en disk med kapacitets-, IOPS- och dataflödeskrav baserat på programbehov. 
 
-Ultra disk stöds inte på alla VM-serier och har andra begränsningar som region tillgänglighet, redundans och stöd för Azure Backup. Mer information finns i [använda Azure Ultra disks](../../../virtual-machines/disks-enable-ultra-ssd.md) för en fullständig lista över begränsningar. 
+Ultradisk stöds inte i alla VM-serier och har andra begränsningar, till exempel regionstillgänglighet, redundans och stöd för Azure Backup. Mer information finns i [Använda Azure Ultra-diskar för](../../../virtual-machines/disks-enable-ultra-ssd.md) en fullständig lista över begränsningar. 
 
-## <a name="standard-hdds-and-ssds"></a>Standard hård diskar och SSD
+## <a name="standard-hdds-and-ssds"></a>Standard HDD och STANDARD HDD
 
-[Standard hård diskar](../../../virtual-machines/disks-types.md#standard-hdd) och SSD har varierande latens och bandbredd och rekommenderas bara för arbets belastningar för utveckling/testning. Arbets belastningar för produktion bör använda Premium-SSD. Om du använder Standard SSD (utvecklings-/test scenarier) är rekommendationen att lägga till det maximala antalet data diskar som stöds av storleken på den [virtuella](../../../virtual-machines/sizes.md?toc=/azure/virtual-machines/windows/toc.json) datorn och använda disk ränder med lagrings utrymmen för bästa prestanda.
+[Standard HDD och](../../../virtual-machines/disks-types.md#standard-hdd) STANDARD HDD har varierande svarstider och bandbredd och rekommenderas endast för dev/test-arbetsbelastningar. Produktionsarbetsbelastningar bör använda Premium-SSD:er. Om du använder Standard SSD (dev/test-scenarier) rekommenderar vi att du lägger till [](../../../virtual-machines/sizes.md?toc=/azure/virtual-machines/windows/toc.json) det maximala antalet datadiskar som stöds av din VM-storlek och använder diskstrimning med Lagringsutrymmen för bästa prestanda.
 
 ## <a name="caching"></a>Cachelagring
 
-Virtuella datorer som stöder cachelagring av Premium Storage kan dra nytta av ytterligare en funktion som kallas Azure-BlobCache eller cachelagring av värdar för att utöka IOPS-och data flödes funktionerna i en virtuell dator. Virtuella datorer som är aktiverade för både Premium Storage-och Premium Storage-cachelagring har dessa två olika begränsningar för lagrings bandbredd som kan användas tillsammans för att förbättra lagrings prestanda.
+Virtuella datorer som stöder premiumlagringscachelagring kan dra nytta av ytterligare en funktion som kallas Azure BlobCache eller värdcachelagring för att utöka IOPS- och dataflödesfunktionerna i en virtuell dator. Virtuella datorer som är aktiverade för både Premium Storage- och Premium Storage-cachelagring har dessa två olika begränsningar för lagringsbandbredd som kan användas tillsammans för att förbättra lagringsprestanda.
 
-IOPS-och Mbit/s-dataflödet utan cachelagring räknas mot en virtuell dators gränser för data flöde i cacheminnet. De maximala cachelagrade gränserna ger ytterligare en buffert för läsningar som hjälper till att adressera tillväxten och oväntade toppar.
+IOPS- och MBps-dataflödet utan cachelagring räknas mot en virtuell dators dataflödesgränser för okorkopplad disk. De maximala cachelagrade gränserna ger ytterligare en buffert för läsningar som hjälper till att hantera tillväxt och oväntade toppar.
 
-Aktivera Premium-cachelagring när alternativet stöds för att förbättra prestanda för läsningar mot data enheten utan ytterligare kostnad. 
+Aktivera Premium-cachelagring när alternativet stöds för att avsevärt förbättra prestanda för läsningar mot dataenheten utan extra kostnad. 
 
-Läsningar och skrivningar till Azure-BlobCache (cachelagrad IOPS och data flöde) räknas inte mot de cachelagrade IOPS-och data flödes gränserna för den virtuella datorn.
+Läsningar och skrivningar till Azure BlobCache (cachelagrad IOPS och dataflöde) räknas inte mot den virtuella datorns gränser för ej cachelagrad IOPS och dataflöde.
 
 > [!NOTE]
-> Diskcachelagring stöds inte för disk 4 TiB och större (P50 och större). Om flera diskar är anslutna till den virtuella datorn kommer varje disk som är mindre än 4 TiB att ha stöd för cachelagring. Mer information finns i diskcachelagring [.](../../../virtual-machines/premium-storage-performance.md#disk-caching) 
+> Diskcachelagring stöds inte för diskar 4 TiB och större (P50 och större). Om flera diskar är anslutna till den virtuella datorn stöder varje disk som är mindre än 4 TiB cachelagring. Mer information finns i [Diskcachelagring.](../../../virtual-machines/premium-storage-performance.md#disk-caching) 
 
-### <a name="uncached-throughput"></a>Ej cachelagrat data flöde
+### <a name="uncached-throughput"></a>Okopplad dataflöde
 
-Max gränsen för ej cachelagrade diskar och data flöden är den maximala begränsningen för Fjärrlagring som den virtuella datorn kan hantera. Den här gränsen definieras på den virtuella datorn och är inte en gräns för den underliggande disk lagringen. Den här gränsen gäller endast för I/O mot data enheter som fjärransluter till den virtuella datorn, inte från det lokala I/O mot den temporära enheten ( `D:\` enhet) eller operativ system enheten.
+Det maximala antalet IOPS och dataflöde för disk som inte är frånkopplad är den maximala gränsen för fjärrlagring som den virtuella datorn kan hantera. Den här gränsen definieras på den virtuella datorn och är inte en gräns för den underliggande disklagringen. Den här gränsen gäller endast för I/O mot dataenheter som är fjärranslutna till den virtuella datorn, inte den lokala I/O:n mot den tillfälliga enheten `D:\` (enheten) eller OS-enheten.
 
-Mängden ej cachelagrad IOPS och data flöde som är tillgängligt för en virtuell dator kan verifieras i dokumentationen för den virtuella datorn.
+Mängden frikopplad IOPS och dataflöde som är tillgängligt för en virtuell dator kan verifieras i dokumentationen för den virtuella datorn.
 
-Dokumentationen för [M-serien](../../../virtual-machines/m-series.md) visar till exempel att max det cachelagrade data flödet för den Standard_M8ms virtuella datorn är 5000 IOPS och 125 Mbit/s för disk data flöde som inte har cachelagrats. 
+M-seriens dokumentation visar till exempel att det maximala icke-frånkopplade dataflödet för den virtuella [Standard_M8ms-datorn](../../../virtual-machines/m-series.md) är 5 000 IOPS och 125 Mbps för icke-frånkopplad disk. 
 
-![Skärm bild som visar d-seriens cachelagrade disk data flödes dokumentation.](./media/performance-guidelines-best-practices/m-series-table.png)
+![Skärmbild som visar dokumentation om icke-frånkopplad diskgenomflöde i M-serien.](./media/performance-guidelines-best-practices/m-series-table.png)
 
-På samma sätt kan du se att Standard_M32ts stöder 20 000 disk-och 500 Mbit/s, ej cachelagrad disk data flöde. Den här gränsen styrs av den virtuella dator nivån oavsett den underliggande Premium disk lagringen.
+På samma sätt kan du se att Standard_M32ts stöder 20 000 IOPS-diskar och 500 MBps utan diskgenomflöde. Den här gränsen styrs på nivån för virtuella datorer oavsett den underliggande premiumdisklagringen.
 
-Mer information finns i [cachelagrade och cachelagrade gränser](../../../virtual-machines/linux/disk-performance-linux.md#virtual-machine-uncached-vs-cached-limits).
+Mer information finns i [begränsningar som inte är frånkopplade och cachelagrade.](../../../virtual-machines/linux/disk-performance-linux.md#virtual-machine-uncached-vs-cached-limits)
 
 
-### <a name="cached-and-temp-storage-throughput"></a>Data flöde för cachelagrad och temporär lagring
+### <a name="cached-and-temp-storage-throughput"></a>Cachelagrat och tillfälligt dataflöde för lagring
 
-Den maximala data flödes gränsen för cachelagrad och temporär lagring är en separat gräns från gränsen för ej cachelagrade data flöden på den virtuella datorn. Azure-BlobCache består av en kombination av den virtuella datorns värds RAM-minne och lokalt ansluten SSD. Den temporära enheten ( `D:\` enheten) i den virtuella datorn finns också på den här lokala SSD.
+Dataflödesgränsen för maximalt cachelagrat och temporärt lagringsutrymme är en separat gräns från gränsen för okopplade dataflöden på den virtuella datorn. Azure BlobCache består av en kombination av den virtuella datorvärdens slumpmässiga åtkomstminne och lokalt anslutna SSD. Den temporära `D:\` enheten ( enheten) på den virtuella datorn finns också på denna lokala SSD.
 
-Den maximala data flödes gränsen för cachelagrade och tillfälliga lagrings enheter styr i/O mot den lokala temporära enheten ( `D:\` enhet) och Azure-BlobCache **endast om** cachelagring av värden är aktiverat. 
+Maxgränsen för cachelagrat och temporärt lagringsflöde styr I/O mot den lokala temporära enheten ( enhet) och Azure BlobCache endast om `D:\` värdcachelagring är aktiverat.  
 
-När cachelagring har Aktiver ATS på Premium Storage kan virtuella datorer skalas utöver begränsningarna i Fjärrlagring, ej cachelagrade VM-och data flödes gränser.  
+När cachelagring har aktiverats för Premium Storage kan virtuella datorer skalas utanför begränsningarna för IOPS och dataflödesgränser för virtuella datorer som inte är frånkopplade för lagring.  
 
-Endast vissa virtuella datorer stöder både Premium Storage och Premium Storage-cachelagring (som måste verifieras i dokumentationen för den virtuella datorn). Dokumentationen för [M-serien](../../../virtual-machines/m-series.md) anger till exempel att både Premium Storage och Premium Storage-cachelagring stöds: 
+Endast vissa virtuella datorer stöder både premiumlagring och premiumlagringscachelagring (som måste verifieras i dokumentationen för virtuella datorer). M-seriens [dokumentation visar till exempel](../../../virtual-machines/m-series.md) att både Premium Storage och Cachelagring för Premium-lagring stöds: 
 
-![Skärm bild som visar Premium Storage-stöd i M-serien.](./media/performance-guidelines-best-practices/m-series-table-premium-support.png)
+![Skärmbild som visar stöd Premium Storage M-serien.](./media/performance-guidelines-best-practices/m-series-table-premium-support.png)
 
-Gränserna för cachen varierar beroende på storleken på den virtuella datorn. Standard_M8ms VM stöder till exempel 10000 cachelagrad disk-IOPS och 1000 Mbit/s, med en sammanlagd cachestorlek på 793 GiB. På samma sätt har Standard_M32ts VM stöd för 40000 cachelagrad disk-IOPS och 400 Mbit/s cachelagrad disk data flöde med den totala cachestorleken på 3174 GiB. 
+Gränserna för cacheminnet varierar beroende på storleken på den virtuella datorn. Till exempel stöder den virtuella Standard_M8ms 1 0000 cachelagrade disk-IOPS och 1 000 MBps cachelagrat diskgenomflöde med en total cachestorlek på 793 GiB. På samma sätt stöder den virtuella Standard_M32ts-datorn 4 0000 cachelagrade disk-IOPS och 400 MBps cachelagrat diskgenomflöde med en total cachestorlek på 3174 GiB. 
 
-![Skärm bild som visar cachelagrad disk data flödes dokumentation i M-serien.](./media/performance-guidelines-best-practices/m-series-table-cached-temp.png)
+![Skärmbild som visar dokumentation om cachelagrat diskgenomflöde i M-serien.](./media/performance-guidelines-best-practices/m-series-table-cached-temp.png)
 
-Du kan aktivera cachelagring av värdarna manuellt på en befintlig virtuell dator. Stoppa alla program arbets belastningar och SQL Server tjänsterna innan du gör några ändringar i den virtuella datorns princip för cachelagring. Om du ändrar någon av inställningarna för cachelagring av virtuella datorer i den mål disk som kopplas bort och sedan ansluts igen efter att inställningarna har tillämpats.
+Du kan aktivera värdcachelagring manuellt på en befintlig virtuell dator. Stoppa alla programarbetsbelastningar och SQL Server tjänster innan några ändringar görs i den virtuella datorns cachelagringsprincip. Om du ändrar någon av inställningarna för den virtuella datorns cacheminne så kopplas måldisken från och återansluts när inställningarna har tillämpats.
 
-### <a name="data-file-caching-policies"></a>Principer för cachelagring av data filer
+### <a name="data-file-caching-policies"></a>Cachelagringsprinciper för datafiler
 
-Din princip för cachelagring av lagring varierar beroende på vilken typ av SQL Server datafiler som finns på enheten. 
+Cachelagringsprincipen för lagring varierar beroende på vilken typ SQL Server som finns på enheten. 
 
-Följande tabell innehåller en sammanfattning av de rekommenderade caching-principerna baserat på typen av SQL Server data: 
+Följande tabell innehåller en sammanfattning av de rekommenderade cachelagringsprinciperna baserat på typen av SQL Server data: 
 
 |SQL Server disk |Rekommendation |
 |---------|---------|
-| **Datadisk** | Aktivera `Read-only` cachelagring för diskarna som är värdar för SQL Server datafiler. <br/> Läsningar från cachen går snabbare än de cachelagrade läsningarna från data disken. <br/> Uncached IOPS och data flöde plus cachelagrad IOPS och data flöde ger total möjliga prestanda som är tillgänglig från den virtuella datorn inom gränserna för virtuella datorer, men den faktiska prestandan varierar beroende på arbets Belastningens möjlighet att använda cachen (cacheträffar). <br/>|
-|**Transaktions logg disk**|Ange principen för cachelagring på `None` för diskar som är värdar för transaktions loggen.  Det finns ingen prestanda förmån för att aktivera cachelagring för transaktions logg disken, och i själva `Read-only` verket `Read/Write` kan det påverka prestanda för skrivningar mot enheten och minska mängden cache som är tillgängligt för läsningar på data enheten.  |
-|**Operativ system disk** | Standard principen för cachelagring kan vara `Read-only` eller `Read/write` för operativ system enheten. <br/> Vi rekommenderar inte att du ändrar lagrings nivån för operativ system enheten.  |
-| **tempdb**| Om tempdb inte kan placeras på den tillfälliga enheten `D:\` på grund av kapacitets skäl kan du antingen ändra storlek på den virtuella datorn för att få en större tillfällig enhet eller placera tempdb på en separat data enhet med `Read-only` konfigurerad cachelagring. <br/> Den virtuella datorns cache och den tillfälliga enheten använder båda lokal SSD, så tänk på detta när du ändrar storlek som tempdb I/O kommer att räknas mot de cachelagrade IOPS-och data flödes gränserna för virtuella datorer som finns på den tillfälliga enheten.| 
+| **Datadisk** | Aktivera `Read-only` cachelagring för diskar som är värdar SQL Server datafiler. <br/> Läsningar från cachen blir snabbare än de frånkopplade läsningarna från datadisken. <br/> Frikopplad IOPS och dataflöde plus cachelagrad IOPS och dataflöde ger den totala möjliga prestanda som är tillgänglig från den virtuella datorn inom de virtuella datorernas gränser, men den faktiska prestandan varierar beroende på arbetsbelastningens möjlighet att använda cachen (cache-träffförhållande). <br/>|
+|**Transaktionsloggdisk**|Ange cachelagringsprincipen till för `None` diskar som är värdar för transaktionsloggen.  Det finns ingen prestandaförmån för att aktivera cachelagring för transaktionsloggdisken, och faktum är att antingen eller cachelagring är aktiverat på loggenheten kan försämra skrivprestanda för skrivningar mot enheten och minska mängden tillgängligt cacheminne för läsningar på `Read-only` `Read/Write` dataenheten.  |
+|**Operativsystemdisk** | Standardprincipen för cachelagring kan `Read-only` vara `Read/write` eller för OS-enheten. <br/> Vi rekommenderar inte att du ändrar cachelagringsnivån för OS-enheten.  |
+| **tempdb**| Om tempdb inte kan placeras på den tillfälliga enheten på grund av kapacitetsskäl kan du antingen ändra storlek på den virtuella datorn för att få en större tillfällig enhet eller placera tempdb på en separat dataenhet med `D:\` `Read-only` konfigurerad cachelagring. <br/> Både den virtuella datorns cacheminne och tillfälliga enhet använder den lokala SSD:n, så tänk på detta när storleksändring som tempdb I/O räknas mot de cachelagrade IOPS- och dataflödesgränserna för virtuella datorer när de finns på den tillfälliga enheten.| 
 | | | 
 
 
-Mer information finns i diskcachelagring [.](../../../virtual-machines/premium-storage-performance.md#disk-caching) 
+Mer information finns i [Diskcachelagring.](../../../virtual-machines/premium-storage-performance.md#disk-caching) 
 
 
-## <a name="disk-striping"></a>Disk randning
+## <a name="disk-striping"></a>Diskstrimning
 
-Analysera det data flöde och den bandbredd som krävs för dina SQL-datafiler för att fastställa antalet data diskar, inklusive logg filen och tempdb. Data flödes-och bandbredds gränserna varierar beroende på VM-storlek. Läs mer i VM- [storlek](../../../virtual-machines/sizes.md)
+Analysera dataflödet och bandbredden som krävs för dina SQL-datafiler för att fastställa antalet datadiskar, inklusive loggfilen och tempdb. Dataflödes- och bandbreddsbegränsningar varierar beroende på VM-storlek. Mer information finns i [VM-storlek](../../../virtual-machines/sizes.md)
 
-Lägg till ytterligare data diskar och Använd disk ränder för mer data flöde. Till exempel kan ett program som behöver 12 000 IOPS och 180 MB/s-genomflöde använda tre stripe P30-diskar för att leverera 15 000 IOPS och 600 MB/s-genomflöde. 
+Lägg till ytterligare datadiskar och använd diskstrimning för mer dataflöde. Ett program som behöver 12 000 IOPS och 180 MB/s dataflöde kan till exempel använda tre stripe P30-diskar för att leverera 15 000 IOPS- och 600 MB/s-dataflöde. 
 
-Om du vill konfigurera disk ränder, se [disk ränder](storage-configuration.md#disk-striping). 
+Information om hur du konfigurerar diskstrimning finns [i diskstrimning.](storage-configuration.md#disk-striping) 
 
-## <a name="disk-capping"></a>Disk capping 
+## <a name="disk-capping"></a>Diskbegränsning 
 
-Det finns data flödes gränser på både disk-och virtuell dator nivå. De högsta IOPS-gränserna per virtuell dator och per disk skiljer sig åt och är oberoende av varandra.
+Det finns dataflödesgränser på både disk- och vm-nivå. De maximala IOPS-gränserna per virtuell dator och per disk skiljer sig åt och är oberoende av varandra.
 
-Program som förbrukar resurser utöver dessa gränser begränsas (även kallat tak). Välj en virtuell dator och disk storlek i en disk remsa som uppfyller program kraven och inte möter capping-begränsningar. För att adressera capping, använder du cachelagring eller finjusterar programmet så att mindre data flöde krävs.
+Program som förbrukar resurser utöver dessa gränser kommer att begränsas (även kallat begränsade). Välj en virtuell dator och diskstorlek i en diskstrimm som uppfyller programkraven och inte kommer att uppfylla begränsningar. För att åtgärda begränsningen använder du cachelagring eller finjusterar programmet så att mindre dataflöde krävs.
 
-Till exempel kan ett program som behöver 12 000 IOPS och 180 MB/s: 
-- Använd [Standard_M32ms](../../../virtual-machines/m-series.md) som har ett maximalt Cache-lagrat disk flöde på 20 000 IOPS och 500 Mbit/s.
-- Ta bort tre P30 diskar för att leverera 15 000 IOPS och 600 MB/s genom strömning.
-- Använd en [Standard_M16ms](../../../virtual-machines/m-series.md) virtuell dator och Använd cachelagring av värdar för att använda lokal cache för att använda data flödet. 
+Ett program som behöver 12 000 IOPS och 180 MB/s kan till exempel: 
+- Använd den [Standard_M32ms](../../../virtual-machines/m-series.md) som har ett maximalt dataflöde för obekopplad disk på 20 000 IOPS och 500 MBps.
+- Stripe tre P30-diskar för att leverera 15 000 IOPS och 600 MB/s dataflöde.
+- Använd en [Standard_M16ms](../../../virtual-machines/m-series.md) dator och använd värdcachelagring för att använda lokal cache över förbrukande dataflöde. 
 
-Virtuella datorer som kon figurer ATS för att skala upp under en hög belastning bör tillhandahålla lagring med tillräckligt med IOPS och data flöde för att stödja den maximala storleken på virtuella datorer samtidigt som det totala antalet diskar som är mindre än eller lika med det maximala antalet diskar som stöds av den minsta VM-SKU: n som ska användas.
+Virtuella datorer som konfigurerats för att skala upp under tider med hög användning bör etablera lagring med tillräckligt med IOPS och dataflöde för att stödja den maximala VM-storleken samtidigt som det totala antalet diskar är mindre än eller lika med det maximala antal som stöds av den minsta VM SKU som ska användas.
 
-Mer information om disk capping begränsningar och hur du använder cachelagring för att undvika capping finns i [Disk IO-capping](../../../virtual-machines/disks-performance.md).
+Mer information om begränsningar för diskbegränsningar och hur du använder cachelagring för att undvika begränsningar finns i [Disk-I/O-begränsning.](../../../virtual-machines/disks-performance.md)
 
 > [!NOTE] 
-> Vissa disk capping kan fortfarande resultera i tillfredsställande prestanda för användarna. finjustera och underhåll arbets belastningar i stället för att ändra storlek till en större virtuell dator för att balansera hanteringen av kostnader och prestanda för verksamheten. 
+> Vissa diskbegränsningar kan fortfarande resultera i tillfredsställande prestanda för användarna. finjustera och underhålla arbetsbelastningar i stället för att ändra storlek till en större virtuell dator för att balansera hanteringen av kostnader och prestanda för verksamheten. 
 
 
-## <a name="write-acceleration"></a>Skriv acceleration
+## <a name="write-acceleration"></a>Skrivningsacceleration
 
-Skriv acceleration är en disk funktion som endast är tillgänglig för [M-seriens](https://docs.microsoft.com/azure/virtual-machines/m-series) Virtual Machines (VM). Syftet med att skriva acceleration är att förbättra I/O-svars tiden för skrivningar mot Azure Premium Storage när du behöver I/O-svars tid med enkel volym på grund av hög verksamhets kritiska OLTP-arbetsbelastningar eller data lager miljöer. 
+Skrivningsacceleration är en diskfunktion som endast är tillgänglig för [M-seriens](https://docs.microsoft.com/azure/virtual-machines/m-series) Virtual Machines (VM). Syftet med skrivningsacceleration är att förbättra I/O-svarstiden för skrivningar mot Azure Premium Storage när du behöver ensiffrig I/O-svarstid på grund av verksamhetskritiska OLTP-arbetsbelastningar eller informationslagermiljöer. 
 
-Använd Skriv acceleration för att förbättra Skriv fördröjningen till den enhet som är värd för loggfilerna. Använd inte Skriv acceleration för SQL Server datafiler. 
+Använd skrivningsacceleration för att förbättra skrivfördröjningen till den enhet som är värd för loggfilerna. Använd inte skrivacceleration för SQL Server datafiler. 
 
-Skrivningsaccelerator diskar delar samma IOPS-gräns som den virtuella datorn. Anslutna diskar får inte överskrida Skrivningsaccelerator IOPS-gränsen för en virtuell dator.  
+Skrivningsaccelerator diskar delar samma IOPS-gräns som den virtuella datorn. Anslutna diskar får inte överskrida den Skrivningsaccelerator IOPS-gränsen för en virtuell dator.  
 
-I följande tabell beskrivs antalet data diskar och IOPS som stöds per virtuell dator: 
+I följande tabell beskrivs antalet datadiskar och IOPS som stöds per virtuell dator: 
 
 | VM-SKU  | Antal Skrivningsaccelerator diskar  | Skrivningsaccelerator disk-IOPS per virtuell dator  |
 |---|---|---|
-| M416ms_v2 M416s_v2  | 16  | 20000  |
+| M416ms_v2, M416s_v2  | 16  | 20000  |
 | M128ms, M128s  | 16  | 20000  |
-| M208ms_v2 M208s_v2  | 8  | 10000  |
+| M208ms_v2, M208s_v2  | 8  | 10000  |
 | M64ms, M64ls, M64s  |  8 | 10000 |
 | M32ms, M32ls, M32ts, M32s  | 4  | 5000  |
 | M16ms, M16s  | 2 | 2500 |
 | M8ms, M8s  | 1 | 1250 |
 
-Det finns ett antal begränsningar för att använda Skriv acceleration. Mer information finns i [begränsningar när du använder Skrivningsaccelerator](../../../virtual-machines/how-to-enable-write-accelerator.md#restrictions-when-using-write-accelerator).
+Det finns ett antal begränsningar för att använda skrivningsacceleration. Mer information finns i Begränsningar [när du använder Skrivningsaccelerator](../../../virtual-machines/how-to-enable-write-accelerator.md#restrictions-when-using-write-accelerator).
 
 
-### <a name="comparing-to-azure-ultra-disk"></a>Jämföra med Azure Ultra disk
+### <a name="comparing-to-azure-ultra-disk"></a>Jämföra med Azure Ultra Disk
 
-Den största skillnaden mellan Skriv acceleration och Azure Ultra disks är att Skriv acceleration är en funktion för virtuella datorer som endast är tillgänglig för M-serien och Azure Ultra disks är ett lagrings alternativ. Skriv acceleration är en skrivbar cache med egna begränsningar baserat på storleken på den virtuella datorn. Azure Ultra disks är ett alternativ för disk lagring med låg latens för Azure Virtual Machines. 
+Den största skillnaden mellan skrivningsacceleration och Azure Ultra-diskar är att skrivacceleration är en funktion för virtuella datorer som endast är tillgänglig för M-serien och Azure Ultra-diskar är ett lagringsalternativ. Skrivningsacceleration är en skrivoptimerad cache med egna begränsningar baserat på storleken på den virtuella datorn. Azures ultradiskar är ett alternativ för disklagring med kort svarstid för Azure Virtual Machines. 
 
-Använd om möjligt Skriv acceleration över Ultra disks för transaktions logg disken. Använd Azure Ultra disks för virtuella datorer som inte stöder Skriv acceleration men kräver låg latens för transaktions loggen. 
+Om möjligt använder du skrivningsacceleration över ultradiskar för transaktionsloggdisken. För virtuella datorer som inte stöder skrivningsacceleration men som kräver kort svarstid till transaktionsloggen använder du Azure Ultra-diskar. 
 
-## <a name="monitor-storage-performance"></a>Övervaka lagrings prestanda
+## <a name="monitor-storage-performance"></a>Övervaka lagringsprestanda
 
-För att bedöma lagrings behoven och bestämma hur bra lagringen presterar måste du förstå vad du ska mäta och vad dessa indikatorer innebär. 
+För att utvärdera lagringsbehov och avgöra hur bra lagringen fungerar måste du förstå vad som ska mätas och vad dessa indikatorer innebär. 
 
-[IOPS (indata/utdata per sekund)](../../../virtual-machines/premium-storage-performance.md#iops) är antalet begär Anden som programmet gör till lagring per sekund. Mät IOPS med prestanda övervaknings räknare `Disk Reads/sec` och `Disk Writes/sec` . [OLTP-program (Online Transaction Processing)](/azure/architecture/data-guide/relational-data/online-transaction-processing) måste köra högre IOPS för att uppnå optimala prestanda. Program som betalnings bearbetnings system, Köp online och detalj handels system är exempel på OLTP-program.
+[IOPS (indata/utdata per sekund)](../../../virtual-machines/premium-storage-performance.md#iops) är antalet begäranden som programmet gör till lagring per sekund. Mät IOPS med prestandaövervakarräknare `Disk Reads/sec` och `Disk Writes/sec` . [OLTP-program (onlinetransaktionsbearbetning)](/azure/architecture/data-guide/relational-data/online-transaction-processing) måste köra högre IOPS för att uppnå optimala prestanda. Program som betalningsbearbetningssystem, onlineshopping och butiksförsäljningssystem är alla exempel på OLTP-program.
 
-Data [flödet](../../../virtual-machines/premium-storage-performance.md#throughput) är den mängd data som skickas till den underliggande lagringen, vilket ofta mäts med megabyte per sekund. Mät data flöde med prestanda övervaknings räknare `Disk Read Bytes/sec` och `Disk Write Bytes/sec` . [Data lager](/azure/architecture/data-guide/relational-data/data-warehousing) hantering optimeras runt genom STRÖMNING av IOPS. Program som data lager för analys, rapportering, ETL-workstreams och andra Business Intelligence mål är exempel på data lager program.
+[Dataflöde](../../../virtual-machines/premium-storage-performance.md#throughput) är den datavolym som skickas till den underliggande lagringen, som ofta mäts per megabyte per sekund. Mät dataflöde med prestandaövervakarräknarna `Disk Read Bytes/sec` och `Disk Write Bytes/sec` . [Informationslager är optimerat](/azure/architecture/data-guide/relational-data/data-warehousing) för att maximera dataflödet över IOPS. Program som datalager för analys, rapportering, ETL-arbetsströmmar och andra business intelligence mål är exempel på datalagerprogram.
 
-I/O-enheternas storlek påverkar IOPS-och data flödes funktioner som mindre I/O-storlekar ger högre IOPS och större I/O-storlekar ger högre data flöde. SQL Server väljer den optimala I/O-storleken automatiskt. Mer information om finns i [optimera IOPS, data flöde och svars tid för dina program](../../../virtual-machines/premium-storage-performance.md#optimize-iops-throughput-and-latency-at-a-glance). 
+I/O-enhetsstorlekar påverkar IOPS- och dataflödesfunktioner eftersom mindre I/O-storlekar ger högre IOPS och större I/O-storlekar ger högre dataflöde. SQL Server automatiskt den optimala I/O-storleken. Mer information om finns i [Optimera IOPS, dataflöde och svarstid för dina program.](../../../virtual-machines/premium-storage-performance.md#optimize-iops-throughput-and-latency-at-a-glance) 
 
-Det finns vissa Azure Monitor mått som inte är värdefulla för att identifiera capping på den virtuella datorn och disk nivån samt förbrukningen och hälsan hos AzureBlob-cachen. Om du vill identifiera nyckel räknare som ska läggas till i övervaknings lösningen och Azure Portal instrument panelen, se [mått för lagrings användning](../../../virtual-machines/disks-metrics.md#storage-io-utilization-metrics). 
+Det finns Azure Monitor mått som är ovärderliga för att identifiera ett tak på den virtuella datorns och diskens nivå, samt förbrukningen och hälsotillståndet för AzureBlob-cachen. Information om hur du identifierar viktiga räknare som du kan lägga till i din övervakningslösning Azure Portal instrumentpanelen finns i [Mått för lagringsanvändning.](../../../virtual-machines/disks-metrics.md#storage-io-utilization-metrics) 
 
 > [!NOTE]
-> Azure Monitor erbjuder för närvarande inte mått på disk nivå för den tillfälliga temporära enheten `(D:\)` . VM cachelagrad IOPS förbrukade procent och VM cachelagrad bandbredd som förbrukas visar IOPS och data flöde från både den tillfälliga temporära enheten `(D:\)` och värd-cachelagring.
+> Azure Monitor erbjuder för närvarande inte mått på disknivå för den tillfälliga temp-enheten `(D:\)` . IOPS-förbrukad procentandel för vm-cache och förbrukad bandbredd i procent för virtuella datorer återspeglar IOPS och dataflöde från både den tillfälliga temp-enheten och `(D:\)` värdcachelagringen tillsammans.
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs mer om bästa metoder för prestanda i de andra artiklarna i den här serien:
-- [Snabb check lista](performance-guidelines-best-practices-checklist.md)
+Mer information om metodtips för prestanda finns i de andra artiklarna i den här serien:
+- [Snabb checklista](performance-guidelines-best-practices-checklist.md)
 - [VM-storlek](performance-guidelines-best-practices-vm-size.md)
-- [Samla in bas linje](performance-guidelines-best-practices-collect-baseline.md)
+- [Samla in baslinje](performance-guidelines-best-practices-collect-baseline.md)
 
-Rekommenderade säkerhets metoder finns i [säkerhets överväganden för SQL Server på Azure Virtual Machines](security-considerations-best-practices.md).
+Metodtips för säkerhet finns i [Säkerhetsöverväganden för SQL Server på Azure Virtual Machines](security-considerations-best-practices.md).
 
-För detaljerad testning av SQL Server prestanda på virtuella Azure-datorer med TPC-E och TPC_C benchmarks, se bloggen [optimera OLTP-prestanda](https://techcommunity.microsoft.com/t5/sql-server/optimize-oltp-performance-with-sql-server-on-azure-vm/ba-p/916794).
+Detaljerad testning av prestanda SQL Server virtuella Azure-datorer med TPC-E och TPC_C-prestandatest finns i bloggen Optimize OLTP performance (Optimera [OLTP-prestanda).](https://techcommunity.microsoft.com/t5/sql-server/optimize-oltp-performance-with-sql-server-on-azure-vm/ba-p/916794)
 
-Granska andra SQL Server virtuella dator artiklar på [SQL Server på Azure Virtual Machines-översikt](sql-server-on-azure-vm-iaas-what-is-overview.md). Om du har frågor om virtuella SQL Server-datorer kan du läsa [Vanliga frågor](frequently-asked-questions-faq.md).
+Läs andra SQL Server Virtual Machine på [sidan SQL Server Översikt Virtual Machines Azure Virtual Machines Azure.](sql-server-on-azure-vm-iaas-what-is-overview.md) Om du har frågor om virtuella SQL Server-datorer kan du läsa [Vanliga frågor](frequently-asked-questions-faq.md).

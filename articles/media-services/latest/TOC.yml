@@ -14,7 +14,7 @@
   items:
     - name: Konfigurera din miljö
       items:
-        - name: Hitta ditt klient-ID
+        - name: Hitta ditt klientorganisations-ID
           href: setup-azure-tenant-how-to.md
         - name: Hitta din Azure-prenumeration
           href: setup-azure-subscription-how-to.md
@@ -26,7 +26,7 @@
           href: ../../cloud-shell/overview.md
         - name: Ansluta till Media Services
           items:
-            - name: Ansluta till REST och Postman
+            - name: Ansluta med REST och Postman
               href: setup-postman-rest-how-to.md
             - name: Ansluta med Java
               href: configure-connect-java-howto.md
@@ -87,7 +87,7 @@
           href: stream-files-nodejs-quickstart.md
     - name: Python
       items:
-        - name: Python Basic encoding
+        - name: Grundläggande Python-kodning
           href: encode-basic-encoding-python-quickstart.md
     - name: Azure Portal
       items:
@@ -147,12 +147,12 @@
           href: encode-content-aware-concept.md
         - name: Mediereserverade enheter
           href: concept-media-reserved-units.md
-    - name: Analysera och bortredigering
+    - name: Analysera och redigera
       items:
         - name: Översikt
           href: analyze-video-audio-files-concept.md
           displayName: 'analyze, analyzing, presets, jobs'
-        - name: Identifiera och bortredigering-ansikten (oskärpa)
+        - name: Identifiera och redact-ansikten (oskärpa)
           href: analyze-face-redaction-concept.md
           displayName: 'analyze, redact, face, detect, presets, jobs, blur, faces, redaction'
     - name: Transformeringar och jobb
@@ -224,7 +224,7 @@
           items:
             - name: Övervaka Media Services
               href: monitoring/monitor-media-services.md
-            - name: Övervaknings Media Services data referens
+            - name: Referens Media Services övervakningsdata
               href: monitoring/monitor-media-services-data-reference.md
         - name: Övervaka med Event Grid
           items:
@@ -234,7 +234,7 @@
               href: monitoring/media-services-event-schemas.md
     - name: Kompatibla spelare
       items:
-        - name: Medie spelare för Media Services
+        - name: Mediaspelare för Media Services
           href: player-media-players-concept.md
     - name: 'Utveckla med API:er för v3'
       items:
@@ -243,8 +243,6 @@
           displayName: 'accessing, long-running, sdk, invalid character, name, naming, file name'
         - name: 'Sid-, filter- och orderentiteter'
           href: filter-order-page-entitites-how-to.md
-        - name: Azure RBAC
-          href: security-rbac-concept.md
         - name: Felkoder
           items:
             - name: Felkoder för slutpunkter för direktuppspelning
@@ -263,7 +261,7 @@
       href: architecture-concept.md
     - name: Felsökning
       items:
-        - name: Frågans samling
+        - name: Frågesamling
           href: questions-collection.md
         - name: Felkoder
           items:
@@ -278,27 +276,27 @@
     - name: Migreringsguide
       displayName: migration
       items:
-        - name: Introduktion till migration guide
+        - name: Introduktion till migreringsguide
           href: migrate-v-2-v-3-migration-introduction.md
           displayName: migration
-        - name: Steg 1 – fördelar
+        - name: Steg 1 – Fördelar
           href: migrate-v-2-v-3-migration-benefits.md
           displayName: 'migration, benefits'
-        - name: Steg 2 – skillnader
+        - name: Steg 2 – Skillnader
           items:
             - name: API-åtkomst
               href: migrate-v-2-v-3-differences-api-access.md
               displayName: 'migration, api'
-            - name: Funktions luckor
+            - name: Funktionsluckor
               href: migrate-v-2-v-3-differences-feature-gaps.md
               displayName: 'migration, features'
-            - name: Ändringar av terminologi och enhet
+            - name: Terminologi- och entitetsändringar
               href: migrate-v-2-v-3-differences-terminology.md
               displayName: 'migration, entity, api'
-        - name: Steg 3 – SDK-installation
+        - name: Steg 3 – SDK-konfiguration
           href: migrate-v-2-v-3-migration-setup.md
           displayName: 'migration, SDK`'
-        - name: Steg 4 – scenario-baserad migrations vägledning
+        - name: Steg 4 – Scenariobaserad migreringsvägledning
           items:
             - name: Kodning
               href: migrate-v-2-v-3-migration-scenario-based-encoding.md
@@ -312,17 +310,17 @@
             - name: Innehållsskydd
               href: migrate-v-2-v-3-migration-scenario-based-content-protection.md
               displayName: 'migration, content protection, DRM, digital rights management'
-            - name: Reserverade enheter (Mac)
+            - name: Mediereserverade enheter (MRU)
               href: migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md
               displayName: 'migration, media reserved units'
-        - name: Exempel jämförelse
+        - name: Jämförelse av exempel
           href: migrate-v-2-v-3-migration-samples.md
           displayName: 'migration, samples'
 - name: Anvisningar
   items:
-    - name: Hitta din klient och prenumeration
+    - name: Hitta din klientorganisation och prenumeration
       items:
-        - name: Hitta ditt klient-ID
+        - name: Hitta ditt klientorganisations-ID
           href: setup-azure-tenant-how-to.md
         - name: Hitta ditt prenumerations-ID
           href: setup-azure-subscription-how-to.md
@@ -332,7 +330,7 @@
           href: asset-create-asset-how-to.md
         - name: Ladda upp media
           href: asset-upload-media-how-to.md
-        - name: Hantera flera lagrings konton
+        - name: Hantera flera lagringskonton
           href: storage-managing-multiple-storage-accounts-how-to.md
     - name: Skapa transformeringar
       items:
@@ -340,30 +338,30 @@
           href: transform-create-transform-how-to.md
         - name: Skapa en grundläggande ljudomvandling med REST
           href: transform-create-basic-audio-how-to.md
-        - name: Skapa miniatyr bilder
+        - name: Skapa miniatyrbilder
           href: transform-create-thumbnail-sprites-how-to.md
-        - name: Häfta ihop två eller fler videofiler med .NET
+        - name: Sammanfoga två eller flera videofiler med .NET
           href: transform-stitch-how-to.md
         - name: Subclip a video .NET
           href: transform-subclip-video-dotnet-how-to.md
           displayName: 'subclipping, clip, edit, trim, clipping'
-        - name: Under klipp en video REST
+        - name: Subclip a video REST
           href: transform-subclip-video-rest-how-to.md
           displayName: 'subclipping, clip, edit, trim, clipping'
-        - name: Anpassa förvalda kodare .NET
+        - name: Anpassa kodarförinställningar för .NET
           href: transform-custom-presets-how-to.md
-        - name: Skapa en överläggs transformering .NET
+        - name: Skapa en överläggstransform av .NET
           href: transform-create-overlay-how-to.md
-        - name: Generera miniatyrer .NET
+        - name: Generera miniatyrbilder av .NET
           href: transform-generate-thumbnails-dotnet-how-to.md
-        - name: Beskär videor med .NET
+        - name: Beskära videor med .NET
           href: crop-howto.md
-        - name: Anpassa förvalda CLI för kodare
+        - name: Anpassa cli för kodarförinställningar
           href: transform-custom-preset-cli-how-to.md
-        - name: Anpassa förvalda kodare
+        - name: Anpassa förinställningar för kodare REST
           displayName: 'encode, encoding, custom, transform'
           href: transform-custom-preset-rest-how-to.md
-        - name: Generera miniatyrer REST
+        - name: Generera miniatyrbilder REST
           href: transform-generate-thumbnails-rest-how-to.md
         - name: Skapa en copyAllBitrateNonInterleaved-transformering med REST
           href: transform-create-copyallbitratenoninterleaved-how-to.md
@@ -380,7 +378,7 @@
           href: job-multiple-transform-outputs-how-to.md
         - name: HTTPS som jobbindata
           href: job-input-from-http-how-to.md
-    - name: Skala medium reserverade enheter CLI
+    - name: Skala CLI för mediereserverade enheter
       href: media-reserved-units-cli-how-to.md
     - name: Strömma live
       items:
@@ -416,7 +414,7 @@
       items:
         - name: Med .NET
           items:
-            - name: Använd Azure Functions .NET
+            - name: Använda .NET Azure Functions
               href: integrate-azure-functions-dotnet-how-to.md
     - name: Skapa filter
       items:
@@ -443,8 +441,18 @@
           href: asset-publish-cli-how-to.md
     - name: Säkerhet
       items:
-        - name: Lagrings åtkomst nycklar för registrering
+        - name: Azure RBAC
+          href: security-rbac-concept.md
+        - name: Samla lagringsåtkomstnycklar
           href: security-storage-roll-access-keys-how-to.md
+        - name: Aktivera betrodd lagring
+          href: security-trusted-storage-rest-tutorial.md
+        - name: Azure Media PlayerPass-autentiseringstoken
+          href: security-pass-authentication-tokens-how-to.md
+        - name: Aktivera betrodd lagring
+          href: security-trusted-storage-rest-tutorial.md
+        - name: Kundhanterade nycklar med REST API
+          href: security-customer-managed-keys-rest-postman-tutorial.md
     - name: Använd mediaspelare
       items:
         - name: Fullständig installation av Azure Media Player
