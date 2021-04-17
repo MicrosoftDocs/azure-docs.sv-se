@@ -75,6 +75,8 @@ items:
             href: manage-integration-runtimes.md
           - name: Felsöka anslutningsproblem
             href: troubleshoot-connections.md
+          - name: Mönsterregler för resursuppsättning
+            href: how-to-resource-set-pattern-rules.md
           - name: Källor
             items:
               - name: Hantera datakällor
@@ -184,7 +186,7 @@ items:
         href: abap-functions-deployment-guide.md
   - name: Resurser
     items:
-      - name: Funktionsfeedback (User Voice)
+      - name: Funktionsfeedback (användarröst)
         href: 'https://feedback.azure.com/forums/932437-azure-purview'
       - name: Priskalkylator
         href: 'https://azure.microsoft.com/pricing/details/azure-purview/'

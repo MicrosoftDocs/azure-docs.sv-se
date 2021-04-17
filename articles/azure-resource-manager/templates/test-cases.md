@@ -1,28 +1,28 @@
 ---
-title: Test väskor för test Toolkit
-description: Beskriver de tester som körs av ARM-mallens test verktyg.
+title: Testfall för testverktyg
+description: Beskriver de tester som körs av ARM-mallens testverktyg.
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 04/12/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 31e30b4853da03e28a4a2d15292050805f5bc292
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 7805d6dbdb8b93968a2792ed6dfaf2ac8fea9ae5
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064161"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363401"
 ---
-# <a name="default-test-cases-for-arm-template-test-toolkit"></a>Standardtest-fall för test verktyg för ARM-mall
+# <a name="default-test-cases-for-arm-template-test-toolkit"></a>Standardtestfall för ARM-malltestverktyg
 
-I den här artikeln beskrivs de standardtester som körs med [mallens test verktyg](test-toolkit.md) för Azure Resource Manager mallar (arm-mallar). Det innehåller exempel som klarar eller underlåter testet. Den innehåller namnet på varje test. Om du vill köra ett speciellt test, se [test parametrar](test-toolkit.md#test-parameters).
+I den här artikeln beskrivs de standardtester som körs med [malltestverktyget](test-toolkit.md) för att Azure Resource Manager mallar (ARM-mallar). Den innehåller exempel som klarar eller misslyckas med testet. Den innehåller namnet på varje test. Information om hur du kör ett specifikt test finns [i Testparametrar](test-toolkit.md#test-parameters).
 
-## <a name="use-correct-schema"></a>Använd rätt schema
+## <a name="use-correct-schema"></a>Använda rätt schema
 
-Test namn: **DeploymentTemplate-schemat är korrekt**
+Testnamn: **DeploymentTemplate-schemat är korrekt**
 
-I mallen måste du ange ett giltigt schema värde.
+I mallen måste du ange ett giltigt schemavärde.
 
-I följande exempel **överförs** det här testet.
+Följande exempel klarar **det** här testet.
 
 ```json
 {
@@ -33,7 +33,7 @@ I följande exempel **överförs** det här testet.
 }
 ```
 
-Schema egenskapen i mallen måste anges till något av följande scheman:
+Schemaegenskapen i mallen måste vara inställd på något av följande scheman:
 
 * `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`
 * `https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`
@@ -41,13 +41,13 @@ Schema egenskapen i mallen måste anges till något av följande scheman:
 * `https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#`
 * `https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json`
 
-## <a name="parameters-must-exist"></a>Parametrarna måste finnas
+## <a name="parameters-must-exist"></a>Parametrar måste finnas
 
-Test namn: **Parameters-egenskapen måste finnas**
+Testnamn: **Parameteregenskapen måste finnas**
 
-Din mall bör ha ett parameter element. Parametrar är nödvändiga för att göra dina mallar återanvändbara i olika miljöer. Lägg till parametrar i mallen för värden som ändras vid distribution till olika miljöer.
+Mallen ska ha ett parameterelement. Parametrar är viktiga för att göra så att dina mallar kan återanvändas i olika miljöer. Lägg till parametrar i mallen för värden som ändras när du distribuerar till olika miljöer.
 
-Följande exempel **skickar** det här testet:
+Följande exempel klarar **det** här testet:
 
 ```json
 {
@@ -67,21 +67,21 @@ Följande exempel **skickar** det här testet:
 
 ## <a name="declared-parameters-must-be-used"></a>Deklarerade parametrar måste användas
 
-Test namn: **parametrar måste refereras**
+Testnamn: **Parametrar måste refereras**
 
-Om du vill minska förvirring i mallen tar du bort alla parametrar som har definierats men inte används. Det här testet hittar alla parametrar som inte används var som helst i mallen. Att ta bort oanvända parametrar gör det också enklare att distribuera mallen eftersom du inte behöver ange onödiga värden.
+Du kan minska förvirringen i mallen genom att ta bort alla parametrar som har definierats men inte används. Det här testet hittar alla parametrar som inte används någonstans i mallen. Om du tar bort oanvända parametrar blir det också enklare att distribuera mallen eftersom du inte behöver ange onödiga värden.
 
-## <a name="secure-parameters-cant-have-hardcoded-default"></a>Säkra parametrar kan inte ha hårdkodad-standardvärdet
+## <a name="secure-parameters-cant-have-hardcoded-default"></a>Säkra parametrar kan inte ha hårdkodad standard
 
-Test namn: **säkra sträng parametrar kan inte ha standard**
+Testnamn: **Säkra strängparametrar får inte ha standardvärden**
 
-Ange inte ett hårdkodat standardvärde för en säker parameter i mallen. En tom sträng är bra för standardvärdet.
+Ange inte ett hårdkodat standardvärde för en säker parameter i mallen. En tom sträng fungerar bra för standardvärdet.
 
-Du använder typerna **SecureString** eller **SecureObject** på parametrar som innehåller känsliga värden, t. ex. lösen ord. När en parameter använder en säker typ, loggas inte värdet för parametern eller lagras i distributions historiken. Den här åtgärden förhindrar att en obehörig användare identifierar det känsliga värdet.
+Du använder typerna **SecureString eller** **SecureObject** på parametrar som innehåller känsliga värden, till exempel lösenord. När en parameter använder en säker typ loggas eller lagras inte värdet för parametern i distributionshistoriken. Den här åtgärden förhindrar att en obehörig användare identifierar det känsliga värdet.
 
-Men när du anger ett standardvärde, kan det här värdet identifieras av alla som har åtkomst till mallen eller distributions historiken.
+Men när du anger ett standardvärde kan det värdet upptäckas av alla som har åtkomst till mallen eller distributionshistoriken.
 
-I följande exempel **Miss lyckas** det här testet:
+I följande exempel **misslyckas det** här testet:
 
 ```json
 "parameters": {
@@ -92,7 +92,7 @@ I följande exempel **Miss lyckas** det här testet:
 }
 ```
 
-Nästa exempel **skickar** det här testet:
+Nästa exempel klarar **det** här testet:
 
 ```json
 "parameters": {
@@ -102,13 +102,13 @@ Nästa exempel **skickar** det här testet:
 }
 ```
 
-## <a name="environment-urls-cant-be-hardcoded"></a>Miljö-URL: er kan inte vara hårdkodad
+## <a name="environment-urls-cant-be-hardcoded"></a>Miljö-URL:er kan inte hårdkodas
 
-Test namn: **DeploymentTemplate får inte innehålla hårdkodad-URI**
+Testnamn: **DeploymentTemplate får inte innehålla hårdkodad URI**
 
-Hårdkoda inte miljö-URL: er i din mall. Använd i stället [miljö funktionen](template-functions-deployment.md#environment) för att dynamiskt hämta dessa URL: er under distributionen. En lista över de URL-värdar som blockeras finns i [test fallet](https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/DeploymentTemplate-Must-Not-Contain-Hardcoded-Uri.test.ps1).
+Hårdkoda inte miljö-URL:er i mallen. Använd i stället [miljöfunktionen för](template-functions-deployment.md#environment) att dynamiskt hämta dessa URL:er under distributionen. En lista över de URL-värdar som blockeras finns i [testfallet](https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/DeploymentTemplate-Must-Not-Contain-Hardcoded-Uri.test.ps1).
 
-I följande exempel **Miss lyckas** det här testet eftersom URL: en är hårdkodad.
+I följande exempel **misslyckas det** här testet eftersom URL:en är hårdkodad.
 
 ```json
 "variables":{
@@ -116,7 +116,7 @@ I följande exempel **Miss lyckas** det här testet eftersom URL: en är hårdko
 }
 ```
 
-Testet **Miss lyckas** också när det används med [concat](template-functions-string.md#concat) eller [URI](template-functions-string.md#uri).
+Testet misslyckas också **när det** används med [concat](template-functions-string.md#concat) eller [uri](template-functions-string.md#uri).
 
 ```json
 "variables":{
@@ -125,7 +125,7 @@ Testet **Miss lyckas** också när det används med [concat](template-functions-
 }
 ```
 
-I följande exempel **överförs** det här testet.
+Följande exempel klarar **det** här testet.
 
 ```json
 "variables": {
@@ -133,17 +133,17 @@ I följande exempel **överförs** det här testet.
 },
 ```
 
-## <a name="location-uses-parameter"></a>Plats använder parameter
+## <a name="location-uses-parameter"></a>Platsen använder parametern
 
-Test namn: **platsen får inte vara hårdkodad**
+Testnamn: **Platsen får inte vara hårdkodad**
 
-Mallarna måste ha en parameter med namnet location. Använd den här parametern för att ange placeringen av resurser i mallen. I huvud mal len (med namnet _azuredeploy.jspå_ eller _mainTemplate.jspå_) kan den här parametern användas som standard för resurs gruppens plats. I länkade eller kapslade mallar får plats parametern inte ha en standard plats.
+Mallarna bör ha en parameter med namnet location. Använd den här parametern för att ange platsen för resurser i mallen. I huvudmallen (med _azuredeploy.jspå_ eller _mainTemplate.js)_ kan den här parametern som standard ha resursgruppens plats. I länkade eller kapslade mallar bör platsparametern inte ha en standardplats.
 
-Användare av din mall kan ha begränsade regioner tillgängliga för dem. När du hårdkodar resurs platsen kan användarna blockeras från att skapa en resurs i den regionen. Användarna kan blockeras även om du anger resurs platsen till `"[resourceGroup().location]"` . Resurs gruppen kan ha skapats i en region som andra användare inte kan komma åt. Dessa användare blockeras från att använda mallen.
+Användare av mallen kan ha begränsade regioner tillgängliga. När du hårdkodar resursplatsen kan användarna blockeras från att skapa en resurs i den regionen. Användare kan blockeras även om du anger resursplatsen till `"[resourceGroup().location]"` . Resursgruppen kan ha skapats i en region som andra användare inte kan komma åt. Dessa användare blockeras från att använda mallen.
 
-Genom att ange en plats parameter som är standard för resurs gruppens plats kan användarna använda standardvärdet när de är praktiska, men även ange en annan plats.
+Genom att ange en platsparameter som standard är resursgruppens plats kan användarna använda standardvärdet när det passar men även ange en annan plats.
 
-I följande exempel **Miss lyckas** det här testet eftersom platsen på resursen är inställd på `resourceGroup().location` .
+I följande exempel **misslyckas** det här testet eftersom platsen på resursen är inställd på `resourceGroup().location` .
 
 ```json
 {
@@ -167,7 +167,7 @@ I följande exempel **Miss lyckas** det här testet eftersom platsen på resurse
 }
 ```
 
-I nästa exempel används en plats parameter men det här testet **Miss lyckas** eftersom plats parametern som standard är en hårdkodad plats.
+I nästa exempel används en platsparameter men **det** här testet misslyckas eftersom platsparametern som standard har en hårdkodad plats.
 
 ```json
 {
@@ -197,7 +197,7 @@ I nästa exempel används en plats parameter men det här testet **Miss lyckas**
 }
 ```
 
-Skapa i stället en parameter som används som standard för resurs grupps platsen, men gör det möjligt för användarna att ange ett annat värde. I följande exempel **överförs** det här testet när mallen används som huvud mal len.
+Skapa i stället en parameter som använder resursgruppens plats som standard, men som gör att användarna kan ange ett annat värde. Följande exempel **klarar det** här testet när mallen används som huvudmall.
 
 ```json
 {
@@ -230,15 +230,15 @@ Skapa i stället en parameter som används som standard för resurs grupps plats
 }
 ```
 
-Men om föregående exempel används som en länkad mall, **Miss lyckas** testet. Ta bort standardvärdet när det används som en länkad mall.
+Men om föregående exempel används som en länkad mall misslyckas **testet**. Ta bort standardvärdet när det används som en länkad mall.
 
-## <a name="resources-should-have-location"></a>Resurserna måste ha plats
+## <a name="resources-should-have-location"></a>Resurser ska ha en plats
 
-Testnamn: **resurser måste ha plats**
+Testnamn: **Resurserna ska ha en plats**
 
-Platsen för en resurs måste anges till ett [mall uttryck](template-expressions.md) eller `global` . Mallnamnet använder vanligt vis den plats parameter som beskrivs i föregående test.
+Platsen för en resurs ska anges till ett [malluttryck](template-expressions.md) eller `global` . Malluttrycket använder vanligtvis platsparametern som beskrivs i föregående test.
 
-I följande exempel **Miss lyckas** det här testet eftersom platsen inte är ett uttryck eller `global` .
+I följande exempel **misslyckas** det här testet eftersom platsen inte är ett uttryck eller `global` .
 
 ```json
 {
@@ -264,7 +264,7 @@ I följande exempel **Miss lyckas** det här testet eftersom platsen inte är et
 }
 ```
 
-I följande exempel **överförs** det här testet.
+Följande exempel klarar **det** här testet.
 
 ```json
 {
@@ -289,7 +289,7 @@ I följande exempel **överförs** det här testet.
 }
 ```
 
-Nästa exempel **klarar** även det här testet.
+Nästa exempel klarar **även det** här testet.
 
 ```json
 {
@@ -322,13 +322,13 @@ Nästa exempel **klarar** även det här testet.
 }
 ```
 
-## <a name="vm-size-uses-parameter"></a>Den virtuella datorns storlek använder parametern
+## <a name="vm-size-uses-parameter"></a>VM-storleken använder parametern
 
-Test namn: **storleken på den virtuella datorn måste vara en parameter**
+Testnamn: **VM-storleken ska vara en parameter**
 
-Hårdkoda inte storleken på den virtuella datorn. Ange en parameter så att användare av din mall kan ändra storleken på den distribuerade virtuella datorn.
+Hårdkoda inte storleken på den virtuella datorn. Ange en parameter så att användare av mallen kan ändra storleken på den distribuerade virtuella datorn.
 
-I följande exempel **Miss lyckas** det här testet.
+Det här testet misslyckas **i följande** exempel.
 
 ```json
 "hardwareProfile": {
@@ -348,7 +348,7 @@ Ange i stället en parameter.
 },
 ```
 
-Ange sedan den virtuella dator storleken till den parametern.
+Ange sedan VM-storleken till den parametern.
 
 ```json
 "hardwareProfile": {
@@ -356,13 +356,13 @@ Ange sedan den virtuella dator storleken till den parametern.
 },
 ```
 
-## <a name="min-and-max-values-are-numbers"></a>Min-och max värden är tal
+## <a name="min-and-max-values-are-numbers"></a>Minsta och högsta värden är tal
 
-Test namn: **min-och Max värde är siffror**
+Testnamn: **Minsta och högsta värde är tal**
 
-Om du definierar min-och max värden för en parameter anger du dem som tal.
+Om du definierar min- och maxvärden för en parameter anger du dem som siffror.
 
-I följande exempel **Miss lyckas** det här testet:
+I följande exempel **misslyckas det** här testet:
 
 ```json
 "exampleParameter": {
@@ -372,7 +372,7 @@ I följande exempel **Miss lyckas** det här testet:
 },
 ```
 
-Ange i stället värdena som siffror. Följande exempel **skickar** det här testet:
+Ange i stället värdena som tal. Följande exempel klarar **det** här testet:
 
 ```json
 "exampleParameter": {
@@ -382,36 +382,36 @@ Ange i stället värdena som siffror. Följande exempel **skickar** det här tes
 },
 ```
 
-Du får även den här varningen om du anger ett minsta eller högsta värde, men inte det andra.
+Du får även den här varningen om du anger ett min- eller maxvärde, men inte det andra.
 
-## <a name="artifacts-parameter-defined-correctly"></a>Artefakt parametern har definierats korrekt
+## <a name="artifacts-parameter-defined-correctly"></a>Artefaktparametern har definierats korrekt
 
-Test namn: **artefakt parameter**
+Testnamn: **artefaktparameter**
 
-När du inkluderar parametrar för `_artifactsLocation` och `_artifactsLocationSasToken` använder du rätt standardinställningar och typer. Följande villkor måste vara uppfyllda för att det här testet ska kunna skickas:
+När du inkluderar parametrar `_artifactsLocation` för och använder du rätt `_artifactsLocationSasToken` standardvärden och typer. Följande villkor måste uppfyllas för att klara det här testet:
 
 * Om du anger en parameter måste du ange den andra
 * `_artifactsLocation` måste vara en **sträng**
-* `_artifactsLocation` måste ha ett standardvärde i huvud mal len
-* `_artifactsLocation` Det går inte att ha ett standardvärde i en kapslad mall
-* `_artifactsLocation` måste ha antingen `"[deployment().properties.templateLink.uri]"` en eller RAW lagrings platsen-URL för sitt standardvärde
+* `_artifactsLocation` måste ha ett standardvärde i huvudmallen
+* `_artifactsLocation` kan inte ha ett standardvärde i en kapslad mall
+* `_artifactsLocation` måste ha antingen `"[deployment().properties.templateLink.uri]"` eller råa lagringsplatsens URL för dess standardvärde
 * `_artifactsLocationSasToken` måste vara en **secureString**
-* `_artifactsLocationSasToken` Det får bara finnas en tom sträng för standardvärdet
-* `_artifactsLocationSasToken` Det går inte att ha ett standardvärde i en kapslad mall
+* `_artifactsLocationSasToken` kan bara ha en tom sträng för dess standardvärde
+* `_artifactsLocationSasToken` kan inte ha ett standardvärde i en kapslad mall
 
 ## <a name="declared-variables-must-be-used"></a>Deklarerade variabler måste användas
 
-Test namn: **variabler måste refereras**
+Testnamn: **Variabler måste refereras till**
 
-Om du vill minska förvirring i mallen tar du bort alla variabler som har definierats men inte används. Det här testet hittar alla variabler som inte används var som helst i mallen.
+Du kan minska förvirringen i mallen genom att ta bort alla variabler som har definierats men inte används. Det här testet hittar alla variabler som inte används någonstans i mallen.
 
-## <a name="dynamic-variable-should-not-use-concat"></a>Dynamisk variabel ska inte använda concat
+## <a name="dynamic-variable-should-not-use-concat"></a>Dynamisk variabel bör inte använda concat
 
-Test namn: **dynamiska variabel referenser ska inte använda concat**
+Testnamn: **Dynamiska variabelreferenser bör inte använda Concat**
 
-Ibland måste du dynamiskt konstruera en variabel baserat på värdet för en annan variabel eller parameter. Använd inte funktionen [concat](template-functions-string.md#concat) när du anger värdet. Använd i stället ett objekt som innehåller de tillgängliga alternativen och hämta en av egenskaperna dynamiskt från objektet under distributionen.
+Ibland kan du behöva skapa en variabel dynamiskt baserat på värdet för en annan variabel eller parameter. Använd inte funktionen [concat när](template-functions-string.md#concat) du anger värdet. Använd i stället ett -objekt som innehåller de tillgängliga alternativen och dynamiskt hämta en av egenskaperna från objektet under distributionen.
 
-I följande exempel **överförs** det här testet. **CurrentImage** -variabeln anges dynamiskt under distributionen.
+Följande exempel klarar **det** här testet. Variabeln **currentImage** anges dynamiskt under distributionen.
 
 ```json
 {
@@ -447,19 +447,19 @@ I följande exempel **överförs** det här testet. **CurrentImage** -variabeln 
 }
 ```
 
-## <a name="use-recent-api-version"></a>Använd senaste API-version
+## <a name="use-recent-api-version"></a>Använda den senaste API-versionen
 
-Testnamn: **ApiVersions ska vara senaste**
+Testnamn: **apiVersions bör vara senaste**
 
-API-versionen för varje resurs bör använda en ny version. Testet utvärderar den version som du använder mot de versioner som är tillgängliga för den resurs typen.
+API-versionen för varje resurs bör använda en ny version. Testet utvärderar den version som du använder mot de versioner som är tillgängliga för den resurstypen.
 
-## <a name="use-hardcoded-api-version"></a>Använd hårdkodad API-version
+## <a name="use-hardcoded-api-version"></a>Använda hårdkodad API-version
 
-Test namn: **providers ApiVersions tillåts inte**
+Testnamn: **Providers apiVersions tillåts inte**
 
-API-versionen för en resurs typ avgör vilka egenskaper som är tillgängliga. Ange en hårdkodad API-version i mallen. Hämta inte en API-version som fastställs under distributionen. Du vet inte vilka egenskaper som är tillgängliga.
+API-versionen för en resurstyp avgör vilka egenskaper som är tillgängliga. Ange en hårdkodad API-version i mallen. Hämta inte en API-version som fastställs under distributionen. Du vet inte vilka egenskaper som är tillgängliga.
 
-I följande exempel **Miss lyckas** det här testet.
+Det här testet misslyckas **i följande** exempel.
 
 ```json
 "resources": [
@@ -471,7 +471,7 @@ I följande exempel **Miss lyckas** det här testet.
 ]
 ```
 
-I följande exempel **överförs** det här testet.
+Följande exempel klarar **det** här testet.
 
 ```json
 "resources": [
@@ -483,24 +483,24 @@ I följande exempel **överförs** det här testet.
 ]
 ```
 
-## <a name="properties-cant-be-empty"></a>Egenskaperna får inte vara tomma
+## <a name="properties-cant-be-empty"></a>Egenskaper får inte vara tomma
 
-Testnamn: **mallen får inte innehålla blank steg**
+Testnamn: **Mallen får inte innehålla tomma**
 
-Hårdkoda inte till ett tomt värde. Tomma värden är null och tomma strängar, objekt eller matriser. Om du har angett en egenskap till ett tomt värde tar du bort den egenskapen från din mall. Det går dock att ange en egenskap till ett tomt värde under distributionen, t. ex. via en parameter.
+Hårdkoda inte egenskaper till ett tomt värde. Tomma värden är null och tomma strängar, objekt eller matriser. Om du har angett en egenskap till ett tomt värde tar du bort egenskapen från mallen. Det är dock okej att ange en egenskap till ett tomt värde under distributionen, till exempel via en parameter.
 
 ## <a name="use-resource-id-functions"></a>Använda resurs-ID-funktioner
 
-Test namn: **ID: n ska härledas från ResourceIDs**
+Testnamn: **ID:er ska härleds från ResourceIDs**
 
-Använd ett av resurs-ID-funktionerna när du anger ett resurs-ID. De tillåtna funktionerna är:
+När du anger ett resurs-ID använder du någon av resurs-ID-funktionerna. Tillåtna funktioner är:
 
 * [resourceId](template-functions-resource.md#resourceid)
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 * [extensionResourceId](template-functions-resource.md#extensionresourceid)
 
-Använd inte funktionen concat för att skapa ett resurs-ID. I följande exempel **Miss lyckas** det här testet.
+Använd inte funktionen concat för att skapa ett resurs-ID. Det här testet misslyckas **i följande** exempel.
 
 ```json
 "networkSecurityGroup": {
@@ -508,7 +508,7 @@ Använd inte funktionen concat för att skapa ett resurs-ID. I följande exempel
 }
 ```
 
-I nästa exempel **skickas** det här testet.
+Nästa exempel klarar **det** här testet.
 
 ```json
 "networkSecurityGroup": {
@@ -516,13 +516,13 @@ I nästa exempel **skickas** det här testet.
 }
 ```
 
-## <a name="resourceid-function-has-correct-parameters"></a>ResourceId-funktionen har rätt parametrar
+## <a name="resourceid-function-has-correct-parameters"></a>Funktionen ResourceId har rätt parametrar
 
-Test namn: **ResourceIds får inte innehålla**
+Testnamn: **ResourceIds får inte innehålla**
 
-Använd inte onödiga funktioner för valfria parametrar när du genererar resurs-ID: n. Som standard använder funktionen [resourceId](template-functions-resource.md#resourceid) den aktuella prenumerationen och resurs gruppen. Du behöver inte ange dessa värden.
+Använd inte onödiga funktioner för valfria parametrar när du genererar resurs-ID:er. Som standard använder [funktionen resourceId](template-functions-resource.md#resourceid) den aktuella prenumerationen och resursgruppen. Du behöver inte ange dessa värden.
 
-I följande exempel **Miss lyckas** det här testet eftersom du inte behöver ange det aktuella prenumerations-ID: t och resurs gruppens namn.
+I följande exempel **misslyckas** det här testet eftersom du inte behöver ange det aktuella prenumerations-ID:t och resursgruppens namn.
 
 ```json
 "networkSecurityGroup": {
@@ -530,7 +530,7 @@ I följande exempel **Miss lyckas** det här testet eftersom du inte behöver an
 }
 ```
 
-I nästa exempel **skickas** det här testet.
+Nästa exempel klarar **det** här testet.
 
 ```json
 "networkSecurityGroup": {
@@ -544,18 +544,18 @@ Det här testet gäller för:
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 * [extensionResourceId](template-functions-resource.md#extensionresourceid)
-* [förhållande](template-functions-resource.md#reference)
-* [lista](template-functions-resource.md#list)
+* [Referens](template-functions-resource.md#reference)
+* [lista*](template-functions-resource.md#list)
 
-För `reference` och `list*` kan testet **Miss lyckas** när du använder `concat` för att konstruera resurs-ID: t.
+För `reference` och misslyckas testet när `list*` **du** använder för att `concat` skapa resurs-ID:t.
 
-## <a name="dependson-best-practices"></a>metod tips för dependsOn
+## <a name="dependson-best-practices"></a>dependsOn metodtips
 
-Test namn: **DependsOn metod tips**
+Testnamn: **DependsOn –metodtips**
 
-När du anger distributions beroenden ska du inte använda [IF](template-functions-logical.md#if) -funktionen för att testa ett villkor. Om en resurs är beroende av en resurs som är [villkorligt distribuerad](conditional-resource-deployment.md)anger du det beroende som du skulle göra med vilken resurs som helst. När en villkorlig resurs inte distribueras tar Azure Resource Manager automatiskt bort den från de nödvändiga beroendena.
+När du anger distributionsberoenden ska du inte använda [if-funktionen](template-functions-logical.md#if) för att testa ett villkor. Om en resurs är beroende av en resurs som [är villkorligt distribuerad](conditional-resource-deployment.md)anger du beroendet på samma sätt som med alla resurser. När en villkorlig resurs inte distribueras tar Azure Resource Manager bort den från de nödvändiga beroendena.
 
-I följande exempel **Miss lyckas** det här testet.
+Det här testet misslyckas **i följande** exempel.
 
 ```json
 "dependsOn": [
@@ -563,7 +563,7 @@ I följande exempel **Miss lyckas** det här testet.
 ]
 ```
 
-I nästa exempel **skickas** det här testet.
+Nästa exempel klarar **det** här testet.
 
 ```json
 "dependsOn": [
@@ -571,19 +571,19 @@ I nästa exempel **skickas** det här testet.
 ]
 ```
 
-## <a name="nested-or-linked-deployments-cant-use-debug"></a>Kapslade eller länkade distributioner kan inte använda fel sökning
+## <a name="nested-or-linked-deployments-cant-use-debug"></a>Kapslade eller länkade distributioner kan inte använda felsökning
 
-Testnamn: **distributions resurser får inte vara felsöka**
+Testnamn: **Distributionsresurser får inte felsökas**
 
-När du definierar en [kapslad eller länkad mall](linked-templates.md) med resurs typen **Microsoft. Resources/distributioner** kan du aktivera fel sökning för den mallen. Fel sökning är bra när du behöver testa mallen men bör vara aktive rad när du är redo att använda mallen i produktion.
+När du definierar [en kapslad](linked-templates.md) eller länkad mall med resurstypen **Microsoft.Resources/deployments** kan du aktivera felsökning för mallen. Felsökning fungerar bra när du behöver testa mallen, men bör aktiveras när du är redo att använda mallen i produktion.
 
-## <a name="admin-user-names-cant-be-literal-value"></a>Administratörs användar namn får inte vara litterala värden
+## <a name="admin-user-names-cant-be-literal-value"></a>Administratörsanvändarnamn får inte vara literalvärde
 
-Test namn: **AdminUsername får inte vara en literal**
+Testnamn: **adminUsername bör inte vara en literal**
 
-Använd inte ett litteralt värde när du anger ett administratörs användar namn.
+Använd inte ett literalvärde när du anger ett administratörsanvändarnamn.
 
-I följande exempel **Miss lyckas** det här testet:
+I följande exempel **misslyckas det** här testet:
 
 ```json
 "osProfile":  {
@@ -591,7 +591,7 @@ I följande exempel **Miss lyckas** det här testet:
 },
 ```
 
-Använd i stället en parameter. Följande exempel **skickar** det här testet:
+Använd i stället en parameter. Följande exempel klarar **det** här testet:
 
 ```json
 "osProfile": {
@@ -599,19 +599,19 @@ Använd i stället en parameter. Följande exempel **skickar** det här testet:
 }
 ```
 
-## <a name="use-latest-vm-image"></a>Använd den senaste virtuella dator avbildningen
+## <a name="use-latest-vm-image"></a>Använda den senaste vm-avbildningen
 
-Test namn: **VM-avbildningar bör använda den senaste versionen**
+Testnamn: **VM-avbildningar bör använda den senaste versionen**
 
-Om din mall innehåller en virtuell dator med en avbildning kontrollerar du att den använder den senaste versionen av avbildningen.
+Om mallen innehåller en virtuell dator med en avbildning kontrollerar du att den använder den senaste versionen av avbildningen.
 
-## <a name="use-stable-vm-images"></a>Använd stabila VM-avbildningar
+## <a name="use-stable-vm-images"></a>Använda stabila VM-avbildningar
 
-Testnamn: **Virtual Machines får inte vara för hands version**
+Testnamn: **Virtual Machines ska inte vara förhandsversion**
 
-För virtuella datorer bör inte förhands gransknings bilder användas.
+Virtuella datorer bör inte använda förhandsgranskningsavbildningar.
 
-I följande exempel **Miss lyckas** det här testet.
+Det här testet misslyckas **i följande** exempel.
 
 ```json
 "imageReference": {
@@ -622,7 +622,7 @@ I följande exempel **Miss lyckas** det här testet.
 }
 ```
 
-I följande exempel **överförs** det här testet.
+Följande exempel klarar **det** här testet.
 
 ```json
 "imageReference": {
@@ -633,19 +633,19 @@ I följande exempel **överförs** det här testet.
 },
 ```
 
-## <a name="dont-use-managedidentity-extension"></a>Använd inte ManagedIdentity-tillägg
+## <a name="dont-use-managedidentity-extension"></a>Använd inte tillägget ManagedIdentity
 
-Test namn: **ManagedIdentityExtension får inte användas**
+Testnamn: **ManagedIdentityExtension får inte användas**
 
-Använd inte ManagedIdentity-tillägget på en virtuell dator. Mer information finns i [så här slutar du använda tillägget för hanterade identiteter för virtuella datorer och börjar använda Azure-instance metadata service](../../active-directory/managed-identities-azure-resources/howto-migrate-vm-extension.md).
+Tillämpa inte managedIdentity-tillägget på en virtuell dator. Tillägget blev inaktuellt 2019 och bör inte längre användas.
 
-## <a name="outputs-cant-include-secrets"></a>Utdata får inte innehålla hemligheter
+## <a name="outputs-cant-include-secrets"></a>Utdata kan inte innehålla hemligheter
 
-Test namn: **utdata får inte innehålla hemligheter**
+Testnamn: **Utdata får inte innehålla hemligheter**
 
-Ta inte med några värden i avsnittet utdata som potentiellt visar hemligheter. Utdata från en mall lagras i distributions historiken så att en obehörig användare kan hitta informationen.
+Ta inte med några värden i avsnittet utdata som potentiellt exponerar hemligheter. Utdata från en mall lagras i distributionshistoriken, så en obehörig användare kan hitta den informationen.
 
-I följande exempel **Miss lyckas** testet eftersom det innehåller en säker parameter i ett utdata-värde.
+I följande exempel **misslyckas** testet eftersom det innehåller en säker parameter i ett utdatavärde.
 
 ```json
 {
@@ -668,7 +668,7 @@ I följande exempel **Miss lyckas** testet eftersom det innehåller en säker pa
 }
 ```
 
-Följande exempel **Miss lyckas** eftersom den använder en [list *](template-functions-resource.md#list) -funktion i utdata.
+Följande exempel misslyckas **eftersom** den använder en [list*-funktion](template-functions-resource.md#list) i utdata.
 
 ```json
 {
@@ -691,16 +691,16 @@ Följande exempel **Miss lyckas** eftersom den använder en [list *](template-fu
 }
 ```
 
-## <a name="use-protectedsettings-for-commandtoexecute-secrets"></a>Använd protectedSettings för commandToExecute hemligheter
+## <a name="use-protectedsettings-for-commandtoexecute-secrets"></a>Använda protectedSettings för commandToExecute-hemligheter
 
-Test namn: **CommandToExecute måste använda ProtectedSettings för hemligheter**
+Testnamn: **CommandToExecute måste använda ProtectedSettings för hemligheter**
 
-I ett anpassat skript tillägg använder du den krypterade egenskapen `protectedSettings` när du `commandToExecute` inkluderar hemliga data, till exempel ett lösen ord. Exempel på hemliga data typer är `secureString` , `secureObject` `list()` funktioner eller skript.
+I ett tillägg för anpassat skript använder du den krypterade egenskapen `protectedSettings` när `commandToExecute` innehåller hemliga data, till exempel ett lösenord. Exempel på hemliga datatyper `secureString` är , , funktioner eller `secureObject` `list()` skript.
 
-Mer information om anpassat skript tillägg för virtuella datorer finns i [Windows](
-/azure/virtual-machines/extensions/custom-script-windows), [Linux](/azure/virtual-machines/extensions/custom-script-linux)och schemat [Microsoft. Compute virtualMachines/Extensions](/azure/templates/microsoft.compute/virtualmachines/extensions).
+Mer information om tillägg för anpassade skript för virtuella datorer finns [i Windows](
+/azure/virtual-machines/extensions/custom-script-windows), [Linux](/azure/virtual-machines/extensions/custom-script-linux)och schemat [Microsoft.Compute virtualMachines/extensions](/azure/templates/microsoft.compute/virtualmachines/extensions).
 
-I det här exemplet skickar en mall med en parameter med namnet `adminPassword` och typen `secureString`  testet eftersom den krypterade egenskapen `protectedSettings` innehåller `commandToExecute` .
+I det här exemplet klarar en mall med en parameter med `adminPassword` namnet och typen testet eftersom den `secureString`  krypterade egenskapen `protectedSettings` innehåller `commandToExecute` .
 
 ```json
 "properties": [
@@ -712,7 +712,7 @@ I det här exemplet skickar en mall med en parameter med namnet `adminPassword` 
 ]
 ```
 
-Testet **Miss lyckas** om den okrypterade egenskapen `settings` innehåller `commandToExecute` .
+Testet misslyckas **om** den okrypterade egenskapen `settings` innehåller `commandToExecute` .
 
 ```json
 "properties": [
@@ -726,5 +726,5 @@ Testet **Miss lyckas** om den okrypterade egenskapen `settings` innehåller `com
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Läs mer om att köra test Toolkit i [använda arm Template test Toolkit](test-toolkit.md).
-* En Microsoft Learn-modul som täcker med hjälp av test Toolkit finns i [Förhandsgranska ändringar och verifiera Azure-resurser med hjälp av vad-IF-och arm-mallens test verktyg](/learn/modules/arm-template-test/).
+* Mer information om hur du kör testverktygen finns i [Använda ARM-malltestverktyg.](test-toolkit.md)
+* En Microsoft Learn som beskriver hur du använder testverktygen finns i Förhandsgranska ändringar och validera Azure-resurser med hjälp av vad om och [ARM-mallens testverktyg.](/learn/modules/arm-template-test/)

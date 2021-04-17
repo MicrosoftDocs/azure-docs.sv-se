@@ -1,43 +1,45 @@
 ---
-title: 'Snabb start – skicka en fråga till API: et med hjälp av lokal företags sökning i Java-Bing'
+title: Snabbstart – Skicka en fråga till API:et med Java – Bing-företagssökning i närområde
 titleSuffix: Azure Cognitive Services
-description: Använd den här snabb starten för att börja skicka begär anden i Java till Bing-API för lokal affärs sökning, som är en Azure-tjänst för inlärning.
+description: Använd den här snabbstarten för att börja skicka begäranden i Java Bing-företagssökning i närområde API, som är en Azure Cognitive Service.
 services: cognitive-services
 author: aahill
+ms.author: aahi
 manager: nitinme
+ms.date: 05/12/2020
+ms.topic: quickstart
 ms.service: cognitive-services
 ms.subservice: bing-local-business
-ms.topic: quickstart
-ms.date: 05/12/2020
-ms.custom: devx-track-java
-ms.author: aahi
-ms.openlocfilehash: 09f387eebd48b6e2d72e49a24fc9345817674b35
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.custom:
+- devx-track-java
+- mode-api
+ms.openlocfilehash: 001fc80b30eaa736db27ba76384aaf273bdec903
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430130"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536661"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Snabb start: skicka en fråga till API: et för lokal sökning i Bing med Java
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Snabbstart: Skicka en fråga Bing-företagssökning i närområde API:et med Java
 
 > [!WARNING]
-> API:er för Bing-sökresultat flyttas från Cognitive Services till Bing-sökning tjänster. Från och med den **30 oktober 2020** måste alla nya instanser av Bing-sökning tillhandahållas enligt processen som dokumenteras [här](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
-> API:er för Bing-sökresultat som har tillhandahållits med hjälp av Cognitive Services kommer att stödjas under de kommande tre åren eller tills Enterprise-avtals slut, beroende på vilket som sker först.
-> Instruktioner för migrering finns i [Bing-sökning Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+> Bing-sökning API:er flyttas från Cognitive Services till Bing-sökning Services. Från **och med 30 oktober 2020** måste alla nya instanser av Bing-sökning etableras enligt den process som dokumenteras [här](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+> Bing-sökning API:er som etablerats med Cognitive Services kommer att stödjas under de kommande tre åren eller fram till slutet av ditt Enterprise-avtal, beroende på vilket som inträffar först.
+> Migreringsanvisningar finns i [Bing-sökning Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Använd den här snabb starten för att lära dig hur du skickar begär anden till API: et för lokal sökning i Bing, som är en Azure-tjänst för inlärning. Även om det här enkla programmet är skrivet i Java, är API: et en RESTful-webbtjänst som är kompatibel med alla programmeringsspråk som kan göra HTTP-begäranden och parsa JSON.
+Använd den här snabbstarten för att lära dig hur du skickar begäranden Bing-företagssökning i närområde API: et, som är en Azure Cognitive Service. Även om det här enkla programmet är skrivet i Java är API:et en RESTful-webbtjänst som är kompatibel med alla programmeringsspråk som kan göra HTTP-begäranden och parsa JSON.
 
-Det här exempel programmet hämtar lokala svars data från API: et för en Sök fråga.
+Det här exempelprogrammet hämtar lokala svarsdata från API:et för en sökfråga.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
-* [JDK (Java Development Kit)](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
-* När du har en Azure-prenumeration <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" skapar du en Bing-sökning resurs "  target="_blank"> skapa en Bing-sökning resurs </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
+* En Azure-prenumeration [– Skapa en utan kostnad](https://azure.microsoft.com/free/cognitive-services/)
+* [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
+* När du har din Azure-prenumeration skapar du en Bing-sökning-resurs för att skapa Bing-sökning resurs i Azure Portal för att hämta <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" "  target="_blank"> din nyckel och </a> slutpunkt. När den har distribuerats klickar du **på Gå till resurs**.
 
 ## <a name="create-the-request"></a>Skapa begäran 
 
-Följande kod skapar en `WebRequest` , ställer in åtkomst nyckel rubriken och lägger till en frågesträng för *hotell i Bellevue*.  Därefter skickar den en begäran och tilldelar svaret till en sträng som ska innehålla JSON-texten.
+Följande kod skapar en `WebRequest` , anger åtkomstnyckelrubriken och lägger till en frågesträng *för hotellet i Bellevue*.  Därefter skickar den en begäran och tilldelar svaret till en sträng som ska innehålla JSON-texten.
 
 ```java
     // construct URL of search request (endpoint + query string)
@@ -53,9 +55,9 @@ Följande kod skapar en `WebRequest` , ställer in åtkomst nyckel rubriken och 
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
 ```
 
-## <a name="run-the-complete-application"></a>Kör hela programmet
+## <a name="run-the-complete-application"></a>Kör det fullständiga programmet
 
-Följande kod använder API: et för lokal sökning i Bing för att returnera Sök Resultat från Bing Search-motorn. Kör den här koden genom att följa dessa steg:
+Följande kod använder API:Bing-företagssökning i närområde för att returnera sökresultat från Bing-sökmotorn. Kör den här koden genom att följa dessa steg:
 1. Hämta eller installera gson-biblioteket.
 2. Skapa ett nytt Java-projekt i dem IDE eller det redigeringsprogram som du föredrar.
 3. Lägg till koden nedan.
@@ -169,6 +171,6 @@ public class LocalSearchCls {
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-- [Snabb start för lokal affärs sökning i C#](local-quickstart.md)
-- [Snabb start för lokal företags sökning Node.js](local-search-node-quickstart.md)
-- [Snabb start för att söka i lokalt företag](local-search-python-quickstart.md)
+- [C#-snabbstart för sökning efter lokala företag](local-quickstart.md)
+- [Snabbstart för sökning efter Node.js företag](local-search-node-quickstart.md)
+- [Snabbstart för sökning efter lokala företag i Python](local-search-python-quickstart.md)

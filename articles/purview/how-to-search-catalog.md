@@ -1,67 +1,67 @@
 ---
-title: 'Gör så här: Sök i Data Catalog'
-description: Den här artikeln ger en översikt över hur du söker i en data katalog.
+title: 'Gör så här: sök Data Catalog'
+description: Den här artikeln ger en översikt över hur du söker i en datakatalog.
 author: djpmsft
 ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 03/16/2021
-ms.openlocfilehash: 7799266bf9cece1ed789d6fab64ec970a09fbfcb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 178604335968c3664bde51c144759c1c040c359d
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588481"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564921"
 ---
-# <a name="search-the-azure-purview-data-catalog"></a>Sök i Azure avdelningens kontroll-Data Catalog
+# <a name="search-the-azure-purview-data-catalog"></a>Sök i Azure Purview-Data Catalog
 
-Data identifiering är det första steget i arbets belastningen data analys eller data styrning för data konsumenter. Det kan ta lång tid att identifiera data eftersom du kanske inte vet var du hittar de data som du vill ha. Trots att du har hittat data kan du vara osäker på om du kan lita på data och ta ett beroende på det.
+Dataidentifiering är det första steget för en arbetsbelastning för dataanalys eller datastyrning för datakonsumenter. Dataidentifiering kan vara tidskrävande eftersom du kanske inte vet var du hittar de data du vill ha. Även efter att du har hittat data kan du ha svårt att avgöra om du kan lita på data och ta ett beroende på dem.
 
-Målet med sökning i Azure avdelningens kontroll är att påskynda processen med data identifiering för att snabbt hitta de data som är viktiga. Den här artikeln beskriver hur du söker i Azure avdelningens kontroll Data Catalog för att snabbt hitta de data du söker efter.
+Målet med sökning i Azure Purview är att påskynda processen för dataidentifiering för att snabbt hitta de data som är viktiga. Den här artikeln beskriver hur du söker i Azure Purview-datakatalogen för att snabbt hitta de data du letar efter.
 
-## <a name="search-the-catalog-for-assets"></a>Sök i katalogen för till gångar
+## <a name="search-the-catalog-for-assets"></a>Sök i katalogen efter tillgångar
 
-I Azure avdelningens kontroll finns Sök fältet överst i avdelningens kontroll Studio-UX.
+I Azure Purview finns sökfältet längst upp i Purview Studio UX.
 
-:::image type="content" source="./media/how-to-search-catalog/purview-search-bar.png" alt-text="Skärm bild som visar platsen för Sök fältet i Azure-avdelningens kontroll" border="true":::
+:::image type="content" source="./media/how-to-search-catalog/purview-search-bar.png" alt-text="Skärmbild som visar platsen för Azure Purview-sökfältet" border="true":::
 
-När du klickar på Sök fältet kan du se din senaste Sök historik och nyligen använda till gångar. Välj "Visa alla" om du vill se alla nyligen visade till gångar.
+När du klickar på sökfältet kan du se din senaste sökhistorik och nyligen använda tillgångar. Välj "Visa alla" för att se alla nyligen visade tillgångar.
 
-:::image type="content" source="./media/how-to-search-catalog/search-no-keywords.png" alt-text="Skärm bild som visar Sök fältet innan eventuella nyckelord har angetts" border="true":::
+:::image type="content" source="./media/how-to-search-catalog/search-no-keywords.png" alt-text="Skärmbild som visar sökfältet innan några nyckelord har angetts" border="true":::
 
-Ange i nyckelord som hjälper dig att identifiera din till gång, till exempel namn, datatyp, klassificeringar och ord listans villkor. När du anger i nyckelord som rör din önskade till gång, visar Azure avdelningens kontroll förslag på vad du kan söka efter och potentiella till gångar matchar. Slutför sökningen genom att klicka på "Visa Sök resultat" eller trycka på "retur".
+Ange nyckelord som hjälper dig att identifiera din tillgång, till exempel dess namn, datatyp, klassificeringar och ordlistor. När du anger nyckelord som rör din önskade tillgång visar Azure Purview förslag på vad du ska söka efter och potentiella matchningar av tillgångar. Slutför sökningen genom att klicka på "Visa sökresultat" eller trycka på "Retur".
 
-:::image type="content" source="./media/how-to-search-catalog/search-keywords.png" alt-text="Skärm bild som visar Sök fältet när en användare går in i nyckelord" border="true":::
+:::image type="content" source="./media/how-to-search-catalog/search-keywords.png" alt-text="Skärmbild som visar sökfältet som en användare anger i nyckelord" border="true":::
 
-Sidan Sök resultat visar en lista över till gångar som matchar de nyckelord som anges i prioritetsordning. Det finns olika faktorer som kan påverka resultatet av en till gångs relevans. Du kan filtrera ned listan mer genom att välja vissa data lager, klassificeringar, kontakter, etiketter och ord listor som gäller för den till gång du söker.
+Sökresultatsidan visar en lista över tillgångar som matchar de nyckelord som anges i relevansordning. Det finns olika faktorer som kan påverka relevanspoängen för en tillgång. Du kan filtrera ned listan mer genom att välja specifika datalager, klassificeringar, kontakter, etiketter och ordlista som gäller för den tillgång som du letar efter.
 
-:::image type="content" source="./media/how-to-search-catalog/search-results.png" alt-text="Skärm bild som visar resultatet av en sökning" border="true":::
+:::image type="content" source="./media/how-to-search-catalog/search-results.png" alt-text="Skärmbild som visar resultatet av en sökning" border="true":::
 
- Klicka på din önskade till gång för att visa sidan till gångs information där du kan visa egenskaper, till exempel schema, härkomst och till gångs ägare.
+ Klicka på den önskade tillgången för att visa sidan med tillgångsinformation där du kan visa egenskaper som schema, härledning och tillgångsägare.
 
-:::image type="content" source="./media/how-to-search-catalog/search-view-asset.png" alt-text="Skärm bild som visar sidan till gångs information" border="true":::
+:::image type="content" source="./media/how-to-search-catalog/search-view-asset.png" alt-text="Skärmbild som visar sidan med tillgångsinformation" border="true":::
 
-## <a name="search-query-syntax"></a>Sök frågans syntax
+## <a name="search-query-syntax"></a>Sök frågesyntax
 
-Alla Sök frågor består av nyckelord och operatorer. Ett nyckelord är något som skulle vara en del av en till gångs egenskaper. Potentiella nyckelord kan vara klassificering, ord lista, till gångs beskrivning eller ett till gångs namn. Ett nyckelord kan bara vara en del av den egenskap som du vill matcha till. Använd nyckelord och operatorerna i listan nedan för att se till att Azure-avdelningens kontroll returnerar de till gångar som du letar efter. 
+Alla sökfrågor består av nyckelord och operatorer. Ett nyckelord är något som skulle ingå i en tillgångs egenskaper. Potentiella nyckelord kan vara en klassificering, ordlista, tillgångsbeskrivning eller ett resursnamn. Ett nyckelord kan bara vara en del av den egenskap som du vill matcha mot. Använd nyckelord och operatorerna nedan för att se till att Azure Purview returnerar de tillgångar som du letar efter. 
 
-Nedan visas de operatorer som kan användas för att skapa en Sök fråga. Operatörer kan kombineras så många gånger som det behövs i en enskild fråga.
+Nedan visas de operatorer som kan användas för att skapa en sökfråga. Operatorer kan kombineras så många gånger som behövs i en enskild fråga.
 
 | Operator | Definition | Exempel |
 | -------- | ---------- | ------- |
-| ELLER | Anger att en till gång måste ha minst ett av de två nyckelorden. Måste vara i versaler. Ett tomt utrymme är också en OR-operator.  | Frågan `hive OR database` returnerar till gångar som innehåller "Hive" eller "databas" eller både och. |
-| AND | Anger att en till gång måste ha båda nyckelorden. Måste vara i versaler | Frågan `hive AND database` returnerar till gångar som innehåller både "Hive" och "Database". |
-| NOT | Anger att en till gång inte får innehålla nyckelordet till höger om NOT-satsen | Frågan `hive NOT database` returnerar till gångar som innehåller Hive, men inte databasen. |
-| () | Grupperar en uppsättning nyckelord och operatorer tillsammans. När du kombinerar flera operatorer, anger parentesen ordningen på åtgärderna. | Frågan `hive AND (database OR warehouse)` returnerar till gångar som innehåller "Hive" och antingen "Database" eller "Warehouse" eller båda. |
-| "" | Anger exakt innehåll i en fras som frågan måste matcha. | Frågan `"hive database"` returnerar till gångar som innehåller frasen "Hive-databas" i egenskaperna |
-| * | Ett jokertecken som matchar på ett till många tecken. Får inte vara första bokstaven i ett nyckelord. | Frågan `hiv\` * returnerar till gångar som har egenskaper som börjar med "HIV", till exempel "Hive" eller "Hive-Table". |
-| ? | Ett jokertecken som matchar på ett enstaka-teckensnitt. Får inte vara första bokstaven i ett nyckelord | Frågan `hiv?` returnerar till gångar som har egenskaper som börjar med "HIV" och är fyra bokstäver som "Hive" eller "HIVA". |
+| ELLER | Anger att en tillgång måste ha minst ett av de två nyckelorden. Måste vara i versaler. Ett tomt utrymme är också en OR-operator.  | Frågan `hive OR database` returnerar tillgångar som innehåller "hive", "databas" eller både och. |
+| AND | Anger att en tillgång måste ha båda nyckelorden. Måste vara i versaler | Frågan `hive AND database` returnerar tillgångar som innehåller både "hive" och "database". |
+| NOT | Anger att en tillgång inte får innehålla nyckelordet till höger om NOT-satsen | Frågan `hive NOT database` returnerar tillgångar som innehåller "hive", men inte "databas". |
+| () | Grupperar en uppsättning nyckelord och operatorer tillsammans. När du kombinerar flera operatorer anger parenteser ordningen på åtgärderna. | Frågan `hive AND (database OR warehouse)` returnerar tillgångar som innehåller "hive" och antingen "database" eller "warehouse" eller båda. |
+| "" | Anger exakt innehåll i en fras som frågan måste matcha mot. | Frågan `"hive database"` returnerar tillgångar som innehåller frasen "hive database" i deras egenskaper |
+| * | Ett jokertecken som matchar ett till många tecken. Kan inte vara det första tecknet i ett nyckelord. | Frågan `dat*` returnerar tillgångar som har egenskaper som börjar med "dat", till exempel "data" eller "databas". |
+| ? | Ett jokertecken som matchar ett enskilt tecken. Kan inte vara det första tecknet i ett nyckelord | Frågan returnerar tillgångar som har egenskaper som börjar med "dat" och är fyra bokstäver, till exempel `dat?` "datum" eller "data". |
 
 > [!Note]
-> Ange alltid booleska operatorer (**och**, **eller**, **inte**) med versaler. I annat fall spelar det ingen roll eller gör extra blank steg.
+> Ange alltid booleska operatorer (**AND**, **OR**, **NOT**) i versaler. Annars spelar ärendet ingen roll, och det gör inte heller extra blanksteg.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Skapa, importera och exportera ord listans villkor](how-to-create-import-export-glossary.md)
-- [Så här hanterar du term mallar för företags ord lista](how-to-manage-term-templates.md)
+- [Skapa, importera och exportera ordlista](how-to-create-import-export-glossary.md)
+- [Hantera termmallar för företagsordlistor](how-to-manage-term-templates.md)

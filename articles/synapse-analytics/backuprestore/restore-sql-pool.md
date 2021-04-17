@@ -1,7 +1,6 @@
 ---
 title: Återställa en befintlig dedikerad SQL-pool
-description: Instruktions guide för att återställa en befintlig dedikerad SQL-pool.
-services: synapse-analytics
+description: Så här återställer du en befintlig dedikerad SQL-pool.
 author: joannapea
 manager: igorstan
 ms.service: synapse-analytics
@@ -11,54 +10,54 @@ ms.date: 10/29/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 86150107273b247bef2c74e5b8c5272d7148587e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2fb6f809794781559683907a806e6d30ca9bed6
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94332096"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567986"
 ---
 # <a name="restore-an-existing-dedicated-sql-pool"></a>Återställa en befintlig dedikerad SQL-pool
 
-I den här artikeln får du lära dig hur du återställer en befintlig dedikerad SQL-pool i Azure Synapse Analytics med hjälp av Azure Portal och Synapse Studio. Den här artikeln gäller både återställning och geo-Restore. 
+I den här artikeln får du lära dig hur du återställer en befintlig dedikerad SQL-pool i Azure Synapse Analytics med Azure Portal och Synapse Studio. Den här artikeln gäller både återställningar och geo-återställningar. 
 
 ## <a name="restore-an-existing-dedicated-sql-pool-through-the-synapse-studio"></a>Återställa en befintlig dedikerad SQL-pool via Synapse Studio
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
-2. Navigera till din Synapse-arbetsyta. 
-3. Under Komma igång-> öppna Synapse Studio väljer du **Öppna**.
+2. Gå till Synapse-arbetsytan. 
+3. Under Komma igång -> Öppna Synapse Studio väljer du **Öppna**.
 
     ![ Synapse Studio](../media/sql-pools/open-synapse-studio.png)
-4. I det vänstra navigerings fönstret väljer du **data**.
-5. Välj **hantera pooler**. 
-6. Välj **+ ny** för att skapa en ny dedikerad SQL-pool. 
-7. På fliken Ytterligare inställningar väljer du en återställnings punkt att återställa från. 
+4. Välj Data i det vänstra **navigeringsfönstret.**
+5. Välj **Hantera pooler.** 
+6. Välj **+ Ny för** att skapa en ny dedikerad SQL-pool. 
+7. På fliken Ytterligare inställningar väljer du en återställningspunkt att återställa från. 
 
-    Om du vill utföra en geo-återställning väljer du den arbets yta och dedikerad SQL-pool som du vill återställa. 
+    Om du vill utföra en geo-återställning väljer du arbetsytan och den dedikerade SQL-pool som du vill återställa. 
 
-8. Välj antingen **automatiska återställnings punkter** eller **användardefinierade återställnings punkter**. 
+8. Välj **antingen Automatiska återställningspunkter** **eller Användardefinierade återställningspunkter.** 
 
-    ![Återställnings punkter](../media/sql-pools/restore-point.PNG)
+    ![Återställningspunkter](../media/sql-pools/restore-point.PNG)
 
-    Om den dedikerade SQL-poolen inte har några automatiska återställnings punkter väntar du några timmar eller skapar en användardefinierad återställnings punkt innan du återställer. För User-Defined återställnings punkter väljer du en befintlig eller skapar en ny.
+    Om den dedikerade SQL-poolen inte har några automatiska återställningspunkter väntar du några timmar eller skapar en användardefinierad återställningspunkt innan du återställer. Om User-Defined en återställningspunkter väljer du en befintlig eller skapar en ny.
 
-    Om du återställer en geo-säkerhetskopiering väljer du bara den arbets yta som finns i käll regionen och den dedikerade SQL-pool som du vill återställa. 
+    Om du återställer en geo-säkerhetskopia väljer du helt enkelt arbetsytan som finns i källregionen och den dedikerade SQL-pool som du vill återställa. 
 
 9. Välj **Granska + skapa**.
 
 ## <a name="restore-an-existing-dedicated-sql-pool-through-the-azure-portal"></a>Återställa en befintlig dedikerad SQL-pool via Azure Portal
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
-2. Navigera till den dedikerade SQL-pool som du vill återställa från.
-3. Överst på bladet översikt väljer du **Återställ**.
+2. Gå till den dedikerade SQL-pool som du vill återställa från.
+3. Längst upp på bladet Översikt väljer du **Återställ**.
 
     ![ Återställa översikt](../media/sql-pools/restore-sqlpool-01.png)
 
-4. Välj antingen **automatiska återställnings punkter** eller **användardefinierade återställnings punkter**. 
+4. Välj **antingen Automatiska återställningspunkter** **eller Användardefinierade återställningspunkter.** 
 
-    Om den dedikerade SQL-poolen inte har några automatiska återställnings punkter väntar du några timmar eller skapar en användardefinierad återställnings punkt innan du återställer. 
+    Om den dedikerade SQL-poolen inte har några automatiska återställningspunkter väntar du några timmar eller skapar en användardefinierad återställningspunkt innan du återställer. 
 
-    Om du vill utföra en geo-återställning väljer du den arbets yta och dedikerad SQL-pool som du vill återställa. 
+    Om du vill utföra en geo-återställning väljer du arbetsytan och den dedikerade SQL-pool som du vill återställa. 
 
 5. Välj **Granska + skapa**.
 

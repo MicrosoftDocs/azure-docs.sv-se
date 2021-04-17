@@ -5,23 +5,22 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: lajanuar
-ms.openlocfilehash: 324fde5198fe3469e3979cf5cd102715118a49aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfd2b32094aae06675ea8ee9157370f9d2833e91
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467329"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518236"
 ---
-Formulär tolken arbetar med inmatade dokument som uppfyller följande krav:
+Formigenkänning på indatadokument som uppfyller dessa krav:
 
-* Formatet måste vara JPG, PNG, PDF (text eller scannat) eller TIFF. Text-inbäddade PDF-filer är bäst eftersom det inte går att extrahera fel i tecken extrahering och plats.
-* Fil storleken måste vara mindre än 50 MB.
-* Bild dimensioner måste vara mellan 50 x 50 pixlar och 10000 x 10000 bild punkter.
-* PDF-dimensionerna måste bestå av högst 17 × 17 tum, som motsvarar legal eller a3 pappers storlekar och mindre.
-* För PDF och TIFF bearbetas bara de första 200 sidorna (med en prenumeration på kostnads fri nivå, bara de första två sidorna bearbetas).
-* Den totala storleken på tränings data uppsättningen måste vara 500 sidor eller mindre.
-* Om dina PDF-filer är lösenordsskyddade måste du ta bort låset innan du skickar dem.
-* Om du skannar från pappers dokument bör formulär vara av hög kvalitet.
-* Texten måste använda det latinska alfabetet (engelska tecken).
+* Formatet måste vara JPG, PNG, PDF (text eller skannat) eller TIFF. Text-inbäddade PDF-filer är bäst eftersom det inte finns någon risk för fel vid extrahering av tecken och plats.
+* Filstorleken måste vara mindre än 50 MB.
+* Bilddimensionerna måste vara mellan 50 x 50 bildpunkter och 1 0000 x 1 0000 bildpunkter.
+* PDF-måtten måste vara högst 17 x 17 tum, vilket motsvarar pappersstorlekarna Juridiskt eller A3 och mindre.
+* För PDF och TIFF bearbetas endast de första 200 sidorna (med en kostnadsfri nivåprenumeration bearbetas bara de första två sidorna).
+* Den totala storleken på träningsdatauppsättningen måste vara 500 sidor eller mindre.
+* Om dina PDF-filer är lösenordslåsta måste du ta bort låset innan du skickar dem.
+* Om de skannas från pappersdokument ska formulären vara genomsökningar av hög kvalitet.
 * För oövervakad inlärning (utan märkta data) måste data innehålla nycklar och värden.
-* För oövervakad inlärning (utan märkta data) måste nycklarna visas ovanför eller till vänster om värdena. de kan inte visas under eller till höger.
+* För oövervakad inlärning (utan märkta data) måste nycklarna visas ovanför eller till vänster om värdena. de kan inte visas nedan eller till höger.

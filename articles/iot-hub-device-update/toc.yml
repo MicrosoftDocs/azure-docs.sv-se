@@ -1,86 +1,86 @@
-- name: Enhets uppdatering för IoT Hub-dokumentation
+- name: Enhetsuppdatering för IoT Hub dokumentation
   href: index.yml
 - name: Översikt
   items:
-    - name: Vad är enhets uppdatering för IoT Hub?
+    - name: Vad är enhetsuppdatering för IoT Hub?
       href: understand-device-update.md
 - name: Självstudier
   items:
-    - name: Bild uppdatering på Raspberry Pi
+    - name: Bilduppdatering på Raspberry Pi
       href: device-update-raspberry-pi.md
-    - name: Använda enhets uppdatering på en simulator
+    - name: Använda enhetsuppdatering i en simulator
       href: device-update-simulator.md
-    - name: 'Paket uppdatering på Ubuntu Server 18,04 x64'
+    - name: Paketuppdatering på Ubuntu Server 18.04 x64
       href: device-update-ubuntu-agent.md
-    - name: Enhets uppdatering för Azure real tids operativ system
+    - name: Enhetsuppdatering för Azure Realtids-operativsystem
       href: device-update-azure-real-time-operating-system.md
 - name: Begrepp
   items:
-    - name: Enhets uppdaterings konto och instans
+    - name: Konto och instans för enhetsuppdatering
       href: device-update-resources.md
-    - name: Användar roller och åtkomst för enhets uppdatering
+    - name: Användarroller och åtkomst för enhetsuppdatering
       href: device-update-control-access.md
-    - name: Apt-manifest för enhets uppdatering
+    - name: Apt-manifest för enhetsuppdatering
       href: device-update-apt-manifest.md
-    - name: Kompatibilitet för enhets uppdatering
+    - name: Enhetsuppdateringsefterlevnad
       href: device-update-compliance.md
-    - name: Enhets uppdaterings grupper
+    - name: Enhetuppdateringsgrupper
       href: device-update-groups.md
-    - name: Hur enhets uppdatering använder Plug and Play
+    - name: Hur enhetsuppdatering använder Plug and Play
       href: device-update-plug-and-play.md
-    - name: Nätverks krav för enhets uppdatering
+    - name: Nätverkskrav för enhetsuppdatering
       href: device-update-networking.md
-    - name: Enhets uppdaterings agent
+    - name: Enhetsuppdateringsagent
       href: device-update-agent-overview.md
-    - name: Konfigurations fil för enhets uppdatering
+    - name: Konfigurationsfil för enhetsuppdatering
       href: device-update-configuration-file.md
     - name: Uppdatera manifest
       href: update-manifest.md
-    - name: Hur enhets uppdatering skyddas
+    - name: Så här skyddas enhetsuppdateringen
       href: device-update-security.md
     - name: Stöd för frånkopplade enheter
       href: connected-cache-disconnected-device-update.md
-    - name: Konfigurera Microsoft Connected cache för enhets uppdatering för IoT Hub
+    - name: Konfigurera Microsoft Ansluten cache för enhetsuppdatering för IoT Hub
       href: connected-cache-configure.md
-    - name: Importera enhets uppdateringar
+    - name: Importera enhetsuppdatering
       href: import-concepts.md
-    - name: Importera-relaterat schema
+    - name: Importrelaterat schema
       href: import-schema.md
 - name: Anvisningar
   items:
-    - name: Skapa ett konto för enhets uppdatering
+    - name: Skapa ett konto för enhetsuppdatering
       href: create-device-update-account.md
-    - name: Etablering av enhets uppdaterings agent
+    - name: Etablera agent för enhetsuppdatering
       href: device-update-agent-provisioning.md
     - name: Importera en uppdatering
       href: import-update.md
-    - name: Skapa en enhets uppdaterings grupp
+    - name: Skapa en enhetsgrupp för uppdatering
       href: create-update-group.md
-    - name: Distribuera en enhets uppdatering
+    - name: Distribuera en enhetsuppdatering
       href: deploy-update.md
-    - name: Microsoft-ansluten cache med en nivå
+    - name: Microsoft Ansluten cache på en nivå
       href: connected-cache-single-level.md
-    - name: Microsoft-ansluten cache med kapslad nivå
+    - name: Kapslad nivå för Microsoft Ansluten cache
       href: connected-cache-nested-level.md
-    - name: Microsoft Connected cache för industriella IoT (IIOT)
+    - name: Microsoft Ansluten cache for Industrial IoT (IIOT)
       href: connected-cache-industrial-iot-nested.md
     - name: Felsöka
       items:
-        - name: Felsöka enhets uppdateringar
+        - name: Felsöka enhetsuppdateringar
           href: troubleshoot-device-update.md
-        - name: Fel koder för enhets uppdaterings klient
-      href: device-update-error-codes.md
+        - name: Klientfelkoder för enhetsuppdatering
+          href: device-update-error-codes.md
 - name: Referens
   items:
     - name: REST-API
       href: 'https://docs.microsoft.com/rest/api/deviceupdate/'
-    - name: Control plan SDK
+    - name: SDK för kontrollplan
       items:
         - name: .NET
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/iot/management?view=azure-dotnet'
         - name: Python
           href: 'https://docs.microsoft.com/python/api/azure-mgmt-deviceupdate/?view=azure-python'
-    - name: Data plan SDK
+    - name: SDK för dataplan
       items:
         - name: JavaScript
           href: 'https://docs.microsoft.com/javascript/api/@azure/iot-device-update/?view=azure-node-preview'

@@ -80,15 +80,15 @@
           href: synapse-link-frequently-asked-questions.md
     - name: Säkerhetskopiering och återställning
       items:
-        - name: Introduktion till säkerhets kopiering och återställning
+        - name: Introduktion till säkerhetskopiering och återställning
           href: online-backup-and-restore.md
-        - name: Kontinuerlig säkerhets kopiering
+        - name: Kontinuerlig säkerhetskopiering
           items:
-            - name: Kontinuerlig säkerhets kopiering – introduktion
+            - name: Kontinuerlig säkerhetskopiering – introduktion
               href: continuous-backup-restore-introduction.md
-            - name: Kontinuerlig säkerhets kopiering – vanliga frågor och svar
+            - name: Kontinuerlig säkerhetskopiering – vanliga frågor och svar
               href: continuous-backup-restore-frequently-asked-questions.md
-            - name: Kontinuerlig säkerhets kopiering – resurs modell
+            - name: Kontinuerlig säkerhetskopiering – resursmodell
               href: continuous-backup-restore-resource-model.md
     - name: Optimera dina kostnader för Azure Cosmos DB
       items:
@@ -152,6 +152,8 @@
               href: create-sql-api-java.md
             - name: Spring Data-app
               href: create-sql-api-spring-data.md
+            - name: Spark v3-app
+              href: create-sql-api-spark.md
             - name: Node.js-app
               href: create-sql-api-nodejs.md
             - name: Python-app
@@ -755,9 +757,9 @@
                   href: troubleshoot-not-found.md
                 - name: Felsöka behörighet saknas
                   href: troubleshoot-unauthorized.md
-                - name: Felsök förbjuden
+                - name: Felsöka förbjudet
                   href: troubleshoot-forbidden.md
-                - name: Felsök felaktig begäran
+                - name: Felsöka felaktig begäran
                   href: troubleshoot-bad-request.md
                 - name: Tillgänglighetsproblem i miljöer med flera regioner
                   href: troubleshoot-sdk-availability.md
@@ -809,7 +811,7 @@
               href: enable-notebooks.md
             - name: Importera anteckningsböcker från GitHub
               href: import-github-notebooks.md
-            - name: Publicera antecknings böcker i galleriet
+            - name: Publicera anteckningsböcker i galleriet
               href: publish-notebook-gallery.md
             - name: Använd inbyggda Python notebook-kommandon
               href: use-python-notebook-features-and-commands.md
@@ -835,7 +837,7 @@
               href: visualize-qlik-sense.md
         - name: Inbyggd analys med Apache Spark
           items:
-            - name: Azure Databricks Spark-anslutningsapp
+            - name: Azure Databricks Spark 2 OLTP-anslutning
               href: spark-connector.md
             - name: Direktuppspelning med Apache Kafka och Cosmos DB
               href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
@@ -853,7 +855,7 @@
           items:
             - name: Konfigurera resursdelning för korsande ursprung (CORS)
               href: how-to-configure-cross-origin-resource-sharing.md
-            - name: Konfigurera rollbaserad åtkomst kontroll
+            - name: Konfigurera rollbaserad åtkomstkontroll
               href: how-to-setup-rbac.md
               displayName: 'aad, active directory, rbac'
             - name: Använda hanterade identiteter för att komma åt data
@@ -915,7 +917,9 @@
               href: sql-api-sdk-java-spring-v2.md
             - name: Spring-dataanslutningsprogram v3
               href: sql-api-sdk-java-spring-v3.md
-            - name: Spark-anslutningsprogram
+            - name: Spark 3 OLTP-anslutningsapp (förhandsversion)
+              href: sql-api-sdk-java-spark-v3.md
+            - name: Spark 2 OLTP Connector
               href: sql-api-sdk-java-spark.md
             - name: Java-masskörningsbibliotek v2
               href: sql-api-sdk-bulk-executor-java.md
@@ -1101,11 +1105,11 @@
           href: tutorial-global-distribution-mongodb.md
     - name: Begrepp
       items:
-        - name: 'API-version 4,0'
+        - name: API-version 4.0
           href: mongodb-feature-support-40.md
-        - name: 'API-version 3,6'
+        - name: API-version 3.6
           href: mongodb-feature-support-36.md
-        - name: 'API-version 3,2'
+        - name: API-version 3.2
           href: mongodb-feature-support.md
         - name: VANLIGA FRÅGOR OCH SVAR
           href: mongodb-api-faq.md
@@ -1125,7 +1129,7 @@
               href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Guide efter migrering
               href: mongodb-post-migration.md
-        - name: 'Uppgradera till API version 4,0 eller 3,6'
+        - name: Uppgradera till API-version 4.0 eller 3.6
           href: mongodb-version-upgrade.md
         - name: Hämta anslutningssträngen
           href: connect-mongodb-account.md
@@ -1146,7 +1150,7 @@
           href: mongodb-change-streams.md
         - name: Hantera dataindexering
           href: mongodb-indexing.md
-        - name: Använd transaktioner med flera dokument
+        - name: Använda transaktioner med flera dokument
           href: use-multi-document-transactions.md
         - name: Skapa en container – MongoDB API
           href: how-to-create-container-mongodb.md
@@ -1376,7 +1380,7 @@
           href: configure-synapse-link.md
         - name: Anslut till Azure Synapse Link
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-        - name: Analys lager och privata slut punkter
+        - name: Analysarkiv och privata slutpunkter
           href: analytical-store-private-endpoints.md
         - name: Fråga med Azure Synapse Spark
           href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
@@ -1386,19 +1390,19 @@
           href: synapse-link-power-bi.md
     - name: Säkerhetskopiering och återställning
       items:
-        - name: Hantera kontinuerlig säkerhets kopiering
+        - name: Hantera kontinuerlig säkerhetskopiering
           items:
-            - name: Kontinuerlig säkerhets kopiering – behörigheter och roller
+            - name: Kontinuerlig säkerhetskopiering – behörigheter och roller
               href: continuous-backup-restore-permissions.md
-            - name: Kontinuerlig säkerhets kopiering – Portal
+            - name: Kontinuerlig säkerhetskopiering – portalen
               href: continuous-backup-restore-portal.md
-            - name: Kontinuerlig säkerhets kopiering – PowerShell
+            - name: Kontinuerlig säkerhetskopiering – PowerShell
               href: continuous-backup-restore-powershell.md
-            - name: Kontinuerlig säkerhets kopiering – CLI
+            - name: Kontinuerlig säkerhetskopiering – CLI
               href: continuous-backup-restore-command-line.md
-            - name: Kontinuerlig säkerhets kopiering – Resource Manager
+            - name: Kontinuerlig säkerhetskopiering – Resource Manager
               href: continuous-backup-restore-template.md
-        - name: Hantera periodisk säkerhets kopiering
+        - name: Hantera regelbunden säkerhetskopiering
           href: configure-periodic-backup-restore.md
     - name: Säkerhet
       items:

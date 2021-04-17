@@ -1,5 +1,5 @@
 ---
-title: Trafik dirigering för Azure Virtual Network
+title: Trafikdirigering i virtuella Azure-nätverk
 titlesuffix: Azure Virtual Network
 description: Lär dig hur Azure dirigerar trafik i virtuella nätverk och hur du kan anpassa Azures routning.
 services: virtual-network
@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2021
+ms.date: 04/14/2021
 ms.author: aldomel
-ms.openlocfilehash: 0dd053fa268e88c281c1fe6c00339fe6a6edf27a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 232b83fef2da312828f4f9f332ab2505e3a68100
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732609"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503651"
 ---
 # <a name="virtual-network-traffic-routing"></a>Trafikdirigering i virtuella nätverk
 
@@ -46,7 +46,7 @@ Nästa hopptyper som anges i föregående tabell representerar hur Azure diriger
 * **Internet**: dirigerar trafik som anges av adressprefixet till Internet. Systemstandardvägen anger adressprefixet 0.0.0.0/0. Om du inte åsidosätter Azures standardvägar dirigerar Azure trafik för alla adresser som inte har angetts av ett adressintervall inom ett virtuellt nätverk till Internet, med ett undantag. Om måladressen är någon av Azures tjänster dirigerar Azure trafiken direkt till tjänsten via Azures stamnätverk i stället för att dirigera trafiken till Internet. Trafik mellan Azure-tjänster sker inte via Internet, oavsett vilken Azure-region det virtuella nätverket finns i eller vilken Azure-region en instans av Azure-tjänsten har distribuerats i. Du kan åsidosätta Azures standardsystemväg för adressprefixet 0.0.0.0/0 med en [anpassad väg](#custom-routes).<br>
 * **None** (Ingen): Trafik som dirigeras till den nästa hopptypen **None** (Ingen) tas bort istället för att dirigeras utanför undernätet. Azure skapar automatiskt standardvägar för följande adressprefix:<br>
 
-    * **10.0.0.0/8 och 192.168.0.0/16**: reserverat för privat användning i RFC 1918.<br>
+    * **10.0.0.0/8 och 192.168.0.0/16:** Reserverat för privat användning i RFC 1918.<br>
     * **100.64.0.0/10**: Reserverad i RFC 6598.
 
     Om du tilldelar några av de föregående adressintervallerna inom adressutrymmet för ett virtuellt nätverk ändrar Azure automatiskt nästa hopptyp för vägen från **None** (Ingen) till **Virtuellt nätverk**. Om du tilldelar ett adressintervall till ett virtuellt nätverks adressområde som inkluderar, men inte är detsamma som, något av de fyra reserverade adressprefixen, tar Azure bort prefixets väg och lägger till vägen för adressprefixet du la till, med **Virtuellt nätverk** som nästa hopptyp.
@@ -62,11 +62,11 @@ Azure lägger till ytterligare systemstandardvägar för olika Azure-funktioner,
 |Standardvärde                |Flera                               |VirtualNetworkServiceEndpoint|Endast undernätet en tjänstslutpunkt har aktiverats för.|
 
 * **Virtuell nätverkspeering (VNet-peering)**: När du skapar en virtuell nätverkspeering mellan två virtuella nätverk läggs en väg till för varje adressintervall i adressutrymmet för varje virtuellt nätverk som en peering har skapats för. Läs mer om [virtuell nätverkspeering](virtual-network-peering-overview.md).<br>
-* **Virtuell nätverksgateway**: En eller flera vägar med *virtuell nätverksgateway* angiven som nästa hopptyp läggs till när en virtuell nätverksgateway läggs till för ett virtuellt nätverk. Källan är också *virtuell nätverksgateway* eftersom gatewayen lägger till vägar till undernätet. Om din lokala nätverksgateway utbyter[BGP](#border-gateway-protocol)-vägar (Border Gateway Protocol) med en virtuell Azure-nätverksgateway, läggs en väg till för varje väg som sprids från den lokala Nätverksgatewayen. Vi rekommenderar att du sammanfattar lokala vägar till största möjliga adressområden, så att så få antal vägar som möjligt sprids till en virtuell nätverksgateway i Azure. Det finns begränsningar för hur många vägar du kan sprida till en virtuell nätverksgateway i Azure. Läs mer i informationen om [begränsningar för Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).<br>
+* **Virtuell nätverksgateway**: En eller flera vägar med *virtuell nätverksgateway* angiven som nästa hopptyp läggs till när en virtuell nätverksgateway läggs till för ett virtuellt nätverk. Källan är också *virtuell nätverksgateway* eftersom gatewayen lägger till vägar till undernätet. Om din lokala nätverksgateway utbyter[BGP-vägar](#border-gateway-protocol)(Border Gateway Protocol) med en virtuell nätverksgateway i Azure läggs en väg till för varje väg som sprids från den lokala nätverksgatewayen. Vi rekommenderar att du sammanfattar lokala vägar till största möjliga adressområden, så att så få antal vägar som möjligt sprids till en virtuell nätverksgateway i Azure. Det finns begränsningar för hur många vägar du kan sprida till en virtuell nätverksgateway i Azure. Läs mer i informationen om [begränsningar för Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).<br>
 * **VirtualNetworkServiceEndpoint**: De offentliga IP-adresserna för vissa tjänster läggs till i routningstabellen av Azure när du aktiverar en tjänstslutpunkt för tjänsten. Tjänstslutpunkter aktiveras för enskilda undernät i ett virtuellt nätverk, så att vägen endast läggs till i routningstabellen för ett undernät som en tjänstslutpunkt är aktiverad för. Azure-tjänsters offentliga IP-adresser ändras regelbundet. Azure hanterar adresserna i routningstabellen automatiskt när adresserna ändras. Läs mer om [tjänstslutpunkter för virtuellt nätverk](virtual-network-service-endpoints-overview.md) och för vilka tjänster du kan skapa tjänstslutpunkter.<br>
 
     > [!NOTE]
-    > De nästa hopptyperna **VNet-peering** och **VirtualNetworkServiceEndpoint** läggs endast till i undernäts routningstabeller i virtuella nätverk som skapats via distributionsmodellen Azure Resource Manager. Nästa hopptyper läggs inte till i routningstabeller som är associerade till undernät i virtuella nätverk som har skapats via den klassiska distributionsmodellen. Lär dig mer om [distributions modeller](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)i Azure.
+    > De nästa hopptyperna **VNet-peering** och **VirtualNetworkServiceEndpoint** läggs endast till i undernäts routningstabeller i virtuella nätverk som skapats via distributionsmodellen Azure Resource Manager. Nästa hopptyper läggs inte till i routningstabeller som är associerade till undernät i virtuella nätverk som har skapats via den klassiska distributionsmodellen. Läs mer om [Azure-distributionsmodeller.](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ## <a name="custom-routes"></a>Anpassade vägar
 
@@ -74,7 +74,7 @@ Du skapar anpassade vägar genom att antingen skapa [användardefinierade](#user
 
 ### <a name="user-defined"></a>Användardefinierade
 
-Du kan skapa anpassade eller användardefinierade (statiska), vägar i Azure för att åsidosätta Azures standard system vägar eller lägga till ytterligare vägar till ett undernäts routningstabell. I Azure skapar du en routningstabell och associerar sedan routningstabellen till noll eller flera undernät för virtuella nätverk. Varje undernät kan ha noll eller en associerad routningstabell. Läs om det maximala antalet vägar du kan lägga till i en routningstabell och hur många användardefinierade routningstabeller du kan skapa per Azure-prenumeration i [Azure-begränsningar](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Om du skapar en routningstabell och associerar den till ett undernät kombineras dess vägar med, eller åsidosätter, de standardvägar som Azure lägger till i ett undernät som standard.
+Du kan skapa anpassade eller användardefinierade (statiska) vägar i Azure för att åsidosätta Azures standardsystemvägar eller lägga till ytterligare vägar i ett undernäts vägtabell. I Azure skapar du en routningstabell och associerar sedan routningstabellen till noll eller flera undernät för virtuella nätverk. Varje undernät kan ha noll eller en associerad routningstabell. Läs om det maximala antalet vägar du kan lägga till i en routningstabell och hur många användardefinierade routningstabeller du kan skapa per Azure-prenumeration i [Azure-begränsningar](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Om du skapar en routningstabell och associerar den till ett undernät kombineras dess vägar med, eller åsidosätter, de standardvägar som Azure lägger till i ett undernät som standard.
 
 Du kan ange följande nästa hopptyper när du skapar en användardefinierad väg:
 
@@ -96,37 +96,41 @@ Du kan ange följande nästa hopptyper när du skapar en användardefinierad vä
 
 Du kan inte ange **VNet-peering** eller **VirtualNetworkServiceEndpoint** son nästa hopptyp i användardefinierade vägar. Vägar med nästa hopptyperna **VNet-peering** eller **VirtualNetworkServiceEndpoint** skapas endast av Azure när du konfigurerar en virtuell nätverkspeering eller en tjänstslutpunkt.
 
-### <a name="service-tags-for-user-defined-routes-preview"></a>Service märken för användardefinierade vägar (för hands version)
+### <a name="service-tags-for-user-defined-routes-preview"></a>Tjänsttaggar för användardefinierade vägar (förhandsversion)
 
-Nu kan du ange en [service tag](service-tags-overview.md) som adressprefix för en användardefinierad väg i stället för ett explicit IP-intervall. En service-tagg representerar en grupp med IP-adressprefix från en specifik Azure-tjänst. Microsoft hanterar de adressprefix som omfattas av tjänst tag gen och uppdaterar automatiskt tjänst tag gen när adresser ändras, vilket minimerar komplexiteten vid frekventa uppdateringar av användardefinierade vägar och minskar antalet vägar som du behöver skapa. Du kan för närvarande skapa 25 eller färre vägar med service märken i varje routningstabell. </br>
+Nu kan du ange en [tjänsttagg som](service-tags-overview.md) adressprefix för en användardefinierad väg i stället för ett explicit IP-intervall. En tjänsttagg representerar en grupp med IP-adressprefix från en viss Azure-tjänst. Microsoft hanterar de adressprefix som omfattas av tjänsttaggen och uppdaterar automatiskt tjänsttaggen när adresserna ändras, vilket minimerar komplexiteten i frekventa uppdateringar av användardefinierade vägar och minskar antalet vägar som du behöver skapa. Du kan för närvarande skapa 25 eller färre vägar med tjänsttaggar i varje vägtabell. </br>
 
 > [!IMPORTANT]
-> Service märken för användardefinierade vägar är för närvarande en för hands version. Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tjänsttaggar för användardefinierade vägar finns för närvarande i förhandsversion. Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 #### <a name="exact-match"></a>Exakt matchning
-När det finns en exakt prefix matchning mellan en väg med ett explicit IP-prefix och en väg med en service tag, ges prioriteten till vägen med det explicita prefixet. När flera vägar med service-Taggar har matchande IP-prefix kommer vägar att utvärderas i följande ordning: 
+När det finns en exakt prefixmatchning mellan en väg med ett explicit IP-prefix och en väg med en tjänsttagg, ges prioritet till vägen med det explicita prefixet. När flera vägar med tjänsttaggar har matchande IP-prefix utvärderas vägarna i följande ordning: 
 
-   1. Regionala Taggar (t. ex. Storage. öster, AppService. AustraliaCentral)
-   2. Taggar på översta nivån (t. ex. Lagring, AppService)
-   3. AzureCloud regionala Taggar (t. ex. AzureCloud. indiensödra, AzureCloud. asienöstra)
+   1. Regionala taggar (t.ex. Storage.EastUS, AppService.AustraliaCentral)
+   2. Toppnivåtaggar (t.ex. Storage, AppService)
+   3. Regionala taggar för AzureCloud (t.ex. AzureCloud.canadacentral, AzureCloud.eastasia)
    4. AzureCloud-taggen </br></br>
 
-Om du vill använda den här funktionen anger du ett service tag-namn för parametern adressprefix i Route Table-kommandon. I PowerShell kan du till exempel skapa en ny väg för att dirigera trafik som skickas till ett Azure Storage IP-prefix till en virtuell installation genom att använda: </br>
+Om du vill använda den här funktionen anger du ett tjänsttaggnamn för adressprefixparametern i vägtabellkommandon. I Powershell kan du till exempel skapa en ny väg för att dirigera trafik som skickas till ett IP-Azure Storage-prefix till en virtuell installation med hjälp av: </br></br>
 
 ```azurepowershell-interactive
 New-AzRouteConfig -Name "StorageRoute" -AddressPrefix "Storage" -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.100.4"
 ```
 
-Samma kommando för CLI är: </br>
+Samma kommando för CLI blir: </br>
 
 ```azurecli-interactive
 az network route-table route create -g MyResourceGroup --route-table-name MyRouteTable -n StorageRoute --address-prefix Storage --next-hop-type VirtualAppliance --next-hop-ip-address 10.0.100.4
 ```
 </br>
 
+#### <a name="known-issues-april-2021"></a>Kända problem (april 2021)
+
+När det finns BGP-vägar eller om en tjänstslutpunkt har konfigurerats i undernätet kan det hända att vägarna inte utvärderas med rätt prioritet. En korrigering för dessa scenarier pågår för närvarande </br>
+
 
 > [!NOTE] 
-> I offentlig för hands version finns det flera begränsningar. Funktionen stöds för närvarande inte i Azure-portalen och är bara tillgänglig via PowerShell och CLI. Det finns inget stöd för användning med behållare. 
+> I den offentliga förhandsversionen finns det flera begränsningar. Funktionen stöds inte för närvarande i Azure Portal och är endast tillgänglig via Powershell och CLI. Det finns inget stöd för användning med containrar. 
 
 ## <a name="next-hop-types-across-azure-tools"></a>Nästa hopptyper i Azure-verktyg
 
@@ -148,12 +152,12 @@ Namnet som visas och refereras för nästa hopptyper är olika för Azure-portal
 
 En lokal nätverksgateway kan utbyta vägar med en virtuell nätverksgateway i Azure med BGP (Border Gateway Protocol). Användningen av BGP med en virtuell nätverksgateway i Azure beror på den typ du valde när du skapade gatewayen. Om den typ du valt var:
 
-* **ExpressRoute**: du måste använda BGP för att annonsera lokala vägar till Microsoft Edge-routern. Du kan inte skapa användardefinierade vägar för att tvinga trafik till den virtuella ExpressRoute-nätverksgatewayen om du distribuerar en virtuell nätverksgateway som distribueras som typen: ExpressRoute. Du kan använda användardefinierade vägar för att tvinga trafik från Express Route till exempelvis en virtuell nätverksinstallation.<br>
+* **ExpressRoute:** Du måste använda BGP för att annonsera lokala vägar till Microsoft Edge router. Du kan inte skapa användardefinierade vägar för att tvinga trafik till den virtuella ExpressRoute-nätverksgatewayen om du distribuerar en virtuell nätverksgateway som distribueras som typen: ExpressRoute. Du kan använda användardefinierade vägar för att tvinga trafik från Express Route till exempelvis en virtuell nätverksinstallation.<br>
 * **VPN**: Du kan eventuellt använda BGP. Mer information finns i [BGP with site-to-site VPN connections](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (BGP med plats-till-plats-VPN-anslutningar).
 
 När du skickar vägar till Azure med hjälp av BGP läggs en separat väg till i routningstabellen för alla undernät i ett virtuellt nätverk för varje annonserat prefix. Vägen läggs till med *Virtuell nätverksgateway* angiven som källa och nästa hopptyp. 
 
-För-och VPN Gateway väg spridningen kan inaktive ras på ett undernät med hjälp av en egenskap i en routningstabell. När du utbyter vägar med Azure med hjälp av BGP läggs inte vägar till i routningstabellen för alla undernät med Routning av virtuell nätverks-Gateway-spridning inaktiverat. Anslutningar via VPN uppnås med hjälp av [anpassade vägar](#custom-routes) där nästa hopp har typen *Virtual network gateway* (gateway för virtuellt nätverk). **Väg spridning bör inte inaktive ras på GatewaySubnet. Gatewayen kommer inte att fungera med den här inställningen inaktive rad.** Mer information finns i [så här inaktiverar du routning av virtuell nätverks-Gateway](manage-route-table.md#create-a-route-table).
+ER och VPN Gateway kan inaktiveras i ett undernät med hjälp av en egenskap i en vägtabell. När du utbyter vägar med Azure med hjälp av BGP läggs inte vägar till i vägtabellen för alla undernät med vägspridning för virtuell nätverksgateway inaktiverad. Anslutningar via VPN uppnås med hjälp av [anpassade vägar](#custom-routes) där nästa hopp har typen *Virtual network gateway* (gateway för virtuellt nätverk). **Vägspridning ska inte inaktiveras på GatewaySubnet. Gatewayen fungerar inte med den här inställningen inaktiverad.** Mer information finns i [Så här inaktiverar du spridning av vägspridning för virtuell nätverksgateway.](manage-route-table.md#create-a-route-table)
 
 ## <a name="how-azure-selects-a-route"></a>Hur Azure väljer en väg
 
@@ -174,7 +178,7 @@ Till exempel innehåller en routningstabell följande vägar:
 |Källa   |Adressprefix  |Nästa hopptyp           |
 |---------|---------         |-------                 |
 |Standard  | 0.0.0.0/0        |Internet                |
-|User     | 0.0.0.0/0        |Virtuell nätverksgateway |
+|Användare     | 0.0.0.0/0        |Virtuell nätverksgateway |
 
 När trafik är avsedd för en IP-adress utanför adressprefixen till andra vägar i routningstabellen väljer Azure vägen med källan **Användare** eftersom användardefinierade vägar har högre prioritet än systemstandardvägar.
 
@@ -201,7 +205,7 @@ När du åsidosätter adressprefixet 0.0.0.0/0 sker följande ändringar med Azu
 
 Om ditt virtuella nätverk är anslutet till en Azure VPN-gateway, associerar du inte en routingtabell till det [gatewayundernät](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) som innehåller en väg med målet 0.0.0.0/0. Om du gör det så förhindrar du gatewayen från att fungera korrekt. Mer information finns i frågan som rör *varför vissa portar är öppna på en VPN-gateway* i [vanliga frågor och svar om VPN Gateway](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gatewayports).
 
-Se [DMZ mellan Azure och ditt lokala data Center](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) för implementerings information när du använder virtuella nätverksgateway mellan Internet och Azure.
+Se [DMZ mellan Azure och ditt lokala datacenter för](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) implementeringsinformation när du använder virtuella nätverksgatewayer mellan Internet och Azure.
 
 ## <a name="routing-example"></a>Exempel på dirigering
 
@@ -244,24 +248,24 @@ Routningstabellen för *Subnet1* på bilden innehåller följande vägar:
 |ID  |Källa |Tillstånd  |Adressprefix    |Nästa hopptyp          |Nästa hopp-IP-adress|Namn på användardefinierad väg| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |Standardvärde|Ogiltig|10.0.0.0/16         |Virtuellt nätverk        |                   |              |
-|2   |User   |Aktiv |10.0.0.0/16         |Virtuell installation      |10.0.100.4         |Inom-VNet1  |
-|3   |User   |Aktiv |10.0.0.0/24         |Virtuellt nätverk        |                   |Inom-Subnet1|
+|2   |Användare   |Aktiv |10.0.0.0/16         |Virtuell installation      |10.0.100.4         |Inom-VNet1  |
+|3   |Användare   |Aktiv |10.0.0.0/24         |Virtuellt nätverk        |                   |Inom-Subnet1|
 |4   |Standardvärde|Ogiltig|10.1.0.0/16         |VNet-peering           |                   |              |
 |5   |Standardvärde|Ogiltig|10.2.0.0/16         |VNet-peering           |                   |              |
-|6   |User   |Aktiv |10.1.0.0/16         |Inget                   |                   |ToVNet2-1-Drop|
-|7   |User   |Aktiv |10.2.0.0/16         |Inget                   |                   |ToVNet2-2-Drop|
+|6   |Användare   |Aktiv |10.1.0.0/16         |Inget                   |                   |ToVNet2-1-Drop|
+|7   |Användare   |Aktiv |10.2.0.0/16         |Inget                   |                   |ToVNet2-2-Drop|
 |8   |Standardvärde|Ogiltig|10.10.0.0/16        |Virtuell nätverksgateway|[X.X.X.X]          |              |
-|9   |User   |Aktiv |10.10.0.0/16        |Virtuell installation      |10.0.100.4         |Till lokalt    |
+|9   |Användare   |Aktiv |10.10.0.0/16        |Virtuell installation      |10.0.100.4         |Till lokalt    |
 |10  |Standard|Aktiv |[X.X.X.X]           |VirtualNetworkServiceEndpoint    |         |              |
 |11  |Standardvärde|Ogiltig|0.0.0.0/0           |Internet               |                   |              |
-|12  |User   |Aktiv |0.0.0.0/0           |Virtuell installation      |10.0.100.4         |Standard-NVA   |
+|12  |Användare   |Aktiv |0.0.0.0/0           |Virtuell installation      |10.0.100.4         |Standard-NVA   |
 
 En förklaring av varje väg-ID följer:
 
 1. Azure la automatiskt till den här vägen för alla undernät i *Virtual-network-1*, eftersom 10.0.0.0/16 är det enda adressintervall som definierats i adressutrymmet för det virtuella nätverket. Om den användardefinierade vägen i väg ID2 inte hade skapats skulle trafik som skickades till en adress mellan 10.0.0.1 och 10.0.255.254 dirigeras inom det virtuella nätverket, eftersom prefixet är längre än 0.0.0.0/0, och inte inom de andra vägarnas adressprefix. Azure ändrade automatiskt tillståndet från *Aktiv* till *Ogiltig*, när ID2, en användardefinierad väg, lades till, eftersom den har samma prefix som standardvägen och användardefinierade vägar åsidosätter standardvägar. Vägens tillstånd är fortfarande *Aktiv* för *Subnet2*, eftersom routningstabellen som den användardefinierade vägen ID2 finns i inte är kopplad till *Subnet2*.
 2. Den här vägen lades till i Azure när en användardefinierad väg för adressprefixet 10.0.0.0/16 associerades till undernätet *Subnet1* i det virtuella nätverket *Virtual-network-1*. Den användardefinierade vägen anger 10.0.100.4 som IP-adress för den virtuella installationen, eftersom adressen är den privata IP-adress som tilldelats den virtuella installationens virtuella dator. Vägtabellen som den här vägen finns i var inte associerad till *Subnet2*, så den visas inte i routningstabellen för *Subnet2*. Den här vägen åsidosätter standardvägen för prefixet 10.0.0.0/16 (ID1), som automatiskt dirigerade trafik adresserad till 10.0.0.1 och 10.0.255.254 i det virtuella nätverket via det virtuella nätverkets nästa hopptyp. Den här vägen finns för att uppfylla [krav](#requirements) 3 för att tvinga all utgående trafik via en virtuell installation.
 3. Den här vägen lades till i Azure när en användardefinierad väg för adressprefixet 10.0.0.0/24 associerades till undernätet *Subnet1*. Trafik till adresser mellan 10.0.0.1 och 10.0.0.254 stannar kvar i undernätet, istället för att dirigeras till den virtuella installation som anges i den föregående regeln (ID2), eftersom det har ett längre prefix än ID2-vägen. Den här vägen var inte associerad till *Subnet2*, så vägen visas inte i routningstabellen för *Subnet2*. Den här vägen åsidosätter effektivt ID2-vägen för trafik i *Subnet1*. Den här vägen finns för att uppfylla [krav](#requirements) 3.
-4. Azure la automatiskt till den här vägarna i IDs 4 och 5 för alla undernät i *Virtual-network-1* när det virtuella nätverket var peerkopplat med *Virtual-network-2.* *Virtual-network-2* har två adressintervall i sitt adressutrymme: 10.1.0.0/16 och 10.2.0.0/16, så Azure la till en väg för varje intervall. Om de användardefinierade vägarna i väg iDs 6 och 7 inte hade skapats skulle trafik som skickades till en adress mellan 10.1.0.1-10.1.255.254 och 10.2.0.1-10.2.255.254 dirigeras inom det peer-kopplade virtuella nätverket, eftersom prefixet är längre än 0.0.0.0/0, och inte inom de andra vägarnas adressprefix. Azure ändrade automatiskt tillståndet från *Aktiv* till *Ogiltig* när vägarna i IDs 6 och 7 lades till, eftersom de har samma prefix som vägarna i IDs 4 och 5, och användardefinierade vägar åsidosätter standardvägar. Status för vägarna i ID 4 och 5 är fortfarande *aktiva* för *Subnet2*, eftersom routningstabellen som de användardefinierade vägarna i ID 6 och 7 är i inte är kopplad till *Subnet2*. En virtuell nätverkspeering har skapats för att uppfylla [krav](#requirements) 1.
+4. Azure la automatiskt till den här vägarna i IDs 4 och 5 för alla undernät i *Virtual-network-1* när det virtuella nätverket var peerkopplat med *Virtual-network-2.* *Virtual-network-2* har två adressintervall i sitt adressutrymme: 10.1.0.0/16 och 10.2.0.0/16, så Azure la till en väg för varje intervall. Om de användardefinierade vägarna i väg iDs 6 och 7 inte hade skapats skulle trafik som skickades till en adress mellan 10.1.0.1-10.1.255.254 och 10.2.0.1-10.2.255.254 dirigeras inom det peer-kopplade virtuella nätverket, eftersom prefixet är längre än 0.0.0.0/0, och inte inom de andra vägarnas adressprefix. Azure ändrade automatiskt tillståndet från *Aktiv* till *Ogiltig* när vägarna i IDs 6 och 7 lades till, eftersom de har samma prefix som vägarna i IDs 4 och 5, och användardefinierade vägar åsidosätter standardvägar. Tillståndet för vägarna i IDs 4 och  5 är fortfarande Aktiv för *Subnet2*, eftersom den vägtabell som de användardefinierade vägarna i IDs 6 och 7 finns i inte är associerad med *Subnet2*. En virtuell nätverkspeering har skapats för att uppfylla [krav](#requirements) 1.
 5. Samma förklaring som ID4.
 6. Azure la till den här vägen och vägen i ID7, när användardefinierade vägar för adressprefixen 10.1.0.0/16 och 10.2.0.0/16 kopplades till undernätet *Subnet1*. Trafik till adresser mellan 10.1.0.1-10.1.255.254 och 10.2.0.1-10.2.255.254 tas bort av Azure, istället för att den dirigeras till det peer-kopplade virtuella nätverket, eftersom användardefinierade vägar åsidosätter standardvägar. De här vägarna var inte associerade till *Subnet2*, så de visas inte i routningstabellen för *Subnet2*. Vägarna åsidosätter vägarna ID4 och ID5 för trafik som lämnar *Subnet1*. Vägarna ID6 och ID7 finns för att uppfylla [krav](#requirements) 3 för att ta bort trafik som är avsedd för det andra virtuella nätverket.
 7. Samma förklaring som ID6.
@@ -286,7 +290,7 @@ Routningstabellen för *Subnet2* på bilden innehåller följande vägar:
 |Standard |Aktiv |100.64.0.0/10       |Inget                      |                   |
 |Standard |Aktiv |192.168.0.0/16      |Inget                      |                   |
 
-Routningstabellen för *Subnet2* innehåller alla Azure-skapade standardvägar och den valfria VNet-peeringen och de valfria vägarna för virtuell nätverksgateway. Azure la till de valfria vägarna till alla undernät i det virtuella nätverket när gatewayen och peeringen lades till i det virtuella nätverket. Azure tog bort vägarna för adresserna 10.0.0.0/8, 192.168.0.0/16 och 100.64.0.0/10 från *Subnet1* Route-tabellen när den användardefinierade vägen för adressprefixet 0.0.0.0/0 lades till i *Subnet1*.  
+Routningstabellen för *Subnet2* innehåller alla Azure-skapade standardvägar och den valfria VNet-peeringen och de valfria vägarna för virtuell nätverksgateway. Azure la till de valfria vägarna till alla undernät i det virtuella nätverket när gatewayen och peeringen lades till i det virtuella nätverket. Azure tog bort vägarna för adressprefixen 10.0.0.0/8, 192.168.0.0/16 och 100.64.0.0/10 från *subnet1-vägtabellen* när den användardefinierade vägen för adressprefixet 0.0.0.0/0 lades till i *Subnet1*.  
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -1,26 +1,26 @@
 ---
-title: Inbyggda princip definitioner för Azure våren Cloud
-description: Visar Azure Policy inbyggda princip definitioner för Azure våren Cloud. Dessa inbyggda princip definitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 03/31/2021
+title: Inbyggda principdefinitioner för Azure Spring Cloud
+description: Visar Azure Policy inbyggda principdefinitioner för Azure Spring Cloud. Dessa inbyggda principdefinitioner ger vanliga metoder för att hantera dina Azure-resurser.
+ms.date: 04/14/2021
 ms.topic: reference
 author: bmitchell287
 ms.author: brendm
 ms.service: spring-cloud
 ms.custom: subject-policy-reference, devx-track-java
-ms.openlocfilehash: 151c5c87b25e5dbbfc44d41fdecf33015225ce9e
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 9432392dc99d9c2df340b47827c0014e4198b713
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096093"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499333"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-spring-cloud"></a>Azure Policy inbyggda definitioner för Azure våren Cloud
+# <a name="azure-policy-built-in-definitions-for-azure-spring-cloud"></a>Azure Policy inbyggda definitioner för Azure Spring Cloud
 
 **Den här artikeln gäller för:** ✔️ Java ✔️ C #
 
-Den här sidan är ett index över [Azure policy](../governance/policy/overview.md) inbyggda princip definitioner för Azure våren Cloud. Ytterligare Azure Policy inbyggda program för andra tjänster finns i [Azure policy inbyggda definitioner](../governance/policy/samples/built-in-policies.md).
+Den här sidan är ett index [Azure Policy](../governance/policy/overview.md) inbyggda principdefinitioner för Azure Spring Cloud. Ytterligare Azure Policy inbyggda funktioner för andra tjänster finns i [Azure Policy inbyggda definitionerna](../governance/policy/samples/built-in-policies.md).
 
-Namnet på varje inbyggd princip definition länkar till princip definitionen i Azure Portal. Använd länken i kolumnen **version** om du vill visa källan på [Azure policy GitHub-lagrings platsen](https://github.com/Azure/azure-policy).
+Namnet på varje inbyggd principdefinition länkar till principdefinitionen i Azure Portal. Använd länken i kolumnen **Version för** att visa källan på Azure Policy [GitHub-lagringsplatsen](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-spring-cloud"></a>Azure Spring Cloud
 
