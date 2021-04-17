@@ -1,6 +1,6 @@
 ---
-title: Självstudie – Använd OpenSSL för att skapa självsignerade certifikat för Azure IoT Hub | Microsoft Docs
-description: Självstudie – Använd OpenSSL för att skapa självsignerade X. 509-certifikat för Azure IoT Hub
+title: Självstudie – Använda OpenSSL för att skapa själv signerade certifikat för Azure IoT Hub | Microsoft Docs
+description: Självstudie – Använda OpenSSL för att skapa själv signerade X.509-certifikat för Azure IoT Hub
 author: v-gpettibone
 manager: philmea
 ms.service: iot-hub
@@ -12,17 +12,16 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-- devx-track-azurecli
-ms.openlocfilehash: 82ef2e39d5d04914e1086e0b25ccbc8e5c7c762e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 982e402946cbd71d946bc1e316cef99621c536a3
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105630772"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378201"
 ---
-# <a name="tutorial-using-openssl-to-create-self-signed-certificates"></a>Självstudie: använda OpenSSL för att skapa självsignerade certifikat
+# <a name="tutorial-using-openssl-to-create-self-signed-certificates"></a>Självstudie: Använda OpenSSL för att skapa själv signerade certifikat
 
-Du kan autentisera en enhet till din IoT Hub att använda två självsignerade enhets certifikat. Det kallas ibland för tumavtryck-autentisering eftersom certifikaten innehåller tumavtrycken (hash-värden) som du skickar till IoT-hubben. Följande steg beskriver hur du skapar två självsignerade certifikat.
+Du kan autentisera en enhet till IoT Hub med hjälp av två själv signerade enhetscertifikat. Detta kallas ibland tumavtrycksautentisering eftersom certifikaten innehåller tumavtryck (hash-värden) som du skickar till IoT-hubben. Följande steg visar hur du skapar två själv signerade certifikat.
 
 ## <a name="step-1---create-a-key-for-the-first-certificate"></a>Steg 1 – Skapa en nyckel för det första certifikatet
 
@@ -32,7 +31,7 @@ openssl genpkey -out device1.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048
 
 ## <a name="step-2---create-a-csr-for-the-first-certificate"></a>Steg 2 – Skapa en CSR för det första certifikatet
 
-Se till att du anger enhets-ID när du uppmanas till det.
+Se till att du anger enhets-ID när du uppmanas att göra det.
 
 ```bash
 openssl req -new -key device1.key -out device1.csr
@@ -47,21 +46,21 @@ Email Address []:
 
 ```
 
-## <a name="step-3---check-the-csr"></a>Steg 3 – kontrol lera CSR
+## <a name="step-3---check-the-csr"></a>Steg 3 – Kontrollera CSR
 
 ```bash
 openssl req -text -in device1.csr -noout
 ```
 
-## <a name="step-4---self-sign-certificate-1"></a>Steg 4 – självsignerat certifikat 1
+## <a name="step-4---self-sign-certificate-1"></a>Steg 4 – Självcertifikat 1
 
 ```bash
 openssl x509 -req -days 365 -in device1.csr -signkey device1.key -out device.crt
 ```
 
-## <a name="step-5---create-a-key-for-certificate-2"></a>Steg 5 – skapa en nyckel för certifikat 2
+## <a name="step-5---create-a-key-for-certificate-2"></a>Steg 5 – Skapa en nyckel för certifikat 2
 
-När du uppmanas anger du samma enhets-ID som du använde för certifikat 1.
+När du uppmanas till det anger du samma enhets-ID som du använde för certifikat 1.
 
 ```bash
 openssl req -new -key device2.key -out device2.csr
@@ -76,7 +75,7 @@ Email Address []:
 
 ```
 
-## <a name="step-6---self-sign-certificate-2"></a>Steg 6 – självsignera certifikat 2
+## <a name="step-6---self-sign-certificate-2"></a>Steg 6 – Självcertifikat 2
 
 ```bash
 openssl x509 -req -days 365 -in device2.csr -signkey device2.key -out device2.crt
@@ -94,14 +93,14 @@ openssl x509 -in device.crt -text -fingerprint
 openssl x509 -in device2.crt -text -fingerprint
 ```
 
-## <a name="step-9---create-a-new-iot-device"></a>Steg 9 – skapa en ny IoT-enhet
+## <a name="step-9---create-a-new-iot-device"></a>Steg 9 – Skapa en ny IoT-enhet
 
-Navigera till IoT Hub i Azure Portal och skapa en ny IoT-enhets identitet med följande egenskaper:
+Gå till IoT Hub i Azure Portal och skapa en ny IoT-enhetsidentitet med följande egenskaper:
 
-* Ange **enhets-ID: t** som matchar ämnes namnet för dina två certifikat.
-* Välj den **självsignerade X. 509-** autentiseringstypen.
-* Klistra in den hex-sträng tumavtrycken som du kopierade från enhetens primära och sekundära certifikat. Se till att hex-strängarna inte har några kolon-avgränsare.
+* Ange det **enhets-ID** som matchar ämnesnamnet för dina två certifikat.
+* Välj **autentiseringstypen X.509 Med själv** signering.
+* Klistra in tumavtrycken för hexsträngen som du kopierade från enhetens primära och sekundära certifikat. Kontrollera att hexadexsträngarna inte har några kolonavgränsare.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Gå till [testa certifikatautentisering](tutorial-x509-test-certificate.md) för att avgöra om ditt certifikat kan autentisera din enhet till din IoT Hub.
+Gå till [Testa certifikatautentisering](tutorial-x509-test-certificate.md) för att avgöra om certifikatet kan autentisera enheten till IoT Hub.

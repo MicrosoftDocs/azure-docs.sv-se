@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92cfa5b2e399811754b57bda64569753ccfa6be8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1e37b2de2a3d4be0250d3e900fe48a36e45240e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668766"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309568"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (stora instanser) nätverks arkitektur
 
@@ -186,7 +186,7 @@ Data som överförs mellan HANA stor instans och virtuella datorer är inte kryp
 
 ## <a name="use-hana-large-instance-units-in-multiple-regions"></a>Använd HANA-stora instans enheter i flera regioner
 
-Om du vill använda UPS för haveri beredskap måste du ha SHANA stora instans enheter i flera Azure-regioner. Även om du använder Azure [global VNet-peering], fungerar inte den transitiva routning som standard mellan HANA-instanser med stora instanser i två olika regioner. Global Reach öppnar dock kommunikations vägen mellan de HANA-stora instans enheter som du har etablerad i två olika regioner. Det här användnings scenariot för ExpressRoute Global Reach möjliggör:
+Om du vill aktivera haveri beredskap, måste du ha HANA stor instans enheter i flera Azure-regioner. Även om du använder Azure [global VNet-peering], fungerar inte den transitiva routning som standard mellan HANA-instanser med stora instanser i två olika regioner. Global Reach öppnar dock kommunikations vägen mellan de HANA-stora instans enheter som du har etablerad i två olika regioner. Det här användnings scenariot för ExpressRoute Global Reach möjliggör:
 
  - HANA-systemreplikering utan ytterligare proxyservrar eller brand väggar
  - Kopiera säkerhets kopior mellan HANA-stora instans enheter i två olika regioner för att utföra system kopior eller systemuppdateringar

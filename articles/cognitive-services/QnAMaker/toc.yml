@@ -8,11 +8,11 @@
       href: whats-new.md
 - name: Snabbstarter
   items:
-    - name: Skapa och fråga kunskaps databas
+    - name: Skapa och fråga kunskapsbas
       items:
         - name: QnA Maker-portalen
           href: Quickstarts/create-publish-knowledge-base.md
-        - name: Klient bibliotek eller REST API
+        - name: Klientbibliotek eller REST API
           href: Quickstarts/quickstart-sdk.md
 - name: Självstudier
   items:
@@ -52,11 +52,11 @@
         - name: Konfigurera QnA Maker resurser
           href: How-To/set-up-qnamaker-service-azure.md
           displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: Hantera QnA Maker resurs åtkomst
+        - name: Hantera åtkomst QnA Maker resurs
           href: How-To/manage-qna-maker-app.md
         - name: Konfigurera QnA Maker resurser
           href: How-To/configure-qna-maker-resources.md
-        - name: Nätverks isolering för Azure-resurser
+        - name: Nätverksisolering för Azure-resurser
           href: How-To/network-isolation.md
     - name: Hantera kunskapsbas
       items:
@@ -67,7 +67,7 @@
         - name: Migrera till en ny kunskapsbas
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: Testa kunskaps bas
+        - name: Testa kunskapsbas
           href: How-To/test-knowledge-base.md
     - name: Hantera QnA-par
       items:
@@ -82,18 +82,26 @@
           href: How-To/change-default-answer.md
     - name: Fråga kunskapsbas
       items:
-        - name: 'Fråga med REST API: er'
+        - name: 'Fråga med REST-API:er'
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-        - name: Använda GenerateAnswer-API
+        - name: 'Använda API:et GenerateAnswer'
           href: How-To/metadata-generateanswer-usage.md
           displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
-        - name: Filtrera kring efter metadata
+        - name: 'Filtrera QnA:er efter metadata'
           href: How-To/query-knowledge-base-with-metadata.md
-    - name: Få förslag på alternativa frågor via aktiva utbildningar
+    - name: Få förslag på alternativa frågor via aktiv inlärning
       href: How-to/improve-knowledge-base.md
       displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
     - name: Analys och telemetri
       href: How-To/get-analytics-knowledge-base.md
+    - name: Företagsberedskap
+      items:
+        - name: Konfigurera virtuella nätverk
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/qnamaker/context/context
+        - name: Använda kund hanterade nycklar
+          href: encrypt-data-at-rest.md
+        - name: Använda Azure AD-autentisering
+          href: ../authentication.md?context=/azure/cognitive-services/qnamaker/context/context
 - name: Referens
   items:
     - name: Stöd för språk
@@ -167,12 +175,14 @@
               href: 'https://rubygems.org/gems/azure_cognitiveservices_qnamaker'
 - name: Resurser
   items:
+    - name: Företagsberedskap
+      items:
+        - name: Stöd för regioner
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Efterlevnad och certifiering
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/qnamaker/context/context
-    - name: Regional tillgänglighet
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Efterlevnad
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure-översikt
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Priser och begränsningar

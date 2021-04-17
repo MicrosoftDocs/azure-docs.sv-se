@@ -7,14 +7,14 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 04/15/2021
-ms.openlocfilehash: b9d6ca88d5e9d49d3973193059197a1aa171e3e8
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 61de2cf2e3ad9175d97378234d62f72ab3517b51
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568708"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587841"
 ---
-# <a name="create-resource-set-pattern-rules"></a>Skapa regler för resursuppsättningsmönster
+# <a name="create-resource-set-pattern-rules"></a>Skapa mönsterregler för resursuppsättning
 
 Databehandlingssystem i stor skala lagrar vanligtvis en enda tabell på en disk som flera filer. Det här konceptet representeras i Azure Purview med hjälp av resursuppsättningar. En resursuppsättning är ett enda objekt i datakatalogen som representerar ett stort antal tillgångar i lagringen. Mer information finns i Förstå [resursuppsättningar.](concept-resource-sets.md)
 
@@ -38,29 +38,32 @@ Följ stegen nedan för att skapa en ny regel för resursuppsättningsmönster:
 
    :::image type="content" source="media/how-to-resource-set-pattern-rules/create-new-scoped-resource-set-scope.png" alt-text="Skapa regelkonfigurationer för resursuppsättningsmönster" border="true":::
 
-1. Om du vill ange en regel för ett konfigurationsomfång väljer **du + Ny regel**.
+1. Om du vill ange en regel för ett konfigurationsomfång väljer **du + Ny regel.**
 
 1. Ange i följande fält för att skapa en regel:
 
    1. **Regelnamn:** Namnet på konfigurationsregeln. Det här fältet har ingen effekt på de tillgångar som regeln gäller för.
 
-   1. **Kvalificerat namn:** En kvalificerad sökväg som använder en kombination av text, dynamiska ersättare och statiska ersättare för att matcha tillgångar med konfigurationsregeln. Den här sökvägen är relativ till omfånget för konfigurationsregeln. Se [syntaxavsnittet](#syntax) nedan för detaljerade anvisningar om hur du anger kvalificerade namn.
+   1. **Kvalificerat namn:** En kvalificerad sökväg som använder en kombination av text, dynamiska ersättare och statiska ersättare för att matcha tillgångar med konfigurationsregeln. Den här sökvägen är relativ till konfigurationsregelns omfång. Se [syntaxavsnittet](#syntax) nedan för detaljerade anvisningar om hur du anger kvalificerade namn.
 
    1. **Visningsnamn:** Tillgångens visningsnamn. Det här fältet är valfritt. Använd oformaterad text och statiska ersättare för att anpassa hur en tillgång visas i katalogen. Mer detaljerade anvisningar finns i [syntaxavsnittet](#syntax) nedan.
 
-   1. **Gruppera inte som resursuppsättning:** Om den är aktiverad grupperas inte matchade resurser i en resursuppsättning.
+   1. **Gruppera inte som resursuppsättning:** Om den här inställningen är aktiverad grupperas inte matchade resurser i en resursuppsättning.
 
       :::image type="content" source="media/how-to-resource-set-pattern-rules/scoped-resource-set-rule-example.png" alt-text="Skapa en ny konfigurationsregel." border="true":::
 
 1. Spara regeln genom att klicka på Lägg **till**.
 
+> [!NOTE]
+> När en mönsterregel har skapats tillämpar alla nya genomsökningar regeln under inmatningen. Befintliga tillgångar i datakatalogen uppdateras via en bakgrundsprocess som kan ta upp till några timmar. 
+
 ## <a name="pattern-rule-syntax"></a><a name="syntax"></a> Syntax för mönsterregel
 
 När du skapar regler för resursuppsättningsmönster använder du följande syntax för att ange vilka tillgångsregler som gäller för.
 
-### <a name="dynamic-replacers-single-brackets"></a>Dynamiska ersättare (hakparenteser)
+### <a name="dynamic-replacers-single-brackets"></a>Dynamiska ersättare (enkla hakparenteser)
 
-Enkla hakparenteser används **som dynamiska ersättare** i mönsterregler. Ange en dynamisk ersättning i det kvalificerade namnet med formatet `{<replacerName:<replacerType>}` . Om de matchas används dynamiska ersättare som ett grupperingsvillkor som anger att tillgångar ska representeras som en resursuppsättning. Om tillgångarna är grupperade i en resursuppsättning skulle den kvalificerade sökvägen för resursuppsättningen innehålla `{replacerName}` den plats där ersättaren har angetts.
+Enkla hakparenteser används **som dynamiska ersättare** i ett mönster. Ange en dynamisk ersättning i det kvalificerade namnet med formatet `{<replacerName:<replacerType>}` . Om de matchas används dynamiska ersättare som ett grupperingsvillkor som anger att tillgångar ska representeras som en resursuppsättning. Om tillgångarna är grupperade i en resursuppsättning skulle den kvalificerade sökvägen för resursuppsättningen innehålla `{replacerName}` den plats där ersättaren har angetts.
 
 Om till exempel två tillgångar och `folder1/file-1.csv` `folder2/file-2.csv` matchas mot regeln `{folder:string}/file-{NUM:int}.csv` är resursuppsättningen en enda entitet `{folder}/file-{NUM}.csv` .
 
@@ -72,7 +75,7 @@ Om *Gruppera inte som resursuppsättning har* aktiverats för en mönsterregel �
 
 Dubbla hakparenteser används **som statiska ersättare** i det kvalificerade namnet på en mönsterregel. Ange en statisk ersättning i det kvalificerade namnet med formatet `{{<replacerName>:<replacerType>}}` . Om de matchas skapar varje uppsättning unika statiska ersättningarvärden olika resursuppsättningsgrupper.
 
-Om till exempel två tillgångar `folder1/file-1.csv` och `folder2/file-2.csv` matchas mot regeln `{{folder:string}}/file-{NUM:int}.csv` skapas två resursuppsättningar och `folder1/file-{NUM}.csv` `folder2/file-{NUM}.csv` .
+Om till exempel två tillgångar och `folder1/file-1.csv` `folder2/file-2.csv` matchas mot regeln `{{folder:string}}/file-{NUM:int}.csv` skapas två resursuppsättningar `folder1/file-{NUM}.csv` och `folder2/file-{NUM}.csv` .
 
 Statiska ersättare kan användas för att ange visningsnamnet för en tillgång som matchar en mönsterregel. Om `{{<replacerName>}}` du använder i visningsnamnet för en regel används det matchade värdet i tillgångsnamnet.
 
@@ -89,7 +92,7 @@ Nedan visas tillgängliga typer som kan användas i statiska och dynamiska ersä
 | time | En serie med 4 eller 6 0–9 ASCII-tecken med valfritt avgränsare: HHmm, HH:mm, HHmmss, HH:mm:ss som anges i [RFC 3339](https://tools.ietf.org/html/rfc3339). |
 | timestamp | En serie med 12 eller 14 0–9 ASCII-tecken med valfritt avgränsare: yyyy-mm-ddTHH:mm, yyyymmddhhmm, yyyy-mm-ddTHH:mm:ss, yyyymmddHHmmss som anges i [RFC 3339](https://tools.ietf.org/html/rfc3339). |
 | boolean | Kan innehålla "true" eller "false", om det inte är känsligt. |
-| antal | En serie med 0 eller fler 0–9 ASCII-tecken kan det vara 0 prefix (t.ex. 0001) följt av en punkt (om du vill) och en serie med 1 eller fler 0–9 ASCII-tecken kan den vara 0 postfixerad (t.ex. .100) |
+| antal | En serie med 0 eller fler 0–9 ASCII-tecken, kan det vara 0 prefix (t.ex. 0001) följt av en punkt (om du vill) och en serie med 1 eller fler 0–9 ASCII-tecken kan den vara 0 postfixerad (t.ex. .100) |
 | hex | En serie med 1 eller fler ASCII-tecken från uppsättningen 0-1 och A-F, värdet kan vara 0 prefix |
 | locale | En sträng som matchar den syntax som anges i [RFC 5646](https://tools.ietf.org/html/rfc5646). |
 
@@ -107,7 +110,7 @@ Nedan visas ordningen på åtgärder för att tillämpa mönsterregler:
 
 ### <a name="example-1"></a>Exempel 1
 
-SAP-datauttrahering till fullständiga indata och deltabelastningar
+SAP-datauttrahering till fullständiga inbelastningar och deltabelastningar
 
 #### <a name="inputs"></a>Indata
 
@@ -168,7 +171,7 @@ Regel 2
 
 **Kvalificerat namn:**`raw/machinename-90/{date:date}/{time:time}-{id:int}.avro`
 
-#### <a name="resource-set-true"></a>*Resursuppsättning: true*
+**Resursuppsättning:** true
 
 #### <a name="outputs"></a>Utdata
 

@@ -1,26 +1,26 @@
 ---
-title: 'Snabb start: bygga en python-app med Azure Cosmos DB SQL API-konto'
+title: 'Snabbstart: Skapa en Python-app med hjälp Azure Cosmos DB SQL API-konto'
 description: Presenterar ett Python-kodexempel som du kan använda för att ansluta till och fråga Azure Cosmos DB SQL API:t
-author: anfeldma-ms
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 09/22/2020
-ms.author: anfeldma
+ms.date: 04/06/2021
+ms.author: rosouz
 ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: fee0591622c1ee07b6e954b3cadc208a300ab6a5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: de05fdc110e653dd63cf098a8b31ffb81b13b1c5
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798790"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365696"
 ---
-# <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Snabb start: bygga ett python-program med ett Azure Cosmos DB SQL API-konto
+# <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Snabbstart: Skapa ett Python-program med ett Azure Cosmos DB SQL API-konto
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
@@ -28,27 +28,28 @@ ms.locfileid: "104798790"
 > * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java SDK v4](create-sql-api-java.md)
 > * [Spring-data v3](create-sql-api-spring-data.md)
+> * [Spark v3-anslutningsapp](create-sql-api-spark.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-I den här snabb starten skapar och hanterar du ett Azure Cosmos DB SQL API-konto från Azure Portal och från Visual Studio Code med en python-app klonad från GitHub. Azure Cosmos DB är en databas tjänst med flera modeller som gör att du snabbt kan skapa och fråga dokument-, tabell-, nyckel värdes-och Graf-databaser med globala funktioner för distribution och horisontell skalning.
+I den här snabbstarten skapar och hanterar du ett Azure Cosmos DB SQL API-konto från Azure Portal och från Visual Studio Code med en Python-app som klonas från GitHub. Azure Cosmos DB är en databastjänst med flera modeller som gör att du snabbt kan skapa och fråga dokument-, tabell-, nyckelvärdes- och grafdatabaser med global distribution och horisontella skalningsfunktioner.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Cosmos DB konto. Du kan välja mellan följande alternativ:
-    * I en Azure Active-prenumeration:
-        * [Skapa ett kostnads fritt Azure-konto](https://azure.microsoft.com/free) eller Använd din befintliga prenumeration 
-        * [Månads krediter för Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers)
-        * [Azure Cosmos DB kostnads fri nivå](./optimize-dev-test.md#azure-cosmos-db-free-tier)
-    * Utan en Azure-aktiv prenumeration:
-        * [Prova Azure Cosmos DB kostnads fritt](https://azure.microsoft.com/try/cosmosdb/), en test miljö som varar i 30 dagar.
+- Ett Cosmos DB konto. Du har följande alternativ:
+    * Inom en aktiv Azure-prenumeration:
+        * [Skapa ett kostnadsfritt Azure-konto](https://azure.microsoft.com/free) eller använd din befintliga prenumeration 
+        * [Visual Studio månadskrediter](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers)
+        * [Azure Cosmos DB kostnadsfri nivå](./optimize-dev-test.md#azure-cosmos-db-free-tier)
+    * Utan en aktiv Azure-prenumeration:
+        * [Prova Azure Cosmos DB utan kostnad](https://azure.microsoft.com/try/cosmosdb/), en testmiljö som varar i 30 dagar.
         * [Azure Cosmos DB-emulator](https://aka.ms/cosmosdb-emulator) 
-- [Python 2,7 eller 3.6 +](https://www.python.org/downloads/), med den `python` körbara filen i din `PATH` .
+- [Python 2.7 eller 3.6+](https://www.python.org/downloads/), med den `python` körbara filen i `PATH` .
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Python-tillägget för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview).
 - [Git](https://www.git-scm.com/downloads). 
-- [Azure Cosmos DB SQL API SDK för python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)
+- [Azure Cosmos DB SQL API SDK för Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)
 
 ## <a name="create-a-database-account"></a>Skapa ett databaskonto
 
@@ -56,24 +57,24 @@ I den här snabb starten skapar och hanterar du ett Azure Cosmos DB SQL API-kont
 
 ## <a name="add-a-container"></a>Lägga till en container
 
-Du kan nu använda Datautforskaren-verktyget i Azure Portal för att skapa en databas och behållare. 
+Nu kan du använda Datautforskaren i Azure Portal för att skapa en databas och container. 
 
-1. Välj **datautforskaren**  >  **ny behållare**. 
+1. Välj **Datautforskaren**  >  **Ny container**. 
     
-    Avsnittet **Lägg till behållare** visas längst till höger. du kan behöva rulla åt höger för att se det.
+    Området **Lägg till** container visas längst till höger. Du kan behöva rulla åt höger för att se det.
 
     :::image type="content" source="./media/create-sql-api-python/azure-cosmosdb-data-explorer.png" alt-text="Datautforskaren på Azure-portalen, fönstret Lägg till container":::
 
-2. På sidan **Lägg till behållare** anger du inställningarna för den nya behållaren.
+2. På sidan **Lägg till container** anger du inställningarna för den nya containern.
 
     |Inställning|Föreslaget värde|Beskrivning
     |---|---|---|
-    |**Databas-ID**|Uppgifter|Ange *Uppgifter* som namn på den nya databasen. Databasnamn måste innehålla 1–255 tecken och får inte innehålla `/, \\, #, ?`, eller avslutande blanksteg. Kontrol lera **data flödes alternativet etablera databas** så att du kan dela det data flöde som har etablerats till databasen över alla behållare i databasen. Det här alternativet hjälper också till med kostnads besparingar. |
-    |**Dataflöde**|400|Lämna data flödet på 400 enheter för programbegäran per sekund (RU/s). Du kan skala upp dataflödet senare om du vill minska svarstiden.| 
-    |**Container-ID**|Poster|Ange *objekt* som namn på den nya behållaren. För container-ID:n gäller samma teckenkrav som för databasnamn.|
-    |**Partitionsnyckel**| /category| Exemplet som beskrivs i den här artikeln använder */Category* som partitionsnyckel.|
+    |**Databas-ID**|Uppgifter|Ange *Uppgifter* som namn på den nya databasen. Databasnamn måste innehålla 1–255 tecken och får inte innehålla `/, \\, #, ?`, eller avslutande blanksteg. Markera alternativet **Etablera databasens dataflöde.** Med det kan du dela dataflödet som etablerats till databasen över alla containrar i databasen. Det här alternativet hjälper också till med kostnadsbesparingar. |
+    |**Dataflöde**|400|Lämna dataflödet på 400 enheter för begäran per sekund (RU/s). Du kan skala upp dataflödet senare om du vill minska svarstiden.| 
+    |**Container-ID**|Poster|Ange *Objekt* som namn på den nya containern. För container-ID:n gäller samma teckenkrav som för databasnamn.|
+    |**Partitionsnyckel**| /category| Exemplet som beskrivs i den här artikeln använder */category* som partitionsnyckel.|
     
-    Förutom de föregående inställningarna kan du också lägga till **unika nycklar** för behållaren. Vi lämnar fältet tomt i det här exemplet. Unika nycklar ger utvecklarna möjlighet att lägga till ett lager med dataintegritet till databasen. Genom att skapa en unik nyckel princip när du skapar en behållare, säkerställer du att ett eller flera värden är unika per partitionsnyckel. Läs mer i artikeln om [unika nycklar i Azure Cosmos DB](unique-keys.md).
+    Förutom de föregående inställningarna kan du även lägga till **Unika nycklar** för containern. Vi lämnar fältet tomt i det här exemplet. Unika nycklar ger utvecklarna möjlighet att lägga till ett lager med dataintegritet till databasen. Genom att skapa en unik nyckelprincip när du skapar en container ser du till att ett eller flera värden per partitionsnyckel är unika. Läs mer i artikeln om [unika nycklar i Azure Cosmos DB](unique-keys.md).
     
     Välj **OK**. Datautforskaren visar den nya databasen och containern.
 
@@ -87,14 +88,14 @@ Du kan nu använda Datautforskaren-verktyget i Azure Portal för att skapa en da
 
 ## <a name="clone-the-sample-application"></a>Klona exempelprogrammet
 
-Nu ska vi klona vi en SQL API-app från GitHub, ange anslutningssträngen och köra appen. I den här snabb starten används version 4 av [python SDK](https://pypi.org/project/azure-cosmos/#history).
+Nu ska vi klona vi en SQL API-app från GitHub, ange anslutningssträngen och köra appen. I den här snabbstarten används version 4 av [Python SDK.](https://pypi.org/project/azure-cosmos/#history)
 
 1. Öppna en kommandotolk, skapa en ny mapp som heter git-samples och stäng sedan kommandotolken.
 
     ```cmd
     md "git-samples"
     ```
-   Om du använder en bash-prompt bör du i stället använda följande kommando:
+   Om du använder en bash-kommandotolk bör du i stället använda följande kommando:
 
    ```bash
    mkdir "git-samples"
@@ -116,29 +117,29 @@ Nu ska vi klona vi en SQL API-app från GitHub, ange anslutningssträngen och k�
 
 Gå nu tillbaka till Azure Portal för att hämta information om din anslutningssträng och kopiera den till appen.
 
-1. I ditt Azure Cosmos DB konto i [Azure Portal](https://portal.azure.com/)väljer du **nycklar** i det vänstra navigerings fältet. Använd kopierings knapparna till höger på skärmen för att kopiera **URI: n** och **primär nyckeln** till filen *cosmos_get_started. py* i nästa steg.
+1. I ditt Azure Cosmos DB-konto [i Azure Portal](https://portal.azure.com/)väljer du **Nycklar i** det vänstra navigeringsfönstret. Använd kopieringsknapparna till höger på skärmen för  att kopiera **URI:en** och primärnyckeln till *filen cosmos_get_started.py* i nästa steg.
 
-    :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Hämta en åtkomst nyckel och en URI i inställningarna för nycklar i Azure Portal":::
+    :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Hämta en åtkomstnyckel och URI i inställningarna för Nycklar i Azure Portal":::
 
-2. Öppna filen *cosmos_get_started. py* i *\Git-samples\azure-Cosmos-DB-python-Getting-Started* i Visual Studio Code.
+2. I Visual Studio Code öppnar du *filen cosmos_get_started.py* i *\git-samples\azure-cosmos-db-python-getting-started*.
 
-3. Kopiera ditt **URI** -värde från portalen (med kopierings knappen) och gör det till värdet för **slut punkts** variabeln i *cosmos_get_started. py*. 
+3. Kopiera ditt **URI-värde** från portalen (med kopieringsknappen)  och gör det till värdet för slutpunktsvariabeln *i cosmos_get_started.py*. 
 
     `endpoint = 'https://FILLME.documents.azure.com',`
 
-4. Kopiera sedan värdet för **primär nyckeln** från portalen och gör det till värdet för **nyckeln** i *cosmos_get_started. py*. Du har nu uppdaterat appen med all information som behövs för kommunikation med Azure Cosmos DB. 
+4. Kopiera sedan **värdet för PRIMÄRNYCKEL** från portalen och gör det till värdet för **nyckeln i** *cosmos_get_started.py*. Du har nu uppdaterat appen med all information som behövs för kommunikation med Azure Cosmos DB. 
 
     `key = 'FILLME'`
 
-5. Spara filen *cosmos_get_started. py* .
+5. Spara filen *cosmos_get_started.py.*
 
 ## <a name="review-the-code"></a>Granska koden
 
-Det här är valfritt. Lär dig mer om databas resurserna som skapats i kod eller gå vidare till [Uppdatera anslutnings strängen](#update-your-connection-string).
+Det här är valfritt. Lär dig mer om databasresurserna som skapats i koden eller gå vidare till [Uppdatera anslutningssträngen](#update-your-connection-string).
 
-Följande kodfragment är alla hämtade från filen *cosmos_get_started. py* .
+Följande kodfragment är alla tagna från *filen cosmos_get_started.py.*
 
-* CosmosClient initieras. Se till att uppdatera värdena "slut punkt" och "nyckel" enligt beskrivningen i avsnittet [Uppdatera anslutnings strängen](#update-your-connection-string) . 
+* CosmosClient initieras. Se till att uppdatera värdena "slutpunkt" och "nyckel" enligt beskrivningen i [avsnittet Uppdatera anslutningssträngen.](#update-your-connection-string) 
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_cosmos_client)]
 
@@ -146,33 +147,33 @@ Följande kodfragment är alla hämtade från filen *cosmos_get_started. py* .
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_database_if_not_exists)]
 
-* En ny behållare skapas med 400 RU/s av [tillhandahållet data flöde](request-units.md). Vi väljer `lastName` som [partitionsnyckel](partitioning-overview.md#choose-partitionkey), vilket gör att vi kan göra effektiva frågor som filtrerar på den här egenskapen. 
+* En ny container skapas med 400 RU/s etablerat [dataflöde](request-units.md). Vi väljer `lastName` som [partitionsnyckel,](partitioning-overview.md#choose-partitionkey)vilket gör att vi kan köra effektiva frågor som filtrerar på den här egenskapen. 
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_container_if_not_exists)]
 
-* Vissa objekt läggs till i containern. Behållare är en samling objekt (JSON-dokument) som kan ha varierande schema. Hjälp metoder ```get_[name]_family_item``` returnerar representationer av en familj som lagras i Azure Cosmos DB som JSON-dokument.
+* Vissa objekt läggs till i containern. Containrar är en samling objekt (JSON-dokument) som kan ha olika scheman. Hjälpmetoderna ```get_[name]_family_item``` returnerar representationer av en familj som lagras i Azure Cosmos DB JSON-dokument.
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_item)]
 
-* Punkt läsningar (nyckel värdes uppslag) utförs med hjälp av `read_item` metoden. Vi skriver ut [avgiften](request-units.md) för varje åtgärd.
+* Punktläsningar (nyckelvärdesuppslag) utförs med hjälp av `read_item` metoden . Vi skriver ut [RU-avgiften](request-units.md) för varje åtgärd.
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=read_item)]
 
-* En fråga utförs med SQL-frågesyntax. Eftersom vi använder nyckel värden i ```lastName``` WHERE-satsen kommer Azure Cosmos DB att effektivt dirigera den här frågan till relevanta partitioner, vilket förbättrar prestandan.
+* En fråga utförs med SQL-frågesyntax. Eftersom vi använder partitionsnyckelvärden i i WHERE-satsen dirigerar Azure Cosmos DB den här frågan effektivt till relevanta ```lastName``` partitioner, vilket förbättrar prestandan.
 
     [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=query_items)]
    
 ## <a name="run-the-app"></a>Kör appen
 
-1. I Visual Studio Code väljer du **Visa**  >  **kommando palett**. 
+1. I Visual Studio Code väljer du **Visa**  >  **kommandopalett.** 
 
 2. I kommandotolken anger du **Python: Välj tolk** och välj sedan den version av Python som ska användas.
 
     Sidfoten i Visual Studio Code uppdateras för att ange vilken tolk som valts. 
 
-3. Välj **Visa**  >  **integrerad Terminal** för att öppna Visual Studio Code Integrated Terminal.
+3. Välj **Visa**  >  **integrerad terminal för** att öppna den Visual Studio Code-integrerade terminalen.
 
-4. Se till att du är i mappen *Azure-Cosmos-DB-python-Startbok* i det integrerade terminalfönstret. Om du inte är det kör du följande kommando för att växla till exempelmappen. 
+4. I det integrerade terminalfönstret ser du till att du befinner dig i mappen *azure-cosmos-db-python-getting-started.* Om du inte är det kör du följande kommando för att växla till exempelmappen. 
 
     ```cmd
     cd "\git-samples\azure-cosmos-db-python-getting-started"`
@@ -192,7 +193,7 @@ Följande kodfragment är alla hämtade från filen *cosmos_get_started. py* .
     python cosmos_get_started.py
     ```
 
-7. Om du vill bekräfta att de nya objekten har skapats och sparats väljer du **datautforskaren**  >  **AzureSampleFamilyDatabase**  >  **objekt** i rutan Azure Portal. Visa de objekt som har skapats. Här är ett exempel på JSON-dokument för Andersen-serien:
+7. Bekräfta att de nya objekten har skapats och sparats genom att Azure Portal på **Datautforskaren**  >  **AzureSampleFamilyDatabase**  >  **Items**. Visa de objekt som har skapats. Här är till exempel ett JSON-exempeldokument för familjen Andersen:
    
    ```json
    {
@@ -234,7 +235,7 @@ Följande kodfragment är alla hämtade från filen *cosmos_get_started. py* .
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du lärt dig hur du skapar ett Azure Cosmos DB-konto, skapar en behållare med hjälp av Datautforskaren och kör en python-app i Visual Studio Code. Du kan nu importera ytterligare data till ditt Azure Cosmos DB-konto. 
+I den här snabbstarten har du lärt dig hur du skapar ett Azure Cosmos DB-konto, skapar en container med Datautforskaren och kör en Python-app i Visual Studio Code. Du kan nu importera ytterligare data till ditt Azure Cosmos DB-konto. 
 
 > [!div class="nextstepaction"]
 > [Importera data till Azure Cosmos DB för användning med SQL API:t](import-data.md)

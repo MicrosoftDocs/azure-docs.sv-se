@@ -6,13 +6,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/14/2021
-ms.openlocfilehash: ac0e088c587132b32f2112d21bce936eac35dc72
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 04/16/2021
+ms.openlocfilehash: 681a3643c04472cc42c1f672f4c9433da30e3955
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515877"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565512"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mappa dataflödets felsökningsläge
 
@@ -22,13 +22,13 @@ ms.locfileid: "107515877"
 
 Azure Data Factory att mappa dataflödets felsökningsläge kan du interaktivt se dataformtransformen medan du skapar och felsöker dina dataflöden. Felsökningssessionen kan användas både i Dataflöde designsessioner och under pipelinefelsökningskörning av dataflöden. Om du vill aktivera felsökningsläget använder du **knappen Dataflöde Felsökning** i det översta fältet på dataflödesarbetsytan eller pipelinearbetsytan när du har dataflödesaktiviteter.
 
-![Skjutreglage för felsökning 1](media/data-flow/debugbutton.png "Skjutreglage för felsökning")
+![Skärmbild som visar var är skjutreglaget för felsökning 1](media/data-flow/debug-button.png)
 
-![Skjutreglage för felsökning 2](media/data-flow/debug-button-4.png "Skjutreglage för felsökning")
+![Skärmbild som visar var är skjutreglaget för felsökning 2](media/data-flow/debug-button-4.png)
 
-När du aktiverar skjutreglaget uppmanas du att välja vilken integration runtime-konfiguration du vill använda. Om AutoResolveIntegrationRuntime väljs, kommer ett kluster med åtta kärnor allmän beräkning med en standardtid på 60 minuter att vara live. Om du vill tillåta fler inaktiva team innan sessionens slut kan du välja en högre TTL-inställning. Mer information om körningar för integrering av dataflöden finns i [Dataflödesprestanda.](concepts-data-flow-performance.md#ir)
+När du aktiverar skjutreglaget uppmanas du att välja vilken Integration Runtime-konfiguration du vill använda. Om AutoResolveIntegrationRuntime väljs, kommer ett kluster med åtta kärnor allmän beräkning med en standardtid på 60 minuter att vara live. Om du vill tillåta fler inaktiva team innan sessionens slut kan du välja en högre TTL-inställning. Mer information om integreringskörningar för dataflöden finns i [Dataflödesprestanda.](concepts-data-flow-performance.md#ir)
 
-![Felsöka val av IR](media/data-flow/debug-new-1.png "Felsöka val av IR")
+![Felsöka val av IR](media/data-flow/debug-new-1.png "Val av felsöknings-IR")
 
 När felsökningsläget är aktiverat skapar du ditt dataflöde interaktivt med ett aktivt Spark-kluster. Sessionen stängs när du inaktiverar felsökningen i Azure Data Factory. Du bör vara medveten om de timavgifter som Azure Databricks debiteras under den tid då felsökningssessionen är aktiverad.
 
@@ -78,9 +78,9 @@ När du testar kopplingar, finns eller sökningsomvandlar ska du se till att du 
 
 ### <a name="quick-actions"></a>Snabbåtgärder
 
-När du ser dataförhandsvisningen kan du generera en snabb transformering för att typcasta, ta bort eller göra en ändring i en kolumn. Klicka på kolumnrubriken och välj sedan något av alternativen i verktygsfältet för förhandsgranskning av data.
+När du ser dataförhandsvisningen kan du generera en snabb transformering för att skriva, ta bort eller ändra en kolumn. Klicka på kolumnrubriken och välj sedan något av alternativen i verktygsfältet för förhandsgranskning av data.
 
-![Skärmbild som visar verktygsfältet för dataförhandsgranskning med alternativ: Typecast, Modify, Statistics och Remove.](media/data-flow/quick-actions1.png "Snabbåtgärder")
+![Skärmbild som visar verktygsfältet för dataförhandsgranskning med alternativ: Typecast, Ändra, Statistik och Ta bort.](media/data-flow/quick-actions1.png "Snabbåtgärder")
 
 När du har valt en ändring uppdateras dataförhandsgranskningen omedelbart. Klicka **på** Bekräfta i det övre högra hörnet för att generera en ny transformering.
 

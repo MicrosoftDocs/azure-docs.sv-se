@@ -1,30 +1,30 @@
 ---
-title: Aktivera disk burst på begäran
-description: Aktivera disk burst på begäran på den hanterade disken.
+title: Aktivera disk bursting på begäran
+description: Aktivera bursting på begäran-disk på den hanterade disken.
 author: albecker1
 ms.author: albecker
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: 733d441705c7c77f0667f88151e96f76975ee0b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 5110e580bada7bb1090b17d6df22a9354622e8e4
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596407"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483154"
 ---
-# <a name="enable-on-demand-bursting"></a>Aktivera burst-överföring på begäran
+# <a name="enable-on-demand-bursting"></a>Aktivera bursting på begäran
 
-Premium-enheter med solid state (SSD) har två tillgängliga burst-modeller; kredit baserad burst-överföring och överföring på begäran. Den här artikeln beskriver hur du växlar till burst-överföring på begäran. Diskar som använder modellen på begäran kan överföras bortom de ursprungliga etablerade målen. Burst-överföring på begäran sker så ofta som det behövs av arbets belastningen, upp till maximalt burst-mål. Burst-överföring på begäran medför ytterligare kostnader.
+Premium SSD (Solid State Drives) har två tillgängliga burst-modeller: kreditbaserad bursting och bursting på begäran. Den här artikeln beskriver hur du växlar till burst-ning på begäran. Diskar som använder modellen på begäran kan burst-brytas bortom sina ursprungliga etablerade mål. Burst-belastningar på begäran sker så ofta arbetsbelastningen behöver, upp till det högsta burst-målet. Burst-ning på begäran medför ytterligare avgifter.
 
-Mer information om disk burst finns i [Managed disk bursting](disk-bursting.md).
+Mer information om disk bursting finns i [Bursting för hanterade diskar.](disk-bursting.md)
 
 > [!IMPORTANT]
-> Du behöver inte följa stegen i den här artikeln för att använda en kredit baserad burst-överföring. Som standard aktive ras krediterad burst-överföring på alla berättigade diskar.
+> Du behöver inte följa stegen i den här artikeln för att använda kreditbaserad bursting. Som standard är kreditbaserad bursting aktiverat på alla berättigade diskar.
 
-Innan du aktiverar burst på begäran kan du förstå följande:
+Innan du aktiverar burst-åtgärder på begäran bör du förstå följande:
 
 [!INCLUDE [managed-disk-bursting-regions-limitations](../../includes/managed-disk-bursting-regions-limitations.md)]
 
@@ -34,14 +34,14 @@ Innan du aktiverar burst på begäran kan du förstå följande:
 
 ## <a name="get-started"></a>Kom igång
 
-Burst-överföring på begäran kan aktive ras med antingen Azure PowerShell-modulen, Azure CLI-eller Azure Resource Manager-mallarna. Följande exempel beskriver hur du skapar en ny disk med burst-överföring aktiverat på begäran och aktiverar burst-överföring på begäran på befintliga diskar.
+Burst-ning på begäran kan aktiveras med antingen Azure PowerShell-modulen, Azure CLI eller Azure Resource Manager mallar. I följande exempel visas hur du skapar en ny disk med burst-funktionen på begäran aktiverad och aktiverar bursting på begäran på befintliga diskar.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Cmdletar för burst-överföring på begäran är tillgängliga i version 5.5.0 och senare av AZ-modulen. Du kan också använda [Azure Cloud Shell](https://shell.azure.com/).
-### <a name="create-an-empty-data-disk-with-on-demand-bursting"></a>Skapa en tom datadisk med burst-överföring på begäran
+Burst-cmdlets på begäran är tillgängliga i version 5.5.0 och senare av Az-modulen. Du kan också använda [Azure Cloud Shell](https://shell.azure.com/).
+### <a name="create-an-empty-data-disk-with-on-demand-bursting"></a>Skapa en tom datadisk med burst-data på begäran
 
-En hanterad disk måste vara större än 512 GiB för att aktivera burst på begäran. Ersätt `<myResourceGroupDisk>` parametrarna och `<myDataDisk>` kör sedan följande skript för att skapa en Premium SSD med burst-överföring på begäran:
+En hanterad disk måste vara större än 512 GiB för att aktivera bursting på begäran. Ersätt `<myResourceGroupDisk>` parametrarna `<myDataDisk>` och och kör sedan följande skript för att skapa en Premium SSD med bursting på begäran:
 
 ```azurepowershell
 Set-AzContext -SubscriptionName <yourSubscriptionName>
@@ -51,9 +51,9 @@ $diskConfig = New-AzDiskConfig -Location 'WestCentralUS' -CreateOption Empty -Di
 $dataDisk = New-AzDisk -ResourceGroupName <myResourceGroupDisk> -DiskName <myDataDisk> -Disk $diskConfig
 ```
 
-### <a name="enable-on-demand-bursting-on-an-existing-disk"></a>Aktivera burst-överföring på begäran på en befintlig disk
+### <a name="enable-on-demand-bursting-on-an-existing-disk"></a>Aktivera bursting på begäran på en befintlig disk
 
-En hanterad disk måste vara större än 512 GiB för att aktivera burst på begäran. Ersätt `<myResourceGroupDisk>` parametrarna, `<myDataDisk>` och kör det här kommandot för att aktivera burst-överföring på begäran på en befintlig disk:
+En hanterad disk måste vara större än 512 GiB för att aktivera burst-ning på begäran. Ersätt `<myResourceGroupDisk>` parametrarna `<myDataDisk>` , och kör det här kommandot för att aktivera bursting på begäran på en befintlig disk:
 
 ```azurepowershell
 New-AzDiskUpdateConfig -BurstingEnabled $true | Update-AzDisk -ResourceGroupName <myResourceGroupDisk> -DiskName <myDataDisk> //Set the flag to $false to disable on-demand bursting
@@ -61,11 +61,11 @@ New-AzDiskUpdateConfig -BurstingEnabled $true | Update-AzDisk -ResourceGroupName
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Cmdletar för burst-överföring på begäran finns i version 2.19.0 och senare av [Azure CLI-modulen](/cli/azure/install-azure-cli). Du kan också använda [Azure Cloud Shell](https://shell.azure.com/).
+Cmdlets för burst på begäran är tillgängliga i version 2.19.0 och senare av [Azure CLI-modulen](/cli/azure/install-azure-cli). Du kan också använda [Azure Cloud Shell](https://shell.azure.com/).
 
-### <a name="create-and-attach-a-on-demand-bursting-data-disk"></a>Skapa och koppla en datadisk för data överföring på begäran
+### <a name="create-and-attach-a-on-demand-bursting-data-disk"></a>Skapa och koppla en datadisk med burst-data på begäran
 
-En hanterad disk måste vara större än 512 GiB för att aktivera burst på begäran. Ersätt `<yourDiskName>` parametrarna, `<yourResourceGroup>` , och och `<yourVMName>` kör sedan följande kommandon för att skapa en Premium SSD med burst på begäran:
+En hanterad disk måste vara större än 512 GiB för att aktivera bursting på begäran. Ersätt `<yourDiskName>` parametrarna `<yourResourceGroup>` , och och kör sedan följande kommandon för att skapa en Premium SSD med `<yourVMName>` bursting på begäran:
 
 ```azurecli
 az disk create -g <yourResourceGroup> -n <yourDiskName> --size-gb 1024 --sku Premium_LRS -l westcentralus --enable-bursting true
@@ -73,9 +73,9 @@ az disk create -g <yourResourceGroup> -n <yourDiskName> --size-gb 1024 --sku Pre
 az vm disk attach --vm-name <yourVMName> --name <yourDiskName> --resource-group <yourResourceGroup>
 ```
 
-### <a name="enable-on-demand-bursting-on-an-existing-disk---cli"></a>Aktivera burst-överföring på begäran på en befintlig disk-CLI
+### <a name="enable-on-demand-bursting-on-an-existing-disk---cli"></a>Aktivera bursting på begäran på en befintlig disk – CLI
 
-En hanterad disk måste vara större än 512 GiB för att aktivera burst på begäran. Ersätt `<myResourceGroupDisk>` parametrarna och `<yourDiskName>` och kör det här kommandot för att aktivera burst-överföring på begäran på en befintlig disk:
+En hanterad disk måste vara större än 512 GiB för att aktivera burst-ning på begäran. Ersätt `<myResourceGroupDisk>` parametrarna `<yourDiskName>` och och kör det här kommandot för att aktivera bursting på begäran på en befintlig disk:
 
 ```azurecli
 az disk update --name <yourDiskName> --resource-group <yourResourceGroup> --enable-bursting true //Set the flag to false to disable on-demand bursting
@@ -83,7 +83,7 @@ az disk update --name <yourDiskName> --resource-group <yourResourceGroup> --enab
 
 # <a name="azure-resource-manager"></a>[Azure Resource Manager](#tab/azure-resource-manager)
 
-Med `2020-09-30` disk-API: et kan du aktivera burst-överföring på begäran på nyligen skapade eller befintliga Premium-SSD som är större än 512 GIB. `2020-09-30`API: t introducerade en ny egenskap, `burstingEnabled` . Som standard är den här egenskapen inställd på falskt. Följande exempel-mall skapar en 1TiB Premium SSD i USA, västra centrala, med disk burst aktive rad:
+Med disk-API:et kan du aktivera bursting på begäran på nyligen skapade eller befintliga Premium-HÅRDDISKAR som är `2020-09-30` större än 512 GiB. `2020-09-30`API:et introducerade en ny egenskap, `burstingEnabled` . Som standard är den här egenskapen inställd på falskt. Följande exempelmall skapar en 1TiB Premium SSD i USA, västra centrala med disk bursting aktiverat:
 
 ```
 {
@@ -130,4 +130,4 @@ Med `2020-09-30` disk-API: et kan du aktivera burst-överföring på begäran p�
  
 ## <a name="next-steps"></a>Nästa steg
 
-Information om hur du får inblick i dina burst-resurser finns i [mått för disk burst](disks-metrics.md).
+Information om hur du får insyn i dina burst-resurser finns i [Mätvärden för disk bursting.](disks-metrics.md)

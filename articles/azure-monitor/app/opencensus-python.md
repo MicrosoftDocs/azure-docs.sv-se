@@ -5,12 +5,14 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: 92d954a865a2d4a8c55177b132139dcd7d0444ef
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+author: lzchen
+ms.author: lechen
+ms.openlocfilehash: 548cfd9d593e9adaeaaf984f756e58d242ca9f45
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515931"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576558"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Konfigurera Azure Monitor python-program
 
@@ -107,7 +109,7 @@ Här är de exempel som OpenCensus tillhandahåller mappade till de typer av tel
 1. Exportören skickar loggdata till Azure Monitor. Du hittar data under `traces` . 
 
     > [!NOTE]
-    > I det här `traces` sammanhanget är inte samma sak som `tracing` . Här `traces` refererar till den typ av telemetri som du ser i Azure Monitor du använder `AzureLogHandler` . Men `tracing` refererar till ett begrepp i OpenCensus och relaterar till [distribuerad spårning](./distributed-tracing.md).
+    > I det här `traces` sammanhanget är inte samma sak som `tracing` . Här `traces` refererar till den typ av telemetri som du ser i Azure Monitor du använder `AzureLogHandler` . Men `tracing` refererar till ett begrepp i OpenCensus och relaterar [till distribuerad spårning](./distributed-tracing.md).
 
     > [!NOTE]
     > Rotloggaren konfigureras med nivån VARNING. Det innebär att alla loggar som du skickar som har mindre allvarlighetsgrad ignoreras och i sin tur inte skickas till Azure Monitor. Mer information finns i [dokumentationen](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel).
@@ -193,7 +195,7 @@ Eftersom du måste logga undantag explicit är det upp till användaren hur de v
 
 #### <a name="send-events"></a>Skicka händelser
 
-Du kan skicka `customEvent` telemetri på exakt samma sätt som du skickar `trace` telemetri förutom med hjälp av `AzureEventHandler` i stället.
+Du kan skicka `customEvent` telemetri på exakt samma sätt som du skickar `trace` telemetri förutom genom att använda `AzureEventHandler` i stället.
 
 ```python
 import logging
@@ -212,7 +214,7 @@ Information om sampling i OpenCensus finns i [sampling i OpenCensus](sampling.md
 
 #### <a name="log-correlation"></a>Loggkorrelation
 
-Mer information om hur du utökar loggar med spårningskontextdata finns i OpenCensus [Python-loggintegrering](./correlation.md#log-correlation).
+Mer information om hur du utökar dina loggar med spårningskontextdata finns i OpenCensus [Python-loggintegrering.](./correlation.md#log-correlation)
 
 #### <a name="modify-telemetry"></a>Ändra telemetri
 
@@ -224,13 +226,13 @@ Mer information om hur du ändrar spårad telemetri innan den skickas till Azure
 OpenCensus.stats stöder 4 aggregeringsmetoder men ger partiellt stöd för Azure Monitor:
 
 - **Antal:** Antalet måttpunkter. Värdet är kumulativt, kan bara öka och återställas till 0 vid omstart. 
-- **Summa:** En sammanfattning av måttpunkterna. Värdet är kumulativt, kan bara öka och återställas till 0 vid omstart. 
+- **Summa:** En summering av måttpunkterna. Värdet är kumulativt, kan bara öka och återställas till 0 vid omstart. 
 - **LastValue:** Behåller det senast registrerade värdet och släpper allt annat.
 - **Distribution:** Histogramfördelning för måttpunkterna. Den här metoden **stöds INTE av Azure Exporter**.
 
 ### <a name="count-aggregation-example"></a>Exempel på antal sammansättningar
 
-1. Först ska vi generera några lokala måttdata. Vi skapar ett enkelt mått för att spåra hur många gånger användaren väljer **returnyckeln.**
+1. Först ska vi generera några lokala måttdata. Vi skapar ett enkelt mått för att spåra hur många gånger användaren väljer **Retur.**
 
     ```python
     from datetime import datetime
@@ -329,7 +331,7 @@ OpenCensus.stats stöder 4 aggregeringsmetoder men ger partiellt stöd för Azur
         main()
     ```
 
-1. Exportören skickar måttdata till Azure Monitor med ett fast intervall. Standardvärdet är var 15:e sekund. Vi spårar ett enda mått, så dessa måttdata, oavsett värde och tidsstämpel, skickas varje intervall. Värdet är kumulativt, kan bara öka och återställas till 0 vid omstart. Du hittar data under `customMetrics` , men egenskaperna `customMetrics` valueCount, valueSum, valueMin, valueMax och valueStdDev används inte på ett effektivt sätt.
+1. Exportören skickar måttdata till Azure Monitor med ett fast intervall. Standardvärdet är var 15:e sekund. Vi spårar ett enda mått, så dessa måttdata, oavsett värde och tidsstämpel, skickas varje intervall. Värdet är kumulativt, kan bara öka och återställas till 0 vid omstart. Du hittar data under `customMetrics` , men egenskaperna `customMetrics` valueCount, valueSum, valueMin, valueMax och valueStdDev används inte effektivt.
 
 ### <a name="setting-custom-dimensions-in-metrics"></a>Ange anpassade dimensioner i mått
 
@@ -473,7 +475,7 @@ Information om hur du ändrar spårad telemetri innan den skickas till Azure Mon
         main()
     ```
 
-1. Nu när du kör Python-skriptet bör du fortfarande uppmanas att ange värden, men endast värdet skrivs ut i gränssnittet. Den skapade `SpanData` skickas till Azure Monitor. Du hittar de utgivna spannsdata under `dependencies` . Mer information om utgående begäranden finns i OpenCensus [Python-beroenden.](./opencensus-python-dependency.md)
+1. Nu när du kör Python-skriptet bör du fortfarande uppmanas att ange värden, men endast värdet skrivs ut i gränssnittet. Den skapade `SpanData` skickas till Azure Monitor. Du hittar de utgivna intervalldata under `dependencies` . Mer information om utgående begäranden finns i OpenCensus [Python-beroenden.](./opencensus-python-dependency.md)
 Mer information om inkommande begäranden finns i OpenCensus [Python-begäranden.](./opencensus-python-request.md)
 
 #### <a name="sampling"></a>Samling
@@ -500,7 +502,7 @@ Varje exporter accepterar samma argument för konfiguration som skickas via kons
 - `instrumentation_key`: Instrumenteringsnyckeln som används för att ansluta Azure Monitor resurs.
 - `logging_sampling_rate`: Används för `AzureLogHandler` . Visar samplingsfrekvensen [0,1.0] för export av loggar. Standardvärdet är 1.0.
 - `max_batch_size`: Anger den maximala storleken på telemetri som exporteras samtidigt.
-- `proxies`: Anger en sekvens med proxys som ska användas för att skicka data till Azure Monitor. Mer information finns i [proxys](https://requests.readthedocs.io/en/master/user/advanced/#proxies).
+- `proxies`: Anger en sekvens med proxys som ska användas för att skicka data till Azure Monitor. Mer information finns i [proxy.](https://requests.readthedocs.io/en/master/user/advanced/#proxies)
 - `storage_path`: En sökväg till den lokala lagringsmappen (icke-telemetri). Från och `opencensus-ext-azure` med v1.0.3 är standardsökvägen operativsystemets temp-katalog + `opencensus-python`  +  `your-ikey` . Före v1.0.3 är standardsökvägen $USER + `.opencensus`  +  `.azure`  +  `python-file-name` .
 
 ## <a name="view-your-data-with-queries"></a>Visa dina data med frågor
@@ -511,9 +513,9 @@ Du kan visa telemetridata som har skickats från ditt program via **fliken Logga
 
 I listan under **Aktiv**:
 
-- För telemetri som skickas med Azure Monitor spårningsexporter visas inkommande begäranden under `requests` . Utgående eller pågående begäranden visas under `dependencies` .
+- För telemetri som skickas med Azure Monitor trace-exporter visas inkommande begäranden under `requests` . Utgående eller pågående begäranden visas under `dependencies` .
 - För telemetri som skickas med Azure Monitor måttexporter visas skickade mått under `customMetrics` .
-- För telemetri som skickas med Azure Monitor loggexporter visas loggarna under `traces` . Undantag visas under `exceptions` .
+- För telemetri som skickas med exportern Azure Monitor loggar visas loggar under `traces` . Undantag visas under `exceptions` .
 
 Mer detaljerad information om hur du använder frågor och loggar finns i [Loggar i Azure Monitor](../logs/data-platform-logs.md).
 

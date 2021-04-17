@@ -8,23 +8,21 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e5a811620de8336abd3e0df6d72db761ce18b2b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8ec7faf1562381288aeef630bf2076ce413017a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86230998"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531530"
 ---
-All den senaste generationens VM-storlekar stöder kryptering på värden:
+Den senaste generationens VM-storlekar stöder kryptering på värden:
 
 |Typ  |Stöds inte  |Stöds  |
 |---------|---------|---------|
-|Generellt syfte     | Dv3, Dav4, Dv2, AV2        | B, DSv2, Dsv3, DC, DCv2, Dasv4        |
+|Generellt syfte     | Dv3, Dv2, Av2        | B, DSv2, Dsv3, DC, DCv2, Dav4, Dasv4        |
 |Beräkningsoptimerad     |         | Fsv2        |
-|Minnesoptimerad     | Ev3, Eav4        | DSv2, Esv3, M, Mv2, Easv4        |
-|Lagringsoptimerad     |         | LS, Lsv2 (NVMe-diskar inte krypterade)        |
-|GPU     | NC, NV        | NCv2, NCv3, ND, NVv3, NVv4, NDv2 (för hands version)        |
+|Minnesoptimerad     | Ev3        | DSv2, Esv3, M, Mv2, Eav4, Easv4        |
+|Lagringsoptimerad     |         | Ls, Lsv2 (NVMe-diskar som inte är krypterade)        |
+|GPU     | NC, NV        | NCv2, NCv3, ND, NVv3, NVv4, NDv2 (förhandsversion)        |
 |Databehandling med höga prestanda     | H        | HB, HC, HBv2        |
-|Tidigare generationer     | F, A, D, L, G        | DS, GS, FS, NVv2        |
-
-Uppgradering av den virtuella datorns storlek leder till verifiering för att kontrol lera om den nya VM-storleken stöder funktionen EncryptionAtHost.
+|Tidigare generationer     | F, A, D, L, G        | DS, GS, Fs, NVv2        |

@@ -12,3 +12,13 @@
   href: oracle-baremetal-architecture.md
 - name: Etablera
   href: oracle-baremetal-provision.md
+- name: Hög tillgänglighet och haveriberedskap
+  items:
+    - name: Översikt
+      href: concepts-oracle-high-availability.md
+    - name: Funktioner för hög tillgänglighet
+      href: high-availability-features.md
+    - name: Alternativ och överväganden
+      href: options-considerations-high-availability.md
+    - name: Välj hur du vill återställa
+      href: oracle-high-availability-recovery.md

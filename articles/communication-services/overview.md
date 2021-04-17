@@ -1,6 +1,6 @@
 ---
 title: Vad är Azure Communication Services?
-description: Lär dig hur Azure Communication Services hjälper dig att utveckla omfattande användar upplevelser med real tids kommunikation.
+description: Lär dig Azure Communication Services hjälper dig att utveckla omfattande användarupplevelser med realtidskommunikation.
 author: mikben
 manager: jken
 services: azure-communication-services
@@ -8,85 +8,72 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0efdf48e78d0cc48e288bea354f5de5f9635c760
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 8c2559315e3bfffc41c138be6826adae95dd7b07
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106848"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588113"
 ---
 # <a name="what-is-azure-communication-services"></a>Vad är Azure Communication Services?
 
-> [!IMPORTANT]
-> Program som du skapar med Azure Communication Services kan prata med Microsoft Teams. Mer information finns i vår [Teams interop](./quickstarts/voice-video-calling/get-started-teams-interop.md) -dokumentation.
+Azure Communication Services kan du enkelt lägga till röst-, video- och telefonkommunikation i realtid i dina program. Communication Services-SDK:er kan du också lägga till SMS-funktioner i dina kommunikationslösningar. Azure Communication Services är identitetsoberoende och du har fullständig kontroll över hur slutanvändare identifieras och autentiseras. Du kan ansluta människor till kommunikationsdataplanet eller kommunikationstjänster (robotar).
 
+Program omfattar:
 
-Med Azure Communication Services kan du enkelt lägga till funktioner för multimedia, video och telefoni för kommunikation i real tid till dina program. I kommunikations tjänstens SDK-bibliotek kan du också lägga till chatt-och SMS-funktioner i kommunikations lösningarna.
+- **Företag till konsument (B2C).** Ett företags anställda och tjänster kan interagera med konsumenter med hjälp av röst-, video- och RTF-chatt i en anpassad webbläsare eller ett mobilprogram. En organisation kan skicka och ta emot SMS eller använda ett interaktivt röstsvarssystem (IVR) med hjälp av ett telefonnummer som du får via Azure. [Integrering med Microsoft Teams gör det](./quickstarts/voice-video-calling/get-started-teams-interop.md) möjligt för användare att delta i Teams-möten som värdar för anställda. perfekt för fjärranslutna sjukvårds-, bank- och produktsupportscenarier där medarbetarna kanske redan är bekanta med Teams.
+- **Konsument till konsument.** Skapa engagerande sociala utrymmen för interaktion mellan konsumenter med röst-, video- och RTF-chatt. Alla typer av användargränssnitt kan byggas på Azure Communication Services-SDK:er, men fullständiga programexempel och gränssnittstillgångar är tillgängliga för att hjälpa dig att komma igång snabbt.
 
-<br>
-
-> [!VIDEO https://www.youtube.com/embed/apBX7ASurgM]
-
-<br>
-<br>
-
-Du kan använda kommunikations tjänster för röst-, video-, text-och data kommunikation i olika scenarier:
-
-- Webb läsar-till-webbläsare, webb läsar-till-app och kommunikation mellan appar
-- Användare som interagerar med robotar eller andra tjänster
-- Användare och robotar som interagerar över det offentliga växlade telefoni nätverket
-
-Blandade scenarier stöds. Ett kommunikations tjänst program kan till exempel ha användare som talar från webbläsare och traditionella telefoni enheter samtidigt. Kommunikations tjänsterna kan också kombineras med Azure Bot Service för att bygga bot-drivna interaktiva Voice Response-system (IVR).
+Mer information finns i vår Microsoft [Mechanics-video eller](https://www.youtube.com/watch?v=apBX7ASurgM) de resurser som är länkade nedan.
 
 ## <a name="common-scenarios"></a>Vanliga scenarier
 
-Följande resurser är en bra plats för att komma igång med Azure Communication Services.
 <br>
 
 | Resurs                               |Beskrivning                           |
 |---                                    |---                                   |
-|**[Skapa en Communication Services-resurs](./quickstarts/create-communication-resource.md)**|Du kan börja använda Azure Communication Services med hjälp av Azure Portal-eller kommunikations tjänst-SDK: n för att etablera din första kommunikations tjänst resurs. När du har resurs anslutnings strängen för kommunikations tjänster kan du etablera dina första åtkomsttoken för användare.|
-|**[Hämta ett telefonnummer](./quickstarts/telephony-sms/get-phone-number.md)**|Du kan använda Azure Communication Services för att etablera och frigöra telefonnummer. Dessa telefonnummer kan användas för att initiera utgående samtal och bygga SMS-kommunikations lösningar.|
+|**[Skapa en Communication Services-resurs](./quickstarts/create-communication-resource.md)**|Börja använda Azure Communication Services med hjälp av Azure Portal eller Communication Services SDK för att etablera din Communication Services resurs. När du har Communication Services resursanslutningssträng kan du etablera dina första användaråtkomsttoken.|
+|**[Hämta ett telefonnummer](./quickstarts/telephony-sms/get-phone-number.md)**|Du kan använda Azure Communication Services för att etablera och släppa telefonnummer. Dessa telefonnummer kan användas för att initiera eller ta emot telefonsamtal och skapa SMS-lösningar.|
+|**[Skicka ett SMS från din app](./quickstarts/telephony-sms/send.md)**|Den Azure Communication Services SMS SDK används för att skicka och ta emot SMS från tjänstprogram.|
 
-När du har skapat en kommunikations tjänst resurs kan du börja skapa klient scenarier, till exempel röst-och video samtal eller chatt för text.
+När du har Communication Services en resurs kan du börja skapa klientscenarier, till exempel röst- och videosamtal eller textchatt:
 
 | Resurs                               |Beskrivning                           |
 |---                                    |---                                   |
-|**[Skapa din första åtkomsttoken för användare](./quickstarts/access-tokens.md)**|Token för användar åtkomst används för att autentisera dina tjänster mot Azure Communication Services-resursen. Dessa token är etablerade och återutfärdade med hjälp av kommunikations tjänsterna SDK.|
-|**[Kom igång med röst-och video samtal](./quickstarts/voice-video-calling/getting-started-with-calling.md)**| Med Azure Communication Services kan du lägga till röst-och video samtal till dina appar med hjälp av den anropande SDK: n. Det här biblioteket drivs av WebRTC och gör att du kan upprätta peer-to-peer, multimedia, real tids kommunikation i dina program.|
-|**[Anslut din samtalsapp till ett Teams-möte](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Azure Communication Services kan användas för att bygga anpassade Mötes upplevelser som interagerar med Microsoft Teams. Användare av kommunikations tjänst lösningen (er) kan interagera med team deltagare via röst-, video-, Chat-och skärm delning.|
-|**[Kom igång med chatt](./quickstarts/chat/get-started.md)**|Azure Communication Services Chat SDK kan användas för att integrera chatt i real tid i dina program.|
-|**[Skicka ett SMS från din app](./quickstarts/telephony-sms/send.md)**|Med Azure Communication Services SMS SDK kan du skicka och ta emot SMS-meddelanden från .NET-och JavaScript-program.|
+|**[Skapa din första användaråtkomsttoken](./quickstarts/access-tokens.md)**|Användaråtkomsttoken används för att autentisera klienter mot Azure Communication Services resurs. Dessa token etableras och återutgås med hjälp av Communication Services SDK.|
+|**[Kom igång med röst- och videosamtal](./quickstarts/voice-video-calling/getting-started-with-calling.md)**| Azure Communication Services kan du lägga till röst- och videosamtal till webbläsaren eller interna appar med hjälp av Anropa SDK. |
+|**[Anslut din samtalsapp till ett Teams-möte](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Azure Communication Services kan användas för att skapa anpassade mötesupplevelser som interagerar med Microsoft Teams. Användare av dina Communication Services kan interagera med Teams-deltagare via röst, video, chatt och skärmdelning.|
+|**[Kom igång med chatt](./quickstarts/chat/get-started.md)**|Den Azure Communication Services Chat SDK används för att lägga till innehållsrik textchatt i realtid i dina program.|
 
 ## <a name="samples"></a>Exempel
 
-I följande exempel demonstreras slut punkt till slut punkt för Azure Communication Services SDK-biblioteken. Du kan använda dessa exempel för att starta dina egna kommunikations tjänst lösningar.
+Följande exempel visar användningen av Azure Communication Services. Använd dessa exempel för att bootstrap-koda dina Communication Services lösningar.
 <br>
 
-| Exempel namn                               | Beskrivning                           |
+| Exempelnamn                               | Description                           |
 |---                                    |---                                   |
-|**[Gruppen som anropar ett hjälte exempel](./samples/calling-hero-sample.md)**|Se hur kommunikations tjänstens SDK-bibliotek kan användas för att bygga en grupp som anropar en funktion.|
-|**[Hjälte-exemplet för grupp Chat](./samples/chat-hero-sample.md)**|Se hur kommunikations tjänsterna SDK-bibliotek kan användas för att bygga en grupps Chat-upplevelse.|
+|**[Exemplet på gruppsamtal till Hero](./samples/calling-hero-sample.md)**| Ladda ned ett utformat programexempel för gruppsamtal för webbläsare, iOS- och Android-enheter. |
+|**[Exempel på gruppchatt](./samples/chat-hero-sample.md)**| Ladda ned ett utformat programexempel för grupptextchatt för webbläsare. |
 
 
 ## <a name="platforms-and-sdk-libraries"></a>Plattformar och SDK-bibliotek
 
-Följande resurser hjälper dig att lära dig om Azure Communication Services SDK-biblioteken:
+Läs mer om Azure Communication Services-SDK:er med resurserna nedan. REST-API:er är tillgängliga för de flesta funktioner om du vill skapa egna klienter eller på annat sätt komma åt tjänsten via Internet.
 
 | Resurs                               | Beskrivning                           |
 |---                                    |---                                   |
-|**[SDK-bibliotek och REST API: er](./concepts/sdk-options.md)**|Azure Communication Services-funktionerna är konceptuellt ordnade i sex områden som representeras av en SDK. Du kan bestämma vilka SDK-bibliotek som ska användas utifrån dina kommunikations behov i real tid.|
-|**[Översikt över samtals-SDK](./concepts/voice-video-calling/calling-sdk-features.md)**|Läs översikt över kommunikations tjänsterna som anropar SDK.|
-|**[Översikt över chatt SDK](./concepts/chat/sdk-features.md)**|Läs översikten över kommunikations tjänsterna i Chat SDK.|
-|**[Översikt över SMS SDK](./concepts/telephony-sms/sdk-features.md)**|Läs översikten över kommunikations tjänsterna för SMS SDK.|
+|**[SDK-bibliotek och REST API:er](./concepts/sdk-options.md)**|Azure Communication Services är konceptuellt ordnade i sex områden, där var och en representeras av en SDK. Du kan bestämma vilka SDK-bibliotek som ska användas baserat på dina kommunikationsbehov i realtid.|
+|**[Översikt över anropande SDK](./concepts/voice-video-calling/calling-sdk-features.md)**|Granska översikten Communication Services ANROPA SDK.|
+|**[Översikt över Chat SDK](./concepts/chat/sdk-features.md)**|Granska översikten Communication Services Chat SDK.|
+|**[Översikt över SMS SDK](./concepts/telephony-sms/sdk-features.md)**|Granska översikten Communication Services SMS SDK.|
 
-## <a name="other-microsoft-communication-services"></a>Andra Microsofts kommunikations tjänster
+## <a name="other-microsoft-communication-services"></a>Andra Microsoft-Communication Services
 
-Det finns två andra Microsoft-kommunikationsprodukter som du kan överväga att inte direkt samverka med kommunikations tjänster för tillfället:
+Det finns två andra Microsoft-kommunikationsprodukter som du kan överväga att använda som inte är direkt kompatibla med Communication Services just nu:
 
- - [Microsoft Graph API: er för moln kommunikation](/graph/cloud-communications-concept-overview) gör det möjligt för organisationer att bygga kommunikations upplevelser som är kopplade till Azure Active Directory användare med Microsoft 365 licenser. Detta är perfekt för program som är knutna till Azure Active Directory eller där du vill utöka produktivitets upplevelser i Microsoft Teams. Det finns också API: er för att bygga program och anpassningar i [Teams upplevelsen.](/microsoftteams/platform/?preserve-view=true&view=msteams-client-js-latest)
+ - [Microsoft Graph API:er för molnkommunikation](/graph/cloud-communications-concept-overview) gör det möjligt för organisationer att skapa kommunikationsupplevelser som är knutna till Azure Active Directory användare med Microsoft 365 licenser. Detta är perfekt för program som är kopplade Azure Active Directory eller där du vill utöka produktivitetsupplevelserna i Microsoft Teams. Det finns även API:er för att skapa program och anpassningar i [Teams-upplevelsen.](/microsoftteams/platform/?preserve-view=true&view=msteams-client-js-latest)
 
- - [Azure PlayFab-parten](/gaming/playfab/features/multiplayer/networking/) fören klar att lägga till samtal med låg latens och data kommunikation i spel. Även om du kan spela spel och nätverks system med kommunikations tjänster, är PlayFab ett skräddarsyt alternativ och kostnads fritt på Xbox.
+ - [Azure PlayFab Party förenklar](/gaming/playfab/features/multiplayer/networking/) tillägg av chatt med låg latens och datakommunikation till spel. Även om du kan driva chatt- och nätverkssystem med Communication Services är PlayFab ett skräddarsytt alternativ och kostnadsfritt på Xbox.
 
 
 ## <a name="next-steps"></a>Nästa steg

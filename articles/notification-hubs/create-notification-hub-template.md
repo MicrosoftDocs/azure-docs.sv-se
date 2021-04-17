@@ -1,29 +1,31 @@
 ---
-title: Skapa en Azure Notification Hub med Azure Resource Manager-mall
-description: Lär dig hur du skapar en Azure Notification Hub med hjälp av en Azure Resource Manager-mall (ARM-mall).
+title: Skapa en Azure-meddelandehubb med Azure Resource Manager mall
+description: Lär dig hur du skapar en Azure-meddelandehubb med hjälp Azure Resource Manager mall (ARM-mall).
 services: notification-hubs
 author: sethmanheim
-ms.service: notification-hubs
-ms.topic: quickstart
-ms.custom: subject-armqs
 ms.author: sethm
-ms.date: 08/04/2020
 ms.reviewer: thsomasu
+ms.date: 08/04/2020
 ms.lastreviewed: 05/15/2020
-ms.openlocfilehash: 2165351bee4ee260e768c10b23e26bf095779cad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.service: notification-hubs
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: a328d6b8942c3209e13dc91a2fb892e98e3016f6
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88684651"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533482"
 ---
-# <a name="quickstart-create-a-notification-hub-using-an-arm-template"></a>Snabb start: skapa en Notification Hub med en ARM-mall
+# <a name="quickstart-create-a-notification-hub-using-an-arm-template"></a>Snabbstart: Skapa en meddelandehubb med hjälp av en ARM-mall
 
-Azure Notification Hubs tillhandahåller en lättanvänd och skalad push-motor som gör att du kan skicka meddelanden till valfri plattform (iOS, Android, Windows, Kindle osv.) från alla Server delar (moln eller lokalt). Mer information om tjänsten finns i [Vad är Azure Notification Hubs](notification-hubs-push-notification-overview.md).
+Azure Notification Hubs tillhandahåller en lättanvänd och utskalade push-motor som gör att du kan skicka meddelanden till valfri plattform (iOS, Android, Windows, Kindle osv.) från valfri backend (i molnet eller lokalt). Mer information om tjänsten finns i [Vad är Azure Notification Hubs](notification-hubs-push-notification-overview.md).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-I den här snabb starten används en Azure Resource Manager-mall (ARM-mall) för att skapa ett Azure Notification Hubs-namnområde och en Notification-hubb med namnet **MyHub** inom det namn området.
+I den här snabbstarten används en Azure Resource Manager mall (ARM-mall) för att skapa ett Azure Notification Hubs-namnområde och en meddelandehubb med namnet **MyHub** inom det namnområdet.
 
 Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas på Azure-portalen.
 
@@ -39,18 +41,18 @@ Mallen som används i den här snabbstarten kommer från [Azure-snabbstartsmalla
 
 :::code language="json" source="~/quickstart-templates/101-notification-hub/azuredeploy.json":::
 
-* [Microsoft. NotificationHubs/namnrymder](/azure/templates/microsoft.notificationhubs/namespaces)
-* [Microsoft. NotificationHubs/Namespaces/notificationHubs](/azure/templates/microsoft.notificationhubs/namespaces/notificationhubs)
+* [Microsoft.NotificationHubs/namespaces](/azure/templates/microsoft.notificationhubs/namespaces)
+* [Microsoft.NotificationHubs/namespaces/notificationHubs](/azure/templates/microsoft.notificationhubs/namespaces/notificationhubs)
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
-Välj följande bild för att logga in på Azure och öppna en mall. Mallen använder ett Notification Hubs namn områdes namn som parameter. Mallen skapar sedan ett namn område med det namnet och en Notification Hub med namnet **MyHub** inom denna namnrymd.
+Välj följande bild för att logga in på Azure och öppna en mall. Mallen tar ett Notification Hubs namnområdesnamn som en parameter. Mallen skapar sedan ett namnområde med det namnet och en meddelandehubb med **namnet MyHub** inom det namnområdet.
 
 [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
 
 ## <a name="review-deployed-resources"></a>Granska distribuerade resurser
 
-Du kan antingen använda Azure Portal för att kontrol lera de distribuerade resurserna eller använda Azure CLI eller Azure PowerShell skript för att visa en lista över det distribuerade Notification Hubs namn området och hubben:
+Du kan antingen använda Azure Portal för att kontrollera de distribuerade resurserna eller använda Azure CLI eller Azure PowerShell-skript för att visa en lista över Notification Hubs-namnområdet och hubben:
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -73,7 +75,7 @@ The output looks similar to: null
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När de inte längre behövs tar du bort resurs gruppen, som tar bort resurserna i resurs gruppen.
+Ta bort resursgruppen när den inte längre behövs, vilket tar bort resurserna i resursgruppen.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
@@ -83,7 +85,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Nästa steg
 
-En stegvis själv studie kurs som vägleder dig genom processen för att skapa en mall finns i:
+En stegvis självstudiekurs som vägleder dig genom processen med att skapa en mall finns i:
 
 > [!div class="nextstepaction"]
-> [Självstudie: skapa och distribuera din första ARM-mall](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Självstudie: Skapa och distribuera din första ARM-mall](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

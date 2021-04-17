@@ -7,20 +7,20 @@ ms.custom: mvc, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 562ec4cf19d15772b2dec5adf59582f1feb5363a
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: a7617a36ed800f1765ed7723568a4b612fcb6518
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478472"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587603"
 ---
 # <a name="tutorial-mock-api-responses"></a>Självstudie: Fingera API-svar
 
-Backend-API:er kan importeras till API Management API (APIM) eller skapas och hanteras manuellt. Stegen i den här självstudien visar hur du använder APIM för att skapa ett tomt API och hantera det manuellt. Ange sedan en princip för ett API så att det returnerar ett fingerat svar. Den här metoden gör att utvecklare kan fortsätta med implementering och testning av APIM-instanser även om serverdelen inte är tillgänglig för att skicka verkliga svar. 
+Backend-API:er kan importeras till ett API API Management (APIM) eller skapas och hanteras manuellt. Stegen i den här självstudien visar hur du använder APIM för att skapa ett tomt API och hantera det manuellt. Ange sedan en princip för ett API så att det returnerar ett fingerat svar. Den här metoden gör att utvecklare kan fortsätta med implementering och testning av APIM-instanser även om serverdelen inte är tillgänglig för att skicka verkliga svar. 
 
 Möjligheten att modellera svar kan vara användbar i ett antal scenarier:
 
-+ När API:et fa-ade utformas först och implementeringen av backend kommer senare. Eller om serverdelen utvecklas parallellt.
++ Om API-fasaden utformas först och implementeringen av serverdelen kommer senare. Eller om serverdelen utvecklas parallellt.
 + Om serverdelen tillfälligt inte fungerar eller inte går att skala.
 
 I den här guiden får du lära dig att:
@@ -46,8 +46,8 @@ Stegen i det här avsnittet visar hur du skapar ett tomt API utan serverdel.
 
 
 1. Logga in på Azure Portal och gå till din API Management instans.
-1. Välj **API:er**  >  **+ Lägg till API** Tom  >  **API.**
-1. I fönstret **Skapa ett tomt API** väljer du **Fullständig**.
+1. Välj **API:er**  >  **+ Lägg till tomt**  >  **API.**
+1. I fönstret **Skapa ett tomt API** väljer du **Fullständig.**
 1. Ange *Test-API* som **Visningsnamn.**
 1. Välj **Obegränsat** för **Produkter.**
 1. Se **till att** Hanterad är valt i **Gateways**.
@@ -57,7 +57,7 @@ Stegen i det här avsnittet visar hur du skapar ett tomt API utan serverdel.
 
 ## <a name="add-an-operation-to-the-test-api"></a>Lägg till en åtgärd till test-API:et
 
-Ett API exponerar en eller flera åtgärder. I det här avsnittet lägger du till en åtgärd i det tomma API:et som du skapade. Ett fel genereras när du anropar åtgärden efter att du slutfört stegen i det här avsnittet. Du får inga fel när du har slutfört stegen senare i avsnittet [Aktivera fingerade](#enable-response-mocking) svar.
+Ett API exponerar en eller flera åtgärder. I det här avsnittet lägger du till en åtgärd i det tomma API som du skapade. Ett fel genereras när du anropar åtgärden efter att du slutfört stegen i det här avsnittet. Du får inga fel när du har slutfört stegen senare i avsnittet [Aktivera fingerade](#enable-response-mocking) svar.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -67,10 +67,10 @@ Ett API exponerar en eller flera åtgärder. I det här avsnittet lägger du til
 
      | Inställning             | Värde                             | Beskrivning                                                                                                                                                                                   |
     |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | **Visningsnamn**    | *Testanrop*                       | Namnet som visas i [utvecklarportalen.](api-management-howto-developer-portal.md)                                                                                                                                       |
+    | **Visningsnamn**    | *Testanrop*                       | Namnet som visas i [utvecklarportalen](api-management-howto-developer-portal.md).                                                                                                                                       |
     | **URL** (HTTP-verb) | GET                               | Välj ett av de fördefinierade HTTP-verben.                                                                                                                                         |
     | **URL**             | */test*                           | En URL-sökväg för API:et.                                                                                                                                                                       |
-    | **Beskrivning**     |                                   |  Valfri beskrivning av åtgärden som används för att tillhandahålla dokumentation i utvecklarportalen till utvecklare som använder det här API:et.                                                    |
+    | **Beskrivning**     |                                   |  Valfri beskrivning av åtgärden, som används för att tillhandahålla dokumentation i utvecklarportalen till utvecklare som använder det här API:et.                                                    |
     
 1. Välj fliken **Svar** under fälten URL, Visningsnamn och Beskrivning. Ange inställningar på den här fliken för att definiera svarsstatuskoder, innehållstyper, exempel och scheman.
 1. Välj **+ Lägg till** svar och välj **200 OK** i listan.
@@ -84,10 +84,10 @@ Ett API exponerar en eller flera åtgärder. I det här avsnittet lägger du til
 Även om det inte krävs för det här exemplet kan ytterligare inställningar för en API-åtgärd konfigureras på andra flikar, inklusive:
 
 
-|Flik      |Beskrivning  |
+|Flik      |Description  |
 |---------|---------|
-|**Query**     |  Lägg till frågeparametrar. Förutom att ange ett namn och en beskrivning kan du ange värden som är tilldelade till en frågeparameter. Ett av värdena kan vara markerat som standard (valfritt).        |
-|**Förfrågan**     |  Definiera typer av begärandeinnehåll, exempel och scheman.       |
+|**Query**     |  Lägg till frågeparametrar. Förutom att ange ett namn och en beskrivning kan du ange värden som har tilldelats till en frågeparameter. Ett av värdena kan vara markerat som standard (valfritt).        |
+|**Förfrågan**     |  Definiera innehållstyper, exempel och scheman för förfrågningar.       |
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -95,7 +95,7 @@ Så här börjar du använda Azure CLI:
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Om du vill lägga till en åtgärd i test-API:et kör du [kommandot az apim api operation](/cli/azure/apim/api/operation#az_apim_api_operation_create) create:
+Om du vill lägga till en åtgärd i test-API:et kör du [kommandot az apim api operation create:](/cli/azure/apim/api/operation#az_apim_api_operation_create)
 
 ```azurecli
 az apim api operation create --resource-group apim-hello-word-resource-group \
@@ -142,7 +142,7 @@ Behåll den här åtgärden för användning i resten av den här artikeln.
 1. Välj **Spara**.
 
     > [!TIP]
-    > Ett gult fält med texten **Mocking (Fingera)** är aktiverat för ditt API anger att svar som returneras från API Management fingeras av [fingerningsprincipen](api-management-advanced-policies.md#mock-response) och inte skapas av backend-enheten.
+    > Ett gult fält med texten **Mocking** har aktiverats för ditt API anger att svar som returneras från API Management är [fingerade](api-management-advanced-policies.md#mock-response) av fingerningsprincipen och inte skapas av backend-enheten.
 
 ## <a name="test-the-mocked-api"></a>Testa det simulerade API:et
 

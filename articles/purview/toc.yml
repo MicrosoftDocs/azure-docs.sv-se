@@ -16,6 +16,8 @@ items:
         href: create-purview-dotnet.md
       - name: Skapa ett Purview-konto – Python
         href: create-purview-python.md
+      - name: Hantera Kafka-meddelanden – .NET
+        href: manage-kafka-dotnet.md
   - name: Självstudier
     items:
       - name: Startpaket

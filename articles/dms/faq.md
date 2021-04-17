@@ -1,6 +1,6 @@
 ---
 title: Vanliga frågor och svar – Azure Database Migration Service
-description: Vanliga frågor om hur du använder Azure Database Migration Service för att utföra migrering av databaser.
+description: Vanliga frågor om hur du använder Azure Database Migration Service för att utföra databasmigreringar.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -11,66 +11,64 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: f4d65c97bfccd223453583b25ee0586c5bc0b1ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83ffd405bf8e39737d2d36c294eac27f9bc76daf
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101091446"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588827"
 ---
-# <a name="faq-about-using-azure-database-migration-service"></a>Vanliga frågor om att använda Azure Database Migration Service
+# <a name="faq-about-using-azure-database-migration-service"></a>Vanliga frågor och svar om att använda Azure Database Migration Service
 
 Den här artikeln innehåller vanliga frågor om hur du använder Azure Database Migration Service tillsammans med relaterade svar.
 
 ## <a name="overview"></a>Översikt
 
-**C. Vad är Azure Database Migration Service?**
-Azure Database Migration Service är en fullständigt hanterad tjänst som är utformad för att möjliggöra sömlös migrering från flera databas källor till Azure-dataplattformar med minimal stillestånds tid. Tjänsten är för närvarande allmänt tillgänglig, med pågående utvecklings insatser som fokuserar på:
+**F. Vad är Azure Database Migration Service?**
+Azure Database Migration Service är en fullständigt hanterad tjänst som har utformats för att möjliggöra sömlös migrering från flera databaskällor till Azure Data-plattformar med minimal avbrottstid. Tjänsten är för närvarande allmänt tillgänglig, med pågående utvecklingsarbete som fokuserar på:
 
 * Tillförlitlighet och prestanda.
-* Upprepat tillägg av käll mål par.
-* Fortsatt investering i friktion – kostnads fria migreringar.
+* Iterativ addition av käll-målpar.
+* Fortsatt investering i friktionsfria migreringar.
 
-**C. Vilka käll-/mål-par har Azure Database Migration Service för närvarande stöd för?**
-Tjänsten har stöd för en rad olika käll-/mål par, eller migrerings scenarier. En fullständig lista över statusen för varje tillgängligt migrerings scenario finns i artikeln [status för de migrerings scenarier som stöds av Azure Database migration service](./resource-scenario-status.md).
+**F. Vilka käll-/målpar stöder Azure Database Migration Service för närvarande?**
+Tjänsten stöder för närvarande en mängd olika käll-/målpar eller migreringsscenarier. En fullständig lista över status för varje tillgängligt migreringsscenario finns i artikeln Status för migreringsscenarier [som stöds av Azure Database Migration Service](https://github.com/MicrosoftDocs/azure-docs-pr/pull/resource-scenario-status.md).
 
-Andra scenarier för migrering finns i för hands version och kräver att du skickar en utnämning via DMS Preview-webbplatsen. En fullständig lista över scenarierna i för hands versionen och för att registrera dig för att delta i något av dessa erbjudanden finns i [DMS Preview-webbplatsen](https://aka.ms/dms-preview/).
+**F. Vilka versioner SQL Server stöder Azure Database Migration Service som källa?**
+När du migrerar från SQL Server kommer källor som stöds för Azure Database Migration Service att SQL Server 2005 till och med SQL Server 2019.
 
-**C. Vilka versioner av SQL Server har Azure Database Migration Service stöd för som en källa?**
-När du migrerar från SQL Server är källor som stöds för Azure Database Migration Service SQL Server 2005 till och med SQL Server 2019.
-
-**F: Vad är skillnaden mellan en offline-och en online-migrering när du använder Azure Database Migration Service?**
-Du kan använda Azure Database Migration Service för att utföra offline-och online-migreringar. Med en *offline* -migrering startar Application nedtid när migreringen startar. Vid en *online* -migrering är stillestånds tiden begränsad till den tid det tar att skära i slutet av migreringen. Vi rekommenderar att du testar en offlinemigrering för att avgöra om det frånkopplade tillståndet är godtagbart. Om det inte är det kan du utföra en onlinemigrering.
+**F: Vad är skillnaden Azure Database Migration Service offline och en onlinemigrering när du använder en onlinemigrering?**
+Du kan använda Azure Database Migration Service för att utföra offline- och onlinemigrering. Med  en offlinemigrering startar programmets stilleståndstid när migreringen startar. Med  en onlinemigrering är stilleståndstiden begränsad till tiden för att minska i slutet av migreringen. Vi rekommenderar att du testar en offlinemigrering för att avgöra om det frånkopplade tillståndet är godtagbart. Om det inte är det kan du utföra en onlinemigrering.
 
 > [!NOTE]
-> Om du använder Azure Database Migration Service för att utföra en online-migrering måste du skapa en instans utifrån pris nivån Premium. Mer information finns i på [prissättningssidan](https://azure.microsoft.com/pricing/details/database-migration/) för Azure Database Migration Service.
+> Om Azure Database Migration Service för att utföra en onlinemigrering måste du skapa en instans som baseras på prisnivån Premium. Mer information finns i på [prissättningssidan](https://azure.microsoft.com/pricing/details/database-migration/) för Azure Database Migration Service.
 
-**C. Hur jämförs Azure Database Migration Service med andra Migreringsverktyg för Microsoft Database, till exempel databas Migration Assistant (DMA) eller SQL Server Migration Assistant (SSMA)?**
-Azure Database Migration Service är den bästa metoden för migrering av databasen till Microsoft Azure i stor skala. Mer information om hur Azure Database Migration Service jämför med andra Migreringsverktyg för Microsoft Database och rekommendationer om hur du använder tjänsten för olika scenarier finns i blogg inlägget [differentiering Microsofts verktyg och tjänster för databas migrering](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529).
+**F. Hur är Azure Database Migration Service jämfört med andra Migreringsverktyg för Microsoft-databaser, till exempel Database Migration Assistant (DMA) eller SQL Server Migration Assistant (SSMA)?**
+Azure Database Migration Service är den bästa metoden för databasmigrering för Microsoft Azure i stor skala. Mer information om hur Azure Database Migration Service kan jämföras med andra Migreringsverktyg för Microsoft-databaser och rekommendationer om hur du använder tjänsten för olika scenarier finns i blogginlägget [Differentiating Microsoft's Database Migration Tools and Services](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529).
 
-**C. Hur jämför Azure Database Migration Service med det Azure Migrate erbjudandet?**
-Azure Migrate hjälper till med migrering av lokala virtuella datorer till Azure IaaS. Tjänsten utvärderar migreringens lämplighet och prestanda beroende storlek och ger kostnads uppskattningar för att köra dina lokala virtuella datorer i Azure. Azure Migrate är användbart för migrering av lokala VM-baserade arbets belastningar till virtuella Azure IaaS-datorer. Men till skillnad från Azure Database Migration Service är Azure Migrate inte en specialiserad databas migrations tjänst för Azure PaaS Relations databas plattformar som Azure SQL Database eller Azure SQL-hanterad instans.
+**F. Hur är Azure Database Migration Service jämfört med Azure Migrate erbjudandet?**
+Azure Migrate hjälp med migrering av lokala virtuella datorer till Azure IaaS. Tjänsten utvärderar migreringens lämplighet och prestandabaserade storleksändring och ger kostnadsuppskattningar för att köra dina lokala virtuella datorer i Azure. Azure Migrate är användbart för lift and shift-migreringar av lokala VM-baserade arbetsbelastningar till virtuella Azure IaaS-datorer. Men till skillnad Azure Database Migration Service är Azure Migrate inte ett särskilt erbjudande för databasmigrering för Relationsdatabasplattformar i Azure PaaS, till exempel Azure SQL Database eller Azure SQL Managed Instance.
 
-**C. Lagrar Database Migration Service kund information?**
-Nej. Database Migration Service lagrar inte kund information.
+**F. Lagrar Database Migration Service kunddata?**
+Nej. Database Migration Service lagrar inte kunddata.
 
 ## <a name="setup"></a>Konfiguration
 
-**C. Vilka är kraven för att använda Azure Database Migration Service?**
-Det krävs flera krav för att säkerställa att Azure Database Migration Service fungerar smidigt när du utför databas migreringar. Vissa krav gäller för alla scenarier (käll mål par) som stöds av tjänsten, medan andra krav är unika för ett visst scenario.
+**F. Vilka är kraven för att använda Azure Database Migration Service?**
+Det finns flera förutsättningar som krävs för att säkerställa Azure Database Migration Service körs smidigt när du utför databasmigrering. Några av kraven gäller för alla scenarier (källmålpar) som stöds av tjänsten, medan andra krav är unika för ett specifikt scenario.
 
-Azure Database Migration Service förutsättningar som är gemensamma för alla typer av migrering som stöds omfattar behovet av att:
+Azure Database Migration Service som är gemensamma för alla migreringsscenarier som stöds är bland annat behovet av att:
 
-* Skapa en Microsoft Azure Virtual Network för Azure Database Migration Service med hjälp av Azure Resource Manager distributions modell, som tillhandahåller plats-till-plats-anslutning till dina lokala käll servrar genom att använda antingen [ExpressRoute](../expressroute/expressroute-introduction.md) eller [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
-* Se till att de virtuella nätverkets säkerhets grupp regler inte blockerar port 443 för ServiceTags av Service Bus, Storage och AzureMonitor. Mer information om NSG för trafik filtrering i virtuellt nätverk finns i artikeln [filtrera nätverks trafik med nätverks säkerhets grupper](../virtual-network/virtual-network-vnet-plan-design-arm.md).
-* När du använder en brand Väggs installation framför dina käll databaser, kan du behöva lägga till brand Väggs regler för att tillåta Azure Database Migration Service åtkomst till käll databaserna för migrering.
+* Skapa en Microsoft Azure Virtual Network för Azure Database Migration Service med hjälp av Azure Resource Manager-distributionsmodellen, som ger plats-till-plats-anslutning till dina lokala källservrar med hjälp av [ExpressRoute](../expressroute/expressroute-introduction.md) eller [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+* Kontrollera att reglerna för nätverkssäkerhetsgruppen för det virtuella nätverket inte blockerar port 443 för ServiceTags för ServiceBus, Storage och AzureMonitor. Mer information om filtrering av nätverkssäkerhetsgrupper för virtuella nätverk finns i artikeln [Filtrera nätverkstrafik med nätverkssäkerhetsgrupper.](../virtual-network/virtual-network-vnet-plan-design-arm.md)
+* När du använder en brandväggsinstallation framför dina källdatabaser kan du behöva lägga till brandväggsregler för att tillåta Azure Database Migration Service åtkomst till källdatabaserna för migrering.
 
-En lista över alla krav som krävs för att konkurrera särskilda migrerings scenarier med hjälp av Azure Database Migration Service finns i de relaterade självstudierna i Azure Database Migration Service- [dokumentationen](./dms-overview.md) på docs.Microsoft.com.
+En lista över alla förutsättningar som krävs för att konkurrera specifika migreringsscenarier med Azure Database Migration Service finns i relaterade självstudier i Azure Database Migration Service [dokumentationen](./dms-overview.md) om docs.microsoft.com.
 
-**C. Hur gör jag för att hitta IP-adressen för Azure Database Migration Service så att jag kan skapa en lista över tillåtna brand Väggs regler som används för att få åtkomst till min käll databas för migrering?**
-Du kan behöva lägga till brand Väggs regler som ger Azure Database Migration Service åtkomst till din käll databas för migrering. IP-adressen för tjänsten är dynamisk, men om du använder ExpressRoute är adressen privat tilldelad till företags nätverket. Det enklaste sättet att identifiera rätt IP-adress är att titta i samma resurs grupp som din etablerade Azure Database Migration Service resurs för att hitta det associerade nätverks gränssnittet. Normalt börjar namnet på nätverks gränssnitts resursen med NIC-prefixet och följt av ett unikt Character och en nummersekvens, till exempel NIC-jj6tnztnmarpsskr82rbndyp. Genom att välja den här nätverks gränssnitts resursen kan du se IP-adressen som måste tas med i listan över tillåtna på sidan resurs översikt Azure Portal.
+**F. Hur gör jag för att hitta IP-adressen för Azure Database Migration Service så att jag kan skapa en lista över tillåtna för brandväggsregler som används för att komma åt min källdatabas för migrering?**
+Du kan behöva lägga till brandväggsregler som tillåter Azure Database Migration Service åtkomst till källdatabasen för migrering. IP-adressen för tjänsten är dynamisk, men om du använder ExpressRoute tilldelas den här adressen privat av företagsnätverket. Det enklaste sättet att identifiera lämplig IP-adress är att leta i samma resursgrupp som din etablerade Azure Database Migration Service-resurs för att hitta det associerade nätverksgränssnittet. Vanligtvis börjar namnet på nätverksgränssnittsresursen med NIC-prefixet och följs av ett unikt tecken och en nummersekvens, till exempel NIC-jj6tnztnmarpsskr82rbndyp. Genom att välja den här nätverksgränssnittsresursen kan du se IP-adressen som måste ingå i listan över tillåtna på resursöversikten Azure Portal sidan.
 
-Du kan också behöva inkludera port källan som SQL Server lyssnar på listan över tillåtna. Som standard är det port 1433, men käll SQL Server kan konfigureras för att lyssna på andra portar också. I så fall måste du även inkludera dessa portar i listan över tillåtna. Du kan bestämma vilken port som SQL Server lyssnar på genom att använda en dynamisk hanterings fråga:
+Du kan också behöva inkludera den portkälla som SQL Server lyssnar på listan över tillåtna. Som standard är det port 1433, men SQL Server kan konfigureras för att lyssna på andra portar också. I det här fallet måste du även inkludera dessa portar i listan över tillåtna portar. Du kan fastställa vilken port som SQL Server lyssnar på med hjälp av en fråga i dynamisk hanteringsvy:
 
 ```sql
     SELECT DISTINCT
@@ -79,7 +77,7 @@ Du kan också behöva inkludera port källan som SQL Server lyssnar på listan �
     WHERE local_tcp_port IS NOT NULL
 ```
 
-Du kan också bestämma vilken port som SQL Server lyssnar genom att skicka frågor till SQL Server fel loggen:
+Du kan också fastställa vilken port som SQL Server lyssnar genom att fråga SQL Server felloggen:
 
 ```sql
     USE master
@@ -88,38 +86,38 @@ Du kan också bestämma vilken port som SQL Server lyssnar genom att skicka frå
     GO
 ```
 
-**C. Hur gör jag för att skapa en Microsoft Azure Virtual Network?**
-Även om flera Microsoft-självstudier som kan hjälpa dig genom processen med att konfigurera ett virtuellt nätverk visas den officiella dokumentationen i artikeln [Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
+**F. Hur gör jag för att konfigurera en Microsoft Azure Virtual Network?**
+Det finns flera Microsoft-självstudier som kan hjälpa dig att konfigurera ett virtuellt nätverk, men den officiella dokumentationen finns i [artikeln Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
 
 ## <a name="usage"></a>Användning
 
-**C. Vad är en sammanfattning av de steg som krävs för att använda Azure Database Migration Service för att utföra en migrering av databasen?**
-Under en vanlig, enkel databas-migrering, gör du följande:
+**F. Vad är en sammanfattning av de steg som krävs för att använda Azure Database Migration Service för att utföra en databasmigrering?**
+Under en typisk enkel databasmigrering gör du följande:
 
-1. Skapa en eller flera mål databaser.
-2. Utvärdera dina käll databaser.
-    * För homogena migreringar kan du utvärdera din eller dina befintliga databaser med hjälp av [DMA](https://www.microsoft.com/download/details.aspx?id=53595).
-    * För heterogena migreringar (från konkurrens kraftiga källor) kan du utvärdera dina befintliga databaser med [SSMA](/sql/ssma/sql-server-migration-assistant). Du kan också använda SSMA för att konvertera databas objekt och migrera schemat till din mål plattform.
+1. Skapa en eller flera måldatabaser.
+2. Utvärdera dina källdatabaser.
+    * För homogena migreringar utvärderar du dina befintliga databaser med hjälp av [DMA](https://www.microsoft.com/download/details.aspx?id=53595).
+    * För heterogena migreringar (från konkurrerande källor) utvärderar du dina befintliga databaser med [SSMA](/sql/ssma/sql-server-migration-assistant). Du kan också använda SSMA för att konvertera databasobjekt och migrera schemat till målplattformen.
 3. Skapa en instans av Azure Database Migration Service.
-4. Skapa ett migreringsjobb som anger käll databas (er), mål databaser och de tabeller som ska migreras.
-5. Starta den fullständiga belastningen.
+4. Skapa ett migreringsprojekt som anger källdatabaserna, måldatabaserna och tabellerna som ska migreras.
+5. Starta den fullständiga inläsningen.
 6. Välj den efterföljande verifieringen.
-7. Utför en manuell växling av produktions miljön till den nya molnbaserade databasen.
+7. Utför en manuell växling av produktionsmiljön till den nya molnbaserade databasen.
 
-## <a name="troubleshooting-and-optimization"></a>Fel sökning och optimering
+## <a name="troubleshooting-and-optimization"></a>Felsökning och optimering
 
-**C. Jag konfigurerar ett migreringsjobb i DMS och jag har problem med att ansluta till min käll databas. Vad ska jag göra?**
-Om du har problem med att ansluta till käll databas systemet medan du arbetar med migreringen, skapar du en virtuell dator i samma undernät i det virtuella nätverket där du konfigurerar din DMS-instans. På den virtuella datorn bör du kunna köra ett anslutnings test, till exempel använda en UDL-fil för att testa en anslutning till SQL Server eller ladda ned Robo-3T för att testa MongoDB-anslutningar. Om anslutnings testet lyckas bör du inte ha problem med att ansluta till käll databasen. Kontakta nätverks administratören om anslutnings testet inte lyckas.
+**F. Jag ställer in ett migreringsprojekt i DMS och jag har problem med att ansluta till min källdatabas. Vad ska jag göra?**
+Om du har problem med att ansluta till källdatabassystemet när du arbetar med migreringen kan du skapa en virtuell dator i samma undernät i det virtuella nätverket som du konfigurerade DMS-instansen med. På den virtuella datorn bör du kunna köra ett anslutningstest, till exempel använda en UDL-fil för att testa en anslutning till SQL Server eller ladda ned Robo 3T för att testa MongoDB-anslutningar. Om anslutningstestet lyckas bör du inte ha problem med att ansluta till källdatabasen. Kontakta nätverksadministratören om anslutningstestet inte lyckas.
 
-**C. Varför är mina Azure Database Migration Service otillgängliga eller stoppade?**
-Om användaren uttryckligen stoppar Azure Database Migration Service (DMS) eller om tjänsten är inaktiv under en period på 24 timmar, kommer tjänsten att vara i ett stoppat eller automatiskt pausat läge. I varje fall är tjänsten inte tillgänglig och har statusen stoppad.  Starta om tjänsten för att återuppta aktiva migreringar.
+**F. Varför är min Azure Database Migration Service otillgänglig eller stoppad?**
+Om användaren uttryckligen stoppar Azure Database Migration Service (DMS) eller om tjänsten är inaktiv i 24 timmar, är tjänsten i ett stoppat eller automatiskt pausat tillstånd. I varje fall är tjänsten inte tillgänglig och har stoppad status.  Starta om tjänsten för att återuppta aktiva migreringar.
 
-**C. Finns det några rekommendationer för att optimera prestanda för Azure Database Migration Service?**
-Du kan göra några saker för att påskynda migreringen av databasen med hjälp av tjänsten:
+**F. Finns det några rekommendationer för att optimera prestanda för Azure Database Migration Service?**
+Du kan göra några saker för att påskynda databasmigrering med hjälp av tjänsten:
 
-* Använd pris nivån för flera CPU-Generell användning när du skapar tjänst instansen så att tjänsten kan dra nytta av flera virtuella processorer för parallellisering och snabbare data överföring.
-* Skala tillfälligt upp Azure SQL Database mål instansen till SKU: n för Premium nivån under datamigreringen för att minimera Azure SQL Database begränsning som kan påverka data överförings aktiviteter när du använder lager på lägre nivåer.
+* Använd prisnivån multi CPU Generell användning när du skapar tjänstinstansen så att tjänsten kan dra nytta av flera virtuella processorer för parallellisering och snabbare dataöverföring.
+* Tillfälligt skala upp din Azure SQL Database-målinstans till SKU på Premium-nivå under datamigreringsåtgärden för att minimera Azure SQL Database-begränsning som kan påverka dataöverföringsaktiviteter när du använder SKU:er på lägre nivå.
 
 ## <a name="next-steps"></a>Nästa steg
 
-En översikt över Azure Database Migration Service och regional tillgänglighet finns i artikeln [Vad är Azure Database migration service](dms-overview.md).
+En översikt över Azure Database Migration Service och regional tillgänglighet finns i artikeln [Vad är Azure Database Migration Service](dms-overview.md).
