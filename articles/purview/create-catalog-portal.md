@@ -1,41 +1,43 @@
 ---
-title: 'Snabb start: skapa ett Azure avdelningens kontroll-konto i Azure Portal (för hands version)'
-description: I den här snabb starten beskrivs hur du skapar ett Azure avdelningens kontroll-konto och konfigurerar behörigheter för att börja använda det.
+title: 'Snabbstart: Skapa ett Azure Purview-konto i Azure Portal (förhandsversion)'
+description: Den här snabbstarten beskriver hur du skapar ett Azure Purview-konto och konfigurerar behörigheter för att börja använda det.
 author: nayenama
 ms.author: nayenama
+ms.date: 10/23/2020
+ms.topic: quickstart
 ms.service: purview
 ms.subservice: purview-data-catalog
-ms.topic: quickstart
-ms.date: 10/23/2020
-ms.openlocfilehash: 0346b467bc299b4eb6125df04a4449e94c035e47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 72f4ac8df39b9511fd98a1dd5a3eca76e11e34bf
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666470"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535152"
 ---
-# <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Snabb start: skapa ett Azure avdelningens kontroll-konto i Azure Portal
+# <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Snabbstart: Skapa ett Azure Purview-konto i Azure Portal
 
 > [!IMPORTANT]
-> Azure avdelningens kontroll är för närvarande en för hands version. Kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versioner innehåller ytterligare juridiska villkor som gäller för Azure-funktioner som är beta, för hands version eller på annat sätt ännu inte har publicerats i allmän tillgänglighet.
+> Azure Purview finns för närvarande i FÖRHANDSVERSION. De [kompletterande användningsvillkoren för Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) innehåller ytterligare juridiska villkor som gäller för Azure-funktioner som är i betaversion, förhandsversion eller som inte har släppts allmänt ännu.
 
-I den här snabb starten skapar du ett Azure avdelningens kontroll-konto.
+I den här snabbstarten skapar du ett Azure Purview-konto.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
 * En egen [klientorganisation i Azure Active Directory](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
 * Ditt konto måste ha behörighet att skapa resurser i prenumerationen
 
-* Om du **Azure policy** blockera alla program från att skapa **lagrings konto** och **EventHub-namnområde** måste du göra princip undantag med hjälp av taggen, som kan anges under processen för att skapa ett avdelningens kontroll-konto. Huvud orsaken är att för varje avdelningens kontroll-konto måste det skapas en hanterad resurs grupp och inom den här resurs gruppen, ett lagrings konto och ett EventHub-namnområde.
+* Om du har **Azure Policy** blockera alla program från att skapa **lagringskonto** och **EventHub-namnrymd** måste du göra principfel med hjälp av taggen , som kan anges när du skapar ett Purview-konto. Huvudorsaken är att för varje Purview-konto som skapas måste det skapa en hanterad resursgrupp och i den här resursgruppen ett lagringskonto och ett EventHub-namnområde.
 
     > [!important]
-    > Du behöver inte följa det här steget om du inte har Azure Policy eller om en befintlig Azure Policy inte blockerar skapandet av **lagrings konto** och **EventHub-namnområde**.
+    > Du behöver inte följa det här steget om du inte har Azure Policy eller om en befintlig Azure Policy inte blockerar skapandet av **lagringskontot** och **EventHub-namnområdet**.
 
-    1. Navigera till Azure Portal och Sök efter **princip**
-    1. Följ [skapa en anpassad princip definition](../governance/policy/tutorials/create-custom-policy-definition.md) eller ändra en befintlig princip om du vill lägga till två undantag med `not` operatorn och `resourceBypass` taggen:
+    1. Gå till Azure Portal och sök efter **princip**
+    1. Följ [Skapa en anpassad principdefinition eller](../governance/policy/tutorials/create-custom-policy-definition.md) ändra befintlig princip för att lägga till två undantag med `not` operatorn och `resourceBypass` taggen :
 
         ```json
         {
@@ -79,13 +81,13 @@ I den här snabb starten skapar du ett Azure avdelningens kontroll-konto.
         ```
         
         > [!Note]
-        > Taggen kan vara allt `resourceBypass` intill och det är upp till dig att definiera värdet när du skapar avdelningens kontroll i senare steg så länge som principen kan identifiera taggen.
+        > Taggen kan vara vad som helst bredvid och det är upp till dig att definiera värdet när du skapar Purview i senare steg så länge principen `resourceBypass` kan identifiera taggen.
 
-        :::image type="content" source="./media/create-catalog-portal/policy-definition.png" alt-text="Skärm bild som visar hur du skapar en princip definition.":::
+        :::image type="content" source="./media/create-catalog-portal/policy-definition.png" alt-text="Skärmbild som visar hur du skapar en principdefinition.":::
 
-    1. [Skapa en princip tilldelning](../governance/policy/assign-policy-portal.md) med den anpassade principen som skapats.
+    1. [Skapa en principtilldelning med](../governance/policy/assign-policy-portal.md) hjälp av den anpassade principen som skapats.
 
-        [![Skärm bild som visar hur du skapar princip tilldelning](./media/create-catalog-portal/policy-assignment.png)](./media/create-catalog-portal/policy-assignment.png#lightbox)
+        [![Skärmbild som visar hur du skapar principtilldelning](./media/create-catalog-portal/policy-assignment.png)](./media/create-catalog-portal/policy-assignment.png#lightbox)
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -93,92 +95,92 @@ Logga in på [Azure-portalen](https://portal.azure.com) med ditt Azure-konto.
 
 ## <a name="configure-your-subscription"></a>Konfigurera din prenumeration
 
-Om det behövs följer du de här stegen för att konfigurera din prenumeration så att Azure-avdelningens kontroll kan köras i din prenumeration:
+Om det behövs följer du dessa steg för att konfigurera din prenumeration så att Azure Purview kan köras i din prenumeration:
 
-   1. Sök efter och välj **prenumerationer** i Azure Portal.
+   1. I Azure Portal du efter och väljer **Prenumerationer**.
 
-   1. I listan över prenumerationer väljer du den prenumeration som du vill använda. Administrativ behörighet för prenumerationen krävs.
+   1. I listan över prenumerationer väljer du den prenumeration som du vill använda. Administrativ åtkomstbehörighet för prenumerationen krävs.
 
-      :::image type="content" source="./media/create-catalog-portal/select-subscription.png" alt-text="Skärm bild som visar hur du väljer en prenumeration i Azure Portal.":::
+      :::image type="content" source="./media/create-catalog-portal/select-subscription.png" alt-text="Skärmbild som visar hur du väljer en prenumeration i Azure Portal.":::
 
-   1. För din prenumeration väljer du **resurs leverantörer**. I fönstret **resurs leverantörer** söker du efter och registrerar alla tre resurs leverantörer: 
-       1. **Microsoft. avdelningens kontroll**
+   1. För din prenumeration väljer du **Resursproviders.** I fönstret **Resursproviders** söker du efter och registrerar alla tre resursproviders: 
+       1. **Microsoft.Purview**
        1. **Microsoft.Storage**
-       1. **Microsoft. EventHub** 
+       1. **Microsoft.EventHub** 
       
-      Om de inte är registrerade registrerar du dem genom att välja **Registrera**.
+      Om de inte är registrerade registrerar du den genom att välja **Registrera**.
 
-      :::image type="content" source="./media/create-catalog-portal/register-purview-resource-provider.png" alt-text="Skärm bild som visar hur du registrerar Microsoft dot Azure avdelningens kontroll Resource Provider i Azure Portal.":::
+      :::image type="content" source="./media/create-catalog-portal/register-purview-resource-provider.png" alt-text="Skärmbild som visar hur du registrerar Resursprovidern Microsoft dot Azure Purview i Azure Portal.":::
 
-## <a name="create-an-azure-purview-account-instance"></a>Skapa en instans av Azure avdelningens kontroll-konto
+## <a name="create-an-azure-purview-account-instance"></a>Skapa en Azure Purview-kontoinstans
 
-1. Gå till sidan med **avdelningens kontroll-konton** i Azure Portal och välj sedan **Lägg till** för att skapa ett nytt Azure avdelningens kontroll-konto. Alternativt kan du gå till Marketplace-sökning efter **avdelningens kontroll-konton** och välja **skapa**. Observera att du bara kan lägga till ett Azure avdelningens kontroll-konto i taget.
+1. Gå till sidan **Rensa konton i** Azure Portal och välj sedan Lägg till **för** att skapa ett nytt Azure Purview-konto. Du kan också gå till Marketplace-sökning efter **Purview-konton** och välja **Skapa.** Observera att du bara kan lägga till ett Azure Purview-konto i taget.
 
-   :::image type="content" source="./media/create-catalog-portal/add-purview-instance.png" alt-text="Skärm bild som visar hur du skapar en Azure avdelningens kontroll-konto instans i Azure Portal.":::
-
-    > [!Note] 
-    > Azure avdelningens kontroll stöder inte flytt av sitt konto mellan regioner. Du hittar mer information om det här på [sidan tjänster som stöds av Azure](../azure-resource-manager/management/region-move-support.md).
-
-1. Gör följande på fliken **grundläggande** :
-    1. Välj en **resurs grupp**.
-    1. Ange ett **avdelningens kontroll-konto namn** för din katalog. Blank steg och symboler är inte tillåtna.
-    1. Välj en  **plats** och välj sedan **Nästa: konfiguration**.
-1. På fliken **konfiguration** väljer du önskad **plattforms storlek** . tillåtna värden är 4 kapacitets enheter (CU) och 16 cu. Välj **Nästa: Taggar**.
-1. På fliken **taggar** kan du också lägga till en eller flera taggar. Taggarna används endast i Azure Portal, inte i Azure-avdelningens kontroll. 
+   :::image type="content" source="./media/create-catalog-portal/add-purview-instance.png" alt-text="Skärmbild som visar hur du skapar en Azure Purview-kontoinstans i Azure Portal.":::
 
     > [!Note] 
-    > Om du har **Azure policy** och behöver lägga till undantag som i **krav** måste du lägga till rätt tagg. Du kan till exempel lägga till `resourceBypass` tagg: :::image type="content" source="./media/create-catalog-portal/add-purview-tag.png" alt-text="Lägg till tagg i avdelningens kontroll-kontot.":::
+    > Azure Purview stöder inte flytt av sitt konto mellan regioner. Mer information om detta finns på sidan [för Azure-tjänster som stöds.](../azure-resource-manager/management/region-move-support.md)
 
-1. Välj **granska & skapa** och välj sedan **skapa**. Det tar några minuter att slutföra skapandet. Den nya konto instansen för Azure-avdelningens kontroll visas i listan på sidan med **avdelningens kontroll-konton** .
-1. När den nya konto etableringen är klar väljer **du gå till resurs**.
+1. Gör **följande på** fliken Grundläggande inställningar:
+    1. Välj en **Resursgrupp**.
+    1. Ange ett **Purview-kontonamn** för katalogen. Blanksteg och symboler tillåts inte.
+    1. Välj en **Plats** och välj sedan **Nästa: Konfiguration.**
+1. På fliken **Konfiguration** väljer du önskad **plattformsstorlek** – de tillåtna värdena är 4 kapacitetsenheter (CU) och 16 CU. Välj **Nästa: Taggar**.
+1. På fliken **Taggar** kan du lägga till en eller flera taggar. De här taggarna är endast till för Azure Portal, inte Azure Purview. 
+
+    > [!Note] 
+    > Om du har **Azure Policy** och behöver lägga till undantag som **i Krav** måste du lägga till rätt tagg. Du kan till exempel lägga till `resourceBypass` taggen: :::image type="content" source="./media/create-catalog-portal/add-purview-tag.png" alt-text="Lägg till tagg i Purview-kontot.":::
+
+1. Välj **Granska & Skapa** och välj sedan **Skapa.** Det tar några minuter att slutföra skapandet. Den nyligen skapade Azure Purview-kontoinstansen visas i listan på **sidan Rensa** konton.
+1. När den nya kontoetablering är klar väljer **du Gå till resurs**.
 
     > [!Note]
-    > Om etableringen misslyckades med `Conflict` status innebär det att det finns en princip spärr för Azure-avdelningens kontroll från att skapa ett **lagrings konto** och **EventHub-namnområde**. Du måste gå igenom **nödvändiga** steg för att lägga till undantag.
-    > :::image type="content" source="./media/create-catalog-portal/purview-conflict-error.png" alt-text="Fel meddelande för avdelningens kontroll-konflikt":::
+    > Om etableringen misslyckades med status innebär det att det finns en Azure-princip som blockerar Purview från att skapa ett `Conflict` **lagringskonto** och **EventHub-namnområdet**. Du måste gå igenom stegen **för förutsättningar för** att lägga till undantag.
+    > :::image type="content" source="./media/create-catalog-portal/purview-conflict-error.png" alt-text="Felmeddelande för vykonflikt":::
 
-1. Välj **Starta avdelningens kontroll-konto**.
+1. Välj **Starta vykonto**.
 
-   :::image type="content" source="./media/use-purview-studio/launch-from-portal.png" alt-text="Skärm bild av valet för att starta Azure avdelningens kontroll-konto katalogen.":::
+   :::image type="content" source="./media/use-purview-studio/launch-from-portal.png" alt-text="Skärmbild av valet för att starta Azure Purview-kontokatalogen.":::
 
-## <a name="add-a-security-principal-to-a-data-plane-role"></a>Lägg till ett säkerhets objekt till en data Plans roll
+## <a name="add-a-security-principal-to-a-data-plane-role"></a>Lägga till ett säkerhetsobjekt i en dataplansroll
 
-Innan du eller teamet kan börja använda Azure-avdelningens kontroll måste du lägga till ett eller flera säkerhets objekt i en av de fördefinierade data Plans rollerna: **avdelningens kontroll data Reader**, **avdelningens kontroll data curator** eller **avdelningens kontroll Data Source Administrator**. Mer information om Azure avdelningens kontroll Data Catalog-behörigheter finns i [katalog behörigheter](catalog-permissions.md).
+Innan du eller ditt team kan börja använda Azure Purview måste en eller flera säkerhetsobjekt läggas till i någon av de fördefinierade dataplansrollerna: **Purview Data Reader**, **Purview Data Intendt** eller **Purview Data Source Administrator**. Mer information om Azure Purview Data Catalog behörigheter finns i [Katalogbehörigheter.](catalog-permissions.md)
 
-Så här lägger du till ett säkerhets objekt i rollen **avdelningens kontroll data curator** data plan i ett Azure avdelningens kontroll-konto:
+Så här lägger du till ett säkerhetsobjekt **i dataplanrollen Purview Data Intendent** i ett Azure Purview-konto:
 
-1. Gå till sidan med [**avdelningens kontroll-konton**](https://aka.ms/purviewportal) i Azure Portal.
+1. Gå till [**sidan Rensa konton**](https://aka.ms/purviewportal) i Azure Portal.
 
-1. Välj det Azure avdelningens kontroll-konto som du vill ändra.
+1. Välj det Azure Purview-konto som du vill ändra.
 
-1. På sidan **avdelningens kontroll-konto** väljer du fliken **åtkomst kontroll (IAM)**
+1. På sidan **Purview-konto** väljer du fliken **Åtkomstkontroll (IAM)**
 
-1. Klicka på **+ Lägg till**
+1. Klicka **på + Lägg till**
 
-Om du klickar på Lägg till visas två val som visar både markerade (inaktiverade). det innebär att du inte har rätt behörighet för att lägga till någon i en data Plans roll på Azure avdelningens kontroll-kontot. Du måste hitta en ägare, användar åtkomst administratör eller någon annan med roll tilldelnings utfärdaren på ditt Azure avdelningens kontroll-konto. Du kan söka efter rätt personer genom att välja fliken **roll tilldelningar** och sedan rulla nedåt för att leta efter ägare eller användar åtkomst administratör och kontakta dessa personer.
+Om du när du klickar på Lägg till visas två alternativ som visar båda markerade (inaktiverade) så innebär det att du inte har rätt behörighet att lägga till någon i en dataplansroll på Azure Purview-kontot. Du måste hitta en ägare, administratör för användaråtkomst eller någon annan med rolltilldelningsbehörighet på ditt Azure Purview-konto. Du kan leta efter rätt  personer genom att välja fliken Rolltilldelningar och sedan rulla ned för att leta efter Ägare eller Administratör för användaråtkomst och kontakta dessa personer.
 
 1. Välj **Lägg till rolltilldelning**.
 
-1. För roll typen i **avdelningens kontroll data curator roll** eller **avdelningens kontroll rollen administratör för data källa** , beroende på vad säkerhets objekt ska användas för (se [katalog behörigheter](catalog-permissions.md) och [program-och tjänst huvud objekt i Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md) för mer information).
+1. För rolltypen i **rollen Purview Data Intendent** eller **Purview Data Source Administrator Role** beroende [](catalog-permissions.md) på vad säkerhetsobjekt kommer att användas för (mer information finns i Katalogbehörigheter och program- och tjänsthuvudnamnsobjekt [i Azure Active Directory).](../active-directory/develop/app-objects-and-service-principals.md)
 
-1. För **tilldela behörighet att** lämna kvar standard-, **användar-, grupp-eller tjänstens huvud namn**.
+1. För **Tilldela åtkomst lämnar** du standardvärdet **Användare, Grupp eller Tjänstens huvudnamn**.
 
-1. För **väljer** du ange namnet på användaren, Azure Active Directory grupp eller tjänstens huvud namn som du vill tilldela och klickar sedan på namnet i resultat fönstret.
+1. För **Välj** anger du namnet på användaren Azure Active Directory grupp eller tjänstens huvudnamn som du vill tilldela och klickar sedan på användarens namn i resultatfönstret.
 
-1. Klicka på **Spara**.
+1. Klicka på **Spara.**
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du inte längre behöver det här Azure avdelningens kontroll-kontot tar du bort det med följande steg:
+Om du inte längre behöver det här Azure Purview-kontot tar du bort det med följande steg:
 
-1. Gå till sidan med **avdelningens kontroll-konton** i Azure Portal.
+1. Gå till **sidan Rensa konton** i Azure Portal.
 
-2. Välj det Azure avdelningens kontroll-konto som du skapade i början av den här snabb starten. Välj **ta bort**, ange namnet på kontot och välj sedan **ta bort**.
+2. Välj det Azure Purview-konto som du skapade i början av den här snabbstarten. Välj **Ta** bort, ange namnet på kontot och välj sedan Ta **bort.**
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du lärt dig hur du skapar ett Azure avdelningens kontroll-konto.
+I den här snabbstarten har du lärt dig hur du skapar ett Azure Purview-konto.
 
-Gå vidare till nästa artikel om du vill lära dig hur du ger användare åtkomst till ditt Azure avdelningens kontroll-konto. 
+Gå vidare till nästa artikel om du vill lära dig hur du ger användare åtkomst till ditt Azure Purview-konto. 
 
 > [!div class="nextstepaction"]
-> [Lägg till användare till ditt Azure avdelningens kontroll-konto](catalog-permissions.md)
+> [Lägga till användare i ditt Azure Purview-konto](catalog-permissions.md)
