@@ -1,47 +1,47 @@
 ---
 title: Använda aktiviteter med flera instanser för att köra MPI-program
-description: Lär dig hur du kör MPI-program (Message Passing Interface) med hjälp av uppgifts typen multiinstance i Azure Batch.
+description: Lär dig hur du kör Message Passing Interface-program (MPI) med hjälp av aktivitetstyp med flera instanser i Azure Batch.
 ms.topic: how-to
-ms.date: 03/25/2021
-ms.openlocfilehash: 02764f8dd8a6bb3e4224b8b44fe78ab7e15ba85d
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 04/13/2021
+ms.openlocfilehash: e96cfb89b186d69f6ad969949b8df609956114d2
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219864"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389408"
 ---
-# <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Använda aktiviteter med flera instanser för att köra MPI-program (Message Passing Interface) i batch
+# <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Använda aktiviteter med flera instanser för att Message Passing Interface MPI-program i Batch
 
-Med aktiviteter med flera instanser kan du köra en Azure Batch aktivitet på flera Compute-noder samtidigt. De här uppgifterna möjliggör data bearbetnings scenarier med höga prestanda som MPI-program (Message Passing Interface) i batch. I den här artikeln får du lära dig hur du kör aktiviteter med flera instanser med [batch .net](/dotnet/api/microsoft.azure.batch) -biblioteket.
+Med aktiviteter med flera instanser kan du köra en Azure Batch på flera beräkningsnoder samtidigt. De här uppgifterna möjliggör scenarier med databehandling med höga prestanda som Message Passing Interface MPI-program (MPI) i Batch. I den här artikeln får du lära dig hur du kör uppgifter med flera instanser med hjälp av [Batch .NET-biblioteket.](/dotnet/api/microsoft.azure.batch)
 
 > [!NOTE]
-> Medan exemplen i den här artikeln fokuserar på batch .NET-, MS-MPI-och Windows Compute-noder, är de aktiviteter för flera instanser som beskrivs här tillämpliga på andra plattformar och tekniker (till exempel python och Intel MPI på Linux-noder).
+> Exemplen i den här artikeln fokuserar på Batch .NET, MS-MPI och Windows-beräkningsnoder, men de aktivitetsbegrepp med flera instanser som beskrivs här gäller för andra plattformar och tekniker (till exempel Python och Intel MPI på Linux-noder).
 
 ## <a name="multi-instance-task-overview"></a>Översikt över aktiviteter med flera instanser
 
-I batch körs varje aktivitet vanligt vis på en enskild Compute-nod – du skickar flera aktiviteter till ett jobb, och batch-tjänsten schemalägger varje aktivitet för körning på en nod. Genom att konfigurera en aktivitets inställningar för **flera instanser** kan du dock i stället skapa en primär aktivitet och flera under aktiviteter som sedan körs på flera noder.
+I Batch körs varje aktivitet normalt på en enda beräkningsnod – du skickar flera aktiviteter till ett jobb och Batch-tjänsten schemalägger varje aktivitet för körning på en nod. Men genom att konfigurera en uppgifts inställningar för flera instanser uppmanar du Batch att i stället skapa en primär uppgift och flera underuppgifter som sedan körs på flera noder.
 
 :::image type="content" source="media/batch-mpi/batch-mpi-01.png" alt-text="Diagram som visar en översikt över inställningar för flera instanser.":::
 
-När du skickar en aktivitet med inställningar för flera instanser till ett jobb utför batch flera steg som är unika för aktiviteter med flera instanser:
+När du skickar en uppgift med inställningar för flera instanser till ett jobb utför Batch flera steg som är unika för aktiviteter med flera instanser:
 
-1. Batch-tjänsten skapar en **primär** och flera **under aktiviteter** baserat på inställningarna för flera instanser. Det totala antalet aktiviteter (primära plus alla under aktiviteter) matchar antalet **instanser** (Compute-noder) som du anger i inställningarna för flera instanser.
-2. Batch anger en av datornoderna som **huvud server** och schemalägger den primära aktiviteten så att den körs på huvud servern. Den schemalägger de under aktiviteter som ska köras på resten av de Compute-noder som allokeras till aktiviteten för flera instanser, en under aktivitet per nod.
-3. De primära och alla under aktiviteterna hämtar alla **delade resursfiler** som du anger i inställningarna för flera instanser.
-4. När de delade resursfiler har hämtats, kör de primära och under aktiviteterna **koordinations kommandot** som du anger i inställningarna för flera instanser. Koordinations kommandot används vanligt vis för att förbereda noder för körning av uppgiften. Detta kan innefatta att starta bakgrunds tjänster (t. ex. [Microsoft-MPI](/message-passing-interface/microsoft-mpi) `smpd.exe` ) och kontrol lera att noderna är redo att bearbeta meddelanden mellan noder.
-5. Den primära aktiviteten kör **program kommandot** på huvud-noden *när* koordinations kommandot har slutförts av den primära aktiviteten och alla under aktiviteter. Program kommandot är kommando raden för aktiviteten för flera instanser och körs bara av den primära aktiviteten. I en [MS-MPI](/message-passing-interface/microsoft-mpi) -baserad lösning är det här du kör ditt MPI-aktiverade program med hjälp av `mpiexec.exe` .
+1. Batch-tjänsten skapar **en primär** och flera **underuppgifter** baserat på inställningarna för flera instanser. Det totala antalet aktiviteter (primär plus alla underuppgifter) matchar antalet instanser **(beräkningsnoder)** som du anger i inställningarna för flera instanser.
+2. Batch anger en av beräkningsnoderna som **huvudnod** och schemalägger den primära aktiviteten så att den körs på huvudnoden. Den schemalägger underaktiviteterna så att de körs på resten av beräkningsnoderna som allokerats till uppgiften med flera instanser, en underuppgift per nod.
+3. Den primära och alla underaktiviteter laddar ned **alla vanliga resursfiler som** du anger i inställningarna för flera instanser.
+4. När de gemensamma resursfilerna har laddats ned kör  de primära och underaktiviteterna samordningskommandot som du anger i inställningarna för flera instanser. Samordningskommandot används vanligtvis för att förbereda noder för att köra uppgiften. Detta kan inkludera start av bakgrundstjänster (till exempel [Microsoft MPI)](/message-passing-interface/microsoft-mpi) och verifiering av att noderna är redo att `smpd.exe` bearbeta meddelanden mellan noder.
+5. Den primära uppgiften kör **programkommandot**  på huvudnoden när samordningskommandot har slutförts av den primära och alla underaktiviteter. Programkommandot är kommandoraden för själva uppgiften med flera instanser och körs endast av den primära aktiviteten. I en [MS-MPI-baserad](/message-passing-interface/microsoft-mpi) lösning är det här du kör ditt MPI-aktiverade program med hjälp av `mpiexec.exe` .
 
 > [!NOTE]
-> Även om den är funktionellt åtskild, är "Multi-instance Task" inte en unik typ av aktivitet som [StartTask](/dotnet/api/microsoft.azure.batch.starttask) eller [aktivitets typerna jobpreparationtask](/dotnet/api/microsoft.azure.batch.jobpreparationtask). Aktiviteten för flera instanser är helt enkelt en standard-batch-uppgift ([CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) i batch .net) vars inställningar för flera instanser har kon figurer ATS. I den här artikeln hänvisar vi till detta som **aktiviteten för flera instanser**.
+> Även om den är funktionellt distinkt är "multiinstansaktiviteten" inte en unik uppgiftstyp som [StartTask](/dotnet/api/microsoft.azure.batch.starttask) eller [JobPreparationTask.](/dotnet/api/microsoft.azure.batch.jobpreparationtask) Uppgiften för flera instanser är helt enkelt en vanlig Batch-uppgift ([CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) i Batch .NET) vars inställningar för flera instanser har konfigurerats. I den här artikeln refererar vi till detta som **uppgiften med flera instanser.**
 
-## <a name="requirements-for-multi-instance-tasks"></a>Krav för aktiviteter med flera instanser
+## <a name="requirements-for-multi-instance-tasks"></a>Krav för uppgifter med flera instanser
 
-Aktiviteter med flera instanser kräver en pool med **kommunikation mellan noder** och med **inaktive rad körning av aktivitet inaktive rad**. Om du vill inaktivera körning av samtidiga aktiviteter ställer du in egenskapen [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) på 1.
+Aktiviteter med flera instanser kräver en pool med **kommunikation mellan noder aktiverad,** och med samtidig **uppgiftskörning inaktiverad**. Om du vill inaktivera körning av samtidiga aktiviteter anger du egenskapen [CloudPool.TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) till 1.
 
 > [!NOTE]
 > Batch [begränsar](batch-quota-limit.md#pool-size-limits) storleken på en pool som har kommunikation mellan noder aktiverat.
 
-Det här kodfragmentet visar hur du skapar en pool för aktiviteter med flera instanser med hjälp av batch .NET-biblioteket.
+Det här kodfragmentet visar hur du skapar en pool för aktiviteter med flera instanser med hjälp av Batch .NET-biblioteket.
 
 ```csharp
 CloudPool myCloudPool =
@@ -49,7 +49,13 @@ CloudPool myCloudPool =
         poolId: "MultiInstanceSamplePool",
         targetDedicatedComputeNodes: 3
         virtualMachineSize: "standard_d1_v2",
-        cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
+        VirtualMachineConfiguration: new VirtualMachineConfiguration(
+        imageReference: new ImageReference(
+                        publisher: "MicrosoftWindowsServer",
+                        offer: "WindowsServer",
+                        sku: "2019-datacenter-core",
+                        version: "latest"),
+        nodeAgentSkuId: "batch.node.windows amd64");
 
 // Multi-instance tasks require inter-node communication, and those nodes
 // must run only one task at a time.
@@ -58,11 +64,11 @@ myCloudPool.TaskSlotsPerNode = 1;
 ```
 
 > [!NOTE]
-> Om du försöker köra en multi-instance-aktivitet i en pool med kommunikation mellan noder, eller med ett *taskSlotsPerNode* -värde som är större än 1, så schemaläggs inte aktiviteten, utan tids gräns i "aktivt" läge.
+> Om du försöker köra en aktivitet med flera instanser i en pool med internnodkommunikation inaktiverad, eller med ett *taskSlotsPerNode-värde* större än 1, schemaläggs aldrig aktiviteten – den förblir obestämd i tillståndet "aktiv".
 
-### <a name="use-a-starttask-to-install-mpi"></a>Använd en StartTask för att installera MPI
+### <a name="use-a-starttask-to-install-mpi"></a>Använda en StartTask för att installera MPI
 
-Om du vill köra MPI-program med en multi-instance-aktivitet måste du först installera en MPI-implementering (MS-MPI eller Intel MPI, till exempel) på datornoderna i poolen. Detta är en lämplig tidpunkt för att använda en [StartTask](/dotnet/api/microsoft.azure.batch.starttask)som körs när en nod ansluter till en pool eller startas om. Det här kodfragmentet skapar en StartTask som anger installations paketet MS-MPI som en [resurs fil](/dotnet/api/microsoft.azure.batch.resourcefile). Start aktivitetens kommando rad körs när resurs filen har laddats ned till noden. I det här fallet utför kommando raden en obevakad installation av MS-MPI.
+Om du vill köra MPI-program med en aktivitet med flera instanser måste du först installera en MPI-implementering (till exempel MS-MPI eller Intel MPI) på beräkningsnoderna i poolen. Det här är ett bra tillfälle att använda [en StartTask](/dotnet/api/microsoft.azure.batch.starttask), som körs när en nod ansluter till en pool eller startas om. Det här kodfragmentet skapar en StartTask som anger MS-MPI-konfigurationspaketet som en [resursfil](/dotnet/api/microsoft.azure.batch.resourcefile). Startaktivitetens kommandorad körs när resursfilen har laddats ned till noden. I det här fallet utför kommandoraden en obevakad installation av MS-MPI.
 
 ```csharp
 // Create a StartTask for the pool which we use for installing MS-MPI on
@@ -81,18 +87,18 @@ myCloudPool.StartTask = startTask;
 await myCloudPool.CommitAsync();
 ```
 
-### <a name="remote-direct-memory-access-rdma"></a>Direkt åtkomst till fjärrminne (RDMA)
+### <a name="remote-direct-memory-access-rdma"></a>Direktåtkomst till fjärrminne (RDMA)
 
-När du väljer en [RDMA-kompatibel storlek](../virtual-machines/sizes-hpc.md?toc=/azure/virtual-machines/windows/toc.json) , till exempel A9 för Compute-noderna i batch-poolen, kan ditt MPI-program dra nytta av Azures höga prestanda för direkt åtkomst till fjärrminne (RDMA) med låg latens.
+När du väljer en [RDMA-kompatibel](../virtual-machines/sizes-hpc.md?toc=/azure/virtual-machines/windows/toc.json) storlek, till exempel A9 för beräkningsnoderna i Batch-poolen, kan MPI-programmet dra nytta av Azures RDMA-nätverk (Remote Direct Memory Access) med korta svarstider.
 
-Sök efter de storlekar som anges som "RDMA-kompatibel" i [storlekar för virtuella datorer i Azure](../virtual-machines/sizes.md) (för VirtualMachineConfiguration pooler) eller [storlekar för Cloud Services](../cloud-services/cloud-services-sizes-specs.md) (för CloudServicesConfiguration pooler).
+Leta efter storlekar som anges som "RDMA-kompatibla" i Storlekar för virtuella datorer i [Azure](../virtual-machines/sizes.md) (för VirtualMachineConfiguration-pooler) eller Storlekar för [Cloud Services](../cloud-services/cloud-services-sizes-specs.md) (för CloudServicesConfiguration-pooler).
 
 > [!NOTE]
-> Om du vill dra nytta av RDMA på [Linux-datornoder](batch-linux-nodes.md)måste du använda **Intel-MPI** på noderna.
+> Om du vill dra nytta av RDMA [på Linux-beräkningsnoder](batch-linux-nodes.md)måste du använda **Intel MPI** på noderna.
 
-## <a name="create-a-multi-instance-task-with-batch-net"></a>Skapa en aktivitet med flera instanser med batch .NET
+## <a name="create-a-multi-instance-task-with-batch-net"></a>Skapa en aktivitet med flera instanser med Batch .NET
 
-Nu när vi har täckt kraven för poolen och MPI-paketet, ska vi skapa aktiviteten för flera instanser. I det här kodfragmentet skapar vi en standard- [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask)och konfigurerar sedan dess [MultiInstanceSettings](/dotnet/api/microsoft.azure.batch.cloudtask) -egenskap. Som tidigare nämnts är aktiviteten för flera instanser ingen distinkt typ av aktivitet, men en standard-batch-aktivitet som kon figurer ATS med inställningar för flera instanser.
+Nu när vi har gått in på poolkraven och installationen av MPI-paketet ska vi skapa uppgiften för flera instanser. I det här kodfragmentet skapar vi en [Standard CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask)och konfigurerar sedan dess [MultiInstanceSettings-egenskap.](/dotnet/api/microsoft.azure.batch.cloudtask) Som tidigare nämnts är uppgiften med flera instanser inte en distinkt uppgiftstyp, utan en Standard Batch-uppgift som konfigurerats med inställningar för flera instanser.
 
 ```csharp
 // Create the multi-instance task. Its command line is the "application command"
@@ -117,47 +123,47 @@ myMultiInstanceTask.MultiInstanceSettings =
 await myBatchClient.JobOperations.AddTaskAsync("mybatchjob", myMultiInstanceTask);
 ```
 
-## <a name="primary-task-and-subtasks"></a>Primär aktivitet och under aktiviteter
+## <a name="primary-task-and-subtasks"></a>Primär uppgift och underuppgifter
 
-När du skapar inställningar för flera instanser för en aktivitet anger du antalet datornoder som ska utföra aktiviteten. När du skickar uppgiften till ett jobb skapar batch-tjänsten en **primär** aktivitet och tillräckligt många **under aktiviteter** som tillsammans matchar antalet noder som du har angett.
+När du skapar inställningarna för flera instanser för en aktivitet anger du antalet beräkningsnoder som ska köra uppgiften. När du skickar uppgiften till ett jobb  skapar Batch-tjänsten en primär uppgift och tillräckligt med underaktiviteter som tillsammans matchar det antal noder som du har angett. 
 
-De här uppgifterna tilldelas ett heltals-ID i intervallet 0 till *numberOfInstances* -1. Uppgiften med ID 0 är den primära aktiviteten och alla andra ID: n är under aktiviteter. Om du till exempel skapar följande inställningar för flera instanser för en aktivitet skulle den primära aktiviteten ha ID: t 0, och under aktiviteterna har ID 1 till 9.
+Dessa uppgifter tilldelas ett heltals-ID i intervallet 0 *till numberOfInstances* – 1. Uppgiften med ID 0 är den primära uppgiften och alla andra ID:n är underuppgifter. Om du till exempel skapar följande inställningar för flera instanser för en aktivitet, skulle den primära aktiviteten ha ID:t 0 och underaktiviteterna skulle ha ID:n 1 till och med 9.
 
 ```csharp
 int numberOfNodes = 10;
 myMultiInstanceTask.MultiInstanceSettings = new MultiInstanceSettings(numberOfNodes);
 ```
 
-### <a name="master-node"></a>Huvud nod
+### <a name="master-node"></a>Huvudnod
 
-När du skickar en aktivitet med flera instanser, anger batch-tjänsten en av datornoderna som "Master"-noden och schemalägger den primära aktiviteten så att den körs på huvudnoden. Under aktiviteterna är schemalagda att köras på resten av noderna som allokerats till aktiviteten för flera instanser.
+När du skickar en aktivitet med flera instanser utser Batch-tjänsten en av beräkningsnoderna som huvudnod och schemalägger den primära aktiviteten att köras på huvudnoden. Underaktiviteterna schemaläggs att köras på resten av noderna som allokerats till uppgiften med flera instanser.
 
-## <a name="coordination-command"></a>Koordinations kommando
+## <a name="coordination-command"></a>Samordningskommando
 
-**Koordinations kommandot** utförs av både den primära aktiviteten och under aktiviteterna.
+**Samordningskommandot** körs av både primära och underordnade uppgifter.
 
-Anrops kommandot är blockerande – batch kör inte program kommandot förrän koordinations kommandot har returnerats för alla under aktiviteter. Koordinerings kommandot bör därför starta alla nödvändiga bakgrunds tjänster, kontrol lera att de är klara att använda och sedan avsluta. Detta koordinerings kommando för en lösning som använder MS-MPI version 7 startar till exempel tjänsten SMPD på noden och avslutas sedan:
+Anropet av samordningskommandot blockerar – Batch kör inte programkommandot förrän samordningskommandot har returnerats för alla underuppgifter. Samordningskommandot bör därför starta alla nödvändiga bakgrundstjänster, kontrollera att de är redo att användas och sedan avsluta. Till exempel startar det här samordningskommandot för en lösning som använder MS-MPI version 7 SMPD-tjänsten på noden och avslutar sedan:
 
 `cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d`
 
-Observera användningen av `start` i detta koordinations kommando. Detta är obligatoriskt eftersom `smpd.exe` programmet inte returnerar omedelbart efter körning. Utan att använda Start kommandot returneras inte det här koordinations kommandot, och därför blockeras program kommandot från att köras.
+Observera användningen av i `start` det här samordningskommandot. Detta krävs eftersom programmet `smpd.exe` inte returneras omedelbart efter körningen. Utan startkommandot skulle det här samordningskommandot inte returnera och skulle därför blockera programkommandot från att köras.
 
-## <a name="application-command"></a>Program kommando
+## <a name="application-command"></a>Programkommando
 
-När den primära aktiviteten och alla under aktiviteter har slutfört körningen av koordinations kommandot, utförs *endast* körnings aktivitetens kommando rad av den primära aktiviteten. Vi anropar detta **program kommando** för att skilja den från koordinations kommandot.
+När den primära uppgiften och alla underaktiviteter har körts klart med samordningskommandot körs multiinstansaktivitetens kommandorad endast av den primära *aktiviteten*. Vi anropar det här **programkommandot** för att skilja det från samordningskommandot.
 
-För MS-MPI-program använder du kommandot Application för att köra ditt MPI-aktiverade program med `mpiexec.exe` . Här är till exempel ett program kommando för en lösning som använder MS-MPI version 7:
+För MS-MPI-program använder du programkommandot för att köra ditt MPI-aktiverade program med `mpiexec.exe` . Här är till exempel ett programkommando för en lösning som använder MS-MPI version 7:
 
 `cmd /c ""%MSMPI_BIN%\mpiexec.exe"" -c 1 -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIApplication.exe`
 
 > [!NOTE]
-> Eftersom MS-MPI `mpiexec.exe` använder `CCP_NODES` variabeln som standard (se [miljövariabler](#environment-variables)), undantas exempel kommando raden ovan.
+> Eftersom MS-MPI använder variabeln som standard `mpiexec.exe` `CCP_NODES` (se [Miljövariabler](#environment-variables)), utesluter exempelprogrammets kommandorad ovan den.
 
 ## <a name="environment-variables"></a>Miljövariabler
 
-Batch skapar flera [miljövariabler](batch-compute-node-environment-variables.md) som är speciella för aktiviteter med flera instanser på de Compute-noder som tilldelas en aktivitet med flera instanser. Dina samordnings-och program kommando rader kan referera till dessa miljövariabler, som de skript och program som de kör.
+Batch skapar flera [miljövariabler som](batch-compute-node-environment-variables.md) är specifika för aktiviteter med flera instanser på beräkningsnoderna som allokerats till en aktivitet med flera instanser. Dina kommandorader för samordning och program kan referera till dessa miljövariabler, liksom de skript och program som de kör.
 
-Följande miljövariabler skapas av batch-tjänsten för användning av aktiviteter med flera instanser:
+Följande miljövariabler skapas av Batch-tjänsten för användning av aktiviteter med flera instanser:
 
 - `CCP_NODES`
 - `AZ_BATCH_NODE_LIST`
@@ -166,42 +172,42 @@ Följande miljövariabler skapas av batch-tjänsten för användning av aktivite
 - `AZ_BATCH_TASK_SHARED_DIR`
 - `AZ_BATCH_IS_CURRENT_NODE_MASTER`
 
-Fullständig information om dessa och de andra miljövariablerna för batch Compute-noden, inklusive innehåll och synlighet, finns i [Compute Node-miljövariabler](batch-compute-node-environment-variables.md).
+Fullständig information om dessa och de andra miljövariablerna för Batch-beräkningsnoder, inklusive deras innehåll och synlighet, finns i [Miljövariabler för beräkningsnoder.](batch-compute-node-environment-variables.md)
 
 > [!TIP]
-> [Kod exemplet för batch Linux MPI](https://github.com/Azure-Samples/azure-batch-samples/tree/master/Python/Batch/article_samples/mpi) innehåller ett exempel på hur flera av de här miljövariablerna kan användas.
+> Batch [Linux MPI-kodexempel](https://github.com/Azure-Samples/azure-batch-samples/tree/master/Python/Batch/article_samples/mpi) innehåller ett exempel på hur flera av dessa miljövariabler kan användas.
 
 ## <a name="resource-files"></a>Resursfiler
 
-Det finns två uppsättningar resursfiler att överväga för aktiviteter med flera instanser: **delade resursfiler** som *alla* aktiviteter hämtar (både primära och under aktiviteter) och **resursfiler** som anges för aktiviteten för flera instanser, och som *bara hämtas av den primära* aktiviteten.
+Det finns två uppsättningar resursfiler att överväga för aktiviteter  med flera **instanser:** vanliga resursfiler  som alla aktiviteter laddar ned (både  primära och underuppgifter) och resursfilerna som anges för själva uppgiften med flera instanser, som endast den primära aktiviteten hämtar.
 
-Du kan ange en eller flera **gemensamma resursfiler** i inställningarna för flera instanser för en aktivitet. Dessa delade resursfiler laddas ned från [Azure Storage](../storage/common/storage-introduction.md) till varje nods **delade katalog** med den primära aktiviteten och alla under aktiviteter. Du kan komma åt den delade katalogen aktivitet från program-och samordnings kommando rader med hjälp av `AZ_BATCH_TASK_SHARED_DIR` miljövariabeln. `AZ_BATCH_TASK_SHARED_DIR`Sökvägen är identisk på varje nod som tilldelas till aktiviteten för flera instanser, och därför kan du dela ett enda koordinerings kommando mellan den primära och alla under aktiviteter. Batch har inte "dela" katalogen i en fjärråtkomst, men du kan använda den som en monterings-eller delnings punkt som tidigare nämnts i tipset på miljövariabler.
+Du kan ange en eller flera **vanliga resursfiler** i inställningarna för flera instanser för en aktivitet. Dessa vanliga resursfiler laddas ned från [Azure Storage](../storage/common/storage-introduction.md) till  varje nods delade katalog för aktiviteter av den primära och alla underuppgifter. Du kan komma åt den delade katalogen för aktiviteter från program- och samordningskommandorader med hjälp av `AZ_BATCH_TASK_SHARED_DIR` miljövariabeln . Sökvägen är identisk på varje nod som tilldelats till uppgiften med flera instanser, så du kan dela ett enda samordningskommando mellan den primära och `AZ_BATCH_TASK_SHARED_DIR` alla underuppgifter. Batch "delar inte" katalogen i en fjärråtkomsts sense, men du kan använda den som en monterings- eller resurspunkt som nämnts tidigare i tipset om miljövariabler.
 
-Resursfiler som du anger för aktiviteter med flera instanser hämtas som standard till aktivitetens arbets katalog `AZ_BATCH_TASK_WORKING_DIR` . Som det nämnts, i motsats till vanliga resursfiler, är det bara resursfiler som anges för aktiviteten för flera instanser som har angetts för den primära aktiviteten.
+Resursfiler som du anger för själva uppgiften med flera instanser laddas ned till aktivitetens arbetskatalog, `AZ_BATCH_TASK_WORKING_DIR` , som standard. Till skillnad från vanliga resursfiler laddar som sagt bara den primära aktiviteten ned resursfiler som angetts för själva uppgiften med flera instanser.
 
 > [!IMPORTANT]
-> Använd alltid miljövariablerna `AZ_BATCH_TASK_SHARED_DIR` och `AZ_BATCH_TASK_WORKING_DIR` för att referera till dessa kataloger i kommando raderna. Försök inte att skapa Sök vägarna manuellt.
+> Använd alltid miljövariablerna `AZ_BATCH_TASK_SHARED_DIR` och för att referera till dessa kataloger i dina `AZ_BATCH_TASK_WORKING_DIR` kommandorader. Försök inte att skapa sökvägarna manuellt.
 
-## <a name="task-lifetime"></a>Aktivitetens livs längd
+## <a name="task-lifetime"></a>Aktivitetens livslängd
 
-Den primära aktivitetens livs längd styr livs längden för hela aktiviteten för flera instanser. När den primära utgången avslutas avslutas alla under aktiviteter. Slut koden för den primära aktiviteten är avslutnings koden för aktiviteten och används därför för att avgöra om uppgiften lyckades eller Miss lyckas för nya försök.
+Livslängden för den primära aktiviteten styr livslängden för hela uppgiften med flera instanser. När den primära avslutas avslutas alla underaktiviteter. Slutkoden för den primära är slutkoden för uppgiften och används därför för att fastställa om aktiviteten lyckades eller misslyckades i syfte att försöka igen.
 
-Om någon av under aktiviteterna Miss lyckas avslutas med en returkod som inte är noll, till exempel hela aktiviteten för flera instanser Miss lyckas. Aktiviteten för flera instanser avbryts sedan och försöker igen, upp till gränsen för återförsök.
+Om någon av underaktiviteterna misslyckas och till exempel avslutas med en returkod som inte är noll misslyckas hela uppgiften med flera instanser. Uppgiften för flera instanser avslutas sedan och försöks igen, upp till dess gräns för återförsök.
 
-När du tar bort en aktivitet med flera instanser raderas även den primära och alla under aktiviteter av batch-tjänsten. Alla under aktivitets kataloger och deras filer tas bort från Compute-noderna, precis som för en standard uppgift.
+När du tar bort en aktivitet med flera instanser tas även den primära och alla underaktiviteter bort av Batch-tjänsten. Alla underuppgiftskataloger och deras filer tas bort från beräkningsnoderna, precis som för en standardaktivitet.
 
-[TaskConstraints](/dotnet/api/microsoft.azure.batch.taskconstraints) för en aktivitet med flera instanser, till exempel egenskaperna [MaxTaskRetryCount](/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount), [MaxWallClockTime](/dotnet/api/microsoft.azure.batch.taskconstraints.maxwallclocktime)och [RetentionTime](/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime) , kan användas som de är för en standard uppgift och tillämpas på den primära och alla under aktiviteter. Men om du ändrar egenskapen theRetentionTime efter att ha lagt till aktiviteten Multiinstans i jobbet, tillämpas den här ändringen endast på den primära aktiviteten, och alla under aktiviteter fortsätter att använda den ursprungliga RetentionTime.
+[TaskConstraints](/dotnet/api/microsoft.azure.batch.taskconstraints) för en aktivitet med flera instanser, till exempel [egenskaperna MaxTaskRetryCount,](/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount) [MaxWallClockTime](/dotnet/api/microsoft.azure.batch.taskconstraints.maxwallclocktime)och [RetentionTime,](/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime) respekteras som de är för en standarduppgift och gäller för den primära och alla underaktiviteter. Men om du ändrar egenskapenRetentionTime när du har lagt till uppgiften med flera instanser i jobbet tillämpas den här ändringen endast på den primära aktiviteten, och alla underaktiviteter fortsätter att använda den ursprungliga RetentionTime.
 
-En Compute Nodes senaste uppgifts lista visar ID för en under aktivitet om den senaste aktiviteten ingick i en aktivitet med flera instanser.
+En beräkningsnods senaste uppgiftslista visar ID:t för en underaktivitet om den senaste uppgiften ingick i en aktivitet med flera instanser.
 
-## <a name="obtain-information-about-subtasks"></a>Hämta information om under aktiviteter
+## <a name="obtain-information-about-subtasks"></a>Hämta information om underuppgifter
 
-Om du vill få information om under aktiviteter med hjälp av batch .NET-biblioteket anropar du metoden [CloudTask. ListSubtasks](/dotnet/api/microsoft.azure.batch.cloudtask.listsubtasks) . Den här metoden returnerar information om alla under aktiviteter och information om den Compute-nod som utförde aktiviteterna. Med hjälp av den här informationen kan du fastställa varje under aktivitets rot Katalog, pool-ID, aktuellt tillstånd, slut kod med mera. Du kan använda den här informationen i kombination med metoden [PoolOperations. GetNodeFile](/dotnet/api/microsoft.azure.batch.pooloperations.getnodefile) för att hämta under aktivitetens filer. Observera att den här metoden inte returnerar information om den primära aktiviteten (ID 0).
+Om du vill hämta information om underaktiviteter med hjälp av Batch .NET-biblioteket anropar du [metoden CloudTask.ListSubtasks.](/dotnet/api/microsoft.azure.batch.cloudtask.listsubtasks) Den här metoden returnerar information om alla underaktiviteter och information om beräkningsnoden som körde aktiviteterna. Med den här informationen kan du fastställa rotkatalogen för varje undergrupp, pool-ID, aktuellt tillstånd, slutkod med mera. Du kan använda den här informationen i kombination med [metoden PoolOperations.GetNodeFile](/dotnet/api/microsoft.azure.batch.pooloperations.getnodefile) för att hämta undergruppens filer. Observera att den här metoden inte returnerar information för den primära aktiviteten (ID 0).
 
 > [!NOTE]
-> Om inget annat anges gäller batch .NET-metoder som fungerar på [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) för flera instanser *enbart* för den primära aktiviteten. När du till exempel anropar metoden [CloudTask. ListNodeFiles](/dotnet/api/microsoft.azure.batch.cloudtask.listnodefiles) i en grupp med flera instanser returneras bara den primära aktivitetens filer.
+> Om inget annat anges gäller Batch .NET-metoder som fungerar på själva [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) med flera instanser *endast* den primära uppgiften. När du till exempel anropar [metoden CloudTask.ListNodeFiles](/dotnet/api/microsoft.azure.batch.cloudtask.listnodefiles) för en aktivitet med flera instanser returneras bara den primära aktivitetens filer.
 
-Följande kodfragment visar hur du hämtar information om under aktiviteter, samt innehållet i begär ande filen från de noder där de kördes.
+Följande kodfragment visar hur du hämtar information om underuppgifter, samt begär filinnehåll från noderna som de kördes på.
 
 ```csharp
 // Obtain the job and the multi-instance task from the Batch service
@@ -242,32 +248,32 @@ await subtasks.ForEachAsync(async (subtask) =>
 
 ## <a name="code-sample"></a>Kodexempel
 
-[MultiInstanceTasks](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/MultiInstanceTasks) kod exemplet på GitHub visar hur du använder en aktivitet med flera instanser för att köra ett [MS-MPI](/message-passing-interface/microsoft-mpi) -program i batch Compute-noder. Följ stegen nedan för att köra exemplet.
+[MultiInstanceTasks-kodexempel](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/MultiInstanceTasks) på GitHub visar hur du använder en aktivitet med flera instanser för att köra ett [MS-MPI-program](/message-passing-interface/microsoft-mpi) på Batch-beräkningsnoder. Följ stegen nedan för att köra exemplet.
 
 ### <a name="preparation"></a>Förberedelse
 
-1. Ladda ned [MS-MPI SDK och omdist installations](/message-passing-interface/microsoft-mpi) program och installera dem. Efter installationen kan du kontrol lera att miljövariablerna i MS-MPI har ställts in.
-1. Bygg en *version* av [MPIHelloWorld](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/ArticleProjects/MultiInstanceTasks/MPIHelloWorld) Sample MPI-programmet. Detta är det program som ska köras på datornoderna av aktiviteten för flera instanser.
-1. Skapa en zip-fil som innehåller `MPIHelloWorld.exe` (som du skapade i steg 2) och `MSMpiSetup.exe` (som du laddade ned i steg 1). Du överför zip-filen som ett programpaket i nästa steg.
-1. Använd [Azure Portal](https://portal.azure.com) för att skapa ett batch- [program](batch-application-packages.md) med namnet "MPIHelloWorld" och ange den zip-fil som du skapade i föregående steg som version "1,0" av programpaketet. Mer information finns i [Ladda upp och hantera program](batch-application-packages.md#upload-and-manage-applications) .
+1. Ladda ned [MS-MPI SDK och Redist-installationsprogram](/message-passing-interface/microsoft-mpi) och installera dem. Efter installationen kan du kontrollera att MS-MPI-miljövariablerna har angetts.
+1. Skapa en *version av* [MPIHelloWorld-exempelprogrammet](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/ArticleProjects/MultiInstanceTasks/MPIHelloWorld) för MPI. Det här är det program som ska köras på beräkningsnoder av aktiviteten med flera instanser.
+1. Skapa en zip-fil `MPIHelloWorld.exe` som innehåller (som du skapade i steg 2) `MSMpiSetup.exe` och (som du laddade ned i steg 1). Du laddar upp zip-filen som ett programpaket i nästa steg.
+1. Använd [Azure Portal](https://portal.azure.com) för att skapa ett [Batch-program](batch-application-packages.md) med namnet "MPIHelloWorld" och ange zip-filen som du skapade i föregående steg som version "1.0" av programpaketet. Mer information [finns i Ladda upp](batch-application-packages.md#upload-and-manage-applications) och hantera program.
 
 > [!TIP]
-> Genom att skapa en *version* av `MPIHelloWorld.exe` , ser du till att du inte behöver ta med några ytterligare beroenden (till exempel `msvcp140d.dll` eller `vcruntime140d.dll` ) i programpaketet.
+> Genom att *skapa* en version av behöver du inte inkludera några ytterligare `MPIHelloWorld.exe` beroenden (till exempel eller ) i `msvcp140d.dll` `vcruntime140d.dll` programpaketet.
 
 ### <a name="execution"></a>Körnings-
 
-1. Hämta [filen Azure-Batch-samples. zip](https://github.com/Azure/azure-batch-samples/archive/master.zip) från GitHub.
-1. Öppna MultiInstanceTasks- **lösningen** i Visual Studio 2019. `MultiInstanceTasks.sln`Lösnings filen finns i:
+1. Ladda ned [.zip-filen azure-batch-samples](https://github.com/Azure/azure-batch-samples/archive/master.zip) från GitHub.
+1. Öppna MultiInstanceTasks-lösningen i Visual Studio 2019.  `MultiInstanceTasks.sln`Lösningsfilen finns i:
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
-1. Ange autentiseringsuppgifterna för batch-och lagrings kontot i `AccountSettings.settings` i **Microsoft.Azure.BatCH. Samples. common** Project.
-1. **Skapa och kör** MultiInstanceTasks-lösningen för att köra exempel programmet MPI på Compute-noder i en batch-pool.
-1. *Valfritt*: Använd [Azure Portal](https://portal.azure.com) eller [batch Explorer](https://azure.github.io/BatchExplorer/) för att undersöka exempel-pool, jobb och aktivitet ("MultiInstanceSamplePool", "MultiInstanceSampleJob", "MultiInstanceSampleTask") innan du tar bort resurserna.
+1. Ange autentiseringsuppgifterna för Batch- och `AccountSettings.settings` **Storage-kontot iMicrosoft.Azure.Batch.Samples.Common-projektet.**
+1. **Skapa och kör** MultiInstanceTasks-lösningen för att köra MPI-exempelprogrammet på beräkningsnoder i en Batch-pool.
+1. *Valfritt:* Använd [Azure Portal](https://portal.azure.com) eller [Batch Explorer](https://azure.github.io/BatchExplorer/) för att undersöka exempelpoolen, jobbet och uppgiften ("MultiInstanceSamplePool", "MultiInstanceSampleJob", "MultiInstanceSampleTask") innan du tar bort resurserna.
 
 > [!TIP]
-> Du kan ladda ned [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/) kostnads fritt om du inte redan har Visual Studio.
+> Du kan [ladda Visual Studio Community](https://visualstudio.microsoft.com/vs/community/) utan kostnad om du inte redan har Visual Studio.
 
-Utdata från `MultiInstanceTasks.exe` liknar följande:
+Utdata `MultiInstanceTasks.exe` från liknar följande:
 
 ```
 Creating pool [MultiInstanceSamplePool]...
@@ -305,4 +311,4 @@ Sample complete, hit ENTER to exit...
 ## <a name="next-steps"></a>Nästa steg
 
 - Läs mer om [MPI-stöd för Linux på Azure Batch](https://docs.microsoft.com/archive/blogs/windowshpc/introducing-mpi-support-for-linux-on-azure-batch).
-- Lär dig hur du [skapar pooler för Linux Compute Nodes](batch-linux-nodes.md) för användning i dina Azure Batch MPI-lösningar.
+- Lär dig hur du [skapar pooler med Linux-beräkningsnoder](batch-linux-nodes.md) för användning i dina Azure Batch MPI-lösningar.

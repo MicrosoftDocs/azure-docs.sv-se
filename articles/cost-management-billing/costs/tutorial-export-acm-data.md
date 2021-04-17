@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: a386b214c4372c9d8de729a8b6bed4aac9edd9f3
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: af050ae95b4ab161028229299a8de5ed3426430b
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043469"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482841"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Självstudier: Skapa och hantera exporterade data
 
@@ -35,9 +35,9 @@ I den här guiden får du lära dig att:
 ## <a name="prerequisites"></a>Krav
 Dataexport är tillgänglig för en mängd olika typer av Azure-konton, exempelvis för kunder med [Enterprise-avtal (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) och [Microsoft-kundavtal](get-started-partners.md). Om du vill se hela listan med kontotyper som stöds kan du läsa [Förstå Cost Management-data](understand-cost-mgt-data.md). Följande Azure-behörigheter, eller omfång, stöds per prenumeration för dataexport efter användare och grupp. Mer information om omfång finns i [Förstå och arbeta med omfång](understand-work-scopes.md).
 
-- Ägare – kan skapa, ändra eller ta bort schemalagda exporter för en prenumeration.
-- Deltagare – kan skapa, ändra eller ta bort sina egna schemalagda exporter. Kan ändra namnet på schemalagda exporter som skapats av andra.
-- Läsare – kan schemalägga exporter som läsaren har behörighet till.
+- Ägare â..."" Kan skapa, ändra eller ta bort schemalagda exporter för en prenumeration.
+- Deltagare â..."" Kan skapa, ändra eller ta bort sina egna schemalagda exporter. Kan ändra namnet på schemalagda exporter som skapats av andra.
+- Läsare â..."" Kan schemalägga exporter som de har behörighet till.
 
 För Azure Storage-konton:
 - Det krävs skrivbehörigheter för att ändra det konfigurerade lagringskontot, oavsett behörigheter för exporten.
@@ -63,10 +63,10 @@ Om du vill skapa eller visa en dataexport, eller om du vill schemalägga en expo
     - **Verklig kostnad (användning och inköp)** – välj för att exportera standardanvändning och standardinköp
     - **Periodiserad kostnad (användning och inköp)** – välj för att exportera periodiserade kostnader för inköp som Azure-reservationer
 1. Välj **Exporttyp**:
-    - **Daglig export av kostnader hittills under månaden** – tillhandahåller en ny exportfil varje dag för dina kostnader hittills under månaden. Den senaste informationen sammanställs från tidigare dagliga exporter.
-    - **Veckovis export av kostnad under de senaste sju dagarna** – skapar en veckovis export av dina kostnader under de senaste sju dagarna från det valda startdatumet för exporten.
-    - **Månatlig export av den senaste månadens kostnader** – ger dig en export av den senaste månadens kostnader jämfört med den aktuella månad då du skapar exporten. Om vi ser framåt kör schemat en export den femte dagen i varje ny månad med kostnaderna för den senaste månaden.
-    - **Engångsexport** – du kan välja ett datumintervall för historiska data som ska exporteras till Azure Blob Storage. Du kan exportera högst 90 dagars historiska kostnader från den dag du väljer. Den här exporten körs omedelbart och är tillgänglig i ditt lagringskonto inom två timmar.
+    - **Daglig export av kostnader hittills under** månaden â –" Tillhandahåller en ny exportfil varje dag för dina kostnader hittills under månaden. Den senaste informationen sammanställs från tidigare dagliga exporter.
+    - **Veckovis export av kostnader för** de senaste sju dagarna â –" Skapar en veckovis export av dina kostnader under de senaste sju dagarna från det valda startdatumet för exporten.
+    - **Månatlig export av förra månadens** kostnader â –" Ger dig en export av den senaste månadens kostnader jämfört med den aktuella månaden då du skapar exporten. Om vi ser framåt kör schemat en export den femte dagen i varje ny månad med kostnaderna för den senaste månaden.
+    - **One-time export** â..."" Gör att du kan välja ett datumintervall för historiska data som ska exporteras till Azure Blob Storage. Du kan exportera högst 90 dagars historiska kostnader från den dag du väljer. Den här exporten körs omedelbart och är tillgänglig i ditt lagringskonto inom två timmar.
         Beroende på exporttyp väljer du antingen ett startdatum eller väljer datum för **Från** och **Till**.
 1. Ange prenumerationen för ditt Azure Storage-konto och välj sedan en resursgrupp eller skapa en ny resursgrupp.
 1. Välj lagringskontots namn eller skapa ett nytt lagringskonto.
@@ -81,7 +81,7 @@ Först kan det ta 12–24 timmar innan exporten körs. Men det kan ta längre ti
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-När du skapar en export program mässigt måste du registrera `Microsoft.CostManagementExports` resurs leverantören manuellt med den prenumeration där lagrings kontot finns. Registreringen sker automatiskt när du skapar exporten med hjälp av Azure Portal. Mer information om hur du registrerar resurs leverantörer finns i [Registrera resurs leverantör](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+När du skapar en export programmässigt måste du manuellt registrera `Microsoft.CostManagementExports` resursprovidern med prenumerationen där lagringskontot finns. Registreringen sker automatiskt när du skapar exporten med hjälp av Azure Portal. Mer information om hur du registrerar resursproviders finns i [Registrera resursprovider.](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)
 
 Börja med att förbereda din miljö för Azure CLI:
 
@@ -151,7 +151,7 @@ az costmanagement export delete --name DemoExport --scope "subscriptions/0000000
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-När du skapar en export program mässigt måste du registrera `Microsoft.CostManagementExports` resurs leverantören manuellt med den prenumeration där lagrings kontot finns. Registreringen sker automatiskt när du skapar exporten med hjälp av Azure Portal. Mer information om hur du registrerar resurs leverantörer finns i [Registrera resurs leverantör](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+När du skapar en export programmässigt måste du manuellt registrera `Microsoft.CostManagementExports` resursprovidern med prenumerationen där lagringskontot finns. Registreringen sker automatiskt när du skapar exporten med hjälp av Azure Portal. Mer information om hur du registrerar resursproviders finns i [Registrera resursprovider.](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)
 
 Börja med att förbereda din miljö för Azure PowerShell:
 
