@@ -1,7 +1,7 @@
 ---
 title: Vad är formigenkänning?
 titleSuffix: Azure Cognitive Services
-description: Med Azure formulär igenkännings tjänsten kan du identifiera och extrahera nyckel/värde-par och tabell data från dina formulär dokument, samt extrahera större information från försäljnings kvitton och visitkort.
+description: Med Azure Formigenkänning-tjänsten kan du identifiera och extrahera nyckel/värde-par och tabelldata från dina formulärdokument, samt extrahera viktig information från kvitton och visitkort.
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,180 +10,180 @@ ms.topic: overview
 ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
-keywords: automatisk data bearbetning, dokument bearbetning, automatisk data inmatning, formulär bearbetning
-ms.openlocfilehash: 8d6c2ea760b85e3170b26c63a28d4ac2b3a2ef5a
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+keywords: automatiserad databehandling, dokumentbearbetning, automatisk datainmatning, formulärbearbetning
+ms.openlocfilehash: 680bb612546aaffc167970c1c48a44159ef9af6f
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105639460"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518239"
 ---
 # <a name="what-is-form-recognizer"></a>Vad är formigenkänning?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure formulär igenkänning är en kognitiv tjänst som gör att du kan skapa automatiserad data bearbetnings program vara med hjälp av Machine Learning-teknik. Identifiera och extrahera text, nyckel/värde-par, markerings märken, tabeller och struktur från dina dokument. &mdash; tjänsten matar ut strukturerade data som innehåller relationerna i original filen, avgränsnings rutor, förtroende och mer. Du får snabbt korrekta resultat som skräddarsys efter ditt eget innehåll utan att du behöver göra en kraftig eller omfattande data vetenskaps expert. Använd formulär igenkänning för att automatisera data inmatning i dina program och förbättra dina dokument Sök funktioner.
+Azure Formigenkänning är en kognitiv tjänst som gör att du kan skapa programvara för automatiserad databehandling med hjälp av maskininlärningsteknik. Identifiera och extrahera text, nyckel/värde-par, markeringsmarkeringar, tabeller och struktur från dina dokument som tjänsten matar ut strukturerade data som innehåller relationerna i den ursprungliga filen, avgränsade &mdash; rutor, konfidens med mera. Du får snabbt korrekta resultat som är skräddarsydda för ditt specifika innehåll utan omfattande manuella åtgärder eller omfattande datavetenskapskunskaper. Använd Formigenkänning för att automatisera datainmatning i dina program och utöka dina dokumentsökningsfunktioner.
 
-Formulär tolken består av anpassade dokument bearbetnings modeller, färdiga modeller för fakturor, kvitton, ID: n, visitkort och layout modellen. Du kan anropa formulär igenkännings modeller genom att använda ett REST API-eller klient biblioteks-SDK: er för att minska komplexiteten och integrera dem i arbets flödet eller programmet.
+Formigenkänning består av anpassade dokumentbearbetningsmodeller, fördefinierade modeller för fakturor, kvitton, ID:er och visitkort samt layoutmodellen. Du kan anropa Formigenkänning modeller med hjälp av en REST API-eller klientbiblioteks-SDK:er för att minska komplexiteten och integrera den i ditt arbetsflöde eller program.
 
-Den här dokumentationen innehåller följande artikel typer:  
+Den här dokumentationen innehåller följande artikeltyper:  
 
-* [**Snabb starter**](quickstarts/client-library.md) hjälper dig att komma igång med instruktioner för att göra förfrågningar till tjänsten.  
-* [**Instruktions guider**](build-training-data-set.md) innehåller instruktioner för att använda tjänsten på mer exakta eller anpassade sätt.  
-* [**Begreppen**](concept-layout.md) ger djupgående förklaringar av tjänst funktionerna och funktionerna.  
-* [**Självstudier**](tutorial-bulk-processing.md) är längre guider som visar hur du använder tjänsten som en komponent i bredare affärs lösningar.  
+* [**Snabbstarter**](quickstarts/client-library.md) är komma igång-instruktioner som vägleder dig genom att göra begäranden till tjänsten.  
+* [**Instruktionsguider**](build-training-data-set.md) innehåller instruktioner för att använda tjänsten på mer specifika eller anpassade sätt.  
+* [**Begrepp**](concept-layout.md) ger djupgående förklaringar av tjänstens funktioner och funktioner.  
+* [**Självstudier**](tutorial-bulk-processing.md) är längre guider som visar hur du använder tjänsten som en komponent i bredare affärslösningar.  
 
-## <a name="form-recognizer-features"></a>Formulär igenkännings funktioner
+## <a name="form-recognizer-features"></a>Formigenkänning funktioner
 
-Med formulär igenkänning kan du enkelt extrahera och analysera formulär data med dessa funktioner:
+Med Formigenkänning kan du enkelt extrahera och analysera formulärdata med följande funktioner:
 
-* **[Layout-API](#layout-api)** – Extrahera text, markerings märken och tabeller strukturer, tillsammans med deras gränser för avgränsnings rutor från dokument.
-* **[Anpassade modeller](#custom-models)** – Extrahera text, nyckel/värde-par, markerings märken och tabell data från formulär. De här modellerna tränas med dina egna data, så de skräddarsys efter dina formulär.
+* **[Layout-API](#layout-api)** – Extrahera text, markeringsmarkeringar och tabellstrukturer, tillsammans med deras koordinater för en avgränsare, från dokument.
+* **[Anpassade modeller](#custom-models)** – Extrahera text, nyckel/värde-par, markeringsmarkeringar och tabelldata från formulär. De här modellerna tränas med dina egna data, så de skräddarsys efter dina formulär.
 
-* **[Färdiga modeller](#prebuilt-models)** – extrahera data från unika dokument typer med hjälp av förinställda modeller. För närvarande finns följande färdiga modeller
+* **[Fördefinierade modeller – Extrahera](#prebuilt-models)** data från unika dokumenttyper med hjälp av fördefinierade modeller. För närvarande är följande fördefinierade modeller tillgängliga
 
   * [Fakturor](./concept-invoices.md)
-  * [Försäljnings kvitton](./concept-receipts.md)
+  * [Försäljningskvitton](./concept-receipts.md)
   * [Visitkort](./concept-business-cards.md)
-  * [ID-kort](./concept-identification-cards.md)
+  * [Id-kort](./concept-identification-cards.md)
 
 
 ## <a name="get-started"></a>Kom igång
 
-Använd exempel verktyget igenkännings verktyg för att testa layout, färdiga modeller och träna en anpassad modell för dina dokument. Du behöver en Azure-prenumeration ([**skapa en kostnads fri**](https://azure.microsoft.com/free/cognitive-services)) och en resurs slut punkt för [**formulär igenkänning**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) och en nyckel för att testa formulär igenkännings tjänsten.
+Använd exempelverktyget Formigenkänning för att testa Layout, Färdiga modeller och träna en anpassad modell för dina dokument. Du behöver en Azure-prenumeration [**(skapa**](https://azure.microsoft.com/free/cognitive-services)en kostnadsfritt) och en Formigenkänning-resursslutpunkt och nyckel för att prova Formigenkänning tjänsten. [](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)
 
-### <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)
+### <a name="v21-preview"></a>[v2.1-förhandsgranskning](#tab/v2-1)
 
 > [!div class="nextstepaction"]
-> [Testa formulär tolken](https://fott-preview.azurewebsites.net/)
+> [Prova Formigenkänning](https://fott-preview.azurewebsites.net/)
 
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 > [!div class="nextstepaction"]
-> [Testa formulär tolken](https://fott.azurewebsites.net/)
+> [Prova Formigenkänning](https://fott.azurewebsites.net/)
 
 ---
-Följ [klient biblioteket/REST API snabb start](./quickstarts/client-library.md) för att komma igång med att extrahera data från dina dokument. Vi rekommenderar att du använder den kostnads fria tjänsten när du lär dig tekniken. Kom ihåg att antalet fria sidor är begränsat till 500 per månad.
+Följ [snabbstarten Klientbibliotek/REST API för](./quickstarts/client-library.md) att komma igång med att extrahera data från dina dokument. Vi rekommenderar att du använder den kostnadsfria tjänsten när du lär dig tekniken. Kom ihåg att antalet kostnadsfria sidor är begränsat till 500 per månad.
 
-Du kan också använda REST-exemplen (GitHub) för att komma igång- 
+Du kan också använda REST-exemplen (GitHub) för att komma igång – 
 
-* Extrahera text, markerings märken och tabell struktur från dokument
-  * [Extrahera layoutinformation – python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-layout.md)
-* Träna anpassade modeller och extrahera formulär data
-  * [Träna utan etiketter – python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md)
-  * [Träna med etiketter – python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
+* Extrahera text, markeringsmarkeringar och tabellstruktur från dokument
+  * [Extrahera layoutdata – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-layout.md)
+* Träna anpassade modeller och extrahera formulärdata
+  * [Träna utan etiketter – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md)
+  * [Träna med etiketter – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
 * Extrahera data från fakturor
-  * [Extrahera faktura data – python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-invoices.md)
-* Extrahera data från försäljnings kvitton
-  * [Extrahera kvitto data – python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-receipts.md)
+  * [Extrahera fakturadata – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-invoices.md)
+* Extrahera data från försäljningskvitton
+  * [Extrahera kvittodata – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-receipts.md)
 * Extrahera data från visitkort
-  * [Extrahera visitkorts data – python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-business-cards.md)
+  * [Extrahera visitkortsdata – Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-business-cards.md)
 
-### <a name="review-the-rest-apis"></a>Granska REST-API: erna
+### <a name="review-the-rest-apis"></a>Granska REST-API:erna
 
-Du använder följande API: er för att träna modeller och extrahera strukturerade data från formulär.
+Du använder följande API:er för att träna modeller och extrahera strukturerade data från formulär.
 
 |Name |Beskrivning |
 |---|---|
-| **Analysera layout** | Analysera ett dokument som skickas som en data ström för att extrahera text, markerings märken, tabeller och struktur från dokumentet |
-| **Träna anpassad modell**| Träna en ny modell för att analysera dina formulär genom att använda fem formulär av samma typ. Ange parametern _useLabelFile_ för `true` att träna med manuellt märkta data. |
-| **Analysera formulär** |Analysera ett formulär som skickats in som en ström för att extrahera text, nyckel/värde-par och tabeller från formuläret med din anpassade modell.  |
-| **Analysera faktura** | Analysera en faktura för att extrahera viktig information, tabeller och annan faktura text.|
-| **Analysera inleverans** | Analysera ett kvitto dokument för att extrahera viktig information och annan kvitto text.|
-| **Analysera ID** | Analysera ett ID-kort dokument för att extrahera viktig information och annan identifierings kort text.|
-| **Visitkort för analys** | Analysera ett visitkort för att extrahera viktig information och text.|
+| **Analysera layout** | Analysera ett dokument som skickas som en ström för att extrahera text, markeringar, tabeller och struktur från dokumentet |
+| **Träna anpassad modell**| Träna en ny modell att analysera dina formulär med hjälp av fem formulär av samma typ. Ange _parametern useLabelFile_ till `true` för att träna med manuellt märkta data. |
+| **Analysera formulär** |Analysera ett formulär som skickas som en dataström för att extrahera text, nyckel/värde-par och tabeller från formuläret med din anpassade modell.  |
+| **Analysera faktura** | Analysera en faktura för att extrahera viktig information, tabeller och annan fakturatext.|
+| **Analysera kvitto** | Analysera ett kvittodokument för att extrahera nyckelinformation och annan kvittotext.|
+| **Analysera ID** | Analysera ett ID-kortdokument för att extrahera viktig information och annan id-korttext.|
+| **Analysera visitkort** | Analysera ett visitkort för att extrahera viktig information och text.|
 
-### <a name="v21-preview"></a>[v 2.1 Preview](#tab/v2-1)
+### <a name="v21-preview"></a>[v2.1 förhandsversion](#tab/v2-1)
 
-Mer information får du genom att utforska [REST API referens dokumentationen](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) . Om du är bekant med en tidigare version av API: n läser du artikeln [Nyheter](./whats-new.md) och lär dig mer om de senaste ändringarna.
+Utforska [referensdokumentationen REST API om du](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) vill veta mer. Om du är bekant med en tidigare version av API:et kan du läsa artikeln [Vad är nytt för att](./whats-new.md) lära dig mer om de senaste ändringarna.
 
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
-Mer information får du genom att utforska [REST API referens dokumentationen](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm) . Om du är bekant med en tidigare version av API: n läser du artikeln [Nyheter](./whats-new.md) och lär dig mer om de senaste ändringarna.
+Utforska [referensdokumentationen REST API om du](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync) vill veta mer. Om du är bekant med en tidigare version av API:et kan du läsa artikeln [Vad är nytt för att](./whats-new.md) lära dig mer om de senaste ändringarna.
 
 ---
 
 ## <a name="layout-api"></a>Layout-API
 
-Formulär tolken kan extrahera text, markerings märken och tabell struktur (rad-och kolumn nummer som är associerade med texten) med hjälp av optisk tecken läsning (OCR) med hög upplösning och en förbättrad djup inlärnings modell från dokument. Mer information finns i rikt linjer för [layout](./concept-layout.md) .
+Formigenkänning kan extrahera text, markeringsmarkeringar och tabellstruktur (rad- och kolumnnummer som är associerade med texten) med hjälp av optisk teckenläsning (OCR) med hög definition och en förbättrad djupinlärningsmodell från dokument. Mer information [finns](./concept-layout.md) i begreppsguide för layout.
 
-:::image type="content" source="./media/tables-example.jpg" alt-text="tabell exempel" lightbox="./media/tables-example.jpg":::
+:::image type="content" source="./media/tables-example.jpg" alt-text="tabellexempel" lightbox="./media/tables-example.jpg":::
 
 ## <a name="custom-models"></a>Anpassade modeller
 
-Formulär igenkännings anpassade modeller tränar dina egna data och du behöver bara fem exempel inmatnings formulär att starta. En tränad dokument bearbetnings modell kan spara strukturerade data som innehåller relationerna i det ursprungliga formulär dokumentet. När du har tränat modellen kan du testa och träna den och sedan använda den för att på ett tillförlitligt sätt extrahera data från fler formulär utifrån dina behov.
+Formigenkänning anpassade modeller tränas till dina egna data och du behöver bara fem exempel på indataformulär för att starta. En tränad dokumentbearbetningsmodell kan mata ut strukturerade data som innehåller relationerna i det ursprungliga formulärdokumentet. När du har tränat modellen kan du testa och träna om den och så småningom använda den för att extrahera data från flera formulär på ett tillförlitligt sätt utifrån dina behov.
 
-Du har följande alternativ när du tränar anpassade modeller: utbildning med märkta data och utan etiketterade data.
+Du har följande alternativ när du tränar anpassade modeller: träning med märkta data och utan märkta data.
 
 ### <a name="train-without-labels"></a>Träna utan etiketter
 
-Formulär tolken använder obevakad inlärning för att förstå layouten och relationerna mellan fält och poster i formulären. När du skickar in dina indata-formulär, identifierar algoritmen formulären efter typ, identifierar vilka nycklar och tabeller som finns och associerar värden till nycklar och poster i tabeller. Utbildning utan etiketter kräver inte manuella data etiketter eller intensiv kodning och underhåll, och vi rekommenderar att du provar den här metoden först.
+Formigenkänning använder oövervakad inlärning för att förstå layouten och relationerna mellan fält och poster i dina formulär. När du skickar indataformulären klustrar algoritmen formulären efter typ, identifierar vilka nycklar och tabeller som finns och kopplar värden till nycklar och poster till tabeller. Träning utan etiketter kräver inte manuell dataetikettering eller intensiv kodning och underhåll, och vi rekommenderar att du provar den här metoden först.
 
-Se [skapa en tränings data uppsättning](./build-training-data-set.md) för tips om hur du samlar in utbildnings dokument.
+Se [Skapa en uppsättning träningsdata för](./build-training-data-set.md) tips om hur du samlar in dina träningsdokument.
 
 ### <a name="train-with-labels"></a>Träna med etiketter
 
 När du tränar med märkta data använder modellen övervakad inlärning för att extrahera värden av intresse med hjälp av de märkta formulär som du anger. Märkta data resulterar i bättre modeller och kan skapa modeller som fungerar med komplexa formulär eller formulär som innehåller värden utan nycklar.
 
-Formulär tolken använder [layout-API: t](#layout-api) för att lära dig de förväntade storlekarna och positionerna för de utskrivna och handskrivna text elementen och Sedan använder den användardefinierade etiketter för att lära sig nyckel-och värde associationer och tabeller i dokumenten. Vi rekommenderar att du använder fem manuellt märkta formulär av samma typ (samma struktur) för att komma igång när du tränar en ny modell och lägger till mer märkta data vid behov för att förbättra modellens noggrannhet. Formulär tolken gör det möjligt att träna en modell för att extrahera nyckel värdes par och tabeller med hjälp av övervakade inlärnings funktioner. 
+Formigenkänning använder [layout-API:et](#layout-api) för att lära sig förväntade storlekar och positioner för utskrivna och handskrivna textelement och extrahera tabeller. Sedan används användar angivna etiketter för att lära sig nyckel-/värdeassociationer och tabeller i dokumenten. Vi rekommenderar att du använder fem manuellt märkta formulär av samma typ (samma struktur) för att komma igång när du tränar en ny modell och lägger till fler märkta data efter behov för att förbättra modellens noggrannhet. Formigenkänning kan träna en modell för att extrahera nyckelvärdepar och tabeller med hjälp av övervakade inlärningsfunktioner. 
 
-[Kom igång med träna med etiketter](./quickstarts/label-tool.md)
+[Kom igång med Träna med etiketter](./quickstarts/label-tool.md)
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
 ## <a name="prebuilt-models"></a>Fördefinierade modeller
 
-Formulär tolken innehåller också färdiga modeller för automatisk data bearbetning av unika formulär typer.
+Formigenkänning även fördefinierade modeller för automatiserad databearbetning av unika formulärtyper.
 
-### <a name="prebuilt-invoice-model"></a>Fördefinierad faktura modell
+### <a name="prebuilt-invoice-model"></a>Förbyggd fakturamodell
 
-Den fördefinierade faktura modellen hämtar data från fakturor i olika format och returnerar strukturerade data. Den här modellen extraherar viktig information som faktura-ID, kund information, leverantörs information, leverans till, faktura till, Summa, skatt, Delsumma, rad artiklar med mera. Dessutom tränas den förinställda faktura modellen för att analysera och returnera all text och alla tabeller på fakturan. Mer information finns i konceptuell guide för [fakturor](./concept-invoices.md) .
+Den fördefinierade fakturamodellen extraherar data från fakturor i olika format och returnerar strukturerade data. Den här modellen extraherar viktig information som faktura-ID, kundinformation, leverantörsinformation, skicka till, fakturera till, summa, skatt, delsumma, radartiklar med mera. Dessutom tränas den fördefinierade fakturamodellen för att analysera och returnera all text och alla tabeller på fakturan. Se [konceptuella](./concept-invoices.md) fakturor för mer information.
 
-:::image type="content" source="./media/overview-invoices.jpg" alt-text="exempel faktura" lightbox="./media/overview-invoices.jpg":::
+:::image type="content" source="./media/overview-invoices.jpg" alt-text="exempelfaktura" lightbox="./media/overview-invoices.jpg":::
 
-### <a name="prebuilt-receipt-model"></a>Fördefinierad kvitto modell
+### <a name="prebuilt-receipt-model"></a>Förbyggd kvittomodell
 
-Fördefinierad kvitto modell används för att läsa kvitton på engelska försäljning från Australien, Kanada, Storbritannien, Indien och USA typ som &mdash; används av restauranger, gas stationer, åter försäljare och så vidare. Den här modellen hämtar viktig information, till exempel tid och datum för transaktionen, handels information, moms belopp, rad artiklar, total summor och mer. Dessutom tränas den förskapade kvitto modellen att analysera och returnera all text i ett kvitto. Mer information finns i Guide för [kvitton](./concept-receipts.md) .
+Den fördefinierade kvittomodellen används för att läsa engelska försäljningskvitton från Australien, Kanada, Storbritannien, Indien och USA den typ som används av restauranger, bensinstationer, detaljhandel och &mdash; så vidare. Den här modellen extraherar viktig information, till exempel tid och datum för transaktionen, säljinformation, skattebelopp, radobjekt, summor med mera. Dessutom tränas den fördefinierade kvittomodellen för att analysera och returnera all text på ett kvitto. Mer information [finns i](./concept-receipts.md) konceptuella kvittoguider.
 
-:::image type="content" source="./media/overview-receipt.jpg" alt-text="exempel kvitto" lightbox="./media/overview-receipt.jpg":::
+:::image type="content" source="./media/overview-receipt.jpg" alt-text="exempelkvitto" lightbox="./media/overview-receipt.jpg":::
 
-### <a name="prebuilt-identification-id-cards-model"></a>Fördefinierad identifiering (ID) kort modell
+### <a name="prebuilt-identification-id-cards-model"></a>Modell med fördefinierade ID-kort
 
-Med kort modellen identifiering (ID) kan du extrahera viktig information från Världs omfattande Passport och amerikanska driv rutins licenser. Den extraherar data, till exempel dokument-ID, förfallo datum, datum för utgångs datum, namn, land, region, maskinläsbar zon med mera. Mer information finns på [kortet Identification (ID) korts](./concept-identification-cards.md) konceptuell guide.
+Med kortmodellen för identifiering (ID) kan du extrahera viktig information från världsomfattande pass och amerikanska drivrutinslicenser. Den extraherar data som dokument-ID, förfallodatum, förfallodatum, namn, land, region, datorläsbar zon med mera. Mer information [finns i begreppsguide för](./concept-identification-cards.md) id-kort.
 
-:::image type="content" source="./media/overview-id.jpg" alt-text="exempel på identifierings kort" lightbox="./media/overview-id.jpg":::
+:::image type="content" source="./media/overview-id.jpg" alt-text="exempel på id-kort" lightbox="./media/overview-id.jpg":::
 
-### <a name="prebuilt-business-cards-model"></a>Fördefinierad visitkorts modell
+### <a name="prebuilt-business-cards-model"></a>Fördefinierade visitkortsmodeller
 
-Med visitkorts modellen kan du extrahera information som personens namn, befattning, adress, e-post, företags nummer och telefonnummer från visitkort på engelska. Mer information finns i konceptuell guide för [visitkort](./concept-business-cards.md) .
+Med visitkortsmodellen kan du extrahera information som personens namn, befattning, adress, e-postadress, företag och telefonnummer från visitkort på engelska. Mer information [finns i](./concept-business-cards.md) konceptuella guide för visitkort.
 
 :::image type="content" source="./media/overview-business-card.jpg" alt-text="exempel på visitkort" lightbox="./media/overview-business-card.jpg":::
 
-## <a name="input-requirements"></a>Krav för indatamängd
+## <a name="input-requirements"></a>Indatakrav
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
 
-## <a name="deploy-on-premises-using-docker-containers"></a>Distribuera lokalt med Docker-behållare
+## <a name="deploy-on-premises-using-docker-containers"></a>Distribuera lokalt med Docker-containrar
 
-[Använd formulär igenkännings behållare (för hands version)](form-recognizer-container-howto.md) för att distribuera API-funktioner lokalt. Med den här Docker-behållaren kan du ta tjänsten närmare dina data för efterlevnad, säkerhet eller andra drift orsaker.
+[Använd Formigenkänning (förhandsversion) för](form-recognizer-container-howto.md) att distribuera API-funktioner lokalt. Med den här Docker-containern kan du föra tjänsten närmare dina data av efterlevnads-, säkerhets- eller andra driftskäl.
 
-## <a name="service-availability-and-redundancy"></a>Tjänst tillgänglighet och redundans
+## <a name="service-availability-and-redundancy"></a>Tjänsttillgänglighet och redundans
 
-### <a name="is-form-recognizer-service-zone-resilient"></a>Är formulär tolkens service zon – elastisk?
+### <a name="is-form-recognizer-service-zone-resilient"></a>Är Formigenkänning elastisk tjänstzon?
 
-Ja. Formulär igenkännings tjänsten är zon-flexibel som standard.
+Ja. Tjänsten Formigenkänning är zontålig som standard.
 
-### <a name="how-do-i-configure-the-form-recognizer-service-to-be-zone-resilient"></a>Hur gör jag för att konfigurerar du att formulär tolks tjänsten ska vara zoner-elastisk?
+### <a name="how-do-i-configure-the-form-recognizer-service-to-be-zone-resilient"></a>Hur gör jag för att konfigurera Formigenkänning-tjänsten så att den är zontålig?
 
-Ingen kund konfiguration krävs för att aktivera zon återhämtning. Zon-återhämtning för formulär igenkännings resurser är tillgängligt som standard och hanteras av själva tjänsten.
+Ingen kundkonfiguration krävs för att aktivera zonåter återhämtning. Zonåter återhämtning för Formigenkänning resurser är tillgänglig som standard och hanteras av själva tjänsten.
 
 ## <a name="data-privacy-and-security"></a>Datasekretess och säkerhet
 
-Precis som med alla kognitiva tjänster bör utvecklare som använder formulär tolknings tjänsten vara medvetna om Microsofts principer för kund information. Läs mer på [Cognitive Services-sidan](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) på Microsoft Trust Center.
+Som med alla kognitiva tjänster bör utvecklare som använder Formigenkänning-tjänsten vara medvetna om Microsofts principer för kunddata. Läs mer på [Cognitive Services-sidan](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) på Microsoft Trust Center.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Prova vårt online verktyg och snabb start för att lära dig mer om formulär igenkännings tjänsten.
+Prova vårt onlineverktyg och snabbstart om du vill veta mer om Formigenkänning tjänsten.
 
-* [**Formulär tolks verktyget**](https://fott-preview.azurewebsites.net/)
-* [**Klient bibliotek och REST API snabb start**](quickstarts/client-library.md)
+* [**Formigenkänning-verktyg**](https://fott-preview.azurewebsites.net/)
+* [**Snabbstart för klientbibliotek REST API klientbibliotek**](quickstarts/client-library.md)

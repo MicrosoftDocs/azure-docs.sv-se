@@ -1,126 +1,126 @@
 ---
-title: Anpassade mått i Azure Monitor (förhands granskning)
-description: Lär dig mer om anpassade mått i Azure Monitor och hur de modelleras.
+title: Anpassade mått i Azure Monitor (förhandsversion)
+description: Läs mer om anpassade mått i Azure Monitor och hur de modelleras.
 author: anirudhcavale
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 01/25/2021
-ms.openlocfilehash: c6e946d5aedb06899a44851b79581dbc518f41b0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/13/2021
+ms.openlocfilehash: f4ba3763dd781053349417fe3fed3a2848a06fc7
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052321"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515846"
 ---
-# <a name="custom-metrics-in-azure-monitor-preview"></a>Anpassade mått i Azure Monitor (förhands granskning)
+# <a name="custom-metrics-in-azure-monitor-preview"></a>Anpassade mått i Azure Monitor (förhandsversion)
 
-När du distribuerar resurser och program i Azure vill du börja samla in telemetri för att få insikter om prestanda och hälsa. Azure gör vissa mått tillgängliga i rutan. Dessa mått kallas [standard eller plattform](./metrics-supported.md). De är dock begränsade. 
+När du distribuerar resurser och program i Azure bör du börja samla in telemetri för att få insikter om deras prestanda och hälsa. Azure gör vissa mått tillgängliga för dig redan från start. Dessa mått kallas [standard eller plattform.](./metrics-supported.md) De är dock begränsade till sin natur. 
 
-Du kanske vill samla in vissa anpassade prestanda indikatorer eller företagsspecifika mått för att ge djupare insikter. Dessa **anpassade** mått kan samlas in via din programtelemetri, en agent som körs på dina Azure-resurser eller till och med ett externt övervaknings system och skickas direkt till Azure Monitor. När de har publicerats till Azure Monitor kan du bläddra i, fråga och avisering om anpassade mått för dina Azure-resurser och-program sida vid sida med de standard mått som genereras av Azure.
+Du kanske vill samla in vissa anpassade prestandaindikatorer eller affärsspecifika mått för att ge djupare insikter. Dessa **anpassade** mått kan samlas in via programtelemetri, en agent som körs på dina Azure-resurser eller till och med ett övervakningssystem utanför systemet som skickas direkt till Azure Monitor. När de har publicerats till Azure Monitor kan du bläddra, fråga och varna om anpassade mått för dina Azure-resurser och program sida vid sida med de standardmått som genereras av Azure.
 
-Azure Monitor anpassade mått är aktuella i offentlig för hands version. 
+Azure Monitor anpassade mått är aktuella i offentlig förhandsversion. 
 
 ## <a name="methods-to-send-custom-metrics"></a>Metoder för att skicka anpassade mått
 
 Anpassade mått kan skickas till Azure Monitor via flera metoder:
-- Instrumentera ditt program genom att använda Azure Application Insights SDK och skicka anpassad telemetri till Azure Monitor. 
-- Installera Azure Monitor Agent (för hands version) på den [virtuella Windows-eller Linux Azure-datorn](../agents/azure-monitor-agent-overview.md) och Använd en [data insamlings regel](../agents/data-collection-rule-azure-monitor-agent.md) för att skicka prestanda räknare till Azure Monitor mått.
-- Installera Windows Azure-diagnostik-tillägget (WAD) på din [virtuella Azure-dator](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md), [skalnings uppsättning för virtuell dator](../essentials/collect-custom-metrics-guestos-resource-manager-vmss.md), [klassisk virtuell dator](../essentials/collect-custom-metrics-guestos-vm-classic.md)eller [klassisk Cloud Services](../essentials/collect-custom-metrics-guestos-vm-cloud-service-classic.md) och skicka prestanda räknare till Azure Monitor. 
-- Installera [InfluxDatain-agenten](../essentials/collect-custom-metrics-linux-telegraf.md) på din virtuella Azure Linux-dator och skicka mått med hjälp av plugin-programmet för Azure Monitor-utdata.
-- Skicka anpassade mått [direkt till Azure Monitor REST API](./metrics-store-custom-rest-api.md) `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
+- Instrumentera programmet med hjälp av Azure Application Insights SDK och skicka anpassad telemetri till Azure Monitor. 
+- Installera Azure Monitor Agent (förhandsversion) på din virtuella [Windows-](../agents/azure-monitor-agent-overview.md) eller Linux Azure-dator och använd en [datainsamlingsregel](../agents/data-collection-rule-azure-monitor-agent.md) för att skicka prestandaräknare till Azure Monitor mått.
+- Installera Tillägget Windows Azure Diagnostics (WAD) på din [](../essentials/collect-custom-metrics-guestos-resource-manager-vmss.md)virtuella [Azure-dator,](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md)VM-skalningsuppsättning, klassiska [virtuella](../essentials/collect-custom-metrics-guestos-vm-classic.md)dator eller klassiska [Cloud Services](../essentials/collect-custom-metrics-guestos-vm-cloud-service-classic.md) och skicka prestandaräknare till Azure Monitor. 
+- Installera [InfluxData Telegraf-agenten](../essentials/collect-custom-metrics-linux-telegraf.md) på din virtuella Azure Linux-dator och skicka mått med hjälp Azure Monitor plugin-programmet för utdata.
+- Skicka anpassade mått [direkt till Azure Monitor REST API](./metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
 
-## <a name="pricing-model-and-retention"></a>Pris modell och kvarhållning
+## <a name="pricing-model-and-retention"></a>Prismodell och kvarhållning
 
-På [sidan med Azure Monitor priser](https://azure.microsoft.com/pricing/details/monitor/) finns information om när faktureringen ska aktive ras för anpassade mått och mått frågor. Det finns vissa pris uppgifter för alla mått, inklusive anpassade mått och mått frågor på den här sidan. Sammanfattnings vis finns det ingen kostnad för att mata in standard mått (plattforms mått) i Azure Monitor statistik lagring, men anpassade mått debiteras kostnader när de anger allmän tillgänglighet. Mått för API-frågor kostar.
+På [Azure Monitor för information](https://azure.microsoft.com/pricing/details/monitor/) om när fakturering kommer att aktiveras för anpassade mått och måttfrågor. Specifik prisinformation för alla mått, inklusive anpassade mått och måttfrågor, finns på den här sidan. Sammanfattningsvis kostar det inte att mata in standardmått (plattformsmått) i Azure Monitor Metrics Store, men anpassade mått medför kostnader när de blir allmänt tillgängliga. Mått-API-frågor medför kostnader.
 
-Anpassade mått bevaras för [samma tid som plattforms måtten](../essentials/data-platform-metrics.md#retention-of-metrics). 
+Anpassade mått bevaras under samma [tid som plattformsmåtten](../essentials/data-platform-metrics.md#retention-of-metrics). 
 
 > [!NOTE]  
-> Mått som skickas till Azure Monitor via Application Insights SDK faktureras som inmatade logg data. De endast debiteras ytterligare mått endast om Application Insights funktionen [Aktivera avisering för anpassade mått dimensioner](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation) har marker ATS. Den här kryss rutan skickar data till Azure Monitor Metrics-databasen med hjälp av anpassade mått-API: et för att tillåta mer komplexa aviseringar.  Läs mer om [Application Insights pris modell](../app/pricing.md#pricing-model) och [priser i din region](https://azure.microsoft.com/pricing/details/monitor/).
+> Mått som skickas till Azure Monitor via Application Insights SDK debiteras som indata i loggen. De debiteras bara ytterligare måttavgifter om Application Insights aktivera [aviseringar för anpassade måttdimensioner](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation) har valts. Den här kryssrutan skickar data till Azure Monitor metrics-databasen med hjälp av API:et för anpassade mått för att tillåta mer komplexa aviseringar.  Läs mer om [Application Insights prismodellen](../app/pricing.md#pricing-model) och [priserna i din region.](https://azure.microsoft.com/pricing/details/monitor/)
 
 
 ## <a name="how-to-send-custom-metrics"></a>Så här skickar du anpassade mått
 
-När du skickar anpassade mått till Azure Monitor måste varje data punkt eller värde rapporter innehålla följande information.
+När du skickar anpassade mått Azure Monitor måste varje datapunkt eller värde som rapporteras innehålla följande information.
 
 ### <a name="authentication"></a>Autentisering
-För att kunna skicka in anpassade mått till Azure Monitor måste entiteten som skickar måttet ha en giltig Azure Active Directory-token (Azure AD) **i huvud rubriken** för begäran. Det finns några sätt att hämta en giltig Bearer-token:
-1. [Hanterade identiteter för Azure-resurser](../../active-directory/managed-identities-azure-resources/overview.md). Ger en identitet till en Azure-resurs, till exempel en virtuell dator. Hanterad tjänstidentitet (MSI) är utformat för att ge resurser behörighet att utföra vissa åtgärder. Ett exempel är att låta en resurs generera mått om sig själv. En resurs, eller dess MSI, kan beviljas **övervaknings mått utgivar** behörigheter för en annan resurs. Med den här behörigheten kan MSI genererar mått för andra resurser också.
-2. [Azure AD-tjänstens huvud namn](../../active-directory/develop/app-objects-and-service-principals.md). I det här scenariot kan ett Azure AD-program eller-tjänst tilldelas behörigheter för att generera mått för en Azure-resurs.
-För att autentisera begäran verifierar Azure Monitor programtoken med hjälp av offentliga Azure AD-nycklar. Den befintliga **övervaknings mått utgivar** rollen har redan den här behörigheten. Den finns i Azure Portal. Tjänstens huvud namn, beroende på vilka resurser som den utvärderar anpassade mått för, kan få rollen som **övervaknings mått utgivar** roll i det omfånget som krävs. Exempel är en prenumeration, en resurs grupp eller en angiven resurs.
+För att skicka anpassade mått till Azure Monitor behöver den entitet som skickar måttet en giltig Azure Active Directory-token (Azure AD) i **bearer-huvudet** för begäran. Det finns några sätt att hämta en giltig bearer-token:
+1. [Hanterade identiteter för Azure-resurser](../../active-directory/managed-identities-azure-resources/overview.md). Ger en identitet till en Azure-resurs, till exempel en virtuell dator. Hanterad tjänstidentitet (MSI) har utformats för att ge resurser behörighet att utföra vissa åtgärder. Ett exempel är att låta en resurs generera mått om sig själv. En resurs, eller dess MSI, kan beviljas behörigheter för **Övervakningsmåttutgivare** för en annan resurs. Med den här behörigheten kan MSI även generera mått för andra resurser.
+2. [Azure AD-tjänstens huvudnamn](../../active-directory/develop/app-objects-and-service-principals.md). I det här scenariot kan ett Azure AD-program eller en tjänst tilldelas behörigheter för att generera mått om en Azure-resurs.
+För att autentisera begäran verifierar Azure Monitor programtoken med hjälp av offentliga Azure AD-nycklar. Den befintliga **rollen Övervakningsmåttutgivare** har redan den här behörigheten. Den är tillgänglig i Azure Portal. Tjänstens huvudnamn kan, beroende på vilka resurser det skickar anpassade mått för, ges rollen **Övervakningsmåttutgivare** i det omfång som krävs. Exempel är en prenumeration, resursgrupp eller en specifik resurs.
 
 > [!TIP]  
-> När du begär en Azure AD-token för att skicka anpassade mått måste du se till att den mål grupp eller resurs som token begärs för är `https://monitoring.azure.com/` . Se till att ta med efterföljande "/".
+> När du begär en Azure AD-token för att generera anpassade mått ser du till att målgruppen eller resursen som token begärs för är `https://monitoring.azure.com/` . Se till att inkludera avslutande "/".
 
 ### <a name="subject"></a>Ämne
-Den här egenskapen registrerar vilket Azure-resurs-ID som det anpassade måttet rapporteras för. Den här informationen kommer att kodas i URL: en för det API-anrop som görs. Varje API kan bara skicka Mät värden för en enda Azure-resurs.
+Den här egenskapen samlar in vilket Azure-resurs-ID som det anpassade måttet rapporteras för. Den här informationen kodas i URL:en för API-anropet som görs. Varje API kan bara skicka måttvärden för en enda Azure-resurs.
 
 > [!NOTE]  
-> Du kan inte generera anpassade mått mot resurs-ID för en resurs grupp eller prenumeration.
+> Du kan inte generera anpassade mått mot resurs-ID:t för en resursgrupp eller prenumeration.
 
 
 ### <a name="region"></a>Region
-Den här egenskapen registrerar vilken Azure-region som den resurs som du skickar måtten för distribueras i. Mått måste genereras till samma Azure Monitor regionala slut punkten som den region som resursen har distribuerats i. Till exempel måste anpassade mått för en virtuell dator som har distribuerats i västra USA skickas till den västra regionala Azure Monitor slut punkten. Region informationen är också kodad i URL-adressen till API-anropet.
+Den här egenskapen samlar in vilken Azure-region som resursen du skickar mått för distribueras i. Mått måste genereras till samma regionslutpunkt Azure Monitor regionen som resursen distribueras i. Anpassade mått för en virtuell dator som distribueras i USA, västra måste till exempel skickas till den regionala slutpunkten westUS Azure Monitor. Regioninformationen kodas också i URL:en för API-anropet.
 
 > [!NOTE]  
-> Under den offentliga för hands versionen är anpassade mått endast tillgängliga i en delmängd av Azure-regioner. En lista över regioner som stöds finns dokumenterade i ett senare avsnitt i den här artikeln.
+> Under den offentliga förhandsversionen är anpassade mått endast tillgängliga i en delmängd av Azure-regioner. En lista över regioner som stöds dokumenteras i ett senare avsnitt i den här artikeln.
 >
 >
 
 ### <a name="timestamp"></a>Timestamp
-Varje data punkt som skickas till Azure Monitor måste markeras med en tidsstämpel. Den här tidsstämpeln fångar in det datum/tid-värde som Metric-värdet mäts eller samlas in. Azure Monitor accepterar mått data med tidsstämplar så långt som 20 minuter under de senaste och 5 minuterna i framtiden. Tidsstämpeln måste anges i formatet ISO 8601.
+Varje datapunkt som skickas till Azure Monitor måste markeras med en tidsstämpel. Den här tidsstämpeln samlar in den DateTime då måttvärdet mäts eller samlas in. Azure Monitor accepterar måttdata med tidsstämplar så långt som 20 minuter under de senaste och 5 minuter i framtiden. Tidsstämpeln måste vara i ISO 8601-format.
 
 ### <a name="namespace"></a>Namnområde
-Namn områden är ett sätt att kategorisera eller gruppera likartade mått tillsammans. Genom att använda namn rymder kan du isolera olika grupper av mått som kan samla in olika insikter eller prestanda indikatorer. Du kan till exempel ha ett namn område med namnet **contosomemorymetrics** som spårar minnes användnings mått som innehåller en profil för din app. Ett annat namn område med namnet **contosoapptransaction** kan spåra alla mått för användar transaktioner i programmet.
+Namnområden är ett sätt att kategorisera eller gruppera liknande mått tillsammans. Genom att använda namnområden kan du uppnå isolering mellan grupper av mått som kan samla in olika insikter eller prestandaindikatorer. Du kan till exempel ha ett namnområde med namnet **contosomemorymetrics** som spårar mått för minnesanvändning som profilerar din app. Ett annat namnområde **med namnet contosoapptransaction** kan spåra alla mått om användartransaktioner i ditt program.
 
 ### <a name="name"></a>Name
-**Namn** är namnet på det mått som rapporteras. Vanligt vis är namnet tillräckligt beskrivande för att hjälpa dig att identifiera vad som mäts. Ett exempel är ett mått som mäter antalet minnes byte som används på en specifik virtuell dator. Det kan ha ett Metric-namn som **minnes byte som används**.
+**Namnet** är namnet på måttet som rapporteras. Vanligtvis är namnet tillräckligt beskrivande för att hjälpa till att identifiera vad som mäts. Ett exempel är ett mått som mäter antalet minnesbyte som används på en viss virtuell dator. Det kan ha ett måttnamn som **Minnesbyte som används.**
 
-### <a name="dimension-keys"></a>Dimensions nycklar
-En dimension är ett nyckel-eller värdepar som hjälper dig att beskriva ytterligare egenskaper för det mått som samlas in. Genom att använda ytterligare egenskaper kan du samla in mer information om måttet, vilket ger djupare insikter. Till exempel kan **minnes byte som används** måttet ha en dimensions nyckel kallad **process** som samlar in hur många byte minne varje process på en virtuell dator förbrukar. Genom att använda den här nyckeln kan du filtrera måttet för att se hur mycket minnesrelaterade processer som använder eller för att identifiera de fem främsta processerna efter minnes användning.
-Mått är valfria, men alla mått kan inte ha några mått. Ett anpassat mått kan ha upp till 10 dimensioner.
+### <a name="dimension-keys"></a>Dimensionsnycklar
+En dimension är ett nyckel- eller värdepar som hjälper till att beskriva ytterligare egenskaper för måttet som samlas in. Genom att använda de ytterligare egenskaperna kan du samla in mer information om måttet, vilket möjliggör djupare insikter. Måttet Minnesbyte som används kan till exempel ha en dimensionsnyckel som kallas **Process** som visar hur många byte minne varje process på en virtuell dator förbrukar.  Med hjälp av den här nyckeln kan du filtrera måttet för att se hur mycket minnesspecifika processer som används eller för att identifiera de fem främsta processerna efter minnesanvändning.
+Dimensioner är valfria, alla mått kan inte ha dimensioner. Ett anpassat mått kan ha upp till 10 dimensioner.
 
-### <a name="dimension-values"></a>Dimensions värden
-När du rapporterar en mått data punkt, för varje dimensions nyckel för det mått som rapporteras, finns ett motsvarande dimensions värde. Du kanske till exempel vill rapportera det minne som används av ContosoApp på den virtuella datorn:
+### <a name="dimension-values"></a>Dimensionsvärden
+När du rapporterar en måttdatapunkt finns det ett motsvarande dimensionsvärde för varje dimensionsnyckel för måttet som rapporteras. Du kanske till exempel vill rapportera det minne som används av ContosoApp på den virtuella datorn:
 
-* Mått namnet skulle vara **minnes byte som används**.
-* Dimensions nyckeln skulle **bearbetas**.
-* Dimension svärdet skulle vara **ContosoApp.exe**.
+* Måttnamnet är **Minnesbyte i Använd**.
+* Dimensionsnyckeln är **Process**.
+* Dimensionsvärdet skulle vara **ContosoApp.exe**.
 
-När du publicerar ett mått värde kan du bara ange ett enskilt dimensions värde per dimensions nyckel. Om du samlar in samma minnes användning för flera processer på den virtuella datorn kan du rapportera flera mått värden för den tidsstämpeln. Varje mått värde anger ett annat dimensions värde för **process** dimensions nyckeln.
-Mått är valfria, men alla mått kan inte ha några mått. Om ett mått post definierar dimensions nycklar är motsvarande dimensions värden obligatoriska.
+När du publicerar ett måttvärde kan du bara ange ett enda dimensionsvärde per dimensionsnyckel. Om du samlar in samma minnesanvändning för flera processer på den virtuella datorn kan du rapportera flera måttvärden för den tidsstämpeln. Varje måttvärde anger ett annat dimensionsvärde för **dimensionsnyckeln** Process.
+Dimensioner är valfria, alla mått kan inte ha dimensioner. Om ett måttinlägg definierar dimensionsnycklar är motsvarande dimensionsvärden obligatoriska.
 
 ### <a name="metric-values"></a>Måttvärden
-Azure Monitor lagrar alla mått med en minuts precisions intervall. Vi förstår att ett Mät värde kan behöva samplas flera gånger under en bestämd minut. Ett exempel är CPU-användning. Eller så kanske det måste mätas för många diskreta händelser. Ett exempel är en fördröjning för inloggnings transaktioner. Om du vill begränsa antalet råa värden som du måste generera och betala för i Azure Monitor kan du lokalt församla och generera värdena:
+Azure Monitor lagrar alla mått med en minuts kornighetsintervall. Vi förstår att ett mått kan behöva samplas flera gånger under en viss minut. Ett exempel är CPU-användning. Eller så kan den behöva mätas för många diskreta händelser. Ett exempel är svarstider för inloggningstransaktioner. Om du vill begränsa antalet rådatavärden som du måste generera och betala för i Azure Monitor kan du föra samman lokalt och generera värdena:
 
-* **Min**: det lägsta observerade värdet från alla exempel och mätningar under minuten.
-* **Max**: det högsta observerade värdet från alla exempel och mätningar under minuten.
-* **Sum: summan** av alla observerade värden från alla exempel och mätningar under minuten.
-* **Count**: antalet prover och mätningar som tagits under minuten.
+* **Min:** Det minsta observerade värdet från alla urval och mätningar under minuten.
+* **Max:** Det högsta observerade värdet från alla urval och mätningar under minuten.
+* **Summa:** Sammanfattningen av alla observerade värden från alla urval och mätningar under minuten.
+* **Antal:** Antalet urval och mätningar som tagits under minuten.
 
-Om det exempelvis fanns fyra inloggnings transaktioner till din app under en angiven minut, kan de resulterande fördröjningarna för var och en av dem vara följande:
+Om det till exempel finns fyra inloggningstransaktioner till din app under en viss minut kan de resulterande uppmätta svarstiderna för var och en vara följande:
 
 |Transaktion 1|Transaktion 2|Transaktion 3|Transaktion 4|
 |---|---|---|---|
-|7 MS|4 MS|13 MS|16 MS|
+|7 ms|4 ms|13 ms|16 ms|
 
-Sedan skulle den resulterande mått publikationen till Azure Monitor vara följande:
+Den resulterande måttpublicering som ska Azure Monitor blir då följande:
 * Min: 4
 * Max: 16
-* Sum: 40
+* Summa: 40
 * Antal: 4
 
-Om programmet inte kan föraggregeras lokalt och måste generera varje separat exempel eller händelse direkt vid insamling, kan du generera värdena för rå mått. Varje gång en inloggnings transaktion inträffar i din app, kan du till exempel publicera ett mått för att Azure Monitor med bara ett enda mått. För en inloggnings transaktion som tog 12 MS är mått publikationen följande:
+Om programmet inte kan föraggregering lokalt och behöver generera varje diskret exempel eller händelse omedelbart vid insamling kan du generera rådatamåttvärdena. Varje gång en inloggningstransaktion sker i din app publicerar du till exempel ett mått som ska Azure Monitor med bara ett enda mått. Så för en inloggningstransaktion som tog 12 ms skulle måttpublicering vara följande:
 * Min: 12
 * Max: 12
-* Sum: 12
+* Summa: 12
 * Antal: 1
 
-Med den här processen kan du generera flera värden för samma mått och dimensions kombination under en bestämd minut. Azure Monitor tar sedan alla RAW-värden som har spridits för en bestämd minut och sammanställer dem tillsammans.
+Med den här processen kan du generera flera värden för samma mått plus dimensionskombination under en viss minut. Azure Monitor sedan alla rådata som genereras under en viss minut och aggregerar dem tillsammans.
 
-### <a name="sample-custom-metric-publication"></a>Exempel på anpassad mått publicering
-I följande exempel skapar du ett anpassat mått som kallas **minnes byte som används i** **minnes profilen** för mått namn området för en virtuell dator. Måttet har en enda dimension som heter **process**. För den aktuella tidsstämpeln genererar vi mått värden för två olika processer:
+### <a name="sample-custom-metric-publication"></a>Exempel på anpassad måttpublicering
+I följande exempel skapar du ett anpassat mått med namnet **Minnesbyte** i Använd under måttnamnrymdens **minnesprofil** för en virtuell dator. Måttet har en enda dimension som heter **Process**. För den angivna tidsstämpeln skickar vi måttvärden för två olika processer:
 
 ```json
 {
@@ -159,66 +159,90 @@ I följande exempel skapar du ett anpassat mått som kallas **minnes byte som an
   }
 ```
 > [!NOTE]  
-> Application Insights, Diagnostics-tillägget och InfluxDatain-agenten redan har kon figurer ATS för att generera mått värden mot rätt regionala slut punkt och överföra alla föregående egenskaper i varje utsläpp.
+> Application Insights, diagnostiktillägget och InfluxData Telegraf-agenten har redan konfigurerats för att generera måttvärden mot rätt regional slutpunkt och överföra alla föregående egenskaper i varje enskilt objekt.
 >
 >
 
-## <a name="custom-metric-definitions"></a>Anpassade mått definitioner
-Det finns inget behov av att fördefiniera ett anpassat mått i Azure Monitor innan det genereras. Varje Mät data punkt som publiceras innehåller namn område, namn och dimensions information. Första gången ett anpassat mått genereras till Azure Monitor skapas en mått definition automatiskt. Den här mått definitionen kan sedan identifieras på alla resurser som måttet genereras mot via mått definitionerna.
+## <a name="custom-metric-definitions"></a>Anpassade måttdefinitioner
+Du behöver inte definiera ett anpassat mått i förväg Azure Monitor innan det genereras. Varje publicerad måttdatapunkt innehåller namnrymd, namn och dimensionsinformation. Så första gången ett anpassat mått genereras till Azure Monitor skapas en måttdefinition automatiskt. Den här måttdefinitionen kan sedan upptäckas för alla resurser som måttet genereras mot via måttdefinitionerna.
 
 > [!NOTE]  
-> Azure Monitor har ännu inte stöd för att definiera **enheter** för ett anpassat mått.
+> Azure Monitor har ännu inte stöd för att **definiera enheter** för ett anpassat mått.
 
 ## <a name="using-custom-metrics"></a>Använda anpassade mått
-När anpassade mått har skickats till Azure Monitor kan du bläddra igenom dem via Azure Portal och fråga dem via Azure Monitor REST-API: er. Du kan också skapa aviseringar på dem för att meddela dig när vissa villkor uppfylls.
+När anpassade mått har skickats till Azure Monitor kan du bläddra bland dem via Azure Portal och köra frågor mot dem via Azure Monitor REST-API:er. Du kan också skapa aviseringar om dem för att meddela dig när vissa villkor är uppfyllda.
 
 > [!NOTE]
-> Du måste vara en läsare eller deltagar roll för att visa anpassade mått. Se [Monitoring Reader](../../role-based-access-control/built-in-roles.md#monitoring-reader). 
+> Du måste vara läsare eller deltagare för att kunna visa anpassade mått. Se [Övervakningsläsare.](../../role-based-access-control/built-in-roles.md#monitoring-reader) 
 
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Bläddra bland dina anpassade mått via Azure Portal
 1.    Gå till [Azure-portalen](https://portal.azure.com).
-2.    Välj fönstret **övervaka** .
+2.    Välj **fönstret** Övervaka.
 3.    Välj **Mått**.
-4.    Välj en resurs som du har skickat anpassade mått mot.
-5.    Välj namn området mått för ditt anpassade mått.
+4.    Välj en resurs som du har skapat anpassade mått mot.
+5.    Välj måttnamnområdet för ditt anpassade mått.
 6.    Välj det anpassade måttet.
 
 > [!NOTE]
-> I [komma igång med Azure Metrics Explorer](./metrics-getting-started.md) finns mer information om hur du visar mått i Azure Portal.
+> Se [Komma igång med Azure Metrics Explorer](./metrics-getting-started.md) mer information om hur du visar mått i Azure Portal.
 
 ## <a name="supported-regions"></a>Regioner som stöds
-Under den offentliga för hands versionen är möjligheten att publicera anpassade mått bara tillgänglig i en delmängd av Azure-regioner. Den här begränsningen innebär att mått endast kan publiceras för resurser i någon av de regioner som stöds. Mer information om Azure-regioner finns i avsnittet om [Azure-geografiska](https://azure.microsoft.com/global-infrastructure/geographies/) områden. Den Azure-regions kod som används i nedanstående slut punkter är bara namnet på regionen med blank steg borttaget i följande tabell visas en lista över Azure-regioner som stöds för anpassade mått. Den listar även motsvarande slut punkter som Mät värden för resurser i dessa regioner ska publiceras på:
+Under den offentliga förhandsversionen är möjligheten att publicera anpassade mått endast tillgänglig i en delmängd av Azure-regioner. Den här begränsningen innebär att mått endast kan publiceras för resurser i en av de regioner som stöds. Mer [information om Azure-regioner](https://azure.microsoft.com/global-infrastructure/geographies/) finns i Geografiska områden i Azure. Koden för Azure-regionen som används i slutpunkterna nedan är bara namnet på regionen där blanksteg har tagits bort. I följande tabell visas en uppsättning Azure-regioner som stöds för anpassade mått. Den visar också motsvarande slutpunkter som mått för resurser i dessa regioner ska publiceras till:
 
-|Azure-region |Regionalt slut punkts prefix|
+|Azure-region |Prefix för regional slutpunkt|
 |---|---|
-| Alla offentliga moln regioner | https://<azure_region_code>. monitoring.azure.com |
+| Alla offentliga molnregioner | https://<azure_region_code>.monitoring.azure.com |
 | **Azure Government** | |
-| US Gov, Arizona | https: \/ /usgovarizona.Monitoring.Azure.us |
+| US Gov, Arizona | https: \/ /usgovarizona.monitoring.azure.us |
 | **Kina** | |
-| Kina, östra 2 | https: \/ /chinaeast2.Monitoring.Azure.cn |
+| Kina, östra 2 | https: \/ /chinaeast2.monitoring.azure.cn |
 
-## <a name="latency-and-storage-retention"></a>Svars tid och lagrings kvarhållning
+## <a name="latency-and-storage-retention"></a>Svarstid och kvarhållning av lagring
 
-Det kan ta upp till 2 till 3 minuter att lägga till ett helt nytt mått eller en ny dimension som läggs till i ett mått. I systemet bör data visas i mindre än 30 sekunder 99% av tiden. 
+Det kan ta upp till 2 till 3 minuter att lägga till ett helt nytt mått eller en ny dimension som läggs till i ett mått. Väl i systemet bör data visas inom mindre än 30 sekunder 99 % av tiden. 
 
-Om du tar bort ett mått eller tar bort en dimension, kan ändringen ta en vecka till en månad som ska tas bort från systemet.
+Om du tar bort ett mått eller tar bort en dimension kan det ta en vecka till en månad innan ändringen tas bort från systemet.
 
 ## <a name="quotas-and-limits"></a>Kvoter och begränsningar
-Azure Monitor tillämpar följande användnings gränser för anpassade mått:
+Azure Monitor följande användningsgränser för anpassade mått:
 
 |Kategori|Gräns|
 |---|---|
-|Aktiv tids serie/prenumerationer/region|50 000|
-|Dimensions nycklar per mått|10|
-|Sträng längd för mått namn rymder, Metric-namn, dimensions nycklar och dimensions värden|256 tecken|
+|Aktiva tidsserier/prenumerationer/region|50 000|
+|Dimensionsnycklar per mått|10|
+|Stränglängd för måttnamnrymder, måttnamn, dimensionsnycklar och dimensionsvärden|256 tecken|
 
-En aktiv tids serie definieras som en unik kombination av mått, dimensions nyckel eller dimensions värde som har haft mått värden publicerade under de senaste 12 timmarna.
+En aktiv tidsserie definieras som en unik kombination av mått, dimensionsnyckel eller dimensionsvärde som har haft måttvärden publicerade under de senaste 12 timmarna.
+
+Överväg följande mått för att förstå gränsen på 50 000 tidsserier:
+
+*Serversvarstid* med dimensioner: *Region,* *Avdelning,* *CustomerID*
+
+Med det här måttet, om du har 10 regioner, 20 avdelningar och 100 kunder som ger dig 10 x 20 x 100 = 2 000 tidsserier. 
+
+Om du har 100 regioner, 200 avdelningar och 2 000 kunder 100 x 200 x 2000 = 40 000 000 tidsserier, vilket är långt över gränsen enbart för det här måttet. 
+
+Återigen gäller den här gränsen inte för ett enskilt mått. Det är för summan av alla sådana mått i en prenumeration och region.  
+
+## <a name="design-limitations"></a>Designbegränsningar
+
+**Använd inte Application Insights för granskning** – Pipelinen för Application Insights använder API:et för anpassade mått i bakgrunden. Pipelinen är optimerad för en stor mängd telemetri med minsta möjliga påverkan på ditt program. Därför begränsas eller tas exempel (tar bara en procentandel av din telemetri och ignorerar resten) om den inkommande dataströmmen blir för stor. På grund av det här beteendet kan du inte använda det i granskningssyfte eftersom vissa poster sannolikt tas bort. 
+
+**Mått med en variabel i** namnet – Använd inte en variabel som en del av måttnamnet, till exempel ett guid eller en tidsstämpel. Detta gör att du snabbt kommer till begränsningen på 50 000 tidsserier. 
+ 
+**Måttdimensioner med hög** kardinalitet – mått med för många giltiga värden i en dimension (en "hög kardinalitet") är mycket mer benägna att träffa gränsen på 50 000. I allmänhet bör du aldrig använda ett ständigt föränderligt värde i en dimension eller ett måttnamn. Tidsstämpeln ska till exempel ALDRIG vara en dimension. Server, kund eller produkt-ID kan användas, men bara om du har ett mindre antal av var och en av dessa typer. Som ett test kan du fråga dig själv om du vill att alla diagram ska ha sådana data i en graf.  Om du har 10 eller kanske till och med 100 servrar kan det vara användbart att se alla i ett diagram för jämförelse. Men om du har 1 000 skulle det resulterande diagrammet förmodligen vara svårt om inte omöjligt att läsa. Bästa praxis är att behålla det till färre än 100 giltiga värden. Upp till 300 är ett grått område.  Om du behöver gå igenom den här mängden använder du Azure Monitor anpassade loggarna i stället.   
+
+Om du har en variabel i namnet eller en dimension med hög kardinalitet kan följande inträffa. 
+- Mått blir otillförlitliga på grund av begränsning
+- Metrics Explorer fungerar inte
+- Aviseringar och meddelanden blir oförutsägbara
+- Kostnaderna kan öka oväntat – Microsoft debiteras inte medan anpassade mått med dimensioner finns i offentlig förhandsversion. Men när avgifterna startar i framtiden debiteras du oväntade avgifter. Planen är att debitera för måttförbrukning baserat på antalet övervakade tidsserier och antalet API-anrop som görs.  
 
 ## <a name="next-steps"></a>Nästa steg
 Använd anpassade mått från olika tjänster: 
  - [Virtual Machines](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md)
  - [Skaluppsättning för virtuella datorer](../essentials/collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure Virtual Machines (klassisk)](../essentials/collect-custom-metrics-guestos-vm-classic.md)
- - [Virtuell Linux-dator med hjälp av teleympkvistar-agenten](../essentials/collect-custom-metrics-linux-telegraf.md)
+ - [Virtuell Linux-dator med Telegraf-agenten](../essentials/collect-custom-metrics-linux-telegraf.md)
  - [REST-API](./metrics-store-custom-rest-api.md)
  - [Klassisk Cloud Services](../essentials/collect-custom-metrics-guestos-vm-cloud-service-classic.md)

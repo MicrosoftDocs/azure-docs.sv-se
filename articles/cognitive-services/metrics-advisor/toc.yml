@@ -1,4 +1,4 @@
-- name: Metrics Advisor
+- name: Metrics Advisor dokumentation
   href: index.yml
 - name: Översikt
   expanded: true
@@ -9,11 +9,11 @@
       href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
     - name: Nyheter
       href: whats-new.md
-- name: Snabb starter för mått rådgivare
+- name: Snabbstarter
   items:
     - name: Webbportalen
       href: quickstarts/web-portal.md
-    - name: REST API-och klient bibliotek
+    - name: REST API och klientbibliotek
       href: quickstarts/rest-api-and-client-library.md
 - name: Exempel
   href: 'https://docs.microsoft.com/en-us/samples/browse/?products=azure&terms=metrics-advisor'
@@ -35,13 +35,17 @@
       href: how-tos/anomaly-feedback.md
     - name: Skapa ett måttdiagram
       href: how-tos/metrics-graph.md
+    - name: Företagsberedskap
+      items:
+        - name: Använda kund hanterade nycklar
+          href: encryption.md
 - name: Begrepp
   items:
-    - name: Mått regler för mått rådgivare
+    - name: Metrics Advisor viktiga termer
       href: glossary.md
 - name: Referens
   items:
-    - name: Mått rådgivare REST API
+    - name: Metrics Advisor REST API
       href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
     - name: Azure CLI-referens
       href: /cli/azure/cognitiveservices#az_cognitiveservices_list
@@ -49,11 +53,11 @@
       href: /powershell/module/azurerm.cognitiveservices/
 - name: Resurser
   items:
-    - name: Stöd för regioner
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Företagsberedskap
+      items:
+        - name: Stöd för regioner
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Efterlevnad och certifiering
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Alternativ för support och hjälp
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/metrics-advisor/context/context
-    - name: Efterlevnad
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Kryptering
-      href: encryption.md

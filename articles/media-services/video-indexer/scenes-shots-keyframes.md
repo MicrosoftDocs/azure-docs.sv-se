@@ -1,7 +1,7 @@
 ---
-title: Video Indexer scener, bilder och nyckel bild rutor
+title: Video Indexer, bilder och nyckelbilder
 titleSuffix: Azure Media Services
-description: Det här avsnittet ger en översikt över Video Indexer scener, bilder och nyckel rutor.
+description: Det här avsnittet ger en översikt över Video Indexer, bilder och nyckelbilder.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,53 +10,53 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: 248799d70e0741efcaea1714c12f4d92a42cef25
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a738152296aacbb5914e859a65976bd0f6dbf0a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93041908"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532415"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Scener, klipp och nyckelbilder
 
-Video Indexer har stöd för att segmentera videor till temporala enheter baserat på strukturella och semantiska egenskaper. Den här funktionen gör det möjligt för kunder att enkelt bläddra i, hantera och redigera sitt video innehåll baserat på varierande granularitet. Till exempel, baserat på scener, dum par och nyckel rutor, som beskrivs i det här avsnittet.   
+Video Indexer stöder segmentering av videor i temporala enheter baserat på strukturella och semantiska egenskaper. Den här funktionen gör det möjligt för kunder att enkelt bläddra, hantera och redigera videoinnehåll baserat på varierande kornighet. Till exempel, baserat på scener, bilder och nyckelbildrutor, som beskrivs i det här avsnittet.   
 
 ![Scener, klipp och nyckelbilder](./media/scenes-shots-keyframes/scenes-shots-keyframes.png)
  
-## <a name="scene-detection"></a>Scen identifiering  
+## <a name="scene-detection"></a>Scenidentifiering  
  
-Video Indexer anger när en scen ändras i video baserat på visuella tips. En scen visar en enskild händelse och den består av en serie med efterföljande bilder, som är semantiskt relaterade. En scen miniatyr är den första nyckel rutan i den underliggande bilden. Video Indexer segmenterar en video i scener utifrån färg samstämmighet över flera bilder och hämtar start-och slut tid för varje scen. Scen identifiering anses vara en utmanande uppgift eftersom det innebär att du kan kvantifiera semantiska aspekter av videor.
+Video Indexer avgör när en scen ändras i video baserat på visuella tips. En scen visar en enda händelse och består av en serie efterföljande bilder som är semantiskt relaterade. En scenminiatyr är den första nyckelbild av dess underliggande bild. Video Indexer segmenterar en video i scener baserat på färgkonsekvens i flera efterföljande bilder och hämtar början och sluttiden för varje scen. Scenidentifiering anses vara en utmanande uppgift eftersom den omfattar kvantifiering av semantiska aspekter av videor.
 
 > [!NOTE]
-> Gäller för videor som innehåller minst tre scener.
+> Gäller för videor som innehåller minst 3 scener.
 
-## <a name="shot-detection"></a>Bild identifiering
+## <a name="shot-detection"></a>Bildidentifiering
 
-Video Indexer bestämmer när en bild ändras i videon baserat på visuella tips, genom att spåra både plötsligt och gradvisa över gångar i färgschemat för intilliggande bild rutor. Bildens metadata innehåller en start-och slut tid, samt listan över nyckel rutor som ingår i bilden. Bilderna är i flera bild rutor tagna från samma kamera på samma tid.
+Video Indexer avgör när en bild ändras i videon baserat på visuella tips, genom att spåra både plötsliga och gradvisa övergångar i färgschemat för intilliggande bildrutor. Skärmdumpens metadata innehåller en start- och sluttid samt en lista över nyckelbildrutor som ingår i den bilden. Bilderna är på varandra följande bildrutor som tas från samma kamera samtidigt.
 
-## <a name="keyframe-detection"></a>Identifiering av nyckel rutor
+## <a name="keyframe-detection"></a>Identifiering av nyckelbild
 
-Video Indexer väljer den eller de ramar som bäst representerar varje bild. Nyckel rutor är de representativa bild rutor som valts från hela videon baserat på de egenskaper som är markerade (till exempel kontrast och stabilhet). Video Indexer hämtar en lista över nyckel Rute-ID: n som en del av bildens metadata, baserat på vilka kunder som kan extrahera nyckel rutan som en hög upplöst bild.  
+Video Indexer väljer de bildruteramar som bäst representerar varje bild. Nyckelbilder är representativa bildrutor som väljs ut från hela videon baserat på estetiska egenskaper (till exempel kontrast och stabilitet). Video Indexer hämtar en lista över nyckelbilds-ID:n som en del av skärmdumpens metadata, baserat på vilka kunder kan extrahera nyckelramen som en högupplöst bild.  
 
-### <a name="extracting-keyframes"></a>Extraherar nyckel rutor
+### <a name="extracting-keyframes"></a>Extrahera nyckelramar
 
-Om du vill extrahera nyckel bild rutor med hög upplösning för videon måste du först ladda upp och indexera videon.
+Om du vill extrahera högupplösta nyckelbildrutor för videon måste du först ladda upp och indexera videon.
 
-![Nyckel rutor](./media/scenes-shots-keyframes/extracting-keyframes.png)
+![Nyckelrutor](./media/scenes-shots-keyframes/extracting-keyframes.png)
 
 #### <a name="with-the-video-indexer-website"></a>Med Video Indexer webbplats
 
-Om du vill extrahera nyckel rutor med Video Indexer webbplats laddar du upp och indexerar videon. När indexerings jobbet är klart klickar du på **nedladdnings** knappen och väljer **artefakter (zip)**. Då hämtas mappen artefakter till datorn. 
+Om du vill extrahera nyckelbildrutor Video Indexer på webbplatsen laddar du upp och indexerar videon. När indexeringsjobbet är klart klickar du på **knappen Ladda** ned och **väljer Artefakter (ZIP).** Då laddas mappen artifacts ned till datorn. 
 
-![Skärm bild som visar List rutan "Ladda ned" med "artefakter" valda.](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+![Skärmbild som visar listrutan "Ladda ned" med "Artefakter" valt.](./media/scenes-shots-keyframes/extracting-keyframes2.png)
  
-Zippa upp och öppna mappen. I mappen *_KeyframeThumbnail* och du hittar alla nyckel rutor som har extraherats från videon. 
+Packa upp och öppna mappen. I *_KeyframeThumbnail* hittar du alla nyckelbildrutor som extraherades från videon. 
 
 #### <a name="with-the-video-indexer-api"></a>Med Video Indexer API
 
-Om du vill hämta nyckel rutor med Video Indexer-API: t laddar du upp och indexera videon med [uppladdnings video](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) samtalet. När indexerings jobbet är klart anropar du [Hämta video index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?). Detta ger dig alla insikter som Video Indexer extraheras från ditt innehåll i en JSON-fil.  
+Om du vill hämta nyckeldatorer med hjälp Video Indexer API:et laddar du upp och indexerar videon med hjälp av [anropet Överför](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) video. När indexeringsjobbet är klart anropar du [Hämta videoindex.](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Index) På så sätt får du alla insikter som Video Indexer extraherat från ditt innehåll i en JSON-fil.  
 
-Du får en lista över nyckel Rute-ID: n som en del av varje bilds metadata. 
+Du får en lista över nyckelbilds-ID:n som en del av varje bilds metadata. 
 
 ```json
 "shots":[  
@@ -98,35 +98,35 @@ Du får en lista över nyckel Rute-ID: n som en del av varje bilds metadata.
 ]
 ```
 
-Du kommer nu att behöva köra var och en av dessa ID: n för nyckel rutorna i [Get thumbnails](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) -anropet. Detta laddar ned var och en av nyckel Rute bilderna till datorn. 
+Du måste nu köra var och en av dessa nyckelbilds-ID:er i [anropet Hämta miniatyrer.](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Thumbnail) Då laddas var och en av nyckelbildbilderna ned till datorn. 
 
-## <a name="editorial-shot-type-detection"></a>Identifiering av redaktionella typer av tagning
+## <a name="editorial-shot-type-detection"></a>Identifiering av redigeringsbildtyper
 
-Nyckel rutor är associerade med bilder i JSON-utdata. 
+Nyckeldatorer är associerade med bilder i JSON-utdata. 
 
-Den bildtyp som är associerad med en enskild bild i insikts-JSON representerar en redaktionell typ. Du kanske tycker att de här typerna av bildtyp är användbara när du redigerar videor i klipp, släp vagnar eller när du söker efter en speciell typ av nyckel bild ruta för konstnärliga bruk. De olika typerna bestäms baserat på analys av den första nyckel rutan för varje bild. Bilderna identifieras av skala, storlek och plats för de ytor som visas i den första nyckel rutan. 
+Den typ av skärmdump som är associerad med en enskild bild i JSON för insikter representerar dess redigeringstyp. Du kanske tycker att dessa egenskaper för skärmdumpar är användbara när du redigerar videor till klipp, vagnar eller när du söker efter en specifik typ av nyckelbild för särskilda ändamål. De olika typerna bestäms baserat på analys av den första nyckelramen för varje bild. Bilder identifieras med hjälp av ansiktenas skala, storlek och plats som visas i den första nyckelramen. 
 
-Intagningens storlek och skala bestäms utifrån avståndet mellan kameran och de ytor som visas i ramen. Med dessa egenskaper identifierar Video Indexer följande typer av bild:
+Bildens storlek och skala bestäms baserat på avståndet mellan kameran och ansiktena som visas i bilden. Med hjälp av dessa Video Indexer identifierar följande bildtyper:
 
 * Bred: visar en hel persons brödtext.
 * Medel: visar en persons övre brödtext och ansikte.
-* Stäng: visar främst en persons ansikte.
+* När närmare: visar huvudsakligen en persons ansikte.
 * Extrem närbild: visar en persons ansikte som fyller skärmen. 
 
-Olika typer av tagningar kan också bestämmas genom platsen för ämnes tecknen med avseende på ramens centrum. Den här egenskapen definierar följande bild typer i Video Indexer:
+Bildtyper kan också fastställas av platsen för ämnestecken med avseende på mitten av bildrutan. Den här egenskapen definierar följande bildtyper i Video Indexer:
 
 * Vänster ansikte: en person visas på vänster sida av ramen.
-* Mitten ansikte: en person visas i den centrala regionen i ramen.
-* Höger sida: en person visas till höger i ramen.
-* Utomhus: en person visas i en inställning för utomhus.
-* I inomhus: en person visas i en intill-inställning.
+* Mitt ansikte: en person visas i den centrala regionen av ramen.
+* Höger ansikte: en person visas på höger sida av ramen.
+* Utomhus: en person visas i en utomhusmiljö.
+* Inomhus: en person visas i en inomhusmiljö.
 
 Ytterligare egenskaper:
 
-* Två bilder: visar två personers ansikten av medel storlek.
+* Två bilder: visar två personers ansikten i medelstorlek.
 * Flera ansikten: fler än två personer.
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Granska Video Indexer utdata som genereras av API: et](video-indexer-output-json-v2.md#scenes)
+[Granska de Video Indexer som produceras av API:et](video-indexer-output-json-v2.md#scenes)

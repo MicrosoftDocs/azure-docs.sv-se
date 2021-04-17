@@ -1,27 +1,29 @@
 ---
-title: 'Snabb start: Konfigurera flödes loggar för nätverks säkerhets grupper med hjälp av en Azure Resource Manager mall (ARM-mall)'
-description: Lär dig hur du aktiverar flödes loggar för nätverks säkerhets grupper (NSG) genom programmering med hjälp av en Azure Resource Manager mall (ARM-mall) och Azure PowerShell.
+title: 'Snabbstart: Konfigurera flödesloggar för nätverkssäkerhetsgrupp med hjälp Azure Resource Manager mall (ARM-mall)'
+description: Lär dig hur du aktiverar flödesloggar för nätverkssäkerhetsgrupp (NSG) programmatiskt med hjälp av en Azure Resource Manager mall (ARM-mall) och Azure PowerShell.
 services: network-watcher
 author: damendo
-ms.service: network-watcher
-ms.topic: quickstart
-ms.date: 01/07/2021
 ms.author: damendo
-ms.custom: subject-armqs
-ms.openlocfilehash: df7f33d9aed307bdf85a571c8169d1b0dbe863e5
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 01/07/2021
+ms.topic: quickstart
+ms.service: network-watcher
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: df0ccb5bf5ecd60d80526085983e35abf58e9966
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063805"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532445"
 ---
-# <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>Snabb start: Konfigurera flödes loggar för nätverks säkerhets grupper med en ARM-mall
+# <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>Snabbstart: Konfigurera flödesloggar för nätverkssäkerhetsgrupp med hjälp av en ARM-mall
 
-I den här snabb starten får du lära dig hur du aktiverar [flödes loggar för nätverks säkerhets grupper (NSG)](network-watcher-nsg-flow-logging-overview.md) med hjälp av en [Azure Resource Manager](../azure-resource-manager/management/overview.md) -mall (arm-mall) och Azure PowerShell.
+I den här snabbstarten lär du dig att aktivera flödesloggar för [nätverkssäkerhetsgrupp](../azure-resource-manager/management/overview.md) [(NSG)](network-watcher-nsg-flow-logging-overview.md) med hjälp av en Azure Resource Manager mall (ARM-mall) och Azure PowerShell.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Vi börjar med en översikt över egenskaperna för NSG flödes logg objekt. Vi tillhandahåller exempel mallar. Sedan använder vi en lokal Azure PowerShell-instans för att distribuera mallen.
+Vi börjar med en översikt över egenskaperna för NSG-flödesloggobjektet. Vi tillhandahåller exempelmallar. Sedan använder vi en lokal Azure PowerShell för att distribuera mallen.
 
 Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas i Azure Portal.
 
@@ -33,18 +35,18 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](htt
 
 ## <a name="review-the-template"></a>Granska mallen
 
-Den mall som vi använder i den här snabb starten är från [Azures snabb starts mallar](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create).
+Den mall som vi använder i den här snabbstarten kommer från [Azure-snabbstartsmallar](https://azure.microsoft.com/resources/templates/101-networkwatcher-flowlogs-create).
 
 :::code language="json" source="~/quickstart-templates/101-networkwatcher-flowlogs-create/azuredeploy.json":::
 
 Dessa resurser definieras i mallen:
 
-- [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
-- [Microsoft. Resources/Deployments](/azure/templates/microsoft.resources/deployments)
+- [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+- [Microsoft.Resources/deployments](/azure/templates/microsoft.resources/deployments)
 
-## <a name="nsg-flow-logs-object"></a>NSG flödes loggar objekt
+## <a name="nsg-flow-logs-object"></a>NSG-flödesloggobjekt
 
-Följande kod visar objektet NSG Flow-loggar och dess parametrar. Om du vill skapa en `Microsoft.Network/networkWatchers/flowLogs` resurs lägger du till den här koden i avsnittet resurser i mallen:
+Följande kod visar ett NSG-flödesloggobjekt och dess parametrar. Om du vill `Microsoft.Network/networkWatchers/flowLogs` skapa en resurs lägger du till den här koden i resursavsnittet i mallen:
 
 ```json
 {
@@ -75,20 +77,20 @@ Följande kod visar objektet NSG Flow-loggar och dess parametrar. Om du vill ska
 }
 ```
 
-En fullständig översikt över objekt egenskaperna för NSG Flow-loggar finns i [Microsoft. Network networkWatchers/flowLogs](/azure/templates/microsoft.network/networkwatchers/flowlogs).
+En fullständig översikt över objektegenskaperna för NSG-flödesloggar finns [i Microsoft.Network networkWatchers/flowLogs](/azure/templates/microsoft.network/networkwatchers/flowlogs).
 
-## <a name="create-your-template"></a>Skapa din mall
+## <a name="create-your-template"></a>Skapa mallen
 
-Om du använder ARM-mallar för första gången kan du läsa mer om ARM-mallar i följande artiklar:
+Om du använder ARM-mallar för första gången kan du läsa följande artiklar för att lära dig mer om ARM-mallar:
 
 - [Distribuera resurser med ARM-mallar och Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template-or-bicep-file)
-- [Självstudie: skapa och distribuera din första ARM-mall](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+- [Självstudie: Skapa och distribuera din första ARM-mall](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
-Följande exempel är en fullständig mall. Det är också den enklaste versionen av mallen. Exemplet innehåller de lägsta parametrar som skickas för att ställa in NSG flödes loggar. Fler exempel finns i översikts artikeln [Konfigurera NSG flödes loggar från en Azure Resource Manager-mall](network-watcher-nsg-flow-logging-azure-resource-manager.md).
+Följande exempel är en fullständig mall. Det är också den enklaste versionen av mallen. Exemplet innehåller de minsta parametrar som skickas för att konfigurera NSG-flödesloggar. Fler exempel finns i översiktsartikeln Konfigurera [NSG-flödesloggar från en Azure Resource Manager mall](network-watcher-nsg-flow-logging-azure-resource-manager.md).
 
 ### <a name="example"></a>Exempel
 
-Följande mall aktiverar flödes loggar för en NSG och lagrar sedan loggarna i ett särskilt lagrings konto:
+Följande mall aktiverar flödesloggar för en NSG och lagrar sedan loggarna i ett specifikt lagringskonto:
 
 ```json
 {
@@ -115,17 +117,17 @@ Följande mall aktiverar flödes loggar för en NSG och lagrar sedan loggarna i 
 ```
 
 > [!NOTE]
-> - Resurs namnet använder formatet _ParentResource_ChildResource_. I vårt exempel är den överordnade resursen den regionala Azure Network Watcher-instansen:
->    - **Format**: NetworkWatcher_RegionName
->    - **Exempel**: NetworkWatcher_centraluseuap
-> - `targetResourceId` är resurs-ID: t för mål-NSG.
-> - `storageId` är resurs-ID: t för mål lagrings kontot.
+> - Resursnamnet använder formatet _ParentResource_ChildResource_. I vårt exempel är den överordnade resursen den regionala Azure Network Watcher instansen:
+>    - **Format:** NetworkWatcher_RegionName
+>    - **Exempel:** NetworkWatcher_centraluseuap
+> - `targetResourceId` är resurs-ID för mål-NSG.
+> - `storageId` är resurs-ID för mållagringskontot.
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
-I den här självstudien förutsätter vi att du har en befintlig resurs grupp och en NSG som du kan aktivera flödes inloggning på.
+Den här självstudien förutsätter att du har en befintlig resursgrupp och en NSG som du kan aktivera flödesloggning på.
 
-Du kan spara alla exempel mallar som visas i den här artikeln lokalt som *azuredeploy.jspå*. Uppdatera egenskapsvärdena så att de pekar på giltiga resurser i din prenumeration.
+Du kan spara någon av de exempelmallar som visas i den här artikeln lokalt som *azuredeploy.jspå*. Uppdatera egenskapsvärdena så att de pekar på giltiga resurser i din prenumeration.
 
 Distribuera mallen genom att köra följande kommando i Azure PowerShell:
 
@@ -137,34 +139,34 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 ```
 
 > [!NOTE]
-> De här kommandona distribuerar en resurs till exempel NetworkWatcherRG-resurs gruppen och inte till resurs gruppen som innehåller NSG.
+> De här kommandona distribuerar en resurs till exempel resursgruppen NetworkWatcherRG och inte till resursgruppen som innehåller NSG:n.
 
 ## <a name="validate-the-deployment"></a>Verifiera distributionen
 
-Du har två alternativ för att se om distributionen är klar:
+Du har två alternativ för att se om distributionen lyckades:
 
 - PowerShell-konsolen visas `ProvisioningState` som `Succeeded` .
-- Gå till [Portal sidan NSG Flow logs](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) för att bekräfta ändringarna.
+- Gå till [portalsidan för NSG-flödesloggar](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) för att bekräfta dina ändringar.
 
-Om det uppstod problem med distributionen läser du [Felsöka vanliga problem med Azure-distribution med Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md).
+Om det uppstod problem med distributionen kan du [gå till Felsöka vanliga Azure-distributionsfel med Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md).
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Du kan ta bort Azure-resurser med fullständig distributions läge. Om du vill ta bort en flödes loggar resurs anger du en distribution i slutfört läge utan att inkludera den resurs som du vill ta bort. Läs mer om [fullständigt distributions läge](../azure-resource-manager/templates/deployment-modes.md#complete-mode).
+Du kan ta bort Azure-resurser med hjälp av fullständigt distributionsläge. Om du vill ta bort en flödesloggresurs anger du en distribution i fullständigt läge utan att inkludera den resurs som du vill ta bort. Läs mer om [fullständigt distributionsläge.](../azure-resource-manager/templates/deployment-modes.md#complete-mode)
 
-Du kan också inaktivera en NSG Flow-logg i Azure Portal:
+Du kan också inaktivera en NSG-flödeslogg i Azure Portal:
 
 1. Logga in på Azure-portalen.
-1. Välj **Alla tjänster**. I rutan **filter** anger du **Network Watcher**. I Sök resultaten väljer du **Network Watcher**.
-1. Under **loggar** väljer du **NSG flödes loggar**.
-1. I listan över NSG: er väljer du den NSG som du vill inaktivera flödes loggar för.
-1. Under **flödes loggar inställningar** väljer du **av**.
+1. Välj **Alla tjänster**. I rutan **Filter** anger du **network watcher**. I sökresultaten väljer du **Network Watcher**.
+1. Under **Loggar** väljer du **NSG-flödesloggar.**
+1. I listan över NSG:er väljer du den NSG som du vill inaktivera flödesloggar för.
+1. Under **Flödeslogginställningar** väljer du **Av**.
 1. Välj **Spara**.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du lärt dig hur du aktiverar NSG Flow-loggar med hjälp av en ARM-mall. Sedan lär du dig hur du kan visualisera dina NSG-flödes data genom att använda något av följande alternativ:
+I den här snabbstarten har du lärt dig hur du aktiverar NSG-flödesloggar med hjälp av en ARM-mall. Lär dig sedan att visualisera dina NSG-flödesdata med något av följande alternativ:
 
 - [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 - [Verktyg med öppen källkod](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
-- [Azure-Trafikanalys](traffic-analytics.md)
+- [Azure Trafikanalys](traffic-analytics.md)

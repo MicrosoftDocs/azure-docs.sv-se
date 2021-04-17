@@ -1,26 +1,26 @@
 ---
 title: Konfigurera Azure Attestation med Azure PowerShell
-description: Så här konfigurerar och konfigurerar du en attestationsprovider med hjälp Azure PowerShell.
+description: Hur du konfigurerar en attestationsprovider med hjälp av Azure PowerShell.
 services: attestation
 author: msmbaldwin
 ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a343c1729b47d88ec414f17fcef7f9323d99161d
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 628bb9886264574bf33ac927cf5480f91144c39c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515268"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534001"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Snabbstart: Konfigurera Azure Attestation med Azure PowerShell
 
-Följ stegen nedan för att skapa och konfigurera en attestationsprovider med hjälp av Azure PowerShell. Se [Översikt över Azure PowerShell](/powershell/azure/) information om hur du installerar och kör Azure PowerShell.
+Följ stegen nedan för att skapa och konfigurera en attestationsprovider med hjälp av Azure PowerShell. Se [Översikt över Azure PowerShell](/powershell/azure/) för information om hur du installerar och kör Azure PowerShell.
 
-Observera att versionen PowerShell-galleriet inaktuella versioner Transport Layer Security (TLS) 1.0 och 1.1. TLS 1.2 eller senare rekommenderas. Därför kan du få följande fel:
+Observera att versionerna 1.0 PowerShell-galleriet (TLS) och Transport Layer Security 1.1 är inaktuella. TLS 1.2 eller senare rekommenderas. Därför kan du få följande fel:
 
-- VARNING: Det går inte att matcha paketkällan https://www.powershellgallery.com/api/v2 ' '
+- VARNING: Det går inte att matcha paketkällan https://www.powershellgallery.com/api/v2 " "
 - PackageManagement\Install-Package: Ingen matchning hittades för de angivna sökvillkoren och modulnamnet 
 
 Om du vill fortsätta att interagera med PowerShell-galleriet kör du följande kommando före Install-Module kommandona
@@ -29,9 +29,9 @@ Om du vill fortsätta att interagera med PowerShell-galleriet kör du följande 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
 ```
 
-## <a name="install-azattestation-powershell-module"></a>Installera Az.Attestation PowerShell-modulen
+## <a name="install-azattestation-powershell-module"></a>Installera PowerShell-modulen Az.Attestation
 
-På en dator Azure PowerShell installerar du PowerShell-modulen Az.Attestation, som innehåller cmdlets för Azure Attestation.  
+På datorn med Azure PowerShell installerar du PowerShell-modulen Az.Attestation, som innehåller cmdlets för Azure Attestation.  
 
 ### <a name="initial-installation"></a>Inledande installation
 
@@ -91,7 +91,7 @@ Logga in på Azure i PowerShell-konsolen (utan utökade åtkomstbehörigheter).
 Connect-AzAccount
 ```
 
-Om det behövs växlar du till prenumerationen som ska användas för Azure Attestation.
+Om det behövs växlar du till den prenumeration som ska användas för Azure Attestation.
 
 ```powershell
 Set-AzContext -Subscription <subscription id>  
@@ -99,7 +99,7 @@ Set-AzContext -Subscription <subscription id>
 
 ## <a name="register-microsoftattestation-resource-provider"></a>Registrera resursprovidern Microsoft.Attestation
 
-Registrera resursprovidern Microsoft.Attestation i prenumerationen. Mer information om Azure-resursproviders och hur du konfigurerar och hanterar resursproviders finns i [Resursproviders och resurstyper i Azure.](../azure-resource-manager/management/resource-providers-and-types.md) Observera att registrering av en resursprovider bara krävs en gång för en prenumeration.
+Registrera resursprovidern Microsoft.Attestation i prenumerationen. Mer information om Azure-resursproviders och hur du konfigurerar och hanterar resursproviders finns i [Azure-resursproviders och resurstyper.](../azure-resource-manager/management/resource-providers-and-types.md) Observera att registrering av en resursprovider bara krävs en gång för en prenumeration.
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Attestation
@@ -121,7 +121,7 @@ New-AzResourceGroup -Name $attestationResourceGroup -Location $location
 ```
 
  > [!NOTE]
-   > När en attesteringsprovider har skapats i den här resursgruppen måste en Azure AD-användare ha rollen "Attesteringsdeltagare" på providern för att utföra åtgärder som principkonfiguration/hantering av princip signerarcertifikat. Dessa behörigheter kan också ärvas med roller som "Ägare" (behörigheter med jokertecken), "Deltagare" (behörigheter med jokertecken) i prenumerationen/resursgruppen.  
+   > När en attesteringsprovider har skapats i den här resursgruppen måste en Azure AD-användare ha rollen **Attesteringsdeltagare** på providern för att kunna utföra åtgärder som principkonfiguration/hantering av princip signerarcertifikat. Dessa behörigheter kan också ärvas med roller som Ägare **(behörigheter** med jokertecken)/Deltagare (behörigheter med jokertecken) i prenumerationen/resursgruppen.   
 
 
 ## <a name="create-and-manage-an-attestation-provider"></a>Skapa och hantera en attestationsprovider
@@ -174,14 +174,14 @@ För att kunna hantera principer kräver en Azure AD-användare följande behör
 - Microsoft.Attestation/attestationProviders/attestation/write
 - Microsoft.Attestation/attestationProviders/attestation/delete
 
- För att utföra de här åtgärderna måste en Azure AD-användare ha rollen "Attestation Contributor" (Attestation-deltagare) på attestationsprovidern. Dessa behörigheter kan också ärvas med roller som "Ägare" (behörigheter med jokertecken), "Deltagare" (behörigheter med jokertecken) i prenumerationen/resursgruppen.  
+ För att utföra dessa åtgärder måste en Azure AD-användare ha **rollen Attestation-deltagare** på attestationsprovidern. Dessa behörigheter kan också ärvas med roller som Ägare **(behörigheter** med jokertecken)/Deltagare (behörigheter med jokertecken) i prenumerationen/resursgruppen.   
 
 För att kunna läsa principer kräver en Azure AD-användare följande behörighet för "Åtgärder":
 - Microsoft.Attestation/attestationProviders/attestation/read
 
- För att utföra den här åtgärden måste en Azure AD-användare ha rollen "Attestation Reader" på attestationsprovidern. Läsbehörigheten kan också ärvas med roller som "läsare" (behörigheter med jokertecken) i prenumerationen/resursgruppen.  
+ För att kunna utföra den här åtgärden måste en Azure AD-användare ha rollen **Attestation Reader (Attestation Reader)** på attestationsprovidern. Läsbehörigheten kan också ärvas med roller som **Läsare** (behörigheter med jokertecken) i prenumerationen/resursgruppen.  
 
-Nedanstående PowerShell-cmdlets tillhandahåller principhantering för en attestationsprovider (enERING i taget).
+Under PowerShell-cmdlet:ar finns principhantering för en atterstationsprovider (enERING i taget).
 
 Get-AzAttestationPolicy returnerar den aktuella principen för den angivna FUNKTIONEN. Cmdleten visar principen i både text- och JWT-format för principen.
 
@@ -190,7 +190,7 @@ $teeType = "<tee Type>"
 Get-AzAttestationPolicy   -Name $attestationProvider -ResourceGroupName $attestationResourceGroup -Tee $teeType 
 ```
 
-DE TYPER som stöds är "SgxEnclave", "OpenEnclave" och "VbsEnclave".
+DE SOM stöds är "SgxEnclave", "OpenEnclave" och "VbsEnclave".
 
 Set-AttestationPolicy anger en ny princip för den angivna PRINCIPEN. Cmdleten accepterar principen i antingen text- eller JWT-format och styrs av parametern PolicyFormat. "Text" är standardvärdet för PolicyFormat. 
 
@@ -200,11 +200,11 @@ $policy=Get-Content -path "C:\test\policy.txt" -Raw
 Set-AzAttestationPolicy   -Name $attestationProvider -ResourceGroupName $attestationResourceGroup -Tee $teeType -Policy $policy -PolicyFormat $policyFormat 
 ```
 
-Om PolicySignerCertificateFile anges när en attestationsprovider skapas kan principer endast konfigureras i signerat JWT-format. Else-principen kan konfigureras i text eller ett osignerat JWT-format.
+Om PolicySignerCertificateFile tillhandahålls när en attestationsprovider skapas kan principer endast konfigureras i signerat JWT-format. Else-principen kan konfigureras i text eller ett osignerat JWT-format.
 
 Attestationsprincipen i JWT-format måste innehålla ett anspråk med namnet "AttestationPolicy". För signerade policyer måste JWT vara signerat med en privat nyckel som motsvarar något av de befintliga princip signerarcertifikaten.
 
-Exempel på principexempel finns [i exempel på en attestationsprincip.](policy-examples.md)
+Exempel på policyer finns [i exempel på en attestationsprincip.](policy-examples.md)
 
 Reset-AzAttestationPolicy återställer principen till standard för angivenPOR.
 
@@ -212,9 +212,9 @@ Reset-AzAttestationPolicy återställer principen till standard för angivenPOR.
 Reset-AzAttestationPolicy -Name $attestationProvider -ResourceGroupName $attestationResourceGroup -Tee $teeType 
 ```
 
-## <a name="policy-signer-certificates-management"></a>Certifikathantering för princip signerare
+## <a name="policy-signer-certificates-management"></a>Hantering av certifikat för principtecken
 
-Nedanstående PowerShell-cmdlets ger hantering av princip signerarcertifikat för en attesteringsprovider:
+Nedanstående PowerShell-cmdlets tillhandahåller hantering av certifikat för principtecken för en attesteringsprovider:
 
 ```powershell
 Get-AzAttestationPolicySigners -Name $attestationProvider -ResourceGroupName $attestationResourceGroup
@@ -224,13 +224,13 @@ Add-AzAttestationPolicySigner -Name $attestationProvider -ResourceGroupName $att
 Remove-AzAttestationPolicySigner -Name $attestationProvider -ResourceGroupName $attestationResourceGroup -Signer <signer>
 ```
 
-Certifikat för principtecken är ett signerat JWT med anspråket "maa-policyCertificate". Anspråksvärdet är en JWK som innehåller den betrodda signeringsnyckeln som ska läggas till. JWT måste signeras med en privat nyckel som motsvarar något av de befintliga princip signerarcertifikaten.
+Princip signeringscertifikat är ett signerat JWT med anspråket "maa-policyCertificate". Anspråksvärdet är en JWK som innehåller den betrodda signeringsnyckeln som ska läggas till. JWT måste signeras med en privat nyckel som motsvarar något av de befintliga princip signerarcertifikaten.
 
-Observera att all semantisk manipulering av princip signerarcertifikatet måste göras utanför PowerShell. När det gäller PowerShell är det en enkel sträng.
+Observera att all semantisk manipulering av princip signerarcertifikatet måste göras utanför PowerShell. För PowerShell är det en enkel sträng.
 
-Exempel på certifikat för princip signerare finns [i exempel på certifikat för princip signerare](policy-signer-examples.md).
+Exempel på certifikat för princip signerare finns [i exempel på princip signerarcertifikat](policy-signer-examples.md).
 
-Mer information om cmdletarna och dess parametrar finns i [Azure Attestation PowerShell-cmdlets](/powershell/module/az.attestation/#attestation) 
+Mer information om cmdletarna och dess parametrar finns i Azure Attestation [PowerShell-cmdlets](/powershell/module/az.attestation/#attestation) 
 
 ## <a name="next-steps"></a>Nästa steg
 
