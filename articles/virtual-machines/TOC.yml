@@ -116,7 +116,7 @@
         - name: Översikt
           displayName: 'Sizes, sizing, resize, ACU, compute'
           href: sizes.md
-        - name: Ändra storlek på den virtuella datorn
+        - name: Ändra VM-storlek
           items:
             - name: CLI
               displayName: 'Change, resize, update size'
@@ -1786,6 +1786,8 @@
       href: /azure/cloud-adoption-framework/get-started/
     - name: Arkitekturcenter
       href: /azure/architecture/
+    - name: Migreringsverktyg
+      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/migrate/azure-migration-guide/?tabs=MigrationTools'
     - name: Microsoft Q&A
       href: /answers/topics/azure-virtual-machines.html
     - name: Azure-snabbstartsmallar
@@ -1802,7 +1804,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Exempel
       items:
-        - name: Lagringsplatsen azure CLI-exempel
+        - name: Lagringsplatsen med Azure CLI-exempel
           href: 'https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine'
         - name: Lagringsplatsen för PowerShell-exempel
           href: 'https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine'

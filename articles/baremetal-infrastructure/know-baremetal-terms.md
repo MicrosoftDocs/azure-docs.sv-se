@@ -1,30 +1,31 @@
 ---
-title: Förstå villkoren i Azure BareMetal-infrastrukturen
-description: Förstå villkoren i Azure BareMetal-infrastrukturen.
+title: Känna till villkoren i Azure BareMetal-infrastrukturen
+description: Känna till villkoren i Azure BareMetal-infrastrukturen.
 ms.topic: conceptual
 ms.subservice: workloads
 ms.date: 04/06/2021
-ms.openlocfilehash: 53a601cc4556198479d8ca5d7495942d4dc2762c
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: aa7d9693b3417ff0bb6c6a61800aee72cd416c48
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580128"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536773"
 ---
-# <a name="know-the-terms-for-baremetal-infrastructure"></a>Känna till villkoren för BareMetal-infrastrukturen
+# <a name="know-the-terms-for-baremetal-infrastructure"></a>Känna till termerna för BareMetal-infrastruktur
 
-I den här artikeln tar vi upp några viktiga villkor som rör BareMetal-infrastrukturen.
+I den här artikeln tar vi upp några viktiga termer relaterade till BareMetal-infrastrukturen.
 
-- **Revision**: det finns en ursprunglig Stamp-revision som kallas revision 3 (rev 3) och två ytterligare stämplar revisioner för BareMetal-instanser. Varje stämpel skiljer sig i arkitekturen och närhet till virtuella Azure-värddatorer:
-    - **Revision 4** (rev 4): en nyare design som ger närmare närhet av virtuella Azure-datorer (VM) och sänker fördröjningen mellan virtuella Azure-datorer och SAP HANA instanser. 
-    - **Revision 4,2** (rev 4,2): den senaste anpassade BareMetal-infrastrukturen med den befintliga rev 4-arkitekturen. Rev 4 ger närmare närhet till Azures virtuella dator värdar. Den har betydande förbättringar i nätverks fördröjningen mellan virtuella Azure-datorer och BareMetal-instanser som distribueras i rev 4-stämplar eller rader. Du kan komma åt och hantera dina BareMetal-instanser via Azure Portal.    
+- **Revision:** Det finns en ursprunglig stämpelrevision som kallas Revision 3 (Rev 3) och två ytterligare stämpelrevisioner för BareMetal-instansstämplar. Varje stämpel skiljer sig åt vad gäller arkitektur och närhet till virtuella Azure-datorvärdar:
+    - **Revision 4** (Rev 4): En nyare design som ger närmare anslutning till de virtuella Azure-värdarna (VM) och sänker svarstiden mellan virtuella Azure-datorer och SAP HANA instanser. 
+    - **Revision 4.2** (Rev 4.2): Den senaste omdöpta BareMetal-infrastrukturen med den befintliga Rev 4-arkitekturen. Rev 4 ger närmare till de virtuella Azure-värdarna (VM). Det har betydande förbättringar i nätverksfördröjningen mellan virtuella Azure-datorer och BareMetal-instanser som distribuerats i Rev 4-stämplar eller rader. Du kan komma åt och hantera dina BareMetal-instanser via Azure Portal.    
 
-- **Stamp**: definierar den interna distributions storleken för Microsoft BareMetal-instanser. Innan instanser kan distribueras måste en BareMetal-instans som består av beräknings-, nätverks-och lagrings rack distribueras på en plats i data centret. En sådan distribution kallas en instans av en BareMetal.
+- **Stämpel:** Definierar Microsofts interna distributionsstorlek för BareMetal-instanser. Innan instanser kan distribueras måste en BareMetal-instansstämpel som består av beräknings-, nätverks- och lagringsrack distribueras på en datacenterplats. En sådan distribution kallas för en BareMetal-instansstämpel.
 
-- **Klient organisation**: en kund som distribuerar en BareMetal instance-stämpel isoleras som en *klient.* En klient är isolerad i nätverk, lagring och beräknings lager från andra klienter. Lagrings-och beräknings enheter som är tilldelade till olika klienter kan inte se varandra eller kommunicera med varandra på BareMetal-instansens Stamp-nivå. En kund kan välja att distribuera olika klienter. Det finns inte heller någon kommunikation mellan klienter på BareMetal-instansens Stamp-nivå.
+- **Klientorganisation:** En kund som distribuerar en BareMetal-instansstämpel isoleras som en *klientorganisation.* En klientorganisation är isolerad i nätverks-, lagrings- och beräkningslagret från andra klienter. Lagrings- och beräkningsenheter som är tilldelade till de olika klienterna kan inte se varandra eller kommunicera med varandra på stämpelnivån för BareMetal-instansen. En kund kan välja att ha distributioner till olika klienter. Inte ens då finns det någon kommunikation mellan klienter på stämpelnivån BareMetal-instans.
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har introducerat den viktiga terminologin i BareMetal-infrastrukturen kanske du vill lära dig mer om:
+
+Nu när du har introducerats för viktig terminologi för BareMetal-infrastrukturen kanske du vill lära dig mer om:
 - Mer information om [BareMetal-infrastrukturen](concepts-baremetal-infrastructure-overview.md).
-- Så här [ansluter du BareMetal Infrastructure instances i Azure](connect-baremetal-infrastructure.md).
+- Ansluta [BareMetal-infrastrukturinstanser i Azure](connect-baremetal-infrastructure.md).
 

@@ -1,92 +1,95 @@
 ---
-title: Koncept för Azure-IoT Hub Device Provisioning Service – enhet
-description: Beskriver metoder för att etablera enheter för Azure-IoT Hub Device Provisioning Service (DPS)
+title: Azure IoT Hub Device Provisioning Service – Enhetsbegrepp
+description: Beskriver begrepp för ometablering av enheter för Azure IoT Hub Device Provisioning Service (DPS)
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/04/2019
+ms.date: 04/16/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 9653a584382584d982c55008a6e8547de28691b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbc83ec62c10fae00e371cd9ad95cf2860495fad
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91842860"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575776"
 ---
-# <a name="iot-hub-device-reprovisioning-concepts"></a>Metoder för att etablera IoT Hub enhet
+# <a name="iot-hub-device-reprovisioning-concepts"></a>IoT Hub ometableringsbegrepp för enheter
 
-Under livs cykeln för en IoT-lösning är det vanligt att flytta enheter mellan IoT-hubbar. Orsakerna till den här flytten kan innefatta följande scenarier:
+Under livscykeln för en IoT-lösning är det vanligt att flytta enheter mellan IoT-hubbar. Anledningen till flytten kan vara följande scenarier:
 
-* **Geolokalisering/lång latens**: när en enhet flyttas mellan platser förbättras nätverks fördröjningen genom att enheten migreras till en närmare IoT-hubb.
+* **Geoplats/GeoLatency:** När en enhet flyttas mellan platser förbättras nätverksfördröjningen genom att enheten migreras till en närmare IoT-hubb.
 
-* **Flera innehavare**: en enhet kan användas inom samma IoT-lösning och omtilldelas till en ny kund eller kund webbplats. Den nya kunden kan servas med hjälp av en annan IoT-hubb.
+* **Flera innehavare: En** enhet kan användas i samma IoT-lösning och tilldelas om till en ny kund eller kundwebbplats. Den nya kunden kan serdas med hjälp av en annan IoT-hubb.
 
-* **Lösnings ändring**: en enhet kan flyttas till en ny eller uppdaterad IoT-lösning. Den här omtilldelningen kan kräva att enheten kommunicerar med en ny IoT-hubb som är ansluten till andra server dels komponenter.
+* **Lösningsändring:** En enhet kan flyttas till en ny eller uppdaterad IoT-lösning. Den här omtilldeling kan kräva att enheten kommunicerar med en ny IoT-hubb som är ansluten till andra backend-komponenter.
 
-* **Karantän**: liknar en lösnings förändring. En enhet som inte fungerar, har komprometterats eller som är inaktuell kan omtilldelas till en IoT-hubb som bara kan uppdatera och få tillbaka kompatibiliteten. När enheten fungerar korrekt migreras den tillbaka till huvud navet.
+* **Karantän:** Liknar en lösningsändring. En enhet som fungerar dåligt, komprometteras eller är inaktuell kan tilldelas till en IoT-hubb som bara kan uppdateras och uppfylla efterlevnadskrav igen. När enheten fungerar som den ska migreras den sedan tillbaka till sin huvudhubb.
 
-Att etablera om supporten inom enhets etablerings tjänsten uppfyller dessa krav. Enheter kan tilldelas automatiskt till nya IoT-hubbar baserat på den nyetablerings princip som har kon figurer ATS på enhetens registrerings post.
+Ometableringsstöd i Device Provisioning Service åtgärdar dessa behov. Enheter kan automatiskt omtilldelas till nya IoT-hubbar baserat på den återetableringsprincip som har konfigurerats för enhetens registreringspost.
 
-## <a name="device-state-data"></a>Enhets tillstånds data
+## <a name="device-state-data"></a>Enhetstillståndsdata
 
-Enhets tillstånds data består av [enhetens dubbla](../iot-hub/iot-hub-devguide-device-twins.md) och enhets funktioner. Dessa data lagras i Device Provisioning service-instansen och IoT-hubben som en enhet är tilldelad till.
+Enhetstillståndsdata består av [enhetstvilling-](../iot-hub/iot-hub-devguide-device-twins.md) och enhetsfunktioner. Dessa data lagras i Device Provisioning Service-instansen och IoT-hubben som en enhet är tilldelad till.
 
-![Diagram som visar hur etablering fungerar med enhets etablerings tjänsten.](./media/concepts-device-reprovisioning/dps-provisioning.png)
+![Diagram som visar hur etablering fungerar med device provisioning-tjänsten.](./media/concepts-device-reprovisioning/dps-provisioning.png)
 
-När en enhet etableras från början med en enhets etablerings tjänst instans utförs följande steg:
+När en enhet först etableras med en instans av enhetsetableringstjänsten utförs följande steg:
 
-1. Enheten skickar en etablerings förfrågan till en enhets etablerings tjänst instans. Tjänst instansen autentiserar enhets identiteten baserat på en registrerings post och skapar den inledande konfigurationen av enhets tillstånds data. Tjänst instansen tilldelar enheten till en IoT-hubb baserat på registrerings konfigurationen och returnerar IoT Hub-tilldelningen till enheten.
+1. Enheten skickar en etableringsbegäran till en instans av enhetsetableringstjänsten. Tjänstinstansen autentiserar enhetsidentiteten baserat på en registreringspost och skapar den inledande konfigurationen av enhetens tillståndsdata. Tjänstinstansen tilldelar enheten till en IoT-hubb baserat på registreringskonfigurationen och returnerar den IoT-hubbtilldelningen till enheten.
 
-2. Etablerings tjänst instansen ger en kopia av alla ursprungliga enhets tillstånds data till den tilldelade IoT-hubben. Enheten ansluter till den tilldelade IoT-hubben och påbörjar åtgärder.
+2. Etableringstjänstinstansen ger en kopia av alla inledande enhetstillståndsdata till den tilldelade IoT-hubben. Enheten ansluter till den tilldelade IoT-hubben och börjar åtgärder.
 
-Med tiden kan enhets tillstånds data på IoT Hub uppdateras av [enhets åtgärder](../iot-hub/iot-hub-devguide-device-twins.md#device-operations) och [backend-åtgärder](../iot-hub/iot-hub-devguide-device-twins.md#back-end-operations). Den inledande enhets tillståndsinformation som lagras i enhets etablerings tjänstens instans förblir orörd. Detta är den inledande konfigurationen.
+Med tiden kan enhetens tillståndsdata på IoT-hubben uppdateras av [enhetsåtgärder](../iot-hub/iot-hub-devguide-device-twins.md#device-operations) och [backend-åtgärder.](../iot-hub/iot-hub-devguide-device-twins.md#back-end-operations) Den initiala informationen om enhetstillstånd som lagras i Device Provisioning Service-instansen förblir orörlig. Dessa oreda enhetstillståndsdata är den inledande konfigurationen.
 
-![Etablering med enhets etablerings tjänsten](./media/concepts-device-reprovisioning/dps-provisioning-2.png)
+![Etablering med device provisioning-tjänsten](./media/concepts-device-reprovisioning/dps-provisioning-2.png)
 
-Beroende på scenariot, som en enhet flyttas mellan IoT-hubbar, kan det också vara nödvändigt att migrera enhets status som uppdaterats på föregående IoT-hubb till den nya IoT-hubben. Migreringen stöds genom att etablera principer i Device Provisioning-tjänsten.
+Beroende på scenario kan det också vara nödvändigt att migrera enhetstillståndet som uppdaterades på den tidigare IoT-hubben till den nya IoT-hubben när en enhet flyttas mellan IoT-hubbar. Den här migreringen stöds genom att återetablera principer i Device Provisioning Service.
 
-## <a name="reprovisioning-policies"></a>Principer för att etableras
+## <a name="reprovisioning-policies"></a>Återetableringsprinciper
 
-Beroende på scenariot skickar en enhet vanligt vis en begäran till en etablerings tjänst instans vid omstart. Den har också stöd för en metod för att manuellt utlösa etablering på begäran. Den ometablerings principen på en registrerings post avgör hur enhets etablerings tjänst instansen hanterar dessa etablerings begär Anden. Principen avgör också om enhets tillstånds data ska migreras under ometableringen. Samma principer är tillgängliga för enskilda registreringar och registrerings grupper:
+Beroende på scenariot skickar en enhet vanligtvis en begäran till en etableringstjänstinstans vid omstart. Den stöder också en metod för att manuellt utlösa etablering på begäran. Återetableringsprincipen för en registreringspost avgör hur instansen av enhetsetableringstjänsten hanterar dessa etableringsbegäranden. Principen avgör också om enhetstillståndsdata ska migreras vid ometablering. Samma principer är tillgängliga för enskilda registreringar och registreringsgrupper:
 
-* **Förnya och migrera data**: den här principen är standard för nya registrerings poster. Den här principen vidtar åtgärder när enheter som är associerade med registrerings posten skickar en ny begäran (1). Beroende på konfigurationen av registrerings posten kan enheten omtilldelas till en annan IoT-hubb. Om enheten ändrar IoT-hubbar tas enhets registreringen med den inledande IoT Hub bort. Den uppdaterade enhets tillståndsinformation från den inledande IoT-hubben kommer att migreras till den nya IoT-hubben (2). Under migreringen rapporteras enhetens status som **tilldela**.
+* **Etablera om och migrera data:** Den här principen är standard för nya registreringsposter. Den här principen vidtar åtgärder när enheter som är associerade med registreringsposten skickar en ny begäran (1). Beroende på konfigurationen av registreringsposten kan enheten omtilldelades till en annan IoT-hubb. Om enheten ändrar IoT-hubbar tas enhetsregistreringen med den första IoT-hubben bort. Den uppdaterade informationen om enhetstillståndet från den första IoT-hubben migreras till den nya IoT-hubben (2). Under migreringen rapporteras enhetens status som **Tilldela**.
 
-    ![Diagram som visar att en princip vidtar åtgärder när enheter som är associerade med registrerings posten skickar en ny begäran.](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
+    ![Diagram som visar att en princip vidtar åtgärder när enheter som är associerade med registreringsposten skickar en ny begäran.](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
-* **Ometablering och återställning till ursprunglig konfiguration**: den här principen vidtar åtgärder när enheter som är associerade med registrerings posten skickar en ny etablerings förfrågan (1). Beroende på konfigurationen av registrerings posten kan enheten omtilldelas till en annan IoT-hubb. Om enheten ändrar IoT-hubbar tas enhets registreringen med den inledande IoT Hub bort. De inledande konfigurations data som etablerings tjänst instansen tog emot när enheten etablerades tillhandahålls till den nya IoT-hubben (2). Under migreringen rapporteras enhetens status som **tilldela**.
+* **Etablera om och återställ till den första konfiguration:** Den här principen vidtar åtgärder när enheter som är associerade med registreringsposten skickar en ny etableringsbegäran (1). Beroende på konfigurationen av registreringsposten kan enheten omtilldelades till en annan IoT-hubb. Om enheten ändrar IoT-hubbar tas enhetsregistreringen med den första IoT-hubben bort. De inledande konfigurationsdata som etableringstjänstinstansen tog emot när enheten etablerades tillhandahålls till den nya IoT-hubben (2). Under migreringen rapporteras enhetens status som **Tilldela**.
 
-    Den här principen används ofta för en fabriks återställning utan att ändra IoT-hubbar.
+    Den här principen används ofta för en fabriksåterställning utan att ändra IoT-hubbar.
 
-    ![Diagram som visar hur en princip vidtar åtgärder när enheter som är associerade med registrerings posten skickar en ny etablerings förfrågan.](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
+    ![Diagram som visar hur en princip vidtar åtgärder när enheter som är associerade med registreringsposten skickar en ny etableringsbegäran.](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
-* **Återetablera aldrig**: enheten omtilldelas aldrig till en annan hubb. Den här principen tillhandahålls för att hantera bakåtkompatibilitet.
+* **Etablera aldrig om:** Enheten omtilldelades aldrig till en annan hubb. Den här principen används för att hantera bakåtkompatibilitet.
 
-### <a name="managing-backwards-compatibility"></a>Hantera bakåtkompatibla kompatibilitet
+> [!NOTE]
+> DPS anropar alltid webhooken för anpassad allokering oavsett princip för ometablering om det finns nya [ReturnData](how-to-send-additional-data.md) för enheten. Om återetableringsprincipen är inställd på att aldrig etablera om **anropas** webhooken, men enheten ändrar inte den tilldelade hubben.
 
-Före september 2018 hade enhets tilldelningar till IoT-hubbar ett trögt beteende. När en enhet gick tillbaka genom etablerings processen, tilldelas den bara tillbaka till samma IoT-hubb.
+### <a name="managing-backwards-compatibility"></a>Hantera bakåtkompatibilitet
 
-För lösningar som har tagit ett beroende av det här beteendet innehåller etablerings tjänsten bakåtkompatibilitet. Det här beteendet underhålls för närvarande för enheter enligt följande kriterier:
+Före september 2018 hade enhetstilldelningar till IoT-hubbar ett fäst beteende. När en enhet gick tillbaka genom etableringsprocessen skulle den bara tilldelas tillbaka till samma IoT-hubb.
 
-1. Enheterna ansluts med en API-version innan det inbyggda stödet för intern etablering i Device Provisioning-tjänsten är tillgängligt. Se API-tabellen nedan.
+För lösningar som är beroende av det här beteendet omfattar etableringstjänsten bakåtkompatibilitet. Det här beteendet upprätthålls för närvarande för enheter enligt följande kriterier:
 
-2. Registrerings posten för enheterna har ingen angiven princip för etablering.
+1. Enheterna ansluter med en API-version innan det finns inbyggt återetableringsstöd i device provisioning-tjänsten. Se API-tabellen nedan.
 
-Den här kompatibiliteten säkerställer att tidigare distribuerade enheter upplever samma beteende som vid den första testningen. Spara inte en nyetablerings princip för dessa registreringar för att bevara det tidigare beteendet. Om en princip för att etablera om har angetts har den här principen företräde framför beteendet. Genom att tillåta att den ometablerings principen prioriteras kan kunderna uppdatera enhetens beteende utan att behöva göra en avbildning av enheten.
+2. Registreringsposten för enheterna har ingen återetableringsprincip inställd på dem.
 
-Följande flödes diagram hjälper till att visa när beteendet är tillgängligt:
+Den här kompatibiliteten ser till att tidigare distribuerade enheter upplever samma beteende som under den första testningen. Spara inte en återetableringsprincip för dessa registreringar om du vill bevara det tidigare beteendet. Om en återetableringsprincip har angetts har återetableringsprincipen företräde framför beteendet. Genom att tillåta att återetableringsprincipen får företräde kan kunder uppdatera enhetsbeteendet utan att behöva avbildning av enheten.
 
-![diagram över bakåtkompatibilitet](./media/concepts-device-reprovisioning/reprovisioning-compatibility-flow.png)
+Följande flödesdiagram hjälper till att visa när beteendet är närvarande:
 
-I följande tabell visas API-versionerna innan det interna etablerings stödet i enhets etablerings tjänsten är tillgängligt:
+![flödesschema för bakåtkompatibilitet](./media/concepts-device-reprovisioning/reprovisioning-compatibility-flow.png)
+
+Följande tabell visar API-versionerna innan det finns inbyggt återetableringsstöd i device provisioning-tjänsten:
 
 | REST-API | C SDK | Python SDK |  SDK för Node | Java SDK | .NET SDK |
 | -------- | ----- | ---------- | --------- | -------- | -------- |
 | [2018-04-01 och tidigare](/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 och tidigare](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 och tidigare](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 eller tidigare](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 eller tidigare](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0 eller tidigare](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
 
 > [!NOTE]
-> Dessa värden och länkar kommer förmodligen att ändras. Detta är endast ett plats hållare som försöker avgöra var versionerna kan bestämmas av en kund och vilka förväntade versioner som ska vara.
+> Dessa värden och länkar kommer troligen att ändras. Det här är bara ett platshållarförsök för att avgöra var versionerna kan fastställas av en kund och vilka förväntade versioner som kommer att vara.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Så här etablerar du om enheter](how-to-reprovision.md)
+* [Så här återetablera du enheter](how-to-reprovision.md)

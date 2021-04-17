@@ -1,74 +1,79 @@
 ---
-title: Stöd för out-of-proc-attestering med Intel SGX offerter-hjälp Daemonset på Azure (för hands version)
-description: DaemonSet för att skapa offerten utanför SGX-programprocessen. I den här artikeln förklaras hur funktionen out-of-proc attestering är rovided för konfidentiella arbets belastningar som körs i en behållare.
+title: Attestationsstöd med Intel SGX-offerthjälparen DaemonSet på Azure (förhandsversion)
+description: En DaemonSet för att generera offerten utanför Intel SGX-programprocessen. I den här artikeln förklaras hur den process utanför processens atterstationsanläggning tillhandahålls för konfidentiella arbetsbelastningar som körs i en container.
 ms.service: container-service
 ms.subservice: confidential-computing
 author: agowdamsft
 ms.topic: overview
 ms.date: 2/12/2021
 ms.author: amgowda
-ms.openlocfilehash: 0ebeb96557b7e20d123577c0ab9c8fc392abbfba
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 849fd7afa3f9365f31ee8e03d9f9cc2174d64304
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932644"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484412"
 ---
-# <a name="platform-software-management-with-sgx-quote-helper-daemon-set-preview"></a>Plattforms oberoende program varu hantering med SGX-offerter Helper daemon set (för hands version)
+# <a name="platform-software-management-with-intel-sgx-quote-helper-daemonset-preview"></a>Plattformsprogramvarahantering med Intel SGX-offerthjälparen DaemonSet (förhandsversion)
 
-[Enklaven-program](confidential-computing-enclaves.md) som utför fjärrattestering kräver en genererad offert. Den här OFFERTen innehåller kryptografiskt bevis på identiteten och programmets tillstånd, samt vilken miljö som enklaven körs på. För att skapa OFFERTen krävs betrodda program komponenter som ingår i Intels plattforms program varu komponenter (PSW).
+[Enklavprogram som](confidential-computing-enclaves.md) utför fjärrsattesering kräver ett genererat citattecken. Den här offerten ger kryptografiskt bevis på identiteten och programmets tillstånd, samt miljön som enklaven körs i. Offertgenereringen kräver betrodda programvarukomponenter som ingår i Intel Platform Software Components (PSW).
 
 ## <a name="overview"></a>Översikt
  
-Intel stöder två attesterings lägen för att köra offert genereringen:
-- **i-proc**: är värd för de betrodda program varu komponenterna i enklaven program process
+Intel stöder två attestationslägen för att köra offertgenereringen:
 
-- **utanför processen**: är värd för de betrodda program varu komponenterna utanför enklaven-programmet.
+- *Den här processen* är värd för de betrodda programvarukomponenterna i enklavprogramprocessen.
+
+- *Out-of-process* är värd för betrodda programvarukomponenter utanför enklavprogrammet.
  
-SGX-program som skapats med Open enklaven SDK används som standard i proc-hälsoläge. SGX-baserade program tillåter process brist och kräver extra värd och visar de nödvändiga komponenterna, till exempel arkitektoniska enklaven Service Manager (AESM), utanför programmet.
+Intel Software Guard-tillägget (Intel SGX) som skapats med hjälp av Open Enclave SDK använder som standard det processbaserade attstationsläget. Intel SGX-baserade program tillåter attstationsläge utanför processen. Om du vill använda det här läget behöver du extra värdtjänster och du måste exponera nödvändiga komponenter, till exempel AESM (Architectural Enclave Service Manager), utanför programmet.
 
-Användning av den här funktionen **rekommenderas**, eftersom den förbättrar drift tiden för dina enklaven-appar under Intel Platform updates eller DCAP driv rutins uppdateringar.
+Den här funktionen förbättrar drifttiden för enklavappar under Intel-plattformsuppdateringar eller DCAP-drivrutinsuppdateringar. Därför rekommenderar vi att du använder den.
 
-Om du vill aktivera den här funktionen i AKS-kluster ändrar du kommandot Add--Enable-sgxquotehelper till CLI när du aktiverar det konfidentiella beräknings tillägget. Detaljerade CLI-instruktioner finns [här](confidential-nodes-aks-get-started.md): 
+Om du vill aktivera den här funktionen i ett AKS-kluster (Azure Kubernetes Services) lägger du till kommandot i Azure CLI när du aktiverar tillägget för `--enable-sgxquotehelper` konfidentiell databehandling. 
 
 ```azurecli-interactive
 # Create a new AKS cluster with system node pool with Confidential Computing addon enabled and SGX Quote Helper
 az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addon confcom --enable-sgxquotehelper
 ```
 
-## <a name="why-and-what-are-the-benefits-of-out-of-proc"></a>Varför och vilka är fördelarna med out-of-proc?
+Mer information finns i [Snabbstart: Distribuera ett AKS-kluster med konfidentiella beräkningsnoder med hjälp av Azure CLI.](confidential-nodes-aks-get-started.md)
 
--   Det krävs inga uppdateringar för att skapa offert komponenter i PSW för varje container program: med out-of-proc behöver container ägare inte hantera uppdateringar i deras behållare. Container ägare förlitar sig i stället på providern som tillhandahöll den centraliserade tjänsten utanför behållaren, som kommer att uppdateras och hanteras av providern.
+## <a name="benefits-of-the-out-of-process-mode"></a>Fördelar med out-of-process-läge
 
--   Du behöver inte bekymra dig om attesterings problem på grund av inaktuella PSW-komponenter: offert genereringen omfattar betrodda SW-komponenter – citat-enklaven (QE) & Provisioning Certificate enklaven (PCE), som är en del av den betrodda beräknings basen (TCB). Dessa SW-komponenter måste vara uppdaterade för att upprätthålla kraven för attestering. Eftersom providern hanterar uppdateringar av dessa komponenter behöver kunderna aldrig hantera attesterings problem på grund av inaktuella betrodda SW-komponenter i deras behållare.
+I följande lista beskrivs några av de viktigaste fördelarna med det här atterstationsläget:
 
--   Bättre användning av EPC-minne i läget i proc-attestering, varje enklaven-program måste instansiera kopian av QE och PCE för fjärrattestering. Med out-of-proc behöver inte behållaren vara värd för dessa enclaves och förbrukar inte enklaven-minne från container kvoten.
+-   Inga uppdateringar krävs för offertgenereringskomponenter i PSW för varje containerprogram. Containerägare behöver inte hantera uppdateringar i sin container. Containerägare förlitar sig i stället på providergränssnittet som anropar den centraliserade tjänsten utanför containern. Providern uppdaterar och hanterar containern.
 
--   Skydd mot kernel-tvång när SGX-drivrutinen är inströmmad i en Linux-kernel, kan det finnas en enklaven för att ha högre behörighet. Med den här behörigheten kan enklaven anropa PCE, vilket innebär att enklaven-programmet som körs i läget i proc-läge avbryts. Enclaves får som standard inte den här behörigheten. Att bevilja den här behörigheten till ett enklaven-program kräver ändringar i programmets installations process. Detta hanteras enkelt för out-of-proc-modellen som providern för den tjänst som hanterar out-of-proc-begäranden som ser till att tjänsten installeras med den här behörigheten.
+-   Du behöver inte bekymra dig om atterstationsfel på grund av inkontredna PSW-komponenter. Providern hanterar uppdateringarna av dessa komponenter.
 
--   Du behöver inte söka efter bakåtkompatibilitet med PSW & DCAP. Uppdateringarna av de olika komponenterna i PSW för offerter verifieras för bakåtkompatibilitet av providern innan du uppdaterar. Detta hjälper dig att hantera kompatibilitetsproblem och åtgärda dem innan du distribuerar uppdateringar för konfidentiella arbets belastningar.
+-   Out-of-process-läget ger bättre användning av EPC-minne än i processläge. I processläge måste varje enklavprogram instansiera kopian av QE och PCE för fjärr attestation. I out-of-process-läge finns det inget behov av att containern är värd för dessa enklaver, och därför förbrukar den inte enklavminnet från containerkvoten.
 
-## <a name="how-does-the-out-of-proc-attestation-mode-work-for-confidential-workloads-scenario"></a>Hur fungerar inaktuella attesterings läge för konfidentiella arbets belastnings scenarier?
+-   När du har uppströms Intel SGX-drivrutinen till en Linux-kernel måste en enklav ha högre behörighet. Med den här behörigheten kan enklaven anropa PCE, vilket bryter enklavprogrammet som körs i processläge. Som standard får enklaver inte den här behörigheten. Att bevilja den här behörigheten till ett enklavprogram kräver ändringar i programinstallationsprocessen. I läget out-of-process ser däremot den tjänstleverantör som hanterar out-of-process-begäranden till att tjänsten installeras med den här behörigheten.
 
-Den övergripande designen följer den modell där offert begär Anden och generering av offerter körs separat, men på samma fysiska dator. Genereringen av offerter görs på ett centraliserat sätt och hanterar begär Anden om OFFERter från alla entiteter. Gränssnittet måste vara korrekt definierat och kunna identifieras för alla entiteter för att begära offerter.
+-   Du behöver inte kontrollera bakåtkompatibiliteten med PSW och DCAP. Uppdateringarna av offertgenereringskomponenterna i PSW verifieras för bakåtkompatibilitet av providern innan uppdateringen. Detta hjälper dig att hantera kompatibilitetsproblem innan du distribuerar uppdateringar för konfidentiella arbetsbelastningar.
 
-![hjälp program för SGX-offerter aesm](./media/confidential-nodes-out-of-proc-attestation/aesmmanager.png)
+## <a name="confidential-workloads"></a>Konfidentiella arbetsbelastningar
 
-Den abstrakta modellen ovan gäller för ett konfidentiellt arbets belastnings scenario genom att dra nytta av redan tillgänglig AESM-tjänst. AESM är containerd och distribuerad som en daemonSet över Kubernetes-klustret. Kubernetes garanterar en enda instans av en AESM-tjänst behållare, omsluten i en pod, som ska distribueras på varje agent-nod. Den nya SGX-offertens daemonset har ett beroende på daemonset för SGX-Device-plugin, eftersom AESM service container skulle begära EPC-minne från SGX-Device-plugin för att starta QE och PCE enclaves.
+Offertförfrågan och offertgenereringen körs separat, men på samma fysiska dator. Offertgenereringen är centraliserad och betjänar begäranden om offerter från alla entiteter. För att en entitet ska kunna begära offerter måste gränssnittet vara korrekt definierat och kunna upptäckas.
 
-För varje behållare måste du välja att använda offerter för att skapa offerter genom att ställa in miljövariabeln **SGX_AESM_ADDR = 1** när den skapas. Behållaren bör även innehålla paketet libsgx-offert – ex som ansvarar för att dirigera begäran till standard-UNIX-domänsuffix
+![Diagram som visar relationerna mellan offertens beställare, offertgenerering och gränssnitt.](./media/confidential-nodes-out-of-proc-attestation/aesmmanager.png)
 
-Ett program kan fortfarande använda in-proc-attestering som tidigare, men både i-proc och out-of-proc kan inte användas samtidigt i ett program. Out-of-proc-infrastrukturen är tillgänglig som standard och använder resurser.
+Den här abstrakta modellen gäller för scenariot med konfidentiell arbetsbelastning genom att dra nytta av den AESM-tjänst som redan är tillgänglig. AESM containeriseras och distribueras som en DaemonSet i Kubernetes-klustret. Kubernetes garanterar att en enda instans av en AESM-tjänstcontainer, omsluten i en podd, distribueras på varje agentnod. Den nya Intel SGX-offerten DaemonSet kommer att ha ett beroende på Sgx-device-plugin DaemonSet, eftersom AESM-tjänstens container begär EPC-minne från sgx-device-plugin för att starta QE- och PCE-enklaver.
 
-## <a name="sample-implementation"></a>Exempel på implementering
+Varje container måste välja att använda offertgenerering utanför processen genom att ange miljövariabeln `SGX_AESM_ADDR=1` när den skapas. Containern bör också innehålla paketet libsgx-quote-ex, som ansvarar för att dirigera begäran till Unix-standarddomänsocketen.
 
-Nedanstående Docker-fil är ett exempel på ett öppet enklaven-baserat program. Ange miljövariabeln SGX_AESM_ADDR = 1 i Docker-filen eller genom att ange den i distributions filen. Följ exemplet nedan för Docker-filen och yaml information om distribution. 
+Ett program kan fortfarande använda den processbaserade attestation som tidigare, men in-process-and-of-process kan inte användas samtidigt i ett program. Out-of-process-infrastrukturen är tillgänglig som standard och förbrukar resurser.
+
+## <a name="sample-implementation"></a>Exempelimplementering
+
+Följande Docker-fil är ett exempel för ett program som baseras på Open Enclave. Ange `SGX_AESM_ADDR=1` miljövariabeln i Docker-filen eller genom att ange den på distributionsfilen. Följande exempel innehåller information om Docker-filen och distributionen. 
 
   > [!Note] 
-  > **Libsgx-offert-från-** Intel måste paketeras i program behållaren för att det ska gå att utföra en out-of-proc-attestering för att fungera korrekt.
+  > För att out-of-process-attestation ska fungera korrekt måste libsgx-quote-ex från Intel paketeras i programcontainern.
     
 ```yaml
-# Refer to Intel_SGX_Installation_Guide_Linux for detail
+# Refer to Intel_SGX_Installation_Guide_Linux for details
 FROM ubuntu:18.04 as sgx_base
 RUN apt-get update && apt-get install -y \
     wget \
@@ -95,12 +100,12 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /opt/openenclave/share/openenclave/samples/remote_attestation
 RUN . /opt/openenclave/share/openenclave/openenclaverc \
     && make build
-# this sets the flag for out of proc attestation mode. alternatively you can set this flag on the deployment files
+# This sets the flag for out-of-process attestation mode. Alternatively you can set this flag on the deployment files.
 ENV SGX_AESM_ADDR=1 
 
 CMD make run
 ```
-Du kan också ställa in läget för inaktiv attestering i yaml-filen för distribution enligt nedan
+Du kan också ställa in läget för atterering utanför processen i .yaml-distributionsfilen. Gör så här:
 
 ```yaml
 apiVersion: batch/v1
@@ -130,15 +135,9 @@ spec:
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-[Etablera konfidentiella noder (DCsv2-serien) på AKS](./confidential-nodes-aks-get-started.md)
 
-[Snabb starts exempel konfidentiella behållare](https://github.com/Azure-Samples/confidential-container-samples)
+[Snabbstart: Distribuera ett AKS-kluster med noder för konfidentiell databehandling med hjälp av Azure CLI](./confidential-nodes-aks-get-started.md)
 
-[DCsv2 SKU-lista](../virtual-machines/dcv2-series.md)
+[Snabbstartsexempel för konfidentiella containrar](https://github.com/Azure-Samples/confidential-container-samples)
 
-<!-- LINKS - external -->
-[Azure Attestation]: ../attestation/index.yml
-
-
-<!-- LINKS - internal -->
-[DC Virtual Machine]: /confidential-computing/virtual-machine-solutions
+[DCsv2 SKU:er](../virtual-machines/dcv2-series.md)

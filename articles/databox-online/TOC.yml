@@ -198,13 +198,13 @@
                   href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
                 - name: Dynamiskt etablerad tillståndskänslig app
                   href: azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md
-                - name: GPU-delad arbets belastning
+                - name: Delad GPU-arbetsbelastning
                   href: azure-stack-edge-gpu-deploy-kubernetes-gpu-sharing.md
             - name: Via IoT Edge
               items:
                 - name: Tillståndslös app
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
-                - name: GPU-delad arbets belastning
+                - name: Delad GPU-arbetsbelastning
                   href: azure-stack-edge-gpu-deploy-iot-edge-gpu-sharing.md
                 - name: Utveckla en C#-modul
                   href: azure-stack-edge-gpu-create-iot-edge-module.md
@@ -214,7 +214,7 @@
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
                 - name: Distribuera tillståndslös app via GitOps
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
-                - name: Distribuera Azure Arc data Controller
+                - name: Distribuera Azure Arc datakontrollant
                   href: azure-stack-edge-gpu-deploy-arc-data-controller.md
         - name: Konfigurera Azure Resource Manager (förhandsversion)
           items:
@@ -242,25 +242,27 @@
               href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
             - name: Skapa VM-avbildning
               href: azure-stack-edge-gpu-create-virtual-machine-image.md
-            - name: Använd Windows generaliserad avbildning
+            - name: Förbereda en generaliserad Windows-avbildning från en virtuell hårddisk
               href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
-            - name: Använd specialiserad Windows-avbildning
+            - name: Förbereda generaliserad avbildning med ISO
+              href: azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md
+            - name: Använda Windows-specialiserad avbildning
               href: azure-stack-edge-gpu-deploy-vm-specialized-image-powershell.md
             - name: VM-storlekar och typer som stöds
               href: azure-stack-edge-gpu-virtual-machine-sizes.md
-            - name: Anslut till konsolen för virtuella datorer
+            - name: Ansluta till VM-konsolen
               href: azure-stack-edge-gpu-connect-virtual-machine-console.md
-            - name: Hantera nätverks gränssnitt
+            - name: Hantera nätverksgränssnitt
               href: azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md
             - name: Hantera diskar
               href: azure-stack-edge-gpu-manage-virtual-machine-disks-portal.md
             - name: Hantera VM-storlekar
               href: azure-stack-edge-gpu-manage-virtual-machine-resize-portal.md
-            - name: Hantera VM-Taggar
+            - name: Hantera VM-taggar
               href: azure-stack-edge-gpu-manage-virtual-machine-tags-powershell.md
             - name: Skapa virtuell växel
               href: azure-stack-edge-gpu-create-virtual-switch-powershell.md
-            - name: Säkerhetskopiera VM-diskar
+            - name: Back up VM disks ( Back up VM disks)
               href: azure-stack-edge-gpu-back-up-virtual-machine-disks.md
         - name: Hantera certifikat
           items:
@@ -312,7 +314,7 @@
           items:
             - name: Använda måttdiagram
               href: azure-stack-edge-monitor.md
-            - name: Hantera aviseringar om enhets händelser
+            - name: Hantera aviseringar om enhetshändelse
               href: azure-stack-edge-gpu-manage-device-event-alert-notifications.md
             - name: Använda Kubernetes-instrumentpanelen
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
@@ -330,7 +332,7 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Delad viktig information
       items:
-        - name: 2103 – aktuell
+        - name: 2103 – Aktuell
           href: azure-stack-edge-gpu-2103-release-notes.md
         - name: 2101
           href: azure-stack-edge-gpu-2101-release-notes.md
@@ -422,7 +424,7 @@
           href: azure-stack-edge-migrate-fpga-gpu.md
     - name: Viktig information
       items:
-        - name: 2101 – aktuell
+        - name: 2101 – Aktuell
           href: azure-stack-edge-2101-release-notes.md
         - name: 2007
           href: ../databox-gateway/data-box-gateway-2007-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json

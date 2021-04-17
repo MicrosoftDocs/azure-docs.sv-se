@@ -1,19 +1,19 @@
 ---
 title: Hantera konsekvens i Azure Cosmos DB
-description: 'Lär dig hur du konfigurerar och hanterar konsekvens nivåer i Azure Cosmos DB att använda Azure Portal, .NET SDK, Java SDK och diverse andra SDK: er'
+description: Lär dig hur du konfigurerar och hanterar konsekvensnivåer i Azure Cosmos DB med Azure Portal, .NET SDK, Java SDK och olika andra SDK:er
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: b0c03c2f5313605fbdf288a9262df0852e066efd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: b7cab67b49196a3d50ce5483282971bbb7b9ece1
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93333486"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483290"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Hantera konsekvensnivåer i Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,17 +24,17 @@ Den här artikeln förklarar hur du hanterar konsekvensnivåer i Azure Cosmos DB
 
 ## <a name="configure-the-default-consistency-level"></a>Konfigurera standardkonsekvensnivån
 
-[Standard konsekvens nivån](consistency-levels.md) är den konsekvens nivå som klienter använder som standard.
+[Standardkonsekvensnivån](consistency-levels.md) är den konsekvensnivå som klienter använder som standard.
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Om du vill visa eller ändra standardkonsekvensnivån loggar du in på Azure-portalen. Hitta ditt Azure Cosmos-konto och öppna fönstret **standard konsekvens** . Välj den konsekvensnivå som du vill ha som den nya standarden, och välj sedan **Spara**. Azure Portal innehåller också en visualisering av olika konsekvens nivåer med noter. 
+Om du vill visa eller ändra standardkonsekvensnivån loggar du in på Azure-portalen. Leta upp ditt Azure Cosmos-konto och öppna **fönstret Standardkonsekvens.** Välj den konsekvensnivå som du vill ha som den nya standarden, och välj sedan **Spara**. I Azure Portal också en visualisering av olika konsekvensnivåer med musikanteckningar. 
 
 :::image type="content" source="./media/how-to-manage-consistency/consistency-settings.png" alt-text="Konsekvensmeny på Azure-portalen":::
 
 # <a name="cli"></a>[CLI](#tab/cli)
 
-Skapa ett Cosmos-konto med konsekvens på sessionen och uppdatera sedan standard konsekvensen.
+Skapa ett Cosmos-konto med sessionskonsekvens och uppdatera sedan standardkonsekvensen.
 
 ```azurecli
 # Create a new account with Session consistency
@@ -46,7 +46,7 @@ az cosmosdb update --name $accountName --resource-group $resourceGroupName --def
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Skapa ett Cosmos-konto med konsekvens på sessionen och uppdatera sedan standard konsekvensen.
+Skapa ett Cosmos-konto med sessionskonsekvens och uppdatera sedan standardkonsekvensen.
 
 ```azurepowershell-interactive
 # Create a new account with Session consistency
@@ -62,10 +62,10 @@ Update-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
 
 ## <a name="override-the-default-consistency-level"></a>Åsidosätta standardkonsekvensnivån
 
-Klienter kan åsidosätta standardkonsekvensnivån som anges av tjänsten. Konsekvens nivå kan ställas in per begäran, vilket åsidosätter standard konsekvens nivån som angetts på konto nivå.
+Klienter kan åsidosätta standardkonsekvensnivån som anges av tjänsten. Konsekvensnivån kan anges för en per begäran, vilket åsidosätter standardkonsekvensnivån som angetts på kontonivå.
 
 > [!TIP]
-> Konsekvens kan bara göras **avslappnad** på den begärda nivån. Om du vill övergå från svagare till starkare konsekvens uppdaterar du standard konsekvensen för Cosmos-kontot.
+> Konsekvens kan bara vara **avslappnad** på begäransnivå. Om du vill gå från svagare till starkare konsekvens uppdaterar du standardkonsekvensen för Cosmos-kontot.
 
 ### <a name="net-sdk"></a><a id="override-default-consistency-dotnet"></a>.NET SDK
 
@@ -95,27 +95,27 @@ var response = await client.GetContainer(databaseName, containerName)
 ```
 ---
 
-### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
-# <a name="async"></a>[Async](#tab/api-async)
+# <a name="async"></a>[Asynkrona](#tab/api-async)
 
-   Java SDK v4 (maven com. Azure:: Azure-Cosmos) asynkront API
+   Java SDK V4 (Maven com.azure::azure-cosmos) Async API
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencyAsync)]
 
 # <a name="sync"></a>[Synkronisera](#tab/api-sync)
 
-   Java SDK v4 (maven com. Azure:: Azure-Cosmos) Sync API
+   Java SDK V4 (Maven com.azure::azure-cosmos) Synkroniserings-API
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConsistencySync)]
 
 --- 
 
-### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a> Java v2 SDK: er
+### <a name="java-v2-sdks"></a><a id="override-default-consistency-javav2"></a> Java V2-SDK:er
 
-# <a name="async"></a>[Async](#tab/api-async)
+# <a name="async"></a>[Asynkrona](#tab/api-async)
 
-Asynkron Java v2 SDK (maven com. Microsoft. Azure:: Azure-cosmosdb)
+AsyncÂ JavaÂ V2Â SDKÂ (MavenÂ com.microsoft.azure::azure-cosmosdb)
 
 ```java
 // Override consistency at the client level
@@ -131,7 +131,7 @@ AsyncDocumentClient client =
 
 # <a name="sync"></a>[Synkronisera](#tab/api-sync)
 
-Synkronisera Java v2 SDK (maven com. Microsoft. Azure:: Azure-DocumentDB)
+SyncÂ JavaÂ V2Â SDKÂ (MavenÂ com.microsoft.azure::azure-documentdb)
 
 ```java
 // Override consistency at the client level
@@ -164,7 +164,7 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 
 ## <a name="utilize-session-tokens"></a>Använda sessionstoken
 
-En av konsekvens nivåerna i Azure Cosmos DB är konsekvens på *sessionen* . Detta är standard nivån som tillämpas på Cosmos-konton som standard. När du arbetar med konsekvens för *sessioner* använder klienten en session-token internt med varje Läs/fråga-begäran för att säkerställa att ange konsekvens nivå.
+En av konsekvensnivåerna i Azure Cosmos DB *sessionskonsekvens.* Det här är standardnivån som tillämpas på Cosmos-konton som standard. När du arbetar *med sessionskonsekvens* använder klienten en sessionstoken internt med varje läs-/frågebegäran för att säkerställa att uppsättningens konsekvensnivå upprätthålls.
 
 Om du vill hantera sessionstoken manuellt hämtar du sessionstoken från svaret och anger dem per begäran. Om du inte behöver hantera sessionstoken manuellt behöver du inte använda de här exemplen. SDK håller reda på sessionstoken automatiskt. Om du inte anger sessionstoken manuellt använder SDK som standard den senaste sessionstoken.
 
@@ -196,27 +196,27 @@ ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(sa
 ```
 ---
 
-### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK
+### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
-# <a name="async"></a>[Async](#tab/api-async)
+# <a name="async"></a>[Asynkrona](#tab/api-async)
 
-   Java SDK v4 (maven com. Azure:: Azure-Cosmos) asynkront API
+   Java SDK V4 (Maven com.azure::azure-cosmos) Async API
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencySessionAsync)]
 
 # <a name="sync"></a>[Synkronisera](#tab/api-sync)
 
-   Java SDK v4 (maven com. Azure:: Azure-Cosmos) Sync API
+   Java SDK V4 (Maven com.azure::azure-cosmos) Synkroniserings-API
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ManageConsistencySessionSync)]
 
 --- 
 
-### <a name="java-v2-sdks"></a><a id="utilize-session-tokens-javav2"></a>Java v2 SDK: er
+### <a name="java-v2-sdks"></a><a id="utilize-session-tokens-javav2"></a>Java V2-SDK:er
 
-# <a name="async"></a>[Async](#tab/api-async)
+# <a name="async"></a>[Asynkrona](#tab/api-async)
 
-Asynkron Java v2 SDK (maven com. Microsoft. Azure:: Azure-cosmosdb)
+AsyncÂ JavaÂ V2Â SDKÂ (MavenÂ com.microsoft.azure::azure-cosmosdb)
 
 ```java
 // Get session token from response
@@ -240,7 +240,7 @@ Observable<ResourceResponse<Document>> readObservable = client.readDocument(docu
 
 # <a name="sync"></a>[Synkronisera](#tab/api-sync)
 
-Synkronisera Java v2 SDK (maven com. Microsoft. Azure:: Azure-DocumentDB)
+SyncÂ JavaÂ V2Â SDKÂ (MavenÂ com.microsoft.azure::azure-documentdb)
 
 ```java
 // Get session token from response
@@ -281,7 +281,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Övervaka PBS-mått (probabilistiskt begränsad föråldring)
 
-Hur eventuell konsekvens fungerar? I genomsnitts fallet kan vi erbjuda inaktuella gränser med avseende på versions historik och-tid. Probabilistically-måttet för [**föråldrad (PBS)**](https://pbs.cs.berkeley.edu/) försöker kvantifiera sannolikheten för inaktuellhet och visar det som ett mått. Om du vill visa PBS-måttet går du till ditt Azure Cosmos-konto i Azure Portal. Öppna fönstret **mått** och välj fliken **konsekvens** . Titta på diagrammet med namnet **sannolikhet för starkt konsekventa läsningar baserat på din arbets belastning (se PBS)**.
+Hur slutlig är slutlig konsekvens? I genomsnitt kan vi erbjuda gränser för föråldrighet vad gäller versionshistorik och -tid. [**PBS-måttet (Probabilistically Bounded Staleness)**](https://pbs.cs.berkeley.edu/) försöker kvantifiera sannolikheten för föråldrering och visar det som ett mått. Om du vill visa PBS-måttet går du till ditt Azure Cosmos-konto i Azure Portal. Öppna **fönstret Mått** och välj **fliken** Konsekvens. Titta på diagrammet med namnet **Probability of strongly consistent reads based on your workload (see PBS)**(Sannolikheten för starkt konsekventa läsningar baserat på din arbetsbelastning (se PBS).
 
 :::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="PBS-graf i Azure-portalen":::
 
@@ -289,10 +289,10 @@ Hur eventuell konsekvens fungerar? I genomsnitts fallet kan vi erbjuda inaktuell
 
 Läs mer om hur du hanterar datakonflikter eller gå vidare till nästa viktiga begrepp i Azure Cosmos DB. Se följande artiklar:
 
-* [Konsekvens nivåer i Azure Cosmos DB](consistency-levels.md)
+* [Konsekvensnivåer i Azure Cosmos DB](consistency-levels.md)
 * [Partitionering och datadistribution](./partitioning-overview.md)
 * [Hantera konflikter mellan regioner](how-to-manage-conflicts.md)
 * [Partitionering och datadistribution](partitioning-overview.md)
-* [Konsekvens i moderna distribuerade databas system design](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+* [Kompromisser för konsekvens i modern design av distribuerade databassystem](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 * [Hög tillgänglighet](high-availability.md)
-* [Azure Cosmos DB service avtal](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+* [Azure Cosmos DB serviceavtal](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

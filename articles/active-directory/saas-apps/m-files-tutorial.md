@@ -9,97 +9,71 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 03/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 552e5c2411889ee7f07265eb1cc35d98aed4d7c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 680380722746522a0eb3fe6518452472be952075
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99574186"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482849"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Självstudie: Azure Active Directory integrering med M-Files
 
-I den här självstudien lär du dig att integrera M-Files med Azure Active Directory (AD Azure).
-Integreringen av M-Files med Azure AD medför följande fördelar:
+I den här självstudien lär du dig att integrera M-Files med Azure Active Directory (Azure AD). När du integrerar M-Files med Azure AD kan du:
 
-* Du kan i Azure AD styra vem som har åtkomst till M-Files.
-* Du kan göra så att dina användare loggas in automatiskt på M-Files (enkel inloggning) med sina Azure AD-konton.
-* Du kan hantera dina konton på en central plats – Azure-portalen.
-
-Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
+* Kontrollera vem som har åtkomst till M-Files i Azure AD.
+* Gör så att dina användare automatiskt loggas in på M-Files med sina Azure AD-konton.
+* Hantera dina konton på en central plats – Azure Portal.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-För att konfigurera Azure AD-integrering med M-Files behöver du följande:
+För att komma igång behöver du följande:
 
-* En Azure AD-prenumeration. Om du inte har någon Azure AD-miljö kan du hämta en månads utvärderingsversion [här](https://azure.microsoft.com/pricing/free-trial/)
-* M-Files-prenumeration med enkel inloggning aktiverat
+* En Azure AD-prenumeration. Om du inte har någon prenumeration kan du skaffa ett [kostnadsfritt konto.](https://azure.microsoft.com/free/)
+* M-Files-prenumeration med enkel inloggning (SSO).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
 I den här självstudien konfigurerar och testar du enkel inloggning med Azure AD i en testmiljö.
 
-* M-Files har stöd för **SP**-initierad enkel inloggning
+* M-Files stöder **SP-initierad** enkel inloggning.
 
-## <a name="adding-m-files-from-the-gallery"></a>Lägga till M-Files från galleriet
+## <a name="add-m-files-from-the-gallery"></a>Lägga till M-Files från galleriet
 
 För att konfigurera integreringen av M-Files i Azure AD måste du lägga till M-Files från galleriet till din lista över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till M-Files från galleriet:**
+1. Logga in på Azure Portal med ett arbets- eller skolkonto eller en personlig Microsoft-konto.
+1. I det vänstra navigeringsfönstret väljer du **Azure Active Directory** tjänst.
+1. Gå till **Företagsprogram** och välj sedan **Alla program.**
+1. Om du vill lägga till ett nytt program väljer **du Nytt program**.
+1. I avsnittet **Lägg till från** galleriet skriver du **M-Files** i sökrutan.
+1. Välj **M-Files** i resultatpanelen och lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klientorganisation.
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen.
+## <a name="configure-and-test-azure-ad-sso-for-m-files"></a>Konfigurera och testa enkel inloggning för Azure AD för M-Files
 
-    ![Azure Active Directory-knappen](common/select-azuread.png)
+Konfigurera och testa enkel inloggning i Azure AD med M-Files med hjälp av en testanvändare med **namnet B.Simon**. För att enkel inloggning ska fungera måste du upprätta en länkrelation mellan en Azure AD-användare och den relaterade användaren i M-Files.
 
-2. Gå till **Företagsprogram** och välj alternativet **Alla program**.
+Utför följande steg för att konfigurera och testa enkel inloggning i Azure AD med M-Files:
 
-    ![Bladet Företagsprogram](common/enterprise-applications.png)
+1. **[Konfigurera enkel inloggning med Azure AD](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
+    1. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** – för att testa enkel inloggning med Azure AD med B.Simon.
+    1. **[Tilldela Azure AD-testanvändaren](#assign-the-azure-ad-test-user)** – för att göra det möjligt för B.Simon att använda enkel inloggning med Azure AD.
+1. **[Konfigurera enkel inloggning för M-Files](#configure-m-files-sso)** – för att konfigurera inställningarna för enkel inloggning på programsidan.
+    1. **[Skapa M-Files-testanvändare](#create-m-files-test-user)** – för att ha en motsvarighet för B.Simon i M-Files som är länkad till en Azure AD-representation av användaren.
+1. **[Testa enkel inloggning](#test-sso)** – för att kontrollera om konfigurationen fungerar.
 
-3. Lägg till ett nytt program genom att klicka på knappen **Nytt program** högst upp i dialogrutan.
+## <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
 
-    ![Knappen Nytt program](common/add-new-app.png)
+Följ dessa steg för att aktivera enkel inloggning med Azure AD i Azure Portal.
 
-4. I sökrutan skriver du **M-Files**, väljer **M-Files** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
+1. I Azure Portal programintegreringssidan **för M-Files** letar du upp **avsnittet Hantera** och väljer **enkel inloggning.**
+1. På sidan **Välj en metod för enkel inloggning** väljer du **SAML**.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på pennikonen för Grundläggande **SAML-konfiguration för** att redigera inställningarna.
 
-     ![M-Files i resultatlistan](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
-
-I det här avsnittet konfigurerar och testar du enkel inloggning i Azure AD med M-Files baserat på en testanvändare med namnet **Britta Simon**.
-För att enkel inloggning ska fungera måste en länkrelation mellan en Azure AD-användare och den relaterade användaren i M-Files upprättas.
-
-För att konfigurera och testa enkel inloggning för Azure AD med M-Files behöver du slutföra följande byggstenar:
-
-1. **[Konfigurera enkel inloggning med Azure AD](#configure-azure-ad-single-sign-on)** – så att användarna kan använda den här funktionen.
-2. **[Konfigurera enkel inloggning för M-Files](#configure-m-files-single-sign-on)** – för att konfigurera inställningarna för enkel inloggning på programsidan.
-3. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** – för att testa enkel inloggning med Azure AD med Britta Simon.
-4. **[Tilldela Azure AD-testanvändaren](#assign-the-azure-ad-test-user)** – så att Britta Simon kan använda enkel inloggning med Azure AD.
-5. **[Skapa M-Files-testanvändare](#create-m-files-test-user)** – för att ha en motsvarighet för Britta Simon i M-Files som är länkad till Azure AD-representationen av användaren.
-6. **[Testa enkel inloggning](#test-single-sign-on)** – för att verifiera om konfigurationen fungerar.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera enkel inloggning med Azure AD
-
-I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen.
-
-Utför följande steg för att konfigurera enkel inloggning med Azure AD för M-Files:
-
-1. I [Azure-portalen](https://portal.azure.com/) går du till programintegreringssidan för **M-Files** och väljer **Enkel inloggning**.
-
-    ![Konfigurera länk för enkel inloggning](common/select-sso.png)
-
-2. I dialogrutan **Välj en metod för enkel inloggning** väljer du läget **SAML/WS-Fed** för att aktivera enkel inloggning.
-
-    ![Välja läge för enkel inloggning](common/select-saml-option.png)
-
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
-
-    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
+   ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 4. I avsnittet **Grundläggande SAML-konfiguration** utför du följande steg:
-
-    ![M-Files-domän och information om URL:er för enkel inloggning](common/sp-identifier.png)
 
     a. I textrutan **Inloggnings-URL** anger du en URL enligt följande mönster: `https://<tenantname>.cloudvault.m-files.com/authentication/MFiles.AuthenticationProviders.Core/sso`
 
@@ -116,13 +90,31 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD för M-
 
     ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
 
-    a. Inloggnings-URL
+### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
 
-    b. Azure AD-identifierare
+I det här avsnittet skapar du en testanvändare i Azure Portal namnet B.Simon.
 
-    c. Utloggnings-URL
+1. I det vänstra fönstret i Azure Portal väljer **du Azure Active Directory**, **väljer Användare** och sedan **Alla användare.**
+1. Välj **Ny** användare överst på skärmen.
+1. I **Användaregenskaper** följer du dessa steg:
+   1. I **Namn**-fältet skriver du `B.Simon`.  
+   1. I **fältet Användarnamn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
 
-### <a name="configure-m-files-single-sign-on"></a>Konfigurera enkel inloggning för M-Files
+### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
+
+I det här avsnittet gör du det möjligt för B.Simon att använda enkel inloggning med Azure genom att ge åtkomst till M-Files.
+
+1. I Azure Portal väljer du **Företagsprogram** och sedan **Alla program**.
+1. I programlistan väljer du **M-Files**.
+1. På appens översiktssida hittar du avsnittet **Hantera** och väljer **Användare och grupper.**
+1. Välj **Lägg till** användare och sedan Användare och **grupper** i dialogrutan Lägg **till** tilldelning.
+1. I **dialogrutan Användare och** grupper väljer du **B.Simon** i  listan Användare och klickar sedan på knappen Välj längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas till användarna kan du välja den i listrutan **Välj en** roll. Om ingen roll har ställts in för den här appen visas rollen "Standardåtkomst".
+1. I dialogrutan **Lägg till** tilldelning klickar du på **knappen** Tilldela.
+
+## <a name="configure-m-files-sso"></a>Konfigurera enkel inloggning för M-Files
 
 1. För att få enkel inloggning konfigurerat för ditt program kontaktar du [supportteamet för M-Files](mailto:support@m-files.com) och ge dem nedladdade metadata.
    
@@ -131,13 +123,13 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD för M-
 
 1. Följ stegen nedan om du vill konfigurera M-Files-skrivbordsprogrammet för att aktivera enkel inloggning med Azure AD. För att ladda ned M-Files går du till sidan för [nedladdning av M-Files](https://www.m-files.com/customers/product-downloads/download-update-links/).
 
-1. Öppna fönstret **M-Files Desktop Settings** (M-Files-skrivbordsinställningar). Klicka sedan på **Lägg till**.
+1. Öppna fönstret **M-Files Desktop Settings** (M-Files-skrivbordsinställningar). Klicka sedan på Lägg **till**.
    
-    ![Skärm bild som visar M-Files Desktop-inställningar där du kan välja Lägg till.](./media/m-files-tutorial/tutorial_m_files_10.png)
+    ![Skärmbild som visar M-Files Desktop-inställningar där du kan välja Lägg till.](./media/m-files-tutorial/settings.png)
 
 1. I fönstret **Document Vault Connection Properties** (Anslutningsegenskaper för Document Vault) utför du följande steg:
    
-    ![Skärm bild som visar dokument valvets anslutnings egenskaper där du kan ange de värden som beskrivs.](./media/m-files-tutorial/tutorial_m_files_11.png)  
+    ![Skärmbild som visar Anslutningsegenskaper för Document Vault där du kan ange de värden som beskrivs.](./media/m-files-tutorial/general.png)  
 
     Under avsnittet Server skriver du värdena på följande sätt:  
 
@@ -153,71 +145,20 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD för M-
  
     f. Klicka på **OK**.
 
-### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
-
-Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
-
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory**, välj **Users** och sedan **Alla användare**.
-
-    ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
-
-2. Välj **ny användare** överst på skärmen.
-
-    ![Knappen Ny användare](common/new-user.png)
-
-3. Genomför följande steg i Användaregenskaper.
-
-    ![Dialogrutan Användare](common/user-properties.png)
-
-    a. I fältet **Namn** anger du **BrittaSimon**.
-  
-    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
-    Till exempel BrittaSimon@contoso.com
-
-    c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
-
-    d. Klicka på **Skapa**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
-
-I det här avsnittet gör du det möjligt för Britta Simon att använda enkel inloggning med Azure genom att ge åtkomst till M-Files.
-
-1. I Azure-portalen väljer du **Företagsprogram**, **Alla program** och sedan **M-Files**.
-
-    ![Bladet Företagsprogram](common/enterprise-applications.png)
-
-2. I programlistan väljer du **M-Files**.
-
-    ![Länken för M-Files i programlistan](common/all-applications.png)
-
-3. På menyn till vänster väljer du **Användare och grupper**.
-
-    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
-
-    ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
-
-5. I dialogrutan **Användare och grupper** väljer du **Britta Simon** i listan med användare och klickar på knappen **Välj** längst ned på skärmen.
-
-6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
-
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
-
 ### <a name="create-m-files-test-user"></a>Skapa testanvändare för M-Files
 
 Målet med det här avsnittet är att skapa en användare med namnet Britta Simon i M-Files. Ta hjälp av [supportteamet för M-Files](mailto:support@m-files.com) för att lägga till användarna i M-Files.
 
-### <a name="test-single-sign-on"></a>Testa enkel inloggning 
+## <a name="test-sso"></a>Testa enkel inloggning 
 
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
+I det här avsnittet testar du konfigurationen av enkel inloggning med Azure AD med följande alternativ. 
 
-När du klickar på M-Files-panelen i åtkomstpanelen bör du automatiskt loggas in på M-Files som du har konfigurerat enkel inloggning för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+* Klicka på **Testa det här programmet** i Azure Portal. Detta omdirigerar till inloggnings-URL:en för M-Files där du kan initiera inloggningsflödet. 
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Gå till inloggnings-URL:en för M-Files direkt och initiera inloggningsflödet därifrån.
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](./tutorial-list.md)
+* Du kan använda Microsoft Mina appar. När du klickar på M-Files-panelen i Mina appar omdirigeras detta till inloggnings-URL för M-Files. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Nästa steg
 
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
+När du har konfigurerat M-Files kan du framtvinga sessionskontroll, vilket skyddar exfiltrering och infiltrering av organisationens känsliga data i realtid. Sessionskontrollen utökas från villkorlig åtkomst. [Lär dig hur du framtvingar sessionskontroll med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

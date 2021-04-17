@@ -1,40 +1,42 @@
 ---
-title: 'Snabb start: skapa en hanterings grupp med python'
-description: I den här snabb starten använder du python för att skapa en hanterings grupp för att organisera resurserna i en resurspool.
+title: 'Snabbstart: Skapa en hanteringsgrupp med Python'
+description: I den här snabbstarten använder du Python för att skapa en hanteringsgrupp för att organisera dina resurser i en resurshierarki.
 ms.date: 01/29/2021
 ms.topic: quickstart
-ms.custom: devx-track-python
-ms.openlocfilehash: e3c55cc14a8ac980318fd0de9485a3e0ca31b582
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- devx-track-python
+- mode-api
+ms.openlocfilehash: 9aec47e067ca62f4902df2dafb6a5d6d50a26d0e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100101768"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533166"
 ---
-# <a name="quickstart-create-a-management-group-with-python"></a>Snabb start: skapa en hanterings grupp med python
+# <a name="quickstart-create-a-management-group-with-python"></a>Snabbstart: Skapa en hanteringsgrupp med Python
 
-Hanterings grupper är behållare som hjälper dig att hantera åtkomst, principer och efterlevnad över flera prenumerationer. Skapa de här behållarna för att skapa en effektiv och effektiv hierarki som kan användas med [Azure policy](../policy/overview.md) och [Azure Role-baserade åtkomst kontroller](../../role-based-access-control/overview.md). Mer information om hanterings grupper finns i [ordna dina resurser med Azures hanterings grupper](overview.md).
+Hanteringsgrupper är containrar som hjälper dig att hantera åtkomst, policyer och efterlevnad i flera prenumerationer. Skapa dessa containrar för att skapa en effektiv hierarki som kan användas [med Azure Policy](../policy/overview.md) och [Rollbaserade åtkomstkontroller i Azure.](../../role-based-access-control/overview.md) Mer information om hanteringsgrupper finns i [Organisera dina resurser med Azure-hanteringsgrupper.](overview.md)
 
-Den första hanterings gruppen som skapas i katalogen kan ta upp till 15 minuter att slutföra. Det finns processer som körs första gången för att konfigurera hanterings grupps tjänsten i Azure för din katalog. Du får ett meddelande när processen är klar. Mer information finns i [den första installationen av hanterings grupper](./overview.md#initial-setup-of-management-groups).
+Den första hanteringsgruppen som skapats i katalogen kan ta upp till 15 minuter att slutföra. Det finns processer som körs första gången för att konfigurera tjänsten för hanteringsgrupper i Azure för din katalog. Du får ett meddelande när processen är klar. Mer information finns i inledande [konfiguration av hanteringsgrupper.](./overview.md#initial-setup-of-management-groups)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
-- Alla Azure AD-användare i klient organisationen kan skapa en hanterings grupp utan den Skriv behörighet för hanterings gruppen som tilldelats den användaren om du inte har aktiverat [skydd av hierarkin](./how-to/protect-resource-hierarchy.md#setting---require-authorization) . Den nya hanterings gruppen blir underordnad rot hanterings gruppen eller [standard hanterings gruppen](./how-to/protect-resource-hierarchy.md#setting---default-management-group) och skaparen tilldelas rollen "ägare". Hanterings grupp tjänsten tillåter den här möjligheten så att roll tilldelningar inte behövs på rotnivå. Inga användare har åtkomst till rot hanterings gruppen när den skapas. För att undvika att Hurdle för att hitta Azure AD global-administratörer ska börja använda hanterings grupper, tillåter vi att de första hanterings grupperna skapas på rotnivå.
+- Alla Azure AD-användare i klientorganisationen kan skapa en hanteringsgrupp utan den skrivbehörighet för hanteringsgruppen som tilldelats användaren om [hierarkiskydd](./how-to/protect-resource-hierarchy.md#setting---require-authorization) inte är aktiverat. Den här nya hanteringsgruppen blir underordnad rothanteringsgruppen eller standardhanteringsgruppen och skaparen får rolltilldelningen "Ägare". [](./how-to/protect-resource-hierarchy.md#setting---default-management-group) Med hanteringsgrupptjänsten kan du göra det så att rolltilldelningar inte behövs på rotnivå. Inga användare har åtkomst till rothanteringsgruppen när den skapas. För att undvika att hitta de globala Azure AD-administratörerna för att börja använda hanteringsgrupper kan vi skapa de första hanteringsgrupperna på rotnivå.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="add-the-resource-graph-library"></a>Lägg till resurs diagram biblioteket
+## <a name="add-the-resource-graph-library"></a>Lägga till Resource Graph bibliotek
 
-Om du vill aktivera python för att hantera hanterings grupper måste biblioteket läggas till. Det här biblioteket fungerar där python kan användas, inklusive [bash på Windows 10](/windows/wsl/install-win10) eller lokalt installerat.
+Om du vill göra det möjligt för Python att hantera hanteringsgrupper måste biblioteket läggas till. Det här biblioteket fungerar överallt där Python kan användas, inklusive [bash på Windows 10](/windows/wsl/install-win10) eller lokalt installerade.
 
-1. Kontrol lera att den senaste python-versionen är installerad (minst **3,8**). Om den inte har installerats än kan du ladda ned den på [python.org](https://www.python.org/downloads/).
+1. Kontrollera att den senaste Python-versionen är installerad (minst **3.8**). Om det inte har installerats än laddar du ned det på [Python.org](https://www.python.org/downloads/).
 
-1. Kontrol lera att den senaste versionen av Azure CLI är installerad (minst **2.5.1**). Om den inte har installerats än kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli).
+1. Kontrollera att den senaste versionen av Azure CLI är installerad (minst **2.5.1**). Om det inte har installerats än kan du [gå till Installera Azure CLI.](/cli/azure/install-azure-cli)
 
    > [!NOTE]
-   > Azure CLI krävs för att tillåta python att använda **CLI-baserad autentisering** i följande exempel. Information om andra alternativ finns i [autentisera med hjälp av Azures hanterings bibliotek för python](/azure/developer/python/azure-sdk-authenticate).
+   > Azure CLI krävs för att Python ska kunna använda **CLI-baserad autentisering** i följande exempel. Information om andra alternativ finns i Autentisera [med hjälp av Azure-hanteringsbibliotek för Python.](/azure/developer/python/azure-sdk-authenticate)
 
 1. Autentisera via Azure CLI.
 
@@ -42,7 +44,7 @@ Om du vill aktivera python för att hantera hanterings grupper måste biblioteke
    az login
    ```
 
-1. I din python-miljö väljer du de bibliotek som krävs för hanterings grupper:
+1. Installera de bibliotek som krävs för hanteringsgrupper i valfri Python-miljö:
 
    ```bash
    # Add the management groups library for Python
@@ -56,18 +58,18 @@ Om du vill aktivera python för att hantera hanterings grupper måste biblioteke
    ```
 
    > [!NOTE]
-   > Om python installeras för alla användare måste dessa kommandon köras från en upphöjd konsol.
+   > Om Python är installerat för alla användare måste dessa kommandon köras från en upphöjd konsol.
 
-1. Verifiera att biblioteken har installerats. `azure-mgmt-managementgroups` bör vara **0.2.0** eller högre, `azure-mgmt-resource` vara **9.0.0** eller högre, och `azure-cli-core` bör vara **2.5.0** eller högre.
+1. Kontrollera att biblioteken har installerats. `azure-mgmt-managementgroups` bör vara **0.2.0** eller högre, ska vara `azure-mgmt-resource` **9.0.0** eller högre och ska vara `azure-cli-core` **2.5.0** eller högre.
 
    ```bash
    # Check each installed library
    pip show azure-mgmt-managementgroups azure-mgmt-resource azure-cli-core
    ```
 
-## <a name="create-the-management-group"></a>Skapa hanterings gruppen
+## <a name="create-the-management-group"></a>Skapa hanteringsgruppen
 
-1. Skapa python-skriptet och spara följande källa som `mgCreate.py` :
+1. Skapa Python-skriptet och spara följande källa som `mgCreate.py` :
 
    ```python
    # Import management group classes
@@ -110,11 +112,11 @@ Om du vill aktivera python för att hantera hanterings grupper måste biblioteke
    py mgCreate.py
    ```
 
-Resultatet av att skapa hanterings gruppen är utdata till-konsolen som ett `LROPoller` objekt.
+Resultatet av att skapa hanteringsgruppen är utdata till konsolen som ett `LROPoller` -objekt.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du vill ta bort de installerade biblioteken från python-miljön kan du göra det med hjälp av följande kommando:
+Om du vill ta bort de installerade biblioteken från Python-miljön kan du göra det med hjälp av följande kommando:
 
 ```bash
 # Remove the installed libraries from the Python environment
@@ -123,9 +125,9 @@ pip uninstall azure-mgmt-managementgroups azure-mgmt-resource azure-cli-core
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du en hanterings grupp för att organisera din resurspool. Hanterings gruppen kan innehålla prenumerationer eller andra hanterings grupper.
+I den här snabbstarten skapade du en hanteringsgrupp för att organisera resurshierarkin. Hanteringsgruppen kan innehålla prenumerationer eller andra hanteringsgrupper.
 
-Om du vill veta mer om hanterings grupper och hur du hanterar din resurs-hierarki fortsätter du till:
+Om du vill veta mer om hanteringsgrupper och hur du hanterar din resurshierarki fortsätter du till:
 
 > [!div class="nextstepaction"]
-> [Hantera dina resurser med hanterings grupper](./manage.md)
+> [Hantera dina resurser med hanteringsgrupper](./manage.md)

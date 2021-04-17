@@ -1,6 +1,6 @@
 ---
 title: Vad är SQL Data Sync för Azure?
-description: I den här översikten introduceras SQL Data Sync för Azure, vilket gör att du kan synkronisera data i flera molnbaserade och lokala databaser.
+description: Den här översikten SQL Data Sync för Azure, där du kan synkronisera data över flera molndatabaser och lokala databaser.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,104 +11,104 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: c38e4681c76fb0dd52d77c7dc1438b87a9571a80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 695409740348e78ae51b263b44d9ed1cbadc1054
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562067"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531927"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Vad är SQL Data Sync för Azure?
 
-SQL Data Sync är en tjänst som bygger på Azure SQL Database som låter dig synkronisera data som du väljer i båda riktningarna i flera databaser, både lokalt och i molnet. 
+SQL Data Sync är en tjänst som bygger på Azure SQL Database som gör att du kan synkronisera de data du väljer i båda riktningarna över flera databaser, både lokalt och i molnet. 
 
 > [!IMPORTANT]
-> Azure SQL Data Sync har inte stöd för Azure SQL-hanterad instans för tillfället.
+> Azure SQL Data Sync stöder inte Azure SQL Managed Instance just nu.
 
 
 ## <a name="overview"></a>Översikt 
 
-Datasynkronisering baseras på begreppet Sync-grupp. En Sync-grupp är en grupp databaser som du vill synkronisera.
+Data Sync baseras på begreppet synkroniseringsgrupp. En synkroniseringsgrupp är en grupp databaser som du vill synkronisera.
 
-Datasynkroniseringen använder en nav-och eker-topologi för att synkronisera data. Du definierar en av databaserna i Sync-gruppen som Hub-databasen. Resten av databaserna är medlems databaser. Synkronisering sker bara mellan hubben och enskilda medlemmar.
+Data Sync använder en topologi med nav och ekrar för att synkronisera data. Du definierar en av databaserna i synkroniseringsgruppen som hubbdatabasen. Resten av databaserna är medlemsdatabaser. Synkronisering sker bara mellan hubben och enskilda medlemmar.
 
-- **Hub-databasen** måste vara en Azure SQL Database.
-- **Medlems databaserna** kan vara antingen databaser i Azure SQL Database eller i instanser av SQL Server.
-- **Databasen för synkronisering av metadata** innehåller metadata och logg för datasynkronisering. Databasen för synkronisering av metadata måste vara en Azure SQL Database som finns i samma region som Hub-databasen. Databasen för synkronisering av metadata är kund som har skapats och kunden äger. Du kan bara ha en databas för synkronisering av metadata per region och prenumeration. Det går inte att ta bort eller byta namn på databasen för synkronisering av metadata medan Sync-grupper eller Sync-agenter finns. Microsoft rekommenderar att du skapar en ny, tom databas för användning som databasen för synkronisering av metadata. Datasynkronisering skapar tabeller i den här databasen och kör en frekvent arbets belastning.
+- **Hubbdatabasen** måste vara en Azure SQL Database.
+- **Medlemsdatabaserna** kan antingen vara databaser i Azure SQL Database eller i instanser av SQL Server.
+- Sync **Metadata Database innehåller** metadata och loggen för Data Sync. Sync Metadata Database måste vara en Azure SQL Database i samma region som hub-databasen. Synkroniseringsmetadatadatabasen är kundskapad och kundägd. Du kan bara ha en synkroniseringsmetadatadatabas per region och prenumeration. Sync Metadata Database kan inte tas bort eller byta namn medan synkroniseringsgrupper eller synkroniseringsagenter finns. Microsoft rekommenderar att du skapar en ny, tom databas som ska användas som synkroniseringsmetadatadatabas. Data Sync skapar tabeller i den här databasen och kör en frekvent arbetsbelastning.
 
 > [!NOTE]
-> Om du använder en lokal databas som en medlems databas måste du [Installera och konfigurera en lokal Sync-agent](sql-data-sync-sql-server-configure.md#add-on-prem).
+> Om du använder en lokal databas som en medlemsdatabas måste du installera [och konfigurera en lokal synkroniseringsagent.](sql-data-sync-sql-server-configure.md#add-on-prem)
 
 ![Synkronisera data mellan databaser](./media/sql-data-sync-data-sql-server-sql-database/sync-data-overview.png)
 
-En Sync-grupp har följande egenskaper:
+En synkroniseringsgrupp har följande egenskaper:
 
 - **Synkroniseringsschemat** beskriver vilka data som synkroniseras.
-- **Sync-riktningen** kan vara dubbelriktad eller kan endast flöda i en riktning. Det vill säga att synkroniseringen kan vara *hubb till medlem* eller *medlem i hubben* eller både och.
-- **Intervallet för synkronisering** beskriver hur ofta synkronisering sker.
-- **Konflikt lösnings principen** är en princip på grup nivå som kan vara en *hubb-WINS* eller *-medlem*.
+- **Synkroniseringsriktningen** kan vara dubbelriktad eller bara flöda i en riktning. Synkroniseringsriktningen kan vara Hub to Member (Hubb *till medlem)* eller *Member to Hub (Medlem till hubb)* eller båda.
+- **Synkroniseringsintervallet** beskriver hur ofta synkronisering sker.
+- **Konfliktlösningsprincipen är** en grupprincip på gruppnivå som kan vara *Hub wins eller* Member *wins*.
 
 ## <a name="when-to-use"></a>När du ska använda detta
 
-Datasynkronisering är användbart i fall där data måste uppdateras i flera databaser i Azure SQL Database eller SQL Server. Här är de viktigaste användnings fallen för datasynkronisering:
+Data Sync är användbart i fall där data måste uppdateras över flera databaser i Azure SQL Database eller SQL Server. Här är de viktigaste användningsfallen för Data Sync:
 
-- **Synkronisering av hybrid data:** Med datasynkronisering kan du hålla data synkroniserade mellan databaserna i SQL Server och Azure SQL Database för att aktivera hybrid program. Den här funktionen kan överklaga kunder som överväger att flytta till molnet och som vill placera en del av deras program i Azure.
-- **Distribuerade program:** I många fall är det bra att separera olika arbets belastningar i olika databaser. Om du till exempel har en stor produktions databas, men du också behöver köra en rapporterings-eller analys arbets belastning för dessa data, är det bra att ha en andra databas för den här ytterligare arbets belastningen. Den här metoden minimerar prestanda påverkan i produktions arbets belastningen. Du kan använda datasynkronisering för att hålla dessa två databaser synkroniserade.
-- **Globalt distribuerade program:** Många företag sträcker sig över flera regioner och till och med flera länder/regioner. För att minimera nätverks fördröjningen är det bäst att ha dina data i en region nära dig. Med datasynkronisering kan du enkelt lagra databaser i regioner runt om i världen.
+- **Hybriddatasynkronisering:** Med Data Sync kan du hålla data synkroniserade mellan dina databaser i SQL Server och Azure SQL Database för att aktivera hybridprogram. Den här funktionen kan tilltala kunder som överväger att flytta till molnet och vill placera en del av sina program i Azure.
+- **Distribuerade program:** I många fall är det bra att separera olika arbetsbelastningar mellan olika databaser. Om du till exempel har en stor produktionsdatabas, men även behöver köra en rapport- eller analysarbetsbelastning på dessa data, är det bra att ha en andra databas för den här ytterligare arbetsbelastningen. Den här metoden minimerar prestandapåverkan på din produktionsarbetsbelastning. Du kan använda Data Sync att hålla dessa två databaser synkroniserade.
+- **Globalt distribuerade program:** Många företag sträcker sig över flera regioner och till och med flera länder/regioner. För att minimera nätverksfördröjningen är det bäst att ha dina data i en region nära dig. Med Data Sync kan du enkelt synkronisera databaser i regioner över hela världen.
 
-Datasynkronisering är inte den bästa lösningen i följande scenarier:
+Data Sync är inte den bästa lösningen för följande scenarier:
 
 | Scenario | Några rekommenderade lösningar |
 |----------|----------------------------|
-| Haveriberedskap | [Azure geo-redundanta säkerhets kopieringar](automated-backups-overview.md) |
-| Läs skala | [Använd skrivskyddade repliker för att belastningsutjämna skrivskyddade arbets belastningar för frågor (för hands version)](read-scale-out.md) |
+| Haveriberedskap | [Geo-redundanta Azure-säkerhetskopieringar](automated-backups-overview.md) |
+| Lässkala | [Använd skrivskyddade repliker för att belastningsutjämna skrivskyddade frågearbetsbelastningar (förhandsversion)](read-scale-out.md) |
 | ETL (OLTP till OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) eller [SQL Server Integration Services](/sql/integration-services/sql-server-integration-services) |
-| Migrering från SQL Server till Azure SQL Database. SQL Data Sync kan dock användas efter att migreringen har slutförts, för att säkerställa att källan och målet hålls synkroniserade.  | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+| Migrering från SQL Server till Azure SQL Database. Men SQL Data Sync kan användas när migreringen har slutförts för att säkerställa att källan och målet är synkroniserade.  | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
 
 ## <a name="how-it-works"></a>Så här fungerar det
 
-- **Spårar data ändringar:** Datasynkronisering spårar ändringar med hjälp av INSERT-, Update-och Delete-utlösare. Ändringarna registreras i en sido tabell i användar databasen. Observera att BULK INSERT inte utlösa utlösare som standard. Om FIRE_TRIGGERS inte anges körs inga infognings utlösare. Lägg till alternativet FIRE_TRIGGERS så att datasynkronisering kan spåra dessa infogningar. 
-- **Synkroniserar data:** Datasynkronisering är utformad i en nav-och eker-modell. Hubben synkroniseras med varje medlem individuellt. Ändringar från hubben laddas ned till medlemmen och ändringar från medlemmen överförs till hubben.
-- **Lösa konflikter:** Datasynkronisering innehåller två alternativ för konflikt lösning, *hubb-WINS* eller *medlems-WINS*.
-  - Om du väljer *hubben WINS* skrivs ändringarna i hubben alltid över ändringar i medlemmen.
-  - Om du väljer *medlem WINS* skriver ändringarna i medlemmen över ändringarna i hubben. Om det finns fler än en medlem beror det sista värdet på vilka medlemmar som synkroniseras först.
+- **Spåra dataändringar:** Data Sync spårar ändringar med hjälp av infognings-, uppdaterings- och borttagningsutlösare. Ändringarna registreras i en sidotabell i användardatabasen. Observera att BULK INSERT inte utlöser utlösare som standard. Om FIRE_TRIGGERS inte har angetts körs inga infogningsutlösare. Lägg till FIRE_TRIGGERS så Data Sync kan spåra dessa infogningar. 
+- **Synkronisera data:** Data Sync är utformat i en nav- och ekermodell. Hubben synkroniseras med varje medlem individuellt. Ändringar från hubben laddas ned till medlemmen och sedan laddas ändringar från medlemmen upp till hubben.
+- **Lösa konflikter:** Data Sync två alternativ för konfliktlösning, *hubb vinner eller* medlem *vinner*.
+  - Om du *väljer Hubb vinner* skriver ändringarna i hubben alltid över ändringar i medlemmen.
+  - Om du *väljer Medlem vinner* kommer ändringarna i medlemmen att skriva över ändringar i hubben. Om det finns fler än en medlem beror det slutliga värdet på vilken medlem som synkroniserar först.
 
-## <a name="compare-with-transactional-replication"></a>Jämför med transaktionell replikering
+## <a name="compare-with-transactional-replication"></a>Jämför med transaktionsreplikering
 
 | | Datasynkronisering | Transaktionsreplikering |
 |---|---|---|
-| **Fördelar** | – Stöd för aktiv-aktiv<br/>– Dubbelriktad mellan lokala och Azure SQL Database | -Nedre latens<br/>– Transaktionell konsekvens<br/>-Återanvänd befintlig topologi efter migrering <br/>– Stöd för Azure SQL Managed instance |
-| **Nackdelar** | – Ingen transaktionell konsekvens<br/>-Högre prestanda påverkan | -Det går inte att publicera från Azure SQL Database <br/>– Kostnad för hög underhåll |
+| **Fördelar** | – Stöd för aktiv-aktiv<br/>– Dubbelriktad mellan lokala och Azure SQL Database | – Kortare svarstider<br/>– Transaktionskonsekvens<br/>– Återanvända befintlig topologi efter migrering <br/>-Azure SQL Managed Instance support |
+| **Nackdelar** | – Ingen transaktionskonsekvens<br/>– Högre prestandapåverkan | – Det går inte att publicera från Azure SQL Database <br/>– Höga underhållskostnader |
 
-## <a name="private-link-for-data-sync-preview"></a>Privat länk för datasynkronisering (förhands granskning)
-Med funktionen ny privat länk (förhands granskning) kan du välja en tjänst hanterad privat slut punkt för att upprätta en säker anslutning mellan synkroniseringstjänsten och dina databas-/Hubbs databaser under synkroniseringsprocessen. En tjänst hanterad privat slut punkt är en privat IP-adress inom ett särskilt virtuellt nätverk och undernät. I datasynkroniseringen skapas tjänsten hanterad privat slut punkt av Microsoft och används exklusivt av data Sync-tjänsten för en specifik synkronisering. Innan du konfigurerar den privata länken bör du läsa de [allmänna kraven](sql-data-sync-data-sql-server-sql-database.md#general-requirements) för funktionen. 
+## <a name="private-link-for-data-sync-preview"></a>Privat länk för Data Sync (förhandsversion)
+Med den nya funktionen för privat länk (förhandsversion) kan du välja en tjänst hanterad privat slutpunkt för att upprätta en säker anslutning mellan synkroniseringstjänsten och dina medlems-/hubbdatabaser under datasynkroniseringsprocessen. En tjänst hanterad privat slutpunkt är en privat IP-adress inom ett specifikt virtuellt nätverk och undernät. Inom Data Sync skapas den tjänst hanterade privata slutpunkten av Microsoft och används uteslutande av Data Sync tjänsten för en viss synkroniseringsåtgärd. Läs de allmänna kraven för funktionen innan du [ställer](sql-data-sync-data-sql-server-sql-database.md#general-requirements) in den privata länken. 
 
-![Privat länk för datasynkronisering](./media/sql-data-sync-data-sql-server-sql-database/sync-private-link-overview.png)
+![Privat länk för Data Sync](./media/sql-data-sync-data-sql-server-sql-database/sync-private-link-overview.png)
 
 > [!NOTE]
-> Du måste godkänna den hanterade privata slut punkten för tjänsten manuellt på sidan **anslutningar för privata slut punkter** i Azure Portal under distributionen av synkroniseringsresursen eller med hjälp av PowerShell.
+> Du måste manuellt godkänna den tjänst  hanterade privata slutpunkten på sidan Privata slutpunktsanslutningar i Azure Portal under distributionen av synkroniseringsgruppen eller med hjälp av PowerShell.
 
 ## <a name="get-started"></a>Kom igång 
 
-### <a name="set-up-data-sync-in-the-azure-portal"></a>Konfigurera datasynkronisering i Azure Portal
+### <a name="set-up-data-sync-in-the-azure-portal"></a>Konfigurera Data Sync i Azure Portal
 
 - [Konfigurera Azure SQL Data Sync](sql-data-sync-sql-server-configure.md)
 - Datasynkroniseringsagent – [Datasynkroniseringsagent för Azure SQL Data Sync](sql-data-sync-agent-overview.md)
 
-### <a name="set-up-data-sync-with-powershell"></a>Konfigurera datasynkronisering med PowerShell
+### <a name="set-up-data-sync-with-powershell"></a>Konfigurera Data Sync med PowerShell
 
 - [Använd PowerShell för att synkronisera mellan flera databaser i Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
-- [Använda PowerShell för att synkronisera mellan en databas i Azure SQL Database och en databas i en SQL Server instans](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
+- [Använda PowerShell för att synkronisera mellan en databas Azure SQL Database en databas i en SQL Server instans](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 
-### <a name="set-up-data-sync-with-rest-api"></a>Konfigurera datasynkronisering med REST API
+### <a name="set-up-data-sync-with-rest-api"></a>Konfigurera Data Sync med REST API
 - [Använd REST API för att synkronisera mellan flera databaser i Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases-rest-api.md)
 
-### <a name="review-the-best-practices-for-data-sync"></a>Granska metod tips för datasynkronisering
+### <a name="review-the-best-practices-for-data-sync"></a>Granska metodtipsen för Data Sync
 
 - [Metodtips för Azure SQL Data Sync](sql-data-sync-best-practices.md)
 
-### <a name="did-something-go-wrong"></a>Har något gå fel
+### <a name="did-something-go-wrong"></a>Har något gått fel
 
 - [Felsöka problem med Azure SQL Data Sync](./sql-data-sync-troubleshoot.md)
 
@@ -116,157 +116,158 @@ Med funktionen ny privat länk (förhands granskning) kan du välja en tjänst h
 
 ### <a name="eventual-consistency"></a>Slutlig konsekvens
 
-Eftersom datasynkroniseringen är utlöst är inte transaktionell konsekvens garanterad. Microsoft garanterar att alla ändringar görs till och med att datasynkroniseringen inte leder till data förlust.
+Eftersom Data Sync är utlösarbaserad garanteras inte transaktionskonsekvens. Microsoft garanterar att alla ändringar görs så småningom och Data Sync inte orsakar dataförlust.
 
 ### <a name="performance-impact"></a>Prestandapåverkan
 
-Data Sync använder INSERT-, Update-och Delete-utlösare för att spåra ändringar. Det skapar sido tabeller i användar databasen för ändrings spårning. Dessa ändrings spårnings aktiviteter påverkar databasens arbets belastning. Utvärdera tjänst nivån och uppgradera om det behövs.
+Data Sync infognings-, uppdaterings- och borttagningsutlösare för att spåra ändringar. Den skapar sidotabeller i användardatabasen för ändringsspårning. Dessa aktiviteter för ändringsspårning påverkar din databasarbetsbelastning. Utvärdera din tjänstnivå och uppgradera om det behövs.
 
-Etablering och avetablering när du skapar, uppdaterar och tar bort grupper kan också påverka databasens prestanda.
+Etablering och avetablering när synkroniseringsgruppen skapas, uppdateras och tas bort kan också påverka databasens prestanda.
 
 ## <a name="requirements-and-limitations"></a><a name="sync-req-lim"></a> Krav och begränsningar
 
 ### <a name="general-requirements"></a>Allmänna krav
 
-- Varje tabell måste ha en primär nyckel. Ändra inte värdet för primär nyckeln i valfri rad. Om du behöver ändra ett primär nyckel värde tar du bort raden och återskapar den med det nya värdet för primär nyckel.
+- Varje tabell måste ha en primärnyckel. Ändra inte värdet för primärnyckeln på någon rad. Om du måste ändra värdet för en primär nyckel tar du bort raden och återskapar den med det nya primärnyckelvärdet.
 
 > [!IMPORTANT]
-> Att ändra värdet för en befintlig primär nyckel leder till följande fel beteende:
+> Om du ändrar värdet för en befintlig primärnyckel resulterar det i följande felaktiga beteende:
 > - Data mellan hubb och medlem kan gå förlorade även om synkroniseringen inte rapporterar några problem.
-> - Det går inte att synkronisera eftersom spårnings tabellen inte har en befintlig rad från källan på grund av den primära nyckel ändringen.
+> - Synkroniseringen kan misslyckas eftersom spårningstabellen har en icke-befintlig rad från källan på grund av den primära nyckeländringen.
 
-- Ögonblicks bilds isolering måste vara aktiverat för både Sync-medlemmar och-hubb. Mer information finns i [Ögonblicksbildisolering i SQL Server](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+- Isolering av ögonblicksbilder måste aktiveras för både synkroniseringsmedlemmar och hubb. Mer information finns i [Ögonblicksbildisolering i SQL Server](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
-- För att kunna använda privat länk med datasynkronisering måste både medlemmen och hubben vara värdbaserade i Azure (samma eller olika regioner), i samma moln typ (t. ex. både i offentligt moln eller både i myndighets moln). Om du vill använda en privat länk måste Microsoft. Network Resource providers vara registrerade för de prenumerationer som är värdar för hubben och medlems servrarna. Slutligen måste du manuellt godkänna den privata länken för datasynkronisering under konfigurationen, i avsnittet "anslutningar för privata slut punkter" i Azure Portal eller via PowerShell. Mer information om hur du godkänner den privata länken finns i [konfigurera SQL Data Sync](./sql-data-sync-sql-server-configure.md). När du godkänner den hanterade privata slut punkten för tjänsten, sker all kommunikation mellan synkroniseringstjänsten och databas/hubb-databaser över den privata länken. De befintliga grupperna kan uppdateras för att aktivera den här funktionen.
+- För att kunna använda privat länk med Data Sync måste både medlems- och hubbdatabaserna finnas i Azure (samma eller olika regioner), i samma molntyp (t.ex. både i det offentliga molnet eller båda i myndighetsmolnet). Om du vill använda private link måste dessutom Microsoft.Network-resursproviders vara Registrerade för de prenumerationer som är värdar för hubb- och medlemsservrarna. Slutligen måste du manuellt godkänna den privata länken för Data Sync under synkroniseringskonfigurationen i avsnittet "Privata slutpunktsanslutningar" i Azure Portal eller via PowerShell. Mer information om hur du godkänner den privata länken finns [i Konfigurera SQL Data Sync](./sql-data-sync-sql-server-configure.md). När du har godkänt den tjänst hanterade privata slutpunkten sker all kommunikation mellan synkroniseringstjänsten och medlems-/hubbdatabaserna via den privata länken. Befintliga synkroniseringsgrupper kan uppdateras så att den här funktionen är aktiverad.
 
 ### <a name="general-limitations"></a>Allmänna begränsningar
 
-- En tabell kan inte ha en identitets kolumn som inte är primär nyckel.
-- En tabell måste ha ett grupperat index för att kunna använda datasynkronisering.
-- En primär nyckel kan inte ha följande data typer: sql_variant, Binary, varbinary, image, XML.
-- Var försiktig när du använder följande data typer som primär nyckel, eftersom den precision som stöds endast är för den andra: Time, DateTime, datetime2, DateTimeOffset.
-- Namn på objekt (databaser, tabeller och kolumner) får inte innehålla de utskrivbara tecken perioderna (.), vänster hak paren tes ([) eller höger hak paren tes (]).
-- Ett tabell namn får inte innehålla skrivbara tecken:! "# $% ' () * +-utrymme
-- Azure Active Directory autentisering stöds inte.
-- Om det finns tabeller med samma namn men olika schema (till exempel dbo. kunder och försäljning. kunder) kan endast en av tabellerna läggas till i Sync.
-- Kolumner med User-Defined data typer stöds inte
+- En tabell kan inte ha en identitetskolumn som inte är den primära nyckeln.
+- En tabell måste ha ett grupperat index för att använda datasynkronisering.
+- En primär nyckel kan inte ha följande datatyper: sql_variant, binär, varbinary, bild, xml.
+- Var försiktig när du använder följande datatyper som primärnyckel, eftersom precisionen som stöds endast är den andra: tid, datetime, datetime2, datetimeoffset.
+- Namnen på objekt (databaser, tabeller och kolumner) får inte innehålla de utskrivbara tecknen punkt (.), vänster hakparentes ([) eller höger hakparentes (]).
+- Ett tabellnamn får inte innehålla utskrivbara tecken: ! " # $ % ' ( ) * + - blanksteg
+- Azure Active Directory stöds inte.
+- Om det finns tabeller med samma namn men ett annat schema (till exempel dbo.customers och sales.customers) kan bara en av tabellerna läggas till i synkroniseringen.
+- Kolumner User-Defined datatyper stöds inte
 - Det finns inte stöd för att flytta servrar mellan olika prenumerationer. 
+- Om två primära nycklar endast är olika i fall (t.ex. Foo och foo) Data Sync inte det här scenariot.
 
-#### <a name="unsupported-data-types"></a>Data typer som inte stöds
+#### <a name="unsupported-data-types"></a>Datatyper som inte stöds
 
-- -
+- Filestream
 - SQL/CLR UDT
 - XMLSchemaCollection (XML stöds)
-- Markör, RowVersion, tidsstämpel, hierarchyid
+- Cursor, RowVersion, Timestamp, Hierarchyid
 
-#### <a name="unsupported-column-types"></a>Kolumn typer som inte stöds
+#### <a name="unsupported-column-types"></a>Kolumntyper som inte stöds
 
-Datasynkronisering kan inte synkronisera skrivskyddade eller systemgenererade kolumner. Exempel:
+Data Sync kan inte synkronisera skrivskyddade eller systemgenererade kolumner. Exempel:
 
 - Beräknade kolumner.
 - Systemgenererade kolumner för temporala tabeller.
 
-#### <a name="limitations-on-service-and-database-dimensions"></a>Begränsningar för tjänst-och databas dimensioner
+#### <a name="limitations-on-service-and-database-dimensions"></a>Begränsningar för tjänst- och databasdimensioner
 
-| **Dimensioner**                                                  | **Gränserna**              | **Lösning**              |
+| **Dimensioner**                                                  | **Gräns**              | **Lösning**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
-| Maximalt antal Sync-grupper som alla databaser kan tillhöra.       | 5                      |                             |
-| Maximalt antal slut punkter i en enskild Sync-grupp              | 30                     |                             |
-| Maximalt antal lokala slut punkter i en enda Sync-grupp. | 5                      | Skapa flera Sync-grupper |
-| Databas-, tabell-, schema-och kolumn namn                       | 50 tecken per namn |                             |
-| Tabeller i en Sync-grupp                                          | 500                    | Skapa flera Sync-grupper |
-| Kolumner i en tabell i en Sync-grupp                              | 1000                   |                             |
-| Data rad storlek för en tabell                                        | 24 MB                  |                             |
+| Maximalt antal synkroniseringsgrupper som en databas kan tillhöra.       | 5                      |                             |
+| Maximalt antal slutpunkter i en enda synkroniseringsgrupp              | 30                     |                             |
+| Maximalt antal lokala slutpunkter i en enda synkroniseringsgrupp. | 5                      | Skapa flera synkroniseringsgrupper |
+| Databas-, tabell-, schema- och kolumnnamn                       | 50 tecken per namn |                             |
+| Tabeller i en synkroniseringsgrupp                                          | 500                    | Skapa flera synkroniseringsgrupper |
+| Kolumner i en tabell i en synkroniseringsgrupp                              | 1000                   |                             |
+| Dataradstorlek i en tabell                                        | 24 MB                  |                             |
 
 > [!NOTE]
-> Det kan finnas upp till 30 slut punkter i en enda Sync-grupp om det bara finns en Sync-grupp. Om det finns fler än en Sync-grupp får det totala antalet slut punkter i alla Sync-grupper inte överstiga 30. Om en databas tillhör flera Sync-grupper räknas den som flera slut punkter, inte en.
+> Det kan finnas upp till 30 slutpunkter i en enda synkroniseringsgrupp om det bara finns en synkroniseringsgrupp. Om det finns fler än en synkroniseringsgrupp får det totala antalet slutpunkter för alla synkroniseringsgrupper inte överskrida 30. Om en databas tillhör flera synkroniseringsgrupper räknas den som flera slutpunkter, inte en.
 
 ### <a name="network-requirements"></a>Nätverkskrav
 
 > [!NOTE]
-> Om du använder en privat länk gäller inte dessa nätverks krav. 
+> Om du använder private link gäller inte dessa nätverkskrav. 
 
-När Sync-gruppen har upprättats måste data Sync-tjänsten ansluta till Hub-databasen. När du upprättar Sync-gruppen måste Azure SQL-servern ha följande konfiguration i dess `Firewalls and virtual networks` inställningar:
+När synkroniseringsgruppen har upprättats måste Data Sync-tjänsten ansluta till hubbdatabasen. När du upprättar synkroniseringsgruppen måste Azure SQL ha följande konfiguration i `Firewalls and virtual networks` sina inställningar:
 
- * *Neka offentlig nätverks åtkomst* måste anges till *av*.
- * *Tillåt att Azure-tjänster och-resurser får åtkomst till den här servern* måste anges till *Ja*, eller så måste du skapa IP-regler för de [IP-adresser som används av tjänsten Data Sync](network-access-controls-overview.md#data-sync).
+ * *Neka offentlig nätverksåtkomst måste* vara inställt på *Av*.
+ * *Tillåt Att Azure-tjänster och* -resurser får åtkomst till den här servern måste vara inställt på *Ja,* eller så måste du skapa IP-regler för de IP-adresser som [används Data Sync tjänsten](network-access-controls-overview.md#data-sync).
 
-När Sync-gruppen har skapats och kon figureras kan du inaktivera dessa inställningar. Sync-agenten ansluter direkt till NAV databasen och du kan använda serverns [IP-regler för brand väggen](firewall-configure.md) eller [privata slut punkter](private-endpoint-overview.md) för att ge agenten åtkomst till nav servern.
+När synkroniseringsgruppen har skapats och etablerats kan du inaktivera de här inställningarna. Synkroniseringsagenten ansluter direkt till hubbdatabasen och du kan använda [serverns](private-endpoint-overview.md) [brandväggs-IP-regler](firewall-configure.md) eller privata slutpunkter för att ge agenten åtkomst till hubbservern.
 
 > [!NOTE]
-> Om du ändrar inställningarna för Sync-gruppen måste du tillåta att tjänsten Data Sync används för att få åtkomst till servern igen, så att Hub-databasen kan etableras på nytt.
+> Om du ändrar synkroniseringsgruppens schemainställningar måste du tillåta att Data Sync-tjänsten får åtkomst till servern igen så att hubbdatabasen kan etableras igen.
 
 ## <a name="faq-about-sql-data-sync"></a>Vanliga frågor och svar om SQL Data Sync
 
 ### <a name="how-much-does-the-sql-data-sync-service-cost"></a>Hur mycket kostar SQL Data Sync tjänsten
 
-Det kostar inget att själva SQL Data Sync själva tjänsten. Du kan dock fortfarande samla in data överförings avgifter för data förflyttning in och ut ur din SQL Database-instans. Mer information finns i [SQL Database prissättning](https://azure.microsoft.com/pricing/details/sql-database/).
+Det debiteras inget för SQL Data Sync tjänsten. Du samlar dock fortfarande in dataöverföringsavgifter för dataförflyttning till och från din SQL Database instans. Mer information finns i [SQL Database prissättning.](https://azure.microsoft.com/pricing/details/sql-database/)
 
-### <a name="what-regions-support-data-sync"></a>Vilka regioner stöder datasynkronisering
+### <a name="what-regions-support-data-sync"></a>Vilka regioner stöder Data Sync
 
 SQL Data Sync är tillgängligt i alla regioner.
 
-### <a name="is-a-sql-database-account-required"></a>Är ett SQL Database konto obligatoriskt
+### <a name="is-a-sql-database-account-required"></a>Krävs ett SQL Database-konto
 
-Ja. Du måste ha ett SQL Database-konto för att vara värd för Hub-databasen.
+Ja. Du måste ha ett SQL Database som värd för hubbdatabasen.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-server-databases-only"></a>Kan jag endast använda datasynkronisering för att synkronisera mellan SQL Server-databaser
+### <a name="can-i-use-data-sync-to-sync-between-sql-server-databases-only"></a>Kan jag använda Data Sync för att synkronisera mellan SQL Server databaser
 
-Inte direkt. Du kan synkronisera mellan SQL Server-databaser indirekt, genom att skapa en Hubbs databas i Azure och sedan lägga till de lokala databaserna i gruppen Sync.
+Inte direkt. Du kan dock SQL Server mellan databaser indirekt genom att skapa en hubbdatabas i Azure och sedan lägga till de lokala databaserna i synkroniseringsgruppen.
 
-### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-subscriptions"></a>Kan jag använda datasynkronisering för att synkronisera mellan databaser i SQL Database som tillhör olika prenumerationer
+### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-subscriptions"></a>Kan jag använda Data Sync för att synkronisera mellan databaser SQL Database som tillhör olika prenumerationer
 
-Ja. Du kan synkronisera mellan databaser som tillhör resurs grupper som ägs av olika prenumerationer.
+Ja. Du kan synkronisera mellan databaser som tillhör resursgrupper som ägs av olika prenumerationer.
 
-- Om prenumerationerna tillhör samma klient organisation och du har behörighet till alla prenumerationer kan du konfigurera Sync-gruppen i Azure Portal.
-- Annars måste du använda PowerShell för att lägga till de synkroniserade medlemmar som tillhör olika prenumerationer.
+- Om prenumerationerna tillhör samma klientorganisation och du har behörighet till alla prenumerationer kan du konfigurera synkroniseringsgruppen i Azure Portal.
+- Annars måste du använda PowerShell för att lägga till de synkroniseringsmedlemmar som tillhör olika prenumerationer.
 
-### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Kan jag använda datasynkronisering för att synkronisera mellan databaser i SQL Database som tillhör olika moln (t. ex. Azures offentliga moln och Azure Kina 21Vianet)
+### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Kan jag använda Data Sync för att synkronisera mellan databaser i SQL Database som tillhör olika moln (som Azures offentliga moln och Azure China 21Vianet)
 
-Ja. Du kan synkronisera mellan databaser som tillhör olika moln. Du måste använda PowerShell för att lägga till de Sync-medlemmar som tillhör olika prenumerationer.
+Ja. Du kan synkronisera mellan databaser som tillhör olika moln. Du måste använda PowerShell för att lägga till de synkroniseringsmedlemmar som tillhör de olika prenumerationerna.
 
-### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Kan jag använda datasynkronisering för att dirigera data från min produktions databas till en tom databas och sedan synkronisera dem
+### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Kan jag använda Data Sync för att seeda data från min produktionsdatabas till en tom databas och sedan synkronisera dem
 
-Ja. Skapa schemat manuellt i den nya databasen genom att skriva skript från originalet. När du har skapat schemat lägger du till tabellerna i en Sync-grupp för att kopiera data och hålla den synkroniserad.
+Ja. Skapa schemat manuellt i den nya databasen genom att skripta det från originalet. När du har skapat schemat lägger du till tabellerna i en synkroniseringsgrupp för att kopiera data och synkronisera dem.
 
-### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Bör jag använda SQL Data Sync för att säkerhetskopiera och återställa mina databaser
+### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Bör jag använda SQL Data Sync för att backa upp och återställa mina databaser
 
-Vi rekommenderar inte att du använder SQL Data Sync för att skapa en säkerhets kopia av dina data. Du kan inte säkerhetskopiera och återställa till en viss tidpunkt eftersom SQL Data Sync-synkronisering inte är versions hantering. Dessutom kan SQL Data Sync inte säkerhetskopiera andra SQL-objekt, t. ex. lagrade procedurer, och gör inte lika med en återställnings åtgärd snabbt.
+Vi rekommenderar inte att du använder SQL Data Sync för att skapa en säkerhetskopia av dina data. Du kan inte återställning till en viss tidpunkt eftersom SQL Data Sync inte har versionshantering. Dessutom SQL Data Sync inte andra SQL-objekt, till exempel lagrade procedurer, och gör inte motsvarigheten till en återställningsåtgärd snabbt.
 
-En rekommenderad säkerhets kopierings teknik finns [i kopiera en databas i Azure SQL Database](database-copy.md).
+En rekommenderad säkerhetskopieringsteknik finns [i Kopiera en databas i Azure SQL Database](database-copy.md).
 
-### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Kan synkronisera krypterade tabeller och kolumner med datasynkronisering
+### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Kan Data Sync synkronisera krypterade tabeller och kolumner
 
-- Om en databas använder Always Encrypted kan du bara synkronisera de tabeller och kolumner som *inte* är krypterade. Du kan inte synkronisera de krypterade kolumnerna eftersom datasynkroniseringen inte kan dekryptera data.
-- Om en kolumn använder Column-Level kryptering (CLE) kan du synkronisera kolumnen så länge rad storleken är mindre än den maximala storleken på 24 MB. Datasynkroniseringen behandlar kolumnen som krypteras av nyckeln (CLE) som normala binära data. Om du vill dekryptera data på andra synkroniserade medlemmar måste du ha samma certifikat.
+- Om en databas använder Always Encrypted kan du bara synkronisera de tabeller och kolumner som *inte är* krypterade. Du kan inte synkronisera krypterade kolumner eftersom Data Sync inte kan dekryptera data.
+- Om en kolumn använder Column-Level Encryption (CLE) kan du synkronisera kolumnen så länge radstorleken är mindre än den maximala storleken på 24 MB. Data Sync behandlar kolumnen som krypterats med nyckel (CLE) som normala binära data. Om du vill dekryptera data på andra synkroniseringsmedlemmar måste du ha samma certifikat.
 
 ### <a name="is-collation-supported-in-sql-data-sync"></a>Stöds sortering i SQL Data Sync
 
-Ja. SQL Data Sync stöder sortering i följande scenarier:
+Ja. SQL Data Sync har stöd för sortering i följande scenarier:
 
-- Om de valda synkroniseringsschemat inte redan finns i din hubb eller medlems databaser, skapar tjänsten automatiskt motsvarande tabeller och kolumner med sorterings inställningarna markerade i de tomma mål databaserna när du distribuerar synkroniseringsresursen.
-- Om de tabeller som ska synkroniseras redan finns i både din hubb och medlems databaser, kräver SQL Data Sync att primär nyckel kolumnerna har samma sortering mellan hubben och medlems databaserna för att kunna distribuera Sync-gruppen. Det finns inga sorterings begränsningar för andra kolumner än primär nyckel kolumnerna.
+- Om de valda synkroniseringsschematabellerna inte redan finns i hubb- eller medlemsdatabaserna skapar tjänsten automatiskt motsvarande tabeller och kolumner med sorteringsinställningarna som valts i de tomma måldatabaserna när du distribuerar synkroniseringsgruppen.
+- Om de tabeller som ska synkroniseras redan finns i både hubb- och medlemsdatabaserna kräver SQL Data Sync att primärnyckelkolumnerna har samma sortering mellan hubb- och medlemsdatabaser för att synkroniseringsgruppen ska kunna distribueras. Det finns inga sorteringsbegränsningar för andra kolumner än primärnyckelkolumnerna.
 
-### <a name="is-federation-supported-in-sql-data-sync"></a>Stöds Federation i SQL Data Sync
+### <a name="is-federation-supported-in-sql-data-sync"></a>Stöds federation i SQL Data Sync
 
-Federations rot databasen kan användas i SQL Data Sync tjänsten utan någon begränsning. Du kan inte lägga till den federerade databas slut punkten till den aktuella versionen av SQL Data Sync.
+Federationsrotdatabasen kan användas i SQL Data Sync-tjänsten utan begränsning. Du kan inte lägga till slutpunkten för den federerade databasen i den aktuella versionen av SQL Data Sync.
 
-### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>Kan jag använda datasynkronisering för att synkronisera data som exporter ATS från Dynamics 365 med en egen databas (BYOD)-funktion?
+### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>Kan jag använda Data Sync för att synkronisera data som exporteras från Dynamics 365 med hjälp av BYOD-funktionen (Bring Your Own Database)?
 
-Med hjälp av en egen databas funktion i Dynamics 365 kan administratörer exportera dataentiteter från programmet till sin egen Microsoft Azure SQL-databas. Datasynkronisering kan användas för att synkronisera dessa data i andra databaser om data exporteras med hjälp av **stegvis push** (fullständig push-överföring stöds inte) och **Aktivera utlösare i mål databasen** har angetts till **Ja**.
+Med funktionen Bring Your Own Database i Dynamics 365 kan administratörer exportera dataentiteter från programmet till en egen Microsoft Azure SQL-databas. Data Sync kan användas för att synkronisera dessa data till andra databaser om data exporteras med hjälp av inkrementell **push** (fullständig push stöds inte) och aktivera utlösare i måldatabasen har **angetts** till **ja**.
 
 ## <a name="next-steps"></a>Nästa steg
 
 ### <a name="update-the-schema-of-a-synced-database"></a>Uppdatera schemat för en synkroniserad databas
 
-Behöver du uppdatera schemat för en databas i en Sync-grupp? Schema ändringar replikeras inte automatiskt. Vissa lösningar finns i följande artiklar:
+Måste du uppdatera schemat för en databas i en synkroniseringsgrupp? Schemaändringar replikeras inte automatiskt. Några lösningar finns i följande artiklar:
 
-- [Automatisera replikeringen av schema ändringar med SQL Data Sync i Azure](./sql-data-sync-update-sync-schema.md)
+- [Automatisera replikeringen av schemaändringar med SQL Data Sync i Azure](./sql-data-sync-update-sync-schema.md)
 - [Använd PowerShell för att uppdatera synkroniseringsschemat i en befintlig synkroniseringsgrupp](scripts/update-sync-schema-in-sync-group.md)
 
 ### <a name="monitor-and-troubleshoot"></a>Övervaka och felsök
 
-Är SQL Data Sync att göra som det ska? Information om hur du övervakar aktiviteter och felsöker problem finns i följande artiklar:
+Går SQL Data Sync som förväntat? Information om hur du övervakar aktivitet och felsöker problem finns i följande artiklar:
 
 - [Övervaka SQL Data Sync med Azure Monitor loggar](./monitor-tune-overview.md)
 - [Felsöka problem med Azure SQL Data Sync](./sql-data-sync-troubleshoot.md)

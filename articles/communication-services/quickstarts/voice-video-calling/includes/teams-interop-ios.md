@@ -1,29 +1,29 @@
 ---
-title: Snabb start – ansluta till ett team möte från en iOS-app
-description: I den här självstudien får du lära dig hur du ansluter till ett team möte med Azure Communication Services som anropar SDK för iOS
+title: Snabbstart – Delta i ett Teams-möte från en iOS-app
+description: I den här självstudien lär du dig hur du ansluter till ett Teams-möte med hjälp Azure Communication Services Anropa SDK för iOS
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 8ff85dc5571f549027e208409db3f4e80c68b205
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 363799cee5d66b718bb8ba06f4afd442add15148
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108216"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564531"
 ---
-I den här snabb starten får du lära dig hur du ansluter till ett team möte med Azure Communication Services som anropar SDK för iOS.
+I den här snabbstarten lär du dig hur du ansluter till ett Teams-möte med hjälp Azure Communication Services Anropa SDK för iOS.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- En fungerande [kommunikations tjänst som anropar iOS-appen](../getting-started-with-calling.md).
-- En [team distribution](/deployoffice/teams-install).
+- En fungerande [Communication Services anropar iOS-appen](../getting-started-with-calling.md).
+- En [Teams-distribution](/deployoffice/teams-install).
 
 
-## <a name="add-the-teams-ui-controls-and-enable-the-teams-ui-controls"></a>Lägg till Team UI-kontroller och aktivera team UI-kontroller
+## <a name="add-the-teams-ui-controls-and-enable-the-teams-ui-controls"></a>Lägg till gränssnittskontrollerna i Teams och aktivera gränssnittskontrollerna i Teams
 
-Ersätt Code i ContentView. Swift med följande kodfragment. Text rutan används för att ange team Mötes kontexten och knappen kommer att användas för att ansluta till det angivna mötet:
+Ersätt koden i ContentView.swift med följande kodfragment. Textrutan används för att ange Teams-möteskontexten och knappen används för att delta i det angivna mötet:
 
 ```swift
 
@@ -175,15 +175,15 @@ struct ContentView_Previews: PreviewProvider {
 
 ```
 
-## <a name="get-the-teams-meeting-link"></a>Hämta team Mötes länken
+## <a name="get-the-teams-meeting-link"></a>Hämta länken för Teams-mötet
 
-Länken Teams möte kan hämtas med Graph API: er. Detta beskrivs i [Graph-dokumentationen](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta).
-Kommunikations tjänsterna som anropar SDK accepterar en länk till en fullständig Teams möte. Den här länken returneras som en del av `onlineMeeting` resursen och är tillgänglig under [ `joinWebUrl` egenskapen](/graph/api/resources/onlinemeeting?view=graph-rest-beta). Du kan också hämta nödvändig Mötes information från URL: en **till kopplings mötet** i team Mötes mötet.
+Teams-möteslänken kan hämtas med Graph API:er. Detta beskrivs i [Graph-dokumentationen.](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)
+Sdk Communication Services anropar accepterar en fullständig Teams-möteslänk. Den här länken returneras som en del `onlineMeeting` av resursen och är tillgänglig under [ `joinWebUrl` egenskapen](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true). Du kan också hämta nödvändig mötesinformation från **URL:en för kopplingsmöte** i själva Teams-mötesbjudan.
 
-## <a name="launch-the-app-and-join-teams-meeting"></a>Starta appen och gå med i Teams möte
+## <a name="launch-the-app-and-join-teams-meeting"></a>Starta appen och anslut till Teams-mötet
 
-Du kan skapa och köra din app på iOS-simulatorn genom att välja **produkt**  >  **körning** eller genom att använda kortkommandot (&#8984;-R).
+Du kan skapa och köra appen i iOS-simulatorn genom att välja **Produktkörning** eller med  >   kortkommandot (&#8984;-R).
 
-:::image type="content" source="../media/ios/acs-join-teams-meeting-quickstart.png" alt-text="Skärm bild som visar det färdiga programmet.":::
+:::image type="content" source="../media/ios/acs-join-teams-meeting-quickstart.png" alt-text="Skärmbild som visar det färdiga programmet.":::
 
-Infoga team-kontexten i text rutan och tryck på *Anslut Teams möte* för att ansluta till teamen i kommunikations tjänst programmet.
+Infoga Teams-kontexten i textrutan och tryck på *Anslut till Teams-möte* för att delta i Teams-mötet inifrån ditt Communication Services program.

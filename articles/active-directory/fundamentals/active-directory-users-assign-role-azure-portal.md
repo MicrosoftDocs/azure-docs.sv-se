@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f49e15984b7a673de1e7d1607f4802c17ebef4e2
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a4ffcad6f6be16ba7ac3674d710dd543f729f0c3
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531846"
+ms.locfileid: "107575419"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Tilldela administratörs- och icke-administratörsroller till användare med Azure Active Directory
 
@@ -29,8 +29,6 @@ Mer information om tillgängliga Azure AD-roller finns i [Tilldela administratö
 ## <a name="assign-roles"></a>Tilldela roller
 
 Ett vanligt sätt att tilldela Azure AD-roller till en användare är på **sidan Tilldelade roller** för en användare. Du kan också konfigurera användarberättigandet att utökas just-in-time till en roll med hjälp av Privileged Identity Management (PIM). Mer information om hur du använder PIM finns i [Privileged Identity Management](../privileged-identity-management/index.yml).
-
-Om en katalogroll tilldelas till en gästanvändare beviljas gästanvändaren ytterligare behörigheter som ingår i rollen, inklusive grundläggande läsbehörigheter. Se [Inbyggda roller i Azure AD.](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference)
 
 > [!Note]
 > Om du har en Azure AD Premium P2-licensplan och redan använder PIM utförs alla [rollhanteringsuppgifter i Privileged Identity Management miljö.](../roles/manage-roles-portal.md) Den här funktionen är för närvarande begränsad till att endast tilldela en roll i taget. Du kan för närvarande inte välja flera roller och tilldela dem till en användare på samma gång.
@@ -63,7 +61,7 @@ Om en katalogroll tilldelas till en gästanvändare beviljas gästanvändaren yt
 
 ## <a name="remove-a-role-assignment"></a>Ta bort en rolltilldelning
 
-Om du behöver ta bort rolltilldelningen från en användare kan du också göra det från sidan Administrativa roller för **Alain Charon** .
+Om du behöver ta bort rolltilldelningen från en användare kan du också göra det från sidan Administrativa roller för **Alain Charon.**
 
 ### <a name="to-remove-a-role-assignment-from-a-user"></a>Ta bort en rolltilldelning från en användare
 

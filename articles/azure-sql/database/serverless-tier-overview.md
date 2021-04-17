@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 4/15/2021
-ms.openlocfilehash: ea9d5a5c39bf73ede2391c586f09dd95ff79b63c
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.date: 4/16/2021
+ms.openlocfilehash: 7dcbcddc5062470cc3d44fa55ea2591dd989d22d
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531976"
+ms.locfileid: "107576422"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database serverlös
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,20 +25,20 @@ Serverlös är en beräkningsnivå för enskilda databaser i Azure SQL Database 
 
 ## <a name="serverless-compute-tier"></a>Serverlös beräkningsnivå
 
-Den serverlösa beräkningsnivån för enskilda databaser i Azure SQL Database parameteriseras med ett intervall för automatisk beräkningsskalning och en fördröjning vid automatisk paus. Konfigurationen av dessa parametrar formar databasens prestandaupplevelse och beräkningskostnad.
+Den serverlösa beräkningsnivån för enskilda databaser i Azure SQL Database parametriseras med ett intervall för automatisk skalning av beräkningar och en automatisk pausfördröjning. Konfigurationen av dessa parametrar formar databasens prestandaupplevelse och beräkningskostnaden.
 
 ![serverlös fakturering](./media/serverless-tier-overview/serverless-billing.png)
 
 ### <a name="performance-configuration"></a>Prestandakonfiguration
 
-- Minsta **virtuella kärnor och maximalt** antal virtuella kärnor **är** konfigurerbara parametrar som definierar intervallet för databasens tillgängliga beräkningskapacitet. Minnes- och I/O-gränser är proportionella mot det angivna vCore-intervallet.  
+- Minsta antal virtuella kärnor och **maximalt antal virtuella kärnor** är konfigurerbara parametrar som definierar intervallet för **databasens** tillgängliga beräkningskapacitet. Minnes- och I/O-gränser är proportionella mot det angivna vCore-intervallet.  
 - Fördröjningen **för automatisk paus** är en konfigurerbar parameter som definierar hur lång tid databasen måste vara inaktiv innan den pausas automatiskt. Databasen återupptas automatiskt när nästa inloggning eller annan aktivitet inträffar.  Du kan också inaktivera automatisk pausning.
 
 ### <a name="cost"></a>Cost
 
 - Kostnaden för en serverlös databas är sammanfattningen av beräkningskostnaden och lagringskostnaden.
 - När beräkningsanvändningen är mellan den minsta och högsta gränsen som konfigurerats baseras beräkningskostnaden på vCore och använt minne.
-- När beräkningsanvändningen understiger de min-gränser som konfigurerats baseras beräkningskostnaden på de minsta virtuella kärnorna och det minsta konfigurerade minnet.
+- När beräkningsanvändningen är lägre än de mingränser som konfigurerats baseras beräkningskostnaden på de minsta virtuella kärnorna och det minsta konfigurerade minnet.
 - När databasen har pausats är beräkningskostnaden noll och endast lagringskostnaderna uppstår.
 - Lagringskostnaden bestäms på samma sätt som på den etablerade beräkningsnivån.
 
@@ -90,8 +90,8 @@ Minne för serverlösa databaser återtas oftare än för etablerade beräknings
 
 Till skillnad från etablerade beräkningsdatabaser återtas minne från SQL-cachen från en serverlös databas när processoranvändningen eller den aktiva cacheanvändningen är låg.
 
-- Aktiv cacheanvändning anses låg när den totala storleken på de senast använda cacheposterna understiger ett tröskelvärde under en viss tidsperiod.
-- När cacheminnesregenerering utlöses minskas målcachens storlek inkrementellt till en bråkdel av dess tidigare storlek och tillbakaropet fortsätter bara om användningen förblir låg.
+- Aktiv cacheanvändning anses låg när den totala storleken på de senast använda cacheposterna understiger ett tröskelvärde under en tidsperiod.
+- När cacheminnesregenerering utlöses minskas målcachens storlek stegvis till en bråkdel av den tidigare storleken och tillbakaropet fortsätter bara om användningen förblir låg.
 - När cacheminnet återtagning sker är principen för att välja cacheposter som ska avlägsnas samma urvalsprincip som för etablerade beräkningsdatabaser när minnestrycket är högt.
 - Cachestorleken minskas aldrig under den minsta minnesgränsen som definieras av minsta antalet virtuella kärnor som kan konfigureras.
 
@@ -140,7 +140,7 @@ Automatisk återupptagande utlöses om något av följande villkor är sant när
 |Frågedatalager (prestanda)|Ändra eller visa inställningar för Query Store|
 |Prestandarekommendationer|Visa eller tillämpa prestandarekommendationer|
 |Automatisk justering|Tillämpning och verifiering av rekommendationer för automatisk justering, till exempel automatisk indexering|
-|Databaskopiering|Skapa en databas som kopia.<br>Exportera till en BACPAC-fil.|
+|Databaskopiering|Skapa databasen som kopia.<br>Exportera till en BACPAC-fil.|
 |SQL-datasynkronisering|Synkronisering mellan hubb- och medlemsdatabaser som körs enligt ett konfigurerbart schema eller utförs manuellt|
 |Ändra vissa databasmetadata|Lägga till nya databastaggar.<br>Ändra maximalt antal virtuella kärnor, minsta antal virtuella kärnor eller automatisk fördröjning.|
 |SQL Server Management Studio (SSMS)|Om du använder tidigare SSMS-versioner än 18.1 och öppnar ett nytt frågefönster för en databas på servern återupptas alla automatiskt pausade databaser på samma server. Det här beteendet inträffar inte om du använder SSMS version 18.1 eller senare.|
@@ -155,7 +155,7 @@ Om en serverlös databas har pausats återupptar den första inloggningen databa
 
 ### <a name="latency"></a>Svarstid
 
-Svarstiden för att återuppta automatiskt och automatiskt pausa en serverlös databas är vanligtvis i en ordning på 1 minut för att återuppta automatiskt och 1–10 minuter att pausa automatiskt.
+Svarstiden för att återuppta automatiskt och automatiskt pausa en serverlös databas är vanligtvis en ordning på 1 minut för att återuppta automatiskt och 1–10 minuter att pausa automatiskt.
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>Kund hanterad transparent datakryptering (BYOK)
 
@@ -165,15 +165,15 @@ Om du använder kund hanterad [transparent datakryptering](transparent-data-encr
 
 Att skapa en ny databas eller flytta en befintlig databas till en serverlös beräkningsnivå följer samma mönster som när du skapar en ny databas på den etablerade beräkningsnivån och omfattar följande två steg.
 
-1. Ange tjänstmålet. Tjänstmålet fastställer tjänstnivå, maskinvarugenerering och maximalt antal virtuella kärnor. Information om alternativ för tjänstmål finns i [gränser för serverlösa resurser](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)
+1. Ange tjänstmålet. Tjänstmålet fastställer tjänstnivå, maskinvarugenerering och maximalt antal virtuella kärnor. Information om alternativ för tjänstmål finns [i Gränser för serverlösa resurser](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)
 
 
-2. Du kan också ange minsta virtuella kärnor och automatisk fördröjning för att ändra standardvärdena. I följande tabell visas tillgängliga värden för dessa parametrar.
+2. Du kan också ange minsta virtuella kärnor och automatisk fördröjning för att ändra deras standardvärden. I följande tabell visas tillgängliga värden för dessa parametrar.
 
    |Parameter|Värdeval|Standardvärde|
    |---|---|---|---|
    |Minsta virtuella kärnor|Beror på maximalt antal konfigurerade virtuella kärnor – se [resursbegränsningar.](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)|0,5 virtuella kärnor|
-   |Fördröjning vid automatiskpaus|Minst: 60 minuter (1 timme)<br>Max: 1 0080 minuter (7 dagar)<br>Steg: 10 minuter<br>Inaktivera autopause: -1|60 minuter|
+   |Tidsfördröjning automatiskt|Minimum: 60 minuter (1 timme)<br>Max: 1 0080 minuter (7 dagar)<br>Steg: 10 minuter<br>Inaktivera autopause: -1|60 minuter|
 
 
 ### <a name="create-a-new-database-in-the-serverless-compute-tier"></a>Skapa en ny databas på den serverlösa beräkningsnivån
@@ -202,7 +202,7 @@ az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Använda Transact-SQL (T-SQL)
 
-När du använder T-SQL tillämpas standardvärden för minsta virtuella kärnor och automatisk fördröjning.
+När du använder T-SQL tillämpas standardvärden för minsta virtuella kärnor och fördröjning för automatiskpausning.
 
 ```sql
 CREATE DATABASE testdb
@@ -234,7 +234,7 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Använda Transact-SQL (T-SQL)
 
-När du använder T-SQL tillämpas standardvärden för minsta virtuella kärnor och automatisk pausa fördröjning.
+När du använder T-SQL tillämpas standardvärden för minsta virtuella kärnor och fördröjning för automatisk paus.
 
 ```sql
 ALTER DATABASE testdb 
@@ -245,17 +245,17 @@ Mer information finns i [ALTER DATABASE](/sql/t-sql/statements/alter-database-tr
 
 ### <a name="move-a-database-from-the-serverless-compute-tier-into-the-provisioned-compute-tier"></a>Flytta en databas från den serverlösa beräkningsnivån till den etablerade beräkningsnivån
 
-En serverlös databas kan flyttas till en etablerad beräkningsnivå på samma sätt som en etablerad beräkningsdatabas flyttas till en serverlös beräkningsnivå.
+En serverlös databas kan flyttas till en etablerad beräkningsnivå på samma sätt som du flyttar en etablerad beräkningsdatabas till en serverlös beräkningsnivå.
 
 ## <a name="modifying-serverless-configuration"></a>Ändra serverlös konfiguration
 
 ### <a name="use-powershell"></a>Använd PowerShell
 
-Ändring av högsta eller lägsta antal virtuella kärnor och automatisk fördröjning utförs med hjälp av kommandot [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) i PowerShell med argumenten `MaxVcore` , och `MinVcore` `AutoPauseDelayInMinutes` .
+Ändring av högsta eller lägsta virtuella kärnor och automatisk fördröjning utförs med hjälp av kommandot [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) i PowerShell med argumenten `MaxVcore` , och `MinVcore` `AutoPauseDelayInMinutes` .
 
 ### <a name="use-the-azure-cli"></a>Använda Azure CLI
 
-Ändring av högsta eller lägsta antal virtuella kärnor och automatisk fördröjning utförs med hjälp av [kommandot az sql db update](/cli/azure/sql/db#az-sql-db-update) i Azure CLI med argumenten , och `capacity` `min-capacity` `auto-pause-delay` .
+Du ändrar det högsta eller lägsta antalet virtuella kärnor och fördröjningen för automatisk uppdatering med hjälp av [kommandot az sql db update](/cli/azure/sql/db#az-sql-db-update) i Azure CLI med argumenten , och `capacity` `min-capacity` `auto-pause-delay` .
 
 
 ## <a name="monitoring"></a>Övervakning
@@ -266,7 +266,7 @@ Resurserna i en serverlös databas kapslas in av appaket, SQL-instans och entite
 
 #### <a name="app-package"></a>Appaket
 
-Appaketet är den yttre gränsen för resurshantering för en databas, oavsett om databasen är på en serverlös eller etablerad beräkningsnivå. Appaketet innehåller SQL-instansen och externa tjänster som tillsammans omfattar alla användar- och systemresurser som används av en databas i SQL Database. Exempel på externa tjänster är R och fulltextsökning. SQL-instansen är vanligtvis den övergripande resursanvändningen i appaketet.
+App-paketet är den yttre gränsen för resurshantering för en databas, oavsett om databasen är på en serverlös eller etablerad beräkningsnivå. Appaketet innehåller SQL-instansen och externa tjänster som fulltextsökning som tillsammans omfattar alla användar- och systemresurser som används av en databas i SQL Database. SQL-instansen är i allmänhet den övergripande resursanvändningen i appaketet.
 
 #### <a name="user-resource-pool"></a>Användarresurspool
 
@@ -291,7 +291,7 @@ Mått för att övervaka resursanvändningen för appaketet och användarpoolen 
 
 I Azure Portal visas databasstatusen i översiktsfönstret på servern som visar de databaser som den innehåller. Databasstatusen visas också i översiktsfönstret för databasen.
 
-Använd följande kommandon för att fråga efter paus- och återupptagningsstatus för en databas:
+Använd följande kommandon för att fråga efter pausa och återuppta status för en databas:
 
 #### <a name="use-powershell"></a>Använd PowerShell
 
@@ -313,7 +313,7 @@ Information om resursbegränsningar finns [i serverlös beräkningsnivå.](resou
 
 ## <a name="billing"></a>Fakturering
 
-Den beräkningssumma som debiteras är den maximala processoranvändningen och det minne som används varje sekund. Om mängden processoranvändning och använt minne är mindre än den minsta mängd som har etablerats för var och en debiteras det etablerade beloppet. För att jämföra CPU med minne för faktureringsändamål normaliseras minnet till enheter med virtuella kärnor genom att omskalning av mängden minne i GB med 3 GB per vCore.
+Mängden beräkning som faktureras är den maximala processoranvändningen och det minne som används varje sekund. Om mängden processoranvändning och använt minne är mindre än den minsta mängd som har etablerats för var och en debiteras det etablerade beloppet. För att jämföra CPU med minne för faktureringsändamål normaliseras minnet till enheter med virtuella kärnor genom att omskalning av mängden minne i GB med 3 GB per vCore.
 
 - **Debiterad resurs:** CPU och minne
 - **Fakturerat belopp:** enhetspris för vCore * max (min vCores, vCores used, min memory GB * 1/3, memory GB used * 1/3) 
@@ -338,23 +338,23 @@ Exempel:
 - Anta att en serverlös databas inte har pausats och konfigurerats med 8 virtuella kärnor och 1 min vCore motsvarande 3,0 GB minne.  Den lägsta beräkningsfakturan baseras sedan på max (1 vCore, 3,0 GB * 1 vCore/3 GB) = 1 vCore.
 - Anta att en serverlös databas inte har pausats och konfigurerats med 4 max virtuella kärnor och 0,5 min virtuella kärnor motsvarande 2,1 GB minne.  Den lägsta beräkningsfakturan baseras sedan på max (0,5 virtuella kärnor, 2,1 GB * 1 vCore/3 GB) = 0,7 virtuella kärnor.
 
-[Priskalkylatorn](https://azure.microsoft.com/pricing/calculator/?service=sql-database) Azure SQL Database serverlös kan användas för att fastställa det minsta minne som kan konfigureras baserat på antalet konfigurerade högsta och minsta virtuella kärnor.  Om de minsta virtuella kärnorna som konfigurerats är större än 0,5 virtuella kärnor är den minsta beräkningsfakturan oberoende av det minsta minnet som konfigurerats och baseras endast på det antal virtuella kärnor som konfigurerats.
+[Priskalkylatorn](https://azure.microsoft.com/pricing/calculator/?service=sql-database) Azure SQL Database serverlös kan användas för att fastställa det minsta minne som kan konfigureras baserat på antalet konfigurerade högsta och minsta virtuella kärnor.  Om de minsta virtuella kärnorna som konfigurerats är större än 0,5 virtuella kärnor är den minsta beräkningsfakturan oberoende av det minsta minnet som konfigurerats och baseras endast på det antal virtuella kärnor som har konfigurerats.
 
 ### <a name="example-scenario"></a>Exempelscenario
 
 Överväg en serverlös databas som konfigurerats med 1 min vCore och 4 max virtuella kärnor.  Detta motsvarar cirka 3 GB minne och maximalt minne på 12 GB.  Anta att fördröjningen för automatisk paus är inställd på 6 timmar och att databasarbetsbelastningen är aktiv under de första 2 timmarna under en 24-timmarsperiod och annars inaktiv.    
 
-I det här fallet debiteras databasen för beräkning och lagring under de första 8 timmarna.  Även om databasen är inaktiv från och med den andra timmen debiteras den fortfarande för beräkning under de efterföljande 6 timmarna baserat på den minsta beräkning som etablerats när databasen är online.  Endast lagring faktureras under återstoden av 24-timmarsperioden medan databasen pausas.
+I det här fallet debiteras databasen för beräkning och lagring under de första 8 timmarna.  Även om databasen är inaktiv från och med den andra timmen debiteras den fortfarande för beräkning under de efterföljande 6 timmarna baserat på den minsta beräkning som etablerats när databasen är online.  Endast lagring debiteras under återstoden av 24-timmarsperioden medan databasen pausas.
 
-Mer exakt beräknas beräkningsfakturan i det här exemplet så här:
+Mer exakt beräknas beräkningsfakturan i det här exemplet på följande sätt:
 
-|Tidsintervall|Virtuella kärnor används varje sekund|GB används varje sekund|Fakturerad beräkningsdimension|vCore-sekunder faktureras över tidsintervall|
+|Tidsintervall|Virtuella kärnor som används varje sekund|GB används varje sekund|Fakturerad beräkningsdimension|vCore-sekunder faktureras över tidsintervall|
 |---|---|---|---|---|
-|0:00-1:00|4|9|Virtuella kärnor som används|4 virtuella kärnor * 3 600 sekunder = 1 4400 virtuella kärnor sekunder|
-|1:00-2:00|1|12|Minnesanvändning|12 GB * 1/3 * 3 600 sekunder = 1 4400 virtuella kärnor sekunder|
-|2:00-8:00|0|0|Minsta etablerade minne|3 GB * 1/3 * 2 1600 sekunder = 2 1 600 virtuella kärnor sekunder|
+|0:00-1:00|4|9|Virtuella kärnor som används|4 virtuella kärnor * 3 600 sekunder = 1 4 400 vCore sekunder|
+|1:00-2:00|1|12|Minnesanvändning|12 GB * 1/3 * 3 600 sekunder = 1 4 400 vCore sekunder|
+|2:00-8:00|0|0|Minsta etablerade minne|3 GB * 1/3 * 21 600 sekunder = 2 1 600 vCore sekunder|
 |8:00-24:00|0|0|Ingen beräkning faktureras när den har pausats|0 virtuella kärnor sekunder|
-|Totalt antal sekunder för virtuella kärnor som fakturerats under 24 timmar||||5 0400 virtuella kärnor sekunder|
+|Totalt antal sekunder för virtuella kärnor som debiterats under 24 timmar||||5 0400 virtuella kärnor sekunder|
 
 Anta att beräkningsenhetspriset är 0,000145 USD/vCore/sekund.  Den beräkning som debiteras för den här 24-timmarsperioden är sedan produkten av beräkningsenhetens pris och antal sekunder för virtuella kärnor som debiteras: 0,000145 USD/vCore/sekund * 5 0400 vCore sekunder ~ 7,31 USD
 

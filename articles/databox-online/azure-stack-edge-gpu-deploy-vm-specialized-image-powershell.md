@@ -1,91 +1,81 @@
 ---
-title: Skapa VM-avbildningar från specialiserad avbildning av Windows VHD för din Azure Stack Edge Pro GPU-enhet
-description: Beskriver hur du skapar VM-avbildningar från specialiserade avbildningar som börjar från en Windows-VHD eller en VHDX. Använd den här specialiserade avbildningen för att skapa avbildningar av virtuella datorer som ska användas med virtuella datorer som distribuerats på Azure Stack Edge Pro GPU-enhet.
+title: Skapa VM-avbildningar från en specialiserad avbildning av en virtuell Windows-hårddisk för Azure Stack Edge Pro GPU-enhet
+description: Beskriver hur du skapar VM-avbildningar från specialiserade avbildningar från en Windows-VHD eller en VHDX. Använd den här specialiserade avbildningen för att skapa VM-avbildningar som ska användas med virtuella datorer som distribueras Azure Stack Edge Pro GPU-enheten.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: d03aeb9759fb321b580fa65e06dc09ccde4a44a0
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 6bfa42e99f295b429eba40a27eb59becb8aa80a1
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106556195"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575959"
 ---
-# <a name="deploy-a-vm-from-a-specialized-image-on-your-azure-stack-edge-pro-device-via-azure-powershell"></a>Distribuera en virtuell dator från en specialiserad avbildning på din Azure Stack Edge Pro-enhet via Azure PowerShell 
+# <a name="deploy-a-vm-from-a-specialized-image-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Distribuera en virtuell dator från en specialiserad avbildning Azure Stack Edge Pro GPU-enheten via Azure PowerShell 
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-I den här artikeln beskrivs de steg som krävs för att distribuera en virtuell dator (VM) på din Azure Stack Edge Pro-enhet från en specialiserad avbildning. 
+I den här artikeln beskrivs de steg som krävs för att distribuera en virtuell dator (VM) på din Azure Stack Edge Pro GPU-enhet från en specialiserad avbildning. 
 
-## <a name="about-specialized-images"></a>Om specialiserade avbildningar
+Information om hur du förbereder en generaliserad avbildning för att distribuera virtuella datorer i Azure Stack Edge Pro GPU finns i [Förbereda generaliserad](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md) avbildning från Windows VHD eller Förbereda generaliserad avbildning från en [ISO.](azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md)
 
-En Windows-VHD eller VHDX kan användas för att skapa en *specialiserad* avbildning eller en *generaliserad* avbildning. I följande tabell sammanfattas viktiga skillnader mellan de *specialiserade* och de *generaliserade* avbildningarna.
+## <a name="about-vm-images"></a>Om VM-avbildningar
 
+En Windows VHD eller VHDX kan användas för att skapa en *specialiserad avbildning* eller en *generaliserad avbildning.* I följande tabell sammanfattas viktiga skillnader mellan de *specialiserade och* *generaliserade avbildningarna.*
 
-|Avbildningstyp  |Generaliserade  |Specialiserade  |
-|---------|---------|---------|
-|Mål     |Distribuerat i alla system         | Riktat mot ett speciellt system        |
-|Konfigurera efter start     | Installations programmet krävs vid första starten av den virtuella datorn.          | Installationen behövs inte. <br> Plattformen aktiverar den virtuella datorn.        |
-|Konfiguration     |Hostname, admin-user och andra VM-inställningar krävs.         |Förkonfigurerad.         |
-|Används för att     |Skapa flera nya virtuella datorer från samma avbildning.         |Migrera en speciell dator eller Återställ en virtuell dator från en tidigare säkerhets kopia.         |
+[!INCLUDE [about-vm-images-for-azure-stack-edge](../../includes/azure-stack-edge-about-vm-images.md)]
 
+## <a name="workflow"></a>Arbetsflöde
 
-Den här artikeln beskriver de steg som krävs för att distribuera från en specialiserad avbildning. Information om hur du distribuerar från en generaliserad avbildning finns i [använda generaliserad Windows-VHD](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md) för din enhet.
+Det avancerade arbetsflödet för att distribuera en virtuell dator från en specialiserad avbildning är:
 
-
-## <a name="vm-image-workflow"></a>Arbets flöde för VM-avbildning
-
-Arbets flödet på hög nivå för att distribuera en virtuell dator från en specialiserad avbildning är:
-
-1. Kopiera den virtuella hård disken till ett lokalt lagrings konto på din Azure Stack Edge Pro GPU-enhet.
-1. Skapa en ny hanterad disk från den virtuella hård disken.
-1. Skapa en ny virtuell dator från den hanterade disken och koppla den hanterade disken.
-
+1. Kopiera den virtuella hårddisken till ett lokalt lagringskonto på din GPU Azure Stack Edge Pro enhet.
+1. Skapa en ny hanterad disk från den virtuella hårddisken.
+1. Skapa en ny virtuell dator från den hanterade disken och anslut den hanterade disken.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 Innan du kan distribuera en virtuell dator på enheten via PowerShell kontrollerar du att:
 
-- Du har åtkomst till en klient som du ska använda för att ansluta till din enhet.
-    - Klienten kör ett [operativ system som stöds](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device).
-    - Din klient är konfigurerad för att ansluta till den lokala Azure Resource Manager på enheten enligt anvisningarna i [Anslut till Azure Resource Manager för enheten](azure-stack-edge-gpu-connect-resource-manager.md).
+- Du har åtkomst till en klient som du använder för att ansluta till din enhet.
+    - Klienten kör ett operativsystem [som stöds.](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)
+    - Klienten är konfigurerad för att ansluta till den lokala Azure Resource Manager på enheten enligt instruktionerna i [Anslut till Azure Resource Manager för din enhet.](azure-stack-edge-gpu-connect-resource-manager.md)
 
 ## <a name="verify-the-local-azure-resource-manager-connection"></a>Verifiera den lokala Azure Resource Manager anslutningen
 
-Kontrol lera att klienten kan ansluta till den lokala Azure Resource Manager. 
+Kontrollera att klienten kan ansluta till den lokala Azure Resource Manager. 
 
-1. Anropa lokala enhets-API: er för att autentisera:
+1. Anropa API:er för lokala enheter för att autentisera:
 
     ```powershell
     Login-AzureRMAccount -EnvironmentName <Environment Name>
     ```
 
-2. Ange användar namn `EdgeArmUser` och lösen ord för att ansluta via Azure Resource Manager. Om du inte återkallar lösen ordet [återställer du lösen ordet för Azure Resource Manager](azure-stack-edge-gpu-set-azure-resource-manager-password.md) och använder lösen ordet för att logga in.
- 
+2. Ange användarnamnet `EdgeArmUser` och lösenordet för att ansluta via Azure Resource Manager. Om du inte återkallar lösenordet återställer du [lösenordet för Azure Resource Manager](azure-stack-edge-gpu-set-azure-resource-manager-password.md) använder det här lösenordet för att logga in.
 
 ## <a name="deploy-vm-from-specialized-image"></a>Distribuera virtuell dator från specialiserad avbildning
 
 Följande avsnitt innehåller stegvisa instruktioner för att distribuera en virtuell dator från en specialiserad avbildning.
 
-## <a name="copy-vhd-to-local-storage-account-on-device"></a>Kopiera VHD till lokalt lagrings konto på enhet
+## <a name="copy-vhd-to-local-storage-account-on-device"></a>Kopiera VHD till ett lokalt lagringskonto på enheten
 
-Följ dessa steg om du vill kopiera en virtuell hård disk till ett lokalt lagrings konto:
+Följ dessa steg om du vill kopiera en virtuell hårddisk till ett lokalt lagringskonto:
 
-1. Kopiera den virtuella käll hård disken till ett lokalt Blob Storage-konto på din Azure Stack Edge. 
+1. Kopiera den virtuella käll-VHD:en till ett lokalt bloblagringskonto på Azure Stack Edge.
 
-1. Anteckna den resulterande URI: n. Du kommer att använda denna URI i ett senare steg.
-    
-    Information om hur du skapar och använder ett lokalt lagrings konto finns i avsnitten [skapa ett lagrings konto](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#create-a-storage-account) genom att [Ladda upp en virtuell hård disk](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#upload-a-vhd) i artikeln: [distribuera virtuella datorer på Azure Stack Edge-enhet via Azure PowerShell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md). 
+1. Anteckna den resulterande URI:en. Du kommer att använda den här URI:en i ett senare steg.
 
-## <a name="create-a-managed-disk-from-vhd"></a>Skapa en hanterad disk från en virtuell hård disk
+    Information om hur du skapar och [](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#create-a-storage-account) får åtkomst till ett lokalt lagringskonto finns i avsnitten Skapa ett lagringskonto via Ladda upp en [virtuell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#upload-a-vhd) hårddisk i artikeln: Distribuera virtuella datorer på din [Azure Stack Edge-enhet via Azure PowerShell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md). 
 
-Följ de här stegen för att skapa en hanterad disk från en virtuell hård disk som du laddade upp till lagrings kontot tidigare:
+## <a name="create-a-managed-disk-from-vhd"></a>Skapa en hanterad disk från en virtuell hårddisk
 
-1. Ange parametrar.
+Följ dessa steg för att skapa en hanterad disk från en virtuell hårddisk som du laddade upp till lagringskontot tidigare:
+
+1. Ange några parametrar.
 
     ```powershell
     $VhdURI = <URI of VHD in local storage account>
@@ -106,18 +96,18 @@ Följ de här stegen för att skapa en hanterad disk från en virtuell hård dis
     $disk = New-AzureRMDisk -ResourceGroupName $DiskRG -DiskName $DiskName -Disk $DiskConfig
     ```
 
-    Här är ett exempel på utdata. Platsen här anges till platsen för det lokala lagrings kontot och är alltid `DBELocal` för alla lokala lagrings konton på din Azure Stack Edge Pro GPU-enhet. 
+    Här är ett exempel på utdata. Platsen här är inställd på platsen för det lokala lagringskontot och är alltid för alla lokala lagringskonton på `DBELocal` din Azure Stack Edge Pro GPU-enhet. 
 
     ```powershell
     PS C:\WINDOWS\system32> $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import -SourceUri $VHDURI
     PS C:\WINDOWS\system32> $disk = New-AzureRMDisk -ResourceGroupName $DiskRG -DiskName $DiskName -Disk $DiskConfig
     PS C:\WINDOWS\system32>    
     ```
-## <a name="create-a-vm-from-managed-disk"></a>Skapa en virtuell dator från hanterad disk
+## <a name="create-a-vm-from-managed-disk"></a>Skapa en virtuell dator från en hanterad disk
 
-Följ de här stegen för att skapa en virtuell dator från en hanterad disk:
+Följ dessa steg för att skapa en virtuell dator från en hanterad disk:
 
-1. Ange parametrar.
+1. Ange några parametrar.
 
     ```powershell
     $NicRG = <NIC resource group>
@@ -131,9 +121,9 @@ Följ de här stegen för att skapa en virtuell dator från en hanterad disk:
     ```
 
     >[!NOTE]
-    > `PrivateIP`Parametern är valfri. Använd den här parametern för att tilldela en statisk IP-adress, annars är standardvärdet en dynamisk IP-adress med DHCP.
+    > Parametern `PrivateIP` är valfri. Använd den här parametern för att tilldela en statisk IP- annars är standardvärdet en dynamisk IP-adress med DHCP.
 
-    Här är ett exempel på utdata. I det här exemplet anges samma resurs grupp för alla VM-resurser, men du kan skapa och ange separata resurs grupper för resurserna om det behövs.
+    Här är ett exempel på utdata. I det här exemplet anges samma resursgrupp för alla VM-resurser, men du kan skapa och ange separata resursgrupper för resurserna om det behövs.
 
     ```powershell
     PS C:\WINDOWS\system32> $NicRG = "myasevm1rg"
@@ -145,9 +135,9 @@ Följ de här stegen för att skapa en virtuell dator från en hanterad disk:
     PS C:\WINDOWS\system32> $VMSize = "Standard_D1_v2"   
     ```
 
-1. Hämta information om det virtuella nätverket och skapa ett nytt nätverks gränssnitt.
+1. Hämta informationen om det virtuella nätverket och skapa ett nytt nätverksgränssnitt.
 
-    Det här exemplet förutsätter att du skapar ett enda nätverks gränssnitt på det virtuella standard nätverket `ASEVNET` som är associerat med standard resurs gruppen `ASERG` . Om det behövs kan du ange ett alternativt virtuellt nätverk eller skapa flera nätverks gränssnitt. Mer information finns i [lägga till ett nätverks gränssnitt till en virtuell dator via Azure Portal](azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md).
+    Det här exemplet förutsätter att du skapar ett enda nätverksgränssnitt i det virtuella standardnätverk `ASEVNET` som är associerat med standardresursgruppen `ASERG` . Om det behövs kan du ange ett alternativt virtuellt nätverk eller skapa flera nätverksgränssnitt. Mer information finns i Lägga [till ett nätverksgränssnitt till en virtuell dator via Azure Portal](azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md).
 
     ```powershell
     $armVN = Get-AzureRMVirtualNetwork -Name ASEVNET -ResourceGroupName ASERG
@@ -164,25 +154,25 @@ Följ de här stegen för att skapa en virtuell dator från en hanterad disk:
     WARNING: The output object type of this cmdlet will be modified in a future release.
     PS C:\WINDOWS\system32>    
     ```
-1. Skapa ett nytt konfigurations objekt för virtuell dator.
+1. Skapa ett nytt vm-konfigurationsobjekt.
 
     ```powershell
     $vmConfig = New-AzureRmVMConfig -VMName $VMName -VMSize $VMSize
     ```
 
     
-1. Lägg till nätverks gränssnittet på den virtuella datorn.
+1. Lägg till nätverksgränssnittet till den virtuella datorn.
 
     ```powershell
     $vm = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
     ```
 
-1. Ange OS-diskens egenskaper på den virtuella datorn.
+1. Ange egenskaperna för OS-disken på den virtuella datorn.
 
     ```powershell
     $vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $disk.Id -StorageAccountType StandardLRS -CreateOption Attach –[Windows/Linux]
     ```
-    Den sista flaggan i det här kommandot är antingen `-Windows` eller `-Linux` beroende på vilket operativ system du använder för den virtuella datorn.
+    Den sista flaggan i det här kommandot är antingen `-Windows` eller beroende på vilket operativsystem du använder för den virtuella `-Linux` datorn.
 
 1. Skapa den virtuella datorn.
 
@@ -207,9 +197,9 @@ Följ de här stegen för att skapa en virtuell dator från en hanterad disk:
 
 ## <a name="delete-vm-and-resources"></a>Ta bort virtuell dator och resurser
 
-I den här artikeln används endast en resurs grupp för att skapa alla VM-resurser. Om du tar bort resurs gruppen tas den virtuella datorn och alla tillhör ande resurser bort. 
+I den här artikeln användes bara en resursgrupp för att skapa alla VM-resurser. Om du tar bort resursgruppen tas den virtuella datorn och alla associerade resurser bort. 
 
-1. Först visar du alla resurser som skapats under resurs gruppen.
+1. Visa först alla resurser som skapats under resursgruppen.
 
     ```powershell
     Get-AzureRmResource -ResourceGroupName <Resource group name>
@@ -251,7 +241,7 @@ I den här artikeln används endast en resurs grupp för att skapa alla VM-resur
     PS C:\WINDOWS\system32>
     ```
 
-1. Ta bort resurs gruppen och alla tillhör ande resurser.
+1. Ta bort resursgruppen och alla associerade resurser.
 
     ```powershell
     Remove-AzureRmResourceGroup -ResourceGroupName <Resource group name>
@@ -268,7 +258,7 @@ I den här artikeln används endast en resurs grupp för att skapa alla VM-resur
     PS C:\WINDOWS\system32>
     ```
 
-1. Kontrol lera att resurs gruppen har tagits bort. Hämta alla resurs grupper som finns på enheten. 
+1. Kontrollera att resursgruppen har tagits bort. Hämta alla resursgrupper som finns på enheten. 
 
     ```powershell
     Get-AzureRmResourceGroup
@@ -301,7 +291,5 @@ I den här artikeln används endast en resurs grupp för att skapa alla VM-resur
 
 ## <a name="next-steps"></a>Nästa steg
 
-Beroende på vilken typ av distribution du har kan du välja någon av följande procedurer.
-
-- [Distribuera en virtuell dator från en generaliserad avbildning via Azure PowerShell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)  
-- [Distribuera en virtuell dator via Azure Portal](azure-stack-edge-gpu-deploy-virtual-machine-portal.md)
+- [Förbereda en generaliserad avbildning från en virtuell Windows-hårddisk för att distribuera virtuella datorer Azure Stack Edge Pro GPU](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md)
+- [Förbereda en generaliserad avbildning från en ISO för att distribuera virtuella datorer Azure Stack Edge Pro GPU](azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md) d

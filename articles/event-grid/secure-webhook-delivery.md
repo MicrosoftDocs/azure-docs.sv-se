@@ -3,12 +3,12 @@ title: Säker WebHook-leverans med Azure AD i Azure Event Grid
 description: Beskriver hur du levererar händelser till HTTPS-slutpunkter som skyddas av Azure Active Directory med Azure Event Grid
 ms.topic: how-to
 ms.date: 04/13/2021
-ms.openlocfilehash: 4238087d977fa1102d1dd31d0cc9080d6308c175
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 6a0f9059e17d96d497b425abc9749e69c5ab4d41
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389697"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575555"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Publicera händelser till Azure Active Directory-skyddade slutpunkter
 Den här artikeln beskriver hur du använder Azure Active Directory (Azure AD)  för att skydda anslutningen mellan din händelseprenumeration och **din webhook-slutpunkt.** En översikt över Azure AD-program och tjänstens huvudnamn finns i [Översikt över Microsoft Identity Platform (v2.0).](../active-directory/develop/v2-overview.md)
@@ -16,11 +16,11 @@ Den här artikeln beskriver hur du använder Azure Active Directory (Azure AD)  
 Den här artikeln använder Azure Portal för demonstration, men funktionen kan också aktiveras med HJÄLP av CLI, PowerShell eller SDK:erna.
 
 > [!IMPORTANT]
-> Ytterligare åtkomstkontroll har introducerats som en del av att skapa eller uppdatera händelseprenumeration den 30 mars 2021 för att åtgärda en säkerhetsrisk. Prenumerantklientens huvudnamn för tjänsten måste antingen vara ägare eller ha en roll tilldelad på målprogrammets tjänsthuvudnamn. Konfigurera om ditt AAD-program genom att följa de nya anvisningarna nedan.
+> Ytterligare åtkomstkontroll har introducerats som en del av att skapa eller uppdatera händelseprenumeration den 30 mars 2021 för att åtgärda en säkerhetsrisk. Prenumerantklientens huvudnamn för tjänsten måste antingen vara ägare eller ha en roll som tilldelats tjänstens huvudnamn för målprogrammet. Konfigurera om ditt AAD-program genom att följa de nya anvisningarna nedan.
 
 
 ## <a name="create-an-azure-ad-application"></a>Skapa ett Azure AD-program
-Registrera din webhook med Azure AD genom att skapa ett Azure AD-program för din skyddade slutpunkt. Se [Scenario: Skyddat webb-API.](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview) Konfigurera ditt skyddade API så att det anropas av en daemon-app.
+Registrera din webhook med Azure AD genom att skapa ett Azure AD-program för den skyddade slutpunkten. Se [Scenario: Skyddat webb-API.](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview) Konfigurera ditt skyddade API så att det anropas av en daemon-app.
     
 ## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Aktivera Event Grid att använda ditt Azure AD-program
 Det här avsnittet visar hur du aktiverar Event Grid att använda ditt Azure AD-program. 
@@ -29,7 +29,7 @@ Det här avsnittet visar hur du aktiverar Event Grid att använda ditt Azure AD-
 > Du måste vara medlem i rollen [Azure AD-programadministratör för att](../active-directory/roles/permissions-reference.md#all-roles) kunna köra det här skriptet.
 
 ### <a name="connect-to-your-azure-tenant"></a>Ansluta till din Azure-klientorganisation
-Anslut först till din Azure-klientorganisation med hjälp av `Connect-AzureAD` kommandot . 
+Anslut först till din Azure-klientorganisation med `Connect-AzureAD` kommandot . 
 
 ```PowerShell
 $myWebhookAadTenantId = "<Your Webhook's Azure AD tenant id>"
@@ -49,9 +49,7 @@ $eventGridSP = Get-AzureADServicePrincipal -Filter ("appId eq '" + $eventGridApp
 if ($eventGridSP -match "Microsoft.EventGrid")
 {
     Write-Host "The Service principal is already defined.`n"
-}
-else
-{
+} else {
     # Create a service principal for the "Azure Event Grid" AAD Application and add it to the role
     Write-Host "Creating the Azure Event Grid service principal"
     $eventGridSP = New-AzureADServicePrincipal -AppId $eventGridAppId
@@ -59,7 +57,7 @@ else
 ```
 
 ### <a name="create-a-role-for-your-application"></a>Skapa en roll för ditt program   
-Kör följande skript för att skapa en roll för ditt Azure AD-program. I det här exemplet är rollnamnet: **AzureEventGridSecureWebhookSubscriber**. Ändra PowerShell-skriptets så `$myTenantId` att det använder ditt Azure AD-klientorganisations-ID och med `$myAzureADApplicationObjectId` objekt-ID:t för ditt Azure AD-program
+Kör följande skript för att skapa en roll för ditt Azure AD-program. I det här exemplet är rollnamnet: **AzureEventGridSecureWebhookSubscriber**. Ändra PowerShell-skriptets så `$myTenantId` att det använder ditt Azure AD-klientorganisations-ID och `$myAzureADApplicationObjectId` med objekt-ID för ditt Azure AD-program
 
 ```PowerShell
 # This is your Webhook's Azure AD Application's ObjectId. 
@@ -94,9 +92,7 @@ Write-Host $myAppRoles
 if ($myAppRoles -match $eventGridRoleName)
 {
     Write-Host "The Azure Event Grid role is already defined.`n"
-}
-else
-{      
+} else {      
     # Add our new role to the Azure AD Application
     Write-Host "Creating the Azure Event Grid role in Azure Ad Application: " $myWebhookAadApplicationObjectId
     $newRole = CreateAppRole -Name $eventGridRoleName -Description "Azure Event Grid Role"
@@ -111,10 +107,10 @@ Write-Host $myAppRoles
 ```
 
 ### <a name="create-role-assignment-for-the-client-creating-event-subscription"></a>Skapa rolltilldelning för klienten som skapar händelseprenumerationen
-Rolltilldelningen ska skapas i webhook-Azure AD App för AAD-appen eller AAD-användaren som skapar händelseprenumerationen. Använd något av skripten nedan beroende på om en AAD-app eller AAD-användare skapar händelseprenumerationen.
+Rolltilldelningen ska skapas i Webhook-Azure AD App för AAD-appen eller AAD-användaren som skapar händelseprenumerationen. Använd något av skripten nedan beroende på om en AAD-app eller AAD-användare skapar händelseprenumerationen.
 
 > [!IMPORTANT]
-> Ytterligare åtkomstkontroll har introducerats som en del av att skapa eller uppdatera händelseprenumeration den 30 mars 2021 för att åtgärda en säkerhetsrisk. Prenumerantklientens huvudnamn för tjänsten måste antingen vara ägare eller ha en roll som tilldelats tjänstens huvudnamn för målprogrammet. Konfigurera om ditt AAD-program genom att följa de nya anvisningarna nedan.
+> Ytterligare åtkomstkontroll har introducerats som en del av att skapa eller uppdatera händelseprenumeration den 30 mars 2021 för att åtgärda en säkerhetsrisk. Prenumerantklientens huvudnamn för tjänsten måste antingen vara ägare eller ha en roll tilldelad på målprogrammets huvudnamn för tjänsten. Konfigurera om ditt AAD-program genom att följa de nya anvisningarna nedan.
 
 #### <a name="create-role-assignment-for-an-event-subscription-aad-app"></a>Skapa rolltilldelning för en AAD-app för händelseprenumeration 
 
@@ -150,11 +146,11 @@ New-AzureADUserAppRoleAssignment -Id $eventGridAppRole.Id -ResourceId $myService
 ```
 
 ### <a name="create-role-assignment-for-event-grid-service-principal"></a>Skapa rolltilldelning för Event Grid tjänstens huvudnamn
-Kör kommandot New-AzureADServiceAppRoleAssignment för att Event Grid tjänstens huvudnamn till rollen som du skapade i föregående steg.
+Kör kommandot New-AzureADServiceAppRoleAssignment för att tilldela Event Grid tjänstens huvudnamn till rollen som du skapade i föregående steg.
 
 ```powershell
 $eventGridAppRole = $myApp.AppRoles | Where-Object -Property "DisplayName" -eq -Value $eventGridRoleName
-New-AzureADServiceAppRoleAssignment -Id $eventGridAppRole.Id -ResourceId $myServicePrincipal.ObjectId -ObjectId -PrincipalId $eventGridSP.ObjectId
+New-AzureADServiceAppRoleAssignment -Id $eventGridAppRole.Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventGridSP.ObjectId -PrincipalId $eventGridSP.ObjectId
 ```
 
 Kör följande kommandon för att mata ut information som du kommer att använda senare.
@@ -169,15 +165,15 @@ Write-Host "My Webhook's Azure AD Application ObjectId Id$($myApp.ObjectId)"
 ## <a name="configure-the-event-subscription"></a>Konfigurera händelseprenumerationen
 Följ dessa steg när du skapar en händelseprenumeration:
 
-1. Välj slutpunktstypen Web **Hook**. 
-1. Ange **slutpunkts-URI:en**.
+1. Välj slutpunktstyp som **Web Hook**. 
+1. Ange slutpunktens **URI.**
 
     ![Välj webhook av slutpunktstyp](./media/secure-webhook-delivery/select-webhook.png)
 1. Välj fliken **Ytterligare funktioner** överst på sidan **Skapa händelseprenumerationer.**
 1. Gör följande **på fliken** Ytterligare funktioner:
     1. Välj **Använd AAD-autentisering** och konfigurera klientorganisations-ID och program-ID:
-    1. Kopiera Azure AD-klient-ID:t från skriptets utdata och ange det i fältet **AAD-klientorganisations-ID.**
-    1. Kopiera Azure AD-program-ID:t från skriptets utdata och ange det i fältet **AAD-program-ID.** Du kan också använda AAD-program-ID:ts URI. Mer information om program-ID-URI finns i [den här artikeln.](../app-service/configure-authentication-provider-aad.md)
+    1. Kopiera Azure AD-klientorganisations-ID:t från skriptets utdata och ange det i fältet **AAD-klientorganisations-ID.**
+    1. Kopiera Azure AD-program-ID:t från skriptets utdata och ange det i **fältet AAD-program-ID.** Du kan också använda AAD-program-ID:ts URI. Mer information om program-ID-URI finns i [den här artikeln.](../app-service/configure-authentication-provider-aad.md)
 
         ![Säker webhook-åtgärd](./media/secure-webhook-delivery/aad-configuration.png)
 
@@ -186,5 +182,5 @@ Följ dessa steg när du skapar en händelseprenumeration:
 ## <a name="next-steps"></a>Nästa steg
 
 * Information om hur du övervakar händelseleveranser finns i [Övervaka Event Grid leverans av meddelanden.](monitor-event-delivery.md)
-* Mer information om autentiseringsnyckeln finns i Event Grid [säkerhet och autentisering.](security-authentication.md)
-* Mer information om hur du skapar en Azure Event Grid-prenumeration finns [i Event Grid prenumerationsschema](subscription-creation-schema.md).
+* Mer information om autentiseringsnyckeln finns i [Event Grid och autentisering](security-authentication.md).
+* Mer information om hur du skapar en Azure Event Grid prenumeration finns i [Event Grid prenumerationsschema](subscription-creation-schema.md).

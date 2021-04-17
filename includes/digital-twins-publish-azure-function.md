@@ -1,60 +1,62 @@
 ---
 author: baanders
-description: inkludera fil för processen att publicera en Azure-funktion från Visual Studio
+description: include file for the process of publishing an Azure function from Visual Studio
 ms.service: digital-twins
 ms.topic: include
 ms.date: 1/21/2021
 ms.author: baanders
-ms.openlocfilehash: 9f8ca9ab6dc184abb8d9dcd25ebe87cbd7761722
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddc56ab05a087c9e86d67a13aebcfb8e65fbd78f
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102630277"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480746"
 ---
-Om du vill publicera projektet i en Function-app i Azure, högerklickar du på projektet i *Solution Explorer* och väljer **publicera**.
+Om du vill publicera projektet till en funktionsapp i Azure börjar du Solution Explorer. Högerklicka på projektet och välj sedan **Publicera.**
 
 > [!IMPORTANT] 
-> Om du publicerar till en Function-app i Azure debiteras ytterligare avgifter för din prenumeration, oberoende av Azures digitala dubbla.
+> Publicering till en funktionsapp i Azure medför ytterligare avgifter för din prenumeration, oberoende av Azure Digital Twins.
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Skärm bild av Visual Studio som visar menyn för höger val av lösning. Publicera är markerat i menyn.":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Skärmbild av Visual Studio visar snabbmenyn för lösningen. På menyn är Publicera markerat.":::
 
-På sidan *publicera* som följer lämnar du standard valet av **Azure** och väljer *Nästa*. 
+På sidan **Publicera** som öppnas lämnar du standardvalet av Azure som **mål.** Välj sedan **Nästa**. 
 
-För ett särskilt mål väljer du **Azure Funktionsapp (Windows)** och klickar *sedan på nästa*.
+För ett specifikt mål väljer du **Azure-funktionsapp (Windows)** och sedan **Nästa.**
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="Skärm bild av Visual Studio i dialog rutan publicera Azure-funktion. Azure Funktionsapp (Windows) har marker ATS på sidan för specifika mål.":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="Skärmbild av Visual Studio med dialogrutan Publicera Azure-funktion. På sidan Specifikt mål är valet Azure-funktionsapp (Windows).":::
 
-På sidan *Functions instance* väljer du din prenumeration. Välj sedan *+* ikonen för att skapa en ny Azure-funktion.
+Välj din **prenumeration på** fliken Functions-instans. Välj sedan plusikonen (+) för att skapa en ny funktion.
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="Skärm bild av Visual Studio i dialog rutan publicera Azure-funktion. Knappen + för att skapa en ny funktion är markerad på sidan funktions instanser.":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="Skärmbild av Visual Studio med dialogrutan Publicera Azure-funktion. Plusikonen är markerad.":::
 
-I fönstret *Funktionsapp (Windows) – skapa nytt* , fyller du i fälten enligt följande:
-* **Namn** är namnet på förbruknings planen som Azure använder för att vara värd för din Azure Functions-app. Detta kommer också att bli namnet på den Function-app som innehåller din faktiska funktion. Du kan välja ett eget unikt värde eller lämna standard förslaget.
-* Se till att **prenumerationen** matchar den prenumeration som du vill använda 
-* Kontrol lera att **resurs gruppen** till den resurs grupp som du vill använda
-* Lämna **plan typen** till *förbrukning*
-* Välj den **plats** som matchar resurs gruppens plats
-* Skapa en ny **Azure Storage** resurs med hjälp av länken *New...* . Ange den plats som ska matcha din resurs grupp, Använd de andra standardvärdena och välj OK.
+I fönstret **Funktionsapp (Windows) – Skapa** ny fyller du i följande fält:
+* **Namnet** är namnet på den förbrukningsplan som Azure ska använda som värd för din Azure Functions app. Det här namnet gäller även för funktionsappen som innehåller den faktiska funktionen. Du kan välja ett unikt värde eller lämna standardförslaget.
+* Kontrollera att Prenumeration **matchar** den prenumeration som du vill använda. 
+* Kontrollera att **det är** resursgruppen som du vill använda.
+* Lämna valet **Plantyp** som **Förbrukning.**
+* Välj **platsen för** resursgruppen.
+* Skapa en ny **Azure Storage** resurs genom att välja **länken** Nytt. Ange platsen så att den matchar din resursgrupp, använd de andra standardvärdena och välj sedan **OK.**
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Skärm bild av Visual Studio i dialog rutan publicera Azure-funktion. Information om en ny function-app fylls i, inklusive namn, prenumeration, resurs grupp, plan typ, plats och Azure Storage.":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Skärmbild av Visual Studio som visar dialogrutan Publicera Azure-funktion. Information om en ny funktionsapp fylls i, inklusive Namn, Prenumeration, Resursgrupp, Plantyp, Plats och Azure Storage.":::
 
 Välj sedan **Skapa**.
 
-Efter en kort väntan medan App Service har skapats, ska dialog rutan gå tillbaka till sidan *funktions instanser* , och den nya Function-appen visas i avsnittet **funktions program** som är kapslad under din resurs grupp. Välj *Slutför*.
+När apptjänsten har skapats öppnas **fliken Functions-instans.** Den nya funktionsappen visas i **området Funktionsappar** under resursgruppen. Välj **Slutför**.
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="Publicera Azure Function i Visual Studio: Functions-instans (efter Function-app)":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="Skärmbild av Visual Studio som visar dialogrutan Publicera Azure-funktion. Fliken Functions-instans är markerad. Den nya functions-appen visas under resursgruppen.":::
 
-I fönstret *publicera* som öppnas i huvud fönstret i Visual Studio kontrollerar du att all information ser korrekt ut och väljer **publicera**.
+I fönstret **Publicera** som öppnas i huvudfönstret Visual Studio kontrollerar du att all information ser korrekt ut. Välj sedan **Publicera**.
 
-:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Skärm bild av Visual Studio i dialog rutan publicera Azure-funktion. Den nya Function-appen visas i listan över funktions program och det finns en Slutför-knapp.":::
+:::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Skärmbild av Visual Studio som visar fönstret Publicera. Knappen Publicera är markerad.":::
 
 > [!NOTE]
-> Om du ser ett popup-fönster som detta: :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="skärm bild av popup-fönstret i Visual Studio kallas publicerings-autentiseringsuppgifter. Det innehåller fält för ett användar namn och lösen ord och en knapp för att försöka hämta autentiseringsuppgifter från Azure." border="false":::
-> Välj **försök att hämta autentiseringsuppgifter från Azure** och **Spara**.
+> Om du ser ett popup-fönster som i följande exempel väljer du **Försök att hämta autentiseringsuppgifter från Azure** och väljer sedan **Spara**.
+> :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Skärmbild av Visual Studio som visar ett popup-fönster med namnet Publicera autentiseringsuppgifter. Den innehåller fält för användarnamn och lösenord. Den innehåller också en knapp för Att försöka hämta autentiseringsuppgifter från Azure." border="false":::
 >
-> Om du ser en varning om att *Uppgradera Functions-versionen på Azure* eller att *din version av Functions runtime inte matchar den version som körs i Azure*:
+> Om du ser någon av följande varningar följer du anvisningarna för att uppgradera till den senaste Azure Functions-körningsversionen:
+> * "Upgrade Functions version on Azure".
+> * "Din version av Functions Runtime matchar inte den version som körs i Azure."
 >
-> Följ anvisningarna för att uppgradera till den senaste versionen av Azure Functions Runtime. Det här problemet kan uppstå om du använder en äldre version av Visual Studio.
+> Dessa varningar kan visas om du använder en gammal version av Visual Studio.
 
-Din Function-app har nu publicerats till Azure.
+Funktionsappen har nu publicerats till Azure.

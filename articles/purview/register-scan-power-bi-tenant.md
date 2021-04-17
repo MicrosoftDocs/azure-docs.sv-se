@@ -1,120 +1,118 @@
 ---
-title: Registrera och skanna en Power BI klient (förhands granskning)
-description: Lär dig hur du använder Azure avdelningens kontroll-portalen för att registrera och skanna en Power BI klient.
+title: Registrera och skanna en Power BI klientorganisation (förhandsversion)
+description: Lär dig hur du använder Azure Purview-portalen för att registrera och skanna en Power BI klientorganisation.
 author: chanuengg
 ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 2ecc5df9db51bb6c923b9e0f47163e492bd76cfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6646f131488a5ae4aa9b20fe614d7ebb46133444
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101695760"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538858"
 ---
-# <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrera och skanna en Power BI klient (förhands granskning)
+# <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrera och skanna en Power BI klientorganisation (förhandsversion)
 
-Den här artikeln visar hur du använder Azure avdelningens kontroll-portalen för att registrera och skanna en Power BI klient.
+Den här artikeln visar hur du använder Azure Purview-portalen för att registrera och skanna Power BI klientorganisation.
 
 > [!Note]
-> Om avdelningens kontroll-instansen och Power BI klienten finns i samma Azure-klient kan du bara använda autentisering med hanterad identitet (MSI) för att konfigurera en genomsökning av en Power BI klient. 
+> Om Purview-instansen och Power BI-klienten finns i samma Azure-klientorganisation kan du bara använda hanterad identitetsautentisering (MSI) för att konfigurera en genomsökning av en Power BI klientorganisation. 
 
-## <a name="create-a-security-group-for-permissions"></a>Skapa en säkerhets grupp för behörigheter
+## <a name="create-a-security-group-for-permissions"></a>Skapa en säkerhetsgrupp för behörigheter
 
-Skapa en säkerhets grupp och Lägg till den avdelningens kontroll-hanterade identiteten för att konfigurera autentisering.
+Om du vill konfigurera autentisering skapar du en säkerhetsgrupp och lägger till den hanterade identiteten Purview i den.
 
-1. Sök efter **Azure Active Directory** i [Azure Portal](https://portal.azure.com).
-1. Skapa en ny säkerhets grupp i Azure Active Directory genom att följa [skapa en grundläggande grupp och lägga till medlemmar med Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+1. I [Azure Portal](https://portal.azure.com)du efter **Azure Active Directory**.
+1. Skapa en ny säkerhetsgrupp i din Azure Active Directory genom att följa [Skapa en grundläggande grupp och lägga till medlemmar med hjälp av Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
     > [!Tip]
-    > Du kan hoppa över det här steget om du redan har en säkerhets grupp som du vill använda.
+    > Du kan hoppa över det här steget om du redan har en säkerhetsgrupp som du vill använda.
 
-1. Välj **säkerhet** som **grupptyp**.
+1. Välj **Säkerhet** som **Grupptyp.**
 
-    :::image type="content" source="./media/setup-power-bi-scan-PowerShell/security-group.png" alt-text="Typ av säkerhets grupp":::
+    :::image type="content" source="./media/setup-power-bi-scan-PowerShell/security-group.png" alt-text="Typ av säkerhetsgrupp":::
 
-1. Lägg till din avdelningens kontroll-hanterade identitet i den här säkerhets gruppen. Välj **medlemmar** och välj sedan **+ Lägg till medlemmar**.
+1. Lägg till din Purview-hanterade identitet i den här säkerhetsgruppen. Välj **Medlemmar** och välj sedan **+ Lägg till medlemmar.**
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/add-group-member.png" alt-text="Lägg till katalogens hanterade instans i gruppen.":::
 
-1. Sök efter din avdelningens kontroll-hanterade identitet och markera den.
+1. Sök efter den hanterade Purview-identiteten och välj den.
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/add-catalog-to-group-by-search.png" alt-text="Lägg till katalog genom att söka efter den":::
 
-    Du bör se ett meddelande som visar att det har lagts till.
+    Du bör se ett meddelande om att det har lagts till.
 
-    :::image type="content" source="./media/setup-power-bi-scan-PowerShell/success-add-catalog-msi.png" alt-text="Tillägget av katalog-MSI lyckades":::
+    :::image type="content" source="./media/setup-power-bi-scan-PowerShell/success-add-catalog-msi.png" alt-text="Lägg till MSI-katalog":::
 
-## <a name="associate-the-security-group-with-the-tenant"></a>Associera säkerhets gruppen med klienten
+## <a name="associate-the-security-group-with-the-tenant"></a>Associera säkerhetsgruppen med klientorganisationen
 
-1. Logga in på [Power BI admin-portalen](https://app.powerbi.com/admin-portal/tenantSettings).
-1. Välj sidan **klient inställningar** .
+1. Logga in på [Power BI-administratörsportalen.](https://app.powerbi.com/admin-portal/tenantSettings)
+1. Välj sidan **Klientinställningar.**
 
     > [!Important]
-    > Du måste vara Power BI administratör för att se sidan klient inställningar.
+    > Du måste vara en Power BI administratör för att se sidan klientinställningar.
 
-1. Välj **admin API**  >  **-Inställningar Tillåt att tjänstens huvud namn använder skrivskyddade Power BI administrations-API: er (för hands version)**.
-1. Välj **vissa säkerhets grupper**.
+1. Välj **Inställningar för administratörs-API**  >  **Tillåt att tjänstens huvudnamn använder skrivskyddade Power BI-API:er (förhandsversion)**.
+1. Välj **Specifika säkerhetsgrupper.**
 
-    :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="Bild som visar hur du tillåter tjänstens huvud namn för att få skrivskyddade Power BI administrations-API-behörigheter":::
+    :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="Bild som visar hur du tillåter att tjänstens huvudnamn får skrivskyddade Power BI api-behörigheter för administratörer":::
 
     > [!Caution]
-    > När du tillåter säkerhets gruppen som du skapade (som har din avdelningens kontroll-hanterade identitet som medlem) att använda skrivskyddade Power BI administrations-API: er kan du också få åtkomst till metadata (t. ex. instrument panel och rapport namn, ägare, beskrivningar osv.) för alla dina Power BI artefakter i den här klienten. När metadata har hämtats till Azure-avdelningens kontroll, avdelningens kontroll-behörigheter, inte Power BI behörigheter, avgör vem som kan se dessa metadata.
+    > När du tillåter den säkerhetsgrupp som du skapade (som har din hanterade identitet Purview som medlem) att använda skrivskyddade Power BI-administratörs-API:er, ger du den även åtkomst till metadata (t.ex. instrumentpanels- och rapportnamn, ägare, beskrivningar osv.) för alla dina Power BI-artefakter i den här klientorganisationen. När metadata har dragits till Azure Purview avgör Purviews behörigheter, inte Power BI behörigheter, vem som kan se dessa metadata.
 
     > [!Note]
-    > Du kan ta bort säkerhets gruppen från dina inställningar för utvecklare, men de metadata som tidigare extraheras tas inte bort från avdelningens kontroll-kontot. Du kan ta bort den separat, om du vill.
+    > Du kan ta bort säkerhetsgruppen från dina utvecklarinställningar, men de metadata som extraherades tidigare tas inte bort från Purview-kontot. Du kan ta bort den separat om du vill.
 
-## <a name="register-your-power-bi-and-set-up-a-scan"></a>Registrera din Power BI och konfigurera en sökning
+## <a name="register-your-power-bi-and-set-up-a-scan"></a>Registrera din Power BI och konfigurera en genomsökning
 
-Nu när du har fått avdelningens kontroll-hanterade identitets behörigheter för att ansluta till administrations-API: t för din Power BI-klient kan du konfigurera din sökning från Azure avdelningens kontroll Studio.
+Nu när du har gett Purview-hanterad identitet behörighet att ansluta till admin-API:et för din Power BI-klient kan du konfigurera genomsökningen från Azure Purview Studio.
 
-Lägg först till en särskild funktions flagga till din avdelningens kontroll-URL 
+1. Välj ikonen **för Hanteringscenter.**
 
-1. Välj ikonen för **hanterings Center** .
+    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/management-center.png" alt-text="Ikon för Hanteringscenter.":::
 
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/management-center.png" alt-text="Ikonen för hanterings Center.":::
+1. Välj sedan **+ Ny** på **Datakällor**.
 
-1. Välj sedan **+ ny** på **data källor**.
+    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/data-sources.png" alt-text="Bild av knappen Ny datakälla":::
 
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/data-sources.png" alt-text="Bild av knappen ny data Källa":::
+    Välj **Power BI** som datakälla.
 
-    Välj **Power BI** som data källa.
-
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/select-power-bi-data-source.png" alt-text="Bild som visar en lista över data källor som kan väljas":::
+    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/select-power-bi-data-source.png" alt-text="Bild som visar listan över datakällor som är tillgängliga att välja":::
 
 3. Ge Power BI instansen ett eget namn.
 
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-friendly-name.png" alt-text="Bild som visar Power BI data källa – eget namn":::
+    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-friendly-name.png" alt-text="Bild som Power BI ett eget namn för datakällan":::
 
-    Namnet måste vara mellan 3-63 tecken långt och får bara innehålla bokstäver, siffror, under streck och bindestreck.  Blank steg är inte tillåtna.
+    Namnet måste vara mellan 3 och 63 tecken långt och får bara innehålla bokstäver, siffror, understreck och bindestreck.  Blanksteg tillåts inte.
 
-    Som standard hittar systemet Power BI klient som finns i samma Azure-prenumeration.
+    Som standard hittar systemet den klientorganisation Power BI som finns i samma Azure-prenumeration.
 
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-datasource-registered.png" alt-text="Power BI data källa registrerad":::
-
-    > [!Note]
-    > För Power BI tillåts registrering och genomsökning av data källor bara för en instans.
-
-
-4. Ge skanningen ett namn. Välj sedan alternativet för att inkludera eller exkludera de personliga arbets ytorna. Observera att den enda autentiseringsmetoden som stöds är **hanterad identitet**.
-
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-scan-setup.png" alt-text="Bild som visar Power BI skannings konfiguration":::
+    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-datasource-registered.png" alt-text="Power BI registrerad datakälla":::
 
     > [!Note]
-    > * Om du växlar konfigurationen av en sökning för att ta med eller undanta en personlig arbets yta utlöses en fullständig genomsökning av PowerBI-källan
-    > * Skannings namnet måste innehålla mellan 3-63 tecken och får bara innehålla bokstäver, siffror, under streck och bindestreck. Blank steg är inte tillåtna.
+    > För Power BI tillåts endast registrering och genomsökning av datakällor för en instans.
 
-5. Konfigurera en genomsöknings utlösare. Dina alternativ är **en gång**, **var sjunde dag** och **var 30: e dag**.
 
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/scan-trigger.png" alt-text="Skanna utlösare avbildning":::
+4. Ge genomsökningen ett namn. Välj sedan alternativet för att inkludera eller exkludera personliga arbetsytor. Observera att den enda autentiseringsmetod som stöds är **Hanterad identitet**.
 
-6. Vid **Granska ny genomsökning** väljer du **Spara och kör** för att starta din sökning.
+    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-scan-setup.png" alt-text="Bild som visar Power BI installation av skanning":::
 
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/save-run-power-bi-scan.png" alt-text="Spara och kör Power BI skärm bild":::
+    > [!Note]
+    > * Om du växlar konfigurationen av en genomsökning för att inkludera eller exkludera en personlig arbetsyta utlöses en fullständig genomsökning av PowerBI-källan
+    > * Genomsökningsnamnet måste vara mellan 3 och 63 tecken långt och får endast innehålla bokstäver, siffror, understreck och bindestreck. Blanksteg tillåts inte.
+
+5. Konfigurera en sökningsutlösare. Alternativen är **En gång**, Var **7:e** dag och **Var 30:e dag.**
+
+    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/scan-trigger.png" alt-text="Bild av genomsökningsutlösare":::
+
+6. På **Granska ny genomsökning** väljer du **Spara och Kör för** att starta genomsökningen.
+
+    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/save-run-power-bi-scan.png" alt-text="Spara och kör Power BI skärmbild":::
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Bläddra i Azure avdelningens kontroll Data Catalog](how-to-browse-catalog.md)
-- [Sök i Azure avdelningens kontroll-Data Catalog](how-to-search-catalog.md)
+- [Bläddra i Azure Purview Data-katalogen](how-to-browse-catalog.md)
+- [Sök i Azure Purview-Data Catalog](how-to-search-catalog.md)

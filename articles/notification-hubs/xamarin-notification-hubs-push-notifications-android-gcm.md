@@ -1,5 +1,5 @@
 ---
-title: Skicka push-meddelanden till Xamarin. Android-appar med hjälp av Azure Notification Hubs | Microsoft Docs
+title: Skicka push-meddelanden till Xamarin.Android-appar med Azure Notification Hubs | Microsoft Docs
 description: I den här självstudiekursen beskrivs hur du använder Azure Notification Hubs för att skicka push-meddelanden till en Xamarin-Android-app.
 author: sethmanheim
 manager: femila
@@ -17,14 +17,14 @@ ms.date: 01/12/2021
 ms.author: matthewp
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: e7d4206de1e097c30e9f5e96bbd935e94892ce0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c97da77619a395a8e2839ea672fe7a78f0501c47
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98221042"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575861"
 ---
-# <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Självstudie: skicka push-meddelanden till Xamarin. Android-appar med hjälp av Notification Hubs
+# <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Självstudie: Skicka push-meddelanden till Xamarin.Android-appar med Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -54,13 +54,13 @@ I den här självstudien gör du följande:
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-### <a name="configure-gcmfcm-settings-for-the-notification-hub"></a>Konfigurera inställningar för GCM/FCM för Notification Hub
+### <a name="configure-gcmfcm-settings-for-the-notification-hub"></a>Konfigurera GCM/FCM-inställningar för meddelandehubben
 
-1. Välj **Google (GCM/FCM)/** i avsnittet **Inställningar** på den vänstra menyn.
-2. Ange **Server nyckeln** som du antecknade från Google Firebase-konsolen.
+1. Välj **Google (GCM/FCM)/** i **avsnittet** Inställningar på den vänstra menyn.
+2. Ange **den servernyckel som** du antecknade från Google Firebase-konsolen.
 3. Välj **Spara** i verktygsfältet.
 
-    ![Skärm bild av Notification Hub i Azure Portal med alternativet Google G C M F C M markerat och beskrivs i rött.](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
+    ![Skärmbild av Notification Hub i Azure-portalen med alternativet Google G C M F C M markerat och markerat i rött.](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
 Meddelandehubben har konfigurerats för att fungera med FCM och du har anslutningssträngar för att registrera din app för att både ta emot meddelanden och skicka push-meddelanden.
 
@@ -69,30 +69,30 @@ Meddelandehubben har konfigurerats för att fungera med FCM och du har anslutnin
 ### <a name="create-visual-studio-project-and-add-nuget-packages"></a>Skapa Visual Studio-projekt och lägg till NuGet-paket
 
 > [!NOTE]
-> De steg som beskrivs i den här självstudien gäller för Visual Studio 2017. 
+> Stegen som beskrivs i den här självstudien gäller Visual Studio 2017. 
 
-1. I Visual Studio öppnar du menyn **Arkiv**. Välj **Nytt** och sedan **Projekt**. Utför följande steg i fönstret **nytt projekt** :
-    1. Expandera **installerad**, **Visual C#** och klicka sedan på **Android**.
+1. I Visual Studio öppnar du menyn **Arkiv**. Välj **Nytt** och sedan **Projekt**. Gör följande **i** fönstret Nytt projekt:
+    1. Expandera **Installerad,** **Visual C#** och klicka sedan på **Android.**
     2. Välj **Android-app (Xamarin)** i listan.
     3. Ange ett **namn** för projektet.
-    4. Välj en **plats** för projektet.
+    4. Välj **en plats** för projektet.
     5. Välj **OK**
 
         ![Dialogrutan Nytt projekt](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog-new.png)
-2. I dialog rutan **ny Android-app** väljer du **Tom app** och väljer **OK**.
+2. I dialogrutan **Ny Android-app** väljer du **Tom app** och sedan **OK.**
 
-    ![Skärm bild som markerar den tomma app-mallen.](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
+    ![Skärmbild som visar mallen Tom app.](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
 3. Utvidga **Egenskaper** i fönstret **Solution Explorer** och klicka på **AndroidManifest.xml**. Uppdatera paketnamnet så att det matchar paketnamnet som du angav när du lade till Firebase Cloud Messaging till ditt projekt i Google Firebase-konsolen.
 
     ![Paketnamn i GCM](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
-4. Gör så här för att ställa in målets Android-version för projektet på **android 10,0** : 
-    1. Högerklicka på projektet och välj **Egenskaper**. 
-    1. I fältet **kompilera med Android-version: (mål ramverk)** väljer du **Android 10,0**. 
-    1. Välj **Ja** i meddelande rutan om du vill fortsätta med att ändra mål ramverket.
+4. Ange Android-målversionen för projektet till **Android 10.0 genom att** följa dessa steg: 
+    1. Högerklicka på projektet och välj **Egenskaper.** 
+    1. I fältet **Kompilera med Android-version: (Målramverk)** väljer **du Android 10.0.** 
+    1. Välj **Ja** i meddelanderutan för att fortsätta med att ändra målramverket.
 1. Lägg till nödvändiga NuGet-paket i projektet genom att följa dessa steg:
-    1. Högerklicka på projektet och välj **Hantera NuGet-paket...**.
-    1. Växla till fliken **installerad** , Välj **Xamarin.Android.support.design** och välj sedan **Uppdatera** i den högra rutan för att uppdatera paketet till den senaste versionen.
-    1. Växla till fliken **Bläddra** . Sök efter **Xamarin. GooglePlayServices. Base**. Välj **Xamarin.GooglePlayServices.Base** i resultatlistan. Markera **Installera**.
+    1. Högerklicka på projektet och välj Hantera **NuGet-paket...**.
+    1. Växla till **fliken Installerad,** välj **Xamarin.Android.Support.Design** och välj **Uppdatera** i den högra rutan för att uppdatera paketet till den senaste versionen.
+    1. Växla till **fliken** Bläddra. Sök efter **Xamarin.GooglePlayServices.Base**. Välj **Xamarin.GooglePlayServices.Base** i resultatlistan. Markera **Installera**.
 
         ![Google Play Services NuGet](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
     6. Sök efter **Xamarin.Firebase.Messaging** i fönstret **NuGet Package Manager**. Välj **Xamarin.Firebase.Messaging** i resultatlistan. Markera **Installera**.
@@ -111,7 +111,7 @@ Meddelandehubben har konfigurerats för att fungera med FCM och du har anslutnin
 
 #### <a name="registering-with-firebase-cloud-messaging"></a>Registering med Firebase Cloud Messaging
 
-1. Om du migrerar från Google Cloud Messaging till Firebase `AndroidManifest.xml` kan projekt filen innehålla en inaktuell GCM-konfiguration, vilket kan orsaka meddelande duplicering. Redigera filen och ta bort följande rader inuti `<application>` avsnittet om det är tillgängligt:
+1. Om du migrerar från Google Cloud Messaging till Firebase kan projektfilen innehålla en inaktuell GCM-konfiguration, vilket kan orsaka duplicering `AndroidManifest.xml` av meddelanden. Redigera filen och ta bort följande rader i `<application>` avsnittet, om de finns:
 
     ```xml
     <receiver
@@ -129,7 +129,7 @@ Meddelandehubben har konfigurerats för att fungera med FCM och du har anslutnin
     </receiver>
     ```
 
-2. Lägg till följande-uttryck **före program** elementet.
+2. Lägg till följande **-instruktioner före programelementet.**
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET" />
@@ -156,10 +156,10 @@ Meddelandehubben har konfigurerats för att fungera med FCM och du har anslutnin
 6. Lägg till följande using-uttryck i `MainActivity.cs`:
 
     ```csharp
-    using Azure.Messaging.NotificationHubs;
+    using WindowsAzure.Messaging.NotificationHubs;
     ```
 
-7. Lägg till följande egenskaper i MainActivity-klassen:
+7. Lägg till följande egenskaper i klassen MainActivity:
 
     ```csharp
     internal static readonly string CHANNEL_ID = "my_notification_channel";
@@ -174,7 +174,7 @@ Meddelandehubben har konfigurerats för att fungera med FCM och du har anslutnin
     NotificationHub.Start(this.Application, HubName, ConnectionString);
     ```
 
-9. Lägg till en klass med namnet `AzureListener` på ditt projekt.
+9. Lägg till en klass med `AzureListener` namnet i projektet.
 10. Lägg till följande using-uttryck i `AzureListener.cs`.
 
     ```csharp
@@ -182,13 +182,13 @@ Meddelandehubben har konfigurerats för att fungera med FCM och du har anslutnin
     using WindowsAzure.Messaging.NotificationHubs;
     ```
 
-11. Lägg till följande ovanför klass deklarationen och låt klassen ärva från `Java.Lang.Object` och implementera `INotificationListener` :
+11. Lägg till följande ovanför klassdeklarationen och gör så att klassen ärver från `Java.Lang.Object` och `INotificationListener` implementerar :
 
     ```csharp
     public class AzureListener : Java.Lang.Object, INotificationListener
     ```
 
-12. Lägg till följande kod inuti `MyFirebaseMessagingService` klassen för att bearbeta meddelanden som tas emot.
+12. Lägg till följande kod i `MyFirebaseMessagingService` klassen för att bearbeta meddelanden som tas emot.
 
     ```csharp
         public void OnPushNotificationReceived(Context context, INotificationMessage message)
@@ -213,7 +213,7 @@ Meddelandehubben har konfigurerats för att fungera med FCM och du har anslutnin
     ```
 
 1. **Skapa** ditt projekt.
-1. **Kör** appen på din enhet eller en inläst emulator
+1. **Köra** appen på enheten eller i en inläst emulator
 
 ## <a name="send-test-notification-from-the-azure-portal"></a>Skicka ett testmeddelande från Azure Portal
 
@@ -221,7 +221,7 @@ Du kan testa att ta emot meddelanden i appen med alternativet **Skicka test** i 
 
 ![Azure Portal – Skicka test](media/partner-xamarin-notification-hubs-android-get-started/send-test-notification.png)
 
-Push-meddelanden skickas vanligtvis via en serverdelstjänst som Mobile Services eller ASP.NET med hjälp av ett kompatibelt bibliotek. Om ett bibliotek inte är tillgängligt för Server delen kan du också använda REST API direkt för att skicka meddelanden.
+Push-meddelanden skickas vanligtvis via en serverdelstjänst som Mobile Services eller ASP.NET med hjälp av ett kompatibelt bibliotek. Om ett bibliotek inte är tillgängligt för din backend-dator kan du också använda REST API direkt för att skicka meddelanden.
 
 ## <a name="next-steps"></a>Nästa steg
 

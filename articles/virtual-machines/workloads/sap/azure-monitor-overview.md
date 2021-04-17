@@ -6,18 +6,18 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: c561a9a786765ccfdaf00abf4e0d9c8cc550cb9a
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 45085c910974402a968075a66087a04fb30e8bd9
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377216"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576211"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>Azure Monitor för SAP-lösningar (förhandsversion)
 
 ## <a name="overview"></a>Översikt
 
-Azure Monitor för SAP-lösningar är en Azure-inbyggd övervakningsprodukt för kunder som kör sina SAP-landskap i Azure. Produkten fungerar med både [SAP på Azure Virtual Machines](./hana-get-started.md) och [SAP på Azure stora instanser](./hana-overview-architecture.md).
+Azure Monitor för SAP-lösningar är en Azure-inbyggd övervakningsprodukt för kunder som kör sina SAP-landskap i Azure. Produkten fungerar med både [SAP på Azure Virtual Machines](./hana-get-started.md) [och SAP på Azure stora instanser](./hana-overview-architecture.md).
 Med Azure Monitor för SAP-lösningar kan kunder samla in telemetridata från Azure-infrastruktur och databaser på en central plats och visuellt korrelera telemetridata för snabbare felsökning.
 
 Azure Monitor för SAP-lösningar erbjuds via Azure Marketplace. Det ger en enkel, intuitiv installationsupplevelse och tar bara några klick för att distribuera resursen för Azure Monitor för SAP-lösningar (kallas **sap monitor resource).**
@@ -39,8 +39,8 @@ Azure Monitor för SAP-lösningar använder kraften hos [befintliga Azure Monito
 
 Datainsamling i Azure Monitor för SAP-lösningar beror på vilka leverantörer som har konfigurerats av kunder. Under den allmänt tillgängliga förhandsversionen samlas följande data in.
 
-Klustertelemetri med hög tillgänglighet:
-- Nod-, resurs- och SBD-enhetsstatus
+Telemetri för pacemakerkluster med hög tillgänglighet:
+- Enhetsstatus för nod, resurs och SBD
 - Platsbegränsningar för pacemaker
 - Kvorumröster och ringstatus
 - [Övrigt](https://github.com/ClusterLabs/ha_cluster_exporter/blob/master/doc/metrics.md)
@@ -53,41 +53,41 @@ SAP HANA telemetri:
 - Indexserver- och namnserverroller
 
 Microsoft SQL Server-telemetri:
-- PROCESSOR, minne, diskanvändning
-- Värdnamn, SQL-instansnamn, SAP-system-ID
-- Batch-begäranden, kompileringar och förväntad sidlivstid över tid
+- CPU, minne, diskanvändning
+- Värdnamn, SQL-instansnamn, SAP System-ID
+- Batch-begäranden, kompileringar och förväntad sidlivslängd över tid
 - De 10 dyraste SQL-uttrycken över tid
 - De 12 största tabellerna i SAP-systemet
 - Problem som registrerats i SQL Server felloggen
 - Blockera processer och SQL-väntestatistik över tid
 
 Telemetri för operativsystem (Linux) 
-- PROCESSORanvändning, förlopp, körning och blockerade processer. 
-- Minnesanvändning och -distribution mellan utnyttjad, cachelagrad, buffrad. 
-- Växlingsanvändning, växlingsfrekvens och växlingshastighet. 
-- Filsystemsanvändning, antal byte som lästs och skrivits per blockenhet. 
+- CPU-användning, antal för förlopp, processer som körs och blockeras. 
+- Minnesanvändning och distribution mellan utnyttjad, cachelagrad, buffrad. 
+- Växlingsanvändning, växling och växlingshastighet. 
+- Filsystemsanvändning, antal byte som läses och skrivs per blockenhet. 
 - Läs-/skrivfördröjning per blockenhet. 
 - Löpande I/O-antal, Beständigt minne, byte för läsning/skrivning. 
-- Nätverkspaket in/ut, in-/utgående nätverksbyte 
+- Nätverkspaket in/ut, nätverksbyte in/ut 
 
 SAP NetWeaver-telemetri:
 
-- Tillgänglighet för SAP-system och programserver, inklusive tillgänglighet för instansprocess för Dispatcher, ICM, Gateway, meddelandeserver, enqueue-server, IGS Watchdog
+- TILLGÄNGLIGHET FÖR SAP-system och programserver, inklusive tillgänglighet för instansprocess för Dispatcher, ICM, Gateway, Meddelandeserver, Enqueue Server, IGS Watchdog
 - Statistik och trender för användning av arbetsprocess
-- Statistik och trender för låsningskö
+- Statistik och trender för ifyllningslås
 - Statistik och trender för köanvändning
 
 ## <a name="data-sharing-with-microsoft"></a>Datadelning med Microsoft
 
 Azure Monitor för SAP-lösningar samlar in systemmetadata för att ge bättre support för våra SAP på Azure kunder. Ingen PII/EUII samlas in.
 Kunder kan aktivera datadelning med Microsoft när de skapar Azure Monitor för SAP-lösningar resurs genom att *välja* Dela i listrutan.
-Vi rekommenderar starkt att kunder aktiverar datadelning eftersom det ger Microsofts support- och teknikteam mer information om kundmiljön och ger bättre support till våra verksamhetskritiska SAP på Azure kunder.
+Vi rekommenderar starkt att kunder aktiverar delning av data eftersom det ger Microsofts support- och ingenjörsteam mer information om kundmiljön och ger bättre support till våra verksamhetskritiska SAP på Azure kunder.
 
 ## <a name="architecture-overview"></a>Översikt över arkitekturen
 
-På en hög nivå förklarar följande diagram hur Azure Monitor för SAP-lösningar samlar in telemetri från SAP HANA databas. Arkitekturen är agnostisk för huruvida SAP HANA distribueras på Azure Virtual Machines eller stora Azure-instanser.
+På en hög nivå förklarar följande diagram hur Azure Monitor för SAP-lösningar samlar in telemetri från SAP HANA databasen. Arkitekturen är agnostisk för huruvida SAP HANA distribueras på Azure Virtual Machines eller stora Azure-instanser.
 
-![Azure Monitor för SAP-lösningsarkitektur](./media/azure-monitor-sap/azure-monitor-architecture.png)
+![Azure Monitor för SAP-lösningsarkitektur](https://user-images.githubusercontent.com/75772258/115046700-62ff3280-9ef5-11eb-8d0d-cfcda526aeeb.png)
 
 Huvudkomponenterna i arkitekturen är:
 - Azure Portal – startpunkten för kunder. Kunder kan navigera till marknadsplatsen inom Azure Portal identifiera Azure Monitor för SAP-lösningar
