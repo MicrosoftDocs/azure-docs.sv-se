@@ -1,5 +1,5 @@
 ---
-title: 'Db2 för att SQL Server på virtuella Azure-datorer: Migreringsguide'
+title: 'Db2 för SQL Server virtuell Azure-dator: Migreringsguide'
 description: I den här guiden lär du dig att migrera dina IBM Db2-databaser till SQL Server virtuella Azure-datorer med hjälp av SQL Server Migration Assistant för Db2.
 ms.custom: ''
 ms.service: virtual-machines-sql
@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 4c40617f4e374a696bbc00b7250500c1f1402421
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 43eff2bea6f6d95291e9ba9650ff42187e39fc70
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588623"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600173"
 ---
 # <a name="migration-guide-ibm-db2-to-sql-server-on-azure-vm"></a>Migreringsguide: IBM Db2 för att SQL Server på virtuella Azure-datorer
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -82,7 +82,7 @@ Verifiera standardmappningarna av datatyper och ändra dem baserat på kraven om
 
 Följ dessa steg om du vill konvertera schemat:
 
-1. (Valfritt) Lägga till dynamiska eller ad hoc-frågor i -instruktioner. Högerklicka på noden och välj sedan Lägg **till instruktioner**. 
+1. (Valfritt) Lägg till dynamiska eller ad hoc-frågor i -instruktioner. Högerklicka på noden och välj sedan Lägg **till instruktioner**. 
 1. Välj **Anslut för att SQL Server**. 
     1. Ange anslutningsinformation för att ansluta till din instans av SQL Server på din virtuella Azure-dator. 
     1. Välj att ansluta till en befintlig databas på målservern eller ange ett nytt namn för att skapa en ny databas på målservern. 
@@ -110,7 +110,7 @@ Följ dessa steg om du vill publicera ditt schema och migrera dina data:
 
 1. Publicera schemat. I **SQL Server Metadata Explorer** från **noden Databaser** högerklickar du på databasen. Välj sedan **Synkronisera med databas**.
 
-   :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/synchronize-with-database.png" alt-text="Skärmbild som visar alternativet för att synkronisera med databasen.":::
+   :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/synchronize-with-database.png" alt-text="Skärmbild som visar alternativet att synkronisera med databasen.":::
 
 1. Migrera data. Högerklicka på databasen eller objektet som du vill migrera i **Db2 Metadata Explorer** och välj **Migrera data.** Du kan också välja **Migrera data i** navigeringsfältet. Om du vill migrera data för en hel databas markerar du kryssrutan bredvid databasnamnet. Om du vill migrera data från enskilda tabeller expanderar du **databasen,** expanderar Tabeller och markerar sedan kryssrutan bredvid tabellen. Avmarkera kryssrutan om du vill utelämna data från enskilda tabeller.
 
@@ -148,10 +148,10 @@ Mer hjälp finns i följande resurser, som har utvecklats för att stödja ett v
 
 |Tillgång  |Description  |
 |---------|---------|
-|[Utvärderingsmodell och verktyg för dataarbetsbelastning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Det här verktyget innehåller föreslagna målplattformar för "bästa passning", molnberedskap och åtgärdsnivå för program/databas för en viss arbetsbelastning. Den erbjuder enkel beräkning med ett klick och rapportgenerering som hjälper till att påskynda stora egendomsutvärderingar genom att tillhandahålla en automatiserad och enhetlig beslutsprocess för målplattformen.|
+|[Utvärderingsmodell och verktyg för dataarbetsbelastning](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Det här verktyget innehåller föreslagna målplattformar med bästa passning, molnberedskap och program-/databasreparationsnivå för en viss arbetsbelastning. Den erbjuder enkel beräkning med ett klick och rapportgenerering som hjälper till att påskynda stora egendomsutvärderingar genom att tillhandahålla en automatiserad och enhetlig beslutsprocess för målplattformen.|
 |[Db2 zOS-datatillgångar – identifierings- och utvärderingspaket](https://github.com/microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|När du har kört SQL-skriptet på en databas kan du exportera resultatet till en fil i filsystemet. Flera filformat stöds, inklusive *.csv, så att du kan samla in resultaten i externa verktyg, till exempel kalkylblad. Den här metoden kan vara användbar om du enkelt vill dela resultat med team som inte har Workbench installerat.|
-
-|[IBM Db2 LUW-inventeringsskript och -artefakter](https://github.com/microsoft/DataMigrationTeam/tree/master/IBM%20DB2%20LUW%20Inventory%20Scripts%20and%20Artifacts)| Den här tillgången innehåller en SQL-fråga som träffar IBM Db2 LUW version 11.1-systemtabeller och tillhandahåller ett antal objekt efter schema och objekttyp, en grov uppskattning av "rådata" i varje schema och storleksändring av tabeller i varje schema, med resultat som lagras i ett CSV-format.| | [Db2 LUW pure scale on Azure – konfigurationsguide för](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/DB2%20PureScale%20on%20Azure.pdf)| Den här guiden fungerar som en startpunkt för en Db2-implementeringsplan. Även om affärskraven skiljer sig åt gäller samma grundläggande mönster. Det här arkitekturmönstret kan också användas för OLAP-program på Azure.|
+|[IBM Db2 LUW-inventeringsskript och artefakter](https://github.com/microsoft/DataMigrationTeam/tree/master/IBM%20DB2%20LUW%20Inventory%20Scripts%20and%20Artifacts)|Den här tillgången innehåller en SQL-fråga som träffar IBM Db2 LUW version 11.1-systemtabeller och som tillhandahåller ett antal objekt efter schema och objekttyp, en ungefärlig uppskattning av "rådata" i varje schema och storleksändring av tabeller i varje schema, med resultat som lagras i ett CSV-format.|
+|[Db2 LUW pure scale on Azure – installationsguide](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/DB2%20PureScale%20on%20Azure.pdf)|Den här guiden fungerar som en startpunkt för en Db2-implementeringsplan. Även om affärskraven skiljer sig åt gäller samma grundläggande mönster. Det här arkitekturmönstret kan också användas för OLAP-program i Azure.|
 
 Data SQL-teknikteamet utvecklade dessa resurser. Det här teamets grundstadga är att avblockera och påskynda komplex modernisering för migreringsprojekt för dataplattformar till Microsofts Azure-dataplattform.
 

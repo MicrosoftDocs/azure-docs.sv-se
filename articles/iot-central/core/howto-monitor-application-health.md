@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a9abd00035ccd779fcbe5dcf29b90f47758ff403
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: df89d53e6b5043c1ef3caa1c92f2abaae542d6ec
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588657"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599017"
 ---
 # <a name="monitor-the-overall-health-of-an-iot-central-application"></a>Övervaka den övergripande hälsan för ett IoT Central program
 
@@ -54,7 +54,7 @@ Mått kan skilja sig från de siffror som visas på Azure IoT Central fakturan. 
 
 - IoT Central [standardprisplaner](https://azure.microsoft.com/pricing/details/iot-central/) omfattar två enheter och varierande meddelandekvoter utan kostnad. Även om de kostnadsfria objekten undantas från faktureringen räknas de fortfarande i måtten.
 
-- IoT Central automatiskt ett testenhets-ID för varje enhetsmall i programmet. Det här enhets-ID:t visas **på sidan Hantera testenhet** för en enhetsmall. Lösningsbyggare kan välja att verifiera [sina enhetsmallar innan de](./overview-iot-central.md#connect-devices) publicerar dem genom att generera kod som använder dessa testenhets-ID:er. Även om dessa enheter undantas från faktureringen räknas de fortfarande i måtten.
+- IoT Central automatiskt ett testenhets-ID för varje enhetsmall i programmet. Det här enhets-ID:t visas **på sidan Hantera testenhet** för en enhetsmall. Lösningsbyggare kan välja att verifiera sina enhetsmallar innan de publicerar dem genom att generera kod som använder dessa testenhets-ID:er. Även om dessa enheter undantas från faktureringen räknas de fortfarande i måtten.
 
 - Mått kan visa en delmängd av kommunikation från enhet till moln, men all kommunikation mellan enheten och molnet räknas som [ett meddelande för fakturering.](https://azure.microsoft.com/pricing/details/iot-central/)
 

@@ -1,6 +1,6 @@
 ---
-title: Anslut Alcide kAudit-data till Azure Sentinel | Microsoft Docs
-description: Lär dig hur du ansluter Alcide kAudit-data till Azure Sentinel.
+title: Ansluta Aliaside kAudit-data till Azure Sentinel| Microsoft Docs
+description: Lär dig hur du ansluter Alias kAudit-data till Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: 6d1314b79f09f1bed2de5d6964b0a6224b5962ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b146e228de13109975a76b0e4c6c9fd183fd362d
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100096879"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600412"
 ---
-# <a name="connect-your-alcide-kaudit-to-azure-sentinel"></a>Anslut din Alcide-kAudit till Azure Sentinel
+# <a name="connect-your-alcide-kaudit-to-azure-sentinel"></a>Anslut Ditt Aliasid kAudit till Azure Sentinel
 
 > [!IMPORTANT]
-> Alcide kAudit data Connector i Azure Sentinel är för närvarande en offentlig för hands version.
-> Den här funktionen tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Dataanslutningsappen Alias kAudit i Azure Sentinel är för närvarande i offentlig förhandsversion.
+> Den här funktionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[Alcide kAudit](https://www.alcide.io/kaudit-K8s-forensics/) hjälper dig att identifiera avvikande Kubernetes beteenden och fokusera på Kubernetes överträdelser och incidenter samtidigt som du minskar identifierings tiden. Den här artikeln förklarar hur du ansluter din Alcide kAudit-lösning till Azure Sentinel. Med Alcide kAudit data Connector kan du enkelt ta med dina kAudit-loggdata till Azure Sentinel, så att du kan visa den i arbets böcker, använda den för att skapa anpassade aviseringar och införliva den för att förbättra undersökningen. Integreringen mellan Alcide kAudit och Azure Sentinel använder REST API.
+[Med Alias kAudit](https://www.alcide.io/kaudit-K8s-forensics/) kan du identifiera avvikande Kubernetes-beteenden och fokusera på Kubernetes-överträdelser och incidenter samtidigt som du minskar identifieringstiden. I den här artikeln förklaras hur du ansluter din Alide kAudit-lösning till Azure Sentinel. Med dataanslutningsappen Alias kAudit kan du enkelt föra in dina kAudit-loggdata i Azure Sentinel, så att du kan visa dem i arbetsböcker, använda dem för att skapa anpassade aviseringar och lägga till dem för att förbättra undersökningen. Integrering mellan Aliaside kAudit och Azure Sentinel använder REST API.
 
 > [!NOTE]
-> Data lagras på den geografiska platsen för den arbets yta där du kör Azure Sentinel.
+> Data lagras på den geografiska platsen för den arbetsyta som du kör Azure Sentinel.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Du måste ha läs-och Skriv behörighet på Azure Sentinel-arbetsytan.
+- Du måste ha läs- och skrivbehörighet på Azure Sentinel arbetsytan.
 
-- Du måste ha Läs behörighet till delade nycklar för arbets ytan.
+- Du måste ha läsbehörighet till delade nycklar för arbetsytan.
 
-## <a name="configure-and-connect-alcide-kaudit"></a>Konfigurera och ansluta Alcide-kAudit
+## <a name="configure-and-connect-alcide-kaudit"></a>Konfigurera och ansluta Alcide kAudit
 
-Alcide kAudit kan exportera loggar direkt till Azure Sentinel.
+Alias kAudit kan exportera loggar direkt till Azure Sentinel.
 
-1. I Azure Sentinel-portalen klickar du på **data kopplingar** på navigerings menyn.
+1. I Azure Sentinel-portalen klickar du **på Datakopplingar** på navigeringsmenyn.
 
-1. Välj **Alcide kAudit** från galleriet och klicka sedan på knappen **Öppna kopplings sida** .
+1. Välj **Alcide kAudit** från galleriet och klicka sedan på **knappen Öppna anslutningssidan.**
 
-1. Följ de stegvisa anvisningarna i [installations guiden för Alcide-kAudit](https://get.alcide.io/hubfs/Azure%20Sentinel%20Integration%20with%20kAudit.pdf).
+1. Följ de stegvisa anvisningarna i [installationsguiden för Aliaside kAudit.](https://awesomeopensource.com/project/alcideio/kaudit?categoryPage=29#before-installing-alcide-kaudit)
 
-1. När du uppmanas till arbetsyte-ID: t och den primära nyckeln kan du kopiera dem från Alcide kAudit data Connector-sidan.
+1. När du tillfrågas om arbetsyte-ID och primärnyckel kan du kopiera dem från sidan för anslutningsappen Förkaudit-data.
 
-    :::image type="content" source="media/connect-alcide-kaudit/alcide-workspace-id-primary-key.png" alt-text="Arbetsyte-ID och primär nyckel":::
+    :::image type="content" source="media/connect-alcide-kaudit/alcide-workspace-id-primary-key.png" alt-text="Arbetsyte-ID och primärnyckel":::
 
 ## <a name="find-your-data"></a>Hitta dina data
 
-När en lyckad anslutning har upprättats visas data i **loggarna** under följande data typer i **CustomLogs**:
+När en lyckad anslutning har upprättats visas data i **Loggar** under följande datatyper i **CustomLogs:**
 
-- **alcide_kaudit_detections_1_CL** -Alcide kaudit-identifieringar 
-- **alcide_kaudit_activity_1_CL** -Alcide kaudit aktivitets loggar
-- antal **alcide_kaudit_selections_count_1_CL** -Alcide kaudit-aktiviteter
-- information om **alcide_kaudit_selections_details_1_CL** -Alcide kaudit-aktivitet
+- **alcide_kaudit_detections_1_CL** – Alias kAudit-identifieringar 
+- **alcide_kaudit_activity_1_CL** – Alias kAudit-aktivitetsloggar
+- **alcide_kaudit_selections_count_1_CL** – AntalkAudit-aktiviteter för Alias
+- **alcide_kaudit_selections_details_1_CL** – Information om Aktivitetsdetaljer för Aliasid kAudit
 
-Om du vill använda det relevanta schemat i loggar för Alcide-kAudit kan du söka efter de data typer som anges ovan.
+Om du vill använda det relevanta schemat i Loggar för Xmlide kAudit söker du efter de datatyper som nämns ovan.
 
-Det kan ta upp till 20 minuter innan loggarna börjar visas i Log Analytics.
+Det kan ta upp till 20 minuter innan loggarna visas i Log Analytics.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I det här dokumentet har du lärt dig hur du ansluter Alcide-kAudit till Azure Sentinel. Om du vill dra full nytta av de funktioner som är inbyggda i denna data anslutning klickar du på fliken **Nästa steg** på data anslutnings sidan. Där hittar du några färdiga exempel frågor så att du kan komma igång med att hitta användbar information.
+I det här dokumentet har du lärt dig hur du ansluter Aliaside kAudit till Azure Sentinel. Om du vill dra full nytta av funktionerna som är inbyggda i den här dataanslutningen klickar du på **fliken Nästa** steg på sidan för dataanslutning. Där hittar du några färdiga exempelfrågor så att du kan komma igång med att hitta användbar information.
 
 Mer information om Azure Sentinel finns i följande artiklar:
 
-- Lär dig hur du [får insyn i dina data och potentiella hot](quickstart-get-visibility.md).
-- Kom igång [med att identifiera hot med Azure Sentinel](tutorial-detect-threats-built-in.md).
-- [Använd arbets böcker](tutorial-monitor-your-data.md) för att övervaka dina data.
+- Lär dig hur [du får insyn i dina data och potentiella hot.](quickstart-get-visibility.md)
+- Kom igång [med att identifiera hot Azure Sentinel](tutorial-detect-threats-built-in.md).
+- [Använd arbetsböcker](tutorial-monitor-your-data.md) för att övervaka dina data.

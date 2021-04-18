@@ -1,254 +1,254 @@
 ---
-title: Azures säkerhets bas linje för Azure Monitor
-description: Azure Monitor säkerhets bas linje ger procedur vägledning och resurser för att implementera de säkerhets rekommendationer som anges i Azures säkerhets benchmark.
+title: Azure-säkerhetsbaslinje för Azure Monitor
+description: Den Azure Monitor säkerhetsbaslinjen innehåller procedurvägledning och resurser för att implementera säkerhetsrekommendationerna som anges i Azure Security Benchmark.
 author: msmbaldwin
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bd3bb5e3060752d086f80f44a8f136cb861669c0
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: f002c7196b864d4a04beda1124d0519af612b716
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078527"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600241"
 ---
-# <a name="azure-security-baseline-for-azure-monitor"></a>Azures säkerhets bas linje för Azure Monitor
+# <a name="azure-security-baseline-for-azure-monitor"></a>Azure-säkerhetsbaslinje för Azure Monitor
 
-Den här säkerhets bas linjen använder vägledning från [Azures säkerhets benchmark version 1.0](../security/benchmarks/overview-v1.md) till Azure Monitor. Azure Security Benchmark ger rekommendationer om hur du kan skydda dina molnlösningar i Azure. Innehållet grupperas efter de **säkerhets kontroller** som definieras av Azures säkerhets benchmark och relaterade rikt linjer som gäller för Azure Monitor. **Kontroller** som inte är tillämpliga på Azure Monitor, eller för vilka ansvaret är Microsofts, har uteslutits.
+Den här säkerhetsbaslinjen tillämpar riktlinjer [från Azure Security Benchmark version 1.0](../security/benchmarks/overview-v1.md) Azure Monitor. Azure Security Benchmark ger rekommendationer om hur du kan skydda dina molnlösningar i Azure. Innehållet grupperas efter de säkerhetskontroller **som definierats** av Azure Security Benchmark och tillhörande vägledning som gäller för Azure Monitor. **Kontroller** som inte Azure Monitor, eller för vilka ansvaret är Microsofts, har undantagits.
 
-Om du vill se hur Azure Monitor helt mappar till Azures säkerhets mätning, se den [fullständiga Azure Monitor mappnings filen för säkerhets bas linjen](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
+Information om hur Azure Monitor mappning helt till Azure Security Benchmark finns i den fullständiga Azure Monitor [säkerhetsbaslinjemappningsfilen](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 ## <a name="network-security"></a>Nätverkssäkerhet
 
 *Mer information finns i [Azure Security Benchmark: Nätverkssäkerhet](../security/benchmarks/security-control-network-security.md).*
 
-### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: skydda Azure-resurser i virtuella nätverk
+### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1: Skydda Azure-resurser i virtuella nätverk
 
-**Vägledning**: Aktivera Azures privata länk om du vill tillåta åtkomst till Azure SaaS Services (till exempel Azure Monitor) och Azure-värdbaserade kund-/partner tjänster över en privat slut punkt i det virtuella nätverket. Trafik mellan ditt virtuella nätverk och tjänsten passerar över Microsofts stamnätverk, vilket eliminerar exponering från det offentliga Internet.
+**Vägledning:** Aktivera Azure Private Link att tillåta åtkomst till Azure SaaS-tjänster (till exempel Azure Monitor) och Azure-värdtjänster för kunder/partner via en privat slutpunkt i ditt virtuella nätverk. Trafik mellan ditt virtuella nätverk och tjänsten passerar över Microsofts stamnätverk, vilket eliminerar exponering från det offentliga Internet.
 
-Om du vill tillåta att trafik når Azure Monitor använder du tjänst taggarna "AzureMonitor" för att tillåta inkommande och utgående trafik via nätverks säkerhets grupper. Om du vill tillåta att tillgänglighets övervaknings test trafik når Azure Monitor använder du tjänst tag gen "ApplicationInsightsAvailability" till all inkommande trafik via nätverks säkerhets grupper. Om du vill tillåta att aviserings meddelanden når kund slut punkter använder du tjänst tag gen "ActionGroup" för att tillåta inkommande trafik via nätverks säkerhets grupper.
+Använd tjänsttaggarna "AzureMonitor" för att tillåta inkommande och utgående trafik via nätverkssäkerhetsgrupper för att tillåta att trafik når Azure Monitor trafik. Om du vill tillåta att testtrafiken för tillgänglighetsövervakning når Azure Monitor du tjänsttaggen "ApplicationInsightsAvailability" för all inkommande trafik via nätverkssäkerhetsgrupper. Om du vill tillåta att aviseringsmeddelanden når kundernas slutpunkter använder du tjänsttaggen "ActionGroup" för att tillåta inkommande trafik via nätverkssäkerhetsgrupper.
 
-Regler för virtuella nätverk gör det möjligt för Azure Monitor att endast acceptera kommunikation som skickas från valda undernät i ett virtuellt nätverk.
+Regler för virtuellt nätverk Azure Monitor att endast acceptera kommunikation som skickas från valda undernät i ett virtuellt nätverk.
 
-Använd Log Analytics Gateway för att skicka data till en Log Analytics arbets yta i Azure Monitor på uppdrag av datorer som inte kan ansluta direkt till Internet för att förhindra att datorer måste vara anslutna till Internet. 
+Använd Log Analytics-gatewayen för att skicka data till en Log Analytics-arbetsyta i Azure Monitor för de datorer som inte kan ansluta direkt till Internet, vilket förhindrar att datorer måste vara anslutna till Internet. 
 
-- [Så här konfigurerar du en privat länk för Azure Monitor](/azure/azure-monitor/platform/private-link-security)
+- [Konfigurera en Private Link för Azure Monitor](/azure/azure-monitor/platform/private-link-security)
 
-- [Ansluta datorer utan Internet åtkomst med hjälp av Log Analytics gateway i Azure Monitor](/azure/azure-monitor/platform/gateway)
+- [Ansluta datorer utan Internetåtkomst med hjälp av Log Analytics-gatewayen i Azure Monitor](/azure/azure-monitor/platform/gateway)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1,2: övervaka och logga konfigurationen och trafiken för virtuella nätverk, undernät och nätverks gränssnitt
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2: Övervaka och logga konfiguration och trafik för virtuella nätverk, undernät och nätverksgränssnitt
 
-**Vägledning**: Azure Monitor är en kärn tjänst och inte stöder distribution direkt till ett virtuellt nätverk. den underliggande infrastrukturen hanteras av Microsoft. För resurser som gör nätverks anslutningar till Azure Monitor erbjudandet skyddar du dock nätverket med en nätverks säkerhets grupp. Aktivera flödes loggar för nätverks säkerhets grupper och skicka loggar till ett lagrings konto för trafik granskning. Du kan också skicka flödes loggar till en Log Analytics arbets yta och använda Trafikanalys för att ge insikter i trafikflödet i Azure-molnet. Några av fördelarna med Trafikanalys är möjligheten att visualisera nätverks aktivitet och identifiera aktiva punkter, identifiera säkerhetshot, förstå trafikflödes mönster och hitta nätverks problem.
+**Vägledning:** Azure Monitor är en kärntjänst och inte stöder distribution direkt till ett virtuellt nätverk, dess underliggande infrastruktur hanteras av Microsoft. Men för resurser som gör nätverksanslutningar till Azure Monitor ska du skydda nätverket med en nätverkssäkerhetsgrupp. Aktivera flödesloggar för nätverkssäkerhetsgruppen och skicka loggar till ett lagringskonto för trafikgranskning. Du kan också skicka flödesloggar till en Log Analytics-arbetsyta och använda Trafikanalys för att ge insikter om trafikflödet i ditt Azure-moln. Vissa fördelar med Trafikanalys är möjligheten att visualisera nätverksaktivitet och identifiera hotpunkter, identifiera säkerhetshot, förstå trafikflödesmönster och hitta felkonfigurationer i nätverk.
 
-När du använder Azure Monitor med privat länk får du åtkomst till nätverks loggning, till exempel data som bearbetas av den privata slut punkten (IN/ut).
+När du använder Azure Monitor med Private Link får du åtkomst till nätverksloggning, till exempel "Data som bearbetas av den privata slutpunkten (IN/OUT)".
 
-- [Nätverks krav för Azure Monitor agenter](/azure/azure-monitor/platform/log-analytics-agent#network-requirements)
+- [Nätverkskrav för Azure Monitor agenter](/azure/azure-monitor/platform/log-analytics-agent#network-requirements)
 
-- [Ansluta datorer utan Internet åtkomst med hjälp av Log Analytics gateway i Azure Monitor](/azure/azure-monitor/platform/gateway)
+- [Ansluta datorer utan Internetåtkomst med hjälp av Log Analytics-gatewayen i Azure Monitor](/azure/azure-monitor/platform/gateway)
 
-- [Så här aktiverar du flödes loggar för nätverks säkerhets grupper](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
+- [Så här aktiverar du flödesloggar för nätverkssäkerhetsgrupp](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
 - [Så här aktiverar och använder du Trafikanalys](../network-watcher/traffic-analytics.md)
 
-- [Förstå nätverks säkerhet som tillhandahålls av Azure Security Center](../security-center/security-center-network-recommendations.md)
+- [Förstå nätverkssäkerhet som tillhandahålls av Azure Security Center](../security-center/security-center-network-recommendations.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: minimera komplexitet och administrativa kostnader för nätverks säkerhets regler
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Minimera komplexiteten och det administrativa arbetet med nätverkssäkerhetsregler
 
-**Vägledning**: om du vill tillåta att trafik når Azure Monitor använder du tjänst taggarna "AzureMonitor" för att tillåta inkommande och utgående trafik via nätverks säkerhets grupper. Om du vill tillåta att tillgänglighets övervaknings test trafik når Azure Monitor använder du tjänst tag gen "ApplicationInsightsAvailability" till all inkommande trafik via nätverks säkerhets grupper. Microsoft hanterar de adressprefix som omfattas av tjänst tag gen och uppdaterar automatiskt tjänst tag gen när adresser ändras.
+**Vägledning:** Använd tjänsttaggarna "AzureMonitor" för att tillåta inkommande och utgående trafik genom nätverkssäkerhetsgrupper om du vill tillåta att trafik når Azure Monitor trafik via tjänsttaggarna "AzureMonitor". Om du vill tillåta att testtrafiken för tillgänglighetsövervakning når Azure Monitor använder du tjänsttaggen "ApplicationInsightsAvailability" för all inkommande trafik via nätverkssäkerhetsgrupper. Microsoft hanterar de adressprefix som omfattas av tjänsttaggen och uppdaterar automatiskt tjänsttaggen när adresserna ändras.
 
-- [Förstå och använda service märken](../virtual-network/service-tags-overview.md)
+- [Förstå och använda tjänsttaggar](../virtual-network/service-tags-overview.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="110-document-traffic-configuration-rules"></a>1,10: dokumentera trafik konfigurations regler
+### <a name="110-document-traffic-configuration-rules"></a>1.10: Dokumentera trafikkonfigurationsregler
 
-**Vägledning**: Azure Monitor är en del av Azure Core-tjänsterna och kan inte distribueras som en tjänst separat. Azure Monitor-komponenter, inklusive Azure Monitor agenten, och Application Insights SDK kan distribueras med dina resurser och detta kan påverka position av dessa resurser.
+**Vägledning:** Azure Monitor är en del av Azure-kärntjänsterna och kan inte distribueras som en tjänst separat. Azure Monitor-komponenter, inklusive Azure Monitor Agent och Application Insights SDK kan distribueras med dina resurser, vilket kan påverka resursernas säkerhetsstatus.
 
-- [Nätverks krav för Azure Monitor agenter](/azure/azure-monitor/platform/log-analytics-agent#network-requirements)
+- [Nätverkskrav för Azure Monitor agenter](/azure/azure-monitor/platform/log-analytics-agent#network-requirements)
 
-- [Ansluta datorer utan Internet åtkomst med hjälp av Log Analytics gateway i Azure Monitor](/azure/azure-monitor/platform/gateway) 
+- [Ansluta datorer utan Internetåtkomst med hjälp av Log Analytics-gatewayen i Azure Monitor](/azure/azure-monitor/platform/gateway) 
 
 - [Se komma igång med Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview#get-started)
 
-- [Så här konfigurerar du webb test för tillgänglighet](app/monitor-web-app-availability.md)
+- [Konfigurera webbtester för tillgänglighet](app/monitor-web-app-availability.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: Använd automatiserade verktyg för att övervaka konfigurationer för nätverks resurser och identifiera ändringar
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Använd automatiserade verktyg för att övervaka nätverksresurskonfigurationer och identifiera ändringar
 
-**Vägledning**: Använd Azure aktivitets logg för att övervaka datorkonfigurationer och identifiera ändringar i nätverks resurser som är relaterade till Azure Monitor. Skapa aviseringar inom Azure Monitor som ska utlösas när ändringar av de kritiska nätverks resurserna sker.
+**Vägledning:** Använd Azure-aktivitetsloggen för att övervaka resurskonfigurationer och identifiera ändringar i dina nätverksresurser relaterade till Azure Monitor. Skapa aviseringar inom Azure Monitor som utlöses när ändringar av dessa viktiga nätverksresurser sker.
 
-- [Visa och hämta Azure aktivitets logg händelser](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Så här visar och hämtar du Händelser i Azure-aktivitetsloggen](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
 
 - [Så här skapar du aviseringar i Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="logging-and-monitoring"></a>Loggning och övervakning
 
-*Mer information finns i [säkerhets benchmark för Azure: loggning och övervakning](../security/benchmarks/security-control-logging-monitoring.md).*
+*Mer information finns i [Prestandatest för Azure-säkerhet: Loggning och övervakning.](../security/benchmarks/security-control-logging-monitoring.md)*
 
-### <a name="22-configure-central-security-log-management"></a>2,2: Konfigurera central hantering av säkerhets loggar
+### <a name="22-configure-central-security-log-management"></a>2.2: Konfigurera central hantering av säkerhetsloggar
 
-**Vägledning**: Azure Monitor använder aktivitets loggar för att logga ändringar i resurserna. Du kan exportera loggarna till Azure Storage, Event Hub eller en Log Analytics arbets yta. Mata in loggar via Azure Monitor för att samla in säkerhets data som genererats av slut punkts enheter, nätverks resurser och andra säkerhets system. I Azure Monitor kan du fråga och utföra analyser mot data, använda Azure Storage-konton för långsiktig lagring av loggar.
+**Vägledning:** Azure Monitor använder aktivitetsloggar för att logga ändringar i dess resurser. Du kan exportera dessa loggar till Azure Storage, Event Hub eller en Log Analytics-arbetsyta. Mata in loggar via Azure Monitor för att aggregera säkerhetsdata som genereras av slutpunktsenheter, nätverksresurser och andra säkerhetssystem. Inom Azure Monitor kan du köra frågor mot och utföra analyser mot data, använda Azure Storage-konton för all långsiktig/arkiveringslagring av loggar.
 
-Alternativt kan du aktivera och fordonsbaserad data till Azure Sentinel eller en SIEM från tredje part.
+Du kan också aktivera och ta med data till Azure Sentinel siem eller siem från tredje part.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
+- [Så här samlar du in plattformsloggar och mått med Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
 
-- [Så här samlar du in interna värd loggar för virtuella Azure-datorer med Azure Monitor](/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Så här samlar du in interna värdloggar för virtuella Azure-datorer med Azure Monitor](/azure/azure-monitor/learn/quick-collect-azurevm)
 
-- [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
+- [Registrera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Komma igång med Azure Monitor och SIEM-integrering från tredje part](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
+- [Komma igång med Azure Monitor SIEM-integrering från tredje part](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: [Azures säkerhets benchmark](/azure/governance/policy/samples/azure-security-benchmark) är standard policy initiativ för Security Center och är grunden för [Security Center rekommendationer](/azure/security-center/security-center-recommendations). De Azure Policy-definitioner som är relaterade till den här kontrollen aktive ras automatiskt av Security Center. Aviseringar som är relaterade till den här kontrollen kan kräva en [Azure Defender](/azure/security-center/azure-defender) -plan för de relaterade tjänsterna.
+**Azure Security Center övervakning:** [Azure Security Benchmark](/azure/governance/policy/samples/azure-security-benchmark) är standardprincipinitiativ för Security Center och är grunden för Security Center [rekommendationerna.](/azure/security-center/security-center-recommendations) De Azure Policy som är relaterade till den här kontrollen aktiveras automatiskt av Security Center. Aviseringar som rör den här kontrollen kan kräva [en Azure Defender](/azure/security-center/azure-defender) plan för de relaterade tjänsterna.
 
-**Azure policy inbyggda definitioner – Microsoft. Insights**:
+**Azure Policy inbyggda definitioner – microsoft.insights:**
 
 [!INCLUDE [Resource Policy for microsoft.insights 2.2](../../includes/policy/standards/asb/rp-controls/microsoft.insights-2-2.md)]
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: Aktivera gransknings loggning för Azure-resurser
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Aktivera granskningsloggning för Azure-resurser
 
-**Vägledning**: Azure Monitor använder aktivitets loggar aktive ras aktivitets loggen automatiskt och loggar åtgärder som utförs på Azure Monitor resurser, t. ex.: vem som startade åtgärden, när åtgärden utfördes, status för åtgärden och annan användbar gransknings information. 
+**Vägledning:** Azure Monitor använder aktivitetsloggar, aktivitetsloggen aktiveras automatiskt och loggar åtgärder som vidtas på Azure Monitor-resurser, till exempel: vem som startade åtgärden, när åtgärden inträffade, status för åtgärden och annan användbar granskningsinformation. 
 
-- [Samla in plattforms loggar och mått med Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
+- [Så här samlar du in plattformsloggar och mått med Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
 
-- [Förstå loggning och olika logg typer i Azure](/azure/azure-monitor/platform/platform-logs-overview)
+- [Förstå loggning och olika loggtyper i Azure](/azure/azure-monitor/platform/platform-logs-overview)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: [Azures säkerhets benchmark](/azure/governance/policy/samples/azure-security-benchmark) är standard policy initiativ för Security Center och är grunden för [Security Center rekommendationer](/azure/security-center/security-center-recommendations). De Azure Policy-definitioner som är relaterade till den här kontrollen aktive ras automatiskt av Security Center. Aviseringar som är relaterade till den här kontrollen kan kräva en [Azure Defender](/azure/security-center/azure-defender) -plan för de relaterade tjänsterna.
+**Azure Security Center övervakning:** [Azure Security Benchmark](/azure/governance/policy/samples/azure-security-benchmark) är standardprincipinitiativ för Security Center och är grunden för Security Center [rekommendationerna.](/azure/security-center/security-center-recommendations) De Azure Policy som är relaterade till den här kontrollen aktiveras automatiskt av Security Center. Aviseringar som rör den här kontrollen kan kräva [en Azure Defender](/azure/security-center/azure-defender) plan för de relaterade tjänsterna.
 
-**Azure policy inbyggda definitioner – Microsoft. Insights**:
+**Azure Policy inbyggda definitioner – microsoft.insights:**
 
 [!INCLUDE [Resource Policy for microsoft.insights 2.3](../../includes/policy/standards/asb/rp-controls/microsoft.insights-2-3.md)]
 
-### <a name="25-configure-security-log-storage-retention"></a>2,5: Konfigurera säkerhets logg lagrings kvarhållning
+### <a name="25-configure-security-log-storage-retention"></a>2.5: Konfigurera kvarhållning av säkerhetslogglagring
 
-**Vägledning**: i Azure Monitor anger Log Analytics du arbets ytans lagrings period enligt organisationens regler för efterlevnad. Använd Azure Storage konton för långsiktig/Arkiverad lagring av loggarna.
+**Vägledning:** I Azure Monitor anger du kvarhållningsperioden för Log Analytics-arbetsytan enligt organisationens efterlevnadsregler. Använd Azure Storage-konton för all långsiktig/arkiveringslagring av dina loggar.
 
-- [Ändra data lagrings perioden i Log Analytics](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Ändra kvarhållningsperioden för data i Log Analytics](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
-- [Konfigurera bevarande princip för Azure Storage konto loggar](/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Så här konfigurerar du bevarandeprincip för Azure Storage-kontologgar](/azure/storage/common/storage-monitor-storage-account#configure-logging)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="26-monitor-and-review-logs"></a>2,6: övervaka och granska loggar
+### <a name="26-monitor-and-review-logs"></a>2.6: Övervaka och granska loggar
 
-**Vägledning**: analysera och övervaka loggar för avvikande beteende och granska resultaten regelbundet. Använd Azure Monitor och en Log Analytics arbets yta för att granska loggar och köra frågor på loggdata.
+**Vägledning:** Analysera och övervaka loggar för avvikande beteende och granska resultaten regelbundet. Använd Azure Monitor och en Log Analytics-arbetsyta för att granska loggar och köra frågor på loggdata.
 
-Du kan också aktivera och inaktivera data till Azure Sentinel eller en SIEM från tredje part.
+Du kan också aktivera och ta med data till Azure Sentinel eller en SIEM från tredje part.
 
-- [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
+- [Registrera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Komma igång med Log Analytics frågor](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Komma igång med Log Analytics-frågor](/azure/azure-monitor/log-query/log-analytics-tutorial)
 
 - [Så här utför du anpassade frågor i Azure Monitor](/azure/azure-monitor/log-query/get-started-queries)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: aktivera aviseringar för avvikande aktiviteter
+### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7: Aktivera aviseringar för avvikande aktiviteter
 
-**Vägledning**: Använd Azure Security Center med Log Analytics arbets yta för övervakning och avisering om avvikande aktivitet i säkerhets loggar och händelser. Du kan också aktivera och inaktivera data till Azure Sentinel.
+**Vägledning:** Använd Azure Security Center Log Analytics-arbetsyta för övervakning och avisering om avvikande aktivitet som finns i säkerhetsloggar och händelser. Du kan också aktivera och ta med data för att Azure Sentinel.
 
-- [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
+- [Registrera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 - [Hantera aviseringar i Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Så här aviserar du om Log Analytics-loggdata](/azure/azure-monitor/learn/tutorial-response)
+- [Så här varnar du om loggdata i Log Analytics](/azure/azure-monitor/learn/tutorial-response)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="identity-and-access-control"></a>Identitets- och åtkomstkontroll
 
-*Mer information finns i [Azure Security benchmark: identitet och Access Control](../security/benchmarks/security-control-identity-access-control.md).*
+*Mer information finns i [Azure Security Benchmark: Identity and Access Control](../security/benchmarks/security-control-identity-access-control.md).*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: underhåll en inventering av administrativa konton
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Upprätthålla en förteckning över administrativa konton
 
-**Vägledning**: Azure rollbaserad åtkomst kontroll (Azure RBAC) gör att du kan hantera åtkomst till Azure-resurser via roll tilldelningar. Du kan tilldela dessa roller till användare, grupper tjänstens huvud namn och hanterade identiteter. Det finns fördefinierade inbyggda roller för vissa resurser och dessa roller kan inventeras eller frågas via verktyg som Azure CLI, Azure PowerShell eller Azure-portalen.
+**Vägledning:** Med rollbaserad åtkomstkontroll i Azure (Azure RBAC) kan du hantera åtkomsten till Azure-resurser via rolltilldelningar. Du kan tilldela dessa roller till användare, grupper av tjänstens huvudnamn och hanterade identiteter. Det finns fördefinierade inbyggda roller för vissa resurser och dessa roller kan inventeras eller frågas via verktyg som Azure CLI, Azure PowerShell eller Azure-portalen.
 
-- [Så här hämtar du en katalog roll i Azure Active Directory (Azure AD) med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
+- [Så här får du en katalogroll i Azure Active Directory (Azure AD) med PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Så här hämtar du medlemmar i en katalog roll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
-
-**Ansvar**: Kund
-
-**Azure Security Center övervakning**: ingen
-
-### <a name="33-use-dedicated-administrative-accounts"></a>3,3: Använd dedikerade administrativa konton
-
-**Vägledning**: skapa standard procedurer för användning av dedikerade administrativa konton. Använd Azure Security Center identitets-och åtkomst hantering för att övervaka antalet administrativa konton.
-
-Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst genom att använda Azure Active Directory (Azure AD) Privileged Identity Management privilegierade roller för Microsoft-tjänster och Azure Resource Manager.
-
-- [Översikt över Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)
+- [Hämta medlemmar i en katalogroll i Azure AD med PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3,4: Använd Azure Active Directory enkel inloggning (SSO)
+### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Använd dedikerade administrativa konton
 
-**Vägledning**: där det är möjligt använder du Azure Active Directory (Azure AD) SSO i stället för att konfigurera enskilda fristående autentiseringsuppgifter per tjänst. Använd rekommendationer för Azure Security Center identitets-och åtkomst hantering.
+**Vägledning:** Skapa standardprocedurer för användning av dedikerade administrativa konton. Använd Azure Security Center Identitets- och åtkomsthantering för att övervaka antalet administrativa konton.
 
-- [Förstå SSO med Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
+Du kan också aktivera just-in-time/just-enough-åtkomst med hjälp av Azure Active Directory (Azure AD) Privileged Identity Management privilegierade roller för Microsoft-tjänster och Azure Resource Manager.
+
+- [Azure AD Privileged Identity Management översikt](../active-directory/privileged-identity-management/pim-configure.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Använd Multi-Factor Authentication för all Azure Active Directory-baserad åtkomst
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4: Azure Active Directory för enkel inloggning (SSO)
 
-**Vägledning**: Aktivera Azure Active Directory (Azure AD) multifaktorautentisering och följ Azure Security Center identitets-och åtkomst rekommendationer.
+**Vägledning:** Använd vid behov Azure Active Directory enkel inloggning (Azure AD) i stället för att konfigurera enskilda fristående autentiseringsuppgifter per tjänst. Använd Azure Security Center rekommendationer för identitets- och åtkomsthantering.
+
+- [Förstå enkel inloggning med Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
+
+**Ansvar**: Kund
+
+**Azure Security Center övervakning**: Ingen
+
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Använd multifaktorautentisering för Azure Active Directory åtkomstbaserad åtkomst
+
+**Vägledning:** Aktivera Azure Active Directory (Azure AD) multifaktorautentisering och följ Azure Security Center rekommendationer för identitet och åtkomst.
 
 - [Så här aktiverar du multifaktorautentisering i Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [Övervaka identitet och åtkomst i Azure Security Center](../security-center/security-center-identity-access.md)
+- [Övervaka identitet och åtkomst inom Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: Använd dedikerade datorer (arbets stationer med privilegie rad åtkomst) för alla administrativa uppgifter
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Använd dedikerade datorer (arbetsstationer för privilegierad åtkomst) för alla administrativa uppgifter
 
-**Vägledning**: Använd en säker, Azure-hanterad arbets Station (kallas även en privilegie rad åtkomst arbets Station eller Paw) för administrativa uppgifter som kräver förhöjda privilegier.
+**Vägledning:** Använd en säker, Azure-hanterad arbetsstation (även kallad arbetsstation för privilegierad åtkomst eller PAW) för administrativa uppgifter som kräver utökade privilegier.
 
-- [Förstå säkra, Azure-hanterade arbets stationer](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
+- [Förstå säkra, Azure-hanterade arbetsstationer](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Aktivera Azure Active Directory (Azure AD) multifaktorautentisering](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Så här aktiverar du Azure Active Directory multifaktorautentisering (Azure AD)](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: Logga och Avisera om misstänkta aktiviteter från administrativa konton
+### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7: Logga och avisering om misstänkta aktiviteter från administrativa konton
 
-**Vägledning**: använda Azure Active Directory (Azure AD) säkerhets rapporter och övervakning för att identifiera när misstänkt eller osäker aktivitet inträffar i miljön. Använd Azure Security Center för att övervaka identitets-och åtkomst aktiviteter.
+**Vägledning:** Använd Azure Active Directory (Azure AD) säkerhetsrapporter och övervakning för att identifiera när misstänkt eller osäker aktivitet inträffar i miljön. Använd Azure Security Center för att övervaka identitets- och åtkomstaktivitet.
 
 - [Så här identifierar du Azure AD-användare som har flaggats för riskfylld aktivitet](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -256,120 +256,120 @@ Du kan också aktivera en just-in-Time/bara-tillräcklig-åtkomst genom att anv�
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: hantera endast Azure-resurser från godkända platser
+### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8: Hantera Azure-resurser från endast godkända platser
 
-**Vägledning**: Använd villkorlig åtkomst med namngivna platser för att tillåta åtkomst från enbart vissa logiska grupperingar av IP-adressintervall eller länder/regioner.
+**Vägledning:** Använd villkorsstyrd åtkomst med namngivna platser för att endast tillåta åtkomst från specifika logiska gruppningar av IP-adressintervall eller länder/regioner.
 
 - [Så här konfigurerar du namngivna platser i Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="39-use-azure-active-directory"></a>3,9: Använd Azure Active Directory
+### <a name="39-use-azure-active-directory"></a>3.9: Använd Azure Active Directory
 
-**Vägledning**: använda Azure Active Directory (Azure AD) som central autentiserings-och auktoriserings system. Azure AD skyddar data med stark kryptering för data i vila och under överföring. Azure AD innehåller även salter, hash-värden och lagrar användarautentiseringsuppgifter på ett säkert sätt.
+**Vägledning:** Använd Azure Active Directory (Azure AD) som centralt system för autentisering och auktorisering. Azure AD skyddar data med hjälp av stark kryptering för data i vila och under överföring. Azure AD saltar, hashar och lagrar användarautentiseringsuppgifter på ett säkert sätt.
 
 - [Skapa och konfigurera en Azure AD-instans](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: granska och stäm regelbundet av användar åtkomst
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Granska och stämma av användaråtkomst regelbundet
 
-**Vägledning**: Azure Active Directory (Azure AD) innehåller loggar som hjälper till att identifiera inaktuella konton. Dessutom kan du använda Azure Identity Access-granskningar för att effektivt hantera grupp medlemskap, åtkomst till företags program och roll tilldelningar. Användar åtkomst kan granskas regelbundet för att se till att endast rätt användare har fortsatt åtkomst.
+**Vägledning:** Azure Active Directory (Azure AD) innehåller loggar som hjälper dig att identifiera inaktuella konton. Använd dessutom Azure Identity Access Reviews för att effektivt hantera gruppmedlemskap, åtkomst till företagsprogram och rolltilldelningar. Användaråtkomst kan granskas regelbundet för att se till att endast rätt användare har fortsatt åtkomst.
 
-- [Förstå Azure AD repor ting](/azure/active-directory/reports-monitoring/)
+- [Förstå Azure AD-rapportering](/azure/active-directory/reports-monitoring/)
 
-- [Så här använder du granskningar av Azure Identity Access](../active-directory/governance/access-reviews-overview.md)
+- [Så här använder du Azure Identity Access Reviews](../active-directory/governance/access-reviews-overview.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: övervakaren försöker komma åt inaktiverade autentiseringsuppgifter
+### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11: Övervakaren försöker komma åt inaktiverade autentiseringsuppgifter
 
-**Vägledning**: du har åtkomst till Azure Active Directory (Azure AD) inloggnings aktivitet, gransknings-och risk händelse logg källor, som gör att du kan integrera med alla Siem/övervaknings verktyg. Du kan effektivisera den här processen genom att skapa diagnostikinställningar för Azure AD-användarkonton och skicka gransknings loggar och inloggnings loggar till en Log Analytics-arbetsyta. Du kan konfigurera önskade aviseringar i Log Analytics arbets ytan.
+**Vägledning:** Du har åtkomst till Azure Active Directory(Azure AD) inloggningsaktivitet, gransknings- och riskhändelseloggkällor, vilket gör att du kan integrera med valbara SIEM-/övervakningsverktyg. Du kan effektivisera den här processen genom att skapa diagnostikinställningar för Azure AD-användarkonton och skicka granskningsloggar och inloggningsloggar till en Log Analytics-arbetsyta. Du kan konfigurera önskade aviseringar i Log Analytics-arbetsytan.
 
 - [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3,12: varning vid inloggnings beteende för konto
+### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12: Avisering om kontots beteendeavvikelse vid inloggning
 
-**Vägledning**: Använd Azure Active Directory (Azure AD) risk-och identitets skydds funktioner för att konfigurera automatiserade svar på identifierade misstänkta åtgärder som rör användar identiteter. Du kan också mata in data i Azure Sentinel för ytterligare undersökning.
+**Vägledning:** Använd Azure Active Directory (Azure AD) Risk- och Identity Protection-funktioner för att konfigurera automatiserade svar på identifierade misstänkta åtgärder relaterade till användaridentiteter. Du kan också mata in data i Azure Sentinel för ytterligare undersökning.
 
 - [Så visar du riskfyllda inloggningar för Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Så här konfigurerar och aktiverar du risk principer för identitets skydd](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
+- [Så här konfigurerar och aktiverar du riskprinciper för Identity Protection](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-- [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
+- [Registrera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="data-protection"></a>Dataskydd
 
 *Mer information finns i [Azure Security Benchmark: Dataskydd](../security/benchmarks/security-control-data-protection.md).*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: underhåll en inventering av känslig information
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Upprätthålla en förteckning över känslig information
 
-**Vägledning**: Använd taggar när det är möjligt att spåra Azure Monitor resurser som lagrar eller bearbetar känslig information som du Log Analytics arbets ytor.
+**Vägledning:** Använd taggar när det är möjligt för att spåra Azure Monitor som lagrar eller bearbetar känslig information som dina Log Analytics-arbetsytor.
 
-- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
+- [Skapa och använda taggar](../azure-resource-manager/management/tag-resources.md)
 
 - [Hantera åtkomst till loggdata och arbetsytor i Azure Monitor](/azure/azure-monitor/platform/manage-access)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: isolera system som lagrar eller bearbetar känslig information
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Isolera system som lagrar eller bearbetar känslig information
 
-**Vägledning**: implementera isolering med separata prenumerationer och hanterings grupper för enskilda säkerhets domäner, till exempel miljö typ och data känslighets nivå. Du kan begränsa åtkomst nivån till Azure Monitor och relaterade resurser som dina program och företags miljöer kräver. Du kan styra åtkomsten till Azure Monitor via rollbaserad åtkomst kontroll i Azure (Azure RBAC).
+**Vägledning:** Implementera isolering med separata prenumerationer och hanteringsgrupper för enskilda säkerhetsdomäner, till exempel miljötyp och känslighetsnivå för data. Du kan begränsa åtkomstnivån till dina Azure Monitor relaterade resurser som dina program och företagsmiljöer kräver. Du kan styra åtkomsten till Azure Monitor via rollbaserad åtkomstkontroll i Azure (Azure RBAC).
 
 - [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
-- [Så här skapar du hanterings grupper](../governance/management-groups/create-management-group-portal.md)
+- [Så här skapar du hanteringsgrupper](../governance/management-groups/create-management-group-portal.md)
 
-- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
+- [Skapa och använda taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: kryptera all känslig information under överföring
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Kryptera all känslig information under överföring
 
-**Vägledning**: Azure Monitor förhandlar TLS 1,2 som standard. Se till att alla klienter som ansluter till dina Azure-resurser kan förhandla TLS 1,2 eller senare. 
+**Vägledning:** Azure Monitor förhandlar TLS 1.2 som standard. Se till att alla klienter som ansluter till dina Azure-resurser kan förhandla TLS 1.2 eller högre. 
 
-Application Insights och Log Analytics fortsätter att tillåta att TLS 1,1-och TLS 1,0-data matas in. Data kan begränsas till TLS 1,2 genom att konfigurera på klient sidan.
+Application Insights och Log Analytics fortsätter båda att tillåta att TLS 1.1- och TLS 1.0-data matas in. Data kan begränsas till TLS 1.2 genom konfiguration på klientsidan.
 
-- [Så här skickar du data på ett säkert sätt med TLS 1,2](/azure/azure-monitor/platform/data-security#sending-data-securely-using-tls-12)
+- [Så här skickar du data på ett säkert sätt med TLS 1.2](/azure/azure-monitor/platform/data-security#sending-data-securely-using-tls-12)
 
 **Ansvar**: Delad
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: Använd ett aktivt identifierings verktyg för att identifiera känsliga data
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Använd ett aktivt identifieringsverktyg för att identifiera känsliga data
 
-**Vägledning**: funktionerna för data identifiering, klassificering och förlust av förlust är ännu inte tillgängliga för Azure Monitor. Implementera en lösning från tredje part om det krävs för efterlevnad.
-För den underliggande plattform som hanteras av Microsoft behandlar Microsoft allt kund innehåll som känsligt och går till fantastiska längder för att skydda mot kund data förlust och exponering. För att säkerställa att kunddata i Azure förblir skyddade har Microsoft implementerat och underhåller en svit med robusta data skydds kontroller och-funktioner.
+**Vägledning:** Funktioner för dataidentifiering, klassificering och förlustskydd är ännu inte tillgängliga för Azure Monitor. Implementera en lösning från tredje part om det behövs i efterlevnadssyfte.
+För den underliggande plattform som hanteras av Microsoft behandlar Microsoft allt kundinnehåll som känsligt och tar lång tid att skydda mot förlust och exponering av kunddata. För att säkerställa att kunddata i Azure förblir säkra har Microsoft implementerat och upprätthåller en uppsättning robusta dataskyddskontroller och -funktioner.
 
 - [Förstå skydd av kunddata i Azure](../security/fundamentals/protection-customer-data.md)
 
 **Ansvar**: Delad
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: Använd rollbaserad åtkomst kontroll för att kontrol lera åtkomst till resurser
+### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Använd rollbaserad åtkomstkontroll för att styra åtkomsten till resurser
 
-**Vägledning**: Använd Azure rollbaserad åtkomst kontroll (RBAC) för att hantera åtkomst till Azure Monitor.
+**Vägledning:** Använda rollbaserad åtkomstkontroll (RBAC) i Azure för att hantera åtkomst Azure Monitor.
 
 - [Roller, behörigheter och säkerhet i Azure Monitor](/azure/azure-monitor/platform/roles-permissions-security)
 
@@ -377,15 +377,15 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: kryptera känslig information i vila
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Kryptera känslig information i vila
 
-**Vägledning**: Azure Monitor säkerställer att alla data och sparade frågor krypteras i vila med hjälp av Microsoft-hanterade nycklar (MMK). Azure Monitor innehåller också ett alternativ för kryptering med hjälp av din egen nyckel som lagras i din Azure Key Vault och som används av lagring med systemtilldelad autentisering med hanterad identitet. Den här Kundhanterade nyckeln (CMK) kan vara antingen program vara eller maskin vara-HSM skyddad.
+**Vägledning:** Azure Monitor säkerställer att alla data och sparade frågor krypteras i vila med microsoft-hanterade nycklar (MMK). Azure Monitor också ett alternativ för kryptering med din egen nyckel som lagras i din Azure Key Vault och används av lagring med hjälp av systemautentisering för hanterad identitet. Den här kund hanterade nyckeln (CMK) kan vara antingen programvara eller maskinvaruskyddad HSM.
 
-- [Azure Monitor Kundhanterade nycklar](/azure/azure-monitor/platform/customer-managed-keys)
+- [Azure Monitor kund hanterade nycklar](/azure/azure-monitor/platform/customer-managed-keys)
 
-- [Log Analytics data säkerhet](/azure/azure-monitor/platform/data-security)
+- [Log Analytics-datasäkerhet](/azure/azure-monitor/platform/data-security)
 
 - [Datainsamling, kvarhållning och lagring i Application Insights](app/data-retention-privacy.md)
 
@@ -393,41 +393,41 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: logg och varning vid ändringar av kritiska Azure-resurser
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Logga och avisering om ändringar av viktiga Azure-resurser
 
-**Vägledning**: Använd Azure monitor med Azure aktivitets logg för att skapa aviseringar för när ändringar sker i Azure Monitor och relaterade resurser.
+**Vägledning:** Använd Azure Monitor med Azure-aktivitetsloggen för att skapa aviseringar för när ändringar sker i Azure Monitor och relaterade resurser.
 
-- [Så här skapar du aviseringar för Azure aktivitets logg händelser](/azure/azure-monitor/platform/alerts-activity-log)
+- [Så här skapar du aviseringar för Händelser i Azure-aktivitetsloggen](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: [Azures säkerhets benchmark](/azure/governance/policy/samples/azure-security-benchmark) är standard policy initiativ för Security Center och är grunden för [Security Center rekommendationer](/azure/security-center/security-center-recommendations). De Azure Policy-definitioner som är relaterade till den här kontrollen aktive ras automatiskt av Security Center. Aviseringar som är relaterade till den här kontrollen kan kräva en [Azure Defender](/azure/security-center/azure-defender) -plan för de relaterade tjänsterna.
+**Azure Security Center övervakning:** [Azure Security Benchmark](/azure/governance/policy/samples/azure-security-benchmark) är standardprincipinitiativ för Security Center och är grunden för Security Center [rekommendationerna](/azure/security-center/security-center-recommendations). De Azure Policy som är relaterade till den här kontrollen aktiveras automatiskt av Security Center. Aviseringar som rör den här kontrollen kan kräva [en Azure Defender](/azure/security-center/azure-defender) plan för de relaterade tjänsterna.
 
-**Azure policy inbyggda definitioner – Microsoft. Insights**:
+**Azure Policy inbyggda definitioner – microsoft.insights:**
 
 [!INCLUDE [Resource Policy for microsoft.insights 4.9](../../includes/policy/standards/asb/rp-controls/microsoft.insights-4-9.md)]
 
 ## <a name="vulnerability-management"></a>Sårbarhetshantering
 
-*Mer information finns i [Azure Security benchmark: sårbarhet Management](../security/benchmarks/security-control-vulnerability-management.md).*
+*Mer information finns i [Azure Security Benchmark: Vulnerability Management](../security/benchmarks/security-control-vulnerability-management.md).*
 
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: Använd en risk klassificerings process för att prioritera reparation av identifierade säkerhets risker
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Använd en riskklassificeringsprocess för att prioritera åtgärder för identifierade säkerhetsrisker
 
-**Vägledning**: Använd ett gemensamt risk bedömnings program (t. ex. vanliga sårbarhets bedömnings system) eller standard risk klassificeringarna som tillhandahålls av ditt genomsöknings verktyg från tredje part.
+**Vägledning:** Använd ett vanligt riskbedömningsprogram (till exempel Common Vulnerability Scoring System) eller standardriskklassificeringarna som tillhandahålls av ditt genomsökningsverktyg från tredje part.
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="inventory-and-asset-management"></a>Inventerings- och tillgångshantering
 
-*Mer information finns i [Azure Security benchmark: inventering och till gångs hantering](../security/benchmarks/security-control-inventory-asset-management.md).*
+*Mer information finns i [Azure Security Benchmark: Inventory and Asset Management](../security/benchmarks/security-control-inventory-asset-management.md).*
 
-### <a name="61-use-automated-asset-discovery-solution"></a>6,1: Använd automatiserad identifierings lösning för till gång
+### <a name="61-use-automated-asset-discovery-solution"></a>6.1: Använd automatisk tillgångsidentifiering
 
-**Vägledning**: Använd Azure CLI för att fråga och identifiera Azure Monitor resurser i dina prenumerationer. Se till att du har rätt (Läs) behörigheter i din klient organisation och räkna upp alla Azure-prenumerationer samt resurser i dina prenumerationer.
+**Vägledning:** Använd Azure CLI för att köra frågor mot och identifiera Azure Monitor resurser i dina prenumerationer. Se till att du har rätt (läsbehörighet) i din klientorganisation och räkna upp alla Azure-prenumerationer samt resurser i dina prenumerationer.
 
 - [Azure Monitor CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest&amp;preserve-view=true)
 
@@ -439,45 +439,45 @@ För den underliggande plattform som hanteras av Microsoft behandlar Microsoft a
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="62-maintain-asset-metadata"></a>6,2: underhåll till gångens metadata
+### <a name="62-maintain-asset-metadata"></a>6.2: Underhålla tillgångsmetadata
 
-**Vägledning**: Använd taggar för att Azure Monitor resurser som ger metadata till att logiskt organisera dem i en taxonomi.
+**Vägledning:** Tillämpa taggar på Azure Monitor-resurser som ger metadata för att organisera dem logiskt i en taxonomi.
 
-- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
+- [Skapa och använda taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6,3: ta bort obehöriga Azure-resurser
+### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Ta bort obehöriga Azure-resurser
 
-**Vägledning**: Använd taggning, hanterings grupper och separata prenumerationer, vid behov, för att ordna och spåra Azure Monitor relaterade resurser. Stäm av inventering regelbundet och se till att obehöriga resurser tas bort från prenumerationen inom rimlig tid.
+**Vägledning:** Använd taggar, hanteringsgrupper och separata prenumerationer när det är lämpligt för att organisera och spåra Azure Monitor relaterade resurser. Stämma av inventeringen regelbundet och se till att obehöriga resurser tas bort från prenumerationen inom rimlig tid.
 
 - [Så här skapar du ytterligare Azure-prenumerationer](../cost-management-billing/manage/create-subscription.md)
 
-- [Så här skapar du hanterings grupper](../governance/management-groups/create-management-group-portal.md)
+- [Så här skapar du hanteringsgrupper](../governance/management-groups/create-management-group-portal.md)
 
-- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
-
-**Ansvar**: Kund
-
-**Azure Security Center övervakning**: ingen
-
-### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6,4: definiera och underhålla inventering av godkända Azure-resurser
-
-**Vägledning**: skapa en inventering av godkända Azure-resurser och godkänd program vara för beräknings resurser enligt organisationens behov.
+- [Skapa och använda taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: övervaka för ej godkända Azure-resurser
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4: Definiera och underhålla inventering av godkända Azure-resurser
 
-**Vägledning**: Använd Azure policy för att ange begränsningar för den typ av resurser som kan skapas i dina prenumerationer.
+**Vägledning:** Skapa en förteckning över godkända Azure-resurser och godkänd programvara för beräkningsresurser enligt organisationens behov.
 
-Använd Azure Resource Graph till att fråga efter och identifiera resurser i prenumerationerna.  Se till att alla Azure-resurser som finns i miljön är godkända.
+**Ansvar**: Kund
+
+**Azure Security Center övervakning**: Ingen
+
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Övervaka för ej godkända Azure-resurser
+
+**Vägledning:** Använd Azure Policy att ange begränsningar för vilken typ av resurser som kan skapas i dina prenumerationer.
+
+Använd Azure Resource Graph till att fråga efter och identifiera resurser i prenumerationerna.  Se till att alla Azure-resurser som finns i miljön godkänns.
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -485,97 +485,97 @@ Använd Azure Resource Graph till att fråga efter och identifiera resurser i pr
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: ta bort icke godkända Azure-resurser och program
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Ta bort ej godkända Azure-resurser och program
 
-**Vägledning**: Stäm av inventering regelbundet och se till att obehöriga Azure Monitor relaterade resurser tas bort från prenumerationen inom rimlig tid.  
+**Vägledning:** Stämma av inventeringen regelbundet och se till att obehöriga Azure Monitor relaterade resurser tas bort från prenumerationen inom rimlig tid.  
 
-- [Ta bort Azure Log Analytics-arbetsytan](/azure/azure-monitor/platform/delete-workspace)
+- [Ta bort Azure Log Analytics-arbetsyta](/azure/azure-monitor/platform/delete-workspace)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="69-use-only-approved-azure-services"></a>6,9: Använd endast godkända Azure-tjänster
+### <a name="69-use-only-approved-azure-services"></a>6.9: Använd endast godkända Azure-tjänster
 
-**Vägledning**: Använd Azure policy för att begränsa vilka Azure Monitor relaterade resurser som du kan etablera i din miljö.
+**Vägledning:** Använd Azure Policy att begränsa vilka Azure Monitor relaterade resurser som du kan etablera i din miljö.
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Så här nekar du en viss resurstyp med Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6,11: begränsa användarnas möjlighet att interagera med Azure Resource Manager
+### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11: Begränsa användarnas möjlighet att interagera med Azure Resource Manager
 
-**Vägledning**: Använd villkorlig åtkomst i Azure för att begränsa användarnas möjlighet att interagera med Azures resurs hanterare genom att konfigurera "blockera åtkomst" för appen "Microsoft Azure hantering".
+**Vägledning:** Använd villkorsstyrd åtkomst i Azure för att begränsa användarnas möjlighet att interagera med Azure Resources Manager genom att konfigurera "Blockera åtkomst" för Microsoft Azure-hanteringsappen.
 
-- [Så här konfigurerar du villkorlig åtkomst för att blockera åtkomst till Azures resurs hanterare](../role-based-access-control/conditional-access-azure-management.md)
+- [Så här konfigurerar du villkorlig åtkomst för att blockera åtkomst till Azure Resources Manager](../role-based-access-control/conditional-access-azure-management.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="secure-configuration"></a>Säker konfiguration
 
-*Mer information finns i [Azure Security benchmark: säker konfiguration](../security/benchmarks/security-control-secure-configuration.md).*
+*Mer information finns i [Azure Security Benchmark: Secure Configuration](../security/benchmarks/security-control-secure-configuration.md).*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: upprätta säkra konfigurationer för alla Azure-resurser
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Upprätta säkra konfigurationer för alla Azure-resurser
 
-**Vägledning**: använd anpassade Azure policys definitioner för att granska eller tillämpa konfigurationen för dina Azure Monitor relaterade resurser. Du kan också använda inbyggda Azure Policy definitioner som tillgängliga.
+**Vägledning:** Använd anpassade Azure Policy för att granska eller framtvinga konfigurationen av Azure Monitor relaterade resurser. Du kan också använda inbyggda definitioner Azure Policy tillgängliga.
 
-Azure Resource Manager har också möjlighet att exportera mallen i JavaScript Object Notation (JSON), vilken bör granskas för att säkerställa att konfigurationerna uppfyller/överskrider säkerhets kraven för din organisation.
+Dessutom Azure Resource Manager kan exportera mallen i JavaScript Object Notation (JSON), som bör granskas för att säkerställa att konfigurationerna uppfyller/överskrider säkerhetskraven för din organisation.
 
-Du kan också använda rekommendationer från Azure Security Center som en säker konfigurations bas linje för dina Azure-resurser.
+Du kan också använda rekommendationer från Azure Security Center som en säker konfigurationsbaslinje för dina Azure-resurser.
 
-Om du använder Live streaming APM-funktioner gör du kanalen säker med en hemlig API-nyckel förutom Instrumentation-nyckeln.
+Om du använder APM-funktioner för liveuppspelning ska du skydda kanalen med en hemlig API-nyckel utöver instrumenteringsnyckeln.
 
-- [Skydda APM-Live Metrics Stream](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel)
+- [Säker APM-Live Metrics Stream](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel)
 
-- [Visa tillgängliga Azure Policy alias](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Så här visar du tillgängliga Azure Policy-alias](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
 
-- [Självstudie: skapa och hantera principer för att genomdriva efterlevnad](../governance/policy/tutorials/create-and-manage.md)
+- [Självstudie: Skapa och hantera principer för att framtvinga efterlevnad](../governance/policy/tutorials/create-and-manage.md)
 
-- [Exportera en och flera resurser till en mall i Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
+- [Export av en enskild resurs och flera resurser till en mall i Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
 - [Säkerhetsrekommendationer – en referensguide](../security-center/recommendations-reference.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: underhåll säker Azure-resurs-konfigurationer
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Underhålla säkra Azure-resurskonfigurationer
 
-**Vägledning**: Använd Azure policy [neka] och [distribuera om det inte finns] för att genomdriva säkra inställningar för dina Azure Monitor relaterade resurser.  Dessutom kan du använda Azure Resource Manager mallar för att underhålla säkerhets konfigurationen för dina Azure Monitor-relaterade resurser som krävs av din organisation.
+**Vägledning:** Använd Azure Policy [neka] och [distribuera om det inte finns] för att framtvinga säkra inställningar för Azure Monitor relaterade resurser.  Dessutom kan du använda mallar Azure Resource Manager för att upprätthålla säkerhetskonfigurationen för dina Azure Monitor resurser som krävs av din organisation.
 
-- [Förstå Azure Policys effekter](../governance/policy/concepts/effects.md)
+- [Förstå Azure Policy effekter](../governance/policy/concepts/effects.md)
 
 - [Skapa och hantera principer för att använda kompatibilitet](../governance/policy/tutorials/create-and-manage.md)
 
-- [Översikt över Azure Resource Manager mallar](../azure-resource-manager/templates/overview.md)
+- [översikt Azure Resource Manager mallar](../azure-resource-manager/templates/overview.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Spara konfigurationen av Azure-resurser på ett säkert sätt
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Lagra konfiguration av Azure-resurser på ett säkert sätt
 
-**Vägledning**: Använd Azure DevOps för att lagra och hantera din kod på ett säkert sätt, t. ex. anpassade Azure-principer och Azure Resource Manager mallar. För att få åtkomst till de resurser som du hanterar i Azure DevOps, kan du bevilja eller neka behörigheter till särskilda användare, inbyggda säkerhets grupper eller grupper som definierats i Azure Active Directory (Azure AD) om det är integrerat med Azure DevOps eller Active Directory om det är integrerat med TFS.
+**Vägledning:** Använda Azure DevOps för att lagra och hantera din kod på ett säkert sätt, till exempel anpassade Azure-principer Azure Resource Manager mallar. För att komma åt de resurser som du hanterar i Azure DevOps kan du bevilja eller neka behörigheter till specifika användare, inbyggda säkerhetsgrupper eller grupper som definierats i Azure Active Directory (Azure AD) om de är integrerade med Azure DevOps eller Active Directory om de är integrerade med TFS.
 
-- [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow)
+- [Lagra kod i Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
 - [Om behörigheter och grupper i Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7,7: Distribuera konfigurations hanterings verktyg för Azure-resurser
+### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7: Distribuera konfigurationshanteringsverktyg för Azure-resurser
 
-**Vägledning**: definiera och implementera standardkonfigurationer för Azure Monitor relaterade resurser med Azure policy. Använd anpassade Azure Policys definitioner för att granska eller tillämpa säkerhets konfigurationen för dina Azure Monitor relaterade resurser. Du kan också använda inbyggda princip definitioner som är relaterade till dina speciella resurser.
+**Vägledning:** Definiera och implementera standardsäkerhetskonfigurationer för Azure Monitor relaterade resurser med hjälp av Azure Policy. Använd anpassade Azure Policy för att granska eller framtvinga säkerhetskonfigurationen för dina Azure Monitor relaterade resurser. Du kan också använda inbyggda principdefinitioner som är relaterade till dina specifika resurser.
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -583,191 +583,191 @@ Om du använder Live streaming APM-funktioner gör du kanalen säker med en heml
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7,9: implementera automatisk konfigurations övervakning för Azure-resurser
+### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9: Implementera automatisk konfigurationsövervakning för Azure-resurser
 
-**Vägledning**: Använd Azure Security Center för att utföra bas linje genomsökningar för dina Azure Monitor relaterade resurser.  Du kan också använda Azure Policy för att varna och granska Azure-resursfiler.
+**Vägledning:** Använd Azure Security Center för att utföra baslinjesökningar för dina Azure Monitor relaterade resurser.  Du kan också använda Azure Policy för att varna och granska Azure-resurskonfigurationer.
 
 - [Så här åtgärdar du rekommendationer i Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="711-manage-azure-secrets-securely"></a>7,11: Hantera Azure-hemligheter på ett säkert sätt
+### <a name="711-manage-azure-secrets-securely"></a>7.11: Hantera Azure-hemligheter på ett säkert sätt
 
-**Vägledning**: Använd hanterad tjänstidentitet tillsammans med Azure Key Vault för att förenkla och skydda hemlig hantering för Azure Monitor-relaterade resurser som stöds.
+**Vägledning:** Använd hanterad tjänstidentitet tillsammans med Azure Key Vault för att förenkla och skydda hemlighetshantering för Azure Monitor-relaterade resurser som stöds.
 
-- [Integrera med Azure Managed Identities](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
+- [Så här integrerar du med azure-hanterade identiteter](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
 - [Tjänster som stöder hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
 - [Så här skapar du en Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-- [Så här ger Key Vault autentisering med en hanterad identitet](/azure/key-vault/general/assign-access=policy-portal)
+- [Så här tillhandahåller du Key Vault autentisering med en hanterad identitet](/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7,12: hantera identiteter säkert och automatiskt
+### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Hantera identiteter på ett säkert och automatiskt sätt
 
-**Vägledning**: Använd hanterade identiteter för att tillhandahålla Azure-tjänster med en automatiskt hanterad identitet i Azure Active Directory (Azure AD). Med hanterade identiteter kan du autentisera till alla tjänster som stöder Azure AD-autentisering, inklusive Azure Monitor resurser, utan några autentiseringsuppgifter i din kod.
+**Vägledning:** Använda hanterade identiteter för att förse Azure-tjänster med en automatiskt hanterad identitet Azure Active Directory (Azure AD). Med hanterade identiteter kan du autentisera till alla tjänster som stöder Azure AD-autentisering, inklusive Azure Monitor resurser, utan autentiseringsuppgifter i koden.
 
-- [Konfigurera hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
-
-**Ansvar**: Kund
-
-**Azure Security Center övervakning**: ingen
-
-### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: eliminera oavsiktlig exponering för autentiseringsuppgifter
-
-**Vägledning**: implementera autentiseringsuppgifterna för inloggning för att identifiera autentiseringsuppgifter inom koden. Credential Scanner uppmanar också till att flytta identifierade autentiseringsuppgifter till en säkrare plats som Azure Key Vault.
-
-- [Så här konfigurerar du en inloggnings skanner](https://secdevtools.azurewebsites.net/helpcredscan.html)
+- [Så här konfigurerar du hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
+
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: Eliminera oavsiktlig exponering av autentiseringsuppgifter
+
+**Vägledning:** Implementera skanner för autentiseringsuppgifter för att identifiera autentiseringsuppgifter i koden. Credential Scanner uppmanar också till att flytta identifierade autentiseringsuppgifter till en säkrare plats som Azure Key Vault.
+
+- [Konfigurera skanner för autentiseringsuppgifter](https://secdevtools.azurewebsites.net/helpcredscan.html)
+
+**Ansvar**: Kund
+
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="malware-defense"></a>Skydd mot skadlig kod
 
-*Mer information finns i [Azure Security benchmark: skydd mot skadlig kod](../security/benchmarks/security-control-malware-defense.md).*
+*Mer information finns i [Azure Security Benchmark: Malware Defense.](../security/benchmarks/security-control-malware-defense.md)*
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: för skanning av filer som ska laddas upp till Azure-resurser som inte är Compute
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: Skanna filer i förväg som ska laddas upp till Icke-beräkningsbaserade Azure-resurser
 
-**Vägledning**: Microsofts program mot skadlig kod har Aktiver ATS på den underliggande värden som stöder Azure-tjänster (till exempel Azure Monitor relaterade resurser), men det körs inte på ditt innehåll. 
+**Vägledning:** Microsoft Anti-malware är aktiverat på den underliggande värden som stöder Azure-tjänster (till exempel Azure Monitor relaterade resurser), men den körs inte på ditt innehåll. 
 
-Skanna alla filer som laddas upp till tillämpliga Azure Monitor relaterade resurser, till exempel Log Analytics arbets yta.
+Försök alla filer som laddas upp till tillämpliga Azure Monitor relaterade resurser, till exempel Log Analytics-arbetsyta.
 
-Använd Azure Security Center s hot identifiering för data tjänster för att identifiera skadlig kod som laddats upp till lagrings konton. 
+Använd Azure Security Center hotidentifiering för datatjänster för att identifiera skadlig kod som överförs till lagringskonton. 
 
-- [Förstå Microsofts program mot skadlig kod för Azure Cloud Services och Virtual Machines](../security/fundamentals/antimalware.md)
+- [Förstå Microsoft Anti-malware för Azure Cloud Services och Virtual Machines](../security/fundamentals/antimalware.md)
 
-- [Förstå Azure Security Centers hot identifiering för data tjänster](../security-center/azure-defender.md)
+- [Förstå Azure Security Center hotidentifiering för datatjänster](../security-center/azure-defender.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="data-recovery"></a>Dataåterställning
 
-*Mer information finns i [Azure Security benchmark: Data återställning](../security/benchmarks/security-control-data-recovery.md).*
+*Mer information finns i [Prestandatest för Azure-säkerhet: Dataåterställning.](../security/benchmarks/security-control-data-recovery.md)*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9,1: Säkerställ regelbunden automatisk säkerhets kopiering
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Säkerställ regelbundna automatiserade säkerhetskopieringar
 
-**Vägledning**: Använd Azure Resource Manager för att exportera Azure Monitor och relaterade resurser i en JavaScript Object Notation (JSON)-mall som kan användas som säkerhets kopia för Azure Monitor och relaterade konfigurationer.  Använd Azure Automation för att köra säkerhets kopierings skripten automatiskt. 
+**Vägledning:** Använd Azure Resource Manager för att exportera Azure Monitor och relaterade resurser i en JavaScript Object Notation-mall (JSON) som kan användas som säkerhetskopia för Azure Monitor och relaterade konfigurationer.  Använd Azure Automation för att köra säkerhetskopieringsskripten automatiskt. 
 
-- [Hantera Log Analytics arbets yta med Azure Resource Manager-mallar](/azure/azure-monitor/samples/resource-manager-workspace)
+- [Hantera Log Analytics-arbetsyta med Azure Resource Manager mallar](/azure/azure-monitor/samples/resource-manager-workspace)
 
-- [Exportera en och flera resurser till en mall i Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
+- [Export av en enskild resurs och flera resurser till en mall i Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
 - [Om Azure Automation](../automation/automation-intro.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: Utför fullständig säkerhets kopiering av systemet och säkerhetskopiera alla Kundhanterade nycklar
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Utför fullständiga systemsäkerhetskopior och säkerhetskopiera kund hanterade nycklar
 
-**Vägledning**: Använd Azure Resource Manager för att exportera Azure Monitor och relaterade resurser i en JavaScript Object Notation (JSON)-mall som kan användas som säkerhets kopia för Azure Monitor och relaterade konfigurationer. Säkerhetskopiera Kundhanterade nycklar i Azure Key Vault om Azure Monitor relaterade resurser använder Kundhanterade nycklar,
+**Vägledning:** Använd Azure Resource Manager för att exportera Azure Monitor och relaterade resurser i en JavaScript Object Notation-mall (JSON) som kan användas som säkerhetskopia för Azure Monitor och relaterade konfigurationer. Säkerhetskopiera kund hanterade nycklar Azure Key Vault om Azure Monitor resurser använder kund hanterade nycklar,
 
-- [Hantera Log Analytics arbets yta med Azure Resource Manager-mallar](/azure/azure-monitor/platform/template-workspace-configuration)
+- [Hantera Log Analytics-arbetsyta med Azure Resource Manager mallar](/azure/azure-monitor/platform/template-workspace-configuration)
 
-- [Exportera en och flera resurser till en mall i Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
+- [Export av en enskild resurs och flera resurser till en mall i Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Så här säkerhetskopierar du nyckel valv nycklar i Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey)
-
-**Ansvar**: Kund
-
-**Azure Security Center övervakning**: ingen
-
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: validera alla säkerhets kopior inklusive Kundhanterade nycklar
-
-**Vägledning**: Säkerställ att du regelbundet kan utföra återställning med Azure Resource Manager backade mallfiler. Testa återställning av säkerhetskopierade nycklar som hanteras av kunden.
-
-- [Hantera Log Analytics arbets yta med Azure Resource Manager-mallar](/azure/azure-monitor/samples/resource-manager-workspace)
-
-- [Återställa Key Vault-nycklar i Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey)
+- [Säkerhetskopiera nyckelvalvsnycklar i Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: se till att skydda säkerhets kopior och Kundhanterade nycklar
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Verifiera alla säkerhetskopior, inklusive kund hanterade nycklar
 
-**Vägledning**: Använd Azure-DevOps för att lagra och hantera din kod på ett säkert sätt, t. ex. anpassade Azure-principer Azure Resource Manager mallar. För att skydda resurser som du hanterar i Azure DevOps, kan du bevilja eller neka behörigheter till särskilda användare, inbyggda säkerhets grupper eller grupper som definierats i Azure Active Directory (Azure AD) om det är integrerat med Azure DevOps eller Active Directory om det är integrerat med TFS.  Använd rollbaserad åtkomst kontroll i Azure (Azure RBAC) för att skydda Kundhanterade nycklar.
+**Vägledning:** Se till att du regelbundet kan utföra återställning med Azure Resource Manager mallfiler. Testa återställning av säkerhetskopierade kund hanterade nycklar.
 
-Aktivera dessutom Soft-Delete och rensa skydd i Key Vault för att skydda nycklar mot oavsiktlig eller skadlig borttagning. Om Azure Storage används för att lagra säkerhets kopior av Azure Resource Manager mallar aktiverar du mjuk borttagning för att spara och återställa data när blobbar eller BLOB-ögonblicksbilder tas bort.
+- [Hantera Log Analytics-arbetsyta med hjälp Azure Resource Manager mallar](/azure/azure-monitor/samples/resource-manager-workspace)
+
+- [Återställa nyckelvalvsnycklar i Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey)
+
+**Ansvar**: Kund
+
+**Azure Security Center övervakning**: Ingen
+
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Skydda säkerhetskopior och kund hanterade nycklar
+
+**Vägledning:** Använd Azure DevOps för att lagra och hantera din kod på ett säkert sätt, till exempel anpassade Azure-principer Azure Resource Manager mallar. För att skydda resurser som du hanterar i Azure DevOps kan du bevilja eller neka behörigheter till specifika användare, inbyggda säkerhetsgrupper eller grupper som definierats i Azure Active Directory (Azure AD) om de är integrerade med Azure DevOps eller Active Directory om de är integrerade med TFS.  Använd rollbaserad åtkomstkontroll i Azure (Azure RBAC) för att skydda kund hanterade nycklar.
+
+Dessutom kan aktivera Soft-Delete rensningsskydd i en Key Vault att skydda nycklar mot oavsiktlig eller skadlig borttagning. Om Azure Storage används för att lagra Azure Resource Manager säkerhetskopior aktiverar du mjuk borttagning för att spara och återställa data när blobar eller blobögonblicksbilder tas bort.
 
 - [Så här lagrar du kod i Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
 - [Om behörigheter och grupper i Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
-- [Aktivera Soft-Delete och rensa skydd i Key Vault](../storage/blobs/soft-delete-blob-overview.md)
+- [Så här aktiverar Soft-Delete och rensar skydd i Key Vault](../storage/blobs/soft-delete-blob-overview.md)
 
 - [Mjuk borttagning för Azure Storage-blobar](../storage/blobs/soft-delete-blob-overview.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="incident-response"></a>Incidenthantering
 
 *Mer information finns i [Azure Security Benchmark: Incidentsvar](../security/benchmarks/security-control-incident-response.md).*
 
-### <a name="101-create-an-incident-response-guide"></a>10,1: skapa en incident svars guide
+### <a name="101-create-an-incident-response-guide"></a>10.1: Skapa en guide för incidentsvar
 
 **Vägledning**: Skapa en guide till incidentsvar för organisationen. Se till att det finns skriftliga planer för incidentsvar som definierar alla personalroller och faser i incidenthanteringen, från identifiering till granskning efter incidenten.
 
-- [Vägledning om hur du skapar en egen svars process för säkerhets incidenter](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
+- [Vägledning om hur du skapar en egen process för svar på säkerhetsincidenter](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
-- [Microsoft Security Response Centers Beskrivning av en incident](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
+- [Microsoft Security Response Center är en incidents uppbyggnad](https://msrc-blog.microsoft.com/2019/06/27/inside-the-msrc-anatomy-of-a-ssirp-incident/)
 
-- [Utnyttja NISTs hanterings guide för dator säkerhet för att hjälpa dig att skapa en egen incident svars plan](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
+- [Använd NIST:s guide för hantering av datorsäkerhetsincidenter för att underlätta skapandet av din egen plan för incidenthantering](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: skapa en incident bedömnings-och prioriterings procedur
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Skapa en procedur för incidentbedömning och prioritering
 
-**Vägledning**: Security Center tilldelar en allvarlighets grad till varje avisering för att hjälpa dig att prioritera vilka aviseringar som bör undersökas först. Allvarlighets graden baseras på hur tillförlitlig Security Center befinner sig i att söka efter eller analysera den som används för att utfärda aviseringen samt den konfidensnivå som det fanns skadlig avsikt bakom den aktivitet som ledde till aviseringen.
+**Vägledning:** Security Center tilldelar en allvarlighetsgrad till varje avisering för att hjälpa dig att prioritera vilka aviseringar som ska undersökas först. Allvarlighetsgraden baseras på hur säker Security Center är i hitta eller analys som används för att utfärda aviseringen samt förtroendenivån för att det fanns skadlig avsikt bakom aktiviteten som ledde till aviseringen.
 
-Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Prod.) med hjälp av taggar och skapa ett namngivnings system för att tydligt identifiera och kategorisera Azure-resurser, särskilt för bearbetning av känsliga data.  Det är ditt ansvar att prioritera åtgärdandet av aviseringar baserat på allvarlighetsgraden för de Azure-resurser och den miljö där incidenten inträffade.
+Markera dessutom prenumerationer tydligt (t.ex. produktion, icke-produktion) med hjälp av taggar och skapa ett namngivningssystem för att tydligt identifiera och kategorisera Azure-resurser, särskilt de som bearbetar känsliga data.  Det är ditt ansvar att prioritera åtgärdandet av aviseringar baserat på allvarlighetsgraden för de Azure-resurser och den miljö där incidenten inträffade.
 
 - [Säkerhetsaviseringar i Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [Skapa och använda Taggar](../azure-resource-manager/management/tag-resources.md)
+- [Skapa och använda taggar](../azure-resource-manager/management/tag-resources.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="103-test-security-response-procedures"></a>10,3: testa säkerhets svars procedurer
+### <a name="103-test-security-response-procedures"></a>10.3: Testa procedurer för säkerhetssvar
 
-**Vägledning**: utföra övningar för att testa dina Systems funktioner för incident svar på en vanlig takt för att hjälpa till att skydda dina Azure-resurser. Identifiera svaga punkter och luckor, och ändra planen efter behov.
+**Vägledning:** Genomför övningar för att regelbundet testa systemets incidentsvarsfunktioner för att skydda dina Azure-resurser. Identifiera svaga punkter och luckor, och ändra planen efter behov.
 
-- [NIST-guide för att testa, träna och träna program för IT-planer och funktioner](https://csrc.nist.gov/publications/detail/sp/800-84/final)
-
-**Ansvar**: Kund
-
-**Azure Security Center övervakning**: ingen
-
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: Ange kontakt information för säkerhets incidenter och konfigurera aviseringar för säkerhets incidenter
-
-**Vägledning**: kontakt information om säkerhets incidenter kommer att användas av Microsoft för att kontakta dig om Microsoft Security Response Center (MSRC) upptäcker att dina data har använts av en olagligt eller obehörig part. Granska incidenter när du är säker på att problemen är lösta.
-
-- [Så här ställer du in Azure Security Center säkerhets kontakt](../security-center/security-center-provide-security-contact-details.md)
+- [NIST:s publikation – Guide till test-, tränings- och övningsprogram för IT-planer och IT-funktioner](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: införliva säkerhets aviseringar i ditt incident svars system
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Ange kontaktuppgifter för säkerhetsincidenter och konfigurera aviseringsmeddelanden för säkerhetsincidenter
 
-**Vägledning**: exportera Azure Security Center aviseringar och rekommendationer med hjälp av funktionen för kontinuerlig export för att identifiera risker för Azure-resurser. Med kontinuerlig export kan du exportera aviseringar och rekommendationer antingen manuellt eller i löpande miljö. Du kan använda Azure Security Center Data Connector för att strömma aviseringarna till Azure Sentinel. 
+**Vägledning:** Kontaktinformation om säkerhetsincidenter används av Microsoft för att kontakta dig om Microsoft Security Response Center (MSRC) upptäcker att dina data har använts av en obehörig part. Granska incidenter i efterhand för att säkerställa att problemen är lösta.
+
+- [Ställa in Azure Security Center säkerhetskontakt](../security-center/security-center-provide-security-contact-details.md)
+
+**Ansvar**: Kund
+
+**Azure Security Center övervakning**: Ingen
+
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Införliva säkerhetsaviseringar i systemet för incidentsvar
+
+**Vägledning:** Exportera dina Azure Security Center och rekommendationer med hjälp av funktionen Kontinuerlig export för att identifiera risker för Azure-resurser. Med löpande export kan du exportera aviseringar och rekommendationer manuellt eller kontinuerligt. Du kan använda anslutningsappen Azure Security Center data för att strömma aviseringarna till Azure Sentinel. 
 
 - [Så här konfigurerar du kontinuerlig export](../security-center/continuous-export.md) 
 
@@ -775,25 +775,25 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10,6: automatisera svaret på säkerhets aviseringar
+### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Automatisera svaret på säkerhetsaviseringar
 
-**Vägledning**: Använd funktionen för arbets flödes automatisering i Azure Security Center för att automatiskt utlösa svar via "Logic Apps" i säkerhets aviseringar och rekommendationer för att skydda dina Azure-resurser.
+**Vägledning:** Använd funktionen Arbetsflödesautomation i Azure Security Center för att automatiskt utlösa svar via "Logic Apps" för säkerhetsaviseringar och rekommendationer för att skydda dina Azure-resurser.
 
-- [Konfigurera automatisering av arbets flöden och Logic Apps](../security-center/workflow-automation.md)
+- [Så här konfigurerar du arbetsflödesautomation och Logic Apps](../security-center/workflow-automation.md)
 
 **Ansvar**: Kund
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Intrångstester och Red Team-övningar (rött lag)
 
-*Mer information finns i [övningen för Azure Security benchmark: inträngande tester och röda team](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
+*Mer information finns i [Azure Security Benchmark: Penetration Tests (Intrångstester) och Red Team Exercises (Red Team-övningar).](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: utför regelbundna inträngande tester av dina Azure-resurser och se till att åtgärda alla viktiga säkerhets brister
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1: Genomför regelbundna intrångstester av dina Azure-resurser och se till att alla viktiga säkerhetsresultat åtgärdas
 
-**Vägledning**: Följ Microsofts regler för engagemang för att se till att dina inträngande tester inte strider mot Microsofts principer. Använd Microsofts strategi och körning av röda team indelning och inträngande av direktsända webbplatser mot Microsoft-hanterad moln infrastruktur, tjänster och program.
+**Vägledning:** Följ Microsofts regler för engagemang för att säkerställa att dina intrångstester inte bryter mot Microsofts principer. Använd Microsofts strategi och körning av Red Teaming och intrångstester på live-webbplatser mot Microsoft-hanterad molninfrastruktur, -tjänster och -program.
 
 - [Regler för intrångstester](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
@@ -801,7 +801,7 @@ Dessutom är det tydligt att markera prenumerationer (t. ex. produktion, icke-Pr
 
 **Ansvar**: Delad
 
-**Azure Security Center övervakning**: ingen
+**Azure Security Center övervakning**: Ingen
 
 ## <a name="next-steps"></a>Nästa steg
 

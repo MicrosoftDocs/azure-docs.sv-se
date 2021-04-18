@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 6646f131488a5ae4aa9b20fe614d7ebb46133444
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 8fb4c797df7961726ca785a56a6ab25807999842
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538858"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600870"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrera och skanna en Power BI klientorganisation (förhandsversion)
 
@@ -61,7 +61,7 @@ Om du vill konfigurera autentisering skapar du en säkerhetsgrupp och lägger ti
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="Bild som visar hur du tillåter att tjänstens huvudnamn får skrivskyddade Power BI api-behörigheter för administratörer":::
 
     > [!Caution]
-    > När du tillåter den säkerhetsgrupp som du skapade (som har din hanterade identitet Purview som medlem) att använda skrivskyddade Power BI-administratörs-API:er, ger du den även åtkomst till metadata (t.ex. instrumentpanels- och rapportnamn, ägare, beskrivningar osv.) för alla dina Power BI-artefakter i den här klientorganisationen. När metadata har dragits till Azure Purview avgör Purviews behörigheter, inte Power BI behörigheter, vem som kan se dessa metadata.
+    > När du tillåter att den säkerhetsgrupp som du har skapat (som har din hanterade identitet i Purview som medlem) använder skrivskyddade Power BI-administratörs-API:er, ger du den även åtkomst till metadata (t.ex. instrumentpanels- och rapportnamn, ägare, beskrivningar osv.) för alla dina Power BI-artefakter i den här klientorganisationen. När metadata har dragits till Azure Purview avgör Purviews behörigheter, inte Power BI behörigheter, vem som kan se dessa metadata.
 
     > [!Note]
     > Du kan ta bort säkerhetsgruppen från dina utvecklarinställningar, men de metadata som extraherades tidigare tas inte bort från Purview-kontot. Du kan ta bort den separat om du vill.
@@ -70,13 +70,9 @@ Om du vill konfigurera autentisering skapar du en säkerhetsgrupp och lägger ti
 
 Nu när du har gett Purview-hanterad identitet behörighet att ansluta till admin-API:et för din Power BI-klient kan du konfigurera genomsökningen från Azure Purview Studio.
 
-1. Välj ikonen **för Hanteringscenter.**
+1. Välj Källor **i** det vänstra navigeringsfönstret.
 
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/management-center.png" alt-text="Ikon för Hanteringscenter.":::
-
-1. Välj sedan **+ Ny** på **Datakällor**.
-
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/data-sources.png" alt-text="Bild av knappen Ny datakälla":::
+1. Välj **Registrera**.
 
     Välj **Power BI** som datakälla.
 
@@ -86,7 +82,7 @@ Nu när du har gett Purview-hanterad identitet behörighet att ansluta till admi
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-friendly-name.png" alt-text="Bild som Power BI ett eget namn för datakällan":::
 
-    Namnet måste vara mellan 3 och 63 tecken långt och får bara innehålla bokstäver, siffror, understreck och bindestreck.  Blanksteg tillåts inte.
+    Namnet måste vara mellan 3 och 63 tecken långt och får endast innehålla bokstäver, siffror, understreck och bindestreck.  Blanksteg tillåts inte.
 
     Som standard hittar systemet den klientorganisation Power BI som finns i samma Azure-prenumeration.
 

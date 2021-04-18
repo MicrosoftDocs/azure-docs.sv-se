@@ -4,65 +4,37 @@ description: Konfigurera pingtester i Application Insights. Få aviseringar om e
 ms.topic: conceptual
 ms.date: 04/15/2021
 ms.reviewer: sdash
-ms.openlocfilehash: ecfd4ffee3582ff37411e59c75d8be8fca5e945f
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 60698862e26175425221940a4b69867cb414fe86
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516631"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598881"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Övervaka tillgängligheten för en webbplats
 
-Namnet "URL ping test" är lite av en felaktigt. För att vara tydlig använder de här testerna inte ICMP (Internet Control Message Protocol) för att kontrollera webbplatsens tillgänglighet. I stället använder de mer avancerade FUNKTIONER för HTTP-begäranden för att verifiera om en slutpunkt svarar. De mäter också prestandan som är associerad med svaret och lägger till möjligheten att ange anpassade framgångsvillkor tillsammans med mer avancerade funktioner som parsning av beroende begäranden och att tillåta återförsök.
-
-Det finns två typer av URL-pingtest som du kan skapa, grundläggande och standardtest för ping.
-
-> [!NOTE]
-> Basic- och Standard-pingtester är för närvarande i offentlig förhandsversion. Dessa förhandsversioner tillhandahålls utan serviceavtal. Vissa funktioner kanske inte stöds eller kan vara begränsade.
-
-Basic jämfört med Standard:
-
-- Basic är begränsat till fem platser per test.
-- Standardtester kan ha anpassade huvuden eller begärandetext.
-- Standardtester kan använda valfri HTTP-förfrågningsmetod medan Basic bara kan använda `GET` .
-- Livslängdskontroll för SSL-certifikat varnar dig om en a viss tidsperiod innan certifikatet upphör att gälla.
-- Standardtester är en betalfunktion.
-
-> [!NOTE]
-> Det finns för närvarande inga ytterligare avgifter för förhandsgranskningsfunktionen Standard Ping-tester. Priser för funktioner som är i förhandsversion kommer att meddelas i framtiden och ett meddelande visas innan faktureringen påbörjas. Om du väljer att fortsätta använda Standard Ping-tester efter tidsperioden debiteras du enligt gällande pris.
-
-## <a name="create-a-url-ping-test"></a>Skapa ett URL-pingtest
+Namnet "URL ping test" är lite av en felaktigt namn. För att vara tydlig använder de här testerna inte ICMP (Internet Control Message Protocol) för att kontrollera webbplatsens tillgänglighet. I stället använder de mer avancerade FUNKTIONER för HTTP-begäranden för att verifiera om en slutpunkt svarar. De mäter också prestandan som är associerad med svaret och lägger till möjligheten att ange anpassade framgångsvillkor tillsammans med mer avancerade funktioner som parsning av beroende begäranden och att tillåta återförsök.
 
 För att kunna skapa ett tillgänglighetstest behöver du använda en befintlig Application Insight-resurs eller [skapa en Application Insights resurs](create-new-resource.md).
 
-Om du vill skapa din första tillgänglighetsbegäran öppnar du fönstret Tillgänglighet och väljer Skapa test & väljer din test-SKU.
+Om du vill skapa din första tillgänglighetsbegäran öppnar du fönstret Tillgänglighet och väljer  **Skapa test.**
 
-:::image type="content" source="./media/monitor-web-app-availability/create-basic-test.png" alt-text="Skärmbild av att skapa ett grundläggande URL-pingtest i Azure-portalen":::
+:::image type="content" source="./media/monitor-web-app-availability/availability-create-test-001.png" alt-text="Skärmbild av att skapa ett test.":::
 
-|Inställning | Förklaring |
-|--------|-------------|
+## <a name="create-a-test"></a>Skapa ett test
+
+|Inställning| Förklaring
+|----|----|----|
 |**URL** |  URL: en kan vara en webbsida som du vill testa, men den måste vara synlig från Internet. URL: en kan innehålla en frågesträng. Du kan arbeta med din databas om du vill. Om URL-adressen matchar en omdirigering följer vi den upp till tio omdirigeringar.|
-|**Parsa beroende begäranden**| Testa begär bilder, skript, formatfiler och andra filer som ingår i webbsidan som testas. Den registrerade svarstiden innefattar den tid det tar att hämta dessa filer. Testet misslyckas om någon av dessa resurser inte kan laddas ned inom tidsgränsen för hela testet. Om alternativet inte är markerat begärs endast filen på den URL som du har angett i testet. Om du aktiverar det här alternativet resulterar det i en striktare kontroll. Testet kan misslyckas i fall, vilket kanske inte är märkbart när du bläddrar manuellt på webbplatsen. |
-|**Aktivera återförsök**| När testet misslyckas försöks det igen efter ett kort intervall. Ett fel rapporteras endast om tre på varandra följande försök misslyckas. Efterföljande tester utförs sedan med den vanliga testfrekvensen. Återförsök pausas tillfälligt tills nästa lyckade test. Den här regeln tillämpas separat på varje testplats. **Vi rekommenderar det här alternativet**. I genomsnitt försvinner ca 80 % av felen vid återförsök.|
-| **Valideringstest för SSL-certifikat** | Du kan verifiera SSL-certifikatet på din webbplats för att kontrollera att det är korrekt installerat, giltigt, betrott och inte ger några fel till någon av dina användare. |
-| **Proaktiv livslängdskontroll** | På så sätt kan du definiera en viss tidsperiod innan SSL-certifikatet upphör att gälla. När det upphör att gälla misslyckas testet. |
+|**Parsa beroende begäranden**| Testa begär bilder, skript, formatfiler och andra filer som är en del av webbsidan som testas. Den registrerade svarstiden innefattar den tid det tar att hämta dessa filer. Testet misslyckas om någon av dessa resurser inte kan laddas ned inom tidsgränsen för hela testet. Om alternativet inte är markerat begärs endast filen på den URL som du har angett i testet. Om du aktiverar det här alternativet blir kontrollen striktare. Testet kan misslyckas i fall, vilket kanske inte är märkbart när du bläddrar manuellt på webbplatsen.
+|**Aktivera återförsök**|När testet misslyckas försöks det igen efter ett kort intervall. Ett fel rapporteras endast om tre på varandra följande försök misslyckas. Efterföljande tester utförs sedan med den vanliga testfrekvensen. Återförsök pausas tillfälligt tills nästa lyckade test. Den här regeln tillämpas separat på varje testplats. **Vi rekommenderar det här alternativet**. I genomsnitt försvinner ca 80 % av felen vid återförsök.|
 |**Testfrekvens**| Anger hur ofta testet ska köras från varje testplats. Med en standardfrekvens på fem minuter och fem testplatser testas din webbplats i genomsnitt varje minut.|
-|**Testplatser**| Är de platser där våra servrar skickar webbförfrågningar till din URL. **Vårt minsta antal rekommenderade testplatser är fem** för att säkerställa att du kan skilja mellan problem på din webbplats och nätverksproblem. Du kan välja fler än fem platser med standardtest och upp till 16 platser.|
+|**Testplatser**| Är de platser där våra servrar skickar webbförfrågningar till din URL. **Vårt minsta antal rekommenderade testplatser är fem** för att säkerställa att du kan skilja mellan problem på din webbplats och nätverksproblem. Du kan välja upp till 16 platser.
 
-**Om url:en inte visas från** det offentliga Internet kan du välja att selektivt öppna brandväggen så att endast testtransaktioner tillåts genom . Mer information om brandväggundantag för våra tillgänglighetstestagenter finns i [IP-adressguiden.](./ip-addresses.md#availability-tests)
+Om din URL inte visas från det offentliga Internet kan du välja att selektivt öppna brandväggen så att endast **testtransaktioner tillåts via**. Mer information om brandväggundantag för våra tillgänglighetstestagenter finns i [IP-adressguiden.](./ip-addresses.md#availability-tests)
 
 > [!NOTE]
-> Vi rekommenderar starkt att du testar från flera **platser med minst fem platser.** Detta för att förhindra falska larm som kan uppstå på grund av tillfälliga problem med en specifik plats. Dessutom har vi upptäckt att den optimala konfigurationen är att antalet testplatser ska vara lika med tröskelvärdet för **aviseringsplatsen + 2**.
-
-## <a name="standard-test"></a>Standardtest
-
-:::image type="content" source="./media/monitor-web-app-availability/standard-test-post.png" alt-text="Skärmbild av fliken standardtestinformation." border="false":::
-
-|Inställning | Förklaring |
-|--------|-------------|
-| **Anpassade rubriker** | Nyckelvärdepar som definierar driftsparametrarna. |
-| **HTTP-begärandeverb** | Ange vilken åtgärd du vill vidta med din begäran. Om det valda verbet inte är tillgängligt i användargränssnittet kan du distribuera ett standardtest med Azure resursövervakare med önskat val. |
-| **Begärandetext** | Anpassade data som är associerade med din HTTP-begäran. Du kan ladda upp typ av egen filtyp i ditt innehåll eller inaktivera den här funktionen. För innehåll med rådatainnehåll stöder vi TEXT, JSON, HTML, XML och JavaScript. |
+> Vi rekommenderar starkt testning från flera platser **med minst fem platser.** Detta för att förhindra falska larm som kan uppstå på grund av tillfälliga problem med en specifik plats. Dessutom har vi upptäckt att den optimala konfigurationen är att antalet testplatser ska vara lika med tröskelvärdet för **aviseringsplatsen + 2**.
 
 ## <a name="success-criteria"></a>Framgångskriterier
 
@@ -79,11 +51,11 @@ Om du vill skapa din första tillgänglighetsbegäran öppnar du fönstret Tillg
 |**Nära realtid (förhandsversion)** | Vi rekommenderar att du använder aviseringar i nära realtid. Den här typen av avisering konfigureras när tillgänglighetstestet har skapats.  |
 |**Tröskelvärde för aviseringsplats**|Vi rekommenderar minst 3/5 platser. Den optimala relationen mellan tröskelvärdet för aviseringsplats och antalet testplatser är tröskelvärdet för aviseringsplats för   =  **testplatser – 2,** med minst fem testplatser.|
 
-## <a name="location-population-tags"></a>Taggar för platspopulation
+## <a name="location-population-tags"></a>Platspopulationstaggar
 
-Följande populationstaggar kan användas för attributet geo-plats när du distribuerar ett test av tillgänglighets-URL-ping med Azure Resource Manager.
+Följande populationstaggar kan användas för attributet geo-plats när du distribuerar ett pingtest för tillgänglighets-URL med Azure Resource Manager.
 
-#### <a name="azure-gov"></a>Azure Gov
+### <a name="azure-gov"></a>Azure Gov
 
 | Visningsnamn   | Befolkningsnamn     |
 |----------------|---------------------|
@@ -91,7 +63,7 @@ Följande populationstaggar kan användas för attributet geo-plats när du dist
 | USGov Arizona  | usgov-phx-azr       |
 | USGov Texas    | usgov-tx-azr        |
 | USDoD, östra     | usgov-ddeast-azr    |
-| USDoD, centrala  | usgov-ddcentral-azr |
+| USDoD Central  | usgov-ddcentral-azr |
 
 #### <a name="azure"></a>Azure
 
@@ -102,7 +74,7 @@ Följande populationstaggar kan användas för attributet geo-plats när du dist
 | Central US                             | us-fl-mia-edge    |
 | Asien, östra                              | apac-hk-hkn-azr   |
 | East US                                | us-va-azr     |
-| Frankrike, södra (tidigare Frankrike, centrala) | emea-ch-z chaz-edge  |
+| Frankrike, södra (tidigare Frankrike, centrala) | emea-ch-zulu-edge  |
 | Frankrike, centrala                         | emea-fr-pra-edge  |
 | Japan, östra                             | apac-jp-kaw-edge  |
 | Europa, norra                           | emea-gb-db3-azr   |
@@ -116,7 +88,7 @@ Följande populationstaggar kan användas för attributet geo-plats när du dist
 
 ## <a name="see-your-availability-test-results"></a>Visa tillgänglighetstestresultat
 
-Tillgänglighetstestresultat kan visualiseras med vyer för både linjediagram och punktdiagram.
+Tillgänglighetstestresultat kan visualiseras med både linje- och punktdiagramsvyer.
 
 Efter några minuter klickar du på **Uppdatera för** att se dina testresultat.
 
@@ -140,14 +112,14 @@ Du kanske vill inaktivera tillgänglighetstester eller varningsreglerna som är 
 
 Välj en röd punkt.
 
-:::image type="content" source="./media/monitor-web-app-availability/end-to-end.png" alt-text="Skärmbild av fliken transaktionsinformation från start till slut." border="false":::
+:::image type="content" source="./media/monitor-web-app-availability/end-to-end.png" alt-text="Skärmbild av fliken transaktionsinformation från slutet till slut." border="false":::
 
 Från ett tillgänglighetstestresultat kan du se transaktionsinformationen för alla komponenter. Här kan du:
 
-* Granska felsökningsrapporten för att avgöra vad som kan ha orsakat att testet misslyckades men programmet fortfarande är tillgängligt.
+* Granska felsökningsrapporten för att ta reda på vad som kan ha orsakat att testet misslyckades men programmet fortfarande är tillgängligt.
 * Kontrollera de svar som mottas från servern.
 * Diagnostisera fel med korrelerad telemetri på serversidan som samlats in under bearbetningen av det misslyckade tillgänglighetstestet.
-* Logga ett problem eller arbetsobjekt i Git eller Azure Boards för att spåra problemet. Buggen innehåller en länk till den här händelsen.
+* Logga ett ärende eller arbetsobjekt i Git eller Azure Boards för att spåra problemet. Buggen innehåller en länk till den här händelsen.
 * Öppna resultatet av webbtestet i Visual Studio.
 
 Mer information om transaktionsdiagnostik från slutet till slut finns i dokumentationen [för transaktionsdiagnostik.](./transaction-diagnostics.md)

@@ -1,177 +1,184 @@
 ---
 title: Hantera användare och roller i Azure IoT Central program | Microsoft Docs
-description: Som administratör kan du hantera användare och roller i ditt Azure IoT Central-program
-author: lmasieri
-ms.author: lmasieri
-ms.date: 12/05/2019
+description: Hur du som administratör hanterar användare och roller i ditt Azure IoT Central program
+author: vishwam
+ms.author: vishwams
+ms.date: 04/16/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: f6c45b8d9804f16c4e59d259f562cc03f187e6a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 928a9fbad7bde7fe7f1cfaf181bff2a7b9ce458b
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92122985"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599068"
 ---
-# <a name="manage-users-and-roles-in-your-iot-central-application"></a>Hantera användare och roller i ditt IoT Central program
+# <a name="manage-users-and-roles-in-your-iot-central-application"></a>Hantera användare och roller i ditt IoT Central-program
 
-Den här artikeln beskriver hur du, som administratör, kan lägga till, redigera och ta bort användare i ditt Azure IoT Central-program. Artikeln beskriver också hur du hanterar roller i ditt Azure IoT Central-program.
-
-För att få åtkomst till och använda avsnittet **Administration** måste du ha rollen **administratör** för ett Azure IoT Central-program. Om du skapar ett Azure IoT Central-program läggs du automatiskt till i **Administratörs** rollen för programmet.
+Den här artikeln beskriver hur du som administratör kan lägga till, redigera och ta bort användare i ditt Azure IoT Central program. Artikeln beskriver också hur du hanterar roller i ditt program.
 
 ## <a name="add-users"></a>Lägga till användare
 
-Varje användare måste ha ett användar konto innan de kan logga in och komma åt ett Azure IoT Central-program. Microsoft-konton och Azure Active Directory-konton stöds i Azure IoT Central. Azure Active Directory grupper stöds för närvarande inte i Azure IoT Central.
+Varje användare måste ha ett användarkonto innan de kan logga in och komma åt ett program. IoT Central stöder för närvarande Microsoft-Azure Active Directory och -konton, men inte Azure Active Directory grupper.
 
-Mer information finns i [Microsoft-konto Hjälp](https://support.microsoft.com/products/microsoft-account?category=manage-account) och  [snabb start: Lägg till nya användare i Azure Active Directory](../../active-directory/fundamentals/add-users-azure-active-directory.md).
+Mer information finns i Microsoft-konto [snabbstart: Lägga till nya användare i Azure Active Directory](../../active-directory/fundamentals/add-users-azure-active-directory.md). [](https://support.microsoft.com/products/microsoft-account?category=manage-account)
 
-1. Om du vill lägga till en användare i ett IoT Central-program går du till sidan **användare** i avsnittet **Administration** .
+1. Om du vill lägga till en användare IoT Central ett program går du till **sidan** Användare i **avsnittet** Administration.
     
     > [!div class="mx-imgBorder"]
     >![Hantera användare](media/howto-manage-users-roles/manage-users-pnp.png)
 
-1. Om du vill lägga till en användare går du till sidan **användare** och väljer **+ Lägg till användare**.
+1. Om du vill lägga till en användare går **du till sidan** Användare och väljer + Lägg till **användare.**
 
-1. Välj en roll för användaren på den nedrullningsbara menyn **roll** . Lär dig mer om roller i avsnittet [hantera roller](#manage-roles) i den här artikeln.
+1. Välj en roll för användaren från **listrutan** Roll. Läs mer om roller i avsnittet [Hantera roller](#manage-roles) i den här artikeln.
 
     > [!div class="mx-imgBorder"]
     >![Lägg till användare och välj en roll](media/howto-manage-users-roles/add-user-pnp.png)
 
     > [!NOTE]
-    > En användare som har en anpassad roll som ger dem behörighet att lägga till andra användare, kan bara lägga till användare till en roll med samma eller färre behörigheter än den egna rollen.
-
-Om ett IoT Central användar-ID tas bort från Azure Active Directory och sedan läggs till, kommer användaren inte att kunna logga in på IoT Central programmet. Om du vill återaktivera åtkomst måste IoT Centrals administratören ta bort och läsa in användaren i programmet.
+    > En användare som har en anpassad roll som ger dem behörighet att lägga till andra användare kan bara lägga till användare i en roll med samma eller färre behörigheter än sin egen roll.
+    > 
+    > Om en användare tas bort från Azure Active Directory och sedan läggs till igen kan de inte logga in på IoT Central programmet automatiskt. För att återaktivera åtkomst bör programmets administratör ta bort och lägga till användaren i programmet på samma sätt.
 
 ### <a name="edit-the-roles-that-are-assigned-to-users"></a>Redigera de roller som är tilldelade till användare
 
-Roller kan inte ändras efter att de har tilldelats. Om du vill ändra rollen som är tilldelad en användare tar du bort användaren och lägger sedan till användaren igen med en annan roll.
+Roller kan inte ändras efter att de har tilldelats. Om du vill ändra rollen som är tilldelad till en användare tar du bort användaren och lägger sedan till användaren igen med en annan roll.
 
 > [!NOTE]
-> De roller som är tilldelade är specifika för IoT Central program och kan inte hanteras från Azure Portal.
+> De tilldelade rollerna är specifika för IoT Central och kan inte hanteras från Azure Portal.
 
 ## <a name="delete-users"></a>Ta bort användare
 
-Om du vill ta bort användare markerar du en eller flera kryss rutor på sidan **användare** . Välj sedan **Ta bort**.
+Om du vill ta bort användare markerar du en eller flera kryssrutor **på sidan** Användare. Välj sedan **Ta bort**.
 
 ## <a name="manage-roles"></a>Hantera roller
 
-Med roller kan du kontrol lera vem i din organisation som tillåts utföra olika uppgifter i IoT Central. Det finns tre inbyggda roller som du kan tilldela till användare av ditt program. Du kan också [skapa anpassade roller](#create-a-custom-role) om du behöver mer detaljerad kontroll.
+Med roller kan du styra vem inom organisationen som får utföra olika uppgifter i IoT Central. Det finns tre inbyggda roller som du kan tilldela till användare av ditt program. Du kan [också skapa anpassade](#create-a-custom-role) roller om du behöver mer begränsad kontroll.
 
 > [!div class="mx-imgBorder"]
 > ![Hantera val av roller](media/howto-manage-users-roles/manage-roles-pnp.png)
 
 ### <a name="administrator"></a>Administratör
 
-Användare i rollen **administratör** kan hantera och kontrol lera alla delar av programmet, inklusive fakturering.
+Användare i **administratörsrollen** kan hantera och styra alla delar av programmet, inklusive fakturering.
 
-Den användare som skapar ett program tilldelas automatiskt rollen **administratör** . Det måste alltid finnas minst en användare i **Administratörs** rollen.
+Den användare som skapar ett program tilldelas automatiskt **rollen** Administratör. Det måste alltid finnas minst en användare i **administratörsrollen.**
 
 ### <a name="builder"></a>Builder
 
-Användare i **Builder** -rollen kan hantera alla delar av appen, men kan inte göra ändringar på flikarna administration eller kontinuerlig data export.
+Användare i **builder-rollen** kan hantera alla delar av appen, men kan inte göra ändringar på flikarna Administration eller Kontinuerlig dataexport.
 
 ### <a name="operator"></a>Operator
 
-Användare i rollen **operatör** kan övervaka enhetens hälso tillstånd och status. De är inte tillåtna att göra ändringar i enhets mallar eller för att administrera programmet. Operatörer kan lägga till och ta bort enheter, hantera enhets uppsättningar och köra analyser och jobb. 
+Användare i rollen **Operatör** kan övervaka enhetens hälsotillstånd och status. De får inte göra ändringar i enhetsmallar eller administrera programmet. Operatörer kan lägga till och ta bort enheter, hantera enhetsuppsättningar och köra analyser och jobb. 
 
 ## <a name="create-a-custom-role"></a>Skapa en anpassad roll
 
-Om din lösning kräver mer detaljerade åtkomst kontroller kan du skapa anpassade roller med anpassade uppsättningar med behörigheter. Om du vill skapa en anpassad roll går du till sidan **roller** i avsnittet **Administration** i ditt program. Välj sedan **+ ny roll** och Lägg till ett namn och en beskrivning för rollen. Välj de behörigheter som din roll kräver och välj sedan **Spara**.
+Om din lösning kräver mer begränsade åtkomstkontroller kan du skapa roller med anpassade uppsättningar med behörigheter. Om du vill skapa en anpassad roll går **du till sidan** Roller i avsnittet **Administration** i ditt program. Välj sedan **+ Ny roll** och lägg till ett namn och en beskrivning för din roll. Välj de behörigheter som din roll kräver och välj sedan **Spara.**
 
-Du kan lägga till användare i den anpassade rollen på samma sätt som du lägger till användare till en inbyggd roll.
+Du kan lägga till användare i din anpassade roll på samma sätt som du lägger till användare i en inbyggd roll.
 
 > [!div class="mx-imgBorder"]
-> ![Bygg en anpassad roll](media/howto-manage-users-roles/create-custom-role-pnp.png)
+> ![Skapa en anpassad roll](media/howto-manage-users-roles/create-custom-role-pnp.png)
 
-### <a name="custom-role-options"></a>Alternativ för anpassad roll
+### <a name="custom-role-options"></a>Alternativ för anpassade roller
 
-När du definierar en anpassad roll väljer du den uppsättning behörigheter som en användare beviljas om de är medlemmar i rollen. Vissa behörigheter är beroende av andra. Om du till exempel lägger till behörigheten **Uppdatera program instrument paneler** i en roll läggs behörigheten **Visa program instrument paneler** till automatiskt. Följande tabeller sammanfattar de tillgängliga behörigheterna och deras beroenden, som du kan använda när du skapar anpassade roller.
+När du definierar en anpassad roll väljer du den uppsättning behörigheter som en användare beviljas om de är medlemmar i rollen. Vissa behörigheter är beroende av andra. Om du till exempel lägger till **behörigheten Uppdatera instrumentpaneler** för program till en roll behöver du även **behörigheten Visa instrumentpaneler för** program. I följande tabeller sammanfattas de tillgängliga behörigheterna och deras beroenden som du kan använda när du skapar anpassade roller.
 
 #### <a name="managing-devices"></a>Hantera enheter
 
-**Behörigheter för enhets mal len**
+**Behörigheter för enhetsmall**
 
 | Name | Beroenden |
 | ---- | -------- |
 | Visa | Inget     |
-| Hantera | Visa <br/> Andra beroenden: Visa enhets instanser  |
-| Fullständig kontroll | Visa, hantera <br/> Andra beroenden: Visa enhets instanser |
+| Hantera | Visa <br/> Andra beroenden: Visa enhetsinstanser  |
+| Fullständig kontroll | Visa, hantera <br/> Andra beroenden: Visa enhetsinstanser |
 
-**Behörigheter för enhets instans**
-
-| Name | Beroenden |
-| ---- | -------- |
-| Visa | Inget <br/> Andra beroenden: Visa mallar och enhets grupper |
-| Uppdatera | Visa <br/> Andra beroenden: Visa mallar och enhets grupper  |
-| Skapa | Visa <br/> Andra beroenden: Visa mallar och enhets grupper  |
-| Ta bort | Visa <br/> Andra beroenden: Visa mallar och enhets grupper  |
-| Köra kommandon | Uppdatera, Visa <br/> Andra beroenden: Visa mallar och enhets grupper  |
-| Fullständig kontroll | Visa, uppdatera, skapa, ta bort, köra kommandon <br/> Andra beroenden: Visa mallar och enhets grupper  |
-
-**Behörigheter för enhets grupper**
+**Behörigheter för enhetsinstans**
 
 | Name | Beroenden |
 | ---- | -------- |
-| Visa | Inget <br/> Andra beroenden: Visa mallar för enheter och enhets instanser |
-| Uppdatera | Visa <br/> Andra beroenden: Visa mallar för enheter och enhets instanser   |
-| Skapa | Visa, uppdatera <br/> Andra beroenden: Visa mallar för enheter och enhets instanser   |
-| Ta bort | Visa <br/> Andra beroenden: Visa mallar för enheter och enhets instanser   |
-| Fullständig kontroll | Visa, uppdatera, skapa, ta bort <br/> Andra beroenden: Visa mallar för enheter och enhets instanser |
+| Visa | Inget <br/> Andra beroenden: Visa enhetsmallar och enhetsgrupper |
+| Uppdatera | Visa <br/> Andra beroenden: Visa enhetsmallar och enhetsgrupper  |
+| Skapa | Visa <br/> Andra beroenden: Visa enhetsmallar och enhetsgrupper  |
+| Ta bort | Visa <br/> Andra beroenden: Visa enhetsmallar och enhetsgrupper  |
+| Köra kommandon | Uppdatera, visa <br/> Andra beroenden: Visa enhetsmallar och enhetsgrupper  |
+| Visa rådata | Visa <br/> Andra beroenden: Visa enhetsmallar och enhetsgrupper  |
+| Fullständig kontroll | View, Update, Create, Delete, Execute commands, View raw data <br/> Andra beroenden: Visa enhetsmallar och enhetsgrupper  |
 
-**Behörigheter för hantering av enhets anslutning**
-
-| Name | Beroenden |
-| ---- | -------- |
-| Läs instans | Inget <br/> Andra beroenden: Visa enhetsspecifika, enhets grupper, enhets instanser |
-| Hantera instans | Inget |
-| Läs global | Inget   |
-| Hantera globala | Läs global |
-| Fullständig kontroll | Läs instans, hantera instans, läsa global, hantera global. <br/> Andra beroenden: Visa enhetsspecifika, enhets grupper, enhets instanser |
-
-**Jobb behörigheter**
+**Behörigheter för enhetsgrupper**
 
 | Name | Beroenden |
 | ---- | -------- |
-| Visa | Inget <br/> Andra beroenden: Visa enhetsspecifika, enhets instanser och enhets grupper |
-| Uppdatera | Visa <br/> Andra beroenden: Visa enhetsspecifika, enhets instanser och enhets grupper |
-| Skapa | Visa, uppdatera <br/> Andra beroenden: Visa enhetsspecifika, enhets instanser och enhets grupper |
-| Ta bort | Visa <br/> Andra beroenden: Visa enhetsspecifika, enhets instanser och enhets grupper |
-| Genomförande | Visa <br/> Andra beroenden: Visa enhetsspecifika, enhets instanser och enhets grupper; Uppdatera enhets instanser; Köra kommandon på enhets instanser |
-| Fullständig kontroll | Visa, uppdatera, skapa, ta bort, köra <br/> Andra beroenden: Visa enhetsspecifika, enhets instanser och enhets grupper; Uppdatera enhets instanser; Köra kommandon på enhets instanser |
+| Visa | Inget <br/> Andra beroenden: Visa enhetsmallar och enhetsinstanser |
+| Uppdatera | Visa <br/> Andra beroenden: Visa enhetsmallar och enhetsinstanser   |
+| Skapa | Visa, uppdatera <br/> Andra beroenden: Visa enhetsmallar och enhetsinstanser   |
+| Ta bort | Visa <br/> Andra beroenden: Visa enhetsmallar och enhetsinstanser  |
+| Fullständig kontroll | Visa, uppdatera, skapa, ta bort <br/> Andra beroenden: Visa enhetsmallar och enhetsinstanser |
 
-**Regler behörigheter**
+**Behörigheter för hantering av enhetsanslutning**
 
 | Name | Beroenden |
 | ---- | -------- |
-| Visa | Inget <br/> Andra beroenden: Visa mallar för enheter |
-| Uppdatera | Visa <br/> Andra beroenden: Visa mallar för enheter |
-| Skapa | Visa, uppdatera <br/> Andra beroenden: Visa mallar för enheter |
-| Ta bort | Visa <br/> Andra beroenden: Visa mallar för enheter |
-| Fullständig kontroll | Visa, uppdatera, skapa, ta bort <br/> Andra beroenden: Visa mallar för enheter |
+| Läs-instans | Inget <br/> Andra beroenden: Visa enhetsmallar, enhetsgrupper, enhetsinstanser |
+| Hantera instans | Läs-instans <br /> Andra beroenden: Visa enhetsmallar, enhetsgrupper, enhetsinstanser |
+| Läsa globalt | Inget   |
+| Hantera globala | Läsa globalt |
+| Fullständig kontroll | Läs-instans, Hantera instans, Läsa global, Hantera global <br/> Andra beroenden: Visa enhetsmallar, enhetsgrupper, enhetsinstanser |
+
+**Jobbbehörigheter**
+
+| Name | Beroenden |
+| ---- | -------- |
+| Visa | Inget <br/> Andra beroenden: Visa enhetsmallar, enhetsinstanser och enhetsgrupper |
+| Uppdatera | Visa <br/> Andra beroenden: Visa enhetsmallar, enhetsinstanser och enhetsgrupper |
+| Skapa | Visa, uppdatera <br/> Andra beroenden: Visa enhetsmallar, enhetsinstanser och enhetsgrupper |
+| Ta bort | Visa <br/> Andra beroenden: Visa enhetsmallar, enhetsinstanser och enhetsgrupper |
+| Genomförande | Visa <br/> Andra beroenden: Visa enhetsmallar, enhetsinstanser och enhetsgrupper; Uppdatera enhetsinstanser; Köra kommandon på enhetsinstanser |
+| Fullständig kontroll | Visa, uppdatera, skapa, ta bort, köra <br/> Andra beroenden: Visa enhetsmallar, enhetsinstanser och enhetsgrupper; Uppdatera enhetsinstanser; Köra kommandon på enhetsinstanser |
+
+**Regelbehörigheter**
+
+| Name | Beroenden |
+| ---- | -------- |
+| Visa | Inget <br/> Andra beroenden: Visa enhetsmallar |
+| Uppdatera | Visa <br/> Andra beroenden: Visa enhetsmallar |
+| Skapa | Visa, uppdatera <br/> Andra beroenden: Visa enhetsmallar |
+| Ta bort | Visa <br/> Andra beroenden: Visa enhetsmallar |
+| Fullständig kontroll | Visa, uppdatera, skapa, ta bort <br/> Andra beroenden: Visa enhetsmallar |
 
 #### <a name="managing-the-app"></a>Hantera appen
 
-**Behörigheter för program inställningar**
+**Behörigheter för programinställningar**
 
 | Name | Beroenden |
 | ---- | -------- |
 | Visa | Inget     |
 | Uppdatera | Visa   |
-| Kopiera | Visa <br/> Andra beroenden: Visa mallar för enheter, enhets instanser, enhets grupper, instrument paneler, data export, anpassning, hjälp länkar, anpassade roller, regler |
+| Kopiera | Visa <br/> Andra beroenden: Visa enhetsmallar, enhetsinstanser, enhetsgrupper, instrumentpaneler, dataexport, varumärkesanpassad, hjälplänkar, anpassade roller, regler |
 | Ta bort | Visa   |
-| Fullständig kontroll | Visa, uppdatera, kopiera och ta bort <br/> Andra beroenden: Visa enhetsspecifika, enhets grupper, program instrument paneler, data export, anpassning, hjälp länkar, anpassade roller, regler |
+| Fullständig kontroll | Visa, uppdatera, kopiera, ta bort <br/> Andra beroenden: Visa enhetsmallar, enhetsgrupper, instrumentpaneler för program, dataexport, anpassning, hjälplänkar, anpassade roller, regler |
 
-**Export behörigheter för program mal len**
+**Exportbehörigheter för programmall**
 
 | Name | Beroenden |
 | ---- | -------- |
 | Visa | Inget     |
-| Exportera | Visa <br/> Andra beroenden: Visa mallar för enheter, enhets instanser, enhets grupper, instrument paneler, data export, anpassning, hjälp länkar, anpassade roller, regler |
-| Fullständig kontroll | Visa, exportera <br/> Andra beroenden: Visa enhetsspecifika, enhets grupper, program instrument paneler, data export, anpassning, hjälp länkar, anpassade roller, regler |
+| Exportera | Visa <br/> Andra beroenden: Visa enhetsmallar, enhetsinstanser, enhetsgrupper, instrumentpaneler, dataexport, anpassning, hjälplänkar, anpassade roller, regler |
+| Fullständig kontroll | Visa, exportera <br/> Andra beroenden: Visa enhetsmallar, enhetsgrupper, instrumentpaneler för program, dataexport, anpassning, hjälplänkar, anpassade roller, regler |
 
-**Fakturerings behörigheter**
+**Behörigheter för uppladdning av enhetsfiler**
+
+| Name | Beroenden |
+| ---- | -------- |
+| Visa | Inget     |
+| Hantera | Visa   |
+| Fullständig kontroll | Visa, hantera |
+
+**Faktureringsbehörigheter**
 
 | Name | Beroenden |
 | ---- | -------- |
@@ -180,7 +187,7 @@ När du definierar en anpassad roll väljer du den uppsättning behörigheter so
 
 #### <a name="managing-users-and-roles"></a>Hantera användare och roller
 
-**Behörigheter för anpassade roller**
+**Anpassade rollbehörigheter**
 
 | Name | Beroenden |
 | ---- | -------- |
@@ -190,7 +197,7 @@ När du definierar en anpassad roll väljer du den uppsättning behörigheter so
 | Ta bort | Visa |
 | Fullständig kontroll | Visa, uppdatera, skapa, ta bort |
 
-**Användar hanterings behörigheter**
+**Användarhanteringsbehörigheter**
 
 | Name | Beroenden |
 | ---- | -------- |
@@ -200,11 +207,11 @@ När du definierar en anpassad roll väljer du den uppsättning behörigheter so
 | Fullständig kontroll | Visa, lägga till, ta bort <br/> Andra beroenden: Visa anpassade roller |
 
 > [!NOTE]
-> En användare som har en anpassad roll som ger dem behörighet att lägga till andra användare, kan bara lägga till användare till en roll med samma eller färre behörigheter än den egna rollen.
+> En användare som har en anpassad roll som ger dem behörighet att lägga till andra användare kan bara lägga till användare i en roll med samma eller färre behörigheter än sin egen roll.
 
 #### <a name="customizing-the-app"></a>Anpassa appen
 
-**Behörigheter för program instrument panel**
+**Behörigheter för instrumentpanelen för program**
 
 | Name | Beroenden |
 | ---- | -------- |
@@ -214,7 +221,7 @@ När du definierar en anpassad roll väljer du den uppsättning behörigheter so
 | Ta bort | Visa   |
 | Fullständig kontroll | Visa, uppdatera, skapa, ta bort |
 
-**Behörigheter för personliga instrument paneler**
+**Behörigheter för personliga instrumentpaneler**
 
 | Name | Beroenden |
 | ---- | -------- |
@@ -224,7 +231,7 @@ När du definierar en anpassad roll väljer du den uppsättning behörigheter so
 | Ta bort | Visa   |
 | Fullständig kontroll | Visa, uppdatera, skapa, ta bort |
 
-**Behörigheter för anpassning, favicon och färger**
+**Varumärkes-, uttryckssymbol- och färgbehörigheter**
 
 | Name | Beroenden |
 | ---- | -------- |
@@ -232,7 +239,7 @@ När du definierar en anpassad roll väljer du den uppsättning behörigheter so
 | Uppdatera | Visa   |
 | Fullständig kontroll | Visa, uppdatera |
 
-**Hjälp länkar behörigheter**
+**Hjälplänkar behörigheter**
 
 | Name | Beroenden |
 | ---- | -------- |
@@ -242,7 +249,7 @@ När du definierar en anpassad roll väljer du den uppsättning behörigheter so
 
 #### <a name="extending-the-app"></a>Utöka appen
 
-**Behörigheter för data export**
+**Dataexportbehörigheter**
 
 | Name | Beroenden |
 | ---- | -------- |
@@ -252,15 +259,15 @@ När du definierar en anpassad roll väljer du den uppsättning behörigheter so
 | Ta bort | Visa   |
 | Fullständig kontroll | Visa, uppdatera, skapa, ta bort |
 
-**Behörigheter för API-token**
+**API-tokenbehörigheter**
 
 | Name | Beroenden |
 | ---- | -------- |
-| Visa | Inget     |
-| Skapa | Visa   |
-| Ta bort | Visa   |
-| Fullständig kontroll | Visa, skapa, ta bort |
+| Visa | Inget  <br/> Andra beroenden: Visa anpassade roller |
+| Skapa | Visa <br/> Andra beroenden: Visa anpassade roller |
+| Ta bort | Visa <br/> Andra beroenden: Visa anpassade roller |
+| Fullständig kontroll | Visa, skapa, ta bort <br/> Andra beroenden: Visa anpassade roller |
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har lärt dig hur du hanterar användare och roller i ditt Azure IoT Central-program är det föreslagna nästa steg att lära dig hur du [hanterar din faktura](howto-view-bill.md).
+Nu när du har lärt dig hur du hanterar användare och roller i ditt IoT Central program föreslår vi att du går vidare med att lära [dig hur du hanterar din faktura.](howto-view-bill.md)

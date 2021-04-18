@@ -1,6 +1,6 @@
 ---
 title: 'Självstudie: Azure Active Directory integrering med Tidemark | Microsoft Docs'
-description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Tidemark.
+description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory tidemark.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,20 +11,20 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c9e1de7b5dee8e351cd8744287c07b0bbb174512
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8cbccc3fb4cc513d7c86253ae07fbced4626a15e
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92516468"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599663"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tidemark"></a>Självstudie: Azure Active Directory integrering med Tidemark
 
-I den här självstudien får du lära dig hur du integrerar Tidemark med Azure Active Directory (Azure AD).
-Genom att integrera Tidemark med Azure AD får du följande fördelar:
+I den här självstudien lär du dig att integrera Tidemark med Azure Active Directory (Azure AD).
+Integreringen av Tidemark med Azure AD innebär följande fördelar:
 
-* Du kan styra i Azure AD som har åtkomst till Tidemark.
-* Du kan göra det möjligt för användarna att logga in automatiskt till Tidemark (enkel inloggning) med sina Azure AD-konton.
+* Du kan i Azure AD styra vem som har åtkomst till Tidemark.
+* Du kan göra så att dina användare automatiskt loggas in på Tidemark (enkel inloggning) med sina Azure AD-konton.
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
@@ -32,20 +32,20 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](ht
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Om du vill konfigurera Azure AD-integrering med Tidemark behöver du följande objekt:
+För att konfigurera Azure AD-integrering med Tidemark behöver du följande:
 
 * En Azure AD-prenumeration. Om du inte har någon Azure AD-miljö kan du hämta en månads utvärderingsversion [här](https://azure.microsoft.com/pricing/free-trial/)
-* Tidemark-aktiverad prenumeration med enkel inloggning
+* Tidemark-prenumeration med enkel inloggning aktiverat
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
 I den här självstudien konfigurerar och testar du enkel inloggning med Azure AD i en testmiljö.
 
-* Tidemark stöder **SP** -INITIERAd SSO
+* Tidemark har stöd för **SP-initierad** enkel inloggning
 
 ## <a name="adding-tidemark-from-the-gallery"></a>Lägga till Tidemark från galleriet
 
-Om du vill konfigurera integreringen av Tidemark i Azure AD måste du lägga till Tidemark från galleriet i listan över hanterade SaaS-appar.
+För att konfigurera integreringen av Tidemark i Azure AD måste du lägga till Tidemark från galleriet i din lista över hanterade SaaS-appar.
 
 **Utför följande steg för att lägga till Tidemark från galleriet:**
 
@@ -61,31 +61,31 @@ Om du vill konfigurera integreringen av Tidemark i Azure AD måste du lägga til
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I rutan Sök skriver du **Tidemark**, väljer **Tidemark** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
+4. I sökrutan skriver du **Tidemark, väljer** **Tidemark** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Tidemark i resultat listan](common/search-new-app.png)
+     ![Tidemark i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
-I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med Tidemark baserat på en test användare som kallas **Britta Simon**.
-För att enkel inloggning ska fungera måste en länk relation mellan en Azure AD-användare och den relaterade användaren i Tidemark upprättas.
+I det här avsnittet konfigurerar och testar du enkel inloggning i Azure AD med Tidemark baserat på en testanvändare med namnet **Britta Simon**.
+För att enkel inloggning ska fungera måste en länkrelation mellan en Azure AD-användare och den relaterade användaren i Tidemark upprättas.
 
-Om du vill konfigurera och testa enkel inloggning med Tidemark i Azure AD måste du slutföra följande Bygg stenar:
+För att konfigurera och testa enkel inloggning för Azure AD med Tidemark behöver du slutföra följande byggstenar:
 
 1. **[Konfigurera enkel inloggning med Azure AD](#configure-azure-ad-single-sign-on)** – så att användarna kan använda den här funktionen.
-2. **[Konfigurera Tidemark enkel inloggning](#configure-tidemark-single-sign-on)** – om du vill konfigurera de enskilda Sign-On inställningarna på program sidan.
+2. **[Konfigurera enkel inloggning för Tidemark](#configure-tidemark-single-sign-on)** – för att konfigurera inställningarna Sign-On enkel inloggning på programsidan.
 3. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** – för att testa enkel inloggning med Azure AD med Britta Simon.
 4. **[Tilldela Azure AD-testanvändaren](#assign-the-azure-ad-test-user)** – så att Britta Simon kan använda enkel inloggning med Azure AD.
-5. **[Skapa Tidemark test User](#create-tidemark-test-user)** – om du vill ha en motsvarighet till Britta Simon i Tidemark som är länkad till Azure AD-representation av användare.
+5. **[Skapa Tidemark-testanvändare](#create-tidemark-test-user)** – för att ha en motsvarighet för Britta Simon i Tidemark som är länkad till En Azure AD-representation av användaren.
 6. **[Testa enkel inloggning](#test-single-sign-on)** – för att verifiera om konfigurationen fungerar.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera enkel inloggning med Azure AD
 
 I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen.
 
-Utför följande steg för att konfigurera enkel inloggning med Tidemark i Azure AD:
+Utför följande steg för att konfigurera enkel inloggning i Azure AD med Tidemark:
 
-1. Välj **enkel inloggning** på sidan **Tidemark** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. I [Azure Portal](https://portal.azure.com/)väljer du Enkel inloggning på programintegreringssidan för **Tidemark.** 
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -99,7 +99,7 @@ Utför följande steg för att konfigurera enkel inloggning med Tidemark i Azure
 
 4. I avsnittet **Grundläggande SAML-konfiguration** utför du följande steg:
 
-    ![Information om enkel inloggning för Tidemark-domän och URL: er](common/sp-identifier.png)
+    ![Tidemark-domän och information om URL:er för enkel inloggning](common/sp-identifier.png)
 
     a. I textrutan **Inloggnings-URL** anger du en URL enligt följande mönster: 
 
@@ -113,13 +113,13 @@ Utför följande steg för att konfigurera enkel inloggning med Tidemark i Azure
     - `https://<subdomain>.tidemark.net/saml`
 
     > [!NOTE]
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med faktisk inloggnings-URL och identifierare. Kontakta [Tidemark client support team](http://www.tidemark.com/contact-us) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
+    > Dessa värden är inte verkliga. Uppdatera dessa värden med faktisk inloggnings-URL och identifierare. Kontakta supportteamet för Tidemark-klienten för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
 5. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat**, klickar du på **Ladda ned** för att ladda ned **Certifikat (Base64)** från de angivna alternativen enligt dina behov och sparar det på datorn.
 
     ![Länk för nedladdning av certifikatet](common/certificatebase64.png)
 
-6. I avsnittet **Konfigurera Tidemark** kopierar du lämpliga URL: er enligt ditt krav.
+6. I **avsnittet Konfigurera Tidemark** kopierar du lämpliga URL:er enligt dina behov.
 
     ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
 
@@ -129,9 +129,9 @@ Utför följande steg för att konfigurera enkel inloggning med Tidemark i Azure
 
     c. Utloggnings-URL
 
-### <a name="configure-tidemark-single-sign-on"></a>Konfigurera Tidemark Single Sign-On
+### <a name="configure-tidemark-single-sign-on"></a>Konfigurera Tidemark – enskild Sign-On
 
-Om du vill konfigurera enkel inloggning på **Tidemark** sida måste du skicka det hämtade **certifikatet (base64)** och lämpliga kopierade url: er från Azure Portal till [support teamet för Tidemark](http://www.tidemark.com/contact-us). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
+För att konfigurera enkel inloggning på **Tidemark-sidan** behöver du skicka det nedladdade certifikatet **(Base64)** och lämpliga kopierade URL:er från Azure Portal till supportteamet för Tidemark. De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
 
@@ -141,7 +141,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
 
-2. Välj **ny användare** överst på skärmen.
+2. Välj **Ny** användare överst på skärmen.
 
     ![Knappen Ny användare](common/new-user.png)
 
@@ -151,7 +151,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
+    b. I fältet **Användarnamn** skriver du brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -159,15 +159,15 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
-I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Tidemark.
+I det här avsnittet gör du det möjligt för Britta Simon att använda enkel inloggning med Azure genom att ge åtkomst till Tidemark.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Tidemark**.
+1. I Azure Portal väljer du **Företagsprogram,** **Alla program** och sedan **Tidemark**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-2. I listan program väljer du **Tidemark**.
+2. I programlistan väljer du **Tidemark**.
 
-    ![Tidemark-länken i program listan](common/all-applications.png)
+    ![Tidemark-länken i programlistan](common/all-applications.png)
 
 3. På menyn till vänster väljer du **Användare och grupper**.
 
@@ -179,19 +179,19 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 5. I dialogrutan **Användare och grupper** väljer du **Britta Simon** i listan med användare och klickar på knappen **Välj** längst ned på skärmen.
 
-6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
+6. Om du förväntar dig ett rollvärde i  SAML-försäkran väljer du i dialogrutan Välj roll  lämplig roll för användaren i listan och klickar sedan på knappen Välj längst ned på skärmen.
 
 7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
-### <a name="create-tidemark-test-user"></a>Skapa Tidemark test användare
+### <a name="create-tidemark-test-user"></a>Skapa Tidemark-testanvändare
 
-I det här avsnittet skapar du en användare som heter Britta Simon i Tidemark. Arbeta med [Tidemark support team](http://www.tidemark.com/contact-us) för att lägga till användare i Tidemark-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
+I det här avsnittet skapar du en användare med namnet Britta Simon i Tidemark. Arbeta med Tidemark-supportteamet för att lägga till användare i Tidemark-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning 
 
 I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
 
-När du klickar på panelen Tidemark på åtkomst panelen, bör du loggas in automatiskt på den Tidemark som du ställer in SSO för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+När du klickar på Tidemark-panelen i Åtkomstpanelen bör du automatiskt loggas in på Tidemark som du har ställt in enkel inloggning för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 

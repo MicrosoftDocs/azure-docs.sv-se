@@ -9,7 +9,7 @@
       items:
         - name: Skapa ett nytt Partnercenter-konto
           href: create-account.md
-        - name: Lägg till nya utgivare
+        - name: Lägga till nya utgivare
           href: add-publishers.md
         - name: Hantera ditt konto
           href: manage-account.md
@@ -27,7 +27,7 @@
       items:
         - name: Lägga till och hantera användare
           href: add-manage-users.md
-        - name: Tilldela användar roller
+        - name: Tilldela användarroller
           href: user-roles.md
         - name: Hantera grupper
           href: manage-groups.md
@@ -61,7 +61,7 @@
           href: test-drive-hosted-detailed-config.md
         - name: Konfigurera Azure-prenumeration för värdbaserad provkörning
           href: test-drive-azure-subscription-setup.md
-    - name: Azures kund användnings behörighet
+    - name: Attribution för Azure-kundanvändning
       href: azure-partner-customer-usage-attribution.md
     - name: Alternativ för Go-to-market
       items:
@@ -70,13 +70,13 @@
           items: null
         - name: Säljsamarbeta med Microsoft
           items:
-            - name: Översikt över Co-försäljning
+            - name: Översikt över säljförsäljning
               href: co-sell-overview.md
-            - name: Krav för samförsäljning
+            - name: Krav på säljförsäljning
               href: co-sell-requirements.md
-            - name: Konfigurera Co-försäljning
+            - name: Konfigurera samförsäljning
               href: co-sell-configure.md
-            - name: Verifiera medförsäljnings status
+            - name: Verifiera säljstatus
               href: co-sell-status.md
             - name: Migrera lösningar för säljsamarbete från OCP GTM
               href: co-sell-solution-migration.md
@@ -228,7 +228,7 @@
           href: partner-center-portal/azure-iot-edge-module-creation.md
         - name: Förbereda tekniska tillgångar för IoT Edge-moduler
           href: partner-center-portal/create-iot-edge-module-asset.md
-        - name: Check lista för certifiering
+        - name: Checklista för förcertifiering
           href: iot-edge-checklist.md
     - name: Hanterade tjänsterbjudanden
       items:
@@ -276,11 +276,11 @@
               href: create-new-saas-offer-technical.md
             - name: Skapa planer
               href: create-new-saas-offer-plans.md
-            - name: Skapa ett test erbjudande
+            - name: Skapa ett testerbjudande
               href: create-saas-dev-test-offer.md
             - name: Testa och publicera ett SaaS-erbjudande
               href: test-publish-saas-offer.md
-        - name: Sälj ditt SaaS-erbjudande
+        - name: Sälja ditt SaaS-erbjudande
           href: create-new-saas-offer-marketing.md
     - name: Granska och publicera erbjudanden
       href: review-publish-offer.md
@@ -328,37 +328,37 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: Instrumentpanel för omdömen och recensioner
       href: partner-center-portal/ratings-reviews.md
-    - name: Programmerings åtkomst till analys
+    - name: Programmatisk åtkomst till analys
       items:
         - name: Kom igång
           href: analytics-get-started.md
-        - name: Krav för program mässig åtkomst
+        - name: Krav för programmatisk åtkomst
           href: analytics-prerequisites.md
-        - name: Paradigm för program mässig åtkomst
+        - name: Paradigm för programmatisk åtkomst
           href: analytics-programmatic-access.md
         - name: Gör ditt första API-anrop
           href: analytics-make-your-first-api-call.md
-        - name: Lista över system frågor
+        - name: Lista över systemfrågor
           href: analytics-system-queries.md
         - name: Exempelfrågor
           href: analytics-sample-queries.md
         - name: Exempelprogram
           href: analytics-sample-application.md
-        - name: Anpassad fråga-specifikation
+        - name: Specifikation för anpassad fråga
           href: analytics-custom-query-specification.md
         - name: Vanliga frågor och svar om programmatisk analys
           href: analytics-programmatic-faq.md
-        - name: Analytics API-referens
+        - name: Api-referens för Analytics
           items:
-            - name: 'Lista över API: er'
+            - name: 'Lista över API:er'
               href: analytics-available-apis.md
-            - name: Hämta alla data uppsättningar
+            - name: Hämta alla datauppsättningar
               href: analytics-api-get-all-datasets.md
-            - name: Hämta API för rapport frågor
+            - name: API för att hämta rapportfrågor
               href: analytics-api-get-report-queries.md
-            - name: Ta bort API för rapport frågor
+            - name: API för att ta bort rapportfrågor
               href: analytics-api-delete-report-queries.md
-            - name: Prova API för rapport frågor
+            - name: Testa API för rapportfrågor
               href: analytics-api-try-report-queries.md
             - name: Hämta rapport-API
               href: analytics-api-get-report.md
@@ -366,11 +366,11 @@
               href: analytics-api-update-report.md
             - name: Ta bort rapport-API
               href: analytics-api-delete-report.md
-            - name: Pausa API för rapport körningar
+            - name: 'Pausa API:et för rapportkörningar'
               href: analytics-api-pause-report-executions.md
-            - name: Återuppta API för rapport körningar
+            - name: ÅTERUPPTA API för rapportkörningar
               href: analytics-api-resume-report-executions.md
-    - name: Hantera avlästa fakturerings avvikelser
+    - name: Hantera faktureringsavvikelser med dataförbrukning
       href: anomaly-detection.md
     - name: Vanliga analysfrågor
       href: analytics-faq.md
@@ -384,6 +384,10 @@
       href: /legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context
     - name: Azure Marketplace-villkor
       href: /legal/marketplace/terms?context=/azure/marketplace/context/context
+    - name: Microsoft-avtal för utgivare
+      href: /legal/marketplace/msft-publisher-agreement
+    - name: Ändra historik för Microsoft Publisher-avtal
+      href: /legal/marketplace/mpa-change-history
 - name: Referens
   items:
     - name: CPP API-referens
@@ -466,7 +470,7 @@
       href: commercial-marketplace-co-sell-countries.md
     - name: Kod för tillstånd för säljsamarbete
       href: commercial-marketplace-co-sell-states.md
-    - name: Referens arkitektur diagram
+    - name: Diagram över referensarkitektur
       href: reference-architecture-diagram.md
     - name: Kategorier och underkategorier
       href: categories.md

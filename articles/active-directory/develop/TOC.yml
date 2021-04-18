@@ -24,13 +24,13 @@
       items:
         - name: Angular
           href: quickstart-v2-angular.md
-        - name: Kod flöde för vinkel auth
+        - name: Angular – Auth-kodflöde
           href: quickstart-v2-javascript-auth-code-angular.md
         - name: JavaScript – auth-kodflöde
           href: quickstart-v2-javascript-auth-code.md
         - name: Java Script – implicit flöde
           href: quickstart-v2-javascript.md
-        - name: Reagera – auth Code Flow
+        - name: React – Auth-kodflöde
           href: quickstart-v2-javascript-auth-code-react.md
     - name: Webbapp
       items:
@@ -40,7 +40,7 @@
           href: quickstart-v2-aspnet-core-webapp.md
         - name: ASP.NET Core (anropa Microsoft Graph)
           href: quickstart-v2-aspnet-core-webapp-calls-graph.md
-        - name: Node.js-MSAL
+        - name: Node.js – MSAL
           href: quickstart-v2-nodejs-webapp-msal.md
         - name: Node.js – Passport.js
           displayName: 'OIDC, express'
@@ -74,9 +74,9 @@
           href: quickstart-v2-netcore-daemon.md
         - name: Python-konsolen (daemon)
           href: quickstart-v2-python-daemon.md
-        - name: Node.js konsol daemon
+        - name: Node.js-konsoldaemon
           href: quickstart-v2-nodejs-console.md
-        - name: Java-konsolens daemon
+        - name: Java-konsoldaemon
           href: quickstart-v2-java-daemon.md
 - name: Självstudier
   items:
@@ -96,7 +96,7 @@
           href: tutorial-v2-asp-webapp.md
         - name: Blazor Server
           href: tutorial-blazor-server.md
-        - name: Själv studie kurs om Node.js Web Apps
+        - name: Node.js självstudie om webbapp
           href: tutorial-v2-nodejs-webapp-msal.md
     - name: Mobilt och stationärt
       items:
@@ -111,13 +111,13 @@
           href: tutorial-v2-windows-desktop.md
         - name: Använda läge för delad enhet i Android-appen
           href: tutorial-v2-shared-device-mode.md
-        - name: Electron Desktop-app
+        - name: Electron-skrivbordsapp
           href: tutorial-v2-nodejs-desktop.md
     - name: Daemon eller backend-tjänst
       items:
         - name: ASP.NET-daemon-webbapp
           href: tutorial-v2-aspnet-daemon-web-app.md
-        - name: Node.js konsol daemon
+        - name: Node.js-konsoldaemon
           href: tutorial-v2-nodejs-console.md
 - name: Exempel
   href: sample-v2-code.md
@@ -489,7 +489,7 @@
           href: reference-third-party-cookies-spas.md
         - name: Hantera cookieändringar för SameSite i Chrome
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
-    - name: Stöd för lösenordsskyddad autentisering
+    - name: Stöd för lösenordsfri autentisering
       items:
         - name: Stöd för FIDO2-autentisering
           href: support-fido2-authentication.md
@@ -551,7 +551,7 @@
           href: vs-active-directory-error.md
     - name: Ta bort en appregistrering
       href: quickstart-remove-app.md
-    - name: Återställa eller ta bort en borttagen app-registrering
+    - name: Återställa eller ta bort en borttagna appregistrering
       href: quickstart-restore-app.md
 - name: Referens
   items:
@@ -633,6 +633,8 @@
       href: reference-v2-libraries.md
     - name: 'API:er för identitet och åtkomst i Microsoft Graph'
       href: /graph/api/resources/azure-ad-overview
+    - name: Principtyp för anspråksmappning
+      href: reference-claims-mapping-policy-type.md
     - name: Autentisering och felkoder vid autentisering
       displayName: AADSTS
       href: reference-aadsts-error-codes.md

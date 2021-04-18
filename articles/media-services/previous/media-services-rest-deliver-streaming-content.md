@@ -1,5 +1,5 @@
 ---
-title: Publicera Azure Media Services innehåll med REST
+title: Publicera Azure Media Services innehåll med HJÄLP av REST
 description: Lär dig hur du skapar en positionerare som används för att skapa en strömnings-URL. Koden använder REST API.
 author: IngridAtMicrosoft
 manager: femila
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: b8733d499b2396160a73906f16a69291cf0b9d71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 650c0847942635e2a6a901db40ed0e51e9412057
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103015428"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600071"
 ---
-# <a name="publish-azure-media-services-content-using-rest"></a>Publicera Azure Media Services innehåll med REST
+# <a name="publish-azure-media-services-content-using-rest"></a>Publicera Azure Media Services innehåll med hjälp av REST
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
@@ -32,40 +32,40 @@ ms.locfileid: "103015428"
 > 
 > 
 
-Du kan strömma en MP4-uppsättning med anpassad bit hastighet genom att skapa en OnDemand streaming-positionerare och skapa en strömnings-URL. I [encoding en till gångs](media-services-rest-encode-asset.md) artikel visas hur du kodar i en MP4-uppsättning med anpassad bit hastighet. Om ditt innehåll är krypterat konfigurerar du till gångs leverans princip (enligt beskrivningen i [den här](media-services-rest-configure-asset-delivery-policy.md) artikeln) innan du skapar en positionerare. 
+Du kan strömma en MP4-uppsättning med anpassningsbar bithastighet genom att skapa en positionerare för OnDemand-direktuppspelning och skapa en strömnings-URL. Artikeln [kodning av en](media-services-rest-encode-asset.md) tillgång visar hur du kodar till en MP4-uppsättning med anpassningsbar bithastighet. Om ditt innehåll är krypterat konfigurerar du principen för tillgångsleverans (enligt [beskrivningen](media-services-rest-configure-asset-delivery-policy.md) i den här artikeln) innan du skapar en lokaliserare. 
 
-Du kan också använda en OnDemand streaming-positionerare för att bygga URL: er som pekar på MP4-filer som kan laddas ned progressivt.  
+Du kan också använda en positionerare för ondemand-strömning för att skapa URL:er som pekar på MP4-filer som kan hämtas progressivt.  
 
-Den här artikeln visar hur du skapar en lokaliserare för OnDemand-direktuppspelning för att publicera din till gång och bygga ett smidigt, MPEG-streck och HLS strömnings-URL: er. Det visar också hur du skapar Progressive nedladdnings-URL: er.
+Den här artikeln visar hur du skapar en positionerare för OnDemand-strömning för att publicera din tillgång och skapa en Smooth-, MPEG DASH- och HLS-strömnings-URL:er. Den visar också hur du skapar URL:er för progressiv nedladdning.
 
-I [följande](#types) avsnitt visas de uppräknings typer vars värden används i rest-anropen.   
+I [följande](#types) avsnitt visas uppräkningstyperna vars värden används i REST-anropen.   
 
 > [!NOTE]
-> När du använder entiteter i Media Services måste du ange vissa huvud fält och värden i dina HTTP-begäranden. Mer information finns i [installations programmet för Media Services REST API-utveckling](media-services-rest-how-to-use.md).
+> När du använder entiteter Media Services måste du ange specifika rubrikfält och värden i dina HTTP-begäranden. Mer information finns i [Installation för Media Services REST API Development](media-services-rest-how-to-use.md).
 > 
 
 ## <a name="connect-to-media-services"></a>Ansluta till Media Services
 
-Information om hur du ansluter till AMS-API: et finns i [komma åt Azure Media Services-API med Azure AD-autentisering](media-services-use-aad-auth-to-access-ams-api.md). 
+Information om hur du ansluter till AMS-API:et finns i [Access the Azure Media Services API with Azure AD authentication (Komma åt API:Azure Media Services med Azure AD-autentisering).](media-services-use-aad-auth-to-access-ams-api.md) 
 
 >[!NOTE]
->När du har anslutit till visas https://media.windows.net en 301-omdirigering som anger en annan Media Services-URI. Du måste göra efterföljande anrop till den nya URI: n.
+>När du har anslutit till `https://media.windows.net` får du en 301-omdirigering som anger en annan Media Services URI. Du måste göra efterföljande anrop till den nya URI:en.
 
-## <a name="create-an-ondemand-streaming-locator"></a>Skapa en lokaliserare för OnDemand-direktuppspelning
-Om du vill skapa en OnDemand streaming-positionerare och hämta URL: er måste du göra följande:
+## <a name="create-an-ondemand-streaming-locator"></a>Skapa en positionerare för OnDemand-direktuppspelning
+Om du vill skapa positioneraren för OnDemand-strömning och hämta URL:er måste du göra följande:
 
-1. Om innehållet är krypterat definierar du en åtkomst princip.
-2. Skapa en lokaliserare för OnDemand-direktuppspelning.
-3. Om du planerar att strömma hämtar du den strömmande manifest filen (. ISM) i till gången. 
+1. Om innehållet är krypterat definierar du en åtkomstprincip.
+2. Skapa en positionerare för OnDemand-strömning.
+3. Om du planerar att strömma hämtar du strömningsmanifestfilen (.ism) i tillgången. 
    
-   Om du planerar att ladda ned progressivt hämtar du namnen på MP4-filer i till gången. 
-4. Bygg webb adresser till manifest filen eller MP4-filerna. 
-5. Du kan inte skapa en strömmande positionerare med hjälp av en Access policy som innehåller behörigheter för Skriv eller ta bort.
+   Om du planerar att progressivt ladda ned hämtar du namnen på MP4-filer i tillgången. 
+4. Skapa URL:er till manifestfilen eller MP4-filerna. 
+5. Du kan inte skapa en positionerare för direktuppspelning med hjälp av en AccessPolicy som innehåller skriv- eller borttagningsbehörigheter.
 
-### <a name="create-an-access-policy"></a>Skapa en åtkomst princip
+### <a name="create-an-access-policy"></a>Skapa en åtkomstprincip
 
 >[!NOTE]
->Det finns en gräns på 1 000 000 principer för olika AMS-principer (till exempel för positionerarprincipen eller ContentKeyAuthorizationPolicy). Använd samma princip-ID om du alltid använder samma dagar/åtkomst behörigheter, till exempel principer för positionerare som är avsedda att vara på plats under en längre tid (principer som inte uppladdas). Mer information finns i [den här](media-services-dotnet-manage-entities.md#limit-access-policies) artikeln.
+>Det finns en gräns på 1 000 000 principer för olika AMS-principer (till exempel för positionerarprincipen eller ContentKeyAuthorizationPolicy). Använd samma princip-ID om du alltid använder samma dagar/åtkomstbehörigheter, till exempel principer för lokaliserare som är avsedda att finnas kvar under en längre tid (icke-överföringsprinciper). Mer information finns i den [här](media-services-dotnet-manage-entities.md#limit-access-policies) artikeln.
 
 Begäran:
 
@@ -106,8 +106,8 @@ Date: Wed, 18 Feb 2015 06:52:09 GMT
 {"odata.metadata":"https://media.windows.net/api/$metadata#AccessPolicies/@Element","Id":"nb:pid:UUID:69c80d98-7830-407f-a9af-e25f4b0d3e5f","Created":"2015-02-18T06:52:09.8862191Z","LastModified":"2015-02-18T06:52:09.8862191Z","Name":"access policy","DurationInMinutes":43200.0,"Permissions":1}
 ```
 
-### <a name="create-an-ondemand-streaming-locator"></a>Skapa en lokaliserare för OnDemand-direktuppspelning
-Skapa lokaliseraren för den angivna till gången och till gångs principen.
+### <a name="create-an-ondemand-streaming-locator"></a>Skapa en positionerare för OnDemand-strömning
+Skapa lokaliseraren för den angivna tillgången och tillgångsprincipen.
 
 Begäran:
 
@@ -147,39 +147,39 @@ Date: Wed, 18 Feb 2015 06:58:37 GMT
 {"odata.metadata":"https://media.windows.net/api/$metadata#Locators/@Element","Id":"nb:lid:UUID:be245661-2bbd-4fc6-b14f-9cf9a1492e5e","ExpirationDateTime":"2015-03-20T06:34:47.267872+00:00","Type":2,"Path":"https://amstest1.streaming.mediaservices.windows.net/be245661-2bbd-4fc6-b14f-9cf9a1492e5e/","BaseUri":"https://amstest1.streaming.mediaservices.windows.net","ContentAccessComponent":"be245661-2bbd-4fc6-b14f-9cf9a1492e5e","AccessPolicyId":"nb:pid:UUID:1480030d-c481-430a-9687-535c6a5cb272","AssetId":"nb:cid:UUID:cc1e445d-1500-80bd-538e-f1e4b71b465e","StartTime":"2015-02-18T06:34:47.267872+00:00","Name":null}
 ```
 
-### <a name="build-streaming-urls"></a>Bygga direkt uppspelnings-URL: er
-Använd det **Sök vägs** värde som returnerades efter att lokaliseraren har skapats för att skapa de URL: er för utjämna, HLS och MPEG-streck som returneras. 
+### <a name="build-streaming-urls"></a>Skapa strömnings-URL:er
+Använd värdet **sökväg** som returnerades när lokaliseraren skapades för att skapa SMOOTH-, HLS- och MPEG DASH-URL:erna. 
 
-Smooth Streaming: **sökväg** + manifest fil namn + "/manifest"
+Smooth Streaming: **Sökväg** + manifestfilnamn + "/manifest"
 
 Exempel:
 
 `https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest`
 
-HLS: **sökväg** + manifest fil namn + "/manifest (format = M3U8-AAPL)"
+HLS: **Sökväg** + manifestfilnamn + "/manifest(format=m3u8-aapl)"
 
 Exempel:
 
 `https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)`
 
 
-BINDESTRECK: **sökväg** + manifest fil namn + "/manifest (format = mpd-Time-CSF)"
+DASH: **Sökväg** + manifestfilnamn + "/manifest(format=mpd-time-csf)"
 
 Exempel:
 
 `https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)`
 
 
-### <a name="build-progressive-download-urls"></a>Bygg URL: er för progressiv nedladdning
-Använd det **Sök vägs** värde som returnerades efter att lokaliseraren har skapats för att skapa en URL för progressiv nedladdning.   
+### <a name="build-progressive-download-urls"></a>Skapa URL:er för progressiv nedladdning
+Använd värdet **sökväg som** returnerades när positioneraren skapades för att skapa url:en för progressiv nedladdning.   
 
-URL: **sökväg** + namn på till gångs fil MP4
+URL: **Sökväg** + namn på tillgångsfil mp4
 
 Exempel:
 
 `https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 
-## <a name="enum-types"></a><a id="types"></a>Uppräknings typer
+## <a name="enum-types"></a><a id="types"></a>Uppräkningstyper
 
 ```console
 [Flags]
@@ -207,7 +207,7 @@ public enum LocatorType
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Se även
-[Översikt över Media Services åtgärder REST API](media-services-rest-how-to-use.md)
+[översikt Media Services åtgärder REST API åtgärder](media-services-rest-how-to-use.md)
 
-[Konfigurera till gångs leverans princip](media-services-rest-configure-asset-delivery-policy.md)
+[Konfigurera tillgångsleveransprincip](media-services-rest-configure-asset-delivery-policy.md)
 

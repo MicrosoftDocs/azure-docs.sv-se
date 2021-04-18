@@ -1,6 +1,6 @@
 ---
-title: Flytta krypterade virtuella Azure-datorer mellan regioner med Azure Resource-arbetskraft
-description: Lär dig hur du flyttar krypterade virtuella Azure-datorer till en annan region med Azure Resource-arbetskraften
+title: Flytta krypterade virtuella Azure-datorer mellan regioner med hjälp av Azure Resource Mover
+description: Lär dig hur du flyttar krypterade virtuella Azure-datorer till en annan region med hjälp av Azure Resource Mover.
 manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
@@ -8,389 +8,396 @@ ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 014b4d09a991ae4d0bb31ec0b9adee0c9e3b3553
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 457c4c4752b4d78434b1fb90710472b1998f1c4e
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361017"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600700"
 ---
-# <a name="tutorial-move-encrypted-azure-vms-across-regions"></a>Självstudie: flytta krypterade virtuella Azure-datorer över regioner
+# <a name="tutorial-move-encrypted-azure-vms-across-regions"></a>Självstudie: Flytta krypterade virtuella Azure-datorer mellan regioner
 
-I den här artikeln lär du dig hur du flyttar krypterade virtuella Azure-datorer till en annan Azure-region med hjälp av [Azure Resource](overview.md)överfart. Det här betyder vad vi menar för kryptering:
+Den här artikeln beskriver hur du flyttar krypterade virtuella Azure-datorer till en annan Azure-region med hjälp av [Azure Resource Mover](overview.md). 
 
-- Virtuella datorer som har diskar med Azure Disk Encryption aktiverade. [Läs mer](../virtual-machines/windows/disk-encryption-portal-quickstart.md)
-- Eller virtuella datorer som använder Kundhanterade nycklar (CMKs) för kryptering vid vila (kryptering på Server sidan). [Läs mer](../virtual-machines/disks-enable-customer-managed-keys-portal.md)
+Krypterade virtuella datorer kan beskrivas som antingen:
+
+- Virtuella datorer som har diskar med Azure Disk Encryption aktiverat. Mer information finns i Skapa [och kryptera en virtuell Windows-dator med hjälp av Azure Portal](../virtual-machines/windows/disk-encryption-portal-quickstart.md).
+- Virtuella datorer som använder kund hanterade nycklar (CMK: er) för kryptering i vila eller kryptering på serversidan. Mer information finns i Använda Azure Portal för att aktivera kryptering på [serversidan med kund hanterade nycklar för hanterade diskar.](../virtual-machines/disks-enable-customer-managed-keys-portal.md)
 
 
 I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
-> * Kontrol lera krav. 
-> * För virtuella datorer med Azure Disk Encryption aktiverat kopierar du nycklar och hemligheter från nyckel valvet för käll regionen till nyckel valvet för mål området.
-> * Förbered virtuella datorer för att flytta dem och välj resurser i käll regionen som du vill flytta.
-> * Lös resurs beroenden.
-> * För virtuella datorer med Azure Disk Encryption aktiverat tilldelar du mål nyckel valvet manuellt. För virtuella datorer som använder kryptering på Server sidan med Kundhanterade nycklar tilldelar du manuellt en disk krypterings uppsättning i mål regionen.
-> * Flytta nyckel valvet och/eller disk krypterings uppsättningen.
-> * Förbered och flytta käll resurs gruppen. 
+> * Kontrollera kraven. 
+> * För virtuella datorer med Azure Disk Encryption aktiverat kopierar du nycklar och hemligheter från nyckelvalvet för källregionen till nyckelvalvet för målregionen.
+> * Förbered för att flytta virtuella datorer och för att välja resurser i den källregion som du vill flytta dem från.
+> * Lös resursberoenden.
+> * För virtuella datorer med Azure Disk Encryption aktiverat tilldelar du målnyckelvalvet manuellt. För virtuella datorer som använder kryptering på serversidan med kund hanterade nycklar tilldelar du manuellt en diskkrypteringsuppsättning i målregionen.
+> * Flytta nyckelvalvet eller diskkrypteringsuppsättningen.
+> * Förbered och flytta källresursgruppen. 
 > * Förbered och flytta de andra resurserna.
-> * Bestäm om du vill ta bort eller bekräfta flytten. 
-> * Du kan också ta bort resurser i käll regionen efter flytten.
+> * Bestäm om flytten ska tas bort eller inte. 
+> * Du kan också ta bort resurser i källregionen efter flytten.
 
 > [!NOTE]
-> Självstudier visar den snabbaste sökvägen för att testa ett scenario och använda standard alternativ. 
+> Den här självstudien visar den snabbaste vägen för att testa ett scenario. Den använder bara standardalternativen. 
 
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/) innan du börjar. Logga sedan in på [Azure Portal](https://portal.azure.com).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-**Krav** |**Information**
+Krav |Information
 --- | ---
-**Prenumerations behörigheter** | Kontrol lera att du har *ägar* åtkomst till prenumerationen som innehåller de resurser som du vill flytta.<br/><br/> **Varför behöver jag ägar åtkomst?** Första gången du lägger till en resurs för ett visst käll-och mål par i en Azure-prenumeration skapar resurs förflyttningen en [systemtilldelad hanterad identitet](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (tidigare känd som hanterad tjänst identifiering (MSI)) som är betrodd av prenumerationen. Om du vill skapa identiteten och tilldela den rollen som krävs (deltagare och administratör för användar åtkomst i käll prenumerationen) måste kontot som du använder för att lägga till resurser ha *ägar* behörigheter för prenumerationen. [Lär dig mer](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) om Azure-roller.
-**Stöd för virtuella datorer** | Kontrol lera att de virtuella datorer som du vill flytta stöds.<br/><br/> - [Verifiera](support-matrix-move-region-azure-vm.md#windows-vm-support) stödda virtuella Windows-datorer.<br/><br/> - [Kontrol lera](support-matrix-move-region-azure-vm.md#linux-vm-support) virtuella Linux-datorer och kernel-versioner som stöds.<br/><br/> – Kontrol lera inställningarna för [beräkning](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings), [lagring](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)och [nätverk](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings) som stöds.
-**Krav för nyckel valv (Azure Disk Encryption)** | Om du har aktiverat Azure Disk Encryption för virtuella datorer måste du förutom nyckel valvet i käll regionen ha ett nyckel valv i mål regionen. [Skapa ett nyckel valv](../key-vault/general/quick-create-portal.md).<br/><br/> För nyckel valven i käll-och mål regionen behöver du följande behörigheter:<br/><br/> -Nyckel behörigheter: nyckel hanterings åtgärder (get, List); Kryptografiska åtgärder (dekryptera och kryptera).<br/><br/> – Hemliga behörigheter: hemliga hanterings åtgärder (get, list och set)<br/><br/> -Certificate (list och get).
-**Disk krypterings uppsättning (kryptering på Server sidan med CMK)** | Om du använder virtuella datorer med kryptering på Server sidan med en CMK, förutom disk krypterings uppsättningen i käll regionen, behöver du en disk krypterings uppsättning i mål regionen. [Skapa en disk krypterings uppsättning](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set).<br/><br/> Det finns inte stöd för att flytta mellan regioner om du använder HSM-nycklar för Kundhanterade nycklar.
-**Mål regions kvot** | Prenumerationen måste ha tillräckligt med kvot för att skapa de resurser som du flyttar i mål regionen. Om den inte har någon kvot [begär du ytterligare begränsningar](../azure-resource-manager/management/azure-subscription-service-limits.md).
-**Avgifter för mål region** | Kontrol lera priser och avgifter som är kopplade till den mål region som du flyttar virtuella datorer till. Använd [pris kalkylatorn](https://azure.microsoft.com/pricing/calculator/) för att hjälpa dig.
+**Prenumerationsbehörigheter** | Kontrollera att du har *ägaråtkomst* till prenumerationen som innehåller de resurser som du vill flytta.<br/><br/> *Varför behöver jag ägaråtkomst?* Första gången du lägger till en resurs för ett specifikt käll- och målpar i en [Azure-prenumeration](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)skapar Resource Mover en systemtilldelning av en hanterad identitet , som tidigare kallades hanterad tjänstidentitet (MSI). Den här identiteten är betrodd av prenumerationen. Innan du kan skapa identiteten och tilldela  den nödvändiga rollerna *(* Deltagare och Administratör för  användaråtkomst i källprenumerationen) måste det konto som du använder för att lägga till resurser ha ägarbehörighet i prenumerationen. Mer information finns i [Administratörsroller för klassiska prenumerationer, Azure-roller och Azure AD-roller.](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)
+**Stöd för virtuella datorer** | Kontrollera att de virtuella datorer som du vill flytta stöds genom att göra följande:<li>[Kontrollera vilka](support-matrix-move-region-azure-vm.md#windows-vm-support) virtuella Windows-datorer som stöds.<li>[Kontrollera virtuella](support-matrix-move-region-azure-vm.md#linux-vm-support) Linux-datorer och kernelversioner som stöds.<li>Kontrollera inställningar [för beräkning,](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings) [lagring](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)och nätverk [som](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings) stöds.
+**Krav för nyckelvalv (Azure Disk Encryption)** | Om du har Azure Disk Encryption aktiverat för virtuella datorer behöver du ett nyckelvalv i både käll- och målregionerna. Mer information finns i Skapa [ett nyckelvalv.](../key-vault/general/quick-create-portal.md)<br/><br/> För nyckelvalven i käll- och målregionerna behöver du följande behörigheter:<li>Nyckelbehörigheter: Nyckelhanteringsåtgärder (hämta, lista) och kryptografiska åtgärder (dekryptera och kryptera)<li>Hemliga behörigheter: Åtgärder för hemlighetshantering (hämta, lista och ange)<li>Certifikat (lista och hämta)
+**Diskkrypteringsuppsättning (kryptering på serversidan med CMK)** | Om du använder virtuella datorer med kryptering på serversidan som använder en CMK behöver du en diskkrypteringsuppsättning i både käll- och målregionerna. Mer information finns i Skapa [en diskkrypteringsuppsättning.](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set)<br/><br/> Flytt mellan regioner stöds inte om du använder maskinvarusäkerhetsmodulen (HSM-nycklar) för kund hanterade nycklar.
+**Kvot för målregion** | Prenumerationen behöver en tillräcklig kvot för att skapa de resurser som du flyttar i målregionen. Om den inte har någon kvot begär [du ytterligare gränser.](../azure-resource-manager/management/azure-subscription-service-limits.md)
+**Målregionsavgifter** | Kontrollera de priser och avgifter som är associerade med målregionen som du flyttar de virtuella datorerna till. Använd [priskalkylatorn](https://azure.microsoft.com/pricing/calculator/).
 
 
-## <a name="verify-user-permissions-on-key-vault-for-vms-using-azure-disk-encryption-ade"></a>Verifiera användar behörigheter för nyckel valv för virtuella datorer som använder Azure Disk Encryption (ADE)
+## <a name="verify-permissions-in-the-key-vault"></a>Verifiera behörigheter i nyckelvalvet
 
-Om du flyttar virtuella datorer som har Azure Disk Encryption aktiverat måste du köra ett skript enligt [nedan](#copy-the-keys-to-the-destination-key-vault) för vilket användaren som kör skriptet ska ha rätt behörighet. Se tabellen nedan om du vill veta mer om vilka behörigheter som krävs. Du kan hitta alternativen för att ändra behörigheterna genom att gå till nyckel valvet i Azure Portal, under **Inställningar**, Välj **åtkomst principer**.
+Om du flyttar virtuella datorer som har Azure Disk Encryption aktiverat måste du köra ett skript som anges i avsnittet Kopiera nycklarna till [målnyckelvalvet.](#copy-the-keys-to-the-destination-key-vault) De användare som kör skriptet bör ha rätt behörighet för att göra det. Information om vilka behörigheter som behövs finns i följande tabell. Du hittar alternativen för att ändra behörigheterna genom att gå till nyckelvalvet i Azure Portal. Under **Inställningar** väljer du **Åtkomstprinciper.**
 
-:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="Knapp för att öppna åtkomst principer för nyckel valv." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
+:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png" alt-text="Skärmbild av länken Åtkomstprinciper i fönstret Inställningar för nyckelvalvet." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/key-vault-access-policies.png":::
 
-Om det inte finns några användar behörigheter väljer du **Lägg till åtkomst princip** och anger behörigheterna. Om användar kontot redan har en princip, under **användare**, anger du behörigheterna enligt tabellen nedan.
+Om användarbehörigheterna inte finns väljer du Lägg **till åtkomstprincip** och anger sedan behörigheterna. Om användarkontot redan har en princip, under **Användare,** anger du behörigheterna enligt anvisningarna i följande tabell.
 
-Virtuella Azure-datorer med hjälp av ADE kan ha följande variationer och behörigheterna måste anges i enlighet med detta för relevanta komponenter.
-- Standard alternativet där disken krypteras med endast hemligheter
-- Ökad säkerhet med [nyckel krypterings nyckel](../virtual-machines/windows/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek)
+Virtuella Azure-datorer som använder Azure Disk Encryption kan ha följande varianter, och du måste ange behörigheterna enligt deras relevanta komponenter. De virtuella datorerna kan ha:
+- Ett standardalternativ där disken endast krypteras med hemligheter.
+- Säkerhet som använder en [nyckelkrypteringsnyckel (KEK) har lagts till.](../virtual-machines/windows/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek)
 
-### <a name="source-region-keyvault"></a>Käll regions nyckel valv
+### <a name="source-region-key-vault"></a>Nyckelvalv för källregion
 
-Nedanstående behörigheter måste anges för användaren som kör skriptet 
+För användare som kör skriptet anger du behörigheter för följande komponenter: 
 
-**Komponent** | **Behörighet krävs**
+Komponent | Privilegier som krävs
 --- | ---
-Hemligheter|  Hämta behörighet <br> </br> I hemliga >   **hanterings åtgärder** för hemliga behörigheter väljer du **Hämta** 
-Nycklar <br> </br> Om du använder nyckel krypterings nyckel (KEK) behöver du den här behörigheten förutom hemligheter| Hämta och dekryptera behörighet <br> </br> I **nyckel**  >  **hanterings åtgärder** för nyckel behörigheter väljer du **Hämta**. I **kryptografiska åtgärder** väljer du **dekryptera**.
+Hemligheter |  *Hämta* <br></br> Välj **Hemliga behörigheter**  >  **Hemlighetshanteringsåtgärder** och välj sedan **Hämta.** 
+Nycklar <br></br> Om du använder en KEK behöver du dessa behörigheter utöver behörigheterna för hemligheter. | *Hämta* och *dekryptera* <br></br> Välj **Nyckelbehörigheter**  >  **Nyckelhanteringsåtgärder** och välj sedan **Hämta.** I **Kryptografiska åtgärder väljer** du **Dekryptera**.
 
-### <a name="destination-region-keyvault"></a>Mål regions nyckel valv
+### <a name="destination-region-key-vault"></a>Nyckelvalv för målregion
 
-I **åtkomst principer** kontrollerar du att **Azure Disk Encryption för volym kryptering** har Aktiver ATS. 
+I **Åtkomstprinciper** kontrollerar du att **Azure Disk Encryption för volymkryptering** är aktiverat. 
 
-Nedanstående behörigheter måste anges för användaren som kör skriptet 
+För användare som kör skriptet anger du behörigheter för följande komponenter: 
 
-**Komponent** | **Behörighet krävs**
+Komponent | Privilegier som krävs
 --- | ---
-Hemligheter|  Ange behörighet <br> </br> I hemliga >   **hanterings åtgärder** för hemliga behörigheter väljer du **Ange** 
-Nycklar <br> </br> Om du använder nyckel krypterings nyckel (KEK) behöver du den här behörigheten förutom hemligheter| Hämta, skapa och kryptera behörighet <br> </br> I **nyckel**  >  **hanterings åtgärder** för nyckel behörigheter väljer du **Hämta** och **skapa** . I **kryptografiska operationer** väljer du **kryptera**.
+Hemligheter |  *Ange* <br></br> Välj **Hemliga behörigheter**  >  **Hemlighetshanteringsåtgärder** och välj sedan **Ange.** 
+Nycklar <br></br> Om du använder en KEK behöver du dessa behörigheter utöver behörigheterna för hemligheter. | *Hämta,* *skapa* och *kryptera* <br></br> Välj **Nyckelbehörigheter**  >  **Nyckelhanteringsåtgärder** och välj sedan **Hämta** och **skapa.** I **Kryptografiska åtgärder** väljer du **Kryptera**.
 
-Förutom ovanstående behörigheter måste du i mål nyckel valvet lägga till behörigheter för den [hanterade system identitet](./common-questions.md#how-is-managed-identity-used-in-resource-mover) som resurs förflyttningen använder för att få åtkomst till Azure-resurser för din räkning. 
+<br>
 
-1. Under **Inställningar** väljer du **Lägg till åtkomst principer**. 
-2. I **Välj huvud konto** söker du efter MSI. MSI-namnet är ```movecollection-<sourceregion>-<target-region>-<metadata-region>``` . 
-3. Lägg till nedanstående behörigheter för MSI
+Förutom de föregående behörigheterna i målnyckelvalvet måste du lägga till behörigheter för den hanterade [systemidentitet](./common-questions.md#how-is-managed-identity-used-in-resource-mover) som Resource Mover använder för att få åtkomst till Azure-resurserna åt dig. 
 
-**Komponent** | **Behörighet krävs**
---- | ---
-Hemligheter|  Hämta och lista behörighet <br> </br> I hemliga **behörigheter för** >   **hemliga hanterings åtgärder** väljer du **Hämta** och **lista** 
-Nycklar <br> </br> Om du använder nyckel krypterings nyckel (KEK) behöver du den här behörigheten förutom hemligheter| Hämta, lista behörighet <br> </br> I **nyckel**  >  **hanterings åtgärder** för nyckel behörigheter väljer du **Hämta** och **lista**
+1. Under **Inställningar väljer** du Lägg till **åtkomstprinciper.** 
+1. I **Välj huvudnamn** söker du efter MSI. MSI-namnet är ```movecollection-<sourceregion>-<target-region>-<metadata-region>``` . 
+1. Lägg till följande behörigheter för MSI:
 
+    Komponent | Privilegier som krävs
+    --- | ---
+    Hemligheter|  *Hämta* och *lista* <br></br> Välj **Hemliga behörigheter**  >  **Hemlighetshanteringsåtgärder** och välj sedan **Hämta** och **lista.** 
+    Nycklar <br></br> Om du använder en KEK behöver du dessa behörigheter utöver behörigheterna för hemligheter. | *Hämta* och *lista* <br></br> Välj **Nyckelbehörigheter**  >  **Nyckelhanteringsåtgärder** och välj sedan **Hämta** och **lista.**
 
+<br>
 
-### <a name="copy-the-keys-to-the-destination-key-vault"></a>Kopiera nycklarna till mål nyckel valvet
+### <a name="copy-the-keys-to-the-destination-key-vault"></a>Kopiera nycklarna till målnyckelvalvet
 
-Du måste kopiera krypterings hemligheter och-nycklar från käll nyckel valvet till mål nyckel valvet med ett skript som vi tillhandahåller.
+Kopiera krypteringshemligheterna och nycklarna från källnyckelvalvet till målnyckelvalvet med hjälp av [ett skript](https://raw.githubusercontent.com/AsrOneSdk/published-scripts/master/CopyKeys/CopyKeys.ps1) som vi tillhandahåller.
 
-- Du kör skriptet i PowerShell. Vi rekommenderar att du kör den senaste versionen av PowerShell.
-- Mer specifikt kräver skriptet följande moduler:
+- Kör skriptet i PowerShell. Vi rekommenderar att du använder den senaste PowerShell-versionen.
+- Mer specifikt kräver skriptet dessa moduler:
     - Az.Compute
-    - AZ. 3.0.0-valv (version
-    - AZ. accounts (version 2.2.3)
+    - Az.KeyVault (version 3.0.0)
+    - Az.Accounts (version 2.2.3)
 
-Kör så här:
+Kör skriptet genom att göra följande:
 
-1. Navigera till [skriptet](https://raw.githubusercontent.com/AsrOneSdk/published-scripts/master/CopyKeys/CopyKeys.ps1) i GitHub.
-2. Kopiera innehållet i skriptet till en lokal fil och namnge det *Copy-keys.ps1*.
-3. Kör skriptet.
-4. Logga in på Azure.
-5. I popup-fönstret **användarindata** väljer du käll prenumerationen, resurs gruppen och den virtuella käll datorn. Välj sedan mål platsen och mål valvet för disk-och nyckel kryptering.
+1. Öppna skriptet [i](https://raw.githubusercontent.com/AsrOneSdk/published-scripts/master/CopyKeys/CopyKeys.ps1) GitHub.
+1. Kopiera innehållet i skriptet till en lokal fil och ge det namnet *Copy-keys.ps1*.
+1. Kör skriptet.
+1. Logga in på Azure-portalen.
+1. I listrutan i fönstret  Användarindata väljer du källprenumeration, resursgrupp och virtuell källdatorn. Välj sedan målplats och målvalv för disk- och nyckelkryptering.
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/script-input.png" alt-text="Popup-fönster för att ange skript värden." :::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/script-input.png" alt-text="Skärmbild av fönstret Användarindata för att ange skriptvärdena." :::
 
-
-6. När skriptet har slutförts visar skärm resultatet att CopyKeys lyckades.
+1. Välj knappen **Välj**. 
+   
+   När skriptet har körts klart får du ett meddelande om att CopyKeys har slutförts.
 
 ## <a name="prepare-vms"></a>Förbereda virtuella datorer
 
-1. När du har [kontrollerat att de virtuella datorerna uppfyller kraven](#prerequisites)kontrollerar du att de virtuella datorerna som du vill flytta är aktiverade. Alla virtuella dator diskar som du vill ska vara tillgängliga i mål regionen måste vara kopplade till och initieras på den virtuella datorn.
-3. Kontrol lera att de virtuella datorerna har de senaste betrodda rot certifikaten och en uppdaterad lista över återkallade certifikat (CRL). Gör så här:
-    - På virtuella Windows-datorer installerar du de senaste Windows-uppdateringarna.
-    - På virtuella Linux-datorer följer du vägledningen för distributör så att datorerna har de senaste certifikaten och CRL: en. 
-4. Tillåt utgående anslutning från virtuella datorer enligt följande:
-    - Om du använder en URL-baserad brand Väggs-proxy för att kontrol lera utgående anslutning ger du åtkomst till dessa [URL: er](support-matrix-move-region-azure-vm.md#url-access)
-    - Om du använder regler för nätverks säkerhets grupper (NSG) för att kontrol lera utgående anslutningar skapar du dessa [service tag-regler](support-matrix-move-region-azure-vm.md#nsg-rules).
+1. När du har kontrollerat att de virtuella datorerna uppfyller kraven [kontrollerar](#prerequisites)du att de virtuella datorer som du vill flytta är påslagna. Alla virtuella datordiskar som du vill ska vara tillgängliga i målregionen måste kopplas och initieras i den virtuella datorn.
+1. Så här ser du till att de virtuella datorerna har de senaste betrodda rotcertifikaten och en uppdaterad lista över återkallade certifikat:
+    - Installera de senaste Windows-uppdateringarna på virtuella Windows-datorer.
+    - På virtuella Linux-datorer följer du distributörsvägledningen så att datorerna har de senaste certifikaten och listan över återkallade certifikat. 
+1. Om du vill tillåta utgående anslutningar från de virtuella datorerna gör du något av följande:
+    - Om du använder en URL-baserad brandväggsproxy för att styra utgående anslutningar tillåter [du åtkomst till URL:erna](support-matrix-move-region-azure-vm.md#url-access).
+    - Om du använder regler för nätverkssäkerhetsgrupp (NSG) för att styra utgående anslutningar skapar du dessa [tjänsttaggregler.](support-matrix-move-region-azure-vm.md#nsg-rules)
 
-## <a name="select-resources-to-move"></a>Välj vilka resurser som ska flyttas
+## <a name="select-the-resources-to-move"></a>Välj de resurser som ska flyttas
 
+- Du kan välja valfri resurstyp som stöds i någon av resursgrupperna i den källregion som du väljer.  
+- Du kan flytta resurser till en målregion som finns i samma prenumeration som källregionen. Om du vill ändra prenumerationen kan du göra det när resurserna har flyttats.
 
-- Du kan välja vilken resurs typ som helst som stöds i alla resurs grupper i käll regionen som du väljer.  
-- Du flyttar resurser till en mål region som är i samma prenumeration som käll regionen. Om du vill ändra prenumerationen kan du göra det när resurserna har flyttats.
+Gör följande för att välja resurser:
 
-Välj resurser enligt följande:
+1. I Azure Portal du efter **resource mover**. Under Tjänster **väljer** du **sedan Azure Resource Mover**.
 
-1. Sök efter *resurs förflyttning* i Azure Portal. Under **tjänster** väljer du sedan **Azure Resource förflyttning**.
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/search.png" alt-text="Skärmbild av sökresultat för Azure Resource Mover i Azure Portal." :::
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/search.png" alt-text="Sök Resultat för resurs förflyttning i Azure Portal." :::
+1. I fönstret Azure Resource Mover **översikt** väljer du **Flytta mellan regioner.**
 
-2. I **Översikt** klickar du på **Flytta mellan regioner**.
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/move-across-regions.png" alt-text="Skärmbild av knappen Flytta mellan regioner för att lägga till resurser för att flytta till en annan region." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/move-across-regions.png":::
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/move-across-regions.png" alt-text="Om du vill lägga till resurser som ska flyttas till en annan region." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/move-across-regions.png":::
+1. I fönstret **Flytta resurser** väljer du fliken **Källa +** mål. I listrutan väljer du sedan källprenumerationen och regionen.
 
-3. I **Flytta resurser**  >  **källa + mål** väljer du käll prenumeration och region.
-4. I **mål** väljer du den region som du vill flytta de virtuella datorerna till. Klicka på **Nästa**.
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/source-target.png" alt-text="Sida för att välja käll- och målregion.." :::
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/source-target.png" alt-text="Sidan för att välja käll-och mål region.." :::
+1. Under **Mål** väljer du den region där du vill flytta de virtuella datorerna och väljer sedan **Nästa.**
 
-5. I **resurser att flytta klickar du** på **Välj resurser**.
+1. Välj fliken **Resurser att flytta** och välj sedan Välj **resurser.**
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/select-resources.png" alt-text="Om du vill välja resurs att flytta.]." :::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/select-resources.png" alt-text="Skärmbild av fönstret Flytta resurser och knappen Välj resurser.]." :::
 
-6. I **Välj resurser** väljer du de virtuella datorerna. Du kan bara lägga till resurser som [stöds för flytt](#prepare-vms). Klicka sedan på **färdig**.
+1. I fönstret **Välj resurser** väljer du de virtuella datorer som du vill flytta. Som vi nämnde i [avsnittet Välj de resurser som ska](#select-the-resources-to-move) flyttas kan du bara lägga till resurser som stöds för en flytt.
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/select-vm.png" alt-text="För att välja de virtuella datorer som ska flyttas." :::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/select-vm.png" alt-text="Skärmbild av fönstret Välj resurser där du kan välja virtuella datorer att flytta." :::
 
     > [!NOTE]
-    >  I den här självstudien väljer vi en virtuell dator som använder kryptering på Server sidan (Rayne-VM) med en kundhanterad nyckel och en virtuell dator med disk kryptering aktive rad (Rayne-VM-ade).
+    >  I den här självstudien väljer du en virtuell dator som använder kryptering på serversidan (rayne-vm) med en kund hanterad nyckel och en virtuell dator med diskkryptering aktiverat (rayne-vm-ade).
 
-7.  I **resurser att flytta klickar du** på **Nästa**.
-8. Kontrol lera käll-och mål inställningarna i **granskning**. 
+1. Välj **Klar**.
+1. Välj fliken **Resurser att flytta** och välj sedan **Nästa.**
+1. Välj fliken **Granska** och kontrollera sedan käll- och målinställningarna. 
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/review.png" alt-text="För att granska inställningarna och fortsätta med flytten." :::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/review.png" alt-text="Skärmbild av fönstret för att granska käll- och målinställningar." :::
 
-9. Klicka på **Fortsätt** för att börja lägga till resurserna.
-10. Välj ikonen meddelanden för att spåra förloppet. När Lägg till-processen har slutförts väljer du **tillagda resurser för flytta** i meddelandena.
+1. Välj **Fortsätt** för att börja lägga till resurserna.
+1. Välj meddelandeikonen för att följa förloppet. När processen är klar går du till fönstret **Meddelanden och väljer** Lade till resurser för att **flytta**.
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/added-resources-notification.png" alt-text="Ett meddelande om att bekräfta att resurserna har lagts till har lagts till." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/added-resources-notification.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/added-resources-notification.png" alt-text="Skärmbild av fönstret Meddelanden för att bekräfta att resurserna har lagts till." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/added-resources-notification.png":::
     
-    
-11. När du har klickat på meddelandet granskar du resurserna på sidan **över flera regioner** .
+1. När du har valt meddelandet granskar du resurserna på **sidan Över** regioner.
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resources-prepare-pending.png" alt-text="Sidor som visar tillagda resurser med förberedelse av väntande." :::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resources-prepare-pending.png" alt-text="Skärmbild av tillagda resurser med statusen Förbered väntande." :::
 
 > [!NOTE]
-> - De resurser som du lägger till är *förväntat i förberedelse* tillstånd.
-> - Resurs gruppen för de virtuella datorerna läggs till automatiskt.
-> - Om du ändrar **mål konfigurations** posterna så att de använder en resurs som redan finns i mål regionen är resursens tillstånd att *Bekräfta väntar*, eftersom du inte behöver initiera en flytt.
-> - Om du vill ta bort en resurs som har lagts till beror metoden för att göra det beroende på var du befinner dig i flyttnings processen. [Läs mer](remove-move-resources.md).
+> - De resurser som du lägger till placeras i *väntande förberedelsetillstånd.*
+> - Resursgruppen för de virtuella datorerna läggs till automatiskt.
+> - Om du  ändrar posterna i målkonfigurationen så att de använder en resurs som redan finns i målregionen är resurstillståndet inställt på Commit *pending*(Genomför väntar) eftersom du inte behöver initiera en flytt för den.
+> - Om du vill ta bort en resurs som har lagts till beror metoden du använder på var du befinner dig i flyttprocessen. Mer information finns i Hantera [flyttsamlingar och resursgrupper.](remove-move-resources.md)
 
 
-## <a name="resolve-dependencies"></a>Matcha beroenden
+## <a name="resolve-dependencies"></a>Lösa beroenden
 
-1. Om några resurser visar ett *verifierings beroende* meddelande i kolumnen **ärenden** väljer du knappen **Verifiera beroenden** .
+1. Om några resurser visar *meddelandet Verifiera beroenden* i **kolumnen Problem** väljer du knappen **Verifiera** beroenden.
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/check-dependencies.png" alt-text="NButton för att kontrol lera beroenden." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/check-dependencies.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/check-dependencies.png" alt-text="Skärmbild som visar knappen Verifiera beroenden." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/check-dependencies.png":::
 
-    Verifierings processen börjar.
-2. Om det finns beroenden klickar du på **Lägg till beroenden**  
+    Verifieringsprocessen påbörjas.
+1. Om beroenden hittas väljer du **Lägg till beroenden**.  
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/add-dependencies.png" alt-text="Knapp för att lägga till beroenden." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/add-dependencies.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/add-dependencies.png" alt-text="Skärmbild av knappen Lägg till beroenden." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/add-dependencies.png":::
 
 
-3. I **Lägg till beroenden** lämnar du standard alternativet **Visa alla beroenden** .
+1. I fönstret **Lägg till beroenden** lämnar du **standardalternativet Visa alla beroenden.**
 
-    - **Visa alla beroenden** upprepas genom alla direkta och indirekta beroenden för en resurs. För en virtuell dator visar till exempel NÄTVERKSKORTet, det virtuella nätverket, nätverks säkerhets grupper (NSG: er) osv.
-    - Visa endast direkta beroenden på **första nivå-beroenden** . För en virtuell dator visar till exempel NÄTVERKSKORTet, men inte det virtuella nätverket.
+    - **Visa alla beroenden** itererar genom alla direkta och indirekta beroenden för en resurs. För en virtuell dator visas till exempel nätverkskortet, det virtuella nätverket, nätverkssäkerhetsgrupper (NSG:er) och så vidare.
+    - **Visa beroenden på första nivån visar** bara direkta beroenden. För en virtuell dator visas till exempel nätverkskortet men inte det virtuella nätverket.
  
-4. Välj de beroende resurser som du vill lägga till > **lägga till beroenden**.
+1. Välj de beroende resurser som du vill lägga till och välj sedan **Lägg till beroenden.**
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/select-dependencies.png" alt-text="Välj beroenden från listan över beroenden." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/select-dependencies.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/select-dependencies.png" alt-text="Skärmbild av listan över beroenden och knappen Lägg till beroenden." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/select-dependencies.png":::
 
-5. Verifiera beroenden igen. 
+1. Verifiera beroendena igen. 
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/validate-again.png" alt-text="För att verifiera igen." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/validate-again.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/validate-again.png" alt-text="Skärmbild av fönstret för att omvalidera beroendena." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/validate-again.png":::
 
-## <a name="assign-destination-resources"></a>Tilldela mål resurser
+## <a name="assign-destination-resources"></a>Tilldela målresurser
 
-Mål resurser som är kopplade till krypteringen kräver manuell tilldelning.
+Du måste tilldela målresurser som är associerade med kryptering manuellt.
 
-- Om du flyttar en virtuell dator som har Azure Disk Encryption (ADE) så visas nyckel valvet i mål regionen som ett beroende.
-- Om du flyttar en virtuell dator som har kryptering på Server sidan som använder anpassade hanterade nycklar (CMKs), visas disk krypteringen som angetts i mål regionen som ett beroende. 
-- Eftersom den här självstudien flyttar en virtuell dator med ADE aktiverat, och en virtuell dator som använder en CMK, visas både mål nyckel valvet och disk krypterings uppsättningen som beroenden.
+- Om du flyttar en virtuell dator som har Azure Disk Encryption aktiverat visas nyckelvalvet i målregionen som ett beroende.
+- Om du flyttar en virtuell dator med kryptering på serversidan som använder CMK:er visas diskkrypteringsuppsättningen i målregionen som ett beroende. 
+- Eftersom den här självstudien visar hur du flyttar en virtuell dator som har Azure Disk Encryption aktiverat och som använder en CMK, visas både målnyckelvalvet och diskkrypteringsuppsättningen som beroenden.
 
-Tilldela manuellt enligt följande:
+Så här tilldelar du målresurserna manuellt:
 
-1. I post för disk krypterings uppsättning väljer du **resurs som inte är tilldelad** i kolumnen **mål konfiguration** .
-2. I **konfigurations inställningar** väljer du mål disk krypterings uppsättningen. Välj sedan **Spara ändringar**.
-3. Du kan välja att spara och verifiera beroenden för den resurs som du ändrar, eller så kan du bara spara ändringarna och verifiera allt du ändrar i en enda go.
+1. I posten för diskkrypteringsuppsättningen väljer **du Resurs som inte har tilldelats** i kolumnen **Målkonfiguration.**
+1. I **Konfigurationsinställningar** väljer du måldiskkrypteringsuppsättningen och sedan **Spara ändringar.**
+1. Du kan spara och verifiera beroenden för den resurs som du ändrar, eller så kan du bara spara ändringarna och sedan verifiera allt du ändrar på samma gång.
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/select-destination-set.png" alt-text="Sidan för att välja disk krypterings uppsättning i mål regionen." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/select-destination-set.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/select-destination-set.png" alt-text="Skärmbild av fönstret &quot;Målkonfiguration&quot; för att spara ändringar i målregionen." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/select-destination-set.png":::
 
-    När du har lagt till mål resursen, blir statusen för disk krypterings uppsättningen för att *Bekräfta förväntat flyttning*.
-3. I nyckel valvs posten väljer du **resurs som inte är tilldelad** i kolumnen **mål konfiguration** . **Konfigurations inställningar** väljer du mål nyckel valvet. Spara ändringarna. 
+    När du har lagt till målresursen ändras statusen för diskkrypteringsuppsättningen till *Genomför flytt väntar på*.
 
-I det här skedet är både disk krypterings uppsättningen och Key Vault-statusen inställd på att *Bekräfta flyttningen väntar*.
+1. I nyckelvalvsposten väljer du **Resurs som inte har tilldelats** i kolumnen **Målkonfiguration.** Under **Konfigurationsinställningar** väljer du nyckelvalvet för målet och sparar sedan ändringarna. 
 
-:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/prepare-other-resources.png" alt-text="För att välja Förbered för andra resurser." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/prepare-other-resources.png":::
+I det här skedet ändras status för diskkrypteringsuppsättningen och nyckelvalvet till *Commit move pending*(Genomför flytt väntar).
 
-För att genomföra och slutföra flyttnings processen för krypterings resurser.
+:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/prepare-other-resources.png" alt-text="Skärmbild av fönstret för att förbereda andra resurser." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/prepare-other-resources.png":::
 
-1. I **flera regioner** väljer du resursen (disk krypterings uppsättning eller nyckel valv) > **genomför flytt**.
-2. ra **Flytta resurser**, klicka på **genomför**.
+Gör följande för att genomföra och slutföra flyttprocessen för krypteringsresurser:
+
+1. I **Över regioner** väljer du resursen (diskkrypteringsuppsättningen eller nyckelvalvet) och väljer sedan Genomför **flytt.**
+1. I **Flytta resurser** väljer du **Genomför.**
 
 > [!NOTE]
-> När flytten har genomförts är resursen i ett *väntande tillstånd för att ta bort källan* .
+> När du har utfört flytten ändras resursstatusen till Ta *bort källa som väntar* på .
 
 
-## <a name="move-the-source-resource-group"></a>Flytta käll resurs gruppen 
+## <a name="move-the-source-resource-group"></a>Flytta källresursgruppen 
 
-Innan du kan förbereda och flytta virtuella datorer måste resurs gruppen för den virtuella datorn finnas i mål regionen. 
+Innan du kan förbereda och flytta virtuella datorer måste vm-resursgruppen finnas i målregionen. 
 
 ### <a name="prepare-to-move-the-source-resource-group"></a>Förbereda flytt av källresursgruppen
 
-Under förberedelse processen genererar resurs förflyttningen Azure Resource Manager (ARM) mallar med hjälp av resurs grupps inställningarna. Resurser i resurs gruppen påverkas inte.
+Under förberedelseprocessen genererar Resource Mover Azure Resource Manager (ARM)-mallar från resursgruppsinställningarna. Resurserna i resursgruppen påverkas inte.
 
-Förbered enligt följande:
+Förbered flytten av källresursgruppen genom att göra följande:
 
-1. I **flera regioner** väljer du käll resurs gruppen > **Förbered**.
+1. I **Över regioner** väljer du källresursgruppen och sedan **Förbered**.
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/prepare-resource-group.png" alt-text="Förbered resurs grupp." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/prepare-resource-group.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/prepare-resource-group.png" alt-text="Skärmbild av knappen Förbered i fönstret Förbered resurser." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/prepare-resource-group.png":::
 
-2. I **Förbered resurser** klickar du på **Förbered**.
+1. I **Förbered resurser** väljer du **Förbered**.
 
 > [!NOTE]
-> När du har bearbetat resurs gruppen är det i läget *Starta flyttning väntar* . 
+> När du har förberett flytten ändras resursgruppens status till *Initiate move pending (Initiera flytt väntar).* 
 
  
-### <a name="move-the-source-resource-group"></a>Flytta käll resurs gruppen
+### <a name="move-the-source-resource-group"></a>Flytta källresursgruppen
 
-Starta flyttningen enligt följande:
+Börja flytta källresursgruppen genom att göra följande:
 
-1. I **flera regioner** väljer du resurs grupp > **initiera flytt**
+1. I fönstret **Över regioner** väljer du resursgruppen och sedan Initiera **flytt.**
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/initiate-move-resource-group.png" alt-text="För att initiera flytten." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/initiate-move-resource-group.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/initiate-move-resource-group.png" alt-text="Skärmbild av knappen &quot;Starta flytt&quot; i fönstret &quot;Över regioner&quot;." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/initiate-move-resource-group.png":::
 
-2. ra **Flytta resurser**, klicka på **initiera flytta**. Resurs gruppen flyttas till en *initierings status som börjar* gälla.   
-3. När flytten har påbörjats skapas mål resurs gruppen baserat på den genererade ARM-mallen. Käll resurs gruppen flyttas till ett *förväntat flyttnings* tillstånd.
+1. I fönstret **Flytta resurser** väljer du **Initiera flytt.** Resursgruppens status ändras till Initiate move in progress ( *Initiera flytt pågår).*   
+1. När du har initierat flytten skapas målresursgruppen baserat på den genererade ARM-mallen. Källresursgruppens status ändras till *Commit move pending*(Genomför flytt väntar).
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resource-group-commit-move-pending.png" alt-text="Granska läget för att flytta vänte läge." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resource-group-commit-move-pending.png":::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resource-group-commit-move-pending.png" alt-text="Skärmbild av fönstret Flytta resurser som visar att resursgruppens status har ändrats till &quot;Commit move pending&quot; (Genomför flytt väntar)." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resource-group-commit-move-pending.png":::
 
-För att genomföra och slutföra flytt processen:
+Gör följande för att genomföra flytten och slutföra processen:
 
-1. I **flera regioner** väljer du resurs gruppen > **genomför flytt**.
-2. ra **Flytta resurser**, klicka på **genomför**.
+1. I fönstret **Över regioner** väljer du resursgruppen och sedan Genomför **flytt.**
+1. I fönstret **Flytta resurser** väljer du **Genomför.**
 
 > [!NOTE]
-> När flytten har genomförts är käll resurs gruppen i ett *väntande tillstånd för att ta bort källan* .
+> När du har utfört flytten ändras källresursgruppens status till *Ta bort källa som väntar på*.
 
-:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resource-group-delete-move-pending.png" alt-text="Granska statusen ta bort förväntat flytt." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resource-group-delete-move-pending.png":::
+:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resource-group-delete-move-pending.png" alt-text="Skärmbild av källresursgruppen som visar att statusen har ändrats till &quot;Ta bort källa väntar&quot;." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resource-group-delete-move-pending.png":::
 
-## <a name="prepare-resources-to-move"></a>Förbered resurser för att flytta
+## <a name="prepare-resources-to-move"></a>Förbereda resurser för flytt
 
-Nu när krypterings resurserna och käll resurs gruppen flyttas kan du förbereda för att flytta andra resurser som är i *förberedelse* tillstånd.
-
-
-1. I **flera regioner**, validera igen och Lös eventuella problem.
-2. Om du vill redigera mål inställningarna innan du påbörjar flyttningen väljer du länken i kolumnen **mål konfiguration** för resursen och redigerar inställningarna. Om du redigerar inställningarna för den virtuella mål datorn bör storleken på den virtuella mål datorn inte vara mindre än storleken på den virtuella käll datorn.
-3. Välj **Förbered** för resurser i det *förberedelse väntande* tillstånd som du vill flytta.
-3. I **Förbered resurser** väljer du **Förbered**
-
-    - Under förberedelse processen installeras Azure Site Recovery Mobility-agenten på virtuella datorer för att replikera dem.
-    - VM-data replikeras regelbundet till mål regionen. Detta påverkar inte den virtuella käll datorn.
-    - Resurs flyttning genererar ARM-mallar för de andra käll resurserna.
-
-När du har bearbetat resurser är de i ett *initierings* tillstånd som väntar.
-
-:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resources-initiate-move-pending.png" alt-text="Sida som visar resurser i status för att påbörja flytt." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resources-initiate-move-pending.png":::
+Nu när krypteringsresurserna och källresursgruppen har flyttats kan du förbereda för att flytta andra resurser vars aktuella status *är Förbered väntar.*
 
 
+1. I fönstret **Över regioner** verifierar du flytten igen och löser eventuella problem.
+1. Om du vill redigera målinställningarna innan du påbörjar flytten väljer du länken i kolumnen **Målkonfiguration** för resursen och redigerar sedan inställningarna. Om du redigerar inställningarna för den virtuella måldatorn bör storleken på den virtuella måldatorn inte vara mindre än storleken på den virtuella källdatorn.
+1. För resurser med *statusen Förbered väntar* som du vill flytta väljer du **Förbered**.
+1. I fönstret **Förbered resurser** väljer du **Förbered**.
 
-## <a name="initiate-the-move"></a>Påbörja flytten
+    - Under förberedelserna installeras Azure Site Recovery mobilitetsagenten på de virtuella datorerna för att replikera dem.
+    - VM-data replikeras regelbundet till målregionen. Detta påverkar inte den virtuella källdatorn.
+    - Resursflyttning genererar ARM-mallar för de andra källresurserna.
 
-När resurserna har förberetts kan du nu initiera flytten. 
+> [!NOTE]
+> När du har förberett resurserna ändras deras status till Initiate move pending ( *Initiera flytt väntar).*
 
-1. I **flera regioner** väljer du resurser med tillstånds *initieringen väntar*. Klicka sedan på **Starta flyttning**.
-2. I **Flytta resurser** klickar du på **påbörja flyttning**.
-3. Spåra flyttnings förlopp i meddelande fältet.
-
-    - Virtuella repliker skapas i mål regionen för virtuella datorer. Den virtuella käll datorn stängs av och vissa drift stopp inträffar (vanligt vis minuter).
-    - Resurs förflyttningen återskapar andra resurser med ARM-mallarna som för bereddes. Det finns vanligt vis ingen stillestånds tid.
-    - När du har flyttat resurserna är de i ett tillstånd där *flytt väntar* .
-
-:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resources-commit-move-pending.png" alt-text="Sida som visar resurser i förväntat flytt läge." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resources-commit-move-pending.png" :::
+:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resources-initiate-move-pending.png" alt-text="Skärmbild av fönstret Förbered resurser som visar resurserna i statusen &quot;Initiate move pending&quot; (Initiera flytt väntar)." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resources-initiate-move-pending.png":::
 
 
-## <a name="discard-or-commit"></a>Ta bort eller bekräfta?
 
-Efter den första flyttningen kan du bestämma om du vill att flyttningen ska utföras eller om du vill ta bort den. 
+## <a name="initiate-the-move"></a>Initiera flytten
 
-- **Ignorera**: du kan ta bort en flytt om du testar och du inte vill flytta käll resursen. Om du tar bort flytten returneras resursen till ett tillstånd där *initieringen väntar*.
-- **Commit**: commit Slutför flyttningen till mål regionen. När du har gjort det kommer en käll resurs att vara i ett tillstånd där *borttagnings källan väntar*, och du kan välja om du vill ta bort den.
+Nu när du har förberett resurserna kan du starta flytten. 
+
+1. I fönstret **Över regioner** väljer du de resurser vars status är Initiate move pending (Initiera flytt *väntar)* och väljer sedan **Initiate move (Initiera flytt).**
+1. I fönstret **Flytta resurser** väljer du **Initiera flytt.**
+1. Spåra förloppet för flytten i meddelandefältet.
+
+    - För virtuella datorer skapas virtuella repliker i målregionen. Den virtuella källdatorn stängs av och viss stilleståndstid inträffar (vanligtvis minuter).
+    - Resource Mover skapar om andra resurser med hjälp av de förberedda ARM-mallarna. Det finns vanligtvis ingen stilleståndstid.
+    - När du har flyttat resurserna ändras deras status till *Genomför flytt väntar på*.
+
+:::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resources-commit-move-pending.png" alt-text="Skärmbild av en lista över resurser med statusen &quot;Commit move pending&quot; (Genomför flytt väntar)." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resources-commit-move-pending.png" :::
+
+
+## <a name="discard-or-commit"></a>Tar du bort eller genomför?
+
+Efter den första flytten kan du bestämma om du vill genomföra flytten eller ta bort den. 
+
+- **Ignorera:** Du kan ta bort en flytt om du testar den och inte vill flytta källresursen. Om flytten tas bort returneras resursen till *statusen Initiate move pending (Initiera flytt väntar).*
+- **Genomför:** Genomför slutför flytten till målregionen. När du har utfört en källresurs ändras dess status till *Ta* bort källa som väntar och du kan bestämma om du vill ta bort den.
 
 
 ## <a name="discard-the-move"></a>Ta bort flytten 
 
-Du kan ta bort flytten på följande sätt:
+Om du vill ta bort flytten gör du följande:
 
-1. I **flera regioner** väljer du resurser med status *commit flytta väntar* och klickar på **ta bort flyttning**.
-2. I **ta bort flyttning** klickar du på **Ignorera**.
-3. Spåra flyttnings förlopp i meddelande fältet.
+1. I fönstret **Över regioner** väljer du resurser vars status är Commit move pending (Genomför *flytt väntar)* och väljer sedan **Discard move (Ta bort flytt).**
+1. I fönstret **Ignorera flytt** väljer du **Ignorera.**
+1. Spåra förloppet för flytten i meddelandefältet.
 
 
 > [!NOTE]
-> När du har tagit bort resurser är de virtuella datorerna i ett *initierings* tillstånd som väntar.
+> När du har tagit bort resurserna ändras VM-statusen till *Initiate move pending (Initiera flytt väntar).*
 
-## <a name="commit-the-move"></a>Genomför flyttningen
+## <a name="commit-the-move"></a>Genomför flytten
 
-Spara flyttningen om du vill slutföra flyttnings processen. 
+För att slutföra flyttprocessen genomför du flytten genom att göra följande: 
 
-1. I **flera regioner** väljer du resurser med status *bekräftelse flytt väntar* och klickar på **genomför flyttning**.
-2. I **genomför resurser** klickar du på **genomför**.
+1. I fönstret **Över regioner** väljer du resurser vars status är Commit move pending (Genomför flytt *väntar)* och väljer sedan **Commit move (Genomför flytt).**
+1. I fönstret **Commit resources (Genomför** resurser) väljer du **Commit (Genomför).**
 
-    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resources-commit-move.png" alt-text="För att allokera resurser för att slutföra flytten." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resources-commit-move.png" :::
+    :::image type="content" source="./media/tutorial-move-region-encrypted-virtual-machines/resources-commit-move.png" alt-text="Skärmbild av en lista över resurser för att genomföra flytten." lightbox="./media/tutorial-move-region-encrypted-virtual-machines/resources-commit-move.png" :::
 
-3. Spåra inchecknings förloppet i meddelande fältet.
-
-> [!NOTE]
-> - När flytten har genomförts upphör virtuella datorer att replikera. Den virtuella käll datorn påverkas inte av genomförandet.
-> - Commit påverkar inte käll nätverks resurser.
-> - När flytten har genomförts är resurserna i ett väntande tillstånd för att *ta bort källan* .
-
-
-
-## <a name="configure-settings-after-the-move"></a>Konfigurera inställningar efter flyttningen
-
-- Mobilitets tjänsten avinstalleras inte automatiskt från virtuella datorer. Avinstallera det manuellt eller lämna det om du planerar att flytta servern igen.
-- Ändra Azure-rollbaserad åtkomst kontroll (Azure RBAC) regler efter flytten.
-
-## <a name="delete-source-resources-after-commit"></a>Ta bort käll resurser efter incheckning
-
-Efter flytten kan du välja att ta bort resurser i käll regionen. 
-
-1. I **flera regioner** väljer du varje käll resurs som du vill ta bort. Välj sedan **ta bort källa**.
-2. I **ta bort källa** granskar du vad du vill ta bort och i **Bekräfta borttagning** skriver du **Ja**. Åtgärden kan inte ångras. kontrol lera noggrant!
-3. När du har skrivit **Ja** väljer du **ta bort källa**.
+1. Spåra förloppet för genomförande i meddelandefältet.
 
 > [!NOTE]
->  I resursens flytt Portal kan du inte ta bort resurs grupper, nyckel valv eller SQL Server-servrar. Du måste ta bort dessa individuellt från sidan Egenskaper för varje resurs.
+> - När du har utfört flytten slutar de virtuella datorerna att replikera. Den virtuella källdatorn påverkas inte av genomföret.
+> - Genomförandeprocessen påverkar inte källans nätverksresurser.
+> - När du har utfört flytten ändras resursstatusen till Ta *bort källa som väntar* på .
 
 
-## <a name="delete-additional-resources-created-for-move"></a>Ta bort ytterligare resurser som har skapats för flytt
 
-Efter flyttningen kan du ta bort flyttnings samlingen manuellt och Site Recovery resurser som har skapats.
+## <a name="configure-settings-after-the-move"></a>Konfigurera inställningar efter flytten
 
-- Flyttnings samlingen är dold som standard. Du måste aktivera dolda resurser för att kunna se det.
-- Cache-lagringen har ett lås som måste tas bort innan den kan tas bort.
+- Mobilitetstjänsten avinstalleras inte automatiskt från virtuella datorer. Avinstallera det manuellt eller lämna det om du planerar att flytta servern igen.
+- Ändra regler för rollbaserad åtkomstkontroll (RBAC) i Azure efter flytten.
 
-Ta bort enligt följande: 
-1. Leta upp resurserna i resurs gruppen ```RegionMoveRG-<sourceregion>-<target-region>``` .
-2. Kontrol lera att alla virtuella datorer och andra käll resurser i käll regionen har flyttats eller tagits bort. Detta säkerställer att det inte finns några väntande resurser som använder dem.
-2. Ta bort resurserna:
+## <a name="delete-source-resources-after-commit"></a>Ta bort källresurser efter genomförd
 
-    - Namnet på flyttnings samlingen är ```movecollection-<sourceregion>-<target-region>``` .
-    - Namnet på cachens lagrings konto är ```resmovecache<guid>```
-    - Valv namnet är ```ResourceMove-<sourceregion>-<target-region>-GUID``` .
+Efter flytten kan du ta bort resurser i källregionen om du vill. 
+
+1. I fönstret **Över regioner** markerar du varje källresurs som du vill ta bort och väljer sedan Ta **bort källa.**
+1. I **Ta bort källa** granskar du vad du tänker ta bort och i Bekräfta **borttagning** skriver du **ja.** Åtgärden går inte att ångra, så kontrollera noggrant!
+1. När du har skrivit **ja** väljer du **Ta bort källa.**
+
+> [!NOTE]
+>  I portalen För resursflyttning kan du inte ta bort resursgrupper, nyckelvalv eller SQL Server instanser. Du måste ta bort var och en från egenskapssidan för varje resurs.
+
+
+## <a name="delete-resources-that-you-created-for-the-move"></a>Ta bort resurser som du skapade för flytten
+
+Efter flytten kan du manuellt ta bort flyttsamlingen och Site Recovery som du skapade under den här processen.
+
+- Flyttsamlingen är dold som standard. Om du vill se den måste du aktivera dolda resurser.
+- Cachelagringen har ett lås som måste tas bort innan den kan tas bort.
+
+Så här tar du bort dina resurser: 
+1. Leta upp resurserna i resursgruppen ```RegionMoveRG-<sourceregion>-<target-region>``` .
+1. Kontrollera att alla virtuella datorer och andra källresurser i källregionen har flyttats eller tagits bort. Det här steget säkerställer att det inte finns några väntande resurser som använder dem.
+1. Ta bort resurserna:
+
+    - Flytta samlingsnamn: ```movecollection-<sourceregion>-<target-region>```
+    - Namn på cachelagringskonto: ```resmovecache<guid>```
+    - Valvnamn: ```ResourceMove-<sourceregion>-<target-region>-GUID```
 ## <a name="next-steps"></a>Nästa steg
 
 I den här kursen får du:
@@ -399,7 +406,7 @@ I den här kursen får du:
 > * Flyttade krypterade virtuella Azure-datorer och deras beroende resurser till en annan Azure-region.
 
 
-Nu kan du prova att flytta Azure SQL-databaser och elastiska pooler till en annan region.
+Som nästa steg kan du prova att flytta Azure SQL databaser och elastiska pooler till en annan region.
 
 > [!div class="nextstepaction"]
-> [Flytta Azure SQL-resurser](./tutorial-move-region-sql.md)
+> [Flytta Azure SQL resurser](./tutorial-move-region-sql.md)

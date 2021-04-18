@@ -1,38 +1,38 @@
 ---
-title: Indexerings tabeller
+title: Indexera tabeller
 description: Rekommendationer och exempel för indexering av tabeller i dedikerad SQL-pool.
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/18/2019
+ms.date: 04/16/2021
+author: XiaoyuMSFT
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: fabbdf330d43737ffa85379f9cc4d5ac59c4a734
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58f3eed8b16ff3ed02c6dfac6dc7d72ebb4ca374
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98673526"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599986"
 ---
-# <a name="indexing-dedicated-sql-pool-tables-in-azure-synapse-analytics"></a>Indexera dedikerade SQL pool tabeller i Azure Synapse Analytics
+# <a name="indexing-dedicated-sql-pool-tables-in-azure-synapse-analytics"></a>Indexera dedikerade SQL-pooltabeller i Azure Synapse Analytics
 
 Rekommendationer och exempel för indexering av tabeller i dedikerad SQL-pool.
 
 ## <a name="index-types"></a>Indextyper
 
-Dedikerad SQL-pool erbjuder flera indexerings alternativ, inklusive [grupperade columnstore-index](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), [grupperade index och icke-grupperade index](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)och ett icke-index-alternativ som också kallas [heap](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  
+Dedikerad SQL-pool erbjuder flera indexeringsalternativ, inklusive grupperade [columnstore-index,](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)klustrade [index](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)och icke-klusterindex och ett icke-indexalternativ som även kallas [heap](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  
 
-Information om hur du skapar en tabell med ett index finns i dokumentationen för [CREATE TABLE (dedikerad SQL-pool)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .
+Information om hur du skapar en tabell med ett index [finns i CREATE TABLE (dedikerad SQL-pool)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) dokumentation.
 
 ## <a name="clustered-columnstore-indexes"></a>Grupperade columnstore-index
 
-Dedicerad SQL-pool skapar som standard ett grupperat columnstore-index när inga index alternativ anges för en tabell. Grupperade columnstore-tabeller ger både den högsta nivån av data komprimering och bästa övergripande prestanda för frågor.  Grupperade columnstore-tabeller avsevärt vanligt vis grupperade index eller heap-tabeller och är vanligt vis det bästa valet för stora tabeller.  Därför är grupperat columnstore det bästa sättet att starta när du är osäker på hur du kan indexera tabellen.  
+Som standard skapar dedikerad SQL-pool ett grupperat columnstore-index när inga indexalternativ anges i en tabell. Grupperade columnstore-tabeller erbjuder både den högsta nivån av datakomprimering och bästa övergripande frågeprestanda.  Grupperade columnstore-tabeller överträffar vanligtvis klustrade index eller heap-tabeller och är vanligtvis det bästa valet för stora tabeller.  Av dessa skäl är klustrad columnstore den bästa platsen att börja på när du är osäker på hur du indexerar tabellen.  
 
-Om du vill skapa en grupperad columnstore-tabell ska du helt enkelt ange ett GRUPPERat COLUMNSTORE-INDEX i WITH-satsen eller lämna WITH-satsen avstängd:
+Om du vill skapa en klustrad columnstore-tabell anger du bara CLUSTERED COLUMNSTORE INDEX i WITH-satsen eller lämnar WITH-satsen av:
 
 ```SQL
 CREATE TABLE myTable
@@ -44,17 +44,17 @@ CREATE TABLE myTable
 WITH ( CLUSTERED COLUMNSTORE INDEX );
 ```
 
-Det finns några scenarier där grupperat columnstore inte kan vara ett lämpligt alternativ:
+Det finns några scenarier där grupperat columnstore kanske inte är ett bra alternativ:
 
-- Columnstore-tabeller stöder inte varchar (max), nvarchar (max) och varbinary (max). Betrakta heap eller grupperat index i stället.
-- Columnstore-tabeller kan vara mindre effektiva för tillfälliga data. Betrakta heap och kanske till och med temporära tabeller.
-- Små tabeller med färre än 60 000 000 rader. Beakta heap-tabeller.
+- Columnstore-tabeller stöder inte varchar(max), nvarchar(max) och varbinary(max). Överväg heap eller grupperat index i stället.
+- Columnstore-tabeller kan vara mindre effektiva för tillfälliga data. Överväg heap och kanske till och med temporära tabeller.
+- Små tabeller med mindre än 60 miljoner rader. Överväg heap-tabeller.
 
 ## <a name="heap-tables"></a>Heap-tabeller
 
-När du tillfälligt ställer in data i en dedikerad SQL-pool, kan det hända att du använder en heap-tabell för att göra den övergripande processen snabbare. Detta beror på att belastningar till heaps är snabbare än att indexera tabeller och i vissa fall kan den efterföljande läsningen göras från cachen.  Om du bara läser in data för att mellanlagra dem innan du kör fler transformationer går det mycket snabbare att läsa in tabellen till heap-tabellen än att läsa in data till en grupperad columnstore-tabell. Dessutom går det snabbare att läsa in data till en [temporär tabell](sql-data-warehouse-tables-temporary.md) än att läsa in en tabell till permanent lagring.  När data har lästs in kan du skapa index i tabellen för snabbare frågans prestanda.  
+När du tillfälligt använder data i en dedikerad SQL-pool kan det hända att den övergripande processen går snabbare om du använder en heap-tabell. Det beror på att inläsningar till heaps är snabbare än indextabeller och i vissa fall kan efterföljande läsningar göras från cachen.  Om du bara läser in data för att mellanlägga dem innan du kör fler transformationer går det mycket snabbare att läsa in tabellen till heap-tabellen än att läsa in data till en klustrad columnstore-tabell. Dessutom läses inläsningen av data [till en temporär tabell](sql-data-warehouse-tables-temporary.md) snabbare än att läsa in en tabell till permanent lagring.  Efter datainläsning kan du skapa index i tabellen för snabbare frågeprestanda.  
 
-Kluster columnstore-tabeller börjar uppnå optimal komprimering när det finns fler än 60 000 000 rader.  För små uppslags tabeller, mindre än 60 000 000 rader, Överväg att använda HEAP eller grupperat index för snabbare frågeresultat. 
+Klusterkolumnlagringstabeller börjar uppnå optimal komprimering när det finns fler än 60 miljoner rader.  För små uppslagstabeller, mindre än 60 miljoner rader, bör du överväga att använda HEAP eller grupperat index för snabbare frågeprestanda. 
 
 Om du vill skapa en heap-tabell anger du bara HEAP i WITH-satsen:
 
@@ -68,11 +68,11 @@ CREATE TABLE myTable
 WITH ( HEAP );
 ```
 
-## <a name="clustered-and-nonclustered-indexes"></a>Klustrade och grupperade index
+## <a name="clustered-and-nonclustered-indexes"></a>Grupperade och icke-klusterindex
 
-Grupperade index kan avsevärt grupperade columnstore-tabeller när en enskild rad behöver hämtas snabbt. För frågor där en enkel eller väldigt liten rad ökning krävs för att utföra extrema hastigheter, Överväg ett kluster index eller ett grupperat sekundärt index. Nack delen med att använda ett grupperat index är att bara frågor som förmånen är de som använder ett mycket selektivt filter i kolumnen grupperat index. För att förbättra filter i andra kolumner kan ett grupperat index läggas till i andra kolumner. Varje index som läggs till i en tabell lägger dock till både utrymme och bearbetnings tid som ska läsas in.
+Klustrade index kan prestera bättre än klustrade columnstore-tabeller när en enskild rad snabbt behöver hämtas. För frågor där en enda eller mycket få rader sökning krävs för att utföra med extrem hastighet kan du överväga ett grupperat index eller icke-kluster sekundärt index. Nackdelen med att använda ett grupperat index är att endast frågor som drar nytta av är de som använder ett mycket selektivt filter på den grupperade indexkolumnen. För att förbättra filtret på andra kolumner kan ett icke-clustered-index läggas till i andra kolumner. Varje index som läggs till i en tabell lägger dock till både utrymme och bearbetningstid för inbelastningar.
 
-Skapa en grupperad index tabell genom att helt enkelt ange GRUPPERat INDEX i WITH-satsen:
+Om du vill skapa en klustrad indextabell anger du bara CLUSTERED INDEX i WITH-satsen:
 
 ```SQL
 CREATE TABLE myTable
@@ -92,9 +92,9 @@ CREATE INDEX zipCodeIndex ON myTable (zipCode);
 
 ## <a name="optimizing-clustered-columnstore-indexes"></a>Optimera grupperade columnstore-index
 
-Grupperade columnstore-tabeller ordnas i data i segment.  Att ha hög segment kvalitet är avgörande för att uppnå optimala prestanda för frågor i en columnstore-tabell.  Segment kvaliteten kan mätas med antalet rader i en komprimerad radgrupp.  Segment kvaliteten är mest optimal om det finns minst 100 000 rader per komprimerad radgrupp och får prestanda som antalet rader per rad grupp metod 1 048 576 rader, vilket är de flesta rader som en rad grupp kan innehålla.
+Grupperade columnstore-tabeller är ordnade i data i segment.  Det är viktigt att ha hög segmentkvalitet för att uppnå optimala frågeprestanda i en columnstore-tabell.  Segmentkvaliteten kan mätas med antalet rader i en komprimerad radgrupp.  Segmentkvaliteten är mest optimal där det finns minst 100 000 rader per komprimerad radgrupp och bättre prestanda eftersom antalet rader per radgrupp närmar sig 1 048 576 rader, vilket är de flesta rader som en radgrupp kan innehålla.
 
-Du kan skapa och använda vyn nedan för att beräkna de genomsnittliga raderna per rad grupp och identifiera eventuella under-optimala kluster columnstore-index.  Den sista kolumnen i den här vyn genererar ett SQL-uttryck som kan användas för att återskapa index.
+Nedanstående vy kan skapas och användas i systemet för att beräkna de genomsnittliga raderna per radgrupp och identifiera eventuella icke-optimala klusterkolumnlagringsindex.  Den sista kolumnen i den här vyn genererar en SQL-instruktion som kan användas för att återskapa dina index.
 
 ```sql
 CREATE VIEW dbo.vColumnstoreDensity
@@ -143,7 +143,7 @@ GROUP BY
 ;
 ```
 
-Nu när du har skapat vyn kan du köra den här frågan för att identifiera tabeller med rad grupper med färre än 100 000 rader. Naturligtvis kanske du vill öka tröskelvärdet för 100 000 om du vill ha mer optimalt segment kvalitet.
+Nu när du har skapat vyn kör du den här frågan för att identifiera tabeller med radgrupper med färre än 100 000 rader. Naturligtvis kanske du vill öka tröskelvärdet på 100 000 om du vill ha en bättre segmentkvalitet.
 
 ```sql
 SELECT    *
@@ -152,115 +152,125 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
         OR INVISIBLE_rowgroup_rows_AVG < 100000
 ```
 
-När du har kört frågan kan du börja titta på data och analysera resultaten. I den här tabellen beskrivs vad du letar efter i rad grupps analysen.
+När du har kört frågan kan du börja titta på data och analysera dina resultat. I den här tabellen förklaras vad du ska leta efter i din radgruppsanalys.
 
 | Kolumn | Så här använder du dessa data |
 | --- | --- |
-| [table_partition_count] |Om tabellen är partitionerad kan du förväntas se att antalet öppna rad grupper är högre. Varje partition i distributionen kan i teorin ha en öppen rad grupp som är kopplad till den. Sätt faktorn i din analys. En liten tabell som har partitionerats kan optimeras genom att partitionering tas bort helt eftersom detta skulle förbättra komprimeringen. |
-| [row_count_total] |Totalt antal rader för tabellen. Du kan till exempel använda det här värdet för att beräkna procent andelen av rader i det komprimerade läget. |
-| [row_count_per_distribution_MAX] |Om alla rader är jämnt fördelade blir det här värdet mål antalet rader per distribution. Jämför det här värdet med compressed_rowgroup_count. |
+| [table_partition_count] |Om tabellen är partitionerad kan du förvänta dig att se högre antal öppna radgrupper. Varje partition i fördelningen kan i teorin ha en öppen radgrupp kopplad till den. Ta med detta i din analys. En liten tabell som har partitionerats kan optimeras genom att partitioneringen tas bort helt och hållet eftersom detta skulle förbättra komprimeringen. |
+| [row_count_total] |Totalt antal rader för tabellen. Du kan till exempel använda det här värdet för att beräkna procentandelen rader i komprimerat tillstånd. |
+| [row_count_per_distribution_MAX] |Om alla rader distribueras jämnt skulle det här värdet vara målantalet rader per distribution. Jämför det här värdet med compressed_rowgroup_count. |
 | [COMPRESSED_rowgroup_rows] |Totalt antal rader i columnstore-format för tabellen. |
-| [COMPRESSED_rowgroup_rows_AVG] |Om det genomsnittliga antalet rader är betydligt mindre än det maximala antalet rader för en radgrupp, kan du överväga att använda CTAS eller ALTER INDEX Rebuild för att komprimera om data |
-| [COMPRESSED_rowgroup_count] |Antalet rad grupper i columnstore-format. Om det här talet är mycket högt i förhållande till tabellen är det en indikator för att columnstore-densiteten är låg. |
-| [COMPRESSED_rowgroup_rows_DELETED] |Rader raderas logiskt i columnstore-format. Om talet är högt relaterat till tabell storlek kan du överväga att återskapa partitionen eller återskapa indexet eftersom det tar bort dem fysiskt. |
-| [COMPRESSED_rowgroup_rows_MIN] |Använd det här tillsammans med kolumnen medel och MAX för att förstå värde intervallet för rad grupperna i ditt columnstore. Ett lågt tal över inläsnings tröskeln (102 400 per partitions justering) innebär att optimeringar är tillgängliga i data inläsningen |
+| [COMPRESSED_rowgroup_rows_AVG] |Om det genomsnittliga antalet rader är betydligt mindre än det maximala antalet rader för en radgrupp bör du överväga att använda CTAS eller ALTER INDEX REBUILD för att komprimera data igen |
+| [COMPRESSED_rowgroup_count] |Antal radgrupper i columnstore-format. Om det här talet är mycket högt i förhållande till tabellen är det en indikator om att kolumnlagringsdensiteten är låg. |
+| [COMPRESSED_rowgroup_rows_DELETED] |Rader tas bort logiskt i columnstore-format. Om antalet är högt i förhållande till tabellstorleken bör du överväga att återskapa partitionen eller återskapa indexet eftersom detta tar bort dem fysiskt. |
+| [COMPRESSED_rowgroup_rows_MIN] |Använd detta tillsammans med kolumnerna AVG och MAX för att förstå intervallet med värden för radgrupperna i ditt columnstore. Ett lågt tal över belastningströskeln (102 400 per partitionsjusterad distribution) tyder på att optimeringar är tillgängliga i databelastningen |
 | [COMPRESSED_rowgroup_rows_MAX] |Som ovan |
-| [OPEN_rowgroup_count] |Öppna rad grupper är normala. Det skulle rimlig förväntas en öppen rad grupp per tabell distribution (60). För stora tal föreslås data inläsning mellan partitioner. Kontrol lera partitionerings strategin för att se till att den är ljud |
-| [OPEN_rowgroup_rows] |Varje rad grupp kan ha 1 048 576 rader med högst. Använd det här värdet för att se hur alla öppna rad grupper för närvarande är |
-| [OPEN_rowgroup_rows_MIN] |Öppna grupper visar att data antingen trickle läsas in i tabellen eller att den tidigare inläsningen spiller över återstående rader i den här rad gruppen. Använd de minsta, högsta, medel kolumnerna för att se hur mycket data som är söt i öppna rad grupper. För små tabeller kan det vara 100% av alla data! I vilket fall ändrar INDEX återuppbyggnad för att tvinga data att columnstore-data. |
+| [OPEN_rowgroup_count] |Öppna radgrupper är normala. Man förväntar sig rimligen en OPEN-radgrupp per tabelldistribution (60). För många tal tyder på data inläsning över partitioner. Dubbelkolla partitioneringsstrategin för att kontrollera att den är bra |
+| [OPEN_rowgroup_rows] |Varje radgrupp kan ha högst 1 048 576 rader. Använd det här värdet om du vill se hur fullständiga de öppna radgrupperna är för närvarande |
+| [OPEN_rowgroup_rows_MIN] |Öppna grupper anger att data antingen läses in i tabellen eller att den tidigare belastningen spills över återstående rader i den här radgruppen. Använd kolumnerna MIN, MAX, AVG för att se hur mycket data som finns i ÖPPNA radgrupper. För små tabeller kan det vara 100 % av alla data! I så fall kan ALTER INDEX REBUILD tvinga data till columnstore. |
 | [OPEN_rowgroup_rows_MAX] |Som ovan |
 | [OPEN_rowgroup_rows_AVG] |Som ovan |
-| [CLOSED_rowgroup_rows] |Titta på de stängda rad grupps raderna som en Sanity-kontroll. |
-| [CLOSED_rowgroup_count] |Antalet stängda rad grupper bör vara lågt om alla visas. Stängda rad grupper kan konverteras till komprimerade rad grupper med hjälp av ALTER INDEX... Omorganisera kommando. Detta är dock normalt inte obligatoriskt. Stängda grupper konverteras automatiskt till columnstore-gruppgrupper efter bakgrunden "tupel/process". |
-| [CLOSED_rowgroup_rows_MIN] |Stängda rad grupper bör ha en mycket hög fyllnings hastighet. Om fyllnings hastigheten för en stängd rad grupp är låg, krävs ytterligare analys av columnstore. |
+| [CLOSED_rowgroup_rows] |Titta på de stängda radgruppraderna som en sanitetskontroll. |
+| [CLOSED_rowgroup_count] |Antalet stängda radgrupper bör vara lågt om några alls visas. Stängda radgrupper kan konverteras till komprimerade radgrupper med hjälp av ALTER INDEX ... Omorganisera kommandot. Detta krävs dock normalt inte. Stängda grupper konverteras automatiskt till columnstore-radgrupper med hjälp av bakgrundsprocessen "tuppel mover". |
+| [CLOSED_rowgroup_rows_MIN] |Stängda radgrupper bör ha en mycket hög fyllningsfrekvens. Om fyllningsfrekvensen för en stängd radgrupp är låg krävs ytterligare analys av columnstore. |
 | [CLOSED_rowgroup_rows_MAX] |Som ovan |
 | [CLOSED_rowgroup_rows_AVG] |Som ovan |
 | [Rebuild_Index_SQL] |SQL för att återskapa columnstore-index för en tabell |
 
+## <a name="impact-of-index-maintenance"></a>Effekt av indexunderhåll
+
+Kolumnen i `Rebuild_Index_SQL` vyn `vColumnstoreDensity` innehåller en `ALTER INDEX REBUILD` -instruktion som kan användas för att återskapa dina index. När du återskapar indexen måste du allokera tillräckligt med minne till sessionen som återskapar indexet. Det gör du genom att öka [resursklassen för](resource-classes-for-workload-management.md) en användare som har behörighet att återskapa indexet i den här tabellen till det rekommenderade minimivärdet. Ett exempel finns i Återskapa [index för att förbättra segmentkvaliteten senare](#rebuilding-indexes-to-improve-segment-quality) i den här artikeln.
+
+För en tabell med ett ordnat grupperat `ALTER INDEX REBUILD` columnstore-index sorterar om data med tempdb. Övervaka tempdb under återskapningsåtgärder. Om du behöver mer tempdb-utrymme skalar du upp databaspoolen. Skala ned igen när indexet har återskapats.
+
+För en tabell med ett ordnat grupperat `ALTER INDEX REORGANIZE` kolumnlagringsindex sorteras inte data på nytt. Om du vill sortera om data använder du `ALTER INDEX REBUILD` .
+
+Mer information om sorterade grupperade kolumnlagringsindex finns i [Prestandajustering med ordnat grupperat columnstore-index.](performance-tuning-ordered-cci.md)
+
 ## <a name="causes-of-poor-columnstore-index-quality"></a>Causes of poor columnstore index quality (Orsaker till låg columnstore-indexkvalitet)
 
-Om du har identifierat tabeller med dålig segment kvalitet vill du identifiera rotor saken.  Nedan visas några andra vanliga orsaker till dålig segment kvalitet:
+Om du har identifierat tabeller med dålig segmentkvalitet vill du identifiera rotorsaken.  Nedan visas några andra vanliga orsaker till dålig segmentkvalitet:
 
-1. Minnes belastning när index har skapats
-2. Hög mängd DML-åtgärder
-3. Små eller trickle inläsnings åtgärder
+1. Minnestryck när indexet skapades
+2. Hög volym av DML-åtgärder
+3. Små eller knepiga inläsningsåtgärder
 4. För många partitioner
 
-Dessa faktorer kan orsaka ett columnstore-index som är betydligt mindre än de optimala 1 000 000 raderna per rad grupp. De kan också göra att rader går till delta-rad gruppen i stället för en komprimerad radgrupp.
+Dessa faktorer kan göra att ett columnstore-index har betydligt mindre än de optimala 1 miljoner raderna per radgrupp. De kan också göra att rader går till deltaradgruppen i stället för en komprimerad radgrupp.
 
-### <a name="memory-pressure-when-index-was-built"></a>Minnes belastning när index har skapats
+### <a name="memory-pressure-when-index-was-built"></a>Minnestryck när indexet skapades
 
-Antalet rader per komprimerad radgrupp är direkt relaterat till radens bredd och mängden minne som är tillgängligt för bearbetning av rad gruppen.  När rader skrivs till columnstore-tabeller när minnet är hårt belastat, kan columnstore-segmentens kvalitet påverkas.  Därför är det bästa sättet att ge sessionen som skriver till dina columnstore-index-tabeller åtkomst till så mycket minne som möjligt.  Eftersom det finns en kompromiss mellan minne och samtidighet beror rikt linjerna för den rätt minnesallokering på data i varje rad i tabellen, de data lager enheter som allokeras till systemet och antalet samtidiga platser som du kan ge till sessionen som skriver data till din tabell.
+Antalet rader per komprimerad radgrupp är direkt relaterat till bredden på raden och mängden tillgängligt minne för att bearbeta radgruppen.  När rader skrivs till columnstore-tabeller när minnet är hårt belastat, kan columnstore-segmentens kvalitet påverkas.  Därför är det bästa sättet att ge sessionen som skriver till kolumnlagringsindextabellerna åtkomst till så mycket minne som möjligt.  Eftersom det finns en avvägning mellan minne och samtidighet beror riktlinjerna för rätt minnesallokering på data i varje rad i tabellen, de informationslagerenheter som allokeras till systemet och antalet samtidighetsplatser som du kan ge till den session som skriver data till tabellen.
 
-### <a name="high-volume-of-dml-operations"></a>Hög mängd DML-åtgärder
+### <a name="high-volume-of-dml-operations"></a>Hög volym av DML-åtgärder
 
-En stor mängd DML-åtgärder som uppdaterar och raderar rader kan leda till ineffektivitet i columnstore. Detta gäller särskilt när majoriteten av raderna i en rad grupp ändras.
+En stor mängd DML-åtgärder som uppdaterar och tar bort rader kan leda till ineffektivitet i kolumnlagringen. Detta gäller särskilt när de flesta raderna i en radgrupp ändras.
 
-- När du tar bort en rad från en komprimerad rad grupp markeras bara raden som borttagen. Raden finns kvar i den komprimerade rad gruppen tills partitionen eller tabellen har återskapats.
-- Om du infogar en rad läggs raden till i en intern rowstore-tabell som kallas delta rad grupp. Den infogade raden konverteras inte till columnstore förrän delta-rad gruppen är full och har marker ATS som stängd. Rad grupper stängs när de når Max kapaciteten på 1 048 576 rader.
-- Uppdatering av en rad i columnstore-format bearbetas som logisk borttagning och sedan en infogning. Den infogade raden kan lagras i delta arkivet.
+- Om du tar bort en rad från en komprimerad radgrupp, markerar du bara raden som borttagna logiskt. Raden finns kvar i den komprimerade radgruppen tills partitionen eller tabellen återskapas.
+- När en rad infogas läggs raden till i en intern rowstore-tabell som kallas deltaradgrupp. Den infogade raden konverteras inte till columnstore förrän deltaradgruppen är full och har markerats som stängd. Radgrupper stängs när de når maxkapaciteten på 1 048 576 rader.
+- Uppdatering av en rad i columnstore-format bearbetas som en logisk borttagning och sedan en infogning. Den infogade raden kan lagras i deltalagret.
 
-Batch-uppdatering och infognings åtgärder som överskrider Mass tröskelvärdet på 102 400 rader per partitionerad distribution går direkt till columnstore-formatet. Men om du antar en jämn fördelning måste du ändra fler än 6 144 000 rader i en enda åtgärd för att detta ska inträffa. Om antalet rader för en angiven partitions justerad distribution är mindre än 102 400, går raderna till delta Store och stannar där tills tillräckliga rader har infogats eller ändrats för att stänga rad gruppen eller så har indexet återskapats.
+Batchbaserade uppdaterings- och infogningsåtgärder som överskrider masströskelvärdet på 102 400 rader per partitionsjusterad distribution går direkt till columnstore-formatet. Om vi antar en jämn fördelning skulle du dock behöva ändra fler än 6,144 miljoner rader i en enda åtgärd för att detta ska ske. Om antalet rader för en viss partitionsjusterad distribution är mindre än 102 400 går raderna till deltalagret och stannar där tills tillräckligt många rader har infogats eller ändrats för att stänga radgruppen eller om indexet har återskapats.
 
-### <a name="small-or-trickle-load-operations"></a>Små eller trickle inläsnings åtgärder
+### <a name="small-or-trickle-load-operations"></a>Små eller knepiga inläsningsåtgärder
 
-Små belastningar som flödar till en dedikerad SQL-pool kallas ibland även trickle-belastningar. De representerar vanligt vis en nära konstant data ström som matas in av systemet. Men eftersom den här data strömmen är nära kontinuerlig, är volymen av rader inte särskilt stor. Oftare än att data är betydligt under tröskelvärdet som krävs för direkt inläsning till columnstore-format.
+Små belastningar som flödar till dedikerad SQL-pool kallas ibland för svårare belastningar. De representerar vanligtvis en nästan konstant dataström som matas in av systemet. Men eftersom den här dataströmmen nästan är kontinuerlig är mängden rader inte särskilt stor. Oftast ligger data betydligt under tröskelvärdet som krävs för en direkt inläsning till columnstore-format.
 
-I dessa fall är det ofta bättre att fylla i data först i Azure Blob Storage och låta dem ackumuleras innan de läses in. Den här tekniken kallas ofta för *Micro batching*.
+I sådana situationer är det ofta bättre att först landa data i Azure Blob Storage och låta dem ackumuleras före inläsningen. Den här tekniken kallas ofta *mikrobatchbearbetning.*
 
 ### <a name="too-many-partitions"></a>För många partitioner
 
-En annan sak att överväga är effekten av partitionering i dina grupperade columnstore-tabeller.  Före partitionering delar den dedikerade SQL-poolen redan dina data i 60-databaser.  Om du partitionerar ytterligare delas dina data upp.  Om du partitionerar dina data måste du ta hänsyn till att **varje** partition behöver minst 1 000 000 rader för att dra nytta av ett grupperat columnstore-index.  Om du partitionerar din tabell i 100 partitioner behöver din tabell minst 6 000 000 000 rader för att dra nytta av ett grupperat columnstore-index (60-distributioner *100 partitioner* 1 000 000 rader). Om din 100-partitionstabell inte har 6 000 000 000-rader kan du antingen minska antalet partitioner eller överväga att använda en heap-tabell i stället.
+En annan sak att tänka på är effekten av partitionering på dina grupperade columnstore-tabeller.  Före partitionering delar dedikerad SQL-pool redan in dina data i 60 databaser.  Partitionering delar upp dina data ytterligare.  Om du partitionera dina data bör du tänka **på** att varje partition behöver minst 1 miljon rader för att dra nytta av ett grupperat columnstore-index.  Om du partitionera tabellen i 100 partitioner behöver tabellen minst 6 miljarder rader för att kunna dra nytta av ett grupperat columnstore-index (60 *distributioner 100 partitioner* 1 miljon rader). Om din tabell med 100 partitioner inte har 6 miljarder rader kan du antingen minska antalet partitioner eller överväga att använda en heap-tabell i stället.
 
-När dina tabeller har lästs in med vissa data följer du stegen nedan för att identifiera och återskapa tabeller med under optimalt grupperade columnstore-index.
+När dina tabeller har lästs in med vissa data följer du stegen nedan för att identifiera och återskapa tabeller med icke-optimala grupperade kolumnlagringsindex.
 
-## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Återskapa index för att förbättra segment kvaliteten
+## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Återskapa index för att förbättra segmentkvaliteten
 
-### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Steg 1: identifiera eller skapa en användare som använder rätt resurs klass
+### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Steg 1: Identifiera eller skapa användare som använder rätt resursklass
 
-Ett snabbt sätt att snabbt förbättra segment kvaliteten är att återskapa indexet.  SQL som returnerades av vyn ovan returnerar ett instruktionen ALTER INDEX Rebuild som kan användas för att återskapa index. När du återskapar indexen bör du se till att du allokerar tillräckligt med minne till sessionen som återskapar indexet.  Det gör du genom att öka resurs klassen för en användare som har behörighet att återskapa indexet för den här tabellen till det rekommenderade minimivärdet.
+Ett snabbt sätt att omedelbart förbättra segmentkvaliteten är att återskapa indexet.  SQL som returneras av vyn ovan returnerar en ALTER INDEX REBUILD-instruktion som kan användas för att återskapa dina index. När du återskapar indexen måste du se till att allokera tillräckligt med minne till sessionen som återskapar ditt index. Det gör du genom att öka resursklassen för en användare som har behörighet att återskapa indexet i den här tabellen till det rekommenderade minimivärdet.
 
-Nedan visas ett exempel på hur du allokerar mer minne till en användare genom att öka deras resurs klass. Information om hur du arbetar med resurs klasser finns i [resurs klasser för hantering av arbets belastning](resource-classes-for-workload-management.md).
+Nedan visas ett exempel på hur du allokerar mer minne till en användare genom att öka deras resursklass. Information om hur du arbetar med resursklasser finns [i Resursklasser för arbetsbelastningshantering.](resource-classes-for-workload-management.md)
 
 ```sql
-EXEC sp_addrolemember 'xlargerc', 'LoadUser'
+EXEC sp_addrolemember 'xlargerc', 'LoadUser';
 ```
 
-### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Steg 2: återskapa grupperade columnstore-index med högre resurs klass användare
+### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Steg 2: Återskapa grupperade columnstore-index med användare med högre resursklass
 
-Logga in som användaren från steg 1 (t. ex. LoadUser), som nu använder en högre resurs klass och kör ALTER INDEX-instruktionerna. Se till att användaren har behörigheten Ändra för tabellerna där indexet återskapas. I de här exemplen visas hur du återskapar hela columnstore-indexet eller hur du återskapar en enda partition. I stora tabeller är det mer praktiskt att återskapa index för en enda partition i taget.
+Logga in som användaren från steg 1 (LoadUser), som nu använder en högre resursklass och kör ALTER INDEX-isatserna. Se till att den här användaren har ALTER-behörighet till de tabeller där indexet återskapas. De här exemplen visar hur du återskapar hela kolumnlagringsindexet eller hur du återskapar en enskild partition. För stora tabeller är det mer praktiskt att återskapa index med en enda partition i taget.
 
-Alternativt kan du i stället för att återskapa indexet kopiera tabellen till en ny tabell [med hjälp av CTAs](sql-data-warehouse-develop-ctas.md). Vilket sätt är bäst? För stora mängder data är CTAS ofta snabbare än [Alter index](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). För mindre data volymer är det enklare att använda ALTER INDEX och du behöver inte byta ut tabellen.
+I stället för att återskapa indexet kan du kopiera tabellen till en ny tabell med [hjälp av CTAS](sql-data-warehouse-develop-ctas.md). Vilket sätt är bäst? För stora mängder data är CTAS vanligtvis snabbare än [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). För mindre mängder data är ALTER INDEX enklare att använda och kräver inte att du växlar ut tabellen.
 
 ```sql
 -- Rebuild the entire clustered index
-ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD
+ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 ```
 
 ```sql
 -- Rebuild a single partition
-ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5
+ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5;
 ```
 
 ```sql
 -- Rebuild a single partition with archival compression
-ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE_ARCHIVE)
+ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE_ARCHIVE);
 ```
 
 ```sql
 -- Rebuild a single partition with columnstore compression
-ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
+ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE);
 ```
 
-Återskapande av ett index i en dedikerad SQL-pool är en offline-åtgärd.  Mer information om hur du återskapar index finns i avsnittet ALTER INDEX Rebuild i [columnstore-index defragmentering](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)och [ändra index](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+Att återskapa ett index i en dedikerad SQL-pool är en offlineåtgärd.  Mer information om hur du återskapar index finns i avsnittet ALTER INDEX REBUILD i [Columnstore Indexes Defragmentation](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)och [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
-### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Steg 3: kontrol lera att den klustrade columnstore-segmentets kvalitet har förbättrats
+### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Steg 3: Kontrollera att segmentkvaliteten för grupperade kolumnlager har förbättrats
 
-Kör frågan som identifierade tabellen med dålig segment kvalitet och kontrol lera att segment kvaliteten har förbättrats.  Om segment kvaliteten inte förbättrades kan det bero på att raderna i tabellen är extra breda.  Överväg att använda en högre resurs klass eller DWU när du återskapar dina index.
+Kör om frågan som identifierade en tabell med dålig segmentkvalitet och kontrollera att segmentkvaliteten har förbättrats.  Om segmentkvaliteten inte förbättras kan det vara så att raderna i tabellen är extra breda.  Överväg att använda en högre resursklass eller DWU när du återskapar dina index.
 
-## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>Återskapa index med CTAS och partition växling
+## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>Återskapa index med CTAS och partitionsväxling
 
-I det här exemplet används instruktionen [CREATE TABLE as Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) och partition byte för att återskapa en table-partition.
+I det här exemplet [används CREATE TABLE CTAS-instruktionen (AS SELECT) och](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) partitionsväxling för att återskapa en tabellpartition.
 
 ```sql
 -- Step 1: Select the partition of data and write it out to a new table using CTAS
@@ -283,8 +293,8 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-Mer information om att skapa partitioner på nytt med hjälp av CTAS finns i [använda partitioner i dedikerad SQL-pool](sql-data-warehouse-tables-partition.md).
+Mer information om hur du återskapar partitioner med CTAS finns i [Använda partitioner i dedikerad SQL-pool.](sql-data-warehouse-tables-partition.md)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om hur du utvecklar tabeller finns i [utveckla tabeller](sql-data-warehouse-tables-overview.md).
+Mer information om hur du utvecklar tabeller finns i [Utveckla tabeller.](sql-data-warehouse-tables-overview.md)

@@ -1,37 +1,40 @@
 ---
-title: Felsöka kända problem med HPC-och GPU-VM – Azure Virtual Machines | Microsoft Docs
-description: Lär dig mer om fel sökning av kända problem med HPC-och GPU-VM-storlekar i Azure.
+title: Felsöka kända problem med virtuella DATORER med HPC och GPU – Azure Virtual Machines | Microsoft Docs
+description: Lär dig mer om felsökning av kända problem med HPC- och GPU VM-storlekar i Azure.
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/25/2021
+ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: d8c3a2d961cc5b6fd719b77dae07b6e46c3d8b65
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f5bdae17126048da153f70bf27609bcc4b92fe21
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604846"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599595"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>Kända problem med virtuella datorer i H-serien och N-serien
 
-Den här artikeln försöker visa en lista över de senaste vanliga problemen och deras lösningar när de använder HPC-och [N-seriens](../../sizes-gpu.md) HPC [-](../../sizes-hpc.md) och GPU-datorer.
+Den här artikeln försöker lista de senaste vanliga problemen och deras lösningar när du använder de virtuella datorerna [HPC](../../sizes-hpc.md) och GPU i [H-serien](../../sizes-gpu.md) och N-serien.
 
-## <a name="mofed-installation-on-ubuntu"></a>MOFED installation på Ubuntu
-På Ubuntu-18,04 visade Mellanox-OFED inkompatibilitet med kernel-versionen `5.4.0-1039-azure #42` och senare vilket medför en ökning av den virtuella datorns start tid till cirka 30 minuter. Detta har rapporter ATS för både Mellanox OFED-versionerna 5.2-1.0.4.0 och 5.2-2.2.0.0.
-Den tillfälliga lösningen är att använda den **kanoniska: UbuntuServer: 18_04-LTS-Gen2:18.04.202101290** Marketplace-avbildningen eller äldre och inte uppdatera kärnan.
-Det här problemet förväntas lösas med en nyare MOFED (TBD).
+## <a name="qp0-access-restriction"></a>qp0-åtkomstbegränsning
 
-## <a name="mpi-qp-creation-errors"></a>Fel vid skapande av MPI-QP
-Om du i pågående kör MPI-arbetsbelastningar, kommer InfiniBand QP-fel som visas nedan att genereras, och vi rekommenderar att du startar om den virtuella datorn och försöker att utföra arbets belastningen igen. Det här problemet kommer att åtgärdas i framtiden.
+För att förhindra åtkomst på låg nivå av maskinvara som kan leda till säkerhetsproblem är köpar 0 inte tillgängligt för virtuella gäst datorer. Detta bör endast påverka åtgärder som vanligtvis är associerade med administration av ConnectX InfiniBand-nätverkskortet och som kör viss InfiniBand-diagnostik som ibdia diagnostict, men inte slutanvändarprogram.
+
+## <a name="mofed-installation-on-ubuntu"></a>MOFED-installation på Ubuntu
+På Ubuntu-18.04-baserade VM-avbildningar på Marketplace med kernelversion och senare är vissa äldre Mellanox OFED inkompatibla, vilket i vissa fall leder till en ökning av VM-starttiden på upp till `5.4.0-1039-azure #42` 30 minuter. Detta har rapporterats för både Mellanox OFED-versionerna 5.2-1.0.4.0 och 5.2-2.2.0.0. Problemet löses med Mellanox OFED 5.3-1.0.0.1.
+Om det är nödvändigt att använda den inkompatibla OFED är en lösning att använda **avbildningen Canonical:UbuntuServer:18_04-lts-gen2:18.04.202101290** marketplace eller äldre och inte uppdatera kerneln.
+
+## <a name="mpi-qp-creation-errors"></a>Fel vid skapande av MPI QP
+Om det uppstår fel vid skapande av InfiniBand QP som visas nedan i körningen av MPI-arbetsbelastningar föreslår vi att du startar om den virtuella datorn och försöker arbetsbelastningen igen. Det här problemet kommer att åtgärdas i framtiden.
 
 ```bash
 ib_mlx5_dv.c:150  UCX  ERROR mlx5dv_devx_obj_create(QP) failed, syndrome 0: Invalid argument
 ```
 
-Du kan kontrol lera värdena för maximalt antal Queue par när problemet observeras enligt följande.
+Du kan verifiera värdena för det maximala antalet köpar när problemet observeras på följande sätt.
 ```bash
 [user@azurehpc-vm ~]$ ibv_devinfo -vv | grep qp
 max_qp: 4096
@@ -39,30 +42,30 @@ max_qp: 4096
 
 ## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>Accelererat nätverk på HB, HC, HBv2 och NDv2
 
-[Azure-accelererat nätverk](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) är nu tillgängligt på RDMA-och InfiniBand-kompatibla och SR-IOV-aktiverade VM-storlekar [HB](../../hb-series.md), [HC](../../hc-series.md), [HBv2](../../hbv2-series.md)och [NDv2](../../ndv2-series.md). Den här funktionen kan nu utökas i hela (upp till 30 Gbit/s) och fördröjning i Azure Ethernet-nätverket. Även om detta är skilt från RDMA-funktionerna i InfiniBand-nätverket kan vissa plattforms ändringar för den här funktionen påverka beteendet för vissa MPI-implementeringar när du kör jobb över InfiniBand. Särskilt InfiniBand-gränssnittet på vissa virtuella datorer kan ha ett något annorlunda namn (mlx5_1 till skillnad från tidigare mlx5_0) och detta kan kräva att kommando raderna i MPI ändras särskilt när du använder UCX-gränssnittet (vanligt vis med OpenMPI och HPC-X). Den enklaste lösningen kan för närvarande vara att använda de senaste HPC-X-avbildningarna i CentOS-HPC-avbildningar eller inaktivera accelererat nätverk om det inte behövs.
-Mer information om detta finns i den här [TechCommunity-artikeln](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965) med anvisningar om hur du åtgärdar eventuella observerade problem.
+[Azure-accelererat nätverk](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) är nu tillgängligt på RDMA- och InfiniBand-kompatibla och SR-IOV-aktiverade VM-storlekar [HB,](../../hb-series.md) [HC,](../../hc-series.md) [HBv2](../../hbv2-series.md)och [NDv2.](../../ndv2-series.md) Den här funktionen kan nu förbättras i hela (upp till 30 Gbit/s) och svarstider i Azure Ethernet-nätverket. Även om detta är separat från RDMA-funktionerna i InfiniBand-nätverket kan vissa plattformsändringar för den här funktionen påverka beteendet för vissa MPI-implementeringar när jobb körs över InfiniBand. Mer specifikt kan InfiniBand-gränssnittet på vissa virtuella datorer ha ett något annorlunda namn (mlx5_1 till skillnad från tidigare mlx5_0) och detta kan kräva justeringar av MPI-kommandoraderna, särskilt när du använder UCX-gränssnittet (vanligtvis med OpenMPI och HPC-X). Den enklaste lösningen för närvarande är att använda den senaste HPC-X på avbildningarna av virtuella CentOS-HPC-datorer eller inaktivera accelererat nätverk om det inte behövs.
+Mer information om detta finns i den här [TechCommunity-artikeln](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965) med instruktioner om hur du kan åtgärda eventuella observerade problem.
 
-## <a name="infiniband-driver-installation-on-non-sr-iov-vms"></a>InfiniBand-drivrutin installation på virtuella datorer som inte är SR-IOV
+## <a name="infiniband-driver-installation-on-non-sr-iov-vms"></a>Installation av InfiniBand-drivrutin på virtuella datorer som inte är SR-IOV
 
-För närvarande är H16r, H16mr och NC24r inte SR-IOV aktiverat. Viss information om InfiniBand stack-bifurcation finns [här](../../sizes-hpc.md#rdma-capable-instances).
-InfiniBand kan konfigureras på SR-IOV-aktiverade VM-storlekar med OFED-drivrutinerna medan icke-SR-IOV VM-storlekar kräver ND-drivrutiner. Detta IB-stöd är lämpligt för [CentOS, RHEL och Ubuntu](configure.md).
+H16r, H16mr och NC24r är för närvarande inte SR-IOV-aktiverade. Lite information om infiniBand-stackens bication [finns här.](../../sizes-hpc.md#rdma-capable-instances)
+InfiniBand kan konfigureras på SR-IOV-aktiverade VM-storlekar med OFED-drivrutiner medan vm-storlekar som inte är SR-IOV kräver ND-drivrutiner. Det här IB-stödet är tillgängligt på lämpligt [sätt för CentOS, RHEL och Ubuntu.](configure.md)
 
-## <a name="duplicate-mac-with-cloud-init-with-ubuntu-on-h-series-and-n-series-vms"></a>Duplicera MAC med Cloud-Init med Ubuntu på virtuella datorer i H-serien och N-serien
+## <a name="duplicate-mac-with-cloud-init-with-ubuntu-on-h-series-and-n-series-vms"></a>Duplicera MAC med cloud-init med Ubuntu på virtuella datorer i H-serien och N-serien
 
-Det finns ett känt problem med Cloud-Init på Ubuntu VM-avbildningar eftersom det försöker öppna IB-gränssnittet. Detta kan inträffa antingen vid omstart av virtuella datorer eller när du försöker skapa en VM-avbildning efter generalisering. Den virtuella datorns start loggar kan visa ett fel som så här:
+Det finns ett känt problem med cloud-init på virtuella Ubuntu-datoravbildningar när IB-gränssnittet används. Detta kan inträffa antingen vid omstart av den virtuella datorn eller när du försöker skapa en VM-avbildning efter generalisering. Startloggarna för den virtuella datorn kan visa ett fel som liknar följande:
 ```console
 “Starting Network Service...RuntimeError: duplicate mac found! both 'eth1' and 'ib0' have mac”.
 ```
 
-Detta är ett känt problem med att duplicera MAC med Cloud-Init på Ubuntu. Detta kommer att lösas i nyare kärnor. Om problemet uppstår är lösningen följande:
-1) Distribuera VM-avbildningen (Ubuntu 18,04) för Marketplace
-2) Installera nödvändiga program varu paket för att aktivera IB ([instruktion här](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351))
-3) Redigera waagent. conf för att ändra EnableRDMA = y
-4) Inaktivera nätverk i Cloud-Init
+Det här "duplicera MAC med cloud-init på Ubuntu" är ett känt problem. Detta löses i nyare kernels. Om problemet uppstår är lösningen:
+1) Distribuera vm-avbildningen marketplace (Ubuntu 18.04)
+2) Installera nödvändiga programvarupaket för att aktivera IB ([instruktion här](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351))
+3) Redigera waagent.conf för att ändra EnableRDMA=y
+4) Inaktivera nätverk i cloud-init
     ```console
     echo network: {config: disabled} | sudo tee /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
     ```
-5) Redigera nätverks konfigurations filen för netplan som genererats av Cloud-Init för att ta bort MAC
+5) Redigera nätverkskonfigurationsfilen för netplan som genererats av cloud-init för att ta bort MAC
     ```console
     sudo bash -c "cat > /etc/netplan/50-cloud-init.yaml" <<'EOF'
     network:
@@ -73,29 +76,25 @@ Detta är ett känt problem med att duplicera MAC med Cloud-Init på Ubuntu. Det
     EOF
     ```
 
-## <a name="qp0-access-restriction"></a>Åtkomst begränsning för qp0
-
-För att förhindra maskin vara på låg nivå som kan leda till säkerhets risker, är Queue-paret 0 inte tillgängligt för virtuella gäst datorer. Detta bör endast påverka åtgärder som vanligt vis är kopplade till administration av ConnectX-5-NÄTVERKSKORTet och som kör en viss InfiniBand-diagnostik som ibdiagnet, men inte slutanvändarens program.
-
 ## <a name="dram-on-hb-series-vms"></a>DRAM på virtuella datorer i HB-serien
 
-Virtuella datorer i HB-serien kan bara exponera 228 GB RAM-minne för virtuella gäst datorer för tillfället. På samma sätt är 458 GB på HBv2 och 448 GB på virtuella HBv3-datorer. Detta beror på en känd begränsning i Azure hypervisor för att förhindra att sidor tilldelas till det lokala DRAM av AMD CCX (NUMA-domäner) som är reserverade för den virtuella gäst datorn.
+Virtuella datorer i HB-serien kan bara exponera 228 GB RAM för virtuella gästbaserade datorer just nu. 458 GB på HBv2 och 448 GB på virtuella HBv3-datorer. Detta beror på en känd begränsning i Azure Hypervisor för att förhindra att sidor tilldelas till den lokala DRAM för AMD CCX:s (NUMA-domäner) som är reserverade för den virtuella gästdatorn.
 
 ## <a name="gss-proxy"></a>GSS-proxy
 
-GSS proxy har en känd bugg i CentOS/RHEL 7,5 som kan identifiera en betydande prestanda och svars tid när den används med NFS. Detta kan minimeras med:
+GSS Proxy har en känd bugg i CentOS/RHEL 7.5 som kan visas som en betydande prestanda- och svarstidsförsening när den används med NFS. Detta kan åtgärdas med:
 
 ```console
 sed -i 's/GSS_USE_PROXY="yes"/GSS_USE_PROXY="no"/g' /etc/sysconfig/nfs
 ```
 
-## <a name="cache-cleaning"></a>Rensning av cache
+## <a name="cache-cleaning"></a>Cacherensning
 
-På HPC-system är det ofta användbart att rensa minnet när ett jobb har avslut ATS innan nästa användare tilldelas samma nod. När du har kört program i Linux kan du se att det tillgängliga minnet minskar medan buffertutrymme ökar, trots att inga program körs.
+På HPC-system är det ofta praktiskt att rensa minnet när ett jobb har slutförts innan nästa användare tilldelas samma nod. När du har kört program i Linux kan det hända att ditt tillgängliga minne minskar medan buffertminnet ökar, trots att du inte kör några program.
 
-![Skärm bild av kommando tolken före rensning](./media/known-issues/cache-cleaning-1.png)
+![Skärmbild av kommandotolken före rensning](./media/known-issues/cache-cleaning-1.png)
 
-Om `numactl -H` du använder visas vilka NUMAnode som minnet buffras med (möjligen alla). I Linux kan användare rensa cacheminnen på tre sätt för att returnera buffrat eller cachelagrat minne till ledigt. Du måste vara rot eller ha sudo-behörigheter.
+Med `numactl -H` hjälp av visas vilka NUMAnode(er) som minnet buffrats med (eventuellt alla). I Linux kan användare rensa cacheminnen på tre sätt för att returnera buffrat eller cachelagrat minne till "ledigt". Du måste vara rot eller ha sudo-behörigheter.
 
 ```console
 echo 1 > /proc/sys/vm/drop_caches [frees page-cache]
@@ -103,11 +102,11 @@ echo 2 > /proc/sys/vm/drop_caches [frees slab objects e.g. dentries, inodes]
 echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 ```
 
-![Skärm bild av kommando tolken efter rensning](./media/known-issues/cache-cleaning-2.png)
+![Skärmbild av kommandotolken efter rensning](./media/known-issues/cache-cleaning-2.png)
 
-## <a name="kernel-warnings"></a>Kernel-varningar
+## <a name="kernel-warnings"></a>Kernelvarningar
 
-Du kan ignorera följande kernel-varnings meddelanden när du startar en virtuell dator med HB-serien under Linux. Detta beror på en känd begränsning i Azure-hypervisorn som kommer att åtgärdas över tid.
+Du kan ignorera följande kernelvarningsmeddelanden när du startar en virtuell dator i HB-serien under Linux. Detta beror på en känd begränsning i Azure-hypervisor-programmet som kommer att åtgärdas över tid.
 
 ```console
 [  0.004000] WARNING: CPU: 4 PID: 0 at arch/x86/kernel/smpboot.c:376 topology_sane.isra.3+0x80/0x90
@@ -130,6 +129,6 @@ Du kan ignorera följande kernel-varnings meddelanden när du startar en virtuel
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs översikten över [HB-serien](hb-series-overview.md) och [HC-serien](hc-series-overview.md) för att lära dig mer om att konfigurera arbets belastningar optimalt för prestanda och skalbarhet.
-- Läs om de senaste meddelandena, HPC-arbetsbelastnings exempel och prestanda resultat på [Azure Compute Tech-Webbgruppens Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
-- En mer övergripande arkitektur för att köra HPC-arbetsbelastningar finns i [HPC (data behandling med höga prestanda) i Azure](/azure/architecture/topics/high-performance-computing/).
+- Läs [översikten över HB-serien och](hb-series-overview.md) [översikten över HC-serien](hc-series-overview.md) om du vill veta mer om hur du konfigurerar arbetsbelastningar optimalt för prestanda och skalbarhet.
+- Läs om de senaste meddelandena, HPC-arbetsbelastningsexempel och prestandaresultat på [Azure Compute Tech Community Blogs](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- En arkitekturvy på högre nivå av att köra HPC-arbetsbelastningar finns i [Databehandling med höga prestanda (HPC) på Azure.](/azure/architecture/topics/high-performance-computing/)

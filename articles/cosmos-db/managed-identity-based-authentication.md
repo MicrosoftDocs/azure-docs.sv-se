@@ -9,19 +9,19 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e4a41d508d15c3d8f41cc727776f233cc56c0817
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b85e1fc74688f2883531bd3a6e724a2ce326a9db
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480961"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600258"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Använda system tilldelade hanterade identiteter för att få åtkomst Azure Cosmos DB data
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 I den här artikeln ska du konfigurera en *robust,* nyckelrotationsoberoende lösning för att komma åt Azure Cosmos DB nycklar med hjälp av [hanterade identiteter.](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) Exemplet i den här artikeln använder Azure Functions, men du kan använda alla tjänster som stöder hanterade identiteter. 
 
-Du lär dig hur du skapar en funktionsapp som kan komma åt Azure Cosmos DB data utan att behöva kopiera några Azure Cosmos DB nycklar. Funktionsappen väcks upp varje minut och registrerar den aktuella temperaturen för en vattensaksvattensbehållare. Information om hur du ställer in en timerutlöst funktionsapp finns i artikeln Skapa en funktion i Azure som [utlöses av en timer.](../azure-functions/functions-create-scheduled-function.md)
+Du lär dig hur du skapar en funktionsapp som kan komma åt Azure Cosmos DB data utan att behöva kopiera några Azure Cosmos DB nycklar. Funktionsappen aktiveras varje minut och registrerar den aktuella temperaturen för en vattenbehållare. Information om hur du ställer in en timerutlöst funktionsapp finns i artikeln Skapa en funktion i Azure som [utlöses av en timer.](../azure-functions/functions-create-scheduled-function.md)
 
 För att förenkla scenariot har [en Time To Live-inställning](./time-to-live.md) redan konfigurerats för att rensa äldre temperaturdokument. 
 
@@ -43,7 +43,7 @@ I det här steget tilldelar du en system tilldelad hanterad identitet till din f
 
 I det här steget tilldelar du en roll till funktionsappens system tilldelade hanterade identitet. Azure Cosmos DB har flera inbyggda roller som du kan tilldela till den hanterade identiteten. För den här lösningen använder du följande två roller:
 
-|Inbyggd roll  |Beskrivning  |
+|Inbyggd roll  |Description  |
 |---------|---------|
 |[DocumentDB-kontodeltagare](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Kan hantera Azure Cosmos DB konton. Tillåter hämtning av läs-/skrivnycklar. |
 |[Cosmos DB rollen Kontoläsare](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Kan läsa Azure Cosmos DB-kontodata. Tillåter hämtning av läsnycklar. |
@@ -93,10 +93,10 @@ az role assignment create --assignee $principalId --role "DocumentDB Account Con
 
 Nu har vi en funktionsapp som har en system tilldelad hanterad identitet med **rollen DocumentDB-kontodeltagare** i Azure Cosmos DB behörigheter. Följande kod för funktionsappen hämtar Azure Cosmos DB nycklar, skapar ett CosmosClient-objekt, hämtar temperaturen för objektet och sparar sedan det för att Azure Cosmos DB.
 
-Det här exemplet använder [API:et Lista nycklar](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listkeys) för att komma åt Azure Cosmos DB-kontonycklar.
+Det här exemplet använder [API:et Lista nycklar](/rest/api/cosmos-db-resource-provider/2021-03-15/databaseaccounts/listkeys) för att komma åt Azure Cosmos DB-kontonycklar.
 
 > [!IMPORTANT] 
-> Om du vill [tilldela rollen Cosmos DB-kontoläsare](#grant-access-to-your-azure-cosmos-account) måste du använda API:et [Lista skrivskyddade nycklar.](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listreadonlykeys) Då fylls bara de skrivskyddade nycklarna i.
+> Om du vill [tilldela rollen Cosmos DB-kontoläsare](#grant-access-to-your-azure-cosmos-account) måste du använda API:et [Lista skrivskyddade nycklar.](/rest/api/cosmos-db-resource-provider/2021-03-15/databaseaccounts/listreadonlykeys) Då fylls bara de skrivskyddade nycklarna i.
 
 API:et Listnycklar returnerar `DatabaseAccountListKeysResult` objektet. Den här typen definieras inte i C#-biblioteken. Följande kod visar implementeringen av den här klassen:  
 
